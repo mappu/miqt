@@ -3,8 +3,9 @@
 #include <QWidget>
 #include <QPushButton>
 
-PQApplication QApplication_new(int argc, char** argv) {
-    return new QApplication(argc, argv);
+PQApplication QApplication_new(int* argc, char** argv) {
+    // QApplication takes these parameters byref, not by value
+    return new QApplication(*argc, argv);
 }
 
 PQWidget QWidget_new() {

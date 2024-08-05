@@ -30,7 +30,8 @@ type QApplication struct {
 }
 
 func NewQApplication(args []string) *QApplication {
-	h := C.QApplication_new(CArray(args))
+	argc, argv := CArray(args)
+	h := C.QApplication_new(&argc, argv)
 	return &QApplication{h: h}
 }
 

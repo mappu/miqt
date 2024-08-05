@@ -7,8 +7,7 @@ typedef void* PQWidget;
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-PQApplication QApplication_new(int argc, char** argv);
+PQApplication QApplication_new(int* argc, char** argv);
 
 PQWidget QWidget_new();
 
