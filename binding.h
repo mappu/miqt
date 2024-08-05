@@ -1,12 +1,16 @@
+#ifndef BINDING_H
+#define BINDING_H
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 typedef void* PQApplication;
 
 typedef void* PQPushButton;
 
 typedef void* PQWidget;
 
-#ifdef __cplusplus
-extern "C" {
-#endif
 PQApplication QApplication_new(int* argc, char** argv);
 
 PQWidget QWidget_new();
@@ -22,3 +26,5 @@ int QApplication_exec(PQApplication self);
 #ifdef __cplusplus
 } /* extern C */
 #endif 
+
+#endif
