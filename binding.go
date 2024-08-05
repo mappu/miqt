@@ -47,6 +47,13 @@ type QWidget struct {
 	h C.PQWidget
 }
 
+func (this *QWidget) CPointer() C.PQWidget {
+	if this == nil {
+		return nil
+	}
+	return this.h
+}
+
 func NewQWidget() *QWidget {
 	ret := C.QWidget_new()
 	return &QWidget{h: ret}
@@ -62,8 +69,8 @@ type QPushButton struct {
 	h C.PQPushButton
 }
 
-func NewQPushButton(label string, parent QWidget) *QPushButton {
-	h := C.QPushButton_new(C.CString(label), parent.h)
+func NewQPushButton(label string, parent *QWidget) *QPushButton {
+	h := C.QPushButton_new(C.CString(label), parent.CPointer())
 	return &QPushButton{h: h}
 }
 
