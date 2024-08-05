@@ -2,6 +2,7 @@ package main
 
 /*
 
+#cgo CFLAGS: -fPIC
 #cgo pkg-config: Qt5Widgets
 #include "binding.h"
 
