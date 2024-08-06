@@ -3,6 +3,8 @@ package main
 import (
 	"errors"
 	"fmt"
+	"log"
+	"strings"
 )
 
 func parseHeader(inner []interface{}) (*parsedHeader, error) {
@@ -42,7 +44,7 @@ func parseHeader(inner []interface{}) (*parsedHeader, error) {
 
 			fmt.Printf("-> %q name=%q\n", kind, nodename)
 			if classInner, ok := node["inner"].([]interface{}); ok {
-				obj, err := processType(classInner)
+				obj, err := processType(classInner, nodename)
 				if err != nil {
 					panic(err)
 				}
@@ -61,9 +63,11 @@ func parseHeader(inner []interface{}) (*parsedHeader, error) {
 	return &ret, nil // done
 }
 
-func processType(inner []interface{}) (nativeClass, error) {
+func processType(inner []interface{}, className string) (nativeClass, error) {
 	var ret nativeClass
+	ret.className = className
 
+nextMethod:
 	for _, node := range inner {
 		node, ok := node.(map[string]interface{})
 		if !ok {
@@ -76,8 +80,69 @@ func processType(inner []interface{}) (nativeClass, error) {
 		}
 
 		switch kind {
+		case "CXXMethodDecl":
+			// Method
+			methodName, ok := node["name"].(string)
+			if !ok {
+				return nativeClass{}, errors.New("method has no name")
+			}
+
+			var mm nativeMethod
+			mm.methodName = methodName
+
+			if typobj, ok := node["type"].(map[string]interface{}); ok {
+				if qualType, ok := typobj["qualType"].(string); ok {
+					// The qualType is the whole type of the method, including its parameter types
+					// If anything here is too complicated, skip the whole method
+					if strings.Contains(qualType, `::`) {
+						log.Printf("Skipping method %q with complex type %q", mm.methodName, qualType)
+						continue nextMethod
+					}
+
+					// We only want up to the first ( character
+					mm.returnType, _, _ = strings.Cut(qualType, `(`)
+					mm.returnType = strings.TrimSpace(mm.returnType)
+				}
+			}
+
+			if methodInner, ok := node["inner"].([]interface{}); ok {
+				for _, methodObj := range methodInner {
+					methodObj, ok := methodObj.(map[string]interface{})
+					if !ok {
+						return nativeClass{}, errors.New("inner[] element not an object")
+					}
+
+					switch methodObj["kind"] {
+					case "ParmVarDecl":
+						// Parameter variable
+						parmName, _ := methodObj["name"].(string) // n.b. may be unnamed
+						if parmName == "" {
+							parmName = fmt.Sprintf("param%d", len(mm.parameters)+1)
+						}
+
+						var parmType string
+						if typobj, ok := node["type"].(map[string]interface{}); ok {
+							if qualType, ok := typobj["qualType"].(string); ok {
+								parmType = qualType
+							}
+						}
+
+						mm.parameters = append(mm.parameters, nativeParameter{
+							name: parmName,
+							typ:  parmType,
+						})
+
+					default:
+						// Something else inside a declaration??
+						fmt.Printf("==> NOT IMPLEMENTED CXXMethodDecl->%q\n", kind)
+					}
+				}
+			}
+
+			ret.methods = append(ret.methods, mm)
+
 		default:
-			fmt.Printf("==> %q\n", kind)
+			fmt.Printf("==> NOT IMPLEMENTED %q\n", kind)
 		}
 	}
 

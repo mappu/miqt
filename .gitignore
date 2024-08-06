@@ -1,5 +1,6 @@
 # scratch files
 *.json
+gen_*
 
 # binaries
 miqt
