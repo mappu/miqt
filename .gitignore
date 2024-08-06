@@ -1,3 +1,6 @@
+# scratch files
+*.json
+
 # binaries
 qtbindingexperiment
 cmd/bindings_test/direct
