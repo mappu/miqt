@@ -1,0 +1,24 @@
+Phase zero
+
+- [X] Handwritten bindings
+
+Phase 1
+
+- [X] Parse headers
+- [ ] Generate types (QtCore, QtGui, QtWidgets only)
+- [X] Rename package
+- [ ] v0 Public release
+
+Phase 2
+
+- [ ] Port examples from other Go Qt bindings
+- [ ] `connect`
+- [ ] Other Qt packages
+- [ ] Document use for Windows/macOS/Linux
+
+Wishlist
+
+- [ ] Subclassing
+- [ ] Custom Q_PROPERTY support
+- [ ] uic implementation
+- [ ] Use clang ast's `mangledName` to make a dlsym/LazyDLL cgo-free version 
