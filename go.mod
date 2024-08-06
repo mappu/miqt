@@ -1,3 +1,3 @@
-module qtbindingexperiment
+module miqt
 
 go 1.19

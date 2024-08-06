@@ -2,7 +2,7 @@
 *.json
 
 # binaries
-qtbindingexperiment
+miqt
 cmd/bindings_test/direct
 cmd/bindings_test/testapp
 cmd/genbindings/genbindings
