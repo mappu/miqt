@@ -5,7 +5,7 @@ import (
 	"strings"
 )
 
-func emitParametersCpp(params []nativeParameter, selfType string) string {
+func emitParametersCpp(params []CppParameter, selfType string) string {
 	tmp := make([]string, 0, len(params)+1)
 
 	if selfType != "" {
@@ -13,12 +13,12 @@ func emitParametersCpp(params []nativeParameter, selfType string) string {
 	}
 
 	for _, p := range params {
-		tmp = append(tmp, p.name+" "+p.typ)
+		tmp = append(tmp, p.ParameterName+" "+p.ParameterType)
 	}
 	return strings.Join(tmp, ", ")
 }
 
-func emitParametersNames(params []nativeParameter, selfType string) string {
+func emitParametersNames(params []CppParameter, selfType string) string {
 	tmp := make([]string, 0, len(params)+1)
 
 	if selfType != "" {
@@ -26,12 +26,12 @@ func emitParametersNames(params []nativeParameter, selfType string) string {
 	}
 
 	for _, p := range params {
-		tmp = append(tmp, p.name)
+		tmp = append(tmp, p.ParameterName)
 	}
 	return strings.Join(tmp, ", ")
 }
 
-func emitBindingHeader(src *parsedHeader, filename string) (string, error) {
+func emitBindingHeader(src *CppParsedHeader, filename string) (string, error) {
 	ret := strings.Builder{}
 
 	includeGuard := strings.ToUpper(strings.Replace(filename, `.`, `_`, -1)) + "_H"
@@ -47,15 +47,15 @@ extern "C" {
 
 `)
 
-	for _, c := range src.classes {
-		ret.WriteString(`typedef void* P` + c.className + ";\n\n")
+	for _, c := range src.Classes {
+		ret.WriteString(`typedef void* P` + c.ClassName + ";\n\n")
 
-		for i, ctor := range c.ctors {
-			ret.WriteString(fmt.Sprintf("P%s %s_new%s(%s);\n", c.className, maybeSuffix(i), emitParametersCpp(ctor.parameters, "")))
+		for i, ctor := range c.Ctors {
+			ret.WriteString(fmt.Sprintf("P%s %s_new%s(%s);\n", c.ClassName, maybeSuffix(i), emitParametersCpp(ctor.Parameters, "")))
 		}
 
-		for _, m := range c.methods {
-			ret.WriteString(fmt.Sprintf("%s %s_%s(%s);\n", m.returnType, c.className, m.SafeMethodName(), emitParametersCpp(m.parameters, "P"+c.className)))
+		for _, m := range c.Methods {
+			ret.WriteString(fmt.Sprintf("%s %s_%s(%s);\n", m.ReturnType, c.ClassName, m.SafeMethodName(), emitParametersCpp(m.Parameters, "P"+c.ClassName)))
 		}
 
 		ret.WriteString("\n")
@@ -72,7 +72,7 @@ extern "C" {
 	return ret.String(), nil
 }
 
-func emitBindingCpp(src *parsedHeader, filename string) (string, error) {
+func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 	ret := strings.Builder{}
 
 	ret.WriteString(`#include "gen_` + filename + `"
@@ -80,25 +80,25 @@ func emitBindingCpp(src *parsedHeader, filename string) (string, error) {
 
 `)
 
-	for _, c := range src.classes {
+	for _, c := range src.Classes {
 
-		for i, ctor := range c.ctors {
+		for i, ctor := range c.Ctors {
 			ret.WriteString(fmt.Sprintf(
-				"P%s %s_new%s(%s) {\n\treturn new %s(%s);\n}\n\n", c.className, maybeSuffix(i), emitParametersCpp(ctor.parameters, ""),
-				c.className, emitParametersNames(ctor.parameters, ""),
+				"P%s %s_new%s(%s) {\n\treturn new %s(%s);\n}\n\n", c.ClassName, maybeSuffix(i), emitParametersCpp(ctor.Parameters, ""),
+				c.ClassName, emitParametersNames(ctor.Parameters, ""),
 			))
 		}
 
-		for _, m := range c.methods {
+		for _, m := range c.Methods {
 			// Need to take an extra 'self' parameter
 
 			shouldReturn := "return "
-			if m.returnType == "void" {
+			if m.ReturnType == "void" {
 				shouldReturn = ""
 			}
 
-			ret.WriteString(fmt.Sprintf("%s %s_%s(%s) {\n\t%sstatic_cast<%s*>(self)->%s(%s);\n}\n\n", m.returnType, c.className, m.SafeMethodName(), emitParametersCpp(m.parameters, "P"+c.className),
-				shouldReturn, c.className, m.methodName, emitParametersNames(m.parameters, c.className),
+			ret.WriteString(fmt.Sprintf("%s %s_%s(%s) {\n\t%sstatic_cast<%s*>(self)->%s(%s);\n}\n\n", m.ReturnType, c.ClassName, m.SafeMethodName(), emitParametersCpp(m.Parameters, "P"+c.ClassName),
+				shouldReturn, c.ClassName, m.MethodName, emitParametersNames(m.Parameters, c.ClassName),
 			))
 		}
 	}

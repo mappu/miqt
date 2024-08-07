@@ -4,24 +4,24 @@ import (
 	"strings"
 )
 
-type nativeParameter struct {
-	name string
-	typ  string
+type CppParameter struct {
+	ParameterName string
+	ParameterType  string
 }
 
-type nativeProperty struct {
-	propertyName string
-	propertyType string
-	visibility   string
+type CppProperty struct {
+	PropertyName string
+	PropertyType string
+	Visibility   string
 }
 
-type nativeMethod struct {
-	methodName string
-	returnType string
-	parameters []nativeParameter
+type CppMethod struct {
+	MethodName string
+	ReturnType string
+	Parameters []CppParameter
 }
 
-func (nm nativeMethod) SafeMethodName() string {
+func (nm CppMethod) SafeMethodName() string {
 	// Operator-overload methods have names not representable in binding
 	// languages. Replace more specific cases first
 	replacer := strings.NewReplacer(
@@ -52,17 +52,17 @@ func (nm nativeMethod) SafeMethodName() string {
 		`()`, `Call`,
 	)
 
-	return replacer.Replace(nm.methodName)
+	return replacer.Replace(nm.MethodName)
 }
 
-type nativeClass struct {
-	className string
-	ctors     []nativeMethod // only use the parameters
-	extends   []string
-	methods   []nativeMethod
-	props     []nativeProperty
+type CppClass struct {
+	ClassName string
+	Ctors     []CppMethod // only use the parameters
+	Extends   []string
+	Methods   []CppMethod
+	Props     []CppProperty
 }
 
-type parsedHeader struct {
-	classes []nativeClass
+type CppParsedHeader struct {
+	Classes []CppClass
 }

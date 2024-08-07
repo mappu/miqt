@@ -7,9 +7,9 @@ import (
 	"strings"
 )
 
-func parseHeader(inner []interface{}) (*parsedHeader, error) {
+func parseHeader(inner []interface{}) (*CppParsedHeader, error) {
 
-	var ret parsedHeader
+	var ret CppParsedHeader
 
 	fmt.Printf("package miqt\n\n")
 
@@ -49,7 +49,7 @@ func parseHeader(inner []interface{}) (*parsedHeader, error) {
 					panic(err)
 				}
 
-				ret.classes = append(ret.classes, obj)
+				ret.Classes = append(ret.Classes, obj)
 			}
 
 		case "StaticAssertDecl":
@@ -63,15 +63,15 @@ func parseHeader(inner []interface{}) (*parsedHeader, error) {
 	return &ret, nil // done
 }
 
-func processType(inner []interface{}, className string, visibility bool) (nativeClass, error) {
-	var ret nativeClass
-	ret.className = className
+func processType(inner []interface{}, className string, visibility bool) (CppClass, error) {
+	var ret CppClass
+	ret.ClassName = className
 
 nextMethod:
 	for _, node := range inner {
 		node, ok := node.(map[string]interface{})
 		if !ok {
-			return nativeClass{}, errors.New("inner[] element not an object")
+			return CppClass{}, errors.New("inner[] element not an object")
 		}
 
 		kind, ok := node["kind"]
@@ -107,24 +107,24 @@ nextMethod:
 			// Method
 			methodName, ok := node["name"].(string)
 			if !ok {
-				return nativeClass{}, errors.New("method has no name")
+				return CppClass{}, errors.New("method has no name")
 			}
 
-			var mm nativeMethod
-			mm.methodName = methodName
+			var mm CppMethod
+			mm.MethodName = methodName
 
 			if typobj, ok := node["type"].(map[string]interface{}); ok {
 				if qualType, ok := typobj["qualType"].(string); ok {
 					// The qualType is the whole type of the method, including its parameter types
 					// If anything here is too complicated, skip the whole method
 					if strings.Contains(qualType, `::`) {
-						log.Printf("Skipping method %q with complex type %q", mm.methodName, qualType)
+						log.Printf("Skipping method %q with complex type %q", mm.MethodName, qualType)
 						continue nextMethod
 					}
 
 					// We only want up to the first ( character
-					mm.returnType, _, _ = strings.Cut(qualType, `(`)
-					mm.returnType = strings.TrimSpace(mm.returnType)
+					mm.ReturnType, _, _ = strings.Cut(qualType, `(`)
+					mm.ReturnType = strings.TrimSpace(mm.ReturnType)
 				}
 			}
 
@@ -132,7 +132,7 @@ nextMethod:
 				for _, methodObj := range methodInner {
 					methodObj, ok := methodObj.(map[string]interface{})
 					if !ok {
-						return nativeClass{}, errors.New("inner[] element not an object")
+						return CppClass{}, errors.New("inner[] element not an object")
 					}
 
 					switch methodObj["kind"] {
@@ -140,7 +140,7 @@ nextMethod:
 						// Parameter variable
 						parmName, _ := methodObj["name"].(string) // n.b. may be unnamed
 						if parmName == "" {
-							parmName = fmt.Sprintf("param%d", len(mm.parameters)+1)
+							parmName = fmt.Sprintf("param%d", len(mm.Parameters)+1)
 						}
 
 						var parmType string
@@ -156,9 +156,9 @@ nextMethod:
 						// Remove extra () -- if there are more than expected, skip method with complex type
 						// If this parameter is optional, expand it into multiple function overloads
 
-						mm.parameters = append(mm.parameters, nativeParameter{
-							name: parmName,
-							typ:  parmType,
+						mm.Parameters = append(mm.Parameters, CppParameter{
+							ParameterName: parmName,
+							ParameterType:  parmType,
 						})
 
 					default:
@@ -168,7 +168,7 @@ nextMethod:
 				}
 			}
 
-			ret.methods = append(ret.methods, mm)
+			ret.Methods = append(ret.Methods, mm)
 
 		default:
 			fmt.Printf("==> NOT IMPLEMENTED %q\n", kind)

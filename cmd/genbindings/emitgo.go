@@ -6,15 +6,15 @@ import (
 	"strings"
 )
 
-func emitParametersGo(params []nativeParameter) string {
+func emitParametersGo(params []CppParameter) string {
 	tmp := make([]string, 0, len(params))
 	for _, p := range params {
-		tmp = append(tmp, p.typ+" "+p.name)
+		tmp = append(tmp, p.ParameterType+" "+p.ParameterName)
 	}
 	return strings.Join(tmp, ", ")
 }
 
-func emitGo(src *parsedHeader) (string, error) {
+func emitGo(src *CppParsedHeader) (string, error) {
 
 	ret := strings.Builder{}
 	ret.WriteString(`package miqt
@@ -30,14 +30,14 @@ import "C"
 
 `)
 
-	for _, c := range src.classes {
+	for _, c := range src.Classes {
 
 		ret.WriteString(`
-		type ` + c.className + ` struct {
-			h C.P` + c.className + `
+		type ` + c.ClassName + ` struct {
+			h C.P` + c.ClassName + `
 		}
 		
-		func (this *` + c.className + `) cPointer() C.P` + c.className + ` {
+		func (this *` + c.ClassName + `) cPointer() C.P` + c.ClassName + ` {
 			if this == nil {
 				return nil
 			}
@@ -46,30 +46,30 @@ import "C"
 		
 		`)
 
-		for i, ctor := range c.ctors {
+		for i, ctor := range c.Ctors {
 			ret.WriteString(`
-			// New` + c.className + maybeSuffix(i) + ` constructs a new ` + c.className + ` object.
-			func New` + c.className + maybeSuffix(i) + `(` + emitParametersGo(ctor.parameters) + `) {
-				ret := C.` + c.className + `_new` + maybeSuffix(i) + `(` + emitParametersNames(ctor.parameters, "") + `)
-				return &` + c.className + `{h: ret}
+			// New` + c.ClassName + maybeSuffix(i) + ` constructs a new ` + c.ClassName + ` object.
+			func New` + c.ClassName + maybeSuffix(i) + `(` + emitParametersGo(ctor.Parameters) + `) {
+				ret := C.` + c.ClassName + `_new` + maybeSuffix(i) + `(` + emitParametersNames(ctor.Parameters, "") + `)
+				return &` + c.ClassName + `{h: ret}
 			}
 			
 			`)
 		}
 
-		for _, m := range c.methods {
+		for _, m := range c.Methods {
 			// TODO for any known pointer type, call its cPointer() method instead of passing it directly
 
 			shouldReturn := "return "
-			returnTypeDecl := m.returnType
+			returnTypeDecl := m.ReturnType
 			if returnTypeDecl == "void" {
 				shouldReturn = ""
 				returnTypeDecl = ""
 			}
 
 			ret.WriteString(`
-			func (this *` + c.className + `) ` + m.methodName + `(` + emitParametersGo(m.parameters) + `) ` + returnTypeDecl + ` {
-				` + shouldReturn + ` C.` + c.className + `_` + m.SafeMethodName() + `(` + emitParametersNames(m.parameters, c.className) + `)
+			func (this *` + c.ClassName + `) ` + m.MethodName + `(` + emitParametersGo(m.Parameters) + `) ` + returnTypeDecl + ` {
+				` + shouldReturn + ` C.` + c.ClassName + `_` + m.SafeMethodName() + `(` + emitParametersNames(m.Parameters, c.ClassName) + `)
 			}
 			
 			`)
