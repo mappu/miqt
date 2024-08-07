@@ -96,6 +96,9 @@ nextMethod:
 				panic("unexpected access visibility '" + access + "'")
 			}
 
+		case "CXXConstructorDecl", "":
+			// panic("TODO")
+
 		case "CXXMethodDecl":
 			if !visibility {
 				continue // Skip private/protected
@@ -146,6 +149,12 @@ nextMethod:
 								parmType = qualType
 							}
 						}
+
+						// TODO fixup parameters
+						// Reference -> pointer
+						// Remove const
+						// Remove extra () -- if there are more than expected, skip method with complex type
+						// If this parameter is optional, expand it into multiple function overloads
 
 						mm.parameters = append(mm.parameters, nativeParameter{
 							name: parmName,

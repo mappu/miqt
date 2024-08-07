@@ -67,7 +67,7 @@ func main() {
 		panic(err)
 	}
 
-	bindingCppSrc, err := emitBindingCpp(parsed)
+	bindingCppSrc, err := emitBindingCpp(parsed, filepath.Base(*inputHeader))
 	if err != nil {
 		panic(err)
 	}
