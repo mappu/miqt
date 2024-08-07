@@ -11,14 +11,6 @@ func parseHeader(inner []interface{}) (*parsedHeader, error) {
 
 	var ret parsedHeader
 
-	/*
-		jb, err := json.MarshalIndent(inner, "", "\t")
-		if err != nil {
-			panic(err)
-		}
-		fmt.Println(string(jb))
-	*/
-
 	fmt.Printf("package miqt\n\n")
 
 	for _, node := range inner {
