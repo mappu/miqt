@@ -44,7 +44,15 @@ func parseHeader(inner []interface{}) (*parsedHeader, error) {
 
 			fmt.Printf("-> %q name=%q\n", kind, nodename)
 			if classInner, ok := node["inner"].([]interface{}); ok {
-				obj, err := processType(classInner, nodename)
+
+				// Check if this was 'struct' (default visible) or 'class' (default invisible)
+				visible := true
+				if tagUsed, ok := node["tagUsed"].(string); ok && tagUsed == "class" {
+					visible = false
+				}
+
+				// Process the inner class definition
+				obj, err := processType(classInner, nodename, visible)
 				if err != nil {
 					panic(err)
 				}
@@ -63,7 +71,7 @@ func parseHeader(inner []interface{}) (*parsedHeader, error) {
 	return &ret, nil // done
 }
 
-func processType(inner []interface{}, className string) (nativeClass, error) {
+func processType(inner []interface{}, className string, visibility bool) (nativeClass, error) {
 	var ret nativeClass
 	ret.className = className
 
@@ -80,7 +88,27 @@ nextMethod:
 		}
 
 		switch kind {
+		case "AccessSpecDecl":
+			// Swap between visible/invisible
+			access, ok := node["access"].(string)
+			if !ok {
+				panic("AccessSpecDecl missing `access` field")
+			}
+
+			switch access {
+			case "public":
+				visibility = true
+			case "private", "protected":
+				visibility = false
+			default:
+				panic("unexpected access visibility '" + access + "'")
+			}
+
 		case "CXXMethodDecl":
+			if !visibility {
+				continue // Skip private/protected
+			}
+
 			// Method
 			methodName, ok := node["name"].(string)
 			if !ok {
