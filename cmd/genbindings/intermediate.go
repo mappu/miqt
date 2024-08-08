@@ -6,7 +6,12 @@ import (
 
 type CppParameter struct {
 	ParameterName string
-	ParameterType  string
+	ParameterType string
+	Const         bool
+	Pointer       bool
+	ByRef         bool
+}
+
 }
 
 type CppProperty struct {
@@ -17,7 +22,7 @@ type CppProperty struct {
 
 type CppMethod struct {
 	MethodName string
-	ReturnType string
+	ReturnType CppParameter // Name not used
 	Parameters []CppParameter
 }
 

@@ -11,8 +11,6 @@ func parseHeader(inner []interface{}) (*CppParsedHeader, error) {
 
 	var ret CppParsedHeader
 
-	fmt.Printf("package miqt\n\n")
-
 	for _, node := range inner {
 
 		node, ok := node.(map[string]interface{})
@@ -96,7 +94,13 @@ nextMethod:
 				panic("unexpected access visibility '" + access + "'")
 			}
 
-		case "CXXConstructorDecl", "":
+		case "FriendDecl":
+			// Safe to ignore
+
+		case "CXXConstructorDecl":
+			// panic("TODO")
+
+		case "CXXDestructorDecl":
 			// panic("TODO")
 
 		case "CXXMethodDecl":
@@ -117,18 +121,23 @@ nextMethod:
 				if qualType, ok := typobj["qualType"].(string); ok {
 					// The qualType is the whole type of the method, including its parameter types
 					// If anything here is too complicated, skip the whole method
-					if strings.Contains(qualType, `::`) {
-						log.Printf("Skipping method %q with complex type %q", mm.MethodName, qualType)
-						continue nextMethod
+
+					var err error = nil
+					mm.ReturnType, mm.Parameters, err = parseTypeString(qualType)
+					if err != nil {
+						if errors.Is(err, ErrTooComplex) {
+							log.Printf("Skipping method %q with complex type %q", mm.MethodName, qualType)
+							continue nextMethod
+						}
+						// Real error
+						return CppClass{}, err
 					}
 
-					// We only want up to the first ( character
-					mm.ReturnType, _, _ = strings.Cut(qualType, `(`)
-					mm.ReturnType = strings.TrimSpace(mm.ReturnType)
 				}
 			}
 
 			if methodInner, ok := node["inner"].([]interface{}); ok {
+				paramCounter := 0
 				for _, methodObj := range methodInner {
 					methodObj, ok := methodObj.(map[string]interface{})
 					if !ok {
@@ -140,26 +149,14 @@ nextMethod:
 						// Parameter variable
 						parmName, _ := methodObj["name"].(string) // n.b. may be unnamed
 						if parmName == "" {
-							parmName = fmt.Sprintf("param%d", len(mm.Parameters)+1)
+							parmName = fmt.Sprintf("param%d", paramCounter+1)
 						}
 
-						var parmType string
-						if typobj, ok := node["type"].(map[string]interface{}); ok {
-							if qualType, ok := typobj["qualType"].(string); ok {
-								parmType = qualType
-							}
-						}
+						// Update the name for the existing nth parameter
+						mm.Parameters[paramCounter].ParameterName = parmName
+						paramCounter++
 
-						// TODO fixup parameters
-						// Reference -> pointer
-						// Remove const
-						// Remove extra () -- if there are more than expected, skip method with complex type
-						// If this parameter is optional, expand it into multiple function overloads
-
-						mm.Parameters = append(mm.Parameters, CppParameter{
-							ParameterName: parmName,
-							ParameterType:  parmType,
-						})
+						// TODO If this parameter is optional, expand it into multiple function overloads
 
 					default:
 						// Something else inside a declaration??
@@ -176,4 +173,72 @@ nextMethod:
 	}
 
 	return ret, nil // done
+}
+
+var ErrTooComplex error = errors.New("Type declaration is too complex to parse")
+
+// parseTypeString converts a string like
+// - `QString (const char *, const char *, int)`
+// - `void (const QKeySequence \u0026)`
+// into its (A) return type and (B) separate parameter types.
+// These clang strings never contain the parameter's name, so the names here are
+// not filled in.
+func parseTypeString(typeString string) (CppParameter, []CppParameter, error) {
+
+	if strings.Contains(typeString, `::`) {
+		return CppParameter{}, nil, ErrTooComplex
+	}
+
+	// Cut to exterior-most (, ) pair
+	opos := strings.Index(typeString, `(`)
+	epos := strings.LastIndex(typeString, `)`)
+
+	if opos == -1 || epos == -1 {
+		return CppParameter{}, nil, fmt.Errorf("Type string %q missing brackets")
+	}
+
+	returnType := parseSingleTypeString(strings.TrimSpace(typeString[0:opos]))
+
+	inner := typeString[opos+1 : epos]
+
+	// Should be no more brackets
+	if strings.ContainsAny(inner, `()`) {
+		return CppParameter{}, nil, ErrTooComplex
+	}
+
+	// Parameters are separated by commas and nesting can not be possible
+	params := strings.Split(inner, `,`)
+
+	ret := make([]CppParameter, 0, len(params))
+	for _, p := range params {
+
+		insert := parseSingleTypeString(p)
+
+		if insert.ParameterType != "" {
+			ret = append(ret, insert)
+		}
+	}
+
+	return returnType, ret, nil
+}
+
+func parseSingleTypeString(p string) CppParameter {
+
+	tokens := strings.Split(strings.TrimSpace(p), " ")
+	insert := CppParameter{}
+	for _, tok := range tokens {
+		if tok == "const" {
+			insert.Const = true
+		} else if tok == "&" { // U+0026
+			insert.ByRef = true
+		} else if tok == "*" {
+			insert.Pointer = true
+		} else {
+			// Valid part of the type name
+			insert.ParameterType += " " + tok
+		}
+	}
+	insert.ParameterType = strings.TrimSpace(insert.ParameterType)
+
+	return insert
 }
