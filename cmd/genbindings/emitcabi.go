@@ -17,7 +17,7 @@ func emitParametersCpp(params []CppParameter, selfType string) string {
 	tmp := make([]string, 0, len(params)+1)
 
 	if selfType != "" {
-		tmp = append(tmp, "self "+selfType)
+		tmp = append(tmp, selfType+" self")
 	}
 
 	for _, p := range params {
