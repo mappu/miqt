@@ -5,13 +5,35 @@ Phase zero
 Phase 1
 
 - [X] Parse headers
-- [ ] Generate types (QtCore, QtGui, QtWidgets only)
-- [X] Rename package
+- [ ] Generate types
+	- [X] Convert parameter pointer types to binding types
+	- [X] Basic methods
+	- [ ] Special methods
+		- [ ] Constructors
+		- [ ] Destructors
+		- [ ] Copy-constructors
+		- [ ] Move-constructors (Qt6)
+		- [X] Operator overloading
+	- [ ] Class inheritance
+		- [ ] Detect in AST
+		- [ ] Downcast helper methods
+	- [ ] Member variables
+	- [ ] Static methods
+	- [ ] Return of class types
+	- [X] Hide private methods
+	- [X] Method overloads / optional parameters
+- [ ] QtCore
+- [ ] QtGui
+- [ ] QtWidgets
+- [X] Pick a name for the package
+- [ ] Make github repo, rename module
 - [ ] v0 Public release
 
 Phase 2
 
 - [ ] Port examples from other Go Qt bindings
+- [ ] QString helper functions
+- [ ] QList / QVector helper functions
 - [ ] `connect`
 - [ ] Other Qt packages
 - [ ] Document use for Windows/macOS/Linux
@@ -22,3 +44,4 @@ Wishlist
 - [ ] Custom Q_PROPERTY support
 - [ ] uic implementation
 - [ ] Use clang ast's `mangledName` to make a dlsym/LazyDLL cgo-free version 
+- [ ] Generate bindings for all current Qt versions (Debian Qt / Qt LTS), expose as git tags
