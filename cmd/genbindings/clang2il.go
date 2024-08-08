@@ -154,9 +154,15 @@ nextMethod:
 
 						// Update the name for the existing nth parameter
 						mm.Parameters[paramCounter].ParameterName = parmName
-						paramCounter++
 
-						// TODO If this parameter is optional, expand it into multiple function overloads
+						// If this parameter has any internal AST nodes of its
+						// own, assume it means it's an optional parameter
+						if _, ok := methodObj["inner"]; ok {
+							mm.Parameters[paramCounter].Optional = true
+						}
+
+						// Next
+						paramCounter++
 
 					default:
 						// Something else inside a declaration??

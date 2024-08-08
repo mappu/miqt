@@ -54,6 +54,9 @@ func main() {
 		os.Exit(0)
 	}
 
+	// AST transforms on our IL
+	astTransformOptional(parsed)
+
 	// Emit 3 code files from the intermediate format
 	outputName := filepath.Join(*outDir, "gen_"+strings.TrimSuffix(filepath.Base(*inputHeader), `.h`))
 

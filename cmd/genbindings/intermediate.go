@@ -10,6 +10,7 @@ type CppParameter struct {
 	Const         bool
 	Pointer       bool
 	ByRef         bool
+	Optional      bool
 }
 
 type CppProperty struct {
