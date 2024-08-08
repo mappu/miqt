@@ -57,7 +57,7 @@ func main() {
 	// Emit 3 code files from the intermediate format
 	outputName := filepath.Join(*outDir, "gen_"+strings.TrimSuffix(filepath.Base(*inputHeader), `.h`))
 
-	goSrc, err := emitGo(parsed)
+	goSrc, err := emitGo(parsed, filepath.Base(*inputHeader))
 	if err != nil {
 		panic(err)
 	}

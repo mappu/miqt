@@ -62,7 +62,7 @@ func emitParametersGo2CABIForwarding(params []CppParameter) (preamble string, fo
 	return preamble, strings.Join(tmp, ", ")
 }
 
-func emitGo(src *CppParsedHeader) (string, error) {
+func emitGo(src *CppParsedHeader, headerName string) (string, error) {
 
 	ret := strings.Builder{}
 	ret.WriteString(`package miqt
@@ -71,7 +71,8 @@ func emitGo(src *CppParsedHeader) (string, error) {
 
 #cgo CFLAGS: -fPIC
 #cgo pkg-config: Qt5Widgets
-#include "binding.h"
+#include "gen_` + headerName + `"
+#include <stdlib.h>
 
 */
 import "C"

@@ -67,7 +67,7 @@ func emitParametersCABI2CppForwarding(params []CppParameter, selfType string) (p
 func emitBindingHeader(src *CppParsedHeader, filename string) (string, error) {
 	ret := strings.Builder{}
 
-	includeGuard := strings.ToUpper(strings.Replace(filename, `.`, `_`, -1)) + "_H"
+	includeGuard := "GEN_" + strings.ToUpper(strings.Replace(filename, `.`, `_`, -1))
 
 	ret.WriteString(`#ifndef ` + includeGuard + `
 #define ` + includeGuard + `
