@@ -48,7 +48,7 @@ func emitParametersGo2CABIForwarding(params []CppParameter) (preamble string, fo
 			preamble += "defer C.free(" + p.ParameterName + "_Cstring)\n"
 			tmp = append(tmp, p.ParameterName+"_Cstring")
 
-		} else if (p.Pointer || p.ByRef) && p.ParameterType[0] == 'Q' {
+		} else if (p.Pointer || p.ByRef) && p.QtClassType() {
 			// The C++ type is a pointer to Qt class
 			// We want our functions to accept the Go wrapper type, and forward as cPointer()
 			tmp = append(tmp, p.ParameterName+".cPointer()")

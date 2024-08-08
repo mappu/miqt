@@ -13,6 +13,10 @@ type CppParameter struct {
 	Optional      bool
 }
 
+func (p CppParameter) QtClassType() bool {
+	return p.ParameterType[0] == 'Q'
+}
+
 type CppProperty struct {
 	PropertyName string
 	PropertyType string

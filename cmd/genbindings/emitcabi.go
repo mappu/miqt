@@ -26,7 +26,7 @@ func emitParametersCpp(params []CppParameter, selfType string) string {
 			// Declare that we take two parameters
 			tmp = append(tmp, "const char* "+p.ParameterName+", size_t "+p.ParameterName+"_Strlen")
 
-		} else if (p.ByRef || p.Pointer) && p.ParameterType[0] == 'Q' {
+		} else if (p.ByRef || p.Pointer) && p.QtClassType() {
 			// Pointer to Qt type
 			// Replace with taking our PQ typedef by value
 			tmp = append(tmp, "P"+p.ParameterType+" "+p.ParameterName)
