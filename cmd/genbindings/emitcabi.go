@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"sort"
 	"strings"
 )
 
@@ -80,8 +81,41 @@ extern "C" {
 
 `)
 
+	// Find all referenced Qt types in this file, and generate PVoid typedefs
+	// for them
+	foundTypes := map[string]struct{}{}
 	for _, c := range src.Classes {
-		ret.WriteString(`typedef void* P` + c.ClassName + ";\n\n")
+		foundTypes[c.ClassName] = struct{}{}
+		for _, ctor := range c.Ctors {
+			for _, p := range ctor.Parameters {
+				if p.QtClassType() {
+					foundTypes[p.ParameterType] = struct{}{}
+				}
+			}
+		}
+		for _, m := range c.Methods {
+			for _, p := range m.Parameters {
+				if p.QtClassType() {
+					foundTypes[p.ParameterType] = struct{}{}
+				}
+			}
+			if m.ReturnType.QtClassType() {
+				foundTypes[m.ReturnType.ParameterType] = struct{}{}
+			}
+		}
+	}
+	foundTypesList := make([]string, 0, len(foundTypes))
+	for ft := range foundTypes {
+		foundTypesList = append(foundTypesList, ft)
+	}
+	sort.Strings(foundTypesList)
+	for _, ft := range foundTypesList {
+		ret.WriteString(`typedef void* P` + ft + ";\n")
+	}
+
+	ret.WriteString("\n")
+
+	for _, c := range src.Classes {
 
 		for i, ctor := range c.Ctors {
 			ret.WriteString(fmt.Sprintf("P%s %s_new%s(%s);\n", c.ClassName, maybeSuffix(i), emitParametersCpp(ctor.Parameters, "")))
