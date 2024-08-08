@@ -149,7 +149,21 @@ nextMethod:
 						// Parameter variable
 						parmName, _ := methodObj["name"].(string) // n.b. may be unnamed
 						if parmName == "" {
-							parmName = fmt.Sprintf("param%d", paramCounter+1)
+
+							// Generate a default parameter name
+							// Super nice autogen names if this is a Q_PROPERTY setter:
+							if len(mm.Parameters) == 1 && strings.HasPrefix(mm.MethodName, "set") {
+								parmName = strings.ToLower(string(mm.MethodName[3])) + mm.MethodName[4:]
+
+							} else {
+								// Otherwise - default
+								parmName = fmt.Sprintf("param%d", paramCounter+1)
+							}
+						}
+
+						// Block reserved Go words, replace with generic parameters
+						if parmName == "default" || parmName == "const" || parmName == "func" {
+							parmName += "Val"
 						}
 
 						// Update the name for the existing nth parameter
