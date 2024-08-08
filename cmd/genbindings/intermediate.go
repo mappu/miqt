@@ -12,6 +12,34 @@ type CppParameter struct {
 	ByRef         bool
 }
 
+func (p CppParameter) RenderTypeCpp() string {
+	ret := ""
+	if p.ByRef {
+		ret += "&"
+	}
+	ret += p.ParameterType
+	if p.Pointer {
+		ret += "*"
+	}
+	return ret // ignore const
+}
+
+func (p CppParameter) RenderTypeGo() string {
+	if p.Pointer && p.ParameterType == "char" {
+		return "string"
+	}
+
+	ret := ""
+	if p.ByRef || p.Pointer {
+		/*
+			if p.ParameterType[0] == 'Q' {
+				ret += "C.P" // use our void typedef instead
+			} else {
+		*/
+		ret += "*"
+	}
+	ret += p.ParameterType
+	return ret // ignore const
 }
 
 type CppProperty struct {

@@ -13,7 +13,7 @@ func emitParametersCpp(params []CppParameter, selfType string) string {
 	}
 
 	for _, p := range params {
-		tmp = append(tmp, p.ParameterName+" "+p.ParameterType)
+		tmp = append(tmp, p.RenderTypeCpp()+" "+p.ParameterName)
 	}
 	return strings.Join(tmp, ", ")
 }
@@ -55,7 +55,7 @@ extern "C" {
 		}
 
 		for _, m := range c.Methods {
-			ret.WriteString(fmt.Sprintf("%s %s_%s(%s);\n", m.ReturnType, c.ClassName, m.SafeMethodName(), emitParametersCpp(m.Parameters, "P"+c.ClassName)))
+			ret.WriteString(fmt.Sprintf("%s %s_%s(%s);\n", m.ReturnType.RenderTypeCpp(), c.ClassName, m.SafeMethodName(), emitParametersCpp(m.Parameters, "P"+c.ClassName)))
 		}
 
 		ret.WriteString("\n")
@@ -93,11 +93,11 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 			// Need to take an extra 'self' parameter
 
 			shouldReturn := "return "
-			if m.ReturnType == "void" {
+			if m.ReturnType.ParameterType == "void" {
 				shouldReturn = ""
 			}
 
-			ret.WriteString(fmt.Sprintf("%s %s_%s(%s) {\n\t%sstatic_cast<%s*>(self)->%s(%s);\n}\n\n", m.ReturnType, c.ClassName, m.SafeMethodName(), emitParametersCpp(m.Parameters, "P"+c.ClassName),
+			ret.WriteString(fmt.Sprintf("%s %s_%s(%s) {\n\t%sstatic_cast<%s*>(self)->%s(%s);\n}\n\n", m.ReturnType.RenderTypeCpp(), c.ClassName, m.SafeMethodName(), emitParametersCpp(m.Parameters, "P"+c.ClassName),
 				shouldReturn, c.ClassName, m.MethodName, emitParametersNames(m.Parameters, c.ClassName),
 			))
 		}

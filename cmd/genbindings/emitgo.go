@@ -9,7 +9,7 @@ import (
 func emitParametersGo(params []CppParameter) string {
 	tmp := make([]string, 0, len(params))
 	for _, p := range params {
-		tmp = append(tmp, p.ParameterType+" "+p.ParameterName)
+		tmp = append(tmp, p.ParameterName+" "+p.RenderTypeGo())
 	}
 	return strings.Join(tmp, ", ")
 }
@@ -61,14 +61,14 @@ import "C"
 			// TODO for any known pointer type, call its cPointer() method instead of passing it directly
 
 			shouldReturn := "return "
-			returnTypeDecl := m.ReturnType
+			returnTypeDecl := m.ReturnType.ParameterType // FIXME handle byRef/const here too
 			if returnTypeDecl == "void" {
 				shouldReturn = ""
 				returnTypeDecl = ""
 			}
 
 			ret.WriteString(`
-			func (this *` + c.ClassName + `) ` + m.MethodName + `(` + emitParametersGo(m.Parameters) + `) ` + returnTypeDecl + ` {
+			func (this *` + c.ClassName + `) ` + m.SafeMethodName() + `(` + emitParametersGo(m.Parameters) + `) ` + returnTypeDecl + ` {
 				` + shouldReturn + ` C.` + c.ClassName + `_` + m.SafeMethodName() + `(` + emitParametersNames(m.Parameters, c.ClassName) + `)
 			}
 			
