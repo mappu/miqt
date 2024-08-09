@@ -138,6 +138,29 @@ import "C"
 				afterword += "ret := C.GoStringN(_out, _out_Strlen)\n"
 				afterword += "C.free(_out)\n"
 				afterword += "return ret"
+
+			} else if m.ReturnType.QtClassType() {
+				// Construct our Go type based on this inner CABI type
+				shouldReturn = "ret := "
+
+				if m.ReturnType.Pointer {
+					afterword = "return " + m.ReturnType.ParameterType + "{h: ret}"
+				} else {
+					// This is return by value, but CABI has new'd it into a
+					// heap type for us
+					// To preserve Qt's approximate semantics, add a runtime
+					// finalizer to automatically Delete once the type goes out
+					// of Go scope
+					imports["runtime"] = struct{}{}
+					afterword = "// Qt uses pass-by-value semantics for this type. Mimic with finalizer\n"
+					afterword += "ret1 := &" + m.ReturnType.ParameterType + "{h: ret}\n"
+					afterword += "runtime.SetFinalizer(ret1, func(ret2 *" + m.ReturnType.ParameterType + ") {\n"
+					afterword += "ret2.Delete()\n"
+					afterword += "runtime.KeepAlive(ret2.h)\n"
+					afterword += "})\n"
+					afterword += "return ret1"
+				}
+
 			}
 
 			ret.WriteString(`

@@ -21,6 +21,11 @@ func emitReturnTypeCabi(p CppParameter) string {
 	} else if (p.Pointer || p.ByRef) && p.QtClassType() {
 		return "P" + p.ParameterType // CABI type
 
+	} else if p.QtClassType() && !p.Pointer {
+		// Even if C++ returns by value, CABI is returning a heap copy (new'd, not malloc'd)
+		return "P" + p.ParameterType // CABI type
+		// return "void" // Handled separately with an _out pointer
+
 	} else {
 		return p.RenderTypeCpp()
 	}
@@ -56,6 +61,10 @@ func emitParametersCabi(m CppMethod, selfType string) string {
 	// Go: converted to native Go string
 	if m.ReturnType.ParameterType == "QString" {
 		tmp = append(tmp, "char** _out, size_t* _out_Strlen")
+		/*
+			} else if m.ReturnType.QtClassType() && !m.ReturnType.Pointer {
+				tmp = append(tmp, "P"+m.ReturnType.ParameterType+" _out")
+		*/
 	}
 
 	return strings.Join(tmp, ", ")
@@ -64,21 +73,24 @@ func emitParametersCabi(m CppMethod, selfType string) string {
 func emitParametersCABI2CppForwarding(params []CppParameter, selfType string) (preamble string, forwarding string) {
 	tmp := make([]string, 0, len(params)+1)
 
-	if selfType != "" {
-		tmp = append(tmp, "self")
-	}
-
 	for _, p := range params {
 		if p.ParameterType == "QString" {
 			// The CABI has accepted two parameters - need to convert to one real QString
 			// Create it on the stack
-			preamble += "\tQString " + p.ParameterName + "_QString(" + p.ParameterName + ", " + p.ParameterName + "_Strlen);\n"
+			preamble += "\tQString " + p.ParameterName + "_QString = QString::fromUtf8(" + p.ParameterName + ", " + p.ParameterName + "_Strlen);\n"
 			tmp = append(tmp, p.ParameterName+"_QString")
 
 		} else if p.ByRef {
 			// We changed RenderTypeCpp() to render this as a pointer
 			// Need to dereference so we can pass as reference to the actual Qt C++ function
-			tmp = append(tmp, "*"+p.ParameterName)
+			//tmp = append(tmp, "*"+p.ParameterName)
+			tmp = append(tmp, "*static_cast<"+p.ParameterType+"*>("+p.ParameterName+")")
+
+		} else if p.QtClassType() && !p.Pointer {
+			// CABI takes all Qt types by pointer, even if C++ wants them by value
+			// Dereference the passed-in pointer
+			tmp = append(tmp, "*static_cast<"+p.ParameterType+"*>("+p.ParameterName+")")
+
 		} else {
 			tmp = append(tmp, p.ParameterName)
 		}
@@ -204,6 +216,14 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 				afterCall += "\t*_out = static_cast<char*>(malloc(b.length()));\n"
 				afterCall += "\tmemcpy(*_out, b.data(), b.length());\n"
 				afterCall += "\t*_out_Strlen = b.length();\n"
+
+			} else if m.ReturnType.QtClassType() && !m.ReturnType.Pointer {
+				shouldReturn = m.ReturnType.ParameterType + " ret = "
+				// afterCall = "\t// Copy-construct value returned type into Go-allocated POCO\n"
+				// afterCall += "\t_*out = ret;\n"
+				afterCall = "\t// Copy-construct value returned type into heap-allocated copy\n"
+				afterCall += "\treturn static_cast<P" + m.ReturnType.ParameterType + ">(new " + m.ReturnType.ParameterType + "(ret));\n"
+
 			}
 
 			preamble, forwarding := emitParametersCABI2CppForwarding(m.Parameters, c.ClassName)
