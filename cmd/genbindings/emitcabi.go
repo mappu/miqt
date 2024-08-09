@@ -235,6 +235,11 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 
 			preamble, forwarding := emitParametersCABI2CppForwarding(m.Parameters)
 
+			nativeMethodName := m.MethodName
+			if m.OverrideMethodName != "" {
+				nativeMethodName = m.OverrideMethodName
+			}
+
 			ret.WriteString(fmt.Sprintf(
 				"%s %s_%s(%s) {\n"+
 					"%s"+
@@ -244,7 +249,7 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 					"\n",
 				emitReturnTypeCabi(m.ReturnType), c.ClassName, m.SafeMethodName(), emitParametersCabi(m, "P"+c.ClassName),
 				preamble,
-				shouldReturn, c.ClassName, m.MethodName, forwarding,
+				shouldReturn, c.ClassName, nativeMethodName, forwarding,
 				afterCall,
 			))
 		}

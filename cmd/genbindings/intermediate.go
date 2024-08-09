@@ -24,9 +24,10 @@ type CppProperty struct {
 }
 
 type CppMethod struct {
-	MethodName string
-	ReturnType CppParameter // Name not used
-	Parameters []CppParameter
+	MethodName         string
+	OverrideMethodName string       // Present only if we changed the target
+	ReturnType         CppParameter // Name not used
+	Parameters         []CppParameter
 }
 
 func (nm CppMethod) SafeMethodName() string {
