@@ -116,6 +116,10 @@ nextMethod:
 
 			var mm CppMethod
 			mm.MethodName = methodName
+			if strings.HasPrefix(methodName, "qt_") { // Strip redundant Qt prefix, we know these are all Qt functions
+				mm.OverrideMethodName = methodName
+				mm.MethodName = methodName[3:]
+			}
 
 			if typobj, ok := node["type"].(map[string]interface{}); ok {
 				if qualType, ok := typobj["qualType"].(string); ok {
