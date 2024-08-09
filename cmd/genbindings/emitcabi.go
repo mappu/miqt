@@ -147,6 +147,9 @@ extern "C" {
 			ret.WriteString(fmt.Sprintf("%s %s_%s(%s);\n", emitReturnTypeCabi(m.ReturnType), c.ClassName, m.SafeMethodName(), emitParametersCabi(m, "P"+c.ClassName)))
 		}
 
+		// delete
+		ret.WriteString(fmt.Sprintf("void %s_Delete(P%s self);\n", c.ClassName, c.ClassName))
+
 		ret.WriteString("\n")
 	}
 
@@ -217,6 +220,16 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 				afterCall,
 			))
 		}
+
+		// Delete
+		ret.WriteString(fmt.Sprintf(
+			"void %s_Delete(P%s self) {\n"+
+				"\tdelete static_cast<%s*>(self);\n"+
+				"}\n"+
+				"\n",
+			c.ClassName, c.ClassName,
+			c.ClassName,
+		))
 	}
 
 	return ret.String(), nil
