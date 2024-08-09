@@ -14,14 +14,26 @@ func (p CppParameter) RenderTypeCpp() string {
 	return ret // ignore const
 }
 
-func emitParametersCpp(params []CppParameter, selfType string) string {
-	tmp := make([]string, 0, len(params)+1)
+func emitReturnTypeCabi(p CppParameter) string {
+	if p.ParameterType == "QString" {
+		return "void" // Will be handled separately
+
+	} else if (p.Pointer || p.ByRef) && p.QtClassType() {
+		return "P" + p.ParameterType // CABI type
+
+	} else {
+		return p.RenderTypeCpp()
+	}
+}
+
+func emitParametersCabi(m CppMethod, selfType string) string {
+	tmp := make([]string, 0, len(m.Parameters)+1)
 
 	if selfType != "" {
 		tmp = append(tmp, selfType+" self")
 	}
 
-	for _, p := range params {
+	for _, p := range m.Parameters {
 		if p.ParameterType == "QString" {
 			// The Go code has called this with two arguments: char* and len
 			// Declare that we take two parameters
@@ -36,6 +48,16 @@ func emitParametersCpp(params []CppParameter, selfType string) string {
 			tmp = append(tmp, p.RenderTypeCpp()+" "+p.ParameterName)
 		}
 	}
+
+	// If the return type is QString, we need to handle returns via extra CABI
+	// parameters
+	// Qt C++: memory is in QString RAII
+	// CABI: memory is moved into C.malloc/C.free
+	// Go: converted to native Go string
+	if m.ReturnType.ParameterType == "QString" {
+		tmp = append(tmp, "char** _out, size_t* _out_Strlen")
+	}
+
 	return strings.Join(tmp, ", ")
 }
 
@@ -118,19 +140,18 @@ extern "C" {
 	for _, c := range src.Classes {
 
 		for i, ctor := range c.Ctors {
-			ret.WriteString(fmt.Sprintf("P%s %s_new%s(%s);\n", c.ClassName, maybeSuffix(i), emitParametersCpp(ctor.Parameters, "")))
+			ret.WriteString(fmt.Sprintf("P%s %s_new%s(%s);\n", c.ClassName, maybeSuffix(i), emitParametersCabi(ctor, "")))
 		}
 
 		for _, m := range c.Methods {
-			ret.WriteString(fmt.Sprintf("%s %s_%s(%s);\n", m.ReturnType.RenderTypeCpp(), c.ClassName, m.SafeMethodName(), emitParametersCpp(m.Parameters, "P"+c.ClassName)))
+			ret.WriteString(fmt.Sprintf("%s %s_%s(%s);\n", emitReturnTypeCabi(m.ReturnType), c.ClassName, m.SafeMethodName(), emitParametersCabi(m, "P"+c.ClassName)))
 		}
 
 		ret.WriteString("\n")
 	}
 
-	ret.WriteString(`
-
-#ifdef __cplusplus
+	ret.WriteString(
+		`#ifdef __cplusplus
 } /* extern C */
 #endif 
 
@@ -157,7 +178,7 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 					"\treturn new %s(%s);\n"+
 					"}\n"+
 					"\n",
-				c.ClassName, maybeSuffix(i), emitParametersCpp(ctor.Parameters, ""),
+				c.ClassName, maybeSuffix(i), emitParametersCabi(ctor, ""),
 				preamble,
 				c.ClassName, forwarding,
 			))
@@ -167,8 +188,18 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 			// Need to take an extra 'self' parameter
 
 			shouldReturn := "return "
+			afterCall := ""
+
 			if m.ReturnType.ParameterType == "void" {
 				shouldReturn = ""
+
+			} else if m.ReturnType.ParameterType == "QString" {
+				shouldReturn = "QString ret = "
+				afterCall = "\t// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory\n"
+				afterCall += "\tQByteArray b = ret.toUtf8();\n"
+				afterCall += "\t*_out = static_cast<char*>(malloc(b.length()));\n"
+				afterCall += "\tmemcpy(*_out, b.data(), b.length());\n"
+				afterCall += "\t*_out_Strlen = b.length();\n"
 			}
 
 			preamble, forwarding := emitParametersCABI2CppForwarding(m.Parameters, c.ClassName)
@@ -177,11 +208,13 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 				"%s %s_%s(%s) {\n"+
 					"%s"+
 					"\t%sstatic_cast<%s*>(self)->%s(%s);\n"+
+					"%s"+
 					"}\n"+
 					"\n",
-				m.ReturnType.RenderTypeCpp(), c.ClassName, m.SafeMethodName(), emitParametersCpp(m.Parameters, "P"+c.ClassName),
+				emitReturnTypeCabi(m.ReturnType), c.ClassName, m.SafeMethodName(), emitParametersCabi(m, "P"+c.ClassName),
 				preamble,
 				shouldReturn, c.ClassName, m.MethodName, forwarding,
+				afterCall,
 			))
 		}
 	}

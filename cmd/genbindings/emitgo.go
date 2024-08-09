@@ -30,9 +30,10 @@ func emitParametersGo(params []CppParameter) string {
 	return strings.Join(tmp, ", ")
 }
 
-func emitParametersGo2CABIForwarding(params []CppParameter) (preamble string, fowarding string) {
-	tmp := make([]string, 0, len(params))
-	for _, p := range params {
+func emitParametersGo2CABIForwarding(m CppMethod) (preamble string, fowarding string) {
+	tmp := make([]string, 0, len(m.Parameters))
+
+	for _, p := range m.Parameters {
 		if p.ParameterType == "QString" {
 			// Go: convert string -> char* and len
 			// CABI: convert char* and len -> real QString
@@ -57,6 +58,10 @@ func emitParametersGo2CABIForwarding(params []CppParameter) (preamble string, fo
 			// Default
 			tmp = append(tmp, p.ParameterName)
 		}
+	}
+
+	if m.ReturnType.ParameterType == "QString" {
+		tmp = append(tmp, "&_out, &_out_Strlen")
 	}
 
 	return preamble, strings.Join(tmp, ", ")
@@ -96,7 +101,7 @@ import "C"
 		`)
 
 		for i, ctor := range c.Ctors {
-			preamble, forwarding := emitParametersGo2CABIForwarding(ctor.Parameters)
+			preamble, forwarding := emitParametersGo2CABIForwarding(ctor)
 			ret.WriteString(`
 			// New` + c.ClassName + maybeSuffix(i) + ` constructs a new ` + c.ClassName + ` object.
 			func New` + c.ClassName + maybeSuffix(i) + `(` + emitParametersGo(ctor.Parameters) + `) {
@@ -108,21 +113,32 @@ import "C"
 		}
 
 		for _, m := range c.Methods {
-			// TODO for any known pointer type, call its cPointer() method instead of passing it directly
+			preamble, forwarding := emitParametersGo2CABIForwarding(m)
 
 			shouldReturn := "return "
+			afterword := ""
 			returnTypeDecl := m.ReturnType.ParameterType // FIXME handle byRef/const here too
-			if returnTypeDecl == "void" {
+
+			if m.ReturnType.ParameterType == "void" {
 				shouldReturn = ""
 				returnTypeDecl = ""
-			}
 
-			preamble, forwarding := emitParametersGo2CABIForwarding(m.Parameters)
+			} else if m.ReturnType.ParameterType == "QString" {
+				shouldReturn = ""
+				returnTypeDecl = "string"
+
+				preamble += "var _out *C.char = nil\n"
+				preamble += "var _out_Strlen C.size_t = 0\n"
+				afterword += "ret := C.GoStringN(_out, _out_Strlen)\n"
+				afterword += "C.free(_out)\n"
+				afterword += "return ret"
+			}
 
 			ret.WriteString(`
 			func (this *` + c.ClassName + `) ` + m.SafeMethodName() + `(` + emitParametersGo(m.Parameters) + `) ` + returnTypeDecl + ` {
-				` + preamble + shouldReturn + ` C.` + c.ClassName + `_` + m.SafeMethodName() + `(` + forwarding + `)
-			}
+				` + preamble +
+				shouldReturn + ` C.` + c.ClassName + `_` + m.SafeMethodName() + `(` + forwarding + `)
+` + afterword + `}
 			
 			`)
 		}
