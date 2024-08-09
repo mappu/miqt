@@ -44,8 +44,6 @@ func emitParametersGo2CABIForwarding(m CppMethod) (preamble string, fowarding st
 			preamble += "defer C.free(" + p.ParameterName + "_Cstring)\n"
 			tmp = append(tmp, p.ParameterName+"_Cstring, len("+p.ParameterName+")")
 
-			// TODO handle the return type as a pointer parameter
-
 		} else if p.Pointer && p.ParameterType == "char" {
 			// Single char* argument
 			preamble += p.ParameterName + "_Cstring := C.CString(" + p.ParameterName + ")\n"
@@ -128,6 +126,9 @@ import "C"
 			if m.ReturnType.ParameterType == "void" && !m.ReturnType.Pointer {
 				shouldReturn = ""
 				returnTypeDecl = ""
+
+			} else if m.ReturnType.ParameterType == "void" && m.ReturnType.Pointer {
+				returnTypeDecl = "interface{}"
 
 			} else if m.ReturnType.ParameterType == "QString" {
 				shouldReturn = ""
