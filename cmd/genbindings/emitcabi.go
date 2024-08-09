@@ -206,7 +206,7 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 			shouldReturn := "return "
 			afterCall := ""
 
-			if m.ReturnType.ParameterType == "void" {
+			if m.ReturnType.ParameterType == "void" && !m.ReturnType.Pointer {
 				shouldReturn = ""
 
 			} else if m.ReturnType.ParameterType == "QString" {

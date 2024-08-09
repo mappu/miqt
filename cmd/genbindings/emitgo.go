@@ -125,7 +125,7 @@ import "C"
 			afterword := ""
 			returnTypeDecl := m.ReturnType.ParameterType // FIXME handle byRef/const here too
 
-			if m.ReturnType.ParameterType == "void" {
+			if m.ReturnType.ParameterType == "void" && !m.ReturnType.Pointer {
 				shouldReturn = ""
 				returnTypeDecl = ""
 
