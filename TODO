@@ -19,9 +19,19 @@ Phase 1
 		- [ ] Downcast helper methods
 	- [ ] Member variables
 	- [ ] Static methods
-	- [ ] Return of class types
+	- [X] Return of class types passed by pointer
+	- [ ] Return of class types passed by value (e.g. `_Icon()`)
+		- ~~want to copy-construct into Go-provided memory~~ Go can't allocate a C++ type 
+		- Return as a heap pointer instead
+	- [X] Class parameters passed by pointer (want to call `cPointer()`)
+	- [X] Class parameters passed by value (need to dereference) e.g. `_SetIcon()`
+	- [X] QString type conversion
+		- [ ] Bypass malloc/free for zero-length strings
+	- [ ] QList, QVector, QByteArray type conversion(?)
 	- [X] Hide private methods
 	- [X] Method overloads / optional parameters
+	- [ ] Qt:: namespace enums/const values
+	- [ ] Free functions
 - [ ] QtCore
 - [ ] QtGui
 - [ ] QtWidgets
@@ -33,7 +43,7 @@ Phase 2
 
 - [ ] Port examples from other Go Qt bindings
 - [ ] QString helper functions
-- [ ] QList / QVector helper functions
+- [ ] QList, QVector, QByteArray helper functions
 - [ ] `connect`
 - [ ] Other Qt packages
 - [ ] Document use for Windows/macOS/Linux
@@ -45,3 +55,4 @@ Wishlist
 - [ ] uic implementation
 - [ ] Use clang ast's `mangledName` to make a dlsym/LazyDLL cgo-free version 
 - [ ] Generate bindings for all current Qt versions (Debian Qt / Qt LTS), expose as git tags
+- [ ] Reuse CABI to generate Qt bindings for other non-Go languages
