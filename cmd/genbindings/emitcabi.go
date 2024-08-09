@@ -117,6 +117,8 @@ func emitBindingHeader(src *CppParsedHeader, filename string) (string, error) {
 #include <stdbool.h>
 #include <stddef.h>
 
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
