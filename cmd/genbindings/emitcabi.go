@@ -98,6 +98,11 @@ func emitParametersCABI2CppForwarding(params []CppParameter) (preamble string, f
 			// Dereference the passed-in pointer
 			tmp = append(tmp, "*static_cast<"+p.ParameterType+"*>("+p.ParameterName+")")
 
+		} else if p.QtClassType() && p.Pointer {
+			// We need this static_cast<> anyway to convert from PQt (void*) to
+			// the real Qt type
+			tmp = append(tmp, "static_cast<"+p.ParameterType+"*>("+p.ParameterName+")")
+
 		} else {
 			tmp = append(tmp, p.ParameterName)
 		}
