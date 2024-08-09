@@ -32,7 +32,9 @@ func emitParametersGo(params []CppParameter) string {
 }
 
 func emitParametersGo2CABIForwarding(m CppMethod) (preamble string, fowarding string) {
-	tmp := make([]string, 0, len(m.Parameters))
+	tmp := make([]string, 0, len(m.Parameters)+2)
+
+	tmp = append(tmp, "this.h")
 
 	for _, p := range m.Parameters {
 		if p.ParameterType == "QString" {
