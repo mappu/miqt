@@ -70,7 +70,7 @@ func emitParametersCabi(m CppMethod, selfType string) string {
 	return strings.Join(tmp, ", ")
 }
 
-func emitParametersCABI2CppForwarding(params []CppParameter, selfType string) (preamble string, forwarding string) {
+func emitParametersCABI2CppForwarding(params []CppParameter) (preamble string, forwarding string) {
 	tmp := make([]string, 0, len(params)+1)
 
 	for _, p := range params {
@@ -187,7 +187,7 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 	for _, c := range src.Classes {
 
 		for i, ctor := range c.Ctors {
-			preamble, forwarding := emitParametersCABI2CppForwarding(ctor.Parameters, "")
+			preamble, forwarding := emitParametersCABI2CppForwarding(ctor.Parameters)
 			ret.WriteString(fmt.Sprintf(
 				"P%s %s_new%s(%s) {\n"+
 					"%s"+
@@ -226,7 +226,7 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 
 			}
 
-			preamble, forwarding := emitParametersCABI2CppForwarding(m.Parameters, c.ClassName)
+			preamble, forwarding := emitParametersCABI2CppForwarding(m.Parameters)
 
 			ret.WriteString(fmt.Sprintf(
 				"%s %s_%s(%s) {\n"+
