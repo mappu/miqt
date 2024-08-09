@@ -48,6 +48,13 @@ func emitParametersCabi(m CppMethod, selfType string) string {
 			// Pointer to Qt type
 			// Replace with taking our PQ typedef by value
 			tmp = append(tmp, "P"+p.ParameterType+" "+p.ParameterName)
+
+		} else if p.QtClassType() {
+			// Qt type passed by value
+			// The CABI will unconditionally take these by pointer and dereference them
+			// when passing to C++
+			tmp = append(tmp, "P"+p.ParameterType+" "+p.ParameterName)
+
 		} else {
 			// RenderTypeCpp renders both pointer+reference as pointers
 			tmp = append(tmp, p.RenderTypeCpp()+" "+p.ParameterName)
