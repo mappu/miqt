@@ -3,6 +3,7 @@ package main
 import (
 	"go/format"
 	"log"
+	"sort"
 	"strings"
 )
 
@@ -82,7 +83,10 @@ func emitGo(src *CppParsedHeader, headerName string) (string, error) {
 */
 import "C"
 
+%%_IMPORTLIBS_%%
 `)
+
+	imports := map[string]struct{}{}
 
 	for _, c := range src.Classes {
 
@@ -145,8 +149,24 @@ import "C"
 
 	}
 
+	goSrc := ret.String()
+
+	// Fixup imports
+	if len(imports) > 0 {
+		allImports := make([]string, 0, len(imports))
+		for k, _ := range imports {
+			allImports = append(allImports, `"`+k+`"`)
+		}
+		sort.Strings(allImports)
+		goSrc = strings.Replace(goSrc, `%%_IMPORTLIBS_%%`, "import (\n\t"+strings.Join(allImports, "\n\t")+"\n)", 1)
+
+	} else {
+		goSrc = strings.Replace(goSrc, `%%_IMPORTLIBS_%%`, "", 1)
+
+	}
+
 	// Run gofmt over the result
-	formattedSrc, err := format.Source([]byte(ret.String()))
+	formattedSrc, err := format.Source([]byte(goSrc))
 	if err != nil {
 		log.Printf("gofmt failure: %v", err)
 		formattedSrc = []byte(ret.String())
