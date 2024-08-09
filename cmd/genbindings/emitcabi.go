@@ -96,6 +96,7 @@ func emitBindingHeader(src *CppParsedHeader, filename string) (string, error) {
 #define ` + includeGuard + `
 
 #include <stdbool.h>
+#include <stddef.h>
 
 #ifdef __cplusplus
 extern "C" {
