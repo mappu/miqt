@@ -233,6 +233,8 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 				afterCall = "\t// Copy-construct value returned type into heap-allocated copy\n"
 				afterCall += "\treturn static_cast<P" + m.ReturnType.ParameterType + ">(new " + m.ReturnType.ParameterType + "(ret));\n"
 
+			} else if m.ReturnType.Const {
+				shouldReturn += "(" + emitReturnTypeCabi(m.ReturnType) + ") "
 			}
 
 			preamble, forwarding := emitParametersCABI2CppForwarding(m.Parameters)
