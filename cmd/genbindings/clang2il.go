@@ -49,6 +49,15 @@ func parseHeader(inner []interface{}) (*CppParsedHeader, error) {
 		case "StaticAssertDecl":
 			// ignore
 
+		case "ClassTemplateDecl", "ClassTemplateSpecializationDecl", "ClassTemplatePartialSpecializationDecl":
+			// ignore
+
+		case "FileScopeAsmDecl":
+			// ignore
+
+		case "NamespaceDecl":
+			// ignore
+
 		default:
 			return nil, fmt.Errorf("missing handling for clang ast node type %q", kind)
 		}

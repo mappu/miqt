@@ -6,7 +6,6 @@ import (
 	"errors"
 	"fmt"
 	"io"
-	"log"
 	"os/exec"
 	"sync"
 )
@@ -71,9 +70,12 @@ func clangStripUpToFile(stdout io.Reader, inputFilePath string) ([]interface{}, 
 		return nil, errors.New("no inner")
 	}
 
-	var markerPosition int = -1
+	// This can't be done by matching the first position only, since it's possible
+	// that there are more #include<>s further down the file
 
-	for i, entry := range inner {
+	ret := make([]interface{}, 0, len(inner))
+
+	for _, entry := range inner {
 
 		entry, ok := entry.(map[string]interface{})
 		if !ok {
@@ -81,6 +83,7 @@ func clangStripUpToFile(stdout io.Reader, inputFilePath string) ([]interface{}, 
 		}
 
 		if _, ok := entry["isImplicit"]; ok {
+			// Don't keep
 			continue
 		}
 
@@ -97,6 +100,11 @@ func clangStripUpToFile(stdout io.Reader, inputFilePath string) ([]interface{}, 
 				if expansionloc, ok := loc["expansionLoc"].(map[string]interface{}); ok {
 					if filename, ok := expansionloc["file"].(string); ok {
 						match_filename = filename
+
+					} else if includedFrom, ok := expansionloc["includedFrom"].(map[string]interface{}); ok {
+						if filename, ok := includedFrom["file"].(string); ok {
+							match_filename = filename
+						}
 					}
 				}
 			}
@@ -104,16 +112,19 @@ func clangStripUpToFile(stdout io.Reader, inputFilePath string) ([]interface{}, 
 			return nil, errors.New("no loc")
 		}
 
-		if match_filename == inputFilePath {
-			// Found the marker position
-			markerPosition = i
-			break
+		// log.Printf("# name=%v kind=%v filename=%q\n", entry["name"], entry["kind"], match_filename)
+
+		if match_filename == "" {
+			// Keep
+			ret = append(ret, entry)
+
+		} else if match_filename != inputFilePath {
+			// Skip this
+		} else {
+			// Keep this
+			// ret = append(ret, entry)
 		}
 	}
 
-	log.Printf("found first instance of same file at inner entry %d/%d", markerPosition, len(inner))
-
-	inner = inner[markerPosition:]
-
-	return inner, nil
+	return ret, nil
 }
