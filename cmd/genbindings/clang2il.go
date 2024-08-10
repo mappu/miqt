@@ -68,6 +68,17 @@ func processClassType(node map[string]interface{}, className string) (CppClass, 
 	if tagUsed, ok := node["tagUsed"].(string); ok && tagUsed == "class" {
 		visibility = false
 	}
+
+	// Check if this is an abstract class
+	if definitionData, ok := node["definitionData"].(map[string]interface{}); ok {
+		if isAbstract, ok := definitionData["isAbstract"].(bool); ok && isAbstract {
+			ret.Abstract = true
+		}
+	}
+
+
+	// Parse all methods
+
 nextMethod:
 	for _, node := range inner {
 		node, ok := node.(map[string]interface{})
@@ -104,6 +115,10 @@ nextMethod:
 			// These seem to have no useful content
 
 		case "CXXConstructorDecl":
+
+			if ret.Abstract {
+				continue // The bindings can't construct an abstract class
+			}
 
 
 			var mm CppMethod
