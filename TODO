@@ -8,15 +8,16 @@ Phase 1
 - [ ] Generate types
 	- [X] Convert parameter pointer types to binding types
 	- [X] Basic methods
-	- [ ] Special methods
-		- [ ] Constructors
-		- [ ] Destructors
-		- [ ] Copy-constructors
+	- [X] Special methods
+		- [X] Constructors
+			- [X] Prevent calling ctor of abstract class
+		- [X] ~~Destructors~~ We only need .Delete()
+		- [X] Copy-constructors
 		- [ ] Move-constructors (Qt6)
 		- [X] Operator overloading
-	- [ ] Class inheritance
-		- [ ] Detect in AST
-		- [ ] Downcast helper methods
+	- [X] Class inheritance
+		- [X] Detect in AST
+		- [X] ~~Downcast helper methods~~ Direct type available
 	- [ ] Member variables
 	- [ ] Static methods
 	- [X] Return of class types passed by pointer
