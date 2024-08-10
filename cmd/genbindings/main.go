@@ -4,10 +4,8 @@ import (
 	"context"
 	"encoding/json"
 	"flag"
-	"fmt"
 	"io/ioutil"
 	"log"
-	"os"
 	"path/filepath"
 	"strings"
 )
@@ -18,9 +16,9 @@ func main() {
 	clang := flag.String("clang", "clang", "Custom path to clang")
 	inputHeader := flag.String("inputHeader", `/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qpushbutton.h`, "Input file")
 	cflags := flag.String("cflags", `-DQT_WIDGETS_LIB -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtCore -DQT_GUI_LIB -I/usr/include/x86_64-linux-gnu/qt5/QtGui -DQT_CORE_LIB`, "Cflags to pass to clang (e.g. `pkg-config --cflags Qt5Widgets`)")
-	outDir := flag.String("outdir", "..", "Output directory for generated gen_** files")
-	dumpClang := flag.Bool("dumpclang", false, "Dump clang JSON to stdout and exit")
-	dumpIL := flag.Bool("dumpil", false, "Dump intermediate IL JSON to stdout and exit")
+	outDir := flag.String("outdir", "../../qt", "Output directory for generated gen_** files")
+	dumpClang := flag.String("dumpclang", "", "(Optional) File to dump output clang JSON")
+	dumpIL := flag.String("dumpil", "", "(Optional) File to dump intermediate IL JSON")
 
 	flag.Parse()
 
@@ -30,13 +28,16 @@ func main() {
 		panic(err)
 	}
 
-	if *dumpClang {
+	if *dumpClang != "" {
 		jb, err := json.MarshalIndent(astInner, "", "\t")
 		if err != nil {
 			panic(err)
 		}
-		fmt.Println(string(jb))
-		os.Exit(0)
+
+		err = ioutil.WriteFile(*dumpClang, jb, 0644)
+		if err != nil {
+			panic(err)
+		}
 	}
 
 	// Convert it to our intermediate format
@@ -45,13 +46,16 @@ func main() {
 		panic(err)
 	}
 
-	if *dumpIL {
+	if *dumpIL != "" {
 		jb, err := json.MarshalIndent(parsed, "", "\t")
 		if err != nil {
 			panic(err)
 		}
-		fmt.Println(string(jb))
-		os.Exit(0)
+
+		err = ioutil.WriteFile(*dumpIL, jb, 0644)
+		if err != nil {
+			panic(err)
+		}
 	}
 
 	// AST transforms on our IL
