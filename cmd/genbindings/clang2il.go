@@ -33,22 +33,18 @@ func parseHeader(inner []interface{}) (*CppParsedHeader, error) {
 			}
 
 			fmt.Printf("-> %q name=%q\n", kind, nodename)
-			if classInner, ok := node["inner"].([]interface{}); ok {
 
-				// Check if this was 'struct' (default visible) or 'class' (default invisible)
-				visible := true
-				if tagUsed, ok := node["tagUsed"].(string); ok && tagUsed == "class" {
-					visible = false
-				}
-
-				// Process the inner class definition
-				obj, err := processType(classInner, nodename, visible)
-				if err != nil {
-					panic(err)
-				}
-
-				ret.Classes = append(ret.Classes, obj)
+			if _, ok := node["inner"]; !ok {
+				continue // Forward class declaration only, do not include
 			}
+
+			// Process the inner class definition
+			obj, err := processClassType(node, nodename)
+			if err != nil {
+				panic(err)
+			}
+
+			ret.Classes = append(ret.Classes, obj)
 
 		case "StaticAssertDecl":
 			// ignore
@@ -61,10 +57,17 @@ func parseHeader(inner []interface{}) (*CppParsedHeader, error) {
 	return &ret, nil // done
 }
 
-func processType(inner []interface{}, className string, visibility bool) (CppClass, error) {
+func processClassType(node map[string]interface{}, className string) (CppClass, error) {
 	var ret CppClass
 	ret.ClassName = className
 
+	inner, _ := node["inner"].([]interface{}) // Cannot fail, the parent call already checked that `inner` was present
+
+	// Check if this was 'struct' (default visible) or 'class' (default invisible)
+	visibility := true
+	if tagUsed, ok := node["tagUsed"].(string); ok && tagUsed == "class" {
+		visibility = false
+	}
 nextMethod:
 	for _, node := range inner {
 		node, ok := node.(map[string]interface{})
@@ -96,6 +99,9 @@ nextMethod:
 
 		case "FriendDecl":
 			// Safe to ignore
+
+		case "VisibilityAttr":
+			// These seem to have no useful content
 
 		case "CXXConstructorDecl":
 

@@ -69,6 +69,7 @@ func (nm CppMethod) SafeMethodName() string {
 
 type CppClass struct {
 	ClassName string
+	Abstract  bool
 	Ctors     []CppMethod // only use the parameters
 	Extends   []string
 	Methods   []CppMethod
