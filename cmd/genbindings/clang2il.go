@@ -98,10 +98,26 @@ nextMethod:
 			// Safe to ignore
 
 		case "CXXConstructorDecl":
-			// panic("TODO")
+
+
+			var mm CppMethod
+			err := parseMethod(node, &mm)
+			if err != nil {
+				if errors.Is(err, ErrTooComplex) {
+					log.Printf("Skipping method %q with complex type", mm.MethodName)
+					continue nextMethod
+				}
+
+				// Real error
+				return CppClass{}, err
+			}
+
+
+			ret.Ctors = append(ret.Ctors, mm)
 
 		case "CXXDestructorDecl":
-			// panic("TODO")
+			// We don't need to expose destructors in the binding beyond offering
+			// a regular delete function
 
 		case "CXXMethodDecl":
 			if !visibility {
@@ -121,72 +137,15 @@ nextMethod:
 				mm.MethodName = methodName[3:]
 			}
 
-			if typobj, ok := node["type"].(map[string]interface{}); ok {
-				if qualType, ok := typobj["qualType"].(string); ok {
-					// The qualType is the whole type of the method, including its parameter types
-					// If anything here is too complicated, skip the whole method
-
-					var err error = nil
-					mm.ReturnType, mm.Parameters, err = parseTypeString(qualType)
-					if err != nil {
-						if errors.Is(err, ErrTooComplex) {
-							log.Printf("Skipping method %q with complex type %q", mm.MethodName, qualType)
-							continue nextMethod
-						}
-						// Real error
-						return CppClass{}, err
-					}
-
+			err := parseMethod(node, &mm)
+			if err != nil {
+				if errors.Is(err, ErrTooComplex) {
+					log.Printf("Skipping method %q with complex type", mm.MethodName)
+					continue nextMethod
 				}
-			}
 
-			if methodInner, ok := node["inner"].([]interface{}); ok {
-				paramCounter := 0
-				for _, methodObj := range methodInner {
-					methodObj, ok := methodObj.(map[string]interface{})
-					if !ok {
-						return CppClass{}, errors.New("inner[] element not an object")
-					}
-
-					switch methodObj["kind"] {
-					case "ParmVarDecl":
-						// Parameter variable
-						parmName, _ := methodObj["name"].(string) // n.b. may be unnamed
-						if parmName == "" {
-
-							// Generate a default parameter name
-							// Super nice autogen names if this is a Q_PROPERTY setter:
-							if len(mm.Parameters) == 1 && strings.HasPrefix(mm.MethodName, "set") {
-								parmName = strings.ToLower(string(mm.MethodName[3])) + mm.MethodName[4:]
-
-							} else {
-								// Otherwise - default
-								parmName = fmt.Sprintf("param%d", paramCounter+1)
-							}
-						}
-
-						// Block reserved Go words, replace with generic parameters
-						if parmName == "default" || parmName == "const" || parmName == "func" {
-							parmName += "Val"
-						}
-
-						// Update the name for the existing nth parameter
-						mm.Parameters[paramCounter].ParameterName = parmName
-
-						// If this parameter has any internal AST nodes of its
-						// own, assume it means it's an optional parameter
-						if _, ok := methodObj["inner"]; ok {
-							mm.Parameters[paramCounter].Optional = true
-						}
-
-						// Next
-						paramCounter++
-
-					default:
-						// Something else inside a declaration??
-						fmt.Printf("==> NOT IMPLEMENTED CXXMethodDecl->%q\n", kind)
-					}
-				}
+				// Real error
+				return CppClass{}, err
 			}
 
 			ret.Methods = append(ret.Methods, mm)
@@ -200,6 +159,74 @@ nextMethod:
 }
 
 var ErrTooComplex error = errors.New("Type declaration is too complex to parse")
+
+func parseMethod(node map[string]interface{}, mm *CppMethod) error {
+
+	if typobj, ok := node["type"].(map[string]interface{}); ok {
+		if qualType, ok := typobj["qualType"].(string); ok {
+			// The qualType is the whole type of the method, including its parameter types
+			// If anything here is too complicated, skip the whole method
+
+			var err error = nil
+			mm.ReturnType, mm.Parameters, err = parseTypeString(qualType)
+			if err != nil {
+				return err
+			}
+
+		}
+	}
+
+	if methodInner, ok := node["inner"].([]interface{}); ok {
+		paramCounter := 0
+		for _, methodObj := range methodInner {
+			methodObj, ok := methodObj.(map[string]interface{})
+			if !ok {
+				return errors.New("inner[] element not an object")
+			}
+
+			switch methodObj["kind"] {
+			case "ParmVarDecl":
+				// Parameter variable
+				parmName, _ := methodObj["name"].(string) // n.b. may be unnamed
+				if parmName == "" {
+
+					// Generate a default parameter name
+					// Super nice autogen names if this is a Q_PROPERTY setter:
+					if len(mm.Parameters) == 1 && strings.HasPrefix(mm.MethodName, "set") {
+						parmName = strings.ToLower(string(mm.MethodName[3])) + mm.MethodName[4:]
+
+					} else {
+						// Otherwise - default
+						parmName = fmt.Sprintf("param%d", paramCounter+1)
+					}
+				}
+
+				// Block reserved Go words, replace with generic parameters
+				if parmName == "default" || parmName == "const" || parmName == "func" {
+					parmName += "Val"
+				}
+
+				// Update the name for the existing nth parameter
+				mm.Parameters[paramCounter].ParameterName = parmName
+
+				// If this parameter has any internal AST nodes of its
+				// own, assume it means it's an optional parameter
+				if _, ok := methodObj["inner"]; ok {
+					mm.Parameters[paramCounter].Optional = true
+				}
+
+				// Next
+				paramCounter++
+
+			default:
+				// Something else inside a declaration??
+				fmt.Printf("==> NOT IMPLEMENTED CXXMethodDecl->%q\n", methodObj["kind"])
+			}
+		}
+	}
+
+	return nil
+}
 
 // parseTypeString converts a string like
 // - `QString (const char *, const char *, int)`

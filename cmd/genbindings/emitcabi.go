@@ -68,10 +68,6 @@ func emitParametersCabi(m CppMethod, selfType string) string {
 	// Go: converted to native Go string
 	if m.ReturnType.ParameterType == "QString" {
 		tmp = append(tmp, "char** _out, size_t* _out_Strlen")
-		/*
-			} else if m.ReturnType.QtClassType() && !m.ReturnType.Pointer {
-				tmp = append(tmp, "P"+m.ReturnType.ParameterType+" _out")
-		*/
 	}
 
 	return strings.Join(tmp, ", ")
@@ -167,7 +163,7 @@ extern "C" {
 	for _, c := range src.Classes {
 
 		for i, ctor := range c.Ctors {
-			ret.WriteString(fmt.Sprintf("P%s %s_new%s(%s);\n", c.ClassName, maybeSuffix(i), emitParametersCabi(ctor, "")))
+			ret.WriteString(fmt.Sprintf("P%s %s_new%s(%s);\n", c.ClassName, c.ClassName, maybeSuffix(i), emitParametersCabi(ctor, "")))
 		}
 
 		for _, m := range c.Methods {
@@ -208,7 +204,7 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 					"\treturn new %s(%s);\n"+
 					"}\n"+
 					"\n",
-				c.ClassName, maybeSuffix(i), emitParametersCabi(ctor, ""),
+				c.ClassName, c.ClassName, maybeSuffix(i), emitParametersCabi(ctor, ""),
 				preamble,
 				c.ClassName, forwarding,
 			))
