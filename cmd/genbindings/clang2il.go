@@ -120,6 +120,10 @@ nextMethod:
 				continue // The bindings can't construct an abstract class
 			}
 
+			// Check if this is `= delete`
+			if explicitlyDeleted, ok := node["explicitlyDeleted"].(bool); ok && explicitlyDeleted {
+				continue
+			}
 
 			var mm CppMethod
 			err := parseMethod(node, &mm)
@@ -143,6 +147,11 @@ nextMethod:
 		case "CXXMethodDecl":
 			if !visibility {
 				continue // Skip private/protected
+			}
+
+			// Check if this is `= delete`
+			if explicitlyDeleted, ok := node["explicitlyDeleted"].(bool); ok && explicitlyDeleted {
+				continue
 			}
 
 			// Method
