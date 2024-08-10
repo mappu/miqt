@@ -214,7 +214,7 @@ import "C"
 	formattedSrc, err := format.Source([]byte(goSrc))
 	if err != nil {
 		log.Printf("gofmt failure: %v", err)
-		formattedSrc = []byte(ret.String())
+		formattedSrc = []byte(goSrc)
 	}
 
 	return string(formattedSrc), nil

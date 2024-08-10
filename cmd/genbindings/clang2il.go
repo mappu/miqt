@@ -58,6 +58,13 @@ func parseHeader(inner []interface{}) (*CppParsedHeader, error) {
 		case "NamespaceDecl":
 			// ignore
 
+		case "FunctionDecl":
+			// TODO
+
+		case "CXXMethodDecl":
+			// A C++ class method implementation directly in the header
+			// Skip over these
+
 		default:
 			return nil, fmt.Errorf("missing handling for clang ast node type %q", kind)
 		}
@@ -303,6 +310,10 @@ func parseMethod(node map[string]interface{}, mm *CppMethod) error {
 func parseTypeString(typeString string) (CppParameter, []CppParameter, error) {
 
 	if strings.Contains(typeString, `::`) {
+		return CppParameter{}, nil, ErrTooComplex
+	}
+
+	if strings.Contains(typeString, `&&`) { // TODO Rvalue references
 		return CppParameter{}, nil, ErrTooComplex
 	}
 
