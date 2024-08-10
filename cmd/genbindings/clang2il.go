@@ -137,6 +137,13 @@ nextMethod:
 				return CppClass{}, err
 			}
 
+			// Some QFoo constructors take a QFooPrivate
+			for _, p := range mm.Parameters {
+				if strings.Contains(p.ParameterType, "Private") {
+					log.Printf("Skipping constructor taking Private type")
+					continue nextMethod
+				}
+			}
 
 			ret.Ctors = append(ret.Ctors, mm)
 
