@@ -71,7 +71,7 @@ type CppClass struct {
 	ClassName string
 	Abstract  bool
 	Ctors     []CppMethod // only use the parameters
-	Extends   []string
+	Inherits  []string    // other class names
 	Methods   []CppMethod
 	Props     []CppProperty
 }

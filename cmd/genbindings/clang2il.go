@@ -76,6 +76,26 @@ func processClassType(node map[string]interface{}, className string) (CppClass, 
 		}
 	}
 
+	// Check if this (publicly) inherits another class
+	if bases, ok := node["bases"].([]interface{}); ok {
+		for _, base := range bases {
+			base, ok := base.(map[string]interface{})
+			if !ok {
+				continue
+			}
+
+			access, ok := base["access"].(string)
+			if !(ok && access == "public") {
+				continue
+			}
+
+			if typ, ok := base["type"].(map[string]interface{}); ok {
+				if qualType, ok := typ["qualType"].(string); ok {
+					ret.Inherits = append(ret.Inherits, qualType)
+				}
+			}
+		}
+	}
 
 	// Parse all methods
 

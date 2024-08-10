@@ -93,6 +93,14 @@ import "C"
 		ret.WriteString(`
 		type ` + c.ClassName + ` struct {
 			h C.P` + c.ClassName + `
+		`)
+
+		// Embed all inherited types to directly allow calling inherited methods
+		for _, base := range c.Inherits {
+			ret.WriteString(base + "\n")
+		}
+
+		ret.WriteString(`
 		}
 		
 		func (this *` + c.ClassName + `) cPointer() C.P` + c.ClassName + ` {
@@ -104,13 +112,18 @@ import "C"
 		
 		`)
 
+		localInit := "h: ret"
+		for _, base := range c.Inherits {
+			localInit += ", " + base + ": " + base + "{h: ret}"
+		}
+
 		for i, ctor := range c.Ctors {
 			preamble, forwarding := emitParametersGo2CABIForwarding(ctor)
 			ret.WriteString(`
 			// New` + c.ClassName + maybeSuffix(i) + ` constructs a new ` + c.ClassName + ` object.
 			func New` + c.ClassName + maybeSuffix(i) + `(` + emitParametersGo(ctor.Parameters) + `) {
 				` + preamble + ` ret := C.` + c.ClassName + `_new` + maybeSuffix(i) + `(` + forwarding + `)
-				return &` + c.ClassName + `{h: ret}
+				return &` + c.ClassName + `{` + localInit + `}
 			}
 			
 			`)
