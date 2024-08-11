@@ -18,6 +18,9 @@ func emitReturnTypeCabi(p CppParameter) string {
 	if p.ParameterType == "QString" {
 		return "void" // Will be handled separately
 
+	} else if _, ok := p.QListOf(); ok {
+		return "void" // Will be handled separately
+
 	} else if (p.Pointer || p.ByRef) && p.QtClassType() {
 		return "P" + p.ParameterType // CABI type
 
@@ -44,6 +47,12 @@ func emitParametersCabi(m CppMethod, selfType string) string {
 			// Declare that we take two parameters
 			tmp = append(tmp, "const char* "+p.ParameterName+", size_t "+p.ParameterName+"_Strlen")
 
+		} else if t, ok := p.QListOf(); ok {
+			// The Go code has called this with two arguments: T* and len
+			// Declare that we take two parameters
+			// TODO support QList<int>
+			tmp = append(tmp, "P"+t.ParameterType+" "+p.ParameterName+", size_t "+p.ParameterName+"_len")
+
 		} else if (p.ByRef || p.Pointer) && p.QtClassType() {
 			// Pointer to Qt type
 			// Replace with taking our PQ typedef by value
@@ -68,6 +77,10 @@ func emitParametersCabi(m CppMethod, selfType string) string {
 	// Go: converted to native Go string
 	if m.ReturnType.ParameterType == "QString" {
 		tmp = append(tmp, "char** _out, size_t* _out_Strlen")
+
+	} else if t, ok := m.ReturnType.QListOf(); ok {
+		tmp = append(tmp, "P"+t.ParameterType+"* _out, size_t* _out_len")
+
 	}
 
 	return strings.Join(tmp, ", ")
@@ -82,6 +95,16 @@ func emitParametersCABI2CppForwarding(params []CppParameter) (preamble string, f
 			// Create it on the stack
 			preamble += "\tQString " + p.ParameterName + "_QString = QString::fromUtf8(" + p.ParameterName + ", " + p.ParameterName + "_Strlen);\n"
 			tmp = append(tmp, p.ParameterName+"_QString")
+
+		} else if _, ok := p.QListOf(); ok {
+			// The CABI has accepted two parameters - need to convert to one real QList<>
+			// Create it on the stack
+			preamble += "\t" + p.RenderTypeCpp() + " " + p.ParameterName + "_QList;\n"
+			preamble += "\t" + p.ParameterName + "_QList.reserve(" + p.ParameterName + "_len);\n"
+			preamble += "\tfor(size_t i = 0; i < " + p.ParameterName + "_len; ++i) {\n"
+			preamble += "\t\t" + p.ParameterName + "_QList.push_back(" + p.ParameterName + "[i]);\n"
+			preamble += "\t}\n"
+			tmp = append(tmp, p.ParameterName+"_QList")
 
 		} else if p.ByRef {
 			// We changed RenderTypeCpp() to render this as a pointer
@@ -155,6 +178,10 @@ extern "C" {
 	}
 	sort.Strings(foundTypesList)
 	for _, ft := range foundTypesList {
+		if strings.HasPrefix(ft, "QList<") {
+			continue
+		}
+
 		ret.WriteString(`typedef void* P` + ft + ";\n")
 	}
 
@@ -226,6 +253,15 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 				afterCall += "\t*_out = static_cast<char*>(malloc(b.length()));\n"
 				afterCall += "\tmemcpy(*_out, b.data(), b.length());\n"
 				afterCall += "\t*_out_Strlen = b.length();\n"
+
+			} else if t, ok := m.ReturnType.QListOf(); ok {
+				shouldReturn = m.ReturnType.ParameterType + " ret = "
+				afterCall += "\t// Convert QList<> from C++ memory to manually-managed C memory\n"
+				afterCall += "\t*_out = malloc(sizeof(" + t.RenderTypeCpp() + ") * ret.length());\n"
+				afterCall += "\tfor (int i = 0, e = ret.length(); i < e; ++i) {\n"
+				afterCall += "\t\t(*_out)[i] = ret[i];\n"
+				afterCall += "\t}\n"
+				afterCall += "\t*_out_len = ret.length()\n"
 
 			} else if m.ReturnType.QtClassType() && !m.ReturnType.Pointer {
 				shouldReturn = m.ReturnType.ParameterType + " ret = "

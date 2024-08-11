@@ -15,6 +15,10 @@ func (p CppParameter) RenderTypeGo() string {
 		return "string"
 	}
 
+	if t, ok := p.QListOf(); ok {
+		return "[]" + t.RenderTypeGo()
+	}
+
 	ret := ""
 	if p.ByRef || p.Pointer {
 		ret += "*"
@@ -44,6 +48,22 @@ func emitParametersGo2CABIForwarding(m CppMethod) (preamble string, fowarding st
 			preamble += "defer C.free(" + p.ParameterName + "_Cstring)\n"
 			tmp = append(tmp, p.ParameterName+"_Cstring, len("+p.ParameterName+")")
 
+		} else if listType, ok := p.QListOf(); ok {
+			// QList<T>
+			// Go: convert T[] -> t* and len
+			// CABI: create a real QList<>
+
+			// TODO handle QList<int>
+
+			preamble += "// For the C ABI, malloc a C array of raw pointers\n"
+			preamble += p.ParameterName + "_CArray := (*[0xffff]C.P" + listType.ParameterType + ")(C.malloc(c.ulong(8 * len(" + p.ParameterName + "))))\n"
+			preamble += "defer C.free(" + p.ParameterName + "_CArray)\n"
+			preamble += "for i := range " + p.ParameterName + "{\n"
+			preamble += p.ParameterName + "_CArray[i] = " + p.ParameterName + "[i].cPointer()\n"
+			preamble += "}\n"
+
+			tmp = append(tmp, p.ParameterName+"_CArray, len("+p.ParameterName+")")
+
 		} else if p.Pointer && p.ParameterType == "char" {
 			// Single char* argument
 			preamble += p.ParameterName + "_Cstring := C.CString(" + p.ParameterName + ")\n"
@@ -63,6 +83,8 @@ func emitParametersGo2CABIForwarding(m CppMethod) (preamble string, fowarding st
 
 	if m.ReturnType.ParameterType == "QString" {
 		tmp = append(tmp, "&_out, &_out_Strlen")
+	} else if _, ok := m.ReturnType.QListOf(); ok {
+		tmp = append(tmp, "&_out, &_out_len")
 	}
 
 	return preamble, strings.Join(tmp, ", ")
@@ -159,6 +181,18 @@ import "C"
 				afterword += "ret := C.GoStringN(_out, _out_Strlen)\n"
 				afterword += "C.free(_out)\n"
 				afterword += "return ret"
+
+			} else if t, ok := m.ReturnType.QListOf(); ok {
+				shouldReturn = ""
+				returnTypeDecl = "[]" + t.RenderTypeGo()
+
+				preamble += "var _out *C.P" + t.ParameterType + " = nil\n"
+				preamble += "var _out_len C.size_t = 0\n"
+				afterword += "ret := make([]" + t.RenderTypeGo() + ", _out_Strlen)\n"
+				afterword += "for i := 0; i < _out_len; i++ {\n"
+				afterword += "ret[i] = new" + t.ParameterType + "(_out[i])\n"
+				afterword += "}\n"
+				afterword += "C.free(_out)\n"
 
 			} else if m.ReturnType.QtClassType() {
 				// Construct our Go type based on this inner CABI type

@@ -17,6 +17,14 @@ func (p CppParameter) QtClassType() bool {
 	return p.ParameterType[0] == 'Q'
 }
 
+func (p CppParameter) QListOf() (CppParameter, bool) {
+	if strings.HasPrefix(p.ParameterType, "QList<") && strings.HasSuffix(p.ParameterType, `>`) {
+		return parseSingleTypeString(p.ParameterType[6 : len(p.ParameterType)-1]), true
+	}
+
+	return CppParameter{}, false
+}
+
 type CppProperty struct {
 	PropertyName string
 	PropertyType string
