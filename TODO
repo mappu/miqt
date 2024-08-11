@@ -13,29 +13,43 @@ Phase 1
 			- [X] Prevent calling ctor of abstract class
 		- [X] ~~Destructors~~ We only need .Delete()
 		- [X] Copy-constructors
-		- [ ] Move-constructors (Qt6)
+		- [ ] Move-constructors (e.g. QWidgetData)
 		- [X] Operator overloading
 	- [X] Class inheritance
 		- [X] Detect in AST
 		- [X] ~~Downcast helper methods~~ Direct type available
 	- [ ] Member variables
-	- [ ] Static methods
+	- [ ] Static methods (e.g. QWidget::setTabOrder)
 	- [X] Return of class types passed by pointer
-	- [ ] Return of class types passed by value (e.g. `_Icon()`)
+	- [X] Return of class types passed by value (e.g. `_Icon()`)
 		- ~~want to copy-construct into Go-provided memory~~ Go can't allocate a C++ type 
 		- Return as a heap pointer instead
 	- [X] Class parameters passed by pointer (want to call `cPointer()`)
 	- [X] Class parameters passed by value (need to dereference) e.g. `_SetIcon()`
 	- [X] QString type conversion
+		- [X] For parameters
+		- [X] For return types
 		- [ ] Bypass malloc/free for zero-length strings
-	- [ ] QList, QVector, QByteArray type conversion(?)
+	- [X] QList type conversion (e.g. QWidget::Actions())
+		- [X] For parameters
+		- [X] For return types
+		- [ ] Bypass malloc/free for zero-length arrays
+	- [ ] QVector type conversion
+	- [ ] QByteArray type conversion(?)
 	- [X] Hide private methods
-	- [X] Method overloads / optional parameters
+	- [X] Optional parameters
+	- [ ] Overloaded methods
 	- [ ] Qt:: namespace enums/const values
+		- e.g. Qt::WindowFlags (global)
+		- e.g. QWidget::RenderFlag (per-class)
 	- [ ] Free functions
 - [ ] QtCore
 - [ ] QtGui
 - [ ] QtWidgets
+- [ ] Minimal example
+	- [ ] Calling connect
+	- [ ] Exercising QString interop
+	- [ ] Exercising QList interop
 - [X] Pick a name for the package
 - [ ] Make github repo, rename module
 - [ ] v0 Public release
@@ -46,7 +60,7 @@ Phase 2
 - [ ] QString helper functions
 - [ ] QList, QVector, QByteArray helper functions
 - [ ] `connect`
-- [ ] Other Qt packages
+- [ ] Document comparison with other Qt binding packages
 - [ ] Document use for Windows/macOS/Linux
 
 Wishlist
@@ -57,3 +71,4 @@ Wishlist
 - [ ] Use clang ast's `mangledName` to make a dlsym/LazyDLL cgo-free version 
 - [ ] Generate bindings for all current Qt versions (Debian Qt / Qt LTS), expose as git tags
 - [ ] Reuse CABI to generate Qt bindings for other non-Go languages
+- [ ] Reduce necessary memory copies around ABI boundaries
