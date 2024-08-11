@@ -117,13 +117,20 @@ import "C"
 			localInit += ", " + base + ": " + base + "{h: ret}"
 		}
 
+		ret.WriteString(`
+			func new` + c.ClassName + `(h C.P` + c.ClassName + `) {
+				return &` + c.ClassName + `{` + localInit + `}
+			}
+			
+		`)
+
 		for i, ctor := range c.Ctors {
 			preamble, forwarding := emitParametersGo2CABIForwarding(ctor)
 			ret.WriteString(`
 			// New` + c.ClassName + maybeSuffix(i) + ` constructs a new ` + c.ClassName + ` object.
 			func New` + c.ClassName + maybeSuffix(i) + `(` + emitParametersGo(ctor.Parameters) + `) {
 				` + preamble + ` ret := C.` + c.ClassName + `_new` + maybeSuffix(i) + `(` + forwarding + `)
-				return &` + c.ClassName + `{` + localInit + `}
+				return new` + c.ClassName + `(h)
 			}
 			
 			`)
