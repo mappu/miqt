@@ -14,6 +14,9 @@ func (p CppParameter) RenderTypeGo() string {
 	if p.ParameterType == "QString" {
 		return "string"
 	}
+	if p.ParameterType == "uintptr_t" {
+		return "uintptr"
+	}
 
 	if t, ok := p.QListOf(); ok {
 		return "[]" + t.RenderTypeGo()
