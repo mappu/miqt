@@ -21,6 +21,9 @@ func main() {
 	flag.Parse()
 
 	includeFiles := []string{
+		"/usr/include/x86_64-linux-gnu/qt5/QtCore/qobject.h",
+		"/usr/include/x86_64-linux-gnu/qt5/QtCore/qbytearray.h",
+
 		"/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qwidget.h",
 		"/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qabstractbutton.h",
 		"/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qpushbutton.h",
