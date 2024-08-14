@@ -355,13 +355,13 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 			ret.WriteString(fmt.Sprintf(
 				"%s %s_%s(%s) {\n"+
 					"%s"+
-					"\t%sstatic_cast<%s*>(self)->%s(%s);\n"+
+					"\t%sself->%s(%s);\n"+
 					"%s"+
 					"}\n"+
 					"\n",
 				emitReturnTypeCabi(m.ReturnType), c.ClassName, m.SafeMethodName(), emitParametersCabi(m, c.ClassName+"*"),
 				preamble,
-				shouldReturn, c.ClassName, nativeMethodName, forwarding,
+				shouldReturn, nativeMethodName, forwarding,
 				afterCall,
 			))
 		}
@@ -369,11 +369,10 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 		// Delete
 		ret.WriteString(fmt.Sprintf(
 			"void %s_Delete(%s* self) {\n"+
-				"\tdelete static_cast<%s*>(self);\n"+
+				"\tdelete self;\n"+
 				"}\n"+
 				"\n",
 			c.ClassName, c.ClassName,
-			c.ClassName,
 		))
 	}
 
