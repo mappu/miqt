@@ -8,9 +8,23 @@ import (
 
 func (p CppParameter) RenderTypeCpp() string {
 	ret := p.ParameterType
+	switch p.ParameterType {
+	case "uint":
+		ret = "unsigned int"
+	case "ushort":
+		ret = "unsigned short"
+	case "ulong":
+		ret = "unsigned long"
+	case "qlonglong":
+		ret = "int64_t"
+	case "qulonglong":
+		ret = "uint64_t"
+	}
+
 	if p.Pointer || p.ByRef {
 		ret += "*"
 	}
+
 	return ret // ignore const
 }
 
