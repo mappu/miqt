@@ -21,10 +21,15 @@ func astTransformOverloads(parsed *CppParsedHeader) {
 			// Collision - rename
 			anyChange = true
 
+			rootMethodName := m.OverrideMethodName
+			if rootMethodName == "" {
+				rootMethodName = m.MethodName
+			}
+
 			ctr := 2
 			var proposedName string
 			for {
-				proposedName = fmt.Sprintf("%s%d", m.MethodName, ctr)
+				proposedName = fmt.Sprintf("%s%d", rootMethodName, ctr)
 				if _, ok := existing[proposedName]; !ok {
 					break
 				}
@@ -33,7 +38,7 @@ func astTransformOverloads(parsed *CppParsedHeader) {
 			}
 
 			existing[proposedName] = struct{}{}
-			m.OverrideMethodName = m.MethodName
+			m.OverrideMethodName = rootMethodName
 			m.MethodName = proposedName
 			c.Methods[j] = m
 		}
