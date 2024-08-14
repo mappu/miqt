@@ -130,28 +130,8 @@ func emitParametersCABI2CppForwarding(params []CppParameter) (preamble string, f
 	return preamble, strings.Join(tmp, ", ")
 }
 
-func emitBindingHeader(src *CppParsedHeader, filename string) (string, error) {
-	ret := strings.Builder{}
-
-	includeGuard := "GEN_" + strings.ToUpper(strings.Replace(filename, `.`, `_`, -1))
-
-	ret.WriteString(`#ifndef ` + includeGuard + `
-#define ` + includeGuard + `
-
-#include <stdbool.h>
-#include <stddef.h>
-#include <stdint.h>
-
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-`)
-
-	// Find all referenced Qt types in this file, and generate PVoid typedefs
-	// for them
+func getReferencedTypes(src *CppParsedHeader) []string {
+	// Find all referenced Qt types in this file
 	foundTypes := map[string]struct{}{}
 	for _, c := range src.Classes {
 		foundTypes[c.ClassName] = struct{}{}
@@ -175,16 +155,52 @@ extern "C" {
 	}
 	foundTypesList := make([]string, 0, len(foundTypes))
 	for ft := range foundTypes {
-		foundTypesList = append(foundTypesList, ft)
-	}
-	sort.Strings(foundTypesList)
-	for _, ft := range foundTypesList {
 		if strings.HasPrefix(ft, "QList<") {
 			continue
 		}
 
-		ret.WriteString(`typedef void* P` + ft + ";\n")
+		foundTypesList = append(foundTypesList, ft)
 	}
+	sort.Strings(foundTypesList)
+
+	return foundTypesList
+}
+
+func emitBindingHeader(src *CppParsedHeader, filename string) (string, error) {
+	ret := strings.Builder{}
+
+	includeGuard := "GEN_" + strings.ToUpper(strings.Replace(filename, `.`, `_`, -1))
+
+	ret.WriteString(`#ifndef ` + includeGuard + `
+#define ` + includeGuard + `
+
+#include <stdbool.h>
+#include <stddef.h>
+#include <stdint.h>
+
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+`)
+
+	foundTypesList := getReferencedTypes(src)
+
+	ret.WriteString("#ifdef __cplusplus\n")
+
+	for _, ft := range foundTypesList {
+		ret.WriteString(`class ` + ft + ";\n")
+	}
+
+	ret.WriteString("#else\n")
+
+	for _, ft := range foundTypesList {
+		ret.WriteString(`typedef struct ` + ft + " " + ft + ";\n")
+	}
+
+	ret.WriteString("#endif\n")
 
 	ret.WriteString("\n")
 
@@ -221,6 +237,12 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 #include "` + filename + `"
 
 `)
+
+	for _, ref := range getReferencedTypes(src) {
+		ret.WriteString(`#include <` + ref + ">\n")
+	}
+
+	ret.WriteString("\n")
 
 	for _, c := range src.Classes {
 
