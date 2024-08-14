@@ -22,11 +22,11 @@ func emitReturnTypeCabi(p CppParameter) string {
 		return "void" // Will be handled separately
 
 	} else if (p.Pointer || p.ByRef) && p.QtClassType() {
-		return "P" + p.ParameterType // CABI type
+		return p.ParameterType + "*" // CABI type
 
 	} else if p.QtClassType() && !p.Pointer {
 		// Even if C++ returns by value, CABI is returning a heap copy (new'd, not malloc'd)
-		return "P" + p.ParameterType // CABI type
+		return p.ParameterType + "*" // CABI type
 		// return "void" // Handled separately with an _out pointer
 
 	} else {
@@ -51,18 +51,18 @@ func emitParametersCabi(m CppMethod, selfType string) string {
 			// The Go code has called this with two arguments: T* and len
 			// Declare that we take two parameters
 			// TODO support QList<int>
-			tmp = append(tmp, "P"+t.ParameterType+" "+p.ParameterName+", size_t "+p.ParameterName+"_len")
+			tmp = append(tmp, t.ParameterType+"* "+p.ParameterName+", size_t "+p.ParameterName+"_len")
 
 		} else if (p.ByRef || p.Pointer) && p.QtClassType() {
 			// Pointer to Qt type
 			// Replace with taking our PQ typedef by value
-			tmp = append(tmp, "P"+p.ParameterType+" "+p.ParameterName)
+			tmp = append(tmp, p.ParameterType+"* "+p.ParameterName)
 
 		} else if p.QtClassType() {
 			// Qt type passed by value
 			// The CABI will unconditionally take these by pointer and dereference them
 			// when passing to C++
-			tmp = append(tmp, "P"+p.ParameterType+" "+p.ParameterName)
+			tmp = append(tmp, p.ParameterType+"* "+p.ParameterName)
 
 		} else {
 			// RenderTypeCpp renders both pointer+reference as pointers
@@ -79,7 +79,7 @@ func emitParametersCabi(m CppMethod, selfType string) string {
 		tmp = append(tmp, "char** _out, size_t* _out_Strlen")
 
 	} else if t, ok := m.ReturnType.QListOf(); ok {
-		tmp = append(tmp, "P"+t.ParameterType+"* _out, size_t* _out_len")
+		tmp = append(tmp, t.ParameterType+"** _out, size_t* _out_len")
 
 	}
 
@@ -102,7 +102,7 @@ func emitParametersCABI2CppForwarding(params []CppParameter) (preamble string, f
 			preamble += "\t" + p.RenderTypeCpp() + " " + p.ParameterName + "_QList;\n"
 			preamble += "\t" + p.ParameterName + "_QList.reserve(" + p.ParameterName + "_len);\n"
 			preamble += "\tfor(size_t i = 0; i < " + p.ParameterName + "_len; ++i) {\n"
-			preamble += "\t\t" + p.ParameterName + "_QList.push_back(" + p.ParameterName + "[i]);\n"
+			preamble += "\t\t" + p.ParameterName + "_QList.push_back(" + p.ParameterName + "++);\n"
 			preamble += "\t}\n"
 			tmp = append(tmp, p.ParameterName+"_QList")
 
@@ -110,17 +110,17 @@ func emitParametersCABI2CppForwarding(params []CppParameter) (preamble string, f
 			// We changed RenderTypeCpp() to render this as a pointer
 			// Need to dereference so we can pass as reference to the actual Qt C++ function
 			//tmp = append(tmp, "*"+p.ParameterName)
-			tmp = append(tmp, "*static_cast<"+p.ParameterType+"*>("+p.ParameterName+")")
+			tmp = append(tmp, "*"+p.ParameterName)
 
 		} else if p.QtClassType() && !p.Pointer {
 			// CABI takes all Qt types by pointer, even if C++ wants them by value
 			// Dereference the passed-in pointer
-			tmp = append(tmp, "*static_cast<"+p.ParameterType+"*>("+p.ParameterName+")")
+			tmp = append(tmp, "*"+p.ParameterName)
 
-		} else if p.QtClassType() && p.Pointer {
+			// } else if p.QtClassType() && p.Pointer {
 			// We need this static_cast<> anyway to convert from PQt (void*) to
 			// the real Qt type
-			tmp = append(tmp, "static_cast<"+p.ParameterType+"*>("+p.ParameterName+")")
+			// tmp = append(tmp, "static_cast<"+p.ParameterType+"*>("+p.ParameterName+")")
 
 		} else {
 			tmp = append(tmp, p.ParameterName)
@@ -191,15 +191,15 @@ extern "C" {
 	for _, c := range src.Classes {
 
 		for i, ctor := range c.Ctors {
-			ret.WriteString(fmt.Sprintf("P%s %s_new%s(%s);\n", c.ClassName, c.ClassName, maybeSuffix(i), emitParametersCabi(ctor, "")))
+			ret.WriteString(fmt.Sprintf("%s %s_new%s(%s);\n", c.ClassName+"*", c.ClassName, maybeSuffix(i), emitParametersCabi(ctor, "")))
 		}
 
 		for _, m := range c.Methods {
-			ret.WriteString(fmt.Sprintf("%s %s_%s(%s);\n", emitReturnTypeCabi(m.ReturnType), c.ClassName, m.SafeMethodName(), emitParametersCabi(m, "P"+c.ClassName)))
+			ret.WriteString(fmt.Sprintf("%s %s_%s(%s);\n", emitReturnTypeCabi(m.ReturnType), c.ClassName, m.SafeMethodName(), emitParametersCabi(m, c.ClassName+"*")))
 		}
 
 		// delete
-		ret.WriteString(fmt.Sprintf("void %s_Delete(P%s self);\n", c.ClassName, c.ClassName))
+		ret.WriteString(fmt.Sprintf("void %s_Delete(%s* self);\n", c.ClassName, c.ClassName))
 
 		ret.WriteString("\n")
 	}
@@ -227,7 +227,7 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 		for i, ctor := range c.Ctors {
 			preamble, forwarding := emitParametersCABI2CppForwarding(ctor.Parameters)
 			ret.WriteString(fmt.Sprintf(
-				"P%s %s_new%s(%s) {\n"+
+				"%s* %s_new%s(%s) {\n"+
 					"%s"+
 					"\treturn new %s(%s);\n"+
 					"}\n"+
@@ -269,7 +269,7 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 				// afterCall = "\t// Copy-construct value returned type into Go-allocated POCO\n"
 				// afterCall += "\t_*out = ret;\n"
 				afterCall = "\t// Copy-construct value returned type into heap-allocated copy\n"
-				afterCall += "\treturn static_cast<P" + m.ReturnType.ParameterType + ">(new " + m.ReturnType.ParameterType + "(ret));\n"
+				afterCall += "\treturn static_cast<" + m.ReturnType.ParameterType + "*>(new " + m.ReturnType.ParameterType + "(ret));\n"
 
 			} else if m.ReturnType.Const {
 				shouldReturn += "(" + emitReturnTypeCabi(m.ReturnType) + ") "
@@ -289,7 +289,7 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 					"%s"+
 					"}\n"+
 					"\n",
-				emitReturnTypeCabi(m.ReturnType), c.ClassName, m.SafeMethodName(), emitParametersCabi(m, "P"+c.ClassName),
+				emitReturnTypeCabi(m.ReturnType), c.ClassName, m.SafeMethodName(), emitParametersCabi(m, c.ClassName+"*"),
 				preamble,
 				shouldReturn, c.ClassName, nativeMethodName, forwarding,
 				afterCall,
@@ -298,7 +298,7 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 
 		// Delete
 		ret.WriteString(fmt.Sprintf(
-			"void %s_Delete(P%s self) {\n"+
+			"void %s_Delete(%s* self) {\n"+
 				"\tdelete static_cast<%s*>(self);\n"+
 				"}\n"+
 				"\n",

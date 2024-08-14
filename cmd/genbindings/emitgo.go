@@ -59,7 +59,7 @@ func emitParametersGo2CABIForwarding(m CppMethod) (preamble string, fowarding st
 			// TODO handle QList<int>
 
 			preamble += "// For the C ABI, malloc a C array of raw pointers\n"
-			preamble += p.ParameterName + "_CArray := (*[0xffff]C.P" + listType.ParameterType + ")(C.malloc(c.ulong(8 * len(" + p.ParameterName + "))))\n"
+			preamble += p.ParameterName + "_CArray := (*[0xffff]*C." + listType.ParameterType + ")(C.malloc(c.ulong(8 * len(" + p.ParameterName + "))))\n"
 			preamble += "defer C.free(" + p.ParameterName + "_CArray)\n"
 			preamble += "for i := range " + p.ParameterName + "{\n"
 			preamble += p.ParameterName + "_CArray[i] = " + p.ParameterName + "[i].cPointer()\n"
@@ -117,7 +117,7 @@ import "C"
 
 		ret.WriteString(`
 		type ` + c.ClassName + ` struct {
-			h C.P` + c.ClassName + `
+			h *C.` + c.ClassName + `
 		`)
 
 		// Embed all inherited types to directly allow calling inherited methods
@@ -128,7 +128,7 @@ import "C"
 		ret.WriteString(`
 		}
 		
-		func (this *` + c.ClassName + `) cPointer() C.P` + c.ClassName + ` {
+		func (this *` + c.ClassName + `) cPointer() *C.` + c.ClassName + ` {
 			if this == nil {
 				return nil
 			}
@@ -143,7 +143,7 @@ import "C"
 		}
 
 		ret.WriteString(`
-			func new` + c.ClassName + `(h C.P` + c.ClassName + `) {
+			func new` + c.ClassName + `(h *C.` + c.ClassName + `) {
 				return &` + c.ClassName + `{` + localInit + `}
 			}
 			
@@ -189,7 +189,7 @@ import "C"
 				shouldReturn = ""
 				returnTypeDecl = "[]" + t.RenderTypeGo()
 
-				preamble += "var _out *C.P" + t.ParameterType + " = nil\n"
+				preamble += "var _out **C." + t.ParameterType + " = nil\n"
 				preamble += "var _out_len C.size_t = 0\n"
 				afterword += "ret := make([]" + t.RenderTypeGo() + ", _out_Strlen)\n"
 				afterword += "for i := 0; i < _out_len; i++ {\n"
