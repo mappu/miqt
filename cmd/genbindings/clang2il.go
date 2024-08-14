@@ -61,6 +61,18 @@ func parseHeader(inner []interface{}) (*CppParsedHeader, error) {
 		case "FunctionDecl":
 			// TODO
 
+		case "FunctionTemplateDecl":
+			// TODO
+
+		case "CXXConstructorDecl":
+			// TODO (why is this at the top level? e.g qobject.h)
+
+		case "CXXDestructorDecl":
+			// ignore
+
+		case "CXXConversionDecl":
+			// TODO (e.g. qbytearray.h)
+
 		case "TypedefDecl":
 			// Must have a name
 			nodename, ok := node["name"].(string)
