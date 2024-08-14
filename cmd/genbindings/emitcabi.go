@@ -280,11 +280,11 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 			} else if t, ok := m.ReturnType.QListOf(); ok {
 				shouldReturn = m.ReturnType.ParameterType + " ret = "
 				afterCall += "\t// Convert QList<> from C++ memory to manually-managed C memory\n"
-				afterCall += "\t*_out = malloc(sizeof(" + t.RenderTypeCpp() + ") * ret.length());\n"
+				afterCall += "\t*_out = static_cast<" + t.RenderTypeCpp() + ">(malloc(sizeof(" + t.RenderTypeCpp() + ") * ret.length()));\n"
 				afterCall += "\tfor (int i = 0, e = ret.length(); i < e; ++i) {\n"
-				afterCall += "\t\t(*_out)[i] = ret[i];\n"
+				afterCall += "\t\t_out[i] = ret[i];\n"
 				afterCall += "\t}\n"
-				afterCall += "\t*_out_len = ret.length()\n"
+				afterCall += "\t*_out_len = ret.length();\n"
 
 			} else if m.ReturnType.QtClassType() && !m.ReturnType.Pointer {
 				shouldReturn = m.ReturnType.ParameterType + " ret = "
