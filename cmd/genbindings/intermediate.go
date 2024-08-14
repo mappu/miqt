@@ -44,6 +44,7 @@ func (nm CppMethod) SafeMethodName() string {
 	replacer := strings.NewReplacer(
 
 		`==`, `Equal`,
+		`!=`, `NotEqual`,
 		`>=`, `GreaterOrEqual`,
 		`<=`, `LesserOrEqual`,
 		`=`, `Assign`,
