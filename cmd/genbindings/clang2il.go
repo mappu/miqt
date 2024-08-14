@@ -179,6 +179,9 @@ nextMethod:
 			// These seem to have no useful content
 
 		case "CXXConstructorDecl":
+			if !visibility {
+				continue // Skip private/protected
+			}
 
 			if ret.Abstract {
 				continue // The bindings can't construct an abstract class
