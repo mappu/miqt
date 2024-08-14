@@ -25,6 +25,20 @@ func (p CppParameter) QListOf() (CppParameter, bool) {
 	return CppParameter{}, false
 }
 
+func (p CppParameter) IntType() bool {
+	switch p.ParameterType {
+	case "int", "uint",
+		"short", "ushort",
+		// "char", "uchar", // Don't count char or char* as integer types that need cast assertions
+		"long", "ulong",
+		"longlong", "ulonglong", "qlonglong", "qulonglong", "int64_t", "uint64_t",
+		"double", "float", "qreal":
+		return true
+	default:
+		return false
+	}
+}
+
 type CppProperty struct {
 	PropertyName string
 	PropertyType string

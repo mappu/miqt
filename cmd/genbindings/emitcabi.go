@@ -106,6 +106,15 @@ func emitParametersCABI2CppForwarding(params []CppParameter) (preamble string, f
 			preamble += "\t}\n"
 			tmp = append(tmp, p.ParameterName+"_QList")
 
+		} else if p.IntType() {
+			// Use the raw ParameterType to select an explicit integer overload
+			// Don't use RenderTypeCpp() since it canonicalizes some int types for CABI
+			castType := p.ParameterType
+			if p.Pointer {
+				castType += "*"
+			}
+			tmp = append(tmp, "static_cast<"+castType+">("+p.ParameterName+")")
+
 		} else if p.ByRef {
 			// We changed RenderTypeCpp() to render this as a pointer
 			// Need to dereference so we can pass as reference to the actual Qt C++ function
