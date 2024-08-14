@@ -153,15 +153,22 @@ func emitParametersCABI2CppForwarding(params []CppParameter) (preamble string, f
 	return preamble, strings.Join(tmp, ", ")
 }
 
+// getReferencedTypes finds all referenced Qt types in this file.
 func getReferencedTypes(src *CppParsedHeader) []string {
-	// Find all referenced Qt types in this file
+
 	foundTypes := map[string]struct{}{}
 	for _, c := range src.Classes {
+
 		foundTypes[c.ClassName] = struct{}{}
+
 		for _, ctor := range c.Ctors {
 			for _, p := range ctor.Parameters {
 				if p.QtClassType() {
 					foundTypes[p.ParameterType] = struct{}{}
+				}
+				if t, ok := p.QListOf(); ok && t.QtClassType() {
+					foundTypes["QList"] = struct{}{}
+					foundTypes[t.ParameterType] = struct{}{}
 				}
 			}
 		}
@@ -170,12 +177,21 @@ func getReferencedTypes(src *CppParsedHeader) []string {
 				if p.QtClassType() {
 					foundTypes[p.ParameterType] = struct{}{}
 				}
+				if t, ok := p.QListOf(); ok && t.QtClassType() {
+					foundTypes["QList"] = struct{}{}
+					foundTypes[t.ParameterType] = struct{}{}
+				}
 			}
 			if m.ReturnType.QtClassType() {
 				foundTypes[m.ReturnType.ParameterType] = struct{}{}
 			}
+			if t, ok := m.ReturnType.QListOf(); ok && t.QtClassType() {
+				foundTypes["QList"] = struct{}{}
+				foundTypes[t.ParameterType] = struct{}{}
+			}
 		}
 	}
+
 	foundTypesList := make([]string, 0, len(foundTypes))
 	for ft := range foundTypes {
 		if strings.HasPrefix(ft, "QList<") {
@@ -214,12 +230,18 @@ extern "C" {
 	ret.WriteString("#ifdef __cplusplus\n")
 
 	for _, ft := range foundTypesList {
+		if ft == "QList" {
+			continue
+		}
 		ret.WriteString(`class ` + ft + ";\n")
 	}
 
 	ret.WriteString("#else\n")
 
 	for _, ft := range foundTypesList {
+		if ft == "QList" {
+			continue
+		}
 		ret.WriteString(`typedef struct ` + ft + " " + ft + ";\n")
 	}
 
@@ -262,6 +284,9 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 `)
 
 	for _, ref := range getReferencedTypes(src) {
+		if ref[0] != 'Q' {
+			continue
+		}
 		ret.WriteString(`#include <` + ref + ">\n")
 	}
 
