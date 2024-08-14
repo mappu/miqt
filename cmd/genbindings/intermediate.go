@@ -84,6 +84,12 @@ type CppClass struct {
 	Props     []CppProperty
 }
 
+type CppTypedef struct {
+	Name    string
+	Typedef string
+}
+
 type CppParsedHeader struct {
-	Classes []CppClass
+	Typedefs []CppTypedef
+	Classes  []CppClass
 }

@@ -61,6 +61,22 @@ func parseHeader(inner []interface{}) (*CppParsedHeader, error) {
 		case "FunctionDecl":
 			// TODO
 
+		case "TypedefDecl":
+			// Must have a name
+			nodename, ok := node["name"].(string)
+			if !ok {
+				return nil, errors.New("node has no name")
+			}
+
+			if typ, ok := node["type"].(map[string]interface{}); ok {
+				if qualType, ok := typ["qualType"].(string); ok {
+					ret.Typedefs = append(ret.Typedefs, CppTypedef{
+						Name:    nodename,
+						Typedef: qualType,
+					})
+				}
+			}
+
 		case "CXXMethodDecl":
 			// A C++ class method implementation directly in the header
 			// Skip over these
