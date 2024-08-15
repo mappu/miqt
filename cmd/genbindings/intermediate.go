@@ -63,6 +63,9 @@ func (nm CppMethod) SafeMethodName() string {
 		`>=`, `GreaterOrEqual`,
 		`<=`, `LesserOrEqual`,
 		`=`, `Assign`,
+
+		`<<`, `ShiftLeft`, // Qt classes use it more for stream functions e.g. in QDataStream
+		`>>`, `ShiftRight`,
 		`>`, `Greater`,
 		`<`, `Lesser`,
 
