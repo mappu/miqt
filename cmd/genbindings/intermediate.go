@@ -25,6 +25,11 @@ func (p CppParameter) QListOf() (CppParameter, bool) {
 	return CppParameter{}, false
 }
 
+func (p CppParameter) QMapOf() bool {
+	return strings.HasPrefix(p.ParameterType, `QMap<`) ||
+		strings.HasPrefix(p.ParameterType, `QHash<`) // TODO support this
+}
+
 func (p CppParameter) IntType() bool {
 	switch p.ParameterType {
 	case "int", "unsigned int", "uint",

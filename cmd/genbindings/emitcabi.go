@@ -334,6 +334,9 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 		if ref[0] != 'Q' {
 			continue
 		}
+		if ref == "QPlatformPixmap" {
+			continue // This class doesn't have a <> version to include
+		}
 		ret.WriteString(`#include <` + ref + ">\n")
 	}
 

@@ -1,6 +1,7 @@
 package main
 
 import (
+	"C"
 	"go/format"
 	"log"
 	"sort"
@@ -236,7 +237,7 @@ import "C"
 
 			shouldReturn := "return "
 			afterword := ""
-			returnTypeDecl := m.ReturnType.ParameterType // FIXME handle byRef/const here too
+			returnTypeDecl := m.ReturnType.RenderTypeGo() // FIXME handle byRef/const here too
 
 			if m.ReturnType.ParameterType == "void" && !m.ReturnType.Pointer {
 				shouldReturn = ""
@@ -244,6 +245,13 @@ import "C"
 
 			} else if m.ReturnType.ParameterType == "void" && m.ReturnType.Pointer {
 				returnTypeDecl = "interface{}"
+
+			} else if m.ReturnType.ParameterType == "char" && m.ReturnType.Pointer {
+				// Qt functions normally return QString - anything returning char*
+				// is something like QByteArray.Data() where it returns an unsafe
+				// internal pointer
+				imports["unsafe"] = struct{}{}
+				returnTypeDecl = "unsafe.Pointer"
 
 			} else if m.ReturnType.ParameterType == "QString" {
 				shouldReturn = ""

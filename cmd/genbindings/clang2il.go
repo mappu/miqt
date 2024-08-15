@@ -342,6 +342,16 @@ func parseMethod(node map[string]interface{}, mm *CppMethod) error {
 		}
 	}
 
+	// Fixups
+	// QDataStream.operator<< return a reference to QDataStream, but have a private
+	// copy constructor
+	// The bindings don't know it's the same object. This is just a trick for a more
+	// ergonomic C++ API but has no real effect
+	// Wipe out
+	if (mm.MethodName == "operator<<" || mm.MethodName == "operator>>" || mm.MethodName == "writeBytes") && mm.ReturnType.ParameterType == "QDataStream" && mm.ReturnType.ByRef {
+		mm.ReturnType = CppParameter{ParameterType: "void"}
+	}
+
 	return nil
 }
 
@@ -371,6 +381,16 @@ func parseTypeString(typeString string) (CppParameter, []CppParameter, error) {
 
 	returnType := parseSingleTypeString(strings.TrimSpace(typeString[0:opos]))
 
+	// Skip functions that return ints-by-reference since the ergonomics don't
+	// go through the binding
+	if returnType.IntType() && returnType.ByRef {
+		return CppParameter{}, nil, ErrTooComplex // e.g. QSize::rheight()
+	}
+
+	if returnType.QMapOf() {
+		return CppParameter{}, nil, ErrTooComplex // e.g. QVariant constructor
+	}
+
 	inner := typeString[opos+1 : epos]
 
 	// Should be no more brackets
@@ -386,6 +406,25 @@ func parseTypeString(typeString string) (CppParameter, []CppParameter, error) {
 
 		insert := parseSingleTypeString(p)
 
+		if insert.QMapOf() {
+			return CppParameter{}, nil, ErrTooComplex // Example???
+		}
+		if insert.ParameterType == "QList<QVariant>" {
+			return CppParameter{}, nil, ErrTooComplex // e.g. QVariant constructor - this has a deleted copy-constructor so we can't get it over the CABI boundary by value
+		}
+		if insert.ParameterType == "void **" {
+			return CppParameter{}, nil, ErrTooComplex // e.g. qobjectdefs.h QMetaObject->Activate()
+		}
+		if insert.ParameterType == "void" && insert.Pointer {
+			return CppParameter{}, nil, ErrTooComplex // e.g. qobjectdefs.h QMetaObject->InvokeOnGadget()
+		}
+		if insert.ParameterType == "char *&" {
+			return CppParameter{}, nil, ErrTooComplex // e.g. QDataStream.operator<<()
+		}
+		if insert.ParameterType == "qfloat16" {
+			return CppParameter{}, nil, ErrTooComplex // e.g. QDataStream - there is no such half-float type in C or Go
+		}
+
 		if insert.ParameterType != "" {
 			ret = append(ret, insert)
 		}
@@ -399,8 +438,13 @@ func parseSingleTypeString(p string) CppParameter {
 	tokens := strings.Split(strings.TrimSpace(p), " ")
 	insert := CppParameter{}
 	for _, tok := range tokens {
-		if tok == "const" {
+		if tok == "" {
+			continue // extra space
+		} else if tok == "const" || tok == "*const" {
+			// *const happens for QPixmap, clang reports `const char *const *` which
+			// isn't even valid syntax
 			insert.Const = true
+
 		} else if tok == "&" { // U+0026
 			insert.ByRef = true
 		} else if tok == "*" {
