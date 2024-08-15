@@ -18,7 +18,7 @@ Phase 1
 	- [X] Class inheritance
 		- [X] Detect in AST
 		- [X] ~~Downcast helper methods~~ Direct type available
-	- [ ] Member variables
+	- [ ] Public member variables
 	- [ ] Static methods (e.g. QWidget::setTabOrder)
 	- [X] Return of class types passed by pointer
 	- [X] Return of class types passed by value (e.g. `_Icon()`)
@@ -29,16 +29,15 @@ Phase 1
 	- [X] QString type conversion
 		- [X] For parameters
 		- [X] For return types
-		- [ ] Bypass malloc/free for zero-length strings
 	- [X] QList type conversion (e.g. QWidget::Actions())
 		- [X] For parameters
 		- [X] For return types
-		- [ ] Bypass malloc/free for zero-length arrays
-	- [ ] QVector type conversion
-	- [ ] QByteArray type conversion(?)
+	- [X] QStringList combination type conversion 
+	- [X] ~~QByteArray type conversion~~ Seems to be fine as a non-templated type
 	- [X] Hide private methods
 	- [X] Optional parameters
-	- [ ] Overloaded methods
+	- [X] Overloaded methods
+	- [ ] Simple typedefs (e.g. WId)
 	- [ ] Qt:: namespace enums/const values
 		- e.g. Qt::WindowFlags (global)
 		- e.g. QWidget::RenderFlag (per-class)
@@ -46,29 +45,50 @@ Phase 1
 - [ ] QtCore
 - [ ] QtGui
 - [ ] QtWidgets
+- [ ] `connect`
 - [ ] Minimal example
 	- [ ] Calling connect
-	- [ ] Exercising QString interop
-	- [ ] Exercising QList interop
 - [X] Pick a name for the package
 - [ ] Make github repo, rename module
 - [ ] v0 Public release
 
 Phase 2
 
-- [ ] Port examples from other Go Qt bindings
-- [ ] QString helper functions
-- [ ] QList, QVector, QByteArray helper functions
-- [ ] `connect`
-- [ ] Document comparison with other Qt binding packages
-- [ ] Document use for Windows/macOS/Linux
+- [X] ~~QString / QList helper functions~~ Lean on native Go types
+- [ ] Other Qt template containers
+	- [ ] QVector
+	- [ ] QMap / QHash
+	- [ ] QSet
+- [ ] Test edge cases
+	- Exercising QString interop
+	- Exercising QList interop
+	- QByteArray::split returning QList<QByteArray> memory safety
+	- QIcon.SetThemeSearchPaths taking QStringList
+	- Calling methods on base class
+	- Anything where we use runtime.SetFinalizer
+- [ ] Documentation
+	- [ ] Adapt examples from other Go Qt bindings
+	- [ ] Document comparison with other Qt binding packages
+	- [ ] Document use for Windows/macOS/Linux
 
 Wishlist
 
-- [ ] Subclassing
+- [X] Remove P* types (Cgo does support pointers to incomplete C types)
+- [ ] CI action to rebuild bindings
+- [ ] Convert generated cpp files to amalgamation build for faster compilation
+	- https://github.com/golang/go/issues/9887
+- [ ] Consider projecting QByteArray as []byte
+- [ ] Subclassing (e.g. render delegates)
 - [ ] Custom Q_PROPERTY support
 - [ ] uic implementation
 - [ ] Use clang ast's `mangledName` to make a dlsym/LazyDLL cgo-free version 
+- [ ] Copy Qt documentation into function doc comments for IDE hinting
 - [ ] Generate bindings for all current Qt versions (Debian Qt / Qt LTS), expose as git tags
 - [ ] Reuse CABI to generate Qt bindings for other non-Go languages
 - [ ] Reduce necessary memory copies around ABI boundaries
+	- [ ] Bypass malloc/free for zero-length strings
+	- [ ] Bypass malloc/free for zero-length arrays
+- [ ] Generate other Qt libraries e.g. QtSvg
+- [ ] Document process for binding more libraries e.g. QScintilla, QZXing
+- [ ] Qt Creator integration
+- [ ] Get down to zero ErrTooComplex skips
