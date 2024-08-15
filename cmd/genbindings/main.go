@@ -16,13 +16,28 @@ func main() {
 	clang := flag.String("clang", "clang", "Custom path to clang")
 	cflags := flag.String("cflags", `-DQT_WIDGETS_LIB -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtCore -DQT_GUI_LIB -I/usr/include/x86_64-linux-gnu/qt5/QtGui -DQT_CORE_LIB`, "Cflags to pass to clang (e.g. `pkg-config --cflags Qt5Widgets`)")
 	outDir := flag.String("outdir", "../../qt", "Output directory for generated gen_** files")
-	dumpIL := flag.String("dumpil", "", "(Optional) File to dump intermediate IL JSON")
 
 	flag.Parse()
 
 	includeFiles := []string{
 		"/usr/include/x86_64-linux-gnu/qt5/QtCore/qobject.h",
+		"/usr/include/x86_64-linux-gnu/qt5/QtCore/qcoreevent.h",
+		"/usr/include/x86_64-linux-gnu/qt5/QtCore/qmetaobject.h",
+		"/usr/include/x86_64-linux-gnu/qt5/QtCore/qobjectdefs.h",
 		"/usr/include/x86_64-linux-gnu/qt5/QtCore/qbytearray.h",
+		"/usr/include/x86_64-linux-gnu/qt5/QtCore/qsize.h",
+		"/usr/include/x86_64-linux-gnu/qt5/QtCore/qrect.h",
+		"/usr/include/x86_64-linux-gnu/qt5/QtCore/qpoint.h",
+		"/usr/include/x86_64-linux-gnu/qt5/QtCore/qmargins.h",
+		"/usr/include/x86_64-linux-gnu/qt5/QtCore/qthread.h",
+		"/usr/include/x86_64-linux-gnu/qt5/QtCore/qdatastream.h",
+		"/usr/include/x86_64-linux-gnu/qt5/QtCore/qvariant.h",
+
+		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qicon.h",
+		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qiconengine.h",
+		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qpixmap.h",
+		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qbitmap.h",
+		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qpaintdevice.h",
 
 		"/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qwidget.h",
 		"/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qabstractbutton.h",
@@ -74,22 +89,23 @@ func main() {
 			panic(err)
 		}
 
-		if *dumpIL != "" {
+		// AST transforms on our IL
+		astTransformBlacklist(parsed)
+		astTransformOptional(parsed)
+		astTransformOverloads(parsed)
+
+		{
+			// Save the IL file for debug inspection
 			jb, err := json.MarshalIndent(parsed, "", "\t")
 			if err != nil {
 				panic(err)
 			}
 
-			err = ioutil.WriteFile(*dumpIL, jb, 0644)
+			err = ioutil.WriteFile(cacheFile+".ours.json", jb, 0644)
 			if err != nil {
 				panic(err)
 			}
 		}
-
-		// AST transforms on our IL
-		astTransformBlacklist(parsed)
-		astTransformOptional(parsed)
-		astTransformOverloads(parsed)
 
 		// Emit 3 code files from the intermediate format
 		outputName := filepath.Join(*outDir, "gen_"+strings.TrimSuffix(filepath.Base(inputHeader), `.h`))
