@@ -11,6 +11,47 @@ func (p CppParameter) RenderTypeGo() string {
 	if p.Pointer && p.ParameterType == "char" {
 		return "string"
 	}
+	if !p.Pointer && p.IntType() {
+		switch p.ParameterType {
+		case "char", "qint8":
+			return "byte"
+		case "unsigned char", "quint8":
+			return "byte"
+		case "short", "qint16":
+			return "int16"
+		case "ushort", "quint16":
+			return "uint16"
+		case "long":
+			// Windows ILP32 - 32-bits
+			// Linux LP64 - 64-bits
+			if C.sizeof_long == 4 {
+				return "int32"
+			} else {
+				return "int64"
+			}
+		case "ulong", "unsigned long":
+			if C.sizeof_long == 4 {
+				return "uint32"
+			} else {
+				return "uint64"
+			}
+		case "qint32":
+			return "int32"
+		case "quint32":
+			return "uint32"
+		case "qlonglong", "qint64":
+			return "int64"
+		case "qulonglong", "quint64":
+			return "uint64"
+		case "float":
+			return "float32"
+		case "double":
+			return "float64"
+		}
+	}
+	if p.ParameterType == "char" {
+		return "byte"
+	}
 	if p.ParameterType == "QString" {
 		return "string"
 	}

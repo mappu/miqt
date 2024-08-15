@@ -27,11 +27,12 @@ func (p CppParameter) QListOf() (CppParameter, bool) {
 
 func (p CppParameter) IntType() bool {
 	switch p.ParameterType {
-	case "int", "uint",
-		"short", "ushort",
+	case "int", "unsigned int", "uint",
+		"short", "unsigned short", "ushort", "qint16", "quint16",
+		"qint8", "quint8",
 		// "char", "uchar", // Don't count char or char* as integer types that need cast assertions
-		"long", "ulong",
-		"longlong", "ulonglong", "qlonglong", "qulonglong", "int64_t", "uint64_t",
+		"long", "unsigned long", "ulong", "qint32", "quint32",
+		"longlong", "ulonglong", "qlonglong", "qulonglong", "qint64", "quint64", "int64_t", "uint64_t", "long long", "unsigned long long",
 		"double", "float", "qreal":
 		return true
 	default:

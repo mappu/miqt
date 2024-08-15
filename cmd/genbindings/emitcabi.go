@@ -11,14 +11,26 @@ func (p CppParameter) RenderTypeCpp() string {
 	switch p.ParameterType {
 	case "uint":
 		ret = "unsigned int"
-	case "ushort":
-		ret = "unsigned short"
 	case "ulong":
 		ret = "unsigned long"
-	case "qlonglong":
+	case "qint8":
+		ret = "int8_t"
+	case "quint8":
+		ret = "uint8_t"
+	case "qint16", "short":
+		ret = "int16_t"
+	case "quint16", "ushort", "unsigned short":
+		ret = "uint16_t"
+	case "qint32":
+		ret = "int32_t"
+	case "quint32":
+		ret = "uint32_t"
+	case "qlonglong", "qint64":
 		ret = "int64_t"
-	case "qulonglong":
+	case "qulonglong", "quint64":
 		ret = "uint64_t"
+	case "qfloat16":
+		ret = "_Float16" // No idea where this typedef comes from, but it exists
 	}
 
 	if p.Pointer || p.ByRef {
@@ -123,11 +135,23 @@ func emitParametersCABI2CppForwarding(params []CppParameter) (preamble string, f
 		} else if p.IntType() {
 			// Use the raw ParameterType to select an explicit integer overload
 			// Don't use RenderTypeCpp() since it canonicalizes some int types for CABI
+			castSrc := p.ParameterName
 			castType := p.ParameterType
 			if p.Pointer {
 				castType += "*"
 			}
-			tmp = append(tmp, "static_cast<"+castType+">("+p.ParameterName+")")
+			if p.ByRef { // e.g. QDataStream::operator>>() overloads
+				castSrc = "*" + castSrc
+				castType += "&" // believe it or not, this is legal
+
+				if p.ParameterType == "qint64" || p.ParameterType == "quint64" {
+					// QDataStream::operator>>()
+					// CABI has these as int64_t* (long int) which fails a static_cast to qint64& (long long int&)
+					// Hack a hard C-style cast
+					castSrc = "(" + castType + ")(" + castSrc + ")"
+				}
+			}
+			tmp = append(tmp, "static_cast<"+castType+">("+castSrc+")")
 
 		} else if p.ByRef {
 			// We changed RenderTypeCpp() to render this as a pointer
