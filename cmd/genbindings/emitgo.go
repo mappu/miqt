@@ -106,16 +106,36 @@ func emitParametersGo2CABIForwarding(m CppMethod) (preamble string, fowarding st
 			// Go: convert T[] -> t* and len
 			// CABI: create a real QList<>
 
-			// TODO handle QList<int>
+			if listType.ParameterType == "QString" {
+				// Combo
 
-			preamble += "// For the C ABI, malloc a C array of raw pointers\n"
-			preamble += p.ParameterName + "_CArray := (*[0xffff]*C." + listType.ParameterType + ")(C.malloc(c.ulong(8 * len(" + p.ParameterName + "))))\n"
-			preamble += "defer C.free(" + p.ParameterName + "_CArray)\n"
-			preamble += "for i := range " + p.ParameterName + "{\n"
-			preamble += p.ParameterName + "_CArray[i] = " + p.ParameterName + "[i].cPointer()\n"
-			preamble += "}\n"
+				preamble += "// For the C ABI, malloc two C arrays; raw char* pointers and their lengths\n"
+				preamble += p.ParameterName + "_CArray := (*[0xffff]*C." + listType.ParameterType + ")(C.malloc(c.ulong(8 * len(" + p.ParameterName + "))))\n"
+				preamble += p.ParameterName + "_Lengths := (*[0xffff]*C." + listType.ParameterType + ")(C.malloc(c.ulong(8 * len(" + p.ParameterName + "))))\n"
+				preamble += "defer C.free(" + p.ParameterName + "_CArray)\n"
+				preamble += "defer C.free(" + p.ParameterName + "_Lengths)\n"
+				preamble += "for i := range " + p.ParameterName + "{\n"
+				preamble += "single_cstring := C.CString(" + p.ParameterName + "[i])\n"
+				preamble += "defer C.free(single_cstring)\n"
+				preamble += p.ParameterName + "_CArray[i] = single_cstring\n"
+				preamble += p.ParameterName + "__Lengths[i] = len(" + p.ParameterName + "[i])\n"
+				preamble += "}\n"
 
-			tmp = append(tmp, p.ParameterName+"_CArray, len("+p.ParameterName+")")
+				tmp = append(tmp, p.ParameterName+"_CArray, "+p.ParameterName+"_Lengths, len("+p.ParameterName+")")
+
+			} else {
+
+				// TODO handle QList<int>
+
+				preamble += "// For the C ABI, malloc a C array of raw pointers\n"
+				preamble += p.ParameterName + "_CArray := (*[0xffff]*C." + listType.ParameterType + ")(C.malloc(c.ulong(8 * len(" + p.ParameterName + "))))\n"
+				preamble += "defer C.free(" + p.ParameterName + "_CArray)\n"
+				preamble += "for i := range " + p.ParameterName + "{\n"
+				preamble += p.ParameterName + "_CArray[i] = " + p.ParameterName + "[i].cPointer()\n"
+				preamble += "}\n"
+
+				tmp = append(tmp, p.ParameterName+"_CArray, len("+p.ParameterName+")")
+			}
 
 		} else if p.Pointer && p.ParameterType == "char" {
 			// Single char* argument

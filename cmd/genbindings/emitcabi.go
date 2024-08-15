@@ -74,10 +74,17 @@ func emitParametersCabi(m CppMethod, selfType string) string {
 			tmp = append(tmp, "const char* "+p.ParameterName+", size_t "+p.ParameterName+"_Strlen")
 
 		} else if t, ok := p.QListOf(); ok {
-			// The Go code has called this with two arguments: T* and len
-			// Declare that we take two parameters
-			// TODO support QList<int>
-			tmp = append(tmp, t.ParameterType+"* "+p.ParameterName+", size_t "+p.ParameterName+"_len")
+
+			if t.ParameterType == "QString" {
+				// Combov
+				tmp = append(tmp, "char** "+p.ParameterName+", int64_t* "+p.ParameterName+"_Lengths, size_t "+p.ParameterName+"_len")
+
+			} else {
+				// The Go code has called this with two arguments: T* and len
+				// Declare that we take two parameters
+				// TODO support QList<int>
+				tmp = append(tmp, t.ParameterType+"* "+p.ParameterName+", size_t "+p.ParameterName+"_len")
+			}
 
 		} else if (p.ByRef || p.Pointer) && p.QtClassType() {
 			// Pointer to Qt type
@@ -122,15 +129,31 @@ func emitParametersCABI2CppForwarding(params []CppParameter) (preamble string, f
 			preamble += "\tQString " + p.ParameterName + "_QString = QString::fromUtf8(" + p.ParameterName + ", " + p.ParameterName + "_Strlen);\n"
 			tmp = append(tmp, p.ParameterName+"_QString")
 
-		} else if _, ok := p.QListOf(); ok {
-			// The CABI has accepted two parameters - need to convert to one real QList<>
-			// Create it on the stack
-			preamble += "\t" + p.RenderTypeCpp() + " " + p.ParameterName + "_QList;\n"
-			preamble += "\t" + p.ParameterName + "_QList.reserve(" + p.ParameterName + "_len);\n"
-			preamble += "\tfor(size_t i = 0; i < " + p.ParameterName + "_len; ++i) {\n"
-			preamble += "\t\t" + p.ParameterName + "_QList.push_back(" + p.ParameterName + "++);\n"
-			preamble += "\t}\n"
-			tmp = append(tmp, p.ParameterName+"_QList")
+		} else if listType, ok := p.QListOf(); ok {
+
+			if listType.ParameterType == "QString" {
+
+				// Combo (3 parameters)
+				preamble += "\t" + p.ParameterType + " " + p.ParameterName + "_QList;\n"
+				preamble += "\t" + p.ParameterName + "_QList.reserve(" + p.ParameterName + "_len);\n"
+				preamble += "\tfor(size_t i = 0; i < " + p.ParameterName + "_len; ++i) {\n"
+				preamble += "\t\t" + p.ParameterName + "_QList.push_back(QString::fromUtf8(*" + p.ParameterName + ", *" + p.ParameterName + "_Lengths));\n"
+				preamble += "\t\t" + p.ParameterName + "++;\n"
+				preamble += "\t\t" + p.ParameterName + "_Lengths++;\n"
+				preamble += "\t}\n"
+				tmp = append(tmp, p.ParameterName+"_QList")
+
+			} else {
+
+				// The CABI has accepted two parameters - need to convert to one real QList<>
+				// Create it on the stack
+				preamble += "\t" + p.ParameterType + " " + p.ParameterName + "_QList;\n"
+				preamble += "\t" + p.ParameterName + "_QList.reserve(" + p.ParameterName + "_len);\n"
+				preamble += "\tfor(size_t i = 0; i < " + p.ParameterName + "_len; ++i) {\n"
+				preamble += "\t\t" + p.ParameterName + "_QList.push_back(" + p.ParameterName + "++);\n"
+				preamble += "\t}\n"
+				tmp = append(tmp, p.ParameterName+"_QList")
+			}
 
 		} else if p.IntType() {
 			// Use the raw ParameterType to select an explicit integer overload
@@ -350,13 +373,28 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 				afterCall += "\t*_out_Strlen = b.length();\n"
 
 			} else if t, ok := m.ReturnType.QListOf(); ok {
-				shouldReturn = m.ReturnType.ParameterType + " ret = "
-				afterCall += "\t// Convert QList<> from C++ memory to manually-managed C memory\n"
-				afterCall += "\t*_out = static_cast<" + t.RenderTypeCpp() + ">(malloc(sizeof(" + t.RenderTypeCpp() + ") * ret.length()));\n"
-				afterCall += "\tfor (int i = 0, e = ret.length(); i < e; ++i) {\n"
-				afterCall += "\t\t_out[i] = ret[i];\n"
-				afterCall += "\t}\n"
-				afterCall += "\t*_out_len = ret.length();\n"
+
+				if !t.QtClassType() || (t.QtClassType() && t.Pointer) { // QList<int>, QList<QFoo*>
+
+					shouldReturn = m.ReturnType.ParameterType + " ret = "
+					afterCall += "\t// Convert QList<> from C++ memory to manually-managed C memory\n"
+					afterCall += "\t*_out = static_cast<" + t.RenderTypeCpp() + ">(malloc(sizeof(" + t.RenderTypeCpp() + ") * ret.length()));\n"
+					afterCall += "\tfor (int i = 0, e = ret.length(); i < e; ++i) {\n"
+					afterCall += "\t\t_out[i] = ret[i];\n"
+					afterCall += "\t}\n"
+					afterCall += "\t*_out_len = ret.length();\n"
+
+				} else { // QList<QFoo>
+
+					shouldReturn = m.ReturnType.ParameterType + " ret = "
+					afterCall += "\t// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers\n"
+					afterCall += "\t*_out = static_cast<" + t.RenderTypeCpp() + "*>(malloc(sizeof(" + t.RenderTypeCpp() + "*) * ret.length()));\n"
+					afterCall += "\tfor (int i = 0, e = ret.length(); i < e; ++i) {\n"
+					afterCall += "\t\t_out[i] = new " + t.ParameterType + "(ret[i]);\n"
+					afterCall += "\t}\n"
+					afterCall += "\t*_out_len = ret.length();\n"
+
+				}
 
 			} else if m.ReturnType.QtClassType() && !m.ReturnType.Pointer {
 				shouldReturn = m.ReturnType.ParameterType + " ret = "

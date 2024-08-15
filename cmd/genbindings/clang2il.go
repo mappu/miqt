@@ -398,6 +398,12 @@ func parseSingleTypeString(p string) CppParameter {
 		} else if tok == "WId" {
 			// Transform typedef
 			insert.ParameterType += " uintptr_t"
+		} else if tok == "QStringList" {
+			insert.ParameterType += " QList<QString>"
+		} else if len(tok) > 4 && strings.HasSuffix(tok, "List") {
+			// Typedef e.g. QObjectList
+			// QObjectList is a pointer, but QStringList is a whole custom class
+			insert.ParameterType += " QList<" + tok[0:len(tok)-4] + " *>"
 		} else {
 			// Valid part of the type name
 			insert.ParameterType += " " + tok
