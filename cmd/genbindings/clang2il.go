@@ -306,7 +306,7 @@ func parseMethod(node map[string]interface{}, mm *CppMethod) error {
 				}
 
 				// Block reserved Go words, replace with generic parameters
-				if parmName == "default" || parmName == "const" || parmName == "func" {
+				if goReservedWord(parmName) {
 					parmName += "Val"
 				}
 

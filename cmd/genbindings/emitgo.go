@@ -7,6 +7,15 @@ import (
 	"strings"
 )
 
+func goReservedWord(s string) bool {
+	switch s {
+	case "default", "const", "func", "var", "type", "len", "new", "copy", "import":
+		return true
+	default:
+		return false
+	}
+}
+
 func (p CppParameter) RenderTypeGo() string {
 	if p.Pointer && p.ParameterType == "char" {
 		return "string"
