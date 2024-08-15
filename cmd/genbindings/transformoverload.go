@@ -26,12 +26,28 @@ func astTransformOverloads(parsed *CppParsedHeader) {
 				rootMethodName = m.MethodName
 			}
 
-			ctr := 2
+			ctr := 1
 			var proposedName string
 			for {
-				proposedName = fmt.Sprintf("%s%d", rootMethodName, ctr)
-				if _, ok := existing[proposedName]; !ok {
-					break
+
+				if ctr == 1 {
+					// Fake special-case check
+					// If this is a 1-argument function, try and name it FooFrom{Type}
+					// e.g. NewVariantFromFloat
+					if len(m.Parameters) == 1 {
+
+						proposedName = rootMethodName + "With" + titleCase(m.Parameters[0].ParameterName)
+						if _, ok := existing[proposedName]; !ok {
+							break
+						}
+
+					}
+
+				} else {
+					proposedName = fmt.Sprintf("%s%d", rootMethodName, ctr)
+					if _, ok := existing[proposedName]; !ok {
+						break
+					}
 				}
 
 				ctr++ // Loop until we have a non-colliding name available

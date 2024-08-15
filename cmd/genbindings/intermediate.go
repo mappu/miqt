@@ -88,7 +88,7 @@ func (nm CppMethod) SafeMethodName() string {
 	tmp := replacer.Replace(nm.MethodName)
 
 	// Also make the first letter uppercase so it becomes public in Go
-	return strings.ToUpper(tmp[0:1]) + tmp[1:]
+	return titleCase(tmp)
 }
 
 type CppClass struct {
