@@ -7,11 +7,11 @@ import (
 	"strings"
 )
 
-func parseHeader(inner []interface{}) (*CppParsedHeader, error) {
+func parseHeader(topLevel []interface{}) (*CppParsedHeader, error) {
 
 	var ret CppParsedHeader
 
-	for _, node := range inner {
+	for _, node := range topLevel {
 
 		node, ok := node.(map[string]interface{})
 		if !ok {
@@ -34,8 +34,21 @@ func parseHeader(inner []interface{}) (*CppParsedHeader, error) {
 
 			fmt.Printf("-> %q name=%q\n", kind, nodename)
 
-			if _, ok := node["inner"]; !ok {
-				continue // Forward class declaration only, do not include
+			// Skip over forward class declarations
+			// This is determined in two ways:
+			// 1. If the class has no inner nodes
+			nodeInner, ok := node["inner"].([]interface{})
+			if !ok {
+				continue
+			}
+
+			// 2. If this class has only one `inner` entry that's a VisibilityAttr
+			if len(nodeInner) == 1 {
+				if node, ok := nodeInner[0].(map[string]interface{}); ok {
+					if kind, ok := node["kind"].(string); ok && kind == "VisibilityAttr" {
+						continue
+					}
+				}
 			}
 
 			// Process the inner class definition
@@ -150,7 +163,7 @@ nextMethod:
 			return CppClass{}, errors.New("inner[] element not an object")
 		}
 
-		kind, ok := node["kind"]
+		kind, ok := node["kind"].(string)
 		if !ok {
 			panic("inner element has no kind")
 		}
