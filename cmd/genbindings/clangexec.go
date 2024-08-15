@@ -62,7 +62,7 @@ func clangStripUpToFile(stdout io.Reader, inputFilePath string) ([]interface{}, 
 	var obj = map[string]interface{}{}
 	err := json.NewDecoder(stdout).Decode(&obj)
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("json.Decode: %v", err)
 	}
 
 	inner, ok := obj["inner"].([]interface{})

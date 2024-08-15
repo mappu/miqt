@@ -398,8 +398,6 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 
 			} else if m.ReturnType.QtClassType() && !m.ReturnType.Pointer {
 				shouldReturn = m.ReturnType.ParameterType + " ret = "
-				// afterCall = "\t// Copy-construct value returned type into Go-allocated POCO\n"
-				// afterCall += "\t_*out = ret;\n"
 				afterCall = "\t// Copy-construct value returned type into heap-allocated copy\n"
 				afterCall += "\treturn static_cast<" + m.ReturnType.ParameterType + "*>(new " + m.ReturnType.ParameterType + "(ret));\n"
 
