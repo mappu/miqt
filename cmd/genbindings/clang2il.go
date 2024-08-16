@@ -386,9 +386,8 @@ func parseTypeString(typeString string) (CppParameter, []CppParameter, error) {
 	if returnType.IntType() && returnType.ByRef {
 		return CppParameter{}, nil, ErrTooComplex // e.g. QSize::rheight()
 	}
-
-	if returnType.QMapOf() {
-		return CppParameter{}, nil, ErrTooComplex // e.g. QVariant constructor
+	if err := CheckComplexity(returnType); err != nil {
+		return CppParameter{}, nil, err
 	}
 
 	inner := typeString[opos+1 : epos]
@@ -406,23 +405,8 @@ func parseTypeString(typeString string) (CppParameter, []CppParameter, error) {
 
 		insert := parseSingleTypeString(p)
 
-		if insert.QMapOf() {
-			return CppParameter{}, nil, ErrTooComplex // Example???
-		}
-		if insert.ParameterType == "QList<QVariant>" {
-			return CppParameter{}, nil, ErrTooComplex // e.g. QVariant constructor - this has a deleted copy-constructor so we can't get it over the CABI boundary by value
-		}
-		if insert.ParameterType == "void **" {
-			return CppParameter{}, nil, ErrTooComplex // e.g. qobjectdefs.h QMetaObject->Activate()
-		}
-		if insert.ParameterType == "void" && insert.Pointer {
-			return CppParameter{}, nil, ErrTooComplex // e.g. qobjectdefs.h QMetaObject->InvokeOnGadget()
-		}
-		if insert.ParameterType == "char *&" {
-			return CppParameter{}, nil, ErrTooComplex // e.g. QDataStream.operator<<()
-		}
-		if insert.ParameterType == "qfloat16" {
-			return CppParameter{}, nil, ErrTooComplex // e.g. QDataStream - there is no such half-float type in C or Go
+		if err := CheckComplexity(insert); err != nil {
+			return CppParameter{}, nil, err
 		}
 
 		if insert.ParameterType != "" {
