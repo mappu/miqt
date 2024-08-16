@@ -252,7 +252,7 @@ func getReferencedTypes(src *CppParsedHeader) []string {
 	// Convert to sorted list
 	foundTypesList := make([]string, 0, len(foundTypes))
 	for ft := range foundTypes {
-		if strings.HasPrefix(ft, "QList<") {
+		if strings.HasPrefix(ft, "QList<") || strings.HasPrefix(ft, "QVector<") {
 			continue
 		}
 		if ft == "QRgb" {

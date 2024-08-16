@@ -22,6 +22,10 @@ func (p CppParameter) QListOf() (CppParameter, bool) {
 		return parseSingleTypeString(p.ParameterType[6 : len(p.ParameterType)-1]), true
 	}
 
+	if strings.HasPrefix(p.ParameterType, "QVector<") && strings.HasSuffix(p.ParameterType, `>`) {
+		return parseSingleTypeString(p.ParameterType[8 : len(p.ParameterType)-1]), true
+	}
+
 	return CppParameter{}, false
 }
 
