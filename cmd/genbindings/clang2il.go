@@ -96,8 +96,8 @@ func parseHeader(topLevel []interface{}) (*CppParsedHeader, error) {
 			if typ, ok := node["type"].(map[string]interface{}); ok {
 				if qualType, ok := typ["qualType"].(string); ok {
 					ret.Typedefs = append(ret.Typedefs, CppTypedef{
-						Name:    nodename,
-						Typedef: qualType,
+						Alias:          nodename,
+						UnderlyingType: qualType,
 					})
 				}
 			}

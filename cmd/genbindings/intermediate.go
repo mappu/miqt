@@ -109,8 +109,8 @@ type CppClass struct {
 }
 
 type CppTypedef struct {
-	Name    string
-	Typedef string
+	Alias          string
+	UnderlyingType string
 }
 
 type CppParsedHeader struct {

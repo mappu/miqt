@@ -239,6 +239,12 @@ func getReferencedTypes(src *CppParsedHeader) []string {
 		}
 	}
 
+	// Some types (e.g. QRgb) are found but are typedefs, not classes
+	for _, td := range src.Typedefs {
+		delete(foundTypes, td.Alias)
+	}
+
+	// Convert to sorted list
 	foundTypesList := make([]string, 0, len(foundTypes))
 	for ft := range foundTypes {
 		if strings.HasPrefix(ft, "QList<") {
