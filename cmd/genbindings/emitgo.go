@@ -21,44 +21,6 @@ func (p CppParameter) RenderTypeGo() string {
 	if p.Pointer && p.ParameterType == "char" {
 		return "string"
 	}
-	if !p.Pointer && p.IntType() {
-		switch p.ParameterType {
-		case "char", "qint8":
-			return "byte"
-		case "unsigned char", "quint8":
-			return "byte"
-		case "short", "qint16":
-			return "int16"
-		case "ushort", "quint16":
-			return "uint16"
-		case "long":
-			// Windows ILP32 - 32-bits
-			// Linux LP64 - 64-bits
-			if C.sizeof_long == 4 {
-				return "int32"
-			} else {
-				return "int64"
-			}
-		case "ulong", "unsigned long":
-			if C.sizeof_long == 4 {
-				return "uint32"
-			} else {
-				return "uint64"
-			}
-		case "qint32":
-			return "int32"
-		case "quint32":
-			return "uint32"
-		case "qlonglong", "qint64":
-			return "int64"
-		case "qulonglong", "quint64":
-			return "uint64"
-		case "float":
-			return "float32"
-		case "double":
-			return "float64"
-		}
-	}
 	if p.ParameterType == "char" {
 		return "byte"
 	}
@@ -77,7 +39,55 @@ func (p CppParameter) RenderTypeGo() string {
 	if p.ByRef || p.Pointer {
 		ret += "*"
 	}
-	ret += p.ParameterType
+
+	switch p.ParameterType {
+	case "char", "qint8":
+		ret += "byte"
+	case "unsigned char", "quint8":
+		ret += "byte"
+	case "short", "qint16":
+		ret += "int16"
+	case "ushort", "quint16":
+		ret += "uint16"
+	case "long":
+		// Windows ILP32 - 32-bits
+		// Linux LP64 - 64-bits
+		if C.sizeof_long == 4 {
+			ret += "int32"
+		} else {
+			ret += "int64"
+		}
+	case "ulong", "unsigned long":
+		if C.sizeof_long == 4 {
+			ret += "uint32"
+		} else {
+			ret += "uint64"
+		}
+	case "QRgb":
+		if C.sizeof_int == 4 {
+			ret += "uint32"
+		} else {
+			ret += "uint64"
+		}
+
+	case "qint32":
+		ret += "int32"
+	case "quint32":
+		ret += "uint32"
+	case "qlonglong", "qint64":
+		ret += "int64"
+	case "qulonglong", "quint64":
+		ret += "uint64"
+	case "float":
+		ret += "float32"
+	case "double":
+		ret += "float64"
+	default:
+		// Do not transform this type
+		ret += p.ParameterType
+
+	}
+
 	return ret // ignore const
 }
 

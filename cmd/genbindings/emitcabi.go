@@ -31,6 +31,8 @@ func (p CppParameter) RenderTypeCpp() string {
 		ret = "uint64_t"
 	case "qfloat16":
 		ret = "_Float16" // No idea where this typedef comes from, but it exists
+	case "QRgb":
+		ret = "unsigned int"
 	}
 
 	if p.Pointer || p.ByRef {
@@ -248,6 +250,9 @@ func getReferencedTypes(src *CppParsedHeader) []string {
 	foundTypesList := make([]string, 0, len(foundTypes))
 	for ft := range foundTypes {
 		if strings.HasPrefix(ft, "QList<") {
+			continue
+		}
+		if ft == "QRgb" {
 			continue
 		}
 

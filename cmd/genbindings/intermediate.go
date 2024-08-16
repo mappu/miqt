@@ -14,7 +14,7 @@ type CppParameter struct {
 }
 
 func (p CppParameter) QtClassType() bool {
-	return p.ParameterType[0] == 'Q'
+	return (p.ParameterType[0] == 'Q') && p.ParameterType != "QRgb"
 }
 
 func (p CppParameter) QListOf() (CppParameter, bool) {
@@ -38,6 +38,7 @@ func (p CppParameter) IntType() bool {
 		// "char", "uchar", // Don't count char or char* as integer types that need cast assertions
 		"long", "unsigned long", "ulong", "qint32", "quint32",
 		"longlong", "ulonglong", "qlonglong", "qulonglong", "qint64", "quint64", "int64_t", "uint64_t", "long long", "unsigned long long",
+		"QRgb", // unsigned int
 		"double", "float", "qreal":
 		return true
 	default:
