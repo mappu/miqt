@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"strings"
 )
 
 // astTransformOverloads renames methods if another method exists with the same
@@ -36,7 +37,14 @@ func astTransformOverloads(parsed *CppParsedHeader) {
 					// e.g. NewVariantFromFloat
 					if len(m.Parameters) == 1 {
 
-						proposedName = rootMethodName + "With" + titleCase(m.Parameters[0].ParameterName)
+						// If the parameter has a proper name (i.e. not 'l' or 'param1')
+						// then go with that
+						if len(m.Parameters[0].ParameterName) > 1 && !strings.HasPrefix(m.Parameters[0].ParameterName, "param") {
+							proposedName = rootMethodName + "With" + titleCase(m.Parameters[0].ParameterName)
+						} else {
+							// Try the type instead
+							proposedName = rootMethodName + "With" + titleCase(strings.Replace(m.Parameters[0].ParameterType, " ", "", -1))
+						}
 						if _, ok := existing[proposedName]; !ok {
 							break
 						}
