@@ -9,6 +9,8 @@ import (
 func (p CppParameter) RenderTypeCpp() string {
 	ret := p.ParameterType
 	switch p.ParameterType {
+	case "uchar":
+		ret = "unsigned char"
 	case "uint":
 		ret = "unsigned int"
 	case "ulong":
@@ -31,6 +33,8 @@ func (p CppParameter) RenderTypeCpp() string {
 		ret = "uint64_t"
 	case "qfloat16":
 		ret = "_Float16" // No idea where this typedef comes from, but it exists
+	case "qsizetype":
+		ret = "size_t"
 	case "QRgb":
 		ret = "unsigned int"
 	}
@@ -84,8 +88,7 @@ func emitParametersCabi(m CppMethod, selfType string) string {
 			} else {
 				// The Go code has called this with two arguments: T* and len
 				// Declare that we take two parameters
-				// TODO support QList<int>
-				tmp = append(tmp, t.ParameterType+"* "+p.ParameterName+", size_t "+p.ParameterName+"_len")
+				tmp = append(tmp, t.RenderTypeCpp()+"* "+p.ParameterName+", size_t "+p.ParameterName+"_len")
 			}
 
 		} else if (p.ByRef || p.Pointer) && p.QtClassType() {
@@ -114,7 +117,7 @@ func emitParametersCabi(m CppMethod, selfType string) string {
 		tmp = append(tmp, "char** _out, size_t* _out_Strlen")
 
 	} else if t, ok := m.ReturnType.QListOf(); ok {
-		tmp = append(tmp, t.ParameterType+"** _out, size_t* _out_len")
+		tmp = append(tmp, t.RenderTypeCpp()+"** _out, size_t* _out_len")
 
 	}
 

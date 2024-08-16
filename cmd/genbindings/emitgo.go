@@ -91,6 +91,14 @@ func (p CppParameter) RenderTypeGo() string {
 	return ret // ignore const
 }
 
+func (p CppParameter) parameterTypeCgo() string {
+	tmp := strings.Replace(p.RenderTypeCpp(), `*`, "", -1)
+	if strings.HasPrefix(tmp, "unsigned ") {
+		tmp = "u" + tmp[9:] // Cgo uses uchar, uint instead of full name
+	}
+	return "C." + strings.Replace(tmp, " ", "_", -1)
+}
+
 func emitParametersGo(params []CppParameter) string {
 	tmp := make([]string, 0, len(params))
 	for _, p := range params {
@@ -121,8 +129,8 @@ func emitParametersGo2CABIForwarding(m CppMethod) (preamble string, fowarding st
 				// Combo
 
 				preamble += "// For the C ABI, malloc two C arrays; raw char* pointers and their lengths\n"
-				preamble += p.ParameterName + "_CArray := (*[0xffff]*C." + listType.ParameterType + ")(C.malloc(c.ulong(8 * len(" + p.ParameterName + "))))\n"
-				preamble += p.ParameterName + "_Lengths := (*[0xffff]*C." + listType.ParameterType + ")(C.malloc(c.ulong(8 * len(" + p.ParameterName + "))))\n"
+				preamble += p.ParameterName + "_CArray := (*[0xffff]*" + listType.parameterTypeCgo() + ")(C.malloc(c.ulong(8 * len(" + p.ParameterName + "))))\n"
+				preamble += p.ParameterName + "_Lengths := (*[0xffff]*C.size_t)(C.malloc(c.ulong(8 * len(" + p.ParameterName + "))))\n"
 				preamble += "defer C.free(" + p.ParameterName + "_CArray)\n"
 				preamble += "defer C.free(" + p.ParameterName + "_Lengths)\n"
 				preamble += "for i := range " + p.ParameterName + "{\n"
@@ -136,10 +144,8 @@ func emitParametersGo2CABIForwarding(m CppMethod) (preamble string, fowarding st
 
 			} else {
 
-				// TODO handle QList<int>
-
 				preamble += "// For the C ABI, malloc a C array of raw pointers\n"
-				preamble += p.ParameterName + "_CArray := (*[0xffff]*C." + listType.ParameterType + ")(C.malloc(c.ulong(8 * len(" + p.ParameterName + "))))\n"
+				preamble += p.ParameterName + "_CArray := (*[0xffff]*" + listType.parameterTypeCgo() + ")(C.malloc(c.ulong(8 * len(" + p.ParameterName + "))))\n"
 				preamble += "defer C.free(" + p.ParameterName + "_CArray)\n"
 				preamble += "for i := range " + p.ParameterName + "{\n"
 				preamble += p.ParameterName + "_CArray[i] = " + p.ParameterName + "[i].cPointer()\n"
@@ -277,7 +283,7 @@ import "C"
 				shouldReturn = ""
 				returnTypeDecl = "[]" + t.RenderTypeGo()
 
-				preamble += "var _out **C." + t.ParameterType + " = nil\n"
+				preamble += "var _out **" + t.parameterTypeCgo() + " = nil\n"
 				preamble += "var _out_len C.size_t = 0\n"
 				afterword += "ret := make([]" + t.RenderTypeGo() + ", _out_Strlen)\n"
 				afterword += "for i := 0; i < _out_len; i++ {\n"
