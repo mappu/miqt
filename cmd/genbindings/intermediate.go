@@ -63,6 +63,16 @@ type CppMethod struct {
 	Parameters         []CppParameter
 }
 
+func IsArgcArgv(params []CppParameter) bool {
+	// QApplication/QGuiApplication constructors are the only expected example of this.
+	return (len(params) > 1 &&
+		params[0].ParameterName == "argc" &&
+		params[0].ParameterType == "int" &&
+		params[0].ByRef &&
+		params[1].ParameterName == "argv" &&
+		params[1].ParameterType == "char **")
+}
+
 func (nm CppMethod) SafeMethodName() string {
 	// Operator-overload methods have names not representable in binding
 	// languages. Replace more specific cases first

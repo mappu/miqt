@@ -108,8 +108,23 @@ func (p CppParameter) parameterTypeCgo() string {
 
 func emitParametersGo(params []CppParameter) string {
 	tmp := make([]string, 0, len(params))
-	for _, p := range params {
-		tmp = append(tmp, p.ParameterName+" "+p.RenderTypeGo())
+
+	isArgcArgv := false
+
+	for i, p := range params {
+
+		if i == 0 && IsArgcArgv(params) {
+			isArgcArgv = true
+			tmp = append(tmp, "args []string")
+
+		} else if i == 1 && isArgcArgv {
+			// Skip this parameter, already handled
+
+		} else {
+			// Ordinary parameter
+			tmp = append(tmp, p.ParameterName+" "+p.RenderTypeGo())
+
+		}
 	}
 	return strings.Join(tmp, ", ")
 }
@@ -119,8 +134,30 @@ func emitParametersGo2CABIForwarding(m CppMethod) (preamble string, fowarding st
 
 	tmp = append(tmp, "this.h")
 
-	for _, p := range m.Parameters {
-		if p.ParameterType == "QString" {
+	isArgcArgv := false
+
+	for i, p := range m.Parameters {
+
+		if i == 0 && IsArgcArgv(m.Parameters) {
+			isArgcArgv = true
+			// QApplication constructor. Convert 'args' into Qt's wanted types
+			// Qt has a warning in the docs saying these pointers must be valid
+			// for the entire lifetype of QApplication, so, malloc + never free
+
+			preamble += "// Convert []string to long-lived int& argc, char** argv, never call free()\n"
+			preamble += "argc := (*C.int)(C.malloc(8))\n"
+			preamble += "*argc = len(args)\n"
+			preamble += "argv := (*[0xffff]*C.char)(C.malloc(c.ulong(8 * len(args))))\n"
+			preamble += "for i := range args {\n"
+			preamble += "argv[i] = C.CString(" + p.ParameterName + "[i])\n"
+			preamble += "}\n"
+
+			tmp = append(tmp, "argc, argv")
+
+		} else if i == 1 && isArgcArgv {
+			// Skip this parameter, already handled
+
+		} else if p.ParameterType == "QString" {
 			// Go: convert string -> char* and len
 			// CABI: convert char* and len -> real QString
 			preamble += p.ParameterName + "_Cstring := C.CString(" + p.ParameterName + ")\n"
