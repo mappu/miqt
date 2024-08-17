@@ -268,6 +268,9 @@ func getReferencedTypes(src *CppParsedHeader) []string {
 		if strings.HasPrefix(ft, "QList<") || strings.HasPrefix(ft, "QVector<") {
 			continue
 		}
+		if strings.HasSuffix(ft, "Private") { // qbrush.h finds QGradientPrivate
+			continue
+		}
 		if ft == "QRgb" {
 			continue
 		}

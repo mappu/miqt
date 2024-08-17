@@ -51,6 +51,11 @@ func parseHeader(topLevel []interface{}) (*CppParsedHeader, error) {
 				}
 			}
 
+			// Also skip over any QFooPrivate classes
+			if nodename[0] == 'Q' && strings.HasSuffix(nodename, "Private") {
+				continue
+			}
+
 			// Process the inner class definition
 			obj, err := processClassType(node, nodename)
 			if err != nil {
