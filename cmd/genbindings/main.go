@@ -32,12 +32,21 @@ func main() {
 		"/usr/include/x86_64-linux-gnu/qt5/QtCore/qthread.h",
 		"/usr/include/x86_64-linux-gnu/qt5/QtCore/qdatastream.h",
 		"/usr/include/x86_64-linux-gnu/qt5/QtCore/qvariant.h",
+		"/usr/include/x86_64-linux-gnu/qt5/QtCore/qiodevice.h",
+		"/usr/include/x86_64-linux-gnu/qt5/QtCore/qline.h",
 
 		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qicon.h",
 		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qiconengine.h",
 		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qpixmap.h",
 		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qbitmap.h",
+		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qmatrix.h",
+		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qimage.h",
+		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qtransform.h",
+		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qpaintengine.h",
+		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qcolor.h",
 		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qpaintdevice.h",
+		// "/usr/include/x86_64-linux-gnu/qt5/QtGui/qpolygon.h", // Extends a QVector<QPoint> template class, too hard
+		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qregion.h",
 
 		"/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qwidget.h",
 		"/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qabstractbutton.h",
