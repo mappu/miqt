@@ -13,31 +13,50 @@ Phase 1
 			- [X] Prevent calling ctor of abstract class
 		- [X] ~~Destructors~~ We only need .Delete()
 		- [X] Copy-constructors
-		- [ ] Move-constructors (e.g. QWidgetData)
 		- [X] Operator overloading
+		- [ ] Move-constructors (e.g. QWidgetData)
 	- [X] Class inheritance
 		- [X] Detect in AST
 		- [X] ~~Downcast helper methods~~ Direct type available
-	- [ ] Public member variables
-	- [ ] Static methods (e.g. QWidget::setTabOrder)
-	- [X] Return of class types passed by pointer
-	- [X] Return of class types passed by value (e.g. `_Icon()`)
-		- ~~want to copy-construct into Go-provided memory~~ Go can't allocate a C++ type 
-		- Return as a heap pointer instead
-	- [X] Class parameters passed by pointer (want to call `cPointer()`)
-	- [X] Class parameters passed by value (need to dereference) e.g. `_SetIcon()`
-	- [X] QString type conversion
-		- [X] For parameters
-		- [X] For return types
-	- [X] QList type conversion (e.g. QWidget::Actions())
-		- [X] For parameters
-		- [X] For return types
-	- [X] QStringList combination type conversion 
-	- [X] ~~QByteArray type conversion~~ Seems to be fine as a non-templated type
+	- [ ] Types
+		- [X] Class types passed by pointer
+			- [X] For parameters (want to call `cPointer()`)
+			- [X] For return types
+		- [X] Class types passed by value
+			- [X] For parameters (need to dereference) e.g. `_SetIcon()`
+			- [X] For return types (e.g. `_Icon()`)
+				- ~~want to copy-construct into Go-provided memory~~ Go can't allocate a C++ type 
+				- Return as a heap pointer instead, convert to fake value-type using SetFinalizer
+		- [X] QString type conversion
+			- [X] For parameters
+			- [X] For return types
+		- [X] QList type conversion (e.g. QWidget::Actions())
+			- [X] For parameters
+			- [X] For return types
+			- [X] Combinations
+				- [X] QList<T*>
+					- [X] For parameters
+					- [X] For return types
+				- [X] QList<T> of value types
+					- [X] For parameters
+					- [X] For return types
+						- [ ] COMBINATION: Need to use SetFinalizer?
+				- [X] QStringList combination type conversion 
+					- [X] For parameters
+					- [X] For return types
+		- [X] ~~QByteArray type conversion~~ Seems to be fine as a non-templated type
+		- [ ] Typedefs
+			- [X] Simple typedefs e.g. WId (hardcoded)
+			- [X] QRgb (hardcoded)
+			- [X] Parse from AST
+			- [ ] Generic replacement
 	- [X] Hide private methods
 	- [X] Optional parameters
 	- [X] Overloaded methods
-	- [ ] Simple typedefs (e.g. WId)
+	- [ ] Slots	
+		- [ ] Add `connect` wrappers for each slot
+	- [ ] Public member variables
+	- [ ] Static methods (e.g. QWidget::setTabOrder)
 	- [ ] Qt:: namespace enums/const values
 		- e.g. Qt::WindowFlags (global)
 		- e.g. QWidget::RenderFlag (per-class)
@@ -45,7 +64,6 @@ Phase 1
 - [ ] QtCore
 - [ ] QtGui
 - [ ] QtWidgets
-- [ ] `connect`
 - [ ] Minimal example
 	- [ ] Calling connect
 - [X] Pick a name for the package
@@ -56,14 +74,16 @@ Phase 2
 
 - [X] ~~QString / QList helper functions~~ Lean on native Go types
 - [ ] Other Qt template containers
-	- [ ] QVector
+	- [X] QVector // Seems to mostly work identically using QList code
 	- [ ] QMap / QHash
 	- [ ] QSet
 - [ ] Test edge cases
 	- Exercising QString interop
 	- Exercising QList interop
-	- QByteArray::split returning QList<QByteArray> memory safety
-	- QIcon.SetThemeSearchPaths taking QStringList
+	- QList<Qt type by pointer> return (...), parameter (...)
+	- QList<Qt type by value> return (QByteArray::split ), parameter (...)
+	- QStringList return (QColor_ColorNames), parameter (QIcon.SetThemeSearchPaths)
+	- QList<int> return (QImage_ColorTable), parameter (...)
 	- Calling methods on base class
 	- Anything where we use runtime.SetFinalizer
 - [ ] Documentation
@@ -74,6 +94,7 @@ Phase 2
 Wishlist
 
 - [X] Remove P* types (Cgo does support pointers to incomplete C types)
+- [ ] QPaintEngine::fix_neg_rect should have a better name
 - [ ] CI action to rebuild bindings
 - [ ] Convert generated cpp files to amalgamation build for faster compilation
 	- https://github.com/golang/go/issues/9887
@@ -92,3 +113,4 @@ Wishlist
 - [ ] Document process for binding more libraries e.g. QScintilla, QZXing
 - [ ] Qt Creator integration
 - [ ] Get down to zero ErrTooComplex skips
+- [ ] Run under valgrind to ensure no Qt memory leakage
