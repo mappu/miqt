@@ -41,10 +41,8 @@ func (p CppParameter) RenderTypeGo() string {
 	}
 
 	switch p.ParameterType {
-	case "char", "qint8":
-		ret += "byte"
-	case "unsigned char", "quint8":
-		ret += "byte"
+	case "char", "qint8", "unsigned char", "uchar", "quint8":
+		ret += "byte" // Strictly speaking, Go byte is unsigned and char may be signed
 	case "short", "qint16":
 		ret += "int16"
 	case "ushort", "quint16":
@@ -82,6 +80,12 @@ func (p CppParameter) RenderTypeGo() string {
 		ret += "float32"
 	case "double":
 		ret += "float64"
+	case "qsizetype":
+		if C.sizeof_size_t == 4 {
+			ret += "uint32"
+		} else {
+			ret += "uint64"
+		}
 	default:
 		// Do not transform this type
 		ret += p.ParameterType
