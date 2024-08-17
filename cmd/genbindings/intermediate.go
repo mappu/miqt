@@ -34,6 +34,10 @@ func (p CppParameter) QMapOf() bool {
 		strings.HasPrefix(p.ParameterType, `QHash<`) // TODO support this
 }
 
+func (p CppParameter) QPairOf() bool {
+	return strings.HasPrefix(p.ParameterType, `QPair<`) // TODO support this
+}
+
 func (p CppParameter) IntType() bool {
 	switch p.ParameterType {
 	case "int", "unsigned int", "uint",

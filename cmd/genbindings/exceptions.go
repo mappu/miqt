@@ -5,23 +5,34 @@ func CheckComplexity(p CppParameter) error {
 	if p.QMapOf() {
 		return ErrTooComplex // Example???
 	}
-	if p.ParameterType == "QList<QVariant>" {
-		return ErrTooComplex // e.g. QVariant constructor - this has a deleted copy-constructor so we can't get it over the CABI boundary by value
+	if p.QPairOf() {
+		return ErrTooComplex // e.g. QGradientStop
 	}
-	if p.ParameterType == "QPolygon" || p.ParameterType == "QPolygonF" {
-		return ErrTooComplex // QPolygon extends a template type
+	if t, ok := p.QListOf(); ok {
+		if err := CheckComplexity(t); err != nil { // e.g. QGradientStops is a QVector<> (OK) of QGradientStop (not OK)
+			return err
+		}
 	}
-	if p.ParameterType == "void **" {
-		return ErrTooComplex // e.g. qobjectdefs.h QMetaObject->Activate()
+
+	switch p.ParameterType {
+	case
+		"QList<QVariant>",       // e.g. QVariant constructor - this has a deleted copy-constructor so we can't get it over the CABI boundary by value
+		"QPolygon", "QPolygonF", // QPolygon extends a template type
+		"QLatin1String", "QStringView", // e.g. QColor constructors and QColor::SetNamedColor() overloads. These are usually optional alternatives to QString
+		"QGradientStop", "QGradientStops", // QPair<>-related types, but we can't see through the typedef to block based on QPair alone
+		"void **",                  // e.g. qobjectdefs.h QMetaObject->Activate()
+		"char *&",                  // e.g. QDataStream.operator<<()
+		"qfloat16",                 // e.g. QDataStream - there is no such half-float type in C or Go
+		"char16_t",                 // e.g. QChar() constructor overload, just unnecessary
+		"picture_io_handler",       // e.g. QPictureIO::DefineIOHandler callback function
+		"QPlatformNativeInterface", // e.g. QGuiApplication::platformNativeInterface(). Private type, could probably expose as uintptr. n.b. Changes in Qt6
+		"QFunctionPointer",         // e.g. QGuiApplication_PlatformFunction
+		"QPlatformMenu":            // e.g. QMenu_PlatformMenu. Defined in the QPA, could probably expose as uintptr
+		return ErrTooComplex
 	}
+
 	if p.ParameterType == "void" && p.Pointer {
-		return ErrTooComplex // e.g. qobjectdefs.h QMetaObject->InvokeOnGadget()
-	}
-	if p.ParameterType == "char *&" {
-		return ErrTooComplex // e.g. QDataStream.operator<<()
-	}
-	if p.ParameterType == "qfloat16" {
-		return ErrTooComplex // e.g. QDataStream - there is no such half-float type in C or Go
+		return ErrTooComplex // e.g. qobjectdefs.h QMetaObject->InvokeOnGadget(). TODO represent as uintptr
 	}
 
 	// Should be OK
