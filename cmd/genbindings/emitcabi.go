@@ -231,9 +231,11 @@ func getReferencedTypes(src *CppParsedHeader) []string {
 				if p.QtClassType() {
 					foundTypes[p.ParameterType] = struct{}{}
 				}
-				if t, ok := p.QListOf(); ok && t.QtClassType() {
-					foundTypes["QList"] = struct{}{}
-					foundTypes[t.ParameterType] = struct{}{}
+				if t, ok := p.QListOf(); ok {
+					foundTypes["QList"] = struct{}{} // FIXME or QVector?
+					if t.QtClassType() {
+						foundTypes[t.ParameterType] = struct{}{}
+					}
 				}
 			}
 		}
@@ -242,17 +244,21 @@ func getReferencedTypes(src *CppParsedHeader) []string {
 				if p.QtClassType() {
 					foundTypes[p.ParameterType] = struct{}{}
 				}
-				if t, ok := p.QListOf(); ok && t.QtClassType() {
-					foundTypes["QList"] = struct{}{}
-					foundTypes[t.ParameterType] = struct{}{}
+				if t, ok := p.QListOf(); ok {
+					foundTypes["QList"] = struct{}{} // FIXME or QVector?
+					if t.QtClassType() {
+						foundTypes[t.ParameterType] = struct{}{}
+					}
 				}
 			}
 			if m.ReturnType.QtClassType() {
 				foundTypes[m.ReturnType.ParameterType] = struct{}{}
 			}
-			if t, ok := m.ReturnType.QListOf(); ok && t.QtClassType() {
-				foundTypes["QList"] = struct{}{}
-				foundTypes[t.ParameterType] = struct{}{}
+			if t, ok := m.ReturnType.QListOf(); ok {
+				foundTypes["QList"] = struct{}{} // FIXME or QVector?
+				if t.QtClassType() {
+					foundTypes[t.ParameterType] = struct{}{}
+				}
 			}
 		}
 	}
