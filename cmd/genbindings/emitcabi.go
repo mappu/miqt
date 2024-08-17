@@ -117,7 +117,22 @@ func emitParametersCabi(m CppMethod, selfType string) string {
 		tmp = append(tmp, "char** _out, size_t* _out_Strlen")
 
 	} else if t, ok := m.ReturnType.QListOf(); ok {
-		tmp = append(tmp, t.RenderTypeCpp()+"** _out, size_t* _out_len")
+		// +1 pointer indirection since it's a heap array
+		// +1 pointer indirection for mutating remote parameter
+		// = 3 for char*, 2 for most types
+
+		// Maybe: +1 pointer indirection if we have to lift stack types to the heap
+
+		if t.ParameterType == "QString" {
+			// Combo
+			tmp = append(tmp, "char*** _out, int64_t** _out_Lengths, size_t* _out_len")
+		} else if t.QtClassType() && !t.Pointer {
+			// QList<QByteArray> QByteArray::Split()
+			// We need to pointer-ify each of the interior elements too
+			tmp = append(tmp, t.RenderTypeCpp()+"*** _out, size_t* _out_len")
+		} else {
+			tmp = append(tmp, t.RenderTypeCpp()+"** _out, size_t* _out_len")
+		}
 
 	}
 
@@ -142,9 +157,7 @@ func emitParametersCABI2CppForwarding(params []CppParameter) (preamble string, f
 				preamble += "\t" + p.ParameterType + " " + p.ParameterName + "_QList;\n"
 				preamble += "\t" + p.ParameterName + "_QList.reserve(" + p.ParameterName + "_len);\n"
 				preamble += "\tfor(size_t i = 0; i < " + p.ParameterName + "_len; ++i) {\n"
-				preamble += "\t\t" + p.ParameterName + "_QList.push_back(QString::fromUtf8(*" + p.ParameterName + ", *" + p.ParameterName + "_Lengths));\n"
-				preamble += "\t\t" + p.ParameterName + "++;\n"
-				preamble += "\t\t" + p.ParameterName + "_Lengths++;\n"
+				preamble += "\t\t" + p.ParameterName + "_QList.push_back(QString::fromUtf8(" + p.ParameterName + "[i], " + p.ParameterName + "_Lengths[i]));\n"
 				preamble += "\t}\n"
 				tmp = append(tmp, p.ParameterName+"_QList")
 
@@ -155,7 +168,7 @@ func emitParametersCABI2CppForwarding(params []CppParameter) (preamble string, f
 				preamble += "\t" + p.ParameterType + " " + p.ParameterName + "_QList;\n"
 				preamble += "\t" + p.ParameterName + "_QList.reserve(" + p.ParameterName + "_len);\n"
 				preamble += "\tfor(size_t i = 0; i < " + p.ParameterName + "_len; ++i) {\n"
-				preamble += "\t\t" + p.ParameterName + "_QList.push_back(" + p.ParameterName + "++);\n"
+				preamble += "\t\t" + p.ParameterName + "_QList.push_back(" + p.ParameterName + "[i]);\n"
 				preamble += "\t}\n"
 				tmp = append(tmp, p.ParameterName+"_QList")
 			}
@@ -291,7 +304,7 @@ extern "C" {
 	ret.WriteString("#ifdef __cplusplus\n")
 
 	for _, ft := range foundTypesList {
-		if ft == "QList" {
+		if ft == "QList" || ft == "QString" { // These types are reprojected
 			continue
 		}
 		ret.WriteString(`class ` + ft + ";\n")
@@ -300,7 +313,7 @@ extern "C" {
 	ret.WriteString("#else\n")
 
 	for _, ft := range foundTypesList {
-		if ft == "QList" {
+		if ft == "QList" || ft == "QString" { // These types are reprojected
 			continue
 		}
 		ret.WriteString(`typedef struct ` + ft + " " + ft + ";\n")
@@ -391,24 +404,45 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 
 			} else if t, ok := m.ReturnType.QListOf(); ok {
 
-				if !t.QtClassType() || (t.QtClassType() && t.Pointer) { // QList<int>, QList<QFoo*>
+				if t.ParameterType == "QString" {
+					// Combo
+					// "char** _out, int64_t* _out_Lengths, size_t* _out_len")
+
+					shouldReturn = m.ReturnType.ParameterType + " ret = "
+					afterCall += "\t// Convert QStringList from C++ memory to manually-managed C memory\n"
+					afterCall += "\tchar** __out = static_cast<char**>(malloc(sizeof(char*) * ret.length()));\n"
+					afterCall += "\tint64_t* __out_Lengths = static_cast<int64_t*>(malloc(sizeof(int64_t) * ret.length()));\n"
+					afterCall += "\tfor (size_t i = 0, e = ret.length(); i < e; ++i) {\n"
+					afterCall += "\t\t// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory\n"
+					afterCall += "\t\tQByteArray b = ret[i].toUtf8();\n"
+					afterCall += "\t\t__out[i] = static_cast<char*>(malloc(b.length()));\n"
+					afterCall += "\t\tmemcpy(__out[i], b.data(), b.length());\n"
+					afterCall += "\t\t__out_Lengths[i] = b.length();\n"
+					afterCall += "\t}\n"
+					afterCall += "\t*_out = __out;\n"
+					afterCall += "\t*_out_Lengths = __out_Lengths;\n"
+					afterCall += "\t*_out_len = ret.length();\n"
+
+				} else if !t.QtClassType() || (t.QtClassType() && t.Pointer) { // QList<int>, QList<QFoo*>
 
 					shouldReturn = m.ReturnType.ParameterType + " ret = "
 					afterCall += "\t// Convert QList<> from C++ memory to manually-managed C memory\n"
-					afterCall += "\t*_out = static_cast<" + t.RenderTypeCpp() + ">(malloc(sizeof(" + t.RenderTypeCpp() + ") * ret.length()));\n"
-					afterCall += "\tfor (int i = 0, e = ret.length(); i < e; ++i) {\n"
-					afterCall += "\t\t_out[i] = ret[i];\n"
+					afterCall += "\t" + t.RenderTypeCpp() + "* __out = static_cast<" + t.RenderTypeCpp() + "*>(malloc(sizeof(" + t.RenderTypeCpp() + ") * ret.length()));\n"
+					afterCall += "\tfor (size_t i = 0, e = ret.length(); i < e; ++i) {\n"
+					afterCall += "\t\t__out[i] = ret[i];\n"
 					afterCall += "\t}\n"
+					afterCall += "\t*_out = __out;\n"
 					afterCall += "\t*_out_len = ret.length();\n"
 
 				} else { // QList<QFoo>
 
 					shouldReturn = m.ReturnType.ParameterType + " ret = "
 					afterCall += "\t// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers\n"
-					afterCall += "\t*_out = static_cast<" + t.RenderTypeCpp() + "*>(malloc(sizeof(" + t.RenderTypeCpp() + "*) * ret.length()));\n"
-					afterCall += "\tfor (int i = 0, e = ret.length(); i < e; ++i) {\n"
-					afterCall += "\t\t_out[i] = new " + t.ParameterType + "(ret[i]);\n"
+					afterCall += "\t" + t.RenderTypeCpp() + "** __out = static_cast<" + t.RenderTypeCpp() + "**>(malloc(sizeof(" + t.RenderTypeCpp() + "**) * ret.length()));\n"
+					afterCall += "\tfor (size_t i = 0, e = ret.length(); i < e; ++i) {\n"
+					afterCall += "\t\t__out[i] = new " + t.ParameterType + "(ret[i]);\n"
 					afterCall += "\t}\n"
+					afterCall += "\t*_out = __out;\n"
 					afterCall += "\t*_out_len = ret.length();\n"
 
 				}
