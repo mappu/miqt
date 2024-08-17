@@ -19,6 +19,7 @@ Phase 1
 		- [X] Detect in AST
 		- [X] ~~Downcast helper methods~~ Direct type available
 	- [ ] Types
+		- [X] ~~PVoid typedefs~~ Removed/no longer needed as CGo supports pointers to incomplete C types
 		- [X] Class types passed by pointer
 			- [X] For parameters (want to call `cPointer()`)
 			- [X] For return types
@@ -45,6 +46,7 @@ Phase 1
 					- [X] For parameters
 					- [X] For return types
 		- [X] ~~QByteArray type conversion~~ Seems to be fine as a non-templated type
+		- [ ] C array style used by QApplication constructor (int& argc, char** argv)
 		- [ ] Typedefs
 			- [X] Simple typedefs e.g. WId (hardcoded)
 			- [X] QRgb (hardcoded)
@@ -75,6 +77,7 @@ Phase 2
 - [X] ~~QString / QList helper functions~~ Lean on native Go types
 - [ ] Other Qt template containers
 	- [X] QVector // Seems to mostly work identically using QList code
+	- [ ] QPair (e.g. QGradientStop)
 	- [ ] QMap / QHash
 	- [ ] QSet
 - [ ] Test edge cases
@@ -86,6 +89,8 @@ Phase 2
 	- QList<int> return (QImage_ColorTable), parameter (...)
 	- Calling methods on base class
 	- Anything where we use runtime.SetFinalizer
+	- Check mallocs/frees match in all cases
+	- Run under valgrind to ensure no Qt memory leakage
 - [ ] Documentation
 	- [ ] Adapt examples from other Go Qt bindings
 	- [ ] Document comparison with other Qt binding packages
@@ -93,24 +98,34 @@ Phase 2
 
 Wishlist
 
-- [X] Remove P* types (Cgo does support pointers to incomplete C types)
-- [ ] QPaintEngine::fix_neg_rect should have a better name
-- [ ] CI action to rebuild bindings
-- [ ] Convert generated cpp files to amalgamation build for faster compilation
-	- https://github.com/golang/go/issues/9887
-- [ ] Consider projecting QByteArray as []byte
-- [ ] Subclassing (e.g. render delegates)
-- [ ] Custom Q_PROPERTY support
-- [ ] uic implementation
-- [ ] Use clang ast's `mangledName` to make a dlsym/LazyDLL cgo-free version 
-- [ ] Copy Qt documentation into function doc comments for IDE hinting
-- [ ] Generate bindings for all current Qt versions (Debian Qt / Qt LTS), expose as git tags
-- [ ] Reuse CABI to generate Qt bindings for other non-Go languages
-- [ ] Reduce necessary memory copies around ABI boundaries
-	- [ ] Bypass malloc/free for zero-length strings
-	- [ ] Bypass malloc/free for zero-length arrays
-- [ ] Generate other Qt libraries e.g. QtSvg
-- [ ] Document process for binding more libraries e.g. QScintilla, QZXing
-- [ ] Qt Creator integration
-- [ ] Get down to zero ErrTooComplex skips
-- [ ] Run under valgrind to ensure no Qt memory leakage
+- [ ] Check compilation on x86_32/ARM32 architecture with 32-bit pointer width
+- [ ] Advanced Qt functionality
+	- [ ] Subclassing (e.g. render delegates)
+	- [ ] Custom Q_PROPERTY support
+- [ ] Usability
+	- [ ] QPaintEngine::fix_neg_rect should have a better name
+	- [ ] Project DeprecatedAttr as `// Deprecated` comment
+	- [ ] Consider projecting QByteArray as []byte
+	- [ ] Use clang ast's `mangledName` to make a dlsym/LazyDLL cgo-free version 
+	- [ ] Copy Qt documentation into function doc comments for IDE hinting
+		- What license is the Qt documentation under, what are the license implications of this?
+	- [ ] Generate bindings for all current Qt versions (Debian Qt / Qt LTS), expose as git tags
+- [ ] Outreach/community
+	- [ ] Dockerize a reproducible build process
+	- [ ] CI action to rebuild bindings
+	- [ ] Reuse CABI to generate Qt bindings for other non-Go languages
+- [ ] Performance
+	- [ ] Convert generated cpp files to amalgamation build for faster compilation
+		- https://github.com/golang/go/issues/9887
+	- [ ] Reduce necessary memory copies around ABI boundaries
+		- [ ] Bypass malloc/free for zero-length strings
+		- [ ] Bypass malloc/free for zero-length arrays
+- [ ] Broader coverage	
+	- [ ] Get 100% of all QtCore, QtGui, QtWidgets binding
+	- [ ] Generate other Qt libraries e.g. QtSvg
+	- [ ] Document process for binding more libraries e.g. QScintilla, QZXing
+	- [ ] Add public QFoo_FromCPointer(uintptr) to ease interop with extra generated classes
+	- [ ] Get down to zero ErrTooComplex skips
+- [ ] Support other Qt ecosystem tooling
+	- [ ] Qt Creator integration
+	- [ ] uic implementation
