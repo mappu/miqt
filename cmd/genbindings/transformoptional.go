@@ -35,6 +35,7 @@ func astTransformOptional(parsed *CppParsedHeader) {
 					Parameters:         nil,
 					IsSignal:           m.IsSignal,
 					IsStatic:           m.IsStatic,
+					HasHiddenParams:    (x != len(m.Parameters)-1),
 				}
 				dupMethod.Parameters = append(dupMethod.Parameters, m.Parameters[0:x+1]...)
 				c.Methods = append(c.Methods, dupMethod) // TODO can we insert them next, instead of at the end?
@@ -43,6 +44,7 @@ func astTransformOptional(parsed *CppParsedHeader) {
 			// Truncate the original method's parameters to only the
 			// mandatory ones
 			m.Parameters = m.Parameters[0:optionalStart]
+			m.HasHiddenParams = true
 			c.Methods[j] = m
 		}
 

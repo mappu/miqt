@@ -376,7 +376,7 @@ import "C"
 			`)
 
 			// Add Connect() wrappers for signal functions
-			if m.IsSignal {
+			if m.IsSignal && !m.HasHiddenParams {
 				imports["unsafe"] = struct{}{}
 				imports["runtime/cgo"] = struct{}{}
 				ret.WriteString(`func (this *` + c.ClassName + `) On` + m.SafeMethodName() + `(slot func()) {

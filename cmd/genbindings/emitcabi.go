@@ -386,7 +386,7 @@ extern "C" {
 		for _, m := range c.Methods {
 			ret.WriteString(fmt.Sprintf("%s %s_%s(%s);\n", emitReturnTypeCabi(m.ReturnType), c.ClassName, m.SafeMethodName(), emitParametersCabi(m, c.ClassName+"*")))
 
-			if m.IsSignal {
+			if m.IsSignal && !m.HasHiddenParams {
 				ret.WriteString(fmt.Sprintf("%s %s_connect_%s(void* slot);\n", emitReturnTypeCabi(m.ReturnType), c.ClassName, m.SafeMethodName()))
 			}
 		}
@@ -550,7 +550,7 @@ extern "C" {
 				afterCall,
 			))
 
-			if m.IsSignal {
+			if m.IsSignal && !m.HasHiddenParams {
 				exactSignal := `static_cast<void (` + c.ClassName + `::*)(` + emitParameterTypesCpp(m) + `)>(&` + c.ClassName + `::` + nativeMethodName + `)`
 
 				ret.WriteString(
