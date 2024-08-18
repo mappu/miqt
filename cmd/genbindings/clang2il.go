@@ -404,7 +404,7 @@ func parseTypeString(typeString string) (CppParameter, []CppParameter, error) {
 	epos := strings.LastIndex(typeString, `)`)
 
 	if opos == -1 || epos == -1 {
-		return CppParameter{}, nil, fmt.Errorf("Type string %q missing brackets")
+		return CppParameter{}, nil, fmt.Errorf("Type string %q missing brackets", typeString)
 	}
 
 	returnType := parseSingleTypeString(strings.TrimSpace(typeString[0:opos]))
