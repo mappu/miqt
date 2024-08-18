@@ -1,6 +1,7 @@
 package main
 
 import (
+	"regexp"
 	"strings"
 )
 
@@ -116,7 +117,12 @@ func (nm CppMethod) SafeMethodName() string {
 	tmp := replacer.Replace(nm.MethodName)
 
 	// Also make the first letter uppercase so it becomes public in Go
-	return titleCase(tmp)
+	tmp = titleCase(tmp)
+
+	// Also replace any underscore_case with CamelCase
+	tmp = regexp.MustCompile(`_([a-z])`).ReplaceAllStringFunc(tmp, func(match string) string { return strings.ToUpper(match[1:]) })
+
+	return tmp
 }
 
 type CppClass struct {
