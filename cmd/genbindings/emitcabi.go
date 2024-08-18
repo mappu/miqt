@@ -69,7 +69,7 @@ func emitReturnTypeCabi(p CppParameter) string {
 func emitParametersCabi(m CppMethod, selfType string) string {
 	tmp := make([]string, 0, len(m.Parameters)+1)
 
-	if selfType != "" {
+	if !m.IsStatic && selfType != "" {
 		tmp = append(tmp, selfType+" self")
 	}
 
@@ -472,16 +472,21 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 				nativeMethodName = m.OverrideMethodName
 			}
 
+			callTarget := "self->"
+			if m.IsStatic {
+				callTarget = c.ClassName + "::"
+			}
+
 			ret.WriteString(fmt.Sprintf(
 				"%s %s_%s(%s) {\n"+
 					"%s"+
-					"\t%sself->%s(%s);\n"+
+					"\t%s%s%s(%s);\n"+
 					"%s"+
 					"}\n"+
 					"\n",
 				emitReturnTypeCabi(m.ReturnType), c.ClassName, m.SafeMethodName(), emitParametersCabi(m, c.ClassName+"*"),
 				preamble,
-				shouldReturn, nativeMethodName, forwarding,
+				shouldReturn, callTarget, nativeMethodName, forwarding,
 				afterCall,
 			))
 		}

@@ -109,15 +109,15 @@ func (p CppParameter) parameterTypeCgo() string {
 func emitParametersGo(params []CppParameter) string {
 	tmp := make([]string, 0, len(params))
 
-	isArgcArgv := false
+	skipNext := false
 
 	for i, p := range params {
 
 		if i == 0 && IsArgcArgv(params) {
-			isArgcArgv = true
+			skipNext = true
 			tmp = append(tmp, "args []string")
 
-		} else if i == 1 && isArgcArgv {
+		} else if skipNext {
 			// Skip this parameter, already handled
 
 		} else {
@@ -132,14 +132,16 @@ func emitParametersGo(params []CppParameter) string {
 func emitParametersGo2CABIForwarding(m CppMethod) (preamble string, fowarding string) {
 	tmp := make([]string, 0, len(m.Parameters)+2)
 
-	tmp = append(tmp, "this.h")
+	if !m.IsStatic {
+		tmp = append(tmp, "this.h")
+	}
 
-	isArgcArgv := false
+	skipNext := false
 
 	for i, p := range m.Parameters {
 
 		if i == 0 && IsArgcArgv(m.Parameters) {
-			isArgcArgv = true
+			skipNext = true
 			// QApplication constructor. Convert 'args' into Qt's wanted types
 			// Qt has a warning in the docs saying these pointers must be valid
 			// for the entire lifetype of QApplication, so, malloc + never free
@@ -154,8 +156,9 @@ func emitParametersGo2CABIForwarding(m CppMethod) (preamble string, fowarding st
 
 			tmp = append(tmp, "argc, argv")
 
-		} else if i == 1 && isArgcArgv {
+		} else if skipNext {
 			// Skip this parameter, already handled
+			skipNext = false
 
 		} else if p.ParameterType == "QString" {
 			// Go: convert string -> char* and len
@@ -359,8 +362,13 @@ import "C"
 
 			}
 
+			receiverAndMethod := `(this *` + c.ClassName + `) ` + m.SafeMethodName()
+			if m.IsStatic {
+				receiverAndMethod = c.ClassName + `_` + m.SafeMethodName()
+			}
+
 			ret.WriteString(`
-			func (this *` + c.ClassName + `) ` + m.SafeMethodName() + `(` + emitParametersGo(m.Parameters) + `) ` + returnTypeDecl + ` {
+			func ` + receiverAndMethod + `(` + emitParametersGo(m.Parameters) + `) ` + returnTypeDecl + ` {
 				` + preamble +
 				shouldReturn + ` C.` + c.ClassName + `_` + m.SafeMethodName() + `(` + forwarding + `)
 ` + afterword + `}

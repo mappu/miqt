@@ -298,6 +298,10 @@ func parseMethod(node map[string]interface{}, mm *CppMethod) error {
 		}
 	}
 
+	if storageClass, ok := node["storageClass"].(string); ok && storageClass == "static" {
+		mm.IsStatic = true
+	}
+
 	if methodInner, ok := node["inner"].([]interface{}); ok {
 		paramCounter := 0
 		for _, methodObj := range methodInner {

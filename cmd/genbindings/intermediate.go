@@ -65,6 +65,7 @@ type CppMethod struct {
 	OverrideMethodName string       // Present only if we changed the target
 	ReturnType         CppParameter // Name not used
 	Parameters         []CppParameter
+	IsStatic           bool
 }
 
 func IsArgcArgv(params []CppParameter) bool {
