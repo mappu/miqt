@@ -32,7 +32,7 @@ func parseHeader(topLevel []interface{}) (*CppParsedHeader, error) {
 				return nil, errors.New("node has no name")
 			}
 
-			fmt.Printf("-> %q name=%q\n", kind, nodename)
+			log.Printf("-> %q name=%q\n", kind, nodename)
 
 			// Skip over forward class declarations
 			// This is determined in two ways:
@@ -273,7 +273,7 @@ nextMethod:
 			ret.Methods = append(ret.Methods, mm)
 
 		default:
-			fmt.Printf("==> NOT IMPLEMENTED %q\n", kind)
+			log.Printf("==> NOT IMPLEMENTED %q\n", kind)
 		}
 	}
 
@@ -346,7 +346,7 @@ func parseMethod(node map[string]interface{}, mm *CppMethod) error {
 
 			default:
 				// Something else inside a declaration??
-				fmt.Printf("==> NOT IMPLEMENTED CXXMethodDecl->%q\n", methodObj["kind"])
+				log.Printf("==> NOT IMPLEMENTED CXXMethodDecl->%q\n", methodObj["kind"])
 			}
 		}
 	}
