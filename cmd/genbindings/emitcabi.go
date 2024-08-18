@@ -420,12 +420,7 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 `)
 
 	for _, ref := range getReferencedTypes(src) {
-		if ref[0] != 'Q' {
-			continue
-		}
-		if strings.HasPrefix(ref, "QPlatform") {
-			// e.g. QPlatformPixmap, QPlatformWindow, QPlatformScreen
-			// These classes don't have a <> version to include
+		if !ImportHeaderForClass(ref) {
 			continue
 		}
 

@@ -1,10 +1,36 @@
 package main
 
+import (
+	"strings"
+)
+
 func AllowDelete(c CppClass) bool {
 	switch c.ClassName {
 	case "QClipboard":
 		return false // The destructor is marked private. TODO grab this from the AST
 	}
+	return true
+}
+
+func ImportHeaderForClass(className string) bool {
+	if className[0] != 'Q' {
+		return false
+	}
+
+	// TODO this could be implict by checking if files exist in known header paths
+
+	if strings.HasPrefix(className, "QPlatform") {
+		// e.g. QPlatformPixmap, QPlatformWindow, QPlatformScreen
+		// These classes don't have a <> version to include
+		return false
+	}
+
+	switch className {
+	case "QGraphicsEffectSource", // e.g. qgraphicseffect.h
+		"QText": // e.g. qtextcursor.h
+		return false
+	}
+
 	return true
 }
 
