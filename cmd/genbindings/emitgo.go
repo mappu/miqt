@@ -113,7 +113,7 @@ func emitParametersGo(params []CppParameter) string {
 
 	for i, p := range params {
 
-		if i == 0 && IsArgcArgv(params) {
+		if IsArgcArgv(params, i) {
 			skipNext = true
 			tmp = append(tmp, "args []string")
 
@@ -140,7 +140,7 @@ func emitParametersGo2CABIForwarding(m CppMethod) (preamble string, fowarding st
 
 	for i, p := range m.Parameters {
 
-		if i == 0 && IsArgcArgv(m.Parameters) {
+		if IsArgcArgv(m.Parameters, i) {
 			skipNext = true
 			// QApplication constructor. Convert 'args' into Qt's wanted types
 			// Qt has a warning in the docs saying these pointers must be valid

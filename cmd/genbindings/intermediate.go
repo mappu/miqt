@@ -70,14 +70,17 @@ type CppMethod struct {
 	IsSignal           bool
 }
 
-func IsArgcArgv(params []CppParameter) bool {
+func IsArgcArgv(params []CppParameter, pos int) bool {
+	// Check if the arguments starting at position=pos are the argc/argv pattern.
 	// QApplication/QGuiApplication constructors are the only expected example of this.
-	return (len(params) > 1 &&
-		params[0].ParameterName == "argc" &&
-		params[0].ParameterType == "int" &&
-		params[0].ByRef &&
-		params[1].ParameterName == "argv" &&
-		params[1].ParameterType == "char **")
+	return (len(params) > pos+1 &&
+		params[pos].ParameterName == "argc" &&
+		params[pos].ParameterType == "int" &&
+		params[pos].ByRef &&
+		params[pos+1].ParameterName == "argv" &&
+		params[pos+1].ParameterType == "char **")
+}
+
 }
 
 func (nm CppMethod) SafeMethodName() string {
