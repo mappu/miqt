@@ -46,7 +46,7 @@ Phase 1
 					- [X] For parameters
 					- [X] For return types
 		- [X] ~~QByteArray type conversion~~ Seems to be fine as a non-templated type
-		- [ ] C array style used by QApplication constructor (int& argc, char** argv)
+		- [X] C array style used by QApplication constructor (int& argc, char** argv)
 		- [ ] Typedefs
 			- [X] Simple typedefs e.g. WId (hardcoded)
 			- [X] QRgb (hardcoded)
@@ -55,10 +55,14 @@ Phase 1
 	- [X] Hide private methods
 	- [X] Optional parameters
 	- [X] Overloaded methods
-	- [ ] Slots	
-		- [ ] Add `connect` wrappers for each slot
+	- [X] Static methods (e.g. QWidget::setTabOrder)
+	- [ ] Signals
+		- [X] Add `connect` wrappers for each signal
+		- [ ] Argument marshalling
+		- [ ] Overload disambiguation (e.g. QProcess signals)
+		- [ ] Automatic memory management
+		- [ ] Disconnect()
 	- [ ] Public member variables
-	- [ ] Static methods (e.g. QWidget::setTabOrder)
 	- [ ] Qt:: namespace enums/const values
 		- e.g. Qt::WindowFlags (global)
 		- e.g. QWidget::RenderFlag (per-class)
@@ -101,9 +105,10 @@ Wishlist
 - [ ] Check compilation on x86_32/ARM32 architecture with 32-bit pointer width
 - [ ] Advanced Qt functionality
 	- [ ] Subclassing (e.g. render delegates)
+	- [ ] Test of model-view list rendering
 	- [ ] Custom Q_PROPERTY support
 - [ ] Usability
-	- [ ] QPaintEngine::fix_neg_rect should have a better name
+	- [X] QPaintEngine::fix_neg_rect should have a better name
 	- [ ] Project DeprecatedAttr as `// Deprecated` comment
 	- [ ] Consider projecting QByteArray as []byte
 	- [ ] Use clang ast's `mangledName` to make a dlsym/LazyDLL cgo-free version 
@@ -117,6 +122,7 @@ Wishlist
 - [ ] Performance
 	- [ ] Convert generated cpp files to amalgamation build for faster compilation
 		- https://github.com/golang/go/issues/9887
+	[ ] Move some inlined generated code into helper functions to reduce total compile workload / binary size
 	- [ ] Reduce necessary memory copies around ABI boundaries
 		- [ ] Bypass malloc/free for zero-length strings
 		- [ ] Bypass malloc/free for zero-length arrays
