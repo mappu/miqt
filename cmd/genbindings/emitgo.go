@@ -230,7 +230,7 @@ func emitParametersGo2CABIForwarding(m CppMethod) (preamble string, fowarding st
 func emitGo(src *CppParsedHeader, headerName string) (string, error) {
 
 	ret := strings.Builder{}
-	ret.WriteString(`package miqt
+	ret.WriteString(`package qt
 
 /*
 
@@ -374,6 +374,20 @@ import "C"
 ` + afterword + `}
 			
 			`)
+
+			// Add Connect() wrappers for signal functions
+			if m.IsSignal {
+				imports["unsafe"] = struct{}{}
+				imports["runtime/cgo"] = struct{}{}
+				ret.WriteString(`func (this *` + c.ClassName + `) On` + m.SafeMethodName() + `(slot func()) {
+					var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
+						slot()
+					}
+				
+					C.` + c.ClassName + `_connect_` + m.SafeMethodName() + `(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+				}
+				`)
+			}
 		}
 
 		if AllowDelete(c) {

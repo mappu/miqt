@@ -68,6 +68,49 @@ func emitReturnTypeCabi(p CppParameter) string {
 	}
 }
 
+// emitParametersCpp emits the parameter definitions exactly how Qt C++ defines them.
+func emitParametersCpp(m CppMethod) string {
+	tmp := make([]string, 0, len(m.Parameters))
+	for _, p := range m.Parameters {
+
+		cppType := p.ParameterType
+		if p.Const {
+			cppType = "const " + cppType
+		}
+		if p.Pointer {
+			cppType += "*"
+		}
+		if p.ByRef {
+			cppType += "&"
+		}
+
+		tmp = append(tmp, cppType+" "+p.ParameterName)
+	}
+
+	return strings.Join(tmp, `, `)
+}
+
+func emitParameterTypesCpp(m CppMethod) string {
+	tmp := make([]string, 0, len(m.Parameters))
+	for _, p := range m.Parameters {
+
+		cppType := p.ParameterType
+		if p.Const {
+			cppType = "const " + cppType
+		}
+		if p.Pointer {
+			cppType += "*"
+		}
+		if p.ByRef {
+			cppType += "&"
+		}
+
+		tmp = append(tmp, cppType)
+	}
+
+	return strings.Join(tmp, `, `)
+}
+
 func emitParametersCabi(m CppMethod, selfType string) string {
 	tmp := make([]string, 0, len(m.Parameters)+1)
 
@@ -342,6 +385,10 @@ extern "C" {
 
 		for _, m := range c.Methods {
 			ret.WriteString(fmt.Sprintf("%s %s_%s(%s);\n", emitReturnTypeCabi(m.ReturnType), c.ClassName, m.SafeMethodName(), emitParametersCabi(m, c.ClassName+"*")))
+
+			if m.IsSignal {
+				ret.WriteString(fmt.Sprintf("%s %s_connect_%s(void* slot);\n", emitReturnTypeCabi(m.ReturnType), c.ClassName, m.SafeMethodName()))
+			}
 		}
 
 		// delete
@@ -383,7 +430,13 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 		ret.WriteString(`#include <` + ref + ">\n")
 	}
 
-	ret.WriteString("\n")
+	ret.WriteString(`
+
+extern "C" {
+    extern void miqt_exec_callback(void* cb, int argc, void* argv);
+}
+
+`)
 
 	for _, c := range src.Classes {
 
@@ -496,6 +549,19 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 				shouldReturn, callTarget, nativeMethodName, forwarding,
 				afterCall,
 			))
+
+			if m.IsSignal {
+				exactSignal := `static_cast<void (` + c.ClassName + `::*)(` + emitParameterTypesCpp(m) + `)>(&` + c.ClassName + `::` + nativeMethodName + `)`
+
+				ret.WriteString(
+					`void ` + c.ClassName + `_connect_` + m.SafeMethodName() + `(` + c.ClassName + `* self, void* slot) {` + "\n" +
+						"\t" + c.ClassName + `::connect(self, ` + exactSignal + `, self, [=](` + emitParametersCpp(m) + `) {` + "\n" +
+						"\t\t" + `miqt_exec_callback(slot, 0, nullptr);` + "\n" +
+						"\t});\n" +
+						"}\n" +
+						"\n",
+				)
+			}
 		}
 
 		// Delete
