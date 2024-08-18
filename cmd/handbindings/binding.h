@@ -5,6 +5,8 @@
 extern "C" {
 #endif
 
+#include <stdint.h>
+
 typedef void* PQApplication;
 
 typedef void* PQPushButton;
@@ -20,6 +22,8 @@ void QWidget_show(PQWidget self);
 PQPushButton QPushButton_new(const char* label, PQWidget parent);
 
 void QPushButton_show(PQPushButton self);
+
+void QPushButton_connect_pressed(PQPushButton self, void* cb);
 
 int QApplication_exec(PQApplication self);
 

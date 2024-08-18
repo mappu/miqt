@@ -10,6 +10,7 @@ package main
 import "C"
 
 import (
+	"runtime/cgo"
 	"unsafe"
 )
 
@@ -22,6 +23,21 @@ func CArray(data []string) (C.int, **C.char) {
 	}
 
 	return C.int(len(data)), (**C.char)(unsafe.Pointer(c_argv))
+}
+
+type CallbackFunc func(argc C.int, args *C.void)
+
+//export miqt_exec_callback
+func miqt_exec_callback(cb *C.void, argc C.int, args *C.void) {
+	// Our CABI for all callbacks is void(int, void*).
+	// Our Go ABI is CallbackFunc
+	// Then the Go bindings can unmarshal the arguments and C.free() them as necessary
+	cfunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(CallbackFunc)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	cfunc(argc, args)
 }
 
 //
@@ -80,4 +96,15 @@ func (this *QPushButton) Show() {
 
 func (this *QPushButton) AsQWidget() *QWidget {
 	return &QWidget{h: C.PQWidget(this.h)} // Type cast
+}
+
+func (this *QPushButton) OnPressed(cb func()) {
+	var cbWrapper CallbackFunc = func(argc C.int, args *C.void) {
+		// Unmarshal arguments
+		// Pressed() doesn't take any, though
+		cb()
+	}
+
+	C.QPushButton_connect_pressed(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(cbWrapper))))
+	// TODO allow disconnect'ing, or tie lifespan for handle.Delete(), ...
 }

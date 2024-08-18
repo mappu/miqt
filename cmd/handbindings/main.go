@@ -23,6 +23,10 @@ func main() {
 	btn := NewQPushButton("Hello world!", wid)
 	_ = btn
 
+	btn.OnPressed(func() {
+		fmt.Println("Clicked!")
+	})
+
 	wid.Show()
 
 	app.Exec()
