@@ -465,9 +465,6 @@ func parseSingleTypeString(p string) CppParameter {
 			insert.ByRef = true
 		} else if tok == "*" {
 			insert.Pointer = true
-		} else if tok == "qreal" {
-			// Transform typedef
-			insert.ParameterType += " double"
 		} else if tok == "WId" {
 			// Transform typedef
 			insert.ParameterType += " uintptr_t"

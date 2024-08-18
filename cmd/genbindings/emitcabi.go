@@ -35,6 +35,8 @@ func (p CppParameter) RenderTypeCpp() string {
 		ret = "_Float16" // No idea where this typedef comes from, but it exists
 	case "qsizetype":
 		ret = "size_t"
+	case "qreal":
+		ret = "double"
 	case "qintptr":
 		ret = "uintptr_t"
 	case "QRgb":
