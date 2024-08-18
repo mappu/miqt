@@ -35,6 +35,10 @@ func main() {
 		"/usr/include/x86_64-linux-gnu/qt5/QtCore/qiodevice.h",
 		"/usr/include/x86_64-linux-gnu/qt5/QtCore/qline.h",
 		"/usr/include/x86_64-linux-gnu/qt5/QtCore/qchar.h",
+		"/usr/include/x86_64-linux-gnu/qt5/QtCore/qcoreapplication.h",
+		"/usr/include/x86_64-linux-gnu/qt5/QtCore/qtranslator.h",
+		"/usr/include/x86_64-linux-gnu/qt5/QtCore/qabstracteventdispatcher.h",
+		"/usr/include/x86_64-linux-gnu/qt5/QtCore/qabstractnativeeventfilter.h",
 
 		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qicon.h",
 		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qiconengine.h",
@@ -66,6 +70,10 @@ func main() {
 		// "/usr/include/x86_64-linux-gnu/qt5/QtGui/qpolygon.h", // Extends a QVector<QPoint> template class, too hard
 		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qregion.h",
 		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qguiapplication.h",
+		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qpalette.h",
+		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qwindow.h",
+		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qsurface.h",
+		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qscreen.h",
 
 		"/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qwidget.h",
 		"/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qabstractbutton.h",
@@ -73,6 +81,8 @@ func main() {
 		"/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qbuttongroup.h",
 		"/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qmenu.h",
 		"/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qapplication.h",
+		"/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qstyle.h",
+		"/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qdesktopwidget.h",
 	}
 
 	for _, inputHeader := range includeFiles {
