@@ -81,6 +81,26 @@ func IsArgcArgv(params []CppParameter, pos int) bool {
 		params[pos+1].ParameterType == "char **")
 }
 
+func IsReceiverMethod(params []CppParameter, pos int) bool {
+	// Check if the arguments starting at position=pos are the receiver/member pattern.
+	// QMenu->addAction is the main example of this
+	return (len(params) > pos+1 &&
+		params[pos].ParameterName == "receiver" &&
+		params[pos].ParameterType == "QObject" &&
+		params[pos].Pointer &&
+		params[pos+1].ParameterName == "member" &&
+		params[pos+1].ParameterType == "char" &&
+		params[pos+1].Pointer)
+}
+
+func (nm CppMethod) IsReceiverMethod() bool {
+	// Returns true if any of the parameters use the receiever-method pattern
+	for i := 0; i < len(nm.Parameters); i++ {
+		if IsReceiverMethod(nm.Parameters, i) {
+			return true
+		}
+	}
+	return false
 }
 
 func (nm CppMethod) SafeMethodName() string {

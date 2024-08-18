@@ -283,6 +283,11 @@ nextMethod:
 
 			mm.IsSignal = isSignal && !mm.IsStatic && mm.MethodName != `metaObject`
 
+			if mm.IsReceiverMethod() {
+				log.Printf("Skipping method %q using non-projectable receiver pattern parameters", mm.MethodName)
+				continue nextMethod
+			}
+
 			ret.Methods = append(ret.Methods, mm)
 
 		default:
