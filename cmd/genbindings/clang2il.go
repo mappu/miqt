@@ -159,6 +159,8 @@ func processClassType(node map[string]interface{}, className string) (CppClass, 
 		}
 	}
 
+	isSignal := false
+
 	// Parse all methods
 
 nextMethod:
@@ -188,6 +190,15 @@ nextMethod:
 				visibility = false
 			default:
 				panic("unexpected access visibility '" + access + "'")
+			}
+
+			// Clang sees Q_SIGNALS/signals as being a macro for `public`
+			// If this AccessSpecDecl was imported from a macro, assume it's signals
+			isSignal = false
+			if loc, ok := node["loc"].(map[string]interface{}); ok {
+				if _, ok := loc["expansionLoc"].(map[string]interface{}); ok {
+					isSignal = true
+				}
 			}
 
 		case "FriendDecl":
@@ -269,6 +280,8 @@ nextMethod:
 				// Real error
 				return CppClass{}, err
 			}
+
+			mm.IsSignal = isSignal && !mm.IsStatic && mm.MethodName != `metaObject`
 
 			ret.Methods = append(ret.Methods, mm)
 

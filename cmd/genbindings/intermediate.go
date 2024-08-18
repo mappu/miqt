@@ -67,6 +67,7 @@ type CppMethod struct {
 	ReturnType         CppParameter // Name not used
 	Parameters         []CppParameter
 	IsStatic           bool
+	IsSignal           bool
 }
 
 func IsArgcArgv(params []CppParameter) bool {
