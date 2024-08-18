@@ -33,6 +33,8 @@ func astTransformOptional(parsed *CppParsedHeader) {
 					OverrideMethodName: m.MethodName,
 					ReturnType:         m.ReturnType,
 					Parameters:         nil,
+					IsSignal:           m.IsSignal,
+					IsStatic:           m.IsStatic,
 				}
 				dupMethod.Parameters = append(dupMethod.Parameters, m.Parameters[0:x+1]...)
 				c.Methods = append(c.Methods, dupMethod) // TODO can we insert them next, instead of at the end?
