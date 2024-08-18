@@ -105,6 +105,14 @@ func (nm CppMethod) IsReceiverMethod() bool {
 }
 
 func (nm CppMethod) SafeMethodName() string {
+
+	tmp := nm.MethodName
+
+	// Strip redundant Qt prefix, we know these are all Qt functions
+	if strings.HasPrefix(tmp, "qt_") {
+		tmp = tmp[3:]
+	}
+
 	// Operator-overload methods have names not representable in binding
 	// languages. Replace more specific cases first
 	replacer := strings.NewReplacer(
@@ -138,8 +146,7 @@ func (nm CppMethod) SafeMethodName() string {
 		`[]`, `Subscript`,
 		`()`, `Call`,
 	)
-
-	tmp := replacer.Replace(nm.MethodName)
+	tmp = replacer.Replace(tmp)
 
 	// Also make the first letter uppercase so it becomes public in Go
 	tmp = titleCase(tmp)

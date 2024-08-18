@@ -265,10 +265,6 @@ nextMethod:
 
 			var mm CppMethod
 			mm.MethodName = methodName
-			if strings.HasPrefix(methodName, "qt_") { // Strip redundant Qt prefix, we know these are all Qt functions
-				mm.OverrideMethodName = methodName
-				mm.MethodName = methodName[3:]
-			}
 
 			if strings.Contains(methodName, `QGADGET`) {
 				log.Printf("Skipping method %q with weird QGADGET behaviour\n", mm.MethodName)
