@@ -1,5 +1,13 @@
 package main
 
+func AllowDelete(c CppClass) bool {
+	switch c.ClassName {
+	case "QClipboard":
+		return false // The destructor is marked private. TODO grab this from the AST
+	}
+	return true
+}
+
 func CheckComplexity(p CppParameter) error {
 
 	if p.QMapOf() {

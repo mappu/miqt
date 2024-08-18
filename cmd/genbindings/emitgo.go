@@ -376,11 +376,13 @@ import "C"
 			`)
 		}
 
-		ret.WriteString(`
-		func (this *` + c.ClassName + `) Delete() {
-			C.` + c.ClassName + `_Delete(this.h)
+		if AllowDelete(c) {
+			ret.WriteString(`
+			func (this *` + c.ClassName + `) Delete() {
+				C.` + c.ClassName + `_Delete(this.h)
+			}
+			`)
 		}
-		`)
 
 	}
 

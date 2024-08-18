@@ -343,7 +343,9 @@ extern "C" {
 		}
 
 		// delete
-		ret.WriteString(fmt.Sprintf("void %s_Delete(%s* self);\n", c.ClassName, c.ClassName))
+		if AllowDelete(c) {
+			ret.WriteString(fmt.Sprintf("void %s_Delete(%s* self);\n", c.ClassName, c.ClassName))
+		}
 
 		ret.WriteString("\n")
 	}
@@ -495,13 +497,15 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 		}
 
 		// Delete
-		ret.WriteString(fmt.Sprintf(
-			"void %s_Delete(%s* self) {\n"+
-				"\tdelete self;\n"+
-				"}\n"+
-				"\n",
-			c.ClassName, c.ClassName,
-		))
+		if AllowDelete(c) {
+			ret.WriteString(fmt.Sprintf(
+				"void %s_Delete(%s* self) {\n"+
+					"\tdelete self;\n"+
+					"}\n"+
+					"\n",
+				c.ClassName, c.ClassName,
+			))
+		}
 	}
 
 	return ret.String(), nil
