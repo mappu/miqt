@@ -2,6 +2,10 @@ package qt
 
 // SPDX-License-Identifier: MIT
 
+import (
+	"C"
+)
+
 type miqtCallbackFunc func(argc C.int, args *C.void)
 
 //export miqt_exec_callback
