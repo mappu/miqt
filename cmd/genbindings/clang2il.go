@@ -282,6 +282,17 @@ nextMethod:
 				return CppClass{}, err
 			}
 
+			for _, p := range mm.Parameters {
+				if strings.HasSuffix(p.ParameterType, "Private") {
+					log.Printf("Skipping method %q taking Private type", mm.MethodName)
+					continue nextMethod
+				}
+			}
+			if strings.HasSuffix(mm.ReturnType.ParameterType, "Private") {
+				log.Printf("Skipping method %q returning Private type", mm.MethodName)
+				continue nextMethod
+			}
+
 			mm.IsSignal = isSignal && !mm.IsStatic && mm.MethodName != `metaObject`
 
 			if mm.IsReceiverMethod() {
@@ -466,7 +477,7 @@ func parseSingleTypeString(p string) CppParameter {
 			insert.ParameterType += " uintptr_t"
 		} else if tok == "QStringList" {
 			insert.ParameterType += " QList<QString>"
-		} else if len(tok) > 4 && strings.HasSuffix(tok, "List") {
+		} else if len(tok) > 4 && strings.HasSuffix(tok, "List") && tok != "QTextList" {
 			// Typedef e.g. QObjectList
 			// QObjectList is a pointer, but QStringList is a whole custom class
 			insert.ParameterType += " QList<" + tok[0:len(tok)-4] + " *>"
