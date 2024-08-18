@@ -39,6 +39,7 @@ func main() {
 		"/usr/include/x86_64-linux-gnu/qt5/QtCore/qtranslator.h",
 		"/usr/include/x86_64-linux-gnu/qt5/QtCore/qabstracteventdispatcher.h",
 		"/usr/include/x86_64-linux-gnu/qt5/QtCore/qabstractnativeeventfilter.h",
+		"/usr/include/x86_64-linux-gnu/qt5/QtCore/qsocketnotifier.h",
 
 		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qicon.h",
 		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qiconengine.h",
@@ -74,6 +75,11 @@ func main() {
 		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qwindow.h",
 		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qsurface.h",
 		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qscreen.h",
+		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qcursor.h",
+		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qclipboard.h",
+		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qstylehints.h",
+		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qinputmethod.h",
+		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qsessionmanager.h",
 
 		"/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qwidget.h",
 		"/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qabstractbutton.h",
