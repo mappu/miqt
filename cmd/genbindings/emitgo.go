@@ -6,6 +6,7 @@ import (
 	"log"
 	"sort"
 	"strings"
+	"unsafe"
 )
 
 func goReservedWord(s string) bool {
@@ -85,6 +86,13 @@ func (p CppParameter) RenderTypeGo() string {
 			ret += "uint32"
 		} else {
 			ret += "uint64"
+		}
+	case "qintptr":
+		var ptr *int
+		if unsafe.Sizeof(ptr) == 8 {
+			ret += "uint64"
+		} else {
+			ret += "uint32"
 		}
 	default:
 		// Do not transform this type
