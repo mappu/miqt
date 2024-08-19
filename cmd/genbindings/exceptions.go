@@ -70,6 +70,7 @@ func CheckComplexity(p CppParameter) error {
 		"QFunctionPointer",         // e.g. QGuiApplication_PlatformFunction
 		"QGraphicsEffectSource",    // e.g. used by qgraphicseffect.h, but the definition is in ????
 		"QAbstractUndoItem",        // e.g. Defined in qtextdocument.h
+		"QTextObjectInterface",     // e.g. qabstracttextdocumentlayout.h
 		"QPlatformPixmap",          // e.g. qpixmap.h. as below
 		"QPlatformScreen",          // e.g. qscreen.h. as below
 		"QPlatformSurface",         // e.g. qsurface.h. as below

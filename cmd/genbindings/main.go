@@ -44,6 +44,7 @@ func main() {
 		"/usr/include/x86_64-linux-gnu/qt5/QtCore/qdatetime.h",
 		"/usr/include/x86_64-linux-gnu/qt5/QtCore/qcalendar.h",
 		"/usr/include/x86_64-linux-gnu/qt5/QtCore/qtimezone.h",
+		"/usr/include/x86_64-linux-gnu/qt5/QtCore/qurl.h",
 
 		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qicon.h",
 		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qiconengine.h",
@@ -85,6 +86,7 @@ func main() {
 		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qinputmethod.h",
 		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qsessionmanager.h",
 		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qtextdocument.h",
+		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qtextdocumentfragment.h",
 		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qtextcursor.h",
 		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qtextlist.h",
 		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qtexttable.h",
@@ -96,6 +98,9 @@ func main() {
 		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qvector4d.h",
 		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qquaternion.h",
 		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qsurfaceformat.h",
+		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qtextformat.h",
+		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qabstracttextdocumentlayout.h",
+		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qpagedpaintdevice.h",
 
 		"/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qwidget.h",
 		"/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qabstractbutton.h",
@@ -119,6 +124,9 @@ func main() {
 		"/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qabstractscrollarea.h",
 		"/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qgraphicslayout.h",
 		"/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qgraphicslayoutitem.h",
+		"/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qframe.h",
+		"/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qscrollbar.h",
+		"/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qabstractslider.h",
 	}
 
 	for _, inputHeader := range includeFiles {

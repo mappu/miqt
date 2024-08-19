@@ -11,7 +11,7 @@ import (
 
 func goReservedWord(s string) bool {
 	switch s {
-	case "default", "const", "func", "var", "type", "len", "new", "copy", "import":
+	case "default", "const", "func", "var", "type", "len", "new", "copy", "import", "range":
 		return true
 	default:
 		return false
