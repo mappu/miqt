@@ -37,7 +37,7 @@ func (p CppParameter) RenderTypeCpp() string {
 		ret = "size_t"
 	case "qreal":
 		ret = "double"
-	case "qintptr":
+	case "qintptr", "quintptr":
 		ret = "uintptr_t"
 	case "QRgb":
 		ret = "unsigned int"

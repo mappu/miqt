@@ -86,6 +86,7 @@ func CheckComplexity(p CppParameter) error {
 		"char *&",                  // e.g. QDataStream.operator<<()
 		"qfloat16",                 // e.g. QDataStream - there is no such half-float type in C or Go
 		"char16_t",                 // e.g. QChar() constructor overload, just unnecessary
+		"char32_t",                 // e.g. QDebug().operator<< overload, unnecessary
 		"picture_io_handler",       // e.g. QPictureIO::DefineIOHandler callback function
 		"QPlatformNativeInterface", // e.g. QGuiApplication::platformNativeInterface(). Private type, could probably expose as uintptr. n.b. Changes in Qt6
 		"QFunctionPointer",         // e.g. QGuiApplication_PlatformFunction
