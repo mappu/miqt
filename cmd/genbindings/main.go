@@ -6,6 +6,7 @@ import (
 	"flag"
 	"io/ioutil"
 	"log"
+	"os"
 	"path/filepath"
 	"strings"
 )
@@ -19,114 +20,62 @@ func main() {
 
 	flag.Parse()
 
-	includeFiles := []string{
-		"/usr/include/x86_64-linux-gnu/qt5/QtCore/qobject.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtCore/qcoreevent.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtCore/qmetaobject.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtCore/qobjectdefs.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtCore/qbytearray.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtCore/qsize.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtCore/qrect.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtCore/qpoint.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtCore/qmargins.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtCore/qthread.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtCore/qdatastream.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtCore/qvariant.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtCore/qiodevice.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtCore/qline.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtCore/qchar.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtCore/qcoreapplication.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtCore/qtranslator.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtCore/qabstracteventdispatcher.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtCore/qabstractnativeeventfilter.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtCore/qsocketnotifier.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtCore/qlocale.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtCore/qdatetime.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtCore/qcalendar.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtCore/qtimezone.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtCore/qurl.h",
+	var includeFiles []string
 
-		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qicon.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qiconengine.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qpixmap.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qbitmap.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qmatrix.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qimage.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qrgba64.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qkeysequence.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qtransform.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qpaintengine.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qcolor.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qcolorspace.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qcolortransform.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qpixelformat.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qpainterpath.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qfont.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qfontmetrics.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qfontinfo.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qrawfont.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qglyphrun.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qpainter.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qpicture.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qpen.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qstatictext.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qtextoption.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qbrush.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qpaintdevice.h",
-		// "/usr/include/x86_64-linux-gnu/qt5/QtGui/qpolygon.h", // Extends a QVector<QPoint> template class, too hard
-		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qregion.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qguiapplication.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qpalette.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qwindow.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qsurface.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qscreen.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qcursor.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qclipboard.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qstylehints.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qinputmethod.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qsessionmanager.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qtextdocument.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qtextdocumentfragment.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qtextcursor.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qtextlist.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qtexttable.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qtextobject.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qmatrix.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qmatrix4x4.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qvector2d.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qvector3d.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qvector4d.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qquaternion.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qsurfaceformat.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qtextformat.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qabstracttextdocumentlayout.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtGui/qpagedpaintdevice.h",
+	for _, srcDir := range []string{
+		"/usr/include/x86_64-linux-gnu/qt5/QtCore",
+		"/usr/include/x86_64-linux-gnu/qt5/QtGui",
+		"/usr/include/x86_64-linux-gnu/qt5/QtWidgets",
+	} {
+		content, err := os.ReadDir(srcDir)
+		if err != nil {
+			panic(err)
+		}
 
-		"/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qwidget.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qabstractbutton.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qpushbutton.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qbuttongroup.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qmenu.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qapplication.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qstyle.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qdesktopwidget.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qaction.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qactiongroup.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qgraphicswidget.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qgraphicsitem.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qgraphicslayoutitem.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qgraphicsscene.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qgraphicseffect.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qgraphicstransform.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qgraphicsview.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qstyleoption.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qsizepolicy.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qabstractscrollarea.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qgraphicslayout.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qgraphicslayoutitem.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qframe.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qscrollbar.h",
-		"/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qabstractslider.h",
+		for _, includeFile := range content {
+			if includeFile.IsDir() {
+				continue
+			}
+			if !strings.HasSuffix(includeFile.Name(), `.h`) {
+				continue
+			}
+			fullPath := filepath.Join(srcDir, includeFile.Name())
+			if !AllowHeader(fullPath) {
+				continue
+			}
+			includeFiles = append(includeFiles, fullPath)
+		}
+	}
+
+	log.Printf("Found %d header files to process.", len(includeFiles))
+
+	{
+		log.Printf("Cleaning up output directory %q...", *outDir)
+
+		existing, err := os.ReadDir(*outDir)
+		if err != nil {
+			panic(err)
+		}
+
+		cleaned := 0
+		for _, e := range existing {
+			if e.IsDir() {
+				continue
+			}
+			if !strings.HasPrefix(e.Name(), `gen_`) {
+				continue
+			}
+			// One of ours, clean up
+			err := os.Remove(filepath.Join(*outDir, e.Name()))
+			if err != nil {
+				log.Printf("WARNING: Failed to remove existing file %q", e.Name())
+				continue
+			}
+
+			cleaned++
+		}
+
+		log.Printf("Removed %d file(s).", cleaned)
 	}
 
 	for _, inputHeader := range includeFiles {

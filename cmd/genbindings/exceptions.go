@@ -4,6 +4,10 @@ import (
 	"strings"
 )
 
+func AllowHeader(fullpath string) bool {
+	return true
+}
+
 func AllowDelete(c CppClass) bool {
 	switch c.ClassName {
 	case "QClipboard",
