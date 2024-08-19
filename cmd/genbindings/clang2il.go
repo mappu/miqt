@@ -67,8 +67,16 @@ func parseHeader(topLevel []interface{}) (*CppParsedHeader, error) {
 		case "StaticAssertDecl":
 			// ignore
 
-		case "ClassTemplateDecl", "ClassTemplateSpecializationDecl", "ClassTemplatePartialSpecializationDecl":
-			// ignore
+		case "ClassTemplateDecl",
+			"ClassTemplateSpecializationDecl",
+			"ClassTemplatePartialSpecializationDecl",
+			"FunctionTemplateDecl",
+			"TypeAliasTemplateDecl", // e.g. qendian.h
+			"VarTemplateDecl":       // e.g. qglobal.h
+			// Template stuff probably can't be supported in the binding since
+			// we would need to link a concrete instantiation for each type in
+			// the CABI
+			// Ignore this node
 
 		case "FileScopeAsmDecl":
 			// ignore
@@ -79,8 +87,12 @@ func parseHeader(topLevel []interface{}) (*CppParsedHeader, error) {
 		case "FunctionDecl":
 			// TODO
 
-		case "FunctionTemplateDecl":
-			// TODO
+		case "EnumDecl":
+			// TODO e.g. qmetatype.h
+
+		case "VarDecl":
+			// TODO e.g. qmath.h
+			// We could probably generate setter/getter for this in the CABI
 
 		case "CXXConstructorDecl":
 			// TODO (why is this at the top level? e.g qobject.h)
@@ -90,6 +102,18 @@ func parseHeader(topLevel []interface{}) (*CppParsedHeader, error) {
 
 		case "CXXConversionDecl":
 			// TODO (e.g. qbytearray.h)
+
+		case "LinkageSpecDecl":
+			// TODO e.g. qfuturewatcher.h
+			// Probably can't be supported in the Go binding
+
+		case "TypeAliasDecl":
+			// TODO e.g. qglobal.h
+			// Should be treated like a typedef
+
+		case "UsingDirectiveDecl":
+			// TODO e.g. qtextstream.h
+			// Should be treated like a typedef
 
 		case "TypedefDecl":
 			// Must have a name
