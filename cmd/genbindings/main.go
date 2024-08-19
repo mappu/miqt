@@ -192,6 +192,12 @@ func main() {
 			}
 		}
 
+		// Breakout if there is nothing bindable
+		if parsed.Empty() {
+			log.Printf("Nothing in this header was bindable.")
+			continue
+		}
+
 		// Emit 3 code files from the intermediate format
 		outputName := filepath.Join(*outDir, "gen_"+strings.TrimSuffix(filepath.Base(inputHeader), `.h`))
 

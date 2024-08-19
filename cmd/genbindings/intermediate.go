@@ -176,3 +176,8 @@ type CppParsedHeader struct {
 	Typedefs []CppTypedef
 	Classes  []CppClass
 }
+
+func (c CppParsedHeader) Empty() bool {
+	return len(c.Typedefs) == 0 &&
+		len(c.Classes) == 0
+}
