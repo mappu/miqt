@@ -437,7 +437,7 @@ func parseTypeString(typeString string) (CppParameter, []CppParameter, error) {
 	}
 
 	// Parameters are separated by commas and nesting can not be possible
-	params := strings.Split(inner, `,`)
+	params := tokenizeMultipleParameters(inner) // strings.Split(inner, `,`)
 
 	ret := make([]CppParameter, 0, len(params))
 	for _, p := range params {
@@ -454,6 +454,31 @@ func parseTypeString(typeString string) (CppParameter, []CppParameter, error) {
 	}
 
 	return returnType, ret, nil
+}
+
+func tokenizeMultipleParameters(p string) []string {
+	// Tokenize into top-level strings
+	templateDepth := 0
+	tokens := []string{}
+	wip := ""
+	p = strings.TrimSpace(p)
+	for _, c := range p {
+		if c == '<' {
+			wip += string(c)
+			templateDepth++
+		} else if c == '>' {
+			wip += string(c)
+			templateDepth--
+		} else if c == ',' && templateDepth == 0 {
+			tokens = append(tokens, wip)
+			wip = ""
+		} else {
+			wip += string(c)
+		}
+	}
+
+	tokens = append(tokens, wip)
+	return tokens
 }
 
 func parseSingleTypeString(p string) CppParameter {
