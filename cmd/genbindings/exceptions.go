@@ -38,6 +38,27 @@ func ImportHeaderForClass(className string) bool {
 	return true
 }
 
+func AllowClass(className string) bool {
+	if className[0] != 'Q' {
+		return false
+	}
+
+	if strings.HasSuffix(className, "Private") {
+		return false
+	}
+
+	switch className {
+	case
+		"QException",            // Extends std::exception, too hard
+		"QItemSelection",        // Extends a QList<>, too hard
+		"QXmlStreamAttributes",  // Extends a QList<>, too hard
+		"QPolygon", "QPolygonF": // Extends a QVector<QPoint> template class, too hard
+		return false
+	}
+
+	return true
+}
+
 func CheckComplexity(p CppParameter) error {
 
 	if p.QMapOf() {

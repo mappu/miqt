@@ -175,7 +175,6 @@ func main() {
 		}
 
 		// AST transforms on our IL
-		astTransformBlacklist(parsed)
 		astTransformOptional(parsed)
 		astTransformOverloads(parsed)
 
