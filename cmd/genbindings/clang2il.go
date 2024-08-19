@@ -510,8 +510,10 @@ func parseSingleTypeString(p string) CppParameter {
 	tokens := strings.Split(strings.TrimSpace(p), " ")
 	insert := CppParameter{}
 	for _, tok := range tokens {
+
 		if tok == "" {
 			continue // extra space
+
 		} else if tok == "const" || tok == "*const" {
 			// *const happens for QPixmap, clang reports `const char *const *` which
 			// isn't even valid syntax
@@ -519,17 +521,41 @@ func parseSingleTypeString(p string) CppParameter {
 
 		} else if tok == "&" { // U+0026
 			insert.ByRef = true
+
 		} else if tok == "*" {
 			insert.Pointer = true
+
 		} else if tok == "WId" {
 			// Transform typedef
 			insert.ParameterType += " uintptr_t"
+
+		} else if tok == "Q_PID" {
+			// Transform typedef
+			// This is a uint64 PID on Linux/mac and a PROCESS_INFORMATION* on Windows
+			// A uintptr should be tolerable for both cases until we do better
+			// @ref https://doc.qt.io/qt-5/qprocess.html#Q_PID-typedef
+			insert.ParameterType += " uintptr_t"
+
 		} else if tok == "QStringList" {
 			insert.ParameterType += " QList<QString>"
-		} else if len(tok) > 4 && strings.HasSuffix(tok, "List") && tok != "QTextList" {
+
+		} else if len(tok) > 4 && strings.HasSuffix(tok, "List") {
+			// Classes ending in --List are usually better represented as a QList
+			// type directly, so that the binding uses proper Go slices
 			// Typedef e.g. QObjectList
-			// QObjectList is a pointer, but QStringList is a whole custom class
-			insert.ParameterType += " QList<" + tok[0:len(tok)-4] + " *>"
+			switch tok {
+			case "QModelIndexList":
+				// These types are defined as a QList of values
+				insert.ParameterType += " QList<QModelIndex>"
+			case "QTextList":
+				// This is really a custom class, preserve as-is
+				insert.ParameterType += " " + tok
+			default:
+				// These types are defined as a QList of pointers.
+				// QList<QFoo*>. This is the most common case
+				insert.ParameterType += " QList<" + tok[0:len(tok)-4] + " *>"
+			}
+
 		} else {
 			// Valid part of the type name
 			insert.ParameterType += " " + tok
