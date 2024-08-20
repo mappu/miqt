@@ -8,6 +8,7 @@ import (
 type CppParameter struct {
 	ParameterName string
 	ParameterType string
+	TypeAlias     string // If we rewrote QStringList->QList<String>, this field contains the original QStringList
 	Const         bool
 	Pointer       bool
 	ByRef         bool

@@ -70,23 +70,29 @@ func emitReturnTypeCabi(p CppParameter) string {
 	}
 }
 
+func (p CppParameter) RenderTypeQtCpp() string {
+	cppType := p.ParameterType
+	if len(p.TypeAlias) > 0 {
+		cppType = p.TypeAlias // replace
+	}
+	if p.Const {
+		cppType = "const " + cppType
+	}
+	if p.Pointer {
+		cppType += "*"
+	}
+	if p.ByRef {
+		cppType += "&"
+	}
+
+	return cppType
+}
+
 // emitParametersCpp emits the parameter definitions exactly how Qt C++ defines them.
 func emitParametersCpp(m CppMethod) string {
 	tmp := make([]string, 0, len(m.Parameters))
 	for _, p := range m.Parameters {
-
-		cppType := p.ParameterType
-		if p.Const {
-			cppType = "const " + cppType
-		}
-		if p.Pointer {
-			cppType += "*"
-		}
-		if p.ByRef {
-			cppType += "&"
-		}
-
-		tmp = append(tmp, cppType+" "+p.ParameterName)
+		tmp = append(tmp, p.RenderTypeQtCpp()+" "+p.ParameterName)
 	}
 
 	return strings.Join(tmp, `, `)
@@ -95,19 +101,7 @@ func emitParametersCpp(m CppMethod) string {
 func emitParameterTypesCpp(m CppMethod) string {
 	tmp := make([]string, 0, len(m.Parameters))
 	for _, p := range m.Parameters {
-
-		cppType := p.ParameterType
-		if p.Const {
-			cppType = "const " + cppType
-		}
-		if p.Pointer {
-			cppType += "*"
-		}
-		if p.ByRef {
-			cppType += "&"
-		}
-
-		tmp = append(tmp, cppType)
+		tmp = append(tmp, p.RenderTypeQtCpp())
 	}
 
 	return strings.Join(tmp, `, `)
