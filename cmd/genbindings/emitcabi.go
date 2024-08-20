@@ -394,7 +394,7 @@ extern "C" {
 		}
 
 		// delete
-		if AllowDelete(c) {
+		if c.CanDelete {
 			ret.WriteString(fmt.Sprintf("void %s_Delete(%s* self);\n", c.ClassName, c.ClassName))
 		}
 
@@ -562,7 +562,7 @@ extern "C" {
 		}
 
 		// Delete
-		if AllowDelete(c) {
+		if c.CanDelete {
 			ret.WriteString(fmt.Sprintf(
 				"void %s_Delete(%s* self) {\n"+
 					"\tdelete self;\n"+

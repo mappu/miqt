@@ -39,18 +39,6 @@ func AllowHeader(fullpath string) bool {
 	return true
 }
 
-func AllowDelete(c CppClass) bool {
-	switch c.ClassName {
-	case "QClipboard",
-		"QSessionManager",
-		"QTextObject",
-		"QTextBlockGroup",
-		"QInputMethod":
-		return false // The destructor is marked private. TODO grab this from the AST
-	}
-	return true
-}
-
 func ImportHeaderForClass(className string) bool {
 	if className[0] != 'Q' {
 		return false

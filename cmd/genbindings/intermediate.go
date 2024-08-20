@@ -169,6 +169,7 @@ type CppClass struct {
 	Inherits  []string    // other class names
 	Methods   []CppMethod
 	Props     []CppProperty
+	CanDelete bool
 }
 
 type CppTypedef struct {

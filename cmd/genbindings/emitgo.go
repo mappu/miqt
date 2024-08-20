@@ -400,7 +400,7 @@ import "C"
 			}
 		}
 
-		if AllowDelete(c) {
+		if c.CanDelete {
 			ret.WriteString(`
 			func (this *` + c.ClassName + `) Delete() {
 				C.` + c.ClassName + `_Delete(this.h)

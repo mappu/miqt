@@ -146,6 +146,7 @@ func parseHeader(topLevel []interface{}) (*CppParsedHeader, error) {
 func processClassType(node map[string]interface{}, className string) (CppClass, error) {
 	var ret CppClass
 	ret.ClassName = className
+	ret.CanDelete = true
 
 	inner, _ := node["inner"].([]interface{}) // Cannot fail, the parent call already checked that `inner` was present
 
@@ -241,7 +242,7 @@ nextMethod:
 			}
 
 			// Check if this is `= delete`
-			if explicitlyDeleted, ok := node["explicitlyDeleted"].(bool); ok && explicitlyDeleted {
+			if isExplicitlyDeleted(node) {
 				continue
 			}
 
@@ -270,6 +271,19 @@ nextMethod:
 		case "CXXDestructorDecl":
 			// We don't need to expose destructors in the binding beyond offering
 			// a regular delete function
+			// However if this destructor is private or deleted, we should
+			// not bind it
+
+			if !visibility {
+				ret.CanDelete = false
+				continue
+			}
+
+			// Check if this is `= delete`
+			if isExplicitlyDeleted(node) {
+				ret.CanDelete = false
+				continue
+			}
 
 		case "CXXMethodDecl":
 			if !visibility {
@@ -277,7 +291,7 @@ nextMethod:
 			}
 
 			// Check if this is `= delete`
-			if explicitlyDeleted, ok := node["explicitlyDeleted"].(bool); ok && explicitlyDeleted {
+			if isExplicitlyDeleted(node) {
 				continue
 			}
 
@@ -332,6 +346,20 @@ nextMethod:
 	}
 
 	return ret, nil // done
+}
+
+// isExplicitlyDeleted checks if this node is marked `= delete`.
+func isExplicitlyDeleted(node map[string]interface{}) bool {
+
+	if explicitlyDeleted, ok := node["explicitlyDeleted"].(bool); ok && explicitlyDeleted {
+		return true
+	}
+
+	if explicitlyDefaulted, ok := node["explicitlyDefaulted"].(string); ok && explicitlyDefaulted == "deleted" {
+		return true
+	}
+
+	return false
 }
 
 var ErrTooComplex error = errors.New("Type declaration is too complex to parse")
