@@ -18,8 +18,7 @@ func AllowHeader(fullpath string) bool {
 	}
 
 	switch fname {
-	case // QtCore
-		"qatomic_bootstrap.h",
+	case "qatomic_bootstrap.h",
 		"qatomic_cxx11.h",
 		"qatomic_msvc.h",
 		"qgenericatomic.h",             // Clang error
@@ -129,6 +128,13 @@ func CheckComplexity(p CppParameter) error {
 		"QXmlStreamNotationDeclarations",  // e.g. qxmlstream.h. As above
 		"QVariantMap",                     // e.g. qcbormap.h
 		"QVariantHash",                    // e.g. qcbormap.h
+		"QCborTag",                        // e.g. qcborstreamreader.h.TODO Needs support for enums
+		"QCborSimpleType",                 // e.g. qcborstreamreader.h TODO Needs support for enums
+		"QCborKnownTags",                  // e.g. qcborstreamreader.h TODO Needs support for enums
+		"QCborNegativeInteger",            // e.g. qcborstreamreader.h TODO Needs support for enums
+		"QtMsgType",                       // e.g. qdebug.h TODO Needs support for enums
+		"QTextStreamFunction",             // e.g. qdebug.h
+		"QFactoryInterface",               // qfactoryinterface.h
 		"QPlatformPixmap",                 // e.g. qpixmap.h. as below
 		"QPlatformScreen",                 // e.g. qscreen.h. as below
 		"QPlatformSurface",                // e.g. qsurface.h. as below

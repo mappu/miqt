@@ -266,6 +266,11 @@ nextMethod:
 				}
 			}
 
+			if ret.ClassName == "QDebug" && len(mm.Parameters) == 1 && mm.Parameters[0].ParameterType == "QString" && mm.Parameters[0].Pointer {
+				log.Printf("Skipping ctor taking QString pointer")
+				continue nextMethod
+			}
+
 			ret.Ctors = append(ret.Ctors, mm)
 
 		case "CXXDestructorDecl":
@@ -335,6 +340,12 @@ nextMethod:
 
 			if mm.IsReceiverMethod() {
 				log.Printf("Skipping method %q using non-projectable receiver pattern parameters", mm.MethodName)
+				continue nextMethod
+			}
+
+			if ret.ClassName == "QFile" && mm.MethodName == "moveToTrash" && len(mm.Parameters) == 2 && mm.Parameters[1].ParameterType == "QString" && mm.Parameters[1].Pointer {
+				// @ref https://doc.qt.io/qt-6/qfile.html#moveToTrash-1
+				log.Printf("Skipping method %q using complex return type by pointer argument", mm.MethodName) // TODO support this
 				continue nextMethod
 			}
 
@@ -566,18 +577,15 @@ func parseSingleTypeString(p string) CppParameter {
 			insert.TypeAlias = tok
 			insert.ParameterType += " uintptr_t"
 
-		} else if tok == "QStringList" {
-			insert.ParameterType += " QList<QString>"
-
 		} else if len(tok) > 4 && strings.HasSuffix(tok, "List") {
 			// Classes ending in --List are usually better represented as a QList
 			// type directly, so that the binding uses proper Go slices
 			// Typedef e.g. QObjectList
 			insert.TypeAlias = tok
 			switch tok {
-			case "QModelIndexList":
+			case "QStringList", "QModelIndexList", "QVariantList", "QFileInfoList":
 				// These types are defined as a QList of values
-				insert.ParameterType += " QList<QModelIndex>"
+				insert.ParameterType += " QList<" + tok[0:len(tok)-4] + ">"
 			case "QTextList":
 				// This is really a custom class, preserve as-is
 				insert.ParameterType += " " + tok
