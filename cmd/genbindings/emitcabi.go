@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-func (p CppParameter) RenderTypeCpp() string {
+func (p CppParameter) RenderTypeCabi() string {
 	ret := p.ParameterType
 	switch p.ParameterType {
 	case "uchar":
@@ -66,7 +66,7 @@ func emitReturnTypeCabi(p CppParameter) string {
 		// return "void" // Handled separately with an _out pointer
 
 	} else {
-		return p.RenderTypeCpp()
+		return p.RenderTypeCabi()
 	}
 }
 
@@ -129,7 +129,7 @@ func emitParametersCabi(m CppMethod, selfType string) string {
 			} else {
 				// The Go code has called this with two arguments: T* and len
 				// Declare that we take two parameters
-				tmp = append(tmp, t.RenderTypeCpp()+"* "+p.ParameterName+", size_t "+p.ParameterName+"_len")
+				tmp = append(tmp, t.RenderTypeCabi()+"* "+p.ParameterName+", size_t "+p.ParameterName+"_len")
 			}
 
 		} else if (p.ByRef || p.Pointer) && p.QtClassType() {
@@ -144,8 +144,8 @@ func emitParametersCabi(m CppMethod, selfType string) string {
 			tmp = append(tmp, p.ParameterType+"* "+p.ParameterName)
 
 		} else {
-			// RenderTypeCpp renders both pointer+reference as pointers
-			tmp = append(tmp, p.RenderTypeCpp()+" "+p.ParameterName)
+			// RenderTypeCabi renders both pointer+reference as pointers
+			tmp = append(tmp, p.RenderTypeCabi()+" "+p.ParameterName)
 		}
 	}
 
@@ -170,9 +170,9 @@ func emitParametersCabi(m CppMethod, selfType string) string {
 		} else if t.QtClassType() && !t.Pointer {
 			// QList<QByteArray> QByteArray::Split()
 			// We need to pointer-ify each of the interior elements too
-			tmp = append(tmp, t.RenderTypeCpp()+"*** _out, size_t* _out_len")
+			tmp = append(tmp, t.RenderTypeCabi()+"*** _out, size_t* _out_len")
 		} else {
-			tmp = append(tmp, t.RenderTypeCpp()+"** _out, size_t* _out_len")
+			tmp = append(tmp, t.RenderTypeCabi()+"** _out, size_t* _out_len")
 		}
 
 	}
@@ -216,7 +216,7 @@ func emitParametersCABI2CppForwarding(params []CppParameter) (preamble string, f
 
 		} else if p.IntType() {
 			// Use the raw ParameterType to select an explicit integer overload
-			// Don't use RenderTypeCpp() since it canonicalizes some int types for CABI
+			// Don't use RenderTypeCabi() since it canonicalizes some int types for CABI
 			castSrc := p.ParameterName
 			castType := p.ParameterType
 			if p.Pointer {
@@ -236,7 +236,7 @@ func emitParametersCABI2CppForwarding(params []CppParameter) (preamble string, f
 			tmp = append(tmp, "static_cast<"+castType+">("+castSrc+")")
 
 		} else if p.ByRef {
-			// We changed RenderTypeCpp() to render this as a pointer
+			// We changed RenderTypeCabi() to render this as a pointer
 			// Need to dereference so we can pass as reference to the actual Qt C++ function
 			//tmp = append(tmp, "*"+p.ParameterName)
 			tmp = append(tmp, "*"+p.ParameterName)
@@ -487,7 +487,7 @@ extern "C" {
 
 					shouldReturn = m.ReturnType.ParameterType + " ret = "
 					afterCall += "\t// Convert QList<> from C++ memory to manually-managed C memory\n"
-					afterCall += "\t" + t.RenderTypeCpp() + "* __out = static_cast<" + t.RenderTypeCpp() + "*>(malloc(sizeof(" + t.RenderTypeCpp() + ") * ret.length()));\n"
+					afterCall += "\t" + t.RenderTypeCabi() + "* __out = static_cast<" + t.RenderTypeCabi() + "*>(malloc(sizeof(" + t.RenderTypeCabi() + ") * ret.length()));\n"
 					afterCall += "\tfor (size_t i = 0, e = ret.length(); i < e; ++i) {\n"
 					afterCall += "\t\t__out[i] = ret[i];\n"
 					afterCall += "\t}\n"
@@ -498,7 +498,7 @@ extern "C" {
 
 					shouldReturn = m.ReturnType.ParameterType + " ret = "
 					afterCall += "\t// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers\n"
-					afterCall += "\t" + t.RenderTypeCpp() + "** __out = static_cast<" + t.RenderTypeCpp() + "**>(malloc(sizeof(" + t.RenderTypeCpp() + "**) * ret.length()));\n"
+					afterCall += "\t" + t.RenderTypeCabi() + "** __out = static_cast<" + t.RenderTypeCabi() + "**>(malloc(sizeof(" + t.RenderTypeCabi() + "**) * ret.length()));\n"
 					afterCall += "\tfor (size_t i = 0, e = ret.length(); i < e; ++i) {\n"
 					afterCall += "\t\t__out[i] = new " + t.ParameterType + "(ret[i]);\n"
 					afterCall += "\t}\n"

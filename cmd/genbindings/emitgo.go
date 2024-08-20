@@ -109,7 +109,7 @@ func (p CppParameter) parameterTypeCgo() string {
 	if p.ParameterType == "QString" {
 		return "C.char"
 	}
-	tmp := strings.Replace(p.RenderTypeCpp(), `*`, "", -1)
+	tmp := strings.Replace(p.RenderTypeCabi(), `*`, "", -1)
 	if strings.HasPrefix(tmp, "unsigned ") {
 		tmp = "u" + tmp[9:] // Cgo uses uchar, uint instead of full name
 	}
