@@ -250,7 +250,7 @@ nextMethod:
 			err := parseMethod(node, &mm)
 			if err != nil {
 				if errors.Is(err, ErrTooComplex) {
-					log.Printf("Skipping method %q with complex type", mm.MethodName)
+					log.Printf("Skipping ctor with complex type")
 					continue nextMethod
 				}
 
