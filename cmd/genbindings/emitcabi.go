@@ -507,6 +507,20 @@ extern "C" {
 
 				}
 
+			} else if m.ReturnType.QtClassType() && m.ReturnType.ByRef {
+				// It's a pointer in disguise, just needs one cast
+				shouldReturn = m.ReturnType.RenderTypeQtCpp() + " ret = "
+				afterCall += "\t// Cast returned reference into pointer\n"
+				if m.ReturnType.Const {
+					nonConst := m.ReturnType // copy
+					nonConst.Const = false
+					nonConst.ByRef = false
+					nonConst.Pointer = true
+					afterCall += "\treturn const_cast<" + nonConst.RenderTypeQtCpp() + ">(&ret);\n"
+				} else {
+					afterCall += "\treturn &ret;\n"
+				}
+
 			} else if m.ReturnType.QtClassType() && !m.ReturnType.Pointer {
 				shouldReturn = m.ReturnType.ParameterType + " ret = "
 				afterCall = "\t// Copy-construct value returned type into heap-allocated copy\n"
