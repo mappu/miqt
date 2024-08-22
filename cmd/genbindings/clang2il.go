@@ -271,6 +271,11 @@ nextMethod:
 				continue nextMethod
 			}
 
+			if ret.ClassName == "QXmlStreamWriter" && len(mm.Parameters) == 1 && mm.Parameters[0].ParameterType == "QString" && mm.Parameters[0].Pointer {
+				log.Printf("Skipping ctor taking QString pointer") // qxmlstream.h 4th constructor overload
+				continue nextMethod
+			}
+
 			ret.Ctors = append(ret.Ctors, mm)
 
 		case "CXXDestructorDecl":
@@ -355,6 +360,11 @@ nextMethod:
 			}
 
 			if ret.ClassName == "QTextDecoder" && mm.MethodName == "toUnicode" && len(mm.Parameters) == 3 && mm.Parameters[0].ParameterType == "QString" && mm.Parameters[0].Pointer {
+				log.Printf("Skipping method %q using complex return type by pointer argument", mm.MethodName) // TODO support this
+				continue nextMethod
+			}
+
+			if ret.ClassName == "QTextStream" && mm.MethodName == "readLineInto" && len(mm.Parameters) > 0 && mm.Parameters[0].ParameterType == "QString" && mm.Parameters[0].Pointer {
 				log.Printf("Skipping method %q using complex return type by pointer argument", mm.MethodName) // TODO support this
 				continue nextMethod
 			}
