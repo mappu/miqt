@@ -225,15 +225,18 @@ func emitParametersCABI2CppForwarding(params []CppParameter) (preamble string, f
 			if p.ByRef { // e.g. QDataStream::operator>>() overloads
 				castSrc = "*" + castSrc
 				castType += "&" // believe it or not, this is legal
-
-				if p.ParameterType == "qint64" || p.ParameterType == "quint64" {
-					// QDataStream::operator>>()
-					// CABI has these as int64_t* (long int) which fails a static_cast to qint64& (long long int&)
-					// Hack a hard C-style cast
-					castSrc = "(" + castType + ")(" + castSrc + ")"
-				}
 			}
-			tmp = append(tmp, "static_cast<"+castType+">("+castSrc+")")
+
+			if p.ParameterType == "qint64" || p.ParameterType == "quint64" {
+				// QDataStream::operator>>() by reference
+				// QLockFile::getLockInfo() by pointer
+				// CABI has these as int64_t* (long int) which fails a static_cast to qint64& (long long int&)
+				// Hack a hard C-style cast
+				tmp = append(tmp, "("+castType+")("+castSrc+")")
+			} else {
+				// Use static_cast<> safely
+				tmp = append(tmp, "static_cast<"+castType+">("+castSrc+")")
+			}
 
 		} else if p.ByRef {
 			// We changed RenderTypeCabi() to render this as a pointer
