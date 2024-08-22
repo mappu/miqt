@@ -227,9 +227,10 @@ func emitParametersCABI2CppForwarding(params []CppParameter) (preamble string, f
 				castType += "&" // believe it or not, this is legal
 			}
 
-			if p.ParameterType == "qint64" || p.ParameterType == "quint64" {
-				// QDataStream::operator>>() by reference
+			if p.ParameterType == "qint64" || p.ParameterType == "quint64" || p.ParameterType == "qlonglong" || p.ParameterType == "qulonglong" {
+				// QDataStream::operator>>() by reference (qint64)
 				// QLockFile::getLockInfo() by pointer
+				// QTextStream::operator>>() by reference (qlonglong + qulonglong)
 				// CABI has these as int64_t* (long int) which fails a static_cast to qint64& (long long int&)
 				// Hack a hard C-style cast
 				tmp = append(tmp, "("+castType+")("+castSrc+")")
@@ -458,9 +459,24 @@ extern "C" {
 				shouldReturn = ""
 
 			} else if m.ReturnType.ParameterType == "QString" {
-				shouldReturn = "QString ret = "
-				afterCall = "\t// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory\n"
-				afterCall += "\tQByteArray b = ret.toUtf8();\n"
+
+				if m.ReturnType.Pointer {
+					// e.g. QTextStream::String()
+					// These are rare, and probably expected to be lightweight references
+					// But, a copy is the best we can project it as
+					// Un-pointer-ify
+					shouldReturn = "QString* ret = "
+					afterCall = "\t// Convert QString pointer from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory\n"
+					afterCall += "\tQByteArray b = ret->toUtf8();\n"
+
+				} else {
+					shouldReturn = "QString ret = "
+					afterCall = "\t// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory\n"
+					afterCall += "\tQByteArray b = ret.toUtf8();\n"
+				}
+				if m.ReturnType.Const {
+					shouldReturn = "const " + shouldReturn
+				}
 				afterCall += "\t*_out = static_cast<char*>(malloc(b.length()));\n"
 				afterCall += "\tmemcpy(*_out, b.data(), b.length());\n"
 				afterCall += "\t*_out_Strlen = b.length();\n"
@@ -492,7 +508,13 @@ extern "C" {
 					afterCall += "\t// Convert QList<> from C++ memory to manually-managed C memory\n"
 					afterCall += "\t" + t.RenderTypeCabi() + "* __out = static_cast<" + t.RenderTypeCabi() + "*>(malloc(sizeof(" + t.RenderTypeCabi() + ") * ret.length()));\n"
 					afterCall += "\tfor (size_t i = 0, e = ret.length(); i < e; ++i) {\n"
-					afterCall += "\t\t__out[i] = ret[i];\n"
+					if t.Const {
+						nonConst := t // copy
+						nonConst.Const = false
+						afterCall += "\t\t__out[i] = const_cast<" + t.RenderTypeCabi() + ">(ret[i]);\n"
+					} else {
+						afterCall += "\t\t__out[i] = ret[i];\n"
+					}
 					afterCall += "\t}\n"
 					afterCall += "\t*_out = __out;\n"
 					afterCall += "\t*_out_len = ret.length();\n"
