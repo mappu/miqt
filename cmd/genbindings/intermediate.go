@@ -68,8 +68,8 @@ type CppProperty struct {
 }
 
 type CppMethod struct {
-	MethodName         string
-	OverrideMethodName string       // Present only if we changed the target
+	MethodName         string       // C++ method name, unless OverrideMethodName is set, in which case a nice alternative name
+	OverrideMethodName string       // C++ method name, present only if we changed the target
 	ReturnType         CppParameter // Name not used
 	Parameters         []CppParameter
 	IsStatic           bool

@@ -14,21 +14,18 @@ func astTransformOverloads(parsed *CppParsedHeader) {
 		existing := map[string]struct{}{}
 		for j, m := range c.Methods {
 
-			if _, ok := existing[m.MethodName]; !ok {
-				existing[m.MethodName] = struct{}{}
+			originalProposal := m.SafeMethodName()
+			proposedName := originalProposal
+
+			if _, ok := existing[proposedName]; !ok {
+				existing[proposedName] = struct{}{}
 				continue // No collision
 			}
 
 			// Collision - rename
 			anyChange = true
 
-			rootMethodName := m.OverrideMethodName
-			if rootMethodName == "" {
-				rootMethodName = m.MethodName
-			}
-
 			ctr := 1
-			var proposedName string
 			for {
 
 				if ctr == 1 {
@@ -40,10 +37,10 @@ func astTransformOverloads(parsed *CppParsedHeader) {
 						// If the parameter has a proper name (i.e. not 'l' or 'param1')
 						// then go with that
 						if len(m.Parameters[0].ParameterName) > 1 && !strings.HasPrefix(m.Parameters[0].ParameterName, "param") {
-							proposedName = rootMethodName + "With" + titleCase(m.Parameters[0].ParameterName)
+							proposedName = originalProposal + "With" + titleCase(m.Parameters[0].ParameterName)
 						} else {
 							// Try the type instead
-							proposedName = rootMethodName + "With" + titleCase(strings.Replace(m.Parameters[0].ParameterType, " ", "", -1))
+							proposedName = originalProposal + "With" + titleCase(strings.Replace(m.Parameters[0].ParameterType, " ", "", -1))
 						}
 						if _, ok := existing[proposedName]; !ok {
 							break
@@ -52,7 +49,7 @@ func astTransformOverloads(parsed *CppParsedHeader) {
 					}
 
 				} else {
-					proposedName = fmt.Sprintf("%s%d", rootMethodName, ctr)
+					proposedName = fmt.Sprintf("%s%d", originalProposal, ctr)
 					if _, ok := existing[proposedName]; !ok {
 						break
 					}
@@ -62,7 +59,11 @@ func astTransformOverloads(parsed *CppParsedHeader) {
 			}
 
 			existing[proposedName] = struct{}{}
-			m.OverrideMethodName = rootMethodName
+			if m.OverrideMethodName == "" {
+				m.OverrideMethodName = m.MethodName
+			} else {
+				// If it was already set, we're already a level of overload resolution deep - preserve it
+			}
 			m.MethodName = proposedName
 			c.Methods[j] = m
 		}
