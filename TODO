@@ -29,10 +29,12 @@ Phase 1
 				- ~~want to copy-construct into Go-provided memory~~ Go can't allocate a C++ type 
 				- Return as a heap pointer instead, convert to fake value-type using SetFinalizer
 		- [X] QString type conversion
-			- [X] For parameters
+			- [X] For input parameters
+			- [ ] For output parameters by pointer (e.g. QLockInfo::getLockInfo)
 			- [X] For return types
 		- [X] QList type conversion (e.g. QWidget::Actions())
 			- [X] For parameters
+			- [ ] For output parameters by pointer (n.b. does this happen??)
 			- [X] For return types
 			- [X] Combinations
 				- [X] QList<T*>
@@ -84,6 +86,7 @@ Phase 2
 	- [ ] QPair (e.g. QGradientStop)
 	- [ ] QMap / QHash
 	- [ ] QSet
+	- [ ] Nested templates e.g. QList<QPair<..>> (e.g. ...)
 - [ ] Test edge cases
 	- Exercising QString interop
 	- Exercising QList interop
@@ -103,35 +106,38 @@ Phase 2
 Wishlist
 
 - [ ] Check compilation on x86_32/ARM32 architecture with 32-bit pointer width
-- [ ] Advanced Qt functionality
+- [ ] Exception-safety? Does Qt rely on exceptions anywhere?
+- Advanced Qt functionality
 	- [ ] Subclassing (e.g. render delegates)
 	- [ ] Test of model-view list rendering
 	- [ ] Custom Q_PROPERTY support
-- [ ] Usability
+- Usability
 	- [X] QPaintEngine::fix_neg_rect should have a better name
 	- [ ] Project DeprecatedAttr as `// Deprecated` comment
 	- [ ] Consider projecting QByteArray as []byte
+	- [ ] Consider projecting QDate/QTime/QDateTime as *time.Time
 	- [ ] Use clang ast's `mangledName` to make a dlsym/LazyDLL cgo-free version 
 	- [ ] Copy Qt documentation into function doc comments for IDE hinting
 		- What license is the Qt documentation under, what are the license implications of this?
 	- [ ] Generate bindings for all current Qt versions (Debian Qt / Qt LTS), expose as git tags
-- [ ] Outreach/community
+- Outreach/community
 	- [ ] Dockerize a reproducible build process
 	- [ ] CI action to rebuild bindings
 	- [ ] Reuse CABI to generate Qt bindings for other non-Go languages
-- [ ] Performance
+- Performance
 	- [ ] Convert generated cpp files to amalgamation build for faster compilation
 		- https://github.com/golang/go/issues/9887
-	[ ] Move some inlined generated code into helper functions to reduce total compile workload / binary size
+	- [ ] Move some inlined generated code into helper functions to reduce total compile workload / binary size
 	- [ ] Reduce necessary memory copies around ABI boundaries
 		- [ ] Bypass malloc/free for zero-length strings
 		- [ ] Bypass malloc/free for zero-length arrays
-- [ ] Broader coverage	
+- Broader coverage
 	- [ ] Get 100% of all QtCore, QtGui, QtWidgets binding
 	- [ ] Generate other Qt libraries e.g. QtSvg
 	- [ ] Document process for binding more libraries e.g. QScintilla, QZXing
 	- [ ] Add public QFoo_FromCPointer(uintptr) to ease interop with extra generated classes
+	- [ ] Template inherited classes e.g. QMatrix3x3 is a QGenericMatrix<>
 	- [ ] Get down to zero ErrTooComplex skips
-- [ ] Support other Qt ecosystem tooling
+- Support other Qt ecosystem tooling
 	- [ ] Qt Creator integration
 	- [ ] uic implementation
