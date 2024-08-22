@@ -53,7 +53,9 @@ func ImportHeaderForClass(className string) bool {
 
 	switch className {
 	case "QGraphicsEffectSource", // e.g. qgraphicseffect.h
-		"QText": // e.g. qtextcursor.h
+		"QAbstractConcatenable", // qstringbuilder.h
+		"QTextEngine",           // qtextlayout.h
+		"QText":                 // e.g. qtextcursor.h
 		return false
 	}
 

@@ -349,6 +349,16 @@ nextMethod:
 				continue nextMethod
 			}
 
+			if ret.ClassName == "QLockFile" && mm.MethodName == "getLockInfo" && len(mm.Parameters) == 3 && mm.Parameters[1].ParameterType == "QString" && mm.Parameters[1].Pointer {
+				log.Printf("Skipping method %q using complex return type by pointer argument", mm.MethodName) // TODO support this
+				continue nextMethod
+			}
+
+			if ret.ClassName == "QTextDecoder" && mm.MethodName == "toUnicode" && len(mm.Parameters) == 3 && mm.Parameters[0].ParameterType == "QString" && mm.Parameters[0].Pointer {
+				log.Printf("Skipping method %q using complex return type by pointer argument", mm.MethodName) // TODO support this
+				continue nextMethod
+			}
+
 			ret.Methods = append(ret.Methods, mm)
 
 		default:
