@@ -25,10 +25,6 @@ func AllowHeader(fullpath string) bool {
 		"qt_windows.h",                 // Clang error
 		"qmaccocoaviewcontainer_mac.h", // Needs NSView* headers. TODO allow with darwin build tag
 		"qmacnativewidget_mac.h",       // Needs NSView* headers. TODO allow with darwin build tag
-		"qaccessible.h",                // Almost everything in here is virtual
-		"qaccessiblebridge.h",          // Almost everything in here is virtual
-		"qaccessibleobject.h",          // Almost everything in here is virtual
-		"qaccessibleplugin.h",          // Almost everything in here is virtual
 		"qstring.h",                    // QString does not exist in this binding
 		"qlist.h",                      // QList does not exist in this binding
 		"qvector.h":                    // QVector does not exist in this binding
@@ -75,6 +71,7 @@ func AllowClass(className string) bool {
 	case
 		"QTextStreamManipulator", // Only seems to contain garbage methods
 		"QException",             // Extends std::exception, too hard
+		"QUnhandledException",    // As above (child class)
 		"QItemSelection",         // Extends a QList<>, too hard
 		"QXmlStreamAttributes",   // Extends a QList<>, too hard
 		"QPolygon", "QPolygonF":  // Extends a QVector<QPoint> template class, too hard
@@ -119,6 +116,7 @@ func CheckComplexity(p CppParameter) error {
 		"qfloat16",                        // e.g. QDataStream - there is no such half-float type in C or Go
 		"char16_t",                        // e.g. QChar() constructor overload, just unnecessary
 		"char32_t",                        // e.g. QDebug().operator<< overload, unnecessary
+		"wchar_t",                         // e.g. qstringview.h overloads, unnecessary
 		"picture_io_handler",              // e.g. QPictureIO::DefineIOHandler callback function
 		"QPlatformNativeInterface",        // e.g. QGuiApplication::platformNativeInterface(). Private type, could probably expose as uintptr. n.b. Changes in Qt6
 		"QFunctionPointer",                // e.g. QGuiApplication_PlatformFunction
@@ -128,6 +126,7 @@ func CheckComplexity(p CppParameter) error {
 		"QXmlStreamEntityDeclarations",    // e.g. qxmlstream.h. The class definition was blacklisted for ???? reason so don't allow it as a parameter either
 		"QXmlStreamNamespaceDeclarations", // e.g. qxmlstream.h. As above
 		"QXmlStreamNotationDeclarations",  // e.g. qxmlstream.h. As above
+		"QXmlStreamAttributes",            // e.g. qxmlstream.h
 		"QVariantMap",                     // e.g. qcbormap.h
 		"QVariantHash",                    // e.g. qcbormap.h
 		"QCborTag",                        // e.g. qcborstreamreader.h.TODO Needs support for enums
@@ -137,8 +136,17 @@ func CheckComplexity(p CppParameter) error {
 		"QtMsgType",                       // e.g. qdebug.h TODO Needs support for enums
 		"QTextStreamFunction",             // e.g. qdebug.h
 		"QFactoryInterface",               // qfactoryinterface.h
+		"QItemSelection",                  // used by qabstractproxymodel.h, also blocked in AllowClass above, class extends a List<T>
+		"QTextStreamManipulator",          // used by qdebug.h, also blocked in AllowClass above
+		"QException",                      // used by qfutureinterface.h, also blocked in AllowClass above
+		"QTextEngine",                     // used by qtextlayout.h, also blocked in ImportHeaderForClass above
+		"QVulkanInstance",                 // e.g. qwindow.h. Not tackling vulkan yet
+		"QPlatformBackingStore",           // e.g. qbackingstore.h, as below
+		"QPlatformMenuBar",                // e.g. qfutureinterface.h, as below
+		"QPlatformOffscreenSurface",       // e.g. qoffscreensurface.h, as below
 		"QPlatformPixmap",                 // e.g. qpixmap.h. as below
 		"QPlatformScreen",                 // e.g. qscreen.h. as below
+		"QPlatformWindow",                 // e.g. qwindow.h, as below
 		"QPlatformSurface",                // e.g. qsurface.h. as below
 		"QPlatformMenu":                   // e.g. QMenu_PlatformMenu. Defined in the QPA, could probably expose as uintptr
 		return ErrTooComplex
