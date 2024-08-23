@@ -258,6 +258,10 @@ nextMethod:
 				return CppClass{}, err
 			}
 
+			// Always set IsStatic for constructors, since they can be called without
+			// an existing class instance
+			mm.IsStatic = true
+
 			// Some QFoo constructors take a QFooPrivate
 			for _, p := range mm.Parameters {
 				if strings.Contains(p.ParameterType, "Private") {

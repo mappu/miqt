@@ -4,6 +4,8 @@ package qt
 
 import (
 	"C"
+	"runtime/cgo"
+	"unsafe"
 )
 
 type miqtCallbackFunc func(argc C.int, args *C.void)

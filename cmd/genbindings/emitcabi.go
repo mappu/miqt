@@ -390,7 +390,7 @@ extern "C" {
 			ret.WriteString(fmt.Sprintf("%s %s_%s(%s);\n", emitReturnTypeCabi(m.ReturnType), c.ClassName, m.SafeMethodName(), emitParametersCabi(m, c.ClassName+"*")))
 
 			if m.IsSignal && !m.HasHiddenParams {
-				ret.WriteString(fmt.Sprintf("%s %s_connect_%s(void* slot);\n", emitReturnTypeCabi(m.ReturnType), c.ClassName, m.SafeMethodName()))
+				ret.WriteString(fmt.Sprintf("%s %s_connect_%s(%s* self, void* slot);\n", emitReturnTypeCabi(m.ReturnType), c.ClassName, m.SafeMethodName(), c.ClassName))
 			}
 		}
 
