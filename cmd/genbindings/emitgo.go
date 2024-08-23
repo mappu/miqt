@@ -147,7 +147,11 @@ func emitParametersGo(params []CppParameter) string {
 	return strings.Join(tmp, ", ")
 }
 
-func emitParametersGo2CABIForwarding(m CppMethod) (preamble string, fowarding string) {
+type goFileState struct {
+	imports map[string]struct{}
+}
+
+func (gfs *goFileState) emitParametersGo2CABIForwarding(m CppMethod) (preamble string, fowarding string) {
 	tmp := make([]string, 0, len(m.Parameters)+2)
 
 	if !m.IsStatic {
@@ -181,9 +185,11 @@ func emitParametersGo2CABIForwarding(m CppMethod) (preamble string, fowarding st
 		} else if p.ParameterType == "QString" {
 			// Go: convert string -> char* and len
 			// CABI: convert char* and len -> real QString
+			gfs.imports["unsafe"] = struct{}{}
+
 			preamble += p.ParameterName + "_Cstring := C.CString(" + p.ParameterName + ")\n"
-			preamble += "defer C.free(" + p.ParameterName + "_Cstring)\n"
-			tmp = append(tmp, p.ParameterName+"_Cstring, len("+p.ParameterName+")")
+			preamble += "defer C.free(unsafe.Pointer(" + p.ParameterName + "_Cstring))\n"
+			tmp = append(tmp, p.ParameterName+"_Cstring, C.ulong(len("+p.ParameterName+"))") // Second parameter cast to size_t projected type
 
 		} else if listType, ok := p.QListOf(); ok {
 			// QList<T>
@@ -192,6 +198,7 @@ func emitParametersGo2CABIForwarding(m CppMethod) (preamble string, fowarding st
 
 			if listType.ParameterType == "QString" {
 				// Combo
+				gfs.imports["unsafe"] = struct{}{}
 
 				preamble += "// For the C ABI, malloc two C arrays; raw char* pointers and their lengths\n"
 				preamble += p.ParameterName + "_CArray := (*[0xffff]*" + listType.parameterTypeCgo() + ")(C.malloc(c.ulong(8 * len(" + p.ParameterName + "))))\n"
@@ -200,7 +207,7 @@ func emitParametersGo2CABIForwarding(m CppMethod) (preamble string, fowarding st
 				preamble += "defer C.free(" + p.ParameterName + "_Lengths)\n"
 				preamble += "for i := range " + p.ParameterName + "{\n"
 				preamble += "single_cstring := C.CString(" + p.ParameterName + "[i])\n"
-				preamble += "defer C.free(single_cstring)\n"
+				preamble += "defer C.free(unsafe.Pointer(single_cstring))\n"
 				preamble += p.ParameterName + "_CArray[i] = single_cstring\n"
 				preamble += p.ParameterName + "__Lengths[i] = len(" + p.ParameterName + "[i])\n"
 				preamble += "}\n"
@@ -221,8 +228,9 @@ func emitParametersGo2CABIForwarding(m CppMethod) (preamble string, fowarding st
 
 		} else if p.Pointer && p.ParameterType == "char" {
 			// Single char* argument
+			gfs.imports["unsafe"] = struct{}{}
 			preamble += p.ParameterName + "_Cstring := C.CString(" + p.ParameterName + ")\n"
-			preamble += "defer C.free(" + p.ParameterName + "_Cstring)\n"
+			preamble += "defer C.free(unsafe.Pointer(" + p.ParameterName + "_Cstring))\n"
 			tmp = append(tmp, p.ParameterName+"_Cstring")
 
 		} else if (p.Pointer || p.ByRef) && p.QtClassType() {
@@ -232,6 +240,7 @@ func emitParametersGo2CABIForwarding(m CppMethod) (preamble string, fowarding st
 
 		} else if p.IntType() || p.ParameterType == "bool" {
 			tmp = append(tmp, "("+p.parameterTypeCgo()+")("+p.ParameterName+")")
+
 		} else {
 			// Default
 			tmp = append(tmp, p.ParameterName)
@@ -265,7 +274,9 @@ import "C"
 %%_IMPORTLIBS_%%
 `)
 
-	imports := map[string]struct{}{}
+	gfs := goFileState{
+		imports: map[string]struct{}{},
+	}
 
 	for _, c := range src.Classes {
 
@@ -276,7 +287,7 @@ import "C"
 
 		// Embed all inherited types to directly allow calling inherited methods
 		for _, base := range c.Inherits {
-			ret.WriteString(base + "\n")
+			ret.WriteString("*" + base + "\n")
 		}
 
 		ret.WriteString(`
@@ -291,32 +302,43 @@ import "C"
 		
 		`)
 
-		localInit := "h: ret"
+		localInit := "h: h"
 		for _, base := range c.Inherits {
-			localInit += ", " + base + ": " + base + "{h: ret}"
+			gfs.imports["unsafe"] = struct{}{}
+			localInit += ", " + base + ": new" + base + "_U(unsafe.Pointer(h))"
 		}
 
 		ret.WriteString(`
-			func new` + c.ClassName + `(h *C.` + c.ClassName + `) {
+			func new` + c.ClassName + `(h *C.` + c.ClassName + `) *` + c.ClassName + ` {
 				return &` + c.ClassName + `{` + localInit + `}
 			}
 			
 		`)
 
+		// CGO types only exist within the same Go file, so other Go files can't
+		// call this same private ctor function, unless it goes through unsafe.Pointer{}
+		gfs.imports["unsafe"] = struct{}{}
+		ret.WriteString(`
+			func new` + c.ClassName + `_U(h unsafe.Pointer) *` + c.ClassName + ` {
+				return new` + c.ClassName + `( (*C.` + c.ClassName + `)(h) )
+			}
+			
+		`)
+
 		for i, ctor := range c.Ctors {
-			preamble, forwarding := emitParametersGo2CABIForwarding(ctor)
+			preamble, forwarding := gfs.emitParametersGo2CABIForwarding(ctor)
 			ret.WriteString(`
 			// New` + c.ClassName + maybeSuffix(i) + ` constructs a new ` + c.ClassName + ` object.
-			func New` + c.ClassName + maybeSuffix(i) + `(` + emitParametersGo(ctor.Parameters) + `) {
+			func New` + c.ClassName + maybeSuffix(i) + `(` + emitParametersGo(ctor.Parameters) + `) *` + c.ClassName + ` {
 				` + preamble + ` ret := C.` + c.ClassName + `_new` + maybeSuffix(i) + `(` + forwarding + `)
-				return new` + c.ClassName + `(h)
+				return new` + c.ClassName + `(ret)
 			}
 			
 			`)
 		}
 
 		for _, m := range c.Methods {
-			preamble, forwarding := emitParametersGo2CABIForwarding(m)
+			preamble, forwarding := gfs.emitParametersGo2CABIForwarding(m)
 
 			shouldReturn := "return "
 			afterword := ""
@@ -333,17 +355,18 @@ import "C"
 				// Qt functions normally return QString - anything returning char*
 				// is something like QByteArray.Data() where it returns an unsafe
 				// internal pointer
-				imports["unsafe"] = struct{}{}
+				gfs.imports["unsafe"] = struct{}{}
 				returnTypeDecl = "unsafe.Pointer"
 
 			} else if m.ReturnType.ParameterType == "QString" {
 				shouldReturn = ""
 				returnTypeDecl = "string"
+				gfs.imports["unsafe"] = struct{}{}
 
 				preamble += "var _out *C.char = nil\n"
 				preamble += "var _out_Strlen C.int = 0\n" // I think size_t is "better" but GoStringN() requires C.int
 				afterword += "ret := C.GoStringN(_out, _out_Strlen)\n"
-				afterword += "C.free(_out)\n"
+				afterword += "C.free(unsafe.Pointer(_out))\n"
 				afterword += "return ret"
 
 			} else if t, ok := m.ReturnType.QListOf(); ok {
@@ -362,22 +385,26 @@ import "C"
 				// Construct our Go type based on this inner CABI type
 				shouldReturn = "ret := "
 
-				if m.ReturnType.Pointer {
-					afterword = "return " + m.ReturnType.ParameterType + "{h: ret}"
+				if m.ReturnType.Pointer || m.ReturnType.ParameterType == "QSize" { // FIXME QSize has a deleted destructor, so we can't delete our heap copy with a finalizer(!!)
+					gfs.imports["unsafe"] = struct{}{}
+					afterword = "return new" + m.ReturnType.ParameterType + "_U(unsafe.Pointer(ret))"
+
 				} else {
 					// This is return by value, but CABI has new'd it into a
 					// heap type for us
 					// To preserve Qt's approximate semantics, add a runtime
 					// finalizer to automatically Delete once the type goes out
 					// of Go scope
-					imports["runtime"] = struct{}{}
+					returnTypeDecl = "*" + returnTypeDecl
+
+					gfs.imports["runtime"] = struct{}{}
 					afterword = "// Qt uses pass-by-value semantics for this type. Mimic with finalizer\n"
-					afterword += "ret1 := &" + m.ReturnType.ParameterType + "{h: ret}\n"
+					afterword += "ret1 := new" + m.ReturnType.ParameterType + "(ret)\n"
 					afterword += "runtime.SetFinalizer(ret1, func(ret2 *" + m.ReturnType.ParameterType + ") {\n"
 					afterword += "ret2.Delete()\n"
 					afterword += "runtime.KeepAlive(ret2.h)\n"
 					afterword += "})\n"
-					afterword += "return ret1"
+					afterword += "return ret1\n"
 				}
 
 			} else if m.ReturnType.IntType() || m.ReturnType.ParameterType == "bool" {
@@ -402,8 +429,8 @@ import "C"
 
 			// Add Connect() wrappers for signal functions
 			if m.IsSignal && !m.HasHiddenParams {
-				imports["unsafe"] = struct{}{}
-				imports["runtime/cgo"] = struct{}{}
+				gfs.imports["unsafe"] = struct{}{}
+				gfs.imports["runtime/cgo"] = struct{}{}
 				ret.WriteString(`func (this *` + c.ClassName + `) On` + m.SafeMethodName() + `(slot func()) {
 					var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
 						slot()
@@ -428,9 +455,9 @@ import "C"
 	goSrc := ret.String()
 
 	// Fixup imports
-	if len(imports) > 0 {
-		allImports := make([]string, 0, len(imports))
-		for k, _ := range imports {
+	if len(gfs.imports) > 0 {
+		allImports := make([]string, 0, len(gfs.imports))
+		for k, _ := range gfs.imports {
 			allImports = append(allImports, `"`+k+`"`)
 		}
 		sort.Strings(allImports)
