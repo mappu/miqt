@@ -83,13 +83,20 @@ func (p CppParameter) RenderTypeGo() string {
 		ret += "float32"
 	case "double", "qreal":
 		ret += "float64"
-	case "qsizetype":
+	case "qsizetype", "size_t":
 		if C.sizeof_size_t == 4 {
 			ret += "uint32"
 		} else {
 			ret += "uint64"
 		}
 	case "qintptr":
+		var ptr *int
+		if unsafe.Sizeof(ptr) == 8 {
+			ret += "int64"
+		} else {
+			ret += "int32"
+		}
+	case "quintptr":
 		var ptr *int
 		if unsafe.Sizeof(ptr) == 8 {
 			ret += "uint64"
@@ -113,6 +120,7 @@ func (p CppParameter) parameterTypeCgo() string {
 	if strings.HasPrefix(tmp, "unsigned ") {
 		tmp = "u" + tmp[9:] // Cgo uses uchar, uint instead of full name
 	}
+	tmp = strings.Replace(tmp, `long long`, `longlong`, -1)
 	return "C." + strings.Replace(tmp, " ", "_", -1)
 }
 
@@ -222,6 +230,8 @@ func emitParametersGo2CABIForwarding(m CppMethod) (preamble string, fowarding st
 			// We want our functions to accept the Go wrapper type, and forward as cPointer()
 			tmp = append(tmp, p.ParameterName+".cPointer()")
 
+		} else if p.IntType() || p.ParameterType == "bool" {
+			tmp = append(tmp, "("+p.parameterTypeCgo()+")("+p.ParameterName+")")
 		} else {
 			// Default
 			tmp = append(tmp, p.ParameterName)
@@ -331,7 +341,7 @@ import "C"
 				returnTypeDecl = "string"
 
 				preamble += "var _out *C.char = nil\n"
-				preamble += "var _out_Strlen C.size_t = 0\n"
+				preamble += "var _out_Strlen C.int = 0\n" // I think size_t is "better" but GoStringN() requires C.int
 				afterword += "ret := C.GoStringN(_out, _out_Strlen)\n"
 				afterword += "C.free(_out)\n"
 				afterword += "return ret"
@@ -369,6 +379,11 @@ import "C"
 					afterword += "})\n"
 					afterword += "return ret1"
 				}
+
+			} else if m.ReturnType.IntType() || m.ReturnType.ParameterType == "bool" {
+				// Need to cast Cgo type to Go int type
+				shouldReturn = "ret := "
+				afterword += "return (" + m.ReturnType.RenderTypeGo() + ")(ret)\n"
 
 			}
 

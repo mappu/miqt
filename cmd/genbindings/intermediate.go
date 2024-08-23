@@ -53,7 +53,8 @@ func (p CppParameter) IntType() bool {
 		"long", "unsigned long", "ulong", "qint32", "quint32",
 		"longlong", "ulonglong", "qlonglong", "qulonglong", "qint64", "quint64", "int64_t", "uint64_t", "long long", "unsigned long long",
 		"QRgb", // unsigned int
-		"qintptr",
+		"qintptr", "quintptr",
+		"qsizetype", "size_t",
 		"double", "float", "qreal":
 		return true
 	default:

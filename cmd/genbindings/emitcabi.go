@@ -37,7 +37,9 @@ func (p CppParameter) RenderTypeCabi() string {
 		ret = "size_t"
 	case "qreal":
 		ret = "double"
-	case "qintptr", "quintptr":
+	case "qintptr":
+		ret = "intptr_t"
+	case "quintptr":
 		ret = "uintptr_t"
 	case "QRgb":
 		ret = "unsigned int"
@@ -155,7 +157,8 @@ func emitParametersCabi(m CppMethod, selfType string) string {
 	// CABI: memory is moved into C.malloc/C.free
 	// Go: converted to native Go string
 	if m.ReturnType.ParameterType == "QString" {
-		tmp = append(tmp, "char** _out, size_t* _out_Strlen")
+		// Normally we would use size_t for a strlen, but Go calls C.GoStringN which takes a C.int
+		tmp = append(tmp, "char** _out, int* _out_Strlen")
 
 	} else if t, ok := m.ReturnType.QListOf(); ok {
 		// +1 pointer indirection since it's a heap array
@@ -166,7 +169,7 @@ func emitParametersCabi(m CppMethod, selfType string) string {
 
 		if t.ParameterType == "QString" {
 			// Combo
-			tmp = append(tmp, "char*** _out, int64_t** _out_Lengths, size_t* _out_len")
+			tmp = append(tmp, "char*** _out, int** _out_Lengths, size_t* _out_len") // Each length is a C.int for C.GoStringN use
 		} else if t.QtClassType() && !t.Pointer {
 			// QList<QByteArray> QByteArray::Split()
 			// We need to pointer-ify each of the interior elements too
@@ -490,7 +493,7 @@ extern "C" {
 					shouldReturn = m.ReturnType.ParameterType + " ret = "
 					afterCall += "\t// Convert QStringList from C++ memory to manually-managed C memory\n"
 					afterCall += "\tchar** __out = static_cast<char**>(malloc(sizeof(char*) * ret.length()));\n"
-					afterCall += "\tint64_t* __out_Lengths = static_cast<int64_t*>(malloc(sizeof(int64_t) * ret.length()));\n"
+					afterCall += "\tint* __out_Lengths = static_cast<int*>(malloc(sizeof(int) * ret.length()));\n"
 					afterCall += "\tfor (size_t i = 0, e = ret.length(); i < e; ++i) {\n"
 					afterCall += "\t\t// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory\n"
 					afterCall += "\t\tQByteArray b = ret[i].toUtf8();\n"
