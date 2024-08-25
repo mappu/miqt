@@ -10,7 +10,8 @@ import (
 
 func goReservedWord(s string) bool {
 	switch s {
-	case "default", "const", "func", "var", "type", "len", "new", "copy", "import", "range", "string", "map", "int", "select":
+	case "default", "const", "func", "var", "type", "len", "new", "copy", "import", "range", "string", "map", "int", "select",
+		"ret": // not a language-reserved word, but a binding-reserved word
 		return true
 	default:
 		return false
