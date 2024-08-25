@@ -7,5 +7,4 @@ cmd/handbindings/handbindings
 cmd/handbindings/bindings_test/direct
 cmd/handbindings/bindings_test/testapp
 cmd/genbindings/genbindings
-
-
+examples/helloworld/helloworld
