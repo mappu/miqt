@@ -10,6 +10,10 @@ func astTransformOptional(parsed *CppParsedHeader) {
 	for i, c := range parsed.Classes {
 
 		anyChange := false
+
+		// Methods
+		// ```````
+
 		for j, m := range c.Methods {
 
 			// Search for first optional parameter (they all must be last)
@@ -46,6 +50,44 @@ func astTransformOptional(parsed *CppParsedHeader) {
 			m.Parameters = m.Parameters[0:optionalStart]
 			m.HasHiddenParams = true
 			c.Methods[j] = m
+		}
+
+		// Constructors
+		// ````````````
+
+		for j, m := range c.Ctors {
+
+			// Search for first optional parameter (they all must be last)
+			optionalStart := -1
+			for k, p := range m.Parameters {
+				if p.Optional {
+					optionalStart = k
+					break
+				}
+			}
+			if optionalStart == -1 {
+				continue // There were no optional parameters
+			}
+
+			anyChange = true
+
+			// Add ctor copies
+			for x := optionalStart; x < len(m.Parameters); x++ {
+				dupCtor := CppMethod{
+					ReturnType:      m.ReturnType,
+					Parameters:      nil,
+					IsStatic:        m.IsStatic,
+					HasHiddenParams: (x != len(m.Parameters)-1),
+				}
+				dupCtor.Parameters = append(dupCtor.Parameters, m.Parameters[0:x+1]...)
+				c.Ctors = append(c.Ctors, dupCtor)
+			}
+
+			// Truncate the original ctor's parameters to only the
+			// mandatory ones
+			m.Parameters = m.Parameters[0:optionalStart]
+			m.HasHiddenParams = true
+			c.Ctors[j] = m
 		}
 
 		if anyChange {
