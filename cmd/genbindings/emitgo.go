@@ -133,7 +133,7 @@ type goFileState struct {
 	imports map[string]struct{}
 }
 
-func (gfs *goFileState) emitParametersGo2CABIForwarding(m CppMethod) (preamble string, fowarding string) {
+func (gfs *goFileState) emitParametersGo2CABIForwarding(m CppMethod) (preamble string, forwarding string) {
 	tmp := make([]string, 0, len(m.Parameters)+2)
 
 	if !m.IsStatic {
