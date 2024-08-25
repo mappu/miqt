@@ -492,7 +492,10 @@ func parseMethod(node map[string]interface{}, mm *CppMethod) error {
 
 	// Change operator= (assign) to always return void. By default it returns *self which
 	// is a trick for more ergnonomic C++ that has no real effect
-	if mm.MethodName == "operator=" {
+	if mm.MethodName == "operator=" ||
+		mm.MethodName == "operator&=" || // qbitarray.h
+		mm.MethodName == "operator|=" || // qbitarray.h
+		mm.MethodName == "operator^=" { // qbitarray.h
 		mm.ReturnType = CppParameter{ParameterType: "void"}
 	}
 
