@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"miqt/qt"
+	"github.com/mappu/miqt/qt"
 )
 
 func main() {
