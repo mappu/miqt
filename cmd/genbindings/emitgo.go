@@ -202,29 +202,37 @@ func (gfs *goFileState) emitParametersGo2CABIForwarding(m CppMethod) (preamble s
 				gfs.imports["unsafe"] = struct{}{}
 
 				preamble += "// For the C ABI, malloc two C arrays; raw char* pointers and their lengths\n"
-				preamble += p.ParameterName + "_CArray := (*[0xffff]*" + listType.parameterTypeCgo() + ")(C.malloc(c.ulong(8 * len(" + p.ParameterName + "))))\n"
-				preamble += p.ParameterName + "_Lengths := (*[0xffff]*C.size_t)(C.malloc(c.ulong(8 * len(" + p.ParameterName + "))))\n"
-				preamble += "defer C.free(" + p.ParameterName + "_CArray)\n"
-				preamble += "defer C.free(" + p.ParameterName + "_Lengths)\n"
+				preamble += p.ParameterName + "_CArray := (*[0xffff]*" + listType.parameterTypeCgo() + ")(C.malloc(C.ulong(8 * len(" + p.ParameterName + "))))\n"
+				preamble += p.ParameterName + "_Lengths := (*[0xffff]C.size_t)(C.malloc(C.ulong(8 * len(" + p.ParameterName + "))))\n"
+				preamble += "defer C.free(unsafe.Pointer(" + p.ParameterName + "_CArray))\n"
+				preamble += "defer C.free(unsafe.Pointer(" + p.ParameterName + "_Lengths))\n"
 				preamble += "for i := range " + p.ParameterName + "{\n"
 				preamble += "single_cstring := C.CString(" + p.ParameterName + "[i])\n"
 				preamble += "defer C.free(unsafe.Pointer(single_cstring))\n"
 				preamble += p.ParameterName + "_CArray[i] = single_cstring\n"
-				preamble += p.ParameterName + "__Lengths[i] = len(" + p.ParameterName + "[i])\n"
+				preamble += p.ParameterName + "__Lengths[i] = (C.size_t)(len(" + p.ParameterName + "[i]))\n"
 				preamble += "}\n"
 
-				tmp = append(tmp, p.ParameterName+"_CArray, "+p.ParameterName+"_Lengths, len("+p.ParameterName+")")
+				tmp = append(tmp, "&"+p.ParameterName+"_CArray[0], "+p.ParameterName+"_Lengths, C.ulong(len("+p.ParameterName+"))")
 
 			} else {
 
 				preamble += "// For the C ABI, malloc a C array of raw pointers\n"
-				preamble += p.ParameterName + "_CArray := (*[0xffff]*" + listType.parameterTypeCgo() + ")(C.malloc(c.ulong(8 * len(" + p.ParameterName + "))))\n"
-				preamble += "defer C.free(" + p.ParameterName + "_CArray)\n"
+				if listType.QtClassType() {
+					preamble += p.ParameterName + "_CArray := (*[0xffff]*" + listType.parameterTypeCgo() + ")(C.malloc(C.ulong(8 * len(" + p.ParameterName + "))))\n"
+				} else {
+					preamble += p.ParameterName + "_CArray := (*[0xffff]" + listType.parameterTypeCgo() + ")(C.malloc(C.ulong(8 * len(" + p.ParameterName + "))))\n"
+				}
+				preamble += "defer C.free(unsafe.Pointer(" + p.ParameterName + "_CArray))\n"
 				preamble += "for i := range " + p.ParameterName + "{\n"
-				preamble += p.ParameterName + "_CArray[i] = " + p.ParameterName + "[i].cPointer()\n"
+				if listType.QtClassType() {
+					preamble += p.ParameterName + "_CArray[i] = " + p.ParameterName + "[i].cPointer()\n"
+				} else {
+					preamble += p.ParameterName + "_CArray[i] = (" + listType.parameterTypeCgo() + ")(" + p.ParameterName + "[i])\n"
+				}
 				preamble += "}\n"
 
-				tmp = append(tmp, p.ParameterName+"_CArray, len("+p.ParameterName+")")
+				tmp = append(tmp, "&"+p.ParameterName+"_CArray[0], C.ulong(len("+p.ParameterName+"))")
 			}
 
 		} else if p.Pointer && p.ParameterType == "char" {
@@ -240,7 +248,11 @@ func (gfs *goFileState) emitParametersGo2CABIForwarding(m CppMethod) (preamble s
 			tmp = append(tmp, p.ParameterName+".cPointer()")
 
 		} else if p.IntType() || p.ParameterType == "bool" {
-			tmp = append(tmp, "("+p.parameterTypeCgo()+")("+p.ParameterName+")")
+			if p.Pointer {
+				tmp = append(tmp, "(*"+p.parameterTypeCgo()+")(unsafe.Pointer("+p.ParameterName+"))") // n.b. This may not work if the integer type conversion was wrong
+			} else {
+				tmp = append(tmp, "("+p.parameterTypeCgo()+")("+p.ParameterName+")")
+			}
 
 		} else {
 			// Default
@@ -250,8 +262,14 @@ func (gfs *goFileState) emitParametersGo2CABIForwarding(m CppMethod) (preamble s
 
 	if m.ReturnType.ParameterType == "QString" {
 		tmp = append(tmp, "&_out, &_out_Strlen")
-	} else if _, ok := m.ReturnType.QListOf(); ok {
-		tmp = append(tmp, "&_out, &_out_len")
+	} else if t, ok := m.ReturnType.QListOf(); ok {
+
+		if t.ParameterType == "QString" {
+			// Combo
+			tmp = append(tmp, "&_out, &_out_Lengths, &_out_len")
+		} else {
+			tmp = append(tmp, "&_out, &_out_len")
+		}
 	}
 
 	return preamble, strings.Join(tmp, ", ")
@@ -317,7 +335,9 @@ import "C"
 		`)
 
 		// CGO types only exist within the same Go file, so other Go files can't
-		// call this same private ctor function, unless it goes through unsafe.Pointer{}
+		// call this same private ctor function, unless it goes through unsafe.Pointer{}.
+		// This is probably because C types can possibly violate the ODR whereas
+		// that never happens in Go's type system.
 		gfs.imports["unsafe"] = struct{}{}
 		ret.WriteString(`
 			func new` + c.ClassName + `_U(h unsafe.Pointer) *` + c.ClassName + ` {
@@ -371,16 +391,48 @@ import "C"
 				afterword += "return ret"
 
 			} else if t, ok := m.ReturnType.QListOf(); ok {
+				gfs.imports["unsafe"] = struct{}{}
 				shouldReturn = ""
 				returnTypeDecl = "[]" + t.RenderTypeGo()
 
-				preamble += "var _out **" + t.parameterTypeCgo() + " = nil\n"
-				preamble += "var _out_len C.size_t = 0\n"
-				afterword += "ret := make([]" + t.RenderTypeGo() + ", _out_Strlen)\n"
-				afterword += "for i := 0; i < _out_len; i++ {\n"
-				afterword += "ret[i] = new" + t.ParameterType + "(_out[i])\n"
-				afterword += "}\n"
-				afterword += "C.free(_out)\n"
+				if t.ParameterType == "QString" {
+					// Combo
+
+					preamble += "var _out **C.char = nil\n"
+					preamble += "var _out_Lengths *C.int = nil\n"
+					preamble += "var _out_len C.size_t = 0\n"
+					afterword += "ret := make([]string, int(_out_len))\n"
+					afterword += "_outCast := (*[0xffff]*C.char)(unsafe.Pointer(_out)) // hey ya\n"
+					afterword += "_out_LengthsCast := (*[0xffff]C.int)(unsafe.Pointer(_out_Lengths))\n"
+					afterword += "for i := 0; i < int(_out_len); i++ {\n"
+					afterword += "ret[i] = C.GoStringN(_outCast[i], _out_LengthsCast[i])\n"
+					afterword += "}\n"
+					afterword += "C.free(unsafe.Pointer(_out))\n"
+					afterword += "return ret\n"
+
+				} else {
+					if t.QtClassType() {
+						preamble += "var _out **" + t.parameterTypeCgo() + " = nil\n"
+					} else {
+						preamble += "var _out *" + t.parameterTypeCgo() + " = nil\n"
+					}
+					preamble += "var _out_len C.size_t = 0\n"
+					afterword += "ret := make([]" + t.RenderTypeGo() + ", int(_out_len))\n"
+					if t.QtClassType() {
+						afterword += "_outCast := (*[0xffff]*" + t.parameterTypeCgo() + ")(unsafe.Pointer(_out)) // so fresh so clean\n"
+					} else {
+						afterword += "_outCast := (*[0xffff]" + t.parameterTypeCgo() + ")(unsafe.Pointer(_out)) // mrs jackson\n"
+					}
+					afterword += "for i := 0; i < int(_out_len); i++ {\n"
+					if t.QtClassType() {
+						afterword += "ret[i] = new" + t.ParameterType + "(_outCast[i])\n"
+					} else { // plain int type
+						afterword += "ret[i] = (" + t.RenderTypeGo() + ")(_outCast[i])\n"
+					}
+					afterword += "}\n"
+					afterword += "C.free(unsafe.Pointer(_out))\n"
+					afterword += "return ret\n"
+				}
 
 			} else if m.ReturnType.QtClassType() {
 				// Construct our Go type based on this inner CABI type
