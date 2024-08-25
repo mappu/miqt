@@ -73,11 +73,11 @@ Phase 1
 - [X] QtGui
 - [X] QtWidgets
 	- Successful `go build` of 409 C++ headers first achieved 2024-08-25.
-- [ ] Minimal example
-	- [ ] Calling connect
+- [X] Minimal example
+	- [X] Calling connect
 - [X] Pick a name for the package
-- [ ] Make github repo, rename module
-- [ ] v0 Public release
+- [X] Make github repo, rename module
+- [X] v0 Public release
 
 Phase 2
 
