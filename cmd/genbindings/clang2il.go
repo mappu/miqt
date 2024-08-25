@@ -490,6 +490,12 @@ func parseMethod(node map[string]interface{}, mm *CppMethod) error {
 		mm.ReturnType = CppParameter{ParameterType: "void"}
 	}
 
+	// Change operator= (assign) to always return void. By default it returns *self which
+	// is a trick for more ergnonomic C++ that has no real effect
+	if mm.MethodName == "operator=" {
+		mm.ReturnType = CppParameter{ParameterType: "void"}
+	}
+
 	return nil
 }
 
