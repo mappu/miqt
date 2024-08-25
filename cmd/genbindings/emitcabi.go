@@ -45,6 +45,10 @@ func (p CppParameter) RenderTypeCabi() string {
 		ret = "unsigned int"
 	}
 
+	if strings.Contains(p.ParameterType, `::`) {
+		ret = "int"
+	}
+
 	if p.Pointer || p.ByRef {
 		ret += "*"
 	}

@@ -510,10 +510,6 @@ func parseMethod(node map[string]interface{}, mm *CppMethod) error {
 // not filled in.
 func parseTypeString(typeString string) (CppParameter, []CppParameter, error) {
 
-	if strings.Contains(typeString, `::`) {
-		return CppParameter{}, nil, ErrTooComplex
-	}
-
 	if strings.Contains(typeString, `&&`) { // TODO Rvalue references
 		return CppParameter{}, nil, ErrTooComplex
 	}

@@ -16,7 +16,7 @@ type CppParameter struct {
 }
 
 func (p CppParameter) QtClassType() bool {
-	return (p.ParameterType[0] == 'Q') && p.ParameterType != "QRgb"
+	return (p.ParameterType[0] == 'Q') && p.ParameterType != "QRgb" && !strings.Contains(p.ParameterType, `::`)
 }
 
 func (p CppParameter) QListOf() (CppParameter, bool) {
@@ -45,6 +45,10 @@ func (p CppParameter) QSetOf() bool {
 }
 
 func (p CppParameter) IntType() bool {
+
+	if strings.Contains(p.ParameterType, `::`) {
+		return true
+	}
 
 	switch p.ParameterType {
 	case "int", "unsigned int", "uint",

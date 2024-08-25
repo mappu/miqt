@@ -86,8 +86,13 @@ func (p CppParameter) RenderTypeGo() string {
 	case "qintptr", "uintptr_t", "intptr_t", "quintptr":
 		ret += "uintptr"
 	default:
-		// Do not transform this type
-		ret += p.ParameterType
+
+		if strings.Contains(p.ParameterType, `::`) {
+			ret += "int"
+		} else {
+			// Do not transform this type
+			ret += p.ParameterType
+		}
 
 	}
 
