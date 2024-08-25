@@ -233,7 +233,12 @@ nextMethod:
 			// These seem to have no useful content
 
 		case "CXXConstructorDecl":
-			if !visibility {
+
+			if isImplicit, ok := node["isImplicit"].(bool); ok && isImplicit {
+				// This is an implicit ctor. Therefore the class is constructable
+				// even if we're currently in a `private:` block.
+
+			} else if !visibility {
 				continue // Skip private/protected
 			}
 
@@ -287,6 +292,13 @@ nextMethod:
 			// a regular delete function
 			// However if this destructor is private or deleted, we should
 			// not bind it
+
+			if isImplicit, ok := node["isImplicit"].(bool); ok && isImplicit {
+				// This is an implicit dtor. Therefore the class is deleteable
+				// even if we're currently in a `private:` block.
+				ret.CanDelete = true
+				continue
+			}
 
 			if !visibility {
 				ret.CanDelete = false

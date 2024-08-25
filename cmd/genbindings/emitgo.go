@@ -385,7 +385,7 @@ import "C"
 				// Construct our Go type based on this inner CABI type
 				shouldReturn = "ret := "
 
-				if m.ReturnType.Pointer || m.ReturnType.ParameterType == "QSize" { // FIXME QSize has a deleted destructor, so we can't delete our heap copy with a finalizer(!!)
+				if m.ReturnType.Pointer {
 					gfs.imports["unsafe"] = struct{}{}
 					afterword = "return new" + m.ReturnType.ParameterType + "_U(unsafe.Pointer(ret))"
 
