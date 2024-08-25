@@ -69,9 +69,10 @@ Phase 1
 		- e.g. Qt::WindowFlags (global)
 		- e.g. QWidget::RenderFlag (per-class)
 	- [ ] Free functions
-- [ ] QtCore
-- [ ] QtGui
-- [ ] QtWidgets
+- [X] QtCore
+- [X] QtGui
+- [X] QtWidgets
+	- Successful `go build` of 409 C++ headers first achieved 2024-08-25.
 - [ ] Minimal example
 	- [ ] Calling connect
 - [X] Pick a name for the package
