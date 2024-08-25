@@ -6,7 +6,6 @@ import (
 	"log"
 	"sort"
 	"strings"
-	"unsafe"
 )
 
 func goReservedWord(s string) bool {
@@ -22,14 +21,8 @@ func (p CppParameter) RenderTypeGo() string {
 	if p.Pointer && p.ParameterType == "char" {
 		return "string"
 	}
-	if p.ParameterType == "char" {
-		return "byte"
-	}
 	if p.ParameterType == "QString" {
 		return "string"
-	}
-	if p.ParameterType == "uintptr_t" {
-		return "uintptr"
 	}
 
 	if t, ok := p.QListOf(); ok {
@@ -70,7 +63,7 @@ func (p CppParameter) RenderTypeGo() string {
 		}
 
 	case "unsigned int":
-		return "uint"
+		ret += "uint"
 	case "qint32":
 		ret += "int32"
 	case "quint32":
@@ -89,20 +82,8 @@ func (p CppParameter) RenderTypeGo() string {
 		} else {
 			ret += "uint64"
 		}
-	case "qintptr":
-		var ptr *int
-		if unsafe.Sizeof(ptr) == 8 {
-			ret += "int64"
-		} else {
-			ret += "int32"
-		}
-	case "quintptr":
-		var ptr *int
-		if unsafe.Sizeof(ptr) == 8 {
-			ret += "uint64"
-		} else {
-			ret += "uint32"
-		}
+	case "qintptr", "uintptr_t", "intptr_t", "quintptr":
+		ret += "uintptr"
 	default:
 		// Do not transform this type
 		ret += p.ParameterType

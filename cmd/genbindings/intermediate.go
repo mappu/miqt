@@ -45,18 +45,26 @@ func (p CppParameter) QSetOf() bool {
 }
 
 func (p CppParameter) IntType() bool {
+
 	switch p.ParameterType {
 	case "int", "unsigned int", "uint",
 		"short", "unsigned short", "ushort", "qint16", "quint16",
 		"qint8", "quint8",
-		// "char", "uchar", // Don't count char or char* as integer types that need cast assertions
+		"unsigned char", "uchar",
 		"long", "unsigned long", "ulong", "qint32", "quint32",
 		"longlong", "ulonglong", "qlonglong", "qulonglong", "qint64", "quint64", "int64_t", "uint64_t", "long long", "unsigned long long",
-		"QRgb", // unsigned int
-		"qintptr", "quintptr",
+		"QRgb", // QRgb is an unsigned int
+		"qintptr", "quintptr", "uintptr_t", "intptr_t",
 		"qsizetype", "size_t",
 		"double", "float", "qreal":
 		return true
+
+	case "char":
+		// Only count char as an integer type with cast assertions if it's
+		// not possibly a char* string in disguise
+		// (However, unsigned chars are always like ints)
+		return !p.Pointer
+
 	default:
 		return false
 	}

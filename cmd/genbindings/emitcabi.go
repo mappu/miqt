@@ -125,8 +125,8 @@ func emitParametersCabi(m CppMethod, selfType string) string {
 		} else if t, ok := p.QListOf(); ok {
 
 			if t.ParameterType == "QString" {
-				// Combov
-				tmp = append(tmp, "char** "+p.ParameterName+", int64_t* "+p.ParameterName+"_Lengths, size_t "+p.ParameterName+"_len")
+				// Combo
+				tmp = append(tmp, "char** "+p.ParameterName+", uint64_t* "+p.ParameterName+"_Lengths, size_t "+p.ParameterName+"_len")
 
 			} else {
 				// The Go code has called this with two arguments: T* and len
