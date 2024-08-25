@@ -137,6 +137,7 @@ func emitParametersGo(params []CppParameter) string {
 
 		} else if skipNext {
 			// Skip this parameter, already handled
+			skipNext = false
 
 		} else {
 			// Ordinary parameter
@@ -170,10 +171,10 @@ func (gfs *goFileState) emitParametersGo2CABIForwarding(m CppMethod) (preamble s
 
 			preamble += "// Convert []string to long-lived int& argc, char** argv, never call free()\n"
 			preamble += "argc := (*C.int)(C.malloc(8))\n"
-			preamble += "*argc = len(args)\n"
-			preamble += "argv := (*[0xffff]*C.char)(C.malloc(c.ulong(8 * len(args))))\n"
+			preamble += "*argc = C.int(len(args))\n"
+			preamble += "argv := (*[0xffff]*C.char)(C.malloc(C.ulong(8 * len(args))))\n"
 			preamble += "for i := range args {\n"
-			preamble += "argv[i] = C.CString(" + p.ParameterName + "[i])\n"
+			preamble += "argv[i] = C.CString(args[i])\n"
 			preamble += "}\n"
 
 			tmp = append(tmp, "argc, argv")
