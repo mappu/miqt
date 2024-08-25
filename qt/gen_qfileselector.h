@@ -1,0 +1,46 @@
+#ifndef GEN_QFILESELECTOR_H
+#define GEN_QFILESELECTOR_H
+
+#include <stdbool.h>
+#include <stddef.h>
+#include <stdint.h>
+
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef __cplusplus
+class QFileSelector;
+class QMetaObject;
+class QObject;
+class QUrl;
+#else
+typedef struct QFileSelector QFileSelector;
+typedef struct QMetaObject QMetaObject;
+typedef struct QObject QObject;
+typedef struct QUrl QUrl;
+#endif
+
+QFileSelector* QFileSelector_new();
+QFileSelector* QFileSelector_new2(QObject* parent);
+QMetaObject* QFileSelector_MetaObject(QFileSelector* self);
+void QFileSelector_Tr(char* s, char** _out, int* _out_Strlen);
+void QFileSelector_TrUtf8(char* s, char** _out, int* _out_Strlen);
+void QFileSelector_Select(QFileSelector* self, const char* filePath, size_t filePath_Strlen, char** _out, int* _out_Strlen);
+QUrl* QFileSelector_SelectWithFilePath(QFileSelector* self, QUrl* filePath);
+void QFileSelector_ExtraSelectors(QFileSelector* self, char*** _out, int** _out_Lengths, size_t* _out_len);
+void QFileSelector_SetExtraSelectors(QFileSelector* self, char** list, uint64_t* list_Lengths, size_t list_len);
+void QFileSelector_AllSelectors(QFileSelector* self, char*** _out, int** _out_Lengths, size_t* _out_len);
+void QFileSelector_Tr2(char* s, char* c, char** _out, int* _out_Strlen);
+void QFileSelector_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen);
+void QFileSelector_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen);
+void QFileSelector_TrUtf83(char* s, char* c, int n, char** _out, int* _out_Strlen);
+void QFileSelector_Delete(QFileSelector* self);
+
+#ifdef __cplusplus
+} /* extern C */
+#endif 
+
+#endif
