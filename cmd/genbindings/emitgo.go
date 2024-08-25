@@ -158,7 +158,7 @@ func (gfs *goFileState) emitParametersGo2CABIForwarding(m CppMethod) (preamble s
 			preamble += "argv[i] = C.CString(args[i])\n"
 			preamble += "}\n"
 
-			tmp = append(tmp, "argc, argv")
+			tmp = append(tmp, "argc, &argv[0]")
 
 		} else if skipNext {
 			// Skip this parameter, already handled
@@ -191,10 +191,10 @@ func (gfs *goFileState) emitParametersGo2CABIForwarding(m CppMethod) (preamble s
 				preamble += "single_cstring := C.CString(" + p.ParameterName + "[i])\n"
 				preamble += "defer C.free(unsafe.Pointer(single_cstring))\n"
 				preamble += p.ParameterName + "_CArray[i] = single_cstring\n"
-				preamble += p.ParameterName + "__Lengths[i] = (C.size_t)(len(" + p.ParameterName + "[i]))\n"
+				preamble += p.ParameterName + "_Lengths[i] = (C.size_t)(len(" + p.ParameterName + "[i]))\n"
 				preamble += "}\n"
 
-				tmp = append(tmp, "&"+p.ParameterName+"_CArray[0], "+p.ParameterName+"_Lengths, C.ulong(len("+p.ParameterName+"))")
+				tmp = append(tmp, "&"+p.ParameterName+"_CArray[0], &"+p.ParameterName+"_Lengths[0], C.ulong(len("+p.ParameterName+"))")
 
 			} else {
 
@@ -223,13 +223,14 @@ func (gfs *goFileState) emitParametersGo2CABIForwarding(m CppMethod) (preamble s
 			preamble += "defer C.free(unsafe.Pointer(" + p.ParameterName + "_Cstring))\n"
 			tmp = append(tmp, p.ParameterName+"_Cstring")
 
-		} else if (p.Pointer || p.ByRef) && p.QtClassType() {
+		} else if /*(p.Pointer || p.ByRef) &&*/ p.QtClassType() {
 			// The C++ type is a pointer to Qt class
 			// We want our functions to accept the Go wrapper type, and forward as cPointer()
 			tmp = append(tmp, p.ParameterName+".cPointer()")
 
 		} else if p.IntType() || p.ParameterType == "bool" {
-			if p.Pointer {
+			if p.Pointer || p.ByRef {
+				gfs.imports["unsafe"] = struct{}{}
 				tmp = append(tmp, "(*"+p.parameterTypeCgo()+")(unsafe.Pointer("+p.ParameterName+"))") // n.b. This may not work if the integer type conversion was wrong
 			} else {
 				tmp = append(tmp, "("+p.parameterTypeCgo()+")("+p.ParameterName+")")
@@ -359,6 +360,8 @@ import "C"
 				// internal pointer
 				gfs.imports["unsafe"] = struct{}{}
 				returnTypeDecl = "unsafe.Pointer"
+				shouldReturn = "ret := "
+				afterword += "return (unsafe.Pointer)(ret)\n"
 
 			} else if m.ReturnType.ParameterType == "QString" {
 				shouldReturn = ""
@@ -406,7 +409,12 @@ import "C"
 					}
 					afterword += "for i := 0; i < int(_out_len); i++ {\n"
 					if t.QtClassType() {
-						afterword += "ret[i] = new" + t.ParameterType + "(_outCast[i])\n"
+						if !t.Pointer {
+							// new, but then dereference it
+							afterword += "ret[i] = *new" + t.ParameterType + "(_outCast[i])\n"
+						} else {
+							afterword += "ret[i] = new" + t.ParameterType + "(_outCast[i])\n"
+						}
 					} else { // plain int type
 						afterword += "ret[i] = (" + t.RenderTypeGo() + ")(_outCast[i])\n"
 					}
@@ -419,7 +427,7 @@ import "C"
 				// Construct our Go type based on this inner CABI type
 				shouldReturn = "ret := "
 
-				if m.ReturnType.Pointer {
+				if m.ReturnType.Pointer || m.ReturnType.ByRef {
 					gfs.imports["unsafe"] = struct{}{}
 					afterword = "return new" + m.ReturnType.ParameterType + "_U(unsafe.Pointer(ret))"
 

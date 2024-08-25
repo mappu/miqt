@@ -128,6 +128,12 @@ func emitParametersCabi(m CppMethod, selfType string) string {
 				// Combo
 				tmp = append(tmp, "char** "+p.ParameterName+", uint64_t* "+p.ParameterName+"_Lengths, size_t "+p.ParameterName+"_len")
 
+			} else if t.QtClassType() && !t.Pointer {
+				// The Go code can only work with Qt types as pointers, so the CABI needs to take an array of
+				// pointers, not an array of values
+				// Needs one more level of indirection
+				tmp = append(tmp, t.RenderTypeCabi()+"** "+p.ParameterName+", size_t "+p.ParameterName+"_len")
+
 			} else {
 				// The Go code has called this with two arguments: T* and len
 				// Declare that we take two parameters
@@ -212,7 +218,11 @@ func emitParametersCABI2CppForwarding(params []CppParameter) (preamble string, f
 				preamble += "\t" + p.ParameterType + " " + p.ParameterName + "_QList;\n"
 				preamble += "\t" + p.ParameterName + "_QList.reserve(" + p.ParameterName + "_len);\n"
 				preamble += "\tfor(size_t i = 0; i < " + p.ParameterName + "_len; ++i) {\n"
-				preamble += "\t\t" + p.ParameterName + "_QList.push_back(" + p.ParameterName + "[i]);\n"
+				if listType.QtClassType() && !listType.Pointer {
+					preamble += "\t\t" + p.ParameterName + "_QList.push_back(*(" + p.ParameterName + "[i]));\n"
+				} else {
+					preamble += "\t\t" + p.ParameterName + "_QList.push_back(" + p.ParameterName + "[i]);\n"
+				}
 				preamble += "\t}\n"
 				tmp = append(tmp, p.ParameterName+"_QList")
 			}
