@@ -31,7 +31,7 @@ You must also meet your Qt license obligations.
 
 ### Q1. Why are the binaries so big?
 
-Make sure to compile with `go build "-ldflags -s -w"`. This reduces the `helloworld` example from 43MB to 6MB.
+Make sure to compile with `go build -ldflags "-s -w"`. This reduces the `helloworld` example from 43MB to 6MB.
 
 Then, it's possible to reduce the size further with `upx --best` to 2MB or `upx --lzma` to 1.4MB.
 
