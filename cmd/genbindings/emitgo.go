@@ -287,9 +287,11 @@ import "C"
 
 	for _, c := range src.Classes {
 
+		goClassName := cabiClassName(c.ClassName)
+
 		ret.WriteString(`
-		type ` + c.ClassName + ` struct {
-			h *C.` + c.ClassName + `
+		type ` + goClassName + ` struct {
+			h *C.` + goClassName + `
 		`)
 
 		// Embed all inherited types to directly allow calling inherited methods
@@ -300,7 +302,7 @@ import "C"
 		ret.WriteString(`
 		}
 		
-		func (this *` + c.ClassName + `) cPointer() *C.` + c.ClassName + ` {
+		func (this *` + goClassName + `) cPointer() *C.` + goClassName + ` {
 			if this == nil {
 				return nil
 			}
@@ -316,8 +318,8 @@ import "C"
 		}
 
 		ret.WriteString(`
-			func new` + c.ClassName + `(h *C.` + c.ClassName + `) *` + c.ClassName + ` {
-				return &` + c.ClassName + `{` + localInit + `}
+			func new` + goClassName + `(h *C.` + goClassName + `) *` + goClassName + ` {
+				return &` + goClassName + `{` + localInit + `}
 			}
 			
 		`)
@@ -328,8 +330,8 @@ import "C"
 		// that never happens in Go's type system.
 		gfs.imports["unsafe"] = struct{}{}
 		ret.WriteString(`
-			func new` + c.ClassName + `_U(h unsafe.Pointer) *` + c.ClassName + ` {
-				return new` + c.ClassName + `( (*C.` + c.ClassName + `)(h) )
+			func new` + goClassName + `_U(h unsafe.Pointer) *` + goClassName + ` {
+				return new` + goClassName + `( (*C.` + goClassName + `)(h) )
 			}
 			
 		`)
@@ -337,10 +339,10 @@ import "C"
 		for i, ctor := range c.Ctors {
 			preamble, forwarding := gfs.emitParametersGo2CABIForwarding(ctor)
 			ret.WriteString(`
-			// New` + c.ClassName + maybeSuffix(i) + ` constructs a new ` + c.ClassName + ` object.
-			func New` + c.ClassName + maybeSuffix(i) + `(` + emitParametersGo(ctor.Parameters) + `) *` + c.ClassName + ` {
-				` + preamble + ` ret := C.` + c.ClassName + `_new` + maybeSuffix(i) + `(` + forwarding + `)
-				return new` + c.ClassName + `(ret)
+			// New` + goClassName + maybeSuffix(i) + ` constructs a new ` + c.ClassName + ` object.
+			func New` + goClassName + maybeSuffix(i) + `(` + emitParametersGo(ctor.Parameters) + `) *` + goClassName + ` {
+				` + preamble + ` ret := C.` + goClassName + `_new` + maybeSuffix(i) + `(` + forwarding + `)
+				return new` + goClassName + `(ret)
 			}
 			
 			`)
@@ -462,15 +464,15 @@ import "C"
 
 			}
 
-			receiverAndMethod := `(this *` + c.ClassName + `) ` + m.SafeMethodName()
+			receiverAndMethod := `(this *` + goClassName + `) ` + m.SafeMethodName()
 			if m.IsStatic {
-				receiverAndMethod = c.ClassName + `_` + m.SafeMethodName()
+				receiverAndMethod = goClassName + `_` + m.SafeMethodName()
 			}
 
 			ret.WriteString(`
 			func ` + receiverAndMethod + `(` + emitParametersGo(m.Parameters) + `) ` + returnTypeDecl + ` {
 				` + preamble +
-				shouldReturn + ` C.` + c.ClassName + `_` + m.SafeMethodName() + `(` + forwarding + `)
+				shouldReturn + ` C.` + goClassName + `_` + m.SafeMethodName() + `(` + forwarding + `)
 ` + afterword + `}
 			
 			`)
@@ -479,12 +481,12 @@ import "C"
 			if m.IsSignal && !m.HasHiddenParams {
 				gfs.imports["unsafe"] = struct{}{}
 				gfs.imports["runtime/cgo"] = struct{}{}
-				ret.WriteString(`func (this *` + c.ClassName + `) On` + m.SafeMethodName() + `(slot func()) {
+				ret.WriteString(`func (this *` + goClassName + `) On` + m.SafeMethodName() + `(slot func()) {
 					var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
 						slot()
 					}
 				
-					C.` + c.ClassName + `_connect_` + m.SafeMethodName() + `(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+					C.` + goClassName + `_connect_` + m.SafeMethodName() + `(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
 				}
 				`)
 			}
@@ -492,8 +494,8 @@ import "C"
 
 		if c.CanDelete {
 			ret.WriteString(`
-			func (this *` + c.ClassName + `) Delete() {
-				C.` + c.ClassName + `_Delete(this.h)
+			func (this *` + goClassName + `) Delete() {
+				C.` + goClassName + `_Delete(this.h)
 			}
 			`)
 		}

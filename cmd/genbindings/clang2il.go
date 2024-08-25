@@ -26,39 +26,16 @@ func parseHeader(topLevel []interface{}) (*CppParsedHeader, error) {
 		switch kind {
 
 		case "CXXRecordDecl":
-			// Must have a name
-			nodename, ok := node["name"].(string)
-			if !ok {
-				return nil, errors.New("node has no name")
-			}
-
-			log.Printf("-> %q name=%q\n", kind, nodename)
-
-			// Skip over forward class declarations
-			// This is determined in two ways:
-			// 1. If the class has no inner nodes
-			nodeInner, ok := node["inner"].([]interface{})
-			if !ok {
-				continue
-			}
-
-			// 2. If this class has only one `inner` entry that's a VisibilityAttr
-			if len(nodeInner) == 1 {
-				if node, ok := nodeInner[0].(map[string]interface{}); ok {
-					if kind, ok := node["kind"].(string); ok && kind == "VisibilityAttr" {
-						continue
-					}
-				}
-			}
-
-			// Also skip over any custom exceptions
-			if !AllowClass(nodename) {
-				continue
-			}
 
 			// Process the inner class definition
-			obj, err := processClassType(node, nodename)
+			obj, err := processClassType(node, "")
 			if err != nil {
+				if errors.Is(err, ErrNoContent) {
+					log.Printf("-> Skipping (%v)\n", err)
+					continue
+				}
+
+				// A real error (shouldn't happen)
 				panic(err)
 			}
 
@@ -143,12 +120,42 @@ func parseHeader(topLevel []interface{}) (*CppParsedHeader, error) {
 	return &ret, nil // done
 }
 
-func processClassType(node map[string]interface{}, className string) (CppClass, error) {
+func processClassType(node map[string]interface{}, addNamePrefix string) (CppClass, error) {
 	var ret CppClass
-	ret.ClassName = className
 	ret.CanDelete = true
 
-	inner, _ := node["inner"].([]interface{}) // Cannot fail, the parent call already checked that `inner` was present
+	// Must have a name
+	nodename, ok := node["name"].(string)
+	if !ok {
+		// This can happen for some nested class definitions e.g. qbytearraymatcher.h::Data
+		return CppClass{}, ErrNoContent // errors.New("node has no name")
+	}
+	nodename = addNamePrefix + nodename
+	ret.ClassName = nodename
+
+	log.Printf("-> Processing class %q...\n", nodename)
+
+	// Also skip over any custom exceptions
+	if !AllowClass(nodename) {
+		return CppClass{}, ErrNoContent
+	}
+
+	// Skip over forward class declarations
+	// This is determined in two ways:
+	// 1. If the class has no inner nodes
+	inner, ok := node["inner"].([]interface{})
+	if !ok {
+		return CppClass{}, ErrNoContent
+	}
+
+	// 2. If this class has only one `inner` entry that's a VisibilityAttr
+	if len(inner) == 1 {
+		if node, ok := inner[0].(map[string]interface{}); ok {
+			if kind, ok := node["kind"].(string); ok && kind == "VisibilityAttr" {
+				return CppClass{}, ErrNoContent
+			}
+		}
+	}
 
 	// Check if this was 'struct' (default visible) or 'class' (default invisible)
 	visibility := true
@@ -231,6 +238,24 @@ nextMethod:
 
 		case "VisibilityAttr":
 			// These seem to have no useful content
+
+		case "CXXRecordDecl":
+			// Child class type definition e.g. QAbstractEventDispatcher::TimerInfo
+			// Parse as a whole child class
+
+			if !visibility {
+				continue // Skip private/protected
+			}
+
+			child, err := processClassType(node, nodename+"::")
+			if err != nil {
+				if errors.Is(err, ErrNoContent) {
+					continue
+				}
+				panic(err) // A real problem
+			}
+
+			ret.ChildClassdefs = append(ret.ChildClassdefs, child)
 
 		case "CXXConstructorDecl":
 
@@ -409,7 +434,10 @@ func isExplicitlyDeleted(node map[string]interface{}) bool {
 	return false
 }
 
-var ErrTooComplex error = errors.New("Type declaration is too complex to parse")
+var (
+	ErrTooComplex = errors.New("Type declaration is too complex to parse")
+	ErrNoContent  = errors.New("There's no content to include")
+)
 
 func parseMethod(node map[string]interface{}, mm *CppMethod) error {
 

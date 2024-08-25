@@ -124,6 +124,7 @@ func main() {
 		}
 
 		// AST transforms on our IL
+		astTransformChildClasses(parsed) // must be first
 		astTransformOptional(parsed)
 		astTransformOverloads(parsed)
 

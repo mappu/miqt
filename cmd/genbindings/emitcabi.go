@@ -350,6 +350,13 @@ func getReferencedTypes(src *CppParsedHeader) []string {
 	return foundTypesList
 }
 
+// cabiClassName returns the Go / CABI class name for a Qt C++ class.
+// Normally this is the same, except for class types that are nested inside another class definition.
+func cabiClassName(className string) string {
+	// Must use __ to avoid subclass/method name collision e.g. QPagedPaintDevice::Margins
+	return strings.Replace(className, `::`, `__`, -1)
+}
+
 func emitBindingHeader(src *CppParsedHeader, filename string) (string, error) {
 	ret := strings.Builder{}
 
@@ -378,7 +385,26 @@ extern "C" {
 		if ft == "QList" || ft == "QString" { // These types are reprojected
 			continue
 		}
-		ret.WriteString(`class ` + ft + ";\n")
+
+		if strings.Contains(ft, `::`) {
+			// Forward declarations of inner classes are not yet supported in C++
+			// @ref https://stackoverflow.com/q/1021793
+
+			// ret.WriteString(`class ` + ft + ";\n")
+
+			//parent, child, _ := strings.Cut(ft, `::`)
+			//ret.WriteString(`namespace ` + parent + ` { class ` + child + "; }\n")
+			//ret.WriteString(`typedef ` + ft + " " + cabiClassName(ft) + ";\n")
+
+			ret.WriteString(`#if defined(WORKAROUND_INNER_CLASS_DEFINITION_` + cabiClassName(ft) + ")\n")
+			ret.WriteString(`typedef ` + ft + " " + cabiClassName(ft) + ";\n")
+			ret.WriteString("#else\n")
+			ret.WriteString(`class ` + cabiClassName(ft) + ";\n")
+			ret.WriteString("#endif\n")
+
+		} else {
+			ret.WriteString(`class ` + ft + ";\n")
+		}
 	}
 
 	ret.WriteString("#else\n")
@@ -387,7 +413,7 @@ extern "C" {
 		if ft == "QList" || ft == "QString" { // These types are reprojected
 			continue
 		}
-		ret.WriteString(`typedef struct ` + ft + " " + ft + ";\n")
+		ret.WriteString(`typedef struct ` + cabiClassName(ft) + " " + cabiClassName(ft) + ";\n")
 	}
 
 	ret.WriteString("#endif\n")
@@ -396,21 +422,23 @@ extern "C" {
 
 	for _, c := range src.Classes {
 
+		cClassName := cabiClassName(c.ClassName)
+
 		for i, ctor := range c.Ctors {
-			ret.WriteString(fmt.Sprintf("%s %s_new%s(%s);\n", c.ClassName+"*", c.ClassName, maybeSuffix(i), emitParametersCabi(ctor, "")))
+			ret.WriteString(fmt.Sprintf("%s %s_new%s(%s);\n", cClassName+"*", cClassName, maybeSuffix(i), emitParametersCabi(ctor, "")))
 		}
 
 		for _, m := range c.Methods {
-			ret.WriteString(fmt.Sprintf("%s %s_%s(%s);\n", emitReturnTypeCabi(m.ReturnType), c.ClassName, m.SafeMethodName(), emitParametersCabi(m, c.ClassName+"*")))
+			ret.WriteString(fmt.Sprintf("%s %s_%s(%s);\n", emitReturnTypeCabi(m.ReturnType), cClassName, m.SafeMethodName(), emitParametersCabi(m, cClassName+"*")))
 
 			if m.IsSignal && !m.HasHiddenParams {
-				ret.WriteString(fmt.Sprintf("%s %s_connect_%s(%s* self, void* slot);\n", emitReturnTypeCabi(m.ReturnType), c.ClassName, m.SafeMethodName(), c.ClassName))
+				ret.WriteString(fmt.Sprintf("%s %s_connect_%s(%s* self, void* slot);\n", emitReturnTypeCabi(m.ReturnType), cClassName, m.SafeMethodName(), cClassName))
 			}
 		}
 
 		// delete
 		if c.CanDelete {
-			ret.WriteString(fmt.Sprintf("void %s_Delete(%s* self);\n", c.ClassName, c.ClassName))
+			ret.WriteString(fmt.Sprintf("void %s_Delete(%s* self);\n", cClassName, cClassName))
 		}
 
 		ret.WriteString("\n")
@@ -429,18 +457,23 @@ extern "C" {
 func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 	ret := strings.Builder{}
 
-	ret.WriteString(`#include "gen_` + filename + `"
-#include "` + filename + `"
-
-`)
-
 	for _, ref := range getReferencedTypes(src) {
 		if !ImportHeaderForClass(ref) {
 			continue
 		}
 
+		if strings.Contains(ref, `::`) {
+			ret.WriteString(`#define WORKAROUND_INNER_CLASS_DEFINITION_` + cabiClassName(ref) + "\n")
+			continue
+		}
+
 		ret.WriteString(`#include <` + ref + ">\n")
 	}
+
+	ret.WriteString(`#include "gen_` + filename + `"
+#include "` + filename + `"
+
+`)
 
 	ret.WriteString(`
 
@@ -452,6 +485,8 @@ extern "C" {
 
 	for _, c := range src.Classes {
 
+		cClassName := cabiClassName(c.ClassName)
+
 		for i, ctor := range c.Ctors {
 			preamble, forwarding := emitParametersCABI2CppForwarding(ctor.Parameters)
 			ret.WriteString(fmt.Sprintf(
@@ -460,7 +495,7 @@ extern "C" {
 					"\treturn new %s(%s);\n"+
 					"}\n"+
 					"\n",
-				c.ClassName, c.ClassName, maybeSuffix(i), emitParametersCabi(ctor, ""),
+				cClassName, cClassName, maybeSuffix(i), emitParametersCabi(ctor, ""),
 				preamble,
 				c.ClassName, forwarding,
 			))
@@ -591,7 +626,7 @@ extern "C" {
 					"%s"+
 					"}\n"+
 					"\n",
-				emitReturnTypeCabi(m.ReturnType), c.ClassName, m.SafeMethodName(), emitParametersCabi(m, c.ClassName+"*"),
+				emitReturnTypeCabi(m.ReturnType), cClassName, m.SafeMethodName(), emitParametersCabi(m, cClassName+"*"),
 				preamble,
 				shouldReturn, callTarget, nativeMethodName, forwarding,
 				afterCall,
@@ -601,7 +636,7 @@ extern "C" {
 				exactSignal := `static_cast<void (` + c.ClassName + `::*)(` + emitParameterTypesCpp(m) + `)>(&` + c.ClassName + `::` + nativeMethodName + `)`
 
 				ret.WriteString(
-					`void ` + c.ClassName + `_connect_` + m.SafeMethodName() + `(` + c.ClassName + `* self, void* slot) {` + "\n" +
+					`void ` + cClassName + `_connect_` + m.SafeMethodName() + `(` + cClassName + `* self, void* slot) {` + "\n" +
 						"\t" + c.ClassName + `::connect(self, ` + exactSignal + `, self, [=](` + emitParametersCpp(m) + `) {` + "\n" +
 						"\t\t" + `miqt_exec_callback(slot, 0, nullptr);` + "\n" +
 						"\t});\n" +
@@ -618,7 +653,7 @@ extern "C" {
 					"\tdelete self;\n"+
 					"}\n"+
 					"\n",
-				c.ClassName, c.ClassName,
+				cClassName, cClassName,
 			))
 		}
 	}
