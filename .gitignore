@@ -1,6 +1,5 @@
 # scratch files
 *.json
-gen_*
 
 # binaries
 cmd/handbindings/handbindings
