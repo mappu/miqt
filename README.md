@@ -18,8 +18,8 @@ These bindings were newly started in August 2024. The bindings are functional fo
 |Platform|Linkage|Status
 |---|---|---
 |Linux|Static, Dynamic (.so)|✅ Works (Tested with Debian 12 / Qt 5.15 / Clang 14 / GCC 12)
-|Windows|Static, Dynamic (.dll)|Should work, not tested
-|macOS|Static, Dynamic (.dylib)|Should work, not tested
+|Windows|Static, Dynamic (.dll)|Should work, not tested (#1)
+|macOS|Static, Dynamic (.dylib)|Should work, not tested (#2)
 
 ## License
 
@@ -43,6 +43,8 @@ Yes. You must also meet your Qt license obligations: either use Qt dynamically-l
 
 The first time the Qt bindings are compiled takes a long time. After this, it's fast. In a Dockerfile, you could cache the build step by running `go install github.com/mappu/miqt`.
 
+See also issue #8.
+
 ### Q4. How does this compare to other Qt bindings?
 
 MIQT is a clean-room binding that does not use any code from other Qt bindings.
@@ -54,9 +56,9 @@ MIQT is a clean-room binding that does not use any code from other Qt bindings.
 
 Most functions are implemented 1:1. The Qt documentation should be used.
 
-The `QString` and `QList<T>` types are projected as plain Go `string` and `[]T`. Therefore, you can't call any of QString/QList's helper methods, you must use some Go equivalent method instead.
+The `QString`, `QList<T>`, and `QVector<T>` types are projected as plain Go `string` and `[]T`. Therefore, you can't call any of QString/QList/QVector's helper methods, you must use some Go equivalent method instead.
 
-Where Qt returns a C++ object by value (e.g. QSize), the binding may have moved it to the heap, and in Go this may be represented as a pointer type. In such cases, a Go finalizer is added to automatically delete the heap object. This means code using MIQT can look basically similar to the Qt C++ equivalent code.
+Where Qt returns a C++ object by value (e.g. `QSize`), the binding may have moved it to the heap, and in Go this may be represented as a pointer type. In such cases, a Go finalizer is added to automatically delete the heap object. This means code using MIQT can look basically similar to the Qt C++ equivalent code.
 
 The `connect(sourceObject, sourceSignal, targetObject, targetSlot)` is projected as `targetObject.onSourceSignal(func()...)`.
 
