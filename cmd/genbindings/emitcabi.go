@@ -41,8 +41,6 @@ func (p CppParameter) RenderTypeCabi() string {
 		ret = "intptr_t"
 	case "quintptr":
 		ret = "uintptr_t"
-	case "QRgb":
-		ret = "unsigned int"
 	}
 
 	if strings.Contains(p.ParameterType, `::`) {
@@ -337,9 +335,6 @@ func getReferencedTypes(src *CppParsedHeader) []string {
 			continue
 		}
 		if strings.HasSuffix(ft, "Private") { // qbrush.h finds QGradientPrivate
-			continue
-		}
-		if ft == "QRgb" {
 			continue
 		}
 

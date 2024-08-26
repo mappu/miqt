@@ -56,12 +56,6 @@ func (p CppParameter) RenderTypeGo() string {
 		} else {
 			ret += "uint64"
 		}
-	case "QRgb":
-		if C.sizeof_int == 4 {
-			ret += "uint32"
-		} else {
-			ret += "uint64"
-		}
 
 	case "unsigned int":
 		ret += "uint"

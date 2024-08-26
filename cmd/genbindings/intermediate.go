@@ -13,6 +13,17 @@ var (
 func init() {
 	KnownClassnames = make(map[string]struct{})
 	KnownTypedefs = make(map[string]CppTypedef)
+
+	// Seed well-known typedefs
+
+	KnownTypedefs["QRgb"] = CppTypedef{"QRgb", parseSingleTypeString("unsigned int")}
+
+	KnownTypedefs["WId"] = CppTypedef{"WId", parseSingleTypeString("uintptr_t")}
+
+	// This is a uint64 PID on Linux/mac and a PROCESS_INFORMATION* on Windows
+	// A uintptr should be tolerable for both cases until we do better
+	// @ref https://doc.qt.io/qt-5/qprocess.html#Q_PID-typedef
+	KnownTypedefs["Q_PID"] = CppTypedef{"WId", parseSingleTypeString("uintptr_t")}
 }
 
 type CppParameter struct {
@@ -103,7 +114,6 @@ func (p CppParameter) IntType() bool {
 		"unsigned char", "uchar",
 		"long", "unsigned long", "ulong", "qint32", "quint32",
 		"longlong", "ulonglong", "qlonglong", "qulonglong", "qint64", "quint64", "int64_t", "uint64_t", "long long", "unsigned long long",
-		"QRgb", // QRgb is an unsigned int
 		"qintptr", "quintptr", "uintptr_t", "intptr_t",
 		"qsizetype", "size_t",
 		"double", "float", "qreal":

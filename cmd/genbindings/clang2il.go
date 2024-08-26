@@ -651,19 +651,6 @@ func parseSingleTypeString(p string) CppParameter {
 		} else if tok == "*" {
 			insert.Pointer = true
 
-		} else if tok == "WId" {
-			// Transform typedef
-			insert.TypeAlias = tok
-			insert.ParameterType += " uintptr_t"
-
-		} else if tok == "Q_PID" {
-			// Transform typedef
-			// This is a uint64 PID on Linux/mac and a PROCESS_INFORMATION* on Windows
-			// A uintptr should be tolerable for both cases until we do better
-			// @ref https://doc.qt.io/qt-5/qprocess.html#Q_PID-typedef
-			insert.TypeAlias = tok
-			insert.ParameterType += " uintptr_t"
-
 		} else if len(tok) > 4 && strings.HasSuffix(tok, "List") {
 			// Classes ending in --List are usually better represented as a QList
 			// type directly, so that the binding uses proper Go slices
