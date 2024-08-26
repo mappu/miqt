@@ -5,6 +5,14 @@ import (
 	"strings"
 )
 
+var (
+	KnownClassnames map[string]struct{} // Entries of the form QFoo::Bar if it is an inner class
+)
+
+func init() {
+	KnownClassnames = make(map[string]struct{})
+}
+
 type CppParameter struct {
 	ParameterName string
 	ParameterType string
@@ -15,8 +23,30 @@ type CppParameter struct {
 	Optional      bool
 }
 
+func (p *CppParameter) UnderlyingType() string {
+	if p.TypeAlias != "" {
+		return p.TypeAlias
+	}
+
+	return p.ParameterType
+}
+
 func (p CppParameter) QtClassType() bool {
-	return (p.ParameterType[0] == 'Q') && p.ParameterType != "QRgb" && !strings.Contains(p.ParameterType, `::`)
+	if p.ParameterType[0] != 'Q' {
+		return false
+	}
+
+	if strings.Contains(p.ParameterType, `::`) {
+		// Maybe if it's an inner class
+		if _, ok := KnownClassnames[p.ParameterType]; ok {
+			return true
+		}
+		// Int type
+		return false
+	}
+
+	// Passed all conditions
+	return true
 }
 
 func (p CppParameter) QListOf() (CppParameter, bool) {

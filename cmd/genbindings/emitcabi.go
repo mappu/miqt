@@ -46,7 +46,13 @@ func (p CppParameter) RenderTypeCabi() string {
 	}
 
 	if strings.Contains(p.ParameterType, `::`) {
-		ret = "int"
+		if _, ok := KnownClassnames[p.ParameterType]; ok {
+			// Inner class
+			ret = cabiClassName(p.ParameterType)
+		} else {
+			// Enum
+			ret = "uintptr_t"
+		}
 	}
 
 	if p.Pointer || p.ByRef {
@@ -64,11 +70,11 @@ func emitReturnTypeCabi(p CppParameter) string {
 		return "void" // Will be handled separately
 
 	} else if (p.Pointer || p.ByRef) && p.QtClassType() {
-		return p.ParameterType + "*" // CABI type
+		return cabiClassName(p.ParameterType) + "*" // CABI type
 
 	} else if p.QtClassType() && !p.Pointer {
 		// Even if C++ returns by value, CABI is returning a heap copy (new'd, not malloc'd)
-		return p.ParameterType + "*" // CABI type
+		return cabiClassName(p.ParameterType) + "*" // CABI type
 		// return "void" // Handled separately with an _out pointer
 
 	} else {
@@ -77,10 +83,8 @@ func emitReturnTypeCabi(p CppParameter) string {
 }
 
 func (p CppParameter) RenderTypeQtCpp() string {
-	cppType := p.ParameterType
-	if len(p.TypeAlias) > 0 {
-		cppType = p.TypeAlias // replace
-	}
+	cppType := p.UnderlyingType()
+
 	if p.Const {
 		cppType = "const " + cppType
 	}
@@ -147,13 +151,13 @@ func emitParametersCabi(m CppMethod, selfType string) string {
 		} else if (p.ByRef || p.Pointer) && p.QtClassType() {
 			// Pointer to Qt type
 			// Replace with taking our PQ typedef by value
-			tmp = append(tmp, p.ParameterType+"* "+p.ParameterName)
+			tmp = append(tmp, cabiClassName(p.ParameterType)+"* "+p.ParameterName)
 
 		} else if p.QtClassType() {
 			// Qt type passed by value
 			// The CABI will unconditionally take these by pointer and dereference them
 			// when passing to C++
-			tmp = append(tmp, p.ParameterType+"* "+p.ParameterName)
+			tmp = append(tmp, cabiClassName(p.ParameterType)+"* "+p.ParameterName)
 
 		} else {
 			// RenderTypeCabi renders both pointer+reference as pointers
@@ -235,13 +239,9 @@ func emitParametersCABI2CppForwarding(params []CppParameter) (preamble string, f
 			// Use the raw ParameterType to select an explicit integer overload
 			// Don't use RenderTypeCabi() since it canonicalizes some int types for CABI
 			castSrc := p.ParameterName
-			castType := p.ParameterType
-			if p.Pointer {
-				castType += "*"
-			}
+			castType := p.RenderTypeQtCpp()
 			if p.ByRef { // e.g. QDataStream::operator>>() overloads
 				castSrc = "*" + castSrc
-				castType += "&" // believe it or not, this is legal
 			}
 
 			if p.ParameterType == "qint64" || p.ParameterType == "quint64" || p.ParameterType == "qlonglong" || p.ParameterType == "qulonglong" {

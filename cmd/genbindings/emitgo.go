@@ -88,7 +88,13 @@ func (p CppParameter) RenderTypeGo() string {
 	default:
 
 		if strings.Contains(p.ParameterType, `::`) {
-			ret += "int"
+			if _, ok := KnownClassnames[p.ParameterType]; ok {
+				// Inner class
+				ret += cabiClassName(p.ParameterType)
+			} else {
+				// Enum
+				ret += "uintptr"
+			}
 		} else {
 			// Do not transform this type
 			ret += p.ParameterType
@@ -314,7 +320,7 @@ import "C"
 		localInit := "h: h"
 		for _, base := range c.Inherits {
 			gfs.imports["unsafe"] = struct{}{}
-			localInit += ", " + base + ": new" + base + "_U(unsafe.Pointer(h))"
+			localInit += ", " + base + ": new" + cabiClassName(base) + "_U(unsafe.Pointer(h))"
 		}
 
 		ret.WriteString(`
@@ -419,9 +425,9 @@ import "C"
 					if t.QtClassType() {
 						if !t.Pointer {
 							// new, but then dereference it
-							afterword += "ret[i] = *new" + t.ParameterType + "(_outCast[i])\n"
+							afterword += "ret[i] = *new" + cabiClassName(t.ParameterType) + "(_outCast[i])\n"
 						} else {
-							afterword += "ret[i] = new" + t.ParameterType + "(_outCast[i])\n"
+							afterword += "ret[i] = new" + cabiClassName(t.ParameterType) + "(_outCast[i])\n"
 						}
 					} else { // plain int type
 						afterword += "ret[i] = (" + t.RenderTypeGo() + ")(_outCast[i])\n"
@@ -437,7 +443,7 @@ import "C"
 
 				if m.ReturnType.Pointer || m.ReturnType.ByRef {
 					gfs.imports["unsafe"] = struct{}{}
-					afterword = "return new" + m.ReturnType.ParameterType + "_U(unsafe.Pointer(ret))"
+					afterword = "return new" + cabiClassName(m.ReturnType.ParameterType) + "_U(unsafe.Pointer(ret))"
 
 				} else {
 					// This is return by value, but CABI has new'd it into a
@@ -449,8 +455,8 @@ import "C"
 
 					gfs.imports["runtime"] = struct{}{}
 					afterword = "// Qt uses pass-by-value semantics for this type. Mimic with finalizer\n"
-					afterword += "ret1 := new" + m.ReturnType.ParameterType + "(ret)\n"
-					afterword += "runtime.SetFinalizer(ret1, func(ret2 *" + m.ReturnType.ParameterType + ") {\n"
+					afterword += "ret1 := new" + cabiClassName(m.ReturnType.ParameterType) + "(ret)\n"
+					afterword += "runtime.SetFinalizer(ret1, func(ret2 *" + cabiClassName(m.ReturnType.ParameterType) + ") {\n"
 					afterword += "ret2.Delete()\n"
 					afterword += "runtime.KeepAlive(ret2.h)\n"
 					afterword += "})\n"

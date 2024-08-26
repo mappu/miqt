@@ -136,6 +136,11 @@ func main() {
 		astTransformOptional(parsed)
 		astTransformOverloads(parsed)
 
+		// Update global state tracker (AFTER astTransformChildClasses)
+		// Currently, this is only used for inner classes
+		for _, c := range parsed.Classes {
+			KnownClassnames[c.ClassName] = struct{}{}
+		}
 		processHeaders = append(processHeaders, parsed)
 	}
 
