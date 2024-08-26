@@ -71,7 +71,7 @@ func (p CppParameter) RenderTypeGo() string {
 		ret += "float32"
 	case "double", "qreal":
 		ret += "float64"
-	case "qsizetype", "size_t":
+	case "qsizetype", "size_t", "qptrdiff", "ptrdiff_t":
 		if C.sizeof_size_t == 4 {
 			ret += "uint32"
 		} else {

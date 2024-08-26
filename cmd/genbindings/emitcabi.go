@@ -41,6 +41,8 @@ func (p CppParameter) RenderTypeCabi() string {
 		ret = "intptr_t"
 	case "quintptr":
 		ret = "uintptr_t"
+	case "qptrdiff":
+		ret = "ptrdiff_t"
 	}
 
 	if strings.Contains(p.ParameterType, `::`) {
@@ -238,6 +240,7 @@ func emitParametersCABI2CppForwarding(params []CppParameter) (preamble string, f
 			// Don't use RenderTypeCabi() since it canonicalizes some int types for CABI
 			castSrc := p.ParameterName
 			castType := p.RenderTypeQtCpp()
+
 			if p.ByRef { // e.g. QDataStream::operator>>() overloads
 				castSrc = "*" + castSrc
 			}
@@ -465,13 +468,9 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 		ret.WriteString(`#include <` + ref + ">\n")
 	}
 
-	ret.WriteString(`#include "gen_` + filename + `"
-#include "` + filename + `"
-
-`)
-
+	ret.WriteString(`#include "` + filename + "\"\n\n")
+	ret.WriteString(`#include "gen_` + filename + "\"\n")
 	ret.WriteString(`
-
 extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
 }

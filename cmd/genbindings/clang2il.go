@@ -633,6 +633,14 @@ func tokenizeMultipleParameters(p string) []string {
 
 func parseSingleTypeString(p string) CppParameter {
 
+	if strings.HasPrefix(p, "QFlag<") {
+		return CppParameter{ParameterType: "int"}
+	}
+
+	if strings.Contains(p, "(*)") {
+		return CppParameter{ParameterType: "uintptr"} // Function pointer, nonrepresentible
+	}
+
 	tokens := strings.Split(strings.TrimSpace(p), " ")
 	insert := CppParameter{}
 	for _, tok := range tokens {
@@ -647,6 +655,9 @@ func parseSingleTypeString(p string) CppParameter {
 
 		} else if tok == "&" { // U+0026
 			insert.ByRef = true
+
+		} else if tok == "signed" {
+			// continue
 
 		} else if tok == "*" {
 			insert.Pointer = true

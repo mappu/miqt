@@ -116,6 +116,7 @@ func (p CppParameter) IntType() bool {
 		"longlong", "ulonglong", "qlonglong", "qulonglong", "qint64", "quint64", "int64_t", "uint64_t", "long long", "unsigned long long",
 		"qintptr", "quintptr", "uintptr_t", "intptr_t",
 		"qsizetype", "size_t",
+		"qptrdiff", "ptrdiff_t",
 		"double", "float", "qreal":
 		return true
 
@@ -232,6 +233,16 @@ func (nm CppMethod) SafeMethodName() string {
 	return tmp
 }
 
+type CppEnumEntry struct {
+	EntryName  string
+	EntryValue string
+}
+
+type CppEnum struct {
+	EnumName string
+	Entries  []CppEnumEntry
+}
+
 type CppClass struct {
 	ClassName string
 	Abstract  bool
@@ -243,6 +254,7 @@ type CppClass struct {
 
 	ChildTypedefs  []CppTypedef
 	ChildClassdefs []CppClass
+	ChildEnums     []CppEnum
 }
 
 type CppTypedef struct {
@@ -253,6 +265,7 @@ type CppTypedef struct {
 type CppParsedHeader struct {
 	Filename string
 	Typedefs []CppTypedef
+	Enums    []CppEnum
 	Classes  []CppClass
 }
 

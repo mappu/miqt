@@ -67,6 +67,10 @@ func AllowClass(className string) bool {
 		return false
 	}
 
+	if strings.Contains(className, "QPrivateSignal") {
+		return false
+	}
+
 	switch className {
 	case
 		"QTextStreamManipulator", // Only seems to contain garbage methods
@@ -101,6 +105,12 @@ func CheckComplexity(p CppParameter) error {
 	if strings.HasPrefix(p.ParameterType, "StringResult<") {
 		return ErrTooComplex // e.g. qcborstreamreader.h
 	}
+	if strings.HasPrefix(p.ParameterType, "std::initializer") {
+		return ErrTooComplex // e.g. qcborarray.h
+	}
+	if strings.Contains(p.ParameterType, `::QPrivate`) {
+		return ErrTooComplex // e.g. QAbstractItemModel::QPrivateSignal
+	}
 
 	switch p.ParameterType {
 	case
@@ -117,6 +127,8 @@ func CheckComplexity(p CppParameter) error {
 		"char16_t",                        // e.g. QChar() constructor overload, just unnecessary
 		"char32_t",                        // e.g. QDebug().operator<< overload, unnecessary
 		"wchar_t",                         // e.g. qstringview.h overloads, unnecessary
+		"FILE",                            // e.g. qfile.h constructors
+		"qInternalCallback",               // e.g. qnamespace.h
 		"picture_io_handler",              // e.g. QPictureIO::DefineIOHandler callback function
 		"QPlatformNativeInterface",        // e.g. QGuiApplication::platformNativeInterface(). Private type, could probably expose as uintptr. n.b. Changes in Qt6
 		"QFunctionPointer",                // e.g. QGuiApplication_PlatformFunction
