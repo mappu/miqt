@@ -93,20 +93,11 @@ func parseHeader(topLevel []interface{}) (*CppParsedHeader, error) {
 			// Should be treated like a typedef
 
 		case "TypedefDecl":
-			// Must have a name
-			nodename, ok := node["name"].(string)
-			if !ok {
-				return nil, errors.New("node has no name")
+			td, err := processTypedef(node, "")
+			if err != nil {
+				return nil, fmt.Errorf("processTypedef: %w", err)
 			}
-
-			if typ, ok := node["type"].(map[string]interface{}); ok {
-				if qualType, ok := typ["qualType"].(string); ok {
-					ret.Typedefs = append(ret.Typedefs, CppTypedef{
-						Alias:          nodename,
-						UnderlyingType: qualType,
-					})
-				}
-			}
+			ret.Typedefs = append(ret.Typedefs, td)
 
 		case "CXXMethodDecl":
 			// A C++ class method implementation directly in the header
@@ -118,6 +109,25 @@ func parseHeader(topLevel []interface{}) (*CppParsedHeader, error) {
 	}
 
 	return &ret, nil // done
+}
+
+func processTypedef(node map[string]interface{}, addNamePrefix string) (CppTypedef, error) {
+	// Must have a name
+	nodename, ok := node["name"].(string)
+	if !ok {
+		return CppTypedef{}, errors.New("node has no name")
+	}
+
+	if typ, ok := node["type"].(map[string]interface{}); ok {
+		if qualType, ok := typ["qualType"].(string); ok {
+			return CppTypedef{
+				Alias:          addNamePrefix + nodename,
+				UnderlyingType: parseSingleTypeString(qualType),
+			}, nil
+		}
+	}
+
+	return CppTypedef{}, errors.New("processTypedef: ???")
 }
 
 func processClassType(node map[string]interface{}, addNamePrefix string) (CppClass, error) {
@@ -256,6 +266,14 @@ nextMethod:
 			}
 
 			ret.ChildClassdefs = append(ret.ChildClassdefs, child)
+
+		case "TypedefDecl":
+			// Child class typedef
+			td, err := processTypedef(node, nodename+"::")
+			if err != nil {
+				panic(fmt.Errorf("processTypedef: %w", err)) // A real problem
+			}
+			ret.ChildTypedefs = append(ret.ChildTypedefs, td)
 
 		case "CXXConstructorDecl":
 

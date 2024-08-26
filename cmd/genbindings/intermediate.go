@@ -185,6 +185,7 @@ type CppClass struct {
 	Props     []CppProperty
 	CanDelete bool
 
+	ChildTypedefs  []CppTypedef
 	ChildClassdefs []CppClass
 }
 
