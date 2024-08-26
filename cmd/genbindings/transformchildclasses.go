@@ -23,9 +23,14 @@ func takeChildren(c *CppClass) []CppClass {
 func astTransformChildClasses(parsed *CppParsedHeader) {
 	var taken []CppClass
 
-	for i, _ := range parsed.Classes {
+	for i, c := range parsed.Classes {
 		taken = append(taken, takeChildren(&parsed.Classes[i])...)
+
+		// Also lift all child typedefs and enums
+		parsed.Typedefs = append(parsed.Typedefs, c.ChildTypedefs...)
+		parsed.Enums = append(parsed.Enums, c.ChildEnums...)
 	}
 
 	parsed.Classes = append(parsed.Classes, taken...)
+
 }

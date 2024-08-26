@@ -548,7 +548,7 @@ func parseMethod(node map[string]interface{}, mm *CppMethod) error {
 	return nil
 }
 
-// parseTypeString converts a string like
+// parseTypeString converts a function/method type string such as
 // - `QString (const char *, const char *, int)`
 // - `void (const QKeySequence \u0026)`
 // into its (A) return type and (B) separate parameter types.

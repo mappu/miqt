@@ -7,10 +7,12 @@ import (
 
 var (
 	KnownClassnames map[string]struct{} // Entries of the form QFoo::Bar if it is an inner class
+	KnownTypedefs   map[string]CppTypedef
 )
 
 func init() {
 	KnownClassnames = make(map[string]struct{})
+	KnownTypedefs = make(map[string]CppTypedef)
 }
 
 type CppParameter struct {
@@ -21,6 +23,20 @@ type CppParameter struct {
 	Pointer       bool
 	ByRef         bool
 	Optional      bool
+}
+
+func (p *CppParameter) AssignAlias(newType string) {
+	if p.TypeAlias == "" {
+		p.TypeAlias = p.ParameterType // Overwrite once only, at the earliest base type
+	}
+	p.ParameterType = newType
+}
+
+func (p *CppParameter) CopyWithAlias(alias CppParameter) CppParameter {
+	ret := *p // copy
+	ret.ParameterName = alias.ParameterName
+	ret.TypeAlias = alias.ParameterType
+	return ret
 }
 
 func (p *CppParameter) UnderlyingType() string {
@@ -221,7 +237,7 @@ type CppClass struct {
 
 type CppTypedef struct {
 	Alias          string
-	UnderlyingType string
+	UnderlyingType CppParameter
 }
 
 type CppParsedHeader struct {

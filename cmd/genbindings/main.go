@@ -141,6 +141,10 @@ func main() {
 		for _, c := range parsed.Classes {
 			KnownClassnames[c.ClassName] = struct{}{}
 		}
+		for _, td := range parsed.Typedefs {
+			KnownTypedefs[td.Alias] = td // copy
+		}
+
 		processHeaders = append(processHeaders, parsed)
 	}
 
@@ -151,6 +155,10 @@ func main() {
 	for _, parsed := range processHeaders {
 
 		log.Printf("Processing %q...", parsed.Filename)
+
+		// More AST transforms on our IL
+		astTransformTypedefs(parsed)
+
 		{
 			// Save the IL file for debug inspection
 			jb, err := json.MarshalIndent(parsed, "", "\t")
