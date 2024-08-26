@@ -11,6 +11,10 @@ import (
 	"strings"
 )
 
+func cacheFilePath(inputHeader string) string {
+	return filepath.Join("cachedir", strings.Replace(inputHeader, `/`, `__`, -1)+".json")
+}
+
 func main() {
 	ctx := context.Background()
 
@@ -78,10 +82,12 @@ func main() {
 		log.Printf("Removed %d file(s).", cleaned)
 	}
 
+	var processHeaders []*CppParsedHeader
+
 	for _, inputHeader := range includeFiles {
 
 		// If we have a cached clang AST, use that instead
-		cacheFile := filepath.Join("cachedir", strings.Replace(inputHeader, `/`, `__`, -1)+".json")
+		cacheFile := cacheFilePath(inputHeader)
 		astJson, err := ioutil.ReadFile(cacheFile)
 		var astInner []interface{} = nil
 		if err != nil {
@@ -123,11 +129,23 @@ func main() {
 			panic(err)
 		}
 
+		parsed.Filename = inputHeader // Stash
+
 		// AST transforms on our IL
 		astTransformChildClasses(parsed) // must be first
 		astTransformOptional(parsed)
 		astTransformOverloads(parsed)
 
+		processHeaders = append(processHeaders, parsed)
+	}
+
+	//
+	// PASS 2
+	//
+
+	for _, parsed := range processHeaders {
+
+		log.Printf("Processing %q...", parsed.Filename)
 		{
 			// Save the IL file for debug inspection
 			jb, err := json.MarshalIndent(parsed, "", "\t")
@@ -135,7 +153,7 @@ func main() {
 				panic(err)
 			}
 
-			err = ioutil.WriteFile(cacheFile+".ours.json", jb, 0644)
+			err = ioutil.WriteFile(cacheFilePath(parsed.Filename)+".ours.json", jb, 0644)
 			if err != nil {
 				panic(err)
 			}
@@ -148,9 +166,9 @@ func main() {
 		}
 
 		// Emit 3 code files from the intermediate format
-		outputName := filepath.Join(*outDir, "gen_"+strings.TrimSuffix(filepath.Base(inputHeader), `.h`))
+		outputName := filepath.Join(*outDir, "gen_"+strings.TrimSuffix(filepath.Base(parsed.Filename), `.h`))
 
-		goSrc, err := emitGo(parsed, filepath.Base(inputHeader))
+		goSrc, err := emitGo(parsed, filepath.Base(parsed.Filename))
 		if err != nil {
 			panic(err)
 		}
@@ -160,7 +178,7 @@ func main() {
 			panic(err)
 		}
 
-		bindingCppSrc, err := emitBindingCpp(parsed, filepath.Base(inputHeader))
+		bindingCppSrc, err := emitBindingCpp(parsed, filepath.Base(parsed.Filename))
 		if err != nil {
 			panic(err)
 		}
@@ -170,7 +188,7 @@ func main() {
 			panic(err)
 		}
 
-		bindingHSrc, err := emitBindingHeader(parsed, filepath.Base(inputHeader))
+		bindingHSrc, err := emitBindingHeader(parsed, filepath.Base(parsed.Filename))
 		if err != nil {
 			panic(err)
 		}
@@ -181,8 +199,6 @@ func main() {
 		}
 
 		// Done
-
-		log.Printf("Processing %q completed", inputHeader)
 
 	}
 

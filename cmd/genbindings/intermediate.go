@@ -194,6 +194,7 @@ type CppTypedef struct {
 }
 
 type CppParsedHeader struct {
+	Filename string
 	Typedefs []CppTypedef
 	Classes  []CppClass
 }
