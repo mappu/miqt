@@ -273,3 +273,9 @@ func (c CppParsedHeader) Empty() bool {
 	return len(c.Typedefs) == 0 &&
 		len(c.Classes) == 0
 }
+
+func (c *CppParsedHeader) AddContentFrom(other *CppParsedHeader) {
+	c.Classes = append(c.Classes, other.Classes...)
+	c.Enums = append(c.Enums, other.Enums...)
+	c.Typedefs = append(c.Typedefs, other.Typedefs...)
+}

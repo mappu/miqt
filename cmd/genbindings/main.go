@@ -124,7 +124,7 @@ func main() {
 		}
 
 		// Convert it to our intermediate format
-		parsed, err := parseHeader(astInner)
+		parsed, err := parseHeader(astInner, "")
 		if err != nil {
 			panic(err)
 		}

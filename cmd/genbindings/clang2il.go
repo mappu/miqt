@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-func parseHeader(topLevel []interface{}) (*CppParsedHeader, error) {
+func parseHeader(topLevel []interface{}, addNamePrefix string) (*CppParsedHeader, error) {
 
 	var ret CppParsedHeader
 
@@ -28,7 +28,7 @@ func parseHeader(topLevel []interface{}) (*CppParsedHeader, error) {
 		case "CXXRecordDecl":
 
 			// Process the inner class definition
-			obj, err := processClassType(node, "")
+			obj, err := processClassType(node, addNamePrefix)
 			if err != nil {
 				if errors.Is(err, ErrNoContent) {
 					log.Printf("-> Skipping (%v)\n", err)
@@ -59,7 +59,30 @@ func parseHeader(topLevel []interface{}) (*CppParsedHeader, error) {
 			// ignore
 
 		case "NamespaceDecl":
-			// ignore
+			// Parse everything inside the namespace with prefix, as if it is
+			// a whole separate file
+			// Then copy the parsed elements back into our own file
+			namespace, ok := node["name"].(string)
+			if !ok {
+				panic("NamespaceDecl missing name")
+			}
+
+			namespaceInner, ok := node["inner"].([]interface{})
+			if !ok {
+				// A namespace declaration with no inner content means that, for
+				// the rest of this whole file, we are in this namespace
+				// Update our own `addNamePrefix` accordingly
+				addNamePrefix += namespace + "::"
+
+			} else {
+
+				contents, err := parseHeader(namespaceInner, namespace+"::")
+				if err != nil {
+					panic(err)
+				}
+
+				ret.AddContentFrom(contents)
+			}
 
 		case "FunctionDecl":
 			// TODO
@@ -84,16 +107,15 @@ func parseHeader(topLevel []interface{}) (*CppParsedHeader, error) {
 			// TODO e.g. qfuturewatcher.h
 			// Probably can't be supported in the Go binding
 
-		case "TypeAliasDecl":
-			// TODO e.g. qglobal.h
-			// Should be treated like a typedef
-
-		case "UsingDirectiveDecl":
-			// TODO e.g. qtextstream.h
+		case "TypeAliasDecl", // qglobal.h
+			"UsingDirectiveDecl", // qtextstream.h
+			"UsingDecl",          // qglobal.h
+			"UsingShadowDecl":    // global.h
+			// TODO e.g.
 			// Should be treated like a typedef
 
 		case "TypedefDecl":
-			td, err := processTypedef(node, "")
+			td, err := processTypedef(node, addNamePrefix)
 			if err != nil {
 				return nil, fmt.Errorf("processTypedef: %w", err)
 			}
@@ -102,6 +124,9 @@ func parseHeader(topLevel []interface{}) (*CppParsedHeader, error) {
 		case "CXXMethodDecl":
 			// A C++ class method implementation directly in the header
 			// Skip over these
+
+		case "FullComment":
+			// Safe to skip
 
 		default:
 			return nil, fmt.Errorf("missing handling for clang ast node type %q", kind)
