@@ -158,6 +158,7 @@ func main() {
 
 		// More AST transforms on our IL
 		astTransformTypedefs(parsed)
+		astTransformBlocklist(parsed) // Must happen after typedef transformation
 
 		{
 			// Save the IL file for debug inspection

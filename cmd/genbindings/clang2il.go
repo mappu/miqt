@@ -575,9 +575,6 @@ func parseTypeString(typeString string) (CppParameter, []CppParameter, error) {
 	if returnType.IntType() && returnType.ByRef {
 		return CppParameter{}, nil, ErrTooComplex // e.g. QSize::rheight()
 	}
-	if err := CheckComplexity(returnType); err != nil {
-		return CppParameter{}, nil, err
-	}
 
 	inner := typeString[opos+1 : epos]
 
@@ -593,10 +590,6 @@ func parseTypeString(typeString string) (CppParameter, []CppParameter, error) {
 	for _, p := range params {
 
 		insert := parseSingleTypeString(p)
-
-		if err := CheckComplexity(insert); err != nil {
-			return CppParameter{}, nil, err
-		}
 
 		if insert.ParameterType != "" {
 			ret = append(ret, insert)
