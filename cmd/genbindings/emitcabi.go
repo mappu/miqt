@@ -39,7 +39,7 @@ func (p CppParameter) RenderTypeCabi() string {
 		ret = "double"
 	case "qintptr":
 		ret = "intptr_t"
-	case "quintptr":
+	case "quintptr", "uintptr":
 		ret = "uintptr_t"
 	case "qptrdiff":
 		ret = "ptrdiff_t"

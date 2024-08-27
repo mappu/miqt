@@ -105,6 +105,9 @@ func CheckComplexity(p CppParameter) error {
 	if strings.HasPrefix(p.ParameterType, "StringResult<") {
 		return ErrTooComplex // e.g. qcborstreamreader.h
 	}
+	if strings.HasPrefix(p.ParameterType, "QGenericMatrix<") {
+		return ErrTooComplex // e.g. qmatrix4x4.h
+	}
 	if strings.HasPrefix(p.ParameterType, "std::initializer") {
 		return ErrTooComplex // e.g. qcborarray.h
 	}
