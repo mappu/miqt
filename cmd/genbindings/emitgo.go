@@ -85,12 +85,11 @@ func (p CppParameter) RenderTypeGo() string {
 			ret += "int"
 
 		} else if strings.Contains(p.ParameterType, `::`) {
-			if _, ok := KnownClassnames[p.ParameterType]; ok {
+			if p.IsEnum() {
+				ret += "uintptr"
+			} else {
 				// Inner class
 				ret += cabiClassName(p.ParameterType)
-			} else {
-				// Enum
-				ret += "uintptr"
 			}
 		} else {
 			// Do not transform this type

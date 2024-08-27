@@ -47,6 +47,12 @@ func (p *CppParameter) CopyWithAlias(alias CppParameter) CppParameter {
 	ret := *p // copy
 	ret.ParameterName = alias.ParameterName
 	ret.TypeAlias = alias.ParameterType
+
+	// If this was a pointer to a typedef'd type, or a typedef of a pointer type, we need to preserve that
+	// WARNING: This can't work for double indirection
+	ret.Const = ret.Const || alias.Const
+	ret.Pointer = ret.Pointer || alias.Pointer
+	ret.ByRef = ret.ByRef || alias.ByRef
 	return ret
 }
 
@@ -76,6 +82,21 @@ func (p CppParameter) QtClassType() bool {
 	return true
 }
 
+func (p CppParameter) IsEnum() bool {
+	if strings.Contains(p.ParameterType, `::`) {
+		if _, ok := KnownClassnames[p.ParameterType]; ok {
+			// It's an inner class
+			return false
+		} else {
+			// Enum
+			return true
+		}
+	}
+
+	// Top-level enums aren't supported yet
+	return false
+}
+
 func (p CppParameter) QListOf() (CppParameter, bool) {
 	if strings.HasPrefix(p.ParameterType, "QList<") && strings.HasSuffix(p.ParameterType, `>`) {
 		return parseSingleTypeString(p.ParameterType[6 : len(p.ParameterType)-1]), true
@@ -103,7 +124,7 @@ func (p CppParameter) QSetOf() bool {
 
 func (p CppParameter) IntType() bool {
 
-	if strings.Contains(p.ParameterType, `::`) {
+	if p.IsEnum() {
 		return true
 	}
 

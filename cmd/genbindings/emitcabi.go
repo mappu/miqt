@@ -49,12 +49,11 @@ func (p CppParameter) RenderTypeCabi() string {
 		ret = "int"
 
 	} else if strings.Contains(p.ParameterType, `::`) {
-		if _, ok := KnownClassnames[p.ParameterType]; ok {
+		if p.IsEnum() {
+			ret = "uintptr_t"
+		} else {
 			// Inner class
 			ret = cabiClassName(p.ParameterType)
-		} else {
-			// Enum
-			ret = "uintptr_t"
 		}
 	}
 
@@ -602,6 +601,12 @@ extern "C" {
 
 			} else if m.ReturnType.Const {
 				shouldReturn += "(" + emitReturnTypeCabi(m.ReturnType) + ") "
+
+			} else if m.ReturnType.IsEnum() {
+				// Needs an explicit uintptr cast
+				shouldReturn = m.ReturnType.RenderTypeQtCpp() + " ret = "
+				afterCall += "\treturn static_cast<uintptr_t>(ret);\n"
+
 			}
 
 			preamble, forwarding := emitParametersCABI2CppForwarding(m.Parameters)
