@@ -651,10 +651,6 @@ func tokenizeMultipleParameters(p string) []string {
 
 func parseSingleTypeString(p string) CppParameter {
 
-	if strings.Contains(p, "(*)") {
-		return CppParameter{ParameterType: "uintptr"} // Function pointer, nonrepresentible
-	}
-
 	tokens := strings.Split(strings.TrimSpace(p), " ")
 	insert := CppParameter{}
 	for _, tok := range tokens {

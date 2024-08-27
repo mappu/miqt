@@ -102,6 +102,9 @@ func CheckComplexity(p CppParameter) error {
 		}
 	}
 
+	if strings.Contains(p.ParameterType, "(*)") { // Function pointer.
+		return ErrTooComplex // e.g. QAccessible_InstallFactory
+	}
 	if strings.HasPrefix(p.ParameterType, "StringResult<") {
 		return ErrTooComplex // e.g. qcborstreamreader.h
 	}
@@ -110,6 +113,9 @@ func CheckComplexity(p CppParameter) error {
 	}
 	if strings.HasPrefix(p.ParameterType, "std::initializer") {
 		return ErrTooComplex // e.g. qcborarray.h
+	}
+	if strings.Contains(p.ParameterType, `::reverse_iterator`) || strings.Contains(p.ParameterType, `::const_reverse_iterator`) {
+		return ErrTooComplex // e.g. qbytearray.h
 	}
 	if strings.Contains(p.ParameterType, `::QPrivate`) {
 		return ErrTooComplex // e.g. QAbstractItemModel::QPrivateSignal
@@ -126,6 +132,7 @@ func CheckComplexity(p CppParameter) error {
 		"void **",                         // e.g. qobjectdefs.h QMetaObject->Activate()
 		"QGraphicsItem **",                // e.g. QGraphicsItem::IsBlockedByModalPanel() overload
 		"char *&",                         // e.g. QDataStream.operator<<()
+		"std::string",                     // e.g. QByteArray->toStdString(). There are QString overloads already
 		"qfloat16",                        // e.g. QDataStream - there is no such half-float type in C or Go
 		"char16_t",                        // e.g. QChar() constructor overload, just unnecessary
 		"char32_t",                        // e.g. QDebug().operator<< overload, unnecessary
