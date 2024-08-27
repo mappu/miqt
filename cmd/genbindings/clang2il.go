@@ -626,10 +626,6 @@ func tokenizeMultipleParameters(p string) []string {
 
 func parseSingleTypeString(p string) CppParameter {
 
-	if strings.HasPrefix(p, "QFlag<") {
-		return CppParameter{ParameterType: "int"}
-	}
-
 	if strings.Contains(p, "(*)") {
 		return CppParameter{ParameterType: "uintptr"} // Function pointer, nonrepresentible
 	}

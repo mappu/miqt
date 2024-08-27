@@ -81,7 +81,10 @@ func (p CppParameter) RenderTypeGo() string {
 		ret += "uintptr"
 	default:
 
-		if strings.Contains(p.ParameterType, `::`) {
+		if strings.HasPrefix(p.ParameterType, `QFlags<`) {
+			ret += "int"
+
+		} else if strings.Contains(p.ParameterType, `::`) {
 			if _, ok := KnownClassnames[p.ParameterType]; ok {
 				// Inner class
 				ret += cabiClassName(p.ParameterType)

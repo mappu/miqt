@@ -45,7 +45,10 @@ func (p CppParameter) RenderTypeCabi() string {
 		ret = "ptrdiff_t"
 	}
 
-	if strings.Contains(p.ParameterType, `::`) {
+	if strings.HasPrefix(p.ParameterType, `QFlags<`) {
+		ret = "int"
+
+	} else if strings.Contains(p.ParameterType, `::`) {
 		if _, ok := KnownClassnames[p.ParameterType]; ok {
 			// Inner class
 			ret = cabiClassName(p.ParameterType)
