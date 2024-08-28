@@ -285,6 +285,7 @@ nextMethod:
 			child, err := processClassType(node, nodename+"::")
 			if err != nil {
 				if errors.Is(err, ErrNoContent) {
+					log.Printf("-> Skipping inner class because: %v", err)
 					continue
 				}
 				panic(err) // A real problem
