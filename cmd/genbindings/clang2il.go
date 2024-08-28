@@ -491,7 +491,7 @@ func parseMethod(node map[string]interface{}, mm *CppMethod) error {
 			// If anything here is too complicated, skip the whole method
 
 			var err error = nil
-			mm.ReturnType, mm.Parameters, err = parseTypeString(qualType)
+			mm.ReturnType, mm.Parameters, mm.IsConst, err = parseTypeString(qualType)
 			if err != nil {
 				return err
 			}
@@ -575,15 +575,15 @@ func parseMethod(node map[string]interface{}, mm *CppMethod) error {
 }
 
 // parseTypeString converts a function/method type string such as
-// - `QString (const char *, const char *, int)`
+// - `QString (const char *, const char *, int) const`
 // - `void (const QKeySequence \u0026)`
 // into its (A) return type and (B) separate parameter types.
 // These clang strings never contain the parameter's name, so the names here are
 // not filled in.
-func parseTypeString(typeString string) (CppParameter, []CppParameter, error) {
+func parseTypeString(typeString string) (CppParameter, []CppParameter, bool, error) {
 
 	if strings.Contains(typeString, `&&`) { // TODO Rvalue references
-		return CppParameter{}, nil, ErrTooComplex
+		return CppParameter{}, nil, false, ErrTooComplex
 	}
 
 	// Cut to exterior-most (, ) pair
@@ -591,7 +591,12 @@ func parseTypeString(typeString string) (CppParameter, []CppParameter, error) {
 	epos := strings.LastIndex(typeString, `)`)
 
 	if opos == -1 || epos == -1 {
-		return CppParameter{}, nil, fmt.Errorf("Type string %q missing brackets", typeString)
+		return CppParameter{}, nil, false, fmt.Errorf("Type string %q missing brackets", typeString)
+	}
+
+	isConst := false
+	if strings.Contains(typeString[epos:], `const`) {
+		isConst = true
 	}
 
 	returnType := parseSingleTypeString(strings.TrimSpace(typeString[0:opos]))
@@ -599,14 +604,14 @@ func parseTypeString(typeString string) (CppParameter, []CppParameter, error) {
 	// Skip functions that return ints-by-reference since the ergonomics don't
 	// go through the binding
 	if returnType.IntType() && returnType.ByRef {
-		return CppParameter{}, nil, ErrTooComplex // e.g. QSize::rheight()
+		return CppParameter{}, nil, false, ErrTooComplex // e.g. QSize::rheight()
 	}
 
 	inner := typeString[opos+1 : epos]
 
 	// Should be no more brackets
 	if strings.ContainsAny(inner, `()`) {
-		return CppParameter{}, nil, ErrTooComplex
+		return CppParameter{}, nil, false, ErrTooComplex
 	}
 
 	// Parameters are separated by commas and nesting can not be possible
@@ -622,7 +627,7 @@ func parseTypeString(typeString string) (CppParameter, []CppParameter, error) {
 		}
 	}
 
-	return returnType, ret, nil
+	return returnType, ret, isConst, nil
 }
 
 func tokenizeMultipleParameters(p string) []string {

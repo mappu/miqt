@@ -159,6 +159,7 @@ type CppMethod struct {
 	Parameters         []CppParameter
 	IsStatic           bool
 	IsSignal           bool
+	IsConst            bool
 	HasHiddenParams    bool // Set to true if there is an overload with more parameters
 }
 

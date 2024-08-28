@@ -600,7 +600,13 @@ extern "C" {
 				}
 
 			} else if m.ReturnType.QtClassType() && !m.ReturnType.Pointer {
-				shouldReturn = m.ReturnType.ParameterType + " ret = "
+				// Still need const/nonconst in order to properly call function overloads that are only disambiguated by const-ness
+				// e.g. QCborArray::begin() can return an Iterator or a ConstIterator
+				if m.IsConst {
+					shouldReturn = "const " + m.ReturnType.ParameterType + " ret = "
+				} else {
+					shouldReturn = m.ReturnType.ParameterType + " ret = "
+				}
 				afterCall = "\t// Copy-construct value returned type into heap-allocated copy\n"
 				afterCall += "\treturn static_cast<" + m.ReturnType.ParameterType + "*>(new " + m.ReturnType.ParameterType + "(ret));\n"
 
