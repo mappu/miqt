@@ -65,21 +65,13 @@ func (p *CppParameter) UnderlyingType() string {
 }
 
 func (p CppParameter) QtClassType() bool {
-	if p.ParameterType[0] != 'Q' {
-		return false
+
+	// Maybe if it's an inner class
+	if _, ok := KnownClassnames[p.ParameterType]; ok {
+		return true
 	}
 
-	if strings.Contains(p.ParameterType, `::`) {
-		// Maybe if it's an inner class
-		if _, ok := KnownClassnames[p.ParameterType]; ok {
-			return true
-		}
-		// Int type
-		return false
-	}
-
-	// Passed all conditions
-	return true
+	return false
 }
 
 func (p CppParameter) IsEnum() bool {

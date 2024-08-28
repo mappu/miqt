@@ -59,9 +59,6 @@ func ImportHeaderForClass(className string) bool {
 }
 
 func AllowClass(className string) bool {
-	if className[0] != 'Q' {
-		return false
-	}
 
 	if strings.HasSuffix(className, "Private") {
 		return false
