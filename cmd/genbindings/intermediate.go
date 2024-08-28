@@ -32,6 +32,7 @@ type CppParameter struct {
 	TypeAlias     string // If we rewrote QStringList->QList<String>, this field contains the original QStringList
 	Const         bool
 	Pointer       bool
+	PointerCount  int
 	ByRef         bool
 	Optional      bool
 }
@@ -52,6 +53,7 @@ func (p *CppParameter) CopyWithAlias(alias CppParameter) CppParameter {
 	// WARNING: This can't work for double indirection
 	ret.Const = ret.Const || alias.Const
 	ret.Pointer = ret.Pointer || alias.Pointer
+	ret.PointerCount += alias.PointerCount
 	ret.ByRef = ret.ByRef || alias.ByRef
 	return ret
 }
@@ -168,7 +170,9 @@ func IsArgcArgv(params []CppParameter, pos int) bool {
 		params[pos].ParameterType == "int" &&
 		params[pos].ByRef &&
 		params[pos+1].ParameterName == "argv" &&
-		params[pos+1].ParameterType == "char **")
+		params[pos+1].ParameterType == "char") &&
+		params[pos+1].Pointer &&
+		params[pos+1].PointerCount == 2
 }
 
 func IsReceiverMethod(params []CppParameter, pos int) bool {

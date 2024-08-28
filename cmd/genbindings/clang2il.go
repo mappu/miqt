@@ -707,6 +707,7 @@ func parseSingleTypeString(p string) CppParameter {
 
 		} else if tok == "*" {
 			insert.Pointer = true
+			insert.PointerCount++
 
 		} else if len(tok) > 4 && strings.HasSuffix(tok, "List") {
 			// Classes ending in --List are usually better represented as a QList

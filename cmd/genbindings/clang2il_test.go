@@ -81,3 +81,18 @@ func TestParseInnerListTypes(t *testing.T) {
 		t.Errorf("expected QWidget, got %q", tok.ParameterType)
 	}
 }
+
+func TestPointerDepth(t *testing.T) {
+	for _, testCase := range []string{`char**`, `char * *`} {
+		l := parseSingleTypeString(testCase)
+		if l.ParameterType != "char" {
+			t.Error("expected char")
+		}
+		if !l.Pointer {
+			t.Error("expected pointer")
+		}
+		if l.PointerCount != 2 {
+			t.Errorf("expected pointerCount=2, got %d", l.PointerCount)
+		}
+	}
+}

@@ -57,8 +57,11 @@ func (p CppParameter) RenderTypeCabi() string {
 		}
 	}
 
-	if p.Pointer || p.ByRef {
+	if p.ByRef {
 		ret += "*"
+	}
+	if p.Pointer {
+		ret += strings.Repeat("*", p.PointerCount)
 	}
 
 	return ret // ignore const
@@ -91,7 +94,7 @@ func (p CppParameter) RenderTypeQtCpp() string {
 		cppType = "const " + cppType
 	}
 	if p.Pointer {
-		cppType += "*"
+		cppType += strings.Repeat("*", p.PointerCount)
 	}
 	if p.ByRef {
 		cppType += "&"
