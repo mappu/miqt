@@ -17,10 +17,7 @@ func TestTransformTypedefs(t *testing.T) {
 
 						CppMethod{
 							Parameters: []CppParameter{
-								CppParameter{
-									ParameterName: "foo",
-									ParameterType: typeName,
-								},
+								parseSingleTypeString(typeName),
 							},
 							IsStatic: true,
 						},

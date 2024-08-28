@@ -166,6 +166,12 @@ func processClassType(node map[string]interface{}, addNamePrefix string) (CppCla
 		return CppClass{}, ErrNoContent // errors.New("node has no name")
 	}
 	nodename = addNamePrefix + nodename
+
+	// Hacks:
+	if nodename == "FromBase64Result" {
+		nodename = "QByteArray::FromBase64Result"
+	}
+
 	ret.ClassName = nodename
 
 	log.Printf("-> Processing class %q...\n", nodename)

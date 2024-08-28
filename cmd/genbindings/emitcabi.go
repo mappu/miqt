@@ -594,6 +594,7 @@ extern "C" {
 					nonConst.Const = false
 					nonConst.ByRef = false
 					nonConst.Pointer = true
+					nonConst.PointerCount = 1
 					afterCall += "\treturn const_cast<" + nonConst.RenderTypeQtCpp() + ">(&ret);\n"
 				} else {
 					afterCall += "\treturn &ret;\n"
