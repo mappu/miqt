@@ -649,9 +649,44 @@ func tokenizeMultipleParameters(p string) []string {
 	return tokens
 }
 
+func tokenizeSingleParameter(p string) []string {
+	// Tokenize into top-level strings
+	templateDepth := 0
+	tokens := []string{}
+	wip := ""
+	p = strings.TrimSpace(p)
+	for _, c := range p {
+		if c == '<' || c == '(' {
+			wip += string(c)
+			templateDepth++
+		} else if c == '>' || c == ')' {
+			wip += string(c)
+			templateDepth--
+		} else if (c == '*' || c == '&') && templateDepth == 0 {
+			if len(wip) > 0 {
+				tokens = append(tokens, wip)
+			}
+			tokens = append(tokens, string(c))
+			wip = ""
+		} else if c == ' ' && templateDepth == 0 {
+			if len(wip) > 0 {
+				tokens = append(tokens, wip)
+			}
+			wip = ""
+		} else {
+			wip += string(c)
+		}
+	}
+
+	if len(wip) > 0 {
+		tokens = append(tokens, wip)
+	}
+
+	return tokens
+}
 func parseSingleTypeString(p string) CppParameter {
 
-	tokens := strings.Split(strings.TrimSpace(p), " ")
+	tokens := tokenizeSingleParameter(p) // strings.Split(strings.TrimSpace(p), " ")
 	insert := CppParameter{}
 	for _, tok := range tokens {
 
