@@ -666,16 +666,14 @@ func parseSingleTypeString(p string) CppParameter {
 
 	isSigned := false
 
-	tokens := tokenizeSingleParameter(p) // strings.Split(strings.TrimSpace(p), " ")
+	tokens := tokenizeSingleParameter(p)
 	insert := CppParameter{}
 	for _, tok := range tokens {
 
 		if tok == "" {
 			continue // extra space
 
-		} else if tok == "const" || tok == "*const" {
-			// *const happens for QPixmap, clang reports `const char *const *` which
-			// isn't even valid syntax
+		} else if tok == "const" {
 			insert.Const = true
 
 		} else if tok == "&" { // U+0026
