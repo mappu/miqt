@@ -112,6 +112,9 @@ func (p CppParameter) parameterTypeCgo() string {
 	if strings.HasPrefix(tmp, "unsigned ") {
 		tmp = "u" + tmp[9:] // Cgo uses uchar, uint instead of full name
 	}
+	if strings.HasPrefix(tmp, "signed ") {
+		tmp = "s" + tmp[7:] // Cgo uses schar
+	}
 	tmp = strings.Replace(tmp, `long long`, `longlong`, -1)
 	return "C." + strings.Replace(tmp, " ", "_", -1)
 }

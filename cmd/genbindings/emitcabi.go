@@ -64,11 +64,10 @@ func (p CppParameter) RenderTypeCabi() string {
 		}
 	}
 
-	if p.ByRef {
-		ret += "*"
-	}
 	if p.Pointer {
 		ret += strings.Repeat("*", p.PointerCount)
+	} else if p.ByRef {
+		ret += "*"
 	}
 
 	return ret // ignore const
@@ -242,6 +241,8 @@ func emitParametersCABI2CppForwarding(params []CppParameter) (preamble string, f
 				preamble += "\tfor(size_t i = 0; i < " + p.ParameterName + "_len; ++i) {\n"
 				if listType.QtClassType() && !listType.Pointer {
 					preamble += "\t\t" + p.ParameterName + "_QList.push_back(*(" + p.ParameterName + "[i]));\n"
+				} else if listType.IsFlagType() {
+					preamble += "\t\t" + p.ParameterName + "_QList.push_back(static_cast<" + listType.RenderTypeQtCpp() + ">(" + p.ParameterName + "[i]));\n"
 				} else {
 					preamble += "\t\t" + p.ParameterName + "_QList.push_back(" + p.ParameterName + "[i]);\n"
 				}
@@ -277,10 +278,18 @@ func emitParametersCABI2CppForwarding(params []CppParameter) (preamble string, f
 			}
 
 		} else if p.ByRef {
-			// We changed RenderTypeCabi() to render this as a pointer
-			// Need to dereference so we can pass as reference to the actual Qt C++ function
-			//tmp = append(tmp, "*"+p.ParameterName)
-			tmp = append(tmp, "*"+p.ParameterName)
+			if p.Pointer {
+				// By ref and by pointer
+				// This happens for QDataStream &QDataStream::operator>>(char *&s)
+				// We are only using one level of indirection
+				tmp = append(tmp, p.ParameterName)
+			} else {
+				// By ref and not by pointer
+				// We changed RenderTypeCabi() to render this as a pointer
+				// Need to dereference so we can pass as reference to the actual Qt C++ function
+				//tmp = append(tmp, "*"+p.ParameterName)
+				tmp = append(tmp, "*"+p.ParameterName)
+			}
 
 		} else if p.QtClassType() && !p.Pointer {
 			// CABI takes all Qt types by pointer, even if C++ wants them by value

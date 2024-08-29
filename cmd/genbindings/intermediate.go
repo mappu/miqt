@@ -150,7 +150,7 @@ func (p CppParameter) IntType() bool {
 	case "int", "unsigned int", "uint",
 		"short", "unsigned short", "ushort", "qint16", "quint16",
 		"qint8", "quint8",
-		"unsigned char", "uchar",
+		"unsigned char", "signed char", "uchar",
 		"long", "unsigned long", "ulong", "qint32", "quint32",
 		"longlong", "ulonglong", "qlonglong", "qulonglong", "qint64", "quint64", "int64_t", "uint64_t", "long long", "unsigned long long",
 		"qintptr", "quintptr", "uintptr_t", "intptr_t",
