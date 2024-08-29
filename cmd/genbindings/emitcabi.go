@@ -553,7 +553,7 @@ extern "C" {
 					// Combo
 					// "char** _out, int64_t* _out_Lengths, size_t* _out_len")
 
-					shouldReturn = m.ReturnType.ParameterType + " ret = "
+					shouldReturn = m.ReturnType.RenderTypeQtCpp() + " ret = "
 					afterCall += "\t// Convert QStringList from C++ memory to manually-managed C memory\n"
 					afterCall += "\tchar** __out = static_cast<char**>(malloc(sizeof(char*) * ret.length()));\n"
 					afterCall += "\tint* __out_Lengths = static_cast<int*>(malloc(sizeof(int) * ret.length()));\n"
@@ -570,7 +570,7 @@ extern "C" {
 
 				} else if !t.QtClassType() || (t.QtClassType() && t.Pointer) { // QList<int>, QList<QFoo*>
 
-					shouldReturn = m.ReturnType.ParameterType + " ret = "
+					shouldReturn = m.ReturnType.RenderTypeQtCpp() + " ret = "
 					afterCall += "\t// Convert QList<> from C++ memory to manually-managed C memory\n"
 					afterCall += "\t" + t.RenderTypeCabi() + "* __out = static_cast<" + t.RenderTypeCabi() + "*>(malloc(sizeof(" + t.RenderTypeCabi() + ") * ret.length()));\n"
 					afterCall += "\tfor (size_t i = 0, e = ret.length(); i < e; ++i) {\n"
@@ -587,7 +587,7 @@ extern "C" {
 
 				} else { // QList<QFoo>
 
-					shouldReturn = m.ReturnType.ParameterType + " ret = "
+					shouldReturn = m.ReturnType.RenderTypeQtCpp() + " ret = "
 					afterCall += "\t// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers\n"
 					afterCall += "\t" + t.RenderTypeCabi() + "** __out = static_cast<" + t.RenderTypeCabi() + "**>(malloc(sizeof(" + t.RenderTypeCabi() + "**) * ret.length()));\n"
 					afterCall += "\tfor (size_t i = 0, e = ret.length(); i < e; ++i) {\n"
