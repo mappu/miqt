@@ -11,6 +11,7 @@ package qt
 import "C"
 
 import (
+	"runtime"
 	"unsafe"
 )
 
@@ -61,6 +62,11 @@ func QFileDevice_TrUtf8(s string) string {
 	return ret
 }
 
+func (this *QFileDevice) Error() uintptr {
+	ret := C.QFileDevice_Error(this.h)
+	return (uintptr)(ret)
+}
+
 func (this *QFileDevice) UnsetError() {
 	C.QFileDevice_UnsetError(this.h)
 }
@@ -94,7 +100,7 @@ func (this *QFileDevice) Pos() int64 {
 }
 
 func (this *QFileDevice) Seek(offset int64) bool {
-	ret := C.QFileDevice_Seek(this.h, (C.int64_t)(offset))
+	ret := C.QFileDevice_Seek(this.h, (C.longlong)(offset))
 	return (bool)(ret)
 }
 
@@ -114,12 +120,43 @@ func (this *QFileDevice) Size() int64 {
 }
 
 func (this *QFileDevice) Resize(sz int64) bool {
-	ret := C.QFileDevice_Resize(this.h, (C.int64_t)(sz))
+	ret := C.QFileDevice_Resize(this.h, (C.longlong)(sz))
 	return (bool)(ret)
+}
+
+func (this *QFileDevice) Permissions() int {
+	ret := C.QFileDevice_Permissions(this.h)
+	return (int)(ret)
+}
+
+func (this *QFileDevice) SetPermissions(permissionSpec int) bool {
+	ret := C.QFileDevice_SetPermissions(this.h, (C.int)(permissionSpec))
+	return (bool)(ret)
+}
+
+func (this *QFileDevice) Map(offset int64, size int64) *byte {
+	ret := C.QFileDevice_Map(this.h, (C.longlong)(offset), (C.longlong)(size))
+	return (*byte)(ret)
 }
 
 func (this *QFileDevice) Unmap(address *byte) bool {
 	ret := C.QFileDevice_Unmap(this.h, (*C.uchar)(unsafe.Pointer(address)))
+	return (bool)(ret)
+}
+
+func (this *QFileDevice) FileTime(time uintptr) *QDateTime {
+	ret := C.QFileDevice_FileTime(this.h, (C.uintptr_t)(time))
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQDateTime(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QDateTime) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QFileDevice) SetFileTime(newDate *QDateTime, fileTime uintptr) bool {
+	ret := C.QFileDevice_SetFileTime(this.h, newDate.cPointer(), (C.uintptr_t)(fileTime))
 	return (bool)(ret)
 }
 
@@ -173,6 +210,11 @@ func QFileDevice_TrUtf83(s string, c string, n int) string {
 	ret := C.GoStringN(_out, _out_Strlen)
 	C.free(unsafe.Pointer(_out))
 	return ret
+}
+
+func (this *QFileDevice) Map3(offset int64, size int64, flags uintptr) *byte {
+	ret := C.QFileDevice_Map3(this.h, (C.longlong)(offset), (C.longlong)(size), (C.uintptr_t)(flags))
+	return (*byte)(ret)
 }
 
 func (this *QFileDevice) Delete() {

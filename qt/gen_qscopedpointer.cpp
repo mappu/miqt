@@ -1,8 +1,7 @@
-#include "gen_qscopedpointer.h"
+#include <QScopedPointerPodDeleter>
 #include "qscopedpointer.h"
 
-#include <QScopedPointerPodDeleter>
-
+#include "gen_qscopedpointer.h"
 
 extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);

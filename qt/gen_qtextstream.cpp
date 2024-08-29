@@ -1,14 +1,15 @@
-#include "gen_qtextstream.h"
-#include "qtextstream.h"
-
 #include <QByteArray>
 #include <QChar>
 #include <QIODevice>
 #include <QLocale>
 #include <QString>
+#include <QByteArray>
+#include <cstring>
 #include <QTextCodec>
 #include <QTextStream>
+#include "qtextstream.h"
 
+#include "gen_qtextstream.h"
 
 extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
@@ -22,16 +23,32 @@ QTextStream* QTextStream_new2(QIODevice* device) {
 	return new QTextStream(device);
 }
 
+QTextStream* QTextStream_new3(QByteArray* array) {
+	return new QTextStream(array);
+}
+
+QTextStream* QTextStream_new4(QByteArray* array) {
+	return new QTextStream(*array);
+}
+
+QTextStream* QTextStream_new5(QByteArray* array, int openMode) {
+	return new QTextStream(array, static_cast<QIODevice::OpenMode>(openMode));
+}
+
+QTextStream* QTextStream_new6(QByteArray* array, int openMode) {
+	return new QTextStream(*array, static_cast<QIODevice::OpenMode>(openMode));
+}
+
 void QTextStream_SetCodec(QTextStream* self, QTextCodec* codec) {
 	self->setCodec(codec);
 }
 
-void QTextStream_SetCodecWithCodecName(QTextStream* self, char* codecName) {
+void QTextStream_SetCodecWithCodecName(QTextStream* self, const char* codecName) {
 	self->setCodec(codecName);
 }
 
 QTextCodec* QTextStream_Codec(QTextStream* self) {
-	return self->codec();
+	return const_cast<const QTextStream*>(self)->codec();
 }
 
 void QTextStream_SetAutoDetectUnicode(QTextStream* self, bool enabled) {
@@ -39,7 +56,7 @@ void QTextStream_SetAutoDetectUnicode(QTextStream* self, bool enabled) {
 }
 
 bool QTextStream_AutoDetectUnicode(QTextStream* self) {
-	return self->autoDetectUnicode();
+	return const_cast<const QTextStream*>(self)->autoDetectUnicode();
 }
 
 void QTextStream_SetGenerateByteOrderMark(QTextStream* self, bool generate) {
@@ -47,7 +64,7 @@ void QTextStream_SetGenerateByteOrderMark(QTextStream* self, bool generate) {
 }
 
 bool QTextStream_GenerateByteOrderMark(QTextStream* self) {
-	return self->generateByteOrderMark();
+	return const_cast<const QTextStream*>(self)->generateByteOrderMark();
 }
 
 void QTextStream_SetLocale(QTextStream* self, QLocale* locale) {
@@ -55,7 +72,7 @@ void QTextStream_SetLocale(QTextStream* self, QLocale* locale) {
 }
 
 QLocale* QTextStream_Locale(QTextStream* self) {
-	QLocale ret = self->locale();
+	QLocale ret = const_cast<const QTextStream*>(self)->locale();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QLocale*>(new QLocale(ret));
 }
@@ -65,11 +82,11 @@ void QTextStream_SetDevice(QTextStream* self, QIODevice* device) {
 }
 
 QIODevice* QTextStream_Device(QTextStream* self) {
-	return self->device();
+	return const_cast<const QTextStream*>(self)->device();
 }
 
 void QTextStream_String(QTextStream* self, char** _out, int* _out_Strlen) {
-	QString* ret = self->string();
+	QString* ret = const_cast<const QTextStream*>(self)->string();
 	// Convert QString pointer from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret->toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -77,12 +94,21 @@ void QTextStream_String(QTextStream* self, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
+uintptr_t QTextStream_Status(QTextStream* self) {
+	QTextStream::Status ret = const_cast<const QTextStream*>(self)->status();
+	return static_cast<uintptr_t>(ret);
+}
+
+void QTextStream_SetStatus(QTextStream* self, uintptr_t status) {
+	self->setStatus(static_cast<QTextStream::Status>(status));
+}
+
 void QTextStream_ResetStatus(QTextStream* self) {
 	self->resetStatus();
 }
 
 bool QTextStream_AtEnd(QTextStream* self) {
-	return self->atEnd();
+	return const_cast<const QTextStream*>(self)->atEnd();
 }
 
 void QTextStream_Reset(QTextStream* self) {
@@ -93,12 +119,12 @@ void QTextStream_Flush(QTextStream* self) {
 	self->flush();
 }
 
-bool QTextStream_Seek(QTextStream* self, int64_t pos) {
-	return self->seek((qint64)(pos));
+bool QTextStream_Seek(QTextStream* self, long long pos) {
+	return self->seek(static_cast<qint64>(pos));
 }
 
-int64_t QTextStream_Pos(QTextStream* self) {
-	return self->pos();
+long long QTextStream_Pos(QTextStream* self) {
+	return const_cast<const QTextStream*>(self)->pos();
 }
 
 void QTextStream_SkipWhiteSpace(QTextStream* self) {
@@ -123,8 +149,8 @@ void QTextStream_ReadAll(QTextStream* self, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QTextStream_Read(QTextStream* self, int64_t maxlen, char** _out, int* _out_Strlen) {
-	QString ret = self->read((qint64)(maxlen));
+void QTextStream_Read(QTextStream* self, long long maxlen, char** _out, int* _out_Strlen) {
+	QString ret = self->read(static_cast<qint64>(maxlen));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -132,12 +158,21 @@ void QTextStream_Read(QTextStream* self, int64_t maxlen, char** _out, int* _out_
 	*_out_Strlen = b.length();
 }
 
+void QTextStream_SetFieldAlignment(QTextStream* self, uintptr_t alignment) {
+	self->setFieldAlignment(static_cast<QTextStream::FieldAlignment>(alignment));
+}
+
+uintptr_t QTextStream_FieldAlignment(QTextStream* self) {
+	QTextStream::FieldAlignment ret = const_cast<const QTextStream*>(self)->fieldAlignment();
+	return static_cast<uintptr_t>(ret);
+}
+
 void QTextStream_SetPadChar(QTextStream* self, QChar* ch) {
 	self->setPadChar(*ch);
 }
 
 QChar* QTextStream_PadChar(QTextStream* self) {
-	QChar ret = self->padChar();
+	QChar ret = const_cast<const QTextStream*>(self)->padChar();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QChar*>(new QChar(ret));
 }
@@ -147,7 +182,16 @@ void QTextStream_SetFieldWidth(QTextStream* self, int width) {
 }
 
 int QTextStream_FieldWidth(QTextStream* self) {
-	return self->fieldWidth();
+	return const_cast<const QTextStream*>(self)->fieldWidth();
+}
+
+void QTextStream_SetNumberFlags(QTextStream* self, int flags) {
+	self->setNumberFlags(static_cast<QTextStream::NumberFlags>(flags));
+}
+
+int QTextStream_NumberFlags(QTextStream* self) {
+	QTextStream::NumberFlags ret = const_cast<const QTextStream*>(self)->numberFlags();
+	return static_cast<int>(ret);
 }
 
 void QTextStream_SetIntegerBase(QTextStream* self, int base) {
@@ -155,7 +199,16 @@ void QTextStream_SetIntegerBase(QTextStream* self, int base) {
 }
 
 int QTextStream_IntegerBase(QTextStream* self) {
-	return self->integerBase();
+	return const_cast<const QTextStream*>(self)->integerBase();
+}
+
+void QTextStream_SetRealNumberNotation(QTextStream* self, uintptr_t notation) {
+	self->setRealNumberNotation(static_cast<QTextStream::RealNumberNotation>(notation));
+}
+
+uintptr_t QTextStream_RealNumberNotation(QTextStream* self) {
+	QTextStream::RealNumberNotation ret = const_cast<const QTextStream*>(self)->realNumberNotation();
+	return static_cast<uintptr_t>(ret);
 }
 
 void QTextStream_SetRealNumberPrecision(QTextStream* self, int precision) {
@@ -163,7 +216,7 @@ void QTextStream_SetRealNumberPrecision(QTextStream* self, int precision) {
 }
 
 int QTextStream_RealNumberPrecision(QTextStream* self) {
-	return self->realNumberPrecision();
+	return const_cast<const QTextStream*>(self)->realNumberPrecision();
 }
 
 QTextStream* QTextStream_OperatorShiftRight(QTextStream* self, QChar* ch) {
@@ -342,14 +395,14 @@ QTextStream* QTextStream_OperatorShiftLeftWithArray(QTextStream* self, QByteArra
 	return &ret;
 }
 
-QTextStream* QTextStream_OperatorShiftLeftWithChar(QTextStream* self, char* c) {
+QTextStream* QTextStream_OperatorShiftLeftWithChar(QTextStream* self, const char* c) {
 	QTextStream& ret = self->operator<<(c);
 	// Cast returned reference into pointer
 	return &ret;
 }
 
-void QTextStream_ReadLine1(QTextStream* self, int64_t maxlen, char** _out, int* _out_Strlen) {
-	QString ret = self->readLine((qint64)(maxlen));
+void QTextStream_ReadLine1(QTextStream* self, long long maxlen, char** _out, int* _out_Strlen) {
+	QString ret = self->readLine(static_cast<qint64>(maxlen));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));

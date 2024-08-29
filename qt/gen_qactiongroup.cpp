@@ -1,6 +1,3 @@
-#include "gen_qactiongroup.h"
-#include "qactiongroup.h"
-
 #include <QAction>
 #include <QActionGroup>
 #include <QIcon>
@@ -8,7 +5,11 @@
 #include <QMetaObject>
 #include <QObject>
 #include <QString>
+#include <QByteArray>
+#include <cstring>
+#include "qactiongroup.h"
 
+#include "gen_qactiongroup.h"
 
 extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
@@ -19,10 +20,10 @@ QActionGroup* QActionGroup_new(QObject* parent) {
 }
 
 QMetaObject* QActionGroup_MetaObject(QActionGroup* self) {
-	return (QMetaObject*) self->metaObject();
+	return (QMetaObject*) const_cast<const QActionGroup*>(self)->metaObject();
 }
 
-void QActionGroup_Tr(char* s, char** _out, int* _out_Strlen) {
+void QActionGroup_Tr(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QActionGroup::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -31,7 +32,7 @@ void QActionGroup_Tr(char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QActionGroup_TrUtf8(char* s, char** _out, int* _out_Strlen) {
+void QActionGroup_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QActionGroup::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -59,7 +60,7 @@ void QActionGroup_RemoveAction(QActionGroup* self, QAction* a) {
 }
 
 void QActionGroup_Actions(QActionGroup* self, QAction*** _out, size_t* _out_len) {
-	QList<QAction *> ret = self->actions();
+	QList<QAction*> ret = const_cast<const QActionGroup*>(self)->actions();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QAction** __out = static_cast<QAction**>(malloc(sizeof(QAction*) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {
@@ -70,19 +71,24 @@ void QActionGroup_Actions(QActionGroup* self, QAction*** _out, size_t* _out_len)
 }
 
 QAction* QActionGroup_CheckedAction(QActionGroup* self) {
-	return self->checkedAction();
+	return const_cast<const QActionGroup*>(self)->checkedAction();
 }
 
 bool QActionGroup_IsExclusive(QActionGroup* self) {
-	return self->isExclusive();
+	return const_cast<const QActionGroup*>(self)->isExclusive();
 }
 
 bool QActionGroup_IsEnabled(QActionGroup* self) {
-	return self->isEnabled();
+	return const_cast<const QActionGroup*>(self)->isEnabled();
 }
 
 bool QActionGroup_IsVisible(QActionGroup* self) {
-	return self->isVisible();
+	return const_cast<const QActionGroup*>(self)->isVisible();
+}
+
+uintptr_t QActionGroup_ExclusionPolicy(QActionGroup* self) {
+	QActionGroup::ExclusionPolicy ret = const_cast<const QActionGroup*>(self)->exclusionPolicy();
+	return static_cast<uintptr_t>(ret);
 }
 
 void QActionGroup_SetEnabled(QActionGroup* self, bool enabled) {
@@ -99,6 +105,10 @@ void QActionGroup_SetVisible(QActionGroup* self, bool visible) {
 
 void QActionGroup_SetExclusive(QActionGroup* self, bool exclusive) {
 	self->setExclusive(exclusive);
+}
+
+void QActionGroup_SetExclusionPolicy(QActionGroup* self, uintptr_t policy) {
+	self->setExclusionPolicy(static_cast<QActionGroup::ExclusionPolicy>(policy));
 }
 
 void QActionGroup_Triggered(QActionGroup* self, QAction* param1) {
@@ -121,7 +131,7 @@ void QActionGroup_connect_Hovered(QActionGroup* self, void* slot) {
 	});
 }
 
-void QActionGroup_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
+void QActionGroup_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QActionGroup::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -130,7 +140,7 @@ void QActionGroup_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QActionGroup_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QActionGroup_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QActionGroup::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -139,7 +149,7 @@ void QActionGroup_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QActionGroup_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
+void QActionGroup_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QActionGroup::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -148,7 +158,7 @@ void QActionGroup_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QActionGroup_TrUtf83(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QActionGroup_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QActionGroup::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();

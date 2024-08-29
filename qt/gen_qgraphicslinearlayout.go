@@ -11,6 +11,7 @@ package qt
 import "C"
 
 import (
+	"runtime"
 	"unsafe"
 )
 
@@ -41,9 +42,30 @@ func NewQGraphicsLinearLayout() *QGraphicsLinearLayout {
 }
 
 // NewQGraphicsLinearLayout2 constructs a new QGraphicsLinearLayout object.
-func NewQGraphicsLinearLayout2(parent *QGraphicsLayoutItem) *QGraphicsLinearLayout {
-	ret := C.QGraphicsLinearLayout_new2(parent.cPointer())
+func NewQGraphicsLinearLayout2(orientation uintptr) *QGraphicsLinearLayout {
+	ret := C.QGraphicsLinearLayout_new2((C.uintptr_t)(orientation))
 	return newQGraphicsLinearLayout(ret)
+}
+
+// NewQGraphicsLinearLayout3 constructs a new QGraphicsLinearLayout object.
+func NewQGraphicsLinearLayout3(parent *QGraphicsLayoutItem) *QGraphicsLinearLayout {
+	ret := C.QGraphicsLinearLayout_new3(parent.cPointer())
+	return newQGraphicsLinearLayout(ret)
+}
+
+// NewQGraphicsLinearLayout4 constructs a new QGraphicsLinearLayout object.
+func NewQGraphicsLinearLayout4(orientation uintptr, parent *QGraphicsLayoutItem) *QGraphicsLinearLayout {
+	ret := C.QGraphicsLinearLayout_new4((C.uintptr_t)(orientation), parent.cPointer())
+	return newQGraphicsLinearLayout(ret)
+}
+
+func (this *QGraphicsLinearLayout) SetOrientation(orientation uintptr) {
+	C.QGraphicsLinearLayout_SetOrientation(this.h, (C.uintptr_t)(orientation))
+}
+
+func (this *QGraphicsLinearLayout) Orientation() uintptr {
+	ret := C.QGraphicsLinearLayout_Orientation(this.h)
+	return (uintptr)(ret)
 }
 
 func (this *QGraphicsLinearLayout) AddItem(item *QGraphicsLayoutItem) {
@@ -97,6 +119,15 @@ func (this *QGraphicsLinearLayout) StretchFactor(item *QGraphicsLayoutItem) int 
 	return (int)(ret)
 }
 
+func (this *QGraphicsLinearLayout) SetAlignment(item *QGraphicsLayoutItem, alignment int) {
+	C.QGraphicsLinearLayout_SetAlignment(this.h, item.cPointer(), (C.int)(alignment))
+}
+
+func (this *QGraphicsLinearLayout) Alignment(item *QGraphicsLayoutItem) int {
+	ret := C.QGraphicsLinearLayout_Alignment(this.h, item.cPointer())
+	return (int)(ret)
+}
+
 func (this *QGraphicsLinearLayout) SetGeometry(rect *QRectF) {
 	C.QGraphicsLinearLayout_SetGeometry(this.h, rect.cPointer())
 }
@@ -115,6 +146,17 @@ func (this *QGraphicsLinearLayout) Invalidate() {
 	C.QGraphicsLinearLayout_Invalidate(this.h)
 }
 
+func (this *QGraphicsLinearLayout) SizeHint(which uintptr) *QSizeF {
+	ret := C.QGraphicsLinearLayout_SizeHint(this.h, (C.uintptr_t)(which))
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQSizeF(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QSizeF) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
 func (this *QGraphicsLinearLayout) Dump() {
 	C.QGraphicsLinearLayout_Dump(this.h)
 }
@@ -125,6 +167,17 @@ func (this *QGraphicsLinearLayout) AddStretch1(stretch int) {
 
 func (this *QGraphicsLinearLayout) InsertStretch2(index int, stretch int) {
 	C.QGraphicsLinearLayout_InsertStretch2(this.h, (C.int)(index), (C.int)(stretch))
+}
+
+func (this *QGraphicsLinearLayout) SizeHint2(which uintptr, constraint *QSizeF) *QSizeF {
+	ret := C.QGraphicsLinearLayout_SizeHint2(this.h, (C.uintptr_t)(which), constraint.cPointer())
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQSizeF(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QSizeF) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
 }
 
 func (this *QGraphicsLinearLayout) Dump1(indent int) {

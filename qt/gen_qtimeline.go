@@ -80,6 +80,11 @@ func QTimeLine_TrUtf8(s string) string {
 	return ret
 }
 
+func (this *QTimeLine) State() uintptr {
+	ret := C.QTimeLine_State(this.h)
+	return (uintptr)(ret)
+}
+
 func (this *QTimeLine) LoopCount() int {
 	ret := C.QTimeLine_LoopCount(this.h)
 	return (int)(ret)
@@ -87,6 +92,15 @@ func (this *QTimeLine) LoopCount() int {
 
 func (this *QTimeLine) SetLoopCount(count int) {
 	C.QTimeLine_SetLoopCount(this.h, (C.int)(count))
+}
+
+func (this *QTimeLine) Direction() uintptr {
+	ret := C.QTimeLine_Direction(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QTimeLine) SetDirection(direction uintptr) {
+	C.QTimeLine_SetDirection(this.h, (C.uintptr_t)(direction))
 }
 
 func (this *QTimeLine) Duration() int {
@@ -127,6 +141,15 @@ func (this *QTimeLine) UpdateInterval() int {
 
 func (this *QTimeLine) SetUpdateInterval(interval int) {
 	C.QTimeLine_SetUpdateInterval(this.h, (C.int)(interval))
+}
+
+func (this *QTimeLine) CurveShape() uintptr {
+	ret := C.QTimeLine_CurveShape(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QTimeLine) SetCurveShape(shape uintptr) {
+	C.QTimeLine_SetCurveShape(this.h, (C.uintptr_t)(shape))
 }
 
 func (this *QTimeLine) EasingCurve() *QEasingCurve {

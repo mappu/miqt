@@ -107,6 +107,15 @@ func (this *QComboBox) SetAutoCompletion(enable bool) {
 	C.QComboBox_SetAutoCompletion(this.h, (C.bool)(enable))
 }
 
+func (this *QComboBox) AutoCompletionCaseSensitivity() uintptr {
+	ret := C.QComboBox_AutoCompletionCaseSensitivity(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QComboBox) SetAutoCompletionCaseSensitivity(sensitivity uintptr) {
+	C.QComboBox_SetAutoCompletionCaseSensitivity(this.h, (C.uintptr_t)(sensitivity))
+}
+
 func (this *QComboBox) DuplicatesEnabled() bool {
 	ret := C.QComboBox_DuplicatesEnabled(this.h)
 	return (bool)(ret)
@@ -123,6 +132,36 @@ func (this *QComboBox) SetFrame(frame bool) {
 func (this *QComboBox) HasFrame() bool {
 	ret := C.QComboBox_HasFrame(this.h)
 	return (bool)(ret)
+}
+
+func (this *QComboBox) FindText(text string) int {
+	text_Cstring := C.CString(text)
+	defer C.free(unsafe.Pointer(text_Cstring))
+	ret := C.QComboBox_FindText(this.h, text_Cstring, C.ulong(len(text)))
+	return (int)(ret)
+}
+
+func (this *QComboBox) FindData(data *QVariant) int {
+	ret := C.QComboBox_FindData(this.h, data.cPointer())
+	return (int)(ret)
+}
+
+func (this *QComboBox) InsertPolicy() uintptr {
+	ret := C.QComboBox_InsertPolicy(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QComboBox) SetInsertPolicy(policy uintptr) {
+	C.QComboBox_SetInsertPolicy(this.h, (C.uintptr_t)(policy))
+}
+
+func (this *QComboBox) SizeAdjustPolicy() uintptr {
+	ret := C.QComboBox_SizeAdjustPolicy(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QComboBox) SetSizeAdjustPolicy(policy uintptr) {
+	C.QComboBox_SetSizeAdjustPolicy(this.h, (C.uintptr_t)(policy))
 }
 
 func (this *QComboBox) MinimumContentsLength() int {
@@ -418,6 +457,28 @@ func (this *QComboBox) Event(event *QEvent) bool {
 	return (bool)(ret)
 }
 
+func (this *QComboBox) InputMethodQuery(param1 uintptr) *QVariant {
+	ret := C.QComboBox_InputMethodQuery(this.h, (C.uintptr_t)(param1))
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQVariant(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QVariant) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QComboBox) InputMethodQuery2(query uintptr, argument *QVariant) *QVariant {
+	ret := C.QComboBox_InputMethodQuery2(this.h, (C.uintptr_t)(query), argument.cPointer())
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQVariant(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QVariant) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
 func (this *QComboBox) Clear() {
 	C.QComboBox_Clear(this.h)
 }
@@ -626,6 +687,23 @@ func QComboBox_TrUtf83(s string, c string, n int) string {
 	ret := C.GoStringN(_out, _out_Strlen)
 	C.free(unsafe.Pointer(_out))
 	return ret
+}
+
+func (this *QComboBox) FindText2(text string, flags int) int {
+	text_Cstring := C.CString(text)
+	defer C.free(unsafe.Pointer(text_Cstring))
+	ret := C.QComboBox_FindText2(this.h, text_Cstring, C.ulong(len(text)), (C.int)(flags))
+	return (int)(ret)
+}
+
+func (this *QComboBox) FindData2(data *QVariant, role int) int {
+	ret := C.QComboBox_FindData2(this.h, data.cPointer(), (C.int)(role))
+	return (int)(ret)
+}
+
+func (this *QComboBox) FindData3(data *QVariant, role int, flags int) int {
+	ret := C.QComboBox_FindData3(this.h, data.cPointer(), (C.int)(role), (C.int)(flags))
+	return (int)(ret)
 }
 
 func (this *QComboBox) CurrentData1(role int) *QVariant {

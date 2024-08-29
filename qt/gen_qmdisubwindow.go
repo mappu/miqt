@@ -36,6 +36,24 @@ func newQMdiSubWindow_U(h unsafe.Pointer) *QMdiSubWindow {
 	return newQMdiSubWindow((*C.QMdiSubWindow)(h))
 }
 
+// NewQMdiSubWindow constructs a new QMdiSubWindow object.
+func NewQMdiSubWindow() *QMdiSubWindow {
+	ret := C.QMdiSubWindow_new()
+	return newQMdiSubWindow(ret)
+}
+
+// NewQMdiSubWindow2 constructs a new QMdiSubWindow object.
+func NewQMdiSubWindow2(parent *QWidget) *QMdiSubWindow {
+	ret := C.QMdiSubWindow_new2(parent.cPointer())
+	return newQMdiSubWindow(ret)
+}
+
+// NewQMdiSubWindow3 constructs a new QMdiSubWindow object.
+func NewQMdiSubWindow3(parent *QWidget, flags int) *QMdiSubWindow {
+	ret := C.QMdiSubWindow_new3(parent.cPointer(), (C.int)(flags))
+	return newQMdiSubWindow(ret)
+}
+
 func (this *QMdiSubWindow) MetaObject() *QMetaObject {
 	ret := C.QMdiSubWindow_MetaObject(this.h)
 	return newQMetaObject_U(unsafe.Pointer(ret))
@@ -109,6 +127,15 @@ func (this *QMdiSubWindow) IsShaded() bool {
 	return (bool)(ret)
 }
 
+func (this *QMdiSubWindow) SetOption(option uintptr) {
+	C.QMdiSubWindow_SetOption(this.h, (C.uintptr_t)(option))
+}
+
+func (this *QMdiSubWindow) TestOption(param1 uintptr) bool {
+	ret := C.QMdiSubWindow_TestOption(this.h, (C.uintptr_t)(param1))
+	return (bool)(ret)
+}
+
 func (this *QMdiSubWindow) SetKeyboardSingleStep(step int) {
 	C.QMdiSubWindow_SetKeyboardSingleStep(this.h, (C.int)(step))
 }
@@ -139,6 +166,18 @@ func (this *QMdiSubWindow) SystemMenu() *QMenu {
 func (this *QMdiSubWindow) MdiArea() *QMdiArea {
 	ret := C.QMdiSubWindow_MdiArea(this.h)
 	return newQMdiArea_U(unsafe.Pointer(ret))
+}
+
+func (this *QMdiSubWindow) WindowStateChanged(oldState int, newState int) {
+	C.QMdiSubWindow_WindowStateChanged(this.h, (C.int)(oldState), (C.int)(newState))
+}
+
+func (this *QMdiSubWindow) OnWindowStateChanged(slot func()) {
+	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
+		slot()
+	}
+
+	C.QMdiSubWindow_connect_WindowStateChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
 }
 
 func (this *QMdiSubWindow) AboutToActivate() {
@@ -211,6 +250,10 @@ func QMdiSubWindow_TrUtf83(s string, c string, n int) string {
 	ret := C.GoStringN(_out, _out_Strlen)
 	C.free(unsafe.Pointer(_out))
 	return ret
+}
+
+func (this *QMdiSubWindow) SetOption2(option uintptr, on bool) {
+	C.QMdiSubWindow_SetOption2(this.h, (C.uintptr_t)(option), (C.bool)(on))
 }
 
 func (this *QMdiSubWindow) Delete() {

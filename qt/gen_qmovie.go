@@ -184,6 +184,11 @@ func (this *QMovie) BackgroundColor() *QColor {
 	return ret1
 }
 
+func (this *QMovie) State() uintptr {
+	ret := C.QMovie_State(this.h)
+	return (uintptr)(ret)
+}
+
 func (this *QMovie) FrameRect() *QRect {
 	ret := C.QMovie_FrameRect(this.h)
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -220,6 +225,11 @@ func (this *QMovie) CurrentPixmap() *QPixmap {
 func (this *QMovie) IsValid() bool {
 	ret := C.QMovie_IsValid(this.h)
 	return (bool)(ret)
+}
+
+func (this *QMovie) LastError() uintptr {
+	ret := C.QMovie_LastError(this.h)
+	return (uintptr)(ret)
 }
 
 func (this *QMovie) LastErrorString() string {
@@ -276,6 +286,15 @@ func (this *QMovie) SetScaledSize(size *QSize) {
 	C.QMovie_SetScaledSize(this.h, size.cPointer())
 }
 
+func (this *QMovie) CacheMode() uintptr {
+	ret := C.QMovie_CacheMode(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QMovie) SetCacheMode(mode uintptr) {
+	C.QMovie_SetCacheMode(this.h, (C.uintptr_t)(mode))
+}
+
 func (this *QMovie) Started() {
 	C.QMovie_Started(this.h)
 }
@@ -310,6 +329,30 @@ func (this *QMovie) OnUpdated(slot func()) {
 	}
 
 	C.QMovie_connect_Updated(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+}
+
+func (this *QMovie) StateChanged(state uintptr) {
+	C.QMovie_StateChanged(this.h, (C.uintptr_t)(state))
+}
+
+func (this *QMovie) OnStateChanged(slot func()) {
+	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
+		slot()
+	}
+
+	C.QMovie_connect_StateChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+}
+
+func (this *QMovie) Error(error uintptr) {
+	C.QMovie_Error(this.h, (C.uintptr_t)(error))
+}
+
+func (this *QMovie) OnError(slot func()) {
+	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
+		slot()
+	}
+
+	C.QMovie_connect_Error(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
 }
 
 func (this *QMovie) Finished() {

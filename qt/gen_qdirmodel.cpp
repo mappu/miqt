@@ -1,6 +1,3 @@
-#include "gen_qdirmodel.h"
-#include "qdirmodel.h"
-
 #include <QDirModel>
 #include <QFileIconProvider>
 #include <QFileInfo>
@@ -11,26 +8,48 @@
 #include <QModelIndex>
 #include <QObject>
 #include <QString>
+#include <QByteArray>
+#include <cstring>
 #include <QVariant>
+#include "qdirmodel.h"
 
+#include "gen_qdirmodel.h"
 
 extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
 }
 
-QDirModel* QDirModel_new() {
+QDirModel* QDirModel_new(char** nameFilters, uint64_t* nameFilters_Lengths, size_t nameFilters_len, int filters, int sort) {
+	QList<QString> nameFilters_QList;
+	nameFilters_QList.reserve(nameFilters_len);
+	for(size_t i = 0; i < nameFilters_len; ++i) {
+		nameFilters_QList.push_back(QString::fromUtf8(nameFilters[i], nameFilters_Lengths[i]));
+	}
+	return new QDirModel(nameFilters_QList, static_cast<QDir::Filters>(filters), static_cast<QDir::SortFlags>(sort));
+}
+
+QDirModel* QDirModel_new2() {
 	return new QDirModel();
 }
 
-QDirModel* QDirModel_new2(QObject* parent) {
+QDirModel* QDirModel_new3(char** nameFilters, uint64_t* nameFilters_Lengths, size_t nameFilters_len, int filters, int sort, QObject* parent) {
+	QList<QString> nameFilters_QList;
+	nameFilters_QList.reserve(nameFilters_len);
+	for(size_t i = 0; i < nameFilters_len; ++i) {
+		nameFilters_QList.push_back(QString::fromUtf8(nameFilters[i], nameFilters_Lengths[i]));
+	}
+	return new QDirModel(nameFilters_QList, static_cast<QDir::Filters>(filters), static_cast<QDir::SortFlags>(sort), parent);
+}
+
+QDirModel* QDirModel_new4(QObject* parent) {
 	return new QDirModel(parent);
 }
 
 QMetaObject* QDirModel_MetaObject(QDirModel* self) {
-	return (QMetaObject*) self->metaObject();
+	return (QMetaObject*) const_cast<const QDirModel*>(self)->metaObject();
 }
 
-void QDirModel_Tr(char* s, char** _out, int* _out_Strlen) {
+void QDirModel_Tr(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QDirModel::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -39,7 +58,7 @@ void QDirModel_Tr(char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QDirModel_TrUtf8(char* s, char** _out, int* _out_Strlen) {
+void QDirModel_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QDirModel::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -49,27 +68,27 @@ void QDirModel_TrUtf8(char* s, char** _out, int* _out_Strlen) {
 }
 
 QModelIndex* QDirModel_Index(QDirModel* self, int row, int column) {
-	QModelIndex ret = self->index(static_cast<int>(row), static_cast<int>(column));
+	QModelIndex ret = const_cast<const QDirModel*>(self)->index(static_cast<int>(row), static_cast<int>(column));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QModelIndex*>(new QModelIndex(ret));
 }
 
 QModelIndex* QDirModel_Parent(QDirModel* self, QModelIndex* child) {
-	QModelIndex ret = self->parent(*child);
+	QModelIndex ret = const_cast<const QDirModel*>(self)->parent(*child);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QModelIndex*>(new QModelIndex(ret));
 }
 
 int QDirModel_RowCount(QDirModel* self) {
-	return self->rowCount();
+	return const_cast<const QDirModel*>(self)->rowCount();
 }
 
 int QDirModel_ColumnCount(QDirModel* self) {
-	return self->columnCount();
+	return const_cast<const QDirModel*>(self)->columnCount();
 }
 
 QVariant* QDirModel_Data(QDirModel* self, QModelIndex* index) {
-	QVariant ret = self->data(*index);
+	QVariant ret = const_cast<const QDirModel*>(self)->data(*index);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVariant*>(new QVariant(ret));
 }
@@ -78,12 +97,27 @@ bool QDirModel_SetData(QDirModel* self, QModelIndex* index, QVariant* value) {
 	return self->setData(*index, *value);
 }
 
+QVariant* QDirModel_HeaderData(QDirModel* self, int section, uintptr_t orientation) {
+	QVariant ret = const_cast<const QDirModel*>(self)->headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation));
+	// Copy-construct value returned type into heap-allocated copy
+	return static_cast<QVariant*>(new QVariant(ret));
+}
+
 bool QDirModel_HasChildren(QDirModel* self) {
-	return self->hasChildren();
+	return const_cast<const QDirModel*>(self)->hasChildren();
+}
+
+int QDirModel_Flags(QDirModel* self, QModelIndex* index) {
+	Qt::ItemFlags ret = const_cast<const QDirModel*>(self)->flags(*index);
+	return static_cast<int>(ret);
+}
+
+void QDirModel_Sort(QDirModel* self, int column) {
+	self->sort(static_cast<int>(column));
 }
 
 void QDirModel_MimeTypes(QDirModel* self, char*** _out, int** _out_Lengths, size_t* _out_len) {
-	QList<QString> ret = self->mimeTypes();
+	QStringList ret = const_cast<const QDirModel*>(self)->mimeTypes();
 	// Convert QStringList from C++ memory to manually-managed C memory
 	char** __out = static_cast<char**>(malloc(sizeof(char*) * ret.length()));
 	int* __out_Lengths = static_cast<int*>(malloc(sizeof(int) * ret.length()));
@@ -105,7 +139,16 @@ QMimeData* QDirModel_MimeData(QDirModel* self, QModelIndex** indexes, size_t ind
 	for(size_t i = 0; i < indexes_len; ++i) {
 		indexes_QList.push_back(*(indexes[i]));
 	}
-	return self->mimeData(indexes_QList);
+	return const_cast<const QDirModel*>(self)->mimeData(indexes_QList);
+}
+
+bool QDirModel_DropMimeData(QDirModel* self, QMimeData* data, uintptr_t action, int row, int column, QModelIndex* parent) {
+	return self->dropMimeData(data, static_cast<Qt::DropAction>(action), static_cast<int>(row), static_cast<int>(column), *parent);
+}
+
+int QDirModel_SupportedDropActions(QDirModel* self) {
+	Qt::DropActions ret = const_cast<const QDirModel*>(self)->supportedDropActions();
+	return static_cast<int>(ret);
 }
 
 void QDirModel_SetIconProvider(QDirModel* self, QFileIconProvider* provider) {
@@ -113,7 +156,7 @@ void QDirModel_SetIconProvider(QDirModel* self, QFileIconProvider* provider) {
 }
 
 QFileIconProvider* QDirModel_IconProvider(QDirModel* self) {
-	return self->iconProvider();
+	return const_cast<const QDirModel*>(self)->iconProvider();
 }
 
 void QDirModel_SetNameFilters(QDirModel* self, char** filters, uint64_t* filters_Lengths, size_t filters_len) {
@@ -126,7 +169,7 @@ void QDirModel_SetNameFilters(QDirModel* self, char** filters, uint64_t* filters
 }
 
 void QDirModel_NameFilters(QDirModel* self, char*** _out, int** _out_Lengths, size_t* _out_len) {
-	QList<QString> ret = self->nameFilters();
+	QStringList ret = const_cast<const QDirModel*>(self)->nameFilters();
 	// Convert QStringList from C++ memory to manually-managed C memory
 	char** __out = static_cast<char**>(malloc(sizeof(char*) * ret.length()));
 	int* __out_Lengths = static_cast<int*>(malloc(sizeof(int) * ret.length()));
@@ -142,12 +185,30 @@ void QDirModel_NameFilters(QDirModel* self, char*** _out, int** _out_Lengths, si
 	*_out_len = ret.length();
 }
 
+void QDirModel_SetFilter(QDirModel* self, int filters) {
+	self->setFilter(static_cast<QDir::Filters>(filters));
+}
+
+int QDirModel_Filter(QDirModel* self) {
+	QDir::Filters ret = const_cast<const QDirModel*>(self)->filter();
+	return static_cast<int>(ret);
+}
+
+void QDirModel_SetSorting(QDirModel* self, int sort) {
+	self->setSorting(static_cast<QDir::SortFlags>(sort));
+}
+
+int QDirModel_Sorting(QDirModel* self) {
+	QDir::SortFlags ret = const_cast<const QDirModel*>(self)->sorting();
+	return static_cast<int>(ret);
+}
+
 void QDirModel_SetResolveSymlinks(QDirModel* self, bool enable) {
 	self->setResolveSymlinks(enable);
 }
 
 bool QDirModel_ResolveSymlinks(QDirModel* self) {
-	return self->resolveSymlinks();
+	return const_cast<const QDirModel*>(self)->resolveSymlinks();
 }
 
 void QDirModel_SetReadOnly(QDirModel* self, bool enable) {
@@ -155,7 +216,7 @@ void QDirModel_SetReadOnly(QDirModel* self, bool enable) {
 }
 
 bool QDirModel_IsReadOnly(QDirModel* self) {
-	return self->isReadOnly();
+	return const_cast<const QDirModel*>(self)->isReadOnly();
 }
 
 void QDirModel_SetLazyChildCount(QDirModel* self, bool enable) {
@@ -163,18 +224,18 @@ void QDirModel_SetLazyChildCount(QDirModel* self, bool enable) {
 }
 
 bool QDirModel_LazyChildCount(QDirModel* self) {
-	return self->lazyChildCount();
+	return const_cast<const QDirModel*>(self)->lazyChildCount();
 }
 
 QModelIndex* QDirModel_IndexWithPath(QDirModel* self, const char* path, size_t path_Strlen) {
 	QString path_QString = QString::fromUtf8(path, path_Strlen);
-	QModelIndex ret = self->index(path_QString);
+	QModelIndex ret = const_cast<const QDirModel*>(self)->index(path_QString);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QModelIndex*>(new QModelIndex(ret));
 }
 
 bool QDirModel_IsDir(QDirModel* self, QModelIndex* index) {
-	return self->isDir(*index);
+	return const_cast<const QDirModel*>(self)->isDir(*index);
 }
 
 QModelIndex* QDirModel_Mkdir(QDirModel* self, QModelIndex* parent, const char* name, size_t name_Strlen) {
@@ -193,7 +254,7 @@ bool QDirModel_Remove(QDirModel* self, QModelIndex* index) {
 }
 
 void QDirModel_FilePath(QDirModel* self, QModelIndex* index, char** _out, int* _out_Strlen) {
-	QString ret = self->filePath(*index);
+	QString ret = const_cast<const QDirModel*>(self)->filePath(*index);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -202,7 +263,7 @@ void QDirModel_FilePath(QDirModel* self, QModelIndex* index, char** _out, int* _
 }
 
 void QDirModel_FileName(QDirModel* self, QModelIndex* index, char** _out, int* _out_Strlen) {
-	QString ret = self->fileName(*index);
+	QString ret = const_cast<const QDirModel*>(self)->fileName(*index);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -211,13 +272,13 @@ void QDirModel_FileName(QDirModel* self, QModelIndex* index, char** _out, int* _
 }
 
 QIcon* QDirModel_FileIcon(QDirModel* self, QModelIndex* index) {
-	QIcon ret = self->fileIcon(*index);
+	QIcon ret = const_cast<const QDirModel*>(self)->fileIcon(*index);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QIcon*>(new QIcon(ret));
 }
 
 QFileInfo* QDirModel_FileInfo(QDirModel* self, QModelIndex* index) {
-	QFileInfo ret = self->fileInfo(*index);
+	QFileInfo ret = const_cast<const QDirModel*>(self)->fileInfo(*index);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QFileInfo*>(new QFileInfo(ret));
 }
@@ -226,7 +287,7 @@ void QDirModel_Refresh(QDirModel* self) {
 	self->refresh();
 }
 
-void QDirModel_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
+void QDirModel_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QDirModel::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -235,7 +296,7 @@ void QDirModel_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QDirModel_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QDirModel_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QDirModel::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -244,7 +305,7 @@ void QDirModel_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QDirModel_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
+void QDirModel_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QDirModel::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -253,7 +314,7 @@ void QDirModel_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QDirModel_TrUtf83(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QDirModel_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QDirModel::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -286,8 +347,18 @@ bool QDirModel_SetData3(QDirModel* self, QModelIndex* index, QVariant* value, in
 	return self->setData(*index, *value, static_cast<int>(role));
 }
 
+QVariant* QDirModel_HeaderData3(QDirModel* self, int section, uintptr_t orientation, int role) {
+	QVariant ret = self->headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), static_cast<int>(role));
+	// Copy-construct value returned type into heap-allocated copy
+	return static_cast<QVariant*>(new QVariant(ret));
+}
+
 bool QDirModel_HasChildren1(QDirModel* self, QModelIndex* index) {
 	return self->hasChildren(*index);
+}
+
+void QDirModel_Sort2(QDirModel* self, int column, uintptr_t order) {
+	self->sort(static_cast<int>(column), static_cast<Qt::SortOrder>(order));
 }
 
 QModelIndex* QDirModel_Index2(QDirModel* self, const char* path, size_t path_Strlen, int column) {

@@ -1,12 +1,13 @@
-#include "gen_qfontdialog.h"
-#include "qfontdialog.h"
-
 #include <QFont>
 #include <QFontDialog>
 #include <QMetaObject>
 #include <QString>
+#include <QByteArray>
+#include <cstring>
 #include <QWidget>
+#include "qfontdialog.h"
 
+#include "gen_qfontdialog.h"
 
 extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
@@ -29,10 +30,10 @@ QFontDialog* QFontDialog_new4(QFont* initial, QWidget* parent) {
 }
 
 QMetaObject* QFontDialog_MetaObject(QFontDialog* self) {
-	return (QMetaObject*) self->metaObject();
+	return (QMetaObject*) const_cast<const QFontDialog*>(self)->metaObject();
 }
 
-void QFontDialog_Tr(char* s, char** _out, int* _out_Strlen) {
+void QFontDialog_Tr(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QFontDialog::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -41,7 +42,7 @@ void QFontDialog_Tr(char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QFontDialog_TrUtf8(char* s, char** _out, int* _out_Strlen) {
+void QFontDialog_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QFontDialog::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -55,15 +56,32 @@ void QFontDialog_SetCurrentFont(QFontDialog* self, QFont* font) {
 }
 
 QFont* QFontDialog_CurrentFont(QFontDialog* self) {
-	QFont ret = self->currentFont();
+	QFont ret = const_cast<const QFontDialog*>(self)->currentFont();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QFont*>(new QFont(ret));
 }
 
 QFont* QFontDialog_SelectedFont(QFontDialog* self) {
-	QFont ret = self->selectedFont();
+	QFont ret = const_cast<const QFontDialog*>(self)->selectedFont();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QFont*>(new QFont(ret));
+}
+
+void QFontDialog_SetOption(QFontDialog* self, uintptr_t option) {
+	self->setOption(static_cast<QFontDialog::FontDialogOption>(option));
+}
+
+bool QFontDialog_TestOption(QFontDialog* self, uintptr_t option) {
+	return const_cast<const QFontDialog*>(self)->testOption(static_cast<QFontDialog::FontDialogOption>(option));
+}
+
+void QFontDialog_SetOptions(QFontDialog* self, int options) {
+	self->setOptions(static_cast<QFontDialog::FontDialogOptions>(options));
+}
+
+int QFontDialog_Options(QFontDialog* self) {
+	QFontDialog::FontDialogOptions ret = const_cast<const QFontDialog*>(self)->options();
+	return static_cast<int>(ret);
 }
 
 void QFontDialog_SetVisible(QFontDialog* self, bool visible) {
@@ -72,6 +90,12 @@ void QFontDialog_SetVisible(QFontDialog* self, bool visible) {
 
 QFont* QFontDialog_GetFont(bool* ok) {
 	QFont ret = QFontDialog::getFont(ok);
+	// Copy-construct value returned type into heap-allocated copy
+	return static_cast<QFont*>(new QFont(ret));
+}
+
+QFont* QFontDialog_GetFont2(bool* ok, QFont* initial) {
+	QFont ret = QFontDialog::getFont(ok, *initial);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QFont*>(new QFont(ret));
 }
@@ -96,7 +120,7 @@ void QFontDialog_connect_FontSelected(QFontDialog* self, void* slot) {
 	});
 }
 
-void QFontDialog_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
+void QFontDialog_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QFontDialog::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -105,7 +129,7 @@ void QFontDialog_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QFontDialog_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QFontDialog_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QFontDialog::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -114,7 +138,7 @@ void QFontDialog_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QFontDialog_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
+void QFontDialog_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QFontDialog::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -123,7 +147,7 @@ void QFontDialog_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QFontDialog_TrUtf83(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QFontDialog_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QFontDialog::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -132,8 +156,32 @@ void QFontDialog_TrUtf83(char* s, char* c, int n, char** _out, int* _out_Strlen)
 	*_out_Strlen = b.length();
 }
 
-QFont* QFontDialog_GetFont2(bool* ok, QWidget* parent) {
+void QFontDialog_SetOption2(QFontDialog* self, uintptr_t option, bool on) {
+	self->setOption(static_cast<QFontDialog::FontDialogOption>(option), on);
+}
+
+QFont* QFontDialog_GetFont22(bool* ok, QWidget* parent) {
 	QFont ret = QFontDialog::getFont(ok, parent);
+	// Copy-construct value returned type into heap-allocated copy
+	return static_cast<QFont*>(new QFont(ret));
+}
+
+QFont* QFontDialog_GetFont3(bool* ok, QFont* initial, QWidget* parent) {
+	QFont ret = QFontDialog::getFont(ok, *initial, parent);
+	// Copy-construct value returned type into heap-allocated copy
+	return static_cast<QFont*>(new QFont(ret));
+}
+
+QFont* QFontDialog_GetFont4(bool* ok, QFont* initial, QWidget* parent, const char* title, size_t title_Strlen) {
+	QString title_QString = QString::fromUtf8(title, title_Strlen);
+	QFont ret = QFontDialog::getFont(ok, *initial, parent, title_QString);
+	// Copy-construct value returned type into heap-allocated copy
+	return static_cast<QFont*>(new QFont(ret));
+}
+
+QFont* QFontDialog_GetFont5(bool* ok, QFont* initial, QWidget* parent, const char* title, size_t title_Strlen, int options) {
+	QString title_QString = QString::fromUtf8(title, title_Strlen);
+	QFont ret = QFontDialog::getFont(ok, *initial, parent, title_QString, static_cast<QFontDialog::FontDialogOptions>(options));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QFont*>(new QFont(ret));
 }

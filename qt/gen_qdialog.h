@@ -23,11 +23,16 @@ typedef struct QSize QSize;
 typedef struct QWidget QWidget;
 #endif
 
+QDialog* QDialog_new();
+QDialog* QDialog_new2(QWidget* parent);
+QDialog* QDialog_new3(QWidget* parent, int f);
 QMetaObject* QDialog_MetaObject(QDialog* self);
-void QDialog_Tr(char* s, char** _out, int* _out_Strlen);
-void QDialog_TrUtf8(char* s, char** _out, int* _out_Strlen);
+void QDialog_Tr(const char* s, char** _out, int* _out_Strlen);
+void QDialog_TrUtf8(const char* s, char** _out, int* _out_Strlen);
 int QDialog_Result(QDialog* self);
 void QDialog_SetVisible(QDialog* self, bool visible);
+void QDialog_SetOrientation(QDialog* self, uintptr_t orientation);
+uintptr_t QDialog_Orientation(QDialog* self);
 void QDialog_SetExtension(QDialog* self, QWidget* extension);
 QWidget* QDialog_Extension(QDialog* self);
 QSize* QDialog_SizeHint(QDialog* self);
@@ -48,10 +53,10 @@ void QDialog_Done(QDialog* self, int param1);
 void QDialog_Accept(QDialog* self);
 void QDialog_Reject(QDialog* self);
 void QDialog_ShowExtension(QDialog* self, bool param1);
-void QDialog_Tr2(char* s, char* c, char** _out, int* _out_Strlen);
-void QDialog_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen);
-void QDialog_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen);
-void QDialog_TrUtf83(char* s, char* c, int n, char** _out, int* _out_Strlen);
+void QDialog_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
+void QDialog_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+void QDialog_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
+void QDialog_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
 void QDialog_Delete(QDialog* self);
 
 #ifdef __cplusplus

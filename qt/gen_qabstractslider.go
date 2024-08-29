@@ -74,6 +74,11 @@ func QAbstractSlider_TrUtf8(s string) string {
 	return ret
 }
 
+func (this *QAbstractSlider) Orientation() uintptr {
+	ret := C.QAbstractSlider_Orientation(this.h)
+	return (uintptr)(ret)
+}
+
 func (this *QAbstractSlider) SetMinimum(minimum int) {
 	C.QAbstractSlider_SetMinimum(this.h, (C.int)(minimum))
 }
@@ -160,8 +165,16 @@ func (this *QAbstractSlider) Value() int {
 	return (int)(ret)
 }
 
+func (this *QAbstractSlider) TriggerAction(action uintptr) {
+	C.QAbstractSlider_TriggerAction(this.h, (C.uintptr_t)(action))
+}
+
 func (this *QAbstractSlider) SetValue(value int) {
 	C.QAbstractSlider_SetValue(this.h, (C.int)(value))
+}
+
+func (this *QAbstractSlider) SetOrientation(orientation uintptr) {
+	C.QAbstractSlider_SetOrientation(this.h, (C.uintptr_t)(orientation))
 }
 
 func (this *QAbstractSlider) SetRange(min int, max int) {

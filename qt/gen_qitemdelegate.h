@@ -38,8 +38,8 @@ typedef struct QWidget QWidget;
 QItemDelegate* QItemDelegate_new();
 QItemDelegate* QItemDelegate_new2(QObject* parent);
 QMetaObject* QItemDelegate_MetaObject(QItemDelegate* self);
-void QItemDelegate_Tr(char* s, char** _out, int* _out_Strlen);
-void QItemDelegate_TrUtf8(char* s, char** _out, int* _out_Strlen);
+void QItemDelegate_Tr(const char* s, char** _out, int* _out_Strlen);
+void QItemDelegate_TrUtf8(const char* s, char** _out, int* _out_Strlen);
 bool QItemDelegate_HasClipping(QItemDelegate* self);
 void QItemDelegate_SetClipping(QItemDelegate* self, bool clip);
 void QItemDelegate_Paint(QItemDelegate* self, QPainter* painter, QStyleOptionViewItem* option, QModelIndex* index);
@@ -50,10 +50,10 @@ void QItemDelegate_SetModelData(QItemDelegate* self, QWidget* editor, QAbstractI
 void QItemDelegate_UpdateEditorGeometry(QItemDelegate* self, QWidget* editor, QStyleOptionViewItem* option, QModelIndex* index);
 QItemEditorFactory* QItemDelegate_ItemEditorFactory(QItemDelegate* self);
 void QItemDelegate_SetItemEditorFactory(QItemDelegate* self, QItemEditorFactory* factory);
-void QItemDelegate_Tr2(char* s, char* c, char** _out, int* _out_Strlen);
-void QItemDelegate_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen);
-void QItemDelegate_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen);
-void QItemDelegate_TrUtf83(char* s, char* c, int n, char** _out, int* _out_Strlen);
+void QItemDelegate_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
+void QItemDelegate_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+void QItemDelegate_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
+void QItemDelegate_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
 void QItemDelegate_Delete(QItemDelegate* self);
 
 #ifdef __cplusplus

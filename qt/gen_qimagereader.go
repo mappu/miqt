@@ -158,6 +158,11 @@ func (this *QImageReader) Size() *QSize {
 	return ret1
 }
 
+func (this *QImageReader) ImageFormat() uintptr {
+	ret := C.QImageReader_ImageFormat(this.h)
+	return (uintptr)(ret)
+}
+
 func (this *QImageReader) TextKeys() []string {
 	var _out **C.char = nil
 	var _out_Lengths *C.int = nil
@@ -256,6 +261,11 @@ func (this *QImageReader) BackgroundColor() *QColor {
 func (this *QImageReader) SupportsAnimation() bool {
 	ret := C.QImageReader_SupportsAnimation(this.h)
 	return (bool)(ret)
+}
+
+func (this *QImageReader) Transformation() int {
+	ret := C.QImageReader_Transformation(this.h)
+	return (int)(ret)
 }
 
 func (this *QImageReader) SetAutoTransform(enabled bool) {
@@ -362,6 +372,11 @@ func (this *QImageReader) CurrentImageRect() *QRect {
 	return ret1
 }
 
+func (this *QImageReader) Error() uintptr {
+	ret := C.QImageReader_Error(this.h)
+	return (uintptr)(ret)
+}
+
 func (this *QImageReader) ErrorString() string {
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
@@ -371,10 +386,15 @@ func (this *QImageReader) ErrorString() string {
 	return ret
 }
 
-func QImageReader_ImageFormat(fileName string) *QByteArray {
+func (this *QImageReader) SupportsOption(option uintptr) bool {
+	ret := C.QImageReader_SupportsOption(this.h, (C.uintptr_t)(option))
+	return (bool)(ret)
+}
+
+func QImageReader_ImageFormatWithFileName(fileName string) *QByteArray {
 	fileName_Cstring := C.CString(fileName)
 	defer C.free(unsafe.Pointer(fileName_Cstring))
-	ret := C.QImageReader_ImageFormat(fileName_Cstring, C.ulong(len(fileName)))
+	ret := C.QImageReader_ImageFormatWithFileName(fileName_Cstring, C.ulong(len(fileName)))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQByteArray(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QByteArray) {

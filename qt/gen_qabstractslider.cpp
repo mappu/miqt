@@ -1,11 +1,12 @@
-#include "gen_qabstractslider.h"
-#include "qabstractslider.h"
-
 #include <QAbstractSlider>
 #include <QMetaObject>
 #include <QString>
+#include <QByteArray>
+#include <cstring>
 #include <QWidget>
+#include "qabstractslider.h"
 
+#include "gen_qabstractslider.h"
 
 extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
@@ -20,10 +21,10 @@ QAbstractSlider* QAbstractSlider_new2(QWidget* parent) {
 }
 
 QMetaObject* QAbstractSlider_MetaObject(QAbstractSlider* self) {
-	return (QMetaObject*) self->metaObject();
+	return (QMetaObject*) const_cast<const QAbstractSlider*>(self)->metaObject();
 }
 
-void QAbstractSlider_Tr(char* s, char** _out, int* _out_Strlen) {
+void QAbstractSlider_Tr(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QAbstractSlider::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -32,7 +33,7 @@ void QAbstractSlider_Tr(char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QAbstractSlider_TrUtf8(char* s, char** _out, int* _out_Strlen) {
+void QAbstractSlider_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QAbstractSlider::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -41,12 +42,17 @@ void QAbstractSlider_TrUtf8(char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
+uintptr_t QAbstractSlider_Orientation(QAbstractSlider* self) {
+	Qt::Orientation ret = const_cast<const QAbstractSlider*>(self)->orientation();
+	return static_cast<uintptr_t>(ret);
+}
+
 void QAbstractSlider_SetMinimum(QAbstractSlider* self, int minimum) {
 	self->setMinimum(static_cast<int>(minimum));
 }
 
 int QAbstractSlider_Minimum(QAbstractSlider* self) {
-	return self->minimum();
+	return const_cast<const QAbstractSlider*>(self)->minimum();
 }
 
 void QAbstractSlider_SetMaximum(QAbstractSlider* self, int maximum) {
@@ -54,7 +60,7 @@ void QAbstractSlider_SetMaximum(QAbstractSlider* self, int maximum) {
 }
 
 int QAbstractSlider_Maximum(QAbstractSlider* self) {
-	return self->maximum();
+	return const_cast<const QAbstractSlider*>(self)->maximum();
 }
 
 void QAbstractSlider_SetSingleStep(QAbstractSlider* self, int singleStep) {
@@ -62,7 +68,7 @@ void QAbstractSlider_SetSingleStep(QAbstractSlider* self, int singleStep) {
 }
 
 int QAbstractSlider_SingleStep(QAbstractSlider* self) {
-	return self->singleStep();
+	return const_cast<const QAbstractSlider*>(self)->singleStep();
 }
 
 void QAbstractSlider_SetPageStep(QAbstractSlider* self, int pageStep) {
@@ -70,7 +76,7 @@ void QAbstractSlider_SetPageStep(QAbstractSlider* self, int pageStep) {
 }
 
 int QAbstractSlider_PageStep(QAbstractSlider* self) {
-	return self->pageStep();
+	return const_cast<const QAbstractSlider*>(self)->pageStep();
 }
 
 void QAbstractSlider_SetTracking(QAbstractSlider* self, bool enable) {
@@ -78,7 +84,7 @@ void QAbstractSlider_SetTracking(QAbstractSlider* self, bool enable) {
 }
 
 bool QAbstractSlider_HasTracking(QAbstractSlider* self) {
-	return self->hasTracking();
+	return const_cast<const QAbstractSlider*>(self)->hasTracking();
 }
 
 void QAbstractSlider_SetSliderDown(QAbstractSlider* self, bool sliderDown) {
@@ -86,7 +92,7 @@ void QAbstractSlider_SetSliderDown(QAbstractSlider* self, bool sliderDown) {
 }
 
 bool QAbstractSlider_IsSliderDown(QAbstractSlider* self) {
-	return self->isSliderDown();
+	return const_cast<const QAbstractSlider*>(self)->isSliderDown();
 }
 
 void QAbstractSlider_SetSliderPosition(QAbstractSlider* self, int sliderPosition) {
@@ -94,7 +100,7 @@ void QAbstractSlider_SetSliderPosition(QAbstractSlider* self, int sliderPosition
 }
 
 int QAbstractSlider_SliderPosition(QAbstractSlider* self) {
-	return self->sliderPosition();
+	return const_cast<const QAbstractSlider*>(self)->sliderPosition();
 }
 
 void QAbstractSlider_SetInvertedAppearance(QAbstractSlider* self, bool invertedAppearance) {
@@ -102,7 +108,7 @@ void QAbstractSlider_SetInvertedAppearance(QAbstractSlider* self, bool invertedA
 }
 
 bool QAbstractSlider_InvertedAppearance(QAbstractSlider* self) {
-	return self->invertedAppearance();
+	return const_cast<const QAbstractSlider*>(self)->invertedAppearance();
 }
 
 void QAbstractSlider_SetInvertedControls(QAbstractSlider* self, bool invertedControls) {
@@ -110,15 +116,23 @@ void QAbstractSlider_SetInvertedControls(QAbstractSlider* self, bool invertedCon
 }
 
 bool QAbstractSlider_InvertedControls(QAbstractSlider* self) {
-	return self->invertedControls();
+	return const_cast<const QAbstractSlider*>(self)->invertedControls();
 }
 
 int QAbstractSlider_Value(QAbstractSlider* self) {
-	return self->value();
+	return const_cast<const QAbstractSlider*>(self)->value();
+}
+
+void QAbstractSlider_TriggerAction(QAbstractSlider* self, uintptr_t action) {
+	self->triggerAction(static_cast<QAbstractSlider::SliderAction>(action));
 }
 
 void QAbstractSlider_SetValue(QAbstractSlider* self, int value) {
 	self->setValue(static_cast<int>(value));
+}
+
+void QAbstractSlider_SetOrientation(QAbstractSlider* self, uintptr_t orientation) {
+	self->setOrientation(static_cast<Qt::Orientation>(orientation));
 }
 
 void QAbstractSlider_SetRange(QAbstractSlider* self, int min, int max) {
@@ -185,7 +199,7 @@ void QAbstractSlider_connect_ActionTriggered(QAbstractSlider* self, void* slot) 
 	});
 }
 
-void QAbstractSlider_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
+void QAbstractSlider_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QAbstractSlider::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -194,7 +208,7 @@ void QAbstractSlider_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QAbstractSlider_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QAbstractSlider_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QAbstractSlider::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -203,7 +217,7 @@ void QAbstractSlider_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen)
 	*_out_Strlen = b.length();
 }
 
-void QAbstractSlider_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
+void QAbstractSlider_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QAbstractSlider::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -212,7 +226,7 @@ void QAbstractSlider_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QAbstractSlider_TrUtf83(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QAbstractSlider_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QAbstractSlider::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();

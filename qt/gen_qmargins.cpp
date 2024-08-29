@@ -1,9 +1,8 @@
-#include "gen_qmargins.h"
-#include "qmargins.h"
-
 #include <QMargins>
 #include <QMarginsF>
+#include "qmargins.h"
 
+#include "gen_qmargins.h"
 
 extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
@@ -22,23 +21,23 @@ QMargins* QMargins_new3(QMargins* param1) {
 }
 
 bool QMargins_IsNull(QMargins* self) {
-	return self->isNull();
+	return const_cast<const QMargins*>(self)->isNull();
 }
 
 int QMargins_Left(QMargins* self) {
-	return self->left();
+	return const_cast<const QMargins*>(self)->left();
 }
 
 int QMargins_Top(QMargins* self) {
-	return self->top();
+	return const_cast<const QMargins*>(self)->top();
 }
 
 int QMargins_Right(QMargins* self) {
-	return self->right();
+	return const_cast<const QMargins*>(self)->right();
 }
 
 int QMargins_Bottom(QMargins* self) {
-	return self->bottom();
+	return const_cast<const QMargins*>(self)->bottom();
 }
 
 void QMargins_SetLeft(QMargins* self, int left) {
@@ -126,23 +125,23 @@ QMarginsF* QMarginsF_new4(QMarginsF* param1) {
 }
 
 bool QMarginsF_IsNull(QMarginsF* self) {
-	return self->isNull();
+	return const_cast<const QMarginsF*>(self)->isNull();
 }
 
 double QMarginsF_Left(QMarginsF* self) {
-	return self->left();
+	return const_cast<const QMarginsF*>(self)->left();
 }
 
 double QMarginsF_Top(QMarginsF* self) {
-	return self->top();
+	return const_cast<const QMarginsF*>(self)->top();
 }
 
 double QMarginsF_Right(QMarginsF* self) {
-	return self->right();
+	return const_cast<const QMarginsF*>(self)->right();
 }
 
 double QMarginsF_Bottom(QMarginsF* self) {
-	return self->bottom();
+	return const_cast<const QMarginsF*>(self)->bottom();
 }
 
 void QMarginsF_SetLeft(QMarginsF* self, double left) {
@@ -198,7 +197,7 @@ QMarginsF* QMarginsF_OperatorDivideAssign(QMarginsF* self, double divisor) {
 }
 
 QMargins* QMarginsF_ToMargins(QMarginsF* self) {
-	QMargins ret = self->toMargins();
+	QMargins ret = const_cast<const QMarginsF*>(self)->toMargins();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QMargins*>(new QMargins(ret));
 }

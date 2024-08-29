@@ -1,6 +1,3 @@
-#include "gen_qtoolbar.h"
-#include "qtoolbar.h"
-
 #include <QAction>
 #include <QIcon>
 #include <QMetaObject>
@@ -8,9 +5,13 @@
 #include <QRect>
 #include <QSize>
 #include <QString>
+#include <QByteArray>
+#include <cstring>
 #include <QToolBar>
 #include <QWidget>
+#include "qtoolbar.h"
 
+#include "gen_qtoolbar.h"
 
 extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
@@ -35,10 +36,10 @@ QToolBar* QToolBar_new4(QWidget* parent) {
 }
 
 QMetaObject* QToolBar_MetaObject(QToolBar* self) {
-	return (QMetaObject*) self->metaObject();
+	return (QMetaObject*) const_cast<const QToolBar*>(self)->metaObject();
 }
 
-void QToolBar_Tr(char* s, char** _out, int* _out_Strlen) {
+void QToolBar_Tr(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QToolBar::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -47,7 +48,7 @@ void QToolBar_Tr(char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QToolBar_TrUtf8(char* s, char** _out, int* _out_Strlen) {
+void QToolBar_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QToolBar::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -61,7 +62,29 @@ void QToolBar_SetMovable(QToolBar* self, bool movable) {
 }
 
 bool QToolBar_IsMovable(QToolBar* self) {
-	return self->isMovable();
+	return const_cast<const QToolBar*>(self)->isMovable();
+}
+
+void QToolBar_SetAllowedAreas(QToolBar* self, int areas) {
+	self->setAllowedAreas(static_cast<Qt::ToolBarAreas>(areas));
+}
+
+int QToolBar_AllowedAreas(QToolBar* self) {
+	Qt::ToolBarAreas ret = const_cast<const QToolBar*>(self)->allowedAreas();
+	return static_cast<int>(ret);
+}
+
+bool QToolBar_IsAreaAllowed(QToolBar* self, uintptr_t area) {
+	return const_cast<const QToolBar*>(self)->isAreaAllowed(static_cast<Qt::ToolBarArea>(area));
+}
+
+void QToolBar_SetOrientation(QToolBar* self, uintptr_t orientation) {
+	self->setOrientation(static_cast<Qt::Orientation>(orientation));
+}
+
+uintptr_t QToolBar_Orientation(QToolBar* self) {
+	Qt::Orientation ret = const_cast<const QToolBar*>(self)->orientation();
+	return static_cast<uintptr_t>(ret);
 }
 
 void QToolBar_Clear(QToolBar* self) {
@@ -95,35 +118,40 @@ QAction* QToolBar_InsertWidget(QToolBar* self, QAction* before, QWidget* widget)
 }
 
 QRect* QToolBar_ActionGeometry(QToolBar* self, QAction* action) {
-	QRect ret = self->actionGeometry(action);
+	QRect ret = const_cast<const QToolBar*>(self)->actionGeometry(action);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRect*>(new QRect(ret));
 }
 
 QAction* QToolBar_ActionAt(QToolBar* self, QPoint* p) {
-	return self->actionAt(*p);
+	return const_cast<const QToolBar*>(self)->actionAt(*p);
 }
 
 QAction* QToolBar_ActionAt2(QToolBar* self, int x, int y) {
-	return self->actionAt(static_cast<int>(x), static_cast<int>(y));
+	return const_cast<const QToolBar*>(self)->actionAt(static_cast<int>(x), static_cast<int>(y));
 }
 
 QAction* QToolBar_ToggleViewAction(QToolBar* self) {
-	return self->toggleViewAction();
+	return const_cast<const QToolBar*>(self)->toggleViewAction();
 }
 
 QSize* QToolBar_IconSize(QToolBar* self) {
-	QSize ret = self->iconSize();
+	QSize ret = const_cast<const QToolBar*>(self)->iconSize();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
 
+uintptr_t QToolBar_ToolButtonStyle(QToolBar* self) {
+	Qt::ToolButtonStyle ret = const_cast<const QToolBar*>(self)->toolButtonStyle();
+	return static_cast<uintptr_t>(ret);
+}
+
 QWidget* QToolBar_WidgetForAction(QToolBar* self, QAction* action) {
-	return self->widgetForAction(action);
+	return const_cast<const QToolBar*>(self)->widgetForAction(action);
 }
 
 bool QToolBar_IsFloatable(QToolBar* self) {
-	return self->isFloatable();
+	return const_cast<const QToolBar*>(self)->isFloatable();
 }
 
 void QToolBar_SetFloatable(QToolBar* self, bool floatable) {
@@ -131,11 +159,15 @@ void QToolBar_SetFloatable(QToolBar* self, bool floatable) {
 }
 
 bool QToolBar_IsFloating(QToolBar* self) {
-	return self->isFloating();
+	return const_cast<const QToolBar*>(self)->isFloating();
 }
 
 void QToolBar_SetIconSize(QToolBar* self, QSize* iconSize) {
 	self->setIconSize(*iconSize);
+}
+
+void QToolBar_SetToolButtonStyle(QToolBar* self, uintptr_t toolButtonStyle) {
+	self->setToolButtonStyle(static_cast<Qt::ToolButtonStyle>(toolButtonStyle));
 }
 
 void QToolBar_ActionTriggered(QToolBar* self, QAction* action) {
@@ -158,12 +190,42 @@ void QToolBar_connect_MovableChanged(QToolBar* self, void* slot) {
 	});
 }
 
+void QToolBar_AllowedAreasChanged(QToolBar* self, int allowedAreas) {
+	self->allowedAreasChanged(static_cast<Qt::ToolBarAreas>(allowedAreas));
+}
+
+void QToolBar_connect_AllowedAreasChanged(QToolBar* self, void* slot) {
+	QToolBar::connect(self, static_cast<void (QToolBar::*)(Qt::ToolBarAreas)>(&QToolBar::allowedAreasChanged), self, [=](Qt::ToolBarAreas allowedAreas) {
+		miqt_exec_callback(slot, 0, nullptr);
+	});
+}
+
+void QToolBar_OrientationChanged(QToolBar* self, uintptr_t orientation) {
+	self->orientationChanged(static_cast<Qt::Orientation>(orientation));
+}
+
+void QToolBar_connect_OrientationChanged(QToolBar* self, void* slot) {
+	QToolBar::connect(self, static_cast<void (QToolBar::*)(Qt::Orientation)>(&QToolBar::orientationChanged), self, [=](Qt::Orientation orientation) {
+		miqt_exec_callback(slot, 0, nullptr);
+	});
+}
+
 void QToolBar_IconSizeChanged(QToolBar* self, QSize* iconSize) {
 	self->iconSizeChanged(*iconSize);
 }
 
 void QToolBar_connect_IconSizeChanged(QToolBar* self, void* slot) {
 	QToolBar::connect(self, static_cast<void (QToolBar::*)(const QSize&)>(&QToolBar::iconSizeChanged), self, [=](const QSize& iconSize) {
+		miqt_exec_callback(slot, 0, nullptr);
+	});
+}
+
+void QToolBar_ToolButtonStyleChanged(QToolBar* self, uintptr_t toolButtonStyle) {
+	self->toolButtonStyleChanged(static_cast<Qt::ToolButtonStyle>(toolButtonStyle));
+}
+
+void QToolBar_connect_ToolButtonStyleChanged(QToolBar* self, void* slot) {
+	QToolBar::connect(self, static_cast<void (QToolBar::*)(Qt::ToolButtonStyle)>(&QToolBar::toolButtonStyleChanged), self, [=](Qt::ToolButtonStyle toolButtonStyle) {
 		miqt_exec_callback(slot, 0, nullptr);
 	});
 }
@@ -188,7 +250,7 @@ void QToolBar_connect_VisibilityChanged(QToolBar* self, void* slot) {
 	});
 }
 
-void QToolBar_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
+void QToolBar_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QToolBar::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -197,7 +259,7 @@ void QToolBar_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QToolBar_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QToolBar_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QToolBar::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -206,7 +268,7 @@ void QToolBar_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QToolBar_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
+void QToolBar_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QToolBar::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -215,7 +277,7 @@ void QToolBar_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QToolBar_TrUtf83(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QToolBar_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QToolBar::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();

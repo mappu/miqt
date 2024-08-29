@@ -1,6 +1,3 @@
-#include "gen_qcompleter.h"
-#include "qcompleter.h"
-
 #include <QAbstractItemModel>
 #include <QAbstractItemView>
 #include <QCompleter>
@@ -10,8 +7,12 @@
 #include <QObject>
 #include <QRect>
 #include <QString>
+#include <QByteArray>
+#include <cstring>
 #include <QWidget>
+#include "qcompleter.h"
 
+#include "gen_qcompleter.h"
 
 extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
@@ -52,10 +53,10 @@ QCompleter* QCompleter_new6(char** completions, uint64_t* completions_Lengths, s
 }
 
 QMetaObject* QCompleter_MetaObject(QCompleter* self) {
-	return (QMetaObject*) self->metaObject();
+	return (QMetaObject*) const_cast<const QCompleter*>(self)->metaObject();
 }
 
-void QCompleter_Tr(char* s, char** _out, int* _out_Strlen) {
+void QCompleter_Tr(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QCompleter::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -64,7 +65,7 @@ void QCompleter_Tr(char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QCompleter_TrUtf8(char* s, char** _out, int* _out_Strlen) {
+void QCompleter_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QCompleter::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -78,7 +79,7 @@ void QCompleter_SetWidget(QCompleter* self, QWidget* widget) {
 }
 
 QWidget* QCompleter_Widget(QCompleter* self) {
-	return self->widget();
+	return const_cast<const QCompleter*>(self)->widget();
 }
 
 void QCompleter_SetModel(QCompleter* self, QAbstractItemModel* c) {
@@ -86,15 +87,51 @@ void QCompleter_SetModel(QCompleter* self, QAbstractItemModel* c) {
 }
 
 QAbstractItemModel* QCompleter_Model(QCompleter* self) {
-	return self->model();
+	return const_cast<const QCompleter*>(self)->model();
+}
+
+void QCompleter_SetCompletionMode(QCompleter* self, uintptr_t mode) {
+	self->setCompletionMode(static_cast<QCompleter::CompletionMode>(mode));
+}
+
+uintptr_t QCompleter_CompletionMode(QCompleter* self) {
+	QCompleter::CompletionMode ret = const_cast<const QCompleter*>(self)->completionMode();
+	return static_cast<uintptr_t>(ret);
+}
+
+void QCompleter_SetFilterMode(QCompleter* self, int filterMode) {
+	self->setFilterMode(static_cast<Qt::MatchFlags>(filterMode));
+}
+
+int QCompleter_FilterMode(QCompleter* self) {
+	Qt::MatchFlags ret = const_cast<const QCompleter*>(self)->filterMode();
+	return static_cast<int>(ret);
 }
 
 QAbstractItemView* QCompleter_Popup(QCompleter* self) {
-	return self->popup();
+	return const_cast<const QCompleter*>(self)->popup();
 }
 
 void QCompleter_SetPopup(QCompleter* self, QAbstractItemView* popup) {
 	self->setPopup(popup);
+}
+
+void QCompleter_SetCaseSensitivity(QCompleter* self, uintptr_t caseSensitivity) {
+	self->setCaseSensitivity(static_cast<Qt::CaseSensitivity>(caseSensitivity));
+}
+
+uintptr_t QCompleter_CaseSensitivity(QCompleter* self) {
+	Qt::CaseSensitivity ret = const_cast<const QCompleter*>(self)->caseSensitivity();
+	return static_cast<uintptr_t>(ret);
+}
+
+void QCompleter_SetModelSorting(QCompleter* self, uintptr_t sorting) {
+	self->setModelSorting(static_cast<QCompleter::ModelSorting>(sorting));
+}
+
+uintptr_t QCompleter_ModelSorting(QCompleter* self) {
+	QCompleter::ModelSorting ret = const_cast<const QCompleter*>(self)->modelSorting();
+	return static_cast<uintptr_t>(ret);
 }
 
 void QCompleter_SetCompletionColumn(QCompleter* self, int column) {
@@ -102,7 +139,7 @@ void QCompleter_SetCompletionColumn(QCompleter* self, int column) {
 }
 
 int QCompleter_CompletionColumn(QCompleter* self) {
-	return self->completionColumn();
+	return const_cast<const QCompleter*>(self)->completionColumn();
 }
 
 void QCompleter_SetCompletionRole(QCompleter* self, int role) {
@@ -110,15 +147,15 @@ void QCompleter_SetCompletionRole(QCompleter* self, int role) {
 }
 
 int QCompleter_CompletionRole(QCompleter* self) {
-	return self->completionRole();
+	return const_cast<const QCompleter*>(self)->completionRole();
 }
 
 bool QCompleter_WrapAround(QCompleter* self) {
-	return self->wrapAround();
+	return const_cast<const QCompleter*>(self)->wrapAround();
 }
 
 int QCompleter_MaxVisibleItems(QCompleter* self) {
-	return self->maxVisibleItems();
+	return const_cast<const QCompleter*>(self)->maxVisibleItems();
 }
 
 void QCompleter_SetMaxVisibleItems(QCompleter* self, int maxItems) {
@@ -126,7 +163,7 @@ void QCompleter_SetMaxVisibleItems(QCompleter* self, int maxItems) {
 }
 
 int QCompleter_CompletionCount(QCompleter* self) {
-	return self->completionCount();
+	return const_cast<const QCompleter*>(self)->completionCount();
 }
 
 bool QCompleter_SetCurrentRow(QCompleter* self, int row) {
@@ -134,17 +171,17 @@ bool QCompleter_SetCurrentRow(QCompleter* self, int row) {
 }
 
 int QCompleter_CurrentRow(QCompleter* self) {
-	return self->currentRow();
+	return const_cast<const QCompleter*>(self)->currentRow();
 }
 
 QModelIndex* QCompleter_CurrentIndex(QCompleter* self) {
-	QModelIndex ret = self->currentIndex();
+	QModelIndex ret = const_cast<const QCompleter*>(self)->currentIndex();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QModelIndex*>(new QModelIndex(ret));
 }
 
 void QCompleter_CurrentCompletion(QCompleter* self, char** _out, int* _out_Strlen) {
-	QString ret = self->currentCompletion();
+	QString ret = const_cast<const QCompleter*>(self)->currentCompletion();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -153,11 +190,11 @@ void QCompleter_CurrentCompletion(QCompleter* self, char** _out, int* _out_Strle
 }
 
 QAbstractItemModel* QCompleter_CompletionModel(QCompleter* self) {
-	return self->completionModel();
+	return const_cast<const QCompleter*>(self)->completionModel();
 }
 
 void QCompleter_CompletionPrefix(QCompleter* self, char** _out, int* _out_Strlen) {
-	QString ret = self->completionPrefix();
+	QString ret = const_cast<const QCompleter*>(self)->completionPrefix();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -179,7 +216,7 @@ void QCompleter_SetWrapAround(QCompleter* self, bool wrap) {
 }
 
 void QCompleter_PathFromIndex(QCompleter* self, QModelIndex* index, char** _out, int* _out_Strlen) {
-	QString ret = self->pathFromIndex(*index);
+	QString ret = const_cast<const QCompleter*>(self)->pathFromIndex(*index);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -189,7 +226,7 @@ void QCompleter_PathFromIndex(QCompleter* self, QModelIndex* index, char** _out,
 
 void QCompleter_SplitPath(QCompleter* self, const char* path, size_t path_Strlen, char*** _out, int** _out_Lengths, size_t* _out_len) {
 	QString path_QString = QString::fromUtf8(path, path_Strlen);
-	QList<QString> ret = self->splitPath(path_QString);
+	QStringList ret = const_cast<const QCompleter*>(self)->splitPath(path_QString);
 	// Convert QStringList from C++ memory to manually-managed C memory
 	char** __out = static_cast<char**>(malloc(sizeof(char*) * ret.length()));
 	int* __out_Lengths = static_cast<int*>(malloc(sizeof(int) * ret.length()));
@@ -247,7 +284,7 @@ void QCompleter_connect_HighlightedWithIndex(QCompleter* self, void* slot) {
 	});
 }
 
-void QCompleter_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
+void QCompleter_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QCompleter::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -256,7 +293,7 @@ void QCompleter_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QCompleter_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QCompleter_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QCompleter::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -265,7 +302,7 @@ void QCompleter_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QCompleter_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
+void QCompleter_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QCompleter::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -274,7 +311,7 @@ void QCompleter_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QCompleter_TrUtf83(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QCompleter_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QCompleter::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();

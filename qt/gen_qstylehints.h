@@ -22,8 +22,8 @@ typedef struct QStyleHints QStyleHints;
 #endif
 
 QMetaObject* QStyleHints_MetaObject(QStyleHints* self);
-void QStyleHints_Tr(char* s, char** _out, int* _out_Strlen);
-void QStyleHints_TrUtf8(char* s, char** _out, int* _out_Strlen);
+void QStyleHints_Tr(const char* s, char** _out, int* _out_Strlen);
+void QStyleHints_TrUtf8(const char* s, char** _out, int* _out_Strlen);
 void QStyleHints_SetMouseDoubleClickInterval(QStyleHints* self, int mouseDoubleClickInterval);
 int QStyleHints_MouseDoubleClickInterval(QStyleHints* self);
 int QStyleHints_MouseDoubleClickDistance(QStyleHints* self);
@@ -49,6 +49,8 @@ QChar* QStyleHints_PasswordMaskCharacter(QStyleHints* self);
 double QStyleHints_FontSmoothingGamma(QStyleHints* self);
 bool QStyleHints_UseRtlExtensions(QStyleHints* self);
 bool QStyleHints_SetFocusOnTouchRelease(QStyleHints* self);
+uintptr_t QStyleHints_TabFocusBehavior(QStyleHints* self);
+void QStyleHints_SetTabFocusBehavior(QStyleHints* self, uintptr_t tabFocusBehavior);
 bool QStyleHints_SingleClickActivation(QStyleHints* self);
 bool QStyleHints_UseHoverEffects(QStyleHints* self);
 void QStyleHints_SetUseHoverEffects(QStyleHints* self, bool useHoverEffects);
@@ -68,6 +70,8 @@ void QStyleHints_StartDragDistanceChanged(QStyleHints* self, int startDragDistan
 void QStyleHints_connect_StartDragDistanceChanged(QStyleHints* self, void* slot);
 void QStyleHints_StartDragTimeChanged(QStyleHints* self, int startDragTime);
 void QStyleHints_connect_StartDragTimeChanged(QStyleHints* self, void* slot);
+void QStyleHints_TabFocusBehaviorChanged(QStyleHints* self, uintptr_t tabFocusBehavior);
+void QStyleHints_connect_TabFocusBehaviorChanged(QStyleHints* self, void* slot);
 void QStyleHints_UseHoverEffectsChanged(QStyleHints* self, bool useHoverEffects);
 void QStyleHints_connect_UseHoverEffectsChanged(QStyleHints* self, void* slot);
 void QStyleHints_ShowShortcutsInContextMenusChanged(QStyleHints* self, bool param1);
@@ -76,10 +80,10 @@ void QStyleHints_WheelScrollLinesChanged(QStyleHints* self, int scrollLines);
 void QStyleHints_connect_WheelScrollLinesChanged(QStyleHints* self, void* slot);
 void QStyleHints_MouseQuickSelectionThresholdChanged(QStyleHints* self, int threshold);
 void QStyleHints_connect_MouseQuickSelectionThresholdChanged(QStyleHints* self, void* slot);
-void QStyleHints_Tr2(char* s, char* c, char** _out, int* _out_Strlen);
-void QStyleHints_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen);
-void QStyleHints_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen);
-void QStyleHints_TrUtf83(char* s, char* c, int n, char** _out, int* _out_Strlen);
+void QStyleHints_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
+void QStyleHints_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+void QStyleHints_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
+void QStyleHints_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
 void QStyleHints_Delete(QStyleHints* self);
 
 #ifdef __cplusplus

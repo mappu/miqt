@@ -41,8 +41,20 @@ func NewQHistoryState() *QHistoryState {
 }
 
 // NewQHistoryState2 constructs a new QHistoryState object.
-func NewQHistoryState2(parent *QState) *QHistoryState {
-	ret := C.QHistoryState_new2(parent.cPointer())
+func NewQHistoryState2(typeVal uintptr) *QHistoryState {
+	ret := C.QHistoryState_new2((C.uintptr_t)(typeVal))
+	return newQHistoryState(ret)
+}
+
+// NewQHistoryState3 constructs a new QHistoryState object.
+func NewQHistoryState3(parent *QState) *QHistoryState {
+	ret := C.QHistoryState_new3(parent.cPointer())
+	return newQHistoryState(ret)
+}
+
+// NewQHistoryState4 constructs a new QHistoryState object.
+func NewQHistoryState4(typeVal uintptr, parent *QState) *QHistoryState {
+	ret := C.QHistoryState_new4((C.uintptr_t)(typeVal), parent.cPointer())
 	return newQHistoryState(ret)
 }
 
@@ -89,6 +101,15 @@ func (this *QHistoryState) DefaultState() *QAbstractState {
 
 func (this *QHistoryState) SetDefaultState(state *QAbstractState) {
 	C.QHistoryState_SetDefaultState(this.h, state.cPointer())
+}
+
+func (this *QHistoryState) HistoryType() uintptr {
+	ret := C.QHistoryState_HistoryType(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QHistoryState) SetHistoryType(typeVal uintptr) {
+	C.QHistoryState_SetHistoryType(this.h, (C.uintptr_t)(typeVal))
 }
 
 func QHistoryState_Tr2(s string, c string) string {

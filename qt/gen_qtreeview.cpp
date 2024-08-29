@@ -1,6 +1,3 @@
-#include "gen_qtreeview.h"
-#include "qtreeview.h"
-
 #include <QAbstractItemModel>
 #include <QHeaderView>
 #include <QItemSelectionModel>
@@ -10,9 +7,13 @@
 #include <QPoint>
 #include <QRect>
 #include <QString>
+#include <QByteArray>
+#include <cstring>
 #include <QTreeView>
 #include <QWidget>
+#include "qtreeview.h"
 
+#include "gen_qtreeview.h"
 
 extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
@@ -27,10 +28,10 @@ QTreeView* QTreeView_new2(QWidget* parent) {
 }
 
 QMetaObject* QTreeView_MetaObject(QTreeView* self) {
-	return (QMetaObject*) self->metaObject();
+	return (QMetaObject*) const_cast<const QTreeView*>(self)->metaObject();
 }
 
-void QTreeView_Tr(char* s, char** _out, int* _out_Strlen) {
+void QTreeView_Tr(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QTreeView::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -39,7 +40,7 @@ void QTreeView_Tr(char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QTreeView_TrUtf8(char* s, char** _out, int* _out_Strlen) {
+void QTreeView_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QTreeView::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -61,7 +62,7 @@ void QTreeView_SetSelectionModel(QTreeView* self, QItemSelectionModel* selection
 }
 
 QHeaderView* QTreeView_Header(QTreeView* self) {
-	return self->header();
+	return const_cast<const QTreeView*>(self)->header();
 }
 
 void QTreeView_SetHeader(QTreeView* self, QHeaderView* header) {
@@ -69,7 +70,7 @@ void QTreeView_SetHeader(QTreeView* self, QHeaderView* header) {
 }
 
 int QTreeView_AutoExpandDelay(QTreeView* self) {
-	return self->autoExpandDelay();
+	return const_cast<const QTreeView*>(self)->autoExpandDelay();
 }
 
 void QTreeView_SetAutoExpandDelay(QTreeView* self, int delay) {
@@ -77,7 +78,7 @@ void QTreeView_SetAutoExpandDelay(QTreeView* self, int delay) {
 }
 
 int QTreeView_Indentation(QTreeView* self) {
-	return self->indentation();
+	return const_cast<const QTreeView*>(self)->indentation();
 }
 
 void QTreeView_SetIndentation(QTreeView* self, int i) {
@@ -89,7 +90,7 @@ void QTreeView_ResetIndentation(QTreeView* self) {
 }
 
 bool QTreeView_RootIsDecorated(QTreeView* self) {
-	return self->rootIsDecorated();
+	return const_cast<const QTreeView*>(self)->rootIsDecorated();
 }
 
 void QTreeView_SetRootIsDecorated(QTreeView* self, bool show) {
@@ -97,7 +98,7 @@ void QTreeView_SetRootIsDecorated(QTreeView* self, bool show) {
 }
 
 bool QTreeView_UniformRowHeights(QTreeView* self) {
-	return self->uniformRowHeights();
+	return const_cast<const QTreeView*>(self)->uniformRowHeights();
 }
 
 void QTreeView_SetUniformRowHeights(QTreeView* self, bool uniform) {
@@ -105,7 +106,7 @@ void QTreeView_SetUniformRowHeights(QTreeView* self, bool uniform) {
 }
 
 bool QTreeView_ItemsExpandable(QTreeView* self) {
-	return self->itemsExpandable();
+	return const_cast<const QTreeView*>(self)->itemsExpandable();
 }
 
 void QTreeView_SetItemsExpandable(QTreeView* self, bool enable) {
@@ -113,7 +114,7 @@ void QTreeView_SetItemsExpandable(QTreeView* self, bool enable) {
 }
 
 bool QTreeView_ExpandsOnDoubleClick(QTreeView* self) {
-	return self->expandsOnDoubleClick();
+	return const_cast<const QTreeView*>(self)->expandsOnDoubleClick();
 }
 
 void QTreeView_SetExpandsOnDoubleClick(QTreeView* self, bool enable) {
@@ -121,11 +122,11 @@ void QTreeView_SetExpandsOnDoubleClick(QTreeView* self, bool enable) {
 }
 
 int QTreeView_ColumnViewportPosition(QTreeView* self, int column) {
-	return self->columnViewportPosition(static_cast<int>(column));
+	return const_cast<const QTreeView*>(self)->columnViewportPosition(static_cast<int>(column));
 }
 
 int QTreeView_ColumnWidth(QTreeView* self, int column) {
-	return self->columnWidth(static_cast<int>(column));
+	return const_cast<const QTreeView*>(self)->columnWidth(static_cast<int>(column));
 }
 
 void QTreeView_SetColumnWidth(QTreeView* self, int column, int width) {
@@ -133,11 +134,11 @@ void QTreeView_SetColumnWidth(QTreeView* self, int column, int width) {
 }
 
 int QTreeView_ColumnAt(QTreeView* self, int x) {
-	return self->columnAt(static_cast<int>(x));
+	return const_cast<const QTreeView*>(self)->columnAt(static_cast<int>(x));
 }
 
 bool QTreeView_IsColumnHidden(QTreeView* self, int column) {
-	return self->isColumnHidden(static_cast<int>(column));
+	return const_cast<const QTreeView*>(self)->isColumnHidden(static_cast<int>(column));
 }
 
 void QTreeView_SetColumnHidden(QTreeView* self, int column, bool hide) {
@@ -145,7 +146,7 @@ void QTreeView_SetColumnHidden(QTreeView* self, int column, bool hide) {
 }
 
 bool QTreeView_IsHeaderHidden(QTreeView* self) {
-	return self->isHeaderHidden();
+	return const_cast<const QTreeView*>(self)->isHeaderHidden();
 }
 
 void QTreeView_SetHeaderHidden(QTreeView* self, bool hide) {
@@ -153,7 +154,7 @@ void QTreeView_SetHeaderHidden(QTreeView* self, bool hide) {
 }
 
 bool QTreeView_IsRowHidden(QTreeView* self, int row, QModelIndex* parent) {
-	return self->isRowHidden(static_cast<int>(row), *parent);
+	return const_cast<const QTreeView*>(self)->isRowHidden(static_cast<int>(row), *parent);
 }
 
 void QTreeView_SetRowHidden(QTreeView* self, int row, QModelIndex* parent, bool hide) {
@@ -161,7 +162,7 @@ void QTreeView_SetRowHidden(QTreeView* self, int row, QModelIndex* parent, bool 
 }
 
 bool QTreeView_IsFirstColumnSpanned(QTreeView* self, int row, QModelIndex* parent) {
-	return self->isFirstColumnSpanned(static_cast<int>(row), *parent);
+	return const_cast<const QTreeView*>(self)->isFirstColumnSpanned(static_cast<int>(row), *parent);
 }
 
 void QTreeView_SetFirstColumnSpanned(QTreeView* self, int row, QModelIndex* parent, bool span) {
@@ -169,7 +170,7 @@ void QTreeView_SetFirstColumnSpanned(QTreeView* self, int row, QModelIndex* pare
 }
 
 bool QTreeView_IsExpanded(QTreeView* self, QModelIndex* index) {
-	return self->isExpanded(*index);
+	return const_cast<const QTreeView*>(self)->isExpanded(*index);
 }
 
 void QTreeView_SetExpanded(QTreeView* self, QModelIndex* index, bool expand) {
@@ -181,7 +182,7 @@ void QTreeView_SetSortingEnabled(QTreeView* self, bool enable) {
 }
 
 bool QTreeView_IsSortingEnabled(QTreeView* self) {
-	return self->isSortingEnabled();
+	return const_cast<const QTreeView*>(self)->isSortingEnabled();
 }
 
 void QTreeView_SetAnimated(QTreeView* self, bool enable) {
@@ -189,7 +190,7 @@ void QTreeView_SetAnimated(QTreeView* self, bool enable) {
 }
 
 bool QTreeView_IsAnimated(QTreeView* self) {
-	return self->isAnimated();
+	return const_cast<const QTreeView*>(self)->isAnimated();
 }
 
 void QTreeView_SetAllColumnsShowFocus(QTreeView* self, bool enable) {
@@ -197,7 +198,7 @@ void QTreeView_SetAllColumnsShowFocus(QTreeView* self, bool enable) {
 }
 
 bool QTreeView_AllColumnsShowFocus(QTreeView* self) {
-	return self->allColumnsShowFocus();
+	return const_cast<const QTreeView*>(self)->allColumnsShowFocus();
 }
 
 void QTreeView_SetWordWrap(QTreeView* self, bool on) {
@@ -205,7 +206,7 @@ void QTreeView_SetWordWrap(QTreeView* self, bool on) {
 }
 
 bool QTreeView_WordWrap(QTreeView* self) {
-	return self->wordWrap();
+	return const_cast<const QTreeView*>(self)->wordWrap();
 }
 
 void QTreeView_SetTreePosition(QTreeView* self, int logicalIndex) {
@@ -213,7 +214,7 @@ void QTreeView_SetTreePosition(QTreeView* self, int logicalIndex) {
 }
 
 int QTreeView_TreePosition(QTreeView* self) {
-	return self->treePosition();
+	return const_cast<const QTreeView*>(self)->treePosition();
 }
 
 void QTreeView_KeyboardSearch(QTreeView* self, const char* search, size_t search_Strlen) {
@@ -222,25 +223,29 @@ void QTreeView_KeyboardSearch(QTreeView* self, const char* search, size_t search
 }
 
 QRect* QTreeView_VisualRect(QTreeView* self, QModelIndex* index) {
-	QRect ret = self->visualRect(*index);
+	QRect ret = const_cast<const QTreeView*>(self)->visualRect(*index);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRect*>(new QRect(ret));
 }
 
+void QTreeView_ScrollTo(QTreeView* self, QModelIndex* index) {
+	self->scrollTo(*index);
+}
+
 QModelIndex* QTreeView_IndexAt(QTreeView* self, QPoint* p) {
-	QModelIndex ret = self->indexAt(*p);
+	QModelIndex ret = const_cast<const QTreeView*>(self)->indexAt(*p);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QModelIndex*>(new QModelIndex(ret));
 }
 
 QModelIndex* QTreeView_IndexAbove(QTreeView* self, QModelIndex* index) {
-	QModelIndex ret = self->indexAbove(*index);
+	QModelIndex ret = const_cast<const QTreeView*>(self)->indexAbove(*index);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QModelIndex*>(new QModelIndex(ret));
 }
 
 QModelIndex* QTreeView_IndexBelow(QTreeView* self, QModelIndex* index) {
-	QModelIndex ret = self->indexBelow(*index);
+	QModelIndex ret = const_cast<const QTreeView*>(self)->indexBelow(*index);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QModelIndex*>(new QModelIndex(ret));
 }
@@ -305,6 +310,10 @@ void QTreeView_SortByColumn(QTreeView* self, int column) {
 	self->sortByColumn(static_cast<int>(column));
 }
 
+void QTreeView_SortByColumn2(QTreeView* self, int column, uintptr_t order) {
+	self->sortByColumn(static_cast<int>(column), static_cast<Qt::SortOrder>(order));
+}
+
 void QTreeView_ExpandAll(QTreeView* self) {
 	self->expandAll();
 }
@@ -321,7 +330,7 @@ void QTreeView_ExpandToDepth(QTreeView* self, int depth) {
 	self->expandToDepth(static_cast<int>(depth));
 }
 
-void QTreeView_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
+void QTreeView_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QTreeView::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -330,7 +339,7 @@ void QTreeView_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QTreeView_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QTreeView_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QTreeView::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -339,7 +348,7 @@ void QTreeView_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QTreeView_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
+void QTreeView_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QTreeView::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -348,13 +357,17 @@ void QTreeView_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QTreeView_TrUtf83(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QTreeView_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QTreeView::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
 	memcpy(*_out, b.data(), b.length());
 	*_out_Strlen = b.length();
+}
+
+void QTreeView_ScrollTo2(QTreeView* self, QModelIndex* index, uintptr_t hint) {
+	self->scrollTo(*index, static_cast<QAbstractItemView::ScrollHint>(hint));
 }
 
 void QTreeView_DataChanged3(QTreeView* self, QModelIndex* topLeft, QModelIndex* bottomRight, int* roles, size_t roles_len) {

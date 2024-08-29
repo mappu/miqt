@@ -77,6 +77,15 @@ func (this *QStaticText) Text() string {
 	return ret
 }
 
+func (this *QStaticText) SetTextFormat(textFormat uintptr) {
+	C.QStaticText_SetTextFormat(this.h, (C.uintptr_t)(textFormat))
+}
+
+func (this *QStaticText) TextFormat() uintptr {
+	ret := C.QStaticText_TextFormat(this.h)
+	return (uintptr)(ret)
+}
+
 func (this *QStaticText) SetTextWidth(textWidth float64) {
 	C.QStaticText_SetTextWidth(this.h, (C.double)(textWidth))
 }
@@ -114,6 +123,15 @@ func (this *QStaticText) Size() *QSizeF {
 
 func (this *QStaticText) Prepare() {
 	C.QStaticText_Prepare(this.h)
+}
+
+func (this *QStaticText) SetPerformanceHint(performanceHint uintptr) {
+	C.QStaticText_SetPerformanceHint(this.h, (C.uintptr_t)(performanceHint))
+}
+
+func (this *QStaticText) PerformanceHint() uintptr {
+	ret := C.QStaticText_PerformanceHint(this.h)
+	return (uintptr)(ret)
 }
 
 func (this *QStaticText) OperatorEqual(param1 *QStaticText) bool {

@@ -1,9 +1,8 @@
-#include "gen_qsemaphore.h"
-#include "qsemaphore.h"
-
 #include <QSemaphore>
 #include <QSemaphoreReleaser>
+#include "qsemaphore.h"
 
+#include "gen_qsemaphore.h"
 
 extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
@@ -34,7 +33,7 @@ void QSemaphore_Release(QSemaphore* self) {
 }
 
 int QSemaphore_Available(QSemaphore* self) {
-	return self->available();
+	return const_cast<const QSemaphore*>(self)->available();
 }
 
 void QSemaphore_Acquire1(QSemaphore* self, int n) {
@@ -78,7 +77,7 @@ void QSemaphoreReleaser_Swap(QSemaphoreReleaser* self, QSemaphoreReleaser* other
 }
 
 QSemaphore* QSemaphoreReleaser_Semaphore(QSemaphoreReleaser* self) {
-	return self->semaphore();
+	return const_cast<const QSemaphoreReleaser*>(self)->semaphore();
 }
 
 QSemaphore* QSemaphoreReleaser_Cancel(QSemaphoreReleaser* self) {

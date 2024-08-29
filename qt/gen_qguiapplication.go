@@ -269,6 +269,30 @@ func QGuiApplication_SetPalette(pal *QPalette) {
 	C.QGuiApplication_SetPalette(pal.cPointer())
 }
 
+func QGuiApplication_KeyboardModifiers() int {
+	ret := C.QGuiApplication_KeyboardModifiers()
+	return (int)(ret)
+}
+
+func QGuiApplication_QueryKeyboardModifiers() int {
+	ret := C.QGuiApplication_QueryKeyboardModifiers()
+	return (int)(ret)
+}
+
+func QGuiApplication_MouseButtons() int {
+	ret := C.QGuiApplication_MouseButtons()
+	return (int)(ret)
+}
+
+func QGuiApplication_SetLayoutDirection(direction uintptr) {
+	C.QGuiApplication_SetLayoutDirection((C.uintptr_t)(direction))
+}
+
+func QGuiApplication_LayoutDirection() uintptr {
+	ret := C.QGuiApplication_LayoutDirection()
+	return (uintptr)(ret)
+}
+
 func QGuiApplication_IsRightToLeft() bool {
 	ret := C.QGuiApplication_IsRightToLeft()
 	return (bool)(ret)
@@ -305,6 +329,20 @@ func QGuiApplication_SetQuitOnLastWindowClosed(quit bool) {
 func QGuiApplication_QuitOnLastWindowClosed() bool {
 	ret := C.QGuiApplication_QuitOnLastWindowClosed()
 	return (bool)(ret)
+}
+
+func QGuiApplication_ApplicationState() uintptr {
+	ret := C.QGuiApplication_ApplicationState()
+	return (uintptr)(ret)
+}
+
+func QGuiApplication_SetHighDpiScaleFactorRoundingPolicy(policy uintptr) {
+	C.QGuiApplication_SetHighDpiScaleFactorRoundingPolicy((C.uintptr_t)(policy))
+}
+
+func QGuiApplication_HighDpiScaleFactorRoundingPolicy() uintptr {
+	ret := C.QGuiApplication_HighDpiScaleFactorRoundingPolicy()
+	return (uintptr)(ret)
 }
 
 func QGuiApplication_Exec() int {
@@ -440,6 +478,30 @@ func (this *QGuiApplication) OnFocusWindowChanged(slot func()) {
 	}
 
 	C.QGuiApplication_connect_FocusWindowChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+}
+
+func (this *QGuiApplication) ApplicationStateChanged(state uintptr) {
+	C.QGuiApplication_ApplicationStateChanged(this.h, (C.uintptr_t)(state))
+}
+
+func (this *QGuiApplication) OnApplicationStateChanged(slot func()) {
+	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
+		slot()
+	}
+
+	C.QGuiApplication_connect_ApplicationStateChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+}
+
+func (this *QGuiApplication) LayoutDirectionChanged(direction uintptr) {
+	C.QGuiApplication_LayoutDirectionChanged(this.h, (C.uintptr_t)(direction))
+}
+
+func (this *QGuiApplication) OnLayoutDirectionChanged(slot func()) {
+	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
+		slot()
+	}
+
+	C.QGuiApplication_connect_LayoutDirectionChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
 }
 
 func (this *QGuiApplication) CommitDataRequest(sessionManager *QSessionManager) {

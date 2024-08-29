@@ -1,12 +1,13 @@
-#include "gen_qlcdnumber.h"
-#include "qlcdnumber.h"
-
 #include <QLCDNumber>
 #include <QMetaObject>
 #include <QSize>
 #include <QString>
+#include <QByteArray>
+#include <cstring>
 #include <QWidget>
+#include "qlcdnumber.h"
 
+#include "gen_qlcdnumber.h"
 
 extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
@@ -29,10 +30,10 @@ QLCDNumber* QLCDNumber_new4(unsigned int numDigits, QWidget* parent) {
 }
 
 QMetaObject* QLCDNumber_MetaObject(QLCDNumber* self) {
-	return (QMetaObject*) self->metaObject();
+	return (QMetaObject*) const_cast<const QLCDNumber*>(self)->metaObject();
 }
 
-void QLCDNumber_Tr(char* s, char** _out, int* _out_Strlen) {
+void QLCDNumber_Tr(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QLCDNumber::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -41,7 +42,7 @@ void QLCDNumber_Tr(char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QLCDNumber_TrUtf8(char* s, char** _out, int* _out_Strlen) {
+void QLCDNumber_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QLCDNumber::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -51,11 +52,11 @@ void QLCDNumber_TrUtf8(char* s, char** _out, int* _out_Strlen) {
 }
 
 bool QLCDNumber_SmallDecimalPoint(QLCDNumber* self) {
-	return self->smallDecimalPoint();
+	return const_cast<const QLCDNumber*>(self)->smallDecimalPoint();
 }
 
 int QLCDNumber_DigitCount(QLCDNumber* self) {
-	return self->digitCount();
+	return const_cast<const QLCDNumber*>(self)->digitCount();
 }
 
 void QLCDNumber_SetDigitCount(QLCDNumber* self, int nDigits) {
@@ -63,23 +64,41 @@ void QLCDNumber_SetDigitCount(QLCDNumber* self, int nDigits) {
 }
 
 bool QLCDNumber_CheckOverflow(QLCDNumber* self, double num) {
-	return self->checkOverflow(static_cast<double>(num));
+	return const_cast<const QLCDNumber*>(self)->checkOverflow(static_cast<double>(num));
 }
 
 bool QLCDNumber_CheckOverflowWithNum(QLCDNumber* self, int num) {
-	return self->checkOverflow(static_cast<int>(num));
+	return const_cast<const QLCDNumber*>(self)->checkOverflow(static_cast<int>(num));
+}
+
+uintptr_t QLCDNumber_Mode(QLCDNumber* self) {
+	QLCDNumber::Mode ret = const_cast<const QLCDNumber*>(self)->mode();
+	return static_cast<uintptr_t>(ret);
+}
+
+void QLCDNumber_SetMode(QLCDNumber* self, uintptr_t mode) {
+	self->setMode(static_cast<QLCDNumber::Mode>(mode));
+}
+
+uintptr_t QLCDNumber_SegmentStyle(QLCDNumber* self) {
+	QLCDNumber::SegmentStyle ret = const_cast<const QLCDNumber*>(self)->segmentStyle();
+	return static_cast<uintptr_t>(ret);
+}
+
+void QLCDNumber_SetSegmentStyle(QLCDNumber* self, uintptr_t segmentStyle) {
+	self->setSegmentStyle(static_cast<QLCDNumber::SegmentStyle>(segmentStyle));
 }
 
 double QLCDNumber_Value(QLCDNumber* self) {
-	return self->value();
+	return const_cast<const QLCDNumber*>(self)->value();
 }
 
 int QLCDNumber_IntValue(QLCDNumber* self) {
-	return self->intValue();
+	return const_cast<const QLCDNumber*>(self)->intValue();
 }
 
 QSize* QLCDNumber_SizeHint(QLCDNumber* self) {
-	QSize ret = self->sizeHint();
+	QSize ret = const_cast<const QLCDNumber*>(self)->sizeHint();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
@@ -127,7 +146,7 @@ void QLCDNumber_connect_Overflow(QLCDNumber* self, void* slot) {
 	});
 }
 
-void QLCDNumber_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
+void QLCDNumber_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QLCDNumber::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -136,7 +155,7 @@ void QLCDNumber_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QLCDNumber_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QLCDNumber_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QLCDNumber::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -145,7 +164,7 @@ void QLCDNumber_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QLCDNumber_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
+void QLCDNumber_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QLCDNumber::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -154,7 +173,7 @@ void QLCDNumber_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QLCDNumber_TrUtf83(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QLCDNumber_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QLCDNumber::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();

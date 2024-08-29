@@ -53,6 +53,30 @@ func (this *QMimeDatabase) MimeTypeForName(nameOrAlias string) *QMimeType {
 	return ret1
 }
 
+func (this *QMimeDatabase) MimeTypeForFile(fileName string) *QMimeType {
+	fileName_Cstring := C.CString(fileName)
+	defer C.free(unsafe.Pointer(fileName_Cstring))
+	ret := C.QMimeDatabase_MimeTypeForFile(this.h, fileName_Cstring, C.ulong(len(fileName)))
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQMimeType(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QMimeType) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QMimeDatabase) MimeTypeForFileWithFileInfo(fileInfo *QFileInfo) *QMimeType {
+	ret := C.QMimeDatabase_MimeTypeForFileWithFileInfo(this.h, fileInfo.cPointer())
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQMimeType(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QMimeType) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
 func (this *QMimeDatabase) MimeTypesForFileName(fileName string) []QMimeType {
 	fileName_Cstring := C.CString(fileName)
 	defer C.free(unsafe.Pointer(fileName_Cstring))
@@ -149,6 +173,30 @@ func (this *QMimeDatabase) AllMimeTypes() []QMimeType {
 	}
 	C.free(unsafe.Pointer(_out))
 	return ret
+}
+
+func (this *QMimeDatabase) MimeTypeForFile2(fileName string, mode uintptr) *QMimeType {
+	fileName_Cstring := C.CString(fileName)
+	defer C.free(unsafe.Pointer(fileName_Cstring))
+	ret := C.QMimeDatabase_MimeTypeForFile2(this.h, fileName_Cstring, C.ulong(len(fileName)), (C.uintptr_t)(mode))
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQMimeType(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QMimeType) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QMimeDatabase) MimeTypeForFile22(fileInfo *QFileInfo, mode uintptr) *QMimeType {
+	ret := C.QMimeDatabase_MimeTypeForFile22(this.h, fileInfo.cPointer(), (C.uintptr_t)(mode))
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQMimeType(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QMimeType) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
 }
 
 func (this *QMimeDatabase) Delete() {

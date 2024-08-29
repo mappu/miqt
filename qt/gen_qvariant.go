@@ -41,89 +41,95 @@ func NewQVariant() *QVariant {
 }
 
 // NewQVariant2 constructs a new QVariant object.
-func NewQVariant2(other *QVariant) *QVariant {
-	ret := C.QVariant_new2(other.cPointer())
+func NewQVariant2(typeVal uintptr) *QVariant {
+	ret := C.QVariant_new2((C.uintptr_t)(typeVal))
 	return newQVariant(ret)
 }
 
 // NewQVariant3 constructs a new QVariant object.
-func NewQVariant3(s *QDataStream) *QVariant {
-	ret := C.QVariant_new3(s.cPointer())
+func NewQVariant3(other *QVariant) *QVariant {
+	ret := C.QVariant_new3(other.cPointer())
 	return newQVariant(ret)
 }
 
 // NewQVariant4 constructs a new QVariant object.
-func NewQVariant4(i int) *QVariant {
-	ret := C.QVariant_new4((C.int)(i))
+func NewQVariant4(s *QDataStream) *QVariant {
+	ret := C.QVariant_new4(s.cPointer())
 	return newQVariant(ret)
 }
 
 // NewQVariant5 constructs a new QVariant object.
-func NewQVariant5(ui uint) *QVariant {
-	ret := C.QVariant_new5((C.uint)(ui))
+func NewQVariant5(i int) *QVariant {
+	ret := C.QVariant_new5((C.int)(i))
 	return newQVariant(ret)
 }
 
 // NewQVariant6 constructs a new QVariant object.
-func NewQVariant6(ll int64) *QVariant {
-	ret := C.QVariant_new6((C.int64_t)(ll))
+func NewQVariant6(ui uint) *QVariant {
+	ret := C.QVariant_new6((C.uint)(ui))
 	return newQVariant(ret)
 }
 
 // NewQVariant7 constructs a new QVariant object.
-func NewQVariant7(ull uint64) *QVariant {
-	ret := C.QVariant_new7((C.uint64_t)(ull))
+func NewQVariant7(ll int64) *QVariant {
+	ret := C.QVariant_new7((C.int64_t)(ll))
 	return newQVariant(ret)
 }
 
 // NewQVariant8 constructs a new QVariant object.
-func NewQVariant8(b bool) *QVariant {
-	ret := C.QVariant_new8((C.bool)(b))
+func NewQVariant8(ull uint64) *QVariant {
+	ret := C.QVariant_new8((C.uint64_t)(ull))
 	return newQVariant(ret)
 }
 
 // NewQVariant9 constructs a new QVariant object.
-func NewQVariant9(d float64) *QVariant {
-	ret := C.QVariant_new9((C.double)(d))
+func NewQVariant9(b bool) *QVariant {
+	ret := C.QVariant_new9((C.bool)(b))
 	return newQVariant(ret)
 }
 
 // NewQVariant10 constructs a new QVariant object.
-func NewQVariant10(f float32) *QVariant {
-	ret := C.QVariant_new10((C.float)(f))
+func NewQVariant10(d float64) *QVariant {
+	ret := C.QVariant_new10((C.double)(d))
 	return newQVariant(ret)
 }
 
 // NewQVariant11 constructs a new QVariant object.
-func NewQVariant11(str string) *QVariant {
-	str_Cstring := C.CString(str)
-	defer C.free(unsafe.Pointer(str_Cstring))
-	ret := C.QVariant_new11(str_Cstring)
+func NewQVariant11(f float32) *QVariant {
+	ret := C.QVariant_new11((C.float)(f))
 	return newQVariant(ret)
 }
 
 // NewQVariant12 constructs a new QVariant object.
-func NewQVariant12(bytearray *QByteArray) *QVariant {
-	ret := C.QVariant_new12(bytearray.cPointer())
+func NewQVariant12(str string) *QVariant {
+	str_Cstring := C.CString(str)
+	defer C.free(unsafe.Pointer(str_Cstring))
+	ret := C.QVariant_new12(str_Cstring)
 	return newQVariant(ret)
 }
 
 // NewQVariant13 constructs a new QVariant object.
-func NewQVariant13(bitarray *QBitArray) *QVariant {
-	ret := C.QVariant_new13(bitarray.cPointer())
+func NewQVariant13(bytearray *QByteArray) *QVariant {
+	ret := C.QVariant_new13(bytearray.cPointer())
 	return newQVariant(ret)
 }
 
 // NewQVariant14 constructs a new QVariant object.
-func NewQVariant14(stringVal string) *QVariant {
-	stringVal_Cstring := C.CString(stringVal)
-	defer C.free(unsafe.Pointer(stringVal_Cstring))
-	ret := C.QVariant_new14(stringVal_Cstring, C.ulong(len(stringVal)))
+func NewQVariant14(bitarray *QBitArray) *QVariant {
+	ret := C.QVariant_new14(bitarray.cPointer())
 	return newQVariant(ret)
 }
 
 // NewQVariant15 constructs a new QVariant object.
-func NewQVariant15(stringlist []string) *QVariant {
+func NewQVariant15(stringVal string) *QVariant {
+	stringVal_Cstring := C.CString(stringVal)
+	defer C.free(unsafe.Pointer(stringVal_Cstring))
+	ret := C.QVariant_new15(stringVal_Cstring, C.ulong(len(stringVal)))
+	return newQVariant(ret)
+}
+
+// NewQVariant16 constructs a new QVariant object.
+func NewQVariant16(stringlist []string) *QVariant {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
 	stringlist_CArray := (*[0xffff]*C.char)(C.malloc(C.ulong(8 * len(stringlist))))
 	stringlist_Lengths := (*[0xffff]C.size_t)(C.malloc(C.ulong(8 * len(stringlist))))
@@ -135,151 +141,151 @@ func NewQVariant15(stringlist []string) *QVariant {
 		stringlist_CArray[i] = single_cstring
 		stringlist_Lengths[i] = (C.size_t)(len(stringlist[i]))
 	}
-	ret := C.QVariant_new15(&stringlist_CArray[0], &stringlist_Lengths[0], C.ulong(len(stringlist)))
-	return newQVariant(ret)
-}
-
-// NewQVariant16 constructs a new QVariant object.
-func NewQVariant16(qchar QChar) *QVariant {
-	ret := C.QVariant_new16(qchar.cPointer())
+	ret := C.QVariant_new16(&stringlist_CArray[0], &stringlist_Lengths[0], C.ulong(len(stringlist)))
 	return newQVariant(ret)
 }
 
 // NewQVariant17 constructs a new QVariant object.
-func NewQVariant17(date *QDate) *QVariant {
-	ret := C.QVariant_new17(date.cPointer())
+func NewQVariant17(qchar QChar) *QVariant {
+	ret := C.QVariant_new17(qchar.cPointer())
 	return newQVariant(ret)
 }
 
 // NewQVariant18 constructs a new QVariant object.
-func NewQVariant18(time *QTime) *QVariant {
-	ret := C.QVariant_new18(time.cPointer())
+func NewQVariant18(date *QDate) *QVariant {
+	ret := C.QVariant_new18(date.cPointer())
 	return newQVariant(ret)
 }
 
 // NewQVariant19 constructs a new QVariant object.
-func NewQVariant19(datetime *QDateTime) *QVariant {
-	ret := C.QVariant_new19(datetime.cPointer())
+func NewQVariant19(time *QTime) *QVariant {
+	ret := C.QVariant_new19(time.cPointer())
 	return newQVariant(ret)
 }
 
 // NewQVariant20 constructs a new QVariant object.
-func NewQVariant20(size *QSize) *QVariant {
-	ret := C.QVariant_new20(size.cPointer())
+func NewQVariant20(datetime *QDateTime) *QVariant {
+	ret := C.QVariant_new20(datetime.cPointer())
 	return newQVariant(ret)
 }
 
 // NewQVariant21 constructs a new QVariant object.
-func NewQVariant21(size *QSizeF) *QVariant {
+func NewQVariant21(size *QSize) *QVariant {
 	ret := C.QVariant_new21(size.cPointer())
 	return newQVariant(ret)
 }
 
 // NewQVariant22 constructs a new QVariant object.
-func NewQVariant22(pt *QPoint) *QVariant {
-	ret := C.QVariant_new22(pt.cPointer())
+func NewQVariant22(size *QSizeF) *QVariant {
+	ret := C.QVariant_new22(size.cPointer())
 	return newQVariant(ret)
 }
 
 // NewQVariant23 constructs a new QVariant object.
-func NewQVariant23(pt *QPointF) *QVariant {
+func NewQVariant23(pt *QPoint) *QVariant {
 	ret := C.QVariant_new23(pt.cPointer())
 	return newQVariant(ret)
 }
 
 // NewQVariant24 constructs a new QVariant object.
-func NewQVariant24(line *QLine) *QVariant {
-	ret := C.QVariant_new24(line.cPointer())
+func NewQVariant24(pt *QPointF) *QVariant {
+	ret := C.QVariant_new24(pt.cPointer())
 	return newQVariant(ret)
 }
 
 // NewQVariant25 constructs a new QVariant object.
-func NewQVariant25(line *QLineF) *QVariant {
+func NewQVariant25(line *QLine) *QVariant {
 	ret := C.QVariant_new25(line.cPointer())
 	return newQVariant(ret)
 }
 
 // NewQVariant26 constructs a new QVariant object.
-func NewQVariant26(rect *QRect) *QVariant {
-	ret := C.QVariant_new26(rect.cPointer())
+func NewQVariant26(line *QLineF) *QVariant {
+	ret := C.QVariant_new26(line.cPointer())
 	return newQVariant(ret)
 }
 
 // NewQVariant27 constructs a new QVariant object.
-func NewQVariant27(rect *QRectF) *QVariant {
+func NewQVariant27(rect *QRect) *QVariant {
 	ret := C.QVariant_new27(rect.cPointer())
 	return newQVariant(ret)
 }
 
 // NewQVariant28 constructs a new QVariant object.
-func NewQVariant28(locale *QLocale) *QVariant {
-	ret := C.QVariant_new28(locale.cPointer())
+func NewQVariant28(rect *QRectF) *QVariant {
+	ret := C.QVariant_new28(rect.cPointer())
 	return newQVariant(ret)
 }
 
 // NewQVariant29 constructs a new QVariant object.
-func NewQVariant29(regExp *QRegExp) *QVariant {
-	ret := C.QVariant_new29(regExp.cPointer())
+func NewQVariant29(locale *QLocale) *QVariant {
+	ret := C.QVariant_new29(locale.cPointer())
 	return newQVariant(ret)
 }
 
 // NewQVariant30 constructs a new QVariant object.
-func NewQVariant30(re *QRegularExpression) *QVariant {
-	ret := C.QVariant_new30(re.cPointer())
+func NewQVariant30(regExp *QRegExp) *QVariant {
+	ret := C.QVariant_new30(regExp.cPointer())
 	return newQVariant(ret)
 }
 
 // NewQVariant31 constructs a new QVariant object.
-func NewQVariant31(easing *QEasingCurve) *QVariant {
-	ret := C.QVariant_new31(easing.cPointer())
+func NewQVariant31(re *QRegularExpression) *QVariant {
+	ret := C.QVariant_new31(re.cPointer())
 	return newQVariant(ret)
 }
 
 // NewQVariant32 constructs a new QVariant object.
-func NewQVariant32(uuid *QUuid) *QVariant {
-	ret := C.QVariant_new32(uuid.cPointer())
+func NewQVariant32(easing *QEasingCurve) *QVariant {
+	ret := C.QVariant_new32(easing.cPointer())
 	return newQVariant(ret)
 }
 
 // NewQVariant33 constructs a new QVariant object.
-func NewQVariant33(url *QUrl) *QVariant {
-	ret := C.QVariant_new33(url.cPointer())
+func NewQVariant33(uuid *QUuid) *QVariant {
+	ret := C.QVariant_new33(uuid.cPointer())
 	return newQVariant(ret)
 }
 
 // NewQVariant34 constructs a new QVariant object.
-func NewQVariant34(jsonValue *QJsonValue) *QVariant {
-	ret := C.QVariant_new34(jsonValue.cPointer())
+func NewQVariant34(url *QUrl) *QVariant {
+	ret := C.QVariant_new34(url.cPointer())
 	return newQVariant(ret)
 }
 
 // NewQVariant35 constructs a new QVariant object.
-func NewQVariant35(jsonObject *QJsonObject) *QVariant {
-	ret := C.QVariant_new35(jsonObject.cPointer())
+func NewQVariant35(jsonValue *QJsonValue) *QVariant {
+	ret := C.QVariant_new35(jsonValue.cPointer())
 	return newQVariant(ret)
 }
 
 // NewQVariant36 constructs a new QVariant object.
-func NewQVariant36(jsonArray *QJsonArray) *QVariant {
-	ret := C.QVariant_new36(jsonArray.cPointer())
+func NewQVariant36(jsonObject *QJsonObject) *QVariant {
+	ret := C.QVariant_new36(jsonObject.cPointer())
 	return newQVariant(ret)
 }
 
 // NewQVariant37 constructs a new QVariant object.
-func NewQVariant37(jsonDocument *QJsonDocument) *QVariant {
-	ret := C.QVariant_new37(jsonDocument.cPointer())
+func NewQVariant37(jsonArray *QJsonArray) *QVariant {
+	ret := C.QVariant_new37(jsonArray.cPointer())
 	return newQVariant(ret)
 }
 
 // NewQVariant38 constructs a new QVariant object.
-func NewQVariant38(modelIndex *QModelIndex) *QVariant {
-	ret := C.QVariant_new38(modelIndex.cPointer())
+func NewQVariant38(jsonDocument *QJsonDocument) *QVariant {
+	ret := C.QVariant_new38(jsonDocument.cPointer())
 	return newQVariant(ret)
 }
 
 // NewQVariant39 constructs a new QVariant object.
-func NewQVariant39(modelIndex *QPersistentModelIndex) *QVariant {
+func NewQVariant39(modelIndex *QModelIndex) *QVariant {
 	ret := C.QVariant_new39(modelIndex.cPointer())
+	return newQVariant(ret)
+}
+
+// NewQVariant40 constructs a new QVariant object.
+func NewQVariant40(modelIndex *QPersistentModelIndex) *QVariant {
+	ret := C.QVariant_new40(modelIndex.cPointer())
 	return newQVariant(ret)
 }
 
@@ -289,6 +295,11 @@ func (this *QVariant) OperatorAssign(other *QVariant) {
 
 func (this *QVariant) Swap(other *QVariant) {
 	C.QVariant_Swap(this.h, other.cPointer())
+}
+
+func (this *QVariant) Type() uintptr {
+	ret := C.QVariant_Type(this.h)
+	return (uintptr)(ret)
 }
 
 func (this *QVariant) UserType() int {
@@ -697,6 +708,13 @@ func QVariant_TypeToName(typeId int) unsafe.Pointer {
 	return (unsafe.Pointer)(ret)
 }
 
+func QVariant_NameToType(name string) uintptr {
+	name_Cstring := C.CString(name)
+	defer C.free(unsafe.Pointer(name_Cstring))
+	ret := C.QVariant_NameToType(name_Cstring)
+	return (uintptr)(ret)
+}
+
 func (this *QVariant) OperatorEqual(v *QVariant) bool {
 	ret := C.QVariant_OperatorEqual(this.h, v.cPointer())
 	return (bool)(ret)
@@ -821,9 +839,37 @@ func newQSequentialIterable_U(h unsafe.Pointer) *QSequentialIterable {
 }
 
 // NewQSequentialIterable constructs a new QSequentialIterable object.
-func NewQSequentialIterable(param1 *QSequentialIterable) *QSequentialIterable {
-	ret := C.QSequentialIterable_new(param1.cPointer())
+func NewQSequentialIterable(impl QtMetaTypePrivate__QSequentialIterableImpl) *QSequentialIterable {
+	ret := C.QSequentialIterable_new(impl.cPointer())
 	return newQSequentialIterable(ret)
+}
+
+// NewQSequentialIterable2 constructs a new QSequentialIterable object.
+func NewQSequentialIterable2(param1 *QSequentialIterable) *QSequentialIterable {
+	ret := C.QSequentialIterable_new2(param1.cPointer())
+	return newQSequentialIterable(ret)
+}
+
+func (this *QSequentialIterable) Begin() *QSequentialIterable__const_iterator {
+	ret := C.QSequentialIterable_Begin(this.h)
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQSequentialIterable__const_iterator(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QSequentialIterable__const_iterator) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QSequentialIterable) End() *QSequentialIterable__const_iterator {
+	ret := C.QSequentialIterable_End(this.h)
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQSequentialIterable__const_iterator(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QSequentialIterable__const_iterator) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
 }
 
 func (this *QSequentialIterable) At(idx int) *QVariant {
@@ -871,9 +917,48 @@ func newQAssociativeIterable_U(h unsafe.Pointer) *QAssociativeIterable {
 }
 
 // NewQAssociativeIterable constructs a new QAssociativeIterable object.
-func NewQAssociativeIterable(param1 *QAssociativeIterable) *QAssociativeIterable {
-	ret := C.QAssociativeIterable_new(param1.cPointer())
+func NewQAssociativeIterable(impl QtMetaTypePrivate__QAssociativeIterableImpl) *QAssociativeIterable {
+	ret := C.QAssociativeIterable_new(impl.cPointer())
 	return newQAssociativeIterable(ret)
+}
+
+// NewQAssociativeIterable2 constructs a new QAssociativeIterable object.
+func NewQAssociativeIterable2(param1 *QAssociativeIterable) *QAssociativeIterable {
+	ret := C.QAssociativeIterable_new2(param1.cPointer())
+	return newQAssociativeIterable(ret)
+}
+
+func (this *QAssociativeIterable) Begin() *QAssociativeIterable__const_iterator {
+	ret := C.QAssociativeIterable_Begin(this.h)
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQAssociativeIterable__const_iterator(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QAssociativeIterable__const_iterator) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QAssociativeIterable) End() *QAssociativeIterable__const_iterator {
+	ret := C.QAssociativeIterable_End(this.h)
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQAssociativeIterable__const_iterator(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QAssociativeIterable__const_iterator) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QAssociativeIterable) Find(key *QVariant) *QAssociativeIterable__const_iterator {
+	ret := C.QAssociativeIterable_Find(this.h, key.cPointer())
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQAssociativeIterable__const_iterator(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QAssociativeIterable__const_iterator) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
 }
 
 func (this *QAssociativeIterable) Value(key *QVariant) *QVariant {
@@ -894,4 +979,260 @@ func (this *QAssociativeIterable) Size() int {
 
 func (this *QAssociativeIterable) Delete() {
 	C.QAssociativeIterable_Delete(this.h)
+}
+
+type QVariant__PrivateShared struct {
+	h *C.QVariant__PrivateShared
+}
+
+func (this *QVariant__PrivateShared) cPointer() *C.QVariant__PrivateShared {
+	if this == nil {
+		return nil
+	}
+	return this.h
+}
+
+func newQVariant__PrivateShared(h *C.QVariant__PrivateShared) *QVariant__PrivateShared {
+	return &QVariant__PrivateShared{h: h}
+}
+
+func newQVariant__PrivateShared_U(h unsafe.Pointer) *QVariant__PrivateShared {
+	return newQVariant__PrivateShared((*C.QVariant__PrivateShared)(h))
+}
+
+func (this *QVariant__PrivateShared) Delete() {
+	C.QVariant__PrivateShared_Delete(this.h)
+}
+
+type QVariant__Handler struct {
+	h *C.QVariant__Handler
+}
+
+func (this *QVariant__Handler) cPointer() *C.QVariant__Handler {
+	if this == nil {
+		return nil
+	}
+	return this.h
+}
+
+func newQVariant__Handler(h *C.QVariant__Handler) *QVariant__Handler {
+	return &QVariant__Handler{h: h}
+}
+
+func newQVariant__Handler_U(h unsafe.Pointer) *QVariant__Handler {
+	return newQVariant__Handler((*C.QVariant__Handler)(h))
+}
+
+func (this *QVariant__Handler) Delete() {
+	C.QVariant__Handler_Delete(this.h)
+}
+
+type QSequentialIterable__const_iterator struct {
+	h *C.QSequentialIterable__const_iterator
+}
+
+func (this *QSequentialIterable__const_iterator) cPointer() *C.QSequentialIterable__const_iterator {
+	if this == nil {
+		return nil
+	}
+	return this.h
+}
+
+func newQSequentialIterable__const_iterator(h *C.QSequentialIterable__const_iterator) *QSequentialIterable__const_iterator {
+	return &QSequentialIterable__const_iterator{h: h}
+}
+
+func newQSequentialIterable__const_iterator_U(h unsafe.Pointer) *QSequentialIterable__const_iterator {
+	return newQSequentialIterable__const_iterator((*C.QSequentialIterable__const_iterator)(h))
+}
+
+// NewQSequentialIterable__const_iterator constructs a new QSequentialIterable::const_iterator object.
+func NewQSequentialIterable__const_iterator(other *QSequentialIterable__const_iterator) *QSequentialIterable__const_iterator {
+	ret := C.QSequentialIterable__const_iterator_new(other.cPointer())
+	return newQSequentialIterable__const_iterator(ret)
+}
+
+func (this *QSequentialIterable__const_iterator) OperatorMultiply() *QVariant {
+	ret := C.QSequentialIterable__const_iterator_OperatorMultiply(this.h)
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQVariant(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QVariant) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QSequentialIterable__const_iterator) OperatorEqual(o *QSequentialIterable__const_iterator) bool {
+	ret := C.QSequentialIterable__const_iterator_OperatorEqual(this.h, o.cPointer())
+	return (bool)(ret)
+}
+
+func (this *QSequentialIterable__const_iterator) OperatorNotEqual(o *QSequentialIterable__const_iterator) bool {
+	ret := C.QSequentialIterable__const_iterator_OperatorNotEqual(this.h, o.cPointer())
+	return (bool)(ret)
+}
+
+func (this *QSequentialIterable__const_iterator) OperatorPlusPlus(param1 int) *QSequentialIterable__const_iterator {
+	ret := C.QSequentialIterable__const_iterator_OperatorPlusPlus(this.h, (C.int)(param1))
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQSequentialIterable__const_iterator(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QSequentialIterable__const_iterator) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QSequentialIterable__const_iterator) OperatorMinusMinus(param1 int) *QSequentialIterable__const_iterator {
+	ret := C.QSequentialIterable__const_iterator_OperatorMinusMinus(this.h, (C.int)(param1))
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQSequentialIterable__const_iterator(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QSequentialIterable__const_iterator) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QSequentialIterable__const_iterator) OperatorPlus(j int) *QSequentialIterable__const_iterator {
+	ret := C.QSequentialIterable__const_iterator_OperatorPlus(this.h, (C.int)(j))
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQSequentialIterable__const_iterator(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QSequentialIterable__const_iterator) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QSequentialIterable__const_iterator) OperatorMinus(j int) *QSequentialIterable__const_iterator {
+	ret := C.QSequentialIterable__const_iterator_OperatorMinus(this.h, (C.int)(j))
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQSequentialIterable__const_iterator(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QSequentialIterable__const_iterator) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QSequentialIterable__const_iterator) Delete() {
+	C.QSequentialIterable__const_iterator_Delete(this.h)
+}
+
+type QAssociativeIterable__const_iterator struct {
+	h *C.QAssociativeIterable__const_iterator
+}
+
+func (this *QAssociativeIterable__const_iterator) cPointer() *C.QAssociativeIterable__const_iterator {
+	if this == nil {
+		return nil
+	}
+	return this.h
+}
+
+func newQAssociativeIterable__const_iterator(h *C.QAssociativeIterable__const_iterator) *QAssociativeIterable__const_iterator {
+	return &QAssociativeIterable__const_iterator{h: h}
+}
+
+func newQAssociativeIterable__const_iterator_U(h unsafe.Pointer) *QAssociativeIterable__const_iterator {
+	return newQAssociativeIterable__const_iterator((*C.QAssociativeIterable__const_iterator)(h))
+}
+
+// NewQAssociativeIterable__const_iterator constructs a new QAssociativeIterable::const_iterator object.
+func NewQAssociativeIterable__const_iterator(other *QAssociativeIterable__const_iterator) *QAssociativeIterable__const_iterator {
+	ret := C.QAssociativeIterable__const_iterator_new(other.cPointer())
+	return newQAssociativeIterable__const_iterator(ret)
+}
+
+func (this *QAssociativeIterable__const_iterator) Key() *QVariant {
+	ret := C.QAssociativeIterable__const_iterator_Key(this.h)
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQVariant(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QVariant) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QAssociativeIterable__const_iterator) Value() *QVariant {
+	ret := C.QAssociativeIterable__const_iterator_Value(this.h)
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQVariant(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QVariant) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QAssociativeIterable__const_iterator) OperatorMultiply() *QVariant {
+	ret := C.QAssociativeIterable__const_iterator_OperatorMultiply(this.h)
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQVariant(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QVariant) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QAssociativeIterable__const_iterator) OperatorEqual(o *QAssociativeIterable__const_iterator) bool {
+	ret := C.QAssociativeIterable__const_iterator_OperatorEqual(this.h, o.cPointer())
+	return (bool)(ret)
+}
+
+func (this *QAssociativeIterable__const_iterator) OperatorNotEqual(o *QAssociativeIterable__const_iterator) bool {
+	ret := C.QAssociativeIterable__const_iterator_OperatorNotEqual(this.h, o.cPointer())
+	return (bool)(ret)
+}
+
+func (this *QAssociativeIterable__const_iterator) OperatorPlusPlus(param1 int) *QAssociativeIterable__const_iterator {
+	ret := C.QAssociativeIterable__const_iterator_OperatorPlusPlus(this.h, (C.int)(param1))
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQAssociativeIterable__const_iterator(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QAssociativeIterable__const_iterator) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QAssociativeIterable__const_iterator) OperatorMinusMinus(param1 int) *QAssociativeIterable__const_iterator {
+	ret := C.QAssociativeIterable__const_iterator_OperatorMinusMinus(this.h, (C.int)(param1))
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQAssociativeIterable__const_iterator(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QAssociativeIterable__const_iterator) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QAssociativeIterable__const_iterator) OperatorPlus(j int) *QAssociativeIterable__const_iterator {
+	ret := C.QAssociativeIterable__const_iterator_OperatorPlus(this.h, (C.int)(j))
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQAssociativeIterable__const_iterator(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QAssociativeIterable__const_iterator) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QAssociativeIterable__const_iterator) OperatorMinus(j int) *QAssociativeIterable__const_iterator {
+	ret := C.QAssociativeIterable__const_iterator_OperatorMinus(this.h, (C.int)(j))
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQAssociativeIterable__const_iterator(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QAssociativeIterable__const_iterator) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QAssociativeIterable__const_iterator) Delete() {
+	C.QAssociativeIterable__const_iterator_Delete(this.h)
 }

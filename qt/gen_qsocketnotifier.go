@@ -34,6 +34,18 @@ func newQSocketNotifier_U(h unsafe.Pointer) *QSocketNotifier {
 	return newQSocketNotifier((*C.QSocketNotifier)(h))
 }
 
+// NewQSocketNotifier constructs a new QSocketNotifier object.
+func NewQSocketNotifier(socket uint64, param2 uintptr) *QSocketNotifier {
+	ret := C.QSocketNotifier_new((C.ptrdiff_t)(socket), (C.uintptr_t)(param2))
+	return newQSocketNotifier(ret)
+}
+
+// NewQSocketNotifier2 constructs a new QSocketNotifier object.
+func NewQSocketNotifier2(socket uint64, param2 uintptr, parent *QObject) *QSocketNotifier {
+	ret := C.QSocketNotifier_new2((C.ptrdiff_t)(socket), (C.uintptr_t)(param2), parent.cPointer())
+	return newQSocketNotifier(ret)
+}
+
 func (this *QSocketNotifier) MetaObject() *QMetaObject {
 	ret := C.QSocketNotifier_MetaObject(this.h)
 	return newQMetaObject_U(unsafe.Pointer(ret))
@@ -61,8 +73,13 @@ func QSocketNotifier_TrUtf8(s string) string {
 	return ret
 }
 
-func (this *QSocketNotifier) Socket() uintptr {
+func (this *QSocketNotifier) Socket() uint64 {
 	ret := C.QSocketNotifier_Socket(this.h)
+	return (uint64)(ret)
+}
+
+func (this *QSocketNotifier) Type() uintptr {
+	ret := C.QSocketNotifier_Type(this.h)
 	return (uintptr)(ret)
 }
 
@@ -151,8 +168,20 @@ func newQSocketDescriptor_U(h unsafe.Pointer) *QSocketDescriptor {
 }
 
 // NewQSocketDescriptor constructs a new QSocketDescriptor object.
-func NewQSocketDescriptor(param1 *QSocketDescriptor) *QSocketDescriptor {
-	ret := C.QSocketDescriptor_new(param1.cPointer())
+func NewQSocketDescriptor() *QSocketDescriptor {
+	ret := C.QSocketDescriptor_new()
+	return newQSocketDescriptor(ret)
+}
+
+// NewQSocketDescriptor2 constructs a new QSocketDescriptor object.
+func NewQSocketDescriptor2(param1 *QSocketDescriptor) *QSocketDescriptor {
+	ret := C.QSocketDescriptor_new2(param1.cPointer())
+	return newQSocketDescriptor(ret)
+}
+
+// NewQSocketDescriptor3 constructs a new QSocketDescriptor object.
+func NewQSocketDescriptor3(descriptor uintptr) *QSocketDescriptor {
+	ret := C.QSocketDescriptor_new3((C.uintptr_t)(descriptor))
 	return newQSocketDescriptor(ret)
 }
 

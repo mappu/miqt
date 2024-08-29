@@ -1,9 +1,9 @@
-#include "gen_qxmlstream.h"
-#include "qxmlstream.h"
-
 #include <QByteArray>
 #include <QIODevice>
+#include <QList>
 #include <QString>
+#include <QByteArray>
+#include <cstring>
 #include <QTextCodec>
 #include <QXmlStreamAttribute>
 #include <QXmlStreamEntityDeclaration>
@@ -13,7 +13,9 @@
 #include <QXmlStreamReader>
 #include <QXmlStreamStringRef>
 #include <QXmlStreamWriter>
+#include "qxmlstream.h"
 
+#include "gen_qxmlstream.h"
 
 extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
@@ -45,7 +47,7 @@ void QXmlStreamStringRef_Clear(QXmlStreamStringRef* self) {
 }
 
 void QXmlStreamStringRef_String(QXmlStreamStringRef* self, char** _out, int* _out_Strlen) {
-	const QString* ret = self->string();
+	const QString* ret = const_cast<const QXmlStreamStringRef*>(self)->string();
 	// Convert QString pointer from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret->toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -54,11 +56,11 @@ void QXmlStreamStringRef_String(QXmlStreamStringRef* self, char** _out, int* _ou
 }
 
 int QXmlStreamStringRef_Position(QXmlStreamStringRef* self) {
-	return self->position();
+	return const_cast<const QXmlStreamStringRef*>(self)->position();
 }
 
 int QXmlStreamStringRef_Size(QXmlStreamStringRef* self) {
-	return self->size();
+	return const_cast<const QXmlStreamStringRef*>(self)->size();
 }
 
 void QXmlStreamStringRef_Delete(QXmlStreamStringRef* self) {
@@ -91,15 +93,15 @@ void QXmlStreamAttribute_OperatorAssign(QXmlStreamAttribute* self, QXmlStreamAtt
 }
 
 bool QXmlStreamAttribute_IsDefault(QXmlStreamAttribute* self) {
-	return self->isDefault();
+	return const_cast<const QXmlStreamAttribute*>(self)->isDefault();
 }
 
 bool QXmlStreamAttribute_OperatorEqual(QXmlStreamAttribute* self, QXmlStreamAttribute* other) {
-	return self->operator==(*other);
+	return const_cast<const QXmlStreamAttribute*>(self)->operator==(*other);
 }
 
 bool QXmlStreamAttribute_OperatorNotEqual(QXmlStreamAttribute* self, QXmlStreamAttribute* other) {
-	return self->operator!=(*other);
+	return const_cast<const QXmlStreamAttribute*>(self)->operator!=(*other);
 }
 
 void QXmlStreamAttribute_Delete(QXmlStreamAttribute* self) {
@@ -125,11 +127,11 @@ void QXmlStreamNamespaceDeclaration_OperatorAssign(QXmlStreamNamespaceDeclaratio
 }
 
 bool QXmlStreamNamespaceDeclaration_OperatorEqual(QXmlStreamNamespaceDeclaration* self, QXmlStreamNamespaceDeclaration* other) {
-	return self->operator==(*other);
+	return const_cast<const QXmlStreamNamespaceDeclaration*>(self)->operator==(*other);
 }
 
 bool QXmlStreamNamespaceDeclaration_OperatorNotEqual(QXmlStreamNamespaceDeclaration* self, QXmlStreamNamespaceDeclaration* other) {
-	return self->operator!=(*other);
+	return const_cast<const QXmlStreamNamespaceDeclaration*>(self)->operator!=(*other);
 }
 
 void QXmlStreamNamespaceDeclaration_Delete(QXmlStreamNamespaceDeclaration* self) {
@@ -149,11 +151,11 @@ void QXmlStreamNotationDeclaration_OperatorAssign(QXmlStreamNotationDeclaration*
 }
 
 bool QXmlStreamNotationDeclaration_OperatorEqual(QXmlStreamNotationDeclaration* self, QXmlStreamNotationDeclaration* other) {
-	return self->operator==(*other);
+	return const_cast<const QXmlStreamNotationDeclaration*>(self)->operator==(*other);
 }
 
 bool QXmlStreamNotationDeclaration_OperatorNotEqual(QXmlStreamNotationDeclaration* self, QXmlStreamNotationDeclaration* other) {
-	return self->operator!=(*other);
+	return const_cast<const QXmlStreamNotationDeclaration*>(self)->operator!=(*other);
 }
 
 void QXmlStreamNotationDeclaration_Delete(QXmlStreamNotationDeclaration* self) {
@@ -173,11 +175,11 @@ void QXmlStreamEntityDeclaration_OperatorAssign(QXmlStreamEntityDeclaration* sel
 }
 
 bool QXmlStreamEntityDeclaration_OperatorEqual(QXmlStreamEntityDeclaration* self, QXmlStreamEntityDeclaration* other) {
-	return self->operator==(*other);
+	return const_cast<const QXmlStreamEntityDeclaration*>(self)->operator==(*other);
 }
 
 bool QXmlStreamEntityDeclaration_OperatorNotEqual(QXmlStreamEntityDeclaration* self, QXmlStreamEntityDeclaration* other) {
-	return self->operator!=(*other);
+	return const_cast<const QXmlStreamEntityDeclaration*>(self)->operator!=(*other);
 }
 
 void QXmlStreamEntityDeclaration_Delete(QXmlStreamEntityDeclaration* self) {
@@ -230,7 +232,7 @@ QXmlStreamReader* QXmlStreamReader_new4(const char* data, size_t data_Strlen) {
 	return new QXmlStreamReader(data_QString);
 }
 
-QXmlStreamReader* QXmlStreamReader_new5(char* data) {
+QXmlStreamReader* QXmlStreamReader_new5(const char* data) {
 	return new QXmlStreamReader(data);
 }
 
@@ -239,7 +241,7 @@ void QXmlStreamReader_SetDevice(QXmlStreamReader* self, QIODevice* device) {
 }
 
 QIODevice* QXmlStreamReader_Device(QXmlStreamReader* self) {
-	return self->device();
+	return const_cast<const QXmlStreamReader*>(self)->device();
 }
 
 void QXmlStreamReader_AddData(QXmlStreamReader* self, QByteArray* data) {
@@ -251,7 +253,7 @@ void QXmlStreamReader_AddDataWithData(QXmlStreamReader* self, const char* data, 
 	self->addData(data_QString);
 }
 
-void QXmlStreamReader_AddData2(QXmlStreamReader* self, char* data) {
+void QXmlStreamReader_AddData2(QXmlStreamReader* self, const char* data) {
 	self->addData(data);
 }
 
@@ -260,7 +262,12 @@ void QXmlStreamReader_Clear(QXmlStreamReader* self) {
 }
 
 bool QXmlStreamReader_AtEnd(QXmlStreamReader* self) {
-	return self->atEnd();
+	return const_cast<const QXmlStreamReader*>(self)->atEnd();
+}
+
+uintptr_t QXmlStreamReader_ReadNext(QXmlStreamReader* self) {
+	QXmlStreamReader::TokenType ret = self->readNext();
+	return static_cast<uintptr_t>(ret);
 }
 
 bool QXmlStreamReader_ReadNextStartElement(QXmlStreamReader* self) {
@@ -271,8 +278,13 @@ void QXmlStreamReader_SkipCurrentElement(QXmlStreamReader* self) {
 	self->skipCurrentElement();
 }
 
+uintptr_t QXmlStreamReader_TokenType(QXmlStreamReader* self) {
+	QXmlStreamReader::TokenType ret = const_cast<const QXmlStreamReader*>(self)->tokenType();
+	return static_cast<uintptr_t>(ret);
+}
+
 void QXmlStreamReader_TokenString(QXmlStreamReader* self, char** _out, int* _out_Strlen) {
-	QString ret = self->tokenString();
+	QString ret = const_cast<const QXmlStreamReader*>(self)->tokenString();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -285,75 +297,126 @@ void QXmlStreamReader_SetNamespaceProcessing(QXmlStreamReader* self, bool namesp
 }
 
 bool QXmlStreamReader_NamespaceProcessing(QXmlStreamReader* self) {
-	return self->namespaceProcessing();
+	return const_cast<const QXmlStreamReader*>(self)->namespaceProcessing();
 }
 
 bool QXmlStreamReader_IsStartDocument(QXmlStreamReader* self) {
-	return self->isStartDocument();
+	return const_cast<const QXmlStreamReader*>(self)->isStartDocument();
 }
 
 bool QXmlStreamReader_IsEndDocument(QXmlStreamReader* self) {
-	return self->isEndDocument();
+	return const_cast<const QXmlStreamReader*>(self)->isEndDocument();
 }
 
 bool QXmlStreamReader_IsStartElement(QXmlStreamReader* self) {
-	return self->isStartElement();
+	return const_cast<const QXmlStreamReader*>(self)->isStartElement();
 }
 
 bool QXmlStreamReader_IsEndElement(QXmlStreamReader* self) {
-	return self->isEndElement();
+	return const_cast<const QXmlStreamReader*>(self)->isEndElement();
 }
 
 bool QXmlStreamReader_IsCharacters(QXmlStreamReader* self) {
-	return self->isCharacters();
+	return const_cast<const QXmlStreamReader*>(self)->isCharacters();
 }
 
 bool QXmlStreamReader_IsWhitespace(QXmlStreamReader* self) {
-	return self->isWhitespace();
+	return const_cast<const QXmlStreamReader*>(self)->isWhitespace();
 }
 
 bool QXmlStreamReader_IsCDATA(QXmlStreamReader* self) {
-	return self->isCDATA();
+	return const_cast<const QXmlStreamReader*>(self)->isCDATA();
 }
 
 bool QXmlStreamReader_IsComment(QXmlStreamReader* self) {
-	return self->isComment();
+	return const_cast<const QXmlStreamReader*>(self)->isComment();
 }
 
 bool QXmlStreamReader_IsDTD(QXmlStreamReader* self) {
-	return self->isDTD();
+	return const_cast<const QXmlStreamReader*>(self)->isDTD();
 }
 
 bool QXmlStreamReader_IsEntityReference(QXmlStreamReader* self) {
-	return self->isEntityReference();
+	return const_cast<const QXmlStreamReader*>(self)->isEntityReference();
 }
 
 bool QXmlStreamReader_IsProcessingInstruction(QXmlStreamReader* self) {
-	return self->isProcessingInstruction();
+	return const_cast<const QXmlStreamReader*>(self)->isProcessingInstruction();
 }
 
 bool QXmlStreamReader_IsStandaloneDocument(QXmlStreamReader* self) {
-	return self->isStandaloneDocument();
+	return const_cast<const QXmlStreamReader*>(self)->isStandaloneDocument();
 }
 
-int64_t QXmlStreamReader_LineNumber(QXmlStreamReader* self) {
-	return self->lineNumber();
+long long QXmlStreamReader_LineNumber(QXmlStreamReader* self) {
+	return const_cast<const QXmlStreamReader*>(self)->lineNumber();
 }
 
-int64_t QXmlStreamReader_ColumnNumber(QXmlStreamReader* self) {
-	return self->columnNumber();
+long long QXmlStreamReader_ColumnNumber(QXmlStreamReader* self) {
+	return const_cast<const QXmlStreamReader*>(self)->columnNumber();
 }
 
-int64_t QXmlStreamReader_CharacterOffset(QXmlStreamReader* self) {
-	return self->characterOffset();
+long long QXmlStreamReader_CharacterOffset(QXmlStreamReader* self) {
+	return const_cast<const QXmlStreamReader*>(self)->characterOffset();
+}
+
+void QXmlStreamReader_ReadElementText(QXmlStreamReader* self, char** _out, int* _out_Strlen) {
+	QString ret = self->readElementText();
+	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+	QByteArray b = ret.toUtf8();
+	*_out = static_cast<char*>(malloc(b.length()));
+	memcpy(*_out, b.data(), b.length());
+	*_out_Strlen = b.length();
+}
+
+void QXmlStreamReader_NamespaceDeclarations(QXmlStreamReader* self, QXmlStreamNamespaceDeclaration*** _out, size_t* _out_len) {
+	QXmlStreamNamespaceDeclarations ret = const_cast<const QXmlStreamReader*>(self)->namespaceDeclarations();
+	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
+	QXmlStreamNamespaceDeclaration** __out = static_cast<QXmlStreamNamespaceDeclaration**>(malloc(sizeof(QXmlStreamNamespaceDeclaration**) * ret.length()));
+	for (size_t i = 0, e = ret.length(); i < e; ++i) {
+		__out[i] = new QXmlStreamNamespaceDeclaration(ret[i]);
+	}
+	*_out = __out;
+	*_out_len = ret.length();
 }
 
 void QXmlStreamReader_AddExtraNamespaceDeclaration(QXmlStreamReader* self, QXmlStreamNamespaceDeclaration* extraNamespaceDeclaraction) {
 	self->addExtraNamespaceDeclaration(*extraNamespaceDeclaraction);
 }
 
+void QXmlStreamReader_AddExtraNamespaceDeclarations(QXmlStreamReader* self, QXmlStreamNamespaceDeclaration** extraNamespaceDeclaractions, size_t extraNamespaceDeclaractions_len) {
+	QVector<QXmlStreamNamespaceDeclaration> extraNamespaceDeclaractions_QList;
+	extraNamespaceDeclaractions_QList.reserve(extraNamespaceDeclaractions_len);
+	for(size_t i = 0; i < extraNamespaceDeclaractions_len; ++i) {
+		extraNamespaceDeclaractions_QList.push_back(*(extraNamespaceDeclaractions[i]));
+	}
+	self->addExtraNamespaceDeclarations(extraNamespaceDeclaractions_QList);
+}
+
+void QXmlStreamReader_NotationDeclarations(QXmlStreamReader* self, QXmlStreamNotationDeclaration*** _out, size_t* _out_len) {
+	QXmlStreamNotationDeclarations ret = const_cast<const QXmlStreamReader*>(self)->notationDeclarations();
+	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
+	QXmlStreamNotationDeclaration** __out = static_cast<QXmlStreamNotationDeclaration**>(malloc(sizeof(QXmlStreamNotationDeclaration**) * ret.length()));
+	for (size_t i = 0, e = ret.length(); i < e; ++i) {
+		__out[i] = new QXmlStreamNotationDeclaration(ret[i]);
+	}
+	*_out = __out;
+	*_out_len = ret.length();
+}
+
+void QXmlStreamReader_EntityDeclarations(QXmlStreamReader* self, QXmlStreamEntityDeclaration*** _out, size_t* _out_len) {
+	QXmlStreamEntityDeclarations ret = const_cast<const QXmlStreamReader*>(self)->entityDeclarations();
+	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
+	QXmlStreamEntityDeclaration** __out = static_cast<QXmlStreamEntityDeclaration**>(malloc(sizeof(QXmlStreamEntityDeclaration**) * ret.length()));
+	for (size_t i = 0, e = ret.length(); i < e; ++i) {
+		__out[i] = new QXmlStreamEntityDeclaration(ret[i]);
+	}
+	*_out = __out;
+	*_out_len = ret.length();
+}
+
 int QXmlStreamReader_EntityExpansionLimit(QXmlStreamReader* self) {
-	return self->entityExpansionLimit();
+	return const_cast<const QXmlStreamReader*>(self)->entityExpansionLimit();
 }
 
 void QXmlStreamReader_SetEntityExpansionLimit(QXmlStreamReader* self, int limit) {
@@ -365,7 +428,7 @@ void QXmlStreamReader_RaiseError(QXmlStreamReader* self) {
 }
 
 void QXmlStreamReader_ErrorString(QXmlStreamReader* self, char** _out, int* _out_Strlen) {
-	QString ret = self->errorString();
+	QString ret = const_cast<const QXmlStreamReader*>(self)->errorString();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -373,8 +436,13 @@ void QXmlStreamReader_ErrorString(QXmlStreamReader* self, char** _out, int* _out
 	*_out_Strlen = b.length();
 }
 
+uintptr_t QXmlStreamReader_Error(QXmlStreamReader* self) {
+	QXmlStreamReader::Error ret = const_cast<const QXmlStreamReader*>(self)->error();
+	return static_cast<uintptr_t>(ret);
+}
+
 bool QXmlStreamReader_HasError(QXmlStreamReader* self) {
-	return self->hasError();
+	return const_cast<const QXmlStreamReader*>(self)->hasError();
 }
 
 void QXmlStreamReader_SetEntityResolver(QXmlStreamReader* self, QXmlStreamEntityResolver* resolver) {
@@ -382,7 +450,16 @@ void QXmlStreamReader_SetEntityResolver(QXmlStreamReader* self, QXmlStreamEntity
 }
 
 QXmlStreamEntityResolver* QXmlStreamReader_EntityResolver(QXmlStreamReader* self) {
-	return self->entityResolver();
+	return const_cast<const QXmlStreamReader*>(self)->entityResolver();
+}
+
+void QXmlStreamReader_ReadElementText1(QXmlStreamReader* self, uintptr_t behaviour, char** _out, int* _out_Strlen) {
+	QString ret = self->readElementText(static_cast<QXmlStreamReader::ReadElementTextBehaviour>(behaviour));
+	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+	QByteArray b = ret.toUtf8();
+	*_out = static_cast<char*>(malloc(b.length()));
+	memcpy(*_out, b.data(), b.length());
+	*_out_Strlen = b.length();
 }
 
 void QXmlStreamReader_RaiseError1(QXmlStreamReader* self, const char* message, size_t message_Strlen) {
@@ -411,19 +488,19 @@ void QXmlStreamWriter_SetDevice(QXmlStreamWriter* self, QIODevice* device) {
 }
 
 QIODevice* QXmlStreamWriter_Device(QXmlStreamWriter* self) {
-	return self->device();
+	return const_cast<const QXmlStreamWriter*>(self)->device();
 }
 
 void QXmlStreamWriter_SetCodec(QXmlStreamWriter* self, QTextCodec* codec) {
 	self->setCodec(codec);
 }
 
-void QXmlStreamWriter_SetCodecWithCodecName(QXmlStreamWriter* self, char* codecName) {
+void QXmlStreamWriter_SetCodecWithCodecName(QXmlStreamWriter* self, const char* codecName) {
 	self->setCodec(codecName);
 }
 
 QTextCodec* QXmlStreamWriter_Codec(QXmlStreamWriter* self) {
-	return self->codec();
+	return const_cast<const QXmlStreamWriter*>(self)->codec();
 }
 
 void QXmlStreamWriter_SetAutoFormatting(QXmlStreamWriter* self, bool autoFormatting) {
@@ -431,7 +508,7 @@ void QXmlStreamWriter_SetAutoFormatting(QXmlStreamWriter* self, bool autoFormatt
 }
 
 bool QXmlStreamWriter_AutoFormatting(QXmlStreamWriter* self) {
-	return self->autoFormatting();
+	return const_cast<const QXmlStreamWriter*>(self)->autoFormatting();
 }
 
 void QXmlStreamWriter_SetAutoFormattingIndent(QXmlStreamWriter* self, int spacesOrTabs) {
@@ -439,7 +516,7 @@ void QXmlStreamWriter_SetAutoFormattingIndent(QXmlStreamWriter* self, int spaces
 }
 
 int QXmlStreamWriter_AutoFormattingIndent(QXmlStreamWriter* self) {
-	return self->autoFormattingIndent();
+	return const_cast<const QXmlStreamWriter*>(self)->autoFormattingIndent();
 }
 
 void QXmlStreamWriter_WriteAttribute(QXmlStreamWriter* self, const char* qualifiedName, size_t qualifiedName_Strlen, const char* value, size_t value_Strlen) {
@@ -561,7 +638,7 @@ void QXmlStreamWriter_WriteCurrentToken(QXmlStreamWriter* self, QXmlStreamReader
 }
 
 bool QXmlStreamWriter_HasError(QXmlStreamWriter* self) {
-	return self->hasError();
+	return const_cast<const QXmlStreamWriter*>(self)->hasError();
 }
 
 void QXmlStreamWriter_WriteNamespace2(QXmlStreamWriter* self, const char* namespaceUri, size_t namespaceUri_Strlen, const char* prefix, size_t prefix_Strlen) {

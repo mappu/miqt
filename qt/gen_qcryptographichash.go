@@ -34,6 +34,12 @@ func newQCryptographicHash_U(h unsafe.Pointer) *QCryptographicHash {
 	return newQCryptographicHash((*C.QCryptographicHash)(h))
 }
 
+// NewQCryptographicHash constructs a new QCryptographicHash object.
+func NewQCryptographicHash(method uintptr) *QCryptographicHash {
+	ret := C.QCryptographicHash_new((C.uintptr_t)(method))
+	return newQCryptographicHash(ret)
+}
+
 func (this *QCryptographicHash) Reset() {
 	C.QCryptographicHash_Reset(this.h)
 }
@@ -62,6 +68,22 @@ func (this *QCryptographicHash) Result() *QByteArray {
 		runtime.KeepAlive(ret2.h)
 	})
 	return ret1
+}
+
+func QCryptographicHash_Hash(data *QByteArray, method uintptr) *QByteArray {
+	ret := C.QCryptographicHash_Hash(data.cPointer(), (C.uintptr_t)(method))
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQByteArray(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QByteArray) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func QCryptographicHash_HashLength(method uintptr) int {
+	ret := C.QCryptographicHash_HashLength((C.uintptr_t)(method))
+	return (int)(ret)
 }
 
 func (this *QCryptographicHash) Delete() {

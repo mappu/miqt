@@ -108,6 +108,24 @@ func (this *QDataWidgetMapper) RootIndex() *QModelIndex {
 	return ret1
 }
 
+func (this *QDataWidgetMapper) SetOrientation(aOrientation uintptr) {
+	C.QDataWidgetMapper_SetOrientation(this.h, (C.uintptr_t)(aOrientation))
+}
+
+func (this *QDataWidgetMapper) Orientation() uintptr {
+	ret := C.QDataWidgetMapper_Orientation(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QDataWidgetMapper) SetSubmitPolicy(policy uintptr) {
+	C.QDataWidgetMapper_SetSubmitPolicy(this.h, (C.uintptr_t)(policy))
+}
+
+func (this *QDataWidgetMapper) SubmitPolicy() uintptr {
+	ret := C.QDataWidgetMapper_SubmitPolicy(this.h)
+	return (uintptr)(ret)
+}
+
 func (this *QDataWidgetMapper) AddMapping(widget *QWidget, section int) {
 	C.QDataWidgetMapper_AddMapping(this.h, widget.cPointer(), (C.int)(section))
 }

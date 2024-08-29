@@ -83,8 +83,28 @@ func (this *QUuid) ToString() string {
 	return ret
 }
 
+func (this *QUuid) ToStringWithMode(mode uintptr) string {
+	var _out *C.char = nil
+	var _out_Strlen C.int = 0
+	C.QUuid_ToStringWithMode(this.h, (C.uintptr_t)(mode), &_out, &_out_Strlen)
+	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
 func (this *QUuid) ToByteArray() *QByteArray {
 	ret := C.QUuid_ToByteArray(this.h)
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQByteArray(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QByteArray) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QUuid) ToByteArrayWithMode(mode uintptr) *QByteArray {
+	ret := C.QUuid_ToByteArrayWithMode(this.h, (C.uintptr_t)(mode))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQByteArray(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QByteArray) {
@@ -198,6 +218,16 @@ func QUuid_CreateUuidV52(ns *QUuid, baseData string) *QUuid {
 		runtime.KeepAlive(ret2.h)
 	})
 	return ret1
+}
+
+func (this *QUuid) Variant() uintptr {
+	ret := C.QUuid_Variant(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QUuid) Version() uintptr {
+	ret := C.QUuid_Version(this.h)
+	return (uintptr)(ret)
 }
 
 func (this *QUuid) Delete() {

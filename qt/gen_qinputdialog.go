@@ -36,6 +36,24 @@ func newQInputDialog_U(h unsafe.Pointer) *QInputDialog {
 	return newQInputDialog((*C.QInputDialog)(h))
 }
 
+// NewQInputDialog constructs a new QInputDialog object.
+func NewQInputDialog() *QInputDialog {
+	ret := C.QInputDialog_new()
+	return newQInputDialog(ret)
+}
+
+// NewQInputDialog2 constructs a new QInputDialog object.
+func NewQInputDialog2(parent *QWidget) *QInputDialog {
+	ret := C.QInputDialog_new2(parent.cPointer())
+	return newQInputDialog(ret)
+}
+
+// NewQInputDialog3 constructs a new QInputDialog object.
+func NewQInputDialog3(parent *QWidget, flags int) *QInputDialog {
+	ret := C.QInputDialog_new3(parent.cPointer(), (C.int)(flags))
+	return newQInputDialog(ret)
+}
+
 func (this *QInputDialog) MetaObject() *QMetaObject {
 	ret := C.QInputDialog_MetaObject(this.h)
 	return newQMetaObject_U(unsafe.Pointer(ret))
@@ -63,6 +81,15 @@ func QInputDialog_TrUtf8(s string) string {
 	return ret
 }
 
+func (this *QInputDialog) SetInputMode(mode uintptr) {
+	C.QInputDialog_SetInputMode(this.h, (C.uintptr_t)(mode))
+}
+
+func (this *QInputDialog) InputMode() uintptr {
+	ret := C.QInputDialog_InputMode(this.h)
+	return (uintptr)(ret)
+}
+
 func (this *QInputDialog) SetLabelText(text string) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
@@ -78,6 +105,24 @@ func (this *QInputDialog) LabelText() string {
 	return ret
 }
 
+func (this *QInputDialog) SetOption(option uintptr) {
+	C.QInputDialog_SetOption(this.h, (C.uintptr_t)(option))
+}
+
+func (this *QInputDialog) TestOption(option uintptr) bool {
+	ret := C.QInputDialog_TestOption(this.h, (C.uintptr_t)(option))
+	return (bool)(ret)
+}
+
+func (this *QInputDialog) SetOptions(options int) {
+	C.QInputDialog_SetOptions(this.h, (C.int)(options))
+}
+
+func (this *QInputDialog) Options() int {
+	ret := C.QInputDialog_Options(this.h)
+	return (int)(ret)
+}
+
 func (this *QInputDialog) SetTextValue(text string) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
@@ -91,6 +136,15 @@ func (this *QInputDialog) TextValue() string {
 	ret := C.GoStringN(_out, _out_Strlen)
 	C.free(unsafe.Pointer(_out))
 	return ret
+}
+
+func (this *QInputDialog) SetTextEchoMode(mode uintptr) {
+	C.QInputDialog_SetTextEchoMode(this.h, (C.uintptr_t)(mode))
+}
+
+func (this *QInputDialog) TextEchoMode() uintptr {
+	ret := C.QInputDialog_TextEchoMode(this.h)
+	return (uintptr)(ret)
 }
 
 func (this *QInputDialog) SetComboBoxEditable(editable bool) {
@@ -268,6 +322,83 @@ func (this *QInputDialog) SetVisible(visible bool) {
 	C.QInputDialog_SetVisible(this.h, (C.bool)(visible))
 }
 
+func QInputDialog_GetText(parent *QWidget, title string, label string) string {
+	title_Cstring := C.CString(title)
+	defer C.free(unsafe.Pointer(title_Cstring))
+	label_Cstring := C.CString(label)
+	defer C.free(unsafe.Pointer(label_Cstring))
+	var _out *C.char = nil
+	var _out_Strlen C.int = 0
+	C.QInputDialog_GetText(parent.cPointer(), title_Cstring, C.ulong(len(title)), label_Cstring, C.ulong(len(label)), &_out, &_out_Strlen)
+	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func QInputDialog_GetMultiLineText(parent *QWidget, title string, label string) string {
+	title_Cstring := C.CString(title)
+	defer C.free(unsafe.Pointer(title_Cstring))
+	label_Cstring := C.CString(label)
+	defer C.free(unsafe.Pointer(label_Cstring))
+	var _out *C.char = nil
+	var _out_Strlen C.int = 0
+	C.QInputDialog_GetMultiLineText(parent.cPointer(), title_Cstring, C.ulong(len(title)), label_Cstring, C.ulong(len(label)), &_out, &_out_Strlen)
+	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func QInputDialog_GetItem(parent *QWidget, title string, label string, items []string) string {
+	title_Cstring := C.CString(title)
+	defer C.free(unsafe.Pointer(title_Cstring))
+	label_Cstring := C.CString(label)
+	defer C.free(unsafe.Pointer(label_Cstring))
+	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
+	items_CArray := (*[0xffff]*C.char)(C.malloc(C.ulong(8 * len(items))))
+	items_Lengths := (*[0xffff]C.size_t)(C.malloc(C.ulong(8 * len(items))))
+	defer C.free(unsafe.Pointer(items_CArray))
+	defer C.free(unsafe.Pointer(items_Lengths))
+	for i := range items {
+		single_cstring := C.CString(items[i])
+		defer C.free(unsafe.Pointer(single_cstring))
+		items_CArray[i] = single_cstring
+		items_Lengths[i] = (C.size_t)(len(items[i]))
+	}
+	var _out *C.char = nil
+	var _out_Strlen C.int = 0
+	C.QInputDialog_GetItem(parent.cPointer(), title_Cstring, C.ulong(len(title)), label_Cstring, C.ulong(len(label)), &items_CArray[0], &items_Lengths[0], C.ulong(len(items)), &_out, &_out_Strlen)
+	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func QInputDialog_GetInt(parent *QWidget, title string, label string) int {
+	title_Cstring := C.CString(title)
+	defer C.free(unsafe.Pointer(title_Cstring))
+	label_Cstring := C.CString(label)
+	defer C.free(unsafe.Pointer(label_Cstring))
+	ret := C.QInputDialog_GetInt(parent.cPointer(), title_Cstring, C.ulong(len(title)), label_Cstring, C.ulong(len(label)))
+	return (int)(ret)
+}
+
+func QInputDialog_GetDouble(parent *QWidget, title string, label string) float64 {
+	title_Cstring := C.CString(title)
+	defer C.free(unsafe.Pointer(title_Cstring))
+	label_Cstring := C.CString(label)
+	defer C.free(unsafe.Pointer(label_Cstring))
+	ret := C.QInputDialog_GetDouble(parent.cPointer(), title_Cstring, C.ulong(len(title)), label_Cstring, C.ulong(len(label)))
+	return (float64)(ret)
+}
+
+func QInputDialog_GetDouble2(parent *QWidget, title string, label string, value float64, minValue float64, maxValue float64, decimals int, ok *bool, flags int, step float64) float64 {
+	title_Cstring := C.CString(title)
+	defer C.free(unsafe.Pointer(title_Cstring))
+	label_Cstring := C.CString(label)
+	defer C.free(unsafe.Pointer(label_Cstring))
+	ret := C.QInputDialog_GetDouble2(parent.cPointer(), title_Cstring, C.ulong(len(title)), label_Cstring, C.ulong(len(label)), (C.double)(value), (C.double)(minValue), (C.double)(maxValue), (C.int)(decimals), (*C.bool)(unsafe.Pointer(ok)), (C.int)(flags), (C.double)(step))
+	return (float64)(ret)
+}
+
 func (this *QInputDialog) SetDoubleStep(step float64) {
 	C.QInputDialog_SetDoubleStep(this.h, (C.double)(step))
 }
@@ -407,6 +538,371 @@ func QInputDialog_TrUtf83(s string, c string, n int) string {
 	ret := C.GoStringN(_out, _out_Strlen)
 	C.free(unsafe.Pointer(_out))
 	return ret
+}
+
+func (this *QInputDialog) SetOption2(option uintptr, on bool) {
+	C.QInputDialog_SetOption2(this.h, (C.uintptr_t)(option), (C.bool)(on))
+}
+
+func QInputDialog_GetText4(parent *QWidget, title string, label string, echo uintptr) string {
+	title_Cstring := C.CString(title)
+	defer C.free(unsafe.Pointer(title_Cstring))
+	label_Cstring := C.CString(label)
+	defer C.free(unsafe.Pointer(label_Cstring))
+	var _out *C.char = nil
+	var _out_Strlen C.int = 0
+	C.QInputDialog_GetText4(parent.cPointer(), title_Cstring, C.ulong(len(title)), label_Cstring, C.ulong(len(label)), (C.uintptr_t)(echo), &_out, &_out_Strlen)
+	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func QInputDialog_GetText5(parent *QWidget, title string, label string, echo uintptr, text string) string {
+	title_Cstring := C.CString(title)
+	defer C.free(unsafe.Pointer(title_Cstring))
+	label_Cstring := C.CString(label)
+	defer C.free(unsafe.Pointer(label_Cstring))
+	text_Cstring := C.CString(text)
+	defer C.free(unsafe.Pointer(text_Cstring))
+	var _out *C.char = nil
+	var _out_Strlen C.int = 0
+	C.QInputDialog_GetText5(parent.cPointer(), title_Cstring, C.ulong(len(title)), label_Cstring, C.ulong(len(label)), (C.uintptr_t)(echo), text_Cstring, C.ulong(len(text)), &_out, &_out_Strlen)
+	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func QInputDialog_GetText6(parent *QWidget, title string, label string, echo uintptr, text string, ok *bool) string {
+	title_Cstring := C.CString(title)
+	defer C.free(unsafe.Pointer(title_Cstring))
+	label_Cstring := C.CString(label)
+	defer C.free(unsafe.Pointer(label_Cstring))
+	text_Cstring := C.CString(text)
+	defer C.free(unsafe.Pointer(text_Cstring))
+	var _out *C.char = nil
+	var _out_Strlen C.int = 0
+	C.QInputDialog_GetText6(parent.cPointer(), title_Cstring, C.ulong(len(title)), label_Cstring, C.ulong(len(label)), (C.uintptr_t)(echo), text_Cstring, C.ulong(len(text)), (*C.bool)(unsafe.Pointer(ok)), &_out, &_out_Strlen)
+	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func QInputDialog_GetText7(parent *QWidget, title string, label string, echo uintptr, text string, ok *bool, flags int) string {
+	title_Cstring := C.CString(title)
+	defer C.free(unsafe.Pointer(title_Cstring))
+	label_Cstring := C.CString(label)
+	defer C.free(unsafe.Pointer(label_Cstring))
+	text_Cstring := C.CString(text)
+	defer C.free(unsafe.Pointer(text_Cstring))
+	var _out *C.char = nil
+	var _out_Strlen C.int = 0
+	C.QInputDialog_GetText7(parent.cPointer(), title_Cstring, C.ulong(len(title)), label_Cstring, C.ulong(len(label)), (C.uintptr_t)(echo), text_Cstring, C.ulong(len(text)), (*C.bool)(unsafe.Pointer(ok)), (C.int)(flags), &_out, &_out_Strlen)
+	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func QInputDialog_GetText8(parent *QWidget, title string, label string, echo uintptr, text string, ok *bool, flags int, inputMethodHints int) string {
+	title_Cstring := C.CString(title)
+	defer C.free(unsafe.Pointer(title_Cstring))
+	label_Cstring := C.CString(label)
+	defer C.free(unsafe.Pointer(label_Cstring))
+	text_Cstring := C.CString(text)
+	defer C.free(unsafe.Pointer(text_Cstring))
+	var _out *C.char = nil
+	var _out_Strlen C.int = 0
+	C.QInputDialog_GetText8(parent.cPointer(), title_Cstring, C.ulong(len(title)), label_Cstring, C.ulong(len(label)), (C.uintptr_t)(echo), text_Cstring, C.ulong(len(text)), (*C.bool)(unsafe.Pointer(ok)), (C.int)(flags), (C.int)(inputMethodHints), &_out, &_out_Strlen)
+	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func QInputDialog_GetMultiLineText4(parent *QWidget, title string, label string, text string) string {
+	title_Cstring := C.CString(title)
+	defer C.free(unsafe.Pointer(title_Cstring))
+	label_Cstring := C.CString(label)
+	defer C.free(unsafe.Pointer(label_Cstring))
+	text_Cstring := C.CString(text)
+	defer C.free(unsafe.Pointer(text_Cstring))
+	var _out *C.char = nil
+	var _out_Strlen C.int = 0
+	C.QInputDialog_GetMultiLineText4(parent.cPointer(), title_Cstring, C.ulong(len(title)), label_Cstring, C.ulong(len(label)), text_Cstring, C.ulong(len(text)), &_out, &_out_Strlen)
+	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func QInputDialog_GetMultiLineText5(parent *QWidget, title string, label string, text string, ok *bool) string {
+	title_Cstring := C.CString(title)
+	defer C.free(unsafe.Pointer(title_Cstring))
+	label_Cstring := C.CString(label)
+	defer C.free(unsafe.Pointer(label_Cstring))
+	text_Cstring := C.CString(text)
+	defer C.free(unsafe.Pointer(text_Cstring))
+	var _out *C.char = nil
+	var _out_Strlen C.int = 0
+	C.QInputDialog_GetMultiLineText5(parent.cPointer(), title_Cstring, C.ulong(len(title)), label_Cstring, C.ulong(len(label)), text_Cstring, C.ulong(len(text)), (*C.bool)(unsafe.Pointer(ok)), &_out, &_out_Strlen)
+	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func QInputDialog_GetMultiLineText6(parent *QWidget, title string, label string, text string, ok *bool, flags int) string {
+	title_Cstring := C.CString(title)
+	defer C.free(unsafe.Pointer(title_Cstring))
+	label_Cstring := C.CString(label)
+	defer C.free(unsafe.Pointer(label_Cstring))
+	text_Cstring := C.CString(text)
+	defer C.free(unsafe.Pointer(text_Cstring))
+	var _out *C.char = nil
+	var _out_Strlen C.int = 0
+	C.QInputDialog_GetMultiLineText6(parent.cPointer(), title_Cstring, C.ulong(len(title)), label_Cstring, C.ulong(len(label)), text_Cstring, C.ulong(len(text)), (*C.bool)(unsafe.Pointer(ok)), (C.int)(flags), &_out, &_out_Strlen)
+	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func QInputDialog_GetMultiLineText7(parent *QWidget, title string, label string, text string, ok *bool, flags int, inputMethodHints int) string {
+	title_Cstring := C.CString(title)
+	defer C.free(unsafe.Pointer(title_Cstring))
+	label_Cstring := C.CString(label)
+	defer C.free(unsafe.Pointer(label_Cstring))
+	text_Cstring := C.CString(text)
+	defer C.free(unsafe.Pointer(text_Cstring))
+	var _out *C.char = nil
+	var _out_Strlen C.int = 0
+	C.QInputDialog_GetMultiLineText7(parent.cPointer(), title_Cstring, C.ulong(len(title)), label_Cstring, C.ulong(len(label)), text_Cstring, C.ulong(len(text)), (*C.bool)(unsafe.Pointer(ok)), (C.int)(flags), (C.int)(inputMethodHints), &_out, &_out_Strlen)
+	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func QInputDialog_GetItem5(parent *QWidget, title string, label string, items []string, current int) string {
+	title_Cstring := C.CString(title)
+	defer C.free(unsafe.Pointer(title_Cstring))
+	label_Cstring := C.CString(label)
+	defer C.free(unsafe.Pointer(label_Cstring))
+	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
+	items_CArray := (*[0xffff]*C.char)(C.malloc(C.ulong(8 * len(items))))
+	items_Lengths := (*[0xffff]C.size_t)(C.malloc(C.ulong(8 * len(items))))
+	defer C.free(unsafe.Pointer(items_CArray))
+	defer C.free(unsafe.Pointer(items_Lengths))
+	for i := range items {
+		single_cstring := C.CString(items[i])
+		defer C.free(unsafe.Pointer(single_cstring))
+		items_CArray[i] = single_cstring
+		items_Lengths[i] = (C.size_t)(len(items[i]))
+	}
+	var _out *C.char = nil
+	var _out_Strlen C.int = 0
+	C.QInputDialog_GetItem5(parent.cPointer(), title_Cstring, C.ulong(len(title)), label_Cstring, C.ulong(len(label)), &items_CArray[0], &items_Lengths[0], C.ulong(len(items)), (C.int)(current), &_out, &_out_Strlen)
+	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func QInputDialog_GetItem6(parent *QWidget, title string, label string, items []string, current int, editable bool) string {
+	title_Cstring := C.CString(title)
+	defer C.free(unsafe.Pointer(title_Cstring))
+	label_Cstring := C.CString(label)
+	defer C.free(unsafe.Pointer(label_Cstring))
+	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
+	items_CArray := (*[0xffff]*C.char)(C.malloc(C.ulong(8 * len(items))))
+	items_Lengths := (*[0xffff]C.size_t)(C.malloc(C.ulong(8 * len(items))))
+	defer C.free(unsafe.Pointer(items_CArray))
+	defer C.free(unsafe.Pointer(items_Lengths))
+	for i := range items {
+		single_cstring := C.CString(items[i])
+		defer C.free(unsafe.Pointer(single_cstring))
+		items_CArray[i] = single_cstring
+		items_Lengths[i] = (C.size_t)(len(items[i]))
+	}
+	var _out *C.char = nil
+	var _out_Strlen C.int = 0
+	C.QInputDialog_GetItem6(parent.cPointer(), title_Cstring, C.ulong(len(title)), label_Cstring, C.ulong(len(label)), &items_CArray[0], &items_Lengths[0], C.ulong(len(items)), (C.int)(current), (C.bool)(editable), &_out, &_out_Strlen)
+	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func QInputDialog_GetItem7(parent *QWidget, title string, label string, items []string, current int, editable bool, ok *bool) string {
+	title_Cstring := C.CString(title)
+	defer C.free(unsafe.Pointer(title_Cstring))
+	label_Cstring := C.CString(label)
+	defer C.free(unsafe.Pointer(label_Cstring))
+	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
+	items_CArray := (*[0xffff]*C.char)(C.malloc(C.ulong(8 * len(items))))
+	items_Lengths := (*[0xffff]C.size_t)(C.malloc(C.ulong(8 * len(items))))
+	defer C.free(unsafe.Pointer(items_CArray))
+	defer C.free(unsafe.Pointer(items_Lengths))
+	for i := range items {
+		single_cstring := C.CString(items[i])
+		defer C.free(unsafe.Pointer(single_cstring))
+		items_CArray[i] = single_cstring
+		items_Lengths[i] = (C.size_t)(len(items[i]))
+	}
+	var _out *C.char = nil
+	var _out_Strlen C.int = 0
+	C.QInputDialog_GetItem7(parent.cPointer(), title_Cstring, C.ulong(len(title)), label_Cstring, C.ulong(len(label)), &items_CArray[0], &items_Lengths[0], C.ulong(len(items)), (C.int)(current), (C.bool)(editable), (*C.bool)(unsafe.Pointer(ok)), &_out, &_out_Strlen)
+	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func QInputDialog_GetItem8(parent *QWidget, title string, label string, items []string, current int, editable bool, ok *bool, flags int) string {
+	title_Cstring := C.CString(title)
+	defer C.free(unsafe.Pointer(title_Cstring))
+	label_Cstring := C.CString(label)
+	defer C.free(unsafe.Pointer(label_Cstring))
+	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
+	items_CArray := (*[0xffff]*C.char)(C.malloc(C.ulong(8 * len(items))))
+	items_Lengths := (*[0xffff]C.size_t)(C.malloc(C.ulong(8 * len(items))))
+	defer C.free(unsafe.Pointer(items_CArray))
+	defer C.free(unsafe.Pointer(items_Lengths))
+	for i := range items {
+		single_cstring := C.CString(items[i])
+		defer C.free(unsafe.Pointer(single_cstring))
+		items_CArray[i] = single_cstring
+		items_Lengths[i] = (C.size_t)(len(items[i]))
+	}
+	var _out *C.char = nil
+	var _out_Strlen C.int = 0
+	C.QInputDialog_GetItem8(parent.cPointer(), title_Cstring, C.ulong(len(title)), label_Cstring, C.ulong(len(label)), &items_CArray[0], &items_Lengths[0], C.ulong(len(items)), (C.int)(current), (C.bool)(editable), (*C.bool)(unsafe.Pointer(ok)), (C.int)(flags), &_out, &_out_Strlen)
+	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func QInputDialog_GetItem9(parent *QWidget, title string, label string, items []string, current int, editable bool, ok *bool, flags int, inputMethodHints int) string {
+	title_Cstring := C.CString(title)
+	defer C.free(unsafe.Pointer(title_Cstring))
+	label_Cstring := C.CString(label)
+	defer C.free(unsafe.Pointer(label_Cstring))
+	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
+	items_CArray := (*[0xffff]*C.char)(C.malloc(C.ulong(8 * len(items))))
+	items_Lengths := (*[0xffff]C.size_t)(C.malloc(C.ulong(8 * len(items))))
+	defer C.free(unsafe.Pointer(items_CArray))
+	defer C.free(unsafe.Pointer(items_Lengths))
+	for i := range items {
+		single_cstring := C.CString(items[i])
+		defer C.free(unsafe.Pointer(single_cstring))
+		items_CArray[i] = single_cstring
+		items_Lengths[i] = (C.size_t)(len(items[i]))
+	}
+	var _out *C.char = nil
+	var _out_Strlen C.int = 0
+	C.QInputDialog_GetItem9(parent.cPointer(), title_Cstring, C.ulong(len(title)), label_Cstring, C.ulong(len(label)), &items_CArray[0], &items_Lengths[0], C.ulong(len(items)), (C.int)(current), (C.bool)(editable), (*C.bool)(unsafe.Pointer(ok)), (C.int)(flags), (C.int)(inputMethodHints), &_out, &_out_Strlen)
+	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func QInputDialog_GetInt4(parent *QWidget, title string, label string, value int) int {
+	title_Cstring := C.CString(title)
+	defer C.free(unsafe.Pointer(title_Cstring))
+	label_Cstring := C.CString(label)
+	defer C.free(unsafe.Pointer(label_Cstring))
+	ret := C.QInputDialog_GetInt4(parent.cPointer(), title_Cstring, C.ulong(len(title)), label_Cstring, C.ulong(len(label)), (C.int)(value))
+	return (int)(ret)
+}
+
+func QInputDialog_GetInt5(parent *QWidget, title string, label string, value int, minValue int) int {
+	title_Cstring := C.CString(title)
+	defer C.free(unsafe.Pointer(title_Cstring))
+	label_Cstring := C.CString(label)
+	defer C.free(unsafe.Pointer(label_Cstring))
+	ret := C.QInputDialog_GetInt5(parent.cPointer(), title_Cstring, C.ulong(len(title)), label_Cstring, C.ulong(len(label)), (C.int)(value), (C.int)(minValue))
+	return (int)(ret)
+}
+
+func QInputDialog_GetInt6(parent *QWidget, title string, label string, value int, minValue int, maxValue int) int {
+	title_Cstring := C.CString(title)
+	defer C.free(unsafe.Pointer(title_Cstring))
+	label_Cstring := C.CString(label)
+	defer C.free(unsafe.Pointer(label_Cstring))
+	ret := C.QInputDialog_GetInt6(parent.cPointer(), title_Cstring, C.ulong(len(title)), label_Cstring, C.ulong(len(label)), (C.int)(value), (C.int)(minValue), (C.int)(maxValue))
+	return (int)(ret)
+}
+
+func QInputDialog_GetInt7(parent *QWidget, title string, label string, value int, minValue int, maxValue int, step int) int {
+	title_Cstring := C.CString(title)
+	defer C.free(unsafe.Pointer(title_Cstring))
+	label_Cstring := C.CString(label)
+	defer C.free(unsafe.Pointer(label_Cstring))
+	ret := C.QInputDialog_GetInt7(parent.cPointer(), title_Cstring, C.ulong(len(title)), label_Cstring, C.ulong(len(label)), (C.int)(value), (C.int)(minValue), (C.int)(maxValue), (C.int)(step))
+	return (int)(ret)
+}
+
+func QInputDialog_GetInt8(parent *QWidget, title string, label string, value int, minValue int, maxValue int, step int, ok *bool) int {
+	title_Cstring := C.CString(title)
+	defer C.free(unsafe.Pointer(title_Cstring))
+	label_Cstring := C.CString(label)
+	defer C.free(unsafe.Pointer(label_Cstring))
+	ret := C.QInputDialog_GetInt8(parent.cPointer(), title_Cstring, C.ulong(len(title)), label_Cstring, C.ulong(len(label)), (C.int)(value), (C.int)(minValue), (C.int)(maxValue), (C.int)(step), (*C.bool)(unsafe.Pointer(ok)))
+	return (int)(ret)
+}
+
+func QInputDialog_GetInt9(parent *QWidget, title string, label string, value int, minValue int, maxValue int, step int, ok *bool, flags int) int {
+	title_Cstring := C.CString(title)
+	defer C.free(unsafe.Pointer(title_Cstring))
+	label_Cstring := C.CString(label)
+	defer C.free(unsafe.Pointer(label_Cstring))
+	ret := C.QInputDialog_GetInt9(parent.cPointer(), title_Cstring, C.ulong(len(title)), label_Cstring, C.ulong(len(label)), (C.int)(value), (C.int)(minValue), (C.int)(maxValue), (C.int)(step), (*C.bool)(unsafe.Pointer(ok)), (C.int)(flags))
+	return (int)(ret)
+}
+
+func QInputDialog_GetDouble4(parent *QWidget, title string, label string, value float64) float64 {
+	title_Cstring := C.CString(title)
+	defer C.free(unsafe.Pointer(title_Cstring))
+	label_Cstring := C.CString(label)
+	defer C.free(unsafe.Pointer(label_Cstring))
+	ret := C.QInputDialog_GetDouble4(parent.cPointer(), title_Cstring, C.ulong(len(title)), label_Cstring, C.ulong(len(label)), (C.double)(value))
+	return (float64)(ret)
+}
+
+func QInputDialog_GetDouble5(parent *QWidget, title string, label string, value float64, minValue float64) float64 {
+	title_Cstring := C.CString(title)
+	defer C.free(unsafe.Pointer(title_Cstring))
+	label_Cstring := C.CString(label)
+	defer C.free(unsafe.Pointer(label_Cstring))
+	ret := C.QInputDialog_GetDouble5(parent.cPointer(), title_Cstring, C.ulong(len(title)), label_Cstring, C.ulong(len(label)), (C.double)(value), (C.double)(minValue))
+	return (float64)(ret)
+}
+
+func QInputDialog_GetDouble6(parent *QWidget, title string, label string, value float64, minValue float64, maxValue float64) float64 {
+	title_Cstring := C.CString(title)
+	defer C.free(unsafe.Pointer(title_Cstring))
+	label_Cstring := C.CString(label)
+	defer C.free(unsafe.Pointer(label_Cstring))
+	ret := C.QInputDialog_GetDouble6(parent.cPointer(), title_Cstring, C.ulong(len(title)), label_Cstring, C.ulong(len(label)), (C.double)(value), (C.double)(minValue), (C.double)(maxValue))
+	return (float64)(ret)
+}
+
+func QInputDialog_GetDouble7(parent *QWidget, title string, label string, value float64, minValue float64, maxValue float64, decimals int) float64 {
+	title_Cstring := C.CString(title)
+	defer C.free(unsafe.Pointer(title_Cstring))
+	label_Cstring := C.CString(label)
+	defer C.free(unsafe.Pointer(label_Cstring))
+	ret := C.QInputDialog_GetDouble7(parent.cPointer(), title_Cstring, C.ulong(len(title)), label_Cstring, C.ulong(len(label)), (C.double)(value), (C.double)(minValue), (C.double)(maxValue), (C.int)(decimals))
+	return (float64)(ret)
+}
+
+func QInputDialog_GetDouble8(parent *QWidget, title string, label string, value float64, minValue float64, maxValue float64, decimals int, ok *bool) float64 {
+	title_Cstring := C.CString(title)
+	defer C.free(unsafe.Pointer(title_Cstring))
+	label_Cstring := C.CString(label)
+	defer C.free(unsafe.Pointer(label_Cstring))
+	ret := C.QInputDialog_GetDouble8(parent.cPointer(), title_Cstring, C.ulong(len(title)), label_Cstring, C.ulong(len(label)), (C.double)(value), (C.double)(minValue), (C.double)(maxValue), (C.int)(decimals), (*C.bool)(unsafe.Pointer(ok)))
+	return (float64)(ret)
+}
+
+func QInputDialog_GetDouble9(parent *QWidget, title string, label string, value float64, minValue float64, maxValue float64, decimals int, ok *bool, flags int) float64 {
+	title_Cstring := C.CString(title)
+	defer C.free(unsafe.Pointer(title_Cstring))
+	label_Cstring := C.CString(label)
+	defer C.free(unsafe.Pointer(label_Cstring))
+	ret := C.QInputDialog_GetDouble9(parent.cPointer(), title_Cstring, C.ulong(len(title)), label_Cstring, C.ulong(len(label)), (C.double)(value), (C.double)(minValue), (C.double)(maxValue), (C.int)(decimals), (*C.bool)(unsafe.Pointer(ok)), (C.int)(flags))
+	return (float64)(ret)
 }
 
 func (this *QInputDialog) Delete() {

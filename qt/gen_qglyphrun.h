@@ -29,9 +29,9 @@ void QGlyphRun_OperatorAssign(QGlyphRun* self, QGlyphRun* other);
 void QGlyphRun_Swap(QGlyphRun* self, QGlyphRun* other);
 QRawFont* QGlyphRun_RawFont(QGlyphRun* self);
 void QGlyphRun_SetRawFont(QGlyphRun* self, QRawFont* rawFont);
-void QGlyphRun_SetRawData(QGlyphRun* self, uint32_t* glyphIndexArray, QPointF* glyphPositionArray, int size);
-void QGlyphRun_GlyphIndexes(QGlyphRun* self, uint32_t** _out, size_t* _out_len);
-void QGlyphRun_SetGlyphIndexes(QGlyphRun* self, uint32_t* glyphIndexes, size_t glyphIndexes_len);
+void QGlyphRun_SetRawData(QGlyphRun* self, const unsigned int* glyphIndexArray, QPointF* glyphPositionArray, int size);
+void QGlyphRun_GlyphIndexes(QGlyphRun* self, unsigned int** _out, size_t* _out_len);
+void QGlyphRun_SetGlyphIndexes(QGlyphRun* self, unsigned int* glyphIndexes, size_t glyphIndexes_len);
 void QGlyphRun_Positions(QGlyphRun* self, QPointF*** _out, size_t* _out_len);
 void QGlyphRun_SetPositions(QGlyphRun* self, QPointF** positions, size_t positions_len);
 void QGlyphRun_Clear(QGlyphRun* self);
@@ -45,9 +45,13 @@ void QGlyphRun_SetStrikeOut(QGlyphRun* self, bool strikeOut);
 bool QGlyphRun_StrikeOut(QGlyphRun* self);
 void QGlyphRun_SetRightToLeft(QGlyphRun* self, bool on);
 bool QGlyphRun_IsRightToLeft(QGlyphRun* self);
+void QGlyphRun_SetFlag(QGlyphRun* self, uintptr_t flag);
+void QGlyphRun_SetFlags(QGlyphRun* self, int flags);
+int QGlyphRun_Flags(QGlyphRun* self);
 void QGlyphRun_SetBoundingRect(QGlyphRun* self, QRectF* boundingRect);
 QRectF* QGlyphRun_BoundingRect(QGlyphRun* self);
 bool QGlyphRun_IsEmpty(QGlyphRun* self);
+void QGlyphRun_SetFlag2(QGlyphRun* self, uintptr_t flag, bool enabled);
 void QGlyphRun_Delete(QGlyphRun* self);
 
 #ifdef __cplusplus

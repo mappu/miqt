@@ -135,6 +135,15 @@ func (this *QListWidgetItem) IsHidden() bool {
 	return (bool)(ret)
 }
 
+func (this *QListWidgetItem) Flags() int {
+	ret := C.QListWidgetItem_Flags(this.h)
+	return (int)(ret)
+}
+
+func (this *QListWidgetItem) SetFlags(flags int) {
+	C.QListWidgetItem_SetFlags(this.h, (C.int)(flags))
+}
+
 func (this *QListWidgetItem) Text() string {
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
@@ -292,6 +301,15 @@ func (this *QListWidgetItem) Foreground() *QBrush {
 
 func (this *QListWidgetItem) SetForeground(brush *QBrush) {
 	C.QListWidgetItem_SetForeground(this.h, brush.cPointer())
+}
+
+func (this *QListWidgetItem) CheckState() uintptr {
+	ret := C.QListWidgetItem_CheckState(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QListWidgetItem) SetCheckState(state uintptr) {
+	C.QListWidgetItem_SetCheckState(this.h, (C.uintptr_t)(state))
 }
 
 func (this *QListWidgetItem) SizeHint() *QSize {
@@ -492,6 +510,10 @@ func (this *QListWidget) SetCurrentItem(item *QListWidgetItem) {
 	C.QListWidget_SetCurrentItem(this.h, item.cPointer())
 }
 
+func (this *QListWidget) SetCurrentItem2(item *QListWidgetItem, command int) {
+	C.QListWidget_SetCurrentItem2(this.h, item.cPointer(), (C.int)(command))
+}
+
 func (this *QListWidget) CurrentRow() int {
 	ret := C.QListWidget_CurrentRow(this.h)
 	return (int)(ret)
@@ -499,6 +521,10 @@ func (this *QListWidget) CurrentRow() int {
 
 func (this *QListWidget) SetCurrentRow(row int) {
 	C.QListWidget_SetCurrentRow(this.h, (C.int)(row))
+}
+
+func (this *QListWidget) SetCurrentRow2(row int, command int) {
+	C.QListWidget_SetCurrentRow2(this.h, (C.int)(row), (C.int)(command))
 }
 
 func (this *QListWidget) ItemAt(p *QPoint) *QListWidgetItem {
@@ -520,6 +546,10 @@ func (this *QListWidget) VisualItemRect(item *QListWidgetItem) *QRect {
 		runtime.KeepAlive(ret2.h)
 	})
 	return ret1
+}
+
+func (this *QListWidget) SortItems() {
+	C.QListWidget_SortItems(this.h)
 }
 
 func (this *QListWidget) SetSortingEnabled(enable bool) {
@@ -583,6 +613,21 @@ func (this *QListWidget) SelectedItems() []*QListWidgetItem {
 	return ret
 }
 
+func (this *QListWidget) FindItems(text string, flags int) []*QListWidgetItem {
+	text_Cstring := C.CString(text)
+	defer C.free(unsafe.Pointer(text_Cstring))
+	var _out **C.QListWidgetItem = nil
+	var _out_len C.size_t = 0
+	C.QListWidget_FindItems(this.h, text_Cstring, C.ulong(len(text)), (C.int)(flags), &_out, &_out_len)
+	ret := make([]*QListWidgetItem, int(_out_len))
+	_outCast := (*[0xffff]*C.QListWidgetItem)(unsafe.Pointer(_out)) // so fresh so clean
+	for i := 0; i < int(_out_len); i++ {
+		ret[i] = newQListWidgetItem(_outCast[i])
+	}
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
 func (this *QListWidget) IsItemHidden(item *QListWidgetItem) bool {
 	ret := C.QListWidget_IsItemHidden(this.h, item.cPointer())
 	return (bool)(ret)
@@ -594,6 +639,10 @@ func (this *QListWidget) SetItemHidden(item *QListWidgetItem, hide bool) {
 
 func (this *QListWidget) DropEvent(event *QDropEvent) {
 	C.QListWidget_DropEvent(this.h, event.cPointer())
+}
+
+func (this *QListWidget) ScrollToItem(item *QListWidgetItem) {
+	C.QListWidget_ScrollToItem(this.h, item.cPointer())
 }
 
 func (this *QListWidget) Clear() {
@@ -772,6 +821,14 @@ func QListWidget_TrUtf83(s string, c string, n int) string {
 	ret := C.GoStringN(_out, _out_Strlen)
 	C.free(unsafe.Pointer(_out))
 	return ret
+}
+
+func (this *QListWidget) SortItems1(order uintptr) {
+	C.QListWidget_SortItems1(this.h, (C.uintptr_t)(order))
+}
+
+func (this *QListWidget) ScrollToItem2(item *QListWidgetItem, hint uintptr) {
+	C.QListWidget_ScrollToItem2(this.h, item.cPointer(), (C.uintptr_t)(hint))
 }
 
 func (this *QListWidget) Delete() {

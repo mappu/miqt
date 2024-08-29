@@ -26,18 +26,22 @@ typedef struct QState QState;
 #endif
 
 QHistoryState* QHistoryState_new();
-QHistoryState* QHistoryState_new2(QState* parent);
+QHistoryState* QHistoryState_new2(uintptr_t typeVal);
+QHistoryState* QHistoryState_new3(QState* parent);
+QHistoryState* QHistoryState_new4(uintptr_t typeVal, QState* parent);
 QMetaObject* QHistoryState_MetaObject(QHistoryState* self);
-void QHistoryState_Tr(char* s, char** _out, int* _out_Strlen);
-void QHistoryState_TrUtf8(char* s, char** _out, int* _out_Strlen);
+void QHistoryState_Tr(const char* s, char** _out, int* _out_Strlen);
+void QHistoryState_TrUtf8(const char* s, char** _out, int* _out_Strlen);
 QAbstractTransition* QHistoryState_DefaultTransition(QHistoryState* self);
 void QHistoryState_SetDefaultTransition(QHistoryState* self, QAbstractTransition* transition);
 QAbstractState* QHistoryState_DefaultState(QHistoryState* self);
 void QHistoryState_SetDefaultState(QHistoryState* self, QAbstractState* state);
-void QHistoryState_Tr2(char* s, char* c, char** _out, int* _out_Strlen);
-void QHistoryState_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen);
-void QHistoryState_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen);
-void QHistoryState_TrUtf83(char* s, char* c, int n, char** _out, int* _out_Strlen);
+uintptr_t QHistoryState_HistoryType(QHistoryState* self);
+void QHistoryState_SetHistoryType(QHistoryState* self, uintptr_t typeVal);
+void QHistoryState_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
+void QHistoryState_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+void QHistoryState_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
+void QHistoryState_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
 void QHistoryState_Delete(QHistoryState* self);
 
 #ifdef __cplusplus

@@ -40,8 +40,19 @@ func NewQFileIconProvider() *QFileIconProvider {
 	return newQFileIconProvider(ret)
 }
 
-func (this *QFileIconProvider) Icon(info *QFileInfo) *QIcon {
-	ret := C.QFileIconProvider_Icon(this.h, info.cPointer())
+func (this *QFileIconProvider) Icon(typeVal uintptr) *QIcon {
+	ret := C.QFileIconProvider_Icon(this.h, (C.uintptr_t)(typeVal))
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQIcon(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QIcon) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QFileIconProvider) IconWithInfo(info *QFileInfo) *QIcon {
+	ret := C.QFileIconProvider_IconWithInfo(this.h, info.cPointer())
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQIcon(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QIcon) {
@@ -58,6 +69,15 @@ func (this *QFileIconProvider) Type(info *QFileInfo) string {
 	ret := C.GoStringN(_out, _out_Strlen)
 	C.free(unsafe.Pointer(_out))
 	return ret
+}
+
+func (this *QFileIconProvider) SetOptions(options int) {
+	C.QFileIconProvider_SetOptions(this.h, (C.int)(options))
+}
+
+func (this *QFileIconProvider) Options() int {
+	ret := C.QFileIconProvider_Options(this.h)
+	return (int)(ret)
 }
 
 func (this *QFileIconProvider) Delete() {

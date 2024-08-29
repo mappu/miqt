@@ -1,22 +1,50 @@
-#include "gen_qdockwidget.h"
-#include "qdockwidget.h"
-
 #include <QAction>
 #include <QDockWidget>
 #include <QMetaObject>
 #include <QString>
+#include <QByteArray>
+#include <cstring>
 #include <QWidget>
+#include "qdockwidget.h"
 
+#include "gen_qdockwidget.h"
 
 extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
 }
 
-QMetaObject* QDockWidget_MetaObject(QDockWidget* self) {
-	return (QMetaObject*) self->metaObject();
+QDockWidget* QDockWidget_new(const char* title, size_t title_Strlen) {
+	QString title_QString = QString::fromUtf8(title, title_Strlen);
+	return new QDockWidget(title_QString);
 }
 
-void QDockWidget_Tr(char* s, char** _out, int* _out_Strlen) {
+QDockWidget* QDockWidget_new2() {
+	return new QDockWidget();
+}
+
+QDockWidget* QDockWidget_new3(const char* title, size_t title_Strlen, QWidget* parent) {
+	QString title_QString = QString::fromUtf8(title, title_Strlen);
+	return new QDockWidget(title_QString, parent);
+}
+
+QDockWidget* QDockWidget_new4(const char* title, size_t title_Strlen, QWidget* parent, int flags) {
+	QString title_QString = QString::fromUtf8(title, title_Strlen);
+	return new QDockWidget(title_QString, parent, static_cast<Qt::WindowFlags>(flags));
+}
+
+QDockWidget* QDockWidget_new5(QWidget* parent) {
+	return new QDockWidget(parent);
+}
+
+QDockWidget* QDockWidget_new6(QWidget* parent, int flags) {
+	return new QDockWidget(parent, static_cast<Qt::WindowFlags>(flags));
+}
+
+QMetaObject* QDockWidget_MetaObject(QDockWidget* self) {
+	return (QMetaObject*) const_cast<const QDockWidget*>(self)->metaObject();
+}
+
+void QDockWidget_Tr(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QDockWidget::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -25,7 +53,7 @@ void QDockWidget_Tr(char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QDockWidget_TrUtf8(char* s, char** _out, int* _out_Strlen) {
+void QDockWidget_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QDockWidget::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -35,11 +63,20 @@ void QDockWidget_TrUtf8(char* s, char** _out, int* _out_Strlen) {
 }
 
 QWidget* QDockWidget_Widget(QDockWidget* self) {
-	return self->widget();
+	return const_cast<const QDockWidget*>(self)->widget();
 }
 
 void QDockWidget_SetWidget(QDockWidget* self, QWidget* widget) {
 	self->setWidget(widget);
+}
+
+void QDockWidget_SetFeatures(QDockWidget* self, int features) {
+	self->setFeatures(static_cast<QDockWidget::DockWidgetFeatures>(features));
+}
+
+int QDockWidget_Features(QDockWidget* self) {
+	QDockWidget::DockWidgetFeatures ret = const_cast<const QDockWidget*>(self)->features();
+	return static_cast<int>(ret);
 }
 
 void QDockWidget_SetFloating(QDockWidget* self, bool floating) {
@@ -47,7 +84,16 @@ void QDockWidget_SetFloating(QDockWidget* self, bool floating) {
 }
 
 bool QDockWidget_IsFloating(QDockWidget* self) {
-	return self->isFloating();
+	return const_cast<const QDockWidget*>(self)->isFloating();
+}
+
+void QDockWidget_SetAllowedAreas(QDockWidget* self, int areas) {
+	self->setAllowedAreas(static_cast<Qt::DockWidgetAreas>(areas));
+}
+
+int QDockWidget_AllowedAreas(QDockWidget* self) {
+	Qt::DockWidgetAreas ret = const_cast<const QDockWidget*>(self)->allowedAreas();
+	return static_cast<int>(ret);
 }
 
 void QDockWidget_SetTitleBarWidget(QDockWidget* self, QWidget* widget) {
@@ -55,11 +101,25 @@ void QDockWidget_SetTitleBarWidget(QDockWidget* self, QWidget* widget) {
 }
 
 QWidget* QDockWidget_TitleBarWidget(QDockWidget* self) {
-	return self->titleBarWidget();
+	return const_cast<const QDockWidget*>(self)->titleBarWidget();
+}
+
+bool QDockWidget_IsAreaAllowed(QDockWidget* self, uintptr_t area) {
+	return const_cast<const QDockWidget*>(self)->isAreaAllowed(static_cast<Qt::DockWidgetArea>(area));
 }
 
 QAction* QDockWidget_ToggleViewAction(QDockWidget* self) {
-	return self->toggleViewAction();
+	return const_cast<const QDockWidget*>(self)->toggleViewAction();
+}
+
+void QDockWidget_FeaturesChanged(QDockWidget* self, int features) {
+	self->featuresChanged(static_cast<QDockWidget::DockWidgetFeatures>(features));
+}
+
+void QDockWidget_connect_FeaturesChanged(QDockWidget* self, void* slot) {
+	QDockWidget::connect(self, static_cast<void (QDockWidget::*)(QDockWidget::DockWidgetFeatures)>(&QDockWidget::featuresChanged), self, [=](QDockWidget::DockWidgetFeatures features) {
+		miqt_exec_callback(slot, 0, nullptr);
+	});
 }
 
 void QDockWidget_TopLevelChanged(QDockWidget* self, bool topLevel) {
@@ -68,6 +128,16 @@ void QDockWidget_TopLevelChanged(QDockWidget* self, bool topLevel) {
 
 void QDockWidget_connect_TopLevelChanged(QDockWidget* self, void* slot) {
 	QDockWidget::connect(self, static_cast<void (QDockWidget::*)(bool)>(&QDockWidget::topLevelChanged), self, [=](bool topLevel) {
+		miqt_exec_callback(slot, 0, nullptr);
+	});
+}
+
+void QDockWidget_AllowedAreasChanged(QDockWidget* self, int allowedAreas) {
+	self->allowedAreasChanged(static_cast<Qt::DockWidgetAreas>(allowedAreas));
+}
+
+void QDockWidget_connect_AllowedAreasChanged(QDockWidget* self, void* slot) {
+	QDockWidget::connect(self, static_cast<void (QDockWidget::*)(Qt::DockWidgetAreas)>(&QDockWidget::allowedAreasChanged), self, [=](Qt::DockWidgetAreas allowedAreas) {
 		miqt_exec_callback(slot, 0, nullptr);
 	});
 }
@@ -82,7 +152,17 @@ void QDockWidget_connect_VisibilityChanged(QDockWidget* self, void* slot) {
 	});
 }
 
-void QDockWidget_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
+void QDockWidget_DockLocationChanged(QDockWidget* self, uintptr_t area) {
+	self->dockLocationChanged(static_cast<Qt::DockWidgetArea>(area));
+}
+
+void QDockWidget_connect_DockLocationChanged(QDockWidget* self, void* slot) {
+	QDockWidget::connect(self, static_cast<void (QDockWidget::*)(Qt::DockWidgetArea)>(&QDockWidget::dockLocationChanged), self, [=](Qt::DockWidgetArea area) {
+		miqt_exec_callback(slot, 0, nullptr);
+	});
+}
+
+void QDockWidget_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QDockWidget::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -91,7 +171,7 @@ void QDockWidget_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QDockWidget_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QDockWidget_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QDockWidget::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -100,7 +180,7 @@ void QDockWidget_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QDockWidget_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
+void QDockWidget_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QDockWidget::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -109,7 +189,7 @@ void QDockWidget_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QDockWidget_TrUtf83(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QDockWidget_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QDockWidget::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();

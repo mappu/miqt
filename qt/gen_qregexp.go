@@ -40,8 +40,32 @@ func NewQRegExp() *QRegExp {
 }
 
 // NewQRegExp2 constructs a new QRegExp object.
-func NewQRegExp2(rx *QRegExp) *QRegExp {
-	ret := C.QRegExp_new2(rx.cPointer())
+func NewQRegExp2(pattern string) *QRegExp {
+	pattern_Cstring := C.CString(pattern)
+	defer C.free(unsafe.Pointer(pattern_Cstring))
+	ret := C.QRegExp_new2(pattern_Cstring, C.ulong(len(pattern)))
+	return newQRegExp(ret)
+}
+
+// NewQRegExp3 constructs a new QRegExp object.
+func NewQRegExp3(rx *QRegExp) *QRegExp {
+	ret := C.QRegExp_new3(rx.cPointer())
+	return newQRegExp(ret)
+}
+
+// NewQRegExp4 constructs a new QRegExp object.
+func NewQRegExp4(pattern string, cs uintptr) *QRegExp {
+	pattern_Cstring := C.CString(pattern)
+	defer C.free(unsafe.Pointer(pattern_Cstring))
+	ret := C.QRegExp_new4(pattern_Cstring, C.ulong(len(pattern)), (C.uintptr_t)(cs))
+	return newQRegExp(ret)
+}
+
+// NewQRegExp5 constructs a new QRegExp object.
+func NewQRegExp5(pattern string, cs uintptr, syntax uintptr) *QRegExp {
+	pattern_Cstring := C.CString(pattern)
+	defer C.free(unsafe.Pointer(pattern_Cstring))
+	ret := C.QRegExp_new5(pattern_Cstring, C.ulong(len(pattern)), (C.uintptr_t)(cs), (C.uintptr_t)(syntax))
 	return newQRegExp(ret)
 }
 
@@ -88,6 +112,24 @@ func (this *QRegExp) SetPattern(pattern string) {
 	C.QRegExp_SetPattern(this.h, pattern_Cstring, C.ulong(len(pattern)))
 }
 
+func (this *QRegExp) CaseSensitivity() uintptr {
+	ret := C.QRegExp_CaseSensitivity(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QRegExp) SetCaseSensitivity(cs uintptr) {
+	C.QRegExp_SetCaseSensitivity(this.h, (C.uintptr_t)(cs))
+}
+
+func (this *QRegExp) PatternSyntax() uintptr {
+	ret := C.QRegExp_PatternSyntax(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QRegExp) SetPatternSyntax(syntax uintptr) {
+	C.QRegExp_SetPatternSyntax(this.h, (C.uintptr_t)(syntax))
+}
+
 func (this *QRegExp) IsMinimal() bool {
 	ret := C.QRegExp_IsMinimal(this.h)
 	return (bool)(ret)
@@ -102,6 +144,20 @@ func (this *QRegExp) ExactMatch(str string) bool {
 	defer C.free(unsafe.Pointer(str_Cstring))
 	ret := C.QRegExp_ExactMatch(this.h, str_Cstring, C.ulong(len(str)))
 	return (bool)(ret)
+}
+
+func (this *QRegExp) IndexIn(str string) int {
+	str_Cstring := C.CString(str)
+	defer C.free(unsafe.Pointer(str_Cstring))
+	ret := C.QRegExp_IndexIn(this.h, str_Cstring, C.ulong(len(str)))
+	return (int)(ret)
+}
+
+func (this *QRegExp) LastIndexIn(str string) int {
+	str_Cstring := C.CString(str)
+	defer C.free(unsafe.Pointer(str_Cstring))
+	ret := C.QRegExp_LastIndexIn(this.h, str_Cstring, C.ulong(len(str)))
+	return (int)(ret)
 }
 
 func (this *QRegExp) MatchedLength() int {
@@ -199,6 +255,34 @@ func QRegExp_Escape(str string) string {
 	ret := C.GoStringN(_out, _out_Strlen)
 	C.free(unsafe.Pointer(_out))
 	return ret
+}
+
+func (this *QRegExp) IndexIn2(str string, offset int) int {
+	str_Cstring := C.CString(str)
+	defer C.free(unsafe.Pointer(str_Cstring))
+	ret := C.QRegExp_IndexIn2(this.h, str_Cstring, C.ulong(len(str)), (C.int)(offset))
+	return (int)(ret)
+}
+
+func (this *QRegExp) IndexIn3(str string, offset int, caretMode uintptr) int {
+	str_Cstring := C.CString(str)
+	defer C.free(unsafe.Pointer(str_Cstring))
+	ret := C.QRegExp_IndexIn3(this.h, str_Cstring, C.ulong(len(str)), (C.int)(offset), (C.uintptr_t)(caretMode))
+	return (int)(ret)
+}
+
+func (this *QRegExp) LastIndexIn2(str string, offset int) int {
+	str_Cstring := C.CString(str)
+	defer C.free(unsafe.Pointer(str_Cstring))
+	ret := C.QRegExp_LastIndexIn2(this.h, str_Cstring, C.ulong(len(str)), (C.int)(offset))
+	return (int)(ret)
+}
+
+func (this *QRegExp) LastIndexIn3(str string, offset int, caretMode uintptr) int {
+	str_Cstring := C.CString(str)
+	defer C.free(unsafe.Pointer(str_Cstring))
+	ret := C.QRegExp_LastIndexIn3(this.h, str_Cstring, C.ulong(len(str)), (C.int)(offset), (C.uintptr_t)(caretMode))
+	return (int)(ret)
 }
 
 func (this *QRegExp) Cap1(nth int) string {

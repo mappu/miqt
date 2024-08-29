@@ -162,6 +162,22 @@ func (this *QInputMethod) Locale() *QLocale {
 	return ret1
 }
 
+func (this *QInputMethod) InputDirection() uintptr {
+	ret := C.QInputMethod_InputDirection(this.h)
+	return (uintptr)(ret)
+}
+
+func QInputMethod_QueryFocusObject(query uintptr, argument QVariant) *QVariant {
+	ret := C.QInputMethod_QueryFocusObject((C.uintptr_t)(query), argument.cPointer())
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQVariant(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QVariant) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
 func (this *QInputMethod) Show() {
 	C.QInputMethod_Show(this.h)
 }
@@ -170,12 +186,20 @@ func (this *QInputMethod) Hide() {
 	C.QInputMethod_Hide(this.h)
 }
 
+func (this *QInputMethod) Update(queries int) {
+	C.QInputMethod_Update(this.h, (C.int)(queries))
+}
+
 func (this *QInputMethod) Reset() {
 	C.QInputMethod_Reset(this.h)
 }
 
 func (this *QInputMethod) Commit() {
 	C.QInputMethod_Commit(this.h)
+}
+
+func (this *QInputMethod) InvokeAction(a uintptr, cursorPosition int) {
+	C.QInputMethod_InvokeAction(this.h, (C.uintptr_t)(a), (C.int)(cursorPosition))
 }
 
 func (this *QInputMethod) CursorRectangleChanged() {
@@ -260,6 +284,18 @@ func (this *QInputMethod) OnLocaleChanged(slot func()) {
 	}
 
 	C.QInputMethod_connect_LocaleChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+}
+
+func (this *QInputMethod) InputDirectionChanged(newDirection uintptr) {
+	C.QInputMethod_InputDirectionChanged(this.h, (C.uintptr_t)(newDirection))
+}
+
+func (this *QInputMethod) OnInputDirectionChanged(slot func()) {
+	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
+		slot()
+	}
+
+	C.QInputMethod_connect_InputDirectionChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
 }
 
 func QInputMethod_Tr2(s string, c string) string {

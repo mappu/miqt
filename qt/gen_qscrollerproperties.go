@@ -11,6 +11,7 @@ package qt
 import "C"
 
 import (
+	"runtime"
 	"unsafe"
 )
 
@@ -65,6 +66,21 @@ func QScrollerProperties_SetDefaultScrollerProperties(sp *QScrollerProperties) {
 
 func QScrollerProperties_UnsetDefaultScrollerProperties() {
 	C.QScrollerProperties_UnsetDefaultScrollerProperties()
+}
+
+func (this *QScrollerProperties) ScrollMetric(metric uintptr) *QVariant {
+	ret := C.QScrollerProperties_ScrollMetric(this.h, (C.uintptr_t)(metric))
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQVariant(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QVariant) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QScrollerProperties) SetScrollMetric(metric uintptr, value *QVariant) {
+	C.QScrollerProperties_SetScrollMetric(this.h, (C.uintptr_t)(metric), value.cPointer())
 }
 
 func (this *QScrollerProperties) Delete() {

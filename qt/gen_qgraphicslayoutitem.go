@@ -38,6 +38,10 @@ func (this *QGraphicsLayoutItem) SetSizePolicy(policy *QSizePolicy) {
 	C.QGraphicsLayoutItem_SetSizePolicy(this.h, policy.cPointer())
 }
 
+func (this *QGraphicsLayoutItem) SetSizePolicy2(hPolicy uintptr, vPolicy uintptr) {
+	C.QGraphicsLayoutItem_SetSizePolicy2(this.h, (C.uintptr_t)(hPolicy), (C.uintptr_t)(vPolicy))
+}
+
 func (this *QGraphicsLayoutItem) SizePolicy() *QSizePolicy {
 	ret := C.QGraphicsLayoutItem_SizePolicy(this.h)
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -190,6 +194,17 @@ func (this *QGraphicsLayoutItem) ContentsRect() *QRectF {
 	return ret1
 }
 
+func (this *QGraphicsLayoutItem) EffectiveSizeHint(which uintptr) *QSizeF {
+	ret := C.QGraphicsLayoutItem_EffectiveSizeHint(this.h, (C.uintptr_t)(which))
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQSizeF(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QSizeF) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
 func (this *QGraphicsLayoutItem) UpdateGeometry() {
 	C.QGraphicsLayoutItem_UpdateGeometry(this.h)
 }
@@ -216,6 +231,21 @@ func (this *QGraphicsLayoutItem) GraphicsItem() *QGraphicsItem {
 func (this *QGraphicsLayoutItem) OwnedByLayout() bool {
 	ret := C.QGraphicsLayoutItem_OwnedByLayout(this.h)
 	return (bool)(ret)
+}
+
+func (this *QGraphicsLayoutItem) SetSizePolicy3(hPolicy uintptr, vPolicy uintptr, controlType uintptr) {
+	C.QGraphicsLayoutItem_SetSizePolicy3(this.h, (C.uintptr_t)(hPolicy), (C.uintptr_t)(vPolicy), (C.uintptr_t)(controlType))
+}
+
+func (this *QGraphicsLayoutItem) EffectiveSizeHint2(which uintptr, constraint *QSizeF) *QSizeF {
+	ret := C.QGraphicsLayoutItem_EffectiveSizeHint2(this.h, (C.uintptr_t)(which), constraint.cPointer())
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQSizeF(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QSizeF) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
 }
 
 func (this *QGraphicsLayoutItem) Delete() {

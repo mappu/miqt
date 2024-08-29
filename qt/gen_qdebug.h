@@ -52,11 +52,11 @@ QDebug* QDebug_OperatorShiftLeftWithInt(QDebug* self, int t);
 QDebug* QDebug_OperatorShiftLeftWithUnsignedint(QDebug* self, unsigned int t);
 QDebug* QDebug_OperatorShiftLeftWithLong(QDebug* self, long t);
 QDebug* QDebug_OperatorShiftLeftWithUnsignedlong(QDebug* self, unsigned long t);
-QDebug* QDebug_OperatorShiftLeftWithQint64(QDebug* self, int64_t t);
-QDebug* QDebug_OperatorShiftLeftWithQuint64(QDebug* self, uint64_t t);
+QDebug* QDebug_OperatorShiftLeftWithQint64(QDebug* self, long long t);
+QDebug* QDebug_OperatorShiftLeftWithQuint64(QDebug* self, unsigned long long t);
 QDebug* QDebug_OperatorShiftLeftWithFloat(QDebug* self, float t);
 QDebug* QDebug_OperatorShiftLeftWithDouble(QDebug* self, double t);
-QDebug* QDebug_OperatorShiftLeft2(QDebug* self, char* t);
+QDebug* QDebug_OperatorShiftLeft2(QDebug* self, const char* t);
 QDebug* QDebug_OperatorShiftLeftWithQString(QDebug* self, const char* t, size_t t_Strlen);
 QDebug* QDebug_OperatorShiftLeftWithQByteArray(QDebug* self, QByteArray* t);
 QDebug* QDebug_MaybeQuote1(QDebug* self, char c);
@@ -72,7 +72,7 @@ QNoDebug* QNoDebug_Quote(QNoDebug* self);
 QNoDebug* QNoDebug_Noquote(QNoDebug* self);
 QNoDebug* QNoDebug_MaybeQuote(QNoDebug* self);
 QNoDebug* QNoDebug_Verbosity(QNoDebug* self, int param1);
-QNoDebug* QNoDebug_MaybeQuote1(QNoDebug* self, char param1);
+QNoDebug* QNoDebug_MaybeQuote1(QNoDebug* self, const char param1);
 void QNoDebug_Delete(QNoDebug* self);
 
 #ifdef __cplusplus

@@ -1,10 +1,11 @@
-#include "gen_qversionnumber.h"
-#include "qversionnumber.h"
-
 #include <QList>
 #include <QString>
+#include <QByteArray>
+#include <cstring>
 #include <QVersionNumber>
+#include "qversionnumber.h"
 
+#include "gen_qversionnumber.h"
 
 extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
@@ -36,33 +37,33 @@ QVersionNumber* QVersionNumber_new5(int maj, int min, int mic) {
 }
 
 bool QVersionNumber_IsNull(QVersionNumber* self) {
-	return self->isNull();
+	return const_cast<const QVersionNumber*>(self)->isNull();
 }
 
 bool QVersionNumber_IsNormalized(QVersionNumber* self) {
-	return self->isNormalized();
+	return const_cast<const QVersionNumber*>(self)->isNormalized();
 }
 
 int QVersionNumber_MajorVersion(QVersionNumber* self) {
-	return self->majorVersion();
+	return const_cast<const QVersionNumber*>(self)->majorVersion();
 }
 
 int QVersionNumber_MinorVersion(QVersionNumber* self) {
-	return self->minorVersion();
+	return const_cast<const QVersionNumber*>(self)->minorVersion();
 }
 
 int QVersionNumber_MicroVersion(QVersionNumber* self) {
-	return self->microVersion();
+	return const_cast<const QVersionNumber*>(self)->microVersion();
 }
 
 QVersionNumber* QVersionNumber_Normalized(QVersionNumber* self) {
-	QVersionNumber ret = self->normalized();
+	QVersionNumber ret = const_cast<const QVersionNumber*>(self)->normalized();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVersionNumber*>(new QVersionNumber(ret));
 }
 
 void QVersionNumber_Segments(QVersionNumber* self, int** _out, size_t* _out_len) {
-	QVector<int> ret = self->segments();
+	QVector<int> ret = const_cast<const QVersionNumber*>(self)->segments();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	int* __out = static_cast<int*>(malloc(sizeof(int) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {
@@ -73,15 +74,15 @@ void QVersionNumber_Segments(QVersionNumber* self, int** _out, size_t* _out_len)
 }
 
 int QVersionNumber_SegmentAt(QVersionNumber* self, int index) {
-	return self->segmentAt(static_cast<int>(index));
+	return const_cast<const QVersionNumber*>(self)->segmentAt(static_cast<int>(index));
 }
 
 int QVersionNumber_SegmentCount(QVersionNumber* self) {
-	return self->segmentCount();
+	return const_cast<const QVersionNumber*>(self)->segmentCount();
 }
 
 bool QVersionNumber_IsPrefixOf(QVersionNumber* self, QVersionNumber* other) {
-	return self->isPrefixOf(*other);
+	return const_cast<const QVersionNumber*>(self)->isPrefixOf(*other);
 }
 
 int QVersionNumber_Compare(QVersionNumber* v1, QVersionNumber* v2) {
@@ -95,7 +96,7 @@ QVersionNumber* QVersionNumber_CommonPrefix(QVersionNumber* v1, QVersionNumber* 
 }
 
 void QVersionNumber_ToString(QVersionNumber* self, char** _out, int* _out_Strlen) {
-	QString ret = self->toString();
+	QString ret = const_cast<const QVersionNumber*>(self)->toString();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -110,7 +111,7 @@ QVersionNumber* QVersionNumber_FromString(const char* stringVal, size_t stringVa
 	return static_cast<QVersionNumber*>(new QVersionNumber(ret));
 }
 
-QVersionNumber* QVersionNumber_FromString2(const char* stringVal, size_t stringVal_Strlen, int* suffixIndex) {
+QVersionNumber* QVersionNumber_FromString22(const char* stringVal, size_t stringVal_Strlen, int* suffixIndex) {
 	QString stringVal_QString = QString::fromUtf8(stringVal, stringVal_Strlen);
 	QVersionNumber ret = QVersionNumber::fromString(stringVal_QString, static_cast<int*>(suffixIndex));
 	// Copy-construct value returned type into heap-allocated copy

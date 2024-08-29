@@ -1,13 +1,15 @@
-#include "gen_qbitmap.h"
-#include "qbitmap.h"
-
 #include <QBitmap>
+#include <QImage>
 #include <QMatrix>
 #include <QPixmap>
 #include <QSize>
 #include <QString>
+#include <QByteArray>
+#include <cstring>
 #include <QTransform>
+#include "qbitmap.h"
 
+#include "gen_qbitmap.h"
 
 extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
@@ -38,7 +40,7 @@ QBitmap* QBitmap_new6(QBitmap* other) {
 	return new QBitmap(*other);
 }
 
-QBitmap* QBitmap_new7(const char* fileName, size_t fileName_Strlen, char* format) {
+QBitmap* QBitmap_new7(const char* fileName, size_t fileName_Strlen, const char* format) {
 	QString fileName_QString = QString::fromUtf8(fileName, fileName_Strlen);
 	return new QBitmap(fileName_QString, format);
 }
@@ -59,14 +61,38 @@ void QBitmap_Clear(QBitmap* self) {
 	self->clear();
 }
 
+QBitmap* QBitmap_FromImage(QImage* image) {
+	QBitmap ret = QBitmap::fromImage(*image);
+	// Copy-construct value returned type into heap-allocated copy
+	return static_cast<QBitmap*>(new QBitmap(ret));
+}
+
+QBitmap* QBitmap_FromData(QSize* size, const unsigned char* bits) {
+	QBitmap ret = QBitmap::fromData(*size, static_cast<const uchar*>(bits));
+	// Copy-construct value returned type into heap-allocated copy
+	return static_cast<QBitmap*>(new QBitmap(ret));
+}
+
 QBitmap* QBitmap_Transformed(QBitmap* self, QMatrix* param1) {
-	QBitmap ret = self->transformed(*param1);
+	QBitmap ret = const_cast<const QBitmap*>(self)->transformed(*param1);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QBitmap*>(new QBitmap(ret));
 }
 
 QBitmap* QBitmap_TransformedWithMatrix(QBitmap* self, QTransform* matrix) {
-	QBitmap ret = self->transformed(*matrix);
+	QBitmap ret = const_cast<const QBitmap*>(self)->transformed(*matrix);
+	// Copy-construct value returned type into heap-allocated copy
+	return static_cast<QBitmap*>(new QBitmap(ret));
+}
+
+QBitmap* QBitmap_FromImage2(QImage* image, int flags) {
+	QBitmap ret = QBitmap::fromImage(*image, static_cast<Qt::ImageConversionFlags>(flags));
+	// Copy-construct value returned type into heap-allocated copy
+	return static_cast<QBitmap*>(new QBitmap(ret));
+}
+
+QBitmap* QBitmap_FromData3(QSize* size, const unsigned char* bits, uintptr_t monoFormat) {
+	QBitmap ret = QBitmap::fromData(*size, static_cast<const uchar*>(bits), static_cast<QImage::Format>(monoFormat));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QBitmap*>(new QBitmap(ret));
 }

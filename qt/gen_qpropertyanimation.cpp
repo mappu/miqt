@@ -1,12 +1,13 @@
-#include "gen_qpropertyanimation.h"
-#include "qpropertyanimation.h"
-
 #include <QByteArray>
 #include <QMetaObject>
 #include <QObject>
 #include <QPropertyAnimation>
 #include <QString>
+#include <QByteArray>
+#include <cstring>
+#include "qpropertyanimation.h"
 
+#include "gen_qpropertyanimation.h"
 
 extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
@@ -29,10 +30,10 @@ QPropertyAnimation* QPropertyAnimation_new4(QObject* target, QByteArray* propert
 }
 
 QMetaObject* QPropertyAnimation_MetaObject(QPropertyAnimation* self) {
-	return (QMetaObject*) self->metaObject();
+	return (QMetaObject*) const_cast<const QPropertyAnimation*>(self)->metaObject();
 }
 
-void QPropertyAnimation_Tr(char* s, char** _out, int* _out_Strlen) {
+void QPropertyAnimation_Tr(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QPropertyAnimation::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -41,7 +42,7 @@ void QPropertyAnimation_Tr(char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QPropertyAnimation_TrUtf8(char* s, char** _out, int* _out_Strlen) {
+void QPropertyAnimation_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QPropertyAnimation::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -51,7 +52,7 @@ void QPropertyAnimation_TrUtf8(char* s, char** _out, int* _out_Strlen) {
 }
 
 QObject* QPropertyAnimation_TargetObject(QPropertyAnimation* self) {
-	return self->targetObject();
+	return const_cast<const QPropertyAnimation*>(self)->targetObject();
 }
 
 void QPropertyAnimation_SetTargetObject(QPropertyAnimation* self, QObject* target) {
@@ -59,7 +60,7 @@ void QPropertyAnimation_SetTargetObject(QPropertyAnimation* self, QObject* targe
 }
 
 QByteArray* QPropertyAnimation_PropertyName(QPropertyAnimation* self) {
-	QByteArray ret = self->propertyName();
+	QByteArray ret = const_cast<const QPropertyAnimation*>(self)->propertyName();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QByteArray*>(new QByteArray(ret));
 }
@@ -68,7 +69,7 @@ void QPropertyAnimation_SetPropertyName(QPropertyAnimation* self, QByteArray* pr
 	self->setPropertyName(*propertyName);
 }
 
-void QPropertyAnimation_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
+void QPropertyAnimation_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QPropertyAnimation::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -77,7 +78,7 @@ void QPropertyAnimation_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QPropertyAnimation_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QPropertyAnimation_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QPropertyAnimation::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -86,7 +87,7 @@ void QPropertyAnimation_Tr3(char* s, char* c, int n, char** _out, int* _out_Strl
 	*_out_Strlen = b.length();
 }
 
-void QPropertyAnimation_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
+void QPropertyAnimation_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QPropertyAnimation::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -95,7 +96,7 @@ void QPropertyAnimation_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen)
 	*_out_Strlen = b.length();
 }
 
-void QPropertyAnimation_TrUtf83(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QPropertyAnimation_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QPropertyAnimation::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();

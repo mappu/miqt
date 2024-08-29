@@ -36,6 +36,24 @@ func newQWizard_U(h unsafe.Pointer) *QWizard {
 	return newQWizard((*C.QWizard)(h))
 }
 
+// NewQWizard constructs a new QWizard object.
+func NewQWizard() *QWizard {
+	ret := C.QWizard_new()
+	return newQWizard(ret)
+}
+
+// NewQWizard2 constructs a new QWizard object.
+func NewQWizard2(parent *QWidget) *QWizard {
+	ret := C.QWizard_new2(parent.cPointer())
+	return newQWizard(ret)
+}
+
+// NewQWizard3 constructs a new QWizard object.
+func NewQWizard3(parent *QWidget, flags int) *QWizard {
+	ret := C.QWizard_new3(parent.cPointer(), (C.int)(flags))
+	return newQWizard(ret)
+}
+
 func (this *QWizard) MetaObject() *QMetaObject {
 	ret := C.QWizard_MetaObject(this.h)
 	return newQMetaObject_U(unsafe.Pointer(ret))
@@ -167,6 +185,100 @@ func (this *QWizard) Field(name string) *QVariant {
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQVariant(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QVariant) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QWizard) SetWizardStyle(style uintptr) {
+	C.QWizard_SetWizardStyle(this.h, (C.uintptr_t)(style))
+}
+
+func (this *QWizard) WizardStyle() uintptr {
+	ret := C.QWizard_WizardStyle(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QWizard) SetOption(option uintptr) {
+	C.QWizard_SetOption(this.h, (C.uintptr_t)(option))
+}
+
+func (this *QWizard) TestOption(option uintptr) bool {
+	ret := C.QWizard_TestOption(this.h, (C.uintptr_t)(option))
+	return (bool)(ret)
+}
+
+func (this *QWizard) SetOptions(options int) {
+	C.QWizard_SetOptions(this.h, (C.int)(options))
+}
+
+func (this *QWizard) Options() int {
+	ret := C.QWizard_Options(this.h)
+	return (int)(ret)
+}
+
+func (this *QWizard) SetButtonText(which int, text string) {
+	text_Cstring := C.CString(text)
+	defer C.free(unsafe.Pointer(text_Cstring))
+	C.QWizard_SetButtonText(this.h, (C.int)(which), text_Cstring, C.ulong(len(text)))
+}
+
+func (this *QWizard) ButtonText(which int) string {
+	var _out *C.char = nil
+	var _out_Strlen C.int = 0
+	C.QWizard_ButtonText(this.h, (C.int)(which), &_out, &_out_Strlen)
+	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func (this *QWizard) SetButtonLayout(layout []int) {
+	// For the C ABI, malloc a C array of raw pointers
+	layout_CArray := (*[0xffff]C.int)(C.malloc(C.ulong(8 * len(layout))))
+	defer C.free(unsafe.Pointer(layout_CArray))
+	for i := range layout {
+		layout_CArray[i] = (C.int)(layout[i])
+	}
+	C.QWizard_SetButtonLayout(this.h, &layout_CArray[0], C.ulong(len(layout)))
+}
+
+func (this *QWizard) SetButton(which int, button *QAbstractButton) {
+	C.QWizard_SetButton(this.h, (C.int)(which), button.cPointer())
+}
+
+func (this *QWizard) Button(which int) *QAbstractButton {
+	ret := C.QWizard_Button(this.h, (C.int)(which))
+	return newQAbstractButton_U(unsafe.Pointer(ret))
+}
+
+func (this *QWizard) SetTitleFormat(format uintptr) {
+	C.QWizard_SetTitleFormat(this.h, (C.uintptr_t)(format))
+}
+
+func (this *QWizard) TitleFormat() uintptr {
+	ret := C.QWizard_TitleFormat(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QWizard) SetSubTitleFormat(format uintptr) {
+	C.QWizard_SetSubTitleFormat(this.h, (C.uintptr_t)(format))
+}
+
+func (this *QWizard) SubTitleFormat() uintptr {
+	ret := C.QWizard_SubTitleFormat(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QWizard) SetPixmap(which uintptr, pixmap *QPixmap) {
+	C.QWizard_SetPixmap(this.h, (C.uintptr_t)(which), pixmap.cPointer())
+}
+
+func (this *QWizard) Pixmap(which uintptr) *QPixmap {
+	ret := C.QWizard_Pixmap(this.h, (C.uintptr_t)(which))
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQPixmap(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QPixmap) {
 		ret2.Delete()
 		runtime.KeepAlive(ret2.h)
 	})
@@ -331,6 +443,10 @@ func QWizard_TrUtf83(s string, c string, n int) string {
 	return ret
 }
 
+func (this *QWizard) SetOption2(option uintptr, on bool) {
+	C.QWizard_SetOption2(this.h, (C.uintptr_t)(option), (C.bool)(on))
+}
+
 func (this *QWizard) Delete() {
 	C.QWizard_Delete(this.h)
 }
@@ -424,6 +540,21 @@ func (this *QWizardPage) SubTitle() string {
 	return ret
 }
 
+func (this *QWizardPage) SetPixmap(which uintptr, pixmap *QPixmap) {
+	C.QWizardPage_SetPixmap(this.h, (C.uintptr_t)(which), pixmap.cPointer())
+}
+
+func (this *QWizardPage) Pixmap(which uintptr) *QPixmap {
+	ret := C.QWizardPage_Pixmap(this.h, (C.uintptr_t)(which))
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQPixmap(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QPixmap) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
 func (this *QWizardPage) SetFinalPage(finalPage bool) {
 	C.QWizardPage_SetFinalPage(this.h, (C.bool)(finalPage))
 }
@@ -440,6 +571,21 @@ func (this *QWizardPage) SetCommitPage(commitPage bool) {
 func (this *QWizardPage) IsCommitPage() bool {
 	ret := C.QWizardPage_IsCommitPage(this.h)
 	return (bool)(ret)
+}
+
+func (this *QWizardPage) SetButtonText(which int, text string) {
+	text_Cstring := C.CString(text)
+	defer C.free(unsafe.Pointer(text_Cstring))
+	C.QWizardPage_SetButtonText(this.h, (C.int)(which), text_Cstring, C.ulong(len(text)))
+}
+
+func (this *QWizardPage) ButtonText(which int) string {
+	var _out *C.char = nil
+	var _out_Strlen C.int = 0
+	C.QWizardPage_ButtonText(this.h, (C.int)(which), &_out, &_out_Strlen)
+	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
 }
 
 func (this *QWizardPage) InitializePage() {

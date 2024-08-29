@@ -1,10 +1,9 @@
-#include "gen_qcolortransform.h"
-#include "qcolortransform.h"
-
 #include <QColor>
 #include <QColorTransform>
 #include <QRgba64>
+#include "qcolortransform.h"
 
+#include "gen_qcolortransform.h"
 
 extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
@@ -27,17 +26,17 @@ void QColorTransform_Swap(QColorTransform* self, QColorTransform* other) {
 }
 
 unsigned int QColorTransform_Map(QColorTransform* self, unsigned int argb) {
-	return self->map(static_cast<QRgb>(argb));
+	return const_cast<const QColorTransform*>(self)->map(static_cast<QRgb>(argb));
 }
 
 QRgba64* QColorTransform_MapWithRgba64(QColorTransform* self, QRgba64* rgba64) {
-	QRgba64 ret = self->map(*rgba64);
+	QRgba64 ret = const_cast<const QColorTransform*>(self)->map(*rgba64);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRgba64*>(new QRgba64(ret));
 }
 
 QColor* QColorTransform_MapWithColor(QColorTransform* self, QColor* color) {
-	QColor ret = self->map(*color);
+	QColor ret = const_cast<const QColorTransform*>(self)->map(*color);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QColor*>(new QColor(ret));
 }

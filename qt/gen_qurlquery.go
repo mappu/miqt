@@ -92,10 +92,28 @@ func (this *QUrlQuery) Clear() {
 	C.QUrlQuery_Clear(this.h)
 }
 
+func (this *QUrlQuery) Query() string {
+	var _out *C.char = nil
+	var _out_Strlen C.int = 0
+	C.QUrlQuery_Query(this.h, &_out, &_out_Strlen)
+	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
 func (this *QUrlQuery) SetQuery(queryString string) {
 	queryString_Cstring := C.CString(queryString)
 	defer C.free(unsafe.Pointer(queryString_Cstring))
 	C.QUrlQuery_SetQuery(this.h, queryString_Cstring, C.ulong(len(queryString)))
+}
+
+func (this *QUrlQuery) ToString() string {
+	var _out *C.char = nil
+	var _out_Strlen C.int = 0
+	C.QUrlQuery_ToString(this.h, &_out, &_out_Strlen)
+	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
 }
 
 func (this *QUrlQuery) SetQueryDelimiters(valueDelimiter QChar, pairDelimiter QChar) {
@@ -145,6 +163,34 @@ func (this *QUrlQuery) RemoveQueryItem(key string) {
 	C.QUrlQuery_RemoveQueryItem(this.h, key_Cstring, C.ulong(len(key)))
 }
 
+func (this *QUrlQuery) QueryItemValue(key string) string {
+	key_Cstring := C.CString(key)
+	defer C.free(unsafe.Pointer(key_Cstring))
+	var _out *C.char = nil
+	var _out_Strlen C.int = 0
+	C.QUrlQuery_QueryItemValue(this.h, key_Cstring, C.ulong(len(key)), &_out, &_out_Strlen)
+	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func (this *QUrlQuery) AllQueryItemValues(key string) []string {
+	key_Cstring := C.CString(key)
+	defer C.free(unsafe.Pointer(key_Cstring))
+	var _out **C.char = nil
+	var _out_Lengths *C.int = nil
+	var _out_len C.size_t = 0
+	C.QUrlQuery_AllQueryItemValues(this.h, key_Cstring, C.ulong(len(key)), &_out, &_out_Lengths, &_out_len)
+	ret := make([]string, int(_out_len))
+	_outCast := (*[0xffff]*C.char)(unsafe.Pointer(_out)) // hey ya
+	_out_LengthsCast := (*[0xffff]C.int)(unsafe.Pointer(_out_Lengths))
+	for i := 0; i < int(_out_len); i++ {
+		ret[i] = C.GoStringN(_outCast[i], _out_LengthsCast[i])
+	}
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
 func (this *QUrlQuery) RemoveAllQueryItems(key string) {
 	key_Cstring := C.CString(key)
 	defer C.free(unsafe.Pointer(key_Cstring))
@@ -171,6 +217,52 @@ func QUrlQuery_DefaultQueryPairDelimiter() *QChar {
 		runtime.KeepAlive(ret2.h)
 	})
 	return ret1
+}
+
+func (this *QUrlQuery) Query1(encoding int) string {
+	var _out *C.char = nil
+	var _out_Strlen C.int = 0
+	C.QUrlQuery_Query1(this.h, (C.int)(encoding), &_out, &_out_Strlen)
+	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func (this *QUrlQuery) ToString1(encoding int) string {
+	var _out *C.char = nil
+	var _out_Strlen C.int = 0
+	C.QUrlQuery_ToString1(this.h, (C.int)(encoding), &_out, &_out_Strlen)
+	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func (this *QUrlQuery) QueryItemValue2(key string, encoding int) string {
+	key_Cstring := C.CString(key)
+	defer C.free(unsafe.Pointer(key_Cstring))
+	var _out *C.char = nil
+	var _out_Strlen C.int = 0
+	C.QUrlQuery_QueryItemValue2(this.h, key_Cstring, C.ulong(len(key)), (C.int)(encoding), &_out, &_out_Strlen)
+	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func (this *QUrlQuery) AllQueryItemValues2(key string, encoding int) []string {
+	key_Cstring := C.CString(key)
+	defer C.free(unsafe.Pointer(key_Cstring))
+	var _out **C.char = nil
+	var _out_Lengths *C.int = nil
+	var _out_len C.size_t = 0
+	C.QUrlQuery_AllQueryItemValues2(this.h, key_Cstring, C.ulong(len(key)), (C.int)(encoding), &_out, &_out_Lengths, &_out_len)
+	ret := make([]string, int(_out_len))
+	_outCast := (*[0xffff]*C.char)(unsafe.Pointer(_out)) // hey ya
+	_out_LengthsCast := (*[0xffff]C.int)(unsafe.Pointer(_out_Lengths))
+	for i := 0; i < int(_out_len); i++ {
+		ret[i] = C.GoStringN(_outCast[i], _out_LengthsCast[i])
+	}
+	C.free(unsafe.Pointer(_out))
+	return ret
 }
 
 func (this *QUrlQuery) Delete() {

@@ -1,12 +1,13 @@
-#include "gen_qstorageinfo.h"
-#include "qstorageinfo.h"
-
 #include <QByteArray>
 #include <QDir>
 #include <QList>
 #include <QStorageInfo>
 #include <QString>
+#include <QByteArray>
+#include <cstring>
+#include "qstorageinfo.h"
 
+#include "gen_qstorageinfo.h"
 
 extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
@@ -43,7 +44,7 @@ void QStorageInfo_SetPath(QStorageInfo* self, const char* path, size_t path_Strl
 }
 
 void QStorageInfo_RootPath(QStorageInfo* self, char** _out, int* _out_Strlen) {
-	QString ret = self->rootPath();
+	QString ret = const_cast<const QStorageInfo*>(self)->rootPath();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -52,25 +53,25 @@ void QStorageInfo_RootPath(QStorageInfo* self, char** _out, int* _out_Strlen) {
 }
 
 QByteArray* QStorageInfo_Device(QStorageInfo* self) {
-	QByteArray ret = self->device();
+	QByteArray ret = const_cast<const QStorageInfo*>(self)->device();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QByteArray*>(new QByteArray(ret));
 }
 
 QByteArray* QStorageInfo_Subvolume(QStorageInfo* self) {
-	QByteArray ret = self->subvolume();
+	QByteArray ret = const_cast<const QStorageInfo*>(self)->subvolume();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QByteArray*>(new QByteArray(ret));
 }
 
 QByteArray* QStorageInfo_FileSystemType(QStorageInfo* self) {
-	QByteArray ret = self->fileSystemType();
+	QByteArray ret = const_cast<const QStorageInfo*>(self)->fileSystemType();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QByteArray*>(new QByteArray(ret));
 }
 
 void QStorageInfo_Name(QStorageInfo* self, char** _out, int* _out_Strlen) {
-	QString ret = self->name();
+	QString ret = const_cast<const QStorageInfo*>(self)->name();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -79,7 +80,7 @@ void QStorageInfo_Name(QStorageInfo* self, char** _out, int* _out_Strlen) {
 }
 
 void QStorageInfo_DisplayName(QStorageInfo* self, char** _out, int* _out_Strlen) {
-	QString ret = self->displayName();
+	QString ret = const_cast<const QStorageInfo*>(self)->displayName();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -87,36 +88,36 @@ void QStorageInfo_DisplayName(QStorageInfo* self, char** _out, int* _out_Strlen)
 	*_out_Strlen = b.length();
 }
 
-int64_t QStorageInfo_BytesTotal(QStorageInfo* self) {
-	return self->bytesTotal();
+long long QStorageInfo_BytesTotal(QStorageInfo* self) {
+	return const_cast<const QStorageInfo*>(self)->bytesTotal();
 }
 
-int64_t QStorageInfo_BytesFree(QStorageInfo* self) {
-	return self->bytesFree();
+long long QStorageInfo_BytesFree(QStorageInfo* self) {
+	return const_cast<const QStorageInfo*>(self)->bytesFree();
 }
 
-int64_t QStorageInfo_BytesAvailable(QStorageInfo* self) {
-	return self->bytesAvailable();
+long long QStorageInfo_BytesAvailable(QStorageInfo* self) {
+	return const_cast<const QStorageInfo*>(self)->bytesAvailable();
 }
 
 int QStorageInfo_BlockSize(QStorageInfo* self) {
-	return self->blockSize();
+	return const_cast<const QStorageInfo*>(self)->blockSize();
 }
 
 bool QStorageInfo_IsRoot(QStorageInfo* self) {
-	return self->isRoot();
+	return const_cast<const QStorageInfo*>(self)->isRoot();
 }
 
 bool QStorageInfo_IsReadOnly(QStorageInfo* self) {
-	return self->isReadOnly();
+	return const_cast<const QStorageInfo*>(self)->isReadOnly();
 }
 
 bool QStorageInfo_IsReady(QStorageInfo* self) {
-	return self->isReady();
+	return const_cast<const QStorageInfo*>(self)->isReady();
 }
 
 bool QStorageInfo_IsValid(QStorageInfo* self) {
-	return self->isValid();
+	return const_cast<const QStorageInfo*>(self)->isValid();
 }
 
 void QStorageInfo_Refresh(QStorageInfo* self) {

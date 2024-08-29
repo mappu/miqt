@@ -82,9 +82,27 @@ func QWindow_TrUtf8(s string) string {
 	return ret
 }
 
+func (this *QWindow) SetSurfaceType(surfaceType uintptr) {
+	C.QWindow_SetSurfaceType(this.h, (C.uintptr_t)(surfaceType))
+}
+
+func (this *QWindow) SurfaceType() uintptr {
+	ret := C.QWindow_SurfaceType(this.h)
+	return (uintptr)(ret)
+}
+
 func (this *QWindow) IsVisible() bool {
 	ret := C.QWindow_IsVisible(this.h)
 	return (bool)(ret)
+}
+
+func (this *QWindow) Visibility() uintptr {
+	ret := C.QWindow_Visibility(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QWindow) SetVisibility(v uintptr) {
+	C.QWindow_SetVisibility(this.h, (C.uintptr_t)(v))
 }
 
 func (this *QWindow) Create() {
@@ -96,8 +114,13 @@ func (this *QWindow) WinId() uintptr {
 	return (uintptr)(ret)
 }
 
-func (this *QWindow) Parent() *QWindow {
-	ret := C.QWindow_Parent(this.h)
+func (this *QWindow) Parent(mode uintptr) *QWindow {
+	ret := C.QWindow_Parent(this.h, (C.uintptr_t)(mode))
+	return newQWindow_U(unsafe.Pointer(ret))
+}
+
+func (this *QWindow) Parent2() *QWindow {
+	ret := C.QWindow_Parent2(this.h)
 	return newQWindow_U(unsafe.Pointer(ret))
 }
 
@@ -113,6 +136,15 @@ func (this *QWindow) IsTopLevel() bool {
 func (this *QWindow) IsModal() bool {
 	ret := C.QWindow_IsModal(this.h)
 	return (bool)(ret)
+}
+
+func (this *QWindow) Modality() uintptr {
+	ret := C.QWindow_Modality(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QWindow) SetModality(modality uintptr) {
+	C.QWindow_SetModality(this.h, (C.uintptr_t)(modality))
 }
 
 func (this *QWindow) SetFormat(format *QSurfaceFormat) {
@@ -139,6 +171,24 @@ func (this *QWindow) RequestedFormat() *QSurfaceFormat {
 		runtime.KeepAlive(ret2.h)
 	})
 	return ret1
+}
+
+func (this *QWindow) SetFlags(flags int) {
+	C.QWindow_SetFlags(this.h, (C.int)(flags))
+}
+
+func (this *QWindow) Flags() int {
+	ret := C.QWindow_Flags(this.h)
+	return (int)(ret)
+}
+
+func (this *QWindow) SetFlag(param1 uintptr) {
+	C.QWindow_SetFlag(this.h, (C.uintptr_t)(param1))
+}
+
+func (this *QWindow) Type() uintptr {
+	ret := C.QWindow_Type(this.h)
+	return (uintptr)(ret)
 }
 
 func (this *QWindow) Title() string {
@@ -179,9 +229,36 @@ func (this *QWindow) IsActive() bool {
 	return (bool)(ret)
 }
 
+func (this *QWindow) ReportContentOrientationChange(orientation uintptr) {
+	C.QWindow_ReportContentOrientationChange(this.h, (C.uintptr_t)(orientation))
+}
+
+func (this *QWindow) ContentOrientation() uintptr {
+	ret := C.QWindow_ContentOrientation(this.h)
+	return (uintptr)(ret)
+}
+
 func (this *QWindow) DevicePixelRatio() float64 {
 	ret := C.QWindow_DevicePixelRatio(this.h)
 	return (float64)(ret)
+}
+
+func (this *QWindow) WindowState() uintptr {
+	ret := C.QWindow_WindowState(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QWindow) WindowStates() int {
+	ret := C.QWindow_WindowStates(this.h)
+	return (int)(ret)
+}
+
+func (this *QWindow) SetWindowState(state uintptr) {
+	C.QWindow_SetWindowState(this.h, (C.uintptr_t)(state))
+}
+
+func (this *QWindow) SetWindowStates(states int) {
+	C.QWindow_SetWindowStates(this.h, (C.int)(states))
 }
 
 func (this *QWindow) SetTransientParent(parent *QWindow) {
@@ -191,6 +268,11 @@ func (this *QWindow) SetTransientParent(parent *QWindow) {
 func (this *QWindow) TransientParent() *QWindow {
 	ret := C.QWindow_TransientParent(this.h)
 	return newQWindow_U(unsafe.Pointer(ret))
+}
+
+func (this *QWindow) IsAncestorOf(child *QWindow) bool {
+	ret := C.QWindow_IsAncestorOf(this.h, child.cPointer())
+	return (bool)(ret)
 }
 
 func (this *QWindow) IsExposed() bool {
@@ -538,6 +620,11 @@ func (this *QWindow) Lower() {
 	C.QWindow_Lower(this.h)
 }
 
+func (this *QWindow) StartSystemResize(edges int) bool {
+	ret := C.QWindow_StartSystemResize(this.h, (C.int)(edges))
+	return (bool)(ret)
+}
+
 func (this *QWindow) StartSystemMove() bool {
 	ret := C.QWindow_StartSystemMove(this.h)
 	return (bool)(ret)
@@ -607,6 +694,30 @@ func (this *QWindow) OnScreenChanged(slot func()) {
 	}
 
 	C.QWindow_connect_ScreenChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+}
+
+func (this *QWindow) ModalityChanged(modality uintptr) {
+	C.QWindow_ModalityChanged(this.h, (C.uintptr_t)(modality))
+}
+
+func (this *QWindow) OnModalityChanged(slot func()) {
+	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
+		slot()
+	}
+
+	C.QWindow_connect_ModalityChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+}
+
+func (this *QWindow) WindowStateChanged(windowState uintptr) {
+	C.QWindow_WindowStateChanged(this.h, (C.uintptr_t)(windowState))
+}
+
+func (this *QWindow) OnWindowStateChanged(slot func()) {
+	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
+		slot()
+	}
+
+	C.QWindow_connect_WindowStateChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
 }
 
 func (this *QWindow) WindowTitleChanged(title string) {
@@ -731,6 +842,18 @@ func (this *QWindow) OnVisibleChanged(slot func()) {
 	C.QWindow_connect_VisibleChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
 }
 
+func (this *QWindow) VisibilityChanged(visibility uintptr) {
+	C.QWindow_VisibilityChanged(this.h, (C.uintptr_t)(visibility))
+}
+
+func (this *QWindow) OnVisibilityChanged(slot func()) {
+	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
+		slot()
+	}
+
+	C.QWindow_connect_VisibilityChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+}
+
 func (this *QWindow) ActiveChanged() {
 	C.QWindow_ActiveChanged(this.h)
 }
@@ -741,6 +864,18 @@ func (this *QWindow) OnActiveChanged(slot func()) {
 	}
 
 	C.QWindow_connect_ActiveChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+}
+
+func (this *QWindow) ContentOrientationChanged(orientation uintptr) {
+	C.QWindow_ContentOrientationChanged(this.h, (C.uintptr_t)(orientation))
+}
+
+func (this *QWindow) OnContentOrientationChanged(slot func()) {
+	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
+		slot()
+	}
+
+	C.QWindow_connect_ContentOrientationChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
 }
 
 func (this *QWindow) FocusObjectChanged(object *QObject) {
@@ -829,6 +964,15 @@ func QWindow_TrUtf83(s string, c string, n int) string {
 	ret := C.GoStringN(_out, _out_Strlen)
 	C.free(unsafe.Pointer(_out))
 	return ret
+}
+
+func (this *QWindow) SetFlag2(param1 uintptr, on bool) {
+	C.QWindow_SetFlag2(this.h, (C.uintptr_t)(param1), (C.bool)(on))
+}
+
+func (this *QWindow) IsAncestorOf2(child *QWindow, mode uintptr) bool {
+	ret := C.QWindow_IsAncestorOf2(this.h, child.cPointer(), (C.uintptr_t)(mode))
+	return (bool)(ret)
 }
 
 func (this *QWindow) Delete() {

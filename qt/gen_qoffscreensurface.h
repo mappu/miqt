@@ -31,8 +31,9 @@ QOffscreenSurface* QOffscreenSurface_new(QScreen* screen, QObject* parent);
 QOffscreenSurface* QOffscreenSurface_new2();
 QOffscreenSurface* QOffscreenSurface_new3(QScreen* screen);
 QMetaObject* QOffscreenSurface_MetaObject(QOffscreenSurface* self);
-void QOffscreenSurface_Tr(char* s, char** _out, int* _out_Strlen);
-void QOffscreenSurface_TrUtf8(char* s, char** _out, int* _out_Strlen);
+void QOffscreenSurface_Tr(const char* s, char** _out, int* _out_Strlen);
+void QOffscreenSurface_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+uintptr_t QOffscreenSurface_SurfaceType(QOffscreenSurface* self);
 void QOffscreenSurface_Create(QOffscreenSurface* self);
 void QOffscreenSurface_Destroy(QOffscreenSurface* self);
 bool QOffscreenSurface_IsValid(QOffscreenSurface* self);
@@ -44,10 +45,10 @@ QScreen* QOffscreenSurface_Screen(QOffscreenSurface* self);
 void QOffscreenSurface_SetScreen(QOffscreenSurface* self, QScreen* screen);
 void QOffscreenSurface_ScreenChanged(QOffscreenSurface* self, QScreen* screen);
 void QOffscreenSurface_connect_ScreenChanged(QOffscreenSurface* self, void* slot);
-void QOffscreenSurface_Tr2(char* s, char* c, char** _out, int* _out_Strlen);
-void QOffscreenSurface_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen);
-void QOffscreenSurface_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen);
-void QOffscreenSurface_TrUtf83(char* s, char* c, int n, char** _out, int* _out_Strlen);
+void QOffscreenSurface_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
+void QOffscreenSurface_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+void QOffscreenSurface_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
+void QOffscreenSurface_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
 void QOffscreenSurface_Delete(QOffscreenSurface* self);
 
 #ifdef __cplusplus

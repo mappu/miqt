@@ -88,6 +88,26 @@ func (this *QImageIOHandler) Write(image *QImage) bool {
 	return (bool)(ret)
 }
 
+func (this *QImageIOHandler) Option(option uintptr) *QVariant {
+	ret := C.QImageIOHandler_Option(this.h, (C.uintptr_t)(option))
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQVariant(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QVariant) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QImageIOHandler) SetOption(option uintptr, value *QVariant) {
+	C.QImageIOHandler_SetOption(this.h, (C.uintptr_t)(option), value.cPointer())
+}
+
+func (this *QImageIOHandler) SupportsOption(option uintptr) bool {
+	ret := C.QImageIOHandler_SupportsOption(this.h, (C.uintptr_t)(option))
+	return (bool)(ret)
+}
+
 func (this *QImageIOHandler) JumpToNextImage() bool {
 	ret := C.QImageIOHandler_JumpToNextImage(this.h)
 	return (bool)(ret)
@@ -178,6 +198,11 @@ func QImageIOPlugin_TrUtf8(s string) string {
 	ret := C.GoStringN(_out, _out_Strlen)
 	C.free(unsafe.Pointer(_out))
 	return ret
+}
+
+func (this *QImageIOPlugin) Capabilities(device *QIODevice, format *QByteArray) int {
+	ret := C.QImageIOPlugin_Capabilities(this.h, device.cPointer(), format.cPointer())
+	return (int)(ret)
 }
 
 func (this *QImageIOPlugin) Create(device *QIODevice) *QImageIOHandler {

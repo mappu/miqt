@@ -1,8 +1,7 @@
-#include "gen_qrunnable.h"
+#include <QRunnable>
 #include "qrunnable.h"
 
-#include <QRunnable>
-
+#include "gen_qrunnable.h"
 
 extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
@@ -13,7 +12,7 @@ void QRunnable_Run(QRunnable* self) {
 }
 
 bool QRunnable_AutoDelete(QRunnable* self) {
-	return self->autoDelete();
+	return const_cast<const QRunnable*>(self)->autoDelete();
 }
 
 void QRunnable_SetAutoDelete(QRunnable* self, bool _autoDelete) {

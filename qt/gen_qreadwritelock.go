@@ -33,6 +33,18 @@ func newQReadWriteLock_U(h unsafe.Pointer) *QReadWriteLock {
 	return newQReadWriteLock((*C.QReadWriteLock)(h))
 }
 
+// NewQReadWriteLock constructs a new QReadWriteLock object.
+func NewQReadWriteLock() *QReadWriteLock {
+	ret := C.QReadWriteLock_new()
+	return newQReadWriteLock(ret)
+}
+
+// NewQReadWriteLock2 constructs a new QReadWriteLock object.
+func NewQReadWriteLock2(recursionMode uintptr) *QReadWriteLock {
+	ret := C.QReadWriteLock_new2((C.uintptr_t)(recursionMode))
+	return newQReadWriteLock(ret)
+}
+
 func (this *QReadWriteLock) LockForRead() {
 	C.QReadWriteLock_LockForRead(this.h)
 }

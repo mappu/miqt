@@ -118,8 +118,60 @@ func (this *QDrag) Target() *QObject {
 	return newQObject_U(unsafe.Pointer(ret))
 }
 
+func (this *QDrag) Start() uintptr {
+	ret := C.QDrag_Start(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QDrag) Exec() uintptr {
+	ret := C.QDrag_Exec(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QDrag) Exec2(supportedActions int, defaultAction uintptr) uintptr {
+	ret := C.QDrag_Exec2(this.h, (C.int)(supportedActions), (C.uintptr_t)(defaultAction))
+	return (uintptr)(ret)
+}
+
+func (this *QDrag) SetDragCursor(cursor *QPixmap, action uintptr) {
+	C.QDrag_SetDragCursor(this.h, cursor.cPointer(), (C.uintptr_t)(action))
+}
+
+func (this *QDrag) DragCursor(action uintptr) *QPixmap {
+	ret := C.QDrag_DragCursor(this.h, (C.uintptr_t)(action))
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQPixmap(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QPixmap) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QDrag) SupportedActions() int {
+	ret := C.QDrag_SupportedActions(this.h)
+	return (int)(ret)
+}
+
+func (this *QDrag) DefaultAction() uintptr {
+	ret := C.QDrag_DefaultAction(this.h)
+	return (uintptr)(ret)
+}
+
 func QDrag_Cancel() {
 	C.QDrag_Cancel()
+}
+
+func (this *QDrag) ActionChanged(action uintptr) {
+	C.QDrag_ActionChanged(this.h, (C.uintptr_t)(action))
+}
+
+func (this *QDrag) OnActionChanged(slot func()) {
+	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
+		slot()
+	}
+
+	C.QDrag_connect_ActionChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
 }
 
 func (this *QDrag) TargetChanged(newTarget *QObject) {
@@ -184,6 +236,16 @@ func QDrag_TrUtf83(s string, c string, n int) string {
 	ret := C.GoStringN(_out, _out_Strlen)
 	C.free(unsafe.Pointer(_out))
 	return ret
+}
+
+func (this *QDrag) Start1(supportedActions int) uintptr {
+	ret := C.QDrag_Start1(this.h, (C.int)(supportedActions))
+	return (uintptr)(ret)
+}
+
+func (this *QDrag) Exec1(supportedActions int) uintptr {
+	ret := C.QDrag_Exec1(this.h, (C.int)(supportedActions))
+	return (uintptr)(ret)
 }
 
 func (this *QDrag) Delete() {

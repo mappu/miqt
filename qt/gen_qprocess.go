@@ -227,8 +227,40 @@ func QProcess_TrUtf8(s string) string {
 	return ret
 }
 
+func (this *QProcess) Start(program string, arguments []string) {
+	program_Cstring := C.CString(program)
+	defer C.free(unsafe.Pointer(program_Cstring))
+	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
+	arguments_CArray := (*[0xffff]*C.char)(C.malloc(C.ulong(8 * len(arguments))))
+	arguments_Lengths := (*[0xffff]C.size_t)(C.malloc(C.ulong(8 * len(arguments))))
+	defer C.free(unsafe.Pointer(arguments_CArray))
+	defer C.free(unsafe.Pointer(arguments_Lengths))
+	for i := range arguments {
+		single_cstring := C.CString(arguments[i])
+		defer C.free(unsafe.Pointer(single_cstring))
+		arguments_CArray[i] = single_cstring
+		arguments_Lengths[i] = (C.size_t)(len(arguments[i]))
+	}
+	C.QProcess_Start(this.h, program_Cstring, C.ulong(len(program)), &arguments_CArray[0], &arguments_Lengths[0], C.ulong(len(arguments)))
+}
+
+func (this *QProcess) StartWithCommand(command string) {
+	command_Cstring := C.CString(command)
+	defer C.free(unsafe.Pointer(command_Cstring))
+	C.QProcess_StartWithCommand(this.h, command_Cstring, C.ulong(len(command)))
+}
+
+func (this *QProcess) Start2() {
+	C.QProcess_Start2(this.h)
+}
+
 func (this *QProcess) StartDetached() bool {
 	ret := C.QProcess_StartDetached(this.h)
+	return (bool)(ret)
+}
+
+func (this *QProcess) Open() bool {
+	ret := C.QProcess_Open(this.h)
 	return (bool)(ret)
 }
 
@@ -277,6 +309,46 @@ func (this *QProcess) SetArguments(arguments []string) {
 	C.QProcess_SetArguments(this.h, &arguments_CArray[0], &arguments_Lengths[0], C.ulong(len(arguments)))
 }
 
+func (this *QProcess) ReadChannelMode() uintptr {
+	ret := C.QProcess_ReadChannelMode(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QProcess) SetReadChannelMode(mode uintptr) {
+	C.QProcess_SetReadChannelMode(this.h, (C.uintptr_t)(mode))
+}
+
+func (this *QProcess) ProcessChannelMode() uintptr {
+	ret := C.QProcess_ProcessChannelMode(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QProcess) SetProcessChannelMode(mode uintptr) {
+	C.QProcess_SetProcessChannelMode(this.h, (C.uintptr_t)(mode))
+}
+
+func (this *QProcess) InputChannelMode() uintptr {
+	ret := C.QProcess_InputChannelMode(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QProcess) SetInputChannelMode(mode uintptr) {
+	C.QProcess_SetInputChannelMode(this.h, (C.uintptr_t)(mode))
+}
+
+func (this *QProcess) ReadChannel() uintptr {
+	ret := C.QProcess_ReadChannel(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QProcess) SetReadChannel(channel uintptr) {
+	C.QProcess_SetReadChannel(this.h, (C.uintptr_t)(channel))
+}
+
+func (this *QProcess) CloseReadChannel(channel uintptr) {
+	C.QProcess_CloseReadChannel(this.h, (C.uintptr_t)(channel))
+}
+
 func (this *QProcess) CloseWriteChannel() {
 	C.QProcess_CloseWriteChannel(this.h)
 }
@@ -285,6 +357,18 @@ func (this *QProcess) SetStandardInputFile(fileName string) {
 	fileName_Cstring := C.CString(fileName)
 	defer C.free(unsafe.Pointer(fileName_Cstring))
 	C.QProcess_SetStandardInputFile(this.h, fileName_Cstring, C.ulong(len(fileName)))
+}
+
+func (this *QProcess) SetStandardOutputFile(fileName string) {
+	fileName_Cstring := C.CString(fileName)
+	defer C.free(unsafe.Pointer(fileName_Cstring))
+	C.QProcess_SetStandardOutputFile(this.h, fileName_Cstring, C.ulong(len(fileName)))
+}
+
+func (this *QProcess) SetStandardErrorFile(fileName string) {
+	fileName_Cstring := C.CString(fileName)
+	defer C.free(unsafe.Pointer(fileName_Cstring))
+	C.QProcess_SetStandardErrorFile(this.h, fileName_Cstring, C.ulong(len(fileName)))
 }
 
 func (this *QProcess) SetStandardOutputProcess(destination *QProcess) {
@@ -351,9 +435,19 @@ func (this *QProcess) ProcessEnvironment() *QProcessEnvironment {
 	return ret1
 }
 
-func (this *QProcess) Pid() uintptr {
-	ret := C.QProcess_Pid(this.h)
+func (this *QProcess) Error() uintptr {
+	ret := C.QProcess_Error(this.h)
 	return (uintptr)(ret)
+}
+
+func (this *QProcess) State() uintptr {
+	ret := C.QProcess_State(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QProcess) Pid() int64 {
+	ret := C.QProcess_Pid(this.h)
+	return (int64)(ret)
 }
 
 func (this *QProcess) ProcessId() int64 {
@@ -406,6 +500,11 @@ func (this *QProcess) ReadAllStandardError() *QByteArray {
 func (this *QProcess) ExitCode() int {
 	ret := C.QProcess_ExitCode(this.h)
 	return (int)(ret)
+}
+
+func (this *QProcess) ExitStatus() uintptr {
+	ret := C.QProcess_ExitStatus(this.h)
+	return (uintptr)(ret)
 }
 
 func (this *QProcess) BytesAvailable() int64 {
@@ -551,6 +650,42 @@ func (this *QProcess) OnFinished(slot func()) {
 	C.QProcess_connect_Finished(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
 }
 
+func (this *QProcess) Finished2(exitCode int, exitStatus uintptr) {
+	C.QProcess_Finished2(this.h, (C.int)(exitCode), (C.uintptr_t)(exitStatus))
+}
+
+func (this *QProcess) OnFinished2(slot func()) {
+	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
+		slot()
+	}
+
+	C.QProcess_connect_Finished2(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+}
+
+func (this *QProcess) ErrorWithError(error uintptr) {
+	C.QProcess_ErrorWithError(this.h, (C.uintptr_t)(error))
+}
+
+func (this *QProcess) OnErrorWithError(slot func()) {
+	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
+		slot()
+	}
+
+	C.QProcess_connect_ErrorWithError(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+}
+
+func (this *QProcess) ErrorOccurred(error uintptr) {
+	C.QProcess_ErrorOccurred(this.h, (C.uintptr_t)(error))
+}
+
+func (this *QProcess) OnErrorOccurred(slot func()) {
+	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
+		slot()
+	}
+
+	C.QProcess_connect_ErrorOccurred(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+}
+
 func QProcess_Tr2(s string, c string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
@@ -603,9 +738,53 @@ func QProcess_TrUtf83(s string, c string, n int) string {
 	return ret
 }
 
+func (this *QProcess) Start3(program string, arguments []string, mode int) {
+	program_Cstring := C.CString(program)
+	defer C.free(unsafe.Pointer(program_Cstring))
+	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
+	arguments_CArray := (*[0xffff]*C.char)(C.malloc(C.ulong(8 * len(arguments))))
+	arguments_Lengths := (*[0xffff]C.size_t)(C.malloc(C.ulong(8 * len(arguments))))
+	defer C.free(unsafe.Pointer(arguments_CArray))
+	defer C.free(unsafe.Pointer(arguments_Lengths))
+	for i := range arguments {
+		single_cstring := C.CString(arguments[i])
+		defer C.free(unsafe.Pointer(single_cstring))
+		arguments_CArray[i] = single_cstring
+		arguments_Lengths[i] = (C.size_t)(len(arguments[i]))
+	}
+	C.QProcess_Start3(this.h, program_Cstring, C.ulong(len(program)), &arguments_CArray[0], &arguments_Lengths[0], C.ulong(len(arguments)), (C.int)(mode))
+}
+
+func (this *QProcess) Start22(command string, mode int) {
+	command_Cstring := C.CString(command)
+	defer C.free(unsafe.Pointer(command_Cstring))
+	C.QProcess_Start22(this.h, command_Cstring, C.ulong(len(command)), (C.int)(mode))
+}
+
+func (this *QProcess) Start1(mode int) {
+	C.QProcess_Start1(this.h, (C.int)(mode))
+}
+
 func (this *QProcess) StartDetached1(pid *int64) bool {
-	ret := C.QProcess_StartDetached1(this.h, (*C.int64_t)(unsafe.Pointer(pid)))
+	ret := C.QProcess_StartDetached1(this.h, (*C.longlong)(unsafe.Pointer(pid)))
 	return (bool)(ret)
+}
+
+func (this *QProcess) Open1(mode int) bool {
+	ret := C.QProcess_Open1(this.h, (C.int)(mode))
+	return (bool)(ret)
+}
+
+func (this *QProcess) SetStandardOutputFile2(fileName string, mode int) {
+	fileName_Cstring := C.CString(fileName)
+	defer C.free(unsafe.Pointer(fileName_Cstring))
+	C.QProcess_SetStandardOutputFile2(this.h, fileName_Cstring, C.ulong(len(fileName)), (C.int)(mode))
+}
+
+func (this *QProcess) SetStandardErrorFile2(fileName string, mode int) {
+	fileName_Cstring := C.CString(fileName)
+	defer C.free(unsafe.Pointer(fileName_Cstring))
+	C.QProcess_SetStandardErrorFile2(this.h, fileName_Cstring, C.ulong(len(fileName)), (C.int)(mode))
 }
 
 func (this *QProcess) WaitForStarted1(msecs int) bool {
@@ -644,7 +823,7 @@ func QProcess_StartDetached4(program string, arguments []string, workingDirector
 	}
 	workingDirectory_Cstring := C.CString(workingDirectory)
 	defer C.free(unsafe.Pointer(workingDirectory_Cstring))
-	ret := C.QProcess_StartDetached4(program_Cstring, C.ulong(len(program)), &arguments_CArray[0], &arguments_Lengths[0], C.ulong(len(arguments)), workingDirectory_Cstring, C.ulong(len(workingDirectory)), (*C.int64_t)(unsafe.Pointer(pid)))
+	ret := C.QProcess_StartDetached4(program_Cstring, C.ulong(len(program)), &arguments_CArray[0], &arguments_Lengths[0], C.ulong(len(arguments)), workingDirectory_Cstring, C.ulong(len(workingDirectory)), (*C.longlong)(unsafe.Pointer(pid)))
 	return (bool)(ret)
 }
 

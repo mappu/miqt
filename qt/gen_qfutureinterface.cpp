@@ -1,19 +1,29 @@
-#include "gen_qfutureinterface.h"
-#include "qfutureinterface.h"
-
 #include <QFutureInterfaceBase>
 #include <QMutex>
 #include <QRunnable>
 #include <QString>
+#include <QByteArray>
+#include <cstring>
 #include <QThreadPool>
+#define WORKAROUND_INNER_CLASS_DEFINITION_QtPrivate__ExceptionStore
+#include "qfutureinterface.h"
 
+#include "gen_qfutureinterface.h"
 
 extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
 }
 
-QFutureInterfaceBase* QFutureInterfaceBase_new(QFutureInterfaceBase* other) {
+QFutureInterfaceBase* QFutureInterfaceBase_new() {
+	return new QFutureInterfaceBase();
+}
+
+QFutureInterfaceBase* QFutureInterfaceBase_new2(QFutureInterfaceBase* other) {
 	return new QFutureInterfaceBase(*other);
+}
+
+QFutureInterfaceBase* QFutureInterfaceBase_new3(uintptr_t initialState) {
+	return new QFutureInterfaceBase(static_cast<QFutureInterfaceBase::State>(initialState));
 }
 
 void QFutureInterfaceBase_ReportStarted(QFutureInterfaceBase* self) {
@@ -49,15 +59,15 @@ void QFutureInterfaceBase_SetProgressRange(QFutureInterfaceBase* self, int minim
 }
 
 int QFutureInterfaceBase_ProgressMinimum(QFutureInterfaceBase* self) {
-	return self->progressMinimum();
+	return const_cast<const QFutureInterfaceBase*>(self)->progressMinimum();
 }
 
 int QFutureInterfaceBase_ProgressMaximum(QFutureInterfaceBase* self) {
-	return self->progressMaximum();
+	return const_cast<const QFutureInterfaceBase*>(self)->progressMaximum();
 }
 
 bool QFutureInterfaceBase_IsProgressUpdateNeeded(QFutureInterfaceBase* self) {
-	return self->isProgressUpdateNeeded();
+	return const_cast<const QFutureInterfaceBase*>(self)->isProgressUpdateNeeded();
 }
 
 void QFutureInterfaceBase_SetProgressValue(QFutureInterfaceBase* self, int progressValue) {
@@ -65,7 +75,7 @@ void QFutureInterfaceBase_SetProgressValue(QFutureInterfaceBase* self, int progr
 }
 
 int QFutureInterfaceBase_ProgressValue(QFutureInterfaceBase* self) {
-	return self->progressValue();
+	return const_cast<const QFutureInterfaceBase*>(self)->progressValue();
 }
 
 void QFutureInterfaceBase_SetProgressValueAndText(QFutureInterfaceBase* self, int progressValue, const char* progressText, size_t progressText_Strlen) {
@@ -74,7 +84,7 @@ void QFutureInterfaceBase_SetProgressValueAndText(QFutureInterfaceBase* self, in
 }
 
 void QFutureInterfaceBase_ProgressText(QFutureInterfaceBase* self, char** _out, int* _out_Strlen) {
-	QString ret = self->progressText();
+	QString ret = const_cast<const QFutureInterfaceBase*>(self)->progressText();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -91,35 +101,39 @@ int QFutureInterfaceBase_ExpectedResultCount(QFutureInterfaceBase* self) {
 }
 
 int QFutureInterfaceBase_ResultCount(QFutureInterfaceBase* self) {
-	return self->resultCount();
+	return const_cast<const QFutureInterfaceBase*>(self)->resultCount();
+}
+
+bool QFutureInterfaceBase_QueryState(QFutureInterfaceBase* self, uintptr_t state) {
+	return const_cast<const QFutureInterfaceBase*>(self)->queryState(static_cast<QFutureInterfaceBase::State>(state));
 }
 
 bool QFutureInterfaceBase_IsRunning(QFutureInterfaceBase* self) {
-	return self->isRunning();
+	return const_cast<const QFutureInterfaceBase*>(self)->isRunning();
 }
 
 bool QFutureInterfaceBase_IsStarted(QFutureInterfaceBase* self) {
-	return self->isStarted();
+	return const_cast<const QFutureInterfaceBase*>(self)->isStarted();
 }
 
 bool QFutureInterfaceBase_IsCanceled(QFutureInterfaceBase* self) {
-	return self->isCanceled();
+	return const_cast<const QFutureInterfaceBase*>(self)->isCanceled();
 }
 
 bool QFutureInterfaceBase_IsFinished(QFutureInterfaceBase* self) {
-	return self->isFinished();
+	return const_cast<const QFutureInterfaceBase*>(self)->isFinished();
 }
 
 bool QFutureInterfaceBase_IsPaused(QFutureInterfaceBase* self) {
-	return self->isPaused();
+	return const_cast<const QFutureInterfaceBase*>(self)->isPaused();
 }
 
 bool QFutureInterfaceBase_IsThrottled(QFutureInterfaceBase* self) {
-	return self->isThrottled();
+	return const_cast<const QFutureInterfaceBase*>(self)->isThrottled();
 }
 
 bool QFutureInterfaceBase_IsResultReadyAt(QFutureInterfaceBase* self, int index) {
-	return self->isResultReadyAt(static_cast<int>(index));
+	return const_cast<const QFutureInterfaceBase*>(self)->isResultReadyAt(static_cast<int>(index));
 }
 
 void QFutureInterfaceBase_Cancel(QFutureInterfaceBase* self) {
@@ -155,21 +169,27 @@ void QFutureInterfaceBase_WaitForResume(QFutureInterfaceBase* self) {
 }
 
 QMutex* QFutureInterfaceBase_Mutex(QFutureInterfaceBase* self) {
-	return self->mutex();
+	return const_cast<const QFutureInterfaceBase*>(self)->mutex();
 }
 
 QMutex* QFutureInterfaceBase_MutexWithInt(QFutureInterfaceBase* self, int param1) {
-	QMutex& ret = self->mutex(static_cast<int>(param1));
+	QMutex& ret = const_cast<const QFutureInterfaceBase*>(self)->mutex(static_cast<int>(param1));
+	// Cast returned reference into pointer
+	return &ret;
+}
+
+QtPrivate__ExceptionStore* QFutureInterfaceBase_ExceptionStore(QFutureInterfaceBase* self) {
+	QtPrivate::ExceptionStore& ret = self->exceptionStore();
 	// Cast returned reference into pointer
 	return &ret;
 }
 
 bool QFutureInterfaceBase_OperatorEqual(QFutureInterfaceBase* self, QFutureInterfaceBase* other) {
-	return self->operator==(*other);
+	return const_cast<const QFutureInterfaceBase*>(self)->operator==(*other);
 }
 
 bool QFutureInterfaceBase_OperatorNotEqual(QFutureInterfaceBase* self, QFutureInterfaceBase* other) {
-	return self->operator!=(*other);
+	return const_cast<const QFutureInterfaceBase*>(self)->operator!=(*other);
 }
 
 void QFutureInterfaceBase_OperatorAssign(QFutureInterfaceBase* self, QFutureInterfaceBase* other) {

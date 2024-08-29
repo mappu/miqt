@@ -1,13 +1,20 @@
-#include "gen_qreadwritelock.h"
-#include "qreadwritelock.h"
-
 #include <QReadLocker>
 #include <QReadWriteLock>
 #include <QWriteLocker>
+#include "qreadwritelock.h"
 
+#include "gen_qreadwritelock.h"
 
 extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
+}
+
+QReadWriteLock* QReadWriteLock_new() {
+	return new QReadWriteLock();
+}
+
+QReadWriteLock* QReadWriteLock_new2(uintptr_t recursionMode) {
+	return new QReadWriteLock(static_cast<QReadWriteLock::RecursionMode>(recursionMode));
 }
 
 void QReadWriteLock_LockForRead(QReadWriteLock* self) {
@@ -55,7 +62,7 @@ void QReadLocker_Relock(QReadLocker* self) {
 }
 
 QReadWriteLock* QReadLocker_ReadWriteLock(QReadLocker* self) {
-	return self->readWriteLock();
+	return const_cast<const QReadLocker*>(self)->readWriteLock();
 }
 
 void QReadLocker_Delete(QReadLocker* self) {
@@ -75,7 +82,7 @@ void QWriteLocker_Relock(QWriteLocker* self) {
 }
 
 QReadWriteLock* QWriteLocker_ReadWriteLock(QWriteLocker* self) {
-	return self->readWriteLock();
+	return const_cast<const QWriteLocker*>(self)->readWriteLock();
 }
 
 void QWriteLocker_Delete(QWriteLocker* self) {

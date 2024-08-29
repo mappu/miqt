@@ -71,6 +71,8 @@ void QLineF_SetAngle(QLineF* self, double angle);
 double QLineF_AngleTo(QLineF* self, QLineF* l);
 QLineF* QLineF_UnitVector(QLineF* self);
 QLineF* QLineF_NormalVector(QLineF* self);
+uintptr_t QLineF_Intersects(QLineF* self, QLineF* l, QPointF* intersectionPoint);
+uintptr_t QLineF_Intersect(QLineF* self, QLineF* l, QPointF* intersectionPoint);
 double QLineF_AngleWithQLineF(QLineF* self, QLineF* l);
 QPointF* QLineF_PointAt(QLineF* self, double t);
 void QLineF_Translate(QLineF* self, QPointF* p);

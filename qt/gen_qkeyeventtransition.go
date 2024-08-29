@@ -41,8 +41,20 @@ func NewQKeyEventTransition() *QKeyEventTransition {
 }
 
 // NewQKeyEventTransition2 constructs a new QKeyEventTransition object.
-func NewQKeyEventTransition2(sourceState *QState) *QKeyEventTransition {
-	ret := C.QKeyEventTransition_new2(sourceState.cPointer())
+func NewQKeyEventTransition2(object *QObject, typeVal uintptr, key int) *QKeyEventTransition {
+	ret := C.QKeyEventTransition_new2(object.cPointer(), (C.uintptr_t)(typeVal), (C.int)(key))
+	return newQKeyEventTransition(ret)
+}
+
+// NewQKeyEventTransition3 constructs a new QKeyEventTransition object.
+func NewQKeyEventTransition3(sourceState *QState) *QKeyEventTransition {
+	ret := C.QKeyEventTransition_new3(sourceState.cPointer())
+	return newQKeyEventTransition(ret)
+}
+
+// NewQKeyEventTransition4 constructs a new QKeyEventTransition object.
+func NewQKeyEventTransition4(object *QObject, typeVal uintptr, key int, sourceState *QState) *QKeyEventTransition {
+	ret := C.QKeyEventTransition_new4(object.cPointer(), (C.uintptr_t)(typeVal), (C.int)(key), sourceState.cPointer())
 	return newQKeyEventTransition(ret)
 }
 
@@ -80,6 +92,15 @@ func (this *QKeyEventTransition) Key() int {
 
 func (this *QKeyEventTransition) SetKey(key int) {
 	C.QKeyEventTransition_SetKey(this.h, (C.int)(key))
+}
+
+func (this *QKeyEventTransition) ModifierMask() int {
+	ret := C.QKeyEventTransition_ModifierMask(this.h)
+	return (int)(ret)
+}
+
+func (this *QKeyEventTransition) SetModifierMask(modifiers int) {
+	C.QKeyEventTransition_SetModifierMask(this.h, (C.int)(modifiers))
 }
 
 func QKeyEventTransition_Tr2(s string, c string) string {

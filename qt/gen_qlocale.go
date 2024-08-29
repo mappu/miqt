@@ -49,8 +49,26 @@ func NewQLocale2(name string) *QLocale {
 }
 
 // NewQLocale3 constructs a new QLocale object.
-func NewQLocale3(other *QLocale) *QLocale {
-	ret := C.QLocale_new3(other.cPointer())
+func NewQLocale3(language uintptr) *QLocale {
+	ret := C.QLocale_new3((C.uintptr_t)(language))
+	return newQLocale(ret)
+}
+
+// NewQLocale4 constructs a new QLocale object.
+func NewQLocale4(language uintptr, script uintptr, country uintptr) *QLocale {
+	ret := C.QLocale_new4((C.uintptr_t)(language), (C.uintptr_t)(script), (C.uintptr_t)(country))
+	return newQLocale(ret)
+}
+
+// NewQLocale5 constructs a new QLocale object.
+func NewQLocale5(other *QLocale) *QLocale {
+	ret := C.QLocale_new5(other.cPointer())
+	return newQLocale(ret)
+}
+
+// NewQLocale6 constructs a new QLocale object.
+func NewQLocale6(language uintptr, country uintptr) *QLocale {
+	ret := C.QLocale_new6((C.uintptr_t)(language), (C.uintptr_t)(country))
 	return newQLocale(ret)
 }
 
@@ -60,6 +78,21 @@ func (this *QLocale) OperatorAssign(other *QLocale) {
 
 func (this *QLocale) Swap(other *QLocale) {
 	C.QLocale_Swap(this.h, other.cPointer())
+}
+
+func (this *QLocale) Language() uintptr {
+	ret := C.QLocale_Language(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QLocale) Script() uintptr {
+	ret := C.QLocale_Script(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QLocale) Country() uintptr {
+	ret := C.QLocale_Country(this.h)
+	return (uintptr)(ret)
 }
 
 func (this *QLocale) Name() string {
@@ -291,12 +324,82 @@ func (this *QLocale) ToString4(dateTime *QDateTime, format string) string {
 	return ret
 }
 
-func (this *QLocale) ToDate(stringVal string, format string) *QDate {
+func (this *QLocale) ToStringWithDate(date *QDate) string {
+	var _out *C.char = nil
+	var _out_Strlen C.int = 0
+	C.QLocale_ToStringWithDate(this.h, date.cPointer(), &_out, &_out_Strlen)
+	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func (this *QLocale) ToStringWithTime(time *QTime) string {
+	var _out *C.char = nil
+	var _out_Strlen C.int = 0
+	C.QLocale_ToStringWithTime(this.h, time.cPointer(), &_out, &_out_Strlen)
+	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func (this *QLocale) ToStringWithDateTime(dateTime *QDateTime) string {
+	var _out *C.char = nil
+	var _out_Strlen C.int = 0
+	C.QLocale_ToStringWithDateTime(this.h, dateTime.cPointer(), &_out, &_out_Strlen)
+	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func (this *QLocale) ToString9(date *QDate, format uintptr, cal QCalendar) string {
+	var _out *C.char = nil
+	var _out_Strlen C.int = 0
+	C.QLocale_ToString9(this.h, date.cPointer(), (C.uintptr_t)(format), cal.cPointer(), &_out, &_out_Strlen)
+	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func (this *QLocale) ToString10(dateTime *QDateTime, format uintptr, cal QCalendar) string {
+	var _out *C.char = nil
+	var _out_Strlen C.int = 0
+	C.QLocale_ToString10(this.h, dateTime.cPointer(), (C.uintptr_t)(format), cal.cPointer(), &_out, &_out_Strlen)
+	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func (this *QLocale) DateFormat() string {
+	var _out *C.char = nil
+	var _out_Strlen C.int = 0
+	C.QLocale_DateFormat(this.h, &_out, &_out_Strlen)
+	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func (this *QLocale) TimeFormat() string {
+	var _out *C.char = nil
+	var _out_Strlen C.int = 0
+	C.QLocale_TimeFormat(this.h, &_out, &_out_Strlen)
+	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func (this *QLocale) DateTimeFormat() string {
+	var _out *C.char = nil
+	var _out_Strlen C.int = 0
+	C.QLocale_DateTimeFormat(this.h, &_out, &_out_Strlen)
+	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func (this *QLocale) ToDate(stringVal string) *QDate {
 	stringVal_Cstring := C.CString(stringVal)
 	defer C.free(unsafe.Pointer(stringVal_Cstring))
-	format_Cstring := C.CString(format)
-	defer C.free(unsafe.Pointer(format_Cstring))
-	ret := C.QLocale_ToDate(this.h, stringVal_Cstring, C.ulong(len(stringVal)), format_Cstring, C.ulong(len(format)))
+	ret := C.QLocale_ToDate(this.h, stringVal_Cstring, C.ulong(len(stringVal)))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQDate(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QDate) {
@@ -306,12 +409,10 @@ func (this *QLocale) ToDate(stringVal string, format string) *QDate {
 	return ret1
 }
 
-func (this *QLocale) ToTime(stringVal string, format string) *QTime {
+func (this *QLocale) ToTime(stringVal string) *QTime {
 	stringVal_Cstring := C.CString(stringVal)
 	defer C.free(unsafe.Pointer(stringVal_Cstring))
-	format_Cstring := C.CString(format)
-	defer C.free(unsafe.Pointer(format_Cstring))
-	ret := C.QLocale_ToTime(this.h, stringVal_Cstring, C.ulong(len(stringVal)), format_Cstring, C.ulong(len(format)))
+	ret := C.QLocale_ToTime(this.h, stringVal_Cstring, C.ulong(len(stringVal)))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQTime(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QTime) {
@@ -321,12 +422,10 @@ func (this *QLocale) ToTime(stringVal string, format string) *QTime {
 	return ret1
 }
 
-func (this *QLocale) ToDateTime(stringVal string, format string) *QDateTime {
+func (this *QLocale) ToDateTime(stringVal string) *QDateTime {
 	stringVal_Cstring := C.CString(stringVal)
 	defer C.free(unsafe.Pointer(stringVal_Cstring))
-	format_Cstring := C.CString(format)
-	defer C.free(unsafe.Pointer(format_Cstring))
-	ret := C.QLocale_ToDateTime(this.h, stringVal_Cstring, C.ulong(len(stringVal)), format_Cstring, C.ulong(len(format)))
+	ret := C.QLocale_ToDateTime(this.h, stringVal_Cstring, C.ulong(len(stringVal)))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQDateTime(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QDateTime) {
@@ -336,12 +435,12 @@ func (this *QLocale) ToDateTime(stringVal string, format string) *QDateTime {
 	return ret1
 }
 
-func (this *QLocale) ToDate2(stringVal string, format string, cal QCalendar) *QDate {
+func (this *QLocale) ToDate2(stringVal string, format string) *QDate {
 	stringVal_Cstring := C.CString(stringVal)
 	defer C.free(unsafe.Pointer(stringVal_Cstring))
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
-	ret := C.QLocale_ToDate2(this.h, stringVal_Cstring, C.ulong(len(stringVal)), format_Cstring, C.ulong(len(format)), cal.cPointer())
+	ret := C.QLocale_ToDate2(this.h, stringVal_Cstring, C.ulong(len(stringVal)), format_Cstring, C.ulong(len(format)))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQDate(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QDate) {
@@ -351,12 +450,27 @@ func (this *QLocale) ToDate2(stringVal string, format string, cal QCalendar) *QD
 	return ret1
 }
 
-func (this *QLocale) ToDateTime2(stringVal string, format string, cal QCalendar) *QDateTime {
+func (this *QLocale) ToTime2(stringVal string, format string) *QTime {
 	stringVal_Cstring := C.CString(stringVal)
 	defer C.free(unsafe.Pointer(stringVal_Cstring))
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
-	ret := C.QLocale_ToDateTime2(this.h, stringVal_Cstring, C.ulong(len(stringVal)), format_Cstring, C.ulong(len(format)), cal.cPointer())
+	ret := C.QLocale_ToTime2(this.h, stringVal_Cstring, C.ulong(len(stringVal)), format_Cstring, C.ulong(len(format)))
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQTime(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QTime) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QLocale) ToDateTime2(stringVal string, format string) *QDateTime {
+	stringVal_Cstring := C.CString(stringVal)
+	defer C.free(unsafe.Pointer(stringVal_Cstring))
+	format_Cstring := C.CString(format)
+	defer C.free(unsafe.Pointer(format_Cstring))
+	ret := C.QLocale_ToDateTime2(this.h, stringVal_Cstring, C.ulong(len(stringVal)), format_Cstring, C.ulong(len(format)))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQDateTime(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QDateTime) {
@@ -366,12 +480,81 @@ func (this *QLocale) ToDateTime2(stringVal string, format string, cal QCalendar)
 	return ret1
 }
 
-func (this *QLocale) ToTime2(stringVal string, format string, cal QCalendar) *QTime {
+func (this *QLocale) ToDate3(stringVal string, format uintptr, cal QCalendar) *QDate {
+	stringVal_Cstring := C.CString(stringVal)
+	defer C.free(unsafe.Pointer(stringVal_Cstring))
+	ret := C.QLocale_ToDate3(this.h, stringVal_Cstring, C.ulong(len(stringVal)), (C.uintptr_t)(format), cal.cPointer())
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQDate(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QDate) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QLocale) ToDateTime3(stringVal string, format uintptr, cal QCalendar) *QDateTime {
+	stringVal_Cstring := C.CString(stringVal)
+	defer C.free(unsafe.Pointer(stringVal_Cstring))
+	ret := C.QLocale_ToDateTime3(this.h, stringVal_Cstring, C.ulong(len(stringVal)), (C.uintptr_t)(format), cal.cPointer())
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQDateTime(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QDateTime) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QLocale) ToDate4(stringVal string, format string, cal QCalendar) *QDate {
 	stringVal_Cstring := C.CString(stringVal)
 	defer C.free(unsafe.Pointer(stringVal_Cstring))
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
-	ret := C.QLocale_ToTime2(this.h, stringVal_Cstring, C.ulong(len(stringVal)), format_Cstring, C.ulong(len(format)), cal.cPointer())
+	ret := C.QLocale_ToDate4(this.h, stringVal_Cstring, C.ulong(len(stringVal)), format_Cstring, C.ulong(len(format)), cal.cPointer())
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQDate(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QDate) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QLocale) ToDateTime4(stringVal string, format string, cal QCalendar) *QDateTime {
+	stringVal_Cstring := C.CString(stringVal)
+	defer C.free(unsafe.Pointer(stringVal_Cstring))
+	format_Cstring := C.CString(format)
+	defer C.free(unsafe.Pointer(format_Cstring))
+	ret := C.QLocale_ToDateTime4(this.h, stringVal_Cstring, C.ulong(len(stringVal)), format_Cstring, C.ulong(len(format)), cal.cPointer())
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQDateTime(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QDateTime) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QLocale) ToTime3(stringVal string, format uintptr, cal QCalendar) *QTime {
+	stringVal_Cstring := C.CString(stringVal)
+	defer C.free(unsafe.Pointer(stringVal_Cstring))
+	ret := C.QLocale_ToTime3(this.h, stringVal_Cstring, C.ulong(len(stringVal)), (C.uintptr_t)(format), cal.cPointer())
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQTime(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QTime) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QLocale) ToTime4(stringVal string, format string, cal QCalendar) *QTime {
+	stringVal_Cstring := C.CString(stringVal)
+	defer C.free(unsafe.Pointer(stringVal_Cstring))
+	format_Cstring := C.CString(format)
+	defer C.free(unsafe.Pointer(format_Cstring))
+	ret := C.QLocale_ToTime4(this.h, stringVal_Cstring, C.ulong(len(stringVal)), format_Cstring, C.ulong(len(format)), cal.cPointer())
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQTime(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QTime) {
@@ -458,6 +641,60 @@ func (this *QLocale) Exponential() *QChar {
 	return ret1
 }
 
+func (this *QLocale) MonthName(param1 int) string {
+	var _out *C.char = nil
+	var _out_Strlen C.int = 0
+	C.QLocale_MonthName(this.h, (C.int)(param1), &_out, &_out_Strlen)
+	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func (this *QLocale) StandaloneMonthName(param1 int) string {
+	var _out *C.char = nil
+	var _out_Strlen C.int = 0
+	C.QLocale_StandaloneMonthName(this.h, (C.int)(param1), &_out, &_out_Strlen)
+	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func (this *QLocale) DayName(param1 int) string {
+	var _out *C.char = nil
+	var _out_Strlen C.int = 0
+	C.QLocale_DayName(this.h, (C.int)(param1), &_out, &_out_Strlen)
+	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func (this *QLocale) StandaloneDayName(param1 int) string {
+	var _out *C.char = nil
+	var _out_Strlen C.int = 0
+	C.QLocale_StandaloneDayName(this.h, (C.int)(param1), &_out, &_out_Strlen)
+	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func (this *QLocale) FirstDayOfWeek() uintptr {
+	ret := C.QLocale_FirstDayOfWeek(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QLocale) Weekdays() []uintptr {
+	var _out *C.uintptr_t = nil
+	var _out_len C.size_t = 0
+	C.QLocale_Weekdays(this.h, &_out, &_out_len)
+	ret := make([]uintptr, int(_out_len))
+	_outCast := (*[0xffff]C.uintptr_t)(unsafe.Pointer(_out)) // mrs jackson
+	for i := 0; i < int(_out_len); i++ {
+		ret[i] = (uintptr)(_outCast[i])
+	}
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
 func (this *QLocale) AmText() string {
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
@@ -476,6 +713,11 @@ func (this *QLocale) PmText() string {
 	return ret
 }
 
+func (this *QLocale) MeasurementSystem() uintptr {
+	ret := C.QLocale_MeasurementSystem(this.h)
+	return (uintptr)(ret)
+}
+
 func (this *QLocale) Collation() *QLocale {
 	ret := C.QLocale_Collation(this.h)
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -485,6 +727,11 @@ func (this *QLocale) Collation() *QLocale {
 		runtime.KeepAlive(ret2.h)
 	})
 	return ret1
+}
+
+func (this *QLocale) TextDirection() uintptr {
+	ret := C.QLocale_TextDirection(this.h)
+	return (uintptr)(ret)
 }
 
 func (this *QLocale) ToUpper(str string) string {
@@ -504,6 +751,15 @@ func (this *QLocale) ToLower(str string) string {
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
 	C.QLocale_ToLower(this.h, str_Cstring, C.ulong(len(str)), &_out, &_out_Strlen)
+	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func (this *QLocale) CurrencySymbol() string {
+	var _out *C.char = nil
+	var _out_Strlen C.int = 0
+	C.QLocale_CurrencySymbol(this.h, &_out, &_out_Strlen)
 	ret := C.GoStringN(_out, _out_Strlen)
 	C.free(unsafe.Pointer(_out))
 	return ret
@@ -603,6 +859,24 @@ func (this *QLocale) ToCurrencyString3(i float32, symbol string, precision int) 
 	return ret
 }
 
+func (this *QLocale) FormattedDataSize(bytes int64) string {
+	var _out *C.char = nil
+	var _out_Strlen C.int = 0
+	C.QLocale_FormattedDataSize(this.h, (C.longlong)(bytes), &_out, &_out_Strlen)
+	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func (this *QLocale) FormattedDataSizeWithBytes(bytes int64) string {
+	var _out *C.char = nil
+	var _out_Strlen C.int = 0
+	C.QLocale_FormattedDataSizeWithBytes(this.h, (C.longlong)(bytes), &_out, &_out_Strlen)
+	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
 func (this *QLocale) UiLanguages() []string {
 	var _out **C.char = nil
 	var _out_Lengths *C.int = nil
@@ -626,6 +900,33 @@ func (this *QLocale) OperatorEqual(other *QLocale) bool {
 func (this *QLocale) OperatorNotEqual(other *QLocale) bool {
 	ret := C.QLocale_OperatorNotEqual(this.h, other.cPointer())
 	return (bool)(ret)
+}
+
+func QLocale_LanguageToString(language uintptr) string {
+	var _out *C.char = nil
+	var _out_Strlen C.int = 0
+	C.QLocale_LanguageToString((C.uintptr_t)(language), &_out, &_out_Strlen)
+	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func QLocale_CountryToString(country uintptr) string {
+	var _out *C.char = nil
+	var _out_Strlen C.int = 0
+	C.QLocale_CountryToString((C.uintptr_t)(country), &_out, &_out_Strlen)
+	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func QLocale_ScriptToString(script uintptr) string {
+	var _out *C.char = nil
+	var _out_Strlen C.int = 0
+	C.QLocale_ScriptToString((C.uintptr_t)(script), &_out, &_out_Strlen)
+	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
 }
 
 func QLocale_SetDefault(locale *QLocale) {
@@ -652,6 +953,52 @@ func QLocale_System() *QLocale {
 		runtime.KeepAlive(ret2.h)
 	})
 	return ret1
+}
+
+func QLocale_MatchingLocales(language uintptr, script uintptr, country uintptr) []QLocale {
+	var _out **C.QLocale = nil
+	var _out_len C.size_t = 0
+	C.QLocale_MatchingLocales((C.uintptr_t)(language), (C.uintptr_t)(script), (C.uintptr_t)(country), &_out, &_out_len)
+	ret := make([]QLocale, int(_out_len))
+	_outCast := (*[0xffff]*C.QLocale)(unsafe.Pointer(_out)) // so fresh so clean
+	for i := 0; i < int(_out_len); i++ {
+		ret[i] = *newQLocale(_outCast[i])
+	}
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func QLocale_CountriesForLanguage(lang uintptr) []uintptr {
+	var _out *C.uintptr_t = nil
+	var _out_len C.size_t = 0
+	C.QLocale_CountriesForLanguage((C.uintptr_t)(lang), &_out, &_out_len)
+	ret := make([]uintptr, int(_out_len))
+	_outCast := (*[0xffff]C.uintptr_t)(unsafe.Pointer(_out)) // mrs jackson
+	for i := 0; i < int(_out_len); i++ {
+		ret[i] = (uintptr)(_outCast[i])
+	}
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func (this *QLocale) SetNumberOptions(options int) {
+	C.QLocale_SetNumberOptions(this.h, (C.int)(options))
+}
+
+func (this *QLocale) NumberOptions() int {
+	ret := C.QLocale_NumberOptions(this.h)
+	return (int)(ret)
+}
+
+func (this *QLocale) QuoteString(str string) string {
+	str_Cstring := C.CString(str)
+	defer C.free(unsafe.Pointer(str_Cstring))
+	var _out *C.char = nil
+	var _out_Strlen C.int = 0
+	C.QLocale_QuoteString(this.h, str_Cstring, C.ulong(len(str)), &_out, &_out_Strlen)
+	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
 }
 
 func (this *QLocale) CreateSeparatedList(strl []string) string {
@@ -780,6 +1127,144 @@ func (this *QLocale) ToString33(i float32, f byte, prec int) string {
 	return ret
 }
 
+func (this *QLocale) ToString24(date *QDate, format uintptr) string {
+	var _out *C.char = nil
+	var _out_Strlen C.int = 0
+	C.QLocale_ToString24(this.h, date.cPointer(), (C.uintptr_t)(format), &_out, &_out_Strlen)
+	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func (this *QLocale) ToString25(time *QTime, format uintptr) string {
+	var _out *C.char = nil
+	var _out_Strlen C.int = 0
+	C.QLocale_ToString25(this.h, time.cPointer(), (C.uintptr_t)(format), &_out, &_out_Strlen)
+	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func (this *QLocale) ToString26(dateTime *QDateTime, format uintptr) string {
+	var _out *C.char = nil
+	var _out_Strlen C.int = 0
+	C.QLocale_ToString26(this.h, dateTime.cPointer(), (C.uintptr_t)(format), &_out, &_out_Strlen)
+	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func (this *QLocale) DateFormat1(format uintptr) string {
+	var _out *C.char = nil
+	var _out_Strlen C.int = 0
+	C.QLocale_DateFormat1(this.h, (C.uintptr_t)(format), &_out, &_out_Strlen)
+	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func (this *QLocale) TimeFormat1(format uintptr) string {
+	var _out *C.char = nil
+	var _out_Strlen C.int = 0
+	C.QLocale_TimeFormat1(this.h, (C.uintptr_t)(format), &_out, &_out_Strlen)
+	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func (this *QLocale) DateTimeFormat1(format uintptr) string {
+	var _out *C.char = nil
+	var _out_Strlen C.int = 0
+	C.QLocale_DateTimeFormat1(this.h, (C.uintptr_t)(format), &_out, &_out_Strlen)
+	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func (this *QLocale) ToDate22(stringVal string, param2 uintptr) *QDate {
+	stringVal_Cstring := C.CString(stringVal)
+	defer C.free(unsafe.Pointer(stringVal_Cstring))
+	ret := C.QLocale_ToDate22(this.h, stringVal_Cstring, C.ulong(len(stringVal)), (C.uintptr_t)(param2))
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQDate(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QDate) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QLocale) ToTime22(stringVal string, param2 uintptr) *QTime {
+	stringVal_Cstring := C.CString(stringVal)
+	defer C.free(unsafe.Pointer(stringVal_Cstring))
+	ret := C.QLocale_ToTime22(this.h, stringVal_Cstring, C.ulong(len(stringVal)), (C.uintptr_t)(param2))
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQTime(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QTime) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QLocale) ToDateTime22(stringVal string, format uintptr) *QDateTime {
+	stringVal_Cstring := C.CString(stringVal)
+	defer C.free(unsafe.Pointer(stringVal_Cstring))
+	ret := C.QLocale_ToDateTime22(this.h, stringVal_Cstring, C.ulong(len(stringVal)), (C.uintptr_t)(format))
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQDateTime(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QDateTime) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QLocale) MonthName2(param1 int, format uintptr) string {
+	var _out *C.char = nil
+	var _out_Strlen C.int = 0
+	C.QLocale_MonthName2(this.h, (C.int)(param1), (C.uintptr_t)(format), &_out, &_out_Strlen)
+	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func (this *QLocale) StandaloneMonthName2(param1 int, format uintptr) string {
+	var _out *C.char = nil
+	var _out_Strlen C.int = 0
+	C.QLocale_StandaloneMonthName2(this.h, (C.int)(param1), (C.uintptr_t)(format), &_out, &_out_Strlen)
+	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func (this *QLocale) DayName2(param1 int, format uintptr) string {
+	var _out *C.char = nil
+	var _out_Strlen C.int = 0
+	C.QLocale_DayName2(this.h, (C.int)(param1), (C.uintptr_t)(format), &_out, &_out_Strlen)
+	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func (this *QLocale) StandaloneDayName2(param1 int, format uintptr) string {
+	var _out *C.char = nil
+	var _out_Strlen C.int = 0
+	C.QLocale_StandaloneDayName2(this.h, (C.int)(param1), (C.uintptr_t)(format), &_out, &_out_Strlen)
+	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func (this *QLocale) CurrencySymbol1(param1 uintptr) string {
+	var _out *C.char = nil
+	var _out_Strlen C.int = 0
+	C.QLocale_CurrencySymbol1(this.h, (C.uintptr_t)(param1), &_out, &_out_Strlen)
+	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
 func (this *QLocale) ToCurrencyString22(param1 int64, symbol string) string {
 	symbol_Cstring := C.CString(symbol)
 	defer C.free(unsafe.Pointer(symbol_Cstring))
@@ -863,6 +1348,53 @@ func (this *QLocale) ToCurrencyString29(i float32, symbol string) string {
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
 	C.QLocale_ToCurrencyString29(this.h, (C.float)(i), symbol_Cstring, C.ulong(len(symbol)), &_out, &_out_Strlen)
+	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func (this *QLocale) FormattedDataSize2(bytes int64, precision int) string {
+	var _out *C.char = nil
+	var _out_Strlen C.int = 0
+	C.QLocale_FormattedDataSize2(this.h, (C.longlong)(bytes), (C.int)(precision), &_out, &_out_Strlen)
+	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func (this *QLocale) FormattedDataSize3(bytes int64, precision int, format int) string {
+	var _out *C.char = nil
+	var _out_Strlen C.int = 0
+	C.QLocale_FormattedDataSize3(this.h, (C.longlong)(bytes), (C.int)(precision), (C.int)(format), &_out, &_out_Strlen)
+	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func (this *QLocale) FormattedDataSize22(bytes int64, precision int) string {
+	var _out *C.char = nil
+	var _out_Strlen C.int = 0
+	C.QLocale_FormattedDataSize22(this.h, (C.longlong)(bytes), (C.int)(precision), &_out, &_out_Strlen)
+	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func (this *QLocale) FormattedDataSize32(bytes int64, precision int, format int) string {
+	var _out *C.char = nil
+	var _out_Strlen C.int = 0
+	C.QLocale_FormattedDataSize32(this.h, (C.longlong)(bytes), (C.int)(precision), (C.int)(format), &_out, &_out_Strlen)
+	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func (this *QLocale) QuoteString2(str string, style uintptr) string {
+	str_Cstring := C.CString(str)
+	defer C.free(unsafe.Pointer(str_Cstring))
+	var _out *C.char = nil
+	var _out_Strlen C.int = 0
+	C.QLocale_QuoteString2(this.h, str_Cstring, C.ulong(len(str)), (C.uintptr_t)(style), &_out, &_out_Strlen)
 	ret := C.GoStringN(_out, _out_Strlen)
 	C.free(unsafe.Pointer(_out))
 	return ret

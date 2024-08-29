@@ -36,6 +36,24 @@ func newQMainWindow_U(h unsafe.Pointer) *QMainWindow {
 	return newQMainWindow((*C.QMainWindow)(h))
 }
 
+// NewQMainWindow constructs a new QMainWindow object.
+func NewQMainWindow() *QMainWindow {
+	ret := C.QMainWindow_new()
+	return newQMainWindow(ret)
+}
+
+// NewQMainWindow2 constructs a new QMainWindow object.
+func NewQMainWindow2(parent *QWidget) *QMainWindow {
+	ret := C.QMainWindow_new2(parent.cPointer())
+	return newQMainWindow(ret)
+}
+
+// NewQMainWindow3 constructs a new QMainWindow object.
+func NewQMainWindow3(parent *QWidget, flags int) *QMainWindow {
+	ret := C.QMainWindow_new3(parent.cPointer(), (C.int)(flags))
+	return newQMainWindow(ret)
+}
+
 func (this *QMainWindow) MetaObject() *QMetaObject {
 	ret := C.QMainWindow_MetaObject(this.h)
 	return newQMetaObject_U(unsafe.Pointer(ret))
@@ -78,6 +96,15 @@ func (this *QMainWindow) SetIconSize(iconSize *QSize) {
 	C.QMainWindow_SetIconSize(this.h, iconSize.cPointer())
 }
 
+func (this *QMainWindow) ToolButtonStyle() uintptr {
+	ret := C.QMainWindow_ToolButtonStyle(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QMainWindow) SetToolButtonStyle(toolButtonStyle uintptr) {
+	C.QMainWindow_SetToolButtonStyle(this.h, (C.uintptr_t)(toolButtonStyle))
+}
+
 func (this *QMainWindow) IsAnimated() bool {
 	ret := C.QMainWindow_IsAnimated(this.h)
 	return (bool)(ret)
@@ -95,6 +122,33 @@ func (this *QMainWindow) DocumentMode() bool {
 
 func (this *QMainWindow) SetDocumentMode(enabled bool) {
 	C.QMainWindow_SetDocumentMode(this.h, (C.bool)(enabled))
+}
+
+func (this *QMainWindow) TabShape() uintptr {
+	ret := C.QMainWindow_TabShape(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QMainWindow) SetTabShape(tabShape uintptr) {
+	C.QMainWindow_SetTabShape(this.h, (C.uintptr_t)(tabShape))
+}
+
+func (this *QMainWindow) TabPosition(area uintptr) uintptr {
+	ret := C.QMainWindow_TabPosition(this.h, (C.uintptr_t)(area))
+	return (uintptr)(ret)
+}
+
+func (this *QMainWindow) SetTabPosition(areas int, tabPosition uintptr) {
+	C.QMainWindow_SetTabPosition(this.h, (C.int)(areas), (C.uintptr_t)(tabPosition))
+}
+
+func (this *QMainWindow) SetDockOptions(options int) {
+	C.QMainWindow_SetDockOptions(this.h, (C.int)(options))
+}
+
+func (this *QMainWindow) DockOptions() int {
+	ret := C.QMainWindow_DockOptions(this.h)
+	return (int)(ret)
 }
 
 func (this *QMainWindow) IsSeparator(pos *QPoint) bool {
@@ -143,12 +197,29 @@ func (this *QMainWindow) TakeCentralWidget() *QWidget {
 	return newQWidget_U(unsafe.Pointer(ret))
 }
 
+func (this *QMainWindow) SetCorner(corner uintptr, area uintptr) {
+	C.QMainWindow_SetCorner(this.h, (C.uintptr_t)(corner), (C.uintptr_t)(area))
+}
+
+func (this *QMainWindow) Corner(corner uintptr) uintptr {
+	ret := C.QMainWindow_Corner(this.h, (C.uintptr_t)(corner))
+	return (uintptr)(ret)
+}
+
+func (this *QMainWindow) AddToolBarBreak() {
+	C.QMainWindow_AddToolBarBreak(this.h)
+}
+
 func (this *QMainWindow) InsertToolBarBreak(before *QToolBar) {
 	C.QMainWindow_InsertToolBarBreak(this.h, before.cPointer())
 }
 
-func (this *QMainWindow) AddToolBar(toolbar *QToolBar) {
-	C.QMainWindow_AddToolBar(this.h, toolbar.cPointer())
+func (this *QMainWindow) AddToolBar(area uintptr, toolbar *QToolBar) {
+	C.QMainWindow_AddToolBar(this.h, (C.uintptr_t)(area), toolbar.cPointer())
+}
+
+func (this *QMainWindow) AddToolBarWithToolbar(toolbar *QToolBar) {
+	C.QMainWindow_AddToolBarWithToolbar(this.h, toolbar.cPointer())
 }
 
 func (this *QMainWindow) AddToolBarWithTitle(title string) *QToolBar {
@@ -175,9 +246,26 @@ func (this *QMainWindow) UnifiedTitleAndToolBarOnMac() bool {
 	return (bool)(ret)
 }
 
+func (this *QMainWindow) ToolBarArea(toolbar *QToolBar) uintptr {
+	ret := C.QMainWindow_ToolBarArea(this.h, toolbar.cPointer())
+	return (uintptr)(ret)
+}
+
 func (this *QMainWindow) ToolBarBreak(toolbar *QToolBar) bool {
 	ret := C.QMainWindow_ToolBarBreak(this.h, toolbar.cPointer())
 	return (bool)(ret)
+}
+
+func (this *QMainWindow) AddDockWidget(area uintptr, dockwidget *QDockWidget) {
+	C.QMainWindow_AddDockWidget(this.h, (C.uintptr_t)(area), dockwidget.cPointer())
+}
+
+func (this *QMainWindow) AddDockWidget2(area uintptr, dockwidget *QDockWidget, orientation uintptr) {
+	C.QMainWindow_AddDockWidget2(this.h, (C.uintptr_t)(area), dockwidget.cPointer(), (C.uintptr_t)(orientation))
+}
+
+func (this *QMainWindow) SplitDockWidget(after *QDockWidget, dockwidget *QDockWidget, orientation uintptr) {
+	C.QMainWindow_SplitDockWidget(this.h, after.cPointer(), dockwidget.cPointer(), (C.uintptr_t)(orientation))
 }
 
 func (this *QMainWindow) TabifyDockWidget(first *QDockWidget, second *QDockWidget) {
@@ -204,6 +292,27 @@ func (this *QMainWindow) RemoveDockWidget(dockwidget *QDockWidget) {
 func (this *QMainWindow) RestoreDockWidget(dockwidget *QDockWidget) bool {
 	ret := C.QMainWindow_RestoreDockWidget(this.h, dockwidget.cPointer())
 	return (bool)(ret)
+}
+
+func (this *QMainWindow) DockWidgetArea(dockwidget *QDockWidget) uintptr {
+	ret := C.QMainWindow_DockWidgetArea(this.h, dockwidget.cPointer())
+	return (uintptr)(ret)
+}
+
+func (this *QMainWindow) ResizeDocks(docks []*QDockWidget, sizes []int, orientation uintptr) {
+	// For the C ABI, malloc a C array of raw pointers
+	docks_CArray := (*[0xffff]*C.QDockWidget)(C.malloc(C.ulong(8 * len(docks))))
+	defer C.free(unsafe.Pointer(docks_CArray))
+	for i := range docks {
+		docks_CArray[i] = docks[i].cPointer()
+	}
+	// For the C ABI, malloc a C array of raw pointers
+	sizes_CArray := (*[0xffff]C.int)(C.malloc(C.ulong(8 * len(sizes))))
+	defer C.free(unsafe.Pointer(sizes_CArray))
+	for i := range sizes {
+		sizes_CArray[i] = (C.int)(sizes[i])
+	}
+	C.QMainWindow_ResizeDocks(this.h, &docks_CArray[0], C.ulong(len(docks)), &sizes_CArray[0], C.ulong(len(sizes)), (C.uintptr_t)(orientation))
 }
 
 func (this *QMainWindow) SaveState() *QByteArray {
@@ -249,6 +358,18 @@ func (this *QMainWindow) OnIconSizeChanged(slot func()) {
 	}
 
 	C.QMainWindow_connect_IconSizeChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+}
+
+func (this *QMainWindow) ToolButtonStyleChanged(toolButtonStyle uintptr) {
+	C.QMainWindow_ToolButtonStyleChanged(this.h, (C.uintptr_t)(toolButtonStyle))
+}
+
+func (this *QMainWindow) OnToolButtonStyleChanged(slot func()) {
+	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
+		slot()
+	}
+
+	C.QMainWindow_connect_ToolButtonStyleChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
 }
 
 func (this *QMainWindow) TabifiedDockWidgetActivated(dockWidget *QDockWidget) {
@@ -313,6 +434,10 @@ func QMainWindow_TrUtf83(s string, c string, n int) string {
 	ret := C.GoStringN(_out, _out_Strlen)
 	C.free(unsafe.Pointer(_out))
 	return ret
+}
+
+func (this *QMainWindow) AddToolBarBreak1(area uintptr) {
+	C.QMainWindow_AddToolBarBreak1(this.h, (C.uintptr_t)(area))
 }
 
 func (this *QMainWindow) SaveState1(version int) *QByteArray {

@@ -35,13 +35,24 @@ func newQEvent_U(h unsafe.Pointer) *QEvent {
 }
 
 // NewQEvent constructs a new QEvent object.
-func NewQEvent(other *QEvent) *QEvent {
-	ret := C.QEvent_new(other.cPointer())
+func NewQEvent(typeVal uintptr) *QEvent {
+	ret := C.QEvent_new((C.uintptr_t)(typeVal))
+	return newQEvent(ret)
+}
+
+// NewQEvent2 constructs a new QEvent object.
+func NewQEvent2(other *QEvent) *QEvent {
+	ret := C.QEvent_new2(other.cPointer())
 	return newQEvent(ret)
 }
 
 func (this *QEvent) OperatorAssign(other *QEvent) {
 	C.QEvent_OperatorAssign(this.h, other.cPointer())
+}
+
+func (this *QEvent) Type() uintptr {
+	ret := C.QEvent_Type(this.h)
+	return (uintptr)(ret)
 }
 
 func (this *QEvent) Spontaneous() bool {
@@ -142,8 +153,14 @@ func newQChildEvent_U(h unsafe.Pointer) *QChildEvent {
 }
 
 // NewQChildEvent constructs a new QChildEvent object.
-func NewQChildEvent(param1 *QChildEvent) *QChildEvent {
-	ret := C.QChildEvent_new(param1.cPointer())
+func NewQChildEvent(typeVal uintptr, child *QObject) *QChildEvent {
+	ret := C.QChildEvent_new((C.uintptr_t)(typeVal), child.cPointer())
+	return newQChildEvent(ret)
+}
+
+// NewQChildEvent2 constructs a new QChildEvent object.
+func NewQChildEvent2(param1 *QChildEvent) *QChildEvent {
+	ret := C.QChildEvent_new2(param1.cPointer())
 	return newQChildEvent(ret)
 }
 

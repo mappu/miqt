@@ -100,6 +100,11 @@ func (this *QResource) IsValid() bool {
 	return (bool)(ret)
 }
 
+func (this *QResource) CompressionAlgorithm() uintptr {
+	ret := C.QResource_CompressionAlgorithm(this.h)
+	return (uintptr)(ret)
+}
+
 func (this *QResource) Size() int64 {
 	ret := C.QResource_Size(this.h)
 	return (int64)(ret)

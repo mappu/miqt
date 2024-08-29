@@ -87,6 +87,15 @@ func QThread_YieldCurrentThread() {
 	C.QThread_YieldCurrentThread()
 }
 
+func (this *QThread) SetPriority(priority uintptr) {
+	C.QThread_SetPriority(this.h, (C.uintptr_t)(priority))
+}
+
+func (this *QThread) Priority() uintptr {
+	ret := C.QThread_Priority(this.h)
+	return (uintptr)(ret)
+}
+
 func (this *QThread) IsFinished() bool {
 	ret := C.QThread_IsFinished(this.h)
 	return (bool)(ret)
@@ -136,6 +145,10 @@ func (this *QThread) Event(event *QEvent) bool {
 func (this *QThread) LoopLevel() int {
 	ret := C.QThread_LoopLevel(this.h)
 	return (int)(ret)
+}
+
+func (this *QThread) Start() {
+	C.QThread_Start(this.h)
 }
 
 func (this *QThread) Terminate() {
@@ -222,6 +235,10 @@ func QThread_TrUtf83(s string, c string, n int) string {
 
 func (this *QThread) Exit1(retcode int) {
 	C.QThread_Exit1(this.h, (C.int)(retcode))
+}
+
+func (this *QThread) Start1(param1 uintptr) {
+	C.QThread_Start1(this.h, (C.uintptr_t)(param1))
 }
 
 func (this *QThread) Wait1(deadline QDeadlineTimer) bool {

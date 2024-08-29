@@ -1,8 +1,7 @@
-#include "gen_qcontiguouscache.h"
+#include <QContiguousCacheData>
 #include "qcontiguouscache.h"
 
-#include <QContiguousCacheData>
-
+#include "gen_qcontiguouscache.h"
 
 extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);

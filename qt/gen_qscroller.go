@@ -78,6 +78,16 @@ func QScroller_ScrollerWithTarget(target *QObject) *QScroller {
 	return newQScroller_U(unsafe.Pointer(ret))
 }
 
+func QScroller_GrabGesture(target *QObject) uintptr {
+	ret := C.QScroller_GrabGesture(target.cPointer())
+	return (uintptr)(ret)
+}
+
+func QScroller_GrabbedGesture(target *QObject) uintptr {
+	ret := C.QScroller_GrabbedGesture(target.cPointer())
+	return (uintptr)(ret)
+}
+
 func QScroller_UngrabGesture(target *QObject) {
 	C.QScroller_UngrabGesture(target.cPointer())
 }
@@ -98,6 +108,16 @@ func QScroller_ActiveScrollers() []*QScroller {
 func (this *QScroller) Target() *QObject {
 	ret := C.QScroller_Target(this.h)
 	return newQObject_U(unsafe.Pointer(ret))
+}
+
+func (this *QScroller) State() uintptr {
+	ret := C.QScroller_State(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QScroller) HandleInput(input uintptr, position *QPointF) bool {
+	ret := C.QScroller_HandleInput(this.h, (C.uintptr_t)(input), position.cPointer())
+	return (bool)(ret)
 }
 
 func (this *QScroller) Stop() {
@@ -200,6 +220,18 @@ func (this *QScroller) ResendPrepareEvent() {
 	C.QScroller_ResendPrepareEvent(this.h)
 }
 
+func (this *QScroller) StateChanged(newstate uintptr) {
+	C.QScroller_StateChanged(this.h, (C.uintptr_t)(newstate))
+}
+
+func (this *QScroller) OnStateChanged(slot func()) {
+	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
+		slot()
+	}
+
+	C.QScroller_connect_StateChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+}
+
 func (this *QScroller) ScrollerPropertiesChanged(param1 *QScrollerProperties) {
 	C.QScroller_ScrollerPropertiesChanged(this.h, param1.cPointer())
 }
@@ -262,4 +294,14 @@ func QScroller_TrUtf83(s string, c string, n int) string {
 	ret := C.GoStringN(_out, _out_Strlen)
 	C.free(unsafe.Pointer(_out))
 	return ret
+}
+
+func QScroller_GrabGesture2(target *QObject, gestureType uintptr) uintptr {
+	ret := C.QScroller_GrabGesture2(target.cPointer(), (C.uintptr_t)(gestureType))
+	return (uintptr)(ret)
+}
+
+func (this *QScroller) HandleInput3(input uintptr, position *QPointF, timestamp int64) bool {
+	ret := C.QScroller_HandleInput3(this.h, (C.uintptr_t)(input), position.cPointer(), (C.longlong)(timestamp))
+	return (bool)(ret)
 }

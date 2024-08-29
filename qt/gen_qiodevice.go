@@ -63,6 +63,11 @@ func QIODevice_TrUtf8(s string) string {
 	return ret
 }
 
+func (this *QIODevice) OpenMode() int {
+	ret := C.QIODevice_OpenMode(this.h)
+	return (int)(ret)
+}
+
 func (this *QIODevice) SetTextModeEnabled(enabled bool) {
 	C.QIODevice_SetTextModeEnabled(this.h, (C.bool)(enabled))
 }
@@ -120,6 +125,11 @@ func (this *QIODevice) SetCurrentWriteChannel(channel int) {
 	C.QIODevice_SetCurrentWriteChannel(this.h, (C.int)(channel))
 }
 
+func (this *QIODevice) Open(mode int) bool {
+	ret := C.QIODevice_Open(this.h, (C.int)(mode))
+	return (bool)(ret)
+}
+
 func (this *QIODevice) Close() {
 	C.QIODevice_Close(this.h)
 }
@@ -135,7 +145,7 @@ func (this *QIODevice) Size() int64 {
 }
 
 func (this *QIODevice) Seek(pos int64) bool {
-	ret := C.QIODevice_Seek(this.h, (C.int64_t)(pos))
+	ret := C.QIODevice_Seek(this.h, (C.longlong)(pos))
 	return (bool)(ret)
 }
 
@@ -162,12 +172,12 @@ func (this *QIODevice) BytesToWrite() int64 {
 func (this *QIODevice) Read(data string, maxlen int64) int64 {
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
-	ret := C.QIODevice_Read(this.h, data_Cstring, (C.int64_t)(maxlen))
+	ret := C.QIODevice_Read(this.h, data_Cstring, (C.longlong)(maxlen))
 	return (int64)(ret)
 }
 
 func (this *QIODevice) ReadWithMaxlen(maxlen int64) *QByteArray {
-	ret := C.QIODevice_ReadWithMaxlen(this.h, (C.int64_t)(maxlen))
+	ret := C.QIODevice_ReadWithMaxlen(this.h, (C.longlong)(maxlen))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQByteArray(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QByteArray) {
@@ -191,7 +201,7 @@ func (this *QIODevice) ReadAll() *QByteArray {
 func (this *QIODevice) ReadLine(data string, maxlen int64) int64 {
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
-	ret := C.QIODevice_ReadLine(this.h, data_Cstring, (C.int64_t)(maxlen))
+	ret := C.QIODevice_ReadLine(this.h, data_Cstring, (C.longlong)(maxlen))
 	return (int64)(ret)
 }
 
@@ -231,7 +241,7 @@ func (this *QIODevice) IsTransactionStarted() bool {
 func (this *QIODevice) Write(data string, lenVal int64) int64 {
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
-	ret := C.QIODevice_Write(this.h, data_Cstring, (C.int64_t)(lenVal))
+	ret := C.QIODevice_Write(this.h, data_Cstring, (C.longlong)(lenVal))
 	return (int64)(ret)
 }
 
@@ -250,12 +260,12 @@ func (this *QIODevice) Write2(data *QByteArray) int64 {
 func (this *QIODevice) Peek(data string, maxlen int64) int64 {
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
-	ret := C.QIODevice_Peek(this.h, data_Cstring, (C.int64_t)(maxlen))
+	ret := C.QIODevice_Peek(this.h, data_Cstring, (C.longlong)(maxlen))
 	return (int64)(ret)
 }
 
 func (this *QIODevice) PeekWithMaxlen(maxlen int64) *QByteArray {
-	ret := C.QIODevice_PeekWithMaxlen(this.h, (C.int64_t)(maxlen))
+	ret := C.QIODevice_PeekWithMaxlen(this.h, (C.longlong)(maxlen))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQByteArray(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QByteArray) {
@@ -266,7 +276,7 @@ func (this *QIODevice) PeekWithMaxlen(maxlen int64) *QByteArray {
 }
 
 func (this *QIODevice) Skip(maxSize int64) int64 {
-	ret := C.QIODevice_Skip(this.h, (C.int64_t)(maxSize))
+	ret := C.QIODevice_Skip(this.h, (C.longlong)(maxSize))
 	return (int64)(ret)
 }
 
@@ -330,7 +340,7 @@ func (this *QIODevice) OnChannelReadyRead(slot func()) {
 }
 
 func (this *QIODevice) BytesWritten(bytes int64) {
-	C.QIODevice_BytesWritten(this.h, (C.int64_t)(bytes))
+	C.QIODevice_BytesWritten(this.h, (C.longlong)(bytes))
 }
 
 func (this *QIODevice) OnBytesWritten(slot func()) {
@@ -342,7 +352,7 @@ func (this *QIODevice) OnBytesWritten(slot func()) {
 }
 
 func (this *QIODevice) ChannelBytesWritten(channel int, bytes int64) {
-	C.QIODevice_ChannelBytesWritten(this.h, (C.int)(channel), (C.int64_t)(bytes))
+	C.QIODevice_ChannelBytesWritten(this.h, (C.int)(channel), (C.longlong)(bytes))
 }
 
 func (this *QIODevice) OnChannelBytesWritten(slot func()) {
@@ -430,7 +440,7 @@ func QIODevice_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QIODevice) ReadLine1(maxlen int64) *QByteArray {
-	ret := C.QIODevice_ReadLine1(this.h, (C.int64_t)(maxlen))
+	ret := C.QIODevice_ReadLine1(this.h, (C.longlong)(maxlen))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQByteArray(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QByteArray) {

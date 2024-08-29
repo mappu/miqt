@@ -97,6 +97,20 @@ func (this *QToolButton) MinimumSizeHint() *QSize {
 	return ret1
 }
 
+func (this *QToolButton) ToolButtonStyle() uintptr {
+	ret := C.QToolButton_ToolButtonStyle(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QToolButton) ArrowType() uintptr {
+	ret := C.QToolButton_ArrowType(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QToolButton) SetArrowType(typeVal uintptr) {
+	C.QToolButton_SetArrowType(this.h, (C.uintptr_t)(typeVal))
+}
+
 func (this *QToolButton) SetMenu(menu *QMenu) {
 	C.QToolButton_SetMenu(this.h, menu.cPointer())
 }
@@ -104,6 +118,15 @@ func (this *QToolButton) SetMenu(menu *QMenu) {
 func (this *QToolButton) Menu() *QMenu {
 	ret := C.QToolButton_Menu(this.h)
 	return newQMenu_U(unsafe.Pointer(ret))
+}
+
+func (this *QToolButton) SetPopupMode(mode uintptr) {
+	C.QToolButton_SetPopupMode(this.h, (C.uintptr_t)(mode))
+}
+
+func (this *QToolButton) PopupMode() uintptr {
+	ret := C.QToolButton_PopupMode(this.h)
+	return (uintptr)(ret)
 }
 
 func (this *QToolButton) DefaultAction() *QAction {
@@ -122,6 +145,10 @@ func (this *QToolButton) AutoRaise() bool {
 
 func (this *QToolButton) ShowMenu() {
 	C.QToolButton_ShowMenu(this.h)
+}
+
+func (this *QToolButton) SetToolButtonStyle(style uintptr) {
+	C.QToolButton_SetToolButtonStyle(this.h, (C.uintptr_t)(style))
 }
 
 func (this *QToolButton) SetDefaultAction(defaultAction *QAction) {

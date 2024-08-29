@@ -393,6 +393,28 @@ func (this *QTextFrame) ParentFrame() *QTextFrame {
 	return newQTextFrame_U(unsafe.Pointer(ret))
 }
 
+func (this *QTextFrame) Begin() *QTextFrame__iterator {
+	ret := C.QTextFrame_Begin(this.h)
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQTextFrame__iterator(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QTextFrame__iterator) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QTextFrame) End() *QTextFrame__iterator {
+	ret := C.QTextFrame_End(this.h)
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQTextFrame__iterator(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QTextFrame__iterator) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
 func QTextFrame_Tr2(s string, c string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
@@ -587,11 +609,29 @@ func (this *QTextBlock) CharFormatIndex() int {
 	return (int)(ret)
 }
 
+func (this *QTextBlock) TextDirection() uintptr {
+	ret := C.QTextBlock_TextDirection(this.h)
+	return (uintptr)(ret)
+}
+
 func (this *QTextBlock) Text() string {
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
 	C.QTextBlock_Text(this.h, &_out, &_out_Strlen)
 	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func (this *QTextBlock) TextFormats() []QTextLayout__FormatRange {
+	var _out **C.QTextLayout__FormatRange = nil
+	var _out_len C.size_t = 0
+	C.QTextBlock_TextFormats(this.h, &_out, &_out_len)
+	ret := make([]QTextLayout__FormatRange, int(_out_len))
+	_outCast := (*[0xffff]*C.QTextLayout__FormatRange)(unsafe.Pointer(_out)) // so fresh so clean
+	for i := 0; i < int(_out_len); i++ {
+		ret[i] = *newQTextLayout__FormatRange(_outCast[i])
+	}
 	C.free(unsafe.Pointer(_out))
 	return ret
 }
@@ -659,6 +699,28 @@ func (this *QTextBlock) SetLineCount(count int) {
 func (this *QTextBlock) LineCount() int {
 	ret := C.QTextBlock_LineCount(this.h)
 	return (int)(ret)
+}
+
+func (this *QTextBlock) Begin() *QTextBlock__iterator {
+	ret := C.QTextBlock_Begin(this.h)
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQTextBlock__iterator(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QTextBlock__iterator) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QTextBlock) End() *QTextBlock__iterator {
+	ret := C.QTextBlock_End(this.h)
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQTextBlock__iterator(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QTextBlock__iterator) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
 }
 
 func (this *QTextBlock) Next() *QTextBlock {
@@ -828,4 +890,180 @@ func (this *QTextFragment) GlyphRuns2(from int, length int) []QGlyphRun {
 
 func (this *QTextFragment) Delete() {
 	C.QTextFragment_Delete(this.h)
+}
+
+type QTextFrame__iterator struct {
+	h *C.QTextFrame__iterator
+}
+
+func (this *QTextFrame__iterator) cPointer() *C.QTextFrame__iterator {
+	if this == nil {
+		return nil
+	}
+	return this.h
+}
+
+func newQTextFrame__iterator(h *C.QTextFrame__iterator) *QTextFrame__iterator {
+	return &QTextFrame__iterator{h: h}
+}
+
+func newQTextFrame__iterator_U(h unsafe.Pointer) *QTextFrame__iterator {
+	return newQTextFrame__iterator((*C.QTextFrame__iterator)(h))
+}
+
+// NewQTextFrame__iterator constructs a new QTextFrame::iterator object.
+func NewQTextFrame__iterator() *QTextFrame__iterator {
+	ret := C.QTextFrame__iterator_new()
+	return newQTextFrame__iterator(ret)
+}
+
+// NewQTextFrame__iterator2 constructs a new QTextFrame::iterator object.
+func NewQTextFrame__iterator2(o *QTextFrame__iterator) *QTextFrame__iterator {
+	ret := C.QTextFrame__iterator_new2(o.cPointer())
+	return newQTextFrame__iterator(ret)
+}
+
+func (this *QTextFrame__iterator) ParentFrame() *QTextFrame {
+	ret := C.QTextFrame__iterator_ParentFrame(this.h)
+	return newQTextFrame_U(unsafe.Pointer(ret))
+}
+
+func (this *QTextFrame__iterator) CurrentFrame() *QTextFrame {
+	ret := C.QTextFrame__iterator_CurrentFrame(this.h)
+	return newQTextFrame_U(unsafe.Pointer(ret))
+}
+
+func (this *QTextFrame__iterator) CurrentBlock() *QTextBlock {
+	ret := C.QTextFrame__iterator_CurrentBlock(this.h)
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQTextBlock(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QTextBlock) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QTextFrame__iterator) AtEnd() bool {
+	ret := C.QTextFrame__iterator_AtEnd(this.h)
+	return (bool)(ret)
+}
+
+func (this *QTextFrame__iterator) OperatorEqual(o *QTextFrame__iterator) bool {
+	ret := C.QTextFrame__iterator_OperatorEqual(this.h, o.cPointer())
+	return (bool)(ret)
+}
+
+func (this *QTextFrame__iterator) OperatorNotEqual(o *QTextFrame__iterator) bool {
+	ret := C.QTextFrame__iterator_OperatorNotEqual(this.h, o.cPointer())
+	return (bool)(ret)
+}
+
+func (this *QTextFrame__iterator) OperatorPlusPlus(param1 int) *QTextFrame__iterator {
+	ret := C.QTextFrame__iterator_OperatorPlusPlus(this.h, (C.int)(param1))
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQTextFrame__iterator(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QTextFrame__iterator) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QTextFrame__iterator) OperatorMinusMinus(param1 int) *QTextFrame__iterator {
+	ret := C.QTextFrame__iterator_OperatorMinusMinus(this.h, (C.int)(param1))
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQTextFrame__iterator(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QTextFrame__iterator) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QTextFrame__iterator) Delete() {
+	C.QTextFrame__iterator_Delete(this.h)
+}
+
+type QTextBlock__iterator struct {
+	h *C.QTextBlock__iterator
+}
+
+func (this *QTextBlock__iterator) cPointer() *C.QTextBlock__iterator {
+	if this == nil {
+		return nil
+	}
+	return this.h
+}
+
+func newQTextBlock__iterator(h *C.QTextBlock__iterator) *QTextBlock__iterator {
+	return &QTextBlock__iterator{h: h}
+}
+
+func newQTextBlock__iterator_U(h unsafe.Pointer) *QTextBlock__iterator {
+	return newQTextBlock__iterator((*C.QTextBlock__iterator)(h))
+}
+
+// NewQTextBlock__iterator constructs a new QTextBlock::iterator object.
+func NewQTextBlock__iterator() *QTextBlock__iterator {
+	ret := C.QTextBlock__iterator_new()
+	return newQTextBlock__iterator(ret)
+}
+
+// NewQTextBlock__iterator2 constructs a new QTextBlock::iterator object.
+func NewQTextBlock__iterator2(o *QTextBlock__iterator) *QTextBlock__iterator {
+	ret := C.QTextBlock__iterator_new2(o.cPointer())
+	return newQTextBlock__iterator(ret)
+}
+
+func (this *QTextBlock__iterator) Fragment() *QTextFragment {
+	ret := C.QTextBlock__iterator_Fragment(this.h)
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQTextFragment(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QTextFragment) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QTextBlock__iterator) AtEnd() bool {
+	ret := C.QTextBlock__iterator_AtEnd(this.h)
+	return (bool)(ret)
+}
+
+func (this *QTextBlock__iterator) OperatorEqual(o *QTextBlock__iterator) bool {
+	ret := C.QTextBlock__iterator_OperatorEqual(this.h, o.cPointer())
+	return (bool)(ret)
+}
+
+func (this *QTextBlock__iterator) OperatorNotEqual(o *QTextBlock__iterator) bool {
+	ret := C.QTextBlock__iterator_OperatorNotEqual(this.h, o.cPointer())
+	return (bool)(ret)
+}
+
+func (this *QTextBlock__iterator) OperatorPlusPlus(param1 int) *QTextBlock__iterator {
+	ret := C.QTextBlock__iterator_OperatorPlusPlus(this.h, (C.int)(param1))
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQTextBlock__iterator(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QTextBlock__iterator) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QTextBlock__iterator) OperatorMinusMinus(param1 int) *QTextBlock__iterator {
+	ret := C.QTextBlock__iterator_OperatorMinusMinus(this.h, (C.int)(param1))
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQTextBlock__iterator(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QTextBlock__iterator) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QTextBlock__iterator) Delete() {
+	C.QTextBlock__iterator_Delete(this.h)
 }

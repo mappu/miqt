@@ -24,8 +24,8 @@ typedef struct QWidget QWidget;
 QStackedWidget* QStackedWidget_new();
 QStackedWidget* QStackedWidget_new2(QWidget* parent);
 QMetaObject* QStackedWidget_MetaObject(QStackedWidget* self);
-void QStackedWidget_Tr(char* s, char** _out, int* _out_Strlen);
-void QStackedWidget_TrUtf8(char* s, char** _out, int* _out_Strlen);
+void QStackedWidget_Tr(const char* s, char** _out, int* _out_Strlen);
+void QStackedWidget_TrUtf8(const char* s, char** _out, int* _out_Strlen);
 int QStackedWidget_AddWidget(QStackedWidget* self, QWidget* w);
 int QStackedWidget_InsertWidget(QStackedWidget* self, int index, QWidget* w);
 void QStackedWidget_RemoveWidget(QStackedWidget* self, QWidget* w);
@@ -40,10 +40,10 @@ void QStackedWidget_CurrentChanged(QStackedWidget* self, int param1);
 void QStackedWidget_connect_CurrentChanged(QStackedWidget* self, void* slot);
 void QStackedWidget_WidgetRemoved(QStackedWidget* self, int index);
 void QStackedWidget_connect_WidgetRemoved(QStackedWidget* self, void* slot);
-void QStackedWidget_Tr2(char* s, char* c, char** _out, int* _out_Strlen);
-void QStackedWidget_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen);
-void QStackedWidget_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen);
-void QStackedWidget_TrUtf83(char* s, char* c, int n, char** _out, int* _out_Strlen);
+void QStackedWidget_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
+void QStackedWidget_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+void QStackedWidget_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
+void QStackedWidget_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
 void QStackedWidget_Delete(QStackedWidget* self);
 
 #ifdef __cplusplus

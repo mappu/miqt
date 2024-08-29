@@ -16,6 +16,11 @@ class QMetaObject;
 class QTextCharFormat;
 class QTextCursor;
 class QTextDocument;
+#if defined(WORKAROUND_INNER_CLASS_DEFINITION_QTextFrame__iterator)
+typedef QTextFrame::iterator QTextFrame__iterator;
+#else
+class QTextFrame__iterator;
+#endif
 class QTextTable;
 class QTextTableCell;
 class QTextTableFormat;
@@ -24,6 +29,7 @@ typedef struct QMetaObject QMetaObject;
 typedef struct QTextCharFormat QTextCharFormat;
 typedef struct QTextCursor QTextCursor;
 typedef struct QTextDocument QTextDocument;
+typedef struct QTextFrame__iterator QTextFrame__iterator;
 typedef struct QTextTable QTextTable;
 typedef struct QTextTableCell QTextTableCell;
 typedef struct QTextTableFormat QTextTableFormat;
@@ -45,13 +51,15 @@ int QTextTableCell_FirstPosition(QTextTableCell* self);
 int QTextTableCell_LastPosition(QTextTableCell* self);
 bool QTextTableCell_OperatorEqual(QTextTableCell* self, QTextTableCell* other);
 bool QTextTableCell_OperatorNotEqual(QTextTableCell* self, QTextTableCell* other);
+QTextFrame__iterator* QTextTableCell_Begin(QTextTableCell* self);
+QTextFrame__iterator* QTextTableCell_End(QTextTableCell* self);
 int QTextTableCell_TableCellFormatIndex(QTextTableCell* self);
 void QTextTableCell_Delete(QTextTableCell* self);
 
 QTextTable* QTextTable_new(QTextDocument* doc);
 QMetaObject* QTextTable_MetaObject(QTextTable* self);
-void QTextTable_Tr(char* s, char** _out, int* _out_Strlen);
-void QTextTable_TrUtf8(char* s, char** _out, int* _out_Strlen);
+void QTextTable_Tr(const char* s, char** _out, int* _out_Strlen);
+void QTextTable_TrUtf8(const char* s, char** _out, int* _out_Strlen);
 void QTextTable_Resize(QTextTable* self, int rows, int cols);
 void QTextTable_InsertRows(QTextTable* self, int pos, int num);
 void QTextTable_InsertColumns(QTextTable* self, int pos, int num);
@@ -71,10 +79,10 @@ QTextCursor* QTextTable_RowStart(QTextTable* self, QTextCursor* c);
 QTextCursor* QTextTable_RowEnd(QTextTable* self, QTextCursor* c);
 void QTextTable_SetFormat(QTextTable* self, QTextTableFormat* format);
 QTextTableFormat* QTextTable_Format(QTextTable* self);
-void QTextTable_Tr2(char* s, char* c, char** _out, int* _out_Strlen);
-void QTextTable_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen);
-void QTextTable_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen);
-void QTextTable_TrUtf83(char* s, char* c, int n, char** _out, int* _out_Strlen);
+void QTextTable_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
+void QTextTable_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+void QTextTable_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
+void QTextTable_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
 void QTextTable_Delete(QTextTable* self);
 
 #ifdef __cplusplus

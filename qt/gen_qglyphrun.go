@@ -69,29 +69,29 @@ func (this *QGlyphRun) SetRawFont(rawFont *QRawFont) {
 	C.QGlyphRun_SetRawFont(this.h, rawFont.cPointer())
 }
 
-func (this *QGlyphRun) SetRawData(glyphIndexArray *uint32, glyphPositionArray *QPointF, size int) {
-	C.QGlyphRun_SetRawData(this.h, (*C.uint32_t)(unsafe.Pointer(glyphIndexArray)), glyphPositionArray.cPointer(), (C.int)(size))
+func (this *QGlyphRun) SetRawData(glyphIndexArray *uint, glyphPositionArray *QPointF, size int) {
+	C.QGlyphRun_SetRawData(this.h, (*C.uint)(unsafe.Pointer(glyphIndexArray)), glyphPositionArray.cPointer(), (C.int)(size))
 }
 
-func (this *QGlyphRun) GlyphIndexes() []uint32 {
-	var _out *C.uint32_t = nil
+func (this *QGlyphRun) GlyphIndexes() []uint {
+	var _out *C.uint = nil
 	var _out_len C.size_t = 0
 	C.QGlyphRun_GlyphIndexes(this.h, &_out, &_out_len)
-	ret := make([]uint32, int(_out_len))
-	_outCast := (*[0xffff]C.uint32_t)(unsafe.Pointer(_out)) // mrs jackson
+	ret := make([]uint, int(_out_len))
+	_outCast := (*[0xffff]C.uint)(unsafe.Pointer(_out)) // mrs jackson
 	for i := 0; i < int(_out_len); i++ {
-		ret[i] = (uint32)(_outCast[i])
+		ret[i] = (uint)(_outCast[i])
 	}
 	C.free(unsafe.Pointer(_out))
 	return ret
 }
 
-func (this *QGlyphRun) SetGlyphIndexes(glyphIndexes []uint32) {
+func (this *QGlyphRun) SetGlyphIndexes(glyphIndexes []uint) {
 	// For the C ABI, malloc a C array of raw pointers
-	glyphIndexes_CArray := (*[0xffff]C.uint32_t)(C.malloc(C.ulong(8 * len(glyphIndexes))))
+	glyphIndexes_CArray := (*[0xffff]C.uint)(C.malloc(C.ulong(8 * len(glyphIndexes))))
 	defer C.free(unsafe.Pointer(glyphIndexes_CArray))
 	for i := range glyphIndexes {
-		glyphIndexes_CArray[i] = (C.uint32_t)(glyphIndexes[i])
+		glyphIndexes_CArray[i] = (C.uint)(glyphIndexes[i])
 	}
 	C.QGlyphRun_SetGlyphIndexes(this.h, &glyphIndexes_CArray[0], C.ulong(len(glyphIndexes)))
 }
@@ -169,6 +169,19 @@ func (this *QGlyphRun) IsRightToLeft() bool {
 	return (bool)(ret)
 }
 
+func (this *QGlyphRun) SetFlag(flag uintptr) {
+	C.QGlyphRun_SetFlag(this.h, (C.uintptr_t)(flag))
+}
+
+func (this *QGlyphRun) SetFlags(flags int) {
+	C.QGlyphRun_SetFlags(this.h, (C.int)(flags))
+}
+
+func (this *QGlyphRun) Flags() int {
+	ret := C.QGlyphRun_Flags(this.h)
+	return (int)(ret)
+}
+
 func (this *QGlyphRun) SetBoundingRect(boundingRect *QRectF) {
 	C.QGlyphRun_SetBoundingRect(this.h, boundingRect.cPointer())
 }
@@ -187,6 +200,10 @@ func (this *QGlyphRun) BoundingRect() *QRectF {
 func (this *QGlyphRun) IsEmpty() bool {
 	ret := C.QGlyphRun_IsEmpty(this.h)
 	return (bool)(ret)
+}
+
+func (this *QGlyphRun) SetFlag2(flag uintptr, enabled bool) {
+	C.QGlyphRun_SetFlag2(this.h, (C.uintptr_t)(flag), (C.bool)(enabled))
 }
 
 func (this *QGlyphRun) Delete() {

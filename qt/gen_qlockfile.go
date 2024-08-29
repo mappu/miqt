@@ -74,6 +74,11 @@ func (this *QLockFile) RemoveStaleLockFile() bool {
 	return (bool)(ret)
 }
 
+func (this *QLockFile) Error() uintptr {
+	ret := C.QLockFile_Error(this.h)
+	return (uintptr)(ret)
+}
+
 func (this *QLockFile) TryLock1(timeout int) bool {
 	ret := C.QLockFile_TryLock1(this.h, (C.int)(timeout))
 	return (bool)(ret)

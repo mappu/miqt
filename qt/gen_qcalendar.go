@@ -40,6 +40,12 @@ func NewQCalendar() *QCalendar {
 	return newQCalendar(ret)
 }
 
+// NewQCalendar2 constructs a new QCalendar object.
+func NewQCalendar2(system uintptr) *QCalendar {
+	ret := C.QCalendar_new2((C.uintptr_t)(system))
+	return newQCalendar(ret)
+}
+
 func (this *QCalendar) IsValid() bool {
 	ret := C.QCalendar_IsValid(this.h)
 	return (bool)(ret)
@@ -135,9 +141,67 @@ func (this *QCalendar) DateFromParts(year int, month int, day int) *QDate {
 	return ret1
 }
 
+func (this *QCalendar) DateFromPartsWithParts(parts *QCalendar__YearMonthDay) *QDate {
+	ret := C.QCalendar_DateFromPartsWithParts(this.h, parts.cPointer())
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQDate(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QDate) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QCalendar) PartsFromDate(date QDate) *QCalendar__YearMonthDay {
+	ret := C.QCalendar_PartsFromDate(this.h, date.cPointer())
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQCalendar__YearMonthDay(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QCalendar__YearMonthDay) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
 func (this *QCalendar) DayOfWeek(date QDate) int {
 	ret := C.QCalendar_DayOfWeek(this.h, date.cPointer())
 	return (int)(ret)
+}
+
+func (this *QCalendar) MonthName(locale *QLocale, month int) string {
+	var _out *C.char = nil
+	var _out_Strlen C.int = 0
+	C.QCalendar_MonthName(this.h, locale.cPointer(), (C.int)(month), &_out, &_out_Strlen)
+	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func (this *QCalendar) StandaloneMonthName(locale *QLocale, month int) string {
+	var _out *C.char = nil
+	var _out_Strlen C.int = 0
+	C.QCalendar_StandaloneMonthName(this.h, locale.cPointer(), (C.int)(month), &_out, &_out_Strlen)
+	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func (this *QCalendar) WeekDayName(locale *QLocale, day int) string {
+	var _out *C.char = nil
+	var _out_Strlen C.int = 0
+	C.QCalendar_WeekDayName(this.h, locale.cPointer(), (C.int)(day), &_out, &_out_Strlen)
+	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func (this *QCalendar) StandaloneWeekDayName(locale *QLocale, day int) string {
+	var _out *C.char = nil
+	var _out_Strlen C.int = 0
+	C.QCalendar_StandaloneWeekDayName(this.h, locale.cPointer(), (C.int)(day), &_out, &_out_Strlen)
+	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
 }
 
 func QCalendar_AvailableCalendars() []string {
@@ -160,6 +224,112 @@ func (this *QCalendar) DaysInMonth2(month int, year int) int {
 	return (int)(ret)
 }
 
+func (this *QCalendar) MonthName3(locale *QLocale, month int, year int) string {
+	var _out *C.char = nil
+	var _out_Strlen C.int = 0
+	C.QCalendar_MonthName3(this.h, locale.cPointer(), (C.int)(month), (C.int)(year), &_out, &_out_Strlen)
+	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func (this *QCalendar) MonthName4(locale *QLocale, month int, year int, format uintptr) string {
+	var _out *C.char = nil
+	var _out_Strlen C.int = 0
+	C.QCalendar_MonthName4(this.h, locale.cPointer(), (C.int)(month), (C.int)(year), (C.uintptr_t)(format), &_out, &_out_Strlen)
+	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func (this *QCalendar) StandaloneMonthName3(locale *QLocale, month int, year int) string {
+	var _out *C.char = nil
+	var _out_Strlen C.int = 0
+	C.QCalendar_StandaloneMonthName3(this.h, locale.cPointer(), (C.int)(month), (C.int)(year), &_out, &_out_Strlen)
+	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func (this *QCalendar) StandaloneMonthName4(locale *QLocale, month int, year int, format uintptr) string {
+	var _out *C.char = nil
+	var _out_Strlen C.int = 0
+	C.QCalendar_StandaloneMonthName4(this.h, locale.cPointer(), (C.int)(month), (C.int)(year), (C.uintptr_t)(format), &_out, &_out_Strlen)
+	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func (this *QCalendar) WeekDayName3(locale *QLocale, day int, format uintptr) string {
+	var _out *C.char = nil
+	var _out_Strlen C.int = 0
+	C.QCalendar_WeekDayName3(this.h, locale.cPointer(), (C.int)(day), (C.uintptr_t)(format), &_out, &_out_Strlen)
+	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func (this *QCalendar) StandaloneWeekDayName3(locale *QLocale, day int, format uintptr) string {
+	var _out *C.char = nil
+	var _out_Strlen C.int = 0
+	C.QCalendar_StandaloneWeekDayName3(this.h, locale.cPointer(), (C.int)(day), (C.uintptr_t)(format), &_out, &_out_Strlen)
+	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
 func (this *QCalendar) Delete() {
 	C.QCalendar_Delete(this.h)
+}
+
+type QCalendar__YearMonthDay struct {
+	h *C.QCalendar__YearMonthDay
+}
+
+func (this *QCalendar__YearMonthDay) cPointer() *C.QCalendar__YearMonthDay {
+	if this == nil {
+		return nil
+	}
+	return this.h
+}
+
+func newQCalendar__YearMonthDay(h *C.QCalendar__YearMonthDay) *QCalendar__YearMonthDay {
+	return &QCalendar__YearMonthDay{h: h}
+}
+
+func newQCalendar__YearMonthDay_U(h unsafe.Pointer) *QCalendar__YearMonthDay {
+	return newQCalendar__YearMonthDay((*C.QCalendar__YearMonthDay)(h))
+}
+
+// NewQCalendar__YearMonthDay constructs a new QCalendar::YearMonthDay object.
+func NewQCalendar__YearMonthDay() *QCalendar__YearMonthDay {
+	ret := C.QCalendar__YearMonthDay_new()
+	return newQCalendar__YearMonthDay(ret)
+}
+
+// NewQCalendar__YearMonthDay2 constructs a new QCalendar::YearMonthDay object.
+func NewQCalendar__YearMonthDay2(y int) *QCalendar__YearMonthDay {
+	ret := C.QCalendar__YearMonthDay_new2((C.int)(y))
+	return newQCalendar__YearMonthDay(ret)
+}
+
+// NewQCalendar__YearMonthDay3 constructs a new QCalendar::YearMonthDay object.
+func NewQCalendar__YearMonthDay3(y int, m int) *QCalendar__YearMonthDay {
+	ret := C.QCalendar__YearMonthDay_new3((C.int)(y), (C.int)(m))
+	return newQCalendar__YearMonthDay(ret)
+}
+
+// NewQCalendar__YearMonthDay4 constructs a new QCalendar::YearMonthDay object.
+func NewQCalendar__YearMonthDay4(y int, m int, d int) *QCalendar__YearMonthDay {
+	ret := C.QCalendar__YearMonthDay_new4((C.int)(y), (C.int)(m), (C.int)(d))
+	return newQCalendar__YearMonthDay(ret)
+}
+
+func (this *QCalendar__YearMonthDay) IsValid() bool {
+	ret := C.QCalendar__YearMonthDay_IsValid(this.h)
+	return (bool)(ret)
+}
+
+func (this *QCalendar__YearMonthDay) Delete() {
+	C.QCalendar__YearMonthDay_Delete(this.h)
 }

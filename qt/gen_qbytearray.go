@@ -90,22 +90,28 @@ func NewQByteArray3(size int, c byte) *QByteArray {
 }
 
 // NewQByteArray4 constructs a new QByteArray object.
-func NewQByteArray4(param1 *QByteArray) *QByteArray {
-	ret := C.QByteArray_new4(param1.cPointer())
+func NewQByteArray4(size int, param2 uintptr) *QByteArray {
+	ret := C.QByteArray_new4((C.int)(size), (C.uintptr_t)(param2))
 	return newQByteArray(ret)
 }
 
 // NewQByteArray5 constructs a new QByteArray object.
-func NewQByteArray5(dd QByteArrayDataPtr) *QByteArray {
-	ret := C.QByteArray_new5(dd.cPointer())
+func NewQByteArray5(param1 *QByteArray) *QByteArray {
+	ret := C.QByteArray_new5(param1.cPointer())
 	return newQByteArray(ret)
 }
 
 // NewQByteArray6 constructs a new QByteArray object.
-func NewQByteArray6(param1 string, size int) *QByteArray {
+func NewQByteArray6(dd QByteArrayDataPtr) *QByteArray {
+	ret := C.QByteArray_new6(dd.cPointer())
+	return newQByteArray(ret)
+}
+
+// NewQByteArray7 constructs a new QByteArray object.
+func NewQByteArray7(param1 string, size int) *QByteArray {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	ret := C.QByteArray_new6(param1_Cstring, (C.int)(size))
+	ret := C.QByteArray_new7(param1_Cstring, (C.int)(size))
 	return newQByteArray(ret)
 }
 
@@ -322,6 +328,18 @@ func (this *QByteArray) CountWithChar(a string) int {
 
 func (this *QByteArray) CountWithQByteArray(a *QByteArray) int {
 	ret := C.QByteArray_CountWithQByteArray(this.h, a.cPointer())
+	return (int)(ret)
+}
+
+func (this *QByteArray) Compare(c string) int {
+	c_Cstring := C.CString(c)
+	defer C.free(unsafe.Pointer(c_Cstring))
+	ret := C.QByteArray_Compare(this.h, c_Cstring)
+	return (int)(ret)
+}
+
+func (this *QByteArray) CompareWithQByteArray(a *QByteArray) int {
+	ret := C.QByteArray_CompareWithQByteArray(this.h, a.cPointer())
 	return (int)(ret)
 }
 
@@ -843,8 +861,19 @@ func (this *QByteArray) ToDouble() float64 {
 	return (float64)(ret)
 }
 
-func (this *QByteArray) ToBase64() *QByteArray {
-	ret := C.QByteArray_ToBase64(this.h)
+func (this *QByteArray) ToBase64(options int) *QByteArray {
+	ret := C.QByteArray_ToBase64(this.h, (C.int)(options))
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQByteArray(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QByteArray) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QByteArray) ToBase642() *QByteArray {
+	ret := C.QByteArray_ToBase642(this.h)
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQByteArray(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QByteArray) {
@@ -1002,8 +1031,30 @@ func QByteArray_FromRawData(param1 string, size int) *QByteArray {
 	return ret1
 }
 
-func QByteArray_FromBase64(base64 *QByteArray) *QByteArray {
-	ret := C.QByteArray_FromBase64(base64.cPointer())
+func QByteArray_FromBase64Encoding(base64 *QByteArray) *QByteArray__FromBase64Result {
+	ret := C.QByteArray_FromBase64Encoding(base64.cPointer())
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQByteArray__FromBase64Result(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QByteArray__FromBase64Result) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func QByteArray_FromBase64(base64 *QByteArray, options int) *QByteArray {
+	ret := C.QByteArray_FromBase64(base64.cPointer(), (C.int)(options))
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQByteArray(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QByteArray) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func QByteArray_FromBase64WithBase64(base64 *QByteArray) *QByteArray {
+	ret := C.QByteArray_FromBase64WithBase64(base64.cPointer())
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQByteArray(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QByteArray) {
@@ -1033,6 +1084,46 @@ func QByteArray_FromPercentEncoding(pctEncoded *QByteArray) *QByteArray {
 		runtime.KeepAlive(ret2.h)
 	})
 	return ret1
+}
+
+func (this *QByteArray) Begin() unsafe.Pointer {
+	ret := C.QByteArray_Begin(this.h)
+	return (unsafe.Pointer)(ret)
+}
+
+func (this *QByteArray) Begin2() unsafe.Pointer {
+	ret := C.QByteArray_Begin2(this.h)
+	return (unsafe.Pointer)(ret)
+}
+
+func (this *QByteArray) Cbegin() unsafe.Pointer {
+	ret := C.QByteArray_Cbegin(this.h)
+	return (unsafe.Pointer)(ret)
+}
+
+func (this *QByteArray) ConstBegin() unsafe.Pointer {
+	ret := C.QByteArray_ConstBegin(this.h)
+	return (unsafe.Pointer)(ret)
+}
+
+func (this *QByteArray) End() unsafe.Pointer {
+	ret := C.QByteArray_End(this.h)
+	return (unsafe.Pointer)(ret)
+}
+
+func (this *QByteArray) End2() unsafe.Pointer {
+	ret := C.QByteArray_End2(this.h)
+	return (unsafe.Pointer)(ret)
+}
+
+func (this *QByteArray) Cend() unsafe.Pointer {
+	ret := C.QByteArray_Cend(this.h)
+	return (unsafe.Pointer)(ret)
+}
+
+func (this *QByteArray) ConstEnd() unsafe.Pointer {
+	ret := C.QByteArray_ConstEnd(this.h)
+	return (unsafe.Pointer)(ret)
 }
 
 func (this *QByteArray) PushBack(c byte) {
@@ -1118,6 +1209,18 @@ func (this *QByteArray) LastIndexOf22(c string, from int) int {
 
 func (this *QByteArray) LastIndexOf23(a *QByteArray, from int) int {
 	ret := C.QByteArray_LastIndexOf23(this.h, a.cPointer(), (C.int)(from))
+	return (int)(ret)
+}
+
+func (this *QByteArray) Compare2(c string, cs uintptr) int {
+	c_Cstring := C.CString(c)
+	defer C.free(unsafe.Pointer(c_Cstring))
+	ret := C.QByteArray_Compare2(this.h, c_Cstring, (C.uintptr_t)(cs))
+	return (int)(ret)
+}
+
+func (this *QByteArray) Compare22(a *QByteArray, cs uintptr) int {
+	ret := C.QByteArray_Compare22(this.h, a.cPointer(), (C.uintptr_t)(cs))
 	return (int)(ret)
 }
 
@@ -1429,6 +1532,17 @@ func QByteArray_Number3(param1 float64, f byte, prec int) *QByteArray {
 	return ret1
 }
 
+func QByteArray_FromBase64Encoding2(base64 *QByteArray, options int) *QByteArray__FromBase64Result {
+	ret := C.QByteArray_FromBase64Encoding2(base64.cPointer(), (C.int)(options))
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQByteArray__FromBase64Result(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QByteArray__FromBase64Result) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
 func QByteArray_FromPercentEncoding2(pctEncoded *QByteArray, percent byte) *QByteArray {
 	ret := C.QByteArray_FromPercentEncoding2(pctEncoded.cPointer(), (C.char)(percent))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1509,4 +1623,47 @@ func (this *QByteRef) OperatorLesserOrEqual(c byte) bool {
 
 func (this *QByteRef) Delete() {
 	C.QByteRef_Delete(this.h)
+}
+
+type QByteArray__FromBase64Result struct {
+	h *C.QByteArray__FromBase64Result
+}
+
+func (this *QByteArray__FromBase64Result) cPointer() *C.QByteArray__FromBase64Result {
+	if this == nil {
+		return nil
+	}
+	return this.h
+}
+
+func newQByteArray__FromBase64Result(h *C.QByteArray__FromBase64Result) *QByteArray__FromBase64Result {
+	return &QByteArray__FromBase64Result{h: h}
+}
+
+func newQByteArray__FromBase64Result_U(h unsafe.Pointer) *QByteArray__FromBase64Result {
+	return newQByteArray__FromBase64Result((*C.QByteArray__FromBase64Result)(h))
+}
+
+// NewQByteArray__FromBase64Result constructs a new QByteArray::FromBase64Result object.
+func NewQByteArray__FromBase64Result(param1 *QByteArray__FromBase64Result) *QByteArray__FromBase64Result {
+	ret := C.QByteArray__FromBase64Result_new(param1.cPointer())
+	return newQByteArray__FromBase64Result(ret)
+}
+
+func (this *QByteArray__FromBase64Result) Swap(other *QByteArray__FromBase64Result) {
+	C.QByteArray__FromBase64Result_Swap(this.h, other.cPointer())
+}
+
+func (this *QByteArray__FromBase64Result) OperatorMultiply() *QByteArray {
+	ret := C.QByteArray__FromBase64Result_OperatorMultiply(this.h)
+	return newQByteArray_U(unsafe.Pointer(ret))
+}
+
+func (this *QByteArray__FromBase64Result) OperatorMultiply2() *QByteArray {
+	ret := C.QByteArray__FromBase64Result_OperatorMultiply2(this.h)
+	return newQByteArray_U(unsafe.Pointer(ret))
+}
+
+func (this *QByteArray__FromBase64Result) Delete() {
+	C.QByteArray__FromBase64Result_Delete(this.h)
 }

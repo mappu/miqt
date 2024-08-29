@@ -199,6 +199,15 @@ func (this *QFont) SetBold(bold bool) {
 	C.QFont_SetBold(this.h, (C.bool)(bold))
 }
 
+func (this *QFont) SetStyle(style uintptr) {
+	C.QFont_SetStyle(this.h, (C.uintptr_t)(style))
+}
+
+func (this *QFont) Style() uintptr {
+	ret := C.QFont_Style(this.h)
+	return (uintptr)(ret)
+}
+
 func (this *QFont) Italic() bool {
 	ret := C.QFont_Italic(this.h)
 	return (bool)(ret)
@@ -253,6 +262,24 @@ func (this *QFont) SetKerning(kerning bool) {
 	C.QFont_SetKerning(this.h, (C.bool)(kerning))
 }
 
+func (this *QFont) StyleHint() uintptr {
+	ret := C.QFont_StyleHint(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QFont) StyleStrategy() uintptr {
+	ret := C.QFont_StyleStrategy(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QFont) SetStyleHint(param1 uintptr) {
+	C.QFont_SetStyleHint(this.h, (C.uintptr_t)(param1))
+}
+
+func (this *QFont) SetStyleStrategy(s uintptr) {
+	C.QFont_SetStyleStrategy(this.h, (C.uintptr_t)(s))
+}
+
 func (this *QFont) Stretch() int {
 	ret := C.QFont_Stretch(this.h)
 	return (int)(ret)
@@ -267,6 +294,15 @@ func (this *QFont) LetterSpacing() float64 {
 	return (float64)(ret)
 }
 
+func (this *QFont) LetterSpacingType() uintptr {
+	ret := C.QFont_LetterSpacingType(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QFont) SetLetterSpacing(typeVal uintptr, spacing float64) {
+	C.QFont_SetLetterSpacing(this.h, (C.uintptr_t)(typeVal), (C.double)(spacing))
+}
+
 func (this *QFont) WordSpacing() float64 {
 	ret := C.QFont_WordSpacing(this.h)
 	return (float64)(ret)
@@ -274,6 +310,24 @@ func (this *QFont) WordSpacing() float64 {
 
 func (this *QFont) SetWordSpacing(spacing float64) {
 	C.QFont_SetWordSpacing(this.h, (C.double)(spacing))
+}
+
+func (this *QFont) SetCapitalization(capitalization uintptr) {
+	C.QFont_SetCapitalization(this.h, (C.uintptr_t)(capitalization))
+}
+
+func (this *QFont) Capitalization() uintptr {
+	ret := C.QFont_Capitalization(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QFont) SetHintingPreference(hintingPreference uintptr) {
+	C.QFont_SetHintingPreference(this.h, (C.uintptr_t)(hintingPreference))
+}
+
+func (this *QFont) HintingPreference() uintptr {
+	ret := C.QFont_HintingPreference(this.h)
+	return (uintptr)(ret)
 }
 
 func (this *QFont) RawMode() bool {
@@ -485,6 +539,10 @@ func (this *QFont) Resolve2() uint {
 
 func (this *QFont) ResolveWithMask(mask uint) {
 	C.QFont_ResolveWithMask(this.h, (C.uint)(mask))
+}
+
+func (this *QFont) SetStyleHint2(param1 uintptr, param2 uintptr) {
+	C.QFont_SetStyleHint2(this.h, (C.uintptr_t)(param1), (C.uintptr_t)(param2))
 }
 
 func (this *QFont) Delete() {

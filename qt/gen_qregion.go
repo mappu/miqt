@@ -41,14 +41,38 @@ func NewQRegion() *QRegion {
 }
 
 // NewQRegion2 constructs a new QRegion object.
-func NewQRegion2(region *QRegion) *QRegion {
-	ret := C.QRegion_new2(region.cPointer())
+func NewQRegion2(x int, y int, w int, h int) *QRegion {
+	ret := C.QRegion_new2((C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h))
 	return newQRegion(ret)
 }
 
 // NewQRegion3 constructs a new QRegion object.
-func NewQRegion3(bitmap *QBitmap) *QRegion {
-	ret := C.QRegion_new3(bitmap.cPointer())
+func NewQRegion3(r *QRect) *QRegion {
+	ret := C.QRegion_new3(r.cPointer())
+	return newQRegion(ret)
+}
+
+// NewQRegion4 constructs a new QRegion object.
+func NewQRegion4(region *QRegion) *QRegion {
+	ret := C.QRegion_new4(region.cPointer())
+	return newQRegion(ret)
+}
+
+// NewQRegion5 constructs a new QRegion object.
+func NewQRegion5(bitmap *QBitmap) *QRegion {
+	ret := C.QRegion_new5(bitmap.cPointer())
+	return newQRegion(ret)
+}
+
+// NewQRegion6 constructs a new QRegion object.
+func NewQRegion6(x int, y int, w int, h int, t uintptr) *QRegion {
+	ret := C.QRegion_new6((C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), (C.uintptr_t)(t))
+	return newQRegion(ret)
+}
+
+// NewQRegion7 constructs a new QRegion object.
+func NewQRegion7(r *QRect, t uintptr) *QRegion {
+	ret := C.QRegion_new7(r.cPointer(), (C.uintptr_t)(t))
 	return newQRegion(ret)
 }
 
@@ -68,6 +92,26 @@ func (this *QRegion) IsEmpty() bool {
 func (this *QRegion) IsNull() bool {
 	ret := C.QRegion_IsNull(this.h)
 	return (bool)(ret)
+}
+
+func (this *QRegion) Begin() *QRect {
+	ret := C.QRegion_Begin(this.h)
+	return newQRect_U(unsafe.Pointer(ret))
+}
+
+func (this *QRegion) Cbegin() *QRect {
+	ret := C.QRegion_Cbegin(this.h)
+	return newQRect_U(unsafe.Pointer(ret))
+}
+
+func (this *QRegion) End() *QRect {
+	ret := C.QRegion_End(this.h)
+	return newQRect_U(unsafe.Pointer(ret))
+}
+
+func (this *QRegion) Cend() *QRect {
+	ret := C.QRegion_Cend(this.h)
+	return newQRect_U(unsafe.Pointer(ret))
 }
 
 func (this *QRegion) Contains(p *QPoint) bool {

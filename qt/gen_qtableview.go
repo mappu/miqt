@@ -178,6 +178,15 @@ func (this *QTableView) ShowGrid() bool {
 	return (bool)(ret)
 }
 
+func (this *QTableView) GridStyle() uintptr {
+	ret := C.QTableView_GridStyle(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QTableView) SetGridStyle(style uintptr) {
+	C.QTableView_SetGridStyle(this.h, (C.uintptr_t)(style))
+}
+
 func (this *QTableView) SetWordWrap(on bool) {
 	C.QTableView_SetWordWrap(this.h, (C.bool)(on))
 }
@@ -205,6 +214,10 @@ func (this *QTableView) VisualRect(index *QModelIndex) *QRect {
 		runtime.KeepAlive(ret2.h)
 	})
 	return ret1
+}
+
+func (this *QTableView) ScrollTo(index *QModelIndex) {
+	C.QTableView_ScrollTo(this.h, index.cPointer())
 }
 
 func (this *QTableView) IndexAt(p *QPoint) *QModelIndex {
@@ -280,6 +293,10 @@ func (this *QTableView) SortByColumn(column int) {
 	C.QTableView_SortByColumn(this.h, (C.int)(column))
 }
 
+func (this *QTableView) SortByColumn2(column int, order uintptr) {
+	C.QTableView_SortByColumn2(this.h, (C.int)(column), (C.uintptr_t)(order))
+}
+
 func (this *QTableView) SetShowGrid(show bool) {
 	C.QTableView_SetShowGrid(this.h, (C.bool)(show))
 }
@@ -334,6 +351,10 @@ func QTableView_TrUtf83(s string, c string, n int) string {
 	ret := C.GoStringN(_out, _out_Strlen)
 	C.free(unsafe.Pointer(_out))
 	return ret
+}
+
+func (this *QTableView) ScrollTo2(index *QModelIndex, hint uintptr) {
+	C.QTableView_ScrollTo2(this.h, index.cPointer(), (C.uintptr_t)(hint))
 }
 
 func (this *QTableView) Delete() {

@@ -74,6 +74,42 @@ func QFormLayout_TrUtf8(s string) string {
 	return ret
 }
 
+func (this *QFormLayout) SetFieldGrowthPolicy(policy uintptr) {
+	C.QFormLayout_SetFieldGrowthPolicy(this.h, (C.uintptr_t)(policy))
+}
+
+func (this *QFormLayout) FieldGrowthPolicy() uintptr {
+	ret := C.QFormLayout_FieldGrowthPolicy(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QFormLayout) SetRowWrapPolicy(policy int) {
+	C.QFormLayout_SetRowWrapPolicy(this.h, (C.int)(policy))
+}
+
+func (this *QFormLayout) RowWrapPolicy() int {
+	ret := C.QFormLayout_RowWrapPolicy(this.h)
+	return (int)(ret)
+}
+
+func (this *QFormLayout) SetLabelAlignment(alignment int) {
+	C.QFormLayout_SetLabelAlignment(this.h, (C.int)(alignment))
+}
+
+func (this *QFormLayout) LabelAlignment() int {
+	ret := C.QFormLayout_LabelAlignment(this.h)
+	return (int)(ret)
+}
+
+func (this *QFormLayout) SetFormAlignment(alignment int) {
+	C.QFormLayout_SetFormAlignment(this.h, (C.int)(alignment))
+}
+
+func (this *QFormLayout) FormAlignment() int {
+	ret := C.QFormLayout_FormAlignment(this.h)
+	return (int)(ret)
+}
+
 func (this *QFormLayout) SetHorizontalSpacing(spacing int) {
 	C.QFormLayout_SetHorizontalSpacing(this.h, (C.int)(spacing))
 }
@@ -169,6 +205,56 @@ func (this *QFormLayout) RemoveRowWithLayout(layout *QLayout) {
 	C.QFormLayout_RemoveRowWithLayout(this.h, layout.cPointer())
 }
 
+func (this *QFormLayout) TakeRow(row int) *QFormLayout__TakeRowResult {
+	ret := C.QFormLayout_TakeRow(this.h, (C.int)(row))
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQFormLayout__TakeRowResult(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QFormLayout__TakeRowResult) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QFormLayout) TakeRowWithWidget(widget *QWidget) *QFormLayout__TakeRowResult {
+	ret := C.QFormLayout_TakeRowWithWidget(this.h, widget.cPointer())
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQFormLayout__TakeRowResult(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QFormLayout__TakeRowResult) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QFormLayout) TakeRowWithLayout(layout *QLayout) *QFormLayout__TakeRowResult {
+	ret := C.QFormLayout_TakeRowWithLayout(this.h, layout.cPointer())
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQFormLayout__TakeRowResult(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QFormLayout__TakeRowResult) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QFormLayout) SetItem(row int, role int, item *QLayoutItem) {
+	C.QFormLayout_SetItem(this.h, (C.int)(row), (C.int)(role), item.cPointer())
+}
+
+func (this *QFormLayout) SetWidget(row int, role int, widget *QWidget) {
+	C.QFormLayout_SetWidget(this.h, (C.int)(row), (C.int)(role), widget.cPointer())
+}
+
+func (this *QFormLayout) SetLayout(row int, role int, layout *QLayout) {
+	C.QFormLayout_SetLayout(this.h, (C.int)(row), (C.int)(role), layout.cPointer())
+}
+
+func (this *QFormLayout) ItemAt(row int, role int) *QLayoutItem {
+	ret := C.QFormLayout_ItemAt(this.h, (C.int)(row), (C.int)(role))
+	return newQLayoutItem_U(unsafe.Pointer(ret))
+}
+
 func (this *QFormLayout) LabelForField(field *QWidget) *QWidget {
 	ret := C.QFormLayout_LabelForField(this.h, field.cPointer())
 	return newQWidget_U(unsafe.Pointer(ret))
@@ -183,8 +269,8 @@ func (this *QFormLayout) AddItem(item *QLayoutItem) {
 	C.QFormLayout_AddItem(this.h, item.cPointer())
 }
 
-func (this *QFormLayout) ItemAt(index int) *QLayoutItem {
-	ret := C.QFormLayout_ItemAt(this.h, (C.int)(index))
+func (this *QFormLayout) ItemAtWithIndex(index int) *QLayoutItem {
+	ret := C.QFormLayout_ItemAtWithIndex(this.h, (C.int)(index))
 	return newQLayoutItem_U(unsafe.Pointer(ret))
 }
 
@@ -230,6 +316,11 @@ func (this *QFormLayout) HasHeightForWidth() bool {
 
 func (this *QFormLayout) HeightForWidth(width int) int {
 	ret := C.QFormLayout_HeightForWidth(this.h, (C.int)(width))
+	return (int)(ret)
+}
+
+func (this *QFormLayout) ExpandingDirections() int {
+	ret := C.QFormLayout_ExpandingDirections(this.h)
 	return (int)(ret)
 }
 
@@ -297,4 +388,27 @@ func QFormLayout_TrUtf83(s string, c string, n int) string {
 
 func (this *QFormLayout) Delete() {
 	C.QFormLayout_Delete(this.h)
+}
+
+type QFormLayout__TakeRowResult struct {
+	h *C.QFormLayout__TakeRowResult
+}
+
+func (this *QFormLayout__TakeRowResult) cPointer() *C.QFormLayout__TakeRowResult {
+	if this == nil {
+		return nil
+	}
+	return this.h
+}
+
+func newQFormLayout__TakeRowResult(h *C.QFormLayout__TakeRowResult) *QFormLayout__TakeRowResult {
+	return &QFormLayout__TakeRowResult{h: h}
+}
+
+func newQFormLayout__TakeRowResult_U(h unsafe.Pointer) *QFormLayout__TakeRowResult {
+	return newQFormLayout__TakeRowResult((*C.QFormLayout__TakeRowResult)(h))
+}
+
+func (this *QFormLayout__TakeRowResult) Delete() {
+	C.QFormLayout__TakeRowResult_Delete(this.h)
 }

@@ -1,12 +1,13 @@
-#include "gen_qprogressbar.h"
-#include "qprogressbar.h"
-
 #include <QMetaObject>
 #include <QProgressBar>
 #include <QSize>
 #include <QString>
+#include <QByteArray>
+#include <cstring>
 #include <QWidget>
+#include "qprogressbar.h"
 
+#include "gen_qprogressbar.h"
 
 extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
@@ -21,10 +22,10 @@ QProgressBar* QProgressBar_new2(QWidget* parent) {
 }
 
 QMetaObject* QProgressBar_MetaObject(QProgressBar* self) {
-	return (QMetaObject*) self->metaObject();
+	return (QMetaObject*) const_cast<const QProgressBar*>(self)->metaObject();
 }
 
-void QProgressBar_Tr(char* s, char** _out, int* _out_Strlen) {
+void QProgressBar_Tr(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QProgressBar::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -33,7 +34,7 @@ void QProgressBar_Tr(char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QProgressBar_TrUtf8(char* s, char** _out, int* _out_Strlen) {
+void QProgressBar_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QProgressBar::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -43,19 +44,19 @@ void QProgressBar_TrUtf8(char* s, char** _out, int* _out_Strlen) {
 }
 
 int QProgressBar_Minimum(QProgressBar* self) {
-	return self->minimum();
+	return const_cast<const QProgressBar*>(self)->minimum();
 }
 
 int QProgressBar_Maximum(QProgressBar* self) {
-	return self->maximum();
+	return const_cast<const QProgressBar*>(self)->maximum();
 }
 
 int QProgressBar_Value(QProgressBar* self) {
-	return self->value();
+	return const_cast<const QProgressBar*>(self)->value();
 }
 
 void QProgressBar_Text(QProgressBar* self, char** _out, int* _out_Strlen) {
-	QString ret = self->text();
+	QString ret = const_cast<const QProgressBar*>(self)->text();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -68,19 +69,33 @@ void QProgressBar_SetTextVisible(QProgressBar* self, bool visible) {
 }
 
 bool QProgressBar_IsTextVisible(QProgressBar* self) {
-	return self->isTextVisible();
+	return const_cast<const QProgressBar*>(self)->isTextVisible();
+}
+
+int QProgressBar_Alignment(QProgressBar* self) {
+	Qt::Alignment ret = const_cast<const QProgressBar*>(self)->alignment();
+	return static_cast<int>(ret);
+}
+
+void QProgressBar_SetAlignment(QProgressBar* self, int alignment) {
+	self->setAlignment(static_cast<Qt::Alignment>(alignment));
 }
 
 QSize* QProgressBar_SizeHint(QProgressBar* self) {
-	QSize ret = self->sizeHint();
+	QSize ret = const_cast<const QProgressBar*>(self)->sizeHint();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
 
 QSize* QProgressBar_MinimumSizeHint(QProgressBar* self) {
-	QSize ret = self->minimumSizeHint();
+	QSize ret = const_cast<const QProgressBar*>(self)->minimumSizeHint();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
+}
+
+uintptr_t QProgressBar_Orientation(QProgressBar* self) {
+	Qt::Orientation ret = const_cast<const QProgressBar*>(self)->orientation();
+	return static_cast<uintptr_t>(ret);
 }
 
 void QProgressBar_SetInvertedAppearance(QProgressBar* self, bool invert) {
@@ -88,7 +103,16 @@ void QProgressBar_SetInvertedAppearance(QProgressBar* self, bool invert) {
 }
 
 bool QProgressBar_InvertedAppearance(QProgressBar* self) {
-	return self->invertedAppearance();
+	return const_cast<const QProgressBar*>(self)->invertedAppearance();
+}
+
+void QProgressBar_SetTextDirection(QProgressBar* self, uintptr_t textDirection) {
+	self->setTextDirection(static_cast<QProgressBar::Direction>(textDirection));
+}
+
+uintptr_t QProgressBar_TextDirection(QProgressBar* self) {
+	QProgressBar::Direction ret = const_cast<const QProgressBar*>(self)->textDirection();
+	return static_cast<uintptr_t>(ret);
 }
 
 void QProgressBar_SetFormat(QProgressBar* self, const char* format, size_t format_Strlen) {
@@ -101,7 +125,7 @@ void QProgressBar_ResetFormat(QProgressBar* self) {
 }
 
 void QProgressBar_Format(QProgressBar* self, char** _out, int* _out_Strlen) {
-	QString ret = self->format();
+	QString ret = const_cast<const QProgressBar*>(self)->format();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -129,6 +153,10 @@ void QProgressBar_SetValue(QProgressBar* self, int value) {
 	self->setValue(static_cast<int>(value));
 }
 
+void QProgressBar_SetOrientation(QProgressBar* self, uintptr_t orientation) {
+	self->setOrientation(static_cast<Qt::Orientation>(orientation));
+}
+
 void QProgressBar_ValueChanged(QProgressBar* self, int value) {
 	self->valueChanged(static_cast<int>(value));
 }
@@ -139,7 +167,7 @@ void QProgressBar_connect_ValueChanged(QProgressBar* self, void* slot) {
 	});
 }
 
-void QProgressBar_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
+void QProgressBar_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QProgressBar::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -148,7 +176,7 @@ void QProgressBar_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QProgressBar_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QProgressBar_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QProgressBar::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -157,7 +185,7 @@ void QProgressBar_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QProgressBar_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
+void QProgressBar_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QProgressBar::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -166,7 +194,7 @@ void QProgressBar_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QProgressBar_TrUtf83(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QProgressBar_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QProgressBar::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();

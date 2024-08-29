@@ -285,6 +285,25 @@ func (this *QDateTimeEdit) SetTimeRange(min *QTime, max *QTime) {
 	C.QDateTimeEdit_SetTimeRange(this.h, min.cPointer(), max.cPointer())
 }
 
+func (this *QDateTimeEdit) DisplayedSections() int {
+	ret := C.QDateTimeEdit_DisplayedSections(this.h)
+	return (int)(ret)
+}
+
+func (this *QDateTimeEdit) CurrentSection() uintptr {
+	ret := C.QDateTimeEdit_CurrentSection(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QDateTimeEdit) SectionAt(index int) uintptr {
+	ret := C.QDateTimeEdit_SectionAt(this.h, (C.int)(index))
+	return (uintptr)(ret)
+}
+
+func (this *QDateTimeEdit) SetCurrentSection(section uintptr) {
+	C.QDateTimeEdit_SetCurrentSection(this.h, (C.uintptr_t)(section))
+}
+
 func (this *QDateTimeEdit) CurrentSectionIndex() int {
 	ret := C.QDateTimeEdit_CurrentSectionIndex(this.h)
 	return (int)(ret)
@@ -306,6 +325,19 @@ func (this *QDateTimeEdit) SetCalendarWidget(calendarWidget *QCalendarWidget) {
 func (this *QDateTimeEdit) SectionCount() int {
 	ret := C.QDateTimeEdit_SectionCount(this.h)
 	return (int)(ret)
+}
+
+func (this *QDateTimeEdit) SetSelectedSection(section uintptr) {
+	C.QDateTimeEdit_SetSelectedSection(this.h, (C.uintptr_t)(section))
+}
+
+func (this *QDateTimeEdit) SectionText(section uintptr) string {
+	var _out *C.char = nil
+	var _out_Strlen C.int = 0
+	C.QDateTimeEdit_SectionText(this.h, (C.uintptr_t)(section), &_out, &_out_Strlen)
+	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
 }
 
 func (this *QDateTimeEdit) DisplayFormat() string {
@@ -330,6 +362,15 @@ func (this *QDateTimeEdit) CalendarPopup() bool {
 
 func (this *QDateTimeEdit) SetCalendarPopup(enable bool) {
 	C.QDateTimeEdit_SetCalendarPopup(this.h, (C.bool)(enable))
+}
+
+func (this *QDateTimeEdit) TimeSpec() uintptr {
+	ret := C.QDateTimeEdit_TimeSpec(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QDateTimeEdit) SetTimeSpec(spec uintptr) {
+	C.QDateTimeEdit_SetTimeSpec(this.h, (C.uintptr_t)(spec))
 }
 
 func (this *QDateTimeEdit) SizeHint() *QSize {

@@ -36,6 +36,24 @@ func newQDialog_U(h unsafe.Pointer) *QDialog {
 	return newQDialog((*C.QDialog)(h))
 }
 
+// NewQDialog constructs a new QDialog object.
+func NewQDialog() *QDialog {
+	ret := C.QDialog_new()
+	return newQDialog(ret)
+}
+
+// NewQDialog2 constructs a new QDialog object.
+func NewQDialog2(parent *QWidget) *QDialog {
+	ret := C.QDialog_new2(parent.cPointer())
+	return newQDialog(ret)
+}
+
+// NewQDialog3 constructs a new QDialog object.
+func NewQDialog3(parent *QWidget, f int) *QDialog {
+	ret := C.QDialog_new3(parent.cPointer(), (C.int)(f))
+	return newQDialog(ret)
+}
+
 func (this *QDialog) MetaObject() *QMetaObject {
 	ret := C.QDialog_MetaObject(this.h)
 	return newQMetaObject_U(unsafe.Pointer(ret))
@@ -70,6 +88,15 @@ func (this *QDialog) Result() int {
 
 func (this *QDialog) SetVisible(visible bool) {
 	C.QDialog_SetVisible(this.h, (C.bool)(visible))
+}
+
+func (this *QDialog) SetOrientation(orientation uintptr) {
+	C.QDialog_SetOrientation(this.h, (C.uintptr_t)(orientation))
+}
+
+func (this *QDialog) Orientation() uintptr {
+	ret := C.QDialog_Orientation(this.h)
+	return (uintptr)(ret)
 }
 
 func (this *QDialog) SetExtension(extension *QWidget) {

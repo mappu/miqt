@@ -256,6 +256,67 @@ func (this *QScreen) AvailableVirtualGeometry() *QRect {
 	return ret1
 }
 
+func (this *QScreen) PrimaryOrientation() uintptr {
+	ret := C.QScreen_PrimaryOrientation(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QScreen) Orientation() uintptr {
+	ret := C.QScreen_Orientation(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QScreen) NativeOrientation() uintptr {
+	ret := C.QScreen_NativeOrientation(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QScreen) OrientationUpdateMask() int {
+	ret := C.QScreen_OrientationUpdateMask(this.h)
+	return (int)(ret)
+}
+
+func (this *QScreen) SetOrientationUpdateMask(mask int) {
+	C.QScreen_SetOrientationUpdateMask(this.h, (C.int)(mask))
+}
+
+func (this *QScreen) AngleBetween(a uintptr, b uintptr) int {
+	ret := C.QScreen_AngleBetween(this.h, (C.uintptr_t)(a), (C.uintptr_t)(b))
+	return (int)(ret)
+}
+
+func (this *QScreen) TransformBetween(a uintptr, b uintptr, target *QRect) *QTransform {
+	ret := C.QScreen_TransformBetween(this.h, (C.uintptr_t)(a), (C.uintptr_t)(b), target.cPointer())
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQTransform(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QTransform) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QScreen) MapBetween(a uintptr, b uintptr, rect *QRect) *QRect {
+	ret := C.QScreen_MapBetween(this.h, (C.uintptr_t)(a), (C.uintptr_t)(b), rect.cPointer())
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQRect(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QRect) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QScreen) IsPortrait(orientation uintptr) bool {
+	ret := C.QScreen_IsPortrait(this.h, (C.uintptr_t)(orientation))
+	return (bool)(ret)
+}
+
+func (this *QScreen) IsLandscape(orientation uintptr) bool {
+	ret := C.QScreen_IsLandscape(this.h, (C.uintptr_t)(orientation))
+	return (bool)(ret)
+}
+
 func (this *QScreen) GrabWindow(window uintptr) *QPixmap {
 	ret := C.QScreen_GrabWindow(this.h, (C.uintptr_t)(window))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -342,6 +403,30 @@ func (this *QScreen) OnVirtualGeometryChanged(slot func()) {
 	}
 
 	C.QScreen_connect_VirtualGeometryChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+}
+
+func (this *QScreen) PrimaryOrientationChanged(orientation uintptr) {
+	C.QScreen_PrimaryOrientationChanged(this.h, (C.uintptr_t)(orientation))
+}
+
+func (this *QScreen) OnPrimaryOrientationChanged(slot func()) {
+	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
+		slot()
+	}
+
+	C.QScreen_connect_PrimaryOrientationChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+}
+
+func (this *QScreen) OrientationChanged(orientation uintptr) {
+	C.QScreen_OrientationChanged(this.h, (C.uintptr_t)(orientation))
+}
+
+func (this *QScreen) OnOrientationChanged(slot func()) {
+	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
+		slot()
+	}
+
+	C.QScreen_connect_OrientationChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
 }
 
 func (this *QScreen) RefreshRateChanged(refreshRate float64) {

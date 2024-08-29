@@ -34,8 +34,8 @@ typedef struct QTransform QTransform;
 QGraphicsItemAnimation* QGraphicsItemAnimation_new();
 QGraphicsItemAnimation* QGraphicsItemAnimation_new2(QObject* parent);
 QMetaObject* QGraphicsItemAnimation_MetaObject(QGraphicsItemAnimation* self);
-void QGraphicsItemAnimation_Tr(char* s, char** _out, int* _out_Strlen);
-void QGraphicsItemAnimation_TrUtf8(char* s, char** _out, int* _out_Strlen);
+void QGraphicsItemAnimation_Tr(const char* s, char** _out, int* _out_Strlen);
+void QGraphicsItemAnimation_TrUtf8(const char* s, char** _out, int* _out_Strlen);
 QGraphicsItem* QGraphicsItemAnimation_Item(QGraphicsItemAnimation* self);
 void QGraphicsItemAnimation_SetItem(QGraphicsItemAnimation* self, QGraphicsItem* item);
 QTimeLine* QGraphicsItemAnimation_TimeLine(QGraphicsItemAnimation* self);
@@ -58,10 +58,10 @@ void QGraphicsItemAnimation_SetShearAt(QGraphicsItemAnimation* self, double step
 void QGraphicsItemAnimation_Clear(QGraphicsItemAnimation* self);
 void QGraphicsItemAnimation_SetStep(QGraphicsItemAnimation* self, double x);
 void QGraphicsItemAnimation_Reset(QGraphicsItemAnimation* self);
-void QGraphicsItemAnimation_Tr2(char* s, char* c, char** _out, int* _out_Strlen);
-void QGraphicsItemAnimation_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen);
-void QGraphicsItemAnimation_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen);
-void QGraphicsItemAnimation_TrUtf83(char* s, char* c, int n, char** _out, int* _out_Strlen);
+void QGraphicsItemAnimation_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
+void QGraphicsItemAnimation_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+void QGraphicsItemAnimation_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
+void QGraphicsItemAnimation_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
 void QGraphicsItemAnimation_Delete(QGraphicsItemAnimation* self);
 
 #ifdef __cplusplus

@@ -115,6 +115,25 @@ func (this *QLayout) ContentsRect() *QRect {
 	return ret1
 }
 
+func (this *QLayout) SetAlignment(w *QWidget, alignment int) bool {
+	ret := C.QLayout_SetAlignment(this.h, w.cPointer(), (C.int)(alignment))
+	return (bool)(ret)
+}
+
+func (this *QLayout) SetAlignment2(l *QLayout, alignment int) bool {
+	ret := C.QLayout_SetAlignment2(this.h, l.cPointer(), (C.int)(alignment))
+	return (bool)(ret)
+}
+
+func (this *QLayout) SetSizeConstraint(sizeConstraint uintptr) {
+	C.QLayout_SetSizeConstraint(this.h, (C.uintptr_t)(sizeConstraint))
+}
+
+func (this *QLayout) SizeConstraint() uintptr {
+	ret := C.QLayout_SizeConstraint(this.h)
+	return (uintptr)(ret)
+}
+
 func (this *QLayout) SetMenuBar(w *QWidget) {
 	C.QLayout_SetMenuBar(this.h, w.cPointer())
 }
@@ -167,6 +186,11 @@ func (this *QLayout) RemoveWidget(w *QWidget) {
 
 func (this *QLayout) RemoveItem(param1 *QLayoutItem) {
 	C.QLayout_RemoveItem(this.h, param1.cPointer())
+}
+
+func (this *QLayout) ExpandingDirections() int {
+	ret := C.QLayout_ExpandingDirections(this.h)
+	return (int)(ret)
 }
 
 func (this *QLayout) MinimumSize() *QSize {
@@ -223,6 +247,16 @@ func (this *QLayout) Count() int {
 func (this *QLayout) IsEmpty() bool {
 	ret := C.QLayout_IsEmpty(this.h)
 	return (bool)(ret)
+}
+
+func (this *QLayout) ControlTypes() int {
+	ret := C.QLayout_ControlTypes(this.h)
+	return (int)(ret)
+}
+
+func (this *QLayout) ReplaceWidget(from *QWidget, to *QWidget) *QLayoutItem {
+	ret := C.QLayout_ReplaceWidget(this.h, from.cPointer(), to.cPointer())
+	return newQLayoutItem_U(unsafe.Pointer(ret))
 }
 
 func (this *QLayout) TotalHeightForWidth(w int) int {
@@ -338,6 +372,11 @@ func QLayout_TrUtf83(s string, c string, n int) string {
 	ret := C.GoStringN(_out, _out_Strlen)
 	C.free(unsafe.Pointer(_out))
 	return ret
+}
+
+func (this *QLayout) ReplaceWidget3(from *QWidget, to *QWidget, options int) *QLayoutItem {
+	ret := C.QLayout_ReplaceWidget3(this.h, from.cPointer(), to.cPointer(), (C.int)(options))
+	return newQLayoutItem_U(unsafe.Pointer(ret))
 }
 
 func (this *QLayout) Delete() {

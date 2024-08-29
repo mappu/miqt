@@ -252,6 +252,15 @@ func (this *QCommandLineOption) DefaultValues() []string {
 	return ret
 }
 
+func (this *QCommandLineOption) Flags() int {
+	ret := C.QCommandLineOption_Flags(this.h)
+	return (int)(ret)
+}
+
+func (this *QCommandLineOption) SetFlags(aflags int) {
+	C.QCommandLineOption_SetFlags(this.h, (C.int)(aflags))
+}
+
 func (this *QCommandLineOption) SetHidden(hidden bool) {
 	C.QCommandLineOption_SetHidden(this.h, (C.bool)(hidden))
 }

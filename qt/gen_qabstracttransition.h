@@ -28,21 +28,23 @@ typedef struct QStateMachine QStateMachine;
 #endif
 
 QMetaObject* QAbstractTransition_MetaObject(QAbstractTransition* self);
-void QAbstractTransition_Tr(char* s, char** _out, int* _out_Strlen);
-void QAbstractTransition_TrUtf8(char* s, char** _out, int* _out_Strlen);
+void QAbstractTransition_Tr(const char* s, char** _out, int* _out_Strlen);
+void QAbstractTransition_TrUtf8(const char* s, char** _out, int* _out_Strlen);
 QState* QAbstractTransition_SourceState(QAbstractTransition* self);
 QAbstractState* QAbstractTransition_TargetState(QAbstractTransition* self);
 void QAbstractTransition_SetTargetState(QAbstractTransition* self, QAbstractState* target);
 void QAbstractTransition_TargetStates(QAbstractTransition* self, QAbstractState*** _out, size_t* _out_len);
 void QAbstractTransition_SetTargetStates(QAbstractTransition* self, QAbstractState** targets, size_t targets_len);
+uintptr_t QAbstractTransition_TransitionType(QAbstractTransition* self);
+void QAbstractTransition_SetTransitionType(QAbstractTransition* self, uintptr_t typeVal);
 QStateMachine* QAbstractTransition_Machine(QAbstractTransition* self);
 void QAbstractTransition_AddAnimation(QAbstractTransition* self, QAbstractAnimation* animation);
 void QAbstractTransition_RemoveAnimation(QAbstractTransition* self, QAbstractAnimation* animation);
 void QAbstractTransition_Animations(QAbstractTransition* self, QAbstractAnimation*** _out, size_t* _out_len);
-void QAbstractTransition_Tr2(char* s, char* c, char** _out, int* _out_Strlen);
-void QAbstractTransition_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen);
-void QAbstractTransition_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen);
-void QAbstractTransition_TrUtf83(char* s, char* c, int n, char** _out, int* _out_Strlen);
+void QAbstractTransition_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
+void QAbstractTransition_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+void QAbstractTransition_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
+void QAbstractTransition_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
 void QAbstractTransition_Delete(QAbstractTransition* self);
 
 #ifdef __cplusplus

@@ -117,6 +117,15 @@ func (this *QCollator) Locale() *QLocale {
 	return ret1
 }
 
+func (this *QCollator) CaseSensitivity() uintptr {
+	ret := C.QCollator_CaseSensitivity(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QCollator) SetCaseSensitivity(cs uintptr) {
+	C.QCollator_SetCaseSensitivity(this.h, (C.uintptr_t)(cs))
+}
+
 func (this *QCollator) SetNumericMode(on bool) {
 	C.QCollator_SetNumericMode(this.h, (C.bool)(on))
 }
@@ -144,8 +153,8 @@ func (this *QCollator) Compare(s1 string, s2 string) int {
 	return (int)(ret)
 }
 
-func (this *QCollator) Compare2(s1 *QChar, len1 int, s2 *QChar, len2 int) int {
-	ret := C.QCollator_Compare2(this.h, s1.cPointer(), (C.int)(len1), s2.cPointer(), (C.int)(len2))
+func (this *QCollator) Compare3(s1 *QChar, len1 int, s2 *QChar, len2 int) int {
+	ret := C.QCollator_Compare3(this.h, s1.cPointer(), (C.int)(len1), s2.cPointer(), (C.int)(len2))
 	return (int)(ret)
 }
 

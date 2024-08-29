@@ -86,6 +86,11 @@ func (this *QTextBrowser) Source() *QUrl {
 	return ret1
 }
 
+func (this *QTextBrowser) SourceType() uintptr {
+	ret := C.QTextBrowser_SourceType(this.h)
+	return (uintptr)(ret)
+}
+
 func (this *QTextBrowser) SearchPaths() []string {
 	var _out **C.char = nil
 	var _out_Lengths *C.int = nil
@@ -191,6 +196,10 @@ func (this *QTextBrowser) SetOpenLinks(open bool) {
 
 func (this *QTextBrowser) SetSource(name *QUrl) {
 	C.QTextBrowser_SetSource(this.h, name.cPointer())
+}
+
+func (this *QTextBrowser) SetSource2(name *QUrl, typeVal uintptr) {
+	C.QTextBrowser_SetSource2(this.h, name.cPointer(), (C.uintptr_t)(typeVal))
 }
 
 func (this *QTextBrowser) Backward() {

@@ -280,6 +280,10 @@ func (this *QTreeView) VisualRect(index *QModelIndex) *QRect {
 	return ret1
 }
 
+func (this *QTreeView) ScrollTo(index *QModelIndex) {
+	C.QTreeView_ScrollTo(this.h, index.cPointer())
+}
+
 func (this *QTreeView) IndexAt(p *QPoint) *QModelIndex {
 	ret := C.QTreeView_IndexAt(this.h, p.cPointer())
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -377,6 +381,10 @@ func (this *QTreeView) SortByColumn(column int) {
 	C.QTreeView_SortByColumn(this.h, (C.int)(column))
 }
 
+func (this *QTreeView) SortByColumn2(column int, order uintptr) {
+	C.QTreeView_SortByColumn2(this.h, (C.int)(column), (C.uintptr_t)(order))
+}
+
 func (this *QTreeView) ExpandAll() {
 	C.QTreeView_ExpandAll(this.h)
 }
@@ -443,6 +451,10 @@ func QTreeView_TrUtf83(s string, c string, n int) string {
 	ret := C.GoStringN(_out, _out_Strlen)
 	C.free(unsafe.Pointer(_out))
 	return ret
+}
+
+func (this *QTreeView) ScrollTo2(index *QModelIndex, hint uintptr) {
+	C.QTreeView_ScrollTo2(this.h, index.cPointer(), (C.uintptr_t)(hint))
 }
 
 func (this *QTreeView) DataChanged3(topLeft *QModelIndex, bottomRight *QModelIndex, roles []int) {

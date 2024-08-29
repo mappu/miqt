@@ -14,6 +14,11 @@ extern "C" {
 #ifdef __cplusplus
 class QFont;
 class QPainterPath;
+#if defined(WORKAROUND_INNER_CLASS_DEFINITION_QPainterPath__Element)
+typedef QPainterPath::Element QPainterPath__Element;
+#else
+class QPainterPath__Element;
+#endif
 class QPainterPathStroker;
 class QPen;
 class QPointF;
@@ -22,6 +27,7 @@ class QRegion;
 #else
 typedef struct QFont QFont;
 typedef struct QPainterPath QPainterPath;
+typedef struct QPainterPath__Element QPainterPath__Element;
 typedef struct QPainterPathStroker QPainterPathStroker;
 typedef struct QPen QPen;
 typedef struct QPointF QPointF;
@@ -60,6 +66,8 @@ void QPainterPath_AddText(QPainterPath* self, QPointF* point, QFont* f, const ch
 void QPainterPath_AddText2(QPainterPath* self, double x, double y, QFont* f, const char* text, size_t text_Strlen);
 void QPainterPath_AddPath(QPainterPath* self, QPainterPath* path);
 void QPainterPath_AddRegion(QPainterPath* self, QRegion* region);
+void QPainterPath_AddRoundedRect(QPainterPath* self, QRectF* rect, double xRadius, double yRadius);
+void QPainterPath_AddRoundedRect2(QPainterPath* self, double x, double y, double w, double h, double xRadius, double yRadius);
 void QPainterPath_AddRoundRect(QPainterPath* self, QRectF* rect, int xRnd, int yRnd);
 void QPainterPath_AddRoundRect2(QPainterPath* self, double x, double y, double w, double h, int xRnd, int yRnd);
 void QPainterPath_AddRoundRect3(QPainterPath* self, QRectF* rect, int roundness);
@@ -74,9 +82,12 @@ QPainterPath* QPainterPath_Translated(QPainterPath* self, double dx, double dy);
 QPainterPath* QPainterPath_TranslatedWithOffset(QPainterPath* self, QPointF* offset);
 QRectF* QPainterPath_BoundingRect(QPainterPath* self);
 QRectF* QPainterPath_ControlPointRect(QPainterPath* self);
+uintptr_t QPainterPath_FillRule(QPainterPath* self);
+void QPainterPath_SetFillRule(QPainterPath* self, uintptr_t fillRule);
 bool QPainterPath_IsEmpty(QPainterPath* self);
 QPainterPath* QPainterPath_ToReversed(QPainterPath* self);
 int QPainterPath_ElementCount(QPainterPath* self);
+QPainterPath__Element* QPainterPath_ElementAt(QPainterPath* self, int i);
 void QPainterPath_SetElementPositionAt(QPainterPath* self, int i, double x, double y);
 double QPainterPath_Length(QPainterPath* self);
 double QPainterPath_PercentAtLength(QPainterPath* self, double t);
@@ -100,22 +111,36 @@ void QPainterPath_OperatorBitwiseAndAssign(QPainterPath* self, QPainterPath* oth
 void QPainterPath_OperatorBitwiseOrAssign(QPainterPath* self, QPainterPath* other);
 QPainterPath* QPainterPath_OperatorPlusAssign(QPainterPath* self, QPainterPath* other);
 QPainterPath* QPainterPath_OperatorMinusAssign(QPainterPath* self, QPainterPath* other);
+void QPainterPath_AddRoundedRect4(QPainterPath* self, QRectF* rect, double xRadius, double yRadius, uintptr_t mode);
+void QPainterPath_AddRoundedRect7(QPainterPath* self, double x, double y, double w, double h, double xRadius, double yRadius, uintptr_t mode);
 void QPainterPath_Delete(QPainterPath* self);
 
 QPainterPathStroker* QPainterPathStroker_new();
 QPainterPathStroker* QPainterPathStroker_new2(QPen* pen);
 void QPainterPathStroker_SetWidth(QPainterPathStroker* self, double width);
 double QPainterPathStroker_Width(QPainterPathStroker* self);
+void QPainterPathStroker_SetCapStyle(QPainterPathStroker* self, uintptr_t style);
+uintptr_t QPainterPathStroker_CapStyle(QPainterPathStroker* self);
+void QPainterPathStroker_SetJoinStyle(QPainterPathStroker* self, uintptr_t style);
+uintptr_t QPainterPathStroker_JoinStyle(QPainterPathStroker* self);
 void QPainterPathStroker_SetMiterLimit(QPainterPathStroker* self, double length);
 double QPainterPathStroker_MiterLimit(QPainterPathStroker* self);
 void QPainterPathStroker_SetCurveThreshold(QPainterPathStroker* self, double threshold);
 double QPainterPathStroker_CurveThreshold(QPainterPathStroker* self);
-void QPainterPathStroker_SetDashPattern(QPainterPathStroker* self, double* dashPattern, size_t dashPattern_len);
+void QPainterPathStroker_SetDashPattern(QPainterPathStroker* self, uintptr_t dashPattern);
+void QPainterPathStroker_SetDashPatternWithDashPattern(QPainterPathStroker* self, double* dashPattern, size_t dashPattern_len);
 void QPainterPathStroker_DashPattern(QPainterPathStroker* self, double** _out, size_t* _out_len);
 void QPainterPathStroker_SetDashOffset(QPainterPathStroker* self, double offset);
 double QPainterPathStroker_DashOffset(QPainterPathStroker* self);
 QPainterPath* QPainterPathStroker_CreateStroke(QPainterPathStroker* self, QPainterPath* path);
 void QPainterPathStroker_Delete(QPainterPathStroker* self);
+
+bool QPainterPath__Element_IsMoveTo(QPainterPath__Element* self);
+bool QPainterPath__Element_IsLineTo(QPainterPath__Element* self);
+bool QPainterPath__Element_IsCurveTo(QPainterPath__Element* self);
+bool QPainterPath__Element_OperatorEqual(QPainterPath__Element* self, QPainterPath__Element* e);
+bool QPainterPath__Element_OperatorNotEqual(QPainterPath__Element* self, QPainterPath__Element* e);
+void QPainterPath__Element_Delete(QPainterPath__Element* self);
 
 #ifdef __cplusplus
 } /* extern C */

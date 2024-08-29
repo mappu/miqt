@@ -119,9 +119,19 @@ func (this *QSharedMemory) NativeKey() string {
 	return ret
 }
 
+func (this *QSharedMemory) Create(size int) bool {
+	ret := C.QSharedMemory_Create(this.h, (C.int)(size))
+	return (bool)(ret)
+}
+
 func (this *QSharedMemory) Size() int {
 	ret := C.QSharedMemory_Size(this.h)
 	return (int)(ret)
+}
+
+func (this *QSharedMemory) Attach() bool {
+	ret := C.QSharedMemory_Attach(this.h)
+	return (bool)(ret)
 }
 
 func (this *QSharedMemory) IsAttached() bool {
@@ -142,6 +152,11 @@ func (this *QSharedMemory) Lock() bool {
 func (this *QSharedMemory) Unlock() bool {
 	ret := C.QSharedMemory_Unlock(this.h)
 	return (bool)(ret)
+}
+
+func (this *QSharedMemory) Error() uintptr {
+	ret := C.QSharedMemory_Error(this.h)
+	return (uintptr)(ret)
 }
 
 func (this *QSharedMemory) ErrorString() string {
@@ -203,6 +218,16 @@ func QSharedMemory_TrUtf83(s string, c string, n int) string {
 	ret := C.GoStringN(_out, _out_Strlen)
 	C.free(unsafe.Pointer(_out))
 	return ret
+}
+
+func (this *QSharedMemory) Create2(size int, mode uintptr) bool {
+	ret := C.QSharedMemory_Create2(this.h, (C.int)(size), (C.uintptr_t)(mode))
+	return (bool)(ret)
+}
+
+func (this *QSharedMemory) Attach1(mode uintptr) bool {
+	ret := C.QSharedMemory_Attach1(this.h, (C.uintptr_t)(mode))
+	return (bool)(ret)
 }
 
 func (this *QSharedMemory) Delete() {

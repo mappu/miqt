@@ -26,14 +26,15 @@ typedef struct QVector4D QVector4D;
 #endif
 
 QVector4D* QVector4D_new();
-QVector4D* QVector4D_new2(float xpos, float ypos, float zpos, float wpos);
-QVector4D* QVector4D_new3(QPoint* point);
-QVector4D* QVector4D_new4(QPointF* point);
-QVector4D* QVector4D_new5(QVector2D* vector);
-QVector4D* QVector4D_new6(QVector2D* vector, float zpos, float wpos);
-QVector4D* QVector4D_new7(QVector3D* vector);
-QVector4D* QVector4D_new8(QVector3D* vector, float wpos);
-QVector4D* QVector4D_new9(QVector4D* param1);
+QVector4D* QVector4D_new2(uintptr_t param1);
+QVector4D* QVector4D_new3(float xpos, float ypos, float zpos, float wpos);
+QVector4D* QVector4D_new4(QPoint* point);
+QVector4D* QVector4D_new5(QPointF* point);
+QVector4D* QVector4D_new6(QVector2D* vector);
+QVector4D* QVector4D_new7(QVector2D* vector, float zpos, float wpos);
+QVector4D* QVector4D_new8(QVector3D* vector);
+QVector4D* QVector4D_new9(QVector3D* vector, float wpos);
+QVector4D* QVector4D_new10(QVector4D* param1);
 bool QVector4D_IsNull(QVector4D* self);
 float QVector4D_X(QVector4D* self);
 float QVector4D_Y(QVector4D* self);

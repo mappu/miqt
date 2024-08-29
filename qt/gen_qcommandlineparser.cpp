@@ -1,12 +1,13 @@
-#include "gen_qcommandlineparser.h"
-#include "qcommandlineparser.h"
-
 #include <QCommandLineOption>
 #include <QCommandLineParser>
 #include <QCoreApplication>
 #include <QList>
 #include <QString>
+#include <QByteArray>
+#include <cstring>
+#include "qcommandlineparser.h"
 
+#include "gen_qcommandlineparser.h"
 
 extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
@@ -16,7 +17,7 @@ QCommandLineParser* QCommandLineParser_new() {
 	return new QCommandLineParser();
 }
 
-void QCommandLineParser_Tr(char* sourceText, char** _out, int* _out_Strlen) {
+void QCommandLineParser_Tr(const char* sourceText, char** _out, int* _out_Strlen) {
 	QString ret = QCommandLineParser::tr(sourceText);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -25,13 +26,21 @@ void QCommandLineParser_Tr(char* sourceText, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QCommandLineParser_TrUtf8(char* sourceText, char** _out, int* _out_Strlen) {
+void QCommandLineParser_TrUtf8(const char* sourceText, char** _out, int* _out_Strlen) {
 	QString ret = QCommandLineParser::trUtf8(sourceText);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
 	memcpy(*_out, b.data(), b.length());
 	*_out_Strlen = b.length();
+}
+
+void QCommandLineParser_SetSingleDashWordOptionMode(QCommandLineParser* self, uintptr_t parsingMode) {
+	self->setSingleDashWordOptionMode(static_cast<QCommandLineParser::SingleDashWordOptionMode>(parsingMode));
+}
+
+void QCommandLineParser_SetOptionsAfterPositionalArgumentsMode(QCommandLineParser* self, uintptr_t mode) {
+	self->setOptionsAfterPositionalArgumentsMode(static_cast<QCommandLineParser::OptionsAfterPositionalArgumentsMode>(mode));
 }
 
 bool QCommandLineParser_AddOption(QCommandLineParser* self, QCommandLineOption* commandLineOption) {
@@ -65,7 +74,7 @@ void QCommandLineParser_SetApplicationDescription(QCommandLineParser* self, cons
 }
 
 void QCommandLineParser_ApplicationDescription(QCommandLineParser* self, char** _out, int* _out_Strlen) {
-	QString ret = self->applicationDescription();
+	QString ret = const_cast<const QCommandLineParser*>(self)->applicationDescription();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -106,7 +115,7 @@ bool QCommandLineParser_Parse(QCommandLineParser* self, char** arguments, uint64
 }
 
 void QCommandLineParser_ErrorText(QCommandLineParser* self, char** _out, int* _out_Strlen) {
-	QString ret = self->errorText();
+	QString ret = const_cast<const QCommandLineParser*>(self)->errorText();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -116,12 +125,12 @@ void QCommandLineParser_ErrorText(QCommandLineParser* self, char** _out, int* _o
 
 bool QCommandLineParser_IsSet(QCommandLineParser* self, const char* name, size_t name_Strlen) {
 	QString name_QString = QString::fromUtf8(name, name_Strlen);
-	return self->isSet(name_QString);
+	return const_cast<const QCommandLineParser*>(self)->isSet(name_QString);
 }
 
 void QCommandLineParser_Value(QCommandLineParser* self, const char* name, size_t name_Strlen, char** _out, int* _out_Strlen) {
 	QString name_QString = QString::fromUtf8(name, name_Strlen);
-	QString ret = self->value(name_QString);
+	QString ret = const_cast<const QCommandLineParser*>(self)->value(name_QString);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -131,7 +140,7 @@ void QCommandLineParser_Value(QCommandLineParser* self, const char* name, size_t
 
 void QCommandLineParser_Values(QCommandLineParser* self, const char* name, size_t name_Strlen, char*** _out, int** _out_Lengths, size_t* _out_len) {
 	QString name_QString = QString::fromUtf8(name, name_Strlen);
-	QList<QString> ret = self->values(name_QString);
+	QStringList ret = const_cast<const QCommandLineParser*>(self)->values(name_QString);
 	// Convert QStringList from C++ memory to manually-managed C memory
 	char** __out = static_cast<char**>(malloc(sizeof(char*) * ret.length()));
 	int* __out_Lengths = static_cast<int*>(malloc(sizeof(int) * ret.length()));
@@ -148,11 +157,11 @@ void QCommandLineParser_Values(QCommandLineParser* self, const char* name, size_
 }
 
 bool QCommandLineParser_IsSetWithOption(QCommandLineParser* self, QCommandLineOption* option) {
-	return self->isSet(*option);
+	return const_cast<const QCommandLineParser*>(self)->isSet(*option);
 }
 
 void QCommandLineParser_ValueWithOption(QCommandLineParser* self, QCommandLineOption* option, char** _out, int* _out_Strlen) {
-	QString ret = self->value(*option);
+	QString ret = const_cast<const QCommandLineParser*>(self)->value(*option);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -161,7 +170,7 @@ void QCommandLineParser_ValueWithOption(QCommandLineParser* self, QCommandLineOp
 }
 
 void QCommandLineParser_ValuesWithOption(QCommandLineParser* self, QCommandLineOption* option, char*** _out, int** _out_Lengths, size_t* _out_len) {
-	QList<QString> ret = self->values(*option);
+	QStringList ret = const_cast<const QCommandLineParser*>(self)->values(*option);
 	// Convert QStringList from C++ memory to manually-managed C memory
 	char** __out = static_cast<char**>(malloc(sizeof(char*) * ret.length()));
 	int* __out_Lengths = static_cast<int*>(malloc(sizeof(int) * ret.length()));
@@ -178,7 +187,7 @@ void QCommandLineParser_ValuesWithOption(QCommandLineParser* self, QCommandLineO
 }
 
 void QCommandLineParser_PositionalArguments(QCommandLineParser* self, char*** _out, int** _out_Lengths, size_t* _out_len) {
-	QList<QString> ret = self->positionalArguments();
+	QStringList ret = const_cast<const QCommandLineParser*>(self)->positionalArguments();
 	// Convert QStringList from C++ memory to manually-managed C memory
 	char** __out = static_cast<char**>(malloc(sizeof(char*) * ret.length()));
 	int* __out_Lengths = static_cast<int*>(malloc(sizeof(int) * ret.length()));
@@ -195,7 +204,7 @@ void QCommandLineParser_PositionalArguments(QCommandLineParser* self, char*** _o
 }
 
 void QCommandLineParser_OptionNames(QCommandLineParser* self, char*** _out, int** _out_Lengths, size_t* _out_len) {
-	QList<QString> ret = self->optionNames();
+	QStringList ret = const_cast<const QCommandLineParser*>(self)->optionNames();
 	// Convert QStringList from C++ memory to manually-managed C memory
 	char** __out = static_cast<char**>(malloc(sizeof(char*) * ret.length()));
 	int* __out_Lengths = static_cast<int*>(malloc(sizeof(int) * ret.length()));
@@ -212,7 +221,7 @@ void QCommandLineParser_OptionNames(QCommandLineParser* self, char*** _out, int*
 }
 
 void QCommandLineParser_UnknownOptionNames(QCommandLineParser* self, char*** _out, int** _out_Lengths, size_t* _out_len) {
-	QList<QString> ret = self->unknownOptionNames();
+	QStringList ret = const_cast<const QCommandLineParser*>(self)->unknownOptionNames();
 	// Convert QStringList from C++ memory to manually-managed C memory
 	char** __out = static_cast<char**>(malloc(sizeof(char*) * ret.length()));
 	int* __out_Lengths = static_cast<int*>(malloc(sizeof(int) * ret.length()));
@@ -229,7 +238,7 @@ void QCommandLineParser_UnknownOptionNames(QCommandLineParser* self, char*** _ou
 }
 
 void QCommandLineParser_HelpText(QCommandLineParser* self, char** _out, int* _out_Strlen) {
-	QString ret = self->helpText();
+	QString ret = const_cast<const QCommandLineParser*>(self)->helpText();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -237,7 +246,7 @@ void QCommandLineParser_HelpText(QCommandLineParser* self, char** _out, int* _ou
 	*_out_Strlen = b.length();
 }
 
-void QCommandLineParser_Tr2(char* sourceText, char* disambiguation, char** _out, int* _out_Strlen) {
+void QCommandLineParser_Tr2(const char* sourceText, const char* disambiguation, char** _out, int* _out_Strlen) {
 	QString ret = QCommandLineParser::tr(sourceText, disambiguation);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -246,7 +255,7 @@ void QCommandLineParser_Tr2(char* sourceText, char* disambiguation, char** _out,
 	*_out_Strlen = b.length();
 }
 
-void QCommandLineParser_Tr3(char* sourceText, char* disambiguation, int n, char** _out, int* _out_Strlen) {
+void QCommandLineParser_Tr3(const char* sourceText, const char* disambiguation, int n, char** _out, int* _out_Strlen) {
 	QString ret = QCommandLineParser::tr(sourceText, disambiguation, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -255,7 +264,7 @@ void QCommandLineParser_Tr3(char* sourceText, char* disambiguation, int n, char*
 	*_out_Strlen = b.length();
 }
 
-void QCommandLineParser_TrUtf82(char* sourceText, char* disambiguation, char** _out, int* _out_Strlen) {
+void QCommandLineParser_TrUtf82(const char* sourceText, const char* disambiguation, char** _out, int* _out_Strlen) {
 	QString ret = QCommandLineParser::trUtf8(sourceText, disambiguation);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -264,7 +273,7 @@ void QCommandLineParser_TrUtf82(char* sourceText, char* disambiguation, char** _
 	*_out_Strlen = b.length();
 }
 
-void QCommandLineParser_TrUtf83(char* sourceText, char* disambiguation, int n, char** _out, int* _out_Strlen) {
+void QCommandLineParser_TrUtf83(const char* sourceText, const char* disambiguation, int n, char** _out, int* _out_Strlen) {
 	QString ret = QCommandLineParser::trUtf8(sourceText, disambiguation, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();

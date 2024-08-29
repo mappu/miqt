@@ -1,6 +1,3 @@
-#include "gen_qabstractbutton.h"
-#include "qabstractbutton.h"
-
 #include <QAbstractButton>
 #include <QButtonGroup>
 #include <QIcon>
@@ -8,17 +5,21 @@
 #include <QMetaObject>
 #include <QSize>
 #include <QString>
+#include <QByteArray>
+#include <cstring>
+#include "qabstractbutton.h"
 
+#include "gen_qabstractbutton.h"
 
 extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
 }
 
 QMetaObject* QAbstractButton_MetaObject(QAbstractButton* self) {
-	return (QMetaObject*) self->metaObject();
+	return (QMetaObject*) const_cast<const QAbstractButton*>(self)->metaObject();
 }
 
-void QAbstractButton_Tr(char* s, char** _out, int* _out_Strlen) {
+void QAbstractButton_Tr(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QAbstractButton::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -27,7 +28,7 @@ void QAbstractButton_Tr(char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QAbstractButton_TrUtf8(char* s, char** _out, int* _out_Strlen) {
+void QAbstractButton_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QAbstractButton::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -42,7 +43,7 @@ void QAbstractButton_SetText(QAbstractButton* self, const char* text, size_t tex
 }
 
 void QAbstractButton_Text(QAbstractButton* self, char** _out, int* _out_Strlen) {
-	QString ret = self->text();
+	QString ret = const_cast<const QAbstractButton*>(self)->text();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -55,13 +56,13 @@ void QAbstractButton_SetIcon(QAbstractButton* self, QIcon* icon) {
 }
 
 QIcon* QAbstractButton_Icon(QAbstractButton* self) {
-	QIcon ret = self->icon();
+	QIcon ret = const_cast<const QAbstractButton*>(self)->icon();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QIcon*>(new QIcon(ret));
 }
 
 QSize* QAbstractButton_IconSize(QAbstractButton* self) {
-	QSize ret = self->iconSize();
+	QSize ret = const_cast<const QAbstractButton*>(self)->iconSize();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
@@ -71,7 +72,7 @@ void QAbstractButton_SetShortcut(QAbstractButton* self, QKeySequence* key) {
 }
 
 QKeySequence* QAbstractButton_Shortcut(QAbstractButton* self) {
-	QKeySequence ret = self->shortcut();
+	QKeySequence ret = const_cast<const QAbstractButton*>(self)->shortcut();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QKeySequence*>(new QKeySequence(ret));
 }
@@ -81,11 +82,11 @@ void QAbstractButton_SetCheckable(QAbstractButton* self, bool checkable) {
 }
 
 bool QAbstractButton_IsCheckable(QAbstractButton* self) {
-	return self->isCheckable();
+	return const_cast<const QAbstractButton*>(self)->isCheckable();
 }
 
 bool QAbstractButton_IsChecked(QAbstractButton* self) {
-	return self->isChecked();
+	return const_cast<const QAbstractButton*>(self)->isChecked();
 }
 
 void QAbstractButton_SetDown(QAbstractButton* self, bool down) {
@@ -93,7 +94,7 @@ void QAbstractButton_SetDown(QAbstractButton* self, bool down) {
 }
 
 bool QAbstractButton_IsDown(QAbstractButton* self) {
-	return self->isDown();
+	return const_cast<const QAbstractButton*>(self)->isDown();
 }
 
 void QAbstractButton_SetAutoRepeat(QAbstractButton* self, bool autoRepeat) {
@@ -101,7 +102,7 @@ void QAbstractButton_SetAutoRepeat(QAbstractButton* self, bool autoRepeat) {
 }
 
 bool QAbstractButton_AutoRepeat(QAbstractButton* self) {
-	return self->autoRepeat();
+	return const_cast<const QAbstractButton*>(self)->autoRepeat();
 }
 
 void QAbstractButton_SetAutoRepeatDelay(QAbstractButton* self, int autoRepeatDelay) {
@@ -109,7 +110,7 @@ void QAbstractButton_SetAutoRepeatDelay(QAbstractButton* self, int autoRepeatDel
 }
 
 int QAbstractButton_AutoRepeatDelay(QAbstractButton* self) {
-	return self->autoRepeatDelay();
+	return const_cast<const QAbstractButton*>(self)->autoRepeatDelay();
 }
 
 void QAbstractButton_SetAutoRepeatInterval(QAbstractButton* self, int autoRepeatInterval) {
@@ -117,7 +118,7 @@ void QAbstractButton_SetAutoRepeatInterval(QAbstractButton* self, int autoRepeat
 }
 
 int QAbstractButton_AutoRepeatInterval(QAbstractButton* self) {
-	return self->autoRepeatInterval();
+	return const_cast<const QAbstractButton*>(self)->autoRepeatInterval();
 }
 
 void QAbstractButton_SetAutoExclusive(QAbstractButton* self, bool autoExclusive) {
@@ -125,11 +126,11 @@ void QAbstractButton_SetAutoExclusive(QAbstractButton* self, bool autoExclusive)
 }
 
 bool QAbstractButton_AutoExclusive(QAbstractButton* self) {
-	return self->autoExclusive();
+	return const_cast<const QAbstractButton*>(self)->autoExclusive();
 }
 
 QButtonGroup* QAbstractButton_Group(QAbstractButton* self) {
-	return self->group();
+	return const_cast<const QAbstractButton*>(self)->group();
 }
 
 void QAbstractButton_SetIconSize(QAbstractButton* self, QSize* size) {
@@ -186,7 +187,7 @@ void QAbstractButton_connect_Toggled(QAbstractButton* self, void* slot) {
 	});
 }
 
-void QAbstractButton_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
+void QAbstractButton_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QAbstractButton::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -195,7 +196,7 @@ void QAbstractButton_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QAbstractButton_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QAbstractButton_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QAbstractButton::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -204,7 +205,7 @@ void QAbstractButton_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen)
 	*_out_Strlen = b.length();
 }
 
-void QAbstractButton_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
+void QAbstractButton_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QAbstractButton::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -213,7 +214,7 @@ void QAbstractButton_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QAbstractButton_TrUtf83(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QAbstractButton_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QAbstractButton::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();

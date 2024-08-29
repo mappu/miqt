@@ -46,6 +46,30 @@ func NewQTextStream2(device *QIODevice) *QTextStream {
 	return newQTextStream(ret)
 }
 
+// NewQTextStream3 constructs a new QTextStream object.
+func NewQTextStream3(array *QByteArray) *QTextStream {
+	ret := C.QTextStream_new3(array.cPointer())
+	return newQTextStream(ret)
+}
+
+// NewQTextStream4 constructs a new QTextStream object.
+func NewQTextStream4(array *QByteArray) *QTextStream {
+	ret := C.QTextStream_new4(array.cPointer())
+	return newQTextStream(ret)
+}
+
+// NewQTextStream5 constructs a new QTextStream object.
+func NewQTextStream5(array *QByteArray, openMode int) *QTextStream {
+	ret := C.QTextStream_new5(array.cPointer(), (C.int)(openMode))
+	return newQTextStream(ret)
+}
+
+// NewQTextStream6 constructs a new QTextStream object.
+func NewQTextStream6(array *QByteArray, openMode int) *QTextStream {
+	ret := C.QTextStream_new6(array.cPointer(), (C.int)(openMode))
+	return newQTextStream(ret)
+}
+
 func (this *QTextStream) SetCodec(codec *QTextCodec) {
 	C.QTextStream_SetCodec(this.h, codec.cPointer())
 }
@@ -112,6 +136,15 @@ func (this *QTextStream) String() string {
 	return ret
 }
 
+func (this *QTextStream) Status() uintptr {
+	ret := C.QTextStream_Status(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QTextStream) SetStatus(status uintptr) {
+	C.QTextStream_SetStatus(this.h, (C.uintptr_t)(status))
+}
+
 func (this *QTextStream) ResetStatus() {
 	C.QTextStream_ResetStatus(this.h)
 }
@@ -130,7 +163,7 @@ func (this *QTextStream) Flush() {
 }
 
 func (this *QTextStream) Seek(pos int64) bool {
-	ret := C.QTextStream_Seek(this.h, (C.int64_t)(pos))
+	ret := C.QTextStream_Seek(this.h, (C.longlong)(pos))
 	return (bool)(ret)
 }
 
@@ -164,10 +197,19 @@ func (this *QTextStream) ReadAll() string {
 func (this *QTextStream) Read(maxlen int64) string {
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
-	C.QTextStream_Read(this.h, (C.int64_t)(maxlen), &_out, &_out_Strlen)
+	C.QTextStream_Read(this.h, (C.longlong)(maxlen), &_out, &_out_Strlen)
 	ret := C.GoStringN(_out, _out_Strlen)
 	C.free(unsafe.Pointer(_out))
 	return ret
+}
+
+func (this *QTextStream) SetFieldAlignment(alignment uintptr) {
+	C.QTextStream_SetFieldAlignment(this.h, (C.uintptr_t)(alignment))
+}
+
+func (this *QTextStream) FieldAlignment() uintptr {
+	ret := C.QTextStream_FieldAlignment(this.h)
+	return (uintptr)(ret)
 }
 
 func (this *QTextStream) SetPadChar(ch QChar) {
@@ -194,6 +236,15 @@ func (this *QTextStream) FieldWidth() int {
 	return (int)(ret)
 }
 
+func (this *QTextStream) SetNumberFlags(flags int) {
+	C.QTextStream_SetNumberFlags(this.h, (C.int)(flags))
+}
+
+func (this *QTextStream) NumberFlags() int {
+	ret := C.QTextStream_NumberFlags(this.h)
+	return (int)(ret)
+}
+
 func (this *QTextStream) SetIntegerBase(base int) {
 	C.QTextStream_SetIntegerBase(this.h, (C.int)(base))
 }
@@ -201,6 +252,15 @@ func (this *QTextStream) SetIntegerBase(base int) {
 func (this *QTextStream) IntegerBase() int {
 	ret := C.QTextStream_IntegerBase(this.h)
 	return (int)(ret)
+}
+
+func (this *QTextStream) SetRealNumberNotation(notation uintptr) {
+	C.QTextStream_SetRealNumberNotation(this.h, (C.uintptr_t)(notation))
+}
+
+func (this *QTextStream) RealNumberNotation() uintptr {
+	ret := C.QTextStream_RealNumberNotation(this.h)
+	return (uintptr)(ret)
 }
 
 func (this *QTextStream) SetRealNumberPrecision(precision int) {
@@ -373,7 +433,7 @@ func (this *QTextStream) OperatorShiftLeftWithChar(c string) *QTextStream {
 func (this *QTextStream) ReadLine1(maxlen int64) string {
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
-	C.QTextStream_ReadLine1(this.h, (C.int64_t)(maxlen), &_out, &_out_Strlen)
+	C.QTextStream_ReadLine1(this.h, (C.longlong)(maxlen), &_out, &_out_Strlen)
 	ret := C.GoStringN(_out, _out_Strlen)
 	C.free(unsafe.Pointer(_out))
 	return ret

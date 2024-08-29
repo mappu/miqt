@@ -97,6 +97,15 @@ func (this *QSessionManager) Cancel() {
 	C.QSessionManager_Cancel(this.h)
 }
 
+func (this *QSessionManager) SetRestartHint(restartHint uintptr) {
+	C.QSessionManager_SetRestartHint(this.h, (C.uintptr_t)(restartHint))
+}
+
+func (this *QSessionManager) RestartHint() uintptr {
+	ret := C.QSessionManager_RestartHint(this.h)
+	return (uintptr)(ret)
+}
+
 func (this *QSessionManager) SetRestartCommand(restartCommand []string) {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
 	restartCommand_CArray := (*[0xffff]*C.char)(C.malloc(C.ulong(8 * len(restartCommand))))

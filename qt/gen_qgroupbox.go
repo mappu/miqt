@@ -106,6 +106,11 @@ func (this *QGroupBox) SetTitle(title string) {
 	C.QGroupBox_SetTitle(this.h, title_Cstring, C.ulong(len(title)))
 }
 
+func (this *QGroupBox) Alignment() int {
+	ret := C.QGroupBox_Alignment(this.h)
+	return (int)(ret)
+}
+
 func (this *QGroupBox) SetAlignment(alignment int) {
 	C.QGroupBox_SetAlignment(this.h, (C.int)(alignment))
 }

@@ -12,17 +12,22 @@ extern "C" {
 #endif
 
 #ifdef __cplusplus
+class QEvent;
 class QGesture;
 class QGestureRecognizer;
 class QObject;
 #else
+typedef struct QEvent QEvent;
 typedef struct QGesture QGesture;
 typedef struct QGestureRecognizer QGestureRecognizer;
 typedef struct QObject QObject;
 #endif
 
 QGesture* QGestureRecognizer_Create(QGestureRecognizer* self, QObject* target);
+int QGestureRecognizer_Recognize(QGestureRecognizer* self, QGesture* state, QObject* watched, QEvent* event);
 void QGestureRecognizer_Reset(QGestureRecognizer* self, QGesture* state);
+uintptr_t QGestureRecognizer_RegisterRecognizer(QGestureRecognizer* recognizer);
+void QGestureRecognizer_UnregisterRecognizer(uintptr_t typeVal);
 void QGestureRecognizer_OperatorAssign(QGestureRecognizer* self, QGestureRecognizer* param1);
 void QGestureRecognizer_Delete(QGestureRecognizer* self);
 

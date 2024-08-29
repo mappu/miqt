@@ -1,9 +1,8 @@
-#include "gen_qmap.h"
-#include "qmap.h"
-
 #include <QMapDataBase>
 #include <QMapNodeBase>
+#include "qmap.h"
 
+#include "gen_qmap.h"
 
 extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
@@ -14,7 +13,7 @@ QMapNodeBase* QMapNodeBase_new(QMapNodeBase* param1) {
 }
 
 QMapNodeBase* QMapNodeBase_NextNode(QMapNodeBase* self) {
-	return (QMapNodeBase*) self->nextNode();
+	return (QMapNodeBase*) const_cast<const QMapNodeBase*>(self)->nextNode();
 }
 
 QMapNodeBase* QMapNodeBase_NextNode2(QMapNodeBase* self) {
@@ -22,15 +21,24 @@ QMapNodeBase* QMapNodeBase_NextNode2(QMapNodeBase* self) {
 }
 
 QMapNodeBase* QMapNodeBase_PreviousNode(QMapNodeBase* self) {
-	return (QMapNodeBase*) self->previousNode();
+	return (QMapNodeBase*) const_cast<const QMapNodeBase*>(self)->previousNode();
 }
 
 QMapNodeBase* QMapNodeBase_PreviousNode2(QMapNodeBase* self) {
 	return self->previousNode();
 }
 
+uintptr_t QMapNodeBase_Color(QMapNodeBase* self) {
+	QMapNodeBase::Color ret = const_cast<const QMapNodeBase*>(self)->color();
+	return static_cast<uintptr_t>(ret);
+}
+
+void QMapNodeBase_SetColor(QMapNodeBase* self, uintptr_t c) {
+	self->setColor(static_cast<QMapNodeBase::Color>(c));
+}
+
 QMapNodeBase* QMapNodeBase_Parent(QMapNodeBase* self) {
-	return self->parent();
+	return const_cast<const QMapNodeBase*>(self)->parent();
 }
 
 void QMapNodeBase_SetParent(QMapNodeBase* self, QMapNodeBase* pp) {

@@ -1,10 +1,9 @@
-#include "gen_qgraphicslayout.h"
-#include "qgraphicslayout.h"
-
 #include <QEvent>
 #include <QGraphicsLayout>
 #include <QGraphicsLayoutItem>
+#include "qgraphicslayout.h"
 
+#include "gen_qgraphicslayout.h"
 
 extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
@@ -15,7 +14,7 @@ void QGraphicsLayout_SetContentsMargins(QGraphicsLayout* self, double left, doub
 }
 
 void QGraphicsLayout_GetContentsMargins(QGraphicsLayout* self, double* left, double* top, double* right, double* bottom) {
-	self->getContentsMargins(static_cast<qreal*>(left), static_cast<qreal*>(top), static_cast<qreal*>(right), static_cast<qreal*>(bottom));
+	const_cast<const QGraphicsLayout*>(self)->getContentsMargins(static_cast<qreal*>(left), static_cast<qreal*>(top), static_cast<qreal*>(right), static_cast<qreal*>(bottom));
 }
 
 void QGraphicsLayout_Activate(QGraphicsLayout* self) {
@@ -23,7 +22,7 @@ void QGraphicsLayout_Activate(QGraphicsLayout* self) {
 }
 
 bool QGraphicsLayout_IsActivated(QGraphicsLayout* self) {
-	return self->isActivated();
+	return const_cast<const QGraphicsLayout*>(self)->isActivated();
 }
 
 void QGraphicsLayout_Invalidate(QGraphicsLayout* self) {
@@ -39,11 +38,11 @@ void QGraphicsLayout_WidgetEvent(QGraphicsLayout* self, QEvent* e) {
 }
 
 int QGraphicsLayout_Count(QGraphicsLayout* self) {
-	return self->count();
+	return const_cast<const QGraphicsLayout*>(self)->count();
 }
 
 QGraphicsLayoutItem* QGraphicsLayout_ItemAt(QGraphicsLayout* self, int i) {
-	return self->itemAt(static_cast<int>(i));
+	return const_cast<const QGraphicsLayout*>(self)->itemAt(static_cast<int>(i));
 }
 
 void QGraphicsLayout_RemoveAt(QGraphicsLayout* self, int index) {

@@ -103,6 +103,15 @@ func QCoreApplication_Arguments() []string {
 	return ret
 }
 
+func QCoreApplication_SetAttribute(attribute uintptr) {
+	C.QCoreApplication_SetAttribute((C.uintptr_t)(attribute))
+}
+
+func QCoreApplication_TestAttribute(attribute uintptr) bool {
+	ret := C.QCoreApplication_TestAttribute((C.uintptr_t)(attribute))
+	return (bool)(ret)
+}
+
 func QCoreApplication_SetOrganizationDomain(orgDomain string) {
 	orgDomain_Cstring := C.CString(orgDomain)
 	defer C.free(unsafe.Pointer(orgDomain_Cstring))
@@ -180,6 +189,14 @@ func QCoreApplication_Instance() *QCoreApplication {
 func QCoreApplication_Exec() int {
 	ret := C.QCoreApplication_Exec()
 	return (int)(ret)
+}
+
+func QCoreApplication_ProcessEvents() {
+	C.QCoreApplication_ProcessEvents()
+}
+
+func QCoreApplication_ProcessEvents2(flags int, maxtime int) {
+	C.QCoreApplication_ProcessEvents2((C.int)(flags), (C.int)(maxtime))
 }
 
 func QCoreApplication_Exit() {
@@ -443,6 +460,14 @@ func QCoreApplication_TrUtf83(s string, c string, n int) string {
 	ret := C.GoStringN(_out, _out_Strlen)
 	C.free(unsafe.Pointer(_out))
 	return ret
+}
+
+func QCoreApplication_SetAttribute2(attribute uintptr, on bool) {
+	C.QCoreApplication_SetAttribute2((C.uintptr_t)(attribute), (C.bool)(on))
+}
+
+func QCoreApplication_ProcessEvents1(flags int) {
+	C.QCoreApplication_ProcessEvents1((C.int)(flags))
 }
 
 func QCoreApplication_Exit1(retcode int) {

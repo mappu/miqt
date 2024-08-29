@@ -218,6 +218,26 @@ func (this *QFileSystemModel) SetData(index *QModelIndex, value *QVariant) bool 
 	return (bool)(ret)
 }
 
+func (this *QFileSystemModel) HeaderData(section int, orientation uintptr) *QVariant {
+	ret := C.QFileSystemModel_HeaderData(this.h, (C.int)(section), (C.uintptr_t)(orientation))
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQVariant(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QVariant) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QFileSystemModel) Flags(index *QModelIndex) int {
+	ret := C.QFileSystemModel_Flags(this.h, index.cPointer())
+	return (int)(ret)
+}
+
+func (this *QFileSystemModel) Sort(column int) {
+	C.QFileSystemModel_Sort(this.h, (C.int)(column))
+}
+
 func (this *QFileSystemModel) MimeTypes() []string {
 	var _out **C.char = nil
 	var _out_Lengths *C.int = nil
@@ -242,6 +262,16 @@ func (this *QFileSystemModel) MimeData(indexes []QModelIndex) *QMimeData {
 	}
 	ret := C.QFileSystemModel_MimeData(this.h, &indexes_CArray[0], C.ulong(len(indexes)))
 	return newQMimeData_U(unsafe.Pointer(ret))
+}
+
+func (this *QFileSystemModel) DropMimeData(data *QMimeData, action uintptr, row int, column int, parent *QModelIndex) bool {
+	ret := C.QFileSystemModel_DropMimeData(this.h, data.cPointer(), (C.uintptr_t)(action), (C.int)(row), (C.int)(column), parent.cPointer())
+	return (bool)(ret)
+}
+
+func (this *QFileSystemModel) SupportedDropActions() int {
+	ret := C.QFileSystemModel_SupportedDropActions(this.h)
+	return (int)(ret)
 }
 
 func (this *QFileSystemModel) SetRootPath(path string) *QModelIndex {
@@ -284,6 +314,15 @@ func (this *QFileSystemModel) SetIconProvider(provider *QFileIconProvider) {
 func (this *QFileSystemModel) IconProvider() *QFileIconProvider {
 	ret := C.QFileSystemModel_IconProvider(this.h)
 	return newQFileIconProvider_U(unsafe.Pointer(ret))
+}
+
+func (this *QFileSystemModel) SetFilter(filters int) {
+	C.QFileSystemModel_SetFilter(this.h, (C.int)(filters))
+}
+
+func (this *QFileSystemModel) Filter() int {
+	ret := C.QFileSystemModel_Filter(this.h)
+	return (int)(ret)
 }
 
 func (this *QFileSystemModel) SetResolveSymlinks(enable bool) {
@@ -341,6 +380,24 @@ func (this *QFileSystemModel) NameFilters() []string {
 	}
 	C.free(unsafe.Pointer(_out))
 	return ret
+}
+
+func (this *QFileSystemModel) SetOption(option uintptr) {
+	C.QFileSystemModel_SetOption(this.h, (C.uintptr_t)(option))
+}
+
+func (this *QFileSystemModel) TestOption(option uintptr) bool {
+	ret := C.QFileSystemModel_TestOption(this.h, (C.uintptr_t)(option))
+	return (bool)(ret)
+}
+
+func (this *QFileSystemModel) SetOptions(options int) {
+	C.QFileSystemModel_SetOptions(this.h, (C.int)(options))
+}
+
+func (this *QFileSystemModel) Options() int {
+	ret := C.QFileSystemModel_Options(this.h)
+	return (int)(ret)
 }
 
 func (this *QFileSystemModel) FilePath(index *QModelIndex) string {
@@ -418,6 +475,11 @@ func (this *QFileSystemModel) FileIcon(index *QModelIndex) *QIcon {
 		runtime.KeepAlive(ret2.h)
 	})
 	return ret1
+}
+
+func (this *QFileSystemModel) Permissions(index *QModelIndex) int {
+	ret := C.QFileSystemModel_Permissions(this.h, index.cPointer())
+	return (int)(ret)
 }
 
 func (this *QFileSystemModel) FileInfo(index *QModelIndex) *QFileInfo {
@@ -552,6 +614,25 @@ func (this *QFileSystemModel) Data2(index *QModelIndex, role int) *QVariant {
 func (this *QFileSystemModel) SetData3(index *QModelIndex, value *QVariant, role int) bool {
 	ret := C.QFileSystemModel_SetData3(this.h, index.cPointer(), value.cPointer(), (C.int)(role))
 	return (bool)(ret)
+}
+
+func (this *QFileSystemModel) HeaderData3(section int, orientation uintptr, role int) *QVariant {
+	ret := C.QFileSystemModel_HeaderData3(this.h, (C.int)(section), (C.uintptr_t)(orientation), (C.int)(role))
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQVariant(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QVariant) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QFileSystemModel) Sort2(column int, order uintptr) {
+	C.QFileSystemModel_Sort2(this.h, (C.int)(column), (C.uintptr_t)(order))
+}
+
+func (this *QFileSystemModel) SetOption2(option uintptr, on bool) {
+	C.QFileSystemModel_SetOption2(this.h, (C.uintptr_t)(option), (C.bool)(on))
 }
 
 func (this *QFileSystemModel) Delete() {

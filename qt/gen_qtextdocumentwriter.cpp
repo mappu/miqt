@@ -1,15 +1,16 @@
-#include "gen_qtextdocumentwriter.h"
-#include "qtextdocumentwriter.h"
-
 #include <QByteArray>
 #include <QIODevice>
 #include <QList>
 #include <QString>
+#include <QByteArray>
+#include <cstring>
 #include <QTextCodec>
 #include <QTextDocument>
 #include <QTextDocumentFragment>
 #include <QTextDocumentWriter>
+#include "qtextdocumentwriter.h"
 
+#include "gen_qtextdocumentwriter.h"
 
 extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
@@ -38,7 +39,7 @@ void QTextDocumentWriter_SetFormat(QTextDocumentWriter* self, QByteArray* format
 }
 
 QByteArray* QTextDocumentWriter_Format(QTextDocumentWriter* self) {
-	QByteArray ret = self->format();
+	QByteArray ret = const_cast<const QTextDocumentWriter*>(self)->format();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QByteArray*>(new QByteArray(ret));
 }
@@ -48,7 +49,7 @@ void QTextDocumentWriter_SetDevice(QTextDocumentWriter* self, QIODevice* device)
 }
 
 QIODevice* QTextDocumentWriter_Device(QTextDocumentWriter* self) {
-	return self->device();
+	return const_cast<const QTextDocumentWriter*>(self)->device();
 }
 
 void QTextDocumentWriter_SetFileName(QTextDocumentWriter* self, const char* fileName, size_t fileName_Strlen) {
@@ -57,7 +58,7 @@ void QTextDocumentWriter_SetFileName(QTextDocumentWriter* self, const char* file
 }
 
 void QTextDocumentWriter_FileName(QTextDocumentWriter* self, char** _out, int* _out_Strlen) {
-	QString ret = self->fileName();
+	QString ret = const_cast<const QTextDocumentWriter*>(self)->fileName();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -78,7 +79,7 @@ void QTextDocumentWriter_SetCodec(QTextDocumentWriter* self, QTextCodec* codec) 
 }
 
 QTextCodec* QTextDocumentWriter_Codec(QTextDocumentWriter* self) {
-	return self->codec();
+	return const_cast<const QTextDocumentWriter*>(self)->codec();
 }
 
 void QTextDocumentWriter_SupportedDocumentFormats(QByteArray*** _out, size_t* _out_len) {

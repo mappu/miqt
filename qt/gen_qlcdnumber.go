@@ -111,6 +111,24 @@ func (this *QLCDNumber) CheckOverflowWithNum(num int) bool {
 	return (bool)(ret)
 }
 
+func (this *QLCDNumber) Mode() uintptr {
+	ret := C.QLCDNumber_Mode(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QLCDNumber) SetMode(mode uintptr) {
+	C.QLCDNumber_SetMode(this.h, (C.uintptr_t)(mode))
+}
+
+func (this *QLCDNumber) SegmentStyle() uintptr {
+	ret := C.QLCDNumber_SegmentStyle(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QLCDNumber) SetSegmentStyle(segmentStyle uintptr) {
+	C.QLCDNumber_SetSegmentStyle(this.h, (C.uintptr_t)(segmentStyle))
+}
+
 func (this *QLCDNumber) Value() float64 {
 	ret := C.QLCDNumber_Value(this.h)
 	return (float64)(ret)

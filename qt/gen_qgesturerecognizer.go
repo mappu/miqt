@@ -38,8 +38,22 @@ func (this *QGestureRecognizer) Create(target *QObject) *QGesture {
 	return newQGesture_U(unsafe.Pointer(ret))
 }
 
+func (this *QGestureRecognizer) Recognize(state *QGesture, watched *QObject, event *QEvent) int {
+	ret := C.QGestureRecognizer_Recognize(this.h, state.cPointer(), watched.cPointer(), event.cPointer())
+	return (int)(ret)
+}
+
 func (this *QGestureRecognizer) Reset(state *QGesture) {
 	C.QGestureRecognizer_Reset(this.h, state.cPointer())
+}
+
+func QGestureRecognizer_RegisterRecognizer(recognizer *QGestureRecognizer) uintptr {
+	ret := C.QGestureRecognizer_RegisterRecognizer(recognizer.cPointer())
+	return (uintptr)(ret)
+}
+
+func QGestureRecognizer_UnregisterRecognizer(typeVal uintptr) {
+	C.QGestureRecognizer_UnregisterRecognizer((C.uintptr_t)(typeVal))
 }
 
 func (this *QGestureRecognizer) OperatorAssign(param1 *QGestureRecognizer) {

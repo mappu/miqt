@@ -133,6 +133,11 @@ func (this *QConcatenateTablesProxyModel) SetData(index *QModelIndex, value *QVa
 	return (bool)(ret)
 }
 
+func (this *QConcatenateTablesProxyModel) Flags(index *QModelIndex) int {
+	ret := C.QConcatenateTablesProxyModel_Flags(this.h, index.cPointer())
+	return (int)(ret)
+}
+
 func (this *QConcatenateTablesProxyModel) Index(row int, column int) *QModelIndex {
 	ret := C.QConcatenateTablesProxyModel_Index(this.h, (C.int)(row), (C.int)(column))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -158,6 +163,17 @@ func (this *QConcatenateTablesProxyModel) Parent(index *QModelIndex) *QModelInde
 func (this *QConcatenateTablesProxyModel) RowCount() int {
 	ret := C.QConcatenateTablesProxyModel_RowCount(this.h)
 	return (int)(ret)
+}
+
+func (this *QConcatenateTablesProxyModel) HeaderData(section int, orientation uintptr) *QVariant {
+	ret := C.QConcatenateTablesProxyModel_HeaderData(this.h, (C.int)(section), (C.uintptr_t)(orientation))
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQVariant(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QVariant) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
 }
 
 func (this *QConcatenateTablesProxyModel) ColumnCount() int {
@@ -189,6 +205,16 @@ func (this *QConcatenateTablesProxyModel) MimeData(indexes []QModelIndex) *QMime
 	}
 	ret := C.QConcatenateTablesProxyModel_MimeData(this.h, &indexes_CArray[0], C.ulong(len(indexes)))
 	return newQMimeData_U(unsafe.Pointer(ret))
+}
+
+func (this *QConcatenateTablesProxyModel) CanDropMimeData(data *QMimeData, action uintptr, row int, column int, parent *QModelIndex) bool {
+	ret := C.QConcatenateTablesProxyModel_CanDropMimeData(this.h, data.cPointer(), (C.uintptr_t)(action), (C.int)(row), (C.int)(column), parent.cPointer())
+	return (bool)(ret)
+}
+
+func (this *QConcatenateTablesProxyModel) DropMimeData(data *QMimeData, action uintptr, row int, column int, parent *QModelIndex) bool {
+	ret := C.QConcatenateTablesProxyModel_DropMimeData(this.h, data.cPointer(), (C.uintptr_t)(action), (C.int)(row), (C.int)(column), parent.cPointer())
+	return (bool)(ret)
 }
 
 func (this *QConcatenateTablesProxyModel) Span(index *QModelIndex) *QSize {
@@ -284,6 +310,17 @@ func (this *QConcatenateTablesProxyModel) Index3(row int, column int, parent *QM
 func (this *QConcatenateTablesProxyModel) RowCount1(parent *QModelIndex) int {
 	ret := C.QConcatenateTablesProxyModel_RowCount1(this.h, parent.cPointer())
 	return (int)(ret)
+}
+
+func (this *QConcatenateTablesProxyModel) HeaderData3(section int, orientation uintptr, role int) *QVariant {
+	ret := C.QConcatenateTablesProxyModel_HeaderData3(this.h, (C.int)(section), (C.uintptr_t)(orientation), (C.int)(role))
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQVariant(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QVariant) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
 }
 
 func (this *QConcatenateTablesProxyModel) ColumnCount1(parent *QModelIndex) int {

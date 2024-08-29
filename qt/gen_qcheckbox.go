@@ -122,6 +122,15 @@ func (this *QCheckBox) IsTristate() bool {
 	return (bool)(ret)
 }
 
+func (this *QCheckBox) CheckState() uintptr {
+	ret := C.QCheckBox_CheckState(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QCheckBox) SetCheckState(state uintptr) {
+	C.QCheckBox_SetCheckState(this.h, (C.uintptr_t)(state))
+}
+
 func (this *QCheckBox) StateChanged(param1 int) {
 	C.QCheckBox_StateChanged(this.h, (C.int)(param1))
 }

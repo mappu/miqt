@@ -26,18 +26,18 @@ QFileSystemWatcher* QFileSystemWatcher_new2(char** paths, uint64_t* paths_Length
 QFileSystemWatcher* QFileSystemWatcher_new3(QObject* parent);
 QFileSystemWatcher* QFileSystemWatcher_new4(char** paths, uint64_t* paths_Lengths, size_t paths_len, QObject* parent);
 QMetaObject* QFileSystemWatcher_MetaObject(QFileSystemWatcher* self);
-void QFileSystemWatcher_Tr(char* s, char** _out, int* _out_Strlen);
-void QFileSystemWatcher_TrUtf8(char* s, char** _out, int* _out_Strlen);
+void QFileSystemWatcher_Tr(const char* s, char** _out, int* _out_Strlen);
+void QFileSystemWatcher_TrUtf8(const char* s, char** _out, int* _out_Strlen);
 bool QFileSystemWatcher_AddPath(QFileSystemWatcher* self, const char* file, size_t file_Strlen);
 void QFileSystemWatcher_AddPaths(QFileSystemWatcher* self, char** files, uint64_t* files_Lengths, size_t files_len, char*** _out, int** _out_Lengths, size_t* _out_len);
 bool QFileSystemWatcher_RemovePath(QFileSystemWatcher* self, const char* file, size_t file_Strlen);
 void QFileSystemWatcher_RemovePaths(QFileSystemWatcher* self, char** files, uint64_t* files_Lengths, size_t files_len, char*** _out, int** _out_Lengths, size_t* _out_len);
 void QFileSystemWatcher_Files(QFileSystemWatcher* self, char*** _out, int** _out_Lengths, size_t* _out_len);
 void QFileSystemWatcher_Directories(QFileSystemWatcher* self, char*** _out, int** _out_Lengths, size_t* _out_len);
-void QFileSystemWatcher_Tr2(char* s, char* c, char** _out, int* _out_Strlen);
-void QFileSystemWatcher_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen);
-void QFileSystemWatcher_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen);
-void QFileSystemWatcher_TrUtf83(char* s, char* c, int n, char** _out, int* _out_Strlen);
+void QFileSystemWatcher_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
+void QFileSystemWatcher_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+void QFileSystemWatcher_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
+void QFileSystemWatcher_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
 void QFileSystemWatcher_Delete(QFileSystemWatcher* self);
 
 #ifdef __cplusplus

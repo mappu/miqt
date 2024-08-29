@@ -98,6 +98,15 @@ func (this *QAbstractTransition) SetTargetStates(targets []*QAbstractState) {
 	C.QAbstractTransition_SetTargetStates(this.h, &targets_CArray[0], C.ulong(len(targets)))
 }
 
+func (this *QAbstractTransition) TransitionType() uintptr {
+	ret := C.QAbstractTransition_TransitionType(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QAbstractTransition) SetTransitionType(typeVal uintptr) {
+	C.QAbstractTransition_SetTransitionType(this.h, (C.uintptr_t)(typeVal))
+}
+
 func (this *QAbstractTransition) Machine() *QStateMachine {
 	ret := C.QAbstractTransition_Machine(this.h)
 	return newQStateMachine_U(unsafe.Pointer(ret))

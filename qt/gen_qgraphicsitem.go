@@ -126,6 +126,42 @@ func (this *QGraphicsItem) SetGroup(group *QGraphicsItemGroup) {
 	C.QGraphicsItem_SetGroup(this.h, group.cPointer())
 }
 
+func (this *QGraphicsItem) Flags() int {
+	ret := C.QGraphicsItem_Flags(this.h)
+	return (int)(ret)
+}
+
+func (this *QGraphicsItem) SetFlag(flag uintptr) {
+	C.QGraphicsItem_SetFlag(this.h, (C.uintptr_t)(flag))
+}
+
+func (this *QGraphicsItem) SetFlags(flags int) {
+	C.QGraphicsItem_SetFlags(this.h, (C.int)(flags))
+}
+
+func (this *QGraphicsItem) CacheMode() uintptr {
+	ret := C.QGraphicsItem_CacheMode(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QGraphicsItem) SetCacheMode(mode uintptr) {
+	C.QGraphicsItem_SetCacheMode(this.h, (C.uintptr_t)(mode))
+}
+
+func (this *QGraphicsItem) PanelModality() uintptr {
+	ret := C.QGraphicsItem_PanelModality(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QGraphicsItem) SetPanelModality(panelModality uintptr) {
+	C.QGraphicsItem_SetPanelModality(this.h, (C.uintptr_t)(panelModality))
+}
+
+func (this *QGraphicsItem) IsBlockedByModalPanel() bool {
+	ret := C.QGraphicsItem_IsBlockedByModalPanel(this.h)
+	return (bool)(ret)
+}
+
 func (this *QGraphicsItem) ToolTip() string {
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
@@ -237,6 +273,15 @@ func (this *QGraphicsItem) SetGraphicsEffect(effect *QGraphicsEffect) {
 	C.QGraphicsItem_SetGraphicsEffect(this.h, effect.cPointer())
 }
 
+func (this *QGraphicsItem) AcceptedMouseButtons() int {
+	ret := C.QGraphicsItem_AcceptedMouseButtons(this.h)
+	return (int)(ret)
+}
+
+func (this *QGraphicsItem) SetAcceptedMouseButtons(buttons int) {
+	C.QGraphicsItem_SetAcceptedMouseButtons(this.h, (C.int)(buttons))
+}
+
 func (this *QGraphicsItem) AcceptHoverEvents() bool {
 	ret := C.QGraphicsItem_AcceptHoverEvents(this.h)
 	return (bool)(ret)
@@ -285,6 +330,10 @@ func (this *QGraphicsItem) SetActive(active bool) {
 func (this *QGraphicsItem) HasFocus() bool {
 	ret := C.QGraphicsItem_HasFocus(this.h)
 	return (bool)(ret)
+}
+
+func (this *QGraphicsItem) SetFocus() {
+	C.QGraphicsItem_SetFocus(this.h)
 }
 
 func (this *QGraphicsItem) ClearFocus() {
@@ -610,6 +659,29 @@ func (this *QGraphicsItem) Contains(point *QPointF) bool {
 	return (bool)(ret)
 }
 
+func (this *QGraphicsItem) CollidesWithItem(other *QGraphicsItem) bool {
+	ret := C.QGraphicsItem_CollidesWithItem(this.h, other.cPointer())
+	return (bool)(ret)
+}
+
+func (this *QGraphicsItem) CollidesWithPath(path *QPainterPath) bool {
+	ret := C.QGraphicsItem_CollidesWithPath(this.h, path.cPointer())
+	return (bool)(ret)
+}
+
+func (this *QGraphicsItem) CollidingItems() []*QGraphicsItem {
+	var _out **C.QGraphicsItem = nil
+	var _out_len C.size_t = 0
+	C.QGraphicsItem_CollidingItems(this.h, &_out, &_out_len)
+	ret := make([]*QGraphicsItem, int(_out_len))
+	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_out)) // so fresh so clean
+	for i := 0; i < int(_out_len); i++ {
+		ret[i] = newQGraphicsItem(_outCast[i])
+	}
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
 func (this *QGraphicsItem) IsObscured() bool {
 	ret := C.QGraphicsItem_IsObscured(this.h)
 	return (bool)(ret)
@@ -738,8 +810,8 @@ func (this *QGraphicsItem) MapRectToScene(rect *QRectF) *QRectF {
 	return ret1
 }
 
-func (this *QGraphicsItem) MapToItem2(item *QGraphicsItem, path *QPainterPath) *QPainterPath {
-	ret := C.QGraphicsItem_MapToItem2(this.h, item.cPointer(), path.cPointer())
+func (this *QGraphicsItem) MapToItem4(item *QGraphicsItem, path *QPainterPath) *QPainterPath {
+	ret := C.QGraphicsItem_MapToItem4(this.h, item.cPointer(), path.cPointer())
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQPainterPath(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QPainterPath) {
@@ -837,8 +909,8 @@ func (this *QGraphicsItem) MapRectFromScene(rect *QRectF) *QRectF {
 	return ret1
 }
 
-func (this *QGraphicsItem) MapFromItem2(item *QGraphicsItem, path *QPainterPath) *QPainterPath {
-	ret := C.QGraphicsItem_MapFromItem2(this.h, item.cPointer(), path.cPointer())
+func (this *QGraphicsItem) MapFromItem4(item *QGraphicsItem, path *QPainterPath) *QPainterPath {
+	ret := C.QGraphicsItem_MapFromItem4(this.h, item.cPointer(), path.cPointer())
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQPainterPath(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QPainterPath) {
@@ -870,8 +942,8 @@ func (this *QGraphicsItem) MapFromSceneWithPath(path *QPainterPath) *QPainterPat
 	return ret1
 }
 
-func (this *QGraphicsItem) MapToItem3(item *QGraphicsItem, x float64, y float64) *QPointF {
-	ret := C.QGraphicsItem_MapToItem3(this.h, item.cPointer(), (C.double)(x), (C.double)(y))
+func (this *QGraphicsItem) MapToItem5(item *QGraphicsItem, x float64, y float64) *QPointF {
+	ret := C.QGraphicsItem_MapToItem5(this.h, item.cPointer(), (C.double)(x), (C.double)(y))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQPointF(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QPointF) {
@@ -936,8 +1008,8 @@ func (this *QGraphicsItem) MapRectToScene2(x float64, y float64, w float64, h fl
 	return ret1
 }
 
-func (this *QGraphicsItem) MapFromItem3(item *QGraphicsItem, x float64, y float64) *QPointF {
-	ret := C.QGraphicsItem_MapFromItem3(this.h, item.cPointer(), (C.double)(x), (C.double)(y))
+func (this *QGraphicsItem) MapFromItem5(item *QGraphicsItem, x float64, y float64) *QPointF {
+	ret := C.QGraphicsItem_MapFromItem5(this.h, item.cPointer(), (C.double)(x), (C.double)(y))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQPointF(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QPointF) {
@@ -1032,6 +1104,15 @@ func (this *QGraphicsItem) SetData(key int, value *QVariant) {
 	C.QGraphicsItem_SetData(this.h, (C.int)(key), value.cPointer())
 }
 
+func (this *QGraphicsItem) InputMethodHints() int {
+	ret := C.QGraphicsItem_InputMethodHints(this.h)
+	return (int)(ret)
+}
+
+func (this *QGraphicsItem) SetInputMethodHints(hints int) {
+	C.QGraphicsItem_SetInputMethodHints(this.h, (C.int)(hints))
+}
+
 func (this *QGraphicsItem) Type() int {
 	ret := C.QGraphicsItem_Type(this.h)
 	return (int)(ret)
@@ -1043,6 +1124,18 @@ func (this *QGraphicsItem) InstallSceneEventFilter(filterItem *QGraphicsItem) {
 
 func (this *QGraphicsItem) RemoveSceneEventFilter(filterItem *QGraphicsItem) {
 	C.QGraphicsItem_RemoveSceneEventFilter(this.h, filterItem.cPointer())
+}
+
+func (this *QGraphicsItem) SetFlag2(flag uintptr, enabled bool) {
+	C.QGraphicsItem_SetFlag2(this.h, (C.uintptr_t)(flag), (C.bool)(enabled))
+}
+
+func (this *QGraphicsItem) SetCacheMode2(mode uintptr, cacheSize *QSize) {
+	C.QGraphicsItem_SetCacheMode2(this.h, (C.uintptr_t)(mode), cacheSize.cPointer())
+}
+
+func (this *QGraphicsItem) SetFocus1(focusReason uintptr) {
+	C.QGraphicsItem_SetFocus1(this.h, (C.uintptr_t)(focusReason))
 }
 
 func (this *QGraphicsItem) EnsureVisible1(rect *QRectF) {
@@ -1082,6 +1175,29 @@ func (this *QGraphicsItem) ItemTransform2(other *QGraphicsItem, ok *bool) *QTran
 
 func (this *QGraphicsItem) SetTransform2(matrix *QTransform, combine bool) {
 	C.QGraphicsItem_SetTransform2(this.h, matrix.cPointer(), (C.bool)(combine))
+}
+
+func (this *QGraphicsItem) CollidesWithItem2(other *QGraphicsItem, mode uintptr) bool {
+	ret := C.QGraphicsItem_CollidesWithItem2(this.h, other.cPointer(), (C.uintptr_t)(mode))
+	return (bool)(ret)
+}
+
+func (this *QGraphicsItem) CollidesWithPath2(path *QPainterPath, mode uintptr) bool {
+	ret := C.QGraphicsItem_CollidesWithPath2(this.h, path.cPointer(), (C.uintptr_t)(mode))
+	return (bool)(ret)
+}
+
+func (this *QGraphicsItem) CollidingItems1(mode uintptr) []*QGraphicsItem {
+	var _out **C.QGraphicsItem = nil
+	var _out_len C.size_t = 0
+	C.QGraphicsItem_CollidingItems1(this.h, (C.uintptr_t)(mode), &_out, &_out_len)
+	ret := make([]*QGraphicsItem, int(_out_len))
+	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_out)) // so fresh so clean
+	for i := 0; i < int(_out_len); i++ {
+		ret[i] = newQGraphicsItem(_outCast[i])
+	}
+	C.free(unsafe.Pointer(_out))
+	return ret
 }
 
 func (this *QGraphicsItem) IsObscured1(rect *QRectF) bool {
@@ -1151,6 +1267,14 @@ func QGraphicsObject_TrUtf8(s string) string {
 	ret := C.GoStringN(_out, _out_Strlen)
 	C.free(unsafe.Pointer(_out))
 	return ret
+}
+
+func (this *QGraphicsObject) GrabGesture(typeVal uintptr) {
+	C.QGraphicsObject_GrabGesture(this.h, (C.uintptr_t)(typeVal))
+}
+
+func (this *QGraphicsObject) UngrabGesture(typeVal uintptr) {
+	C.QGraphicsObject_UngrabGesture(this.h, (C.uintptr_t)(typeVal))
 }
 
 func (this *QGraphicsObject) ParentChanged() {
@@ -1347,6 +1471,10 @@ func QGraphicsObject_TrUtf83(s string, c string, n int) string {
 	ret := C.GoStringN(_out, _out_Strlen)
 	C.free(unsafe.Pointer(_out))
 	return ret
+}
+
+func (this *QGraphicsObject) GrabGesture2(typeVal uintptr, flags int) {
+	C.QGraphicsObject_GrabGesture2(this.h, (C.uintptr_t)(typeVal), (C.int)(flags))
 }
 
 func (this *QGraphicsObject) Delete() {
@@ -1862,6 +1990,15 @@ func NewQGraphicsPolygonItem2(parent *QGraphicsItem) *QGraphicsPolygonItem {
 	return newQGraphicsPolygonItem(ret)
 }
 
+func (this *QGraphicsPolygonItem) FillRule() uintptr {
+	ret := C.QGraphicsPolygonItem_FillRule(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QGraphicsPolygonItem) SetFillRule(rule uintptr) {
+	C.QGraphicsPolygonItem_SetFillRule(this.h, (C.uintptr_t)(rule))
+}
+
 func (this *QGraphicsPolygonItem) BoundingRect() *QRectF {
 	ret := C.QGraphicsPolygonItem_BoundingRect(this.h)
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -2131,6 +2268,15 @@ func (this *QGraphicsPixmapItem) SetPixmap(pixmap *QPixmap) {
 	C.QGraphicsPixmapItem_SetPixmap(this.h, pixmap.cPointer())
 }
 
+func (this *QGraphicsPixmapItem) TransformationMode() uintptr {
+	ret := C.QGraphicsPixmapItem_TransformationMode(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QGraphicsPixmapItem) SetTransformationMode(mode uintptr) {
+	C.QGraphicsPixmapItem_SetTransformationMode(this.h, (C.uintptr_t)(mode))
+}
+
 func (this *QGraphicsPixmapItem) Offset() *QPointF {
 	ret := C.QGraphicsPixmapItem_Offset(this.h)
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -2200,6 +2346,15 @@ func (this *QGraphicsPixmapItem) OpaqueArea() *QPainterPath {
 func (this *QGraphicsPixmapItem) Type() int {
 	ret := C.QGraphicsPixmapItem_Type(this.h)
 	return (int)(ret)
+}
+
+func (this *QGraphicsPixmapItem) ShapeMode() uintptr {
+	ret := C.QGraphicsPixmapItem_ShapeMode(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QGraphicsPixmapItem) SetShapeMode(mode uintptr) {
+	C.QGraphicsPixmapItem_SetShapeMode(this.h, (C.uintptr_t)(mode))
 }
 
 func (this *QGraphicsPixmapItem) Delete() {
@@ -2413,6 +2568,15 @@ func (this *QGraphicsTextItem) SetDocument(document *QTextDocument) {
 func (this *QGraphicsTextItem) Document() *QTextDocument {
 	ret := C.QGraphicsTextItem_Document(this.h)
 	return newQTextDocument_U(unsafe.Pointer(ret))
+}
+
+func (this *QGraphicsTextItem) SetTextInteractionFlags(flags int) {
+	C.QGraphicsTextItem_SetTextInteractionFlags(this.h, (C.int)(flags))
+}
+
+func (this *QGraphicsTextItem) TextInteractionFlags() int {
+	ret := C.QGraphicsTextItem_TextInteractionFlags(this.h)
+	return (int)(ret)
 }
 
 func (this *QGraphicsTextItem) SetTabChangesFocus(b bool) {

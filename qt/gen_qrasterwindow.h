@@ -24,12 +24,12 @@ typedef struct QWindow QWindow;
 QRasterWindow* QRasterWindow_new();
 QRasterWindow* QRasterWindow_new2(QWindow* parent);
 QMetaObject* QRasterWindow_MetaObject(QRasterWindow* self);
-void QRasterWindow_Tr(char* s, char** _out, int* _out_Strlen);
-void QRasterWindow_TrUtf8(char* s, char** _out, int* _out_Strlen);
-void QRasterWindow_Tr2(char* s, char* c, char** _out, int* _out_Strlen);
-void QRasterWindow_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen);
-void QRasterWindow_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen);
-void QRasterWindow_TrUtf83(char* s, char* c, int n, char** _out, int* _out_Strlen);
+void QRasterWindow_Tr(const char* s, char** _out, int* _out_Strlen);
+void QRasterWindow_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+void QRasterWindow_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
+void QRasterWindow_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+void QRasterWindow_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
+void QRasterWindow_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
 void QRasterWindow_Delete(QRasterWindow* self);
 
 #ifdef __cplusplus

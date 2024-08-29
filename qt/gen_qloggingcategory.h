@@ -17,12 +17,12 @@ class QLoggingCategory;
 typedef struct QLoggingCategory QLoggingCategory;
 #endif
 
-QLoggingCategory* QLoggingCategory_new(char* category);
+QLoggingCategory* QLoggingCategory_new(const char* category);
 bool QLoggingCategory_IsDebugEnabled(QLoggingCategory* self);
 bool QLoggingCategory_IsInfoEnabled(QLoggingCategory* self);
 bool QLoggingCategory_IsWarningEnabled(QLoggingCategory* self);
 bool QLoggingCategory_IsCriticalEnabled(QLoggingCategory* self);
-char* QLoggingCategory_CategoryName(QLoggingCategory* self);
+const char* QLoggingCategory_CategoryName(QLoggingCategory* self);
 QLoggingCategory* QLoggingCategory_OperatorCall(QLoggingCategory* self);
 QLoggingCategory* QLoggingCategory_OperatorCall2(QLoggingCategory* self);
 QLoggingCategory* QLoggingCategory_DefaultCategory();

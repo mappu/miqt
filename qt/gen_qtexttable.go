@@ -132,6 +132,28 @@ func (this *QTextTableCell) OperatorNotEqual(other *QTextTableCell) bool {
 	return (bool)(ret)
 }
 
+func (this *QTextTableCell) Begin() *QTextFrame__iterator {
+	ret := C.QTextTableCell_Begin(this.h)
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQTextFrame__iterator(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QTextFrame__iterator) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QTextTableCell) End() *QTextFrame__iterator {
+	ret := C.QTextTableCell_End(this.h)
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQTextFrame__iterator(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QTextFrame__iterator) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
 func (this *QTextTableCell) TableCellFormatIndex() int {
 	ret := C.QTextTableCell_TableCellFormatIndex(this.h)
 	return (int)(ret)

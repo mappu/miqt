@@ -76,6 +76,11 @@ func (this *QTextInlineObject) Height() float64 {
 	return (float64)(ret)
 }
 
+func (this *QTextInlineObject) TextDirection() uintptr {
+	ret := C.QTextInlineObject_TextDirection(this.h)
+	return (uintptr)(ret)
+}
+
 func (this *QTextInlineObject) SetWidth(w float64) {
 	C.QTextInlineObject_SetWidth(this.h, (C.double)(w))
 }
@@ -231,8 +236,54 @@ func (this *QTextLayout) PreeditAreaText() string {
 	return ret
 }
 
+func (this *QTextLayout) SetAdditionalFormats(overrides []QTextLayout__FormatRange) {
+	// For the C ABI, malloc a C array of raw pointers
+	overrides_CArray := (*[0xffff]*C.QTextLayout__FormatRange)(C.malloc(C.ulong(8 * len(overrides))))
+	defer C.free(unsafe.Pointer(overrides_CArray))
+	for i := range overrides {
+		overrides_CArray[i] = overrides[i].cPointer()
+	}
+	C.QTextLayout_SetAdditionalFormats(this.h, &overrides_CArray[0], C.ulong(len(overrides)))
+}
+
+func (this *QTextLayout) AdditionalFormats() []QTextLayout__FormatRange {
+	var _out **C.QTextLayout__FormatRange = nil
+	var _out_len C.size_t = 0
+	C.QTextLayout_AdditionalFormats(this.h, &_out, &_out_len)
+	ret := make([]QTextLayout__FormatRange, int(_out_len))
+	_outCast := (*[0xffff]*C.QTextLayout__FormatRange)(unsafe.Pointer(_out)) // so fresh so clean
+	for i := 0; i < int(_out_len); i++ {
+		ret[i] = *newQTextLayout__FormatRange(_outCast[i])
+	}
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
 func (this *QTextLayout) ClearAdditionalFormats() {
 	C.QTextLayout_ClearAdditionalFormats(this.h)
+}
+
+func (this *QTextLayout) SetFormats(overrides []QTextLayout__FormatRange) {
+	// For the C ABI, malloc a C array of raw pointers
+	overrides_CArray := (*[0xffff]*C.QTextLayout__FormatRange)(C.malloc(C.ulong(8 * len(overrides))))
+	defer C.free(unsafe.Pointer(overrides_CArray))
+	for i := range overrides {
+		overrides_CArray[i] = overrides[i].cPointer()
+	}
+	C.QTextLayout_SetFormats(this.h, &overrides_CArray[0], C.ulong(len(overrides)))
+}
+
+func (this *QTextLayout) Formats() []QTextLayout__FormatRange {
+	var _out **C.QTextLayout__FormatRange = nil
+	var _out_len C.size_t = 0
+	C.QTextLayout_Formats(this.h, &_out, &_out_len)
+	ret := make([]QTextLayout__FormatRange, int(_out_len))
+	_outCast := (*[0xffff]*C.QTextLayout__FormatRange)(unsafe.Pointer(_out)) // so fresh so clean
+	for i := 0; i < int(_out_len); i++ {
+		ret[i] = *newQTextLayout__FormatRange(_outCast[i])
+	}
+	C.free(unsafe.Pointer(_out))
+	return ret
 }
 
 func (this *QTextLayout) ClearFormats() {
@@ -246,6 +297,15 @@ func (this *QTextLayout) SetCacheEnabled(enable bool) {
 func (this *QTextLayout) CacheEnabled() bool {
 	ret := C.QTextLayout_CacheEnabled(this.h)
 	return (bool)(ret)
+}
+
+func (this *QTextLayout) SetCursorMoveStyle(style uintptr) {
+	C.QTextLayout_SetCursorMoveStyle(this.h, (C.uintptr_t)(style))
+}
+
+func (this *QTextLayout) CursorMoveStyle() uintptr {
+	ret := C.QTextLayout_CursorMoveStyle(this.h)
+	return (uintptr)(ret)
 }
 
 func (this *QTextLayout) BeginLayout() {
@@ -303,6 +363,16 @@ func (this *QTextLayout) IsValidCursorPosition(pos int) bool {
 	return (bool)(ret)
 }
 
+func (this *QTextLayout) NextCursorPosition(oldPos int) int {
+	ret := C.QTextLayout_NextCursorPosition(this.h, (C.int)(oldPos))
+	return (int)(ret)
+}
+
+func (this *QTextLayout) PreviousCursorPosition(oldPos int) int {
+	ret := C.QTextLayout_PreviousCursorPosition(this.h, (C.int)(oldPos))
+	return (int)(ret)
+}
+
 func (this *QTextLayout) LeftCursorPosition(oldPos int) int {
 	ret := C.QTextLayout_LeftCursorPosition(this.h, (C.int)(oldPos))
 	return (int)(ret)
@@ -311,6 +381,10 @@ func (this *QTextLayout) LeftCursorPosition(oldPos int) int {
 func (this *QTextLayout) RightCursorPosition(oldPos int) int {
 	ret := C.QTextLayout_RightCursorPosition(this.h, (C.int)(oldPos))
 	return (int)(ret)
+}
+
+func (this *QTextLayout) Draw(p *QPainter, pos *QPointF) {
+	C.QTextLayout_Draw(this.h, p.cPointer(), pos.cPointer())
 }
 
 func (this *QTextLayout) DrawCursor(p *QPainter, pos *QPointF, cursorPosition int) {
@@ -372,6 +446,36 @@ func (this *QTextLayout) GlyphRuns() []QGlyphRun {
 
 func (this *QTextLayout) SetFlags(flags int) {
 	C.QTextLayout_SetFlags(this.h, (C.int)(flags))
+}
+
+func (this *QTextLayout) NextCursorPosition2(oldPos int, mode uintptr) int {
+	ret := C.QTextLayout_NextCursorPosition2(this.h, (C.int)(oldPos), (C.uintptr_t)(mode))
+	return (int)(ret)
+}
+
+func (this *QTextLayout) PreviousCursorPosition2(oldPos int, mode uintptr) int {
+	ret := C.QTextLayout_PreviousCursorPosition2(this.h, (C.int)(oldPos), (C.uintptr_t)(mode))
+	return (int)(ret)
+}
+
+func (this *QTextLayout) Draw3(p *QPainter, pos *QPointF, selections []QTextLayout__FormatRange) {
+	// For the C ABI, malloc a C array of raw pointers
+	selections_CArray := (*[0xffff]*C.QTextLayout__FormatRange)(C.malloc(C.ulong(8 * len(selections))))
+	defer C.free(unsafe.Pointer(selections_CArray))
+	for i := range selections {
+		selections_CArray[i] = selections[i].cPointer()
+	}
+	C.QTextLayout_Draw3(this.h, p.cPointer(), pos.cPointer(), &selections_CArray[0], C.ulong(len(selections)))
+}
+
+func (this *QTextLayout) Draw4(p *QPainter, pos *QPointF, selections []QTextLayout__FormatRange, clip *QRectF) {
+	// For the C ABI, malloc a C array of raw pointers
+	selections_CArray := (*[0xffff]*C.QTextLayout__FormatRange)(C.malloc(C.ulong(8 * len(selections))))
+	defer C.free(unsafe.Pointer(selections_CArray))
+	for i := range selections {
+		selections_CArray[i] = selections[i].cPointer()
+	}
+	C.QTextLayout_Draw4(this.h, p.cPointer(), pos.cPointer(), &selections_CArray[0], C.ulong(len(selections)), clip.cPointer())
 }
 
 func (this *QTextLayout) GlyphRuns1(from int) []QGlyphRun {
@@ -510,6 +614,21 @@ func (this *QTextLine) NaturalTextRect() *QRectF {
 	return ret1
 }
 
+func (this *QTextLine) CursorToX(cursorPos *int) float64 {
+	ret := C.QTextLine_CursorToX(this.h, (*C.int)(unsafe.Pointer(cursorPos)))
+	return (float64)(ret)
+}
+
+func (this *QTextLine) CursorToXWithCursorPos(cursorPos int) float64 {
+	ret := C.QTextLine_CursorToXWithCursorPos(this.h, (C.int)(cursorPos))
+	return (float64)(ret)
+}
+
+func (this *QTextLine) XToCursor(x float64) int {
+	ret := C.QTextLine_XToCursor(this.h, (C.double)(x))
+	return (int)(ret)
+}
+
 func (this *QTextLine) SetLineWidth(width float64) {
 	C.QTextLine_SetLineWidth(this.h, (C.double)(width))
 }
@@ -552,6 +671,10 @@ func (this *QTextLine) LineNumber() int {
 	return (int)(ret)
 }
 
+func (this *QTextLine) Draw(p *QPainter, point *QPointF) {
+	C.QTextLine_Draw(this.h, p.cPointer(), point.cPointer())
+}
+
 func (this *QTextLine) GlyphRuns() []QGlyphRun {
 	var _out **C.QGlyphRun = nil
 	var _out_len C.size_t = 0
@@ -563,6 +686,25 @@ func (this *QTextLine) GlyphRuns() []QGlyphRun {
 	}
 	C.free(unsafe.Pointer(_out))
 	return ret
+}
+
+func (this *QTextLine) CursorToX2(cursorPos *int, edge uintptr) float64 {
+	ret := C.QTextLine_CursorToX2(this.h, (*C.int)(unsafe.Pointer(cursorPos)), (C.uintptr_t)(edge))
+	return (float64)(ret)
+}
+
+func (this *QTextLine) CursorToX22(cursorPos int, edge uintptr) float64 {
+	ret := C.QTextLine_CursorToX22(this.h, (C.int)(cursorPos), (C.uintptr_t)(edge))
+	return (float64)(ret)
+}
+
+func (this *QTextLine) XToCursor2(x float64, param2 uintptr) int {
+	ret := C.QTextLine_XToCursor2(this.h, (C.double)(x), (C.uintptr_t)(param2))
+	return (int)(ret)
+}
+
+func (this *QTextLine) Draw3(p *QPainter, point *QPointF, selection *QTextLayout__FormatRange) {
+	C.QTextLine_Draw3(this.h, p.cPointer(), point.cPointer(), selection.cPointer())
 }
 
 func (this *QTextLine) GlyphRuns1(from int) []QGlyphRun {
@@ -593,4 +735,27 @@ func (this *QTextLine) GlyphRuns2(from int, length int) []QGlyphRun {
 
 func (this *QTextLine) Delete() {
 	C.QTextLine_Delete(this.h)
+}
+
+type QTextLayout__FormatRange struct {
+	h *C.QTextLayout__FormatRange
+}
+
+func (this *QTextLayout__FormatRange) cPointer() *C.QTextLayout__FormatRange {
+	if this == nil {
+		return nil
+	}
+	return this.h
+}
+
+func newQTextLayout__FormatRange(h *C.QTextLayout__FormatRange) *QTextLayout__FormatRange {
+	return &QTextLayout__FormatRange{h: h}
+}
+
+func newQTextLayout__FormatRange_U(h unsafe.Pointer) *QTextLayout__FormatRange {
+	return newQTextLayout__FormatRange((*C.QTextLayout__FormatRange)(h))
+}
+
+func (this *QTextLayout__FormatRange) Delete() {
+	C.QTextLayout__FormatRange_Delete(this.h)
 }

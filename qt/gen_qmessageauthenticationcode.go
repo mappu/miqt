@@ -34,6 +34,18 @@ func newQMessageAuthenticationCode_U(h unsafe.Pointer) *QMessageAuthenticationCo
 	return newQMessageAuthenticationCode((*C.QMessageAuthenticationCode)(h))
 }
 
+// NewQMessageAuthenticationCode constructs a new QMessageAuthenticationCode object.
+func NewQMessageAuthenticationCode(method uintptr) *QMessageAuthenticationCode {
+	ret := C.QMessageAuthenticationCode_new((C.uintptr_t)(method))
+	return newQMessageAuthenticationCode(ret)
+}
+
+// NewQMessageAuthenticationCode2 constructs a new QMessageAuthenticationCode object.
+func NewQMessageAuthenticationCode2(method uintptr, key *QByteArray) *QMessageAuthenticationCode {
+	ret := C.QMessageAuthenticationCode_new2((C.uintptr_t)(method), key.cPointer())
+	return newQMessageAuthenticationCode(ret)
+}
+
 func (this *QMessageAuthenticationCode) Reset() {
 	C.QMessageAuthenticationCode_Reset(this.h)
 }
@@ -59,6 +71,17 @@ func (this *QMessageAuthenticationCode) AddDataWithDevice(device *QIODevice) boo
 
 func (this *QMessageAuthenticationCode) Result() *QByteArray {
 	ret := C.QMessageAuthenticationCode_Result(this.h)
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQByteArray(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QByteArray) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func QMessageAuthenticationCode_Hash(message *QByteArray, key *QByteArray, method uintptr) *QByteArray {
+	ret := C.QMessageAuthenticationCode_Hash(message.cPointer(), key.cPointer(), (C.uintptr_t)(method))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQByteArray(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QByteArray) {

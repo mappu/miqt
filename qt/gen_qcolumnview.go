@@ -98,6 +98,10 @@ func (this *QColumnView) IndexAt(point *QPoint) *QModelIndex {
 	return ret1
 }
 
+func (this *QColumnView) ScrollTo(index *QModelIndex) {
+	C.QColumnView_ScrollTo(this.h, index.cPointer())
+}
+
 func (this *QColumnView) SizeHint() *QSize {
 	ret := C.QColumnView_SizeHint(this.h)
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -227,6 +231,10 @@ func QColumnView_TrUtf83(s string, c string, n int) string {
 	ret := C.GoStringN(_out, _out_Strlen)
 	C.free(unsafe.Pointer(_out))
 	return ret
+}
+
+func (this *QColumnView) ScrollTo2(index *QModelIndex, hint uintptr) {
+	C.QColumnView_ScrollTo2(this.h, index.cPointer(), (C.uintptr_t)(hint))
 }
 
 func (this *QColumnView) Delete() {

@@ -1,6 +1,3 @@
-#include "gen_qstackedlayout.h"
-#include "qstackedlayout.h"
-
 #include <QLayout>
 #include <QLayoutItem>
 #include <QMetaObject>
@@ -8,8 +5,12 @@
 #include <QSize>
 #include <QStackedLayout>
 #include <QString>
+#include <QByteArray>
+#include <cstring>
 #include <QWidget>
+#include "qstackedlayout.h"
 
+#include "gen_qstackedlayout.h"
 
 extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
@@ -28,10 +29,10 @@ QStackedLayout* QStackedLayout_new3(QLayout* parentLayout) {
 }
 
 QMetaObject* QStackedLayout_MetaObject(QStackedLayout* self) {
-	return (QMetaObject*) self->metaObject();
+	return (QMetaObject*) const_cast<const QStackedLayout*>(self)->metaObject();
 }
 
-void QStackedLayout_Tr(char* s, char** _out, int* _out_Strlen) {
+void QStackedLayout_Tr(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QStackedLayout::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -40,7 +41,7 @@ void QStackedLayout_Tr(char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QStackedLayout_TrUtf8(char* s, char** _out, int* _out_Strlen) {
+void QStackedLayout_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QStackedLayout::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -58,19 +59,28 @@ int QStackedLayout_InsertWidget(QStackedLayout* self, int index, QWidget* w) {
 }
 
 QWidget* QStackedLayout_CurrentWidget(QStackedLayout* self) {
-	return self->currentWidget();
+	return const_cast<const QStackedLayout*>(self)->currentWidget();
 }
 
 int QStackedLayout_CurrentIndex(QStackedLayout* self) {
-	return self->currentIndex();
+	return const_cast<const QStackedLayout*>(self)->currentIndex();
 }
 
 QWidget* QStackedLayout_Widget(QStackedLayout* self, int param1) {
-	return self->widget(static_cast<int>(param1));
+	return const_cast<const QStackedLayout*>(self)->widget(static_cast<int>(param1));
 }
 
 int QStackedLayout_Count(QStackedLayout* self) {
-	return self->count();
+	return const_cast<const QStackedLayout*>(self)->count();
+}
+
+uintptr_t QStackedLayout_StackingMode(QStackedLayout* self) {
+	QStackedLayout::StackingMode ret = const_cast<const QStackedLayout*>(self)->stackingMode();
+	return static_cast<uintptr_t>(ret);
+}
+
+void QStackedLayout_SetStackingMode(QStackedLayout* self, uintptr_t stackingMode) {
+	self->setStackingMode(static_cast<QStackedLayout::StackingMode>(stackingMode));
 }
 
 void QStackedLayout_AddItem(QStackedLayout* self, QLayoutItem* item) {
@@ -78,19 +88,19 @@ void QStackedLayout_AddItem(QStackedLayout* self, QLayoutItem* item) {
 }
 
 QSize* QStackedLayout_SizeHint(QStackedLayout* self) {
-	QSize ret = self->sizeHint();
+	QSize ret = const_cast<const QStackedLayout*>(self)->sizeHint();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
 
 QSize* QStackedLayout_MinimumSize(QStackedLayout* self) {
-	QSize ret = self->minimumSize();
+	QSize ret = const_cast<const QStackedLayout*>(self)->minimumSize();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
 
 QLayoutItem* QStackedLayout_ItemAt(QStackedLayout* self, int param1) {
-	return self->itemAt(static_cast<int>(param1));
+	return const_cast<const QStackedLayout*>(self)->itemAt(static_cast<int>(param1));
 }
 
 QLayoutItem* QStackedLayout_TakeAt(QStackedLayout* self, int param1) {
@@ -102,11 +112,11 @@ void QStackedLayout_SetGeometry(QStackedLayout* self, QRect* rect) {
 }
 
 bool QStackedLayout_HasHeightForWidth(QStackedLayout* self) {
-	return self->hasHeightForWidth();
+	return const_cast<const QStackedLayout*>(self)->hasHeightForWidth();
 }
 
 int QStackedLayout_HeightForWidth(QStackedLayout* self, int width) {
-	return self->heightForWidth(static_cast<int>(width));
+	return const_cast<const QStackedLayout*>(self)->heightForWidth(static_cast<int>(width));
 }
 
 void QStackedLayout_WidgetRemoved(QStackedLayout* self, int index) {
@@ -137,7 +147,7 @@ void QStackedLayout_SetCurrentWidget(QStackedLayout* self, QWidget* w) {
 	self->setCurrentWidget(w);
 }
 
-void QStackedLayout_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
+void QStackedLayout_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QStackedLayout::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -146,7 +156,7 @@ void QStackedLayout_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QStackedLayout_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QStackedLayout_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QStackedLayout::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -155,7 +165,7 @@ void QStackedLayout_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) 
 	*_out_Strlen = b.length();
 }
 
-void QStackedLayout_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
+void QStackedLayout_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QStackedLayout::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -164,7 +174,7 @@ void QStackedLayout_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QStackedLayout_TrUtf83(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QStackedLayout_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QStackedLayout::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();

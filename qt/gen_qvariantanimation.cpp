@@ -1,13 +1,14 @@
-#include "gen_qvariantanimation.h"
-#include "qvariantanimation.h"
-
 #include <QEasingCurve>
 #include <QMetaObject>
 #include <QObject>
 #include <QString>
+#include <QByteArray>
+#include <cstring>
 #include <QVariant>
 #include <QVariantAnimation>
+#include "qvariantanimation.h"
 
+#include "gen_qvariantanimation.h"
 
 extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
@@ -22,10 +23,10 @@ QVariantAnimation* QVariantAnimation_new2(QObject* parent) {
 }
 
 QMetaObject* QVariantAnimation_MetaObject(QVariantAnimation* self) {
-	return (QMetaObject*) self->metaObject();
+	return (QMetaObject*) const_cast<const QVariantAnimation*>(self)->metaObject();
 }
 
-void QVariantAnimation_Tr(char* s, char** _out, int* _out_Strlen) {
+void QVariantAnimation_Tr(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QVariantAnimation::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -34,7 +35,7 @@ void QVariantAnimation_Tr(char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QVariantAnimation_TrUtf8(char* s, char** _out, int* _out_Strlen) {
+void QVariantAnimation_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QVariantAnimation::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -44,7 +45,7 @@ void QVariantAnimation_TrUtf8(char* s, char** _out, int* _out_Strlen) {
 }
 
 QVariant* QVariantAnimation_StartValue(QVariantAnimation* self) {
-	QVariant ret = self->startValue();
+	QVariant ret = const_cast<const QVariantAnimation*>(self)->startValue();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVariant*>(new QVariant(ret));
 }
@@ -54,7 +55,7 @@ void QVariantAnimation_SetStartValue(QVariantAnimation* self, QVariant* value) {
 }
 
 QVariant* QVariantAnimation_EndValue(QVariantAnimation* self) {
-	QVariant ret = self->endValue();
+	QVariant ret = const_cast<const QVariantAnimation*>(self)->endValue();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVariant*>(new QVariant(ret));
 }
@@ -64,7 +65,7 @@ void QVariantAnimation_SetEndValue(QVariantAnimation* self, QVariant* value) {
 }
 
 QVariant* QVariantAnimation_KeyValueAt(QVariantAnimation* self, double step) {
-	QVariant ret = self->keyValueAt(static_cast<qreal>(step));
+	QVariant ret = const_cast<const QVariantAnimation*>(self)->keyValueAt(static_cast<qreal>(step));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVariant*>(new QVariant(ret));
 }
@@ -74,13 +75,13 @@ void QVariantAnimation_SetKeyValueAt(QVariantAnimation* self, double step, QVari
 }
 
 QVariant* QVariantAnimation_CurrentValue(QVariantAnimation* self) {
-	QVariant ret = self->currentValue();
+	QVariant ret = const_cast<const QVariantAnimation*>(self)->currentValue();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVariant*>(new QVariant(ret));
 }
 
 int QVariantAnimation_Duration(QVariantAnimation* self) {
-	return self->duration();
+	return const_cast<const QVariantAnimation*>(self)->duration();
 }
 
 void QVariantAnimation_SetDuration(QVariantAnimation* self, int msecs) {
@@ -88,7 +89,7 @@ void QVariantAnimation_SetDuration(QVariantAnimation* self, int msecs) {
 }
 
 QEasingCurve* QVariantAnimation_EasingCurve(QVariantAnimation* self) {
-	QEasingCurve ret = self->easingCurve();
+	QEasingCurve ret = const_cast<const QVariantAnimation*>(self)->easingCurve();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QEasingCurve*>(new QEasingCurve(ret));
 }
@@ -107,7 +108,7 @@ void QVariantAnimation_connect_ValueChanged(QVariantAnimation* self, void* slot)
 	});
 }
 
-void QVariantAnimation_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
+void QVariantAnimation_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QVariantAnimation::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -116,7 +117,7 @@ void QVariantAnimation_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QVariantAnimation_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QVariantAnimation_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QVariantAnimation::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -125,7 +126,7 @@ void QVariantAnimation_Tr3(char* s, char* c, int n, char** _out, int* _out_Strle
 	*_out_Strlen = b.length();
 }
 
-void QVariantAnimation_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
+void QVariantAnimation_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QVariantAnimation::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -134,7 +135,7 @@ void QVariantAnimation_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) 
 	*_out_Strlen = b.length();
 }
 
-void QVariantAnimation_TrUtf83(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QVariantAnimation_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QVariantAnimation::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();

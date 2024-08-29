@@ -41,53 +41,81 @@ func NewQColor() *QColor {
 }
 
 // NewQColor2 constructs a new QColor object.
-func NewQColor2(r int, g int, b int) *QColor {
-	ret := C.QColor_new2((C.int)(r), (C.int)(g), (C.int)(b))
+func NewQColor2(color uintptr) *QColor {
+	ret := C.QColor_new2((C.uintptr_t)(color))
 	return newQColor(ret)
 }
 
 // NewQColor3 constructs a new QColor object.
-func NewQColor3(rgb uint32) *QColor {
-	ret := C.QColor_new3((C.uint)(rgb))
+func NewQColor3(r int, g int, b int) *QColor {
+	ret := C.QColor_new3((C.int)(r), (C.int)(g), (C.int)(b))
 	return newQColor(ret)
 }
 
 // NewQColor4 constructs a new QColor object.
-func NewQColor4(rgba64 QRgba64) *QColor {
-	ret := C.QColor_new4(rgba64.cPointer())
+func NewQColor4(rgb uint) *QColor {
+	ret := C.QColor_new4((C.uint)(rgb))
 	return newQColor(ret)
 }
 
 // NewQColor5 constructs a new QColor object.
-func NewQColor5(name string) *QColor {
-	name_Cstring := C.CString(name)
-	defer C.free(unsafe.Pointer(name_Cstring))
-	ret := C.QColor_new5(name_Cstring, C.ulong(len(name)))
+func NewQColor5(rgba64 QRgba64) *QColor {
+	ret := C.QColor_new5(rgba64.cPointer())
 	return newQColor(ret)
 }
 
 // NewQColor6 constructs a new QColor object.
-func NewQColor6(aname string) *QColor {
-	aname_Cstring := C.CString(aname)
-	defer C.free(unsafe.Pointer(aname_Cstring))
-	ret := C.QColor_new6(aname_Cstring)
+func NewQColor6(name string) *QColor {
+	name_Cstring := C.CString(name)
+	defer C.free(unsafe.Pointer(name_Cstring))
+	ret := C.QColor_new6(name_Cstring, C.ulong(len(name)))
 	return newQColor(ret)
 }
 
 // NewQColor7 constructs a new QColor object.
-func NewQColor7(color *QColor) *QColor {
-	ret := C.QColor_new7(color.cPointer())
+func NewQColor7(aname string) *QColor {
+	aname_Cstring := C.CString(aname)
+	defer C.free(unsafe.Pointer(aname_Cstring))
+	ret := C.QColor_new7(aname_Cstring)
 	return newQColor(ret)
 }
 
 // NewQColor8 constructs a new QColor object.
-func NewQColor8(r int, g int, b int, a int) *QColor {
-	ret := C.QColor_new8((C.int)(r), (C.int)(g), (C.int)(b), (C.int)(a))
+func NewQColor8(spec uintptr) *QColor {
+	ret := C.QColor_new8((C.uintptr_t)(spec))
+	return newQColor(ret)
+}
+
+// NewQColor9 constructs a new QColor object.
+func NewQColor9(color *QColor) *QColor {
+	ret := C.QColor_new9(color.cPointer())
+	return newQColor(ret)
+}
+
+// NewQColor10 constructs a new QColor object.
+func NewQColor10(spec uintptr, a1 uint16, a2 uint16, a3 uint16, a4 uint16) *QColor {
+	ret := C.QColor_new10((C.uintptr_t)(spec), (C.uint16_t)(a1), (C.uint16_t)(a2), (C.uint16_t)(a3), (C.uint16_t)(a4))
+	return newQColor(ret)
+}
+
+// NewQColor11 constructs a new QColor object.
+func NewQColor11(r int, g int, b int, a int) *QColor {
+	ret := C.QColor_new11((C.int)(r), (C.int)(g), (C.int)(b), (C.int)(a))
+	return newQColor(ret)
+}
+
+// NewQColor12 constructs a new QColor object.
+func NewQColor12(spec uintptr, a1 uint16, a2 uint16, a3 uint16, a4 uint16, a5 uint16) *QColor {
+	ret := C.QColor_new12((C.uintptr_t)(spec), (C.uint16_t)(a1), (C.uint16_t)(a2), (C.uint16_t)(a3), (C.uint16_t)(a4), (C.uint16_t)(a5))
 	return newQColor(ret)
 }
 
 func (this *QColor) OperatorAssign(param1 *QColor) {
 	C.QColor_OperatorAssign(this.h, param1.cPointer())
+}
+
+func (this *QColor) OperatorAssignWithColor(color uintptr) {
+	C.QColor_OperatorAssignWithColor(this.h, (C.uintptr_t)(color))
 }
 
 func (this *QColor) IsValid() bool {
@@ -99,6 +127,15 @@ func (this *QColor) Name() string {
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
 	C.QColor_Name(this.h, &_out, &_out_Strlen)
+	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func (this *QColor) NameWithFormat(format uintptr) string {
+	var _out *C.char = nil
+	var _out_Strlen C.int = 0
+	C.QColor_NameWithFormat(this.h, (C.uintptr_t)(format), &_out, &_out_Strlen)
 	ret := C.GoStringN(_out, _out_Strlen)
 	C.free(unsafe.Pointer(_out))
 	return ret
@@ -123,6 +160,11 @@ func QColor_ColorNames() []string {
 	}
 	C.free(unsafe.Pointer(_out))
 	return ret
+}
+
+func (this *QColor) Spec() uintptr {
+	ret := C.QColor_Spec(this.h)
+	return (uintptr)(ret)
 }
 
 func (this *QColor) Alpha() int {
@@ -228,21 +270,21 @@ func (this *QColor) SetRgba64(rgba QRgba64) {
 	C.QColor_SetRgba64(this.h, rgba.cPointer())
 }
 
-func (this *QColor) Rgba() uint32 {
+func (this *QColor) Rgba() uint {
 	ret := C.QColor_Rgba(this.h)
-	return (uint32)(ret)
+	return (uint)(ret)
 }
 
-func (this *QColor) SetRgba(rgba uint32) {
+func (this *QColor) SetRgba(rgba uint) {
 	C.QColor_SetRgba(this.h, (C.uint)(rgba))
 }
 
-func (this *QColor) Rgb() uint32 {
+func (this *QColor) Rgb() uint {
 	ret := C.QColor_Rgb(this.h)
-	return (uint32)(ret)
+	return (uint)(ret)
 }
 
-func (this *QColor) SetRgbWithRgb(rgb uint32) {
+func (this *QColor) SetRgbWithRgb(rgb uint) {
 	C.QColor_SetRgbWithRgb(this.h, (C.uint)(rgb))
 }
 
@@ -477,7 +519,18 @@ func (this *QColor) ToExtendedRgb() *QColor {
 	return ret1
 }
 
-func QColor_FromRgb(rgb uint32) *QColor {
+func (this *QColor) ConvertTo(colorSpec uintptr) *QColor {
+	ret := C.QColor_ConvertTo(this.h, (C.uintptr_t)(colorSpec))
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQColor(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QColor) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func QColor_FromRgb(rgb uint) *QColor {
 	ret := C.QColor_FromRgb((C.uint)(rgb))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQColor(ret)
@@ -488,7 +541,7 @@ func QColor_FromRgb(rgb uint32) *QColor {
 	return ret1
 }
 
-func QColor_FromRgba(rgba uint32) *QColor {
+func QColor_FromRgba(rgba uint) *QColor {
 	ret := C.QColor_FromRgba((C.uint)(rgba))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQColor(ret)

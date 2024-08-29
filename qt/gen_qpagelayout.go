@@ -41,8 +41,26 @@ func NewQPageLayout() *QPageLayout {
 }
 
 // NewQPageLayout2 constructs a new QPageLayout object.
-func NewQPageLayout2(other *QPageLayout) *QPageLayout {
-	ret := C.QPageLayout_new2(other.cPointer())
+func NewQPageLayout2(pageSize *QPageSize, orientation uintptr, margins *QMarginsF) *QPageLayout {
+	ret := C.QPageLayout_new2(pageSize.cPointer(), (C.uintptr_t)(orientation), margins.cPointer())
+	return newQPageLayout(ret)
+}
+
+// NewQPageLayout3 constructs a new QPageLayout object.
+func NewQPageLayout3(other *QPageLayout) *QPageLayout {
+	ret := C.QPageLayout_new3(other.cPointer())
+	return newQPageLayout(ret)
+}
+
+// NewQPageLayout4 constructs a new QPageLayout object.
+func NewQPageLayout4(pageSize *QPageSize, orientation uintptr, margins *QMarginsF, units uintptr) *QPageLayout {
+	ret := C.QPageLayout_new4(pageSize.cPointer(), (C.uintptr_t)(orientation), margins.cPointer(), (C.uintptr_t)(units))
+	return newQPageLayout(ret)
+}
+
+// NewQPageLayout5 constructs a new QPageLayout object.
+func NewQPageLayout5(pageSize *QPageSize, orientation uintptr, margins *QMarginsF, units uintptr, minMargins *QMarginsF) *QPageLayout {
+	ret := C.QPageLayout_new5(pageSize.cPointer(), (C.uintptr_t)(orientation), margins.cPointer(), (C.uintptr_t)(units), minMargins.cPointer())
 	return newQPageLayout(ret)
 }
 
@@ -64,6 +82,15 @@ func (this *QPageLayout) IsValid() bool {
 	return (bool)(ret)
 }
 
+func (this *QPageLayout) SetMode(mode uintptr) {
+	C.QPageLayout_SetMode(this.h, (C.uintptr_t)(mode))
+}
+
+func (this *QPageLayout) Mode() uintptr {
+	ret := C.QPageLayout_Mode(this.h)
+	return (uintptr)(ret)
+}
+
 func (this *QPageLayout) SetPageSize(pageSize *QPageSize) {
 	C.QPageLayout_SetPageSize(this.h, pageSize.cPointer())
 }
@@ -77,6 +104,24 @@ func (this *QPageLayout) PageSize() *QPageSize {
 		runtime.KeepAlive(ret2.h)
 	})
 	return ret1
+}
+
+func (this *QPageLayout) SetOrientation(orientation uintptr) {
+	C.QPageLayout_SetOrientation(this.h, (C.uintptr_t)(orientation))
+}
+
+func (this *QPageLayout) Orientation() uintptr {
+	ret := C.QPageLayout_Orientation(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QPageLayout) SetUnits(units uintptr) {
+	C.QPageLayout_SetUnits(this.h, (C.uintptr_t)(units))
+}
+
+func (this *QPageLayout) Units() uintptr {
+	ret := C.QPageLayout_Units(this.h)
+	return (uintptr)(ret)
 }
 
 func (this *QPageLayout) SetMargins(margins *QMarginsF) bool {
@@ -106,6 +151,17 @@ func (this *QPageLayout) SetBottomMargin(bottomMargin float64) bool {
 
 func (this *QPageLayout) Margins() *QMarginsF {
 	ret := C.QPageLayout_Margins(this.h)
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQMarginsF(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QMarginsF) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QPageLayout) MarginsWithUnits(units uintptr) *QMarginsF {
+	ret := C.QPageLayout_MarginsWithUnits(this.h, (C.uintptr_t)(units))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQMarginsF(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QMarginsF) {
@@ -174,6 +230,17 @@ func (this *QPageLayout) FullRect() *QRectF {
 	return ret1
 }
 
+func (this *QPageLayout) FullRectWithUnits(units uintptr) *QRectF {
+	ret := C.QPageLayout_FullRectWithUnits(this.h, (C.uintptr_t)(units))
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQRectF(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QRectF) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
 func (this *QPageLayout) FullRectPoints() *QRect {
 	ret := C.QPageLayout_FullRectPoints(this.h)
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -198,6 +265,17 @@ func (this *QPageLayout) FullRectPixels(resolution int) *QRect {
 
 func (this *QPageLayout) PaintRect() *QRectF {
 	ret := C.QPageLayout_PaintRect(this.h)
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQRectF(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QRectF) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QPageLayout) PaintRectWithUnits(units uintptr) *QRectF {
+	ret := C.QPageLayout_PaintRectWithUnits(this.h, (C.uintptr_t)(units))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQRectF(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QRectF) {

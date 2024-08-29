@@ -47,7 +47,7 @@ func NewQRgba642(param1 *QRgba64) *QRgba64 {
 }
 
 func QRgba64_FromRgba64(c uint64) *QRgba64 {
-	ret := C.QRgba64_FromRgba64((C.uint64_t)(c))
+	ret := C.QRgba64_FromRgba64((C.ulonglong)(c))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQRgba64(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QRgba64) {
@@ -69,7 +69,7 @@ func QRgba64_FromRgba642(red uint16, green uint16, blue uint16, alpha uint16) *Q
 }
 
 func QRgba64_FromRgba(red byte, green byte, blue byte, alpha byte) *QRgba64 {
-	ret := C.QRgba64_FromRgba((C.uint8_t)(red), (C.uint8_t)(green), (C.uint8_t)(blue), (C.uint8_t)(alpha))
+	ret := C.QRgba64_FromRgba((C.uchar)(red), (C.uchar)(green), (C.uchar)(blue), (C.uchar)(alpha))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQRgba64(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QRgba64) {
@@ -189,7 +189,7 @@ func (this *QRgba64) Unpremultiplied() *QRgba64 {
 }
 
 func (this *QRgba64) OperatorAssign(_rgba uint64) {
-	C.QRgba64_OperatorAssign(this.h, (C.uint64_t)(_rgba))
+	C.QRgba64_OperatorAssign(this.h, (C.ulonglong)(_rgba))
 }
 
 func (this *QRgba64) Delete() {

@@ -1,20 +1,22 @@
-#include "gen_qfiledevice.h"
-#include "qfiledevice.h"
-
+#include <QDateTime>
 #include <QFileDevice>
 #include <QMetaObject>
 #include <QString>
+#include <QByteArray>
+#include <cstring>
+#include "qfiledevice.h"
 
+#include "gen_qfiledevice.h"
 
 extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
 }
 
 QMetaObject* QFileDevice_MetaObject(QFileDevice* self) {
-	return (QMetaObject*) self->metaObject();
+	return (QMetaObject*) const_cast<const QFileDevice*>(self)->metaObject();
 }
 
-void QFileDevice_Tr(char* s, char** _out, int* _out_Strlen) {
+void QFileDevice_Tr(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QFileDevice::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -23,13 +25,18 @@ void QFileDevice_Tr(char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QFileDevice_TrUtf8(char* s, char** _out, int* _out_Strlen) {
+void QFileDevice_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QFileDevice::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
 	memcpy(*_out, b.data(), b.length());
 	*_out_Strlen = b.length();
+}
+
+uintptr_t QFileDevice_Error(QFileDevice* self) {
+	QFileDevice::FileError ret = const_cast<const QFileDevice*>(self)->error();
+	return static_cast<uintptr_t>(ret);
 }
 
 void QFileDevice_UnsetError(QFileDevice* self) {
@@ -41,15 +48,15 @@ void QFileDevice_Close(QFileDevice* self) {
 }
 
 bool QFileDevice_IsSequential(QFileDevice* self) {
-	return self->isSequential();
+	return const_cast<const QFileDevice*>(self)->isSequential();
 }
 
 int QFileDevice_Handle(QFileDevice* self) {
-	return self->handle();
+	return const_cast<const QFileDevice*>(self)->handle();
 }
 
 void QFileDevice_FileName(QFileDevice* self, char** _out, int* _out_Strlen) {
-	QString ret = self->fileName();
+	QString ret = const_cast<const QFileDevice*>(self)->fileName();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -57,35 +64,58 @@ void QFileDevice_FileName(QFileDevice* self, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-int64_t QFileDevice_Pos(QFileDevice* self) {
-	return self->pos();
+long long QFileDevice_Pos(QFileDevice* self) {
+	return const_cast<const QFileDevice*>(self)->pos();
 }
 
-bool QFileDevice_Seek(QFileDevice* self, int64_t offset) {
-	return self->seek((qint64)(offset));
+bool QFileDevice_Seek(QFileDevice* self, long long offset) {
+	return self->seek(static_cast<qint64>(offset));
 }
 
 bool QFileDevice_AtEnd(QFileDevice* self) {
-	return self->atEnd();
+	return const_cast<const QFileDevice*>(self)->atEnd();
 }
 
 bool QFileDevice_Flush(QFileDevice* self) {
 	return self->flush();
 }
 
-int64_t QFileDevice_Size(QFileDevice* self) {
-	return self->size();
+long long QFileDevice_Size(QFileDevice* self) {
+	return const_cast<const QFileDevice*>(self)->size();
 }
 
-bool QFileDevice_Resize(QFileDevice* self, int64_t sz) {
-	return self->resize((qint64)(sz));
+bool QFileDevice_Resize(QFileDevice* self, long long sz) {
+	return self->resize(static_cast<qint64>(sz));
+}
+
+int QFileDevice_Permissions(QFileDevice* self) {
+	QFileDevice::Permissions ret = const_cast<const QFileDevice*>(self)->permissions();
+	return static_cast<int>(ret);
+}
+
+bool QFileDevice_SetPermissions(QFileDevice* self, int permissionSpec) {
+	return self->setPermissions(static_cast<QFileDevice::Permissions>(permissionSpec));
+}
+
+unsigned char* QFileDevice_Map(QFileDevice* self, long long offset, long long size) {
+	return self->map(static_cast<qint64>(offset), static_cast<qint64>(size));
 }
 
 bool QFileDevice_Unmap(QFileDevice* self, unsigned char* address) {
 	return self->unmap(static_cast<uchar*>(address));
 }
 
-void QFileDevice_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
+QDateTime* QFileDevice_FileTime(QFileDevice* self, uintptr_t time) {
+	QDateTime ret = const_cast<const QFileDevice*>(self)->fileTime(static_cast<QFileDevice::FileTime>(time));
+	// Copy-construct value returned type into heap-allocated copy
+	return static_cast<QDateTime*>(new QDateTime(ret));
+}
+
+bool QFileDevice_SetFileTime(QFileDevice* self, QDateTime* newDate, uintptr_t fileTime) {
+	return self->setFileTime(*newDate, static_cast<QFileDevice::FileTime>(fileTime));
+}
+
+void QFileDevice_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QFileDevice::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -94,7 +124,7 @@ void QFileDevice_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QFileDevice_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QFileDevice_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QFileDevice::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -103,7 +133,7 @@ void QFileDevice_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QFileDevice_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
+void QFileDevice_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QFileDevice::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -112,13 +142,17 @@ void QFileDevice_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QFileDevice_TrUtf83(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QFileDevice_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QFileDevice::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
 	memcpy(*_out, b.data(), b.length());
 	*_out_Strlen = b.length();
+}
+
+unsigned char* QFileDevice_Map3(QFileDevice* self, long long offset, long long size, uintptr_t flags) {
+	return self->map(static_cast<qint64>(offset), static_cast<qint64>(size), static_cast<QFileDevice::MemoryMapFlags>(flags));
 }
 
 void QFileDevice_Delete(QFileDevice* self) {

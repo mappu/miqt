@@ -36,6 +36,48 @@ func newQLabel_U(h unsafe.Pointer) *QLabel {
 	return newQLabel((*C.QLabel)(h))
 }
 
+// NewQLabel constructs a new QLabel object.
+func NewQLabel() *QLabel {
+	ret := C.QLabel_new()
+	return newQLabel(ret)
+}
+
+// NewQLabel2 constructs a new QLabel object.
+func NewQLabel2(text string) *QLabel {
+	text_Cstring := C.CString(text)
+	defer C.free(unsafe.Pointer(text_Cstring))
+	ret := C.QLabel_new2(text_Cstring, C.ulong(len(text)))
+	return newQLabel(ret)
+}
+
+// NewQLabel3 constructs a new QLabel object.
+func NewQLabel3(parent *QWidget) *QLabel {
+	ret := C.QLabel_new3(parent.cPointer())
+	return newQLabel(ret)
+}
+
+// NewQLabel4 constructs a new QLabel object.
+func NewQLabel4(parent *QWidget, f int) *QLabel {
+	ret := C.QLabel_new4(parent.cPointer(), (C.int)(f))
+	return newQLabel(ret)
+}
+
+// NewQLabel5 constructs a new QLabel object.
+func NewQLabel5(text string, parent *QWidget) *QLabel {
+	text_Cstring := C.CString(text)
+	defer C.free(unsafe.Pointer(text_Cstring))
+	ret := C.QLabel_new5(text_Cstring, C.ulong(len(text)), parent.cPointer())
+	return newQLabel(ret)
+}
+
+// NewQLabel6 constructs a new QLabel object.
+func NewQLabel6(text string, parent *QWidget, f int) *QLabel {
+	text_Cstring := C.CString(text)
+	defer C.free(unsafe.Pointer(text_Cstring))
+	ret := C.QLabel_new6(text_Cstring, C.ulong(len(text)), parent.cPointer(), (C.int)(f))
+	return newQLabel(ret)
+}
+
 func (this *QLabel) MetaObject() *QMetaObject {
 	ret := C.QLabel_MetaObject(this.h)
 	return newQMetaObject_U(unsafe.Pointer(ret))
@@ -77,14 +119,54 @@ func (this *QLabel) Pixmap() *QPixmap {
 	return newQPixmap_U(unsafe.Pointer(ret))
 }
 
+func (this *QLabel) PixmapWithQtReturnByValueConstant(param1 uintptr) *QPixmap {
+	ret := C.QLabel_PixmapWithQtReturnByValueConstant(this.h, (C.uintptr_t)(param1))
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQPixmap(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QPixmap) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
 func (this *QLabel) Picture() *QPicture {
 	ret := C.QLabel_Picture(this.h)
 	return newQPicture_U(unsafe.Pointer(ret))
 }
 
+func (this *QLabel) PictureWithQtReturnByValueConstant(param1 uintptr) *QPicture {
+	ret := C.QLabel_PictureWithQtReturnByValueConstant(this.h, (C.uintptr_t)(param1))
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQPicture(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QPicture) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
 func (this *QLabel) Movie() *QMovie {
 	ret := C.QLabel_Movie(this.h)
 	return newQMovie_U(unsafe.Pointer(ret))
+}
+
+func (this *QLabel) TextFormat() uintptr {
+	ret := C.QLabel_TextFormat(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QLabel) SetTextFormat(textFormat uintptr) {
+	C.QLabel_SetTextFormat(this.h, (C.uintptr_t)(textFormat))
+}
+
+func (this *QLabel) Alignment() int {
+	ret := C.QLabel_Alignment(this.h)
+	return (int)(ret)
+}
+
+func (this *QLabel) SetAlignment(alignment int) {
+	C.QLabel_SetAlignment(this.h, (C.int)(alignment))
 }
 
 func (this *QLabel) SetWordWrap(on bool) {
@@ -166,6 +248,15 @@ func (this *QLabel) OpenExternalLinks() bool {
 
 func (this *QLabel) SetOpenExternalLinks(open bool) {
 	C.QLabel_SetOpenExternalLinks(this.h, (C.bool)(open))
+}
+
+func (this *QLabel) SetTextInteractionFlags(flags int) {
+	C.QLabel_SetTextInteractionFlags(this.h, (C.int)(flags))
+}
+
+func (this *QLabel) TextInteractionFlags() int {
+	ret := C.QLabel_TextInteractionFlags(this.h)
+	return (int)(ret)
 }
 
 func (this *QLabel) SetSelection(param1 int, param2 int) {

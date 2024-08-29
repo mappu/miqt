@@ -359,6 +359,15 @@ func QApplication_StartDragDistance() int {
 	return (int)(ret)
 }
 
+func QApplication_IsEffectEnabled(param1 uintptr) bool {
+	ret := C.QApplication_IsEffectEnabled((C.uintptr_t)(param1))
+	return (bool)(ret)
+}
+
+func QApplication_SetEffectEnabled(param1 uintptr) {
+	C.QApplication_SetEffectEnabled((C.uintptr_t)(param1))
+}
+
 func QApplication_Exec() int {
 	ret := C.QApplication_Exec()
 	return (int)(ret)
@@ -479,6 +488,10 @@ func QApplication_SetFont2(param1 *QFont, className string) {
 
 func QApplication_Alert2(widget *QWidget, duration int) {
 	C.QApplication_Alert2(widget.cPointer(), (C.int)(duration))
+}
+
+func QApplication_SetEffectEnabled2(param1 uintptr, enable bool) {
+	C.QApplication_SetEffectEnabled2((C.uintptr_t)(param1), (C.bool)(enable))
 }
 
 func (this *QApplication) Delete() {

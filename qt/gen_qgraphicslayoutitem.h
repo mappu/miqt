@@ -26,6 +26,7 @@ typedef struct QSizePolicy QSizePolicy;
 #endif
 
 void QGraphicsLayoutItem_SetSizePolicy(QGraphicsLayoutItem* self, QSizePolicy* policy);
+void QGraphicsLayoutItem_SetSizePolicy2(QGraphicsLayoutItem* self, uintptr_t hPolicy, uintptr_t vPolicy);
 QSizePolicy* QGraphicsLayoutItem_SizePolicy(QGraphicsLayoutItem* self);
 void QGraphicsLayoutItem_SetMinimumSize(QGraphicsLayoutItem* self, QSizeF* size);
 void QGraphicsLayoutItem_SetMinimumSize2(QGraphicsLayoutItem* self, double w, double h);
@@ -52,12 +53,15 @@ void QGraphicsLayoutItem_SetGeometry(QGraphicsLayoutItem* self, QRectF* rect);
 QRectF* QGraphicsLayoutItem_Geometry(QGraphicsLayoutItem* self);
 void QGraphicsLayoutItem_GetContentsMargins(QGraphicsLayoutItem* self, double* left, double* top, double* right, double* bottom);
 QRectF* QGraphicsLayoutItem_ContentsRect(QGraphicsLayoutItem* self);
+QSizeF* QGraphicsLayoutItem_EffectiveSizeHint(QGraphicsLayoutItem* self, uintptr_t which);
 void QGraphicsLayoutItem_UpdateGeometry(QGraphicsLayoutItem* self);
 QGraphicsLayoutItem* QGraphicsLayoutItem_ParentLayoutItem(QGraphicsLayoutItem* self);
 void QGraphicsLayoutItem_SetParentLayoutItem(QGraphicsLayoutItem* self, QGraphicsLayoutItem* parent);
 bool QGraphicsLayoutItem_IsLayout(QGraphicsLayoutItem* self);
 QGraphicsItem* QGraphicsLayoutItem_GraphicsItem(QGraphicsLayoutItem* self);
 bool QGraphicsLayoutItem_OwnedByLayout(QGraphicsLayoutItem* self);
+void QGraphicsLayoutItem_SetSizePolicy3(QGraphicsLayoutItem* self, uintptr_t hPolicy, uintptr_t vPolicy, uintptr_t controlType);
+QSizeF* QGraphicsLayoutItem_EffectiveSizeHint2(QGraphicsLayoutItem* self, uintptr_t which, QSizeF* constraint);
 void QGraphicsLayoutItem_Delete(QGraphicsLayoutItem* self);
 
 #ifdef __cplusplus

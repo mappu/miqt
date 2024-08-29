@@ -1,15 +1,16 @@
-#include "gen_qcalendarwidget.h"
-#include "qcalendarwidget.h"
-
 #include <QCalendar>
 #include <QCalendarWidget>
 #include <QDate>
 #include <QMetaObject>
 #include <QSize>
 #include <QString>
+#include <QByteArray>
+#include <cstring>
 #include <QTextCharFormat>
 #include <QWidget>
+#include "qcalendarwidget.h"
 
+#include "gen_qcalendarwidget.h"
 
 extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
@@ -24,10 +25,10 @@ QCalendarWidget* QCalendarWidget_new2(QWidget* parent) {
 }
 
 QMetaObject* QCalendarWidget_MetaObject(QCalendarWidget* self) {
-	return (QMetaObject*) self->metaObject();
+	return (QMetaObject*) const_cast<const QCalendarWidget*>(self)->metaObject();
 }
 
-void QCalendarWidget_Tr(char* s, char** _out, int* _out_Strlen) {
+void QCalendarWidget_Tr(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QCalendarWidget::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -36,7 +37,7 @@ void QCalendarWidget_Tr(char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QCalendarWidget_TrUtf8(char* s, char** _out, int* _out_Strlen) {
+void QCalendarWidget_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QCalendarWidget::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -46,33 +47,33 @@ void QCalendarWidget_TrUtf8(char* s, char** _out, int* _out_Strlen) {
 }
 
 QSize* QCalendarWidget_SizeHint(QCalendarWidget* self) {
-	QSize ret = self->sizeHint();
+	QSize ret = const_cast<const QCalendarWidget*>(self)->sizeHint();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
 
 QSize* QCalendarWidget_MinimumSizeHint(QCalendarWidget* self) {
-	QSize ret = self->minimumSizeHint();
+	QSize ret = const_cast<const QCalendarWidget*>(self)->minimumSizeHint();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
 
 QDate* QCalendarWidget_SelectedDate(QCalendarWidget* self) {
-	QDate ret = self->selectedDate();
+	QDate ret = const_cast<const QCalendarWidget*>(self)->selectedDate();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QDate*>(new QDate(ret));
 }
 
 int QCalendarWidget_YearShown(QCalendarWidget* self) {
-	return self->yearShown();
+	return const_cast<const QCalendarWidget*>(self)->yearShown();
 }
 
 int QCalendarWidget_MonthShown(QCalendarWidget* self) {
-	return self->monthShown();
+	return const_cast<const QCalendarWidget*>(self)->monthShown();
 }
 
 QDate* QCalendarWidget_MinimumDate(QCalendarWidget* self) {
-	QDate ret = self->minimumDate();
+	QDate ret = const_cast<const QCalendarWidget*>(self)->minimumDate();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QDate*>(new QDate(ret));
 }
@@ -82,7 +83,7 @@ void QCalendarWidget_SetMinimumDate(QCalendarWidget* self, QDate* date) {
 }
 
 QDate* QCalendarWidget_MaximumDate(QCalendarWidget* self) {
-	QDate ret = self->maximumDate();
+	QDate ret = const_cast<const QCalendarWidget*>(self)->maximumDate();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QDate*>(new QDate(ret));
 }
@@ -91,16 +92,25 @@ void QCalendarWidget_SetMaximumDate(QCalendarWidget* self, QDate* date) {
 	self->setMaximumDate(*date);
 }
 
+uintptr_t QCalendarWidget_FirstDayOfWeek(QCalendarWidget* self) {
+	Qt::DayOfWeek ret = const_cast<const QCalendarWidget*>(self)->firstDayOfWeek();
+	return static_cast<uintptr_t>(ret);
+}
+
+void QCalendarWidget_SetFirstDayOfWeek(QCalendarWidget* self, uintptr_t dayOfWeek) {
+	self->setFirstDayOfWeek(static_cast<Qt::DayOfWeek>(dayOfWeek));
+}
+
 bool QCalendarWidget_IsNavigationBarVisible(QCalendarWidget* self) {
-	return self->isNavigationBarVisible();
+	return const_cast<const QCalendarWidget*>(self)->isNavigationBarVisible();
 }
 
 bool QCalendarWidget_IsGridVisible(QCalendarWidget* self) {
-	return self->isGridVisible();
+	return const_cast<const QCalendarWidget*>(self)->isGridVisible();
 }
 
 QCalendar* QCalendarWidget_Calendar(QCalendarWidget* self) {
-	QCalendar ret = self->calendar();
+	QCalendar ret = const_cast<const QCalendarWidget*>(self)->calendar();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QCalendar*>(new QCalendar(ret));
 }
@@ -109,8 +119,35 @@ void QCalendarWidget_SetCalendar(QCalendarWidget* self, QCalendar* calendar) {
 	self->setCalendar(*calendar);
 }
 
+uintptr_t QCalendarWidget_SelectionMode(QCalendarWidget* self) {
+	QCalendarWidget::SelectionMode ret = const_cast<const QCalendarWidget*>(self)->selectionMode();
+	return static_cast<uintptr_t>(ret);
+}
+
+void QCalendarWidget_SetSelectionMode(QCalendarWidget* self, uintptr_t mode) {
+	self->setSelectionMode(static_cast<QCalendarWidget::SelectionMode>(mode));
+}
+
+uintptr_t QCalendarWidget_HorizontalHeaderFormat(QCalendarWidget* self) {
+	QCalendarWidget::HorizontalHeaderFormat ret = const_cast<const QCalendarWidget*>(self)->horizontalHeaderFormat();
+	return static_cast<uintptr_t>(ret);
+}
+
+void QCalendarWidget_SetHorizontalHeaderFormat(QCalendarWidget* self, uintptr_t format) {
+	self->setHorizontalHeaderFormat(static_cast<QCalendarWidget::HorizontalHeaderFormat>(format));
+}
+
+uintptr_t QCalendarWidget_VerticalHeaderFormat(QCalendarWidget* self) {
+	QCalendarWidget::VerticalHeaderFormat ret = const_cast<const QCalendarWidget*>(self)->verticalHeaderFormat();
+	return static_cast<uintptr_t>(ret);
+}
+
+void QCalendarWidget_SetVerticalHeaderFormat(QCalendarWidget* self, uintptr_t format) {
+	self->setVerticalHeaderFormat(static_cast<QCalendarWidget::VerticalHeaderFormat>(format));
+}
+
 QTextCharFormat* QCalendarWidget_HeaderTextFormat(QCalendarWidget* self) {
-	QTextCharFormat ret = self->headerTextFormat();
+	QTextCharFormat ret = const_cast<const QCalendarWidget*>(self)->headerTextFormat();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QTextCharFormat*>(new QTextCharFormat(ret));
 }
@@ -119,8 +156,18 @@ void QCalendarWidget_SetHeaderTextFormat(QCalendarWidget* self, QTextCharFormat*
 	self->setHeaderTextFormat(*format);
 }
 
-QTextCharFormat* QCalendarWidget_DateTextFormat(QCalendarWidget* self, QDate* date) {
-	QTextCharFormat ret = self->dateTextFormat(*date);
+QTextCharFormat* QCalendarWidget_WeekdayTextFormat(QCalendarWidget* self, uintptr_t dayOfWeek) {
+	QTextCharFormat ret = const_cast<const QCalendarWidget*>(self)->weekdayTextFormat(static_cast<Qt::DayOfWeek>(dayOfWeek));
+	// Copy-construct value returned type into heap-allocated copy
+	return static_cast<QTextCharFormat*>(new QTextCharFormat(ret));
+}
+
+void QCalendarWidget_SetWeekdayTextFormat(QCalendarWidget* self, uintptr_t dayOfWeek, QTextCharFormat* format) {
+	self->setWeekdayTextFormat(static_cast<Qt::DayOfWeek>(dayOfWeek), *format);
+}
+
+QTextCharFormat* QCalendarWidget_DateTextFormatWithDate(QCalendarWidget* self, QDate* date) {
+	QTextCharFormat ret = const_cast<const QCalendarWidget*>(self)->dateTextFormat(*date);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QTextCharFormat*>(new QTextCharFormat(ret));
 }
@@ -130,7 +177,7 @@ void QCalendarWidget_SetDateTextFormat(QCalendarWidget* self, QDate* date, QText
 }
 
 bool QCalendarWidget_IsDateEditEnabled(QCalendarWidget* self) {
-	return self->isDateEditEnabled();
+	return const_cast<const QCalendarWidget*>(self)->isDateEditEnabled();
 }
 
 void QCalendarWidget_SetDateEditEnabled(QCalendarWidget* self, bool enable) {
@@ -138,7 +185,7 @@ void QCalendarWidget_SetDateEditEnabled(QCalendarWidget* self, bool enable) {
 }
 
 int QCalendarWidget_DateEditAcceptDelay(QCalendarWidget* self) {
-	return self->dateEditAcceptDelay();
+	return const_cast<const QCalendarWidget*>(self)->dateEditAcceptDelay();
 }
 
 void QCalendarWidget_SetDateEditAcceptDelay(QCalendarWidget* self, int delay) {
@@ -229,7 +276,7 @@ void QCalendarWidget_connect_CurrentPageChanged(QCalendarWidget* self, void* slo
 	});
 }
 
-void QCalendarWidget_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
+void QCalendarWidget_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QCalendarWidget::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -238,7 +285,7 @@ void QCalendarWidget_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QCalendarWidget_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QCalendarWidget_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QCalendarWidget::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -247,7 +294,7 @@ void QCalendarWidget_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen)
 	*_out_Strlen = b.length();
 }
 
-void QCalendarWidget_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
+void QCalendarWidget_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QCalendarWidget::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -256,7 +303,7 @@ void QCalendarWidget_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QCalendarWidget_TrUtf83(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QCalendarWidget_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QCalendarWidget::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();

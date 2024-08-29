@@ -1,11 +1,10 @@
-#include "gen_qwaitcondition.h"
-#include "qwaitcondition.h"
-
 #include <QDeadlineTimer>
 #include <QMutex>
 #include <QReadWriteLock>
 #include <QWaitCondition>
+#include "qwaitcondition.h"
 
+#include "gen_qwaitcondition.h"
 
 extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);

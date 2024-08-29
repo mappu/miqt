@@ -27,8 +27,8 @@ typedef struct QVariant QVariant;
 
 QMimeData* QMimeData_new();
 QMetaObject* QMimeData_MetaObject(QMimeData* self);
-void QMimeData_Tr(char* s, char** _out, int* _out_Strlen);
-void QMimeData_TrUtf8(char* s, char** _out, int* _out_Strlen);
+void QMimeData_Tr(const char* s, char** _out, int* _out_Strlen);
+void QMimeData_TrUtf8(const char* s, char** _out, int* _out_Strlen);
 void QMimeData_Urls(QMimeData* self, QUrl*** _out, size_t* _out_len);
 void QMimeData_SetUrls(QMimeData* self, QUrl** urls, size_t urls_len);
 bool QMimeData_HasUrls(QMimeData* self);
@@ -50,10 +50,10 @@ void QMimeData_RemoveFormat(QMimeData* self, const char* mimetype, size_t mimety
 bool QMimeData_HasFormat(QMimeData* self, const char* mimetype, size_t mimetype_Strlen);
 void QMimeData_Formats(QMimeData* self, char*** _out, int** _out_Lengths, size_t* _out_len);
 void QMimeData_Clear(QMimeData* self);
-void QMimeData_Tr2(char* s, char* c, char** _out, int* _out_Strlen);
-void QMimeData_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen);
-void QMimeData_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen);
-void QMimeData_TrUtf83(char* s, char* c, int n, char** _out, int* _out_Strlen);
+void QMimeData_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
+void QMimeData_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+void QMimeData_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
+void QMimeData_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
 void QMimeData_Delete(QMimeData* self);
 
 #ifdef __cplusplus

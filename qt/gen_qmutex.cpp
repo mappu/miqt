@@ -1,11 +1,10 @@
-#include "gen_qmutex.h"
-#include "qmutex.h"
-
 #include <QBasicMutex>
 #include <QMutex>
 #include <QMutexLocker>
 #include <QRecursiveMutex>
+#include "qmutex.h"
 
+#include "gen_qmutex.h"
 
 extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
@@ -36,7 +35,7 @@ bool QBasicMutex_IsRecursive(QBasicMutex* self) {
 }
 
 bool QBasicMutex_IsRecursive2(QBasicMutex* self) {
-	return self->isRecursive();
+	return const_cast<const QBasicMutex*>(self)->isRecursive();
 }
 
 void QBasicMutex_Delete(QBasicMutex* self) {
@@ -45,6 +44,10 @@ void QBasicMutex_Delete(QBasicMutex* self) {
 
 QMutex* QMutex_new() {
 	return new QMutex();
+}
+
+QMutex* QMutex_new2(uintptr_t mode) {
+	return new QMutex(static_cast<QMutex::RecursionMode>(mode));
 }
 
 void QMutex_Lock(QMutex* self) {
@@ -64,7 +67,7 @@ bool QMutex_TryLock2(QMutex* self) {
 }
 
 bool QMutex_IsRecursive(QMutex* self) {
-	return self->isRecursive();
+	return const_cast<const QMutex*>(self)->isRecursive();
 }
 
 bool QMutex_TryLock1(QMutex* self, int timeout) {
@@ -100,7 +103,7 @@ void QMutexLocker_Relock(QMutexLocker* self) {
 }
 
 QMutex* QMutexLocker_Mutex(QMutexLocker* self) {
-	return self->mutex();
+	return const_cast<const QMutexLocker*>(self)->mutex();
 }
 
 void QMutexLocker_Delete(QMutexLocker* self) {

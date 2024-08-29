@@ -23,7 +23,10 @@ typedef struct QFileInfo QFileInfo;
 
 QDir* QDir_new(QDir* param1);
 QDir* QDir_new2();
-QDir* QDir_new3(const char* path, size_t path_Strlen);
+QDir* QDir_new3(const char* path, size_t path_Strlen, const char* nameFilter, size_t nameFilter_Strlen);
+QDir* QDir_new4(const char* path, size_t path_Strlen);
+QDir* QDir_new5(const char* path, size_t path_Strlen, const char* nameFilter, size_t nameFilter_Strlen, int sort);
+QDir* QDir_new6(const char* path, size_t path_Strlen, const char* nameFilter, size_t nameFilter_Strlen, int sort, int filter);
 void QDir_OperatorAssign(QDir* self, QDir* param1);
 void QDir_OperatorAssignWithPath(QDir* self, const char* path, size_t path_Strlen);
 void QDir_Swap(QDir* self, QDir* other);
@@ -45,9 +48,18 @@ bool QDir_Cd(QDir* self, const char* dirName, size_t dirName_Strlen);
 bool QDir_CdUp(QDir* self);
 void QDir_NameFilters(QDir* self, char*** _out, int** _out_Lengths, size_t* _out_len);
 void QDir_SetNameFilters(QDir* self, char** nameFilters, uint64_t* nameFilters_Lengths, size_t nameFilters_len);
+int QDir_Filter(QDir* self);
+void QDir_SetFilter(QDir* self, int filter);
+int QDir_Sorting(QDir* self);
+void QDir_SetSorting(QDir* self, int sort);
 unsigned int QDir_Count(QDir* self);
+bool QDir_IsEmpty(QDir* self);
 void QDir_OperatorSubscript(QDir* self, int param1, char** _out, int* _out_Strlen);
 void QDir_NameFiltersFromString(const char* nameFilter, size_t nameFilter_Strlen, char*** _out, int** _out_Lengths, size_t* _out_len);
+void QDir_EntryList(QDir* self, char*** _out, int** _out_Lengths, size_t* _out_len);
+void QDir_EntryListWithNameFilters(QDir* self, char** nameFilters, uint64_t* nameFilters_Lengths, size_t nameFilters_len, char*** _out, int** _out_Lengths, size_t* _out_len);
+void QDir_EntryInfoList(QDir* self, QFileInfo*** _out, size_t* _out_len);
+void QDir_EntryInfoListWithNameFilters(QDir* self, char** nameFilters, uint64_t* nameFilters_Lengths, size_t nameFilters_len, QFileInfo*** _out, size_t* _out_len);
 bool QDir_Mkdir(QDir* self, const char* dirName, size_t dirName_Strlen);
 bool QDir_Rmdir(QDir* self, const char* dirName, size_t dirName_Strlen);
 bool QDir_Mkpath(QDir* self, const char* dirPath, size_t dirPath_Strlen);
@@ -82,6 +94,15 @@ bool QDir_Match(char** filters, uint64_t* filters_Lengths, size_t filters_len, c
 bool QDir_Match2(const char* filter, size_t filter_Strlen, const char* fileName, size_t fileName_Strlen);
 void QDir_CleanPath(const char* path, size_t path_Strlen, char** _out, int* _out_Strlen);
 void QDir_Refresh(QDir* self);
+bool QDir_IsEmpty1(QDir* self, int filters);
+void QDir_EntryList1(QDir* self, int filters, char*** _out, int** _out_Lengths, size_t* _out_len);
+void QDir_EntryList2(QDir* self, int filters, int sort, char*** _out, int** _out_Lengths, size_t* _out_len);
+void QDir_EntryList22(QDir* self, char** nameFilters, uint64_t* nameFilters_Lengths, size_t nameFilters_len, int filters, char*** _out, int** _out_Lengths, size_t* _out_len);
+void QDir_EntryList3(QDir* self, char** nameFilters, uint64_t* nameFilters_Lengths, size_t nameFilters_len, int filters, int sort, char*** _out, int** _out_Lengths, size_t* _out_len);
+void QDir_EntryInfoList1(QDir* self, int filters, QFileInfo*** _out, size_t* _out_len);
+void QDir_EntryInfoList2(QDir* self, int filters, int sort, QFileInfo*** _out, size_t* _out_len);
+void QDir_EntryInfoList22(QDir* self, char** nameFilters, uint64_t* nameFilters_Lengths, size_t nameFilters_len, int filters, QFileInfo*** _out, size_t* _out_len);
+void QDir_EntryInfoList3(QDir* self, char** nameFilters, uint64_t* nameFilters_Lengths, size_t nameFilters_len, int filters, int sort, QFileInfo*** _out, size_t* _out_len);
 void QDir_Delete(QDir* self);
 
 #ifdef __cplusplus

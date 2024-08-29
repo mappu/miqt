@@ -36,14 +36,48 @@ func newQDirModel_U(h unsafe.Pointer) *QDirModel {
 }
 
 // NewQDirModel constructs a new QDirModel object.
-func NewQDirModel() *QDirModel {
-	ret := C.QDirModel_new()
+func NewQDirModel(nameFilters []string, filters int, sort int) *QDirModel {
+	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
+	nameFilters_CArray := (*[0xffff]*C.char)(C.malloc(C.ulong(8 * len(nameFilters))))
+	nameFilters_Lengths := (*[0xffff]C.size_t)(C.malloc(C.ulong(8 * len(nameFilters))))
+	defer C.free(unsafe.Pointer(nameFilters_CArray))
+	defer C.free(unsafe.Pointer(nameFilters_Lengths))
+	for i := range nameFilters {
+		single_cstring := C.CString(nameFilters[i])
+		defer C.free(unsafe.Pointer(single_cstring))
+		nameFilters_CArray[i] = single_cstring
+		nameFilters_Lengths[i] = (C.size_t)(len(nameFilters[i]))
+	}
+	ret := C.QDirModel_new(&nameFilters_CArray[0], &nameFilters_Lengths[0], C.ulong(len(nameFilters)), (C.int)(filters), (C.int)(sort))
 	return newQDirModel(ret)
 }
 
 // NewQDirModel2 constructs a new QDirModel object.
-func NewQDirModel2(parent *QObject) *QDirModel {
-	ret := C.QDirModel_new2(parent.cPointer())
+func NewQDirModel2() *QDirModel {
+	ret := C.QDirModel_new2()
+	return newQDirModel(ret)
+}
+
+// NewQDirModel3 constructs a new QDirModel object.
+func NewQDirModel3(nameFilters []string, filters int, sort int, parent *QObject) *QDirModel {
+	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
+	nameFilters_CArray := (*[0xffff]*C.char)(C.malloc(C.ulong(8 * len(nameFilters))))
+	nameFilters_Lengths := (*[0xffff]C.size_t)(C.malloc(C.ulong(8 * len(nameFilters))))
+	defer C.free(unsafe.Pointer(nameFilters_CArray))
+	defer C.free(unsafe.Pointer(nameFilters_Lengths))
+	for i := range nameFilters {
+		single_cstring := C.CString(nameFilters[i])
+		defer C.free(unsafe.Pointer(single_cstring))
+		nameFilters_CArray[i] = single_cstring
+		nameFilters_Lengths[i] = (C.size_t)(len(nameFilters[i]))
+	}
+	ret := C.QDirModel_new3(&nameFilters_CArray[0], &nameFilters_Lengths[0], C.ulong(len(nameFilters)), (C.int)(filters), (C.int)(sort), parent.cPointer())
+	return newQDirModel(ret)
+}
+
+// NewQDirModel4 constructs a new QDirModel object.
+func NewQDirModel4(parent *QObject) *QDirModel {
+	ret := C.QDirModel_new4(parent.cPointer())
 	return newQDirModel(ret)
 }
 
@@ -122,9 +156,29 @@ func (this *QDirModel) SetData(index *QModelIndex, value *QVariant) bool {
 	return (bool)(ret)
 }
 
+func (this *QDirModel) HeaderData(section int, orientation uintptr) *QVariant {
+	ret := C.QDirModel_HeaderData(this.h, (C.int)(section), (C.uintptr_t)(orientation))
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQVariant(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QVariant) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
 func (this *QDirModel) HasChildren() bool {
 	ret := C.QDirModel_HasChildren(this.h)
 	return (bool)(ret)
+}
+
+func (this *QDirModel) Flags(index *QModelIndex) int {
+	ret := C.QDirModel_Flags(this.h, index.cPointer())
+	return (int)(ret)
+}
+
+func (this *QDirModel) Sort(column int) {
+	C.QDirModel_Sort(this.h, (C.int)(column))
 }
 
 func (this *QDirModel) MimeTypes() []string {
@@ -151,6 +205,16 @@ func (this *QDirModel) MimeData(indexes []QModelIndex) *QMimeData {
 	}
 	ret := C.QDirModel_MimeData(this.h, &indexes_CArray[0], C.ulong(len(indexes)))
 	return newQMimeData_U(unsafe.Pointer(ret))
+}
+
+func (this *QDirModel) DropMimeData(data *QMimeData, action uintptr, row int, column int, parent *QModelIndex) bool {
+	ret := C.QDirModel_DropMimeData(this.h, data.cPointer(), (C.uintptr_t)(action), (C.int)(row), (C.int)(column), parent.cPointer())
+	return (bool)(ret)
+}
+
+func (this *QDirModel) SupportedDropActions() int {
+	ret := C.QDirModel_SupportedDropActions(this.h)
+	return (int)(ret)
 }
 
 func (this *QDirModel) SetIconProvider(provider *QFileIconProvider) {
@@ -190,6 +254,24 @@ func (this *QDirModel) NameFilters() []string {
 	}
 	C.free(unsafe.Pointer(_out))
 	return ret
+}
+
+func (this *QDirModel) SetFilter(filters int) {
+	C.QDirModel_SetFilter(this.h, (C.int)(filters))
+}
+
+func (this *QDirModel) Filter() int {
+	ret := C.QDirModel_Filter(this.h)
+	return (int)(ret)
+}
+
+func (this *QDirModel) SetSorting(sort int) {
+	C.QDirModel_SetSorting(this.h, (C.int)(sort))
+}
+
+func (this *QDirModel) Sorting() int {
+	ret := C.QDirModel_Sorting(this.h)
+	return (int)(ret)
 }
 
 func (this *QDirModel) SetResolveSymlinks(enable bool) {
@@ -393,9 +475,24 @@ func (this *QDirModel) SetData3(index *QModelIndex, value *QVariant, role int) b
 	return (bool)(ret)
 }
 
+func (this *QDirModel) HeaderData3(section int, orientation uintptr, role int) *QVariant {
+	ret := C.QDirModel_HeaderData3(this.h, (C.int)(section), (C.uintptr_t)(orientation), (C.int)(role))
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQVariant(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QVariant) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
 func (this *QDirModel) HasChildren1(index *QModelIndex) bool {
 	ret := C.QDirModel_HasChildren1(this.h, index.cPointer())
 	return (bool)(ret)
+}
+
+func (this *QDirModel) Sort2(column int, order uintptr) {
+	C.QDirModel_Sort2(this.h, (C.int)(column), (C.uintptr_t)(order))
 }
 
 func (this *QDirModel) Index2(path string, column int) *QModelIndex {

@@ -172,6 +172,26 @@ func (this *QSystemTrayIcon) ShowMessage(title string, msg string, icon *QIcon) 
 	C.QSystemTrayIcon_ShowMessage(this.h, title_Cstring, C.ulong(len(title)), msg_Cstring, C.ulong(len(msg)), icon.cPointer())
 }
 
+func (this *QSystemTrayIcon) ShowMessage2(title string, msg string) {
+	title_Cstring := C.CString(title)
+	defer C.free(unsafe.Pointer(title_Cstring))
+	msg_Cstring := C.CString(msg)
+	defer C.free(unsafe.Pointer(msg_Cstring))
+	C.QSystemTrayIcon_ShowMessage2(this.h, title_Cstring, C.ulong(len(title)), msg_Cstring, C.ulong(len(msg)))
+}
+
+func (this *QSystemTrayIcon) Activated(reason uintptr) {
+	C.QSystemTrayIcon_Activated(this.h, (C.uintptr_t)(reason))
+}
+
+func (this *QSystemTrayIcon) OnActivated(slot func()) {
+	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
+		slot()
+	}
+
+	C.QSystemTrayIcon_connect_Activated(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+}
+
 func (this *QSystemTrayIcon) MessageClicked() {
 	C.QSystemTrayIcon_MessageClicked(this.h)
 }
@@ -242,6 +262,22 @@ func (this *QSystemTrayIcon) ShowMessage4(title string, msg string, icon *QIcon,
 	msg_Cstring := C.CString(msg)
 	defer C.free(unsafe.Pointer(msg_Cstring))
 	C.QSystemTrayIcon_ShowMessage4(this.h, title_Cstring, C.ulong(len(title)), msg_Cstring, C.ulong(len(msg)), icon.cPointer(), (C.int)(msecs))
+}
+
+func (this *QSystemTrayIcon) ShowMessage3(title string, msg string, icon uintptr) {
+	title_Cstring := C.CString(title)
+	defer C.free(unsafe.Pointer(title_Cstring))
+	msg_Cstring := C.CString(msg)
+	defer C.free(unsafe.Pointer(msg_Cstring))
+	C.QSystemTrayIcon_ShowMessage3(this.h, title_Cstring, C.ulong(len(title)), msg_Cstring, C.ulong(len(msg)), (C.uintptr_t)(icon))
+}
+
+func (this *QSystemTrayIcon) ShowMessage42(title string, msg string, icon uintptr, msecs int) {
+	title_Cstring := C.CString(title)
+	defer C.free(unsafe.Pointer(title_Cstring))
+	msg_Cstring := C.CString(msg)
+	defer C.free(unsafe.Pointer(msg_Cstring))
+	C.QSystemTrayIcon_ShowMessage42(this.h, title_Cstring, C.ulong(len(title)), msg_Cstring, C.ulong(len(msg)), (C.uintptr_t)(icon), (C.int)(msecs))
 }
 
 func (this *QSystemTrayIcon) Delete() {

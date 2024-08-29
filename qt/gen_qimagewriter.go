@@ -196,6 +196,15 @@ func (this *QImageWriter) ProgressiveScanWrite() bool {
 	return (bool)(ret)
 }
 
+func (this *QImageWriter) Transformation() int {
+	ret := C.QImageWriter_Transformation(this.h)
+	return (int)(ret)
+}
+
+func (this *QImageWriter) SetTransformation(orientation int) {
+	C.QImageWriter_SetTransformation(this.h, (C.int)(orientation))
+}
+
 func (this *QImageWriter) SetDescription(description string) {
 	description_Cstring := C.CString(description)
 	defer C.free(unsafe.Pointer(description_Cstring))
@@ -229,6 +238,11 @@ func (this *QImageWriter) Write(image *QImage) bool {
 	return (bool)(ret)
 }
 
+func (this *QImageWriter) Error() uintptr {
+	ret := C.QImageWriter_Error(this.h)
+	return (uintptr)(ret)
+}
+
 func (this *QImageWriter) ErrorString() string {
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
@@ -236,6 +250,11 @@ func (this *QImageWriter) ErrorString() string {
 	ret := C.GoStringN(_out, _out_Strlen)
 	C.free(unsafe.Pointer(_out))
 	return ret
+}
+
+func (this *QImageWriter) SupportsOption(option uintptr) bool {
+	ret := C.QImageWriter_SupportsOption(this.h, (C.uintptr_t)(option))
+	return (bool)(ret)
 }
 
 func QImageWriter_SupportedImageFormats() []QByteArray {

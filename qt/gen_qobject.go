@@ -156,6 +156,11 @@ func (this *QObject) MoveToThread(thread *QThread) {
 	C.QObject_MoveToThread(this.h, thread.cPointer())
 }
 
+func (this *QObject) StartTimer(interval int) int {
+	ret := C.QObject_StartTimer(this.h, (C.int)(interval))
+	return (int)(ret)
+}
+
 func (this *QObject) KillTimer(id int) {
 	C.QObject_KillTimer(this.h, (C.int)(id))
 }
@@ -185,8 +190,39 @@ func (this *QObject) RemoveEventFilter(obj *QObject) {
 	C.QObject_RemoveEventFilter(this.h, obj.cPointer())
 }
 
+func QObject_Connect(sender *QObject, signal *QMetaMethod, receiver *QObject, method *QMetaMethod) *QMetaObject__Connection {
+	ret := C.QObject_Connect(sender.cPointer(), signal.cPointer(), receiver.cPointer(), method.cPointer())
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQMetaObject__Connection(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QMetaObject__Connection) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QObject) Connect2(sender *QObject, signal string, member string) *QMetaObject__Connection {
+	signal_Cstring := C.CString(signal)
+	defer C.free(unsafe.Pointer(signal_Cstring))
+	member_Cstring := C.CString(member)
+	defer C.free(unsafe.Pointer(member_Cstring))
+	ret := C.QObject_Connect2(this.h, sender.cPointer(), signal_Cstring, member_Cstring)
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQMetaObject__Connection(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QMetaObject__Connection) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
 func QObject_Disconnect(sender *QObject, signal *QMetaMethod, receiver *QObject, member *QMetaMethod) bool {
 	ret := C.QObject_Disconnect(sender.cPointer(), signal.cPointer(), receiver.cPointer(), member.cPointer())
+	return (bool)(ret)
+}
+
+func QObject_DisconnectWithQMetaObjectConnection(param1 *QMetaObject__Connection) bool {
+	ret := C.QObject_DisconnectWithQMetaObjectConnection(param1.cPointer())
 	return (bool)(ret)
 }
 
@@ -323,6 +359,37 @@ func QObject_TrUtf83(s string, c string, n int) string {
 	ret := C.GoStringN(_out, _out_Strlen)
 	C.free(unsafe.Pointer(_out))
 	return ret
+}
+
+func (this *QObject) StartTimer2(interval int, timerType uintptr) int {
+	ret := C.QObject_StartTimer2(this.h, (C.int)(interval), (C.uintptr_t)(timerType))
+	return (int)(ret)
+}
+
+func QObject_Connect5(sender *QObject, signal *QMetaMethod, receiver *QObject, method *QMetaMethod, typeVal uintptr) *QMetaObject__Connection {
+	ret := C.QObject_Connect5(sender.cPointer(), signal.cPointer(), receiver.cPointer(), method.cPointer(), (C.uintptr_t)(typeVal))
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQMetaObject__Connection(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QMetaObject__Connection) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QObject) Connect4(sender *QObject, signal string, member string, typeVal uintptr) *QMetaObject__Connection {
+	signal_Cstring := C.CString(signal)
+	defer C.free(unsafe.Pointer(signal_Cstring))
+	member_Cstring := C.CString(member)
+	defer C.free(unsafe.Pointer(member_Cstring))
+	ret := C.QObject_Connect4(this.h, sender.cPointer(), signal_Cstring, member_Cstring, (C.uintptr_t)(typeVal))
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQMetaObject__Connection(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QMetaObject__Connection) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
 }
 
 func (this *QObject) Destroyed1(param1 *QObject) {
