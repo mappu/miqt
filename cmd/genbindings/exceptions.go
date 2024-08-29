@@ -108,6 +108,9 @@ func CheckComplexity(p CppParameter, isReturnType bool) error {
 	if strings.HasPrefix(p.ParameterType, "QGenericMatrix<") {
 		return ErrTooComplex // e.g. qmatrix4x4.h
 	}
+	if strings.HasPrefix(p.ParameterType, "QUrlTwoFlags<") {
+		return ErrTooComplex // e.g. qurl.h
+	}
 	if strings.HasPrefix(p.ParameterType, "std::") {
 		// std::initializer           e.g. qcborarray.h
 		// std::string                QByteArray->toStdString(). There are QString overloads already
@@ -147,8 +150,16 @@ func CheckComplexity(p CppParameter, isReturnType bool) error {
 		return ErrTooComplex // e.g. qformlayout. The cast doesn't survive through a pointer parameter
 	}
 
-	if p.ParameterType != "char" && p.Pointer && p.PointerCount >= 2 { // Out-parameters
-		return ErrTooComplex // e.g. QGraphicsItem_IsBlockedByModalPanel1
+	if p.Pointer && p.PointerCount >= 2 { // Out-parameters
+		if p.ParameterType != "char" {
+			return ErrTooComplex // e.g. QGraphicsItem_IsBlockedByModalPanel1
+		}
+		if p.ParameterType == "char" && p.ParameterName == "xpm" {
+			// Array parameters:
+			// - QPixmap and QImage ctors from an xpm char*[]
+			// TODO support these
+			return ErrTooComplex
+		}
 	}
 
 	switch p.ParameterType {
@@ -177,6 +188,7 @@ func CheckComplexity(p CppParameter, isReturnType bool) error {
 		"QGraphicsEffectSource",           // e.g. used by qgraphicseffect.h, but the definition is in ????
 		"QAbstractUndoItem",               // e.g. Defined in qtextdocument.h
 		"QTextObjectInterface",            // e.g. qabstracttextdocumentlayout.h
+		"QUrl::FormattingOptions",         // e.g. QUrl.h. Typedef for a complex template type
 		"QXmlStreamEntityDeclarations",    // e.g. qxmlstream.h. The class definition was blacklisted for ???? reason so don't allow it as a parameter either
 		"QXmlStreamNamespaceDeclarations", // e.g. qxmlstream.h. As above
 		"QXmlStreamNotationDeclarations",  // e.g. qxmlstream.h. As above

@@ -78,6 +78,7 @@ func (p CppParameter) IsFlagType() bool {
 	switch p.ParameterType {
 	case "QTouchEvent::TouchPoint::InfoFlags",
 		"QFile::Permissions",
+		"QWizard::WizardButton",
 		"QFormLayout::ItemRole",
 		"QFormLayout::RowWrapPolicy":
 		return true
