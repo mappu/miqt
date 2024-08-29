@@ -689,24 +689,6 @@ func parseSingleTypeString(p string) CppParameter {
 			insert.Pointer = true
 			insert.PointerCount++
 
-		} else if len(tok) > 4 && strings.HasSuffix(tok, "List") {
-			// Classes ending in --List are usually better represented as a QList
-			// type directly, so that the binding uses proper Go slices
-			// Typedef e.g. QObjectList
-			insert.TypeAlias = tok
-			switch tok {
-			case "QStringList", "QModelIndexList", "QVariantList", "QFileInfoList":
-				// These types are defined as a QList of values
-				insert.ParameterType += " QList<" + tok[0:len(tok)-4] + ">"
-			case "QTextList":
-				// This is really a custom class, preserve as-is
-				insert.ParameterType += " " + tok
-			default:
-				// These types are defined as a QList of pointers.
-				// QList<QFoo*>. This is the most common case
-				insert.ParameterType += " QList<" + tok[0:len(tok)-4] + " *>"
-			}
-
 		} else {
 			// Valid part of the type name
 			if tok == "char" && isSigned {

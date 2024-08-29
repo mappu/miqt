@@ -25,6 +25,9 @@ func init() {
 	// @ref https://doc.qt.io/qt-5/qprocess.html#Q_PID-typedef
 	KnownTypedefs["Q_PID"] = CppTypedef{"WId", parseSingleTypeString("uintptr_t")}
 
+	// QString is deleted from this binding
+	KnownTypedefs["QStringList"] = CppTypedef{"QStringList", parseSingleTypeString("QList<QString>")}
+
 }
 
 type CppParameter struct {
