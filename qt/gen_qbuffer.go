@@ -114,6 +114,11 @@ func (this *QBuffer) Data() *QByteArray {
 	return newQByteArray_U(unsafe.Pointer(ret))
 }
 
+func (this *QBuffer) Open(openMode int) bool {
+	ret := C.QBuffer_Open(this.h, (C.int)(openMode))
+	return (bool)(ret)
+}
+
 func (this *QBuffer) Close() {
 	C.QBuffer_Close(this.h)
 }
@@ -129,7 +134,7 @@ func (this *QBuffer) Pos() int64 {
 }
 
 func (this *QBuffer) Seek(off int64) bool {
-	ret := C.QBuffer_Seek(this.h, (C.int64_t)(off))
+	ret := C.QBuffer_Seek(this.h, (C.longlong)(off))
 	return (bool)(ret)
 }
 

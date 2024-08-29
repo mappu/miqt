@@ -258,6 +258,24 @@ func (this *QTreeWidgetItem) IsDisabled() bool {
 	return (bool)(ret)
 }
 
+func (this *QTreeWidgetItem) SetChildIndicatorPolicy(policy uintptr) {
+	C.QTreeWidgetItem_SetChildIndicatorPolicy(this.h, (C.uintptr_t)(policy))
+}
+
+func (this *QTreeWidgetItem) ChildIndicatorPolicy() uintptr {
+	ret := C.QTreeWidgetItem_ChildIndicatorPolicy(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QTreeWidgetItem) Flags() int {
+	ret := C.QTreeWidgetItem_Flags(this.h)
+	return (int)(ret)
+}
+
+func (this *QTreeWidgetItem) SetFlags(flags int) {
+	C.QTreeWidgetItem_SetFlags(this.h, (C.int)(flags))
+}
+
 func (this *QTreeWidgetItem) Text(column int) string {
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
@@ -417,6 +435,15 @@ func (this *QTreeWidgetItem) SetForeground(column int, brush *QBrush) {
 	C.QTreeWidgetItem_SetForeground(this.h, (C.int)(column), brush.cPointer())
 }
 
+func (this *QTreeWidgetItem) CheckState(column int) uintptr {
+	ret := C.QTreeWidgetItem_CheckState(this.h, (C.int)(column))
+	return (uintptr)(ret)
+}
+
+func (this *QTreeWidgetItem) SetCheckState(column int, state uintptr) {
+	C.QTreeWidgetItem_SetCheckState(this.h, (C.int)(column), (C.uintptr_t)(state))
+}
+
 func (this *QTreeWidgetItem) SizeHint(column int) *QSize {
 	ret := C.QTreeWidgetItem_SizeHint(this.h, (C.int)(column))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -542,6 +569,10 @@ func (this *QTreeWidgetItem) TakeChildren() []*QTreeWidgetItem {
 func (this *QTreeWidgetItem) Type() int {
 	ret := C.QTreeWidgetItem_Type(this.h)
 	return (int)(ret)
+}
+
+func (this *QTreeWidgetItem) SortChildren(column int, order uintptr) {
+	C.QTreeWidgetItem_SortChildren(this.h, (C.int)(column), (C.uintptr_t)(order))
 }
 
 func (this *QTreeWidgetItem) Delete() {
@@ -717,6 +748,10 @@ func (this *QTreeWidget) SetCurrentItem2(item *QTreeWidgetItem, column int) {
 	C.QTreeWidget_SetCurrentItem2(this.h, item.cPointer(), (C.int)(column))
 }
 
+func (this *QTreeWidget) SetCurrentItem3(item *QTreeWidgetItem, column int, command int) {
+	C.QTreeWidget_SetCurrentItem3(this.h, item.cPointer(), (C.int)(column), (C.int)(command))
+}
+
 func (this *QTreeWidget) ItemAt(p *QPoint) *QTreeWidgetItem {
 	ret := C.QTreeWidget_ItemAt(this.h, p.cPointer())
 	return newQTreeWidgetItem_U(unsafe.Pointer(ret))
@@ -741,6 +776,10 @@ func (this *QTreeWidget) VisualItemRect(item *QTreeWidgetItem) *QRect {
 func (this *QTreeWidget) SortColumn() int {
 	ret := C.QTreeWidget_SortColumn(this.h)
 	return (int)(ret)
+}
+
+func (this *QTreeWidget) SortItems(column int, order uintptr) {
+	C.QTreeWidget_SortItems(this.h, (C.int)(column), (C.uintptr_t)(order))
 }
 
 func (this *QTreeWidget) EditItem(item *QTreeWidgetItem) {
@@ -795,6 +834,21 @@ func (this *QTreeWidget) SelectedItems() []*QTreeWidgetItem {
 	return ret
 }
 
+func (this *QTreeWidget) FindItems(text string, flags int) []*QTreeWidgetItem {
+	text_Cstring := C.CString(text)
+	defer C.free(unsafe.Pointer(text_Cstring))
+	var _out **C.QTreeWidgetItem = nil
+	var _out_len C.size_t = 0
+	C.QTreeWidget_FindItems(this.h, text_Cstring, C.ulong(len(text)), (C.int)(flags), &_out, &_out_len)
+	ret := make([]*QTreeWidgetItem, int(_out_len))
+	_outCast := (*[0xffff]*C.QTreeWidgetItem)(unsafe.Pointer(_out)) // so fresh so clean
+	for i := 0; i < int(_out_len); i++ {
+		ret[i] = newQTreeWidgetItem(_outCast[i])
+	}
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
 func (this *QTreeWidget) IsItemHidden(item *QTreeWidgetItem) bool {
 	ret := C.QTreeWidget_IsItemHidden(this.h, item.cPointer())
 	return (bool)(ret)
@@ -834,6 +888,10 @@ func (this *QTreeWidget) ItemBelow(item *QTreeWidgetItem) *QTreeWidgetItem {
 
 func (this *QTreeWidget) SetSelectionModel(selectionModel *QItemSelectionModel) {
 	C.QTreeWidget_SetSelectionModel(this.h, selectionModel.cPointer())
+}
+
+func (this *QTreeWidget) ScrollToItem(item *QTreeWidgetItem) {
+	C.QTreeWidget_ScrollToItem(this.h, item.cPointer())
 }
 
 func (this *QTreeWidget) ExpandItem(item *QTreeWidgetItem) {
@@ -1035,6 +1093,25 @@ func (this *QTreeWidget) ClosePersistentEditor2(item *QTreeWidgetItem, column in
 func (this *QTreeWidget) IsPersistentEditorOpen2(item *QTreeWidgetItem, column int) bool {
 	ret := C.QTreeWidget_IsPersistentEditorOpen2(this.h, item.cPointer(), (C.int)(column))
 	return (bool)(ret)
+}
+
+func (this *QTreeWidget) FindItems3(text string, flags int, column int) []*QTreeWidgetItem {
+	text_Cstring := C.CString(text)
+	defer C.free(unsafe.Pointer(text_Cstring))
+	var _out **C.QTreeWidgetItem = nil
+	var _out_len C.size_t = 0
+	C.QTreeWidget_FindItems3(this.h, text_Cstring, C.ulong(len(text)), (C.int)(flags), (C.int)(column), &_out, &_out_len)
+	ret := make([]*QTreeWidgetItem, int(_out_len))
+	_outCast := (*[0xffff]*C.QTreeWidgetItem)(unsafe.Pointer(_out)) // so fresh so clean
+	for i := 0; i < int(_out_len); i++ {
+		ret[i] = newQTreeWidgetItem(_outCast[i])
+	}
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func (this *QTreeWidget) ScrollToItem2(item *QTreeWidgetItem, hint uintptr) {
+	C.QTreeWidget_ScrollToItem2(this.h, item.cPointer(), (C.uintptr_t)(hint))
 }
 
 func (this *QTreeWidget) Delete() {

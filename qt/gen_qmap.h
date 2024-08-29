@@ -24,6 +24,8 @@ QMapNodeBase* QMapNodeBase_NextNode(QMapNodeBase* self);
 QMapNodeBase* QMapNodeBase_NextNode2(QMapNodeBase* self);
 QMapNodeBase* QMapNodeBase_PreviousNode(QMapNodeBase* self);
 QMapNodeBase* QMapNodeBase_PreviousNode2(QMapNodeBase* self);
+uintptr_t QMapNodeBase_Color(QMapNodeBase* self);
+void QMapNodeBase_SetColor(QMapNodeBase* self, uintptr_t c);
 QMapNodeBase* QMapNodeBase_Parent(QMapNodeBase* self);
 void QMapNodeBase_SetParent(QMapNodeBase* self, QMapNodeBase* pp);
 void QMapNodeBase_OperatorAssign(QMapNodeBase* self, QMapNodeBase* param1);

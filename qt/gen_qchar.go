@@ -116,27 +116,53 @@ func NewQChar6(rc int) *QChar {
 }
 
 // NewQChar7 constructs a new QChar object.
-func NewQChar7(ch QLatin1Char) *QChar {
-	ret := C.QChar_new7(ch.cPointer())
+func NewQChar7(s uintptr) *QChar {
+	ret := C.QChar_new7((C.uintptr_t)(s))
 	return newQChar(ret)
 }
 
 // NewQChar8 constructs a new QChar object.
-func NewQChar8(c byte) *QChar {
-	ret := C.QChar_new8((C.char)(c))
+func NewQChar8(ch QLatin1Char) *QChar {
+	ret := C.QChar_new8(ch.cPointer())
 	return newQChar(ret)
 }
 
 // NewQChar9 constructs a new QChar object.
 func NewQChar9(c byte) *QChar {
-	ret := C.QChar_new9((C.uchar)(c))
+	ret := C.QChar_new9((C.char)(c))
 	return newQChar(ret)
 }
 
 // NewQChar10 constructs a new QChar object.
-func NewQChar10(param1 *QChar) *QChar {
-	ret := C.QChar_new10(param1.cPointer())
+func NewQChar10(c byte) *QChar {
+	ret := C.QChar_new10((C.uchar)(c))
 	return newQChar(ret)
+}
+
+// NewQChar11 constructs a new QChar object.
+func NewQChar11(param1 *QChar) *QChar {
+	ret := C.QChar_new11(param1.cPointer())
+	return newQChar(ret)
+}
+
+func (this *QChar) Category() uintptr {
+	ret := C.QChar_Category(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QChar) Direction() uintptr {
+	ret := C.QChar_Direction(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QChar) JoiningType() uintptr {
+	ret := C.QChar_JoiningType(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QChar) Joining() uintptr {
+	ret := C.QChar_Joining(this.h)
+	return (uintptr)(ret)
 }
 
 func (this *QChar) CombiningClass() byte {
@@ -167,6 +193,11 @@ func (this *QChar) Decomposition() string {
 	ret := C.GoStringN(_out, _out_Strlen)
 	C.free(unsafe.Pointer(_out))
 	return ret
+}
+
+func (this *QChar) DecompositionTag() uintptr {
+	ret := C.QChar_DecompositionTag(this.h)
+	return (uintptr)(ret)
 }
 
 func (this *QChar) DigitValue() int {
@@ -216,6 +247,16 @@ func (this *QChar) ToCaseFolded() *QChar {
 		runtime.KeepAlive(ret2.h)
 	})
 	return ret1
+}
+
+func (this *QChar) Script() uintptr {
+	ret := C.QChar_Script(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QChar) UnicodeVersion() uintptr {
+	ret := C.QChar_UnicodeVersion(this.h)
+	return (uintptr)(ret)
 }
 
 func (this *QChar) ToLatin1() byte {
@@ -387,6 +428,26 @@ func QChar_LowSurrogate(ucs4 uint) uint16 {
 	return (uint16)(ret)
 }
 
+func QChar_CategoryWithUcs4(ucs4 uint) uintptr {
+	ret := C.QChar_CategoryWithUcs4((C.uint)(ucs4))
+	return (uintptr)(ret)
+}
+
+func QChar_DirectionWithUcs4(ucs4 uint) uintptr {
+	ret := C.QChar_DirectionWithUcs4((C.uint)(ucs4))
+	return (uintptr)(ret)
+}
+
+func QChar_JoiningTypeWithUcs4(ucs4 uint) uintptr {
+	ret := C.QChar_JoiningTypeWithUcs4((C.uint)(ucs4))
+	return (uintptr)(ret)
+}
+
+func QChar_JoiningWithUcs4(ucs4 uint) uintptr {
+	ret := C.QChar_JoiningWithUcs4((C.uint)(ucs4))
+	return (uintptr)(ret)
+}
+
 func QChar_CombiningClassWithUcs4(ucs4 uint) byte {
 	ret := C.QChar_CombiningClassWithUcs4((C.uint)(ucs4))
 	return (byte)(ret)
@@ -409,6 +470,11 @@ func QChar_DecompositionWithUcs4(ucs4 uint) string {
 	ret := C.GoStringN(_out, _out_Strlen)
 	C.free(unsafe.Pointer(_out))
 	return ret
+}
+
+func QChar_DecompositionTagWithUcs4(ucs4 uint) uintptr {
+	ret := C.QChar_DecompositionTagWithUcs4((C.uint)(ucs4))
+	return (uintptr)(ret)
 }
 
 func QChar_DigitValueWithUcs4(ucs4 uint) int {
@@ -434,6 +500,21 @@ func QChar_ToTitleCaseWithUcs4(ucs4 uint) uint {
 func QChar_ToCaseFoldedWithUcs4(ucs4 uint) uint {
 	ret := C.QChar_ToCaseFoldedWithUcs4((C.uint)(ucs4))
 	return (uint)(ret)
+}
+
+func QChar_ScriptWithUcs4(ucs4 uint) uintptr {
+	ret := C.QChar_ScriptWithUcs4((C.uint)(ucs4))
+	return (uintptr)(ret)
+}
+
+func QChar_UnicodeVersionWithUcs4(ucs4 uint) uintptr {
+	ret := C.QChar_UnicodeVersionWithUcs4((C.uint)(ucs4))
+	return (uintptr)(ret)
+}
+
+func QChar_CurrentUnicodeVersion() uintptr {
+	ret := C.QChar_CurrentUnicodeVersion()
+	return (uintptr)(ret)
 }
 
 func QChar_IsPrintWithUcs4(ucs4 uint) bool {

@@ -1,12 +1,11 @@
-#include "gen_qglyphrun.h"
-#include "qglyphrun.h"
-
 #include <QGlyphRun>
 #include <QList>
 #include <QPointF>
 #include <QRawFont>
 #include <QRectF>
+#include "qglyphrun.h"
 
+#include "gen_qglyphrun.h"
 
 extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
@@ -29,7 +28,7 @@ void QGlyphRun_Swap(QGlyphRun* self, QGlyphRun* other) {
 }
 
 QRawFont* QGlyphRun_RawFont(QGlyphRun* self) {
-	QRawFont ret = self->rawFont();
+	QRawFont ret = const_cast<const QGlyphRun*>(self)->rawFont();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRawFont*>(new QRawFont(ret));
 }
@@ -38,14 +37,14 @@ void QGlyphRun_SetRawFont(QGlyphRun* self, QRawFont* rawFont) {
 	self->setRawFont(*rawFont);
 }
 
-void QGlyphRun_SetRawData(QGlyphRun* self, uint32_t* glyphIndexArray, QPointF* glyphPositionArray, int size) {
-	self->setRawData(static_cast<quint32*>(glyphIndexArray), glyphPositionArray, static_cast<int>(size));
+void QGlyphRun_SetRawData(QGlyphRun* self, const unsigned int* glyphIndexArray, QPointF* glyphPositionArray, int size) {
+	self->setRawData(static_cast<const quint32*>(glyphIndexArray), glyphPositionArray, static_cast<int>(size));
 }
 
-void QGlyphRun_GlyphIndexes(QGlyphRun* self, uint32_t** _out, size_t* _out_len) {
-	QVector<quint32> ret = self->glyphIndexes();
+void QGlyphRun_GlyphIndexes(QGlyphRun* self, unsigned int** _out, size_t* _out_len) {
+	QVector<unsigned int> ret = const_cast<const QGlyphRun*>(self)->glyphIndexes();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	uint32_t* __out = static_cast<uint32_t*>(malloc(sizeof(uint32_t) * ret.length()));
+	unsigned int* __out = static_cast<unsigned int*>(malloc(sizeof(unsigned int) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {
 		__out[i] = ret[i];
 	}
@@ -53,8 +52,8 @@ void QGlyphRun_GlyphIndexes(QGlyphRun* self, uint32_t** _out, size_t* _out_len) 
 	*_out_len = ret.length();
 }
 
-void QGlyphRun_SetGlyphIndexes(QGlyphRun* self, uint32_t* glyphIndexes, size_t glyphIndexes_len) {
-	QVector<quint32> glyphIndexes_QList;
+void QGlyphRun_SetGlyphIndexes(QGlyphRun* self, unsigned int* glyphIndexes, size_t glyphIndexes_len) {
+	QVector<unsigned int> glyphIndexes_QList;
 	glyphIndexes_QList.reserve(glyphIndexes_len);
 	for(size_t i = 0; i < glyphIndexes_len; ++i) {
 		glyphIndexes_QList.push_back(glyphIndexes[i]);
@@ -63,7 +62,7 @@ void QGlyphRun_SetGlyphIndexes(QGlyphRun* self, uint32_t* glyphIndexes, size_t g
 }
 
 void QGlyphRun_Positions(QGlyphRun* self, QPointF*** _out, size_t* _out_len) {
-	QVector<QPointF> ret = self->positions();
+	QVector<QPointF> ret = const_cast<const QGlyphRun*>(self)->positions();
 	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
 	QPointF** __out = static_cast<QPointF**>(malloc(sizeof(QPointF**) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {
@@ -87,11 +86,11 @@ void QGlyphRun_Clear(QGlyphRun* self) {
 }
 
 bool QGlyphRun_OperatorEqual(QGlyphRun* self, QGlyphRun* other) {
-	return self->operator==(*other);
+	return const_cast<const QGlyphRun*>(self)->operator==(*other);
 }
 
 bool QGlyphRun_OperatorNotEqual(QGlyphRun* self, QGlyphRun* other) {
-	return self->operator!=(*other);
+	return const_cast<const QGlyphRun*>(self)->operator!=(*other);
 }
 
 void QGlyphRun_SetOverline(QGlyphRun* self, bool overline) {
@@ -99,7 +98,7 @@ void QGlyphRun_SetOverline(QGlyphRun* self, bool overline) {
 }
 
 bool QGlyphRun_Overline(QGlyphRun* self) {
-	return self->overline();
+	return const_cast<const QGlyphRun*>(self)->overline();
 }
 
 void QGlyphRun_SetUnderline(QGlyphRun* self, bool underline) {
@@ -107,7 +106,7 @@ void QGlyphRun_SetUnderline(QGlyphRun* self, bool underline) {
 }
 
 bool QGlyphRun_Underline(QGlyphRun* self) {
-	return self->underline();
+	return const_cast<const QGlyphRun*>(self)->underline();
 }
 
 void QGlyphRun_SetStrikeOut(QGlyphRun* self, bool strikeOut) {
@@ -115,7 +114,7 @@ void QGlyphRun_SetStrikeOut(QGlyphRun* self, bool strikeOut) {
 }
 
 bool QGlyphRun_StrikeOut(QGlyphRun* self) {
-	return self->strikeOut();
+	return const_cast<const QGlyphRun*>(self)->strikeOut();
 }
 
 void QGlyphRun_SetRightToLeft(QGlyphRun* self, bool on) {
@@ -123,7 +122,20 @@ void QGlyphRun_SetRightToLeft(QGlyphRun* self, bool on) {
 }
 
 bool QGlyphRun_IsRightToLeft(QGlyphRun* self) {
-	return self->isRightToLeft();
+	return const_cast<const QGlyphRun*>(self)->isRightToLeft();
+}
+
+void QGlyphRun_SetFlag(QGlyphRun* self, uintptr_t flag) {
+	self->setFlag(static_cast<QGlyphRun::GlyphRunFlag>(flag));
+}
+
+void QGlyphRun_SetFlags(QGlyphRun* self, int flags) {
+	self->setFlags(static_cast<QGlyphRun::GlyphRunFlags>(flags));
+}
+
+int QGlyphRun_Flags(QGlyphRun* self) {
+	QGlyphRun::GlyphRunFlags ret = const_cast<const QGlyphRun*>(self)->flags();
+	return static_cast<int>(ret);
 }
 
 void QGlyphRun_SetBoundingRect(QGlyphRun* self, QRectF* boundingRect) {
@@ -131,13 +143,17 @@ void QGlyphRun_SetBoundingRect(QGlyphRun* self, QRectF* boundingRect) {
 }
 
 QRectF* QGlyphRun_BoundingRect(QGlyphRun* self) {
-	QRectF ret = self->boundingRect();
+	QRectF ret = const_cast<const QGlyphRun*>(self)->boundingRect();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRectF*>(new QRectF(ret));
 }
 
 bool QGlyphRun_IsEmpty(QGlyphRun* self) {
-	return self->isEmpty();
+	return const_cast<const QGlyphRun*>(self)->isEmpty();
+}
+
+void QGlyphRun_SetFlag2(QGlyphRun* self, uintptr_t flag, bool enabled) {
+	self->setFlag(static_cast<QGlyphRun::GlyphRunFlag>(flag), enabled);
 }
 
 void QGlyphRun_Delete(QGlyphRun* self) {

@@ -28,13 +28,17 @@ typedef struct QWidget QWidget;
 #endif
 
 QSplitter* QSplitter_new();
-QSplitter* QSplitter_new2(QWidget* parent);
+QSplitter* QSplitter_new2(uintptr_t param1);
+QSplitter* QSplitter_new3(QWidget* parent);
+QSplitter* QSplitter_new4(uintptr_t param1, QWidget* parent);
 QMetaObject* QSplitter_MetaObject(QSplitter* self);
-void QSplitter_Tr(char* s, char** _out, int* _out_Strlen);
-void QSplitter_TrUtf8(char* s, char** _out, int* _out_Strlen);
+void QSplitter_Tr(const char* s, char** _out, int* _out_Strlen);
+void QSplitter_TrUtf8(const char* s, char** _out, int* _out_Strlen);
 void QSplitter_AddWidget(QSplitter* self, QWidget* widget);
 void QSplitter_InsertWidget(QSplitter* self, int index, QWidget* widget);
 QWidget* QSplitter_ReplaceWidget(QSplitter* self, int index, QWidget* widget);
+void QSplitter_SetOrientation(QSplitter* self, uintptr_t orientation);
+uintptr_t QSplitter_Orientation(QSplitter* self);
 void QSplitter_SetChildrenCollapsible(QSplitter* self, bool childrenCollapsible);
 bool QSplitter_ChildrenCollapsible(QSplitter* self);
 void QSplitter_SetCollapsible(QSplitter* self, int index, bool param2);
@@ -58,23 +62,26 @@ QSplitterHandle* QSplitter_Handle(QSplitter* self, int index);
 void QSplitter_SetStretchFactor(QSplitter* self, int index, int stretch);
 void QSplitter_SplitterMoved(QSplitter* self, int pos, int index);
 void QSplitter_connect_SplitterMoved(QSplitter* self, void* slot);
-void QSplitter_Tr2(char* s, char* c, char** _out, int* _out_Strlen);
-void QSplitter_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen);
-void QSplitter_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen);
-void QSplitter_TrUtf83(char* s, char* c, int n, char** _out, int* _out_Strlen);
+void QSplitter_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
+void QSplitter_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+void QSplitter_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
+void QSplitter_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
 void QSplitter_SetOpaqueResize1(QSplitter* self, bool opaque);
 void QSplitter_Delete(QSplitter* self);
 
+QSplitterHandle* QSplitterHandle_new(uintptr_t o, QSplitter* parent);
 QMetaObject* QSplitterHandle_MetaObject(QSplitterHandle* self);
-void QSplitterHandle_Tr(char* s, char** _out, int* _out_Strlen);
-void QSplitterHandle_TrUtf8(char* s, char** _out, int* _out_Strlen);
+void QSplitterHandle_Tr(const char* s, char** _out, int* _out_Strlen);
+void QSplitterHandle_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+void QSplitterHandle_SetOrientation(QSplitterHandle* self, uintptr_t o);
+uintptr_t QSplitterHandle_Orientation(QSplitterHandle* self);
 bool QSplitterHandle_OpaqueResize(QSplitterHandle* self);
 QSplitter* QSplitterHandle_Splitter(QSplitterHandle* self);
 QSize* QSplitterHandle_SizeHint(QSplitterHandle* self);
-void QSplitterHandle_Tr2(char* s, char* c, char** _out, int* _out_Strlen);
-void QSplitterHandle_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen);
-void QSplitterHandle_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen);
-void QSplitterHandle_TrUtf83(char* s, char* c, int n, char** _out, int* _out_Strlen);
+void QSplitterHandle_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
+void QSplitterHandle_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+void QSplitterHandle_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
+void QSplitterHandle_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
 void QSplitterHandle_Delete(QSplitterHandle* self);
 
 #ifdef __cplusplus

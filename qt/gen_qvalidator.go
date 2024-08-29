@@ -78,6 +78,13 @@ func (this *QValidator) Locale() *QLocale {
 	return ret1
 }
 
+func (this *QValidator) Validate(param1 string, param2 *int) uintptr {
+	param1_Cstring := C.CString(param1)
+	defer C.free(unsafe.Pointer(param1_Cstring))
+	ret := C.QValidator_Validate(this.h, param1_Cstring, C.ulong(len(param1)), (*C.int)(unsafe.Pointer(param2)))
+	return (uintptr)(ret)
+}
+
 func (this *QValidator) Fixup(param1 string) {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
@@ -221,6 +228,13 @@ func QIntValidator_TrUtf8(s string) string {
 	ret := C.GoStringN(_out, _out_Strlen)
 	C.free(unsafe.Pointer(_out))
 	return ret
+}
+
+func (this *QIntValidator) Validate(param1 string, param2 *int) uintptr {
+	param1_Cstring := C.CString(param1)
+	defer C.free(unsafe.Pointer(param1_Cstring))
+	ret := C.QIntValidator_Validate(this.h, param1_Cstring, C.ulong(len(param1)), (*C.int)(unsafe.Pointer(param2)))
+	return (uintptr)(ret)
 }
 
 func (this *QIntValidator) Fixup(input string) {
@@ -402,6 +416,13 @@ func QDoubleValidator_TrUtf8(s string) string {
 	return ret
 }
 
+func (this *QDoubleValidator) Validate(param1 string, param2 *int) uintptr {
+	param1_Cstring := C.CString(param1)
+	defer C.free(unsafe.Pointer(param1_Cstring))
+	ret := C.QDoubleValidator_Validate(this.h, param1_Cstring, C.ulong(len(param1)), (*C.int)(unsafe.Pointer(param2)))
+	return (uintptr)(ret)
+}
+
 func (this *QDoubleValidator) SetRange(bottom float64, top float64) {
 	C.QDoubleValidator_SetRange(this.h, (C.double)(bottom), (C.double)(top))
 }
@@ -418,6 +439,10 @@ func (this *QDoubleValidator) SetDecimals(decimals int) {
 	C.QDoubleValidator_SetDecimals(this.h, (C.int)(decimals))
 }
 
+func (this *QDoubleValidator) SetNotation(notation uintptr) {
+	C.QDoubleValidator_SetNotation(this.h, (C.uintptr_t)(notation))
+}
+
 func (this *QDoubleValidator) Bottom() float64 {
 	ret := C.QDoubleValidator_Bottom(this.h)
 	return (float64)(ret)
@@ -431,6 +456,11 @@ func (this *QDoubleValidator) Top() float64 {
 func (this *QDoubleValidator) Decimals() int {
 	ret := C.QDoubleValidator_Decimals(this.h)
 	return (int)(ret)
+}
+
+func (this *QDoubleValidator) Notation() uintptr {
+	ret := C.QDoubleValidator_Notation(this.h)
+	return (uintptr)(ret)
 }
 
 func (this *QDoubleValidator) BottomChanged(bottom float64) {
@@ -467,6 +497,18 @@ func (this *QDoubleValidator) OnDecimalsChanged(slot func()) {
 	}
 
 	C.QDoubleValidator_connect_DecimalsChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+}
+
+func (this *QDoubleValidator) NotationChanged(notation uintptr) {
+	C.QDoubleValidator_NotationChanged(this.h, (C.uintptr_t)(notation))
+}
+
+func (this *QDoubleValidator) OnNotationChanged(slot func()) {
+	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
+		slot()
+	}
+
+	C.QDoubleValidator_connect_NotationChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
 }
 
 func QDoubleValidator_Tr2(s string, c string) string {
@@ -598,6 +640,13 @@ func QRegExpValidator_TrUtf8(s string) string {
 	ret := C.GoStringN(_out, _out_Strlen)
 	C.free(unsafe.Pointer(_out))
 	return ret
+}
+
+func (this *QRegExpValidator) Validate(input string, pos *int) uintptr {
+	input_Cstring := C.CString(input)
+	defer C.free(unsafe.Pointer(input_Cstring))
+	ret := C.QRegExpValidator_Validate(this.h, input_Cstring, C.ulong(len(input)), (*C.int)(unsafe.Pointer(pos)))
+	return (uintptr)(ret)
 }
 
 func (this *QRegExpValidator) SetRegExp(rx *QRegExp) {
@@ -746,6 +795,13 @@ func QRegularExpressionValidator_TrUtf8(s string) string {
 	ret := C.GoStringN(_out, _out_Strlen)
 	C.free(unsafe.Pointer(_out))
 	return ret
+}
+
+func (this *QRegularExpressionValidator) Validate(input string, pos *int) uintptr {
+	input_Cstring := C.CString(input)
+	defer C.free(unsafe.Pointer(input_Cstring))
+	ret := C.QRegularExpressionValidator_Validate(this.h, input_Cstring, C.ulong(len(input)), (*C.int)(unsafe.Pointer(pos)))
+	return (uintptr)(ret)
 }
 
 func (this *QRegularExpressionValidator) RegularExpression() *QRegularExpression {

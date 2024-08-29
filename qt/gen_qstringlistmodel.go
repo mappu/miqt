@@ -140,6 +140,11 @@ func (this *QStringListModel) SetData(index *QModelIndex, value *QVariant) bool 
 	return (bool)(ret)
 }
 
+func (this *QStringListModel) Flags(index *QModelIndex) int {
+	ret := C.QStringListModel_Flags(this.h, index.cPointer())
+	return (int)(ret)
+}
+
 func (this *QStringListModel) InsertRows(row int, count int) bool {
 	ret := C.QStringListModel_InsertRows(this.h, (C.int)(row), (C.int)(count))
 	return (bool)(ret)
@@ -153,6 +158,10 @@ func (this *QStringListModel) RemoveRows(row int, count int) bool {
 func (this *QStringListModel) MoveRows(sourceParent *QModelIndex, sourceRow int, count int, destinationParent *QModelIndex, destinationChild int) bool {
 	ret := C.QStringListModel_MoveRows(this.h, sourceParent.cPointer(), (C.int)(sourceRow), (C.int)(count), destinationParent.cPointer(), (C.int)(destinationChild))
 	return (bool)(ret)
+}
+
+func (this *QStringListModel) Sort(column int) {
+	C.QStringListModel_Sort(this.h, (C.int)(column))
 }
 
 func (this *QStringListModel) StringList() []string {
@@ -183,6 +192,11 @@ func (this *QStringListModel) SetStringList(strings []string) {
 		strings_Lengths[i] = (C.size_t)(len(strings[i]))
 	}
 	C.QStringListModel_SetStringList(this.h, &strings_CArray[0], &strings_Lengths[0], C.ulong(len(strings)))
+}
+
+func (this *QStringListModel) SupportedDropActions() int {
+	ret := C.QStringListModel_SupportedDropActions(this.h)
+	return (int)(ret)
 }
 
 func QStringListModel_Tr2(s string, c string) string {
@@ -266,6 +280,10 @@ func (this *QStringListModel) InsertRows3(row int, count int, parent *QModelInde
 func (this *QStringListModel) RemoveRows3(row int, count int, parent *QModelIndex) bool {
 	ret := C.QStringListModel_RemoveRows3(this.h, (C.int)(row), (C.int)(count), parent.cPointer())
 	return (bool)(ret)
+}
+
+func (this *QStringListModel) Sort2(column int, order uintptr) {
+	C.QStringListModel_Sort2(this.h, (C.int)(column), (C.uintptr_t)(order))
 }
 
 func (this *QStringListModel) Delete() {

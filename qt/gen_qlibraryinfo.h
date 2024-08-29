@@ -24,9 +24,10 @@ typedef struct QVersionNumber QVersionNumber;
 void QLibraryInfo_Licensee(char** _out, int* _out_Strlen);
 void QLibraryInfo_LicensedProducts(char** _out, int* _out_Strlen);
 QDate* QLibraryInfo_BuildDate();
-char* QLibraryInfo_Build();
+const char* QLibraryInfo_Build();
 bool QLibraryInfo_IsDebugBuild();
 QVersionNumber* QLibraryInfo_Version();
+void QLibraryInfo_Location(uintptr_t param1, char** _out, int* _out_Strlen);
 void QLibraryInfo_PlatformPluginArguments(const char* platformName, size_t platformName_Strlen, char*** _out, int** _out_Lengths, size_t* _out_len);
 void QLibraryInfo_Delete(QLibraryInfo* self);
 

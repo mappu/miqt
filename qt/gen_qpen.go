@@ -41,14 +41,44 @@ func NewQPen() *QPen {
 }
 
 // NewQPen2 constructs a new QPen object.
-func NewQPen2(color *QColor) *QPen {
-	ret := C.QPen_new2(color.cPointer())
+func NewQPen2(param1 uintptr) *QPen {
+	ret := C.QPen_new2((C.uintptr_t)(param1))
 	return newQPen(ret)
 }
 
 // NewQPen3 constructs a new QPen object.
-func NewQPen3(pen *QPen) *QPen {
-	ret := C.QPen_new3(pen.cPointer())
+func NewQPen3(color *QColor) *QPen {
+	ret := C.QPen_new3(color.cPointer())
+	return newQPen(ret)
+}
+
+// NewQPen4 constructs a new QPen object.
+func NewQPen4(brush *QBrush, width float64) *QPen {
+	ret := C.QPen_new4(brush.cPointer(), (C.double)(width))
+	return newQPen(ret)
+}
+
+// NewQPen5 constructs a new QPen object.
+func NewQPen5(pen *QPen) *QPen {
+	ret := C.QPen_new5(pen.cPointer())
+	return newQPen(ret)
+}
+
+// NewQPen6 constructs a new QPen object.
+func NewQPen6(brush *QBrush, width float64, s uintptr) *QPen {
+	ret := C.QPen_new6(brush.cPointer(), (C.double)(width), (C.uintptr_t)(s))
+	return newQPen(ret)
+}
+
+// NewQPen7 constructs a new QPen object.
+func NewQPen7(brush *QBrush, width float64, s uintptr, c uintptr) *QPen {
+	ret := C.QPen_new7(brush.cPointer(), (C.double)(width), (C.uintptr_t)(s), (C.uintptr_t)(c))
+	return newQPen(ret)
+}
+
+// NewQPen8 constructs a new QPen object.
+func NewQPen8(brush *QBrush, width float64, s uintptr, c uintptr, j uintptr) *QPen {
+	ret := C.QPen_new8(brush.cPointer(), (C.double)(width), (C.uintptr_t)(s), (C.uintptr_t)(c), (C.uintptr_t)(j))
 	return newQPen(ret)
 }
 
@@ -58,6 +88,15 @@ func (this *QPen) OperatorAssign(pen *QPen) {
 
 func (this *QPen) Swap(other *QPen) {
 	C.QPen_Swap(this.h, other.cPointer())
+}
+
+func (this *QPen) Style() uintptr {
+	ret := C.QPen_Style(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QPen) SetStyle(style uintptr) {
+	C.QPen_SetStyle(this.h, (C.uintptr_t)(style))
 }
 
 func (this *QPen) DashPattern() []float64 {
@@ -152,6 +191,24 @@ func (this *QPen) SetBrush(brush *QBrush) {
 func (this *QPen) IsSolid() bool {
 	ret := C.QPen_IsSolid(this.h)
 	return (bool)(ret)
+}
+
+func (this *QPen) CapStyle() uintptr {
+	ret := C.QPen_CapStyle(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QPen) SetCapStyle(pcs uintptr) {
+	C.QPen_SetCapStyle(this.h, (C.uintptr_t)(pcs))
+}
+
+func (this *QPen) JoinStyle() uintptr {
+	ret := C.QPen_JoinStyle(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QPen) SetJoinStyle(pcs uintptr) {
+	C.QPen_SetJoinStyle(this.h, (C.uintptr_t)(pcs))
 }
 
 func (this *QPen) IsCosmetic() bool {

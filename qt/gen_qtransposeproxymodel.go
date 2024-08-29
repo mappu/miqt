@@ -88,6 +88,22 @@ func (this *QTransposeProxyModel) ColumnCount() int {
 	return (int)(ret)
 }
 
+func (this *QTransposeProxyModel) HeaderData(section int, orientation uintptr) *QVariant {
+	ret := C.QTransposeProxyModel_HeaderData(this.h, (C.int)(section), (C.uintptr_t)(orientation))
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQVariant(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QVariant) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QTransposeProxyModel) SetHeaderData(section int, orientation uintptr, value *QVariant) bool {
+	ret := C.QTransposeProxyModel_SetHeaderData(this.h, (C.int)(section), (C.uintptr_t)(orientation), value.cPointer())
+	return (bool)(ret)
+}
+
 func (this *QTransposeProxyModel) Span(index *QModelIndex) *QSize {
 	ret := C.QTransposeProxyModel_Span(this.h, index.cPointer())
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -173,6 +189,10 @@ func (this *QTransposeProxyModel) MoveColumns(sourceParent *QModelIndex, sourceC
 	return (bool)(ret)
 }
 
+func (this *QTransposeProxyModel) Sort(column int) {
+	C.QTransposeProxyModel_Sort(this.h, (C.int)(column))
+}
+
 func QTransposeProxyModel_Tr2(s string, c string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
@@ -235,6 +255,22 @@ func (this *QTransposeProxyModel) ColumnCount1(parent *QModelIndex) int {
 	return (int)(ret)
 }
 
+func (this *QTransposeProxyModel) HeaderData3(section int, orientation uintptr, role int) *QVariant {
+	ret := C.QTransposeProxyModel_HeaderData3(this.h, (C.int)(section), (C.uintptr_t)(orientation), (C.int)(role))
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQVariant(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QVariant) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QTransposeProxyModel) SetHeaderData4(section int, orientation uintptr, value *QVariant, role int) bool {
+	ret := C.QTransposeProxyModel_SetHeaderData4(this.h, (C.int)(section), (C.uintptr_t)(orientation), value.cPointer(), (C.int)(role))
+	return (bool)(ret)
+}
+
 func (this *QTransposeProxyModel) Index3(row int, column int, parent *QModelIndex) *QModelIndex {
 	ret := C.QTransposeProxyModel_Index3(this.h, (C.int)(row), (C.int)(column), parent.cPointer())
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -264,6 +300,10 @@ func (this *QTransposeProxyModel) InsertColumns3(column int, count int, parent *
 func (this *QTransposeProxyModel) RemoveColumns3(column int, count int, parent *QModelIndex) bool {
 	ret := C.QTransposeProxyModel_RemoveColumns3(this.h, (C.int)(column), (C.int)(count), parent.cPointer())
 	return (bool)(ret)
+}
+
+func (this *QTransposeProxyModel) Sort2(column int, order uintptr) {
+	C.QTransposeProxyModel_Sort2(this.h, (C.int)(column), (C.uintptr_t)(order))
 }
 
 func (this *QTransposeProxyModel) Delete() {

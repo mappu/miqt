@@ -67,6 +67,10 @@ func (this *QBasicTimer) Start(msec int, obj *QObject) {
 	C.QBasicTimer_Start(this.h, (C.int)(msec), obj.cPointer())
 }
 
+func (this *QBasicTimer) Start2(msec int, timerType uintptr, obj *QObject) {
+	C.QBasicTimer_Start2(this.h, (C.int)(msec), (C.uintptr_t)(timerType), obj.cPointer())
+}
+
 func (this *QBasicTimer) Stop() {
 	C.QBasicTimer_Stop(this.h)
 }

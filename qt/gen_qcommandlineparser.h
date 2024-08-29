@@ -22,8 +22,10 @@ typedef struct QCoreApplication QCoreApplication;
 #endif
 
 QCommandLineParser* QCommandLineParser_new();
-void QCommandLineParser_Tr(char* sourceText, char** _out, int* _out_Strlen);
-void QCommandLineParser_TrUtf8(char* sourceText, char** _out, int* _out_Strlen);
+void QCommandLineParser_Tr(const char* sourceText, char** _out, int* _out_Strlen);
+void QCommandLineParser_TrUtf8(const char* sourceText, char** _out, int* _out_Strlen);
+void QCommandLineParser_SetSingleDashWordOptionMode(QCommandLineParser* self, uintptr_t parsingMode);
+void QCommandLineParser_SetOptionsAfterPositionalArgumentsMode(QCommandLineParser* self, uintptr_t mode);
 bool QCommandLineParser_AddOption(QCommandLineParser* self, QCommandLineOption* commandLineOption);
 bool QCommandLineParser_AddOptions(QCommandLineParser* self, QCommandLineOption** options, size_t options_len);
 QCommandLineOption* QCommandLineParser_AddVersionOption(QCommandLineParser* self);
@@ -46,10 +48,10 @@ void QCommandLineParser_PositionalArguments(QCommandLineParser* self, char*** _o
 void QCommandLineParser_OptionNames(QCommandLineParser* self, char*** _out, int** _out_Lengths, size_t* _out_len);
 void QCommandLineParser_UnknownOptionNames(QCommandLineParser* self, char*** _out, int** _out_Lengths, size_t* _out_len);
 void QCommandLineParser_HelpText(QCommandLineParser* self, char** _out, int* _out_Strlen);
-void QCommandLineParser_Tr2(char* sourceText, char* disambiguation, char** _out, int* _out_Strlen);
-void QCommandLineParser_Tr3(char* sourceText, char* disambiguation, int n, char** _out, int* _out_Strlen);
-void QCommandLineParser_TrUtf82(char* sourceText, char* disambiguation, char** _out, int* _out_Strlen);
-void QCommandLineParser_TrUtf83(char* sourceText, char* disambiguation, int n, char** _out, int* _out_Strlen);
+void QCommandLineParser_Tr2(const char* sourceText, const char* disambiguation, char** _out, int* _out_Strlen);
+void QCommandLineParser_Tr3(const char* sourceText, const char* disambiguation, int n, char** _out, int* _out_Strlen);
+void QCommandLineParser_TrUtf82(const char* sourceText, const char* disambiguation, char** _out, int* _out_Strlen);
+void QCommandLineParser_TrUtf83(const char* sourceText, const char* disambiguation, int n, char** _out, int* _out_Strlen);
 void QCommandLineParser_AddPositionalArgument3(QCommandLineParser* self, const char* name, size_t name_Strlen, const char* description, size_t description_Strlen, const char* syntax, size_t syntax_Strlen);
 void QCommandLineParser_Delete(QCommandLineParser* self);
 

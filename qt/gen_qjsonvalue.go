@@ -35,34 +35,32 @@ func newQJsonValue_U(h unsafe.Pointer) *QJsonValue {
 }
 
 // NewQJsonValue constructs a new QJsonValue object.
-func NewQJsonValue(b bool) *QJsonValue {
-	ret := C.QJsonValue_new((C.bool)(b))
+func NewQJsonValue() *QJsonValue {
+	ret := C.QJsonValue_new()
 	return newQJsonValue(ret)
 }
 
 // NewQJsonValue2 constructs a new QJsonValue object.
-func NewQJsonValue2(n float64) *QJsonValue {
-	ret := C.QJsonValue_new2((C.double)(n))
+func NewQJsonValue2(b bool) *QJsonValue {
+	ret := C.QJsonValue_new2((C.bool)(b))
 	return newQJsonValue(ret)
 }
 
 // NewQJsonValue3 constructs a new QJsonValue object.
-func NewQJsonValue3(n int) *QJsonValue {
-	ret := C.QJsonValue_new3((C.int)(n))
+func NewQJsonValue3(n float64) *QJsonValue {
+	ret := C.QJsonValue_new3((C.double)(n))
 	return newQJsonValue(ret)
 }
 
 // NewQJsonValue4 constructs a new QJsonValue object.
-func NewQJsonValue4(v int64) *QJsonValue {
-	ret := C.QJsonValue_new4((C.int64_t)(v))
+func NewQJsonValue4(n int) *QJsonValue {
+	ret := C.QJsonValue_new4((C.int)(n))
 	return newQJsonValue(ret)
 }
 
 // NewQJsonValue5 constructs a new QJsonValue object.
-func NewQJsonValue5(s string) *QJsonValue {
-	s_Cstring := C.CString(s)
-	defer C.free(unsafe.Pointer(s_Cstring))
-	ret := C.QJsonValue_new5(s_Cstring, C.ulong(len(s)))
+func NewQJsonValue5(v int64) *QJsonValue {
+	ret := C.QJsonValue_new5((C.longlong)(v))
 	return newQJsonValue(ret)
 }
 
@@ -70,25 +68,39 @@ func NewQJsonValue5(s string) *QJsonValue {
 func NewQJsonValue6(s string) *QJsonValue {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	ret := C.QJsonValue_new6(s_Cstring)
+	ret := C.QJsonValue_new6(s_Cstring, C.ulong(len(s)))
 	return newQJsonValue(ret)
 }
 
 // NewQJsonValue7 constructs a new QJsonValue object.
-func NewQJsonValue7(a *QJsonArray) *QJsonValue {
-	ret := C.QJsonValue_new7(a.cPointer())
+func NewQJsonValue7(s string) *QJsonValue {
+	s_Cstring := C.CString(s)
+	defer C.free(unsafe.Pointer(s_Cstring))
+	ret := C.QJsonValue_new7(s_Cstring)
 	return newQJsonValue(ret)
 }
 
 // NewQJsonValue8 constructs a new QJsonValue object.
-func NewQJsonValue8(o *QJsonObject) *QJsonValue {
-	ret := C.QJsonValue_new8(o.cPointer())
+func NewQJsonValue8(a *QJsonArray) *QJsonValue {
+	ret := C.QJsonValue_new8(a.cPointer())
 	return newQJsonValue(ret)
 }
 
 // NewQJsonValue9 constructs a new QJsonValue object.
-func NewQJsonValue9(other *QJsonValue) *QJsonValue {
-	ret := C.QJsonValue_new9(other.cPointer())
+func NewQJsonValue9(o *QJsonObject) *QJsonValue {
+	ret := C.QJsonValue_new9(o.cPointer())
+	return newQJsonValue(ret)
+}
+
+// NewQJsonValue10 constructs a new QJsonValue object.
+func NewQJsonValue10(other *QJsonValue) *QJsonValue {
+	ret := C.QJsonValue_new10(other.cPointer())
+	return newQJsonValue(ret)
+}
+
+// NewQJsonValue11 constructs a new QJsonValue object.
+func NewQJsonValue11(param1 uintptr) *QJsonValue {
+	ret := C.QJsonValue_new11((C.uintptr_t)(param1))
 	return newQJsonValue(ret)
 }
 
@@ -120,6 +132,11 @@ func (this *QJsonValue) ToVariant() *QVariant {
 		runtime.KeepAlive(ret2.h)
 	})
 	return ret1
+}
+
+func (this *QJsonValue) Type() uintptr {
+	ret := C.QJsonValue_Type(this.h)
+	return (uintptr)(ret)
 }
 
 func (this *QJsonValue) IsNull() bool {
@@ -343,6 +360,11 @@ func (this *QJsonValueRef) ToVariant() *QVariant {
 		runtime.KeepAlive(ret2.h)
 	})
 	return ret1
+}
+
+func (this *QJsonValueRef) Type() uintptr {
+	ret := C.QJsonValueRef_Type(this.h)
+	return (uintptr)(ret)
 }
 
 func (this *QJsonValueRef) IsNull() bool {

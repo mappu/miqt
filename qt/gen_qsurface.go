@@ -34,6 +34,11 @@ func newQSurface_U(h unsafe.Pointer) *QSurface {
 	return newQSurface((*C.QSurface)(h))
 }
 
+func (this *QSurface) SurfaceClass() uintptr {
+	ret := C.QSurface_SurfaceClass(this.h)
+	return (uintptr)(ret)
+}
+
 func (this *QSurface) Format() *QSurfaceFormat {
 	ret := C.QSurface_Format(this.h)
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -43,6 +48,11 @@ func (this *QSurface) Format() *QSurfaceFormat {
 		runtime.KeepAlive(ret2.h)
 	})
 	return ret1
+}
+
+func (this *QSurface) SurfaceType() uintptr {
+	ret := C.QSurface_SurfaceType(this.h)
+	return (uintptr)(ret)
 }
 
 func (this *QSurface) SupportsOpenGL() bool {

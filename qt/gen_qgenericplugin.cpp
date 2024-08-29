@@ -1,21 +1,22 @@
-#include "gen_qgenericplugin.h"
-#include "qgenericplugin.h"
-
 #include <QGenericPlugin>
 #include <QMetaObject>
 #include <QObject>
 #include <QString>
+#include <QByteArray>
+#include <cstring>
+#include "qgenericplugin.h"
 
+#include "gen_qgenericplugin.h"
 
 extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
 }
 
 QMetaObject* QGenericPlugin_MetaObject(QGenericPlugin* self) {
-	return (QMetaObject*) self->metaObject();
+	return (QMetaObject*) const_cast<const QGenericPlugin*>(self)->metaObject();
 }
 
-void QGenericPlugin_Tr(char* s, char** _out, int* _out_Strlen) {
+void QGenericPlugin_Tr(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QGenericPlugin::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -24,7 +25,7 @@ void QGenericPlugin_Tr(char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QGenericPlugin_TrUtf8(char* s, char** _out, int* _out_Strlen) {
+void QGenericPlugin_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QGenericPlugin::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -39,7 +40,7 @@ QObject* QGenericPlugin_Create(QGenericPlugin* self, const char* name, size_t na
 	return self->create(name_QString, spec_QString);
 }
 
-void QGenericPlugin_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
+void QGenericPlugin_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QGenericPlugin::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -48,7 +49,7 @@ void QGenericPlugin_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QGenericPlugin_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QGenericPlugin_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QGenericPlugin::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -57,7 +58,7 @@ void QGenericPlugin_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) 
 	*_out_Strlen = b.length();
 }
 
-void QGenericPlugin_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
+void QGenericPlugin_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QGenericPlugin::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -66,7 +67,7 @@ void QGenericPlugin_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QGenericPlugin_TrUtf83(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QGenericPlugin_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QGenericPlugin::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();

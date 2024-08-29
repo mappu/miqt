@@ -28,8 +28,8 @@ QTemporaryFile* QTemporaryFile_new2(const char* templateName, size_t templateNam
 QTemporaryFile* QTemporaryFile_new3(QObject* parent);
 QTemporaryFile* QTemporaryFile_new4(const char* templateName, size_t templateName_Strlen, QObject* parent);
 QMetaObject* QTemporaryFile_MetaObject(QTemporaryFile* self);
-void QTemporaryFile_Tr(char* s, char** _out, int* _out_Strlen);
-void QTemporaryFile_TrUtf8(char* s, char** _out, int* _out_Strlen);
+void QTemporaryFile_Tr(const char* s, char** _out, int* _out_Strlen);
+void QTemporaryFile_TrUtf8(const char* s, char** _out, int* _out_Strlen);
 bool QTemporaryFile_AutoRemove(QTemporaryFile* self);
 void QTemporaryFile_SetAutoRemove(QTemporaryFile* self, bool b);
 bool QTemporaryFile_Open(QTemporaryFile* self);
@@ -41,10 +41,10 @@ QTemporaryFile* QTemporaryFile_CreateLocalFile(const char* fileName, size_t file
 QTemporaryFile* QTemporaryFile_CreateLocalFileWithFile(QFile* file);
 QTemporaryFile* QTemporaryFile_CreateNativeFile(const char* fileName, size_t fileName_Strlen);
 QTemporaryFile* QTemporaryFile_CreateNativeFileWithFile(QFile* file);
-void QTemporaryFile_Tr2(char* s, char* c, char** _out, int* _out_Strlen);
-void QTemporaryFile_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen);
-void QTemporaryFile_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen);
-void QTemporaryFile_TrUtf83(char* s, char* c, int n, char** _out, int* _out_Strlen);
+void QTemporaryFile_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
+void QTemporaryFile_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+void QTemporaryFile_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
+void QTemporaryFile_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
 void QTemporaryFile_Delete(QTemporaryFile* self);
 
 #ifdef __cplusplus

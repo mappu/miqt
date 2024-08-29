@@ -1,13 +1,14 @@
-#include "gen_qwhatsthis.h"
-#include "qwhatsthis.h"
-
 #include <QAction>
 #include <QObject>
 #include <QPoint>
 #include <QString>
+#include <QByteArray>
+#include <cstring>
 #include <QWhatsThis>
 #include <QWidget>
+#include "qwhatsthis.h"
 
+#include "gen_qwhatsthis.h"
 
 extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);

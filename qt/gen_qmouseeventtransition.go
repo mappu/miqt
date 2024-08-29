@@ -42,8 +42,20 @@ func NewQMouseEventTransition() *QMouseEventTransition {
 }
 
 // NewQMouseEventTransition2 constructs a new QMouseEventTransition object.
-func NewQMouseEventTransition2(sourceState *QState) *QMouseEventTransition {
-	ret := C.QMouseEventTransition_new2(sourceState.cPointer())
+func NewQMouseEventTransition2(object *QObject, typeVal uintptr, button uintptr) *QMouseEventTransition {
+	ret := C.QMouseEventTransition_new2(object.cPointer(), (C.uintptr_t)(typeVal), (C.uintptr_t)(button))
+	return newQMouseEventTransition(ret)
+}
+
+// NewQMouseEventTransition3 constructs a new QMouseEventTransition object.
+func NewQMouseEventTransition3(sourceState *QState) *QMouseEventTransition {
+	ret := C.QMouseEventTransition_new3(sourceState.cPointer())
+	return newQMouseEventTransition(ret)
+}
+
+// NewQMouseEventTransition4 constructs a new QMouseEventTransition object.
+func NewQMouseEventTransition4(object *QObject, typeVal uintptr, button uintptr, sourceState *QState) *QMouseEventTransition {
+	ret := C.QMouseEventTransition_new4(object.cPointer(), (C.uintptr_t)(typeVal), (C.uintptr_t)(button), sourceState.cPointer())
 	return newQMouseEventTransition(ret)
 }
 
@@ -72,6 +84,24 @@ func QMouseEventTransition_TrUtf8(s string) string {
 	ret := C.GoStringN(_out, _out_Strlen)
 	C.free(unsafe.Pointer(_out))
 	return ret
+}
+
+func (this *QMouseEventTransition) Button() uintptr {
+	ret := C.QMouseEventTransition_Button(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QMouseEventTransition) SetButton(button uintptr) {
+	C.QMouseEventTransition_SetButton(this.h, (C.uintptr_t)(button))
+}
+
+func (this *QMouseEventTransition) ModifierMask() int {
+	ret := C.QMouseEventTransition_ModifierMask(this.h)
+	return (int)(ret)
+}
+
+func (this *QMouseEventTransition) SetModifierMask(modifiers int) {
+	C.QMouseEventTransition_SetModifierMask(this.h, (C.int)(modifiers))
 }
 
 func (this *QMouseEventTransition) HitTestPath() *QPainterPath {

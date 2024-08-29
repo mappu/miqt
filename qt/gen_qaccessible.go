@@ -34,9 +34,36 @@ func newQAccessible_U(h unsafe.Pointer) *QAccessible {
 	return newQAccessible((*C.QAccessible)(h))
 }
 
+func QAccessible_InstallActivationObserver(param1 *QAccessible__ActivationObserver) {
+	C.QAccessible_InstallActivationObserver(param1.cPointer())
+}
+
+func QAccessible_RemoveActivationObserver(param1 *QAccessible__ActivationObserver) {
+	C.QAccessible_RemoveActivationObserver(param1.cPointer())
+}
+
 func QAccessible_QueryAccessibleInterface(param1 *QObject) *QAccessibleInterface {
 	ret := C.QAccessible_QueryAccessibleInterface(param1.cPointer())
 	return newQAccessibleInterface_U(unsafe.Pointer(ret))
+}
+
+func QAccessible_UniqueId(iface *QAccessibleInterface) uint {
+	ret := C.QAccessible_UniqueId(iface.cPointer())
+	return (uint)(ret)
+}
+
+func QAccessible_AccessibleInterface(uniqueId uint) *QAccessibleInterface {
+	ret := C.QAccessible_AccessibleInterface((C.uint)(uniqueId))
+	return newQAccessibleInterface_U(unsafe.Pointer(ret))
+}
+
+func QAccessible_RegisterAccessibleInterface(iface *QAccessibleInterface) uint {
+	ret := C.QAccessible_RegisterAccessibleInterface(iface.cPointer())
+	return (uint)(ret)
+}
+
+func QAccessible_DeleteAccessibleInterface(uniqueId uint) {
+	C.QAccessible_DeleteAccessibleInterface((C.uint)(uniqueId))
 }
 
 func QAccessible_UpdateAccessibility(event *QAccessibleEvent) {
@@ -128,11 +155,42 @@ func (this *QAccessibleInterface) IndexOfChild(param1 *QAccessibleInterface) int
 	return (int)(ret)
 }
 
+func (this *QAccessibleInterface) Text(t uintptr) string {
+	var _out *C.char = nil
+	var _out_Strlen C.int = 0
+	C.QAccessibleInterface_Text(this.h, (C.uintptr_t)(t), &_out, &_out_Strlen)
+	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func (this *QAccessibleInterface) SetText(t uintptr, text string) {
+	text_Cstring := C.CString(text)
+	defer C.free(unsafe.Pointer(text_Cstring))
+	C.QAccessibleInterface_SetText(this.h, (C.uintptr_t)(t), text_Cstring, C.ulong(len(text)))
+}
+
 func (this *QAccessibleInterface) Rect() *QRect {
 	ret := C.QAccessibleInterface_Rect(this.h)
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQRect(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QRect) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QAccessibleInterface) Role() uintptr {
+	ret := C.QAccessibleInterface_Role(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QAccessibleInterface) State() *QAccessible__State {
+	ret := C.QAccessibleInterface_State(this.h)
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQAccessible__State(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QAccessible__State) {
 		ret2.Delete()
 		runtime.KeepAlive(ret2.h)
 	})
@@ -249,6 +307,33 @@ func (this *QAccessibleTextInterface) Text(startOffset int, endOffset int) strin
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
 	C.QAccessibleTextInterface_Text(this.h, (C.int)(startOffset), (C.int)(endOffset), &_out, &_out_Strlen)
+	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func (this *QAccessibleTextInterface) TextBeforeOffset(offset int, boundaryType uintptr, startOffset *int, endOffset *int) string {
+	var _out *C.char = nil
+	var _out_Strlen C.int = 0
+	C.QAccessibleTextInterface_TextBeforeOffset(this.h, (C.int)(offset), (C.uintptr_t)(boundaryType), (*C.int)(unsafe.Pointer(startOffset)), (*C.int)(unsafe.Pointer(endOffset)), &_out, &_out_Strlen)
+	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func (this *QAccessibleTextInterface) TextAfterOffset(offset int, boundaryType uintptr, startOffset *int, endOffset *int) string {
+	var _out *C.char = nil
+	var _out_Strlen C.int = 0
+	C.QAccessibleTextInterface_TextAfterOffset(this.h, (C.int)(offset), (C.uintptr_t)(boundaryType), (*C.int)(unsafe.Pointer(startOffset)), (*C.int)(unsafe.Pointer(endOffset)), &_out, &_out_Strlen)
+	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func (this *QAccessibleTextInterface) TextAtOffset(offset int, boundaryType uintptr, startOffset *int, endOffset *int) string {
+	var _out *C.char = nil
+	var _out_Strlen C.int = 0
+	C.QAccessibleTextInterface_TextAtOffset(this.h, (C.int)(offset), (C.uintptr_t)(boundaryType), (*C.int)(unsafe.Pointer(startOffset)), (*C.int)(unsafe.Pointer(endOffset)), &_out, &_out_Strlen)
 	ret := C.GoStringN(_out, _out_Strlen)
 	C.free(unsafe.Pointer(_out))
 	return ret
@@ -997,9 +1082,31 @@ func newQAccessibleEvent_U(h unsafe.Pointer) *QAccessibleEvent {
 	return newQAccessibleEvent((*C.QAccessibleEvent)(h))
 }
 
+// NewQAccessibleEvent constructs a new QAccessibleEvent object.
+func NewQAccessibleEvent(obj *QObject, typ uintptr) *QAccessibleEvent {
+	ret := C.QAccessibleEvent_new(obj.cPointer(), (C.uintptr_t)(typ))
+	return newQAccessibleEvent(ret)
+}
+
+// NewQAccessibleEvent2 constructs a new QAccessibleEvent object.
+func NewQAccessibleEvent2(iface *QAccessibleInterface, typ uintptr) *QAccessibleEvent {
+	ret := C.QAccessibleEvent_new2(iface.cPointer(), (C.uintptr_t)(typ))
+	return newQAccessibleEvent(ret)
+}
+
+func (this *QAccessibleEvent) Type() uintptr {
+	ret := C.QAccessibleEvent_Type(this.h)
+	return (uintptr)(ret)
+}
+
 func (this *QAccessibleEvent) Object() *QObject {
 	ret := C.QAccessibleEvent_Object(this.h)
 	return newQObject_U(unsafe.Pointer(ret))
+}
+
+func (this *QAccessibleEvent) UniqueId() uint {
+	ret := C.QAccessibleEvent_UniqueId(this.h)
+	return (uint)(ret)
 }
 
 func (this *QAccessibleEvent) SetChild(chld int) {
@@ -1038,6 +1145,29 @@ func newQAccessibleStateChangeEvent(h *C.QAccessibleStateChangeEvent) *QAccessib
 
 func newQAccessibleStateChangeEvent_U(h unsafe.Pointer) *QAccessibleStateChangeEvent {
 	return newQAccessibleStateChangeEvent((*C.QAccessibleStateChangeEvent)(h))
+}
+
+// NewQAccessibleStateChangeEvent constructs a new QAccessibleStateChangeEvent object.
+func NewQAccessibleStateChangeEvent(obj *QObject, state QAccessible__State) *QAccessibleStateChangeEvent {
+	ret := C.QAccessibleStateChangeEvent_new(obj.cPointer(), state.cPointer())
+	return newQAccessibleStateChangeEvent(ret)
+}
+
+// NewQAccessibleStateChangeEvent2 constructs a new QAccessibleStateChangeEvent object.
+func NewQAccessibleStateChangeEvent2(iface *QAccessibleInterface, state QAccessible__State) *QAccessibleStateChangeEvent {
+	ret := C.QAccessibleStateChangeEvent_new2(iface.cPointer(), state.cPointer())
+	return newQAccessibleStateChangeEvent(ret)
+}
+
+func (this *QAccessibleStateChangeEvent) ChangedStates() *QAccessible__State {
+	ret := C.QAccessibleStateChangeEvent_ChangedStates(this.h)
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQAccessible__State(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QAccessible__State) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
 }
 
 func (this *QAccessibleStateChangeEvent) Delete() {
@@ -1385,6 +1515,27 @@ func newQAccessibleTableModelChangeEvent_U(h unsafe.Pointer) *QAccessibleTableMo
 	return newQAccessibleTableModelChangeEvent((*C.QAccessibleTableModelChangeEvent)(h))
 }
 
+// NewQAccessibleTableModelChangeEvent constructs a new QAccessibleTableModelChangeEvent object.
+func NewQAccessibleTableModelChangeEvent(obj *QObject, changeType uintptr) *QAccessibleTableModelChangeEvent {
+	ret := C.QAccessibleTableModelChangeEvent_new(obj.cPointer(), (C.uintptr_t)(changeType))
+	return newQAccessibleTableModelChangeEvent(ret)
+}
+
+// NewQAccessibleTableModelChangeEvent2 constructs a new QAccessibleTableModelChangeEvent object.
+func NewQAccessibleTableModelChangeEvent2(iface *QAccessibleInterface, changeType uintptr) *QAccessibleTableModelChangeEvent {
+	ret := C.QAccessibleTableModelChangeEvent_new2(iface.cPointer(), (C.uintptr_t)(changeType))
+	return newQAccessibleTableModelChangeEvent(ret)
+}
+
+func (this *QAccessibleTableModelChangeEvent) SetModelChangeType(changeType uintptr) {
+	C.QAccessibleTableModelChangeEvent_SetModelChangeType(this.h, (C.uintptr_t)(changeType))
+}
+
+func (this *QAccessibleTableModelChangeEvent) ModelChangeType() uintptr {
+	ret := C.QAccessibleTableModelChangeEvent_ModelChangeType(this.h)
+	return (uintptr)(ret)
+}
+
 func (this *QAccessibleTableModelChangeEvent) SetFirstRow(row int) {
 	C.QAccessibleTableModelChangeEvent_SetFirstRow(this.h, (C.int)(row))
 }
@@ -1423,4 +1574,66 @@ func (this *QAccessibleTableModelChangeEvent) LastColumn() int {
 
 func (this *QAccessibleTableModelChangeEvent) Delete() {
 	C.QAccessibleTableModelChangeEvent_Delete(this.h)
+}
+
+type QAccessible__State struct {
+	h *C.QAccessible__State
+}
+
+func (this *QAccessible__State) cPointer() *C.QAccessible__State {
+	if this == nil {
+		return nil
+	}
+	return this.h
+}
+
+func newQAccessible__State(h *C.QAccessible__State) *QAccessible__State {
+	return &QAccessible__State{h: h}
+}
+
+func newQAccessible__State_U(h unsafe.Pointer) *QAccessible__State {
+	return newQAccessible__State((*C.QAccessible__State)(h))
+}
+
+// NewQAccessible__State constructs a new QAccessible::State object.
+func NewQAccessible__State() *QAccessible__State {
+	ret := C.QAccessible__State_new()
+	return newQAccessible__State(ret)
+}
+
+// NewQAccessible__State2 constructs a new QAccessible::State object.
+func NewQAccessible__State2(param1 *QAccessible__State) *QAccessible__State {
+	ret := C.QAccessible__State_new2(param1.cPointer())
+	return newQAccessible__State(ret)
+}
+
+func (this *QAccessible__State) Delete() {
+	C.QAccessible__State_Delete(this.h)
+}
+
+type QAccessible__ActivationObserver struct {
+	h *C.QAccessible__ActivationObserver
+}
+
+func (this *QAccessible__ActivationObserver) cPointer() *C.QAccessible__ActivationObserver {
+	if this == nil {
+		return nil
+	}
+	return this.h
+}
+
+func newQAccessible__ActivationObserver(h *C.QAccessible__ActivationObserver) *QAccessible__ActivationObserver {
+	return &QAccessible__ActivationObserver{h: h}
+}
+
+func newQAccessible__ActivationObserver_U(h unsafe.Pointer) *QAccessible__ActivationObserver {
+	return newQAccessible__ActivationObserver((*C.QAccessible__ActivationObserver)(h))
+}
+
+func (this *QAccessible__ActivationObserver) AccessibilityActiveChanged(active bool) {
+	C.QAccessible__ActivationObserver_AccessibilityActiveChanged(this.h, (C.bool)(active))
+}
+
+func (this *QAccessible__ActivationObserver) Delete() {
+	C.QAccessible__ActivationObserver_Delete(this.h)
 }

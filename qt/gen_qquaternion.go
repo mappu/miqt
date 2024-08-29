@@ -41,26 +41,32 @@ func NewQQuaternion() *QQuaternion {
 }
 
 // NewQQuaternion2 constructs a new QQuaternion object.
-func NewQQuaternion2(scalar float32, xpos float32, ypos float32, zpos float32) *QQuaternion {
-	ret := C.QQuaternion_new2((C.float)(scalar), (C.float)(xpos), (C.float)(ypos), (C.float)(zpos))
+func NewQQuaternion2(param1 uintptr) *QQuaternion {
+	ret := C.QQuaternion_new2((C.uintptr_t)(param1))
 	return newQQuaternion(ret)
 }
 
 // NewQQuaternion3 constructs a new QQuaternion object.
-func NewQQuaternion3(scalar float32, vector *QVector3D) *QQuaternion {
-	ret := C.QQuaternion_new3((C.float)(scalar), vector.cPointer())
+func NewQQuaternion3(scalar float32, xpos float32, ypos float32, zpos float32) *QQuaternion {
+	ret := C.QQuaternion_new3((C.float)(scalar), (C.float)(xpos), (C.float)(ypos), (C.float)(zpos))
 	return newQQuaternion(ret)
 }
 
 // NewQQuaternion4 constructs a new QQuaternion object.
-func NewQQuaternion4(vector *QVector4D) *QQuaternion {
-	ret := C.QQuaternion_new4(vector.cPointer())
+func NewQQuaternion4(scalar float32, vector *QVector3D) *QQuaternion {
+	ret := C.QQuaternion_new4((C.float)(scalar), vector.cPointer())
 	return newQQuaternion(ret)
 }
 
 // NewQQuaternion5 constructs a new QQuaternion object.
-func NewQQuaternion5(param1 *QQuaternion) *QQuaternion {
-	ret := C.QQuaternion_new5(param1.cPointer())
+func NewQQuaternion5(vector *QVector4D) *QQuaternion {
+	ret := C.QQuaternion_new5(vector.cPointer())
+	return newQQuaternion(ret)
+}
+
+// NewQQuaternion6 constructs a new QQuaternion object.
+func NewQQuaternion6(param1 *QQuaternion) *QQuaternion {
+	ret := C.QQuaternion_new6(param1.cPointer())
 	return newQQuaternion(ret)
 }
 

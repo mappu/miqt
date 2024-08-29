@@ -11,6 +11,7 @@ package qt
 import "C"
 
 import (
+	"runtime"
 	"unsafe"
 )
 
@@ -44,6 +45,14 @@ func NewQGraphicsGridLayout() *QGraphicsGridLayout {
 func NewQGraphicsGridLayout2(parent *QGraphicsLayoutItem) *QGraphicsGridLayout {
 	ret := C.QGraphicsGridLayout_new2(parent.cPointer())
 	return newQGraphicsGridLayout(ret)
+}
+
+func (this *QGraphicsGridLayout) AddItem(item *QGraphicsLayoutItem, row int, column int, rowSpan int, columnSpan int) {
+	C.QGraphicsGridLayout_AddItem(this.h, item.cPointer(), (C.int)(row), (C.int)(column), (C.int)(rowSpan), (C.int)(columnSpan))
+}
+
+func (this *QGraphicsGridLayout) AddItem2(item *QGraphicsLayoutItem, row int, column int) {
+	C.QGraphicsGridLayout_AddItem2(this.h, item.cPointer(), (C.int)(row), (C.int)(column))
 }
 
 func (this *QGraphicsGridLayout) SetHorizontalSpacing(spacing float64) {
@@ -166,6 +175,33 @@ func (this *QGraphicsGridLayout) SetColumnFixedWidth(column int, width float64) 
 	C.QGraphicsGridLayout_SetColumnFixedWidth(this.h, (C.int)(column), (C.double)(width))
 }
 
+func (this *QGraphicsGridLayout) SetRowAlignment(row int, alignment int) {
+	C.QGraphicsGridLayout_SetRowAlignment(this.h, (C.int)(row), (C.int)(alignment))
+}
+
+func (this *QGraphicsGridLayout) RowAlignment(row int) int {
+	ret := C.QGraphicsGridLayout_RowAlignment(this.h, (C.int)(row))
+	return (int)(ret)
+}
+
+func (this *QGraphicsGridLayout) SetColumnAlignment(column int, alignment int) {
+	C.QGraphicsGridLayout_SetColumnAlignment(this.h, (C.int)(column), (C.int)(alignment))
+}
+
+func (this *QGraphicsGridLayout) ColumnAlignment(column int) int {
+	ret := C.QGraphicsGridLayout_ColumnAlignment(this.h, (C.int)(column))
+	return (int)(ret)
+}
+
+func (this *QGraphicsGridLayout) SetAlignment(item *QGraphicsLayoutItem, alignment int) {
+	C.QGraphicsGridLayout_SetAlignment(this.h, item.cPointer(), (C.int)(alignment))
+}
+
+func (this *QGraphicsGridLayout) Alignment(item *QGraphicsLayoutItem) int {
+	ret := C.QGraphicsGridLayout_Alignment(this.h, item.cPointer())
+	return (int)(ret)
+}
+
 func (this *QGraphicsGridLayout) RowCount() int {
 	ret := C.QGraphicsGridLayout_RowCount(this.h)
 	return (int)(ret)
@@ -205,6 +241,36 @@ func (this *QGraphicsGridLayout) Invalidate() {
 
 func (this *QGraphicsGridLayout) SetGeometry(rect *QRectF) {
 	C.QGraphicsGridLayout_SetGeometry(this.h, rect.cPointer())
+}
+
+func (this *QGraphicsGridLayout) SizeHint(which uintptr) *QSizeF {
+	ret := C.QGraphicsGridLayout_SizeHint(this.h, (C.uintptr_t)(which))
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQSizeF(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QSizeF) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QGraphicsGridLayout) AddItem6(item *QGraphicsLayoutItem, row int, column int, rowSpan int, columnSpan int, alignment int) {
+	C.QGraphicsGridLayout_AddItem6(this.h, item.cPointer(), (C.int)(row), (C.int)(column), (C.int)(rowSpan), (C.int)(columnSpan), (C.int)(alignment))
+}
+
+func (this *QGraphicsGridLayout) AddItem4(item *QGraphicsLayoutItem, row int, column int, alignment int) {
+	C.QGraphicsGridLayout_AddItem4(this.h, item.cPointer(), (C.int)(row), (C.int)(column), (C.int)(alignment))
+}
+
+func (this *QGraphicsGridLayout) SizeHint2(which uintptr, constraint *QSizeF) *QSizeF {
+	ret := C.QGraphicsGridLayout_SizeHint2(this.h, (C.uintptr_t)(which), constraint.cPointer())
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQSizeF(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QSizeF) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
 }
 
 func (this *QGraphicsGridLayout) Delete() {

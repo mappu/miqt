@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-func parseHeader(topLevel []interface{}) (*CppParsedHeader, error) {
+func parseHeader(topLevel []interface{}, addNamePrefix string) (*CppParsedHeader, error) {
 
 	var ret CppParsedHeader
 
@@ -26,39 +26,16 @@ func parseHeader(topLevel []interface{}) (*CppParsedHeader, error) {
 		switch kind {
 
 		case "CXXRecordDecl":
-			// Must have a name
-			nodename, ok := node["name"].(string)
-			if !ok {
-				return nil, errors.New("node has no name")
-			}
-
-			log.Printf("-> %q name=%q\n", kind, nodename)
-
-			// Skip over forward class declarations
-			// This is determined in two ways:
-			// 1. If the class has no inner nodes
-			nodeInner, ok := node["inner"].([]interface{})
-			if !ok {
-				continue
-			}
-
-			// 2. If this class has only one `inner` entry that's a VisibilityAttr
-			if len(nodeInner) == 1 {
-				if node, ok := nodeInner[0].(map[string]interface{}); ok {
-					if kind, ok := node["kind"].(string); ok && kind == "VisibilityAttr" {
-						continue
-					}
-				}
-			}
-
-			// Also skip over any custom exceptions
-			if !AllowClass(nodename) {
-				continue
-			}
 
 			// Process the inner class definition
-			obj, err := processClassType(node, nodename)
+			obj, err := processClassType(node, addNamePrefix)
 			if err != nil {
+				if errors.Is(err, ErrNoContent) {
+					log.Printf("-> Skipping (%v)\n", err)
+					continue
+				}
+
+				// A real error (shouldn't happen)
 				panic(err)
 			}
 
@@ -82,7 +59,30 @@ func parseHeader(topLevel []interface{}) (*CppParsedHeader, error) {
 			// ignore
 
 		case "NamespaceDecl":
-			// ignore
+			// Parse everything inside the namespace with prefix, as if it is
+			// a whole separate file
+			// Then copy the parsed elements back into our own file
+			namespace, ok := node["name"].(string)
+			if !ok {
+				panic("NamespaceDecl missing name")
+			}
+
+			namespaceInner, ok := node["inner"].([]interface{})
+			if !ok {
+				// A namespace declaration with no inner content means that, for
+				// the rest of this whole file, we are in this namespace
+				// Update our own `addNamePrefix` accordingly
+				addNamePrefix += namespace + "::"
+
+			} else {
+
+				contents, err := parseHeader(namespaceInner, namespace+"::")
+				if err != nil {
+					panic(err)
+				}
+
+				ret.AddContentFrom(contents)
+			}
 
 		case "FunctionDecl":
 			// TODO
@@ -107,33 +107,26 @@ func parseHeader(topLevel []interface{}) (*CppParsedHeader, error) {
 			// TODO e.g. qfuturewatcher.h
 			// Probably can't be supported in the Go binding
 
-		case "TypeAliasDecl":
-			// TODO e.g. qglobal.h
-			// Should be treated like a typedef
-
-		case "UsingDirectiveDecl":
-			// TODO e.g. qtextstream.h
+		case "TypeAliasDecl", // qglobal.h
+			"UsingDirectiveDecl", // qtextstream.h
+			"UsingDecl",          // qglobal.h
+			"UsingShadowDecl":    // global.h
+			// TODO e.g.
 			// Should be treated like a typedef
 
 		case "TypedefDecl":
-			// Must have a name
-			nodename, ok := node["name"].(string)
-			if !ok {
-				return nil, errors.New("node has no name")
+			td, err := processTypedef(node, addNamePrefix)
+			if err != nil {
+				return nil, fmt.Errorf("processTypedef: %w", err)
 			}
-
-			if typ, ok := node["type"].(map[string]interface{}); ok {
-				if qualType, ok := typ["qualType"].(string); ok {
-					ret.Typedefs = append(ret.Typedefs, CppTypedef{
-						Alias:          nodename,
-						UnderlyingType: qualType,
-					})
-				}
-			}
+			ret.Typedefs = append(ret.Typedefs, td)
 
 		case "CXXMethodDecl":
 			// A C++ class method implementation directly in the header
 			// Skip over these
+
+		case "FullComment":
+			// Safe to skip
 
 		default:
 			return nil, fmt.Errorf("missing handling for clang ast node type %q", kind)
@@ -143,12 +136,72 @@ func parseHeader(topLevel []interface{}) (*CppParsedHeader, error) {
 	return &ret, nil // done
 }
 
-func processClassType(node map[string]interface{}, className string) (CppClass, error) {
+func processTypedef(node map[string]interface{}, addNamePrefix string) (CppTypedef, error) {
+	// Must have a name
+	nodename, ok := node["name"].(string)
+	if !ok {
+		return CppTypedef{}, errors.New("node has no name")
+	}
+
+	if typ, ok := node["type"].(map[string]interface{}); ok {
+		if qualType, ok := typ["qualType"].(string); ok {
+			return CppTypedef{
+				Alias:          addNamePrefix + nodename,
+				UnderlyingType: parseSingleTypeString(qualType),
+			}, nil
+		}
+	}
+
+	return CppTypedef{}, errors.New("processTypedef: ???")
+}
+
+func processClassType(node map[string]interface{}, addNamePrefix string) (CppClass, error) {
 	var ret CppClass
-	ret.ClassName = className
 	ret.CanDelete = true
 
-	inner, _ := node["inner"].([]interface{}) // Cannot fail, the parent call already checked that `inner` was present
+	// Must have a name
+	nodename, ok := node["name"].(string)
+	if !ok {
+		// This can happen for some nested class definitions e.g. qbytearraymatcher.h::Data
+		return CppClass{}, ErrNoContent // errors.New("node has no name")
+	}
+	nodename = addNamePrefix + nodename
+
+	// Hacks:
+	if nodename == "FromBase64Result" {
+		nodename = "QByteArray::FromBase64Result"
+	}
+	if nodename == "Connection" {
+		// qobject.h requires this, defined in qobjectdefs.h
+		// We produce a type named 'Connection' instead of 'QMetaObject::Connection' as expected, not sure why
+		nodename = "QMetaObject::Connection"
+	}
+
+	ret.ClassName = nodename
+
+	log.Printf("-> Processing class %q...\n", nodename)
+
+	// Also skip over any custom exceptions
+	if !AllowClass(nodename) {
+		return CppClass{}, ErrNoContent
+	}
+
+	// Skip over forward class declarations
+	// This is determined in two ways:
+	// 1. If the class has no inner nodes
+	inner, ok := node["inner"].([]interface{})
+	if !ok {
+		return CppClass{}, ErrNoContent
+	}
+
+	// 2. If this class has only one `inner` entry that's a VisibilityAttr
+	if len(inner) == 1 {
+		if node, ok := inner[0].(map[string]interface{}); ok {
+			if kind, ok := node["kind"].(string); ok && kind == "VisibilityAttr" {
+				return CppClass{}, ErrNoContent
+			}
+		}
+	}
 
 	// Check if this was 'struct' (default visible) or 'class' (default invisible)
 	visibility := true
@@ -232,6 +285,33 @@ nextMethod:
 		case "VisibilityAttr":
 			// These seem to have no useful content
 
+		case "CXXRecordDecl":
+			// Child class type definition e.g. QAbstractEventDispatcher::TimerInfo
+			// Parse as a whole child class
+
+			if !visibility {
+				continue // Skip private/protected
+			}
+
+			child, err := processClassType(node, nodename+"::")
+			if err != nil {
+				if errors.Is(err, ErrNoContent) {
+					log.Printf("-> Skipping inner class because: %v", err)
+					continue
+				}
+				panic(err) // A real problem
+			}
+
+			ret.ChildClassdefs = append(ret.ChildClassdefs, child)
+
+		case "TypedefDecl":
+			// Child class typedef
+			td, err := processTypedef(node, nodename+"::")
+			if err != nil {
+				panic(fmt.Errorf("processTypedef: %w", err)) // A real problem
+			}
+			ret.ChildTypedefs = append(ret.ChildTypedefs, td)
+
 		case "CXXConstructorDecl":
 
 			if isImplicit, ok := node["isImplicit"].(bool); ok && isImplicit {
@@ -266,24 +346,6 @@ nextMethod:
 			// Always set IsStatic for constructors, since they can be called without
 			// an existing class instance
 			mm.IsStatic = true
-
-			// Some QFoo constructors take a QFooPrivate
-			for _, p := range mm.Parameters {
-				if strings.Contains(p.ParameterType, "Private") {
-					log.Printf("Skipping constructor taking Private type")
-					continue nextMethod
-				}
-			}
-
-			if ret.ClassName == "QDebug" && len(mm.Parameters) == 1 && mm.Parameters[0].ParameterType == "QString" && mm.Parameters[0].Pointer {
-				log.Printf("Skipping ctor taking QString pointer")
-				continue nextMethod
-			}
-
-			if ret.ClassName == "QXmlStreamWriter" && len(mm.Parameters) == 1 && mm.Parameters[0].ParameterType == "QString" && mm.Parameters[0].Pointer {
-				log.Printf("Skipping ctor taking QString pointer") // qxmlstream.h 4th constructor overload
-				continue nextMethod
-			}
 
 			ret.Ctors = append(ret.Ctors, mm)
 
@@ -364,27 +426,6 @@ nextMethod:
 				continue nextMethod
 			}
 
-			if ret.ClassName == "QFile" && mm.MethodName == "moveToTrash" && len(mm.Parameters) == 2 && mm.Parameters[1].ParameterType == "QString" && mm.Parameters[1].Pointer {
-				// @ref https://doc.qt.io/qt-6/qfile.html#moveToTrash-1
-				log.Printf("Skipping method %q using complex return type by pointer argument", mm.MethodName) // TODO support this
-				continue nextMethod
-			}
-
-			if ret.ClassName == "QLockFile" && mm.MethodName == "getLockInfo" && len(mm.Parameters) == 3 && mm.Parameters[1].ParameterType == "QString" && mm.Parameters[1].Pointer {
-				log.Printf("Skipping method %q using complex return type by pointer argument", mm.MethodName) // TODO support this
-				continue nextMethod
-			}
-
-			if ret.ClassName == "QTextDecoder" && mm.MethodName == "toUnicode" && len(mm.Parameters) == 3 && mm.Parameters[0].ParameterType == "QString" && mm.Parameters[0].Pointer {
-				log.Printf("Skipping method %q using complex return type by pointer argument", mm.MethodName) // TODO support this
-				continue nextMethod
-			}
-
-			if ret.ClassName == "QTextStream" && mm.MethodName == "readLineInto" && len(mm.Parameters) > 0 && mm.Parameters[0].ParameterType == "QString" && mm.Parameters[0].Pointer {
-				log.Printf("Skipping method %q using complex return type by pointer argument", mm.MethodName) // TODO support this
-				continue nextMethod
-			}
-
 			ret.Methods = append(ret.Methods, mm)
 
 		default:
@@ -409,7 +450,10 @@ func isExplicitlyDeleted(node map[string]interface{}) bool {
 	return false
 }
 
-var ErrTooComplex error = errors.New("Type declaration is too complex to parse")
+var (
+	ErrTooComplex = errors.New("Type declaration is too complex to parse")
+	ErrNoContent  = errors.New("There's no content to include")
+)
 
 func parseMethod(node map[string]interface{}, mm *CppMethod) error {
 
@@ -419,7 +463,7 @@ func parseMethod(node map[string]interface{}, mm *CppMethod) error {
 			// If anything here is too complicated, skip the whole method
 
 			var err error = nil
-			mm.ReturnType, mm.Parameters, err = parseTypeString(qualType)
+			mm.ReturnType, mm.Parameters, mm.IsConst, err = parseTypeString(qualType)
 			if err != nil {
 				return err
 			}
@@ -502,20 +546,16 @@ func parseMethod(node map[string]interface{}, mm *CppMethod) error {
 	return nil
 }
 
-// parseTypeString converts a string like
-// - `QString (const char *, const char *, int)`
+// parseTypeString converts a function/method type string such as
+// - `QString (const char *, const char *, int) const`
 // - `void (const QKeySequence \u0026)`
 // into its (A) return type and (B) separate parameter types.
 // These clang strings never contain the parameter's name, so the names here are
 // not filled in.
-func parseTypeString(typeString string) (CppParameter, []CppParameter, error) {
-
-	if strings.Contains(typeString, `::`) {
-		return CppParameter{}, nil, ErrTooComplex
-	}
+func parseTypeString(typeString string) (CppParameter, []CppParameter, bool, error) {
 
 	if strings.Contains(typeString, `&&`) { // TODO Rvalue references
-		return CppParameter{}, nil, ErrTooComplex
+		return CppParameter{}, nil, false, ErrTooComplex
 	}
 
 	// Cut to exterior-most (, ) pair
@@ -523,7 +563,12 @@ func parseTypeString(typeString string) (CppParameter, []CppParameter, error) {
 	epos := strings.LastIndex(typeString, `)`)
 
 	if opos == -1 || epos == -1 {
-		return CppParameter{}, nil, fmt.Errorf("Type string %q missing brackets", typeString)
+		return CppParameter{}, nil, false, fmt.Errorf("Type string %q missing brackets", typeString)
+	}
+
+	isConst := false
+	if strings.Contains(typeString[epos:], `const`) {
+		isConst = true
 	}
 
 	returnType := parseSingleTypeString(strings.TrimSpace(typeString[0:opos]))
@@ -531,17 +576,14 @@ func parseTypeString(typeString string) (CppParameter, []CppParameter, error) {
 	// Skip functions that return ints-by-reference since the ergonomics don't
 	// go through the binding
 	if returnType.IntType() && returnType.ByRef {
-		return CppParameter{}, nil, ErrTooComplex // e.g. QSize::rheight()
-	}
-	if err := CheckComplexity(returnType); err != nil {
-		return CppParameter{}, nil, err
+		return CppParameter{}, nil, false, ErrTooComplex // e.g. QSize::rheight()
 	}
 
 	inner := typeString[opos+1 : epos]
 
 	// Should be no more brackets
 	if strings.ContainsAny(inner, `()`) {
-		return CppParameter{}, nil, ErrTooComplex
+		return CppParameter{}, nil, false, ErrTooComplex
 	}
 
 	// Parameters are separated by commas and nesting can not be possible
@@ -552,16 +594,12 @@ func parseTypeString(typeString string) (CppParameter, []CppParameter, error) {
 
 		insert := parseSingleTypeString(p)
 
-		if err := CheckComplexity(insert); err != nil {
-			return CppParameter{}, nil, err
-		}
-
 		if insert.ParameterType != "" {
 			ret = append(ret, insert)
 		}
 	}
 
-	return returnType, ret, nil
+	return returnType, ret, isConst, nil
 }
 
 func tokenizeMultipleParameters(p string) []string {
@@ -589,63 +627,80 @@ func tokenizeMultipleParameters(p string) []string {
 	return tokens
 }
 
+func tokenizeSingleParameter(p string) []string {
+	// Tokenize into top-level strings
+	templateDepth := 0
+	tokens := []string{}
+	wip := ""
+	p = strings.TrimSpace(p)
+	for _, c := range p {
+		if c == '<' || c == '(' {
+			wip += string(c)
+			templateDepth++
+		} else if c == '>' || c == ')' {
+			wip += string(c)
+			templateDepth--
+		} else if (c == '*' || c == '&') && templateDepth == 0 {
+			if len(wip) > 0 {
+				tokens = append(tokens, wip)
+			}
+			tokens = append(tokens, string(c))
+			wip = ""
+		} else if c == ' ' && templateDepth == 0 {
+			if len(wip) > 0 {
+				tokens = append(tokens, wip)
+			}
+			wip = ""
+		} else {
+			wip += string(c)
+		}
+	}
+
+	if len(wip) > 0 {
+		tokens = append(tokens, wip)
+	}
+
+	return tokens
+}
 func parseSingleTypeString(p string) CppParameter {
 
-	tokens := strings.Split(strings.TrimSpace(p), " ")
+	isSigned := false
+
+	tokens := tokenizeSingleParameter(p)
 	insert := CppParameter{}
 	for _, tok := range tokens {
 
 		if tok == "" {
 			continue // extra space
 
-		} else if tok == "const" || tok == "*const" {
-			// *const happens for QPixmap, clang reports `const char *const *` which
-			// isn't even valid syntax
+		} else if tok == "const" {
 			insert.Const = true
 
 		} else if tok == "&" { // U+0026
 			insert.ByRef = true
 
+		} else if tok == "signed" {
+			// We don't need this - UNLESS it's 'signed char'
+			isSigned = true
+
 		} else if tok == "*" {
 			insert.Pointer = true
-
-		} else if tok == "WId" {
-			// Transform typedef
-			insert.TypeAlias = tok
-			insert.ParameterType += " uintptr_t"
-
-		} else if tok == "Q_PID" {
-			// Transform typedef
-			// This is a uint64 PID on Linux/mac and a PROCESS_INFORMATION* on Windows
-			// A uintptr should be tolerable for both cases until we do better
-			// @ref https://doc.qt.io/qt-5/qprocess.html#Q_PID-typedef
-			insert.TypeAlias = tok
-			insert.ParameterType += " uintptr_t"
-
-		} else if len(tok) > 4 && strings.HasSuffix(tok, "List") {
-			// Classes ending in --List are usually better represented as a QList
-			// type directly, so that the binding uses proper Go slices
-			// Typedef e.g. QObjectList
-			insert.TypeAlias = tok
-			switch tok {
-			case "QStringList", "QModelIndexList", "QVariantList", "QFileInfoList":
-				// These types are defined as a QList of values
-				insert.ParameterType += " QList<" + tok[0:len(tok)-4] + ">"
-			case "QTextList":
-				// This is really a custom class, preserve as-is
-				insert.ParameterType += " " + tok
-			default:
-				// These types are defined as a QList of pointers.
-				// QList<QFoo*>. This is the most common case
-				insert.ParameterType += " QList<" + tok[0:len(tok)-4] + " *>"
-			}
+			insert.PointerCount++
 
 		} else {
 			// Valid part of the type name
+			if tok == "char" && isSigned {
+				tok = "signed char"
+				isSigned = false
+			}
 			insert.ParameterType += " " + tok
 		}
 	}
 	insert.ParameterType = strings.TrimSpace(insert.ParameterType)
+
+	if strings.HasPrefix(insert.ParameterType, `::`) {
+		insert.ParameterType = insert.ParameterType[2:]
+	}
 
 	return insert
 }

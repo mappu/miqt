@@ -28,8 +28,8 @@ typedef struct QSize QSize;
 #endif
 
 QMetaObject* QAbstractButton_MetaObject(QAbstractButton* self);
-void QAbstractButton_Tr(char* s, char** _out, int* _out_Strlen);
-void QAbstractButton_TrUtf8(char* s, char** _out, int* _out_Strlen);
+void QAbstractButton_Tr(const char* s, char** _out, int* _out_Strlen);
+void QAbstractButton_TrUtf8(const char* s, char** _out, int* _out_Strlen);
 void QAbstractButton_SetText(QAbstractButton* self, const char* text, size_t text_Strlen);
 void QAbstractButton_Text(QAbstractButton* self, char** _out, int* _out_Strlen);
 void QAbstractButton_SetIcon(QAbstractButton* self, QIcon* icon);
@@ -63,10 +63,10 @@ void QAbstractButton_connect_Released(QAbstractButton* self, void* slot);
 void QAbstractButton_Clicked(QAbstractButton* self);
 void QAbstractButton_Toggled(QAbstractButton* self, bool checked);
 void QAbstractButton_connect_Toggled(QAbstractButton* self, void* slot);
-void QAbstractButton_Tr2(char* s, char* c, char** _out, int* _out_Strlen);
-void QAbstractButton_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen);
-void QAbstractButton_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen);
-void QAbstractButton_TrUtf83(char* s, char* c, int n, char** _out, int* _out_Strlen);
+void QAbstractButton_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
+void QAbstractButton_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+void QAbstractButton_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
+void QAbstractButton_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
 void QAbstractButton_AnimateClick1(QAbstractButton* self, int msec);
 void QAbstractButton_Clicked1(QAbstractButton* self, bool checked);
 void QAbstractButton_connect_Clicked1(QAbstractButton* self, void* slot);

@@ -1,14 +1,15 @@
-#include "gen_qtabwidget.h"
-#include "qtabwidget.h"
-
 #include <QIcon>
 #include <QMetaObject>
 #include <QSize>
 #include <QString>
+#include <QByteArray>
+#include <cstring>
 #include <QTabBar>
 #include <QTabWidget>
 #include <QWidget>
+#include "qtabwidget.h"
 
+#include "gen_qtabwidget.h"
 
 extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
@@ -23,10 +24,10 @@ QTabWidget* QTabWidget_new2(QWidget* parent) {
 }
 
 QMetaObject* QTabWidget_MetaObject(QTabWidget* self) {
-	return (QMetaObject*) self->metaObject();
+	return (QMetaObject*) const_cast<const QTabWidget*>(self)->metaObject();
 }
 
-void QTabWidget_Tr(char* s, char** _out, int* _out_Strlen) {
+void QTabWidget_Tr(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QTabWidget::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -35,7 +36,7 @@ void QTabWidget_Tr(char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QTabWidget_TrUtf8(char* s, char** _out, int* _out_Strlen) {
+void QTabWidget_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QTabWidget::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -69,7 +70,7 @@ void QTabWidget_RemoveTab(QTabWidget* self, int index) {
 }
 
 bool QTabWidget_IsTabEnabled(QTabWidget* self, int index) {
-	return self->isTabEnabled(static_cast<int>(index));
+	return const_cast<const QTabWidget*>(self)->isTabEnabled(static_cast<int>(index));
 }
 
 void QTabWidget_SetTabEnabled(QTabWidget* self, int index, bool enabled) {
@@ -77,7 +78,7 @@ void QTabWidget_SetTabEnabled(QTabWidget* self, int index, bool enabled) {
 }
 
 bool QTabWidget_IsTabVisible(QTabWidget* self, int index) {
-	return self->isTabVisible(static_cast<int>(index));
+	return const_cast<const QTabWidget*>(self)->isTabVisible(static_cast<int>(index));
 }
 
 void QTabWidget_SetTabVisible(QTabWidget* self, int index, bool visible) {
@@ -85,7 +86,7 @@ void QTabWidget_SetTabVisible(QTabWidget* self, int index, bool visible) {
 }
 
 void QTabWidget_TabText(QTabWidget* self, int index, char** _out, int* _out_Strlen) {
-	QString ret = self->tabText(static_cast<int>(index));
+	QString ret = const_cast<const QTabWidget*>(self)->tabText(static_cast<int>(index));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -99,7 +100,7 @@ void QTabWidget_SetTabText(QTabWidget* self, int index, const char* text, size_t
 }
 
 QIcon* QTabWidget_TabIcon(QTabWidget* self, int index) {
-	QIcon ret = self->tabIcon(static_cast<int>(index));
+	QIcon ret = const_cast<const QTabWidget*>(self)->tabIcon(static_cast<int>(index));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QIcon*>(new QIcon(ret));
 }
@@ -114,7 +115,7 @@ void QTabWidget_SetTabToolTip(QTabWidget* self, int index, const char* tip, size
 }
 
 void QTabWidget_TabToolTip(QTabWidget* self, int index, char** _out, int* _out_Strlen) {
-	QString ret = self->tabToolTip(static_cast<int>(index));
+	QString ret = const_cast<const QTabWidget*>(self)->tabToolTip(static_cast<int>(index));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -128,7 +129,7 @@ void QTabWidget_SetTabWhatsThis(QTabWidget* self, int index, const char* text, s
 }
 
 void QTabWidget_TabWhatsThis(QTabWidget* self, int index, char** _out, int* _out_Strlen) {
-	QString ret = self->tabWhatsThis(static_cast<int>(index));
+	QString ret = const_cast<const QTabWidget*>(self)->tabWhatsThis(static_cast<int>(index));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -137,27 +138,36 @@ void QTabWidget_TabWhatsThis(QTabWidget* self, int index, char** _out, int* _out
 }
 
 int QTabWidget_CurrentIndex(QTabWidget* self) {
-	return self->currentIndex();
+	return const_cast<const QTabWidget*>(self)->currentIndex();
 }
 
 QWidget* QTabWidget_CurrentWidget(QTabWidget* self) {
-	return self->currentWidget();
+	return const_cast<const QTabWidget*>(self)->currentWidget();
 }
 
 QWidget* QTabWidget_Widget(QTabWidget* self, int index) {
-	return self->widget(static_cast<int>(index));
+	return const_cast<const QTabWidget*>(self)->widget(static_cast<int>(index));
 }
 
 int QTabWidget_IndexOf(QTabWidget* self, QWidget* widget) {
-	return self->indexOf(widget);
+	return const_cast<const QTabWidget*>(self)->indexOf(widget);
 }
 
 int QTabWidget_Count(QTabWidget* self) {
-	return self->count();
+	return const_cast<const QTabWidget*>(self)->count();
+}
+
+uintptr_t QTabWidget_TabPosition(QTabWidget* self) {
+	QTabWidget::TabPosition ret = const_cast<const QTabWidget*>(self)->tabPosition();
+	return static_cast<uintptr_t>(ret);
+}
+
+void QTabWidget_SetTabPosition(QTabWidget* self, uintptr_t position) {
+	self->setTabPosition(static_cast<QTabWidget::TabPosition>(position));
 }
 
 bool QTabWidget_TabsClosable(QTabWidget* self) {
-	return self->tabsClosable();
+	return const_cast<const QTabWidget*>(self)->tabsClosable();
 }
 
 void QTabWidget_SetTabsClosable(QTabWidget* self, bool closeable) {
@@ -165,35 +175,61 @@ void QTabWidget_SetTabsClosable(QTabWidget* self, bool closeable) {
 }
 
 bool QTabWidget_IsMovable(QTabWidget* self) {
-	return self->isMovable();
+	return const_cast<const QTabWidget*>(self)->isMovable();
 }
 
 void QTabWidget_SetMovable(QTabWidget* self, bool movable) {
 	self->setMovable(movable);
 }
 
+uintptr_t QTabWidget_TabShape(QTabWidget* self) {
+	QTabWidget::TabShape ret = const_cast<const QTabWidget*>(self)->tabShape();
+	return static_cast<uintptr_t>(ret);
+}
+
+void QTabWidget_SetTabShape(QTabWidget* self, uintptr_t s) {
+	self->setTabShape(static_cast<QTabWidget::TabShape>(s));
+}
+
 QSize* QTabWidget_SizeHint(QTabWidget* self) {
-	QSize ret = self->sizeHint();
+	QSize ret = const_cast<const QTabWidget*>(self)->sizeHint();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
 
 QSize* QTabWidget_MinimumSizeHint(QTabWidget* self) {
-	QSize ret = self->minimumSizeHint();
+	QSize ret = const_cast<const QTabWidget*>(self)->minimumSizeHint();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
 
 int QTabWidget_HeightForWidth(QTabWidget* self, int width) {
-	return self->heightForWidth(static_cast<int>(width));
+	return const_cast<const QTabWidget*>(self)->heightForWidth(static_cast<int>(width));
 }
 
 bool QTabWidget_HasHeightForWidth(QTabWidget* self) {
-	return self->hasHeightForWidth();
+	return const_cast<const QTabWidget*>(self)->hasHeightForWidth();
+}
+
+void QTabWidget_SetCornerWidget(QTabWidget* self, QWidget* w) {
+	self->setCornerWidget(w);
+}
+
+QWidget* QTabWidget_CornerWidget(QTabWidget* self) {
+	return const_cast<const QTabWidget*>(self)->cornerWidget();
+}
+
+uintptr_t QTabWidget_ElideMode(QTabWidget* self) {
+	Qt::TextElideMode ret = const_cast<const QTabWidget*>(self)->elideMode();
+	return static_cast<uintptr_t>(ret);
+}
+
+void QTabWidget_SetElideMode(QTabWidget* self, uintptr_t mode) {
+	self->setElideMode(static_cast<Qt::TextElideMode>(mode));
 }
 
 QSize* QTabWidget_IconSize(QTabWidget* self) {
-	QSize ret = self->iconSize();
+	QSize ret = const_cast<const QTabWidget*>(self)->iconSize();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
@@ -203,7 +239,7 @@ void QTabWidget_SetIconSize(QTabWidget* self, QSize* size) {
 }
 
 bool QTabWidget_UsesScrollButtons(QTabWidget* self) {
-	return self->usesScrollButtons();
+	return const_cast<const QTabWidget*>(self)->usesScrollButtons();
 }
 
 void QTabWidget_SetUsesScrollButtons(QTabWidget* self, bool useButtons) {
@@ -211,7 +247,7 @@ void QTabWidget_SetUsesScrollButtons(QTabWidget* self, bool useButtons) {
 }
 
 bool QTabWidget_DocumentMode(QTabWidget* self) {
-	return self->documentMode();
+	return const_cast<const QTabWidget*>(self)->documentMode();
 }
 
 void QTabWidget_SetDocumentMode(QTabWidget* self, bool set) {
@@ -219,7 +255,7 @@ void QTabWidget_SetDocumentMode(QTabWidget* self, bool set) {
 }
 
 bool QTabWidget_TabBarAutoHide(QTabWidget* self) {
-	return self->tabBarAutoHide();
+	return const_cast<const QTabWidget*>(self)->tabBarAutoHide();
 }
 
 void QTabWidget_SetTabBarAutoHide(QTabWidget* self, bool enabled) {
@@ -231,7 +267,7 @@ void QTabWidget_Clear(QTabWidget* self) {
 }
 
 QTabBar* QTabWidget_TabBar(QTabWidget* self) {
-	return self->tabBar();
+	return const_cast<const QTabWidget*>(self)->tabBar();
 }
 
 void QTabWidget_SetCurrentIndex(QTabWidget* self, int index) {
@@ -282,7 +318,7 @@ void QTabWidget_connect_TabBarDoubleClicked(QTabWidget* self, void* slot) {
 	});
 }
 
-void QTabWidget_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
+void QTabWidget_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QTabWidget::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -291,7 +327,7 @@ void QTabWidget_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QTabWidget_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QTabWidget_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QTabWidget::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -300,7 +336,7 @@ void QTabWidget_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QTabWidget_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
+void QTabWidget_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QTabWidget::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -309,13 +345,21 @@ void QTabWidget_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QTabWidget_TrUtf83(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QTabWidget_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QTabWidget::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
 	memcpy(*_out, b.data(), b.length());
 	*_out_Strlen = b.length();
+}
+
+void QTabWidget_SetCornerWidget2(QTabWidget* self, QWidget* w, uintptr_t corner) {
+	self->setCornerWidget(w, static_cast<Qt::Corner>(corner));
+}
+
+QWidget* QTabWidget_CornerWidget1(QTabWidget* self, uintptr_t corner) {
+	return self->cornerWidget(static_cast<Qt::Corner>(corner));
 }
 
 void QTabWidget_Delete(QTabWidget* self) {

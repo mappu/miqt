@@ -90,6 +90,24 @@ func (this *QAbstractItemView) ItemDelegate() *QAbstractItemDelegate {
 	return newQAbstractItemDelegate_U(unsafe.Pointer(ret))
 }
 
+func (this *QAbstractItemView) SetSelectionMode(mode uintptr) {
+	C.QAbstractItemView_SetSelectionMode(this.h, (C.uintptr_t)(mode))
+}
+
+func (this *QAbstractItemView) SelectionMode() uintptr {
+	ret := C.QAbstractItemView_SelectionMode(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QAbstractItemView) SetSelectionBehavior(behavior uintptr) {
+	C.QAbstractItemView_SetSelectionBehavior(this.h, (C.uintptr_t)(behavior))
+}
+
+func (this *QAbstractItemView) SelectionBehavior() uintptr {
+	ret := C.QAbstractItemView_SelectionBehavior(this.h)
+	return (uintptr)(ret)
+}
+
 func (this *QAbstractItemView) CurrentIndex() *QModelIndex {
 	ret := C.QAbstractItemView_CurrentIndex(this.h)
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -112,8 +130,35 @@ func (this *QAbstractItemView) RootIndex() *QModelIndex {
 	return ret1
 }
 
+func (this *QAbstractItemView) SetEditTriggers(triggers int) {
+	C.QAbstractItemView_SetEditTriggers(this.h, (C.int)(triggers))
+}
+
+func (this *QAbstractItemView) EditTriggers() int {
+	ret := C.QAbstractItemView_EditTriggers(this.h)
+	return (int)(ret)
+}
+
+func (this *QAbstractItemView) SetVerticalScrollMode(mode uintptr) {
+	C.QAbstractItemView_SetVerticalScrollMode(this.h, (C.uintptr_t)(mode))
+}
+
+func (this *QAbstractItemView) VerticalScrollMode() uintptr {
+	ret := C.QAbstractItemView_VerticalScrollMode(this.h)
+	return (uintptr)(ret)
+}
+
 func (this *QAbstractItemView) ResetVerticalScrollMode() {
 	C.QAbstractItemView_ResetVerticalScrollMode(this.h)
+}
+
+func (this *QAbstractItemView) SetHorizontalScrollMode(mode uintptr) {
+	C.QAbstractItemView_SetHorizontalScrollMode(this.h, (C.uintptr_t)(mode))
+}
+
+func (this *QAbstractItemView) HorizontalScrollMode() uintptr {
+	ret := C.QAbstractItemView_HorizontalScrollMode(this.h)
+	return (uintptr)(ret)
 }
 
 func (this *QAbstractItemView) ResetHorizontalScrollMode() {
@@ -174,6 +219,24 @@ func (this *QAbstractItemView) DragDropOverwriteMode() bool {
 	return (bool)(ret)
 }
 
+func (this *QAbstractItemView) SetDragDropMode(behavior uintptr) {
+	C.QAbstractItemView_SetDragDropMode(this.h, (C.uintptr_t)(behavior))
+}
+
+func (this *QAbstractItemView) DragDropMode() uintptr {
+	ret := C.QAbstractItemView_DragDropMode(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QAbstractItemView) SetDefaultDropAction(dropAction uintptr) {
+	C.QAbstractItemView_SetDefaultDropAction(this.h, (C.uintptr_t)(dropAction))
+}
+
+func (this *QAbstractItemView) DefaultDropAction() uintptr {
+	ret := C.QAbstractItemView_DefaultDropAction(this.h)
+	return (uintptr)(ret)
+}
+
 func (this *QAbstractItemView) SetAlternatingRowColors(enable bool) {
 	C.QAbstractItemView_SetAlternatingRowColors(this.h, (C.bool)(enable))
 }
@@ -198,6 +261,15 @@ func (this *QAbstractItemView) IconSize() *QSize {
 	return ret1
 }
 
+func (this *QAbstractItemView) SetTextElideMode(mode uintptr) {
+	C.QAbstractItemView_SetTextElideMode(this.h, (C.uintptr_t)(mode))
+}
+
+func (this *QAbstractItemView) TextElideMode() uintptr {
+	ret := C.QAbstractItemView_TextElideMode(this.h)
+	return (uintptr)(ret)
+}
+
 func (this *QAbstractItemView) KeyboardSearch(search string) {
 	search_Cstring := C.CString(search)
 	defer C.free(unsafe.Pointer(search_Cstring))
@@ -213,6 +285,10 @@ func (this *QAbstractItemView) VisualRect(index *QModelIndex) *QRect {
 		runtime.KeepAlive(ret2.h)
 	})
 	return ret1
+}
+
+func (this *QAbstractItemView) ScrollTo(index *QModelIndex) {
+	C.QAbstractItemView_ScrollTo(this.h, index.cPointer())
 }
 
 func (this *QAbstractItemView) IndexAt(point *QPoint) *QModelIndex {
@@ -290,6 +366,17 @@ func (this *QAbstractItemView) ItemDelegateForColumn(column int) *QAbstractItemD
 func (this *QAbstractItemView) ItemDelegateWithIndex(index *QModelIndex) *QAbstractItemDelegate {
 	ret := C.QAbstractItemView_ItemDelegateWithIndex(this.h, index.cPointer())
 	return newQAbstractItemDelegate_U(unsafe.Pointer(ret))
+}
+
+func (this *QAbstractItemView) InputMethodQuery(query uintptr) *QVariant {
+	ret := C.QAbstractItemView_InputMethodQuery(this.h, (C.uintptr_t)(query))
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQVariant(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QVariant) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
 }
 
 func (this *QAbstractItemView) Reset() {
@@ -466,6 +553,10 @@ func QAbstractItemView_TrUtf83(s string, c string, n int) string {
 	ret := C.GoStringN(_out, _out_Strlen)
 	C.free(unsafe.Pointer(_out))
 	return ret
+}
+
+func (this *QAbstractItemView) ScrollTo2(index *QModelIndex, hint uintptr) {
+	C.QAbstractItemView_ScrollTo2(this.h, index.cPointer(), (C.uintptr_t)(hint))
 }
 
 func (this *QAbstractItemView) Delete() {

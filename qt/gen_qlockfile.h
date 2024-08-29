@@ -25,6 +25,7 @@ void QLockFile_SetStaleLockTime(QLockFile* self, int staleLockTime);
 int QLockFile_StaleLockTime(QLockFile* self);
 bool QLockFile_IsLocked(QLockFile* self);
 bool QLockFile_RemoveStaleLockFile(QLockFile* self);
+uintptr_t QLockFile_Error(QLockFile* self);
 bool QLockFile_TryLock1(QLockFile* self, int timeout);
 void QLockFile_Delete(QLockFile* self);
 

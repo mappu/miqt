@@ -1,14 +1,15 @@
-#include "gen_qtooltip.h"
-#include "qtooltip.h"
-
 #include <QFont>
 #include <QPalette>
 #include <QPoint>
 #include <QRect>
 #include <QString>
+#include <QByteArray>
+#include <cstring>
 #include <QToolTip>
 #include <QWidget>
+#include "qtooltip.h"
 
+#include "gen_qtooltip.h"
 
 extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);

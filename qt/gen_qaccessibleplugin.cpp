@@ -1,22 +1,23 @@
-#include "gen_qaccessibleplugin.h"
-#include "qaccessibleplugin.h"
-
 #include <QAccessibleInterface>
 #include <QAccessiblePlugin>
 #include <QMetaObject>
 #include <QObject>
 #include <QString>
+#include <QByteArray>
+#include <cstring>
+#include "qaccessibleplugin.h"
 
+#include "gen_qaccessibleplugin.h"
 
 extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
 }
 
 QMetaObject* QAccessiblePlugin_MetaObject(QAccessiblePlugin* self) {
-	return (QMetaObject*) self->metaObject();
+	return (QMetaObject*) const_cast<const QAccessiblePlugin*>(self)->metaObject();
 }
 
-void QAccessiblePlugin_Tr(char* s, char** _out, int* _out_Strlen) {
+void QAccessiblePlugin_Tr(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QAccessiblePlugin::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -25,7 +26,7 @@ void QAccessiblePlugin_Tr(char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QAccessiblePlugin_TrUtf8(char* s, char** _out, int* _out_Strlen) {
+void QAccessiblePlugin_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QAccessiblePlugin::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -39,7 +40,7 @@ QAccessibleInterface* QAccessiblePlugin_Create(QAccessiblePlugin* self, const ch
 	return self->create(key_QString, object);
 }
 
-void QAccessiblePlugin_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
+void QAccessiblePlugin_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QAccessiblePlugin::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -48,7 +49,7 @@ void QAccessiblePlugin_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QAccessiblePlugin_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QAccessiblePlugin_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QAccessiblePlugin::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -57,7 +58,7 @@ void QAccessiblePlugin_Tr3(char* s, char* c, int n, char** _out, int* _out_Strle
 	*_out_Strlen = b.length();
 }
 
-void QAccessiblePlugin_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
+void QAccessiblePlugin_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QAccessiblePlugin::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -66,7 +67,7 @@ void QAccessiblePlugin_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) 
 	*_out_Strlen = b.length();
 }
 
-void QAccessiblePlugin_TrUtf83(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QAccessiblePlugin_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QAccessiblePlugin::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();

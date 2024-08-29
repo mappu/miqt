@@ -1,22 +1,35 @@
-#include "gen_qtoolbox.h"
-#include "qtoolbox.h"
-
 #include <QIcon>
 #include <QMetaObject>
 #include <QString>
+#include <QByteArray>
+#include <cstring>
 #include <QToolBox>
 #include <QWidget>
+#include "qtoolbox.h"
 
+#include "gen_qtoolbox.h"
 
 extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
 }
 
-QMetaObject* QToolBox_MetaObject(QToolBox* self) {
-	return (QMetaObject*) self->metaObject();
+QToolBox* QToolBox_new() {
+	return new QToolBox();
 }
 
-void QToolBox_Tr(char* s, char** _out, int* _out_Strlen) {
+QToolBox* QToolBox_new2(QWidget* parent) {
+	return new QToolBox(parent);
+}
+
+QToolBox* QToolBox_new3(QWidget* parent, int f) {
+	return new QToolBox(parent, static_cast<Qt::WindowFlags>(f));
+}
+
+QMetaObject* QToolBox_MetaObject(QToolBox* self) {
+	return (QMetaObject*) const_cast<const QToolBox*>(self)->metaObject();
+}
+
+void QToolBox_Tr(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QToolBox::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -25,7 +38,7 @@ void QToolBox_Tr(char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QToolBox_TrUtf8(char* s, char** _out, int* _out_Strlen) {
+void QToolBox_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QToolBox::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -63,7 +76,7 @@ void QToolBox_SetItemEnabled(QToolBox* self, int index, bool enabled) {
 }
 
 bool QToolBox_IsItemEnabled(QToolBox* self, int index) {
-	return self->isItemEnabled(static_cast<int>(index));
+	return const_cast<const QToolBox*>(self)->isItemEnabled(static_cast<int>(index));
 }
 
 void QToolBox_SetItemText(QToolBox* self, int index, const char* text, size_t text_Strlen) {
@@ -72,7 +85,7 @@ void QToolBox_SetItemText(QToolBox* self, int index, const char* text, size_t te
 }
 
 void QToolBox_ItemText(QToolBox* self, int index, char** _out, int* _out_Strlen) {
-	QString ret = self->itemText(static_cast<int>(index));
+	QString ret = const_cast<const QToolBox*>(self)->itemText(static_cast<int>(index));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -85,7 +98,7 @@ void QToolBox_SetItemIcon(QToolBox* self, int index, QIcon* icon) {
 }
 
 QIcon* QToolBox_ItemIcon(QToolBox* self, int index) {
-	QIcon ret = self->itemIcon(static_cast<int>(index));
+	QIcon ret = const_cast<const QToolBox*>(self)->itemIcon(static_cast<int>(index));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QIcon*>(new QIcon(ret));
 }
@@ -96,7 +109,7 @@ void QToolBox_SetItemToolTip(QToolBox* self, int index, const char* toolTip, siz
 }
 
 void QToolBox_ItemToolTip(QToolBox* self, int index, char** _out, int* _out_Strlen) {
-	QString ret = self->itemToolTip(static_cast<int>(index));
+	QString ret = const_cast<const QToolBox*>(self)->itemToolTip(static_cast<int>(index));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -105,23 +118,23 @@ void QToolBox_ItemToolTip(QToolBox* self, int index, char** _out, int* _out_Strl
 }
 
 int QToolBox_CurrentIndex(QToolBox* self) {
-	return self->currentIndex();
+	return const_cast<const QToolBox*>(self)->currentIndex();
 }
 
 QWidget* QToolBox_CurrentWidget(QToolBox* self) {
-	return self->currentWidget();
+	return const_cast<const QToolBox*>(self)->currentWidget();
 }
 
 QWidget* QToolBox_Widget(QToolBox* self, int index) {
-	return self->widget(static_cast<int>(index));
+	return const_cast<const QToolBox*>(self)->widget(static_cast<int>(index));
 }
 
 int QToolBox_IndexOf(QToolBox* self, QWidget* widget) {
-	return self->indexOf(widget);
+	return const_cast<const QToolBox*>(self)->indexOf(widget);
 }
 
 int QToolBox_Count(QToolBox* self) {
-	return self->count();
+	return const_cast<const QToolBox*>(self)->count();
 }
 
 void QToolBox_SetCurrentIndex(QToolBox* self, int index) {
@@ -142,7 +155,7 @@ void QToolBox_connect_CurrentChanged(QToolBox* self, void* slot) {
 	});
 }
 
-void QToolBox_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
+void QToolBox_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QToolBox::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -151,7 +164,7 @@ void QToolBox_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QToolBox_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QToolBox_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QToolBox::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -160,7 +173,7 @@ void QToolBox_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QToolBox_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
+void QToolBox_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QToolBox::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -169,7 +182,7 @@ void QToolBox_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QToolBox_TrUtf83(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QToolBox_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QToolBox::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();

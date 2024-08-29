@@ -1,6 +1,3 @@
-#include "gen_qgraphicstransform.h"
-#include "qgraphicstransform.h"
-
 #include <QGraphicsRotation>
 #include <QGraphicsScale>
 #include <QGraphicsTransform>
@@ -8,18 +5,22 @@
 #include <QMetaObject>
 #include <QObject>
 #include <QString>
+#include <QByteArray>
+#include <cstring>
 #include <QVector3D>
+#include "qgraphicstransform.h"
 
+#include "gen_qgraphicstransform.h"
 
 extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
 }
 
 QMetaObject* QGraphicsTransform_MetaObject(QGraphicsTransform* self) {
-	return (QMetaObject*) self->metaObject();
+	return (QMetaObject*) const_cast<const QGraphicsTransform*>(self)->metaObject();
 }
 
-void QGraphicsTransform_Tr(char* s, char** _out, int* _out_Strlen) {
+void QGraphicsTransform_Tr(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QGraphicsTransform::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -28,7 +29,7 @@ void QGraphicsTransform_Tr(char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QGraphicsTransform_TrUtf8(char* s, char** _out, int* _out_Strlen) {
+void QGraphicsTransform_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QGraphicsTransform::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -38,10 +39,10 @@ void QGraphicsTransform_TrUtf8(char* s, char** _out, int* _out_Strlen) {
 }
 
 void QGraphicsTransform_ApplyTo(QGraphicsTransform* self, QMatrix4x4* matrix) {
-	self->applyTo(matrix);
+	const_cast<const QGraphicsTransform*>(self)->applyTo(matrix);
 }
 
-void QGraphicsTransform_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
+void QGraphicsTransform_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QGraphicsTransform::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -50,7 +51,7 @@ void QGraphicsTransform_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QGraphicsTransform_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QGraphicsTransform_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QGraphicsTransform::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -59,7 +60,7 @@ void QGraphicsTransform_Tr3(char* s, char* c, int n, char** _out, int* _out_Strl
 	*_out_Strlen = b.length();
 }
 
-void QGraphicsTransform_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
+void QGraphicsTransform_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QGraphicsTransform::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -68,7 +69,7 @@ void QGraphicsTransform_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen)
 	*_out_Strlen = b.length();
 }
 
-void QGraphicsTransform_TrUtf83(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QGraphicsTransform_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QGraphicsTransform::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -90,10 +91,10 @@ QGraphicsScale* QGraphicsScale_new2(QObject* parent) {
 }
 
 QMetaObject* QGraphicsScale_MetaObject(QGraphicsScale* self) {
-	return (QMetaObject*) self->metaObject();
+	return (QMetaObject*) const_cast<const QGraphicsScale*>(self)->metaObject();
 }
 
-void QGraphicsScale_Tr(char* s, char** _out, int* _out_Strlen) {
+void QGraphicsScale_Tr(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QGraphicsScale::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -102,7 +103,7 @@ void QGraphicsScale_Tr(char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QGraphicsScale_TrUtf8(char* s, char** _out, int* _out_Strlen) {
+void QGraphicsScale_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QGraphicsScale::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -112,7 +113,7 @@ void QGraphicsScale_TrUtf8(char* s, char** _out, int* _out_Strlen) {
 }
 
 QVector3D* QGraphicsScale_Origin(QGraphicsScale* self) {
-	QVector3D ret = self->origin();
+	QVector3D ret = const_cast<const QGraphicsScale*>(self)->origin();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVector3D*>(new QVector3D(ret));
 }
@@ -122,7 +123,7 @@ void QGraphicsScale_SetOrigin(QGraphicsScale* self, QVector3D* point) {
 }
 
 double QGraphicsScale_XScale(QGraphicsScale* self) {
-	return self->xScale();
+	return const_cast<const QGraphicsScale*>(self)->xScale();
 }
 
 void QGraphicsScale_SetXScale(QGraphicsScale* self, double xScale) {
@@ -130,7 +131,7 @@ void QGraphicsScale_SetXScale(QGraphicsScale* self, double xScale) {
 }
 
 double QGraphicsScale_YScale(QGraphicsScale* self) {
-	return self->yScale();
+	return const_cast<const QGraphicsScale*>(self)->yScale();
 }
 
 void QGraphicsScale_SetYScale(QGraphicsScale* self, double yScale) {
@@ -138,7 +139,7 @@ void QGraphicsScale_SetYScale(QGraphicsScale* self, double yScale) {
 }
 
 double QGraphicsScale_ZScale(QGraphicsScale* self) {
-	return self->zScale();
+	return const_cast<const QGraphicsScale*>(self)->zScale();
 }
 
 void QGraphicsScale_SetZScale(QGraphicsScale* self, double zScale) {
@@ -146,7 +147,7 @@ void QGraphicsScale_SetZScale(QGraphicsScale* self, double zScale) {
 }
 
 void QGraphicsScale_ApplyTo(QGraphicsScale* self, QMatrix4x4* matrix) {
-	self->applyTo(matrix);
+	const_cast<const QGraphicsScale*>(self)->applyTo(matrix);
 }
 
 void QGraphicsScale_OriginChanged(QGraphicsScale* self) {
@@ -199,7 +200,7 @@ void QGraphicsScale_connect_ScaleChanged(QGraphicsScale* self, void* slot) {
 	});
 }
 
-void QGraphicsScale_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
+void QGraphicsScale_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QGraphicsScale::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -208,7 +209,7 @@ void QGraphicsScale_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QGraphicsScale_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QGraphicsScale_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QGraphicsScale::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -217,7 +218,7 @@ void QGraphicsScale_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) 
 	*_out_Strlen = b.length();
 }
 
-void QGraphicsScale_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
+void QGraphicsScale_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QGraphicsScale::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -226,7 +227,7 @@ void QGraphicsScale_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QGraphicsScale_TrUtf83(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QGraphicsScale_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QGraphicsScale::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -248,10 +249,10 @@ QGraphicsRotation* QGraphicsRotation_new2(QObject* parent) {
 }
 
 QMetaObject* QGraphicsRotation_MetaObject(QGraphicsRotation* self) {
-	return (QMetaObject*) self->metaObject();
+	return (QMetaObject*) const_cast<const QGraphicsRotation*>(self)->metaObject();
 }
 
-void QGraphicsRotation_Tr(char* s, char** _out, int* _out_Strlen) {
+void QGraphicsRotation_Tr(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QGraphicsRotation::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -260,7 +261,7 @@ void QGraphicsRotation_Tr(char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QGraphicsRotation_TrUtf8(char* s, char** _out, int* _out_Strlen) {
+void QGraphicsRotation_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QGraphicsRotation::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -270,7 +271,7 @@ void QGraphicsRotation_TrUtf8(char* s, char** _out, int* _out_Strlen) {
 }
 
 QVector3D* QGraphicsRotation_Origin(QGraphicsRotation* self) {
-	QVector3D ret = self->origin();
+	QVector3D ret = const_cast<const QGraphicsRotation*>(self)->origin();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVector3D*>(new QVector3D(ret));
 }
@@ -280,7 +281,7 @@ void QGraphicsRotation_SetOrigin(QGraphicsRotation* self, QVector3D* point) {
 }
 
 double QGraphicsRotation_Angle(QGraphicsRotation* self) {
-	return self->angle();
+	return const_cast<const QGraphicsRotation*>(self)->angle();
 }
 
 void QGraphicsRotation_SetAngle(QGraphicsRotation* self, double angle) {
@@ -288,7 +289,7 @@ void QGraphicsRotation_SetAngle(QGraphicsRotation* self, double angle) {
 }
 
 QVector3D* QGraphicsRotation_Axis(QGraphicsRotation* self) {
-	QVector3D ret = self->axis();
+	QVector3D ret = const_cast<const QGraphicsRotation*>(self)->axis();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVector3D*>(new QVector3D(ret));
 }
@@ -297,8 +298,12 @@ void QGraphicsRotation_SetAxis(QGraphicsRotation* self, QVector3D* axis) {
 	self->setAxis(*axis);
 }
 
+void QGraphicsRotation_SetAxisWithAxis(QGraphicsRotation* self, uintptr_t axis) {
+	self->setAxis(static_cast<Qt::Axis>(axis));
+}
+
 void QGraphicsRotation_ApplyTo(QGraphicsRotation* self, QMatrix4x4* matrix) {
-	self->applyTo(matrix);
+	const_cast<const QGraphicsRotation*>(self)->applyTo(matrix);
 }
 
 void QGraphicsRotation_OriginChanged(QGraphicsRotation* self) {
@@ -331,7 +336,7 @@ void QGraphicsRotation_connect_AxisChanged(QGraphicsRotation* self, void* slot) 
 	});
 }
 
-void QGraphicsRotation_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
+void QGraphicsRotation_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QGraphicsRotation::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -340,7 +345,7 @@ void QGraphicsRotation_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QGraphicsRotation_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QGraphicsRotation_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QGraphicsRotation::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -349,7 +354,7 @@ void QGraphicsRotation_Tr3(char* s, char* c, int n, char** _out, int* _out_Strle
 	*_out_Strlen = b.length();
 }
 
-void QGraphicsRotation_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
+void QGraphicsRotation_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QGraphicsRotation::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -358,7 +363,7 @@ void QGraphicsRotation_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) 
 	*_out_Strlen = b.length();
 }
 
-void QGraphicsRotation_TrUtf83(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QGraphicsRotation_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QGraphicsRotation::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();

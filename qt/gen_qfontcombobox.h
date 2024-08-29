@@ -28,17 +28,21 @@ typedef struct QWidget QWidget;
 QFontComboBox* QFontComboBox_new();
 QFontComboBox* QFontComboBox_new2(QWidget* parent);
 QMetaObject* QFontComboBox_MetaObject(QFontComboBox* self);
-void QFontComboBox_Tr(char* s, char** _out, int* _out_Strlen);
-void QFontComboBox_TrUtf8(char* s, char** _out, int* _out_Strlen);
+void QFontComboBox_Tr(const char* s, char** _out, int* _out_Strlen);
+void QFontComboBox_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+void QFontComboBox_SetWritingSystem(QFontComboBox* self, uintptr_t writingSystem);
+uintptr_t QFontComboBox_WritingSystem(QFontComboBox* self);
+void QFontComboBox_SetFontFilters(QFontComboBox* self, int filters);
+int QFontComboBox_FontFilters(QFontComboBox* self);
 QFont* QFontComboBox_CurrentFont(QFontComboBox* self);
 QSize* QFontComboBox_SizeHint(QFontComboBox* self);
 void QFontComboBox_SetCurrentFont(QFontComboBox* self, QFont* f);
 void QFontComboBox_CurrentFontChanged(QFontComboBox* self, QFont* f);
 void QFontComboBox_connect_CurrentFontChanged(QFontComboBox* self, void* slot);
-void QFontComboBox_Tr2(char* s, char* c, char** _out, int* _out_Strlen);
-void QFontComboBox_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen);
-void QFontComboBox_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen);
-void QFontComboBox_TrUtf83(char* s, char* c, int n, char** _out, int* _out_Strlen);
+void QFontComboBox_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
+void QFontComboBox_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+void QFontComboBox_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
+void QFontComboBox_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
 void QFontComboBox_Delete(QFontComboBox* self);
 
 #ifdef __cplusplus

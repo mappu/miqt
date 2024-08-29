@@ -1,17 +1,18 @@
-#include "gen_qfactoryinterface.h"
-#include "qfactoryinterface.h"
-
 #include <QFactoryInterface>
 #include <QList>
 #include <QString>
+#include <QByteArray>
+#include <cstring>
+#include "qfactoryinterface.h"
 
+#include "gen_qfactoryinterface.h"
 
 extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
 }
 
 void QFactoryInterface_Keys(QFactoryInterface* self, char*** _out, int** _out_Lengths, size_t* _out_len) {
-	QList<QString> ret = self->keys();
+	QStringList ret = const_cast<const QFactoryInterface*>(self)->keys();
 	// Convert QStringList from C++ memory to manually-managed C memory
 	char** __out = static_cast<char**>(malloc(sizeof(char*) * ret.length()));
 	int* __out_Lengths = static_cast<int*>(malloc(sizeof(int) * ret.length()));

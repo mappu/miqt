@@ -157,12 +157,12 @@ func (this *QDebug) OperatorShiftLeftWithUnsignedlong(t uint64) *QDebug {
 }
 
 func (this *QDebug) OperatorShiftLeftWithQint64(t int64) *QDebug {
-	ret := C.QDebug_OperatorShiftLeftWithQint64(this.h, (C.int64_t)(t))
+	ret := C.QDebug_OperatorShiftLeftWithQint64(this.h, (C.longlong)(t))
 	return newQDebug_U(unsafe.Pointer(ret))
 }
 
 func (this *QDebug) OperatorShiftLeftWithQuint64(t uint64) *QDebug {
-	ret := C.QDebug_OperatorShiftLeftWithQuint64(this.h, (C.uint64_t)(t))
+	ret := C.QDebug_OperatorShiftLeftWithQuint64(this.h, (C.ulonglong)(t))
 	return newQDebug_U(unsafe.Pointer(ret))
 }
 

@@ -39,13 +39,34 @@ func (p CppParameter) RenderTypeCabi() string {
 		ret = "double"
 	case "qintptr":
 		ret = "intptr_t"
-	case "quintptr":
+	case "quintptr", "uintptr":
 		ret = "uintptr_t"
-	case "QRgb":
-		ret = "unsigned int"
+	case "qptrdiff":
+		ret = "ptrdiff_t"
 	}
 
-	if p.Pointer || p.ByRef {
+	if p.Const {
+		// This is needed for const-correctness for calling some overloads
+		// e.g. QShortcut ctor taking (QWidget* parent, const char* member) signal -
+		// the signal/slot requires that member is const, not just plain char*
+		ret = "const " + ret
+	}
+
+	if p.IsFlagType() {
+		ret = "int"
+
+	} else if strings.Contains(p.ParameterType, `::`) {
+		if p.IsEnum() {
+			ret = "uintptr_t"
+		} else {
+			// Inner class
+			ret = cabiClassName(p.ParameterType)
+		}
+	}
+
+	if p.Pointer {
+		ret += strings.Repeat("*", p.PointerCount)
+	} else if p.ByRef {
 		ret += "*"
 	}
 
@@ -60,11 +81,11 @@ func emitReturnTypeCabi(p CppParameter) string {
 		return "void" // Will be handled separately
 
 	} else if (p.Pointer || p.ByRef) && p.QtClassType() {
-		return p.ParameterType + "*" // CABI type
+		return cabiClassName(p.ParameterType) + "*" // CABI type
 
 	} else if p.QtClassType() && !p.Pointer {
 		// Even if C++ returns by value, CABI is returning a heap copy (new'd, not malloc'd)
-		return p.ParameterType + "*" // CABI type
+		return cabiClassName(p.ParameterType) + "*" // CABI type
 		// return "void" // Handled separately with an _out pointer
 
 	} else {
@@ -73,15 +94,13 @@ func emitReturnTypeCabi(p CppParameter) string {
 }
 
 func (p CppParameter) RenderTypeQtCpp() string {
-	cppType := p.ParameterType
-	if len(p.TypeAlias) > 0 {
-		cppType = p.TypeAlias // replace
-	}
+	cppType := p.UnderlyingType()
+
 	if p.Const {
 		cppType = "const " + cppType
 	}
 	if p.Pointer {
-		cppType += "*"
+		cppType += strings.Repeat("*", p.PointerCount)
 	}
 	if p.ByRef {
 		cppType += "&"
@@ -140,16 +159,18 @@ func emitParametersCabi(m CppMethod, selfType string) string {
 				tmp = append(tmp, t.RenderTypeCabi()+"* "+p.ParameterName+", size_t "+p.ParameterName+"_len")
 			}
 
-		} else if (p.ByRef || p.Pointer) && p.QtClassType() {
-			// Pointer to Qt type
-			// Replace with taking our PQ typedef by value
-			tmp = append(tmp, p.ParameterType+"* "+p.ParameterName)
-
 		} else if p.QtClassType() {
-			// Qt type passed by value
-			// The CABI will unconditionally take these by pointer and dereference them
-			// when passing to C++
-			tmp = append(tmp, p.ParameterType+"* "+p.ParameterName)
+			if p.ByRef || p.Pointer {
+
+				// Pointer to Qt type
+				// Replace with taking our PQ typedef by value
+				tmp = append(tmp, cabiClassName(p.ParameterType)+"* "+p.ParameterName)
+			} else {
+				// Qt type passed by value
+				// The CABI will unconditionally take these by pointer and dereference them
+				// when passing to C++
+				tmp = append(tmp, cabiClassName(p.ParameterType)+"* "+p.ParameterName)
+			}
 
 		} else {
 			// RenderTypeCabi renders both pointer+reference as pointers
@@ -220,6 +241,8 @@ func emitParametersCABI2CppForwarding(params []CppParameter) (preamble string, f
 				preamble += "\tfor(size_t i = 0; i < " + p.ParameterName + "_len; ++i) {\n"
 				if listType.QtClassType() && !listType.Pointer {
 					preamble += "\t\t" + p.ParameterName + "_QList.push_back(*(" + p.ParameterName + "[i]));\n"
+				} else if listType.IsFlagType() {
+					preamble += "\t\t" + p.ParameterName + "_QList.push_back(static_cast<" + listType.RenderTypeQtCpp() + ">(" + p.ParameterName + "[i]));\n"
 				} else {
 					preamble += "\t\t" + p.ParameterName + "_QList.push_back(" + p.ParameterName + "[i]);\n"
 				}
@@ -231,19 +254,21 @@ func emitParametersCABI2CppForwarding(params []CppParameter) (preamble string, f
 			// Use the raw ParameterType to select an explicit integer overload
 			// Don't use RenderTypeCabi() since it canonicalizes some int types for CABI
 			castSrc := p.ParameterName
-			castType := p.ParameterType
-			if p.Pointer {
-				castType += "*"
-			}
+			castType := p.RenderTypeQtCpp()
+
 			if p.ByRef { // e.g. QDataStream::operator>>() overloads
 				castSrc = "*" + castSrc
-				castType += "&" // believe it or not, this is legal
 			}
 
-			if p.ParameterType == "qint64" || p.ParameterType == "quint64" || p.ParameterType == "qlonglong" || p.ParameterType == "qulonglong" {
+			if p.ParameterType == "qint64" ||
+				p.ParameterType == "quint64" ||
+				p.ParameterType == "qlonglong" ||
+				p.ParameterType == "qulonglong" ||
+				p.ParameterType == "qint8" {
 				// QDataStream::operator>>() by reference (qint64)
 				// QLockFile::getLockInfo() by pointer
 				// QTextStream::operator>>() by reference (qlonglong + qulonglong)
+				// QDataStream::operator>>() qint8
 				// CABI has these as int64_t* (long int) which fails a static_cast to qint64& (long long int&)
 				// Hack a hard C-style cast
 				tmp = append(tmp, "("+castType+")("+castSrc+")")
@@ -253,10 +278,18 @@ func emitParametersCABI2CppForwarding(params []CppParameter) (preamble string, f
 			}
 
 		} else if p.ByRef {
-			// We changed RenderTypeCabi() to render this as a pointer
-			// Need to dereference so we can pass as reference to the actual Qt C++ function
-			//tmp = append(tmp, "*"+p.ParameterName)
-			tmp = append(tmp, "*"+p.ParameterName)
+			if p.Pointer {
+				// By ref and by pointer
+				// This happens for QDataStream &QDataStream::operator>>(char *&s)
+				// We are only using one level of indirection
+				tmp = append(tmp, p.ParameterName)
+			} else {
+				// By ref and not by pointer
+				// We changed RenderTypeCabi() to render this as a pointer
+				// Need to dereference so we can pass as reference to the actual Qt C++ function
+				//tmp = append(tmp, "*"+p.ParameterName)
+				tmp = append(tmp, "*"+p.ParameterName)
+			}
 
 		} else if p.QtClassType() && !p.Pointer {
 			// CABI takes all Qt types by pointer, even if C++ wants them by value
@@ -335,15 +368,19 @@ func getReferencedTypes(src *CppParsedHeader) []string {
 		if strings.HasSuffix(ft, "Private") { // qbrush.h finds QGradientPrivate
 			continue
 		}
-		if ft == "QRgb" {
-			continue
-		}
 
 		foundTypesList = append(foundTypesList, ft)
 	}
 	sort.Strings(foundTypesList)
 
 	return foundTypesList
+}
+
+// cabiClassName returns the Go / CABI class name for a Qt C++ class.
+// Normally this is the same, except for class types that are nested inside another class definition.
+func cabiClassName(className string) string {
+	// Must use __ to avoid subclass/method name collision e.g. QPagedPaintDevice::Margins
+	return strings.Replace(className, `::`, `__`, -1)
 }
 
 func emitBindingHeader(src *CppParsedHeader, filename string) (string, error) {
@@ -374,7 +411,20 @@ extern "C" {
 		if ft == "QList" || ft == "QString" { // These types are reprojected
 			continue
 		}
-		ret.WriteString(`class ` + ft + ";\n")
+
+		if strings.Contains(ft, `::`) {
+			// Forward declarations of inner classes are not yet supported in C++
+			// @ref https://stackoverflow.com/q/1021793
+
+			ret.WriteString(`#if defined(WORKAROUND_INNER_CLASS_DEFINITION_` + cabiClassName(ft) + ")\n")
+			ret.WriteString(`typedef ` + ft + " " + cabiClassName(ft) + ";\n")
+			ret.WriteString("#else\n")
+			ret.WriteString(`class ` + cabiClassName(ft) + ";\n")
+			ret.WriteString("#endif\n")
+
+		} else {
+			ret.WriteString(`class ` + ft + ";\n")
+		}
 	}
 
 	ret.WriteString("#else\n")
@@ -383,7 +433,7 @@ extern "C" {
 		if ft == "QList" || ft == "QString" { // These types are reprojected
 			continue
 		}
-		ret.WriteString(`typedef struct ` + ft + " " + ft + ";\n")
+		ret.WriteString(`typedef struct ` + cabiClassName(ft) + " " + cabiClassName(ft) + ";\n")
 	}
 
 	ret.WriteString("#endif\n")
@@ -392,21 +442,23 @@ extern "C" {
 
 	for _, c := range src.Classes {
 
+		cClassName := cabiClassName(c.ClassName)
+
 		for i, ctor := range c.Ctors {
-			ret.WriteString(fmt.Sprintf("%s %s_new%s(%s);\n", c.ClassName+"*", c.ClassName, maybeSuffix(i), emitParametersCabi(ctor, "")))
+			ret.WriteString(fmt.Sprintf("%s %s_new%s(%s);\n", cClassName+"*", cClassName, maybeSuffix(i), emitParametersCabi(ctor, "")))
 		}
 
 		for _, m := range c.Methods {
-			ret.WriteString(fmt.Sprintf("%s %s_%s(%s);\n", emitReturnTypeCabi(m.ReturnType), c.ClassName, m.SafeMethodName(), emitParametersCabi(m, c.ClassName+"*")))
+			ret.WriteString(fmt.Sprintf("%s %s_%s(%s);\n", emitReturnTypeCabi(m.ReturnType), cClassName, m.SafeMethodName(), emitParametersCabi(m, cClassName+"*")))
 
 			if m.IsSignal && !m.HasHiddenParams {
-				ret.WriteString(fmt.Sprintf("%s %s_connect_%s(%s* self, void* slot);\n", emitReturnTypeCabi(m.ReturnType), c.ClassName, m.SafeMethodName(), c.ClassName))
+				ret.WriteString(fmt.Sprintf("%s %s_connect_%s(%s* self, void* slot);\n", emitReturnTypeCabi(m.ReturnType), cClassName, m.SafeMethodName(), cClassName))
 			}
 		}
 
 		// delete
 		if c.CanDelete {
-			ret.WriteString(fmt.Sprintf("void %s_Delete(%s* self);\n", c.ClassName, c.ClassName))
+			ret.WriteString(fmt.Sprintf("void %s_Delete(%s* self);\n", cClassName, cClassName))
 		}
 
 		ret.WriteString("\n")
@@ -425,21 +477,29 @@ extern "C" {
 func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 	ret := strings.Builder{}
 
-	ret.WriteString(`#include "gen_` + filename + `"
-#include "` + filename + `"
-
-`)
-
 	for _, ref := range getReferencedTypes(src) {
 		if !ImportHeaderForClass(ref) {
+			continue
+		}
+
+		if ref == "QString" {
+			ret.WriteString("#include <QString>\n")
+			ret.WriteString("#include <QByteArray>\n")
+			ret.WriteString("#include <cstring>\n")
+			continue
+		}
+
+		if strings.Contains(ref, `::`) {
+			ret.WriteString(`#define WORKAROUND_INNER_CLASS_DEFINITION_` + cabiClassName(ref) + "\n")
 			continue
 		}
 
 		ret.WriteString(`#include <` + ref + ">\n")
 	}
 
+	ret.WriteString(`#include "` + filename + "\"\n\n")
+	ret.WriteString(`#include "gen_` + filename + "\"\n")
 	ret.WriteString(`
-
 extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
 }
@@ -447,6 +507,8 @@ extern "C" {
 `)
 
 	for _, c := range src.Classes {
+
+		cClassName := cabiClassName(c.ClassName)
 
 		for i, ctor := range c.Ctors {
 			preamble, forwarding := emitParametersCABI2CppForwarding(ctor.Parameters)
@@ -456,7 +518,7 @@ extern "C" {
 					"\treturn new %s(%s);\n"+
 					"}\n"+
 					"\n",
-				c.ClassName, c.ClassName, maybeSuffix(i), emitParametersCabi(ctor, ""),
+				cClassName, cClassName, maybeSuffix(i), emitParametersCabi(ctor, ""),
 				preamble,
 				c.ClassName, forwarding,
 			))
@@ -500,7 +562,7 @@ extern "C" {
 					// Combo
 					// "char** _out, int64_t* _out_Lengths, size_t* _out_len")
 
-					shouldReturn = m.ReturnType.ParameterType + " ret = "
+					shouldReturn = m.ReturnType.RenderTypeQtCpp() + " ret = "
 					afterCall += "\t// Convert QStringList from C++ memory to manually-managed C memory\n"
 					afterCall += "\tchar** __out = static_cast<char**>(malloc(sizeof(char*) * ret.length()));\n"
 					afterCall += "\tint* __out_Lengths = static_cast<int*>(malloc(sizeof(int) * ret.length()));\n"
@@ -517,7 +579,7 @@ extern "C" {
 
 				} else if !t.QtClassType() || (t.QtClassType() && t.Pointer) { // QList<int>, QList<QFoo*>
 
-					shouldReturn = m.ReturnType.ParameterType + " ret = "
+					shouldReturn = m.ReturnType.RenderTypeQtCpp() + " ret = "
 					afterCall += "\t// Convert QList<> from C++ memory to manually-managed C memory\n"
 					afterCall += "\t" + t.RenderTypeCabi() + "* __out = static_cast<" + t.RenderTypeCabi() + "*>(malloc(sizeof(" + t.RenderTypeCabi() + ") * ret.length()));\n"
 					afterCall += "\tfor (size_t i = 0, e = ret.length(); i < e; ++i) {\n"
@@ -534,7 +596,7 @@ extern "C" {
 
 				} else { // QList<QFoo>
 
-					shouldReturn = m.ReturnType.ParameterType + " ret = "
+					shouldReturn = m.ReturnType.RenderTypeQtCpp() + " ret = "
 					afterCall += "\t// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers\n"
 					afterCall += "\t" + t.RenderTypeCabi() + "** __out = static_cast<" + t.RenderTypeCabi() + "**>(malloc(sizeof(" + t.RenderTypeCabi() + "**) * ret.length()));\n"
 					afterCall += "\tfor (size_t i = 0, e = ret.length(); i < e; ++i) {\n"
@@ -554,6 +616,7 @@ extern "C" {
 					nonConst.Const = false
 					nonConst.ByRef = false
 					nonConst.Pointer = true
+					nonConst.PointerCount = 1
 					afterCall += "\treturn const_cast<" + nonConst.RenderTypeQtCpp() + ">(&ret);\n"
 				} else {
 					afterCall += "\treturn &ret;\n"
@@ -566,6 +629,17 @@ extern "C" {
 
 			} else if m.ReturnType.Const {
 				shouldReturn += "(" + emitReturnTypeCabi(m.ReturnType) + ") "
+
+			} else if m.ReturnType.IsFlagType() {
+				// Needs an explicit int cast
+				shouldReturn = m.ReturnType.RenderTypeQtCpp() + " ret = "
+				afterCall += "\treturn static_cast<int>(ret);\n"
+
+			} else if m.ReturnType.IsEnum() {
+				// Needs an explicit uintptr cast
+				shouldReturn = m.ReturnType.RenderTypeQtCpp() + " ret = "
+				afterCall += "\treturn static_cast<uintptr_t>(ret);\n"
+
 			}
 
 			preamble, forwarding := emitParametersCABI2CppForwarding(m.Parameters)
@@ -578,6 +652,9 @@ extern "C" {
 			callTarget := "self->"
 			if m.IsStatic {
 				callTarget = c.ClassName + "::"
+
+			} else if m.IsConst {
+				callTarget = "const_cast<const " + c.ClassName + "*>(self)->"
 			}
 
 			ret.WriteString(fmt.Sprintf(
@@ -587,7 +664,7 @@ extern "C" {
 					"%s"+
 					"}\n"+
 					"\n",
-				emitReturnTypeCabi(m.ReturnType), c.ClassName, m.SafeMethodName(), emitParametersCabi(m, c.ClassName+"*"),
+				emitReturnTypeCabi(m.ReturnType), cClassName, m.SafeMethodName(), emitParametersCabi(m, cClassName+"*"),
 				preamble,
 				shouldReturn, callTarget, nativeMethodName, forwarding,
 				afterCall,
@@ -597,7 +674,7 @@ extern "C" {
 				exactSignal := `static_cast<void (` + c.ClassName + `::*)(` + emitParameterTypesCpp(m) + `)>(&` + c.ClassName + `::` + nativeMethodName + `)`
 
 				ret.WriteString(
-					`void ` + c.ClassName + `_connect_` + m.SafeMethodName() + `(` + c.ClassName + `* self, void* slot) {` + "\n" +
+					`void ` + cClassName + `_connect_` + m.SafeMethodName() + `(` + cClassName + `* self, void* slot) {` + "\n" +
 						"\t" + c.ClassName + `::connect(self, ` + exactSignal + `, self, [=](` + emitParametersCpp(m) + `) {` + "\n" +
 						"\t\t" + `miqt_exec_callback(slot, 0, nullptr);` + "\n" +
 						"\t});\n" +
@@ -614,7 +691,7 @@ extern "C" {
 					"\tdelete self;\n"+
 					"}\n"+
 					"\n",
-				c.ClassName, c.ClassName,
+				cClassName, cClassName,
 			))
 		}
 	}

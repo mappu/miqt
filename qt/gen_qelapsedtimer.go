@@ -39,6 +39,11 @@ func NewQElapsedTimer() *QElapsedTimer {
 	return newQElapsedTimer(ret)
 }
 
+func QElapsedTimer_ClockType() uintptr {
+	ret := C.QElapsedTimer_ClockType()
+	return (uintptr)(ret)
+}
+
 func QElapsedTimer_IsMonotonic() bool {
 	ret := C.QElapsedTimer_IsMonotonic()
 	return (bool)(ret)
@@ -73,7 +78,7 @@ func (this *QElapsedTimer) Elapsed() int64 {
 }
 
 func (this *QElapsedTimer) HasExpired(timeout int64) bool {
-	ret := C.QElapsedTimer_HasExpired(this.h, (C.int64_t)(timeout))
+	ret := C.QElapsedTimer_HasExpired(this.h, (C.longlong)(timeout))
 	return (bool)(ret)
 }
 

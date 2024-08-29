@@ -74,6 +74,15 @@ func QAbstractScrollArea_TrUtf8(s string) string {
 	return ret
 }
 
+func (this *QAbstractScrollArea) VerticalScrollBarPolicy() uintptr {
+	ret := C.QAbstractScrollArea_VerticalScrollBarPolicy(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QAbstractScrollArea) SetVerticalScrollBarPolicy(verticalScrollBarPolicy uintptr) {
+	C.QAbstractScrollArea_SetVerticalScrollBarPolicy(this.h, (C.uintptr_t)(verticalScrollBarPolicy))
+}
+
 func (this *QAbstractScrollArea) VerticalScrollBar() *QScrollBar {
 	ret := C.QAbstractScrollArea_VerticalScrollBar(this.h)
 	return newQScrollBar_U(unsafe.Pointer(ret))
@@ -81,6 +90,15 @@ func (this *QAbstractScrollArea) VerticalScrollBar() *QScrollBar {
 
 func (this *QAbstractScrollArea) SetVerticalScrollBar(scrollbar *QScrollBar) {
 	C.QAbstractScrollArea_SetVerticalScrollBar(this.h, scrollbar.cPointer())
+}
+
+func (this *QAbstractScrollArea) HorizontalScrollBarPolicy() uintptr {
+	ret := C.QAbstractScrollArea_HorizontalScrollBarPolicy(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QAbstractScrollArea) SetHorizontalScrollBarPolicy(horizontalScrollBarPolicy uintptr) {
+	C.QAbstractScrollArea_SetHorizontalScrollBarPolicy(this.h, (C.uintptr_t)(horizontalScrollBarPolicy))
 }
 
 func (this *QAbstractScrollArea) HorizontalScrollBar() *QScrollBar {
@@ -99,6 +117,23 @@ func (this *QAbstractScrollArea) CornerWidget() *QWidget {
 
 func (this *QAbstractScrollArea) SetCornerWidget(widget *QWidget) {
 	C.QAbstractScrollArea_SetCornerWidget(this.h, widget.cPointer())
+}
+
+func (this *QAbstractScrollArea) AddScrollBarWidget(widget *QWidget, alignment int) {
+	C.QAbstractScrollArea_AddScrollBarWidget(this.h, widget.cPointer(), (C.int)(alignment))
+}
+
+func (this *QAbstractScrollArea) ScrollBarWidgets(alignment int) []*QWidget {
+	var _out **C.QWidget = nil
+	var _out_len C.size_t = 0
+	C.QAbstractScrollArea_ScrollBarWidgets(this.h, (C.int)(alignment), &_out, &_out_len)
+	ret := make([]*QWidget, int(_out_len))
+	_outCast := (*[0xffff]*C.QWidget)(unsafe.Pointer(_out)) // so fresh so clean
+	for i := 0; i < int(_out_len); i++ {
+		ret[i] = newQWidget(_outCast[i])
+	}
+	C.free(unsafe.Pointer(_out))
+	return ret
 }
 
 func (this *QAbstractScrollArea) Viewport() *QWidget {
@@ -145,6 +180,15 @@ func (this *QAbstractScrollArea) SizeHint() *QSize {
 
 func (this *QAbstractScrollArea) SetupViewport(viewport *QWidget) {
 	C.QAbstractScrollArea_SetupViewport(this.h, viewport.cPointer())
+}
+
+func (this *QAbstractScrollArea) SizeAdjustPolicy() uintptr {
+	ret := C.QAbstractScrollArea_SizeAdjustPolicy(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QAbstractScrollArea) SetSizeAdjustPolicy(policy uintptr) {
+	C.QAbstractScrollArea_SetSizeAdjustPolicy(this.h, (C.uintptr_t)(policy))
 }
 
 func QAbstractScrollArea_Tr2(s string, c string) string {

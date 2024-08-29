@@ -1,6 +1,3 @@
-#include "gen_qlistwidget.h"
-#include "qlistwidget.h"
-
 #include <QBrush>
 #include <QColor>
 #include <QDataStream>
@@ -16,9 +13,13 @@
 #include <QRect>
 #include <QSize>
 #include <QString>
+#include <QByteArray>
+#include <cstring>
 #include <QVariant>
 #include <QWidget>
+#include "qlistwidget.h"
 
+#include "gen_qlistwidget.h"
 
 extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
@@ -71,11 +72,11 @@ QListWidgetItem* QListWidgetItem_new10(QIcon* icon, const char* text, size_t tex
 }
 
 QListWidgetItem* QListWidgetItem_Clone(QListWidgetItem* self) {
-	return self->clone();
+	return const_cast<const QListWidgetItem*>(self)->clone();
 }
 
 QListWidget* QListWidgetItem_ListWidget(QListWidgetItem* self) {
-	return self->listWidget();
+	return const_cast<const QListWidgetItem*>(self)->listWidget();
 }
 
 void QListWidgetItem_SetSelected(QListWidgetItem* self, bool selectVal) {
@@ -83,7 +84,7 @@ void QListWidgetItem_SetSelected(QListWidgetItem* self, bool selectVal) {
 }
 
 bool QListWidgetItem_IsSelected(QListWidgetItem* self) {
-	return self->isSelected();
+	return const_cast<const QListWidgetItem*>(self)->isSelected();
 }
 
 void QListWidgetItem_SetHidden(QListWidgetItem* self, bool hide) {
@@ -91,11 +92,20 @@ void QListWidgetItem_SetHidden(QListWidgetItem* self, bool hide) {
 }
 
 bool QListWidgetItem_IsHidden(QListWidgetItem* self) {
-	return self->isHidden();
+	return const_cast<const QListWidgetItem*>(self)->isHidden();
+}
+
+int QListWidgetItem_Flags(QListWidgetItem* self) {
+	Qt::ItemFlags ret = const_cast<const QListWidgetItem*>(self)->flags();
+	return static_cast<int>(ret);
+}
+
+void QListWidgetItem_SetFlags(QListWidgetItem* self, int flags) {
+	self->setFlags(static_cast<Qt::ItemFlags>(flags));
 }
 
 void QListWidgetItem_Text(QListWidgetItem* self, char** _out, int* _out_Strlen) {
-	QString ret = self->text();
+	QString ret = const_cast<const QListWidgetItem*>(self)->text();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -109,7 +119,7 @@ void QListWidgetItem_SetText(QListWidgetItem* self, const char* text, size_t tex
 }
 
 QIcon* QListWidgetItem_Icon(QListWidgetItem* self) {
-	QIcon ret = self->icon();
+	QIcon ret = const_cast<const QListWidgetItem*>(self)->icon();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QIcon*>(new QIcon(ret));
 }
@@ -119,7 +129,7 @@ void QListWidgetItem_SetIcon(QListWidgetItem* self, QIcon* icon) {
 }
 
 void QListWidgetItem_StatusTip(QListWidgetItem* self, char** _out, int* _out_Strlen) {
-	QString ret = self->statusTip();
+	QString ret = const_cast<const QListWidgetItem*>(self)->statusTip();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -133,7 +143,7 @@ void QListWidgetItem_SetStatusTip(QListWidgetItem* self, const char* statusTip, 
 }
 
 void QListWidgetItem_ToolTip(QListWidgetItem* self, char** _out, int* _out_Strlen) {
-	QString ret = self->toolTip();
+	QString ret = const_cast<const QListWidgetItem*>(self)->toolTip();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -147,7 +157,7 @@ void QListWidgetItem_SetToolTip(QListWidgetItem* self, const char* toolTip, size
 }
 
 void QListWidgetItem_WhatsThis(QListWidgetItem* self, char** _out, int* _out_Strlen) {
-	QString ret = self->whatsThis();
+	QString ret = const_cast<const QListWidgetItem*>(self)->whatsThis();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -161,7 +171,7 @@ void QListWidgetItem_SetWhatsThis(QListWidgetItem* self, const char* whatsThis, 
 }
 
 QFont* QListWidgetItem_Font(QListWidgetItem* self) {
-	QFont ret = self->font();
+	QFont ret = const_cast<const QListWidgetItem*>(self)->font();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QFont*>(new QFont(ret));
 }
@@ -171,7 +181,7 @@ void QListWidgetItem_SetFont(QListWidgetItem* self, QFont* font) {
 }
 
 int QListWidgetItem_TextAlignment(QListWidgetItem* self) {
-	return self->textAlignment();
+	return const_cast<const QListWidgetItem*>(self)->textAlignment();
 }
 
 void QListWidgetItem_SetTextAlignment(QListWidgetItem* self, int alignment) {
@@ -179,7 +189,7 @@ void QListWidgetItem_SetTextAlignment(QListWidgetItem* self, int alignment) {
 }
 
 QColor* QListWidgetItem_BackgroundColor(QListWidgetItem* self) {
-	QColor ret = self->backgroundColor();
+	QColor ret = const_cast<const QListWidgetItem*>(self)->backgroundColor();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QColor*>(new QColor(ret));
 }
@@ -189,7 +199,7 @@ void QListWidgetItem_SetBackgroundColor(QListWidgetItem* self, QColor* color) {
 }
 
 QBrush* QListWidgetItem_Background(QListWidgetItem* self) {
-	QBrush ret = self->background();
+	QBrush ret = const_cast<const QListWidgetItem*>(self)->background();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QBrush*>(new QBrush(ret));
 }
@@ -199,7 +209,7 @@ void QListWidgetItem_SetBackground(QListWidgetItem* self, QBrush* brush) {
 }
 
 QColor* QListWidgetItem_TextColor(QListWidgetItem* self) {
-	QColor ret = self->textColor();
+	QColor ret = const_cast<const QListWidgetItem*>(self)->textColor();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QColor*>(new QColor(ret));
 }
@@ -209,7 +219,7 @@ void QListWidgetItem_SetTextColor(QListWidgetItem* self, QColor* color) {
 }
 
 QBrush* QListWidgetItem_Foreground(QListWidgetItem* self) {
-	QBrush ret = self->foreground();
+	QBrush ret = const_cast<const QListWidgetItem*>(self)->foreground();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QBrush*>(new QBrush(ret));
 }
@@ -218,8 +228,17 @@ void QListWidgetItem_SetForeground(QListWidgetItem* self, QBrush* brush) {
 	self->setForeground(*brush);
 }
 
+uintptr_t QListWidgetItem_CheckState(QListWidgetItem* self) {
+	Qt::CheckState ret = const_cast<const QListWidgetItem*>(self)->checkState();
+	return static_cast<uintptr_t>(ret);
+}
+
+void QListWidgetItem_SetCheckState(QListWidgetItem* self, uintptr_t state) {
+	self->setCheckState(static_cast<Qt::CheckState>(state));
+}
+
 QSize* QListWidgetItem_SizeHint(QListWidgetItem* self) {
-	QSize ret = self->sizeHint();
+	QSize ret = const_cast<const QListWidgetItem*>(self)->sizeHint();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
@@ -229,7 +248,7 @@ void QListWidgetItem_SetSizeHint(QListWidgetItem* self, QSize* size) {
 }
 
 QVariant* QListWidgetItem_Data(QListWidgetItem* self, int role) {
-	QVariant ret = self->data(static_cast<int>(role));
+	QVariant ret = const_cast<const QListWidgetItem*>(self)->data(static_cast<int>(role));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVariant*>(new QVariant(ret));
 }
@@ -239,7 +258,7 @@ void QListWidgetItem_SetData(QListWidgetItem* self, int role, QVariant* value) {
 }
 
 bool QListWidgetItem_OperatorLesser(QListWidgetItem* self, QListWidgetItem* other) {
-	return self->operator<(*other);
+	return const_cast<const QListWidgetItem*>(self)->operator<(*other);
 }
 
 void QListWidgetItem_Read(QListWidgetItem* self, QDataStream* in) {
@@ -247,7 +266,7 @@ void QListWidgetItem_Read(QListWidgetItem* self, QDataStream* in) {
 }
 
 void QListWidgetItem_Write(QListWidgetItem* self, QDataStream* out) {
-	self->write(*out);
+	const_cast<const QListWidgetItem*>(self)->write(*out);
 }
 
 void QListWidgetItem_OperatorAssign(QListWidgetItem* self, QListWidgetItem* other) {
@@ -255,7 +274,7 @@ void QListWidgetItem_OperatorAssign(QListWidgetItem* self, QListWidgetItem* othe
 }
 
 int QListWidgetItem_Type(QListWidgetItem* self) {
-	return self->type();
+	return const_cast<const QListWidgetItem*>(self)->type();
 }
 
 void QListWidgetItem_Delete(QListWidgetItem* self) {
@@ -271,10 +290,10 @@ QListWidget* QListWidget_new2(QWidget* parent) {
 }
 
 QMetaObject* QListWidget_MetaObject(QListWidget* self) {
-	return (QMetaObject*) self->metaObject();
+	return (QMetaObject*) const_cast<const QListWidget*>(self)->metaObject();
 }
 
-void QListWidget_Tr(char* s, char** _out, int* _out_Strlen) {
+void QListWidget_Tr(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QListWidget::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -283,7 +302,7 @@ void QListWidget_Tr(char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QListWidget_TrUtf8(char* s, char** _out, int* _out_Strlen) {
+void QListWidget_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QListWidget::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -297,11 +316,11 @@ void QListWidget_SetSelectionModel(QListWidget* self, QItemSelectionModel* selec
 }
 
 QListWidgetItem* QListWidget_Item(QListWidget* self, int row) {
-	return self->item(static_cast<int>(row));
+	return const_cast<const QListWidget*>(self)->item(static_cast<int>(row));
 }
 
 int QListWidget_Row(QListWidget* self, QListWidgetItem* item) {
-	return self->row(item);
+	return const_cast<const QListWidget*>(self)->row(item);
 }
 
 void QListWidget_InsertItem(QListWidget* self, int row, QListWidgetItem* item) {
@@ -345,37 +364,49 @@ QListWidgetItem* QListWidget_TakeItem(QListWidget* self, int row) {
 }
 
 int QListWidget_Count(QListWidget* self) {
-	return self->count();
+	return const_cast<const QListWidget*>(self)->count();
 }
 
 QListWidgetItem* QListWidget_CurrentItem(QListWidget* self) {
-	return self->currentItem();
+	return const_cast<const QListWidget*>(self)->currentItem();
 }
 
 void QListWidget_SetCurrentItem(QListWidget* self, QListWidgetItem* item) {
 	self->setCurrentItem(item);
 }
 
+void QListWidget_SetCurrentItem2(QListWidget* self, QListWidgetItem* item, int command) {
+	self->setCurrentItem(item, static_cast<QItemSelectionModel::SelectionFlags>(command));
+}
+
 int QListWidget_CurrentRow(QListWidget* self) {
-	return self->currentRow();
+	return const_cast<const QListWidget*>(self)->currentRow();
 }
 
 void QListWidget_SetCurrentRow(QListWidget* self, int row) {
 	self->setCurrentRow(static_cast<int>(row));
 }
 
+void QListWidget_SetCurrentRow2(QListWidget* self, int row, int command) {
+	self->setCurrentRow(static_cast<int>(row), static_cast<QItemSelectionModel::SelectionFlags>(command));
+}
+
 QListWidgetItem* QListWidget_ItemAt(QListWidget* self, QPoint* p) {
-	return self->itemAt(*p);
+	return const_cast<const QListWidget*>(self)->itemAt(*p);
 }
 
 QListWidgetItem* QListWidget_ItemAt2(QListWidget* self, int x, int y) {
-	return self->itemAt(static_cast<int>(x), static_cast<int>(y));
+	return const_cast<const QListWidget*>(self)->itemAt(static_cast<int>(x), static_cast<int>(y));
 }
 
 QRect* QListWidget_VisualItemRect(QListWidget* self, QListWidgetItem* item) {
-	QRect ret = self->visualItemRect(item);
+	QRect ret = const_cast<const QListWidget*>(self)->visualItemRect(item);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRect*>(new QRect(ret));
+}
+
+void QListWidget_SortItems(QListWidget* self) {
+	self->sortItems();
 }
 
 void QListWidget_SetSortingEnabled(QListWidget* self, bool enable) {
@@ -383,7 +414,7 @@ void QListWidget_SetSortingEnabled(QListWidget* self, bool enable) {
 }
 
 bool QListWidget_IsSortingEnabled(QListWidget* self) {
-	return self->isSortingEnabled();
+	return const_cast<const QListWidget*>(self)->isSortingEnabled();
 }
 
 void QListWidget_EditItem(QListWidget* self, QListWidgetItem* item) {
@@ -399,11 +430,11 @@ void QListWidget_ClosePersistentEditor(QListWidget* self, QListWidgetItem* item)
 }
 
 bool QListWidget_IsPersistentEditorOpen(QListWidget* self, QListWidgetItem* item) {
-	return self->isPersistentEditorOpen(item);
+	return const_cast<const QListWidget*>(self)->isPersistentEditorOpen(item);
 }
 
 QWidget* QListWidget_ItemWidget(QListWidget* self, QListWidgetItem* item) {
-	return self->itemWidget(item);
+	return const_cast<const QListWidget*>(self)->itemWidget(item);
 }
 
 void QListWidget_SetItemWidget(QListWidget* self, QListWidgetItem* item, QWidget* widget) {
@@ -415,7 +446,7 @@ void QListWidget_RemoveItemWidget(QListWidget* self, QListWidgetItem* item) {
 }
 
 bool QListWidget_IsItemSelected(QListWidget* self, QListWidgetItem* item) {
-	return self->isItemSelected(item);
+	return const_cast<const QListWidget*>(self)->isItemSelected(item);
 }
 
 void QListWidget_SetItemSelected(QListWidget* self, QListWidgetItem* item, bool selectVal) {
@@ -423,7 +454,19 @@ void QListWidget_SetItemSelected(QListWidget* self, QListWidgetItem* item, bool 
 }
 
 void QListWidget_SelectedItems(QListWidget* self, QListWidgetItem*** _out, size_t* _out_len) {
-	QList<QListWidgetItem *> ret = self->selectedItems();
+	QList<QListWidgetItem*> ret = const_cast<const QListWidget*>(self)->selectedItems();
+	// Convert QList<> from C++ memory to manually-managed C memory
+	QListWidgetItem** __out = static_cast<QListWidgetItem**>(malloc(sizeof(QListWidgetItem*) * ret.length()));
+	for (size_t i = 0, e = ret.length(); i < e; ++i) {
+		__out[i] = ret[i];
+	}
+	*_out = __out;
+	*_out_len = ret.length();
+}
+
+void QListWidget_FindItems(QListWidget* self, const char* text, size_t text_Strlen, int flags, QListWidgetItem*** _out, size_t* _out_len) {
+	QString text_QString = QString::fromUtf8(text, text_Strlen);
+	QList<QListWidgetItem*> ret = const_cast<const QListWidget*>(self)->findItems(text_QString, static_cast<Qt::MatchFlags>(flags));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QListWidgetItem** __out = static_cast<QListWidgetItem**>(malloc(sizeof(QListWidgetItem*) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {
@@ -434,7 +477,7 @@ void QListWidget_SelectedItems(QListWidget* self, QListWidgetItem*** _out, size_
 }
 
 bool QListWidget_IsItemHidden(QListWidget* self, QListWidgetItem* item) {
-	return self->isItemHidden(item);
+	return const_cast<const QListWidget*>(self)->isItemHidden(item);
 }
 
 void QListWidget_SetItemHidden(QListWidget* self, QListWidgetItem* item, bool hide) {
@@ -443,6 +486,10 @@ void QListWidget_SetItemHidden(QListWidget* self, QListWidgetItem* item, bool hi
 
 void QListWidget_DropEvent(QListWidget* self, QDropEvent* event) {
 	self->dropEvent(event);
+}
+
+void QListWidget_ScrollToItem(QListWidget* self, QListWidgetItem* item) {
+	self->scrollToItem(item);
 }
 
 void QListWidget_Clear(QListWidget* self) {
@@ -550,7 +597,7 @@ void QListWidget_connect_ItemSelectionChanged(QListWidget* self, void* slot) {
 	});
 }
 
-void QListWidget_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
+void QListWidget_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QListWidget::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -559,7 +606,7 @@ void QListWidget_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QListWidget_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QListWidget_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QListWidget::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -568,7 +615,7 @@ void QListWidget_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QListWidget_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
+void QListWidget_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QListWidget::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -577,13 +624,21 @@ void QListWidget_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QListWidget_TrUtf83(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QListWidget_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QListWidget::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
 	memcpy(*_out, b.data(), b.length());
 	*_out_Strlen = b.length();
+}
+
+void QListWidget_SortItems1(QListWidget* self, uintptr_t order) {
+	self->sortItems(static_cast<Qt::SortOrder>(order));
+}
+
+void QListWidget_ScrollToItem2(QListWidget* self, QListWidgetItem* item, uintptr_t hint) {
+	self->scrollToItem(item, static_cast<QAbstractItemView::ScrollHint>(hint));
 }
 
 void QListWidget_Delete(QListWidget* self) {

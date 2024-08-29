@@ -41,9 +41,20 @@ func NewQTextLength() *QTextLength {
 }
 
 // NewQTextLength2 constructs a new QTextLength object.
-func NewQTextLength2(param1 *QTextLength) *QTextLength {
-	ret := C.QTextLength_new2(param1.cPointer())
+func NewQTextLength2(typeVal uintptr, value float64) *QTextLength {
+	ret := C.QTextLength_new2((C.uintptr_t)(typeVal), (C.double)(value))
 	return newQTextLength(ret)
+}
+
+// NewQTextLength3 constructs a new QTextLength object.
+func NewQTextLength3(param1 *QTextLength) *QTextLength {
+	ret := C.QTextLength_new3(param1.cPointer())
+	return newQTextLength(ret)
+}
+
+func (this *QTextLength) Type() uintptr {
+	ret := C.QTextLength_Type(this.h)
+	return (uintptr)(ret)
 }
 
 func (this *QTextLength) Value(maximumLength float64) float64 {
@@ -394,6 +405,15 @@ func (this *QTextFormat) OperatorNotEqual(rhs *QTextFormat) bool {
 	return (bool)(ret)
 }
 
+func (this *QTextFormat) SetLayoutDirection(direction uintptr) {
+	C.QTextFormat_SetLayoutDirection(this.h, (C.uintptr_t)(direction))
+}
+
+func (this *QTextFormat) LayoutDirection() uintptr {
+	ret := C.QTextFormat_LayoutDirection(this.h)
+	return (uintptr)(ret)
+}
+
 func (this *QTextFormat) SetBackground(brush *QBrush) {
 	C.QTextFormat_SetBackground(this.h, brush.cPointer())
 }
@@ -473,8 +493,12 @@ func (this *QTextCharFormat) IsValid() bool {
 	return (bool)(ret)
 }
 
-func (this *QTextCharFormat) SetFont(font *QFont) {
-	C.QTextCharFormat_SetFont(this.h, font.cPointer())
+func (this *QTextCharFormat) SetFont(font *QFont, behavior uintptr) {
+	C.QTextCharFormat_SetFont(this.h, font.cPointer(), (C.uintptr_t)(behavior))
+}
+
+func (this *QTextCharFormat) SetFontWithFont(font *QFont) {
+	C.QTextCharFormat_SetFontWithFont(this.h, font.cPointer())
 }
 
 func (this *QTextCharFormat) Font() *QFont {
@@ -573,6 +597,24 @@ func (this *QTextCharFormat) FontItalic() bool {
 	return (bool)(ret)
 }
 
+func (this *QTextCharFormat) SetFontCapitalization(capitalization uintptr) {
+	C.QTextCharFormat_SetFontCapitalization(this.h, (C.uintptr_t)(capitalization))
+}
+
+func (this *QTextCharFormat) FontCapitalization() uintptr {
+	ret := C.QTextCharFormat_FontCapitalization(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QTextCharFormat) SetFontLetterSpacingType(letterSpacingType uintptr) {
+	C.QTextCharFormat_SetFontLetterSpacingType(this.h, (C.uintptr_t)(letterSpacingType))
+}
+
+func (this *QTextCharFormat) FontLetterSpacingType() uintptr {
+	ret := C.QTextCharFormat_FontLetterSpacingType(this.h)
+	return (uintptr)(ret)
+}
+
 func (this *QTextCharFormat) SetFontLetterSpacing(spacing float64) {
 	C.QTextCharFormat_SetFontLetterSpacing(this.h, (C.double)(spacing))
 }
@@ -651,6 +693,33 @@ func (this *QTextCharFormat) FontStretch() int {
 	return (int)(ret)
 }
 
+func (this *QTextCharFormat) SetFontStyleHint(hint uintptr) {
+	C.QTextCharFormat_SetFontStyleHint(this.h, (C.uintptr_t)(hint))
+}
+
+func (this *QTextCharFormat) SetFontStyleStrategy(strategy uintptr) {
+	C.QTextCharFormat_SetFontStyleStrategy(this.h, (C.uintptr_t)(strategy))
+}
+
+func (this *QTextCharFormat) FontStyleHint() uintptr {
+	ret := C.QTextCharFormat_FontStyleHint(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QTextCharFormat) FontStyleStrategy() uintptr {
+	ret := C.QTextCharFormat_FontStyleStrategy(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QTextCharFormat) SetFontHintingPreference(hintingPreference uintptr) {
+	C.QTextCharFormat_SetFontHintingPreference(this.h, (C.uintptr_t)(hintingPreference))
+}
+
+func (this *QTextCharFormat) FontHintingPreference() uintptr {
+	ret := C.QTextCharFormat_FontHintingPreference(this.h)
+	return (uintptr)(ret)
+}
+
 func (this *QTextCharFormat) SetFontKerning(enable bool) {
 	C.QTextCharFormat_SetFontKerning(this.h, (C.bool)(enable))
 }
@@ -658,6 +727,24 @@ func (this *QTextCharFormat) SetFontKerning(enable bool) {
 func (this *QTextCharFormat) FontKerning() bool {
 	ret := C.QTextCharFormat_FontKerning(this.h)
 	return (bool)(ret)
+}
+
+func (this *QTextCharFormat) SetUnderlineStyle(style uintptr) {
+	C.QTextCharFormat_SetUnderlineStyle(this.h, (C.uintptr_t)(style))
+}
+
+func (this *QTextCharFormat) UnderlineStyle() uintptr {
+	ret := C.QTextCharFormat_UnderlineStyle(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QTextCharFormat) SetVerticalAlignment(alignment uintptr) {
+	C.QTextCharFormat_SetVerticalAlignment(this.h, (C.uintptr_t)(alignment))
+}
+
+func (this *QTextCharFormat) VerticalAlignment() uintptr {
+	ret := C.QTextCharFormat_VerticalAlignment(this.h)
+	return (uintptr)(ret)
 }
 
 func (this *QTextCharFormat) SetTextOutline(pen *QPen) {
@@ -777,6 +864,10 @@ func (this *QTextCharFormat) TableCellColumnSpan() int {
 	return (int)(ret)
 }
 
+func (this *QTextCharFormat) SetFontStyleHint2(hint uintptr, strategy uintptr) {
+	C.QTextCharFormat_SetFontStyleHint2(this.h, (C.uintptr_t)(hint), (C.uintptr_t)(strategy))
+}
+
 func (this *QTextCharFormat) Delete() {
 	C.QTextCharFormat_Delete(this.h)
 }
@@ -816,6 +907,15 @@ func NewQTextBlockFormat2(param1 *QTextBlockFormat) *QTextBlockFormat {
 func (this *QTextBlockFormat) IsValid() bool {
 	ret := C.QTextBlockFormat_IsValid(this.h)
 	return (bool)(ret)
+}
+
+func (this *QTextBlockFormat) SetAlignment(alignment int) {
+	C.QTextBlockFormat_SetAlignment(this.h, (C.int)(alignment))
+}
+
+func (this *QTextBlockFormat) Alignment() int {
+	ret := C.QTextBlockFormat_Alignment(this.h)
+	return (int)(ret)
 }
 
 func (this *QTextBlockFormat) SetTopMargin(margin float64) {
@@ -909,6 +1009,47 @@ func (this *QTextBlockFormat) NonBreakableLines() bool {
 	return (bool)(ret)
 }
 
+func (this *QTextBlockFormat) SetPageBreakPolicy(flags int) {
+	C.QTextBlockFormat_SetPageBreakPolicy(this.h, (C.int)(flags))
+}
+
+func (this *QTextBlockFormat) PageBreakPolicy() int {
+	ret := C.QTextBlockFormat_PageBreakPolicy(this.h)
+	return (int)(ret)
+}
+
+func (this *QTextBlockFormat) SetTabPositions(tabs []QTextOption__Tab) {
+	// For the C ABI, malloc a C array of raw pointers
+	tabs_CArray := (*[0xffff]*C.QTextOption__Tab)(C.malloc(C.ulong(8 * len(tabs))))
+	defer C.free(unsafe.Pointer(tabs_CArray))
+	for i := range tabs {
+		tabs_CArray[i] = tabs[i].cPointer()
+	}
+	C.QTextBlockFormat_SetTabPositions(this.h, &tabs_CArray[0], C.ulong(len(tabs)))
+}
+
+func (this *QTextBlockFormat) TabPositions() []QTextOption__Tab {
+	var _out **C.QTextOption__Tab = nil
+	var _out_len C.size_t = 0
+	C.QTextBlockFormat_TabPositions(this.h, &_out, &_out_len)
+	ret := make([]QTextOption__Tab, int(_out_len))
+	_outCast := (*[0xffff]*C.QTextOption__Tab)(unsafe.Pointer(_out)) // so fresh so clean
+	for i := 0; i < int(_out_len); i++ {
+		ret[i] = *newQTextOption__Tab(_outCast[i])
+	}
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func (this *QTextBlockFormat) SetMarker(marker uintptr) {
+	C.QTextBlockFormat_SetMarker(this.h, (C.uintptr_t)(marker))
+}
+
+func (this *QTextBlockFormat) Marker() uintptr {
+	ret := C.QTextBlockFormat_Marker(this.h)
+	return (uintptr)(ret)
+}
+
 func (this *QTextBlockFormat) Delete() {
 	C.QTextBlockFormat_Delete(this.h)
 }
@@ -948,6 +1089,15 @@ func NewQTextListFormat2(param1 *QTextListFormat) *QTextListFormat {
 func (this *QTextListFormat) IsValid() bool {
 	ret := C.QTextListFormat_IsValid(this.h)
 	return (bool)(ret)
+}
+
+func (this *QTextListFormat) SetStyle(style uintptr) {
+	C.QTextListFormat_SetStyle(this.h, (C.uintptr_t)(style))
+}
+
+func (this *QTextListFormat) Style() uintptr {
+	ret := C.QTextListFormat_Style(this.h)
+	return (uintptr)(ret)
 }
 
 func (this *QTextListFormat) SetIndent(indent int) {
@@ -1111,6 +1261,15 @@ func (this *QTextFrameFormat) IsValid() bool {
 	return (bool)(ret)
 }
 
+func (this *QTextFrameFormat) SetPosition(f uintptr) {
+	C.QTextFrameFormat_SetPosition(this.h, (C.uintptr_t)(f))
+}
+
+func (this *QTextFrameFormat) Position() uintptr {
+	ret := C.QTextFrameFormat_Position(this.h)
+	return (uintptr)(ret)
+}
+
 func (this *QTextFrameFormat) SetBorder(border float64) {
 	C.QTextFrameFormat_SetBorder(this.h, (C.double)(border))
 }
@@ -1133,6 +1292,15 @@ func (this *QTextFrameFormat) BorderBrush() *QBrush {
 		runtime.KeepAlive(ret2.h)
 	})
 	return ret1
+}
+
+func (this *QTextFrameFormat) SetBorderStyle(style uintptr) {
+	C.QTextFrameFormat_SetBorderStyle(this.h, (C.uintptr_t)(style))
+}
+
+func (this *QTextFrameFormat) BorderStyle() uintptr {
+	ret := C.QTextFrameFormat_BorderStyle(this.h)
+	return (uintptr)(ret)
 }
 
 func (this *QTextFrameFormat) SetMargin(margin float64) {
@@ -1227,6 +1395,15 @@ func (this *QTextFrameFormat) Height() *QTextLength {
 	return ret1
 }
 
+func (this *QTextFrameFormat) SetPageBreakPolicy(flags int) {
+	C.QTextFrameFormat_SetPageBreakPolicy(this.h, (C.int)(flags))
+}
+
+func (this *QTextFrameFormat) PageBreakPolicy() int {
+	ret := C.QTextFrameFormat_PageBreakPolicy(this.h)
+	return (int)(ret)
+}
+
 func (this *QTextFrameFormat) Delete() {
 	C.QTextFrameFormat_Delete(this.h)
 }
@@ -1314,6 +1491,15 @@ func (this *QTextTableFormat) CellPadding() float64 {
 
 func (this *QTextTableFormat) SetCellPadding(padding float64) {
 	C.QTextTableFormat_SetCellPadding(this.h, (C.double)(padding))
+}
+
+func (this *QTextTableFormat) SetAlignment(alignment int) {
+	C.QTextTableFormat_SetAlignment(this.h, (C.int)(alignment))
+}
+
+func (this *QTextTableFormat) Alignment() int {
+	ret := C.QTextTableFormat_Alignment(this.h)
+	return (int)(ret)
 }
 
 func (this *QTextTableFormat) SetHeaderRowCount(count int) {
@@ -1447,6 +1633,46 @@ func (this *QTextTableCellFormat) RightBorder() float64 {
 
 func (this *QTextTableCellFormat) SetBorder(width float64) {
 	C.QTextTableCellFormat_SetBorder(this.h, (C.double)(width))
+}
+
+func (this *QTextTableCellFormat) SetTopBorderStyle(style uintptr) {
+	C.QTextTableCellFormat_SetTopBorderStyle(this.h, (C.uintptr_t)(style))
+}
+
+func (this *QTextTableCellFormat) TopBorderStyle() uintptr {
+	ret := C.QTextTableCellFormat_TopBorderStyle(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QTextTableCellFormat) SetBottomBorderStyle(style uintptr) {
+	C.QTextTableCellFormat_SetBottomBorderStyle(this.h, (C.uintptr_t)(style))
+}
+
+func (this *QTextTableCellFormat) BottomBorderStyle() uintptr {
+	ret := C.QTextTableCellFormat_BottomBorderStyle(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QTextTableCellFormat) SetLeftBorderStyle(style uintptr) {
+	C.QTextTableCellFormat_SetLeftBorderStyle(this.h, (C.uintptr_t)(style))
+}
+
+func (this *QTextTableCellFormat) LeftBorderStyle() uintptr {
+	ret := C.QTextTableCellFormat_LeftBorderStyle(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QTextTableCellFormat) SetRightBorderStyle(style uintptr) {
+	C.QTextTableCellFormat_SetRightBorderStyle(this.h, (C.uintptr_t)(style))
+}
+
+func (this *QTextTableCellFormat) RightBorderStyle() uintptr {
+	ret := C.QTextTableCellFormat_RightBorderStyle(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QTextTableCellFormat) SetBorderStyle(style uintptr) {
+	C.QTextTableCellFormat_SetBorderStyle(this.h, (C.uintptr_t)(style))
 }
 
 func (this *QTextTableCellFormat) SetTopBorderBrush(brush *QBrush) {

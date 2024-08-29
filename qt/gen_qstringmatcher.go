@@ -40,8 +40,36 @@ func NewQStringMatcher() *QStringMatcher {
 }
 
 // NewQStringMatcher2 constructs a new QStringMatcher object.
-func NewQStringMatcher2(other *QStringMatcher) *QStringMatcher {
-	ret := C.QStringMatcher_new2(other.cPointer())
+func NewQStringMatcher2(pattern string) *QStringMatcher {
+	pattern_Cstring := C.CString(pattern)
+	defer C.free(unsafe.Pointer(pattern_Cstring))
+	ret := C.QStringMatcher_new2(pattern_Cstring, C.ulong(len(pattern)))
+	return newQStringMatcher(ret)
+}
+
+// NewQStringMatcher3 constructs a new QStringMatcher object.
+func NewQStringMatcher3(uc *QChar, lenVal int) *QStringMatcher {
+	ret := C.QStringMatcher_new3(uc.cPointer(), (C.int)(lenVal))
+	return newQStringMatcher(ret)
+}
+
+// NewQStringMatcher4 constructs a new QStringMatcher object.
+func NewQStringMatcher4(other *QStringMatcher) *QStringMatcher {
+	ret := C.QStringMatcher_new4(other.cPointer())
+	return newQStringMatcher(ret)
+}
+
+// NewQStringMatcher5 constructs a new QStringMatcher object.
+func NewQStringMatcher5(pattern string, cs uintptr) *QStringMatcher {
+	pattern_Cstring := C.CString(pattern)
+	defer C.free(unsafe.Pointer(pattern_Cstring))
+	ret := C.QStringMatcher_new5(pattern_Cstring, C.ulong(len(pattern)), (C.uintptr_t)(cs))
+	return newQStringMatcher(ret)
+}
+
+// NewQStringMatcher6 constructs a new QStringMatcher object.
+func NewQStringMatcher6(uc *QChar, lenVal int, cs uintptr) *QStringMatcher {
+	ret := C.QStringMatcher_new6(uc.cPointer(), (C.int)(lenVal), (C.uintptr_t)(cs))
 	return newQStringMatcher(ret)
 }
 
@@ -53,6 +81,10 @@ func (this *QStringMatcher) SetPattern(pattern string) {
 	pattern_Cstring := C.CString(pattern)
 	defer C.free(unsafe.Pointer(pattern_Cstring))
 	C.QStringMatcher_SetPattern(this.h, pattern_Cstring, C.ulong(len(pattern)))
+}
+
+func (this *QStringMatcher) SetCaseSensitivity(cs uintptr) {
+	C.QStringMatcher_SetCaseSensitivity(this.h, (C.uintptr_t)(cs))
 }
 
 func (this *QStringMatcher) IndexIn(str string) int {
@@ -74,6 +106,11 @@ func (this *QStringMatcher) Pattern() string {
 	ret := C.GoStringN(_out, _out_Strlen)
 	C.free(unsafe.Pointer(_out))
 	return ret
+}
+
+func (this *QStringMatcher) CaseSensitivity() uintptr {
+	ret := C.QStringMatcher_CaseSensitivity(this.h)
+	return (uintptr)(ret)
 }
 
 func (this *QStringMatcher) IndexIn22(str string, from int) int {

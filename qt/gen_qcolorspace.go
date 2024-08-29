@@ -41,8 +41,44 @@ func NewQColorSpace() *QColorSpace {
 }
 
 // NewQColorSpace2 constructs a new QColorSpace object.
-func NewQColorSpace2(colorSpace *QColorSpace) *QColorSpace {
-	ret := C.QColorSpace_new2(colorSpace.cPointer())
+func NewQColorSpace2(namedColorSpace uintptr) *QColorSpace {
+	ret := C.QColorSpace_new2((C.uintptr_t)(namedColorSpace))
+	return newQColorSpace(ret)
+}
+
+// NewQColorSpace3 constructs a new QColorSpace object.
+func NewQColorSpace3(primaries uintptr, transferFunction uintptr) *QColorSpace {
+	ret := C.QColorSpace_new3((C.uintptr_t)(primaries), (C.uintptr_t)(transferFunction))
+	return newQColorSpace(ret)
+}
+
+// NewQColorSpace4 constructs a new QColorSpace object.
+func NewQColorSpace4(primaries uintptr, gamma float32) *QColorSpace {
+	ret := C.QColorSpace_new4((C.uintptr_t)(primaries), (C.float)(gamma))
+	return newQColorSpace(ret)
+}
+
+// NewQColorSpace5 constructs a new QColorSpace object.
+func NewQColorSpace5(whitePoint *QPointF, redPoint *QPointF, greenPoint *QPointF, bluePoint *QPointF, transferFunction uintptr) *QColorSpace {
+	ret := C.QColorSpace_new5(whitePoint.cPointer(), redPoint.cPointer(), greenPoint.cPointer(), bluePoint.cPointer(), (C.uintptr_t)(transferFunction))
+	return newQColorSpace(ret)
+}
+
+// NewQColorSpace6 constructs a new QColorSpace object.
+func NewQColorSpace6(colorSpace *QColorSpace) *QColorSpace {
+	ret := C.QColorSpace_new6(colorSpace.cPointer())
+	return newQColorSpace(ret)
+}
+
+// NewQColorSpace7 constructs a new QColorSpace object.
+func NewQColorSpace7(primaries uintptr, transferFunction uintptr, gamma float32) *QColorSpace {
+	ret := C.QColorSpace_new7((C.uintptr_t)(primaries), (C.uintptr_t)(transferFunction), (C.float)(gamma))
+	return newQColorSpace(ret)
+}
+
+// NewQColorSpace8 constructs a new QColorSpace object.
+func NewQColorSpace8(whitePoint *QPointF, redPoint *QPointF, greenPoint *QPointF, bluePoint *QPointF, transferFunction uintptr, gamma float32) *QColorSpace {
+	ret := C.QColorSpace_new8(whitePoint.cPointer(), redPoint.cPointer(), greenPoint.cPointer(), bluePoint.cPointer(), (C.uintptr_t)(transferFunction), (C.float)(gamma))
 	return newQColorSpace(ret)
 }
 
@@ -54,13 +90,42 @@ func (this *QColorSpace) Swap(colorSpace *QColorSpace) {
 	C.QColorSpace_Swap(this.h, colorSpace.cPointer())
 }
 
+func (this *QColorSpace) Primaries() uintptr {
+	ret := C.QColorSpace_Primaries(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QColorSpace) TransferFunction() uintptr {
+	ret := C.QColorSpace_TransferFunction(this.h)
+	return (uintptr)(ret)
+}
+
 func (this *QColorSpace) Gamma() float32 {
 	ret := C.QColorSpace_Gamma(this.h)
 	return (float32)(ret)
 }
 
-func (this *QColorSpace) SetPrimaries(whitePoint *QPointF, redPoint *QPointF, greenPoint *QPointF, bluePoint *QPointF) {
-	C.QColorSpace_SetPrimaries(this.h, whitePoint.cPointer(), redPoint.cPointer(), greenPoint.cPointer(), bluePoint.cPointer())
+func (this *QColorSpace) SetTransferFunction(transferFunction uintptr) {
+	C.QColorSpace_SetTransferFunction(this.h, (C.uintptr_t)(transferFunction))
+}
+
+func (this *QColorSpace) WithTransferFunction(transferFunction uintptr) *QColorSpace {
+	ret := C.QColorSpace_WithTransferFunction(this.h, (C.uintptr_t)(transferFunction))
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQColorSpace(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QColorSpace) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QColorSpace) SetPrimaries(primariesId uintptr) {
+	C.QColorSpace_SetPrimaries(this.h, (C.uintptr_t)(primariesId))
+}
+
+func (this *QColorSpace) SetPrimaries2(whitePoint *QPointF, redPoint *QPointF, greenPoint *QPointF, bluePoint *QPointF) {
+	C.QColorSpace_SetPrimaries2(this.h, whitePoint.cPointer(), redPoint.cPointer(), greenPoint.cPointer(), bluePoint.cPointer())
 }
 
 func (this *QColorSpace) IsValid() bool {
@@ -95,6 +160,21 @@ func (this *QColorSpace) TransformationToColorSpace(colorspace *QColorSpace) *QC
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQColorTransform(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QColorTransform) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QColorSpace) SetTransferFunction2(transferFunction uintptr, gamma float32) {
+	C.QColorSpace_SetTransferFunction2(this.h, (C.uintptr_t)(transferFunction), (C.float)(gamma))
+}
+
+func (this *QColorSpace) WithTransferFunction2(transferFunction uintptr, gamma float32) *QColorSpace {
+	ret := C.QColorSpace_WithTransferFunction2(this.h, (C.uintptr_t)(transferFunction), (C.float)(gamma))
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQColorSpace(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QColorSpace) {
 		ret2.Delete()
 		runtime.KeepAlive(ret2.h)
 	})

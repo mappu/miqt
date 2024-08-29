@@ -50,7 +50,7 @@ func NewQCborStreamReader2(data string, lenVal uint64) *QCborStreamReader {
 
 // NewQCborStreamReader3 constructs a new QCborStreamReader object.
 func NewQCborStreamReader3(data *byte, lenVal uint64) *QCborStreamReader {
-	ret := C.QCborStreamReader_new3((*C.uint8_t)(unsafe.Pointer(data)), (C.size_t)(lenVal))
+	ret := C.QCborStreamReader_new3((*C.uchar)(unsafe.Pointer(data)), (C.size_t)(lenVal))
 	return newQCborStreamReader(ret)
 }
 
@@ -86,7 +86,7 @@ func (this *QCborStreamReader) AddData2(data string, lenVal uint64) {
 }
 
 func (this *QCborStreamReader) AddData3(data *byte, lenVal uint64) {
-	C.QCborStreamReader_AddData3(this.h, (*C.uint8_t)(unsafe.Pointer(data)), (C.size_t)(lenVal))
+	C.QCborStreamReader_AddData3(this.h, (*C.uchar)(unsafe.Pointer(data)), (C.size_t)(lenVal))
 }
 
 func (this *QCborStreamReader) Reparse() {
@@ -127,6 +127,11 @@ func (this *QCborStreamReader) ContainerDepth() int {
 	return (int)(ret)
 }
 
+func (this *QCborStreamReader) ParentContainerType() uintptr {
+	ret := C.QCborStreamReader_ParentContainerType(this.h)
+	return (uintptr)(ret)
+}
+
 func (this *QCborStreamReader) HasNext() bool {
 	ret := C.QCborStreamReader_HasNext(this.h)
 	return (bool)(ret)
@@ -135,6 +140,11 @@ func (this *QCborStreamReader) HasNext() bool {
 func (this *QCborStreamReader) Next() bool {
 	ret := C.QCborStreamReader_Next(this.h)
 	return (bool)(ret)
+}
+
+func (this *QCborStreamReader) Type() uintptr {
+	ret := C.QCborStreamReader_Type(this.h)
+	return (uintptr)(ret)
 }
 
 func (this *QCborStreamReader) IsUnsignedInteger() bool {

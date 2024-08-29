@@ -53,6 +53,49 @@ func QFontDatabase_StandardSizes() []int {
 	return ret
 }
 
+func (this *QFontDatabase) WritingSystems() []uintptr {
+	var _out *C.uintptr_t = nil
+	var _out_len C.size_t = 0
+	C.QFontDatabase_WritingSystems(this.h, &_out, &_out_len)
+	ret := make([]uintptr, int(_out_len))
+	_outCast := (*[0xffff]C.uintptr_t)(unsafe.Pointer(_out)) // mrs jackson
+	for i := 0; i < int(_out_len); i++ {
+		ret[i] = (uintptr)(_outCast[i])
+	}
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func (this *QFontDatabase) WritingSystemsWithFamily(family string) []uintptr {
+	family_Cstring := C.CString(family)
+	defer C.free(unsafe.Pointer(family_Cstring))
+	var _out *C.uintptr_t = nil
+	var _out_len C.size_t = 0
+	C.QFontDatabase_WritingSystemsWithFamily(this.h, family_Cstring, C.ulong(len(family)), &_out, &_out_len)
+	ret := make([]uintptr, int(_out_len))
+	_outCast := (*[0xffff]C.uintptr_t)(unsafe.Pointer(_out)) // mrs jackson
+	for i := 0; i < int(_out_len); i++ {
+		ret[i] = (uintptr)(_outCast[i])
+	}
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func (this *QFontDatabase) Families() []string {
+	var _out **C.char = nil
+	var _out_Lengths *C.int = nil
+	var _out_len C.size_t = 0
+	C.QFontDatabase_Families(this.h, &_out, &_out_Lengths, &_out_len)
+	ret := make([]string, int(_out_len))
+	_outCast := (*[0xffff]*C.char)(unsafe.Pointer(_out)) // hey ya
+	_out_LengthsCast := (*[0xffff]C.int)(unsafe.Pointer(_out_Lengths))
+	for i := 0; i < int(_out_len); i++ {
+		ret[i] = C.GoStringN(_outCast[i], _out_LengthsCast[i])
+	}
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
 func (this *QFontDatabase) Styles(family string) []string {
 	family_Cstring := C.CString(family)
 	defer C.free(unsafe.Pointer(family_Cstring))
@@ -204,6 +247,24 @@ func (this *QFontDatabase) IsPrivateFamily(family string) bool {
 	return (bool)(ret)
 }
 
+func QFontDatabase_WritingSystemName(writingSystem uintptr) string {
+	var _out *C.char = nil
+	var _out_Strlen C.int = 0
+	C.QFontDatabase_WritingSystemName((C.uintptr_t)(writingSystem), &_out, &_out_Strlen)
+	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func QFontDatabase_WritingSystemSample(writingSystem uintptr) string {
+	var _out *C.char = nil
+	var _out_Strlen C.int = 0
+	C.QFontDatabase_WritingSystemSample((C.uintptr_t)(writingSystem), &_out, &_out_Strlen)
+	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
 func QFontDatabase_AddApplicationFont(fileName string) int {
 	fileName_Cstring := C.CString(fileName)
 	defer C.free(unsafe.Pointer(fileName_Cstring))
@@ -244,6 +305,32 @@ func QFontDatabase_RemoveAllApplicationFonts() bool {
 func QFontDatabase_SupportsThreadedFontRendering() bool {
 	ret := C.QFontDatabase_SupportsThreadedFontRendering()
 	return (bool)(ret)
+}
+
+func QFontDatabase_SystemFont(typeVal uintptr) *QFont {
+	ret := C.QFontDatabase_SystemFont((C.uintptr_t)(typeVal))
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQFont(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QFont) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QFontDatabase) Families1(writingSystem uintptr) []string {
+	var _out **C.char = nil
+	var _out_Lengths *C.int = nil
+	var _out_len C.size_t = 0
+	C.QFontDatabase_Families1(this.h, (C.uintptr_t)(writingSystem), &_out, &_out_Lengths, &_out_len)
+	ret := make([]string, int(_out_len))
+	_outCast := (*[0xffff]*C.char)(unsafe.Pointer(_out)) // hey ya
+	_out_LengthsCast := (*[0xffff]C.int)(unsafe.Pointer(_out_Lengths))
+	for i := 0; i < int(_out_len); i++ {
+		ret[i] = C.GoStringN(_outCast[i], _out_LengthsCast[i])
+	}
+	C.free(unsafe.Pointer(_out))
+	return ret
 }
 
 func (this *QFontDatabase) PointSizes2(family string, style string) []int {

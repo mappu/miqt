@@ -1,6 +1,3 @@
-#include "gen_qgesture.h"
-#include "qgesture.h"
-
 #include <QGesture>
 #include <QGestureEvent>
 #include <QList>
@@ -10,11 +7,15 @@
 #include <QPinchGesture>
 #include <QPointF>
 #include <QString>
+#include <QByteArray>
+#include <cstring>
 #include <QSwipeGesture>
 #include <QTapAndHoldGesture>
 #include <QTapGesture>
 #include <QWidget>
+#include "qgesture.h"
 
+#include "gen_qgesture.h"
 
 extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
@@ -29,10 +30,10 @@ QGesture* QGesture_new2(QObject* parent) {
 }
 
 QMetaObject* QGesture_MetaObject(QGesture* self) {
-	return (QMetaObject*) self->metaObject();
+	return (QMetaObject*) const_cast<const QGesture*>(self)->metaObject();
 }
 
-void QGesture_Tr(char* s, char** _out, int* _out_Strlen) {
+void QGesture_Tr(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QGesture::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -41,7 +42,7 @@ void QGesture_Tr(char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QGesture_TrUtf8(char* s, char** _out, int* _out_Strlen) {
+void QGesture_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QGesture::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -50,8 +51,18 @@ void QGesture_TrUtf8(char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
+uintptr_t QGesture_GestureType(QGesture* self) {
+	Qt::GestureType ret = const_cast<const QGesture*>(self)->gestureType();
+	return static_cast<uintptr_t>(ret);
+}
+
+uintptr_t QGesture_State(QGesture* self) {
+	Qt::GestureState ret = const_cast<const QGesture*>(self)->state();
+	return static_cast<uintptr_t>(ret);
+}
+
 QPointF* QGesture_HotSpot(QGesture* self) {
-	QPointF ret = self->hotSpot();
+	QPointF ret = const_cast<const QGesture*>(self)->hotSpot();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPointF*>(new QPointF(ret));
 }
@@ -61,14 +72,23 @@ void QGesture_SetHotSpot(QGesture* self, QPointF* value) {
 }
 
 bool QGesture_HasHotSpot(QGesture* self) {
-	return self->hasHotSpot();
+	return const_cast<const QGesture*>(self)->hasHotSpot();
 }
 
 void QGesture_UnsetHotSpot(QGesture* self) {
 	self->unsetHotSpot();
 }
 
-void QGesture_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
+void QGesture_SetGestureCancelPolicy(QGesture* self, uintptr_t policy) {
+	self->setGestureCancelPolicy(static_cast<QGesture::GestureCancelPolicy>(policy));
+}
+
+uintptr_t QGesture_GestureCancelPolicy(QGesture* self) {
+	QGesture::GestureCancelPolicy ret = const_cast<const QGesture*>(self)->gestureCancelPolicy();
+	return static_cast<uintptr_t>(ret);
+}
+
+void QGesture_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QGesture::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -77,7 +97,7 @@ void QGesture_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QGesture_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QGesture_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QGesture::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -86,7 +106,7 @@ void QGesture_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QGesture_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
+void QGesture_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QGesture::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -95,7 +115,7 @@ void QGesture_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QGesture_TrUtf83(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QGesture_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QGesture::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -117,10 +137,10 @@ QPanGesture* QPanGesture_new2(QObject* parent) {
 }
 
 QMetaObject* QPanGesture_MetaObject(QPanGesture* self) {
-	return (QMetaObject*) self->metaObject();
+	return (QMetaObject*) const_cast<const QPanGesture*>(self)->metaObject();
 }
 
-void QPanGesture_Tr(char* s, char** _out, int* _out_Strlen) {
+void QPanGesture_Tr(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QPanGesture::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -129,7 +149,7 @@ void QPanGesture_Tr(char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QPanGesture_TrUtf8(char* s, char** _out, int* _out_Strlen) {
+void QPanGesture_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QPanGesture::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -139,25 +159,25 @@ void QPanGesture_TrUtf8(char* s, char** _out, int* _out_Strlen) {
 }
 
 QPointF* QPanGesture_LastOffset(QPanGesture* self) {
-	QPointF ret = self->lastOffset();
+	QPointF ret = const_cast<const QPanGesture*>(self)->lastOffset();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPointF*>(new QPointF(ret));
 }
 
 QPointF* QPanGesture_Offset(QPanGesture* self) {
-	QPointF ret = self->offset();
+	QPointF ret = const_cast<const QPanGesture*>(self)->offset();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPointF*>(new QPointF(ret));
 }
 
 QPointF* QPanGesture_Delta(QPanGesture* self) {
-	QPointF ret = self->delta();
+	QPointF ret = const_cast<const QPanGesture*>(self)->delta();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPointF*>(new QPointF(ret));
 }
 
 double QPanGesture_Acceleration(QPanGesture* self) {
-	return self->acceleration();
+	return const_cast<const QPanGesture*>(self)->acceleration();
 }
 
 void QPanGesture_SetLastOffset(QPanGesture* self, QPointF* value) {
@@ -172,7 +192,7 @@ void QPanGesture_SetAcceleration(QPanGesture* self, double value) {
 	self->setAcceleration(static_cast<qreal>(value));
 }
 
-void QPanGesture_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
+void QPanGesture_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QPanGesture::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -181,7 +201,7 @@ void QPanGesture_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QPanGesture_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QPanGesture_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QPanGesture::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -190,7 +210,7 @@ void QPanGesture_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QPanGesture_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
+void QPanGesture_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QPanGesture::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -199,7 +219,7 @@ void QPanGesture_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QPanGesture_TrUtf83(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QPanGesture_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QPanGesture::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -221,10 +241,10 @@ QPinchGesture* QPinchGesture_new2(QObject* parent) {
 }
 
 QMetaObject* QPinchGesture_MetaObject(QPinchGesture* self) {
-	return (QMetaObject*) self->metaObject();
+	return (QMetaObject*) const_cast<const QPinchGesture*>(self)->metaObject();
 }
 
-void QPinchGesture_Tr(char* s, char** _out, int* _out_Strlen) {
+void QPinchGesture_Tr(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QPinchGesture::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -233,7 +253,7 @@ void QPinchGesture_Tr(char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QPinchGesture_TrUtf8(char* s, char** _out, int* _out_Strlen) {
+void QPinchGesture_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QPinchGesture::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -242,20 +262,38 @@ void QPinchGesture_TrUtf8(char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
+int QPinchGesture_TotalChangeFlags(QPinchGesture* self) {
+	QPinchGesture::ChangeFlags ret = const_cast<const QPinchGesture*>(self)->totalChangeFlags();
+	return static_cast<int>(ret);
+}
+
+void QPinchGesture_SetTotalChangeFlags(QPinchGesture* self, int value) {
+	self->setTotalChangeFlags(static_cast<QPinchGesture::ChangeFlags>(value));
+}
+
+int QPinchGesture_ChangeFlags(QPinchGesture* self) {
+	QPinchGesture::ChangeFlags ret = const_cast<const QPinchGesture*>(self)->changeFlags();
+	return static_cast<int>(ret);
+}
+
+void QPinchGesture_SetChangeFlags(QPinchGesture* self, int value) {
+	self->setChangeFlags(static_cast<QPinchGesture::ChangeFlags>(value));
+}
+
 QPointF* QPinchGesture_StartCenterPoint(QPinchGesture* self) {
-	QPointF ret = self->startCenterPoint();
+	QPointF ret = const_cast<const QPinchGesture*>(self)->startCenterPoint();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPointF*>(new QPointF(ret));
 }
 
 QPointF* QPinchGesture_LastCenterPoint(QPinchGesture* self) {
-	QPointF ret = self->lastCenterPoint();
+	QPointF ret = const_cast<const QPinchGesture*>(self)->lastCenterPoint();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPointF*>(new QPointF(ret));
 }
 
 QPointF* QPinchGesture_CenterPoint(QPinchGesture* self) {
-	QPointF ret = self->centerPoint();
+	QPointF ret = const_cast<const QPinchGesture*>(self)->centerPoint();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPointF*>(new QPointF(ret));
 }
@@ -273,15 +311,15 @@ void QPinchGesture_SetCenterPoint(QPinchGesture* self, QPointF* value) {
 }
 
 double QPinchGesture_TotalScaleFactor(QPinchGesture* self) {
-	return self->totalScaleFactor();
+	return const_cast<const QPinchGesture*>(self)->totalScaleFactor();
 }
 
 double QPinchGesture_LastScaleFactor(QPinchGesture* self) {
-	return self->lastScaleFactor();
+	return const_cast<const QPinchGesture*>(self)->lastScaleFactor();
 }
 
 double QPinchGesture_ScaleFactor(QPinchGesture* self) {
-	return self->scaleFactor();
+	return const_cast<const QPinchGesture*>(self)->scaleFactor();
 }
 
 void QPinchGesture_SetTotalScaleFactor(QPinchGesture* self, double value) {
@@ -297,15 +335,15 @@ void QPinchGesture_SetScaleFactor(QPinchGesture* self, double value) {
 }
 
 double QPinchGesture_TotalRotationAngle(QPinchGesture* self) {
-	return self->totalRotationAngle();
+	return const_cast<const QPinchGesture*>(self)->totalRotationAngle();
 }
 
 double QPinchGesture_LastRotationAngle(QPinchGesture* self) {
-	return self->lastRotationAngle();
+	return const_cast<const QPinchGesture*>(self)->lastRotationAngle();
 }
 
 double QPinchGesture_RotationAngle(QPinchGesture* self) {
-	return self->rotationAngle();
+	return const_cast<const QPinchGesture*>(self)->rotationAngle();
 }
 
 void QPinchGesture_SetTotalRotationAngle(QPinchGesture* self, double value) {
@@ -320,7 +358,7 @@ void QPinchGesture_SetRotationAngle(QPinchGesture* self, double value) {
 	self->setRotationAngle(static_cast<qreal>(value));
 }
 
-void QPinchGesture_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
+void QPinchGesture_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QPinchGesture::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -329,7 +367,7 @@ void QPinchGesture_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QPinchGesture_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QPinchGesture_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QPinchGesture::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -338,7 +376,7 @@ void QPinchGesture_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QPinchGesture_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
+void QPinchGesture_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QPinchGesture::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -347,7 +385,7 @@ void QPinchGesture_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QPinchGesture_TrUtf83(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QPinchGesture_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QPinchGesture::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -369,10 +407,10 @@ QSwipeGesture* QSwipeGesture_new2(QObject* parent) {
 }
 
 QMetaObject* QSwipeGesture_MetaObject(QSwipeGesture* self) {
-	return (QMetaObject*) self->metaObject();
+	return (QMetaObject*) const_cast<const QSwipeGesture*>(self)->metaObject();
 }
 
-void QSwipeGesture_Tr(char* s, char** _out, int* _out_Strlen) {
+void QSwipeGesture_Tr(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QSwipeGesture::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -381,7 +419,7 @@ void QSwipeGesture_Tr(char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QSwipeGesture_TrUtf8(char* s, char** _out, int* _out_Strlen) {
+void QSwipeGesture_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QSwipeGesture::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -390,15 +428,25 @@ void QSwipeGesture_TrUtf8(char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
+uintptr_t QSwipeGesture_HorizontalDirection(QSwipeGesture* self) {
+	QSwipeGesture::SwipeDirection ret = const_cast<const QSwipeGesture*>(self)->horizontalDirection();
+	return static_cast<uintptr_t>(ret);
+}
+
+uintptr_t QSwipeGesture_VerticalDirection(QSwipeGesture* self) {
+	QSwipeGesture::SwipeDirection ret = const_cast<const QSwipeGesture*>(self)->verticalDirection();
+	return static_cast<uintptr_t>(ret);
+}
+
 double QSwipeGesture_SwipeAngle(QSwipeGesture* self) {
-	return self->swipeAngle();
+	return const_cast<const QSwipeGesture*>(self)->swipeAngle();
 }
 
 void QSwipeGesture_SetSwipeAngle(QSwipeGesture* self, double value) {
 	self->setSwipeAngle(static_cast<qreal>(value));
 }
 
-void QSwipeGesture_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
+void QSwipeGesture_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QSwipeGesture::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -407,7 +455,7 @@ void QSwipeGesture_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QSwipeGesture_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QSwipeGesture_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QSwipeGesture::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -416,7 +464,7 @@ void QSwipeGesture_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QSwipeGesture_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
+void QSwipeGesture_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QSwipeGesture::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -425,7 +473,7 @@ void QSwipeGesture_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QSwipeGesture_TrUtf83(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QSwipeGesture_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QSwipeGesture::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -447,10 +495,10 @@ QTapGesture* QTapGesture_new2(QObject* parent) {
 }
 
 QMetaObject* QTapGesture_MetaObject(QTapGesture* self) {
-	return (QMetaObject*) self->metaObject();
+	return (QMetaObject*) const_cast<const QTapGesture*>(self)->metaObject();
 }
 
-void QTapGesture_Tr(char* s, char** _out, int* _out_Strlen) {
+void QTapGesture_Tr(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QTapGesture::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -459,7 +507,7 @@ void QTapGesture_Tr(char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QTapGesture_TrUtf8(char* s, char** _out, int* _out_Strlen) {
+void QTapGesture_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QTapGesture::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -469,7 +517,7 @@ void QTapGesture_TrUtf8(char* s, char** _out, int* _out_Strlen) {
 }
 
 QPointF* QTapGesture_Position(QTapGesture* self) {
-	QPointF ret = self->position();
+	QPointF ret = const_cast<const QTapGesture*>(self)->position();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPointF*>(new QPointF(ret));
 }
@@ -478,7 +526,7 @@ void QTapGesture_SetPosition(QTapGesture* self, QPointF* pos) {
 	self->setPosition(*pos);
 }
 
-void QTapGesture_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
+void QTapGesture_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QTapGesture::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -487,7 +535,7 @@ void QTapGesture_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QTapGesture_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QTapGesture_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QTapGesture::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -496,7 +544,7 @@ void QTapGesture_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QTapGesture_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
+void QTapGesture_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QTapGesture::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -505,7 +553,7 @@ void QTapGesture_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QTapGesture_TrUtf83(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QTapGesture_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QTapGesture::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -527,10 +575,10 @@ QTapAndHoldGesture* QTapAndHoldGesture_new2(QObject* parent) {
 }
 
 QMetaObject* QTapAndHoldGesture_MetaObject(QTapAndHoldGesture* self) {
-	return (QMetaObject*) self->metaObject();
+	return (QMetaObject*) const_cast<const QTapAndHoldGesture*>(self)->metaObject();
 }
 
-void QTapAndHoldGesture_Tr(char* s, char** _out, int* _out_Strlen) {
+void QTapAndHoldGesture_Tr(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QTapAndHoldGesture::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -539,7 +587,7 @@ void QTapAndHoldGesture_Tr(char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QTapAndHoldGesture_TrUtf8(char* s, char** _out, int* _out_Strlen) {
+void QTapAndHoldGesture_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QTapAndHoldGesture::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -549,7 +597,7 @@ void QTapAndHoldGesture_TrUtf8(char* s, char** _out, int* _out_Strlen) {
 }
 
 QPointF* QTapAndHoldGesture_Position(QTapAndHoldGesture* self) {
-	QPointF ret = self->position();
+	QPointF ret = const_cast<const QTapAndHoldGesture*>(self)->position();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPointF*>(new QPointF(ret));
 }
@@ -566,7 +614,7 @@ int QTapAndHoldGesture_Timeout() {
 	return QTapAndHoldGesture::timeout();
 }
 
-void QTapAndHoldGesture_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
+void QTapAndHoldGesture_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QTapAndHoldGesture::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -575,7 +623,7 @@ void QTapAndHoldGesture_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QTapAndHoldGesture_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QTapAndHoldGesture_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QTapAndHoldGesture::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -584,7 +632,7 @@ void QTapAndHoldGesture_Tr3(char* s, char* c, int n, char** _out, int* _out_Strl
 	*_out_Strlen = b.length();
 }
 
-void QTapAndHoldGesture_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
+void QTapAndHoldGesture_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QTapAndHoldGesture::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -593,7 +641,7 @@ void QTapAndHoldGesture_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen)
 	*_out_Strlen = b.length();
 }
 
-void QTapAndHoldGesture_TrUtf83(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QTapAndHoldGesture_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QTapAndHoldGesture::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -607,7 +655,7 @@ void QTapAndHoldGesture_Delete(QTapAndHoldGesture* self) {
 }
 
 QGestureEvent* QGestureEvent_new(QGesture** gestures, size_t gestures_len) {
-	QList<QGesture *> gestures_QList;
+	QList<QGesture*> gestures_QList;
 	gestures_QList.reserve(gestures_len);
 	for(size_t i = 0; i < gestures_len; ++i) {
 		gestures_QList.push_back(gestures[i]);
@@ -620,7 +668,7 @@ QGestureEvent* QGestureEvent_new2(QGestureEvent* param1) {
 }
 
 void QGestureEvent_Gestures(QGestureEvent* self, QGesture*** _out, size_t* _out_len) {
-	QList<QGesture *> ret = self->gestures();
+	QList<QGesture*> ret = const_cast<const QGestureEvent*>(self)->gestures();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QGesture** __out = static_cast<QGesture**>(malloc(sizeof(QGesture*) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {
@@ -630,8 +678,12 @@ void QGestureEvent_Gestures(QGestureEvent* self, QGesture*** _out, size_t* _out_
 	*_out_len = ret.length();
 }
 
+QGesture* QGestureEvent_Gesture(QGestureEvent* self, uintptr_t typeVal) {
+	return const_cast<const QGestureEvent*>(self)->gesture(static_cast<Qt::GestureType>(typeVal));
+}
+
 void QGestureEvent_ActiveGestures(QGestureEvent* self, QGesture*** _out, size_t* _out_len) {
-	QList<QGesture *> ret = self->activeGestures();
+	QList<QGesture*> ret = const_cast<const QGestureEvent*>(self)->activeGestures();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QGesture** __out = static_cast<QGesture**>(malloc(sizeof(QGesture*) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {
@@ -642,7 +694,7 @@ void QGestureEvent_ActiveGestures(QGestureEvent* self, QGesture*** _out, size_t*
 }
 
 void QGestureEvent_CanceledGestures(QGestureEvent* self, QGesture*** _out, size_t* _out_len) {
-	QList<QGesture *> ret = self->canceledGestures();
+	QList<QGesture*> ret = const_cast<const QGestureEvent*>(self)->canceledGestures();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QGesture** __out = static_cast<QGesture**>(malloc(sizeof(QGesture*) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {
@@ -665,7 +717,23 @@ void QGestureEvent_Ignore(QGestureEvent* self, QGesture* param1) {
 }
 
 bool QGestureEvent_IsAccepted(QGestureEvent* self, QGesture* param1) {
-	return self->isAccepted(param1);
+	return const_cast<const QGestureEvent*>(self)->isAccepted(param1);
+}
+
+void QGestureEvent_SetAccepted2(QGestureEvent* self, uintptr_t param1, bool param2) {
+	self->setAccepted(static_cast<Qt::GestureType>(param1), param2);
+}
+
+void QGestureEvent_AcceptWithQtGestureType(QGestureEvent* self, uintptr_t param1) {
+	self->accept(static_cast<Qt::GestureType>(param1));
+}
+
+void QGestureEvent_IgnoreWithQtGestureType(QGestureEvent* self, uintptr_t param1) {
+	self->ignore(static_cast<Qt::GestureType>(param1));
+}
+
+bool QGestureEvent_IsAcceptedWithQtGestureType(QGestureEvent* self, uintptr_t param1) {
+	return const_cast<const QGestureEvent*>(self)->isAccepted(static_cast<Qt::GestureType>(param1));
 }
 
 void QGestureEvent_SetWidget(QGestureEvent* self, QWidget* widget) {
@@ -673,11 +741,11 @@ void QGestureEvent_SetWidget(QGestureEvent* self, QWidget* widget) {
 }
 
 QWidget* QGestureEvent_Widget(QGestureEvent* self) {
-	return self->widget();
+	return const_cast<const QGestureEvent*>(self)->widget();
 }
 
 QPointF* QGestureEvent_MapToGraphicsScene(QGestureEvent* self, QPointF* gesturePoint) {
-	QPointF ret = self->mapToGraphicsScene(*gesturePoint);
+	QPointF ret = const_cast<const QGestureEvent*>(self)->mapToGraphicsScene(*gesturePoint);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPointF*>(new QPointF(ret));
 }

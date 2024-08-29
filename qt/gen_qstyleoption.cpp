@@ -1,6 +1,3 @@
-#include "gen_qstyleoption.h"
-#include "qstyleoption.h"
-
 #include <QStyleHintReturn>
 #include <QStyleHintReturnMask>
 #include <QStyleHintReturnVariant>
@@ -31,7 +28,9 @@
 #include <QStyleOptionViewItem>
 #include <QTransform>
 #include <QWidget>
+#include "qstyleoption.h"
 
+#include "gen_qstyleoption.h"
 
 extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);

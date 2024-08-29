@@ -1,12 +1,13 @@
-#include "gen_qcheckbox.h"
-#include "qcheckbox.h"
-
 #include <QCheckBox>
 #include <QMetaObject>
 #include <QSize>
 #include <QString>
+#include <QByteArray>
+#include <cstring>
 #include <QWidget>
+#include "qcheckbox.h"
 
+#include "gen_qcheckbox.h"
 
 extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
@@ -31,10 +32,10 @@ QCheckBox* QCheckBox_new4(const char* text, size_t text_Strlen, QWidget* parent)
 }
 
 QMetaObject* QCheckBox_MetaObject(QCheckBox* self) {
-	return (QMetaObject*) self->metaObject();
+	return (QMetaObject*) const_cast<const QCheckBox*>(self)->metaObject();
 }
 
-void QCheckBox_Tr(char* s, char** _out, int* _out_Strlen) {
+void QCheckBox_Tr(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QCheckBox::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -43,7 +44,7 @@ void QCheckBox_Tr(char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QCheckBox_TrUtf8(char* s, char** _out, int* _out_Strlen) {
+void QCheckBox_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QCheckBox::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -53,13 +54,13 @@ void QCheckBox_TrUtf8(char* s, char** _out, int* _out_Strlen) {
 }
 
 QSize* QCheckBox_SizeHint(QCheckBox* self) {
-	QSize ret = self->sizeHint();
+	QSize ret = const_cast<const QCheckBox*>(self)->sizeHint();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
 
 QSize* QCheckBox_MinimumSizeHint(QCheckBox* self) {
-	QSize ret = self->minimumSizeHint();
+	QSize ret = const_cast<const QCheckBox*>(self)->minimumSizeHint();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
@@ -69,7 +70,16 @@ void QCheckBox_SetTristate(QCheckBox* self) {
 }
 
 bool QCheckBox_IsTristate(QCheckBox* self) {
-	return self->isTristate();
+	return const_cast<const QCheckBox*>(self)->isTristate();
+}
+
+uintptr_t QCheckBox_CheckState(QCheckBox* self) {
+	Qt::CheckState ret = const_cast<const QCheckBox*>(self)->checkState();
+	return static_cast<uintptr_t>(ret);
+}
+
+void QCheckBox_SetCheckState(QCheckBox* self, uintptr_t state) {
+	self->setCheckState(static_cast<Qt::CheckState>(state));
 }
 
 void QCheckBox_StateChanged(QCheckBox* self, int param1) {
@@ -82,7 +92,7 @@ void QCheckBox_connect_StateChanged(QCheckBox* self, void* slot) {
 	});
 }
 
-void QCheckBox_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
+void QCheckBox_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QCheckBox::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -91,7 +101,7 @@ void QCheckBox_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QCheckBox_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QCheckBox_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QCheckBox::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -100,7 +110,7 @@ void QCheckBox_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QCheckBox_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
+void QCheckBox_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QCheckBox::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -109,7 +119,7 @@ void QCheckBox_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QCheckBox_TrUtf83(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QCheckBox_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QCheckBox::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();

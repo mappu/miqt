@@ -1,12 +1,13 @@
-#include "gen_qlibraryinfo.h"
-#include "qlibraryinfo.h"
-
 #include <QDate>
 #include <QLibraryInfo>
 #include <QList>
 #include <QString>
+#include <QByteArray>
+#include <cstring>
 #include <QVersionNumber>
+#include "qlibraryinfo.h"
 
+#include "gen_qlibraryinfo.h"
 
 extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
@@ -36,8 +37,8 @@ QDate* QLibraryInfo_BuildDate() {
 	return static_cast<QDate*>(new QDate(ret));
 }
 
-char* QLibraryInfo_Build() {
-	return (char*) QLibraryInfo::build();
+const char* QLibraryInfo_Build() {
+	return (const char*) QLibraryInfo::build();
 }
 
 bool QLibraryInfo_IsDebugBuild() {
@@ -50,9 +51,18 @@ QVersionNumber* QLibraryInfo_Version() {
 	return static_cast<QVersionNumber*>(new QVersionNumber(ret));
 }
 
+void QLibraryInfo_Location(uintptr_t param1, char** _out, int* _out_Strlen) {
+	QString ret = QLibraryInfo::location(static_cast<QLibraryInfo::LibraryLocation>(param1));
+	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+	QByteArray b = ret.toUtf8();
+	*_out = static_cast<char*>(malloc(b.length()));
+	memcpy(*_out, b.data(), b.length());
+	*_out_Strlen = b.length();
+}
+
 void QLibraryInfo_PlatformPluginArguments(const char* platformName, size_t platformName_Strlen, char*** _out, int** _out_Lengths, size_t* _out_len) {
 	QString platformName_QString = QString::fromUtf8(platformName, platformName_Strlen);
-	QList<QString> ret = QLibraryInfo::platformPluginArguments(platformName_QString);
+	QStringList ret = QLibraryInfo::platformPluginArguments(platformName_QString);
 	// Convert QStringList from C++ memory to manually-managed C memory
 	char** __out = static_cast<char**>(malloc(sizeof(char*) * ret.length()));
 	int* __out_Lengths = static_cast<int*>(malloc(sizeof(int) * ret.length()));

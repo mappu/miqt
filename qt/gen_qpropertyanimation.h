@@ -28,16 +28,16 @@ QPropertyAnimation* QPropertyAnimation_new2(QObject* target, QByteArray* propert
 QPropertyAnimation* QPropertyAnimation_new3(QObject* parent);
 QPropertyAnimation* QPropertyAnimation_new4(QObject* target, QByteArray* propertyName, QObject* parent);
 QMetaObject* QPropertyAnimation_MetaObject(QPropertyAnimation* self);
-void QPropertyAnimation_Tr(char* s, char** _out, int* _out_Strlen);
-void QPropertyAnimation_TrUtf8(char* s, char** _out, int* _out_Strlen);
+void QPropertyAnimation_Tr(const char* s, char** _out, int* _out_Strlen);
+void QPropertyAnimation_TrUtf8(const char* s, char** _out, int* _out_Strlen);
 QObject* QPropertyAnimation_TargetObject(QPropertyAnimation* self);
 void QPropertyAnimation_SetTargetObject(QPropertyAnimation* self, QObject* target);
 QByteArray* QPropertyAnimation_PropertyName(QPropertyAnimation* self);
 void QPropertyAnimation_SetPropertyName(QPropertyAnimation* self, QByteArray* propertyName);
-void QPropertyAnimation_Tr2(char* s, char* c, char** _out, int* _out_Strlen);
-void QPropertyAnimation_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen);
-void QPropertyAnimation_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen);
-void QPropertyAnimation_TrUtf83(char* s, char* c, int n, char** _out, int* _out_Strlen);
+void QPropertyAnimation_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
+void QPropertyAnimation_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+void QPropertyAnimation_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
+void QPropertyAnimation_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
 void QPropertyAnimation_Delete(QPropertyAnimation* self);
 
 #ifdef __cplusplus

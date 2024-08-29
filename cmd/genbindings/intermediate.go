@@ -5,18 +5,115 @@ import (
 	"strings"
 )
 
+var (
+	KnownClassnames map[string]struct{} // Entries of the form QFoo::Bar if it is an inner class
+	KnownTypedefs   map[string]CppTypedef
+)
+
+func init() {
+	KnownClassnames = make(map[string]struct{})
+	KnownTypedefs = make(map[string]CppTypedef)
+
+	// Seed well-known typedefs
+
+	KnownTypedefs["QRgb"] = CppTypedef{"QRgb", parseSingleTypeString("unsigned int")}
+
+	KnownTypedefs["WId"] = CppTypedef{"WId", parseSingleTypeString("uintptr_t")}
+
+	// This is a uint64 PID on Linux/mac and a PROCESS_INFORMATION* on Windows
+	// A uintptr should be tolerable for both cases until we do better
+	// @ref https://doc.qt.io/qt-5/qprocess.html#Q_PID-typedef
+	KnownTypedefs["Q_PID"] = CppTypedef{"WId", parseSingleTypeString("uintptr_t")}
+
+	// QString is deleted from this binding
+	KnownTypedefs["QStringList"] = CppTypedef{"QStringList", parseSingleTypeString("QList<QString>")}
+
+}
+
 type CppParameter struct {
 	ParameterName string
 	ParameterType string
 	TypeAlias     string // If we rewrote QStringList->QList<String>, this field contains the original QStringList
 	Const         bool
 	Pointer       bool
+	PointerCount  int
 	ByRef         bool
 	Optional      bool
 }
 
+func (p *CppParameter) AssignAlias(newType string) {
+	if p.TypeAlias == "" {
+		p.TypeAlias = p.ParameterType // Overwrite once only, at the earliest base type
+	}
+	p.ParameterType = newType
+}
+
+func (p *CppParameter) CopyWithAlias(alias CppParameter) CppParameter {
+	ret := *p // copy
+	ret.ParameterName = alias.ParameterName
+	ret.TypeAlias = alias.ParameterType
+
+	// If this was a pointer to a typedef'd type, or a typedef of a pointer type, we need to preserve that
+	// WARNING: This can't work for double indirection
+	ret.Const = ret.Const || alias.Const
+	ret.Pointer = ret.Pointer || alias.Pointer
+	ret.PointerCount += alias.PointerCount
+	ret.ByRef = ret.ByRef || alias.ByRef
+	return ret
+}
+
+func (p *CppParameter) UnderlyingType() string {
+	if p.TypeAlias != "" {
+		return p.TypeAlias
+	}
+
+	return p.ParameterType
+}
+
+func (p CppParameter) IsFlagType() bool {
+	if strings.HasPrefix(p.ParameterType, `QFlags<`) {
+		return true // This catches most cases through the typedef system
+	}
+
+	switch p.ParameterType {
+	case "QTouchEvent::TouchPoint::InfoFlags",
+		"QFile::Permissions",
+		"QWizard::WizardButton",
+		"QFormLayout::ItemRole",
+		"QFormLayout::RowWrapPolicy":
+		return true
+	default:
+		return false
+	}
+}
+
 func (p CppParameter) QtClassType() bool {
-	return (p.ParameterType[0] == 'Q') && p.ParameterType != "QRgb"
+
+	// Maybe if it's an inner class
+	if _, ok := KnownClassnames[p.ParameterType]; ok {
+		return true
+	}
+
+	if p.ParameterType == "QString" {
+		return true
+	}
+
+	return false
+}
+
+func (p CppParameter) IsEnum() bool {
+	if strings.Contains(p.ParameterType, `::`) {
+		if _, ok := KnownClassnames[p.ParameterType]; ok {
+			// It's an inner class
+			return false
+		} else {
+			// Enum
+			return true
+		}
+	}
+
+	// Top-level enums aren't supported yet
+	return false
 }
 
 func (p CppParameter) QListOf() (CppParameter, bool) {
@@ -46,16 +143,20 @@ func (p CppParameter) QSetOf() bool {
 
 func (p CppParameter) IntType() bool {
 
+	if p.IsEnum() {
+		return true
+	}
+
 	switch p.ParameterType {
 	case "int", "unsigned int", "uint",
 		"short", "unsigned short", "ushort", "qint16", "quint16",
 		"qint8", "quint8",
-		"unsigned char", "uchar",
+		"unsigned char", "signed char", "uchar",
 		"long", "unsigned long", "ulong", "qint32", "quint32",
 		"longlong", "ulonglong", "qlonglong", "qulonglong", "qint64", "quint64", "int64_t", "uint64_t", "long long", "unsigned long long",
-		"QRgb", // QRgb is an unsigned int
 		"qintptr", "quintptr", "uintptr_t", "intptr_t",
 		"qsizetype", "size_t",
+		"qptrdiff", "ptrdiff_t",
 		"double", "float", "qreal":
 		return true
 
@@ -83,6 +184,7 @@ type CppMethod struct {
 	Parameters         []CppParameter
 	IsStatic           bool
 	IsSignal           bool
+	IsConst            bool
 	HasHiddenParams    bool // Set to true if there is an overload with more parameters
 }
 
@@ -94,7 +196,9 @@ func IsArgcArgv(params []CppParameter, pos int) bool {
 		params[pos].ParameterType == "int" &&
 		params[pos].ByRef &&
 		params[pos+1].ParameterName == "argv" &&
-		params[pos+1].ParameterType == "char **")
+		params[pos+1].ParameterType == "char") &&
+		params[pos+1].Pointer &&
+		params[pos+1].PointerCount == 2
 }
 
 func IsReceiverMethod(params []CppParameter, pos int) bool {
@@ -172,6 +276,16 @@ func (nm CppMethod) SafeMethodName() string {
 	return tmp
 }
 
+type CppEnumEntry struct {
+	EntryName  string
+	EntryValue string
+}
+
+type CppEnum struct {
+	EnumName string
+	Entries  []CppEnumEntry
+}
+
 type CppClass struct {
 	ClassName string
 	Abstract  bool
@@ -180,19 +294,31 @@ type CppClass struct {
 	Methods   []CppMethod
 	Props     []CppProperty
 	CanDelete bool
+
+	ChildTypedefs  []CppTypedef
+	ChildClassdefs []CppClass
+	ChildEnums     []CppEnum
 }
 
 type CppTypedef struct {
 	Alias          string
-	UnderlyingType string
+	UnderlyingType CppParameter
 }
 
 type CppParsedHeader struct {
+	Filename string
 	Typedefs []CppTypedef
+	Enums    []CppEnum
 	Classes  []CppClass
 }
 
 func (c CppParsedHeader) Empty() bool {
 	return len(c.Typedefs) == 0 &&
 		len(c.Classes) == 0
+}
+
+func (c *CppParsedHeader) AddContentFrom(other *CppParsedHeader) {
+	c.Classes = append(c.Classes, other.Classes...)
+	c.Enums = append(c.Enums, other.Enums...)
+	c.Typedefs = append(c.Typedefs, other.Typedefs...)
 }

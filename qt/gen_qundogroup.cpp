@@ -1,14 +1,15 @@
-#include "gen_qundogroup.h"
-#include "qundogroup.h"
-
 #include <QAction>
 #include <QList>
 #include <QMetaObject>
 #include <QObject>
 #include <QString>
+#include <QByteArray>
+#include <cstring>
 #include <QUndoGroup>
 #include <QUndoStack>
+#include "qundogroup.h"
 
+#include "gen_qundogroup.h"
 
 extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
@@ -23,10 +24,10 @@ QUndoGroup* QUndoGroup_new2(QObject* parent) {
 }
 
 QMetaObject* QUndoGroup_MetaObject(QUndoGroup* self) {
-	return (QMetaObject*) self->metaObject();
+	return (QMetaObject*) const_cast<const QUndoGroup*>(self)->metaObject();
 }
 
-void QUndoGroup_Tr(char* s, char** _out, int* _out_Strlen) {
+void QUndoGroup_Tr(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QUndoGroup::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -35,7 +36,7 @@ void QUndoGroup_Tr(char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QUndoGroup_TrUtf8(char* s, char** _out, int* _out_Strlen) {
+void QUndoGroup_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QUndoGroup::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -53,7 +54,7 @@ void QUndoGroup_RemoveStack(QUndoGroup* self, QUndoStack* stack) {
 }
 
 void QUndoGroup_Stacks(QUndoGroup* self, QUndoStack*** _out, size_t* _out_len) {
-	QList<QUndoStack *> ret = self->stacks();
+	QList<QUndoStack*> ret = const_cast<const QUndoGroup*>(self)->stacks();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QUndoStack** __out = static_cast<QUndoStack**>(malloc(sizeof(QUndoStack*) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {
@@ -64,27 +65,27 @@ void QUndoGroup_Stacks(QUndoGroup* self, QUndoStack*** _out, size_t* _out_len) {
 }
 
 QUndoStack* QUndoGroup_ActiveStack(QUndoGroup* self) {
-	return self->activeStack();
+	return const_cast<const QUndoGroup*>(self)->activeStack();
 }
 
 QAction* QUndoGroup_CreateUndoAction(QUndoGroup* self, QObject* parent) {
-	return self->createUndoAction(parent);
+	return const_cast<const QUndoGroup*>(self)->createUndoAction(parent);
 }
 
 QAction* QUndoGroup_CreateRedoAction(QUndoGroup* self, QObject* parent) {
-	return self->createRedoAction(parent);
+	return const_cast<const QUndoGroup*>(self)->createRedoAction(parent);
 }
 
 bool QUndoGroup_CanUndo(QUndoGroup* self) {
-	return self->canUndo();
+	return const_cast<const QUndoGroup*>(self)->canUndo();
 }
 
 bool QUndoGroup_CanRedo(QUndoGroup* self) {
-	return self->canRedo();
+	return const_cast<const QUndoGroup*>(self)->canRedo();
 }
 
 void QUndoGroup_UndoText(QUndoGroup* self, char** _out, int* _out_Strlen) {
-	QString ret = self->undoText();
+	QString ret = const_cast<const QUndoGroup*>(self)->undoText();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -93,7 +94,7 @@ void QUndoGroup_UndoText(QUndoGroup* self, char** _out, int* _out_Strlen) {
 }
 
 void QUndoGroup_RedoText(QUndoGroup* self, char** _out, int* _out_Strlen) {
-	QString ret = self->redoText();
+	QString ret = const_cast<const QUndoGroup*>(self)->redoText();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -102,7 +103,7 @@ void QUndoGroup_RedoText(QUndoGroup* self, char** _out, int* _out_Strlen) {
 }
 
 bool QUndoGroup_IsClean(QUndoGroup* self) {
-	return self->isClean();
+	return const_cast<const QUndoGroup*>(self)->isClean();
 }
 
 void QUndoGroup_Undo(QUndoGroup* self) {
@@ -189,7 +190,7 @@ void QUndoGroup_connect_RedoTextChanged(QUndoGroup* self, void* slot) {
 	});
 }
 
-void QUndoGroup_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
+void QUndoGroup_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QUndoGroup::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -198,7 +199,7 @@ void QUndoGroup_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QUndoGroup_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QUndoGroup_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QUndoGroup::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -207,7 +208,7 @@ void QUndoGroup_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QUndoGroup_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
+void QUndoGroup_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QUndoGroup::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -216,7 +217,7 @@ void QUndoGroup_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QUndoGroup_TrUtf83(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QUndoGroup_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QUndoGroup::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();

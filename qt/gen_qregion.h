@@ -24,12 +24,20 @@ typedef struct QRegion QRegion;
 #endif
 
 QRegion* QRegion_new();
-QRegion* QRegion_new2(QRegion* region);
-QRegion* QRegion_new3(QBitmap* bitmap);
+QRegion* QRegion_new2(int x, int y, int w, int h);
+QRegion* QRegion_new3(QRect* r);
+QRegion* QRegion_new4(QRegion* region);
+QRegion* QRegion_new5(QBitmap* bitmap);
+QRegion* QRegion_new6(int x, int y, int w, int h, uintptr_t t);
+QRegion* QRegion_new7(QRect* r, uintptr_t t);
 void QRegion_OperatorAssign(QRegion* self, QRegion* param1);
 void QRegion_Swap(QRegion* self, QRegion* other);
 bool QRegion_IsEmpty(QRegion* self);
 bool QRegion_IsNull(QRegion* self);
+QRect* QRegion_Begin(QRegion* self);
+QRect* QRegion_Cbegin(QRegion* self);
+QRect* QRegion_End(QRegion* self);
+QRect* QRegion_Cend(QRegion* self);
 bool QRegion_Contains(QRegion* self, QPoint* p);
 bool QRegion_ContainsWithQRect(QRegion* self, QRect* r);
 void QRegion_Translate(QRegion* self, int dx, int dy);

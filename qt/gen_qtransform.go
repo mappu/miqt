@@ -35,38 +35,44 @@ func newQTransform_U(h unsafe.Pointer) *QTransform {
 }
 
 // NewQTransform constructs a new QTransform object.
-func NewQTransform() *QTransform {
-	ret := C.QTransform_new()
+func NewQTransform(param1 uintptr) *QTransform {
+	ret := C.QTransform_new((C.uintptr_t)(param1))
 	return newQTransform(ret)
 }
 
 // NewQTransform2 constructs a new QTransform object.
-func NewQTransform2(h11 float64, h12 float64, h13 float64, h21 float64, h22 float64, h23 float64, h31 float64, h32 float64) *QTransform {
-	ret := C.QTransform_new2((C.double)(h11), (C.double)(h12), (C.double)(h13), (C.double)(h21), (C.double)(h22), (C.double)(h23), (C.double)(h31), (C.double)(h32))
+func NewQTransform2() *QTransform {
+	ret := C.QTransform_new2()
 	return newQTransform(ret)
 }
 
 // NewQTransform3 constructs a new QTransform object.
-func NewQTransform3(h11 float64, h12 float64, h21 float64, h22 float64, dx float64, dy float64) *QTransform {
-	ret := C.QTransform_new3((C.double)(h11), (C.double)(h12), (C.double)(h21), (C.double)(h22), (C.double)(dx), (C.double)(dy))
+func NewQTransform3(h11 float64, h12 float64, h13 float64, h21 float64, h22 float64, h23 float64, h31 float64, h32 float64) *QTransform {
+	ret := C.QTransform_new3((C.double)(h11), (C.double)(h12), (C.double)(h13), (C.double)(h21), (C.double)(h22), (C.double)(h23), (C.double)(h31), (C.double)(h32))
 	return newQTransform(ret)
 }
 
 // NewQTransform4 constructs a new QTransform object.
-func NewQTransform4(mtx *QMatrix) *QTransform {
-	ret := C.QTransform_new4(mtx.cPointer())
+func NewQTransform4(h11 float64, h12 float64, h21 float64, h22 float64, dx float64, dy float64) *QTransform {
+	ret := C.QTransform_new4((C.double)(h11), (C.double)(h12), (C.double)(h21), (C.double)(h22), (C.double)(dx), (C.double)(dy))
 	return newQTransform(ret)
 }
 
 // NewQTransform5 constructs a new QTransform object.
-func NewQTransform5(other *QTransform) *QTransform {
-	ret := C.QTransform_new5(other.cPointer())
+func NewQTransform5(mtx *QMatrix) *QTransform {
+	ret := C.QTransform_new5(mtx.cPointer())
 	return newQTransform(ret)
 }
 
 // NewQTransform6 constructs a new QTransform object.
-func NewQTransform6(h11 float64, h12 float64, h13 float64, h21 float64, h22 float64, h23 float64, h31 float64, h32 float64, h33 float64) *QTransform {
-	ret := C.QTransform_new6((C.double)(h11), (C.double)(h12), (C.double)(h13), (C.double)(h21), (C.double)(h22), (C.double)(h23), (C.double)(h31), (C.double)(h32), (C.double)(h33))
+func NewQTransform6(other *QTransform) *QTransform {
+	ret := C.QTransform_new6(other.cPointer())
+	return newQTransform(ret)
+}
+
+// NewQTransform7 constructs a new QTransform object.
+func NewQTransform7(h11 float64, h12 float64, h13 float64, h21 float64, h22 float64, h23 float64, h31 float64, h32 float64, h33 float64) *QTransform {
+	ret := C.QTransform_new7((C.double)(h11), (C.double)(h12), (C.double)(h13), (C.double)(h21), (C.double)(h22), (C.double)(h23), (C.double)(h31), (C.double)(h32), (C.double)(h33))
 	return newQTransform(ret)
 }
 
@@ -102,6 +108,11 @@ func (this *QTransform) IsRotating() bool {
 func (this *QTransform) IsTranslating() bool {
 	ret := C.QTransform_IsTranslating(this.h)
 	return (bool)(ret)
+}
+
+func (this *QTransform) Type() uintptr {
+	ret := C.QTransform_Type(this.h)
+	return (uintptr)(ret)
 }
 
 func (this *QTransform) Determinant() float64 {
@@ -218,6 +229,16 @@ func (this *QTransform) Scale(sx float64, sy float64) *QTransform {
 
 func (this *QTransform) Shear(sh float64, sv float64) *QTransform {
 	ret := C.QTransform_Shear(this.h, (C.double)(sh), (C.double)(sv))
+	return newQTransform_U(unsafe.Pointer(ret))
+}
+
+func (this *QTransform) Rotate(a float64) *QTransform {
+	ret := C.QTransform_Rotate(this.h, (C.double)(a))
+	return newQTransform_U(unsafe.Pointer(ret))
+}
+
+func (this *QTransform) RotateRadians(a float64) *QTransform {
+	ret := C.QTransform_RotateRadians(this.h, (C.double)(a))
 	return newQTransform_U(unsafe.Pointer(ret))
 }
 
@@ -403,6 +424,16 @@ func (this *QTransform) Inverted1(invertible *bool) *QTransform {
 		runtime.KeepAlive(ret2.h)
 	})
 	return ret1
+}
+
+func (this *QTransform) Rotate2(a float64, axis uintptr) *QTransform {
+	ret := C.QTransform_Rotate2(this.h, (C.double)(a), (C.uintptr_t)(axis))
+	return newQTransform_U(unsafe.Pointer(ret))
+}
+
+func (this *QTransform) RotateRadians2(a float64, axis uintptr) *QTransform {
+	ret := C.QTransform_RotateRadians2(this.h, (C.double)(a), (C.uintptr_t)(axis))
+	return newQTransform_U(unsafe.Pointer(ret))
 }
 
 func (this *QTransform) Delete() {

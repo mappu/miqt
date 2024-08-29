@@ -82,6 +82,11 @@ func QOffscreenSurface_TrUtf8(s string) string {
 	return ret
 }
 
+func (this *QOffscreenSurface) SurfaceType() uintptr {
+	ret := C.QOffscreenSurface_SurfaceType(this.h)
+	return (uintptr)(ret)
+}
+
 func (this *QOffscreenSurface) Create() {
 	C.QOffscreenSurface_Create(this.h)
 }

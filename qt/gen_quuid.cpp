@@ -1,10 +1,11 @@
-#include "gen_quuid.h"
-#include "quuid.h"
-
 #include <QByteArray>
 #include <QString>
+#include <QByteArray>
+#include <cstring>
 #include <QUuid>
+#include "quuid.h"
 
+#include "gen_quuid.h"
 
 extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
@@ -23,7 +24,7 @@ QUuid* QUuid_new3(const char* param1, size_t param1_Strlen) {
 	return new QUuid(param1_QString);
 }
 
-QUuid* QUuid_new4(char* param1) {
+QUuid* QUuid_new4(const char* param1) {
 	return new QUuid(param1);
 }
 
@@ -36,7 +37,16 @@ QUuid* QUuid_new6(QUuid* param1) {
 }
 
 void QUuid_ToString(QUuid* self, char** _out, int* _out_Strlen) {
-	QString ret = self->toString();
+	QString ret = const_cast<const QUuid*>(self)->toString();
+	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+	QByteArray b = ret.toUtf8();
+	*_out = static_cast<char*>(malloc(b.length()));
+	memcpy(*_out, b.data(), b.length());
+	*_out_Strlen = b.length();
+}
+
+void QUuid_ToStringWithMode(QUuid* self, uintptr_t mode, char** _out, int* _out_Strlen) {
+	QString ret = const_cast<const QUuid*>(self)->toString(static_cast<QUuid::StringFormat>(mode));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -45,13 +55,19 @@ void QUuid_ToString(QUuid* self, char** _out, int* _out_Strlen) {
 }
 
 QByteArray* QUuid_ToByteArray(QUuid* self) {
-	QByteArray ret = self->toByteArray();
+	QByteArray ret = const_cast<const QUuid*>(self)->toByteArray();
+	// Copy-construct value returned type into heap-allocated copy
+	return static_cast<QByteArray*>(new QByteArray(ret));
+}
+
+QByteArray* QUuid_ToByteArrayWithMode(QUuid* self, uintptr_t mode) {
+	QByteArray ret = const_cast<const QUuid*>(self)->toByteArray(static_cast<QUuid::StringFormat>(mode));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QByteArray*>(new QByteArray(ret));
 }
 
 QByteArray* QUuid_ToRfc4122(QUuid* self) {
-	QByteArray ret = self->toRfc4122();
+	QByteArray ret = const_cast<const QUuid*>(self)->toRfc4122();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QByteArray*>(new QByteArray(ret));
 }
@@ -63,23 +79,23 @@ QUuid* QUuid_FromRfc4122(QByteArray* param1) {
 }
 
 bool QUuid_IsNull(QUuid* self) {
-	return self->isNull();
+	return const_cast<const QUuid*>(self)->isNull();
 }
 
 bool QUuid_OperatorEqual(QUuid* self, QUuid* orig) {
-	return self->operator==(*orig);
+	return const_cast<const QUuid*>(self)->operator==(*orig);
 }
 
 bool QUuid_OperatorNotEqual(QUuid* self, QUuid* orig) {
-	return self->operator!=(*orig);
+	return const_cast<const QUuid*>(self)->operator!=(*orig);
 }
 
 bool QUuid_OperatorLesser(QUuid* self, QUuid* other) {
-	return self->operator<(*other);
+	return const_cast<const QUuid*>(self)->operator<(*other);
 }
 
 bool QUuid_OperatorGreater(QUuid* self, QUuid* other) {
-	return self->operator>(*other);
+	return const_cast<const QUuid*>(self)->operator>(*other);
 }
 
 QUuid* QUuid_CreateUuid() {
@@ -112,6 +128,16 @@ QUuid* QUuid_CreateUuidV52(QUuid* ns, const char* baseData, size_t baseData_Strl
 	QUuid ret = QUuid::createUuidV5(*ns, baseData_QString);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QUuid*>(new QUuid(ret));
+}
+
+uintptr_t QUuid_Variant(QUuid* self) {
+	QUuid::Variant ret = const_cast<const QUuid*>(self)->variant();
+	return static_cast<uintptr_t>(ret);
+}
+
+uintptr_t QUuid_Version(QUuid* self) {
+	QUuid::Version ret = const_cast<const QUuid*>(self)->version();
+	return static_cast<uintptr_t>(ret);
 }
 
 void QUuid_Delete(QUuid* self) {

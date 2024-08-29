@@ -30,13 +30,14 @@ typedef struct QVector4D QVector4D;
 #endif
 
 QVector3D* QVector3D_new();
-QVector3D* QVector3D_new2(float xpos, float ypos, float zpos);
-QVector3D* QVector3D_new3(QPoint* point);
-QVector3D* QVector3D_new4(QPointF* point);
-QVector3D* QVector3D_new5(QVector2D* vector);
-QVector3D* QVector3D_new6(QVector2D* vector, float zpos);
-QVector3D* QVector3D_new7(QVector4D* vector);
-QVector3D* QVector3D_new8(QVector3D* param1);
+QVector3D* QVector3D_new2(uintptr_t param1);
+QVector3D* QVector3D_new3(float xpos, float ypos, float zpos);
+QVector3D* QVector3D_new4(QPoint* point);
+QVector3D* QVector3D_new5(QPointF* point);
+QVector3D* QVector3D_new6(QVector2D* vector);
+QVector3D* QVector3D_new7(QVector2D* vector, float zpos);
+QVector3D* QVector3D_new8(QVector4D* vector);
+QVector3D* QVector3D_new9(QVector3D* param1);
 bool QVector3D_IsNull(QVector3D* self);
 float QVector3D_X(QVector3D* self);
 float QVector3D_Y(QVector3D* self);

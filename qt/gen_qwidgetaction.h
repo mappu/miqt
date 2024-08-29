@@ -25,16 +25,16 @@ typedef struct QWidgetAction QWidgetAction;
 
 QWidgetAction* QWidgetAction_new(QObject* parent);
 QMetaObject* QWidgetAction_MetaObject(QWidgetAction* self);
-void QWidgetAction_Tr(char* s, char** _out, int* _out_Strlen);
-void QWidgetAction_TrUtf8(char* s, char** _out, int* _out_Strlen);
+void QWidgetAction_Tr(const char* s, char** _out, int* _out_Strlen);
+void QWidgetAction_TrUtf8(const char* s, char** _out, int* _out_Strlen);
 void QWidgetAction_SetDefaultWidget(QWidgetAction* self, QWidget* w);
 QWidget* QWidgetAction_DefaultWidget(QWidgetAction* self);
 QWidget* QWidgetAction_RequestWidget(QWidgetAction* self, QWidget* parent);
 void QWidgetAction_ReleaseWidget(QWidgetAction* self, QWidget* widget);
-void QWidgetAction_Tr2(char* s, char* c, char** _out, int* _out_Strlen);
-void QWidgetAction_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen);
-void QWidgetAction_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen);
-void QWidgetAction_TrUtf83(char* s, char* c, int n, char** _out, int* _out_Strlen);
+void QWidgetAction_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
+void QWidgetAction_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+void QWidgetAction_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
+void QWidgetAction_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
 void QWidgetAction_Delete(QWidgetAction* self);
 
 #ifdef __cplusplus

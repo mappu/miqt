@@ -350,6 +350,14 @@ func (this *QItemSelectionModel) SetModel(model *QAbstractItemModel) {
 	C.QItemSelectionModel_SetModel(this.h, model.cPointer())
 }
 
+func (this *QItemSelectionModel) SetCurrentIndex(index *QModelIndex, command int) {
+	C.QItemSelectionModel_SetCurrentIndex(this.h, index.cPointer(), (C.int)(command))
+}
+
+func (this *QItemSelectionModel) Select(index *QModelIndex, command int) {
+	C.QItemSelectionModel_Select(this.h, index.cPointer(), (C.int)(command))
+}
+
 func (this *QItemSelectionModel) Clear() {
 	C.QItemSelectionModel_Clear(this.h)
 }

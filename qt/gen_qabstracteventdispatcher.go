@@ -67,6 +67,11 @@ func QAbstractEventDispatcher_Instance() *QAbstractEventDispatcher {
 	return newQAbstractEventDispatcher_U(unsafe.Pointer(ret))
 }
 
+func (this *QAbstractEventDispatcher) ProcessEvents(flags int) bool {
+	ret := C.QAbstractEventDispatcher_ProcessEvents(this.h, (C.int)(flags))
+	return (bool)(ret)
+}
+
 func (this *QAbstractEventDispatcher) HasPendingEvents() bool {
 	ret := C.QAbstractEventDispatcher_HasPendingEvents(this.h)
 	return (bool)(ret)
@@ -80,6 +85,15 @@ func (this *QAbstractEventDispatcher) UnregisterSocketNotifier(notifier *QSocket
 	C.QAbstractEventDispatcher_UnregisterSocketNotifier(this.h, notifier.cPointer())
 }
 
+func (this *QAbstractEventDispatcher) RegisterTimer(interval int, timerType uintptr, object *QObject) int {
+	ret := C.QAbstractEventDispatcher_RegisterTimer(this.h, (C.int)(interval), (C.uintptr_t)(timerType), object.cPointer())
+	return (int)(ret)
+}
+
+func (this *QAbstractEventDispatcher) RegisterTimer2(timerId int, interval int, timerType uintptr, object *QObject) {
+	C.QAbstractEventDispatcher_RegisterTimer2(this.h, (C.int)(timerId), (C.int)(interval), (C.uintptr_t)(timerType), object.cPointer())
+}
+
 func (this *QAbstractEventDispatcher) UnregisterTimer(timerId int) bool {
 	ret := C.QAbstractEventDispatcher_UnregisterTimer(this.h, (C.int)(timerId))
 	return (bool)(ret)
@@ -88,6 +102,19 @@ func (this *QAbstractEventDispatcher) UnregisterTimer(timerId int) bool {
 func (this *QAbstractEventDispatcher) UnregisterTimers(object *QObject) bool {
 	ret := C.QAbstractEventDispatcher_UnregisterTimers(this.h, object.cPointer())
 	return (bool)(ret)
+}
+
+func (this *QAbstractEventDispatcher) RegisteredTimers(object *QObject) []QAbstractEventDispatcher__TimerInfo {
+	var _out **C.QAbstractEventDispatcher__TimerInfo = nil
+	var _out_len C.size_t = 0
+	C.QAbstractEventDispatcher_RegisteredTimers(this.h, object.cPointer(), &_out, &_out_len)
+	ret := make([]QAbstractEventDispatcher__TimerInfo, int(_out_len))
+	_outCast := (*[0xffff]*C.QAbstractEventDispatcher__TimerInfo)(unsafe.Pointer(_out)) // so fresh so clean
+	for i := 0; i < int(_out_len); i++ {
+		ret[i] = *newQAbstractEventDispatcher__TimerInfo(_outCast[i])
+	}
+	C.free(unsafe.Pointer(_out))
+	return ret
 }
 
 func (this *QAbstractEventDispatcher) RemainingTime(timerId int) int {
@@ -206,4 +233,33 @@ func QAbstractEventDispatcher_Instance1(thread *QThread) *QAbstractEventDispatch
 
 func (this *QAbstractEventDispatcher) Delete() {
 	C.QAbstractEventDispatcher_Delete(this.h)
+}
+
+type QAbstractEventDispatcher__TimerInfo struct {
+	h *C.QAbstractEventDispatcher__TimerInfo
+}
+
+func (this *QAbstractEventDispatcher__TimerInfo) cPointer() *C.QAbstractEventDispatcher__TimerInfo {
+	if this == nil {
+		return nil
+	}
+	return this.h
+}
+
+func newQAbstractEventDispatcher__TimerInfo(h *C.QAbstractEventDispatcher__TimerInfo) *QAbstractEventDispatcher__TimerInfo {
+	return &QAbstractEventDispatcher__TimerInfo{h: h}
+}
+
+func newQAbstractEventDispatcher__TimerInfo_U(h unsafe.Pointer) *QAbstractEventDispatcher__TimerInfo {
+	return newQAbstractEventDispatcher__TimerInfo((*C.QAbstractEventDispatcher__TimerInfo)(h))
+}
+
+// NewQAbstractEventDispatcher__TimerInfo constructs a new QAbstractEventDispatcher::TimerInfo object.
+func NewQAbstractEventDispatcher__TimerInfo(id int, i int, t uintptr) *QAbstractEventDispatcher__TimerInfo {
+	ret := C.QAbstractEventDispatcher__TimerInfo_new((C.int)(id), (C.int)(i), (C.uintptr_t)(t))
+	return newQAbstractEventDispatcher__TimerInfo(ret)
+}
+
+func (this *QAbstractEventDispatcher__TimerInfo) Delete() {
+	C.QAbstractEventDispatcher__TimerInfo_Delete(this.h)
 }

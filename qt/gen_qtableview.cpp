@@ -1,6 +1,3 @@
-#include "gen_qtableview.h"
-#include "qtableview.h"
-
 #include <QAbstractItemModel>
 #include <QHeaderView>
 #include <QItemSelectionModel>
@@ -9,9 +6,13 @@
 #include <QPoint>
 #include <QRect>
 #include <QString>
+#include <QByteArray>
+#include <cstring>
 #include <QTableView>
 #include <QWidget>
+#include "qtableview.h"
 
+#include "gen_qtableview.h"
 
 extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
@@ -26,10 +27,10 @@ QTableView* QTableView_new2(QWidget* parent) {
 }
 
 QMetaObject* QTableView_MetaObject(QTableView* self) {
-	return (QMetaObject*) self->metaObject();
+	return (QMetaObject*) const_cast<const QTableView*>(self)->metaObject();
 }
 
-void QTableView_Tr(char* s, char** _out, int* _out_Strlen) {
+void QTableView_Tr(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QTableView::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -38,7 +39,7 @@ void QTableView_Tr(char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QTableView_TrUtf8(char* s, char** _out, int* _out_Strlen) {
+void QTableView_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QTableView::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -64,11 +65,11 @@ void QTableView_DoItemsLayout(QTableView* self) {
 }
 
 QHeaderView* QTableView_HorizontalHeader(QTableView* self) {
-	return self->horizontalHeader();
+	return const_cast<const QTableView*>(self)->horizontalHeader();
 }
 
 QHeaderView* QTableView_VerticalHeader(QTableView* self) {
-	return self->verticalHeader();
+	return const_cast<const QTableView*>(self)->verticalHeader();
 }
 
 void QTableView_SetHorizontalHeader(QTableView* self, QHeaderView* header) {
@@ -80,11 +81,11 @@ void QTableView_SetVerticalHeader(QTableView* self, QHeaderView* header) {
 }
 
 int QTableView_RowViewportPosition(QTableView* self, int row) {
-	return self->rowViewportPosition(static_cast<int>(row));
+	return const_cast<const QTableView*>(self)->rowViewportPosition(static_cast<int>(row));
 }
 
 int QTableView_RowAt(QTableView* self, int y) {
-	return self->rowAt(static_cast<int>(y));
+	return const_cast<const QTableView*>(self)->rowAt(static_cast<int>(y));
 }
 
 void QTableView_SetRowHeight(QTableView* self, int row, int height) {
@@ -92,15 +93,15 @@ void QTableView_SetRowHeight(QTableView* self, int row, int height) {
 }
 
 int QTableView_RowHeight(QTableView* self, int row) {
-	return self->rowHeight(static_cast<int>(row));
+	return const_cast<const QTableView*>(self)->rowHeight(static_cast<int>(row));
 }
 
 int QTableView_ColumnViewportPosition(QTableView* self, int column) {
-	return self->columnViewportPosition(static_cast<int>(column));
+	return const_cast<const QTableView*>(self)->columnViewportPosition(static_cast<int>(column));
 }
 
 int QTableView_ColumnAt(QTableView* self, int x) {
-	return self->columnAt(static_cast<int>(x));
+	return const_cast<const QTableView*>(self)->columnAt(static_cast<int>(x));
 }
 
 void QTableView_SetColumnWidth(QTableView* self, int column, int width) {
@@ -108,11 +109,11 @@ void QTableView_SetColumnWidth(QTableView* self, int column, int width) {
 }
 
 int QTableView_ColumnWidth(QTableView* self, int column) {
-	return self->columnWidth(static_cast<int>(column));
+	return const_cast<const QTableView*>(self)->columnWidth(static_cast<int>(column));
 }
 
 bool QTableView_IsRowHidden(QTableView* self, int row) {
-	return self->isRowHidden(static_cast<int>(row));
+	return const_cast<const QTableView*>(self)->isRowHidden(static_cast<int>(row));
 }
 
 void QTableView_SetRowHidden(QTableView* self, int row, bool hide) {
@@ -120,7 +121,7 @@ void QTableView_SetRowHidden(QTableView* self, int row, bool hide) {
 }
 
 bool QTableView_IsColumnHidden(QTableView* self, int column) {
-	return self->isColumnHidden(static_cast<int>(column));
+	return const_cast<const QTableView*>(self)->isColumnHidden(static_cast<int>(column));
 }
 
 void QTableView_SetColumnHidden(QTableView* self, int column, bool hide) {
@@ -132,11 +133,20 @@ void QTableView_SetSortingEnabled(QTableView* self, bool enable) {
 }
 
 bool QTableView_IsSortingEnabled(QTableView* self) {
-	return self->isSortingEnabled();
+	return const_cast<const QTableView*>(self)->isSortingEnabled();
 }
 
 bool QTableView_ShowGrid(QTableView* self) {
-	return self->showGrid();
+	return const_cast<const QTableView*>(self)->showGrid();
+}
+
+uintptr_t QTableView_GridStyle(QTableView* self) {
+	Qt::PenStyle ret = const_cast<const QTableView*>(self)->gridStyle();
+	return static_cast<uintptr_t>(ret);
+}
+
+void QTableView_SetGridStyle(QTableView* self, uintptr_t style) {
+	self->setGridStyle(static_cast<Qt::PenStyle>(style));
 }
 
 void QTableView_SetWordWrap(QTableView* self, bool on) {
@@ -144,7 +154,7 @@ void QTableView_SetWordWrap(QTableView* self, bool on) {
 }
 
 bool QTableView_WordWrap(QTableView* self) {
-	return self->wordWrap();
+	return const_cast<const QTableView*>(self)->wordWrap();
 }
 
 void QTableView_SetCornerButtonEnabled(QTableView* self, bool enable) {
@@ -152,17 +162,21 @@ void QTableView_SetCornerButtonEnabled(QTableView* self, bool enable) {
 }
 
 bool QTableView_IsCornerButtonEnabled(QTableView* self) {
-	return self->isCornerButtonEnabled();
+	return const_cast<const QTableView*>(self)->isCornerButtonEnabled();
 }
 
 QRect* QTableView_VisualRect(QTableView* self, QModelIndex* index) {
-	QRect ret = self->visualRect(*index);
+	QRect ret = const_cast<const QTableView*>(self)->visualRect(*index);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRect*>(new QRect(ret));
 }
 
+void QTableView_ScrollTo(QTableView* self, QModelIndex* index) {
+	self->scrollTo(*index);
+}
+
 QModelIndex* QTableView_IndexAt(QTableView* self, QPoint* p) {
-	QModelIndex ret = self->indexAt(*p);
+	QModelIndex ret = const_cast<const QTableView*>(self)->indexAt(*p);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QModelIndex*>(new QModelIndex(ret));
 }
@@ -172,11 +186,11 @@ void QTableView_SetSpan(QTableView* self, int row, int column, int rowSpan, int 
 }
 
 int QTableView_RowSpan(QTableView* self, int row, int column) {
-	return self->rowSpan(static_cast<int>(row), static_cast<int>(column));
+	return const_cast<const QTableView*>(self)->rowSpan(static_cast<int>(row), static_cast<int>(column));
 }
 
 int QTableView_ColumnSpan(QTableView* self, int row, int column) {
-	return self->columnSpan(static_cast<int>(row), static_cast<int>(column));
+	return const_cast<const QTableView*>(self)->columnSpan(static_cast<int>(row), static_cast<int>(column));
 }
 
 void QTableView_ClearSpans(QTableView* self) {
@@ -227,11 +241,15 @@ void QTableView_SortByColumn(QTableView* self, int column) {
 	self->sortByColumn(static_cast<int>(column));
 }
 
+void QTableView_SortByColumn2(QTableView* self, int column, uintptr_t order) {
+	self->sortByColumn(static_cast<int>(column), static_cast<Qt::SortOrder>(order));
+}
+
 void QTableView_SetShowGrid(QTableView* self, bool show) {
 	self->setShowGrid(show);
 }
 
-void QTableView_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
+void QTableView_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QTableView::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -240,7 +258,7 @@ void QTableView_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QTableView_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QTableView_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QTableView::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -249,7 +267,7 @@ void QTableView_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QTableView_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
+void QTableView_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QTableView::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -258,13 +276,17 @@ void QTableView_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QTableView_TrUtf83(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QTableView_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QTableView::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
 	memcpy(*_out, b.data(), b.length());
 	*_out_Strlen = b.length();
+}
+
+void QTableView_ScrollTo2(QTableView* self, QModelIndex* index, uintptr_t hint) {
+	self->scrollTo(*index, static_cast<QAbstractItemView::ScrollHint>(hint));
 }
 
 void QTableView_Delete(QTableView* self) {

@@ -113,13 +113,42 @@ func (this *QColorDialog) SelectedColor() *QColor {
 	return ret1
 }
 
+func (this *QColorDialog) SetOption(option uintptr) {
+	C.QColorDialog_SetOption(this.h, (C.uintptr_t)(option))
+}
+
+func (this *QColorDialog) TestOption(option uintptr) bool {
+	ret := C.QColorDialog_TestOption(this.h, (C.uintptr_t)(option))
+	return (bool)(ret)
+}
+
+func (this *QColorDialog) SetOptions(options int) {
+	C.QColorDialog_SetOptions(this.h, (C.int)(options))
+}
+
+func (this *QColorDialog) Options() int {
+	ret := C.QColorDialog_Options(this.h)
+	return (int)(ret)
+}
+
 func (this *QColorDialog) SetVisible(visible bool) {
 	C.QColorDialog_SetVisible(this.h, (C.bool)(visible))
 }
 
-func QColorDialog_GetRgba() uint32 {
+func QColorDialog_GetColor() *QColor {
+	ret := C.QColorDialog_GetColor()
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQColor(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QColor) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func QColorDialog_GetRgba() uint {
 	ret := C.QColorDialog_GetRgba()
-	return (uint32)(ret)
+	return (uint)(ret)
 }
 
 func QColorDialog_CustomCount() int {
@@ -233,19 +262,71 @@ func QColorDialog_TrUtf83(s string, c string, n int) string {
 	return ret
 }
 
-func QColorDialog_GetRgba1(rgba uint32) uint32 {
+func (this *QColorDialog) SetOption2(option uintptr, on bool) {
+	C.QColorDialog_SetOption2(this.h, (C.uintptr_t)(option), (C.bool)(on))
+}
+
+func QColorDialog_GetColor1(initial *QColor) *QColor {
+	ret := C.QColorDialog_GetColor1(initial.cPointer())
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQColor(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QColor) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func QColorDialog_GetColor2(initial *QColor, parent *QWidget) *QColor {
+	ret := C.QColorDialog_GetColor2(initial.cPointer(), parent.cPointer())
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQColor(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QColor) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func QColorDialog_GetColor3(initial *QColor, parent *QWidget, title string) *QColor {
+	title_Cstring := C.CString(title)
+	defer C.free(unsafe.Pointer(title_Cstring))
+	ret := C.QColorDialog_GetColor3(initial.cPointer(), parent.cPointer(), title_Cstring, C.ulong(len(title)))
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQColor(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QColor) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func QColorDialog_GetColor4(initial *QColor, parent *QWidget, title string, options int) *QColor {
+	title_Cstring := C.CString(title)
+	defer C.free(unsafe.Pointer(title_Cstring))
+	ret := C.QColorDialog_GetColor4(initial.cPointer(), parent.cPointer(), title_Cstring, C.ulong(len(title)), (C.int)(options))
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQColor(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QColor) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func QColorDialog_GetRgba1(rgba uint) uint {
 	ret := C.QColorDialog_GetRgba1((C.uint)(rgba))
-	return (uint32)(ret)
+	return (uint)(ret)
 }
 
-func QColorDialog_GetRgba2(rgba uint32, ok *bool) uint32 {
+func QColorDialog_GetRgba2(rgba uint, ok *bool) uint {
 	ret := C.QColorDialog_GetRgba2((C.uint)(rgba), (*C.bool)(unsafe.Pointer(ok)))
-	return (uint32)(ret)
+	return (uint)(ret)
 }
 
-func QColorDialog_GetRgba3(rgba uint32, ok *bool, parent *QWidget) uint32 {
+func QColorDialog_GetRgba3(rgba uint, ok *bool, parent *QWidget) uint {
 	ret := C.QColorDialog_GetRgba3((C.uint)(rgba), (*C.bool)(unsafe.Pointer(ok)), parent.cPointer())
-	return (uint32)(ret)
+	return (uint)(ret)
 }
 
 func (this *QColorDialog) Delete() {

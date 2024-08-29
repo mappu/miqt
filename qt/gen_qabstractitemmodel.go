@@ -128,6 +128,11 @@ func (this *QModelIndex) Data() *QVariant {
 	return ret1
 }
 
+func (this *QModelIndex) Flags() int {
+	ret := C.QModelIndex_Flags(this.h)
+	return (int)(ret)
+}
+
 func (this *QModelIndex) Model() *QAbstractItemModel {
 	ret := C.QModelIndex_Model(this.h)
 	return newQAbstractItemModel_U(unsafe.Pointer(ret))
@@ -301,6 +306,11 @@ func (this *QPersistentModelIndex) Data() *QVariant {
 	return ret1
 }
 
+func (this *QPersistentModelIndex) Flags() int {
+	ret := C.QPersistentModelIndex_Flags(this.h)
+	return (int)(ret)
+}
+
 func (this *QPersistentModelIndex) Model() *QAbstractItemModel {
 	ret := C.QPersistentModelIndex_Model(this.h)
 	return newQAbstractItemModel_U(unsafe.Pointer(ret))
@@ -442,6 +452,22 @@ func (this *QAbstractItemModel) SetData(index *QModelIndex, value *QVariant) boo
 	return (bool)(ret)
 }
 
+func (this *QAbstractItemModel) HeaderData(section int, orientation uintptr) *QVariant {
+	ret := C.QAbstractItemModel_HeaderData(this.h, (C.int)(section), (C.uintptr_t)(orientation))
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQVariant(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QVariant) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QAbstractItemModel) SetHeaderData(section int, orientation uintptr, value *QVariant) bool {
+	ret := C.QAbstractItemModel_SetHeaderData(this.h, (C.int)(section), (C.uintptr_t)(orientation), value.cPointer())
+	return (bool)(ret)
+}
+
 func (this *QAbstractItemModel) MimeTypes() []string {
 	var _out **C.char = nil
 	var _out_Lengths *C.int = nil
@@ -466,6 +492,26 @@ func (this *QAbstractItemModel) MimeData(indexes []QModelIndex) *QMimeData {
 	}
 	ret := C.QAbstractItemModel_MimeData(this.h, &indexes_CArray[0], C.ulong(len(indexes)))
 	return newQMimeData_U(unsafe.Pointer(ret))
+}
+
+func (this *QAbstractItemModel) CanDropMimeData(data *QMimeData, action uintptr, row int, column int, parent *QModelIndex) bool {
+	ret := C.QAbstractItemModel_CanDropMimeData(this.h, data.cPointer(), (C.uintptr_t)(action), (C.int)(row), (C.int)(column), parent.cPointer())
+	return (bool)(ret)
+}
+
+func (this *QAbstractItemModel) DropMimeData(data *QMimeData, action uintptr, row int, column int, parent *QModelIndex) bool {
+	ret := C.QAbstractItemModel_DropMimeData(this.h, data.cPointer(), (C.uintptr_t)(action), (C.int)(row), (C.int)(column), parent.cPointer())
+	return (bool)(ret)
+}
+
+func (this *QAbstractItemModel) SupportedDropActions() int {
+	ret := C.QAbstractItemModel_SupportedDropActions(this.h)
+	return (int)(ret)
+}
+
+func (this *QAbstractItemModel) SupportedDragActions() int {
+	ret := C.QAbstractItemModel_SupportedDragActions(this.h)
+	return (int)(ret)
 }
 
 func (this *QAbstractItemModel) InsertRows(row int, count int) bool {
@@ -537,6 +583,15 @@ func (this *QAbstractItemModel) CanFetchMore(parent *QModelIndex) bool {
 	return (bool)(ret)
 }
 
+func (this *QAbstractItemModel) Flags(index *QModelIndex) int {
+	ret := C.QAbstractItemModel_Flags(this.h, index.cPointer())
+	return (int)(ret)
+}
+
+func (this *QAbstractItemModel) Sort(column int) {
+	C.QAbstractItemModel_Sort(this.h, (C.int)(column))
+}
+
 func (this *QAbstractItemModel) Buddy(index *QModelIndex) *QModelIndex {
 	ret := C.QAbstractItemModel_Buddy(this.h, index.cPointer())
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -546,6 +601,19 @@ func (this *QAbstractItemModel) Buddy(index *QModelIndex) *QModelIndex {
 		runtime.KeepAlive(ret2.h)
 	})
 	return ret1
+}
+
+func (this *QAbstractItemModel) Match(start *QModelIndex, role int, value *QVariant) []QModelIndex {
+	var _out **C.QModelIndex = nil
+	var _out_len C.size_t = 0
+	C.QAbstractItemModel_Match(this.h, start.cPointer(), (C.int)(role), value.cPointer(), &_out, &_out_len)
+	ret := make([]QModelIndex, int(_out_len))
+	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_out)) // so fresh so clean
+	for i := 0; i < int(_out_len); i++ {
+		ret[i] = *newQModelIndex(_outCast[i])
+	}
+	C.free(unsafe.Pointer(_out))
+	return ret
 }
 
 func (this *QAbstractItemModel) Span(index *QModelIndex) *QSize {
@@ -559,8 +627,33 @@ func (this *QAbstractItemModel) Span(index *QModelIndex) *QSize {
 	return ret1
 }
 
+func (this *QAbstractItemModel) CheckIndex(index *QModelIndex) bool {
+	ret := C.QAbstractItemModel_CheckIndex(this.h, index.cPointer())
+	return (bool)(ret)
+}
+
 func (this *QAbstractItemModel) DataChanged(topLeft *QModelIndex, bottomRight *QModelIndex) {
 	C.QAbstractItemModel_DataChanged(this.h, topLeft.cPointer(), bottomRight.cPointer())
+}
+
+func (this *QAbstractItemModel) HeaderDataChanged(orientation uintptr, first int, last int) {
+	C.QAbstractItemModel_HeaderDataChanged(this.h, (C.uintptr_t)(orientation), (C.int)(first), (C.int)(last))
+}
+
+func (this *QAbstractItemModel) OnHeaderDataChanged(slot func()) {
+	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
+		slot()
+	}
+
+	C.QAbstractItemModel_connect_HeaderDataChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+}
+
+func (this *QAbstractItemModel) LayoutChanged() {
+	C.QAbstractItemModel_LayoutChanged(this.h)
+}
+
+func (this *QAbstractItemModel) LayoutAboutToBeChanged() {
+	C.QAbstractItemModel_LayoutAboutToBeChanged(this.h)
 }
 
 func (this *QAbstractItemModel) Submit() bool {
@@ -671,6 +764,22 @@ func (this *QAbstractItemModel) SetData3(index *QModelIndex, value *QVariant, ro
 	return (bool)(ret)
 }
 
+func (this *QAbstractItemModel) HeaderData3(section int, orientation uintptr, role int) *QVariant {
+	ret := C.QAbstractItemModel_HeaderData3(this.h, (C.int)(section), (C.uintptr_t)(orientation), (C.int)(role))
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQVariant(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QVariant) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QAbstractItemModel) SetHeaderData4(section int, orientation uintptr, value *QVariant, role int) bool {
+	ret := C.QAbstractItemModel_SetHeaderData4(this.h, (C.int)(section), (C.uintptr_t)(orientation), value.cPointer(), (C.int)(role))
+	return (bool)(ret)
+}
+
 func (this *QAbstractItemModel) InsertRows3(row int, count int, parent *QModelIndex) bool {
 	ret := C.QAbstractItemModel_InsertRows3(this.h, (C.int)(row), (C.int)(count), parent.cPointer())
 	return (bool)(ret)
@@ -711,6 +820,41 @@ func (this *QAbstractItemModel) RemoveColumn2(column int, parent *QModelIndex) b
 	return (bool)(ret)
 }
 
+func (this *QAbstractItemModel) Sort2(column int, order uintptr) {
+	C.QAbstractItemModel_Sort2(this.h, (C.int)(column), (C.uintptr_t)(order))
+}
+
+func (this *QAbstractItemModel) Match4(start *QModelIndex, role int, value *QVariant, hits int) []QModelIndex {
+	var _out **C.QModelIndex = nil
+	var _out_len C.size_t = 0
+	C.QAbstractItemModel_Match4(this.h, start.cPointer(), (C.int)(role), value.cPointer(), (C.int)(hits), &_out, &_out_len)
+	ret := make([]QModelIndex, int(_out_len))
+	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_out)) // so fresh so clean
+	for i := 0; i < int(_out_len); i++ {
+		ret[i] = *newQModelIndex(_outCast[i])
+	}
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func (this *QAbstractItemModel) Match5(start *QModelIndex, role int, value *QVariant, hits int, flags int) []QModelIndex {
+	var _out **C.QModelIndex = nil
+	var _out_len C.size_t = 0
+	C.QAbstractItemModel_Match5(this.h, start.cPointer(), (C.int)(role), value.cPointer(), (C.int)(hits), (C.int)(flags), &_out, &_out_len)
+	ret := make([]QModelIndex, int(_out_len))
+	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_out)) // so fresh so clean
+	for i := 0; i < int(_out_len); i++ {
+		ret[i] = *newQModelIndex(_outCast[i])
+	}
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func (this *QAbstractItemModel) CheckIndex2(index *QModelIndex, options int) bool {
+	ret := C.QAbstractItemModel_CheckIndex2(this.h, index.cPointer(), (C.int)(options))
+	return (bool)(ret)
+}
+
 func (this *QAbstractItemModel) DataChanged3(topLeft *QModelIndex, bottomRight *QModelIndex, roles []int) {
 	// For the C ABI, malloc a C array of raw pointers
 	roles_CArray := (*[0xffff]C.int)(C.malloc(C.ulong(8 * len(roles))))
@@ -727,6 +871,62 @@ func (this *QAbstractItemModel) OnDataChanged3(slot func()) {
 	}
 
 	C.QAbstractItemModel_connect_DataChanged3(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+}
+
+func (this *QAbstractItemModel) LayoutChanged1(parents []QPersistentModelIndex) {
+	// For the C ABI, malloc a C array of raw pointers
+	parents_CArray := (*[0xffff]*C.QPersistentModelIndex)(C.malloc(C.ulong(8 * len(parents))))
+	defer C.free(unsafe.Pointer(parents_CArray))
+	for i := range parents {
+		parents_CArray[i] = parents[i].cPointer()
+	}
+	C.QAbstractItemModel_LayoutChanged1(this.h, &parents_CArray[0], C.ulong(len(parents)))
+}
+
+func (this *QAbstractItemModel) LayoutChanged2(parents []QPersistentModelIndex, hint uintptr) {
+	// For the C ABI, malloc a C array of raw pointers
+	parents_CArray := (*[0xffff]*C.QPersistentModelIndex)(C.malloc(C.ulong(8 * len(parents))))
+	defer C.free(unsafe.Pointer(parents_CArray))
+	for i := range parents {
+		parents_CArray[i] = parents[i].cPointer()
+	}
+	C.QAbstractItemModel_LayoutChanged2(this.h, &parents_CArray[0], C.ulong(len(parents)), (C.uintptr_t)(hint))
+}
+
+func (this *QAbstractItemModel) OnLayoutChanged2(slot func()) {
+	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
+		slot()
+	}
+
+	C.QAbstractItemModel_connect_LayoutChanged2(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+}
+
+func (this *QAbstractItemModel) LayoutAboutToBeChanged1(parents []QPersistentModelIndex) {
+	// For the C ABI, malloc a C array of raw pointers
+	parents_CArray := (*[0xffff]*C.QPersistentModelIndex)(C.malloc(C.ulong(8 * len(parents))))
+	defer C.free(unsafe.Pointer(parents_CArray))
+	for i := range parents {
+		parents_CArray[i] = parents[i].cPointer()
+	}
+	C.QAbstractItemModel_LayoutAboutToBeChanged1(this.h, &parents_CArray[0], C.ulong(len(parents)))
+}
+
+func (this *QAbstractItemModel) LayoutAboutToBeChanged2(parents []QPersistentModelIndex, hint uintptr) {
+	// For the C ABI, malloc a C array of raw pointers
+	parents_CArray := (*[0xffff]*C.QPersistentModelIndex)(C.malloc(C.ulong(8 * len(parents))))
+	defer C.free(unsafe.Pointer(parents_CArray))
+	for i := range parents {
+		parents_CArray[i] = parents[i].cPointer()
+	}
+	C.QAbstractItemModel_LayoutAboutToBeChanged2(this.h, &parents_CArray[0], C.ulong(len(parents)), (C.uintptr_t)(hint))
+}
+
+func (this *QAbstractItemModel) OnLayoutAboutToBeChanged2(slot func()) {
+	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
+		slot()
+	}
+
+	C.QAbstractItemModel_connect_LayoutAboutToBeChanged2(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
 }
 
 func (this *QAbstractItemModel) Delete() {
@@ -800,6 +1000,16 @@ func (this *QAbstractTableModel) Sibling(row int, column int, idx *QModelIndex) 
 		runtime.KeepAlive(ret2.h)
 	})
 	return ret1
+}
+
+func (this *QAbstractTableModel) DropMimeData(data *QMimeData, action uintptr, row int, column int, parent *QModelIndex) bool {
+	ret := C.QAbstractTableModel_DropMimeData(this.h, data.cPointer(), (C.uintptr_t)(action), (C.int)(row), (C.int)(column), parent.cPointer())
+	return (bool)(ret)
+}
+
+func (this *QAbstractTableModel) Flags(index *QModelIndex) int {
+	ret := C.QAbstractTableModel_Flags(this.h, index.cPointer())
+	return (int)(ret)
 }
 
 func QAbstractTableModel_Tr2(s string, c string) string {
@@ -936,6 +1146,16 @@ func (this *QAbstractListModel) Sibling(row int, column int, idx *QModelIndex) *
 		runtime.KeepAlive(ret2.h)
 	})
 	return ret1
+}
+
+func (this *QAbstractListModel) DropMimeData(data *QMimeData, action uintptr, row int, column int, parent *QModelIndex) bool {
+	ret := C.QAbstractListModel_DropMimeData(this.h, data.cPointer(), (C.uintptr_t)(action), (C.int)(row), (C.int)(column), parent.cPointer())
+	return (bool)(ret)
+}
+
+func (this *QAbstractListModel) Flags(index *QModelIndex) int {
+	ret := C.QAbstractListModel_Flags(this.h, index.cPointer())
+	return (int)(ret)
 }
 
 func QAbstractListModel_Tr2(s string, c string) string {

@@ -1,8 +1,7 @@
-#include "gen_qthreadstorage.h"
+#include <QThreadStorageData>
 #include "qthreadstorage.h"
 
-#include <QThreadStorageData>
-
+#include "gen_qthreadstorage.h"
 
 extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);

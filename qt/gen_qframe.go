@@ -35,6 +35,24 @@ func newQFrame_U(h unsafe.Pointer) *QFrame {
 	return newQFrame((*C.QFrame)(h))
 }
 
+// NewQFrame constructs a new QFrame object.
+func NewQFrame() *QFrame {
+	ret := C.QFrame_new()
+	return newQFrame(ret)
+}
+
+// NewQFrame2 constructs a new QFrame object.
+func NewQFrame2(parent *QWidget) *QFrame {
+	ret := C.QFrame_new2(parent.cPointer())
+	return newQFrame(ret)
+}
+
+// NewQFrame3 constructs a new QFrame object.
+func NewQFrame3(parent *QWidget, f int) *QFrame {
+	ret := C.QFrame_new3(parent.cPointer(), (C.int)(f))
+	return newQFrame(ret)
+}
+
 func (this *QFrame) MetaObject() *QMetaObject {
 	ret := C.QFrame_MetaObject(this.h)
 	return newQMetaObject_U(unsafe.Pointer(ret))
@@ -85,6 +103,24 @@ func (this *QFrame) SizeHint() *QSize {
 		runtime.KeepAlive(ret2.h)
 	})
 	return ret1
+}
+
+func (this *QFrame) FrameShape() uintptr {
+	ret := C.QFrame_FrameShape(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QFrame) SetFrameShape(frameShape uintptr) {
+	C.QFrame_SetFrameShape(this.h, (C.uintptr_t)(frameShape))
+}
+
+func (this *QFrame) FrameShadow() uintptr {
+	ret := C.QFrame_FrameShadow(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QFrame) SetFrameShadow(frameShadow uintptr) {
+	C.QFrame_SetFrameShadow(this.h, (C.uintptr_t)(frameShadow))
 }
 
 func (this *QFrame) LineWidth() int {

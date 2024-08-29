@@ -100,6 +100,29 @@ func (this *QToolBar) IsMovable() bool {
 	return (bool)(ret)
 }
 
+func (this *QToolBar) SetAllowedAreas(areas int) {
+	C.QToolBar_SetAllowedAreas(this.h, (C.int)(areas))
+}
+
+func (this *QToolBar) AllowedAreas() int {
+	ret := C.QToolBar_AllowedAreas(this.h)
+	return (int)(ret)
+}
+
+func (this *QToolBar) IsAreaAllowed(area uintptr) bool {
+	ret := C.QToolBar_IsAreaAllowed(this.h, (C.uintptr_t)(area))
+	return (bool)(ret)
+}
+
+func (this *QToolBar) SetOrientation(orientation uintptr) {
+	C.QToolBar_SetOrientation(this.h, (C.uintptr_t)(orientation))
+}
+
+func (this *QToolBar) Orientation() uintptr {
+	ret := C.QToolBar_Orientation(this.h)
+	return (uintptr)(ret)
+}
+
 func (this *QToolBar) Clear() {
 	C.QToolBar_Clear(this.h)
 }
@@ -175,6 +198,11 @@ func (this *QToolBar) IconSize() *QSize {
 	return ret1
 }
 
+func (this *QToolBar) ToolButtonStyle() uintptr {
+	ret := C.QToolBar_ToolButtonStyle(this.h)
+	return (uintptr)(ret)
+}
+
 func (this *QToolBar) WidgetForAction(action *QAction) *QWidget {
 	ret := C.QToolBar_WidgetForAction(this.h, action.cPointer())
 	return newQWidget_U(unsafe.Pointer(ret))
@@ -196,6 +224,10 @@ func (this *QToolBar) IsFloating() bool {
 
 func (this *QToolBar) SetIconSize(iconSize *QSize) {
 	C.QToolBar_SetIconSize(this.h, iconSize.cPointer())
+}
+
+func (this *QToolBar) SetToolButtonStyle(toolButtonStyle uintptr) {
+	C.QToolBar_SetToolButtonStyle(this.h, (C.uintptr_t)(toolButtonStyle))
 }
 
 func (this *QToolBar) ActionTriggered(action *QAction) {
@@ -222,6 +254,30 @@ func (this *QToolBar) OnMovableChanged(slot func()) {
 	C.QToolBar_connect_MovableChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
 }
 
+func (this *QToolBar) AllowedAreasChanged(allowedAreas int) {
+	C.QToolBar_AllowedAreasChanged(this.h, (C.int)(allowedAreas))
+}
+
+func (this *QToolBar) OnAllowedAreasChanged(slot func()) {
+	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
+		slot()
+	}
+
+	C.QToolBar_connect_AllowedAreasChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+}
+
+func (this *QToolBar) OrientationChanged(orientation uintptr) {
+	C.QToolBar_OrientationChanged(this.h, (C.uintptr_t)(orientation))
+}
+
+func (this *QToolBar) OnOrientationChanged(slot func()) {
+	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
+		slot()
+	}
+
+	C.QToolBar_connect_OrientationChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+}
+
 func (this *QToolBar) IconSizeChanged(iconSize *QSize) {
 	C.QToolBar_IconSizeChanged(this.h, iconSize.cPointer())
 }
@@ -232,6 +288,18 @@ func (this *QToolBar) OnIconSizeChanged(slot func()) {
 	}
 
 	C.QToolBar_connect_IconSizeChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+}
+
+func (this *QToolBar) ToolButtonStyleChanged(toolButtonStyle uintptr) {
+	C.QToolBar_ToolButtonStyleChanged(this.h, (C.uintptr_t)(toolButtonStyle))
+}
+
+func (this *QToolBar) OnToolButtonStyleChanged(slot func()) {
+	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
+		slot()
+	}
+
+	C.QToolBar_connect_ToolButtonStyleChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
 }
 
 func (this *QToolBar) TopLevelChanged(topLevel bool) {

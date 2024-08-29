@@ -1,12 +1,13 @@
-#include "gen_qsizegrip.h"
-#include "qsizegrip.h"
-
 #include <QMetaObject>
 #include <QSize>
 #include <QSizeGrip>
 #include <QString>
+#include <QByteArray>
+#include <cstring>
 #include <QWidget>
+#include "qsizegrip.h"
 
+#include "gen_qsizegrip.h"
 
 extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
@@ -17,10 +18,10 @@ QSizeGrip* QSizeGrip_new(QWidget* parent) {
 }
 
 QMetaObject* QSizeGrip_MetaObject(QSizeGrip* self) {
-	return (QMetaObject*) self->metaObject();
+	return (QMetaObject*) const_cast<const QSizeGrip*>(self)->metaObject();
 }
 
-void QSizeGrip_Tr(char* s, char** _out, int* _out_Strlen) {
+void QSizeGrip_Tr(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QSizeGrip::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -29,7 +30,7 @@ void QSizeGrip_Tr(char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QSizeGrip_TrUtf8(char* s, char** _out, int* _out_Strlen) {
+void QSizeGrip_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QSizeGrip::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -39,7 +40,7 @@ void QSizeGrip_TrUtf8(char* s, char** _out, int* _out_Strlen) {
 }
 
 QSize* QSizeGrip_SizeHint(QSizeGrip* self) {
-	QSize ret = self->sizeHint();
+	QSize ret = const_cast<const QSizeGrip*>(self)->sizeHint();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
@@ -48,7 +49,7 @@ void QSizeGrip_SetVisible(QSizeGrip* self, bool visible) {
 	self->setVisible(visible);
 }
 
-void QSizeGrip_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
+void QSizeGrip_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QSizeGrip::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -57,7 +58,7 @@ void QSizeGrip_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QSizeGrip_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QSizeGrip_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QSizeGrip::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -66,7 +67,7 @@ void QSizeGrip_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QSizeGrip_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
+void QSizeGrip_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QSizeGrip::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -75,7 +76,7 @@ void QSizeGrip_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QSizeGrip_TrUtf83(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QSizeGrip_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QSizeGrip::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();

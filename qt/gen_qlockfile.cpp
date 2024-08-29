@@ -1,9 +1,10 @@
-#include "gen_qlockfile.h"
-#include "qlockfile.h"
-
 #include <QLockFile>
 #include <QString>
+#include <QByteArray>
+#include <cstring>
+#include "qlockfile.h"
 
+#include "gen_qlockfile.h"
 
 extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
@@ -31,15 +32,20 @@ void QLockFile_SetStaleLockTime(QLockFile* self, int staleLockTime) {
 }
 
 int QLockFile_StaleLockTime(QLockFile* self) {
-	return self->staleLockTime();
+	return const_cast<const QLockFile*>(self)->staleLockTime();
 }
 
 bool QLockFile_IsLocked(QLockFile* self) {
-	return self->isLocked();
+	return const_cast<const QLockFile*>(self)->isLocked();
 }
 
 bool QLockFile_RemoveStaleLockFile(QLockFile* self) {
 	return self->removeStaleLockFile();
+}
+
+uintptr_t QLockFile_Error(QLockFile* self) {
+	QLockFile::LockError ret = const_cast<const QLockFile*>(self)->error();
+	return static_cast<uintptr_t>(ret);
 }
 
 bool QLockFile_TryLock1(QLockFile* self, int timeout) {

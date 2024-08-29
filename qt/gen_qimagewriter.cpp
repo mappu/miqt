@@ -1,13 +1,14 @@
-#include "gen_qimagewriter.h"
-#include "qimagewriter.h"
-
 #include <QByteArray>
 #include <QIODevice>
 #include <QImage>
 #include <QImageWriter>
 #include <QList>
 #include <QString>
+#include <QByteArray>
+#include <cstring>
+#include "qimagewriter.h"
 
+#include "gen_qimagewriter.h"
 
 extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
@@ -31,7 +32,7 @@ QImageWriter* QImageWriter_new4(const char* fileName, size_t fileName_Strlen, QB
 	return new QImageWriter(fileName_QString, *format);
 }
 
-void QImageWriter_Tr(char* sourceText, char** _out, int* _out_Strlen) {
+void QImageWriter_Tr(const char* sourceText, char** _out, int* _out_Strlen) {
 	QString ret = QImageWriter::tr(sourceText);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -40,7 +41,7 @@ void QImageWriter_Tr(char* sourceText, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QImageWriter_TrUtf8(char* sourceText, char** _out, int* _out_Strlen) {
+void QImageWriter_TrUtf8(const char* sourceText, char** _out, int* _out_Strlen) {
 	QString ret = QImageWriter::trUtf8(sourceText);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -54,7 +55,7 @@ void QImageWriter_SetFormat(QImageWriter* self, QByteArray* format) {
 }
 
 QByteArray* QImageWriter_Format(QImageWriter* self) {
-	QByteArray ret = self->format();
+	QByteArray ret = const_cast<const QImageWriter*>(self)->format();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QByteArray*>(new QByteArray(ret));
 }
@@ -64,7 +65,7 @@ void QImageWriter_SetDevice(QImageWriter* self, QIODevice* device) {
 }
 
 QIODevice* QImageWriter_Device(QImageWriter* self) {
-	return self->device();
+	return const_cast<const QImageWriter*>(self)->device();
 }
 
 void QImageWriter_SetFileName(QImageWriter* self, const char* fileName, size_t fileName_Strlen) {
@@ -73,7 +74,7 @@ void QImageWriter_SetFileName(QImageWriter* self, const char* fileName, size_t f
 }
 
 void QImageWriter_FileName(QImageWriter* self, char** _out, int* _out_Strlen) {
-	QString ret = self->fileName();
+	QString ret = const_cast<const QImageWriter*>(self)->fileName();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -86,7 +87,7 @@ void QImageWriter_SetQuality(QImageWriter* self, int quality) {
 }
 
 int QImageWriter_Quality(QImageWriter* self) {
-	return self->quality();
+	return const_cast<const QImageWriter*>(self)->quality();
 }
 
 void QImageWriter_SetCompression(QImageWriter* self, int compression) {
@@ -94,7 +95,7 @@ void QImageWriter_SetCompression(QImageWriter* self, int compression) {
 }
 
 int QImageWriter_Compression(QImageWriter* self) {
-	return self->compression();
+	return const_cast<const QImageWriter*>(self)->compression();
 }
 
 void QImageWriter_SetGamma(QImageWriter* self, float gamma) {
@@ -102,7 +103,7 @@ void QImageWriter_SetGamma(QImageWriter* self, float gamma) {
 }
 
 float QImageWriter_Gamma(QImageWriter* self) {
-	return self->gamma();
+	return const_cast<const QImageWriter*>(self)->gamma();
 }
 
 void QImageWriter_SetSubType(QImageWriter* self, QByteArray* typeVal) {
@@ -110,13 +111,13 @@ void QImageWriter_SetSubType(QImageWriter* self, QByteArray* typeVal) {
 }
 
 QByteArray* QImageWriter_SubType(QImageWriter* self) {
-	QByteArray ret = self->subType();
+	QByteArray ret = const_cast<const QImageWriter*>(self)->subType();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QByteArray*>(new QByteArray(ret));
 }
 
 void QImageWriter_SupportedSubTypes(QImageWriter* self, QByteArray*** _out, size_t* _out_len) {
-	QList<QByteArray> ret = self->supportedSubTypes();
+	QList<QByteArray> ret = const_cast<const QImageWriter*>(self)->supportedSubTypes();
 	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
 	QByteArray** __out = static_cast<QByteArray**>(malloc(sizeof(QByteArray**) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {
@@ -131,7 +132,7 @@ void QImageWriter_SetOptimizedWrite(QImageWriter* self, bool optimize) {
 }
 
 bool QImageWriter_OptimizedWrite(QImageWriter* self) {
-	return self->optimizedWrite();
+	return const_cast<const QImageWriter*>(self)->optimizedWrite();
 }
 
 void QImageWriter_SetProgressiveScanWrite(QImageWriter* self, bool progressive) {
@@ -139,7 +140,16 @@ void QImageWriter_SetProgressiveScanWrite(QImageWriter* self, bool progressive) 
 }
 
 bool QImageWriter_ProgressiveScanWrite(QImageWriter* self) {
-	return self->progressiveScanWrite();
+	return const_cast<const QImageWriter*>(self)->progressiveScanWrite();
+}
+
+int QImageWriter_Transformation(QImageWriter* self) {
+	QImageIOHandler::Transformations ret = const_cast<const QImageWriter*>(self)->transformation();
+	return static_cast<int>(ret);
+}
+
+void QImageWriter_SetTransformation(QImageWriter* self, int orientation) {
+	self->setTransformation(static_cast<QImageIOHandler::Transformations>(orientation));
 }
 
 void QImageWriter_SetDescription(QImageWriter* self, const char* description, size_t description_Strlen) {
@@ -148,7 +158,7 @@ void QImageWriter_SetDescription(QImageWriter* self, const char* description, si
 }
 
 void QImageWriter_Description(QImageWriter* self, char** _out, int* _out_Strlen) {
-	QString ret = self->description();
+	QString ret = const_cast<const QImageWriter*>(self)->description();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -163,20 +173,29 @@ void QImageWriter_SetText(QImageWriter* self, const char* key, size_t key_Strlen
 }
 
 bool QImageWriter_CanWrite(QImageWriter* self) {
-	return self->canWrite();
+	return const_cast<const QImageWriter*>(self)->canWrite();
 }
 
 bool QImageWriter_Write(QImageWriter* self, QImage* image) {
 	return self->write(*image);
 }
 
+uintptr_t QImageWriter_Error(QImageWriter* self) {
+	QImageWriter::ImageWriterError ret = const_cast<const QImageWriter*>(self)->error();
+	return static_cast<uintptr_t>(ret);
+}
+
 void QImageWriter_ErrorString(QImageWriter* self, char** _out, int* _out_Strlen) {
-	QString ret = self->errorString();
+	QString ret = const_cast<const QImageWriter*>(self)->errorString();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
 	memcpy(*_out, b.data(), b.length());
 	*_out_Strlen = b.length();
+}
+
+bool QImageWriter_SupportsOption(QImageWriter* self, uintptr_t option) {
+	return const_cast<const QImageWriter*>(self)->supportsOption(static_cast<QImageIOHandler::ImageOption>(option));
 }
 
 void QImageWriter_SupportedImageFormats(QByteArray*** _out, size_t* _out_len) {
@@ -212,7 +231,7 @@ void QImageWriter_ImageFormatsForMimeType(QByteArray* mimeType, QByteArray*** _o
 	*_out_len = ret.length();
 }
 
-void QImageWriter_Tr2(char* sourceText, char* disambiguation, char** _out, int* _out_Strlen) {
+void QImageWriter_Tr2(const char* sourceText, const char* disambiguation, char** _out, int* _out_Strlen) {
 	QString ret = QImageWriter::tr(sourceText, disambiguation);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -221,7 +240,7 @@ void QImageWriter_Tr2(char* sourceText, char* disambiguation, char** _out, int* 
 	*_out_Strlen = b.length();
 }
 
-void QImageWriter_Tr3(char* sourceText, char* disambiguation, int n, char** _out, int* _out_Strlen) {
+void QImageWriter_Tr3(const char* sourceText, const char* disambiguation, int n, char** _out, int* _out_Strlen) {
 	QString ret = QImageWriter::tr(sourceText, disambiguation, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -230,7 +249,7 @@ void QImageWriter_Tr3(char* sourceText, char* disambiguation, int n, char** _out
 	*_out_Strlen = b.length();
 }
 
-void QImageWriter_TrUtf82(char* sourceText, char* disambiguation, char** _out, int* _out_Strlen) {
+void QImageWriter_TrUtf82(const char* sourceText, const char* disambiguation, char** _out, int* _out_Strlen) {
 	QString ret = QImageWriter::trUtf8(sourceText, disambiguation);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -239,7 +258,7 @@ void QImageWriter_TrUtf82(char* sourceText, char* disambiguation, char** _out, i
 	*_out_Strlen = b.length();
 }
 
-void QImageWriter_TrUtf83(char* sourceText, char* disambiguation, int n, char** _out, int* _out_Strlen) {
+void QImageWriter_TrUtf83(const char* sourceText, const char* disambiguation, int n, char** _out, int* _out_Strlen) {
 	QString ret = QImageWriter::trUtf8(sourceText, disambiguation, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();

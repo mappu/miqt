@@ -22,8 +22,8 @@ typedef struct QMetaObject QMetaObject;
 #endif
 
 QMetaObject* QFutureWatcherBase_MetaObject(QFutureWatcherBase* self);
-void QFutureWatcherBase_Tr(char* s, char** _out, int* _out_Strlen);
-void QFutureWatcherBase_TrUtf8(char* s, char** _out, int* _out_Strlen);
+void QFutureWatcherBase_Tr(const char* s, char** _out, int* _out_Strlen);
+void QFutureWatcherBase_TrUtf8(const char* s, char** _out, int* _out_Strlen);
 int QFutureWatcherBase_ProgressValue(QFutureWatcherBase* self);
 int QFutureWatcherBase_ProgressMinimum(QFutureWatcherBase* self);
 int QFutureWatcherBase_ProgressMaximum(QFutureWatcherBase* self);
@@ -61,10 +61,10 @@ void QFutureWatcherBase_SetPaused(QFutureWatcherBase* self, bool paused);
 void QFutureWatcherBase_Pause(QFutureWatcherBase* self);
 void QFutureWatcherBase_Resume(QFutureWatcherBase* self);
 void QFutureWatcherBase_TogglePaused(QFutureWatcherBase* self);
-void QFutureWatcherBase_Tr2(char* s, char* c, char** _out, int* _out_Strlen);
-void QFutureWatcherBase_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen);
-void QFutureWatcherBase_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen);
-void QFutureWatcherBase_TrUtf83(char* s, char* c, int n, char** _out, int* _out_Strlen);
+void QFutureWatcherBase_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
+void QFutureWatcherBase_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+void QFutureWatcherBase_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
+void QFutureWatcherBase_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
 void QFutureWatcherBase_Delete(QFutureWatcherBase* self);
 
 #ifdef __cplusplus

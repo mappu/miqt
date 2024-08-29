@@ -73,6 +73,20 @@ func QEventLoop_TrUtf8(s string) string {
 	return ret
 }
 
+func (this *QEventLoop) ProcessEvents() bool {
+	ret := C.QEventLoop_ProcessEvents(this.h)
+	return (bool)(ret)
+}
+
+func (this *QEventLoop) ProcessEvents2(flags int, maximumTime int) {
+	C.QEventLoop_ProcessEvents2(this.h, (C.int)(flags), (C.int)(maximumTime))
+}
+
+func (this *QEventLoop) Exec() int {
+	ret := C.QEventLoop_Exec(this.h)
+	return (int)(ret)
+}
+
 func (this *QEventLoop) Exit() {
 	C.QEventLoop_Exit(this.h)
 }
@@ -145,6 +159,16 @@ func QEventLoop_TrUtf83(s string, c string, n int) string {
 	ret := C.GoStringN(_out, _out_Strlen)
 	C.free(unsafe.Pointer(_out))
 	return ret
+}
+
+func (this *QEventLoop) ProcessEvents1(flags int) bool {
+	ret := C.QEventLoop_ProcessEvents1(this.h, (C.int)(flags))
+	return (bool)(ret)
+}
+
+func (this *QEventLoop) Exec1(flags int) int {
+	ret := C.QEventLoop_Exec1(this.h, (C.int)(flags))
+	return (int)(ret)
 }
 
 func (this *QEventLoop) Exit1(returnCode int) {

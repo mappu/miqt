@@ -1,12 +1,11 @@
-#include "gen_qtextformat.h"
-#include "qtextformat.h"
-
 #include <QBrush>
 #include <QColor>
 #include <QFont>
 #include <QList>
 #include <QPen>
 #include <QString>
+#include <QByteArray>
+#include <cstring>
 #include <QTextBlockFormat>
 #include <QTextCharFormat>
 #include <QTextFormat>
@@ -14,10 +13,13 @@
 #include <QTextImageFormat>
 #include <QTextLength>
 #include <QTextListFormat>
+#define WORKAROUND_INNER_CLASS_DEFINITION_QTextOption__Tab
 #include <QTextTableCellFormat>
 #include <QTextTableFormat>
 #include <QVariant>
+#include "qtextformat.h"
 
+#include "gen_qtextformat.h"
 
 extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
@@ -27,24 +29,33 @@ QTextLength* QTextLength_new() {
 	return new QTextLength();
 }
 
-QTextLength* QTextLength_new2(QTextLength* param1) {
+QTextLength* QTextLength_new2(uintptr_t typeVal, double value) {
+	return new QTextLength(static_cast<QTextLength::Type>(typeVal), static_cast<qreal>(value));
+}
+
+QTextLength* QTextLength_new3(QTextLength* param1) {
 	return new QTextLength(*param1);
 }
 
+uintptr_t QTextLength_Type(QTextLength* self) {
+	QTextLength::Type ret = const_cast<const QTextLength*>(self)->type();
+	return static_cast<uintptr_t>(ret);
+}
+
 double QTextLength_Value(QTextLength* self, double maximumLength) {
-	return self->value(static_cast<qreal>(maximumLength));
+	return const_cast<const QTextLength*>(self)->value(static_cast<qreal>(maximumLength));
 }
 
 double QTextLength_RawValue(QTextLength* self) {
-	return self->rawValue();
+	return const_cast<const QTextLength*>(self)->rawValue();
 }
 
 bool QTextLength_OperatorEqual(QTextLength* self, QTextLength* other) {
-	return self->operator==(*other);
+	return const_cast<const QTextLength*>(self)->operator==(*other);
 }
 
 bool QTextLength_OperatorNotEqual(QTextLength* self, QTextLength* other) {
-	return self->operator!=(*other);
+	return const_cast<const QTextLength*>(self)->operator!=(*other);
 }
 
 void QTextLength_Delete(QTextLength* self) {
@@ -76,19 +87,19 @@ void QTextFormat_Merge(QTextFormat* self, QTextFormat* other) {
 }
 
 bool QTextFormat_IsValid(QTextFormat* self) {
-	return self->isValid();
+	return const_cast<const QTextFormat*>(self)->isValid();
 }
 
 bool QTextFormat_IsEmpty(QTextFormat* self) {
-	return self->isEmpty();
+	return const_cast<const QTextFormat*>(self)->isEmpty();
 }
 
 int QTextFormat_Type(QTextFormat* self) {
-	return self->type();
+	return const_cast<const QTextFormat*>(self)->type();
 }
 
 int QTextFormat_ObjectIndex(QTextFormat* self) {
-	return self->objectIndex();
+	return const_cast<const QTextFormat*>(self)->objectIndex();
 }
 
 void QTextFormat_SetObjectIndex(QTextFormat* self, int object) {
@@ -96,7 +107,7 @@ void QTextFormat_SetObjectIndex(QTextFormat* self, int object) {
 }
 
 QVariant* QTextFormat_Property(QTextFormat* self, int propertyId) {
-	QVariant ret = self->property(static_cast<int>(propertyId));
+	QVariant ret = const_cast<const QTextFormat*>(self)->property(static_cast<int>(propertyId));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVariant*>(new QVariant(ret));
 }
@@ -110,23 +121,23 @@ void QTextFormat_ClearProperty(QTextFormat* self, int propertyId) {
 }
 
 bool QTextFormat_HasProperty(QTextFormat* self, int propertyId) {
-	return self->hasProperty(static_cast<int>(propertyId));
+	return const_cast<const QTextFormat*>(self)->hasProperty(static_cast<int>(propertyId));
 }
 
 bool QTextFormat_BoolProperty(QTextFormat* self, int propertyId) {
-	return self->boolProperty(static_cast<int>(propertyId));
+	return const_cast<const QTextFormat*>(self)->boolProperty(static_cast<int>(propertyId));
 }
 
 int QTextFormat_IntProperty(QTextFormat* self, int propertyId) {
-	return self->intProperty(static_cast<int>(propertyId));
+	return const_cast<const QTextFormat*>(self)->intProperty(static_cast<int>(propertyId));
 }
 
 double QTextFormat_DoubleProperty(QTextFormat* self, int propertyId) {
-	return self->doubleProperty(static_cast<int>(propertyId));
+	return const_cast<const QTextFormat*>(self)->doubleProperty(static_cast<int>(propertyId));
 }
 
 void QTextFormat_StringProperty(QTextFormat* self, int propertyId, char** _out, int* _out_Strlen) {
-	QString ret = self->stringProperty(static_cast<int>(propertyId));
+	QString ret = const_cast<const QTextFormat*>(self)->stringProperty(static_cast<int>(propertyId));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -135,31 +146,31 @@ void QTextFormat_StringProperty(QTextFormat* self, int propertyId, char** _out, 
 }
 
 QColor* QTextFormat_ColorProperty(QTextFormat* self, int propertyId) {
-	QColor ret = self->colorProperty(static_cast<int>(propertyId));
+	QColor ret = const_cast<const QTextFormat*>(self)->colorProperty(static_cast<int>(propertyId));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QColor*>(new QColor(ret));
 }
 
 QPen* QTextFormat_PenProperty(QTextFormat* self, int propertyId) {
-	QPen ret = self->penProperty(static_cast<int>(propertyId));
+	QPen ret = const_cast<const QTextFormat*>(self)->penProperty(static_cast<int>(propertyId));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPen*>(new QPen(ret));
 }
 
 QBrush* QTextFormat_BrushProperty(QTextFormat* self, int propertyId) {
-	QBrush ret = self->brushProperty(static_cast<int>(propertyId));
+	QBrush ret = const_cast<const QTextFormat*>(self)->brushProperty(static_cast<int>(propertyId));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QBrush*>(new QBrush(ret));
 }
 
 QTextLength* QTextFormat_LengthProperty(QTextFormat* self, int propertyId) {
-	QTextLength ret = self->lengthProperty(static_cast<int>(propertyId));
+	QTextLength ret = const_cast<const QTextFormat*>(self)->lengthProperty(static_cast<int>(propertyId));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QTextLength*>(new QTextLength(ret));
 }
 
 void QTextFormat_LengthVectorProperty(QTextFormat* self, int propertyId, QTextLength*** _out, size_t* _out_len) {
-	QVector<QTextLength> ret = self->lengthVectorProperty(static_cast<int>(propertyId));
+	QVector<QTextLength> ret = const_cast<const QTextFormat*>(self)->lengthVectorProperty(static_cast<int>(propertyId));
 	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
 	QTextLength** __out = static_cast<QTextLength**>(malloc(sizeof(QTextLength**) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {
@@ -179,7 +190,7 @@ void QTextFormat_SetProperty2(QTextFormat* self, int propertyId, QTextLength** l
 }
 
 int QTextFormat_PropertyCount(QTextFormat* self) {
-	return self->propertyCount();
+	return const_cast<const QTextFormat*>(self)->propertyCount();
 }
 
 void QTextFormat_SetObjectType(QTextFormat* self, int typeVal) {
@@ -187,85 +198,94 @@ void QTextFormat_SetObjectType(QTextFormat* self, int typeVal) {
 }
 
 int QTextFormat_ObjectType(QTextFormat* self) {
-	return self->objectType();
+	return const_cast<const QTextFormat*>(self)->objectType();
 }
 
 bool QTextFormat_IsCharFormat(QTextFormat* self) {
-	return self->isCharFormat();
+	return const_cast<const QTextFormat*>(self)->isCharFormat();
 }
 
 bool QTextFormat_IsBlockFormat(QTextFormat* self) {
-	return self->isBlockFormat();
+	return const_cast<const QTextFormat*>(self)->isBlockFormat();
 }
 
 bool QTextFormat_IsListFormat(QTextFormat* self) {
-	return self->isListFormat();
+	return const_cast<const QTextFormat*>(self)->isListFormat();
 }
 
 bool QTextFormat_IsFrameFormat(QTextFormat* self) {
-	return self->isFrameFormat();
+	return const_cast<const QTextFormat*>(self)->isFrameFormat();
 }
 
 bool QTextFormat_IsImageFormat(QTextFormat* self) {
-	return self->isImageFormat();
+	return const_cast<const QTextFormat*>(self)->isImageFormat();
 }
 
 bool QTextFormat_IsTableFormat(QTextFormat* self) {
-	return self->isTableFormat();
+	return const_cast<const QTextFormat*>(self)->isTableFormat();
 }
 
 bool QTextFormat_IsTableCellFormat(QTextFormat* self) {
-	return self->isTableCellFormat();
+	return const_cast<const QTextFormat*>(self)->isTableCellFormat();
 }
 
 QTextBlockFormat* QTextFormat_ToBlockFormat(QTextFormat* self) {
-	QTextBlockFormat ret = self->toBlockFormat();
+	QTextBlockFormat ret = const_cast<const QTextFormat*>(self)->toBlockFormat();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QTextBlockFormat*>(new QTextBlockFormat(ret));
 }
 
 QTextCharFormat* QTextFormat_ToCharFormat(QTextFormat* self) {
-	QTextCharFormat ret = self->toCharFormat();
+	QTextCharFormat ret = const_cast<const QTextFormat*>(self)->toCharFormat();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QTextCharFormat*>(new QTextCharFormat(ret));
 }
 
 QTextListFormat* QTextFormat_ToListFormat(QTextFormat* self) {
-	QTextListFormat ret = self->toListFormat();
+	QTextListFormat ret = const_cast<const QTextFormat*>(self)->toListFormat();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QTextListFormat*>(new QTextListFormat(ret));
 }
 
 QTextTableFormat* QTextFormat_ToTableFormat(QTextFormat* self) {
-	QTextTableFormat ret = self->toTableFormat();
+	QTextTableFormat ret = const_cast<const QTextFormat*>(self)->toTableFormat();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QTextTableFormat*>(new QTextTableFormat(ret));
 }
 
 QTextFrameFormat* QTextFormat_ToFrameFormat(QTextFormat* self) {
-	QTextFrameFormat ret = self->toFrameFormat();
+	QTextFrameFormat ret = const_cast<const QTextFormat*>(self)->toFrameFormat();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QTextFrameFormat*>(new QTextFrameFormat(ret));
 }
 
 QTextImageFormat* QTextFormat_ToImageFormat(QTextFormat* self) {
-	QTextImageFormat ret = self->toImageFormat();
+	QTextImageFormat ret = const_cast<const QTextFormat*>(self)->toImageFormat();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QTextImageFormat*>(new QTextImageFormat(ret));
 }
 
 QTextTableCellFormat* QTextFormat_ToTableCellFormat(QTextFormat* self) {
-	QTextTableCellFormat ret = self->toTableCellFormat();
+	QTextTableCellFormat ret = const_cast<const QTextFormat*>(self)->toTableCellFormat();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QTextTableCellFormat*>(new QTextTableCellFormat(ret));
 }
 
 bool QTextFormat_OperatorEqual(QTextFormat* self, QTextFormat* rhs) {
-	return self->operator==(*rhs);
+	return const_cast<const QTextFormat*>(self)->operator==(*rhs);
 }
 
 bool QTextFormat_OperatorNotEqual(QTextFormat* self, QTextFormat* rhs) {
-	return self->operator!=(*rhs);
+	return const_cast<const QTextFormat*>(self)->operator!=(*rhs);
+}
+
+void QTextFormat_SetLayoutDirection(QTextFormat* self, uintptr_t direction) {
+	self->setLayoutDirection(static_cast<Qt::LayoutDirection>(direction));
+}
+
+uintptr_t QTextFormat_LayoutDirection(QTextFormat* self) {
+	Qt::LayoutDirection ret = const_cast<const QTextFormat*>(self)->layoutDirection();
+	return static_cast<uintptr_t>(ret);
 }
 
 void QTextFormat_SetBackground(QTextFormat* self, QBrush* brush) {
@@ -273,7 +293,7 @@ void QTextFormat_SetBackground(QTextFormat* self, QBrush* brush) {
 }
 
 QBrush* QTextFormat_Background(QTextFormat* self) {
-	QBrush ret = self->background();
+	QBrush ret = const_cast<const QTextFormat*>(self)->background();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QBrush*>(new QBrush(ret));
 }
@@ -287,7 +307,7 @@ void QTextFormat_SetForeground(QTextFormat* self, QBrush* brush) {
 }
 
 QBrush* QTextFormat_Foreground(QTextFormat* self) {
-	QBrush ret = self->foreground();
+	QBrush ret = const_cast<const QTextFormat*>(self)->foreground();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QBrush*>(new QBrush(ret));
 }
@@ -309,15 +329,19 @@ QTextCharFormat* QTextCharFormat_new2(QTextCharFormat* param1) {
 }
 
 bool QTextCharFormat_IsValid(QTextCharFormat* self) {
-	return self->isValid();
+	return const_cast<const QTextCharFormat*>(self)->isValid();
 }
 
-void QTextCharFormat_SetFont(QTextCharFormat* self, QFont* font) {
+void QTextCharFormat_SetFont(QTextCharFormat* self, QFont* font, uintptr_t behavior) {
+	self->setFont(*font, static_cast<QTextCharFormat::FontPropertiesInheritanceBehavior>(behavior));
+}
+
+void QTextCharFormat_SetFontWithFont(QTextCharFormat* self, QFont* font) {
 	self->setFont(*font);
 }
 
 QFont* QTextCharFormat_Font(QTextCharFormat* self) {
-	QFont ret = self->font();
+	QFont ret = const_cast<const QTextCharFormat*>(self)->font();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QFont*>(new QFont(ret));
 }
@@ -328,7 +352,7 @@ void QTextCharFormat_SetFontFamily(QTextCharFormat* self, const char* family, si
 }
 
 void QTextCharFormat_FontFamily(QTextCharFormat* self, char** _out, int* _out_Strlen) {
-	QString ret = self->fontFamily();
+	QString ret = const_cast<const QTextCharFormat*>(self)->fontFamily();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -346,7 +370,7 @@ void QTextCharFormat_SetFontFamilies(QTextCharFormat* self, char** families, uin
 }
 
 QVariant* QTextCharFormat_FontFamilies(QTextCharFormat* self) {
-	QVariant ret = self->fontFamilies();
+	QVariant ret = const_cast<const QTextCharFormat*>(self)->fontFamilies();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVariant*>(new QVariant(ret));
 }
@@ -357,7 +381,7 @@ void QTextCharFormat_SetFontStyleName(QTextCharFormat* self, const char* styleNa
 }
 
 QVariant* QTextCharFormat_FontStyleName(QTextCharFormat* self) {
-	QVariant ret = self->fontStyleName();
+	QVariant ret = const_cast<const QTextCharFormat*>(self)->fontStyleName();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVariant*>(new QVariant(ret));
 }
@@ -367,7 +391,7 @@ void QTextCharFormat_SetFontPointSize(QTextCharFormat* self, double size) {
 }
 
 double QTextCharFormat_FontPointSize(QTextCharFormat* self) {
-	return self->fontPointSize();
+	return const_cast<const QTextCharFormat*>(self)->fontPointSize();
 }
 
 void QTextCharFormat_SetFontWeight(QTextCharFormat* self, int weight) {
@@ -375,7 +399,7 @@ void QTextCharFormat_SetFontWeight(QTextCharFormat* self, int weight) {
 }
 
 int QTextCharFormat_FontWeight(QTextCharFormat* self) {
-	return self->fontWeight();
+	return const_cast<const QTextCharFormat*>(self)->fontWeight();
 }
 
 void QTextCharFormat_SetFontItalic(QTextCharFormat* self, bool italic) {
@@ -383,7 +407,25 @@ void QTextCharFormat_SetFontItalic(QTextCharFormat* self, bool italic) {
 }
 
 bool QTextCharFormat_FontItalic(QTextCharFormat* self) {
-	return self->fontItalic();
+	return const_cast<const QTextCharFormat*>(self)->fontItalic();
+}
+
+void QTextCharFormat_SetFontCapitalization(QTextCharFormat* self, uintptr_t capitalization) {
+	self->setFontCapitalization(static_cast<QFont::Capitalization>(capitalization));
+}
+
+uintptr_t QTextCharFormat_FontCapitalization(QTextCharFormat* self) {
+	QFont::Capitalization ret = const_cast<const QTextCharFormat*>(self)->fontCapitalization();
+	return static_cast<uintptr_t>(ret);
+}
+
+void QTextCharFormat_SetFontLetterSpacingType(QTextCharFormat* self, uintptr_t letterSpacingType) {
+	self->setFontLetterSpacingType(static_cast<QFont::SpacingType>(letterSpacingType));
+}
+
+uintptr_t QTextCharFormat_FontLetterSpacingType(QTextCharFormat* self) {
+	QFont::SpacingType ret = const_cast<const QTextCharFormat*>(self)->fontLetterSpacingType();
+	return static_cast<uintptr_t>(ret);
 }
 
 void QTextCharFormat_SetFontLetterSpacing(QTextCharFormat* self, double spacing) {
@@ -391,7 +433,7 @@ void QTextCharFormat_SetFontLetterSpacing(QTextCharFormat* self, double spacing)
 }
 
 double QTextCharFormat_FontLetterSpacing(QTextCharFormat* self) {
-	return self->fontLetterSpacing();
+	return const_cast<const QTextCharFormat*>(self)->fontLetterSpacing();
 }
 
 void QTextCharFormat_SetFontWordSpacing(QTextCharFormat* self, double spacing) {
@@ -399,7 +441,7 @@ void QTextCharFormat_SetFontWordSpacing(QTextCharFormat* self, double spacing) {
 }
 
 double QTextCharFormat_FontWordSpacing(QTextCharFormat* self) {
-	return self->fontWordSpacing();
+	return const_cast<const QTextCharFormat*>(self)->fontWordSpacing();
 }
 
 void QTextCharFormat_SetFontUnderline(QTextCharFormat* self, bool underline) {
@@ -407,7 +449,7 @@ void QTextCharFormat_SetFontUnderline(QTextCharFormat* self, bool underline) {
 }
 
 bool QTextCharFormat_FontUnderline(QTextCharFormat* self) {
-	return self->fontUnderline();
+	return const_cast<const QTextCharFormat*>(self)->fontUnderline();
 }
 
 void QTextCharFormat_SetFontOverline(QTextCharFormat* self, bool overline) {
@@ -415,7 +457,7 @@ void QTextCharFormat_SetFontOverline(QTextCharFormat* self, bool overline) {
 }
 
 bool QTextCharFormat_FontOverline(QTextCharFormat* self) {
-	return self->fontOverline();
+	return const_cast<const QTextCharFormat*>(self)->fontOverline();
 }
 
 void QTextCharFormat_SetFontStrikeOut(QTextCharFormat* self, bool strikeOut) {
@@ -423,7 +465,7 @@ void QTextCharFormat_SetFontStrikeOut(QTextCharFormat* self, bool strikeOut) {
 }
 
 bool QTextCharFormat_FontStrikeOut(QTextCharFormat* self) {
-	return self->fontStrikeOut();
+	return const_cast<const QTextCharFormat*>(self)->fontStrikeOut();
 }
 
 void QTextCharFormat_SetUnderlineColor(QTextCharFormat* self, QColor* color) {
@@ -431,7 +473,7 @@ void QTextCharFormat_SetUnderlineColor(QTextCharFormat* self, QColor* color) {
 }
 
 QColor* QTextCharFormat_UnderlineColor(QTextCharFormat* self) {
-	QColor ret = self->underlineColor();
+	QColor ret = const_cast<const QTextCharFormat*>(self)->underlineColor();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QColor*>(new QColor(ret));
 }
@@ -441,7 +483,7 @@ void QTextCharFormat_SetFontFixedPitch(QTextCharFormat* self, bool fixedPitch) {
 }
 
 bool QTextCharFormat_FontFixedPitch(QTextCharFormat* self) {
-	return self->fontFixedPitch();
+	return const_cast<const QTextCharFormat*>(self)->fontFixedPitch();
 }
 
 void QTextCharFormat_SetFontStretch(QTextCharFormat* self, int factor) {
@@ -449,7 +491,34 @@ void QTextCharFormat_SetFontStretch(QTextCharFormat* self, int factor) {
 }
 
 int QTextCharFormat_FontStretch(QTextCharFormat* self) {
-	return self->fontStretch();
+	return const_cast<const QTextCharFormat*>(self)->fontStretch();
+}
+
+void QTextCharFormat_SetFontStyleHint(QTextCharFormat* self, uintptr_t hint) {
+	self->setFontStyleHint(static_cast<QFont::StyleHint>(hint));
+}
+
+void QTextCharFormat_SetFontStyleStrategy(QTextCharFormat* self, uintptr_t strategy) {
+	self->setFontStyleStrategy(static_cast<QFont::StyleStrategy>(strategy));
+}
+
+uintptr_t QTextCharFormat_FontStyleHint(QTextCharFormat* self) {
+	QFont::StyleHint ret = const_cast<const QTextCharFormat*>(self)->fontStyleHint();
+	return static_cast<uintptr_t>(ret);
+}
+
+uintptr_t QTextCharFormat_FontStyleStrategy(QTextCharFormat* self) {
+	QFont::StyleStrategy ret = const_cast<const QTextCharFormat*>(self)->fontStyleStrategy();
+	return static_cast<uintptr_t>(ret);
+}
+
+void QTextCharFormat_SetFontHintingPreference(QTextCharFormat* self, uintptr_t hintingPreference) {
+	self->setFontHintingPreference(static_cast<QFont::HintingPreference>(hintingPreference));
+}
+
+uintptr_t QTextCharFormat_FontHintingPreference(QTextCharFormat* self) {
+	QFont::HintingPreference ret = const_cast<const QTextCharFormat*>(self)->fontHintingPreference();
+	return static_cast<uintptr_t>(ret);
 }
 
 void QTextCharFormat_SetFontKerning(QTextCharFormat* self, bool enable) {
@@ -457,7 +526,25 @@ void QTextCharFormat_SetFontKerning(QTextCharFormat* self, bool enable) {
 }
 
 bool QTextCharFormat_FontKerning(QTextCharFormat* self) {
-	return self->fontKerning();
+	return const_cast<const QTextCharFormat*>(self)->fontKerning();
+}
+
+void QTextCharFormat_SetUnderlineStyle(QTextCharFormat* self, uintptr_t style) {
+	self->setUnderlineStyle(static_cast<QTextCharFormat::UnderlineStyle>(style));
+}
+
+uintptr_t QTextCharFormat_UnderlineStyle(QTextCharFormat* self) {
+	QTextCharFormat::UnderlineStyle ret = const_cast<const QTextCharFormat*>(self)->underlineStyle();
+	return static_cast<uintptr_t>(ret);
+}
+
+void QTextCharFormat_SetVerticalAlignment(QTextCharFormat* self, uintptr_t alignment) {
+	self->setVerticalAlignment(static_cast<QTextCharFormat::VerticalAlignment>(alignment));
+}
+
+uintptr_t QTextCharFormat_VerticalAlignment(QTextCharFormat* self) {
+	QTextCharFormat::VerticalAlignment ret = const_cast<const QTextCharFormat*>(self)->verticalAlignment();
+	return static_cast<uintptr_t>(ret);
 }
 
 void QTextCharFormat_SetTextOutline(QTextCharFormat* self, QPen* pen) {
@@ -465,7 +552,7 @@ void QTextCharFormat_SetTextOutline(QTextCharFormat* self, QPen* pen) {
 }
 
 QPen* QTextCharFormat_TextOutline(QTextCharFormat* self) {
-	QPen ret = self->textOutline();
+	QPen ret = const_cast<const QTextCharFormat*>(self)->textOutline();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPen*>(new QPen(ret));
 }
@@ -476,7 +563,7 @@ void QTextCharFormat_SetToolTip(QTextCharFormat* self, const char* tip, size_t t
 }
 
 void QTextCharFormat_ToolTip(QTextCharFormat* self, char** _out, int* _out_Strlen) {
-	QString ret = self->toolTip();
+	QString ret = const_cast<const QTextCharFormat*>(self)->toolTip();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -489,7 +576,7 @@ void QTextCharFormat_SetAnchor(QTextCharFormat* self, bool anchor) {
 }
 
 bool QTextCharFormat_IsAnchor(QTextCharFormat* self) {
-	return self->isAnchor();
+	return const_cast<const QTextCharFormat*>(self)->isAnchor();
 }
 
 void QTextCharFormat_SetAnchorHref(QTextCharFormat* self, const char* value, size_t value_Strlen) {
@@ -498,7 +585,7 @@ void QTextCharFormat_SetAnchorHref(QTextCharFormat* self, const char* value, siz
 }
 
 void QTextCharFormat_AnchorHref(QTextCharFormat* self, char** _out, int* _out_Strlen) {
-	QString ret = self->anchorHref();
+	QString ret = const_cast<const QTextCharFormat*>(self)->anchorHref();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -512,7 +599,7 @@ void QTextCharFormat_SetAnchorName(QTextCharFormat* self, const char* name, size
 }
 
 void QTextCharFormat_AnchorName(QTextCharFormat* self, char** _out, int* _out_Strlen) {
-	QString ret = self->anchorName();
+	QString ret = const_cast<const QTextCharFormat*>(self)->anchorName();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -530,7 +617,7 @@ void QTextCharFormat_SetAnchorNames(QTextCharFormat* self, char** names, uint64_
 }
 
 void QTextCharFormat_AnchorNames(QTextCharFormat* self, char*** _out, int** _out_Lengths, size_t* _out_len) {
-	QList<QString> ret = self->anchorNames();
+	QStringList ret = const_cast<const QTextCharFormat*>(self)->anchorNames();
 	// Convert QStringList from C++ memory to manually-managed C memory
 	char** __out = static_cast<char**>(malloc(sizeof(char*) * ret.length()));
 	int* __out_Lengths = static_cast<int*>(malloc(sizeof(int) * ret.length()));
@@ -551,7 +638,7 @@ void QTextCharFormat_SetTableCellRowSpan(QTextCharFormat* self, int tableCellRow
 }
 
 int QTextCharFormat_TableCellRowSpan(QTextCharFormat* self) {
-	return self->tableCellRowSpan();
+	return const_cast<const QTextCharFormat*>(self)->tableCellRowSpan();
 }
 
 void QTextCharFormat_SetTableCellColumnSpan(QTextCharFormat* self, int tableCellColumnSpan) {
@@ -559,7 +646,11 @@ void QTextCharFormat_SetTableCellColumnSpan(QTextCharFormat* self, int tableCell
 }
 
 int QTextCharFormat_TableCellColumnSpan(QTextCharFormat* self) {
-	return self->tableCellColumnSpan();
+	return const_cast<const QTextCharFormat*>(self)->tableCellColumnSpan();
+}
+
+void QTextCharFormat_SetFontStyleHint2(QTextCharFormat* self, uintptr_t hint, uintptr_t strategy) {
+	self->setFontStyleHint(static_cast<QFont::StyleHint>(hint), static_cast<QFont::StyleStrategy>(strategy));
 }
 
 void QTextCharFormat_Delete(QTextCharFormat* self) {
@@ -575,7 +666,16 @@ QTextBlockFormat* QTextBlockFormat_new2(QTextBlockFormat* param1) {
 }
 
 bool QTextBlockFormat_IsValid(QTextBlockFormat* self) {
-	return self->isValid();
+	return const_cast<const QTextBlockFormat*>(self)->isValid();
+}
+
+void QTextBlockFormat_SetAlignment(QTextBlockFormat* self, int alignment) {
+	self->setAlignment(static_cast<Qt::Alignment>(alignment));
+}
+
+int QTextBlockFormat_Alignment(QTextBlockFormat* self) {
+	Qt::Alignment ret = const_cast<const QTextBlockFormat*>(self)->alignment();
+	return static_cast<int>(ret);
 }
 
 void QTextBlockFormat_SetTopMargin(QTextBlockFormat* self, double margin) {
@@ -583,7 +683,7 @@ void QTextBlockFormat_SetTopMargin(QTextBlockFormat* self, double margin) {
 }
 
 double QTextBlockFormat_TopMargin(QTextBlockFormat* self) {
-	return self->topMargin();
+	return const_cast<const QTextBlockFormat*>(self)->topMargin();
 }
 
 void QTextBlockFormat_SetBottomMargin(QTextBlockFormat* self, double margin) {
@@ -591,7 +691,7 @@ void QTextBlockFormat_SetBottomMargin(QTextBlockFormat* self, double margin) {
 }
 
 double QTextBlockFormat_BottomMargin(QTextBlockFormat* self) {
-	return self->bottomMargin();
+	return const_cast<const QTextBlockFormat*>(self)->bottomMargin();
 }
 
 void QTextBlockFormat_SetLeftMargin(QTextBlockFormat* self, double margin) {
@@ -599,7 +699,7 @@ void QTextBlockFormat_SetLeftMargin(QTextBlockFormat* self, double margin) {
 }
 
 double QTextBlockFormat_LeftMargin(QTextBlockFormat* self) {
-	return self->leftMargin();
+	return const_cast<const QTextBlockFormat*>(self)->leftMargin();
 }
 
 void QTextBlockFormat_SetRightMargin(QTextBlockFormat* self, double margin) {
@@ -607,7 +707,7 @@ void QTextBlockFormat_SetRightMargin(QTextBlockFormat* self, double margin) {
 }
 
 double QTextBlockFormat_RightMargin(QTextBlockFormat* self) {
-	return self->rightMargin();
+	return const_cast<const QTextBlockFormat*>(self)->rightMargin();
 }
 
 void QTextBlockFormat_SetTextIndent(QTextBlockFormat* self, double aindent) {
@@ -615,7 +715,7 @@ void QTextBlockFormat_SetTextIndent(QTextBlockFormat* self, double aindent) {
 }
 
 double QTextBlockFormat_TextIndent(QTextBlockFormat* self) {
-	return self->textIndent();
+	return const_cast<const QTextBlockFormat*>(self)->textIndent();
 }
 
 void QTextBlockFormat_SetIndent(QTextBlockFormat* self, int indent) {
@@ -623,7 +723,7 @@ void QTextBlockFormat_SetIndent(QTextBlockFormat* self, int indent) {
 }
 
 int QTextBlockFormat_Indent(QTextBlockFormat* self) {
-	return self->indent();
+	return const_cast<const QTextBlockFormat*>(self)->indent();
 }
 
 void QTextBlockFormat_SetHeadingLevel(QTextBlockFormat* self, int alevel) {
@@ -631,7 +731,7 @@ void QTextBlockFormat_SetHeadingLevel(QTextBlockFormat* self, int alevel) {
 }
 
 int QTextBlockFormat_HeadingLevel(QTextBlockFormat* self) {
-	return self->headingLevel();
+	return const_cast<const QTextBlockFormat*>(self)->headingLevel();
 }
 
 void QTextBlockFormat_SetLineHeight(QTextBlockFormat* self, double height, int heightType) {
@@ -639,15 +739,15 @@ void QTextBlockFormat_SetLineHeight(QTextBlockFormat* self, double height, int h
 }
 
 double QTextBlockFormat_LineHeight(QTextBlockFormat* self, double scriptLineHeight, double scaling) {
-	return self->lineHeight(static_cast<qreal>(scriptLineHeight), static_cast<qreal>(scaling));
+	return const_cast<const QTextBlockFormat*>(self)->lineHeight(static_cast<qreal>(scriptLineHeight), static_cast<qreal>(scaling));
 }
 
 double QTextBlockFormat_LineHeight2(QTextBlockFormat* self) {
-	return self->lineHeight();
+	return const_cast<const QTextBlockFormat*>(self)->lineHeight();
 }
 
 int QTextBlockFormat_LineHeightType(QTextBlockFormat* self) {
-	return self->lineHeightType();
+	return const_cast<const QTextBlockFormat*>(self)->lineHeightType();
 }
 
 void QTextBlockFormat_SetNonBreakableLines(QTextBlockFormat* self, bool b) {
@@ -655,7 +755,45 @@ void QTextBlockFormat_SetNonBreakableLines(QTextBlockFormat* self, bool b) {
 }
 
 bool QTextBlockFormat_NonBreakableLines(QTextBlockFormat* self) {
-	return self->nonBreakableLines();
+	return const_cast<const QTextBlockFormat*>(self)->nonBreakableLines();
+}
+
+void QTextBlockFormat_SetPageBreakPolicy(QTextBlockFormat* self, int flags) {
+	self->setPageBreakPolicy(static_cast<QTextFormat::PageBreakFlags>(flags));
+}
+
+int QTextBlockFormat_PageBreakPolicy(QTextBlockFormat* self) {
+	QTextFormat::PageBreakFlags ret = const_cast<const QTextBlockFormat*>(self)->pageBreakPolicy();
+	return static_cast<int>(ret);
+}
+
+void QTextBlockFormat_SetTabPositions(QTextBlockFormat* self, QTextOption__Tab** tabs, size_t tabs_len) {
+	QList<QTextOption::Tab> tabs_QList;
+	tabs_QList.reserve(tabs_len);
+	for(size_t i = 0; i < tabs_len; ++i) {
+		tabs_QList.push_back(*(tabs[i]));
+	}
+	self->setTabPositions(tabs_QList);
+}
+
+void QTextBlockFormat_TabPositions(QTextBlockFormat* self, QTextOption__Tab*** _out, size_t* _out_len) {
+	QList<QTextOption::Tab> ret = const_cast<const QTextBlockFormat*>(self)->tabPositions();
+	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
+	QTextOption__Tab** __out = static_cast<QTextOption__Tab**>(malloc(sizeof(QTextOption__Tab**) * ret.length()));
+	for (size_t i = 0, e = ret.length(); i < e; ++i) {
+		__out[i] = new QTextOption::Tab(ret[i]);
+	}
+	*_out = __out;
+	*_out_len = ret.length();
+}
+
+void QTextBlockFormat_SetMarker(QTextBlockFormat* self, uintptr_t marker) {
+	self->setMarker(static_cast<QTextBlockFormat::MarkerType>(marker));
+}
+
+uintptr_t QTextBlockFormat_Marker(QTextBlockFormat* self) {
+	QTextBlockFormat::MarkerType ret = const_cast<const QTextBlockFormat*>(self)->marker();
+	return static_cast<uintptr_t>(ret);
 }
 
 void QTextBlockFormat_Delete(QTextBlockFormat* self) {
@@ -671,7 +809,16 @@ QTextListFormat* QTextListFormat_new2(QTextListFormat* param1) {
 }
 
 bool QTextListFormat_IsValid(QTextListFormat* self) {
-	return self->isValid();
+	return const_cast<const QTextListFormat*>(self)->isValid();
+}
+
+void QTextListFormat_SetStyle(QTextListFormat* self, uintptr_t style) {
+	self->setStyle(static_cast<QTextListFormat::Style>(style));
+}
+
+uintptr_t QTextListFormat_Style(QTextListFormat* self) {
+	QTextListFormat::Style ret = const_cast<const QTextListFormat*>(self)->style();
+	return static_cast<uintptr_t>(ret);
 }
 
 void QTextListFormat_SetIndent(QTextListFormat* self, int indent) {
@@ -679,7 +826,7 @@ void QTextListFormat_SetIndent(QTextListFormat* self, int indent) {
 }
 
 int QTextListFormat_Indent(QTextListFormat* self) {
-	return self->indent();
+	return const_cast<const QTextListFormat*>(self)->indent();
 }
 
 void QTextListFormat_SetNumberPrefix(QTextListFormat* self, const char* numberPrefix, size_t numberPrefix_Strlen) {
@@ -688,7 +835,7 @@ void QTextListFormat_SetNumberPrefix(QTextListFormat* self, const char* numberPr
 }
 
 void QTextListFormat_NumberPrefix(QTextListFormat* self, char** _out, int* _out_Strlen) {
-	QString ret = self->numberPrefix();
+	QString ret = const_cast<const QTextListFormat*>(self)->numberPrefix();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -702,7 +849,7 @@ void QTextListFormat_SetNumberSuffix(QTextListFormat* self, const char* numberSu
 }
 
 void QTextListFormat_NumberSuffix(QTextListFormat* self, char** _out, int* _out_Strlen) {
-	QString ret = self->numberSuffix();
+	QString ret = const_cast<const QTextListFormat*>(self)->numberSuffix();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -719,7 +866,7 @@ QTextImageFormat* QTextImageFormat_new() {
 }
 
 bool QTextImageFormat_IsValid(QTextImageFormat* self) {
-	return self->isValid();
+	return const_cast<const QTextImageFormat*>(self)->isValid();
 }
 
 void QTextImageFormat_SetName(QTextImageFormat* self, const char* name, size_t name_Strlen) {
@@ -728,7 +875,7 @@ void QTextImageFormat_SetName(QTextImageFormat* self, const char* name, size_t n
 }
 
 void QTextImageFormat_Name(QTextImageFormat* self, char** _out, int* _out_Strlen) {
-	QString ret = self->name();
+	QString ret = const_cast<const QTextImageFormat*>(self)->name();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -741,7 +888,7 @@ void QTextImageFormat_SetWidth(QTextImageFormat* self, double width) {
 }
 
 double QTextImageFormat_Width(QTextImageFormat* self) {
-	return self->width();
+	return const_cast<const QTextImageFormat*>(self)->width();
 }
 
 void QTextImageFormat_SetHeight(QTextImageFormat* self, double height) {
@@ -749,7 +896,7 @@ void QTextImageFormat_SetHeight(QTextImageFormat* self, double height) {
 }
 
 double QTextImageFormat_Height(QTextImageFormat* self) {
-	return self->height();
+	return const_cast<const QTextImageFormat*>(self)->height();
 }
 
 void QTextImageFormat_SetQuality(QTextImageFormat* self) {
@@ -757,7 +904,7 @@ void QTextImageFormat_SetQuality(QTextImageFormat* self) {
 }
 
 int QTextImageFormat_Quality(QTextImageFormat* self) {
-	return self->quality();
+	return const_cast<const QTextImageFormat*>(self)->quality();
 }
 
 void QTextImageFormat_SetQuality1(QTextImageFormat* self, int quality) {
@@ -777,7 +924,16 @@ QTextFrameFormat* QTextFrameFormat_new2(QTextFrameFormat* param1) {
 }
 
 bool QTextFrameFormat_IsValid(QTextFrameFormat* self) {
-	return self->isValid();
+	return const_cast<const QTextFrameFormat*>(self)->isValid();
+}
+
+void QTextFrameFormat_SetPosition(QTextFrameFormat* self, uintptr_t f) {
+	self->setPosition(static_cast<QTextFrameFormat::Position>(f));
+}
+
+uintptr_t QTextFrameFormat_Position(QTextFrameFormat* self) {
+	QTextFrameFormat::Position ret = const_cast<const QTextFrameFormat*>(self)->position();
+	return static_cast<uintptr_t>(ret);
 }
 
 void QTextFrameFormat_SetBorder(QTextFrameFormat* self, double border) {
@@ -785,7 +941,7 @@ void QTextFrameFormat_SetBorder(QTextFrameFormat* self, double border) {
 }
 
 double QTextFrameFormat_Border(QTextFrameFormat* self) {
-	return self->border();
+	return const_cast<const QTextFrameFormat*>(self)->border();
 }
 
 void QTextFrameFormat_SetBorderBrush(QTextFrameFormat* self, QBrush* brush) {
@@ -793,9 +949,18 @@ void QTextFrameFormat_SetBorderBrush(QTextFrameFormat* self, QBrush* brush) {
 }
 
 QBrush* QTextFrameFormat_BorderBrush(QTextFrameFormat* self) {
-	QBrush ret = self->borderBrush();
+	QBrush ret = const_cast<const QTextFrameFormat*>(self)->borderBrush();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QBrush*>(new QBrush(ret));
+}
+
+void QTextFrameFormat_SetBorderStyle(QTextFrameFormat* self, uintptr_t style) {
+	self->setBorderStyle(static_cast<QTextFrameFormat::BorderStyle>(style));
+}
+
+uintptr_t QTextFrameFormat_BorderStyle(QTextFrameFormat* self) {
+	QTextFrameFormat::BorderStyle ret = const_cast<const QTextFrameFormat*>(self)->borderStyle();
+	return static_cast<uintptr_t>(ret);
 }
 
 void QTextFrameFormat_SetMargin(QTextFrameFormat* self, double margin) {
@@ -803,7 +968,7 @@ void QTextFrameFormat_SetMargin(QTextFrameFormat* self, double margin) {
 }
 
 double QTextFrameFormat_Margin(QTextFrameFormat* self) {
-	return self->margin();
+	return const_cast<const QTextFrameFormat*>(self)->margin();
 }
 
 void QTextFrameFormat_SetTopMargin(QTextFrameFormat* self, double margin) {
@@ -811,7 +976,7 @@ void QTextFrameFormat_SetTopMargin(QTextFrameFormat* self, double margin) {
 }
 
 double QTextFrameFormat_TopMargin(QTextFrameFormat* self) {
-	return self->topMargin();
+	return const_cast<const QTextFrameFormat*>(self)->topMargin();
 }
 
 void QTextFrameFormat_SetBottomMargin(QTextFrameFormat* self, double margin) {
@@ -819,7 +984,7 @@ void QTextFrameFormat_SetBottomMargin(QTextFrameFormat* self, double margin) {
 }
 
 double QTextFrameFormat_BottomMargin(QTextFrameFormat* self) {
-	return self->bottomMargin();
+	return const_cast<const QTextFrameFormat*>(self)->bottomMargin();
 }
 
 void QTextFrameFormat_SetLeftMargin(QTextFrameFormat* self, double margin) {
@@ -827,7 +992,7 @@ void QTextFrameFormat_SetLeftMargin(QTextFrameFormat* self, double margin) {
 }
 
 double QTextFrameFormat_LeftMargin(QTextFrameFormat* self) {
-	return self->leftMargin();
+	return const_cast<const QTextFrameFormat*>(self)->leftMargin();
 }
 
 void QTextFrameFormat_SetRightMargin(QTextFrameFormat* self, double margin) {
@@ -835,7 +1000,7 @@ void QTextFrameFormat_SetRightMargin(QTextFrameFormat* self, double margin) {
 }
 
 double QTextFrameFormat_RightMargin(QTextFrameFormat* self) {
-	return self->rightMargin();
+	return const_cast<const QTextFrameFormat*>(self)->rightMargin();
 }
 
 void QTextFrameFormat_SetPadding(QTextFrameFormat* self, double padding) {
@@ -843,7 +1008,7 @@ void QTextFrameFormat_SetPadding(QTextFrameFormat* self, double padding) {
 }
 
 double QTextFrameFormat_Padding(QTextFrameFormat* self) {
-	return self->padding();
+	return const_cast<const QTextFrameFormat*>(self)->padding();
 }
 
 void QTextFrameFormat_SetWidth(QTextFrameFormat* self, double width) {
@@ -855,7 +1020,7 @@ void QTextFrameFormat_SetWidthWithLength(QTextFrameFormat* self, QTextLength* le
 }
 
 QTextLength* QTextFrameFormat_Width(QTextFrameFormat* self) {
-	QTextLength ret = self->width();
+	QTextLength ret = const_cast<const QTextFrameFormat*>(self)->width();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QTextLength*>(new QTextLength(ret));
 }
@@ -869,9 +1034,18 @@ void QTextFrameFormat_SetHeightWithHeight(QTextFrameFormat* self, QTextLength* h
 }
 
 QTextLength* QTextFrameFormat_Height(QTextFrameFormat* self) {
-	QTextLength ret = self->height();
+	QTextLength ret = const_cast<const QTextFrameFormat*>(self)->height();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QTextLength*>(new QTextLength(ret));
+}
+
+void QTextFrameFormat_SetPageBreakPolicy(QTextFrameFormat* self, int flags) {
+	self->setPageBreakPolicy(static_cast<QTextFormat::PageBreakFlags>(flags));
+}
+
+int QTextFrameFormat_PageBreakPolicy(QTextFrameFormat* self) {
+	QTextFormat::PageBreakFlags ret = const_cast<const QTextFrameFormat*>(self)->pageBreakPolicy();
+	return static_cast<int>(ret);
 }
 
 void QTextFrameFormat_Delete(QTextFrameFormat* self) {
@@ -883,11 +1057,11 @@ QTextTableFormat* QTextTableFormat_new() {
 }
 
 bool QTextTableFormat_IsValid(QTextTableFormat* self) {
-	return self->isValid();
+	return const_cast<const QTextTableFormat*>(self)->isValid();
 }
 
 int QTextTableFormat_Columns(QTextTableFormat* self) {
-	return self->columns();
+	return const_cast<const QTextTableFormat*>(self)->columns();
 }
 
 void QTextTableFormat_SetColumns(QTextTableFormat* self, int columns) {
@@ -904,7 +1078,7 @@ void QTextTableFormat_SetColumnWidthConstraints(QTextTableFormat* self, QTextLen
 }
 
 void QTextTableFormat_ColumnWidthConstraints(QTextTableFormat* self, QTextLength*** _out, size_t* _out_len) {
-	QVector<QTextLength> ret = self->columnWidthConstraints();
+	QVector<QTextLength> ret = const_cast<const QTextTableFormat*>(self)->columnWidthConstraints();
 	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
 	QTextLength** __out = static_cast<QTextLength**>(malloc(sizeof(QTextLength**) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {
@@ -919,7 +1093,7 @@ void QTextTableFormat_ClearColumnWidthConstraints(QTextTableFormat* self) {
 }
 
 double QTextTableFormat_CellSpacing(QTextTableFormat* self) {
-	return self->cellSpacing();
+	return const_cast<const QTextTableFormat*>(self)->cellSpacing();
 }
 
 void QTextTableFormat_SetCellSpacing(QTextTableFormat* self, double spacing) {
@@ -927,11 +1101,20 @@ void QTextTableFormat_SetCellSpacing(QTextTableFormat* self, double spacing) {
 }
 
 double QTextTableFormat_CellPadding(QTextTableFormat* self) {
-	return self->cellPadding();
+	return const_cast<const QTextTableFormat*>(self)->cellPadding();
 }
 
 void QTextTableFormat_SetCellPadding(QTextTableFormat* self, double padding) {
 	self->setCellPadding(static_cast<qreal>(padding));
+}
+
+void QTextTableFormat_SetAlignment(QTextTableFormat* self, int alignment) {
+	self->setAlignment(static_cast<Qt::Alignment>(alignment));
+}
+
+int QTextTableFormat_Alignment(QTextTableFormat* self) {
+	Qt::Alignment ret = const_cast<const QTextTableFormat*>(self)->alignment();
+	return static_cast<int>(ret);
 }
 
 void QTextTableFormat_SetHeaderRowCount(QTextTableFormat* self, int count) {
@@ -939,7 +1122,7 @@ void QTextTableFormat_SetHeaderRowCount(QTextTableFormat* self, int count) {
 }
 
 int QTextTableFormat_HeaderRowCount(QTextTableFormat* self) {
-	return self->headerRowCount();
+	return const_cast<const QTextTableFormat*>(self)->headerRowCount();
 }
 
 void QTextTableFormat_SetBorderCollapse(QTextTableFormat* self, bool borderCollapse) {
@@ -947,7 +1130,7 @@ void QTextTableFormat_SetBorderCollapse(QTextTableFormat* self, bool borderColla
 }
 
 bool QTextTableFormat_BorderCollapse(QTextTableFormat* self) {
-	return self->borderCollapse();
+	return const_cast<const QTextTableFormat*>(self)->borderCollapse();
 }
 
 void QTextTableFormat_Delete(QTextTableFormat* self) {
@@ -959,7 +1142,7 @@ QTextTableCellFormat* QTextTableCellFormat_new() {
 }
 
 bool QTextTableCellFormat_IsValid(QTextTableCellFormat* self) {
-	return self->isValid();
+	return const_cast<const QTextTableCellFormat*>(self)->isValid();
 }
 
 void QTextTableCellFormat_SetTopPadding(QTextTableCellFormat* self, double padding) {
@@ -967,7 +1150,7 @@ void QTextTableCellFormat_SetTopPadding(QTextTableCellFormat* self, double paddi
 }
 
 double QTextTableCellFormat_TopPadding(QTextTableCellFormat* self) {
-	return self->topPadding();
+	return const_cast<const QTextTableCellFormat*>(self)->topPadding();
 }
 
 void QTextTableCellFormat_SetBottomPadding(QTextTableCellFormat* self, double padding) {
@@ -975,7 +1158,7 @@ void QTextTableCellFormat_SetBottomPadding(QTextTableCellFormat* self, double pa
 }
 
 double QTextTableCellFormat_BottomPadding(QTextTableCellFormat* self) {
-	return self->bottomPadding();
+	return const_cast<const QTextTableCellFormat*>(self)->bottomPadding();
 }
 
 void QTextTableCellFormat_SetLeftPadding(QTextTableCellFormat* self, double padding) {
@@ -983,7 +1166,7 @@ void QTextTableCellFormat_SetLeftPadding(QTextTableCellFormat* self, double padd
 }
 
 double QTextTableCellFormat_LeftPadding(QTextTableCellFormat* self) {
-	return self->leftPadding();
+	return const_cast<const QTextTableCellFormat*>(self)->leftPadding();
 }
 
 void QTextTableCellFormat_SetRightPadding(QTextTableCellFormat* self, double padding) {
@@ -991,7 +1174,7 @@ void QTextTableCellFormat_SetRightPadding(QTextTableCellFormat* self, double pad
 }
 
 double QTextTableCellFormat_RightPadding(QTextTableCellFormat* self) {
-	return self->rightPadding();
+	return const_cast<const QTextTableCellFormat*>(self)->rightPadding();
 }
 
 void QTextTableCellFormat_SetPadding(QTextTableCellFormat* self, double padding) {
@@ -1003,7 +1186,7 @@ void QTextTableCellFormat_SetTopBorder(QTextTableCellFormat* self, double width)
 }
 
 double QTextTableCellFormat_TopBorder(QTextTableCellFormat* self) {
-	return self->topBorder();
+	return const_cast<const QTextTableCellFormat*>(self)->topBorder();
 }
 
 void QTextTableCellFormat_SetBottomBorder(QTextTableCellFormat* self, double width) {
@@ -1011,7 +1194,7 @@ void QTextTableCellFormat_SetBottomBorder(QTextTableCellFormat* self, double wid
 }
 
 double QTextTableCellFormat_BottomBorder(QTextTableCellFormat* self) {
-	return self->bottomBorder();
+	return const_cast<const QTextTableCellFormat*>(self)->bottomBorder();
 }
 
 void QTextTableCellFormat_SetLeftBorder(QTextTableCellFormat* self, double width) {
@@ -1019,7 +1202,7 @@ void QTextTableCellFormat_SetLeftBorder(QTextTableCellFormat* self, double width
 }
 
 double QTextTableCellFormat_LeftBorder(QTextTableCellFormat* self) {
-	return self->leftBorder();
+	return const_cast<const QTextTableCellFormat*>(self)->leftBorder();
 }
 
 void QTextTableCellFormat_SetRightBorder(QTextTableCellFormat* self, double width) {
@@ -1027,11 +1210,51 @@ void QTextTableCellFormat_SetRightBorder(QTextTableCellFormat* self, double widt
 }
 
 double QTextTableCellFormat_RightBorder(QTextTableCellFormat* self) {
-	return self->rightBorder();
+	return const_cast<const QTextTableCellFormat*>(self)->rightBorder();
 }
 
 void QTextTableCellFormat_SetBorder(QTextTableCellFormat* self, double width) {
 	self->setBorder(static_cast<qreal>(width));
+}
+
+void QTextTableCellFormat_SetTopBorderStyle(QTextTableCellFormat* self, uintptr_t style) {
+	self->setTopBorderStyle(static_cast<QTextFrameFormat::BorderStyle>(style));
+}
+
+uintptr_t QTextTableCellFormat_TopBorderStyle(QTextTableCellFormat* self) {
+	QTextFrameFormat::BorderStyle ret = const_cast<const QTextTableCellFormat*>(self)->topBorderStyle();
+	return static_cast<uintptr_t>(ret);
+}
+
+void QTextTableCellFormat_SetBottomBorderStyle(QTextTableCellFormat* self, uintptr_t style) {
+	self->setBottomBorderStyle(static_cast<QTextFrameFormat::BorderStyle>(style));
+}
+
+uintptr_t QTextTableCellFormat_BottomBorderStyle(QTextTableCellFormat* self) {
+	QTextFrameFormat::BorderStyle ret = const_cast<const QTextTableCellFormat*>(self)->bottomBorderStyle();
+	return static_cast<uintptr_t>(ret);
+}
+
+void QTextTableCellFormat_SetLeftBorderStyle(QTextTableCellFormat* self, uintptr_t style) {
+	self->setLeftBorderStyle(static_cast<QTextFrameFormat::BorderStyle>(style));
+}
+
+uintptr_t QTextTableCellFormat_LeftBorderStyle(QTextTableCellFormat* self) {
+	QTextFrameFormat::BorderStyle ret = const_cast<const QTextTableCellFormat*>(self)->leftBorderStyle();
+	return static_cast<uintptr_t>(ret);
+}
+
+void QTextTableCellFormat_SetRightBorderStyle(QTextTableCellFormat* self, uintptr_t style) {
+	self->setRightBorderStyle(static_cast<QTextFrameFormat::BorderStyle>(style));
+}
+
+uintptr_t QTextTableCellFormat_RightBorderStyle(QTextTableCellFormat* self) {
+	QTextFrameFormat::BorderStyle ret = const_cast<const QTextTableCellFormat*>(self)->rightBorderStyle();
+	return static_cast<uintptr_t>(ret);
+}
+
+void QTextTableCellFormat_SetBorderStyle(QTextTableCellFormat* self, uintptr_t style) {
+	self->setBorderStyle(static_cast<QTextFrameFormat::BorderStyle>(style));
 }
 
 void QTextTableCellFormat_SetTopBorderBrush(QTextTableCellFormat* self, QBrush* brush) {
@@ -1039,7 +1262,7 @@ void QTextTableCellFormat_SetTopBorderBrush(QTextTableCellFormat* self, QBrush* 
 }
 
 QBrush* QTextTableCellFormat_TopBorderBrush(QTextTableCellFormat* self) {
-	QBrush ret = self->topBorderBrush();
+	QBrush ret = const_cast<const QTextTableCellFormat*>(self)->topBorderBrush();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QBrush*>(new QBrush(ret));
 }
@@ -1049,7 +1272,7 @@ void QTextTableCellFormat_SetBottomBorderBrush(QTextTableCellFormat* self, QBrus
 }
 
 QBrush* QTextTableCellFormat_BottomBorderBrush(QTextTableCellFormat* self) {
-	QBrush ret = self->bottomBorderBrush();
+	QBrush ret = const_cast<const QTextTableCellFormat*>(self)->bottomBorderBrush();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QBrush*>(new QBrush(ret));
 }
@@ -1059,7 +1282,7 @@ void QTextTableCellFormat_SetLeftBorderBrush(QTextTableCellFormat* self, QBrush*
 }
 
 QBrush* QTextTableCellFormat_LeftBorderBrush(QTextTableCellFormat* self) {
-	QBrush ret = self->leftBorderBrush();
+	QBrush ret = const_cast<const QTextTableCellFormat*>(self)->leftBorderBrush();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QBrush*>(new QBrush(ret));
 }
@@ -1069,7 +1292,7 @@ void QTextTableCellFormat_SetRightBorderBrush(QTextTableCellFormat* self, QBrush
 }
 
 QBrush* QTextTableCellFormat_RightBorderBrush(QTextTableCellFormat* self) {
-	QBrush ret = self->rightBorderBrush();
+	QBrush ret = const_cast<const QTextTableCellFormat*>(self)->rightBorderBrush();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QBrush*>(new QBrush(ret));
 }

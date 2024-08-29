@@ -62,6 +62,14 @@ func QCommandLineParser_TrUtf8(sourceText string) string {
 	return ret
 }
 
+func (this *QCommandLineParser) SetSingleDashWordOptionMode(parsingMode uintptr) {
+	C.QCommandLineParser_SetSingleDashWordOptionMode(this.h, (C.uintptr_t)(parsingMode))
+}
+
+func (this *QCommandLineParser) SetOptionsAfterPositionalArgumentsMode(mode uintptr) {
+	C.QCommandLineParser_SetOptionsAfterPositionalArgumentsMode(this.h, (C.uintptr_t)(mode))
+}
+
 func (this *QCommandLineParser) AddOption(commandLineOption *QCommandLineOption) bool {
 	ret := C.QCommandLineParser_AddOption(this.h, commandLineOption.cPointer())
 	return (bool)(ret)

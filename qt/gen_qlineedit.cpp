@@ -1,8 +1,7 @@
-#include "gen_qlineedit.h"
-#include "qlineedit.h"
-
+#include <QAction>
 #include <QCompleter>
 #include <QEvent>
+#include <QIcon>
 #include <QLineEdit>
 #include <QMargins>
 #include <QMenu>
@@ -10,9 +9,14 @@
 #include <QPoint>
 #include <QSize>
 #include <QString>
+#include <QByteArray>
+#include <cstring>
 #include <QValidator>
+#include <QVariant>
 #include <QWidget>
+#include "qlineedit.h"
 
+#include "gen_qlineedit.h"
 
 extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
@@ -37,10 +41,10 @@ QLineEdit* QLineEdit_new4(const char* param1, size_t param1_Strlen, QWidget* par
 }
 
 QMetaObject* QLineEdit_MetaObject(QLineEdit* self) {
-	return (QMetaObject*) self->metaObject();
+	return (QMetaObject*) const_cast<const QLineEdit*>(self)->metaObject();
 }
 
-void QLineEdit_Tr(char* s, char** _out, int* _out_Strlen) {
+void QLineEdit_Tr(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QLineEdit::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -49,7 +53,7 @@ void QLineEdit_Tr(char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QLineEdit_TrUtf8(char* s, char** _out, int* _out_Strlen) {
+void QLineEdit_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QLineEdit::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -59,7 +63,7 @@ void QLineEdit_TrUtf8(char* s, char** _out, int* _out_Strlen) {
 }
 
 void QLineEdit_Text(QLineEdit* self, char** _out, int* _out_Strlen) {
-	QString ret = self->text();
+	QString ret = const_cast<const QLineEdit*>(self)->text();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -68,7 +72,7 @@ void QLineEdit_Text(QLineEdit* self, char** _out, int* _out_Strlen) {
 }
 
 void QLineEdit_DisplayText(QLineEdit* self, char** _out, int* _out_Strlen) {
-	QString ret = self->displayText();
+	QString ret = const_cast<const QLineEdit*>(self)->displayText();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -77,7 +81,7 @@ void QLineEdit_DisplayText(QLineEdit* self, char** _out, int* _out_Strlen) {
 }
 
 void QLineEdit_PlaceholderText(QLineEdit* self, char** _out, int* _out_Strlen) {
-	QString ret = self->placeholderText();
+	QString ret = const_cast<const QLineEdit*>(self)->placeholderText();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -91,7 +95,7 @@ void QLineEdit_SetPlaceholderText(QLineEdit* self, const char* placeholderText, 
 }
 
 int QLineEdit_MaxLength(QLineEdit* self) {
-	return self->maxLength();
+	return const_cast<const QLineEdit*>(self)->maxLength();
 }
 
 void QLineEdit_SetMaxLength(QLineEdit* self, int maxLength) {
@@ -103,7 +107,7 @@ void QLineEdit_SetFrame(QLineEdit* self, bool frame) {
 }
 
 bool QLineEdit_HasFrame(QLineEdit* self) {
-	return self->hasFrame();
+	return const_cast<const QLineEdit*>(self)->hasFrame();
 }
 
 void QLineEdit_SetClearButtonEnabled(QLineEdit* self, bool enable) {
@@ -111,11 +115,20 @@ void QLineEdit_SetClearButtonEnabled(QLineEdit* self, bool enable) {
 }
 
 bool QLineEdit_IsClearButtonEnabled(QLineEdit* self) {
-	return self->isClearButtonEnabled();
+	return const_cast<const QLineEdit*>(self)->isClearButtonEnabled();
+}
+
+uintptr_t QLineEdit_EchoMode(QLineEdit* self) {
+	QLineEdit::EchoMode ret = const_cast<const QLineEdit*>(self)->echoMode();
+	return static_cast<uintptr_t>(ret);
+}
+
+void QLineEdit_SetEchoMode(QLineEdit* self, uintptr_t echoMode) {
+	self->setEchoMode(static_cast<QLineEdit::EchoMode>(echoMode));
 }
 
 bool QLineEdit_IsReadOnly(QLineEdit* self) {
-	return self->isReadOnly();
+	return const_cast<const QLineEdit*>(self)->isReadOnly();
 }
 
 void QLineEdit_SetReadOnly(QLineEdit* self, bool readOnly) {
@@ -127,7 +140,7 @@ void QLineEdit_SetValidator(QLineEdit* self, QValidator* validator) {
 }
 
 QValidator* QLineEdit_Validator(QLineEdit* self) {
-	return (QValidator*) self->validator();
+	return (QValidator*) const_cast<const QLineEdit*>(self)->validator();
 }
 
 void QLineEdit_SetCompleter(QLineEdit* self, QCompleter* completer) {
@@ -135,23 +148,23 @@ void QLineEdit_SetCompleter(QLineEdit* self, QCompleter* completer) {
 }
 
 QCompleter* QLineEdit_Completer(QLineEdit* self) {
-	return self->completer();
+	return const_cast<const QLineEdit*>(self)->completer();
 }
 
 QSize* QLineEdit_SizeHint(QLineEdit* self) {
-	QSize ret = self->sizeHint();
+	QSize ret = const_cast<const QLineEdit*>(self)->sizeHint();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
 
 QSize* QLineEdit_MinimumSizeHint(QLineEdit* self) {
-	QSize ret = self->minimumSizeHint();
+	QSize ret = const_cast<const QLineEdit*>(self)->minimumSizeHint();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
 
 int QLineEdit_CursorPosition(QLineEdit* self) {
-	return self->cursorPosition();
+	return const_cast<const QLineEdit*>(self)->cursorPosition();
 }
 
 void QLineEdit_SetCursorPosition(QLineEdit* self, int cursorPosition) {
@@ -160,6 +173,15 @@ void QLineEdit_SetCursorPosition(QLineEdit* self, int cursorPosition) {
 
 int QLineEdit_CursorPositionAt(QLineEdit* self, QPoint* pos) {
 	return self->cursorPositionAt(*pos);
+}
+
+void QLineEdit_SetAlignment(QLineEdit* self, int flag) {
+	self->setAlignment(static_cast<Qt::Alignment>(flag));
+}
+
+int QLineEdit_Alignment(QLineEdit* self) {
+	Qt::Alignment ret = const_cast<const QLineEdit*>(self)->alignment();
+	return static_cast<int>(ret);
 }
 
 void QLineEdit_CursorForward(QLineEdit* self, bool mark) {
@@ -195,7 +217,7 @@ void QLineEdit_End(QLineEdit* self, bool mark) {
 }
 
 bool QLineEdit_IsModified(QLineEdit* self) {
-	return self->isModified();
+	return const_cast<const QLineEdit*>(self)->isModified();
 }
 
 void QLineEdit_SetModified(QLineEdit* self, bool modified) {
@@ -207,11 +229,11 @@ void QLineEdit_SetSelection(QLineEdit* self, int param1, int param2) {
 }
 
 bool QLineEdit_HasSelectedText(QLineEdit* self) {
-	return self->hasSelectedText();
+	return const_cast<const QLineEdit*>(self)->hasSelectedText();
 }
 
 void QLineEdit_SelectedText(QLineEdit* self, char** _out, int* _out_Strlen) {
-	QString ret = self->selectedText();
+	QString ret = const_cast<const QLineEdit*>(self)->selectedText();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -220,23 +242,23 @@ void QLineEdit_SelectedText(QLineEdit* self, char** _out, int* _out_Strlen) {
 }
 
 int QLineEdit_SelectionStart(QLineEdit* self) {
-	return self->selectionStart();
+	return const_cast<const QLineEdit*>(self)->selectionStart();
 }
 
 int QLineEdit_SelectionEnd(QLineEdit* self) {
-	return self->selectionEnd();
+	return const_cast<const QLineEdit*>(self)->selectionEnd();
 }
 
 int QLineEdit_SelectionLength(QLineEdit* self) {
-	return self->selectionLength();
+	return const_cast<const QLineEdit*>(self)->selectionLength();
 }
 
 bool QLineEdit_IsUndoAvailable(QLineEdit* self) {
-	return self->isUndoAvailable();
+	return const_cast<const QLineEdit*>(self)->isUndoAvailable();
 }
 
 bool QLineEdit_IsRedoAvailable(QLineEdit* self) {
-	return self->isRedoAvailable();
+	return const_cast<const QLineEdit*>(self)->isRedoAvailable();
 }
 
 void QLineEdit_SetDragEnabled(QLineEdit* self, bool b) {
@@ -244,11 +266,20 @@ void QLineEdit_SetDragEnabled(QLineEdit* self, bool b) {
 }
 
 bool QLineEdit_DragEnabled(QLineEdit* self) {
-	return self->dragEnabled();
+	return const_cast<const QLineEdit*>(self)->dragEnabled();
+}
+
+void QLineEdit_SetCursorMoveStyle(QLineEdit* self, uintptr_t style) {
+	self->setCursorMoveStyle(static_cast<Qt::CursorMoveStyle>(style));
+}
+
+uintptr_t QLineEdit_CursorMoveStyle(QLineEdit* self) {
+	Qt::CursorMoveStyle ret = const_cast<const QLineEdit*>(self)->cursorMoveStyle();
+	return static_cast<uintptr_t>(ret);
 }
 
 void QLineEdit_InputMask(QLineEdit* self, char** _out, int* _out_Strlen) {
-	QString ret = self->inputMask();
+	QString ret = const_cast<const QLineEdit*>(self)->inputMask();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -262,7 +293,7 @@ void QLineEdit_SetInputMask(QLineEdit* self, const char* inputMask, size_t input
 }
 
 bool QLineEdit_HasAcceptableInput(QLineEdit* self) {
-	return self->hasAcceptableInput();
+	return const_cast<const QLineEdit*>(self)->hasAcceptableInput();
 }
 
 void QLineEdit_SetTextMargins(QLineEdit* self, int left, int top, int right, int bottom) {
@@ -274,13 +305,21 @@ void QLineEdit_SetTextMarginsWithMargins(QLineEdit* self, QMargins* margins) {
 }
 
 void QLineEdit_GetTextMargins(QLineEdit* self, int* left, int* top, int* right, int* bottom) {
-	self->getTextMargins(static_cast<int*>(left), static_cast<int*>(top), static_cast<int*>(right), static_cast<int*>(bottom));
+	const_cast<const QLineEdit*>(self)->getTextMargins(static_cast<int*>(left), static_cast<int*>(top), static_cast<int*>(right), static_cast<int*>(bottom));
 }
 
 QMargins* QLineEdit_TextMargins(QLineEdit* self) {
-	QMargins ret = self->textMargins();
+	QMargins ret = const_cast<const QLineEdit*>(self)->textMargins();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QMargins*>(new QMargins(ret));
+}
+
+void QLineEdit_AddAction(QLineEdit* self, QAction* action, uintptr_t position) {
+	self->addAction(action, static_cast<QLineEdit::ActionPosition>(position));
+}
+
+QAction* QLineEdit_AddAction2(QLineEdit* self, QIcon* icon, uintptr_t position) {
+	return self->addAction(*icon, static_cast<QLineEdit::ActionPosition>(position));
 }
 
 void QLineEdit_SetText(QLineEdit* self, const char* text, size_t text_Strlen) {
@@ -309,7 +348,7 @@ void QLineEdit_Cut(QLineEdit* self) {
 }
 
 void QLineEdit_Copy(QLineEdit* self) {
-	self->copy();
+	const_cast<const QLineEdit*>(self)->copy();
 }
 
 void QLineEdit_Paste(QLineEdit* self) {
@@ -401,11 +440,23 @@ void QLineEdit_connect_InputRejected(QLineEdit* self, void* slot) {
 	});
 }
 
+QVariant* QLineEdit_InputMethodQuery(QLineEdit* self, uintptr_t param1) {
+	QVariant ret = const_cast<const QLineEdit*>(self)->inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1));
+	// Copy-construct value returned type into heap-allocated copy
+	return static_cast<QVariant*>(new QVariant(ret));
+}
+
+QVariant* QLineEdit_InputMethodQuery2(QLineEdit* self, uintptr_t property, QVariant* argument) {
+	QVariant ret = const_cast<const QLineEdit*>(self)->inputMethodQuery(static_cast<Qt::InputMethodQuery>(property), *argument);
+	// Copy-construct value returned type into heap-allocated copy
+	return static_cast<QVariant*>(new QVariant(ret));
+}
+
 bool QLineEdit_Event(QLineEdit* self, QEvent* param1) {
 	return self->event(param1);
 }
 
-void QLineEdit_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
+void QLineEdit_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QLineEdit::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -414,7 +465,7 @@ void QLineEdit_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QLineEdit_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QLineEdit_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QLineEdit::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -423,7 +474,7 @@ void QLineEdit_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QLineEdit_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
+void QLineEdit_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QLineEdit::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -432,7 +483,7 @@ void QLineEdit_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QLineEdit_TrUtf83(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QLineEdit_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QLineEdit::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();

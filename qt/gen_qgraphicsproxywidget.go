@@ -35,6 +35,24 @@ func newQGraphicsProxyWidget_U(h unsafe.Pointer) *QGraphicsProxyWidget {
 	return newQGraphicsProxyWidget((*C.QGraphicsProxyWidget)(h))
 }
 
+// NewQGraphicsProxyWidget constructs a new QGraphicsProxyWidget object.
+func NewQGraphicsProxyWidget() *QGraphicsProxyWidget {
+	ret := C.QGraphicsProxyWidget_new()
+	return newQGraphicsProxyWidget(ret)
+}
+
+// NewQGraphicsProxyWidget2 constructs a new QGraphicsProxyWidget object.
+func NewQGraphicsProxyWidget2(parent *QGraphicsItem) *QGraphicsProxyWidget {
+	ret := C.QGraphicsProxyWidget_new2(parent.cPointer())
+	return newQGraphicsProxyWidget(ret)
+}
+
+// NewQGraphicsProxyWidget3 constructs a new QGraphicsProxyWidget object.
+func NewQGraphicsProxyWidget3(parent *QGraphicsItem, wFlags int) *QGraphicsProxyWidget {
+	ret := C.QGraphicsProxyWidget_new3(parent.cPointer(), (C.int)(wFlags))
+	return newQGraphicsProxyWidget(ret)
+}
+
 func (this *QGraphicsProxyWidget) MetaObject() *QMetaObject {
 	ret := C.QGraphicsProxyWidget_MetaObject(this.h)
 	return newQMetaObject_U(unsafe.Pointer(ret))

@@ -18,10 +18,14 @@ typedef struct QTouchDevice QTouchDevice;
 #endif
 
 QTouchDevice* QTouchDevice_new();
-void QTouchDevice_Devices(QTouchDevice*** _out, size_t* _out_len);
+void QTouchDevice_Devices(const QTouchDevice*** _out, size_t* _out_len);
 void QTouchDevice_Name(QTouchDevice* self, char** _out, int* _out_Strlen);
+uintptr_t QTouchDevice_Type(QTouchDevice* self);
+int QTouchDevice_Capabilities(QTouchDevice* self);
 int QTouchDevice_MaximumTouchPoints(QTouchDevice* self);
 void QTouchDevice_SetName(QTouchDevice* self, const char* name, size_t name_Strlen);
+void QTouchDevice_SetType(QTouchDevice* self, uintptr_t devType);
+void QTouchDevice_SetCapabilities(QTouchDevice* self, int caps);
 void QTouchDevice_SetMaximumTouchPoints(QTouchDevice* self, int max);
 void QTouchDevice_Delete(QTouchDevice* self);
 

@@ -1,9 +1,8 @@
-#include "gen_qbasictimer.h"
-#include "qbasictimer.h"
-
 #include <QBasicTimer>
 #include <QObject>
+#include "qbasictimer.h"
 
+#include "gen_qbasictimer.h"
 
 extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
@@ -26,15 +25,19 @@ void QBasicTimer_Swap(QBasicTimer* self, QBasicTimer* other) {
 }
 
 bool QBasicTimer_IsActive(QBasicTimer* self) {
-	return self->isActive();
+	return const_cast<const QBasicTimer*>(self)->isActive();
 }
 
 int QBasicTimer_TimerId(QBasicTimer* self) {
-	return self->timerId();
+	return const_cast<const QBasicTimer*>(self)->timerId();
 }
 
 void QBasicTimer_Start(QBasicTimer* self, int msec, QObject* obj) {
 	self->start(static_cast<int>(msec), obj);
+}
+
+void QBasicTimer_Start2(QBasicTimer* self, int msec, uintptr_t timerType, QObject* obj) {
+	self->start(static_cast<int>(msec), static_cast<Qt::TimerType>(timerType), obj);
 }
 
 void QBasicTimer_Stop(QBasicTimer* self) {

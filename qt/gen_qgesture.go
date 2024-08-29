@@ -74,6 +74,16 @@ func QGesture_TrUtf8(s string) string {
 	return ret
 }
 
+func (this *QGesture) GestureType() uintptr {
+	ret := C.QGesture_GestureType(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QGesture) State() uintptr {
+	ret := C.QGesture_State(this.h)
+	return (uintptr)(ret)
+}
+
 func (this *QGesture) HotSpot() *QPointF {
 	ret := C.QGesture_HotSpot(this.h)
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -96,6 +106,15 @@ func (this *QGesture) HasHotSpot() bool {
 
 func (this *QGesture) UnsetHotSpot() {
 	C.QGesture_UnsetHotSpot(this.h)
+}
+
+func (this *QGesture) SetGestureCancelPolicy(policy uintptr) {
+	C.QGesture_SetGestureCancelPolicy(this.h, (C.uintptr_t)(policy))
+}
+
+func (this *QGesture) GestureCancelPolicy() uintptr {
+	ret := C.QGesture_GestureCancelPolicy(this.h)
+	return (uintptr)(ret)
 }
 
 func QGesture_Tr2(s string, c string) string {
@@ -378,6 +397,24 @@ func QPinchGesture_TrUtf8(s string) string {
 	return ret
 }
 
+func (this *QPinchGesture) TotalChangeFlags() int {
+	ret := C.QPinchGesture_TotalChangeFlags(this.h)
+	return (int)(ret)
+}
+
+func (this *QPinchGesture) SetTotalChangeFlags(value int) {
+	C.QPinchGesture_SetTotalChangeFlags(this.h, (C.int)(value))
+}
+
+func (this *QPinchGesture) ChangeFlags() int {
+	ret := C.QPinchGesture_ChangeFlags(this.h)
+	return (int)(ret)
+}
+
+func (this *QPinchGesture) SetChangeFlags(value int) {
+	C.QPinchGesture_SetChangeFlags(this.h, (C.int)(value))
+}
+
 func (this *QPinchGesture) StartCenterPoint() *QPointF {
 	ret := C.QPinchGesture_StartCenterPoint(this.h)
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -590,6 +627,16 @@ func QSwipeGesture_TrUtf8(s string) string {
 	ret := C.GoStringN(_out, _out_Strlen)
 	C.free(unsafe.Pointer(_out))
 	return ret
+}
+
+func (this *QSwipeGesture) HorizontalDirection() uintptr {
+	ret := C.QSwipeGesture_HorizontalDirection(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QSwipeGesture) VerticalDirection() uintptr {
+	ret := C.QSwipeGesture_VerticalDirection(this.h)
+	return (uintptr)(ret)
 }
 
 func (this *QSwipeGesture) SwipeAngle() float64 {
@@ -977,6 +1024,11 @@ func (this *QGestureEvent) Gestures() []*QGesture {
 	return ret
 }
 
+func (this *QGestureEvent) Gesture(typeVal uintptr) *QGesture {
+	ret := C.QGestureEvent_Gesture(this.h, (C.uintptr_t)(typeVal))
+	return newQGesture_U(unsafe.Pointer(ret))
+}
+
 func (this *QGestureEvent) ActiveGestures() []*QGesture {
 	var _out **C.QGesture = nil
 	var _out_len C.size_t = 0
@@ -1017,6 +1069,23 @@ func (this *QGestureEvent) Ignore(param1 *QGesture) {
 
 func (this *QGestureEvent) IsAccepted(param1 *QGesture) bool {
 	ret := C.QGestureEvent_IsAccepted(this.h, param1.cPointer())
+	return (bool)(ret)
+}
+
+func (this *QGestureEvent) SetAccepted2(param1 uintptr, param2 bool) {
+	C.QGestureEvent_SetAccepted2(this.h, (C.uintptr_t)(param1), (C.bool)(param2))
+}
+
+func (this *QGestureEvent) AcceptWithQtGestureType(param1 uintptr) {
+	C.QGestureEvent_AcceptWithQtGestureType(this.h, (C.uintptr_t)(param1))
+}
+
+func (this *QGestureEvent) IgnoreWithQtGestureType(param1 uintptr) {
+	C.QGestureEvent_IgnoreWithQtGestureType(this.h, (C.uintptr_t)(param1))
+}
+
+func (this *QGestureEvent) IsAcceptedWithQtGestureType(param1 uintptr) bool {
+	ret := C.QGestureEvent_IsAcceptedWithQtGestureType(this.h, (C.uintptr_t)(param1))
 	return (bool)(ret)
 }
 

@@ -1,11 +1,13 @@
-#include "gen_qkeyeventtransition.h"
-#include "qkeyeventtransition.h"
-
 #include <QKeyEventTransition>
 #include <QMetaObject>
+#include <QObject>
 #include <QState>
 #include <QString>
+#include <QByteArray>
+#include <cstring>
+#include "qkeyeventtransition.h"
 
+#include "gen_qkeyeventtransition.h"
 
 extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
@@ -15,15 +17,23 @@ QKeyEventTransition* QKeyEventTransition_new() {
 	return new QKeyEventTransition();
 }
 
-QKeyEventTransition* QKeyEventTransition_new2(QState* sourceState) {
+QKeyEventTransition* QKeyEventTransition_new2(QObject* object, uintptr_t typeVal, int key) {
+	return new QKeyEventTransition(object, static_cast<QEvent::Type>(typeVal), static_cast<int>(key));
+}
+
+QKeyEventTransition* QKeyEventTransition_new3(QState* sourceState) {
 	return new QKeyEventTransition(sourceState);
 }
 
-QMetaObject* QKeyEventTransition_MetaObject(QKeyEventTransition* self) {
-	return (QMetaObject*) self->metaObject();
+QKeyEventTransition* QKeyEventTransition_new4(QObject* object, uintptr_t typeVal, int key, QState* sourceState) {
+	return new QKeyEventTransition(object, static_cast<QEvent::Type>(typeVal), static_cast<int>(key), sourceState);
 }
 
-void QKeyEventTransition_Tr(char* s, char** _out, int* _out_Strlen) {
+QMetaObject* QKeyEventTransition_MetaObject(QKeyEventTransition* self) {
+	return (QMetaObject*) const_cast<const QKeyEventTransition*>(self)->metaObject();
+}
+
+void QKeyEventTransition_Tr(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QKeyEventTransition::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -32,7 +42,7 @@ void QKeyEventTransition_Tr(char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QKeyEventTransition_TrUtf8(char* s, char** _out, int* _out_Strlen) {
+void QKeyEventTransition_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QKeyEventTransition::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -42,14 +52,23 @@ void QKeyEventTransition_TrUtf8(char* s, char** _out, int* _out_Strlen) {
 }
 
 int QKeyEventTransition_Key(QKeyEventTransition* self) {
-	return self->key();
+	return const_cast<const QKeyEventTransition*>(self)->key();
 }
 
 void QKeyEventTransition_SetKey(QKeyEventTransition* self, int key) {
 	self->setKey(static_cast<int>(key));
 }
 
-void QKeyEventTransition_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
+int QKeyEventTransition_ModifierMask(QKeyEventTransition* self) {
+	Qt::KeyboardModifiers ret = const_cast<const QKeyEventTransition*>(self)->modifierMask();
+	return static_cast<int>(ret);
+}
+
+void QKeyEventTransition_SetModifierMask(QKeyEventTransition* self, int modifiers) {
+	self->setModifierMask(static_cast<Qt::KeyboardModifiers>(modifiers));
+}
+
+void QKeyEventTransition_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QKeyEventTransition::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -58,7 +77,7 @@ void QKeyEventTransition_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QKeyEventTransition_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QKeyEventTransition_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QKeyEventTransition::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -67,7 +86,7 @@ void QKeyEventTransition_Tr3(char* s, char* c, int n, char** _out, int* _out_Str
 	*_out_Strlen = b.length();
 }
 
-void QKeyEventTransition_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
+void QKeyEventTransition_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QKeyEventTransition::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -76,7 +95,7 @@ void QKeyEventTransition_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen
 	*_out_Strlen = b.length();
 }
 
-void QKeyEventTransition_TrUtf83(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QKeyEventTransition_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QKeyEventTransition::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();

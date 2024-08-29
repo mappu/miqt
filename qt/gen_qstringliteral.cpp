@@ -1,8 +1,7 @@
-#include "gen_qstringliteral.h"
+#include <QStringDataPtr>
 #include "qstringliteral.h"
 
-#include <QStringDataPtr>
-
+#include "gen_qstringliteral.h"
 
 extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);

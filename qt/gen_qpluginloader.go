@@ -171,6 +171,15 @@ func (this *QPluginLoader) ErrorString() string {
 	return ret
 }
 
+func (this *QPluginLoader) SetLoadHints(loadHints int) {
+	C.QPluginLoader_SetLoadHints(this.h, (C.int)(loadHints))
+}
+
+func (this *QPluginLoader) LoadHints() int {
+	ret := C.QPluginLoader_LoadHints(this.h)
+	return (int)(ret)
+}
+
 func QPluginLoader_Tr2(s string, c string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))

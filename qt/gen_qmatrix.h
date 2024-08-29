@@ -33,9 +33,10 @@ typedef struct QRectF QRectF;
 typedef struct QRegion QRegion;
 #endif
 
-QMatrix* QMatrix_new();
-QMatrix* QMatrix_new2(double m11, double m12, double m21, double m22, double dx, double dy);
-QMatrix* QMatrix_new3(QMatrix* other);
+QMatrix* QMatrix_new(uintptr_t param1);
+QMatrix* QMatrix_new2();
+QMatrix* QMatrix_new3(double m11, double m12, double m21, double m22, double dx, double dy);
+QMatrix* QMatrix_new4(QMatrix* other);
 void QMatrix_OperatorAssign(QMatrix* self, QMatrix* param1);
 void QMatrix_SetMatrix(QMatrix* self, double m11, double m12, double m21, double m22, double dx, double dy);
 double QMatrix_M11(QMatrix* self);

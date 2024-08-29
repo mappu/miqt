@@ -75,6 +75,24 @@ func QFontComboBox_TrUtf8(s string) string {
 	return ret
 }
 
+func (this *QFontComboBox) SetWritingSystem(writingSystem uintptr) {
+	C.QFontComboBox_SetWritingSystem(this.h, (C.uintptr_t)(writingSystem))
+}
+
+func (this *QFontComboBox) WritingSystem() uintptr {
+	ret := C.QFontComboBox_WritingSystem(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QFontComboBox) SetFontFilters(filters int) {
+	C.QFontComboBox_SetFontFilters(this.h, (C.int)(filters))
+}
+
+func (this *QFontComboBox) FontFilters() int {
+	ret := C.QFontComboBox_FontFilters(this.h)
+	return (int)(ret)
+}
+
 func (this *QFontComboBox) CurrentFont() *QFont {
 	ret := C.QFontComboBox_CurrentFont(this.h)
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer

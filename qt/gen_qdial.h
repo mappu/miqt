@@ -26,8 +26,8 @@ typedef struct QWidget QWidget;
 QDial* QDial_new();
 QDial* QDial_new2(QWidget* parent);
 QMetaObject* QDial_MetaObject(QDial* self);
-void QDial_Tr(char* s, char** _out, int* _out_Strlen);
-void QDial_TrUtf8(char* s, char** _out, int* _out_Strlen);
+void QDial_Tr(const char* s, char** _out, int* _out_Strlen);
+void QDial_TrUtf8(const char* s, char** _out, int* _out_Strlen);
 bool QDial_Wrapping(QDial* self);
 int QDial_NotchSize(QDial* self);
 void QDial_SetNotchTarget(QDial* self, double target);
@@ -37,10 +37,10 @@ QSize* QDial_SizeHint(QDial* self);
 QSize* QDial_MinimumSizeHint(QDial* self);
 void QDial_SetNotchesVisible(QDial* self, bool visible);
 void QDial_SetWrapping(QDial* self, bool on);
-void QDial_Tr2(char* s, char* c, char** _out, int* _out_Strlen);
-void QDial_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen);
-void QDial_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen);
-void QDial_TrUtf83(char* s, char* c, int n, char** _out, int* _out_Strlen);
+void QDial_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
+void QDial_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+void QDial_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
+void QDial_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
 void QDial_Delete(QDial* self);
 
 #ifdef __cplusplus

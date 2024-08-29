@@ -55,11 +55,11 @@ func (this *QCborStreamWriter) Device() *QIODevice {
 }
 
 func (this *QCborStreamWriter) Append(u uint64) {
-	C.QCborStreamWriter_Append(this.h, (C.uint64_t)(u))
+	C.QCborStreamWriter_Append(this.h, (C.ulonglong)(u))
 }
 
 func (this *QCborStreamWriter) AppendWithQint64(i int64) {
-	C.QCborStreamWriter_AppendWithQint64(this.h, (C.int64_t)(i))
+	C.QCborStreamWriter_AppendWithQint64(this.h, (C.longlong)(i))
 }
 
 func (this *QCborStreamWriter) AppendWithBa(ba *QByteArray) {
@@ -106,10 +106,10 @@ func (this *QCborStreamWriter) AppendWithUint(u uint) {
 	C.QCborStreamWriter_AppendWithUint(this.h, (C.uint)(u))
 }
 
-func (this *QCborStreamWriter) AppendWithStr(str string) {
+func (this *QCborStreamWriter) Append4(str string) {
 	str_Cstring := C.CString(str)
 	defer C.free(unsafe.Pointer(str_Cstring))
-	C.QCborStreamWriter_AppendWithStr(this.h, str_Cstring)
+	C.QCborStreamWriter_Append4(this.h, str_Cstring)
 }
 
 func (this *QCborStreamWriter) StartArray() {
@@ -117,7 +117,7 @@ func (this *QCborStreamWriter) StartArray() {
 }
 
 func (this *QCborStreamWriter) StartArrayWithCount(count uint64) {
-	C.QCborStreamWriter_StartArrayWithCount(this.h, (C.uint64_t)(count))
+	C.QCborStreamWriter_StartArrayWithCount(this.h, (C.ulonglong)(count))
 }
 
 func (this *QCborStreamWriter) EndArray() bool {
@@ -130,7 +130,7 @@ func (this *QCborStreamWriter) StartMap() {
 }
 
 func (this *QCborStreamWriter) StartMapWithCount(count uint64) {
-	C.QCborStreamWriter_StartMapWithCount(this.h, (C.uint64_t)(count))
+	C.QCborStreamWriter_StartMapWithCount(this.h, (C.ulonglong)(count))
 }
 
 func (this *QCborStreamWriter) EndMap() bool {
@@ -138,10 +138,10 @@ func (this *QCborStreamWriter) EndMap() bool {
 	return (bool)(ret)
 }
 
-func (this *QCborStreamWriter) Append2(str string, size uint64) {
+func (this *QCborStreamWriter) Append22(str string, size uint64) {
 	str_Cstring := C.CString(str)
 	defer C.free(unsafe.Pointer(str_Cstring))
-	C.QCborStreamWriter_Append2(this.h, str_Cstring, (C.size_t)(size))
+	C.QCborStreamWriter_Append22(this.h, str_Cstring, (C.size_t)(size))
 }
 
 func (this *QCborStreamWriter) Delete() {

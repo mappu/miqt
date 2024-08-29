@@ -18,6 +18,7 @@ class QProgressBar;
 class QProgressDialog;
 class QPushButton;
 class QSize;
+class QWidget;
 #else
 typedef struct QLabel QLabel;
 typedef struct QMetaObject QMetaObject;
@@ -25,11 +26,18 @@ typedef struct QProgressBar QProgressBar;
 typedef struct QProgressDialog QProgressDialog;
 typedef struct QPushButton QPushButton;
 typedef struct QSize QSize;
+typedef struct QWidget QWidget;
 #endif
 
+QProgressDialog* QProgressDialog_new();
+QProgressDialog* QProgressDialog_new2(const char* labelText, size_t labelText_Strlen, const char* cancelButtonText, size_t cancelButtonText_Strlen, int minimum, int maximum);
+QProgressDialog* QProgressDialog_new3(QWidget* parent);
+QProgressDialog* QProgressDialog_new4(QWidget* parent, int flags);
+QProgressDialog* QProgressDialog_new5(const char* labelText, size_t labelText_Strlen, const char* cancelButtonText, size_t cancelButtonText_Strlen, int minimum, int maximum, QWidget* parent);
+QProgressDialog* QProgressDialog_new6(const char* labelText, size_t labelText_Strlen, const char* cancelButtonText, size_t cancelButtonText_Strlen, int minimum, int maximum, QWidget* parent, int flags);
 QMetaObject* QProgressDialog_MetaObject(QProgressDialog* self);
-void QProgressDialog_Tr(char* s, char** _out, int* _out_Strlen);
-void QProgressDialog_TrUtf8(char* s, char** _out, int* _out_Strlen);
+void QProgressDialog_Tr(const char* s, char** _out, int* _out_Strlen);
+void QProgressDialog_TrUtf8(const char* s, char** _out, int* _out_Strlen);
 void QProgressDialog_SetLabel(QProgressDialog* self, QLabel* label);
 void QProgressDialog_SetCancelButton(QProgressDialog* self, QPushButton* button);
 void QProgressDialog_SetBar(QProgressDialog* self, QProgressBar* bar);
@@ -55,10 +63,10 @@ void QProgressDialog_SetCancelButtonText(QProgressDialog* self, const char* text
 void QProgressDialog_SetMinimumDuration(QProgressDialog* self, int ms);
 void QProgressDialog_Canceled(QProgressDialog* self);
 void QProgressDialog_connect_Canceled(QProgressDialog* self, void* slot);
-void QProgressDialog_Tr2(char* s, char* c, char** _out, int* _out_Strlen);
-void QProgressDialog_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen);
-void QProgressDialog_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen);
-void QProgressDialog_TrUtf83(char* s, char* c, int n, char** _out, int* _out_Strlen);
+void QProgressDialog_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
+void QProgressDialog_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+void QProgressDialog_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
+void QProgressDialog_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
 void QProgressDialog_Delete(QProgressDialog* self);
 
 #ifdef __cplusplus

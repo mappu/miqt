@@ -1,21 +1,22 @@
-#include "gen_qfuturewatcher.h"
-#include "qfuturewatcher.h"
-
 #include <QEvent>
 #include <QFutureWatcherBase>
 #include <QMetaObject>
 #include <QString>
+#include <QByteArray>
+#include <cstring>
+#include "qfuturewatcher.h"
 
+#include "gen_qfuturewatcher.h"
 
 extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
 }
 
 QMetaObject* QFutureWatcherBase_MetaObject(QFutureWatcherBase* self) {
-	return (QMetaObject*) self->metaObject();
+	return (QMetaObject*) const_cast<const QFutureWatcherBase*>(self)->metaObject();
 }
 
-void QFutureWatcherBase_Tr(char* s, char** _out, int* _out_Strlen) {
+void QFutureWatcherBase_Tr(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QFutureWatcherBase::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -24,7 +25,7 @@ void QFutureWatcherBase_Tr(char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QFutureWatcherBase_TrUtf8(char* s, char** _out, int* _out_Strlen) {
+void QFutureWatcherBase_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QFutureWatcherBase::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -34,19 +35,19 @@ void QFutureWatcherBase_TrUtf8(char* s, char** _out, int* _out_Strlen) {
 }
 
 int QFutureWatcherBase_ProgressValue(QFutureWatcherBase* self) {
-	return self->progressValue();
+	return const_cast<const QFutureWatcherBase*>(self)->progressValue();
 }
 
 int QFutureWatcherBase_ProgressMinimum(QFutureWatcherBase* self) {
-	return self->progressMinimum();
+	return const_cast<const QFutureWatcherBase*>(self)->progressMinimum();
 }
 
 int QFutureWatcherBase_ProgressMaximum(QFutureWatcherBase* self) {
-	return self->progressMaximum();
+	return const_cast<const QFutureWatcherBase*>(self)->progressMaximum();
 }
 
 void QFutureWatcherBase_ProgressText(QFutureWatcherBase* self, char** _out, int* _out_Strlen) {
-	QString ret = self->progressText();
+	QString ret = const_cast<const QFutureWatcherBase*>(self)->progressText();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -55,23 +56,23 @@ void QFutureWatcherBase_ProgressText(QFutureWatcherBase* self, char** _out, int*
 }
 
 bool QFutureWatcherBase_IsStarted(QFutureWatcherBase* self) {
-	return self->isStarted();
+	return const_cast<const QFutureWatcherBase*>(self)->isStarted();
 }
 
 bool QFutureWatcherBase_IsFinished(QFutureWatcherBase* self) {
-	return self->isFinished();
+	return const_cast<const QFutureWatcherBase*>(self)->isFinished();
 }
 
 bool QFutureWatcherBase_IsRunning(QFutureWatcherBase* self) {
-	return self->isRunning();
+	return const_cast<const QFutureWatcherBase*>(self)->isRunning();
 }
 
 bool QFutureWatcherBase_IsCanceled(QFutureWatcherBase* self) {
-	return self->isCanceled();
+	return const_cast<const QFutureWatcherBase*>(self)->isCanceled();
 }
 
 bool QFutureWatcherBase_IsPaused(QFutureWatcherBase* self) {
-	return self->isPaused();
+	return const_cast<const QFutureWatcherBase*>(self)->isPaused();
 }
 
 void QFutureWatcherBase_WaitForFinished(QFutureWatcherBase* self) {
@@ -207,7 +208,7 @@ void QFutureWatcherBase_TogglePaused(QFutureWatcherBase* self) {
 	self->togglePaused();
 }
 
-void QFutureWatcherBase_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
+void QFutureWatcherBase_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QFutureWatcherBase::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -216,7 +217,7 @@ void QFutureWatcherBase_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QFutureWatcherBase_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QFutureWatcherBase_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QFutureWatcherBase::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -225,7 +226,7 @@ void QFutureWatcherBase_Tr3(char* s, char* c, int n, char** _out, int* _out_Strl
 	*_out_Strlen = b.length();
 }
 
-void QFutureWatcherBase_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
+void QFutureWatcherBase_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QFutureWatcherBase::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -234,7 +235,7 @@ void QFutureWatcherBase_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen)
 	*_out_Strlen = b.length();
 }
 
-void QFutureWatcherBase_TrUtf83(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QFutureWatcherBase_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QFutureWatcherBase::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();

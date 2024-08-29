@@ -34,6 +34,24 @@ func newQOperatingSystemVersion_U(h unsafe.Pointer) *QOperatingSystemVersion {
 	return newQOperatingSystemVersion((*C.QOperatingSystemVersion)(h))
 }
 
+// NewQOperatingSystemVersion constructs a new QOperatingSystemVersion object.
+func NewQOperatingSystemVersion(osType uintptr, vmajor int) *QOperatingSystemVersion {
+	ret := C.QOperatingSystemVersion_new((C.uintptr_t)(osType), (C.int)(vmajor))
+	return newQOperatingSystemVersion(ret)
+}
+
+// NewQOperatingSystemVersion2 constructs a new QOperatingSystemVersion object.
+func NewQOperatingSystemVersion2(osType uintptr, vmajor int, vminor int) *QOperatingSystemVersion {
+	ret := C.QOperatingSystemVersion_new2((C.uintptr_t)(osType), (C.int)(vmajor), (C.int)(vminor))
+	return newQOperatingSystemVersion(ret)
+}
+
+// NewQOperatingSystemVersion3 constructs a new QOperatingSystemVersion object.
+func NewQOperatingSystemVersion3(osType uintptr, vmajor int, vminor int, vmicro int) *QOperatingSystemVersion {
+	ret := C.QOperatingSystemVersion_new3((C.uintptr_t)(osType), (C.int)(vmajor), (C.int)(vminor), (C.int)(vmicro))
+	return newQOperatingSystemVersion(ret)
+}
+
 func QOperatingSystemVersion_Current() *QOperatingSystemVersion {
 	ret := C.QOperatingSystemVersion_Current()
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -43,6 +61,11 @@ func QOperatingSystemVersion_Current() *QOperatingSystemVersion {
 		runtime.KeepAlive(ret2.h)
 	})
 	return ret1
+}
+
+func QOperatingSystemVersion_CurrentType() uintptr {
+	ret := C.QOperatingSystemVersion_CurrentType()
+	return (uintptr)(ret)
 }
 
 func (this *QOperatingSystemVersion) MajorVersion() int {
@@ -63,6 +86,11 @@ func (this *QOperatingSystemVersion) MicroVersion() int {
 func (this *QOperatingSystemVersion) SegmentCount() int {
 	ret := C.QOperatingSystemVersion_SegmentCount(this.h)
 	return (int)(ret)
+}
+
+func (this *QOperatingSystemVersion) Type() uintptr {
+	ret := C.QOperatingSystemVersion_Type(this.h)
+	return (uintptr)(ret)
 }
 
 func (this *QOperatingSystemVersion) Name() string {

@@ -459,6 +459,11 @@ func (this *QXmlStreamReader) AtEnd() bool {
 	return (bool)(ret)
 }
 
+func (this *QXmlStreamReader) ReadNext() uintptr {
+	ret := C.QXmlStreamReader_ReadNext(this.h)
+	return (uintptr)(ret)
+}
+
 func (this *QXmlStreamReader) ReadNextStartElement() bool {
 	ret := C.QXmlStreamReader_ReadNextStartElement(this.h)
 	return (bool)(ret)
@@ -466,6 +471,11 @@ func (this *QXmlStreamReader) ReadNextStartElement() bool {
 
 func (this *QXmlStreamReader) SkipCurrentElement() {
 	C.QXmlStreamReader_SkipCurrentElement(this.h)
+}
+
+func (this *QXmlStreamReader) TokenType() uintptr {
+	ret := C.QXmlStreamReader_TokenType(this.h)
+	return (uintptr)(ret)
 }
 
 func (this *QXmlStreamReader) TokenString() string {
@@ -561,8 +571,66 @@ func (this *QXmlStreamReader) CharacterOffset() int64 {
 	return (int64)(ret)
 }
 
+func (this *QXmlStreamReader) ReadElementText() string {
+	var _out *C.char = nil
+	var _out_Strlen C.int = 0
+	C.QXmlStreamReader_ReadElementText(this.h, &_out, &_out_Strlen)
+	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func (this *QXmlStreamReader) NamespaceDeclarations() []QXmlStreamNamespaceDeclaration {
+	var _out **C.QXmlStreamNamespaceDeclaration = nil
+	var _out_len C.size_t = 0
+	C.QXmlStreamReader_NamespaceDeclarations(this.h, &_out, &_out_len)
+	ret := make([]QXmlStreamNamespaceDeclaration, int(_out_len))
+	_outCast := (*[0xffff]*C.QXmlStreamNamespaceDeclaration)(unsafe.Pointer(_out)) // so fresh so clean
+	for i := 0; i < int(_out_len); i++ {
+		ret[i] = *newQXmlStreamNamespaceDeclaration(_outCast[i])
+	}
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
 func (this *QXmlStreamReader) AddExtraNamespaceDeclaration(extraNamespaceDeclaraction *QXmlStreamNamespaceDeclaration) {
 	C.QXmlStreamReader_AddExtraNamespaceDeclaration(this.h, extraNamespaceDeclaraction.cPointer())
+}
+
+func (this *QXmlStreamReader) AddExtraNamespaceDeclarations(extraNamespaceDeclaractions []QXmlStreamNamespaceDeclaration) {
+	// For the C ABI, malloc a C array of raw pointers
+	extraNamespaceDeclaractions_CArray := (*[0xffff]*C.QXmlStreamNamespaceDeclaration)(C.malloc(C.ulong(8 * len(extraNamespaceDeclaractions))))
+	defer C.free(unsafe.Pointer(extraNamespaceDeclaractions_CArray))
+	for i := range extraNamespaceDeclaractions {
+		extraNamespaceDeclaractions_CArray[i] = extraNamespaceDeclaractions[i].cPointer()
+	}
+	C.QXmlStreamReader_AddExtraNamespaceDeclarations(this.h, &extraNamespaceDeclaractions_CArray[0], C.ulong(len(extraNamespaceDeclaractions)))
+}
+
+func (this *QXmlStreamReader) NotationDeclarations() []QXmlStreamNotationDeclaration {
+	var _out **C.QXmlStreamNotationDeclaration = nil
+	var _out_len C.size_t = 0
+	C.QXmlStreamReader_NotationDeclarations(this.h, &_out, &_out_len)
+	ret := make([]QXmlStreamNotationDeclaration, int(_out_len))
+	_outCast := (*[0xffff]*C.QXmlStreamNotationDeclaration)(unsafe.Pointer(_out)) // so fresh so clean
+	for i := 0; i < int(_out_len); i++ {
+		ret[i] = *newQXmlStreamNotationDeclaration(_outCast[i])
+	}
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func (this *QXmlStreamReader) EntityDeclarations() []QXmlStreamEntityDeclaration {
+	var _out **C.QXmlStreamEntityDeclaration = nil
+	var _out_len C.size_t = 0
+	C.QXmlStreamReader_EntityDeclarations(this.h, &_out, &_out_len)
+	ret := make([]QXmlStreamEntityDeclaration, int(_out_len))
+	_outCast := (*[0xffff]*C.QXmlStreamEntityDeclaration)(unsafe.Pointer(_out)) // so fresh so clean
+	for i := 0; i < int(_out_len); i++ {
+		ret[i] = *newQXmlStreamEntityDeclaration(_outCast[i])
+	}
+	C.free(unsafe.Pointer(_out))
+	return ret
 }
 
 func (this *QXmlStreamReader) EntityExpansionLimit() int {
@@ -587,6 +655,11 @@ func (this *QXmlStreamReader) ErrorString() string {
 	return ret
 }
 
+func (this *QXmlStreamReader) Error() uintptr {
+	ret := C.QXmlStreamReader_Error(this.h)
+	return (uintptr)(ret)
+}
+
 func (this *QXmlStreamReader) HasError() bool {
 	ret := C.QXmlStreamReader_HasError(this.h)
 	return (bool)(ret)
@@ -599,6 +672,15 @@ func (this *QXmlStreamReader) SetEntityResolver(resolver *QXmlStreamEntityResolv
 func (this *QXmlStreamReader) EntityResolver() *QXmlStreamEntityResolver {
 	ret := C.QXmlStreamReader_EntityResolver(this.h)
 	return newQXmlStreamEntityResolver_U(unsafe.Pointer(ret))
+}
+
+func (this *QXmlStreamReader) ReadElementText1(behaviour uintptr) string {
+	var _out *C.char = nil
+	var _out_Strlen C.int = 0
+	C.QXmlStreamReader_ReadElementText1(this.h, (C.uintptr_t)(behaviour), &_out, &_out_Strlen)
+	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
 }
 
 func (this *QXmlStreamReader) RaiseError1(message string) {

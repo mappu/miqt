@@ -59,11 +59,12 @@ func ImportHeaderForClass(className string) bool {
 }
 
 func AllowClass(className string) bool {
-	if className[0] != 'Q' {
+
+	if strings.HasSuffix(className, "Private") {
 		return false
 	}
 
-	if strings.HasSuffix(className, "Private") {
+	if strings.Contains(className, "QPrivateSignal") {
 		return false
 	}
 
@@ -81,7 +82,7 @@ func AllowClass(className string) bool {
 	return true
 }
 
-func CheckComplexity(p CppParameter) error {
+func CheckComplexity(p CppParameter, isReturnType bool) error {
 
 	if p.QMapOf() {
 		return ErrTooComplex // Example???
@@ -93,13 +94,72 @@ func CheckComplexity(p CppParameter) error {
 		return ErrTooComplex // e.g. QStateMachine
 	}
 	if t, ok := p.QListOf(); ok {
-		if err := CheckComplexity(t); err != nil { // e.g. QGradientStops is a QVector<> (OK) of QGradientStop (not OK)
+		if err := CheckComplexity(t, isReturnType); err != nil { // e.g. QGradientStops is a QVector<> (OK) of QGradientStop (not OK)
 			return err
 		}
 	}
 
+	if strings.Contains(p.ParameterType, "(*)") { // Function pointer.
+		return ErrTooComplex // e.g. QAccessible_InstallFactory
+	}
 	if strings.HasPrefix(p.ParameterType, "StringResult<") {
 		return ErrTooComplex // e.g. qcborstreamreader.h
+	}
+	if strings.HasPrefix(p.ParameterType, "QGenericMatrix<") {
+		return ErrTooComplex // e.g. qmatrix4x4.h
+	}
+	if strings.HasPrefix(p.ParameterType, "QUrlTwoFlags<") {
+		return ErrTooComplex // e.g. qurl.h
+	}
+	if strings.HasPrefix(p.ParameterType, "std::") {
+		// std::initializer           e.g. qcborarray.h
+		// std::string                QByteArray->toStdString(). There are QString overloads already
+		// std::nullptr_t             Qcborstreamwriter
+		// std::chrono::nanoseconds   QDeadlineTimer_RemainingTimeAsDuration
+		// std::seed_seq              QRandom
+		return ErrTooComplex
+	}
+	if strings.Contains(p.ParameterType, `::reverse_iterator`) || strings.Contains(p.ParameterType, `::const_reverse_iterator`) {
+		return ErrTooComplex // e.g. qbytearray.h
+	}
+	if strings.Contains(p.ParameterType, `Iterator::value_type`) {
+		return ErrTooComplex // e.g. qcbormap
+	}
+	if strings.Contains(p.ParameterType, `::QPrivate`) {
+		return ErrTooComplex // e.g. QAbstractItemModel::QPrivateSignal
+	}
+
+	// Some QFoo constructors take a QFooPrivate
+	if p.ParameterType[0] == 'Q' && strings.HasSuffix(p.ParameterType, "Private") && !isReturnType {
+		return ErrTooComplex
+	}
+
+	// If any parameters are QString*, skip the method
+	// QDebug constructor
+	// QXmlStreamWriter constructor
+	// QFile::moveToTrash
+	// QLockFile::getLockInfo
+	// QTextDecoder::toUnicode
+	// QTextStream::readLineInto
+	// QFileDialog::getOpenFileName selectedFilter* param
+	if p.ParameterType == "QString" && p.Pointer && !isReturnType { // Out-parameters
+		return ErrTooComplex
+	}
+
+	if p.IsFlagType() && p.Pointer && !isReturnType {
+		return ErrTooComplex // e.g. qformlayout. The cast doesn't survive through a pointer parameter
+	}
+
+	if p.Pointer && p.PointerCount >= 2 { // Out-parameters
+		if p.ParameterType != "char" {
+			return ErrTooComplex // e.g. QGraphicsItem_IsBlockedByModalPanel1
+		}
+		if p.ParameterType == "char" && p.ParameterName == "xpm" {
+			// Array parameters:
+			// - QPixmap and QImage ctors from an xpm char*[]
+			// TODO support these
+			return ErrTooComplex
+		}
 	}
 
 	switch p.ParameterType {
@@ -117,12 +177,18 @@ func CheckComplexity(p CppParameter) error {
 		"char16_t",                        // e.g. QChar() constructor overload, just unnecessary
 		"char32_t",                        // e.g. QDebug().operator<< overload, unnecessary
 		"wchar_t",                         // e.g. qstringview.h overloads, unnecessary
+		"QStringView::const_pointer",      // e.g. qstringview.h data()
+		"QStringView::const_iterator",     // e.g. qstringview.h
+		"QStringView::value_type",         // e.g. qstringview.h
+		"FILE",                            // e.g. qfile.h constructors
+		"qInternalCallback",               // e.g. qnamespace.h
 		"picture_io_handler",              // e.g. QPictureIO::DefineIOHandler callback function
 		"QPlatformNativeInterface",        // e.g. QGuiApplication::platformNativeInterface(). Private type, could probably expose as uintptr. n.b. Changes in Qt6
 		"QFunctionPointer",                // e.g. QGuiApplication_PlatformFunction
 		"QGraphicsEffectSource",           // e.g. used by qgraphicseffect.h, but the definition is in ????
 		"QAbstractUndoItem",               // e.g. Defined in qtextdocument.h
 		"QTextObjectInterface",            // e.g. qabstracttextdocumentlayout.h
+		"QUrl::FormattingOptions",         // e.g. QUrl.h. Typedef for a complex template type
 		"QXmlStreamEntityDeclarations",    // e.g. qxmlstream.h. The class definition was blacklisted for ???? reason so don't allow it as a parameter either
 		"QXmlStreamNamespaceDeclarations", // e.g. qxmlstream.h. As above
 		"QXmlStreamNotationDeclarations",  // e.g. qxmlstream.h. As above

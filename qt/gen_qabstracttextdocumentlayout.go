@@ -63,6 +63,15 @@ func QAbstractTextDocumentLayout_TrUtf8(s string) string {
 	return ret
 }
 
+func (this *QAbstractTextDocumentLayout) Draw(painter *QPainter, context *QAbstractTextDocumentLayout__PaintContext) {
+	C.QAbstractTextDocumentLayout_Draw(this.h, painter.cPointer(), context.cPointer())
+}
+
+func (this *QAbstractTextDocumentLayout) HitTest(point *QPointF, accuracy uintptr) int {
+	ret := C.QAbstractTextDocumentLayout_HitTest(this.h, point.cPointer(), (C.uintptr_t)(accuracy))
+	return (int)(ret)
+}
+
 func (this *QAbstractTextDocumentLayout) AnchorAt(pos *QPointF) string {
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
@@ -311,4 +320,68 @@ func (this *QTextObjectInterface) DrawObject(painter *QPainter, rect *QRectF, do
 
 func (this *QTextObjectInterface) Delete() {
 	C.QTextObjectInterface_Delete(this.h)
+}
+
+type QAbstractTextDocumentLayout__Selection struct {
+	h *C.QAbstractTextDocumentLayout__Selection
+}
+
+func (this *QAbstractTextDocumentLayout__Selection) cPointer() *C.QAbstractTextDocumentLayout__Selection {
+	if this == nil {
+		return nil
+	}
+	return this.h
+}
+
+func newQAbstractTextDocumentLayout__Selection(h *C.QAbstractTextDocumentLayout__Selection) *QAbstractTextDocumentLayout__Selection {
+	return &QAbstractTextDocumentLayout__Selection{h: h}
+}
+
+func newQAbstractTextDocumentLayout__Selection_U(h unsafe.Pointer) *QAbstractTextDocumentLayout__Selection {
+	return newQAbstractTextDocumentLayout__Selection((*C.QAbstractTextDocumentLayout__Selection)(h))
+}
+
+// NewQAbstractTextDocumentLayout__Selection constructs a new QAbstractTextDocumentLayout::Selection object.
+func NewQAbstractTextDocumentLayout__Selection(param1 *QAbstractTextDocumentLayout__Selection) *QAbstractTextDocumentLayout__Selection {
+	ret := C.QAbstractTextDocumentLayout__Selection_new(param1.cPointer())
+	return newQAbstractTextDocumentLayout__Selection(ret)
+}
+
+func (this *QAbstractTextDocumentLayout__Selection) Delete() {
+	C.QAbstractTextDocumentLayout__Selection_Delete(this.h)
+}
+
+type QAbstractTextDocumentLayout__PaintContext struct {
+	h *C.QAbstractTextDocumentLayout__PaintContext
+}
+
+func (this *QAbstractTextDocumentLayout__PaintContext) cPointer() *C.QAbstractTextDocumentLayout__PaintContext {
+	if this == nil {
+		return nil
+	}
+	return this.h
+}
+
+func newQAbstractTextDocumentLayout__PaintContext(h *C.QAbstractTextDocumentLayout__PaintContext) *QAbstractTextDocumentLayout__PaintContext {
+	return &QAbstractTextDocumentLayout__PaintContext{h: h}
+}
+
+func newQAbstractTextDocumentLayout__PaintContext_U(h unsafe.Pointer) *QAbstractTextDocumentLayout__PaintContext {
+	return newQAbstractTextDocumentLayout__PaintContext((*C.QAbstractTextDocumentLayout__PaintContext)(h))
+}
+
+// NewQAbstractTextDocumentLayout__PaintContext constructs a new QAbstractTextDocumentLayout::PaintContext object.
+func NewQAbstractTextDocumentLayout__PaintContext() *QAbstractTextDocumentLayout__PaintContext {
+	ret := C.QAbstractTextDocumentLayout__PaintContext_new()
+	return newQAbstractTextDocumentLayout__PaintContext(ret)
+}
+
+// NewQAbstractTextDocumentLayout__PaintContext2 constructs a new QAbstractTextDocumentLayout::PaintContext object.
+func NewQAbstractTextDocumentLayout__PaintContext2(param1 *QAbstractTextDocumentLayout__PaintContext) *QAbstractTextDocumentLayout__PaintContext {
+	ret := C.QAbstractTextDocumentLayout__PaintContext_new2(param1.cPointer())
+	return newQAbstractTextDocumentLayout__PaintContext(ret)
+}
+
+func (this *QAbstractTextDocumentLayout__PaintContext) Delete() {
+	C.QAbstractTextDocumentLayout__PaintContext_Delete(this.h)
 }

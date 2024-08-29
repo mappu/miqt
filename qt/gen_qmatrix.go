@@ -35,20 +35,26 @@ func newQMatrix_U(h unsafe.Pointer) *QMatrix {
 }
 
 // NewQMatrix constructs a new QMatrix object.
-func NewQMatrix() *QMatrix {
-	ret := C.QMatrix_new()
+func NewQMatrix(param1 uintptr) *QMatrix {
+	ret := C.QMatrix_new((C.uintptr_t)(param1))
 	return newQMatrix(ret)
 }
 
 // NewQMatrix2 constructs a new QMatrix object.
-func NewQMatrix2(m11 float64, m12 float64, m21 float64, m22 float64, dx float64, dy float64) *QMatrix {
-	ret := C.QMatrix_new2((C.double)(m11), (C.double)(m12), (C.double)(m21), (C.double)(m22), (C.double)(dx), (C.double)(dy))
+func NewQMatrix2() *QMatrix {
+	ret := C.QMatrix_new2()
 	return newQMatrix(ret)
 }
 
 // NewQMatrix3 constructs a new QMatrix object.
-func NewQMatrix3(other *QMatrix) *QMatrix {
-	ret := C.QMatrix_new3(other.cPointer())
+func NewQMatrix3(m11 float64, m12 float64, m21 float64, m22 float64, dx float64, dy float64) *QMatrix {
+	ret := C.QMatrix_new3((C.double)(m11), (C.double)(m12), (C.double)(m21), (C.double)(m22), (C.double)(dx), (C.double)(dy))
+	return newQMatrix(ret)
+}
+
+// NewQMatrix4 constructs a new QMatrix object.
+func NewQMatrix4(other *QMatrix) *QMatrix {
+	ret := C.QMatrix_new4(other.cPointer())
 	return newQMatrix(ret)
 }
 

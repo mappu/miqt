@@ -36,6 +36,8 @@ void QCommandLineOption_Description(QCommandLineOption* self, char** _out, int* 
 void QCommandLineOption_SetDefaultValue(QCommandLineOption* self, const char* defaultValue, size_t defaultValue_Strlen);
 void QCommandLineOption_SetDefaultValues(QCommandLineOption* self, char** defaultValues, uint64_t* defaultValues_Lengths, size_t defaultValues_len);
 void QCommandLineOption_DefaultValues(QCommandLineOption* self, char*** _out, int** _out_Lengths, size_t* _out_len);
+int QCommandLineOption_Flags(QCommandLineOption* self);
+void QCommandLineOption_SetFlags(QCommandLineOption* self, int aflags);
 void QCommandLineOption_SetHidden(QCommandLineOption* self, bool hidden);
 bool QCommandLineOption_IsHidden(QCommandLineOption* self);
 void QCommandLineOption_Delete(QCommandLineOption* self);

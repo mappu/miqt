@@ -36,6 +36,54 @@ func newQProgressDialog_U(h unsafe.Pointer) *QProgressDialog {
 	return newQProgressDialog((*C.QProgressDialog)(h))
 }
 
+// NewQProgressDialog constructs a new QProgressDialog object.
+func NewQProgressDialog() *QProgressDialog {
+	ret := C.QProgressDialog_new()
+	return newQProgressDialog(ret)
+}
+
+// NewQProgressDialog2 constructs a new QProgressDialog object.
+func NewQProgressDialog2(labelText string, cancelButtonText string, minimum int, maximum int) *QProgressDialog {
+	labelText_Cstring := C.CString(labelText)
+	defer C.free(unsafe.Pointer(labelText_Cstring))
+	cancelButtonText_Cstring := C.CString(cancelButtonText)
+	defer C.free(unsafe.Pointer(cancelButtonText_Cstring))
+	ret := C.QProgressDialog_new2(labelText_Cstring, C.ulong(len(labelText)), cancelButtonText_Cstring, C.ulong(len(cancelButtonText)), (C.int)(minimum), (C.int)(maximum))
+	return newQProgressDialog(ret)
+}
+
+// NewQProgressDialog3 constructs a new QProgressDialog object.
+func NewQProgressDialog3(parent *QWidget) *QProgressDialog {
+	ret := C.QProgressDialog_new3(parent.cPointer())
+	return newQProgressDialog(ret)
+}
+
+// NewQProgressDialog4 constructs a new QProgressDialog object.
+func NewQProgressDialog4(parent *QWidget, flags int) *QProgressDialog {
+	ret := C.QProgressDialog_new4(parent.cPointer(), (C.int)(flags))
+	return newQProgressDialog(ret)
+}
+
+// NewQProgressDialog5 constructs a new QProgressDialog object.
+func NewQProgressDialog5(labelText string, cancelButtonText string, minimum int, maximum int, parent *QWidget) *QProgressDialog {
+	labelText_Cstring := C.CString(labelText)
+	defer C.free(unsafe.Pointer(labelText_Cstring))
+	cancelButtonText_Cstring := C.CString(cancelButtonText)
+	defer C.free(unsafe.Pointer(cancelButtonText_Cstring))
+	ret := C.QProgressDialog_new5(labelText_Cstring, C.ulong(len(labelText)), cancelButtonText_Cstring, C.ulong(len(cancelButtonText)), (C.int)(minimum), (C.int)(maximum), parent.cPointer())
+	return newQProgressDialog(ret)
+}
+
+// NewQProgressDialog6 constructs a new QProgressDialog object.
+func NewQProgressDialog6(labelText string, cancelButtonText string, minimum int, maximum int, parent *QWidget, flags int) *QProgressDialog {
+	labelText_Cstring := C.CString(labelText)
+	defer C.free(unsafe.Pointer(labelText_Cstring))
+	cancelButtonText_Cstring := C.CString(cancelButtonText)
+	defer C.free(unsafe.Pointer(cancelButtonText_Cstring))
+	ret := C.QProgressDialog_new6(labelText_Cstring, C.ulong(len(labelText)), cancelButtonText_Cstring, C.ulong(len(cancelButtonText)), (C.int)(minimum), (C.int)(maximum), parent.cPointer(), (C.int)(flags))
+	return newQProgressDialog(ret)
+}
+
 func (this *QProgressDialog) MetaObject() *QMetaObject {
 	ret := C.QProgressDialog_MetaObject(this.h)
 	return newQMetaObject_U(unsafe.Pointer(ret))

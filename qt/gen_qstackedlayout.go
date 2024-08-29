@@ -111,6 +111,15 @@ func (this *QStackedLayout) Count() int {
 	return (int)(ret)
 }
 
+func (this *QStackedLayout) StackingMode() uintptr {
+	ret := C.QStackedLayout_StackingMode(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QStackedLayout) SetStackingMode(stackingMode uintptr) {
+	C.QStackedLayout_SetStackingMode(this.h, (C.uintptr_t)(stackingMode))
+}
+
 func (this *QStackedLayout) AddItem(item *QLayoutItem) {
 	C.QStackedLayout_AddItem(this.h, item.cPointer())
 }

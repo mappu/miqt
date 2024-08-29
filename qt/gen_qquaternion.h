@@ -22,10 +22,11 @@ typedef struct QVector4D QVector4D;
 #endif
 
 QQuaternion* QQuaternion_new();
-QQuaternion* QQuaternion_new2(float scalar, float xpos, float ypos, float zpos);
-QQuaternion* QQuaternion_new3(float scalar, QVector3D* vector);
-QQuaternion* QQuaternion_new4(QVector4D* vector);
-QQuaternion* QQuaternion_new5(QQuaternion* param1);
+QQuaternion* QQuaternion_new2(uintptr_t param1);
+QQuaternion* QQuaternion_new3(float scalar, float xpos, float ypos, float zpos);
+QQuaternion* QQuaternion_new4(float scalar, QVector3D* vector);
+QQuaternion* QQuaternion_new5(QVector4D* vector);
+QQuaternion* QQuaternion_new6(QQuaternion* param1);
 bool QQuaternion_IsNull(QQuaternion* self);
 bool QQuaternion_IsIdentity(QQuaternion* self);
 QVector3D* QQuaternion_Vector(QQuaternion* self);

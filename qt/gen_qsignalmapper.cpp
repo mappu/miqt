@@ -1,12 +1,13 @@
-#include "gen_qsignalmapper.h"
-#include "qsignalmapper.h"
-
 #include <QMetaObject>
 #include <QObject>
 #include <QSignalMapper>
 #include <QString>
+#include <QByteArray>
+#include <cstring>
 #include <QWidget>
+#include "qsignalmapper.h"
 
+#include "gen_qsignalmapper.h"
 
 extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
@@ -21,10 +22,10 @@ QSignalMapper* QSignalMapper_new2(QObject* parent) {
 }
 
 QMetaObject* QSignalMapper_MetaObject(QSignalMapper* self) {
-	return (QMetaObject*) self->metaObject();
+	return (QMetaObject*) const_cast<const QSignalMapper*>(self)->metaObject();
 }
 
-void QSignalMapper_Tr(char* s, char** _out, int* _out_Strlen) {
+void QSignalMapper_Tr(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QSignalMapper::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -33,7 +34,7 @@ void QSignalMapper_Tr(char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QSignalMapper_TrUtf8(char* s, char** _out, int* _out_Strlen) {
+void QSignalMapper_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QSignalMapper::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -64,20 +65,20 @@ void QSignalMapper_RemoveMappings(QSignalMapper* self, QObject* sender) {
 }
 
 QObject* QSignalMapper_Mapping(QSignalMapper* self, int id) {
-	return self->mapping(static_cast<int>(id));
+	return const_cast<const QSignalMapper*>(self)->mapping(static_cast<int>(id));
 }
 
 QObject* QSignalMapper_MappingWithText(QSignalMapper* self, const char* text, size_t text_Strlen) {
 	QString text_QString = QString::fromUtf8(text, text_Strlen);
-	return self->mapping(text_QString);
+	return const_cast<const QSignalMapper*>(self)->mapping(text_QString);
 }
 
 QObject* QSignalMapper_MappingWithWidget(QSignalMapper* self, QWidget* widget) {
-	return self->mapping(widget);
+	return const_cast<const QSignalMapper*>(self)->mapping(widget);
 }
 
 QObject* QSignalMapper_MappingWithObject(QSignalMapper* self, QObject* object) {
-	return self->mapping(object);
+	return const_cast<const QSignalMapper*>(self)->mapping(object);
 }
 
 void QSignalMapper_Mapped(QSignalMapper* self, int param1) {
@@ -170,7 +171,7 @@ void QSignalMapper_MapWithSender(QSignalMapper* self, QObject* sender) {
 	self->map(sender);
 }
 
-void QSignalMapper_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
+void QSignalMapper_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QSignalMapper::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -179,7 +180,7 @@ void QSignalMapper_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QSignalMapper_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QSignalMapper_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QSignalMapper::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -188,7 +189,7 @@ void QSignalMapper_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QSignalMapper_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
+void QSignalMapper_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QSignalMapper::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -197,7 +198,7 @@ void QSignalMapper_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QSignalMapper_TrUtf83(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QSignalMapper_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QSignalMapper::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();

@@ -113,6 +113,15 @@ func (this *QScrollArea) FocusNextPrevChild(next bool) bool {
 	return (bool)(ret)
 }
 
+func (this *QScrollArea) Alignment() int {
+	ret := C.QScrollArea_Alignment(this.h)
+	return (int)(ret)
+}
+
+func (this *QScrollArea) SetAlignment(alignment int) {
+	C.QScrollArea_SetAlignment(this.h, (C.int)(alignment))
+}
+
 func (this *QScrollArea) EnsureVisible(x int, y int) {
 	C.QScrollArea_EnsureVisible(this.h, (C.int)(x), (C.int)(y))
 }

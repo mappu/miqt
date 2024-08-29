@@ -41,38 +41,44 @@ func NewQMatrix4x4() *QMatrix4x4 {
 }
 
 // NewQMatrix4x42 constructs a new QMatrix4x4 object.
-func NewQMatrix4x42(values *float32) *QMatrix4x4 {
-	ret := C.QMatrix4x4_new2((*C.float)(unsafe.Pointer(values)))
+func NewQMatrix4x42(param1 uintptr) *QMatrix4x4 {
+	ret := C.QMatrix4x4_new2((C.uintptr_t)(param1))
 	return newQMatrix4x4(ret)
 }
 
 // NewQMatrix4x43 constructs a new QMatrix4x4 object.
-func NewQMatrix4x43(m11 float32, m12 float32, m13 float32, m14 float32, m21 float32, m22 float32, m23 float32, m24 float32, m31 float32, m32 float32, m33 float32, m34 float32, m41 float32, m42 float32, m43 float32, m44 float32) *QMatrix4x4 {
-	ret := C.QMatrix4x4_new3((C.float)(m11), (C.float)(m12), (C.float)(m13), (C.float)(m14), (C.float)(m21), (C.float)(m22), (C.float)(m23), (C.float)(m24), (C.float)(m31), (C.float)(m32), (C.float)(m33), (C.float)(m34), (C.float)(m41), (C.float)(m42), (C.float)(m43), (C.float)(m44))
+func NewQMatrix4x43(values *float32) *QMatrix4x4 {
+	ret := C.QMatrix4x4_new3((*C.float)(unsafe.Pointer(values)))
 	return newQMatrix4x4(ret)
 }
 
 // NewQMatrix4x44 constructs a new QMatrix4x4 object.
-func NewQMatrix4x44(values *float32, cols int, rows int) *QMatrix4x4 {
-	ret := C.QMatrix4x4_new4((*C.float)(unsafe.Pointer(values)), (C.int)(cols), (C.int)(rows))
+func NewQMatrix4x44(m11 float32, m12 float32, m13 float32, m14 float32, m21 float32, m22 float32, m23 float32, m24 float32, m31 float32, m32 float32, m33 float32, m34 float32, m41 float32, m42 float32, m43 float32, m44 float32) *QMatrix4x4 {
+	ret := C.QMatrix4x4_new4((C.float)(m11), (C.float)(m12), (C.float)(m13), (C.float)(m14), (C.float)(m21), (C.float)(m22), (C.float)(m23), (C.float)(m24), (C.float)(m31), (C.float)(m32), (C.float)(m33), (C.float)(m34), (C.float)(m41), (C.float)(m42), (C.float)(m43), (C.float)(m44))
 	return newQMatrix4x4(ret)
 }
 
 // NewQMatrix4x45 constructs a new QMatrix4x4 object.
-func NewQMatrix4x45(transform *QTransform) *QMatrix4x4 {
-	ret := C.QMatrix4x4_new5(transform.cPointer())
+func NewQMatrix4x45(values *float32, cols int, rows int) *QMatrix4x4 {
+	ret := C.QMatrix4x4_new5((*C.float)(unsafe.Pointer(values)), (C.int)(cols), (C.int)(rows))
 	return newQMatrix4x4(ret)
 }
 
 // NewQMatrix4x46 constructs a new QMatrix4x4 object.
-func NewQMatrix4x46(matrix *QMatrix) *QMatrix4x4 {
-	ret := C.QMatrix4x4_new6(matrix.cPointer())
+func NewQMatrix4x46(transform *QTransform) *QMatrix4x4 {
+	ret := C.QMatrix4x4_new6(transform.cPointer())
 	return newQMatrix4x4(ret)
 }
 
 // NewQMatrix4x47 constructs a new QMatrix4x4 object.
-func NewQMatrix4x47(param1 *QMatrix4x4) *QMatrix4x4 {
-	ret := C.QMatrix4x4_new7(param1.cPointer())
+func NewQMatrix4x47(matrix *QMatrix) *QMatrix4x4 {
+	ret := C.QMatrix4x4_new7(matrix.cPointer())
+	return newQMatrix4x4(ret)
+}
+
+// NewQMatrix4x48 constructs a new QMatrix4x4 object.
+func NewQMatrix4x48(param1 *QMatrix4x4) *QMatrix4x4 {
+	ret := C.QMatrix4x4_new8(param1.cPointer())
 	return newQMatrix4x4(ret)
 }
 

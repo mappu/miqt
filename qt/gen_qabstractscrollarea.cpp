@@ -1,13 +1,15 @@
-#include "gen_qabstractscrollarea.h"
-#include "qabstractscrollarea.h"
-
 #include <QAbstractScrollArea>
+#include <QList>
 #include <QMetaObject>
 #include <QScrollBar>
 #include <QSize>
 #include <QString>
+#include <QByteArray>
+#include <cstring>
 #include <QWidget>
+#include "qabstractscrollarea.h"
 
+#include "gen_qabstractscrollarea.h"
 
 extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
@@ -22,10 +24,10 @@ QAbstractScrollArea* QAbstractScrollArea_new2(QWidget* parent) {
 }
 
 QMetaObject* QAbstractScrollArea_MetaObject(QAbstractScrollArea* self) {
-	return (QMetaObject*) self->metaObject();
+	return (QMetaObject*) const_cast<const QAbstractScrollArea*>(self)->metaObject();
 }
 
-void QAbstractScrollArea_Tr(char* s, char** _out, int* _out_Strlen) {
+void QAbstractScrollArea_Tr(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QAbstractScrollArea::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -34,7 +36,7 @@ void QAbstractScrollArea_Tr(char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QAbstractScrollArea_TrUtf8(char* s, char** _out, int* _out_Strlen) {
+void QAbstractScrollArea_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QAbstractScrollArea::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -43,16 +45,34 @@ void QAbstractScrollArea_TrUtf8(char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
+uintptr_t QAbstractScrollArea_VerticalScrollBarPolicy(QAbstractScrollArea* self) {
+	Qt::ScrollBarPolicy ret = const_cast<const QAbstractScrollArea*>(self)->verticalScrollBarPolicy();
+	return static_cast<uintptr_t>(ret);
+}
+
+void QAbstractScrollArea_SetVerticalScrollBarPolicy(QAbstractScrollArea* self, uintptr_t verticalScrollBarPolicy) {
+	self->setVerticalScrollBarPolicy(static_cast<Qt::ScrollBarPolicy>(verticalScrollBarPolicy));
+}
+
 QScrollBar* QAbstractScrollArea_VerticalScrollBar(QAbstractScrollArea* self) {
-	return self->verticalScrollBar();
+	return const_cast<const QAbstractScrollArea*>(self)->verticalScrollBar();
 }
 
 void QAbstractScrollArea_SetVerticalScrollBar(QAbstractScrollArea* self, QScrollBar* scrollbar) {
 	self->setVerticalScrollBar(scrollbar);
 }
 
+uintptr_t QAbstractScrollArea_HorizontalScrollBarPolicy(QAbstractScrollArea* self) {
+	Qt::ScrollBarPolicy ret = const_cast<const QAbstractScrollArea*>(self)->horizontalScrollBarPolicy();
+	return static_cast<uintptr_t>(ret);
+}
+
+void QAbstractScrollArea_SetHorizontalScrollBarPolicy(QAbstractScrollArea* self, uintptr_t horizontalScrollBarPolicy) {
+	self->setHorizontalScrollBarPolicy(static_cast<Qt::ScrollBarPolicy>(horizontalScrollBarPolicy));
+}
+
 QScrollBar* QAbstractScrollArea_HorizontalScrollBar(QAbstractScrollArea* self) {
-	return self->horizontalScrollBar();
+	return const_cast<const QAbstractScrollArea*>(self)->horizontalScrollBar();
 }
 
 void QAbstractScrollArea_SetHorizontalScrollBar(QAbstractScrollArea* self, QScrollBar* scrollbar) {
@@ -60,15 +80,30 @@ void QAbstractScrollArea_SetHorizontalScrollBar(QAbstractScrollArea* self, QScro
 }
 
 QWidget* QAbstractScrollArea_CornerWidget(QAbstractScrollArea* self) {
-	return self->cornerWidget();
+	return const_cast<const QAbstractScrollArea*>(self)->cornerWidget();
 }
 
 void QAbstractScrollArea_SetCornerWidget(QAbstractScrollArea* self, QWidget* widget) {
 	self->setCornerWidget(widget);
 }
 
+void QAbstractScrollArea_AddScrollBarWidget(QAbstractScrollArea* self, QWidget* widget, int alignment) {
+	self->addScrollBarWidget(widget, static_cast<Qt::Alignment>(alignment));
+}
+
+void QAbstractScrollArea_ScrollBarWidgets(QAbstractScrollArea* self, int alignment, QWidget*** _out, size_t* _out_len) {
+	QWidgetList ret = self->scrollBarWidgets(static_cast<Qt::Alignment>(alignment));
+	// Convert QList<> from C++ memory to manually-managed C memory
+	QWidget** __out = static_cast<QWidget**>(malloc(sizeof(QWidget*) * ret.length()));
+	for (size_t i = 0, e = ret.length(); i < e; ++i) {
+		__out[i] = ret[i];
+	}
+	*_out = __out;
+	*_out_len = ret.length();
+}
+
 QWidget* QAbstractScrollArea_Viewport(QAbstractScrollArea* self) {
-	return self->viewport();
+	return const_cast<const QAbstractScrollArea*>(self)->viewport();
 }
 
 void QAbstractScrollArea_SetViewport(QAbstractScrollArea* self, QWidget* widget) {
@@ -76,19 +111,19 @@ void QAbstractScrollArea_SetViewport(QAbstractScrollArea* self, QWidget* widget)
 }
 
 QSize* QAbstractScrollArea_MaximumViewportSize(QAbstractScrollArea* self) {
-	QSize ret = self->maximumViewportSize();
+	QSize ret = const_cast<const QAbstractScrollArea*>(self)->maximumViewportSize();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
 
 QSize* QAbstractScrollArea_MinimumSizeHint(QAbstractScrollArea* self) {
-	QSize ret = self->minimumSizeHint();
+	QSize ret = const_cast<const QAbstractScrollArea*>(self)->minimumSizeHint();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
 
 QSize* QAbstractScrollArea_SizeHint(QAbstractScrollArea* self) {
-	QSize ret = self->sizeHint();
+	QSize ret = const_cast<const QAbstractScrollArea*>(self)->sizeHint();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
@@ -97,7 +132,16 @@ void QAbstractScrollArea_SetupViewport(QAbstractScrollArea* self, QWidget* viewp
 	self->setupViewport(viewport);
 }
 
-void QAbstractScrollArea_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
+uintptr_t QAbstractScrollArea_SizeAdjustPolicy(QAbstractScrollArea* self) {
+	QAbstractScrollArea::SizeAdjustPolicy ret = const_cast<const QAbstractScrollArea*>(self)->sizeAdjustPolicy();
+	return static_cast<uintptr_t>(ret);
+}
+
+void QAbstractScrollArea_SetSizeAdjustPolicy(QAbstractScrollArea* self, uintptr_t policy) {
+	self->setSizeAdjustPolicy(static_cast<QAbstractScrollArea::SizeAdjustPolicy>(policy));
+}
+
+void QAbstractScrollArea_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QAbstractScrollArea::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -106,7 +150,7 @@ void QAbstractScrollArea_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QAbstractScrollArea_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QAbstractScrollArea_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QAbstractScrollArea::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -115,7 +159,7 @@ void QAbstractScrollArea_Tr3(char* s, char* c, int n, char** _out, int* _out_Str
 	*_out_Strlen = b.length();
 }
 
-void QAbstractScrollArea_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
+void QAbstractScrollArea_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QAbstractScrollArea::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -124,7 +168,7 @@ void QAbstractScrollArea_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen
 	*_out_Strlen = b.length();
 }
 
-void QAbstractScrollArea_TrUtf83(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QAbstractScrollArea_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QAbstractScrollArea::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();

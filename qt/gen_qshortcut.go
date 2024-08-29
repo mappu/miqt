@@ -42,6 +42,40 @@ func NewQShortcut(parent *QWidget) *QShortcut {
 	return newQShortcut(ret)
 }
 
+// NewQShortcut2 constructs a new QShortcut object.
+func NewQShortcut2(key *QKeySequence, parent *QWidget) *QShortcut {
+	ret := C.QShortcut_new2(key.cPointer(), parent.cPointer())
+	return newQShortcut(ret)
+}
+
+// NewQShortcut3 constructs a new QShortcut object.
+func NewQShortcut3(key *QKeySequence, parent *QWidget, member string) *QShortcut {
+	member_Cstring := C.CString(member)
+	defer C.free(unsafe.Pointer(member_Cstring))
+	ret := C.QShortcut_new3(key.cPointer(), parent.cPointer(), member_Cstring)
+	return newQShortcut(ret)
+}
+
+// NewQShortcut4 constructs a new QShortcut object.
+func NewQShortcut4(key *QKeySequence, parent *QWidget, member string, ambiguousMember string) *QShortcut {
+	member_Cstring := C.CString(member)
+	defer C.free(unsafe.Pointer(member_Cstring))
+	ambiguousMember_Cstring := C.CString(ambiguousMember)
+	defer C.free(unsafe.Pointer(ambiguousMember_Cstring))
+	ret := C.QShortcut_new4(key.cPointer(), parent.cPointer(), member_Cstring, ambiguousMember_Cstring)
+	return newQShortcut(ret)
+}
+
+// NewQShortcut5 constructs a new QShortcut object.
+func NewQShortcut5(key *QKeySequence, parent *QWidget, member string, ambiguousMember string, shortcutContext uintptr) *QShortcut {
+	member_Cstring := C.CString(member)
+	defer C.free(unsafe.Pointer(member_Cstring))
+	ambiguousMember_Cstring := C.CString(ambiguousMember)
+	defer C.free(unsafe.Pointer(ambiguousMember_Cstring))
+	ret := C.QShortcut_new5(key.cPointer(), parent.cPointer(), member_Cstring, ambiguousMember_Cstring, (C.uintptr_t)(shortcutContext))
+	return newQShortcut(ret)
+}
+
 func (this *QShortcut) MetaObject() *QMetaObject {
 	ret := C.QShortcut_MetaObject(this.h)
 	return newQMetaObject_U(unsafe.Pointer(ret))
@@ -91,6 +125,15 @@ func (this *QShortcut) SetEnabled(enable bool) {
 func (this *QShortcut) IsEnabled() bool {
 	ret := C.QShortcut_IsEnabled(this.h)
 	return (bool)(ret)
+}
+
+func (this *QShortcut) SetContext(context uintptr) {
+	C.QShortcut_SetContext(this.h, (C.uintptr_t)(context))
+}
+
+func (this *QShortcut) Context() uintptr {
+	ret := C.QShortcut_Context(this.h)
+	return (uintptr)(ret)
 }
 
 func (this *QShortcut) SetWhatsThis(text string) {

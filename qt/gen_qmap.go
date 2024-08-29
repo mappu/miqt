@@ -59,6 +59,15 @@ func (this *QMapNodeBase) PreviousNode2() *QMapNodeBase {
 	return newQMapNodeBase_U(unsafe.Pointer(ret))
 }
 
+func (this *QMapNodeBase) Color() uintptr {
+	ret := C.QMapNodeBase_Color(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QMapNodeBase) SetColor(c uintptr) {
+	C.QMapNodeBase_SetColor(this.h, (C.uintptr_t)(c))
+}
+
 func (this *QMapNodeBase) Parent() *QMapNodeBase {
 	ret := C.QMapNodeBase_Parent(this.h)
 	return newQMapNodeBase_U(unsafe.Pointer(ret))

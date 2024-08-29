@@ -149,6 +149,15 @@ func (this *QSpinBox) SetRange(min int, max int) {
 	C.QSpinBox_SetRange(this.h, (C.int)(min), (C.int)(max))
 }
 
+func (this *QSpinBox) StepType() uintptr {
+	ret := C.QSpinBox_StepType(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QSpinBox) SetStepType(stepType uintptr) {
+	C.QSpinBox_SetStepType(this.h, (C.uintptr_t)(stepType))
+}
+
 func (this *QSpinBox) DisplayIntegerBase() int {
 	ret := C.QSpinBox_DisplayIntegerBase(this.h)
 	return (int)(ret)
@@ -392,6 +401,15 @@ func (this *QDoubleSpinBox) SetRange(min float64, max float64) {
 	C.QDoubleSpinBox_SetRange(this.h, (C.double)(min), (C.double)(max))
 }
 
+func (this *QDoubleSpinBox) StepType() uintptr {
+	ret := C.QDoubleSpinBox_StepType(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QDoubleSpinBox) SetStepType(stepType uintptr) {
+	C.QDoubleSpinBox_SetStepType(this.h, (C.uintptr_t)(stepType))
+}
+
 func (this *QDoubleSpinBox) Decimals() int {
 	ret := C.QDoubleSpinBox_Decimals(this.h)
 	return (int)(ret)
@@ -399,6 +417,13 @@ func (this *QDoubleSpinBox) Decimals() int {
 
 func (this *QDoubleSpinBox) SetDecimals(prec int) {
 	C.QDoubleSpinBox_SetDecimals(this.h, (C.int)(prec))
+}
+
+func (this *QDoubleSpinBox) Validate(input string, pos *int) uintptr {
+	input_Cstring := C.CString(input)
+	defer C.free(unsafe.Pointer(input_Cstring))
+	ret := C.QDoubleSpinBox_Validate(this.h, input_Cstring, C.ulong(len(input)), (*C.int)(unsafe.Pointer(pos)))
+	return (uintptr)(ret)
 }
 
 func (this *QDoubleSpinBox) ValueFromText(text string) float64 {

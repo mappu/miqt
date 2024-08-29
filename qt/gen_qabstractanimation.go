@@ -62,9 +62,23 @@ func QAbstractAnimation_TrUtf8(s string) string {
 	return ret
 }
 
+func (this *QAbstractAnimation) State() uintptr {
+	ret := C.QAbstractAnimation_State(this.h)
+	return (uintptr)(ret)
+}
+
 func (this *QAbstractAnimation) Group() *QAnimationGroup {
 	ret := C.QAbstractAnimation_Group(this.h)
 	return newQAnimationGroup_U(unsafe.Pointer(ret))
+}
+
+func (this *QAbstractAnimation) Direction() uintptr {
+	ret := C.QAbstractAnimation_Direction(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QAbstractAnimation) SetDirection(direction uintptr) {
+	C.QAbstractAnimation_SetDirection(this.h, (C.uintptr_t)(direction))
 }
 
 func (this *QAbstractAnimation) CurrentTime() int {
@@ -113,6 +127,18 @@ func (this *QAbstractAnimation) OnFinished(slot func()) {
 	C.QAbstractAnimation_connect_Finished(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
 }
 
+func (this *QAbstractAnimation) StateChanged(newState uintptr, oldState uintptr) {
+	C.QAbstractAnimation_StateChanged(this.h, (C.uintptr_t)(newState), (C.uintptr_t)(oldState))
+}
+
+func (this *QAbstractAnimation) OnStateChanged(slot func()) {
+	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
+		slot()
+	}
+
+	C.QAbstractAnimation_connect_StateChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+}
+
 func (this *QAbstractAnimation) CurrentLoopChanged(currentLoop int) {
 	C.QAbstractAnimation_CurrentLoopChanged(this.h, (C.int)(currentLoop))
 }
@@ -123,6 +149,22 @@ func (this *QAbstractAnimation) OnCurrentLoopChanged(slot func()) {
 	}
 
 	C.QAbstractAnimation_connect_CurrentLoopChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+}
+
+func (this *QAbstractAnimation) DirectionChanged(param1 uintptr) {
+	C.QAbstractAnimation_DirectionChanged(this.h, (C.uintptr_t)(param1))
+}
+
+func (this *QAbstractAnimation) OnDirectionChanged(slot func()) {
+	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
+		slot()
+	}
+
+	C.QAbstractAnimation_connect_DirectionChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+}
+
+func (this *QAbstractAnimation) Start() {
+	C.QAbstractAnimation_Start(this.h)
 }
 
 func (this *QAbstractAnimation) Pause() {
@@ -195,6 +237,10 @@ func QAbstractAnimation_TrUtf83(s string, c string, n int) string {
 	ret := C.GoStringN(_out, _out_Strlen)
 	C.free(unsafe.Pointer(_out))
 	return ret
+}
+
+func (this *QAbstractAnimation) Start1(policy uintptr) {
+	C.QAbstractAnimation_Start1(this.h, (C.uintptr_t)(policy))
 }
 
 func (this *QAbstractAnimation) Delete() {
@@ -283,7 +329,7 @@ func (this *QAnimationDriver) Elapsed() int64 {
 }
 
 func (this *QAnimationDriver) SetStartTime(startTime int64) {
-	C.QAnimationDriver_SetStartTime(this.h, (C.int64_t)(startTime))
+	C.QAnimationDriver_SetStartTime(this.h, (C.longlong)(startTime))
 }
 
 func (this *QAnimationDriver) StartTime() int64 {

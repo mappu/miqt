@@ -130,19 +130,54 @@ func (this *QStringView) Chop(n uint64) {
 	C.QStringView_Chop(this.h, (C.size_t)(n))
 }
 
-func (this *QStringView) Compare(c QChar) int {
-	ret := C.QStringView_Compare(this.h, c.cPointer())
+func (this *QStringView) CompareWithQChar(c QChar) int {
+	ret := C.QStringView_CompareWithQChar(this.h, c.cPointer())
 	return (int)(ret)
 }
 
-func (this *QStringView) StartsWith(c QChar) bool {
-	ret := C.QStringView_StartsWith(this.h, c.cPointer())
+func (this *QStringView) Compare2(c QChar, cs uintptr) int {
+	ret := C.QStringView_Compare2(this.h, c.cPointer(), (C.uintptr_t)(cs))
+	return (int)(ret)
+}
+
+func (this *QStringView) StartsWithWithQChar(c QChar) bool {
+	ret := C.QStringView_StartsWithWithQChar(this.h, c.cPointer())
 	return (bool)(ret)
 }
 
-func (this *QStringView) EndsWith(c QChar) bool {
-	ret := C.QStringView_EndsWith(this.h, c.cPointer())
+func (this *QStringView) StartsWith2(c QChar, cs uintptr) bool {
+	ret := C.QStringView_StartsWith2(this.h, c.cPointer(), (C.uintptr_t)(cs))
 	return (bool)(ret)
+}
+
+func (this *QStringView) EndsWithWithQChar(c QChar) bool {
+	ret := C.QStringView_EndsWithWithQChar(this.h, c.cPointer())
+	return (bool)(ret)
+}
+
+func (this *QStringView) EndsWith2(c QChar, cs uintptr) bool {
+	ret := C.QStringView_EndsWith2(this.h, c.cPointer(), (C.uintptr_t)(cs))
+	return (bool)(ret)
+}
+
+func (this *QStringView) IndexOf(c QChar) uint64 {
+	ret := C.QStringView_IndexOf(this.h, c.cPointer())
+	return (uint64)(ret)
+}
+
+func (this *QStringView) Contains(c QChar) bool {
+	ret := C.QStringView_Contains(this.h, c.cPointer())
+	return (bool)(ret)
+}
+
+func (this *QStringView) Count(c QChar) uint64 {
+	ret := C.QStringView_Count(this.h, c.cPointer())
+	return (uint64)(ret)
+}
+
+func (this *QStringView) LastIndexOf(c QChar) uint64 {
+	ret := C.QStringView_LastIndexOf(this.h, c.cPointer())
+	return (uint64)(ret)
 }
 
 func (this *QStringView) IsRightToLeft() bool {
@@ -267,6 +302,36 @@ func (this *QStringView) Last() *QChar {
 		runtime.KeepAlive(ret2.h)
 	})
 	return ret1
+}
+
+func (this *QStringView) IndexOf2(c QChar, from uint64) uint64 {
+	ret := C.QStringView_IndexOf2(this.h, c.cPointer(), (C.size_t)(from))
+	return (uint64)(ret)
+}
+
+func (this *QStringView) IndexOf3(c QChar, from uint64, cs uintptr) uint64 {
+	ret := C.QStringView_IndexOf3(this.h, c.cPointer(), (C.size_t)(from), (C.uintptr_t)(cs))
+	return (uint64)(ret)
+}
+
+func (this *QStringView) Contains2(c QChar, cs uintptr) bool {
+	ret := C.QStringView_Contains2(this.h, c.cPointer(), (C.uintptr_t)(cs))
+	return (bool)(ret)
+}
+
+func (this *QStringView) Count2(c QChar, cs uintptr) uint64 {
+	ret := C.QStringView_Count2(this.h, c.cPointer(), (C.uintptr_t)(cs))
+	return (uint64)(ret)
+}
+
+func (this *QStringView) LastIndexOf2(c QChar, from uint64) uint64 {
+	ret := C.QStringView_LastIndexOf2(this.h, c.cPointer(), (C.size_t)(from))
+	return (uint64)(ret)
+}
+
+func (this *QStringView) LastIndexOf3(c QChar, from uint64, cs uintptr) uint64 {
+	ret := C.QStringView_LastIndexOf3(this.h, c.cPointer(), (C.size_t)(from), (C.uintptr_t)(cs))
+	return (uint64)(ret)
 }
 
 func (this *QStringView) ToShort1(ok *bool) int16 {

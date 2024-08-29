@@ -36,6 +36,60 @@ func newQSplashScreen_U(h unsafe.Pointer) *QSplashScreen {
 	return newQSplashScreen((*C.QSplashScreen)(h))
 }
 
+// NewQSplashScreen constructs a new QSplashScreen object.
+func NewQSplashScreen() *QSplashScreen {
+	ret := C.QSplashScreen_new()
+	return newQSplashScreen(ret)
+}
+
+// NewQSplashScreen2 constructs a new QSplashScreen object.
+func NewQSplashScreen2(screen *QScreen) *QSplashScreen {
+	ret := C.QSplashScreen_new2(screen.cPointer())
+	return newQSplashScreen(ret)
+}
+
+// NewQSplashScreen3 constructs a new QSplashScreen object.
+func NewQSplashScreen3(parent *QWidget) *QSplashScreen {
+	ret := C.QSplashScreen_new3(parent.cPointer())
+	return newQSplashScreen(ret)
+}
+
+// NewQSplashScreen4 constructs a new QSplashScreen object.
+func NewQSplashScreen4(pixmap *QPixmap) *QSplashScreen {
+	ret := C.QSplashScreen_new4(pixmap.cPointer())
+	return newQSplashScreen(ret)
+}
+
+// NewQSplashScreen5 constructs a new QSplashScreen object.
+func NewQSplashScreen5(pixmap *QPixmap, f int) *QSplashScreen {
+	ret := C.QSplashScreen_new5(pixmap.cPointer(), (C.int)(f))
+	return newQSplashScreen(ret)
+}
+
+// NewQSplashScreen6 constructs a new QSplashScreen object.
+func NewQSplashScreen6(screen *QScreen, pixmap *QPixmap) *QSplashScreen {
+	ret := C.QSplashScreen_new6(screen.cPointer(), pixmap.cPointer())
+	return newQSplashScreen(ret)
+}
+
+// NewQSplashScreen7 constructs a new QSplashScreen object.
+func NewQSplashScreen7(screen *QScreen, pixmap *QPixmap, f int) *QSplashScreen {
+	ret := C.QSplashScreen_new7(screen.cPointer(), pixmap.cPointer(), (C.int)(f))
+	return newQSplashScreen(ret)
+}
+
+// NewQSplashScreen8 constructs a new QSplashScreen object.
+func NewQSplashScreen8(parent *QWidget, pixmap *QPixmap) *QSplashScreen {
+	ret := C.QSplashScreen_new8(parent.cPointer(), pixmap.cPointer())
+	return newQSplashScreen(ret)
+}
+
+// NewQSplashScreen9 constructs a new QSplashScreen object.
+func NewQSplashScreen9(parent *QWidget, pixmap *QPixmap, f int) *QSplashScreen {
+	ret := C.QSplashScreen_new9(parent.cPointer(), pixmap.cPointer(), (C.int)(f))
+	return newQSplashScreen(ret)
+}
+
 func (this *QSplashScreen) MetaObject() *QMetaObject {
 	ret := C.QSplashScreen_MetaObject(this.h)
 	return newQMetaObject_U(unsafe.Pointer(ret))

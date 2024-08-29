@@ -210,6 +210,15 @@ func (this *QTabWidget) Count() int {
 	return (int)(ret)
 }
 
+func (this *QTabWidget) TabPosition() uintptr {
+	ret := C.QTabWidget_TabPosition(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QTabWidget) SetTabPosition(position uintptr) {
+	C.QTabWidget_SetTabPosition(this.h, (C.uintptr_t)(position))
+}
+
 func (this *QTabWidget) TabsClosable() bool {
 	ret := C.QTabWidget_TabsClosable(this.h)
 	return (bool)(ret)
@@ -226,6 +235,15 @@ func (this *QTabWidget) IsMovable() bool {
 
 func (this *QTabWidget) SetMovable(movable bool) {
 	C.QTabWidget_SetMovable(this.h, (C.bool)(movable))
+}
+
+func (this *QTabWidget) TabShape() uintptr {
+	ret := C.QTabWidget_TabShape(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QTabWidget) SetTabShape(s uintptr) {
+	C.QTabWidget_SetTabShape(this.h, (C.uintptr_t)(s))
 }
 
 func (this *QTabWidget) SizeHint() *QSize {
@@ -258,6 +276,24 @@ func (this *QTabWidget) HeightForWidth(width int) int {
 func (this *QTabWidget) HasHeightForWidth() bool {
 	ret := C.QTabWidget_HasHeightForWidth(this.h)
 	return (bool)(ret)
+}
+
+func (this *QTabWidget) SetCornerWidget(w *QWidget) {
+	C.QTabWidget_SetCornerWidget(this.h, w.cPointer())
+}
+
+func (this *QTabWidget) CornerWidget() *QWidget {
+	ret := C.QTabWidget_CornerWidget(this.h)
+	return newQWidget_U(unsafe.Pointer(ret))
+}
+
+func (this *QTabWidget) ElideMode() uintptr {
+	ret := C.QTabWidget_ElideMode(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QTabWidget) SetElideMode(mode uintptr) {
+	C.QTabWidget_SetElideMode(this.h, (C.uintptr_t)(mode))
 }
 
 func (this *QTabWidget) IconSize() *QSize {
@@ -417,6 +453,15 @@ func QTabWidget_TrUtf83(s string, c string, n int) string {
 	ret := C.GoStringN(_out, _out_Strlen)
 	C.free(unsafe.Pointer(_out))
 	return ret
+}
+
+func (this *QTabWidget) SetCornerWidget2(w *QWidget, corner uintptr) {
+	C.QTabWidget_SetCornerWidget2(this.h, w.cPointer(), (C.uintptr_t)(corner))
+}
+
+func (this *QTabWidget) CornerWidget1(corner uintptr) *QWidget {
+	ret := C.QTabWidget_CornerWidget1(this.h, (C.uintptr_t)(corner))
+	return newQWidget_U(unsafe.Pointer(ret))
 }
 
 func (this *QTabWidget) Delete() {

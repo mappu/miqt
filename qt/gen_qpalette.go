@@ -47,26 +47,32 @@ func NewQPalette2(button *QColor) *QPalette {
 }
 
 // NewQPalette3 constructs a new QPalette object.
-func NewQPalette3(button *QColor, window *QColor) *QPalette {
-	ret := C.QPalette_new3(button.cPointer(), window.cPointer())
+func NewQPalette3(button uintptr) *QPalette {
+	ret := C.QPalette_new3((C.uintptr_t)(button))
 	return newQPalette(ret)
 }
 
 // NewQPalette4 constructs a new QPalette object.
-func NewQPalette4(windowText *QBrush, button *QBrush, light *QBrush, dark *QBrush, mid *QBrush, text *QBrush, bright_text *QBrush, base *QBrush, window *QBrush) *QPalette {
-	ret := C.QPalette_new4(windowText.cPointer(), button.cPointer(), light.cPointer(), dark.cPointer(), mid.cPointer(), text.cPointer(), bright_text.cPointer(), base.cPointer(), window.cPointer())
+func NewQPalette4(button *QColor, window *QColor) *QPalette {
+	ret := C.QPalette_new4(button.cPointer(), window.cPointer())
 	return newQPalette(ret)
 }
 
 // NewQPalette5 constructs a new QPalette object.
-func NewQPalette5(windowText *QColor, window *QColor, light *QColor, dark *QColor, mid *QColor, text *QColor, base *QColor) *QPalette {
-	ret := C.QPalette_new5(windowText.cPointer(), window.cPointer(), light.cPointer(), dark.cPointer(), mid.cPointer(), text.cPointer(), base.cPointer())
+func NewQPalette5(windowText *QBrush, button *QBrush, light *QBrush, dark *QBrush, mid *QBrush, text *QBrush, bright_text *QBrush, base *QBrush, window *QBrush) *QPalette {
+	ret := C.QPalette_new5(windowText.cPointer(), button.cPointer(), light.cPointer(), dark.cPointer(), mid.cPointer(), text.cPointer(), bright_text.cPointer(), base.cPointer(), window.cPointer())
 	return newQPalette(ret)
 }
 
 // NewQPalette6 constructs a new QPalette object.
-func NewQPalette6(palette *QPalette) *QPalette {
-	ret := C.QPalette_new6(palette.cPointer())
+func NewQPalette6(windowText *QColor, window *QColor, light *QColor, dark *QColor, mid *QColor, text *QColor, base *QColor) *QPalette {
+	ret := C.QPalette_new6(windowText.cPointer(), window.cPointer(), light.cPointer(), dark.cPointer(), mid.cPointer(), text.cPointer(), base.cPointer())
+	return newQPalette(ret)
+}
+
+// NewQPalette7 constructs a new QPalette object.
+func NewQPalette7(palette *QPalette) *QPalette {
+	ret := C.QPalette_new7(palette.cPointer())
 	return newQPalette(ret)
 }
 
@@ -76,6 +82,65 @@ func (this *QPalette) OperatorAssign(palette *QPalette) {
 
 func (this *QPalette) Swap(other *QPalette) {
 	C.QPalette_Swap(this.h, other.cPointer())
+}
+
+func (this *QPalette) CurrentColorGroup() uintptr {
+	ret := C.QPalette_CurrentColorGroup(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QPalette) SetCurrentColorGroup(cg uintptr) {
+	C.QPalette_SetCurrentColorGroup(this.h, (C.uintptr_t)(cg))
+}
+
+func (this *QPalette) Color(cg uintptr, cr uintptr) *QColor {
+	ret := C.QPalette_Color(this.h, (C.uintptr_t)(cg), (C.uintptr_t)(cr))
+	return newQColor_U(unsafe.Pointer(ret))
+}
+
+func (this *QPalette) Brush(cg uintptr, cr uintptr) *QBrush {
+	ret := C.QPalette_Brush(this.h, (C.uintptr_t)(cg), (C.uintptr_t)(cr))
+	return newQBrush_U(unsafe.Pointer(ret))
+}
+
+func (this *QPalette) SetColor(cg uintptr, cr uintptr, color *QColor) {
+	C.QPalette_SetColor(this.h, (C.uintptr_t)(cg), (C.uintptr_t)(cr), color.cPointer())
+}
+
+func (this *QPalette) SetColor2(cr uintptr, color *QColor) {
+	C.QPalette_SetColor2(this.h, (C.uintptr_t)(cr), color.cPointer())
+}
+
+func (this *QPalette) SetBrush(cr uintptr, brush *QBrush) {
+	C.QPalette_SetBrush(this.h, (C.uintptr_t)(cr), brush.cPointer())
+}
+
+func (this *QPalette) IsBrushSet(cg uintptr, cr uintptr) bool {
+	ret := C.QPalette_IsBrushSet(this.h, (C.uintptr_t)(cg), (C.uintptr_t)(cr))
+	return (bool)(ret)
+}
+
+func (this *QPalette) SetBrush2(cg uintptr, cr uintptr, brush *QBrush) {
+	C.QPalette_SetBrush2(this.h, (C.uintptr_t)(cg), (C.uintptr_t)(cr), brush.cPointer())
+}
+
+func (this *QPalette) SetColorGroup(cr uintptr, windowText *QBrush, button *QBrush, light *QBrush, dark *QBrush, mid *QBrush, text *QBrush, bright_text *QBrush, base *QBrush, window *QBrush) {
+	C.QPalette_SetColorGroup(this.h, (C.uintptr_t)(cr), windowText.cPointer(), button.cPointer(), light.cPointer(), dark.cPointer(), mid.cPointer(), text.cPointer(), bright_text.cPointer(), base.cPointer(), window.cPointer())
+}
+
+func (this *QPalette) IsEqual(cr1 uintptr, cr2 uintptr) bool {
+	ret := C.QPalette_IsEqual(this.h, (C.uintptr_t)(cr1), (C.uintptr_t)(cr2))
+	return (bool)(ret)
+}
+
+func (this *QPalette) ColorWithCr(cr uintptr) *QColor {
+	ret := C.QPalette_ColorWithCr(this.h, (C.uintptr_t)(cr))
+	return newQColor_U(unsafe.Pointer(ret))
+}
+
+func (this *QPalette) BrushWithCr(cr uintptr) *QBrush {
+	ret := C.QPalette_BrushWithCr(this.h, (C.uintptr_t)(cr))
+	return newQBrush_U(unsafe.Pointer(ret))
 }
 
 func (this *QPalette) WindowText() *QBrush {

@@ -1,12 +1,11 @@
-#include "gen_qvector4d.h"
-#include "qvector4d.h"
-
 #include <QPoint>
 #include <QPointF>
 #include <QVector2D>
 #include <QVector3D>
 #include <QVector4D>
+#include "qvector4d.h"
 
+#include "gen_qvector4d.h"
 
 extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
@@ -16,56 +15,60 @@ QVector4D* QVector4D_new() {
 	return new QVector4D();
 }
 
-QVector4D* QVector4D_new2(float xpos, float ypos, float zpos, float wpos) {
+QVector4D* QVector4D_new2(uintptr_t param1) {
+	return new QVector4D(static_cast<Qt::Initialization>(param1));
+}
+
+QVector4D* QVector4D_new3(float xpos, float ypos, float zpos, float wpos) {
 	return new QVector4D(static_cast<float>(xpos), static_cast<float>(ypos), static_cast<float>(zpos), static_cast<float>(wpos));
 }
 
-QVector4D* QVector4D_new3(QPoint* point) {
+QVector4D* QVector4D_new4(QPoint* point) {
 	return new QVector4D(*point);
 }
 
-QVector4D* QVector4D_new4(QPointF* point) {
+QVector4D* QVector4D_new5(QPointF* point) {
 	return new QVector4D(*point);
 }
 
-QVector4D* QVector4D_new5(QVector2D* vector) {
+QVector4D* QVector4D_new6(QVector2D* vector) {
 	return new QVector4D(*vector);
 }
 
-QVector4D* QVector4D_new6(QVector2D* vector, float zpos, float wpos) {
+QVector4D* QVector4D_new7(QVector2D* vector, float zpos, float wpos) {
 	return new QVector4D(*vector, static_cast<float>(zpos), static_cast<float>(wpos));
 }
 
-QVector4D* QVector4D_new7(QVector3D* vector) {
+QVector4D* QVector4D_new8(QVector3D* vector) {
 	return new QVector4D(*vector);
 }
 
-QVector4D* QVector4D_new8(QVector3D* vector, float wpos) {
+QVector4D* QVector4D_new9(QVector3D* vector, float wpos) {
 	return new QVector4D(*vector, static_cast<float>(wpos));
 }
 
-QVector4D* QVector4D_new9(QVector4D* param1) {
+QVector4D* QVector4D_new10(QVector4D* param1) {
 	return new QVector4D(*param1);
 }
 
 bool QVector4D_IsNull(QVector4D* self) {
-	return self->isNull();
+	return const_cast<const QVector4D*>(self)->isNull();
 }
 
 float QVector4D_X(QVector4D* self) {
-	return self->x();
+	return const_cast<const QVector4D*>(self)->x();
 }
 
 float QVector4D_Y(QVector4D* self) {
-	return self->y();
+	return const_cast<const QVector4D*>(self)->y();
 }
 
 float QVector4D_Z(QVector4D* self) {
-	return self->z();
+	return const_cast<const QVector4D*>(self)->z();
 }
 
 float QVector4D_W(QVector4D* self) {
-	return self->w();
+	return const_cast<const QVector4D*>(self)->w();
 }
 
 void QVector4D_SetX(QVector4D* self, float x) {
@@ -85,19 +88,19 @@ void QVector4D_SetW(QVector4D* self, float w) {
 }
 
 float QVector4D_OperatorSubscript(QVector4D* self, int i) {
-	return self->operator[](static_cast<int>(i));
+	return const_cast<const QVector4D*>(self)->operator[](static_cast<int>(i));
 }
 
 float QVector4D_Length(QVector4D* self) {
-	return self->length();
+	return const_cast<const QVector4D*>(self)->length();
 }
 
 float QVector4D_LengthSquared(QVector4D* self) {
-	return self->lengthSquared();
+	return const_cast<const QVector4D*>(self)->lengthSquared();
 }
 
 QVector4D* QVector4D_Normalized(QVector4D* self) {
-	QVector4D ret = self->normalized();
+	QVector4D ret = const_cast<const QVector4D*>(self)->normalized();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVector4D*>(new QVector4D(ret));
 }
@@ -147,37 +150,37 @@ float QVector4D_DotProduct(QVector4D* v1, QVector4D* v2) {
 }
 
 QVector2D* QVector4D_ToVector2D(QVector4D* self) {
-	QVector2D ret = self->toVector2D();
+	QVector2D ret = const_cast<const QVector4D*>(self)->toVector2D();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVector2D*>(new QVector2D(ret));
 }
 
 QVector2D* QVector4D_ToVector2DAffine(QVector4D* self) {
-	QVector2D ret = self->toVector2DAffine();
+	QVector2D ret = const_cast<const QVector4D*>(self)->toVector2DAffine();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVector2D*>(new QVector2D(ret));
 }
 
 QVector3D* QVector4D_ToVector3D(QVector4D* self) {
-	QVector3D ret = self->toVector3D();
+	QVector3D ret = const_cast<const QVector4D*>(self)->toVector3D();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVector3D*>(new QVector3D(ret));
 }
 
 QVector3D* QVector4D_ToVector3DAffine(QVector4D* self) {
-	QVector3D ret = self->toVector3DAffine();
+	QVector3D ret = const_cast<const QVector4D*>(self)->toVector3DAffine();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVector3D*>(new QVector3D(ret));
 }
 
 QPoint* QVector4D_ToPoint(QVector4D* self) {
-	QPoint ret = self->toPoint();
+	QPoint ret = const_cast<const QVector4D*>(self)->toPoint();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPoint*>(new QPoint(ret));
 }
 
 QPointF* QVector4D_ToPointF(QVector4D* self) {
-	QPointF ret = self->toPointF();
+	QPointF ret = const_cast<const QVector4D*>(self)->toPointF();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPointF*>(new QPointF(ret));
 }

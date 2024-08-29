@@ -404,8 +404,17 @@ func (this *QGraphicsBlurEffect) BlurRadius() float64 {
 	return (float64)(ret)
 }
 
+func (this *QGraphicsBlurEffect) BlurHints() int {
+	ret := C.QGraphicsBlurEffect_BlurHints(this.h)
+	return (int)(ret)
+}
+
 func (this *QGraphicsBlurEffect) SetBlurRadius(blurRadius float64) {
 	C.QGraphicsBlurEffect_SetBlurRadius(this.h, (C.double)(blurRadius))
+}
+
+func (this *QGraphicsBlurEffect) SetBlurHints(hints int) {
+	C.QGraphicsBlurEffect_SetBlurHints(this.h, (C.int)(hints))
 }
 
 func (this *QGraphicsBlurEffect) BlurRadiusChanged(blurRadius float64) {
@@ -418,6 +427,18 @@ func (this *QGraphicsBlurEffect) OnBlurRadiusChanged(slot func()) {
 	}
 
 	C.QGraphicsBlurEffect_connect_BlurRadiusChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+}
+
+func (this *QGraphicsBlurEffect) BlurHintsChanged(hints int) {
+	C.QGraphicsBlurEffect_BlurHintsChanged(this.h, (C.int)(hints))
+}
+
+func (this *QGraphicsBlurEffect) OnBlurHintsChanged(slot func()) {
+	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
+		slot()
+	}
+
+	C.QGraphicsBlurEffect_connect_BlurHintsChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
 }
 
 func QGraphicsBlurEffect_Tr2(s string, c string) string {

@@ -34,8 +34,20 @@ func newQEasingCurve_U(h unsafe.Pointer) *QEasingCurve {
 }
 
 // NewQEasingCurve constructs a new QEasingCurve object.
-func NewQEasingCurve(other *QEasingCurve) *QEasingCurve {
-	ret := C.QEasingCurve_new(other.cPointer())
+func NewQEasingCurve() *QEasingCurve {
+	ret := C.QEasingCurve_new()
+	return newQEasingCurve(ret)
+}
+
+// NewQEasingCurve2 constructs a new QEasingCurve object.
+func NewQEasingCurve2(other *QEasingCurve) *QEasingCurve {
+	ret := C.QEasingCurve_new2(other.cPointer())
+	return newQEasingCurve(ret)
+}
+
+// NewQEasingCurve3 constructs a new QEasingCurve object.
+func NewQEasingCurve3(typeVal uintptr) *QEasingCurve {
+	ret := C.QEasingCurve_new3((C.uintptr_t)(typeVal))
 	return newQEasingCurve(ret)
 }
 
@@ -103,6 +115,15 @@ func (this *QEasingCurve) ToCubicSpline() []QPointF {
 	}
 	C.free(unsafe.Pointer(_out))
 	return ret
+}
+
+func (this *QEasingCurve) Type() uintptr {
+	ret := C.QEasingCurve_Type(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QEasingCurve) SetType(typeVal uintptr) {
+	C.QEasingCurve_SetType(this.h, (C.uintptr_t)(typeVal))
 }
 
 func (this *QEasingCurve) ValueForProgress(progress float64) float64 {

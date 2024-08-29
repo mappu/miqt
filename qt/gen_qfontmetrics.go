@@ -249,6 +249,17 @@ func (this *QFontMetrics) TightBoundingRect(text string) *QRect {
 	return ret1
 }
 
+func (this *QFontMetrics) ElidedText(text string, mode uintptr, width int) string {
+	text_Cstring := C.CString(text)
+	defer C.free(unsafe.Pointer(text_Cstring))
+	var _out *C.char = nil
+	var _out_Strlen C.int = 0
+	C.QFontMetrics_ElidedText(this.h, text_Cstring, C.ulong(len(text)), (C.uintptr_t)(mode), (C.int)(width), &_out, &_out_Strlen)
+	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
 func (this *QFontMetrics) UnderlinePos() int {
 	ret := C.QFontMetrics_UnderlinePos(this.h)
 	return (int)(ret)
@@ -374,6 +385,17 @@ func (this *QFontMetrics) Size4(flags int, str string, tabstops int, tabarray *i
 		runtime.KeepAlive(ret2.h)
 	})
 	return ret1
+}
+
+func (this *QFontMetrics) ElidedText4(text string, mode uintptr, width int, flags int) string {
+	text_Cstring := C.CString(text)
+	defer C.free(unsafe.Pointer(text_Cstring))
+	var _out *C.char = nil
+	var _out_Strlen C.int = 0
+	C.QFontMetrics_ElidedText4(this.h, text_Cstring, C.ulong(len(text)), (C.uintptr_t)(mode), (C.int)(width), (C.int)(flags), &_out, &_out_Strlen)
+	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
 }
 
 func (this *QFontMetrics) Delete() {
@@ -597,6 +619,17 @@ func (this *QFontMetricsF) TightBoundingRect(text string) *QRectF {
 	return ret1
 }
 
+func (this *QFontMetricsF) ElidedText(text string, mode uintptr, width float64) string {
+	text_Cstring := C.CString(text)
+	defer C.free(unsafe.Pointer(text_Cstring))
+	var _out *C.char = nil
+	var _out_Strlen C.int = 0
+	C.QFontMetricsF_ElidedText(this.h, text_Cstring, C.ulong(len(text)), (C.uintptr_t)(mode), (C.double)(width), &_out, &_out_Strlen)
+	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
 func (this *QFontMetricsF) UnderlinePos() float64 {
 	ret := C.QFontMetricsF_UnderlinePos(this.h)
 	return (float64)(ret)
@@ -689,6 +722,17 @@ func (this *QFontMetricsF) Size4(flags int, str string, tabstops int, tabarray *
 		runtime.KeepAlive(ret2.h)
 	})
 	return ret1
+}
+
+func (this *QFontMetricsF) ElidedText4(text string, mode uintptr, width float64, flags int) string {
+	text_Cstring := C.CString(text)
+	defer C.free(unsafe.Pointer(text_Cstring))
+	var _out *C.char = nil
+	var _out_Strlen C.int = 0
+	C.QFontMetricsF_ElidedText4(this.h, text_Cstring, C.ulong(len(text)), (C.uintptr_t)(mode), (C.double)(width), (C.int)(flags), &_out, &_out_Strlen)
+	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
 }
 
 func (this *QFontMetricsF) Delete() {

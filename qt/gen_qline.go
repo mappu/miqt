@@ -348,6 +348,16 @@ func (this *QLineF) NormalVector() *QLineF {
 	return ret1
 }
 
+func (this *QLineF) Intersects(l *QLineF, intersectionPoint *QPointF) uintptr {
+	ret := C.QLineF_Intersects(this.h, l.cPointer(), intersectionPoint.cPointer())
+	return (uintptr)(ret)
+}
+
+func (this *QLineF) Intersect(l *QLineF, intersectionPoint *QPointF) uintptr {
+	ret := C.QLineF_Intersect(this.h, l.cPointer(), intersectionPoint.cPointer())
+	return (uintptr)(ret)
+}
+
 func (this *QLineF) AngleWithQLineF(l *QLineF) float64 {
 	ret := C.QLineF_AngleWithQLineF(this.h, l.cPointer())
 	return (float64)(ret)

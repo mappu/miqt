@@ -99,6 +99,28 @@ func (this *QBitmap) Clear() {
 	C.QBitmap_Clear(this.h)
 }
 
+func QBitmap_FromImage(image *QImage) *QBitmap {
+	ret := C.QBitmap_FromImage(image.cPointer())
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQBitmap(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QBitmap) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func QBitmap_FromData(size *QSize, bits *byte) *QBitmap {
+	ret := C.QBitmap_FromData(size.cPointer(), (*C.uchar)(unsafe.Pointer(bits)))
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQBitmap(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QBitmap) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
 func (this *QBitmap) Transformed(param1 *QMatrix) *QBitmap {
 	ret := C.QBitmap_Transformed(this.h, param1.cPointer())
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -112,6 +134,28 @@ func (this *QBitmap) Transformed(param1 *QMatrix) *QBitmap {
 
 func (this *QBitmap) TransformedWithMatrix(matrix *QTransform) *QBitmap {
 	ret := C.QBitmap_TransformedWithMatrix(this.h, matrix.cPointer())
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQBitmap(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QBitmap) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func QBitmap_FromImage2(image *QImage, flags int) *QBitmap {
+	ret := C.QBitmap_FromImage2(image.cPointer(), (C.int)(flags))
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQBitmap(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QBitmap) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func QBitmap_FromData3(size *QSize, bits *byte, monoFormat uintptr) *QBitmap {
+	ret := C.QBitmap_FromData3(size.cPointer(), (*C.uchar)(unsafe.Pointer(bits)), (C.uintptr_t)(monoFormat))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQBitmap(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QBitmap) {

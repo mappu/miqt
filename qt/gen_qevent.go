@@ -36,9 +36,30 @@ func newQInputEvent_U(h unsafe.Pointer) *QInputEvent {
 }
 
 // NewQInputEvent constructs a new QInputEvent object.
-func NewQInputEvent(param1 *QInputEvent) *QInputEvent {
-	ret := C.QInputEvent_new(param1.cPointer())
+func NewQInputEvent(typeVal uintptr) *QInputEvent {
+	ret := C.QInputEvent_new((C.uintptr_t)(typeVal))
 	return newQInputEvent(ret)
+}
+
+// NewQInputEvent2 constructs a new QInputEvent object.
+func NewQInputEvent2(param1 *QInputEvent) *QInputEvent {
+	ret := C.QInputEvent_new2(param1.cPointer())
+	return newQInputEvent(ret)
+}
+
+// NewQInputEvent3 constructs a new QInputEvent object.
+func NewQInputEvent3(typeVal uintptr, modifiers int) *QInputEvent {
+	ret := C.QInputEvent_new3((C.uintptr_t)(typeVal), (C.int)(modifiers))
+	return newQInputEvent(ret)
+}
+
+func (this *QInputEvent) Modifiers() int {
+	ret := C.QInputEvent_Modifiers(this.h)
+	return (int)(ret)
+}
+
+func (this *QInputEvent) SetModifiers(amodifiers int) {
+	C.QInputEvent_SetModifiers(this.h, (C.int)(amodifiers))
 }
 
 func (this *QInputEvent) Timestamp() uint64 {
@@ -168,8 +189,32 @@ func newQMouseEvent_U(h unsafe.Pointer) *QMouseEvent {
 }
 
 // NewQMouseEvent constructs a new QMouseEvent object.
-func NewQMouseEvent(param1 *QMouseEvent) *QMouseEvent {
-	ret := C.QMouseEvent_new(param1.cPointer())
+func NewQMouseEvent(typeVal uintptr, localPos *QPointF, button uintptr, buttons int, modifiers int) *QMouseEvent {
+	ret := C.QMouseEvent_new((C.uintptr_t)(typeVal), localPos.cPointer(), (C.uintptr_t)(button), (C.int)(buttons), (C.int)(modifiers))
+	return newQMouseEvent(ret)
+}
+
+// NewQMouseEvent2 constructs a new QMouseEvent object.
+func NewQMouseEvent2(typeVal uintptr, localPos *QPointF, screenPos *QPointF, button uintptr, buttons int, modifiers int) *QMouseEvent {
+	ret := C.QMouseEvent_new2((C.uintptr_t)(typeVal), localPos.cPointer(), screenPos.cPointer(), (C.uintptr_t)(button), (C.int)(buttons), (C.int)(modifiers))
+	return newQMouseEvent(ret)
+}
+
+// NewQMouseEvent3 constructs a new QMouseEvent object.
+func NewQMouseEvent3(typeVal uintptr, localPos *QPointF, windowPos *QPointF, screenPos *QPointF, button uintptr, buttons int, modifiers int) *QMouseEvent {
+	ret := C.QMouseEvent_new3((C.uintptr_t)(typeVal), localPos.cPointer(), windowPos.cPointer(), screenPos.cPointer(), (C.uintptr_t)(button), (C.int)(buttons), (C.int)(modifiers))
+	return newQMouseEvent(ret)
+}
+
+// NewQMouseEvent4 constructs a new QMouseEvent object.
+func NewQMouseEvent4(typeVal uintptr, localPos *QPointF, windowPos *QPointF, screenPos *QPointF, button uintptr, buttons int, modifiers int, source uintptr) *QMouseEvent {
+	ret := C.QMouseEvent_new4((C.uintptr_t)(typeVal), localPos.cPointer(), windowPos.cPointer(), screenPos.cPointer(), (C.uintptr_t)(button), (C.int)(buttons), (C.int)(modifiers), (C.uintptr_t)(source))
+	return newQMouseEvent(ret)
+}
+
+// NewQMouseEvent5 constructs a new QMouseEvent object.
+func NewQMouseEvent5(param1 *QMouseEvent) *QMouseEvent {
+	ret := C.QMouseEvent_new5(param1.cPointer())
 	return newQMouseEvent(ret)
 }
 
@@ -230,8 +275,28 @@ func (this *QMouseEvent) ScreenPos() *QPointF {
 	return newQPointF_U(unsafe.Pointer(ret))
 }
 
+func (this *QMouseEvent) Button() uintptr {
+	ret := C.QMouseEvent_Button(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QMouseEvent) Buttons() int {
+	ret := C.QMouseEvent_Buttons(this.h)
+	return (int)(ret)
+}
+
 func (this *QMouseEvent) SetLocalPos(localPosition *QPointF) {
 	C.QMouseEvent_SetLocalPos(this.h, localPosition.cPointer())
+}
+
+func (this *QMouseEvent) Source() uintptr {
+	ret := C.QMouseEvent_Source(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QMouseEvent) Flags() int {
+	ret := C.QMouseEvent_Flags(this.h)
+	return (int)(ret)
 }
 
 func (this *QMouseEvent) Delete() {
@@ -259,8 +324,20 @@ func newQHoverEvent_U(h unsafe.Pointer) *QHoverEvent {
 }
 
 // NewQHoverEvent constructs a new QHoverEvent object.
-func NewQHoverEvent(param1 *QHoverEvent) *QHoverEvent {
-	ret := C.QHoverEvent_new(param1.cPointer())
+func NewQHoverEvent(typeVal uintptr, pos *QPointF, oldPos *QPointF) *QHoverEvent {
+	ret := C.QHoverEvent_new((C.uintptr_t)(typeVal), pos.cPointer(), oldPos.cPointer())
+	return newQHoverEvent(ret)
+}
+
+// NewQHoverEvent2 constructs a new QHoverEvent object.
+func NewQHoverEvent2(param1 *QHoverEvent) *QHoverEvent {
+	ret := C.QHoverEvent_new2(param1.cPointer())
+	return newQHoverEvent(ret)
+}
+
+// NewQHoverEvent3 constructs a new QHoverEvent object.
+func NewQHoverEvent3(typeVal uintptr, pos *QPointF, oldPos *QPointF, modifiers int) *QHoverEvent {
+	ret := C.QHoverEvent_new3((C.uintptr_t)(typeVal), pos.cPointer(), oldPos.cPointer(), (C.int)(modifiers))
 	return newQHoverEvent(ret)
 }
 
@@ -321,8 +398,68 @@ func newQWheelEvent_U(h unsafe.Pointer) *QWheelEvent {
 }
 
 // NewQWheelEvent constructs a new QWheelEvent object.
-func NewQWheelEvent(param1 *QWheelEvent) *QWheelEvent {
-	ret := C.QWheelEvent_new(param1.cPointer())
+func NewQWheelEvent(pos *QPointF, delta int, buttons int, modifiers int) *QWheelEvent {
+	ret := C.QWheelEvent_new(pos.cPointer(), (C.int)(delta), (C.int)(buttons), (C.int)(modifiers))
+	return newQWheelEvent(ret)
+}
+
+// NewQWheelEvent2 constructs a new QWheelEvent object.
+func NewQWheelEvent2(pos *QPointF, globalPos *QPointF, delta int, buttons int, modifiers int) *QWheelEvent {
+	ret := C.QWheelEvent_new2(pos.cPointer(), globalPos.cPointer(), (C.int)(delta), (C.int)(buttons), (C.int)(modifiers))
+	return newQWheelEvent(ret)
+}
+
+// NewQWheelEvent3 constructs a new QWheelEvent object.
+func NewQWheelEvent3(pos *QPointF, globalPos *QPointF, pixelDelta QPoint, angleDelta QPoint, qt4Delta int, qt4Orientation uintptr, buttons int, modifiers int) *QWheelEvent {
+	ret := C.QWheelEvent_new3(pos.cPointer(), globalPos.cPointer(), pixelDelta.cPointer(), angleDelta.cPointer(), (C.int)(qt4Delta), (C.uintptr_t)(qt4Orientation), (C.int)(buttons), (C.int)(modifiers))
+	return newQWheelEvent(ret)
+}
+
+// NewQWheelEvent4 constructs a new QWheelEvent object.
+func NewQWheelEvent4(pos *QPointF, globalPos *QPointF, pixelDelta QPoint, angleDelta QPoint, qt4Delta int, qt4Orientation uintptr, buttons int, modifiers int, phase uintptr) *QWheelEvent {
+	ret := C.QWheelEvent_new4(pos.cPointer(), globalPos.cPointer(), pixelDelta.cPointer(), angleDelta.cPointer(), (C.int)(qt4Delta), (C.uintptr_t)(qt4Orientation), (C.int)(buttons), (C.int)(modifiers), (C.uintptr_t)(phase))
+	return newQWheelEvent(ret)
+}
+
+// NewQWheelEvent5 constructs a new QWheelEvent object.
+func NewQWheelEvent5(pos *QPointF, globalPos *QPointF, pixelDelta QPoint, angleDelta QPoint, qt4Delta int, qt4Orientation uintptr, buttons int, modifiers int, phase uintptr, source uintptr) *QWheelEvent {
+	ret := C.QWheelEvent_new5(pos.cPointer(), globalPos.cPointer(), pixelDelta.cPointer(), angleDelta.cPointer(), (C.int)(qt4Delta), (C.uintptr_t)(qt4Orientation), (C.int)(buttons), (C.int)(modifiers), (C.uintptr_t)(phase), (C.uintptr_t)(source))
+	return newQWheelEvent(ret)
+}
+
+// NewQWheelEvent6 constructs a new QWheelEvent object.
+func NewQWheelEvent6(pos *QPointF, globalPos *QPointF, pixelDelta QPoint, angleDelta QPoint, qt4Delta int, qt4Orientation uintptr, buttons int, modifiers int, phase uintptr, source uintptr, inverted bool) *QWheelEvent {
+	ret := C.QWheelEvent_new6(pos.cPointer(), globalPos.cPointer(), pixelDelta.cPointer(), angleDelta.cPointer(), (C.int)(qt4Delta), (C.uintptr_t)(qt4Orientation), (C.int)(buttons), (C.int)(modifiers), (C.uintptr_t)(phase), (C.uintptr_t)(source), (C.bool)(inverted))
+	return newQWheelEvent(ret)
+}
+
+// NewQWheelEvent7 constructs a new QWheelEvent object.
+func NewQWheelEvent7(pos QPointF, globalPos QPointF, pixelDelta QPoint, angleDelta QPoint, buttons int, modifiers int, phase uintptr, inverted bool) *QWheelEvent {
+	ret := C.QWheelEvent_new7(pos.cPointer(), globalPos.cPointer(), pixelDelta.cPointer(), angleDelta.cPointer(), (C.int)(buttons), (C.int)(modifiers), (C.uintptr_t)(phase), (C.bool)(inverted))
+	return newQWheelEvent(ret)
+}
+
+// NewQWheelEvent8 constructs a new QWheelEvent object.
+func NewQWheelEvent8(param1 *QWheelEvent) *QWheelEvent {
+	ret := C.QWheelEvent_new8(param1.cPointer())
+	return newQWheelEvent(ret)
+}
+
+// NewQWheelEvent9 constructs a new QWheelEvent object.
+func NewQWheelEvent9(pos *QPointF, delta int, buttons int, modifiers int, orient uintptr) *QWheelEvent {
+	ret := C.QWheelEvent_new9(pos.cPointer(), (C.int)(delta), (C.int)(buttons), (C.int)(modifiers), (C.uintptr_t)(orient))
+	return newQWheelEvent(ret)
+}
+
+// NewQWheelEvent10 constructs a new QWheelEvent object.
+func NewQWheelEvent10(pos *QPointF, globalPos *QPointF, delta int, buttons int, modifiers int, orient uintptr) *QWheelEvent {
+	ret := C.QWheelEvent_new10(pos.cPointer(), globalPos.cPointer(), (C.int)(delta), (C.int)(buttons), (C.int)(modifiers), (C.uintptr_t)(orient))
+	return newQWheelEvent(ret)
+}
+
+// NewQWheelEvent11 constructs a new QWheelEvent object.
+func NewQWheelEvent11(pos QPointF, globalPos QPointF, pixelDelta QPoint, angleDelta QPoint, buttons int, modifiers int, phase uintptr, inverted bool, source uintptr) *QWheelEvent {
+	ret := C.QWheelEvent_new11(pos.cPointer(), globalPos.cPointer(), pixelDelta.cPointer(), angleDelta.cPointer(), (C.int)(buttons), (C.int)(modifiers), (C.uintptr_t)(phase), (C.bool)(inverted), (C.uintptr_t)(source))
 	return newQWheelEvent(ret)
 }
 
@@ -351,6 +488,11 @@ func (this *QWheelEvent) AngleDelta() *QPoint {
 func (this *QWheelEvent) Delta() int {
 	ret := C.QWheelEvent_Delta(this.h)
 	return (int)(ret)
+}
+
+func (this *QWheelEvent) Orientation() uintptr {
+	ret := C.QWheelEvent_Orientation(this.h)
+	return (uintptr)(ret)
 }
 
 func (this *QWheelEvent) Pos() *QPoint {
@@ -427,9 +569,24 @@ func (this *QWheelEvent) GlobalPosition() *QPointF {
 	return ret1
 }
 
+func (this *QWheelEvent) Buttons() int {
+	ret := C.QWheelEvent_Buttons(this.h)
+	return (int)(ret)
+}
+
+func (this *QWheelEvent) Phase() uintptr {
+	ret := C.QWheelEvent_Phase(this.h)
+	return (uintptr)(ret)
+}
+
 func (this *QWheelEvent) Inverted() bool {
 	ret := C.QWheelEvent_Inverted(this.h)
 	return (bool)(ret)
+}
+
+func (this *QWheelEvent) Source() uintptr {
+	ret := C.QWheelEvent_Source(this.h)
+	return (uintptr)(ret)
 }
 
 func (this *QWheelEvent) Delete() {
@@ -457,8 +614,20 @@ func newQTabletEvent_U(h unsafe.Pointer) *QTabletEvent {
 }
 
 // NewQTabletEvent constructs a new QTabletEvent object.
-func NewQTabletEvent(param1 *QTabletEvent) *QTabletEvent {
-	ret := C.QTabletEvent_new(param1.cPointer())
+func NewQTabletEvent(t uintptr, pos *QPointF, globalPos *QPointF, device int, pointerType int, pressure float64, xTilt int, yTilt int, tangentialPressure float64, rotation float64, z int, keyState int, uniqueID int64) *QTabletEvent {
+	ret := C.QTabletEvent_new((C.uintptr_t)(t), pos.cPointer(), globalPos.cPointer(), (C.int)(device), (C.int)(pointerType), (C.double)(pressure), (C.int)(xTilt), (C.int)(yTilt), (C.double)(tangentialPressure), (C.double)(rotation), (C.int)(z), (C.int)(keyState), (C.longlong)(uniqueID))
+	return newQTabletEvent(ret)
+}
+
+// NewQTabletEvent2 constructs a new QTabletEvent object.
+func NewQTabletEvent2(t uintptr, pos *QPointF, globalPos *QPointF, device int, pointerType int, pressure float64, xTilt int, yTilt int, tangentialPressure float64, rotation float64, z int, keyState int, uniqueID int64, button uintptr, buttons int) *QTabletEvent {
+	ret := C.QTabletEvent_new2((C.uintptr_t)(t), pos.cPointer(), globalPos.cPointer(), (C.int)(device), (C.int)(pointerType), (C.double)(pressure), (C.int)(xTilt), (C.int)(yTilt), (C.double)(tangentialPressure), (C.double)(rotation), (C.int)(z), (C.int)(keyState), (C.longlong)(uniqueID), (C.uintptr_t)(button), (C.int)(buttons))
+	return newQTabletEvent(ret)
+}
+
+// NewQTabletEvent3 constructs a new QTabletEvent object.
+func NewQTabletEvent3(param1 *QTabletEvent) *QTabletEvent {
+	ret := C.QTabletEvent_new3(param1.cPointer())
 	return newQTabletEvent(ret)
 }
 
@@ -524,6 +693,21 @@ func (this *QTabletEvent) HiResGlobalY() float64 {
 	return (float64)(ret)
 }
 
+func (this *QTabletEvent) Device() uintptr {
+	ret := C.QTabletEvent_Device(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QTabletEvent) DeviceType() uintptr {
+	ret := C.QTabletEvent_DeviceType(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QTabletEvent) PointerType() uintptr {
+	ret := C.QTabletEvent_PointerType(this.h)
+	return (uintptr)(ret)
+}
+
 func (this *QTabletEvent) UniqueId() int64 {
 	ret := C.QTabletEvent_UniqueId(this.h)
 	return (int64)(ret)
@@ -559,6 +743,16 @@ func (this *QTabletEvent) YTilt() int {
 	return (int)(ret)
 }
 
+func (this *QTabletEvent) Button() uintptr {
+	ret := C.QTabletEvent_Button(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QTabletEvent) Buttons() int {
+	ret := C.QTabletEvent_Buttons(this.h)
+	return (int)(ret)
+}
+
 func (this *QTabletEvent) Delete() {
 	C.QTabletEvent_Delete(this.h)
 }
@@ -584,9 +778,26 @@ func newQNativeGestureEvent_U(h unsafe.Pointer) *QNativeGestureEvent {
 }
 
 // NewQNativeGestureEvent constructs a new QNativeGestureEvent object.
-func NewQNativeGestureEvent(param1 *QNativeGestureEvent) *QNativeGestureEvent {
-	ret := C.QNativeGestureEvent_new(param1.cPointer())
+func NewQNativeGestureEvent(typeVal uintptr, localPos *QPointF, windowPos *QPointF, screenPos *QPointF, value float64, sequenceId uint64, intArgument uint64) *QNativeGestureEvent {
+	ret := C.QNativeGestureEvent_new((C.uintptr_t)(typeVal), localPos.cPointer(), windowPos.cPointer(), screenPos.cPointer(), (C.double)(value), (C.ulong)(sequenceId), (C.ulonglong)(intArgument))
 	return newQNativeGestureEvent(ret)
+}
+
+// NewQNativeGestureEvent2 constructs a new QNativeGestureEvent object.
+func NewQNativeGestureEvent2(typeVal uintptr, dev *QTouchDevice, localPos *QPointF, windowPos *QPointF, screenPos *QPointF, value float64, sequenceId uint64, intArgument uint64) *QNativeGestureEvent {
+	ret := C.QNativeGestureEvent_new2((C.uintptr_t)(typeVal), dev.cPointer(), localPos.cPointer(), windowPos.cPointer(), screenPos.cPointer(), (C.double)(value), (C.ulong)(sequenceId), (C.ulonglong)(intArgument))
+	return newQNativeGestureEvent(ret)
+}
+
+// NewQNativeGestureEvent3 constructs a new QNativeGestureEvent object.
+func NewQNativeGestureEvent3(param1 *QNativeGestureEvent) *QNativeGestureEvent {
+	ret := C.QNativeGestureEvent_new3(param1.cPointer())
+	return newQNativeGestureEvent(ret)
+}
+
+func (this *QNativeGestureEvent) GestureType() uintptr {
+	ret := C.QNativeGestureEvent_GestureType(this.h)
+	return (uintptr)(ret)
 }
 
 func (this *QNativeGestureEvent) Value() float64 {
@@ -661,13 +872,83 @@ func newQKeyEvent_U(h unsafe.Pointer) *QKeyEvent {
 }
 
 // NewQKeyEvent constructs a new QKeyEvent object.
-func NewQKeyEvent(param1 *QKeyEvent) *QKeyEvent {
-	ret := C.QKeyEvent_new(param1.cPointer())
+func NewQKeyEvent(typeVal uintptr, key int, modifiers int) *QKeyEvent {
+	ret := C.QKeyEvent_new((C.uintptr_t)(typeVal), (C.int)(key), (C.int)(modifiers))
+	return newQKeyEvent(ret)
+}
+
+// NewQKeyEvent2 constructs a new QKeyEvent object.
+func NewQKeyEvent2(typeVal uintptr, key int, modifiers int, nativeScanCode uint, nativeVirtualKey uint, nativeModifiers uint) *QKeyEvent {
+	ret := C.QKeyEvent_new2((C.uintptr_t)(typeVal), (C.int)(key), (C.int)(modifiers), (C.uint)(nativeScanCode), (C.uint)(nativeVirtualKey), (C.uint)(nativeModifiers))
+	return newQKeyEvent(ret)
+}
+
+// NewQKeyEvent3 constructs a new QKeyEvent object.
+func NewQKeyEvent3(param1 *QKeyEvent) *QKeyEvent {
+	ret := C.QKeyEvent_new3(param1.cPointer())
+	return newQKeyEvent(ret)
+}
+
+// NewQKeyEvent4 constructs a new QKeyEvent object.
+func NewQKeyEvent4(typeVal uintptr, key int, modifiers int, text string) *QKeyEvent {
+	text_Cstring := C.CString(text)
+	defer C.free(unsafe.Pointer(text_Cstring))
+	ret := C.QKeyEvent_new4((C.uintptr_t)(typeVal), (C.int)(key), (C.int)(modifiers), text_Cstring, C.ulong(len(text)))
+	return newQKeyEvent(ret)
+}
+
+// NewQKeyEvent5 constructs a new QKeyEvent object.
+func NewQKeyEvent5(typeVal uintptr, key int, modifiers int, text string, autorep bool) *QKeyEvent {
+	text_Cstring := C.CString(text)
+	defer C.free(unsafe.Pointer(text_Cstring))
+	ret := C.QKeyEvent_new5((C.uintptr_t)(typeVal), (C.int)(key), (C.int)(modifiers), text_Cstring, C.ulong(len(text)), (C.bool)(autorep))
+	return newQKeyEvent(ret)
+}
+
+// NewQKeyEvent6 constructs a new QKeyEvent object.
+func NewQKeyEvent6(typeVal uintptr, key int, modifiers int, text string, autorep bool, count uint16) *QKeyEvent {
+	text_Cstring := C.CString(text)
+	defer C.free(unsafe.Pointer(text_Cstring))
+	ret := C.QKeyEvent_new6((C.uintptr_t)(typeVal), (C.int)(key), (C.int)(modifiers), text_Cstring, C.ulong(len(text)), (C.bool)(autorep), (C.uint16_t)(count))
+	return newQKeyEvent(ret)
+}
+
+// NewQKeyEvent7 constructs a new QKeyEvent object.
+func NewQKeyEvent7(typeVal uintptr, key int, modifiers int, nativeScanCode uint, nativeVirtualKey uint, nativeModifiers uint, text string) *QKeyEvent {
+	text_Cstring := C.CString(text)
+	defer C.free(unsafe.Pointer(text_Cstring))
+	ret := C.QKeyEvent_new7((C.uintptr_t)(typeVal), (C.int)(key), (C.int)(modifiers), (C.uint)(nativeScanCode), (C.uint)(nativeVirtualKey), (C.uint)(nativeModifiers), text_Cstring, C.ulong(len(text)))
+	return newQKeyEvent(ret)
+}
+
+// NewQKeyEvent8 constructs a new QKeyEvent object.
+func NewQKeyEvent8(typeVal uintptr, key int, modifiers int, nativeScanCode uint, nativeVirtualKey uint, nativeModifiers uint, text string, autorep bool) *QKeyEvent {
+	text_Cstring := C.CString(text)
+	defer C.free(unsafe.Pointer(text_Cstring))
+	ret := C.QKeyEvent_new8((C.uintptr_t)(typeVal), (C.int)(key), (C.int)(modifiers), (C.uint)(nativeScanCode), (C.uint)(nativeVirtualKey), (C.uint)(nativeModifiers), text_Cstring, C.ulong(len(text)), (C.bool)(autorep))
+	return newQKeyEvent(ret)
+}
+
+// NewQKeyEvent9 constructs a new QKeyEvent object.
+func NewQKeyEvent9(typeVal uintptr, key int, modifiers int, nativeScanCode uint, nativeVirtualKey uint, nativeModifiers uint, text string, autorep bool, count uint16) *QKeyEvent {
+	text_Cstring := C.CString(text)
+	defer C.free(unsafe.Pointer(text_Cstring))
+	ret := C.QKeyEvent_new9((C.uintptr_t)(typeVal), (C.int)(key), (C.int)(modifiers), (C.uint)(nativeScanCode), (C.uint)(nativeVirtualKey), (C.uint)(nativeModifiers), text_Cstring, C.ulong(len(text)), (C.bool)(autorep), (C.uint16_t)(count))
 	return newQKeyEvent(ret)
 }
 
 func (this *QKeyEvent) Key() int {
 	ret := C.QKeyEvent_Key(this.h)
+	return (int)(ret)
+}
+
+func (this *QKeyEvent) Matches(key uintptr) bool {
+	ret := C.QKeyEvent_Matches(this.h, (C.uintptr_t)(key))
+	return (bool)(ret)
+}
+
+func (this *QKeyEvent) Modifiers() int {
+	ret := C.QKeyEvent_Modifiers(this.h)
 	return (int)(ret)
 }
 
@@ -690,19 +971,19 @@ func (this *QKeyEvent) Count() int {
 	return (int)(ret)
 }
 
-func (this *QKeyEvent) NativeScanCode() uint32 {
+func (this *QKeyEvent) NativeScanCode() uint {
 	ret := C.QKeyEvent_NativeScanCode(this.h)
-	return (uint32)(ret)
+	return (uint)(ret)
 }
 
-func (this *QKeyEvent) NativeVirtualKey() uint32 {
+func (this *QKeyEvent) NativeVirtualKey() uint {
 	ret := C.QKeyEvent_NativeVirtualKey(this.h)
-	return (uint32)(ret)
+	return (uint)(ret)
 }
 
-func (this *QKeyEvent) NativeModifiers() uint32 {
+func (this *QKeyEvent) NativeModifiers() uint {
 	ret := C.QKeyEvent_NativeModifiers(this.h)
-	return (uint32)(ret)
+	return (uint)(ret)
 }
 
 func (this *QKeyEvent) Delete() {
@@ -730,8 +1011,20 @@ func newQFocusEvent_U(h unsafe.Pointer) *QFocusEvent {
 }
 
 // NewQFocusEvent constructs a new QFocusEvent object.
-func NewQFocusEvent(param1 *QFocusEvent) *QFocusEvent {
-	ret := C.QFocusEvent_new(param1.cPointer())
+func NewQFocusEvent(typeVal uintptr) *QFocusEvent {
+	ret := C.QFocusEvent_new((C.uintptr_t)(typeVal))
+	return newQFocusEvent(ret)
+}
+
+// NewQFocusEvent2 constructs a new QFocusEvent object.
+func NewQFocusEvent2(param1 *QFocusEvent) *QFocusEvent {
+	ret := C.QFocusEvent_new2(param1.cPointer())
+	return newQFocusEvent(ret)
+}
+
+// NewQFocusEvent3 constructs a new QFocusEvent object.
+func NewQFocusEvent3(typeVal uintptr, reason uintptr) *QFocusEvent {
+	ret := C.QFocusEvent_new3((C.uintptr_t)(typeVal), (C.uintptr_t)(reason))
 	return newQFocusEvent(ret)
 }
 
@@ -743,6 +1036,11 @@ func (this *QFocusEvent) GotFocus() bool {
 func (this *QFocusEvent) LostFocus() bool {
 	ret := C.QFocusEvent_LostFocus(this.h)
 	return (bool)(ret)
+}
+
+func (this *QFocusEvent) Reason() uintptr {
+	ret := C.QFocusEvent_Reason(this.h)
+	return (uintptr)(ret)
 }
 
 func (this *QFocusEvent) Delete() {
@@ -909,9 +1207,20 @@ func newQPlatformSurfaceEvent_U(h unsafe.Pointer) *QPlatformSurfaceEvent {
 }
 
 // NewQPlatformSurfaceEvent constructs a new QPlatformSurfaceEvent object.
-func NewQPlatformSurfaceEvent(param1 *QPlatformSurfaceEvent) *QPlatformSurfaceEvent {
-	ret := C.QPlatformSurfaceEvent_new(param1.cPointer())
+func NewQPlatformSurfaceEvent(surfaceEventType uintptr) *QPlatformSurfaceEvent {
+	ret := C.QPlatformSurfaceEvent_new((C.uintptr_t)(surfaceEventType))
 	return newQPlatformSurfaceEvent(ret)
+}
+
+// NewQPlatformSurfaceEvent2 constructs a new QPlatformSurfaceEvent object.
+func NewQPlatformSurfaceEvent2(param1 *QPlatformSurfaceEvent) *QPlatformSurfaceEvent {
+	ret := C.QPlatformSurfaceEvent_new2(param1.cPointer())
+	return newQPlatformSurfaceEvent(ret)
+}
+
+func (this *QPlatformSurfaceEvent) SurfaceEventType() uintptr {
+	ret := C.QPlatformSurfaceEvent_SurfaceEventType(this.h)
+	return (uintptr)(ret)
 }
 
 func (this *QPlatformSurfaceEvent) Delete() {
@@ -1145,8 +1454,26 @@ func newQContextMenuEvent_U(h unsafe.Pointer) *QContextMenuEvent {
 }
 
 // NewQContextMenuEvent constructs a new QContextMenuEvent object.
-func NewQContextMenuEvent(param1 *QContextMenuEvent) *QContextMenuEvent {
-	ret := C.QContextMenuEvent_new(param1.cPointer())
+func NewQContextMenuEvent(reason uintptr, pos *QPoint, globalPos *QPoint, modifiers int) *QContextMenuEvent {
+	ret := C.QContextMenuEvent_new((C.uintptr_t)(reason), pos.cPointer(), globalPos.cPointer(), (C.int)(modifiers))
+	return newQContextMenuEvent(ret)
+}
+
+// NewQContextMenuEvent2 constructs a new QContextMenuEvent object.
+func NewQContextMenuEvent2(reason uintptr, pos *QPoint, globalPos *QPoint) *QContextMenuEvent {
+	ret := C.QContextMenuEvent_new2((C.uintptr_t)(reason), pos.cPointer(), globalPos.cPointer())
+	return newQContextMenuEvent(ret)
+}
+
+// NewQContextMenuEvent3 constructs a new QContextMenuEvent object.
+func NewQContextMenuEvent3(reason uintptr, pos *QPoint) *QContextMenuEvent {
+	ret := C.QContextMenuEvent_new3((C.uintptr_t)(reason), pos.cPointer())
+	return newQContextMenuEvent(ret)
+}
+
+// NewQContextMenuEvent4 constructs a new QContextMenuEvent object.
+func NewQContextMenuEvent4(param1 *QContextMenuEvent) *QContextMenuEvent {
+	ret := C.QContextMenuEvent_new4(param1.cPointer())
 	return newQContextMenuEvent(ret)
 }
 
@@ -1180,6 +1507,11 @@ func (this *QContextMenuEvent) GlobalPos() *QPoint {
 	return newQPoint_U(unsafe.Pointer(ret))
 }
 
+func (this *QContextMenuEvent) Reason() uintptr {
+	ret := C.QContextMenuEvent_Reason(this.h)
+	return (uintptr)(ret)
+}
+
 func (this *QContextMenuEvent) Delete() {
 	C.QContextMenuEvent_Delete(this.h)
 }
@@ -1211,8 +1543,22 @@ func NewQInputMethodEvent() *QInputMethodEvent {
 }
 
 // NewQInputMethodEvent2 constructs a new QInputMethodEvent object.
-func NewQInputMethodEvent2(other *QInputMethodEvent) *QInputMethodEvent {
-	ret := C.QInputMethodEvent_new2(other.cPointer())
+func NewQInputMethodEvent2(preeditText string, attributes []QInputMethodEvent__Attribute) *QInputMethodEvent {
+	preeditText_Cstring := C.CString(preeditText)
+	defer C.free(unsafe.Pointer(preeditText_Cstring))
+	// For the C ABI, malloc a C array of raw pointers
+	attributes_CArray := (*[0xffff]*C.QInputMethodEvent__Attribute)(C.malloc(C.ulong(8 * len(attributes))))
+	defer C.free(unsafe.Pointer(attributes_CArray))
+	for i := range attributes {
+		attributes_CArray[i] = attributes[i].cPointer()
+	}
+	ret := C.QInputMethodEvent_new2(preeditText_Cstring, C.ulong(len(preeditText)), &attributes_CArray[0], C.ulong(len(attributes)))
+	return newQInputMethodEvent(ret)
+}
+
+// NewQInputMethodEvent3 constructs a new QInputMethodEvent object.
+func NewQInputMethodEvent3(other *QInputMethodEvent) *QInputMethodEvent {
+	ret := C.QInputMethodEvent_new3(other.cPointer())
 	return newQInputMethodEvent(ret)
 }
 
@@ -1287,9 +1633,35 @@ func newQInputMethodQueryEvent_U(h unsafe.Pointer) *QInputMethodQueryEvent {
 }
 
 // NewQInputMethodQueryEvent constructs a new QInputMethodQueryEvent object.
-func NewQInputMethodQueryEvent(param1 *QInputMethodQueryEvent) *QInputMethodQueryEvent {
-	ret := C.QInputMethodQueryEvent_new(param1.cPointer())
+func NewQInputMethodQueryEvent(queries int) *QInputMethodQueryEvent {
+	ret := C.QInputMethodQueryEvent_new((C.int)(queries))
 	return newQInputMethodQueryEvent(ret)
+}
+
+// NewQInputMethodQueryEvent2 constructs a new QInputMethodQueryEvent object.
+func NewQInputMethodQueryEvent2(param1 *QInputMethodQueryEvent) *QInputMethodQueryEvent {
+	ret := C.QInputMethodQueryEvent_new2(param1.cPointer())
+	return newQInputMethodQueryEvent(ret)
+}
+
+func (this *QInputMethodQueryEvent) Queries() int {
+	ret := C.QInputMethodQueryEvent_Queries(this.h)
+	return (int)(ret)
+}
+
+func (this *QInputMethodQueryEvent) SetValue(query uintptr, value *QVariant) {
+	C.QInputMethodQueryEvent_SetValue(this.h, (C.uintptr_t)(query), value.cPointer())
+}
+
+func (this *QInputMethodQueryEvent) Value(query uintptr) *QVariant {
+	ret := C.QInputMethodQueryEvent_Value(this.h, (C.uintptr_t)(query))
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQVariant(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QVariant) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
 }
 
 func (this *QInputMethodQueryEvent) Delete() {
@@ -1317,8 +1689,20 @@ func newQDropEvent_U(h unsafe.Pointer) *QDropEvent {
 }
 
 // NewQDropEvent constructs a new QDropEvent object.
-func NewQDropEvent(param1 *QDropEvent) *QDropEvent {
-	ret := C.QDropEvent_new(param1.cPointer())
+func NewQDropEvent(pos *QPointF, actions int, data *QMimeData, buttons int, modifiers int) *QDropEvent {
+	ret := C.QDropEvent_new(pos.cPointer(), (C.int)(actions), data.cPointer(), (C.int)(buttons), (C.int)(modifiers))
+	return newQDropEvent(ret)
+}
+
+// NewQDropEvent2 constructs a new QDropEvent object.
+func NewQDropEvent2(param1 *QDropEvent) *QDropEvent {
+	ret := C.QDropEvent_new2(param1.cPointer())
+	return newQDropEvent(ret)
+}
+
+// NewQDropEvent3 constructs a new QDropEvent object.
+func NewQDropEvent3(pos *QPointF, actions int, data *QMimeData, buttons int, modifiers int, typeVal uintptr) *QDropEvent {
+	ret := C.QDropEvent_new3(pos.cPointer(), (C.int)(actions), data.cPointer(), (C.int)(buttons), (C.int)(modifiers), (C.uintptr_t)(typeVal))
 	return newQDropEvent(ret)
 }
 
@@ -1338,8 +1722,37 @@ func (this *QDropEvent) PosF() *QPointF {
 	return newQPointF_U(unsafe.Pointer(ret))
 }
 
+func (this *QDropEvent) MouseButtons() int {
+	ret := C.QDropEvent_MouseButtons(this.h)
+	return (int)(ret)
+}
+
+func (this *QDropEvent) KeyboardModifiers() int {
+	ret := C.QDropEvent_KeyboardModifiers(this.h)
+	return (int)(ret)
+}
+
+func (this *QDropEvent) PossibleActions() int {
+	ret := C.QDropEvent_PossibleActions(this.h)
+	return (int)(ret)
+}
+
+func (this *QDropEvent) ProposedAction() uintptr {
+	ret := C.QDropEvent_ProposedAction(this.h)
+	return (uintptr)(ret)
+}
+
 func (this *QDropEvent) AcceptProposedAction() {
 	C.QDropEvent_AcceptProposedAction(this.h)
+}
+
+func (this *QDropEvent) DropAction() uintptr {
+	ret := C.QDropEvent_DropAction(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QDropEvent) SetDropAction(action uintptr) {
+	C.QDropEvent_SetDropAction(this.h, (C.uintptr_t)(action))
 }
 
 func (this *QDropEvent) Source() *QObject {
@@ -1377,8 +1790,20 @@ func newQDragMoveEvent_U(h unsafe.Pointer) *QDragMoveEvent {
 }
 
 // NewQDragMoveEvent constructs a new QDragMoveEvent object.
-func NewQDragMoveEvent(param1 *QDragMoveEvent) *QDragMoveEvent {
-	ret := C.QDragMoveEvent_new(param1.cPointer())
+func NewQDragMoveEvent(pos *QPoint, actions int, data *QMimeData, buttons int, modifiers int) *QDragMoveEvent {
+	ret := C.QDragMoveEvent_new(pos.cPointer(), (C.int)(actions), data.cPointer(), (C.int)(buttons), (C.int)(modifiers))
+	return newQDragMoveEvent(ret)
+}
+
+// NewQDragMoveEvent2 constructs a new QDragMoveEvent object.
+func NewQDragMoveEvent2(param1 *QDragMoveEvent) *QDragMoveEvent {
+	ret := C.QDragMoveEvent_new2(param1.cPointer())
+	return newQDragMoveEvent(ret)
+}
+
+// NewQDragMoveEvent3 constructs a new QDragMoveEvent object.
+func NewQDragMoveEvent3(pos *QPoint, actions int, data *QMimeData, buttons int, modifiers int, typeVal uintptr) *QDragMoveEvent {
+	ret := C.QDragMoveEvent_new3(pos.cPointer(), (C.int)(actions), data.cPointer(), (C.int)(buttons), (C.int)(modifiers), (C.uintptr_t)(typeVal))
 	return newQDragMoveEvent(ret)
 }
 
@@ -1434,8 +1859,14 @@ func newQDragEnterEvent_U(h unsafe.Pointer) *QDragEnterEvent {
 }
 
 // NewQDragEnterEvent constructs a new QDragEnterEvent object.
-func NewQDragEnterEvent(param1 *QDragEnterEvent) *QDragEnterEvent {
-	ret := C.QDragEnterEvent_new(param1.cPointer())
+func NewQDragEnterEvent(pos *QPoint, actions int, data *QMimeData, buttons int, modifiers int) *QDragEnterEvent {
+	ret := C.QDragEnterEvent_new(pos.cPointer(), (C.int)(actions), data.cPointer(), (C.int)(buttons), (C.int)(modifiers))
+	return newQDragEnterEvent(ret)
+}
+
+// NewQDragEnterEvent2 constructs a new QDragEnterEvent object.
+func NewQDragEnterEvent2(param1 *QDragEnterEvent) *QDragEnterEvent {
+	ret := C.QDragEnterEvent_new2(param1.cPointer())
 	return newQDragEnterEvent(ret)
 }
 
@@ -1508,8 +1939,14 @@ func newQHelpEvent_U(h unsafe.Pointer) *QHelpEvent {
 }
 
 // NewQHelpEvent constructs a new QHelpEvent object.
-func NewQHelpEvent(param1 *QHelpEvent) *QHelpEvent {
-	ret := C.QHelpEvent_new(param1.cPointer())
+func NewQHelpEvent(typeVal uintptr, pos *QPoint, globalPos *QPoint) *QHelpEvent {
+	ret := C.QHelpEvent_new((C.uintptr_t)(typeVal), pos.cPointer(), globalPos.cPointer())
+	return newQHelpEvent(ret)
+}
+
+// NewQHelpEvent2 constructs a new QHelpEvent object.
+func NewQHelpEvent2(param1 *QHelpEvent) *QHelpEvent {
+	ret := C.QHelpEvent_new2(param1.cPointer())
 	return newQHelpEvent(ret)
 }
 
@@ -1757,6 +2194,11 @@ func (this *QFileOpenEvent) Url() *QUrl {
 	return ret1
 }
 
+func (this *QFileOpenEvent) OpenFile(file *QFile, flags int) bool {
+	ret := C.QFileOpenEvent_OpenFile(this.h, file.cPointer(), (C.int)(flags))
+	return (bool)(ret)
+}
+
 func (this *QFileOpenEvent) Delete() {
 	C.QFileOpenEvent_Delete(this.h)
 }
@@ -1880,9 +2322,26 @@ func newQWindowStateChangeEvent_U(h unsafe.Pointer) *QWindowStateChangeEvent {
 }
 
 // NewQWindowStateChangeEvent constructs a new QWindowStateChangeEvent object.
-func NewQWindowStateChangeEvent(param1 *QWindowStateChangeEvent) *QWindowStateChangeEvent {
-	ret := C.QWindowStateChangeEvent_new(param1.cPointer())
+func NewQWindowStateChangeEvent(aOldState int) *QWindowStateChangeEvent {
+	ret := C.QWindowStateChangeEvent_new((C.int)(aOldState))
 	return newQWindowStateChangeEvent(ret)
+}
+
+// NewQWindowStateChangeEvent2 constructs a new QWindowStateChangeEvent object.
+func NewQWindowStateChangeEvent2(param1 *QWindowStateChangeEvent) *QWindowStateChangeEvent {
+	ret := C.QWindowStateChangeEvent_new2(param1.cPointer())
+	return newQWindowStateChangeEvent(ret)
+}
+
+// NewQWindowStateChangeEvent3 constructs a new QWindowStateChangeEvent object.
+func NewQWindowStateChangeEvent3(aOldState int, isOverride bool) *QWindowStateChangeEvent {
+	ret := C.QWindowStateChangeEvent_new3((C.int)(aOldState), (C.bool)(isOverride))
+	return newQWindowStateChangeEvent(ret)
+}
+
+func (this *QWindowStateChangeEvent) OldState() int {
+	ret := C.QWindowStateChangeEvent_OldState(this.h)
+	return (int)(ret)
 }
 
 func (this *QWindowStateChangeEvent) IsOverride() bool {
@@ -1926,7 +2385,7 @@ func NewQPointingDeviceUniqueId2(param1 *QPointingDeviceUniqueId) *QPointingDevi
 }
 
 func QPointingDeviceUniqueId_FromNumericId(id int64) *QPointingDeviceUniqueId {
-	ret := C.QPointingDeviceUniqueId_FromNumericId((C.int64_t)(id))
+	ret := C.QPointingDeviceUniqueId_FromNumericId((C.longlong)(id))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQPointingDeviceUniqueId(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QPointingDeviceUniqueId) {
@@ -1971,8 +2430,44 @@ func newQTouchEvent_U(h unsafe.Pointer) *QTouchEvent {
 }
 
 // NewQTouchEvent constructs a new QTouchEvent object.
-func NewQTouchEvent(param1 *QTouchEvent) *QTouchEvent {
-	ret := C.QTouchEvent_new(param1.cPointer())
+func NewQTouchEvent(eventType uintptr) *QTouchEvent {
+	ret := C.QTouchEvent_new((C.uintptr_t)(eventType))
+	return newQTouchEvent(ret)
+}
+
+// NewQTouchEvent2 constructs a new QTouchEvent object.
+func NewQTouchEvent2(param1 *QTouchEvent) *QTouchEvent {
+	ret := C.QTouchEvent_new2(param1.cPointer())
+	return newQTouchEvent(ret)
+}
+
+// NewQTouchEvent3 constructs a new QTouchEvent object.
+func NewQTouchEvent3(eventType uintptr, device *QTouchDevice) *QTouchEvent {
+	ret := C.QTouchEvent_new3((C.uintptr_t)(eventType), device.cPointer())
+	return newQTouchEvent(ret)
+}
+
+// NewQTouchEvent4 constructs a new QTouchEvent object.
+func NewQTouchEvent4(eventType uintptr, device *QTouchDevice, modifiers int) *QTouchEvent {
+	ret := C.QTouchEvent_new4((C.uintptr_t)(eventType), device.cPointer(), (C.int)(modifiers))
+	return newQTouchEvent(ret)
+}
+
+// NewQTouchEvent5 constructs a new QTouchEvent object.
+func NewQTouchEvent5(eventType uintptr, device *QTouchDevice, modifiers int, touchPointStates int) *QTouchEvent {
+	ret := C.QTouchEvent_new5((C.uintptr_t)(eventType), device.cPointer(), (C.int)(modifiers), (C.int)(touchPointStates))
+	return newQTouchEvent(ret)
+}
+
+// NewQTouchEvent6 constructs a new QTouchEvent object.
+func NewQTouchEvent6(eventType uintptr, device *QTouchDevice, modifiers int, touchPointStates int, touchPoints []QTouchEvent__TouchPoint) *QTouchEvent {
+	// For the C ABI, malloc a C array of raw pointers
+	touchPoints_CArray := (*[0xffff]*C.QTouchEvent__TouchPoint)(C.malloc(C.ulong(8 * len(touchPoints))))
+	defer C.free(unsafe.Pointer(touchPoints_CArray))
+	for i := range touchPoints {
+		touchPoints_CArray[i] = touchPoints[i].cPointer()
+	}
+	ret := C.QTouchEvent_new6((C.uintptr_t)(eventType), device.cPointer(), (C.int)(modifiers), (C.int)(touchPointStates), &touchPoints_CArray[0], C.ulong(len(touchPoints)))
 	return newQTouchEvent(ret)
 }
 
@@ -1986,6 +2481,11 @@ func (this *QTouchEvent) Target() *QObject {
 	return newQObject_U(unsafe.Pointer(ret))
 }
 
+func (this *QTouchEvent) TouchPointStates() int {
+	ret := C.QTouchEvent_TouchPointStates(this.h)
+	return (int)(ret)
+}
+
 func (this *QTouchEvent) Device() *QTouchDevice {
 	ret := C.QTouchEvent_Device(this.h)
 	return newQTouchDevice_U(unsafe.Pointer(ret))
@@ -1997,6 +2497,20 @@ func (this *QTouchEvent) SetWindow(awindow *QWindow) {
 
 func (this *QTouchEvent) SetTarget(atarget *QObject) {
 	C.QTouchEvent_SetTarget(this.h, atarget.cPointer())
+}
+
+func (this *QTouchEvent) SetTouchPointStates(aTouchPointStates int) {
+	C.QTouchEvent_SetTouchPointStates(this.h, (C.int)(aTouchPointStates))
+}
+
+func (this *QTouchEvent) SetTouchPoints(atouchPoints []QTouchEvent__TouchPoint) {
+	// For the C ABI, malloc a C array of raw pointers
+	atouchPoints_CArray := (*[0xffff]*C.QTouchEvent__TouchPoint)(C.malloc(C.ulong(8 * len(atouchPoints))))
+	defer C.free(unsafe.Pointer(atouchPoints_CArray))
+	for i := range atouchPoints {
+		atouchPoints_CArray[i] = atouchPoints[i].cPointer()
+	}
+	C.QTouchEvent_SetTouchPoints(this.h, &atouchPoints_CArray[0], C.ulong(len(atouchPoints)))
 }
 
 func (this *QTouchEvent) SetDevice(adevice *QTouchDevice) {
@@ -2120,8 +2634,14 @@ func newQScrollEvent_U(h unsafe.Pointer) *QScrollEvent {
 }
 
 // NewQScrollEvent constructs a new QScrollEvent object.
-func NewQScrollEvent(param1 *QScrollEvent) *QScrollEvent {
-	ret := C.QScrollEvent_new(param1.cPointer())
+func NewQScrollEvent(contentPos *QPointF, overshoot *QPointF, scrollState uintptr) *QScrollEvent {
+	ret := C.QScrollEvent_new(contentPos.cPointer(), overshoot.cPointer(), (C.uintptr_t)(scrollState))
+	return newQScrollEvent(ret)
+}
+
+// NewQScrollEvent2 constructs a new QScrollEvent object.
+func NewQScrollEvent2(param1 *QScrollEvent) *QScrollEvent {
+	ret := C.QScrollEvent_new2(param1.cPointer())
 	return newQScrollEvent(ret)
 }
 
@@ -2145,6 +2665,11 @@ func (this *QScrollEvent) OvershootDistance() *QPointF {
 		runtime.KeepAlive(ret2.h)
 	})
 	return ret1
+}
+
+func (this *QScrollEvent) ScrollState() uintptr {
+	ret := C.QScrollEvent_ScrollState(this.h)
+	return (uintptr)(ret)
 }
 
 func (this *QScrollEvent) Delete() {
@@ -2172,14 +2697,25 @@ func newQScreenOrientationChangeEvent_U(h unsafe.Pointer) *QScreenOrientationCha
 }
 
 // NewQScreenOrientationChangeEvent constructs a new QScreenOrientationChangeEvent object.
-func NewQScreenOrientationChangeEvent(param1 *QScreenOrientationChangeEvent) *QScreenOrientationChangeEvent {
-	ret := C.QScreenOrientationChangeEvent_new(param1.cPointer())
+func NewQScreenOrientationChangeEvent(screen *QScreen, orientation uintptr) *QScreenOrientationChangeEvent {
+	ret := C.QScreenOrientationChangeEvent_new(screen.cPointer(), (C.uintptr_t)(orientation))
+	return newQScreenOrientationChangeEvent(ret)
+}
+
+// NewQScreenOrientationChangeEvent2 constructs a new QScreenOrientationChangeEvent object.
+func NewQScreenOrientationChangeEvent2(param1 *QScreenOrientationChangeEvent) *QScreenOrientationChangeEvent {
+	ret := C.QScreenOrientationChangeEvent_new2(param1.cPointer())
 	return newQScreenOrientationChangeEvent(ret)
 }
 
 func (this *QScreenOrientationChangeEvent) Screen() *QScreen {
 	ret := C.QScreenOrientationChangeEvent_Screen(this.h)
 	return newQScreen_U(unsafe.Pointer(ret))
+}
+
+func (this *QScreenOrientationChangeEvent) Orientation() uintptr {
+	ret := C.QScreenOrientationChangeEvent_Orientation(this.h)
+	return (uintptr)(ret)
 }
 
 func (this *QScreenOrientationChangeEvent) Delete() {
@@ -2207,11 +2743,446 @@ func newQApplicationStateChangeEvent_U(h unsafe.Pointer) *QApplicationStateChang
 }
 
 // NewQApplicationStateChangeEvent constructs a new QApplicationStateChangeEvent object.
-func NewQApplicationStateChangeEvent(param1 *QApplicationStateChangeEvent) *QApplicationStateChangeEvent {
-	ret := C.QApplicationStateChangeEvent_new(param1.cPointer())
+func NewQApplicationStateChangeEvent(state uintptr) *QApplicationStateChangeEvent {
+	ret := C.QApplicationStateChangeEvent_new((C.uintptr_t)(state))
 	return newQApplicationStateChangeEvent(ret)
+}
+
+// NewQApplicationStateChangeEvent2 constructs a new QApplicationStateChangeEvent object.
+func NewQApplicationStateChangeEvent2(param1 *QApplicationStateChangeEvent) *QApplicationStateChangeEvent {
+	ret := C.QApplicationStateChangeEvent_new2(param1.cPointer())
+	return newQApplicationStateChangeEvent(ret)
+}
+
+func (this *QApplicationStateChangeEvent) ApplicationState() uintptr {
+	ret := C.QApplicationStateChangeEvent_ApplicationState(this.h)
+	return (uintptr)(ret)
 }
 
 func (this *QApplicationStateChangeEvent) Delete() {
 	C.QApplicationStateChangeEvent_Delete(this.h)
+}
+
+type QInputMethodEvent__Attribute struct {
+	h *C.QInputMethodEvent__Attribute
+}
+
+func (this *QInputMethodEvent__Attribute) cPointer() *C.QInputMethodEvent__Attribute {
+	if this == nil {
+		return nil
+	}
+	return this.h
+}
+
+func newQInputMethodEvent__Attribute(h *C.QInputMethodEvent__Attribute) *QInputMethodEvent__Attribute {
+	return &QInputMethodEvent__Attribute{h: h}
+}
+
+func newQInputMethodEvent__Attribute_U(h unsafe.Pointer) *QInputMethodEvent__Attribute {
+	return newQInputMethodEvent__Attribute((*C.QInputMethodEvent__Attribute)(h))
+}
+
+// NewQInputMethodEvent__Attribute constructs a new QInputMethodEvent::Attribute object.
+func NewQInputMethodEvent__Attribute(typ uintptr, s int, l int, val QVariant) *QInputMethodEvent__Attribute {
+	ret := C.QInputMethodEvent__Attribute_new((C.uintptr_t)(typ), (C.int)(s), (C.int)(l), val.cPointer())
+	return newQInputMethodEvent__Attribute(ret)
+}
+
+// NewQInputMethodEvent__Attribute2 constructs a new QInputMethodEvent::Attribute object.
+func NewQInputMethodEvent__Attribute2(typ uintptr, s int, l int) *QInputMethodEvent__Attribute {
+	ret := C.QInputMethodEvent__Attribute_new2((C.uintptr_t)(typ), (C.int)(s), (C.int)(l))
+	return newQInputMethodEvent__Attribute(ret)
+}
+
+// NewQInputMethodEvent__Attribute3 constructs a new QInputMethodEvent::Attribute object.
+func NewQInputMethodEvent__Attribute3(param1 *QInputMethodEvent__Attribute) *QInputMethodEvent__Attribute {
+	ret := C.QInputMethodEvent__Attribute_new3(param1.cPointer())
+	return newQInputMethodEvent__Attribute(ret)
+}
+
+func (this *QInputMethodEvent__Attribute) Delete() {
+	C.QInputMethodEvent__Attribute_Delete(this.h)
+}
+
+type QTouchEvent__TouchPoint struct {
+	h *C.QTouchEvent__TouchPoint
+}
+
+func (this *QTouchEvent__TouchPoint) cPointer() *C.QTouchEvent__TouchPoint {
+	if this == nil {
+		return nil
+	}
+	return this.h
+}
+
+func newQTouchEvent__TouchPoint(h *C.QTouchEvent__TouchPoint) *QTouchEvent__TouchPoint {
+	return &QTouchEvent__TouchPoint{h: h}
+}
+
+func newQTouchEvent__TouchPoint_U(h unsafe.Pointer) *QTouchEvent__TouchPoint {
+	return newQTouchEvent__TouchPoint((*C.QTouchEvent__TouchPoint)(h))
+}
+
+// NewQTouchEvent__TouchPoint constructs a new QTouchEvent::TouchPoint object.
+func NewQTouchEvent__TouchPoint() *QTouchEvent__TouchPoint {
+	ret := C.QTouchEvent__TouchPoint_new()
+	return newQTouchEvent__TouchPoint(ret)
+}
+
+// NewQTouchEvent__TouchPoint2 constructs a new QTouchEvent::TouchPoint object.
+func NewQTouchEvent__TouchPoint2(other *QTouchEvent__TouchPoint) *QTouchEvent__TouchPoint {
+	ret := C.QTouchEvent__TouchPoint_new2(other.cPointer())
+	return newQTouchEvent__TouchPoint(ret)
+}
+
+// NewQTouchEvent__TouchPoint3 constructs a new QTouchEvent::TouchPoint object.
+func NewQTouchEvent__TouchPoint3(id int) *QTouchEvent__TouchPoint {
+	ret := C.QTouchEvent__TouchPoint_new3((C.int)(id))
+	return newQTouchEvent__TouchPoint(ret)
+}
+
+func (this *QTouchEvent__TouchPoint) Swap(other *QTouchEvent__TouchPoint) {
+	C.QTouchEvent__TouchPoint_Swap(this.h, other.cPointer())
+}
+
+func (this *QTouchEvent__TouchPoint) Id() int {
+	ret := C.QTouchEvent__TouchPoint_Id(this.h)
+	return (int)(ret)
+}
+
+func (this *QTouchEvent__TouchPoint) UniqueId() *QPointingDeviceUniqueId {
+	ret := C.QTouchEvent__TouchPoint_UniqueId(this.h)
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQPointingDeviceUniqueId(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QPointingDeviceUniqueId) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QTouchEvent__TouchPoint) State() uintptr {
+	ret := C.QTouchEvent__TouchPoint_State(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QTouchEvent__TouchPoint) Pos() *QPointF {
+	ret := C.QTouchEvent__TouchPoint_Pos(this.h)
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQPointF(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QPointF) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QTouchEvent__TouchPoint) StartPos() *QPointF {
+	ret := C.QTouchEvent__TouchPoint_StartPos(this.h)
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQPointF(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QPointF) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QTouchEvent__TouchPoint) LastPos() *QPointF {
+	ret := C.QTouchEvent__TouchPoint_LastPos(this.h)
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQPointF(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QPointF) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QTouchEvent__TouchPoint) ScenePos() *QPointF {
+	ret := C.QTouchEvent__TouchPoint_ScenePos(this.h)
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQPointF(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QPointF) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QTouchEvent__TouchPoint) StartScenePos() *QPointF {
+	ret := C.QTouchEvent__TouchPoint_StartScenePos(this.h)
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQPointF(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QPointF) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QTouchEvent__TouchPoint) LastScenePos() *QPointF {
+	ret := C.QTouchEvent__TouchPoint_LastScenePos(this.h)
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQPointF(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QPointF) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QTouchEvent__TouchPoint) ScreenPos() *QPointF {
+	ret := C.QTouchEvent__TouchPoint_ScreenPos(this.h)
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQPointF(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QPointF) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QTouchEvent__TouchPoint) StartScreenPos() *QPointF {
+	ret := C.QTouchEvent__TouchPoint_StartScreenPos(this.h)
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQPointF(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QPointF) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QTouchEvent__TouchPoint) LastScreenPos() *QPointF {
+	ret := C.QTouchEvent__TouchPoint_LastScreenPos(this.h)
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQPointF(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QPointF) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QTouchEvent__TouchPoint) NormalizedPos() *QPointF {
+	ret := C.QTouchEvent__TouchPoint_NormalizedPos(this.h)
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQPointF(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QPointF) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QTouchEvent__TouchPoint) StartNormalizedPos() *QPointF {
+	ret := C.QTouchEvent__TouchPoint_StartNormalizedPos(this.h)
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQPointF(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QPointF) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QTouchEvent__TouchPoint) LastNormalizedPos() *QPointF {
+	ret := C.QTouchEvent__TouchPoint_LastNormalizedPos(this.h)
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQPointF(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QPointF) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QTouchEvent__TouchPoint) Rect() *QRectF {
+	ret := C.QTouchEvent__TouchPoint_Rect(this.h)
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQRectF(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QRectF) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QTouchEvent__TouchPoint) SceneRect() *QRectF {
+	ret := C.QTouchEvent__TouchPoint_SceneRect(this.h)
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQRectF(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QRectF) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QTouchEvent__TouchPoint) ScreenRect() *QRectF {
+	ret := C.QTouchEvent__TouchPoint_ScreenRect(this.h)
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQRectF(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QRectF) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QTouchEvent__TouchPoint) SetRect(rect *QRectF) {
+	C.QTouchEvent__TouchPoint_SetRect(this.h, rect.cPointer())
+}
+
+func (this *QTouchEvent__TouchPoint) SetSceneRect(sceneRect *QRectF) {
+	C.QTouchEvent__TouchPoint_SetSceneRect(this.h, sceneRect.cPointer())
+}
+
+func (this *QTouchEvent__TouchPoint) SetScreenRect(screenRect *QRectF) {
+	C.QTouchEvent__TouchPoint_SetScreenRect(this.h, screenRect.cPointer())
+}
+
+func (this *QTouchEvent__TouchPoint) Pressure() float64 {
+	ret := C.QTouchEvent__TouchPoint_Pressure(this.h)
+	return (float64)(ret)
+}
+
+func (this *QTouchEvent__TouchPoint) Rotation() float64 {
+	ret := C.QTouchEvent__TouchPoint_Rotation(this.h)
+	return (float64)(ret)
+}
+
+func (this *QTouchEvent__TouchPoint) EllipseDiameters() *QSizeF {
+	ret := C.QTouchEvent__TouchPoint_EllipseDiameters(this.h)
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQSizeF(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QSizeF) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QTouchEvent__TouchPoint) Velocity() *QVector2D {
+	ret := C.QTouchEvent__TouchPoint_Velocity(this.h)
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQVector2D(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QVector2D) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QTouchEvent__TouchPoint) Flags() int {
+	ret := C.QTouchEvent__TouchPoint_Flags(this.h)
+	return (int)(ret)
+}
+
+func (this *QTouchEvent__TouchPoint) RawScreenPositions() []QPointF {
+	var _out **C.QPointF = nil
+	var _out_len C.size_t = 0
+	C.QTouchEvent__TouchPoint_RawScreenPositions(this.h, &_out, &_out_len)
+	ret := make([]QPointF, int(_out_len))
+	_outCast := (*[0xffff]*C.QPointF)(unsafe.Pointer(_out)) // so fresh so clean
+	for i := 0; i < int(_out_len); i++ {
+		ret[i] = *newQPointF(_outCast[i])
+	}
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func (this *QTouchEvent__TouchPoint) SetId(id int) {
+	C.QTouchEvent__TouchPoint_SetId(this.h, (C.int)(id))
+}
+
+func (this *QTouchEvent__TouchPoint) SetUniqueId(uid int64) {
+	C.QTouchEvent__TouchPoint_SetUniqueId(this.h, (C.longlong)(uid))
+}
+
+func (this *QTouchEvent__TouchPoint) SetState(state int) {
+	C.QTouchEvent__TouchPoint_SetState(this.h, (C.int)(state))
+}
+
+func (this *QTouchEvent__TouchPoint) SetPos(pos *QPointF) {
+	C.QTouchEvent__TouchPoint_SetPos(this.h, pos.cPointer())
+}
+
+func (this *QTouchEvent__TouchPoint) SetScenePos(scenePos *QPointF) {
+	C.QTouchEvent__TouchPoint_SetScenePos(this.h, scenePos.cPointer())
+}
+
+func (this *QTouchEvent__TouchPoint) SetScreenPos(screenPos *QPointF) {
+	C.QTouchEvent__TouchPoint_SetScreenPos(this.h, screenPos.cPointer())
+}
+
+func (this *QTouchEvent__TouchPoint) SetNormalizedPos(normalizedPos *QPointF) {
+	C.QTouchEvent__TouchPoint_SetNormalizedPos(this.h, normalizedPos.cPointer())
+}
+
+func (this *QTouchEvent__TouchPoint) SetStartPos(startPos *QPointF) {
+	C.QTouchEvent__TouchPoint_SetStartPos(this.h, startPos.cPointer())
+}
+
+func (this *QTouchEvent__TouchPoint) SetStartScenePos(startScenePos *QPointF) {
+	C.QTouchEvent__TouchPoint_SetStartScenePos(this.h, startScenePos.cPointer())
+}
+
+func (this *QTouchEvent__TouchPoint) SetStartScreenPos(startScreenPos *QPointF) {
+	C.QTouchEvent__TouchPoint_SetStartScreenPos(this.h, startScreenPos.cPointer())
+}
+
+func (this *QTouchEvent__TouchPoint) SetStartNormalizedPos(startNormalizedPos *QPointF) {
+	C.QTouchEvent__TouchPoint_SetStartNormalizedPos(this.h, startNormalizedPos.cPointer())
+}
+
+func (this *QTouchEvent__TouchPoint) SetLastPos(lastPos *QPointF) {
+	C.QTouchEvent__TouchPoint_SetLastPos(this.h, lastPos.cPointer())
+}
+
+func (this *QTouchEvent__TouchPoint) SetLastScenePos(lastScenePos *QPointF) {
+	C.QTouchEvent__TouchPoint_SetLastScenePos(this.h, lastScenePos.cPointer())
+}
+
+func (this *QTouchEvent__TouchPoint) SetLastScreenPos(lastScreenPos *QPointF) {
+	C.QTouchEvent__TouchPoint_SetLastScreenPos(this.h, lastScreenPos.cPointer())
+}
+
+func (this *QTouchEvent__TouchPoint) SetLastNormalizedPos(lastNormalizedPos *QPointF) {
+	C.QTouchEvent__TouchPoint_SetLastNormalizedPos(this.h, lastNormalizedPos.cPointer())
+}
+
+func (this *QTouchEvent__TouchPoint) SetPressure(pressure float64) {
+	C.QTouchEvent__TouchPoint_SetPressure(this.h, (C.double)(pressure))
+}
+
+func (this *QTouchEvent__TouchPoint) SetRotation(angle float64) {
+	C.QTouchEvent__TouchPoint_SetRotation(this.h, (C.double)(angle))
+}
+
+func (this *QTouchEvent__TouchPoint) SetEllipseDiameters(dia *QSizeF) {
+	C.QTouchEvent__TouchPoint_SetEllipseDiameters(this.h, dia.cPointer())
+}
+
+func (this *QTouchEvent__TouchPoint) SetVelocity(v *QVector2D) {
+	C.QTouchEvent__TouchPoint_SetVelocity(this.h, v.cPointer())
+}
+
+func (this *QTouchEvent__TouchPoint) SetFlags(flags int) {
+	C.QTouchEvent__TouchPoint_SetFlags(this.h, (C.int)(flags))
+}
+
+func (this *QTouchEvent__TouchPoint) SetRawScreenPositions(positions []QPointF) {
+	// For the C ABI, malloc a C array of raw pointers
+	positions_CArray := (*[0xffff]*C.QPointF)(C.malloc(C.ulong(8 * len(positions))))
+	defer C.free(unsafe.Pointer(positions_CArray))
+	for i := range positions {
+		positions_CArray[i] = positions[i].cPointer()
+	}
+	C.QTouchEvent__TouchPoint_SetRawScreenPositions(this.h, &positions_CArray[0], C.ulong(len(positions)))
+}
+
+func (this *QTouchEvent__TouchPoint) Delete() {
+	C.QTouchEvent__TouchPoint_Delete(this.h)
 }

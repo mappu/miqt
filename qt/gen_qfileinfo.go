@@ -374,6 +374,16 @@ func (this *QFileInfo) GroupId() uint {
 	return (uint)(ret)
 }
 
+func (this *QFileInfo) Permission(permissions int) bool {
+	ret := C.QFileInfo_Permission(this.h, (C.int)(permissions))
+	return (bool)(ret)
+}
+
+func (this *QFileInfo) Permissions() int {
+	ret := C.QFileInfo_Permissions(this.h)
+	return (int)(ret)
+}
+
 func (this *QFileInfo) Size() int64 {
 	ret := C.QFileInfo_Size(this.h)
 	return (int64)(ret)
@@ -425,6 +435,17 @@ func (this *QFileInfo) LastModified() *QDateTime {
 
 func (this *QFileInfo) LastRead() *QDateTime {
 	ret := C.QFileInfo_LastRead(this.h)
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQDateTime(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QDateTime) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QFileInfo) FileTime(time uintptr) *QDateTime {
+	ret := C.QFileInfo_FileTime(this.h, (C.uintptr_t)(time))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQDateTime(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QDateTime) {

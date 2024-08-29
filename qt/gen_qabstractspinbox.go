@@ -75,6 +75,24 @@ func QAbstractSpinBox_TrUtf8(s string) string {
 	return ret
 }
 
+func (this *QAbstractSpinBox) ButtonSymbols() uintptr {
+	ret := C.QAbstractSpinBox_ButtonSymbols(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QAbstractSpinBox) SetButtonSymbols(bs uintptr) {
+	C.QAbstractSpinBox_SetButtonSymbols(this.h, (C.uintptr_t)(bs))
+}
+
+func (this *QAbstractSpinBox) SetCorrectionMode(cm uintptr) {
+	C.QAbstractSpinBox_SetCorrectionMode(this.h, (C.uintptr_t)(cm))
+}
+
+func (this *QAbstractSpinBox) CorrectionMode() uintptr {
+	ret := C.QAbstractSpinBox_CorrectionMode(this.h)
+	return (uintptr)(ret)
+}
+
 func (this *QAbstractSpinBox) HasAcceptableInput() bool {
 	ret := C.QAbstractSpinBox_HasAcceptableInput(this.h)
 	return (bool)(ret)
@@ -129,6 +147,15 @@ func (this *QAbstractSpinBox) SetKeyboardTracking(kt bool) {
 func (this *QAbstractSpinBox) KeyboardTracking() bool {
 	ret := C.QAbstractSpinBox_KeyboardTracking(this.h)
 	return (bool)(ret)
+}
+
+func (this *QAbstractSpinBox) SetAlignment(flag int) {
+	C.QAbstractSpinBox_SetAlignment(this.h, (C.int)(flag))
+}
+
+func (this *QAbstractSpinBox) Alignment() int {
+	ret := C.QAbstractSpinBox_Alignment(this.h)
+	return (int)(ret)
 }
 
 func (this *QAbstractSpinBox) SetFrame(frame bool) {
@@ -187,6 +214,24 @@ func (this *QAbstractSpinBox) InterpretText() {
 func (this *QAbstractSpinBox) Event(event *QEvent) bool {
 	ret := C.QAbstractSpinBox_Event(this.h, event.cPointer())
 	return (bool)(ret)
+}
+
+func (this *QAbstractSpinBox) InputMethodQuery(param1 uintptr) *QVariant {
+	ret := C.QAbstractSpinBox_InputMethodQuery(this.h, (C.uintptr_t)(param1))
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQVariant(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QVariant) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QAbstractSpinBox) Validate(input string, pos *int) uintptr {
+	input_Cstring := C.CString(input)
+	defer C.free(unsafe.Pointer(input_Cstring))
+	ret := C.QAbstractSpinBox_Validate(this.h, input_Cstring, C.ulong(len(input)), (*C.int)(unsafe.Pointer(pos)))
+	return (uintptr)(ret)
 }
 
 func (this *QAbstractSpinBox) Fixup(input string) {

@@ -77,6 +77,10 @@ func (this *QTextCursor) IsNull() bool {
 	return (bool)(ret)
 }
 
+func (this *QTextCursor) SetPosition(pos int) {
+	C.QTextCursor_SetPosition(this.h, (C.int)(pos))
+}
+
 func (this *QTextCursor) Position() int {
 	ret := C.QTextCursor_Position(this.h)
 	return (int)(ret)
@@ -102,6 +106,11 @@ func (this *QTextCursor) InsertText2(text string, format *QTextCharFormat) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
 	C.QTextCursor_InsertText2(this.h, text_Cstring, C.ulong(len(text)), format.cPointer())
+}
+
+func (this *QTextCursor) MovePosition(op uintptr) bool {
+	ret := C.QTextCursor_MovePosition(this.h, (C.uintptr_t)(op))
+	return (bool)(ret)
 }
 
 func (this *QTextCursor) VisualNavigation() bool {
@@ -137,6 +146,10 @@ func (this *QTextCursor) DeleteChar() {
 
 func (this *QTextCursor) DeletePreviousChar() {
 	C.QTextCursor_DeletePreviousChar(this.h)
+}
+
+func (this *QTextCursor) Select(selection uintptr) {
+	C.QTextCursor_Select(this.h, (C.uintptr_t)(selection))
 }
 
 func (this *QTextCursor) HasSelection() bool {
@@ -296,8 +309,18 @@ func (this *QTextCursor) InsertList(format *QTextListFormat) *QTextList {
 	return newQTextList_U(unsafe.Pointer(ret))
 }
 
+func (this *QTextCursor) InsertListWithStyle(style uintptr) *QTextList {
+	ret := C.QTextCursor_InsertListWithStyle(this.h, (C.uintptr_t)(style))
+	return newQTextList_U(unsafe.Pointer(ret))
+}
+
 func (this *QTextCursor) CreateList(format *QTextListFormat) *QTextList {
 	ret := C.QTextCursor_CreateList(this.h, format.cPointer())
+	return newQTextList_U(unsafe.Pointer(ret))
+}
+
+func (this *QTextCursor) CreateListWithStyle(style uintptr) *QTextList {
+	ret := C.QTextCursor_CreateListWithStyle(this.h, (C.uintptr_t)(style))
 	return newQTextList_U(unsafe.Pointer(ret))
 }
 
@@ -341,8 +364,12 @@ func (this *QTextCursor) InsertHtml(html string) {
 	C.QTextCursor_InsertHtml(this.h, html_Cstring, C.ulong(len(html)))
 }
 
-func (this *QTextCursor) InsertImage(format *QTextImageFormat) {
-	C.QTextCursor_InsertImage(this.h, format.cPointer())
+func (this *QTextCursor) InsertImage(format *QTextImageFormat, alignment uintptr) {
+	C.QTextCursor_InsertImage(this.h, format.cPointer(), (C.uintptr_t)(alignment))
+}
+
+func (this *QTextCursor) InsertImageWithFormat(format *QTextImageFormat) {
+	C.QTextCursor_InsertImageWithFormat(this.h, format.cPointer())
 }
 
 func (this *QTextCursor) InsertImageWithName(name string) {
@@ -415,6 +442,20 @@ func (this *QTextCursor) ColumnNumber() int {
 func (this *QTextCursor) Document() *QTextDocument {
 	ret := C.QTextCursor_Document(this.h)
 	return newQTextDocument_U(unsafe.Pointer(ret))
+}
+
+func (this *QTextCursor) SetPosition2(pos int, mode uintptr) {
+	C.QTextCursor_SetPosition2(this.h, (C.int)(pos), (C.uintptr_t)(mode))
+}
+
+func (this *QTextCursor) MovePosition2(op uintptr, param2 uintptr) bool {
+	ret := C.QTextCursor_MovePosition2(this.h, (C.uintptr_t)(op), (C.uintptr_t)(param2))
+	return (bool)(ret)
+}
+
+func (this *QTextCursor) MovePosition3(op uintptr, param2 uintptr, n int) bool {
+	ret := C.QTextCursor_MovePosition3(this.h, (C.uintptr_t)(op), (C.uintptr_t)(param2), (C.int)(n))
+	return (bool)(ret)
 }
 
 func (this *QTextCursor) InsertImage2(image *QImage, name string) {

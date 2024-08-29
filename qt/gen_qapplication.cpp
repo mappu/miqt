@@ -1,6 +1,3 @@
-#include "gen_qapplication.h"
-#include "qapplication.h"
-
 #include <QApplication>
 #include <QDesktopWidget>
 #include <QEvent>
@@ -14,27 +11,31 @@
 #include <QPoint>
 #include <QSize>
 #include <QString>
+#include <QByteArray>
+#include <cstring>
 #include <QStyle>
 #include <QWidget>
+#include "qapplication.h"
 
+#include "gen_qapplication.h"
 
 extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
 }
 
-QApplication* QApplication_new(int* argc, char ** argv) {
+QApplication* QApplication_new(int* argc, char** argv) {
 	return new QApplication(static_cast<int&>(*argc), argv);
 }
 
-QApplication* QApplication_new2(int* argc, char ** argv, int param3) {
+QApplication* QApplication_new2(int* argc, char** argv, int param3) {
 	return new QApplication(static_cast<int&>(*argc), argv, static_cast<int>(param3));
 }
 
 QMetaObject* QApplication_MetaObject(QApplication* self) {
-	return (QMetaObject*) self->metaObject();
+	return (QMetaObject*) const_cast<const QApplication*>(self)->metaObject();
 }
 
-void QApplication_Tr(char* s, char** _out, int* _out_Strlen) {
+void QApplication_Tr(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QApplication::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -43,7 +44,7 @@ void QApplication_Tr(char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QApplication_TrUtf8(char* s, char** _out, int* _out_Strlen) {
+void QApplication_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QApplication::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -79,7 +80,7 @@ QPalette* QApplication_Palette(QWidget* param1) {
 	return static_cast<QPalette*>(new QPalette(ret));
 }
 
-QPalette* QApplication_PaletteWithClassName(char* className) {
+QPalette* QApplication_PaletteWithClassName(const char* className) {
 	QPalette ret = QApplication::palette(className);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPalette*>(new QPalette(ret));
@@ -101,7 +102,7 @@ QFont* QApplication_FontWithQWidget(QWidget* param1) {
 	return static_cast<QFont*>(new QFont(ret));
 }
 
-QFont* QApplication_FontWithClassName(char* className) {
+QFont* QApplication_FontWithClassName(const char* className) {
 	QFont ret = QApplication::font(className);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QFont*>(new QFont(ret));
@@ -128,7 +129,7 @@ QIcon* QApplication_WindowIcon() {
 }
 
 void QApplication_AllWidgets(QWidget*** _out, size_t* _out_len) {
-	QList<QWidget *> ret = QApplication::allWidgets();
+	QWidgetList ret = QApplication::allWidgets();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QWidget** __out = static_cast<QWidget**>(malloc(sizeof(QWidget*) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {
@@ -139,7 +140,7 @@ void QApplication_AllWidgets(QWidget*** _out, size_t* _out_len) {
 }
 
 void QApplication_TopLevelWidgets(QWidget*** _out, size_t* _out_len) {
-	QList<QWidget *> ret = QApplication::topLevelWidgets();
+	QWidgetList ret = QApplication::topLevelWidgets();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QWidget** __out = static_cast<QWidget**>(malloc(sizeof(QWidget*) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {
@@ -255,6 +256,14 @@ int QApplication_StartDragDistance() {
 	return QApplication::startDragDistance();
 }
 
+bool QApplication_IsEffectEnabled(uintptr_t param1) {
+	return QApplication::isEffectEnabled(static_cast<Qt::UIEffect>(param1));
+}
+
+void QApplication_SetEffectEnabled(uintptr_t param1) {
+	QApplication::setEffectEnabled(static_cast<Qt::UIEffect>(param1));
+}
+
 int QApplication_Exec() {
 	return QApplication::exec();
 }
@@ -274,7 +283,7 @@ void QApplication_connect_FocusChanged(QApplication* self, void* slot) {
 }
 
 void QApplication_StyleSheet(QApplication* self, char** _out, int* _out_Strlen) {
-	QString ret = self->styleSheet();
+	QString ret = const_cast<const QApplication*>(self)->styleSheet();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -287,12 +296,12 @@ void QApplication_SetStyleSheet(QApplication* self, const char* sheet, size_t sh
 	self->setStyleSheet(sheet_QString);
 }
 
-void QApplication_SetAutoSipEnabled(QApplication* self, bool enabled) {
+void QApplication_SetAutoSipEnabled(QApplication* self, const bool enabled) {
 	self->setAutoSipEnabled(enabled);
 }
 
 bool QApplication_AutoSipEnabled(QApplication* self) {
-	return self->autoSipEnabled();
+	return const_cast<const QApplication*>(self)->autoSipEnabled();
 }
 
 void QApplication_CloseAllWindows() {
@@ -303,7 +312,7 @@ void QApplication_AboutQt() {
 	QApplication::aboutQt();
 }
 
-void QApplication_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
+void QApplication_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QApplication::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -312,7 +321,7 @@ void QApplication_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QApplication_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QApplication_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QApplication::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -321,7 +330,7 @@ void QApplication_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QApplication_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
+void QApplication_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QApplication::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -330,7 +339,7 @@ void QApplication_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QApplication_TrUtf83(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QApplication_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QApplication::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -339,16 +348,20 @@ void QApplication_TrUtf83(char* s, char* c, int n, char** _out, int* _out_Strlen
 	*_out_Strlen = b.length();
 }
 
-void QApplication_SetPalette2(QPalette* param1, char* className) {
+void QApplication_SetPalette2(QPalette* param1, const char* className) {
 	QApplication::setPalette(*param1, className);
 }
 
-void QApplication_SetFont2(QFont* param1, char* className) {
+void QApplication_SetFont2(QFont* param1, const char* className) {
 	QApplication::setFont(*param1, className);
 }
 
 void QApplication_Alert2(QWidget* widget, int duration) {
 	QApplication::alert(widget, static_cast<int>(duration));
+}
+
+void QApplication_SetEffectEnabled2(uintptr_t param1, bool enable) {
+	QApplication::setEffectEnabled(static_cast<Qt::UIEffect>(param1), enable);
 }
 
 void QApplication_Delete(QApplication* self) {

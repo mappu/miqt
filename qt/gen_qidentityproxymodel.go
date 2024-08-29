@@ -128,6 +128,22 @@ func (this *QIdentityProxyModel) RowCount() int {
 	return (int)(ret)
 }
 
+func (this *QIdentityProxyModel) HeaderData(section int, orientation uintptr) *QVariant {
+	ret := C.QIdentityProxyModel_HeaderData(this.h, (C.int)(section), (C.uintptr_t)(orientation))
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQVariant(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QVariant) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QIdentityProxyModel) DropMimeData(data *QMimeData, action uintptr, row int, column int, parent *QModelIndex) bool {
+	ret := C.QIdentityProxyModel_DropMimeData(this.h, data.cPointer(), (C.uintptr_t)(action), (C.int)(row), (C.int)(column), parent.cPointer())
+	return (bool)(ret)
+}
+
 func (this *QIdentityProxyModel) Sibling(row int, column int, idx *QModelIndex) *QModelIndex {
 	ret := C.QIdentityProxyModel_Sibling(this.h, (C.int)(row), (C.int)(column), idx.cPointer())
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -137,6 +153,19 @@ func (this *QIdentityProxyModel) Sibling(row int, column int, idx *QModelIndex) 
 		runtime.KeepAlive(ret2.h)
 	})
 	return ret1
+}
+
+func (this *QIdentityProxyModel) Match(start *QModelIndex, role int, value *QVariant) []QModelIndex {
+	var _out **C.QModelIndex = nil
+	var _out_len C.size_t = 0
+	C.QIdentityProxyModel_Match(this.h, start.cPointer(), (C.int)(role), value.cPointer(), &_out, &_out_len)
+	ret := make([]QModelIndex, int(_out_len))
+	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_out)) // so fresh so clean
+	for i := 0; i < int(_out_len); i++ {
+		ret[i] = *newQModelIndex(_outCast[i])
+	}
+	C.free(unsafe.Pointer(_out))
+	return ret
 }
 
 func (this *QIdentityProxyModel) SetSourceModel(sourceModel *QAbstractItemModel) {
@@ -244,6 +273,43 @@ func (this *QIdentityProxyModel) Index3(row int, column int, parent *QModelIndex
 func (this *QIdentityProxyModel) RowCount1(parent *QModelIndex) int {
 	ret := C.QIdentityProxyModel_RowCount1(this.h, parent.cPointer())
 	return (int)(ret)
+}
+
+func (this *QIdentityProxyModel) HeaderData3(section int, orientation uintptr, role int) *QVariant {
+	ret := C.QIdentityProxyModel_HeaderData3(this.h, (C.int)(section), (C.uintptr_t)(orientation), (C.int)(role))
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQVariant(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QVariant) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QIdentityProxyModel) Match4(start *QModelIndex, role int, value *QVariant, hits int) []QModelIndex {
+	var _out **C.QModelIndex = nil
+	var _out_len C.size_t = 0
+	C.QIdentityProxyModel_Match4(this.h, start.cPointer(), (C.int)(role), value.cPointer(), (C.int)(hits), &_out, &_out_len)
+	ret := make([]QModelIndex, int(_out_len))
+	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_out)) // so fresh so clean
+	for i := 0; i < int(_out_len); i++ {
+		ret[i] = *newQModelIndex(_outCast[i])
+	}
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func (this *QIdentityProxyModel) Match5(start *QModelIndex, role int, value *QVariant, hits int, flags int) []QModelIndex {
+	var _out **C.QModelIndex = nil
+	var _out_len C.size_t = 0
+	C.QIdentityProxyModel_Match5(this.h, start.cPointer(), (C.int)(role), value.cPointer(), (C.int)(hits), (C.int)(flags), &_out, &_out_len)
+	ret := make([]QModelIndex, int(_out_len))
+	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_out)) // so fresh so clean
+	for i := 0; i < int(_out_len); i++ {
+		ret[i] = *newQModelIndex(_outCast[i])
+	}
+	C.free(unsafe.Pointer(_out))
+	return ret
 }
 
 func (this *QIdentityProxyModel) InsertColumns3(column int, count int, parent *QModelIndex) bool {

@@ -1,6 +1,3 @@
-#include "gen_qstatemachine.h"
-#include "qstatemachine.h"
-
 #include <QAbstractAnimation>
 #include <QAbstractState>
 #include <QEvent>
@@ -8,8 +5,14 @@
 #include <QMetaObject>
 #include <QObject>
 #include <QStateMachine>
+#define WORKAROUND_INNER_CLASS_DEFINITION_QStateMachine__SignalEvent
+#define WORKAROUND_INNER_CLASS_DEFINITION_QStateMachine__WrappedEvent
 #include <QString>
+#include <QByteArray>
+#include <cstring>
+#include "qstatemachine.h"
 
+#include "gen_qstatemachine.h"
 
 extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
@@ -19,15 +22,23 @@ QStateMachine* QStateMachine_new() {
 	return new QStateMachine();
 }
 
-QStateMachine* QStateMachine_new2(QObject* parent) {
+QStateMachine* QStateMachine_new2(uintptr_t childMode) {
+	return new QStateMachine(static_cast<QState::ChildMode>(childMode));
+}
+
+QStateMachine* QStateMachine_new3(QObject* parent) {
 	return new QStateMachine(parent);
 }
 
-QMetaObject* QStateMachine_MetaObject(QStateMachine* self) {
-	return (QMetaObject*) self->metaObject();
+QStateMachine* QStateMachine_new4(uintptr_t childMode, QObject* parent) {
+	return new QStateMachine(static_cast<QState::ChildMode>(childMode), parent);
 }
 
-void QStateMachine_Tr(char* s, char** _out, int* _out_Strlen) {
+QMetaObject* QStateMachine_MetaObject(QStateMachine* self) {
+	return (QMetaObject*) const_cast<const QStateMachine*>(self)->metaObject();
+}
+
+void QStateMachine_Tr(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QStateMachine::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -36,7 +47,7 @@ void QStateMachine_Tr(char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QStateMachine_TrUtf8(char* s, char** _out, int* _out_Strlen) {
+void QStateMachine_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QStateMachine::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -53,8 +64,13 @@ void QStateMachine_RemoveState(QStateMachine* self, QAbstractState* state) {
 	self->removeState(state);
 }
 
+uintptr_t QStateMachine_Error(QStateMachine* self) {
+	QStateMachine::Error ret = const_cast<const QStateMachine*>(self)->error();
+	return static_cast<uintptr_t>(ret);
+}
+
 void QStateMachine_ErrorString(QStateMachine* self, char** _out, int* _out_Strlen) {
-	QString ret = self->errorString();
+	QString ret = const_cast<const QStateMachine*>(self)->errorString();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -67,11 +83,11 @@ void QStateMachine_ClearError(QStateMachine* self) {
 }
 
 bool QStateMachine_IsRunning(QStateMachine* self) {
-	return self->isRunning();
+	return const_cast<const QStateMachine*>(self)->isRunning();
 }
 
 bool QStateMachine_IsAnimated(QStateMachine* self) {
-	return self->isAnimated();
+	return const_cast<const QStateMachine*>(self)->isAnimated();
 }
 
 void QStateMachine_SetAnimated(QStateMachine* self, bool enabled) {
@@ -83,7 +99,7 @@ void QStateMachine_AddDefaultAnimation(QStateMachine* self, QAbstractAnimation* 
 }
 
 void QStateMachine_DefaultAnimations(QStateMachine* self, QAbstractAnimation*** _out, size_t* _out_len) {
-	QList<QAbstractAnimation *> ret = self->defaultAnimations();
+	QList<QAbstractAnimation*> ret = const_cast<const QStateMachine*>(self)->defaultAnimations();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QAbstractAnimation** __out = static_cast<QAbstractAnimation**>(malloc(sizeof(QAbstractAnimation*) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {
@@ -95,6 +111,19 @@ void QStateMachine_DefaultAnimations(QStateMachine* self, QAbstractAnimation*** 
 
 void QStateMachine_RemoveDefaultAnimation(QStateMachine* self, QAbstractAnimation* animation) {
 	self->removeDefaultAnimation(animation);
+}
+
+uintptr_t QStateMachine_GlobalRestorePolicy(QStateMachine* self) {
+	QState::RestorePolicy ret = const_cast<const QStateMachine*>(self)->globalRestorePolicy();
+	return static_cast<uintptr_t>(ret);
+}
+
+void QStateMachine_SetGlobalRestorePolicy(QStateMachine* self, uintptr_t restorePolicy) {
+	self->setGlobalRestorePolicy(static_cast<QState::RestorePolicy>(restorePolicy));
+}
+
+void QStateMachine_PostEvent(QStateMachine* self, QEvent* event) {
+	self->postEvent(event);
 }
 
 int QStateMachine_PostDelayedEvent(QStateMachine* self, QEvent* event, int delay) {
@@ -131,7 +160,7 @@ void QStateMachine_connect_RunningChanged(QStateMachine* self, void* slot) {
 	});
 }
 
-void QStateMachine_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
+void QStateMachine_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QStateMachine::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -140,7 +169,7 @@ void QStateMachine_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QStateMachine_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QStateMachine_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QStateMachine::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -149,7 +178,7 @@ void QStateMachine_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QStateMachine_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
+void QStateMachine_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QStateMachine::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -158,7 +187,7 @@ void QStateMachine_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QStateMachine_TrUtf83(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QStateMachine_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QStateMachine::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -167,7 +196,47 @@ void QStateMachine_TrUtf83(char* s, char* c, int n, char** _out, int* _out_Strle
 	*_out_Strlen = b.length();
 }
 
+void QStateMachine_PostEvent2(QStateMachine* self, QEvent* event, uintptr_t priority) {
+	self->postEvent(event, static_cast<QStateMachine::EventPriority>(priority));
+}
+
 void QStateMachine_Delete(QStateMachine* self) {
+	delete self;
+}
+
+QStateMachine__SignalEvent* QStateMachine__SignalEvent_new(QStateMachine__SignalEvent* param1) {
+	return new QStateMachine::SignalEvent(*param1);
+}
+
+QObject* QStateMachine__SignalEvent_Sender(QStateMachine__SignalEvent* self) {
+	return const_cast<const QStateMachine::SignalEvent*>(self)->sender();
+}
+
+int QStateMachine__SignalEvent_SignalIndex(QStateMachine__SignalEvent* self) {
+	return const_cast<const QStateMachine::SignalEvent*>(self)->signalIndex();
+}
+
+void QStateMachine__SignalEvent_Delete(QStateMachine__SignalEvent* self) {
+	delete self;
+}
+
+QStateMachine__WrappedEvent* QStateMachine__WrappedEvent_new(QObject* object, QEvent* event) {
+	return new QStateMachine::WrappedEvent(object, event);
+}
+
+QStateMachine__WrappedEvent* QStateMachine__WrappedEvent_new2(QStateMachine__WrappedEvent* param1) {
+	return new QStateMachine::WrappedEvent(*param1);
+}
+
+QObject* QStateMachine__WrappedEvent_Object(QStateMachine__WrappedEvent* self) {
+	return const_cast<const QStateMachine::WrappedEvent*>(self)->object();
+}
+
+QEvent* QStateMachine__WrappedEvent_Event(QStateMachine__WrappedEvent* self) {
+	return const_cast<const QStateMachine::WrappedEvent*>(self)->event();
+}
+
+void QStateMachine__WrappedEvent_Delete(QStateMachine__WrappedEvent* self) {
 	delete self;
 }
 

@@ -1,6 +1,3 @@
-#include "gen_qtablewidget.h"
-#include "qtablewidget.h"
-
 #include <QBrush>
 #include <QColor>
 #include <QDataStream>
@@ -12,12 +9,16 @@
 #include <QRect>
 #include <QSize>
 #include <QString>
+#include <QByteArray>
+#include <cstring>
 #include <QTableWidget>
 #include <QTableWidgetItem>
 #include <QTableWidgetSelectionRange>
 #include <QVariant>
 #include <QWidget>
+#include "qtablewidget.h"
 
+#include "gen_qtablewidget.h"
 
 extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
@@ -40,27 +41,27 @@ void QTableWidgetSelectionRange_OperatorAssign(QTableWidgetSelectionRange* self,
 }
 
 int QTableWidgetSelectionRange_TopRow(QTableWidgetSelectionRange* self) {
-	return self->topRow();
+	return const_cast<const QTableWidgetSelectionRange*>(self)->topRow();
 }
 
 int QTableWidgetSelectionRange_BottomRow(QTableWidgetSelectionRange* self) {
-	return self->bottomRow();
+	return const_cast<const QTableWidgetSelectionRange*>(self)->bottomRow();
 }
 
 int QTableWidgetSelectionRange_LeftColumn(QTableWidgetSelectionRange* self) {
-	return self->leftColumn();
+	return const_cast<const QTableWidgetSelectionRange*>(self)->leftColumn();
 }
 
 int QTableWidgetSelectionRange_RightColumn(QTableWidgetSelectionRange* self) {
-	return self->rightColumn();
+	return const_cast<const QTableWidgetSelectionRange*>(self)->rightColumn();
 }
 
 int QTableWidgetSelectionRange_RowCount(QTableWidgetSelectionRange* self) {
-	return self->rowCount();
+	return const_cast<const QTableWidgetSelectionRange*>(self)->rowCount();
 }
 
 int QTableWidgetSelectionRange_ColumnCount(QTableWidgetSelectionRange* self) {
-	return self->columnCount();
+	return const_cast<const QTableWidgetSelectionRange*>(self)->columnCount();
 }
 
 void QTableWidgetSelectionRange_Delete(QTableWidgetSelectionRange* self) {
@@ -100,19 +101,19 @@ QTableWidgetItem* QTableWidgetItem_new7(QIcon* icon, const char* text, size_t te
 }
 
 QTableWidgetItem* QTableWidgetItem_Clone(QTableWidgetItem* self) {
-	return self->clone();
+	return const_cast<const QTableWidgetItem*>(self)->clone();
 }
 
 QTableWidget* QTableWidgetItem_TableWidget(QTableWidgetItem* self) {
-	return self->tableWidget();
+	return const_cast<const QTableWidgetItem*>(self)->tableWidget();
 }
 
 int QTableWidgetItem_Row(QTableWidgetItem* self) {
-	return self->row();
+	return const_cast<const QTableWidgetItem*>(self)->row();
 }
 
 int QTableWidgetItem_Column(QTableWidgetItem* self) {
-	return self->column();
+	return const_cast<const QTableWidgetItem*>(self)->column();
 }
 
 void QTableWidgetItem_SetSelected(QTableWidgetItem* self, bool selectVal) {
@@ -120,11 +121,20 @@ void QTableWidgetItem_SetSelected(QTableWidgetItem* self, bool selectVal) {
 }
 
 bool QTableWidgetItem_IsSelected(QTableWidgetItem* self) {
-	return self->isSelected();
+	return const_cast<const QTableWidgetItem*>(self)->isSelected();
+}
+
+int QTableWidgetItem_Flags(QTableWidgetItem* self) {
+	Qt::ItemFlags ret = const_cast<const QTableWidgetItem*>(self)->flags();
+	return static_cast<int>(ret);
+}
+
+void QTableWidgetItem_SetFlags(QTableWidgetItem* self, int flags) {
+	self->setFlags(static_cast<Qt::ItemFlags>(flags));
 }
 
 void QTableWidgetItem_Text(QTableWidgetItem* self, char** _out, int* _out_Strlen) {
-	QString ret = self->text();
+	QString ret = const_cast<const QTableWidgetItem*>(self)->text();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -138,7 +148,7 @@ void QTableWidgetItem_SetText(QTableWidgetItem* self, const char* text, size_t t
 }
 
 QIcon* QTableWidgetItem_Icon(QTableWidgetItem* self) {
-	QIcon ret = self->icon();
+	QIcon ret = const_cast<const QTableWidgetItem*>(self)->icon();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QIcon*>(new QIcon(ret));
 }
@@ -148,7 +158,7 @@ void QTableWidgetItem_SetIcon(QTableWidgetItem* self, QIcon* icon) {
 }
 
 void QTableWidgetItem_StatusTip(QTableWidgetItem* self, char** _out, int* _out_Strlen) {
-	QString ret = self->statusTip();
+	QString ret = const_cast<const QTableWidgetItem*>(self)->statusTip();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -162,7 +172,7 @@ void QTableWidgetItem_SetStatusTip(QTableWidgetItem* self, const char* statusTip
 }
 
 void QTableWidgetItem_ToolTip(QTableWidgetItem* self, char** _out, int* _out_Strlen) {
-	QString ret = self->toolTip();
+	QString ret = const_cast<const QTableWidgetItem*>(self)->toolTip();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -176,7 +186,7 @@ void QTableWidgetItem_SetToolTip(QTableWidgetItem* self, const char* toolTip, si
 }
 
 void QTableWidgetItem_WhatsThis(QTableWidgetItem* self, char** _out, int* _out_Strlen) {
-	QString ret = self->whatsThis();
+	QString ret = const_cast<const QTableWidgetItem*>(self)->whatsThis();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -190,7 +200,7 @@ void QTableWidgetItem_SetWhatsThis(QTableWidgetItem* self, const char* whatsThis
 }
 
 QFont* QTableWidgetItem_Font(QTableWidgetItem* self) {
-	QFont ret = self->font();
+	QFont ret = const_cast<const QTableWidgetItem*>(self)->font();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QFont*>(new QFont(ret));
 }
@@ -200,7 +210,7 @@ void QTableWidgetItem_SetFont(QTableWidgetItem* self, QFont* font) {
 }
 
 int QTableWidgetItem_TextAlignment(QTableWidgetItem* self) {
-	return self->textAlignment();
+	return const_cast<const QTableWidgetItem*>(self)->textAlignment();
 }
 
 void QTableWidgetItem_SetTextAlignment(QTableWidgetItem* self, int alignment) {
@@ -208,7 +218,7 @@ void QTableWidgetItem_SetTextAlignment(QTableWidgetItem* self, int alignment) {
 }
 
 QColor* QTableWidgetItem_BackgroundColor(QTableWidgetItem* self) {
-	QColor ret = self->backgroundColor();
+	QColor ret = const_cast<const QTableWidgetItem*>(self)->backgroundColor();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QColor*>(new QColor(ret));
 }
@@ -218,7 +228,7 @@ void QTableWidgetItem_SetBackgroundColor(QTableWidgetItem* self, QColor* color) 
 }
 
 QBrush* QTableWidgetItem_Background(QTableWidgetItem* self) {
-	QBrush ret = self->background();
+	QBrush ret = const_cast<const QTableWidgetItem*>(self)->background();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QBrush*>(new QBrush(ret));
 }
@@ -228,7 +238,7 @@ void QTableWidgetItem_SetBackground(QTableWidgetItem* self, QBrush* brush) {
 }
 
 QColor* QTableWidgetItem_TextColor(QTableWidgetItem* self) {
-	QColor ret = self->textColor();
+	QColor ret = const_cast<const QTableWidgetItem*>(self)->textColor();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QColor*>(new QColor(ret));
 }
@@ -238,7 +248,7 @@ void QTableWidgetItem_SetTextColor(QTableWidgetItem* self, QColor* color) {
 }
 
 QBrush* QTableWidgetItem_Foreground(QTableWidgetItem* self) {
-	QBrush ret = self->foreground();
+	QBrush ret = const_cast<const QTableWidgetItem*>(self)->foreground();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QBrush*>(new QBrush(ret));
 }
@@ -247,8 +257,17 @@ void QTableWidgetItem_SetForeground(QTableWidgetItem* self, QBrush* brush) {
 	self->setForeground(*brush);
 }
 
+uintptr_t QTableWidgetItem_CheckState(QTableWidgetItem* self) {
+	Qt::CheckState ret = const_cast<const QTableWidgetItem*>(self)->checkState();
+	return static_cast<uintptr_t>(ret);
+}
+
+void QTableWidgetItem_SetCheckState(QTableWidgetItem* self, uintptr_t state) {
+	self->setCheckState(static_cast<Qt::CheckState>(state));
+}
+
 QSize* QTableWidgetItem_SizeHint(QTableWidgetItem* self) {
-	QSize ret = self->sizeHint();
+	QSize ret = const_cast<const QTableWidgetItem*>(self)->sizeHint();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
@@ -258,7 +277,7 @@ void QTableWidgetItem_SetSizeHint(QTableWidgetItem* self, QSize* size) {
 }
 
 QVariant* QTableWidgetItem_Data(QTableWidgetItem* self, int role) {
-	QVariant ret = self->data(static_cast<int>(role));
+	QVariant ret = const_cast<const QTableWidgetItem*>(self)->data(static_cast<int>(role));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVariant*>(new QVariant(ret));
 }
@@ -268,7 +287,7 @@ void QTableWidgetItem_SetData(QTableWidgetItem* self, int role, QVariant* value)
 }
 
 bool QTableWidgetItem_OperatorLesser(QTableWidgetItem* self, QTableWidgetItem* other) {
-	return self->operator<(*other);
+	return const_cast<const QTableWidgetItem*>(self)->operator<(*other);
 }
 
 void QTableWidgetItem_Read(QTableWidgetItem* self, QDataStream* in) {
@@ -276,7 +295,7 @@ void QTableWidgetItem_Read(QTableWidgetItem* self, QDataStream* in) {
 }
 
 void QTableWidgetItem_Write(QTableWidgetItem* self, QDataStream* out) {
-	self->write(*out);
+	const_cast<const QTableWidgetItem*>(self)->write(*out);
 }
 
 void QTableWidgetItem_OperatorAssign(QTableWidgetItem* self, QTableWidgetItem* other) {
@@ -284,7 +303,7 @@ void QTableWidgetItem_OperatorAssign(QTableWidgetItem* self, QTableWidgetItem* o
 }
 
 int QTableWidgetItem_Type(QTableWidgetItem* self) {
-	return self->type();
+	return const_cast<const QTableWidgetItem*>(self)->type();
 }
 
 void QTableWidgetItem_Delete(QTableWidgetItem* self) {
@@ -308,10 +327,10 @@ QTableWidget* QTableWidget_new4(int rows, int columns, QWidget* parent) {
 }
 
 QMetaObject* QTableWidget_MetaObject(QTableWidget* self) {
-	return (QMetaObject*) self->metaObject();
+	return (QMetaObject*) const_cast<const QTableWidget*>(self)->metaObject();
 }
 
-void QTableWidget_Tr(char* s, char** _out, int* _out_Strlen) {
+void QTableWidget_Tr(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QTableWidget::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -320,7 +339,7 @@ void QTableWidget_Tr(char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QTableWidget_TrUtf8(char* s, char** _out, int* _out_Strlen) {
+void QTableWidget_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QTableWidget::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -334,7 +353,7 @@ void QTableWidget_SetRowCount(QTableWidget* self, int rows) {
 }
 
 int QTableWidget_RowCount(QTableWidget* self) {
-	return self->rowCount();
+	return const_cast<const QTableWidget*>(self)->rowCount();
 }
 
 void QTableWidget_SetColumnCount(QTableWidget* self, int columns) {
@@ -342,19 +361,19 @@ void QTableWidget_SetColumnCount(QTableWidget* self, int columns) {
 }
 
 int QTableWidget_ColumnCount(QTableWidget* self) {
-	return self->columnCount();
+	return const_cast<const QTableWidget*>(self)->columnCount();
 }
 
 int QTableWidget_Row(QTableWidget* self, QTableWidgetItem* item) {
-	return self->row(item);
+	return const_cast<const QTableWidget*>(self)->row(item);
 }
 
 int QTableWidget_Column(QTableWidget* self, QTableWidgetItem* item) {
-	return self->column(item);
+	return const_cast<const QTableWidget*>(self)->column(item);
 }
 
 QTableWidgetItem* QTableWidget_Item(QTableWidget* self, int row, int column) {
-	return self->item(static_cast<int>(row), static_cast<int>(column));
+	return const_cast<const QTableWidget*>(self)->item(static_cast<int>(row), static_cast<int>(column));
 }
 
 void QTableWidget_SetItem(QTableWidget* self, int row, int column, QTableWidgetItem* item) {
@@ -366,7 +385,7 @@ QTableWidgetItem* QTableWidget_TakeItem(QTableWidget* self, int row, int column)
 }
 
 QTableWidgetItem* QTableWidget_VerticalHeaderItem(QTableWidget* self, int row) {
-	return self->verticalHeaderItem(static_cast<int>(row));
+	return const_cast<const QTableWidget*>(self)->verticalHeaderItem(static_cast<int>(row));
 }
 
 void QTableWidget_SetVerticalHeaderItem(QTableWidget* self, int row, QTableWidgetItem* item) {
@@ -378,7 +397,7 @@ QTableWidgetItem* QTableWidget_TakeVerticalHeaderItem(QTableWidget* self, int ro
 }
 
 QTableWidgetItem* QTableWidget_HorizontalHeaderItem(QTableWidget* self, int column) {
-	return self->horizontalHeaderItem(static_cast<int>(column));
+	return const_cast<const QTableWidget*>(self)->horizontalHeaderItem(static_cast<int>(column));
 }
 
 void QTableWidget_SetHorizontalHeaderItem(QTableWidget* self, int column, QTableWidgetItem* item) {
@@ -408,23 +427,35 @@ void QTableWidget_SetHorizontalHeaderLabels(QTableWidget* self, char** labels, u
 }
 
 int QTableWidget_CurrentRow(QTableWidget* self) {
-	return self->currentRow();
+	return const_cast<const QTableWidget*>(self)->currentRow();
 }
 
 int QTableWidget_CurrentColumn(QTableWidget* self) {
-	return self->currentColumn();
+	return const_cast<const QTableWidget*>(self)->currentColumn();
 }
 
 QTableWidgetItem* QTableWidget_CurrentItem(QTableWidget* self) {
-	return self->currentItem();
+	return const_cast<const QTableWidget*>(self)->currentItem();
 }
 
 void QTableWidget_SetCurrentItem(QTableWidget* self, QTableWidgetItem* item) {
 	self->setCurrentItem(item);
 }
 
+void QTableWidget_SetCurrentItem2(QTableWidget* self, QTableWidgetItem* item, int command) {
+	self->setCurrentItem(item, static_cast<QItemSelectionModel::SelectionFlags>(command));
+}
+
 void QTableWidget_SetCurrentCell(QTableWidget* self, int row, int column) {
 	self->setCurrentCell(static_cast<int>(row), static_cast<int>(column));
+}
+
+void QTableWidget_SetCurrentCell2(QTableWidget* self, int row, int column, int command) {
+	self->setCurrentCell(static_cast<int>(row), static_cast<int>(column), static_cast<QItemSelectionModel::SelectionFlags>(command));
+}
+
+void QTableWidget_SortItems(QTableWidget* self, int column) {
+	self->sortItems(static_cast<int>(column));
 }
 
 void QTableWidget_SetSortingEnabled(QTableWidget* self, bool enable) {
@@ -432,7 +463,7 @@ void QTableWidget_SetSortingEnabled(QTableWidget* self, bool enable) {
 }
 
 bool QTableWidget_IsSortingEnabled(QTableWidget* self) {
-	return self->isSortingEnabled();
+	return const_cast<const QTableWidget*>(self)->isSortingEnabled();
 }
 
 void QTableWidget_EditItem(QTableWidget* self, QTableWidgetItem* item) {
@@ -448,11 +479,11 @@ void QTableWidget_ClosePersistentEditor(QTableWidget* self, QTableWidgetItem* it
 }
 
 bool QTableWidget_IsPersistentEditorOpen(QTableWidget* self, QTableWidgetItem* item) {
-	return self->isPersistentEditorOpen(item);
+	return const_cast<const QTableWidget*>(self)->isPersistentEditorOpen(item);
 }
 
 QWidget* QTableWidget_CellWidget(QTableWidget* self, int row, int column) {
-	return self->cellWidget(static_cast<int>(row), static_cast<int>(column));
+	return const_cast<const QTableWidget*>(self)->cellWidget(static_cast<int>(row), static_cast<int>(column));
 }
 
 void QTableWidget_SetCellWidget(QTableWidget* self, int row, int column, QWidget* widget) {
@@ -464,7 +495,7 @@ void QTableWidget_RemoveCellWidget(QTableWidget* self, int row, int column) {
 }
 
 bool QTableWidget_IsItemSelected(QTableWidget* self, QTableWidgetItem* item) {
-	return self->isItemSelected(item);
+	return const_cast<const QTableWidget*>(self)->isItemSelected(item);
 }
 
 void QTableWidget_SetItemSelected(QTableWidget* self, QTableWidgetItem* item, bool selectVal) {
@@ -476,7 +507,7 @@ void QTableWidget_SetRangeSelected(QTableWidget* self, QTableWidgetSelectionRang
 }
 
 void QTableWidget_SelectedRanges(QTableWidget* self, QTableWidgetSelectionRange*** _out, size_t* _out_len) {
-	QList<QTableWidgetSelectionRange> ret = self->selectedRanges();
+	QList<QTableWidgetSelectionRange> ret = const_cast<const QTableWidget*>(self)->selectedRanges();
 	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
 	QTableWidgetSelectionRange** __out = static_cast<QTableWidgetSelectionRange**>(malloc(sizeof(QTableWidgetSelectionRange**) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {
@@ -487,7 +518,19 @@ void QTableWidget_SelectedRanges(QTableWidget* self, QTableWidgetSelectionRange*
 }
 
 void QTableWidget_SelectedItems(QTableWidget* self, QTableWidgetItem*** _out, size_t* _out_len) {
-	QList<QTableWidgetItem *> ret = self->selectedItems();
+	QList<QTableWidgetItem*> ret = const_cast<const QTableWidget*>(self)->selectedItems();
+	// Convert QList<> from C++ memory to manually-managed C memory
+	QTableWidgetItem** __out = static_cast<QTableWidgetItem**>(malloc(sizeof(QTableWidgetItem*) * ret.length()));
+	for (size_t i = 0, e = ret.length(); i < e; ++i) {
+		__out[i] = ret[i];
+	}
+	*_out = __out;
+	*_out_len = ret.length();
+}
+
+void QTableWidget_FindItems(QTableWidget* self, const char* text, size_t text_Strlen, int flags, QTableWidgetItem*** _out, size_t* _out_len) {
+	QString text_QString = QString::fromUtf8(text, text_Strlen);
+	QList<QTableWidgetItem*> ret = const_cast<const QTableWidget*>(self)->findItems(text_QString, static_cast<Qt::MatchFlags>(flags));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QTableWidgetItem** __out = static_cast<QTableWidgetItem**>(malloc(sizeof(QTableWidgetItem*) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {
@@ -498,33 +541,37 @@ void QTableWidget_SelectedItems(QTableWidget* self, QTableWidgetItem*** _out, si
 }
 
 int QTableWidget_VisualRow(QTableWidget* self, int logicalRow) {
-	return self->visualRow(static_cast<int>(logicalRow));
+	return const_cast<const QTableWidget*>(self)->visualRow(static_cast<int>(logicalRow));
 }
 
 int QTableWidget_VisualColumn(QTableWidget* self, int logicalColumn) {
-	return self->visualColumn(static_cast<int>(logicalColumn));
+	return const_cast<const QTableWidget*>(self)->visualColumn(static_cast<int>(logicalColumn));
 }
 
 QTableWidgetItem* QTableWidget_ItemAt(QTableWidget* self, QPoint* p) {
-	return self->itemAt(*p);
+	return const_cast<const QTableWidget*>(self)->itemAt(*p);
 }
 
 QTableWidgetItem* QTableWidget_ItemAt2(QTableWidget* self, int x, int y) {
-	return self->itemAt(static_cast<int>(x), static_cast<int>(y));
+	return const_cast<const QTableWidget*>(self)->itemAt(static_cast<int>(x), static_cast<int>(y));
 }
 
 QRect* QTableWidget_VisualItemRect(QTableWidget* self, QTableWidgetItem* item) {
-	QRect ret = self->visualItemRect(item);
+	QRect ret = const_cast<const QTableWidget*>(self)->visualItemRect(item);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRect*>(new QRect(ret));
 }
 
 QTableWidgetItem* QTableWidget_ItemPrototype(QTableWidget* self) {
-	return (QTableWidgetItem*) self->itemPrototype();
+	return (QTableWidgetItem*) const_cast<const QTableWidget*>(self)->itemPrototype();
 }
 
 void QTableWidget_SetItemPrototype(QTableWidget* self, QTableWidgetItem* item) {
 	self->setItemPrototype(item);
+}
+
+void QTableWidget_ScrollToItem(QTableWidget* self, QTableWidgetItem* item) {
+	self->scrollToItem(item);
 }
 
 void QTableWidget_InsertRow(QTableWidget* self, int row) {
@@ -701,7 +748,7 @@ void QTableWidget_connect_CurrentCellChanged(QTableWidget* self, void* slot) {
 	});
 }
 
-void QTableWidget_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
+void QTableWidget_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QTableWidget::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -710,7 +757,7 @@ void QTableWidget_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QTableWidget_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QTableWidget_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QTableWidget::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -719,7 +766,7 @@ void QTableWidget_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QTableWidget_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
+void QTableWidget_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QTableWidget::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -728,13 +775,21 @@ void QTableWidget_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QTableWidget_TrUtf83(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QTableWidget_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QTableWidget::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
 	memcpy(*_out, b.data(), b.length());
 	*_out_Strlen = b.length();
+}
+
+void QTableWidget_SortItems2(QTableWidget* self, int column, uintptr_t order) {
+	self->sortItems(static_cast<int>(column), static_cast<Qt::SortOrder>(order));
+}
+
+void QTableWidget_ScrollToItem2(QTableWidget* self, QTableWidgetItem* item, uintptr_t hint) {
+	self->scrollToItem(item, static_cast<QAbstractItemView::ScrollHint>(hint));
 }
 
 void QTableWidget_Delete(QTableWidget* self) {

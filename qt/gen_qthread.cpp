@@ -1,14 +1,15 @@
-#include "gen_qthread.h"
-#include "qthread.h"
-
 #include <QAbstractEventDispatcher>
 #include <QDeadlineTimer>
 #include <QEvent>
 #include <QMetaObject>
 #include <QObject>
 #include <QString>
+#include <QByteArray>
+#include <cstring>
 #include <QThread>
+#include "qthread.h"
 
+#include "gen_qthread.h"
 
 extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
@@ -23,10 +24,10 @@ QThread* QThread_new2(QObject* parent) {
 }
 
 QMetaObject* QThread_MetaObject(QThread* self) {
-	return (QMetaObject*) self->metaObject();
+	return (QMetaObject*) const_cast<const QThread*>(self)->metaObject();
 }
 
-void QThread_Tr(char* s, char** _out, int* _out_Strlen) {
+void QThread_Tr(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QThread::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -35,7 +36,7 @@ void QThread_Tr(char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QThread_TrUtf8(char* s, char** _out, int* _out_Strlen) {
+void QThread_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QThread::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -56,12 +57,21 @@ void QThread_YieldCurrentThread() {
 	QThread::yieldCurrentThread();
 }
 
+void QThread_SetPriority(QThread* self, uintptr_t priority) {
+	self->setPriority(static_cast<QThread::Priority>(priority));
+}
+
+uintptr_t QThread_Priority(QThread* self) {
+	QThread::Priority ret = const_cast<const QThread*>(self)->priority();
+	return static_cast<uintptr_t>(ret);
+}
+
 bool QThread_IsFinished(QThread* self) {
-	return self->isFinished();
+	return const_cast<const QThread*>(self)->isFinished();
 }
 
 bool QThread_IsRunning(QThread* self) {
-	return self->isRunning();
+	return const_cast<const QThread*>(self)->isRunning();
 }
 
 void QThread_RequestInterruption(QThread* self) {
@@ -69,7 +79,7 @@ void QThread_RequestInterruption(QThread* self) {
 }
 
 bool QThread_IsInterruptionRequested(QThread* self) {
-	return self->isInterruptionRequested();
+	return const_cast<const QThread*>(self)->isInterruptionRequested();
 }
 
 void QThread_SetStackSize(QThread* self, unsigned int stackSize) {
@@ -77,7 +87,7 @@ void QThread_SetStackSize(QThread* self, unsigned int stackSize) {
 }
 
 unsigned int QThread_StackSize(QThread* self) {
-	return self->stackSize();
+	return const_cast<const QThread*>(self)->stackSize();
 }
 
 void QThread_Exit(QThread* self) {
@@ -85,7 +95,7 @@ void QThread_Exit(QThread* self) {
 }
 
 QAbstractEventDispatcher* QThread_EventDispatcher(QThread* self) {
-	return self->eventDispatcher();
+	return const_cast<const QThread*>(self)->eventDispatcher();
 }
 
 void QThread_SetEventDispatcher(QThread* self, QAbstractEventDispatcher* eventDispatcher) {
@@ -97,7 +107,11 @@ bool QThread_Event(QThread* self, QEvent* event) {
 }
 
 int QThread_LoopLevel(QThread* self) {
-	return self->loopLevel();
+	return const_cast<const QThread*>(self)->loopLevel();
+}
+
+void QThread_Start(QThread* self) {
+	self->start();
 }
 
 void QThread_Terminate(QThread* self) {
@@ -128,7 +142,7 @@ void QThread_Usleep(unsigned long param1) {
 	QThread::usleep(static_cast<unsigned long>(param1));
 }
 
-void QThread_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
+void QThread_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QThread::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -137,7 +151,7 @@ void QThread_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QThread_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QThread_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QThread::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -146,7 +160,7 @@ void QThread_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QThread_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
+void QThread_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QThread::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -155,7 +169,7 @@ void QThread_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QThread_TrUtf83(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QThread_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QThread::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -166,6 +180,10 @@ void QThread_TrUtf83(char* s, char* c, int n, char** _out, int* _out_Strlen) {
 
 void QThread_Exit1(QThread* self, int retcode) {
 	self->exit(static_cast<int>(retcode));
+}
+
+void QThread_Start1(QThread* self, uintptr_t param1) {
+	self->start(static_cast<QThread::Priority>(param1));
 }
 
 bool QThread_Wait1(QThread* self, QDeadlineTimer* deadline) {

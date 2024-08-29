@@ -207,6 +207,13 @@ func (this *QFile) MoveToTrash() bool {
 	return (bool)(ret)
 }
 
+func QFile_MoveToTrashWithFileName(fileName string) bool {
+	fileName_Cstring := C.CString(fileName)
+	defer C.free(unsafe.Pointer(fileName_Cstring))
+	ret := C.QFile_MoveToTrashWithFileName(fileName_Cstring, C.ulong(len(fileName)))
+	return (bool)(ret)
+}
+
 func (this *QFile) Rename(newName string) bool {
 	newName_Cstring := C.CString(newName)
 	defer C.free(unsafe.Pointer(newName_Cstring))
@@ -255,20 +262,54 @@ func QFile_Copy2(fileName string, newName string) bool {
 	return (bool)(ret)
 }
 
+func (this *QFile) Open(flags int) bool {
+	ret := C.QFile_Open(this.h, (C.int)(flags))
+	return (bool)(ret)
+}
+
+func (this *QFile) Open3(fd int, ioFlags int) bool {
+	ret := C.QFile_Open3(this.h, (C.int)(fd), (C.int)(ioFlags))
+	return (bool)(ret)
+}
+
 func (this *QFile) Size() int64 {
 	ret := C.QFile_Size(this.h)
 	return (int64)(ret)
 }
 
 func (this *QFile) Resize(sz int64) bool {
-	ret := C.QFile_Resize(this.h, (C.int64_t)(sz))
+	ret := C.QFile_Resize(this.h, (C.longlong)(sz))
 	return (bool)(ret)
 }
 
 func QFile_Resize2(filename string, sz int64) bool {
 	filename_Cstring := C.CString(filename)
 	defer C.free(unsafe.Pointer(filename_Cstring))
-	ret := C.QFile_Resize2(filename_Cstring, C.ulong(len(filename)), (C.int64_t)(sz))
+	ret := C.QFile_Resize2(filename_Cstring, C.ulong(len(filename)), (C.longlong)(sz))
+	return (bool)(ret)
+}
+
+func (this *QFile) Permissions() int {
+	ret := C.QFile_Permissions(this.h)
+	return (int)(ret)
+}
+
+func QFile_PermissionsWithFilename(filename string) int {
+	filename_Cstring := C.CString(filename)
+	defer C.free(unsafe.Pointer(filename_Cstring))
+	ret := C.QFile_PermissionsWithFilename(filename_Cstring, C.ulong(len(filename)))
+	return (int)(ret)
+}
+
+func (this *QFile) SetPermissions(permissionSpec int) bool {
+	ret := C.QFile_SetPermissions(this.h, (C.int)(permissionSpec))
+	return (bool)(ret)
+}
+
+func QFile_SetPermissions2(filename string, permissionSpec int) bool {
+	filename_Cstring := C.CString(filename)
+	defer C.free(unsafe.Pointer(filename_Cstring))
+	ret := C.QFile_SetPermissions2(filename_Cstring, C.ulong(len(filename)), (C.int)(permissionSpec))
 	return (bool)(ret)
 }
 
@@ -322,6 +363,11 @@ func QFile_TrUtf83(s string, c string, n int) string {
 	ret := C.GoStringN(_out, _out_Strlen)
 	C.free(unsafe.Pointer(_out))
 	return ret
+}
+
+func (this *QFile) Open33(fd int, ioFlags int, handleFlags int) bool {
+	ret := C.QFile_Open33(this.h, (C.int)(fd), (C.int)(ioFlags), (C.int)(handleFlags))
+	return (bool)(ret)
 }
 
 func (this *QFile) Delete() {

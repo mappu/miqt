@@ -70,6 +70,24 @@ func newQWidget_U(h unsafe.Pointer) *QWidget {
 	return newQWidget((*C.QWidget)(h))
 }
 
+// NewQWidget constructs a new QWidget object.
+func NewQWidget() *QWidget {
+	ret := C.QWidget_new()
+	return newQWidget(ret)
+}
+
+// NewQWidget2 constructs a new QWidget object.
+func NewQWidget2(parent *QWidget) *QWidget {
+	ret := C.QWidget_new2(parent.cPointer())
+	return newQWidget(ret)
+}
+
+// NewQWidget3 constructs a new QWidget object.
+func NewQWidget3(parent *QWidget, f int) *QWidget {
+	ret := C.QWidget_new3(parent.cPointer(), (C.int)(f))
+	return newQWidget(ret)
+}
+
 func (this *QWidget) MetaObject() *QMetaObject {
 	ret := C.QWidget_MetaObject(this.h)
 	return newQMetaObject_U(unsafe.Pointer(ret))
@@ -143,6 +161,15 @@ func (this *QWidget) IsWindow() bool {
 func (this *QWidget) IsModal() bool {
 	ret := C.QWidget_IsModal(this.h)
 	return (bool)(ret)
+}
+
+func (this *QWidget) WindowModality() uintptr {
+	ret := C.QWidget_WindowModality(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QWidget) SetWindowModality(windowModality uintptr) {
+	C.QWidget_SetWindowModality(this.h, (C.uintptr_t)(windowModality))
 }
 
 func (this *QWidget) IsEnabled() bool {
@@ -503,6 +530,24 @@ func (this *QWidget) SetPalette(palette *QPalette) {
 	C.QWidget_SetPalette(this.h, palette.cPointer())
 }
 
+func (this *QWidget) SetBackgroundRole(backgroundRole uintptr) {
+	C.QWidget_SetBackgroundRole(this.h, (C.uintptr_t)(backgroundRole))
+}
+
+func (this *QWidget) BackgroundRole() uintptr {
+	ret := C.QWidget_BackgroundRole(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QWidget) SetForegroundRole(foregroundRole uintptr) {
+	C.QWidget_SetForegroundRole(this.h, (C.uintptr_t)(foregroundRole))
+}
+
+func (this *QWidget) ForegroundRole() uintptr {
+	ret := C.QWidget_ForegroundRole(this.h)
+	return (uintptr)(ret)
+}
+
 func (this *QWidget) Font() *QFont {
 	ret := C.QWidget_Font(this.h)
 	return newQFont_U(unsafe.Pointer(ret))
@@ -599,6 +644,14 @@ func (this *QWidget) ClearMask() {
 	C.QWidget_ClearMask(this.h)
 }
 
+func (this *QWidget) Render(target *QPaintDevice) {
+	C.QWidget_Render(this.h, target.cPointer())
+}
+
+func (this *QWidget) RenderWithPainter(painter *QPainter) {
+	C.QWidget_RenderWithPainter(this.h, painter.cPointer())
+}
+
 func (this *QWidget) Grab() *QPixmap {
 	ret := C.QWidget_Grab(this.h)
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -617,6 +670,14 @@ func (this *QWidget) GraphicsEffect() *QGraphicsEffect {
 
 func (this *QWidget) SetGraphicsEffect(effect *QGraphicsEffect) {
 	C.QWidget_SetGraphicsEffect(this.h, effect.cPointer())
+}
+
+func (this *QWidget) GrabGesture(typeVal uintptr) {
+	C.QWidget_GrabGesture(this.h, (C.uintptr_t)(typeVal))
+}
+
+func (this *QWidget) UngrabGesture(typeVal uintptr) {
+	C.QWidget_UngrabGesture(this.h, (C.uintptr_t)(typeVal))
 }
 
 func (this *QWidget) SetWindowTitle(windowTitle string) {
@@ -807,6 +868,15 @@ func (this *QWidget) SetAccessibleDescription(description string) {
 	C.QWidget_SetAccessibleDescription(this.h, description_Cstring, C.ulong(len(description)))
 }
 
+func (this *QWidget) SetLayoutDirection(direction uintptr) {
+	C.QWidget_SetLayoutDirection(this.h, (C.uintptr_t)(direction))
+}
+
+func (this *QWidget) LayoutDirection() uintptr {
+	ret := C.QWidget_LayoutDirection(this.h)
+	return (uintptr)(ret)
+}
+
 func (this *QWidget) UnsetLayoutDirection() {
 	C.QWidget_UnsetLayoutDirection(this.h)
 }
@@ -857,6 +927,19 @@ func (this *QWidget) ClearFocus() {
 	C.QWidget_ClearFocus(this.h)
 }
 
+func (this *QWidget) SetFocusWithReason(reason uintptr) {
+	C.QWidget_SetFocusWithReason(this.h, (C.uintptr_t)(reason))
+}
+
+func (this *QWidget) FocusPolicy() uintptr {
+	ret := C.QWidget_FocusPolicy(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QWidget) SetFocusPolicy(policy uintptr) {
+	C.QWidget_SetFocusPolicy(this.h, (C.uintptr_t)(policy))
+}
+
 func (this *QWidget) HasFocus() bool {
 	ret := C.QWidget_HasFocus(this.h)
 	return (bool)(ret)
@@ -873,6 +956,15 @@ func (this *QWidget) SetFocusProxy(focusProxy *QWidget) {
 func (this *QWidget) FocusProxy() *QWidget {
 	ret := C.QWidget_FocusProxy(this.h)
 	return newQWidget_U(unsafe.Pointer(ret))
+}
+
+func (this *QWidget) ContextMenuPolicy() uintptr {
+	ret := C.QWidget_ContextMenuPolicy(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QWidget) SetContextMenuPolicy(policy uintptr) {
+	C.QWidget_SetContextMenuPolicy(this.h, (C.uintptr_t)(policy))
 }
 
 func (this *QWidget) GrabMouse() {
@@ -893,6 +985,11 @@ func (this *QWidget) GrabKeyboard() {
 
 func (this *QWidget) ReleaseKeyboard() {
 	C.QWidget_ReleaseKeyboard(this.h)
+}
+
+func (this *QWidget) GrabShortcut(key *QKeySequence) int {
+	ret := C.QWidget_GrabShortcut(this.h, key.cPointer())
+	return (int)(ret)
 }
 
 func (this *QWidget) ReleaseShortcut(id int) {
@@ -1086,6 +1183,19 @@ func (this *QWidget) IsFullScreen() bool {
 	return (bool)(ret)
 }
 
+func (this *QWidget) WindowState() int {
+	ret := C.QWidget_WindowState(this.h)
+	return (int)(ret)
+}
+
+func (this *QWidget) SetWindowState(state int) {
+	C.QWidget_SetWindowState(this.h, (C.int)(state))
+}
+
+func (this *QWidget) OverrideWindowState(state int) {
+	C.QWidget_OverrideWindowState(this.h, (C.int)(state))
+}
+
 func (this *QWidget) SizeHint() *QSize {
 	ret := C.QWidget_SizeHint(this.h)
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1121,6 +1231,10 @@ func (this *QWidget) SizePolicy() *QSizePolicy {
 
 func (this *QWidget) SetSizePolicy(sizePolicy QSizePolicy) {
 	C.QWidget_SetSizePolicy(this.h, sizePolicy.cPointer())
+}
+
+func (this *QWidget) SetSizePolicy2(horizontal uintptr, vertical uintptr) {
+	C.QWidget_SetSizePolicy2(this.h, (C.uintptr_t)(horizontal), (C.uintptr_t)(vertical))
 }
 
 func (this *QWidget) HeightForWidth(param1 int) int {
@@ -1193,6 +1307,10 @@ func (this *QWidget) UpdateGeometry() {
 
 func (this *QWidget) SetParent(parent *QWidget) {
 	C.QWidget_SetParent(this.h, parent.cPointer())
+}
+
+func (this *QWidget) SetParent2(parent *QWidget, f int) {
+	C.QWidget_SetParent2(this.h, parent.cPointer(), (C.int)(f))
 }
 
 func (this *QWidget) Scroll(dx int, dy int) {
@@ -1277,6 +1395,28 @@ func (this *QWidget) ParentWidget() *QWidget {
 	return newQWidget_U(unsafe.Pointer(ret))
 }
 
+func (this *QWidget) SetWindowFlags(typeVal int) {
+	C.QWidget_SetWindowFlags(this.h, (C.int)(typeVal))
+}
+
+func (this *QWidget) WindowFlags() int {
+	ret := C.QWidget_WindowFlags(this.h)
+	return (int)(ret)
+}
+
+func (this *QWidget) SetWindowFlag(param1 uintptr) {
+	C.QWidget_SetWindowFlag(this.h, (C.uintptr_t)(param1))
+}
+
+func (this *QWidget) OverrideWindowFlags(typeVal int) {
+	C.QWidget_OverrideWindowFlags(this.h, (C.int)(typeVal))
+}
+
+func (this *QWidget) WindowType() uintptr {
+	ret := C.QWidget_WindowType(this.h)
+	return (uintptr)(ret)
+}
+
 func QWidget_Find(param1 uintptr) *QWidget {
 	ret := C.QWidget_Find((C.uintptr_t)(param1))
 	return newQWidget_U(unsafe.Pointer(ret))
@@ -1290,6 +1430,15 @@ func (this *QWidget) ChildAt(x int, y int) *QWidget {
 func (this *QWidget) ChildAtWithQPoint(p *QPoint) *QWidget {
 	ret := C.QWidget_ChildAtWithQPoint(this.h, p.cPointer())
 	return newQWidget_U(unsafe.Pointer(ret))
+}
+
+func (this *QWidget) SetAttribute(param1 uintptr) {
+	C.QWidget_SetAttribute(this.h, (C.uintptr_t)(param1))
+}
+
+func (this *QWidget) TestAttribute(param1 uintptr) bool {
+	ret := C.QWidget_TestAttribute(this.h, (C.uintptr_t)(param1))
+	return (bool)(ret)
 }
 
 func (this *QWidget) PaintEngine() *QPaintEngine {
@@ -1328,6 +1477,11 @@ func (this *QWidget) WindowHandle() *QWindow {
 func (this *QWidget) Screen() *QScreen {
 	ret := C.QWidget_Screen(this.h)
 	return newQScreen_U(unsafe.Pointer(ret))
+}
+
+func QWidget_CreateWindowContainer(window *QWindow) *QWidget {
+	ret := C.QWidget_CreateWindowContainer(window.cPointer())
+	return newQWidget_U(unsafe.Pointer(ret))
 }
 
 func (this *QWidget) WindowTitleChanged(title string) {
@@ -1382,6 +1536,26 @@ func (this *QWidget) OnCustomContextMenuRequested(slot func()) {
 	C.QWidget_connect_CustomContextMenuRequested(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
 }
 
+func (this *QWidget) InputMethodQuery(param1 uintptr) *QVariant {
+	ret := C.QWidget_InputMethodQuery(this.h, (C.uintptr_t)(param1))
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQVariant(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QVariant) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QWidget) InputMethodHints() int {
+	ret := C.QWidget_InputMethodHints(this.h)
+	return (int)(ret)
+}
+
+func (this *QWidget) SetInputMethodHints(hints int) {
+	C.QWidget_SetInputMethodHints(this.h, (C.int)(hints))
+}
+
 func QWidget_Tr2(s string, c string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
@@ -1434,6 +1608,30 @@ func QWidget_TrUtf83(s string, c string, n int) string {
 	return ret
 }
 
+func (this *QWidget) Render2(target *QPaintDevice, targetOffset *QPoint) {
+	C.QWidget_Render2(this.h, target.cPointer(), targetOffset.cPointer())
+}
+
+func (this *QWidget) Render3(target *QPaintDevice, targetOffset *QPoint, sourceRegion *QRegion) {
+	C.QWidget_Render3(this.h, target.cPointer(), targetOffset.cPointer(), sourceRegion.cPointer())
+}
+
+func (this *QWidget) Render4(target *QPaintDevice, targetOffset *QPoint, sourceRegion *QRegion, renderFlags int) {
+	C.QWidget_Render4(this.h, target.cPointer(), targetOffset.cPointer(), sourceRegion.cPointer(), (C.int)(renderFlags))
+}
+
+func (this *QWidget) Render22(painter *QPainter, targetOffset *QPoint) {
+	C.QWidget_Render22(this.h, painter.cPointer(), targetOffset.cPointer())
+}
+
+func (this *QWidget) Render32(painter *QPainter, targetOffset *QPoint, sourceRegion *QRegion) {
+	C.QWidget_Render32(this.h, painter.cPointer(), targetOffset.cPointer(), sourceRegion.cPointer())
+}
+
+func (this *QWidget) Render42(painter *QPainter, targetOffset *QPoint, sourceRegion *QRegion, renderFlags int) {
+	C.QWidget_Render42(this.h, painter.cPointer(), targetOffset.cPointer(), sourceRegion.cPointer(), (C.int)(renderFlags))
+}
+
 func (this *QWidget) Grab1(rectangle *QRect) *QPixmap {
 	ret := C.QWidget_Grab1(this.h, rectangle.cPointer())
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1445,12 +1643,39 @@ func (this *QWidget) Grab1(rectangle *QRect) *QPixmap {
 	return ret1
 }
 
+func (this *QWidget) GrabGesture2(typeVal uintptr, flags int) {
+	C.QWidget_GrabGesture2(this.h, (C.uintptr_t)(typeVal), (C.int)(flags))
+}
+
+func (this *QWidget) GrabShortcut2(key *QKeySequence, context uintptr) int {
+	ret := C.QWidget_GrabShortcut2(this.h, key.cPointer(), (C.uintptr_t)(context))
+	return (int)(ret)
+}
+
 func (this *QWidget) SetShortcutEnabled2(id int, enable bool) {
 	C.QWidget_SetShortcutEnabled2(this.h, (C.int)(id), (C.bool)(enable))
 }
 
 func (this *QWidget) SetShortcutAutoRepeat2(id int, enable bool) {
 	C.QWidget_SetShortcutAutoRepeat2(this.h, (C.int)(id), (C.bool)(enable))
+}
+
+func (this *QWidget) SetWindowFlag2(param1 uintptr, on bool) {
+	C.QWidget_SetWindowFlag2(this.h, (C.uintptr_t)(param1), (C.bool)(on))
+}
+
+func (this *QWidget) SetAttribute2(param1 uintptr, on bool) {
+	C.QWidget_SetAttribute2(this.h, (C.uintptr_t)(param1), (C.bool)(on))
+}
+
+func QWidget_CreateWindowContainer2(window *QWindow, parent *QWidget) *QWidget {
+	ret := C.QWidget_CreateWindowContainer2(window.cPointer(), parent.cPointer())
+	return newQWidget_U(unsafe.Pointer(ret))
+}
+
+func QWidget_CreateWindowContainer3(window *QWindow, parent *QWidget, flags int) *QWidget {
+	ret := C.QWidget_CreateWindowContainer3(window.cPointer(), parent.cPointer(), (C.int)(flags))
+	return newQWidget_U(unsafe.Pointer(ret))
 }
 
 func (this *QWidget) Delete() {

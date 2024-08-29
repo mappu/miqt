@@ -36,7 +36,7 @@ func (p CppParameter) RenderTypeGo() string {
 	}
 
 	switch p.ParameterType {
-	case "char", "qint8", "unsigned char", "uchar", "quint8":
+	case "char", "qint8", "signed char", "unsigned char", "uchar", "quint8":
 		ret += "byte" // Strictly speaking, Go byte is unsigned and char may be signed
 	case "short", "qint16":
 		ret += "int16"
@@ -56,12 +56,6 @@ func (p CppParameter) RenderTypeGo() string {
 		} else {
 			ret += "uint64"
 		}
-	case "QRgb":
-		if C.sizeof_int == 4 {
-			ret += "uint32"
-		} else {
-			ret += "uint64"
-		}
 
 	case "unsigned int":
 		ret += "uint"
@@ -77,7 +71,7 @@ func (p CppParameter) RenderTypeGo() string {
 		ret += "float32"
 	case "double", "qreal":
 		ret += "float64"
-	case "qsizetype", "size_t":
+	case "qsizetype", "size_t", "qptrdiff", "ptrdiff_t":
 		if C.sizeof_size_t == 4 {
 			ret += "uint32"
 		} else {
@@ -86,8 +80,21 @@ func (p CppParameter) RenderTypeGo() string {
 	case "qintptr", "uintptr_t", "intptr_t", "quintptr":
 		ret += "uintptr"
 	default:
-		// Do not transform this type
-		ret += p.ParameterType
+
+		if p.IsFlagType() {
+			ret += "int"
+
+		} else if strings.Contains(p.ParameterType, `::`) {
+			if p.IsEnum() {
+				ret += "uintptr"
+			} else {
+				// Inner class
+				ret += cabiClassName(p.ParameterType)
+			}
+		} else {
+			// Do not transform this type
+			ret += p.ParameterType
+		}
 
 	}
 
@@ -99,8 +106,14 @@ func (p CppParameter) parameterTypeCgo() string {
 		return "C.char"
 	}
 	tmp := strings.Replace(p.RenderTypeCabi(), `*`, "", -1)
+	if strings.HasPrefix(tmp, "const ") {
+		tmp = tmp[6:] // Constness doesn't survive the CABI boundary
+	}
 	if strings.HasPrefix(tmp, "unsigned ") {
 		tmp = "u" + tmp[9:] // Cgo uses uchar, uint instead of full name
+	}
+	if strings.HasPrefix(tmp, "signed ") {
+		tmp = "s" + tmp[7:] // Cgo uses schar
 	}
 	tmp = strings.Replace(tmp, `long long`, `longlong`, -1)
 	return "C." + strings.Replace(tmp, " ", "_", -1)
@@ -282,9 +295,11 @@ import "C"
 
 	for _, c := range src.Classes {
 
+		goClassName := cabiClassName(c.ClassName)
+
 		ret.WriteString(`
-		type ` + c.ClassName + ` struct {
-			h *C.` + c.ClassName + `
+		type ` + goClassName + ` struct {
+			h *C.` + goClassName + `
 		`)
 
 		// Embed all inherited types to directly allow calling inherited methods
@@ -295,7 +310,7 @@ import "C"
 		ret.WriteString(`
 		}
 		
-		func (this *` + c.ClassName + `) cPointer() *C.` + c.ClassName + ` {
+		func (this *` + goClassName + `) cPointer() *C.` + goClassName + ` {
 			if this == nil {
 				return nil
 			}
@@ -307,12 +322,12 @@ import "C"
 		localInit := "h: h"
 		for _, base := range c.Inherits {
 			gfs.imports["unsafe"] = struct{}{}
-			localInit += ", " + base + ": new" + base + "_U(unsafe.Pointer(h))"
+			localInit += ", " + base + ": new" + cabiClassName(base) + "_U(unsafe.Pointer(h))"
 		}
 
 		ret.WriteString(`
-			func new` + c.ClassName + `(h *C.` + c.ClassName + `) *` + c.ClassName + ` {
-				return &` + c.ClassName + `{` + localInit + `}
+			func new` + goClassName + `(h *C.` + goClassName + `) *` + goClassName + ` {
+				return &` + goClassName + `{` + localInit + `}
 			}
 			
 		`)
@@ -323,8 +338,8 @@ import "C"
 		// that never happens in Go's type system.
 		gfs.imports["unsafe"] = struct{}{}
 		ret.WriteString(`
-			func new` + c.ClassName + `_U(h unsafe.Pointer) *` + c.ClassName + ` {
-				return new` + c.ClassName + `( (*C.` + c.ClassName + `)(h) )
+			func new` + goClassName + `_U(h unsafe.Pointer) *` + goClassName + ` {
+				return new` + goClassName + `( (*C.` + goClassName + `)(h) )
 			}
 			
 		`)
@@ -332,10 +347,10 @@ import "C"
 		for i, ctor := range c.Ctors {
 			preamble, forwarding := gfs.emitParametersGo2CABIForwarding(ctor)
 			ret.WriteString(`
-			// New` + c.ClassName + maybeSuffix(i) + ` constructs a new ` + c.ClassName + ` object.
-			func New` + c.ClassName + maybeSuffix(i) + `(` + emitParametersGo(ctor.Parameters) + `) *` + c.ClassName + ` {
-				` + preamble + ` ret := C.` + c.ClassName + `_new` + maybeSuffix(i) + `(` + forwarding + `)
-				return new` + c.ClassName + `(ret)
+			// New` + goClassName + maybeSuffix(i) + ` constructs a new ` + c.ClassName + ` object.
+			func New` + goClassName + maybeSuffix(i) + `(` + emitParametersGo(ctor.Parameters) + `) *` + goClassName + ` {
+				` + preamble + ` ret := C.` + goClassName + `_new` + maybeSuffix(i) + `(` + forwarding + `)
+				return new` + goClassName + `(ret)
 			}
 			
 			`)
@@ -412,9 +427,9 @@ import "C"
 					if t.QtClassType() {
 						if !t.Pointer {
 							// new, but then dereference it
-							afterword += "ret[i] = *new" + t.ParameterType + "(_outCast[i])\n"
+							afterword += "ret[i] = *new" + cabiClassName(t.ParameterType) + "(_outCast[i])\n"
 						} else {
-							afterword += "ret[i] = new" + t.ParameterType + "(_outCast[i])\n"
+							afterword += "ret[i] = new" + cabiClassName(t.ParameterType) + "(_outCast[i])\n"
 						}
 					} else { // plain int type
 						afterword += "ret[i] = (" + t.RenderTypeGo() + ")(_outCast[i])\n"
@@ -430,7 +445,7 @@ import "C"
 
 				if m.ReturnType.Pointer || m.ReturnType.ByRef {
 					gfs.imports["unsafe"] = struct{}{}
-					afterword = "return new" + m.ReturnType.ParameterType + "_U(unsafe.Pointer(ret))"
+					afterword = "return new" + cabiClassName(m.ReturnType.ParameterType) + "_U(unsafe.Pointer(ret))"
 
 				} else {
 					// This is return by value, but CABI has new'd it into a
@@ -442,8 +457,8 @@ import "C"
 
 					gfs.imports["runtime"] = struct{}{}
 					afterword = "// Qt uses pass-by-value semantics for this type. Mimic with finalizer\n"
-					afterword += "ret1 := new" + m.ReturnType.ParameterType + "(ret)\n"
-					afterword += "runtime.SetFinalizer(ret1, func(ret2 *" + m.ReturnType.ParameterType + ") {\n"
+					afterword += "ret1 := new" + cabiClassName(m.ReturnType.ParameterType) + "(ret)\n"
+					afterword += "runtime.SetFinalizer(ret1, func(ret2 *" + cabiClassName(m.ReturnType.ParameterType) + ") {\n"
 					afterword += "ret2.Delete()\n"
 					afterword += "runtime.KeepAlive(ret2.h)\n"
 					afterword += "})\n"
@@ -457,15 +472,15 @@ import "C"
 
 			}
 
-			receiverAndMethod := `(this *` + c.ClassName + `) ` + m.SafeMethodName()
+			receiverAndMethod := `(this *` + goClassName + `) ` + m.SafeMethodName()
 			if m.IsStatic {
-				receiverAndMethod = c.ClassName + `_` + m.SafeMethodName()
+				receiverAndMethod = goClassName + `_` + m.SafeMethodName()
 			}
 
 			ret.WriteString(`
 			func ` + receiverAndMethod + `(` + emitParametersGo(m.Parameters) + `) ` + returnTypeDecl + ` {
 				` + preamble +
-				shouldReturn + ` C.` + c.ClassName + `_` + m.SafeMethodName() + `(` + forwarding + `)
+				shouldReturn + ` C.` + goClassName + `_` + m.SafeMethodName() + `(` + forwarding + `)
 ` + afterword + `}
 			
 			`)
@@ -474,12 +489,12 @@ import "C"
 			if m.IsSignal && !m.HasHiddenParams {
 				gfs.imports["unsafe"] = struct{}{}
 				gfs.imports["runtime/cgo"] = struct{}{}
-				ret.WriteString(`func (this *` + c.ClassName + `) On` + m.SafeMethodName() + `(slot func()) {
+				ret.WriteString(`func (this *` + goClassName + `) On` + m.SafeMethodName() + `(slot func()) {
 					var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
 						slot()
 					}
 				
-					C.` + c.ClassName + `_connect_` + m.SafeMethodName() + `(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+					C.` + goClassName + `_connect_` + m.SafeMethodName() + `(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
 				}
 				`)
 			}
@@ -487,8 +502,8 @@ import "C"
 
 		if c.CanDelete {
 			ret.WriteString(`
-			func (this *` + c.ClassName + `) Delete() {
-				C.` + c.ClassName + `_Delete(this.h)
+			func (this *` + goClassName + `) Delete() {
+				C.` + goClassName + `_Delete(this.h)
 			}
 			`)
 		}

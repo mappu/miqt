@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-func TestParseTypeString(t *testing.T) {
+func TestParseMethodTypes(t *testing.T) {
 	type testCase struct {
 		input        string
 		expectReturn CppParameter
@@ -22,15 +22,20 @@ func TestParseTypeString(t *testing.T) {
 			},
 		},
 		testCase{
-			input: "bool (QList<QPair<Foo, Bar>>, QString)",
-			/*
-				expectReturn: CppParameter{ParameterType: "bool"},
-				expectParams: []CppParameter{
-					CppParameter{ParameterType: "QList<QPair<Foo, Bar>>"},
-					CppParameter{ParameterType: "QString"},
-				},
-			*/
-			expectErr: true,
+			input:        "bool (QList<QPair<Foo, Bar>>, QString)",
+			expectReturn: CppParameter{ParameterType: "bool"},
+			expectParams: []CppParameter{
+				CppParameter{ParameterType: "QList<QPair<Foo, Bar>>"},
+				CppParameter{ParameterType: "QString"},
+			},
+			// expectErr: true,
+		},
+		testCase{
+			input:        "bool (QList<QWidget*>)",
+			expectReturn: CppParameter{ParameterType: "bool"},
+			expectParams: []CppParameter{
+				CppParameter{ParameterType: "QList<QWidget*>"},
+			},
 		},
 	}
 
@@ -55,6 +60,39 @@ func TestParseTypeString(t *testing.T) {
 			if !reflect.DeepEqual(p, tc.expectParams) {
 				t.Errorf("Test %q\n-got params=%#v\n-expected  =%#v", tc.input, p, tc.expectParams)
 			}
+		}
+	}
+}
+
+func TestParseInnerListTypes(t *testing.T) {
+	l := parseSingleTypeString(`QList<QWidget*>`)
+
+	tok, ok := l.QListOf()
+
+	if !ok {
+		t.Fatal("expected QListOf")
+	}
+
+	if !tok.Pointer {
+		t.Error("expected pointer")
+	}
+
+	if tok.ParameterType != "QWidget" {
+		t.Errorf("expected QWidget, got %q", tok.ParameterType)
+	}
+}
+
+func TestPointerDepth(t *testing.T) {
+	for _, testCase := range []string{`char**`, `char * *`} {
+		l := parseSingleTypeString(testCase)
+		if l.ParameterType != "char" {
+			t.Error("expected char")
+		}
+		if !l.Pointer {
+			t.Error("expected pointer")
+		}
+		if l.PointerCount != 2 {
+			t.Errorf("expected pointerCount=2, got %d", l.PointerCount)
 		}
 	}
 }

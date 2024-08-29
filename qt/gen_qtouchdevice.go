@@ -61,6 +61,16 @@ func (this *QTouchDevice) Name() string {
 	return ret
 }
 
+func (this *QTouchDevice) Type() uintptr {
+	ret := C.QTouchDevice_Type(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QTouchDevice) Capabilities() int {
+	ret := C.QTouchDevice_Capabilities(this.h)
+	return (int)(ret)
+}
+
 func (this *QTouchDevice) MaximumTouchPoints() int {
 	ret := C.QTouchDevice_MaximumTouchPoints(this.h)
 	return (int)(ret)
@@ -70,6 +80,14 @@ func (this *QTouchDevice) SetName(name string) {
 	name_Cstring := C.CString(name)
 	defer C.free(unsafe.Pointer(name_Cstring))
 	C.QTouchDevice_SetName(this.h, name_Cstring, C.ulong(len(name)))
+}
+
+func (this *QTouchDevice) SetType(devType uintptr) {
+	C.QTouchDevice_SetType(this.h, (C.uintptr_t)(devType))
+}
+
+func (this *QTouchDevice) SetCapabilities(caps int) {
+	C.QTouchDevice_SetCapabilities(this.h, (C.int)(caps))
 }
 
 func (this *QTouchDevice) SetMaximumTouchPoints(max int) {

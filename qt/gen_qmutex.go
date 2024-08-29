@@ -97,6 +97,12 @@ func NewQMutex() *QMutex {
 	return newQMutex(ret)
 }
 
+// NewQMutex2 constructs a new QMutex object.
+func NewQMutex2(mode uintptr) *QMutex {
+	ret := C.QMutex_new2((C.uintptr_t)(mode))
+	return newQMutex(ret)
+}
+
 func (this *QMutex) Lock() {
 	C.QMutex_Lock(this.h)
 }

@@ -11,6 +11,7 @@ package qt
 import "C"
 
 import (
+	"runtime"
 	"unsafe"
 )
 
@@ -31,6 +32,42 @@ func newQIconEngine(h *C.QIconEngine) *QIconEngine {
 
 func newQIconEngine_U(h unsafe.Pointer) *QIconEngine {
 	return newQIconEngine((*C.QIconEngine)(h))
+}
+
+func (this *QIconEngine) Paint(painter *QPainter, rect *QRect, mode uintptr, state uintptr) {
+	C.QIconEngine_Paint(this.h, painter.cPointer(), rect.cPointer(), (C.uintptr_t)(mode), (C.uintptr_t)(state))
+}
+
+func (this *QIconEngine) ActualSize(size *QSize, mode uintptr, state uintptr) *QSize {
+	ret := C.QIconEngine_ActualSize(this.h, size.cPointer(), (C.uintptr_t)(mode), (C.uintptr_t)(state))
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQSize(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QIconEngine) Pixmap(size *QSize, mode uintptr, state uintptr) *QPixmap {
+	ret := C.QIconEngine_Pixmap(this.h, size.cPointer(), (C.uintptr_t)(mode), (C.uintptr_t)(state))
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQPixmap(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QPixmap) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QIconEngine) AddPixmap(pixmap *QPixmap, mode uintptr, state uintptr) {
+	C.QIconEngine_AddPixmap(this.h, pixmap.cPointer(), (C.uintptr_t)(mode), (C.uintptr_t)(state))
+}
+
+func (this *QIconEngine) AddFile(fileName string, size *QSize, mode uintptr, state uintptr) {
+	fileName_Cstring := C.CString(fileName)
+	defer C.free(unsafe.Pointer(fileName_Cstring))
+	C.QIconEngine_AddFile(this.h, fileName_Cstring, C.ulong(len(fileName)), size.cPointer(), (C.uintptr_t)(mode), (C.uintptr_t)(state))
 }
 
 func (this *QIconEngine) Key() string {
@@ -57,6 +94,19 @@ func (this *QIconEngine) Write(out *QDataStream) bool {
 	return (bool)(ret)
 }
 
+func (this *QIconEngine) AvailableSizes() []QSize {
+	var _out **C.QSize = nil
+	var _out_len C.size_t = 0
+	C.QIconEngine_AvailableSizes(this.h, &_out, &_out_len)
+	ret := make([]QSize, int(_out_len))
+	_outCast := (*[0xffff]*C.QSize)(unsafe.Pointer(_out)) // so fresh so clean
+	for i := 0; i < int(_out_len); i++ {
+		ret[i] = *newQSize(_outCast[i])
+	}
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
 func (this *QIconEngine) IconName() string {
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
@@ -71,6 +121,101 @@ func (this *QIconEngine) IsNull() bool {
 	return (bool)(ret)
 }
 
+func (this *QIconEngine) ScaledPixmap(size *QSize, mode uintptr, state uintptr, scale float64) *QPixmap {
+	ret := C.QIconEngine_ScaledPixmap(this.h, size.cPointer(), (C.uintptr_t)(mode), (C.uintptr_t)(state), (C.double)(scale))
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQPixmap(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QPixmap) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QIconEngine) AvailableSizes1(mode uintptr) []QSize {
+	var _out **C.QSize = nil
+	var _out_len C.size_t = 0
+	C.QIconEngine_AvailableSizes1(this.h, (C.uintptr_t)(mode), &_out, &_out_len)
+	ret := make([]QSize, int(_out_len))
+	_outCast := (*[0xffff]*C.QSize)(unsafe.Pointer(_out)) // so fresh so clean
+	for i := 0; i < int(_out_len); i++ {
+		ret[i] = *newQSize(_outCast[i])
+	}
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func (this *QIconEngine) AvailableSizes2(mode uintptr, state uintptr) []QSize {
+	var _out **C.QSize = nil
+	var _out_len C.size_t = 0
+	C.QIconEngine_AvailableSizes2(this.h, (C.uintptr_t)(mode), (C.uintptr_t)(state), &_out, &_out_len)
+	ret := make([]QSize, int(_out_len))
+	_outCast := (*[0xffff]*C.QSize)(unsafe.Pointer(_out)) // so fresh so clean
+	for i := 0; i < int(_out_len); i++ {
+		ret[i] = *newQSize(_outCast[i])
+	}
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
 func (this *QIconEngine) Delete() {
 	C.QIconEngine_Delete(this.h)
+}
+
+type QIconEngine__AvailableSizesArgument struct {
+	h *C.QIconEngine__AvailableSizesArgument
+}
+
+func (this *QIconEngine__AvailableSizesArgument) cPointer() *C.QIconEngine__AvailableSizesArgument {
+	if this == nil {
+		return nil
+	}
+	return this.h
+}
+
+func newQIconEngine__AvailableSizesArgument(h *C.QIconEngine__AvailableSizesArgument) *QIconEngine__AvailableSizesArgument {
+	return &QIconEngine__AvailableSizesArgument{h: h}
+}
+
+func newQIconEngine__AvailableSizesArgument_U(h unsafe.Pointer) *QIconEngine__AvailableSizesArgument {
+	return newQIconEngine__AvailableSizesArgument((*C.QIconEngine__AvailableSizesArgument)(h))
+}
+
+// NewQIconEngine__AvailableSizesArgument constructs a new QIconEngine::AvailableSizesArgument object.
+func NewQIconEngine__AvailableSizesArgument(param1 *QIconEngine__AvailableSizesArgument) *QIconEngine__AvailableSizesArgument {
+	ret := C.QIconEngine__AvailableSizesArgument_new(param1.cPointer())
+	return newQIconEngine__AvailableSizesArgument(ret)
+}
+
+func (this *QIconEngine__AvailableSizesArgument) Delete() {
+	C.QIconEngine__AvailableSizesArgument_Delete(this.h)
+}
+
+type QIconEngine__ScaledPixmapArgument struct {
+	h *C.QIconEngine__ScaledPixmapArgument
+}
+
+func (this *QIconEngine__ScaledPixmapArgument) cPointer() *C.QIconEngine__ScaledPixmapArgument {
+	if this == nil {
+		return nil
+	}
+	return this.h
+}
+
+func newQIconEngine__ScaledPixmapArgument(h *C.QIconEngine__ScaledPixmapArgument) *QIconEngine__ScaledPixmapArgument {
+	return &QIconEngine__ScaledPixmapArgument{h: h}
+}
+
+func newQIconEngine__ScaledPixmapArgument_U(h unsafe.Pointer) *QIconEngine__ScaledPixmapArgument {
+	return newQIconEngine__ScaledPixmapArgument((*C.QIconEngine__ScaledPixmapArgument)(h))
+}
+
+// NewQIconEngine__ScaledPixmapArgument constructs a new QIconEngine::ScaledPixmapArgument object.
+func NewQIconEngine__ScaledPixmapArgument(param1 *QIconEngine__ScaledPixmapArgument) *QIconEngine__ScaledPixmapArgument {
+	ret := C.QIconEngine__ScaledPixmapArgument_new(param1.cPointer())
+	return newQIconEngine__ScaledPixmapArgument(ret)
+}
+
+func (this *QIconEngine__ScaledPixmapArgument) Delete() {
+	C.QIconEngine__ScaledPixmapArgument_Delete(this.h)
 }

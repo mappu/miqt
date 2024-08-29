@@ -36,7 +36,7 @@ int QVersionNumber_Compare(QVersionNumber* v1, QVersionNumber* v2);
 QVersionNumber* QVersionNumber_CommonPrefix(QVersionNumber* v1, QVersionNumber* v2);
 void QVersionNumber_ToString(QVersionNumber* self, char** _out, int* _out_Strlen);
 QVersionNumber* QVersionNumber_FromString(const char* stringVal, size_t stringVal_Strlen);
-QVersionNumber* QVersionNumber_FromString2(const char* stringVal, size_t stringVal_Strlen, int* suffixIndex);
+QVersionNumber* QVersionNumber_FromString22(const char* stringVal, size_t stringVal_Strlen, int* suffixIndex);
 void QVersionNumber_Delete(QVersionNumber* self);
 
 #ifdef __cplusplus

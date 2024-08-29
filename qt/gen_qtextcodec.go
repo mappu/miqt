@@ -151,6 +151,38 @@ func (this *QTextCodec) FromUnicode(uc string) *QByteArray {
 	return ret1
 }
 
+func (this *QTextCodec) ToUnicode2(in string, length int) string {
+	in_Cstring := C.CString(in)
+	defer C.free(unsafe.Pointer(in_Cstring))
+	var _out *C.char = nil
+	var _out_Strlen C.int = 0
+	C.QTextCodec_ToUnicode2(this.h, in_Cstring, (C.int)(length), &_out, &_out_Strlen)
+	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func (this *QTextCodec) FromUnicode2(in *QChar, length int) *QByteArray {
+	ret := C.QTextCodec_FromUnicode2(this.h, in.cPointer(), (C.int)(length))
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQByteArray(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QByteArray) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QTextCodec) MakeDecoder() *QTextDecoder {
+	ret := C.QTextCodec_MakeDecoder(this.h)
+	return newQTextDecoder_U(unsafe.Pointer(ret))
+}
+
+func (this *QTextCodec) MakeEncoder() *QTextEncoder {
+	ret := C.QTextCodec_MakeEncoder(this.h)
+	return newQTextEncoder_U(unsafe.Pointer(ret))
+}
+
 func (this *QTextCodec) Name() *QByteArray {
 	ret := C.QTextCodec_Name(this.h)
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -180,6 +212,38 @@ func (this *QTextCodec) MibEnum() int {
 	return (int)(ret)
 }
 
+func (this *QTextCodec) ToUnicode3(in string, length int, state *QTextCodec__ConverterState) string {
+	in_Cstring := C.CString(in)
+	defer C.free(unsafe.Pointer(in_Cstring))
+	var _out *C.char = nil
+	var _out_Strlen C.int = 0
+	C.QTextCodec_ToUnicode3(this.h, in_Cstring, (C.int)(length), state.cPointer(), &_out, &_out_Strlen)
+	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func (this *QTextCodec) FromUnicode3(in *QChar, length int, state *QTextCodec__ConverterState) *QByteArray {
+	ret := C.QTextCodec_FromUnicode3(this.h, in.cPointer(), (C.int)(length), state.cPointer())
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQByteArray(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QByteArray) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QTextCodec) MakeDecoder1(flags int) *QTextDecoder {
+	ret := C.QTextCodec_MakeDecoder1(this.h, (C.int)(flags))
+	return newQTextDecoder_U(unsafe.Pointer(ret))
+}
+
+func (this *QTextCodec) MakeEncoder1(flags int) *QTextEncoder {
+	ret := C.QTextCodec_MakeEncoder1(this.h, (C.int)(flags))
+	return newQTextEncoder_U(unsafe.Pointer(ret))
+}
+
 type QTextEncoder struct {
 	h *C.QTextEncoder
 }
@@ -202,6 +266,12 @@ func newQTextEncoder_U(h unsafe.Pointer) *QTextEncoder {
 // NewQTextEncoder constructs a new QTextEncoder object.
 func NewQTextEncoder(codec *QTextCodec) *QTextEncoder {
 	ret := C.QTextEncoder_new(codec.cPointer())
+	return newQTextEncoder(ret)
+}
+
+// NewQTextEncoder2 constructs a new QTextEncoder object.
+func NewQTextEncoder2(codec *QTextCodec, flags int) *QTextEncoder {
+	ret := C.QTextEncoder_new2(codec.cPointer(), (C.int)(flags))
 	return newQTextEncoder(ret)
 }
 
@@ -263,6 +333,12 @@ func NewQTextDecoder(codec *QTextCodec) *QTextDecoder {
 	return newQTextDecoder(ret)
 }
 
+// NewQTextDecoder2 constructs a new QTextDecoder object.
+func NewQTextDecoder2(codec *QTextCodec, flags int) *QTextDecoder {
+	ret := C.QTextDecoder_new2(codec.cPointer(), (C.int)(flags))
+	return newQTextDecoder(ret)
+}
+
 func (this *QTextDecoder) ToUnicode(chars string, lenVal int) string {
 	chars_Cstring := C.CString(chars)
 	defer C.free(unsafe.Pointer(chars_Cstring))
@@ -295,4 +371,39 @@ func (this *QTextDecoder) NeedsMoreData() bool {
 
 func (this *QTextDecoder) Delete() {
 	C.QTextDecoder_Delete(this.h)
+}
+
+type QTextCodec__ConverterState struct {
+	h *C.QTextCodec__ConverterState
+}
+
+func (this *QTextCodec__ConverterState) cPointer() *C.QTextCodec__ConverterState {
+	if this == nil {
+		return nil
+	}
+	return this.h
+}
+
+func newQTextCodec__ConverterState(h *C.QTextCodec__ConverterState) *QTextCodec__ConverterState {
+	return &QTextCodec__ConverterState{h: h}
+}
+
+func newQTextCodec__ConverterState_U(h unsafe.Pointer) *QTextCodec__ConverterState {
+	return newQTextCodec__ConverterState((*C.QTextCodec__ConverterState)(h))
+}
+
+// NewQTextCodec__ConverterState constructs a new QTextCodec::ConverterState object.
+func NewQTextCodec__ConverterState() *QTextCodec__ConverterState {
+	ret := C.QTextCodec__ConverterState_new()
+	return newQTextCodec__ConverterState(ret)
+}
+
+// NewQTextCodec__ConverterState2 constructs a new QTextCodec::ConverterState object.
+func NewQTextCodec__ConverterState2(f int) *QTextCodec__ConverterState {
+	ret := C.QTextCodec__ConverterState_new2((C.int)(f))
+	return newQTextCodec__ConverterState(ret)
+}
+
+func (this *QTextCodec__ConverterState) Delete() {
+	C.QTextCodec__ConverterState_Delete(this.h)
 }

@@ -185,6 +185,15 @@ func (this *QLibrary) ErrorString() string {
 	return ret
 }
 
+func (this *QLibrary) SetLoadHints(hints int) {
+	C.QLibrary_SetLoadHints(this.h, (C.int)(hints))
+}
+
+func (this *QLibrary) LoadHints() int {
+	ret := C.QLibrary_LoadHints(this.h)
+	return (int)(ret)
+}
+
 func QLibrary_Tr2(s string, c string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))

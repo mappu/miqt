@@ -100,6 +100,36 @@ func (this *QSize) Transposed() *QSize {
 	return ret1
 }
 
+func (this *QSize) Scale(w int, h int, mode uintptr) {
+	C.QSize_Scale(this.h, (C.int)(w), (C.int)(h), (C.uintptr_t)(mode))
+}
+
+func (this *QSize) Scale2(s *QSize, mode uintptr) {
+	C.QSize_Scale2(this.h, s.cPointer(), (C.uintptr_t)(mode))
+}
+
+func (this *QSize) Scaled(w int, h int, mode uintptr) *QSize {
+	ret := C.QSize_Scaled(this.h, (C.int)(w), (C.int)(h), (C.uintptr_t)(mode))
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQSize(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QSize) Scaled2(s *QSize, mode uintptr) *QSize {
+	ret := C.QSize_Scaled2(this.h, s.cPointer(), (C.uintptr_t)(mode))
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQSize(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
 func (this *QSize) ExpandedTo(param1 *QSize) *QSize {
 	ret := C.QSize_ExpandedTo(this.h, param1.cPointer())
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -250,6 +280,36 @@ func (this *QSizeF) Transpose() {
 
 func (this *QSizeF) Transposed() *QSizeF {
 	ret := C.QSizeF_Transposed(this.h)
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQSizeF(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QSizeF) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QSizeF) Scale(w float64, h float64, mode uintptr) {
+	C.QSizeF_Scale(this.h, (C.double)(w), (C.double)(h), (C.uintptr_t)(mode))
+}
+
+func (this *QSizeF) Scale2(s *QSizeF, mode uintptr) {
+	C.QSizeF_Scale2(this.h, s.cPointer(), (C.uintptr_t)(mode))
+}
+
+func (this *QSizeF) Scaled(w float64, h float64, mode uintptr) *QSizeF {
+	ret := C.QSizeF_Scaled(this.h, (C.double)(w), (C.double)(h), (C.uintptr_t)(mode))
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQSizeF(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QSizeF) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QSizeF) Scaled2(s *QSizeF, mode uintptr) *QSizeF {
+	ret := C.QSizeF_Scaled2(this.h, s.cPointer(), (C.uintptr_t)(mode))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQSizeF(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QSizeF) {

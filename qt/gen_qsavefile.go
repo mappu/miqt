@@ -104,6 +104,11 @@ func (this *QSaveFile) SetFileName(name string) {
 	C.QSaveFile_SetFileName(this.h, name_Cstring, C.ulong(len(name)))
 }
 
+func (this *QSaveFile) Open(flags int) bool {
+	ret := C.QSaveFile_Open(this.h, (C.int)(flags))
+	return (bool)(ret)
+}
+
 func (this *QSaveFile) Commit() bool {
 	ret := C.QSaveFile_Commit(this.h)
 	return (bool)(ret)

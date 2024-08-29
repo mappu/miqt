@@ -15,14 +15,18 @@ extern "C" {
 class QGraphicsGridLayout;
 class QGraphicsLayoutItem;
 class QRectF;
+class QSizeF;
 #else
 typedef struct QGraphicsGridLayout QGraphicsGridLayout;
 typedef struct QGraphicsLayoutItem QGraphicsLayoutItem;
 typedef struct QRectF QRectF;
+typedef struct QSizeF QSizeF;
 #endif
 
 QGraphicsGridLayout* QGraphicsGridLayout_new();
 QGraphicsGridLayout* QGraphicsGridLayout_new2(QGraphicsLayoutItem* parent);
+void QGraphicsGridLayout_AddItem(QGraphicsGridLayout* self, QGraphicsLayoutItem* item, int row, int column, int rowSpan, int columnSpan);
+void QGraphicsGridLayout_AddItem2(QGraphicsGridLayout* self, QGraphicsLayoutItem* item, int row, int column);
 void QGraphicsGridLayout_SetHorizontalSpacing(QGraphicsGridLayout* self, double spacing);
 double QGraphicsGridLayout_HorizontalSpacing(QGraphicsGridLayout* self);
 void QGraphicsGridLayout_SetVerticalSpacing(QGraphicsGridLayout* self, double spacing);
@@ -50,6 +54,12 @@ double QGraphicsGridLayout_ColumnPreferredWidth(QGraphicsGridLayout* self, int c
 void QGraphicsGridLayout_SetColumnMaximumWidth(QGraphicsGridLayout* self, int column, double width);
 double QGraphicsGridLayout_ColumnMaximumWidth(QGraphicsGridLayout* self, int column);
 void QGraphicsGridLayout_SetColumnFixedWidth(QGraphicsGridLayout* self, int column, double width);
+void QGraphicsGridLayout_SetRowAlignment(QGraphicsGridLayout* self, int row, int alignment);
+int QGraphicsGridLayout_RowAlignment(QGraphicsGridLayout* self, int row);
+void QGraphicsGridLayout_SetColumnAlignment(QGraphicsGridLayout* self, int column, int alignment);
+int QGraphicsGridLayout_ColumnAlignment(QGraphicsGridLayout* self, int column);
+void QGraphicsGridLayout_SetAlignment(QGraphicsGridLayout* self, QGraphicsLayoutItem* item, int alignment);
+int QGraphicsGridLayout_Alignment(QGraphicsGridLayout* self, QGraphicsLayoutItem* item);
 int QGraphicsGridLayout_RowCount(QGraphicsGridLayout* self);
 int QGraphicsGridLayout_ColumnCount(QGraphicsGridLayout* self);
 QGraphicsLayoutItem* QGraphicsGridLayout_ItemAt(QGraphicsGridLayout* self, int row, int column);
@@ -59,6 +69,10 @@ void QGraphicsGridLayout_RemoveAt(QGraphicsGridLayout* self, int index);
 void QGraphicsGridLayout_RemoveItem(QGraphicsGridLayout* self, QGraphicsLayoutItem* item);
 void QGraphicsGridLayout_Invalidate(QGraphicsGridLayout* self);
 void QGraphicsGridLayout_SetGeometry(QGraphicsGridLayout* self, QRectF* rect);
+QSizeF* QGraphicsGridLayout_SizeHint(QGraphicsGridLayout* self, uintptr_t which);
+void QGraphicsGridLayout_AddItem6(QGraphicsGridLayout* self, QGraphicsLayoutItem* item, int row, int column, int rowSpan, int columnSpan, int alignment);
+void QGraphicsGridLayout_AddItem4(QGraphicsGridLayout* self, QGraphicsLayoutItem* item, int row, int column, int alignment);
+QSizeF* QGraphicsGridLayout_SizeHint2(QGraphicsGridLayout* self, uintptr_t which, QSizeF* constraint);
 void QGraphicsGridLayout_Delete(QGraphicsGridLayout* self);
 
 #ifdef __cplusplus

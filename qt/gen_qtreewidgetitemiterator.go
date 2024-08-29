@@ -40,6 +40,30 @@ func NewQTreeWidgetItemIterator(it *QTreeWidgetItemIterator) *QTreeWidgetItemIte
 	return newQTreeWidgetItemIterator(ret)
 }
 
+// NewQTreeWidgetItemIterator2 constructs a new QTreeWidgetItemIterator object.
+func NewQTreeWidgetItemIterator2(widget *QTreeWidget) *QTreeWidgetItemIterator {
+	ret := C.QTreeWidgetItemIterator_new2(widget.cPointer())
+	return newQTreeWidgetItemIterator(ret)
+}
+
+// NewQTreeWidgetItemIterator3 constructs a new QTreeWidgetItemIterator object.
+func NewQTreeWidgetItemIterator3(item *QTreeWidgetItem) *QTreeWidgetItemIterator {
+	ret := C.QTreeWidgetItemIterator_new3(item.cPointer())
+	return newQTreeWidgetItemIterator(ret)
+}
+
+// NewQTreeWidgetItemIterator4 constructs a new QTreeWidgetItemIterator object.
+func NewQTreeWidgetItemIterator4(widget *QTreeWidget, flags int) *QTreeWidgetItemIterator {
+	ret := C.QTreeWidgetItemIterator_new4(widget.cPointer(), (C.int)(flags))
+	return newQTreeWidgetItemIterator(ret)
+}
+
+// NewQTreeWidgetItemIterator5 constructs a new QTreeWidgetItemIterator object.
+func NewQTreeWidgetItemIterator5(item *QTreeWidgetItem, flags int) *QTreeWidgetItemIterator {
+	ret := C.QTreeWidgetItemIterator_new5(item.cPointer(), (C.int)(flags))
+	return newQTreeWidgetItemIterator(ret)
+}
+
 func (this *QTreeWidgetItemIterator) OperatorAssign(it *QTreeWidgetItemIterator) {
 	C.QTreeWidgetItemIterator_OperatorAssign(this.h, it.cPointer())
 }

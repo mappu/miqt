@@ -16,14 +16,22 @@ class QFutureInterfaceBase;
 class QMutex;
 class QRunnable;
 class QThreadPool;
+#if defined(WORKAROUND_INNER_CLASS_DEFINITION_QtPrivate__ExceptionStore)
+typedef QtPrivate::ExceptionStore QtPrivate__ExceptionStore;
+#else
+class QtPrivate__ExceptionStore;
+#endif
 #else
 typedef struct QFutureInterfaceBase QFutureInterfaceBase;
 typedef struct QMutex QMutex;
 typedef struct QRunnable QRunnable;
 typedef struct QThreadPool QThreadPool;
+typedef struct QtPrivate__ExceptionStore QtPrivate__ExceptionStore;
 #endif
 
-QFutureInterfaceBase* QFutureInterfaceBase_new(QFutureInterfaceBase* other);
+QFutureInterfaceBase* QFutureInterfaceBase_new();
+QFutureInterfaceBase* QFutureInterfaceBase_new2(QFutureInterfaceBase* other);
+QFutureInterfaceBase* QFutureInterfaceBase_new3(uintptr_t initialState);
 void QFutureInterfaceBase_ReportStarted(QFutureInterfaceBase* self);
 void QFutureInterfaceBase_ReportFinished(QFutureInterfaceBase* self);
 void QFutureInterfaceBase_ReportCanceled(QFutureInterfaceBase* self);
@@ -42,6 +50,7 @@ void QFutureInterfaceBase_ProgressText(QFutureInterfaceBase* self, char** _out, 
 void QFutureInterfaceBase_SetExpectedResultCount(QFutureInterfaceBase* self, int resultCount);
 int QFutureInterfaceBase_ExpectedResultCount(QFutureInterfaceBase* self);
 int QFutureInterfaceBase_ResultCount(QFutureInterfaceBase* self);
+bool QFutureInterfaceBase_QueryState(QFutureInterfaceBase* self, uintptr_t state);
 bool QFutureInterfaceBase_IsRunning(QFutureInterfaceBase* self);
 bool QFutureInterfaceBase_IsStarted(QFutureInterfaceBase* self);
 bool QFutureInterfaceBase_IsCanceled(QFutureInterfaceBase* self);
@@ -59,6 +68,7 @@ void QFutureInterfaceBase_WaitForResult(QFutureInterfaceBase* self, int resultIn
 void QFutureInterfaceBase_WaitForResume(QFutureInterfaceBase* self);
 QMutex* QFutureInterfaceBase_Mutex(QFutureInterfaceBase* self);
 QMutex* QFutureInterfaceBase_MutexWithInt(QFutureInterfaceBase* self, int param1);
+QtPrivate__ExceptionStore* QFutureInterfaceBase_ExceptionStore(QFutureInterfaceBase* self);
 bool QFutureInterfaceBase_OperatorEqual(QFutureInterfaceBase* self, QFutureInterfaceBase* other);
 bool QFutureInterfaceBase_OperatorNotEqual(QFutureInterfaceBase* self, QFutureInterfaceBase* other);
 void QFutureInterfaceBase_OperatorAssign(QFutureInterfaceBase* self, QFutureInterfaceBase* other);

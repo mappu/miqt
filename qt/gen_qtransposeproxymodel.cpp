@@ -1,14 +1,16 @@
-#include "gen_qtransposeproxymodel.h"
-#include "qtransposeproxymodel.h"
-
 #include <QAbstractItemModel>
 #include <QMetaObject>
 #include <QModelIndex>
 #include <QObject>
 #include <QSize>
 #include <QString>
+#include <QByteArray>
+#include <cstring>
 #include <QTransposeProxyModel>
+#include <QVariant>
+#include "qtransposeproxymodel.h"
 
+#include "gen_qtransposeproxymodel.h"
 
 extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
@@ -23,10 +25,10 @@ QTransposeProxyModel* QTransposeProxyModel_new2(QObject* parent) {
 }
 
 QMetaObject* QTransposeProxyModel_MetaObject(QTransposeProxyModel* self) {
-	return (QMetaObject*) self->metaObject();
+	return (QMetaObject*) const_cast<const QTransposeProxyModel*>(self)->metaObject();
 }
 
-void QTransposeProxyModel_Tr(char* s, char** _out, int* _out_Strlen) {
+void QTransposeProxyModel_Tr(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QTransposeProxyModel::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -35,7 +37,7 @@ void QTransposeProxyModel_Tr(char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QTransposeProxyModel_TrUtf8(char* s, char** _out, int* _out_Strlen) {
+void QTransposeProxyModel_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QTransposeProxyModel::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -49,39 +51,49 @@ void QTransposeProxyModel_SetSourceModel(QTransposeProxyModel* self, QAbstractIt
 }
 
 int QTransposeProxyModel_RowCount(QTransposeProxyModel* self) {
-	return self->rowCount();
+	return const_cast<const QTransposeProxyModel*>(self)->rowCount();
 }
 
 int QTransposeProxyModel_ColumnCount(QTransposeProxyModel* self) {
-	return self->columnCount();
+	return const_cast<const QTransposeProxyModel*>(self)->columnCount();
+}
+
+QVariant* QTransposeProxyModel_HeaderData(QTransposeProxyModel* self, int section, uintptr_t orientation) {
+	QVariant ret = const_cast<const QTransposeProxyModel*>(self)->headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation));
+	// Copy-construct value returned type into heap-allocated copy
+	return static_cast<QVariant*>(new QVariant(ret));
+}
+
+bool QTransposeProxyModel_SetHeaderData(QTransposeProxyModel* self, int section, uintptr_t orientation, QVariant* value) {
+	return self->setHeaderData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), *value);
 }
 
 QSize* QTransposeProxyModel_Span(QTransposeProxyModel* self, QModelIndex* index) {
-	QSize ret = self->span(*index);
+	QSize ret = const_cast<const QTransposeProxyModel*>(self)->span(*index);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
 
 QModelIndex* QTransposeProxyModel_MapFromSource(QTransposeProxyModel* self, QModelIndex* sourceIndex) {
-	QModelIndex ret = self->mapFromSource(*sourceIndex);
+	QModelIndex ret = const_cast<const QTransposeProxyModel*>(self)->mapFromSource(*sourceIndex);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QModelIndex*>(new QModelIndex(ret));
 }
 
 QModelIndex* QTransposeProxyModel_MapToSource(QTransposeProxyModel* self, QModelIndex* proxyIndex) {
-	QModelIndex ret = self->mapToSource(*proxyIndex);
+	QModelIndex ret = const_cast<const QTransposeProxyModel*>(self)->mapToSource(*proxyIndex);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QModelIndex*>(new QModelIndex(ret));
 }
 
 QModelIndex* QTransposeProxyModel_Parent(QTransposeProxyModel* self, QModelIndex* index) {
-	QModelIndex ret = self->parent(*index);
+	QModelIndex ret = const_cast<const QTransposeProxyModel*>(self)->parent(*index);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QModelIndex*>(new QModelIndex(ret));
 }
 
 QModelIndex* QTransposeProxyModel_Index(QTransposeProxyModel* self, int row, int column) {
-	QModelIndex ret = self->index(static_cast<int>(row), static_cast<int>(column));
+	QModelIndex ret = const_cast<const QTransposeProxyModel*>(self)->index(static_cast<int>(row), static_cast<int>(column));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QModelIndex*>(new QModelIndex(ret));
 }
@@ -110,7 +122,11 @@ bool QTransposeProxyModel_MoveColumns(QTransposeProxyModel* self, QModelIndex* s
 	return self->moveColumns(*sourceParent, static_cast<int>(sourceColumn), static_cast<int>(count), *destinationParent, static_cast<int>(destinationChild));
 }
 
-void QTransposeProxyModel_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
+void QTransposeProxyModel_Sort(QTransposeProxyModel* self, int column) {
+	self->sort(static_cast<int>(column));
+}
+
+void QTransposeProxyModel_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QTransposeProxyModel::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -119,7 +135,7 @@ void QTransposeProxyModel_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QTransposeProxyModel_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QTransposeProxyModel_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QTransposeProxyModel::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -128,7 +144,7 @@ void QTransposeProxyModel_Tr3(char* s, char* c, int n, char** _out, int* _out_St
 	*_out_Strlen = b.length();
 }
 
-void QTransposeProxyModel_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
+void QTransposeProxyModel_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QTransposeProxyModel::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -137,7 +153,7 @@ void QTransposeProxyModel_TrUtf82(char* s, char* c, char** _out, int* _out_Strle
 	*_out_Strlen = b.length();
 }
 
-void QTransposeProxyModel_TrUtf83(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QTransposeProxyModel_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QTransposeProxyModel::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -152,6 +168,16 @@ int QTransposeProxyModel_RowCount1(QTransposeProxyModel* self, QModelIndex* pare
 
 int QTransposeProxyModel_ColumnCount1(QTransposeProxyModel* self, QModelIndex* parent) {
 	return self->columnCount(*parent);
+}
+
+QVariant* QTransposeProxyModel_HeaderData3(QTransposeProxyModel* self, int section, uintptr_t orientation, int role) {
+	QVariant ret = self->headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), static_cast<int>(role));
+	// Copy-construct value returned type into heap-allocated copy
+	return static_cast<QVariant*>(new QVariant(ret));
+}
+
+bool QTransposeProxyModel_SetHeaderData4(QTransposeProxyModel* self, int section, uintptr_t orientation, QVariant* value, int role) {
+	return self->setHeaderData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), *value, static_cast<int>(role));
 }
 
 QModelIndex* QTransposeProxyModel_Index3(QTransposeProxyModel* self, int row, int column, QModelIndex* parent) {
@@ -174,6 +200,10 @@ bool QTransposeProxyModel_InsertColumns3(QTransposeProxyModel* self, int column,
 
 bool QTransposeProxyModel_RemoveColumns3(QTransposeProxyModel* self, int column, int count, QModelIndex* parent) {
 	return self->removeColumns(static_cast<int>(column), static_cast<int>(count), *parent);
+}
+
+void QTransposeProxyModel_Sort2(QTransposeProxyModel* self, int column, uintptr_t order) {
+	self->sort(static_cast<int>(column), static_cast<Qt::SortOrder>(order));
 }
 
 void QTransposeProxyModel_Delete(QTransposeProxyModel* self) {

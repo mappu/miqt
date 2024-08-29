@@ -75,6 +75,24 @@ func QListView_TrUtf8(s string) string {
 	return ret
 }
 
+func (this *QListView) SetMovement(movement uintptr) {
+	C.QListView_SetMovement(this.h, (C.uintptr_t)(movement))
+}
+
+func (this *QListView) Movement() uintptr {
+	ret := C.QListView_Movement(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QListView) SetFlow(flow uintptr) {
+	C.QListView_SetFlow(this.h, (C.uintptr_t)(flow))
+}
+
+func (this *QListView) Flow() uintptr {
+	ret := C.QListView_Flow(this.h)
+	return (uintptr)(ret)
+}
+
 func (this *QListView) SetWrapping(enable bool) {
 	C.QListView_SetWrapping(this.h, (C.bool)(enable))
 }
@@ -82,6 +100,24 @@ func (this *QListView) SetWrapping(enable bool) {
 func (this *QListView) IsWrapping() bool {
 	ret := C.QListView_IsWrapping(this.h)
 	return (bool)(ret)
+}
+
+func (this *QListView) SetResizeMode(mode uintptr) {
+	C.QListView_SetResizeMode(this.h, (C.uintptr_t)(mode))
+}
+
+func (this *QListView) ResizeMode() uintptr {
+	ret := C.QListView_ResizeMode(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QListView) SetLayoutMode(mode uintptr) {
+	C.QListView_SetLayoutMode(this.h, (C.uintptr_t)(mode))
+}
+
+func (this *QListView) LayoutMode() uintptr {
+	ret := C.QListView_LayoutMode(this.h)
+	return (uintptr)(ret)
 }
 
 func (this *QListView) SetSpacing(space int) {
@@ -115,6 +151,15 @@ func (this *QListView) GridSize() *QSize {
 		runtime.KeepAlive(ret2.h)
 	})
 	return ret1
+}
+
+func (this *QListView) SetViewMode(mode uintptr) {
+	C.QListView_SetViewMode(this.h, (C.uintptr_t)(mode))
+}
+
+func (this *QListView) ViewMode() uintptr {
+	ret := C.QListView_ViewMode(this.h)
+	return (uintptr)(ret)
 }
 
 func (this *QListView) ClearPropertyFlags() {
@@ -166,6 +211,15 @@ func (this *QListView) IsSelectionRectVisible() bool {
 	return (bool)(ret)
 }
 
+func (this *QListView) SetItemAlignment(alignment int) {
+	C.QListView_SetItemAlignment(this.h, (C.int)(alignment))
+}
+
+func (this *QListView) ItemAlignment() int {
+	ret := C.QListView_ItemAlignment(this.h)
+	return (int)(ret)
+}
+
 func (this *QListView) VisualRect(index *QModelIndex) *QRect {
 	ret := C.QListView_VisualRect(this.h, index.cPointer())
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -175,6 +229,10 @@ func (this *QListView) VisualRect(index *QModelIndex) *QRect {
 		runtime.KeepAlive(ret2.h)
 	})
 	return ret1
+}
+
+func (this *QListView) ScrollTo(index *QModelIndex) {
+	C.QListView_ScrollTo(this.h, index.cPointer())
 }
 
 func (this *QListView) IndexAt(p *QPoint) *QModelIndex {
@@ -268,6 +326,10 @@ func QListView_TrUtf83(s string, c string, n int) string {
 	ret := C.GoStringN(_out, _out_Strlen)
 	C.free(unsafe.Pointer(_out))
 	return ret
+}
+
+func (this *QListView) ScrollTo2(index *QModelIndex, hint uintptr) {
+	C.QListView_ScrollTo2(this.h, index.cPointer(), (C.uintptr_t)(hint))
 }
 
 func (this *QListView) Delete() {

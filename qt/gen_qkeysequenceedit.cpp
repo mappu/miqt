@@ -1,12 +1,13 @@
-#include "gen_qkeysequenceedit.h"
-#include "qkeysequenceedit.h"
-
 #include <QKeySequence>
 #include <QKeySequenceEdit>
 #include <QMetaObject>
 #include <QString>
+#include <QByteArray>
+#include <cstring>
 #include <QWidget>
+#include "qkeysequenceedit.h"
 
+#include "gen_qkeysequenceedit.h"
 
 extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
@@ -29,10 +30,10 @@ QKeySequenceEdit* QKeySequenceEdit_new4(QKeySequence* keySequence, QWidget* pare
 }
 
 QMetaObject* QKeySequenceEdit_MetaObject(QKeySequenceEdit* self) {
-	return (QMetaObject*) self->metaObject();
+	return (QMetaObject*) const_cast<const QKeySequenceEdit*>(self)->metaObject();
 }
 
-void QKeySequenceEdit_Tr(char* s, char** _out, int* _out_Strlen) {
+void QKeySequenceEdit_Tr(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QKeySequenceEdit::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -41,7 +42,7 @@ void QKeySequenceEdit_Tr(char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QKeySequenceEdit_TrUtf8(char* s, char** _out, int* _out_Strlen) {
+void QKeySequenceEdit_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QKeySequenceEdit::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -51,7 +52,7 @@ void QKeySequenceEdit_TrUtf8(char* s, char** _out, int* _out_Strlen) {
 }
 
 QKeySequence* QKeySequenceEdit_KeySequence(QKeySequenceEdit* self) {
-	QKeySequence ret = self->keySequence();
+	QKeySequence ret = const_cast<const QKeySequenceEdit*>(self)->keySequence();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QKeySequence*>(new QKeySequence(ret));
 }
@@ -84,7 +85,7 @@ void QKeySequenceEdit_connect_KeySequenceChanged(QKeySequenceEdit* self, void* s
 	});
 }
 
-void QKeySequenceEdit_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
+void QKeySequenceEdit_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QKeySequenceEdit::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -93,7 +94,7 @@ void QKeySequenceEdit_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QKeySequenceEdit_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QKeySequenceEdit_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QKeySequenceEdit::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -102,7 +103,7 @@ void QKeySequenceEdit_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen
 	*_out_Strlen = b.length();
 }
 
-void QKeySequenceEdit_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
+void QKeySequenceEdit_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QKeySequenceEdit::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -111,7 +112,7 @@ void QKeySequenceEdit_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QKeySequenceEdit_TrUtf83(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QKeySequenceEdit_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QKeySequenceEdit::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();

@@ -1,7 +1,6 @@
-#include "gen_qstringbuilder.h"
 #include "qstringbuilder.h"
 
-
+#include "gen_qstringbuilder.h"
 
 extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);

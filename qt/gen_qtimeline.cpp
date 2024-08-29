@@ -1,12 +1,13 @@
-#include "gen_qtimeline.h"
-#include "qtimeline.h"
-
 #include <QEasingCurve>
 #include <QMetaObject>
 #include <QObject>
 #include <QString>
+#include <QByteArray>
+#include <cstring>
 #include <QTimeLine>
+#include "qtimeline.h"
 
+#include "gen_qtimeline.h"
 
 extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
@@ -25,10 +26,10 @@ QTimeLine* QTimeLine_new3(int duration, QObject* parent) {
 }
 
 QMetaObject* QTimeLine_MetaObject(QTimeLine* self) {
-	return (QMetaObject*) self->metaObject();
+	return (QMetaObject*) const_cast<const QTimeLine*>(self)->metaObject();
 }
 
-void QTimeLine_Tr(char* s, char** _out, int* _out_Strlen) {
+void QTimeLine_Tr(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QTimeLine::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -37,7 +38,7 @@ void QTimeLine_Tr(char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QTimeLine_TrUtf8(char* s, char** _out, int* _out_Strlen) {
+void QTimeLine_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QTimeLine::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -46,16 +47,30 @@ void QTimeLine_TrUtf8(char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
+uintptr_t QTimeLine_State(QTimeLine* self) {
+	QTimeLine::State ret = const_cast<const QTimeLine*>(self)->state();
+	return static_cast<uintptr_t>(ret);
+}
+
 int QTimeLine_LoopCount(QTimeLine* self) {
-	return self->loopCount();
+	return const_cast<const QTimeLine*>(self)->loopCount();
 }
 
 void QTimeLine_SetLoopCount(QTimeLine* self, int count) {
 	self->setLoopCount(static_cast<int>(count));
 }
 
+uintptr_t QTimeLine_Direction(QTimeLine* self) {
+	QTimeLine::Direction ret = const_cast<const QTimeLine*>(self)->direction();
+	return static_cast<uintptr_t>(ret);
+}
+
+void QTimeLine_SetDirection(QTimeLine* self, uintptr_t direction) {
+	self->setDirection(static_cast<QTimeLine::Direction>(direction));
+}
+
 int QTimeLine_Duration(QTimeLine* self) {
-	return self->duration();
+	return const_cast<const QTimeLine*>(self)->duration();
 }
 
 void QTimeLine_SetDuration(QTimeLine* self, int duration) {
@@ -63,7 +78,7 @@ void QTimeLine_SetDuration(QTimeLine* self, int duration) {
 }
 
 int QTimeLine_StartFrame(QTimeLine* self) {
-	return self->startFrame();
+	return const_cast<const QTimeLine*>(self)->startFrame();
 }
 
 void QTimeLine_SetStartFrame(QTimeLine* self, int frame) {
@@ -71,7 +86,7 @@ void QTimeLine_SetStartFrame(QTimeLine* self, int frame) {
 }
 
 int QTimeLine_EndFrame(QTimeLine* self) {
-	return self->endFrame();
+	return const_cast<const QTimeLine*>(self)->endFrame();
 }
 
 void QTimeLine_SetEndFrame(QTimeLine* self, int frame) {
@@ -83,15 +98,24 @@ void QTimeLine_SetFrameRange(QTimeLine* self, int startFrame, int endFrame) {
 }
 
 int QTimeLine_UpdateInterval(QTimeLine* self) {
-	return self->updateInterval();
+	return const_cast<const QTimeLine*>(self)->updateInterval();
 }
 
 void QTimeLine_SetUpdateInterval(QTimeLine* self, int interval) {
 	self->setUpdateInterval(static_cast<int>(interval));
 }
 
+uintptr_t QTimeLine_CurveShape(QTimeLine* self) {
+	QTimeLine::CurveShape ret = const_cast<const QTimeLine*>(self)->curveShape();
+	return static_cast<uintptr_t>(ret);
+}
+
+void QTimeLine_SetCurveShape(QTimeLine* self, uintptr_t shape) {
+	self->setCurveShape(static_cast<QTimeLine::CurveShape>(shape));
+}
+
 QEasingCurve* QTimeLine_EasingCurve(QTimeLine* self) {
-	QEasingCurve ret = self->easingCurve();
+	QEasingCurve ret = const_cast<const QTimeLine*>(self)->easingCurve();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QEasingCurve*>(new QEasingCurve(ret));
 }
@@ -101,23 +125,23 @@ void QTimeLine_SetEasingCurve(QTimeLine* self, QEasingCurve* curve) {
 }
 
 int QTimeLine_CurrentTime(QTimeLine* self) {
-	return self->currentTime();
+	return const_cast<const QTimeLine*>(self)->currentTime();
 }
 
 int QTimeLine_CurrentFrame(QTimeLine* self) {
-	return self->currentFrame();
+	return const_cast<const QTimeLine*>(self)->currentFrame();
 }
 
 double QTimeLine_CurrentValue(QTimeLine* self) {
-	return self->currentValue();
+	return const_cast<const QTimeLine*>(self)->currentValue();
 }
 
 int QTimeLine_FrameForTime(QTimeLine* self, int msec) {
-	return self->frameForTime(static_cast<int>(msec));
+	return const_cast<const QTimeLine*>(self)->frameForTime(static_cast<int>(msec));
 }
 
 double QTimeLine_ValueForTime(QTimeLine* self, int msec) {
-	return self->valueForTime(static_cast<int>(msec));
+	return const_cast<const QTimeLine*>(self)->valueForTime(static_cast<int>(msec));
 }
 
 void QTimeLine_Start(QTimeLine* self) {
@@ -144,7 +168,7 @@ void QTimeLine_ToggleDirection(QTimeLine* self) {
 	self->toggleDirection();
 }
 
-void QTimeLine_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
+void QTimeLine_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QTimeLine::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -153,7 +177,7 @@ void QTimeLine_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QTimeLine_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QTimeLine_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QTimeLine::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -162,7 +186,7 @@ void QTimeLine_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QTimeLine_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
+void QTimeLine_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QTimeLine::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -171,7 +195,7 @@ void QTimeLine_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QTimeLine_TrUtf83(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QTimeLine_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QTimeLine::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();

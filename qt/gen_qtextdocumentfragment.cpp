@@ -1,12 +1,13 @@
-#include "gen_qtextdocumentfragment.h"
-#include "qtextdocumentfragment.h"
-
 #include <QByteArray>
 #include <QString>
+#include <QByteArray>
+#include <cstring>
 #include <QTextCursor>
 #include <QTextDocument>
 #include <QTextDocumentFragment>
+#include "qtextdocumentfragment.h"
 
+#include "gen_qtextdocumentfragment.h"
 
 extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
@@ -33,11 +34,11 @@ void QTextDocumentFragment_OperatorAssign(QTextDocumentFragment* self, QTextDocu
 }
 
 bool QTextDocumentFragment_IsEmpty(QTextDocumentFragment* self) {
-	return self->isEmpty();
+	return const_cast<const QTextDocumentFragment*>(self)->isEmpty();
 }
 
 void QTextDocumentFragment_ToPlainText(QTextDocumentFragment* self, char** _out, int* _out_Strlen) {
-	QString ret = self->toPlainText();
+	QString ret = const_cast<const QTextDocumentFragment*>(self)->toPlainText();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -46,7 +47,7 @@ void QTextDocumentFragment_ToPlainText(QTextDocumentFragment* self, char** _out,
 }
 
 void QTextDocumentFragment_ToHtml(QTextDocumentFragment* self, char** _out, int* _out_Strlen) {
-	QString ret = self->toHtml();
+	QString ret = const_cast<const QTextDocumentFragment*>(self)->toHtml();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));

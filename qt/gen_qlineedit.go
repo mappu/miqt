@@ -151,6 +151,15 @@ func (this *QLineEdit) IsClearButtonEnabled() bool {
 	return (bool)(ret)
 }
 
+func (this *QLineEdit) EchoMode() uintptr {
+	ret := C.QLineEdit_EchoMode(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QLineEdit) SetEchoMode(echoMode uintptr) {
+	C.QLineEdit_SetEchoMode(this.h, (C.uintptr_t)(echoMode))
+}
+
 func (this *QLineEdit) IsReadOnly() bool {
 	ret := C.QLineEdit_IsReadOnly(this.h)
 	return (bool)(ret)
@@ -211,6 +220,15 @@ func (this *QLineEdit) SetCursorPosition(cursorPosition int) {
 
 func (this *QLineEdit) CursorPositionAt(pos *QPoint) int {
 	ret := C.QLineEdit_CursorPositionAt(this.h, pos.cPointer())
+	return (int)(ret)
+}
+
+func (this *QLineEdit) SetAlignment(flag int) {
+	C.QLineEdit_SetAlignment(this.h, (C.int)(flag))
+}
+
+func (this *QLineEdit) Alignment() int {
+	ret := C.QLineEdit_Alignment(this.h)
 	return (int)(ret)
 }
 
@@ -307,6 +325,15 @@ func (this *QLineEdit) DragEnabled() bool {
 	return (bool)(ret)
 }
 
+func (this *QLineEdit) SetCursorMoveStyle(style uintptr) {
+	C.QLineEdit_SetCursorMoveStyle(this.h, (C.uintptr_t)(style))
+}
+
+func (this *QLineEdit) CursorMoveStyle() uintptr {
+	ret := C.QLineEdit_CursorMoveStyle(this.h)
+	return (uintptr)(ret)
+}
+
 func (this *QLineEdit) InputMask() string {
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
@@ -348,6 +375,15 @@ func (this *QLineEdit) TextMargins() *QMargins {
 		runtime.KeepAlive(ret2.h)
 	})
 	return ret1
+}
+
+func (this *QLineEdit) AddAction(action *QAction, position uintptr) {
+	C.QLineEdit_AddAction(this.h, action.cPointer(), (C.uintptr_t)(position))
+}
+
+func (this *QLineEdit) AddAction2(icon *QIcon, position uintptr) *QAction {
+	ret := C.QLineEdit_AddAction2(this.h, icon.cPointer(), (C.uintptr_t)(position))
+	return newQAction_U(unsafe.Pointer(ret))
 }
 
 func (this *QLineEdit) SetText(text string) {
@@ -485,6 +521,28 @@ func (this *QLineEdit) OnInputRejected(slot func()) {
 	}
 
 	C.QLineEdit_connect_InputRejected(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+}
+
+func (this *QLineEdit) InputMethodQuery(param1 uintptr) *QVariant {
+	ret := C.QLineEdit_InputMethodQuery(this.h, (C.uintptr_t)(param1))
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQVariant(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QVariant) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QLineEdit) InputMethodQuery2(property uintptr, argument QVariant) *QVariant {
+	ret := C.QLineEdit_InputMethodQuery2(this.h, (C.uintptr_t)(property), argument.cPointer())
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQVariant(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QVariant) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
 }
 
 func (this *QLineEdit) Event(param1 *QEvent) bool {

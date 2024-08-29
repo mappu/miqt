@@ -43,8 +43,20 @@ func NewQSplitter() *QSplitter {
 }
 
 // NewQSplitter2 constructs a new QSplitter object.
-func NewQSplitter2(parent *QWidget) *QSplitter {
-	ret := C.QSplitter_new2(parent.cPointer())
+func NewQSplitter2(param1 uintptr) *QSplitter {
+	ret := C.QSplitter_new2((C.uintptr_t)(param1))
+	return newQSplitter(ret)
+}
+
+// NewQSplitter3 constructs a new QSplitter object.
+func NewQSplitter3(parent *QWidget) *QSplitter {
+	ret := C.QSplitter_new3(parent.cPointer())
+	return newQSplitter(ret)
+}
+
+// NewQSplitter4 constructs a new QSplitter object.
+func NewQSplitter4(param1 uintptr, parent *QWidget) *QSplitter {
+	ret := C.QSplitter_new4((C.uintptr_t)(param1), parent.cPointer())
 	return newQSplitter(ret)
 }
 
@@ -86,6 +98,15 @@ func (this *QSplitter) InsertWidget(index int, widget *QWidget) {
 func (this *QSplitter) ReplaceWidget(index int, widget *QWidget) *QWidget {
 	ret := C.QSplitter_ReplaceWidget(this.h, (C.int)(index), widget.cPointer())
 	return newQWidget_U(unsafe.Pointer(ret))
+}
+
+func (this *QSplitter) SetOrientation(orientation uintptr) {
+	C.QSplitter_SetOrientation(this.h, (C.uintptr_t)(orientation))
+}
+
+func (this *QSplitter) Orientation() uintptr {
+	ret := C.QSplitter_Orientation(this.h)
+	return (uintptr)(ret)
 }
 
 func (this *QSplitter) SetChildrenCollapsible(childrenCollapsible bool) {
@@ -309,6 +330,12 @@ func newQSplitterHandle_U(h unsafe.Pointer) *QSplitterHandle {
 	return newQSplitterHandle((*C.QSplitterHandle)(h))
 }
 
+// NewQSplitterHandle constructs a new QSplitterHandle object.
+func NewQSplitterHandle(o uintptr, parent *QSplitter) *QSplitterHandle {
+	ret := C.QSplitterHandle_new((C.uintptr_t)(o), parent.cPointer())
+	return newQSplitterHandle(ret)
+}
+
 func (this *QSplitterHandle) MetaObject() *QMetaObject {
 	ret := C.QSplitterHandle_MetaObject(this.h)
 	return newQMetaObject_U(unsafe.Pointer(ret))
@@ -334,6 +361,15 @@ func QSplitterHandle_TrUtf8(s string) string {
 	ret := C.GoStringN(_out, _out_Strlen)
 	C.free(unsafe.Pointer(_out))
 	return ret
+}
+
+func (this *QSplitterHandle) SetOrientation(o uintptr) {
+	C.QSplitterHandle_SetOrientation(this.h, (C.uintptr_t)(o))
+}
+
+func (this *QSplitterHandle) Orientation() uintptr {
+	ret := C.QSplitterHandle_Orientation(this.h)
+	return (uintptr)(ret)
 }
 
 func (this *QSplitterHandle) OpaqueResize() bool {

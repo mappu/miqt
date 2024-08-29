@@ -33,6 +33,7 @@ bool QBasicMutex_IsRecursive2(QBasicMutex* self);
 void QBasicMutex_Delete(QBasicMutex* self);
 
 QMutex* QMutex_new();
+QMutex* QMutex_new2(uintptr_t mode);
 void QMutex_Lock(QMutex* self);
 bool QMutex_TryLock(QMutex* self);
 void QMutex_Unlock(QMutex* self);

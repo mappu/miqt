@@ -104,6 +104,17 @@ func (this *QAbstractItemDelegate) EditorEvent(event *QEvent, model *QAbstractIt
 	return (bool)(ret)
 }
 
+func QAbstractItemDelegate_ElidedText(fontMetrics *QFontMetrics, width int, mode uintptr, text string) string {
+	text_Cstring := C.CString(text)
+	defer C.free(unsafe.Pointer(text_Cstring))
+	var _out *C.char = nil
+	var _out_Strlen C.int = 0
+	C.QAbstractItemDelegate_ElidedText(fontMetrics.cPointer(), (C.int)(width), (C.uintptr_t)(mode), text_Cstring, C.ulong(len(text)), &_out, &_out_Strlen)
+	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
 func (this *QAbstractItemDelegate) HelpEvent(event *QHelpEvent, view *QAbstractItemView, option *QStyleOptionViewItem, index *QModelIndex) bool {
 	ret := C.QAbstractItemDelegate_HelpEvent(this.h, event.cPointer(), view.cPointer(), option.cPointer(), index.cPointer())
 	return (bool)(ret)
@@ -132,6 +143,10 @@ func (this *QAbstractItemDelegate) OnCommitData(slot func()) {
 	}
 
 	C.QAbstractItemDelegate_connect_CommitData(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+}
+
+func (this *QAbstractItemDelegate) CloseEditor(editor *QWidget) {
+	C.QAbstractItemDelegate_CloseEditor(this.h, editor.cPointer())
 }
 
 func (this *QAbstractItemDelegate) SizeHintChanged(param1 *QModelIndex) {
@@ -196,6 +211,18 @@ func QAbstractItemDelegate_TrUtf83(s string, c string, n int) string {
 	ret := C.GoStringN(_out, _out_Strlen)
 	C.free(unsafe.Pointer(_out))
 	return ret
+}
+
+func (this *QAbstractItemDelegate) CloseEditor2(editor *QWidget, hint uintptr) {
+	C.QAbstractItemDelegate_CloseEditor2(this.h, editor.cPointer(), (C.uintptr_t)(hint))
+}
+
+func (this *QAbstractItemDelegate) OnCloseEditor2(slot func()) {
+	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
+		slot()
+	}
+
+	C.QAbstractItemDelegate_connect_CloseEditor2(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
 }
 
 func (this *QAbstractItemDelegate) Delete() {

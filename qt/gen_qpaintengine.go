@@ -49,6 +49,11 @@ func (this *QTextItem) Width() float64 {
 	return (float64)(ret)
 }
 
+func (this *QTextItem) RenderFlags() int {
+	ret := C.QTextItem_RenderFlags(this.h)
+	return (int)(ret)
+}
+
 func (this *QTextItem) Text() string {
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
@@ -151,6 +156,14 @@ func (this *QPaintEngine) DrawPoints2(points *QPoint, pointCount int) {
 	C.QPaintEngine_DrawPoints2(this.h, points.cPointer(), (C.int)(pointCount))
 }
 
+func (this *QPaintEngine) DrawPolygon(points *QPointF, pointCount int, mode uintptr) {
+	C.QPaintEngine_DrawPolygon(this.h, points.cPointer(), (C.int)(pointCount), (C.uintptr_t)(mode))
+}
+
+func (this *QPaintEngine) DrawPolygon2(points *QPoint, pointCount int, mode uintptr) {
+	C.QPaintEngine_DrawPolygon2(this.h, points.cPointer(), (C.int)(pointCount), (C.uintptr_t)(mode))
+}
+
 func (this *QPaintEngine) DrawPixmap(r *QRectF, pm *QPixmap, sr *QRectF) {
 	C.QPaintEngine_DrawPixmap(this.h, r.cPointer(), pm.cPointer(), sr.cPointer())
 }
@@ -161,6 +174,10 @@ func (this *QPaintEngine) DrawTextItem(p *QPointF, textItem *QTextItem) {
 
 func (this *QPaintEngine) DrawTiledPixmap(r *QRectF, pixmap *QPixmap, s *QPointF) {
 	C.QPaintEngine_DrawTiledPixmap(this.h, r.cPointer(), pixmap.cPointer(), s.cPointer())
+}
+
+func (this *QPaintEngine) DrawImage(r *QRectF, pm *QImage, sr *QRectF) {
+	C.QPaintEngine_DrawImage(this.h, r.cPointer(), pm.cPointer(), sr.cPointer())
 }
 
 func (this *QPaintEngine) SetPaintDevice(device *QPaintDevice) {
@@ -213,8 +230,31 @@ func (this *QPaintEngine) CoordinateOffset() *QPoint {
 	return ret1
 }
 
+func (this *QPaintEngine) Type() uintptr {
+	ret := C.QPaintEngine_Type(this.h)
+	return (uintptr)(ret)
+}
+
 func (this *QPaintEngine) FixNegRect(x *int, y *int, w *int, h *int) {
 	C.QPaintEngine_FixNegRect(this.h, (*C.int)(unsafe.Pointer(x)), (*C.int)(unsafe.Pointer(y)), (*C.int)(unsafe.Pointer(w)), (*C.int)(unsafe.Pointer(h)))
+}
+
+func (this *QPaintEngine) TestDirty(df int) bool {
+	ret := C.QPaintEngine_TestDirty(this.h, (C.int)(df))
+	return (bool)(ret)
+}
+
+func (this *QPaintEngine) SetDirty(df int) {
+	C.QPaintEngine_SetDirty(this.h, (C.int)(df))
+}
+
+func (this *QPaintEngine) ClearDirty(df int) {
+	C.QPaintEngine_ClearDirty(this.h, (C.int)(df))
+}
+
+func (this *QPaintEngine) HasFeature(feature int) bool {
+	ret := C.QPaintEngine_HasFeature(this.h, (C.int)(feature))
+	return (bool)(ret)
 }
 
 func (this *QPaintEngine) Painter() *QPainter {
@@ -229,6 +269,10 @@ func (this *QPaintEngine) SyncState() {
 func (this *QPaintEngine) IsExtended() bool {
 	ret := C.QPaintEngine_IsExtended(this.h)
 	return (bool)(ret)
+}
+
+func (this *QPaintEngine) DrawImage4(r *QRectF, pm *QImage, sr *QRectF, flags int) {
+	C.QPaintEngine_DrawImage4(this.h, r.cPointer(), pm.cPointer(), sr.cPointer(), (C.int)(flags))
 }
 
 func (this *QPaintEngine) Delete() {
@@ -252,6 +296,11 @@ func newQPaintEngineState(h *C.QPaintEngineState) *QPaintEngineState {
 
 func newQPaintEngineState_U(h unsafe.Pointer) *QPaintEngineState {
 	return newQPaintEngineState((*C.QPaintEngineState)(h))
+}
+
+func (this *QPaintEngineState) State() int {
+	ret := C.QPaintEngineState_State(this.h)
+	return (int)(ret)
 }
 
 func (this *QPaintEngineState) Pen() *QPen {
@@ -298,6 +347,11 @@ func (this *QPaintEngineState) BackgroundBrush() *QBrush {
 	return ret1
 }
 
+func (this *QPaintEngineState) BackgroundMode() uintptr {
+	ret := C.QPaintEngineState_BackgroundMode(this.h)
+	return (uintptr)(ret)
+}
+
 func (this *QPaintEngineState) Font() *QFont {
 	ret := C.QPaintEngineState_Font(this.h)
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -331,6 +385,11 @@ func (this *QPaintEngineState) Transform() *QTransform {
 	return ret1
 }
 
+func (this *QPaintEngineState) ClipOperation() uintptr {
+	ret := C.QPaintEngineState_ClipOperation(this.h)
+	return (uintptr)(ret)
+}
+
 func (this *QPaintEngineState) ClipRegion() *QRegion {
 	ret := C.QPaintEngineState_ClipRegion(this.h)
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -356,6 +415,16 @@ func (this *QPaintEngineState) ClipPath() *QPainterPath {
 func (this *QPaintEngineState) IsClipEnabled() bool {
 	ret := C.QPaintEngineState_IsClipEnabled(this.h)
 	return (bool)(ret)
+}
+
+func (this *QPaintEngineState) RenderHints() int {
+	ret := C.QPaintEngineState_RenderHints(this.h)
+	return (int)(ret)
+}
+
+func (this *QPaintEngineState) CompositionMode() uintptr {
+	ret := C.QPaintEngineState_CompositionMode(this.h)
+	return (uintptr)(ret)
 }
 
 func (this *QPaintEngineState) Opacity() float64 {

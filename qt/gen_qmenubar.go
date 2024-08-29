@@ -181,6 +181,15 @@ func (this *QMenuBar) ActionAt(param1 *QPoint) *QAction {
 	return newQAction_U(unsafe.Pointer(ret))
 }
 
+func (this *QMenuBar) SetCornerWidget(w *QWidget) {
+	C.QMenuBar_SetCornerWidget(this.h, w.cPointer())
+}
+
+func (this *QMenuBar) CornerWidget() *QWidget {
+	ret := C.QMenuBar_CornerWidget(this.h)
+	return newQWidget_U(unsafe.Pointer(ret))
+}
+
 func (this *QMenuBar) IsNativeMenuBar() bool {
 	ret := C.QMenuBar_IsNativeMenuBar(this.h)
 	return (bool)(ret)
@@ -268,6 +277,15 @@ func QMenuBar_TrUtf83(s string, c string, n int) string {
 	ret := C.GoStringN(_out, _out_Strlen)
 	C.free(unsafe.Pointer(_out))
 	return ret
+}
+
+func (this *QMenuBar) SetCornerWidget2(w *QWidget, corner uintptr) {
+	C.QMenuBar_SetCornerWidget2(this.h, w.cPointer(), (C.uintptr_t)(corner))
+}
+
+func (this *QMenuBar) CornerWidget1(corner uintptr) *QWidget {
+	ret := C.QMenuBar_CornerWidget1(this.h, (C.uintptr_t)(corner))
+	return newQWidget_U(unsafe.Pointer(ret))
 }
 
 func (this *QMenuBar) Delete() {

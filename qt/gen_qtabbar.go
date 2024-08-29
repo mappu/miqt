@@ -75,6 +75,15 @@ func QTabBar_TrUtf8(s string) string {
 	return ret
 }
 
+func (this *QTabBar) Shape() uintptr {
+	ret := C.QTabBar_Shape(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QTabBar) SetShape(shape uintptr) {
+	C.QTabBar_SetShape(this.h, (C.uintptr_t)(shape))
+}
+
 func (this *QTabBar) AddTab(text string) int {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
@@ -172,6 +181,15 @@ func (this *QTabBar) TabIcon(index int) *QIcon {
 
 func (this *QTabBar) SetTabIcon(index int, icon *QIcon) {
 	C.QTabBar_SetTabIcon(this.h, (C.int)(index), icon.cPointer())
+}
+
+func (this *QTabBar) ElideMode() uintptr {
+	ret := C.QTabBar_ElideMode(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QTabBar) SetElideMode(mode uintptr) {
+	C.QTabBar_SetElideMode(this.h, (C.uintptr_t)(mode))
 }
 
 func (this *QTabBar) SetTabToolTip(index int, tip string) {
@@ -307,6 +325,24 @@ func (this *QTabBar) TabsClosable() bool {
 
 func (this *QTabBar) SetTabsClosable(closable bool) {
 	C.QTabBar_SetTabsClosable(this.h, (C.bool)(closable))
+}
+
+func (this *QTabBar) SetTabButton(index int, position uintptr, widget *QWidget) {
+	C.QTabBar_SetTabButton(this.h, (C.int)(index), (C.uintptr_t)(position), widget.cPointer())
+}
+
+func (this *QTabBar) TabButton(index int, position uintptr) *QWidget {
+	ret := C.QTabBar_TabButton(this.h, (C.int)(index), (C.uintptr_t)(position))
+	return newQWidget_U(unsafe.Pointer(ret))
+}
+
+func (this *QTabBar) SelectionBehaviorOnRemove() uintptr {
+	ret := C.QTabBar_SelectionBehaviorOnRemove(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QTabBar) SetSelectionBehaviorOnRemove(behavior uintptr) {
+	C.QTabBar_SetSelectionBehaviorOnRemove(this.h, (C.uintptr_t)(behavior))
 }
 
 func (this *QTabBar) Expanding() bool {

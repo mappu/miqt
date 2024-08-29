@@ -35,12 +35,13 @@ typedef struct QRegion QRegion;
 typedef struct QTransform QTransform;
 #endif
 
-QTransform* QTransform_new();
-QTransform* QTransform_new2(double h11, double h12, double h13, double h21, double h22, double h23, double h31, double h32);
-QTransform* QTransform_new3(double h11, double h12, double h21, double h22, double dx, double dy);
-QTransform* QTransform_new4(QMatrix* mtx);
-QTransform* QTransform_new5(QTransform* other);
-QTransform* QTransform_new6(double h11, double h12, double h13, double h21, double h22, double h23, double h31, double h32, double h33);
+QTransform* QTransform_new(uintptr_t param1);
+QTransform* QTransform_new2();
+QTransform* QTransform_new3(double h11, double h12, double h13, double h21, double h22, double h23, double h31, double h32);
+QTransform* QTransform_new4(double h11, double h12, double h21, double h22, double dx, double dy);
+QTransform* QTransform_new5(QMatrix* mtx);
+QTransform* QTransform_new6(QTransform* other);
+QTransform* QTransform_new7(double h11, double h12, double h13, double h21, double h22, double h23, double h31, double h32, double h33);
 void QTransform_OperatorAssign(QTransform* self, QTransform* param1);
 bool QTransform_IsAffine(QTransform* self);
 bool QTransform_IsIdentity(QTransform* self);
@@ -48,6 +49,7 @@ bool QTransform_IsInvertible(QTransform* self);
 bool QTransform_IsScaling(QTransform* self);
 bool QTransform_IsRotating(QTransform* self);
 bool QTransform_IsTranslating(QTransform* self);
+uintptr_t QTransform_Type(QTransform* self);
 double QTransform_Determinant(QTransform* self);
 double QTransform_Det(QTransform* self);
 double QTransform_M11(QTransform* self);
@@ -68,6 +70,8 @@ QTransform* QTransform_Transposed(QTransform* self);
 QTransform* QTransform_Translate(QTransform* self, double dx, double dy);
 QTransform* QTransform_Scale(QTransform* self, double sx, double sy);
 QTransform* QTransform_Shear(QTransform* self, double sh, double sv);
+QTransform* QTransform_Rotate(QTransform* self, double a);
+QTransform* QTransform_RotateRadians(QTransform* self, double a);
 bool QTransform_OperatorEqual(QTransform* self, QTransform* param1);
 bool QTransform_OperatorNotEqual(QTransform* self, QTransform* param1);
 QTransform* QTransform_OperatorMultiplyAssign(QTransform* self, QTransform* param1);
@@ -91,6 +95,8 @@ QTransform* QTransform_OperatorMinusAssign(QTransform* self, double div);
 QTransform* QTransform_FromTranslate(double dx, double dy);
 QTransform* QTransform_FromScale(double dx, double dy);
 QTransform* QTransform_Inverted1(QTransform* self, bool* invertible);
+QTransform* QTransform_Rotate2(QTransform* self, double a, uintptr_t axis);
+QTransform* QTransform_RotateRadians2(QTransform* self, double a, uintptr_t axis);
 void QTransform_Delete(QTransform* self);
 
 #ifdef __cplusplus

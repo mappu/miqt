@@ -187,6 +187,15 @@ func (this *QStyleHints) SetFocusOnTouchRelease() bool {
 	return (bool)(ret)
 }
 
+func (this *QStyleHints) TabFocusBehavior() uintptr {
+	ret := C.QStyleHints_TabFocusBehavior(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QStyleHints) SetTabFocusBehavior(tabFocusBehavior uintptr) {
+	C.QStyleHints_SetTabFocusBehavior(this.h, (C.uintptr_t)(tabFocusBehavior))
+}
+
 func (this *QStyleHints) SingleClickActivation() bool {
 	ret := C.QStyleHints_SingleClickActivation(this.h)
 	return (bool)(ret)
@@ -289,6 +298,18 @@ func (this *QStyleHints) OnStartDragTimeChanged(slot func()) {
 	}
 
 	C.QStyleHints_connect_StartDragTimeChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+}
+
+func (this *QStyleHints) TabFocusBehaviorChanged(tabFocusBehavior uintptr) {
+	C.QStyleHints_TabFocusBehaviorChanged(this.h, (C.uintptr_t)(tabFocusBehavior))
+}
+
+func (this *QStyleHints) OnTabFocusBehaviorChanged(slot func()) {
+	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
+		slot()
+	}
+
+	C.QStyleHints_connect_TabFocusBehaviorChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
 }
 
 func (this *QStyleHints) UseHoverEffectsChanged(useHoverEffects bool) {

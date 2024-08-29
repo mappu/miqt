@@ -23,9 +23,12 @@ typedef struct QToolBox QToolBox;
 typedef struct QWidget QWidget;
 #endif
 
+QToolBox* QToolBox_new();
+QToolBox* QToolBox_new2(QWidget* parent);
+QToolBox* QToolBox_new3(QWidget* parent, int f);
 QMetaObject* QToolBox_MetaObject(QToolBox* self);
-void QToolBox_Tr(char* s, char** _out, int* _out_Strlen);
-void QToolBox_TrUtf8(char* s, char** _out, int* _out_Strlen);
+void QToolBox_Tr(const char* s, char** _out, int* _out_Strlen);
+void QToolBox_TrUtf8(const char* s, char** _out, int* _out_Strlen);
 int QToolBox_AddItem(QToolBox* self, QWidget* widget, const char* text, size_t text_Strlen);
 int QToolBox_AddItem2(QToolBox* self, QWidget* widget, QIcon* icon, const char* text, size_t text_Strlen);
 int QToolBox_InsertItem(QToolBox* self, int index, QWidget* widget, const char* text, size_t text_Strlen);
@@ -48,10 +51,10 @@ void QToolBox_SetCurrentIndex(QToolBox* self, int index);
 void QToolBox_SetCurrentWidget(QToolBox* self, QWidget* widget);
 void QToolBox_CurrentChanged(QToolBox* self, int index);
 void QToolBox_connect_CurrentChanged(QToolBox* self, void* slot);
-void QToolBox_Tr2(char* s, char* c, char** _out, int* _out_Strlen);
-void QToolBox_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen);
-void QToolBox_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen);
-void QToolBox_TrUtf83(char* s, char* c, int n, char** _out, int* _out_Strlen);
+void QToolBox_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
+void QToolBox_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+void QToolBox_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
+void QToolBox_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
 void QToolBox_Delete(QToolBox* self);
 
 #ifdef __cplusplus

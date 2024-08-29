@@ -5,6 +5,10 @@ import (
 	"strings"
 )
 
+func (p CppParameter) renderTypeForMethod() string {
+	return strings.NewReplacer(" ", "", "::", "").Replace(p.ParameterType)
+}
+
 // astTransformOverloads renames methods if another method exists with the same
 // name.
 func astTransformOverloads(parsed *CppParsedHeader) {
@@ -40,7 +44,7 @@ func astTransformOverloads(parsed *CppParsedHeader) {
 							proposedName = originalProposal + "With" + titleCase(m.Parameters[0].ParameterName)
 						} else {
 							// Try the type instead
-							proposedName = originalProposal + "With" + titleCase(strings.Replace(m.Parameters[0].ParameterType, " ", "", -1))
+							proposedName = originalProposal + "With" + titleCase(m.Parameters[0].renderTypeForMethod())
 						}
 						if _, ok := existing[proposedName]; !ok {
 							break

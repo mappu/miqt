@@ -77,6 +77,15 @@ func QPdfWriter_TrUtf8(s string) string {
 	return ret
 }
 
+func (this *QPdfWriter) SetPdfVersion(version uintptr) {
+	C.QPdfWriter_SetPdfVersion(this.h, (C.uintptr_t)(version))
+}
+
+func (this *QPdfWriter) PdfVersion() uintptr {
+	ret := C.QPdfWriter_PdfVersion(this.h)
+	return (uintptr)(ret)
+}
+
 func (this *QPdfWriter) Title() string {
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
@@ -142,8 +151,16 @@ func (this *QPdfWriter) AddFileAttachment(fileName string, data *QByteArray) {
 	C.QPdfWriter_AddFileAttachment(this.h, fileName_Cstring, C.ulong(len(fileName)), data.cPointer())
 }
 
+func (this *QPdfWriter) SetPageSize(size uintptr) {
+	C.QPdfWriter_SetPageSize(this.h, (C.uintptr_t)(size))
+}
+
 func (this *QPdfWriter) SetPageSizeMM(size *QSizeF) {
 	C.QPdfWriter_SetPageSizeMM(this.h, size.cPointer())
+}
+
+func (this *QPdfWriter) SetMargins(m *QPagedPaintDevice__Margins) {
+	C.QPdfWriter_SetMargins(this.h, m.cPointer())
 }
 
 func QPdfWriter_Tr2(s string, c string) string {

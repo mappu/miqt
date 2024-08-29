@@ -84,6 +84,15 @@ func QLibraryInfo_Version() *QVersionNumber {
 	return ret1
 }
 
+func QLibraryInfo_Location(param1 uintptr) string {
+	var _out *C.char = nil
+	var _out_Strlen C.int = 0
+	C.QLibraryInfo_Location((C.uintptr_t)(param1), &_out, &_out_Strlen)
+	ret := C.GoStringN(_out, _out_Strlen)
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
 func QLibraryInfo_PlatformPluginArguments(platformName string) []string {
 	platformName_Cstring := C.CString(platformName)
 	defer C.free(unsafe.Pointer(platformName_Cstring))

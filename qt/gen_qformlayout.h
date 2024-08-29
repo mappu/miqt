@@ -13,6 +13,11 @@ extern "C" {
 
 #ifdef __cplusplus
 class QFormLayout;
+#if defined(WORKAROUND_INNER_CLASS_DEFINITION_QFormLayout__TakeRowResult)
+typedef QFormLayout::TakeRowResult QFormLayout__TakeRowResult;
+#else
+class QFormLayout__TakeRowResult;
+#endif
 class QLayout;
 class QLayoutItem;
 class QMetaObject;
@@ -21,6 +26,7 @@ class QSize;
 class QWidget;
 #else
 typedef struct QFormLayout QFormLayout;
+typedef struct QFormLayout__TakeRowResult QFormLayout__TakeRowResult;
 typedef struct QLayout QLayout;
 typedef struct QLayoutItem QLayoutItem;
 typedef struct QMetaObject QMetaObject;
@@ -32,8 +38,16 @@ typedef struct QWidget QWidget;
 QFormLayout* QFormLayout_new();
 QFormLayout* QFormLayout_new2(QWidget* parent);
 QMetaObject* QFormLayout_MetaObject(QFormLayout* self);
-void QFormLayout_Tr(char* s, char** _out, int* _out_Strlen);
-void QFormLayout_TrUtf8(char* s, char** _out, int* _out_Strlen);
+void QFormLayout_Tr(const char* s, char** _out, int* _out_Strlen);
+void QFormLayout_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+void QFormLayout_SetFieldGrowthPolicy(QFormLayout* self, uintptr_t policy);
+uintptr_t QFormLayout_FieldGrowthPolicy(QFormLayout* self);
+void QFormLayout_SetRowWrapPolicy(QFormLayout* self, int policy);
+int QFormLayout_RowWrapPolicy(QFormLayout* self);
+void QFormLayout_SetLabelAlignment(QFormLayout* self, int alignment);
+int QFormLayout_LabelAlignment(QFormLayout* self);
+void QFormLayout_SetFormAlignment(QFormLayout* self, int alignment);
+int QFormLayout_FormAlignment(QFormLayout* self);
 void QFormLayout_SetHorizontalSpacing(QFormLayout* self, int spacing);
 int QFormLayout_HorizontalSpacing(QFormLayout* self);
 void QFormLayout_SetVerticalSpacing(QFormLayout* self, int spacing);
@@ -55,10 +69,17 @@ void QFormLayout_InsertRow6(QFormLayout* self, int row, QLayout* layout);
 void QFormLayout_RemoveRow(QFormLayout* self, int row);
 void QFormLayout_RemoveRowWithWidget(QFormLayout* self, QWidget* widget);
 void QFormLayout_RemoveRowWithLayout(QFormLayout* self, QLayout* layout);
+QFormLayout__TakeRowResult* QFormLayout_TakeRow(QFormLayout* self, int row);
+QFormLayout__TakeRowResult* QFormLayout_TakeRowWithWidget(QFormLayout* self, QWidget* widget);
+QFormLayout__TakeRowResult* QFormLayout_TakeRowWithLayout(QFormLayout* self, QLayout* layout);
+void QFormLayout_SetItem(QFormLayout* self, int row, int role, QLayoutItem* item);
+void QFormLayout_SetWidget(QFormLayout* self, int row, int role, QWidget* widget);
+void QFormLayout_SetLayout(QFormLayout* self, int row, int role, QLayout* layout);
+QLayoutItem* QFormLayout_ItemAt(QFormLayout* self, int row, int role);
 QWidget* QFormLayout_LabelForField(QFormLayout* self, QWidget* field);
 QWidget* QFormLayout_LabelForFieldWithField(QFormLayout* self, QLayout* field);
 void QFormLayout_AddItem(QFormLayout* self, QLayoutItem* item);
-QLayoutItem* QFormLayout_ItemAt(QFormLayout* self, int index);
+QLayoutItem* QFormLayout_ItemAtWithIndex(QFormLayout* self, int index);
 QLayoutItem* QFormLayout_TakeAt(QFormLayout* self, int index);
 void QFormLayout_SetGeometry(QFormLayout* self, QRect* rect);
 QSize* QFormLayout_MinimumSize(QFormLayout* self);
@@ -66,13 +87,16 @@ QSize* QFormLayout_SizeHint(QFormLayout* self);
 void QFormLayout_Invalidate(QFormLayout* self);
 bool QFormLayout_HasHeightForWidth(QFormLayout* self);
 int QFormLayout_HeightForWidth(QFormLayout* self, int width);
+int QFormLayout_ExpandingDirections(QFormLayout* self);
 int QFormLayout_Count(QFormLayout* self);
 int QFormLayout_RowCount(QFormLayout* self);
-void QFormLayout_Tr2(char* s, char* c, char** _out, int* _out_Strlen);
-void QFormLayout_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen);
-void QFormLayout_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen);
-void QFormLayout_TrUtf83(char* s, char* c, int n, char** _out, int* _out_Strlen);
+void QFormLayout_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
+void QFormLayout_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+void QFormLayout_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
+void QFormLayout_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
 void QFormLayout_Delete(QFormLayout* self);
+
+void QFormLayout__TakeRowResult_Delete(QFormLayout__TakeRowResult* self);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -1,6 +1,3 @@
-#include "gen_qboxlayout.h"
-#include "qboxlayout.h"
-
 #include <QBoxLayout>
 #include <QHBoxLayout>
 #include <QLayout>
@@ -10,19 +7,31 @@
 #include <QSize>
 #include <QSpacerItem>
 #include <QString>
+#include <QByteArray>
+#include <cstring>
 #include <QVBoxLayout>
 #include <QWidget>
+#include "qboxlayout.h"
 
+#include "gen_qboxlayout.h"
 
 extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
 }
 
-QMetaObject* QBoxLayout_MetaObject(QBoxLayout* self) {
-	return (QMetaObject*) self->metaObject();
+QBoxLayout* QBoxLayout_new(uintptr_t param1) {
+	return new QBoxLayout(static_cast<QBoxLayout::Direction>(param1));
 }
 
-void QBoxLayout_Tr(char* s, char** _out, int* _out_Strlen) {
+QBoxLayout* QBoxLayout_new2(uintptr_t param1, QWidget* parent) {
+	return new QBoxLayout(static_cast<QBoxLayout::Direction>(param1), parent);
+}
+
+QMetaObject* QBoxLayout_MetaObject(QBoxLayout* self) {
+	return (QMetaObject*) const_cast<const QBoxLayout*>(self)->metaObject();
+}
+
+void QBoxLayout_Tr(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QBoxLayout::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -31,13 +40,22 @@ void QBoxLayout_Tr(char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QBoxLayout_TrUtf8(char* s, char** _out, int* _out_Strlen) {
+void QBoxLayout_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QBoxLayout::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
 	memcpy(*_out, b.data(), b.length());
 	*_out_Strlen = b.length();
+}
+
+uintptr_t QBoxLayout_Direction(QBoxLayout* self) {
+	QBoxLayout::Direction ret = const_cast<const QBoxLayout*>(self)->direction();
+	return static_cast<uintptr_t>(ret);
+}
+
+void QBoxLayout_SetDirection(QBoxLayout* self, uintptr_t direction) {
+	self->setDirection(static_cast<QBoxLayout::Direction>(direction));
 }
 
 void QBoxLayout_AddSpacing(QBoxLayout* self, int size) {
@@ -50,6 +68,10 @@ void QBoxLayout_AddStretch(QBoxLayout* self) {
 
 void QBoxLayout_AddSpacerItem(QBoxLayout* self, QSpacerItem* spacerItem) {
 	self->addSpacerItem(spacerItem);
+}
+
+void QBoxLayout_AddWidget(QBoxLayout* self, QWidget* param1) {
+	self->addWidget(param1);
 }
 
 void QBoxLayout_AddLayout(QBoxLayout* self, QLayout* layout) {
@@ -76,6 +98,10 @@ void QBoxLayout_InsertSpacerItem(QBoxLayout* self, int index, QSpacerItem* space
 	self->insertSpacerItem(static_cast<int>(index), spacerItem);
 }
 
+void QBoxLayout_InsertWidget(QBoxLayout* self, int index, QWidget* widget) {
+	self->insertWidget(static_cast<int>(index), widget);
+}
+
 void QBoxLayout_InsertLayout(QBoxLayout* self, int index, QLayout* layout) {
 	self->insertLayout(static_cast<int>(index), layout);
 }
@@ -85,7 +111,7 @@ void QBoxLayout_InsertItem(QBoxLayout* self, int index, QLayoutItem* param2) {
 }
 
 int QBoxLayout_Spacing(QBoxLayout* self) {
-	return self->spacing();
+	return const_cast<const QBoxLayout*>(self)->spacing();
 }
 
 void QBoxLayout_SetSpacing(QBoxLayout* self, int spacing) {
@@ -105,37 +131,42 @@ void QBoxLayout_SetStretch(QBoxLayout* self, int index, int stretch) {
 }
 
 int QBoxLayout_Stretch(QBoxLayout* self, int index) {
-	return self->stretch(static_cast<int>(index));
+	return const_cast<const QBoxLayout*>(self)->stretch(static_cast<int>(index));
 }
 
 QSize* QBoxLayout_SizeHint(QBoxLayout* self) {
-	QSize ret = self->sizeHint();
+	QSize ret = const_cast<const QBoxLayout*>(self)->sizeHint();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
 
 QSize* QBoxLayout_MinimumSize(QBoxLayout* self) {
-	QSize ret = self->minimumSize();
+	QSize ret = const_cast<const QBoxLayout*>(self)->minimumSize();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
 
 QSize* QBoxLayout_MaximumSize(QBoxLayout* self) {
-	QSize ret = self->maximumSize();
+	QSize ret = const_cast<const QBoxLayout*>(self)->maximumSize();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
 
 bool QBoxLayout_HasHeightForWidth(QBoxLayout* self) {
-	return self->hasHeightForWidth();
+	return const_cast<const QBoxLayout*>(self)->hasHeightForWidth();
 }
 
 int QBoxLayout_HeightForWidth(QBoxLayout* self, int param1) {
-	return self->heightForWidth(static_cast<int>(param1));
+	return const_cast<const QBoxLayout*>(self)->heightForWidth(static_cast<int>(param1));
 }
 
 int QBoxLayout_MinimumHeightForWidth(QBoxLayout* self, int param1) {
-	return self->minimumHeightForWidth(static_cast<int>(param1));
+	return const_cast<const QBoxLayout*>(self)->minimumHeightForWidth(static_cast<int>(param1));
+}
+
+int QBoxLayout_ExpandingDirections(QBoxLayout* self) {
+	Qt::Orientations ret = const_cast<const QBoxLayout*>(self)->expandingDirections();
+	return static_cast<int>(ret);
 }
 
 void QBoxLayout_Invalidate(QBoxLayout* self) {
@@ -143,7 +174,7 @@ void QBoxLayout_Invalidate(QBoxLayout* self) {
 }
 
 QLayoutItem* QBoxLayout_ItemAt(QBoxLayout* self, int param1) {
-	return self->itemAt(static_cast<int>(param1));
+	return const_cast<const QBoxLayout*>(self)->itemAt(static_cast<int>(param1));
 }
 
 QLayoutItem* QBoxLayout_TakeAt(QBoxLayout* self, int param1) {
@@ -151,14 +182,14 @@ QLayoutItem* QBoxLayout_TakeAt(QBoxLayout* self, int param1) {
 }
 
 int QBoxLayout_Count(QBoxLayout* self) {
-	return self->count();
+	return const_cast<const QBoxLayout*>(self)->count();
 }
 
 void QBoxLayout_SetGeometry(QBoxLayout* self, QRect* geometry) {
 	self->setGeometry(*geometry);
 }
 
-void QBoxLayout_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
+void QBoxLayout_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QBoxLayout::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -167,7 +198,7 @@ void QBoxLayout_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QBoxLayout_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QBoxLayout_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QBoxLayout::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -176,7 +207,7 @@ void QBoxLayout_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QBoxLayout_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
+void QBoxLayout_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QBoxLayout::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -185,7 +216,7 @@ void QBoxLayout_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QBoxLayout_TrUtf83(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QBoxLayout_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QBoxLayout::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -198,12 +229,28 @@ void QBoxLayout_AddStretch1(QBoxLayout* self, int stretch) {
 	self->addStretch(static_cast<int>(stretch));
 }
 
+void QBoxLayout_AddWidget2(QBoxLayout* self, QWidget* param1, int stretch) {
+	self->addWidget(param1, static_cast<int>(stretch));
+}
+
+void QBoxLayout_AddWidget3(QBoxLayout* self, QWidget* param1, int stretch, int alignment) {
+	self->addWidget(param1, static_cast<int>(stretch), static_cast<Qt::Alignment>(alignment));
+}
+
 void QBoxLayout_AddLayout2(QBoxLayout* self, QLayout* layout, int stretch) {
 	self->addLayout(layout, static_cast<int>(stretch));
 }
 
 void QBoxLayout_InsertStretch2(QBoxLayout* self, int index, int stretch) {
 	self->insertStretch(static_cast<int>(index), static_cast<int>(stretch));
+}
+
+void QBoxLayout_InsertWidget3(QBoxLayout* self, int index, QWidget* widget, int stretch) {
+	self->insertWidget(static_cast<int>(index), widget, static_cast<int>(stretch));
+}
+
+void QBoxLayout_InsertWidget4(QBoxLayout* self, int index, QWidget* widget, int stretch, int alignment) {
+	self->insertWidget(static_cast<int>(index), widget, static_cast<int>(stretch), static_cast<Qt::Alignment>(alignment));
 }
 
 void QBoxLayout_InsertLayout3(QBoxLayout* self, int index, QLayout* layout, int stretch) {
@@ -223,10 +270,10 @@ QHBoxLayout* QHBoxLayout_new2(QWidget* parent) {
 }
 
 QMetaObject* QHBoxLayout_MetaObject(QHBoxLayout* self) {
-	return (QMetaObject*) self->metaObject();
+	return (QMetaObject*) const_cast<const QHBoxLayout*>(self)->metaObject();
 }
 
-void QHBoxLayout_Tr(char* s, char** _out, int* _out_Strlen) {
+void QHBoxLayout_Tr(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QHBoxLayout::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -235,7 +282,7 @@ void QHBoxLayout_Tr(char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QHBoxLayout_TrUtf8(char* s, char** _out, int* _out_Strlen) {
+void QHBoxLayout_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QHBoxLayout::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -244,7 +291,7 @@ void QHBoxLayout_TrUtf8(char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QHBoxLayout_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
+void QHBoxLayout_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QHBoxLayout::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -253,7 +300,7 @@ void QHBoxLayout_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QHBoxLayout_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QHBoxLayout_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QHBoxLayout::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -262,7 +309,7 @@ void QHBoxLayout_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QHBoxLayout_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
+void QHBoxLayout_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QHBoxLayout::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -271,7 +318,7 @@ void QHBoxLayout_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QHBoxLayout_TrUtf83(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QHBoxLayout_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QHBoxLayout::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -293,10 +340,10 @@ QVBoxLayout* QVBoxLayout_new2(QWidget* parent) {
 }
 
 QMetaObject* QVBoxLayout_MetaObject(QVBoxLayout* self) {
-	return (QMetaObject*) self->metaObject();
+	return (QMetaObject*) const_cast<const QVBoxLayout*>(self)->metaObject();
 }
 
-void QVBoxLayout_Tr(char* s, char** _out, int* _out_Strlen) {
+void QVBoxLayout_Tr(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QVBoxLayout::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -305,7 +352,7 @@ void QVBoxLayout_Tr(char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QVBoxLayout_TrUtf8(char* s, char** _out, int* _out_Strlen) {
+void QVBoxLayout_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QVBoxLayout::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -314,7 +361,7 @@ void QVBoxLayout_TrUtf8(char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QVBoxLayout_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
+void QVBoxLayout_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QVBoxLayout::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -323,7 +370,7 @@ void QVBoxLayout_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QVBoxLayout_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QVBoxLayout_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QVBoxLayout::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -332,7 +379,7 @@ void QVBoxLayout_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QVBoxLayout_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
+void QVBoxLayout_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QVBoxLayout::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -341,7 +388,7 @@ void QVBoxLayout_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QVBoxLayout_TrUtf83(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QVBoxLayout_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QVBoxLayout::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();

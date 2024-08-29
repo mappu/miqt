@@ -47,10 +47,40 @@ func NewQDir2() *QDir {
 }
 
 // NewQDir3 constructs a new QDir object.
-func NewQDir3(path string) *QDir {
+func NewQDir3(path string, nameFilter string) *QDir {
 	path_Cstring := C.CString(path)
 	defer C.free(unsafe.Pointer(path_Cstring))
-	ret := C.QDir_new3(path_Cstring, C.ulong(len(path)))
+	nameFilter_Cstring := C.CString(nameFilter)
+	defer C.free(unsafe.Pointer(nameFilter_Cstring))
+	ret := C.QDir_new3(path_Cstring, C.ulong(len(path)), nameFilter_Cstring, C.ulong(len(nameFilter)))
+	return newQDir(ret)
+}
+
+// NewQDir4 constructs a new QDir object.
+func NewQDir4(path string) *QDir {
+	path_Cstring := C.CString(path)
+	defer C.free(unsafe.Pointer(path_Cstring))
+	ret := C.QDir_new4(path_Cstring, C.ulong(len(path)))
+	return newQDir(ret)
+}
+
+// NewQDir5 constructs a new QDir object.
+func NewQDir5(path string, nameFilter string, sort int) *QDir {
+	path_Cstring := C.CString(path)
+	defer C.free(unsafe.Pointer(path_Cstring))
+	nameFilter_Cstring := C.CString(nameFilter)
+	defer C.free(unsafe.Pointer(nameFilter_Cstring))
+	ret := C.QDir_new5(path_Cstring, C.ulong(len(path)), nameFilter_Cstring, C.ulong(len(nameFilter)), (C.int)(sort))
+	return newQDir(ret)
+}
+
+// NewQDir6 constructs a new QDir object.
+func NewQDir6(path string, nameFilter string, sort int, filter int) *QDir {
+	path_Cstring := C.CString(path)
+	defer C.free(unsafe.Pointer(path_Cstring))
+	nameFilter_Cstring := C.CString(nameFilter)
+	defer C.free(unsafe.Pointer(nameFilter_Cstring))
+	ret := C.QDir_new6(path_Cstring, C.ulong(len(path)), nameFilter_Cstring, C.ulong(len(nameFilter)), (C.int)(sort), (C.int)(filter))
 	return newQDir(ret)
 }
 
@@ -255,9 +285,32 @@ func (this *QDir) SetNameFilters(nameFilters []string) {
 	C.QDir_SetNameFilters(this.h, &nameFilters_CArray[0], &nameFilters_Lengths[0], C.ulong(len(nameFilters)))
 }
 
+func (this *QDir) Filter() int {
+	ret := C.QDir_Filter(this.h)
+	return (int)(ret)
+}
+
+func (this *QDir) SetFilter(filter int) {
+	C.QDir_SetFilter(this.h, (C.int)(filter))
+}
+
+func (this *QDir) Sorting() int {
+	ret := C.QDir_Sorting(this.h)
+	return (int)(ret)
+}
+
+func (this *QDir) SetSorting(sort int) {
+	C.QDir_SetSorting(this.h, (C.int)(sort))
+}
+
 func (this *QDir) Count() uint {
 	ret := C.QDir_Count(this.h)
 	return (uint)(ret)
+}
+
+func (this *QDir) IsEmpty() bool {
+	ret := C.QDir_IsEmpty(this.h)
+	return (bool)(ret)
 }
 
 func (this *QDir) OperatorSubscript(param1 int) string {
@@ -281,6 +334,84 @@ func QDir_NameFiltersFromString(nameFilter string) []string {
 	_out_LengthsCast := (*[0xffff]C.int)(unsafe.Pointer(_out_Lengths))
 	for i := 0; i < int(_out_len); i++ {
 		ret[i] = C.GoStringN(_outCast[i], _out_LengthsCast[i])
+	}
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func (this *QDir) EntryList() []string {
+	var _out **C.char = nil
+	var _out_Lengths *C.int = nil
+	var _out_len C.size_t = 0
+	C.QDir_EntryList(this.h, &_out, &_out_Lengths, &_out_len)
+	ret := make([]string, int(_out_len))
+	_outCast := (*[0xffff]*C.char)(unsafe.Pointer(_out)) // hey ya
+	_out_LengthsCast := (*[0xffff]C.int)(unsafe.Pointer(_out_Lengths))
+	for i := 0; i < int(_out_len); i++ {
+		ret[i] = C.GoStringN(_outCast[i], _out_LengthsCast[i])
+	}
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func (this *QDir) EntryListWithNameFilters(nameFilters []string) []string {
+	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
+	nameFilters_CArray := (*[0xffff]*C.char)(C.malloc(C.ulong(8 * len(nameFilters))))
+	nameFilters_Lengths := (*[0xffff]C.size_t)(C.malloc(C.ulong(8 * len(nameFilters))))
+	defer C.free(unsafe.Pointer(nameFilters_CArray))
+	defer C.free(unsafe.Pointer(nameFilters_Lengths))
+	for i := range nameFilters {
+		single_cstring := C.CString(nameFilters[i])
+		defer C.free(unsafe.Pointer(single_cstring))
+		nameFilters_CArray[i] = single_cstring
+		nameFilters_Lengths[i] = (C.size_t)(len(nameFilters[i]))
+	}
+	var _out **C.char = nil
+	var _out_Lengths *C.int = nil
+	var _out_len C.size_t = 0
+	C.QDir_EntryListWithNameFilters(this.h, &nameFilters_CArray[0], &nameFilters_Lengths[0], C.ulong(len(nameFilters)), &_out, &_out_Lengths, &_out_len)
+	ret := make([]string, int(_out_len))
+	_outCast := (*[0xffff]*C.char)(unsafe.Pointer(_out)) // hey ya
+	_out_LengthsCast := (*[0xffff]C.int)(unsafe.Pointer(_out_Lengths))
+	for i := 0; i < int(_out_len); i++ {
+		ret[i] = C.GoStringN(_outCast[i], _out_LengthsCast[i])
+	}
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func (this *QDir) EntryInfoList() []QFileInfo {
+	var _out **C.QFileInfo = nil
+	var _out_len C.size_t = 0
+	C.QDir_EntryInfoList(this.h, &_out, &_out_len)
+	ret := make([]QFileInfo, int(_out_len))
+	_outCast := (*[0xffff]*C.QFileInfo)(unsafe.Pointer(_out)) // so fresh so clean
+	for i := 0; i < int(_out_len); i++ {
+		ret[i] = *newQFileInfo(_outCast[i])
+	}
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func (this *QDir) EntryInfoListWithNameFilters(nameFilters []string) []QFileInfo {
+	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
+	nameFilters_CArray := (*[0xffff]*C.char)(C.malloc(C.ulong(8 * len(nameFilters))))
+	nameFilters_Lengths := (*[0xffff]C.size_t)(C.malloc(C.ulong(8 * len(nameFilters))))
+	defer C.free(unsafe.Pointer(nameFilters_CArray))
+	defer C.free(unsafe.Pointer(nameFilters_Lengths))
+	for i := range nameFilters {
+		single_cstring := C.CString(nameFilters[i])
+		defer C.free(unsafe.Pointer(single_cstring))
+		nameFilters_CArray[i] = single_cstring
+		nameFilters_Lengths[i] = (C.size_t)(len(nameFilters[i]))
+	}
+	var _out **C.QFileInfo = nil
+	var _out_len C.size_t = 0
+	C.QDir_EntryInfoListWithNameFilters(this.h, &nameFilters_CArray[0], &nameFilters_Lengths[0], C.ulong(len(nameFilters)), &_out, &_out_len)
+	ret := make([]QFileInfo, int(_out_len))
+	_outCast := (*[0xffff]*C.QFileInfo)(unsafe.Pointer(_out)) // so fresh so clean
+	for i := 0; i < int(_out_len); i++ {
+		ret[i] = *newQFileInfo(_outCast[i])
 	}
 	C.free(unsafe.Pointer(_out))
 	return ret
@@ -558,6 +689,167 @@ func QDir_CleanPath(path string) string {
 
 func (this *QDir) Refresh() {
 	C.QDir_Refresh(this.h)
+}
+
+func (this *QDir) IsEmpty1(filters int) bool {
+	ret := C.QDir_IsEmpty1(this.h, (C.int)(filters))
+	return (bool)(ret)
+}
+
+func (this *QDir) EntryList1(filters int) []string {
+	var _out **C.char = nil
+	var _out_Lengths *C.int = nil
+	var _out_len C.size_t = 0
+	C.QDir_EntryList1(this.h, (C.int)(filters), &_out, &_out_Lengths, &_out_len)
+	ret := make([]string, int(_out_len))
+	_outCast := (*[0xffff]*C.char)(unsafe.Pointer(_out)) // hey ya
+	_out_LengthsCast := (*[0xffff]C.int)(unsafe.Pointer(_out_Lengths))
+	for i := 0; i < int(_out_len); i++ {
+		ret[i] = C.GoStringN(_outCast[i], _out_LengthsCast[i])
+	}
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func (this *QDir) EntryList2(filters int, sort int) []string {
+	var _out **C.char = nil
+	var _out_Lengths *C.int = nil
+	var _out_len C.size_t = 0
+	C.QDir_EntryList2(this.h, (C.int)(filters), (C.int)(sort), &_out, &_out_Lengths, &_out_len)
+	ret := make([]string, int(_out_len))
+	_outCast := (*[0xffff]*C.char)(unsafe.Pointer(_out)) // hey ya
+	_out_LengthsCast := (*[0xffff]C.int)(unsafe.Pointer(_out_Lengths))
+	for i := 0; i < int(_out_len); i++ {
+		ret[i] = C.GoStringN(_outCast[i], _out_LengthsCast[i])
+	}
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func (this *QDir) EntryList22(nameFilters []string, filters int) []string {
+	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
+	nameFilters_CArray := (*[0xffff]*C.char)(C.malloc(C.ulong(8 * len(nameFilters))))
+	nameFilters_Lengths := (*[0xffff]C.size_t)(C.malloc(C.ulong(8 * len(nameFilters))))
+	defer C.free(unsafe.Pointer(nameFilters_CArray))
+	defer C.free(unsafe.Pointer(nameFilters_Lengths))
+	for i := range nameFilters {
+		single_cstring := C.CString(nameFilters[i])
+		defer C.free(unsafe.Pointer(single_cstring))
+		nameFilters_CArray[i] = single_cstring
+		nameFilters_Lengths[i] = (C.size_t)(len(nameFilters[i]))
+	}
+	var _out **C.char = nil
+	var _out_Lengths *C.int = nil
+	var _out_len C.size_t = 0
+	C.QDir_EntryList22(this.h, &nameFilters_CArray[0], &nameFilters_Lengths[0], C.ulong(len(nameFilters)), (C.int)(filters), &_out, &_out_Lengths, &_out_len)
+	ret := make([]string, int(_out_len))
+	_outCast := (*[0xffff]*C.char)(unsafe.Pointer(_out)) // hey ya
+	_out_LengthsCast := (*[0xffff]C.int)(unsafe.Pointer(_out_Lengths))
+	for i := 0; i < int(_out_len); i++ {
+		ret[i] = C.GoStringN(_outCast[i], _out_LengthsCast[i])
+	}
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func (this *QDir) EntryList3(nameFilters []string, filters int, sort int) []string {
+	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
+	nameFilters_CArray := (*[0xffff]*C.char)(C.malloc(C.ulong(8 * len(nameFilters))))
+	nameFilters_Lengths := (*[0xffff]C.size_t)(C.malloc(C.ulong(8 * len(nameFilters))))
+	defer C.free(unsafe.Pointer(nameFilters_CArray))
+	defer C.free(unsafe.Pointer(nameFilters_Lengths))
+	for i := range nameFilters {
+		single_cstring := C.CString(nameFilters[i])
+		defer C.free(unsafe.Pointer(single_cstring))
+		nameFilters_CArray[i] = single_cstring
+		nameFilters_Lengths[i] = (C.size_t)(len(nameFilters[i]))
+	}
+	var _out **C.char = nil
+	var _out_Lengths *C.int = nil
+	var _out_len C.size_t = 0
+	C.QDir_EntryList3(this.h, &nameFilters_CArray[0], &nameFilters_Lengths[0], C.ulong(len(nameFilters)), (C.int)(filters), (C.int)(sort), &_out, &_out_Lengths, &_out_len)
+	ret := make([]string, int(_out_len))
+	_outCast := (*[0xffff]*C.char)(unsafe.Pointer(_out)) // hey ya
+	_out_LengthsCast := (*[0xffff]C.int)(unsafe.Pointer(_out_Lengths))
+	for i := 0; i < int(_out_len); i++ {
+		ret[i] = C.GoStringN(_outCast[i], _out_LengthsCast[i])
+	}
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func (this *QDir) EntryInfoList1(filters int) []QFileInfo {
+	var _out **C.QFileInfo = nil
+	var _out_len C.size_t = 0
+	C.QDir_EntryInfoList1(this.h, (C.int)(filters), &_out, &_out_len)
+	ret := make([]QFileInfo, int(_out_len))
+	_outCast := (*[0xffff]*C.QFileInfo)(unsafe.Pointer(_out)) // so fresh so clean
+	for i := 0; i < int(_out_len); i++ {
+		ret[i] = *newQFileInfo(_outCast[i])
+	}
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func (this *QDir) EntryInfoList2(filters int, sort int) []QFileInfo {
+	var _out **C.QFileInfo = nil
+	var _out_len C.size_t = 0
+	C.QDir_EntryInfoList2(this.h, (C.int)(filters), (C.int)(sort), &_out, &_out_len)
+	ret := make([]QFileInfo, int(_out_len))
+	_outCast := (*[0xffff]*C.QFileInfo)(unsafe.Pointer(_out)) // so fresh so clean
+	for i := 0; i < int(_out_len); i++ {
+		ret[i] = *newQFileInfo(_outCast[i])
+	}
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func (this *QDir) EntryInfoList22(nameFilters []string, filters int) []QFileInfo {
+	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
+	nameFilters_CArray := (*[0xffff]*C.char)(C.malloc(C.ulong(8 * len(nameFilters))))
+	nameFilters_Lengths := (*[0xffff]C.size_t)(C.malloc(C.ulong(8 * len(nameFilters))))
+	defer C.free(unsafe.Pointer(nameFilters_CArray))
+	defer C.free(unsafe.Pointer(nameFilters_Lengths))
+	for i := range nameFilters {
+		single_cstring := C.CString(nameFilters[i])
+		defer C.free(unsafe.Pointer(single_cstring))
+		nameFilters_CArray[i] = single_cstring
+		nameFilters_Lengths[i] = (C.size_t)(len(nameFilters[i]))
+	}
+	var _out **C.QFileInfo = nil
+	var _out_len C.size_t = 0
+	C.QDir_EntryInfoList22(this.h, &nameFilters_CArray[0], &nameFilters_Lengths[0], C.ulong(len(nameFilters)), (C.int)(filters), &_out, &_out_len)
+	ret := make([]QFileInfo, int(_out_len))
+	_outCast := (*[0xffff]*C.QFileInfo)(unsafe.Pointer(_out)) // so fresh so clean
+	for i := 0; i < int(_out_len); i++ {
+		ret[i] = *newQFileInfo(_outCast[i])
+	}
+	C.free(unsafe.Pointer(_out))
+	return ret
+}
+
+func (this *QDir) EntryInfoList3(nameFilters []string, filters int, sort int) []QFileInfo {
+	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
+	nameFilters_CArray := (*[0xffff]*C.char)(C.malloc(C.ulong(8 * len(nameFilters))))
+	nameFilters_Lengths := (*[0xffff]C.size_t)(C.malloc(C.ulong(8 * len(nameFilters))))
+	defer C.free(unsafe.Pointer(nameFilters_CArray))
+	defer C.free(unsafe.Pointer(nameFilters_Lengths))
+	for i := range nameFilters {
+		single_cstring := C.CString(nameFilters[i])
+		defer C.free(unsafe.Pointer(single_cstring))
+		nameFilters_CArray[i] = single_cstring
+		nameFilters_Lengths[i] = (C.size_t)(len(nameFilters[i]))
+	}
+	var _out **C.QFileInfo = nil
+	var _out_len C.size_t = 0
+	C.QDir_EntryInfoList3(this.h, &nameFilters_CArray[0], &nameFilters_Lengths[0], C.ulong(len(nameFilters)), (C.int)(filters), (C.int)(sort), &_out, &_out_len)
+	ret := make([]QFileInfo, int(_out_len))
+	_outCast := (*[0xffff]*C.QFileInfo)(unsafe.Pointer(_out)) // so fresh so clean
+	for i := 0; i < int(_out_len); i++ {
+		ret[i] = *newQFileInfo(_outCast[i])
+	}
+	C.free(unsafe.Pointer(_out))
+	return ret
 }
 
 func (this *QDir) Delete() {

@@ -42,8 +42,20 @@ func NewQStateMachine() *QStateMachine {
 }
 
 // NewQStateMachine2 constructs a new QStateMachine object.
-func NewQStateMachine2(parent *QObject) *QStateMachine {
-	ret := C.QStateMachine_new2(parent.cPointer())
+func NewQStateMachine2(childMode uintptr) *QStateMachine {
+	ret := C.QStateMachine_new2((C.uintptr_t)(childMode))
+	return newQStateMachine(ret)
+}
+
+// NewQStateMachine3 constructs a new QStateMachine object.
+func NewQStateMachine3(parent *QObject) *QStateMachine {
+	ret := C.QStateMachine_new3(parent.cPointer())
+	return newQStateMachine(ret)
+}
+
+// NewQStateMachine4 constructs a new QStateMachine object.
+func NewQStateMachine4(childMode uintptr, parent *QObject) *QStateMachine {
+	ret := C.QStateMachine_new4((C.uintptr_t)(childMode), parent.cPointer())
 	return newQStateMachine(ret)
 }
 
@@ -80,6 +92,11 @@ func (this *QStateMachine) AddState(state *QAbstractState) {
 
 func (this *QStateMachine) RemoveState(state *QAbstractState) {
 	C.QStateMachine_RemoveState(this.h, state.cPointer())
+}
+
+func (this *QStateMachine) Error() uintptr {
+	ret := C.QStateMachine_Error(this.h)
+	return (uintptr)(ret)
 }
 
 func (this *QStateMachine) ErrorString() string {
@@ -128,6 +145,19 @@ func (this *QStateMachine) DefaultAnimations() []*QAbstractAnimation {
 
 func (this *QStateMachine) RemoveDefaultAnimation(animation *QAbstractAnimation) {
 	C.QStateMachine_RemoveDefaultAnimation(this.h, animation.cPointer())
+}
+
+func (this *QStateMachine) GlobalRestorePolicy() uintptr {
+	ret := C.QStateMachine_GlobalRestorePolicy(this.h)
+	return (uintptr)(ret)
+}
+
+func (this *QStateMachine) SetGlobalRestorePolicy(restorePolicy uintptr) {
+	C.QStateMachine_SetGlobalRestorePolicy(this.h, (C.uintptr_t)(restorePolicy))
+}
+
+func (this *QStateMachine) PostEvent(event *QEvent) {
+	C.QStateMachine_PostEvent(this.h, event.cPointer())
 }
 
 func (this *QStateMachine) PostDelayedEvent(event *QEvent, delay int) int {
@@ -221,6 +251,96 @@ func QStateMachine_TrUtf83(s string, c string, n int) string {
 	return ret
 }
 
+func (this *QStateMachine) PostEvent2(event *QEvent, priority uintptr) {
+	C.QStateMachine_PostEvent2(this.h, event.cPointer(), (C.uintptr_t)(priority))
+}
+
 func (this *QStateMachine) Delete() {
 	C.QStateMachine_Delete(this.h)
+}
+
+type QStateMachine__SignalEvent struct {
+	h *C.QStateMachine__SignalEvent
+	*QEvent
+}
+
+func (this *QStateMachine__SignalEvent) cPointer() *C.QStateMachine__SignalEvent {
+	if this == nil {
+		return nil
+	}
+	return this.h
+}
+
+func newQStateMachine__SignalEvent(h *C.QStateMachine__SignalEvent) *QStateMachine__SignalEvent {
+	return &QStateMachine__SignalEvent{h: h, QEvent: newQEvent_U(unsafe.Pointer(h))}
+}
+
+func newQStateMachine__SignalEvent_U(h unsafe.Pointer) *QStateMachine__SignalEvent {
+	return newQStateMachine__SignalEvent((*C.QStateMachine__SignalEvent)(h))
+}
+
+// NewQStateMachine__SignalEvent constructs a new QStateMachine::SignalEvent object.
+func NewQStateMachine__SignalEvent(param1 *QStateMachine__SignalEvent) *QStateMachine__SignalEvent {
+	ret := C.QStateMachine__SignalEvent_new(param1.cPointer())
+	return newQStateMachine__SignalEvent(ret)
+}
+
+func (this *QStateMachine__SignalEvent) Sender() *QObject {
+	ret := C.QStateMachine__SignalEvent_Sender(this.h)
+	return newQObject_U(unsafe.Pointer(ret))
+}
+
+func (this *QStateMachine__SignalEvent) SignalIndex() int {
+	ret := C.QStateMachine__SignalEvent_SignalIndex(this.h)
+	return (int)(ret)
+}
+
+func (this *QStateMachine__SignalEvent) Delete() {
+	C.QStateMachine__SignalEvent_Delete(this.h)
+}
+
+type QStateMachine__WrappedEvent struct {
+	h *C.QStateMachine__WrappedEvent
+	*QEvent
+}
+
+func (this *QStateMachine__WrappedEvent) cPointer() *C.QStateMachine__WrappedEvent {
+	if this == nil {
+		return nil
+	}
+	return this.h
+}
+
+func newQStateMachine__WrappedEvent(h *C.QStateMachine__WrappedEvent) *QStateMachine__WrappedEvent {
+	return &QStateMachine__WrappedEvent{h: h, QEvent: newQEvent_U(unsafe.Pointer(h))}
+}
+
+func newQStateMachine__WrappedEvent_U(h unsafe.Pointer) *QStateMachine__WrappedEvent {
+	return newQStateMachine__WrappedEvent((*C.QStateMachine__WrappedEvent)(h))
+}
+
+// NewQStateMachine__WrappedEvent constructs a new QStateMachine::WrappedEvent object.
+func NewQStateMachine__WrappedEvent(object *QObject, event *QEvent) *QStateMachine__WrappedEvent {
+	ret := C.QStateMachine__WrappedEvent_new(object.cPointer(), event.cPointer())
+	return newQStateMachine__WrappedEvent(ret)
+}
+
+// NewQStateMachine__WrappedEvent2 constructs a new QStateMachine::WrappedEvent object.
+func NewQStateMachine__WrappedEvent2(param1 *QStateMachine__WrappedEvent) *QStateMachine__WrappedEvent {
+	ret := C.QStateMachine__WrappedEvent_new2(param1.cPointer())
+	return newQStateMachine__WrappedEvent(ret)
+}
+
+func (this *QStateMachine__WrappedEvent) Object() *QObject {
+	ret := C.QStateMachine__WrappedEvent_Object(this.h)
+	return newQObject_U(unsafe.Pointer(ret))
+}
+
+func (this *QStateMachine__WrappedEvent) Event() *QEvent {
+	ret := C.QStateMachine__WrappedEvent_Event(this.h)
+	return newQEvent_U(unsafe.Pointer(ret))
+}
+
+func (this *QStateMachine__WrappedEvent) Delete() {
+	C.QStateMachine__WrappedEvent_Delete(this.h)
 }

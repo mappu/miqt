@@ -1,18 +1,19 @@
-#include "gen_qstylefactory.h"
-#include "qstylefactory.h"
-
 #include <QList>
 #include <QString>
+#include <QByteArray>
+#include <cstring>
 #include <QStyle>
 #include <QStyleFactory>
+#include "qstylefactory.h"
 
+#include "gen_qstylefactory.h"
 
 extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
 }
 
 void QStyleFactory_Keys(char*** _out, int** _out_Lengths, size_t* _out_len) {
-	QList<QString> ret = QStyleFactory::keys();
+	QStringList ret = QStyleFactory::keys();
 	// Convert QStringList from C++ memory to manually-managed C memory
 	char** __out = static_cast<char**>(malloc(sizeof(char*) * ret.length()));
 	int* __out_Lengths = static_cast<int*>(malloc(sizeof(int) * ret.length()));

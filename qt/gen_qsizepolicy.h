@@ -18,7 +18,16 @@ typedef struct QSizePolicy QSizePolicy;
 #endif
 
 QSizePolicy* QSizePolicy_new();
-QSizePolicy* QSizePolicy_new2(QSizePolicy* param1);
+QSizePolicy* QSizePolicy_new2(uintptr_t horizontal, uintptr_t vertical);
+QSizePolicy* QSizePolicy_new3(QSizePolicy* param1);
+QSizePolicy* QSizePolicy_new4(uintptr_t horizontal, uintptr_t vertical, uintptr_t typeVal);
+uintptr_t QSizePolicy_HorizontalPolicy(QSizePolicy* self);
+uintptr_t QSizePolicy_VerticalPolicy(QSizePolicy* self);
+uintptr_t QSizePolicy_ControlType(QSizePolicy* self);
+void QSizePolicy_SetHorizontalPolicy(QSizePolicy* self, uintptr_t d);
+void QSizePolicy_SetVerticalPolicy(QSizePolicy* self, uintptr_t d);
+void QSizePolicy_SetControlType(QSizePolicy* self, uintptr_t typeVal);
+int QSizePolicy_ExpandingDirections(QSizePolicy* self);
 void QSizePolicy_SetHeightForWidth(QSizePolicy* self, bool b);
 bool QSizePolicy_HasHeightForWidth(QSizePolicy* self);
 void QSizePolicy_SetWidthForHeight(QSizePolicy* self, bool b);

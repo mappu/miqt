@@ -1,6 +1,3 @@
-#include "gen_qmenu.h"
-#include "qmenu.h"
-
 #include <QAction>
 #include <QIcon>
 #include <QList>
@@ -10,8 +7,12 @@
 #include <QRect>
 #include <QSize>
 #include <QString>
+#include <QByteArray>
+#include <cstring>
 #include <QWidget>
+#include "qmenu.h"
 
+#include "gen_qmenu.h"
 
 extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
@@ -36,10 +37,10 @@ QMenu* QMenu_new4(const char* title, size_t title_Strlen, QWidget* parent) {
 }
 
 QMetaObject* QMenu_MetaObject(QMenu* self) {
-	return (QMetaObject*) self->metaObject();
+	return (QMetaObject*) const_cast<const QMenu*>(self)->metaObject();
 }
 
-void QMenu_Tr(char* s, char** _out, int* _out_Strlen) {
+void QMenu_Tr(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QMenu::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -48,7 +49,7 @@ void QMenu_Tr(char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QMenu_TrUtf8(char* s, char** _out, int* _out_Strlen) {
+void QMenu_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QMenu::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -114,7 +115,7 @@ QAction* QMenu_InsertSection2(QMenu* self, QAction* before, QIcon* icon, const c
 }
 
 bool QMenu_IsEmpty(QMenu* self) {
-	return self->isEmpty();
+	return const_cast<const QMenu*>(self)->isEmpty();
 }
 
 void QMenu_Clear(QMenu* self) {
@@ -126,11 +127,11 @@ void QMenu_SetTearOffEnabled(QMenu* self, bool tearOffEnabled) {
 }
 
 bool QMenu_IsTearOffEnabled(QMenu* self) {
-	return self->isTearOffEnabled();
+	return const_cast<const QMenu*>(self)->isTearOffEnabled();
 }
 
 bool QMenu_IsTearOffMenuVisible(QMenu* self) {
-	return self->isTearOffMenuVisible();
+	return const_cast<const QMenu*>(self)->isTearOffMenuVisible();
 }
 
 void QMenu_ShowTearOffMenu(QMenu* self) {
@@ -150,7 +151,7 @@ void QMenu_SetDefaultAction(QMenu* self, QAction* defaultAction) {
 }
 
 QAction* QMenu_DefaultAction(QMenu* self) {
-	return self->defaultAction();
+	return const_cast<const QMenu*>(self)->defaultAction();
 }
 
 void QMenu_SetActiveAction(QMenu* self, QAction* act) {
@@ -158,7 +159,7 @@ void QMenu_SetActiveAction(QMenu* self, QAction* act) {
 }
 
 QAction* QMenu_ActiveAction(QMenu* self) {
-	return self->activeAction();
+	return const_cast<const QMenu*>(self)->activeAction();
 }
 
 void QMenu_Popup(QMenu* self, QPoint* pos) {
@@ -174,7 +175,7 @@ QAction* QMenu_ExecWithPos(QMenu* self, QPoint* pos) {
 }
 
 QAction* QMenu_Exec2(QAction** actions, size_t actions_len, QPoint* pos) {
-	QList<QAction *> actions_QList;
+	QList<QAction*> actions_QList;
 	actions_QList.reserve(actions_len);
 	for(size_t i = 0; i < actions_len; ++i) {
 		actions_QList.push_back(actions[i]);
@@ -183,27 +184,27 @@ QAction* QMenu_Exec2(QAction** actions, size_t actions_len, QPoint* pos) {
 }
 
 QSize* QMenu_SizeHint(QMenu* self) {
-	QSize ret = self->sizeHint();
+	QSize ret = const_cast<const QMenu*>(self)->sizeHint();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
 
 QRect* QMenu_ActionGeometry(QMenu* self, QAction* param1) {
-	QRect ret = self->actionGeometry(param1);
+	QRect ret = const_cast<const QMenu*>(self)->actionGeometry(param1);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRect*>(new QRect(ret));
 }
 
 QAction* QMenu_ActionAt(QMenu* self, QPoint* param1) {
-	return self->actionAt(*param1);
+	return const_cast<const QMenu*>(self)->actionAt(*param1);
 }
 
 QAction* QMenu_MenuAction(QMenu* self) {
-	return self->menuAction();
+	return const_cast<const QMenu*>(self)->menuAction();
 }
 
 void QMenu_Title(QMenu* self, char** _out, int* _out_Strlen) {
-	QString ret = self->title();
+	QString ret = const_cast<const QMenu*>(self)->title();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -217,7 +218,7 @@ void QMenu_SetTitle(QMenu* self, const char* title, size_t title_Strlen) {
 }
 
 QIcon* QMenu_Icon(QMenu* self) {
-	QIcon ret = self->icon();
+	QIcon ret = const_cast<const QMenu*>(self)->icon();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QIcon*>(new QIcon(ret));
 }
@@ -231,7 +232,7 @@ void QMenu_SetNoReplayFor(QMenu* self, QWidget* widget) {
 }
 
 bool QMenu_SeparatorsCollapsible(QMenu* self) {
-	return self->separatorsCollapsible();
+	return const_cast<const QMenu*>(self)->separatorsCollapsible();
 }
 
 void QMenu_SetSeparatorsCollapsible(QMenu* self, bool collapse) {
@@ -239,7 +240,7 @@ void QMenu_SetSeparatorsCollapsible(QMenu* self, bool collapse) {
 }
 
 bool QMenu_ToolTipsVisible(QMenu* self) {
-	return self->toolTipsVisible();
+	return const_cast<const QMenu*>(self)->toolTipsVisible();
 }
 
 void QMenu_SetToolTipsVisible(QMenu* self, bool visible) {
@@ -286,7 +287,7 @@ void QMenu_connect_Hovered(QMenu* self, void* slot) {
 	});
 }
 
-void QMenu_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
+void QMenu_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QMenu::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -295,7 +296,7 @@ void QMenu_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QMenu_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QMenu_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QMenu::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -304,7 +305,7 @@ void QMenu_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QMenu_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
+void QMenu_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QMenu::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -313,7 +314,7 @@ void QMenu_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QMenu_TrUtf83(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QMenu_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QMenu::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -331,7 +332,7 @@ QAction* QMenu_Exec22(QMenu* self, QPoint* pos, QAction* at) {
 }
 
 QAction* QMenu_Exec3(QAction** actions, size_t actions_len, QPoint* pos, QAction* at) {
-	QList<QAction *> actions_QList;
+	QList<QAction*> actions_QList;
 	actions_QList.reserve(actions_len);
 	for(size_t i = 0; i < actions_len; ++i) {
 		actions_QList.push_back(actions[i]);
@@ -340,7 +341,7 @@ QAction* QMenu_Exec3(QAction** actions, size_t actions_len, QPoint* pos, QAction
 }
 
 QAction* QMenu_Exec4(QAction** actions, size_t actions_len, QPoint* pos, QAction* at, QWidget* parent) {
-	QList<QAction *> actions_QList;
+	QList<QAction*> actions_QList;
 	actions_QList.reserve(actions_len);
 	for(size_t i = 0; i < actions_len; ++i) {
 		actions_QList.push_back(actions[i]);

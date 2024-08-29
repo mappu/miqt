@@ -113,8 +113,29 @@ func (this *QAbstractProxyModel) Data(proxyIndex *QModelIndex) *QVariant {
 	return ret1
 }
 
+func (this *QAbstractProxyModel) HeaderData(section int, orientation uintptr) *QVariant {
+	ret := C.QAbstractProxyModel_HeaderData(this.h, (C.int)(section), (C.uintptr_t)(orientation))
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQVariant(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QVariant) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
+func (this *QAbstractProxyModel) Flags(index *QModelIndex) int {
+	ret := C.QAbstractProxyModel_Flags(this.h, index.cPointer())
+	return (int)(ret)
+}
+
 func (this *QAbstractProxyModel) SetData(index *QModelIndex, value *QVariant) bool {
 	ret := C.QAbstractProxyModel_SetData(this.h, index.cPointer(), value.cPointer())
+	return (bool)(ret)
+}
+
+func (this *QAbstractProxyModel) SetHeaderData(section int, orientation uintptr, value *QVariant) bool {
+	ret := C.QAbstractProxyModel_SetHeaderData(this.h, (C.int)(section), (C.uintptr_t)(orientation), value.cPointer())
 	return (bool)(ret)
 }
 
@@ -136,6 +157,10 @@ func (this *QAbstractProxyModel) CanFetchMore(parent *QModelIndex) bool {
 
 func (this *QAbstractProxyModel) FetchMore(parent *QModelIndex) {
 	C.QAbstractProxyModel_FetchMore(this.h, parent.cPointer())
+}
+
+func (this *QAbstractProxyModel) Sort(column int) {
+	C.QAbstractProxyModel_Sort(this.h, (C.int)(column))
 }
 
 func (this *QAbstractProxyModel) Span(index *QModelIndex) *QSize {
@@ -176,6 +201,16 @@ func (this *QAbstractProxyModel) MimeData(indexes []QModelIndex) *QMimeData {
 	return newQMimeData_U(unsafe.Pointer(ret))
 }
 
+func (this *QAbstractProxyModel) CanDropMimeData(data *QMimeData, action uintptr, row int, column int, parent *QModelIndex) bool {
+	ret := C.QAbstractProxyModel_CanDropMimeData(this.h, data.cPointer(), (C.uintptr_t)(action), (C.int)(row), (C.int)(column), parent.cPointer())
+	return (bool)(ret)
+}
+
+func (this *QAbstractProxyModel) DropMimeData(data *QMimeData, action uintptr, row int, column int, parent *QModelIndex) bool {
+	ret := C.QAbstractProxyModel_DropMimeData(this.h, data.cPointer(), (C.uintptr_t)(action), (C.int)(row), (C.int)(column), parent.cPointer())
+	return (bool)(ret)
+}
+
 func (this *QAbstractProxyModel) MimeTypes() []string {
 	var _out **C.char = nil
 	var _out_Lengths *C.int = nil
@@ -189,6 +224,16 @@ func (this *QAbstractProxyModel) MimeTypes() []string {
 	}
 	C.free(unsafe.Pointer(_out))
 	return ret
+}
+
+func (this *QAbstractProxyModel) SupportedDragActions() int {
+	ret := C.QAbstractProxyModel_SupportedDragActions(this.h)
+	return (int)(ret)
+}
+
+func (this *QAbstractProxyModel) SupportedDropActions() int {
+	ret := C.QAbstractProxyModel_SupportedDropActions(this.h)
+	return (int)(ret)
 }
 
 func QAbstractProxyModel_Tr2(s string, c string) string {
@@ -254,9 +299,29 @@ func (this *QAbstractProxyModel) Data2(proxyIndex *QModelIndex, role int) *QVari
 	return ret1
 }
 
+func (this *QAbstractProxyModel) HeaderData3(section int, orientation uintptr, role int) *QVariant {
+	ret := C.QAbstractProxyModel_HeaderData3(this.h, (C.int)(section), (C.uintptr_t)(orientation), (C.int)(role))
+	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	ret1 := newQVariant(ret)
+	runtime.SetFinalizer(ret1, func(ret2 *QVariant) {
+		ret2.Delete()
+		runtime.KeepAlive(ret2.h)
+	})
+	return ret1
+}
+
 func (this *QAbstractProxyModel) SetData3(index *QModelIndex, value *QVariant, role int) bool {
 	ret := C.QAbstractProxyModel_SetData3(this.h, index.cPointer(), value.cPointer(), (C.int)(role))
 	return (bool)(ret)
+}
+
+func (this *QAbstractProxyModel) SetHeaderData4(section int, orientation uintptr, value *QVariant, role int) bool {
+	ret := C.QAbstractProxyModel_SetHeaderData4(this.h, (C.int)(section), (C.uintptr_t)(orientation), value.cPointer(), (C.int)(role))
+	return (bool)(ret)
+}
+
+func (this *QAbstractProxyModel) Sort2(column int, order uintptr) {
+	C.QAbstractProxyModel_Sort2(this.h, (C.int)(column), (C.uintptr_t)(order))
 }
 
 func (this *QAbstractProxyModel) HasChildren1(parent *QModelIndex) bool {

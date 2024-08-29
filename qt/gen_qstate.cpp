@@ -1,6 +1,3 @@
-#include "gen_qstate.h"
-#include "qstate.h"
-
 #include <QAbstractState>
 #include <QAbstractTransition>
 #include <QList>
@@ -9,8 +6,12 @@
 #include <QSignalTransition>
 #include <QState>
 #include <QString>
+#include <QByteArray>
+#include <cstring>
 #include <QVariant>
+#include "qstate.h"
 
+#include "gen_qstate.h"
 
 extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
@@ -20,15 +21,23 @@ QState* QState_new() {
 	return new QState();
 }
 
-QState* QState_new2(QState* parent) {
+QState* QState_new2(uintptr_t childMode) {
+	return new QState(static_cast<QState::ChildMode>(childMode));
+}
+
+QState* QState_new3(QState* parent) {
 	return new QState(parent);
 }
 
-QMetaObject* QState_MetaObject(QState* self) {
-	return (QMetaObject*) self->metaObject();
+QState* QState_new4(uintptr_t childMode, QState* parent) {
+	return new QState(static_cast<QState::ChildMode>(childMode), parent);
 }
 
-void QState_Tr(char* s, char** _out, int* _out_Strlen) {
+QMetaObject* QState_MetaObject(QState* self) {
+	return (QMetaObject*) const_cast<const QState*>(self)->metaObject();
+}
+
+void QState_Tr(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QState::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -37,7 +46,7 @@ void QState_Tr(char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QState_TrUtf8(char* s, char** _out, int* _out_Strlen) {
+void QState_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QState::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -47,7 +56,7 @@ void QState_TrUtf8(char* s, char** _out, int* _out_Strlen) {
 }
 
 QAbstractState* QState_ErrorState(QState* self) {
-	return self->errorState();
+	return const_cast<const QState*>(self)->errorState();
 }
 
 void QState_SetErrorState(QState* self, QAbstractState* state) {
@@ -58,7 +67,7 @@ void QState_AddTransition(QState* self, QAbstractTransition* transition) {
 	self->addTransition(transition);
 }
 
-QSignalTransition* QState_AddTransition2(QState* self, QObject* sender, char* signal, QAbstractState* target) {
+QSignalTransition* QState_AddTransition2(QState* self, QObject* sender, const char* signal, QAbstractState* target) {
 	return self->addTransition(sender, signal, target);
 }
 
@@ -71,7 +80,7 @@ void QState_RemoveTransition(QState* self, QAbstractTransition* transition) {
 }
 
 void QState_Transitions(QState* self, QAbstractTransition*** _out, size_t* _out_len) {
-	QList<QAbstractTransition *> ret = self->transitions();
+	QList<QAbstractTransition*> ret = const_cast<const QState*>(self)->transitions();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QAbstractTransition** __out = static_cast<QAbstractTransition**>(malloc(sizeof(QAbstractTransition*) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {
@@ -82,18 +91,27 @@ void QState_Transitions(QState* self, QAbstractTransition*** _out, size_t* _out_
 }
 
 QAbstractState* QState_InitialState(QState* self) {
-	return self->initialState();
+	return const_cast<const QState*>(self)->initialState();
 }
 
 void QState_SetInitialState(QState* self, QAbstractState* state) {
 	self->setInitialState(state);
 }
 
-void QState_AssignProperty(QState* self, QObject* object, char* name, QVariant* value) {
+uintptr_t QState_ChildMode(QState* self) {
+	QState::ChildMode ret = const_cast<const QState*>(self)->childMode();
+	return static_cast<uintptr_t>(ret);
+}
+
+void QState_SetChildMode(QState* self, uintptr_t mode) {
+	self->setChildMode(static_cast<QState::ChildMode>(mode));
+}
+
+void QState_AssignProperty(QState* self, QObject* object, const char* name, QVariant* value) {
 	self->assignProperty(object, name, *value);
 }
 
-void QState_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
+void QState_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QState::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -102,7 +120,7 @@ void QState_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QState_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QState_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QState::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -111,7 +129,7 @@ void QState_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QState_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
+void QState_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QState::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -120,7 +138,7 @@ void QState_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QState_TrUtf83(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QState_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QState::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();

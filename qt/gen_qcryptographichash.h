@@ -21,11 +21,14 @@ typedef struct QCryptographicHash QCryptographicHash;
 typedef struct QIODevice QIODevice;
 #endif
 
+QCryptographicHash* QCryptographicHash_new(uintptr_t method);
 void QCryptographicHash_Reset(QCryptographicHash* self);
-void QCryptographicHash_AddData(QCryptographicHash* self, char* data, int length);
+void QCryptographicHash_AddData(QCryptographicHash* self, const char* data, int length);
 void QCryptographicHash_AddDataWithData(QCryptographicHash* self, QByteArray* data);
 bool QCryptographicHash_AddDataWithDevice(QCryptographicHash* self, QIODevice* device);
 QByteArray* QCryptographicHash_Result(QCryptographicHash* self);
+QByteArray* QCryptographicHash_Hash(QByteArray* data, uintptr_t method);
+int QCryptographicHash_HashLength(uintptr_t method);
 void QCryptographicHash_Delete(QCryptographicHash* self);
 
 #ifdef __cplusplus

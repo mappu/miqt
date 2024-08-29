@@ -1,13 +1,14 @@
-#include "gen_qthreadpool.h"
-#include "qthreadpool.h"
-
 #include <QMetaObject>
 #include <QObject>
 #include <QRunnable>
 #include <QString>
+#include <QByteArray>
+#include <cstring>
 #include <QThread>
 #include <QThreadPool>
+#include "qthreadpool.h"
 
+#include "gen_qthreadpool.h"
 
 extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
@@ -22,10 +23,10 @@ QThreadPool* QThreadPool_new2(QObject* parent) {
 }
 
 QMetaObject* QThreadPool_MetaObject(QThreadPool* self) {
-	return (QMetaObject*) self->metaObject();
+	return (QMetaObject*) const_cast<const QThreadPool*>(self)->metaObject();
 }
 
-void QThreadPool_Tr(char* s, char** _out, int* _out_Strlen) {
+void QThreadPool_Tr(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QThreadPool::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -34,7 +35,7 @@ void QThreadPool_Tr(char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QThreadPool_TrUtf8(char* s, char** _out, int* _out_Strlen) {
+void QThreadPool_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	QString ret = QThreadPool::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -56,7 +57,7 @@ bool QThreadPool_TryStart(QThreadPool* self, QRunnable* runnable) {
 }
 
 int QThreadPool_ExpiryTimeout(QThreadPool* self) {
-	return self->expiryTimeout();
+	return const_cast<const QThreadPool*>(self)->expiryTimeout();
 }
 
 void QThreadPool_SetExpiryTimeout(QThreadPool* self, int expiryTimeout) {
@@ -64,7 +65,7 @@ void QThreadPool_SetExpiryTimeout(QThreadPool* self, int expiryTimeout) {
 }
 
 int QThreadPool_MaxThreadCount(QThreadPool* self) {
-	return self->maxThreadCount();
+	return const_cast<const QThreadPool*>(self)->maxThreadCount();
 }
 
 void QThreadPool_SetMaxThreadCount(QThreadPool* self, int maxThreadCount) {
@@ -72,7 +73,7 @@ void QThreadPool_SetMaxThreadCount(QThreadPool* self, int maxThreadCount) {
 }
 
 int QThreadPool_ActiveThreadCount(QThreadPool* self) {
-	return self->activeThreadCount();
+	return const_cast<const QThreadPool*>(self)->activeThreadCount();
 }
 
 void QThreadPool_SetStackSize(QThreadPool* self, unsigned int stackSize) {
@@ -80,7 +81,7 @@ void QThreadPool_SetStackSize(QThreadPool* self, unsigned int stackSize) {
 }
 
 unsigned int QThreadPool_StackSize(QThreadPool* self) {
-	return self->stackSize();
+	return const_cast<const QThreadPool*>(self)->stackSize();
 }
 
 void QThreadPool_ReserveThread(QThreadPool* self) {
@@ -100,7 +101,7 @@ void QThreadPool_Clear(QThreadPool* self) {
 }
 
 bool QThreadPool_Contains(QThreadPool* self, QThread* thread) {
-	return self->contains(thread);
+	return const_cast<const QThreadPool*>(self)->contains(thread);
 }
 
 void QThreadPool_Cancel(QThreadPool* self, QRunnable* runnable) {
@@ -111,7 +112,7 @@ bool QThreadPool_TryTake(QThreadPool* self, QRunnable* runnable) {
 	return self->tryTake(runnable);
 }
 
-void QThreadPool_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
+void QThreadPool_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QThreadPool::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -120,7 +121,7 @@ void QThreadPool_Tr2(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QThreadPool_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QThreadPool_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QThreadPool::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -129,7 +130,7 @@ void QThreadPool_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QThreadPool_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
+void QThreadPool_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
 	QString ret = QThreadPool::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
@@ -138,7 +139,7 @@ void QThreadPool_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QThreadPool_TrUtf83(char* s, char* c, int n, char** _out, int* _out_Strlen) {
+void QThreadPool_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
 	QString ret = QThreadPool::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();

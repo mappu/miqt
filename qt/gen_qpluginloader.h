@@ -30,8 +30,8 @@ QPluginLoader* QPluginLoader_new2(const char* fileName, size_t fileName_Strlen);
 QPluginLoader* QPluginLoader_new3(QObject* parent);
 QPluginLoader* QPluginLoader_new4(const char* fileName, size_t fileName_Strlen, QObject* parent);
 QMetaObject* QPluginLoader_MetaObject(QPluginLoader* self);
-void QPluginLoader_Tr(char* s, char** _out, int* _out_Strlen);
-void QPluginLoader_TrUtf8(char* s, char** _out, int* _out_Strlen);
+void QPluginLoader_Tr(const char* s, char** _out, int* _out_Strlen);
+void QPluginLoader_TrUtf8(const char* s, char** _out, int* _out_Strlen);
 QObject* QPluginLoader_Instance(QPluginLoader* self);
 QJsonObject* QPluginLoader_MetaData(QPluginLoader* self);
 void QPluginLoader_StaticInstances(QObject*** _out, size_t* _out_len);
@@ -42,10 +42,12 @@ bool QPluginLoader_IsLoaded(QPluginLoader* self);
 void QPluginLoader_SetFileName(QPluginLoader* self, const char* fileName, size_t fileName_Strlen);
 void QPluginLoader_FileName(QPluginLoader* self, char** _out, int* _out_Strlen);
 void QPluginLoader_ErrorString(QPluginLoader* self, char** _out, int* _out_Strlen);
-void QPluginLoader_Tr2(char* s, char* c, char** _out, int* _out_Strlen);
-void QPluginLoader_Tr3(char* s, char* c, int n, char** _out, int* _out_Strlen);
-void QPluginLoader_TrUtf82(char* s, char* c, char** _out, int* _out_Strlen);
-void QPluginLoader_TrUtf83(char* s, char* c, int n, char** _out, int* _out_Strlen);
+void QPluginLoader_SetLoadHints(QPluginLoader* self, int loadHints);
+int QPluginLoader_LoadHints(QPluginLoader* self);
+void QPluginLoader_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
+void QPluginLoader_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+void QPluginLoader_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
+void QPluginLoader_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
 void QPluginLoader_Delete(QPluginLoader* self);
 
 #ifdef __cplusplus

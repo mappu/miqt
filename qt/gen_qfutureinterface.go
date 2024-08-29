@@ -34,8 +34,20 @@ func newQFutureInterfaceBase_U(h unsafe.Pointer) *QFutureInterfaceBase {
 }
 
 // NewQFutureInterfaceBase constructs a new QFutureInterfaceBase object.
-func NewQFutureInterfaceBase(other *QFutureInterfaceBase) *QFutureInterfaceBase {
-	ret := C.QFutureInterfaceBase_new(other.cPointer())
+func NewQFutureInterfaceBase() *QFutureInterfaceBase {
+	ret := C.QFutureInterfaceBase_new()
+	return newQFutureInterfaceBase(ret)
+}
+
+// NewQFutureInterfaceBase2 constructs a new QFutureInterfaceBase object.
+func NewQFutureInterfaceBase2(other *QFutureInterfaceBase) *QFutureInterfaceBase {
+	ret := C.QFutureInterfaceBase_new2(other.cPointer())
+	return newQFutureInterfaceBase(ret)
+}
+
+// NewQFutureInterfaceBase3 constructs a new QFutureInterfaceBase object.
+func NewQFutureInterfaceBase3(initialState uintptr) *QFutureInterfaceBase {
+	ret := C.QFutureInterfaceBase_new3((C.uintptr_t)(initialState))
 	return newQFutureInterfaceBase(ret)
 }
 
@@ -124,6 +136,11 @@ func (this *QFutureInterfaceBase) ResultCount() int {
 	return (int)(ret)
 }
 
+func (this *QFutureInterfaceBase) QueryState(state uintptr) bool {
+	ret := C.QFutureInterfaceBase_QueryState(this.h, (C.uintptr_t)(state))
+	return (bool)(ret)
+}
+
 func (this *QFutureInterfaceBase) IsRunning() bool {
 	ret := C.QFutureInterfaceBase_IsRunning(this.h)
 	return (bool)(ret)
@@ -200,6 +217,11 @@ func (this *QFutureInterfaceBase) Mutex() *QMutex {
 func (this *QFutureInterfaceBase) MutexWithInt(param1 int) *QMutex {
 	ret := C.QFutureInterfaceBase_MutexWithInt(this.h, (C.int)(param1))
 	return newQMutex_U(unsafe.Pointer(ret))
+}
+
+func (this *QFutureInterfaceBase) ExceptionStore() *QtPrivate__ExceptionStore {
+	ret := C.QFutureInterfaceBase_ExceptionStore(this.h)
+	return newQtPrivate__ExceptionStore_U(unsafe.Pointer(ret))
 }
 
 func (this *QFutureInterfaceBase) OperatorEqual(other *QFutureInterfaceBase) bool {

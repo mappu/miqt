@@ -108,6 +108,15 @@ func (this *QProgressBar) IsTextVisible() bool {
 	return (bool)(ret)
 }
 
+func (this *QProgressBar) Alignment() int {
+	ret := C.QProgressBar_Alignment(this.h)
+	return (int)(ret)
+}
+
+func (this *QProgressBar) SetAlignment(alignment int) {
+	C.QProgressBar_SetAlignment(this.h, (C.int)(alignment))
+}
+
 func (this *QProgressBar) SizeHint() *QSize {
 	ret := C.QProgressBar_SizeHint(this.h)
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -130,6 +139,11 @@ func (this *QProgressBar) MinimumSizeHint() *QSize {
 	return ret1
 }
 
+func (this *QProgressBar) Orientation() uintptr {
+	ret := C.QProgressBar_Orientation(this.h)
+	return (uintptr)(ret)
+}
+
 func (this *QProgressBar) SetInvertedAppearance(invert bool) {
 	C.QProgressBar_SetInvertedAppearance(this.h, (C.bool)(invert))
 }
@@ -137,6 +151,15 @@ func (this *QProgressBar) SetInvertedAppearance(invert bool) {
 func (this *QProgressBar) InvertedAppearance() bool {
 	ret := C.QProgressBar_InvertedAppearance(this.h)
 	return (bool)(ret)
+}
+
+func (this *QProgressBar) SetTextDirection(textDirection uintptr) {
+	C.QProgressBar_SetTextDirection(this.h, (C.uintptr_t)(textDirection))
+}
+
+func (this *QProgressBar) TextDirection() uintptr {
+	ret := C.QProgressBar_TextDirection(this.h)
+	return (uintptr)(ret)
 }
 
 func (this *QProgressBar) SetFormat(format string) {
@@ -176,6 +199,10 @@ func (this *QProgressBar) SetMaximum(maximum int) {
 
 func (this *QProgressBar) SetValue(value int) {
 	C.QProgressBar_SetValue(this.h, (C.int)(value))
+}
+
+func (this *QProgressBar) SetOrientation(orientation uintptr) {
+	C.QProgressBar_SetOrientation(this.h, (C.uintptr_t)(orientation))
 }
 
 func (this *QProgressBar) ValueChanged(value int) {

@@ -1,10 +1,11 @@
-#include "gen_qcommandlineoption.h"
-#include "qcommandlineoption.h"
-
 #include <QCommandLineOption>
 #include <QList>
 #include <QString>
+#include <QByteArray>
+#include <cstring>
+#include "qcommandlineoption.h"
 
+#include "gen_qcommandlineoption.h"
 
 extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
@@ -91,7 +92,7 @@ void QCommandLineOption_Swap(QCommandLineOption* self, QCommandLineOption* other
 }
 
 void QCommandLineOption_Names(QCommandLineOption* self, char*** _out, int** _out_Lengths, size_t* _out_len) {
-	QList<QString> ret = self->names();
+	QStringList ret = const_cast<const QCommandLineOption*>(self)->names();
 	// Convert QStringList from C++ memory to manually-managed C memory
 	char** __out = static_cast<char**>(malloc(sizeof(char*) * ret.length()));
 	int* __out_Lengths = static_cast<int*>(malloc(sizeof(int) * ret.length()));
@@ -113,7 +114,7 @@ void QCommandLineOption_SetValueName(QCommandLineOption* self, const char* name,
 }
 
 void QCommandLineOption_ValueName(QCommandLineOption* self, char** _out, int* _out_Strlen) {
-	QString ret = self->valueName();
+	QString ret = const_cast<const QCommandLineOption*>(self)->valueName();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -127,7 +128,7 @@ void QCommandLineOption_SetDescription(QCommandLineOption* self, const char* des
 }
 
 void QCommandLineOption_Description(QCommandLineOption* self, char** _out, int* _out_Strlen) {
-	QString ret = self->description();
+	QString ret = const_cast<const QCommandLineOption*>(self)->description();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -150,7 +151,7 @@ void QCommandLineOption_SetDefaultValues(QCommandLineOption* self, char** defaul
 }
 
 void QCommandLineOption_DefaultValues(QCommandLineOption* self, char*** _out, int** _out_Lengths, size_t* _out_len) {
-	QList<QString> ret = self->defaultValues();
+	QStringList ret = const_cast<const QCommandLineOption*>(self)->defaultValues();
 	// Convert QStringList from C++ memory to manually-managed C memory
 	char** __out = static_cast<char**>(malloc(sizeof(char*) * ret.length()));
 	int* __out_Lengths = static_cast<int*>(malloc(sizeof(int) * ret.length()));
@@ -166,12 +167,21 @@ void QCommandLineOption_DefaultValues(QCommandLineOption* self, char*** _out, in
 	*_out_len = ret.length();
 }
 
+int QCommandLineOption_Flags(QCommandLineOption* self) {
+	QCommandLineOption::Flags ret = const_cast<const QCommandLineOption*>(self)->flags();
+	return static_cast<int>(ret);
+}
+
+void QCommandLineOption_SetFlags(QCommandLineOption* self, int aflags) {
+	self->setFlags(static_cast<QCommandLineOption::Flags>(aflags));
+}
+
 void QCommandLineOption_SetHidden(QCommandLineOption* self, bool hidden) {
 	self->setHidden(hidden);
 }
 
 bool QCommandLineOption_IsHidden(QCommandLineOption* self) {
-	return self->isHidden();
+	return const_cast<const QCommandLineOption*>(self)->isHidden();
 }
 
 void QCommandLineOption_Delete(QCommandLineOption* self) {
