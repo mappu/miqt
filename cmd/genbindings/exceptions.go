@@ -82,7 +82,7 @@ func AllowClass(className string) bool {
 	return true
 }
 
-func CheckComplexity(p CppParameter) error {
+func CheckComplexity(p CppParameter, isReturnType bool) error {
 
 	if p.QMapOf() {
 		return ErrTooComplex // Example???
@@ -94,7 +94,7 @@ func CheckComplexity(p CppParameter) error {
 		return ErrTooComplex // e.g. QStateMachine
 	}
 	if t, ok := p.QListOf(); ok {
-		if err := CheckComplexity(t); err != nil { // e.g. QGradientStops is a QVector<> (OK) of QGradientStop (not OK)
+		if err := CheckComplexity(t, isReturnType); err != nil { // e.g. QGradientStops is a QVector<> (OK) of QGradientStop (not OK)
 			return err
 		}
 	}
@@ -108,14 +108,40 @@ func CheckComplexity(p CppParameter) error {
 	if strings.HasPrefix(p.ParameterType, "QGenericMatrix<") {
 		return ErrTooComplex // e.g. qmatrix4x4.h
 	}
-	if strings.HasPrefix(p.ParameterType, "std::initializer") {
-		return ErrTooComplex // e.g. qcborarray.h
+	if strings.HasPrefix(p.ParameterType, "std::") {
+		// std::initializer           e.g. qcborarray.h
+		// std::string                QByteArray->toStdString(). There are QString overloads already
+		// std::nullptr_t             Qcborstreamwriter
+		// std::chrono::nanoseconds   QDeadlineTimer_RemainingTimeAsDuration
+		// std::seed_seq              QRandom
+		return ErrTooComplex
 	}
 	if strings.Contains(p.ParameterType, `::reverse_iterator`) || strings.Contains(p.ParameterType, `::const_reverse_iterator`) {
 		return ErrTooComplex // e.g. qbytearray.h
 	}
+	if strings.Contains(p.ParameterType, `Iterator::value_type`) {
+		return ErrTooComplex // e.g. qcbormap
+	}
 	if strings.Contains(p.ParameterType, `::QPrivate`) {
 		return ErrTooComplex // e.g. QAbstractItemModel::QPrivateSignal
+	}
+
+	// If any parameters are QString*, skip the method
+	// QFile::moveToTrash
+	// QLockFile::getLockInfo
+	// QTextDecoder::toUnicode
+	// QTextStream::readLineInto
+	// QFileDialog::getOpenFileName selectedFilter* param
+	if p.ParameterType == "QString" && p.Pointer && !isReturnType { // Out-parameters
+		return ErrTooComplex
+	}
+
+	if p.IsFlagType() && p.Pointer && !isReturnType {
+		return ErrTooComplex // e.g. qformlayout. The cast doesn't survive through a pointer parameter
+	}
+
+	if p.ParameterType != "char" && p.Pointer && p.PointerCount >= 2 { // Out-parameters
+		return ErrTooComplex // e.g. QGraphicsItem_IsBlockedByModalPanel1
 	}
 
 	switch p.ParameterType {
@@ -129,7 +155,6 @@ func CheckComplexity(p CppParameter) error {
 		"void **",                         // e.g. qobjectdefs.h QMetaObject->Activate()
 		"QGraphicsItem **",                // e.g. QGraphicsItem::IsBlockedByModalPanel() overload
 		"char *&",                         // e.g. QDataStream.operator<<()
-		"std::string",                     // e.g. QByteArray->toStdString(). There are QString overloads already
 		"qfloat16",                        // e.g. QDataStream - there is no such half-float type in C or Go
 		"char16_t",                        // e.g. QChar() constructor overload, just unnecessary
 		"char32_t",                        // e.g. QDebug().operator<< overload, unnecessary

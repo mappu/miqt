@@ -171,6 +171,11 @@ func processClassType(node map[string]interface{}, addNamePrefix string) (CppCla
 	if nodename == "FromBase64Result" {
 		nodename = "QByteArray::FromBase64Result"
 	}
+	if nodename == "Connection" {
+		// qobject.h requires this, defined in qobjectdefs.h
+		// We produce a type named 'Connection' instead of 'QMetaObject::Connection' as expected, not sure why
+		nodename = "QMetaObject::Connection"
+	}
 
 	ret.ClassName = nodename
 
@@ -436,27 +441,6 @@ nextMethod:
 
 			if mm.IsReceiverMethod() {
 				log.Printf("Skipping method %q using non-projectable receiver pattern parameters", mm.MethodName)
-				continue nextMethod
-			}
-
-			if ret.ClassName == "QFile" && mm.MethodName == "moveToTrash" && len(mm.Parameters) == 2 && mm.Parameters[1].ParameterType == "QString" && mm.Parameters[1].Pointer {
-				// @ref https://doc.qt.io/qt-6/qfile.html#moveToTrash-1
-				log.Printf("Skipping method %q using complex return type by pointer argument", mm.MethodName) // TODO support this
-				continue nextMethod
-			}
-
-			if ret.ClassName == "QLockFile" && mm.MethodName == "getLockInfo" && len(mm.Parameters) == 3 && mm.Parameters[1].ParameterType == "QString" && mm.Parameters[1].Pointer {
-				log.Printf("Skipping method %q using complex return type by pointer argument", mm.MethodName) // TODO support this
-				continue nextMethod
-			}
-
-			if ret.ClassName == "QTextDecoder" && mm.MethodName == "toUnicode" && len(mm.Parameters) == 3 && mm.Parameters[0].ParameterType == "QString" && mm.Parameters[0].Pointer {
-				log.Printf("Skipping method %q using complex return type by pointer argument", mm.MethodName) // TODO support this
-				continue nextMethod
-			}
-
-			if ret.ClassName == "QTextStream" && mm.MethodName == "readLineInto" && len(mm.Parameters) > 0 && mm.Parameters[0].ParameterType == "QString" && mm.Parameters[0].Pointer {
-				log.Printf("Skipping method %q using complex return type by pointer argument", mm.MethodName) // TODO support this
 				continue nextMethod
 			}
 
@@ -751,6 +735,10 @@ func parseSingleTypeString(p string) CppParameter {
 		}
 	}
 	insert.ParameterType = strings.TrimSpace(insert.ParameterType)
+
+	if strings.HasPrefix(insert.ParameterType, `::`) {
+		insert.ParameterType = insert.ParameterType[2:]
+	}
 
 	return insert
 }

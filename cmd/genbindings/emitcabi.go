@@ -400,12 +400,6 @@ extern "C" {
 			// Forward declarations of inner classes are not yet supported in C++
 			// @ref https://stackoverflow.com/q/1021793
 
-			// ret.WriteString(`class ` + ft + ";\n")
-
-			//parent, child, _ := strings.Cut(ft, `::`)
-			//ret.WriteString(`namespace ` + parent + ` { class ` + child + "; }\n")
-			//ret.WriteString(`typedef ` + ft + " " + cabiClassName(ft) + ";\n")
-
 			ret.WriteString(`#if defined(WORKAROUND_INNER_CLASS_DEFINITION_` + cabiClassName(ft) + ")\n")
 			ret.WriteString(`typedef ` + ft + " " + cabiClassName(ft) + ";\n")
 			ret.WriteString("#else\n")
