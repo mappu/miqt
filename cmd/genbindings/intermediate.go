@@ -90,6 +90,10 @@ func (p CppParameter) QtClassType() bool {
 		return true
 	}
 
+	if p.ParameterType == "QString" {
+		return true
+	}
+
 	return false
 }
 

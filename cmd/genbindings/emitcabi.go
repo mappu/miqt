@@ -472,6 +472,13 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 			continue
 		}
 
+		if ref == "QString" {
+			ret.WriteString("#include <QString>\n")
+			ret.WriteString("#include <QByteArray>\n")
+			ret.WriteString("#include <cstring>\n")
+			continue
+		}
+
 		if strings.Contains(ref, `::`) {
 			ret.WriteString(`#define WORKAROUND_INNER_CLASS_DEFINITION_` + cabiClassName(ref) + "\n")
 			continue
