@@ -698,6 +698,8 @@ func tokenizeSingleParameter(p string) []string {
 }
 func parseSingleTypeString(p string) CppParameter {
 
+	isSigned := false
+
 	tokens := tokenizeSingleParameter(p) // strings.Split(strings.TrimSpace(p), " ")
 	insert := CppParameter{}
 	for _, tok := range tokens {
@@ -714,7 +716,8 @@ func parseSingleTypeString(p string) CppParameter {
 			insert.ByRef = true
 
 		} else if tok == "signed" {
-			// continue
+			// We don't need this - UNLESS it's 'signed char'
+			isSigned = true
 
 		} else if tok == "*" {
 			insert.Pointer = true
@@ -740,6 +743,10 @@ func parseSingleTypeString(p string) CppParameter {
 
 		} else {
 			// Valid part of the type name
+			if tok == "char" && isSigned {
+				tok = "signed char"
+				isSigned = false
+			}
 			insert.ParameterType += " " + tok
 		}
 	}

@@ -252,10 +252,15 @@ func emitParametersCABI2CppForwarding(params []CppParameter) (preamble string, f
 				castSrc = "*" + castSrc
 			}
 
-			if p.ParameterType == "qint64" || p.ParameterType == "quint64" || p.ParameterType == "qlonglong" || p.ParameterType == "qulonglong" {
+			if p.ParameterType == "qint64" ||
+				p.ParameterType == "quint64" ||
+				p.ParameterType == "qlonglong" ||
+				p.ParameterType == "qulonglong" ||
+				p.ParameterType == "qint8" {
 				// QDataStream::operator>>() by reference (qint64)
 				// QLockFile::getLockInfo() by pointer
 				// QTextStream::operator>>() by reference (qlonglong + qulonglong)
+				// QDataStream::operator>>() qint8
 				// CABI has these as int64_t* (long int) which fails a static_cast to qint64& (long long int&)
 				// Hack a hard C-style cast
 				tmp = append(tmp, "("+castType+")("+castSrc+")")
