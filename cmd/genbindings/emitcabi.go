@@ -45,7 +45,7 @@ func (p CppParameter) RenderTypeCabi() string {
 		ret = "ptrdiff_t"
 	}
 
-	if strings.HasPrefix(p.ParameterType, `QFlags<`) {
+	if p.IsFlagType() {
 		ret = "int"
 
 	} else if strings.Contains(p.ParameterType, `::`) {
@@ -612,6 +612,11 @@ extern "C" {
 
 			} else if m.ReturnType.Const {
 				shouldReturn += "(" + emitReturnTypeCabi(m.ReturnType) + ") "
+
+			} else if m.ReturnType.IsFlagType() {
+				// Needs an explicit int cast
+				shouldReturn = m.ReturnType.RenderTypeQtCpp() + " ret = "
+				afterCall += "\treturn static_cast<int>(ret);\n"
 
 			} else if m.ReturnType.IsEnum() {
 				// Needs an explicit uintptr cast

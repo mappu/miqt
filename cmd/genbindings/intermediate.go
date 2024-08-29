@@ -24,6 +24,7 @@ func init() {
 	// A uintptr should be tolerable for both cases until we do better
 	// @ref https://doc.qt.io/qt-5/qprocess.html#Q_PID-typedef
 	KnownTypedefs["Q_PID"] = CppTypedef{"WId", parseSingleTypeString("uintptr_t")}
+
 }
 
 type CppParameter struct {
@@ -64,6 +65,22 @@ func (p *CppParameter) UnderlyingType() string {
 	}
 
 	return p.ParameterType
+}
+
+func (p CppParameter) IsFlagType() bool {
+	if strings.HasPrefix(p.ParameterType, `QFlags<`) {
+		return true // This catches most cases through the typedef system
+	}
+
+	switch p.ParameterType {
+	case "QTouchEvent::TouchPoint::InfoFlags",
+		"QFile::Permissions",
+		"QFormLayout::ItemRole",
+		"QFormLayout::RowWrapPolicy":
+		return true
+	default:
+		return false
+	}
 }
 
 func (p CppParameter) QtClassType() bool {

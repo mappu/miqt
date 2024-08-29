@@ -81,7 +81,7 @@ func (p CppParameter) RenderTypeGo() string {
 		ret += "uintptr"
 	default:
 
-		if strings.HasPrefix(p.ParameterType, `QFlags<`) {
+		if p.IsFlagType() {
 			ret += "int"
 
 		} else if strings.Contains(p.ParameterType, `::`) {
