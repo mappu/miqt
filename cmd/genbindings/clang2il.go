@@ -347,24 +347,6 @@ nextMethod:
 			// an existing class instance
 			mm.IsStatic = true
 
-			// Some QFoo constructors take a QFooPrivate
-			for _, p := range mm.Parameters {
-				if strings.Contains(p.ParameterType, "Private") {
-					log.Printf("Skipping constructor taking Private type")
-					continue nextMethod
-				}
-			}
-
-			if ret.ClassName == "QDebug" && len(mm.Parameters) == 1 && mm.Parameters[0].ParameterType == "QString" && mm.Parameters[0].Pointer {
-				log.Printf("Skipping ctor taking QString pointer")
-				continue nextMethod
-			}
-
-			if ret.ClassName == "QXmlStreamWriter" && len(mm.Parameters) == 1 && mm.Parameters[0].ParameterType == "QString" && mm.Parameters[0].Pointer {
-				log.Printf("Skipping ctor taking QString pointer") // qxmlstream.h 4th constructor overload
-				continue nextMethod
-			}
-
 			ret.Ctors = append(ret.Ctors, mm)
 
 		case "CXXDestructorDecl":

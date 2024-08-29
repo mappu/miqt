@@ -126,7 +126,14 @@ func CheckComplexity(p CppParameter, isReturnType bool) error {
 		return ErrTooComplex // e.g. QAbstractItemModel::QPrivateSignal
 	}
 
+	// Some QFoo constructors take a QFooPrivate
+	if p.ParameterType[0] == 'Q' && strings.HasSuffix(p.ParameterType, "Private") && !isReturnType {
+		return ErrTooComplex
+	}
+
 	// If any parameters are QString*, skip the method
+	// QDebug constructor
+	// QXmlStreamWriter constructor
 	// QFile::moveToTrash
 	// QLockFile::getLockInfo
 	// QTextDecoder::toUnicode
@@ -159,6 +166,9 @@ func CheckComplexity(p CppParameter, isReturnType bool) error {
 		"char16_t",                        // e.g. QChar() constructor overload, just unnecessary
 		"char32_t",                        // e.g. QDebug().operator<< overload, unnecessary
 		"wchar_t",                         // e.g. qstringview.h overloads, unnecessary
+		"QStringView::const_pointer",      // e.g. qstringview.h data()
+		"QStringView::const_iterator",     // e.g. qstringview.h
+		"QStringView::value_type",         // e.g. qstringview.h
 		"FILE",                            // e.g. qfile.h constructors
 		"qInternalCallback",               // e.g. qnamespace.h
 		"picture_io_handler",              // e.g. QPictureIO::DefineIOHandler callback function
