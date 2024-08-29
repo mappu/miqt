@@ -45,6 +45,13 @@ func (p CppParameter) RenderTypeCabi() string {
 		ret = "ptrdiff_t"
 	}
 
+	if p.Const {
+		// This is needed for const-correctness for calling some overloads
+		// e.g. QShortcut ctor taking (QWidget* parent, const char* member) signal -
+		// the signal/slot requires that member is const, not just plain char*
+		ret = "const " + ret
+	}
+
 	if p.IsFlagType() {
 		ret = "int"
 

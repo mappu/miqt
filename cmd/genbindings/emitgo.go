@@ -106,6 +106,9 @@ func (p CppParameter) parameterTypeCgo() string {
 		return "C.char"
 	}
 	tmp := strings.Replace(p.RenderTypeCabi(), `*`, "", -1)
+	if strings.HasPrefix(tmp, "const ") {
+		tmp = tmp[6:] // Constness doesn't survive the CABI boundary
+	}
 	if strings.HasPrefix(tmp, "unsigned ") {
 		tmp = "u" + tmp[9:] // Cgo uses uchar, uint instead of full name
 	}
