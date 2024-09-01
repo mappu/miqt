@@ -11,7 +11,7 @@ This is a straightforward binding of the Qt API using CGO. You must have a worki
 
 ## Project status
 
-These bindings were newly started in August 2024. The bindings are functional for all of QtCore, QtGui, and QtWidgets. But, they may be immature in some ways. Please try out the bindings and raise issues if you have trouble. A detailed status is in the [TODO file](TODO).
+These bindings were newly started in August 2024. The bindings are functional for all of QtCore, QtGui, and QtWidgets. But, they may be immature in some ways. Please try out the bindings and raise issues if you have trouble.
 
 ## Supported platforms
 
