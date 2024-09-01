@@ -185,7 +185,7 @@ func (gfs *goFileState) emitParametersGo2CABIForwarding(m CppMethod) (preamble s
 
 			preamble += p.ParameterName + "_Cstring := C.CString(" + p.ParameterName + ")\n"
 			preamble += "defer C.free(unsafe.Pointer(" + p.ParameterName + "_Cstring))\n"
-			tmp = append(tmp, p.ParameterName+"_Cstring, C.ulong(len("+p.ParameterName+"))") // Second parameter cast to size_t projected type
+			tmp = append(tmp, p.ParameterName+"_Cstring, C.size_t(len("+p.ParameterName+"))") // Second parameter cast to size_t projected type
 
 		} else if listType, ok := p.QListOf(); ok {
 			// QList<T>
@@ -198,17 +198,17 @@ func (gfs *goFileState) emitParametersGo2CABIForwarding(m CppMethod) (preamble s
 
 				preamble += "// For the C ABI, malloc two C arrays; raw char* pointers and their lengths\n"
 				preamble += p.ParameterName + "_CArray := (*[0xffff]*" + listType.parameterTypeCgo() + ")(C.malloc(C.size_t(8 * len(" + p.ParameterName + "))))\n"
-				preamble += p.ParameterName + "_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(" + p.ParameterName + "))))\n"
+				preamble += p.ParameterName + "_Lengths := (*[0xffff]C.uint64_t)(C.malloc(C.size_t(8 * len(" + p.ParameterName + "))))\n"
 				preamble += "defer C.free(unsafe.Pointer(" + p.ParameterName + "_CArray))\n"
 				preamble += "defer C.free(unsafe.Pointer(" + p.ParameterName + "_Lengths))\n"
 				preamble += "for i := range " + p.ParameterName + "{\n"
 				preamble += "single_cstring := C.CString(" + p.ParameterName + "[i])\n"
 				preamble += "defer C.free(unsafe.Pointer(single_cstring))\n"
 				preamble += p.ParameterName + "_CArray[i] = single_cstring\n"
-				preamble += p.ParameterName + "_Lengths[i] = (C.size_t)(len(" + p.ParameterName + "[i]))\n"
+				preamble += p.ParameterName + "_Lengths[i] = (C.uint64_t)(len(" + p.ParameterName + "[i]))\n"
 				preamble += "}\n"
 
-				tmp = append(tmp, "&"+p.ParameterName+"_CArray[0], &"+p.ParameterName+"_Lengths[0], C.ulong(len("+p.ParameterName+"))")
+				tmp = append(tmp, "&"+p.ParameterName+"_CArray[0], &"+p.ParameterName+"_Lengths[0], C.size_t(len("+p.ParameterName+"))")
 
 			} else {
 
@@ -227,7 +227,7 @@ func (gfs *goFileState) emitParametersGo2CABIForwarding(m CppMethod) (preamble s
 				}
 				preamble += "}\n"
 
-				tmp = append(tmp, "&"+p.ParameterName+"_CArray[0], C.ulong(len("+p.ParameterName+"))")
+				tmp = append(tmp, "&"+p.ParameterName+"_CArray[0], C.size_t(len("+p.ParameterName+"))")
 			}
 
 		} else if p.Pointer && p.ParameterType == "char" {
