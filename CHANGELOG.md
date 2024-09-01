@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 2024-09-01 v0.2.2
+
+- Support compiling on Windows
+
 ## 2024-09-01 v0.2.1
 
 - Qt types returned as nil pointers are now returned as Go nil pointers
