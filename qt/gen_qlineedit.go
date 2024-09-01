@@ -47,7 +47,7 @@ func NewQLineEdit() *QLineEdit {
 func NewQLineEdit2(param1 string) *QLineEdit {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	ret := C.QLineEdit_new2(param1_Cstring, C.ulong(len(param1)))
+	ret := C.QLineEdit_new2(param1_Cstring, C.size_t(len(param1)))
 	return newQLineEdit(ret)
 }
 
@@ -61,7 +61,7 @@ func NewQLineEdit3(parent *QWidget) *QLineEdit {
 func NewQLineEdit4(param1 string, parent *QWidget) *QLineEdit {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	ret := C.QLineEdit_new4(param1_Cstring, C.ulong(len(param1)), parent.cPointer())
+	ret := C.QLineEdit_new4(param1_Cstring, C.size_t(len(param1)), parent.cPointer())
 	return newQLineEdit(ret)
 }
 
@@ -122,7 +122,7 @@ func (this *QLineEdit) PlaceholderText() string {
 func (this *QLineEdit) SetPlaceholderText(placeholderText string) {
 	placeholderText_Cstring := C.CString(placeholderText)
 	defer C.free(unsafe.Pointer(placeholderText_Cstring))
-	C.QLineEdit_SetPlaceholderText(this.h, placeholderText_Cstring, C.ulong(len(placeholderText)))
+	C.QLineEdit_SetPlaceholderText(this.h, placeholderText_Cstring, C.size_t(len(placeholderText)))
 }
 
 func (this *QLineEdit) MaxLength() int {
@@ -347,7 +347,7 @@ func (this *QLineEdit) InputMask() string {
 func (this *QLineEdit) SetInputMask(inputMask string) {
 	inputMask_Cstring := C.CString(inputMask)
 	defer C.free(unsafe.Pointer(inputMask_Cstring))
-	C.QLineEdit_SetInputMask(this.h, inputMask_Cstring, C.ulong(len(inputMask)))
+	C.QLineEdit_SetInputMask(this.h, inputMask_Cstring, C.size_t(len(inputMask)))
 }
 
 func (this *QLineEdit) HasAcceptableInput() bool {
@@ -390,7 +390,7 @@ func (this *QLineEdit) AddAction2(icon *QIcon, position uintptr) *QAction {
 func (this *QLineEdit) SetText(text string) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QLineEdit_SetText(this.h, text_Cstring, C.ulong(len(text)))
+	C.QLineEdit_SetText(this.h, text_Cstring, C.size_t(len(text)))
 }
 
 func (this *QLineEdit) Clear() {
@@ -428,7 +428,7 @@ func (this *QLineEdit) Deselect() {
 func (this *QLineEdit) Insert(param1 string) {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	C.QLineEdit_Insert(this.h, param1_Cstring, C.ulong(len(param1)))
+	C.QLineEdit_Insert(this.h, param1_Cstring, C.size_t(len(param1)))
 }
 
 func (this *QLineEdit) CreateStandardContextMenu() *QMenu {
@@ -439,7 +439,7 @@ func (this *QLineEdit) CreateStandardContextMenu() *QMenu {
 func (this *QLineEdit) TextChanged(param1 string) {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	C.QLineEdit_TextChanged(this.h, param1_Cstring, C.ulong(len(param1)))
+	C.QLineEdit_TextChanged(this.h, param1_Cstring, C.size_t(len(param1)))
 }
 
 func (this *QLineEdit) OnTextChanged(slot func()) {
@@ -453,7 +453,7 @@ func (this *QLineEdit) OnTextChanged(slot func()) {
 func (this *QLineEdit) TextEdited(param1 string) {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	C.QLineEdit_TextEdited(this.h, param1_Cstring, C.ulong(len(param1)))
+	C.QLineEdit_TextEdited(this.h, param1_Cstring, C.size_t(len(param1)))
 }
 
 func (this *QLineEdit) OnTextEdited(slot func()) {

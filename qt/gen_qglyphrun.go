@@ -94,7 +94,7 @@ func (this *QGlyphRun) SetGlyphIndexes(glyphIndexes []uint) {
 	for i := range glyphIndexes {
 		glyphIndexes_CArray[i] = (C.uint)(glyphIndexes[i])
 	}
-	C.QGlyphRun_SetGlyphIndexes(this.h, &glyphIndexes_CArray[0], C.ulong(len(glyphIndexes)))
+	C.QGlyphRun_SetGlyphIndexes(this.h, &glyphIndexes_CArray[0], C.size_t(len(glyphIndexes)))
 }
 
 func (this *QGlyphRun) Positions() []QPointF {
@@ -117,7 +117,7 @@ func (this *QGlyphRun) SetPositions(positions []QPointF) {
 	for i := range positions {
 		positions_CArray[i] = positions[i].cPointer()
 	}
-	C.QGlyphRun_SetPositions(this.h, &positions_CArray[0], C.ulong(len(positions)))
+	C.QGlyphRun_SetPositions(this.h, &positions_CArray[0], C.size_t(len(positions)))
 }
 
 func (this *QGlyphRun) Clear() {

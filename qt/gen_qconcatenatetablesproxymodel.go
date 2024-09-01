@@ -204,7 +204,7 @@ func (this *QConcatenateTablesProxyModel) MimeData(indexes []QModelIndex) *QMime
 	for i := range indexes {
 		indexes_CArray[i] = indexes[i].cPointer()
 	}
-	ret := C.QConcatenateTablesProxyModel_MimeData(this.h, &indexes_CArray[0], C.ulong(len(indexes)))
+	ret := C.QConcatenateTablesProxyModel_MimeData(this.h, &indexes_CArray[0], C.size_t(len(indexes)))
 	return newQMimeData_U(unsafe.Pointer(ret))
 }
 

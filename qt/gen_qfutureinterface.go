@@ -111,7 +111,7 @@ func (this *QFutureInterfaceBase) ProgressValue() int {
 func (this *QFutureInterfaceBase) SetProgressValueAndText(progressValue int, progressText string) {
 	progressText_Cstring := C.CString(progressText)
 	defer C.free(unsafe.Pointer(progressText_Cstring))
-	C.QFutureInterfaceBase_SetProgressValueAndText(this.h, (C.int)(progressValue), progressText_Cstring, C.ulong(len(progressText)))
+	C.QFutureInterfaceBase_SetProgressValueAndText(this.h, (C.int)(progressValue), progressText_Cstring, C.size_t(len(progressText)))
 }
 
 func (this *QFutureInterfaceBase) ProgressText() string {

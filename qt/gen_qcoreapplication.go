@@ -116,7 +116,7 @@ func QCoreApplication_TestAttribute(attribute uintptr) bool {
 func QCoreApplication_SetOrganizationDomain(orgDomain string) {
 	orgDomain_Cstring := C.CString(orgDomain)
 	defer C.free(unsafe.Pointer(orgDomain_Cstring))
-	C.QCoreApplication_SetOrganizationDomain(orgDomain_Cstring, C.ulong(len(orgDomain)))
+	C.QCoreApplication_SetOrganizationDomain(orgDomain_Cstring, C.size_t(len(orgDomain)))
 }
 
 func QCoreApplication_OrganizationDomain() string {
@@ -131,7 +131,7 @@ func QCoreApplication_OrganizationDomain() string {
 func QCoreApplication_SetOrganizationName(orgName string) {
 	orgName_Cstring := C.CString(orgName)
 	defer C.free(unsafe.Pointer(orgName_Cstring))
-	C.QCoreApplication_SetOrganizationName(orgName_Cstring, C.ulong(len(orgName)))
+	C.QCoreApplication_SetOrganizationName(orgName_Cstring, C.size_t(len(orgName)))
 }
 
 func QCoreApplication_OrganizationName() string {
@@ -146,7 +146,7 @@ func QCoreApplication_OrganizationName() string {
 func QCoreApplication_SetApplicationName(application string) {
 	application_Cstring := C.CString(application)
 	defer C.free(unsafe.Pointer(application_Cstring))
-	C.QCoreApplication_SetApplicationName(application_Cstring, C.ulong(len(application)))
+	C.QCoreApplication_SetApplicationName(application_Cstring, C.size_t(len(application)))
 }
 
 func QCoreApplication_ApplicationName() string {
@@ -161,7 +161,7 @@ func QCoreApplication_ApplicationName() string {
 func QCoreApplication_SetApplicationVersion(version string) {
 	version_Cstring := C.CString(version)
 	defer C.free(unsafe.Pointer(version_Cstring))
-	C.QCoreApplication_SetApplicationVersion(version_Cstring, C.ulong(len(version)))
+	C.QCoreApplication_SetApplicationVersion(version_Cstring, C.size_t(len(version)))
 }
 
 func QCoreApplication_ApplicationVersion() string {
@@ -276,16 +276,16 @@ func QCoreApplication_ApplicationPid() int64 {
 func QCoreApplication_SetLibraryPaths(libraryPaths []string) {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
 	libraryPaths_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(libraryPaths))))
-	libraryPaths_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(libraryPaths))))
+	libraryPaths_Lengths := (*[0xffff]C.uint64_t)(C.malloc(C.size_t(8 * len(libraryPaths))))
 	defer C.free(unsafe.Pointer(libraryPaths_CArray))
 	defer C.free(unsafe.Pointer(libraryPaths_Lengths))
 	for i := range libraryPaths {
 		single_cstring := C.CString(libraryPaths[i])
 		defer C.free(unsafe.Pointer(single_cstring))
 		libraryPaths_CArray[i] = single_cstring
-		libraryPaths_Lengths[i] = (C.size_t)(len(libraryPaths[i]))
+		libraryPaths_Lengths[i] = (C.uint64_t)(len(libraryPaths[i]))
 	}
-	C.QCoreApplication_SetLibraryPaths(&libraryPaths_CArray[0], &libraryPaths_Lengths[0], C.ulong(len(libraryPaths)))
+	C.QCoreApplication_SetLibraryPaths(&libraryPaths_CArray[0], &libraryPaths_Lengths[0], C.size_t(len(libraryPaths)))
 }
 
 func QCoreApplication_LibraryPaths() []string {
@@ -306,13 +306,13 @@ func QCoreApplication_LibraryPaths() []string {
 func QCoreApplication_AddLibraryPath(param1 string) {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	C.QCoreApplication_AddLibraryPath(param1_Cstring, C.ulong(len(param1)))
+	C.QCoreApplication_AddLibraryPath(param1_Cstring, C.size_t(len(param1)))
 }
 
 func QCoreApplication_RemoveLibraryPath(param1 string) {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	C.QCoreApplication_RemoveLibraryPath(param1_Cstring, C.ulong(len(param1)))
+	C.QCoreApplication_RemoveLibraryPath(param1_Cstring, C.size_t(len(param1)))
 }
 
 func QCoreApplication_InstallTranslator(messageFile *QTranslator) bool {

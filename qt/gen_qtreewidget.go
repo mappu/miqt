@@ -46,16 +46,16 @@ func NewQTreeWidgetItem() *QTreeWidgetItem {
 func NewQTreeWidgetItem2(strings []string) *QTreeWidgetItem {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
 	strings_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(strings))))
-	strings_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(strings))))
+	strings_Lengths := (*[0xffff]C.uint64_t)(C.malloc(C.size_t(8 * len(strings))))
 	defer C.free(unsafe.Pointer(strings_CArray))
 	defer C.free(unsafe.Pointer(strings_Lengths))
 	for i := range strings {
 		single_cstring := C.CString(strings[i])
 		defer C.free(unsafe.Pointer(single_cstring))
 		strings_CArray[i] = single_cstring
-		strings_Lengths[i] = (C.size_t)(len(strings[i]))
+		strings_Lengths[i] = (C.uint64_t)(len(strings[i]))
 	}
-	ret := C.QTreeWidgetItem_new2(&strings_CArray[0], &strings_Lengths[0], C.ulong(len(strings)))
+	ret := C.QTreeWidgetItem_new2(&strings_CArray[0], &strings_Lengths[0], C.size_t(len(strings)))
 	return newQTreeWidgetItem(ret)
 }
 
@@ -69,16 +69,16 @@ func NewQTreeWidgetItem3(treeview *QTreeWidget) *QTreeWidgetItem {
 func NewQTreeWidgetItem4(treeview *QTreeWidget, strings []string) *QTreeWidgetItem {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
 	strings_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(strings))))
-	strings_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(strings))))
+	strings_Lengths := (*[0xffff]C.uint64_t)(C.malloc(C.size_t(8 * len(strings))))
 	defer C.free(unsafe.Pointer(strings_CArray))
 	defer C.free(unsafe.Pointer(strings_Lengths))
 	for i := range strings {
 		single_cstring := C.CString(strings[i])
 		defer C.free(unsafe.Pointer(single_cstring))
 		strings_CArray[i] = single_cstring
-		strings_Lengths[i] = (C.size_t)(len(strings[i]))
+		strings_Lengths[i] = (C.uint64_t)(len(strings[i]))
 	}
-	ret := C.QTreeWidgetItem_new4(treeview.cPointer(), &strings_CArray[0], &strings_Lengths[0], C.ulong(len(strings)))
+	ret := C.QTreeWidgetItem_new4(treeview.cPointer(), &strings_CArray[0], &strings_Lengths[0], C.size_t(len(strings)))
 	return newQTreeWidgetItem(ret)
 }
 
@@ -98,16 +98,16 @@ func NewQTreeWidgetItem6(parent *QTreeWidgetItem) *QTreeWidgetItem {
 func NewQTreeWidgetItem7(parent *QTreeWidgetItem, strings []string) *QTreeWidgetItem {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
 	strings_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(strings))))
-	strings_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(strings))))
+	strings_Lengths := (*[0xffff]C.uint64_t)(C.malloc(C.size_t(8 * len(strings))))
 	defer C.free(unsafe.Pointer(strings_CArray))
 	defer C.free(unsafe.Pointer(strings_Lengths))
 	for i := range strings {
 		single_cstring := C.CString(strings[i])
 		defer C.free(unsafe.Pointer(single_cstring))
 		strings_CArray[i] = single_cstring
-		strings_Lengths[i] = (C.size_t)(len(strings[i]))
+		strings_Lengths[i] = (C.uint64_t)(len(strings[i]))
 	}
-	ret := C.QTreeWidgetItem_new7(parent.cPointer(), &strings_CArray[0], &strings_Lengths[0], C.ulong(len(strings)))
+	ret := C.QTreeWidgetItem_new7(parent.cPointer(), &strings_CArray[0], &strings_Lengths[0], C.size_t(len(strings)))
 	return newQTreeWidgetItem(ret)
 }
 
@@ -133,16 +133,16 @@ func NewQTreeWidgetItem10(typeVal int) *QTreeWidgetItem {
 func NewQTreeWidgetItem11(strings []string, typeVal int) *QTreeWidgetItem {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
 	strings_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(strings))))
-	strings_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(strings))))
+	strings_Lengths := (*[0xffff]C.uint64_t)(C.malloc(C.size_t(8 * len(strings))))
 	defer C.free(unsafe.Pointer(strings_CArray))
 	defer C.free(unsafe.Pointer(strings_Lengths))
 	for i := range strings {
 		single_cstring := C.CString(strings[i])
 		defer C.free(unsafe.Pointer(single_cstring))
 		strings_CArray[i] = single_cstring
-		strings_Lengths[i] = (C.size_t)(len(strings[i]))
+		strings_Lengths[i] = (C.uint64_t)(len(strings[i]))
 	}
-	ret := C.QTreeWidgetItem_new11(&strings_CArray[0], &strings_Lengths[0], C.ulong(len(strings)), (C.int)(typeVal))
+	ret := C.QTreeWidgetItem_new11(&strings_CArray[0], &strings_Lengths[0], C.size_t(len(strings)), (C.int)(typeVal))
 	return newQTreeWidgetItem(ret)
 }
 
@@ -156,16 +156,16 @@ func NewQTreeWidgetItem12(treeview *QTreeWidget, typeVal int) *QTreeWidgetItem {
 func NewQTreeWidgetItem13(treeview *QTreeWidget, strings []string, typeVal int) *QTreeWidgetItem {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
 	strings_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(strings))))
-	strings_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(strings))))
+	strings_Lengths := (*[0xffff]C.uint64_t)(C.malloc(C.size_t(8 * len(strings))))
 	defer C.free(unsafe.Pointer(strings_CArray))
 	defer C.free(unsafe.Pointer(strings_Lengths))
 	for i := range strings {
 		single_cstring := C.CString(strings[i])
 		defer C.free(unsafe.Pointer(single_cstring))
 		strings_CArray[i] = single_cstring
-		strings_Lengths[i] = (C.size_t)(len(strings[i]))
+		strings_Lengths[i] = (C.uint64_t)(len(strings[i]))
 	}
-	ret := C.QTreeWidgetItem_new13(treeview.cPointer(), &strings_CArray[0], &strings_Lengths[0], C.ulong(len(strings)), (C.int)(typeVal))
+	ret := C.QTreeWidgetItem_new13(treeview.cPointer(), &strings_CArray[0], &strings_Lengths[0], C.size_t(len(strings)), (C.int)(typeVal))
 	return newQTreeWidgetItem(ret)
 }
 
@@ -185,16 +185,16 @@ func NewQTreeWidgetItem15(parent *QTreeWidgetItem, typeVal int) *QTreeWidgetItem
 func NewQTreeWidgetItem16(parent *QTreeWidgetItem, strings []string, typeVal int) *QTreeWidgetItem {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
 	strings_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(strings))))
-	strings_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(strings))))
+	strings_Lengths := (*[0xffff]C.uint64_t)(C.malloc(C.size_t(8 * len(strings))))
 	defer C.free(unsafe.Pointer(strings_CArray))
 	defer C.free(unsafe.Pointer(strings_Lengths))
 	for i := range strings {
 		single_cstring := C.CString(strings[i])
 		defer C.free(unsafe.Pointer(single_cstring))
 		strings_CArray[i] = single_cstring
-		strings_Lengths[i] = (C.size_t)(len(strings[i]))
+		strings_Lengths[i] = (C.uint64_t)(len(strings[i]))
 	}
-	ret := C.QTreeWidgetItem_new16(parent.cPointer(), &strings_CArray[0], &strings_Lengths[0], C.ulong(len(strings)), (C.int)(typeVal))
+	ret := C.QTreeWidgetItem_new16(parent.cPointer(), &strings_CArray[0], &strings_Lengths[0], C.size_t(len(strings)), (C.int)(typeVal))
 	return newQTreeWidgetItem(ret)
 }
 
@@ -289,7 +289,7 @@ func (this *QTreeWidgetItem) Text(column int) string {
 func (this *QTreeWidgetItem) SetText(column int, text string) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QTreeWidgetItem_SetText(this.h, (C.int)(column), text_Cstring, C.ulong(len(text)))
+	C.QTreeWidgetItem_SetText(this.h, (C.int)(column), text_Cstring, C.size_t(len(text)))
 }
 
 func (this *QTreeWidgetItem) Icon(column int) *QIcon {
@@ -319,7 +319,7 @@ func (this *QTreeWidgetItem) StatusTip(column int) string {
 func (this *QTreeWidgetItem) SetStatusTip(column int, statusTip string) {
 	statusTip_Cstring := C.CString(statusTip)
 	defer C.free(unsafe.Pointer(statusTip_Cstring))
-	C.QTreeWidgetItem_SetStatusTip(this.h, (C.int)(column), statusTip_Cstring, C.ulong(len(statusTip)))
+	C.QTreeWidgetItem_SetStatusTip(this.h, (C.int)(column), statusTip_Cstring, C.size_t(len(statusTip)))
 }
 
 func (this *QTreeWidgetItem) ToolTip(column int) string {
@@ -334,7 +334,7 @@ func (this *QTreeWidgetItem) ToolTip(column int) string {
 func (this *QTreeWidgetItem) SetToolTip(column int, toolTip string) {
 	toolTip_Cstring := C.CString(toolTip)
 	defer C.free(unsafe.Pointer(toolTip_Cstring))
-	C.QTreeWidgetItem_SetToolTip(this.h, (C.int)(column), toolTip_Cstring, C.ulong(len(toolTip)))
+	C.QTreeWidgetItem_SetToolTip(this.h, (C.int)(column), toolTip_Cstring, C.size_t(len(toolTip)))
 }
 
 func (this *QTreeWidgetItem) WhatsThis(column int) string {
@@ -349,7 +349,7 @@ func (this *QTreeWidgetItem) WhatsThis(column int) string {
 func (this *QTreeWidgetItem) SetWhatsThis(column int, whatsThis string) {
 	whatsThis_Cstring := C.CString(whatsThis)
 	defer C.free(unsafe.Pointer(whatsThis_Cstring))
-	C.QTreeWidgetItem_SetWhatsThis(this.h, (C.int)(column), whatsThis_Cstring, C.ulong(len(whatsThis)))
+	C.QTreeWidgetItem_SetWhatsThis(this.h, (C.int)(column), whatsThis_Cstring, C.size_t(len(whatsThis)))
 }
 
 func (this *QTreeWidgetItem) Font(column int) *QFont {
@@ -541,7 +541,7 @@ func (this *QTreeWidgetItem) AddChildren(children []*QTreeWidgetItem) {
 	for i := range children {
 		children_CArray[i] = children[i].cPointer()
 	}
-	C.QTreeWidgetItem_AddChildren(this.h, &children_CArray[0], C.ulong(len(children)))
+	C.QTreeWidgetItem_AddChildren(this.h, &children_CArray[0], C.size_t(len(children)))
 }
 
 func (this *QTreeWidgetItem) InsertChildren(index int, children []*QTreeWidgetItem) {
@@ -551,7 +551,7 @@ func (this *QTreeWidgetItem) InsertChildren(index int, children []*QTreeWidgetIt
 	for i := range children {
 		children_CArray[i] = children[i].cPointer()
 	}
-	C.QTreeWidgetItem_InsertChildren(this.h, (C.int)(index), &children_CArray[0], C.ulong(len(children)))
+	C.QTreeWidgetItem_InsertChildren(this.h, (C.int)(index), &children_CArray[0], C.size_t(len(children)))
 }
 
 func (this *QTreeWidgetItem) TakeChildren() []*QTreeWidgetItem {
@@ -691,7 +691,7 @@ func (this *QTreeWidget) InsertTopLevelItems(index int, items []*QTreeWidgetItem
 	for i := range items {
 		items_CArray[i] = items[i].cPointer()
 	}
-	C.QTreeWidget_InsertTopLevelItems(this.h, (C.int)(index), &items_CArray[0], C.ulong(len(items)))
+	C.QTreeWidget_InsertTopLevelItems(this.h, (C.int)(index), &items_CArray[0], C.size_t(len(items)))
 }
 
 func (this *QTreeWidget) AddTopLevelItems(items []*QTreeWidgetItem) {
@@ -701,7 +701,7 @@ func (this *QTreeWidget) AddTopLevelItems(items []*QTreeWidgetItem) {
 	for i := range items {
 		items_CArray[i] = items[i].cPointer()
 	}
-	C.QTreeWidget_AddTopLevelItems(this.h, &items_CArray[0], C.ulong(len(items)))
+	C.QTreeWidget_AddTopLevelItems(this.h, &items_CArray[0], C.size_t(len(items)))
 }
 
 func (this *QTreeWidget) HeaderItem() *QTreeWidgetItem {
@@ -716,22 +716,22 @@ func (this *QTreeWidget) SetHeaderItem(item *QTreeWidgetItem) {
 func (this *QTreeWidget) SetHeaderLabels(labels []string) {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
 	labels_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(labels))))
-	labels_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(labels))))
+	labels_Lengths := (*[0xffff]C.uint64_t)(C.malloc(C.size_t(8 * len(labels))))
 	defer C.free(unsafe.Pointer(labels_CArray))
 	defer C.free(unsafe.Pointer(labels_Lengths))
 	for i := range labels {
 		single_cstring := C.CString(labels[i])
 		defer C.free(unsafe.Pointer(single_cstring))
 		labels_CArray[i] = single_cstring
-		labels_Lengths[i] = (C.size_t)(len(labels[i]))
+		labels_Lengths[i] = (C.uint64_t)(len(labels[i]))
 	}
-	C.QTreeWidget_SetHeaderLabels(this.h, &labels_CArray[0], &labels_Lengths[0], C.ulong(len(labels)))
+	C.QTreeWidget_SetHeaderLabels(this.h, &labels_CArray[0], &labels_Lengths[0], C.size_t(len(labels)))
 }
 
 func (this *QTreeWidget) SetHeaderLabel(label string) {
 	label_Cstring := C.CString(label)
 	defer C.free(unsafe.Pointer(label_Cstring))
-	C.QTreeWidget_SetHeaderLabel(this.h, label_Cstring, C.ulong(len(label)))
+	C.QTreeWidget_SetHeaderLabel(this.h, label_Cstring, C.size_t(len(label)))
 }
 
 func (this *QTreeWidget) CurrentItem() *QTreeWidgetItem {
@@ -843,7 +843,7 @@ func (this *QTreeWidget) FindItems(text string, flags int) []*QTreeWidgetItem {
 	defer C.free(unsafe.Pointer(text_Cstring))
 	var _out **C.QTreeWidgetItem = nil
 	var _out_len C.size_t = 0
-	C.QTreeWidget_FindItems(this.h, text_Cstring, C.ulong(len(text)), (C.int)(flags), &_out, &_out_len)
+	C.QTreeWidget_FindItems(this.h, text_Cstring, C.size_t(len(text)), (C.int)(flags), &_out, &_out_len)
 	ret := make([]*QTreeWidgetItem, int(_out_len))
 	_outCast := (*[0xffff]*C.QTreeWidgetItem)(unsafe.Pointer(_out)) // so fresh so clean
 	for i := 0; i < int(_out_len); i++ {
@@ -1104,7 +1104,7 @@ func (this *QTreeWidget) FindItems3(text string, flags int, column int) []*QTree
 	defer C.free(unsafe.Pointer(text_Cstring))
 	var _out **C.QTreeWidgetItem = nil
 	var _out_len C.size_t = 0
-	C.QTreeWidget_FindItems3(this.h, text_Cstring, C.ulong(len(text)), (C.int)(flags), (C.int)(column), &_out, &_out_len)
+	C.QTreeWidget_FindItems3(this.h, text_Cstring, C.size_t(len(text)), (C.int)(flags), (C.int)(column), &_out, &_out_len)
 	ret := make([]*QTreeWidgetItem, int(_out_len))
 	_outCast := (*[0xffff]*C.QTreeWidgetItem)(unsafe.Pointer(_out)) // so fresh so clean
 	for i := 0; i < int(_out_len); i++ {

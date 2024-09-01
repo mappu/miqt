@@ -44,13 +44,13 @@ func QDesktopServices_SetUrlHandler(scheme string, receiver *QObject, method str
 	defer C.free(unsafe.Pointer(scheme_Cstring))
 	method_Cstring := C.CString(method)
 	defer C.free(unsafe.Pointer(method_Cstring))
-	C.QDesktopServices_SetUrlHandler(scheme_Cstring, C.ulong(len(scheme)), receiver.cPointer(), method_Cstring)
+	C.QDesktopServices_SetUrlHandler(scheme_Cstring, C.size_t(len(scheme)), receiver.cPointer(), method_Cstring)
 }
 
 func QDesktopServices_UnsetUrlHandler(scheme string) {
 	scheme_Cstring := C.CString(scheme)
 	defer C.free(unsafe.Pointer(scheme_Cstring))
-	C.QDesktopServices_UnsetUrlHandler(scheme_Cstring, C.ulong(len(scheme)))
+	C.QDesktopServices_UnsetUrlHandler(scheme_Cstring, C.size_t(len(scheme)))
 }
 
 func (this *QDesktopServices) Delete() {

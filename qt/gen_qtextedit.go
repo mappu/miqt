@@ -47,7 +47,7 @@ func NewQTextEdit() *QTextEdit {
 func NewQTextEdit2(text string) *QTextEdit {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QTextEdit_new2(text_Cstring, C.ulong(len(text)))
+	ret := C.QTextEdit_new2(text_Cstring, C.size_t(len(text)))
 	return newQTextEdit(ret)
 }
 
@@ -61,7 +61,7 @@ func NewQTextEdit3(parent *QWidget) *QTextEdit {
 func NewQTextEdit4(text string, parent *QWidget) *QTextEdit {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QTextEdit_new4(text_Cstring, C.ulong(len(text)), parent.cPointer())
+	ret := C.QTextEdit_new4(text_Cstring, C.size_t(len(text)), parent.cPointer())
 	return newQTextEdit(ret)
 }
 
@@ -104,7 +104,7 @@ func (this *QTextEdit) Document() *QTextDocument {
 func (this *QTextEdit) SetPlaceholderText(placeholderText string) {
 	placeholderText_Cstring := C.CString(placeholderText)
 	defer C.free(unsafe.Pointer(placeholderText_Cstring))
-	C.QTextEdit_SetPlaceholderText(this.h, placeholderText_Cstring, C.ulong(len(placeholderText)))
+	C.QTextEdit_SetPlaceholderText(this.h, placeholderText_Cstring, C.size_t(len(placeholderText)))
 }
 
 func (this *QTextEdit) PlaceholderText() string {
@@ -256,7 +256,7 @@ func (this *QTextEdit) SetTabChangesFocus(b bool) {
 func (this *QTextEdit) SetDocumentTitle(title string) {
 	title_Cstring := C.CString(title)
 	defer C.free(unsafe.Pointer(title_Cstring))
-	C.QTextEdit_SetDocumentTitle(this.h, title_Cstring, C.ulong(len(title)))
+	C.QTextEdit_SetDocumentTitle(this.h, title_Cstring, C.size_t(len(title)))
 }
 
 func (this *QTextEdit) DocumentTitle() string {
@@ -307,7 +307,7 @@ func (this *QTextEdit) SetWordWrapMode(policy uintptr) {
 func (this *QTextEdit) Find(exp string) bool {
 	exp_Cstring := C.CString(exp)
 	defer C.free(unsafe.Pointer(exp_Cstring))
-	ret := C.QTextEdit_Find(this.h, exp_Cstring, C.ulong(len(exp)))
+	ret := C.QTextEdit_Find(this.h, exp_Cstring, C.size_t(len(exp)))
 	return (bool)(ret)
 }
 
@@ -467,7 +467,7 @@ func (this *QTextEdit) SetExtraSelections(selections []QTextEdit__ExtraSelection
 	for i := range selections {
 		selections_CArray[i] = selections[i].cPointer()
 	}
-	C.QTextEdit_SetExtraSelections(this.h, &selections_CArray[0], C.ulong(len(selections)))
+	C.QTextEdit_SetExtraSelections(this.h, &selections_CArray[0], C.size_t(len(selections)))
 }
 
 func (this *QTextEdit) ExtraSelections() []QTextEdit__ExtraSelection {
@@ -525,7 +525,7 @@ func (this *QTextEdit) SetFontPointSize(s float64) {
 func (this *QTextEdit) SetFontFamily(fontFamily string) {
 	fontFamily_Cstring := C.CString(fontFamily)
 	defer C.free(unsafe.Pointer(fontFamily_Cstring))
-	C.QTextEdit_SetFontFamily(this.h, fontFamily_Cstring, C.ulong(len(fontFamily)))
+	C.QTextEdit_SetFontFamily(this.h, fontFamily_Cstring, C.size_t(len(fontFamily)))
 }
 
 func (this *QTextEdit) SetFontWeight(w int) {
@@ -559,25 +559,25 @@ func (this *QTextEdit) SetAlignment(a int) {
 func (this *QTextEdit) SetPlainText(text string) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QTextEdit_SetPlainText(this.h, text_Cstring, C.ulong(len(text)))
+	C.QTextEdit_SetPlainText(this.h, text_Cstring, C.size_t(len(text)))
 }
 
 func (this *QTextEdit) SetHtml(text string) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QTextEdit_SetHtml(this.h, text_Cstring, C.ulong(len(text)))
+	C.QTextEdit_SetHtml(this.h, text_Cstring, C.size_t(len(text)))
 }
 
 func (this *QTextEdit) SetMarkdown(markdown string) {
 	markdown_Cstring := C.CString(markdown)
 	defer C.free(unsafe.Pointer(markdown_Cstring))
-	C.QTextEdit_SetMarkdown(this.h, markdown_Cstring, C.ulong(len(markdown)))
+	C.QTextEdit_SetMarkdown(this.h, markdown_Cstring, C.size_t(len(markdown)))
 }
 
 func (this *QTextEdit) SetText(text string) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QTextEdit_SetText(this.h, text_Cstring, C.ulong(len(text)))
+	C.QTextEdit_SetText(this.h, text_Cstring, C.size_t(len(text)))
 }
 
 func (this *QTextEdit) Cut() {
@@ -611,25 +611,25 @@ func (this *QTextEdit) SelectAll() {
 func (this *QTextEdit) InsertPlainText(text string) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QTextEdit_InsertPlainText(this.h, text_Cstring, C.ulong(len(text)))
+	C.QTextEdit_InsertPlainText(this.h, text_Cstring, C.size_t(len(text)))
 }
 
 func (this *QTextEdit) InsertHtml(text string) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QTextEdit_InsertHtml(this.h, text_Cstring, C.ulong(len(text)))
+	C.QTextEdit_InsertHtml(this.h, text_Cstring, C.size_t(len(text)))
 }
 
 func (this *QTextEdit) Append(text string) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QTextEdit_Append(this.h, text_Cstring, C.ulong(len(text)))
+	C.QTextEdit_Append(this.h, text_Cstring, C.size_t(len(text)))
 }
 
 func (this *QTextEdit) ScrollToAnchor(name string) {
 	name_Cstring := C.CString(name)
 	defer C.free(unsafe.Pointer(name_Cstring))
-	C.QTextEdit_ScrollToAnchor(this.h, name_Cstring, C.ulong(len(name)))
+	C.QTextEdit_ScrollToAnchor(this.h, name_Cstring, C.size_t(len(name)))
 }
 
 func (this *QTextEdit) ZoomIn() {
@@ -779,7 +779,7 @@ func QTextEdit_TrUtf83(s string, c string, n int) string {
 func (this *QTextEdit) Find22(exp string, options int) bool {
 	exp_Cstring := C.CString(exp)
 	defer C.free(unsafe.Pointer(exp_Cstring))
-	ret := C.QTextEdit_Find22(this.h, exp_Cstring, C.ulong(len(exp)), (C.int)(options))
+	ret := C.QTextEdit_Find22(this.h, exp_Cstring, C.size_t(len(exp)), (C.int)(options))
 	return (bool)(ret)
 }
 

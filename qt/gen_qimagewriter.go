@@ -51,7 +51,7 @@ func NewQImageWriter2(device *QIODevice, format *QByteArray) *QImageWriter {
 func NewQImageWriter3(fileName string) *QImageWriter {
 	fileName_Cstring := C.CString(fileName)
 	defer C.free(unsafe.Pointer(fileName_Cstring))
-	ret := C.QImageWriter_new3(fileName_Cstring, C.ulong(len(fileName)))
+	ret := C.QImageWriter_new3(fileName_Cstring, C.size_t(len(fileName)))
 	return newQImageWriter(ret)
 }
 
@@ -59,7 +59,7 @@ func NewQImageWriter3(fileName string) *QImageWriter {
 func NewQImageWriter4(fileName string, format *QByteArray) *QImageWriter {
 	fileName_Cstring := C.CString(fileName)
 	defer C.free(unsafe.Pointer(fileName_Cstring))
-	ret := C.QImageWriter_new4(fileName_Cstring, C.ulong(len(fileName)), format.cPointer())
+	ret := C.QImageWriter_new4(fileName_Cstring, C.size_t(len(fileName)), format.cPointer())
 	return newQImageWriter(ret)
 }
 
@@ -112,7 +112,7 @@ func (this *QImageWriter) Device() *QIODevice {
 func (this *QImageWriter) SetFileName(fileName string) {
 	fileName_Cstring := C.CString(fileName)
 	defer C.free(unsafe.Pointer(fileName_Cstring))
-	C.QImageWriter_SetFileName(this.h, fileName_Cstring, C.ulong(len(fileName)))
+	C.QImageWriter_SetFileName(this.h, fileName_Cstring, C.size_t(len(fileName)))
 }
 
 func (this *QImageWriter) FileName() string {
@@ -209,7 +209,7 @@ func (this *QImageWriter) SetTransformation(orientation int) {
 func (this *QImageWriter) SetDescription(description string) {
 	description_Cstring := C.CString(description)
 	defer C.free(unsafe.Pointer(description_Cstring))
-	C.QImageWriter_SetDescription(this.h, description_Cstring, C.ulong(len(description)))
+	C.QImageWriter_SetDescription(this.h, description_Cstring, C.size_t(len(description)))
 }
 
 func (this *QImageWriter) Description() string {
@@ -226,7 +226,7 @@ func (this *QImageWriter) SetText(key string, text string) {
 	defer C.free(unsafe.Pointer(key_Cstring))
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QImageWriter_SetText(this.h, key_Cstring, C.ulong(len(key)), text_Cstring, C.ulong(len(text)))
+	C.QImageWriter_SetText(this.h, key_Cstring, C.size_t(len(key)), text_Cstring, C.size_t(len(text)))
 }
 
 func (this *QImageWriter) CanWrite() bool {

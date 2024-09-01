@@ -198,7 +198,7 @@ func (this *QAbstractProxyModel) MimeData(indexes []QModelIndex) *QMimeData {
 	for i := range indexes {
 		indexes_CArray[i] = indexes[i].cPointer()
 	}
-	ret := C.QAbstractProxyModel_MimeData(this.h, &indexes_CArray[0], C.ulong(len(indexes)))
+	ret := C.QAbstractProxyModel_MimeData(this.h, &indexes_CArray[0], C.size_t(len(indexes)))
 	return newQMimeData_U(unsafe.Pointer(ret))
 }
 

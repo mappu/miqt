@@ -89,7 +89,7 @@ func (this *QTextDocumentFragment) ToHtml() string {
 func QTextDocumentFragment_FromPlainText(plainText string) *QTextDocumentFragment {
 	plainText_Cstring := C.CString(plainText)
 	defer C.free(unsafe.Pointer(plainText_Cstring))
-	ret := C.QTextDocumentFragment_FromPlainText(plainText_Cstring, C.ulong(len(plainText)))
+	ret := C.QTextDocumentFragment_FromPlainText(plainText_Cstring, C.size_t(len(plainText)))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQTextDocumentFragment(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QTextDocumentFragment) {
@@ -102,7 +102,7 @@ func QTextDocumentFragment_FromPlainText(plainText string) *QTextDocumentFragmen
 func QTextDocumentFragment_FromHtml(html string) *QTextDocumentFragment {
 	html_Cstring := C.CString(html)
 	defer C.free(unsafe.Pointer(html_Cstring))
-	ret := C.QTextDocumentFragment_FromHtml(html_Cstring, C.ulong(len(html)))
+	ret := C.QTextDocumentFragment_FromHtml(html_Cstring, C.size_t(len(html)))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQTextDocumentFragment(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QTextDocumentFragment) {
@@ -115,7 +115,7 @@ func QTextDocumentFragment_FromHtml(html string) *QTextDocumentFragment {
 func QTextDocumentFragment_FromHtml2(html string, resourceProvider *QTextDocument) *QTextDocumentFragment {
 	html_Cstring := C.CString(html)
 	defer C.free(unsafe.Pointer(html_Cstring))
-	ret := C.QTextDocumentFragment_FromHtml2(html_Cstring, C.ulong(len(html)), resourceProvider.cPointer())
+	ret := C.QTextDocumentFragment_FromHtml2(html_Cstring, C.size_t(len(html)), resourceProvider.cPointer())
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQTextDocumentFragment(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QTextDocumentFragment) {

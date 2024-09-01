@@ -52,7 +52,7 @@ func QStyleFactory_Keys() []string {
 func QStyleFactory_Create(param1 string) *QStyle {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	ret := C.QStyleFactory_Create(param1_Cstring, C.ulong(len(param1)))
+	ret := C.QStyleFactory_Create(param1_Cstring, C.size_t(len(param1)))
 	return newQStyle_U(unsafe.Pointer(ret))
 }
 

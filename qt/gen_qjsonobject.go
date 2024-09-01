@@ -93,7 +93,7 @@ func (this *QJsonObject) IsEmpty() bool {
 func (this *QJsonObject) Value(key string) *QJsonValue {
 	key_Cstring := C.CString(key)
 	defer C.free(unsafe.Pointer(key_Cstring))
-	ret := C.QJsonObject_Value(this.h, key_Cstring, C.ulong(len(key)))
+	ret := C.QJsonObject_Value(this.h, key_Cstring, C.size_t(len(key)))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQJsonValue(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QJsonValue) {
@@ -106,7 +106,7 @@ func (this *QJsonObject) Value(key string) *QJsonValue {
 func (this *QJsonObject) OperatorSubscript(key string) *QJsonValue {
 	key_Cstring := C.CString(key)
 	defer C.free(unsafe.Pointer(key_Cstring))
-	ret := C.QJsonObject_OperatorSubscript(this.h, key_Cstring, C.ulong(len(key)))
+	ret := C.QJsonObject_OperatorSubscript(this.h, key_Cstring, C.size_t(len(key)))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQJsonValue(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QJsonValue) {
@@ -119,7 +119,7 @@ func (this *QJsonObject) OperatorSubscript(key string) *QJsonValue {
 func (this *QJsonObject) OperatorSubscriptWithKey(key string) *QJsonValueRef {
 	key_Cstring := C.CString(key)
 	defer C.free(unsafe.Pointer(key_Cstring))
-	ret := C.QJsonObject_OperatorSubscriptWithKey(this.h, key_Cstring, C.ulong(len(key)))
+	ret := C.QJsonObject_OperatorSubscriptWithKey(this.h, key_Cstring, C.size_t(len(key)))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQJsonValueRef(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QJsonValueRef) {
@@ -132,13 +132,13 @@ func (this *QJsonObject) OperatorSubscriptWithKey(key string) *QJsonValueRef {
 func (this *QJsonObject) Remove(key string) {
 	key_Cstring := C.CString(key)
 	defer C.free(unsafe.Pointer(key_Cstring))
-	C.QJsonObject_Remove(this.h, key_Cstring, C.ulong(len(key)))
+	C.QJsonObject_Remove(this.h, key_Cstring, C.size_t(len(key)))
 }
 
 func (this *QJsonObject) Take(key string) *QJsonValue {
 	key_Cstring := C.CString(key)
 	defer C.free(unsafe.Pointer(key_Cstring))
-	ret := C.QJsonObject_Take(this.h, key_Cstring, C.ulong(len(key)))
+	ret := C.QJsonObject_Take(this.h, key_Cstring, C.size_t(len(key)))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQJsonValue(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QJsonValue) {
@@ -151,7 +151,7 @@ func (this *QJsonObject) Take(key string) *QJsonValue {
 func (this *QJsonObject) Contains(key string) bool {
 	key_Cstring := C.CString(key)
 	defer C.free(unsafe.Pointer(key_Cstring))
-	ret := C.QJsonObject_Contains(this.h, key_Cstring, C.ulong(len(key)))
+	ret := C.QJsonObject_Contains(this.h, key_Cstring, C.size_t(len(key)))
 	return (bool)(ret)
 }
 
@@ -245,7 +245,7 @@ func (this *QJsonObject) Erase(it QJsonObject__iterator) *QJsonObject__iterator 
 func (this *QJsonObject) Find(key string) *QJsonObject__iterator {
 	key_Cstring := C.CString(key)
 	defer C.free(unsafe.Pointer(key_Cstring))
-	ret := C.QJsonObject_Find(this.h, key_Cstring, C.ulong(len(key)))
+	ret := C.QJsonObject_Find(this.h, key_Cstring, C.size_t(len(key)))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQJsonObject__iterator(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QJsonObject__iterator) {
@@ -258,7 +258,7 @@ func (this *QJsonObject) Find(key string) *QJsonObject__iterator {
 func (this *QJsonObject) FindWithKey(key string) *QJsonObject__const_iterator {
 	key_Cstring := C.CString(key)
 	defer C.free(unsafe.Pointer(key_Cstring))
-	ret := C.QJsonObject_FindWithKey(this.h, key_Cstring, C.ulong(len(key)))
+	ret := C.QJsonObject_FindWithKey(this.h, key_Cstring, C.size_t(len(key)))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQJsonObject__const_iterator(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QJsonObject__const_iterator) {
@@ -271,7 +271,7 @@ func (this *QJsonObject) FindWithKey(key string) *QJsonObject__const_iterator {
 func (this *QJsonObject) ConstFind(key string) *QJsonObject__const_iterator {
 	key_Cstring := C.CString(key)
 	defer C.free(unsafe.Pointer(key_Cstring))
-	ret := C.QJsonObject_ConstFind(this.h, key_Cstring, C.ulong(len(key)))
+	ret := C.QJsonObject_ConstFind(this.h, key_Cstring, C.size_t(len(key)))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQJsonObject__const_iterator(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QJsonObject__const_iterator) {
@@ -284,7 +284,7 @@ func (this *QJsonObject) ConstFind(key string) *QJsonObject__const_iterator {
 func (this *QJsonObject) Insert(key string, value *QJsonValue) *QJsonObject__iterator {
 	key_Cstring := C.CString(key)
 	defer C.free(unsafe.Pointer(key_Cstring))
-	ret := C.QJsonObject_Insert(this.h, key_Cstring, C.ulong(len(key)), value.cPointer())
+	ret := C.QJsonObject_Insert(this.h, key_Cstring, C.size_t(len(key)), value.cPointer())
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQJsonObject__iterator(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QJsonObject__iterator) {

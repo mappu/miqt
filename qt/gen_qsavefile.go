@@ -39,7 +39,7 @@ func newQSaveFile_U(h unsafe.Pointer) *QSaveFile {
 func NewQSaveFile(name string) *QSaveFile {
 	name_Cstring := C.CString(name)
 	defer C.free(unsafe.Pointer(name_Cstring))
-	ret := C.QSaveFile_new(name_Cstring, C.ulong(len(name)))
+	ret := C.QSaveFile_new(name_Cstring, C.size_t(len(name)))
 	return newQSaveFile(ret)
 }
 
@@ -53,7 +53,7 @@ func NewQSaveFile2() *QSaveFile {
 func NewQSaveFile3(name string, parent *QObject) *QSaveFile {
 	name_Cstring := C.CString(name)
 	defer C.free(unsafe.Pointer(name_Cstring))
-	ret := C.QSaveFile_new3(name_Cstring, C.ulong(len(name)), parent.cPointer())
+	ret := C.QSaveFile_new3(name_Cstring, C.size_t(len(name)), parent.cPointer())
 	return newQSaveFile(ret)
 }
 
@@ -102,7 +102,7 @@ func (this *QSaveFile) FileName() string {
 func (this *QSaveFile) SetFileName(name string) {
 	name_Cstring := C.CString(name)
 	defer C.free(unsafe.Pointer(name_Cstring))
-	C.QSaveFile_SetFileName(this.h, name_Cstring, C.ulong(len(name)))
+	C.QSaveFile_SetFileName(this.h, name_Cstring, C.size_t(len(name)))
 }
 
 func (this *QSaveFile) Open(flags int) bool {

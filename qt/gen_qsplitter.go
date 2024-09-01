@@ -183,7 +183,7 @@ func (this *QSplitter) SetSizes(list []int) {
 	for i := range list {
 		list_CArray[i] = (C.int)(list[i])
 	}
-	C.QSplitter_SetSizes(this.h, &list_CArray[0], C.ulong(len(list)))
+	C.QSplitter_SetSizes(this.h, &list_CArray[0], C.size_t(len(list)))
 }
 
 func (this *QSplitter) SaveState() *QByteArray {

@@ -107,7 +107,7 @@ func (this *QClipboard) TextWithSubtype(subtype string) string {
 	defer C.free(unsafe.Pointer(subtype_Cstring))
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
-	C.QClipboard_TextWithSubtype(this.h, subtype_Cstring, C.ulong(len(subtype)), &_out, &_out_Strlen)
+	C.QClipboard_TextWithSubtype(this.h, subtype_Cstring, C.size_t(len(subtype)), &_out, &_out_Strlen)
 	ret := C.GoStringN(_out, _out_Strlen)
 	C.free(unsafe.Pointer(_out))
 	return ret
@@ -116,7 +116,7 @@ func (this *QClipboard) TextWithSubtype(subtype string) string {
 func (this *QClipboard) SetText(param1 string) {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	C.QClipboard_SetText(this.h, param1_Cstring, C.ulong(len(param1)))
+	C.QClipboard_SetText(this.h, param1_Cstring, C.size_t(len(param1)))
 }
 
 func (this *QClipboard) MimeData() *QMimeData {
@@ -276,7 +276,7 @@ func (this *QClipboard) Text2(subtype string, mode uintptr) string {
 	defer C.free(unsafe.Pointer(subtype_Cstring))
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
-	C.QClipboard_Text2(this.h, subtype_Cstring, C.ulong(len(subtype)), (C.uintptr_t)(mode), &_out, &_out_Strlen)
+	C.QClipboard_Text2(this.h, subtype_Cstring, C.size_t(len(subtype)), (C.uintptr_t)(mode), &_out, &_out_Strlen)
 	ret := C.GoStringN(_out, _out_Strlen)
 	C.free(unsafe.Pointer(_out))
 	return ret
@@ -285,7 +285,7 @@ func (this *QClipboard) Text2(subtype string, mode uintptr) string {
 func (this *QClipboard) SetText2(param1 string, mode uintptr) {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	C.QClipboard_SetText2(this.h, param1_Cstring, C.ulong(len(param1)), (C.uintptr_t)(mode))
+	C.QClipboard_SetText2(this.h, param1_Cstring, C.size_t(len(param1)), (C.uintptr_t)(mode))
 }
 
 func (this *QClipboard) MimeData1(mode uintptr) *QMimeData {

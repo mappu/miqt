@@ -176,13 +176,13 @@ func (this *QWizard) NextId() int {
 func (this *QWizard) SetField(name string, value *QVariant) {
 	name_Cstring := C.CString(name)
 	defer C.free(unsafe.Pointer(name_Cstring))
-	C.QWizard_SetField(this.h, name_Cstring, C.ulong(len(name)), value.cPointer())
+	C.QWizard_SetField(this.h, name_Cstring, C.size_t(len(name)), value.cPointer())
 }
 
 func (this *QWizard) Field(name string) *QVariant {
 	name_Cstring := C.CString(name)
 	defer C.free(unsafe.Pointer(name_Cstring))
-	ret := C.QWizard_Field(this.h, name_Cstring, C.ulong(len(name)))
+	ret := C.QWizard_Field(this.h, name_Cstring, C.size_t(len(name)))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQVariant(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QVariant) {
@@ -222,7 +222,7 @@ func (this *QWizard) Options() int {
 func (this *QWizard) SetButtonText(which int, text string) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QWizard_SetButtonText(this.h, (C.int)(which), text_Cstring, C.ulong(len(text)))
+	C.QWizard_SetButtonText(this.h, (C.int)(which), text_Cstring, C.size_t(len(text)))
 }
 
 func (this *QWizard) ButtonText(which int) string {
@@ -241,7 +241,7 @@ func (this *QWizard) SetButtonLayout(layout []int) {
 	for i := range layout {
 		layout_CArray[i] = (C.int)(layout[i])
 	}
-	C.QWizard_SetButtonLayout(this.h, &layout_CArray[0], C.ulong(len(layout)))
+	C.QWizard_SetButtonLayout(this.h, &layout_CArray[0], C.size_t(len(layout)))
 }
 
 func (this *QWizard) SetButton(which int, button *QAbstractButton) {
@@ -517,7 +517,7 @@ func QWizardPage_TrUtf8(s string) string {
 func (this *QWizardPage) SetTitle(title string) {
 	title_Cstring := C.CString(title)
 	defer C.free(unsafe.Pointer(title_Cstring))
-	C.QWizardPage_SetTitle(this.h, title_Cstring, C.ulong(len(title)))
+	C.QWizardPage_SetTitle(this.h, title_Cstring, C.size_t(len(title)))
 }
 
 func (this *QWizardPage) Title() string {
@@ -532,7 +532,7 @@ func (this *QWizardPage) Title() string {
 func (this *QWizardPage) SetSubTitle(subTitle string) {
 	subTitle_Cstring := C.CString(subTitle)
 	defer C.free(unsafe.Pointer(subTitle_Cstring))
-	C.QWizardPage_SetSubTitle(this.h, subTitle_Cstring, C.ulong(len(subTitle)))
+	C.QWizardPage_SetSubTitle(this.h, subTitle_Cstring, C.size_t(len(subTitle)))
 }
 
 func (this *QWizardPage) SubTitle() string {
@@ -580,7 +580,7 @@ func (this *QWizardPage) IsCommitPage() bool {
 func (this *QWizardPage) SetButtonText(which int, text string) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QWizardPage_SetButtonText(this.h, (C.int)(which), text_Cstring, C.ulong(len(text)))
+	C.QWizardPage_SetButtonText(this.h, (C.int)(which), text_Cstring, C.size_t(len(text)))
 }
 
 func (this *QWizardPage) ButtonText(which int) string {

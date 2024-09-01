@@ -65,7 +65,7 @@ func QStylePlugin_TrUtf8(s string) string {
 func (this *QStylePlugin) Create(key string) *QStyle {
 	key_Cstring := C.CString(key)
 	defer C.free(unsafe.Pointer(key_Cstring))
-	ret := C.QStylePlugin_Create(this.h, key_Cstring, C.ulong(len(key)))
+	ret := C.QStylePlugin_Create(this.h, key_Cstring, C.size_t(len(key)))
 	return newQStyle_U(unsafe.Pointer(ret))
 }
 

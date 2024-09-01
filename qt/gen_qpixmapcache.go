@@ -47,21 +47,21 @@ func QPixmapCache_SetCacheLimit(cacheLimit int) {
 func QPixmapCache_Find(key string) *QPixmap {
 	key_Cstring := C.CString(key)
 	defer C.free(unsafe.Pointer(key_Cstring))
-	ret := C.QPixmapCache_Find(key_Cstring, C.ulong(len(key)))
+	ret := C.QPixmapCache_Find(key_Cstring, C.size_t(len(key)))
 	return newQPixmap_U(unsafe.Pointer(ret))
 }
 
 func QPixmapCache_Find2(key string, pixmap *QPixmap) bool {
 	key_Cstring := C.CString(key)
 	defer C.free(unsafe.Pointer(key_Cstring))
-	ret := C.QPixmapCache_Find2(key_Cstring, C.ulong(len(key)), pixmap.cPointer())
+	ret := C.QPixmapCache_Find2(key_Cstring, C.size_t(len(key)), pixmap.cPointer())
 	return (bool)(ret)
 }
 
 func QPixmapCache_Find3(key string, pixmap *QPixmap) bool {
 	key_Cstring := C.CString(key)
 	defer C.free(unsafe.Pointer(key_Cstring))
-	ret := C.QPixmapCache_Find3(key_Cstring, C.ulong(len(key)), pixmap.cPointer())
+	ret := C.QPixmapCache_Find3(key_Cstring, C.size_t(len(key)), pixmap.cPointer())
 	return (bool)(ret)
 }
 
@@ -73,7 +73,7 @@ func QPixmapCache_Find4(key *QPixmapCache__Key, pixmap *QPixmap) bool {
 func QPixmapCache_Insert(key string, pixmap *QPixmap) bool {
 	key_Cstring := C.CString(key)
 	defer C.free(unsafe.Pointer(key_Cstring))
-	ret := C.QPixmapCache_Insert(key_Cstring, C.ulong(len(key)), pixmap.cPointer())
+	ret := C.QPixmapCache_Insert(key_Cstring, C.size_t(len(key)), pixmap.cPointer())
 	return (bool)(ret)
 }
 
@@ -96,7 +96,7 @@ func QPixmapCache_Replace(key *QPixmapCache__Key, pixmap *QPixmap) bool {
 func QPixmapCache_Remove(key string) {
 	key_Cstring := C.CString(key)
 	defer C.free(unsafe.Pointer(key_Cstring))
-	C.QPixmapCache_Remove(key_Cstring, C.ulong(len(key)))
+	C.QPixmapCache_Remove(key_Cstring, C.size_t(len(key)))
 }
 
 func QPixmapCache_RemoveWithKey(key *QPixmapCache__Key) {

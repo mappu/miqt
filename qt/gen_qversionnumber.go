@@ -49,7 +49,7 @@ func NewQVersionNumber2(seg []int) *QVersionNumber {
 	for i := range seg {
 		seg_CArray[i] = (C.int)(seg[i])
 	}
-	ret := C.QVersionNumber_new2(&seg_CArray[0], C.ulong(len(seg)))
+	ret := C.QVersionNumber_new2(&seg_CArray[0], C.size_t(len(seg)))
 	return newQVersionNumber(ret)
 }
 
@@ -163,7 +163,7 @@ func (this *QVersionNumber) ToString() string {
 func QVersionNumber_FromString(stringVal string) *QVersionNumber {
 	stringVal_Cstring := C.CString(stringVal)
 	defer C.free(unsafe.Pointer(stringVal_Cstring))
-	ret := C.QVersionNumber_FromString(stringVal_Cstring, C.ulong(len(stringVal)))
+	ret := C.QVersionNumber_FromString(stringVal_Cstring, C.size_t(len(stringVal)))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQVersionNumber(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QVersionNumber) {
@@ -176,7 +176,7 @@ func QVersionNumber_FromString(stringVal string) *QVersionNumber {
 func QVersionNumber_FromString22(stringVal string, suffixIndex *int) *QVersionNumber {
 	stringVal_Cstring := C.CString(stringVal)
 	defer C.free(unsafe.Pointer(stringVal_Cstring))
-	ret := C.QVersionNumber_FromString22(stringVal_Cstring, C.ulong(len(stringVal)), (*C.int)(unsafe.Pointer(suffixIndex)))
+	ret := C.QVersionNumber_FromString22(stringVal_Cstring, C.size_t(len(stringVal)), (*C.int)(unsafe.Pointer(suffixIndex)))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQVersionNumber(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QVersionNumber) {

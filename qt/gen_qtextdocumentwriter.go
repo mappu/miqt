@@ -51,7 +51,7 @@ func NewQTextDocumentWriter2(device *QIODevice, format *QByteArray) *QTextDocume
 func NewQTextDocumentWriter3(fileName string) *QTextDocumentWriter {
 	fileName_Cstring := C.CString(fileName)
 	defer C.free(unsafe.Pointer(fileName_Cstring))
-	ret := C.QTextDocumentWriter_new3(fileName_Cstring, C.ulong(len(fileName)))
+	ret := C.QTextDocumentWriter_new3(fileName_Cstring, C.size_t(len(fileName)))
 	return newQTextDocumentWriter(ret)
 }
 
@@ -59,7 +59,7 @@ func NewQTextDocumentWriter3(fileName string) *QTextDocumentWriter {
 func NewQTextDocumentWriter4(fileName string, format *QByteArray) *QTextDocumentWriter {
 	fileName_Cstring := C.CString(fileName)
 	defer C.free(unsafe.Pointer(fileName_Cstring))
-	ret := C.QTextDocumentWriter_new4(fileName_Cstring, C.ulong(len(fileName)), format.cPointer())
+	ret := C.QTextDocumentWriter_new4(fileName_Cstring, C.size_t(len(fileName)), format.cPointer())
 	return newQTextDocumentWriter(ret)
 }
 
@@ -90,7 +90,7 @@ func (this *QTextDocumentWriter) Device() *QIODevice {
 func (this *QTextDocumentWriter) SetFileName(fileName string) {
 	fileName_Cstring := C.CString(fileName)
 	defer C.free(unsafe.Pointer(fileName_Cstring))
-	C.QTextDocumentWriter_SetFileName(this.h, fileName_Cstring, C.ulong(len(fileName)))
+	C.QTextDocumentWriter_SetFileName(this.h, fileName_Cstring, C.size_t(len(fileName)))
 }
 
 func (this *QTextDocumentWriter) FileName() string {

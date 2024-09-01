@@ -120,7 +120,7 @@ func (this *QPen) SetDashPattern(pattern []float64) {
 	for i := range pattern {
 		pattern_CArray[i] = (C.double)(pattern[i])
 	}
-	C.QPen_SetDashPattern(this.h, &pattern_CArray[0], C.ulong(len(pattern)))
+	C.QPen_SetDashPattern(this.h, &pattern_CArray[0], C.size_t(len(pattern)))
 }
 
 func (this *QPen) DashOffset() float64 {

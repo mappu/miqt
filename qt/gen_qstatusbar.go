@@ -118,7 +118,7 @@ func (this *QStatusBar) CurrentMessage() string {
 func (this *QStatusBar) ShowMessage(text string) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QStatusBar_ShowMessage(this.h, text_Cstring, C.ulong(len(text)))
+	C.QStatusBar_ShowMessage(this.h, text_Cstring, C.size_t(len(text)))
 }
 
 func (this *QStatusBar) ClearMessage() {
@@ -128,7 +128,7 @@ func (this *QStatusBar) ClearMessage() {
 func (this *QStatusBar) MessageChanged(text string) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QStatusBar_MessageChanged(this.h, text_Cstring, C.ulong(len(text)))
+	C.QStatusBar_MessageChanged(this.h, text_Cstring, C.size_t(len(text)))
 }
 
 func (this *QStatusBar) OnMessageChanged(slot func()) {
@@ -212,7 +212,7 @@ func (this *QStatusBar) InsertPermanentWidget3(index int, widget *QWidget, stret
 func (this *QStatusBar) ShowMessage2(text string, timeout int) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QStatusBar_ShowMessage2(this.h, text_Cstring, C.ulong(len(text)), (C.int)(timeout))
+	C.QStatusBar_ShowMessage2(this.h, text_Cstring, C.size_t(len(text)), (C.int)(timeout))
 }
 
 func (this *QStatusBar) Delete() {

@@ -45,7 +45,7 @@ func NewQDirIterator(dir *QDir) *QDirIterator {
 func NewQDirIterator2(path string) *QDirIterator {
 	path_Cstring := C.CString(path)
 	defer C.free(unsafe.Pointer(path_Cstring))
-	ret := C.QDirIterator_new2(path_Cstring, C.ulong(len(path)))
+	ret := C.QDirIterator_new2(path_Cstring, C.size_t(len(path)))
 	return newQDirIterator(ret)
 }
 
@@ -53,7 +53,7 @@ func NewQDirIterator2(path string) *QDirIterator {
 func NewQDirIterator3(path string, filter int) *QDirIterator {
 	path_Cstring := C.CString(path)
 	defer C.free(unsafe.Pointer(path_Cstring))
-	ret := C.QDirIterator_new3(path_Cstring, C.ulong(len(path)), (C.int)(filter))
+	ret := C.QDirIterator_new3(path_Cstring, C.size_t(len(path)), (C.int)(filter))
 	return newQDirIterator(ret)
 }
 
@@ -63,16 +63,16 @@ func NewQDirIterator4(path string, nameFilters []string) *QDirIterator {
 	defer C.free(unsafe.Pointer(path_Cstring))
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
 	nameFilters_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(nameFilters))))
-	nameFilters_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(nameFilters))))
+	nameFilters_Lengths := (*[0xffff]C.uint64_t)(C.malloc(C.size_t(8 * len(nameFilters))))
 	defer C.free(unsafe.Pointer(nameFilters_CArray))
 	defer C.free(unsafe.Pointer(nameFilters_Lengths))
 	for i := range nameFilters {
 		single_cstring := C.CString(nameFilters[i])
 		defer C.free(unsafe.Pointer(single_cstring))
 		nameFilters_CArray[i] = single_cstring
-		nameFilters_Lengths[i] = (C.size_t)(len(nameFilters[i]))
+		nameFilters_Lengths[i] = (C.uint64_t)(len(nameFilters[i]))
 	}
-	ret := C.QDirIterator_new4(path_Cstring, C.ulong(len(path)), &nameFilters_CArray[0], &nameFilters_Lengths[0], C.ulong(len(nameFilters)))
+	ret := C.QDirIterator_new4(path_Cstring, C.size_t(len(path)), &nameFilters_CArray[0], &nameFilters_Lengths[0], C.size_t(len(nameFilters)))
 	return newQDirIterator(ret)
 }
 
@@ -86,7 +86,7 @@ func NewQDirIterator5(dir *QDir, flags int) *QDirIterator {
 func NewQDirIterator6(path string, flags int) *QDirIterator {
 	path_Cstring := C.CString(path)
 	defer C.free(unsafe.Pointer(path_Cstring))
-	ret := C.QDirIterator_new6(path_Cstring, C.ulong(len(path)), (C.int)(flags))
+	ret := C.QDirIterator_new6(path_Cstring, C.size_t(len(path)), (C.int)(flags))
 	return newQDirIterator(ret)
 }
 
@@ -94,7 +94,7 @@ func NewQDirIterator6(path string, flags int) *QDirIterator {
 func NewQDirIterator7(path string, filter int, flags int) *QDirIterator {
 	path_Cstring := C.CString(path)
 	defer C.free(unsafe.Pointer(path_Cstring))
-	ret := C.QDirIterator_new7(path_Cstring, C.ulong(len(path)), (C.int)(filter), (C.int)(flags))
+	ret := C.QDirIterator_new7(path_Cstring, C.size_t(len(path)), (C.int)(filter), (C.int)(flags))
 	return newQDirIterator(ret)
 }
 
@@ -104,16 +104,16 @@ func NewQDirIterator8(path string, nameFilters []string, filters int) *QDirItera
 	defer C.free(unsafe.Pointer(path_Cstring))
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
 	nameFilters_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(nameFilters))))
-	nameFilters_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(nameFilters))))
+	nameFilters_Lengths := (*[0xffff]C.uint64_t)(C.malloc(C.size_t(8 * len(nameFilters))))
 	defer C.free(unsafe.Pointer(nameFilters_CArray))
 	defer C.free(unsafe.Pointer(nameFilters_Lengths))
 	for i := range nameFilters {
 		single_cstring := C.CString(nameFilters[i])
 		defer C.free(unsafe.Pointer(single_cstring))
 		nameFilters_CArray[i] = single_cstring
-		nameFilters_Lengths[i] = (C.size_t)(len(nameFilters[i]))
+		nameFilters_Lengths[i] = (C.uint64_t)(len(nameFilters[i]))
 	}
-	ret := C.QDirIterator_new8(path_Cstring, C.ulong(len(path)), &nameFilters_CArray[0], &nameFilters_Lengths[0], C.ulong(len(nameFilters)), (C.int)(filters))
+	ret := C.QDirIterator_new8(path_Cstring, C.size_t(len(path)), &nameFilters_CArray[0], &nameFilters_Lengths[0], C.size_t(len(nameFilters)), (C.int)(filters))
 	return newQDirIterator(ret)
 }
 
@@ -123,16 +123,16 @@ func NewQDirIterator9(path string, nameFilters []string, filters int, flags int)
 	defer C.free(unsafe.Pointer(path_Cstring))
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
 	nameFilters_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(nameFilters))))
-	nameFilters_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(nameFilters))))
+	nameFilters_Lengths := (*[0xffff]C.uint64_t)(C.malloc(C.size_t(8 * len(nameFilters))))
 	defer C.free(unsafe.Pointer(nameFilters_CArray))
 	defer C.free(unsafe.Pointer(nameFilters_Lengths))
 	for i := range nameFilters {
 		single_cstring := C.CString(nameFilters[i])
 		defer C.free(unsafe.Pointer(single_cstring))
 		nameFilters_CArray[i] = single_cstring
-		nameFilters_Lengths[i] = (C.size_t)(len(nameFilters[i]))
+		nameFilters_Lengths[i] = (C.uint64_t)(len(nameFilters[i]))
 	}
-	ret := C.QDirIterator_new9(path_Cstring, C.ulong(len(path)), &nameFilters_CArray[0], &nameFilters_Lengths[0], C.ulong(len(nameFilters)), (C.int)(filters), (C.int)(flags))
+	ret := C.QDirIterator_new9(path_Cstring, C.size_t(len(path)), &nameFilters_CArray[0], &nameFilters_Lengths[0], C.size_t(len(nameFilters)), (C.int)(filters), (C.int)(flags))
 	return newQDirIterator(ret)
 }
 

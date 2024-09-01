@@ -46,7 +46,7 @@ func NewQFile() *QFile {
 func NewQFile2(name string) *QFile {
 	name_Cstring := C.CString(name)
 	defer C.free(unsafe.Pointer(name_Cstring))
-	ret := C.QFile_new2(name_Cstring, C.ulong(len(name)))
+	ret := C.QFile_new2(name_Cstring, C.size_t(len(name)))
 	return newQFile(ret)
 }
 
@@ -60,7 +60,7 @@ func NewQFile3(parent *QObject) *QFile {
 func NewQFile4(name string, parent *QObject) *QFile {
 	name_Cstring := C.CString(name)
 	defer C.free(unsafe.Pointer(name_Cstring))
-	ret := C.QFile_new4(name_Cstring, C.ulong(len(name)), parent.cPointer())
+	ret := C.QFile_new4(name_Cstring, C.size_t(len(name)), parent.cPointer())
 	return newQFile(ret)
 }
 
@@ -103,13 +103,13 @@ func (this *QFile) FileName() string {
 func (this *QFile) SetFileName(name string) {
 	name_Cstring := C.CString(name)
 	defer C.free(unsafe.Pointer(name_Cstring))
-	C.QFile_SetFileName(this.h, name_Cstring, C.ulong(len(name)))
+	C.QFile_SetFileName(this.h, name_Cstring, C.size_t(len(name)))
 }
 
 func QFile_EncodeName(fileName string) *QByteArray {
 	fileName_Cstring := C.CString(fileName)
 	defer C.free(unsafe.Pointer(fileName_Cstring))
-	ret := C.QFile_EncodeName(fileName_Cstring, C.ulong(len(fileName)))
+	ret := C.QFile_EncodeName(fileName_Cstring, C.size_t(len(fileName)))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQByteArray(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QByteArray) {
@@ -147,7 +147,7 @@ func (this *QFile) Exists() bool {
 func QFile_ExistsWithFileName(fileName string) bool {
 	fileName_Cstring := C.CString(fileName)
 	defer C.free(unsafe.Pointer(fileName_Cstring))
-	ret := C.QFile_ExistsWithFileName(fileName_Cstring, C.ulong(len(fileName)))
+	ret := C.QFile_ExistsWithFileName(fileName_Cstring, C.size_t(len(fileName)))
 	return (bool)(ret)
 }
 
@@ -165,7 +165,7 @@ func QFile_ReadLinkWithFileName(fileName string) string {
 	defer C.free(unsafe.Pointer(fileName_Cstring))
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
-	C.QFile_ReadLinkWithFileName(fileName_Cstring, C.ulong(len(fileName)), &_out, &_out_Strlen)
+	C.QFile_ReadLinkWithFileName(fileName_Cstring, C.size_t(len(fileName)), &_out, &_out_Strlen)
 	ret := C.GoStringN(_out, _out_Strlen)
 	C.free(unsafe.Pointer(_out))
 	return ret
@@ -185,7 +185,7 @@ func QFile_SymLinkTargetWithFileName(fileName string) string {
 	defer C.free(unsafe.Pointer(fileName_Cstring))
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
-	C.QFile_SymLinkTargetWithFileName(fileName_Cstring, C.ulong(len(fileName)), &_out, &_out_Strlen)
+	C.QFile_SymLinkTargetWithFileName(fileName_Cstring, C.size_t(len(fileName)), &_out, &_out_Strlen)
 	ret := C.GoStringN(_out, _out_Strlen)
 	C.free(unsafe.Pointer(_out))
 	return ret
@@ -199,7 +199,7 @@ func (this *QFile) Remove() bool {
 func QFile_RemoveWithFileName(fileName string) bool {
 	fileName_Cstring := C.CString(fileName)
 	defer C.free(unsafe.Pointer(fileName_Cstring))
-	ret := C.QFile_RemoveWithFileName(fileName_Cstring, C.ulong(len(fileName)))
+	ret := C.QFile_RemoveWithFileName(fileName_Cstring, C.size_t(len(fileName)))
 	return (bool)(ret)
 }
 
@@ -211,14 +211,14 @@ func (this *QFile) MoveToTrash() bool {
 func QFile_MoveToTrashWithFileName(fileName string) bool {
 	fileName_Cstring := C.CString(fileName)
 	defer C.free(unsafe.Pointer(fileName_Cstring))
-	ret := C.QFile_MoveToTrashWithFileName(fileName_Cstring, C.ulong(len(fileName)))
+	ret := C.QFile_MoveToTrashWithFileName(fileName_Cstring, C.size_t(len(fileName)))
 	return (bool)(ret)
 }
 
 func (this *QFile) Rename(newName string) bool {
 	newName_Cstring := C.CString(newName)
 	defer C.free(unsafe.Pointer(newName_Cstring))
-	ret := C.QFile_Rename(this.h, newName_Cstring, C.ulong(len(newName)))
+	ret := C.QFile_Rename(this.h, newName_Cstring, C.size_t(len(newName)))
 	return (bool)(ret)
 }
 
@@ -227,14 +227,14 @@ func QFile_Rename2(oldName string, newName string) bool {
 	defer C.free(unsafe.Pointer(oldName_Cstring))
 	newName_Cstring := C.CString(newName)
 	defer C.free(unsafe.Pointer(newName_Cstring))
-	ret := C.QFile_Rename2(oldName_Cstring, C.ulong(len(oldName)), newName_Cstring, C.ulong(len(newName)))
+	ret := C.QFile_Rename2(oldName_Cstring, C.size_t(len(oldName)), newName_Cstring, C.size_t(len(newName)))
 	return (bool)(ret)
 }
 
 func (this *QFile) Link(newName string) bool {
 	newName_Cstring := C.CString(newName)
 	defer C.free(unsafe.Pointer(newName_Cstring))
-	ret := C.QFile_Link(this.h, newName_Cstring, C.ulong(len(newName)))
+	ret := C.QFile_Link(this.h, newName_Cstring, C.size_t(len(newName)))
 	return (bool)(ret)
 }
 
@@ -243,14 +243,14 @@ func QFile_Link2(oldname string, newName string) bool {
 	defer C.free(unsafe.Pointer(oldname_Cstring))
 	newName_Cstring := C.CString(newName)
 	defer C.free(unsafe.Pointer(newName_Cstring))
-	ret := C.QFile_Link2(oldname_Cstring, C.ulong(len(oldname)), newName_Cstring, C.ulong(len(newName)))
+	ret := C.QFile_Link2(oldname_Cstring, C.size_t(len(oldname)), newName_Cstring, C.size_t(len(newName)))
 	return (bool)(ret)
 }
 
 func (this *QFile) Copy(newName string) bool {
 	newName_Cstring := C.CString(newName)
 	defer C.free(unsafe.Pointer(newName_Cstring))
-	ret := C.QFile_Copy(this.h, newName_Cstring, C.ulong(len(newName)))
+	ret := C.QFile_Copy(this.h, newName_Cstring, C.size_t(len(newName)))
 	return (bool)(ret)
 }
 
@@ -259,7 +259,7 @@ func QFile_Copy2(fileName string, newName string) bool {
 	defer C.free(unsafe.Pointer(fileName_Cstring))
 	newName_Cstring := C.CString(newName)
 	defer C.free(unsafe.Pointer(newName_Cstring))
-	ret := C.QFile_Copy2(fileName_Cstring, C.ulong(len(fileName)), newName_Cstring, C.ulong(len(newName)))
+	ret := C.QFile_Copy2(fileName_Cstring, C.size_t(len(fileName)), newName_Cstring, C.size_t(len(newName)))
 	return (bool)(ret)
 }
 
@@ -286,7 +286,7 @@ func (this *QFile) Resize(sz int64) bool {
 func QFile_Resize2(filename string, sz int64) bool {
 	filename_Cstring := C.CString(filename)
 	defer C.free(unsafe.Pointer(filename_Cstring))
-	ret := C.QFile_Resize2(filename_Cstring, C.ulong(len(filename)), (C.longlong)(sz))
+	ret := C.QFile_Resize2(filename_Cstring, C.size_t(len(filename)), (C.longlong)(sz))
 	return (bool)(ret)
 }
 
@@ -298,7 +298,7 @@ func (this *QFile) Permissions() int {
 func QFile_PermissionsWithFilename(filename string) int {
 	filename_Cstring := C.CString(filename)
 	defer C.free(unsafe.Pointer(filename_Cstring))
-	ret := C.QFile_PermissionsWithFilename(filename_Cstring, C.ulong(len(filename)))
+	ret := C.QFile_PermissionsWithFilename(filename_Cstring, C.size_t(len(filename)))
 	return (int)(ret)
 }
 
@@ -310,7 +310,7 @@ func (this *QFile) SetPermissions(permissionSpec int) bool {
 func QFile_SetPermissions2(filename string, permissionSpec int) bool {
 	filename_Cstring := C.CString(filename)
 	defer C.free(unsafe.Pointer(filename_Cstring))
-	ret := C.QFile_SetPermissions2(filename_Cstring, C.ulong(len(filename)), (C.int)(permissionSpec))
+	ret := C.QFile_SetPermissions2(filename_Cstring, C.size_t(len(filename)), (C.int)(permissionSpec))
 	return (bool)(ret)
 }
 

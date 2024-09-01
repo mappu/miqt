@@ -85,28 +85,28 @@ func QToolBox_TrUtf8(s string) string {
 func (this *QToolBox) AddItem(widget *QWidget, text string) int {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QToolBox_AddItem(this.h, widget.cPointer(), text_Cstring, C.ulong(len(text)))
+	ret := C.QToolBox_AddItem(this.h, widget.cPointer(), text_Cstring, C.size_t(len(text)))
 	return (int)(ret)
 }
 
 func (this *QToolBox) AddItem2(widget *QWidget, icon *QIcon, text string) int {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QToolBox_AddItem2(this.h, widget.cPointer(), icon.cPointer(), text_Cstring, C.ulong(len(text)))
+	ret := C.QToolBox_AddItem2(this.h, widget.cPointer(), icon.cPointer(), text_Cstring, C.size_t(len(text)))
 	return (int)(ret)
 }
 
 func (this *QToolBox) InsertItem(index int, widget *QWidget, text string) int {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QToolBox_InsertItem(this.h, (C.int)(index), widget.cPointer(), text_Cstring, C.ulong(len(text)))
+	ret := C.QToolBox_InsertItem(this.h, (C.int)(index), widget.cPointer(), text_Cstring, C.size_t(len(text)))
 	return (int)(ret)
 }
 
 func (this *QToolBox) InsertItem2(index int, widget *QWidget, icon *QIcon, text string) int {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QToolBox_InsertItem2(this.h, (C.int)(index), widget.cPointer(), icon.cPointer(), text_Cstring, C.ulong(len(text)))
+	ret := C.QToolBox_InsertItem2(this.h, (C.int)(index), widget.cPointer(), icon.cPointer(), text_Cstring, C.size_t(len(text)))
 	return (int)(ret)
 }
 
@@ -126,7 +126,7 @@ func (this *QToolBox) IsItemEnabled(index int) bool {
 func (this *QToolBox) SetItemText(index int, text string) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QToolBox_SetItemText(this.h, (C.int)(index), text_Cstring, C.ulong(len(text)))
+	C.QToolBox_SetItemText(this.h, (C.int)(index), text_Cstring, C.size_t(len(text)))
 }
 
 func (this *QToolBox) ItemText(index int) string {
@@ -156,7 +156,7 @@ func (this *QToolBox) ItemIcon(index int) *QIcon {
 func (this *QToolBox) SetItemToolTip(index int, toolTip string) {
 	toolTip_Cstring := C.CString(toolTip)
 	defer C.free(unsafe.Pointer(toolTip_Cstring))
-	C.QToolBox_SetItemToolTip(this.h, (C.int)(index), toolTip_Cstring, C.ulong(len(toolTip)))
+	C.QToolBox_SetItemToolTip(this.h, (C.int)(index), toolTip_Cstring, C.size_t(len(toolTip)))
 }
 
 func (this *QToolBox) ItemToolTip(index int) string {

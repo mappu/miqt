@@ -552,7 +552,7 @@ func (this *QGraphicsView) UpdateScene(rects []QRectF) {
 	for i := range rects {
 		rects_CArray[i] = rects[i].cPointer()
 	}
-	C.QGraphicsView_UpdateScene(this.h, &rects_CArray[0], C.ulong(len(rects)))
+	C.QGraphicsView_UpdateScene(this.h, &rects_CArray[0], C.size_t(len(rects)))
 }
 
 func (this *QGraphicsView) InvalidateScene() {

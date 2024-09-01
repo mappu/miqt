@@ -103,7 +103,7 @@ func QAccessibleBridgePlugin_TrUtf8(s string) string {
 func (this *QAccessibleBridgePlugin) Create(key string) *QAccessibleBridge {
 	key_Cstring := C.CString(key)
 	defer C.free(unsafe.Pointer(key_Cstring))
-	ret := C.QAccessibleBridgePlugin_Create(this.h, key_Cstring, C.ulong(len(key)))
+	ret := C.QAccessibleBridgePlugin_Create(this.h, key_Cstring, C.size_t(len(key)))
 	return newQAccessibleBridge_U(unsafe.Pointer(ret))
 }
 

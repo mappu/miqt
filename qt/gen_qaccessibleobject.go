@@ -60,7 +60,7 @@ func (this *QAccessibleObject) Rect() *QRect {
 func (this *QAccessibleObject) SetText(t uintptr, text string) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QAccessibleObject_SetText(this.h, (C.uintptr_t)(t), text_Cstring, C.ulong(len(text)))
+	C.QAccessibleObject_SetText(this.h, (C.uintptr_t)(t), text_Cstring, C.size_t(len(text)))
 }
 
 func (this *QAccessibleObject) ChildAt(x int, y int) *QAccessibleInterface {

@@ -247,7 +247,7 @@ func (this *QDate) ToStringWithFormat(format string) string {
 	defer C.free(unsafe.Pointer(format_Cstring))
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
-	C.QDate_ToStringWithFormat(this.h, format_Cstring, C.ulong(len(format)), &_out, &_out_Strlen)
+	C.QDate_ToStringWithFormat(this.h, format_Cstring, C.size_t(len(format)), &_out, &_out_Strlen)
 	ret := C.GoStringN(_out, _out_Strlen)
 	C.free(unsafe.Pointer(_out))
 	return ret
@@ -258,7 +258,7 @@ func (this *QDate) ToString3(format string, cal QCalendar) string {
 	defer C.free(unsafe.Pointer(format_Cstring))
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
-	C.QDate_ToString3(this.h, format_Cstring, C.ulong(len(format)), cal.cPointer(), &_out, &_out_Strlen)
+	C.QDate_ToString3(this.h, format_Cstring, C.size_t(len(format)), cal.cPointer(), &_out, &_out_Strlen)
 	ret := C.GoStringN(_out, _out_Strlen)
 	C.free(unsafe.Pointer(_out))
 	return ret
@@ -386,7 +386,7 @@ func QDate_CurrentDate() *QDate {
 func QDate_FromString(s string) *QDate {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	ret := C.QDate_FromString(s_Cstring, C.ulong(len(s)))
+	ret := C.QDate_FromString(s_Cstring, C.size_t(len(s)))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQDate(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QDate) {
@@ -401,7 +401,7 @@ func QDate_FromString2(s string, format string) *QDate {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
-	ret := C.QDate_FromString2(s_Cstring, C.ulong(len(s)), format_Cstring, C.ulong(len(format)))
+	ret := C.QDate_FromString2(s_Cstring, C.size_t(len(s)), format_Cstring, C.size_t(len(format)))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQDate(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QDate) {
@@ -416,7 +416,7 @@ func QDate_FromString3(s string, format string, cal QCalendar) *QDate {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
-	ret := C.QDate_FromString3(s_Cstring, C.ulong(len(s)), format_Cstring, C.ulong(len(format)), cal.cPointer())
+	ret := C.QDate_FromString3(s_Cstring, C.size_t(len(s)), format_Cstring, C.size_t(len(format)), cal.cPointer())
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQDate(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QDate) {
@@ -549,7 +549,7 @@ func (this *QDate) ToString1(format uintptr) string {
 func QDate_FromString22(s string, f uintptr) *QDate {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	ret := C.QDate_FromString22(s_Cstring, C.ulong(len(s)), (C.uintptr_t)(f))
+	ret := C.QDate_FromString22(s_Cstring, C.size_t(len(s)), (C.uintptr_t)(f))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQDate(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QDate) {
@@ -659,7 +659,7 @@ func (this *QTime) ToStringWithFormat(format string) string {
 	defer C.free(unsafe.Pointer(format_Cstring))
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
-	C.QTime_ToStringWithFormat(this.h, format_Cstring, C.ulong(len(format)), &_out, &_out_Strlen)
+	C.QTime_ToStringWithFormat(this.h, format_Cstring, C.size_t(len(format)), &_out, &_out_Strlen)
 	ret := C.GoStringN(_out, _out_Strlen)
 	C.free(unsafe.Pointer(_out))
 	return ret
@@ -762,7 +762,7 @@ func QTime_CurrentTime() *QTime {
 func QTime_FromString(s string) *QTime {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	ret := C.QTime_FromString(s_Cstring, C.ulong(len(s)))
+	ret := C.QTime_FromString(s_Cstring, C.size_t(len(s)))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQTime(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QTime) {
@@ -777,7 +777,7 @@ func QTime_FromString2(s string, format string) *QTime {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
-	ret := C.QTime_FromString2(s_Cstring, C.ulong(len(s)), format_Cstring, C.ulong(len(format)))
+	ret := C.QTime_FromString2(s_Cstring, C.size_t(len(s)), format_Cstring, C.size_t(len(format)))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQTime(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QTime) {
@@ -823,7 +823,7 @@ func (this *QTime) SetHMS4(h int, m int, s int, ms int) bool {
 func QTime_FromString22(s string, f uintptr) *QTime {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	ret := C.QTime_FromString22(s_Cstring, C.ulong(len(s)), (C.uintptr_t)(f))
+	ret := C.QTime_FromString22(s_Cstring, C.size_t(len(s)), (C.uintptr_t)(f))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQTime(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QTime) {
@@ -1027,7 +1027,7 @@ func (this *QDateTime) ToStringWithFormat(format string) string {
 	defer C.free(unsafe.Pointer(format_Cstring))
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
-	C.QDateTime_ToStringWithFormat(this.h, format_Cstring, C.ulong(len(format)), &_out, &_out_Strlen)
+	C.QDateTime_ToStringWithFormat(this.h, format_Cstring, C.size_t(len(format)), &_out, &_out_Strlen)
 	ret := C.GoStringN(_out, _out_Strlen)
 	C.free(unsafe.Pointer(_out))
 	return ret
@@ -1038,7 +1038,7 @@ func (this *QDateTime) ToString2(format string, cal QCalendar) string {
 	defer C.free(unsafe.Pointer(format_Cstring))
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
-	C.QDateTime_ToString2(this.h, format_Cstring, C.ulong(len(format)), cal.cPointer(), &_out, &_out_Strlen)
+	C.QDateTime_ToString2(this.h, format_Cstring, C.size_t(len(format)), cal.cPointer(), &_out, &_out_Strlen)
 	ret := C.GoStringN(_out, _out_Strlen)
 	C.free(unsafe.Pointer(_out))
 	return ret
@@ -1233,7 +1233,7 @@ func QDateTime_CurrentDateTimeUtc() *QDateTime {
 func QDateTime_FromString(s string) *QDateTime {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	ret := C.QDateTime_FromString(s_Cstring, C.ulong(len(s)))
+	ret := C.QDateTime_FromString(s_Cstring, C.size_t(len(s)))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQDateTime(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QDateTime) {
@@ -1248,7 +1248,7 @@ func QDateTime_FromString2(s string, format string) *QDateTime {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
-	ret := C.QDateTime_FromString2(s_Cstring, C.ulong(len(s)), format_Cstring, C.ulong(len(format)))
+	ret := C.QDateTime_FromString2(s_Cstring, C.size_t(len(s)), format_Cstring, C.size_t(len(format)))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQDateTime(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QDateTime) {
@@ -1263,7 +1263,7 @@ func QDateTime_FromString3(s string, format string, cal QCalendar) *QDateTime {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
-	ret := C.QDateTime_FromString3(s_Cstring, C.ulong(len(s)), format_Cstring, C.ulong(len(format)), cal.cPointer())
+	ret := C.QDateTime_FromString3(s_Cstring, C.size_t(len(s)), format_Cstring, C.size_t(len(format)), cal.cPointer())
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQDateTime(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QDateTime) {
@@ -1392,7 +1392,7 @@ func (this *QDateTime) ToString1(format uintptr) string {
 func QDateTime_FromString22(s string, f uintptr) *QDateTime {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	ret := C.QDateTime_FromString22(s_Cstring, C.ulong(len(s)), (C.uintptr_t)(f))
+	ret := C.QDateTime_FromString22(s_Cstring, C.size_t(len(s)), (C.uintptr_t)(f))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQDateTime(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QDateTime) {

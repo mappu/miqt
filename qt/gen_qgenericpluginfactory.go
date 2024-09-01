@@ -54,7 +54,7 @@ func QGenericPluginFactory_Create(param1 string, param2 string) *QObject {
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	param2_Cstring := C.CString(param2)
 	defer C.free(unsafe.Pointer(param2_Cstring))
-	ret := C.QGenericPluginFactory_Create(param1_Cstring, C.ulong(len(param1)), param2_Cstring, C.ulong(len(param2)))
+	ret := C.QGenericPluginFactory_Create(param1_Cstring, C.size_t(len(param1)), param2_Cstring, C.size_t(len(param2)))
 	return newQObject_U(unsafe.Pointer(ret))
 }
 

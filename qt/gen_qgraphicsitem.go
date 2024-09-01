@@ -175,7 +175,7 @@ func (this *QGraphicsItem) ToolTip() string {
 func (this *QGraphicsItem) SetToolTip(toolTip string) {
 	toolTip_Cstring := C.CString(toolTip)
 	defer C.free(unsafe.Pointer(toolTip_Cstring))
-	C.QGraphicsItem_SetToolTip(this.h, toolTip_Cstring, C.ulong(len(toolTip)))
+	C.QGraphicsItem_SetToolTip(this.h, toolTip_Cstring, C.size_t(len(toolTip)))
 }
 
 func (this *QGraphicsItem) Cursor() *QCursor {
@@ -556,7 +556,7 @@ func (this *QGraphicsItem) SetTransformations(transformations []*QGraphicsTransf
 	for i := range transformations {
 		transformations_CArray[i] = transformations[i].cPointer()
 	}
-	C.QGraphicsItem_SetTransformations(this.h, &transformations_CArray[0], C.ulong(len(transformations)))
+	C.QGraphicsItem_SetTransformations(this.h, &transformations_CArray[0], C.size_t(len(transformations)))
 }
 
 func (this *QGraphicsItem) TransformOriginPoint() *QPointF {
@@ -2419,7 +2419,7 @@ func NewQGraphicsTextItem() *QGraphicsTextItem {
 func NewQGraphicsTextItem2(text string) *QGraphicsTextItem {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QGraphicsTextItem_new2(text_Cstring, C.ulong(len(text)))
+	ret := C.QGraphicsTextItem_new2(text_Cstring, C.size_t(len(text)))
 	return newQGraphicsTextItem(ret)
 }
 
@@ -2433,7 +2433,7 @@ func NewQGraphicsTextItem3(parent *QGraphicsItem) *QGraphicsTextItem {
 func NewQGraphicsTextItem4(text string, parent *QGraphicsItem) *QGraphicsTextItem {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QGraphicsTextItem_new4(text_Cstring, C.ulong(len(text)), parent.cPointer())
+	ret := C.QGraphicsTextItem_new4(text_Cstring, C.size_t(len(text)), parent.cPointer())
 	return newQGraphicsTextItem(ret)
 }
 
@@ -2476,7 +2476,7 @@ func (this *QGraphicsTextItem) ToHtml() string {
 func (this *QGraphicsTextItem) SetHtml(html string) {
 	html_Cstring := C.CString(html)
 	defer C.free(unsafe.Pointer(html_Cstring))
-	C.QGraphicsTextItem_SetHtml(this.h, html_Cstring, C.ulong(len(html)))
+	C.QGraphicsTextItem_SetHtml(this.h, html_Cstring, C.size_t(len(html)))
 }
 
 func (this *QGraphicsTextItem) ToPlainText() string {
@@ -2491,7 +2491,7 @@ func (this *QGraphicsTextItem) ToPlainText() string {
 func (this *QGraphicsTextItem) SetPlainText(text string) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QGraphicsTextItem_SetPlainText(this.h, text_Cstring, C.ulong(len(text)))
+	C.QGraphicsTextItem_SetPlainText(this.h, text_Cstring, C.size_t(len(text)))
 }
 
 func (this *QGraphicsTextItem) Font() *QFont {
@@ -2643,7 +2643,7 @@ func (this *QGraphicsTextItem) TextCursor() *QTextCursor {
 func (this *QGraphicsTextItem) LinkActivated(param1 string) {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	C.QGraphicsTextItem_LinkActivated(this.h, param1_Cstring, C.ulong(len(param1)))
+	C.QGraphicsTextItem_LinkActivated(this.h, param1_Cstring, C.size_t(len(param1)))
 }
 
 func (this *QGraphicsTextItem) OnLinkActivated(slot func()) {
@@ -2657,7 +2657,7 @@ func (this *QGraphicsTextItem) OnLinkActivated(slot func()) {
 func (this *QGraphicsTextItem) LinkHovered(param1 string) {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	C.QGraphicsTextItem_LinkHovered(this.h, param1_Cstring, C.ulong(len(param1)))
+	C.QGraphicsTextItem_LinkHovered(this.h, param1_Cstring, C.size_t(len(param1)))
 }
 
 func (this *QGraphicsTextItem) OnLinkHovered(slot func()) {
@@ -2757,7 +2757,7 @@ func NewQGraphicsSimpleTextItem() *QGraphicsSimpleTextItem {
 func NewQGraphicsSimpleTextItem2(text string) *QGraphicsSimpleTextItem {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QGraphicsSimpleTextItem_new2(text_Cstring, C.ulong(len(text)))
+	ret := C.QGraphicsSimpleTextItem_new2(text_Cstring, C.size_t(len(text)))
 	return newQGraphicsSimpleTextItem(ret)
 }
 
@@ -2771,14 +2771,14 @@ func NewQGraphicsSimpleTextItem3(parent *QGraphicsItem) *QGraphicsSimpleTextItem
 func NewQGraphicsSimpleTextItem4(text string, parent *QGraphicsItem) *QGraphicsSimpleTextItem {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QGraphicsSimpleTextItem_new4(text_Cstring, C.ulong(len(text)), parent.cPointer())
+	ret := C.QGraphicsSimpleTextItem_new4(text_Cstring, C.size_t(len(text)), parent.cPointer())
 	return newQGraphicsSimpleTextItem(ret)
 }
 
 func (this *QGraphicsSimpleTextItem) SetText(text string) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QGraphicsSimpleTextItem_SetText(this.h, text_Cstring, C.ulong(len(text)))
+	C.QGraphicsSimpleTextItem_SetText(this.h, text_Cstring, C.size_t(len(text)))
 }
 
 func (this *QGraphicsSimpleTextItem) Text() string {

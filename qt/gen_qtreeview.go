@@ -267,7 +267,7 @@ func (this *QTreeView) TreePosition() int {
 func (this *QTreeView) KeyboardSearch(search string) {
 	search_Cstring := C.CString(search)
 	defer C.free(unsafe.Pointer(search_Cstring))
-	C.QTreeView_KeyboardSearch(this.h, search_Cstring, C.ulong(len(search)))
+	C.QTreeView_KeyboardSearch(this.h, search_Cstring, C.size_t(len(search)))
 }
 
 func (this *QTreeView) VisualRect(index *QModelIndex) *QRect {
@@ -465,7 +465,7 @@ func (this *QTreeView) DataChanged3(topLeft *QModelIndex, bottomRight *QModelInd
 	for i := range roles {
 		roles_CArray[i] = (C.int)(roles[i])
 	}
-	C.QTreeView_DataChanged3(this.h, topLeft.cPointer(), bottomRight.cPointer(), &roles_CArray[0], C.ulong(len(roles)))
+	C.QTreeView_DataChanged3(this.h, topLeft.cPointer(), bottomRight.cPointer(), &roles_CArray[0], C.size_t(len(roles)))
 }
 
 func (this *QTreeView) ExpandRecursively2(index *QModelIndex, depth int) {

@@ -209,7 +209,7 @@ func (this *QSortFilterProxyModel) SetRecursiveFilteringEnabled(recursive bool) 
 func (this *QSortFilterProxyModel) SetFilterRegExp(pattern string) {
 	pattern_Cstring := C.CString(pattern)
 	defer C.free(unsafe.Pointer(pattern_Cstring))
-	C.QSortFilterProxyModel_SetFilterRegExp(this.h, pattern_Cstring, C.ulong(len(pattern)))
+	C.QSortFilterProxyModel_SetFilterRegExp(this.h, pattern_Cstring, C.size_t(len(pattern)))
 }
 
 func (this *QSortFilterProxyModel) SetFilterRegExpWithRegExp(regExp *QRegExp) {
@@ -219,7 +219,7 @@ func (this *QSortFilterProxyModel) SetFilterRegExpWithRegExp(regExp *QRegExp) {
 func (this *QSortFilterProxyModel) SetFilterRegularExpression(pattern string) {
 	pattern_Cstring := C.CString(pattern)
 	defer C.free(unsafe.Pointer(pattern_Cstring))
-	C.QSortFilterProxyModel_SetFilterRegularExpression(this.h, pattern_Cstring, C.ulong(len(pattern)))
+	C.QSortFilterProxyModel_SetFilterRegularExpression(this.h, pattern_Cstring, C.size_t(len(pattern)))
 }
 
 func (this *QSortFilterProxyModel) SetFilterRegularExpressionWithRegularExpression(regularExpression *QRegularExpression) {
@@ -229,13 +229,13 @@ func (this *QSortFilterProxyModel) SetFilterRegularExpressionWithRegularExpressi
 func (this *QSortFilterProxyModel) SetFilterWildcard(pattern string) {
 	pattern_Cstring := C.CString(pattern)
 	defer C.free(unsafe.Pointer(pattern_Cstring))
-	C.QSortFilterProxyModel_SetFilterWildcard(this.h, pattern_Cstring, C.ulong(len(pattern)))
+	C.QSortFilterProxyModel_SetFilterWildcard(this.h, pattern_Cstring, C.size_t(len(pattern)))
 }
 
 func (this *QSortFilterProxyModel) SetFilterFixedString(pattern string) {
 	pattern_Cstring := C.CString(pattern)
 	defer C.free(unsafe.Pointer(pattern_Cstring))
-	C.QSortFilterProxyModel_SetFilterFixedString(this.h, pattern_Cstring, C.ulong(len(pattern)))
+	C.QSortFilterProxyModel_SetFilterFixedString(this.h, pattern_Cstring, C.size_t(len(pattern)))
 }
 
 func (this *QSortFilterProxyModel) Clear() {
@@ -333,7 +333,7 @@ func (this *QSortFilterProxyModel) MimeData(indexes []QModelIndex) *QMimeData {
 	for i := range indexes {
 		indexes_CArray[i] = indexes[i].cPointer()
 	}
-	ret := C.QSortFilterProxyModel_MimeData(this.h, &indexes_CArray[0], C.ulong(len(indexes)))
+	ret := C.QSortFilterProxyModel_MimeData(this.h, &indexes_CArray[0], C.size_t(len(indexes)))
 	return newQMimeData_U(unsafe.Pointer(ret))
 }
 

@@ -176,7 +176,7 @@ func (this *QScroller) SetSnapPositionsX(positions []float64) {
 	for i := range positions {
 		positions_CArray[i] = (C.double)(positions[i])
 	}
-	C.QScroller_SetSnapPositionsX(this.h, &positions_CArray[0], C.ulong(len(positions)))
+	C.QScroller_SetSnapPositionsX(this.h, &positions_CArray[0], C.size_t(len(positions)))
 }
 
 func (this *QScroller) SetSnapPositionsX2(first float64, interval float64) {
@@ -190,7 +190,7 @@ func (this *QScroller) SetSnapPositionsY(positions []float64) {
 	for i := range positions {
 		positions_CArray[i] = (C.double)(positions[i])
 	}
-	C.QScroller_SetSnapPositionsY(this.h, &positions_CArray[0], C.ulong(len(positions)))
+	C.QScroller_SetSnapPositionsY(this.h, &positions_CArray[0], C.size_t(len(positions)))
 }
 
 func (this *QScroller) SetSnapPositionsY2(first float64, interval float64) {

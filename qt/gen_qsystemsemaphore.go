@@ -38,7 +38,7 @@ func newQSystemSemaphore_U(h unsafe.Pointer) *QSystemSemaphore {
 func NewQSystemSemaphore(key string) *QSystemSemaphore {
 	key_Cstring := C.CString(key)
 	defer C.free(unsafe.Pointer(key_Cstring))
-	ret := C.QSystemSemaphore_new(key_Cstring, C.ulong(len(key)))
+	ret := C.QSystemSemaphore_new(key_Cstring, C.size_t(len(key)))
 	return newQSystemSemaphore(ret)
 }
 
@@ -46,7 +46,7 @@ func NewQSystemSemaphore(key string) *QSystemSemaphore {
 func NewQSystemSemaphore2(key string, initialValue int) *QSystemSemaphore {
 	key_Cstring := C.CString(key)
 	defer C.free(unsafe.Pointer(key_Cstring))
-	ret := C.QSystemSemaphore_new2(key_Cstring, C.ulong(len(key)), (C.int)(initialValue))
+	ret := C.QSystemSemaphore_new2(key_Cstring, C.size_t(len(key)), (C.int)(initialValue))
 	return newQSystemSemaphore(ret)
 }
 
@@ -54,14 +54,14 @@ func NewQSystemSemaphore2(key string, initialValue int) *QSystemSemaphore {
 func NewQSystemSemaphore3(key string, initialValue int, mode uintptr) *QSystemSemaphore {
 	key_Cstring := C.CString(key)
 	defer C.free(unsafe.Pointer(key_Cstring))
-	ret := C.QSystemSemaphore_new3(key_Cstring, C.ulong(len(key)), (C.int)(initialValue), (C.uintptr_t)(mode))
+	ret := C.QSystemSemaphore_new3(key_Cstring, C.size_t(len(key)), (C.int)(initialValue), (C.uintptr_t)(mode))
 	return newQSystemSemaphore(ret)
 }
 
 func (this *QSystemSemaphore) SetKey(key string) {
 	key_Cstring := C.CString(key)
 	defer C.free(unsafe.Pointer(key_Cstring))
-	C.QSystemSemaphore_SetKey(this.h, key_Cstring, C.ulong(len(key)))
+	C.QSystemSemaphore_SetKey(this.h, key_Cstring, C.size_t(len(key)))
 }
 
 func (this *QSystemSemaphore) Key() string {
@@ -100,13 +100,13 @@ func (this *QSystemSemaphore) ErrorString() string {
 func (this *QSystemSemaphore) SetKey2(key string, initialValue int) {
 	key_Cstring := C.CString(key)
 	defer C.free(unsafe.Pointer(key_Cstring))
-	C.QSystemSemaphore_SetKey2(this.h, key_Cstring, C.ulong(len(key)), (C.int)(initialValue))
+	C.QSystemSemaphore_SetKey2(this.h, key_Cstring, C.size_t(len(key)), (C.int)(initialValue))
 }
 
 func (this *QSystemSemaphore) SetKey3(key string, initialValue int, mode uintptr) {
 	key_Cstring := C.CString(key)
 	defer C.free(unsafe.Pointer(key_Cstring))
-	C.QSystemSemaphore_SetKey3(this.h, key_Cstring, C.ulong(len(key)), (C.int)(initialValue), (C.uintptr_t)(mode))
+	C.QSystemSemaphore_SetKey3(this.h, key_Cstring, C.size_t(len(key)), (C.int)(initialValue), (C.uintptr_t)(mode))
 }
 
 func (this *QSystemSemaphore) Release1(n int) bool {

@@ -59,7 +59,7 @@ func NewQTimeZone4(zoneId *QByteArray, offsetSeconds int, name string, abbreviat
 	defer C.free(unsafe.Pointer(name_Cstring))
 	abbreviation_Cstring := C.CString(abbreviation)
 	defer C.free(unsafe.Pointer(abbreviation_Cstring))
-	ret := C.QTimeZone_new4(zoneId.cPointer(), (C.int)(offsetSeconds), name_Cstring, C.ulong(len(name)), abbreviation_Cstring, C.ulong(len(abbreviation)))
+	ret := C.QTimeZone_new4(zoneId.cPointer(), (C.int)(offsetSeconds), name_Cstring, C.size_t(len(name)), abbreviation_Cstring, C.size_t(len(abbreviation)))
 	return newQTimeZone(ret)
 }
 
@@ -75,7 +75,7 @@ func NewQTimeZone6(zoneId *QByteArray, offsetSeconds int, name string, abbreviat
 	defer C.free(unsafe.Pointer(name_Cstring))
 	abbreviation_Cstring := C.CString(abbreviation)
 	defer C.free(unsafe.Pointer(abbreviation_Cstring))
-	ret := C.QTimeZone_new6(zoneId.cPointer(), (C.int)(offsetSeconds), name_Cstring, C.ulong(len(name)), abbreviation_Cstring, C.ulong(len(abbreviation)), (C.uintptr_t)(country))
+	ret := C.QTimeZone_new6(zoneId.cPointer(), (C.int)(offsetSeconds), name_Cstring, C.size_t(len(name)), abbreviation_Cstring, C.size_t(len(abbreviation)), (C.uintptr_t)(country))
 	return newQTimeZone(ret)
 }
 
@@ -87,7 +87,7 @@ func NewQTimeZone7(zoneId *QByteArray, offsetSeconds int, name string, abbreviat
 	defer C.free(unsafe.Pointer(abbreviation_Cstring))
 	comment_Cstring := C.CString(comment)
 	defer C.free(unsafe.Pointer(comment_Cstring))
-	ret := C.QTimeZone_new7(zoneId.cPointer(), (C.int)(offsetSeconds), name_Cstring, C.ulong(len(name)), abbreviation_Cstring, C.ulong(len(abbreviation)), (C.uintptr_t)(country), comment_Cstring, C.ulong(len(comment)))
+	ret := C.QTimeZone_new7(zoneId.cPointer(), (C.int)(offsetSeconds), name_Cstring, C.size_t(len(name)), abbreviation_Cstring, C.size_t(len(abbreviation)), (C.uintptr_t)(country), comment_Cstring, C.size_t(len(comment)))
 	return newQTimeZone(ret)
 }
 

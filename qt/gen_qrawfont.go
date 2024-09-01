@@ -45,7 +45,7 @@ func NewQRawFont() *QRawFont {
 func NewQRawFont2(fileName string, pixelSize float64) *QRawFont {
 	fileName_Cstring := C.CString(fileName)
 	defer C.free(unsafe.Pointer(fileName_Cstring))
-	ret := C.QRawFont_new2(fileName_Cstring, C.ulong(len(fileName)), (C.double)(pixelSize))
+	ret := C.QRawFont_new2(fileName_Cstring, C.size_t(len(fileName)), (C.double)(pixelSize))
 	return newQRawFont(ret)
 }
 
@@ -65,7 +65,7 @@ func NewQRawFont4(other *QRawFont) *QRawFont {
 func NewQRawFont5(fileName string, pixelSize float64, hintingPreference uintptr) *QRawFont {
 	fileName_Cstring := C.CString(fileName)
 	defer C.free(unsafe.Pointer(fileName_Cstring))
-	ret := C.QRawFont_new5(fileName_Cstring, C.ulong(len(fileName)), (C.double)(pixelSize), (C.uintptr_t)(hintingPreference))
+	ret := C.QRawFont_new5(fileName_Cstring, C.size_t(len(fileName)), (C.double)(pixelSize), (C.uintptr_t)(hintingPreference))
 	return newQRawFont(ret)
 }
 
@@ -131,7 +131,7 @@ func (this *QRawFont) GlyphIndexesForString(text string) []uint {
 	defer C.free(unsafe.Pointer(text_Cstring))
 	var _out *C.uint = nil
 	var _out_len C.size_t = 0
-	C.QRawFont_GlyphIndexesForString(this.h, text_Cstring, C.ulong(len(text)), &_out, &_out_len)
+	C.QRawFont_GlyphIndexesForString(this.h, text_Cstring, C.size_t(len(text)), &_out, &_out_len)
 	ret := make([]uint, int(_out_len))
 	_outCast := (*[0xffff]C.uint)(unsafe.Pointer(_out)) // mrs jackson
 	for i := 0; i < int(_out_len); i++ {
@@ -150,7 +150,7 @@ func (this *QRawFont) AdvancesForGlyphIndexes(glyphIndexes []uint) []QPointF {
 	}
 	var _out **C.QPointF = nil
 	var _out_len C.size_t = 0
-	C.QRawFont_AdvancesForGlyphIndexes(this.h, &glyphIndexes_CArray[0], C.ulong(len(glyphIndexes)), &_out, &_out_len)
+	C.QRawFont_AdvancesForGlyphIndexes(this.h, &glyphIndexes_CArray[0], C.size_t(len(glyphIndexes)), &_out, &_out_len)
 	ret := make([]QPointF, int(_out_len))
 	_outCast := (*[0xffff]*C.QPointF)(unsafe.Pointer(_out)) // so fresh so clean
 	for i := 0; i < int(_out_len); i++ {
@@ -169,7 +169,7 @@ func (this *QRawFont) AdvancesForGlyphIndexes2(glyphIndexes []uint, layoutFlags 
 	}
 	var _out **C.QPointF = nil
 	var _out_len C.size_t = 0
-	C.QRawFont_AdvancesForGlyphIndexes2(this.h, &glyphIndexes_CArray[0], C.ulong(len(glyphIndexes)), (C.int)(layoutFlags), &_out, &_out_len)
+	C.QRawFont_AdvancesForGlyphIndexes2(this.h, &glyphIndexes_CArray[0], C.size_t(len(glyphIndexes)), (C.int)(layoutFlags), &_out, &_out_len)
 	ret := make([]QPointF, int(_out_len))
 	_outCast := (*[0xffff]*C.QPointF)(unsafe.Pointer(_out)) // so fresh so clean
 	for i := 0; i < int(_out_len); i++ {
@@ -294,7 +294,7 @@ func (this *QRawFont) UnitsPerEm() float64 {
 func (this *QRawFont) LoadFromFile(fileName string, pixelSize float64, hintingPreference uintptr) {
 	fileName_Cstring := C.CString(fileName)
 	defer C.free(unsafe.Pointer(fileName_Cstring))
-	C.QRawFont_LoadFromFile(this.h, fileName_Cstring, C.ulong(len(fileName)), (C.double)(pixelSize), (C.uintptr_t)(hintingPreference))
+	C.QRawFont_LoadFromFile(this.h, fileName_Cstring, C.size_t(len(fileName)), (C.double)(pixelSize), (C.uintptr_t)(hintingPreference))
 }
 
 func (this *QRawFont) LoadFromData(fontData *QByteArray, pixelSize float64, hintingPreference uintptr) {

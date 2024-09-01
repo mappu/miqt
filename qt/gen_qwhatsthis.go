@@ -50,7 +50,7 @@ func QWhatsThis_LeaveWhatsThisMode() {
 func QWhatsThis_ShowText(pos *QPoint, text string) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QWhatsThis_ShowText(pos.cPointer(), text_Cstring, C.ulong(len(text)))
+	C.QWhatsThis_ShowText(pos.cPointer(), text_Cstring, C.size_t(len(text)))
 }
 
 func QWhatsThis_HideText() {
@@ -65,7 +65,7 @@ func QWhatsThis_CreateAction() *QAction {
 func QWhatsThis_ShowText3(pos *QPoint, text string, w *QWidget) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QWhatsThis_ShowText3(pos.cPointer(), text_Cstring, C.ulong(len(text)), w.cPointer())
+	C.QWhatsThis_ShowText3(pos.cPointer(), text_Cstring, C.size_t(len(text)), w.cPointer())
 }
 
 func QWhatsThis_CreateAction1(parent *QObject) *QAction {

@@ -122,7 +122,7 @@ func QIconEnginePlugin_TrUtf83(s string, c string, n int) string {
 func (this *QIconEnginePlugin) Create1(filename string) *QIconEngine {
 	filename_Cstring := C.CString(filename)
 	defer C.free(unsafe.Pointer(filename_Cstring))
-	ret := C.QIconEnginePlugin_Create1(this.h, filename_Cstring, C.ulong(len(filename)))
+	ret := C.QIconEnginePlugin_Create1(this.h, filename_Cstring, C.size_t(len(filename)))
 	return newQIconEngine_U(unsafe.Pointer(ret))
 }
 

@@ -92,7 +92,7 @@ func (this *QSpinBox) Prefix() string {
 func (this *QSpinBox) SetPrefix(prefix string) {
 	prefix_Cstring := C.CString(prefix)
 	defer C.free(unsafe.Pointer(prefix_Cstring))
-	C.QSpinBox_SetPrefix(this.h, prefix_Cstring, C.ulong(len(prefix)))
+	C.QSpinBox_SetPrefix(this.h, prefix_Cstring, C.size_t(len(prefix)))
 }
 
 func (this *QSpinBox) Suffix() string {
@@ -107,7 +107,7 @@ func (this *QSpinBox) Suffix() string {
 func (this *QSpinBox) SetSuffix(suffix string) {
 	suffix_Cstring := C.CString(suffix)
 	defer C.free(unsafe.Pointer(suffix_Cstring))
-	C.QSpinBox_SetSuffix(this.h, suffix_Cstring, C.ulong(len(suffix)))
+	C.QSpinBox_SetSuffix(this.h, suffix_Cstring, C.size_t(len(suffix)))
 }
 
 func (this *QSpinBox) CleanText() string {
@@ -187,7 +187,7 @@ func (this *QSpinBox) OnValueChanged(slot func()) {
 func (this *QSpinBox) TextChanged(param1 string) {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	C.QSpinBox_TextChanged(this.h, param1_Cstring, C.ulong(len(param1)))
+	C.QSpinBox_TextChanged(this.h, param1_Cstring, C.size_t(len(param1)))
 }
 
 func (this *QSpinBox) OnTextChanged(slot func()) {
@@ -201,7 +201,7 @@ func (this *QSpinBox) OnTextChanged(slot func()) {
 func (this *QSpinBox) ValueChangedWithQString(param1 string) {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	C.QSpinBox_ValueChangedWithQString(this.h, param1_Cstring, C.ulong(len(param1)))
+	C.QSpinBox_ValueChangedWithQString(this.h, param1_Cstring, C.size_t(len(param1)))
 }
 
 func (this *QSpinBox) OnValueChangedWithQString(slot func()) {
@@ -347,7 +347,7 @@ func (this *QDoubleSpinBox) Prefix() string {
 func (this *QDoubleSpinBox) SetPrefix(prefix string) {
 	prefix_Cstring := C.CString(prefix)
 	defer C.free(unsafe.Pointer(prefix_Cstring))
-	C.QDoubleSpinBox_SetPrefix(this.h, prefix_Cstring, C.ulong(len(prefix)))
+	C.QDoubleSpinBox_SetPrefix(this.h, prefix_Cstring, C.size_t(len(prefix)))
 }
 
 func (this *QDoubleSpinBox) Suffix() string {
@@ -362,7 +362,7 @@ func (this *QDoubleSpinBox) Suffix() string {
 func (this *QDoubleSpinBox) SetSuffix(suffix string) {
 	suffix_Cstring := C.CString(suffix)
 	defer C.free(unsafe.Pointer(suffix_Cstring))
-	C.QDoubleSpinBox_SetSuffix(this.h, suffix_Cstring, C.ulong(len(suffix)))
+	C.QDoubleSpinBox_SetSuffix(this.h, suffix_Cstring, C.size_t(len(suffix)))
 }
 
 func (this *QDoubleSpinBox) CleanText() string {
@@ -426,14 +426,14 @@ func (this *QDoubleSpinBox) SetDecimals(prec int) {
 func (this *QDoubleSpinBox) Validate(input string, pos *int) uintptr {
 	input_Cstring := C.CString(input)
 	defer C.free(unsafe.Pointer(input_Cstring))
-	ret := C.QDoubleSpinBox_Validate(this.h, input_Cstring, C.ulong(len(input)), (*C.int)(unsafe.Pointer(pos)))
+	ret := C.QDoubleSpinBox_Validate(this.h, input_Cstring, C.size_t(len(input)), (*C.int)(unsafe.Pointer(pos)))
 	return (uintptr)(ret)
 }
 
 func (this *QDoubleSpinBox) ValueFromText(text string) float64 {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QDoubleSpinBox_ValueFromText(this.h, text_Cstring, C.ulong(len(text)))
+	ret := C.QDoubleSpinBox_ValueFromText(this.h, text_Cstring, C.size_t(len(text)))
 	return (float64)(ret)
 }
 
@@ -449,7 +449,7 @@ func (this *QDoubleSpinBox) TextFromValue(val float64) string {
 func (this *QDoubleSpinBox) Fixup(str string) {
 	str_Cstring := C.CString(str)
 	defer C.free(unsafe.Pointer(str_Cstring))
-	C.QDoubleSpinBox_Fixup(this.h, str_Cstring, C.ulong(len(str)))
+	C.QDoubleSpinBox_Fixup(this.h, str_Cstring, C.size_t(len(str)))
 }
 
 func (this *QDoubleSpinBox) SetValue(val float64) {
@@ -471,7 +471,7 @@ func (this *QDoubleSpinBox) OnValueChanged(slot func()) {
 func (this *QDoubleSpinBox) TextChanged(param1 string) {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	C.QDoubleSpinBox_TextChanged(this.h, param1_Cstring, C.ulong(len(param1)))
+	C.QDoubleSpinBox_TextChanged(this.h, param1_Cstring, C.size_t(len(param1)))
 }
 
 func (this *QDoubleSpinBox) OnTextChanged(slot func()) {
@@ -485,7 +485,7 @@ func (this *QDoubleSpinBox) OnTextChanged(slot func()) {
 func (this *QDoubleSpinBox) ValueChangedWithQString(param1 string) {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	C.QDoubleSpinBox_ValueChangedWithQString(this.h, param1_Cstring, C.ulong(len(param1)))
+	C.QDoubleSpinBox_ValueChangedWithQString(this.h, param1_Cstring, C.size_t(len(param1)))
 }
 
 func (this *QDoubleSpinBox) OnValueChangedWithQString(slot func()) {

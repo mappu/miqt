@@ -46,7 +46,7 @@ func NewQRadioButton() *QRadioButton {
 func NewQRadioButton2(text string) *QRadioButton {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QRadioButton_new2(text_Cstring, C.ulong(len(text)))
+	ret := C.QRadioButton_new2(text_Cstring, C.size_t(len(text)))
 	return newQRadioButton(ret)
 }
 
@@ -60,7 +60,7 @@ func NewQRadioButton3(parent *QWidget) *QRadioButton {
 func NewQRadioButton4(text string, parent *QWidget) *QRadioButton {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QRadioButton_new4(text_Cstring, C.ulong(len(text)), parent.cPointer())
+	ret := C.QRadioButton_new4(text_Cstring, C.size_t(len(text)), parent.cPointer())
 	return newQRadioButton(ret)
 }
 

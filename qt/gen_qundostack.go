@@ -45,7 +45,7 @@ func NewQUndoCommand() *QUndoCommand {
 func NewQUndoCommand2(text string) *QUndoCommand {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QUndoCommand_new2(text_Cstring, C.ulong(len(text)))
+	ret := C.QUndoCommand_new2(text_Cstring, C.size_t(len(text)))
 	return newQUndoCommand(ret)
 }
 
@@ -59,7 +59,7 @@ func NewQUndoCommand3(parent *QUndoCommand) *QUndoCommand {
 func NewQUndoCommand4(text string, parent *QUndoCommand) *QUndoCommand {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QUndoCommand_new4(text_Cstring, C.ulong(len(text)), parent.cPointer())
+	ret := C.QUndoCommand_new4(text_Cstring, C.size_t(len(text)), parent.cPointer())
 	return newQUndoCommand(ret)
 }
 
@@ -92,7 +92,7 @@ func (this *QUndoCommand) ActionText() string {
 func (this *QUndoCommand) SetText(text string) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QUndoCommand_SetText(this.h, text_Cstring, C.ulong(len(text)))
+	C.QUndoCommand_SetText(this.h, text_Cstring, C.size_t(len(text)))
 }
 
 func (this *QUndoCommand) IsObsolete() bool {
@@ -273,7 +273,7 @@ func (this *QUndoStack) CleanIndex() int {
 func (this *QUndoStack) BeginMacro(text string) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QUndoStack_BeginMacro(this.h, text_Cstring, C.ulong(len(text)))
+	C.QUndoStack_BeginMacro(this.h, text_Cstring, C.size_t(len(text)))
 }
 
 func (this *QUndoStack) EndMacro() {
@@ -369,7 +369,7 @@ func (this *QUndoStack) OnCanRedoChanged(slot func()) {
 func (this *QUndoStack) UndoTextChanged(undoText string) {
 	undoText_Cstring := C.CString(undoText)
 	defer C.free(unsafe.Pointer(undoText_Cstring))
-	C.QUndoStack_UndoTextChanged(this.h, undoText_Cstring, C.ulong(len(undoText)))
+	C.QUndoStack_UndoTextChanged(this.h, undoText_Cstring, C.size_t(len(undoText)))
 }
 
 func (this *QUndoStack) OnUndoTextChanged(slot func()) {
@@ -383,7 +383,7 @@ func (this *QUndoStack) OnUndoTextChanged(slot func()) {
 func (this *QUndoStack) RedoTextChanged(redoText string) {
 	redoText_Cstring := C.CString(redoText)
 	defer C.free(unsafe.Pointer(redoText_Cstring))
-	C.QUndoStack_RedoTextChanged(this.h, redoText_Cstring, C.ulong(len(redoText)))
+	C.QUndoStack_RedoTextChanged(this.h, redoText_Cstring, C.size_t(len(redoText)))
 }
 
 func (this *QUndoStack) OnRedoTextChanged(slot func()) {
@@ -449,14 +449,14 @@ func QUndoStack_TrUtf83(s string, c string, n int) string {
 func (this *QUndoStack) CreateUndoAction2(parent *QObject, prefix string) *QAction {
 	prefix_Cstring := C.CString(prefix)
 	defer C.free(unsafe.Pointer(prefix_Cstring))
-	ret := C.QUndoStack_CreateUndoAction2(this.h, parent.cPointer(), prefix_Cstring, C.ulong(len(prefix)))
+	ret := C.QUndoStack_CreateUndoAction2(this.h, parent.cPointer(), prefix_Cstring, C.size_t(len(prefix)))
 	return newQAction_U(unsafe.Pointer(ret))
 }
 
 func (this *QUndoStack) CreateRedoAction2(parent *QObject, prefix string) *QAction {
 	prefix_Cstring := C.CString(prefix)
 	defer C.free(unsafe.Pointer(prefix_Cstring))
-	ret := C.QUndoStack_CreateRedoAction2(this.h, parent.cPointer(), prefix_Cstring, C.ulong(len(prefix)))
+	ret := C.QUndoStack_CreateRedoAction2(this.h, parent.cPointer(), prefix_Cstring, C.size_t(len(prefix)))
 	return newQAction_U(unsafe.Pointer(ret))
 }
 

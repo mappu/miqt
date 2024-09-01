@@ -219,7 +219,7 @@ func (this *QUndoGroup) OnCanRedoChanged(slot func()) {
 func (this *QUndoGroup) UndoTextChanged(undoText string) {
 	undoText_Cstring := C.CString(undoText)
 	defer C.free(unsafe.Pointer(undoText_Cstring))
-	C.QUndoGroup_UndoTextChanged(this.h, undoText_Cstring, C.ulong(len(undoText)))
+	C.QUndoGroup_UndoTextChanged(this.h, undoText_Cstring, C.size_t(len(undoText)))
 }
 
 func (this *QUndoGroup) OnUndoTextChanged(slot func()) {
@@ -233,7 +233,7 @@ func (this *QUndoGroup) OnUndoTextChanged(slot func()) {
 func (this *QUndoGroup) RedoTextChanged(redoText string) {
 	redoText_Cstring := C.CString(redoText)
 	defer C.free(unsafe.Pointer(redoText_Cstring))
-	C.QUndoGroup_RedoTextChanged(this.h, redoText_Cstring, C.ulong(len(redoText)))
+	C.QUndoGroup_RedoTextChanged(this.h, redoText_Cstring, C.size_t(len(redoText)))
 }
 
 func (this *QUndoGroup) OnRedoTextChanged(slot func()) {
@@ -299,14 +299,14 @@ func QUndoGroup_TrUtf83(s string, c string, n int) string {
 func (this *QUndoGroup) CreateUndoAction2(parent *QObject, prefix string) *QAction {
 	prefix_Cstring := C.CString(prefix)
 	defer C.free(unsafe.Pointer(prefix_Cstring))
-	ret := C.QUndoGroup_CreateUndoAction2(this.h, parent.cPointer(), prefix_Cstring, C.ulong(len(prefix)))
+	ret := C.QUndoGroup_CreateUndoAction2(this.h, parent.cPointer(), prefix_Cstring, C.size_t(len(prefix)))
 	return newQAction_U(unsafe.Pointer(ret))
 }
 
 func (this *QUndoGroup) CreateRedoAction2(parent *QObject, prefix string) *QAction {
 	prefix_Cstring := C.CString(prefix)
 	defer C.free(unsafe.Pointer(prefix_Cstring))
-	ret := C.QUndoGroup_CreateRedoAction2(this.h, parent.cPointer(), prefix_Cstring, C.ulong(len(prefix)))
+	ret := C.QUndoGroup_CreateRedoAction2(this.h, parent.cPointer(), prefix_Cstring, C.size_t(len(prefix)))
 	return newQAction_U(unsafe.Pointer(ret))
 }
 

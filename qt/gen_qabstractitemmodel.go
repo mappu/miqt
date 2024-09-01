@@ -497,7 +497,7 @@ func (this *QAbstractItemModel) MimeData(indexes []QModelIndex) *QMimeData {
 	for i := range indexes {
 		indexes_CArray[i] = indexes[i].cPointer()
 	}
-	ret := C.QAbstractItemModel_MimeData(this.h, &indexes_CArray[0], C.ulong(len(indexes)))
+	ret := C.QAbstractItemModel_MimeData(this.h, &indexes_CArray[0], C.size_t(len(indexes)))
 	return newQMimeData_U(unsafe.Pointer(ret))
 }
 
@@ -869,7 +869,7 @@ func (this *QAbstractItemModel) DataChanged3(topLeft *QModelIndex, bottomRight *
 	for i := range roles {
 		roles_CArray[i] = (C.int)(roles[i])
 	}
-	C.QAbstractItemModel_DataChanged3(this.h, topLeft.cPointer(), bottomRight.cPointer(), &roles_CArray[0], C.ulong(len(roles)))
+	C.QAbstractItemModel_DataChanged3(this.h, topLeft.cPointer(), bottomRight.cPointer(), &roles_CArray[0], C.size_t(len(roles)))
 }
 
 func (this *QAbstractItemModel) OnDataChanged3(slot func()) {
@@ -887,7 +887,7 @@ func (this *QAbstractItemModel) LayoutChanged1(parents []QPersistentModelIndex) 
 	for i := range parents {
 		parents_CArray[i] = parents[i].cPointer()
 	}
-	C.QAbstractItemModel_LayoutChanged1(this.h, &parents_CArray[0], C.ulong(len(parents)))
+	C.QAbstractItemModel_LayoutChanged1(this.h, &parents_CArray[0], C.size_t(len(parents)))
 }
 
 func (this *QAbstractItemModel) LayoutChanged2(parents []QPersistentModelIndex, hint uintptr) {
@@ -897,7 +897,7 @@ func (this *QAbstractItemModel) LayoutChanged2(parents []QPersistentModelIndex, 
 	for i := range parents {
 		parents_CArray[i] = parents[i].cPointer()
 	}
-	C.QAbstractItemModel_LayoutChanged2(this.h, &parents_CArray[0], C.ulong(len(parents)), (C.uintptr_t)(hint))
+	C.QAbstractItemModel_LayoutChanged2(this.h, &parents_CArray[0], C.size_t(len(parents)), (C.uintptr_t)(hint))
 }
 
 func (this *QAbstractItemModel) OnLayoutChanged2(slot func()) {
@@ -915,7 +915,7 @@ func (this *QAbstractItemModel) LayoutAboutToBeChanged1(parents []QPersistentMod
 	for i := range parents {
 		parents_CArray[i] = parents[i].cPointer()
 	}
-	C.QAbstractItemModel_LayoutAboutToBeChanged1(this.h, &parents_CArray[0], C.ulong(len(parents)))
+	C.QAbstractItemModel_LayoutAboutToBeChanged1(this.h, &parents_CArray[0], C.size_t(len(parents)))
 }
 
 func (this *QAbstractItemModel) LayoutAboutToBeChanged2(parents []QPersistentModelIndex, hint uintptr) {
@@ -925,7 +925,7 @@ func (this *QAbstractItemModel) LayoutAboutToBeChanged2(parents []QPersistentMod
 	for i := range parents {
 		parents_CArray[i] = parents[i].cPointer()
 	}
-	C.QAbstractItemModel_LayoutAboutToBeChanged2(this.h, &parents_CArray[0], C.ulong(len(parents)), (C.uintptr_t)(hint))
+	C.QAbstractItemModel_LayoutAboutToBeChanged2(this.h, &parents_CArray[0], C.size_t(len(parents)), (C.uintptr_t)(hint))
 }
 
 func (this *QAbstractItemModel) OnLayoutAboutToBeChanged2(slot func()) {

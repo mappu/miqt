@@ -82,7 +82,7 @@ func (this *QSignalMapper) SetMapping(sender *QObject, id int) {
 func (this *QSignalMapper) SetMapping2(sender *QObject, text string) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QSignalMapper_SetMapping2(this.h, sender.cPointer(), text_Cstring, C.ulong(len(text)))
+	C.QSignalMapper_SetMapping2(this.h, sender.cPointer(), text_Cstring, C.size_t(len(text)))
 }
 
 func (this *QSignalMapper) SetMapping3(sender *QObject, widget *QWidget) {
@@ -105,7 +105,7 @@ func (this *QSignalMapper) Mapping(id int) *QObject {
 func (this *QSignalMapper) MappingWithText(text string) *QObject {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QSignalMapper_MappingWithText(this.h, text_Cstring, C.ulong(len(text)))
+	ret := C.QSignalMapper_MappingWithText(this.h, text_Cstring, C.size_t(len(text)))
 	return newQObject_U(unsafe.Pointer(ret))
 }
 
@@ -134,7 +134,7 @@ func (this *QSignalMapper) OnMapped(slot func()) {
 func (this *QSignalMapper) MappedWithQString(param1 string) {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	C.QSignalMapper_MappedWithQString(this.h, param1_Cstring, C.ulong(len(param1)))
+	C.QSignalMapper_MappedWithQString(this.h, param1_Cstring, C.size_t(len(param1)))
 }
 
 func (this *QSignalMapper) OnMappedWithQString(slot func()) {
@@ -184,7 +184,7 @@ func (this *QSignalMapper) OnMappedInt(slot func()) {
 func (this *QSignalMapper) MappedString(param1 string) {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	C.QSignalMapper_MappedString(this.h, param1_Cstring, C.ulong(len(param1)))
+	C.QSignalMapper_MappedString(this.h, param1_Cstring, C.size_t(len(param1)))
 }
 
 func (this *QSignalMapper) OnMappedString(slot func()) {

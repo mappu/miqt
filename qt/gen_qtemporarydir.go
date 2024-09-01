@@ -44,7 +44,7 @@ func NewQTemporaryDir() *QTemporaryDir {
 func NewQTemporaryDir2(templateName string) *QTemporaryDir {
 	templateName_Cstring := C.CString(templateName)
 	defer C.free(unsafe.Pointer(templateName_Cstring))
-	ret := C.QTemporaryDir_new2(templateName_Cstring, C.ulong(len(templateName)))
+	ret := C.QTemporaryDir_new2(templateName_Cstring, C.size_t(len(templateName)))
 	return newQTemporaryDir(ret)
 }
 
@@ -90,7 +90,7 @@ func (this *QTemporaryDir) FilePath(fileName string) string {
 	defer C.free(unsafe.Pointer(fileName_Cstring))
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
-	C.QTemporaryDir_FilePath(this.h, fileName_Cstring, C.ulong(len(fileName)), &_out, &_out_Strlen)
+	C.QTemporaryDir_FilePath(this.h, fileName_Cstring, C.size_t(len(fileName)), &_out, &_out_Strlen)
 	ret := C.GoStringN(_out, _out_Strlen)
 	C.free(unsafe.Pointer(_out))
 	return ret

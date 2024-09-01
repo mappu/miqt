@@ -187,7 +187,7 @@ func (this *QDebug) OperatorShiftLeft2(t string) *QDebug {
 func (this *QDebug) OperatorShiftLeftWithQString(t string) *QDebug {
 	t_Cstring := C.CString(t)
 	defer C.free(unsafe.Pointer(t_Cstring))
-	ret := C.QDebug_OperatorShiftLeftWithQString(this.h, t_Cstring, C.ulong(len(t)))
+	ret := C.QDebug_OperatorShiftLeftWithQString(this.h, t_Cstring, C.size_t(len(t)))
 	return newQDebug_U(unsafe.Pointer(ret))
 }
 

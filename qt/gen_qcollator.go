@@ -153,7 +153,7 @@ func (this *QCollator) Compare(s1 string, s2 string) int {
 	defer C.free(unsafe.Pointer(s1_Cstring))
 	s2_Cstring := C.CString(s2)
 	defer C.free(unsafe.Pointer(s2_Cstring))
-	ret := C.QCollator_Compare(this.h, s1_Cstring, C.ulong(len(s1)), s2_Cstring, C.ulong(len(s2)))
+	ret := C.QCollator_Compare(this.h, s1_Cstring, C.size_t(len(s1)), s2_Cstring, C.size_t(len(s2)))
 	return (int)(ret)
 }
 
@@ -167,14 +167,14 @@ func (this *QCollator) OperatorCall(s1 string, s2 string) bool {
 	defer C.free(unsafe.Pointer(s1_Cstring))
 	s2_Cstring := C.CString(s2)
 	defer C.free(unsafe.Pointer(s2_Cstring))
-	ret := C.QCollator_OperatorCall(this.h, s1_Cstring, C.ulong(len(s1)), s2_Cstring, C.ulong(len(s2)))
+	ret := C.QCollator_OperatorCall(this.h, s1_Cstring, C.size_t(len(s1)), s2_Cstring, C.size_t(len(s2)))
 	return (bool)(ret)
 }
 
 func (this *QCollator) SortKey(stringVal string) *QCollatorSortKey {
 	stringVal_Cstring := C.CString(stringVal)
 	defer C.free(unsafe.Pointer(stringVal_Cstring))
-	ret := C.QCollator_SortKey(this.h, stringVal_Cstring, C.ulong(len(stringVal)))
+	ret := C.QCollator_SortKey(this.h, stringVal_Cstring, C.size_t(len(stringVal)))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQCollatorSortKey(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QCollatorSortKey) {

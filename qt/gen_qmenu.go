@@ -47,7 +47,7 @@ func NewQMenu() *QMenu {
 func NewQMenu2(title string) *QMenu {
 	title_Cstring := C.CString(title)
 	defer C.free(unsafe.Pointer(title_Cstring))
-	ret := C.QMenu_new2(title_Cstring, C.ulong(len(title)))
+	ret := C.QMenu_new2(title_Cstring, C.size_t(len(title)))
 	return newQMenu(ret)
 }
 
@@ -61,7 +61,7 @@ func NewQMenu3(parent *QWidget) *QMenu {
 func NewQMenu4(title string, parent *QWidget) *QMenu {
 	title_Cstring := C.CString(title)
 	defer C.free(unsafe.Pointer(title_Cstring))
-	ret := C.QMenu_new4(title_Cstring, C.ulong(len(title)), parent.cPointer())
+	ret := C.QMenu_new4(title_Cstring, C.size_t(len(title)), parent.cPointer())
 	return newQMenu(ret)
 }
 
@@ -95,14 +95,14 @@ func QMenu_TrUtf8(s string) string {
 func (this *QMenu) AddAction(text string) *QAction {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QMenu_AddAction(this.h, text_Cstring, C.ulong(len(text)))
+	ret := C.QMenu_AddAction(this.h, text_Cstring, C.size_t(len(text)))
 	return newQAction_U(unsafe.Pointer(ret))
 }
 
 func (this *QMenu) AddAction2(icon *QIcon, text string) *QAction {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QMenu_AddAction2(this.h, icon.cPointer(), text_Cstring, C.ulong(len(text)))
+	ret := C.QMenu_AddAction2(this.h, icon.cPointer(), text_Cstring, C.size_t(len(text)))
 	return newQAction_U(unsafe.Pointer(ret))
 }
 
@@ -114,14 +114,14 @@ func (this *QMenu) AddMenu(menu *QMenu) *QAction {
 func (this *QMenu) AddMenuWithTitle(title string) *QMenu {
 	title_Cstring := C.CString(title)
 	defer C.free(unsafe.Pointer(title_Cstring))
-	ret := C.QMenu_AddMenuWithTitle(this.h, title_Cstring, C.ulong(len(title)))
+	ret := C.QMenu_AddMenuWithTitle(this.h, title_Cstring, C.size_t(len(title)))
 	return newQMenu_U(unsafe.Pointer(ret))
 }
 
 func (this *QMenu) AddMenu2(icon *QIcon, title string) *QMenu {
 	title_Cstring := C.CString(title)
 	defer C.free(unsafe.Pointer(title_Cstring))
-	ret := C.QMenu_AddMenu2(this.h, icon.cPointer(), title_Cstring, C.ulong(len(title)))
+	ret := C.QMenu_AddMenu2(this.h, icon.cPointer(), title_Cstring, C.size_t(len(title)))
 	return newQMenu_U(unsafe.Pointer(ret))
 }
 
@@ -133,14 +133,14 @@ func (this *QMenu) AddSeparator() *QAction {
 func (this *QMenu) AddSection(text string) *QAction {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QMenu_AddSection(this.h, text_Cstring, C.ulong(len(text)))
+	ret := C.QMenu_AddSection(this.h, text_Cstring, C.size_t(len(text)))
 	return newQAction_U(unsafe.Pointer(ret))
 }
 
 func (this *QMenu) AddSection2(icon *QIcon, text string) *QAction {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QMenu_AddSection2(this.h, icon.cPointer(), text_Cstring, C.ulong(len(text)))
+	ret := C.QMenu_AddSection2(this.h, icon.cPointer(), text_Cstring, C.size_t(len(text)))
 	return newQAction_U(unsafe.Pointer(ret))
 }
 
@@ -157,14 +157,14 @@ func (this *QMenu) InsertSeparator(before *QAction) *QAction {
 func (this *QMenu) InsertSection(before *QAction, text string) *QAction {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QMenu_InsertSection(this.h, before.cPointer(), text_Cstring, C.ulong(len(text)))
+	ret := C.QMenu_InsertSection(this.h, before.cPointer(), text_Cstring, C.size_t(len(text)))
 	return newQAction_U(unsafe.Pointer(ret))
 }
 
 func (this *QMenu) InsertSection2(before *QAction, icon *QIcon, text string) *QAction {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QMenu_InsertSection2(this.h, before.cPointer(), icon.cPointer(), text_Cstring, C.ulong(len(text)))
+	ret := C.QMenu_InsertSection2(this.h, before.cPointer(), icon.cPointer(), text_Cstring, C.size_t(len(text)))
 	return newQAction_U(unsafe.Pointer(ret))
 }
 
@@ -242,7 +242,7 @@ func QMenu_Exec2(actions []*QAction, pos *QPoint) *QAction {
 	for i := range actions {
 		actions_CArray[i] = actions[i].cPointer()
 	}
-	ret := C.QMenu_Exec2(&actions_CArray[0], C.ulong(len(actions)), pos.cPointer())
+	ret := C.QMenu_Exec2(&actions_CArray[0], C.size_t(len(actions)), pos.cPointer())
 	return newQAction_U(unsafe.Pointer(ret))
 }
 
@@ -290,7 +290,7 @@ func (this *QMenu) Title() string {
 func (this *QMenu) SetTitle(title string) {
 	title_Cstring := C.CString(title)
 	defer C.free(unsafe.Pointer(title_Cstring))
-	C.QMenu_SetTitle(this.h, title_Cstring, C.ulong(len(title)))
+	C.QMenu_SetTitle(this.h, title_Cstring, C.size_t(len(title)))
 }
 
 func (this *QMenu) Icon() *QIcon {
@@ -446,7 +446,7 @@ func QMenu_Exec3(actions []*QAction, pos *QPoint, at *QAction) *QAction {
 	for i := range actions {
 		actions_CArray[i] = actions[i].cPointer()
 	}
-	ret := C.QMenu_Exec3(&actions_CArray[0], C.ulong(len(actions)), pos.cPointer(), at.cPointer())
+	ret := C.QMenu_Exec3(&actions_CArray[0], C.size_t(len(actions)), pos.cPointer(), at.cPointer())
 	return newQAction_U(unsafe.Pointer(ret))
 }
 
@@ -457,7 +457,7 @@ func QMenu_Exec4(actions []*QAction, pos *QPoint, at *QAction, parent *QWidget) 
 	for i := range actions {
 		actions_CArray[i] = actions[i].cPointer()
 	}
-	ret := C.QMenu_Exec4(&actions_CArray[0], C.ulong(len(actions)), pos.cPointer(), at.cPointer(), parent.cPointer())
+	ret := C.QMenu_Exec4(&actions_CArray[0], C.size_t(len(actions)), pos.cPointer(), at.cPointer(), parent.cPointer())
 	return newQAction_U(unsafe.Pointer(ret))
 }
 

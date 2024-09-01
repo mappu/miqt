@@ -353,7 +353,7 @@ func (this *QDateTimeEdit) DisplayFormat() string {
 func (this *QDateTimeEdit) SetDisplayFormat(format string) {
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
-	C.QDateTimeEdit_SetDisplayFormat(this.h, format_Cstring, C.ulong(len(format)))
+	C.QDateTimeEdit_SetDisplayFormat(this.h, format_Cstring, C.size_t(len(format)))
 }
 
 func (this *QDateTimeEdit) CalendarPopup() bool {

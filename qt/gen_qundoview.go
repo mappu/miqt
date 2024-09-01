@@ -112,7 +112,7 @@ func (this *QUndoView) Group() *QUndoGroup {
 func (this *QUndoView) SetEmptyLabel(label string) {
 	label_Cstring := C.CString(label)
 	defer C.free(unsafe.Pointer(label_Cstring))
-	C.QUndoView_SetEmptyLabel(this.h, label_Cstring, C.ulong(len(label)))
+	C.QUndoView_SetEmptyLabel(this.h, label_Cstring, C.size_t(len(label)))
 }
 
 func (this *QUndoView) EmptyLabel() string {

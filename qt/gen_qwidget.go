@@ -687,13 +687,13 @@ func (this *QWidget) UngrabGesture(typeVal uintptr) {
 func (this *QWidget) SetWindowTitle(windowTitle string) {
 	windowTitle_Cstring := C.CString(windowTitle)
 	defer C.free(unsafe.Pointer(windowTitle_Cstring))
-	C.QWidget_SetWindowTitle(this.h, windowTitle_Cstring, C.ulong(len(windowTitle)))
+	C.QWidget_SetWindowTitle(this.h, windowTitle_Cstring, C.size_t(len(windowTitle)))
 }
 
 func (this *QWidget) SetStyleSheet(styleSheet string) {
 	styleSheet_Cstring := C.CString(styleSheet)
 	defer C.free(unsafe.Pointer(styleSheet_Cstring))
-	C.QWidget_SetStyleSheet(this.h, styleSheet_Cstring, C.ulong(len(styleSheet)))
+	C.QWidget_SetStyleSheet(this.h, styleSheet_Cstring, C.size_t(len(styleSheet)))
 }
 
 func (this *QWidget) StyleSheet() string {
@@ -732,7 +732,7 @@ func (this *QWidget) WindowIcon() *QIcon {
 func (this *QWidget) SetWindowIconText(windowIconText string) {
 	windowIconText_Cstring := C.CString(windowIconText)
 	defer C.free(unsafe.Pointer(windowIconText_Cstring))
-	C.QWidget_SetWindowIconText(this.h, windowIconText_Cstring, C.ulong(len(windowIconText)))
+	C.QWidget_SetWindowIconText(this.h, windowIconText_Cstring, C.size_t(len(windowIconText)))
 }
 
 func (this *QWidget) WindowIconText() string {
@@ -747,7 +747,7 @@ func (this *QWidget) WindowIconText() string {
 func (this *QWidget) SetWindowRole(windowRole string) {
 	windowRole_Cstring := C.CString(windowRole)
 	defer C.free(unsafe.Pointer(windowRole_Cstring))
-	C.QWidget_SetWindowRole(this.h, windowRole_Cstring, C.ulong(len(windowRole)))
+	C.QWidget_SetWindowRole(this.h, windowRole_Cstring, C.size_t(len(windowRole)))
 }
 
 func (this *QWidget) WindowRole() string {
@@ -762,7 +762,7 @@ func (this *QWidget) WindowRole() string {
 func (this *QWidget) SetWindowFilePath(filePath string) {
 	filePath_Cstring := C.CString(filePath)
 	defer C.free(unsafe.Pointer(filePath_Cstring))
-	C.QWidget_SetWindowFilePath(this.h, filePath_Cstring, C.ulong(len(filePath)))
+	C.QWidget_SetWindowFilePath(this.h, filePath_Cstring, C.size_t(len(filePath)))
 }
 
 func (this *QWidget) WindowFilePath() string {
@@ -791,7 +791,7 @@ func (this *QWidget) IsWindowModified() bool {
 func (this *QWidget) SetToolTip(toolTip string) {
 	toolTip_Cstring := C.CString(toolTip)
 	defer C.free(unsafe.Pointer(toolTip_Cstring))
-	C.QWidget_SetToolTip(this.h, toolTip_Cstring, C.ulong(len(toolTip)))
+	C.QWidget_SetToolTip(this.h, toolTip_Cstring, C.size_t(len(toolTip)))
 }
 
 func (this *QWidget) ToolTip() string {
@@ -815,7 +815,7 @@ func (this *QWidget) ToolTipDuration() int {
 func (this *QWidget) SetStatusTip(statusTip string) {
 	statusTip_Cstring := C.CString(statusTip)
 	defer C.free(unsafe.Pointer(statusTip_Cstring))
-	C.QWidget_SetStatusTip(this.h, statusTip_Cstring, C.ulong(len(statusTip)))
+	C.QWidget_SetStatusTip(this.h, statusTip_Cstring, C.size_t(len(statusTip)))
 }
 
 func (this *QWidget) StatusTip() string {
@@ -830,7 +830,7 @@ func (this *QWidget) StatusTip() string {
 func (this *QWidget) SetWhatsThis(whatsThis string) {
 	whatsThis_Cstring := C.CString(whatsThis)
 	defer C.free(unsafe.Pointer(whatsThis_Cstring))
-	C.QWidget_SetWhatsThis(this.h, whatsThis_Cstring, C.ulong(len(whatsThis)))
+	C.QWidget_SetWhatsThis(this.h, whatsThis_Cstring, C.size_t(len(whatsThis)))
 }
 
 func (this *QWidget) WhatsThis() string {
@@ -854,7 +854,7 @@ func (this *QWidget) AccessibleName() string {
 func (this *QWidget) SetAccessibleName(name string) {
 	name_Cstring := C.CString(name)
 	defer C.free(unsafe.Pointer(name_Cstring))
-	C.QWidget_SetAccessibleName(this.h, name_Cstring, C.ulong(len(name)))
+	C.QWidget_SetAccessibleName(this.h, name_Cstring, C.size_t(len(name)))
 }
 
 func (this *QWidget) AccessibleDescription() string {
@@ -869,7 +869,7 @@ func (this *QWidget) AccessibleDescription() string {
 func (this *QWidget) SetAccessibleDescription(description string) {
 	description_Cstring := C.CString(description)
 	defer C.free(unsafe.Pointer(description_Cstring))
-	C.QWidget_SetAccessibleDescription(this.h, description_Cstring, C.ulong(len(description)))
+	C.QWidget_SetAccessibleDescription(this.h, description_Cstring, C.size_t(len(description)))
 }
 
 func (this *QWidget) SetLayoutDirection(direction uintptr) {
@@ -1360,7 +1360,7 @@ func (this *QWidget) AddActions(actions []*QAction) {
 	for i := range actions {
 		actions_CArray[i] = actions[i].cPointer()
 	}
-	C.QWidget_AddActions(this.h, &actions_CArray[0], C.ulong(len(actions)))
+	C.QWidget_AddActions(this.h, &actions_CArray[0], C.size_t(len(actions)))
 }
 
 func (this *QWidget) InsertActions(before *QAction, actions []*QAction) {
@@ -1370,7 +1370,7 @@ func (this *QWidget) InsertActions(before *QAction, actions []*QAction) {
 	for i := range actions {
 		actions_CArray[i] = actions[i].cPointer()
 	}
-	C.QWidget_InsertActions(this.h, before.cPointer(), &actions_CArray[0], C.ulong(len(actions)))
+	C.QWidget_InsertActions(this.h, before.cPointer(), &actions_CArray[0], C.size_t(len(actions)))
 }
 
 func (this *QWidget) InsertAction(before *QAction, action *QAction) {
@@ -1491,7 +1491,7 @@ func QWidget_CreateWindowContainer(window *QWindow) *QWidget {
 func (this *QWidget) WindowTitleChanged(title string) {
 	title_Cstring := C.CString(title)
 	defer C.free(unsafe.Pointer(title_Cstring))
-	C.QWidget_WindowTitleChanged(this.h, title_Cstring, C.ulong(len(title)))
+	C.QWidget_WindowTitleChanged(this.h, title_Cstring, C.size_t(len(title)))
 }
 
 func (this *QWidget) OnWindowTitleChanged(slot func()) {
@@ -1517,7 +1517,7 @@ func (this *QWidget) OnWindowIconChanged(slot func()) {
 func (this *QWidget) WindowIconTextChanged(iconText string) {
 	iconText_Cstring := C.CString(iconText)
 	defer C.free(unsafe.Pointer(iconText_Cstring))
-	C.QWidget_WindowIconTextChanged(this.h, iconText_Cstring, C.ulong(len(iconText)))
+	C.QWidget_WindowIconTextChanged(this.h, iconText_Cstring, C.size_t(len(iconText)))
 }
 
 func (this *QWidget) OnWindowIconTextChanged(slot func()) {

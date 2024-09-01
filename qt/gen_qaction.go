@@ -47,7 +47,7 @@ func NewQAction() *QAction {
 func NewQAction2(text string) *QAction {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QAction_new2(text_Cstring, C.ulong(len(text)))
+	ret := C.QAction_new2(text_Cstring, C.size_t(len(text)))
 	return newQAction(ret)
 }
 
@@ -55,7 +55,7 @@ func NewQAction2(text string) *QAction {
 func NewQAction3(icon *QIcon, text string) *QAction {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QAction_new3(icon.cPointer(), text_Cstring, C.ulong(len(text)))
+	ret := C.QAction_new3(icon.cPointer(), text_Cstring, C.size_t(len(text)))
 	return newQAction(ret)
 }
 
@@ -69,7 +69,7 @@ func NewQAction4(parent *QObject) *QAction {
 func NewQAction5(text string, parent *QObject) *QAction {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QAction_new5(text_Cstring, C.ulong(len(text)), parent.cPointer())
+	ret := C.QAction_new5(text_Cstring, C.size_t(len(text)), parent.cPointer())
 	return newQAction(ret)
 }
 
@@ -77,7 +77,7 @@ func NewQAction5(text string, parent *QObject) *QAction {
 func NewQAction6(icon *QIcon, text string, parent *QObject) *QAction {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QAction_new6(icon.cPointer(), text_Cstring, C.ulong(len(text)), parent.cPointer())
+	ret := C.QAction_new6(icon.cPointer(), text_Cstring, C.size_t(len(text)), parent.cPointer())
 	return newQAction(ret)
 }
 
@@ -135,7 +135,7 @@ func (this *QAction) Icon() *QIcon {
 func (this *QAction) SetText(text string) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QAction_SetText(this.h, text_Cstring, C.ulong(len(text)))
+	C.QAction_SetText(this.h, text_Cstring, C.size_t(len(text)))
 }
 
 func (this *QAction) Text() string {
@@ -150,7 +150,7 @@ func (this *QAction) Text() string {
 func (this *QAction) SetIconText(text string) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QAction_SetIconText(this.h, text_Cstring, C.ulong(len(text)))
+	C.QAction_SetIconText(this.h, text_Cstring, C.size_t(len(text)))
 }
 
 func (this *QAction) IconText() string {
@@ -165,7 +165,7 @@ func (this *QAction) IconText() string {
 func (this *QAction) SetToolTip(tip string) {
 	tip_Cstring := C.CString(tip)
 	defer C.free(unsafe.Pointer(tip_Cstring))
-	C.QAction_SetToolTip(this.h, tip_Cstring, C.ulong(len(tip)))
+	C.QAction_SetToolTip(this.h, tip_Cstring, C.size_t(len(tip)))
 }
 
 func (this *QAction) ToolTip() string {
@@ -180,7 +180,7 @@ func (this *QAction) ToolTip() string {
 func (this *QAction) SetStatusTip(statusTip string) {
 	statusTip_Cstring := C.CString(statusTip)
 	defer C.free(unsafe.Pointer(statusTip_Cstring))
-	C.QAction_SetStatusTip(this.h, statusTip_Cstring, C.ulong(len(statusTip)))
+	C.QAction_SetStatusTip(this.h, statusTip_Cstring, C.size_t(len(statusTip)))
 }
 
 func (this *QAction) StatusTip() string {
@@ -195,7 +195,7 @@ func (this *QAction) StatusTip() string {
 func (this *QAction) SetWhatsThis(what string) {
 	what_Cstring := C.CString(what)
 	defer C.free(unsafe.Pointer(what_Cstring))
-	C.QAction_SetWhatsThis(this.h, what_Cstring, C.ulong(len(what)))
+	C.QAction_SetWhatsThis(this.h, what_Cstring, C.size_t(len(what)))
 }
 
 func (this *QAction) WhatsThis() string {
@@ -256,7 +256,7 @@ func (this *QAction) SetShortcuts(shortcuts []QKeySequence) {
 	for i := range shortcuts {
 		shortcuts_CArray[i] = shortcuts[i].cPointer()
 	}
-	C.QAction_SetShortcuts(this.h, &shortcuts_CArray[0], C.ulong(len(shortcuts)))
+	C.QAction_SetShortcuts(this.h, &shortcuts_CArray[0], C.size_t(len(shortcuts)))
 }
 
 func (this *QAction) SetShortcutsWithShortcuts(shortcuts uintptr) {

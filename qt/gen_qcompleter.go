@@ -53,16 +53,16 @@ func NewQCompleter2(model *QAbstractItemModel) *QCompleter {
 func NewQCompleter3(completions []string) *QCompleter {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
 	completions_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(completions))))
-	completions_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(completions))))
+	completions_Lengths := (*[0xffff]C.uint64_t)(C.malloc(C.size_t(8 * len(completions))))
 	defer C.free(unsafe.Pointer(completions_CArray))
 	defer C.free(unsafe.Pointer(completions_Lengths))
 	for i := range completions {
 		single_cstring := C.CString(completions[i])
 		defer C.free(unsafe.Pointer(single_cstring))
 		completions_CArray[i] = single_cstring
-		completions_Lengths[i] = (C.size_t)(len(completions[i]))
+		completions_Lengths[i] = (C.uint64_t)(len(completions[i]))
 	}
-	ret := C.QCompleter_new3(&completions_CArray[0], &completions_Lengths[0], C.ulong(len(completions)))
+	ret := C.QCompleter_new3(&completions_CArray[0], &completions_Lengths[0], C.size_t(len(completions)))
 	return newQCompleter(ret)
 }
 
@@ -82,16 +82,16 @@ func NewQCompleter5(model *QAbstractItemModel, parent *QObject) *QCompleter {
 func NewQCompleter6(completions []string, parent *QObject) *QCompleter {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
 	completions_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(completions))))
-	completions_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(completions))))
+	completions_Lengths := (*[0xffff]C.uint64_t)(C.malloc(C.size_t(8 * len(completions))))
 	defer C.free(unsafe.Pointer(completions_CArray))
 	defer C.free(unsafe.Pointer(completions_Lengths))
 	for i := range completions {
 		single_cstring := C.CString(completions[i])
 		defer C.free(unsafe.Pointer(single_cstring))
 		completions_CArray[i] = single_cstring
-		completions_Lengths[i] = (C.size_t)(len(completions[i]))
+		completions_Lengths[i] = (C.uint64_t)(len(completions[i]))
 	}
-	ret := C.QCompleter_new6(&completions_CArray[0], &completions_Lengths[0], C.ulong(len(completions)), parent.cPointer())
+	ret := C.QCompleter_new6(&completions_CArray[0], &completions_Lengths[0], C.size_t(len(completions)), parent.cPointer())
 	return newQCompleter(ret)
 }
 
@@ -269,7 +269,7 @@ func (this *QCompleter) CompletionPrefix() string {
 func (this *QCompleter) SetCompletionPrefix(prefix string) {
 	prefix_Cstring := C.CString(prefix)
 	defer C.free(unsafe.Pointer(prefix_Cstring))
-	C.QCompleter_SetCompletionPrefix(this.h, prefix_Cstring, C.ulong(len(prefix)))
+	C.QCompleter_SetCompletionPrefix(this.h, prefix_Cstring, C.size_t(len(prefix)))
 }
 
 func (this *QCompleter) Complete() {
@@ -295,7 +295,7 @@ func (this *QCompleter) SplitPath(path string) []string {
 	var _out **C.char = nil
 	var _out_Lengths *C.int = nil
 	var _out_len C.size_t = 0
-	C.QCompleter_SplitPath(this.h, path_Cstring, C.ulong(len(path)), &_out, &_out_Lengths, &_out_len)
+	C.QCompleter_SplitPath(this.h, path_Cstring, C.size_t(len(path)), &_out, &_out_Lengths, &_out_len)
 	ret := make([]string, int(_out_len))
 	_outCast := (*[0xffff]*C.char)(unsafe.Pointer(_out)) // hey ya
 	_out_LengthsCast := (*[0xffff]C.int)(unsafe.Pointer(_out_Lengths))
@@ -309,7 +309,7 @@ func (this *QCompleter) SplitPath(path string) []string {
 func (this *QCompleter) Activated(text string) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QCompleter_Activated(this.h, text_Cstring, C.ulong(len(text)))
+	C.QCompleter_Activated(this.h, text_Cstring, C.size_t(len(text)))
 }
 
 func (this *QCompleter) OnActivated(slot func()) {
@@ -335,7 +335,7 @@ func (this *QCompleter) OnActivatedWithIndex(slot func()) {
 func (this *QCompleter) Highlighted(text string) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QCompleter_Highlighted(this.h, text_Cstring, C.ulong(len(text)))
+	C.QCompleter_Highlighted(this.h, text_Cstring, C.size_t(len(text)))
 }
 
 func (this *QCompleter) OnHighlighted(slot func()) {

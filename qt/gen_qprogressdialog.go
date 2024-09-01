@@ -49,7 +49,7 @@ func NewQProgressDialog2(labelText string, cancelButtonText string, minimum int,
 	defer C.free(unsafe.Pointer(labelText_Cstring))
 	cancelButtonText_Cstring := C.CString(cancelButtonText)
 	defer C.free(unsafe.Pointer(cancelButtonText_Cstring))
-	ret := C.QProgressDialog_new2(labelText_Cstring, C.ulong(len(labelText)), cancelButtonText_Cstring, C.ulong(len(cancelButtonText)), (C.int)(minimum), (C.int)(maximum))
+	ret := C.QProgressDialog_new2(labelText_Cstring, C.size_t(len(labelText)), cancelButtonText_Cstring, C.size_t(len(cancelButtonText)), (C.int)(minimum), (C.int)(maximum))
 	return newQProgressDialog(ret)
 }
 
@@ -71,7 +71,7 @@ func NewQProgressDialog5(labelText string, cancelButtonText string, minimum int,
 	defer C.free(unsafe.Pointer(labelText_Cstring))
 	cancelButtonText_Cstring := C.CString(cancelButtonText)
 	defer C.free(unsafe.Pointer(cancelButtonText_Cstring))
-	ret := C.QProgressDialog_new5(labelText_Cstring, C.ulong(len(labelText)), cancelButtonText_Cstring, C.ulong(len(cancelButtonText)), (C.int)(minimum), (C.int)(maximum), parent.cPointer())
+	ret := C.QProgressDialog_new5(labelText_Cstring, C.size_t(len(labelText)), cancelButtonText_Cstring, C.size_t(len(cancelButtonText)), (C.int)(minimum), (C.int)(maximum), parent.cPointer())
 	return newQProgressDialog(ret)
 }
 
@@ -81,7 +81,7 @@ func NewQProgressDialog6(labelText string, cancelButtonText string, minimum int,
 	defer C.free(unsafe.Pointer(labelText_Cstring))
 	cancelButtonText_Cstring := C.CString(cancelButtonText)
 	defer C.free(unsafe.Pointer(cancelButtonText_Cstring))
-	ret := C.QProgressDialog_new6(labelText_Cstring, C.ulong(len(labelText)), cancelButtonText_Cstring, C.ulong(len(cancelButtonText)), (C.int)(minimum), (C.int)(maximum), parent.cPointer(), (C.int)(flags))
+	ret := C.QProgressDialog_new6(labelText_Cstring, C.size_t(len(labelText)), cancelButtonText_Cstring, C.size_t(len(cancelButtonText)), (C.int)(minimum), (C.int)(maximum), parent.cPointer(), (C.int)(flags))
 	return newQProgressDialog(ret)
 }
 
@@ -214,13 +214,13 @@ func (this *QProgressDialog) SetValue(progress int) {
 func (this *QProgressDialog) SetLabelText(text string) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QProgressDialog_SetLabelText(this.h, text_Cstring, C.ulong(len(text)))
+	C.QProgressDialog_SetLabelText(this.h, text_Cstring, C.size_t(len(text)))
 }
 
 func (this *QProgressDialog) SetCancelButtonText(text string) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QProgressDialog_SetCancelButtonText(this.h, text_Cstring, C.ulong(len(text)))
+	C.QProgressDialog_SetCancelButtonText(this.h, text_Cstring, C.size_t(len(text)))
 }
 
 func (this *QProgressDialog) SetMinimumDuration(ms int) {

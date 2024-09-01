@@ -57,7 +57,7 @@ func NewQIcon3(other *QIcon) *QIcon {
 func NewQIcon4(fileName string) *QIcon {
 	fileName_Cstring := C.CString(fileName)
 	defer C.free(unsafe.Pointer(fileName_Cstring))
-	ret := C.QIcon_new4(fileName_Cstring, C.ulong(len(fileName)))
+	ret := C.QIcon_new4(fileName_Cstring, C.size_t(len(fileName)))
 	return newQIcon(ret)
 }
 
@@ -184,7 +184,7 @@ func (this *QIcon) AddPixmap(pixmap *QPixmap) {
 func (this *QIcon) AddFile(fileName string) {
 	fileName_Cstring := C.CString(fileName)
 	defer C.free(unsafe.Pointer(fileName_Cstring))
-	C.QIcon_AddFile(this.h, fileName_Cstring, C.ulong(len(fileName)))
+	C.QIcon_AddFile(this.h, fileName_Cstring, C.size_t(len(fileName)))
 }
 
 func (this *QIcon) AvailableSizes() []QSize {
@@ -212,7 +212,7 @@ func (this *QIcon) IsMask() bool {
 func QIcon_FromTheme(name string) *QIcon {
 	name_Cstring := C.CString(name)
 	defer C.free(unsafe.Pointer(name_Cstring))
-	ret := C.QIcon_FromTheme(name_Cstring, C.ulong(len(name)))
+	ret := C.QIcon_FromTheme(name_Cstring, C.size_t(len(name)))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQIcon(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QIcon) {
@@ -225,7 +225,7 @@ func QIcon_FromTheme(name string) *QIcon {
 func QIcon_FromTheme2(name string, fallback *QIcon) *QIcon {
 	name_Cstring := C.CString(name)
 	defer C.free(unsafe.Pointer(name_Cstring))
-	ret := C.QIcon_FromTheme2(name_Cstring, C.ulong(len(name)), fallback.cPointer())
+	ret := C.QIcon_FromTheme2(name_Cstring, C.size_t(len(name)), fallback.cPointer())
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQIcon(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QIcon) {
@@ -238,7 +238,7 @@ func QIcon_FromTheme2(name string, fallback *QIcon) *QIcon {
 func QIcon_HasThemeIcon(name string) bool {
 	name_Cstring := C.CString(name)
 	defer C.free(unsafe.Pointer(name_Cstring))
-	ret := C.QIcon_HasThemeIcon(name_Cstring, C.ulong(len(name)))
+	ret := C.QIcon_HasThemeIcon(name_Cstring, C.size_t(len(name)))
 	return (bool)(ret)
 }
 
@@ -260,16 +260,16 @@ func QIcon_ThemeSearchPaths() []string {
 func QIcon_SetThemeSearchPaths(searchpath []string) {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
 	searchpath_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(searchpath))))
-	searchpath_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(searchpath))))
+	searchpath_Lengths := (*[0xffff]C.uint64_t)(C.malloc(C.size_t(8 * len(searchpath))))
 	defer C.free(unsafe.Pointer(searchpath_CArray))
 	defer C.free(unsafe.Pointer(searchpath_Lengths))
 	for i := range searchpath {
 		single_cstring := C.CString(searchpath[i])
 		defer C.free(unsafe.Pointer(single_cstring))
 		searchpath_CArray[i] = single_cstring
-		searchpath_Lengths[i] = (C.size_t)(len(searchpath[i]))
+		searchpath_Lengths[i] = (C.uint64_t)(len(searchpath[i]))
 	}
-	C.QIcon_SetThemeSearchPaths(&searchpath_CArray[0], &searchpath_Lengths[0], C.ulong(len(searchpath)))
+	C.QIcon_SetThemeSearchPaths(&searchpath_CArray[0], &searchpath_Lengths[0], C.size_t(len(searchpath)))
 }
 
 func QIcon_FallbackSearchPaths() []string {
@@ -290,16 +290,16 @@ func QIcon_FallbackSearchPaths() []string {
 func QIcon_SetFallbackSearchPaths(paths []string) {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
 	paths_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(paths))))
-	paths_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(paths))))
+	paths_Lengths := (*[0xffff]C.uint64_t)(C.malloc(C.size_t(8 * len(paths))))
 	defer C.free(unsafe.Pointer(paths_CArray))
 	defer C.free(unsafe.Pointer(paths_Lengths))
 	for i := range paths {
 		single_cstring := C.CString(paths[i])
 		defer C.free(unsafe.Pointer(single_cstring))
 		paths_CArray[i] = single_cstring
-		paths_Lengths[i] = (C.size_t)(len(paths[i]))
+		paths_Lengths[i] = (C.uint64_t)(len(paths[i]))
 	}
-	C.QIcon_SetFallbackSearchPaths(&paths_CArray[0], &paths_Lengths[0], C.ulong(len(paths)))
+	C.QIcon_SetFallbackSearchPaths(&paths_CArray[0], &paths_Lengths[0], C.size_t(len(paths)))
 }
 
 func QIcon_ThemeName() string {
@@ -314,7 +314,7 @@ func QIcon_ThemeName() string {
 func QIcon_SetThemeName(path string) {
 	path_Cstring := C.CString(path)
 	defer C.free(unsafe.Pointer(path_Cstring))
-	C.QIcon_SetThemeName(path_Cstring, C.ulong(len(path)))
+	C.QIcon_SetThemeName(path_Cstring, C.size_t(len(path)))
 }
 
 func QIcon_FallbackThemeName() string {
@@ -329,7 +329,7 @@ func QIcon_FallbackThemeName() string {
 func QIcon_SetFallbackThemeName(name string) {
 	name_Cstring := C.CString(name)
 	defer C.free(unsafe.Pointer(name_Cstring))
-	C.QIcon_SetFallbackThemeName(name_Cstring, C.ulong(len(name)))
+	C.QIcon_SetFallbackThemeName(name_Cstring, C.size_t(len(name)))
 }
 
 func (this *QIcon) Pixmap22(size *QSize, mode uintptr) *QPixmap {
@@ -499,19 +499,19 @@ func (this *QIcon) AddPixmap3(pixmap *QPixmap, mode uintptr, state uintptr) {
 func (this *QIcon) AddFile2(fileName string, size *QSize) {
 	fileName_Cstring := C.CString(fileName)
 	defer C.free(unsafe.Pointer(fileName_Cstring))
-	C.QIcon_AddFile2(this.h, fileName_Cstring, C.ulong(len(fileName)), size.cPointer())
+	C.QIcon_AddFile2(this.h, fileName_Cstring, C.size_t(len(fileName)), size.cPointer())
 }
 
 func (this *QIcon) AddFile3(fileName string, size *QSize, mode uintptr) {
 	fileName_Cstring := C.CString(fileName)
 	defer C.free(unsafe.Pointer(fileName_Cstring))
-	C.QIcon_AddFile3(this.h, fileName_Cstring, C.ulong(len(fileName)), size.cPointer(), (C.uintptr_t)(mode))
+	C.QIcon_AddFile3(this.h, fileName_Cstring, C.size_t(len(fileName)), size.cPointer(), (C.uintptr_t)(mode))
 }
 
 func (this *QIcon) AddFile4(fileName string, size *QSize, mode uintptr, state uintptr) {
 	fileName_Cstring := C.CString(fileName)
 	defer C.free(unsafe.Pointer(fileName_Cstring))
-	C.QIcon_AddFile4(this.h, fileName_Cstring, C.ulong(len(fileName)), size.cPointer(), (C.uintptr_t)(mode), (C.uintptr_t)(state))
+	C.QIcon_AddFile4(this.h, fileName_Cstring, C.size_t(len(fileName)), size.cPointer(), (C.uintptr_t)(mode), (C.uintptr_t)(state))
 }
 
 func (this *QIcon) AvailableSizes1(mode uintptr) []QSize {

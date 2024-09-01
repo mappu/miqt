@@ -110,16 +110,16 @@ func (this *QTextBrowser) SearchPaths() []string {
 func (this *QTextBrowser) SetSearchPaths(paths []string) {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
 	paths_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(paths))))
-	paths_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(paths))))
+	paths_Lengths := (*[0xffff]C.uint64_t)(C.malloc(C.size_t(8 * len(paths))))
 	defer C.free(unsafe.Pointer(paths_CArray))
 	defer C.free(unsafe.Pointer(paths_Lengths))
 	for i := range paths {
 		single_cstring := C.CString(paths[i])
 		defer C.free(unsafe.Pointer(single_cstring))
 		paths_CArray[i] = single_cstring
-		paths_Lengths[i] = (C.size_t)(len(paths[i]))
+		paths_Lengths[i] = (C.uint64_t)(len(paths[i]))
 	}
-	C.QTextBrowser_SetSearchPaths(this.h, &paths_CArray[0], &paths_Lengths[0], C.ulong(len(paths)))
+	C.QTextBrowser_SetSearchPaths(this.h, &paths_CArray[0], &paths_Lengths[0], C.size_t(len(paths)))
 }
 
 func (this *QTextBrowser) LoadResource(typeVal int, name *QUrl) *QVariant {
@@ -282,7 +282,7 @@ func (this *QTextBrowser) OnHighlighted(slot func()) {
 func (this *QTextBrowser) HighlightedWithQString(param1 string) {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	C.QTextBrowser_HighlightedWithQString(this.h, param1_Cstring, C.ulong(len(param1)))
+	C.QTextBrowser_HighlightedWithQString(this.h, param1_Cstring, C.size_t(len(param1)))
 }
 
 func (this *QTextBrowser) OnHighlightedWithQString(slot func()) {

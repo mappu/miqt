@@ -88,28 +88,28 @@ func (this *QTabBar) SetShape(shape uintptr) {
 func (this *QTabBar) AddTab(text string) int {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QTabBar_AddTab(this.h, text_Cstring, C.ulong(len(text)))
+	ret := C.QTabBar_AddTab(this.h, text_Cstring, C.size_t(len(text)))
 	return (int)(ret)
 }
 
 func (this *QTabBar) AddTab2(icon *QIcon, text string) int {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QTabBar_AddTab2(this.h, icon.cPointer(), text_Cstring, C.ulong(len(text)))
+	ret := C.QTabBar_AddTab2(this.h, icon.cPointer(), text_Cstring, C.size_t(len(text)))
 	return (int)(ret)
 }
 
 func (this *QTabBar) InsertTab(index int, text string) int {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QTabBar_InsertTab(this.h, (C.int)(index), text_Cstring, C.ulong(len(text)))
+	ret := C.QTabBar_InsertTab(this.h, (C.int)(index), text_Cstring, C.size_t(len(text)))
 	return (int)(ret)
 }
 
 func (this *QTabBar) InsertTab2(index int, icon *QIcon, text string) int {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QTabBar_InsertTab2(this.h, (C.int)(index), icon.cPointer(), text_Cstring, C.ulong(len(text)))
+	ret := C.QTabBar_InsertTab2(this.h, (C.int)(index), icon.cPointer(), text_Cstring, C.size_t(len(text)))
 	return (int)(ret)
 }
 
@@ -151,7 +151,7 @@ func (this *QTabBar) TabText(index int) string {
 func (this *QTabBar) SetTabText(index int, text string) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QTabBar_SetTabText(this.h, (C.int)(index), text_Cstring, C.ulong(len(text)))
+	C.QTabBar_SetTabText(this.h, (C.int)(index), text_Cstring, C.size_t(len(text)))
 }
 
 func (this *QTabBar) TabTextColor(index int) *QColor {
@@ -196,7 +196,7 @@ func (this *QTabBar) SetElideMode(mode uintptr) {
 func (this *QTabBar) SetTabToolTip(index int, tip string) {
 	tip_Cstring := C.CString(tip)
 	defer C.free(unsafe.Pointer(tip_Cstring))
-	C.QTabBar_SetTabToolTip(this.h, (C.int)(index), tip_Cstring, C.ulong(len(tip)))
+	C.QTabBar_SetTabToolTip(this.h, (C.int)(index), tip_Cstring, C.size_t(len(tip)))
 }
 
 func (this *QTabBar) TabToolTip(index int) string {
@@ -211,7 +211,7 @@ func (this *QTabBar) TabToolTip(index int) string {
 func (this *QTabBar) SetTabWhatsThis(index int, text string) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QTabBar_SetTabWhatsThis(this.h, (C.int)(index), text_Cstring, C.ulong(len(text)))
+	C.QTabBar_SetTabWhatsThis(this.h, (C.int)(index), text_Cstring, C.size_t(len(text)))
 }
 
 func (this *QTabBar) TabWhatsThis(index int) string {
@@ -403,7 +403,7 @@ func (this *QTabBar) AccessibleTabName(index int) string {
 func (this *QTabBar) SetAccessibleTabName(index int, name string) {
 	name_Cstring := C.CString(name)
 	defer C.free(unsafe.Pointer(name_Cstring))
-	C.QTabBar_SetAccessibleTabName(this.h, (C.int)(index), name_Cstring, C.ulong(len(name)))
+	C.QTabBar_SetAccessibleTabName(this.h, (C.int)(index), name_Cstring, C.size_t(len(name)))
 }
 
 func (this *QTabBar) SetCurrentIndex(index int) {

@@ -236,7 +236,7 @@ func (this *QFutureWatcherBase) OnProgressValueChanged(slot func()) {
 func (this *QFutureWatcherBase) ProgressTextChanged(progressText string) {
 	progressText_Cstring := C.CString(progressText)
 	defer C.free(unsafe.Pointer(progressText_Cstring))
-	C.QFutureWatcherBase_ProgressTextChanged(this.h, progressText_Cstring, C.ulong(len(progressText)))
+	C.QFutureWatcherBase_ProgressTextChanged(this.h, progressText_Cstring, C.size_t(len(progressText)))
 }
 
 func (this *QFutureWatcherBase) OnProgressTextChanged(slot func()) {

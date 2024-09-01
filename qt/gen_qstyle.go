@@ -86,7 +86,7 @@ func (this *QStyle) PolishWithPalette(palette *QPalette) {
 func (this *QStyle) ItemTextRect(fm *QFontMetrics, r *QRect, flags int, enabled bool, text string) *QRect {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QStyle_ItemTextRect(this.h, fm.cPointer(), r.cPointer(), (C.int)(flags), (C.bool)(enabled), text_Cstring, C.ulong(len(text)))
+	ret := C.QStyle_ItemTextRect(this.h, fm.cPointer(), r.cPointer(), (C.int)(flags), (C.bool)(enabled), text_Cstring, C.size_t(len(text)))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQRect(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QRect) {
@@ -110,7 +110,7 @@ func (this *QStyle) ItemPixmapRect(r *QRect, flags int, pixmap *QPixmap) *QRect 
 func (this *QStyle) DrawItemText(painter *QPainter, rect *QRect, flags int, pal *QPalette, enabled bool, text string) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QStyle_DrawItemText(this.h, painter.cPointer(), rect.cPointer(), (C.int)(flags), pal.cPointer(), (C.bool)(enabled), text_Cstring, C.ulong(len(text)))
+	C.QStyle_DrawItemText(this.h, painter.cPointer(), rect.cPointer(), (C.int)(flags), pal.cPointer(), (C.bool)(enabled), text_Cstring, C.size_t(len(text)))
 }
 
 func (this *QStyle) DrawItemPixmap(painter *QPainter, rect *QRect, alignment int, pixmap *QPixmap) {
@@ -339,7 +339,7 @@ func QStyle_TrUtf83(s string, c string, n int) string {
 func (this *QStyle) DrawItemText7(painter *QPainter, rect *QRect, flags int, pal *QPalette, enabled bool, text string, textRole uintptr) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QStyle_DrawItemText7(this.h, painter.cPointer(), rect.cPointer(), (C.int)(flags), pal.cPointer(), (C.bool)(enabled), text_Cstring, C.ulong(len(text)), (C.uintptr_t)(textRole))
+	C.QStyle_DrawItemText7(this.h, painter.cPointer(), rect.cPointer(), (C.int)(flags), pal.cPointer(), (C.bool)(enabled), text_Cstring, C.size_t(len(text)), (C.uintptr_t)(textRole))
 }
 
 func (this *QStyle) DrawPrimitive4(pe uintptr, opt *QStyleOption, p *QPainter, w *QWidget) {

@@ -41,7 +41,7 @@ func newQToolBar_U(h unsafe.Pointer) *QToolBar {
 func NewQToolBar(title string) *QToolBar {
 	title_Cstring := C.CString(title)
 	defer C.free(unsafe.Pointer(title_Cstring))
-	ret := C.QToolBar_new(title_Cstring, C.ulong(len(title)))
+	ret := C.QToolBar_new(title_Cstring, C.size_t(len(title)))
 	return newQToolBar(ret)
 }
 
@@ -55,7 +55,7 @@ func NewQToolBar2() *QToolBar {
 func NewQToolBar3(title string, parent *QWidget) *QToolBar {
 	title_Cstring := C.CString(title)
 	defer C.free(unsafe.Pointer(title_Cstring))
-	ret := C.QToolBar_new3(title_Cstring, C.ulong(len(title)), parent.cPointer())
+	ret := C.QToolBar_new3(title_Cstring, C.size_t(len(title)), parent.cPointer())
 	return newQToolBar(ret)
 }
 
@@ -131,14 +131,14 @@ func (this *QToolBar) Clear() {
 func (this *QToolBar) AddAction(text string) *QAction {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QToolBar_AddAction(this.h, text_Cstring, C.ulong(len(text)))
+	ret := C.QToolBar_AddAction(this.h, text_Cstring, C.size_t(len(text)))
 	return newQAction_U(unsafe.Pointer(ret))
 }
 
 func (this *QToolBar) AddAction2(icon *QIcon, text string) *QAction {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QToolBar_AddAction2(this.h, icon.cPointer(), text_Cstring, C.ulong(len(text)))
+	ret := C.QToolBar_AddAction2(this.h, icon.cPointer(), text_Cstring, C.size_t(len(text)))
 	return newQAction_U(unsafe.Pointer(ret))
 }
 

@@ -93,7 +93,7 @@ func (this *QPicture) Load(dev *QIODevice) bool {
 func (this *QPicture) LoadWithFileName(fileName string) bool {
 	fileName_Cstring := C.CString(fileName)
 	defer C.free(unsafe.Pointer(fileName_Cstring))
-	ret := C.QPicture_LoadWithFileName(this.h, fileName_Cstring, C.ulong(len(fileName)))
+	ret := C.QPicture_LoadWithFileName(this.h, fileName_Cstring, C.size_t(len(fileName)))
 	return (bool)(ret)
 }
 
@@ -105,7 +105,7 @@ func (this *QPicture) Save(dev *QIODevice) bool {
 func (this *QPicture) SaveWithFileName(fileName string) bool {
 	fileName_Cstring := C.CString(fileName)
 	defer C.free(unsafe.Pointer(fileName_Cstring))
-	ret := C.QPicture_SaveWithFileName(this.h, fileName_Cstring, C.ulong(len(fileName)))
+	ret := C.QPicture_SaveWithFileName(this.h, fileName_Cstring, C.size_t(len(fileName)))
 	return (bool)(ret)
 }
 
@@ -144,7 +144,7 @@ func (this *QPicture) IsDetached() bool {
 func QPicture_PictureFormat(fileName string) unsafe.Pointer {
 	fileName_Cstring := C.CString(fileName)
 	defer C.free(unsafe.Pointer(fileName_Cstring))
-	ret := C.QPicture_PictureFormat(fileName_Cstring, C.ulong(len(fileName)))
+	ret := C.QPicture_PictureFormat(fileName_Cstring, C.size_t(len(fileName)))
 	return (unsafe.Pointer)(ret)
 }
 
@@ -221,7 +221,7 @@ func (this *QPicture) Load22(fileName string, format string) bool {
 	defer C.free(unsafe.Pointer(fileName_Cstring))
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
-	ret := C.QPicture_Load22(this.h, fileName_Cstring, C.ulong(len(fileName)), format_Cstring)
+	ret := C.QPicture_Load22(this.h, fileName_Cstring, C.size_t(len(fileName)), format_Cstring)
 	return (bool)(ret)
 }
 
@@ -237,7 +237,7 @@ func (this *QPicture) Save22(fileName string, format string) bool {
 	defer C.free(unsafe.Pointer(fileName_Cstring))
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
-	ret := C.QPicture_Save22(this.h, fileName_Cstring, C.ulong(len(fileName)), format_Cstring)
+	ret := C.QPicture_Save22(this.h, fileName_Cstring, C.size_t(len(fileName)), format_Cstring)
 	return (bool)(ret)
 }
 
@@ -287,7 +287,7 @@ func NewQPictureIO3(fileName string, format string) *QPictureIO {
 	defer C.free(unsafe.Pointer(fileName_Cstring))
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
-	ret := C.QPictureIO_new3(fileName_Cstring, C.ulong(len(fileName)), format_Cstring)
+	ret := C.QPictureIO_new3(fileName_Cstring, C.size_t(len(fileName)), format_Cstring)
 	return newQPictureIO(ret)
 }
 
@@ -365,7 +365,7 @@ func (this *QPictureIO) SetIODevice(iODevice *QIODevice) {
 func (this *QPictureIO) SetFileName(fileName string) {
 	fileName_Cstring := C.CString(fileName)
 	defer C.free(unsafe.Pointer(fileName_Cstring))
-	C.QPictureIO_SetFileName(this.h, fileName_Cstring, C.ulong(len(fileName)))
+	C.QPictureIO_SetFileName(this.h, fileName_Cstring, C.size_t(len(fileName)))
 }
 
 func (this *QPictureIO) SetQuality(quality int) {
@@ -375,7 +375,7 @@ func (this *QPictureIO) SetQuality(quality int) {
 func (this *QPictureIO) SetDescription(description string) {
 	description_Cstring := C.CString(description)
 	defer C.free(unsafe.Pointer(description_Cstring))
-	C.QPictureIO_SetDescription(this.h, description_Cstring, C.ulong(len(description)))
+	C.QPictureIO_SetDescription(this.h, description_Cstring, C.size_t(len(description)))
 }
 
 func (this *QPictureIO) SetParameters(parameters string) {
@@ -401,7 +401,7 @@ func (this *QPictureIO) Write() bool {
 func QPictureIO_PictureFormat(fileName string) *QByteArray {
 	fileName_Cstring := C.CString(fileName)
 	defer C.free(unsafe.Pointer(fileName_Cstring))
-	ret := C.QPictureIO_PictureFormat(fileName_Cstring, C.ulong(len(fileName)))
+	ret := C.QPictureIO_PictureFormat(fileName_Cstring, C.size_t(len(fileName)))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQByteArray(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QByteArray) {

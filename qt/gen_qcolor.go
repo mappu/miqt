@@ -69,7 +69,7 @@ func NewQColor5(rgba64 QRgba64) *QColor {
 func NewQColor6(name string) *QColor {
 	name_Cstring := C.CString(name)
 	defer C.free(unsafe.Pointer(name_Cstring))
-	ret := C.QColor_new6(name_Cstring, C.ulong(len(name)))
+	ret := C.QColor_new6(name_Cstring, C.size_t(len(name)))
 	return newQColor(ret)
 }
 
@@ -145,7 +145,7 @@ func (this *QColor) NameWithFormat(format uintptr) string {
 func (this *QColor) SetNamedColor(name string) {
 	name_Cstring := C.CString(name)
 	defer C.free(unsafe.Pointer(name_Cstring))
-	C.QColor_SetNamedColor(this.h, name_Cstring, C.ulong(len(name)))
+	C.QColor_SetNamedColor(this.h, name_Cstring, C.size_t(len(name)))
 }
 
 func QColor_ColorNames() []string {
@@ -720,7 +720,7 @@ func (this *QColor) OperatorNotEqual(c *QColor) bool {
 func QColor_IsValidColor(name string) bool {
 	name_Cstring := C.CString(name)
 	defer C.free(unsafe.Pointer(name_Cstring))
-	ret := C.QColor_IsValidColor(name_Cstring, C.ulong(len(name)))
+	ret := C.QColor_IsValidColor(name_Cstring, C.size_t(len(name)))
 	return (bool)(ret)
 }
 

@@ -77,14 +77,14 @@ func (this *QActionGroup) AddAction(a *QAction) *QAction {
 func (this *QActionGroup) AddActionWithText(text string) *QAction {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QActionGroup_AddActionWithText(this.h, text_Cstring, C.ulong(len(text)))
+	ret := C.QActionGroup_AddActionWithText(this.h, text_Cstring, C.size_t(len(text)))
 	return newQAction_U(unsafe.Pointer(ret))
 }
 
 func (this *QActionGroup) AddAction2(icon *QIcon, text string) *QAction {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QActionGroup_AddAction2(this.h, icon.cPointer(), text_Cstring, C.ulong(len(text)))
+	ret := C.QActionGroup_AddAction2(this.h, icon.cPointer(), text_Cstring, C.size_t(len(text)))
 	return newQAction_U(unsafe.Pointer(ret))
 }
 

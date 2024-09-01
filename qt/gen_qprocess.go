@@ -78,7 +78,7 @@ func (this *QProcessEnvironment) Clear() {
 func (this *QProcessEnvironment) Contains(name string) bool {
 	name_Cstring := C.CString(name)
 	defer C.free(unsafe.Pointer(name_Cstring))
-	ret := C.QProcessEnvironment_Contains(this.h, name_Cstring, C.ulong(len(name)))
+	ret := C.QProcessEnvironment_Contains(this.h, name_Cstring, C.size_t(len(name)))
 	return (bool)(ret)
 }
 
@@ -87,13 +87,13 @@ func (this *QProcessEnvironment) Insert(name string, value string) {
 	defer C.free(unsafe.Pointer(name_Cstring))
 	value_Cstring := C.CString(value)
 	defer C.free(unsafe.Pointer(value_Cstring))
-	C.QProcessEnvironment_Insert(this.h, name_Cstring, C.ulong(len(name)), value_Cstring, C.ulong(len(value)))
+	C.QProcessEnvironment_Insert(this.h, name_Cstring, C.size_t(len(name)), value_Cstring, C.size_t(len(value)))
 }
 
 func (this *QProcessEnvironment) Remove(name string) {
 	name_Cstring := C.CString(name)
 	defer C.free(unsafe.Pointer(name_Cstring))
-	C.QProcessEnvironment_Remove(this.h, name_Cstring, C.ulong(len(name)))
+	C.QProcessEnvironment_Remove(this.h, name_Cstring, C.size_t(len(name)))
 }
 
 func (this *QProcessEnvironment) Value(name string) string {
@@ -101,7 +101,7 @@ func (this *QProcessEnvironment) Value(name string) string {
 	defer C.free(unsafe.Pointer(name_Cstring))
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
-	C.QProcessEnvironment_Value(this.h, name_Cstring, C.ulong(len(name)), &_out, &_out_Strlen)
+	C.QProcessEnvironment_Value(this.h, name_Cstring, C.size_t(len(name)), &_out, &_out_Strlen)
 	ret := C.GoStringN(_out, _out_Strlen)
 	C.free(unsafe.Pointer(_out))
 	return ret
@@ -159,7 +159,7 @@ func (this *QProcessEnvironment) Value2(name string, defaultValue string) string
 	defer C.free(unsafe.Pointer(defaultValue_Cstring))
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
-	C.QProcessEnvironment_Value2(this.h, name_Cstring, C.ulong(len(name)), defaultValue_Cstring, C.ulong(len(defaultValue)), &_out, &_out_Strlen)
+	C.QProcessEnvironment_Value2(this.h, name_Cstring, C.size_t(len(name)), defaultValue_Cstring, C.size_t(len(defaultValue)), &_out, &_out_Strlen)
 	ret := C.GoStringN(_out, _out_Strlen)
 	C.free(unsafe.Pointer(_out))
 	return ret
@@ -236,22 +236,22 @@ func (this *QProcess) Start(program string, arguments []string) {
 	defer C.free(unsafe.Pointer(program_Cstring))
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
 	arguments_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(arguments))))
-	arguments_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(arguments))))
+	arguments_Lengths := (*[0xffff]C.uint64_t)(C.malloc(C.size_t(8 * len(arguments))))
 	defer C.free(unsafe.Pointer(arguments_CArray))
 	defer C.free(unsafe.Pointer(arguments_Lengths))
 	for i := range arguments {
 		single_cstring := C.CString(arguments[i])
 		defer C.free(unsafe.Pointer(single_cstring))
 		arguments_CArray[i] = single_cstring
-		arguments_Lengths[i] = (C.size_t)(len(arguments[i]))
+		arguments_Lengths[i] = (C.uint64_t)(len(arguments[i]))
 	}
-	C.QProcess_Start(this.h, program_Cstring, C.ulong(len(program)), &arguments_CArray[0], &arguments_Lengths[0], C.ulong(len(arguments)))
+	C.QProcess_Start(this.h, program_Cstring, C.size_t(len(program)), &arguments_CArray[0], &arguments_Lengths[0], C.size_t(len(arguments)))
 }
 
 func (this *QProcess) StartWithCommand(command string) {
 	command_Cstring := C.CString(command)
 	defer C.free(unsafe.Pointer(command_Cstring))
-	C.QProcess_StartWithCommand(this.h, command_Cstring, C.ulong(len(command)))
+	C.QProcess_StartWithCommand(this.h, command_Cstring, C.size_t(len(command)))
 }
 
 func (this *QProcess) Start2() {
@@ -280,7 +280,7 @@ func (this *QProcess) Program() string {
 func (this *QProcess) SetProgram(program string) {
 	program_Cstring := C.CString(program)
 	defer C.free(unsafe.Pointer(program_Cstring))
-	C.QProcess_SetProgram(this.h, program_Cstring, C.ulong(len(program)))
+	C.QProcess_SetProgram(this.h, program_Cstring, C.size_t(len(program)))
 }
 
 func (this *QProcess) Arguments() []string {
@@ -301,16 +301,16 @@ func (this *QProcess) Arguments() []string {
 func (this *QProcess) SetArguments(arguments []string) {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
 	arguments_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(arguments))))
-	arguments_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(arguments))))
+	arguments_Lengths := (*[0xffff]C.uint64_t)(C.malloc(C.size_t(8 * len(arguments))))
 	defer C.free(unsafe.Pointer(arguments_CArray))
 	defer C.free(unsafe.Pointer(arguments_Lengths))
 	for i := range arguments {
 		single_cstring := C.CString(arguments[i])
 		defer C.free(unsafe.Pointer(single_cstring))
 		arguments_CArray[i] = single_cstring
-		arguments_Lengths[i] = (C.size_t)(len(arguments[i]))
+		arguments_Lengths[i] = (C.uint64_t)(len(arguments[i]))
 	}
-	C.QProcess_SetArguments(this.h, &arguments_CArray[0], &arguments_Lengths[0], C.ulong(len(arguments)))
+	C.QProcess_SetArguments(this.h, &arguments_CArray[0], &arguments_Lengths[0], C.size_t(len(arguments)))
 }
 
 func (this *QProcess) ReadChannelMode() uintptr {
@@ -360,19 +360,19 @@ func (this *QProcess) CloseWriteChannel() {
 func (this *QProcess) SetStandardInputFile(fileName string) {
 	fileName_Cstring := C.CString(fileName)
 	defer C.free(unsafe.Pointer(fileName_Cstring))
-	C.QProcess_SetStandardInputFile(this.h, fileName_Cstring, C.ulong(len(fileName)))
+	C.QProcess_SetStandardInputFile(this.h, fileName_Cstring, C.size_t(len(fileName)))
 }
 
 func (this *QProcess) SetStandardOutputFile(fileName string) {
 	fileName_Cstring := C.CString(fileName)
 	defer C.free(unsafe.Pointer(fileName_Cstring))
-	C.QProcess_SetStandardOutputFile(this.h, fileName_Cstring, C.ulong(len(fileName)))
+	C.QProcess_SetStandardOutputFile(this.h, fileName_Cstring, C.size_t(len(fileName)))
 }
 
 func (this *QProcess) SetStandardErrorFile(fileName string) {
 	fileName_Cstring := C.CString(fileName)
 	defer C.free(unsafe.Pointer(fileName_Cstring))
-	C.QProcess_SetStandardErrorFile(this.h, fileName_Cstring, C.ulong(len(fileName)))
+	C.QProcess_SetStandardErrorFile(this.h, fileName_Cstring, C.size_t(len(fileName)))
 }
 
 func (this *QProcess) SetStandardOutputProcess(destination *QProcess) {
@@ -391,22 +391,22 @@ func (this *QProcess) WorkingDirectory() string {
 func (this *QProcess) SetWorkingDirectory(dir string) {
 	dir_Cstring := C.CString(dir)
 	defer C.free(unsafe.Pointer(dir_Cstring))
-	C.QProcess_SetWorkingDirectory(this.h, dir_Cstring, C.ulong(len(dir)))
+	C.QProcess_SetWorkingDirectory(this.h, dir_Cstring, C.size_t(len(dir)))
 }
 
 func (this *QProcess) SetEnvironment(environment []string) {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
 	environment_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(environment))))
-	environment_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(environment))))
+	environment_Lengths := (*[0xffff]C.uint64_t)(C.malloc(C.size_t(8 * len(environment))))
 	defer C.free(unsafe.Pointer(environment_CArray))
 	defer C.free(unsafe.Pointer(environment_Lengths))
 	for i := range environment {
 		single_cstring := C.CString(environment[i])
 		defer C.free(unsafe.Pointer(single_cstring))
 		environment_CArray[i] = single_cstring
-		environment_Lengths[i] = (C.size_t)(len(environment[i]))
+		environment_Lengths[i] = (C.uint64_t)(len(environment[i]))
 	}
-	C.QProcess_SetEnvironment(this.h, &environment_CArray[0], &environment_Lengths[0], C.ulong(len(environment)))
+	C.QProcess_SetEnvironment(this.h, &environment_CArray[0], &environment_Lengths[0], C.size_t(len(environment)))
 }
 
 func (this *QProcess) Environment() []string {
@@ -550,23 +550,23 @@ func QProcess_Execute(program string, arguments []string) int {
 	defer C.free(unsafe.Pointer(program_Cstring))
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
 	arguments_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(arguments))))
-	arguments_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(arguments))))
+	arguments_Lengths := (*[0xffff]C.uint64_t)(C.malloc(C.size_t(8 * len(arguments))))
 	defer C.free(unsafe.Pointer(arguments_CArray))
 	defer C.free(unsafe.Pointer(arguments_Lengths))
 	for i := range arguments {
 		single_cstring := C.CString(arguments[i])
 		defer C.free(unsafe.Pointer(single_cstring))
 		arguments_CArray[i] = single_cstring
-		arguments_Lengths[i] = (C.size_t)(len(arguments[i]))
+		arguments_Lengths[i] = (C.uint64_t)(len(arguments[i]))
 	}
-	ret := C.QProcess_Execute(program_Cstring, C.ulong(len(program)), &arguments_CArray[0], &arguments_Lengths[0], C.ulong(len(arguments)))
+	ret := C.QProcess_Execute(program_Cstring, C.size_t(len(program)), &arguments_CArray[0], &arguments_Lengths[0], C.size_t(len(arguments)))
 	return (int)(ret)
 }
 
 func QProcess_ExecuteWithCommand(command string) int {
 	command_Cstring := C.CString(command)
 	defer C.free(unsafe.Pointer(command_Cstring))
-	ret := C.QProcess_ExecuteWithCommand(command_Cstring, C.ulong(len(command)))
+	ret := C.QProcess_ExecuteWithCommand(command_Cstring, C.size_t(len(command)))
 	return (int)(ret)
 }
 
@@ -575,18 +575,18 @@ func QProcess_StartDetached2(program string, arguments []string, workingDirector
 	defer C.free(unsafe.Pointer(program_Cstring))
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
 	arguments_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(arguments))))
-	arguments_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(arguments))))
+	arguments_Lengths := (*[0xffff]C.uint64_t)(C.malloc(C.size_t(8 * len(arguments))))
 	defer C.free(unsafe.Pointer(arguments_CArray))
 	defer C.free(unsafe.Pointer(arguments_Lengths))
 	for i := range arguments {
 		single_cstring := C.CString(arguments[i])
 		defer C.free(unsafe.Pointer(single_cstring))
 		arguments_CArray[i] = single_cstring
-		arguments_Lengths[i] = (C.size_t)(len(arguments[i]))
+		arguments_Lengths[i] = (C.uint64_t)(len(arguments[i]))
 	}
 	workingDirectory_Cstring := C.CString(workingDirectory)
 	defer C.free(unsafe.Pointer(workingDirectory_Cstring))
-	ret := C.QProcess_StartDetached2(program_Cstring, C.ulong(len(program)), &arguments_CArray[0], &arguments_Lengths[0], C.ulong(len(arguments)), workingDirectory_Cstring, C.ulong(len(workingDirectory)))
+	ret := C.QProcess_StartDetached2(program_Cstring, C.size_t(len(program)), &arguments_CArray[0], &arguments_Lengths[0], C.size_t(len(arguments)), workingDirectory_Cstring, C.size_t(len(workingDirectory)))
 	return (bool)(ret)
 }
 
@@ -595,23 +595,23 @@ func QProcess_StartDetached3(program string, arguments []string) bool {
 	defer C.free(unsafe.Pointer(program_Cstring))
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
 	arguments_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(arguments))))
-	arguments_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(arguments))))
+	arguments_Lengths := (*[0xffff]C.uint64_t)(C.malloc(C.size_t(8 * len(arguments))))
 	defer C.free(unsafe.Pointer(arguments_CArray))
 	defer C.free(unsafe.Pointer(arguments_Lengths))
 	for i := range arguments {
 		single_cstring := C.CString(arguments[i])
 		defer C.free(unsafe.Pointer(single_cstring))
 		arguments_CArray[i] = single_cstring
-		arguments_Lengths[i] = (C.size_t)(len(arguments[i]))
+		arguments_Lengths[i] = (C.uint64_t)(len(arguments[i]))
 	}
-	ret := C.QProcess_StartDetached3(program_Cstring, C.ulong(len(program)), &arguments_CArray[0], &arguments_Lengths[0], C.ulong(len(arguments)))
+	ret := C.QProcess_StartDetached3(program_Cstring, C.size_t(len(program)), &arguments_CArray[0], &arguments_Lengths[0], C.size_t(len(arguments)))
 	return (bool)(ret)
 }
 
 func QProcess_StartDetachedWithCommand(command string) bool {
 	command_Cstring := C.CString(command)
 	defer C.free(unsafe.Pointer(command_Cstring))
-	ret := C.QProcess_StartDetachedWithCommand(command_Cstring, C.ulong(len(command)))
+	ret := C.QProcess_StartDetachedWithCommand(command_Cstring, C.size_t(len(command)))
 	return (bool)(ret)
 }
 
@@ -752,22 +752,22 @@ func (this *QProcess) Start3(program string, arguments []string, mode int) {
 	defer C.free(unsafe.Pointer(program_Cstring))
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
 	arguments_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(arguments))))
-	arguments_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(arguments))))
+	arguments_Lengths := (*[0xffff]C.uint64_t)(C.malloc(C.size_t(8 * len(arguments))))
 	defer C.free(unsafe.Pointer(arguments_CArray))
 	defer C.free(unsafe.Pointer(arguments_Lengths))
 	for i := range arguments {
 		single_cstring := C.CString(arguments[i])
 		defer C.free(unsafe.Pointer(single_cstring))
 		arguments_CArray[i] = single_cstring
-		arguments_Lengths[i] = (C.size_t)(len(arguments[i]))
+		arguments_Lengths[i] = (C.uint64_t)(len(arguments[i]))
 	}
-	C.QProcess_Start3(this.h, program_Cstring, C.ulong(len(program)), &arguments_CArray[0], &arguments_Lengths[0], C.ulong(len(arguments)), (C.int)(mode))
+	C.QProcess_Start3(this.h, program_Cstring, C.size_t(len(program)), &arguments_CArray[0], &arguments_Lengths[0], C.size_t(len(arguments)), (C.int)(mode))
 }
 
 func (this *QProcess) Start22(command string, mode int) {
 	command_Cstring := C.CString(command)
 	defer C.free(unsafe.Pointer(command_Cstring))
-	C.QProcess_Start22(this.h, command_Cstring, C.ulong(len(command)), (C.int)(mode))
+	C.QProcess_Start22(this.h, command_Cstring, C.size_t(len(command)), (C.int)(mode))
 }
 
 func (this *QProcess) Start1(mode int) {
@@ -787,13 +787,13 @@ func (this *QProcess) Open1(mode int) bool {
 func (this *QProcess) SetStandardOutputFile2(fileName string, mode int) {
 	fileName_Cstring := C.CString(fileName)
 	defer C.free(unsafe.Pointer(fileName_Cstring))
-	C.QProcess_SetStandardOutputFile2(this.h, fileName_Cstring, C.ulong(len(fileName)), (C.int)(mode))
+	C.QProcess_SetStandardOutputFile2(this.h, fileName_Cstring, C.size_t(len(fileName)), (C.int)(mode))
 }
 
 func (this *QProcess) SetStandardErrorFile2(fileName string, mode int) {
 	fileName_Cstring := C.CString(fileName)
 	defer C.free(unsafe.Pointer(fileName_Cstring))
-	C.QProcess_SetStandardErrorFile2(this.h, fileName_Cstring, C.ulong(len(fileName)), (C.int)(mode))
+	C.QProcess_SetStandardErrorFile2(this.h, fileName_Cstring, C.size_t(len(fileName)), (C.int)(mode))
 }
 
 func (this *QProcess) WaitForStarted1(msecs int) bool {
@@ -821,18 +821,18 @@ func QProcess_StartDetached4(program string, arguments []string, workingDirector
 	defer C.free(unsafe.Pointer(program_Cstring))
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
 	arguments_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(arguments))))
-	arguments_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(arguments))))
+	arguments_Lengths := (*[0xffff]C.uint64_t)(C.malloc(C.size_t(8 * len(arguments))))
 	defer C.free(unsafe.Pointer(arguments_CArray))
 	defer C.free(unsafe.Pointer(arguments_Lengths))
 	for i := range arguments {
 		single_cstring := C.CString(arguments[i])
 		defer C.free(unsafe.Pointer(single_cstring))
 		arguments_CArray[i] = single_cstring
-		arguments_Lengths[i] = (C.size_t)(len(arguments[i]))
+		arguments_Lengths[i] = (C.uint64_t)(len(arguments[i]))
 	}
 	workingDirectory_Cstring := C.CString(workingDirectory)
 	defer C.free(unsafe.Pointer(workingDirectory_Cstring))
-	ret := C.QProcess_StartDetached4(program_Cstring, C.ulong(len(program)), &arguments_CArray[0], &arguments_Lengths[0], C.ulong(len(arguments)), workingDirectory_Cstring, C.ulong(len(workingDirectory)), (*C.longlong)(unsafe.Pointer(pid)))
+	ret := C.QProcess_StartDetached4(program_Cstring, C.size_t(len(program)), &arguments_CArray[0], &arguments_Lengths[0], C.size_t(len(arguments)), workingDirectory_Cstring, C.size_t(len(workingDirectory)), (*C.longlong)(unsafe.Pointer(pid)))
 	return (bool)(ret)
 }
 

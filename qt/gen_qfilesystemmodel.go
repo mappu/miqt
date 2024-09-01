@@ -79,7 +79,7 @@ func QFileSystemModel_TrUtf8(s string) string {
 func (this *QFileSystemModel) RootPathChanged(newPath string) {
 	newPath_Cstring := C.CString(newPath)
 	defer C.free(unsafe.Pointer(newPath_Cstring))
-	C.QFileSystemModel_RootPathChanged(this.h, newPath_Cstring, C.ulong(len(newPath)))
+	C.QFileSystemModel_RootPathChanged(this.h, newPath_Cstring, C.size_t(len(newPath)))
 }
 
 func (this *QFileSystemModel) OnRootPathChanged(slot func()) {
@@ -97,7 +97,7 @@ func (this *QFileSystemModel) FileRenamed(path string, oldName string, newName s
 	defer C.free(unsafe.Pointer(oldName_Cstring))
 	newName_Cstring := C.CString(newName)
 	defer C.free(unsafe.Pointer(newName_Cstring))
-	C.QFileSystemModel_FileRenamed(this.h, path_Cstring, C.ulong(len(path)), oldName_Cstring, C.ulong(len(oldName)), newName_Cstring, C.ulong(len(newName)))
+	C.QFileSystemModel_FileRenamed(this.h, path_Cstring, C.size_t(len(path)), oldName_Cstring, C.size_t(len(oldName)), newName_Cstring, C.size_t(len(newName)))
 }
 
 func (this *QFileSystemModel) OnFileRenamed(slot func()) {
@@ -111,7 +111,7 @@ func (this *QFileSystemModel) OnFileRenamed(slot func()) {
 func (this *QFileSystemModel) DirectoryLoaded(path string) {
 	path_Cstring := C.CString(path)
 	defer C.free(unsafe.Pointer(path_Cstring))
-	C.QFileSystemModel_DirectoryLoaded(this.h, path_Cstring, C.ulong(len(path)))
+	C.QFileSystemModel_DirectoryLoaded(this.h, path_Cstring, C.size_t(len(path)))
 }
 
 func (this *QFileSystemModel) OnDirectoryLoaded(slot func()) {
@@ -136,7 +136,7 @@ func (this *QFileSystemModel) Index(row int, column int) *QModelIndex {
 func (this *QFileSystemModel) IndexWithPath(path string) *QModelIndex {
 	path_Cstring := C.CString(path)
 	defer C.free(unsafe.Pointer(path_Cstring))
-	ret := C.QFileSystemModel_IndexWithPath(this.h, path_Cstring, C.ulong(len(path)))
+	ret := C.QFileSystemModel_IndexWithPath(this.h, path_Cstring, C.size_t(len(path)))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQModelIndex(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QModelIndex) {
@@ -261,7 +261,7 @@ func (this *QFileSystemModel) MimeData(indexes []QModelIndex) *QMimeData {
 	for i := range indexes {
 		indexes_CArray[i] = indexes[i].cPointer()
 	}
-	ret := C.QFileSystemModel_MimeData(this.h, &indexes_CArray[0], C.ulong(len(indexes)))
+	ret := C.QFileSystemModel_MimeData(this.h, &indexes_CArray[0], C.size_t(len(indexes)))
 	return newQMimeData_U(unsafe.Pointer(ret))
 }
 
@@ -278,7 +278,7 @@ func (this *QFileSystemModel) SupportedDropActions() int {
 func (this *QFileSystemModel) SetRootPath(path string) *QModelIndex {
 	path_Cstring := C.CString(path)
 	defer C.free(unsafe.Pointer(path_Cstring))
-	ret := C.QFileSystemModel_SetRootPath(this.h, path_Cstring, C.ulong(len(path)))
+	ret := C.QFileSystemModel_SetRootPath(this.h, path_Cstring, C.size_t(len(path)))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQModelIndex(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QModelIndex) {
@@ -356,16 +356,16 @@ func (this *QFileSystemModel) NameFilterDisables() bool {
 func (this *QFileSystemModel) SetNameFilters(filters []string) {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
 	filters_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(filters))))
-	filters_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(filters))))
+	filters_Lengths := (*[0xffff]C.uint64_t)(C.malloc(C.size_t(8 * len(filters))))
 	defer C.free(unsafe.Pointer(filters_CArray))
 	defer C.free(unsafe.Pointer(filters_Lengths))
 	for i := range filters {
 		single_cstring := C.CString(filters[i])
 		defer C.free(unsafe.Pointer(single_cstring))
 		filters_CArray[i] = single_cstring
-		filters_Lengths[i] = (C.size_t)(len(filters[i]))
+		filters_Lengths[i] = (C.uint64_t)(len(filters[i]))
 	}
-	C.QFileSystemModel_SetNameFilters(this.h, &filters_CArray[0], &filters_Lengths[0], C.ulong(len(filters)))
+	C.QFileSystemModel_SetNameFilters(this.h, &filters_CArray[0], &filters_Lengths[0], C.size_t(len(filters)))
 }
 
 func (this *QFileSystemModel) NameFilters() []string {
@@ -443,7 +443,7 @@ func (this *QFileSystemModel) LastModified(index *QModelIndex) *QDateTime {
 func (this *QFileSystemModel) Mkdir(parent *QModelIndex, name string) *QModelIndex {
 	name_Cstring := C.CString(name)
 	defer C.free(unsafe.Pointer(name_Cstring))
-	ret := C.QFileSystemModel_Mkdir(this.h, parent.cPointer(), name_Cstring, C.ulong(len(name)))
+	ret := C.QFileSystemModel_Mkdir(this.h, parent.cPointer(), name_Cstring, C.size_t(len(name)))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQModelIndex(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QModelIndex) {
@@ -565,7 +565,7 @@ func (this *QFileSystemModel) Index3(row int, column int, parent *QModelIndex) *
 func (this *QFileSystemModel) Index2(path string, column int) *QModelIndex {
 	path_Cstring := C.CString(path)
 	defer C.free(unsafe.Pointer(path_Cstring))
-	ret := C.QFileSystemModel_Index2(this.h, path_Cstring, C.ulong(len(path)), (C.int)(column))
+	ret := C.QFileSystemModel_Index2(this.h, path_Cstring, C.size_t(len(path)), (C.int)(column))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQModelIndex(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QModelIndex) {

@@ -93,7 +93,7 @@ func QGuiApplication_TrUtf8(s string) string {
 func QGuiApplication_SetApplicationDisplayName(name string) {
 	name_Cstring := C.CString(name)
 	defer C.free(unsafe.Pointer(name_Cstring))
-	C.QGuiApplication_SetApplicationDisplayName(name_Cstring, C.ulong(len(name)))
+	C.QGuiApplication_SetApplicationDisplayName(name_Cstring, C.size_t(len(name)))
 }
 
 func QGuiApplication_ApplicationDisplayName() string {
@@ -108,7 +108,7 @@ func QGuiApplication_ApplicationDisplayName() string {
 func QGuiApplication_SetDesktopFileName(name string) {
 	name_Cstring := C.CString(name)
 	defer C.free(unsafe.Pointer(name_Cstring))
-	C.QGuiApplication_SetDesktopFileName(name_Cstring, C.ulong(len(name)))
+	C.QGuiApplication_SetDesktopFileName(name_Cstring, C.size_t(len(name)))
 }
 
 func QGuiApplication_DesktopFileName() string {

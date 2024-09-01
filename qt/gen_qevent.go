@@ -915,7 +915,7 @@ func NewQKeyEvent3(param1 *QKeyEvent) *QKeyEvent {
 func NewQKeyEvent4(typeVal uintptr, key int, modifiers int, text string) *QKeyEvent {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QKeyEvent_new4((C.uintptr_t)(typeVal), (C.int)(key), (C.int)(modifiers), text_Cstring, C.ulong(len(text)))
+	ret := C.QKeyEvent_new4((C.uintptr_t)(typeVal), (C.int)(key), (C.int)(modifiers), text_Cstring, C.size_t(len(text)))
 	return newQKeyEvent(ret)
 }
 
@@ -923,7 +923,7 @@ func NewQKeyEvent4(typeVal uintptr, key int, modifiers int, text string) *QKeyEv
 func NewQKeyEvent5(typeVal uintptr, key int, modifiers int, text string, autorep bool) *QKeyEvent {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QKeyEvent_new5((C.uintptr_t)(typeVal), (C.int)(key), (C.int)(modifiers), text_Cstring, C.ulong(len(text)), (C.bool)(autorep))
+	ret := C.QKeyEvent_new5((C.uintptr_t)(typeVal), (C.int)(key), (C.int)(modifiers), text_Cstring, C.size_t(len(text)), (C.bool)(autorep))
 	return newQKeyEvent(ret)
 }
 
@@ -931,7 +931,7 @@ func NewQKeyEvent5(typeVal uintptr, key int, modifiers int, text string, autorep
 func NewQKeyEvent6(typeVal uintptr, key int, modifiers int, text string, autorep bool, count uint16) *QKeyEvent {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QKeyEvent_new6((C.uintptr_t)(typeVal), (C.int)(key), (C.int)(modifiers), text_Cstring, C.ulong(len(text)), (C.bool)(autorep), (C.uint16_t)(count))
+	ret := C.QKeyEvent_new6((C.uintptr_t)(typeVal), (C.int)(key), (C.int)(modifiers), text_Cstring, C.size_t(len(text)), (C.bool)(autorep), (C.uint16_t)(count))
 	return newQKeyEvent(ret)
 }
 
@@ -939,7 +939,7 @@ func NewQKeyEvent6(typeVal uintptr, key int, modifiers int, text string, autorep
 func NewQKeyEvent7(typeVal uintptr, key int, modifiers int, nativeScanCode uint, nativeVirtualKey uint, nativeModifiers uint, text string) *QKeyEvent {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QKeyEvent_new7((C.uintptr_t)(typeVal), (C.int)(key), (C.int)(modifiers), (C.uint)(nativeScanCode), (C.uint)(nativeVirtualKey), (C.uint)(nativeModifiers), text_Cstring, C.ulong(len(text)))
+	ret := C.QKeyEvent_new7((C.uintptr_t)(typeVal), (C.int)(key), (C.int)(modifiers), (C.uint)(nativeScanCode), (C.uint)(nativeVirtualKey), (C.uint)(nativeModifiers), text_Cstring, C.size_t(len(text)))
 	return newQKeyEvent(ret)
 }
 
@@ -947,7 +947,7 @@ func NewQKeyEvent7(typeVal uintptr, key int, modifiers int, nativeScanCode uint,
 func NewQKeyEvent8(typeVal uintptr, key int, modifiers int, nativeScanCode uint, nativeVirtualKey uint, nativeModifiers uint, text string, autorep bool) *QKeyEvent {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QKeyEvent_new8((C.uintptr_t)(typeVal), (C.int)(key), (C.int)(modifiers), (C.uint)(nativeScanCode), (C.uint)(nativeVirtualKey), (C.uint)(nativeModifiers), text_Cstring, C.ulong(len(text)), (C.bool)(autorep))
+	ret := C.QKeyEvent_new8((C.uintptr_t)(typeVal), (C.int)(key), (C.int)(modifiers), (C.uint)(nativeScanCode), (C.uint)(nativeVirtualKey), (C.uint)(nativeModifiers), text_Cstring, C.size_t(len(text)), (C.bool)(autorep))
 	return newQKeyEvent(ret)
 }
 
@@ -955,7 +955,7 @@ func NewQKeyEvent8(typeVal uintptr, key int, modifiers int, nativeScanCode uint,
 func NewQKeyEvent9(typeVal uintptr, key int, modifiers int, nativeScanCode uint, nativeVirtualKey uint, nativeModifiers uint, text string, autorep bool, count uint16) *QKeyEvent {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QKeyEvent_new9((C.uintptr_t)(typeVal), (C.int)(key), (C.int)(modifiers), (C.uint)(nativeScanCode), (C.uint)(nativeVirtualKey), (C.uint)(nativeModifiers), text_Cstring, C.ulong(len(text)), (C.bool)(autorep), (C.uint16_t)(count))
+	ret := C.QKeyEvent_new9((C.uintptr_t)(typeVal), (C.int)(key), (C.int)(modifiers), (C.uint)(nativeScanCode), (C.uint)(nativeVirtualKey), (C.uint)(nativeModifiers), text_Cstring, C.size_t(len(text)), (C.bool)(autorep), (C.uint16_t)(count))
 	return newQKeyEvent(ret)
 }
 
@@ -1610,7 +1610,7 @@ func NewQInputMethodEvent2(preeditText string, attributes []QInputMethodEvent__A
 	for i := range attributes {
 		attributes_CArray[i] = attributes[i].cPointer()
 	}
-	ret := C.QInputMethodEvent_new2(preeditText_Cstring, C.ulong(len(preeditText)), &attributes_CArray[0], C.ulong(len(attributes)))
+	ret := C.QInputMethodEvent_new2(preeditText_Cstring, C.size_t(len(preeditText)), &attributes_CArray[0], C.size_t(len(attributes)))
 	return newQInputMethodEvent(ret)
 }
 
@@ -1623,7 +1623,7 @@ func NewQInputMethodEvent3(other *QInputMethodEvent) *QInputMethodEvent {
 func (this *QInputMethodEvent) SetCommitString(commitString string) {
 	commitString_Cstring := C.CString(commitString)
 	defer C.free(unsafe.Pointer(commitString_Cstring))
-	C.QInputMethodEvent_SetCommitString(this.h, commitString_Cstring, C.ulong(len(commitString)))
+	C.QInputMethodEvent_SetCommitString(this.h, commitString_Cstring, C.size_t(len(commitString)))
 }
 
 func (this *QInputMethodEvent) PreeditString() string {
@@ -1657,13 +1657,13 @@ func (this *QInputMethodEvent) ReplacementLength() int {
 func (this *QInputMethodEvent) SetCommitString2(commitString string, replaceFrom int) {
 	commitString_Cstring := C.CString(commitString)
 	defer C.free(unsafe.Pointer(commitString_Cstring))
-	C.QInputMethodEvent_SetCommitString2(this.h, commitString_Cstring, C.ulong(len(commitString)), (C.int)(replaceFrom))
+	C.QInputMethodEvent_SetCommitString2(this.h, commitString_Cstring, C.size_t(len(commitString)), (C.int)(replaceFrom))
 }
 
 func (this *QInputMethodEvent) SetCommitString3(commitString string, replaceFrom int, replaceLength int) {
 	commitString_Cstring := C.CString(commitString)
 	defer C.free(unsafe.Pointer(commitString_Cstring))
-	C.QInputMethodEvent_SetCommitString3(this.h, commitString_Cstring, C.ulong(len(commitString)), (C.int)(replaceFrom), (C.int)(replaceLength))
+	C.QInputMethodEvent_SetCommitString3(this.h, commitString_Cstring, C.size_t(len(commitString)), (C.int)(replaceFrom), (C.int)(replaceLength))
 }
 
 func (this *QInputMethodEvent) Delete() {
@@ -2087,7 +2087,7 @@ func newQStatusTipEvent_U(h unsafe.Pointer) *QStatusTipEvent {
 func NewQStatusTipEvent(tip string) *QStatusTipEvent {
 	tip_Cstring := C.CString(tip)
 	defer C.free(unsafe.Pointer(tip_Cstring))
-	ret := C.QStatusTipEvent_new(tip_Cstring, C.ulong(len(tip)))
+	ret := C.QStatusTipEvent_new(tip_Cstring, C.size_t(len(tip)))
 	return newQStatusTipEvent(ret)
 }
 
@@ -2137,7 +2137,7 @@ func newQWhatsThisClickedEvent_U(h unsafe.Pointer) *QWhatsThisClickedEvent {
 func NewQWhatsThisClickedEvent(href string) *QWhatsThisClickedEvent {
 	href_Cstring := C.CString(href)
 	defer C.free(unsafe.Pointer(href_Cstring))
-	ret := C.QWhatsThisClickedEvent_new(href_Cstring, C.ulong(len(href)))
+	ret := C.QWhatsThisClickedEvent_new(href_Cstring, C.size_t(len(href)))
 	return newQWhatsThisClickedEvent(ret)
 }
 
@@ -2246,7 +2246,7 @@ func newQFileOpenEvent_U(h unsafe.Pointer) *QFileOpenEvent {
 func NewQFileOpenEvent(file string) *QFileOpenEvent {
 	file_Cstring := C.CString(file)
 	defer C.free(unsafe.Pointer(file_Cstring))
-	ret := C.QFileOpenEvent_new(file_Cstring, C.ulong(len(file)))
+	ret := C.QFileOpenEvent_new(file_Cstring, C.size_t(len(file)))
 	return newQFileOpenEvent(ret)
 }
 
@@ -2570,7 +2570,7 @@ func NewQTouchEvent6(eventType uintptr, device *QTouchDevice, modifiers int, tou
 	for i := range touchPoints {
 		touchPoints_CArray[i] = touchPoints[i].cPointer()
 	}
-	ret := C.QTouchEvent_new6((C.uintptr_t)(eventType), device.cPointer(), (C.int)(modifiers), (C.int)(touchPointStates), &touchPoints_CArray[0], C.ulong(len(touchPoints)))
+	ret := C.QTouchEvent_new6((C.uintptr_t)(eventType), device.cPointer(), (C.int)(modifiers), (C.int)(touchPointStates), &touchPoints_CArray[0], C.size_t(len(touchPoints)))
 	return newQTouchEvent(ret)
 }
 
@@ -2613,7 +2613,7 @@ func (this *QTouchEvent) SetTouchPoints(atouchPoints []QTouchEvent__TouchPoint) 
 	for i := range atouchPoints {
 		atouchPoints_CArray[i] = atouchPoints[i].cPointer()
 	}
-	C.QTouchEvent_SetTouchPoints(this.h, &atouchPoints_CArray[0], C.ulong(len(atouchPoints)))
+	C.QTouchEvent_SetTouchPoints(this.h, &atouchPoints_CArray[0], C.size_t(len(atouchPoints)))
 }
 
 func (this *QTouchEvent) SetDevice(adevice *QTouchDevice) {
@@ -3301,7 +3301,7 @@ func (this *QTouchEvent__TouchPoint) SetRawScreenPositions(positions []QPointF) 
 	for i := range positions {
 		positions_CArray[i] = positions[i].cPointer()
 	}
-	C.QTouchEvent__TouchPoint_SetRawScreenPositions(this.h, &positions_CArray[0], C.ulong(len(positions)))
+	C.QTouchEvent__TouchPoint_SetRawScreenPositions(this.h, &positions_CArray[0], C.size_t(len(positions)))
 }
 
 func (this *QTouchEvent__TouchPoint) Delete() {

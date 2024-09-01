@@ -67,7 +67,7 @@ func (this *QPictureFormatPlugin) LoadPicture(format string, filename string, pi
 	defer C.free(unsafe.Pointer(format_Cstring))
 	filename_Cstring := C.CString(filename)
 	defer C.free(unsafe.Pointer(filename_Cstring))
-	ret := C.QPictureFormatPlugin_LoadPicture(this.h, format_Cstring, C.ulong(len(format)), filename_Cstring, C.ulong(len(filename)), pic.cPointer())
+	ret := C.QPictureFormatPlugin_LoadPicture(this.h, format_Cstring, C.size_t(len(format)), filename_Cstring, C.size_t(len(filename)), pic.cPointer())
 	return (bool)(ret)
 }
 
@@ -76,14 +76,14 @@ func (this *QPictureFormatPlugin) SavePicture(format string, filename string, pi
 	defer C.free(unsafe.Pointer(format_Cstring))
 	filename_Cstring := C.CString(filename)
 	defer C.free(unsafe.Pointer(filename_Cstring))
-	ret := C.QPictureFormatPlugin_SavePicture(this.h, format_Cstring, C.ulong(len(format)), filename_Cstring, C.ulong(len(filename)), pic.cPointer())
+	ret := C.QPictureFormatPlugin_SavePicture(this.h, format_Cstring, C.size_t(len(format)), filename_Cstring, C.size_t(len(filename)), pic.cPointer())
 	return (bool)(ret)
 }
 
 func (this *QPictureFormatPlugin) InstallIOHandler(format string) bool {
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
-	ret := C.QPictureFormatPlugin_InstallIOHandler(this.h, format_Cstring, C.ulong(len(format)))
+	ret := C.QPictureFormatPlugin_InstallIOHandler(this.h, format_Cstring, C.size_t(len(format)))
 	return (bool)(ret)
 }
 

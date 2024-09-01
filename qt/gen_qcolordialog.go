@@ -292,7 +292,7 @@ func QColorDialog_GetColor2(initial *QColor, parent *QWidget) *QColor {
 func QColorDialog_GetColor3(initial *QColor, parent *QWidget, title string) *QColor {
 	title_Cstring := C.CString(title)
 	defer C.free(unsafe.Pointer(title_Cstring))
-	ret := C.QColorDialog_GetColor3(initial.cPointer(), parent.cPointer(), title_Cstring, C.ulong(len(title)))
+	ret := C.QColorDialog_GetColor3(initial.cPointer(), parent.cPointer(), title_Cstring, C.size_t(len(title)))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQColor(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QColor) {
@@ -305,7 +305,7 @@ func QColorDialog_GetColor3(initial *QColor, parent *QWidget, title string) *QCo
 func QColorDialog_GetColor4(initial *QColor, parent *QWidget, title string, options int) *QColor {
 	title_Cstring := C.CString(title)
 	defer C.free(unsafe.Pointer(title_Cstring))
-	ret := C.QColorDialog_GetColor4(initial.cPointer(), parent.cPointer(), title_Cstring, C.ulong(len(title)), (C.int)(options))
+	ret := C.QColorDialog_GetColor4(initial.cPointer(), parent.cPointer(), title_Cstring, C.size_t(len(title)), (C.int)(options))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQColor(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QColor) {

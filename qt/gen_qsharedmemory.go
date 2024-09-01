@@ -45,7 +45,7 @@ func NewQSharedMemory() *QSharedMemory {
 func NewQSharedMemory2(key string) *QSharedMemory {
 	key_Cstring := C.CString(key)
 	defer C.free(unsafe.Pointer(key_Cstring))
-	ret := C.QSharedMemory_new2(key_Cstring, C.ulong(len(key)))
+	ret := C.QSharedMemory_new2(key_Cstring, C.size_t(len(key)))
 	return newQSharedMemory(ret)
 }
 
@@ -59,7 +59,7 @@ func NewQSharedMemory3(parent *QObject) *QSharedMemory {
 func NewQSharedMemory4(key string, parent *QObject) *QSharedMemory {
 	key_Cstring := C.CString(key)
 	defer C.free(unsafe.Pointer(key_Cstring))
-	ret := C.QSharedMemory_new4(key_Cstring, C.ulong(len(key)), parent.cPointer())
+	ret := C.QSharedMemory_new4(key_Cstring, C.size_t(len(key)), parent.cPointer())
 	return newQSharedMemory(ret)
 }
 
@@ -93,7 +93,7 @@ func QSharedMemory_TrUtf8(s string) string {
 func (this *QSharedMemory) SetKey(key string) {
 	key_Cstring := C.CString(key)
 	defer C.free(unsafe.Pointer(key_Cstring))
-	C.QSharedMemory_SetKey(this.h, key_Cstring, C.ulong(len(key)))
+	C.QSharedMemory_SetKey(this.h, key_Cstring, C.size_t(len(key)))
 }
 
 func (this *QSharedMemory) Key() string {
@@ -108,7 +108,7 @@ func (this *QSharedMemory) Key() string {
 func (this *QSharedMemory) SetNativeKey(key string) {
 	key_Cstring := C.CString(key)
 	defer C.free(unsafe.Pointer(key_Cstring))
-	C.QSharedMemory_SetNativeKey(this.h, key_Cstring, C.ulong(len(key)))
+	C.QSharedMemory_SetNativeKey(this.h, key_Cstring, C.size_t(len(key)))
 }
 
 func (this *QSharedMemory) NativeKey() string {

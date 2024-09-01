@@ -718,14 +718,14 @@ func (this *QByteArray) Repeated(times int) *QByteArray {
 func (this *QByteArray) AppendWithQString(s string) *QByteArray {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	ret := C.QByteArray_AppendWithQString(this.h, s_Cstring, C.ulong(len(s)))
+	ret := C.QByteArray_AppendWithQString(this.h, s_Cstring, C.size_t(len(s)))
 	return newQByteArray_U(unsafe.Pointer(ret))
 }
 
 func (this *QByteArray) Insert6(i int, s string) *QByteArray {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	ret := C.QByteArray_Insert6(this.h, (C.int)(i), s_Cstring, C.ulong(len(s)))
+	ret := C.QByteArray_Insert6(this.h, (C.int)(i), s_Cstring, C.size_t(len(s)))
 	return newQByteArray_U(unsafe.Pointer(ret))
 }
 
@@ -734,84 +734,84 @@ func (this *QByteArray) Replace12(before string, after string) *QByteArray {
 	defer C.free(unsafe.Pointer(before_Cstring))
 	after_Cstring := C.CString(after)
 	defer C.free(unsafe.Pointer(after_Cstring))
-	ret := C.QByteArray_Replace12(this.h, before_Cstring, C.ulong(len(before)), after_Cstring)
+	ret := C.QByteArray_Replace12(this.h, before_Cstring, C.size_t(len(before)), after_Cstring)
 	return newQByteArray_U(unsafe.Pointer(ret))
 }
 
 func (this *QByteArray) Replace13(c byte, after string) *QByteArray {
 	after_Cstring := C.CString(after)
 	defer C.free(unsafe.Pointer(after_Cstring))
-	ret := C.QByteArray_Replace13(this.h, (C.char)(c), after_Cstring, C.ulong(len(after)))
+	ret := C.QByteArray_Replace13(this.h, (C.char)(c), after_Cstring, C.size_t(len(after)))
 	return newQByteArray_U(unsafe.Pointer(ret))
 }
 
 func (this *QByteArray) Replace14(before string, after *QByteArray) *QByteArray {
 	before_Cstring := C.CString(before)
 	defer C.free(unsafe.Pointer(before_Cstring))
-	ret := C.QByteArray_Replace14(this.h, before_Cstring, C.ulong(len(before)), after.cPointer())
+	ret := C.QByteArray_Replace14(this.h, before_Cstring, C.size_t(len(before)), after.cPointer())
 	return newQByteArray_U(unsafe.Pointer(ret))
 }
 
 func (this *QByteArray) OperatorPlusAssignWithQString(s string) *QByteArray {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	ret := C.QByteArray_OperatorPlusAssignWithQString(this.h, s_Cstring, C.ulong(len(s)))
+	ret := C.QByteArray_OperatorPlusAssignWithQString(this.h, s_Cstring, C.size_t(len(s)))
 	return newQByteArray_U(unsafe.Pointer(ret))
 }
 
 func (this *QByteArray) IndexOfWithQString(s string) int {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	ret := C.QByteArray_IndexOfWithQString(this.h, s_Cstring, C.ulong(len(s)))
+	ret := C.QByteArray_IndexOfWithQString(this.h, s_Cstring, C.size_t(len(s)))
 	return (int)(ret)
 }
 
 func (this *QByteArray) LastIndexOfWithQString(s string) int {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	ret := C.QByteArray_LastIndexOfWithQString(this.h, s_Cstring, C.ulong(len(s)))
+	ret := C.QByteArray_LastIndexOfWithQString(this.h, s_Cstring, C.size_t(len(s)))
 	return (int)(ret)
 }
 
 func (this *QByteArray) OperatorEqual(s2 string) bool {
 	s2_Cstring := C.CString(s2)
 	defer C.free(unsafe.Pointer(s2_Cstring))
-	ret := C.QByteArray_OperatorEqual(this.h, s2_Cstring, C.ulong(len(s2)))
+	ret := C.QByteArray_OperatorEqual(this.h, s2_Cstring, C.size_t(len(s2)))
 	return (bool)(ret)
 }
 
 func (this *QByteArray) OperatorNotEqual(s2 string) bool {
 	s2_Cstring := C.CString(s2)
 	defer C.free(unsafe.Pointer(s2_Cstring))
-	ret := C.QByteArray_OperatorNotEqual(this.h, s2_Cstring, C.ulong(len(s2)))
+	ret := C.QByteArray_OperatorNotEqual(this.h, s2_Cstring, C.size_t(len(s2)))
 	return (bool)(ret)
 }
 
 func (this *QByteArray) OperatorLesser(s2 string) bool {
 	s2_Cstring := C.CString(s2)
 	defer C.free(unsafe.Pointer(s2_Cstring))
-	ret := C.QByteArray_OperatorLesser(this.h, s2_Cstring, C.ulong(len(s2)))
+	ret := C.QByteArray_OperatorLesser(this.h, s2_Cstring, C.size_t(len(s2)))
 	return (bool)(ret)
 }
 
 func (this *QByteArray) OperatorGreater(s2 string) bool {
 	s2_Cstring := C.CString(s2)
 	defer C.free(unsafe.Pointer(s2_Cstring))
-	ret := C.QByteArray_OperatorGreater(this.h, s2_Cstring, C.ulong(len(s2)))
+	ret := C.QByteArray_OperatorGreater(this.h, s2_Cstring, C.size_t(len(s2)))
 	return (bool)(ret)
 }
 
 func (this *QByteArray) OperatorLesserOrEqual(s2 string) bool {
 	s2_Cstring := C.CString(s2)
 	defer C.free(unsafe.Pointer(s2_Cstring))
-	ret := C.QByteArray_OperatorLesserOrEqual(this.h, s2_Cstring, C.ulong(len(s2)))
+	ret := C.QByteArray_OperatorLesserOrEqual(this.h, s2_Cstring, C.size_t(len(s2)))
 	return (bool)(ret)
 }
 
 func (this *QByteArray) OperatorGreaterOrEqual(s2 string) bool {
 	s2_Cstring := C.CString(s2)
 	defer C.free(unsafe.Pointer(s2_Cstring))
-	ret := C.QByteArray_OperatorGreaterOrEqual(this.h, s2_Cstring, C.ulong(len(s2)))
+	ret := C.QByteArray_OperatorGreaterOrEqual(this.h, s2_Cstring, C.size_t(len(s2)))
 	return (bool)(ret)
 }
 
@@ -1286,14 +1286,14 @@ func (this *QByteArray) RightJustified3(width int, fill byte, truncate bool) *QB
 func (this *QByteArray) IndexOf24(s string, from int) int {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	ret := C.QByteArray_IndexOf24(this.h, s_Cstring, C.ulong(len(s)), (C.int)(from))
+	ret := C.QByteArray_IndexOf24(this.h, s_Cstring, C.size_t(len(s)), (C.int)(from))
 	return (int)(ret)
 }
 
 func (this *QByteArray) LastIndexOf24(s string, from int) int {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	ret := C.QByteArray_LastIndexOf24(this.h, s_Cstring, C.ulong(len(s)), (C.int)(from))
+	ret := C.QByteArray_LastIndexOf24(this.h, s_Cstring, C.size_t(len(s)), (C.int)(from))
 	return (int)(ret)
 }
 

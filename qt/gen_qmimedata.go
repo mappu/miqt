@@ -89,7 +89,7 @@ func (this *QMimeData) SetUrls(urls []QUrl) {
 	for i := range urls {
 		urls_CArray[i] = urls[i].cPointer()
 	}
-	C.QMimeData_SetUrls(this.h, &urls_CArray[0], C.ulong(len(urls)))
+	C.QMimeData_SetUrls(this.h, &urls_CArray[0], C.size_t(len(urls)))
 }
 
 func (this *QMimeData) HasUrls() bool {
@@ -109,7 +109,7 @@ func (this *QMimeData) Text() string {
 func (this *QMimeData) SetText(text string) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QMimeData_SetText(this.h, text_Cstring, C.ulong(len(text)))
+	C.QMimeData_SetText(this.h, text_Cstring, C.size_t(len(text)))
 }
 
 func (this *QMimeData) HasText() bool {
@@ -129,7 +129,7 @@ func (this *QMimeData) Html() string {
 func (this *QMimeData) SetHtml(html string) {
 	html_Cstring := C.CString(html)
 	defer C.free(unsafe.Pointer(html_Cstring))
-	C.QMimeData_SetHtml(this.h, html_Cstring, C.ulong(len(html)))
+	C.QMimeData_SetHtml(this.h, html_Cstring, C.size_t(len(html)))
 }
 
 func (this *QMimeData) HasHtml() bool {
@@ -180,7 +180,7 @@ func (this *QMimeData) HasColor() bool {
 func (this *QMimeData) Data(mimetype string) *QByteArray {
 	mimetype_Cstring := C.CString(mimetype)
 	defer C.free(unsafe.Pointer(mimetype_Cstring))
-	ret := C.QMimeData_Data(this.h, mimetype_Cstring, C.ulong(len(mimetype)))
+	ret := C.QMimeData_Data(this.h, mimetype_Cstring, C.size_t(len(mimetype)))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQByteArray(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QByteArray) {
@@ -193,19 +193,19 @@ func (this *QMimeData) Data(mimetype string) *QByteArray {
 func (this *QMimeData) SetData(mimetype string, data *QByteArray) {
 	mimetype_Cstring := C.CString(mimetype)
 	defer C.free(unsafe.Pointer(mimetype_Cstring))
-	C.QMimeData_SetData(this.h, mimetype_Cstring, C.ulong(len(mimetype)), data.cPointer())
+	C.QMimeData_SetData(this.h, mimetype_Cstring, C.size_t(len(mimetype)), data.cPointer())
 }
 
 func (this *QMimeData) RemoveFormat(mimetype string) {
 	mimetype_Cstring := C.CString(mimetype)
 	defer C.free(unsafe.Pointer(mimetype_Cstring))
-	C.QMimeData_RemoveFormat(this.h, mimetype_Cstring, C.ulong(len(mimetype)))
+	C.QMimeData_RemoveFormat(this.h, mimetype_Cstring, C.size_t(len(mimetype)))
 }
 
 func (this *QMimeData) HasFormat(mimetype string) bool {
 	mimetype_Cstring := C.CString(mimetype)
 	defer C.free(unsafe.Pointer(mimetype_Cstring))
-	ret := C.QMimeData_HasFormat(this.h, mimetype_Cstring, C.ulong(len(mimetype)))
+	ret := C.QMimeData_HasFormat(this.h, mimetype_Cstring, C.size_t(len(mimetype)))
 	return (bool)(ret)
 }
 

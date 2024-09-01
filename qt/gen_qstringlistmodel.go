@@ -46,16 +46,16 @@ func NewQStringListModel() *QStringListModel {
 func NewQStringListModel2(strings []string) *QStringListModel {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
 	strings_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(strings))))
-	strings_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(strings))))
+	strings_Lengths := (*[0xffff]C.uint64_t)(C.malloc(C.size_t(8 * len(strings))))
 	defer C.free(unsafe.Pointer(strings_CArray))
 	defer C.free(unsafe.Pointer(strings_Lengths))
 	for i := range strings {
 		single_cstring := C.CString(strings[i])
 		defer C.free(unsafe.Pointer(single_cstring))
 		strings_CArray[i] = single_cstring
-		strings_Lengths[i] = (C.size_t)(len(strings[i]))
+		strings_Lengths[i] = (C.uint64_t)(len(strings[i]))
 	}
-	ret := C.QStringListModel_new2(&strings_CArray[0], &strings_Lengths[0], C.ulong(len(strings)))
+	ret := C.QStringListModel_new2(&strings_CArray[0], &strings_Lengths[0], C.size_t(len(strings)))
 	return newQStringListModel(ret)
 }
 
@@ -69,16 +69,16 @@ func NewQStringListModel3(parent *QObject) *QStringListModel {
 func NewQStringListModel4(strings []string, parent *QObject) *QStringListModel {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
 	strings_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(strings))))
-	strings_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(strings))))
+	strings_Lengths := (*[0xffff]C.uint64_t)(C.malloc(C.size_t(8 * len(strings))))
 	defer C.free(unsafe.Pointer(strings_CArray))
 	defer C.free(unsafe.Pointer(strings_Lengths))
 	for i := range strings {
 		single_cstring := C.CString(strings[i])
 		defer C.free(unsafe.Pointer(single_cstring))
 		strings_CArray[i] = single_cstring
-		strings_Lengths[i] = (C.size_t)(len(strings[i]))
+		strings_Lengths[i] = (C.uint64_t)(len(strings[i]))
 	}
-	ret := C.QStringListModel_new4(&strings_CArray[0], &strings_Lengths[0], C.ulong(len(strings)), parent.cPointer())
+	ret := C.QStringListModel_new4(&strings_CArray[0], &strings_Lengths[0], C.size_t(len(strings)), parent.cPointer())
 	return newQStringListModel(ret)
 }
 
@@ -183,16 +183,16 @@ func (this *QStringListModel) StringList() []string {
 func (this *QStringListModel) SetStringList(strings []string) {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
 	strings_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(strings))))
-	strings_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(strings))))
+	strings_Lengths := (*[0xffff]C.uint64_t)(C.malloc(C.size_t(8 * len(strings))))
 	defer C.free(unsafe.Pointer(strings_CArray))
 	defer C.free(unsafe.Pointer(strings_Lengths))
 	for i := range strings {
 		single_cstring := C.CString(strings[i])
 		defer C.free(unsafe.Pointer(single_cstring))
 		strings_CArray[i] = single_cstring
-		strings_Lengths[i] = (C.size_t)(len(strings[i]))
+		strings_Lengths[i] = (C.uint64_t)(len(strings[i]))
 	}
-	C.QStringListModel_SetStringList(this.h, &strings_CArray[0], &strings_Lengths[0], C.ulong(len(strings)))
+	C.QStringListModel_SetStringList(this.h, &strings_CArray[0], &strings_Lengths[0], C.size_t(len(strings)))
 }
 
 func (this *QStringListModel) SupportedDropActions() int {

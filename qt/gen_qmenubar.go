@@ -79,7 +79,7 @@ func QMenuBar_TrUtf8(s string) string {
 func (this *QMenuBar) AddAction(text string) *QAction {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QMenuBar_AddAction(this.h, text_Cstring, C.ulong(len(text)))
+	ret := C.QMenuBar_AddAction(this.h, text_Cstring, C.size_t(len(text)))
 	return newQAction_U(unsafe.Pointer(ret))
 }
 
@@ -91,14 +91,14 @@ func (this *QMenuBar) AddMenu(menu *QMenu) *QAction {
 func (this *QMenuBar) AddMenuWithTitle(title string) *QMenu {
 	title_Cstring := C.CString(title)
 	defer C.free(unsafe.Pointer(title_Cstring))
-	ret := C.QMenuBar_AddMenuWithTitle(this.h, title_Cstring, C.ulong(len(title)))
+	ret := C.QMenuBar_AddMenuWithTitle(this.h, title_Cstring, C.size_t(len(title)))
 	return newQMenu_U(unsafe.Pointer(ret))
 }
 
 func (this *QMenuBar) AddMenu2(icon *QIcon, title string) *QMenu {
 	title_Cstring := C.CString(title)
 	defer C.free(unsafe.Pointer(title_Cstring))
-	ret := C.QMenuBar_AddMenu2(this.h, icon.cPointer(), title_Cstring, C.ulong(len(title)))
+	ret := C.QMenuBar_AddMenu2(this.h, icon.cPointer(), title_Cstring, C.size_t(len(title)))
 	return newQMenu_U(unsafe.Pointer(ret))
 }
 

@@ -113,14 +113,14 @@ func (this *QTranslator) FilePath() string {
 func (this *QTranslator) Load(filename string) bool {
 	filename_Cstring := C.CString(filename)
 	defer C.free(unsafe.Pointer(filename_Cstring))
-	ret := C.QTranslator_Load(this.h, filename_Cstring, C.ulong(len(filename)))
+	ret := C.QTranslator_Load(this.h, filename_Cstring, C.size_t(len(filename)))
 	return (bool)(ret)
 }
 
 func (this *QTranslator) Load2(locale *QLocale, filename string) bool {
 	filename_Cstring := C.CString(filename)
 	defer C.free(unsafe.Pointer(filename_Cstring))
-	ret := C.QTranslator_Load2(this.h, locale.cPointer(), filename_Cstring, C.ulong(len(filename)))
+	ret := C.QTranslator_Load2(this.h, locale.cPointer(), filename_Cstring, C.size_t(len(filename)))
 	return (bool)(ret)
 }
 
@@ -216,7 +216,7 @@ func (this *QTranslator) Load22(filename string, directory string) bool {
 	defer C.free(unsafe.Pointer(filename_Cstring))
 	directory_Cstring := C.CString(directory)
 	defer C.free(unsafe.Pointer(directory_Cstring))
-	ret := C.QTranslator_Load22(this.h, filename_Cstring, C.ulong(len(filename)), directory_Cstring, C.ulong(len(directory)))
+	ret := C.QTranslator_Load22(this.h, filename_Cstring, C.size_t(len(filename)), directory_Cstring, C.size_t(len(directory)))
 	return (bool)(ret)
 }
 
@@ -227,7 +227,7 @@ func (this *QTranslator) Load32(filename string, directory string, search_delimi
 	defer C.free(unsafe.Pointer(directory_Cstring))
 	search_delimiters_Cstring := C.CString(search_delimiters)
 	defer C.free(unsafe.Pointer(search_delimiters_Cstring))
-	ret := C.QTranslator_Load32(this.h, filename_Cstring, C.ulong(len(filename)), directory_Cstring, C.ulong(len(directory)), search_delimiters_Cstring, C.ulong(len(search_delimiters)))
+	ret := C.QTranslator_Load32(this.h, filename_Cstring, C.size_t(len(filename)), directory_Cstring, C.size_t(len(directory)), search_delimiters_Cstring, C.size_t(len(search_delimiters)))
 	return (bool)(ret)
 }
 
@@ -240,7 +240,7 @@ func (this *QTranslator) Load4(filename string, directory string, search_delimit
 	defer C.free(unsafe.Pointer(search_delimiters_Cstring))
 	suffix_Cstring := C.CString(suffix)
 	defer C.free(unsafe.Pointer(suffix_Cstring))
-	ret := C.QTranslator_Load4(this.h, filename_Cstring, C.ulong(len(filename)), directory_Cstring, C.ulong(len(directory)), search_delimiters_Cstring, C.ulong(len(search_delimiters)), suffix_Cstring, C.ulong(len(suffix)))
+	ret := C.QTranslator_Load4(this.h, filename_Cstring, C.size_t(len(filename)), directory_Cstring, C.size_t(len(directory)), search_delimiters_Cstring, C.size_t(len(search_delimiters)), suffix_Cstring, C.size_t(len(suffix)))
 	return (bool)(ret)
 }
 
@@ -249,7 +249,7 @@ func (this *QTranslator) Load33(locale *QLocale, filename string, prefix string)
 	defer C.free(unsafe.Pointer(filename_Cstring))
 	prefix_Cstring := C.CString(prefix)
 	defer C.free(unsafe.Pointer(prefix_Cstring))
-	ret := C.QTranslator_Load33(this.h, locale.cPointer(), filename_Cstring, C.ulong(len(filename)), prefix_Cstring, C.ulong(len(prefix)))
+	ret := C.QTranslator_Load33(this.h, locale.cPointer(), filename_Cstring, C.size_t(len(filename)), prefix_Cstring, C.size_t(len(prefix)))
 	return (bool)(ret)
 }
 
@@ -260,7 +260,7 @@ func (this *QTranslator) Load42(locale *QLocale, filename string, prefix string,
 	defer C.free(unsafe.Pointer(prefix_Cstring))
 	directory_Cstring := C.CString(directory)
 	defer C.free(unsafe.Pointer(directory_Cstring))
-	ret := C.QTranslator_Load42(this.h, locale.cPointer(), filename_Cstring, C.ulong(len(filename)), prefix_Cstring, C.ulong(len(prefix)), directory_Cstring, C.ulong(len(directory)))
+	ret := C.QTranslator_Load42(this.h, locale.cPointer(), filename_Cstring, C.size_t(len(filename)), prefix_Cstring, C.size_t(len(prefix)), directory_Cstring, C.size_t(len(directory)))
 	return (bool)(ret)
 }
 
@@ -273,14 +273,14 @@ func (this *QTranslator) Load5(locale *QLocale, filename string, prefix string, 
 	defer C.free(unsafe.Pointer(directory_Cstring))
 	suffix_Cstring := C.CString(suffix)
 	defer C.free(unsafe.Pointer(suffix_Cstring))
-	ret := C.QTranslator_Load5(this.h, locale.cPointer(), filename_Cstring, C.ulong(len(filename)), prefix_Cstring, C.ulong(len(prefix)), directory_Cstring, C.ulong(len(directory)), suffix_Cstring, C.ulong(len(suffix)))
+	ret := C.QTranslator_Load5(this.h, locale.cPointer(), filename_Cstring, C.size_t(len(filename)), prefix_Cstring, C.size_t(len(prefix)), directory_Cstring, C.size_t(len(directory)), suffix_Cstring, C.size_t(len(suffix)))
 	return (bool)(ret)
 }
 
 func (this *QTranslator) Load34(data *byte, lenVal int, directory string) bool {
 	directory_Cstring := C.CString(directory)
 	defer C.free(unsafe.Pointer(directory_Cstring))
-	ret := C.QTranslator_Load34(this.h, (*C.uchar)(unsafe.Pointer(data)), (C.int)(lenVal), directory_Cstring, C.ulong(len(directory)))
+	ret := C.QTranslator_Load34(this.h, (*C.uchar)(unsafe.Pointer(data)), (C.int)(lenVal), directory_Cstring, C.size_t(len(directory)))
 	return (bool)(ret)
 }
 

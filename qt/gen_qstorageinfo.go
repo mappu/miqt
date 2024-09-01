@@ -45,7 +45,7 @@ func NewQStorageInfo() *QStorageInfo {
 func NewQStorageInfo2(path string) *QStorageInfo {
 	path_Cstring := C.CString(path)
 	defer C.free(unsafe.Pointer(path_Cstring))
-	ret := C.QStorageInfo_new2(path_Cstring, C.ulong(len(path)))
+	ret := C.QStorageInfo_new2(path_Cstring, C.size_t(len(path)))
 	return newQStorageInfo(ret)
 }
 
@@ -72,7 +72,7 @@ func (this *QStorageInfo) Swap(other *QStorageInfo) {
 func (this *QStorageInfo) SetPath(path string) {
 	path_Cstring := C.CString(path)
 	defer C.free(unsafe.Pointer(path_Cstring))
-	C.QStorageInfo_SetPath(this.h, path_Cstring, C.ulong(len(path)))
+	C.QStorageInfo_SetPath(this.h, path_Cstring, C.size_t(len(path)))
 }
 
 func (this *QStorageInfo) RootPath() string {

@@ -267,7 +267,7 @@ func (this *QGraphicsWidget) IsActiveWindow() bool {
 func (this *QGraphicsWidget) SetWindowTitle(title string) {
 	title_Cstring := C.CString(title)
 	defer C.free(unsafe.Pointer(title_Cstring))
-	C.QGraphicsWidget_SetWindowTitle(this.h, title_Cstring, C.ulong(len(title)))
+	C.QGraphicsWidget_SetWindowTitle(this.h, title_Cstring, C.size_t(len(title)))
 }
 
 func (this *QGraphicsWidget) WindowTitle() string {
@@ -325,7 +325,7 @@ func (this *QGraphicsWidget) AddActions(actions []*QAction) {
 	for i := range actions {
 		actions_CArray[i] = actions[i].cPointer()
 	}
-	C.QGraphicsWidget_AddActions(this.h, &actions_CArray[0], C.ulong(len(actions)))
+	C.QGraphicsWidget_AddActions(this.h, &actions_CArray[0], C.size_t(len(actions)))
 }
 
 func (this *QGraphicsWidget) InsertActions(before *QAction, actions []*QAction) {
@@ -335,7 +335,7 @@ func (this *QGraphicsWidget) InsertActions(before *QAction, actions []*QAction) 
 	for i := range actions {
 		actions_CArray[i] = actions[i].cPointer()
 	}
-	C.QGraphicsWidget_InsertActions(this.h, before.cPointer(), &actions_CArray[0], C.ulong(len(actions)))
+	C.QGraphicsWidget_InsertActions(this.h, before.cPointer(), &actions_CArray[0], C.size_t(len(actions)))
 }
 
 func (this *QGraphicsWidget) InsertAction(before *QAction, action *QAction) {

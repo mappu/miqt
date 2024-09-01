@@ -50,7 +50,7 @@ func NewQTextBoundaryFinder2(other *QTextBoundaryFinder) *QTextBoundaryFinder {
 func NewQTextBoundaryFinder3(typeVal uintptr, stringVal string) *QTextBoundaryFinder {
 	stringVal_Cstring := C.CString(stringVal)
 	defer C.free(unsafe.Pointer(stringVal_Cstring))
-	ret := C.QTextBoundaryFinder_new3((C.uintptr_t)(typeVal), stringVal_Cstring, C.ulong(len(stringVal)))
+	ret := C.QTextBoundaryFinder_new3((C.uintptr_t)(typeVal), stringVal_Cstring, C.size_t(len(stringVal)))
 	return newQTextBoundaryFinder(ret)
 }
 

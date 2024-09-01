@@ -245,7 +245,7 @@ func (this *QJsonDocument) SetArray(array *QJsonArray) {
 func (this *QJsonDocument) OperatorSubscript(key string) *QJsonValue {
 	key_Cstring := C.CString(key)
 	defer C.free(unsafe.Pointer(key_Cstring))
-	ret := C.QJsonDocument_OperatorSubscript(this.h, key_Cstring, C.ulong(len(key)))
+	ret := C.QJsonDocument_OperatorSubscript(this.h, key_Cstring, C.size_t(len(key)))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQJsonValue(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QJsonValue) {

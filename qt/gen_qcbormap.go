@@ -107,7 +107,7 @@ func (this *QCborMap) Value(key int64) *QCborValue {
 func (this *QCborMap) Value2(key string) *QCborValue {
 	key_Cstring := C.CString(key)
 	defer C.free(unsafe.Pointer(key_Cstring))
-	ret := C.QCborMap_Value2(this.h, key_Cstring, C.ulong(len(key)))
+	ret := C.QCborMap_Value2(this.h, key_Cstring, C.size_t(len(key)))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQCborValue(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QCborValue) {
@@ -142,7 +142,7 @@ func (this *QCborMap) OperatorSubscript(key int64) *QCborValue {
 func (this *QCborMap) OperatorSubscript2(key string) *QCborValue {
 	key_Cstring := C.CString(key)
 	defer C.free(unsafe.Pointer(key_Cstring))
-	ret := C.QCborMap_OperatorSubscript2(this.h, key_Cstring, C.ulong(len(key)))
+	ret := C.QCborMap_OperatorSubscript2(this.h, key_Cstring, C.size_t(len(key)))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQCborValue(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QCborValue) {
@@ -177,7 +177,7 @@ func (this *QCborMap) OperatorSubscript4(key int64) *QCborValueRef {
 func (this *QCborMap) OperatorSubscript6(key string) *QCborValueRef {
 	key_Cstring := C.CString(key)
 	defer C.free(unsafe.Pointer(key_Cstring))
-	ret := C.QCborMap_OperatorSubscript6(this.h, key_Cstring, C.ulong(len(key)))
+	ret := C.QCborMap_OperatorSubscript6(this.h, key_Cstring, C.size_t(len(key)))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQCborValueRef(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QCborValueRef) {
@@ -212,7 +212,7 @@ func (this *QCborMap) Take(key int64) *QCborValue {
 func (this *QCborMap) Take2(key string) *QCborValue {
 	key_Cstring := C.CString(key)
 	defer C.free(unsafe.Pointer(key_Cstring))
-	ret := C.QCborMap_Take2(this.h, key_Cstring, C.ulong(len(key)))
+	ret := C.QCborMap_Take2(this.h, key_Cstring, C.size_t(len(key)))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQCborValue(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QCborValue) {
@@ -240,7 +240,7 @@ func (this *QCborMap) Remove(key int64) {
 func (this *QCborMap) Remove2(key string) {
 	key_Cstring := C.CString(key)
 	defer C.free(unsafe.Pointer(key_Cstring))
-	C.QCborMap_Remove2(this.h, key_Cstring, C.ulong(len(key)))
+	C.QCborMap_Remove2(this.h, key_Cstring, C.size_t(len(key)))
 }
 
 func (this *QCborMap) Remove3(key *QCborValue) {
@@ -255,7 +255,7 @@ func (this *QCborMap) Contains(key int64) bool {
 func (this *QCborMap) Contains2(key string) bool {
 	key_Cstring := C.CString(key)
 	defer C.free(unsafe.Pointer(key_Cstring))
-	ret := C.QCborMap_Contains2(this.h, key_Cstring, C.ulong(len(key)))
+	ret := C.QCborMap_Contains2(this.h, key_Cstring, C.size_t(len(key)))
 	return (bool)(ret)
 }
 
@@ -435,7 +435,7 @@ func (this *QCborMap) Find(key int64) *QCborMap__Iterator {
 func (this *QCborMap) Find2(key string) *QCborMap__Iterator {
 	key_Cstring := C.CString(key)
 	defer C.free(unsafe.Pointer(key_Cstring))
-	ret := C.QCborMap_Find2(this.h, key_Cstring, C.ulong(len(key)))
+	ret := C.QCborMap_Find2(this.h, key_Cstring, C.size_t(len(key)))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQCborMap__Iterator(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QCborMap__Iterator) {
@@ -470,7 +470,7 @@ func (this *QCborMap) ConstFind(key int64) *QCborMap__ConstIterator {
 func (this *QCborMap) ConstFind2(key string) *QCborMap__ConstIterator {
 	key_Cstring := C.CString(key)
 	defer C.free(unsafe.Pointer(key_Cstring))
-	ret := C.QCborMap_ConstFind2(this.h, key_Cstring, C.ulong(len(key)))
+	ret := C.QCborMap_ConstFind2(this.h, key_Cstring, C.size_t(len(key)))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQCborMap__ConstIterator(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QCborMap__ConstIterator) {
@@ -505,7 +505,7 @@ func (this *QCborMap) Find4(key int64) *QCborMap__ConstIterator {
 func (this *QCborMap) Find6(key string) *QCborMap__ConstIterator {
 	key_Cstring := C.CString(key)
 	defer C.free(unsafe.Pointer(key_Cstring))
-	ret := C.QCborMap_Find6(this.h, key_Cstring, C.ulong(len(key)))
+	ret := C.QCborMap_Find6(this.h, key_Cstring, C.size_t(len(key)))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQCborMap__ConstIterator(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QCborMap__ConstIterator) {
@@ -540,7 +540,7 @@ func (this *QCborMap) Insert(key int64, value_ *QCborValue) *QCborMap__Iterator 
 func (this *QCborMap) Insert3(key string, value_ *QCborValue) *QCborMap__Iterator {
 	key_Cstring := C.CString(key)
 	defer C.free(unsafe.Pointer(key_Cstring))
-	ret := C.QCborMap_Insert3(this.h, key_Cstring, C.ulong(len(key)), value_.cPointer())
+	ret := C.QCborMap_Insert3(this.h, key_Cstring, C.size_t(len(key)), value_.cPointer())
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQCborMap__Iterator(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QCborMap__Iterator) {

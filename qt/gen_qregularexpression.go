@@ -45,7 +45,7 @@ func NewQRegularExpression() *QRegularExpression {
 func NewQRegularExpression2(pattern string) *QRegularExpression {
 	pattern_Cstring := C.CString(pattern)
 	defer C.free(unsafe.Pointer(pattern_Cstring))
-	ret := C.QRegularExpression_new2(pattern_Cstring, C.ulong(len(pattern)))
+	ret := C.QRegularExpression_new2(pattern_Cstring, C.size_t(len(pattern)))
 	return newQRegularExpression(ret)
 }
 
@@ -59,7 +59,7 @@ func NewQRegularExpression3(re *QRegularExpression) *QRegularExpression {
 func NewQRegularExpression4(pattern string, options int) *QRegularExpression {
 	pattern_Cstring := C.CString(pattern)
 	defer C.free(unsafe.Pointer(pattern_Cstring))
-	ret := C.QRegularExpression_new4(pattern_Cstring, C.ulong(len(pattern)), (C.int)(options))
+	ret := C.QRegularExpression_new4(pattern_Cstring, C.size_t(len(pattern)), (C.int)(options))
 	return newQRegularExpression(ret)
 }
 
@@ -92,7 +92,7 @@ func (this *QRegularExpression) Pattern() string {
 func (this *QRegularExpression) SetPattern(pattern string) {
 	pattern_Cstring := C.CString(pattern)
 	defer C.free(unsafe.Pointer(pattern_Cstring))
-	C.QRegularExpression_SetPattern(this.h, pattern_Cstring, C.ulong(len(pattern)))
+	C.QRegularExpression_SetPattern(this.h, pattern_Cstring, C.size_t(len(pattern)))
 }
 
 func (this *QRegularExpression) IsValid() bool {
@@ -137,7 +137,7 @@ func (this *QRegularExpression) NamedCaptureGroups() []string {
 func (this *QRegularExpression) Match(subject string) *QRegularExpressionMatch {
 	subject_Cstring := C.CString(subject)
 	defer C.free(unsafe.Pointer(subject_Cstring))
-	ret := C.QRegularExpression_Match(this.h, subject_Cstring, C.ulong(len(subject)))
+	ret := C.QRegularExpression_Match(this.h, subject_Cstring, C.size_t(len(subject)))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQRegularExpressionMatch(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QRegularExpressionMatch) {
@@ -150,7 +150,7 @@ func (this *QRegularExpression) Match(subject string) *QRegularExpressionMatch {
 func (this *QRegularExpression) GlobalMatch(subject string) *QRegularExpressionMatchIterator {
 	subject_Cstring := C.CString(subject)
 	defer C.free(unsafe.Pointer(subject_Cstring))
-	ret := C.QRegularExpression_GlobalMatch(this.h, subject_Cstring, C.ulong(len(subject)))
+	ret := C.QRegularExpression_GlobalMatch(this.h, subject_Cstring, C.size_t(len(subject)))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQRegularExpressionMatchIterator(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QRegularExpressionMatchIterator) {
@@ -169,7 +169,7 @@ func QRegularExpression_Escape(str string) string {
 	defer C.free(unsafe.Pointer(str_Cstring))
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
-	C.QRegularExpression_Escape(str_Cstring, C.ulong(len(str)), &_out, &_out_Strlen)
+	C.QRegularExpression_Escape(str_Cstring, C.size_t(len(str)), &_out, &_out_Strlen)
 	ret := C.GoStringN(_out, _out_Strlen)
 	C.free(unsafe.Pointer(_out))
 	return ret
@@ -180,7 +180,7 @@ func QRegularExpression_WildcardToRegularExpression(str string) string {
 	defer C.free(unsafe.Pointer(str_Cstring))
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
-	C.QRegularExpression_WildcardToRegularExpression(str_Cstring, C.ulong(len(str)), &_out, &_out_Strlen)
+	C.QRegularExpression_WildcardToRegularExpression(str_Cstring, C.size_t(len(str)), &_out, &_out_Strlen)
 	ret := C.GoStringN(_out, _out_Strlen)
 	C.free(unsafe.Pointer(_out))
 	return ret
@@ -191,7 +191,7 @@ func QRegularExpression_AnchoredPattern(expression string) string {
 	defer C.free(unsafe.Pointer(expression_Cstring))
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
-	C.QRegularExpression_AnchoredPattern(expression_Cstring, C.ulong(len(expression)), &_out, &_out_Strlen)
+	C.QRegularExpression_AnchoredPattern(expression_Cstring, C.size_t(len(expression)), &_out, &_out_Strlen)
 	ret := C.GoStringN(_out, _out_Strlen)
 	C.free(unsafe.Pointer(_out))
 	return ret
@@ -210,7 +210,7 @@ func (this *QRegularExpression) OperatorNotEqual(re *QRegularExpression) bool {
 func (this *QRegularExpression) Match2(subject string, offset int) *QRegularExpressionMatch {
 	subject_Cstring := C.CString(subject)
 	defer C.free(unsafe.Pointer(subject_Cstring))
-	ret := C.QRegularExpression_Match2(this.h, subject_Cstring, C.ulong(len(subject)), (C.int)(offset))
+	ret := C.QRegularExpression_Match2(this.h, subject_Cstring, C.size_t(len(subject)), (C.int)(offset))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQRegularExpressionMatch(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QRegularExpressionMatch) {
@@ -223,7 +223,7 @@ func (this *QRegularExpression) Match2(subject string, offset int) *QRegularExpr
 func (this *QRegularExpression) Match3(subject string, offset int, matchType uintptr) *QRegularExpressionMatch {
 	subject_Cstring := C.CString(subject)
 	defer C.free(unsafe.Pointer(subject_Cstring))
-	ret := C.QRegularExpression_Match3(this.h, subject_Cstring, C.ulong(len(subject)), (C.int)(offset), (C.uintptr_t)(matchType))
+	ret := C.QRegularExpression_Match3(this.h, subject_Cstring, C.size_t(len(subject)), (C.int)(offset), (C.uintptr_t)(matchType))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQRegularExpressionMatch(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QRegularExpressionMatch) {
@@ -236,7 +236,7 @@ func (this *QRegularExpression) Match3(subject string, offset int, matchType uin
 func (this *QRegularExpression) Match4(subject string, offset int, matchType uintptr, matchOptions int) *QRegularExpressionMatch {
 	subject_Cstring := C.CString(subject)
 	defer C.free(unsafe.Pointer(subject_Cstring))
-	ret := C.QRegularExpression_Match4(this.h, subject_Cstring, C.ulong(len(subject)), (C.int)(offset), (C.uintptr_t)(matchType), (C.int)(matchOptions))
+	ret := C.QRegularExpression_Match4(this.h, subject_Cstring, C.size_t(len(subject)), (C.int)(offset), (C.uintptr_t)(matchType), (C.int)(matchOptions))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQRegularExpressionMatch(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QRegularExpressionMatch) {
@@ -249,7 +249,7 @@ func (this *QRegularExpression) Match4(subject string, offset int, matchType uin
 func (this *QRegularExpression) GlobalMatch2(subject string, offset int) *QRegularExpressionMatchIterator {
 	subject_Cstring := C.CString(subject)
 	defer C.free(unsafe.Pointer(subject_Cstring))
-	ret := C.QRegularExpression_GlobalMatch2(this.h, subject_Cstring, C.ulong(len(subject)), (C.int)(offset))
+	ret := C.QRegularExpression_GlobalMatch2(this.h, subject_Cstring, C.size_t(len(subject)), (C.int)(offset))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQRegularExpressionMatchIterator(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QRegularExpressionMatchIterator) {
@@ -262,7 +262,7 @@ func (this *QRegularExpression) GlobalMatch2(subject string, offset int) *QRegul
 func (this *QRegularExpression) GlobalMatch3(subject string, offset int, matchType uintptr) *QRegularExpressionMatchIterator {
 	subject_Cstring := C.CString(subject)
 	defer C.free(unsafe.Pointer(subject_Cstring))
-	ret := C.QRegularExpression_GlobalMatch3(this.h, subject_Cstring, C.ulong(len(subject)), (C.int)(offset), (C.uintptr_t)(matchType))
+	ret := C.QRegularExpression_GlobalMatch3(this.h, subject_Cstring, C.size_t(len(subject)), (C.int)(offset), (C.uintptr_t)(matchType))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQRegularExpressionMatchIterator(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QRegularExpressionMatchIterator) {
@@ -275,7 +275,7 @@ func (this *QRegularExpression) GlobalMatch3(subject string, offset int, matchTy
 func (this *QRegularExpression) GlobalMatch4(subject string, offset int, matchType uintptr, matchOptions int) *QRegularExpressionMatchIterator {
 	subject_Cstring := C.CString(subject)
 	defer C.free(unsafe.Pointer(subject_Cstring))
-	ret := C.QRegularExpression_GlobalMatch4(this.h, subject_Cstring, C.ulong(len(subject)), (C.int)(offset), (C.uintptr_t)(matchType), (C.int)(matchOptions))
+	ret := C.QRegularExpression_GlobalMatch4(this.h, subject_Cstring, C.size_t(len(subject)), (C.int)(offset), (C.uintptr_t)(matchType), (C.int)(matchOptions))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQRegularExpressionMatchIterator(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QRegularExpressionMatchIterator) {
@@ -386,7 +386,7 @@ func (this *QRegularExpressionMatch) CapturedWithName(name string) string {
 	defer C.free(unsafe.Pointer(name_Cstring))
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
-	C.QRegularExpressionMatch_CapturedWithName(this.h, name_Cstring, C.ulong(len(name)), &_out, &_out_Strlen)
+	C.QRegularExpressionMatch_CapturedWithName(this.h, name_Cstring, C.size_t(len(name)), &_out, &_out_Strlen)
 	ret := C.GoStringN(_out, _out_Strlen)
 	C.free(unsafe.Pointer(_out))
 	return ret
@@ -425,21 +425,21 @@ func (this *QRegularExpressionMatch) CapturedEnd() int {
 func (this *QRegularExpressionMatch) CapturedStartWithName(name string) int {
 	name_Cstring := C.CString(name)
 	defer C.free(unsafe.Pointer(name_Cstring))
-	ret := C.QRegularExpressionMatch_CapturedStartWithName(this.h, name_Cstring, C.ulong(len(name)))
+	ret := C.QRegularExpressionMatch_CapturedStartWithName(this.h, name_Cstring, C.size_t(len(name)))
 	return (int)(ret)
 }
 
 func (this *QRegularExpressionMatch) CapturedLengthWithName(name string) int {
 	name_Cstring := C.CString(name)
 	defer C.free(unsafe.Pointer(name_Cstring))
-	ret := C.QRegularExpressionMatch_CapturedLengthWithName(this.h, name_Cstring, C.ulong(len(name)))
+	ret := C.QRegularExpressionMatch_CapturedLengthWithName(this.h, name_Cstring, C.size_t(len(name)))
 	return (int)(ret)
 }
 
 func (this *QRegularExpressionMatch) CapturedEndWithName(name string) int {
 	name_Cstring := C.CString(name)
 	defer C.free(unsafe.Pointer(name_Cstring))
-	ret := C.QRegularExpressionMatch_CapturedEndWithName(this.h, name_Cstring, C.ulong(len(name)))
+	ret := C.QRegularExpressionMatch_CapturedEndWithName(this.h, name_Cstring, C.size_t(len(name)))
 	return (int)(ret)
 }
 

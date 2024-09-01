@@ -197,7 +197,7 @@ func (this *QMimeType) PreferredSuffix() string {
 func (this *QMimeType) Inherits(mimeTypeName string) bool {
 	mimeTypeName_Cstring := C.CString(mimeTypeName)
 	defer C.free(unsafe.Pointer(mimeTypeName_Cstring))
-	ret := C.QMimeType_Inherits(this.h, mimeTypeName_Cstring, C.ulong(len(mimeTypeName)))
+	ret := C.QMimeType_Inherits(this.h, mimeTypeName_Cstring, C.size_t(len(mimeTypeName)))
 	return (bool)(ret)
 }
 

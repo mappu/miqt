@@ -489,7 +489,7 @@ func (this *QPainter) DrawLinesWithLines(lines []QLineF) {
 	for i := range lines {
 		lines_CArray[i] = lines[i].cPointer()
 	}
-	C.QPainter_DrawLinesWithLines(this.h, &lines_CArray[0], C.ulong(len(lines)))
+	C.QPainter_DrawLinesWithLines(this.h, &lines_CArray[0], C.size_t(len(lines)))
 }
 
 func (this *QPainter) DrawLines2(pointPairs *QPointF, lineCount int) {
@@ -503,7 +503,7 @@ func (this *QPainter) DrawLinesWithPointPairs(pointPairs []QPointF) {
 	for i := range pointPairs {
 		pointPairs_CArray[i] = pointPairs[i].cPointer()
 	}
-	C.QPainter_DrawLinesWithPointPairs(this.h, &pointPairs_CArray[0], C.ulong(len(pointPairs)))
+	C.QPainter_DrawLinesWithPointPairs(this.h, &pointPairs_CArray[0], C.size_t(len(pointPairs)))
 }
 
 func (this *QPainter) DrawLines3(lines *QLine, lineCount int) {
@@ -517,7 +517,7 @@ func (this *QPainter) DrawLines4(lines []QLine) {
 	for i := range lines {
 		lines_CArray[i] = lines[i].cPointer()
 	}
-	C.QPainter_DrawLines4(this.h, &lines_CArray[0], C.ulong(len(lines)))
+	C.QPainter_DrawLines4(this.h, &lines_CArray[0], C.size_t(len(lines)))
 }
 
 func (this *QPainter) DrawLines5(pointPairs *QPoint, lineCount int) {
@@ -531,7 +531,7 @@ func (this *QPainter) DrawLines6(pointPairs []QPoint) {
 	for i := range pointPairs {
 		pointPairs_CArray[i] = pointPairs[i].cPointer()
 	}
-	C.QPainter_DrawLines6(this.h, &pointPairs_CArray[0], C.ulong(len(pointPairs)))
+	C.QPainter_DrawLines6(this.h, &pointPairs_CArray[0], C.size_t(len(pointPairs)))
 }
 
 func (this *QPainter) DrawRect(rect *QRectF) {
@@ -557,7 +557,7 @@ func (this *QPainter) DrawRectsWithRectangles(rectangles []QRectF) {
 	for i := range rectangles {
 		rectangles_CArray[i] = rectangles[i].cPointer()
 	}
-	C.QPainter_DrawRectsWithRectangles(this.h, &rectangles_CArray[0], C.ulong(len(rectangles)))
+	C.QPainter_DrawRectsWithRectangles(this.h, &rectangles_CArray[0], C.size_t(len(rectangles)))
 }
 
 func (this *QPainter) DrawRects2(rects *QRect, rectCount int) {
@@ -571,7 +571,7 @@ func (this *QPainter) DrawRects3(rectangles []QRect) {
 	for i := range rectangles {
 		rectangles_CArray[i] = rectangles[i].cPointer()
 	}
-	C.QPainter_DrawRects3(this.h, &rectangles_CArray[0], C.ulong(len(rectangles)))
+	C.QPainter_DrawRects3(this.h, &rectangles_CArray[0], C.size_t(len(rectangles)))
 }
 
 func (this *QPainter) DrawEllipse(r *QRectF) {
@@ -814,55 +814,55 @@ func (this *QPainter) DrawStaticText3(left int, top int, staticText *QStaticText
 func (this *QPainter) DrawText(p *QPointF, s string) {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	C.QPainter_DrawText(this.h, p.cPointer(), s_Cstring, C.ulong(len(s)))
+	C.QPainter_DrawText(this.h, p.cPointer(), s_Cstring, C.size_t(len(s)))
 }
 
 func (this *QPainter) DrawText2(p *QPoint, s string) {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	C.QPainter_DrawText2(this.h, p.cPointer(), s_Cstring, C.ulong(len(s)))
+	C.QPainter_DrawText2(this.h, p.cPointer(), s_Cstring, C.size_t(len(s)))
 }
 
 func (this *QPainter) DrawText3(x int, y int, s string) {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	C.QPainter_DrawText3(this.h, (C.int)(x), (C.int)(y), s_Cstring, C.ulong(len(s)))
+	C.QPainter_DrawText3(this.h, (C.int)(x), (C.int)(y), s_Cstring, C.size_t(len(s)))
 }
 
 func (this *QPainter) DrawText4(p *QPointF, str string, tf int, justificationPadding int) {
 	str_Cstring := C.CString(str)
 	defer C.free(unsafe.Pointer(str_Cstring))
-	C.QPainter_DrawText4(this.h, p.cPointer(), str_Cstring, C.ulong(len(str)), (C.int)(tf), (C.int)(justificationPadding))
+	C.QPainter_DrawText4(this.h, p.cPointer(), str_Cstring, C.size_t(len(str)), (C.int)(tf), (C.int)(justificationPadding))
 }
 
 func (this *QPainter) DrawText5(r *QRectF, flags int, text string) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QPainter_DrawText5(this.h, r.cPointer(), (C.int)(flags), text_Cstring, C.ulong(len(text)))
+	C.QPainter_DrawText5(this.h, r.cPointer(), (C.int)(flags), text_Cstring, C.size_t(len(text)))
 }
 
 func (this *QPainter) DrawText6(r *QRect, flags int, text string) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QPainter_DrawText6(this.h, r.cPointer(), (C.int)(flags), text_Cstring, C.ulong(len(text)))
+	C.QPainter_DrawText6(this.h, r.cPointer(), (C.int)(flags), text_Cstring, C.size_t(len(text)))
 }
 
 func (this *QPainter) DrawText7(x int, y int, w int, h int, flags int, text string) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QPainter_DrawText7(this.h, (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), (C.int)(flags), text_Cstring, C.ulong(len(text)))
+	C.QPainter_DrawText7(this.h, (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), (C.int)(flags), text_Cstring, C.size_t(len(text)))
 }
 
 func (this *QPainter) DrawText8(r *QRectF, text string) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QPainter_DrawText8(this.h, r.cPointer(), text_Cstring, C.ulong(len(text)))
+	C.QPainter_DrawText8(this.h, r.cPointer(), text_Cstring, C.size_t(len(text)))
 }
 
 func (this *QPainter) BoundingRect(rect *QRectF, flags int, text string) *QRectF {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QPainter_BoundingRect(this.h, rect.cPointer(), (C.int)(flags), text_Cstring, C.ulong(len(text)))
+	ret := C.QPainter_BoundingRect(this.h, rect.cPointer(), (C.int)(flags), text_Cstring, C.size_t(len(text)))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQRectF(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QRectF) {
@@ -875,7 +875,7 @@ func (this *QPainter) BoundingRect(rect *QRectF, flags int, text string) *QRectF
 func (this *QPainter) BoundingRect2(rect *QRect, flags int, text string) *QRect {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QPainter_BoundingRect2(this.h, rect.cPointer(), (C.int)(flags), text_Cstring, C.ulong(len(text)))
+	ret := C.QPainter_BoundingRect2(this.h, rect.cPointer(), (C.int)(flags), text_Cstring, C.size_t(len(text)))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQRect(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QRect) {
@@ -888,7 +888,7 @@ func (this *QPainter) BoundingRect2(rect *QRect, flags int, text string) *QRect 
 func (this *QPainter) BoundingRect3(x int, y int, w int, h int, flags int, text string) *QRect {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QPainter_BoundingRect3(this.h, (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), (C.int)(flags), text_Cstring, C.ulong(len(text)))
+	ret := C.QPainter_BoundingRect3(this.h, (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), (C.int)(flags), text_Cstring, C.size_t(len(text)))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQRect(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QRect) {
@@ -901,7 +901,7 @@ func (this *QPainter) BoundingRect3(x int, y int, w int, h int, flags int, text 
 func (this *QPainter) BoundingRect4(rect *QRectF, text string) *QRectF {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QPainter_BoundingRect4(this.h, rect.cPointer(), text_Cstring, C.ulong(len(text)))
+	ret := C.QPainter_BoundingRect4(this.h, rect.cPointer(), text_Cstring, C.size_t(len(text)))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQRectF(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QRectF) {
@@ -1178,31 +1178,31 @@ func (this *QPainter) DrawImage82(x int, y int, image *QImage, sx int, sy int, s
 func (this *QPainter) DrawText42(r *QRectF, flags int, text string, br *QRectF) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QPainter_DrawText42(this.h, r.cPointer(), (C.int)(flags), text_Cstring, C.ulong(len(text)), br.cPointer())
+	C.QPainter_DrawText42(this.h, r.cPointer(), (C.int)(flags), text_Cstring, C.size_t(len(text)), br.cPointer())
 }
 
 func (this *QPainter) DrawText43(r *QRect, flags int, text string, br *QRect) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QPainter_DrawText43(this.h, r.cPointer(), (C.int)(flags), text_Cstring, C.ulong(len(text)), br.cPointer())
+	C.QPainter_DrawText43(this.h, r.cPointer(), (C.int)(flags), text_Cstring, C.size_t(len(text)), br.cPointer())
 }
 
 func (this *QPainter) DrawText72(x int, y int, w int, h int, flags int, text string, br *QRect) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QPainter_DrawText72(this.h, (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), (C.int)(flags), text_Cstring, C.ulong(len(text)), br.cPointer())
+	C.QPainter_DrawText72(this.h, (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), (C.int)(flags), text_Cstring, C.size_t(len(text)), br.cPointer())
 }
 
 func (this *QPainter) DrawText32(r *QRectF, text string, o *QTextOption) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QPainter_DrawText32(this.h, r.cPointer(), text_Cstring, C.ulong(len(text)), o.cPointer())
+	C.QPainter_DrawText32(this.h, r.cPointer(), text_Cstring, C.size_t(len(text)), o.cPointer())
 }
 
 func (this *QPainter) BoundingRect32(rect *QRectF, text string, o *QTextOption) *QRectF {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QPainter_BoundingRect32(this.h, rect.cPointer(), text_Cstring, C.ulong(len(text)), o.cPointer())
+	ret := C.QPainter_BoundingRect32(this.h, rect.cPointer(), text_Cstring, C.size_t(len(text)), o.cPointer())
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQRectF(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QRectF) {

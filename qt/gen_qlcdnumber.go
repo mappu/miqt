@@ -154,7 +154,7 @@ func (this *QLCDNumber) SizeHint() *QSize {
 func (this *QLCDNumber) Display(str string) {
 	str_Cstring := C.CString(str)
 	defer C.free(unsafe.Pointer(str_Cstring))
-	C.QLCDNumber_Display(this.h, str_Cstring, C.ulong(len(str)))
+	C.QLCDNumber_Display(this.h, str_Cstring, C.size_t(len(str)))
 }
 
 func (this *QLCDNumber) DisplayWithNum(num int) {

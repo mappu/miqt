@@ -336,7 +336,7 @@ func (this *QTextStream) OperatorShiftRightWithDouble(f *float64) *QTextStream {
 func (this *QTextStream) OperatorShiftRightWithQString(s string) *QTextStream {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	ret := C.QTextStream_OperatorShiftRightWithQString(this.h, s_Cstring, C.ulong(len(s)))
+	ret := C.QTextStream_OperatorShiftRightWithQString(this.h, s_Cstring, C.size_t(len(s)))
 	return newQTextStream_U(unsafe.Pointer(ret))
 }
 
@@ -415,7 +415,7 @@ func (this *QTextStream) OperatorShiftLeftWithDouble(f float64) *QTextStream {
 func (this *QTextStream) OperatorShiftLeftWithQString(s string) *QTextStream {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	ret := C.QTextStream_OperatorShiftLeftWithQString(this.h, s_Cstring, C.ulong(len(s)))
+	ret := C.QTextStream_OperatorShiftLeftWithQString(this.h, s_Cstring, C.size_t(len(s)))
 	return newQTextStream_U(unsafe.Pointer(ret))
 }
 

@@ -100,13 +100,13 @@ func (this *QTextCursor) Anchor() int {
 func (this *QTextCursor) InsertText(text string) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QTextCursor_InsertText(this.h, text_Cstring, C.ulong(len(text)))
+	C.QTextCursor_InsertText(this.h, text_Cstring, C.size_t(len(text)))
 }
 
 func (this *QTextCursor) InsertText2(text string, format *QTextCharFormat) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QTextCursor_InsertText2(this.h, text_Cstring, C.ulong(len(text)), format.cPointer())
+	C.QTextCursor_InsertText2(this.h, text_Cstring, C.size_t(len(text)), format.cPointer())
 }
 
 func (this *QTextCursor) MovePosition(op uintptr) bool {
@@ -362,7 +362,7 @@ func (this *QTextCursor) InsertFragment(fragment *QTextDocumentFragment) {
 func (this *QTextCursor) InsertHtml(html string) {
 	html_Cstring := C.CString(html)
 	defer C.free(unsafe.Pointer(html_Cstring))
-	C.QTextCursor_InsertHtml(this.h, html_Cstring, C.ulong(len(html)))
+	C.QTextCursor_InsertHtml(this.h, html_Cstring, C.size_t(len(html)))
 }
 
 func (this *QTextCursor) InsertImage(format *QTextImageFormat, alignment uintptr) {
@@ -376,7 +376,7 @@ func (this *QTextCursor) InsertImageWithFormat(format *QTextImageFormat) {
 func (this *QTextCursor) InsertImageWithName(name string) {
 	name_Cstring := C.CString(name)
 	defer C.free(unsafe.Pointer(name_Cstring))
-	C.QTextCursor_InsertImageWithName(this.h, name_Cstring, C.ulong(len(name)))
+	C.QTextCursor_InsertImageWithName(this.h, name_Cstring, C.size_t(len(name)))
 }
 
 func (this *QTextCursor) InsertImageWithImage(image *QImage) {
@@ -462,7 +462,7 @@ func (this *QTextCursor) MovePosition3(op uintptr, param2 uintptr, n int) bool {
 func (this *QTextCursor) InsertImage2(image *QImage, name string) {
 	name_Cstring := C.CString(name)
 	defer C.free(unsafe.Pointer(name_Cstring))
-	C.QTextCursor_InsertImage2(this.h, image.cPointer(), name_Cstring, C.ulong(len(name)))
+	C.QTextCursor_InsertImage2(this.h, image.cPointer(), name_Cstring, C.size_t(len(name)))
 }
 
 func (this *QTextCursor) Delete() {

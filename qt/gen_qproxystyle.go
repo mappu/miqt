@@ -46,7 +46,7 @@ func NewQProxyStyle() *QProxyStyle {
 func NewQProxyStyle2(key string) *QProxyStyle {
 	key_Cstring := C.CString(key)
 	defer C.free(unsafe.Pointer(key_Cstring))
-	ret := C.QProxyStyle_new2(key_Cstring, C.ulong(len(key)))
+	ret := C.QProxyStyle_new2(key_Cstring, C.size_t(len(key)))
 	return newQProxyStyle(ret)
 }
 
@@ -107,7 +107,7 @@ func (this *QProxyStyle) DrawComplexControl(control uintptr, option *QStyleOptio
 func (this *QProxyStyle) DrawItemText(painter *QPainter, rect *QRect, flags int, pal *QPalette, enabled bool, text string) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QProxyStyle_DrawItemText(this.h, painter.cPointer(), rect.cPointer(), (C.int)(flags), pal.cPointer(), (C.bool)(enabled), text_Cstring, C.ulong(len(text)))
+	C.QProxyStyle_DrawItemText(this.h, painter.cPointer(), rect.cPointer(), (C.int)(flags), pal.cPointer(), (C.bool)(enabled), text_Cstring, C.size_t(len(text)))
 }
 
 func (this *QProxyStyle) DrawItemPixmap(painter *QPainter, rect *QRect, alignment int, pixmap *QPixmap) {
@@ -150,7 +150,7 @@ func (this *QProxyStyle) SubControlRect(cc uintptr, opt *QStyleOptionComplex, sc
 func (this *QProxyStyle) ItemTextRect(fm *QFontMetrics, r *QRect, flags int, enabled bool, text string) *QRect {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QProxyStyle_ItemTextRect(this.h, fm.cPointer(), r.cPointer(), (C.int)(flags), (C.bool)(enabled), text_Cstring, C.ulong(len(text)))
+	ret := C.QProxyStyle_ItemTextRect(this.h, fm.cPointer(), r.cPointer(), (C.int)(flags), (C.bool)(enabled), text_Cstring, C.size_t(len(text)))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQRect(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QRect) {
@@ -322,7 +322,7 @@ func (this *QProxyStyle) DrawComplexControl4(control uintptr, option *QStyleOpti
 func (this *QProxyStyle) DrawItemText7(painter *QPainter, rect *QRect, flags int, pal *QPalette, enabled bool, text string, textRole uintptr) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QProxyStyle_DrawItemText7(this.h, painter.cPointer(), rect.cPointer(), (C.int)(flags), pal.cPointer(), (C.bool)(enabled), text_Cstring, C.ulong(len(text)), (C.uintptr_t)(textRole))
+	C.QProxyStyle_DrawItemText7(this.h, painter.cPointer(), rect.cPointer(), (C.int)(flags), pal.cPointer(), (C.bool)(enabled), text_Cstring, C.size_t(len(text)), (C.uintptr_t)(textRole))
 }
 
 func (this *QProxyStyle) HitTestComplexControl4(control uintptr, option *QStyleOptionComplex, pos *QPoint, widget *QWidget) uintptr {

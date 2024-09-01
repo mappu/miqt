@@ -81,7 +81,7 @@ func NewQTextDocument() *QTextDocument {
 func NewQTextDocument2(text string) *QTextDocument {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QTextDocument_new2(text_Cstring, C.ulong(len(text)))
+	ret := C.QTextDocument_new2(text_Cstring, C.size_t(len(text)))
 	return newQTextDocument(ret)
 }
 
@@ -95,7 +95,7 @@ func NewQTextDocument3(parent *QObject) *QTextDocument {
 func NewQTextDocument4(text string, parent *QObject) *QTextDocument {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QTextDocument_new4(text_Cstring, C.ulong(len(text)), parent.cPointer())
+	ret := C.QTextDocument_new4(text_Cstring, C.size_t(len(text)), parent.cPointer())
 	return newQTextDocument(ret)
 }
 
@@ -186,7 +186,7 @@ func (this *QTextDocument) DocumentLayout() *QAbstractTextDocumentLayout {
 func (this *QTextDocument) SetMetaInformation(info uintptr, param2 string) {
 	param2_Cstring := C.CString(param2)
 	defer C.free(unsafe.Pointer(param2_Cstring))
-	C.QTextDocument_SetMetaInformation(this.h, (C.uintptr_t)(info), param2_Cstring, C.ulong(len(param2)))
+	C.QTextDocument_SetMetaInformation(this.h, (C.uintptr_t)(info), param2_Cstring, C.size_t(len(param2)))
 }
 
 func (this *QTextDocument) MetaInformation(info uintptr) string {
@@ -210,7 +210,7 @@ func (this *QTextDocument) ToHtml() string {
 func (this *QTextDocument) SetHtml(html string) {
 	html_Cstring := C.CString(html)
 	defer C.free(unsafe.Pointer(html_Cstring))
-	C.QTextDocument_SetHtml(this.h, html_Cstring, C.ulong(len(html)))
+	C.QTextDocument_SetHtml(this.h, html_Cstring, C.size_t(len(html)))
 }
 
 func (this *QTextDocument) ToMarkdown() string {
@@ -225,7 +225,7 @@ func (this *QTextDocument) ToMarkdown() string {
 func (this *QTextDocument) SetMarkdown(markdown string) {
 	markdown_Cstring := C.CString(markdown)
 	defer C.free(unsafe.Pointer(markdown_Cstring))
-	C.QTextDocument_SetMarkdown(this.h, markdown_Cstring, C.ulong(len(markdown)))
+	C.QTextDocument_SetMarkdown(this.h, markdown_Cstring, C.size_t(len(markdown)))
 }
 
 func (this *QTextDocument) ToRawText() string {
@@ -249,7 +249,7 @@ func (this *QTextDocument) ToPlainText() string {
 func (this *QTextDocument) SetPlainText(text string) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QTextDocument_SetPlainText(this.h, text_Cstring, C.ulong(len(text)))
+	C.QTextDocument_SetPlainText(this.h, text_Cstring, C.size_t(len(text)))
 }
 
 func (this *QTextDocument) CharacterAt(pos int) *QChar {
@@ -266,7 +266,7 @@ func (this *QTextDocument) CharacterAt(pos int) *QChar {
 func (this *QTextDocument) Find(subString string) *QTextCursor {
 	subString_Cstring := C.CString(subString)
 	defer C.free(unsafe.Pointer(subString_Cstring))
-	ret := C.QTextDocument_Find(this.h, subString_Cstring, C.ulong(len(subString)))
+	ret := C.QTextDocument_Find(this.h, subString_Cstring, C.size_t(len(subString)))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQTextCursor(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QTextCursor) {
@@ -279,7 +279,7 @@ func (this *QTextDocument) Find(subString string) *QTextCursor {
 func (this *QTextDocument) Find2(subString string, cursor *QTextCursor) *QTextCursor {
 	subString_Cstring := C.CString(subString)
 	defer C.free(unsafe.Pointer(subString_Cstring))
-	ret := C.QTextDocument_Find2(this.h, subString_Cstring, C.ulong(len(subString)), cursor.cPointer())
+	ret := C.QTextDocument_Find2(this.h, subString_Cstring, C.size_t(len(subString)), cursor.cPointer())
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQTextCursor(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QTextCursor) {
@@ -584,7 +584,7 @@ func (this *QTextDocument) CharacterCount() int {
 func (this *QTextDocument) SetDefaultStyleSheet(sheet string) {
 	sheet_Cstring := C.CString(sheet)
 	defer C.free(unsafe.Pointer(sheet_Cstring))
-	C.QTextDocument_SetDefaultStyleSheet(this.h, sheet_Cstring, C.ulong(len(sheet)))
+	C.QTextDocument_SetDefaultStyleSheet(this.h, sheet_Cstring, C.size_t(len(sheet)))
 }
 
 func (this *QTextDocument) DefaultStyleSheet() string {
@@ -866,13 +866,13 @@ func (this *QTextDocument) ToMarkdown1(features int) string {
 func (this *QTextDocument) SetMarkdown2(markdown string, features int) {
 	markdown_Cstring := C.CString(markdown)
 	defer C.free(unsafe.Pointer(markdown_Cstring))
-	C.QTextDocument_SetMarkdown2(this.h, markdown_Cstring, C.ulong(len(markdown)), (C.int)(features))
+	C.QTextDocument_SetMarkdown2(this.h, markdown_Cstring, C.size_t(len(markdown)), (C.int)(features))
 }
 
 func (this *QTextDocument) Find22(subString string, from int) *QTextCursor {
 	subString_Cstring := C.CString(subString)
 	defer C.free(unsafe.Pointer(subString_Cstring))
-	ret := C.QTextDocument_Find22(this.h, subString_Cstring, C.ulong(len(subString)), (C.int)(from))
+	ret := C.QTextDocument_Find22(this.h, subString_Cstring, C.size_t(len(subString)), (C.int)(from))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQTextCursor(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QTextCursor) {
@@ -885,7 +885,7 @@ func (this *QTextDocument) Find22(subString string, from int) *QTextCursor {
 func (this *QTextDocument) Find32(subString string, from int, options int) *QTextCursor {
 	subString_Cstring := C.CString(subString)
 	defer C.free(unsafe.Pointer(subString_Cstring))
-	ret := C.QTextDocument_Find32(this.h, subString_Cstring, C.ulong(len(subString)), (C.int)(from), (C.int)(options))
+	ret := C.QTextDocument_Find32(this.h, subString_Cstring, C.size_t(len(subString)), (C.int)(from), (C.int)(options))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQTextCursor(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QTextCursor) {
@@ -898,7 +898,7 @@ func (this *QTextDocument) Find32(subString string, from int, options int) *QTex
 func (this *QTextDocument) Find33(subString string, cursor *QTextCursor, options int) *QTextCursor {
 	subString_Cstring := C.CString(subString)
 	defer C.free(unsafe.Pointer(subString_Cstring))
-	ret := C.QTextDocument_Find33(this.h, subString_Cstring, C.ulong(len(subString)), cursor.cPointer(), (C.int)(options))
+	ret := C.QTextDocument_Find33(this.h, subString_Cstring, C.size_t(len(subString)), cursor.cPointer(), (C.int)(options))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQTextCursor(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QTextCursor) {

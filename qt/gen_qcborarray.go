@@ -438,16 +438,16 @@ func (this *QCborArray) OperatorShiftLeft(v *QCborValue) *QCborArray {
 func QCborArray_FromStringList(list []string) *QCborArray {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
 	list_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(list))))
-	list_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(list))))
+	list_Lengths := (*[0xffff]C.uint64_t)(C.malloc(C.size_t(8 * len(list))))
 	defer C.free(unsafe.Pointer(list_CArray))
 	defer C.free(unsafe.Pointer(list_Lengths))
 	for i := range list {
 		single_cstring := C.CString(list[i])
 		defer C.free(unsafe.Pointer(single_cstring))
 		list_CArray[i] = single_cstring
-		list_Lengths[i] = (C.size_t)(len(list[i]))
+		list_Lengths[i] = (C.uint64_t)(len(list[i]))
 	}
-	ret := C.QCborArray_FromStringList(&list_CArray[0], &list_Lengths[0], C.ulong(len(list)))
+	ret := C.QCborArray_FromStringList(&list_CArray[0], &list_Lengths[0], C.size_t(len(list)))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQCborArray(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QCborArray) {

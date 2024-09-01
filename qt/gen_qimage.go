@@ -82,7 +82,7 @@ func NewQImage7(data *byte, width int, height int, bytesPerLine int, format uint
 func NewQImage8(fileName string) *QImage {
 	fileName_Cstring := C.CString(fileName)
 	defer C.free(unsafe.Pointer(fileName_Cstring))
-	ret := C.QImage_new8(fileName_Cstring, C.ulong(len(fileName)))
+	ret := C.QImage_new8(fileName_Cstring, C.size_t(len(fileName)))
 	return newQImage(ret)
 }
 
@@ -98,7 +98,7 @@ func NewQImage10(fileName string, format string) *QImage {
 	defer C.free(unsafe.Pointer(fileName_Cstring))
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
-	ret := C.QImage_new10(fileName_Cstring, C.ulong(len(fileName)), format_Cstring)
+	ret := C.QImage_new10(fileName_Cstring, C.size_t(len(fileName)), format_Cstring)
 	return newQImage(ret)
 }
 
@@ -184,7 +184,7 @@ func (this *QImage) ConvertToFormat2(f uintptr, colorTable []uint) *QImage {
 	for i := range colorTable {
 		colorTable_CArray[i] = (C.uint)(colorTable[i])
 	}
-	ret := C.QImage_ConvertToFormat2(this.h, (C.uintptr_t)(f), &colorTable_CArray[0], C.ulong(len(colorTable)))
+	ret := C.QImage_ConvertToFormat2(this.h, (C.uintptr_t)(f), &colorTable_CArray[0], C.size_t(len(colorTable)))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQImage(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QImage) {
@@ -406,7 +406,7 @@ func (this *QImage) SetColorTable(colors []uint) {
 	for i := range colors {
 		colors_CArray[i] = (C.uint)(colors[i])
 	}
-	C.QImage_SetColorTable(this.h, &colors_CArray[0], C.ulong(len(colors)))
+	C.QImage_SetColorTable(this.h, &colors_CArray[0], C.size_t(len(colors)))
 }
 
 func (this *QImage) DevicePixelRatio() float64 {
@@ -641,7 +641,7 @@ func (this *QImage) Load(device *QIODevice, format string) bool {
 func (this *QImage) LoadWithFileName(fileName string) bool {
 	fileName_Cstring := C.CString(fileName)
 	defer C.free(unsafe.Pointer(fileName_Cstring))
-	ret := C.QImage_LoadWithFileName(this.h, fileName_Cstring, C.ulong(len(fileName)))
+	ret := C.QImage_LoadWithFileName(this.h, fileName_Cstring, C.size_t(len(fileName)))
 	return (bool)(ret)
 }
 
@@ -658,7 +658,7 @@ func (this *QImage) LoadFromDataWithData(data *QByteArray) bool {
 func (this *QImage) Save(fileName string) bool {
 	fileName_Cstring := C.CString(fileName)
 	defer C.free(unsafe.Pointer(fileName_Cstring))
-	ret := C.QImage_Save(this.h, fileName_Cstring, C.ulong(len(fileName)))
+	ret := C.QImage_Save(this.h, fileName_Cstring, C.size_t(len(fileName)))
 	return (bool)(ret)
 }
 
@@ -761,7 +761,7 @@ func (this *QImage) SetText(key string, value string) {
 	defer C.free(unsafe.Pointer(key_Cstring))
 	value_Cstring := C.CString(value)
 	defer C.free(unsafe.Pointer(value_Cstring))
-	C.QImage_SetText(this.h, key_Cstring, C.ulong(len(key)), value_Cstring, C.ulong(len(value)))
+	C.QImage_SetText(this.h, key_Cstring, C.size_t(len(key)), value_Cstring, C.size_t(len(value)))
 }
 
 func (this *QImage) PixelFormat() *QPixelFormat {
@@ -820,7 +820,7 @@ func (this *QImage) ConvertToFormat3(f uintptr, colorTable []uint, flags int) *Q
 	for i := range colorTable {
 		colorTable_CArray[i] = (C.uint)(colorTable[i])
 	}
-	ret := C.QImage_ConvertToFormat3(this.h, (C.uintptr_t)(f), &colorTable_CArray[0], C.ulong(len(colorTable)), (C.int)(flags))
+	ret := C.QImage_ConvertToFormat3(this.h, (C.uintptr_t)(f), &colorTable_CArray[0], C.size_t(len(colorTable)), (C.int)(flags))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQImage(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QImage) {
@@ -986,7 +986,7 @@ func (this *QImage) Load2(fileName string, format string) bool {
 	defer C.free(unsafe.Pointer(fileName_Cstring))
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
-	ret := C.QImage_Load2(this.h, fileName_Cstring, C.ulong(len(fileName)), format_Cstring)
+	ret := C.QImage_Load2(this.h, fileName_Cstring, C.size_t(len(fileName)), format_Cstring)
 	return (bool)(ret)
 }
 
@@ -1009,7 +1009,7 @@ func (this *QImage) Save2(fileName string, format string) bool {
 	defer C.free(unsafe.Pointer(fileName_Cstring))
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
-	ret := C.QImage_Save2(this.h, fileName_Cstring, C.ulong(len(fileName)), format_Cstring)
+	ret := C.QImage_Save2(this.h, fileName_Cstring, C.size_t(len(fileName)), format_Cstring)
 	return (bool)(ret)
 }
 
@@ -1018,7 +1018,7 @@ func (this *QImage) Save3(fileName string, format string, quality int) bool {
 	defer C.free(unsafe.Pointer(fileName_Cstring))
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
-	ret := C.QImage_Save3(this.h, fileName_Cstring, C.ulong(len(fileName)), format_Cstring, (C.int)(quality))
+	ret := C.QImage_Save3(this.h, fileName_Cstring, C.size_t(len(fileName)), format_Cstring, (C.int)(quality))
 	return (bool)(ret)
 }
 
@@ -1067,7 +1067,7 @@ func (this *QImage) Text1(key string) string {
 	defer C.free(unsafe.Pointer(key_Cstring))
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
-	C.QImage_Text1(this.h, key_Cstring, C.ulong(len(key)), &_out, &_out_Strlen)
+	C.QImage_Text1(this.h, key_Cstring, C.size_t(len(key)), &_out, &_out_Strlen)
 	ret := C.GoStringN(_out, _out_Strlen)
 	C.free(unsafe.Pointer(_out))
 	return ret

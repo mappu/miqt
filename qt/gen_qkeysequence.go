@@ -45,7 +45,7 @@ func NewQKeySequence() *QKeySequence {
 func NewQKeySequence2(key string) *QKeySequence {
 	key_Cstring := C.CString(key)
 	defer C.free(unsafe.Pointer(key_Cstring))
-	ret := C.QKeySequence_new2(key_Cstring, C.ulong(len(key)))
+	ret := C.QKeySequence_new2(key_Cstring, C.size_t(len(key)))
 	return newQKeySequence(ret)
 }
 
@@ -71,7 +71,7 @@ func NewQKeySequence5(key uintptr) *QKeySequence {
 func NewQKeySequence6(key string, format uintptr) *QKeySequence {
 	key_Cstring := C.CString(key)
 	defer C.free(unsafe.Pointer(key_Cstring))
-	ret := C.QKeySequence_new6(key_Cstring, C.ulong(len(key)), (C.uintptr_t)(format))
+	ret := C.QKeySequence_new6(key_Cstring, C.size_t(len(key)), (C.uintptr_t)(format))
 	return newQKeySequence(ret)
 }
 
@@ -115,7 +115,7 @@ func (this *QKeySequence) ToString() string {
 func QKeySequence_FromString(str string) *QKeySequence {
 	str_Cstring := C.CString(str)
 	defer C.free(unsafe.Pointer(str_Cstring))
-	ret := C.QKeySequence_FromString(str_Cstring, C.ulong(len(str)))
+	ret := C.QKeySequence_FromString(str_Cstring, C.size_t(len(str)))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQKeySequence(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QKeySequence) {
@@ -130,7 +130,7 @@ func QKeySequence_ListFromString(str string) []QKeySequence {
 	defer C.free(unsafe.Pointer(str_Cstring))
 	var _out **C.QKeySequence = nil
 	var _out_len C.size_t = 0
-	C.QKeySequence_ListFromString(str_Cstring, C.ulong(len(str)), &_out, &_out_len)
+	C.QKeySequence_ListFromString(str_Cstring, C.size_t(len(str)), &_out, &_out_len)
 	ret := make([]QKeySequence, int(_out_len))
 	_outCast := (*[0xffff]*C.QKeySequence)(unsafe.Pointer(_out)) // so fresh so clean
 	for i := 0; i < int(_out_len); i++ {
@@ -149,7 +149,7 @@ func QKeySequence_ListToString(list []QKeySequence) string {
 	}
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
-	C.QKeySequence_ListToString(&list_CArray[0], C.ulong(len(list)), &_out, &_out_Strlen)
+	C.QKeySequence_ListToString(&list_CArray[0], C.size_t(len(list)), &_out, &_out_Strlen)
 	ret := C.GoStringN(_out, _out_Strlen)
 	C.free(unsafe.Pointer(_out))
 	return ret
@@ -163,7 +163,7 @@ func (this *QKeySequence) Matches(seq *QKeySequence) uintptr {
 func QKeySequence_Mnemonic(text string) *QKeySequence {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QKeySequence_Mnemonic(text_Cstring, C.ulong(len(text)))
+	ret := C.QKeySequence_Mnemonic(text_Cstring, C.size_t(len(text)))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQKeySequence(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QKeySequence) {
@@ -246,7 +246,7 @@ func (this *QKeySequence) ToString1(format uintptr) string {
 func QKeySequence_FromString2(str string, format uintptr) *QKeySequence {
 	str_Cstring := C.CString(str)
 	defer C.free(unsafe.Pointer(str_Cstring))
-	ret := C.QKeySequence_FromString2(str_Cstring, C.ulong(len(str)), (C.uintptr_t)(format))
+	ret := C.QKeySequence_FromString2(str_Cstring, C.size_t(len(str)), (C.uintptr_t)(format))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQKeySequence(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QKeySequence) {
@@ -261,7 +261,7 @@ func QKeySequence_ListFromString2(str string, format uintptr) []QKeySequence {
 	defer C.free(unsafe.Pointer(str_Cstring))
 	var _out **C.QKeySequence = nil
 	var _out_len C.size_t = 0
-	C.QKeySequence_ListFromString2(str_Cstring, C.ulong(len(str)), (C.uintptr_t)(format), &_out, &_out_len)
+	C.QKeySequence_ListFromString2(str_Cstring, C.size_t(len(str)), (C.uintptr_t)(format), &_out, &_out_len)
 	ret := make([]QKeySequence, int(_out_len))
 	_outCast := (*[0xffff]*C.QKeySequence)(unsafe.Pointer(_out)) // so fresh so clean
 	for i := 0; i < int(_out_len); i++ {
@@ -280,7 +280,7 @@ func QKeySequence_ListToString2(list []QKeySequence, format uintptr) string {
 	}
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
-	C.QKeySequence_ListToString2(&list_CArray[0], C.ulong(len(list)), (C.uintptr_t)(format), &_out, &_out_Strlen)
+	C.QKeySequence_ListToString2(&list_CArray[0], C.size_t(len(list)), (C.uintptr_t)(format), &_out, &_out_Strlen)
 	ret := C.GoStringN(_out, _out_Strlen)
 	C.free(unsafe.Pointer(_out))
 	return ret

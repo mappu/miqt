@@ -69,7 +69,7 @@ func NewQPageSize5(other *QPageSize) *QPageSize {
 func NewQPageSize6(pointSize *QSize, name string) *QPageSize {
 	name_Cstring := C.CString(name)
 	defer C.free(unsafe.Pointer(name_Cstring))
-	ret := C.QPageSize_new6(pointSize.cPointer(), name_Cstring, C.ulong(len(name)))
+	ret := C.QPageSize_new6(pointSize.cPointer(), name_Cstring, C.size_t(len(name)))
 	return newQPageSize(ret)
 }
 
@@ -77,7 +77,7 @@ func NewQPageSize6(pointSize *QSize, name string) *QPageSize {
 func NewQPageSize7(pointSize *QSize, name string, matchPolicy uintptr) *QPageSize {
 	name_Cstring := C.CString(name)
 	defer C.free(unsafe.Pointer(name_Cstring))
-	ret := C.QPageSize_new7(pointSize.cPointer(), name_Cstring, C.ulong(len(name)), (C.uintptr_t)(matchPolicy))
+	ret := C.QPageSize_new7(pointSize.cPointer(), name_Cstring, C.size_t(len(name)), (C.uintptr_t)(matchPolicy))
 	return newQPageSize(ret)
 }
 
@@ -85,7 +85,7 @@ func NewQPageSize7(pointSize *QSize, name string, matchPolicy uintptr) *QPageSiz
 func NewQPageSize8(size *QSizeF, units uintptr, name string) *QPageSize {
 	name_Cstring := C.CString(name)
 	defer C.free(unsafe.Pointer(name_Cstring))
-	ret := C.QPageSize_new8(size.cPointer(), (C.uintptr_t)(units), name_Cstring, C.ulong(len(name)))
+	ret := C.QPageSize_new8(size.cPointer(), (C.uintptr_t)(units), name_Cstring, C.size_t(len(name)))
 	return newQPageSize(ret)
 }
 
@@ -93,7 +93,7 @@ func NewQPageSize8(size *QSizeF, units uintptr, name string) *QPageSize {
 func NewQPageSize9(size *QSizeF, units uintptr, name string, matchPolicy uintptr) *QPageSize {
 	name_Cstring := C.CString(name)
 	defer C.free(unsafe.Pointer(name_Cstring))
-	ret := C.QPageSize_new9(size.cPointer(), (C.uintptr_t)(units), name_Cstring, C.ulong(len(name)), (C.uintptr_t)(matchPolicy))
+	ret := C.QPageSize_new9(size.cPointer(), (C.uintptr_t)(units), name_Cstring, C.size_t(len(name)), (C.uintptr_t)(matchPolicy))
 	return newQPageSize(ret)
 }
 

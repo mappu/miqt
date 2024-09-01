@@ -166,7 +166,7 @@ func (this *QProgressBar) TextDirection() uintptr {
 func (this *QProgressBar) SetFormat(format string) {
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
-	C.QProgressBar_SetFormat(this.h, format_Cstring, C.ulong(len(format)))
+	C.QProgressBar_SetFormat(this.h, format_Cstring, C.size_t(len(format)))
 }
 
 func (this *QProgressBar) ResetFormat() {

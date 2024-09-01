@@ -46,7 +46,7 @@ func NewQPluginLoader() *QPluginLoader {
 func NewQPluginLoader2(fileName string) *QPluginLoader {
 	fileName_Cstring := C.CString(fileName)
 	defer C.free(unsafe.Pointer(fileName_Cstring))
-	ret := C.QPluginLoader_new2(fileName_Cstring, C.ulong(len(fileName)))
+	ret := C.QPluginLoader_new2(fileName_Cstring, C.size_t(len(fileName)))
 	return newQPluginLoader(ret)
 }
 
@@ -60,7 +60,7 @@ func NewQPluginLoader3(parent *QObject) *QPluginLoader {
 func NewQPluginLoader4(fileName string, parent *QObject) *QPluginLoader {
 	fileName_Cstring := C.CString(fileName)
 	defer C.free(unsafe.Pointer(fileName_Cstring))
-	ret := C.QPluginLoader_new4(fileName_Cstring, C.ulong(len(fileName)), parent.cPointer())
+	ret := C.QPluginLoader_new4(fileName_Cstring, C.size_t(len(fileName)), parent.cPointer())
 	return newQPluginLoader(ret)
 }
 
@@ -151,7 +151,7 @@ func (this *QPluginLoader) IsLoaded() bool {
 func (this *QPluginLoader) SetFileName(fileName string) {
 	fileName_Cstring := C.CString(fileName)
 	defer C.free(unsafe.Pointer(fileName_Cstring))
-	C.QPluginLoader_SetFileName(this.h, fileName_Cstring, C.ulong(len(fileName)))
+	C.QPluginLoader_SetFileName(this.h, fileName_Cstring, C.size_t(len(fileName)))
 }
 
 func (this *QPluginLoader) FileName() string {

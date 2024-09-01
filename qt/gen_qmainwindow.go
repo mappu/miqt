@@ -226,7 +226,7 @@ func (this *QMainWindow) AddToolBarWithToolbar(toolbar *QToolBar) {
 func (this *QMainWindow) AddToolBarWithTitle(title string) *QToolBar {
 	title_Cstring := C.CString(title)
 	defer C.free(unsafe.Pointer(title_Cstring))
-	ret := C.QMainWindow_AddToolBarWithTitle(this.h, title_Cstring, C.ulong(len(title)))
+	ret := C.QMainWindow_AddToolBarWithTitle(this.h, title_Cstring, C.size_t(len(title)))
 	return newQToolBar_U(unsafe.Pointer(ret))
 }
 
@@ -313,7 +313,7 @@ func (this *QMainWindow) ResizeDocks(docks []*QDockWidget, sizes []int, orientat
 	for i := range sizes {
 		sizes_CArray[i] = (C.int)(sizes[i])
 	}
-	C.QMainWindow_ResizeDocks(this.h, &docks_CArray[0], C.ulong(len(docks)), &sizes_CArray[0], C.ulong(len(sizes)), (C.uintptr_t)(orientation))
+	C.QMainWindow_ResizeDocks(this.h, &docks_CArray[0], C.size_t(len(docks)), &sizes_CArray[0], C.size_t(len(sizes)), (C.uintptr_t)(orientation))
 }
 
 func (this *QMainWindow) SaveState() *QByteArray {

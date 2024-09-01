@@ -151,7 +151,7 @@ func NewQTextLayout() *QTextLayout {
 func NewQTextLayout2(text string) *QTextLayout {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QTextLayout_new2(text_Cstring, C.ulong(len(text)))
+	ret := C.QTextLayout_new2(text_Cstring, C.size_t(len(text)))
 	return newQTextLayout(ret)
 }
 
@@ -159,7 +159,7 @@ func NewQTextLayout2(text string) *QTextLayout {
 func NewQTextLayout3(text string, font *QFont) *QTextLayout {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QTextLayout_new3(text_Cstring, C.ulong(len(text)), font.cPointer())
+	ret := C.QTextLayout_new3(text_Cstring, C.size_t(len(text)), font.cPointer())
 	return newQTextLayout(ret)
 }
 
@@ -173,7 +173,7 @@ func NewQTextLayout4(b *QTextBlock) *QTextLayout {
 func NewQTextLayout5(text string, font *QFont, paintdevice *QPaintDevice) *QTextLayout {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QTextLayout_new5(text_Cstring, C.ulong(len(text)), font.cPointer(), paintdevice.cPointer())
+	ret := C.QTextLayout_new5(text_Cstring, C.size_t(len(text)), font.cPointer(), paintdevice.cPointer())
 	return newQTextLayout(ret)
 }
 
@@ -199,7 +199,7 @@ func (this *QTextLayout) SetRawFont(rawFont *QRawFont) {
 func (this *QTextLayout) SetText(stringVal string) {
 	stringVal_Cstring := C.CString(stringVal)
 	defer C.free(unsafe.Pointer(stringVal_Cstring))
-	C.QTextLayout_SetText(this.h, stringVal_Cstring, C.ulong(len(stringVal)))
+	C.QTextLayout_SetText(this.h, stringVal_Cstring, C.size_t(len(stringVal)))
 }
 
 func (this *QTextLayout) Text() string {
@@ -223,7 +223,7 @@ func (this *QTextLayout) TextOption() *QTextOption {
 func (this *QTextLayout) SetPreeditArea(position int, text string) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QTextLayout_SetPreeditArea(this.h, (C.int)(position), text_Cstring, C.ulong(len(text)))
+	C.QTextLayout_SetPreeditArea(this.h, (C.int)(position), text_Cstring, C.size_t(len(text)))
 }
 
 func (this *QTextLayout) PreeditAreaPosition() int {
@@ -247,7 +247,7 @@ func (this *QTextLayout) SetAdditionalFormats(overrides []QTextLayout__FormatRan
 	for i := range overrides {
 		overrides_CArray[i] = overrides[i].cPointer()
 	}
-	C.QTextLayout_SetAdditionalFormats(this.h, &overrides_CArray[0], C.ulong(len(overrides)))
+	C.QTextLayout_SetAdditionalFormats(this.h, &overrides_CArray[0], C.size_t(len(overrides)))
 }
 
 func (this *QTextLayout) AdditionalFormats() []QTextLayout__FormatRange {
@@ -274,7 +274,7 @@ func (this *QTextLayout) SetFormats(overrides []QTextLayout__FormatRange) {
 	for i := range overrides {
 		overrides_CArray[i] = overrides[i].cPointer()
 	}
-	C.QTextLayout_SetFormats(this.h, &overrides_CArray[0], C.ulong(len(overrides)))
+	C.QTextLayout_SetFormats(this.h, &overrides_CArray[0], C.size_t(len(overrides)))
 }
 
 func (this *QTextLayout) Formats() []QTextLayout__FormatRange {
@@ -469,7 +469,7 @@ func (this *QTextLayout) Draw3(p *QPainter, pos *QPointF, selections []QTextLayo
 	for i := range selections {
 		selections_CArray[i] = selections[i].cPointer()
 	}
-	C.QTextLayout_Draw3(this.h, p.cPointer(), pos.cPointer(), &selections_CArray[0], C.ulong(len(selections)))
+	C.QTextLayout_Draw3(this.h, p.cPointer(), pos.cPointer(), &selections_CArray[0], C.size_t(len(selections)))
 }
 
 func (this *QTextLayout) Draw4(p *QPainter, pos *QPointF, selections []QTextLayout__FormatRange, clip *QRectF) {
@@ -479,7 +479,7 @@ func (this *QTextLayout) Draw4(p *QPainter, pos *QPointF, selections []QTextLayo
 	for i := range selections {
 		selections_CArray[i] = selections[i].cPointer()
 	}
-	C.QTextLayout_Draw4(this.h, p.cPointer(), pos.cPointer(), &selections_CArray[0], C.ulong(len(selections)), clip.cPointer())
+	C.QTextLayout_Draw4(this.h, p.cPointer(), pos.cPointer(), &selections_CArray[0], C.size_t(len(selections)), clip.cPointer())
 }
 
 func (this *QTextLayout) GlyphRuns1(from int) []QGlyphRun {

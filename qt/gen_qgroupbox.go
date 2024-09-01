@@ -47,7 +47,7 @@ func NewQGroupBox() *QGroupBox {
 func NewQGroupBox2(title string) *QGroupBox {
 	title_Cstring := C.CString(title)
 	defer C.free(unsafe.Pointer(title_Cstring))
-	ret := C.QGroupBox_new2(title_Cstring, C.ulong(len(title)))
+	ret := C.QGroupBox_new2(title_Cstring, C.size_t(len(title)))
 	return newQGroupBox(ret)
 }
 
@@ -61,7 +61,7 @@ func NewQGroupBox3(parent *QWidget) *QGroupBox {
 func NewQGroupBox4(title string, parent *QWidget) *QGroupBox {
 	title_Cstring := C.CString(title)
 	defer C.free(unsafe.Pointer(title_Cstring))
-	ret := C.QGroupBox_new4(title_Cstring, C.ulong(len(title)), parent.cPointer())
+	ret := C.QGroupBox_new4(title_Cstring, C.size_t(len(title)), parent.cPointer())
 	return newQGroupBox(ret)
 }
 
@@ -104,7 +104,7 @@ func (this *QGroupBox) Title() string {
 func (this *QGroupBox) SetTitle(title string) {
 	title_Cstring := C.CString(title)
 	defer C.free(unsafe.Pointer(title_Cstring))
-	C.QGroupBox_SetTitle(this.h, title_Cstring, C.ulong(len(title)))
+	C.QGroupBox_SetTitle(this.h, title_Cstring, C.size_t(len(title)))
 }
 
 func (this *QGroupBox) Alignment() int {

@@ -139,14 +139,14 @@ func (this *QFontMetrics) RightBearing(param1 QChar) int {
 func (this *QFontMetrics) Width(param1 string) int {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	ret := C.QFontMetrics_Width(this.h, param1_Cstring, C.ulong(len(param1)))
+	ret := C.QFontMetrics_Width(this.h, param1_Cstring, C.size_t(len(param1)))
 	return (int)(ret)
 }
 
 func (this *QFontMetrics) Width2(param1 string, lenVal int, flags int) int {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	ret := C.QFontMetrics_Width2(this.h, param1_Cstring, C.ulong(len(param1)), (C.int)(lenVal), (C.int)(flags))
+	ret := C.QFontMetrics_Width2(this.h, param1_Cstring, C.size_t(len(param1)), (C.int)(lenVal), (C.int)(flags))
 	return (int)(ret)
 }
 
@@ -158,7 +158,7 @@ func (this *QFontMetrics) WidthWithQChar(param1 QChar) int {
 func (this *QFontMetrics) HorizontalAdvance(param1 string) int {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	ret := C.QFontMetrics_HorizontalAdvance(this.h, param1_Cstring, C.ulong(len(param1)))
+	ret := C.QFontMetrics_HorizontalAdvance(this.h, param1_Cstring, C.size_t(len(param1)))
 	return (int)(ret)
 }
 
@@ -170,7 +170,7 @@ func (this *QFontMetrics) HorizontalAdvanceWithQChar(param1 QChar) int {
 func (this *QFontMetrics) CharWidth(str string, pos int) int {
 	str_Cstring := C.CString(str)
 	defer C.free(unsafe.Pointer(str_Cstring))
-	ret := C.QFontMetrics_CharWidth(this.h, str_Cstring, C.ulong(len(str)), (C.int)(pos))
+	ret := C.QFontMetrics_CharWidth(this.h, str_Cstring, C.size_t(len(str)), (C.int)(pos))
 	return (int)(ret)
 }
 
@@ -188,7 +188,7 @@ func (this *QFontMetrics) BoundingRect(param1 QChar) *QRect {
 func (this *QFontMetrics) BoundingRectWithText(text string) *QRect {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QFontMetrics_BoundingRectWithText(this.h, text_Cstring, C.ulong(len(text)))
+	ret := C.QFontMetrics_BoundingRectWithText(this.h, text_Cstring, C.size_t(len(text)))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQRect(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QRect) {
@@ -201,7 +201,7 @@ func (this *QFontMetrics) BoundingRectWithText(text string) *QRect {
 func (this *QFontMetrics) BoundingRect2(r *QRect, flags int, text string) *QRect {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QFontMetrics_BoundingRect2(this.h, r.cPointer(), (C.int)(flags), text_Cstring, C.ulong(len(text)))
+	ret := C.QFontMetrics_BoundingRect2(this.h, r.cPointer(), (C.int)(flags), text_Cstring, C.size_t(len(text)))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQRect(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QRect) {
@@ -214,7 +214,7 @@ func (this *QFontMetrics) BoundingRect2(r *QRect, flags int, text string) *QRect
 func (this *QFontMetrics) BoundingRect3(x int, y int, w int, h int, flags int, text string) *QRect {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QFontMetrics_BoundingRect3(this.h, (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), (C.int)(flags), text_Cstring, C.ulong(len(text)))
+	ret := C.QFontMetrics_BoundingRect3(this.h, (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), (C.int)(flags), text_Cstring, C.size_t(len(text)))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQRect(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QRect) {
@@ -227,7 +227,7 @@ func (this *QFontMetrics) BoundingRect3(x int, y int, w int, h int, flags int, t
 func (this *QFontMetrics) Size(flags int, str string) *QSize {
 	str_Cstring := C.CString(str)
 	defer C.free(unsafe.Pointer(str_Cstring))
-	ret := C.QFontMetrics_Size(this.h, (C.int)(flags), str_Cstring, C.ulong(len(str)))
+	ret := C.QFontMetrics_Size(this.h, (C.int)(flags), str_Cstring, C.size_t(len(str)))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQSize(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
@@ -240,7 +240,7 @@ func (this *QFontMetrics) Size(flags int, str string) *QSize {
 func (this *QFontMetrics) TightBoundingRect(text string) *QRect {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QFontMetrics_TightBoundingRect(this.h, text_Cstring, C.ulong(len(text)))
+	ret := C.QFontMetrics_TightBoundingRect(this.h, text_Cstring, C.size_t(len(text)))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQRect(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QRect) {
@@ -255,7 +255,7 @@ func (this *QFontMetrics) ElidedText(text string, mode uintptr, width int) strin
 	defer C.free(unsafe.Pointer(text_Cstring))
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
-	C.QFontMetrics_ElidedText(this.h, text_Cstring, C.ulong(len(text)), (C.uintptr_t)(mode), (C.int)(width), &_out, &_out_Strlen)
+	C.QFontMetrics_ElidedText(this.h, text_Cstring, C.size_t(len(text)), (C.uintptr_t)(mode), (C.int)(width), &_out, &_out_Strlen)
 	ret := C.GoStringN(_out, _out_Strlen)
 	C.free(unsafe.Pointer(_out))
 	return ret
@@ -299,21 +299,21 @@ func (this *QFontMetrics) OperatorNotEqual(other *QFontMetrics) bool {
 func (this *QFontMetrics) Width22(param1 string, lenVal int) int {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	ret := C.QFontMetrics_Width22(this.h, param1_Cstring, C.ulong(len(param1)), (C.int)(lenVal))
+	ret := C.QFontMetrics_Width22(this.h, param1_Cstring, C.size_t(len(param1)), (C.int)(lenVal))
 	return (int)(ret)
 }
 
 func (this *QFontMetrics) HorizontalAdvance2(param1 string, lenVal int) int {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	ret := C.QFontMetrics_HorizontalAdvance2(this.h, param1_Cstring, C.ulong(len(param1)), (C.int)(lenVal))
+	ret := C.QFontMetrics_HorizontalAdvance2(this.h, param1_Cstring, C.size_t(len(param1)), (C.int)(lenVal))
 	return (int)(ret)
 }
 
 func (this *QFontMetrics) BoundingRect4(r *QRect, flags int, text string, tabstops int) *QRect {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QFontMetrics_BoundingRect4(this.h, r.cPointer(), (C.int)(flags), text_Cstring, C.ulong(len(text)), (C.int)(tabstops))
+	ret := C.QFontMetrics_BoundingRect4(this.h, r.cPointer(), (C.int)(flags), text_Cstring, C.size_t(len(text)), (C.int)(tabstops))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQRect(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QRect) {
@@ -326,7 +326,7 @@ func (this *QFontMetrics) BoundingRect4(r *QRect, flags int, text string, tabsto
 func (this *QFontMetrics) BoundingRect5(r *QRect, flags int, text string, tabstops int, tabarray *int) *QRect {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QFontMetrics_BoundingRect5(this.h, r.cPointer(), (C.int)(flags), text_Cstring, C.ulong(len(text)), (C.int)(tabstops), (*C.int)(unsafe.Pointer(tabarray)))
+	ret := C.QFontMetrics_BoundingRect5(this.h, r.cPointer(), (C.int)(flags), text_Cstring, C.size_t(len(text)), (C.int)(tabstops), (*C.int)(unsafe.Pointer(tabarray)))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQRect(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QRect) {
@@ -339,7 +339,7 @@ func (this *QFontMetrics) BoundingRect5(r *QRect, flags int, text string, tabsto
 func (this *QFontMetrics) BoundingRect7(x int, y int, w int, h int, flags int, text string, tabstops int) *QRect {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QFontMetrics_BoundingRect7(this.h, (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), (C.int)(flags), text_Cstring, C.ulong(len(text)), (C.int)(tabstops))
+	ret := C.QFontMetrics_BoundingRect7(this.h, (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), (C.int)(flags), text_Cstring, C.size_t(len(text)), (C.int)(tabstops))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQRect(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QRect) {
@@ -352,7 +352,7 @@ func (this *QFontMetrics) BoundingRect7(x int, y int, w int, h int, flags int, t
 func (this *QFontMetrics) BoundingRect8(x int, y int, w int, h int, flags int, text string, tabstops int, tabarray *int) *QRect {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QFontMetrics_BoundingRect8(this.h, (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), (C.int)(flags), text_Cstring, C.ulong(len(text)), (C.int)(tabstops), (*C.int)(unsafe.Pointer(tabarray)))
+	ret := C.QFontMetrics_BoundingRect8(this.h, (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), (C.int)(flags), text_Cstring, C.size_t(len(text)), (C.int)(tabstops), (*C.int)(unsafe.Pointer(tabarray)))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQRect(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QRect) {
@@ -365,7 +365,7 @@ func (this *QFontMetrics) BoundingRect8(x int, y int, w int, h int, flags int, t
 func (this *QFontMetrics) Size3(flags int, str string, tabstops int) *QSize {
 	str_Cstring := C.CString(str)
 	defer C.free(unsafe.Pointer(str_Cstring))
-	ret := C.QFontMetrics_Size3(this.h, (C.int)(flags), str_Cstring, C.ulong(len(str)), (C.int)(tabstops))
+	ret := C.QFontMetrics_Size3(this.h, (C.int)(flags), str_Cstring, C.size_t(len(str)), (C.int)(tabstops))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQSize(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
@@ -378,7 +378,7 @@ func (this *QFontMetrics) Size3(flags int, str string, tabstops int) *QSize {
 func (this *QFontMetrics) Size4(flags int, str string, tabstops int, tabarray *int) *QSize {
 	str_Cstring := C.CString(str)
 	defer C.free(unsafe.Pointer(str_Cstring))
-	ret := C.QFontMetrics_Size4(this.h, (C.int)(flags), str_Cstring, C.ulong(len(str)), (C.int)(tabstops), (*C.int)(unsafe.Pointer(tabarray)))
+	ret := C.QFontMetrics_Size4(this.h, (C.int)(flags), str_Cstring, C.size_t(len(str)), (C.int)(tabstops), (*C.int)(unsafe.Pointer(tabarray)))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQSize(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
@@ -393,7 +393,7 @@ func (this *QFontMetrics) ElidedText4(text string, mode uintptr, width int, flag
 	defer C.free(unsafe.Pointer(text_Cstring))
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
-	C.QFontMetrics_ElidedText4(this.h, text_Cstring, C.ulong(len(text)), (C.uintptr_t)(mode), (C.int)(width), (C.int)(flags), &_out, &_out_Strlen)
+	C.QFontMetrics_ElidedText4(this.h, text_Cstring, C.size_t(len(text)), (C.uintptr_t)(mode), (C.int)(width), (C.int)(flags), &_out, &_out_Strlen)
 	ret := C.GoStringN(_out, _out_Strlen)
 	C.free(unsafe.Pointer(_out))
 	return ret
@@ -539,7 +539,7 @@ func (this *QFontMetricsF) RightBearing(param1 QChar) float64 {
 func (this *QFontMetricsF) Width(stringVal string) float64 {
 	stringVal_Cstring := C.CString(stringVal)
 	defer C.free(unsafe.Pointer(stringVal_Cstring))
-	ret := C.QFontMetricsF_Width(this.h, stringVal_Cstring, C.ulong(len(stringVal)))
+	ret := C.QFontMetricsF_Width(this.h, stringVal_Cstring, C.size_t(len(stringVal)))
 	return (float64)(ret)
 }
 
@@ -551,7 +551,7 @@ func (this *QFontMetricsF) WidthWithQChar(param1 QChar) float64 {
 func (this *QFontMetricsF) HorizontalAdvance(stringVal string) float64 {
 	stringVal_Cstring := C.CString(stringVal)
 	defer C.free(unsafe.Pointer(stringVal_Cstring))
-	ret := C.QFontMetricsF_HorizontalAdvance(this.h, stringVal_Cstring, C.ulong(len(stringVal)))
+	ret := C.QFontMetricsF_HorizontalAdvance(this.h, stringVal_Cstring, C.size_t(len(stringVal)))
 	return (float64)(ret)
 }
 
@@ -563,7 +563,7 @@ func (this *QFontMetricsF) HorizontalAdvanceWithQChar(param1 QChar) float64 {
 func (this *QFontMetricsF) BoundingRect(stringVal string) *QRectF {
 	stringVal_Cstring := C.CString(stringVal)
 	defer C.free(unsafe.Pointer(stringVal_Cstring))
-	ret := C.QFontMetricsF_BoundingRect(this.h, stringVal_Cstring, C.ulong(len(stringVal)))
+	ret := C.QFontMetricsF_BoundingRect(this.h, stringVal_Cstring, C.size_t(len(stringVal)))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQRectF(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QRectF) {
@@ -587,7 +587,7 @@ func (this *QFontMetricsF) BoundingRectWithQChar(param1 QChar) *QRectF {
 func (this *QFontMetricsF) BoundingRect2(r *QRectF, flags int, stringVal string) *QRectF {
 	stringVal_Cstring := C.CString(stringVal)
 	defer C.free(unsafe.Pointer(stringVal_Cstring))
-	ret := C.QFontMetricsF_BoundingRect2(this.h, r.cPointer(), (C.int)(flags), stringVal_Cstring, C.ulong(len(stringVal)))
+	ret := C.QFontMetricsF_BoundingRect2(this.h, r.cPointer(), (C.int)(flags), stringVal_Cstring, C.size_t(len(stringVal)))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQRectF(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QRectF) {
@@ -600,7 +600,7 @@ func (this *QFontMetricsF) BoundingRect2(r *QRectF, flags int, stringVal string)
 func (this *QFontMetricsF) Size(flags int, str string) *QSizeF {
 	str_Cstring := C.CString(str)
 	defer C.free(unsafe.Pointer(str_Cstring))
-	ret := C.QFontMetricsF_Size(this.h, (C.int)(flags), str_Cstring, C.ulong(len(str)))
+	ret := C.QFontMetricsF_Size(this.h, (C.int)(flags), str_Cstring, C.size_t(len(str)))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQSizeF(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QSizeF) {
@@ -613,7 +613,7 @@ func (this *QFontMetricsF) Size(flags int, str string) *QSizeF {
 func (this *QFontMetricsF) TightBoundingRect(text string) *QRectF {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QFontMetricsF_TightBoundingRect(this.h, text_Cstring, C.ulong(len(text)))
+	ret := C.QFontMetricsF_TightBoundingRect(this.h, text_Cstring, C.size_t(len(text)))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQRectF(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QRectF) {
@@ -628,7 +628,7 @@ func (this *QFontMetricsF) ElidedText(text string, mode uintptr, width float64) 
 	defer C.free(unsafe.Pointer(text_Cstring))
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
-	C.QFontMetricsF_ElidedText(this.h, text_Cstring, C.ulong(len(text)), (C.uintptr_t)(mode), (C.double)(width), &_out, &_out_Strlen)
+	C.QFontMetricsF_ElidedText(this.h, text_Cstring, C.size_t(len(text)), (C.uintptr_t)(mode), (C.double)(width), &_out, &_out_Strlen)
 	ret := C.GoStringN(_out, _out_Strlen)
 	C.free(unsafe.Pointer(_out))
 	return ret
@@ -672,14 +672,14 @@ func (this *QFontMetricsF) OperatorNotEqual(other *QFontMetricsF) bool {
 func (this *QFontMetricsF) HorizontalAdvance2(stringVal string, length int) float64 {
 	stringVal_Cstring := C.CString(stringVal)
 	defer C.free(unsafe.Pointer(stringVal_Cstring))
-	ret := C.QFontMetricsF_HorizontalAdvance2(this.h, stringVal_Cstring, C.ulong(len(stringVal)), (C.int)(length))
+	ret := C.QFontMetricsF_HorizontalAdvance2(this.h, stringVal_Cstring, C.size_t(len(stringVal)), (C.int)(length))
 	return (float64)(ret)
 }
 
 func (this *QFontMetricsF) BoundingRect4(r *QRectF, flags int, stringVal string, tabstops int) *QRectF {
 	stringVal_Cstring := C.CString(stringVal)
 	defer C.free(unsafe.Pointer(stringVal_Cstring))
-	ret := C.QFontMetricsF_BoundingRect4(this.h, r.cPointer(), (C.int)(flags), stringVal_Cstring, C.ulong(len(stringVal)), (C.int)(tabstops))
+	ret := C.QFontMetricsF_BoundingRect4(this.h, r.cPointer(), (C.int)(flags), stringVal_Cstring, C.size_t(len(stringVal)), (C.int)(tabstops))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQRectF(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QRectF) {
@@ -692,7 +692,7 @@ func (this *QFontMetricsF) BoundingRect4(r *QRectF, flags int, stringVal string,
 func (this *QFontMetricsF) BoundingRect5(r *QRectF, flags int, stringVal string, tabstops int, tabarray *int) *QRectF {
 	stringVal_Cstring := C.CString(stringVal)
 	defer C.free(unsafe.Pointer(stringVal_Cstring))
-	ret := C.QFontMetricsF_BoundingRect5(this.h, r.cPointer(), (C.int)(flags), stringVal_Cstring, C.ulong(len(stringVal)), (C.int)(tabstops), (*C.int)(unsafe.Pointer(tabarray)))
+	ret := C.QFontMetricsF_BoundingRect5(this.h, r.cPointer(), (C.int)(flags), stringVal_Cstring, C.size_t(len(stringVal)), (C.int)(tabstops), (*C.int)(unsafe.Pointer(tabarray)))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQRectF(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QRectF) {
@@ -705,7 +705,7 @@ func (this *QFontMetricsF) BoundingRect5(r *QRectF, flags int, stringVal string,
 func (this *QFontMetricsF) Size3(flags int, str string, tabstops int) *QSizeF {
 	str_Cstring := C.CString(str)
 	defer C.free(unsafe.Pointer(str_Cstring))
-	ret := C.QFontMetricsF_Size3(this.h, (C.int)(flags), str_Cstring, C.ulong(len(str)), (C.int)(tabstops))
+	ret := C.QFontMetricsF_Size3(this.h, (C.int)(flags), str_Cstring, C.size_t(len(str)), (C.int)(tabstops))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQSizeF(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QSizeF) {
@@ -718,7 +718,7 @@ func (this *QFontMetricsF) Size3(flags int, str string, tabstops int) *QSizeF {
 func (this *QFontMetricsF) Size4(flags int, str string, tabstops int, tabarray *int) *QSizeF {
 	str_Cstring := C.CString(str)
 	defer C.free(unsafe.Pointer(str_Cstring))
-	ret := C.QFontMetricsF_Size4(this.h, (C.int)(flags), str_Cstring, C.ulong(len(str)), (C.int)(tabstops), (*C.int)(unsafe.Pointer(tabarray)))
+	ret := C.QFontMetricsF_Size4(this.h, (C.int)(flags), str_Cstring, C.size_t(len(str)), (C.int)(tabstops), (*C.int)(unsafe.Pointer(tabarray)))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQSizeF(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QSizeF) {
@@ -733,7 +733,7 @@ func (this *QFontMetricsF) ElidedText4(text string, mode uintptr, width float64,
 	defer C.free(unsafe.Pointer(text_Cstring))
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
-	C.QFontMetricsF_ElidedText4(this.h, text_Cstring, C.ulong(len(text)), (C.uintptr_t)(mode), (C.double)(width), (C.int)(flags), &_out, &_out_Strlen)
+	C.QFontMetricsF_ElidedText4(this.h, text_Cstring, C.size_t(len(text)), (C.uintptr_t)(mode), (C.double)(width), (C.int)(flags), &_out, &_out_Strlen)
 	ret := C.GoStringN(_out, _out_Strlen)
 	C.free(unsafe.Pointer(_out))
 	return ret

@@ -270,7 +270,7 @@ func (this *QTextFormat) SetProperty2(propertyId int, lengths []QTextLength) {
 	for i := range lengths {
 		lengths_CArray[i] = lengths[i].cPointer()
 	}
-	C.QTextFormat_SetProperty2(this.h, (C.int)(propertyId), &lengths_CArray[0], C.ulong(len(lengths)))
+	C.QTextFormat_SetProperty2(this.h, (C.int)(propertyId), &lengths_CArray[0], C.size_t(len(lengths)))
 }
 
 func (this *QTextFormat) PropertyCount() int {
@@ -522,7 +522,7 @@ func (this *QTextCharFormat) Font() *QFont {
 func (this *QTextCharFormat) SetFontFamily(family string) {
 	family_Cstring := C.CString(family)
 	defer C.free(unsafe.Pointer(family_Cstring))
-	C.QTextCharFormat_SetFontFamily(this.h, family_Cstring, C.ulong(len(family)))
+	C.QTextCharFormat_SetFontFamily(this.h, family_Cstring, C.size_t(len(family)))
 }
 
 func (this *QTextCharFormat) FontFamily() string {
@@ -537,16 +537,16 @@ func (this *QTextCharFormat) FontFamily() string {
 func (this *QTextCharFormat) SetFontFamilies(families []string) {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
 	families_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(families))))
-	families_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(families))))
+	families_Lengths := (*[0xffff]C.uint64_t)(C.malloc(C.size_t(8 * len(families))))
 	defer C.free(unsafe.Pointer(families_CArray))
 	defer C.free(unsafe.Pointer(families_Lengths))
 	for i := range families {
 		single_cstring := C.CString(families[i])
 		defer C.free(unsafe.Pointer(single_cstring))
 		families_CArray[i] = single_cstring
-		families_Lengths[i] = (C.size_t)(len(families[i]))
+		families_Lengths[i] = (C.uint64_t)(len(families[i]))
 	}
-	C.QTextCharFormat_SetFontFamilies(this.h, &families_CArray[0], &families_Lengths[0], C.ulong(len(families)))
+	C.QTextCharFormat_SetFontFamilies(this.h, &families_CArray[0], &families_Lengths[0], C.size_t(len(families)))
 }
 
 func (this *QTextCharFormat) FontFamilies() *QVariant {
@@ -563,7 +563,7 @@ func (this *QTextCharFormat) FontFamilies() *QVariant {
 func (this *QTextCharFormat) SetFontStyleName(styleName string) {
 	styleName_Cstring := C.CString(styleName)
 	defer C.free(unsafe.Pointer(styleName_Cstring))
-	C.QTextCharFormat_SetFontStyleName(this.h, styleName_Cstring, C.ulong(len(styleName)))
+	C.QTextCharFormat_SetFontStyleName(this.h, styleName_Cstring, C.size_t(len(styleName)))
 }
 
 func (this *QTextCharFormat) FontStyleName() *QVariant {
@@ -772,7 +772,7 @@ func (this *QTextCharFormat) TextOutline() *QPen {
 func (this *QTextCharFormat) SetToolTip(tip string) {
 	tip_Cstring := C.CString(tip)
 	defer C.free(unsafe.Pointer(tip_Cstring))
-	C.QTextCharFormat_SetToolTip(this.h, tip_Cstring, C.ulong(len(tip)))
+	C.QTextCharFormat_SetToolTip(this.h, tip_Cstring, C.size_t(len(tip)))
 }
 
 func (this *QTextCharFormat) ToolTip() string {
@@ -796,7 +796,7 @@ func (this *QTextCharFormat) IsAnchor() bool {
 func (this *QTextCharFormat) SetAnchorHref(value string) {
 	value_Cstring := C.CString(value)
 	defer C.free(unsafe.Pointer(value_Cstring))
-	C.QTextCharFormat_SetAnchorHref(this.h, value_Cstring, C.ulong(len(value)))
+	C.QTextCharFormat_SetAnchorHref(this.h, value_Cstring, C.size_t(len(value)))
 }
 
 func (this *QTextCharFormat) AnchorHref() string {
@@ -811,7 +811,7 @@ func (this *QTextCharFormat) AnchorHref() string {
 func (this *QTextCharFormat) SetAnchorName(name string) {
 	name_Cstring := C.CString(name)
 	defer C.free(unsafe.Pointer(name_Cstring))
-	C.QTextCharFormat_SetAnchorName(this.h, name_Cstring, C.ulong(len(name)))
+	C.QTextCharFormat_SetAnchorName(this.h, name_Cstring, C.size_t(len(name)))
 }
 
 func (this *QTextCharFormat) AnchorName() string {
@@ -826,16 +826,16 @@ func (this *QTextCharFormat) AnchorName() string {
 func (this *QTextCharFormat) SetAnchorNames(names []string) {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
 	names_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(names))))
-	names_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(names))))
+	names_Lengths := (*[0xffff]C.uint64_t)(C.malloc(C.size_t(8 * len(names))))
 	defer C.free(unsafe.Pointer(names_CArray))
 	defer C.free(unsafe.Pointer(names_Lengths))
 	for i := range names {
 		single_cstring := C.CString(names[i])
 		defer C.free(unsafe.Pointer(single_cstring))
 		names_CArray[i] = single_cstring
-		names_Lengths[i] = (C.size_t)(len(names[i]))
+		names_Lengths[i] = (C.uint64_t)(len(names[i]))
 	}
-	C.QTextCharFormat_SetAnchorNames(this.h, &names_CArray[0], &names_Lengths[0], C.ulong(len(names)))
+	C.QTextCharFormat_SetAnchorNames(this.h, &names_CArray[0], &names_Lengths[0], C.size_t(len(names)))
 }
 
 func (this *QTextCharFormat) AnchorNames() []string {
@@ -1035,7 +1035,7 @@ func (this *QTextBlockFormat) SetTabPositions(tabs []QTextOption__Tab) {
 	for i := range tabs {
 		tabs_CArray[i] = tabs[i].cPointer()
 	}
-	C.QTextBlockFormat_SetTabPositions(this.h, &tabs_CArray[0], C.ulong(len(tabs)))
+	C.QTextBlockFormat_SetTabPositions(this.h, &tabs_CArray[0], C.size_t(len(tabs)))
 }
 
 func (this *QTextBlockFormat) TabPositions() []QTextOption__Tab {
@@ -1125,7 +1125,7 @@ func (this *QTextListFormat) Indent() int {
 func (this *QTextListFormat) SetNumberPrefix(numberPrefix string) {
 	numberPrefix_Cstring := C.CString(numberPrefix)
 	defer C.free(unsafe.Pointer(numberPrefix_Cstring))
-	C.QTextListFormat_SetNumberPrefix(this.h, numberPrefix_Cstring, C.ulong(len(numberPrefix)))
+	C.QTextListFormat_SetNumberPrefix(this.h, numberPrefix_Cstring, C.size_t(len(numberPrefix)))
 }
 
 func (this *QTextListFormat) NumberPrefix() string {
@@ -1140,7 +1140,7 @@ func (this *QTextListFormat) NumberPrefix() string {
 func (this *QTextListFormat) SetNumberSuffix(numberSuffix string) {
 	numberSuffix_Cstring := C.CString(numberSuffix)
 	defer C.free(unsafe.Pointer(numberSuffix_Cstring))
-	C.QTextListFormat_SetNumberSuffix(this.h, numberSuffix_Cstring, C.ulong(len(numberSuffix)))
+	C.QTextListFormat_SetNumberSuffix(this.h, numberSuffix_Cstring, C.size_t(len(numberSuffix)))
 }
 
 func (this *QTextListFormat) NumberSuffix() string {
@@ -1193,7 +1193,7 @@ func (this *QTextImageFormat) IsValid() bool {
 func (this *QTextImageFormat) SetName(name string) {
 	name_Cstring := C.CString(name)
 	defer C.free(unsafe.Pointer(name_Cstring))
-	C.QTextImageFormat_SetName(this.h, name_Cstring, C.ulong(len(name)))
+	C.QTextImageFormat_SetName(this.h, name_Cstring, C.size_t(len(name)))
 }
 
 func (this *QTextImageFormat) Name() string {
@@ -1477,7 +1477,7 @@ func (this *QTextTableFormat) SetColumnWidthConstraints(constraints []QTextLengt
 	for i := range constraints {
 		constraints_CArray[i] = constraints[i].cPointer()
 	}
-	C.QTextTableFormat_SetColumnWidthConstraints(this.h, &constraints_CArray[0], C.ulong(len(constraints)))
+	C.QTextTableFormat_SetColumnWidthConstraints(this.h, &constraints_CArray[0], C.size_t(len(constraints)))
 }
 
 func (this *QTextTableFormat) ColumnWidthConstraints() []QTextLength {

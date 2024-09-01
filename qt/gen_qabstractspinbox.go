@@ -120,7 +120,7 @@ func (this *QAbstractSpinBox) SpecialValueText() string {
 func (this *QAbstractSpinBox) SetSpecialValueText(txt string) {
 	txt_Cstring := C.CString(txt)
 	defer C.free(unsafe.Pointer(txt_Cstring))
-	C.QAbstractSpinBox_SetSpecialValueText(this.h, txt_Cstring, C.ulong(len(txt)))
+	C.QAbstractSpinBox_SetSpecialValueText(this.h, txt_Cstring, C.size_t(len(txt)))
 }
 
 func (this *QAbstractSpinBox) Wrapping() bool {
@@ -231,14 +231,14 @@ func (this *QAbstractSpinBox) InputMethodQuery(param1 uintptr) *QVariant {
 func (this *QAbstractSpinBox) Validate(input string, pos *int) uintptr {
 	input_Cstring := C.CString(input)
 	defer C.free(unsafe.Pointer(input_Cstring))
-	ret := C.QAbstractSpinBox_Validate(this.h, input_Cstring, C.ulong(len(input)), (*C.int)(unsafe.Pointer(pos)))
+	ret := C.QAbstractSpinBox_Validate(this.h, input_Cstring, C.size_t(len(input)), (*C.int)(unsafe.Pointer(pos)))
 	return (uintptr)(ret)
 }
 
 func (this *QAbstractSpinBox) Fixup(input string) {
 	input_Cstring := C.CString(input)
 	defer C.free(unsafe.Pointer(input_Cstring))
-	C.QAbstractSpinBox_Fixup(this.h, input_Cstring, C.ulong(len(input)))
+	C.QAbstractSpinBox_Fixup(this.h, input_Cstring, C.size_t(len(input)))
 }
 
 func (this *QAbstractSpinBox) StepBy(steps int) {

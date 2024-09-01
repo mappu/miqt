@@ -40,7 +40,7 @@ func newQDockWidget_U(h unsafe.Pointer) *QDockWidget {
 func NewQDockWidget(title string) *QDockWidget {
 	title_Cstring := C.CString(title)
 	defer C.free(unsafe.Pointer(title_Cstring))
-	ret := C.QDockWidget_new(title_Cstring, C.ulong(len(title)))
+	ret := C.QDockWidget_new(title_Cstring, C.size_t(len(title)))
 	return newQDockWidget(ret)
 }
 
@@ -54,7 +54,7 @@ func NewQDockWidget2() *QDockWidget {
 func NewQDockWidget3(title string, parent *QWidget) *QDockWidget {
 	title_Cstring := C.CString(title)
 	defer C.free(unsafe.Pointer(title_Cstring))
-	ret := C.QDockWidget_new3(title_Cstring, C.ulong(len(title)), parent.cPointer())
+	ret := C.QDockWidget_new3(title_Cstring, C.size_t(len(title)), parent.cPointer())
 	return newQDockWidget(ret)
 }
 
@@ -62,7 +62,7 @@ func NewQDockWidget3(title string, parent *QWidget) *QDockWidget {
 func NewQDockWidget4(title string, parent *QWidget, flags int) *QDockWidget {
 	title_Cstring := C.CString(title)
 	defer C.free(unsafe.Pointer(title_Cstring))
-	ret := C.QDockWidget_new4(title_Cstring, C.ulong(len(title)), parent.cPointer(), (C.int)(flags))
+	ret := C.QDockWidget_new4(title_Cstring, C.size_t(len(title)), parent.cPointer(), (C.int)(flags))
 	return newQDockWidget(ret)
 }
 

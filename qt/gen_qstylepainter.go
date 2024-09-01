@@ -78,7 +78,7 @@ func (this *QStylePainter) DrawComplexControl(cc uintptr, opt *QStyleOptionCompl
 func (this *QStylePainter) DrawItemText(r *QRect, flags int, pal *QPalette, enabled bool, text string) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QStylePainter_DrawItemText(this.h, r.cPointer(), (C.int)(flags), pal.cPointer(), (C.bool)(enabled), text_Cstring, C.ulong(len(text)))
+	C.QStylePainter_DrawItemText(this.h, r.cPointer(), (C.int)(flags), pal.cPointer(), (C.bool)(enabled), text_Cstring, C.size_t(len(text)))
 }
 
 func (this *QStylePainter) DrawItemPixmap(r *QRect, flags int, pixmap *QPixmap) {
@@ -93,7 +93,7 @@ func (this *QStylePainter) Style() *QStyle {
 func (this *QStylePainter) DrawItemText6(r *QRect, flags int, pal *QPalette, enabled bool, text string, textRole uintptr) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QStylePainter_DrawItemText6(this.h, r.cPointer(), (C.int)(flags), pal.cPointer(), (C.bool)(enabled), text_Cstring, C.ulong(len(text)), (C.uintptr_t)(textRole))
+	C.QStylePainter_DrawItemText6(this.h, r.cPointer(), (C.int)(flags), pal.cPointer(), (C.bool)(enabled), text_Cstring, C.size_t(len(text)), (C.uintptr_t)(textRole))
 }
 
 func (this *QStylePainter) Delete() {

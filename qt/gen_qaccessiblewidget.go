@@ -53,7 +53,7 @@ func NewQAccessibleWidget2(o *QWidget, r uintptr) *QAccessibleWidget {
 func NewQAccessibleWidget3(o *QWidget, r uintptr, name string) *QAccessibleWidget {
 	name_Cstring := C.CString(name)
 	defer C.free(unsafe.Pointer(name_Cstring))
-	ret := C.QAccessibleWidget_new3(o.cPointer(), (C.uintptr_t)(r), name_Cstring, C.ulong(len(name)))
+	ret := C.QAccessibleWidget_new3(o.cPointer(), (C.uintptr_t)(r), name_Cstring, C.size_t(len(name)))
 	return newQAccessibleWidget(ret)
 }
 
@@ -168,7 +168,7 @@ func (this *QAccessibleWidget) ActionNames() []string {
 func (this *QAccessibleWidget) DoAction(actionName string) {
 	actionName_Cstring := C.CString(actionName)
 	defer C.free(unsafe.Pointer(actionName_Cstring))
-	C.QAccessibleWidget_DoAction(this.h, actionName_Cstring, C.ulong(len(actionName)))
+	C.QAccessibleWidget_DoAction(this.h, actionName_Cstring, C.size_t(len(actionName)))
 }
 
 func (this *QAccessibleWidget) KeyBindingsForAction(actionName string) []string {
@@ -177,7 +177,7 @@ func (this *QAccessibleWidget) KeyBindingsForAction(actionName string) []string 
 	var _out **C.char = nil
 	var _out_Lengths *C.int = nil
 	var _out_len C.size_t = 0
-	C.QAccessibleWidget_KeyBindingsForAction(this.h, actionName_Cstring, C.ulong(len(actionName)), &_out, &_out_Lengths, &_out_len)
+	C.QAccessibleWidget_KeyBindingsForAction(this.h, actionName_Cstring, C.size_t(len(actionName)), &_out, &_out_Lengths, &_out_len)
 	ret := make([]string, int(_out_len))
 	_outCast := (*[0xffff]*C.char)(unsafe.Pointer(_out)) // hey ya
 	_out_LengthsCast := (*[0xffff]C.int)(unsafe.Pointer(_out_Lengths))

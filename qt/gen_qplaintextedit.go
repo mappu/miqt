@@ -47,7 +47,7 @@ func NewQPlainTextEdit() *QPlainTextEdit {
 func NewQPlainTextEdit2(text string) *QPlainTextEdit {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QPlainTextEdit_new2(text_Cstring, C.ulong(len(text)))
+	ret := C.QPlainTextEdit_new2(text_Cstring, C.size_t(len(text)))
 	return newQPlainTextEdit(ret)
 }
 
@@ -61,7 +61,7 @@ func NewQPlainTextEdit3(parent *QWidget) *QPlainTextEdit {
 func NewQPlainTextEdit4(text string, parent *QWidget) *QPlainTextEdit {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QPlainTextEdit_new4(text_Cstring, C.ulong(len(text)), parent.cPointer())
+	ret := C.QPlainTextEdit_new4(text_Cstring, C.size_t(len(text)), parent.cPointer())
 	return newQPlainTextEdit(ret)
 }
 
@@ -104,7 +104,7 @@ func (this *QPlainTextEdit) Document() *QTextDocument {
 func (this *QPlainTextEdit) SetPlaceholderText(placeholderText string) {
 	placeholderText_Cstring := C.CString(placeholderText)
 	defer C.free(unsafe.Pointer(placeholderText_Cstring))
-	C.QPlainTextEdit_SetPlaceholderText(this.h, placeholderText_Cstring, C.ulong(len(placeholderText)))
+	C.QPlainTextEdit_SetPlaceholderText(this.h, placeholderText_Cstring, C.size_t(len(placeholderText)))
 }
 
 func (this *QPlainTextEdit) PlaceholderText() string {
@@ -180,7 +180,7 @@ func (this *QPlainTextEdit) SetTabChangesFocus(b bool) {
 func (this *QPlainTextEdit) SetDocumentTitle(title string) {
 	title_Cstring := C.CString(title)
 	defer C.free(unsafe.Pointer(title_Cstring))
-	C.QPlainTextEdit_SetDocumentTitle(this.h, title_Cstring, C.ulong(len(title)))
+	C.QPlainTextEdit_SetDocumentTitle(this.h, title_Cstring, C.size_t(len(title)))
 }
 
 func (this *QPlainTextEdit) DocumentTitle() string {
@@ -249,7 +249,7 @@ func (this *QPlainTextEdit) CenterOnScroll() bool {
 func (this *QPlainTextEdit) Find(exp string) bool {
 	exp_Cstring := C.CString(exp)
 	defer C.free(unsafe.Pointer(exp_Cstring))
-	ret := C.QPlainTextEdit_Find(this.h, exp_Cstring, C.ulong(len(exp)))
+	ret := C.QPlainTextEdit_Find(this.h, exp_Cstring, C.size_t(len(exp)))
 	return (bool)(ret)
 }
 
@@ -382,7 +382,7 @@ func (this *QPlainTextEdit) SetExtraSelections(selections []QTextEdit__ExtraSele
 	for i := range selections {
 		selections_CArray[i] = selections[i].cPointer()
 	}
-	C.QPlainTextEdit_SetExtraSelections(this.h, &selections_CArray[0], C.ulong(len(selections)))
+	C.QPlainTextEdit_SetExtraSelections(this.h, &selections_CArray[0], C.size_t(len(selections)))
 }
 
 func (this *QPlainTextEdit) ExtraSelections() []QTextEdit__ExtraSelection {
@@ -441,7 +441,7 @@ func (this *QPlainTextEdit) InputMethodQuery2(query uintptr, argument QVariant) 
 func (this *QPlainTextEdit) SetPlainText(text string) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QPlainTextEdit_SetPlainText(this.h, text_Cstring, C.ulong(len(text)))
+	C.QPlainTextEdit_SetPlainText(this.h, text_Cstring, C.size_t(len(text)))
 }
 
 func (this *QPlainTextEdit) Cut() {
@@ -475,19 +475,19 @@ func (this *QPlainTextEdit) SelectAll() {
 func (this *QPlainTextEdit) InsertPlainText(text string) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QPlainTextEdit_InsertPlainText(this.h, text_Cstring, C.ulong(len(text)))
+	C.QPlainTextEdit_InsertPlainText(this.h, text_Cstring, C.size_t(len(text)))
 }
 
 func (this *QPlainTextEdit) AppendPlainText(text string) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QPlainTextEdit_AppendPlainText(this.h, text_Cstring, C.ulong(len(text)))
+	C.QPlainTextEdit_AppendPlainText(this.h, text_Cstring, C.size_t(len(text)))
 }
 
 func (this *QPlainTextEdit) AppendHtml(html string) {
 	html_Cstring := C.CString(html)
 	defer C.free(unsafe.Pointer(html_Cstring))
-	C.QPlainTextEdit_AppendHtml(this.h, html_Cstring, C.ulong(len(html)))
+	C.QPlainTextEdit_AppendHtml(this.h, html_Cstring, C.size_t(len(html)))
 }
 
 func (this *QPlainTextEdit) CenterCursor() {
@@ -665,7 +665,7 @@ func QPlainTextEdit_TrUtf83(s string, c string, n int) string {
 func (this *QPlainTextEdit) Find22(exp string, options int) bool {
 	exp_Cstring := C.CString(exp)
 	defer C.free(unsafe.Pointer(exp_Cstring))
-	ret := C.QPlainTextEdit_Find22(this.h, exp_Cstring, C.ulong(len(exp)), (C.int)(options))
+	ret := C.QPlainTextEdit_Find22(this.h, exp_Cstring, C.size_t(len(exp)), (C.int)(options))
 	return (bool)(ret)
 }
 

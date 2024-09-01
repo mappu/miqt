@@ -45,7 +45,7 @@ func NewQLibrary() *QLibrary {
 func NewQLibrary2(fileName string) *QLibrary {
 	fileName_Cstring := C.CString(fileName)
 	defer C.free(unsafe.Pointer(fileName_Cstring))
-	ret := C.QLibrary_new2(fileName_Cstring, C.ulong(len(fileName)))
+	ret := C.QLibrary_new2(fileName_Cstring, C.size_t(len(fileName)))
 	return newQLibrary(ret)
 }
 
@@ -53,7 +53,7 @@ func NewQLibrary2(fileName string) *QLibrary {
 func NewQLibrary3(fileName string, verNum int) *QLibrary {
 	fileName_Cstring := C.CString(fileName)
 	defer C.free(unsafe.Pointer(fileName_Cstring))
-	ret := C.QLibrary_new3(fileName_Cstring, C.ulong(len(fileName)), (C.int)(verNum))
+	ret := C.QLibrary_new3(fileName_Cstring, C.size_t(len(fileName)), (C.int)(verNum))
 	return newQLibrary(ret)
 }
 
@@ -63,7 +63,7 @@ func NewQLibrary4(fileName string, version string) *QLibrary {
 	defer C.free(unsafe.Pointer(fileName_Cstring))
 	version_Cstring := C.CString(version)
 	defer C.free(unsafe.Pointer(version_Cstring))
-	ret := C.QLibrary_new4(fileName_Cstring, C.ulong(len(fileName)), version_Cstring, C.ulong(len(version)))
+	ret := C.QLibrary_new4(fileName_Cstring, C.size_t(len(fileName)), version_Cstring, C.size_t(len(version)))
 	return newQLibrary(ret)
 }
 
@@ -77,7 +77,7 @@ func NewQLibrary5(parent *QObject) *QLibrary {
 func NewQLibrary6(fileName string, parent *QObject) *QLibrary {
 	fileName_Cstring := C.CString(fileName)
 	defer C.free(unsafe.Pointer(fileName_Cstring))
-	ret := C.QLibrary_new6(fileName_Cstring, C.ulong(len(fileName)), parent.cPointer())
+	ret := C.QLibrary_new6(fileName_Cstring, C.size_t(len(fileName)), parent.cPointer())
 	return newQLibrary(ret)
 }
 
@@ -85,7 +85,7 @@ func NewQLibrary6(fileName string, parent *QObject) *QLibrary {
 func NewQLibrary7(fileName string, verNum int, parent *QObject) *QLibrary {
 	fileName_Cstring := C.CString(fileName)
 	defer C.free(unsafe.Pointer(fileName_Cstring))
-	ret := C.QLibrary_new7(fileName_Cstring, C.ulong(len(fileName)), (C.int)(verNum), parent.cPointer())
+	ret := C.QLibrary_new7(fileName_Cstring, C.size_t(len(fileName)), (C.int)(verNum), parent.cPointer())
 	return newQLibrary(ret)
 }
 
@@ -95,7 +95,7 @@ func NewQLibrary8(fileName string, version string, parent *QObject) *QLibrary {
 	defer C.free(unsafe.Pointer(fileName_Cstring))
 	version_Cstring := C.CString(version)
 	defer C.free(unsafe.Pointer(version_Cstring))
-	ret := C.QLibrary_new8(fileName_Cstring, C.ulong(len(fileName)), version_Cstring, C.ulong(len(version)), parent.cPointer())
+	ret := C.QLibrary_new8(fileName_Cstring, C.size_t(len(fileName)), version_Cstring, C.size_t(len(version)), parent.cPointer())
 	return newQLibrary(ret)
 }
 
@@ -144,14 +144,14 @@ func (this *QLibrary) IsLoaded() bool {
 func QLibrary_IsLibrary(fileName string) bool {
 	fileName_Cstring := C.CString(fileName)
 	defer C.free(unsafe.Pointer(fileName_Cstring))
-	ret := C.QLibrary_IsLibrary(fileName_Cstring, C.ulong(len(fileName)))
+	ret := C.QLibrary_IsLibrary(fileName_Cstring, C.size_t(len(fileName)))
 	return (bool)(ret)
 }
 
 func (this *QLibrary) SetFileName(fileName string) {
 	fileName_Cstring := C.CString(fileName)
 	defer C.free(unsafe.Pointer(fileName_Cstring))
-	C.QLibrary_SetFileName(this.h, fileName_Cstring, C.ulong(len(fileName)))
+	C.QLibrary_SetFileName(this.h, fileName_Cstring, C.size_t(len(fileName)))
 }
 
 func (this *QLibrary) FileName() string {
@@ -166,7 +166,7 @@ func (this *QLibrary) FileName() string {
 func (this *QLibrary) SetFileNameAndVersion(fileName string, verNum int) {
 	fileName_Cstring := C.CString(fileName)
 	defer C.free(unsafe.Pointer(fileName_Cstring))
-	C.QLibrary_SetFileNameAndVersion(this.h, fileName_Cstring, C.ulong(len(fileName)), (C.int)(verNum))
+	C.QLibrary_SetFileNameAndVersion(this.h, fileName_Cstring, C.size_t(len(fileName)), (C.int)(verNum))
 }
 
 func (this *QLibrary) SetFileNameAndVersion2(fileName string, version string) {
@@ -174,7 +174,7 @@ func (this *QLibrary) SetFileNameAndVersion2(fileName string, version string) {
 	defer C.free(unsafe.Pointer(fileName_Cstring))
 	version_Cstring := C.CString(version)
 	defer C.free(unsafe.Pointer(version_Cstring))
-	C.QLibrary_SetFileNameAndVersion2(this.h, fileName_Cstring, C.ulong(len(fileName)), version_Cstring, C.ulong(len(version)))
+	C.QLibrary_SetFileNameAndVersion2(this.h, fileName_Cstring, C.size_t(len(fileName)), version_Cstring, C.size_t(len(version)))
 }
 
 func (this *QLibrary) ErrorString() string {

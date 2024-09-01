@@ -171,7 +171,7 @@ func (this *QAccessibleInterface) Text(t uintptr) string {
 func (this *QAccessibleInterface) SetText(t uintptr, text string) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QAccessibleInterface_SetText(this.h, (C.uintptr_t)(t), text_Cstring, C.ulong(len(text)))
+	C.QAccessibleInterface_SetText(this.h, (C.uintptr_t)(t), text_Cstring, C.size_t(len(text)))
 }
 
 func (this *QAccessibleInterface) Rect() *QRect {
@@ -417,13 +417,13 @@ func (this *QAccessibleEditableTextInterface) DeleteText(startOffset int, endOff
 func (this *QAccessibleEditableTextInterface) InsertText(offset int, text string) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QAccessibleEditableTextInterface_InsertText(this.h, (C.int)(offset), text_Cstring, C.ulong(len(text)))
+	C.QAccessibleEditableTextInterface_InsertText(this.h, (C.int)(offset), text_Cstring, C.size_t(len(text)))
 }
 
 func (this *QAccessibleEditableTextInterface) ReplaceText(startOffset int, endOffset int, text string) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QAccessibleEditableTextInterface_ReplaceText(this.h, (C.int)(startOffset), (C.int)(endOffset), text_Cstring, C.ulong(len(text)))
+	C.QAccessibleEditableTextInterface_ReplaceText(this.h, (C.int)(startOffset), (C.int)(endOffset), text_Cstring, C.size_t(len(text)))
 }
 
 func (this *QAccessibleEditableTextInterface) OperatorAssign(param1 *QAccessibleEditableTextInterface) {
@@ -819,7 +819,7 @@ func (this *QAccessibleActionInterface) LocalizedActionName(name string) string 
 	defer C.free(unsafe.Pointer(name_Cstring))
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
-	C.QAccessibleActionInterface_LocalizedActionName(this.h, name_Cstring, C.ulong(len(name)), &_out, &_out_Strlen)
+	C.QAccessibleActionInterface_LocalizedActionName(this.h, name_Cstring, C.size_t(len(name)), &_out, &_out_Strlen)
 	ret := C.GoStringN(_out, _out_Strlen)
 	C.free(unsafe.Pointer(_out))
 	return ret
@@ -830,7 +830,7 @@ func (this *QAccessibleActionInterface) LocalizedActionDescription(name string) 
 	defer C.free(unsafe.Pointer(name_Cstring))
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
-	C.QAccessibleActionInterface_LocalizedActionDescription(this.h, name_Cstring, C.ulong(len(name)), &_out, &_out_Strlen)
+	C.QAccessibleActionInterface_LocalizedActionDescription(this.h, name_Cstring, C.size_t(len(name)), &_out, &_out_Strlen)
 	ret := C.GoStringN(_out, _out_Strlen)
 	C.free(unsafe.Pointer(_out))
 	return ret
@@ -839,7 +839,7 @@ func (this *QAccessibleActionInterface) LocalizedActionDescription(name string) 
 func (this *QAccessibleActionInterface) DoAction(actionName string) {
 	actionName_Cstring := C.CString(actionName)
 	defer C.free(unsafe.Pointer(actionName_Cstring))
-	C.QAccessibleActionInterface_DoAction(this.h, actionName_Cstring, C.ulong(len(actionName)))
+	C.QAccessibleActionInterface_DoAction(this.h, actionName_Cstring, C.size_t(len(actionName)))
 }
 
 func (this *QAccessibleActionInterface) KeyBindingsForAction(actionName string) []string {
@@ -848,7 +848,7 @@ func (this *QAccessibleActionInterface) KeyBindingsForAction(actionName string) 
 	var _out **C.char = nil
 	var _out_Lengths *C.int = nil
 	var _out_len C.size_t = 0
-	C.QAccessibleActionInterface_KeyBindingsForAction(this.h, actionName_Cstring, C.ulong(len(actionName)), &_out, &_out_Lengths, &_out_len)
+	C.QAccessibleActionInterface_KeyBindingsForAction(this.h, actionName_Cstring, C.size_t(len(actionName)), &_out, &_out_Lengths, &_out_len)
 	ret := make([]string, int(_out_len))
 	_outCast := (*[0xffff]*C.char)(unsafe.Pointer(_out)) // hey ya
 	_out_LengthsCast := (*[0xffff]C.int)(unsafe.Pointer(_out_Lengths))
@@ -1333,7 +1333,7 @@ func newQAccessibleTextInsertEvent_U(h unsafe.Pointer) *QAccessibleTextInsertEve
 func NewQAccessibleTextInsertEvent(obj *QObject, position int, text string) *QAccessibleTextInsertEvent {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QAccessibleTextInsertEvent_new(obj.cPointer(), (C.int)(position), text_Cstring, C.ulong(len(text)))
+	ret := C.QAccessibleTextInsertEvent_new(obj.cPointer(), (C.int)(position), text_Cstring, C.size_t(len(text)))
 	return newQAccessibleTextInsertEvent(ret)
 }
 
@@ -1341,7 +1341,7 @@ func NewQAccessibleTextInsertEvent(obj *QObject, position int, text string) *QAc
 func NewQAccessibleTextInsertEvent2(iface *QAccessibleInterface, position int, text string) *QAccessibleTextInsertEvent {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QAccessibleTextInsertEvent_new2(iface.cPointer(), (C.int)(position), text_Cstring, C.ulong(len(text)))
+	ret := C.QAccessibleTextInsertEvent_new2(iface.cPointer(), (C.int)(position), text_Cstring, C.size_t(len(text)))
 	return newQAccessibleTextInsertEvent(ret)
 }
 
@@ -1390,7 +1390,7 @@ func newQAccessibleTextRemoveEvent_U(h unsafe.Pointer) *QAccessibleTextRemoveEve
 func NewQAccessibleTextRemoveEvent(obj *QObject, position int, text string) *QAccessibleTextRemoveEvent {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QAccessibleTextRemoveEvent_new(obj.cPointer(), (C.int)(position), text_Cstring, C.ulong(len(text)))
+	ret := C.QAccessibleTextRemoveEvent_new(obj.cPointer(), (C.int)(position), text_Cstring, C.size_t(len(text)))
 	return newQAccessibleTextRemoveEvent(ret)
 }
 
@@ -1398,7 +1398,7 @@ func NewQAccessibleTextRemoveEvent(obj *QObject, position int, text string) *QAc
 func NewQAccessibleTextRemoveEvent2(iface *QAccessibleInterface, position int, text string) *QAccessibleTextRemoveEvent {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QAccessibleTextRemoveEvent_new2(iface.cPointer(), (C.int)(position), text_Cstring, C.ulong(len(text)))
+	ret := C.QAccessibleTextRemoveEvent_new2(iface.cPointer(), (C.int)(position), text_Cstring, C.size_t(len(text)))
 	return newQAccessibleTextRemoveEvent(ret)
 }
 
@@ -1449,7 +1449,7 @@ func NewQAccessibleTextUpdateEvent(obj *QObject, position int, oldText string, t
 	defer C.free(unsafe.Pointer(oldText_Cstring))
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QAccessibleTextUpdateEvent_new(obj.cPointer(), (C.int)(position), oldText_Cstring, C.ulong(len(oldText)), text_Cstring, C.ulong(len(text)))
+	ret := C.QAccessibleTextUpdateEvent_new(obj.cPointer(), (C.int)(position), oldText_Cstring, C.size_t(len(oldText)), text_Cstring, C.size_t(len(text)))
 	return newQAccessibleTextUpdateEvent(ret)
 }
 
@@ -1459,7 +1459,7 @@ func NewQAccessibleTextUpdateEvent2(iface *QAccessibleInterface, position int, o
 	defer C.free(unsafe.Pointer(oldText_Cstring))
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QAccessibleTextUpdateEvent_new2(iface.cPointer(), (C.int)(position), oldText_Cstring, C.ulong(len(oldText)), text_Cstring, C.ulong(len(text)))
+	ret := C.QAccessibleTextUpdateEvent_new2(iface.cPointer(), (C.int)(position), oldText_Cstring, C.size_t(len(oldText)), text_Cstring, C.size_t(len(text)))
 	return newQAccessibleTextUpdateEvent(ret)
 }
 

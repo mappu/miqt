@@ -83,7 +83,7 @@ func (this *QCommandLineParser) AddOptions(options []QCommandLineOption) bool {
 	for i := range options {
 		options_CArray[i] = options[i].cPointer()
 	}
-	ret := C.QCommandLineParser_AddOptions(this.h, &options_CArray[0], C.ulong(len(options)))
+	ret := C.QCommandLineParser_AddOptions(this.h, &options_CArray[0], C.size_t(len(options)))
 	return (bool)(ret)
 }
 
@@ -112,7 +112,7 @@ func (this *QCommandLineParser) AddHelpOption() *QCommandLineOption {
 func (this *QCommandLineParser) SetApplicationDescription(description string) {
 	description_Cstring := C.CString(description)
 	defer C.free(unsafe.Pointer(description_Cstring))
-	C.QCommandLineParser_SetApplicationDescription(this.h, description_Cstring, C.ulong(len(description)))
+	C.QCommandLineParser_SetApplicationDescription(this.h, description_Cstring, C.size_t(len(description)))
 }
 
 func (this *QCommandLineParser) ApplicationDescription() string {
@@ -129,7 +129,7 @@ func (this *QCommandLineParser) AddPositionalArgument(name string, description s
 	defer C.free(unsafe.Pointer(name_Cstring))
 	description_Cstring := C.CString(description)
 	defer C.free(unsafe.Pointer(description_Cstring))
-	C.QCommandLineParser_AddPositionalArgument(this.h, name_Cstring, C.ulong(len(name)), description_Cstring, C.ulong(len(description)))
+	C.QCommandLineParser_AddPositionalArgument(this.h, name_Cstring, C.size_t(len(name)), description_Cstring, C.size_t(len(description)))
 }
 
 func (this *QCommandLineParser) ClearPositionalArguments() {
@@ -139,16 +139,16 @@ func (this *QCommandLineParser) ClearPositionalArguments() {
 func (this *QCommandLineParser) Process(arguments []string) {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
 	arguments_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(arguments))))
-	arguments_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(arguments))))
+	arguments_Lengths := (*[0xffff]C.uint64_t)(C.malloc(C.size_t(8 * len(arguments))))
 	defer C.free(unsafe.Pointer(arguments_CArray))
 	defer C.free(unsafe.Pointer(arguments_Lengths))
 	for i := range arguments {
 		single_cstring := C.CString(arguments[i])
 		defer C.free(unsafe.Pointer(single_cstring))
 		arguments_CArray[i] = single_cstring
-		arguments_Lengths[i] = (C.size_t)(len(arguments[i]))
+		arguments_Lengths[i] = (C.uint64_t)(len(arguments[i]))
 	}
-	C.QCommandLineParser_Process(this.h, &arguments_CArray[0], &arguments_Lengths[0], C.ulong(len(arguments)))
+	C.QCommandLineParser_Process(this.h, &arguments_CArray[0], &arguments_Lengths[0], C.size_t(len(arguments)))
 }
 
 func (this *QCommandLineParser) ProcessWithApp(app *QCoreApplication) {
@@ -158,16 +158,16 @@ func (this *QCommandLineParser) ProcessWithApp(app *QCoreApplication) {
 func (this *QCommandLineParser) Parse(arguments []string) bool {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
 	arguments_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(arguments))))
-	arguments_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(arguments))))
+	arguments_Lengths := (*[0xffff]C.uint64_t)(C.malloc(C.size_t(8 * len(arguments))))
 	defer C.free(unsafe.Pointer(arguments_CArray))
 	defer C.free(unsafe.Pointer(arguments_Lengths))
 	for i := range arguments {
 		single_cstring := C.CString(arguments[i])
 		defer C.free(unsafe.Pointer(single_cstring))
 		arguments_CArray[i] = single_cstring
-		arguments_Lengths[i] = (C.size_t)(len(arguments[i]))
+		arguments_Lengths[i] = (C.uint64_t)(len(arguments[i]))
 	}
-	ret := C.QCommandLineParser_Parse(this.h, &arguments_CArray[0], &arguments_Lengths[0], C.ulong(len(arguments)))
+	ret := C.QCommandLineParser_Parse(this.h, &arguments_CArray[0], &arguments_Lengths[0], C.size_t(len(arguments)))
 	return (bool)(ret)
 }
 
@@ -183,7 +183,7 @@ func (this *QCommandLineParser) ErrorText() string {
 func (this *QCommandLineParser) IsSet(name string) bool {
 	name_Cstring := C.CString(name)
 	defer C.free(unsafe.Pointer(name_Cstring))
-	ret := C.QCommandLineParser_IsSet(this.h, name_Cstring, C.ulong(len(name)))
+	ret := C.QCommandLineParser_IsSet(this.h, name_Cstring, C.size_t(len(name)))
 	return (bool)(ret)
 }
 
@@ -192,7 +192,7 @@ func (this *QCommandLineParser) Value(name string) string {
 	defer C.free(unsafe.Pointer(name_Cstring))
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
-	C.QCommandLineParser_Value(this.h, name_Cstring, C.ulong(len(name)), &_out, &_out_Strlen)
+	C.QCommandLineParser_Value(this.h, name_Cstring, C.size_t(len(name)), &_out, &_out_Strlen)
 	ret := C.GoStringN(_out, _out_Strlen)
 	C.free(unsafe.Pointer(_out))
 	return ret
@@ -204,7 +204,7 @@ func (this *QCommandLineParser) Values(name string) []string {
 	var _out **C.char = nil
 	var _out_Lengths *C.int = nil
 	var _out_len C.size_t = 0
-	C.QCommandLineParser_Values(this.h, name_Cstring, C.ulong(len(name)), &_out, &_out_Lengths, &_out_len)
+	C.QCommandLineParser_Values(this.h, name_Cstring, C.size_t(len(name)), &_out, &_out_Lengths, &_out_len)
 	ret := make([]string, int(_out_len))
 	_outCast := (*[0xffff]*C.char)(unsafe.Pointer(_out)) // hey ya
 	_out_LengthsCast := (*[0xffff]C.int)(unsafe.Pointer(_out_Lengths))
@@ -357,7 +357,7 @@ func (this *QCommandLineParser) AddPositionalArgument3(name string, description 
 	defer C.free(unsafe.Pointer(description_Cstring))
 	syntax_Cstring := C.CString(syntax)
 	defer C.free(unsafe.Pointer(syntax_Cstring))
-	C.QCommandLineParser_AddPositionalArgument3(this.h, name_Cstring, C.ulong(len(name)), description_Cstring, C.ulong(len(description)), syntax_Cstring, C.ulong(len(syntax)))
+	C.QCommandLineParser_AddPositionalArgument3(this.h, name_Cstring, C.size_t(len(name)), description_Cstring, C.size_t(len(description)), syntax_Cstring, C.size_t(len(syntax)))
 }
 
 func (this *QCommandLineParser) Delete() {

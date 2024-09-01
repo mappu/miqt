@@ -266,7 +266,7 @@ func (this *QListView) IndexesMoved(indexes []QModelIndex) {
 	for i := range indexes {
 		indexes_CArray[i] = indexes[i].cPointer()
 	}
-	C.QListView_IndexesMoved(this.h, &indexes_CArray[0], C.ulong(len(indexes)))
+	C.QListView_IndexesMoved(this.h, &indexes_CArray[0], C.size_t(len(indexes)))
 }
 
 func (this *QListView) OnIndexesMoved(slot func()) {

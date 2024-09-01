@@ -45,7 +45,7 @@ func NewQFileInfo() *QFileInfo {
 func NewQFileInfo2(file string) *QFileInfo {
 	file_Cstring := C.CString(file)
 	defer C.free(unsafe.Pointer(file_Cstring))
-	ret := C.QFileInfo_new2(file_Cstring, C.ulong(len(file)))
+	ret := C.QFileInfo_new2(file_Cstring, C.size_t(len(file)))
 	return newQFileInfo(ret)
 }
 
@@ -59,7 +59,7 @@ func NewQFileInfo3(file *QFile) *QFileInfo {
 func NewQFileInfo4(dir *QDir, file string) *QFileInfo {
 	file_Cstring := C.CString(file)
 	defer C.free(unsafe.Pointer(file_Cstring))
-	ret := C.QFileInfo_new4(dir.cPointer(), file_Cstring, C.ulong(len(file)))
+	ret := C.QFileInfo_new4(dir.cPointer(), file_Cstring, C.size_t(len(file)))
 	return newQFileInfo(ret)
 }
 
@@ -90,7 +90,7 @@ func (this *QFileInfo) OperatorNotEqual(fileinfo *QFileInfo) bool {
 func (this *QFileInfo) SetFile(file string) {
 	file_Cstring := C.CString(file)
 	defer C.free(unsafe.Pointer(file_Cstring))
-	C.QFileInfo_SetFile(this.h, file_Cstring, C.ulong(len(file)))
+	C.QFileInfo_SetFile(this.h, file_Cstring, C.size_t(len(file)))
 }
 
 func (this *QFileInfo) SetFileWithFile(file *QFile) {
@@ -100,7 +100,7 @@ func (this *QFileInfo) SetFileWithFile(file *QFile) {
 func (this *QFileInfo) SetFile2(dir *QDir, file string) {
 	file_Cstring := C.CString(file)
 	defer C.free(unsafe.Pointer(file_Cstring))
-	C.QFileInfo_SetFile2(this.h, dir.cPointer(), file_Cstring, C.ulong(len(file)))
+	C.QFileInfo_SetFile2(this.h, dir.cPointer(), file_Cstring, C.size_t(len(file)))
 }
 
 func (this *QFileInfo) Exists() bool {
@@ -111,7 +111,7 @@ func (this *QFileInfo) Exists() bool {
 func QFileInfo_ExistsWithFile(file string) bool {
 	file_Cstring := C.CString(file)
 	defer C.free(unsafe.Pointer(file_Cstring))
-	ret := C.QFileInfo_ExistsWithFile(file_Cstring, C.ulong(len(file)))
+	ret := C.QFileInfo_ExistsWithFile(file_Cstring, C.size_t(len(file)))
 	return (bool)(ret)
 }
 

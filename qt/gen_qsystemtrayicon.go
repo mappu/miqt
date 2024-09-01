@@ -124,7 +124,7 @@ func (this *QSystemTrayIcon) ToolTip() string {
 func (this *QSystemTrayIcon) SetToolTip(tip string) {
 	tip_Cstring := C.CString(tip)
 	defer C.free(unsafe.Pointer(tip_Cstring))
-	C.QSystemTrayIcon_SetToolTip(this.h, tip_Cstring, C.ulong(len(tip)))
+	C.QSystemTrayIcon_SetToolTip(this.h, tip_Cstring, C.size_t(len(tip)))
 }
 
 func QSystemTrayIcon_IsSystemTrayAvailable() bool {
@@ -170,7 +170,7 @@ func (this *QSystemTrayIcon) ShowMessage(title string, msg string, icon *QIcon) 
 	defer C.free(unsafe.Pointer(title_Cstring))
 	msg_Cstring := C.CString(msg)
 	defer C.free(unsafe.Pointer(msg_Cstring))
-	C.QSystemTrayIcon_ShowMessage(this.h, title_Cstring, C.ulong(len(title)), msg_Cstring, C.ulong(len(msg)), icon.cPointer())
+	C.QSystemTrayIcon_ShowMessage(this.h, title_Cstring, C.size_t(len(title)), msg_Cstring, C.size_t(len(msg)), icon.cPointer())
 }
 
 func (this *QSystemTrayIcon) ShowMessage2(title string, msg string) {
@@ -178,7 +178,7 @@ func (this *QSystemTrayIcon) ShowMessage2(title string, msg string) {
 	defer C.free(unsafe.Pointer(title_Cstring))
 	msg_Cstring := C.CString(msg)
 	defer C.free(unsafe.Pointer(msg_Cstring))
-	C.QSystemTrayIcon_ShowMessage2(this.h, title_Cstring, C.ulong(len(title)), msg_Cstring, C.ulong(len(msg)))
+	C.QSystemTrayIcon_ShowMessage2(this.h, title_Cstring, C.size_t(len(title)), msg_Cstring, C.size_t(len(msg)))
 }
 
 func (this *QSystemTrayIcon) Activated(reason uintptr) {
@@ -262,7 +262,7 @@ func (this *QSystemTrayIcon) ShowMessage4(title string, msg string, icon *QIcon,
 	defer C.free(unsafe.Pointer(title_Cstring))
 	msg_Cstring := C.CString(msg)
 	defer C.free(unsafe.Pointer(msg_Cstring))
-	C.QSystemTrayIcon_ShowMessage4(this.h, title_Cstring, C.ulong(len(title)), msg_Cstring, C.ulong(len(msg)), icon.cPointer(), (C.int)(msecs))
+	C.QSystemTrayIcon_ShowMessage4(this.h, title_Cstring, C.size_t(len(title)), msg_Cstring, C.size_t(len(msg)), icon.cPointer(), (C.int)(msecs))
 }
 
 func (this *QSystemTrayIcon) ShowMessage3(title string, msg string, icon uintptr) {
@@ -270,7 +270,7 @@ func (this *QSystemTrayIcon) ShowMessage3(title string, msg string, icon uintptr
 	defer C.free(unsafe.Pointer(title_Cstring))
 	msg_Cstring := C.CString(msg)
 	defer C.free(unsafe.Pointer(msg_Cstring))
-	C.QSystemTrayIcon_ShowMessage3(this.h, title_Cstring, C.ulong(len(title)), msg_Cstring, C.ulong(len(msg)), (C.uintptr_t)(icon))
+	C.QSystemTrayIcon_ShowMessage3(this.h, title_Cstring, C.size_t(len(title)), msg_Cstring, C.size_t(len(msg)), (C.uintptr_t)(icon))
 }
 
 func (this *QSystemTrayIcon) ShowMessage42(title string, msg string, icon uintptr, msecs int) {
@@ -278,7 +278,7 @@ func (this *QSystemTrayIcon) ShowMessage42(title string, msg string, icon uintpt
 	defer C.free(unsafe.Pointer(title_Cstring))
 	msg_Cstring := C.CString(msg)
 	defer C.free(unsafe.Pointer(msg_Cstring))
-	C.QSystemTrayIcon_ShowMessage42(this.h, title_Cstring, C.ulong(len(title)), msg_Cstring, C.ulong(len(msg)), (C.uintptr_t)(icon), (C.int)(msecs))
+	C.QSystemTrayIcon_ShowMessage42(this.h, title_Cstring, C.size_t(len(title)), msg_Cstring, C.size_t(len(msg)), (C.uintptr_t)(icon), (C.int)(msecs))
 }
 
 func (this *QSystemTrayIcon) Delete() {

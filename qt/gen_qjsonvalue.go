@@ -69,7 +69,7 @@ func NewQJsonValue5(v int64) *QJsonValue {
 func NewQJsonValue6(s string) *QJsonValue {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	ret := C.QJsonValue_new6(s_Cstring, C.ulong(len(s)))
+	ret := C.QJsonValue_new6(s_Cstring, C.size_t(len(s)))
 	return newQJsonValue(ret)
 }
 
@@ -204,7 +204,7 @@ func (this *QJsonValue) ToStringWithDefaultValue(defaultValue string) string {
 	defer C.free(unsafe.Pointer(defaultValue_Cstring))
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
-	C.QJsonValue_ToStringWithDefaultValue(this.h, defaultValue_Cstring, C.ulong(len(defaultValue)), &_out, &_out_Strlen)
+	C.QJsonValue_ToStringWithDefaultValue(this.h, defaultValue_Cstring, C.size_t(len(defaultValue)), &_out, &_out_Strlen)
 	ret := C.GoStringN(_out, _out_Strlen)
 	C.free(unsafe.Pointer(_out))
 	return ret
@@ -257,7 +257,7 @@ func (this *QJsonValue) ToObjectWithDefaultValue(defaultValue *QJsonObject) *QJs
 func (this *QJsonValue) OperatorSubscript(key string) *QJsonValue {
 	key_Cstring := C.CString(key)
 	defer C.free(unsafe.Pointer(key_Cstring))
-	ret := C.QJsonValue_OperatorSubscript(this.h, key_Cstring, C.ulong(len(key)))
+	ret := C.QJsonValue_OperatorSubscript(this.h, key_Cstring, C.size_t(len(key)))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQJsonValue(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QJsonValue) {
@@ -472,7 +472,7 @@ func (this *QJsonValueRef) ToStringWithDefaultValue(defaultValue string) string 
 	defer C.free(unsafe.Pointer(defaultValue_Cstring))
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
-	C.QJsonValueRef_ToStringWithDefaultValue(this.h, defaultValue_Cstring, C.ulong(len(defaultValue)), &_out, &_out_Strlen)
+	C.QJsonValueRef_ToStringWithDefaultValue(this.h, defaultValue_Cstring, C.size_t(len(defaultValue)), &_out, &_out_Strlen)
 	ret := C.GoStringN(_out, _out_Strlen)
 	C.free(unsafe.Pointer(_out))
 	return ret

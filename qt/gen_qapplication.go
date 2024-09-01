@@ -102,7 +102,7 @@ func QApplication_SetStyle(style *QStyle) {
 func QApplication_SetStyleWithStyle(style string) *QStyle {
 	style_Cstring := C.CString(style)
 	defer C.free(unsafe.Pointer(style_Cstring))
-	ret := C.QApplication_SetStyleWithStyle(style_Cstring, C.ulong(len(style)))
+	ret := C.QApplication_SetStyleWithStyle(style_Cstring, C.size_t(len(style)))
 	return newQStyle_U(unsafe.Pointer(ret))
 }
 
@@ -403,7 +403,7 @@ func (this *QApplication) StyleSheet() string {
 func (this *QApplication) SetStyleSheet(sheet string) {
 	sheet_Cstring := C.CString(sheet)
 	defer C.free(unsafe.Pointer(sheet_Cstring))
-	C.QApplication_SetStyleSheet(this.h, sheet_Cstring, C.ulong(len(sheet)))
+	C.QApplication_SetStyleSheet(this.h, sheet_Cstring, C.size_t(len(sheet)))
 }
 
 func (this *QApplication) SetAutoSipEnabled(enabled bool) {

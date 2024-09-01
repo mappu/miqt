@@ -49,7 +49,7 @@ func NewQMessageBox2(icon uintptr, title string, text string) *QMessageBox {
 	defer C.free(unsafe.Pointer(title_Cstring))
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QMessageBox_new2((C.uintptr_t)(icon), title_Cstring, C.ulong(len(title)), text_Cstring, C.ulong(len(text)))
+	ret := C.QMessageBox_new2((C.uintptr_t)(icon), title_Cstring, C.size_t(len(title)), text_Cstring, C.size_t(len(text)))
 	return newQMessageBox(ret)
 }
 
@@ -59,7 +59,7 @@ func NewQMessageBox3(title string, text string, icon uintptr, button0 int, butto
 	defer C.free(unsafe.Pointer(title_Cstring))
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QMessageBox_new3(title_Cstring, C.ulong(len(title)), text_Cstring, C.ulong(len(text)), (C.uintptr_t)(icon), (C.int)(button0), (C.int)(button1), (C.int)(button2))
+	ret := C.QMessageBox_new3(title_Cstring, C.size_t(len(title)), text_Cstring, C.size_t(len(text)), (C.uintptr_t)(icon), (C.int)(button0), (C.int)(button1), (C.int)(button2))
 	return newQMessageBox(ret)
 }
 
@@ -75,7 +75,7 @@ func NewQMessageBox5(icon uintptr, title string, text string, buttons int) *QMes
 	defer C.free(unsafe.Pointer(title_Cstring))
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QMessageBox_new5((C.uintptr_t)(icon), title_Cstring, C.ulong(len(title)), text_Cstring, C.ulong(len(text)), (C.int)(buttons))
+	ret := C.QMessageBox_new5((C.uintptr_t)(icon), title_Cstring, C.size_t(len(title)), text_Cstring, C.size_t(len(text)), (C.int)(buttons))
 	return newQMessageBox(ret)
 }
 
@@ -85,7 +85,7 @@ func NewQMessageBox6(icon uintptr, title string, text string, buttons int, paren
 	defer C.free(unsafe.Pointer(title_Cstring))
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QMessageBox_new6((C.uintptr_t)(icon), title_Cstring, C.ulong(len(title)), text_Cstring, C.ulong(len(text)), (C.int)(buttons), parent.cPointer())
+	ret := C.QMessageBox_new6((C.uintptr_t)(icon), title_Cstring, C.size_t(len(title)), text_Cstring, C.size_t(len(text)), (C.int)(buttons), parent.cPointer())
 	return newQMessageBox(ret)
 }
 
@@ -95,7 +95,7 @@ func NewQMessageBox7(icon uintptr, title string, text string, buttons int, paren
 	defer C.free(unsafe.Pointer(title_Cstring))
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QMessageBox_new7((C.uintptr_t)(icon), title_Cstring, C.ulong(len(title)), text_Cstring, C.ulong(len(text)), (C.int)(buttons), parent.cPointer(), (C.int)(flags))
+	ret := C.QMessageBox_new7((C.uintptr_t)(icon), title_Cstring, C.size_t(len(title)), text_Cstring, C.size_t(len(text)), (C.int)(buttons), parent.cPointer(), (C.int)(flags))
 	return newQMessageBox(ret)
 }
 
@@ -105,7 +105,7 @@ func NewQMessageBox8(title string, text string, icon uintptr, button0 int, butto
 	defer C.free(unsafe.Pointer(title_Cstring))
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QMessageBox_new8(title_Cstring, C.ulong(len(title)), text_Cstring, C.ulong(len(text)), (C.uintptr_t)(icon), (C.int)(button0), (C.int)(button1), (C.int)(button2), parent.cPointer())
+	ret := C.QMessageBox_new8(title_Cstring, C.size_t(len(title)), text_Cstring, C.size_t(len(text)), (C.uintptr_t)(icon), (C.int)(button0), (C.int)(button1), (C.int)(button2), parent.cPointer())
 	return newQMessageBox(ret)
 }
 
@@ -115,7 +115,7 @@ func NewQMessageBox9(title string, text string, icon uintptr, button0 int, butto
 	defer C.free(unsafe.Pointer(title_Cstring))
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QMessageBox_new9(title_Cstring, C.ulong(len(title)), text_Cstring, C.ulong(len(text)), (C.uintptr_t)(icon), (C.int)(button0), (C.int)(button1), (C.int)(button2), parent.cPointer(), (C.int)(f))
+	ret := C.QMessageBox_new9(title_Cstring, C.size_t(len(title)), text_Cstring, C.size_t(len(text)), (C.uintptr_t)(icon), (C.int)(button0), (C.int)(button1), (C.int)(button2), parent.cPointer(), (C.int)(f))
 	return newQMessageBox(ret)
 }
 
@@ -153,7 +153,7 @@ func (this *QMessageBox) AddButton(button *QAbstractButton, role uintptr) {
 func (this *QMessageBox) AddButton2(text string, role uintptr) *QPushButton {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QMessageBox_AddButton2(this.h, text_Cstring, C.ulong(len(text)), (C.uintptr_t)(role))
+	ret := C.QMessageBox_AddButton2(this.h, text_Cstring, C.size_t(len(text)), (C.uintptr_t)(role))
 	return newQPushButton_U(unsafe.Pointer(ret))
 }
 
@@ -246,7 +246,7 @@ func (this *QMessageBox) Text() string {
 func (this *QMessageBox) SetText(text string) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QMessageBox_SetText(this.h, text_Cstring, C.ulong(len(text)))
+	C.QMessageBox_SetText(this.h, text_Cstring, C.size_t(len(text)))
 }
 
 func (this *QMessageBox) Icon() uintptr {
@@ -305,7 +305,7 @@ func QMessageBox_Information(parent *QWidget, title string, text string) uintptr
 	defer C.free(unsafe.Pointer(title_Cstring))
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QMessageBox_Information(parent.cPointer(), title_Cstring, C.ulong(len(title)), text_Cstring, C.ulong(len(text)))
+	ret := C.QMessageBox_Information(parent.cPointer(), title_Cstring, C.size_t(len(title)), text_Cstring, C.size_t(len(text)))
 	return (uintptr)(ret)
 }
 
@@ -314,7 +314,7 @@ func QMessageBox_Question(parent *QWidget, title string, text string) uintptr {
 	defer C.free(unsafe.Pointer(title_Cstring))
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QMessageBox_Question(parent.cPointer(), title_Cstring, C.ulong(len(title)), text_Cstring, C.ulong(len(text)))
+	ret := C.QMessageBox_Question(parent.cPointer(), title_Cstring, C.size_t(len(title)), text_Cstring, C.size_t(len(text)))
 	return (uintptr)(ret)
 }
 
@@ -323,7 +323,7 @@ func QMessageBox_Warning(parent *QWidget, title string, text string) uintptr {
 	defer C.free(unsafe.Pointer(title_Cstring))
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QMessageBox_Warning(parent.cPointer(), title_Cstring, C.ulong(len(title)), text_Cstring, C.ulong(len(text)))
+	ret := C.QMessageBox_Warning(parent.cPointer(), title_Cstring, C.size_t(len(title)), text_Cstring, C.size_t(len(text)))
 	return (uintptr)(ret)
 }
 
@@ -332,7 +332,7 @@ func QMessageBox_Critical(parent *QWidget, title string, text string) uintptr {
 	defer C.free(unsafe.Pointer(title_Cstring))
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QMessageBox_Critical(parent.cPointer(), title_Cstring, C.ulong(len(title)), text_Cstring, C.ulong(len(text)))
+	ret := C.QMessageBox_Critical(parent.cPointer(), title_Cstring, C.size_t(len(title)), text_Cstring, C.size_t(len(text)))
 	return (uintptr)(ret)
 }
 
@@ -341,7 +341,7 @@ func QMessageBox_About(parent *QWidget, title string, text string) {
 	defer C.free(unsafe.Pointer(title_Cstring))
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QMessageBox_About(parent.cPointer(), title_Cstring, C.ulong(len(title)), text_Cstring, C.ulong(len(text)))
+	C.QMessageBox_About(parent.cPointer(), title_Cstring, C.size_t(len(title)), text_Cstring, C.size_t(len(text)))
 }
 
 func QMessageBox_AboutQt(parent *QWidget) {
@@ -353,7 +353,7 @@ func QMessageBox_Information2(parent *QWidget, title string, text string, button
 	defer C.free(unsafe.Pointer(title_Cstring))
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QMessageBox_Information2(parent.cPointer(), title_Cstring, C.ulong(len(title)), text_Cstring, C.ulong(len(text)), (C.int)(button0))
+	ret := C.QMessageBox_Information2(parent.cPointer(), title_Cstring, C.size_t(len(title)), text_Cstring, C.size_t(len(text)), (C.int)(button0))
 	return (int)(ret)
 }
 
@@ -364,7 +364,7 @@ func QMessageBox_Information3(parent *QWidget, title string, text string, button
 	defer C.free(unsafe.Pointer(text_Cstring))
 	button0Text_Cstring := C.CString(button0Text)
 	defer C.free(unsafe.Pointer(button0Text_Cstring))
-	ret := C.QMessageBox_Information3(parent.cPointer(), title_Cstring, C.ulong(len(title)), text_Cstring, C.ulong(len(text)), button0Text_Cstring, C.ulong(len(button0Text)))
+	ret := C.QMessageBox_Information3(parent.cPointer(), title_Cstring, C.size_t(len(title)), text_Cstring, C.size_t(len(text)), button0Text_Cstring, C.size_t(len(button0Text)))
 	return (int)(ret)
 }
 
@@ -373,7 +373,7 @@ func QMessageBox_Information4(parent *QWidget, title string, text string, button
 	defer C.free(unsafe.Pointer(title_Cstring))
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QMessageBox_Information4(parent.cPointer(), title_Cstring, C.ulong(len(title)), text_Cstring, C.ulong(len(text)), (C.uintptr_t)(button0))
+	ret := C.QMessageBox_Information4(parent.cPointer(), title_Cstring, C.size_t(len(title)), text_Cstring, C.size_t(len(text)), (C.uintptr_t)(button0))
 	return (uintptr)(ret)
 }
 
@@ -382,7 +382,7 @@ func QMessageBox_Question2(parent *QWidget, title string, text string, button0 i
 	defer C.free(unsafe.Pointer(title_Cstring))
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QMessageBox_Question2(parent.cPointer(), title_Cstring, C.ulong(len(title)), text_Cstring, C.ulong(len(text)), (C.int)(button0))
+	ret := C.QMessageBox_Question2(parent.cPointer(), title_Cstring, C.size_t(len(title)), text_Cstring, C.size_t(len(text)), (C.int)(button0))
 	return (int)(ret)
 }
 
@@ -393,7 +393,7 @@ func QMessageBox_Question3(parent *QWidget, title string, text string, button0Te
 	defer C.free(unsafe.Pointer(text_Cstring))
 	button0Text_Cstring := C.CString(button0Text)
 	defer C.free(unsafe.Pointer(button0Text_Cstring))
-	ret := C.QMessageBox_Question3(parent.cPointer(), title_Cstring, C.ulong(len(title)), text_Cstring, C.ulong(len(text)), button0Text_Cstring, C.ulong(len(button0Text)))
+	ret := C.QMessageBox_Question3(parent.cPointer(), title_Cstring, C.size_t(len(title)), text_Cstring, C.size_t(len(text)), button0Text_Cstring, C.size_t(len(button0Text)))
 	return (int)(ret)
 }
 
@@ -402,7 +402,7 @@ func QMessageBox_Question4(parent *QWidget, title string, text string, button0 u
 	defer C.free(unsafe.Pointer(title_Cstring))
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QMessageBox_Question4(parent.cPointer(), title_Cstring, C.ulong(len(title)), text_Cstring, C.ulong(len(text)), (C.uintptr_t)(button0), (C.uintptr_t)(button1))
+	ret := C.QMessageBox_Question4(parent.cPointer(), title_Cstring, C.size_t(len(title)), text_Cstring, C.size_t(len(text)), (C.uintptr_t)(button0), (C.uintptr_t)(button1))
 	return (int)(ret)
 }
 
@@ -411,7 +411,7 @@ func QMessageBox_Warning2(parent *QWidget, title string, text string, button0 in
 	defer C.free(unsafe.Pointer(title_Cstring))
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QMessageBox_Warning2(parent.cPointer(), title_Cstring, C.ulong(len(title)), text_Cstring, C.ulong(len(text)), (C.int)(button0), (C.int)(button1))
+	ret := C.QMessageBox_Warning2(parent.cPointer(), title_Cstring, C.size_t(len(title)), text_Cstring, C.size_t(len(text)), (C.int)(button0), (C.int)(button1))
 	return (int)(ret)
 }
 
@@ -422,7 +422,7 @@ func QMessageBox_Warning3(parent *QWidget, title string, text string, button0Tex
 	defer C.free(unsafe.Pointer(text_Cstring))
 	button0Text_Cstring := C.CString(button0Text)
 	defer C.free(unsafe.Pointer(button0Text_Cstring))
-	ret := C.QMessageBox_Warning3(parent.cPointer(), title_Cstring, C.ulong(len(title)), text_Cstring, C.ulong(len(text)), button0Text_Cstring, C.ulong(len(button0Text)))
+	ret := C.QMessageBox_Warning3(parent.cPointer(), title_Cstring, C.size_t(len(title)), text_Cstring, C.size_t(len(text)), button0Text_Cstring, C.size_t(len(button0Text)))
 	return (int)(ret)
 }
 
@@ -431,7 +431,7 @@ func QMessageBox_Warning4(parent *QWidget, title string, text string, button0 ui
 	defer C.free(unsafe.Pointer(title_Cstring))
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QMessageBox_Warning4(parent.cPointer(), title_Cstring, C.ulong(len(title)), text_Cstring, C.ulong(len(text)), (C.uintptr_t)(button0), (C.uintptr_t)(button1))
+	ret := C.QMessageBox_Warning4(parent.cPointer(), title_Cstring, C.size_t(len(title)), text_Cstring, C.size_t(len(text)), (C.uintptr_t)(button0), (C.uintptr_t)(button1))
 	return (int)(ret)
 }
 
@@ -440,7 +440,7 @@ func QMessageBox_Critical2(parent *QWidget, title string, text string, button0 i
 	defer C.free(unsafe.Pointer(title_Cstring))
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QMessageBox_Critical2(parent.cPointer(), title_Cstring, C.ulong(len(title)), text_Cstring, C.ulong(len(text)), (C.int)(button0), (C.int)(button1))
+	ret := C.QMessageBox_Critical2(parent.cPointer(), title_Cstring, C.size_t(len(title)), text_Cstring, C.size_t(len(text)), (C.int)(button0), (C.int)(button1))
 	return (int)(ret)
 }
 
@@ -451,7 +451,7 @@ func QMessageBox_Critical3(parent *QWidget, title string, text string, button0Te
 	defer C.free(unsafe.Pointer(text_Cstring))
 	button0Text_Cstring := C.CString(button0Text)
 	defer C.free(unsafe.Pointer(button0Text_Cstring))
-	ret := C.QMessageBox_Critical3(parent.cPointer(), title_Cstring, C.ulong(len(title)), text_Cstring, C.ulong(len(text)), button0Text_Cstring, C.ulong(len(button0Text)))
+	ret := C.QMessageBox_Critical3(parent.cPointer(), title_Cstring, C.size_t(len(title)), text_Cstring, C.size_t(len(text)), button0Text_Cstring, C.size_t(len(button0Text)))
 	return (int)(ret)
 }
 
@@ -460,7 +460,7 @@ func QMessageBox_Critical4(parent *QWidget, title string, text string, button0 u
 	defer C.free(unsafe.Pointer(title_Cstring))
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QMessageBox_Critical4(parent.cPointer(), title_Cstring, C.ulong(len(title)), text_Cstring, C.ulong(len(text)), (C.uintptr_t)(button0), (C.uintptr_t)(button1))
+	ret := C.QMessageBox_Critical4(parent.cPointer(), title_Cstring, C.size_t(len(title)), text_Cstring, C.size_t(len(text)), (C.uintptr_t)(button0), (C.uintptr_t)(button1))
 	return (int)(ret)
 }
 
@@ -476,7 +476,7 @@ func (this *QMessageBox) ButtonText(button int) string {
 func (this *QMessageBox) SetButtonText(button int, text string) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QMessageBox_SetButtonText(this.h, (C.int)(button), text_Cstring, C.ulong(len(text)))
+	C.QMessageBox_SetButtonText(this.h, (C.int)(button), text_Cstring, C.size_t(len(text)))
 }
 
 func (this *QMessageBox) InformativeText() string {
@@ -491,7 +491,7 @@ func (this *QMessageBox) InformativeText() string {
 func (this *QMessageBox) SetInformativeText(text string) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QMessageBox_SetInformativeText(this.h, text_Cstring, C.ulong(len(text)))
+	C.QMessageBox_SetInformativeText(this.h, text_Cstring, C.size_t(len(text)))
 }
 
 func (this *QMessageBox) DetailedText() string {
@@ -506,13 +506,13 @@ func (this *QMessageBox) DetailedText() string {
 func (this *QMessageBox) SetDetailedText(text string) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QMessageBox_SetDetailedText(this.h, text_Cstring, C.ulong(len(text)))
+	C.QMessageBox_SetDetailedText(this.h, text_Cstring, C.size_t(len(text)))
 }
 
 func (this *QMessageBox) SetWindowTitle(title string) {
 	title_Cstring := C.CString(title)
 	defer C.free(unsafe.Pointer(title_Cstring))
-	C.QMessageBox_SetWindowTitle(this.h, title_Cstring, C.ulong(len(title)))
+	C.QMessageBox_SetWindowTitle(this.h, title_Cstring, C.size_t(len(title)))
 }
 
 func (this *QMessageBox) SetWindowModality(windowModality uintptr) {
@@ -599,7 +599,7 @@ func QMessageBox_Information42(parent *QWidget, title string, text string, butto
 	defer C.free(unsafe.Pointer(title_Cstring))
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QMessageBox_Information42(parent.cPointer(), title_Cstring, C.ulong(len(title)), text_Cstring, C.ulong(len(text)), (C.int)(buttons))
+	ret := C.QMessageBox_Information42(parent.cPointer(), title_Cstring, C.size_t(len(title)), text_Cstring, C.size_t(len(text)), (C.int)(buttons))
 	return (uintptr)(ret)
 }
 
@@ -608,7 +608,7 @@ func QMessageBox_Information5(parent *QWidget, title string, text string, button
 	defer C.free(unsafe.Pointer(title_Cstring))
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QMessageBox_Information5(parent.cPointer(), title_Cstring, C.ulong(len(title)), text_Cstring, C.ulong(len(text)), (C.int)(buttons), (C.uintptr_t)(defaultButton))
+	ret := C.QMessageBox_Information5(parent.cPointer(), title_Cstring, C.size_t(len(title)), text_Cstring, C.size_t(len(text)), (C.int)(buttons), (C.uintptr_t)(defaultButton))
 	return (uintptr)(ret)
 }
 
@@ -617,7 +617,7 @@ func QMessageBox_Question42(parent *QWidget, title string, text string, buttons 
 	defer C.free(unsafe.Pointer(title_Cstring))
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QMessageBox_Question42(parent.cPointer(), title_Cstring, C.ulong(len(title)), text_Cstring, C.ulong(len(text)), (C.int)(buttons))
+	ret := C.QMessageBox_Question42(parent.cPointer(), title_Cstring, C.size_t(len(title)), text_Cstring, C.size_t(len(text)), (C.int)(buttons))
 	return (uintptr)(ret)
 }
 
@@ -626,7 +626,7 @@ func QMessageBox_Question5(parent *QWidget, title string, text string, buttons i
 	defer C.free(unsafe.Pointer(title_Cstring))
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QMessageBox_Question5(parent.cPointer(), title_Cstring, C.ulong(len(title)), text_Cstring, C.ulong(len(text)), (C.int)(buttons), (C.uintptr_t)(defaultButton))
+	ret := C.QMessageBox_Question5(parent.cPointer(), title_Cstring, C.size_t(len(title)), text_Cstring, C.size_t(len(text)), (C.int)(buttons), (C.uintptr_t)(defaultButton))
 	return (uintptr)(ret)
 }
 
@@ -635,7 +635,7 @@ func QMessageBox_Warning42(parent *QWidget, title string, text string, buttons i
 	defer C.free(unsafe.Pointer(title_Cstring))
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QMessageBox_Warning42(parent.cPointer(), title_Cstring, C.ulong(len(title)), text_Cstring, C.ulong(len(text)), (C.int)(buttons))
+	ret := C.QMessageBox_Warning42(parent.cPointer(), title_Cstring, C.size_t(len(title)), text_Cstring, C.size_t(len(text)), (C.int)(buttons))
 	return (uintptr)(ret)
 }
 
@@ -644,7 +644,7 @@ func QMessageBox_Warning5(parent *QWidget, title string, text string, buttons in
 	defer C.free(unsafe.Pointer(title_Cstring))
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QMessageBox_Warning5(parent.cPointer(), title_Cstring, C.ulong(len(title)), text_Cstring, C.ulong(len(text)), (C.int)(buttons), (C.uintptr_t)(defaultButton))
+	ret := C.QMessageBox_Warning5(parent.cPointer(), title_Cstring, C.size_t(len(title)), text_Cstring, C.size_t(len(text)), (C.int)(buttons), (C.uintptr_t)(defaultButton))
 	return (uintptr)(ret)
 }
 
@@ -653,7 +653,7 @@ func QMessageBox_Critical42(parent *QWidget, title string, text string, buttons 
 	defer C.free(unsafe.Pointer(title_Cstring))
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QMessageBox_Critical42(parent.cPointer(), title_Cstring, C.ulong(len(title)), text_Cstring, C.ulong(len(text)), (C.int)(buttons))
+	ret := C.QMessageBox_Critical42(parent.cPointer(), title_Cstring, C.size_t(len(title)), text_Cstring, C.size_t(len(text)), (C.int)(buttons))
 	return (uintptr)(ret)
 }
 
@@ -662,14 +662,14 @@ func QMessageBox_Critical5(parent *QWidget, title string, text string, buttons i
 	defer C.free(unsafe.Pointer(title_Cstring))
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QMessageBox_Critical5(parent.cPointer(), title_Cstring, C.ulong(len(title)), text_Cstring, C.ulong(len(text)), (C.int)(buttons), (C.uintptr_t)(defaultButton))
+	ret := C.QMessageBox_Critical5(parent.cPointer(), title_Cstring, C.size_t(len(title)), text_Cstring, C.size_t(len(text)), (C.int)(buttons), (C.uintptr_t)(defaultButton))
 	return (uintptr)(ret)
 }
 
 func QMessageBox_AboutQt2(parent *QWidget, title string) {
 	title_Cstring := C.CString(title)
 	defer C.free(unsafe.Pointer(title_Cstring))
-	C.QMessageBox_AboutQt2(parent.cPointer(), title_Cstring, C.ulong(len(title)))
+	C.QMessageBox_AboutQt2(parent.cPointer(), title_Cstring, C.size_t(len(title)))
 }
 
 func QMessageBox_Information52(parent *QWidget, title string, text string, button0 int, button1 int) int {
@@ -677,7 +677,7 @@ func QMessageBox_Information52(parent *QWidget, title string, text string, butto
 	defer C.free(unsafe.Pointer(title_Cstring))
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QMessageBox_Information52(parent.cPointer(), title_Cstring, C.ulong(len(title)), text_Cstring, C.ulong(len(text)), (C.int)(button0), (C.int)(button1))
+	ret := C.QMessageBox_Information52(parent.cPointer(), title_Cstring, C.size_t(len(title)), text_Cstring, C.size_t(len(text)), (C.int)(button0), (C.int)(button1))
 	return (int)(ret)
 }
 
@@ -686,7 +686,7 @@ func QMessageBox_Information6(parent *QWidget, title string, text string, button
 	defer C.free(unsafe.Pointer(title_Cstring))
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QMessageBox_Information6(parent.cPointer(), title_Cstring, C.ulong(len(title)), text_Cstring, C.ulong(len(text)), (C.int)(button0), (C.int)(button1), (C.int)(button2))
+	ret := C.QMessageBox_Information6(parent.cPointer(), title_Cstring, C.size_t(len(title)), text_Cstring, C.size_t(len(text)), (C.int)(button0), (C.int)(button1), (C.int)(button2))
 	return (int)(ret)
 }
 
@@ -699,7 +699,7 @@ func QMessageBox_Information53(parent *QWidget, title string, text string, butto
 	defer C.free(unsafe.Pointer(button0Text_Cstring))
 	button1Text_Cstring := C.CString(button1Text)
 	defer C.free(unsafe.Pointer(button1Text_Cstring))
-	ret := C.QMessageBox_Information53(parent.cPointer(), title_Cstring, C.ulong(len(title)), text_Cstring, C.ulong(len(text)), button0Text_Cstring, C.ulong(len(button0Text)), button1Text_Cstring, C.ulong(len(button1Text)))
+	ret := C.QMessageBox_Information53(parent.cPointer(), title_Cstring, C.size_t(len(title)), text_Cstring, C.size_t(len(text)), button0Text_Cstring, C.size_t(len(button0Text)), button1Text_Cstring, C.size_t(len(button1Text)))
 	return (int)(ret)
 }
 
@@ -714,7 +714,7 @@ func QMessageBox_Information62(parent *QWidget, title string, text string, butto
 	defer C.free(unsafe.Pointer(button1Text_Cstring))
 	button2Text_Cstring := C.CString(button2Text)
 	defer C.free(unsafe.Pointer(button2Text_Cstring))
-	ret := C.QMessageBox_Information62(parent.cPointer(), title_Cstring, C.ulong(len(title)), text_Cstring, C.ulong(len(text)), button0Text_Cstring, C.ulong(len(button0Text)), button1Text_Cstring, C.ulong(len(button1Text)), button2Text_Cstring, C.ulong(len(button2Text)))
+	ret := C.QMessageBox_Information62(parent.cPointer(), title_Cstring, C.size_t(len(title)), text_Cstring, C.size_t(len(text)), button0Text_Cstring, C.size_t(len(button0Text)), button1Text_Cstring, C.size_t(len(button1Text)), button2Text_Cstring, C.size_t(len(button2Text)))
 	return (int)(ret)
 }
 
@@ -729,7 +729,7 @@ func QMessageBox_Information7(parent *QWidget, title string, text string, button
 	defer C.free(unsafe.Pointer(button1Text_Cstring))
 	button2Text_Cstring := C.CString(button2Text)
 	defer C.free(unsafe.Pointer(button2Text_Cstring))
-	ret := C.QMessageBox_Information7(parent.cPointer(), title_Cstring, C.ulong(len(title)), text_Cstring, C.ulong(len(text)), button0Text_Cstring, C.ulong(len(button0Text)), button1Text_Cstring, C.ulong(len(button1Text)), button2Text_Cstring, C.ulong(len(button2Text)), (C.int)(defaultButtonNumber))
+	ret := C.QMessageBox_Information7(parent.cPointer(), title_Cstring, C.size_t(len(title)), text_Cstring, C.size_t(len(text)), button0Text_Cstring, C.size_t(len(button0Text)), button1Text_Cstring, C.size_t(len(button1Text)), button2Text_Cstring, C.size_t(len(button2Text)), (C.int)(defaultButtonNumber))
 	return (int)(ret)
 }
 
@@ -744,7 +744,7 @@ func QMessageBox_Information8(parent *QWidget, title string, text string, button
 	defer C.free(unsafe.Pointer(button1Text_Cstring))
 	button2Text_Cstring := C.CString(button2Text)
 	defer C.free(unsafe.Pointer(button2Text_Cstring))
-	ret := C.QMessageBox_Information8(parent.cPointer(), title_Cstring, C.ulong(len(title)), text_Cstring, C.ulong(len(text)), button0Text_Cstring, C.ulong(len(button0Text)), button1Text_Cstring, C.ulong(len(button1Text)), button2Text_Cstring, C.ulong(len(button2Text)), (C.int)(defaultButtonNumber), (C.int)(escapeButtonNumber))
+	ret := C.QMessageBox_Information8(parent.cPointer(), title_Cstring, C.size_t(len(title)), text_Cstring, C.size_t(len(text)), button0Text_Cstring, C.size_t(len(button0Text)), button1Text_Cstring, C.size_t(len(button1Text)), button2Text_Cstring, C.size_t(len(button2Text)), (C.int)(defaultButtonNumber), (C.int)(escapeButtonNumber))
 	return (int)(ret)
 }
 
@@ -753,7 +753,7 @@ func QMessageBox_Information54(parent *QWidget, title string, text string, butto
 	defer C.free(unsafe.Pointer(title_Cstring))
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QMessageBox_Information54(parent.cPointer(), title_Cstring, C.ulong(len(title)), text_Cstring, C.ulong(len(text)), (C.uintptr_t)(button0), (C.uintptr_t)(button1))
+	ret := C.QMessageBox_Information54(parent.cPointer(), title_Cstring, C.size_t(len(title)), text_Cstring, C.size_t(len(text)), (C.uintptr_t)(button0), (C.uintptr_t)(button1))
 	return (uintptr)(ret)
 }
 
@@ -762,7 +762,7 @@ func QMessageBox_Question52(parent *QWidget, title string, text string, button0 
 	defer C.free(unsafe.Pointer(title_Cstring))
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QMessageBox_Question52(parent.cPointer(), title_Cstring, C.ulong(len(title)), text_Cstring, C.ulong(len(text)), (C.int)(button0), (C.int)(button1))
+	ret := C.QMessageBox_Question52(parent.cPointer(), title_Cstring, C.size_t(len(title)), text_Cstring, C.size_t(len(text)), (C.int)(button0), (C.int)(button1))
 	return (int)(ret)
 }
 
@@ -771,7 +771,7 @@ func QMessageBox_Question6(parent *QWidget, title string, text string, button0 i
 	defer C.free(unsafe.Pointer(title_Cstring))
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QMessageBox_Question6(parent.cPointer(), title_Cstring, C.ulong(len(title)), text_Cstring, C.ulong(len(text)), (C.int)(button0), (C.int)(button1), (C.int)(button2))
+	ret := C.QMessageBox_Question6(parent.cPointer(), title_Cstring, C.size_t(len(title)), text_Cstring, C.size_t(len(text)), (C.int)(button0), (C.int)(button1), (C.int)(button2))
 	return (int)(ret)
 }
 
@@ -784,7 +784,7 @@ func QMessageBox_Question53(parent *QWidget, title string, text string, button0T
 	defer C.free(unsafe.Pointer(button0Text_Cstring))
 	button1Text_Cstring := C.CString(button1Text)
 	defer C.free(unsafe.Pointer(button1Text_Cstring))
-	ret := C.QMessageBox_Question53(parent.cPointer(), title_Cstring, C.ulong(len(title)), text_Cstring, C.ulong(len(text)), button0Text_Cstring, C.ulong(len(button0Text)), button1Text_Cstring, C.ulong(len(button1Text)))
+	ret := C.QMessageBox_Question53(parent.cPointer(), title_Cstring, C.size_t(len(title)), text_Cstring, C.size_t(len(text)), button0Text_Cstring, C.size_t(len(button0Text)), button1Text_Cstring, C.size_t(len(button1Text)))
 	return (int)(ret)
 }
 
@@ -799,7 +799,7 @@ func QMessageBox_Question62(parent *QWidget, title string, text string, button0T
 	defer C.free(unsafe.Pointer(button1Text_Cstring))
 	button2Text_Cstring := C.CString(button2Text)
 	defer C.free(unsafe.Pointer(button2Text_Cstring))
-	ret := C.QMessageBox_Question62(parent.cPointer(), title_Cstring, C.ulong(len(title)), text_Cstring, C.ulong(len(text)), button0Text_Cstring, C.ulong(len(button0Text)), button1Text_Cstring, C.ulong(len(button1Text)), button2Text_Cstring, C.ulong(len(button2Text)))
+	ret := C.QMessageBox_Question62(parent.cPointer(), title_Cstring, C.size_t(len(title)), text_Cstring, C.size_t(len(text)), button0Text_Cstring, C.size_t(len(button0Text)), button1Text_Cstring, C.size_t(len(button1Text)), button2Text_Cstring, C.size_t(len(button2Text)))
 	return (int)(ret)
 }
 
@@ -814,7 +814,7 @@ func QMessageBox_Question7(parent *QWidget, title string, text string, button0Te
 	defer C.free(unsafe.Pointer(button1Text_Cstring))
 	button2Text_Cstring := C.CString(button2Text)
 	defer C.free(unsafe.Pointer(button2Text_Cstring))
-	ret := C.QMessageBox_Question7(parent.cPointer(), title_Cstring, C.ulong(len(title)), text_Cstring, C.ulong(len(text)), button0Text_Cstring, C.ulong(len(button0Text)), button1Text_Cstring, C.ulong(len(button1Text)), button2Text_Cstring, C.ulong(len(button2Text)), (C.int)(defaultButtonNumber))
+	ret := C.QMessageBox_Question7(parent.cPointer(), title_Cstring, C.size_t(len(title)), text_Cstring, C.size_t(len(text)), button0Text_Cstring, C.size_t(len(button0Text)), button1Text_Cstring, C.size_t(len(button1Text)), button2Text_Cstring, C.size_t(len(button2Text)), (C.int)(defaultButtonNumber))
 	return (int)(ret)
 }
 
@@ -829,7 +829,7 @@ func QMessageBox_Question8(parent *QWidget, title string, text string, button0Te
 	defer C.free(unsafe.Pointer(button1Text_Cstring))
 	button2Text_Cstring := C.CString(button2Text)
 	defer C.free(unsafe.Pointer(button2Text_Cstring))
-	ret := C.QMessageBox_Question8(parent.cPointer(), title_Cstring, C.ulong(len(title)), text_Cstring, C.ulong(len(text)), button0Text_Cstring, C.ulong(len(button0Text)), button1Text_Cstring, C.ulong(len(button1Text)), button2Text_Cstring, C.ulong(len(button2Text)), (C.int)(defaultButtonNumber), (C.int)(escapeButtonNumber))
+	ret := C.QMessageBox_Question8(parent.cPointer(), title_Cstring, C.size_t(len(title)), text_Cstring, C.size_t(len(text)), button0Text_Cstring, C.size_t(len(button0Text)), button1Text_Cstring, C.size_t(len(button1Text)), button2Text_Cstring, C.size_t(len(button2Text)), (C.int)(defaultButtonNumber), (C.int)(escapeButtonNumber))
 	return (int)(ret)
 }
 
@@ -838,7 +838,7 @@ func QMessageBox_Warning6(parent *QWidget, title string, text string, button0 in
 	defer C.free(unsafe.Pointer(title_Cstring))
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QMessageBox_Warning6(parent.cPointer(), title_Cstring, C.ulong(len(title)), text_Cstring, C.ulong(len(text)), (C.int)(button0), (C.int)(button1), (C.int)(button2))
+	ret := C.QMessageBox_Warning6(parent.cPointer(), title_Cstring, C.size_t(len(title)), text_Cstring, C.size_t(len(text)), (C.int)(button0), (C.int)(button1), (C.int)(button2))
 	return (int)(ret)
 }
 
@@ -851,7 +851,7 @@ func QMessageBox_Warning52(parent *QWidget, title string, text string, button0Te
 	defer C.free(unsafe.Pointer(button0Text_Cstring))
 	button1Text_Cstring := C.CString(button1Text)
 	defer C.free(unsafe.Pointer(button1Text_Cstring))
-	ret := C.QMessageBox_Warning52(parent.cPointer(), title_Cstring, C.ulong(len(title)), text_Cstring, C.ulong(len(text)), button0Text_Cstring, C.ulong(len(button0Text)), button1Text_Cstring, C.ulong(len(button1Text)))
+	ret := C.QMessageBox_Warning52(parent.cPointer(), title_Cstring, C.size_t(len(title)), text_Cstring, C.size_t(len(text)), button0Text_Cstring, C.size_t(len(button0Text)), button1Text_Cstring, C.size_t(len(button1Text)))
 	return (int)(ret)
 }
 
@@ -866,7 +866,7 @@ func QMessageBox_Warning62(parent *QWidget, title string, text string, button0Te
 	defer C.free(unsafe.Pointer(button1Text_Cstring))
 	button2Text_Cstring := C.CString(button2Text)
 	defer C.free(unsafe.Pointer(button2Text_Cstring))
-	ret := C.QMessageBox_Warning62(parent.cPointer(), title_Cstring, C.ulong(len(title)), text_Cstring, C.ulong(len(text)), button0Text_Cstring, C.ulong(len(button0Text)), button1Text_Cstring, C.ulong(len(button1Text)), button2Text_Cstring, C.ulong(len(button2Text)))
+	ret := C.QMessageBox_Warning62(parent.cPointer(), title_Cstring, C.size_t(len(title)), text_Cstring, C.size_t(len(text)), button0Text_Cstring, C.size_t(len(button0Text)), button1Text_Cstring, C.size_t(len(button1Text)), button2Text_Cstring, C.size_t(len(button2Text)))
 	return (int)(ret)
 }
 
@@ -881,7 +881,7 @@ func QMessageBox_Warning7(parent *QWidget, title string, text string, button0Tex
 	defer C.free(unsafe.Pointer(button1Text_Cstring))
 	button2Text_Cstring := C.CString(button2Text)
 	defer C.free(unsafe.Pointer(button2Text_Cstring))
-	ret := C.QMessageBox_Warning7(parent.cPointer(), title_Cstring, C.ulong(len(title)), text_Cstring, C.ulong(len(text)), button0Text_Cstring, C.ulong(len(button0Text)), button1Text_Cstring, C.ulong(len(button1Text)), button2Text_Cstring, C.ulong(len(button2Text)), (C.int)(defaultButtonNumber))
+	ret := C.QMessageBox_Warning7(parent.cPointer(), title_Cstring, C.size_t(len(title)), text_Cstring, C.size_t(len(text)), button0Text_Cstring, C.size_t(len(button0Text)), button1Text_Cstring, C.size_t(len(button1Text)), button2Text_Cstring, C.size_t(len(button2Text)), (C.int)(defaultButtonNumber))
 	return (int)(ret)
 }
 
@@ -896,7 +896,7 @@ func QMessageBox_Warning8(parent *QWidget, title string, text string, button0Tex
 	defer C.free(unsafe.Pointer(button1Text_Cstring))
 	button2Text_Cstring := C.CString(button2Text)
 	defer C.free(unsafe.Pointer(button2Text_Cstring))
-	ret := C.QMessageBox_Warning8(parent.cPointer(), title_Cstring, C.ulong(len(title)), text_Cstring, C.ulong(len(text)), button0Text_Cstring, C.ulong(len(button0Text)), button1Text_Cstring, C.ulong(len(button1Text)), button2Text_Cstring, C.ulong(len(button2Text)), (C.int)(defaultButtonNumber), (C.int)(escapeButtonNumber))
+	ret := C.QMessageBox_Warning8(parent.cPointer(), title_Cstring, C.size_t(len(title)), text_Cstring, C.size_t(len(text)), button0Text_Cstring, C.size_t(len(button0Text)), button1Text_Cstring, C.size_t(len(button1Text)), button2Text_Cstring, C.size_t(len(button2Text)), (C.int)(defaultButtonNumber), (C.int)(escapeButtonNumber))
 	return (int)(ret)
 }
 
@@ -905,7 +905,7 @@ func QMessageBox_Critical6(parent *QWidget, title string, text string, button0 i
 	defer C.free(unsafe.Pointer(title_Cstring))
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QMessageBox_Critical6(parent.cPointer(), title_Cstring, C.ulong(len(title)), text_Cstring, C.ulong(len(text)), (C.int)(button0), (C.int)(button1), (C.int)(button2))
+	ret := C.QMessageBox_Critical6(parent.cPointer(), title_Cstring, C.size_t(len(title)), text_Cstring, C.size_t(len(text)), (C.int)(button0), (C.int)(button1), (C.int)(button2))
 	return (int)(ret)
 }
 
@@ -918,7 +918,7 @@ func QMessageBox_Critical52(parent *QWidget, title string, text string, button0T
 	defer C.free(unsafe.Pointer(button0Text_Cstring))
 	button1Text_Cstring := C.CString(button1Text)
 	defer C.free(unsafe.Pointer(button1Text_Cstring))
-	ret := C.QMessageBox_Critical52(parent.cPointer(), title_Cstring, C.ulong(len(title)), text_Cstring, C.ulong(len(text)), button0Text_Cstring, C.ulong(len(button0Text)), button1Text_Cstring, C.ulong(len(button1Text)))
+	ret := C.QMessageBox_Critical52(parent.cPointer(), title_Cstring, C.size_t(len(title)), text_Cstring, C.size_t(len(text)), button0Text_Cstring, C.size_t(len(button0Text)), button1Text_Cstring, C.size_t(len(button1Text)))
 	return (int)(ret)
 }
 
@@ -933,7 +933,7 @@ func QMessageBox_Critical62(parent *QWidget, title string, text string, button0T
 	defer C.free(unsafe.Pointer(button1Text_Cstring))
 	button2Text_Cstring := C.CString(button2Text)
 	defer C.free(unsafe.Pointer(button2Text_Cstring))
-	ret := C.QMessageBox_Critical62(parent.cPointer(), title_Cstring, C.ulong(len(title)), text_Cstring, C.ulong(len(text)), button0Text_Cstring, C.ulong(len(button0Text)), button1Text_Cstring, C.ulong(len(button1Text)), button2Text_Cstring, C.ulong(len(button2Text)))
+	ret := C.QMessageBox_Critical62(parent.cPointer(), title_Cstring, C.size_t(len(title)), text_Cstring, C.size_t(len(text)), button0Text_Cstring, C.size_t(len(button0Text)), button1Text_Cstring, C.size_t(len(button1Text)), button2Text_Cstring, C.size_t(len(button2Text)))
 	return (int)(ret)
 }
 
@@ -948,7 +948,7 @@ func QMessageBox_Critical7(parent *QWidget, title string, text string, button0Te
 	defer C.free(unsafe.Pointer(button1Text_Cstring))
 	button2Text_Cstring := C.CString(button2Text)
 	defer C.free(unsafe.Pointer(button2Text_Cstring))
-	ret := C.QMessageBox_Critical7(parent.cPointer(), title_Cstring, C.ulong(len(title)), text_Cstring, C.ulong(len(text)), button0Text_Cstring, C.ulong(len(button0Text)), button1Text_Cstring, C.ulong(len(button1Text)), button2Text_Cstring, C.ulong(len(button2Text)), (C.int)(defaultButtonNumber))
+	ret := C.QMessageBox_Critical7(parent.cPointer(), title_Cstring, C.size_t(len(title)), text_Cstring, C.size_t(len(text)), button0Text_Cstring, C.size_t(len(button0Text)), button1Text_Cstring, C.size_t(len(button1Text)), button2Text_Cstring, C.size_t(len(button2Text)), (C.int)(defaultButtonNumber))
 	return (int)(ret)
 }
 
@@ -963,7 +963,7 @@ func QMessageBox_Critical8(parent *QWidget, title string, text string, button0Te
 	defer C.free(unsafe.Pointer(button1Text_Cstring))
 	button2Text_Cstring := C.CString(button2Text)
 	defer C.free(unsafe.Pointer(button2Text_Cstring))
-	ret := C.QMessageBox_Critical8(parent.cPointer(), title_Cstring, C.ulong(len(title)), text_Cstring, C.ulong(len(text)), button0Text_Cstring, C.ulong(len(button0Text)), button1Text_Cstring, C.ulong(len(button1Text)), button2Text_Cstring, C.ulong(len(button2Text)), (C.int)(defaultButtonNumber), (C.int)(escapeButtonNumber))
+	ret := C.QMessageBox_Critical8(parent.cPointer(), title_Cstring, C.size_t(len(title)), text_Cstring, C.size_t(len(text)), button0Text_Cstring, C.size_t(len(button0Text)), button1Text_Cstring, C.size_t(len(button1Text)), button2Text_Cstring, C.size_t(len(button2Text)), (C.int)(defaultButtonNumber), (C.int)(escapeButtonNumber))
 	return (int)(ret)
 }
 

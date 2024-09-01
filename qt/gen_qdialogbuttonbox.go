@@ -127,7 +127,7 @@ func (this *QDialogButtonBox) AddButton(button *QAbstractButton, role uintptr) {
 func (this *QDialogButtonBox) AddButton2(text string, role uintptr) *QPushButton {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QDialogButtonBox_AddButton2(this.h, text_Cstring, C.ulong(len(text)), (C.uintptr_t)(role))
+	ret := C.QDialogButtonBox_AddButton2(this.h, text_Cstring, C.size_t(len(text)), (C.uintptr_t)(role))
 	return newQPushButton_U(unsafe.Pointer(ret))
 }
 

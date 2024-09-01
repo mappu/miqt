@@ -100,7 +100,7 @@ func QLibraryInfo_PlatformPluginArguments(platformName string) []string {
 	var _out **C.char = nil
 	var _out_Lengths *C.int = nil
 	var _out_len C.size_t = 0
-	C.QLibraryInfo_PlatformPluginArguments(platformName_Cstring, C.ulong(len(platformName)), &_out, &_out_Lengths, &_out_len)
+	C.QLibraryInfo_PlatformPluginArguments(platformName_Cstring, C.size_t(len(platformName)), &_out, &_out_Lengths, &_out_len)
 	ret := make([]string, int(_out_len))
 	_outCast := (*[0xffff]*C.char)(unsafe.Pointer(_out)) // hey ya
 	_out_LengthsCast := (*[0xffff]C.int)(unsafe.Pointer(_out_Lengths))

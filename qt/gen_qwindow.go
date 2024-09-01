@@ -470,7 +470,7 @@ func (this *QWindow) Resize2(w int, h int) {
 func (this *QWindow) SetFilePath(filePath string) {
 	filePath_Cstring := C.CString(filePath)
 	defer C.free(unsafe.Pointer(filePath_Cstring))
-	C.QWindow_SetFilePath(this.h, filePath_Cstring, C.ulong(len(filePath)))
+	C.QWindow_SetFilePath(this.h, filePath_Cstring, C.size_t(len(filePath)))
 }
 
 func (this *QWindow) FilePath() string {
@@ -634,7 +634,7 @@ func (this *QWindow) StartSystemMove() bool {
 func (this *QWindow) SetTitle(title string) {
 	title_Cstring := C.CString(title)
 	defer C.free(unsafe.Pointer(title_Cstring))
-	C.QWindow_SetTitle(this.h, title_Cstring, C.ulong(len(title)))
+	C.QWindow_SetTitle(this.h, title_Cstring, C.size_t(len(title)))
 }
 
 func (this *QWindow) SetX(arg int) {
@@ -724,7 +724,7 @@ func (this *QWindow) OnWindowStateChanged(slot func()) {
 func (this *QWindow) WindowTitleChanged(title string) {
 	title_Cstring := C.CString(title)
 	defer C.free(unsafe.Pointer(title_Cstring))
-	C.QWindow_WindowTitleChanged(this.h, title_Cstring, C.ulong(len(title)))
+	C.QWindow_WindowTitleChanged(this.h, title_Cstring, C.size_t(len(title)))
 }
 
 func (this *QWindow) OnWindowTitleChanged(slot func()) {

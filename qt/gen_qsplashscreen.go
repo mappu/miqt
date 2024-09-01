@@ -153,7 +153,7 @@ func (this *QSplashScreen) Message() string {
 func (this *QSplashScreen) ShowMessage(message string) {
 	message_Cstring := C.CString(message)
 	defer C.free(unsafe.Pointer(message_Cstring))
-	C.QSplashScreen_ShowMessage(this.h, message_Cstring, C.ulong(len(message)))
+	C.QSplashScreen_ShowMessage(this.h, message_Cstring, C.size_t(len(message)))
 }
 
 func (this *QSplashScreen) ClearMessage() {
@@ -163,7 +163,7 @@ func (this *QSplashScreen) ClearMessage() {
 func (this *QSplashScreen) MessageChanged(message string) {
 	message_Cstring := C.CString(message)
 	defer C.free(unsafe.Pointer(message_Cstring))
-	C.QSplashScreen_MessageChanged(this.h, message_Cstring, C.ulong(len(message)))
+	C.QSplashScreen_MessageChanged(this.h, message_Cstring, C.size_t(len(message)))
 }
 
 func (this *QSplashScreen) OnMessageChanged(slot func()) {
@@ -229,13 +229,13 @@ func QSplashScreen_TrUtf83(s string, c string, n int) string {
 func (this *QSplashScreen) ShowMessage2(message string, alignment int) {
 	message_Cstring := C.CString(message)
 	defer C.free(unsafe.Pointer(message_Cstring))
-	C.QSplashScreen_ShowMessage2(this.h, message_Cstring, C.ulong(len(message)), (C.int)(alignment))
+	C.QSplashScreen_ShowMessage2(this.h, message_Cstring, C.size_t(len(message)), (C.int)(alignment))
 }
 
 func (this *QSplashScreen) ShowMessage3(message string, alignment int, color *QColor) {
 	message_Cstring := C.CString(message)
 	defer C.free(unsafe.Pointer(message_Cstring))
-	C.QSplashScreen_ShowMessage3(this.h, message_Cstring, C.ulong(len(message)), (C.int)(alignment), color.cPointer())
+	C.QSplashScreen_ShowMessage3(this.h, message_Cstring, C.size_t(len(message)), (C.int)(alignment), color.cPointer())
 }
 
 func (this *QSplashScreen) Delete() {

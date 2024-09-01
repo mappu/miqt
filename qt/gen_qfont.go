@@ -45,7 +45,7 @@ func NewQFont() *QFont {
 func NewQFont2(family string) *QFont {
 	family_Cstring := C.CString(family)
 	defer C.free(unsafe.Pointer(family_Cstring))
-	ret := C.QFont_new2(family_Cstring, C.ulong(len(family)))
+	ret := C.QFont_new2(family_Cstring, C.size_t(len(family)))
 	return newQFont(ret)
 }
 
@@ -71,7 +71,7 @@ func NewQFont5(font *QFont) *QFont {
 func NewQFont6(family string, pointSize int) *QFont {
 	family_Cstring := C.CString(family)
 	defer C.free(unsafe.Pointer(family_Cstring))
-	ret := C.QFont_new6(family_Cstring, C.ulong(len(family)), (C.int)(pointSize))
+	ret := C.QFont_new6(family_Cstring, C.size_t(len(family)), (C.int)(pointSize))
 	return newQFont(ret)
 }
 
@@ -79,7 +79,7 @@ func NewQFont6(family string, pointSize int) *QFont {
 func NewQFont7(family string, pointSize int, weight int) *QFont {
 	family_Cstring := C.CString(family)
 	defer C.free(unsafe.Pointer(family_Cstring))
-	ret := C.QFont_new7(family_Cstring, C.ulong(len(family)), (C.int)(pointSize), (C.int)(weight))
+	ret := C.QFont_new7(family_Cstring, C.size_t(len(family)), (C.int)(pointSize), (C.int)(weight))
 	return newQFont(ret)
 }
 
@@ -87,7 +87,7 @@ func NewQFont7(family string, pointSize int, weight int) *QFont {
 func NewQFont8(family string, pointSize int, weight int, italic bool) *QFont {
 	family_Cstring := C.CString(family)
 	defer C.free(unsafe.Pointer(family_Cstring))
-	ret := C.QFont_new8(family_Cstring, C.ulong(len(family)), (C.int)(pointSize), (C.int)(weight), (C.bool)(italic))
+	ret := C.QFont_new8(family_Cstring, C.size_t(len(family)), (C.int)(pointSize), (C.int)(weight), (C.bool)(italic))
 	return newQFont(ret)
 }
 
@@ -107,7 +107,7 @@ func (this *QFont) Family() string {
 func (this *QFont) SetFamily(family string) {
 	family_Cstring := C.CString(family)
 	defer C.free(unsafe.Pointer(family_Cstring))
-	C.QFont_SetFamily(this.h, family_Cstring, C.ulong(len(family)))
+	C.QFont_SetFamily(this.h, family_Cstring, C.size_t(len(family)))
 }
 
 func (this *QFont) Families() []string {
@@ -128,16 +128,16 @@ func (this *QFont) Families() []string {
 func (this *QFont) SetFamilies(families []string) {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
 	families_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(families))))
-	families_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(families))))
+	families_Lengths := (*[0xffff]C.uint64_t)(C.malloc(C.size_t(8 * len(families))))
 	defer C.free(unsafe.Pointer(families_CArray))
 	defer C.free(unsafe.Pointer(families_Lengths))
 	for i := range families {
 		single_cstring := C.CString(families[i])
 		defer C.free(unsafe.Pointer(single_cstring))
 		families_CArray[i] = single_cstring
-		families_Lengths[i] = (C.size_t)(len(families[i]))
+		families_Lengths[i] = (C.uint64_t)(len(families[i]))
 	}
-	C.QFont_SetFamilies(this.h, &families_CArray[0], &families_Lengths[0], C.ulong(len(families)))
+	C.QFont_SetFamilies(this.h, &families_CArray[0], &families_Lengths[0], C.size_t(len(families)))
 }
 
 func (this *QFont) StyleName() string {
@@ -152,7 +152,7 @@ func (this *QFont) StyleName() string {
 func (this *QFont) SetStyleName(styleName string) {
 	styleName_Cstring := C.CString(styleName)
 	defer C.free(unsafe.Pointer(styleName_Cstring))
-	C.QFont_SetStyleName(this.h, styleName_Cstring, C.ulong(len(styleName)))
+	C.QFont_SetStyleName(this.h, styleName_Cstring, C.size_t(len(styleName)))
 }
 
 func (this *QFont) PointSize() int {
@@ -372,7 +372,7 @@ func (this *QFont) IsCopyOf(param1 *QFont) bool {
 func (this *QFont) SetRawName(rawName string) {
 	rawName_Cstring := C.CString(rawName)
 	defer C.free(unsafe.Pointer(rawName_Cstring))
-	C.QFont_SetRawName(this.h, rawName_Cstring, C.ulong(len(rawName)))
+	C.QFont_SetRawName(this.h, rawName_Cstring, C.size_t(len(rawName)))
 }
 
 func (this *QFont) RawName() string {
@@ -405,7 +405,7 @@ func (this *QFont) ToString() string {
 func (this *QFont) FromString(param1 string) bool {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	ret := C.QFont_FromString(this.h, param1_Cstring, C.ulong(len(param1)))
+	ret := C.QFont_FromString(this.h, param1_Cstring, C.size_t(len(param1)))
 	return (bool)(ret)
 }
 
@@ -414,7 +414,7 @@ func QFont_Substitute(param1 string) string {
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
-	C.QFont_Substitute(param1_Cstring, C.ulong(len(param1)), &_out, &_out_Strlen)
+	C.QFont_Substitute(param1_Cstring, C.size_t(len(param1)), &_out, &_out_Strlen)
 	ret := C.GoStringN(_out, _out_Strlen)
 	C.free(unsafe.Pointer(_out))
 	return ret
@@ -426,7 +426,7 @@ func QFont_Substitutes(param1 string) []string {
 	var _out **C.char = nil
 	var _out_Lengths *C.int = nil
 	var _out_len C.size_t = 0
-	C.QFont_Substitutes(param1_Cstring, C.ulong(len(param1)), &_out, &_out_Lengths, &_out_len)
+	C.QFont_Substitutes(param1_Cstring, C.size_t(len(param1)), &_out, &_out_Lengths, &_out_len)
 	ret := make([]string, int(_out_len))
 	_outCast := (*[0xffff]*C.char)(unsafe.Pointer(_out)) // hey ya
 	_out_LengthsCast := (*[0xffff]C.int)(unsafe.Pointer(_out_Lengths))
@@ -457,7 +457,7 @@ func QFont_InsertSubstitution(param1 string, param2 string) {
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	param2_Cstring := C.CString(param2)
 	defer C.free(unsafe.Pointer(param2_Cstring))
-	C.QFont_InsertSubstitution(param1_Cstring, C.ulong(len(param1)), param2_Cstring, C.ulong(len(param2)))
+	C.QFont_InsertSubstitution(param1_Cstring, C.size_t(len(param1)), param2_Cstring, C.size_t(len(param2)))
 }
 
 func QFont_InsertSubstitutions(param1 string, param2 []string) {
@@ -465,22 +465,22 @@ func QFont_InsertSubstitutions(param1 string, param2 []string) {
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
 	param2_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(param2))))
-	param2_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(param2))))
+	param2_Lengths := (*[0xffff]C.uint64_t)(C.malloc(C.size_t(8 * len(param2))))
 	defer C.free(unsafe.Pointer(param2_CArray))
 	defer C.free(unsafe.Pointer(param2_Lengths))
 	for i := range param2 {
 		single_cstring := C.CString(param2[i])
 		defer C.free(unsafe.Pointer(single_cstring))
 		param2_CArray[i] = single_cstring
-		param2_Lengths[i] = (C.size_t)(len(param2[i]))
+		param2_Lengths[i] = (C.uint64_t)(len(param2[i]))
 	}
-	C.QFont_InsertSubstitutions(param1_Cstring, C.ulong(len(param1)), &param2_CArray[0], &param2_Lengths[0], C.ulong(len(param2)))
+	C.QFont_InsertSubstitutions(param1_Cstring, C.size_t(len(param1)), &param2_CArray[0], &param2_Lengths[0], C.size_t(len(param2)))
 }
 
 func QFont_RemoveSubstitutions(param1 string) {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	C.QFont_RemoveSubstitutions(param1_Cstring, C.ulong(len(param1)))
+	C.QFont_RemoveSubstitutions(param1_Cstring, C.size_t(len(param1)))
 }
 
 func QFont_Initialize() {

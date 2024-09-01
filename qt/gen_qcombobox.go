@@ -138,7 +138,7 @@ func (this *QComboBox) HasFrame() bool {
 func (this *QComboBox) FindText(text string) int {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QComboBox_FindText(this.h, text_Cstring, C.ulong(len(text)))
+	ret := C.QComboBox_FindText(this.h, text_Cstring, C.size_t(len(text)))
 	return (int)(ret)
 }
 
@@ -192,7 +192,7 @@ func (this *QComboBox) SetIconSize(size *QSize) {
 func (this *QComboBox) SetPlaceholderText(placeholderText string) {
 	placeholderText_Cstring := C.CString(placeholderText)
 	defer C.free(unsafe.Pointer(placeholderText_Cstring))
-	C.QComboBox_SetPlaceholderText(this.h, placeholderText_Cstring, C.ulong(len(placeholderText)))
+	C.QComboBox_SetPlaceholderText(this.h, placeholderText_Cstring, C.size_t(len(placeholderText)))
 }
 
 func (this *QComboBox) PlaceholderText() string {
@@ -341,55 +341,55 @@ func (this *QComboBox) ItemData(index int) *QVariant {
 func (this *QComboBox) AddItem(text string) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QComboBox_AddItem(this.h, text_Cstring, C.ulong(len(text)))
+	C.QComboBox_AddItem(this.h, text_Cstring, C.size_t(len(text)))
 }
 
 func (this *QComboBox) AddItem2(icon *QIcon, text string) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QComboBox_AddItem2(this.h, icon.cPointer(), text_Cstring, C.ulong(len(text)))
+	C.QComboBox_AddItem2(this.h, icon.cPointer(), text_Cstring, C.size_t(len(text)))
 }
 
 func (this *QComboBox) AddItems(texts []string) {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
 	texts_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(texts))))
-	texts_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(texts))))
+	texts_Lengths := (*[0xffff]C.uint64_t)(C.malloc(C.size_t(8 * len(texts))))
 	defer C.free(unsafe.Pointer(texts_CArray))
 	defer C.free(unsafe.Pointer(texts_Lengths))
 	for i := range texts {
 		single_cstring := C.CString(texts[i])
 		defer C.free(unsafe.Pointer(single_cstring))
 		texts_CArray[i] = single_cstring
-		texts_Lengths[i] = (C.size_t)(len(texts[i]))
+		texts_Lengths[i] = (C.uint64_t)(len(texts[i]))
 	}
-	C.QComboBox_AddItems(this.h, &texts_CArray[0], &texts_Lengths[0], C.ulong(len(texts)))
+	C.QComboBox_AddItems(this.h, &texts_CArray[0], &texts_Lengths[0], C.size_t(len(texts)))
 }
 
 func (this *QComboBox) InsertItem(index int, text string) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QComboBox_InsertItem(this.h, (C.int)(index), text_Cstring, C.ulong(len(text)))
+	C.QComboBox_InsertItem(this.h, (C.int)(index), text_Cstring, C.size_t(len(text)))
 }
 
 func (this *QComboBox) InsertItem2(index int, icon *QIcon, text string) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QComboBox_InsertItem2(this.h, (C.int)(index), icon.cPointer(), text_Cstring, C.ulong(len(text)))
+	C.QComboBox_InsertItem2(this.h, (C.int)(index), icon.cPointer(), text_Cstring, C.size_t(len(text)))
 }
 
 func (this *QComboBox) InsertItems(index int, texts []string) {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
 	texts_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(texts))))
-	texts_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(texts))))
+	texts_Lengths := (*[0xffff]C.uint64_t)(C.malloc(C.size_t(8 * len(texts))))
 	defer C.free(unsafe.Pointer(texts_CArray))
 	defer C.free(unsafe.Pointer(texts_Lengths))
 	for i := range texts {
 		single_cstring := C.CString(texts[i])
 		defer C.free(unsafe.Pointer(single_cstring))
 		texts_CArray[i] = single_cstring
-		texts_Lengths[i] = (C.size_t)(len(texts[i]))
+		texts_Lengths[i] = (C.uint64_t)(len(texts[i]))
 	}
-	C.QComboBox_InsertItems(this.h, (C.int)(index), &texts_CArray[0], &texts_Lengths[0], C.ulong(len(texts)))
+	C.QComboBox_InsertItems(this.h, (C.int)(index), &texts_CArray[0], &texts_Lengths[0], C.size_t(len(texts)))
 }
 
 func (this *QComboBox) InsertSeparator(index int) {
@@ -403,7 +403,7 @@ func (this *QComboBox) RemoveItem(index int) {
 func (this *QComboBox) SetItemText(index int, text string) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QComboBox_SetItemText(this.h, (C.int)(index), text_Cstring, C.ulong(len(text)))
+	C.QComboBox_SetItemText(this.h, (C.int)(index), text_Cstring, C.size_t(len(text)))
 }
 
 func (this *QComboBox) SetItemIcon(index int, icon *QIcon) {
@@ -491,7 +491,7 @@ func (this *QComboBox) ClearEditText() {
 func (this *QComboBox) SetEditText(text string) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QComboBox_SetEditText(this.h, text_Cstring, C.ulong(len(text)))
+	C.QComboBox_SetEditText(this.h, text_Cstring, C.size_t(len(text)))
 }
 
 func (this *QComboBox) SetCurrentIndex(index int) {
@@ -501,13 +501,13 @@ func (this *QComboBox) SetCurrentIndex(index int) {
 func (this *QComboBox) SetCurrentText(text string) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QComboBox_SetCurrentText(this.h, text_Cstring, C.ulong(len(text)))
+	C.QComboBox_SetCurrentText(this.h, text_Cstring, C.size_t(len(text)))
 }
 
 func (this *QComboBox) EditTextChanged(param1 string) {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	C.QComboBox_EditTextChanged(this.h, param1_Cstring, C.ulong(len(param1)))
+	C.QComboBox_EditTextChanged(this.h, param1_Cstring, C.size_t(len(param1)))
 }
 
 func (this *QComboBox) OnEditTextChanged(slot func()) {
@@ -533,7 +533,7 @@ func (this *QComboBox) OnActivated(slot func()) {
 func (this *QComboBox) TextActivated(param1 string) {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	C.QComboBox_TextActivated(this.h, param1_Cstring, C.ulong(len(param1)))
+	C.QComboBox_TextActivated(this.h, param1_Cstring, C.size_t(len(param1)))
 }
 
 func (this *QComboBox) OnTextActivated(slot func()) {
@@ -559,7 +559,7 @@ func (this *QComboBox) OnHighlighted(slot func()) {
 func (this *QComboBox) TextHighlighted(param1 string) {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	C.QComboBox_TextHighlighted(this.h, param1_Cstring, C.ulong(len(param1)))
+	C.QComboBox_TextHighlighted(this.h, param1_Cstring, C.size_t(len(param1)))
 }
 
 func (this *QComboBox) OnTextHighlighted(slot func()) {
@@ -585,7 +585,7 @@ func (this *QComboBox) OnCurrentIndexChanged(slot func()) {
 func (this *QComboBox) CurrentIndexChangedWithQString(param1 string) {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	C.QComboBox_CurrentIndexChangedWithQString(this.h, param1_Cstring, C.ulong(len(param1)))
+	C.QComboBox_CurrentIndexChangedWithQString(this.h, param1_Cstring, C.size_t(len(param1)))
 }
 
 func (this *QComboBox) OnCurrentIndexChangedWithQString(slot func()) {
@@ -599,7 +599,7 @@ func (this *QComboBox) OnCurrentIndexChangedWithQString(slot func()) {
 func (this *QComboBox) CurrentTextChanged(param1 string) {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	C.QComboBox_CurrentTextChanged(this.h, param1_Cstring, C.ulong(len(param1)))
+	C.QComboBox_CurrentTextChanged(this.h, param1_Cstring, C.size_t(len(param1)))
 }
 
 func (this *QComboBox) OnCurrentTextChanged(slot func()) {
@@ -613,7 +613,7 @@ func (this *QComboBox) OnCurrentTextChanged(slot func()) {
 func (this *QComboBox) ActivatedWithQString(param1 string) {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	C.QComboBox_ActivatedWithQString(this.h, param1_Cstring, C.ulong(len(param1)))
+	C.QComboBox_ActivatedWithQString(this.h, param1_Cstring, C.size_t(len(param1)))
 }
 
 func (this *QComboBox) OnActivatedWithQString(slot func()) {
@@ -627,7 +627,7 @@ func (this *QComboBox) OnActivatedWithQString(slot func()) {
 func (this *QComboBox) HighlightedWithQString(param1 string) {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	C.QComboBox_HighlightedWithQString(this.h, param1_Cstring, C.ulong(len(param1)))
+	C.QComboBox_HighlightedWithQString(this.h, param1_Cstring, C.size_t(len(param1)))
 }
 
 func (this *QComboBox) OnHighlightedWithQString(slot func()) {
@@ -693,7 +693,7 @@ func QComboBox_TrUtf83(s string, c string, n int) string {
 func (this *QComboBox) FindText2(text string, flags int) int {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QComboBox_FindText2(this.h, text_Cstring, C.ulong(len(text)), (C.int)(flags))
+	ret := C.QComboBox_FindText2(this.h, text_Cstring, C.size_t(len(text)), (C.int)(flags))
 	return (int)(ret)
 }
 
@@ -732,25 +732,25 @@ func (this *QComboBox) ItemData2(index int, role int) *QVariant {
 func (this *QComboBox) AddItem22(text string, userData *QVariant) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QComboBox_AddItem22(this.h, text_Cstring, C.ulong(len(text)), userData.cPointer())
+	C.QComboBox_AddItem22(this.h, text_Cstring, C.size_t(len(text)), userData.cPointer())
 }
 
 func (this *QComboBox) AddItem3(icon *QIcon, text string, userData *QVariant) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QComboBox_AddItem3(this.h, icon.cPointer(), text_Cstring, C.ulong(len(text)), userData.cPointer())
+	C.QComboBox_AddItem3(this.h, icon.cPointer(), text_Cstring, C.size_t(len(text)), userData.cPointer())
 }
 
 func (this *QComboBox) InsertItem3(index int, text string, userData *QVariant) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QComboBox_InsertItem3(this.h, (C.int)(index), text_Cstring, C.ulong(len(text)), userData.cPointer())
+	C.QComboBox_InsertItem3(this.h, (C.int)(index), text_Cstring, C.size_t(len(text)), userData.cPointer())
 }
 
 func (this *QComboBox) InsertItem4(index int, icon *QIcon, text string, userData *QVariant) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QComboBox_InsertItem4(this.h, (C.int)(index), icon.cPointer(), text_Cstring, C.ulong(len(text)), userData.cPointer())
+	C.QComboBox_InsertItem4(this.h, (C.int)(index), icon.cPointer(), text_Cstring, C.size_t(len(text)), userData.cPointer())
 }
 
 func (this *QComboBox) SetItemData3(index int, value *QVariant, role int) {

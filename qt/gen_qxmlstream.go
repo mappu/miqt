@@ -44,7 +44,7 @@ func NewQXmlStreamStringRef() *QXmlStreamStringRef {
 func NewQXmlStreamStringRef2(aString string) *QXmlStreamStringRef {
 	aString_Cstring := C.CString(aString)
 	defer C.free(unsafe.Pointer(aString_Cstring))
-	ret := C.QXmlStreamStringRef_new2(aString_Cstring, C.ulong(len(aString)))
+	ret := C.QXmlStreamStringRef_new2(aString_Cstring, C.size_t(len(aString)))
 	return newQXmlStreamStringRef(ret)
 }
 
@@ -123,7 +123,7 @@ func NewQXmlStreamAttribute2(qualifiedName string, value string) *QXmlStreamAttr
 	defer C.free(unsafe.Pointer(qualifiedName_Cstring))
 	value_Cstring := C.CString(value)
 	defer C.free(unsafe.Pointer(value_Cstring))
-	ret := C.QXmlStreamAttribute_new2(qualifiedName_Cstring, C.ulong(len(qualifiedName)), value_Cstring, C.ulong(len(value)))
+	ret := C.QXmlStreamAttribute_new2(qualifiedName_Cstring, C.size_t(len(qualifiedName)), value_Cstring, C.size_t(len(value)))
 	return newQXmlStreamAttribute(ret)
 }
 
@@ -135,7 +135,7 @@ func NewQXmlStreamAttribute3(namespaceUri string, name string, value string) *QX
 	defer C.free(unsafe.Pointer(name_Cstring))
 	value_Cstring := C.CString(value)
 	defer C.free(unsafe.Pointer(value_Cstring))
-	ret := C.QXmlStreamAttribute_new3(namespaceUri_Cstring, C.ulong(len(namespaceUri)), name_Cstring, C.ulong(len(name)), value_Cstring, C.ulong(len(value)))
+	ret := C.QXmlStreamAttribute_new3(namespaceUri_Cstring, C.size_t(len(namespaceUri)), name_Cstring, C.size_t(len(name)), value_Cstring, C.size_t(len(value)))
 	return newQXmlStreamAttribute(ret)
 }
 
@@ -202,7 +202,7 @@ func NewQXmlStreamNamespaceDeclaration2(prefix string, namespaceUri string) *QXm
 	defer C.free(unsafe.Pointer(prefix_Cstring))
 	namespaceUri_Cstring := C.CString(namespaceUri)
 	defer C.free(unsafe.Pointer(namespaceUri_Cstring))
-	ret := C.QXmlStreamNamespaceDeclaration_new2(prefix_Cstring, C.ulong(len(prefix)), namespaceUri_Cstring, C.ulong(len(namespaceUri)))
+	ret := C.QXmlStreamNamespaceDeclaration_new2(prefix_Cstring, C.size_t(len(prefix)), namespaceUri_Cstring, C.size_t(len(namespaceUri)))
 	return newQXmlStreamNamespaceDeclaration(ret)
 }
 
@@ -363,7 +363,7 @@ func (this *QXmlStreamEntityResolver) ResolveEntity(publicId string, systemId st
 	defer C.free(unsafe.Pointer(systemId_Cstring))
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
-	C.QXmlStreamEntityResolver_ResolveEntity(this.h, publicId_Cstring, C.ulong(len(publicId)), systemId_Cstring, C.ulong(len(systemId)), &_out, &_out_Strlen)
+	C.QXmlStreamEntityResolver_ResolveEntity(this.h, publicId_Cstring, C.size_t(len(publicId)), systemId_Cstring, C.size_t(len(systemId)), &_out, &_out_Strlen)
 	ret := C.GoStringN(_out, _out_Strlen)
 	C.free(unsafe.Pointer(_out))
 	return ret
@@ -374,7 +374,7 @@ func (this *QXmlStreamEntityResolver) ResolveUndeclaredEntity(name string) strin
 	defer C.free(unsafe.Pointer(name_Cstring))
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
-	C.QXmlStreamEntityResolver_ResolveUndeclaredEntity(this.h, name_Cstring, C.ulong(len(name)), &_out, &_out_Strlen)
+	C.QXmlStreamEntityResolver_ResolveUndeclaredEntity(this.h, name_Cstring, C.size_t(len(name)), &_out, &_out_Strlen)
 	ret := C.GoStringN(_out, _out_Strlen)
 	C.free(unsafe.Pointer(_out))
 	return ret
@@ -432,7 +432,7 @@ func NewQXmlStreamReader3(data *QByteArray) *QXmlStreamReader {
 func NewQXmlStreamReader4(data string) *QXmlStreamReader {
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
-	ret := C.QXmlStreamReader_new4(data_Cstring, C.ulong(len(data)))
+	ret := C.QXmlStreamReader_new4(data_Cstring, C.size_t(len(data)))
 	return newQXmlStreamReader(ret)
 }
 
@@ -460,7 +460,7 @@ func (this *QXmlStreamReader) AddData(data *QByteArray) {
 func (this *QXmlStreamReader) AddDataWithData(data string) {
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
-	C.QXmlStreamReader_AddDataWithData(this.h, data_Cstring, C.ulong(len(data)))
+	C.QXmlStreamReader_AddDataWithData(this.h, data_Cstring, C.size_t(len(data)))
 }
 
 func (this *QXmlStreamReader) AddData2(data string) {
@@ -623,7 +623,7 @@ func (this *QXmlStreamReader) AddExtraNamespaceDeclarations(extraNamespaceDeclar
 	for i := range extraNamespaceDeclaractions {
 		extraNamespaceDeclaractions_CArray[i] = extraNamespaceDeclaractions[i].cPointer()
 	}
-	C.QXmlStreamReader_AddExtraNamespaceDeclarations(this.h, &extraNamespaceDeclaractions_CArray[0], C.ulong(len(extraNamespaceDeclaractions)))
+	C.QXmlStreamReader_AddExtraNamespaceDeclarations(this.h, &extraNamespaceDeclaractions_CArray[0], C.size_t(len(extraNamespaceDeclaractions)))
 }
 
 func (this *QXmlStreamReader) NotationDeclarations() []QXmlStreamNotationDeclaration {
@@ -705,7 +705,7 @@ func (this *QXmlStreamReader) ReadElementText1(behaviour uintptr) string {
 func (this *QXmlStreamReader) RaiseError1(message string) {
 	message_Cstring := C.CString(message)
 	defer C.free(unsafe.Pointer(message_Cstring))
-	C.QXmlStreamReader_RaiseError1(this.h, message_Cstring, C.ulong(len(message)))
+	C.QXmlStreamReader_RaiseError1(this.h, message_Cstring, C.size_t(len(message)))
 }
 
 func (this *QXmlStreamReader) Delete() {
@@ -799,7 +799,7 @@ func (this *QXmlStreamWriter) WriteAttribute(qualifiedName string, value string)
 	defer C.free(unsafe.Pointer(qualifiedName_Cstring))
 	value_Cstring := C.CString(value)
 	defer C.free(unsafe.Pointer(value_Cstring))
-	C.QXmlStreamWriter_WriteAttribute(this.h, qualifiedName_Cstring, C.ulong(len(qualifiedName)), value_Cstring, C.ulong(len(value)))
+	C.QXmlStreamWriter_WriteAttribute(this.h, qualifiedName_Cstring, C.size_t(len(qualifiedName)), value_Cstring, C.size_t(len(value)))
 }
 
 func (this *QXmlStreamWriter) WriteAttribute2(namespaceUri string, name string, value string) {
@@ -809,7 +809,7 @@ func (this *QXmlStreamWriter) WriteAttribute2(namespaceUri string, name string, 
 	defer C.free(unsafe.Pointer(name_Cstring))
 	value_Cstring := C.CString(value)
 	defer C.free(unsafe.Pointer(value_Cstring))
-	C.QXmlStreamWriter_WriteAttribute2(this.h, namespaceUri_Cstring, C.ulong(len(namespaceUri)), name_Cstring, C.ulong(len(name)), value_Cstring, C.ulong(len(value)))
+	C.QXmlStreamWriter_WriteAttribute2(this.h, namespaceUri_Cstring, C.size_t(len(namespaceUri)), name_Cstring, C.size_t(len(name)), value_Cstring, C.size_t(len(value)))
 }
 
 func (this *QXmlStreamWriter) WriteAttributeWithAttribute(attribute *QXmlStreamAttribute) {
@@ -819,31 +819,31 @@ func (this *QXmlStreamWriter) WriteAttributeWithAttribute(attribute *QXmlStreamA
 func (this *QXmlStreamWriter) WriteCDATA(text string) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QXmlStreamWriter_WriteCDATA(this.h, text_Cstring, C.ulong(len(text)))
+	C.QXmlStreamWriter_WriteCDATA(this.h, text_Cstring, C.size_t(len(text)))
 }
 
 func (this *QXmlStreamWriter) WriteCharacters(text string) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QXmlStreamWriter_WriteCharacters(this.h, text_Cstring, C.ulong(len(text)))
+	C.QXmlStreamWriter_WriteCharacters(this.h, text_Cstring, C.size_t(len(text)))
 }
 
 func (this *QXmlStreamWriter) WriteComment(text string) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QXmlStreamWriter_WriteComment(this.h, text_Cstring, C.ulong(len(text)))
+	C.QXmlStreamWriter_WriteComment(this.h, text_Cstring, C.size_t(len(text)))
 }
 
 func (this *QXmlStreamWriter) WriteDTD(dtd string) {
 	dtd_Cstring := C.CString(dtd)
 	defer C.free(unsafe.Pointer(dtd_Cstring))
-	C.QXmlStreamWriter_WriteDTD(this.h, dtd_Cstring, C.ulong(len(dtd)))
+	C.QXmlStreamWriter_WriteDTD(this.h, dtd_Cstring, C.size_t(len(dtd)))
 }
 
 func (this *QXmlStreamWriter) WriteEmptyElement(qualifiedName string) {
 	qualifiedName_Cstring := C.CString(qualifiedName)
 	defer C.free(unsafe.Pointer(qualifiedName_Cstring))
-	C.QXmlStreamWriter_WriteEmptyElement(this.h, qualifiedName_Cstring, C.ulong(len(qualifiedName)))
+	C.QXmlStreamWriter_WriteEmptyElement(this.h, qualifiedName_Cstring, C.size_t(len(qualifiedName)))
 }
 
 func (this *QXmlStreamWriter) WriteEmptyElement2(namespaceUri string, name string) {
@@ -851,7 +851,7 @@ func (this *QXmlStreamWriter) WriteEmptyElement2(namespaceUri string, name strin
 	defer C.free(unsafe.Pointer(namespaceUri_Cstring))
 	name_Cstring := C.CString(name)
 	defer C.free(unsafe.Pointer(name_Cstring))
-	C.QXmlStreamWriter_WriteEmptyElement2(this.h, namespaceUri_Cstring, C.ulong(len(namespaceUri)), name_Cstring, C.ulong(len(name)))
+	C.QXmlStreamWriter_WriteEmptyElement2(this.h, namespaceUri_Cstring, C.size_t(len(namespaceUri)), name_Cstring, C.size_t(len(name)))
 }
 
 func (this *QXmlStreamWriter) WriteTextElement(qualifiedName string, text string) {
@@ -859,7 +859,7 @@ func (this *QXmlStreamWriter) WriteTextElement(qualifiedName string, text string
 	defer C.free(unsafe.Pointer(qualifiedName_Cstring))
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QXmlStreamWriter_WriteTextElement(this.h, qualifiedName_Cstring, C.ulong(len(qualifiedName)), text_Cstring, C.ulong(len(text)))
+	C.QXmlStreamWriter_WriteTextElement(this.h, qualifiedName_Cstring, C.size_t(len(qualifiedName)), text_Cstring, C.size_t(len(text)))
 }
 
 func (this *QXmlStreamWriter) WriteTextElement2(namespaceUri string, name string, text string) {
@@ -869,7 +869,7 @@ func (this *QXmlStreamWriter) WriteTextElement2(namespaceUri string, name string
 	defer C.free(unsafe.Pointer(name_Cstring))
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QXmlStreamWriter_WriteTextElement2(this.h, namespaceUri_Cstring, C.ulong(len(namespaceUri)), name_Cstring, C.ulong(len(name)), text_Cstring, C.ulong(len(text)))
+	C.QXmlStreamWriter_WriteTextElement2(this.h, namespaceUri_Cstring, C.size_t(len(namespaceUri)), name_Cstring, C.size_t(len(name)), text_Cstring, C.size_t(len(text)))
 }
 
 func (this *QXmlStreamWriter) WriteEndDocument() {
@@ -883,25 +883,25 @@ func (this *QXmlStreamWriter) WriteEndElement() {
 func (this *QXmlStreamWriter) WriteEntityReference(name string) {
 	name_Cstring := C.CString(name)
 	defer C.free(unsafe.Pointer(name_Cstring))
-	C.QXmlStreamWriter_WriteEntityReference(this.h, name_Cstring, C.ulong(len(name)))
+	C.QXmlStreamWriter_WriteEntityReference(this.h, name_Cstring, C.size_t(len(name)))
 }
 
 func (this *QXmlStreamWriter) WriteNamespace(namespaceUri string) {
 	namespaceUri_Cstring := C.CString(namespaceUri)
 	defer C.free(unsafe.Pointer(namespaceUri_Cstring))
-	C.QXmlStreamWriter_WriteNamespace(this.h, namespaceUri_Cstring, C.ulong(len(namespaceUri)))
+	C.QXmlStreamWriter_WriteNamespace(this.h, namespaceUri_Cstring, C.size_t(len(namespaceUri)))
 }
 
 func (this *QXmlStreamWriter) WriteDefaultNamespace(namespaceUri string) {
 	namespaceUri_Cstring := C.CString(namespaceUri)
 	defer C.free(unsafe.Pointer(namespaceUri_Cstring))
-	C.QXmlStreamWriter_WriteDefaultNamespace(this.h, namespaceUri_Cstring, C.ulong(len(namespaceUri)))
+	C.QXmlStreamWriter_WriteDefaultNamespace(this.h, namespaceUri_Cstring, C.size_t(len(namespaceUri)))
 }
 
 func (this *QXmlStreamWriter) WriteProcessingInstruction(target string) {
 	target_Cstring := C.CString(target)
 	defer C.free(unsafe.Pointer(target_Cstring))
-	C.QXmlStreamWriter_WriteProcessingInstruction(this.h, target_Cstring, C.ulong(len(target)))
+	C.QXmlStreamWriter_WriteProcessingInstruction(this.h, target_Cstring, C.size_t(len(target)))
 }
 
 func (this *QXmlStreamWriter) WriteStartDocument() {
@@ -911,19 +911,19 @@ func (this *QXmlStreamWriter) WriteStartDocument() {
 func (this *QXmlStreamWriter) WriteStartDocumentWithVersion(version string) {
 	version_Cstring := C.CString(version)
 	defer C.free(unsafe.Pointer(version_Cstring))
-	C.QXmlStreamWriter_WriteStartDocumentWithVersion(this.h, version_Cstring, C.ulong(len(version)))
+	C.QXmlStreamWriter_WriteStartDocumentWithVersion(this.h, version_Cstring, C.size_t(len(version)))
 }
 
 func (this *QXmlStreamWriter) WriteStartDocument2(version string, standalone bool) {
 	version_Cstring := C.CString(version)
 	defer C.free(unsafe.Pointer(version_Cstring))
-	C.QXmlStreamWriter_WriteStartDocument2(this.h, version_Cstring, C.ulong(len(version)), (C.bool)(standalone))
+	C.QXmlStreamWriter_WriteStartDocument2(this.h, version_Cstring, C.size_t(len(version)), (C.bool)(standalone))
 }
 
 func (this *QXmlStreamWriter) WriteStartElement(qualifiedName string) {
 	qualifiedName_Cstring := C.CString(qualifiedName)
 	defer C.free(unsafe.Pointer(qualifiedName_Cstring))
-	C.QXmlStreamWriter_WriteStartElement(this.h, qualifiedName_Cstring, C.ulong(len(qualifiedName)))
+	C.QXmlStreamWriter_WriteStartElement(this.h, qualifiedName_Cstring, C.size_t(len(qualifiedName)))
 }
 
 func (this *QXmlStreamWriter) WriteStartElement2(namespaceUri string, name string) {
@@ -931,7 +931,7 @@ func (this *QXmlStreamWriter) WriteStartElement2(namespaceUri string, name strin
 	defer C.free(unsafe.Pointer(namespaceUri_Cstring))
 	name_Cstring := C.CString(name)
 	defer C.free(unsafe.Pointer(name_Cstring))
-	C.QXmlStreamWriter_WriteStartElement2(this.h, namespaceUri_Cstring, C.ulong(len(namespaceUri)), name_Cstring, C.ulong(len(name)))
+	C.QXmlStreamWriter_WriteStartElement2(this.h, namespaceUri_Cstring, C.size_t(len(namespaceUri)), name_Cstring, C.size_t(len(name)))
 }
 
 func (this *QXmlStreamWriter) WriteCurrentToken(reader *QXmlStreamReader) {
@@ -948,7 +948,7 @@ func (this *QXmlStreamWriter) WriteNamespace2(namespaceUri string, prefix string
 	defer C.free(unsafe.Pointer(namespaceUri_Cstring))
 	prefix_Cstring := C.CString(prefix)
 	defer C.free(unsafe.Pointer(prefix_Cstring))
-	C.QXmlStreamWriter_WriteNamespace2(this.h, namespaceUri_Cstring, C.ulong(len(namespaceUri)), prefix_Cstring, C.ulong(len(prefix)))
+	C.QXmlStreamWriter_WriteNamespace2(this.h, namespaceUri_Cstring, C.size_t(len(namespaceUri)), prefix_Cstring, C.size_t(len(prefix)))
 }
 
 func (this *QXmlStreamWriter) WriteProcessingInstruction2(target string, data string) {
@@ -956,7 +956,7 @@ func (this *QXmlStreamWriter) WriteProcessingInstruction2(target string, data st
 	defer C.free(unsafe.Pointer(target_Cstring))
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
-	C.QXmlStreamWriter_WriteProcessingInstruction2(this.h, target_Cstring, C.ulong(len(target)), data_Cstring, C.ulong(len(data)))
+	C.QXmlStreamWriter_WriteProcessingInstruction2(this.h, target_Cstring, C.size_t(len(target)), data_Cstring, C.size_t(len(data)))
 }
 
 func (this *QXmlStreamWriter) Delete() {

@@ -41,7 +41,7 @@ func newQPdfWriter_U(h unsafe.Pointer) *QPdfWriter {
 func NewQPdfWriter(filename string) *QPdfWriter {
 	filename_Cstring := C.CString(filename)
 	defer C.free(unsafe.Pointer(filename_Cstring))
-	ret := C.QPdfWriter_new(filename_Cstring, C.ulong(len(filename)))
+	ret := C.QPdfWriter_new(filename_Cstring, C.size_t(len(filename)))
 	return newQPdfWriter(ret)
 }
 
@@ -99,7 +99,7 @@ func (this *QPdfWriter) Title() string {
 func (this *QPdfWriter) SetTitle(title string) {
 	title_Cstring := C.CString(title)
 	defer C.free(unsafe.Pointer(title_Cstring))
-	C.QPdfWriter_SetTitle(this.h, title_Cstring, C.ulong(len(title)))
+	C.QPdfWriter_SetTitle(this.h, title_Cstring, C.size_t(len(title)))
 }
 
 func (this *QPdfWriter) Creator() string {
@@ -114,7 +114,7 @@ func (this *QPdfWriter) Creator() string {
 func (this *QPdfWriter) SetCreator(creator string) {
 	creator_Cstring := C.CString(creator)
 	defer C.free(unsafe.Pointer(creator_Cstring))
-	C.QPdfWriter_SetCreator(this.h, creator_Cstring, C.ulong(len(creator)))
+	C.QPdfWriter_SetCreator(this.h, creator_Cstring, C.size_t(len(creator)))
 }
 
 func (this *QPdfWriter) NewPage() bool {
@@ -149,7 +149,7 @@ func (this *QPdfWriter) DocumentXmpMetadata() *QByteArray {
 func (this *QPdfWriter) AddFileAttachment(fileName string, data *QByteArray) {
 	fileName_Cstring := C.CString(fileName)
 	defer C.free(unsafe.Pointer(fileName_Cstring))
-	C.QPdfWriter_AddFileAttachment(this.h, fileName_Cstring, C.ulong(len(fileName)), data.cPointer())
+	C.QPdfWriter_AddFileAttachment(this.h, fileName_Cstring, C.size_t(len(fileName)), data.cPointer())
 }
 
 func (this *QPdfWriter) SetPageSize(size uintptr) {
@@ -221,7 +221,7 @@ func (this *QPdfWriter) AddFileAttachment3(fileName string, data *QByteArray, mi
 	defer C.free(unsafe.Pointer(fileName_Cstring))
 	mimeType_Cstring := C.CString(mimeType)
 	defer C.free(unsafe.Pointer(mimeType_Cstring))
-	C.QPdfWriter_AddFileAttachment3(this.h, fileName_Cstring, C.ulong(len(fileName)), data.cPointer(), mimeType_Cstring, C.ulong(len(mimeType)))
+	C.QPdfWriter_AddFileAttachment3(this.h, fileName_Cstring, C.size_t(len(fileName)), data.cPointer(), mimeType_Cstring, C.size_t(len(mimeType)))
 }
 
 func (this *QPdfWriter) Delete() {

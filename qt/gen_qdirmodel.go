@@ -40,16 +40,16 @@ func newQDirModel_U(h unsafe.Pointer) *QDirModel {
 func NewQDirModel(nameFilters []string, filters int, sort int) *QDirModel {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
 	nameFilters_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(nameFilters))))
-	nameFilters_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(nameFilters))))
+	nameFilters_Lengths := (*[0xffff]C.uint64_t)(C.malloc(C.size_t(8 * len(nameFilters))))
 	defer C.free(unsafe.Pointer(nameFilters_CArray))
 	defer C.free(unsafe.Pointer(nameFilters_Lengths))
 	for i := range nameFilters {
 		single_cstring := C.CString(nameFilters[i])
 		defer C.free(unsafe.Pointer(single_cstring))
 		nameFilters_CArray[i] = single_cstring
-		nameFilters_Lengths[i] = (C.size_t)(len(nameFilters[i]))
+		nameFilters_Lengths[i] = (C.uint64_t)(len(nameFilters[i]))
 	}
-	ret := C.QDirModel_new(&nameFilters_CArray[0], &nameFilters_Lengths[0], C.ulong(len(nameFilters)), (C.int)(filters), (C.int)(sort))
+	ret := C.QDirModel_new(&nameFilters_CArray[0], &nameFilters_Lengths[0], C.size_t(len(nameFilters)), (C.int)(filters), (C.int)(sort))
 	return newQDirModel(ret)
 }
 
@@ -63,16 +63,16 @@ func NewQDirModel2() *QDirModel {
 func NewQDirModel3(nameFilters []string, filters int, sort int, parent *QObject) *QDirModel {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
 	nameFilters_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(nameFilters))))
-	nameFilters_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(nameFilters))))
+	nameFilters_Lengths := (*[0xffff]C.uint64_t)(C.malloc(C.size_t(8 * len(nameFilters))))
 	defer C.free(unsafe.Pointer(nameFilters_CArray))
 	defer C.free(unsafe.Pointer(nameFilters_Lengths))
 	for i := range nameFilters {
 		single_cstring := C.CString(nameFilters[i])
 		defer C.free(unsafe.Pointer(single_cstring))
 		nameFilters_CArray[i] = single_cstring
-		nameFilters_Lengths[i] = (C.size_t)(len(nameFilters[i]))
+		nameFilters_Lengths[i] = (C.uint64_t)(len(nameFilters[i]))
 	}
-	ret := C.QDirModel_new3(&nameFilters_CArray[0], &nameFilters_Lengths[0], C.ulong(len(nameFilters)), (C.int)(filters), (C.int)(sort), parent.cPointer())
+	ret := C.QDirModel_new3(&nameFilters_CArray[0], &nameFilters_Lengths[0], C.size_t(len(nameFilters)), (C.int)(filters), (C.int)(sort), parent.cPointer())
 	return newQDirModel(ret)
 }
 
@@ -204,7 +204,7 @@ func (this *QDirModel) MimeData(indexes []QModelIndex) *QMimeData {
 	for i := range indexes {
 		indexes_CArray[i] = indexes[i].cPointer()
 	}
-	ret := C.QDirModel_MimeData(this.h, &indexes_CArray[0], C.ulong(len(indexes)))
+	ret := C.QDirModel_MimeData(this.h, &indexes_CArray[0], C.size_t(len(indexes)))
 	return newQMimeData_U(unsafe.Pointer(ret))
 }
 
@@ -230,16 +230,16 @@ func (this *QDirModel) IconProvider() *QFileIconProvider {
 func (this *QDirModel) SetNameFilters(filters []string) {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
 	filters_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(filters))))
-	filters_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(filters))))
+	filters_Lengths := (*[0xffff]C.uint64_t)(C.malloc(C.size_t(8 * len(filters))))
 	defer C.free(unsafe.Pointer(filters_CArray))
 	defer C.free(unsafe.Pointer(filters_Lengths))
 	for i := range filters {
 		single_cstring := C.CString(filters[i])
 		defer C.free(unsafe.Pointer(single_cstring))
 		filters_CArray[i] = single_cstring
-		filters_Lengths[i] = (C.size_t)(len(filters[i]))
+		filters_Lengths[i] = (C.uint64_t)(len(filters[i]))
 	}
-	C.QDirModel_SetNameFilters(this.h, &filters_CArray[0], &filters_Lengths[0], C.ulong(len(filters)))
+	C.QDirModel_SetNameFilters(this.h, &filters_CArray[0], &filters_Lengths[0], C.size_t(len(filters)))
 }
 
 func (this *QDirModel) NameFilters() []string {
@@ -305,7 +305,7 @@ func (this *QDirModel) LazyChildCount() bool {
 func (this *QDirModel) IndexWithPath(path string) *QModelIndex {
 	path_Cstring := C.CString(path)
 	defer C.free(unsafe.Pointer(path_Cstring))
-	ret := C.QDirModel_IndexWithPath(this.h, path_Cstring, C.ulong(len(path)))
+	ret := C.QDirModel_IndexWithPath(this.h, path_Cstring, C.size_t(len(path)))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQModelIndex(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QModelIndex) {
@@ -323,7 +323,7 @@ func (this *QDirModel) IsDir(index *QModelIndex) bool {
 func (this *QDirModel) Mkdir(parent *QModelIndex, name string) *QModelIndex {
 	name_Cstring := C.CString(name)
 	defer C.free(unsafe.Pointer(name_Cstring))
-	ret := C.QDirModel_Mkdir(this.h, parent.cPointer(), name_Cstring, C.ulong(len(name)))
+	ret := C.QDirModel_Mkdir(this.h, parent.cPointer(), name_Cstring, C.size_t(len(name)))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQModelIndex(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QModelIndex) {
@@ -499,7 +499,7 @@ func (this *QDirModel) Sort2(column int, order uintptr) {
 func (this *QDirModel) Index2(path string, column int) *QModelIndex {
 	path_Cstring := C.CString(path)
 	defer C.free(unsafe.Pointer(path_Cstring))
-	ret := C.QDirModel_Index2(this.h, path_Cstring, C.ulong(len(path)), (C.int)(column))
+	ret := C.QDirModel_Index2(this.h, path_Cstring, C.size_t(len(path)), (C.int)(column))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQModelIndex(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QModelIndex) {

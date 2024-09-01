@@ -47,7 +47,7 @@ func NewQCheckBox() *QCheckBox {
 func NewQCheckBox2(text string) *QCheckBox {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QCheckBox_new2(text_Cstring, C.ulong(len(text)))
+	ret := C.QCheckBox_new2(text_Cstring, C.size_t(len(text)))
 	return newQCheckBox(ret)
 }
 
@@ -61,7 +61,7 @@ func NewQCheckBox3(parent *QWidget) *QCheckBox {
 func NewQCheckBox4(text string, parent *QWidget) *QCheckBox {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QCheckBox_new4(text_Cstring, C.ulong(len(text)), parent.cPointer())
+	ret := C.QCheckBox_new4(text_Cstring, C.size_t(len(text)), parent.cPointer())
 	return newQCheckBox(ret)
 }
 

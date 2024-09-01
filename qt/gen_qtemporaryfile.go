@@ -45,7 +45,7 @@ func NewQTemporaryFile() *QTemporaryFile {
 func NewQTemporaryFile2(templateName string) *QTemporaryFile {
 	templateName_Cstring := C.CString(templateName)
 	defer C.free(unsafe.Pointer(templateName_Cstring))
-	ret := C.QTemporaryFile_new2(templateName_Cstring, C.ulong(len(templateName)))
+	ret := C.QTemporaryFile_new2(templateName_Cstring, C.size_t(len(templateName)))
 	return newQTemporaryFile(ret)
 }
 
@@ -59,7 +59,7 @@ func NewQTemporaryFile3(parent *QObject) *QTemporaryFile {
 func NewQTemporaryFile4(templateName string, parent *QObject) *QTemporaryFile {
 	templateName_Cstring := C.CString(templateName)
 	defer C.free(unsafe.Pointer(templateName_Cstring))
-	ret := C.QTemporaryFile_new4(templateName_Cstring, C.ulong(len(templateName)), parent.cPointer())
+	ret := C.QTemporaryFile_new4(templateName_Cstring, C.size_t(len(templateName)), parent.cPointer())
 	return newQTemporaryFile(ret)
 }
 
@@ -125,20 +125,20 @@ func (this *QTemporaryFile) FileTemplate() string {
 func (this *QTemporaryFile) SetFileTemplate(name string) {
 	name_Cstring := C.CString(name)
 	defer C.free(unsafe.Pointer(name_Cstring))
-	C.QTemporaryFile_SetFileTemplate(this.h, name_Cstring, C.ulong(len(name)))
+	C.QTemporaryFile_SetFileTemplate(this.h, name_Cstring, C.size_t(len(name)))
 }
 
 func (this *QTemporaryFile) Rename(newName string) bool {
 	newName_Cstring := C.CString(newName)
 	defer C.free(unsafe.Pointer(newName_Cstring))
-	ret := C.QTemporaryFile_Rename(this.h, newName_Cstring, C.ulong(len(newName)))
+	ret := C.QTemporaryFile_Rename(this.h, newName_Cstring, C.size_t(len(newName)))
 	return (bool)(ret)
 }
 
 func QTemporaryFile_CreateLocalFile(fileName string) *QTemporaryFile {
 	fileName_Cstring := C.CString(fileName)
 	defer C.free(unsafe.Pointer(fileName_Cstring))
-	ret := C.QTemporaryFile_CreateLocalFile(fileName_Cstring, C.ulong(len(fileName)))
+	ret := C.QTemporaryFile_CreateLocalFile(fileName_Cstring, C.size_t(len(fileName)))
 	return newQTemporaryFile_U(unsafe.Pointer(ret))
 }
 
@@ -150,7 +150,7 @@ func QTemporaryFile_CreateLocalFileWithFile(file *QFile) *QTemporaryFile {
 func QTemporaryFile_CreateNativeFile(fileName string) *QTemporaryFile {
 	fileName_Cstring := C.CString(fileName)
 	defer C.free(unsafe.Pointer(fileName_Cstring))
-	ret := C.QTemporaryFile_CreateNativeFile(fileName_Cstring, C.ulong(len(fileName)))
+	ret := C.QTemporaryFile_CreateNativeFile(fileName_Cstring, C.size_t(len(fileName)))
 	return newQTemporaryFile_U(unsafe.Pointer(ret))
 }
 

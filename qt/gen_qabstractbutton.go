@@ -67,7 +67,7 @@ func QAbstractButton_TrUtf8(s string) string {
 func (this *QAbstractButton) SetText(text string) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QAbstractButton_SetText(this.h, text_Cstring, C.ulong(len(text)))
+	C.QAbstractButton_SetText(this.h, text_Cstring, C.size_t(len(text)))
 }
 
 func (this *QAbstractButton) Text() string {

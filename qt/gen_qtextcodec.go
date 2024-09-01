@@ -115,7 +115,7 @@ func (this *QTextCodec) CanEncode(param1 QChar) bool {
 func (this *QTextCodec) CanEncodeWithQString(param1 string) bool {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	ret := C.QTextCodec_CanEncodeWithQString(this.h, param1_Cstring, C.ulong(len(param1)))
+	ret := C.QTextCodec_CanEncodeWithQString(this.h, param1_Cstring, C.size_t(len(param1)))
 	return (bool)(ret)
 }
 
@@ -142,7 +142,7 @@ func (this *QTextCodec) ToUnicodeWithChars(chars string) string {
 func (this *QTextCodec) FromUnicode(uc string) *QByteArray {
 	uc_Cstring := C.CString(uc)
 	defer C.free(unsafe.Pointer(uc_Cstring))
-	ret := C.QTextCodec_FromUnicode(this.h, uc_Cstring, C.ulong(len(uc)))
+	ret := C.QTextCodec_FromUnicode(this.h, uc_Cstring, C.size_t(len(uc)))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQByteArray(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QByteArray) {
@@ -282,7 +282,7 @@ func NewQTextEncoder2(codec *QTextCodec, flags int) *QTextEncoder {
 func (this *QTextEncoder) FromUnicode(str string) *QByteArray {
 	str_Cstring := C.CString(str)
 	defer C.free(unsafe.Pointer(str_Cstring))
-	ret := C.QTextEncoder_FromUnicode(this.h, str_Cstring, C.ulong(len(str)))
+	ret := C.QTextEncoder_FromUnicode(this.h, str_Cstring, C.size_t(len(str)))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQByteArray(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QByteArray) {

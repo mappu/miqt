@@ -38,19 +38,19 @@ func newQToolTip_U(h unsafe.Pointer) *QToolTip {
 func QToolTip_ShowText(pos *QPoint, text string) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QToolTip_ShowText(pos.cPointer(), text_Cstring, C.ulong(len(text)))
+	C.QToolTip_ShowText(pos.cPointer(), text_Cstring, C.size_t(len(text)))
 }
 
 func QToolTip_ShowText2(pos *QPoint, text string, w *QWidget, rect *QRect) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QToolTip_ShowText2(pos.cPointer(), text_Cstring, C.ulong(len(text)), w.cPointer(), rect.cPointer())
+	C.QToolTip_ShowText2(pos.cPointer(), text_Cstring, C.size_t(len(text)), w.cPointer(), rect.cPointer())
 }
 
 func QToolTip_ShowText3(pos *QPoint, text string, w *QWidget, rect *QRect, msecShowTime int) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QToolTip_ShowText3(pos.cPointer(), text_Cstring, C.ulong(len(text)), w.cPointer(), rect.cPointer(), (C.int)(msecShowTime))
+	C.QToolTip_ShowText3(pos.cPointer(), text_Cstring, C.size_t(len(text)), w.cPointer(), rect.cPointer(), (C.int)(msecShowTime))
 }
 
 func QToolTip_HideText() {
@@ -104,7 +104,7 @@ func QToolTip_SetFont(font *QFont) {
 func QToolTip_ShowText32(pos *QPoint, text string, w *QWidget) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QToolTip_ShowText32(pos.cPointer(), text_Cstring, C.ulong(len(text)), w.cPointer())
+	C.QToolTip_ShowText32(pos.cPointer(), text_Cstring, C.size_t(len(text)), w.cPointer())
 }
 
 func (this *QToolTip) Delete() {

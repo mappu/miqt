@@ -110,16 +110,16 @@ func (this *QSessionManager) RestartHint() uintptr {
 func (this *QSessionManager) SetRestartCommand(restartCommand []string) {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
 	restartCommand_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(restartCommand))))
-	restartCommand_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(restartCommand))))
+	restartCommand_Lengths := (*[0xffff]C.uint64_t)(C.malloc(C.size_t(8 * len(restartCommand))))
 	defer C.free(unsafe.Pointer(restartCommand_CArray))
 	defer C.free(unsafe.Pointer(restartCommand_Lengths))
 	for i := range restartCommand {
 		single_cstring := C.CString(restartCommand[i])
 		defer C.free(unsafe.Pointer(single_cstring))
 		restartCommand_CArray[i] = single_cstring
-		restartCommand_Lengths[i] = (C.size_t)(len(restartCommand[i]))
+		restartCommand_Lengths[i] = (C.uint64_t)(len(restartCommand[i]))
 	}
-	C.QSessionManager_SetRestartCommand(this.h, &restartCommand_CArray[0], &restartCommand_Lengths[0], C.ulong(len(restartCommand)))
+	C.QSessionManager_SetRestartCommand(this.h, &restartCommand_CArray[0], &restartCommand_Lengths[0], C.size_t(len(restartCommand)))
 }
 
 func (this *QSessionManager) RestartCommand() []string {
@@ -140,16 +140,16 @@ func (this *QSessionManager) RestartCommand() []string {
 func (this *QSessionManager) SetDiscardCommand(discardCommand []string) {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
 	discardCommand_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(discardCommand))))
-	discardCommand_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(discardCommand))))
+	discardCommand_Lengths := (*[0xffff]C.uint64_t)(C.malloc(C.size_t(8 * len(discardCommand))))
 	defer C.free(unsafe.Pointer(discardCommand_CArray))
 	defer C.free(unsafe.Pointer(discardCommand_Lengths))
 	for i := range discardCommand {
 		single_cstring := C.CString(discardCommand[i])
 		defer C.free(unsafe.Pointer(single_cstring))
 		discardCommand_CArray[i] = single_cstring
-		discardCommand_Lengths[i] = (C.size_t)(len(discardCommand[i]))
+		discardCommand_Lengths[i] = (C.uint64_t)(len(discardCommand[i]))
 	}
-	C.QSessionManager_SetDiscardCommand(this.h, &discardCommand_CArray[0], &discardCommand_Lengths[0], C.ulong(len(discardCommand)))
+	C.QSessionManager_SetDiscardCommand(this.h, &discardCommand_CArray[0], &discardCommand_Lengths[0], C.size_t(len(discardCommand)))
 }
 
 func (this *QSessionManager) DiscardCommand() []string {
@@ -172,7 +172,7 @@ func (this *QSessionManager) SetManagerProperty(name string, value string) {
 	defer C.free(unsafe.Pointer(name_Cstring))
 	value_Cstring := C.CString(value)
 	defer C.free(unsafe.Pointer(value_Cstring))
-	C.QSessionManager_SetManagerProperty(this.h, name_Cstring, C.ulong(len(name)), value_Cstring, C.ulong(len(value)))
+	C.QSessionManager_SetManagerProperty(this.h, name_Cstring, C.size_t(len(name)), value_Cstring, C.size_t(len(value)))
 }
 
 func (this *QSessionManager) SetManagerProperty2(name string, value []string) {
@@ -180,16 +180,16 @@ func (this *QSessionManager) SetManagerProperty2(name string, value []string) {
 	defer C.free(unsafe.Pointer(name_Cstring))
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
 	value_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(value))))
-	value_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(value))))
+	value_Lengths := (*[0xffff]C.uint64_t)(C.malloc(C.size_t(8 * len(value))))
 	defer C.free(unsafe.Pointer(value_CArray))
 	defer C.free(unsafe.Pointer(value_Lengths))
 	for i := range value {
 		single_cstring := C.CString(value[i])
 		defer C.free(unsafe.Pointer(single_cstring))
 		value_CArray[i] = single_cstring
-		value_Lengths[i] = (C.size_t)(len(value[i]))
+		value_Lengths[i] = (C.uint64_t)(len(value[i]))
 	}
-	C.QSessionManager_SetManagerProperty2(this.h, name_Cstring, C.ulong(len(name)), &value_CArray[0], &value_Lengths[0], C.ulong(len(value)))
+	C.QSessionManager_SetManagerProperty2(this.h, name_Cstring, C.size_t(len(name)), &value_CArray[0], &value_Lengths[0], C.size_t(len(value)))
 }
 
 func (this *QSessionManager) IsPhase2() bool {

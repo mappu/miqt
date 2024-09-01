@@ -45,7 +45,7 @@ func NewQStaticText() *QStaticText {
 func NewQStaticText2(text string) *QStaticText {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QStaticText_new2(text_Cstring, C.ulong(len(text)))
+	ret := C.QStaticText_new2(text_Cstring, C.size_t(len(text)))
 	return newQStaticText(ret)
 }
 
@@ -66,7 +66,7 @@ func (this *QStaticText) Swap(other *QStaticText) {
 func (this *QStaticText) SetText(text string) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QStaticText_SetText(this.h, text_Cstring, C.ulong(len(text)))
+	C.QStaticText_SetText(this.h, text_Cstring, C.size_t(len(text)))
 }
 
 func (this *QStaticText) Text() string {

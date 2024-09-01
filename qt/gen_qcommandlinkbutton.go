@@ -45,7 +45,7 @@ func NewQCommandLinkButton() *QCommandLinkButton {
 func NewQCommandLinkButton2(text string) *QCommandLinkButton {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QCommandLinkButton_new2(text_Cstring, C.ulong(len(text)))
+	ret := C.QCommandLinkButton_new2(text_Cstring, C.size_t(len(text)))
 	return newQCommandLinkButton(ret)
 }
 
@@ -55,7 +55,7 @@ func NewQCommandLinkButton3(text string, description string) *QCommandLinkButton
 	defer C.free(unsafe.Pointer(text_Cstring))
 	description_Cstring := C.CString(description)
 	defer C.free(unsafe.Pointer(description_Cstring))
-	ret := C.QCommandLinkButton_new3(text_Cstring, C.ulong(len(text)), description_Cstring, C.ulong(len(description)))
+	ret := C.QCommandLinkButton_new3(text_Cstring, C.size_t(len(text)), description_Cstring, C.size_t(len(description)))
 	return newQCommandLinkButton(ret)
 }
 
@@ -69,7 +69,7 @@ func NewQCommandLinkButton4(parent *QWidget) *QCommandLinkButton {
 func NewQCommandLinkButton5(text string, parent *QWidget) *QCommandLinkButton {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QCommandLinkButton_new5(text_Cstring, C.ulong(len(text)), parent.cPointer())
+	ret := C.QCommandLinkButton_new5(text_Cstring, C.size_t(len(text)), parent.cPointer())
 	return newQCommandLinkButton(ret)
 }
 
@@ -79,7 +79,7 @@ func NewQCommandLinkButton6(text string, description string, parent *QWidget) *Q
 	defer C.free(unsafe.Pointer(text_Cstring))
 	description_Cstring := C.CString(description)
 	defer C.free(unsafe.Pointer(description_Cstring))
-	ret := C.QCommandLinkButton_new6(text_Cstring, C.ulong(len(text)), description_Cstring, C.ulong(len(description)), parent.cPointer())
+	ret := C.QCommandLinkButton_new6(text_Cstring, C.size_t(len(text)), description_Cstring, C.size_t(len(description)), parent.cPointer())
 	return newQCommandLinkButton(ret)
 }
 
@@ -122,7 +122,7 @@ func (this *QCommandLinkButton) Description() string {
 func (this *QCommandLinkButton) SetDescription(description string) {
 	description_Cstring := C.CString(description)
 	defer C.free(unsafe.Pointer(description_Cstring))
-	C.QCommandLinkButton_SetDescription(this.h, description_Cstring, C.ulong(len(description)))
+	C.QCommandLinkButton_SetDescription(this.h, description_Cstring, C.size_t(len(description)))
 }
 
 func QCommandLinkButton_Tr2(s string, c string) string {

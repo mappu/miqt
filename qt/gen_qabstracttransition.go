@@ -96,7 +96,7 @@ func (this *QAbstractTransition) SetTargetStates(targets []*QAbstractState) {
 	for i := range targets {
 		targets_CArray[i] = targets[i].cPointer()
 	}
-	C.QAbstractTransition_SetTargetStates(this.h, &targets_CArray[0], C.ulong(len(targets)))
+	C.QAbstractTransition_SetTargetStates(this.h, &targets_CArray[0], C.size_t(len(targets)))
 }
 
 func (this *QAbstractTransition) TransitionType() uintptr {

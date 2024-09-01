@@ -51,7 +51,7 @@ func NewQImageReader2(device *QIODevice) *QImageReader {
 func NewQImageReader3(fileName string) *QImageReader {
 	fileName_Cstring := C.CString(fileName)
 	defer C.free(unsafe.Pointer(fileName_Cstring))
-	ret := C.QImageReader_new3(fileName_Cstring, C.ulong(len(fileName)))
+	ret := C.QImageReader_new3(fileName_Cstring, C.size_t(len(fileName)))
 	return newQImageReader(ret)
 }
 
@@ -65,7 +65,7 @@ func NewQImageReader4(device *QIODevice, format *QByteArray) *QImageReader {
 func NewQImageReader5(fileName string, format *QByteArray) *QImageReader {
 	fileName_Cstring := C.CString(fileName)
 	defer C.free(unsafe.Pointer(fileName_Cstring))
-	ret := C.QImageReader_new5(fileName_Cstring, C.ulong(len(fileName)), format.cPointer())
+	ret := C.QImageReader_new5(fileName_Cstring, C.size_t(len(fileName)), format.cPointer())
 	return newQImageReader(ret)
 }
 
@@ -136,7 +136,7 @@ func (this *QImageReader) Device() *QIODevice {
 func (this *QImageReader) SetFileName(fileName string) {
 	fileName_Cstring := C.CString(fileName)
 	defer C.free(unsafe.Pointer(fileName_Cstring))
-	C.QImageReader_SetFileName(this.h, fileName_Cstring, C.ulong(len(fileName)))
+	C.QImageReader_SetFileName(this.h, fileName_Cstring, C.size_t(len(fileName)))
 }
 
 func (this *QImageReader) FileName() string {
@@ -184,7 +184,7 @@ func (this *QImageReader) Text(key string) string {
 	defer C.free(unsafe.Pointer(key_Cstring))
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
-	C.QImageReader_Text(this.h, key_Cstring, C.ulong(len(key)), &_out, &_out_Strlen)
+	C.QImageReader_Text(this.h, key_Cstring, C.size_t(len(key)), &_out, &_out_Strlen)
 	ret := C.GoStringN(_out, _out_Strlen)
 	C.free(unsafe.Pointer(_out))
 	return ret
@@ -395,7 +395,7 @@ func (this *QImageReader) SupportsOption(option uintptr) bool {
 func QImageReader_ImageFormatWithFileName(fileName string) *QByteArray {
 	fileName_Cstring := C.CString(fileName)
 	defer C.free(unsafe.Pointer(fileName_Cstring))
-	ret := C.QImageReader_ImageFormatWithFileName(fileName_Cstring, C.ulong(len(fileName)))
+	ret := C.QImageReader_ImageFormatWithFileName(fileName_Cstring, C.size_t(len(fileName)))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQByteArray(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QByteArray) {

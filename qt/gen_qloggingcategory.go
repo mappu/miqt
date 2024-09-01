@@ -85,7 +85,7 @@ func QLoggingCategory_DefaultCategory() *QLoggingCategory {
 func QLoggingCategory_SetFilterRules(rules string) {
 	rules_Cstring := C.CString(rules)
 	defer C.free(unsafe.Pointer(rules_Cstring))
-	C.QLoggingCategory_SetFilterRules(rules_Cstring, C.ulong(len(rules)))
+	C.QLoggingCategory_SetFilterRules(rules_Cstring, C.size_t(len(rules)))
 }
 
 func (this *QLoggingCategory) Delete() {

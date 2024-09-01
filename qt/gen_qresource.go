@@ -45,7 +45,7 @@ func NewQResource() *QResource {
 func NewQResource2(file string) *QResource {
 	file_Cstring := C.CString(file)
 	defer C.free(unsafe.Pointer(file_Cstring))
-	ret := C.QResource_new2(file_Cstring, C.ulong(len(file)))
+	ret := C.QResource_new2(file_Cstring, C.size_t(len(file)))
 	return newQResource(ret)
 }
 
@@ -53,14 +53,14 @@ func NewQResource2(file string) *QResource {
 func NewQResource3(file string, locale *QLocale) *QResource {
 	file_Cstring := C.CString(file)
 	defer C.free(unsafe.Pointer(file_Cstring))
-	ret := C.QResource_new3(file_Cstring, C.ulong(len(file)), locale.cPointer())
+	ret := C.QResource_new3(file_Cstring, C.size_t(len(file)), locale.cPointer())
 	return newQResource(ret)
 }
 
 func (this *QResource) SetFileName(file string) {
 	file_Cstring := C.CString(file)
 	defer C.free(unsafe.Pointer(file_Cstring))
-	C.QResource_SetFileName(this.h, file_Cstring, C.ulong(len(file)))
+	C.QResource_SetFileName(this.h, file_Cstring, C.size_t(len(file)))
 }
 
 func (this *QResource) FileName() string {
@@ -146,7 +146,7 @@ func (this *QResource) LastModified() *QDateTime {
 func QResource_AddSearchPath(path string) {
 	path_Cstring := C.CString(path)
 	defer C.free(unsafe.Pointer(path_Cstring))
-	C.QResource_AddSearchPath(path_Cstring, C.ulong(len(path)))
+	C.QResource_AddSearchPath(path_Cstring, C.size_t(len(path)))
 }
 
 func QResource_SearchPaths() []string {
@@ -172,14 +172,14 @@ func (this *QResource) IsCompressed() bool {
 func QResource_RegisterResource(rccFilename string) bool {
 	rccFilename_Cstring := C.CString(rccFilename)
 	defer C.free(unsafe.Pointer(rccFilename_Cstring))
-	ret := C.QResource_RegisterResource(rccFilename_Cstring, C.ulong(len(rccFilename)))
+	ret := C.QResource_RegisterResource(rccFilename_Cstring, C.size_t(len(rccFilename)))
 	return (bool)(ret)
 }
 
 func QResource_UnregisterResource(rccFilename string) bool {
 	rccFilename_Cstring := C.CString(rccFilename)
 	defer C.free(unsafe.Pointer(rccFilename_Cstring))
-	ret := C.QResource_UnregisterResource(rccFilename_Cstring, C.ulong(len(rccFilename)))
+	ret := C.QResource_UnregisterResource(rccFilename_Cstring, C.size_t(len(rccFilename)))
 	return (bool)(ret)
 }
 
@@ -198,7 +198,7 @@ func QResource_RegisterResource2(rccFilename string, resourceRoot string) bool {
 	defer C.free(unsafe.Pointer(rccFilename_Cstring))
 	resourceRoot_Cstring := C.CString(resourceRoot)
 	defer C.free(unsafe.Pointer(resourceRoot_Cstring))
-	ret := C.QResource_RegisterResource2(rccFilename_Cstring, C.ulong(len(rccFilename)), resourceRoot_Cstring, C.ulong(len(resourceRoot)))
+	ret := C.QResource_RegisterResource2(rccFilename_Cstring, C.size_t(len(rccFilename)), resourceRoot_Cstring, C.size_t(len(resourceRoot)))
 	return (bool)(ret)
 }
 
@@ -207,21 +207,21 @@ func QResource_UnregisterResource2(rccFilename string, resourceRoot string) bool
 	defer C.free(unsafe.Pointer(rccFilename_Cstring))
 	resourceRoot_Cstring := C.CString(resourceRoot)
 	defer C.free(unsafe.Pointer(resourceRoot_Cstring))
-	ret := C.QResource_UnregisterResource2(rccFilename_Cstring, C.ulong(len(rccFilename)), resourceRoot_Cstring, C.ulong(len(resourceRoot)))
+	ret := C.QResource_UnregisterResource2(rccFilename_Cstring, C.size_t(len(rccFilename)), resourceRoot_Cstring, C.size_t(len(resourceRoot)))
 	return (bool)(ret)
 }
 
 func QResource_RegisterResource22(rccData *byte, resourceRoot string) bool {
 	resourceRoot_Cstring := C.CString(resourceRoot)
 	defer C.free(unsafe.Pointer(resourceRoot_Cstring))
-	ret := C.QResource_RegisterResource22((*C.uchar)(unsafe.Pointer(rccData)), resourceRoot_Cstring, C.ulong(len(resourceRoot)))
+	ret := C.QResource_RegisterResource22((*C.uchar)(unsafe.Pointer(rccData)), resourceRoot_Cstring, C.size_t(len(resourceRoot)))
 	return (bool)(ret)
 }
 
 func QResource_UnregisterResource22(rccData *byte, resourceRoot string) bool {
 	resourceRoot_Cstring := C.CString(resourceRoot)
 	defer C.free(unsafe.Pointer(resourceRoot_Cstring))
-	ret := C.QResource_UnregisterResource22((*C.uchar)(unsafe.Pointer(rccData)), resourceRoot_Cstring, C.ulong(len(resourceRoot)))
+	ret := C.QResource_UnregisterResource22((*C.uchar)(unsafe.Pointer(rccData)), resourceRoot_Cstring, C.size_t(len(resourceRoot)))
 	return (bool)(ret)
 }
 

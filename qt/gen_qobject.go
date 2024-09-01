@@ -128,7 +128,7 @@ func (this *QObject) ObjectName() string {
 func (this *QObject) SetObjectName(name string) {
 	name_Cstring := C.CString(name)
 	defer C.free(unsafe.Pointer(name_Cstring))
-	C.QObject_SetObjectName(this.h, name_Cstring, C.ulong(len(name)))
+	C.QObject_SetObjectName(this.h, name_Cstring, C.size_t(len(name)))
 }
 
 func (this *QObject) IsWidgetType() bool {

@@ -46,7 +46,7 @@ func NewQPushButton() *QPushButton {
 func NewQPushButton2(text string) *QPushButton {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QPushButton_new2(text_Cstring, C.ulong(len(text)))
+	ret := C.QPushButton_new2(text_Cstring, C.size_t(len(text)))
 	return newQPushButton(ret)
 }
 
@@ -54,7 +54,7 @@ func NewQPushButton2(text string) *QPushButton {
 func NewQPushButton3(icon *QIcon, text string) *QPushButton {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QPushButton_new3(icon.cPointer(), text_Cstring, C.ulong(len(text)))
+	ret := C.QPushButton_new3(icon.cPointer(), text_Cstring, C.size_t(len(text)))
 	return newQPushButton(ret)
 }
 
@@ -68,7 +68,7 @@ func NewQPushButton4(parent *QWidget) *QPushButton {
 func NewQPushButton5(text string, parent *QWidget) *QPushButton {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QPushButton_new5(text_Cstring, C.ulong(len(text)), parent.cPointer())
+	ret := C.QPushButton_new5(text_Cstring, C.size_t(len(text)), parent.cPointer())
 	return newQPushButton(ret)
 }
 
@@ -76,7 +76,7 @@ func NewQPushButton5(text string, parent *QWidget) *QPushButton {
 func NewQPushButton6(icon *QIcon, text string, parent *QWidget) *QPushButton {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QPushButton_new6(icon.cPointer(), text_Cstring, C.ulong(len(text)), parent.cPointer())
+	ret := C.QPushButton_new6(icon.cPointer(), text_Cstring, C.size_t(len(text)), parent.cPointer())
 	return newQPushButton(ret)
 }
 

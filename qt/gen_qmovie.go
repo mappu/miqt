@@ -53,7 +53,7 @@ func NewQMovie2(device *QIODevice) *QMovie {
 func NewQMovie3(fileName string) *QMovie {
 	fileName_Cstring := C.CString(fileName)
 	defer C.free(unsafe.Pointer(fileName_Cstring))
-	ret := C.QMovie_new3(fileName_Cstring, C.ulong(len(fileName)))
+	ret := C.QMovie_new3(fileName_Cstring, C.size_t(len(fileName)))
 	return newQMovie(ret)
 }
 
@@ -79,7 +79,7 @@ func NewQMovie6(device *QIODevice, format *QByteArray, parent *QObject) *QMovie 
 func NewQMovie7(fileName string, format *QByteArray) *QMovie {
 	fileName_Cstring := C.CString(fileName)
 	defer C.free(unsafe.Pointer(fileName_Cstring))
-	ret := C.QMovie_new7(fileName_Cstring, C.ulong(len(fileName)), format.cPointer())
+	ret := C.QMovie_new7(fileName_Cstring, C.size_t(len(fileName)), format.cPointer())
 	return newQMovie(ret)
 }
 
@@ -87,7 +87,7 @@ func NewQMovie7(fileName string, format *QByteArray) *QMovie {
 func NewQMovie8(fileName string, format *QByteArray, parent *QObject) *QMovie {
 	fileName_Cstring := C.CString(fileName)
 	defer C.free(unsafe.Pointer(fileName_Cstring))
-	ret := C.QMovie_new8(fileName_Cstring, C.ulong(len(fileName)), format.cPointer(), parent.cPointer())
+	ret := C.QMovie_new8(fileName_Cstring, C.size_t(len(fileName)), format.cPointer(), parent.cPointer())
 	return newQMovie(ret)
 }
 
@@ -143,7 +143,7 @@ func (this *QMovie) Device() *QIODevice {
 func (this *QMovie) SetFileName(fileName string) {
 	fileName_Cstring := C.CString(fileName)
 	defer C.free(unsafe.Pointer(fileName_Cstring))
-	C.QMovie_SetFileName(this.h, fileName_Cstring, C.ulong(len(fileName)))
+	C.QMovie_SetFileName(this.h, fileName_Cstring, C.size_t(len(fileName)))
 }
 
 func (this *QMovie) FileName() string {

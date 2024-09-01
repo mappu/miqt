@@ -58,7 +58,7 @@ func NewQPixmap3(param1 *QSize) *QPixmap {
 func NewQPixmap4(fileName string) *QPixmap {
 	fileName_Cstring := C.CString(fileName)
 	defer C.free(unsafe.Pointer(fileName_Cstring))
-	ret := C.QPixmap_new4(fileName_Cstring, C.ulong(len(fileName)))
+	ret := C.QPixmap_new4(fileName_Cstring, C.size_t(len(fileName)))
 	return newQPixmap(ret)
 }
 
@@ -74,7 +74,7 @@ func NewQPixmap6(fileName string, format string) *QPixmap {
 	defer C.free(unsafe.Pointer(fileName_Cstring))
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
-	ret := C.QPixmap_new6(fileName_Cstring, C.ulong(len(fileName)), format_Cstring)
+	ret := C.QPixmap_new6(fileName_Cstring, C.size_t(len(fileName)), format_Cstring)
 	return newQPixmap(ret)
 }
 
@@ -84,7 +84,7 @@ func NewQPixmap7(fileName string, format string, flags int) *QPixmap {
 	defer C.free(unsafe.Pointer(fileName_Cstring))
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
-	ret := C.QPixmap_new7(fileName_Cstring, C.ulong(len(fileName)), format_Cstring, (C.int)(flags))
+	ret := C.QPixmap_new7(fileName_Cstring, C.size_t(len(fileName)), format_Cstring, (C.int)(flags))
 	return newQPixmap(ret)
 }
 
@@ -373,7 +373,7 @@ func QPixmap_FromImageReader(imageReader *QImageReader) *QPixmap {
 func (this *QPixmap) Load(fileName string) bool {
 	fileName_Cstring := C.CString(fileName)
 	defer C.free(unsafe.Pointer(fileName_Cstring))
-	ret := C.QPixmap_Load(this.h, fileName_Cstring, C.ulong(len(fileName)))
+	ret := C.QPixmap_Load(this.h, fileName_Cstring, C.size_t(len(fileName)))
 	return (bool)(ret)
 }
 
@@ -390,7 +390,7 @@ func (this *QPixmap) LoadFromDataWithData(data *QByteArray) bool {
 func (this *QPixmap) Save(fileName string) bool {
 	fileName_Cstring := C.CString(fileName)
 	defer C.free(unsafe.Pointer(fileName_Cstring))
-	ret := C.QPixmap_Save(this.h, fileName_Cstring, C.ulong(len(fileName)))
+	ret := C.QPixmap_Save(this.h, fileName_Cstring, C.size_t(len(fileName)))
 	return (bool)(ret)
 }
 
@@ -692,7 +692,7 @@ func (this *QPixmap) Load2(fileName string, format string) bool {
 	defer C.free(unsafe.Pointer(fileName_Cstring))
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
-	ret := C.QPixmap_Load2(this.h, fileName_Cstring, C.ulong(len(fileName)), format_Cstring)
+	ret := C.QPixmap_Load2(this.h, fileName_Cstring, C.size_t(len(fileName)), format_Cstring)
 	return (bool)(ret)
 }
 
@@ -701,7 +701,7 @@ func (this *QPixmap) Load3(fileName string, format string, flags int) bool {
 	defer C.free(unsafe.Pointer(fileName_Cstring))
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
-	ret := C.QPixmap_Load3(this.h, fileName_Cstring, C.ulong(len(fileName)), format_Cstring, (C.int)(flags))
+	ret := C.QPixmap_Load3(this.h, fileName_Cstring, C.size_t(len(fileName)), format_Cstring, (C.int)(flags))
 	return (bool)(ret)
 }
 
@@ -738,7 +738,7 @@ func (this *QPixmap) Save2(fileName string, format string) bool {
 	defer C.free(unsafe.Pointer(fileName_Cstring))
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
-	ret := C.QPixmap_Save2(this.h, fileName_Cstring, C.ulong(len(fileName)), format_Cstring)
+	ret := C.QPixmap_Save2(this.h, fileName_Cstring, C.size_t(len(fileName)), format_Cstring)
 	return (bool)(ret)
 }
 
@@ -747,7 +747,7 @@ func (this *QPixmap) Save3(fileName string, format string, quality int) bool {
 	defer C.free(unsafe.Pointer(fileName_Cstring))
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
-	ret := C.QPixmap_Save3(this.h, fileName_Cstring, C.ulong(len(fileName)), format_Cstring, (C.int)(quality))
+	ret := C.QPixmap_Save3(this.h, fileName_Cstring, C.size_t(len(fileName)), format_Cstring, (C.int)(quality))
 	return (bool)(ret)
 }
 

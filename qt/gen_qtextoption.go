@@ -117,7 +117,7 @@ func (this *QTextOption) SetTabArray(tabStops []float64) {
 	for i := range tabStops {
 		tabStops_CArray[i] = (C.double)(tabStops[i])
 	}
-	C.QTextOption_SetTabArray(this.h, &tabStops_CArray[0], C.ulong(len(tabStops)))
+	C.QTextOption_SetTabArray(this.h, &tabStops_CArray[0], C.size_t(len(tabStops)))
 }
 
 func (this *QTextOption) TabArray() []float64 {
@@ -140,7 +140,7 @@ func (this *QTextOption) SetTabs(tabStops []QTextOption__Tab) {
 	for i := range tabStops {
 		tabStops_CArray[i] = tabStops[i].cPointer()
 	}
-	C.QTextOption_SetTabs(this.h, &tabStops_CArray[0], C.ulong(len(tabStops)))
+	C.QTextOption_SetTabs(this.h, &tabStops_CArray[0], C.size_t(len(tabStops)))
 }
 
 func (this *QTextOption) Tabs() []QTextOption__Tab {

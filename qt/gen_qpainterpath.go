@@ -160,13 +160,13 @@ func (this *QPainterPath) AddEllipse3(center *QPointF, rx float64, ry float64) {
 func (this *QPainterPath) AddText(point *QPointF, f *QFont, text string) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QPainterPath_AddText(this.h, point.cPointer(), f.cPointer(), text_Cstring, C.ulong(len(text)))
+	C.QPainterPath_AddText(this.h, point.cPointer(), f.cPointer(), text_Cstring, C.size_t(len(text)))
 }
 
 func (this *QPainterPath) AddText2(x float64, y float64, f *QFont, text string) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QPainterPath_AddText2(this.h, (C.double)(x), (C.double)(y), f.cPointer(), text_Cstring, C.ulong(len(text)))
+	C.QPainterPath_AddText2(this.h, (C.double)(x), (C.double)(y), f.cPointer(), text_Cstring, C.size_t(len(text)))
 }
 
 func (this *QPainterPath) AddPath(path *QPainterPath) {
@@ -587,7 +587,7 @@ func (this *QPainterPathStroker) SetDashPatternWithDashPattern(dashPattern []flo
 	for i := range dashPattern {
 		dashPattern_CArray[i] = (C.double)(dashPattern[i])
 	}
-	C.QPainterPathStroker_SetDashPatternWithDashPattern(this.h, &dashPattern_CArray[0], C.ulong(len(dashPattern)))
+	C.QPainterPathStroker_SetDashPatternWithDashPattern(this.h, &dashPattern_CArray[0], C.size_t(len(dashPattern)))
 }
 
 func (this *QPainterPathStroker) DashPattern() []float64 {

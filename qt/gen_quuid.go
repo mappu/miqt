@@ -51,7 +51,7 @@ func NewQUuid2(l uint, w1 uint16, w2 uint16, b1 byte, b2 byte, b3 byte, b4 byte,
 func NewQUuid3(param1 string) *QUuid {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	ret := C.QUuid_new3(param1_Cstring, C.ulong(len(param1)))
+	ret := C.QUuid_new3(param1_Cstring, C.size_t(len(param1)))
 	return newQUuid(ret)
 }
 
@@ -198,7 +198,7 @@ func QUuid_CreateUuidV5(ns *QUuid, baseData *QByteArray) *QUuid {
 func QUuid_CreateUuidV32(ns *QUuid, baseData string) *QUuid {
 	baseData_Cstring := C.CString(baseData)
 	defer C.free(unsafe.Pointer(baseData_Cstring))
-	ret := C.QUuid_CreateUuidV32(ns.cPointer(), baseData_Cstring, C.ulong(len(baseData)))
+	ret := C.QUuid_CreateUuidV32(ns.cPointer(), baseData_Cstring, C.size_t(len(baseData)))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQUuid(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QUuid) {
@@ -211,7 +211,7 @@ func QUuid_CreateUuidV32(ns *QUuid, baseData string) *QUuid {
 func QUuid_CreateUuidV52(ns *QUuid, baseData string) *QUuid {
 	baseData_Cstring := C.CString(baseData)
 	defer C.free(unsafe.Pointer(baseData_Cstring))
-	ret := C.QUuid_CreateUuidV52(ns.cPointer(), baseData_Cstring, C.ulong(len(baseData)))
+	ret := C.QUuid_CreateUuidV52(ns.cPointer(), baseData_Cstring, C.size_t(len(baseData)))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQUuid(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QUuid) {

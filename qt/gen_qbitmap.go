@@ -64,7 +64,7 @@ func NewQBitmap4(param1 *QSize) *QBitmap {
 func NewQBitmap5(fileName string) *QBitmap {
 	fileName_Cstring := C.CString(fileName)
 	defer C.free(unsafe.Pointer(fileName_Cstring))
-	ret := C.QBitmap_new5(fileName_Cstring, C.ulong(len(fileName)))
+	ret := C.QBitmap_new5(fileName_Cstring, C.size_t(len(fileName)))
 	return newQBitmap(ret)
 }
 
@@ -80,7 +80,7 @@ func NewQBitmap7(fileName string, format string) *QBitmap {
 	defer C.free(unsafe.Pointer(fileName_Cstring))
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
-	ret := C.QBitmap_new7(fileName_Cstring, C.ulong(len(fileName)), format_Cstring)
+	ret := C.QBitmap_new7(fileName_Cstring, C.size_t(len(fileName)), format_Cstring)
 	return newQBitmap(ret)
 }
 

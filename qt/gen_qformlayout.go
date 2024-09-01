@@ -149,13 +149,13 @@ func (this *QFormLayout) AddRow2(label *QWidget, field *QLayout) {
 func (this *QFormLayout) AddRow3(labelText string, field *QWidget) {
 	labelText_Cstring := C.CString(labelText)
 	defer C.free(unsafe.Pointer(labelText_Cstring))
-	C.QFormLayout_AddRow3(this.h, labelText_Cstring, C.ulong(len(labelText)), field.cPointer())
+	C.QFormLayout_AddRow3(this.h, labelText_Cstring, C.size_t(len(labelText)), field.cPointer())
 }
 
 func (this *QFormLayout) AddRow4(labelText string, field *QLayout) {
 	labelText_Cstring := C.CString(labelText)
 	defer C.free(unsafe.Pointer(labelText_Cstring))
-	C.QFormLayout_AddRow4(this.h, labelText_Cstring, C.ulong(len(labelText)), field.cPointer())
+	C.QFormLayout_AddRow4(this.h, labelText_Cstring, C.size_t(len(labelText)), field.cPointer())
 }
 
 func (this *QFormLayout) AddRowWithWidget(widget *QWidget) {
@@ -177,13 +177,13 @@ func (this *QFormLayout) InsertRow2(row int, label *QWidget, field *QLayout) {
 func (this *QFormLayout) InsertRow3(row int, labelText string, field *QWidget) {
 	labelText_Cstring := C.CString(labelText)
 	defer C.free(unsafe.Pointer(labelText_Cstring))
-	C.QFormLayout_InsertRow3(this.h, (C.int)(row), labelText_Cstring, C.ulong(len(labelText)), field.cPointer())
+	C.QFormLayout_InsertRow3(this.h, (C.int)(row), labelText_Cstring, C.size_t(len(labelText)), field.cPointer())
 }
 
 func (this *QFormLayout) InsertRow4(row int, labelText string, field *QLayout) {
 	labelText_Cstring := C.CString(labelText)
 	defer C.free(unsafe.Pointer(labelText_Cstring))
-	C.QFormLayout_InsertRow4(this.h, (C.int)(row), labelText_Cstring, C.ulong(len(labelText)), field.cPointer())
+	C.QFormLayout_InsertRow4(this.h, (C.int)(row), labelText_Cstring, C.size_t(len(labelText)), field.cPointer())
 }
 
 func (this *QFormLayout) InsertRow5(row int, widget *QWidget) {

@@ -302,7 +302,7 @@ func (this *QGraphicsScene) CreateItemGroup(items []*QGraphicsItem) *QGraphicsIt
 	for i := range items {
 		items_CArray[i] = items[i].cPointer()
 	}
-	ret := C.QGraphicsScene_CreateItemGroup(this.h, &items_CArray[0], C.ulong(len(items)))
+	ret := C.QGraphicsScene_CreateItemGroup(this.h, &items_CArray[0], C.size_t(len(items)))
 	return newQGraphicsItemGroup_U(unsafe.Pointer(ret))
 }
 
@@ -342,14 +342,14 @@ func (this *QGraphicsScene) AddRect(rect *QRectF) *QGraphicsRectItem {
 func (this *QGraphicsScene) AddText(text string) *QGraphicsTextItem {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QGraphicsScene_AddText(this.h, text_Cstring, C.ulong(len(text)))
+	ret := C.QGraphicsScene_AddText(this.h, text_Cstring, C.size_t(len(text)))
 	return newQGraphicsTextItem_U(unsafe.Pointer(ret))
 }
 
 func (this *QGraphicsScene) AddSimpleText(text string) *QGraphicsSimpleTextItem {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QGraphicsScene_AddSimpleText(this.h, text_Cstring, C.ulong(len(text)))
+	ret := C.QGraphicsScene_AddSimpleText(this.h, text_Cstring, C.size_t(len(text)))
 	return newQGraphicsSimpleTextItem_U(unsafe.Pointer(ret))
 }
 
@@ -587,7 +587,7 @@ func (this *QGraphicsScene) Changed(region []QRectF) {
 	for i := range region {
 		region_CArray[i] = region[i].cPointer()
 	}
-	C.QGraphicsScene_Changed(this.h, &region_CArray[0], C.ulong(len(region)))
+	C.QGraphicsScene_Changed(this.h, &region_CArray[0], C.size_t(len(region)))
 }
 
 func (this *QGraphicsScene) OnChanged(slot func()) {
@@ -908,14 +908,14 @@ func (this *QGraphicsScene) AddRect3(rect *QRectF, pen *QPen, brush *QBrush) *QG
 func (this *QGraphicsScene) AddText2(text string, font *QFont) *QGraphicsTextItem {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QGraphicsScene_AddText2(this.h, text_Cstring, C.ulong(len(text)), font.cPointer())
+	ret := C.QGraphicsScene_AddText2(this.h, text_Cstring, C.size_t(len(text)), font.cPointer())
 	return newQGraphicsTextItem_U(unsafe.Pointer(ret))
 }
 
 func (this *QGraphicsScene) AddSimpleText2(text string, font *QFont) *QGraphicsSimpleTextItem {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QGraphicsScene_AddSimpleText2(this.h, text_Cstring, C.ulong(len(text)), font.cPointer())
+	ret := C.QGraphicsScene_AddSimpleText2(this.h, text_Cstring, C.size_t(len(text)), font.cPointer())
 	return newQGraphicsSimpleTextItem_U(unsafe.Pointer(ret))
 }
 

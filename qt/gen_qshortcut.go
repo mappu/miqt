@@ -140,7 +140,7 @@ func (this *QShortcut) Context() uintptr {
 func (this *QShortcut) SetWhatsThis(text string) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QShortcut_SetWhatsThis(this.h, text_Cstring, C.ulong(len(text)))
+	C.QShortcut_SetWhatsThis(this.h, text_Cstring, C.size_t(len(text)))
 }
 
 func (this *QShortcut) WhatsThis() string {

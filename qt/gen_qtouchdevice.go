@@ -80,7 +80,7 @@ func (this *QTouchDevice) MaximumTouchPoints() int {
 func (this *QTouchDevice) SetName(name string) {
 	name_Cstring := C.CString(name)
 	defer C.free(unsafe.Pointer(name_Cstring))
-	C.QTouchDevice_SetName(this.h, name_Cstring, C.ulong(len(name)))
+	C.QTouchDevice_SetName(this.h, name_Cstring, C.size_t(len(name)))
 }
 
 func (this *QTouchDevice) SetType(devType uintptr) {

@@ -124,7 +124,7 @@ func NewQTableWidgetItem() *QTableWidgetItem {
 func NewQTableWidgetItem2(text string) *QTableWidgetItem {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QTableWidgetItem_new2(text_Cstring, C.ulong(len(text)))
+	ret := C.QTableWidgetItem_new2(text_Cstring, C.size_t(len(text)))
 	return newQTableWidgetItem(ret)
 }
 
@@ -132,7 +132,7 @@ func NewQTableWidgetItem2(text string) *QTableWidgetItem {
 func NewQTableWidgetItem3(icon *QIcon, text string) *QTableWidgetItem {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QTableWidgetItem_new3(icon.cPointer(), text_Cstring, C.ulong(len(text)))
+	ret := C.QTableWidgetItem_new3(icon.cPointer(), text_Cstring, C.size_t(len(text)))
 	return newQTableWidgetItem(ret)
 }
 
@@ -152,7 +152,7 @@ func NewQTableWidgetItem5(typeVal int) *QTableWidgetItem {
 func NewQTableWidgetItem6(text string, typeVal int) *QTableWidgetItem {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QTableWidgetItem_new6(text_Cstring, C.ulong(len(text)), (C.int)(typeVal))
+	ret := C.QTableWidgetItem_new6(text_Cstring, C.size_t(len(text)), (C.int)(typeVal))
 	return newQTableWidgetItem(ret)
 }
 
@@ -160,7 +160,7 @@ func NewQTableWidgetItem6(text string, typeVal int) *QTableWidgetItem {
 func NewQTableWidgetItem7(icon *QIcon, text string, typeVal int) *QTableWidgetItem {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QTableWidgetItem_new7(icon.cPointer(), text_Cstring, C.ulong(len(text)), (C.int)(typeVal))
+	ret := C.QTableWidgetItem_new7(icon.cPointer(), text_Cstring, C.size_t(len(text)), (C.int)(typeVal))
 	return newQTableWidgetItem(ret)
 }
 
@@ -214,7 +214,7 @@ func (this *QTableWidgetItem) Text() string {
 func (this *QTableWidgetItem) SetText(text string) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QTableWidgetItem_SetText(this.h, text_Cstring, C.ulong(len(text)))
+	C.QTableWidgetItem_SetText(this.h, text_Cstring, C.size_t(len(text)))
 }
 
 func (this *QTableWidgetItem) Icon() *QIcon {
@@ -244,7 +244,7 @@ func (this *QTableWidgetItem) StatusTip() string {
 func (this *QTableWidgetItem) SetStatusTip(statusTip string) {
 	statusTip_Cstring := C.CString(statusTip)
 	defer C.free(unsafe.Pointer(statusTip_Cstring))
-	C.QTableWidgetItem_SetStatusTip(this.h, statusTip_Cstring, C.ulong(len(statusTip)))
+	C.QTableWidgetItem_SetStatusTip(this.h, statusTip_Cstring, C.size_t(len(statusTip)))
 }
 
 func (this *QTableWidgetItem) ToolTip() string {
@@ -259,7 +259,7 @@ func (this *QTableWidgetItem) ToolTip() string {
 func (this *QTableWidgetItem) SetToolTip(toolTip string) {
 	toolTip_Cstring := C.CString(toolTip)
 	defer C.free(unsafe.Pointer(toolTip_Cstring))
-	C.QTableWidgetItem_SetToolTip(this.h, toolTip_Cstring, C.ulong(len(toolTip)))
+	C.QTableWidgetItem_SetToolTip(this.h, toolTip_Cstring, C.size_t(len(toolTip)))
 }
 
 func (this *QTableWidgetItem) WhatsThis() string {
@@ -274,7 +274,7 @@ func (this *QTableWidgetItem) WhatsThis() string {
 func (this *QTableWidgetItem) SetWhatsThis(whatsThis string) {
 	whatsThis_Cstring := C.CString(whatsThis)
 	defer C.free(unsafe.Pointer(whatsThis_Cstring))
-	C.QTableWidgetItem_SetWhatsThis(this.h, whatsThis_Cstring, C.ulong(len(whatsThis)))
+	C.QTableWidgetItem_SetWhatsThis(this.h, whatsThis_Cstring, C.size_t(len(whatsThis)))
 }
 
 func (this *QTableWidgetItem) Font() *QFont {
@@ -573,31 +573,31 @@ func (this *QTableWidget) TakeHorizontalHeaderItem(column int) *QTableWidgetItem
 func (this *QTableWidget) SetVerticalHeaderLabels(labels []string) {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
 	labels_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(labels))))
-	labels_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(labels))))
+	labels_Lengths := (*[0xffff]C.uint64_t)(C.malloc(C.size_t(8 * len(labels))))
 	defer C.free(unsafe.Pointer(labels_CArray))
 	defer C.free(unsafe.Pointer(labels_Lengths))
 	for i := range labels {
 		single_cstring := C.CString(labels[i])
 		defer C.free(unsafe.Pointer(single_cstring))
 		labels_CArray[i] = single_cstring
-		labels_Lengths[i] = (C.size_t)(len(labels[i]))
+		labels_Lengths[i] = (C.uint64_t)(len(labels[i]))
 	}
-	C.QTableWidget_SetVerticalHeaderLabels(this.h, &labels_CArray[0], &labels_Lengths[0], C.ulong(len(labels)))
+	C.QTableWidget_SetVerticalHeaderLabels(this.h, &labels_CArray[0], &labels_Lengths[0], C.size_t(len(labels)))
 }
 
 func (this *QTableWidget) SetHorizontalHeaderLabels(labels []string) {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
 	labels_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(labels))))
-	labels_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(labels))))
+	labels_Lengths := (*[0xffff]C.uint64_t)(C.malloc(C.size_t(8 * len(labels))))
 	defer C.free(unsafe.Pointer(labels_CArray))
 	defer C.free(unsafe.Pointer(labels_Lengths))
 	for i := range labels {
 		single_cstring := C.CString(labels[i])
 		defer C.free(unsafe.Pointer(single_cstring))
 		labels_CArray[i] = single_cstring
-		labels_Lengths[i] = (C.size_t)(len(labels[i]))
+		labels_Lengths[i] = (C.uint64_t)(len(labels[i]))
 	}
-	C.QTableWidget_SetHorizontalHeaderLabels(this.h, &labels_CArray[0], &labels_Lengths[0], C.ulong(len(labels)))
+	C.QTableWidget_SetHorizontalHeaderLabels(this.h, &labels_CArray[0], &labels_Lengths[0], C.size_t(len(labels)))
 }
 
 func (this *QTableWidget) CurrentRow() int {
@@ -718,7 +718,7 @@ func (this *QTableWidget) FindItems(text string, flags int) []*QTableWidgetItem 
 	defer C.free(unsafe.Pointer(text_Cstring))
 	var _out **C.QTableWidgetItem = nil
 	var _out_len C.size_t = 0
-	C.QTableWidget_FindItems(this.h, text_Cstring, C.ulong(len(text)), (C.int)(flags), &_out, &_out_len)
+	C.QTableWidget_FindItems(this.h, text_Cstring, C.size_t(len(text)), (C.int)(flags), &_out, &_out_len)
 	ret := make([]*QTableWidgetItem, int(_out_len))
 	_outCast := (*[0xffff]*C.QTableWidgetItem)(unsafe.Pointer(_out)) // so fresh so clean
 	for i := 0; i < int(_out_len); i++ {

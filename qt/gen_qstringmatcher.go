@@ -44,7 +44,7 @@ func NewQStringMatcher() *QStringMatcher {
 func NewQStringMatcher2(pattern string) *QStringMatcher {
 	pattern_Cstring := C.CString(pattern)
 	defer C.free(unsafe.Pointer(pattern_Cstring))
-	ret := C.QStringMatcher_new2(pattern_Cstring, C.ulong(len(pattern)))
+	ret := C.QStringMatcher_new2(pattern_Cstring, C.size_t(len(pattern)))
 	return newQStringMatcher(ret)
 }
 
@@ -64,7 +64,7 @@ func NewQStringMatcher4(other *QStringMatcher) *QStringMatcher {
 func NewQStringMatcher5(pattern string, cs uintptr) *QStringMatcher {
 	pattern_Cstring := C.CString(pattern)
 	defer C.free(unsafe.Pointer(pattern_Cstring))
-	ret := C.QStringMatcher_new5(pattern_Cstring, C.ulong(len(pattern)), (C.uintptr_t)(cs))
+	ret := C.QStringMatcher_new5(pattern_Cstring, C.size_t(len(pattern)), (C.uintptr_t)(cs))
 	return newQStringMatcher(ret)
 }
 
@@ -81,7 +81,7 @@ func (this *QStringMatcher) OperatorAssign(other *QStringMatcher) {
 func (this *QStringMatcher) SetPattern(pattern string) {
 	pattern_Cstring := C.CString(pattern)
 	defer C.free(unsafe.Pointer(pattern_Cstring))
-	C.QStringMatcher_SetPattern(this.h, pattern_Cstring, C.ulong(len(pattern)))
+	C.QStringMatcher_SetPattern(this.h, pattern_Cstring, C.size_t(len(pattern)))
 }
 
 func (this *QStringMatcher) SetCaseSensitivity(cs uintptr) {
@@ -91,7 +91,7 @@ func (this *QStringMatcher) SetCaseSensitivity(cs uintptr) {
 func (this *QStringMatcher) IndexIn(str string) int {
 	str_Cstring := C.CString(str)
 	defer C.free(unsafe.Pointer(str_Cstring))
-	ret := C.QStringMatcher_IndexIn(this.h, str_Cstring, C.ulong(len(str)))
+	ret := C.QStringMatcher_IndexIn(this.h, str_Cstring, C.size_t(len(str)))
 	return (int)(ret)
 }
 
@@ -117,7 +117,7 @@ func (this *QStringMatcher) CaseSensitivity() uintptr {
 func (this *QStringMatcher) IndexIn22(str string, from int) int {
 	str_Cstring := C.CString(str)
 	defer C.free(unsafe.Pointer(str_Cstring))
-	ret := C.QStringMatcher_IndexIn22(this.h, str_Cstring, C.ulong(len(str)), (C.int)(from))
+	ret := C.QStringMatcher_IndexIn22(this.h, str_Cstring, C.size_t(len(str)), (C.int)(from))
 	return (int)(ret)
 }
 

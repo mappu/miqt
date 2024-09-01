@@ -1020,7 +1020,7 @@ func NewQGestureEvent(gestures []*QGesture) *QGestureEvent {
 	for i := range gestures {
 		gestures_CArray[i] = gestures[i].cPointer()
 	}
-	ret := C.QGestureEvent_new(&gestures_CArray[0], C.ulong(len(gestures)))
+	ret := C.QGestureEvent_new(&gestures_CArray[0], C.size_t(len(gestures)))
 	return newQGestureEvent(ret)
 }
 

@@ -263,7 +263,7 @@ func QFontDialog_GetFont3(ok *bool, initial *QFont, parent *QWidget) *QFont {
 func QFontDialog_GetFont4(ok *bool, initial *QFont, parent *QWidget, title string) *QFont {
 	title_Cstring := C.CString(title)
 	defer C.free(unsafe.Pointer(title_Cstring))
-	ret := C.QFontDialog_GetFont4((*C.bool)(unsafe.Pointer(ok)), initial.cPointer(), parent.cPointer(), title_Cstring, C.ulong(len(title)))
+	ret := C.QFontDialog_GetFont4((*C.bool)(unsafe.Pointer(ok)), initial.cPointer(), parent.cPointer(), title_Cstring, C.size_t(len(title)))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQFont(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QFont) {
@@ -276,7 +276,7 @@ func QFontDialog_GetFont4(ok *bool, initial *QFont, parent *QWidget, title strin
 func QFontDialog_GetFont5(ok *bool, initial *QFont, parent *QWidget, title string, options int) *QFont {
 	title_Cstring := C.CString(title)
 	defer C.free(unsafe.Pointer(title_Cstring))
-	ret := C.QFontDialog_GetFont5((*C.bool)(unsafe.Pointer(ok)), initial.cPointer(), parent.cPointer(), title_Cstring, C.ulong(len(title)), (C.int)(options))
+	ret := C.QFontDialog_GetFont5((*C.bool)(unsafe.Pointer(ok)), initial.cPointer(), parent.cPointer(), title_Cstring, C.size_t(len(title)), (C.int)(options))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQFont(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QFont) {

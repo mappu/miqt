@@ -68,7 +68,7 @@ func (this *QIconEngine) AddPixmap(pixmap *QPixmap, mode uintptr, state uintptr)
 func (this *QIconEngine) AddFile(fileName string, size *QSize, mode uintptr, state uintptr) {
 	fileName_Cstring := C.CString(fileName)
 	defer C.free(unsafe.Pointer(fileName_Cstring))
-	C.QIconEngine_AddFile(this.h, fileName_Cstring, C.ulong(len(fileName)), size.cPointer(), (C.uintptr_t)(mode), (C.uintptr_t)(state))
+	C.QIconEngine_AddFile(this.h, fileName_Cstring, C.size_t(len(fileName)), size.cPointer(), (C.uintptr_t)(mode), (C.uintptr_t)(state))
 }
 
 func (this *QIconEngine) Key() string {

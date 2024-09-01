@@ -122,7 +122,7 @@ func NewQCborValue8(ba *QByteArray) *QCborValue {
 func NewQCborValue9(s string) *QCborValue {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	ret := C.QCborValue_new9(s_Cstring, C.ulong(len(s)))
+	ret := C.QCborValue_new9(s_Cstring, C.size_t(len(s)))
 	return newQCborValue(ret)
 }
 
@@ -421,7 +421,7 @@ func (this *QCborValue) ToMapWithDefaultValue(defaultValue *QCborMap) *QCborMap 
 func (this *QCborValue) OperatorSubscript(key string) *QCborValue {
 	key_Cstring := C.CString(key)
 	defer C.free(unsafe.Pointer(key_Cstring))
-	ret := C.QCborValue_OperatorSubscript(this.h, key_Cstring, C.ulong(len(key)))
+	ret := C.QCborValue_OperatorSubscript(this.h, key_Cstring, C.size_t(len(key)))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQCborValue(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QCborValue) {
@@ -456,7 +456,7 @@ func (this *QCborValue) OperatorSubscript3(key int64) *QCborValueRef {
 func (this *QCborValue) OperatorSubscript5(key string) *QCborValueRef {
 	key_Cstring := C.CString(key)
 	defer C.free(unsafe.Pointer(key_Cstring))
-	ret := C.QCborValue_OperatorSubscript5(this.h, key_Cstring, C.ulong(len(key)))
+	ret := C.QCborValue_OperatorSubscript5(this.h, key_Cstring, C.size_t(len(key)))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQCborValueRef(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QCborValueRef) {
@@ -642,7 +642,7 @@ func (this *QCborValue) ToString1(defaultValue string) string {
 	defer C.free(unsafe.Pointer(defaultValue_Cstring))
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
-	C.QCborValue_ToString1(this.h, defaultValue_Cstring, C.ulong(len(defaultValue)), &_out, &_out_Strlen)
+	C.QCborValue_ToString1(this.h, defaultValue_Cstring, C.size_t(len(defaultValue)), &_out, &_out_Strlen)
 	ret := C.GoStringN(_out, _out_Strlen)
 	C.free(unsafe.Pointer(_out))
 	return ret
@@ -1028,7 +1028,7 @@ func (this *QCborValueRef) ToMapWithQCborMap(m *QCborMap) *QCborMap {
 func (this *QCborValueRef) OperatorSubscript(key string) *QCborValue {
 	key_Cstring := C.CString(key)
 	defer C.free(unsafe.Pointer(key_Cstring))
-	ret := C.QCborValueRef_OperatorSubscript(this.h, key_Cstring, C.ulong(len(key)))
+	ret := C.QCborValueRef_OperatorSubscript(this.h, key_Cstring, C.size_t(len(key)))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQCborValue(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QCborValue) {
@@ -1063,7 +1063,7 @@ func (this *QCborValueRef) OperatorSubscript3(key int64) *QCborValueRef {
 func (this *QCborValueRef) OperatorSubscript5(key string) *QCborValueRef {
 	key_Cstring := C.CString(key)
 	defer C.free(unsafe.Pointer(key_Cstring))
-	ret := C.QCborValueRef_OperatorSubscript5(this.h, key_Cstring, C.ulong(len(key)))
+	ret := C.QCborValueRef_OperatorSubscript5(this.h, key_Cstring, C.size_t(len(key)))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQCborValueRef(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QCborValueRef) {
@@ -1181,7 +1181,7 @@ func (this *QCborValueRef) ToString1(defaultValue string) string {
 	defer C.free(unsafe.Pointer(defaultValue_Cstring))
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
-	C.QCborValueRef_ToString1(this.h, defaultValue_Cstring, C.ulong(len(defaultValue)), &_out, &_out_Strlen)
+	C.QCborValueRef_ToString1(this.h, defaultValue_Cstring, C.size_t(len(defaultValue)), &_out, &_out_Strlen)
 	ret := C.GoStringN(_out, _out_Strlen)
 	C.free(unsafe.Pointer(_out))
 	return ret

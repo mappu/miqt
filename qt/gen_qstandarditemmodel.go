@@ -46,7 +46,7 @@ func NewQStandardItem() *QStandardItem {
 func NewQStandardItem2(text string) *QStandardItem {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QStandardItem_new2(text_Cstring, C.ulong(len(text)))
+	ret := C.QStandardItem_new2(text_Cstring, C.size_t(len(text)))
 	return newQStandardItem(ret)
 }
 
@@ -54,7 +54,7 @@ func NewQStandardItem2(text string) *QStandardItem {
 func NewQStandardItem3(icon *QIcon, text string) *QStandardItem {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QStandardItem_new3(icon.cPointer(), text_Cstring, C.ulong(len(text)))
+	ret := C.QStandardItem_new3(icon.cPointer(), text_Cstring, C.size_t(len(text)))
 	return newQStandardItem(ret)
 }
 
@@ -101,7 +101,7 @@ func (this *QStandardItem) Text() string {
 func (this *QStandardItem) SetText(text string) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QStandardItem_SetText(this.h, text_Cstring, C.ulong(len(text)))
+	C.QStandardItem_SetText(this.h, text_Cstring, C.size_t(len(text)))
 }
 
 func (this *QStandardItem) Icon() *QIcon {
@@ -131,7 +131,7 @@ func (this *QStandardItem) ToolTip() string {
 func (this *QStandardItem) SetToolTip(toolTip string) {
 	toolTip_Cstring := C.CString(toolTip)
 	defer C.free(unsafe.Pointer(toolTip_Cstring))
-	C.QStandardItem_SetToolTip(this.h, toolTip_Cstring, C.ulong(len(toolTip)))
+	C.QStandardItem_SetToolTip(this.h, toolTip_Cstring, C.size_t(len(toolTip)))
 }
 
 func (this *QStandardItem) StatusTip() string {
@@ -146,7 +146,7 @@ func (this *QStandardItem) StatusTip() string {
 func (this *QStandardItem) SetStatusTip(statusTip string) {
 	statusTip_Cstring := C.CString(statusTip)
 	defer C.free(unsafe.Pointer(statusTip_Cstring))
-	C.QStandardItem_SetStatusTip(this.h, statusTip_Cstring, C.ulong(len(statusTip)))
+	C.QStandardItem_SetStatusTip(this.h, statusTip_Cstring, C.size_t(len(statusTip)))
 }
 
 func (this *QStandardItem) WhatsThis() string {
@@ -161,7 +161,7 @@ func (this *QStandardItem) WhatsThis() string {
 func (this *QStandardItem) SetWhatsThis(whatsThis string) {
 	whatsThis_Cstring := C.CString(whatsThis)
 	defer C.free(unsafe.Pointer(whatsThis_Cstring))
-	C.QStandardItem_SetWhatsThis(this.h, whatsThis_Cstring, C.ulong(len(whatsThis)))
+	C.QStandardItem_SetWhatsThis(this.h, whatsThis_Cstring, C.size_t(len(whatsThis)))
 }
 
 func (this *QStandardItem) SizeHint() *QSize {
@@ -254,7 +254,7 @@ func (this *QStandardItem) AccessibleText() string {
 func (this *QStandardItem) SetAccessibleText(accessibleText string) {
 	accessibleText_Cstring := C.CString(accessibleText)
 	defer C.free(unsafe.Pointer(accessibleText_Cstring))
-	C.QStandardItem_SetAccessibleText(this.h, accessibleText_Cstring, C.ulong(len(accessibleText)))
+	C.QStandardItem_SetAccessibleText(this.h, accessibleText_Cstring, C.size_t(len(accessibleText)))
 }
 
 func (this *QStandardItem) AccessibleDescription() string {
@@ -269,7 +269,7 @@ func (this *QStandardItem) AccessibleDescription() string {
 func (this *QStandardItem) SetAccessibleDescription(accessibleDescription string) {
 	accessibleDescription_Cstring := C.CString(accessibleDescription)
 	defer C.free(unsafe.Pointer(accessibleDescription_Cstring))
-	C.QStandardItem_SetAccessibleDescription(this.h, accessibleDescription_Cstring, C.ulong(len(accessibleDescription)))
+	C.QStandardItem_SetAccessibleDescription(this.h, accessibleDescription_Cstring, C.size_t(len(accessibleDescription)))
 }
 
 func (this *QStandardItem) Flags() int {
@@ -436,7 +436,7 @@ func (this *QStandardItem) InsertRow(row int, items []*QStandardItem) {
 	for i := range items {
 		items_CArray[i] = items[i].cPointer()
 	}
-	C.QStandardItem_InsertRow(this.h, (C.int)(row), &items_CArray[0], C.ulong(len(items)))
+	C.QStandardItem_InsertRow(this.h, (C.int)(row), &items_CArray[0], C.size_t(len(items)))
 }
 
 func (this *QStandardItem) InsertColumn(column int, items []*QStandardItem) {
@@ -446,7 +446,7 @@ func (this *QStandardItem) InsertColumn(column int, items []*QStandardItem) {
 	for i := range items {
 		items_CArray[i] = items[i].cPointer()
 	}
-	C.QStandardItem_InsertColumn(this.h, (C.int)(column), &items_CArray[0], C.ulong(len(items)))
+	C.QStandardItem_InsertColumn(this.h, (C.int)(column), &items_CArray[0], C.size_t(len(items)))
 }
 
 func (this *QStandardItem) InsertRows(row int, items []*QStandardItem) {
@@ -456,7 +456,7 @@ func (this *QStandardItem) InsertRows(row int, items []*QStandardItem) {
 	for i := range items {
 		items_CArray[i] = items[i].cPointer()
 	}
-	C.QStandardItem_InsertRows(this.h, (C.int)(row), &items_CArray[0], C.ulong(len(items)))
+	C.QStandardItem_InsertRows(this.h, (C.int)(row), &items_CArray[0], C.size_t(len(items)))
 }
 
 func (this *QStandardItem) InsertRows2(row int, count int) {
@@ -490,7 +490,7 @@ func (this *QStandardItem) AppendRow(items []*QStandardItem) {
 	for i := range items {
 		items_CArray[i] = items[i].cPointer()
 	}
-	C.QStandardItem_AppendRow(this.h, &items_CArray[0], C.ulong(len(items)))
+	C.QStandardItem_AppendRow(this.h, &items_CArray[0], C.size_t(len(items)))
 }
 
 func (this *QStandardItem) AppendRows(items []*QStandardItem) {
@@ -500,7 +500,7 @@ func (this *QStandardItem) AppendRows(items []*QStandardItem) {
 	for i := range items {
 		items_CArray[i] = items[i].cPointer()
 	}
-	C.QStandardItem_AppendRows(this.h, &items_CArray[0], C.ulong(len(items)))
+	C.QStandardItem_AppendRows(this.h, &items_CArray[0], C.size_t(len(items)))
 }
 
 func (this *QStandardItem) AppendColumn(items []*QStandardItem) {
@@ -510,7 +510,7 @@ func (this *QStandardItem) AppendColumn(items []*QStandardItem) {
 	for i := range items {
 		items_CArray[i] = items[i].cPointer()
 	}
-	C.QStandardItem_AppendColumn(this.h, &items_CArray[0], C.ulong(len(items)))
+	C.QStandardItem_AppendColumn(this.h, &items_CArray[0], C.size_t(len(items)))
 }
 
 func (this *QStandardItem) InsertRow2(row int, item *QStandardItem) {
@@ -864,31 +864,31 @@ func (this *QStandardItemModel) SetVerticalHeaderItem(row int, item *QStandardIt
 func (this *QStandardItemModel) SetHorizontalHeaderLabels(labels []string) {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
 	labels_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(labels))))
-	labels_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(labels))))
+	labels_Lengths := (*[0xffff]C.uint64_t)(C.malloc(C.size_t(8 * len(labels))))
 	defer C.free(unsafe.Pointer(labels_CArray))
 	defer C.free(unsafe.Pointer(labels_Lengths))
 	for i := range labels {
 		single_cstring := C.CString(labels[i])
 		defer C.free(unsafe.Pointer(single_cstring))
 		labels_CArray[i] = single_cstring
-		labels_Lengths[i] = (C.size_t)(len(labels[i]))
+		labels_Lengths[i] = (C.uint64_t)(len(labels[i]))
 	}
-	C.QStandardItemModel_SetHorizontalHeaderLabels(this.h, &labels_CArray[0], &labels_Lengths[0], C.ulong(len(labels)))
+	C.QStandardItemModel_SetHorizontalHeaderLabels(this.h, &labels_CArray[0], &labels_Lengths[0], C.size_t(len(labels)))
 }
 
 func (this *QStandardItemModel) SetVerticalHeaderLabels(labels []string) {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
 	labels_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(labels))))
-	labels_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(labels))))
+	labels_Lengths := (*[0xffff]C.uint64_t)(C.malloc(C.size_t(8 * len(labels))))
 	defer C.free(unsafe.Pointer(labels_CArray))
 	defer C.free(unsafe.Pointer(labels_Lengths))
 	for i := range labels {
 		single_cstring := C.CString(labels[i])
 		defer C.free(unsafe.Pointer(single_cstring))
 		labels_CArray[i] = single_cstring
-		labels_Lengths[i] = (C.size_t)(len(labels[i]))
+		labels_Lengths[i] = (C.uint64_t)(len(labels[i]))
 	}
-	C.QStandardItemModel_SetVerticalHeaderLabels(this.h, &labels_CArray[0], &labels_Lengths[0], C.ulong(len(labels)))
+	C.QStandardItemModel_SetVerticalHeaderLabels(this.h, &labels_CArray[0], &labels_Lengths[0], C.size_t(len(labels)))
 }
 
 func (this *QStandardItemModel) SetRowCount(rows int) {
@@ -906,7 +906,7 @@ func (this *QStandardItemModel) AppendRow(items []*QStandardItem) {
 	for i := range items {
 		items_CArray[i] = items[i].cPointer()
 	}
-	C.QStandardItemModel_AppendRow(this.h, &items_CArray[0], C.ulong(len(items)))
+	C.QStandardItemModel_AppendRow(this.h, &items_CArray[0], C.size_t(len(items)))
 }
 
 func (this *QStandardItemModel) AppendColumn(items []*QStandardItem) {
@@ -916,7 +916,7 @@ func (this *QStandardItemModel) AppendColumn(items []*QStandardItem) {
 	for i := range items {
 		items_CArray[i] = items[i].cPointer()
 	}
-	C.QStandardItemModel_AppendColumn(this.h, &items_CArray[0], C.ulong(len(items)))
+	C.QStandardItemModel_AppendColumn(this.h, &items_CArray[0], C.size_t(len(items)))
 }
 
 func (this *QStandardItemModel) AppendRowWithItem(item *QStandardItem) {
@@ -930,7 +930,7 @@ func (this *QStandardItemModel) InsertRow(row int, items []*QStandardItem) {
 	for i := range items {
 		items_CArray[i] = items[i].cPointer()
 	}
-	C.QStandardItemModel_InsertRow(this.h, (C.int)(row), &items_CArray[0], C.ulong(len(items)))
+	C.QStandardItemModel_InsertRow(this.h, (C.int)(row), &items_CArray[0], C.size_t(len(items)))
 }
 
 func (this *QStandardItemModel) InsertColumn(column int, items []*QStandardItem) {
@@ -940,7 +940,7 @@ func (this *QStandardItemModel) InsertColumn(column int, items []*QStandardItem)
 	for i := range items {
 		items_CArray[i] = items[i].cPointer()
 	}
-	C.QStandardItemModel_InsertColumn(this.h, (C.int)(column), &items_CArray[0], C.ulong(len(items)))
+	C.QStandardItemModel_InsertColumn(this.h, (C.int)(column), &items_CArray[0], C.size_t(len(items)))
 }
 
 func (this *QStandardItemModel) InsertRow2(row int, item *QStandardItem) {
@@ -1012,7 +1012,7 @@ func (this *QStandardItemModel) FindItems(text string) []*QStandardItem {
 	defer C.free(unsafe.Pointer(text_Cstring))
 	var _out **C.QStandardItem = nil
 	var _out_len C.size_t = 0
-	C.QStandardItemModel_FindItems(this.h, text_Cstring, C.ulong(len(text)), &_out, &_out_len)
+	C.QStandardItemModel_FindItems(this.h, text_Cstring, C.size_t(len(text)), &_out, &_out_len)
 	ret := make([]*QStandardItem, int(_out_len))
 	_outCast := (*[0xffff]*C.QStandardItem)(unsafe.Pointer(_out)) // so fresh so clean
 	for i := 0; i < int(_out_len); i++ {
@@ -1053,7 +1053,7 @@ func (this *QStandardItemModel) MimeData(indexes []QModelIndex) *QMimeData {
 	for i := range indexes {
 		indexes_CArray[i] = indexes[i].cPointer()
 	}
-	ret := C.QStandardItemModel_MimeData(this.h, &indexes_CArray[0], C.ulong(len(indexes)))
+	ret := C.QStandardItemModel_MimeData(this.h, &indexes_CArray[0], C.size_t(len(indexes)))
 	return newQMimeData_U(unsafe.Pointer(ret))
 }
 
@@ -1233,7 +1233,7 @@ func (this *QStandardItemModel) FindItems2(text string, flags int) []*QStandardI
 	defer C.free(unsafe.Pointer(text_Cstring))
 	var _out **C.QStandardItem = nil
 	var _out_len C.size_t = 0
-	C.QStandardItemModel_FindItems2(this.h, text_Cstring, C.ulong(len(text)), (C.int)(flags), &_out, &_out_len)
+	C.QStandardItemModel_FindItems2(this.h, text_Cstring, C.size_t(len(text)), (C.int)(flags), &_out, &_out_len)
 	ret := make([]*QStandardItem, int(_out_len))
 	_outCast := (*[0xffff]*C.QStandardItem)(unsafe.Pointer(_out)) // so fresh so clean
 	for i := 0; i < int(_out_len); i++ {
@@ -1248,7 +1248,7 @@ func (this *QStandardItemModel) FindItems3(text string, flags int, column int) [
 	defer C.free(unsafe.Pointer(text_Cstring))
 	var _out **C.QStandardItem = nil
 	var _out_len C.size_t = 0
-	C.QStandardItemModel_FindItems3(this.h, text_Cstring, C.ulong(len(text)), (C.int)(flags), (C.int)(column), &_out, &_out_len)
+	C.QStandardItemModel_FindItems3(this.h, text_Cstring, C.size_t(len(text)), (C.int)(flags), (C.int)(column), &_out, &_out_len)
 	ret := make([]*QStandardItem, int(_out_len))
 	_outCast := (*[0xffff]*C.QStandardItem)(unsafe.Pointer(_out)) // so fresh so clean
 	for i := 0; i < int(_out_len); i++ {

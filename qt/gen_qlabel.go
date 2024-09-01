@@ -47,7 +47,7 @@ func NewQLabel() *QLabel {
 func NewQLabel2(text string) *QLabel {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QLabel_new2(text_Cstring, C.ulong(len(text)))
+	ret := C.QLabel_new2(text_Cstring, C.size_t(len(text)))
 	return newQLabel(ret)
 }
 
@@ -67,7 +67,7 @@ func NewQLabel4(parent *QWidget, f int) *QLabel {
 func NewQLabel5(text string, parent *QWidget) *QLabel {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QLabel_new5(text_Cstring, C.ulong(len(text)), parent.cPointer())
+	ret := C.QLabel_new5(text_Cstring, C.size_t(len(text)), parent.cPointer())
 	return newQLabel(ret)
 }
 
@@ -75,7 +75,7 @@ func NewQLabel5(text string, parent *QWidget) *QLabel {
 func NewQLabel6(text string, parent *QWidget, f int) *QLabel {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QLabel_new6(text_Cstring, C.ulong(len(text)), parent.cPointer(), (C.int)(f))
+	ret := C.QLabel_new6(text_Cstring, C.size_t(len(text)), parent.cPointer(), (C.int)(f))
 	return newQLabel(ret)
 }
 
@@ -286,7 +286,7 @@ func (this *QLabel) SelectionStart() int {
 func (this *QLabel) SetText(text string) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QLabel_SetText(this.h, text_Cstring, C.ulong(len(text)))
+	C.QLabel_SetText(this.h, text_Cstring, C.size_t(len(text)))
 }
 
 func (this *QLabel) SetPixmap(pixmap *QPixmap) {
@@ -316,7 +316,7 @@ func (this *QLabel) Clear() {
 func (this *QLabel) LinkActivated(link string) {
 	link_Cstring := C.CString(link)
 	defer C.free(unsafe.Pointer(link_Cstring))
-	C.QLabel_LinkActivated(this.h, link_Cstring, C.ulong(len(link)))
+	C.QLabel_LinkActivated(this.h, link_Cstring, C.size_t(len(link)))
 }
 
 func (this *QLabel) OnLinkActivated(slot func()) {
@@ -330,7 +330,7 @@ func (this *QLabel) OnLinkActivated(slot func()) {
 func (this *QLabel) LinkHovered(link string) {
 	link_Cstring := C.CString(link)
 	defer C.free(unsafe.Pointer(link_Cstring))
-	C.QLabel_LinkHovered(this.h, link_Cstring, C.ulong(len(link)))
+	C.QLabel_LinkHovered(this.h, link_Cstring, C.size_t(len(link)))
 }
 
 func (this *QLabel) OnLinkHovered(slot func()) {

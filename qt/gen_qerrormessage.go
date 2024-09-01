@@ -82,7 +82,7 @@ func QErrorMessage_QtHandler() *QErrorMessage {
 func (this *QErrorMessage) ShowMessage(message string) {
 	message_Cstring := C.CString(message)
 	defer C.free(unsafe.Pointer(message_Cstring))
-	C.QErrorMessage_ShowMessage(this.h, message_Cstring, C.ulong(len(message)))
+	C.QErrorMessage_ShowMessage(this.h, message_Cstring, C.size_t(len(message)))
 }
 
 func (this *QErrorMessage) ShowMessage2(message string, typeVal string) {
@@ -90,7 +90,7 @@ func (this *QErrorMessage) ShowMessage2(message string, typeVal string) {
 	defer C.free(unsafe.Pointer(message_Cstring))
 	typeVal_Cstring := C.CString(typeVal)
 	defer C.free(unsafe.Pointer(typeVal_Cstring))
-	C.QErrorMessage_ShowMessage2(this.h, message_Cstring, C.ulong(len(message)), typeVal_Cstring, C.ulong(len(typeVal)))
+	C.QErrorMessage_ShowMessage2(this.h, message_Cstring, C.size_t(len(message)), typeVal_Cstring, C.size_t(len(typeVal)))
 }
 
 func QErrorMessage_Tr2(s string, c string) string {

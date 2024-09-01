@@ -38,7 +38,7 @@ func newQLockFile_U(h unsafe.Pointer) *QLockFile {
 func NewQLockFile(fileName string) *QLockFile {
 	fileName_Cstring := C.CString(fileName)
 	defer C.free(unsafe.Pointer(fileName_Cstring))
-	ret := C.QLockFile_new(fileName_Cstring, C.ulong(len(fileName)))
+	ret := C.QLockFile_new(fileName_Cstring, C.size_t(len(fileName)))
 	return newQLockFile(ret)
 }
 

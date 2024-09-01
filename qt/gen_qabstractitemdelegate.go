@@ -110,7 +110,7 @@ func QAbstractItemDelegate_ElidedText(fontMetrics *QFontMetrics, width int, mode
 	defer C.free(unsafe.Pointer(text_Cstring))
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
-	C.QAbstractItemDelegate_ElidedText(fontMetrics.cPointer(), (C.int)(width), (C.uintptr_t)(mode), text_Cstring, C.ulong(len(text)), &_out, &_out_Strlen)
+	C.QAbstractItemDelegate_ElidedText(fontMetrics.cPointer(), (C.int)(width), (C.uintptr_t)(mode), text_Cstring, C.size_t(len(text)), &_out, &_out_Strlen)
 	ret := C.GoStringN(_out, _out_Strlen)
 	C.free(unsafe.Pointer(_out))
 	return ret

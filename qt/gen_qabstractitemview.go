@@ -274,7 +274,7 @@ func (this *QAbstractItemView) TextElideMode() uintptr {
 func (this *QAbstractItemView) KeyboardSearch(search string) {
 	search_Cstring := C.CString(search)
 	defer C.free(unsafe.Pointer(search_Cstring))
-	C.QAbstractItemView_KeyboardSearch(this.h, search_Cstring, C.ulong(len(search)))
+	C.QAbstractItemView_KeyboardSearch(this.h, search_Cstring, C.size_t(len(search)))
 }
 
 func (this *QAbstractItemView) VisualRect(index *QModelIndex) *QRect {

@@ -125,7 +125,7 @@ func NewQVariant14(bitarray *QBitArray) *QVariant {
 func NewQVariant15(stringVal string) *QVariant {
 	stringVal_Cstring := C.CString(stringVal)
 	defer C.free(unsafe.Pointer(stringVal_Cstring))
-	ret := C.QVariant_new15(stringVal_Cstring, C.ulong(len(stringVal)))
+	ret := C.QVariant_new15(stringVal_Cstring, C.size_t(len(stringVal)))
 	return newQVariant(ret)
 }
 
@@ -133,16 +133,16 @@ func NewQVariant15(stringVal string) *QVariant {
 func NewQVariant16(stringlist []string) *QVariant {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
 	stringlist_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(stringlist))))
-	stringlist_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(stringlist))))
+	stringlist_Lengths := (*[0xffff]C.uint64_t)(C.malloc(C.size_t(8 * len(stringlist))))
 	defer C.free(unsafe.Pointer(stringlist_CArray))
 	defer C.free(unsafe.Pointer(stringlist_Lengths))
 	for i := range stringlist {
 		single_cstring := C.CString(stringlist[i])
 		defer C.free(unsafe.Pointer(single_cstring))
 		stringlist_CArray[i] = single_cstring
-		stringlist_Lengths[i] = (C.size_t)(len(stringlist[i]))
+		stringlist_Lengths[i] = (C.uint64_t)(len(stringlist[i]))
 	}
-	ret := C.QVariant_new16(&stringlist_CArray[0], &stringlist_Lengths[0], C.ulong(len(stringlist)))
+	ret := C.QVariant_new16(&stringlist_CArray[0], &stringlist_Lengths[0], C.size_t(len(stringlist)))
 	return newQVariant(ret)
 }
 

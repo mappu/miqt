@@ -46,7 +46,7 @@ func NewQListWidgetItem() *QListWidgetItem {
 func NewQListWidgetItem2(text string) *QListWidgetItem {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QListWidgetItem_new2(text_Cstring, C.ulong(len(text)))
+	ret := C.QListWidgetItem_new2(text_Cstring, C.size_t(len(text)))
 	return newQListWidgetItem(ret)
 }
 
@@ -54,7 +54,7 @@ func NewQListWidgetItem2(text string) *QListWidgetItem {
 func NewQListWidgetItem3(icon *QIcon, text string) *QListWidgetItem {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QListWidgetItem_new3(icon.cPointer(), text_Cstring, C.ulong(len(text)))
+	ret := C.QListWidgetItem_new3(icon.cPointer(), text_Cstring, C.size_t(len(text)))
 	return newQListWidgetItem(ret)
 }
 
@@ -80,7 +80,7 @@ func NewQListWidgetItem6(listview *QListWidget, typeVal int) *QListWidgetItem {
 func NewQListWidgetItem7(text string, listview *QListWidget) *QListWidgetItem {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QListWidgetItem_new7(text_Cstring, C.ulong(len(text)), listview.cPointer())
+	ret := C.QListWidgetItem_new7(text_Cstring, C.size_t(len(text)), listview.cPointer())
 	return newQListWidgetItem(ret)
 }
 
@@ -88,7 +88,7 @@ func NewQListWidgetItem7(text string, listview *QListWidget) *QListWidgetItem {
 func NewQListWidgetItem8(text string, listview *QListWidget, typeVal int) *QListWidgetItem {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QListWidgetItem_new8(text_Cstring, C.ulong(len(text)), listview.cPointer(), (C.int)(typeVal))
+	ret := C.QListWidgetItem_new8(text_Cstring, C.size_t(len(text)), listview.cPointer(), (C.int)(typeVal))
 	return newQListWidgetItem(ret)
 }
 
@@ -96,7 +96,7 @@ func NewQListWidgetItem8(text string, listview *QListWidget, typeVal int) *QList
 func NewQListWidgetItem9(icon *QIcon, text string, listview *QListWidget) *QListWidgetItem {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QListWidgetItem_new9(icon.cPointer(), text_Cstring, C.ulong(len(text)), listview.cPointer())
+	ret := C.QListWidgetItem_new9(icon.cPointer(), text_Cstring, C.size_t(len(text)), listview.cPointer())
 	return newQListWidgetItem(ret)
 }
 
@@ -104,7 +104,7 @@ func NewQListWidgetItem9(icon *QIcon, text string, listview *QListWidget) *QList
 func NewQListWidgetItem10(icon *QIcon, text string, listview *QListWidget, typeVal int) *QListWidgetItem {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QListWidgetItem_new10(icon.cPointer(), text_Cstring, C.ulong(len(text)), listview.cPointer(), (C.int)(typeVal))
+	ret := C.QListWidgetItem_new10(icon.cPointer(), text_Cstring, C.size_t(len(text)), listview.cPointer(), (C.int)(typeVal))
 	return newQListWidgetItem(ret)
 }
 
@@ -157,7 +157,7 @@ func (this *QListWidgetItem) Text() string {
 func (this *QListWidgetItem) SetText(text string) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QListWidgetItem_SetText(this.h, text_Cstring, C.ulong(len(text)))
+	C.QListWidgetItem_SetText(this.h, text_Cstring, C.size_t(len(text)))
 }
 
 func (this *QListWidgetItem) Icon() *QIcon {
@@ -187,7 +187,7 @@ func (this *QListWidgetItem) StatusTip() string {
 func (this *QListWidgetItem) SetStatusTip(statusTip string) {
 	statusTip_Cstring := C.CString(statusTip)
 	defer C.free(unsafe.Pointer(statusTip_Cstring))
-	C.QListWidgetItem_SetStatusTip(this.h, statusTip_Cstring, C.ulong(len(statusTip)))
+	C.QListWidgetItem_SetStatusTip(this.h, statusTip_Cstring, C.size_t(len(statusTip)))
 }
 
 func (this *QListWidgetItem) ToolTip() string {
@@ -202,7 +202,7 @@ func (this *QListWidgetItem) ToolTip() string {
 func (this *QListWidgetItem) SetToolTip(toolTip string) {
 	toolTip_Cstring := C.CString(toolTip)
 	defer C.free(unsafe.Pointer(toolTip_Cstring))
-	C.QListWidgetItem_SetToolTip(this.h, toolTip_Cstring, C.ulong(len(toolTip)))
+	C.QListWidgetItem_SetToolTip(this.h, toolTip_Cstring, C.size_t(len(toolTip)))
 }
 
 func (this *QListWidgetItem) WhatsThis() string {
@@ -217,7 +217,7 @@ func (this *QListWidgetItem) WhatsThis() string {
 func (this *QListWidgetItem) SetWhatsThis(whatsThis string) {
 	whatsThis_Cstring := C.CString(whatsThis)
 	defer C.free(unsafe.Pointer(whatsThis_Cstring))
-	C.QListWidgetItem_SetWhatsThis(this.h, whatsThis_Cstring, C.ulong(len(whatsThis)))
+	C.QListWidgetItem_SetWhatsThis(this.h, whatsThis_Cstring, C.size_t(len(whatsThis)))
 }
 
 func (this *QListWidgetItem) Font() *QFont {
@@ -452,28 +452,28 @@ func (this *QListWidget) InsertItem(row int, item *QListWidgetItem) {
 func (this *QListWidget) InsertItem2(row int, label string) {
 	label_Cstring := C.CString(label)
 	defer C.free(unsafe.Pointer(label_Cstring))
-	C.QListWidget_InsertItem2(this.h, (C.int)(row), label_Cstring, C.ulong(len(label)))
+	C.QListWidget_InsertItem2(this.h, (C.int)(row), label_Cstring, C.size_t(len(label)))
 }
 
 func (this *QListWidget) InsertItems(row int, labels []string) {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
 	labels_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(labels))))
-	labels_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(labels))))
+	labels_Lengths := (*[0xffff]C.uint64_t)(C.malloc(C.size_t(8 * len(labels))))
 	defer C.free(unsafe.Pointer(labels_CArray))
 	defer C.free(unsafe.Pointer(labels_Lengths))
 	for i := range labels {
 		single_cstring := C.CString(labels[i])
 		defer C.free(unsafe.Pointer(single_cstring))
 		labels_CArray[i] = single_cstring
-		labels_Lengths[i] = (C.size_t)(len(labels[i]))
+		labels_Lengths[i] = (C.uint64_t)(len(labels[i]))
 	}
-	C.QListWidget_InsertItems(this.h, (C.int)(row), &labels_CArray[0], &labels_Lengths[0], C.ulong(len(labels)))
+	C.QListWidget_InsertItems(this.h, (C.int)(row), &labels_CArray[0], &labels_Lengths[0], C.size_t(len(labels)))
 }
 
 func (this *QListWidget) AddItem(label string) {
 	label_Cstring := C.CString(label)
 	defer C.free(unsafe.Pointer(label_Cstring))
-	C.QListWidget_AddItem(this.h, label_Cstring, C.ulong(len(label)))
+	C.QListWidget_AddItem(this.h, label_Cstring, C.size_t(len(label)))
 }
 
 func (this *QListWidget) AddItemWithItem(item *QListWidgetItem) {
@@ -483,16 +483,16 @@ func (this *QListWidget) AddItemWithItem(item *QListWidgetItem) {
 func (this *QListWidget) AddItems(labels []string) {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
 	labels_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(labels))))
-	labels_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(labels))))
+	labels_Lengths := (*[0xffff]C.uint64_t)(C.malloc(C.size_t(8 * len(labels))))
 	defer C.free(unsafe.Pointer(labels_CArray))
 	defer C.free(unsafe.Pointer(labels_Lengths))
 	for i := range labels {
 		single_cstring := C.CString(labels[i])
 		defer C.free(unsafe.Pointer(single_cstring))
 		labels_CArray[i] = single_cstring
-		labels_Lengths[i] = (C.size_t)(len(labels[i]))
+		labels_Lengths[i] = (C.uint64_t)(len(labels[i]))
 	}
-	C.QListWidget_AddItems(this.h, &labels_CArray[0], &labels_Lengths[0], C.ulong(len(labels)))
+	C.QListWidget_AddItems(this.h, &labels_CArray[0], &labels_Lengths[0], C.size_t(len(labels)))
 }
 
 func (this *QListWidget) TakeItem(row int) *QListWidgetItem {
@@ -622,7 +622,7 @@ func (this *QListWidget) FindItems(text string, flags int) []*QListWidgetItem {
 	defer C.free(unsafe.Pointer(text_Cstring))
 	var _out **C.QListWidgetItem = nil
 	var _out_len C.size_t = 0
-	C.QListWidget_FindItems(this.h, text_Cstring, C.ulong(len(text)), (C.int)(flags), &_out, &_out_len)
+	C.QListWidget_FindItems(this.h, text_Cstring, C.size_t(len(text)), (C.int)(flags), &_out, &_out_len)
 	ret := make([]*QListWidgetItem, int(_out_len))
 	_outCast := (*[0xffff]*C.QListWidgetItem)(unsafe.Pointer(_out)) // so fresh so clean
 	for i := 0; i < int(_out_len); i++ {
@@ -740,7 +740,7 @@ func (this *QListWidget) OnCurrentItemChanged(slot func()) {
 func (this *QListWidget) CurrentTextChanged(currentText string) {
 	currentText_Cstring := C.CString(currentText)
 	defer C.free(unsafe.Pointer(currentText_Cstring))
-	C.QListWidget_CurrentTextChanged(this.h, currentText_Cstring, C.ulong(len(currentText)))
+	C.QListWidget_CurrentTextChanged(this.h, currentText_Cstring, C.size_t(len(currentText)))
 }
 
 func (this *QListWidget) OnCurrentTextChanged(slot func()) {

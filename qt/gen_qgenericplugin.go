@@ -67,7 +67,7 @@ func (this *QGenericPlugin) Create(name string, spec string) *QObject {
 	defer C.free(unsafe.Pointer(name_Cstring))
 	spec_Cstring := C.CString(spec)
 	defer C.free(unsafe.Pointer(spec_Cstring))
-	ret := C.QGenericPlugin_Create(this.h, name_Cstring, C.ulong(len(name)), spec_Cstring, C.ulong(len(spec)))
+	ret := C.QGenericPlugin_Create(this.h, name_Cstring, C.size_t(len(name)), spec_Cstring, C.size_t(len(spec)))
 	return newQObject_U(unsafe.Pointer(ret))
 }
 
