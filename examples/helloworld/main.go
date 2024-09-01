@@ -9,8 +9,7 @@ import (
 
 func main() {
 
-	app := qt.NewQApplication(os.Args)
-	_ = app
+	qt.NewQApplication(os.Args)
 
 	btn := qt.NewQPushButton2("Hello world!")
 	btn.SetFixedWidth(320)
