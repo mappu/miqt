@@ -49,8 +49,13 @@ See also [issue #8](https://github.com/mappu/miqt/issues/8).
 
 MIQT is a clean-room binding that does not use any code from other Qt bindings.
 
-- [therecipe/qt](https://github.com/therecipe/qt) is the most mature Qt binding for Go. But because of the LGPL license, it's [extremely difficult to make a proprietary app](https://github.com/therecipe/qt/wiki/FAQ#can-i-make-a-proprietary-app-with-this-binding-). See also their [issue 259](https://github.com/therecipe/qt/issues/259).
-- [kitech/qt.go](https://github.com/kitech/qt.go) is another mature Qt binding for Go. Unfortunately, it's also using the LGPL license.
+- [therecipe/qt](https://github.com/therecipe/qt) is the most mature Qt binding for Go.
+	- It works by making IPC calls to a separate C++ binary downloaded at runtime from a site under the maintainer's control. This may be less performant than calling Qt directly.
+	- Because of the LGPL license, it's [extremely difficult to make a proprietary app](https://github.com/therecipe/qt/wiki/FAQ#can-i-make-a-proprietary-app-with-this-binding-). See also their [issue 259](https://github.com/therecipe/qt/issues/259).
+- [kitech/qt.go](https://github.com/kitech/qt.go) is another mature Qt binding for Go.
+	- Unfortunately, it's also using the LGPL license.
+- [go-qamel/qamel](https://github.com/go-qamel/qamel) is an MIT-licensed Qt binding for Go.
+	- Unfortunately, it only supports QML, not Qt Widgets.
 
 ### Q5. How does the MIQT Go API differ from the official Qt C++ API?
 
