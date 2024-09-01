@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"runtime"
 	"unsafe"
 )
 
@@ -185,8 +186,12 @@ func NewQSocketDescriptor2(param1 *QSocketDescriptor) *QSocketDescriptor {
 
 // NewQSocketDescriptor3 constructs a new QSocketDescriptor object.
 func NewQSocketDescriptor3(descriptor uintptr) *QSocketDescriptor {
-	ret := C.QSocketDescriptor_new3((C.uintptr_t)(descriptor))
-	return newQSocketDescriptor(ret)
+	if runtime.GOOS == "linux" {
+		ret := C.QSocketDescriptor_new3((C.uintptr_t)(descriptor))
+		return newQSocketDescriptor(ret)
+	} else {
+		panic("Unsupported OS")
+	}
 }
 
 func (this *QSocketDescriptor) IsValid() bool {

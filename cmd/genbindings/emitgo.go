@@ -347,7 +347,23 @@ import "C"
 
 		for i, ctor := range c.Ctors {
 			preamble, forwarding := gfs.emitParametersGo2CABIForwarding(ctor)
-			ret.WriteString(`
+
+			if ctor.LinuxOnly {
+				gfs.imports["runtime"] = struct{}{}
+				ret.WriteString(`
+			// New` + goClassName + maybeSuffix(i) + ` constructs a new ` + c.ClassName + ` object.
+			func New` + goClassName + maybeSuffix(i) + `(` + emitParametersGo(ctor.Parameters) + `) *` + goClassName + ` {
+				if runtime.GOOS == "linux" {
+					` + preamble + ` ret := C.` + goClassName + `_new` + maybeSuffix(i) + `(` + forwarding + `)
+					return new` + goClassName + `(ret)
+				} else {
+					panic("Unsupported OS")
+				}
+			}
+			
+			`)
+			} else {
+				ret.WriteString(`
 			// New` + goClassName + maybeSuffix(i) + ` constructs a new ` + c.ClassName + ` object.
 			func New` + goClassName + maybeSuffix(i) + `(` + emitParametersGo(ctor.Parameters) + `) *` + goClassName + ` {
 				` + preamble + ` ret := C.` + goClassName + `_new` + maybeSuffix(i) + `(` + forwarding + `)
@@ -355,6 +371,7 @@ import "C"
 			}
 			
 			`)
+			}
 		}
 
 		for _, m := range c.Methods {
@@ -478,13 +495,30 @@ import "C"
 				receiverAndMethod = goClassName + `_` + m.SafeMethodName()
 			}
 
-			ret.WriteString(`
+			if m.LinuxOnly {
+				gfs.imports["runtime"] = struct{}{}
+				ret.WriteString(`
+			func ` + receiverAndMethod + `(` + emitParametersGo(m.Parameters) + `) ` + returnTypeDecl + ` {
+				if runtime.GOOS == "linux" {
+					` + preamble +
+					shouldReturn + ` C.` + goClassName + `_` + m.SafeMethodName() + `(` + forwarding + `)
+` + afterword + `
+				} else {
+					panic("Unsupported OS")
+				}
+			}
+			
+			`)
+			} else {
+				ret.WriteString(`
 			func ` + receiverAndMethod + `(` + emitParametersGo(m.Parameters) + `) ` + returnTypeDecl + ` {
 				` + preamble +
-				shouldReturn + ` C.` + goClassName + `_` + m.SafeMethodName() + `(` + forwarding + `)
+					shouldReturn + ` C.` + goClassName + `_` + m.SafeMethodName() + `(` + forwarding + `)
 ` + afterword + `}
 			
 			`)
+
+			}
 
 			// Add Connect() wrappers for signal functions
 			if m.IsSignal && !m.HasHiddenParams {

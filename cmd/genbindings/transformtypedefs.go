@@ -33,17 +33,33 @@ func astTransformTypedefs(parsed *CppParsedHeader) {
 		for j, m := range c.Methods {
 
 			for k, p := range m.Parameters {
-				m.Parameters[k] = applyTypedefs(p)
+				transformed := applyTypedefs(p)
+				m.Parameters[k] = transformed
+
+				if LinuxWindowsCompatCheck(transformed) {
+					m.LinuxOnly = true
+				}
 			}
 
 			m.ReturnType = applyTypedefs(m.ReturnType)
+
+			// Also apply OS compatibility rules
+			if LinuxWindowsCompatCheck(m.ReturnType) {
+				m.LinuxOnly = true
+			}
+
 			c.Methods[j] = m
 		}
 
 		for j, m := range c.Ctors {
 
 			for k, p := range m.Parameters {
-				m.Parameters[k] = applyTypedefs(p)
+				transformed := applyTypedefs(p)
+				m.Parameters[k] = transformed
+
+				if LinuxWindowsCompatCheck(transformed) {
+					m.LinuxOnly = true
+				}
 			}
 
 			c.Ctors[j] = m

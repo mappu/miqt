@@ -20,11 +20,6 @@ func init() {
 
 	KnownTypedefs["WId"] = CppTypedef{"WId", parseSingleTypeString("uintptr_t")}
 
-	// This is a uint64 PID on Linux/mac and a PROCESS_INFORMATION* on Windows
-	// A uintptr should be tolerable for both cases until we do better
-	// @ref https://doc.qt.io/qt-5/qprocess.html#Q_PID-typedef
-	KnownTypedefs["Q_PID"] = CppTypedef{"WId", parseSingleTypeString("uintptr_t")}
-
 	// QString is deleted from this binding
 	KnownTypedefs["QStringList"] = CppTypedef{"QStringList", parseSingleTypeString("QList<QString>")}
 
@@ -186,6 +181,7 @@ type CppMethod struct {
 	IsSignal           bool
 	IsConst            bool
 	HasHiddenParams    bool // Set to true if there is an overload with more parameters
+	LinuxOnly          bool
 }
 
 func IsArgcArgv(params []CppParameter, pos int) bool {

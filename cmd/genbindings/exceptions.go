@@ -225,3 +225,17 @@ func CheckComplexity(p CppParameter, isReturnType bool) error {
 	// Should be OK
 	return nil
 }
+
+// LinuxWindowsCompatCheck checks if the parameter is incompatible between the
+// generated headers (generated on Linux) with other OSes such as Windows.
+// These methods will be blocked on non-Linux OSes.
+func LinuxWindowsCompatCheck(p CppParameter) bool {
+	if p.TypeAlias == "Q_PID" {
+		return true // int64 on Linux, _PROCESS_INFORMATION* on Windows
+	}
+
+	if p.ParameterType == "QSocketDescriptor::DescriptorType" {
+		return true // uintptr_t-compatible on Linux, void* on Windows
+	}
+	return false
+}

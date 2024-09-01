@@ -511,6 +511,11 @@ extern "C" {
 		cClassName := cabiClassName(c.ClassName)
 
 		for i, ctor := range c.Ctors {
+
+			if ctor.LinuxOnly {
+				ret.WriteString("#ifdef Q_OS_LINUX\n\n")
+			}
+
 			preamble, forwarding := emitParametersCABI2CppForwarding(ctor.Parameters)
 			ret.WriteString(fmt.Sprintf(
 				"%s* %s_new%s(%s) {\n"+
@@ -522,6 +527,10 @@ extern "C" {
 				preamble,
 				c.ClassName, forwarding,
 			))
+
+			if ctor.LinuxOnly {
+				ret.WriteString("#endif /* Q_OS_LINUX */\n\n")
+			}
 		}
 
 		for _, m := range c.Methods {
@@ -657,6 +666,10 @@ extern "C" {
 				callTarget = "const_cast<const " + c.ClassName + "*>(self)->"
 			}
 
+			if m.LinuxOnly {
+				ret.WriteString("#ifdef Q_OS_LINUX\n\n")
+			}
+
 			ret.WriteString(fmt.Sprintf(
 				"%s %s_%s(%s) {\n"+
 					"%s"+
@@ -682,6 +695,11 @@ extern "C" {
 						"\n",
 				)
 			}
+
+			if m.LinuxOnly {
+				ret.WriteString("#endif /* Q_OS_LINUX */\n\n")
+			}
+
 		}
 
 		// Delete

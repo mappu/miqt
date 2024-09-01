@@ -450,8 +450,13 @@ func (this *QProcess) State() uintptr {
 }
 
 func (this *QProcess) Pid() int64 {
-	ret := C.QProcess_Pid(this.h)
-	return (int64)(ret)
+	if runtime.GOOS == "linux" {
+		ret := C.QProcess_Pid(this.h)
+		return (int64)(ret)
+
+	} else {
+		panic("Unsupported OS")
+	}
 }
 
 func (this *QProcess) ProcessId() int64 {
