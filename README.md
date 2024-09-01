@@ -18,8 +18,8 @@ These bindings were newly started in August 2024. The bindings are functional fo
 |Platform|Linkage|Status
 |---|---|---
 |Linux|Static, Dynamic (.so)|✅ Works (Tested with Debian 12 / Qt 5.15 / Clang 14 / GCC 12)
-|Windows|Static, Dynamic (.dll)|Should work, not tested (#1)
-|macOS|Static, Dynamic (.dylib)|Should work, not tested (#2)
+|Windows|Static, Dynamic (.dll)|Should work, [not tested](https://github.com/mappu/miqt/issues/1)
+|macOS|Static, Dynamic (.dylib)|Should work, [not tested](https://github.com/mappu/miqt/issues/2)
 
 ## License
 
@@ -43,7 +43,7 @@ Yes. You must also meet your Qt license obligations: either use Qt dynamically-l
 
 The first time the Qt bindings are compiled takes a long time. After this, it's fast. In a Dockerfile, you could cache the build step by running `go install github.com/mappu/miqt`.
 
-See also issue #8.
+See also [issue #8](https://github.com/mappu/miqt/issues/8).
 
 ### Q4. How does this compare to other Qt bindings?
 
