@@ -327,6 +327,9 @@ import "C"
 
 		ret.WriteString(`
 			func new` + goClassName + `(h *C.` + goClassName + `) *` + goClassName + ` {
+				if h == nil {
+					return nil
+				}
 				return &` + goClassName + `{` + localInit + `}
 			}
 			
