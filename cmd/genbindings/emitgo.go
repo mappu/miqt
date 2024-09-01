@@ -278,8 +278,6 @@ func emitGo(src *CppParsedHeader, headerName string) (string, error) {
 
 /*
 
-#cgo CFLAGS: -fPIC
-#cgo pkg-config: Qt5Widgets
 #include "gen_` + headerName + `"
 #include <stdlib.h>
 
