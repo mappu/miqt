@@ -18,7 +18,7 @@ These bindings were newly started in August 2024. The bindings are functional fo
 |Platform|Linkage|Status
 |---|---|---
 |Linux|Static, Dynamic (.so)|✅ Works (Tested with Debian 12 / Qt 5.15 / Clang 14 / GCC 12)
-|Windows|Static, Dynamic (.dll)|Should work, [not tested](https://github.com/mappu/miqt/issues/1)
+|Windows|Static, Dynamic (.dll)|✅ Works (Tested with MXE Qt 5.15 / MXE GCC 5 under cross-compilation)
 |macOS|Static, Dynamic (.dylib)|Should work, [not tested](https://github.com/mappu/miqt/issues/2)
 
 ## License
@@ -68,3 +68,12 @@ Where Qt returns a C++ object by value (e.g. `QSize`), the binding may have move
 The `connect(sourceObject, sourceSignal, targetObject, targetSlot)` is projected as `targetObject.onSourceSignal(func()...)`.
 
 Some C++ idioms that were difficult to project were omitted from the binding. But, this can be improved in the future.
+
+### Q7. How can I compile for Windows from a Linux host OS?
+
+1. Build the necessary docker container for cross-compilation:
+	- `docker build -t miqt/win64-cross:latest -f win64-cross-qt-mxe-static.Dockerfile .`
+2. Build your application:
+	- `docker run --rm -v $(pwd):/src -w /src miqt/win64-cross:latest go build -buildvcs=false -ldflags '-s -w -H windowsgui'`
+
+For repeated builds, the compile speed can be improved if you also bind-mount the Docker container's `GOCACHE` directory: `-v ./container-build-cache:/root/.cache/go-build`
