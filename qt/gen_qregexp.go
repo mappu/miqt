@@ -2,8 +2,6 @@ package qt
 
 /*
 
-#cgo CFLAGS: -fPIC
-#cgo pkg-config: Qt5Widgets
 #include "gen_qregexp.h"
 #include <stdlib.h>
 

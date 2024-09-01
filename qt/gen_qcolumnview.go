@@ -2,8 +2,6 @@ package qt
 
 /*
 
-#cgo CFLAGS: -fPIC
-#cgo pkg-config: Qt5Widgets
 #include "gen_qcolumnview.h"
 #include <stdlib.h>
 

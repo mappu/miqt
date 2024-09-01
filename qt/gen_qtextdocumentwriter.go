@@ -2,8 +2,6 @@ package qt
 
 /*
 
-#cgo CFLAGS: -fPIC
-#cgo pkg-config: Qt5Widgets
 #include "gen_qtextdocumentwriter.h"
 #include <stdlib.h>
 
