@@ -8,4 +8,6 @@ cmd/handbindings/bindings_test/testapp
 cmd/genbindings/genbindings
 
 examples/helloworld/helloworld
+examples/helloworld/helloworld.exe
 examples/mdoutliner/mdoutliner
+examples/mdoutliner/mdoutliner.exe
