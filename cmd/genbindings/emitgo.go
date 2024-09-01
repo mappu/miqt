@@ -167,7 +167,7 @@ func (gfs *goFileState) emitParametersGo2CABIForwarding(m CppMethod) (preamble s
 			preamble += "// Convert []string to long-lived int& argc, char** argv, never call free()\n"
 			preamble += "argc := (*C.int)(C.malloc(8))\n"
 			preamble += "*argc = C.int(len(args))\n"
-			preamble += "argv := (*[0xffff]*C.char)(C.malloc(C.ulong(8 * len(args))))\n"
+			preamble += "argv := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(args))))\n"
 			preamble += "for i := range args {\n"
 			preamble += "argv[i] = C.CString(args[i])\n"
 			preamble += "}\n"
@@ -197,8 +197,8 @@ func (gfs *goFileState) emitParametersGo2CABIForwarding(m CppMethod) (preamble s
 				gfs.imports["unsafe"] = struct{}{}
 
 				preamble += "// For the C ABI, malloc two C arrays; raw char* pointers and their lengths\n"
-				preamble += p.ParameterName + "_CArray := (*[0xffff]*" + listType.parameterTypeCgo() + ")(C.malloc(C.ulong(8 * len(" + p.ParameterName + "))))\n"
-				preamble += p.ParameterName + "_Lengths := (*[0xffff]C.size_t)(C.malloc(C.ulong(8 * len(" + p.ParameterName + "))))\n"
+				preamble += p.ParameterName + "_CArray := (*[0xffff]*" + listType.parameterTypeCgo() + ")(C.malloc(C.size_t(8 * len(" + p.ParameterName + "))))\n"
+				preamble += p.ParameterName + "_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(" + p.ParameterName + "))))\n"
 				preamble += "defer C.free(unsafe.Pointer(" + p.ParameterName + "_CArray))\n"
 				preamble += "defer C.free(unsafe.Pointer(" + p.ParameterName + "_Lengths))\n"
 				preamble += "for i := range " + p.ParameterName + "{\n"
@@ -214,9 +214,9 @@ func (gfs *goFileState) emitParametersGo2CABIForwarding(m CppMethod) (preamble s
 
 				preamble += "// For the C ABI, malloc a C array of raw pointers\n"
 				if listType.QtClassType() {
-					preamble += p.ParameterName + "_CArray := (*[0xffff]*" + listType.parameterTypeCgo() + ")(C.malloc(C.ulong(8 * len(" + p.ParameterName + "))))\n"
+					preamble += p.ParameterName + "_CArray := (*[0xffff]*" + listType.parameterTypeCgo() + ")(C.malloc(C.size_t(8 * len(" + p.ParameterName + "))))\n"
 				} else {
-					preamble += p.ParameterName + "_CArray := (*[0xffff]" + listType.parameterTypeCgo() + ")(C.malloc(C.ulong(8 * len(" + p.ParameterName + "))))\n"
+					preamble += p.ParameterName + "_CArray := (*[0xffff]" + listType.parameterTypeCgo() + ")(C.malloc(C.size_t(8 * len(" + p.ParameterName + "))))\n"
 				}
 				preamble += "defer C.free(unsafe.Pointer(" + p.ParameterName + "_CArray))\n"
 				preamble += "for i := range " + p.ParameterName + "{\n"
