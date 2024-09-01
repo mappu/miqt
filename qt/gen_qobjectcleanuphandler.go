@@ -27,6 +27,9 @@ func (this *QObjectCleanupHandler) cPointer() *C.QObjectCleanupHandler {
 }
 
 func newQObjectCleanupHandler(h *C.QObjectCleanupHandler) *QObjectCleanupHandler {
+	if h == nil {
+		return nil
+	}
 	return &QObjectCleanupHandler{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
 }
 

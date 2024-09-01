@@ -29,6 +29,9 @@ func (this *QTabBar) cPointer() *C.QTabBar {
 }
 
 func newQTabBar(h *C.QTabBar) *QTabBar {
+	if h == nil {
+		return nil
+	}
 	return &QTabBar{h: h, QWidget: newQWidget_U(unsafe.Pointer(h))}
 }
 

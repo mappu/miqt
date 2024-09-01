@@ -27,6 +27,9 @@ func (this *QFocusFrame) cPointer() *C.QFocusFrame {
 }
 
 func newQFocusFrame(h *C.QFocusFrame) *QFocusFrame {
+	if h == nil {
+		return nil
+	}
 	return &QFocusFrame{h: h, QWidget: newQWidget_U(unsafe.Pointer(h))}
 }
 

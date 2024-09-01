@@ -26,6 +26,9 @@ func (this *QAbstractNativeEventFilter) cPointer() *C.QAbstractNativeEventFilter
 }
 
 func newQAbstractNativeEventFilter(h *C.QAbstractNativeEventFilter) *QAbstractNativeEventFilter {
+	if h == nil {
+		return nil
+	}
 	return &QAbstractNativeEventFilter{h: h}
 }
 

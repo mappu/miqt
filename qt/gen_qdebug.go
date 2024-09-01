@@ -26,6 +26,9 @@ func (this *QDebug) cPointer() *C.QDebug {
 }
 
 func newQDebug(h *C.QDebug) *QDebug {
+	if h == nil {
+		return nil
+	}
 	return &QDebug{h: h}
 }
 
@@ -216,6 +219,9 @@ func (this *QDebugStateSaver) cPointer() *C.QDebugStateSaver {
 }
 
 func newQDebugStateSaver(h *C.QDebugStateSaver) *QDebugStateSaver {
+	if h == nil {
+		return nil
+	}
 	return &QDebugStateSaver{h: h}
 }
 
@@ -245,6 +251,9 @@ func (this *QNoDebug) cPointer() *C.QNoDebug {
 }
 
 func newQNoDebug(h *C.QNoDebug) *QNoDebug {
+	if h == nil {
+		return nil
+	}
 	return &QNoDebug{h: h}
 }
 

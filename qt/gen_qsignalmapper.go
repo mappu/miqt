@@ -28,6 +28,9 @@ func (this *QSignalMapper) cPointer() *C.QSignalMapper {
 }
 
 func newQSignalMapper(h *C.QSignalMapper) *QSignalMapper {
+	if h == nil {
+		return nil
+	}
 	return &QSignalMapper{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
 }
 

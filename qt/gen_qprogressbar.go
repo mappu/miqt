@@ -29,6 +29,9 @@ func (this *QProgressBar) cPointer() *C.QProgressBar {
 }
 
 func newQProgressBar(h *C.QProgressBar) *QProgressBar {
+	if h == nil {
+		return nil
+	}
 	return &QProgressBar{h: h, QWidget: newQWidget_U(unsafe.Pointer(h))}
 }
 

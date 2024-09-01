@@ -26,6 +26,9 @@ func (this *QHashData) cPointer() *C.QHashData {
 }
 
 func newQHashData(h *C.QHashData) *QHashData {
+	if h == nil {
+		return nil
+	}
 	return &QHashData{h: h}
 }
 
@@ -77,6 +80,9 @@ func (this *QHashDummyValue) cPointer() *C.QHashDummyValue {
 }
 
 func newQHashDummyValue(h *C.QHashDummyValue) *QHashDummyValue {
+	if h == nil {
+		return nil
+	}
 	return &QHashDummyValue{h: h}
 }
 
@@ -112,6 +118,9 @@ func (this *QHashData__Node) cPointer() *C.QHashData__Node {
 }
 
 func newQHashData__Node(h *C.QHashData__Node) *QHashData__Node {
+	if h == nil {
+		return nil
+	}
 	return &QHashData__Node{h: h}
 }
 

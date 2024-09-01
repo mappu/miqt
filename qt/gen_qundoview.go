@@ -28,6 +28,9 @@ func (this *QUndoView) cPointer() *C.QUndoView {
 }
 
 func newQUndoView(h *C.QUndoView) *QUndoView {
+	if h == nil {
+		return nil
+	}
 	return &QUndoView{h: h, QListView: newQListView_U(unsafe.Pointer(h))}
 }
 

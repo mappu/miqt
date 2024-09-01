@@ -28,6 +28,9 @@ func (this *QBoxLayout) cPointer() *C.QBoxLayout {
 }
 
 func newQBoxLayout(h *C.QBoxLayout) *QBoxLayout {
+	if h == nil {
+		return nil
+	}
 	return &QBoxLayout{h: h, QLayout: newQLayout_U(unsafe.Pointer(h))}
 }
 
@@ -340,6 +343,9 @@ func (this *QHBoxLayout) cPointer() *C.QHBoxLayout {
 }
 
 func newQHBoxLayout(h *C.QHBoxLayout) *QHBoxLayout {
+	if h == nil {
+		return nil
+	}
 	return &QHBoxLayout{h: h, QBoxLayout: newQBoxLayout_U(unsafe.Pointer(h))}
 }
 
@@ -455,6 +461,9 @@ func (this *QVBoxLayout) cPointer() *C.QVBoxLayout {
 }
 
 func newQVBoxLayout(h *C.QVBoxLayout) *QVBoxLayout {
+	if h == nil {
+		return nil
+	}
 	return &QVBoxLayout{h: h, QBoxLayout: newQBoxLayout_U(unsafe.Pointer(h))}
 }
 

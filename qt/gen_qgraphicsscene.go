@@ -29,6 +29,9 @@ func (this *QGraphicsScene) cPointer() *C.QGraphicsScene {
 }
 
 func newQGraphicsScene(h *C.QGraphicsScene) *QGraphicsScene {
+	if h == nil {
+		return nil
+	}
 	return &QGraphicsScene{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
 }
 

@@ -29,6 +29,9 @@ func (this *QListView) cPointer() *C.QListView {
 }
 
 func newQListView(h *C.QListView) *QListView {
+	if h == nil {
+		return nil
+	}
 	return &QListView{h: h, QAbstractItemView: newQAbstractItemView_U(unsafe.Pointer(h))}
 }
 

@@ -27,6 +27,9 @@ func (this *QAccessiblePlugin) cPointer() *C.QAccessiblePlugin {
 }
 
 func newQAccessiblePlugin(h *C.QAccessiblePlugin) *QAccessiblePlugin {
+	if h == nil {
+		return nil
+	}
 	return &QAccessiblePlugin{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
 }
 

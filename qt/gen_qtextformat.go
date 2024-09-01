@@ -27,6 +27,9 @@ func (this *QTextLength) cPointer() *C.QTextLength {
 }
 
 func newQTextLength(h *C.QTextLength) *QTextLength {
+	if h == nil {
+		return nil
+	}
 	return &QTextLength{h: h}
 }
 
@@ -93,6 +96,9 @@ func (this *QTextFormat) cPointer() *C.QTextFormat {
 }
 
 func newQTextFormat(h *C.QTextFormat) *QTextFormat {
+	if h == nil {
+		return nil
+	}
 	return &QTextFormat{h: h}
 }
 
@@ -469,6 +475,9 @@ func (this *QTextCharFormat) cPointer() *C.QTextCharFormat {
 }
 
 func newQTextCharFormat(h *C.QTextCharFormat) *QTextCharFormat {
+	if h == nil {
+		return nil
+	}
 	return &QTextCharFormat{h: h, QTextFormat: newQTextFormat_U(unsafe.Pointer(h))}
 }
 
@@ -885,6 +894,9 @@ func (this *QTextBlockFormat) cPointer() *C.QTextBlockFormat {
 }
 
 func newQTextBlockFormat(h *C.QTextBlockFormat) *QTextBlockFormat {
+	if h == nil {
+		return nil
+	}
 	return &QTextBlockFormat{h: h, QTextFormat: newQTextFormat_U(unsafe.Pointer(h))}
 }
 
@@ -1067,6 +1079,9 @@ func (this *QTextListFormat) cPointer() *C.QTextListFormat {
 }
 
 func newQTextListFormat(h *C.QTextListFormat) *QTextListFormat {
+	if h == nil {
+		return nil
+	}
 	return &QTextListFormat{h: h, QTextFormat: newQTextFormat_U(unsafe.Pointer(h))}
 }
 
@@ -1156,6 +1171,9 @@ func (this *QTextImageFormat) cPointer() *C.QTextImageFormat {
 }
 
 func newQTextImageFormat(h *C.QTextImageFormat) *QTextImageFormat {
+	if h == nil {
+		return nil
+	}
 	return &QTextImageFormat{h: h, QTextCharFormat: newQTextCharFormat_U(unsafe.Pointer(h))}
 }
 
@@ -1237,6 +1255,9 @@ func (this *QTextFrameFormat) cPointer() *C.QTextFrameFormat {
 }
 
 func newQTextFrameFormat(h *C.QTextFrameFormat) *QTextFrameFormat {
+	if h == nil {
+		return nil
+	}
 	return &QTextFrameFormat{h: h, QTextFormat: newQTextFormat_U(unsafe.Pointer(h))}
 }
 
@@ -1421,6 +1442,9 @@ func (this *QTextTableFormat) cPointer() *C.QTextTableFormat {
 }
 
 func newQTextTableFormat(h *C.QTextTableFormat) *QTextTableFormat {
+	if h == nil {
+		return nil
+	}
 	return &QTextTableFormat{h: h, QTextFrameFormat: newQTextFrameFormat_U(unsafe.Pointer(h))}
 }
 
@@ -1537,6 +1561,9 @@ func (this *QTextTableCellFormat) cPointer() *C.QTextTableCellFormat {
 }
 
 func newQTextTableCellFormat(h *C.QTextTableCellFormat) *QTextTableCellFormat {
+	if h == nil {
+		return nil
+	}
 	return &QTextTableCellFormat{h: h, QTextCharFormat: newQTextCharFormat_U(unsafe.Pointer(h))}
 }
 

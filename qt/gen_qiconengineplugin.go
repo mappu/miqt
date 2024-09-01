@@ -27,6 +27,9 @@ func (this *QIconEnginePlugin) cPointer() *C.QIconEnginePlugin {
 }
 
 func newQIconEnginePlugin(h *C.QIconEnginePlugin) *QIconEnginePlugin {
+	if h == nil {
+		return nil
+	}
 	return &QIconEnginePlugin{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
 }
 

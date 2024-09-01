@@ -27,6 +27,9 @@ func (this *QStaticText) cPointer() *C.QStaticText {
 }
 
 func newQStaticText(h *C.QStaticText) *QStaticText {
+	if h == nil {
+		return nil
+	}
 	return &QStaticText{h: h}
 }
 

@@ -29,6 +29,9 @@ func (this *QGraphicsEffect) cPointer() *C.QGraphicsEffect {
 }
 
 func newQGraphicsEffect(h *C.QGraphicsEffect) *QGraphicsEffect {
+	if h == nil {
+		return nil
+	}
 	return &QGraphicsEffect{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
 }
 
@@ -179,6 +182,9 @@ func (this *QGraphicsColorizeEffect) cPointer() *C.QGraphicsColorizeEffect {
 }
 
 func newQGraphicsColorizeEffect(h *C.QGraphicsColorizeEffect) *QGraphicsColorizeEffect {
+	if h == nil {
+		return nil
+	}
 	return &QGraphicsColorizeEffect{h: h, QGraphicsEffect: newQGraphicsEffect_U(unsafe.Pointer(h))}
 }
 
@@ -342,6 +348,9 @@ func (this *QGraphicsBlurEffect) cPointer() *C.QGraphicsBlurEffect {
 }
 
 func newQGraphicsBlurEffect(h *C.QGraphicsBlurEffect) *QGraphicsBlurEffect {
+	if h == nil {
+		return nil
+	}
 	return &QGraphicsBlurEffect{h: h, QGraphicsEffect: newQGraphicsEffect_U(unsafe.Pointer(h))}
 }
 
@@ -510,6 +519,9 @@ func (this *QGraphicsDropShadowEffect) cPointer() *C.QGraphicsDropShadowEffect {
 }
 
 func newQGraphicsDropShadowEffect(h *C.QGraphicsDropShadowEffect) *QGraphicsDropShadowEffect {
+	if h == nil {
+		return nil
+	}
 	return &QGraphicsDropShadowEffect{h: h, QGraphicsEffect: newQGraphicsEffect_U(unsafe.Pointer(h))}
 }
 
@@ -737,6 +749,9 @@ func (this *QGraphicsOpacityEffect) cPointer() *C.QGraphicsOpacityEffect {
 }
 
 func newQGraphicsOpacityEffect(h *C.QGraphicsOpacityEffect) *QGraphicsOpacityEffect {
+	if h == nil {
+		return nil
+	}
 	return &QGraphicsOpacityEffect{h: h, QGraphicsEffect: newQGraphicsEffect_U(unsafe.Pointer(h))}
 }
 

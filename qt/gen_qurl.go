@@ -27,6 +27,9 @@ func (this *QUrl) cPointer() *C.QUrl {
 }
 
 func newQUrl(h *C.QUrl) *QUrl {
+	if h == nil {
+		return nil
+	}
 	return &QUrl{h: h}
 }
 

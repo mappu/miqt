@@ -28,6 +28,9 @@ func (this *QGraphicsProxyWidget) cPointer() *C.QGraphicsProxyWidget {
 }
 
 func newQGraphicsProxyWidget(h *C.QGraphicsProxyWidget) *QGraphicsProxyWidget {
+	if h == nil {
+		return nil
+	}
 	return &QGraphicsProxyWidget{h: h, QGraphicsWidget: newQGraphicsWidget_U(unsafe.Pointer(h))}
 }
 

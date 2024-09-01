@@ -28,6 +28,9 @@ func (this *QSequentialAnimationGroup) cPointer() *C.QSequentialAnimationGroup {
 }
 
 func newQSequentialAnimationGroup(h *C.QSequentialAnimationGroup) *QSequentialAnimationGroup {
+	if h == nil {
+		return nil
+	}
 	return &QSequentialAnimationGroup{h: h, QAnimationGroup: newQAnimationGroup_U(unsafe.Pointer(h))}
 }
 

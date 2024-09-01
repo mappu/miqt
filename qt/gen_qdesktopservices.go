@@ -26,6 +26,9 @@ func (this *QDesktopServices) cPointer() *C.QDesktopServices {
 }
 
 func newQDesktopServices(h *C.QDesktopServices) *QDesktopServices {
+	if h == nil {
+		return nil
+	}
 	return &QDesktopServices{h: h}
 }
 

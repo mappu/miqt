@@ -27,6 +27,9 @@ func (this *QTimeZone) cPointer() *C.QTimeZone {
 }
 
 func newQTimeZone(h *C.QTimeZone) *QTimeZone {
+	if h == nil {
+		return nil
+	}
 	return &QTimeZone{h: h}
 }
 
@@ -429,6 +432,9 @@ func (this *QTimeZone__OffsetData) cPointer() *C.QTimeZone__OffsetData {
 }
 
 func newQTimeZone__OffsetData(h *C.QTimeZone__OffsetData) *QTimeZone__OffsetData {
+	if h == nil {
+		return nil
+	}
 	return &QTimeZone__OffsetData{h: h}
 }
 

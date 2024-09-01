@@ -27,6 +27,9 @@ func (this *QTranslator) cPointer() *C.QTranslator {
 }
 
 func newQTranslator(h *C.QTranslator) *QTranslator {
+	if h == nil {
+		return nil
+	}
 	return &QTranslator{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
 }
 

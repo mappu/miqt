@@ -27,6 +27,9 @@ func (this *QGenericArgument) cPointer() *C.QGenericArgument {
 }
 
 func newQGenericArgument(h *C.QGenericArgument) *QGenericArgument {
+	if h == nil {
+		return nil
+	}
 	return &QGenericArgument{h: h}
 }
 
@@ -76,6 +79,9 @@ func (this *QGenericReturnArgument) cPointer() *C.QGenericReturnArgument {
 }
 
 func newQGenericReturnArgument(h *C.QGenericReturnArgument) *QGenericReturnArgument {
+	if h == nil {
+		return nil
+	}
 	return &QGenericReturnArgument{h: h, QGenericArgument: newQGenericArgument_U(unsafe.Pointer(h))}
 }
 
@@ -119,6 +125,9 @@ func (this *QMetaObject) cPointer() *C.QMetaObject {
 }
 
 func newQMetaObject(h *C.QMetaObject) *QMetaObject {
+	if h == nil {
+		return nil
+	}
 	return &QMetaObject{h: h}
 }
 
@@ -815,6 +824,9 @@ func (this *QMetaObject__Connection) cPointer() *C.QMetaObject__Connection {
 }
 
 func newQMetaObject__Connection(h *C.QMetaObject__Connection) *QMetaObject__Connection {
+	if h == nil {
+		return nil
+	}
 	return &QMetaObject__Connection{h: h}
 }
 
@@ -850,6 +862,9 @@ func (this *QMetaObject__SuperData) cPointer() *C.QMetaObject__SuperData {
 }
 
 func newQMetaObject__SuperData(h *C.QMetaObject__SuperData) *QMetaObject__SuperData {
+	if h == nil {
+		return nil
+	}
 	return &QMetaObject__SuperData{h: h}
 }
 

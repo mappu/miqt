@@ -27,6 +27,9 @@ func (this *QSize) cPointer() *C.QSize {
 }
 
 func newQSize(h *C.QSize) *QSize {
+	if h == nil {
+		return nil
+	}
 	return &QSize{h: h}
 }
 
@@ -210,6 +213,9 @@ func (this *QSizeF) cPointer() *C.QSizeF {
 }
 
 func newQSizeF(h *C.QSizeF) *QSizeF {
+	if h == nil {
+		return nil
+	}
 	return &QSizeF{h: h}
 }
 

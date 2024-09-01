@@ -27,6 +27,9 @@ func (this *QParallelAnimationGroup) cPointer() *C.QParallelAnimationGroup {
 }
 
 func newQParallelAnimationGroup(h *C.QParallelAnimationGroup) *QParallelAnimationGroup {
+	if h == nil {
+		return nil
+	}
 	return &QParallelAnimationGroup{h: h, QAnimationGroup: newQAnimationGroup_U(unsafe.Pointer(h))}
 }
 

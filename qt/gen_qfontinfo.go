@@ -26,6 +26,9 @@ func (this *QFontInfo) cPointer() *C.QFontInfo {
 }
 
 func newQFontInfo(h *C.QFontInfo) *QFontInfo {
+	if h == nil {
+		return nil
+	}
 	return &QFontInfo{h: h}
 }
 

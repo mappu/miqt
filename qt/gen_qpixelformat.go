@@ -26,6 +26,9 @@ func (this *QPixelFormat) cPointer() *C.QPixelFormat {
 }
 
 func newQPixelFormat(h *C.QPixelFormat) *QPixelFormat {
+	if h == nil {
+		return nil
+	}
 	return &QPixelFormat{h: h}
 }
 

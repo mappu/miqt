@@ -27,6 +27,9 @@ func (this *QMimeDatabase) cPointer() *C.QMimeDatabase {
 }
 
 func newQMimeDatabase(h *C.QMimeDatabase) *QMimeDatabase {
+	if h == nil {
+		return nil
+	}
 	return &QMimeDatabase{h: h}
 }
 

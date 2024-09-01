@@ -27,6 +27,9 @@ func (this *QMessageAuthenticationCode) cPointer() *C.QMessageAuthenticationCode
 }
 
 func newQMessageAuthenticationCode(h *C.QMessageAuthenticationCode) *QMessageAuthenticationCode {
+	if h == nil {
+		return nil
+	}
 	return &QMessageAuthenticationCode{h: h}
 }
 

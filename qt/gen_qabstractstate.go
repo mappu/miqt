@@ -28,6 +28,9 @@ func (this *QAbstractState) cPointer() *C.QAbstractState {
 }
 
 func newQAbstractState(h *C.QAbstractState) *QAbstractState {
+	if h == nil {
+		return nil
+	}
 	return &QAbstractState{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
 }
 

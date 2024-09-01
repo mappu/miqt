@@ -27,6 +27,9 @@ func (this *QMargins) cPointer() *C.QMargins {
 }
 
 func newQMargins(h *C.QMargins) *QMargins {
+	if h == nil {
+		return nil
+	}
 	return &QMargins{h: h}
 }
 
@@ -149,6 +152,9 @@ func (this *QMarginsF) cPointer() *C.QMarginsF {
 }
 
 func newQMarginsF(h *C.QMarginsF) *QMarginsF {
+	if h == nil {
+		return nil
+	}
 	return &QMarginsF{h: h}
 }
 

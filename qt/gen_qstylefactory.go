@@ -26,6 +26,9 @@ func (this *QStyleFactory) cPointer() *C.QStyleFactory {
 }
 
 func newQStyleFactory(h *C.QStyleFactory) *QStyleFactory {
+	if h == nil {
+		return nil
+	}
 	return &QStyleFactory{h: h}
 }
 

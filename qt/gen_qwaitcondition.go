@@ -26,6 +26,9 @@ func (this *QWaitCondition) cPointer() *C.QWaitCondition {
 }
 
 func newQWaitCondition(h *C.QWaitCondition) *QWaitCondition {
+	if h == nil {
+		return nil
+	}
 	return &QWaitCondition{h: h}
 }
 

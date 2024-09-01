@@ -27,6 +27,9 @@ func (this *QPainter) cPointer() *C.QPainter {
 }
 
 func newQPainter(h *C.QPainter) *QPainter {
+	if h == nil {
+		return nil
+	}
 	return &QPainter{h: h}
 }
 
@@ -1244,6 +1247,9 @@ func (this *QPainter__PixmapFragment) cPointer() *C.QPainter__PixmapFragment {
 }
 
 func newQPainter__PixmapFragment(h *C.QPainter__PixmapFragment) *QPainter__PixmapFragment {
+	if h == nil {
+		return nil
+	}
 	return &QPainter__PixmapFragment{h: h}
 }
 

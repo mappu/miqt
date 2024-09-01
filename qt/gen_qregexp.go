@@ -26,6 +26,9 @@ func (this *QRegExp) cPointer() *C.QRegExp {
 }
 
 func newQRegExp(h *C.QRegExp) *QRegExp {
+	if h == nil {
+		return nil
+	}
 	return &QRegExp{h: h}
 }
 

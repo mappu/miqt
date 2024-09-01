@@ -30,6 +30,9 @@ func (this *QGraphicsWidget) cPointer() *C.QGraphicsWidget {
 }
 
 func newQGraphicsWidget(h *C.QGraphicsWidget) *QGraphicsWidget {
+	if h == nil {
+		return nil
+	}
 	return &QGraphicsWidget{h: h, QGraphicsObject: newQGraphicsObject_U(unsafe.Pointer(h)), QGraphicsLayoutItem: newQGraphicsLayoutItem_U(unsafe.Pointer(h))}
 }
 

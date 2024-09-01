@@ -26,6 +26,9 @@ func (this *QTextOption) cPointer() *C.QTextOption {
 }
 
 func newQTextOption(h *C.QTextOption) *QTextOption {
+	if h == nil {
+		return nil
+	}
 	return &QTextOption{h: h}
 }
 
@@ -180,6 +183,9 @@ func (this *QTextOption__Tab) cPointer() *C.QTextOption__Tab {
 }
 
 func newQTextOption__Tab(h *C.QTextOption__Tab) *QTextOption__Tab {
+	if h == nil {
+		return nil
+	}
 	return &QTextOption__Tab{h: h}
 }
 

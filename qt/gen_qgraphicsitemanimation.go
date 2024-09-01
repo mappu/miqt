@@ -28,6 +28,9 @@ func (this *QGraphicsItemAnimation) cPointer() *C.QGraphicsItemAnimation {
 }
 
 func newQGraphicsItemAnimation(h *C.QGraphicsItemAnimation) *QGraphicsItemAnimation {
+	if h == nil {
+		return nil
+	}
 	return &QGraphicsItemAnimation{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
 }
 

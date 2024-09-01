@@ -29,6 +29,9 @@ func (this *QTextEdit) cPointer() *C.QTextEdit {
 }
 
 func newQTextEdit(h *C.QTextEdit) *QTextEdit {
+	if h == nil {
+		return nil
+	}
 	return &QTextEdit{h: h, QAbstractScrollArea: newQAbstractScrollArea_U(unsafe.Pointer(h))}
 }
 
@@ -829,6 +832,9 @@ func (this *QTextEdit__ExtraSelection) cPointer() *C.QTextEdit__ExtraSelection {
 }
 
 func newQTextEdit__ExtraSelection(h *C.QTextEdit__ExtraSelection) *QTextEdit__ExtraSelection {
+	if h == nil {
+		return nil
+	}
 	return &QTextEdit__ExtraSelection{h: h}
 }
 

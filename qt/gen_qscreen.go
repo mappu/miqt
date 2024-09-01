@@ -29,6 +29,9 @@ func (this *QScreen) cPointer() *C.QScreen {
 }
 
 func newQScreen(h *C.QScreen) *QScreen {
+	if h == nil {
+		return nil
+	}
 	return &QScreen{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
 }
 

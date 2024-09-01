@@ -29,6 +29,9 @@ func (this *QLCDNumber) cPointer() *C.QLCDNumber {
 }
 
 func newQLCDNumber(h *C.QLCDNumber) *QLCDNumber {
+	if h == nil {
+		return nil
+	}
 	return &QLCDNumber{h: h, QFrame: newQFrame_U(unsafe.Pointer(h))}
 }
 

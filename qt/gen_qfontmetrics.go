@@ -27,6 +27,9 @@ func (this *QFontMetrics) cPointer() *C.QFontMetrics {
 }
 
 func newQFontMetrics(h *C.QFontMetrics) *QFontMetrics {
+	if h == nil {
+		return nil
+	}
 	return &QFontMetrics{h: h}
 }
 
@@ -414,6 +417,9 @@ func (this *QFontMetricsF) cPointer() *C.QFontMetricsF {
 }
 
 func newQFontMetricsF(h *C.QFontMetricsF) *QFontMetricsF {
+	if h == nil {
+		return nil
+	}
 	return &QFontMetricsF{h: h}
 }
 

@@ -29,6 +29,9 @@ func (this *QAccessibleWidget) cPointer() *C.QAccessibleWidget {
 }
 
 func newQAccessibleWidget(h *C.QAccessibleWidget) *QAccessibleWidget {
+	if h == nil {
+		return nil
+	}
 	return &QAccessibleWidget{h: h, QAccessibleObject: newQAccessibleObject_U(unsafe.Pointer(h)), QAccessibleActionInterface: newQAccessibleActionInterface_U(unsafe.Pointer(h))}
 }
 

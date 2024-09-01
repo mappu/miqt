@@ -26,6 +26,9 @@ func (this *QScopedPointerPodDeleter) cPointer() *C.QScopedPointerPodDeleter {
 }
 
 func newQScopedPointerPodDeleter(h *C.QScopedPointerPodDeleter) *QScopedPointerPodDeleter {
+	if h == nil {
+		return nil
+	}
 	return &QScopedPointerPodDeleter{h: h}
 }
 

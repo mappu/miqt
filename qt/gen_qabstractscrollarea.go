@@ -28,6 +28,9 @@ func (this *QAbstractScrollArea) cPointer() *C.QAbstractScrollArea {
 }
 
 func newQAbstractScrollArea(h *C.QAbstractScrollArea) *QAbstractScrollArea {
+	if h == nil {
+		return nil
+	}
 	return &QAbstractScrollArea{h: h, QFrame: newQFrame_U(unsafe.Pointer(h))}
 }
 

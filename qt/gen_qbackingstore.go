@@ -27,6 +27,9 @@ func (this *QBackingStore) cPointer() *C.QBackingStore {
 }
 
 func newQBackingStore(h *C.QBackingStore) *QBackingStore {
+	if h == nil {
+		return nil
+	}
 	return &QBackingStore{h: h}
 }
 

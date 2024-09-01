@@ -30,6 +30,9 @@ func (this *QOffscreenSurface) cPointer() *C.QOffscreenSurface {
 }
 
 func newQOffscreenSurface(h *C.QOffscreenSurface) *QOffscreenSurface {
+	if h == nil {
+		return nil
+	}
 	return &QOffscreenSurface{h: h, QObject: newQObject_U(unsafe.Pointer(h)), QSurface: newQSurface_U(unsafe.Pointer(h))}
 }
 

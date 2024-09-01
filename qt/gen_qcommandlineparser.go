@@ -27,6 +27,9 @@ func (this *QCommandLineParser) cPointer() *C.QCommandLineParser {
 }
 
 func newQCommandLineParser(h *C.QCommandLineParser) *QCommandLineParser {
+	if h == nil {
+		return nil
+	}
 	return &QCommandLineParser{h: h}
 }
 

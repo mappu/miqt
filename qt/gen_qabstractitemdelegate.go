@@ -29,6 +29,9 @@ func (this *QAbstractItemDelegate) cPointer() *C.QAbstractItemDelegate {
 }
 
 func newQAbstractItemDelegate(h *C.QAbstractItemDelegate) *QAbstractItemDelegate {
+	if h == nil {
+		return nil
+	}
 	return &QAbstractItemDelegate{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
 }
 

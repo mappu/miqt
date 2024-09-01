@@ -27,6 +27,9 @@ func (this *QCursor) cPointer() *C.QCursor {
 }
 
 func newQCursor(h *C.QCursor) *QCursor {
+	if h == nil {
+		return nil
+	}
 	return &QCursor{h: h}
 }
 

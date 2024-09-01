@@ -27,6 +27,9 @@ func (this *QLatin1Char) cPointer() *C.QLatin1Char {
 }
 
 func newQLatin1Char(h *C.QLatin1Char) *QLatin1Char {
+	if h == nil {
+		return nil
+	}
 	return &QLatin1Char{h: h}
 }
 
@@ -72,6 +75,9 @@ func (this *QChar) cPointer() *C.QChar {
 }
 
 func newQChar(h *C.QChar) *QChar {
+	if h == nil {
+		return nil
+	}
 	return &QChar{h: h}
 }
 

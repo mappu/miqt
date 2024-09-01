@@ -27,6 +27,9 @@ func (this *QGlyphRun) cPointer() *C.QGlyphRun {
 }
 
 func newQGlyphRun(h *C.QGlyphRun) *QGlyphRun {
+	if h == nil {
+		return nil
+	}
 	return &QGlyphRun{h: h}
 }
 

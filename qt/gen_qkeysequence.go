@@ -27,6 +27,9 @@ func (this *QKeySequence) cPointer() *C.QKeySequence {
 }
 
 func newQKeySequence(h *C.QKeySequence) *QKeySequence {
+	if h == nil {
+		return nil
+	}
 	return &QKeySequence{h: h}
 }
 

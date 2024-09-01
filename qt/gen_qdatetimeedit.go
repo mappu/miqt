@@ -29,6 +29,9 @@ func (this *QDateTimeEdit) cPointer() *C.QDateTimeEdit {
 }
 
 func newQDateTimeEdit(h *C.QDateTimeEdit) *QDateTimeEdit {
+	if h == nil {
+		return nil
+	}
 	return &QDateTimeEdit{h: h, QAbstractSpinBox: newQAbstractSpinBox_U(unsafe.Pointer(h))}
 }
 
@@ -514,6 +517,9 @@ func (this *QTimeEdit) cPointer() *C.QTimeEdit {
 }
 
 func newQTimeEdit(h *C.QTimeEdit) *QTimeEdit {
+	if h == nil {
+		return nil
+	}
 	return &QTimeEdit{h: h, QDateTimeEdit: newQDateTimeEdit_U(unsafe.Pointer(h))}
 }
 
@@ -653,6 +659,9 @@ func (this *QDateEdit) cPointer() *C.QDateEdit {
 }
 
 func newQDateEdit(h *C.QDateEdit) *QDateEdit {
+	if h == nil {
+		return nil
+	}
 	return &QDateEdit{h: h, QDateTimeEdit: newQDateTimeEdit_U(unsafe.Pointer(h))}
 }
 

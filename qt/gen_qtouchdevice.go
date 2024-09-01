@@ -26,6 +26,9 @@ func (this *QTouchDevice) cPointer() *C.QTouchDevice {
 }
 
 func newQTouchDevice(h *C.QTouchDevice) *QTouchDevice {
+	if h == nil {
+		return nil
+	}
 	return &QTouchDevice{h: h}
 }
 

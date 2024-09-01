@@ -28,6 +28,9 @@ func (this *QStateMachine) cPointer() *C.QStateMachine {
 }
 
 func newQStateMachine(h *C.QStateMachine) *QStateMachine {
+	if h == nil {
+		return nil
+	}
 	return &QStateMachine{h: h, QState: newQState_U(unsafe.Pointer(h))}
 }
 
@@ -272,6 +275,9 @@ func (this *QStateMachine__SignalEvent) cPointer() *C.QStateMachine__SignalEvent
 }
 
 func newQStateMachine__SignalEvent(h *C.QStateMachine__SignalEvent) *QStateMachine__SignalEvent {
+	if h == nil {
+		return nil
+	}
 	return &QStateMachine__SignalEvent{h: h, QEvent: newQEvent_U(unsafe.Pointer(h))}
 }
 
@@ -312,6 +318,9 @@ func (this *QStateMachine__WrappedEvent) cPointer() *C.QStateMachine__WrappedEve
 }
 
 func newQStateMachine__WrappedEvent(h *C.QStateMachine__WrappedEvent) *QStateMachine__WrappedEvent {
+	if h == nil {
+		return nil
+	}
 	return &QStateMachine__WrappedEvent{h: h, QEvent: newQEvent_U(unsafe.Pointer(h))}
 }
 

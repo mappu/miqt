@@ -27,6 +27,9 @@ func (this *QAnimationGroup) cPointer() *C.QAnimationGroup {
 }
 
 func newQAnimationGroup(h *C.QAnimationGroup) *QAnimationGroup {
+	if h == nil {
+		return nil
+	}
 	return &QAnimationGroup{h: h, QAbstractAnimation: newQAbstractAnimation_U(unsafe.Pointer(h))}
 }
 

@@ -28,6 +28,9 @@ func (this *QDial) cPointer() *C.QDial {
 }
 
 func newQDial(h *C.QDial) *QDial {
+	if h == nil {
+		return nil
+	}
 	return &QDial{h: h, QAbstractSlider: newQAbstractSlider_U(unsafe.Pointer(h))}
 }
 

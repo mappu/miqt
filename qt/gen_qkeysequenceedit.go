@@ -29,6 +29,9 @@ func (this *QKeySequenceEdit) cPointer() *C.QKeySequenceEdit {
 }
 
 func newQKeySequenceEdit(h *C.QKeySequenceEdit) *QKeySequenceEdit {
+	if h == nil {
+		return nil
+	}
 	return &QKeySequenceEdit{h: h, QWidget: newQWidget_U(unsafe.Pointer(h))}
 }
 

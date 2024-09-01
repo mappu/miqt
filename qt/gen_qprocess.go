@@ -28,6 +28,9 @@ func (this *QProcessEnvironment) cPointer() *C.QProcessEnvironment {
 }
 
 func newQProcessEnvironment(h *C.QProcessEnvironment) *QProcessEnvironment {
+	if h == nil {
+		return nil
+	}
 	return &QProcessEnvironment{h: h}
 }
 
@@ -181,6 +184,9 @@ func (this *QProcess) cPointer() *C.QProcess {
 }
 
 func newQProcess(h *C.QProcess) *QProcess {
+	if h == nil {
+		return nil
+	}
 	return &QProcess{h: h, QIODevice: newQIODevice_U(unsafe.Pointer(h))}
 }
 

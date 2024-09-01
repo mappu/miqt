@@ -28,6 +28,9 @@ func (this *QItemDelegate) cPointer() *C.QItemDelegate {
 }
 
 func newQItemDelegate(h *C.QItemDelegate) *QItemDelegate {
+	if h == nil {
+		return nil
+	}
 	return &QItemDelegate{h: h, QAbstractItemDelegate: newQAbstractItemDelegate_U(unsafe.Pointer(h))}
 }
 

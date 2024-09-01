@@ -28,6 +28,9 @@ func (this *QAbstractUndoItem) cPointer() *C.QAbstractUndoItem {
 }
 
 func newQAbstractUndoItem(h *C.QAbstractUndoItem) *QAbstractUndoItem {
+	if h == nil {
+		return nil
+	}
 	return &QAbstractUndoItem{h: h}
 }
 
@@ -60,6 +63,9 @@ func (this *QTextDocument) cPointer() *C.QTextDocument {
 }
 
 func newQTextDocument(h *C.QTextDocument) *QTextDocument {
+	if h == nil {
+		return nil
+	}
 	return &QTextDocument{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
 }
 

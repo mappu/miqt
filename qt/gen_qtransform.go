@@ -27,6 +27,9 @@ func (this *QTransform) cPointer() *C.QTransform {
 }
 
 func newQTransform(h *C.QTransform) *QTransform {
+	if h == nil {
+		return nil
+	}
 	return &QTransform{h: h}
 }
 

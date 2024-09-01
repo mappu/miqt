@@ -29,6 +29,9 @@ func (this *QProgressDialog) cPointer() *C.QProgressDialog {
 }
 
 func newQProgressDialog(h *C.QProgressDialog) *QProgressDialog {
+	if h == nil {
+		return nil
+	}
 	return &QProgressDialog{h: h, QDialog: newQDialog_U(unsafe.Pointer(h))}
 }
 

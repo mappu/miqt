@@ -27,6 +27,9 @@ func (this *QRgba64) cPointer() *C.QRgba64 {
 }
 
 func newQRgba64(h *C.QRgba64) *QRgba64 {
+	if h == nil {
+		return nil
+	}
 	return &QRgba64{h: h}
 }
 

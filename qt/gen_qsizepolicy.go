@@ -27,6 +27,9 @@ func (this *QSizePolicy) cPointer() *C.QSizePolicy {
 }
 
 func newQSizePolicy(h *C.QSizePolicy) *QSizePolicy {
+	if h == nil {
+		return nil
+	}
 	return &QSizePolicy{h: h}
 }
 

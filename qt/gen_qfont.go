@@ -27,6 +27,9 @@ func (this *QFont) cPointer() *C.QFont {
 }
 
 func newQFont(h *C.QFont) *QFont {
+	if h == nil {
+		return nil
+	}
 	return &QFont{h: h}
 }
 

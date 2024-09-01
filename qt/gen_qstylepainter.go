@@ -27,6 +27,9 @@ func (this *QStylePainter) cPointer() *C.QStylePainter {
 }
 
 func newQStylePainter(h *C.QStylePainter) *QStylePainter {
+	if h == nil {
+		return nil
+	}
 	return &QStylePainter{h: h, QPainter: newQPainter_U(unsafe.Pointer(h))}
 }
 

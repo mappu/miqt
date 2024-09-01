@@ -27,6 +27,9 @@ func (this *QFileIconProvider) cPointer() *C.QFileIconProvider {
 }
 
 func newQFileIconProvider(h *C.QFileIconProvider) *QFileIconProvider {
+	if h == nil {
+		return nil
+	}
 	return &QFileIconProvider{h: h}
 }
 

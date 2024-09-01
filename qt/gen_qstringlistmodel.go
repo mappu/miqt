@@ -28,6 +28,9 @@ func (this *QStringListModel) cPointer() *C.QStringListModel {
 }
 
 func newQStringListModel(h *C.QStringListModel) *QStringListModel {
+	if h == nil {
+		return nil
+	}
 	return &QStringListModel{h: h, QAbstractListModel: newQAbstractListModel_U(unsafe.Pointer(h))}
 }
 

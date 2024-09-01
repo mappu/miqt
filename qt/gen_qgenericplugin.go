@@ -27,6 +27,9 @@ func (this *QGenericPlugin) cPointer() *C.QGenericPlugin {
 }
 
 func newQGenericPlugin(h *C.QGenericPlugin) *QGenericPlugin {
+	if h == nil {
+		return nil
+	}
 	return &QGenericPlugin{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
 }
 

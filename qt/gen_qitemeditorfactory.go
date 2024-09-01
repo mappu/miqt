@@ -27,6 +27,9 @@ func (this *QItemEditorCreatorBase) cPointer() *C.QItemEditorCreatorBase {
 }
 
 func newQItemEditorCreatorBase(h *C.QItemEditorCreatorBase) *QItemEditorCreatorBase {
+	if h == nil {
+		return nil
+	}
 	return &QItemEditorCreatorBase{h: h}
 }
 
@@ -70,6 +73,9 @@ func (this *QItemEditorFactory) cPointer() *C.QItemEditorFactory {
 }
 
 func newQItemEditorFactory(h *C.QItemEditorFactory) *QItemEditorFactory {
+	if h == nil {
+		return nil
+	}
 	return &QItemEditorFactory{h: h}
 }
 

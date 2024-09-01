@@ -28,6 +28,9 @@ func (this *QMouseEventTransition) cPointer() *C.QMouseEventTransition {
 }
 
 func newQMouseEventTransition(h *C.QMouseEventTransition) *QMouseEventTransition {
+	if h == nil {
+		return nil
+	}
 	return &QMouseEventTransition{h: h, QEventTransition: newQEventTransition_U(unsafe.Pointer(h))}
 }
 

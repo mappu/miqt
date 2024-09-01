@@ -27,6 +27,9 @@ func (this *QFontDatabase) cPointer() *C.QFontDatabase {
 }
 
 func newQFontDatabase(h *C.QFontDatabase) *QFontDatabase {
+	if h == nil {
+		return nil
+	}
 	return &QFontDatabase{h: h}
 }
 

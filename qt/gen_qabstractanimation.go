@@ -28,6 +28,9 @@ func (this *QAbstractAnimation) cPointer() *C.QAbstractAnimation {
 }
 
 func newQAbstractAnimation(h *C.QAbstractAnimation) *QAbstractAnimation {
+	if h == nil {
+		return nil
+	}
 	return &QAbstractAnimation{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
 }
 
@@ -260,6 +263,9 @@ func (this *QAnimationDriver) cPointer() *C.QAnimationDriver {
 }
 
 func newQAnimationDriver(h *C.QAnimationDriver) *QAnimationDriver {
+	if h == nil {
+		return nil
+	}
 	return &QAnimationDriver{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
 }
 

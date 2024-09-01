@@ -27,6 +27,9 @@ func (this *QSyntaxHighlighter) cPointer() *C.QSyntaxHighlighter {
 }
 
 func newQSyntaxHighlighter(h *C.QSyntaxHighlighter) *QSyntaxHighlighter {
+	if h == nil {
+		return nil
+	}
 	return &QSyntaxHighlighter{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
 }
 

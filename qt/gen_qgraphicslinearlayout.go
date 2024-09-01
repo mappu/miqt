@@ -28,6 +28,9 @@ func (this *QGraphicsLinearLayout) cPointer() *C.QGraphicsLinearLayout {
 }
 
 func newQGraphicsLinearLayout(h *C.QGraphicsLinearLayout) *QGraphicsLinearLayout {
+	if h == nil {
+		return nil
+	}
 	return &QGraphicsLinearLayout{h: h, QGraphicsLayout: newQGraphicsLayout_U(unsafe.Pointer(h))}
 }
 

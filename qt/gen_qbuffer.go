@@ -27,6 +27,9 @@ func (this *QBuffer) cPointer() *C.QBuffer {
 }
 
 func newQBuffer(h *C.QBuffer) *QBuffer {
+	if h == nil {
+		return nil
+	}
 	return &QBuffer{h: h, QIODevice: newQIODevice_U(unsafe.Pointer(h))}
 }
 

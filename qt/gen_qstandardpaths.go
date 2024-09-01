@@ -26,6 +26,9 @@ func (this *QStandardPaths) cPointer() *C.QStandardPaths {
 }
 
 func newQStandardPaths(h *C.QStandardPaths) *QStandardPaths {
+	if h == nil {
+		return nil
+	}
 	return &QStandardPaths{h: h}
 }
 

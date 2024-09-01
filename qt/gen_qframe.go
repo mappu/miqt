@@ -28,6 +28,9 @@ func (this *QFrame) cPointer() *C.QFrame {
 }
 
 func newQFrame(h *C.QFrame) *QFrame {
+	if h == nil {
+		return nil
+	}
 	return &QFrame{h: h, QWidget: newQWidget_U(unsafe.Pointer(h))}
 }
 

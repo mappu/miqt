@@ -28,6 +28,9 @@ func (this *QBitmap) cPointer() *C.QBitmap {
 }
 
 func newQBitmap(h *C.QBitmap) *QBitmap {
+	if h == nil {
+		return nil
+	}
 	return &QBitmap{h: h, QPixmap: newQPixmap_U(unsafe.Pointer(h))}
 }
 

@@ -29,6 +29,9 @@ func (this *QInputMethod) cPointer() *C.QInputMethod {
 }
 
 func newQInputMethod(h *C.QInputMethod) *QInputMethod {
+	if h == nil {
+		return nil
+	}
 	return &QInputMethod{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
 }
 

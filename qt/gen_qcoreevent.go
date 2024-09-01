@@ -27,6 +27,9 @@ func (this *QEvent) cPointer() *C.QEvent {
 }
 
 func newQEvent(h *C.QEvent) *QEvent {
+	if h == nil {
+		return nil
+	}
 	return &QEvent{h: h}
 }
 
@@ -104,6 +107,9 @@ func (this *QTimerEvent) cPointer() *C.QTimerEvent {
 }
 
 func newQTimerEvent(h *C.QTimerEvent) *QTimerEvent {
+	if h == nil {
+		return nil
+	}
 	return &QTimerEvent{h: h, QEvent: newQEvent_U(unsafe.Pointer(h))}
 }
 
@@ -145,6 +151,9 @@ func (this *QChildEvent) cPointer() *C.QChildEvent {
 }
 
 func newQChildEvent(h *C.QChildEvent) *QChildEvent {
+	if h == nil {
+		return nil
+	}
 	return &QChildEvent{h: h, QEvent: newQEvent_U(unsafe.Pointer(h))}
 }
 
@@ -201,6 +210,9 @@ func (this *QDynamicPropertyChangeEvent) cPointer() *C.QDynamicPropertyChangeEve
 }
 
 func newQDynamicPropertyChangeEvent(h *C.QDynamicPropertyChangeEvent) *QDynamicPropertyChangeEvent {
+	if h == nil {
+		return nil
+	}
 	return &QDynamicPropertyChangeEvent{h: h, QEvent: newQEvent_U(unsafe.Pointer(h))}
 }
 
@@ -248,6 +260,9 @@ func (this *QDeferredDeleteEvent) cPointer() *C.QDeferredDeleteEvent {
 }
 
 func newQDeferredDeleteEvent(h *C.QDeferredDeleteEvent) *QDeferredDeleteEvent {
+	if h == nil {
+		return nil
+	}
 	return &QDeferredDeleteEvent{h: h, QEvent: newQEvent_U(unsafe.Pointer(h))}
 }
 

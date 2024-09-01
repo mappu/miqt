@@ -27,6 +27,9 @@ func (this *QCborArray) cPointer() *C.QCborArray {
 }
 
 func newQCborArray(h *C.QCborArray) *QCborArray {
+	if h == nil {
+		return nil
+	}
 	return &QCborArray{h: h}
 }
 
@@ -494,6 +497,9 @@ func (this *QCborArray__Iterator) cPointer() *C.QCborArray__Iterator {
 }
 
 func newQCborArray__Iterator(h *C.QCborArray__Iterator) *QCborArray__Iterator {
+	if h == nil {
+		return nil
+	}
 	return &QCborArray__Iterator{h: h}
 }
 
@@ -665,6 +671,9 @@ func (this *QCborArray__ConstIterator) cPointer() *C.QCborArray__ConstIterator {
 }
 
 func newQCborArray__ConstIterator(h *C.QCborArray__ConstIterator) *QCborArray__ConstIterator {
+	if h == nil {
+		return nil
+	}
 	return &QCborArray__ConstIterator{h: h}
 }
 

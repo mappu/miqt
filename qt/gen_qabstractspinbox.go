@@ -29,6 +29,9 @@ func (this *QAbstractSpinBox) cPointer() *C.QAbstractSpinBox {
 }
 
 func newQAbstractSpinBox(h *C.QAbstractSpinBox) *QAbstractSpinBox {
+	if h == nil {
+		return nil
+	}
 	return &QAbstractSpinBox{h: h, QWidget: newQWidget_U(unsafe.Pointer(h))}
 }
 

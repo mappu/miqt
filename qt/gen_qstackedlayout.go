@@ -29,6 +29,9 @@ func (this *QStackedLayout) cPointer() *C.QStackedLayout {
 }
 
 func newQStackedLayout(h *C.QStackedLayout) *QStackedLayout {
+	if h == nil {
+		return nil
+	}
 	return &QStackedLayout{h: h, QLayout: newQLayout_U(unsafe.Pointer(h))}
 }
 

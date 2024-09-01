@@ -27,6 +27,9 @@ func (this *QTextCodec) cPointer() *C.QTextCodec {
 }
 
 func newQTextCodec(h *C.QTextCodec) *QTextCodec {
+	if h == nil {
+		return nil
+	}
 	return &QTextCodec{h: h}
 }
 
@@ -256,6 +259,9 @@ func (this *QTextEncoder) cPointer() *C.QTextEncoder {
 }
 
 func newQTextEncoder(h *C.QTextEncoder) *QTextEncoder {
+	if h == nil {
+		return nil
+	}
 	return &QTextEncoder{h: h}
 }
 
@@ -320,6 +326,9 @@ func (this *QTextDecoder) cPointer() *C.QTextDecoder {
 }
 
 func newQTextDecoder(h *C.QTextDecoder) *QTextDecoder {
+	if h == nil {
+		return nil
+	}
 	return &QTextDecoder{h: h}
 }
 
@@ -385,6 +394,9 @@ func (this *QTextCodec__ConverterState) cPointer() *C.QTextCodec__ConverterState
 }
 
 func newQTextCodec__ConverterState(h *C.QTextCodec__ConverterState) *QTextCodec__ConverterState {
+	if h == nil {
+		return nil
+	}
 	return &QTextCodec__ConverterState{h: h}
 }
 

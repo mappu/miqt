@@ -27,6 +27,9 @@ func (this *QQuaternion) cPointer() *C.QQuaternion {
 }
 
 func newQQuaternion(h *C.QQuaternion) *QQuaternion {
+	if h == nil {
+		return nil
+	}
 	return &QQuaternion{h: h}
 }
 

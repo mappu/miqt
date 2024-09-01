@@ -26,6 +26,9 @@ func (this *QBasicMutex) cPointer() *C.QBasicMutex {
 }
 
 func newQBasicMutex(h *C.QBasicMutex) *QBasicMutex {
+	if h == nil {
+		return nil
+	}
 	return &QBasicMutex{h: h}
 }
 
@@ -84,6 +87,9 @@ func (this *QMutex) cPointer() *C.QMutex {
 }
 
 func newQMutex(h *C.QMutex) *QMutex {
+	if h == nil {
+		return nil
+	}
 	return &QMutex{h: h, QBasicMutex: newQBasicMutex_U(unsafe.Pointer(h))}
 }
 
@@ -147,6 +153,9 @@ func (this *QRecursiveMutex) cPointer() *C.QRecursiveMutex {
 }
 
 func newQRecursiveMutex(h *C.QRecursiveMutex) *QRecursiveMutex {
+	if h == nil {
+		return nil
+	}
 	return &QRecursiveMutex{h: h}
 }
 
@@ -176,6 +185,9 @@ func (this *QMutexLocker) cPointer() *C.QMutexLocker {
 }
 
 func newQMutexLocker(h *C.QMutexLocker) *QMutexLocker {
+	if h == nil {
+		return nil
+	}
 	return &QMutexLocker{h: h}
 }
 

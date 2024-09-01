@@ -27,6 +27,9 @@ func (this *QColor) cPointer() *C.QColor {
 }
 
 func newQColor(h *C.QColor) *QColor {
+	if h == nil {
+		return nil
+	}
 	return &QColor{h: h}
 }
 

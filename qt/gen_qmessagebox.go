@@ -29,6 +29,9 @@ func (this *QMessageBox) cPointer() *C.QMessageBox {
 }
 
 func newQMessageBox(h *C.QMessageBox) *QMessageBox {
+	if h == nil {
+		return nil
+	}
 	return &QMessageBox{h: h, QDialog: newQDialog_U(unsafe.Pointer(h))}
 }
 

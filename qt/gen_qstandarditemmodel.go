@@ -28,6 +28,9 @@ func (this *QStandardItem) cPointer() *C.QStandardItem {
 }
 
 func newQStandardItem(h *C.QStandardItem) *QStandardItem {
+	if h == nil {
+		return nil
+	}
 	return &QStandardItem{h: h}
 }
 
@@ -624,6 +627,9 @@ func (this *QStandardItemModel) cPointer() *C.QStandardItemModel {
 }
 
 func newQStandardItemModel(h *C.QStandardItemModel) *QStandardItemModel {
+	if h == nil {
+		return nil
+	}
 	return &QStandardItemModel{h: h, QAbstractItemModel: newQAbstractItemModel_U(unsafe.Pointer(h))}
 }
 

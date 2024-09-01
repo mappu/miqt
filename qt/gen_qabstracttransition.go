@@ -27,6 +27,9 @@ func (this *QAbstractTransition) cPointer() *C.QAbstractTransition {
 }
 
 func newQAbstractTransition(h *C.QAbstractTransition) *QAbstractTransition {
+	if h == nil {
+		return nil
+	}
 	return &QAbstractTransition{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
 }
 

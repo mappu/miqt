@@ -27,6 +27,9 @@ func (this *QByteArrayDataPtr) cPointer() *C.QByteArrayDataPtr {
 }
 
 func newQByteArrayDataPtr(h *C.QByteArrayDataPtr) *QByteArrayDataPtr {
+	if h == nil {
+		return nil
+	}
 	return &QByteArrayDataPtr{h: h}
 }
 
@@ -62,6 +65,9 @@ func (this *QByteArray) cPointer() *C.QByteArray {
 }
 
 func newQByteArray(h *C.QByteArray) *QByteArray {
+	if h == nil {
+		return nil
+	}
 	return &QByteArray{h: h}
 }
 
@@ -1570,6 +1576,9 @@ func (this *QByteRef) cPointer() *C.QByteRef {
 }
 
 func newQByteRef(h *C.QByteRef) *QByteRef {
+	if h == nil {
+		return nil
+	}
 	return &QByteRef{h: h}
 }
 
@@ -1637,6 +1646,9 @@ func (this *QByteArray__FromBase64Result) cPointer() *C.QByteArray__FromBase64Re
 }
 
 func newQByteArray__FromBase64Result(h *C.QByteArray__FromBase64Result) *QByteArray__FromBase64Result {
+	if h == nil {
+		return nil
+	}
 	return &QByteArray__FromBase64Result{h: h}
 }
 

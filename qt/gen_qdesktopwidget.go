@@ -29,6 +29,9 @@ func (this *QDesktopWidget) cPointer() *C.QDesktopWidget {
 }
 
 func newQDesktopWidget(h *C.QDesktopWidget) *QDesktopWidget {
+	if h == nil {
+		return nil
+	}
 	return &QDesktopWidget{h: h, QWidget: newQWidget_U(unsafe.Pointer(h))}
 }
 

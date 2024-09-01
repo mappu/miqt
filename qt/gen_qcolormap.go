@@ -27,6 +27,9 @@ func (this *QColormap) cPointer() *C.QColormap {
 }
 
 func newQColormap(h *C.QColormap) *QColormap {
+	if h == nil {
+		return nil
+	}
 	return &QColormap{h: h}
 }
 

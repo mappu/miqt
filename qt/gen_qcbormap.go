@@ -27,6 +27,9 @@ func (this *QCborMap) cPointer() *C.QCborMap {
 }
 
 func newQCborMap(h *C.QCborMap) *QCborMap {
+	if h == nil {
+		return nil
+	}
 	return &QCborMap{h: h}
 }
 
@@ -598,6 +601,9 @@ func (this *QCborMap__Iterator) cPointer() *C.QCborMap__Iterator {
 }
 
 func newQCborMap__Iterator(h *C.QCborMap__Iterator) *QCborMap__Iterator {
+	if h == nil {
+		return nil
+	}
 	return &QCborMap__Iterator{h: h}
 }
 
@@ -769,6 +775,9 @@ func (this *QCborMap__ConstIterator) cPointer() *C.QCborMap__ConstIterator {
 }
 
 func newQCborMap__ConstIterator(h *C.QCborMap__ConstIterator) *QCborMap__ConstIterator {
+	if h == nil {
+		return nil
+	}
 	return &QCborMap__ConstIterator{h: h}
 }
 

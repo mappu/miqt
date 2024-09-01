@@ -26,6 +26,9 @@ func (this *QSystemSemaphore) cPointer() *C.QSystemSemaphore {
 }
 
 func newQSystemSemaphore(h *C.QSystemSemaphore) *QSystemSemaphore {
+	if h == nil {
+		return nil
+	}
 	return &QSystemSemaphore{h: h}
 }
 

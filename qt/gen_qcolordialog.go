@@ -29,6 +29,9 @@ func (this *QColorDialog) cPointer() *C.QColorDialog {
 }
 
 func newQColorDialog(h *C.QColorDialog) *QColorDialog {
+	if h == nil {
+		return nil
+	}
 	return &QColorDialog{h: h, QDialog: newQDialog_U(unsafe.Pointer(h))}
 }
 

@@ -28,6 +28,9 @@ func (this *QMimeData) cPointer() *C.QMimeData {
 }
 
 func newQMimeData(h *C.QMimeData) *QMimeData {
+	if h == nil {
+		return nil
+	}
 	return &QMimeData{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
 }
 

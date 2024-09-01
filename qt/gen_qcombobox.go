@@ -29,6 +29,9 @@ func (this *QComboBox) cPointer() *C.QComboBox {
 }
 
 func newQComboBox(h *C.QComboBox) *QComboBox {
+	if h == nil {
+		return nil
+	}
 	return &QComboBox{h: h, QWidget: newQWidget_U(unsafe.Pointer(h))}
 }
 

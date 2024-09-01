@@ -29,6 +29,9 @@ func (this *QGraphicsView) cPointer() *C.QGraphicsView {
 }
 
 func newQGraphicsView(h *C.QGraphicsView) *QGraphicsView {
+	if h == nil {
+		return nil
+	}
 	return &QGraphicsView{h: h, QAbstractScrollArea: newQAbstractScrollArea_U(unsafe.Pointer(h))}
 }
 

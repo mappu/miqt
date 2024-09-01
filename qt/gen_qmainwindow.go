@@ -29,6 +29,9 @@ func (this *QMainWindow) cPointer() *C.QMainWindow {
 }
 
 func newQMainWindow(h *C.QMainWindow) *QMainWindow {
+	if h == nil {
+		return nil
+	}
 	return &QMainWindow{h: h, QWidget: newQWidget_U(unsafe.Pointer(h))}
 }
 

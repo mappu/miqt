@@ -27,6 +27,9 @@ func (this *QTemporaryFile) cPointer() *C.QTemporaryFile {
 }
 
 func newQTemporaryFile(h *C.QTemporaryFile) *QTemporaryFile {
+	if h == nil {
+		return nil
+	}
 	return &QTemporaryFile{h: h, QFile: newQFile_U(unsafe.Pointer(h))}
 }
 

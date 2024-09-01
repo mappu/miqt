@@ -28,6 +28,9 @@ func (this *QListWidgetItem) cPointer() *C.QListWidgetItem {
 }
 
 func newQListWidgetItem(h *C.QListWidgetItem) *QListWidgetItem {
+	if h == nil {
+		return nil
+	}
 	return &QListWidgetItem{h: h}
 }
 
@@ -381,6 +384,9 @@ func (this *QListWidget) cPointer() *C.QListWidget {
 }
 
 func newQListWidget(h *C.QListWidget) *QListWidget {
+	if h == nil {
+		return nil
+	}
 	return &QListWidget{h: h, QListView: newQListView_U(unsafe.Pointer(h))}
 }
 

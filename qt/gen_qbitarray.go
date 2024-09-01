@@ -27,6 +27,9 @@ func (this *QBitArray) cPointer() *C.QBitArray {
 }
 
 func newQBitArray(h *C.QBitArray) *QBitArray {
+	if h == nil {
+		return nil
+	}
 	return &QBitArray{h: h}
 }
 
@@ -252,6 +255,9 @@ func (this *QBitRef) cPointer() *C.QBitRef {
 }
 
 func newQBitRef(h *C.QBitRef) *QBitRef {
+	if h == nil {
+		return nil
+	}
 	return &QBitRef{h: h}
 }
 

@@ -27,6 +27,9 @@ func (this *QUuid) cPointer() *C.QUuid {
 }
 
 func newQUuid(h *C.QUuid) *QUuid {
+	if h == nil {
+		return nil
+	}
 	return &QUuid{h: h}
 }
 

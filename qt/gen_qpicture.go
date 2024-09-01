@@ -28,6 +28,9 @@ func (this *QPicture) cPointer() *C.QPicture {
 }
 
 func newQPicture(h *C.QPicture) *QPicture {
+	if h == nil {
+		return nil
+	}
 	return &QPicture{h: h, QPaintDevice: newQPaintDevice_U(unsafe.Pointer(h))}
 }
 
@@ -256,6 +259,9 @@ func (this *QPictureIO) cPointer() *C.QPictureIO {
 }
 
 func newQPictureIO(h *C.QPictureIO) *QPictureIO {
+	if h == nil {
+		return nil
+	}
 	return &QPictureIO{h: h}
 }
 

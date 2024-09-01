@@ -26,6 +26,9 @@ func (this *QContiguousCacheData) cPointer() *C.QContiguousCacheData {
 }
 
 func newQContiguousCacheData(h *C.QContiguousCacheData) *QContiguousCacheData {
+	if h == nil {
+		return nil
+	}
 	return &QContiguousCacheData{h: h}
 }
 

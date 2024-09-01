@@ -29,6 +29,9 @@ func (this *QAbstractButton) cPointer() *C.QAbstractButton {
 }
 
 func newQAbstractButton(h *C.QAbstractButton) *QAbstractButton {
+	if h == nil {
+		return nil
+	}
 	return &QAbstractButton{h: h, QWidget: newQWidget_U(unsafe.Pointer(h))}
 }
 

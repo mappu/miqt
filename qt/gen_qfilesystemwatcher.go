@@ -27,6 +27,9 @@ func (this *QFileSystemWatcher) cPointer() *C.QFileSystemWatcher {
 }
 
 func newQFileSystemWatcher(h *C.QFileSystemWatcher) *QFileSystemWatcher {
+	if h == nil {
+		return nil
+	}
 	return &QFileSystemWatcher{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
 }
 

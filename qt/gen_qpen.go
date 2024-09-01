@@ -27,6 +27,9 @@ func (this *QPen) cPointer() *C.QPen {
 }
 
 func newQPen(h *C.QPen) *QPen {
+	if h == nil {
+		return nil
+	}
 	return &QPen{h: h}
 }
 

@@ -28,6 +28,9 @@ func (this *QPushButton) cPointer() *C.QPushButton {
 }
 
 func newQPushButton(h *C.QPushButton) *QPushButton {
+	if h == nil {
+		return nil
+	}
 	return &QPushButton{h: h, QAbstractButton: newQAbstractButton_U(unsafe.Pointer(h))}
 }
 

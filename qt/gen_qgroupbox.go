@@ -29,6 +29,9 @@ func (this *QGroupBox) cPointer() *C.QGroupBox {
 }
 
 func newQGroupBox(h *C.QGroupBox) *QGroupBox {
+	if h == nil {
+		return nil
+	}
 	return &QGroupBox{h: h, QWidget: newQWidget_U(unsafe.Pointer(h))}
 }
 

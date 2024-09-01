@@ -27,6 +27,9 @@ func (this *QTextTableCell) cPointer() *C.QTextTableCell {
 }
 
 func newQTextTableCell(h *C.QTextTableCell) *QTextTableCell {
+	if h == nil {
+		return nil
+	}
 	return &QTextTableCell{h: h}
 }
 
@@ -176,6 +179,9 @@ func (this *QTextTable) cPointer() *C.QTextTable {
 }
 
 func newQTextTable(h *C.QTextTable) *QTextTable {
+	if h == nil {
+		return nil
+	}
 	return &QTextTable{h: h, QTextFrame: newQTextFrame_U(unsafe.Pointer(h))}
 }
 

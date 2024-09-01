@@ -27,6 +27,9 @@ func (this *QVariant) cPointer() *C.QVariant {
 }
 
 func newQVariant(h *C.QVariant) *QVariant {
+	if h == nil {
+		return nil
+	}
 	return &QVariant{h: h}
 }
 
@@ -796,6 +799,9 @@ func (this *QVariantComparisonHelper) cPointer() *C.QVariantComparisonHelper {
 }
 
 func newQVariantComparisonHelper(h *C.QVariantComparisonHelper) *QVariantComparisonHelper {
+	if h == nil {
+		return nil
+	}
 	return &QVariantComparisonHelper{h: h}
 }
 
@@ -831,6 +837,9 @@ func (this *QSequentialIterable) cPointer() *C.QSequentialIterable {
 }
 
 func newQSequentialIterable(h *C.QSequentialIterable) *QSequentialIterable {
+	if h == nil {
+		return nil
+	}
 	return &QSequentialIterable{h: h}
 }
 
@@ -909,6 +918,9 @@ func (this *QAssociativeIterable) cPointer() *C.QAssociativeIterable {
 }
 
 func newQAssociativeIterable(h *C.QAssociativeIterable) *QAssociativeIterable {
+	if h == nil {
+		return nil
+	}
 	return &QAssociativeIterable{h: h}
 }
 
@@ -993,6 +1005,9 @@ func (this *QVariant__PrivateShared) cPointer() *C.QVariant__PrivateShared {
 }
 
 func newQVariant__PrivateShared(h *C.QVariant__PrivateShared) *QVariant__PrivateShared {
+	if h == nil {
+		return nil
+	}
 	return &QVariant__PrivateShared{h: h}
 }
 
@@ -1016,6 +1031,9 @@ func (this *QVariant__Handler) cPointer() *C.QVariant__Handler {
 }
 
 func newQVariant__Handler(h *C.QVariant__Handler) *QVariant__Handler {
+	if h == nil {
+		return nil
+	}
 	return &QVariant__Handler{h: h}
 }
 
@@ -1039,6 +1057,9 @@ func (this *QSequentialIterable__const_iterator) cPointer() *C.QSequentialIterab
 }
 
 func newQSequentialIterable__const_iterator(h *C.QSequentialIterable__const_iterator) *QSequentialIterable__const_iterator {
+	if h == nil {
+		return nil
+	}
 	return &QSequentialIterable__const_iterator{h: h}
 }
 
@@ -1133,6 +1154,9 @@ func (this *QAssociativeIterable__const_iterator) cPointer() *C.QAssociativeIter
 }
 
 func newQAssociativeIterable__const_iterator(h *C.QAssociativeIterable__const_iterator) *QAssociativeIterable__const_iterator {
+	if h == nil {
+		return nil
+	}
 	return &QAssociativeIterable__const_iterator{h: h}
 }
 

@@ -28,6 +28,9 @@ func (this *QObjectData) cPointer() *C.QObjectData {
 }
 
 func newQObjectData(h *C.QObjectData) *QObjectData {
+	if h == nil {
+		return nil
+	}
 	return &QObjectData{h: h}
 }
 
@@ -56,6 +59,9 @@ func (this *QObject) cPointer() *C.QObject {
 }
 
 func newQObject(h *C.QObject) *QObject {
+	if h == nil {
+		return nil
+	}
 	return &QObject{h: h}
 }
 
@@ -420,6 +426,9 @@ func (this *QObjectUserData) cPointer() *C.QObjectUserData {
 }
 
 func newQObjectUserData(h *C.QObjectUserData) *QObjectUserData {
+	if h == nil {
+		return nil
+	}
 	return &QObjectUserData{h: h}
 }
 
@@ -449,6 +458,9 @@ func (this *QSignalBlocker) cPointer() *C.QSignalBlocker {
 }
 
 func newQSignalBlocker(h *C.QSignalBlocker) *QSignalBlocker {
+	if h == nil {
+		return nil
+	}
 	return &QSignalBlocker{h: h}
 }
 

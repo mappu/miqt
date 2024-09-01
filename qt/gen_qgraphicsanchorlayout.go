@@ -27,6 +27,9 @@ func (this *QGraphicsAnchor) cPointer() *C.QGraphicsAnchor {
 }
 
 func newQGraphicsAnchor(h *C.QGraphicsAnchor) *QGraphicsAnchor {
+	if h == nil {
+		return nil
+	}
 	return &QGraphicsAnchor{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
 }
 
@@ -152,6 +155,9 @@ func (this *QGraphicsAnchorLayout) cPointer() *C.QGraphicsAnchorLayout {
 }
 
 func newQGraphicsAnchorLayout(h *C.QGraphicsAnchorLayout) *QGraphicsAnchorLayout {
+	if h == nil {
+		return nil
+	}
 	return &QGraphicsAnchorLayout{h: h, QGraphicsLayout: newQGraphicsLayout_U(unsafe.Pointer(h))}
 }
 

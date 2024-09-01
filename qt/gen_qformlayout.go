@@ -28,6 +28,9 @@ func (this *QFormLayout) cPointer() *C.QFormLayout {
 }
 
 func newQFormLayout(h *C.QFormLayout) *QFormLayout {
+	if h == nil {
+		return nil
+	}
 	return &QFormLayout{h: h, QLayout: newQLayout_U(unsafe.Pointer(h))}
 }
 
@@ -402,6 +405,9 @@ func (this *QFormLayout__TakeRowResult) cPointer() *C.QFormLayout__TakeRowResult
 }
 
 func newQFormLayout__TakeRowResult(h *C.QFormLayout__TakeRowResult) *QFormLayout__TakeRowResult {
+	if h == nil {
+		return nil
+	}
 	return &QFormLayout__TakeRowResult{h: h}
 }
 

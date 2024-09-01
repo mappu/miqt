@@ -27,6 +27,9 @@ func (this *QUndoCommand) cPointer() *C.QUndoCommand {
 }
 
 func newQUndoCommand(h *C.QUndoCommand) *QUndoCommand {
+	if h == nil {
+		return nil
+	}
 	return &QUndoCommand{h: h}
 }
 
@@ -140,6 +143,9 @@ func (this *QUndoStack) cPointer() *C.QUndoStack {
 }
 
 func newQUndoStack(h *C.QUndoStack) *QUndoStack {
+	if h == nil {
+		return nil
+	}
 	return &QUndoStack{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
 }
 

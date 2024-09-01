@@ -29,6 +29,9 @@ func (this *QPlainTextEdit) cPointer() *C.QPlainTextEdit {
 }
 
 func newQPlainTextEdit(h *C.QPlainTextEdit) *QPlainTextEdit {
+	if h == nil {
+		return nil
+	}
 	return &QPlainTextEdit{h: h, QAbstractScrollArea: newQAbstractScrollArea_U(unsafe.Pointer(h))}
 }
 
@@ -707,6 +710,9 @@ func (this *QPlainTextDocumentLayout) cPointer() *C.QPlainTextDocumentLayout {
 }
 
 func newQPlainTextDocumentLayout(h *C.QPlainTextDocumentLayout) *QPlainTextDocumentLayout {
+	if h == nil {
+		return nil
+	}
 	return &QPlainTextDocumentLayout{h: h, QAbstractTextDocumentLayout: newQAbstractTextDocumentLayout_U(unsafe.Pointer(h))}
 }
 

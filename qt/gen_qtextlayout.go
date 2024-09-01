@@ -27,6 +27,9 @@ func (this *QTextInlineObject) cPointer() *C.QTextInlineObject {
 }
 
 func newQTextInlineObject(h *C.QTextInlineObject) *QTextInlineObject {
+	if h == nil {
+		return nil
+	}
 	return &QTextInlineObject{h: h}
 }
 
@@ -130,6 +133,9 @@ func (this *QTextLayout) cPointer() *C.QTextLayout {
 }
 
 func newQTextLayout(h *C.QTextLayout) *QTextLayout {
+	if h == nil {
+		return nil
+	}
 	return &QTextLayout{h: h}
 }
 
@@ -520,6 +526,9 @@ func (this *QTextLine) cPointer() *C.QTextLine {
 }
 
 func newQTextLine(h *C.QTextLine) *QTextLine {
+	if h == nil {
+		return nil
+	}
 	return &QTextLine{h: h}
 }
 
@@ -749,6 +758,9 @@ func (this *QTextLayout__FormatRange) cPointer() *C.QTextLayout__FormatRange {
 }
 
 func newQTextLayout__FormatRange(h *C.QTextLayout__FormatRange) *QTextLayout__FormatRange {
+	if h == nil {
+		return nil
+	}
 	return &QTextLayout__FormatRange{h: h}
 }
 

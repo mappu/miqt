@@ -26,6 +26,9 @@ func (this *QCborError) cPointer() *C.QCborError {
 }
 
 func newQCborError(h *C.QCborError) *QCborError {
+	if h == nil {
+		return nil
+	}
 	return &QCborError{h: h}
 }
 

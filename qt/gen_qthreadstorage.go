@@ -26,6 +26,9 @@ func (this *QThreadStorageData) cPointer() *C.QThreadStorageData {
 }
 
 func newQThreadStorageData(h *C.QThreadStorageData) *QThreadStorageData {
+	if h == nil {
+		return nil
+	}
 	return &QThreadStorageData{h: h}
 }
 

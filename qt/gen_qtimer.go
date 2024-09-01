@@ -27,6 +27,9 @@ func (this *QTimer) cPointer() *C.QTimer {
 }
 
 func newQTimer(h *C.QTimer) *QTimer {
+	if h == nil {
+		return nil
+	}
 	return &QTimer{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
 }
 

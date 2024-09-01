@@ -28,6 +28,9 @@ func (this *QAbstractSlider) cPointer() *C.QAbstractSlider {
 }
 
 func newQAbstractSlider(h *C.QAbstractSlider) *QAbstractSlider {
+	if h == nil {
+		return nil
+	}
 	return &QAbstractSlider{h: h, QWidget: newQWidget_U(unsafe.Pointer(h))}
 }
 

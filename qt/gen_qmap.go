@@ -26,6 +26,9 @@ func (this *QMapNodeBase) cPointer() *C.QMapNodeBase {
 }
 
 func newQMapNodeBase(h *C.QMapNodeBase) *QMapNodeBase {
+	if h == nil {
+		return nil
+	}
 	return &QMapNodeBase{h: h}
 }
 
@@ -97,6 +100,9 @@ func (this *QMapDataBase) cPointer() *C.QMapDataBase {
 }
 
 func newQMapDataBase(h *C.QMapDataBase) *QMapDataBase {
+	if h == nil {
+		return nil
+	}
 	return &QMapDataBase{h: h}
 }
 

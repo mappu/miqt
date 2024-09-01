@@ -27,6 +27,9 @@ func (this *QKeyEventTransition) cPointer() *C.QKeyEventTransition {
 }
 
 func newQKeyEventTransition(h *C.QKeyEventTransition) *QKeyEventTransition {
+	if h == nil {
+		return nil
+	}
 	return &QKeyEventTransition{h: h, QEventTransition: newQEventTransition_U(unsafe.Pointer(h))}
 }
 

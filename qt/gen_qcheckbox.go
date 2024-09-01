@@ -29,6 +29,9 @@ func (this *QCheckBox) cPointer() *C.QCheckBox {
 }
 
 func newQCheckBox(h *C.QCheckBox) *QCheckBox {
+	if h == nil {
+		return nil
+	}
 	return &QCheckBox{h: h, QAbstractButton: newQAbstractButton_U(unsafe.Pointer(h))}
 }
 

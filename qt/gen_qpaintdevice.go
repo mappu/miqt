@@ -26,6 +26,9 @@ func (this *QPaintDevice) cPointer() *C.QPaintDevice {
 }
 
 func newQPaintDevice(h *C.QPaintDevice) *QPaintDevice {
+	if h == nil {
+		return nil
+	}
 	return &QPaintDevice{h: h}
 }
 

@@ -29,6 +29,9 @@ func (this *QSystemTrayIcon) cPointer() *C.QSystemTrayIcon {
 }
 
 func newQSystemTrayIcon(h *C.QSystemTrayIcon) *QSystemTrayIcon {
+	if h == nil {
+		return nil
+	}
 	return &QSystemTrayIcon{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
 }
 

@@ -26,6 +26,9 @@ func (this *QArrayData) cPointer() *C.QArrayData {
 }
 
 func newQArrayData(h *C.QArrayData) *QArrayData {
+	if h == nil {
+		return nil
+	}
 	return &QArrayData{h: h}
 }
 
@@ -98,6 +101,9 @@ func (this *QtPrivate__QContainerImplHelper) cPointer() *C.QtPrivate__QContainer
 }
 
 func newQtPrivate__QContainerImplHelper(h *C.QtPrivate__QContainerImplHelper) *QtPrivate__QContainerImplHelper {
+	if h == nil {
+		return nil
+	}
 	return &QtPrivate__QContainerImplHelper{h: h}
 }
 

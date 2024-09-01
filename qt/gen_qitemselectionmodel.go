@@ -28,6 +28,9 @@ func (this *QItemSelectionRange) cPointer() *C.QItemSelectionRange {
 }
 
 func newQItemSelectionRange(h *C.QItemSelectionRange) *QItemSelectionRange {
+	if h == nil {
+		return nil
+	}
 	return &QItemSelectionRange{h: h}
 }
 
@@ -204,6 +207,9 @@ func (this *QItemSelectionModel) cPointer() *C.QItemSelectionModel {
 }
 
 func newQItemSelectionModel(h *C.QItemSelectionModel) *QItemSelectionModel {
+	if h == nil {
+		return nil
+	}
 	return &QItemSelectionModel{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
 }
 

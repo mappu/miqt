@@ -28,6 +28,9 @@ func (this *QSlider) cPointer() *C.QSlider {
 }
 
 func newQSlider(h *C.QSlider) *QSlider {
+	if h == nil {
+		return nil
+	}
 	return &QSlider{h: h, QAbstractSlider: newQAbstractSlider_U(unsafe.Pointer(h))}
 }
 

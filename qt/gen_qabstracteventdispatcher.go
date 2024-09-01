@@ -28,6 +28,9 @@ func (this *QAbstractEventDispatcher) cPointer() *C.QAbstractEventDispatcher {
 }
 
 func newQAbstractEventDispatcher(h *C.QAbstractEventDispatcher) *QAbstractEventDispatcher {
+	if h == nil {
+		return nil
+	}
 	return &QAbstractEventDispatcher{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
 }
 
@@ -247,6 +250,9 @@ func (this *QAbstractEventDispatcher__TimerInfo) cPointer() *C.QAbstractEventDis
 }
 
 func newQAbstractEventDispatcher__TimerInfo(h *C.QAbstractEventDispatcher__TimerInfo) *QAbstractEventDispatcher__TimerInfo {
+	if h == nil {
+		return nil
+	}
 	return &QAbstractEventDispatcher__TimerInfo{h: h}
 }
 

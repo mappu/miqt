@@ -29,6 +29,9 @@ func (this *QShortcut) cPointer() *C.QShortcut {
 }
 
 func newQShortcut(h *C.QShortcut) *QShortcut {
+	if h == nil {
+		return nil
+	}
 	return &QShortcut{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
 }
 

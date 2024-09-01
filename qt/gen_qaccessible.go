@@ -27,6 +27,9 @@ func (this *QAccessible) cPointer() *C.QAccessible {
 }
 
 func newQAccessible(h *C.QAccessible) *QAccessible {
+	if h == nil {
+		return nil
+	}
 	return &QAccessible{h: h}
 }
 
@@ -103,6 +106,9 @@ func (this *QAccessibleInterface) cPointer() *C.QAccessibleInterface {
 }
 
 func newQAccessibleInterface(h *C.QAccessibleInterface) *QAccessibleInterface {
+	if h == nil {
+		return nil
+	}
 	return &QAccessibleInterface{h: h}
 }
 
@@ -266,6 +272,9 @@ func (this *QAccessibleTextInterface) cPointer() *C.QAccessibleTextInterface {
 }
 
 func newQAccessibleTextInterface(h *C.QAccessibleTextInterface) *QAccessibleTextInterface {
+	if h == nil {
+		return nil
+	}
 	return &QAccessibleTextInterface{h: h}
 }
 
@@ -393,6 +402,9 @@ func (this *QAccessibleEditableTextInterface) cPointer() *C.QAccessibleEditableT
 }
 
 func newQAccessibleEditableTextInterface(h *C.QAccessibleEditableTextInterface) *QAccessibleEditableTextInterface {
+	if h == nil {
+		return nil
+	}
 	return &QAccessibleEditableTextInterface{h: h}
 }
 
@@ -436,6 +448,9 @@ func (this *QAccessibleValueInterface) cPointer() *C.QAccessibleValueInterface {
 }
 
 func newQAccessibleValueInterface(h *C.QAccessibleValueInterface) *QAccessibleValueInterface {
+	if h == nil {
+		return nil
+	}
 	return &QAccessibleValueInterface{h: h}
 }
 
@@ -511,6 +526,9 @@ func (this *QAccessibleTableCellInterface) cPointer() *C.QAccessibleTableCellInt
 }
 
 func newQAccessibleTableCellInterface(h *C.QAccessibleTableCellInterface) *QAccessibleTableCellInterface {
+	if h == nil {
+		return nil
+	}
 	return &QAccessibleTableCellInterface{h: h}
 }
 
@@ -594,6 +612,9 @@ func (this *QAccessibleTableInterface) cPointer() *C.QAccessibleTableInterface {
 }
 
 func newQAccessibleTableInterface(h *C.QAccessibleTableInterface) *QAccessibleTableInterface {
+	if h == nil {
+		return nil
+	}
 	return &QAccessibleTableInterface{h: h}
 }
 
@@ -748,6 +769,9 @@ func (this *QAccessibleActionInterface) cPointer() *C.QAccessibleActionInterface
 }
 
 func newQAccessibleActionInterface(h *C.QAccessibleActionInterface) *QAccessibleActionInterface {
+	if h == nil {
+		return nil
+	}
 	return &QAccessibleActionInterface{h: h}
 }
 
@@ -1017,6 +1041,9 @@ func (this *QAccessibleImageInterface) cPointer() *C.QAccessibleImageInterface {
 }
 
 func newQAccessibleImageInterface(h *C.QAccessibleImageInterface) *QAccessibleImageInterface {
+	if h == nil {
+		return nil
+	}
 	return &QAccessibleImageInterface{h: h}
 }
 
@@ -1075,6 +1102,9 @@ func (this *QAccessibleEvent) cPointer() *C.QAccessibleEvent {
 }
 
 func newQAccessibleEvent(h *C.QAccessibleEvent) *QAccessibleEvent {
+	if h == nil {
+		return nil
+	}
 	return &QAccessibleEvent{h: h}
 }
 
@@ -1140,6 +1170,9 @@ func (this *QAccessibleStateChangeEvent) cPointer() *C.QAccessibleStateChangeEve
 }
 
 func newQAccessibleStateChangeEvent(h *C.QAccessibleStateChangeEvent) *QAccessibleStateChangeEvent {
+	if h == nil {
+		return nil
+	}
 	return &QAccessibleStateChangeEvent{h: h, QAccessibleEvent: newQAccessibleEvent_U(unsafe.Pointer(h))}
 }
 
@@ -1187,6 +1220,9 @@ func (this *QAccessibleTextCursorEvent) cPointer() *C.QAccessibleTextCursorEvent
 }
 
 func newQAccessibleTextCursorEvent(h *C.QAccessibleTextCursorEvent) *QAccessibleTextCursorEvent {
+	if h == nil {
+		return nil
+	}
 	return &QAccessibleTextCursorEvent{h: h, QAccessibleEvent: newQAccessibleEvent_U(unsafe.Pointer(h))}
 }
 
@@ -1232,6 +1268,9 @@ func (this *QAccessibleTextSelectionEvent) cPointer() *C.QAccessibleTextSelectio
 }
 
 func newQAccessibleTextSelectionEvent(h *C.QAccessibleTextSelectionEvent) *QAccessibleTextSelectionEvent {
+	if h == nil {
+		return nil
+	}
 	return &QAccessibleTextSelectionEvent{h: h, QAccessibleTextCursorEvent: newQAccessibleTextCursorEvent_U(unsafe.Pointer(h))}
 }
 
@@ -1282,6 +1321,9 @@ func (this *QAccessibleTextInsertEvent) cPointer() *C.QAccessibleTextInsertEvent
 }
 
 func newQAccessibleTextInsertEvent(h *C.QAccessibleTextInsertEvent) *QAccessibleTextInsertEvent {
+	if h == nil {
+		return nil
+	}
 	return &QAccessibleTextInsertEvent{h: h, QAccessibleTextCursorEvent: newQAccessibleTextCursorEvent_U(unsafe.Pointer(h))}
 }
 
@@ -1336,6 +1378,9 @@ func (this *QAccessibleTextRemoveEvent) cPointer() *C.QAccessibleTextRemoveEvent
 }
 
 func newQAccessibleTextRemoveEvent(h *C.QAccessibleTextRemoveEvent) *QAccessibleTextRemoveEvent {
+	if h == nil {
+		return nil
+	}
 	return &QAccessibleTextRemoveEvent{h: h, QAccessibleTextCursorEvent: newQAccessibleTextCursorEvent_U(unsafe.Pointer(h))}
 }
 
@@ -1390,6 +1435,9 @@ func (this *QAccessibleTextUpdateEvent) cPointer() *C.QAccessibleTextUpdateEvent
 }
 
 func newQAccessibleTextUpdateEvent(h *C.QAccessibleTextUpdateEvent) *QAccessibleTextUpdateEvent {
+	if h == nil {
+		return nil
+	}
 	return &QAccessibleTextUpdateEvent{h: h, QAccessibleTextCursorEvent: newQAccessibleTextCursorEvent_U(unsafe.Pointer(h))}
 }
 
@@ -1457,6 +1505,9 @@ func (this *QAccessibleValueChangeEvent) cPointer() *C.QAccessibleValueChangeEve
 }
 
 func newQAccessibleValueChangeEvent(h *C.QAccessibleValueChangeEvent) *QAccessibleValueChangeEvent {
+	if h == nil {
+		return nil
+	}
 	return &QAccessibleValueChangeEvent{h: h, QAccessibleEvent: newQAccessibleEvent_U(unsafe.Pointer(h))}
 }
 
@@ -1508,6 +1559,9 @@ func (this *QAccessibleTableModelChangeEvent) cPointer() *C.QAccessibleTableMode
 }
 
 func newQAccessibleTableModelChangeEvent(h *C.QAccessibleTableModelChangeEvent) *QAccessibleTableModelChangeEvent {
+	if h == nil {
+		return nil
+	}
 	return &QAccessibleTableModelChangeEvent{h: h, QAccessibleEvent: newQAccessibleEvent_U(unsafe.Pointer(h))}
 }
 
@@ -1588,6 +1642,9 @@ func (this *QAccessible__State) cPointer() *C.QAccessible__State {
 }
 
 func newQAccessible__State(h *C.QAccessible__State) *QAccessible__State {
+	if h == nil {
+		return nil
+	}
 	return &QAccessible__State{h: h}
 }
 
@@ -1623,6 +1680,9 @@ func (this *QAccessible__ActivationObserver) cPointer() *C.QAccessible__Activati
 }
 
 func newQAccessible__ActivationObserver(h *C.QAccessible__ActivationObserver) *QAccessible__ActivationObserver {
+	if h == nil {
+		return nil
+	}
 	return &QAccessible__ActivationObserver{h: h}
 }
 

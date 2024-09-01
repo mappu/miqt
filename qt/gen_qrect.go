@@ -27,6 +27,9 @@ func (this *QRect) cPointer() *C.QRect {
 }
 
 func newQRect(h *C.QRect) *QRect {
+	if h == nil {
+		return nil
+	}
 	return &QRect{h: h}
 }
 
@@ -499,6 +502,9 @@ func (this *QRectF) cPointer() *C.QRectF {
 }
 
 func newQRectF(h *C.QRectF) *QRectF {
+	if h == nil {
+		return nil
+	}
 	return &QRectF{h: h}
 }
 

@@ -27,6 +27,9 @@ func (this *QTextCursor) cPointer() *C.QTextCursor {
 }
 
 func newQTextCursor(h *C.QTextCursor) *QTextCursor {
+	if h == nil {
+		return nil
+	}
 	return &QTextCursor{h: h}
 }
 

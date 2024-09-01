@@ -26,6 +26,9 @@ func (this *QLockFile) cPointer() *C.QLockFile {
 }
 
 func newQLockFile(h *C.QLockFile) *QLockFile {
+	if h == nil {
+		return nil
+	}
 	return &QLockFile{h: h}
 }
 

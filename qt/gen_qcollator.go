@@ -27,6 +27,9 @@ func (this *QCollatorSortKey) cPointer() *C.QCollatorSortKey {
 }
 
 func newQCollatorSortKey(h *C.QCollatorSortKey) *QCollatorSortKey {
+	if h == nil {
+		return nil
+	}
 	return &QCollatorSortKey{h: h}
 }
 
@@ -69,6 +72,9 @@ func (this *QCollator) cPointer() *C.QCollator {
 }
 
 func newQCollator(h *C.QCollator) *QCollator {
+	if h == nil {
+		return nil
+	}
 	return &QCollator{h: h}
 }
 

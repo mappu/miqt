@@ -28,6 +28,9 @@ func (this *QPaintDeviceWindow) cPointer() *C.QPaintDeviceWindow {
 }
 
 func newQPaintDeviceWindow(h *C.QPaintDeviceWindow) *QPaintDeviceWindow {
+	if h == nil {
+		return nil
+	}
 	return &QPaintDeviceWindow{h: h, QWindow: newQWindow_U(unsafe.Pointer(h)), QPaintDevice: newQPaintDevice_U(unsafe.Pointer(h))}
 }
 

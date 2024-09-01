@@ -26,6 +26,9 @@ func (this *QWhatsThis) cPointer() *C.QWhatsThis {
 }
 
 func newQWhatsThis(h *C.QWhatsThis) *QWhatsThis {
+	if h == nil {
+		return nil
+	}
 	return &QWhatsThis{h: h}
 }
 

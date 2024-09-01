@@ -28,6 +28,9 @@ func (this *QPropertyAnimation) cPointer() *C.QPropertyAnimation {
 }
 
 func newQPropertyAnimation(h *C.QPropertyAnimation) *QPropertyAnimation {
+	if h == nil {
+		return nil
+	}
 	return &QPropertyAnimation{h: h, QVariantAnimation: newQVariantAnimation_U(unsafe.Pointer(h))}
 }
 

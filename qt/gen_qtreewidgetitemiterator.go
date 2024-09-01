@@ -27,6 +27,9 @@ func (this *QTreeWidgetItemIterator) cPointer() *C.QTreeWidgetItemIterator {
 }
 
 func newQTreeWidgetItemIterator(h *C.QTreeWidgetItemIterator) *QTreeWidgetItemIterator {
+	if h == nil {
+		return nil
+	}
 	return &QTreeWidgetItemIterator{h: h}
 }
 

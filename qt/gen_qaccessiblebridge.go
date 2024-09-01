@@ -26,6 +26,9 @@ func (this *QAccessibleBridge) cPointer() *C.QAccessibleBridge {
 }
 
 func newQAccessibleBridge(h *C.QAccessibleBridge) *QAccessibleBridge {
+	if h == nil {
+		return nil
+	}
 	return &QAccessibleBridge{h: h}
 }
 
@@ -62,6 +65,9 @@ func (this *QAccessibleBridgePlugin) cPointer() *C.QAccessibleBridgePlugin {
 }
 
 func newQAccessibleBridgePlugin(h *C.QAccessibleBridgePlugin) *QAccessibleBridgePlugin {
+	if h == nil {
+		return nil
+	}
 	return &QAccessibleBridgePlugin{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
 }
 

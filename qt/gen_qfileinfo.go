@@ -27,6 +27,9 @@ func (this *QFileInfo) cPointer() *C.QFileInfo {
 }
 
 func newQFileInfo(h *C.QFileInfo) *QFileInfo {
+	if h == nil {
+		return nil
+	}
 	return &QFileInfo{h: h}
 }
 

@@ -29,6 +29,9 @@ func (this *QDrag) cPointer() *C.QDrag {
 }
 
 func newQDrag(h *C.QDrag) *QDrag {
+	if h == nil {
+		return nil
+	}
 	return &QDrag{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
 }
 

@@ -28,6 +28,9 @@ func (this *QAccessibleObject) cPointer() *C.QAccessibleObject {
 }
 
 func newQAccessibleObject(h *C.QAccessibleObject) *QAccessibleObject {
+	if h == nil {
+		return nil
+	}
 	return &QAccessibleObject{h: h, QAccessibleInterface: newQAccessibleInterface_U(unsafe.Pointer(h))}
 }
 
@@ -80,6 +83,9 @@ func (this *QAccessibleApplication) cPointer() *C.QAccessibleApplication {
 }
 
 func newQAccessibleApplication(h *C.QAccessibleApplication) *QAccessibleApplication {
+	if h == nil {
+		return nil
+	}
 	return &QAccessibleApplication{h: h, QAccessibleObject: newQAccessibleObject_U(unsafe.Pointer(h))}
 }
 

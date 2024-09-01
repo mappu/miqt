@@ -28,6 +28,9 @@ func (this *QDialogButtonBox) cPointer() *C.QDialogButtonBox {
 }
 
 func newQDialogButtonBox(h *C.QDialogButtonBox) *QDialogButtonBox {
+	if h == nil {
+		return nil
+	}
 	return &QDialogButtonBox{h: h, QWidget: newQWidget_U(unsafe.Pointer(h))}
 }
 

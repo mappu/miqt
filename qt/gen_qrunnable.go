@@ -26,6 +26,9 @@ func (this *QRunnable) cPointer() *C.QRunnable {
 }
 
 func newQRunnable(h *C.QRunnable) *QRunnable {
+	if h == nil {
+		return nil
+	}
 	return &QRunnable{h: h}
 }
 

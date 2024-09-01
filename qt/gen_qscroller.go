@@ -29,6 +29,9 @@ func (this *QScroller) cPointer() *C.QScroller {
 }
 
 func newQScroller(h *C.QScroller) *QScroller {
+	if h == nil {
+		return nil
+	}
 	return &QScroller{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
 }
 

@@ -27,6 +27,9 @@ func (this *QDate) cPointer() *C.QDate {
 }
 
 func newQDate(h *C.QDate) *QDate {
+	if h == nil {
+		return nil
+	}
 	return &QDate{h: h}
 }
 
@@ -574,6 +577,9 @@ func (this *QTime) cPointer() *C.QTime {
 }
 
 func newQTime(h *C.QTime) *QTime {
+	if h == nil {
+		return nil
+	}
 	return &QTime{h: h}
 }
 
@@ -850,6 +856,9 @@ func (this *QDateTime) cPointer() *C.QDateTime {
 }
 
 func newQDateTime(h *C.QDateTime) *QDateTime {
+	if h == nil {
+		return nil
+	}
 	return &QDateTime{h: h}
 }
 

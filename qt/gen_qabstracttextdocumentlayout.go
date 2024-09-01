@@ -29,6 +29,9 @@ func (this *QAbstractTextDocumentLayout) cPointer() *C.QAbstractTextDocumentLayo
 }
 
 func newQAbstractTextDocumentLayout(h *C.QAbstractTextDocumentLayout) *QAbstractTextDocumentLayout {
+	if h == nil {
+		return nil
+	}
 	return &QAbstractTextDocumentLayout{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
 }
 
@@ -296,6 +299,9 @@ func (this *QTextObjectInterface) cPointer() *C.QTextObjectInterface {
 }
 
 func newQTextObjectInterface(h *C.QTextObjectInterface) *QTextObjectInterface {
+	if h == nil {
+		return nil
+	}
 	return &QTextObjectInterface{h: h}
 }
 
@@ -334,6 +340,9 @@ func (this *QAbstractTextDocumentLayout__Selection) cPointer() *C.QAbstractTextD
 }
 
 func newQAbstractTextDocumentLayout__Selection(h *C.QAbstractTextDocumentLayout__Selection) *QAbstractTextDocumentLayout__Selection {
+	if h == nil {
+		return nil
+	}
 	return &QAbstractTextDocumentLayout__Selection{h: h}
 }
 
@@ -363,6 +372,9 @@ func (this *QAbstractTextDocumentLayout__PaintContext) cPointer() *C.QAbstractTe
 }
 
 func newQAbstractTextDocumentLayout__PaintContext(h *C.QAbstractTextDocumentLayout__PaintContext) *QAbstractTextDocumentLayout__PaintContext {
+	if h == nil {
+		return nil
+	}
 	return &QAbstractTextDocumentLayout__PaintContext{h: h}
 }
 

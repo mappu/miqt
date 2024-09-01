@@ -27,6 +27,9 @@ func (this *QVersionNumber) cPointer() *C.QVersionNumber {
 }
 
 func newQVersionNumber(h *C.QVersionNumber) *QVersionNumber {
+	if h == nil {
+		return nil
+	}
 	return &QVersionNumber{h: h}
 }
 

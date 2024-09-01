@@ -28,6 +28,9 @@ func (this *QTableWidgetSelectionRange) cPointer() *C.QTableWidgetSelectionRange
 }
 
 func newQTableWidgetSelectionRange(h *C.QTableWidgetSelectionRange) *QTableWidgetSelectionRange {
+	if h == nil {
+		return nil
+	}
 	return &QTableWidgetSelectionRange{h: h}
 }
 
@@ -103,6 +106,9 @@ func (this *QTableWidgetItem) cPointer() *C.QTableWidgetItem {
 }
 
 func newQTableWidgetItem(h *C.QTableWidgetItem) *QTableWidgetItem {
+	if h == nil {
+		return nil
+	}
 	return &QTableWidgetItem{h: h}
 }
 
@@ -435,6 +441,9 @@ func (this *QTableWidget) cPointer() *C.QTableWidget {
 }
 
 func newQTableWidget(h *C.QTableWidget) *QTableWidget {
+	if h == nil {
+		return nil
+	}
 	return &QTableWidget{h: h, QTableView: newQTableView_U(unsafe.Pointer(h))}
 }
 

@@ -27,6 +27,9 @@ func (this *QPageSize) cPointer() *C.QPageSize {
 }
 
 func newQPageSize(h *C.QPageSize) *QPageSize {
+	if h == nil {
+		return nil
+	}
 	return &QPageSize{h: h}
 }
 

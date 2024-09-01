@@ -26,6 +26,9 @@ func (this *QLinkedListData) cPointer() *C.QLinkedListData {
 }
 
 func newQLinkedListData(h *C.QLinkedListData) *QLinkedListData {
+	if h == nil {
+		return nil
+	}
 	return &QLinkedListData{h: h}
 }
 

@@ -27,6 +27,9 @@ func (this *QByteArrayMatcher) cPointer() *C.QByteArrayMatcher {
 }
 
 func newQByteArrayMatcher(h *C.QByteArrayMatcher) *QByteArrayMatcher {
+	if h == nil {
+		return nil
+	}
 	return &QByteArrayMatcher{h: h}
 }
 
@@ -119,6 +122,9 @@ func (this *QStaticByteArrayMatcherBase) cPointer() *C.QStaticByteArrayMatcherBa
 }
 
 func newQStaticByteArrayMatcherBase(h *C.QStaticByteArrayMatcherBase) *QStaticByteArrayMatcherBase {
+	if h == nil {
+		return nil
+	}
 	return &QStaticByteArrayMatcherBase{h: h}
 }
 

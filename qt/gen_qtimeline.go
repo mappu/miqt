@@ -28,6 +28,9 @@ func (this *QTimeLine) cPointer() *C.QTimeLine {
 }
 
 func newQTimeLine(h *C.QTimeLine) *QTimeLine {
+	if h == nil {
+		return nil
+	}
 	return &QTimeLine{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
 }
 

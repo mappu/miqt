@@ -29,6 +29,9 @@ func (this *QTextBrowser) cPointer() *C.QTextBrowser {
 }
 
 func newQTextBrowser(h *C.QTextBrowser) *QTextBrowser {
+	if h == nil {
+		return nil
+	}
 	return &QTextBrowser{h: h, QTextEdit: newQTextEdit_U(unsafe.Pointer(h))}
 }
 

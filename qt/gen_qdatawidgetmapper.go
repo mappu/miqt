@@ -29,6 +29,9 @@ func (this *QDataWidgetMapper) cPointer() *C.QDataWidgetMapper {
 }
 
 func newQDataWidgetMapper(h *C.QDataWidgetMapper) *QDataWidgetMapper {
+	if h == nil {
+		return nil
+	}
 	return &QDataWidgetMapper{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
 }
 

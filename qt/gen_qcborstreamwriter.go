@@ -26,6 +26,9 @@ func (this *QCborStreamWriter) cPointer() *C.QCborStreamWriter {
 }
 
 func newQCborStreamWriter(h *C.QCborStreamWriter) *QCborStreamWriter {
+	if h == nil {
+		return nil
+	}
 	return &QCborStreamWriter{h: h}
 }
 

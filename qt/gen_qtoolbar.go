@@ -29,6 +29,9 @@ func (this *QToolBar) cPointer() *C.QToolBar {
 }
 
 func newQToolBar(h *C.QToolBar) *QToolBar {
+	if h == nil {
+		return nil
+	}
 	return &QToolBar{h: h, QWidget: newQWidget_U(unsafe.Pointer(h))}
 }
 

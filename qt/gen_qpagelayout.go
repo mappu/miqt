@@ -27,6 +27,9 @@ func (this *QPageLayout) cPointer() *C.QPageLayout {
 }
 
 func newQPageLayout(h *C.QPageLayout) *QPageLayout {
+	if h == nil {
+		return nil
+	}
 	return &QPageLayout{h: h}
 }
 

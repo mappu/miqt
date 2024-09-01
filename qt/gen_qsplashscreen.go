@@ -29,6 +29,9 @@ func (this *QSplashScreen) cPointer() *C.QSplashScreen {
 }
 
 func newQSplashScreen(h *C.QSplashScreen) *QSplashScreen {
+	if h == nil {
+		return nil
+	}
 	return &QSplashScreen{h: h, QWidget: newQWidget_U(unsafe.Pointer(h))}
 }
 

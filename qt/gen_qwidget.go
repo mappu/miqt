@@ -28,6 +28,9 @@ func (this *QWidgetData) cPointer() *C.QWidgetData {
 }
 
 func newQWidgetData(h *C.QWidgetData) *QWidgetData {
+	if h == nil {
+		return nil
+	}
 	return &QWidgetData{h: h}
 }
 
@@ -63,6 +66,9 @@ func (this *QWidget) cPointer() *C.QWidget {
 }
 
 func newQWidget(h *C.QWidget) *QWidget {
+	if h == nil {
+		return nil
+	}
 	return &QWidget{h: h, QObject: newQObject_U(unsafe.Pointer(h)), QPaintDevice: newQPaintDevice_U(unsafe.Pointer(h))}
 }
 

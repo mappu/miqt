@@ -29,6 +29,9 @@ func (this *QLayout) cPointer() *C.QLayout {
 }
 
 func newQLayout(h *C.QLayout) *QLayout {
+	if h == nil {
+		return nil
+	}
 	return &QLayout{h: h, QObject: newQObject_U(unsafe.Pointer(h)), QLayoutItem: newQLayoutItem_U(unsafe.Pointer(h))}
 }
 

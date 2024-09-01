@@ -27,6 +27,9 @@ func (this *QRegularExpression) cPointer() *C.QRegularExpression {
 }
 
 func newQRegularExpression(h *C.QRegularExpression) *QRegularExpression {
+	if h == nil {
+		return nil
+	}
 	return &QRegularExpression{h: h}
 }
 
@@ -300,6 +303,9 @@ func (this *QRegularExpressionMatch) cPointer() *C.QRegularExpressionMatch {
 }
 
 func newQRegularExpressionMatch(h *C.QRegularExpressionMatch) *QRegularExpressionMatch {
+	if h == nil {
+		return nil
+	}
 	return &QRegularExpressionMatch{h: h}
 }
 
@@ -479,6 +485,9 @@ func (this *QRegularExpressionMatchIterator) cPointer() *C.QRegularExpressionMat
 }
 
 func newQRegularExpressionMatchIterator(h *C.QRegularExpressionMatchIterator) *QRegularExpressionMatchIterator {
+	if h == nil {
+		return nil
+	}
 	return &QRegularExpressionMatchIterator{h: h}
 }
 

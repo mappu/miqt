@@ -28,6 +28,9 @@ func (this *QButtonGroup) cPointer() *C.QButtonGroup {
 }
 
 func newQButtonGroup(h *C.QButtonGroup) *QButtonGroup {
+	if h == nil {
+		return nil
+	}
 	return &QButtonGroup{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
 }
 

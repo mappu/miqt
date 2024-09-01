@@ -26,6 +26,9 @@ func (this *QTemporaryDir) cPointer() *C.QTemporaryDir {
 }
 
 func newQTemporaryDir(h *C.QTemporaryDir) *QTemporaryDir {
+	if h == nil {
+		return nil
+	}
 	return &QTemporaryDir{h: h}
 }
 

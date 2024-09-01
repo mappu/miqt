@@ -27,6 +27,9 @@ func (this *QEventLoop) cPointer() *C.QEventLoop {
 }
 
 func newQEventLoop(h *C.QEventLoop) *QEventLoop {
+	if h == nil {
+		return nil
+	}
 	return &QEventLoop{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
 }
 
@@ -191,6 +194,9 @@ func (this *QEventLoopLocker) cPointer() *C.QEventLoopLocker {
 }
 
 func newQEventLoopLocker(h *C.QEventLoopLocker) *QEventLoopLocker {
+	if h == nil {
+		return nil
+	}
 	return &QEventLoopLocker{h: h}
 }
 

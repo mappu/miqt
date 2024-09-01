@@ -26,6 +26,9 @@ func (this *QtPrivate__RefCount) cPointer() *C.QtPrivate__RefCount {
 }
 
 func newQtPrivate__RefCount(h *C.QtPrivate__RefCount) *QtPrivate__RefCount {
+	if h == nil {
+		return nil
+	}
 	return &QtPrivate__RefCount{h: h}
 }
 

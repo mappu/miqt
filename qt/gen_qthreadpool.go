@@ -27,6 +27,9 @@ func (this *QThreadPool) cPointer() *C.QThreadPool {
 }
 
 func newQThreadPool(h *C.QThreadPool) *QThreadPool {
+	if h == nil {
+		return nil
+	}
 	return &QThreadPool{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
 }
 

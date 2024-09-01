@@ -28,6 +28,9 @@ func (this *QSignalTransition) cPointer() *C.QSignalTransition {
 }
 
 func newQSignalTransition(h *C.QSignalTransition) *QSignalTransition {
+	if h == nil {
+		return nil
+	}
 	return &QSignalTransition{h: h, QAbstractTransition: newQAbstractTransition_U(unsafe.Pointer(h))}
 }
 

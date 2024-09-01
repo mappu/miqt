@@ -27,6 +27,9 @@ func (this *QLibraryInfo) cPointer() *C.QLibraryInfo {
 }
 
 func newQLibraryInfo(h *C.QLibraryInfo) *QLibraryInfo {
+	if h == nil {
+		return nil
+	}
 	return &QLibraryInfo{h: h}
 }
 

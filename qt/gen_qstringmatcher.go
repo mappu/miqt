@@ -26,6 +26,9 @@ func (this *QStringMatcher) cPointer() *C.QStringMatcher {
 }
 
 func newQStringMatcher(h *C.QStringMatcher) *QStringMatcher {
+	if h == nil {
+		return nil
+	}
 	return &QStringMatcher{h: h}
 }
 

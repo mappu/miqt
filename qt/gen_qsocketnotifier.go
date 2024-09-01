@@ -27,6 +27,9 @@ func (this *QSocketNotifier) cPointer() *C.QSocketNotifier {
 }
 
 func newQSocketNotifier(h *C.QSocketNotifier) *QSocketNotifier {
+	if h == nil {
+		return nil
+	}
 	return &QSocketNotifier{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
 }
 
@@ -160,6 +163,9 @@ func (this *QSocketDescriptor) cPointer() *C.QSocketDescriptor {
 }
 
 func newQSocketDescriptor(h *C.QSocketDescriptor) *QSocketDescriptor {
+	if h == nil {
+		return nil
+	}
 	return &QSocketDescriptor{h: h}
 }
 

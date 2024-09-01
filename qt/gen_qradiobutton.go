@@ -28,6 +28,9 @@ func (this *QRadioButton) cPointer() *C.QRadioButton {
 }
 
 func newQRadioButton(h *C.QRadioButton) *QRadioButton {
+	if h == nil {
+		return nil
+	}
 	return &QRadioButton{h: h, QAbstractButton: newQAbstractButton_U(unsafe.Pointer(h))}
 }
 

@@ -27,6 +27,9 @@ func (this *QTextStream) cPointer() *C.QTextStream {
 }
 
 func newQTextStream(h *C.QTextStream) *QTextStream {
+	if h == nil {
+		return nil
+	}
 	return &QTextStream{h: h}
 }
 

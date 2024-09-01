@@ -27,6 +27,9 @@ func (this *QMetaMethod) cPointer() *C.QMetaMethod {
 }
 
 func newQMetaMethod(h *C.QMetaMethod) *QMetaMethod {
+	if h == nil {
+		return nil
+	}
 	return &QMetaMethod{h: h}
 }
 
@@ -394,6 +397,9 @@ func (this *QMetaEnum) cPointer() *C.QMetaEnum {
 }
 
 func newQMetaEnum(h *C.QMetaEnum) *QMetaEnum {
+	if h == nil {
+		return nil
+	}
 	return &QMetaEnum{h: h}
 }
 
@@ -523,6 +529,9 @@ func (this *QMetaProperty) cPointer() *C.QMetaProperty {
 }
 
 func newQMetaProperty(h *C.QMetaProperty) *QMetaProperty {
+	if h == nil {
+		return nil
+	}
 	return &QMetaProperty{h: h}
 }
 
@@ -745,6 +754,9 @@ func (this *QMetaClassInfo) cPointer() *C.QMetaClassInfo {
 }
 
 func newQMetaClassInfo(h *C.QMetaClassInfo) *QMetaClassInfo {
+	if h == nil {
+		return nil
+	}
 	return &QMetaClassInfo{h: h}
 }
 

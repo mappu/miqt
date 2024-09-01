@@ -29,6 +29,9 @@ func (this *QStyleHints) cPointer() *C.QStyleHints {
 }
 
 func newQStyleHints(h *C.QStyleHints) *QStyleHints {
+	if h == nil {
+		return nil
+	}
 	return &QStyleHints{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
 }
 

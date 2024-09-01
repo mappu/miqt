@@ -28,6 +28,9 @@ func (this *QIdentityProxyModel) cPointer() *C.QIdentityProxyModel {
 }
 
 func newQIdentityProxyModel(h *C.QIdentityProxyModel) *QIdentityProxyModel {
+	if h == nil {
+		return nil
+	}
 	return &QIdentityProxyModel{h: h, QAbstractProxyModel: newQAbstractProxyModel_U(unsafe.Pointer(h))}
 }
 

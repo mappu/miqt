@@ -27,6 +27,9 @@ func (this *QCborParserError) cPointer() *C.QCborParserError {
 }
 
 func newQCborParserError(h *C.QCborParserError) *QCborParserError {
+	if h == nil {
+		return nil
+	}
 	return &QCborParserError{h: h}
 }
 
@@ -59,6 +62,9 @@ func (this *QCborValue) cPointer() *C.QCborValue {
 }
 
 func newQCborValue(h *C.QCborValue) *QCborValue {
+	if h == nil {
+		return nil
+	}
 	return &QCborValue{h: h}
 }
 
@@ -763,6 +769,9 @@ func (this *QCborValueRef) cPointer() *C.QCborValueRef {
 }
 
 func newQCborValueRef(h *C.QCborValueRef) *QCborValueRef {
+	if h == nil {
+		return nil
+	}
 	return &QCborValueRef{h: h}
 }
 

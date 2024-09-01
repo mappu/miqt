@@ -26,6 +26,9 @@ func (this *QMimeType) cPointer() *C.QMimeType {
 }
 
 func newQMimeType(h *C.QMimeType) *QMimeType {
+	if h == nil {
+		return nil
+	}
 	return &QMimeType{h: h}
 }
 

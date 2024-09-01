@@ -27,6 +27,9 @@ func (this *QDeadlineTimer) cPointer() *C.QDeadlineTimer {
 }
 
 func newQDeadlineTimer(h *C.QDeadlineTimer) *QDeadlineTimer {
+	if h == nil {
+		return nil
+	}
 	return &QDeadlineTimer{h: h}
 }
 

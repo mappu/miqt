@@ -28,6 +28,9 @@ func (this *QGesture) cPointer() *C.QGesture {
 }
 
 func newQGesture(h *C.QGesture) *QGesture {
+	if h == nil {
+		return nil
+	}
 	return &QGesture{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
 }
 
@@ -186,6 +189,9 @@ func (this *QPanGesture) cPointer() *C.QPanGesture {
 }
 
 func newQPanGesture(h *C.QPanGesture) *QPanGesture {
+	if h == nil {
+		return nil
+	}
 	return &QPanGesture{h: h, QGesture: newQGesture_U(unsafe.Pointer(h))}
 }
 
@@ -351,6 +357,9 @@ func (this *QPinchGesture) cPointer() *C.QPinchGesture {
 }
 
 func newQPinchGesture(h *C.QPinchGesture) *QPinchGesture {
+	if h == nil {
+		return nil
+	}
 	return &QPinchGesture{h: h, QGesture: newQGesture_U(unsafe.Pointer(h))}
 }
 
@@ -583,6 +592,9 @@ func (this *QSwipeGesture) cPointer() *C.QSwipeGesture {
 }
 
 func newQSwipeGesture(h *C.QSwipeGesture) *QSwipeGesture {
+	if h == nil {
+		return nil
+	}
 	return &QSwipeGesture{h: h, QGesture: newQGesture_U(unsafe.Pointer(h))}
 }
 
@@ -717,6 +729,9 @@ func (this *QTapGesture) cPointer() *C.QTapGesture {
 }
 
 func newQTapGesture(h *C.QTapGesture) *QTapGesture {
+	if h == nil {
+		return nil
+	}
 	return &QTapGesture{h: h, QGesture: newQGesture_U(unsafe.Pointer(h))}
 }
 
@@ -847,6 +862,9 @@ func (this *QTapAndHoldGesture) cPointer() *C.QTapAndHoldGesture {
 }
 
 func newQTapAndHoldGesture(h *C.QTapAndHoldGesture) *QTapAndHoldGesture {
+	if h == nil {
+		return nil
+	}
 	return &QTapAndHoldGesture{h: h, QGesture: newQGesture_U(unsafe.Pointer(h))}
 }
 
@@ -986,6 +1004,9 @@ func (this *QGestureEvent) cPointer() *C.QGestureEvent {
 }
 
 func newQGestureEvent(h *C.QGestureEvent) *QGestureEvent {
+	if h == nil {
+		return nil
+	}
 	return &QGestureEvent{h: h, QEvent: newQEvent_U(unsafe.Pointer(h))}
 }
 

@@ -26,6 +26,9 @@ func (this *QTileRules) cPointer() *C.QTileRules {
 }
 
 func newQTileRules(h *C.QTileRules) *QTileRules {
+	if h == nil {
+		return nil
+	}
 	return &QTileRules{h: h}
 }
 

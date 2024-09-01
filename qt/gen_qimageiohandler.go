@@ -27,6 +27,9 @@ func (this *QImageIOHandler) cPointer() *C.QImageIOHandler {
 }
 
 func newQImageIOHandler(h *C.QImageIOHandler) *QImageIOHandler {
+	if h == nil {
+		return nil
+	}
 	return &QImageIOHandler{h: h}
 }
 
@@ -166,6 +169,9 @@ func (this *QImageIOPlugin) cPointer() *C.QImageIOPlugin {
 }
 
 func newQImageIOPlugin(h *C.QImageIOPlugin) *QImageIOPlugin {
+	if h == nil {
+		return nil
+	}
 	return &QImageIOPlugin{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
 }
 

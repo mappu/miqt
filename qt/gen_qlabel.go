@@ -29,6 +29,9 @@ func (this *QLabel) cPointer() *C.QLabel {
 }
 
 func newQLabel(h *C.QLabel) *QLabel {
+	if h == nil {
+		return nil
+	}
 	return &QLabel{h: h, QFrame: newQFrame_U(unsafe.Pointer(h))}
 }
 

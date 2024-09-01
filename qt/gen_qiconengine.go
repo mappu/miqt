@@ -27,6 +27,9 @@ func (this *QIconEngine) cPointer() *C.QIconEngine {
 }
 
 func newQIconEngine(h *C.QIconEngine) *QIconEngine {
+	if h == nil {
+		return nil
+	}
 	return &QIconEngine{h: h}
 }
 
@@ -174,6 +177,9 @@ func (this *QIconEngine__AvailableSizesArgument) cPointer() *C.QIconEngine__Avai
 }
 
 func newQIconEngine__AvailableSizesArgument(h *C.QIconEngine__AvailableSizesArgument) *QIconEngine__AvailableSizesArgument {
+	if h == nil {
+		return nil
+	}
 	return &QIconEngine__AvailableSizesArgument{h: h}
 }
 
@@ -203,6 +209,9 @@ func (this *QIconEngine__ScaledPixmapArgument) cPointer() *C.QIconEngine__Scaled
 }
 
 func newQIconEngine__ScaledPixmapArgument(h *C.QIconEngine__ScaledPixmapArgument) *QIconEngine__ScaledPixmapArgument {
+	if h == nil {
+		return nil
+	}
 	return &QIconEngine__ScaledPixmapArgument{h: h}
 }
 

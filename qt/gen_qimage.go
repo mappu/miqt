@@ -28,6 +28,9 @@ func (this *QImage) cPointer() *C.QImage {
 }
 
 func newQImage(h *C.QImage) *QImage {
+	if h == nil {
+		return nil
+	}
 	return &QImage{h: h, QPaintDevice: newQPaintDevice_U(unsafe.Pointer(h))}
 }
 

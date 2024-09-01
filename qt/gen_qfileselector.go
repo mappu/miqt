@@ -28,6 +28,9 @@ func (this *QFileSelector) cPointer() *C.QFileSelector {
 }
 
 func newQFileSelector(h *C.QFileSelector) *QFileSelector {
+	if h == nil {
+		return nil
+	}
 	return &QFileSelector{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
 }
 

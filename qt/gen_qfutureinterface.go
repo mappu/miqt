@@ -26,6 +26,9 @@ func (this *QFutureInterfaceBase) cPointer() *C.QFutureInterfaceBase {
 }
 
 func newQFutureInterfaceBase(h *C.QFutureInterfaceBase) *QFutureInterfaceBase {
+	if h == nil {
+		return nil
+	}
 	return &QFutureInterfaceBase{h: h}
 }
 

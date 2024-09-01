@@ -27,6 +27,9 @@ func (this *QSurface) cPointer() *C.QSurface {
 }
 
 func newQSurface(h *C.QSurface) *QSurface {
+	if h == nil {
+		return nil
+	}
 	return &QSurface{h: h}
 }
 

@@ -28,6 +28,9 @@ func (this *QInputEvent) cPointer() *C.QInputEvent {
 }
 
 func newQInputEvent(h *C.QInputEvent) *QInputEvent {
+	if h == nil {
+		return nil
+	}
 	return &QInputEvent{h: h, QEvent: newQEvent_U(unsafe.Pointer(h))}
 }
 
@@ -88,6 +91,9 @@ func (this *QEnterEvent) cPointer() *C.QEnterEvent {
 }
 
 func newQEnterEvent(h *C.QEnterEvent) *QEnterEvent {
+	if h == nil {
+		return nil
+	}
 	return &QEnterEvent{h: h, QEvent: newQEvent_U(unsafe.Pointer(h))}
 }
 
@@ -181,6 +187,9 @@ func (this *QMouseEvent) cPointer() *C.QMouseEvent {
 }
 
 func newQMouseEvent(h *C.QMouseEvent) *QMouseEvent {
+	if h == nil {
+		return nil
+	}
 	return &QMouseEvent{h: h, QInputEvent: newQInputEvent_U(unsafe.Pointer(h))}
 }
 
@@ -316,6 +325,9 @@ func (this *QHoverEvent) cPointer() *C.QHoverEvent {
 }
 
 func newQHoverEvent(h *C.QHoverEvent) *QHoverEvent {
+	if h == nil {
+		return nil
+	}
 	return &QHoverEvent{h: h, QInputEvent: newQInputEvent_U(unsafe.Pointer(h))}
 }
 
@@ -390,6 +402,9 @@ func (this *QWheelEvent) cPointer() *C.QWheelEvent {
 }
 
 func newQWheelEvent(h *C.QWheelEvent) *QWheelEvent {
+	if h == nil {
+		return nil
+	}
 	return &QWheelEvent{h: h, QInputEvent: newQInputEvent_U(unsafe.Pointer(h))}
 }
 
@@ -606,6 +621,9 @@ func (this *QTabletEvent) cPointer() *C.QTabletEvent {
 }
 
 func newQTabletEvent(h *C.QTabletEvent) *QTabletEvent {
+	if h == nil {
+		return nil
+	}
 	return &QTabletEvent{h: h, QInputEvent: newQInputEvent_U(unsafe.Pointer(h))}
 }
 
@@ -770,6 +788,9 @@ func (this *QNativeGestureEvent) cPointer() *C.QNativeGestureEvent {
 }
 
 func newQNativeGestureEvent(h *C.QNativeGestureEvent) *QNativeGestureEvent {
+	if h == nil {
+		return nil
+	}
 	return &QNativeGestureEvent{h: h, QInputEvent: newQInputEvent_U(unsafe.Pointer(h))}
 }
 
@@ -864,6 +885,9 @@ func (this *QKeyEvent) cPointer() *C.QKeyEvent {
 }
 
 func newQKeyEvent(h *C.QKeyEvent) *QKeyEvent {
+	if h == nil {
+		return nil
+	}
 	return &QKeyEvent{h: h, QInputEvent: newQInputEvent_U(unsafe.Pointer(h))}
 }
 
@@ -1003,6 +1027,9 @@ func (this *QFocusEvent) cPointer() *C.QFocusEvent {
 }
 
 func newQFocusEvent(h *C.QFocusEvent) *QFocusEvent {
+	if h == nil {
+		return nil
+	}
 	return &QFocusEvent{h: h, QEvent: newQEvent_U(unsafe.Pointer(h))}
 }
 
@@ -1060,6 +1087,9 @@ func (this *QPaintEvent) cPointer() *C.QPaintEvent {
 }
 
 func newQPaintEvent(h *C.QPaintEvent) *QPaintEvent {
+	if h == nil {
+		return nil
+	}
 	return &QPaintEvent{h: h, QEvent: newQEvent_U(unsafe.Pointer(h))}
 }
 
@@ -1112,6 +1142,9 @@ func (this *QMoveEvent) cPointer() *C.QMoveEvent {
 }
 
 func newQMoveEvent(h *C.QMoveEvent) *QMoveEvent {
+	if h == nil {
+		return nil
+	}
 	return &QMoveEvent{h: h, QEvent: newQEvent_U(unsafe.Pointer(h))}
 }
 
@@ -1158,6 +1191,9 @@ func (this *QExposeEvent) cPointer() *C.QExposeEvent {
 }
 
 func newQExposeEvent(h *C.QExposeEvent) *QExposeEvent {
+	if h == nil {
+		return nil
+	}
 	return &QExposeEvent{h: h, QEvent: newQEvent_U(unsafe.Pointer(h))}
 }
 
@@ -1199,6 +1235,9 @@ func (this *QPlatformSurfaceEvent) cPointer() *C.QPlatformSurfaceEvent {
 }
 
 func newQPlatformSurfaceEvent(h *C.QPlatformSurfaceEvent) *QPlatformSurfaceEvent {
+	if h == nil {
+		return nil
+	}
 	return &QPlatformSurfaceEvent{h: h, QEvent: newQEvent_U(unsafe.Pointer(h))}
 }
 
@@ -1240,6 +1279,9 @@ func (this *QResizeEvent) cPointer() *C.QResizeEvent {
 }
 
 func newQResizeEvent(h *C.QResizeEvent) *QResizeEvent {
+	if h == nil {
+		return nil
+	}
 	return &QResizeEvent{h: h, QEvent: newQEvent_U(unsafe.Pointer(h))}
 }
 
@@ -1286,6 +1328,9 @@ func (this *QCloseEvent) cPointer() *C.QCloseEvent {
 }
 
 func newQCloseEvent(h *C.QCloseEvent) *QCloseEvent {
+	if h == nil {
+		return nil
+	}
 	return &QCloseEvent{h: h, QEvent: newQEvent_U(unsafe.Pointer(h))}
 }
 
@@ -1326,6 +1371,9 @@ func (this *QIconDragEvent) cPointer() *C.QIconDragEvent {
 }
 
 func newQIconDragEvent(h *C.QIconDragEvent) *QIconDragEvent {
+	if h == nil {
+		return nil
+	}
 	return &QIconDragEvent{h: h, QEvent: newQEvent_U(unsafe.Pointer(h))}
 }
 
@@ -1366,6 +1414,9 @@ func (this *QShowEvent) cPointer() *C.QShowEvent {
 }
 
 func newQShowEvent(h *C.QShowEvent) *QShowEvent {
+	if h == nil {
+		return nil
+	}
 	return &QShowEvent{h: h, QEvent: newQEvent_U(unsafe.Pointer(h))}
 }
 
@@ -1406,6 +1457,9 @@ func (this *QHideEvent) cPointer() *C.QHideEvent {
 }
 
 func newQHideEvent(h *C.QHideEvent) *QHideEvent {
+	if h == nil {
+		return nil
+	}
 	return &QHideEvent{h: h, QEvent: newQEvent_U(unsafe.Pointer(h))}
 }
 
@@ -1446,6 +1500,9 @@ func (this *QContextMenuEvent) cPointer() *C.QContextMenuEvent {
 }
 
 func newQContextMenuEvent(h *C.QContextMenuEvent) *QContextMenuEvent {
+	if h == nil {
+		return nil
+	}
 	return &QContextMenuEvent{h: h, QInputEvent: newQInputEvent_U(unsafe.Pointer(h))}
 }
 
@@ -1529,6 +1586,9 @@ func (this *QInputMethodEvent) cPointer() *C.QInputMethodEvent {
 }
 
 func newQInputMethodEvent(h *C.QInputMethodEvent) *QInputMethodEvent {
+	if h == nil {
+		return nil
+	}
 	return &QInputMethodEvent{h: h, QEvent: newQEvent_U(unsafe.Pointer(h))}
 }
 
@@ -1625,6 +1685,9 @@ func (this *QInputMethodQueryEvent) cPointer() *C.QInputMethodQueryEvent {
 }
 
 func newQInputMethodQueryEvent(h *C.QInputMethodQueryEvent) *QInputMethodQueryEvent {
+	if h == nil {
+		return nil
+	}
 	return &QInputMethodQueryEvent{h: h, QEvent: newQEvent_U(unsafe.Pointer(h))}
 }
 
@@ -1681,6 +1744,9 @@ func (this *QDropEvent) cPointer() *C.QDropEvent {
 }
 
 func newQDropEvent(h *C.QDropEvent) *QDropEvent {
+	if h == nil {
+		return nil
+	}
 	return &QDropEvent{h: h, QEvent: newQEvent_U(unsafe.Pointer(h))}
 }
 
@@ -1782,6 +1848,9 @@ func (this *QDragMoveEvent) cPointer() *C.QDragMoveEvent {
 }
 
 func newQDragMoveEvent(h *C.QDragMoveEvent) *QDragMoveEvent {
+	if h == nil {
+		return nil
+	}
 	return &QDragMoveEvent{h: h, QDropEvent: newQDropEvent_U(unsafe.Pointer(h))}
 }
 
@@ -1851,6 +1920,9 @@ func (this *QDragEnterEvent) cPointer() *C.QDragEnterEvent {
 }
 
 func newQDragEnterEvent(h *C.QDragEnterEvent) *QDragEnterEvent {
+	if h == nil {
+		return nil
+	}
 	return &QDragEnterEvent{h: h, QDragMoveEvent: newQDragMoveEvent_U(unsafe.Pointer(h))}
 }
 
@@ -1891,6 +1963,9 @@ func (this *QDragLeaveEvent) cPointer() *C.QDragLeaveEvent {
 }
 
 func newQDragLeaveEvent(h *C.QDragLeaveEvent) *QDragLeaveEvent {
+	if h == nil {
+		return nil
+	}
 	return &QDragLeaveEvent{h: h, QEvent: newQEvent_U(unsafe.Pointer(h))}
 }
 
@@ -1931,6 +2006,9 @@ func (this *QHelpEvent) cPointer() *C.QHelpEvent {
 }
 
 func newQHelpEvent(h *C.QHelpEvent) *QHelpEvent {
+	if h == nil {
+		return nil
+	}
 	return &QHelpEvent{h: h, QEvent: newQEvent_U(unsafe.Pointer(h))}
 }
 
@@ -1997,6 +2075,9 @@ func (this *QStatusTipEvent) cPointer() *C.QStatusTipEvent {
 }
 
 func newQStatusTipEvent(h *C.QStatusTipEvent) *QStatusTipEvent {
+	if h == nil {
+		return nil
+	}
 	return &QStatusTipEvent{h: h, QEvent: newQEvent_U(unsafe.Pointer(h))}
 }
 
@@ -2044,6 +2125,9 @@ func (this *QWhatsThisClickedEvent) cPointer() *C.QWhatsThisClickedEvent {
 }
 
 func newQWhatsThisClickedEvent(h *C.QWhatsThisClickedEvent) *QWhatsThisClickedEvent {
+	if h == nil {
+		return nil
+	}
 	return &QWhatsThisClickedEvent{h: h, QEvent: newQEvent_U(unsafe.Pointer(h))}
 }
 
@@ -2091,6 +2175,9 @@ func (this *QActionEvent) cPointer() *C.QActionEvent {
 }
 
 func newQActionEvent(h *C.QActionEvent) *QActionEvent {
+	if h == nil {
+		return nil
+	}
 	return &QActionEvent{h: h, QEvent: newQEvent_U(unsafe.Pointer(h))}
 }
 
@@ -2147,6 +2234,9 @@ func (this *QFileOpenEvent) cPointer() *C.QFileOpenEvent {
 }
 
 func newQFileOpenEvent(h *C.QFileOpenEvent) *QFileOpenEvent {
+	if h == nil {
+		return nil
+	}
 	return &QFileOpenEvent{h: h, QEvent: newQEvent_U(unsafe.Pointer(h))}
 }
 
@@ -2216,6 +2306,9 @@ func (this *QToolBarChangeEvent) cPointer() *C.QToolBarChangeEvent {
 }
 
 func newQToolBarChangeEvent(h *C.QToolBarChangeEvent) *QToolBarChangeEvent {
+	if h == nil {
+		return nil
+	}
 	return &QToolBarChangeEvent{h: h, QEvent: newQEvent_U(unsafe.Pointer(h))}
 }
 
@@ -2257,6 +2350,9 @@ func (this *QShortcutEvent) cPointer() *C.QShortcutEvent {
 }
 
 func newQShortcutEvent(h *C.QShortcutEvent) *QShortcutEvent {
+	if h == nil {
+		return nil
+	}
 	return &QShortcutEvent{h: h, QEvent: newQEvent_U(unsafe.Pointer(h))}
 }
 
@@ -2314,6 +2410,9 @@ func (this *QWindowStateChangeEvent) cPointer() *C.QWindowStateChangeEvent {
 }
 
 func newQWindowStateChangeEvent(h *C.QWindowStateChangeEvent) *QWindowStateChangeEvent {
+	if h == nil {
+		return nil
+	}
 	return &QWindowStateChangeEvent{h: h, QEvent: newQEvent_U(unsafe.Pointer(h))}
 }
 
@@ -2365,6 +2464,9 @@ func (this *QPointingDeviceUniqueId) cPointer() *C.QPointingDeviceUniqueId {
 }
 
 func newQPointingDeviceUniqueId(h *C.QPointingDeviceUniqueId) *QPointingDeviceUniqueId {
+	if h == nil {
+		return nil
+	}
 	return &QPointingDeviceUniqueId{h: h}
 }
 
@@ -2422,6 +2524,9 @@ func (this *QTouchEvent) cPointer() *C.QTouchEvent {
 }
 
 func newQTouchEvent(h *C.QTouchEvent) *QTouchEvent {
+	if h == nil {
+		return nil
+	}
 	return &QTouchEvent{h: h, QInputEvent: newQInputEvent_U(unsafe.Pointer(h))}
 }
 
@@ -2534,6 +2639,9 @@ func (this *QScrollPrepareEvent) cPointer() *C.QScrollPrepareEvent {
 }
 
 func newQScrollPrepareEvent(h *C.QScrollPrepareEvent) *QScrollPrepareEvent {
+	if h == nil {
+		return nil
+	}
 	return &QScrollPrepareEvent{h: h, QEvent: newQEvent_U(unsafe.Pointer(h))}
 }
 
@@ -2626,6 +2734,9 @@ func (this *QScrollEvent) cPointer() *C.QScrollEvent {
 }
 
 func newQScrollEvent(h *C.QScrollEvent) *QScrollEvent {
+	if h == nil {
+		return nil
+	}
 	return &QScrollEvent{h: h, QEvent: newQEvent_U(unsafe.Pointer(h))}
 }
 
@@ -2689,6 +2800,9 @@ func (this *QScreenOrientationChangeEvent) cPointer() *C.QScreenOrientationChang
 }
 
 func newQScreenOrientationChangeEvent(h *C.QScreenOrientationChangeEvent) *QScreenOrientationChangeEvent {
+	if h == nil {
+		return nil
+	}
 	return &QScreenOrientationChangeEvent{h: h, QEvent: newQEvent_U(unsafe.Pointer(h))}
 }
 
@@ -2735,6 +2849,9 @@ func (this *QApplicationStateChangeEvent) cPointer() *C.QApplicationStateChangeE
 }
 
 func newQApplicationStateChangeEvent(h *C.QApplicationStateChangeEvent) *QApplicationStateChangeEvent {
+	if h == nil {
+		return nil
+	}
 	return &QApplicationStateChangeEvent{h: h, QEvent: newQEvent_U(unsafe.Pointer(h))}
 }
 
@@ -2775,6 +2892,9 @@ func (this *QInputMethodEvent__Attribute) cPointer() *C.QInputMethodEvent__Attri
 }
 
 func newQInputMethodEvent__Attribute(h *C.QInputMethodEvent__Attribute) *QInputMethodEvent__Attribute {
+	if h == nil {
+		return nil
+	}
 	return &QInputMethodEvent__Attribute{h: h}
 }
 
@@ -2816,6 +2936,9 @@ func (this *QTouchEvent__TouchPoint) cPointer() *C.QTouchEvent__TouchPoint {
 }
 
 func newQTouchEvent__TouchPoint(h *C.QTouchEvent__TouchPoint) *QTouchEvent__TouchPoint {
+	if h == nil {
+		return nil
+	}
 	return &QTouchEvent__TouchPoint{h: h}
 }
 

@@ -27,6 +27,9 @@ func (this *QStaticPlugin) cPointer() *C.QStaticPlugin {
 }
 
 func newQStaticPlugin(h *C.QStaticPlugin) *QStaticPlugin {
+	if h == nil {
+		return nil
+	}
 	return &QStaticPlugin{h: h}
 }
 

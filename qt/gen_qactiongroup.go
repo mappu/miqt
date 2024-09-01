@@ -28,6 +28,9 @@ func (this *QActionGroup) cPointer() *C.QActionGroup {
 }
 
 func newQActionGroup(h *C.QActionGroup) *QActionGroup {
+	if h == nil {
+		return nil
+	}
 	return &QActionGroup{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
 }
 

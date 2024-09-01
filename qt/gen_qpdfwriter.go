@@ -29,6 +29,9 @@ func (this *QPdfWriter) cPointer() *C.QPdfWriter {
 }
 
 func newQPdfWriter(h *C.QPdfWriter) *QPdfWriter {
+	if h == nil {
+		return nil
+	}
 	return &QPdfWriter{h: h, QObject: newQObject_U(unsafe.Pointer(h)), QPagedPaintDevice: newQPagedPaintDevice_U(unsafe.Pointer(h))}
 }
 

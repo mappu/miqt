@@ -27,6 +27,9 @@ func (this *QDirIterator) cPointer() *C.QDirIterator {
 }
 
 func newQDirIterator(h *C.QDirIterator) *QDirIterator {
+	if h == nil {
+		return nil
+	}
 	return &QDirIterator{h: h}
 }
 

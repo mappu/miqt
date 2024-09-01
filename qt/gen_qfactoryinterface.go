@@ -26,6 +26,9 @@ func (this *QFactoryInterface) cPointer() *C.QFactoryInterface {
 }
 
 func newQFactoryInterface(h *C.QFactoryInterface) *QFactoryInterface {
+	if h == nil {
+		return nil
+	}
 	return &QFactoryInterface{h: h}
 }
 

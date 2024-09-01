@@ -29,6 +29,9 @@ func (this *QAbstractItemView) cPointer() *C.QAbstractItemView {
 }
 
 func newQAbstractItemView(h *C.QAbstractItemView) *QAbstractItemView {
+	if h == nil {
+		return nil
+	}
 	return &QAbstractItemView{h: h, QAbstractScrollArea: newQAbstractScrollArea_U(unsafe.Pointer(h))}
 }
 

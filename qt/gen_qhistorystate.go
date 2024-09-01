@@ -27,6 +27,9 @@ func (this *QHistoryState) cPointer() *C.QHistoryState {
 }
 
 func newQHistoryState(h *C.QHistoryState) *QHistoryState {
+	if h == nil {
+		return nil
+	}
 	return &QHistoryState{h: h, QAbstractState: newQAbstractState_U(unsafe.Pointer(h))}
 }
 

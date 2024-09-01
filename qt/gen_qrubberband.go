@@ -27,6 +27,9 @@ func (this *QRubberBand) cPointer() *C.QRubberBand {
 }
 
 func newQRubberBand(h *C.QRubberBand) *QRubberBand {
+	if h == nil {
+		return nil
+	}
 	return &QRubberBand{h: h, QWidget: newQWidget_U(unsafe.Pointer(h))}
 }
 

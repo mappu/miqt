@@ -27,6 +27,9 @@ func (this *QImageReader) cPointer() *C.QImageReader {
 }
 
 func newQImageReader(h *C.QImageReader) *QImageReader {
+	if h == nil {
+		return nil
+	}
 	return &QImageReader{h: h}
 }
 

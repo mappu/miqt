@@ -29,6 +29,9 @@ func (this *QVariantAnimation) cPointer() *C.QVariantAnimation {
 }
 
 func newQVariantAnimation(h *C.QVariantAnimation) *QVariantAnimation {
+	if h == nil {
+		return nil
+	}
 	return &QVariantAnimation{h: h, QAbstractAnimation: newQAbstractAnimation_U(unsafe.Pointer(h))}
 }
 

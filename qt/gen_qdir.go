@@ -27,6 +27,9 @@ func (this *QDir) cPointer() *C.QDir {
 }
 
 func newQDir(h *C.QDir) *QDir {
+	if h == nil {
+		return nil
+	}
 	return &QDir{h: h}
 }
 

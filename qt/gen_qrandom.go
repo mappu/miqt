@@ -27,6 +27,9 @@ func (this *QRandomGenerator) cPointer() *C.QRandomGenerator {
 }
 
 func newQRandomGenerator(h *C.QRandomGenerator) *QRandomGenerator {
+	if h == nil {
+		return nil
+	}
 	return &QRandomGenerator{h: h}
 }
 
@@ -177,6 +180,9 @@ func (this *QRandomGenerator64) cPointer() *C.QRandomGenerator64 {
 }
 
 func newQRandomGenerator64(h *C.QRandomGenerator64) *QRandomGenerator64 {
+	if h == nil {
+		return nil
+	}
 	return &QRandomGenerator64{h: h, QRandomGenerator: newQRandomGenerator_U(unsafe.Pointer(h))}
 }
 

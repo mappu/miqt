@@ -27,6 +27,9 @@ func (this *QGraphicsLayoutItem) cPointer() *C.QGraphicsLayoutItem {
 }
 
 func newQGraphicsLayoutItem(h *C.QGraphicsLayoutItem) *QGraphicsLayoutItem {
+	if h == nil {
+		return nil
+	}
 	return &QGraphicsLayoutItem{h: h}
 }
 

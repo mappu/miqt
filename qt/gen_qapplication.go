@@ -29,6 +29,9 @@ func (this *QApplication) cPointer() *C.QApplication {
 }
 
 func newQApplication(h *C.QApplication) *QApplication {
+	if h == nil {
+		return nil
+	}
 	return &QApplication{h: h, QGuiApplication: newQGuiApplication_U(unsafe.Pointer(h))}
 }
 

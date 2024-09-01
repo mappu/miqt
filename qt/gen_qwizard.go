@@ -29,6 +29,9 @@ func (this *QWizard) cPointer() *C.QWizard {
 }
 
 func newQWizard(h *C.QWizard) *QWizard {
+	if h == nil {
+		return nil
+	}
 	return &QWizard{h: h, QDialog: newQDialog_U(unsafe.Pointer(h))}
 }
 
@@ -464,6 +467,9 @@ func (this *QWizardPage) cPointer() *C.QWizardPage {
 }
 
 func newQWizardPage(h *C.QWizardPage) *QWizardPage {
+	if h == nil {
+		return nil
+	}
 	return &QWizardPage{h: h, QWidget: newQWidget_U(unsafe.Pointer(h))}
 }
 

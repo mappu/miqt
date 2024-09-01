@@ -26,6 +26,9 @@ func (this *QElapsedTimer) cPointer() *C.QElapsedTimer {
 }
 
 func newQElapsedTimer(h *C.QElapsedTimer) *QElapsedTimer {
+	if h == nil {
+		return nil
+	}
 	return &QElapsedTimer{h: h}
 }
 

@@ -27,6 +27,9 @@ func (this *QIcon) cPointer() *C.QIcon {
 }
 
 func newQIcon(h *C.QIcon) *QIcon {
+	if h == nil {
+		return nil
+	}
 	return &QIcon{h: h}
 }
 

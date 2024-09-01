@@ -27,6 +27,9 @@ func (this *QCborStreamReader) cPointer() *C.QCborStreamReader {
 }
 
 func newQCborStreamReader(h *C.QCborStreamReader) *QCborStreamReader {
+	if h == nil {
+		return nil
+	}
 	return &QCborStreamReader{h: h}
 }
 

@@ -28,6 +28,9 @@ func (this *QSizeGrip) cPointer() *C.QSizeGrip {
 }
 
 func newQSizeGrip(h *C.QSizeGrip) *QSizeGrip {
+	if h == nil {
+		return nil
+	}
 	return &QSizeGrip{h: h, QWidget: newQWidget_U(unsafe.Pointer(h))}
 }
 

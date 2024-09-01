@@ -29,6 +29,9 @@ func (this *QMdiSubWindow) cPointer() *C.QMdiSubWindow {
 }
 
 func newQMdiSubWindow(h *C.QMdiSubWindow) *QMdiSubWindow {
+	if h == nil {
+		return nil
+	}
 	return &QMdiSubWindow{h: h, QWidget: newQWidget_U(unsafe.Pointer(h))}
 }
 

@@ -28,6 +28,9 @@ func (this *QStackedWidget) cPointer() *C.QStackedWidget {
 }
 
 func newQStackedWidget(h *C.QStackedWidget) *QStackedWidget {
+	if h == nil {
+		return nil
+	}
 	return &QStackedWidget{h: h, QFrame: newQFrame_U(unsafe.Pointer(h))}
 }
 

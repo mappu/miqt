@@ -27,6 +27,9 @@ func (this *QSharedMemory) cPointer() *C.QSharedMemory {
 }
 
 func newQSharedMemory(h *C.QSharedMemory) *QSharedMemory {
+	if h == nil {
+		return nil
+	}
 	return &QSharedMemory{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
 }
 

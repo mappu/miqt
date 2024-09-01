@@ -27,6 +27,9 @@ func (this *QTextItem) cPointer() *C.QTextItem {
 }
 
 func newQTextItem(h *C.QTextItem) *QTextItem {
+	if h == nil {
+		return nil
+	}
 	return &QTextItem{h: h}
 }
 
@@ -90,6 +93,9 @@ func (this *QPaintEngine) cPointer() *C.QPaintEngine {
 }
 
 func newQPaintEngine(h *C.QPaintEngine) *QPaintEngine {
+	if h == nil {
+		return nil
+	}
 	return &QPaintEngine{h: h}
 }
 
@@ -291,6 +297,9 @@ func (this *QPaintEngineState) cPointer() *C.QPaintEngineState {
 }
 
 func newQPaintEngineState(h *C.QPaintEngineState) *QPaintEngineState {
+	if h == nil {
+		return nil
+	}
 	return &QPaintEngineState{h: h}
 }
 

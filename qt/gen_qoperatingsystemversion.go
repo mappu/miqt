@@ -27,6 +27,9 @@ func (this *QOperatingSystemVersion) cPointer() *C.QOperatingSystemVersion {
 }
 
 func newQOperatingSystemVersion(h *C.QOperatingSystemVersion) *QOperatingSystemVersion {
+	if h == nil {
+		return nil
+	}
 	return &QOperatingSystemVersion{h: h}
 }
 

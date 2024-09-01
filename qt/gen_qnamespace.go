@@ -26,6 +26,9 @@ func (this *QInternal) cPointer() *C.QInternal {
 }
 
 func newQInternal(h *C.QInternal) *QInternal {
+	if h == nil {
+		return nil
+	}
 	return &QInternal{h: h}
 }
 

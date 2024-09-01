@@ -26,6 +26,9 @@ func (this *QSemaphore) cPointer() *C.QSemaphore {
 }
 
 func newQSemaphore(h *C.QSemaphore) *QSemaphore {
+	if h == nil {
+		return nil
+	}
 	return &QSemaphore{h: h}
 }
 
@@ -97,6 +100,9 @@ func (this *QSemaphoreReleaser) cPointer() *C.QSemaphoreReleaser {
 }
 
 func newQSemaphoreReleaser(h *C.QSemaphoreReleaser) *QSemaphoreReleaser {
+	if h == nil {
+		return nil
+	}
 	return &QSemaphoreReleaser{h: h}
 }
 

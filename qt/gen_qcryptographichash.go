@@ -27,6 +27,9 @@ func (this *QCryptographicHash) cPointer() *C.QCryptographicHash {
 }
 
 func newQCryptographicHash(h *C.QCryptographicHash) *QCryptographicHash {
+	if h == nil {
+		return nil
+	}
 	return &QCryptographicHash{h: h}
 }
 

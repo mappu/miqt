@@ -26,6 +26,9 @@ func (this *QAbstractConcatenable) cPointer() *C.QAbstractConcatenable {
 }
 
 func newQAbstractConcatenable(h *C.QAbstractConcatenable) *QAbstractConcatenable {
+	if h == nil {
+		return nil
+	}
 	return &QAbstractConcatenable{h: h}
 }
 

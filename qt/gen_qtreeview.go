@@ -29,6 +29,9 @@ func (this *QTreeView) cPointer() *C.QTreeView {
 }
 
 func newQTreeView(h *C.QTreeView) *QTreeView {
+	if h == nil {
+		return nil
+	}
 	return &QTreeView{h: h, QAbstractItemView: newQAbstractItemView_U(unsafe.Pointer(h))}
 }
 

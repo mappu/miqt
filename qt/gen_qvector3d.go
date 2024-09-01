@@ -27,6 +27,9 @@ func (this *QVector3D) cPointer() *C.QVector3D {
 }
 
 func newQVector3D(h *C.QVector3D) *QVector3D {
+	if h == nil {
+		return nil
+	}
 	return &QVector3D{h: h}
 }
 

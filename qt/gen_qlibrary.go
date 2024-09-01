@@ -27,6 +27,9 @@ func (this *QLibrary) cPointer() *C.QLibrary {
 }
 
 func newQLibrary(h *C.QLibrary) *QLibrary {
+	if h == nil {
+		return nil
+	}
 	return &QLibrary{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
 }
 

@@ -26,6 +26,9 @@ func (this *QGestureRecognizer) cPointer() *C.QGestureRecognizer {
 }
 
 func newQGestureRecognizer(h *C.QGestureRecognizer) *QGestureRecognizer {
+	if h == nil {
+		return nil
+	}
 	return &QGestureRecognizer{h: h}
 }
 

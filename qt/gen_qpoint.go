@@ -27,6 +27,9 @@ func (this *QPoint) cPointer() *C.QPoint {
 }
 
 func newQPoint(h *C.QPoint) *QPoint {
+	if h == nil {
+		return nil
+	}
 	return &QPoint{h: h}
 }
 
@@ -142,6 +145,9 @@ func (this *QPointF) cPointer() *C.QPointF {
 }
 
 func newQPointF(h *C.QPointF) *QPointF {
+	if h == nil {
+		return nil
+	}
 	return &QPointF{h: h}
 }
 

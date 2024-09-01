@@ -27,6 +27,9 @@ func (this *QtPrivate__ExceptionHolder) cPointer() *C.QtPrivate__ExceptionHolder
 }
 
 func newQtPrivate__ExceptionHolder(h *C.QtPrivate__ExceptionHolder) *QtPrivate__ExceptionHolder {
+	if h == nil {
+		return nil
+	}
 	return &QtPrivate__ExceptionHolder{h: h}
 }
 
@@ -66,6 +69,9 @@ func (this *QtPrivate__ExceptionStore) cPointer() *C.QtPrivate__ExceptionStore {
 }
 
 func newQtPrivate__ExceptionStore(h *C.QtPrivate__ExceptionStore) *QtPrivate__ExceptionStore {
+	if h == nil {
+		return nil
+	}
 	return &QtPrivate__ExceptionStore{h: h}
 }
 

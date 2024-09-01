@@ -29,6 +29,9 @@ func (this *QFileDialog) cPointer() *C.QFileDialog {
 }
 
 func newQFileDialog(h *C.QFileDialog) *QFileDialog {
+	if h == nil {
+		return nil
+	}
 	return &QFileDialog{h: h, QDialog: newQDialog_U(unsafe.Pointer(h))}
 }
 

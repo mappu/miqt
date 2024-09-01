@@ -28,6 +28,9 @@ func (this *QTextObject) cPointer() *C.QTextObject {
 }
 
 func newQTextObject(h *C.QTextObject) *QTextObject {
+	if h == nil {
+		return nil
+	}
 	return &QTextObject{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
 }
 
@@ -153,6 +156,9 @@ func (this *QTextBlockGroup) cPointer() *C.QTextBlockGroup {
 }
 
 func newQTextBlockGroup(h *C.QTextBlockGroup) *QTextBlockGroup {
+	if h == nil {
+		return nil
+	}
 	return &QTextBlockGroup{h: h, QTextObject: newQTextObject_U(unsafe.Pointer(h))}
 }
 
@@ -251,6 +257,9 @@ func (this *QTextFrameLayoutData) cPointer() *C.QTextFrameLayoutData {
 }
 
 func newQTextFrameLayoutData(h *C.QTextFrameLayoutData) *QTextFrameLayoutData {
+	if h == nil {
+		return nil
+	}
 	return &QTextFrameLayoutData{h: h}
 }
 
@@ -279,6 +288,9 @@ func (this *QTextFrame) cPointer() *C.QTextFrame {
 }
 
 func newQTextFrame(h *C.QTextFrame) *QTextFrame {
+	if h == nil {
+		return nil
+	}
 	return &QTextFrame{h: h, QTextObject: newQTextObject_U(unsafe.Pointer(h))}
 }
 
@@ -483,6 +495,9 @@ func (this *QTextBlockUserData) cPointer() *C.QTextBlockUserData {
 }
 
 func newQTextBlockUserData(h *C.QTextBlockUserData) *QTextBlockUserData {
+	if h == nil {
+		return nil
+	}
 	return &QTextBlockUserData{h: h}
 }
 
@@ -510,6 +525,9 @@ func (this *QTextBlock) cPointer() *C.QTextBlock {
 }
 
 func newQTextBlock(h *C.QTextBlock) *QTextBlock {
+	if h == nil {
+		return nil
+	}
 	return &QTextBlock{h: h}
 }
 
@@ -766,6 +784,9 @@ func (this *QTextFragment) cPointer() *C.QTextFragment {
 }
 
 func newQTextFragment(h *C.QTextFragment) *QTextFragment {
+	if h == nil {
+		return nil
+	}
 	return &QTextFragment{h: h}
 }
 
@@ -904,6 +925,9 @@ func (this *QTextFrame__iterator) cPointer() *C.QTextFrame__iterator {
 }
 
 func newQTextFrame__iterator(h *C.QTextFrame__iterator) *QTextFrame__iterator {
+	if h == nil {
+		return nil
+	}
 	return &QTextFrame__iterator{h: h}
 }
 
@@ -997,6 +1021,9 @@ func (this *QTextBlock__iterator) cPointer() *C.QTextBlock__iterator {
 }
 
 func newQTextBlock__iterator(h *C.QTextBlock__iterator) *QTextBlock__iterator {
+	if h == nil {
+		return nil
+	}
 	return &QTextBlock__iterator{h: h}
 }
 

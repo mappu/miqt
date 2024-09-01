@@ -26,6 +26,9 @@ func (this *QXmlStreamStringRef) cPointer() *C.QXmlStreamStringRef {
 }
 
 func newQXmlStreamStringRef(h *C.QXmlStreamStringRef) *QXmlStreamStringRef {
+	if h == nil {
+		return nil
+	}
 	return &QXmlStreamStringRef{h: h}
 }
 
@@ -100,6 +103,9 @@ func (this *QXmlStreamAttribute) cPointer() *C.QXmlStreamAttribute {
 }
 
 func newQXmlStreamAttribute(h *C.QXmlStreamAttribute) *QXmlStreamAttribute {
+	if h == nil {
+		return nil
+	}
 	return &QXmlStreamAttribute{h: h}
 }
 
@@ -176,6 +182,9 @@ func (this *QXmlStreamNamespaceDeclaration) cPointer() *C.QXmlStreamNamespaceDec
 }
 
 func newQXmlStreamNamespaceDeclaration(h *C.QXmlStreamNamespaceDeclaration) *QXmlStreamNamespaceDeclaration {
+	if h == nil {
+		return nil
+	}
 	return &QXmlStreamNamespaceDeclaration{h: h}
 }
 
@@ -235,6 +244,9 @@ func (this *QXmlStreamNotationDeclaration) cPointer() *C.QXmlStreamNotationDecla
 }
 
 func newQXmlStreamNotationDeclaration(h *C.QXmlStreamNotationDeclaration) *QXmlStreamNotationDeclaration {
+	if h == nil {
+		return nil
+	}
 	return &QXmlStreamNotationDeclaration{h: h}
 }
 
@@ -284,6 +296,9 @@ func (this *QXmlStreamEntityDeclaration) cPointer() *C.QXmlStreamEntityDeclarati
 }
 
 func newQXmlStreamEntityDeclaration(h *C.QXmlStreamEntityDeclaration) *QXmlStreamEntityDeclaration {
+	if h == nil {
+		return nil
+	}
 	return &QXmlStreamEntityDeclaration{h: h}
 }
 
@@ -333,6 +348,9 @@ func (this *QXmlStreamEntityResolver) cPointer() *C.QXmlStreamEntityResolver {
 }
 
 func newQXmlStreamEntityResolver(h *C.QXmlStreamEntityResolver) *QXmlStreamEntityResolver {
+	if h == nil {
+		return nil
+	}
 	return &QXmlStreamEntityResolver{h: h}
 }
 
@@ -384,6 +402,9 @@ func (this *QXmlStreamReader) cPointer() *C.QXmlStreamReader {
 }
 
 func newQXmlStreamReader(h *C.QXmlStreamReader) *QXmlStreamReader {
+	if h == nil {
+		return nil
+	}
 	return &QXmlStreamReader{h: h}
 }
 
@@ -705,6 +726,9 @@ func (this *QXmlStreamWriter) cPointer() *C.QXmlStreamWriter {
 }
 
 func newQXmlStreamWriter(h *C.QXmlStreamWriter) *QXmlStreamWriter {
+	if h == nil {
+		return nil
+	}
 	return &QXmlStreamWriter{h: h}
 }
 

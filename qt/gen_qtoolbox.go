@@ -29,6 +29,9 @@ func (this *QToolBox) cPointer() *C.QToolBox {
 }
 
 func newQToolBox(h *C.QToolBox) *QToolBox {
+	if h == nil {
+		return nil
+	}
 	return &QToolBox{h: h, QFrame: newQFrame_U(unsafe.Pointer(h))}
 }
 

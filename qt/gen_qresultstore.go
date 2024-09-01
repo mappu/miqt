@@ -27,6 +27,9 @@ func (this *QtPrivate__ResultItem) cPointer() *C.QtPrivate__ResultItem {
 }
 
 func newQtPrivate__ResultItem(h *C.QtPrivate__ResultItem) *QtPrivate__ResultItem {
+	if h == nil {
+		return nil
+	}
 	return &QtPrivate__ResultItem{h: h}
 }
 
@@ -71,6 +74,9 @@ func (this *QtPrivate__ResultIteratorBase) cPointer() *C.QtPrivate__ResultIterat
 }
 
 func newQtPrivate__ResultIteratorBase(h *C.QtPrivate__ResultIteratorBase) *QtPrivate__ResultIteratorBase {
+	if h == nil {
+		return nil
+	}
 	return &QtPrivate__ResultIteratorBase{h: h}
 }
 
@@ -150,6 +156,9 @@ func (this *QtPrivate__ResultStoreBase) cPointer() *C.QtPrivate__ResultStoreBase
 }
 
 func newQtPrivate__ResultStoreBase(h *C.QtPrivate__ResultStoreBase) *QtPrivate__ResultStoreBase {
+	if h == nil {
+		return nil
+	}
 	return &QtPrivate__ResultStoreBase{h: h}
 }
 

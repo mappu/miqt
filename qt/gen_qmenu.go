@@ -29,6 +29,9 @@ func (this *QMenu) cPointer() *C.QMenu {
 }
 
 func newQMenu(h *C.QMenu) *QMenu {
+	if h == nil {
+		return nil
+	}
 	return &QMenu{h: h, QWidget: newQWidget_U(unsafe.Pointer(h))}
 }
 

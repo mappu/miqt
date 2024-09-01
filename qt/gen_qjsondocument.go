@@ -27,6 +27,9 @@ func (this *QJsonParseError) cPointer() *C.QJsonParseError {
 }
 
 func newQJsonParseError(h *C.QJsonParseError) *QJsonParseError {
+	if h == nil {
+		return nil
+	}
 	return &QJsonParseError{h: h}
 }
 
@@ -59,6 +62,9 @@ func (this *QJsonDocument) cPointer() *C.QJsonDocument {
 }
 
 func newQJsonDocument(h *C.QJsonDocument) *QJsonDocument {
+	if h == nil {
+		return nil
+	}
 	return &QJsonDocument{h: h}
 }
 

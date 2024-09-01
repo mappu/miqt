@@ -28,6 +28,9 @@ func (this *QGraphicsItem) cPointer() *C.QGraphicsItem {
 }
 
 func newQGraphicsItem(h *C.QGraphicsItem) *QGraphicsItem {
+	if h == nil {
+		return nil
+	}
 	return &QGraphicsItem{h: h}
 }
 
@@ -1235,6 +1238,9 @@ func (this *QGraphicsObject) cPointer() *C.QGraphicsObject {
 }
 
 func newQGraphicsObject(h *C.QGraphicsObject) *QGraphicsObject {
+	if h == nil {
+		return nil
+	}
 	return &QGraphicsObject{h: h, QObject: newQObject_U(unsafe.Pointer(h)), QGraphicsItem: newQGraphicsItem_U(unsafe.Pointer(h))}
 }
 
@@ -1494,6 +1500,9 @@ func (this *QAbstractGraphicsShapeItem) cPointer() *C.QAbstractGraphicsShapeItem
 }
 
 func newQAbstractGraphicsShapeItem(h *C.QAbstractGraphicsShapeItem) *QAbstractGraphicsShapeItem {
+	if h == nil {
+		return nil
+	}
 	return &QAbstractGraphicsShapeItem{h: h, QGraphicsItem: newQGraphicsItem_U(unsafe.Pointer(h))}
 }
 
@@ -1564,6 +1573,9 @@ func (this *QGraphicsPathItem) cPointer() *C.QGraphicsPathItem {
 }
 
 func newQGraphicsPathItem(h *C.QGraphicsPathItem) *QGraphicsPathItem {
+	if h == nil {
+		return nil
+	}
 	return &QGraphicsPathItem{h: h, QAbstractGraphicsShapeItem: newQAbstractGraphicsShapeItem_U(unsafe.Pointer(h))}
 }
 
@@ -1683,6 +1695,9 @@ func (this *QGraphicsRectItem) cPointer() *C.QGraphicsRectItem {
 }
 
 func newQGraphicsRectItem(h *C.QGraphicsRectItem) *QGraphicsRectItem {
+	if h == nil {
+		return nil
+	}
 	return &QGraphicsRectItem{h: h, QAbstractGraphicsShapeItem: newQAbstractGraphicsShapeItem_U(unsafe.Pointer(h))}
 }
 
@@ -1818,6 +1833,9 @@ func (this *QGraphicsEllipseItem) cPointer() *C.QGraphicsEllipseItem {
 }
 
 func newQGraphicsEllipseItem(h *C.QGraphicsEllipseItem) *QGraphicsEllipseItem {
+	if h == nil {
+		return nil
+	}
 	return &QGraphicsEllipseItem{h: h, QAbstractGraphicsShapeItem: newQAbstractGraphicsShapeItem_U(unsafe.Pointer(h))}
 }
 
@@ -1971,6 +1989,9 @@ func (this *QGraphicsPolygonItem) cPointer() *C.QGraphicsPolygonItem {
 }
 
 func newQGraphicsPolygonItem(h *C.QGraphicsPolygonItem) *QGraphicsPolygonItem {
+	if h == nil {
+		return nil
+	}
 	return &QGraphicsPolygonItem{h: h, QAbstractGraphicsShapeItem: newQAbstractGraphicsShapeItem_U(unsafe.Pointer(h))}
 }
 
@@ -2072,6 +2093,9 @@ func (this *QGraphicsLineItem) cPointer() *C.QGraphicsLineItem {
 }
 
 func newQGraphicsLineItem(h *C.QGraphicsLineItem) *QGraphicsLineItem {
+	if h == nil {
+		return nil
+	}
 	return &QGraphicsLineItem{h: h, QGraphicsItem: newQGraphicsItem_U(unsafe.Pointer(h))}
 }
 
@@ -2222,6 +2246,9 @@ func (this *QGraphicsPixmapItem) cPointer() *C.QGraphicsPixmapItem {
 }
 
 func newQGraphicsPixmapItem(h *C.QGraphicsPixmapItem) *QGraphicsPixmapItem {
+	if h == nil {
+		return nil
+	}
 	return &QGraphicsPixmapItem{h: h, QGraphicsItem: newQGraphicsItem_U(unsafe.Pointer(h))}
 }
 
@@ -2374,6 +2401,9 @@ func (this *QGraphicsTextItem) cPointer() *C.QGraphicsTextItem {
 }
 
 func newQGraphicsTextItem(h *C.QGraphicsTextItem) *QGraphicsTextItem {
+	if h == nil {
+		return nil
+	}
 	return &QGraphicsTextItem{h: h, QGraphicsObject: newQGraphicsObject_U(unsafe.Pointer(h))}
 }
 
@@ -2709,6 +2739,9 @@ func (this *QGraphicsSimpleTextItem) cPointer() *C.QGraphicsSimpleTextItem {
 }
 
 func newQGraphicsSimpleTextItem(h *C.QGraphicsSimpleTextItem) *QGraphicsSimpleTextItem {
+	if h == nil {
+		return nil
+	}
 	return &QGraphicsSimpleTextItem{h: h, QAbstractGraphicsShapeItem: newQAbstractGraphicsShapeItem_U(unsafe.Pointer(h))}
 }
 
@@ -2843,6 +2876,9 @@ func (this *QGraphicsItemGroup) cPointer() *C.QGraphicsItemGroup {
 }
 
 func newQGraphicsItemGroup(h *C.QGraphicsItemGroup) *QGraphicsItemGroup {
+	if h == nil {
+		return nil
+	}
 	return &QGraphicsItemGroup{h: h, QGraphicsItem: newQGraphicsItem_U(unsafe.Pointer(h))}
 }
 

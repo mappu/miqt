@@ -26,6 +26,9 @@ func (this *QBasicTimer) cPointer() *C.QBasicTimer {
 }
 
 func newQBasicTimer(h *C.QBasicTimer) *QBasicTimer {
+	if h == nil {
+		return nil
+	}
 	return &QBasicTimer{h: h}
 }
 

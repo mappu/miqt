@@ -29,6 +29,9 @@ func (this *QToolButton) cPointer() *C.QToolButton {
 }
 
 func newQToolButton(h *C.QToolButton) *QToolButton {
+	if h == nil {
+		return nil
+	}
 	return &QToolButton{h: h, QAbstractButton: newQAbstractButton_U(unsafe.Pointer(h))}
 }
 

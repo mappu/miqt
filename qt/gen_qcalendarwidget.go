@@ -29,6 +29,9 @@ func (this *QCalendarWidget) cPointer() *C.QCalendarWidget {
 }
 
 func newQCalendarWidget(h *C.QCalendarWidget) *QCalendarWidget {
+	if h == nil {
+		return nil
+	}
 	return &QCalendarWidget{h: h, QWidget: newQWidget_U(unsafe.Pointer(h))}
 }
 

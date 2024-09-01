@@ -29,6 +29,9 @@ func (this *QIODevice) cPointer() *C.QIODevice {
 }
 
 func newQIODevice(h *C.QIODevice) *QIODevice {
+	if h == nil {
+		return nil
+	}
 	return &QIODevice{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
 }
 

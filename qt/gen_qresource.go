@@ -27,6 +27,9 @@ func (this *QResource) cPointer() *C.QResource {
 }
 
 func newQResource(h *C.QResource) *QResource {
+	if h == nil {
+		return nil
+	}
 	return &QResource{h: h}
 }
 

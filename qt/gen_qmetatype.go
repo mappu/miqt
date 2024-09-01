@@ -27,6 +27,9 @@ func (this *QtPrivate__AbstractDebugStreamFunction) cPointer() *C.QtPrivate__Abs
 }
 
 func newQtPrivate__AbstractDebugStreamFunction(h *C.QtPrivate__AbstractDebugStreamFunction) *QtPrivate__AbstractDebugStreamFunction {
+	if h == nil {
+		return nil
+	}
 	return &QtPrivate__AbstractDebugStreamFunction{h: h}
 }
 
@@ -56,6 +59,9 @@ func (this *QtPrivate__AbstractComparatorFunction) cPointer() *C.QtPrivate__Abst
 }
 
 func newQtPrivate__AbstractComparatorFunction(h *C.QtPrivate__AbstractComparatorFunction) *QtPrivate__AbstractComparatorFunction {
+	if h == nil {
+		return nil
+	}
 	return &QtPrivate__AbstractComparatorFunction{h: h}
 }
 
@@ -85,6 +91,9 @@ func (this *QtPrivate__AbstractConverterFunction) cPointer() *C.QtPrivate__Abstr
 }
 
 func newQtPrivate__AbstractConverterFunction(h *C.QtPrivate__AbstractConverterFunction) *QtPrivate__AbstractConverterFunction {
+	if h == nil {
+		return nil
+	}
 	return &QtPrivate__AbstractConverterFunction{h: h}
 }
 
@@ -114,6 +123,9 @@ func (this *QMetaType) cPointer() *C.QMetaType {
 }
 
 func newQMetaType(h *C.QMetaType) *QMetaType {
+	if h == nil {
+		return nil
+	}
 	return &QMetaType{h: h}
 }
 
@@ -259,6 +271,9 @@ func (this *QtMetaTypePrivate__VariantData) cPointer() *C.QtMetaTypePrivate__Var
 }
 
 func newQtMetaTypePrivate__VariantData(h *C.QtMetaTypePrivate__VariantData) *QtMetaTypePrivate__VariantData {
+	if h == nil {
+		return nil
+	}
 	return &QtMetaTypePrivate__VariantData{h: h}
 }
 
@@ -288,6 +303,9 @@ func (this *QtMetaTypePrivate__VectorBoolElements) cPointer() *C.QtMetaTypePriva
 }
 
 func newQtMetaTypePrivate__VectorBoolElements(h *C.QtMetaTypePrivate__VectorBoolElements) *QtMetaTypePrivate__VectorBoolElements {
+	if h == nil {
+		return nil
+	}
 	return &QtMetaTypePrivate__VectorBoolElements{h: h}
 }
 
@@ -311,6 +329,9 @@ func (this *QtMetaTypePrivate__QSequentialIterableImpl) cPointer() *C.QtMetaType
 }
 
 func newQtMetaTypePrivate__QSequentialIterableImpl(h *C.QtMetaTypePrivate__QSequentialIterableImpl) *QtMetaTypePrivate__QSequentialIterableImpl {
+	if h == nil {
+		return nil
+	}
 	return &QtMetaTypePrivate__QSequentialIterableImpl{h: h}
 }
 
@@ -409,6 +430,9 @@ func (this *QtMetaTypePrivate__QAssociativeIterableImpl) cPointer() *C.QtMetaTyp
 }
 
 func newQtMetaTypePrivate__QAssociativeIterableImpl(h *C.QtMetaTypePrivate__QAssociativeIterableImpl) *QtMetaTypePrivate__QAssociativeIterableImpl {
+	if h == nil {
+		return nil
+	}
 	return &QtMetaTypePrivate__QAssociativeIterableImpl{h: h}
 }
 
@@ -496,6 +520,9 @@ func (this *QtMetaTypePrivate__QPairVariantInterfaceImpl) cPointer() *C.QtMetaTy
 }
 
 func newQtMetaTypePrivate__QPairVariantInterfaceImpl(h *C.QtMetaTypePrivate__QPairVariantInterfaceImpl) *QtMetaTypePrivate__QPairVariantInterfaceImpl {
+	if h == nil {
+		return nil
+	}
 	return &QtMetaTypePrivate__QPairVariantInterfaceImpl{h: h}
 }
 

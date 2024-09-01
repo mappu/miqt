@@ -27,6 +27,9 @@ func (this *QWidgetAction) cPointer() *C.QWidgetAction {
 }
 
 func newQWidgetAction(h *C.QWidgetAction) *QWidgetAction {
+	if h == nil {
+		return nil
+	}
 	return &QWidgetAction{h: h, QAction: newQAction_U(unsafe.Pointer(h))}
 }
 

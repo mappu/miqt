@@ -29,6 +29,9 @@ func (this *QGraphicsTransform) cPointer() *C.QGraphicsTransform {
 }
 
 func newQGraphicsTransform(h *C.QGraphicsTransform) *QGraphicsTransform {
+	if h == nil {
+		return nil
+	}
 	return &QGraphicsTransform{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
 }
 
@@ -136,6 +139,9 @@ func (this *QGraphicsScale) cPointer() *C.QGraphicsScale {
 }
 
 func newQGraphicsScale(h *C.QGraphicsScale) *QGraphicsScale {
+	if h == nil {
+		return nil
+	}
 	return &QGraphicsScale{h: h, QGraphicsTransform: newQGraphicsTransform_U(unsafe.Pointer(h))}
 }
 
@@ -357,6 +363,9 @@ func (this *QGraphicsRotation) cPointer() *C.QGraphicsRotation {
 }
 
 func newQGraphicsRotation(h *C.QGraphicsRotation) *QGraphicsRotation {
+	if h == nil {
+		return nil
+	}
 	return &QGraphicsRotation{h: h, QGraphicsTransform: newQGraphicsTransform_U(unsafe.Pointer(h))}
 }
 

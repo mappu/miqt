@@ -29,6 +29,9 @@ func (this *QClipboard) cPointer() *C.QClipboard {
 }
 
 func newQClipboard(h *C.QClipboard) *QClipboard {
+	if h == nil {
+		return nil
+	}
 	return &QClipboard{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
 }
 

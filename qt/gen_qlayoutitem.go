@@ -27,6 +27,9 @@ func (this *QLayoutItem) cPointer() *C.QLayoutItem {
 }
 
 func newQLayoutItem(h *C.QLayoutItem) *QLayoutItem {
+	if h == nil {
+		return nil
+	}
 	return &QLayoutItem{h: h}
 }
 
@@ -157,6 +160,9 @@ func (this *QSpacerItem) cPointer() *C.QSpacerItem {
 }
 
 func newQSpacerItem(h *C.QSpacerItem) *QSpacerItem {
+	if h == nil {
+		return nil
+	}
 	return &QSpacerItem{h: h, QLayoutItem: newQLayoutItem_U(unsafe.Pointer(h))}
 }
 
@@ -291,6 +297,9 @@ func (this *QWidgetItem) cPointer() *C.QWidgetItem {
 }
 
 func newQWidgetItem(h *C.QWidgetItem) *QWidgetItem {
+	if h == nil {
+		return nil
+	}
 	return &QWidgetItem{h: h, QLayoutItem: newQLayoutItem_U(unsafe.Pointer(h))}
 }
 
@@ -399,6 +408,9 @@ func (this *QWidgetItemV2) cPointer() *C.QWidgetItemV2 {
 }
 
 func newQWidgetItemV2(h *C.QWidgetItemV2) *QWidgetItemV2 {
+	if h == nil {
+		return nil
+	}
 	return &QWidgetItemV2{h: h, QWidgetItem: newQWidgetItem_U(unsafe.Pointer(h))}
 }
 

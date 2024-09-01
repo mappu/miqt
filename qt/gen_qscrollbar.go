@@ -28,6 +28,9 @@ func (this *QScrollBar) cPointer() *C.QScrollBar {
 }
 
 func newQScrollBar(h *C.QScrollBar) *QScrollBar {
+	if h == nil {
+		return nil
+	}
 	return &QScrollBar{h: h, QAbstractSlider: newQAbstractSlider_U(unsafe.Pointer(h))}
 }
 

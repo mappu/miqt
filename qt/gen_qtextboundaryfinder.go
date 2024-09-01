@@ -26,6 +26,9 @@ func (this *QTextBoundaryFinder) cPointer() *C.QTextBoundaryFinder {
 }
 
 func newQTextBoundaryFinder(h *C.QTextBoundaryFinder) *QTextBoundaryFinder {
+	if h == nil {
+		return nil
+	}
 	return &QTextBoundaryFinder{h: h}
 }
 

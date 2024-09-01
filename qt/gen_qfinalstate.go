@@ -27,6 +27,9 @@ func (this *QFinalState) cPointer() *C.QFinalState {
 }
 
 func newQFinalState(h *C.QFinalState) *QFinalState {
+	if h == nil {
+		return nil
+	}
 	return &QFinalState{h: h, QAbstractState: newQAbstractState_U(unsafe.Pointer(h))}
 }
 

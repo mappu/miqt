@@ -27,6 +27,9 @@ func (this *QTextDocumentFragment) cPointer() *C.QTextDocumentFragment {
 }
 
 func newQTextDocumentFragment(h *C.QTextDocumentFragment) *QTextDocumentFragment {
+	if h == nil {
+		return nil
+	}
 	return &QTextDocumentFragment{h: h}
 }
 

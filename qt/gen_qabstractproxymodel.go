@@ -28,6 +28,9 @@ func (this *QAbstractProxyModel) cPointer() *C.QAbstractProxyModel {
 }
 
 func newQAbstractProxyModel(h *C.QAbstractProxyModel) *QAbstractProxyModel {
+	if h == nil {
+		return nil
+	}
 	return &QAbstractProxyModel{h: h, QAbstractItemModel: newQAbstractItemModel_U(unsafe.Pointer(h))}
 }
 

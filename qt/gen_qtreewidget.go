@@ -28,6 +28,9 @@ func (this *QTreeWidgetItem) cPointer() *C.QTreeWidgetItem {
 }
 
 func newQTreeWidgetItem(h *C.QTreeWidgetItem) *QTreeWidgetItem {
+	if h == nil {
+		return nil
+	}
 	return &QTreeWidgetItem{h: h}
 }
 
@@ -592,6 +595,9 @@ func (this *QTreeWidget) cPointer() *C.QTreeWidget {
 }
 
 func newQTreeWidget(h *C.QTreeWidget) *QTreeWidget {
+	if h == nil {
+		return nil
+	}
 	return &QTreeWidget{h: h, QTreeView: newQTreeView_U(unsafe.Pointer(h))}
 }
 

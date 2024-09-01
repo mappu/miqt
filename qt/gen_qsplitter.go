@@ -29,6 +29,9 @@ func (this *QSplitter) cPointer() *C.QSplitter {
 }
 
 func newQSplitter(h *C.QSplitter) *QSplitter {
+	if h == nil {
+		return nil
+	}
 	return &QSplitter{h: h, QFrame: newQFrame_U(unsafe.Pointer(h))}
 }
 
@@ -323,6 +326,9 @@ func (this *QSplitterHandle) cPointer() *C.QSplitterHandle {
 }
 
 func newQSplitterHandle(h *C.QSplitterHandle) *QSplitterHandle {
+	if h == nil {
+		return nil
+	}
 	return &QSplitterHandle{h: h, QWidget: newQWidget_U(unsafe.Pointer(h))}
 }
 

@@ -27,6 +27,9 @@ func (this *QTextDocumentWriter) cPointer() *C.QTextDocumentWriter {
 }
 
 func newQTextDocumentWriter(h *C.QTextDocumentWriter) *QTextDocumentWriter {
+	if h == nil {
+		return nil
+	}
 	return &QTextDocumentWriter{h: h}
 }
 

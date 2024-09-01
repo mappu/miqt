@@ -26,6 +26,9 @@ func (this *QEasingCurve) cPointer() *C.QEasingCurve {
 }
 
 func newQEasingCurve(h *C.QEasingCurve) *QEasingCurve {
+	if h == nil {
+		return nil
+	}
 	return &QEasingCurve{h: h}
 }
 

@@ -27,6 +27,9 @@ func (this *QSessionManager) cPointer() *C.QSessionManager {
 }
 
 func newQSessionManager(h *C.QSessionManager) *QSessionManager {
+	if h == nil {
+		return nil
+	}
 	return &QSessionManager{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
 }
 

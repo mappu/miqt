@@ -27,6 +27,9 @@ func (this *QJsonValue) cPointer() *C.QJsonValue {
 }
 
 func newQJsonValue(h *C.QJsonValue) *QJsonValue {
+	if h == nil {
+		return nil
+	}
 	return &QJsonValue{h: h}
 }
 
@@ -318,6 +321,9 @@ func (this *QJsonValueRef) cPointer() *C.QJsonValueRef {
 }
 
 func newQJsonValueRef(h *C.QJsonValueRef) *QJsonValueRef {
+	if h == nil {
+		return nil
+	}
 	return &QJsonValueRef{h: h}
 }
 
@@ -500,6 +506,9 @@ func (this *QJsonValuePtr) cPointer() *C.QJsonValuePtr {
 }
 
 func newQJsonValuePtr(h *C.QJsonValuePtr) *QJsonValuePtr {
+	if h == nil {
+		return nil
+	}
 	return &QJsonValuePtr{h: h}
 }
 
@@ -549,6 +558,9 @@ func (this *QJsonValueRefPtr) cPointer() *C.QJsonValueRefPtr {
 }
 
 func newQJsonValueRefPtr(h *C.QJsonValueRefPtr) *QJsonValueRefPtr {
+	if h == nil {
+		return nil
+	}
 	return &QJsonValueRefPtr{h: h}
 }
 

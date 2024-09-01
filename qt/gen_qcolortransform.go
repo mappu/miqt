@@ -27,6 +27,9 @@ func (this *QColorTransform) cPointer() *C.QColorTransform {
 }
 
 func newQColorTransform(h *C.QColorTransform) *QColorTransform {
+	if h == nil {
+		return nil
+	}
 	return &QColorTransform{h: h}
 }
 

@@ -27,6 +27,9 @@ func (this *QPixmapCache) cPointer() *C.QPixmapCache {
 }
 
 func newQPixmapCache(h *C.QPixmapCache) *QPixmapCache {
+	if h == nil {
+		return nil
+	}
 	return &QPixmapCache{h: h}
 }
 
@@ -122,6 +125,9 @@ func (this *QPixmapCache__Key) cPointer() *C.QPixmapCache__Key {
 }
 
 func newQPixmapCache__Key(h *C.QPixmapCache__Key) *QPixmapCache__Key {
+	if h == nil {
+		return nil
+	}
 	return &QPixmapCache__Key{h: h}
 }
 

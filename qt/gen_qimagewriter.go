@@ -27,6 +27,9 @@ func (this *QImageWriter) cPointer() *C.QImageWriter {
 }
 
 func newQImageWriter(h *C.QImageWriter) *QImageWriter {
+	if h == nil {
+		return nil
+	}
 	return &QImageWriter{h: h}
 }
 

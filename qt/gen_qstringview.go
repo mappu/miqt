@@ -27,6 +27,9 @@ func (this *QStringView) cPointer() *C.QStringView {
 }
 
 func newQStringView(h *C.QStringView) *QStringView {
+	if h == nil {
+		return nil
+	}
 	return &QStringView{h: h}
 }
 

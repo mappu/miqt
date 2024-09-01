@@ -26,6 +26,9 @@ func (this *QStringDataPtr) cPointer() *C.QStringDataPtr {
 }
 
 func newQStringDataPtr(h *C.QStringDataPtr) *QStringDataPtr {
+	if h == nil {
+		return nil
+	}
 	return &QStringDataPtr{h: h}
 }
 

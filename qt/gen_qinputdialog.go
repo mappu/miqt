@@ -29,6 +29,9 @@ func (this *QInputDialog) cPointer() *C.QInputDialog {
 }
 
 func newQInputDialog(h *C.QInputDialog) *QInputDialog {
+	if h == nil {
+		return nil
+	}
 	return &QInputDialog{h: h, QDialog: newQDialog_U(unsafe.Pointer(h))}
 }
 

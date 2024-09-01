@@ -28,6 +28,9 @@ func (this *QFutureWatcherBase) cPointer() *C.QFutureWatcherBase {
 }
 
 func newQFutureWatcherBase(h *C.QFutureWatcherBase) *QFutureWatcherBase {
+	if h == nil {
+		return nil
+	}
 	return &QFutureWatcherBase{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
 }
 

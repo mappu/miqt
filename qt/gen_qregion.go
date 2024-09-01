@@ -27,6 +27,9 @@ func (this *QRegion) cPointer() *C.QRegion {
 }
 
 func newQRegion(h *C.QRegion) *QRegion {
+	if h == nil {
+		return nil
+	}
 	return &QRegion{h: h}
 }
 

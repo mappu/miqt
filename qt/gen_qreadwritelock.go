@@ -26,6 +26,9 @@ func (this *QReadWriteLock) cPointer() *C.QReadWriteLock {
 }
 
 func newQReadWriteLock(h *C.QReadWriteLock) *QReadWriteLock {
+	if h == nil {
+		return nil
+	}
 	return &QReadWriteLock{h: h}
 }
 
@@ -93,6 +96,9 @@ func (this *QReadLocker) cPointer() *C.QReadLocker {
 }
 
 func newQReadLocker(h *C.QReadLocker) *QReadLocker {
+	if h == nil {
+		return nil
+	}
 	return &QReadLocker{h: h}
 }
 
@@ -135,6 +141,9 @@ func (this *QWriteLocker) cPointer() *C.QWriteLocker {
 }
 
 func newQWriteLocker(h *C.QWriteLocker) *QWriteLocker {
+	if h == nil {
+		return nil
+	}
 	return &QWriteLocker{h: h}
 }
 

@@ -27,6 +27,9 @@ func (this *QStylePlugin) cPointer() *C.QStylePlugin {
 }
 
 func newQStylePlugin(h *C.QStylePlugin) *QStylePlugin {
+	if h == nil {
+		return nil
+	}
 	return &QStylePlugin{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
 }
 

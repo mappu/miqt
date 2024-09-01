@@ -27,6 +27,9 @@ func (this *QLocale) cPointer() *C.QLocale {
 }
 
 func newQLocale(h *C.QLocale) *QLocale {
+	if h == nil {
+		return nil
+	}
 	return &QLocale{h: h}
 }
 

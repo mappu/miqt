@@ -27,6 +27,9 @@ func (this *QToolTip) cPointer() *C.QToolTip {
 }
 
 func newQToolTip(h *C.QToolTip) *QToolTip {
+	if h == nil {
+		return nil
+	}
 	return &QToolTip{h: h}
 }
 

@@ -27,6 +27,9 @@ func (this *QPainterPath) cPointer() *C.QPainterPath {
 }
 
 func newQPainterPath(h *C.QPainterPath) *QPainterPath {
+	if h == nil {
+		return nil
+	}
 	return &QPainterPath{h: h}
 }
 
@@ -508,6 +511,9 @@ func (this *QPainterPathStroker) cPointer() *C.QPainterPathStroker {
 }
 
 func newQPainterPathStroker(h *C.QPainterPathStroker) *QPainterPathStroker {
+	if h == nil {
+		return nil
+	}
 	return &QPainterPathStroker{h: h}
 }
 
@@ -635,6 +641,9 @@ func (this *QPainterPath__Element) cPointer() *C.QPainterPath__Element {
 }
 
 func newQPainterPath__Element(h *C.QPainterPath__Element) *QPainterPath__Element {
+	if h == nil {
+		return nil
+	}
 	return &QPainterPath__Element{h: h}
 }
 

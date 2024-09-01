@@ -28,6 +28,9 @@ func (this *QTransposeProxyModel) cPointer() *C.QTransposeProxyModel {
 }
 
 func newQTransposeProxyModel(h *C.QTransposeProxyModel) *QTransposeProxyModel {
+	if h == nil {
+		return nil
+	}
 	return &QTransposeProxyModel{h: h, QAbstractProxyModel: newQAbstractProxyModel_U(unsafe.Pointer(h))}
 }
 

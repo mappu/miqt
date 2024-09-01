@@ -30,6 +30,9 @@ func (this *QWindow) cPointer() *C.QWindow {
 }
 
 func newQWindow(h *C.QWindow) *QWindow {
+	if h == nil {
+		return nil
+	}
 	return &QWindow{h: h, QObject: newQObject_U(unsafe.Pointer(h)), QSurface: newQSurface_U(unsafe.Pointer(h))}
 }
 

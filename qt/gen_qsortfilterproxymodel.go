@@ -29,6 +29,9 @@ func (this *QSortFilterProxyModel) cPointer() *C.QSortFilterProxyModel {
 }
 
 func newQSortFilterProxyModel(h *C.QSortFilterProxyModel) *QSortFilterProxyModel {
+	if h == nil {
+		return nil
+	}
 	return &QSortFilterProxyModel{h: h, QAbstractProxyModel: newQAbstractProxyModel_U(unsafe.Pointer(h))}
 }
 

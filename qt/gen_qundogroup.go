@@ -28,6 +28,9 @@ func (this *QUndoGroup) cPointer() *C.QUndoGroup {
 }
 
 func newQUndoGroup(h *C.QUndoGroup) *QUndoGroup {
+	if h == nil {
+		return nil
+	}
 	return &QUndoGroup{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
 }
 

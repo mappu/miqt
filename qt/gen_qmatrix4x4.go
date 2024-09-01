@@ -27,6 +27,9 @@ func (this *QMatrix4x4) cPointer() *C.QMatrix4x4 {
 }
 
 func newQMatrix4x4(h *C.QMatrix4x4) *QMatrix4x4 {
+	if h == nil {
+		return nil
+	}
 	return &QMatrix4x4{h: h}
 }
 

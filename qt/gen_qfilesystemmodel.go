@@ -29,6 +29,9 @@ func (this *QFileSystemModel) cPointer() *C.QFileSystemModel {
 }
 
 func newQFileSystemModel(h *C.QFileSystemModel) *QFileSystemModel {
+	if h == nil {
+		return nil
+	}
 	return &QFileSystemModel{h: h, QAbstractItemModel: newQAbstractItemModel_U(unsafe.Pointer(h))}
 }
 

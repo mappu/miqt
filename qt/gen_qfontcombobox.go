@@ -29,6 +29,9 @@ func (this *QFontComboBox) cPointer() *C.QFontComboBox {
 }
 
 func newQFontComboBox(h *C.QFontComboBox) *QFontComboBox {
+	if h == nil {
+		return nil
+	}
 	return &QFontComboBox{h: h, QComboBox: newQComboBox_U(unsafe.Pointer(h))}
 }
 

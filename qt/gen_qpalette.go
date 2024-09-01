@@ -27,6 +27,9 @@ func (this *QPalette) cPointer() *C.QPalette {
 }
 
 func newQPalette(h *C.QPalette) *QPalette {
+	if h == nil {
+		return nil
+	}
 	return &QPalette{h: h}
 }
 

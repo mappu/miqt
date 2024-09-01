@@ -27,6 +27,9 @@ func (this *QStorageInfo) cPointer() *C.QStorageInfo {
 }
 
 func newQStorageInfo(h *C.QStorageInfo) *QStorageInfo {
+	if h == nil {
+		return nil
+	}
 	return &QStorageInfo{h: h}
 }
 

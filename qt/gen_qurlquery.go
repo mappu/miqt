@@ -27,6 +27,9 @@ func (this *QUrlQuery) cPointer() *C.QUrlQuery {
 }
 
 func newQUrlQuery(h *C.QUrlQuery) *QUrlQuery {
+	if h == nil {
+		return nil
+	}
 	return &QUrlQuery{h: h}
 }
 

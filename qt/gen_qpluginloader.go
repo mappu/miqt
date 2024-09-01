@@ -28,6 +28,9 @@ func (this *QPluginLoader) cPointer() *C.QPluginLoader {
 }
 
 func newQPluginLoader(h *C.QPluginLoader) *QPluginLoader {
+	if h == nil {
+		return nil
+	}
 	return &QPluginLoader{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
 }
 

@@ -27,6 +27,9 @@ func (this *QRasterWindow) cPointer() *C.QRasterWindow {
 }
 
 func newQRasterWindow(h *C.QRasterWindow) *QRasterWindow {
+	if h == nil {
+		return nil
+	}
 	return &QRasterWindow{h: h, QPaintDeviceWindow: newQPaintDeviceWindow_U(unsafe.Pointer(h))}
 }
 

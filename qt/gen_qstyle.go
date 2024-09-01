@@ -28,6 +28,9 @@ func (this *QStyle) cPointer() *C.QStyle {
 }
 
 func newQStyle(h *C.QStyle) *QStyle {
+	if h == nil {
+		return nil
+	}
 	return &QStyle{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
 }
 

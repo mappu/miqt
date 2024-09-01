@@ -27,6 +27,9 @@ func (this *QPauseAnimation) cPointer() *C.QPauseAnimation {
 }
 
 func newQPauseAnimation(h *C.QPauseAnimation) *QPauseAnimation {
+	if h == nil {
+		return nil
+	}
 	return &QPauseAnimation{h: h, QAbstractAnimation: newQAbstractAnimation_U(unsafe.Pointer(h))}
 }
 

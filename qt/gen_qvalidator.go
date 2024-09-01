@@ -29,6 +29,9 @@ func (this *QValidator) cPointer() *C.QValidator {
 }
 
 func newQValidator(h *C.QValidator) *QValidator {
+	if h == nil {
+		return nil
+	}
 	return &QValidator{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
 }
 
@@ -172,6 +175,9 @@ func (this *QIntValidator) cPointer() *C.QIntValidator {
 }
 
 func newQIntValidator(h *C.QIntValidator) *QIntValidator {
+	if h == nil {
+		return nil
+	}
 	return &QIntValidator{h: h, QValidator: newQValidator_U(unsafe.Pointer(h))}
 }
 
@@ -358,6 +364,9 @@ func (this *QDoubleValidator) cPointer() *C.QDoubleValidator {
 }
 
 func newQDoubleValidator(h *C.QDoubleValidator) *QDoubleValidator {
+	if h == nil {
+		return nil
+	}
 	return &QDoubleValidator{h: h, QValidator: newQValidator_U(unsafe.Pointer(h))}
 }
 
@@ -584,6 +593,9 @@ func (this *QRegExpValidator) cPointer() *C.QRegExpValidator {
 }
 
 func newQRegExpValidator(h *C.QRegExpValidator) *QRegExpValidator {
+	if h == nil {
+		return nil
+	}
 	return &QRegExpValidator{h: h, QValidator: newQValidator_U(unsafe.Pointer(h))}
 }
 
@@ -739,6 +751,9 @@ func (this *QRegularExpressionValidator) cPointer() *C.QRegularExpressionValidat
 }
 
 func newQRegularExpressionValidator(h *C.QRegularExpressionValidator) *QRegularExpressionValidator {
+	if h == nil {
+		return nil
+	}
 	return &QRegularExpressionValidator{h: h, QValidator: newQValidator_U(unsafe.Pointer(h))}
 }
 

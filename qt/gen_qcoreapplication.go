@@ -28,6 +28,9 @@ func (this *QCoreApplication) cPointer() *C.QCoreApplication {
 }
 
 func newQCoreApplication(h *C.QCoreApplication) *QCoreApplication {
+	if h == nil {
+		return nil
+	}
 	return &QCoreApplication{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
 }
 

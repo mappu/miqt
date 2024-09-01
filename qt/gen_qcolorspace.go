@@ -27,6 +27,9 @@ func (this *QColorSpace) cPointer() *C.QColorSpace {
 }
 
 func newQColorSpace(h *C.QColorSpace) *QColorSpace {
+	if h == nil {
+		return nil
+	}
 	return &QColorSpace{h: h}
 }
 

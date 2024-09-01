@@ -29,6 +29,9 @@ func (this *QFontDialog) cPointer() *C.QFontDialog {
 }
 
 func newQFontDialog(h *C.QFontDialog) *QFontDialog {
+	if h == nil {
+		return nil
+	}
 	return &QFontDialog{h: h, QDialog: newQDialog_U(unsafe.Pointer(h))}
 }
 

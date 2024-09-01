@@ -27,6 +27,9 @@ func (this *QErrorMessage) cPointer() *C.QErrorMessage {
 }
 
 func newQErrorMessage(h *C.QErrorMessage) *QErrorMessage {
+	if h == nil {
+		return nil
+	}
 	return &QErrorMessage{h: h, QDialog: newQDialog_U(unsafe.Pointer(h))}
 }
 

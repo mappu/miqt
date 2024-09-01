@@ -29,6 +29,9 @@ func (this *QCompleter) cPointer() *C.QCompleter {
 }
 
 func newQCompleter(h *C.QCompleter) *QCompleter {
+	if h == nil {
+		return nil
+	}
 	return &QCompleter{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
 }
 

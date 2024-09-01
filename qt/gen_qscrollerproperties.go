@@ -27,6 +27,9 @@ func (this *QScrollerProperties) cPointer() *C.QScrollerProperties {
 }
 
 func newQScrollerProperties(h *C.QScrollerProperties) *QScrollerProperties {
+	if h == nil {
+		return nil
+	}
 	return &QScrollerProperties{h: h}
 }
 

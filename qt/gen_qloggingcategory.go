@@ -26,6 +26,9 @@ func (this *QLoggingCategory) cPointer() *C.QLoggingCategory {
 }
 
 func newQLoggingCategory(h *C.QLoggingCategory) *QLoggingCategory {
+	if h == nil {
+		return nil
+	}
 	return &QLoggingCategory{h: h}
 }
 

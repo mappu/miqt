@@ -27,6 +27,9 @@ func (this *QMatrix) cPointer() *C.QMatrix {
 }
 
 func newQMatrix(h *C.QMatrix) *QMatrix {
+	if h == nil {
+		return nil
+	}
 	return &QMatrix{h: h}
 }
 

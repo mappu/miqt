@@ -27,6 +27,9 @@ func (this *QCalendar) cPointer() *C.QCalendar {
 }
 
 func newQCalendar(h *C.QCalendar) *QCalendar {
+	if h == nil {
+		return nil
+	}
 	return &QCalendar{h: h}
 }
 
@@ -294,6 +297,9 @@ func (this *QCalendar__YearMonthDay) cPointer() *C.QCalendar__YearMonthDay {
 }
 
 func newQCalendar__YearMonthDay(h *C.QCalendar__YearMonthDay) *QCalendar__YearMonthDay {
+	if h == nil {
+		return nil
+	}
 	return &QCalendar__YearMonthDay{h: h}
 }
 

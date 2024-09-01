@@ -26,6 +26,9 @@ func (this *qfloat16) cPointer() *C.qfloat16 {
 }
 
 func newqfloat16(h *C.qfloat16) *qfloat16 {
+	if h == nil {
+		return nil
+	}
 	return &qfloat16{h: h}
 }
 

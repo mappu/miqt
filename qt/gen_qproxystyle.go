@@ -28,6 +28,9 @@ func (this *QProxyStyle) cPointer() *C.QProxyStyle {
 }
 
 func newQProxyStyle(h *C.QProxyStyle) *QProxyStyle {
+	if h == nil {
+		return nil
+	}
 	return &QProxyStyle{h: h, QCommonStyle: newQCommonStyle_U(unsafe.Pointer(h))}
 }
 

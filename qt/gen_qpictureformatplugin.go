@@ -27,6 +27,9 @@ func (this *QPictureFormatPlugin) cPointer() *C.QPictureFormatPlugin {
 }
 
 func newQPictureFormatPlugin(h *C.QPictureFormatPlugin) *QPictureFormatPlugin {
+	if h == nil {
+		return nil
+	}
 	return &QPictureFormatPlugin{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
 }
 

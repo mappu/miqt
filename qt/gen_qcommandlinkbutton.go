@@ -27,6 +27,9 @@ func (this *QCommandLinkButton) cPointer() *C.QCommandLinkButton {
 }
 
 func newQCommandLinkButton(h *C.QCommandLinkButton) *QCommandLinkButton {
+	if h == nil {
+		return nil
+	}
 	return &QCommandLinkButton{h: h, QPushButton: newQPushButton_U(unsafe.Pointer(h))}
 }
 

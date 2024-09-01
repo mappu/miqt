@@ -28,6 +28,9 @@ func (this *QSpinBox) cPointer() *C.QSpinBox {
 }
 
 func newQSpinBox(h *C.QSpinBox) *QSpinBox {
+	if h == nil {
+		return nil
+	}
 	return &QSpinBox{h: h, QAbstractSpinBox: newQAbstractSpinBox_U(unsafe.Pointer(h))}
 }
 
@@ -280,6 +283,9 @@ func (this *QDoubleSpinBox) cPointer() *C.QDoubleSpinBox {
 }
 
 func newQDoubleSpinBox(h *C.QDoubleSpinBox) *QDoubleSpinBox {
+	if h == nil {
+		return nil
+	}
 	return &QDoubleSpinBox{h: h, QAbstractSpinBox: newQAbstractSpinBox_U(unsafe.Pointer(h))}
 }
 

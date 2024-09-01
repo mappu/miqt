@@ -26,6 +26,9 @@ func (this *QtPrivate__QHashCombine) cPointer() *C.QtPrivate__QHashCombine {
 }
 
 func newQtPrivate__QHashCombine(h *C.QtPrivate__QHashCombine) *QtPrivate__QHashCombine {
+	if h == nil {
+		return nil
+	}
 	return &QtPrivate__QHashCombine{h: h}
 }
 
@@ -61,6 +64,9 @@ func (this *QtPrivate__QHashCombineCommutative) cPointer() *C.QtPrivate__QHashCo
 }
 
 func newQtPrivate__QHashCombineCommutative(h *C.QtPrivate__QHashCombineCommutative) *QtPrivate__QHashCombineCommutative {
+	if h == nil {
+		return nil
+	}
 	return &QtPrivate__QHashCombineCommutative{h: h}
 }
 

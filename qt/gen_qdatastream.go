@@ -26,6 +26,9 @@ func (this *QDataStream) cPointer() *C.QDataStream {
 }
 
 func newQDataStream(h *C.QDataStream) *QDataStream {
+	if h == nil {
+		return nil
+	}
 	return &QDataStream{h: h}
 }
 
@@ -280,6 +283,9 @@ func (this *QtPrivate__StreamStateSaver) cPointer() *C.QtPrivate__StreamStateSav
 }
 
 func newQtPrivate__StreamStateSaver(h *C.QtPrivate__StreamStateSaver) *QtPrivate__StreamStateSaver {
+	if h == nil {
+		return nil
+	}
 	return &QtPrivate__StreamStateSaver{h: h}
 }
 

@@ -26,6 +26,9 @@ func (this *QCommandLineOption) cPointer() *C.QCommandLineOption {
 }
 
 func newQCommandLineOption(h *C.QCommandLineOption) *QCommandLineOption {
+	if h == nil {
+		return nil
+	}
 	return &QCommandLineOption{h: h}
 }
 

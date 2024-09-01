@@ -29,6 +29,9 @@ func (this *QColumnView) cPointer() *C.QColumnView {
 }
 
 func newQColumnView(h *C.QColumnView) *QColumnView {
+	if h == nil {
+		return nil
+	}
 	return &QColumnView{h: h, QAbstractItemView: newQAbstractItemView_U(unsafe.Pointer(h))}
 }
 

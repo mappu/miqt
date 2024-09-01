@@ -28,6 +28,9 @@ func (this *QTableView) cPointer() *C.QTableView {
 }
 
 func newQTableView(h *C.QTableView) *QTableView {
+	if h == nil {
+		return nil
+	}
 	return &QTableView{h: h, QAbstractItemView: newQAbstractItemView_U(unsafe.Pointer(h))}
 }
 

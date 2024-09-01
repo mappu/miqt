@@ -28,6 +28,9 @@ func (this *QConcatenateTablesProxyModel) cPointer() *C.QConcatenateTablesProxyM
 }
 
 func newQConcatenateTablesProxyModel(h *C.QConcatenateTablesProxyModel) *QConcatenateTablesProxyModel {
+	if h == nil {
+		return nil
+	}
 	return &QConcatenateTablesProxyModel{h: h, QAbstractItemModel: newQAbstractItemModel_U(unsafe.Pointer(h))}
 }
 

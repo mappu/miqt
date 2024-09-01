@@ -28,6 +28,9 @@ func (this *QTextList) cPointer() *C.QTextList {
 }
 
 func newQTextList(h *C.QTextList) *QTextList {
+	if h == nil {
+		return nil
+	}
 	return &QTextList{h: h, QTextBlockGroup: newQTextBlockGroup_U(unsafe.Pointer(h))}
 }
 

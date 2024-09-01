@@ -28,6 +28,9 @@ func (this *QGridLayout) cPointer() *C.QGridLayout {
 }
 
 func newQGridLayout(h *C.QGridLayout) *QGridLayout {
+	if h == nil {
+		return nil
+	}
 	return &QGridLayout{h: h, QLayout: newQLayout_U(unsafe.Pointer(h))}
 }
 

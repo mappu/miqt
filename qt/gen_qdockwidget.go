@@ -28,6 +28,9 @@ func (this *QDockWidget) cPointer() *C.QDockWidget {
 }
 
 func newQDockWidget(h *C.QDockWidget) *QDockWidget {
+	if h == nil {
+		return nil
+	}
 	return &QDockWidget{h: h, QWidget: newQWidget_U(unsafe.Pointer(h))}
 }
 

@@ -26,6 +26,9 @@ func (this *QSharedData) cPointer() *C.QSharedData {
 }
 
 func newQSharedData(h *C.QSharedData) *QSharedData {
+	if h == nil {
+		return nil
+	}
 	return &QSharedData{h: h}
 }
 

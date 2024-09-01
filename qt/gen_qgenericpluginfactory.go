@@ -26,6 +26,9 @@ func (this *QGenericPluginFactory) cPointer() *C.QGenericPluginFactory {
 }
 
 func newQGenericPluginFactory(h *C.QGenericPluginFactory) *QGenericPluginFactory {
+	if h == nil {
+		return nil
+	}
 	return &QGenericPluginFactory{h: h}
 }
 

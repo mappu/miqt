@@ -28,6 +28,9 @@ func (this *QFile) cPointer() *C.QFile {
 }
 
 func newQFile(h *C.QFile) *QFile {
+	if h == nil {
+		return nil
+	}
 	return &QFile{h: h, QFileDevice: newQFileDevice_U(unsafe.Pointer(h))}
 }
 

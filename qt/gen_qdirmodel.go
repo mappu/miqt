@@ -28,6 +28,9 @@ func (this *QDirModel) cPointer() *C.QDirModel {
 }
 
 func newQDirModel(h *C.QDirModel) *QDirModel {
+	if h == nil {
+		return nil
+	}
 	return &QDirModel{h: h, QAbstractItemModel: newQAbstractItemModel_U(unsafe.Pointer(h))}
 }
 

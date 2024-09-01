@@ -29,6 +29,9 @@ func (this *QLineEdit) cPointer() *C.QLineEdit {
 }
 
 func newQLineEdit(h *C.QLineEdit) *QLineEdit {
+	if h == nil {
+		return nil
+	}
 	return &QLineEdit{h: h, QWidget: newQWidget_U(unsafe.Pointer(h))}
 }
 

@@ -29,6 +29,9 @@ func (this *QHeaderView) cPointer() *C.QHeaderView {
 }
 
 func newQHeaderView(h *C.QHeaderView) *QHeaderView {
+	if h == nil {
+		return nil
+	}
 	return &QHeaderView{h: h, QAbstractItemView: newQAbstractItemView_U(unsafe.Pointer(h))}
 }
 

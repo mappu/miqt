@@ -27,6 +27,9 @@ func (this *QJsonObject) cPointer() *C.QJsonObject {
 }
 
 func newQJsonObject(h *C.QJsonObject) *QJsonObject {
+	if h == nil {
+		return nil
+	}
 	return &QJsonObject{h: h}
 }
 
@@ -314,6 +317,9 @@ func (this *QJsonObject__iterator) cPointer() *C.QJsonObject__iterator {
 }
 
 func newQJsonObject__iterator(h *C.QJsonObject__iterator) *QJsonObject__iterator {
+	if h == nil {
+		return nil
+	}
 	return &QJsonObject__iterator{h: h}
 }
 
@@ -517,6 +523,9 @@ func (this *QJsonObject__const_iterator) cPointer() *C.QJsonObject__const_iterat
 }
 
 func newQJsonObject__const_iterator(h *C.QJsonObject__const_iterator) *QJsonObject__const_iterator {
+	if h == nil {
+		return nil
+	}
 	return &QJsonObject__const_iterator{h: h}
 }
 

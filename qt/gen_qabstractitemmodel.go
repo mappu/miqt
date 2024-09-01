@@ -28,6 +28,9 @@ func (this *QModelIndex) cPointer() *C.QModelIndex {
 }
 
 func newQModelIndex(h *C.QModelIndex) *QModelIndex {
+	if h == nil {
+		return nil
+	}
 	return &QModelIndex{h: h}
 }
 
@@ -185,6 +188,9 @@ func (this *QPersistentModelIndex) cPointer() *C.QPersistentModelIndex {
 }
 
 func newQPersistentModelIndex(h *C.QPersistentModelIndex) *QPersistentModelIndex {
+	if h == nil {
+		return nil
+	}
 	return &QPersistentModelIndex{h: h}
 }
 
@@ -349,6 +355,9 @@ func (this *QAbstractItemModel) cPointer() *C.QAbstractItemModel {
 }
 
 func newQAbstractItemModel(h *C.QAbstractItemModel) *QAbstractItemModel {
+	if h == nil {
+		return nil
+	}
 	return &QAbstractItemModel{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
 }
 
@@ -946,6 +955,9 @@ func (this *QAbstractTableModel) cPointer() *C.QAbstractTableModel {
 }
 
 func newQAbstractTableModel(h *C.QAbstractTableModel) *QAbstractTableModel {
+	if h == nil {
+		return nil
+	}
 	return &QAbstractTableModel{h: h, QAbstractItemModel: newQAbstractItemModel_U(unsafe.Pointer(h))}
 }
 
@@ -1092,6 +1104,9 @@ func (this *QAbstractListModel) cPointer() *C.QAbstractListModel {
 }
 
 func newQAbstractListModel(h *C.QAbstractListModel) *QAbstractListModel {
+	if h == nil {
+		return nil
+	}
 	return &QAbstractListModel{h: h, QAbstractItemModel: newQAbstractItemModel_U(unsafe.Pointer(h))}
 }
 

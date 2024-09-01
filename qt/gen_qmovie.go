@@ -29,6 +29,9 @@ func (this *QMovie) cPointer() *C.QMovie {
 }
 
 func newQMovie(h *C.QMovie) *QMovie {
+	if h == nil {
+		return nil
+	}
 	return &QMovie{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
 }
 

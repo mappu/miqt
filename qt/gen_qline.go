@@ -27,6 +27,9 @@ func (this *QLine) cPointer() *C.QLine {
 }
 
 func newQLine(h *C.QLine) *QLine {
+	if h == nil {
+		return nil
+	}
 	return &QLine{h: h}
 }
 
@@ -198,6 +201,9 @@ func (this *QLineF) cPointer() *C.QLineF {
 }
 
 func newQLineF(h *C.QLineF) *QLineF {
+	if h == nil {
+		return nil
+	}
 	return &QLineF{h: h}
 }
 

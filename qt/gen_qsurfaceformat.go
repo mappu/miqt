@@ -27,6 +27,9 @@ func (this *QSurfaceFormat) cPointer() *C.QSurfaceFormat {
 }
 
 func newQSurfaceFormat(h *C.QSurfaceFormat) *QSurfaceFormat {
+	if h == nil {
+		return nil
+	}
 	return &QSurfaceFormat{h: h}
 }
 

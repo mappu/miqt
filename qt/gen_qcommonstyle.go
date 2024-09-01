@@ -28,6 +28,9 @@ func (this *QCommonStyle) cPointer() *C.QCommonStyle {
 }
 
 func newQCommonStyle(h *C.QCommonStyle) *QCommonStyle {
+	if h == nil {
+		return nil
+	}
 	return &QCommonStyle{h: h, QStyle: newQStyle_U(unsafe.Pointer(h))}
 }
 
