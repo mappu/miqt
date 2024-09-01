@@ -352,13 +352,14 @@ uintptr_t QProcess_State(QProcess* self) {
 	return static_cast<uintptr_t>(ret);
 }
 
-#ifdef Q_OS_LINUX
-
 int64_t QProcess_Pid(QProcess* self) {
+#ifdef Q_OS_LINUX
 	return const_cast<const QProcess*>(self)->pid();
+#else
+	int64_t _ret_invalidOS;
+	return _ret_invalidOS;
+#endif
 }
-
-#endif /* Q_OS_LINUX */
 
 long long QProcess_ProcessId(QProcess* self) {
 	return const_cast<const QProcess*>(self)->processId();

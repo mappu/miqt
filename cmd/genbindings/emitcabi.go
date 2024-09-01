@@ -512,25 +512,39 @@ extern "C" {
 
 		for i, ctor := range c.Ctors {
 
-			if ctor.LinuxOnly {
-				ret.WriteString("#ifdef Q_OS_LINUX\n\n")
-			}
-
 			preamble, forwarding := emitParametersCABI2CppForwarding(ctor.Parameters)
-			ret.WriteString(fmt.Sprintf(
-				"%s* %s_new%s(%s) {\n"+
-					"%s"+
-					"\treturn new %s(%s);\n"+
-					"}\n"+
-					"\n",
-				cClassName, cClassName, maybeSuffix(i), emitParametersCabi(ctor, ""),
-				preamble,
-				c.ClassName, forwarding,
-			))
 
 			if ctor.LinuxOnly {
-				ret.WriteString("#endif /* Q_OS_LINUX */\n\n")
+
+				ret.WriteString(fmt.Sprintf(
+					"%s* %s_new%s(%s) {\n"+
+						"#ifdef Q_OS_LINUX\n"+
+						"%s"+
+						"\treturn new %s(%s);\n"+
+						"#else\n"+
+						"\treturn nullptr;\n"+
+						"#endif\n"+
+						"}\n"+
+						"\n",
+					cClassName, cClassName, maybeSuffix(i), emitParametersCabi(ctor, ""),
+					preamble,
+					c.ClassName, forwarding,
+				))
+
+			} else {
+				ret.WriteString(fmt.Sprintf(
+					"%s* %s_new%s(%s) {\n"+
+						"%s"+
+						"\treturn new %s(%s);\n"+
+						"}\n"+
+						"\n",
+					cClassName, cClassName, maybeSuffix(i), emitParametersCabi(ctor, ""),
+					preamble,
+					c.ClassName, forwarding,
+				))
+
 			}
+
 		}
 
 		for _, m := range c.Methods {
@@ -667,21 +681,41 @@ extern "C" {
 			}
 
 			if m.LinuxOnly {
-				ret.WriteString("#ifdef Q_OS_LINUX\n\n")
-			}
+				ret.WriteString(fmt.Sprintf(
+					"%s %s_%s(%s) {\n"+
+						"#ifdef Q_OS_LINUX\n"+
+						"%s"+
+						"\t%s%s%s(%s);\n"+
+						"%s"+
+						"#else\n"+
+						"\t%s _ret_invalidOS;\n"+
+						"\treturn _ret_invalidOS;\n"+
+						"#endif\n"+
+						"}\n"+
+						"\n",
+					emitReturnTypeCabi(m.ReturnType), cClassName, m.SafeMethodName(), emitParametersCabi(m, cClassName+"*"),
+					preamble,
+					shouldReturn, callTarget, nativeMethodName, forwarding,
+					afterCall,
+					emitReturnTypeCabi(m.ReturnType),
+				))
 
-			ret.WriteString(fmt.Sprintf(
-				"%s %s_%s(%s) {\n"+
-					"%s"+
-					"\t%s%s%s(%s);\n"+
-					"%s"+
-					"}\n"+
-					"\n",
-				emitReturnTypeCabi(m.ReturnType), cClassName, m.SafeMethodName(), emitParametersCabi(m, cClassName+"*"),
-				preamble,
-				shouldReturn, callTarget, nativeMethodName, forwarding,
-				afterCall,
-			))
+			} else {
+
+				ret.WriteString(fmt.Sprintf(
+					"%s %s_%s(%s) {\n"+
+						"%s"+
+						"\t%s%s%s(%s);\n"+
+						"%s"+
+						"}\n"+
+						"\n",
+					emitReturnTypeCabi(m.ReturnType), cClassName, m.SafeMethodName(), emitParametersCabi(m, cClassName+"*"),
+					preamble,
+					shouldReturn, callTarget, nativeMethodName, forwarding,
+					afterCall,
+				))
+
+			}
 
 			if m.IsSignal && !m.HasHiddenParams {
 				exactSignal := `static_cast<void (` + c.ClassName + `::*)(` + emitParameterTypesCpp(m) + `)>(&` + c.ClassName + `::` + nativeMethodName + `)`
@@ -694,10 +728,6 @@ extern "C" {
 						"}\n" +
 						"\n",
 				)
-			}
-
-			if m.LinuxOnly {
-				ret.WriteString("#endif /* Q_OS_LINUX */\n\n")
 			}
 
 		}

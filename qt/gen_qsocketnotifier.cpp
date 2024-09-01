@@ -108,13 +108,13 @@ QSocketDescriptor* QSocketDescriptor_new2(QSocketDescriptor* param1) {
 	return new QSocketDescriptor(*param1);
 }
 
-#ifdef Q_OS_LINUX
-
 QSocketDescriptor* QSocketDescriptor_new3(uintptr_t descriptor) {
+#ifdef Q_OS_LINUX
 	return new QSocketDescriptor(static_cast<QSocketDescriptor::DescriptorType>(descriptor));
+#else
+	return nullptr;
+#endif
 }
-
-#endif /* Q_OS_LINUX */
 
 bool QSocketDescriptor_IsValid(QSocketDescriptor* self) {
 	return const_cast<const QSocketDescriptor*>(self)->isValid();
