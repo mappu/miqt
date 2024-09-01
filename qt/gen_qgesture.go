@@ -1015,7 +1015,7 @@ func newQGestureEvent_U(h unsafe.Pointer) *QGestureEvent {
 // NewQGestureEvent constructs a new QGestureEvent object.
 func NewQGestureEvent(gestures []*QGesture) *QGestureEvent {
 	// For the C ABI, malloc a C array of raw pointers
-	gestures_CArray := (*[0xffff]*C.QGesture)(C.malloc(C.ulong(8 * len(gestures))))
+	gestures_CArray := (*[0xffff]*C.QGesture)(C.malloc(C.size_t(8 * len(gestures))))
 	defer C.free(unsafe.Pointer(gestures_CArray))
 	for i := range gestures {
 		gestures_CArray[i] = gestures[i].cPointer()

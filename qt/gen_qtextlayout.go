@@ -242,7 +242,7 @@ func (this *QTextLayout) PreeditAreaText() string {
 
 func (this *QTextLayout) SetAdditionalFormats(overrides []QTextLayout__FormatRange) {
 	// For the C ABI, malloc a C array of raw pointers
-	overrides_CArray := (*[0xffff]*C.QTextLayout__FormatRange)(C.malloc(C.ulong(8 * len(overrides))))
+	overrides_CArray := (*[0xffff]*C.QTextLayout__FormatRange)(C.malloc(C.size_t(8 * len(overrides))))
 	defer C.free(unsafe.Pointer(overrides_CArray))
 	for i := range overrides {
 		overrides_CArray[i] = overrides[i].cPointer()
@@ -269,7 +269,7 @@ func (this *QTextLayout) ClearAdditionalFormats() {
 
 func (this *QTextLayout) SetFormats(overrides []QTextLayout__FormatRange) {
 	// For the C ABI, malloc a C array of raw pointers
-	overrides_CArray := (*[0xffff]*C.QTextLayout__FormatRange)(C.malloc(C.ulong(8 * len(overrides))))
+	overrides_CArray := (*[0xffff]*C.QTextLayout__FormatRange)(C.malloc(C.size_t(8 * len(overrides))))
 	defer C.free(unsafe.Pointer(overrides_CArray))
 	for i := range overrides {
 		overrides_CArray[i] = overrides[i].cPointer()
@@ -464,7 +464,7 @@ func (this *QTextLayout) PreviousCursorPosition2(oldPos int, mode uintptr) int {
 
 func (this *QTextLayout) Draw3(p *QPainter, pos *QPointF, selections []QTextLayout__FormatRange) {
 	// For the C ABI, malloc a C array of raw pointers
-	selections_CArray := (*[0xffff]*C.QTextLayout__FormatRange)(C.malloc(C.ulong(8 * len(selections))))
+	selections_CArray := (*[0xffff]*C.QTextLayout__FormatRange)(C.malloc(C.size_t(8 * len(selections))))
 	defer C.free(unsafe.Pointer(selections_CArray))
 	for i := range selections {
 		selections_CArray[i] = selections[i].cPointer()
@@ -474,7 +474,7 @@ func (this *QTextLayout) Draw3(p *QPainter, pos *QPointF, selections []QTextLayo
 
 func (this *QTextLayout) Draw4(p *QPainter, pos *QPointF, selections []QTextLayout__FormatRange, clip *QRectF) {
 	// For the C ABI, malloc a C array of raw pointers
-	selections_CArray := (*[0xffff]*C.QTextLayout__FormatRange)(C.malloc(C.ulong(8 * len(selections))))
+	selections_CArray := (*[0xffff]*C.QTextLayout__FormatRange)(C.malloc(C.size_t(8 * len(selections))))
 	defer C.free(unsafe.Pointer(selections_CArray))
 	for i := range selections {
 		selections_CArray[i] = selections[i].cPointer()

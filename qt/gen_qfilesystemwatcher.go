@@ -44,8 +44,8 @@ func NewQFileSystemWatcher() *QFileSystemWatcher {
 // NewQFileSystemWatcher2 constructs a new QFileSystemWatcher object.
 func NewQFileSystemWatcher2(paths []string) *QFileSystemWatcher {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
-	paths_CArray := (*[0xffff]*C.char)(C.malloc(C.ulong(8 * len(paths))))
-	paths_Lengths := (*[0xffff]C.size_t)(C.malloc(C.ulong(8 * len(paths))))
+	paths_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(paths))))
+	paths_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(paths))))
 	defer C.free(unsafe.Pointer(paths_CArray))
 	defer C.free(unsafe.Pointer(paths_Lengths))
 	for i := range paths {
@@ -67,8 +67,8 @@ func NewQFileSystemWatcher3(parent *QObject) *QFileSystemWatcher {
 // NewQFileSystemWatcher4 constructs a new QFileSystemWatcher object.
 func NewQFileSystemWatcher4(paths []string, parent *QObject) *QFileSystemWatcher {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
-	paths_CArray := (*[0xffff]*C.char)(C.malloc(C.ulong(8 * len(paths))))
-	paths_Lengths := (*[0xffff]C.size_t)(C.malloc(C.ulong(8 * len(paths))))
+	paths_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(paths))))
+	paths_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(paths))))
 	defer C.free(unsafe.Pointer(paths_CArray))
 	defer C.free(unsafe.Pointer(paths_Lengths))
 	for i := range paths {
@@ -117,8 +117,8 @@ func (this *QFileSystemWatcher) AddPath(file string) bool {
 
 func (this *QFileSystemWatcher) AddPaths(files []string) []string {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
-	files_CArray := (*[0xffff]*C.char)(C.malloc(C.ulong(8 * len(files))))
-	files_Lengths := (*[0xffff]C.size_t)(C.malloc(C.ulong(8 * len(files))))
+	files_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(files))))
+	files_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(files))))
 	defer C.free(unsafe.Pointer(files_CArray))
 	defer C.free(unsafe.Pointer(files_Lengths))
 	for i := range files {
@@ -150,8 +150,8 @@ func (this *QFileSystemWatcher) RemovePath(file string) bool {
 
 func (this *QFileSystemWatcher) RemovePaths(files []string) []string {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
-	files_CArray := (*[0xffff]*C.char)(C.malloc(C.ulong(8 * len(files))))
-	files_Lengths := (*[0xffff]C.size_t)(C.malloc(C.ulong(8 * len(files))))
+	files_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(files))))
+	files_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(files))))
 	defer C.free(unsafe.Pointer(files_CArray))
 	defer C.free(unsafe.Pointer(files_Lengths))
 	for i := range files {

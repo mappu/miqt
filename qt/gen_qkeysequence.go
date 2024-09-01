@@ -142,7 +142,7 @@ func QKeySequence_ListFromString(str string) []QKeySequence {
 
 func QKeySequence_ListToString(list []QKeySequence) string {
 	// For the C ABI, malloc a C array of raw pointers
-	list_CArray := (*[0xffff]*C.QKeySequence)(C.malloc(C.ulong(8 * len(list))))
+	list_CArray := (*[0xffff]*C.QKeySequence)(C.malloc(C.size_t(8 * len(list))))
 	defer C.free(unsafe.Pointer(list_CArray))
 	for i := range list {
 		list_CArray[i] = list[i].cPointer()
@@ -273,7 +273,7 @@ func QKeySequence_ListFromString2(str string, format uintptr) []QKeySequence {
 
 func QKeySequence_ListToString2(list []QKeySequence, format uintptr) string {
 	// For the C ABI, malloc a C array of raw pointers
-	list_CArray := (*[0xffff]*C.QKeySequence)(C.malloc(C.ulong(8 * len(list))))
+	list_CArray := (*[0xffff]*C.QKeySequence)(C.malloc(C.size_t(8 * len(list))))
 	defer C.free(unsafe.Pointer(list_CArray))
 	for i := range list {
 		list_CArray[i] = list[i].cPointer()

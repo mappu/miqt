@@ -142,8 +142,8 @@ func QDir_SetSearchPaths(prefix string, searchPaths []string) {
 	prefix_Cstring := C.CString(prefix)
 	defer C.free(unsafe.Pointer(prefix_Cstring))
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
-	searchPaths_CArray := (*[0xffff]*C.char)(C.malloc(C.ulong(8 * len(searchPaths))))
-	searchPaths_Lengths := (*[0xffff]C.size_t)(C.malloc(C.ulong(8 * len(searchPaths))))
+	searchPaths_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(searchPaths))))
+	searchPaths_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(searchPaths))))
 	defer C.free(unsafe.Pointer(searchPaths_CArray))
 	defer C.free(unsafe.Pointer(searchPaths_Lengths))
 	for i := range searchPaths {
@@ -273,8 +273,8 @@ func (this *QDir) NameFilters() []string {
 
 func (this *QDir) SetNameFilters(nameFilters []string) {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
-	nameFilters_CArray := (*[0xffff]*C.char)(C.malloc(C.ulong(8 * len(nameFilters))))
-	nameFilters_Lengths := (*[0xffff]C.size_t)(C.malloc(C.ulong(8 * len(nameFilters))))
+	nameFilters_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(nameFilters))))
+	nameFilters_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(nameFilters))))
 	defer C.free(unsafe.Pointer(nameFilters_CArray))
 	defer C.free(unsafe.Pointer(nameFilters_Lengths))
 	for i := range nameFilters {
@@ -357,8 +357,8 @@ func (this *QDir) EntryList() []string {
 
 func (this *QDir) EntryListWithNameFilters(nameFilters []string) []string {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
-	nameFilters_CArray := (*[0xffff]*C.char)(C.malloc(C.ulong(8 * len(nameFilters))))
-	nameFilters_Lengths := (*[0xffff]C.size_t)(C.malloc(C.ulong(8 * len(nameFilters))))
+	nameFilters_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(nameFilters))))
+	nameFilters_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(nameFilters))))
 	defer C.free(unsafe.Pointer(nameFilters_CArray))
 	defer C.free(unsafe.Pointer(nameFilters_Lengths))
 	for i := range nameFilters {
@@ -396,8 +396,8 @@ func (this *QDir) EntryInfoList() []QFileInfo {
 
 func (this *QDir) EntryInfoListWithNameFilters(nameFilters []string) []QFileInfo {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
-	nameFilters_CArray := (*[0xffff]*C.char)(C.malloc(C.ulong(8 * len(nameFilters))))
-	nameFilters_Lengths := (*[0xffff]C.size_t)(C.malloc(C.ulong(8 * len(nameFilters))))
+	nameFilters_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(nameFilters))))
+	nameFilters_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(nameFilters))))
 	defer C.free(unsafe.Pointer(nameFilters_CArray))
 	defer C.free(unsafe.Pointer(nameFilters_Lengths))
 	for i := range nameFilters {
@@ -652,8 +652,8 @@ func QDir_TempPath() string {
 
 func QDir_Match(filters []string, fileName string) bool {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
-	filters_CArray := (*[0xffff]*C.char)(C.malloc(C.ulong(8 * len(filters))))
-	filters_Lengths := (*[0xffff]C.size_t)(C.malloc(C.ulong(8 * len(filters))))
+	filters_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(filters))))
+	filters_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(filters))))
 	defer C.free(unsafe.Pointer(filters_CArray))
 	defer C.free(unsafe.Pointer(filters_Lengths))
 	for i := range filters {
@@ -729,8 +729,8 @@ func (this *QDir) EntryList2(filters int, sort int) []string {
 
 func (this *QDir) EntryList22(nameFilters []string, filters int) []string {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
-	nameFilters_CArray := (*[0xffff]*C.char)(C.malloc(C.ulong(8 * len(nameFilters))))
-	nameFilters_Lengths := (*[0xffff]C.size_t)(C.malloc(C.ulong(8 * len(nameFilters))))
+	nameFilters_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(nameFilters))))
+	nameFilters_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(nameFilters))))
 	defer C.free(unsafe.Pointer(nameFilters_CArray))
 	defer C.free(unsafe.Pointer(nameFilters_Lengths))
 	for i := range nameFilters {
@@ -755,8 +755,8 @@ func (this *QDir) EntryList22(nameFilters []string, filters int) []string {
 
 func (this *QDir) EntryList3(nameFilters []string, filters int, sort int) []string {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
-	nameFilters_CArray := (*[0xffff]*C.char)(C.malloc(C.ulong(8 * len(nameFilters))))
-	nameFilters_Lengths := (*[0xffff]C.size_t)(C.malloc(C.ulong(8 * len(nameFilters))))
+	nameFilters_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(nameFilters))))
+	nameFilters_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(nameFilters))))
 	defer C.free(unsafe.Pointer(nameFilters_CArray))
 	defer C.free(unsafe.Pointer(nameFilters_Lengths))
 	for i := range nameFilters {
@@ -807,8 +807,8 @@ func (this *QDir) EntryInfoList2(filters int, sort int) []QFileInfo {
 
 func (this *QDir) EntryInfoList22(nameFilters []string, filters int) []QFileInfo {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
-	nameFilters_CArray := (*[0xffff]*C.char)(C.malloc(C.ulong(8 * len(nameFilters))))
-	nameFilters_Lengths := (*[0xffff]C.size_t)(C.malloc(C.ulong(8 * len(nameFilters))))
+	nameFilters_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(nameFilters))))
+	nameFilters_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(nameFilters))))
 	defer C.free(unsafe.Pointer(nameFilters_CArray))
 	defer C.free(unsafe.Pointer(nameFilters_Lengths))
 	for i := range nameFilters {
@@ -831,8 +831,8 @@ func (this *QDir) EntryInfoList22(nameFilters []string, filters int) []QFileInfo
 
 func (this *QDir) EntryInfoList3(nameFilters []string, filters int, sort int) []QFileInfo {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
-	nameFilters_CArray := (*[0xffff]*C.char)(C.malloc(C.ulong(8 * len(nameFilters))))
-	nameFilters_Lengths := (*[0xffff]C.size_t)(C.malloc(C.ulong(8 * len(nameFilters))))
+	nameFilters_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(nameFilters))))
+	nameFilters_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(nameFilters))))
 	defer C.free(unsafe.Pointer(nameFilters_CArray))
 	defer C.free(unsafe.Pointer(nameFilters_Lengths))
 	for i := range nameFilters {

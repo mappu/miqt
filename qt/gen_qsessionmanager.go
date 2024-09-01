@@ -109,8 +109,8 @@ func (this *QSessionManager) RestartHint() uintptr {
 
 func (this *QSessionManager) SetRestartCommand(restartCommand []string) {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
-	restartCommand_CArray := (*[0xffff]*C.char)(C.malloc(C.ulong(8 * len(restartCommand))))
-	restartCommand_Lengths := (*[0xffff]C.size_t)(C.malloc(C.ulong(8 * len(restartCommand))))
+	restartCommand_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(restartCommand))))
+	restartCommand_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(restartCommand))))
 	defer C.free(unsafe.Pointer(restartCommand_CArray))
 	defer C.free(unsafe.Pointer(restartCommand_Lengths))
 	for i := range restartCommand {
@@ -139,8 +139,8 @@ func (this *QSessionManager) RestartCommand() []string {
 
 func (this *QSessionManager) SetDiscardCommand(discardCommand []string) {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
-	discardCommand_CArray := (*[0xffff]*C.char)(C.malloc(C.ulong(8 * len(discardCommand))))
-	discardCommand_Lengths := (*[0xffff]C.size_t)(C.malloc(C.ulong(8 * len(discardCommand))))
+	discardCommand_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(discardCommand))))
+	discardCommand_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(discardCommand))))
 	defer C.free(unsafe.Pointer(discardCommand_CArray))
 	defer C.free(unsafe.Pointer(discardCommand_Lengths))
 	for i := range discardCommand {
@@ -179,8 +179,8 @@ func (this *QSessionManager) SetManagerProperty2(name string, value []string) {
 	name_Cstring := C.CString(name)
 	defer C.free(unsafe.Pointer(name_Cstring))
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
-	value_CArray := (*[0xffff]*C.char)(C.malloc(C.ulong(8 * len(value))))
-	value_Lengths := (*[0xffff]C.size_t)(C.malloc(C.ulong(8 * len(value))))
+	value_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(value))))
+	value_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(value))))
 	defer C.free(unsafe.Pointer(value_CArray))
 	defer C.free(unsafe.Pointer(value_Lengths))
 	for i := range value {

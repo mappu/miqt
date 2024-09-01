@@ -42,7 +42,7 @@ func NewQGuiApplication(args []string) *QGuiApplication {
 	// Convert []string to long-lived int& argc, char** argv, never call free()
 	argc := (*C.int)(C.malloc(8))
 	*argc = C.int(len(args))
-	argv := (*[0xffff]*C.char)(C.malloc(C.ulong(8 * len(args))))
+	argv := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(args))))
 	for i := range args {
 		argv[i] = C.CString(args[i])
 	}
@@ -55,7 +55,7 @@ func NewQGuiApplication2(args []string, param3 int) *QGuiApplication {
 	// Convert []string to long-lived int& argc, char** argv, never call free()
 	argc := (*C.int)(C.malloc(8))
 	*argc = C.int(len(args))
-	argv := (*[0xffff]*C.char)(C.malloc(C.ulong(8 * len(args))))
+	argv := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(args))))
 	for i := range args {
 		argv[i] = C.CString(args[i])
 	}

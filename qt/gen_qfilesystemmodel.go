@@ -256,7 +256,7 @@ func (this *QFileSystemModel) MimeTypes() []string {
 
 func (this *QFileSystemModel) MimeData(indexes []QModelIndex) *QMimeData {
 	// For the C ABI, malloc a C array of raw pointers
-	indexes_CArray := (*[0xffff]*C.QModelIndex)(C.malloc(C.ulong(8 * len(indexes))))
+	indexes_CArray := (*[0xffff]*C.QModelIndex)(C.malloc(C.size_t(8 * len(indexes))))
 	defer C.free(unsafe.Pointer(indexes_CArray))
 	for i := range indexes {
 		indexes_CArray[i] = indexes[i].cPointer()
@@ -355,8 +355,8 @@ func (this *QFileSystemModel) NameFilterDisables() bool {
 
 func (this *QFileSystemModel) SetNameFilters(filters []string) {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
-	filters_CArray := (*[0xffff]*C.char)(C.malloc(C.ulong(8 * len(filters))))
-	filters_Lengths := (*[0xffff]C.size_t)(C.malloc(C.ulong(8 * len(filters))))
+	filters_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(filters))))
+	filters_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(filters))))
 	defer C.free(unsafe.Pointer(filters_CArray))
 	defer C.free(unsafe.Pointer(filters_Lengths))
 	for i := range filters {

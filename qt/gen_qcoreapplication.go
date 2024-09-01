@@ -41,7 +41,7 @@ func NewQCoreApplication(args []string) *QCoreApplication {
 	// Convert []string to long-lived int& argc, char** argv, never call free()
 	argc := (*C.int)(C.malloc(8))
 	*argc = C.int(len(args))
-	argv := (*[0xffff]*C.char)(C.malloc(C.ulong(8 * len(args))))
+	argv := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(args))))
 	for i := range args {
 		argv[i] = C.CString(args[i])
 	}
@@ -54,7 +54,7 @@ func NewQCoreApplication2(args []string, param3 int) *QCoreApplication {
 	// Convert []string to long-lived int& argc, char** argv, never call free()
 	argc := (*C.int)(C.malloc(8))
 	*argc = C.int(len(args))
-	argv := (*[0xffff]*C.char)(C.malloc(C.ulong(8 * len(args))))
+	argv := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(args))))
 	for i := range args {
 		argv[i] = C.CString(args[i])
 	}
@@ -275,8 +275,8 @@ func QCoreApplication_ApplicationPid() int64 {
 
 func QCoreApplication_SetLibraryPaths(libraryPaths []string) {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
-	libraryPaths_CArray := (*[0xffff]*C.char)(C.malloc(C.ulong(8 * len(libraryPaths))))
-	libraryPaths_Lengths := (*[0xffff]C.size_t)(C.malloc(C.ulong(8 * len(libraryPaths))))
+	libraryPaths_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(libraryPaths))))
+	libraryPaths_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(libraryPaths))))
 	defer C.free(unsafe.Pointer(libraryPaths_CArray))
 	defer C.free(unsafe.Pointer(libraryPaths_Lengths))
 	for i := range libraryPaths {

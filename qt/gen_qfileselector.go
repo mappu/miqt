@@ -114,8 +114,8 @@ func (this *QFileSelector) ExtraSelectors() []string {
 
 func (this *QFileSelector) SetExtraSelectors(list []string) {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
-	list_CArray := (*[0xffff]*C.char)(C.malloc(C.ulong(8 * len(list))))
-	list_Lengths := (*[0xffff]C.size_t)(C.malloc(C.ulong(8 * len(list))))
+	list_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(list))))
+	list_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(list))))
 	defer C.free(unsafe.Pointer(list_CArray))
 	defer C.free(unsafe.Pointer(list_Lengths))
 	for i := range list {

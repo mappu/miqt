@@ -199,7 +199,7 @@ func (this *QConcatenateTablesProxyModel) MimeTypes() []string {
 
 func (this *QConcatenateTablesProxyModel) MimeData(indexes []QModelIndex) *QMimeData {
 	// For the C ABI, malloc a C array of raw pointers
-	indexes_CArray := (*[0xffff]*C.QModelIndex)(C.malloc(C.ulong(8 * len(indexes))))
+	indexes_CArray := (*[0xffff]*C.QModelIndex)(C.malloc(C.size_t(8 * len(indexes))))
 	defer C.free(unsafe.Pointer(indexes_CArray))
 	for i := range indexes {
 		indexes_CArray[i] = indexes[i].cPointer()

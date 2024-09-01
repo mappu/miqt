@@ -236,7 +236,7 @@ func (this *QWizard) ButtonText(which int) string {
 
 func (this *QWizard) SetButtonLayout(layout []int) {
 	// For the C ABI, malloc a C array of raw pointers
-	layout_CArray := (*[0xffff]C.int)(C.malloc(C.ulong(8 * len(layout))))
+	layout_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(layout))))
 	defer C.free(unsafe.Pointer(layout_CArray))
 	for i := range layout {
 		layout_CArray[i] = (C.int)(layout[i])

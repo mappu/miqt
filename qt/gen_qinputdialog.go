@@ -159,8 +159,8 @@ func (this *QInputDialog) IsComboBoxEditable() bool {
 
 func (this *QInputDialog) SetComboBoxItems(items []string) {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
-	items_CArray := (*[0xffff]*C.char)(C.malloc(C.ulong(8 * len(items))))
-	items_Lengths := (*[0xffff]C.size_t)(C.malloc(C.ulong(8 * len(items))))
+	items_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(items))))
+	items_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(items))))
 	defer C.free(unsafe.Pointer(items_CArray))
 	defer C.free(unsafe.Pointer(items_Lengths))
 	for i := range items {
@@ -355,8 +355,8 @@ func QInputDialog_GetItem(parent *QWidget, title string, label string, items []s
 	label_Cstring := C.CString(label)
 	defer C.free(unsafe.Pointer(label_Cstring))
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
-	items_CArray := (*[0xffff]*C.char)(C.malloc(C.ulong(8 * len(items))))
-	items_Lengths := (*[0xffff]C.size_t)(C.malloc(C.ulong(8 * len(items))))
+	items_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(items))))
+	items_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(items))))
 	defer C.free(unsafe.Pointer(items_CArray))
 	defer C.free(unsafe.Pointer(items_Lengths))
 	for i := range items {
@@ -684,8 +684,8 @@ func QInputDialog_GetItem5(parent *QWidget, title string, label string, items []
 	label_Cstring := C.CString(label)
 	defer C.free(unsafe.Pointer(label_Cstring))
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
-	items_CArray := (*[0xffff]*C.char)(C.malloc(C.ulong(8 * len(items))))
-	items_Lengths := (*[0xffff]C.size_t)(C.malloc(C.ulong(8 * len(items))))
+	items_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(items))))
+	items_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(items))))
 	defer C.free(unsafe.Pointer(items_CArray))
 	defer C.free(unsafe.Pointer(items_Lengths))
 	for i := range items {
@@ -708,8 +708,8 @@ func QInputDialog_GetItem6(parent *QWidget, title string, label string, items []
 	label_Cstring := C.CString(label)
 	defer C.free(unsafe.Pointer(label_Cstring))
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
-	items_CArray := (*[0xffff]*C.char)(C.malloc(C.ulong(8 * len(items))))
-	items_Lengths := (*[0xffff]C.size_t)(C.malloc(C.ulong(8 * len(items))))
+	items_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(items))))
+	items_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(items))))
 	defer C.free(unsafe.Pointer(items_CArray))
 	defer C.free(unsafe.Pointer(items_Lengths))
 	for i := range items {
@@ -732,8 +732,8 @@ func QInputDialog_GetItem7(parent *QWidget, title string, label string, items []
 	label_Cstring := C.CString(label)
 	defer C.free(unsafe.Pointer(label_Cstring))
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
-	items_CArray := (*[0xffff]*C.char)(C.malloc(C.ulong(8 * len(items))))
-	items_Lengths := (*[0xffff]C.size_t)(C.malloc(C.ulong(8 * len(items))))
+	items_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(items))))
+	items_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(items))))
 	defer C.free(unsafe.Pointer(items_CArray))
 	defer C.free(unsafe.Pointer(items_Lengths))
 	for i := range items {
@@ -756,8 +756,8 @@ func QInputDialog_GetItem8(parent *QWidget, title string, label string, items []
 	label_Cstring := C.CString(label)
 	defer C.free(unsafe.Pointer(label_Cstring))
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
-	items_CArray := (*[0xffff]*C.char)(C.malloc(C.ulong(8 * len(items))))
-	items_Lengths := (*[0xffff]C.size_t)(C.malloc(C.ulong(8 * len(items))))
+	items_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(items))))
+	items_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(items))))
 	defer C.free(unsafe.Pointer(items_CArray))
 	defer C.free(unsafe.Pointer(items_Lengths))
 	for i := range items {
@@ -780,8 +780,8 @@ func QInputDialog_GetItem9(parent *QWidget, title string, label string, items []
 	label_Cstring := C.CString(label)
 	defer C.free(unsafe.Pointer(label_Cstring))
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
-	items_CArray := (*[0xffff]*C.char)(C.malloc(C.ulong(8 * len(items))))
-	items_Lengths := (*[0xffff]C.size_t)(C.malloc(C.ulong(8 * len(items))))
+	items_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(items))))
+	items_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(items))))
 	defer C.free(unsafe.Pointer(items_CArray))
 	defer C.free(unsafe.Pointer(items_Lengths))
 	for i := range items {

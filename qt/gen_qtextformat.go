@@ -265,7 +265,7 @@ func (this *QTextFormat) LengthVectorProperty(propertyId int) []QTextLength {
 
 func (this *QTextFormat) SetProperty2(propertyId int, lengths []QTextLength) {
 	// For the C ABI, malloc a C array of raw pointers
-	lengths_CArray := (*[0xffff]*C.QTextLength)(C.malloc(C.ulong(8 * len(lengths))))
+	lengths_CArray := (*[0xffff]*C.QTextLength)(C.malloc(C.size_t(8 * len(lengths))))
 	defer C.free(unsafe.Pointer(lengths_CArray))
 	for i := range lengths {
 		lengths_CArray[i] = lengths[i].cPointer()
@@ -536,8 +536,8 @@ func (this *QTextCharFormat) FontFamily() string {
 
 func (this *QTextCharFormat) SetFontFamilies(families []string) {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
-	families_CArray := (*[0xffff]*C.char)(C.malloc(C.ulong(8 * len(families))))
-	families_Lengths := (*[0xffff]C.size_t)(C.malloc(C.ulong(8 * len(families))))
+	families_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(families))))
+	families_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(families))))
 	defer C.free(unsafe.Pointer(families_CArray))
 	defer C.free(unsafe.Pointer(families_Lengths))
 	for i := range families {
@@ -825,8 +825,8 @@ func (this *QTextCharFormat) AnchorName() string {
 
 func (this *QTextCharFormat) SetAnchorNames(names []string) {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
-	names_CArray := (*[0xffff]*C.char)(C.malloc(C.ulong(8 * len(names))))
-	names_Lengths := (*[0xffff]C.size_t)(C.malloc(C.ulong(8 * len(names))))
+	names_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(names))))
+	names_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(names))))
 	defer C.free(unsafe.Pointer(names_CArray))
 	defer C.free(unsafe.Pointer(names_Lengths))
 	for i := range names {
@@ -1030,7 +1030,7 @@ func (this *QTextBlockFormat) PageBreakPolicy() int {
 
 func (this *QTextBlockFormat) SetTabPositions(tabs []QTextOption__Tab) {
 	// For the C ABI, malloc a C array of raw pointers
-	tabs_CArray := (*[0xffff]*C.QTextOption__Tab)(C.malloc(C.ulong(8 * len(tabs))))
+	tabs_CArray := (*[0xffff]*C.QTextOption__Tab)(C.malloc(C.size_t(8 * len(tabs))))
 	defer C.free(unsafe.Pointer(tabs_CArray))
 	for i := range tabs {
 		tabs_CArray[i] = tabs[i].cPointer()
@@ -1472,7 +1472,7 @@ func (this *QTextTableFormat) SetColumns(columns int) {
 
 func (this *QTextTableFormat) SetColumnWidthConstraints(constraints []QTextLength) {
 	// For the C ABI, malloc a C array of raw pointers
-	constraints_CArray := (*[0xffff]*C.QTextLength)(C.malloc(C.ulong(8 * len(constraints))))
+	constraints_CArray := (*[0xffff]*C.QTextLength)(C.malloc(C.size_t(8 * len(constraints))))
 	defer C.free(unsafe.Pointer(constraints_CArray))
 	for i := range constraints {
 		constraints_CArray[i] = constraints[i].cPointer()

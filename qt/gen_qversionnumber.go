@@ -44,7 +44,7 @@ func NewQVersionNumber() *QVersionNumber {
 // NewQVersionNumber2 constructs a new QVersionNumber object.
 func NewQVersionNumber2(seg []int) *QVersionNumber {
 	// For the C ABI, malloc a C array of raw pointers
-	seg_CArray := (*[0xffff]C.int)(C.malloc(C.ulong(8 * len(seg))))
+	seg_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(seg))))
 	defer C.free(unsafe.Pointer(seg_CArray))
 	for i := range seg {
 		seg_CArray[i] = (C.int)(seg[i])

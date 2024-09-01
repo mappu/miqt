@@ -492,7 +492,7 @@ func (this *QAbstractItemModel) MimeTypes() []string {
 
 func (this *QAbstractItemModel) MimeData(indexes []QModelIndex) *QMimeData {
 	// For the C ABI, malloc a C array of raw pointers
-	indexes_CArray := (*[0xffff]*C.QModelIndex)(C.malloc(C.ulong(8 * len(indexes))))
+	indexes_CArray := (*[0xffff]*C.QModelIndex)(C.malloc(C.size_t(8 * len(indexes))))
 	defer C.free(unsafe.Pointer(indexes_CArray))
 	for i := range indexes {
 		indexes_CArray[i] = indexes[i].cPointer()
@@ -864,7 +864,7 @@ func (this *QAbstractItemModel) CheckIndex2(index *QModelIndex, options int) boo
 
 func (this *QAbstractItemModel) DataChanged3(topLeft *QModelIndex, bottomRight *QModelIndex, roles []int) {
 	// For the C ABI, malloc a C array of raw pointers
-	roles_CArray := (*[0xffff]C.int)(C.malloc(C.ulong(8 * len(roles))))
+	roles_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(roles))))
 	defer C.free(unsafe.Pointer(roles_CArray))
 	for i := range roles {
 		roles_CArray[i] = (C.int)(roles[i])
@@ -882,7 +882,7 @@ func (this *QAbstractItemModel) OnDataChanged3(slot func()) {
 
 func (this *QAbstractItemModel) LayoutChanged1(parents []QPersistentModelIndex) {
 	// For the C ABI, malloc a C array of raw pointers
-	parents_CArray := (*[0xffff]*C.QPersistentModelIndex)(C.malloc(C.ulong(8 * len(parents))))
+	parents_CArray := (*[0xffff]*C.QPersistentModelIndex)(C.malloc(C.size_t(8 * len(parents))))
 	defer C.free(unsafe.Pointer(parents_CArray))
 	for i := range parents {
 		parents_CArray[i] = parents[i].cPointer()
@@ -892,7 +892,7 @@ func (this *QAbstractItemModel) LayoutChanged1(parents []QPersistentModelIndex) 
 
 func (this *QAbstractItemModel) LayoutChanged2(parents []QPersistentModelIndex, hint uintptr) {
 	// For the C ABI, malloc a C array of raw pointers
-	parents_CArray := (*[0xffff]*C.QPersistentModelIndex)(C.malloc(C.ulong(8 * len(parents))))
+	parents_CArray := (*[0xffff]*C.QPersistentModelIndex)(C.malloc(C.size_t(8 * len(parents))))
 	defer C.free(unsafe.Pointer(parents_CArray))
 	for i := range parents {
 		parents_CArray[i] = parents[i].cPointer()
@@ -910,7 +910,7 @@ func (this *QAbstractItemModel) OnLayoutChanged2(slot func()) {
 
 func (this *QAbstractItemModel) LayoutAboutToBeChanged1(parents []QPersistentModelIndex) {
 	// For the C ABI, malloc a C array of raw pointers
-	parents_CArray := (*[0xffff]*C.QPersistentModelIndex)(C.malloc(C.ulong(8 * len(parents))))
+	parents_CArray := (*[0xffff]*C.QPersistentModelIndex)(C.malloc(C.size_t(8 * len(parents))))
 	defer C.free(unsafe.Pointer(parents_CArray))
 	for i := range parents {
 		parents_CArray[i] = parents[i].cPointer()
@@ -920,7 +920,7 @@ func (this *QAbstractItemModel) LayoutAboutToBeChanged1(parents []QPersistentMod
 
 func (this *QAbstractItemModel) LayoutAboutToBeChanged2(parents []QPersistentModelIndex, hint uintptr) {
 	// For the C ABI, malloc a C array of raw pointers
-	parents_CArray := (*[0xffff]*C.QPersistentModelIndex)(C.malloc(C.ulong(8 * len(parents))))
+	parents_CArray := (*[0xffff]*C.QPersistentModelIndex)(C.malloc(C.size_t(8 * len(parents))))
 	defer C.free(unsafe.Pointer(parents_CArray))
 	for i := range parents {
 		parents_CArray[i] = parents[i].cPointer()

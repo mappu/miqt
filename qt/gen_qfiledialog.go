@@ -203,8 +203,8 @@ func (this *QFileDialog) SetNameFilter(filter string) {
 
 func (this *QFileDialog) SetNameFilters(filters []string) {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
-	filters_CArray := (*[0xffff]*C.char)(C.malloc(C.ulong(8 * len(filters))))
-	filters_Lengths := (*[0xffff]C.size_t)(C.malloc(C.ulong(8 * len(filters))))
+	filters_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(filters))))
+	filters_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(filters))))
 	defer C.free(unsafe.Pointer(filters_CArray))
 	defer C.free(unsafe.Pointer(filters_Lengths))
 	for i := range filters {
@@ -257,8 +257,8 @@ func (this *QFileDialog) SelectedNameFilter() string {
 
 func (this *QFileDialog) SetMimeTypeFilters(filters []string) {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
-	filters_CArray := (*[0xffff]*C.char)(C.malloc(C.ulong(8 * len(filters))))
-	filters_Lengths := (*[0xffff]C.size_t)(C.malloc(C.ulong(8 * len(filters))))
+	filters_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(filters))))
+	filters_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(filters))))
 	defer C.free(unsafe.Pointer(filters_CArray))
 	defer C.free(unsafe.Pointer(filters_Lengths))
 	for i := range filters {
@@ -347,7 +347,7 @@ func (this *QFileDialog) ResolveSymlinks() bool {
 
 func (this *QFileDialog) SetSidebarUrls(urls []QUrl) {
 	// For the C ABI, malloc a C array of raw pointers
-	urls_CArray := (*[0xffff]*C.QUrl)(C.malloc(C.ulong(8 * len(urls))))
+	urls_CArray := (*[0xffff]*C.QUrl)(C.malloc(C.size_t(8 * len(urls))))
 	defer C.free(unsafe.Pointer(urls_CArray))
 	for i := range urls {
 		urls_CArray[i] = urls[i].cPointer()
@@ -410,8 +410,8 @@ func (this *QFileDialog) DefaultSuffix() string {
 
 func (this *QFileDialog) SetHistory(paths []string) {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
-	paths_CArray := (*[0xffff]*C.char)(C.malloc(C.ulong(8 * len(paths))))
-	paths_Lengths := (*[0xffff]C.size_t)(C.malloc(C.ulong(8 * len(paths))))
+	paths_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(paths))))
+	paths_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(paths))))
 	defer C.free(unsafe.Pointer(paths_CArray))
 	defer C.free(unsafe.Pointer(paths_Lengths))
 	for i := range paths {
@@ -473,8 +473,8 @@ func (this *QFileDialog) LabelText(label uintptr) string {
 
 func (this *QFileDialog) SetSupportedSchemes(schemes []string) {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
-	schemes_CArray := (*[0xffff]*C.char)(C.malloc(C.ulong(8 * len(schemes))))
-	schemes_Lengths := (*[0xffff]C.size_t)(C.malloc(C.ulong(8 * len(schemes))))
+	schemes_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(schemes))))
+	schemes_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(schemes))))
 	defer C.free(unsafe.Pointer(schemes_CArray))
 	defer C.free(unsafe.Pointer(schemes_Lengths))
 	for i := range schemes {
@@ -548,8 +548,8 @@ func (this *QFileDialog) OnFileSelected(slot func()) {
 
 func (this *QFileDialog) FilesSelected(files []string) {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
-	files_CArray := (*[0xffff]*C.char)(C.malloc(C.ulong(8 * len(files))))
-	files_Lengths := (*[0xffff]C.size_t)(C.malloc(C.ulong(8 * len(files))))
+	files_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(files))))
+	files_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(files))))
 	defer C.free(unsafe.Pointer(files_CArray))
 	defer C.free(unsafe.Pointer(files_Lengths))
 	for i := range files {
@@ -611,7 +611,7 @@ func (this *QFileDialog) OnUrlSelected(slot func()) {
 
 func (this *QFileDialog) UrlsSelected(urls []QUrl) {
 	// For the C ABI, malloc a C array of raw pointers
-	urls_CArray := (*[0xffff]*C.QUrl)(C.malloc(C.ulong(8 * len(urls))))
+	urls_CArray := (*[0xffff]*C.QUrl)(C.malloc(C.size_t(8 * len(urls))))
 	defer C.free(unsafe.Pointer(urls_CArray))
 	for i := range urls {
 		urls_CArray[i] = urls[i].cPointer()
@@ -1113,8 +1113,8 @@ func QFileDialog_GetExistingDirectoryUrl5(parent *QWidget, caption string, dir *
 	caption_Cstring := C.CString(caption)
 	defer C.free(unsafe.Pointer(caption_Cstring))
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
-	supportedSchemes_CArray := (*[0xffff]*C.char)(C.malloc(C.ulong(8 * len(supportedSchemes))))
-	supportedSchemes_Lengths := (*[0xffff]C.size_t)(C.malloc(C.ulong(8 * len(supportedSchemes))))
+	supportedSchemes_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(supportedSchemes))))
+	supportedSchemes_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(supportedSchemes))))
 	defer C.free(unsafe.Pointer(supportedSchemes_CArray))
 	defer C.free(unsafe.Pointer(supportedSchemes_Lengths))
 	for i := range supportedSchemes {

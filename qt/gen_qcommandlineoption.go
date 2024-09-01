@@ -45,8 +45,8 @@ func NewQCommandLineOption(name string) *QCommandLineOption {
 // NewQCommandLineOption2 constructs a new QCommandLineOption object.
 func NewQCommandLineOption2(names []string) *QCommandLineOption {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
-	names_CArray := (*[0xffff]*C.char)(C.malloc(C.ulong(8 * len(names))))
-	names_Lengths := (*[0xffff]C.size_t)(C.malloc(C.ulong(8 * len(names))))
+	names_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(names))))
+	names_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(names))))
 	defer C.free(unsafe.Pointer(names_CArray))
 	defer C.free(unsafe.Pointer(names_Lengths))
 	for i := range names {
@@ -72,8 +72,8 @@ func NewQCommandLineOption3(name string, description string) *QCommandLineOption
 // NewQCommandLineOption4 constructs a new QCommandLineOption object.
 func NewQCommandLineOption4(names []string, description string) *QCommandLineOption {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
-	names_CArray := (*[0xffff]*C.char)(C.malloc(C.ulong(8 * len(names))))
-	names_Lengths := (*[0xffff]C.size_t)(C.malloc(C.ulong(8 * len(names))))
+	names_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(names))))
+	names_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(names))))
 	defer C.free(unsafe.Pointer(names_CArray))
 	defer C.free(unsafe.Pointer(names_Lengths))
 	for i := range names {
@@ -123,8 +123,8 @@ func NewQCommandLineOption7(name string, description string, valueName string, d
 // NewQCommandLineOption8 constructs a new QCommandLineOption object.
 func NewQCommandLineOption8(names []string, description string, valueName string) *QCommandLineOption {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
-	names_CArray := (*[0xffff]*C.char)(C.malloc(C.ulong(8 * len(names))))
-	names_Lengths := (*[0xffff]C.size_t)(C.malloc(C.ulong(8 * len(names))))
+	names_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(names))))
+	names_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(names))))
 	defer C.free(unsafe.Pointer(names_CArray))
 	defer C.free(unsafe.Pointer(names_Lengths))
 	for i := range names {
@@ -144,8 +144,8 @@ func NewQCommandLineOption8(names []string, description string, valueName string
 // NewQCommandLineOption9 constructs a new QCommandLineOption object.
 func NewQCommandLineOption9(names []string, description string, valueName string, defaultValue string) *QCommandLineOption {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
-	names_CArray := (*[0xffff]*C.char)(C.malloc(C.ulong(8 * len(names))))
-	names_Lengths := (*[0xffff]C.size_t)(C.malloc(C.ulong(8 * len(names))))
+	names_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(names))))
+	names_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(names))))
 	defer C.free(unsafe.Pointer(names_CArray))
 	defer C.free(unsafe.Pointer(names_Lengths))
 	for i := range names {
@@ -225,8 +225,8 @@ func (this *QCommandLineOption) SetDefaultValue(defaultValue string) {
 
 func (this *QCommandLineOption) SetDefaultValues(defaultValues []string) {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
-	defaultValues_CArray := (*[0xffff]*C.char)(C.malloc(C.ulong(8 * len(defaultValues))))
-	defaultValues_Lengths := (*[0xffff]C.size_t)(C.malloc(C.ulong(8 * len(defaultValues))))
+	defaultValues_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(defaultValues))))
+	defaultValues_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(defaultValues))))
 	defer C.free(unsafe.Pointer(defaultValues_CArray))
 	defer C.free(unsafe.Pointer(defaultValues_Lengths))
 	for i := range defaultValues {

@@ -582,7 +582,7 @@ func (this *QPainterPathStroker) SetDashPattern(dashPattern uintptr) {
 
 func (this *QPainterPathStroker) SetDashPatternWithDashPattern(dashPattern []float64) {
 	// For the C ABI, malloc a C array of raw pointers
-	dashPattern_CArray := (*[0xffff]C.double)(C.malloc(C.ulong(8 * len(dashPattern))))
+	dashPattern_CArray := (*[0xffff]C.double)(C.malloc(C.size_t(8 * len(dashPattern))))
 	defer C.free(unsafe.Pointer(dashPattern_CArray))
 	for i := range dashPattern {
 		dashPattern_CArray[i] = (C.double)(dashPattern[i])

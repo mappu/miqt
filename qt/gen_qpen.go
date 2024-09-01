@@ -115,7 +115,7 @@ func (this *QPen) DashPattern() []float64 {
 
 func (this *QPen) SetDashPattern(pattern []float64) {
 	// For the C ABI, malloc a C array of raw pointers
-	pattern_CArray := (*[0xffff]C.double)(C.malloc(C.ulong(8 * len(pattern))))
+	pattern_CArray := (*[0xffff]C.double)(C.malloc(C.size_t(8 * len(pattern))))
 	defer C.free(unsafe.Pointer(pattern_CArray))
 	for i := range pattern {
 		pattern_CArray[i] = (C.double)(pattern[i])

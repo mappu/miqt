@@ -62,8 +62,8 @@ func NewQDirIterator4(path string, nameFilters []string) *QDirIterator {
 	path_Cstring := C.CString(path)
 	defer C.free(unsafe.Pointer(path_Cstring))
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
-	nameFilters_CArray := (*[0xffff]*C.char)(C.malloc(C.ulong(8 * len(nameFilters))))
-	nameFilters_Lengths := (*[0xffff]C.size_t)(C.malloc(C.ulong(8 * len(nameFilters))))
+	nameFilters_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(nameFilters))))
+	nameFilters_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(nameFilters))))
 	defer C.free(unsafe.Pointer(nameFilters_CArray))
 	defer C.free(unsafe.Pointer(nameFilters_Lengths))
 	for i := range nameFilters {
@@ -103,8 +103,8 @@ func NewQDirIterator8(path string, nameFilters []string, filters int) *QDirItera
 	path_Cstring := C.CString(path)
 	defer C.free(unsafe.Pointer(path_Cstring))
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
-	nameFilters_CArray := (*[0xffff]*C.char)(C.malloc(C.ulong(8 * len(nameFilters))))
-	nameFilters_Lengths := (*[0xffff]C.size_t)(C.malloc(C.ulong(8 * len(nameFilters))))
+	nameFilters_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(nameFilters))))
+	nameFilters_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(nameFilters))))
 	defer C.free(unsafe.Pointer(nameFilters_CArray))
 	defer C.free(unsafe.Pointer(nameFilters_Lengths))
 	for i := range nameFilters {
@@ -122,8 +122,8 @@ func NewQDirIterator9(path string, nameFilters []string, filters int, flags int)
 	path_Cstring := C.CString(path)
 	defer C.free(unsafe.Pointer(path_Cstring))
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
-	nameFilters_CArray := (*[0xffff]*C.char)(C.malloc(C.ulong(8 * len(nameFilters))))
-	nameFilters_Lengths := (*[0xffff]C.size_t)(C.malloc(C.ulong(8 * len(nameFilters))))
+	nameFilters_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(nameFilters))))
+	nameFilters_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(nameFilters))))
 	defer C.free(unsafe.Pointer(nameFilters_CArray))
 	defer C.free(unsafe.Pointer(nameFilters_Lengths))
 	for i := range nameFilters {

@@ -1004,8 +1004,8 @@ func (this *QLocale) QuoteString(str string) string {
 
 func (this *QLocale) CreateSeparatedList(strl []string) string {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
-	strl_CArray := (*[0xffff]*C.char)(C.malloc(C.ulong(8 * len(strl))))
-	strl_Lengths := (*[0xffff]C.size_t)(C.malloc(C.ulong(8 * len(strl))))
+	strl_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(strl))))
+	strl_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(strl))))
 	defer C.free(unsafe.Pointer(strl_CArray))
 	defer C.free(unsafe.Pointer(strl_Lengths))
 	for i := range strl {

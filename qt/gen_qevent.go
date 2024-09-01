@@ -1605,7 +1605,7 @@ func NewQInputMethodEvent2(preeditText string, attributes []QInputMethodEvent__A
 	preeditText_Cstring := C.CString(preeditText)
 	defer C.free(unsafe.Pointer(preeditText_Cstring))
 	// For the C ABI, malloc a C array of raw pointers
-	attributes_CArray := (*[0xffff]*C.QInputMethodEvent__Attribute)(C.malloc(C.ulong(8 * len(attributes))))
+	attributes_CArray := (*[0xffff]*C.QInputMethodEvent__Attribute)(C.malloc(C.size_t(8 * len(attributes))))
 	defer C.free(unsafe.Pointer(attributes_CArray))
 	for i := range attributes {
 		attributes_CArray[i] = attributes[i].cPointer()
@@ -2565,7 +2565,7 @@ func NewQTouchEvent5(eventType uintptr, device *QTouchDevice, modifiers int, tou
 // NewQTouchEvent6 constructs a new QTouchEvent object.
 func NewQTouchEvent6(eventType uintptr, device *QTouchDevice, modifiers int, touchPointStates int, touchPoints []QTouchEvent__TouchPoint) *QTouchEvent {
 	// For the C ABI, malloc a C array of raw pointers
-	touchPoints_CArray := (*[0xffff]*C.QTouchEvent__TouchPoint)(C.malloc(C.ulong(8 * len(touchPoints))))
+	touchPoints_CArray := (*[0xffff]*C.QTouchEvent__TouchPoint)(C.malloc(C.size_t(8 * len(touchPoints))))
 	defer C.free(unsafe.Pointer(touchPoints_CArray))
 	for i := range touchPoints {
 		touchPoints_CArray[i] = touchPoints[i].cPointer()
@@ -2608,7 +2608,7 @@ func (this *QTouchEvent) SetTouchPointStates(aTouchPointStates int) {
 
 func (this *QTouchEvent) SetTouchPoints(atouchPoints []QTouchEvent__TouchPoint) {
 	// For the C ABI, malloc a C array of raw pointers
-	atouchPoints_CArray := (*[0xffff]*C.QTouchEvent__TouchPoint)(C.malloc(C.ulong(8 * len(atouchPoints))))
+	atouchPoints_CArray := (*[0xffff]*C.QTouchEvent__TouchPoint)(C.malloc(C.size_t(8 * len(atouchPoints))))
 	defer C.free(unsafe.Pointer(atouchPoints_CArray))
 	for i := range atouchPoints {
 		atouchPoints_CArray[i] = atouchPoints[i].cPointer()
@@ -3296,7 +3296,7 @@ func (this *QTouchEvent__TouchPoint) SetFlags(flags int) {
 
 func (this *QTouchEvent__TouchPoint) SetRawScreenPositions(positions []QPointF) {
 	// For the C ABI, malloc a C array of raw pointers
-	positions_CArray := (*[0xffff]*C.QPointF)(C.malloc(C.ulong(8 * len(positions))))
+	positions_CArray := (*[0xffff]*C.QPointF)(C.malloc(C.size_t(8 * len(positions))))
 	defer C.free(unsafe.Pointer(positions_CArray))
 	for i := range positions {
 		positions_CArray[i] = positions[i].cPointer()

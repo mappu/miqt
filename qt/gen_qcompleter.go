@@ -52,8 +52,8 @@ func NewQCompleter2(model *QAbstractItemModel) *QCompleter {
 // NewQCompleter3 constructs a new QCompleter object.
 func NewQCompleter3(completions []string) *QCompleter {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
-	completions_CArray := (*[0xffff]*C.char)(C.malloc(C.ulong(8 * len(completions))))
-	completions_Lengths := (*[0xffff]C.size_t)(C.malloc(C.ulong(8 * len(completions))))
+	completions_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(completions))))
+	completions_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(completions))))
 	defer C.free(unsafe.Pointer(completions_CArray))
 	defer C.free(unsafe.Pointer(completions_Lengths))
 	for i := range completions {
@@ -81,8 +81,8 @@ func NewQCompleter5(model *QAbstractItemModel, parent *QObject) *QCompleter {
 // NewQCompleter6 constructs a new QCompleter object.
 func NewQCompleter6(completions []string, parent *QObject) *QCompleter {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
-	completions_CArray := (*[0xffff]*C.char)(C.malloc(C.ulong(8 * len(completions))))
-	completions_Lengths := (*[0xffff]C.size_t)(C.malloc(C.ulong(8 * len(completions))))
+	completions_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(completions))))
+	completions_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(completions))))
 	defer C.free(unsafe.Pointer(completions_CArray))
 	defer C.free(unsafe.Pointer(completions_Lengths))
 	for i := range completions {

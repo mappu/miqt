@@ -457,8 +457,8 @@ func (this *QListWidget) InsertItem2(row int, label string) {
 
 func (this *QListWidget) InsertItems(row int, labels []string) {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
-	labels_CArray := (*[0xffff]*C.char)(C.malloc(C.ulong(8 * len(labels))))
-	labels_Lengths := (*[0xffff]C.size_t)(C.malloc(C.ulong(8 * len(labels))))
+	labels_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(labels))))
+	labels_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(labels))))
 	defer C.free(unsafe.Pointer(labels_CArray))
 	defer C.free(unsafe.Pointer(labels_Lengths))
 	for i := range labels {
@@ -482,8 +482,8 @@ func (this *QListWidget) AddItemWithItem(item *QListWidgetItem) {
 
 func (this *QListWidget) AddItems(labels []string) {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
-	labels_CArray := (*[0xffff]*C.char)(C.malloc(C.ulong(8 * len(labels))))
-	labels_Lengths := (*[0xffff]C.size_t)(C.malloc(C.ulong(8 * len(labels))))
+	labels_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(labels))))
+	labels_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(labels))))
 	defer C.free(unsafe.Pointer(labels_CArray))
 	defer C.free(unsafe.Pointer(labels_Lengths))
 	for i := range labels {

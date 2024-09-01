@@ -259,8 +259,8 @@ func QIcon_ThemeSearchPaths() []string {
 
 func QIcon_SetThemeSearchPaths(searchpath []string) {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
-	searchpath_CArray := (*[0xffff]*C.char)(C.malloc(C.ulong(8 * len(searchpath))))
-	searchpath_Lengths := (*[0xffff]C.size_t)(C.malloc(C.ulong(8 * len(searchpath))))
+	searchpath_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(searchpath))))
+	searchpath_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(searchpath))))
 	defer C.free(unsafe.Pointer(searchpath_CArray))
 	defer C.free(unsafe.Pointer(searchpath_Lengths))
 	for i := range searchpath {
@@ -289,8 +289,8 @@ func QIcon_FallbackSearchPaths() []string {
 
 func QIcon_SetFallbackSearchPaths(paths []string) {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
-	paths_CArray := (*[0xffff]*C.char)(C.malloc(C.ulong(8 * len(paths))))
-	paths_Lengths := (*[0xffff]C.size_t)(C.malloc(C.ulong(8 * len(paths))))
+	paths_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(paths))))
+	paths_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(paths))))
 	defer C.free(unsafe.Pointer(paths_CArray))
 	defer C.free(unsafe.Pointer(paths_Lengths))
 	for i := range paths {

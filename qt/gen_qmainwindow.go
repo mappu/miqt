@@ -302,13 +302,13 @@ func (this *QMainWindow) DockWidgetArea(dockwidget *QDockWidget) uintptr {
 
 func (this *QMainWindow) ResizeDocks(docks []*QDockWidget, sizes []int, orientation uintptr) {
 	// For the C ABI, malloc a C array of raw pointers
-	docks_CArray := (*[0xffff]*C.QDockWidget)(C.malloc(C.ulong(8 * len(docks))))
+	docks_CArray := (*[0xffff]*C.QDockWidget)(C.malloc(C.size_t(8 * len(docks))))
 	defer C.free(unsafe.Pointer(docks_CArray))
 	for i := range docks {
 		docks_CArray[i] = docks[i].cPointer()
 	}
 	// For the C ABI, malloc a C array of raw pointers
-	sizes_CArray := (*[0xffff]C.int)(C.malloc(C.ulong(8 * len(sizes))))
+	sizes_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(sizes))))
 	defer C.free(unsafe.Pointer(sizes_CArray))
 	for i := range sizes {
 		sizes_CArray[i] = (C.int)(sizes[i])

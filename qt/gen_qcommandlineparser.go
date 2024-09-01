@@ -78,7 +78,7 @@ func (this *QCommandLineParser) AddOption(commandLineOption *QCommandLineOption)
 
 func (this *QCommandLineParser) AddOptions(options []QCommandLineOption) bool {
 	// For the C ABI, malloc a C array of raw pointers
-	options_CArray := (*[0xffff]*C.QCommandLineOption)(C.malloc(C.ulong(8 * len(options))))
+	options_CArray := (*[0xffff]*C.QCommandLineOption)(C.malloc(C.size_t(8 * len(options))))
 	defer C.free(unsafe.Pointer(options_CArray))
 	for i := range options {
 		options_CArray[i] = options[i].cPointer()
@@ -138,8 +138,8 @@ func (this *QCommandLineParser) ClearPositionalArguments() {
 
 func (this *QCommandLineParser) Process(arguments []string) {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
-	arguments_CArray := (*[0xffff]*C.char)(C.malloc(C.ulong(8 * len(arguments))))
-	arguments_Lengths := (*[0xffff]C.size_t)(C.malloc(C.ulong(8 * len(arguments))))
+	arguments_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(arguments))))
+	arguments_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(arguments))))
 	defer C.free(unsafe.Pointer(arguments_CArray))
 	defer C.free(unsafe.Pointer(arguments_Lengths))
 	for i := range arguments {
@@ -157,8 +157,8 @@ func (this *QCommandLineParser) ProcessWithApp(app *QCoreApplication) {
 
 func (this *QCommandLineParser) Parse(arguments []string) bool {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
-	arguments_CArray := (*[0xffff]*C.char)(C.malloc(C.ulong(8 * len(arguments))))
-	arguments_Lengths := (*[0xffff]C.size_t)(C.malloc(C.ulong(8 * len(arguments))))
+	arguments_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(arguments))))
+	arguments_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(arguments))))
 	defer C.free(unsafe.Pointer(arguments_CArray))
 	defer C.free(unsafe.Pointer(arguments_Lengths))
 	for i := range arguments {

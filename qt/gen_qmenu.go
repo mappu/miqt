@@ -237,7 +237,7 @@ func (this *QMenu) ExecWithPos(pos *QPoint) *QAction {
 
 func QMenu_Exec2(actions []*QAction, pos *QPoint) *QAction {
 	// For the C ABI, malloc a C array of raw pointers
-	actions_CArray := (*[0xffff]*C.QAction)(C.malloc(C.ulong(8 * len(actions))))
+	actions_CArray := (*[0xffff]*C.QAction)(C.malloc(C.size_t(8 * len(actions))))
 	defer C.free(unsafe.Pointer(actions_CArray))
 	for i := range actions {
 		actions_CArray[i] = actions[i].cPointer()
@@ -441,7 +441,7 @@ func (this *QMenu) Exec22(pos *QPoint, at *QAction) *QAction {
 
 func QMenu_Exec3(actions []*QAction, pos *QPoint, at *QAction) *QAction {
 	// For the C ABI, malloc a C array of raw pointers
-	actions_CArray := (*[0xffff]*C.QAction)(C.malloc(C.ulong(8 * len(actions))))
+	actions_CArray := (*[0xffff]*C.QAction)(C.malloc(C.size_t(8 * len(actions))))
 	defer C.free(unsafe.Pointer(actions_CArray))
 	for i := range actions {
 		actions_CArray[i] = actions[i].cPointer()
@@ -452,7 +452,7 @@ func QMenu_Exec3(actions []*QAction, pos *QPoint, at *QAction) *QAction {
 
 func QMenu_Exec4(actions []*QAction, pos *QPoint, at *QAction, parent *QWidget) *QAction {
 	// For the C ABI, malloc a C array of raw pointers
-	actions_CArray := (*[0xffff]*C.QAction)(C.malloc(C.ulong(8 * len(actions))))
+	actions_CArray := (*[0xffff]*C.QAction)(C.malloc(C.size_t(8 * len(actions))))
 	defer C.free(unsafe.Pointer(actions_CArray))
 	for i := range actions {
 		actions_CArray[i] = actions[i].cPointer()

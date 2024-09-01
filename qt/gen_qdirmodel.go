@@ -39,8 +39,8 @@ func newQDirModel_U(h unsafe.Pointer) *QDirModel {
 // NewQDirModel constructs a new QDirModel object.
 func NewQDirModel(nameFilters []string, filters int, sort int) *QDirModel {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
-	nameFilters_CArray := (*[0xffff]*C.char)(C.malloc(C.ulong(8 * len(nameFilters))))
-	nameFilters_Lengths := (*[0xffff]C.size_t)(C.malloc(C.ulong(8 * len(nameFilters))))
+	nameFilters_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(nameFilters))))
+	nameFilters_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(nameFilters))))
 	defer C.free(unsafe.Pointer(nameFilters_CArray))
 	defer C.free(unsafe.Pointer(nameFilters_Lengths))
 	for i := range nameFilters {
@@ -62,8 +62,8 @@ func NewQDirModel2() *QDirModel {
 // NewQDirModel3 constructs a new QDirModel object.
 func NewQDirModel3(nameFilters []string, filters int, sort int, parent *QObject) *QDirModel {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
-	nameFilters_CArray := (*[0xffff]*C.char)(C.malloc(C.ulong(8 * len(nameFilters))))
-	nameFilters_Lengths := (*[0xffff]C.size_t)(C.malloc(C.ulong(8 * len(nameFilters))))
+	nameFilters_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(nameFilters))))
+	nameFilters_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(nameFilters))))
 	defer C.free(unsafe.Pointer(nameFilters_CArray))
 	defer C.free(unsafe.Pointer(nameFilters_Lengths))
 	for i := range nameFilters {
@@ -199,7 +199,7 @@ func (this *QDirModel) MimeTypes() []string {
 
 func (this *QDirModel) MimeData(indexes []QModelIndex) *QMimeData {
 	// For the C ABI, malloc a C array of raw pointers
-	indexes_CArray := (*[0xffff]*C.QModelIndex)(C.malloc(C.ulong(8 * len(indexes))))
+	indexes_CArray := (*[0xffff]*C.QModelIndex)(C.malloc(C.size_t(8 * len(indexes))))
 	defer C.free(unsafe.Pointer(indexes_CArray))
 	for i := range indexes {
 		indexes_CArray[i] = indexes[i].cPointer()
@@ -229,8 +229,8 @@ func (this *QDirModel) IconProvider() *QFileIconProvider {
 
 func (this *QDirModel) SetNameFilters(filters []string) {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
-	filters_CArray := (*[0xffff]*C.char)(C.malloc(C.ulong(8 * len(filters))))
-	filters_Lengths := (*[0xffff]C.size_t)(C.malloc(C.ulong(8 * len(filters))))
+	filters_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(filters))))
+	filters_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(filters))))
 	defer C.free(unsafe.Pointer(filters_CArray))
 	defer C.free(unsafe.Pointer(filters_Lengths))
 	for i := range filters {

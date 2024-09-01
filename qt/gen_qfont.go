@@ -127,8 +127,8 @@ func (this *QFont) Families() []string {
 
 func (this *QFont) SetFamilies(families []string) {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
-	families_CArray := (*[0xffff]*C.char)(C.malloc(C.ulong(8 * len(families))))
-	families_Lengths := (*[0xffff]C.size_t)(C.malloc(C.ulong(8 * len(families))))
+	families_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(families))))
+	families_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(families))))
 	defer C.free(unsafe.Pointer(families_CArray))
 	defer C.free(unsafe.Pointer(families_Lengths))
 	for i := range families {
@@ -464,8 +464,8 @@ func QFont_InsertSubstitutions(param1 string, param2 []string) {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
-	param2_CArray := (*[0xffff]*C.char)(C.malloc(C.ulong(8 * len(param2))))
-	param2_Lengths := (*[0xffff]C.size_t)(C.malloc(C.ulong(8 * len(param2))))
+	param2_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(param2))))
+	param2_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(param2))))
 	defer C.free(unsafe.Pointer(param2_CArray))
 	defer C.free(unsafe.Pointer(param2_Lengths))
 	for i := range param2 {

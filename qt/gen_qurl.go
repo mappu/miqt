@@ -492,7 +492,7 @@ func QUrl_IdnWhitelist() []string {
 
 func QUrl_ToStringList(uris []QUrl) []string {
 	// For the C ABI, malloc a C array of raw pointers
-	uris_CArray := (*[0xffff]*C.QUrl)(C.malloc(C.ulong(8 * len(uris))))
+	uris_CArray := (*[0xffff]*C.QUrl)(C.malloc(C.size_t(8 * len(uris))))
 	defer C.free(unsafe.Pointer(uris_CArray))
 	for i := range uris {
 		uris_CArray[i] = uris[i].cPointer()
@@ -513,8 +513,8 @@ func QUrl_ToStringList(uris []QUrl) []string {
 
 func QUrl_FromStringList(uris []string) []QUrl {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
-	uris_CArray := (*[0xffff]*C.char)(C.malloc(C.ulong(8 * len(uris))))
-	uris_Lengths := (*[0xffff]C.size_t)(C.malloc(C.ulong(8 * len(uris))))
+	uris_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(uris))))
+	uris_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(uris))))
 	defer C.free(unsafe.Pointer(uris_CArray))
 	defer C.free(unsafe.Pointer(uris_Lengths))
 	for i := range uris {
@@ -537,8 +537,8 @@ func QUrl_FromStringList(uris []string) []QUrl {
 
 func QUrl_SetIdnWhitelist(idnWhitelist []string) {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
-	idnWhitelist_CArray := (*[0xffff]*C.char)(C.malloc(C.ulong(8 * len(idnWhitelist))))
-	idnWhitelist_Lengths := (*[0xffff]C.size_t)(C.malloc(C.ulong(8 * len(idnWhitelist))))
+	idnWhitelist_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(idnWhitelist))))
+	idnWhitelist_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(idnWhitelist))))
 	defer C.free(unsafe.Pointer(idnWhitelist_CArray))
 	defer C.free(unsafe.Pointer(idnWhitelist_Lengths))
 	for i := range idnWhitelist {
@@ -753,8 +753,8 @@ func QUrl_ToPercentEncoding3(param1 string, exclude *QByteArray, include *QByteA
 
 func QUrl_FromStringList2(uris []string, mode uintptr) []QUrl {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
-	uris_CArray := (*[0xffff]*C.char)(C.malloc(C.ulong(8 * len(uris))))
-	uris_Lengths := (*[0xffff]C.size_t)(C.malloc(C.ulong(8 * len(uris))))
+	uris_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(uris))))
+	uris_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(uris))))
 	defer C.free(unsafe.Pointer(uris_CArray))
 	defer C.free(unsafe.Pointer(uris_Lengths))
 	for i := range uris {

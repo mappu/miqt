@@ -151,8 +151,8 @@ func QStandardPaths_FindExecutable2(executableName string, paths []string) strin
 	executableName_Cstring := C.CString(executableName)
 	defer C.free(unsafe.Pointer(executableName_Cstring))
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
-	paths_CArray := (*[0xffff]*C.char)(C.malloc(C.ulong(8 * len(paths))))
-	paths_Lengths := (*[0xffff]C.size_t)(C.malloc(C.ulong(8 * len(paths))))
+	paths_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(paths))))
+	paths_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(paths))))
 	defer C.free(unsafe.Pointer(paths_CArray))
 	defer C.free(unsafe.Pointer(paths_Lengths))
 	for i := range paths {

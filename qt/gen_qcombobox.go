@@ -352,8 +352,8 @@ func (this *QComboBox) AddItem2(icon *QIcon, text string) {
 
 func (this *QComboBox) AddItems(texts []string) {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
-	texts_CArray := (*[0xffff]*C.char)(C.malloc(C.ulong(8 * len(texts))))
-	texts_Lengths := (*[0xffff]C.size_t)(C.malloc(C.ulong(8 * len(texts))))
+	texts_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(texts))))
+	texts_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(texts))))
 	defer C.free(unsafe.Pointer(texts_CArray))
 	defer C.free(unsafe.Pointer(texts_Lengths))
 	for i := range texts {
@@ -379,8 +379,8 @@ func (this *QComboBox) InsertItem2(index int, icon *QIcon, text string) {
 
 func (this *QComboBox) InsertItems(index int, texts []string) {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
-	texts_CArray := (*[0xffff]*C.char)(C.malloc(C.ulong(8 * len(texts))))
-	texts_Lengths := (*[0xffff]C.size_t)(C.malloc(C.ulong(8 * len(texts))))
+	texts_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(texts))))
+	texts_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(texts))))
 	defer C.free(unsafe.Pointer(texts_CArray))
 	defer C.free(unsafe.Pointer(texts_Lengths))
 	for i := range texts {

@@ -89,7 +89,7 @@ func (this *QGlyphRun) GlyphIndexes() []uint {
 
 func (this *QGlyphRun) SetGlyphIndexes(glyphIndexes []uint) {
 	// For the C ABI, malloc a C array of raw pointers
-	glyphIndexes_CArray := (*[0xffff]C.uint)(C.malloc(C.ulong(8 * len(glyphIndexes))))
+	glyphIndexes_CArray := (*[0xffff]C.uint)(C.malloc(C.size_t(8 * len(glyphIndexes))))
 	defer C.free(unsafe.Pointer(glyphIndexes_CArray))
 	for i := range glyphIndexes {
 		glyphIndexes_CArray[i] = (C.uint)(glyphIndexes[i])
@@ -112,7 +112,7 @@ func (this *QGlyphRun) Positions() []QPointF {
 
 func (this *QGlyphRun) SetPositions(positions []QPointF) {
 	// For the C ABI, malloc a C array of raw pointers
-	positions_CArray := (*[0xffff]*C.QPointF)(C.malloc(C.ulong(8 * len(positions))))
+	positions_CArray := (*[0xffff]*C.QPointF)(C.malloc(C.size_t(8 * len(positions))))
 	defer C.free(unsafe.Pointer(positions_CArray))
 	for i := range positions {
 		positions_CArray[i] = positions[i].cPointer()

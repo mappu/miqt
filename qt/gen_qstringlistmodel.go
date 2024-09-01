@@ -45,8 +45,8 @@ func NewQStringListModel() *QStringListModel {
 // NewQStringListModel2 constructs a new QStringListModel object.
 func NewQStringListModel2(strings []string) *QStringListModel {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
-	strings_CArray := (*[0xffff]*C.char)(C.malloc(C.ulong(8 * len(strings))))
-	strings_Lengths := (*[0xffff]C.size_t)(C.malloc(C.ulong(8 * len(strings))))
+	strings_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(strings))))
+	strings_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(strings))))
 	defer C.free(unsafe.Pointer(strings_CArray))
 	defer C.free(unsafe.Pointer(strings_Lengths))
 	for i := range strings {
@@ -68,8 +68,8 @@ func NewQStringListModel3(parent *QObject) *QStringListModel {
 // NewQStringListModel4 constructs a new QStringListModel object.
 func NewQStringListModel4(strings []string, parent *QObject) *QStringListModel {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
-	strings_CArray := (*[0xffff]*C.char)(C.malloc(C.ulong(8 * len(strings))))
-	strings_Lengths := (*[0xffff]C.size_t)(C.malloc(C.ulong(8 * len(strings))))
+	strings_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(strings))))
+	strings_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(strings))))
 	defer C.free(unsafe.Pointer(strings_CArray))
 	defer C.free(unsafe.Pointer(strings_Lengths))
 	for i := range strings {
@@ -182,8 +182,8 @@ func (this *QStringListModel) StringList() []string {
 
 func (this *QStringListModel) SetStringList(strings []string) {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
-	strings_CArray := (*[0xffff]*C.char)(C.malloc(C.ulong(8 * len(strings))))
-	strings_Lengths := (*[0xffff]C.size_t)(C.malloc(C.ulong(8 * len(strings))))
+	strings_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(strings))))
+	strings_Lengths := (*[0xffff]C.size_t)(C.malloc(C.size_t(8 * len(strings))))
 	defer C.free(unsafe.Pointer(strings_CArray))
 	defer C.free(unsafe.Pointer(strings_Lengths))
 	for i := range strings {
