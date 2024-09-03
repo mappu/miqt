@@ -89,3 +89,5 @@ For dynamically-linked builds (closed-source or open source application):
 3. Copy necessary Qt LGPL libraries.
 
 For repeated builds, the compile speed can be improved if you also bind-mount the Docker container's `GOCACHE` directory: `-v $(pwd)/container-build-cache:/root/.cache/go-build`
+
+To add an icon and other properties to the .exe, you can use [the go-winres tool](https://github.com/tc-hib/go-winres). See the `examples/windowsmanifest` for details.
