@@ -71,11 +71,21 @@ Qt class inherited types are projected as a Go embedded struct. For example, to 
 
 Some C++ idioms that were difficult to project were omitted from the binding. But, this can be improved in the future.
 
-### Q7. How can I compile for Windows from a Linux host OS?
+### Q7. How can I cross-compile for Windows from a Linux host OS?
+
+For static builds (open source application):
 
 1. Build the necessary docker container for cross-compilation:
 	- `docker build -t miqt/win64-cross:latest -f win64-cross-go1.23-qt5.15-static.Dockerfile .`
 2. Build your application:
 	- `docker run --rm -v $(pwd):/src -w /src miqt/win64-cross:latest go build -buildvcs=false --tags=windowsqtstatic -ldflags '-s -w -H windowsgui'`
+
+For dynamically-linked builds (closed-source or open source application):
+
+1. Build the necessary docker container for cross-compilation:
+	- `docker build -t miqt/win64-dynamic:latest -f win64-cross-go1.23-qt5.15-dynamic.Dockerfile .`
+2. Build your application:
+	- `docker run --rm -v $(pwd):/src -w /src miqt/win64-dynamic:latest go build -buildvcs=false -ldflags '-s -w -H windowsgui'`
+3. Copy necessary Qt LGPL libraries.
 
 For repeated builds, the compile speed can be improved if you also bind-mount the Docker container's `GOCACHE` directory: `-v $(pwd)/container-build-cache:/root/.cache/go-build`
