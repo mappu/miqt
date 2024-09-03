@@ -74,7 +74,7 @@ Some C++ idioms that were difficult to project were omitted from the binding. Bu
 ### Q7. How can I compile for Windows from a Linux host OS?
 
 1. Build the necessary docker container for cross-compilation:
-	- `docker build -t miqt/win64-cross:latest -f win64-cross-qt-mxe-static.Dockerfile .`
+	- `docker build -t miqt/win64-cross:latest -f win64-cross-go1.23-qt5.15-static.Dockerfile .`
 2. Build your application:
 	- `docker run --rm -v $(pwd):/src -w /src miqt/win64-cross:latest go build -buildvcs=false -ldflags '-s -w -H windowsgui'`
 
