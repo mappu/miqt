@@ -67,6 +67,8 @@ Where Qt returns a C++ object by value (e.g. `QSize`), the binding may have move
 
 The `connect(sourceObject, sourceSignal, targetObject, targetSlot)` is projected as `targetObject.onSourceSignal(func()...)`.
 
+Qt class inherited types are projected as a Go embedded struct. For example, to pass a `var myLabel *qt.QLabel` to a function taking only the `*qt.QWidget` base class, write `myLabel.QWidget`.
+
 Some C++ idioms that were difficult to project were omitted from the binding. But, this can be improved in the future.
 
 ### Q7. How can I compile for Windows from a Linux host OS?
