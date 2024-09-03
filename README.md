@@ -78,4 +78,4 @@ Some C++ idioms that were difficult to project were omitted from the binding. Bu
 2. Build your application:
 	- `docker run --rm -v $(pwd):/src -w /src miqt/win64-cross:latest go build -buildvcs=false -ldflags '-s -w -H windowsgui'`
 
-For repeated builds, the compile speed can be improved if you also bind-mount the Docker container's `GOCACHE` directory: `-v ./container-build-cache:/root/.cache/go-build`
+For repeated builds, the compile speed can be improved if you also bind-mount the Docker container's `GOCACHE` directory: `-v $(pwd)/container-build-cache:/root/.cache/go-build`

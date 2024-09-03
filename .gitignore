@@ -1,6 +1,9 @@
 # scratch files
 *.json
 
+# docker files
+container-build-cache/
+
 # binaries
 cmd/handbindings/handbindings
 cmd/handbindings/bindings_test/direct
