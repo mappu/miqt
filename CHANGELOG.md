@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 2024-09-04 v0.3.0
+
+- Expand binding to cover enum types
+- Add dockerfiles for Go1.23
+- Embed qwindows plugin and qwindowsvistastyle into static Windows builds
+- Add `windowsmanifest` example
+
 ## 2024-09-01 v0.2.2
 
 - Support compiling on Windows
