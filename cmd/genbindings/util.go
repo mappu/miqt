@@ -1,7 +1,9 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
+	"log"
 	"strings"
 )
 
@@ -15,4 +17,13 @@ func maybeSuffix(counter int) string {
 
 func titleCase(s string) string {
 	return strings.ToUpper(s[0:1]) + s[1:]
+}
+
+func prettyPrint(obj interface{}) {
+	jb, err := json.MarshalIndent(obj, "", "  ")
+	if err != nil {
+		panic(err)
+	}
+
+	log.Println(string(jb))
 }
