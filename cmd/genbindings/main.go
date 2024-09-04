@@ -144,6 +144,9 @@ func main() {
 		for _, td := range parsed.Typedefs {
 			KnownTypedefs[td.Alias] = td // copy
 		}
+		for _, en := range parsed.Enums {
+			KnownEnums[en.EnumName] = en // copy
+		}
 
 		processHeaders = append(processHeaders, parsed)
 	}

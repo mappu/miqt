@@ -85,7 +85,10 @@ func (p CppParameter) RenderTypeGo() string {
 			ret += "int"
 
 		} else if strings.Contains(p.ParameterType, `::`) {
-			if p.IsEnum() {
+			if p.IsKnownEnum() {
+				ret += cabiClassName(p.ParameterType)
+
+			} else if p.IsEnum() {
 				ret += "uintptr"
 			} else {
 				// Inner class
@@ -289,6 +292,22 @@ import "C"
 
 	gfs := goFileState{
 		imports: map[string]struct{}{},
+	}
+
+	for _, e := range src.Enums {
+		goEnumName := cabiClassName(e.EnumName)
+
+		ret.WriteString(`
+		type ` + goEnumName + ` ` + parseSingleTypeString(e.UnderlyingType).RenderTypeGo() + `
+		
+		const (
+		`)
+
+		for _, ee := range e.Entries {
+			ret.WriteString(cabiClassName(goEnumName+"::"+ee.EntryName) + " " + goEnumName + " = " + ee.EntryValue + "\n")
+		}
+
+		ret.WriteString("\n)\n\n")
 	}
 
 	for _, c := range src.Classes {

@@ -4,6 +4,7 @@ import (
 	"errors"
 	"fmt"
 	"log"
+	"strconv"
 	"strings"
 )
 
@@ -88,7 +89,14 @@ func parseHeader(topLevel []interface{}, addNamePrefix string) (*CppParsedHeader
 			// TODO
 
 		case "EnumDecl":
-			// TODO e.g. qmetatype.h
+			// Child class enum
+			en, err := processEnum(node, addNamePrefix)
+			if err != nil {
+				panic(fmt.Errorf("processEnum: %w", err)) // A real problem
+			}
+			if len(en.Entries) > 0 { // e.g. qmetatype's version of QCborSimpleType (the real one is in qcborcommon)
+				ret.Enums = append(ret.Enums, en)
+			}
 
 		case "VarDecl":
 			// TODO e.g. qmath.h
@@ -312,6 +320,21 @@ nextMethod:
 			}
 			ret.ChildTypedefs = append(ret.ChildTypedefs, td)
 
+		case "EnumDecl":
+			// Child class enum
+
+			if !visibility {
+				continue // Skip private/protected
+			}
+
+			en, err := processEnum(node, nodename+"::")
+			if err != nil {
+				panic(fmt.Errorf("processEnum: %w", err)) // A real problem
+			}
+			if len(en.Entries) > 0 { // e.g. qmetatype's version of QCborSimpleType (the real one is in qcborcommon)
+				ret.ChildEnums = append(ret.ChildEnums, en)
+			}
+
 		case "CXXConstructorDecl":
 
 			if isImplicit, ok := node["isImplicit"].(bool); ok && isImplicit {
@@ -454,6 +477,108 @@ var (
 	ErrTooComplex = errors.New("Type declaration is too complex to parse")
 	ErrNoContent  = errors.New("There's no content to include")
 )
+
+func processEnum(node map[string]interface{}, addNamePrefix string) (CppEnum, error) {
+	var ret CppEnum
+	ret.UnderlyingType = "int" // FIXME
+
+	nodename, ok := node["name"].(string)
+	if !ok {
+		// An unnamed enum is possible (e.g. qcalendar.h)
+		// It defines integer constants just in the current scope
+		ret.EnumName = addNamePrefix
+
+	} else {
+		ret.EnumName = addNamePrefix + nodename
+	}
+
+	inner, ok := node["inner"].([]interface{})
+	if !ok {
+		// An enum with no entries? We're done
+		return ret, nil
+	}
+
+	var lastImplicitValue int64 = -1
+
+	for _, entry := range inner {
+		entry, ok := entry.(map[string]interface{})
+		if !ok {
+			return ret, errors.New("bad inner type")
+		}
+
+		kind, ok := entry["kind"].(string)
+		if !ok || kind != "EnumConstantDecl" {
+			return ret, fmt.Errorf("unexpected kind %q", kind)
+		}
+
+		var cee CppEnumEntry
+
+		entryname, ok := entry["name"].(string)
+		if !ok {
+			return ret, errors.New("entry without name")
+		}
+
+		cee.EntryName = entryname
+
+		// Try to find the enum value
+		ei1, ok := entry["inner"].([]interface{})
+		if !ok || len(ei1) == 0 {
+			// Enum case without definition e.g. QCalendar::Gregorian
+			// This means one more than the last value
+			cee.EntryValue = fmt.Sprintf("%d", lastImplicitValue+1)
+
+		} else if len(ei1) == 1 {
+
+			ei1_0 := ei1[0].(map[string]interface{})
+
+			// Best case: .inner -> kind=ConstantExpr value=xx
+			// e.g. qabstractitemmodel
+			if ei1Kind, ok := ei1_0["kind"].(string); ok && ei1Kind == "ConstantExpr" {
+				log.Printf("Got ConstantExpr OK")
+				if ei1Value, ok := ei1_0["value"].(string); ok {
+					cee.EntryValue = ei1Value
+					goto afterParse
+				}
+			}
+
+			// Best case: .inner -> kind=ImplicitCastExpr .inner -> kind=ConstantExpr value=xx
+			// e.g. QCalendar (when there is a int typecast)
+			if ei1Kind, ok := ei1_0["kind"].(string); ok && ei1Kind == "ImplicitCastExpr" {
+				log.Printf("Got ImplicitCastExpr OK")
+				if ei2, ok := ei1_0["inner"].([]interface{}); ok && len(ei2) > 0 {
+					ei2_0 := ei2[0].(map[string]interface{})
+					if ei2Kind, ok := ei2_0["kind"].(string); ok && ei2Kind == "ConstantExpr" {
+						log.Printf("Got ConstantExpr OK")
+						if ei2Value, ok := ei2_0["value"].(string); ok {
+							cee.EntryValue = ei2Value
+							goto afterParse
+						}
+					}
+				}
+			}
+
+		}
+	afterParse:
+		if cee.EntryValue == "" {
+			return ret, fmt.Errorf("Complex enum %q entry %q", ret.EnumName, entryname)
+		}
+
+		var err error
+		if cee.EntryValue == "true" || cee.EntryValue == "false" {
+			ret.UnderlyingType = "bool"
+
+		} else {
+			lastImplicitValue, err = strconv.ParseInt(cee.EntryValue, 10, 64)
+			if err != nil {
+				return ret, fmt.Errorf("Enum %q entry %q has non-parseable value %q: %w", ret.EnumName, entryname, cee.EntryValue, err)
+			}
+		}
+
+		ret.Entries = append(ret.Entries, cee)
+	}
+
+	return ret, nil
+}
 
 func parseMethod(node map[string]interface{}, mm *CppMethod) error {
 

@@ -379,6 +379,12 @@ func getReferencedTypes(src *CppParsedHeader) []string {
 // cabiClassName returns the Go / CABI class name for a Qt C++ class.
 // Normally this is the same, except for class types that are nested inside another class definition.
 func cabiClassName(className string) string {
+
+	// Many types are defined in qnamespace.h under Qt::
+	// The Go implementation is always called qt.Foo, and these names don't
+	// collide with anything, so strip the redundant prefix
+	className = strings.TrimPrefix(className, `Qt::`)
+
 	// Must use __ to avoid subclass/method name collision e.g. QPagedPaintDevice::Margins
 	return strings.Replace(className, `::`, `__`, -1)
 }

@@ -8,11 +8,13 @@ import (
 var (
 	KnownClassnames map[string]struct{} // Entries of the form QFoo::Bar if it is an inner class
 	KnownTypedefs   map[string]CppTypedef
+	KnownEnums      map[string]CppEnum
 )
 
 func init() {
 	KnownClassnames = make(map[string]struct{})
 	KnownTypedefs = make(map[string]CppTypedef)
+	KnownEnums = make(map[string]CppEnum)
 
 	// Seed well-known typedefs
 
@@ -94,6 +96,11 @@ func (p CppParameter) QtClassType() bool {
 	}
 
 	return false
+}
+
+func (p CppParameter) IsKnownEnum() bool {
+	_, ok := KnownEnums[p.ParameterType]
+	return ok
 }
 
 func (p CppParameter) IsEnum() bool {
@@ -278,8 +285,9 @@ type CppEnumEntry struct {
 }
 
 type CppEnum struct {
-	EnumName string
-	Entries  []CppEnumEntry
+	EnumName       string
+	UnderlyingType string
+	Entries        []CppEnumEntry
 }
 
 type CppClass struct {
