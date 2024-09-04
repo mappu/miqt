@@ -13,6 +13,73 @@ import (
 	"unsafe"
 )
 
+type QVariant__Type int
+
+const (
+	QVariant__Type__Invalid              QVariant__Type = 0
+	QVariant__Type__Bool                 QVariant__Type = 1
+	QVariant__Type__Int                  QVariant__Type = 2
+	QVariant__Type__UInt                 QVariant__Type = 3
+	QVariant__Type__LongLong             QVariant__Type = 4
+	QVariant__Type__ULongLong            QVariant__Type = 5
+	QVariant__Type__Double               QVariant__Type = 6
+	QVariant__Type__Char                 QVariant__Type = 7
+	QVariant__Type__Map                  QVariant__Type = 8
+	QVariant__Type__List                 QVariant__Type = 9
+	QVariant__Type__String               QVariant__Type = 10
+	QVariant__Type__StringList           QVariant__Type = 11
+	QVariant__Type__ByteArray            QVariant__Type = 12
+	QVariant__Type__BitArray             QVariant__Type = 13
+	QVariant__Type__Date                 QVariant__Type = 14
+	QVariant__Type__Time                 QVariant__Type = 15
+	QVariant__Type__DateTime             QVariant__Type = 16
+	QVariant__Type__Url                  QVariant__Type = 17
+	QVariant__Type__Locale               QVariant__Type = 18
+	QVariant__Type__Rect                 QVariant__Type = 19
+	QVariant__Type__RectF                QVariant__Type = 20
+	QVariant__Type__Size                 QVariant__Type = 21
+	QVariant__Type__SizeF                QVariant__Type = 22
+	QVariant__Type__Line                 QVariant__Type = 23
+	QVariant__Type__LineF                QVariant__Type = 24
+	QVariant__Type__Point                QVariant__Type = 25
+	QVariant__Type__PointF               QVariant__Type = 26
+	QVariant__Type__RegExp               QVariant__Type = 27
+	QVariant__Type__RegularExpression    QVariant__Type = 44
+	QVariant__Type__Hash                 QVariant__Type = 28
+	QVariant__Type__EasingCurve          QVariant__Type = 29
+	QVariant__Type__Uuid                 QVariant__Type = 30
+	QVariant__Type__ModelIndex           QVariant__Type = 42
+	QVariant__Type__PersistentModelIndex QVariant__Type = 50
+	QVariant__Type__LastCoreType         QVariant__Type = 55
+	QVariant__Type__Font                 QVariant__Type = 64
+	QVariant__Type__Pixmap               QVariant__Type = 65
+	QVariant__Type__Brush                QVariant__Type = 66
+	QVariant__Type__Color                QVariant__Type = 67
+	QVariant__Type__Palette              QVariant__Type = 68
+	QVariant__Type__Image                QVariant__Type = 70
+	QVariant__Type__Polygon              QVariant__Type = 71
+	QVariant__Type__Region               QVariant__Type = 72
+	QVariant__Type__Bitmap               QVariant__Type = 73
+	QVariant__Type__Cursor               QVariant__Type = 74
+	QVariant__Type__KeySequence          QVariant__Type = 75
+	QVariant__Type__Pen                  QVariant__Type = 76
+	QVariant__Type__TextLength           QVariant__Type = 77
+	QVariant__Type__TextFormat           QVariant__Type = 78
+	QVariant__Type__Matrix               QVariant__Type = 79
+	QVariant__Type__Transform            QVariant__Type = 80
+	QVariant__Type__Matrix4x4            QVariant__Type = 81
+	QVariant__Type__Vector2D             QVariant__Type = 82
+	QVariant__Type__Vector3D             QVariant__Type = 83
+	QVariant__Type__Vector4D             QVariant__Type = 84
+	QVariant__Type__Quaternion           QVariant__Type = 85
+	QVariant__Type__PolygonF             QVariant__Type = 86
+	QVariant__Type__Icon                 QVariant__Type = 69
+	QVariant__Type__LastGuiType          QVariant__Type = 87
+	QVariant__Type__SizePolicy           QVariant__Type = 121
+	QVariant__Type__UserType             QVariant__Type = 1024
+	QVariant__Type__LastType             QVariant__Type = 4294967295
+)
+
 type QVariant struct {
 	h *C.QVariant
 }
@@ -42,7 +109,7 @@ func NewQVariant() *QVariant {
 }
 
 // NewQVariant2 constructs a new QVariant object.
-func NewQVariant2(typeVal uintptr) *QVariant {
+func NewQVariant2(typeVal QVariant__Type) *QVariant {
 	ret := C.QVariant_new2((C.uintptr_t)(typeVal))
 	return newQVariant(ret)
 }
@@ -298,9 +365,9 @@ func (this *QVariant) Swap(other *QVariant) {
 	C.QVariant_Swap(this.h, other.cPointer())
 }
 
-func (this *QVariant) Type() uintptr {
+func (this *QVariant) Type() QVariant__Type {
 	ret := C.QVariant_Type(this.h)
-	return (uintptr)(ret)
+	return (QVariant__Type)(ret)
 }
 
 func (this *QVariant) UserType() int {
@@ -709,11 +776,11 @@ func QVariant_TypeToName(typeId int) unsafe.Pointer {
 	return (unsafe.Pointer)(ret)
 }
 
-func QVariant_NameToType(name string) uintptr {
+func QVariant_NameToType(name string) QVariant__Type {
 	name_Cstring := C.CString(name)
 	defer C.free(unsafe.Pointer(name_Cstring))
 	ret := C.QVariant_NameToType(name_Cstring)
-	return (uintptr)(ret)
+	return (QVariant__Type)(ret)
 }
 
 func (this *QVariant) OperatorEqual(v *QVariant) bool {

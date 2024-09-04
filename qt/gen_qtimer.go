@@ -98,13 +98,13 @@ func (this *QTimer) RemainingTime() int {
 	return (int)(ret)
 }
 
-func (this *QTimer) SetTimerType(atype uintptr) {
+func (this *QTimer) SetTimerType(atype TimerType) {
 	C.QTimer_SetTimerType(this.h, (C.uintptr_t)(atype))
 }
 
-func (this *QTimer) TimerType() uintptr {
+func (this *QTimer) TimerType() TimerType {
 	ret := C.QTimer_TimerType(this.h)
-	return (uintptr)(ret)
+	return (TimerType)(ret)
 }
 
 func (this *QTimer) SetSingleShot(singleShot bool) {

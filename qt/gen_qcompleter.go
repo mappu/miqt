@@ -14,6 +14,22 @@ import (
 	"unsafe"
 )
 
+type QCompleter__CompletionMode int
+
+const (
+	QCompleter__CompletionMode__PopupCompletion           QCompleter__CompletionMode = 0
+	QCompleter__CompletionMode__UnfilteredPopupCompletion QCompleter__CompletionMode = 1
+	QCompleter__CompletionMode__InlineCompletion          QCompleter__CompletionMode = 2
+)
+
+type QCompleter__ModelSorting int
+
+const (
+	QCompleter__ModelSorting__UnsortedModel                QCompleter__ModelSorting = 0
+	QCompleter__ModelSorting__CaseSensitivelySortedModel   QCompleter__ModelSorting = 1
+	QCompleter__ModelSorting__CaseInsensitivelySortedModel QCompleter__ModelSorting = 2
+)
+
 type QCompleter struct {
 	h *C.QCompleter
 	*QObject
@@ -140,13 +156,13 @@ func (this *QCompleter) Model() *QAbstractItemModel {
 	return newQAbstractItemModel_U(unsafe.Pointer(ret))
 }
 
-func (this *QCompleter) SetCompletionMode(mode uintptr) {
+func (this *QCompleter) SetCompletionMode(mode QCompleter__CompletionMode) {
 	C.QCompleter_SetCompletionMode(this.h, (C.uintptr_t)(mode))
 }
 
-func (this *QCompleter) CompletionMode() uintptr {
+func (this *QCompleter) CompletionMode() QCompleter__CompletionMode {
 	ret := C.QCompleter_CompletionMode(this.h)
-	return (uintptr)(ret)
+	return (QCompleter__CompletionMode)(ret)
 }
 
 func (this *QCompleter) SetFilterMode(filterMode int) {
@@ -167,22 +183,22 @@ func (this *QCompleter) SetPopup(popup *QAbstractItemView) {
 	C.QCompleter_SetPopup(this.h, popup.cPointer())
 }
 
-func (this *QCompleter) SetCaseSensitivity(caseSensitivity uintptr) {
+func (this *QCompleter) SetCaseSensitivity(caseSensitivity CaseSensitivity) {
 	C.QCompleter_SetCaseSensitivity(this.h, (C.uintptr_t)(caseSensitivity))
 }
 
-func (this *QCompleter) CaseSensitivity() uintptr {
+func (this *QCompleter) CaseSensitivity() CaseSensitivity {
 	ret := C.QCompleter_CaseSensitivity(this.h)
-	return (uintptr)(ret)
+	return (CaseSensitivity)(ret)
 }
 
-func (this *QCompleter) SetModelSorting(sorting uintptr) {
+func (this *QCompleter) SetModelSorting(sorting QCompleter__ModelSorting) {
 	C.QCompleter_SetModelSorting(this.h, (C.uintptr_t)(sorting))
 }
 
-func (this *QCompleter) ModelSorting() uintptr {
+func (this *QCompleter) ModelSorting() QCompleter__ModelSorting {
 	ret := C.QCompleter_ModelSorting(this.h)
-	return (uintptr)(ret)
+	return (QCompleter__ModelSorting)(ret)
 }
 
 func (this *QCompleter) SetCompletionColumn(column int) {

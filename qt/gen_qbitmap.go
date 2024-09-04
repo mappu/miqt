@@ -155,7 +155,7 @@ func QBitmap_FromImage2(image *QImage, flags int) *QBitmap {
 	return ret1
 }
 
-func QBitmap_FromData3(size *QSize, bits *byte, monoFormat uintptr) *QBitmap {
+func QBitmap_FromData3(size *QSize, bits *byte, monoFormat QImage__Format) *QBitmap {
 	ret := C.QBitmap_FromData3(size.cPointer(), (*C.uchar)(unsafe.Pointer(bits)), (C.uintptr_t)(monoFormat))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQBitmap(ret)

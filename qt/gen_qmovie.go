@@ -14,6 +14,21 @@ import (
 	"unsafe"
 )
 
+type QMovie__MovieState int
+
+const (
+	QMovie__MovieState__NotRunning QMovie__MovieState = 0
+	QMovie__MovieState__Paused     QMovie__MovieState = 1
+	QMovie__MovieState__Running    QMovie__MovieState = 2
+)
+
+type QMovie__CacheMode int
+
+const (
+	QMovie__CacheMode__CacheNone QMovie__CacheMode = 0
+	QMovie__CacheMode__CacheAll  QMovie__CacheMode = 1
+)
+
 type QMovie struct {
 	h *C.QMovie
 	*QObject
@@ -185,9 +200,9 @@ func (this *QMovie) BackgroundColor() *QColor {
 	return ret1
 }
 
-func (this *QMovie) State() uintptr {
+func (this *QMovie) State() QMovie__MovieState {
 	ret := C.QMovie_State(this.h)
-	return (uintptr)(ret)
+	return (QMovie__MovieState)(ret)
 }
 
 func (this *QMovie) FrameRect() *QRect {
@@ -228,9 +243,9 @@ func (this *QMovie) IsValid() bool {
 	return (bool)(ret)
 }
 
-func (this *QMovie) LastError() uintptr {
+func (this *QMovie) LastError() QImageReader__ImageReaderError {
 	ret := C.QMovie_LastError(this.h)
-	return (uintptr)(ret)
+	return (QImageReader__ImageReaderError)(ret)
 }
 
 func (this *QMovie) LastErrorString() string {
@@ -287,12 +302,12 @@ func (this *QMovie) SetScaledSize(size *QSize) {
 	C.QMovie_SetScaledSize(this.h, size.cPointer())
 }
 
-func (this *QMovie) CacheMode() uintptr {
+func (this *QMovie) CacheMode() QMovie__CacheMode {
 	ret := C.QMovie_CacheMode(this.h)
-	return (uintptr)(ret)
+	return (QMovie__CacheMode)(ret)
 }
 
-func (this *QMovie) SetCacheMode(mode uintptr) {
+func (this *QMovie) SetCacheMode(mode QMovie__CacheMode) {
 	C.QMovie_SetCacheMode(this.h, (C.uintptr_t)(mode))
 }
 
@@ -332,7 +347,7 @@ func (this *QMovie) OnUpdated(slot func()) {
 	C.QMovie_connect_Updated(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
 }
 
-func (this *QMovie) StateChanged(state uintptr) {
+func (this *QMovie) StateChanged(state QMovie__MovieState) {
 	C.QMovie_StateChanged(this.h, (C.uintptr_t)(state))
 }
 
@@ -344,7 +359,7 @@ func (this *QMovie) OnStateChanged(slot func()) {
 	C.QMovie_connect_StateChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
 }
 
-func (this *QMovie) Error(error uintptr) {
+func (this *QMovie) Error(error QImageReader__ImageReaderError) {
 	C.QMovie_Error(this.h, (C.uintptr_t)(error))
 }
 

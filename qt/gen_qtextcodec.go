@@ -13,6 +13,15 @@ import (
 	"unsafe"
 )
 
+type QTextCodec__ConversionFlag int
+
+const (
+	QTextCodec__ConversionFlag__DefaultConversion    QTextCodec__ConversionFlag = 0
+	QTextCodec__ConversionFlag__ConvertInvalidToNull QTextCodec__ConversionFlag = 2147483648
+	QTextCodec__ConversionFlag__IgnoreHeader         QTextCodec__ConversionFlag = 1
+	QTextCodec__ConversionFlag__FreeFunction         QTextCodec__ConversionFlag = 2
+)
+
 type QTextCodec struct {
 	h *C.QTextCodec
 }

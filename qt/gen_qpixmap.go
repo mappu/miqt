@@ -478,7 +478,7 @@ func (this *QPixmap) CreateHeuristicMask1(clipTight bool) *QBitmap {
 	return ret1
 }
 
-func (this *QPixmap) CreateMaskFromColor2(maskColor *QColor, mode uintptr) *QBitmap {
+func (this *QPixmap) CreateMaskFromColor2(maskColor *QColor, mode MaskMode) *QBitmap {
 	ret := C.QPixmap_CreateMaskFromColor2(this.h, maskColor.cPointer(), (C.uintptr_t)(mode))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQBitmap(ret)
@@ -577,7 +577,7 @@ func QPixmap_GrabWidget5(widget *QObject, x int, y int, w int, h int) *QPixmap {
 	return ret1
 }
 
-func (this *QPixmap) Scaled3(w int, h int, aspectMode uintptr) *QPixmap {
+func (this *QPixmap) Scaled3(w int, h int, aspectMode AspectRatioMode) *QPixmap {
 	ret := C.QPixmap_Scaled3(this.h, (C.int)(w), (C.int)(h), (C.uintptr_t)(aspectMode))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQPixmap(ret)
@@ -588,7 +588,7 @@ func (this *QPixmap) Scaled3(w int, h int, aspectMode uintptr) *QPixmap {
 	return ret1
 }
 
-func (this *QPixmap) Scaled4(w int, h int, aspectMode uintptr, mode uintptr) *QPixmap {
+func (this *QPixmap) Scaled4(w int, h int, aspectMode AspectRatioMode, mode TransformationMode) *QPixmap {
 	ret := C.QPixmap_Scaled4(this.h, (C.int)(w), (C.int)(h), (C.uintptr_t)(aspectMode), (C.uintptr_t)(mode))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQPixmap(ret)
@@ -599,7 +599,7 @@ func (this *QPixmap) Scaled4(w int, h int, aspectMode uintptr, mode uintptr) *QP
 	return ret1
 }
 
-func (this *QPixmap) Scaled2(s *QSize, aspectMode uintptr) *QPixmap {
+func (this *QPixmap) Scaled2(s *QSize, aspectMode AspectRatioMode) *QPixmap {
 	ret := C.QPixmap_Scaled2(this.h, s.cPointer(), (C.uintptr_t)(aspectMode))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQPixmap(ret)
@@ -610,7 +610,7 @@ func (this *QPixmap) Scaled2(s *QSize, aspectMode uintptr) *QPixmap {
 	return ret1
 }
 
-func (this *QPixmap) Scaled32(s *QSize, aspectMode uintptr, mode uintptr) *QPixmap {
+func (this *QPixmap) Scaled32(s *QSize, aspectMode AspectRatioMode, mode TransformationMode) *QPixmap {
 	ret := C.QPixmap_Scaled32(this.h, s.cPointer(), (C.uintptr_t)(aspectMode), (C.uintptr_t)(mode))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQPixmap(ret)
@@ -621,7 +621,7 @@ func (this *QPixmap) Scaled32(s *QSize, aspectMode uintptr, mode uintptr) *QPixm
 	return ret1
 }
 
-func (this *QPixmap) ScaledToWidth2(w int, mode uintptr) *QPixmap {
+func (this *QPixmap) ScaledToWidth2(w int, mode TransformationMode) *QPixmap {
 	ret := C.QPixmap_ScaledToWidth2(this.h, (C.int)(w), (C.uintptr_t)(mode))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQPixmap(ret)
@@ -632,7 +632,7 @@ func (this *QPixmap) ScaledToWidth2(w int, mode uintptr) *QPixmap {
 	return ret1
 }
 
-func (this *QPixmap) ScaledToHeight2(h int, mode uintptr) *QPixmap {
+func (this *QPixmap) ScaledToHeight2(h int, mode TransformationMode) *QPixmap {
 	ret := C.QPixmap_ScaledToHeight2(this.h, (C.int)(h), (C.uintptr_t)(mode))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQPixmap(ret)
@@ -643,7 +643,7 @@ func (this *QPixmap) ScaledToHeight2(h int, mode uintptr) *QPixmap {
 	return ret1
 }
 
-func (this *QPixmap) Transformed2(param1 *QMatrix, mode uintptr) *QPixmap {
+func (this *QPixmap) Transformed2(param1 *QMatrix, mode TransformationMode) *QPixmap {
 	ret := C.QPixmap_Transformed2(this.h, param1.cPointer(), (C.uintptr_t)(mode))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQPixmap(ret)
@@ -654,7 +654,7 @@ func (this *QPixmap) Transformed2(param1 *QMatrix, mode uintptr) *QPixmap {
 	return ret1
 }
 
-func (this *QPixmap) Transformed22(param1 *QTransform, mode uintptr) *QPixmap {
+func (this *QPixmap) Transformed22(param1 *QTransform, mode TransformationMode) *QPixmap {
 	ret := C.QPixmap_Transformed22(this.h, param1.cPointer(), (C.uintptr_t)(mode))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQPixmap(ret)

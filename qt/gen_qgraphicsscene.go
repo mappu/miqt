@@ -14,6 +14,22 @@ import (
 	"unsafe"
 )
 
+type QGraphicsScene__ItemIndexMethod int
+
+const (
+	QGraphicsScene__ItemIndexMethod__BspTreeIndex QGraphicsScene__ItemIndexMethod = 0
+	QGraphicsScene__ItemIndexMethod__NoIndex      QGraphicsScene__ItemIndexMethod = -1
+)
+
+type QGraphicsScene__SceneLayer int
+
+const (
+	QGraphicsScene__SceneLayer__ItemLayer       QGraphicsScene__SceneLayer = 1
+	QGraphicsScene__SceneLayer__BackgroundLayer QGraphicsScene__SceneLayer = 2
+	QGraphicsScene__SceneLayer__ForegroundLayer QGraphicsScene__SceneLayer = 4
+	QGraphicsScene__SceneLayer__AllLayers       QGraphicsScene__SceneLayer = 65535
+)
+
 type QGraphicsScene struct {
 	h *C.QGraphicsScene
 	*QObject
@@ -133,12 +149,12 @@ func (this *QGraphicsScene) Render(painter *QPainter) {
 	C.QGraphicsScene_Render(this.h, painter.cPointer())
 }
 
-func (this *QGraphicsScene) ItemIndexMethod() uintptr {
+func (this *QGraphicsScene) ItemIndexMethod() QGraphicsScene__ItemIndexMethod {
 	ret := C.QGraphicsScene_ItemIndexMethod(this.h)
-	return (uintptr)(ret)
+	return (QGraphicsScene__ItemIndexMethod)(ret)
 }
 
-func (this *QGraphicsScene) SetItemIndexMethod(method uintptr) {
+func (this *QGraphicsScene) SetItemIndexMethod(method QGraphicsScene__ItemIndexMethod) {
 	C.QGraphicsScene_SetItemIndexMethod(this.h, (C.uintptr_t)(method))
 }
 
@@ -241,7 +257,7 @@ func (this *QGraphicsScene) ItemAt(pos *QPointF, deviceTransform *QTransform) *Q
 	return newQGraphicsItem_U(unsafe.Pointer(ret))
 }
 
-func (this *QGraphicsScene) Items2(x float64, y float64, w float64, h float64, mode uintptr, order uintptr) []*QGraphicsItem {
+func (this *QGraphicsScene) Items2(x float64, y float64, w float64, h float64, mode ItemSelectionMode, order SortOrder) []*QGraphicsItem {
 	var _out **C.QGraphicsItem = nil
 	var _out_len C.size_t = 0
 	C.QGraphicsScene_Items2(this.h, (C.double)(x), (C.double)(y), (C.double)(w), (C.double)(h), (C.uintptr_t)(mode), (C.uintptr_t)(order), &_out, &_out_len)
@@ -291,7 +307,7 @@ func (this *QGraphicsScene) SetSelectionAreaWithPath(path *QPainterPath) {
 	C.QGraphicsScene_SetSelectionAreaWithPath(this.h, path.cPointer())
 }
 
-func (this *QGraphicsScene) SetSelectionArea2(path *QPainterPath, selectionOperation uintptr) {
+func (this *QGraphicsScene) SetSelectionArea2(path *QPainterPath, selectionOperation ItemSelectionOperation) {
 	C.QGraphicsScene_SetSelectionArea2(this.h, path.cPointer(), (C.uintptr_t)(selectionOperation))
 }
 
@@ -443,7 +459,7 @@ func (this *QGraphicsScene) SetForegroundBrush(brush *QBrush) {
 	C.QGraphicsScene_SetForegroundBrush(this.h, brush.cPointer())
 }
 
-func (this *QGraphicsScene) InputMethodQuery(query uintptr) *QVariant {
+func (this *QGraphicsScene) InputMethodQuery(query InputMethodQuery) *QVariant {
 	ret := C.QGraphicsScene_InputMethodQuery(this.h, (C.uintptr_t)(query))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQVariant(ret)
@@ -622,7 +638,7 @@ func (this *QGraphicsScene) OnSelectionChanged(slot func()) {
 	C.QGraphicsScene_connect_SelectionChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
 }
 
-func (this *QGraphicsScene) FocusItemChanged(newFocus *QGraphicsItem, oldFocus *QGraphicsItem, reason uintptr) {
+func (this *QGraphicsScene) FocusItemChanged(newFocus *QGraphicsItem, oldFocus *QGraphicsItem, reason FocusReason) {
 	C.QGraphicsScene_FocusItemChanged(this.h, newFocus.cPointer(), oldFocus.cPointer(), (C.uintptr_t)(reason))
 }
 
@@ -694,11 +710,11 @@ func (this *QGraphicsScene) Render3(painter *QPainter, target *QRectF, source *Q
 	C.QGraphicsScene_Render3(this.h, painter.cPointer(), target.cPointer(), source.cPointer())
 }
 
-func (this *QGraphicsScene) Render4(painter *QPainter, target *QRectF, source *QRectF, aspectRatioMode uintptr) {
+func (this *QGraphicsScene) Render4(painter *QPainter, target *QRectF, source *QRectF, aspectRatioMode AspectRatioMode) {
 	C.QGraphicsScene_Render4(this.h, painter.cPointer(), target.cPointer(), source.cPointer(), (C.uintptr_t)(aspectRatioMode))
 }
 
-func (this *QGraphicsScene) Items1(order uintptr) []*QGraphicsItem {
+func (this *QGraphicsScene) Items1(order SortOrder) []*QGraphicsItem {
 	var _out **C.QGraphicsItem = nil
 	var _out_len C.size_t = 0
 	C.QGraphicsScene_Items1(this.h, (C.uintptr_t)(order), &_out, &_out_len)
@@ -711,7 +727,7 @@ func (this *QGraphicsScene) Items1(order uintptr) []*QGraphicsItem {
 	return ret
 }
 
-func (this *QGraphicsScene) Items22(pos *QPointF, mode uintptr) []*QGraphicsItem {
+func (this *QGraphicsScene) Items22(pos *QPointF, mode ItemSelectionMode) []*QGraphicsItem {
 	var _out **C.QGraphicsItem = nil
 	var _out_len C.size_t = 0
 	C.QGraphicsScene_Items22(this.h, pos.cPointer(), (C.uintptr_t)(mode), &_out, &_out_len)
@@ -724,7 +740,7 @@ func (this *QGraphicsScene) Items22(pos *QPointF, mode uintptr) []*QGraphicsItem
 	return ret
 }
 
-func (this *QGraphicsScene) Items3(pos *QPointF, mode uintptr, order uintptr) []*QGraphicsItem {
+func (this *QGraphicsScene) Items3(pos *QPointF, mode ItemSelectionMode, order SortOrder) []*QGraphicsItem {
 	var _out **C.QGraphicsItem = nil
 	var _out_len C.size_t = 0
 	C.QGraphicsScene_Items3(this.h, pos.cPointer(), (C.uintptr_t)(mode), (C.uintptr_t)(order), &_out, &_out_len)
@@ -737,7 +753,7 @@ func (this *QGraphicsScene) Items3(pos *QPointF, mode uintptr, order uintptr) []
 	return ret
 }
 
-func (this *QGraphicsScene) Items4(pos *QPointF, mode uintptr, order uintptr, deviceTransform *QTransform) []*QGraphicsItem {
+func (this *QGraphicsScene) Items4(pos *QPointF, mode ItemSelectionMode, order SortOrder, deviceTransform *QTransform) []*QGraphicsItem {
 	var _out **C.QGraphicsItem = nil
 	var _out_len C.size_t = 0
 	C.QGraphicsScene_Items4(this.h, pos.cPointer(), (C.uintptr_t)(mode), (C.uintptr_t)(order), deviceTransform.cPointer(), &_out, &_out_len)
@@ -750,7 +766,7 @@ func (this *QGraphicsScene) Items4(pos *QPointF, mode uintptr, order uintptr, de
 	return ret
 }
 
-func (this *QGraphicsScene) Items23(rect *QRectF, mode uintptr) []*QGraphicsItem {
+func (this *QGraphicsScene) Items23(rect *QRectF, mode ItemSelectionMode) []*QGraphicsItem {
 	var _out **C.QGraphicsItem = nil
 	var _out_len C.size_t = 0
 	C.QGraphicsScene_Items23(this.h, rect.cPointer(), (C.uintptr_t)(mode), &_out, &_out_len)
@@ -763,7 +779,7 @@ func (this *QGraphicsScene) Items23(rect *QRectF, mode uintptr) []*QGraphicsItem
 	return ret
 }
 
-func (this *QGraphicsScene) Items32(rect *QRectF, mode uintptr, order uintptr) []*QGraphicsItem {
+func (this *QGraphicsScene) Items32(rect *QRectF, mode ItemSelectionMode, order SortOrder) []*QGraphicsItem {
 	var _out **C.QGraphicsItem = nil
 	var _out_len C.size_t = 0
 	C.QGraphicsScene_Items32(this.h, rect.cPointer(), (C.uintptr_t)(mode), (C.uintptr_t)(order), &_out, &_out_len)
@@ -776,7 +792,7 @@ func (this *QGraphicsScene) Items32(rect *QRectF, mode uintptr, order uintptr) [
 	return ret
 }
 
-func (this *QGraphicsScene) Items42(rect *QRectF, mode uintptr, order uintptr, deviceTransform *QTransform) []*QGraphicsItem {
+func (this *QGraphicsScene) Items42(rect *QRectF, mode ItemSelectionMode, order SortOrder, deviceTransform *QTransform) []*QGraphicsItem {
 	var _out **C.QGraphicsItem = nil
 	var _out_len C.size_t = 0
 	C.QGraphicsScene_Items42(this.h, rect.cPointer(), (C.uintptr_t)(mode), (C.uintptr_t)(order), deviceTransform.cPointer(), &_out, &_out_len)
@@ -789,7 +805,7 @@ func (this *QGraphicsScene) Items42(rect *QRectF, mode uintptr, order uintptr, d
 	return ret
 }
 
-func (this *QGraphicsScene) Items25(path *QPainterPath, mode uintptr) []*QGraphicsItem {
+func (this *QGraphicsScene) Items25(path *QPainterPath, mode ItemSelectionMode) []*QGraphicsItem {
 	var _out **C.QGraphicsItem = nil
 	var _out_len C.size_t = 0
 	C.QGraphicsScene_Items25(this.h, path.cPointer(), (C.uintptr_t)(mode), &_out, &_out_len)
@@ -802,7 +818,7 @@ func (this *QGraphicsScene) Items25(path *QPainterPath, mode uintptr) []*QGraphi
 	return ret
 }
 
-func (this *QGraphicsScene) Items34(path *QPainterPath, mode uintptr, order uintptr) []*QGraphicsItem {
+func (this *QGraphicsScene) Items34(path *QPainterPath, mode ItemSelectionMode, order SortOrder) []*QGraphicsItem {
 	var _out **C.QGraphicsItem = nil
 	var _out_len C.size_t = 0
 	C.QGraphicsScene_Items34(this.h, path.cPointer(), (C.uintptr_t)(mode), (C.uintptr_t)(order), &_out, &_out_len)
@@ -815,7 +831,7 @@ func (this *QGraphicsScene) Items34(path *QPainterPath, mode uintptr, order uint
 	return ret
 }
 
-func (this *QGraphicsScene) Items44(path *QPainterPath, mode uintptr, order uintptr, deviceTransform *QTransform) []*QGraphicsItem {
+func (this *QGraphicsScene) Items44(path *QPainterPath, mode ItemSelectionMode, order SortOrder, deviceTransform *QTransform) []*QGraphicsItem {
 	var _out **C.QGraphicsItem = nil
 	var _out_len C.size_t = 0
 	C.QGraphicsScene_Items44(this.h, path.cPointer(), (C.uintptr_t)(mode), (C.uintptr_t)(order), deviceTransform.cPointer(), &_out, &_out_len)
@@ -828,7 +844,7 @@ func (this *QGraphicsScene) Items44(path *QPainterPath, mode uintptr, order uint
 	return ret
 }
 
-func (this *QGraphicsScene) CollidingItems2(item *QGraphicsItem, mode uintptr) []*QGraphicsItem {
+func (this *QGraphicsScene) CollidingItems2(item *QGraphicsItem, mode ItemSelectionMode) []*QGraphicsItem {
 	var _out **C.QGraphicsItem = nil
 	var _out_len C.size_t = 0
 	C.QGraphicsScene_CollidingItems2(this.h, item.cPointer(), (C.uintptr_t)(mode), &_out, &_out_len)
@@ -841,7 +857,7 @@ func (this *QGraphicsScene) CollidingItems2(item *QGraphicsItem, mode uintptr) [
 	return ret
 }
 
-func (this *QGraphicsScene) Items7(x float64, y float64, w float64, h float64, mode uintptr, order uintptr, deviceTransform *QTransform) []*QGraphicsItem {
+func (this *QGraphicsScene) Items7(x float64, y float64, w float64, h float64, mode ItemSelectionMode, order SortOrder, deviceTransform *QTransform) []*QGraphicsItem {
 	var _out **C.QGraphicsItem = nil
 	var _out_len C.size_t = 0
 	C.QGraphicsScene_Items7(this.h, (C.double)(x), (C.double)(y), (C.double)(w), (C.double)(h), (C.uintptr_t)(mode), (C.uintptr_t)(order), deviceTransform.cPointer(), &_out, &_out_len)
@@ -854,19 +870,19 @@ func (this *QGraphicsScene) Items7(x float64, y float64, w float64, h float64, m
 	return ret
 }
 
-func (this *QGraphicsScene) SetSelectionArea22(path *QPainterPath, mode uintptr) {
+func (this *QGraphicsScene) SetSelectionArea22(path *QPainterPath, mode ItemSelectionMode) {
 	C.QGraphicsScene_SetSelectionArea22(this.h, path.cPointer(), (C.uintptr_t)(mode))
 }
 
-func (this *QGraphicsScene) SetSelectionArea3(path *QPainterPath, mode uintptr, deviceTransform *QTransform) {
+func (this *QGraphicsScene) SetSelectionArea3(path *QPainterPath, mode ItemSelectionMode, deviceTransform *QTransform) {
 	C.QGraphicsScene_SetSelectionArea3(this.h, path.cPointer(), (C.uintptr_t)(mode), deviceTransform.cPointer())
 }
 
-func (this *QGraphicsScene) SetSelectionArea32(path *QPainterPath, selectionOperation uintptr, mode uintptr) {
+func (this *QGraphicsScene) SetSelectionArea32(path *QPainterPath, selectionOperation ItemSelectionOperation, mode ItemSelectionMode) {
 	C.QGraphicsScene_SetSelectionArea32(this.h, path.cPointer(), (C.uintptr_t)(selectionOperation), (C.uintptr_t)(mode))
 }
 
-func (this *QGraphicsScene) SetSelectionArea4(path *QPainterPath, selectionOperation uintptr, mode uintptr, deviceTransform *QTransform) {
+func (this *QGraphicsScene) SetSelectionArea4(path *QPainterPath, selectionOperation ItemSelectionOperation, mode ItemSelectionMode, deviceTransform *QTransform) {
 	C.QGraphicsScene_SetSelectionArea4(this.h, path.cPointer(), (C.uintptr_t)(selectionOperation), (C.uintptr_t)(mode), deviceTransform.cPointer())
 }
 
@@ -949,11 +965,11 @@ func (this *QGraphicsScene) AddRect6(x float64, y float64, w float64, h float64,
 	return newQGraphicsRectItem_U(unsafe.Pointer(ret))
 }
 
-func (this *QGraphicsScene) SetFocusItem2(item *QGraphicsItem, focusReason uintptr) {
+func (this *QGraphicsScene) SetFocusItem2(item *QGraphicsItem, focusReason FocusReason) {
 	C.QGraphicsScene_SetFocusItem2(this.h, item.cPointer(), (C.uintptr_t)(focusReason))
 }
 
-func (this *QGraphicsScene) SetFocus1(focusReason uintptr) {
+func (this *QGraphicsScene) SetFocus1(focusReason FocusReason) {
 	C.QGraphicsScene_SetFocus1(this.h, (C.uintptr_t)(focusReason))
 }
 

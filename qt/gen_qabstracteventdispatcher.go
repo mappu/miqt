@@ -86,12 +86,12 @@ func (this *QAbstractEventDispatcher) UnregisterSocketNotifier(notifier *QSocket
 	C.QAbstractEventDispatcher_UnregisterSocketNotifier(this.h, notifier.cPointer())
 }
 
-func (this *QAbstractEventDispatcher) RegisterTimer(interval int, timerType uintptr, object *QObject) int {
+func (this *QAbstractEventDispatcher) RegisterTimer(interval int, timerType TimerType, object *QObject) int {
 	ret := C.QAbstractEventDispatcher_RegisterTimer(this.h, (C.int)(interval), (C.uintptr_t)(timerType), object.cPointer())
 	return (int)(ret)
 }
 
-func (this *QAbstractEventDispatcher) RegisterTimer2(timerId int, interval int, timerType uintptr, object *QObject) {
+func (this *QAbstractEventDispatcher) RegisterTimer2(timerId int, interval int, timerType TimerType, object *QObject) {
 	C.QAbstractEventDispatcher_RegisterTimer2(this.h, (C.int)(timerId), (C.int)(interval), (C.uintptr_t)(timerType), object.cPointer())
 }
 
@@ -259,7 +259,7 @@ func newQAbstractEventDispatcher__TimerInfo_U(h unsafe.Pointer) *QAbstractEventD
 }
 
 // NewQAbstractEventDispatcher__TimerInfo constructs a new QAbstractEventDispatcher::TimerInfo object.
-func NewQAbstractEventDispatcher__TimerInfo(id int, i int, t uintptr) *QAbstractEventDispatcher__TimerInfo {
+func NewQAbstractEventDispatcher__TimerInfo(id int, i int, t TimerType) *QAbstractEventDispatcher__TimerInfo {
 	ret := C.QAbstractEventDispatcher__TimerInfo_new((C.int)(id), (C.int)(i), (C.uintptr_t)(t))
 	return newQAbstractEventDispatcher__TimerInfo(ret)
 }

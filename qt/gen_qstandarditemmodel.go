@@ -14,6 +14,13 @@ import (
 	"unsafe"
 )
 
+type QStandardItem__ItemType int
+
+const (
+	QStandardItem__ItemType__Type     QStandardItem__ItemType = 0
+	QStandardItem__ItemType__UserType QStandardItem__ItemType = 1000
+)
+
 type QStandardItem struct {
 	h *C.QStandardItem
 }
@@ -233,12 +240,12 @@ func (this *QStandardItem) SetForeground(brush *QBrush) {
 	C.QStandardItem_SetForeground(this.h, brush.cPointer())
 }
 
-func (this *QStandardItem) CheckState() uintptr {
+func (this *QStandardItem) CheckState() CheckState {
 	ret := C.QStandardItem_CheckState(this.h)
-	return (uintptr)(ret)
+	return (CheckState)(ret)
 }
 
-func (this *QStandardItem) SetCheckState(checkState uintptr) {
+func (this *QStandardItem) SetCheckState(checkState CheckState) {
 	C.QStandardItem_SetCheckState(this.h, (C.uintptr_t)(checkState))
 }
 
@@ -604,7 +611,7 @@ func (this *QStandardItem) TakeChild2(row int, column int) *QStandardItem {
 	return newQStandardItem_U(unsafe.Pointer(ret))
 }
 
-func (this *QStandardItem) SortChildren2(column int, order uintptr) {
+func (this *QStandardItem) SortChildren2(column int, order SortOrder) {
 	C.QStandardItem_SortChildren2(this.h, (C.int)(column), (C.uintptr_t)(order))
 }
 
@@ -755,7 +762,7 @@ func (this *QStandardItemModel) ClearItemData(index *QModelIndex) bool {
 	return (bool)(ret)
 }
 
-func (this *QStandardItemModel) HeaderData(section int, orientation uintptr) *QVariant {
+func (this *QStandardItemModel) HeaderData(section int, orientation Orientation) *QVariant {
 	ret := C.QStandardItemModel_HeaderData(this.h, (C.int)(section), (C.uintptr_t)(orientation))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQVariant(ret)
@@ -766,7 +773,7 @@ func (this *QStandardItemModel) HeaderData(section int, orientation uintptr) *QV
 	return ret1
 }
 
-func (this *QStandardItemModel) SetHeaderData(section int, orientation uintptr, value *QVariant) bool {
+func (this *QStandardItemModel) SetHeaderData(section int, orientation Orientation, value *QVariant) bool {
 	ret := C.QStandardItemModel_SetHeaderData(this.h, (C.int)(section), (C.uintptr_t)(orientation), value.cPointer())
 	return (bool)(ret)
 }
@@ -1057,7 +1064,7 @@ func (this *QStandardItemModel) MimeData(indexes []QModelIndex) *QMimeData {
 	return newQMimeData_U(unsafe.Pointer(ret))
 }
 
-func (this *QStandardItemModel) DropMimeData(data *QMimeData, action uintptr, row int, column int, parent *QModelIndex) bool {
+func (this *QStandardItemModel) DropMimeData(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool {
 	ret := C.QStandardItemModel_DropMimeData(this.h, data.cPointer(), (C.uintptr_t)(action), (C.int)(row), (C.int)(column), parent.cPointer())
 	return (bool)(ret)
 }
@@ -1168,7 +1175,7 @@ func (this *QStandardItemModel) SetData3(index *QModelIndex, value *QVariant, ro
 	return (bool)(ret)
 }
 
-func (this *QStandardItemModel) HeaderData3(section int, orientation uintptr, role int) *QVariant {
+func (this *QStandardItemModel) HeaderData3(section int, orientation Orientation, role int) *QVariant {
 	ret := C.QStandardItemModel_HeaderData3(this.h, (C.int)(section), (C.uintptr_t)(orientation), (C.int)(role))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQVariant(ret)
@@ -1179,7 +1186,7 @@ func (this *QStandardItemModel) HeaderData3(section int, orientation uintptr, ro
 	return ret1
 }
 
-func (this *QStandardItemModel) SetHeaderData4(section int, orientation uintptr, value *QVariant, role int) bool {
+func (this *QStandardItemModel) SetHeaderData4(section int, orientation Orientation, value *QVariant, role int) bool {
 	ret := C.QStandardItemModel_SetHeaderData4(this.h, (C.int)(section), (C.uintptr_t)(orientation), value.cPointer(), (C.int)(role))
 	return (bool)(ret)
 }
@@ -1204,7 +1211,7 @@ func (this *QStandardItemModel) RemoveColumns3(column int, count int, parent *QM
 	return (bool)(ret)
 }
 
-func (this *QStandardItemModel) Sort2(column int, order uintptr) {
+func (this *QStandardItemModel) Sort2(column int, order SortOrder) {
 	C.QStandardItemModel_Sort2(this.h, (C.int)(column), (C.uintptr_t)(order))
 }
 

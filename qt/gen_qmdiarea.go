@@ -14,6 +14,27 @@ import (
 	"unsafe"
 )
 
+type QMdiArea__AreaOption int
+
+const (
+	QMdiArea__AreaOption__DontMaximizeSubWindowOnActivation QMdiArea__AreaOption = 1
+)
+
+type QMdiArea__WindowOrder int
+
+const (
+	QMdiArea__WindowOrder__CreationOrder          QMdiArea__WindowOrder = 0
+	QMdiArea__WindowOrder__StackingOrder          QMdiArea__WindowOrder = 1
+	QMdiArea__WindowOrder__ActivationHistoryOrder QMdiArea__WindowOrder = 2
+)
+
+type QMdiArea__ViewMode int
+
+const (
+	QMdiArea__ViewMode__SubWindowView QMdiArea__ViewMode = 0
+	QMdiArea__ViewMode__TabbedView    QMdiArea__ViewMode = 1
+)
+
 type QMdiArea struct {
 	h *C.QMdiArea
 	*QAbstractScrollArea
@@ -145,31 +166,31 @@ func (this *QMdiArea) SetBackground(background *QBrush) {
 	C.QMdiArea_SetBackground(this.h, background.cPointer())
 }
 
-func (this *QMdiArea) ActivationOrder() uintptr {
+func (this *QMdiArea) ActivationOrder() QMdiArea__WindowOrder {
 	ret := C.QMdiArea_ActivationOrder(this.h)
-	return (uintptr)(ret)
+	return (QMdiArea__WindowOrder)(ret)
 }
 
-func (this *QMdiArea) SetActivationOrder(order uintptr) {
+func (this *QMdiArea) SetActivationOrder(order QMdiArea__WindowOrder) {
 	C.QMdiArea_SetActivationOrder(this.h, (C.uintptr_t)(order))
 }
 
-func (this *QMdiArea) SetOption(option uintptr) {
+func (this *QMdiArea) SetOption(option QMdiArea__AreaOption) {
 	C.QMdiArea_SetOption(this.h, (C.uintptr_t)(option))
 }
 
-func (this *QMdiArea) TestOption(opton uintptr) bool {
+func (this *QMdiArea) TestOption(opton QMdiArea__AreaOption) bool {
 	ret := C.QMdiArea_TestOption(this.h, (C.uintptr_t)(opton))
 	return (bool)(ret)
 }
 
-func (this *QMdiArea) SetViewMode(mode uintptr) {
+func (this *QMdiArea) SetViewMode(mode QMdiArea__ViewMode) {
 	C.QMdiArea_SetViewMode(this.h, (C.uintptr_t)(mode))
 }
 
-func (this *QMdiArea) ViewMode() uintptr {
+func (this *QMdiArea) ViewMode() QMdiArea__ViewMode {
 	ret := C.QMdiArea_ViewMode(this.h)
-	return (uintptr)(ret)
+	return (QMdiArea__ViewMode)(ret)
 }
 
 func (this *QMdiArea) DocumentMode() bool {
@@ -199,22 +220,22 @@ func (this *QMdiArea) TabsMovable() bool {
 	return (bool)(ret)
 }
 
-func (this *QMdiArea) SetTabShape(shape uintptr) {
+func (this *QMdiArea) SetTabShape(shape QTabWidget__TabShape) {
 	C.QMdiArea_SetTabShape(this.h, (C.uintptr_t)(shape))
 }
 
-func (this *QMdiArea) TabShape() uintptr {
+func (this *QMdiArea) TabShape() QTabWidget__TabShape {
 	ret := C.QMdiArea_TabShape(this.h)
-	return (uintptr)(ret)
+	return (QTabWidget__TabShape)(ret)
 }
 
-func (this *QMdiArea) SetTabPosition(position uintptr) {
+func (this *QMdiArea) SetTabPosition(position QTabWidget__TabPosition) {
 	C.QMdiArea_SetTabPosition(this.h, (C.uintptr_t)(position))
 }
 
-func (this *QMdiArea) TabPosition() uintptr {
+func (this *QMdiArea) TabPosition() QTabWidget__TabPosition {
 	ret := C.QMdiArea_TabPosition(this.h)
-	return (uintptr)(ret)
+	return (QTabWidget__TabPosition)(ret)
 }
 
 func (this *QMdiArea) SubWindowActivated(param1 *QMdiSubWindow) {
@@ -309,7 +330,7 @@ func QMdiArea_TrUtf83(s string, c string, n int) string {
 	return ret
 }
 
-func (this *QMdiArea) SubWindowList1(order uintptr) []*QMdiSubWindow {
+func (this *QMdiArea) SubWindowList1(order QMdiArea__WindowOrder) []*QMdiSubWindow {
 	var _out **C.QMdiSubWindow = nil
 	var _out_len C.size_t = 0
 	C.QMdiArea_SubWindowList1(this.h, (C.uintptr_t)(order), &_out, &_out_len)
@@ -327,7 +348,7 @@ func (this *QMdiArea) AddSubWindow2(widget *QWidget, flags int) *QMdiSubWindow {
 	return newQMdiSubWindow_U(unsafe.Pointer(ret))
 }
 
-func (this *QMdiArea) SetOption2(option uintptr, on bool) {
+func (this *QMdiArea) SetOption2(option QMdiArea__AreaOption, on bool) {
 	C.QMdiArea_SetOption2(this.h, (C.uintptr_t)(option), (C.bool)(on))
 }
 

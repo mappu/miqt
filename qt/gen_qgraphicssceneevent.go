@@ -13,6 +13,14 @@ import (
 	"unsafe"
 )
 
+type QGraphicsSceneContextMenuEvent__Reason int
+
+const (
+	QGraphicsSceneContextMenuEvent__Reason__Mouse    QGraphicsSceneContextMenuEvent__Reason = 0
+	QGraphicsSceneContextMenuEvent__Reason__Keyboard QGraphicsSceneContextMenuEvent__Reason = 1
+	QGraphicsSceneContextMenuEvent__Reason__Other    QGraphicsSceneContextMenuEvent__Reason = 2
+)
+
 type QGraphicsSceneEvent struct {
 	h *C.QGraphicsSceneEvent
 	*QEvent
@@ -37,7 +45,7 @@ func newQGraphicsSceneEvent_U(h unsafe.Pointer) *QGraphicsSceneEvent {
 }
 
 // NewQGraphicsSceneEvent constructs a new QGraphicsSceneEvent object.
-func NewQGraphicsSceneEvent(typeVal uintptr) *QGraphicsSceneEvent {
+func NewQGraphicsSceneEvent(typeVal QEvent__Type) *QGraphicsSceneEvent {
 	ret := C.QGraphicsSceneEvent_new((C.uintptr_t)(typeVal))
 	return newQGraphicsSceneEvent(ret)
 }
@@ -85,7 +93,7 @@ func NewQGraphicsSceneMouseEvent() *QGraphicsSceneMouseEvent {
 }
 
 // NewQGraphicsSceneMouseEvent2 constructs a new QGraphicsSceneMouseEvent object.
-func NewQGraphicsSceneMouseEvent2(typeVal uintptr) *QGraphicsSceneMouseEvent {
+func NewQGraphicsSceneMouseEvent2(typeVal QEvent__Type) *QGraphicsSceneMouseEvent {
 	ret := C.QGraphicsSceneMouseEvent_new2((C.uintptr_t)(typeVal))
 	return newQGraphicsSceneMouseEvent(ret)
 }
@@ -135,7 +143,7 @@ func (this *QGraphicsSceneMouseEvent) SetScreenPos(pos *QPoint) {
 	C.QGraphicsSceneMouseEvent_SetScreenPos(this.h, pos.cPointer())
 }
 
-func (this *QGraphicsSceneMouseEvent) ButtonDownPos(button uintptr) *QPointF {
+func (this *QGraphicsSceneMouseEvent) ButtonDownPos(button MouseButton) *QPointF {
 	ret := C.QGraphicsSceneMouseEvent_ButtonDownPos(this.h, (C.uintptr_t)(button))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQPointF(ret)
@@ -146,11 +154,11 @@ func (this *QGraphicsSceneMouseEvent) ButtonDownPos(button uintptr) *QPointF {
 	return ret1
 }
 
-func (this *QGraphicsSceneMouseEvent) SetButtonDownPos(button uintptr, pos *QPointF) {
+func (this *QGraphicsSceneMouseEvent) SetButtonDownPos(button MouseButton, pos *QPointF) {
 	C.QGraphicsSceneMouseEvent_SetButtonDownPos(this.h, (C.uintptr_t)(button), pos.cPointer())
 }
 
-func (this *QGraphicsSceneMouseEvent) ButtonDownScenePos(button uintptr) *QPointF {
+func (this *QGraphicsSceneMouseEvent) ButtonDownScenePos(button MouseButton) *QPointF {
 	ret := C.QGraphicsSceneMouseEvent_ButtonDownScenePos(this.h, (C.uintptr_t)(button))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQPointF(ret)
@@ -161,11 +169,11 @@ func (this *QGraphicsSceneMouseEvent) ButtonDownScenePos(button uintptr) *QPoint
 	return ret1
 }
 
-func (this *QGraphicsSceneMouseEvent) SetButtonDownScenePos(button uintptr, pos *QPointF) {
+func (this *QGraphicsSceneMouseEvent) SetButtonDownScenePos(button MouseButton, pos *QPointF) {
 	C.QGraphicsSceneMouseEvent_SetButtonDownScenePos(this.h, (C.uintptr_t)(button), pos.cPointer())
 }
 
-func (this *QGraphicsSceneMouseEvent) ButtonDownScreenPos(button uintptr) *QPoint {
+func (this *QGraphicsSceneMouseEvent) ButtonDownScreenPos(button MouseButton) *QPoint {
 	ret := C.QGraphicsSceneMouseEvent_ButtonDownScreenPos(this.h, (C.uintptr_t)(button))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQPoint(ret)
@@ -176,7 +184,7 @@ func (this *QGraphicsSceneMouseEvent) ButtonDownScreenPos(button uintptr) *QPoin
 	return ret1
 }
 
-func (this *QGraphicsSceneMouseEvent) SetButtonDownScreenPos(button uintptr, pos *QPoint) {
+func (this *QGraphicsSceneMouseEvent) SetButtonDownScreenPos(button MouseButton, pos *QPoint) {
 	C.QGraphicsSceneMouseEvent_SetButtonDownScreenPos(this.h, (C.uintptr_t)(button), pos.cPointer())
 }
 
@@ -234,12 +242,12 @@ func (this *QGraphicsSceneMouseEvent) SetButtons(buttons int) {
 	C.QGraphicsSceneMouseEvent_SetButtons(this.h, (C.int)(buttons))
 }
 
-func (this *QGraphicsSceneMouseEvent) Button() uintptr {
+func (this *QGraphicsSceneMouseEvent) Button() MouseButton {
 	ret := C.QGraphicsSceneMouseEvent_Button(this.h)
-	return (uintptr)(ret)
+	return (MouseButton)(ret)
 }
 
-func (this *QGraphicsSceneMouseEvent) SetButton(button uintptr) {
+func (this *QGraphicsSceneMouseEvent) SetButton(button MouseButton) {
 	C.QGraphicsSceneMouseEvent_SetButton(this.h, (C.uintptr_t)(button))
 }
 
@@ -252,12 +260,12 @@ func (this *QGraphicsSceneMouseEvent) SetModifiers(modifiers int) {
 	C.QGraphicsSceneMouseEvent_SetModifiers(this.h, (C.int)(modifiers))
 }
 
-func (this *QGraphicsSceneMouseEvent) Source() uintptr {
+func (this *QGraphicsSceneMouseEvent) Source() MouseEventSource {
 	ret := C.QGraphicsSceneMouseEvent_Source(this.h)
-	return (uintptr)(ret)
+	return (MouseEventSource)(ret)
 }
 
-func (this *QGraphicsSceneMouseEvent) SetSource(source uintptr) {
+func (this *QGraphicsSceneMouseEvent) SetSource(source MouseEventSource) {
 	C.QGraphicsSceneMouseEvent_SetSource(this.h, (C.uintptr_t)(source))
 }
 
@@ -304,7 +312,7 @@ func NewQGraphicsSceneWheelEvent() *QGraphicsSceneWheelEvent {
 }
 
 // NewQGraphicsSceneWheelEvent2 constructs a new QGraphicsSceneWheelEvent object.
-func NewQGraphicsSceneWheelEvent2(typeVal uintptr) *QGraphicsSceneWheelEvent {
+func NewQGraphicsSceneWheelEvent2(typeVal QEvent__Type) *QGraphicsSceneWheelEvent {
 	ret := C.QGraphicsSceneWheelEvent_new2((C.uintptr_t)(typeVal))
 	return newQGraphicsSceneWheelEvent(ret)
 }
@@ -381,12 +389,12 @@ func (this *QGraphicsSceneWheelEvent) SetDelta(delta int) {
 	C.QGraphicsSceneWheelEvent_SetDelta(this.h, (C.int)(delta))
 }
 
-func (this *QGraphicsSceneWheelEvent) Orientation() uintptr {
+func (this *QGraphicsSceneWheelEvent) Orientation() Orientation {
 	ret := C.QGraphicsSceneWheelEvent_Orientation(this.h)
-	return (uintptr)(ret)
+	return (Orientation)(ret)
 }
 
-func (this *QGraphicsSceneWheelEvent) SetOrientation(orientation uintptr) {
+func (this *QGraphicsSceneWheelEvent) SetOrientation(orientation Orientation) {
 	C.QGraphicsSceneWheelEvent_SetOrientation(this.h, (C.uintptr_t)(orientation))
 }
 
@@ -424,7 +432,7 @@ func NewQGraphicsSceneContextMenuEvent() *QGraphicsSceneContextMenuEvent {
 }
 
 // NewQGraphicsSceneContextMenuEvent2 constructs a new QGraphicsSceneContextMenuEvent object.
-func NewQGraphicsSceneContextMenuEvent2(typeVal uintptr) *QGraphicsSceneContextMenuEvent {
+func NewQGraphicsSceneContextMenuEvent2(typeVal QEvent__Type) *QGraphicsSceneContextMenuEvent {
 	ret := C.QGraphicsSceneContextMenuEvent_new2((C.uintptr_t)(typeVal))
 	return newQGraphicsSceneContextMenuEvent(ret)
 }
@@ -483,12 +491,12 @@ func (this *QGraphicsSceneContextMenuEvent) SetModifiers(modifiers int) {
 	C.QGraphicsSceneContextMenuEvent_SetModifiers(this.h, (C.int)(modifiers))
 }
 
-func (this *QGraphicsSceneContextMenuEvent) Reason() uintptr {
+func (this *QGraphicsSceneContextMenuEvent) Reason() QGraphicsSceneContextMenuEvent__Reason {
 	ret := C.QGraphicsSceneContextMenuEvent_Reason(this.h)
-	return (uintptr)(ret)
+	return (QGraphicsSceneContextMenuEvent__Reason)(ret)
 }
 
-func (this *QGraphicsSceneContextMenuEvent) SetReason(reason uintptr) {
+func (this *QGraphicsSceneContextMenuEvent) SetReason(reason QGraphicsSceneContextMenuEvent__Reason) {
 	C.QGraphicsSceneContextMenuEvent_SetReason(this.h, (C.uintptr_t)(reason))
 }
 
@@ -526,7 +534,7 @@ func NewQGraphicsSceneHoverEvent() *QGraphicsSceneHoverEvent {
 }
 
 // NewQGraphicsSceneHoverEvent2 constructs a new QGraphicsSceneHoverEvent object.
-func NewQGraphicsSceneHoverEvent2(typeVal uintptr) *QGraphicsSceneHoverEvent {
+func NewQGraphicsSceneHoverEvent2(typeVal QEvent__Type) *QGraphicsSceneHoverEvent {
 	ret := C.QGraphicsSceneHoverEvent_new2((C.uintptr_t)(typeVal))
 	return newQGraphicsSceneHoverEvent(ret)
 }
@@ -664,7 +672,7 @@ func NewQGraphicsSceneHelpEvent() *QGraphicsSceneHelpEvent {
 }
 
 // NewQGraphicsSceneHelpEvent2 constructs a new QGraphicsSceneHelpEvent object.
-func NewQGraphicsSceneHelpEvent2(typeVal uintptr) *QGraphicsSceneHelpEvent {
+func NewQGraphicsSceneHelpEvent2(typeVal QEvent__Type) *QGraphicsSceneHelpEvent {
 	ret := C.QGraphicsSceneHelpEvent_new2((C.uintptr_t)(typeVal))
 	return newQGraphicsSceneHelpEvent(ret)
 }
@@ -733,7 +741,7 @@ func NewQGraphicsSceneDragDropEvent() *QGraphicsSceneDragDropEvent {
 }
 
 // NewQGraphicsSceneDragDropEvent2 constructs a new QGraphicsSceneDragDropEvent object.
-func NewQGraphicsSceneDragDropEvent2(typeVal uintptr) *QGraphicsSceneDragDropEvent {
+func NewQGraphicsSceneDragDropEvent2(typeVal QEvent__Type) *QGraphicsSceneDragDropEvent {
 	ret := C.QGraphicsSceneDragDropEvent_new2((C.uintptr_t)(typeVal))
 	return newQGraphicsSceneDragDropEvent(ret)
 }
@@ -810,12 +818,12 @@ func (this *QGraphicsSceneDragDropEvent) SetPossibleActions(actions int) {
 	C.QGraphicsSceneDragDropEvent_SetPossibleActions(this.h, (C.int)(actions))
 }
 
-func (this *QGraphicsSceneDragDropEvent) ProposedAction() uintptr {
+func (this *QGraphicsSceneDragDropEvent) ProposedAction() DropAction {
 	ret := C.QGraphicsSceneDragDropEvent_ProposedAction(this.h)
-	return (uintptr)(ret)
+	return (DropAction)(ret)
 }
 
-func (this *QGraphicsSceneDragDropEvent) SetProposedAction(action uintptr) {
+func (this *QGraphicsSceneDragDropEvent) SetProposedAction(action DropAction) {
 	C.QGraphicsSceneDragDropEvent_SetProposedAction(this.h, (C.uintptr_t)(action))
 }
 
@@ -823,12 +831,12 @@ func (this *QGraphicsSceneDragDropEvent) AcceptProposedAction() {
 	C.QGraphicsSceneDragDropEvent_AcceptProposedAction(this.h)
 }
 
-func (this *QGraphicsSceneDragDropEvent) DropAction() uintptr {
+func (this *QGraphicsSceneDragDropEvent) DropAction() DropAction {
 	ret := C.QGraphicsSceneDragDropEvent_DropAction(this.h)
-	return (uintptr)(ret)
+	return (DropAction)(ret)
 }
 
-func (this *QGraphicsSceneDragDropEvent) SetDropAction(action uintptr) {
+func (this *QGraphicsSceneDragDropEvent) SetDropAction(action DropAction) {
 	C.QGraphicsSceneDragDropEvent_SetDropAction(this.h, (C.uintptr_t)(action))
 }
 

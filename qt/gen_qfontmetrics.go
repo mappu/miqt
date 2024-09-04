@@ -250,7 +250,7 @@ func (this *QFontMetrics) TightBoundingRect(text string) *QRect {
 	return ret1
 }
 
-func (this *QFontMetrics) ElidedText(text string, mode uintptr, width int) string {
+func (this *QFontMetrics) ElidedText(text string, mode TextElideMode, width int) string {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
 	var _out *C.char = nil
@@ -388,7 +388,7 @@ func (this *QFontMetrics) Size4(flags int, str string, tabstops int, tabarray *i
 	return ret1
 }
 
-func (this *QFontMetrics) ElidedText4(text string, mode uintptr, width int, flags int) string {
+func (this *QFontMetrics) ElidedText4(text string, mode TextElideMode, width int, flags int) string {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
 	var _out *C.char = nil
@@ -623,7 +623,7 @@ func (this *QFontMetricsF) TightBoundingRect(text string) *QRectF {
 	return ret1
 }
 
-func (this *QFontMetricsF) ElidedText(text string, mode uintptr, width float64) string {
+func (this *QFontMetricsF) ElidedText(text string, mode TextElideMode, width float64) string {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
 	var _out *C.char = nil
@@ -728,7 +728,7 @@ func (this *QFontMetricsF) Size4(flags int, str string, tabstops int, tabarray *
 	return ret1
 }
 
-func (this *QFontMetricsF) ElidedText4(text string, mode uintptr, width float64, flags int) string {
+func (this *QFontMetricsF) ElidedText4(text string, mode TextElideMode, width float64, flags int) string {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
 	var _out *C.char = nil

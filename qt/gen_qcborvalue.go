@@ -13,6 +13,46 @@ import (
 	"unsafe"
 )
 
+type QCborValue__EncodingOption int
+
+const (
+	QCborValue__EncodingOption__SortKeysInMaps   QCborValue__EncodingOption = 1
+	QCborValue__EncodingOption__UseFloat         QCborValue__EncodingOption = 2
+	QCborValue__EncodingOption__UseFloat16       QCborValue__EncodingOption = 6
+	QCborValue__EncodingOption__UseIntegers      QCborValue__EncodingOption = 8
+	QCborValue__EncodingOption__NoTransformation QCborValue__EncodingOption = 0
+)
+
+type QCborValue__DiagnosticNotationOption int
+
+const (
+	QCborValue__DiagnosticNotationOption__Compact        QCborValue__DiagnosticNotationOption = 0
+	QCborValue__DiagnosticNotationOption__LineWrapped    QCborValue__DiagnosticNotationOption = 1
+	QCborValue__DiagnosticNotationOption__ExtendedFormat QCborValue__DiagnosticNotationOption = 2
+)
+
+type QCborValue__Type int
+
+const (
+	QCborValue__Type__Integer           QCborValue__Type = 0
+	QCborValue__Type__ByteArray         QCborValue__Type = 64
+	QCborValue__Type__String            QCborValue__Type = 96
+	QCborValue__Type__Array             QCborValue__Type = 128
+	QCborValue__Type__Map               QCborValue__Type = 160
+	QCborValue__Type__Tag               QCborValue__Type = 192
+	QCborValue__Type__SimpleType        QCborValue__Type = 256
+	QCborValue__Type__False             QCborValue__Type = 276
+	QCborValue__Type__True              QCborValue__Type = 277
+	QCborValue__Type__Null              QCborValue__Type = 278
+	QCborValue__Type__Undefined         QCborValue__Type = 279
+	QCborValue__Type__Double            QCborValue__Type = 514
+	QCborValue__Type__DateTime          QCborValue__Type = 65536
+	QCborValue__Type__Url               QCborValue__Type = 65568
+	QCborValue__Type__RegularExpression QCborValue__Type = 65571
+	QCborValue__Type__Uuid              QCborValue__Type = 65573
+	QCborValue__Type__Invalid           QCborValue__Type = -1
+)
+
 type QCborParserError struct {
 	h *C.QCborParserError
 }
@@ -77,7 +117,7 @@ func NewQCborValue() *QCborValue {
 }
 
 // NewQCborValue2 constructs a new QCborValue object.
-func NewQCborValue2(t_ uintptr) *QCborValue {
+func NewQCborValue2(t_ QCborValue__Type) *QCborValue {
 	ret := C.QCborValue_new2((C.uintptr_t)(t_))
 	return newQCborValue(ret)
 }
@@ -184,9 +224,9 @@ func (this *QCborValue) Swap(other *QCborValue) {
 	C.QCborValue_Swap(this.h, other.cPointer())
 }
 
-func (this *QCborValue) Type() uintptr {
+func (this *QCborValue) Type() QCborValue__Type {
 	ret := C.QCborValue_Type(this.h)
-	return (uintptr)(ret)
+	return (QCborValue__Type)(ret)
 }
 
 func (this *QCborValue) IsInteger() bool {
@@ -791,9 +831,9 @@ func (this *QCborValueRef) OperatorAssignWithOther(other *QCborValueRef) {
 	C.QCborValueRef_OperatorAssignWithOther(this.h, other.cPointer())
 }
 
-func (this *QCborValueRef) Type() uintptr {
+func (this *QCborValueRef) Type() QCborValue__Type {
 	ret := C.QCborValueRef_Type(this.h)
-	return (uintptr)(ret)
+	return (QCborValue__Type)(ret)
 }
 
 func (this *QCborValueRef) IsInteger() bool {

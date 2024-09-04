@@ -13,6 +13,17 @@ import (
 	"unsafe"
 )
 
+type QLayout__SizeConstraint int
+
+const (
+	QLayout__SizeConstraint__SetDefaultConstraint QLayout__SizeConstraint = 0
+	QLayout__SizeConstraint__SetNoConstraint      QLayout__SizeConstraint = 1
+	QLayout__SizeConstraint__SetMinimumSize       QLayout__SizeConstraint = 2
+	QLayout__SizeConstraint__SetFixedSize         QLayout__SizeConstraint = 3
+	QLayout__SizeConstraint__SetMaximumSize       QLayout__SizeConstraint = 4
+	QLayout__SizeConstraint__SetMinAndMaxSize     QLayout__SizeConstraint = 5
+)
+
 type QLayout struct {
 	h *C.QLayout
 	*QObject
@@ -126,13 +137,13 @@ func (this *QLayout) SetAlignment2(l *QLayout, alignment int) bool {
 	return (bool)(ret)
 }
 
-func (this *QLayout) SetSizeConstraint(sizeConstraint uintptr) {
+func (this *QLayout) SetSizeConstraint(sizeConstraint QLayout__SizeConstraint) {
 	C.QLayout_SetSizeConstraint(this.h, (C.uintptr_t)(sizeConstraint))
 }
 
-func (this *QLayout) SizeConstraint() uintptr {
+func (this *QLayout) SizeConstraint() QLayout__SizeConstraint {
 	ret := C.QLayout_SizeConstraint(this.h)
-	return (uintptr)(ret)
+	return (QLayout__SizeConstraint)(ret)
 }
 
 func (this *QLayout) SetMenuBar(w *QWidget) {

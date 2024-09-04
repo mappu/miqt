@@ -13,6 +13,97 @@ import (
 	"unsafe"
 )
 
+type QKeySequence__StandardKey int
+
+const (
+	QKeySequence__StandardKey__UnknownKey               QKeySequence__StandardKey = 0
+	QKeySequence__StandardKey__HelpContents             QKeySequence__StandardKey = 1
+	QKeySequence__StandardKey__WhatsThis                QKeySequence__StandardKey = 2
+	QKeySequence__StandardKey__Open                     QKeySequence__StandardKey = 3
+	QKeySequence__StandardKey__Close                    QKeySequence__StandardKey = 4
+	QKeySequence__StandardKey__Save                     QKeySequence__StandardKey = 5
+	QKeySequence__StandardKey__New                      QKeySequence__StandardKey = 6
+	QKeySequence__StandardKey__Delete                   QKeySequence__StandardKey = 7
+	QKeySequence__StandardKey__Cut                      QKeySequence__StandardKey = 8
+	QKeySequence__StandardKey__Copy                     QKeySequence__StandardKey = 9
+	QKeySequence__StandardKey__Paste                    QKeySequence__StandardKey = 10
+	QKeySequence__StandardKey__Undo                     QKeySequence__StandardKey = 11
+	QKeySequence__StandardKey__Redo                     QKeySequence__StandardKey = 12
+	QKeySequence__StandardKey__Back                     QKeySequence__StandardKey = 13
+	QKeySequence__StandardKey__Forward                  QKeySequence__StandardKey = 14
+	QKeySequence__StandardKey__Refresh                  QKeySequence__StandardKey = 15
+	QKeySequence__StandardKey__ZoomIn                   QKeySequence__StandardKey = 16
+	QKeySequence__StandardKey__ZoomOut                  QKeySequence__StandardKey = 17
+	QKeySequence__StandardKey__Print                    QKeySequence__StandardKey = 18
+	QKeySequence__StandardKey__AddTab                   QKeySequence__StandardKey = 19
+	QKeySequence__StandardKey__NextChild                QKeySequence__StandardKey = 20
+	QKeySequence__StandardKey__PreviousChild            QKeySequence__StandardKey = 21
+	QKeySequence__StandardKey__Find                     QKeySequence__StandardKey = 22
+	QKeySequence__StandardKey__FindNext                 QKeySequence__StandardKey = 23
+	QKeySequence__StandardKey__FindPrevious             QKeySequence__StandardKey = 24
+	QKeySequence__StandardKey__Replace                  QKeySequence__StandardKey = 25
+	QKeySequence__StandardKey__SelectAll                QKeySequence__StandardKey = 26
+	QKeySequence__StandardKey__Bold                     QKeySequence__StandardKey = 27
+	QKeySequence__StandardKey__Italic                   QKeySequence__StandardKey = 28
+	QKeySequence__StandardKey__Underline                QKeySequence__StandardKey = 29
+	QKeySequence__StandardKey__MoveToNextChar           QKeySequence__StandardKey = 30
+	QKeySequence__StandardKey__MoveToPreviousChar       QKeySequence__StandardKey = 31
+	QKeySequence__StandardKey__MoveToNextWord           QKeySequence__StandardKey = 32
+	QKeySequence__StandardKey__MoveToPreviousWord       QKeySequence__StandardKey = 33
+	QKeySequence__StandardKey__MoveToNextLine           QKeySequence__StandardKey = 34
+	QKeySequence__StandardKey__MoveToPreviousLine       QKeySequence__StandardKey = 35
+	QKeySequence__StandardKey__MoveToNextPage           QKeySequence__StandardKey = 36
+	QKeySequence__StandardKey__MoveToPreviousPage       QKeySequence__StandardKey = 37
+	QKeySequence__StandardKey__MoveToStartOfLine        QKeySequence__StandardKey = 38
+	QKeySequence__StandardKey__MoveToEndOfLine          QKeySequence__StandardKey = 39
+	QKeySequence__StandardKey__MoveToStartOfBlock       QKeySequence__StandardKey = 40
+	QKeySequence__StandardKey__MoveToEndOfBlock         QKeySequence__StandardKey = 41
+	QKeySequence__StandardKey__MoveToStartOfDocument    QKeySequence__StandardKey = 42
+	QKeySequence__StandardKey__MoveToEndOfDocument      QKeySequence__StandardKey = 43
+	QKeySequence__StandardKey__SelectNextChar           QKeySequence__StandardKey = 44
+	QKeySequence__StandardKey__SelectPreviousChar       QKeySequence__StandardKey = 45
+	QKeySequence__StandardKey__SelectNextWord           QKeySequence__StandardKey = 46
+	QKeySequence__StandardKey__SelectPreviousWord       QKeySequence__StandardKey = 47
+	QKeySequence__StandardKey__SelectNextLine           QKeySequence__StandardKey = 48
+	QKeySequence__StandardKey__SelectPreviousLine       QKeySequence__StandardKey = 49
+	QKeySequence__StandardKey__SelectNextPage           QKeySequence__StandardKey = 50
+	QKeySequence__StandardKey__SelectPreviousPage       QKeySequence__StandardKey = 51
+	QKeySequence__StandardKey__SelectStartOfLine        QKeySequence__StandardKey = 52
+	QKeySequence__StandardKey__SelectEndOfLine          QKeySequence__StandardKey = 53
+	QKeySequence__StandardKey__SelectStartOfBlock       QKeySequence__StandardKey = 54
+	QKeySequence__StandardKey__SelectEndOfBlock         QKeySequence__StandardKey = 55
+	QKeySequence__StandardKey__SelectStartOfDocument    QKeySequence__StandardKey = 56
+	QKeySequence__StandardKey__SelectEndOfDocument      QKeySequence__StandardKey = 57
+	QKeySequence__StandardKey__DeleteStartOfWord        QKeySequence__StandardKey = 58
+	QKeySequence__StandardKey__DeleteEndOfWord          QKeySequence__StandardKey = 59
+	QKeySequence__StandardKey__DeleteEndOfLine          QKeySequence__StandardKey = 60
+	QKeySequence__StandardKey__InsertParagraphSeparator QKeySequence__StandardKey = 61
+	QKeySequence__StandardKey__InsertLineSeparator      QKeySequence__StandardKey = 62
+	QKeySequence__StandardKey__SaveAs                   QKeySequence__StandardKey = 63
+	QKeySequence__StandardKey__Preferences              QKeySequence__StandardKey = 64
+	QKeySequence__StandardKey__Quit                     QKeySequence__StandardKey = 65
+	QKeySequence__StandardKey__FullScreen               QKeySequence__StandardKey = 66
+	QKeySequence__StandardKey__Deselect                 QKeySequence__StandardKey = 67
+	QKeySequence__StandardKey__DeleteCompleteLine       QKeySequence__StandardKey = 68
+	QKeySequence__StandardKey__Backspace                QKeySequence__StandardKey = 69
+	QKeySequence__StandardKey__Cancel                   QKeySequence__StandardKey = 70
+)
+
+type QKeySequence__SequenceFormat int
+
+const (
+	QKeySequence__SequenceFormat__NativeText   QKeySequence__SequenceFormat = 0
+	QKeySequence__SequenceFormat__PortableText QKeySequence__SequenceFormat = 1
+)
+
+type QKeySequence__SequenceMatch int
+
+const (
+	QKeySequence__SequenceMatch__NoMatch      QKeySequence__SequenceMatch = 0
+	QKeySequence__SequenceMatch__PartialMatch QKeySequence__SequenceMatch = 1
+	QKeySequence__SequenceMatch__ExactMatch   QKeySequence__SequenceMatch = 2
+)
+
 type QKeySequence struct {
 	h *C.QKeySequence
 }
@@ -62,13 +153,13 @@ func NewQKeySequence4(ks *QKeySequence) *QKeySequence {
 }
 
 // NewQKeySequence5 constructs a new QKeySequence object.
-func NewQKeySequence5(key uintptr) *QKeySequence {
+func NewQKeySequence5(key QKeySequence__StandardKey) *QKeySequence {
 	ret := C.QKeySequence_new5((C.uintptr_t)(key))
 	return newQKeySequence(ret)
 }
 
 // NewQKeySequence6 constructs a new QKeySequence object.
-func NewQKeySequence6(key string, format uintptr) *QKeySequence {
+func NewQKeySequence6(key string, format QKeySequence__SequenceFormat) *QKeySequence {
 	key_Cstring := C.CString(key)
 	defer C.free(unsafe.Pointer(key_Cstring))
 	ret := C.QKeySequence_new6(key_Cstring, C.size_t(len(key)), (C.uintptr_t)(format))
@@ -155,9 +246,9 @@ func QKeySequence_ListToString(list []QKeySequence) string {
 	return ret
 }
 
-func (this *QKeySequence) Matches(seq *QKeySequence) uintptr {
+func (this *QKeySequence) Matches(seq *QKeySequence) QKeySequence__SequenceMatch {
 	ret := C.QKeySequence_Matches(this.h, seq.cPointer())
-	return (uintptr)(ret)
+	return (QKeySequence__SequenceMatch)(ret)
 }
 
 func QKeySequence_Mnemonic(text string) *QKeySequence {
@@ -173,7 +264,7 @@ func QKeySequence_Mnemonic(text string) *QKeySequence {
 	return ret1
 }
 
-func QKeySequence_KeyBindings(key uintptr) []QKeySequence {
+func QKeySequence_KeyBindings(key QKeySequence__StandardKey) []QKeySequence {
 	var _out **C.QKeySequence = nil
 	var _out_len C.size_t = 0
 	C.QKeySequence_KeyBindings((C.uintptr_t)(key), &_out, &_out_len)
@@ -234,7 +325,7 @@ func (this *QKeySequence) IsDetached() bool {
 	return (bool)(ret)
 }
 
-func (this *QKeySequence) ToString1(format uintptr) string {
+func (this *QKeySequence) ToString1(format QKeySequence__SequenceFormat) string {
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
 	C.QKeySequence_ToString1(this.h, (C.uintptr_t)(format), &_out, &_out_Strlen)
@@ -243,7 +334,7 @@ func (this *QKeySequence) ToString1(format uintptr) string {
 	return ret
 }
 
-func QKeySequence_FromString2(str string, format uintptr) *QKeySequence {
+func QKeySequence_FromString2(str string, format QKeySequence__SequenceFormat) *QKeySequence {
 	str_Cstring := C.CString(str)
 	defer C.free(unsafe.Pointer(str_Cstring))
 	ret := C.QKeySequence_FromString2(str_Cstring, C.size_t(len(str)), (C.uintptr_t)(format))
@@ -256,7 +347,7 @@ func QKeySequence_FromString2(str string, format uintptr) *QKeySequence {
 	return ret1
 }
 
-func QKeySequence_ListFromString2(str string, format uintptr) []QKeySequence {
+func QKeySequence_ListFromString2(str string, format QKeySequence__SequenceFormat) []QKeySequence {
 	str_Cstring := C.CString(str)
 	defer C.free(unsafe.Pointer(str_Cstring))
 	var _out **C.QKeySequence = nil
@@ -271,7 +362,7 @@ func QKeySequence_ListFromString2(str string, format uintptr) []QKeySequence {
 	return ret
 }
 
-func QKeySequence_ListToString2(list []QKeySequence, format uintptr) string {
+func QKeySequence_ListToString2(list []QKeySequence, format QKeySequence__SequenceFormat) string {
 	// For the C ABI, malloc a C array of raw pointers
 	list_CArray := (*[0xffff]*C.QKeySequence)(C.malloc(C.size_t(8 * len(list))))
 	defer C.free(unsafe.Pointer(list_CArray))

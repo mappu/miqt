@@ -121,12 +121,12 @@ func (this *QCollator) Locale() *QLocale {
 	return ret1
 }
 
-func (this *QCollator) CaseSensitivity() uintptr {
+func (this *QCollator) CaseSensitivity() CaseSensitivity {
 	ret := C.QCollator_CaseSensitivity(this.h)
-	return (uintptr)(ret)
+	return (CaseSensitivity)(ret)
 }
 
-func (this *QCollator) SetCaseSensitivity(cs uintptr) {
+func (this *QCollator) SetCaseSensitivity(cs CaseSensitivity) {
 	C.QCollator_SetCaseSensitivity(this.h, (C.uintptr_t)(cs))
 }
 

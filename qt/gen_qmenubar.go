@@ -280,11 +280,11 @@ func QMenuBar_TrUtf83(s string, c string, n int) string {
 	return ret
 }
 
-func (this *QMenuBar) SetCornerWidget2(w *QWidget, corner uintptr) {
+func (this *QMenuBar) SetCornerWidget2(w *QWidget, corner Corner) {
 	C.QMenuBar_SetCornerWidget2(this.h, w.cPointer(), (C.uintptr_t)(corner))
 }
 
-func (this *QMenuBar) CornerWidget1(corner uintptr) *QWidget {
+func (this *QMenuBar) CornerWidget1(corner Corner) *QWidget {
 	ret := C.QMenuBar_CornerWidget1(this.h, (C.uintptr_t)(corner))
 	return newQWidget_U(unsafe.Pointer(ret))
 }

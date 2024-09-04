@@ -13,6 +13,14 @@ import (
 	"unsafe"
 )
 
+type QAbstractScrollArea__SizeAdjustPolicy int
+
+const (
+	QAbstractScrollArea__SizeAdjustPolicy__AdjustIgnored               QAbstractScrollArea__SizeAdjustPolicy = 0
+	QAbstractScrollArea__SizeAdjustPolicy__AdjustToContentsOnFirstShow QAbstractScrollArea__SizeAdjustPolicy = 1
+	QAbstractScrollArea__SizeAdjustPolicy__AdjustToContents            QAbstractScrollArea__SizeAdjustPolicy = 2
+)
+
 type QAbstractScrollArea struct {
 	h *C.QAbstractScrollArea
 	*QFrame
@@ -75,12 +83,12 @@ func QAbstractScrollArea_TrUtf8(s string) string {
 	return ret
 }
 
-func (this *QAbstractScrollArea) VerticalScrollBarPolicy() uintptr {
+func (this *QAbstractScrollArea) VerticalScrollBarPolicy() ScrollBarPolicy {
 	ret := C.QAbstractScrollArea_VerticalScrollBarPolicy(this.h)
-	return (uintptr)(ret)
+	return (ScrollBarPolicy)(ret)
 }
 
-func (this *QAbstractScrollArea) SetVerticalScrollBarPolicy(verticalScrollBarPolicy uintptr) {
+func (this *QAbstractScrollArea) SetVerticalScrollBarPolicy(verticalScrollBarPolicy ScrollBarPolicy) {
 	C.QAbstractScrollArea_SetVerticalScrollBarPolicy(this.h, (C.uintptr_t)(verticalScrollBarPolicy))
 }
 
@@ -93,12 +101,12 @@ func (this *QAbstractScrollArea) SetVerticalScrollBar(scrollbar *QScrollBar) {
 	C.QAbstractScrollArea_SetVerticalScrollBar(this.h, scrollbar.cPointer())
 }
 
-func (this *QAbstractScrollArea) HorizontalScrollBarPolicy() uintptr {
+func (this *QAbstractScrollArea) HorizontalScrollBarPolicy() ScrollBarPolicy {
 	ret := C.QAbstractScrollArea_HorizontalScrollBarPolicy(this.h)
-	return (uintptr)(ret)
+	return (ScrollBarPolicy)(ret)
 }
 
-func (this *QAbstractScrollArea) SetHorizontalScrollBarPolicy(horizontalScrollBarPolicy uintptr) {
+func (this *QAbstractScrollArea) SetHorizontalScrollBarPolicy(horizontalScrollBarPolicy ScrollBarPolicy) {
 	C.QAbstractScrollArea_SetHorizontalScrollBarPolicy(this.h, (C.uintptr_t)(horizontalScrollBarPolicy))
 }
 
@@ -183,12 +191,12 @@ func (this *QAbstractScrollArea) SetupViewport(viewport *QWidget) {
 	C.QAbstractScrollArea_SetupViewport(this.h, viewport.cPointer())
 }
 
-func (this *QAbstractScrollArea) SizeAdjustPolicy() uintptr {
+func (this *QAbstractScrollArea) SizeAdjustPolicy() QAbstractScrollArea__SizeAdjustPolicy {
 	ret := C.QAbstractScrollArea_SizeAdjustPolicy(this.h)
-	return (uintptr)(ret)
+	return (QAbstractScrollArea__SizeAdjustPolicy)(ret)
 }
 
-func (this *QAbstractScrollArea) SetSizeAdjustPolicy(policy uintptr) {
+func (this *QAbstractScrollArea) SetSizeAdjustPolicy(policy QAbstractScrollArea__SizeAdjustPolicy) {
 	C.QAbstractScrollArea_SetSizeAdjustPolicy(this.h, (C.uintptr_t)(policy))
 }
 

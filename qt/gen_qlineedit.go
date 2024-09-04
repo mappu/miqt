@@ -14,6 +14,22 @@ import (
 	"unsafe"
 )
 
+type QLineEdit__ActionPosition int
+
+const (
+	QLineEdit__ActionPosition__LeadingPosition  QLineEdit__ActionPosition = 0
+	QLineEdit__ActionPosition__TrailingPosition QLineEdit__ActionPosition = 1
+)
+
+type QLineEdit__EchoMode int
+
+const (
+	QLineEdit__EchoMode__Normal             QLineEdit__EchoMode = 0
+	QLineEdit__EchoMode__NoEcho             QLineEdit__EchoMode = 1
+	QLineEdit__EchoMode__Password           QLineEdit__EchoMode = 2
+	QLineEdit__EchoMode__PasswordEchoOnEdit QLineEdit__EchoMode = 3
+)
+
 type QLineEdit struct {
 	h *C.QLineEdit
 	*QWidget
@@ -152,12 +168,12 @@ func (this *QLineEdit) IsClearButtonEnabled() bool {
 	return (bool)(ret)
 }
 
-func (this *QLineEdit) EchoMode() uintptr {
+func (this *QLineEdit) EchoMode() QLineEdit__EchoMode {
 	ret := C.QLineEdit_EchoMode(this.h)
-	return (uintptr)(ret)
+	return (QLineEdit__EchoMode)(ret)
 }
 
-func (this *QLineEdit) SetEchoMode(echoMode uintptr) {
+func (this *QLineEdit) SetEchoMode(echoMode QLineEdit__EchoMode) {
 	C.QLineEdit_SetEchoMode(this.h, (C.uintptr_t)(echoMode))
 }
 
@@ -326,13 +342,13 @@ func (this *QLineEdit) DragEnabled() bool {
 	return (bool)(ret)
 }
 
-func (this *QLineEdit) SetCursorMoveStyle(style uintptr) {
+func (this *QLineEdit) SetCursorMoveStyle(style CursorMoveStyle) {
 	C.QLineEdit_SetCursorMoveStyle(this.h, (C.uintptr_t)(style))
 }
 
-func (this *QLineEdit) CursorMoveStyle() uintptr {
+func (this *QLineEdit) CursorMoveStyle() CursorMoveStyle {
 	ret := C.QLineEdit_CursorMoveStyle(this.h)
-	return (uintptr)(ret)
+	return (CursorMoveStyle)(ret)
 }
 
 func (this *QLineEdit) InputMask() string {
@@ -378,11 +394,11 @@ func (this *QLineEdit) TextMargins() *QMargins {
 	return ret1
 }
 
-func (this *QLineEdit) AddAction(action *QAction, position uintptr) {
+func (this *QLineEdit) AddAction(action *QAction, position QLineEdit__ActionPosition) {
 	C.QLineEdit_AddAction(this.h, action.cPointer(), (C.uintptr_t)(position))
 }
 
-func (this *QLineEdit) AddAction2(icon *QIcon, position uintptr) *QAction {
+func (this *QLineEdit) AddAction2(icon *QIcon, position QLineEdit__ActionPosition) *QAction {
 	ret := C.QLineEdit_AddAction2(this.h, icon.cPointer(), (C.uintptr_t)(position))
 	return newQAction_U(unsafe.Pointer(ret))
 }
@@ -524,7 +540,7 @@ func (this *QLineEdit) OnInputRejected(slot func()) {
 	C.QLineEdit_connect_InputRejected(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
 }
 
-func (this *QLineEdit) InputMethodQuery(param1 uintptr) *QVariant {
+func (this *QLineEdit) InputMethodQuery(param1 InputMethodQuery) *QVariant {
 	ret := C.QLineEdit_InputMethodQuery(this.h, (C.uintptr_t)(param1))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQVariant(ret)
@@ -535,7 +551,7 @@ func (this *QLineEdit) InputMethodQuery(param1 uintptr) *QVariant {
 	return ret1
 }
 
-func (this *QLineEdit) InputMethodQuery2(property uintptr, argument QVariant) *QVariant {
+func (this *QLineEdit) InputMethodQuery2(property InputMethodQuery, argument QVariant) *QVariant {
 	ret := C.QLineEdit_InputMethodQuery2(this.h, (C.uintptr_t)(property), argument.cPointer())
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQVariant(ret)

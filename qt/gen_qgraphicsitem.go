@@ -14,6 +14,155 @@ import (
 	"unsafe"
 )
 
+type QGraphicsItem__GraphicsItemFlag int
+
+const (
+	QGraphicsItem__GraphicsItemFlag__ItemIsMovable                        QGraphicsItem__GraphicsItemFlag = 1
+	QGraphicsItem__GraphicsItemFlag__ItemIsSelectable                     QGraphicsItem__GraphicsItemFlag = 2
+	QGraphicsItem__GraphicsItemFlag__ItemIsFocusable                      QGraphicsItem__GraphicsItemFlag = 4
+	QGraphicsItem__GraphicsItemFlag__ItemClipsToShape                     QGraphicsItem__GraphicsItemFlag = 8
+	QGraphicsItem__GraphicsItemFlag__ItemClipsChildrenToShape             QGraphicsItem__GraphicsItemFlag = 16
+	QGraphicsItem__GraphicsItemFlag__ItemIgnoresTransformations           QGraphicsItem__GraphicsItemFlag = 32
+	QGraphicsItem__GraphicsItemFlag__ItemIgnoresParentOpacity             QGraphicsItem__GraphicsItemFlag = 64
+	QGraphicsItem__GraphicsItemFlag__ItemDoesntPropagateOpacityToChildren QGraphicsItem__GraphicsItemFlag = 128
+	QGraphicsItem__GraphicsItemFlag__ItemStacksBehindParent               QGraphicsItem__GraphicsItemFlag = 256
+	QGraphicsItem__GraphicsItemFlag__ItemUsesExtendedStyleOption          QGraphicsItem__GraphicsItemFlag = 512
+	QGraphicsItem__GraphicsItemFlag__ItemHasNoContents                    QGraphicsItem__GraphicsItemFlag = 1024
+	QGraphicsItem__GraphicsItemFlag__ItemSendsGeometryChanges             QGraphicsItem__GraphicsItemFlag = 2048
+	QGraphicsItem__GraphicsItemFlag__ItemAcceptsInputMethod               QGraphicsItem__GraphicsItemFlag = 4096
+	QGraphicsItem__GraphicsItemFlag__ItemNegativeZStacksBehindParent      QGraphicsItem__GraphicsItemFlag = 8192
+	QGraphicsItem__GraphicsItemFlag__ItemIsPanel                          QGraphicsItem__GraphicsItemFlag = 16384
+	QGraphicsItem__GraphicsItemFlag__ItemIsFocusScope                     QGraphicsItem__GraphicsItemFlag = 32768
+	QGraphicsItem__GraphicsItemFlag__ItemSendsScenePositionChanges        QGraphicsItem__GraphicsItemFlag = 65536
+	QGraphicsItem__GraphicsItemFlag__ItemStopsClickFocusPropagation       QGraphicsItem__GraphicsItemFlag = 131072
+	QGraphicsItem__GraphicsItemFlag__ItemStopsFocusHandling               QGraphicsItem__GraphicsItemFlag = 262144
+	QGraphicsItem__GraphicsItemFlag__ItemContainsChildrenInShape          QGraphicsItem__GraphicsItemFlag = 524288
+)
+
+type QGraphicsItem__GraphicsItemChange int
+
+const (
+	QGraphicsItem__GraphicsItemChange__ItemPositionChange                 QGraphicsItem__GraphicsItemChange = 0
+	QGraphicsItem__GraphicsItemChange__ItemMatrixChange                   QGraphicsItem__GraphicsItemChange = 1
+	QGraphicsItem__GraphicsItemChange__ItemVisibleChange                  QGraphicsItem__GraphicsItemChange = 2
+	QGraphicsItem__GraphicsItemChange__ItemEnabledChange                  QGraphicsItem__GraphicsItemChange = 3
+	QGraphicsItem__GraphicsItemChange__ItemSelectedChange                 QGraphicsItem__GraphicsItemChange = 4
+	QGraphicsItem__GraphicsItemChange__ItemParentChange                   QGraphicsItem__GraphicsItemChange = 5
+	QGraphicsItem__GraphicsItemChange__ItemChildAddedChange               QGraphicsItem__GraphicsItemChange = 6
+	QGraphicsItem__GraphicsItemChange__ItemChildRemovedChange             QGraphicsItem__GraphicsItemChange = 7
+	QGraphicsItem__GraphicsItemChange__ItemTransformChange                QGraphicsItem__GraphicsItemChange = 8
+	QGraphicsItem__GraphicsItemChange__ItemPositionHasChanged             QGraphicsItem__GraphicsItemChange = 9
+	QGraphicsItem__GraphicsItemChange__ItemTransformHasChanged            QGraphicsItem__GraphicsItemChange = 10
+	QGraphicsItem__GraphicsItemChange__ItemSceneChange                    QGraphicsItem__GraphicsItemChange = 11
+	QGraphicsItem__GraphicsItemChange__ItemVisibleHasChanged              QGraphicsItem__GraphicsItemChange = 12
+	QGraphicsItem__GraphicsItemChange__ItemEnabledHasChanged              QGraphicsItem__GraphicsItemChange = 13
+	QGraphicsItem__GraphicsItemChange__ItemSelectedHasChanged             QGraphicsItem__GraphicsItemChange = 14
+	QGraphicsItem__GraphicsItemChange__ItemParentHasChanged               QGraphicsItem__GraphicsItemChange = 15
+	QGraphicsItem__GraphicsItemChange__ItemSceneHasChanged                QGraphicsItem__GraphicsItemChange = 16
+	QGraphicsItem__GraphicsItemChange__ItemCursorChange                   QGraphicsItem__GraphicsItemChange = 17
+	QGraphicsItem__GraphicsItemChange__ItemCursorHasChanged               QGraphicsItem__GraphicsItemChange = 18
+	QGraphicsItem__GraphicsItemChange__ItemToolTipChange                  QGraphicsItem__GraphicsItemChange = 19
+	QGraphicsItem__GraphicsItemChange__ItemToolTipHasChanged              QGraphicsItem__GraphicsItemChange = 20
+	QGraphicsItem__GraphicsItemChange__ItemFlagsChange                    QGraphicsItem__GraphicsItemChange = 21
+	QGraphicsItem__GraphicsItemChange__ItemFlagsHaveChanged               QGraphicsItem__GraphicsItemChange = 22
+	QGraphicsItem__GraphicsItemChange__ItemZValueChange                   QGraphicsItem__GraphicsItemChange = 23
+	QGraphicsItem__GraphicsItemChange__ItemZValueHasChanged               QGraphicsItem__GraphicsItemChange = 24
+	QGraphicsItem__GraphicsItemChange__ItemOpacityChange                  QGraphicsItem__GraphicsItemChange = 25
+	QGraphicsItem__GraphicsItemChange__ItemOpacityHasChanged              QGraphicsItem__GraphicsItemChange = 26
+	QGraphicsItem__GraphicsItemChange__ItemScenePositionHasChanged        QGraphicsItem__GraphicsItemChange = 27
+	QGraphicsItem__GraphicsItemChange__ItemRotationChange                 QGraphicsItem__GraphicsItemChange = 28
+	QGraphicsItem__GraphicsItemChange__ItemRotationHasChanged             QGraphicsItem__GraphicsItemChange = 29
+	QGraphicsItem__GraphicsItemChange__ItemScaleChange                    QGraphicsItem__GraphicsItemChange = 30
+	QGraphicsItem__GraphicsItemChange__ItemScaleHasChanged                QGraphicsItem__GraphicsItemChange = 31
+	QGraphicsItem__GraphicsItemChange__ItemTransformOriginPointChange     QGraphicsItem__GraphicsItemChange = 32
+	QGraphicsItem__GraphicsItemChange__ItemTransformOriginPointHasChanged QGraphicsItem__GraphicsItemChange = 33
+)
+
+type QGraphicsItem__CacheMode int
+
+const (
+	QGraphicsItem__CacheMode__NoCache               QGraphicsItem__CacheMode = 0
+	QGraphicsItem__CacheMode__ItemCoordinateCache   QGraphicsItem__CacheMode = 1
+	QGraphicsItem__CacheMode__DeviceCoordinateCache QGraphicsItem__CacheMode = 2
+)
+
+type QGraphicsItem__PanelModality int
+
+const (
+	QGraphicsItem__PanelModality__NonModal   QGraphicsItem__PanelModality = 0
+	QGraphicsItem__PanelModality__PanelModal QGraphicsItem__PanelModality = 1
+	QGraphicsItem__PanelModality__SceneModal QGraphicsItem__PanelModality = 2
+)
+
+type QGraphicsItem__ int
+
+const (
+	QGraphicsItem____Type     QGraphicsItem__ = 1
+	QGraphicsItem____UserType QGraphicsItem__ = 65536
+)
+
+type QGraphicsPathItem__ int
+
+const (
+	QGraphicsPathItem____Type QGraphicsPathItem__ = 2
+)
+
+type QGraphicsRectItem__ int
+
+const (
+	QGraphicsRectItem____Type QGraphicsRectItem__ = 3
+)
+
+type QGraphicsEllipseItem__ int
+
+const (
+	QGraphicsEllipseItem____Type QGraphicsEllipseItem__ = 4
+)
+
+type QGraphicsPolygonItem__ int
+
+const (
+	QGraphicsPolygonItem____Type QGraphicsPolygonItem__ = 5
+)
+
+type QGraphicsLineItem__ int
+
+const (
+	QGraphicsLineItem____Type QGraphicsLineItem__ = 6
+)
+
+type QGraphicsPixmapItem__ShapeMode int
+
+const (
+	QGraphicsPixmapItem__ShapeMode__MaskShape          QGraphicsPixmapItem__ShapeMode = 0
+	QGraphicsPixmapItem__ShapeMode__BoundingRectShape  QGraphicsPixmapItem__ShapeMode = 1
+	QGraphicsPixmapItem__ShapeMode__HeuristicMaskShape QGraphicsPixmapItem__ShapeMode = 2
+)
+
+type QGraphicsPixmapItem__ int
+
+const (
+	QGraphicsPixmapItem____Type QGraphicsPixmapItem__ = 7
+)
+
+type QGraphicsTextItem__ int
+
+const (
+	QGraphicsTextItem____Type QGraphicsTextItem__ = 8
+)
+
+type QGraphicsSimpleTextItem__ int
+
+const (
+	QGraphicsSimpleTextItem____Type QGraphicsSimpleTextItem__ = 9
+)
+
+type QGraphicsItemGroup__ int
+
+const (
+	QGraphicsItemGroup____Type QGraphicsItemGroup__ = 10
+)
+
 type QGraphicsItem struct {
 	h *C.QGraphicsItem
 }
@@ -132,7 +281,7 @@ func (this *QGraphicsItem) Flags() int {
 	return (int)(ret)
 }
 
-func (this *QGraphicsItem) SetFlag(flag uintptr) {
+func (this *QGraphicsItem) SetFlag(flag QGraphicsItem__GraphicsItemFlag) {
 	C.QGraphicsItem_SetFlag(this.h, (C.uintptr_t)(flag))
 }
 
@@ -140,21 +289,21 @@ func (this *QGraphicsItem) SetFlags(flags int) {
 	C.QGraphicsItem_SetFlags(this.h, (C.int)(flags))
 }
 
-func (this *QGraphicsItem) CacheMode() uintptr {
+func (this *QGraphicsItem) CacheMode() QGraphicsItem__CacheMode {
 	ret := C.QGraphicsItem_CacheMode(this.h)
-	return (uintptr)(ret)
+	return (QGraphicsItem__CacheMode)(ret)
 }
 
-func (this *QGraphicsItem) SetCacheMode(mode uintptr) {
+func (this *QGraphicsItem) SetCacheMode(mode QGraphicsItem__CacheMode) {
 	C.QGraphicsItem_SetCacheMode(this.h, (C.uintptr_t)(mode))
 }
 
-func (this *QGraphicsItem) PanelModality() uintptr {
+func (this *QGraphicsItem) PanelModality() QGraphicsItem__PanelModality {
 	ret := C.QGraphicsItem_PanelModality(this.h)
-	return (uintptr)(ret)
+	return (QGraphicsItem__PanelModality)(ret)
 }
 
-func (this *QGraphicsItem) SetPanelModality(panelModality uintptr) {
+func (this *QGraphicsItem) SetPanelModality(panelModality QGraphicsItem__PanelModality) {
 	C.QGraphicsItem_SetPanelModality(this.h, (C.uintptr_t)(panelModality))
 }
 
@@ -1127,15 +1276,15 @@ func (this *QGraphicsItem) RemoveSceneEventFilter(filterItem *QGraphicsItem) {
 	C.QGraphicsItem_RemoveSceneEventFilter(this.h, filterItem.cPointer())
 }
 
-func (this *QGraphicsItem) SetFlag2(flag uintptr, enabled bool) {
+func (this *QGraphicsItem) SetFlag2(flag QGraphicsItem__GraphicsItemFlag, enabled bool) {
 	C.QGraphicsItem_SetFlag2(this.h, (C.uintptr_t)(flag), (C.bool)(enabled))
 }
 
-func (this *QGraphicsItem) SetCacheMode2(mode uintptr, cacheSize *QSize) {
+func (this *QGraphicsItem) SetCacheMode2(mode QGraphicsItem__CacheMode, cacheSize *QSize) {
 	C.QGraphicsItem_SetCacheMode2(this.h, (C.uintptr_t)(mode), cacheSize.cPointer())
 }
 
-func (this *QGraphicsItem) SetFocus1(focusReason uintptr) {
+func (this *QGraphicsItem) SetFocus1(focusReason FocusReason) {
 	C.QGraphicsItem_SetFocus1(this.h, (C.uintptr_t)(focusReason))
 }
 
@@ -1178,17 +1327,17 @@ func (this *QGraphicsItem) SetTransform2(matrix *QTransform, combine bool) {
 	C.QGraphicsItem_SetTransform2(this.h, matrix.cPointer(), (C.bool)(combine))
 }
 
-func (this *QGraphicsItem) CollidesWithItem2(other *QGraphicsItem, mode uintptr) bool {
+func (this *QGraphicsItem) CollidesWithItem2(other *QGraphicsItem, mode ItemSelectionMode) bool {
 	ret := C.QGraphicsItem_CollidesWithItem2(this.h, other.cPointer(), (C.uintptr_t)(mode))
 	return (bool)(ret)
 }
 
-func (this *QGraphicsItem) CollidesWithPath2(path *QPainterPath, mode uintptr) bool {
+func (this *QGraphicsItem) CollidesWithPath2(path *QPainterPath, mode ItemSelectionMode) bool {
 	ret := C.QGraphicsItem_CollidesWithPath2(this.h, path.cPointer(), (C.uintptr_t)(mode))
 	return (bool)(ret)
 }
 
-func (this *QGraphicsItem) CollidingItems1(mode uintptr) []*QGraphicsItem {
+func (this *QGraphicsItem) CollidingItems1(mode ItemSelectionMode) []*QGraphicsItem {
 	var _out **C.QGraphicsItem = nil
 	var _out_len C.size_t = 0
 	C.QGraphicsItem_CollidingItems1(this.h, (C.uintptr_t)(mode), &_out, &_out_len)
@@ -1273,11 +1422,11 @@ func QGraphicsObject_TrUtf8(s string) string {
 	return ret
 }
 
-func (this *QGraphicsObject) GrabGesture(typeVal uintptr) {
+func (this *QGraphicsObject) GrabGesture(typeVal GestureType) {
 	C.QGraphicsObject_GrabGesture(this.h, (C.uintptr_t)(typeVal))
 }
 
-func (this *QGraphicsObject) UngrabGesture(typeVal uintptr) {
+func (this *QGraphicsObject) UngrabGesture(typeVal GestureType) {
 	C.QGraphicsObject_UngrabGesture(this.h, (C.uintptr_t)(typeVal))
 }
 
@@ -1477,7 +1626,7 @@ func QGraphicsObject_TrUtf83(s string, c string, n int) string {
 	return ret
 }
 
-func (this *QGraphicsObject) GrabGesture2(typeVal uintptr, flags int) {
+func (this *QGraphicsObject) GrabGesture2(typeVal GestureType, flags int) {
 	C.QGraphicsObject_GrabGesture2(this.h, (C.uintptr_t)(typeVal), (C.int)(flags))
 }
 
@@ -2009,12 +2158,12 @@ func NewQGraphicsPolygonItem2(parent *QGraphicsItem) *QGraphicsPolygonItem {
 	return newQGraphicsPolygonItem(ret)
 }
 
-func (this *QGraphicsPolygonItem) FillRule() uintptr {
+func (this *QGraphicsPolygonItem) FillRule() FillRule {
 	ret := C.QGraphicsPolygonItem_FillRule(this.h)
-	return (uintptr)(ret)
+	return (FillRule)(ret)
 }
 
-func (this *QGraphicsPolygonItem) SetFillRule(rule uintptr) {
+func (this *QGraphicsPolygonItem) SetFillRule(rule FillRule) {
 	C.QGraphicsPolygonItem_SetFillRule(this.h, (C.uintptr_t)(rule))
 }
 
@@ -2293,12 +2442,12 @@ func (this *QGraphicsPixmapItem) SetPixmap(pixmap *QPixmap) {
 	C.QGraphicsPixmapItem_SetPixmap(this.h, pixmap.cPointer())
 }
 
-func (this *QGraphicsPixmapItem) TransformationMode() uintptr {
+func (this *QGraphicsPixmapItem) TransformationMode() TransformationMode {
 	ret := C.QGraphicsPixmapItem_TransformationMode(this.h)
-	return (uintptr)(ret)
+	return (TransformationMode)(ret)
 }
 
-func (this *QGraphicsPixmapItem) SetTransformationMode(mode uintptr) {
+func (this *QGraphicsPixmapItem) SetTransformationMode(mode TransformationMode) {
 	C.QGraphicsPixmapItem_SetTransformationMode(this.h, (C.uintptr_t)(mode))
 }
 
@@ -2373,12 +2522,12 @@ func (this *QGraphicsPixmapItem) Type() int {
 	return (int)(ret)
 }
 
-func (this *QGraphicsPixmapItem) ShapeMode() uintptr {
+func (this *QGraphicsPixmapItem) ShapeMode() QGraphicsPixmapItem__ShapeMode {
 	ret := C.QGraphicsPixmapItem_ShapeMode(this.h)
-	return (uintptr)(ret)
+	return (QGraphicsPixmapItem__ShapeMode)(ret)
 }
 
-func (this *QGraphicsPixmapItem) SetShapeMode(mode uintptr) {
+func (this *QGraphicsPixmapItem) SetShapeMode(mode QGraphicsPixmapItem__ShapeMode) {
 	C.QGraphicsPixmapItem_SetShapeMode(this.h, (C.uintptr_t)(mode))
 }
 

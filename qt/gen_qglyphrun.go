@@ -13,6 +13,16 @@ import (
 	"unsafe"
 )
 
+type QGlyphRun__GlyphRunFlag int
+
+const (
+	QGlyphRun__GlyphRunFlag__Overline      QGlyphRun__GlyphRunFlag = 1
+	QGlyphRun__GlyphRunFlag__Underline     QGlyphRun__GlyphRunFlag = 2
+	QGlyphRun__GlyphRunFlag__StrikeOut     QGlyphRun__GlyphRunFlag = 4
+	QGlyphRun__GlyphRunFlag__RightToLeft   QGlyphRun__GlyphRunFlag = 8
+	QGlyphRun__GlyphRunFlag__SplitLigature QGlyphRun__GlyphRunFlag = 16
+)
+
 type QGlyphRun struct {
 	h *C.QGlyphRun
 }
@@ -170,7 +180,7 @@ func (this *QGlyphRun) IsRightToLeft() bool {
 	return (bool)(ret)
 }
 
-func (this *QGlyphRun) SetFlag(flag uintptr) {
+func (this *QGlyphRun) SetFlag(flag QGlyphRun__GlyphRunFlag) {
 	C.QGlyphRun_SetFlag(this.h, (C.uintptr_t)(flag))
 }
 
@@ -203,7 +213,7 @@ func (this *QGlyphRun) IsEmpty() bool {
 	return (bool)(ret)
 }
 
-func (this *QGlyphRun) SetFlag2(flag uintptr, enabled bool) {
+func (this *QGlyphRun) SetFlag2(flag QGlyphRun__GlyphRunFlag, enabled bool) {
 	C.QGlyphRun_SetFlag2(this.h, (C.uintptr_t)(flag), (C.bool)(enabled))
 }
 

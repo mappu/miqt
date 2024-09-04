@@ -68,7 +68,7 @@ func NewQShortcut4(key *QKeySequence, parent *QWidget, member string, ambiguousM
 }
 
 // NewQShortcut5 constructs a new QShortcut object.
-func NewQShortcut5(key *QKeySequence, parent *QWidget, member string, ambiguousMember string, shortcutContext uintptr) *QShortcut {
+func NewQShortcut5(key *QKeySequence, parent *QWidget, member string, ambiguousMember string, shortcutContext ShortcutContext) *QShortcut {
 	member_Cstring := C.CString(member)
 	defer C.free(unsafe.Pointer(member_Cstring))
 	ambiguousMember_Cstring := C.CString(ambiguousMember)
@@ -128,13 +128,13 @@ func (this *QShortcut) IsEnabled() bool {
 	return (bool)(ret)
 }
 
-func (this *QShortcut) SetContext(context uintptr) {
+func (this *QShortcut) SetContext(context ShortcutContext) {
 	C.QShortcut_SetContext(this.h, (C.uintptr_t)(context))
 }
 
-func (this *QShortcut) Context() uintptr {
+func (this *QShortcut) Context() ShortcutContext {
 	ret := C.QShortcut_Context(this.h)
-	return (uintptr)(ret)
+	return (ShortcutContext)(ret)
 }
 
 func (this *QShortcut) SetWhatsThis(text string) {

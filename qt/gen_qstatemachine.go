@@ -13,6 +13,23 @@ import (
 	"unsafe"
 )
 
+type QStateMachine__EventPriority int
+
+const (
+	QStateMachine__EventPriority__NormalPriority QStateMachine__EventPriority = 0
+	QStateMachine__EventPriority__HighPriority   QStateMachine__EventPriority = 1
+)
+
+type QStateMachine__Error int
+
+const (
+	QStateMachine__Error__NoError                                 QStateMachine__Error = 0
+	QStateMachine__Error__NoInitialStateError                     QStateMachine__Error = 1
+	QStateMachine__Error__NoDefaultStateInHistoryStateError       QStateMachine__Error = 2
+	QStateMachine__Error__NoCommonAncestorForTransitionError      QStateMachine__Error = 3
+	QStateMachine__Error__StateMachineChildModeSetToParallelError QStateMachine__Error = 4
+)
+
 type QStateMachine struct {
 	h *C.QStateMachine
 	*QState
@@ -43,7 +60,7 @@ func NewQStateMachine() *QStateMachine {
 }
 
 // NewQStateMachine2 constructs a new QStateMachine object.
-func NewQStateMachine2(childMode uintptr) *QStateMachine {
+func NewQStateMachine2(childMode QState__ChildMode) *QStateMachine {
 	ret := C.QStateMachine_new2((C.uintptr_t)(childMode))
 	return newQStateMachine(ret)
 }
@@ -55,7 +72,7 @@ func NewQStateMachine3(parent *QObject) *QStateMachine {
 }
 
 // NewQStateMachine4 constructs a new QStateMachine object.
-func NewQStateMachine4(childMode uintptr, parent *QObject) *QStateMachine {
+func NewQStateMachine4(childMode QState__ChildMode, parent *QObject) *QStateMachine {
 	ret := C.QStateMachine_new4((C.uintptr_t)(childMode), parent.cPointer())
 	return newQStateMachine(ret)
 }
@@ -95,9 +112,9 @@ func (this *QStateMachine) RemoveState(state *QAbstractState) {
 	C.QStateMachine_RemoveState(this.h, state.cPointer())
 }
 
-func (this *QStateMachine) Error() uintptr {
+func (this *QStateMachine) Error() QStateMachine__Error {
 	ret := C.QStateMachine_Error(this.h)
-	return (uintptr)(ret)
+	return (QStateMachine__Error)(ret)
 }
 
 func (this *QStateMachine) ErrorString() string {
@@ -148,12 +165,12 @@ func (this *QStateMachine) RemoveDefaultAnimation(animation *QAbstractAnimation)
 	C.QStateMachine_RemoveDefaultAnimation(this.h, animation.cPointer())
 }
 
-func (this *QStateMachine) GlobalRestorePolicy() uintptr {
+func (this *QStateMachine) GlobalRestorePolicy() QState__RestorePolicy {
 	ret := C.QStateMachine_GlobalRestorePolicy(this.h)
-	return (uintptr)(ret)
+	return (QState__RestorePolicy)(ret)
 }
 
-func (this *QStateMachine) SetGlobalRestorePolicy(restorePolicy uintptr) {
+func (this *QStateMachine) SetGlobalRestorePolicy(restorePolicy QState__RestorePolicy) {
 	C.QStateMachine_SetGlobalRestorePolicy(this.h, (C.uintptr_t)(restorePolicy))
 }
 
@@ -252,7 +269,7 @@ func QStateMachine_TrUtf83(s string, c string, n int) string {
 	return ret
 }
 
-func (this *QStateMachine) PostEvent2(event *QEvent, priority uintptr) {
+func (this *QStateMachine) PostEvent2(event *QEvent, priority QStateMachine__EventPriority) {
 	C.QStateMachine_PostEvent2(this.h, event.cPointer(), (C.uintptr_t)(priority))
 }
 

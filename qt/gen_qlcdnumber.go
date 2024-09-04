@@ -14,6 +14,23 @@ import (
 	"unsafe"
 )
 
+type QLCDNumber__Mode int
+
+const (
+	QLCDNumber__Mode__Hex QLCDNumber__Mode = 0
+	QLCDNumber__Mode__Dec QLCDNumber__Mode = 1
+	QLCDNumber__Mode__Oct QLCDNumber__Mode = 2
+	QLCDNumber__Mode__Bin QLCDNumber__Mode = 3
+)
+
+type QLCDNumber__SegmentStyle int
+
+const (
+	QLCDNumber__SegmentStyle__Outline QLCDNumber__SegmentStyle = 0
+	QLCDNumber__SegmentStyle__Filled  QLCDNumber__SegmentStyle = 1
+	QLCDNumber__SegmentStyle__Flat    QLCDNumber__SegmentStyle = 2
+)
+
 type QLCDNumber struct {
 	h *C.QLCDNumber
 	*QFrame
@@ -112,21 +129,21 @@ func (this *QLCDNumber) CheckOverflowWithNum(num int) bool {
 	return (bool)(ret)
 }
 
-func (this *QLCDNumber) Mode() uintptr {
+func (this *QLCDNumber) Mode() QLCDNumber__Mode {
 	ret := C.QLCDNumber_Mode(this.h)
-	return (uintptr)(ret)
+	return (QLCDNumber__Mode)(ret)
 }
 
-func (this *QLCDNumber) SetMode(mode uintptr) {
+func (this *QLCDNumber) SetMode(mode QLCDNumber__Mode) {
 	C.QLCDNumber_SetMode(this.h, (C.uintptr_t)(mode))
 }
 
-func (this *QLCDNumber) SegmentStyle() uintptr {
+func (this *QLCDNumber) SegmentStyle() QLCDNumber__SegmentStyle {
 	ret := C.QLCDNumber_SegmentStyle(this.h)
-	return (uintptr)(ret)
+	return (QLCDNumber__SegmentStyle)(ret)
 }
 
-func (this *QLCDNumber) SetSegmentStyle(segmentStyle uintptr) {
+func (this *QLCDNumber) SetSegmentStyle(segmentStyle QLCDNumber__SegmentStyle) {
 	C.QLCDNumber_SetSegmentStyle(this.h, (C.uintptr_t)(segmentStyle))
 }
 

@@ -14,6 +14,13 @@ import (
 	"unsafe"
 )
 
+type QInputMethod__Action int
+
+const (
+	QInputMethod__Action__Click       QInputMethod__Action = 0
+	QInputMethod__Action__ContextMenu QInputMethod__Action = 1
+)
+
 type QInputMethod struct {
 	h *C.QInputMethod
 	*QObject
@@ -163,12 +170,12 @@ func (this *QInputMethod) Locale() *QLocale {
 	return ret1
 }
 
-func (this *QInputMethod) InputDirection() uintptr {
+func (this *QInputMethod) InputDirection() LayoutDirection {
 	ret := C.QInputMethod_InputDirection(this.h)
-	return (uintptr)(ret)
+	return (LayoutDirection)(ret)
 }
 
-func QInputMethod_QueryFocusObject(query uintptr, argument QVariant) *QVariant {
+func QInputMethod_QueryFocusObject(query InputMethodQuery, argument QVariant) *QVariant {
 	ret := C.QInputMethod_QueryFocusObject((C.uintptr_t)(query), argument.cPointer())
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQVariant(ret)
@@ -199,7 +206,7 @@ func (this *QInputMethod) Commit() {
 	C.QInputMethod_Commit(this.h)
 }
 
-func (this *QInputMethod) InvokeAction(a uintptr, cursorPosition int) {
+func (this *QInputMethod) InvokeAction(a QInputMethod__Action, cursorPosition int) {
 	C.QInputMethod_InvokeAction(this.h, (C.uintptr_t)(a), (C.int)(cursorPosition))
 }
 
@@ -287,7 +294,7 @@ func (this *QInputMethod) OnLocaleChanged(slot func()) {
 	C.QInputMethod_connect_LocaleChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
 }
 
-func (this *QInputMethod) InputDirectionChanged(newDirection uintptr) {
+func (this *QInputMethod) InputDirectionChanged(newDirection LayoutDirection) {
 	C.QInputMethod_InputDirectionChanged(this.h, (C.uintptr_t)(newDirection))
 }
 

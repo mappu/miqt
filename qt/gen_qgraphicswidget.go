@@ -14,6 +14,12 @@ import (
 	"unsafe"
 )
 
+type QGraphicsWidget__ int
+
+const (
+	QGraphicsWidget____Type QGraphicsWidget__ = 11
+)
+
 type QGraphicsWidget struct {
 	h *C.QGraphicsWidget
 	*QGraphicsObject
@@ -96,12 +102,12 @@ func (this *QGraphicsWidget) AdjustSize() {
 	C.QGraphicsWidget_AdjustSize(this.h)
 }
 
-func (this *QGraphicsWidget) LayoutDirection() uintptr {
+func (this *QGraphicsWidget) LayoutDirection() LayoutDirection {
 	ret := C.QGraphicsWidget_LayoutDirection(this.h)
-	return (uintptr)(ret)
+	return (LayoutDirection)(ret)
 }
 
-func (this *QGraphicsWidget) SetLayoutDirection(direction uintptr) {
+func (this *QGraphicsWidget) SetLayoutDirection(direction LayoutDirection) {
 	C.QGraphicsWidget_SetLayoutDirection(this.h, (C.uintptr_t)(direction))
 }
 
@@ -250,9 +256,9 @@ func (this *QGraphicsWidget) WindowFlags() int {
 	return (int)(ret)
 }
 
-func (this *QGraphicsWidget) WindowType() uintptr {
+func (this *QGraphicsWidget) WindowType() WindowType {
 	ret := C.QGraphicsWidget_WindowType(this.h)
-	return (uintptr)(ret)
+	return (WindowType)(ret)
 }
 
 func (this *QGraphicsWidget) SetWindowFlags(wFlags int) {
@@ -279,12 +285,12 @@ func (this *QGraphicsWidget) WindowTitle() string {
 	return ret
 }
 
-func (this *QGraphicsWidget) FocusPolicy() uintptr {
+func (this *QGraphicsWidget) FocusPolicy() FocusPolicy {
 	ret := C.QGraphicsWidget_FocusPolicy(this.h)
-	return (uintptr)(ret)
+	return (FocusPolicy)(ret)
 }
 
-func (this *QGraphicsWidget) SetFocusPolicy(policy uintptr) {
+func (this *QGraphicsWidget) SetFocusPolicy(policy FocusPolicy) {
 	C.QGraphicsWidget_SetFocusPolicy(this.h, (C.uintptr_t)(policy))
 }
 
@@ -359,11 +365,11 @@ func (this *QGraphicsWidget) Actions() []*QAction {
 	return ret
 }
 
-func (this *QGraphicsWidget) SetAttribute(attribute uintptr) {
+func (this *QGraphicsWidget) SetAttribute(attribute WidgetAttribute) {
 	C.QGraphicsWidget_SetAttribute(this.h, (C.uintptr_t)(attribute))
 }
 
-func (this *QGraphicsWidget) TestAttribute(attribute uintptr) bool {
+func (this *QGraphicsWidget) TestAttribute(attribute WidgetAttribute) bool {
 	ret := C.QGraphicsWidget_TestAttribute(this.h, (C.uintptr_t)(attribute))
 	return (bool)(ret)
 }
@@ -484,7 +490,7 @@ func QGraphicsWidget_TrUtf83(s string, c string, n int) string {
 	return ret
 }
 
-func (this *QGraphicsWidget) GrabShortcut2(sequence *QKeySequence, context uintptr) int {
+func (this *QGraphicsWidget) GrabShortcut2(sequence *QKeySequence, context ShortcutContext) int {
 	ret := C.QGraphicsWidget_GrabShortcut2(this.h, sequence.cPointer(), (C.uintptr_t)(context))
 	return (int)(ret)
 }
@@ -497,7 +503,7 @@ func (this *QGraphicsWidget) SetShortcutAutoRepeat2(id int, enabled bool) {
 	C.QGraphicsWidget_SetShortcutAutoRepeat2(this.h, (C.int)(id), (C.bool)(enabled))
 }
 
-func (this *QGraphicsWidget) SetAttribute2(attribute uintptr, on bool) {
+func (this *QGraphicsWidget) SetAttribute2(attribute WidgetAttribute, on bool) {
 	C.QGraphicsWidget_SetAttribute2(this.h, (C.uintptr_t)(attribute), (C.bool)(on))
 }
 

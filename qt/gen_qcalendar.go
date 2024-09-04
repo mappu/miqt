@@ -13,6 +13,24 @@ import (
 	"unsafe"
 )
 
+type QCalendar__ int
+
+const (
+	QCalendar____Unspecified QCalendar__ = -2147483648
+)
+
+type QCalendar__System int
+
+const (
+	QCalendar__System__Gregorian    QCalendar__System = 0
+	QCalendar__System__Julian       QCalendar__System = 8
+	QCalendar__System__Milankovic   QCalendar__System = 9
+	QCalendar__System__Jalali       QCalendar__System = 10
+	QCalendar__System__IslamicCivil QCalendar__System = 11
+	QCalendar__System__Last         QCalendar__System = 11
+	QCalendar__System__User         QCalendar__System = -1
+)
+
 type QCalendar struct {
 	h *C.QCalendar
 }
@@ -42,7 +60,7 @@ func NewQCalendar() *QCalendar {
 }
 
 // NewQCalendar2 constructs a new QCalendar object.
-func NewQCalendar2(system uintptr) *QCalendar {
+func NewQCalendar2(system QCalendar__System) *QCalendar {
 	ret := C.QCalendar_new2((C.uintptr_t)(system))
 	return newQCalendar(ret)
 }
@@ -234,7 +252,7 @@ func (this *QCalendar) MonthName3(locale *QLocale, month int, year int) string {
 	return ret
 }
 
-func (this *QCalendar) MonthName4(locale *QLocale, month int, year int, format uintptr) string {
+func (this *QCalendar) MonthName4(locale *QLocale, month int, year int, format QLocale__FormatType) string {
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
 	C.QCalendar_MonthName4(this.h, locale.cPointer(), (C.int)(month), (C.int)(year), (C.uintptr_t)(format), &_out, &_out_Strlen)
@@ -252,7 +270,7 @@ func (this *QCalendar) StandaloneMonthName3(locale *QLocale, month int, year int
 	return ret
 }
 
-func (this *QCalendar) StandaloneMonthName4(locale *QLocale, month int, year int, format uintptr) string {
+func (this *QCalendar) StandaloneMonthName4(locale *QLocale, month int, year int, format QLocale__FormatType) string {
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
 	C.QCalendar_StandaloneMonthName4(this.h, locale.cPointer(), (C.int)(month), (C.int)(year), (C.uintptr_t)(format), &_out, &_out_Strlen)
@@ -261,7 +279,7 @@ func (this *QCalendar) StandaloneMonthName4(locale *QLocale, month int, year int
 	return ret
 }
 
-func (this *QCalendar) WeekDayName3(locale *QLocale, day int, format uintptr) string {
+func (this *QCalendar) WeekDayName3(locale *QLocale, day int, format QLocale__FormatType) string {
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
 	C.QCalendar_WeekDayName3(this.h, locale.cPointer(), (C.int)(day), (C.uintptr_t)(format), &_out, &_out_Strlen)
@@ -270,7 +288,7 @@ func (this *QCalendar) WeekDayName3(locale *QLocale, day int, format uintptr) st
 	return ret
 }
 
-func (this *QCalendar) StandaloneWeekDayName3(locale *QLocale, day int, format uintptr) string {
+func (this *QCalendar) StandaloneWeekDayName3(locale *QLocale, day int, format QLocale__FormatType) string {
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
 	C.QCalendar_StandaloneWeekDayName3(this.h, locale.cPointer(), (C.int)(day), (C.uintptr_t)(format), &_out, &_out_Strlen)

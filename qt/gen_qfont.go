@@ -13,6 +13,131 @@ import (
 	"unsafe"
 )
 
+type QFont__StyleHint int
+
+const (
+	QFont__StyleHint__Helvetica  QFont__StyleHint = 0
+	QFont__StyleHint__SansSerif  QFont__StyleHint = 0
+	QFont__StyleHint__Times      QFont__StyleHint = 1
+	QFont__StyleHint__Serif      QFont__StyleHint = 1
+	QFont__StyleHint__Courier    QFont__StyleHint = 2
+	QFont__StyleHint__TypeWriter QFont__StyleHint = 2
+	QFont__StyleHint__OldEnglish QFont__StyleHint = 3
+	QFont__StyleHint__Decorative QFont__StyleHint = 3
+	QFont__StyleHint__System     QFont__StyleHint = 4
+	QFont__StyleHint__AnyStyle   QFont__StyleHint = 5
+	QFont__StyleHint__Cursive    QFont__StyleHint = 6
+	QFont__StyleHint__Monospace  QFont__StyleHint = 7
+	QFont__StyleHint__Fantasy    QFont__StyleHint = 8
+)
+
+type QFont__StyleStrategy int
+
+const (
+	QFont__StyleStrategy__PreferDefault       QFont__StyleStrategy = 1
+	QFont__StyleStrategy__PreferBitmap        QFont__StyleStrategy = 2
+	QFont__StyleStrategy__PreferDevice        QFont__StyleStrategy = 4
+	QFont__StyleStrategy__PreferOutline       QFont__StyleStrategy = 8
+	QFont__StyleStrategy__ForceOutline        QFont__StyleStrategy = 16
+	QFont__StyleStrategy__PreferMatch         QFont__StyleStrategy = 32
+	QFont__StyleStrategy__PreferQuality       QFont__StyleStrategy = 64
+	QFont__StyleStrategy__PreferAntialias     QFont__StyleStrategy = 128
+	QFont__StyleStrategy__NoAntialias         QFont__StyleStrategy = 256
+	QFont__StyleStrategy__OpenGLCompatible    QFont__StyleStrategy = 512
+	QFont__StyleStrategy__ForceIntegerMetrics QFont__StyleStrategy = 1024
+	QFont__StyleStrategy__NoSubpixelAntialias QFont__StyleStrategy = 2048
+	QFont__StyleStrategy__PreferNoShaping     QFont__StyleStrategy = 4096
+	QFont__StyleStrategy__NoFontMerging       QFont__StyleStrategy = 32768
+)
+
+type QFont__HintingPreference int
+
+const (
+	QFont__HintingPreference__PreferDefaultHinting  QFont__HintingPreference = 0
+	QFont__HintingPreference__PreferNoHinting       QFont__HintingPreference = 1
+	QFont__HintingPreference__PreferVerticalHinting QFont__HintingPreference = 2
+	QFont__HintingPreference__PreferFullHinting     QFont__HintingPreference = 3
+)
+
+type QFont__Weight int
+
+const (
+	QFont__Weight__Thin       QFont__Weight = 0
+	QFont__Weight__ExtraLight QFont__Weight = 12
+	QFont__Weight__Light      QFont__Weight = 25
+	QFont__Weight__Normal     QFont__Weight = 50
+	QFont__Weight__Medium     QFont__Weight = 57
+	QFont__Weight__DemiBold   QFont__Weight = 63
+	QFont__Weight__Bold       QFont__Weight = 75
+	QFont__Weight__ExtraBold  QFont__Weight = 81
+	QFont__Weight__Black      QFont__Weight = 87
+)
+
+type QFont__Style int
+
+const (
+	QFont__Style__StyleNormal  QFont__Style = 0
+	QFont__Style__StyleItalic  QFont__Style = 1
+	QFont__Style__StyleOblique QFont__Style = 2
+)
+
+type QFont__Stretch int
+
+const (
+	QFont__Stretch__AnyStretch     QFont__Stretch = 0
+	QFont__Stretch__UltraCondensed QFont__Stretch = 50
+	QFont__Stretch__ExtraCondensed QFont__Stretch = 62
+	QFont__Stretch__Condensed      QFont__Stretch = 75
+	QFont__Stretch__SemiCondensed  QFont__Stretch = 87
+	QFont__Stretch__Unstretched    QFont__Stretch = 100
+	QFont__Stretch__SemiExpanded   QFont__Stretch = 112
+	QFont__Stretch__Expanded       QFont__Stretch = 125
+	QFont__Stretch__ExtraExpanded  QFont__Stretch = 150
+	QFont__Stretch__UltraExpanded  QFont__Stretch = 200
+)
+
+type QFont__Capitalization int
+
+const (
+	QFont__Capitalization__MixedCase    QFont__Capitalization = 0
+	QFont__Capitalization__AllUppercase QFont__Capitalization = 1
+	QFont__Capitalization__AllLowercase QFont__Capitalization = 2
+	QFont__Capitalization__SmallCaps    QFont__Capitalization = 3
+	QFont__Capitalization__Capitalize   QFont__Capitalization = 4
+)
+
+type QFont__SpacingType int
+
+const (
+	QFont__SpacingType__PercentageSpacing QFont__SpacingType = 0
+	QFont__SpacingType__AbsoluteSpacing   QFont__SpacingType = 1
+)
+
+type QFont__ResolveProperties int
+
+const (
+	QFont__ResolveProperties__NoPropertiesResolved      QFont__ResolveProperties = 0
+	QFont__ResolveProperties__FamilyResolved            QFont__ResolveProperties = 1
+	QFont__ResolveProperties__SizeResolved              QFont__ResolveProperties = 2
+	QFont__ResolveProperties__StyleHintResolved         QFont__ResolveProperties = 4
+	QFont__ResolveProperties__StyleStrategyResolved     QFont__ResolveProperties = 8
+	QFont__ResolveProperties__WeightResolved            QFont__ResolveProperties = 16
+	QFont__ResolveProperties__StyleResolved             QFont__ResolveProperties = 32
+	QFont__ResolveProperties__UnderlineResolved         QFont__ResolveProperties = 64
+	QFont__ResolveProperties__OverlineResolved          QFont__ResolveProperties = 128
+	QFont__ResolveProperties__StrikeOutResolved         QFont__ResolveProperties = 256
+	QFont__ResolveProperties__FixedPitchResolved        QFont__ResolveProperties = 512
+	QFont__ResolveProperties__StretchResolved           QFont__ResolveProperties = 1024
+	QFont__ResolveProperties__KerningResolved           QFont__ResolveProperties = 2048
+	QFont__ResolveProperties__CapitalizationResolved    QFont__ResolveProperties = 4096
+	QFont__ResolveProperties__LetterSpacingResolved     QFont__ResolveProperties = 8192
+	QFont__ResolveProperties__WordSpacingResolved       QFont__ResolveProperties = 16384
+	QFont__ResolveProperties__HintingPreferenceResolved QFont__ResolveProperties = 32768
+	QFont__ResolveProperties__StyleNameResolved         QFont__ResolveProperties = 65536
+	QFont__ResolveProperties__FamiliesResolved          QFont__ResolveProperties = 131072
+	QFont__ResolveProperties__AllPropertiesResolved     QFont__ResolveProperties = 262143
+)
+
 type QFont struct {
 	h *C.QFont
 }
@@ -200,13 +325,13 @@ func (this *QFont) SetBold(bold bool) {
 	C.QFont_SetBold(this.h, (C.bool)(bold))
 }
 
-func (this *QFont) SetStyle(style uintptr) {
+func (this *QFont) SetStyle(style QFont__Style) {
 	C.QFont_SetStyle(this.h, (C.uintptr_t)(style))
 }
 
-func (this *QFont) Style() uintptr {
+func (this *QFont) Style() QFont__Style {
 	ret := C.QFont_Style(this.h)
-	return (uintptr)(ret)
+	return (QFont__Style)(ret)
 }
 
 func (this *QFont) Italic() bool {
@@ -263,21 +388,21 @@ func (this *QFont) SetKerning(kerning bool) {
 	C.QFont_SetKerning(this.h, (C.bool)(kerning))
 }
 
-func (this *QFont) StyleHint() uintptr {
+func (this *QFont) StyleHint() QFont__StyleHint {
 	ret := C.QFont_StyleHint(this.h)
-	return (uintptr)(ret)
+	return (QFont__StyleHint)(ret)
 }
 
-func (this *QFont) StyleStrategy() uintptr {
+func (this *QFont) StyleStrategy() QFont__StyleStrategy {
 	ret := C.QFont_StyleStrategy(this.h)
-	return (uintptr)(ret)
+	return (QFont__StyleStrategy)(ret)
 }
 
-func (this *QFont) SetStyleHint(param1 uintptr) {
+func (this *QFont) SetStyleHint(param1 QFont__StyleHint) {
 	C.QFont_SetStyleHint(this.h, (C.uintptr_t)(param1))
 }
 
-func (this *QFont) SetStyleStrategy(s uintptr) {
+func (this *QFont) SetStyleStrategy(s QFont__StyleStrategy) {
 	C.QFont_SetStyleStrategy(this.h, (C.uintptr_t)(s))
 }
 
@@ -295,12 +420,12 @@ func (this *QFont) LetterSpacing() float64 {
 	return (float64)(ret)
 }
 
-func (this *QFont) LetterSpacingType() uintptr {
+func (this *QFont) LetterSpacingType() QFont__SpacingType {
 	ret := C.QFont_LetterSpacingType(this.h)
-	return (uintptr)(ret)
+	return (QFont__SpacingType)(ret)
 }
 
-func (this *QFont) SetLetterSpacing(typeVal uintptr, spacing float64) {
+func (this *QFont) SetLetterSpacing(typeVal QFont__SpacingType, spacing float64) {
 	C.QFont_SetLetterSpacing(this.h, (C.uintptr_t)(typeVal), (C.double)(spacing))
 }
 
@@ -313,22 +438,22 @@ func (this *QFont) SetWordSpacing(spacing float64) {
 	C.QFont_SetWordSpacing(this.h, (C.double)(spacing))
 }
 
-func (this *QFont) SetCapitalization(capitalization uintptr) {
+func (this *QFont) SetCapitalization(capitalization QFont__Capitalization) {
 	C.QFont_SetCapitalization(this.h, (C.uintptr_t)(capitalization))
 }
 
-func (this *QFont) Capitalization() uintptr {
+func (this *QFont) Capitalization() QFont__Capitalization {
 	ret := C.QFont_Capitalization(this.h)
-	return (uintptr)(ret)
+	return (QFont__Capitalization)(ret)
 }
 
-func (this *QFont) SetHintingPreference(hintingPreference uintptr) {
+func (this *QFont) SetHintingPreference(hintingPreference QFont__HintingPreference) {
 	C.QFont_SetHintingPreference(this.h, (C.uintptr_t)(hintingPreference))
 }
 
-func (this *QFont) HintingPreference() uintptr {
+func (this *QFont) HintingPreference() QFont__HintingPreference {
 	ret := C.QFont_HintingPreference(this.h)
-	return (uintptr)(ret)
+	return (QFont__HintingPreference)(ret)
 }
 
 func (this *QFont) RawMode() bool {
@@ -542,7 +667,7 @@ func (this *QFont) ResolveWithMask(mask uint) {
 	C.QFont_ResolveWithMask(this.h, (C.uint)(mask))
 }
 
-func (this *QFont) SetStyleHint2(param1 uintptr, param2 uintptr) {
+func (this *QFont) SetStyleHint2(param1 QFont__StyleHint, param2 QFont__StyleStrategy) {
 	C.QFont_SetStyleHint2(this.h, (C.uintptr_t)(param1), (C.uintptr_t)(param2))
 }
 

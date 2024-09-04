@@ -14,6 +14,14 @@ import (
 	"unsafe"
 )
 
+type QApplication__ColorSpec int
+
+const (
+	QApplication__ColorSpec__NormalColor QApplication__ColorSpec = 0
+	QApplication__ColorSpec__CustomColor QApplication__ColorSpec = 1
+	QApplication__ColorSpec__ManyColor   QApplication__ColorSpec = 2
+)
+
 type QApplication struct {
 	h *C.QApplication
 	*QGuiApplication
@@ -360,12 +368,12 @@ func QApplication_StartDragDistance() int {
 	return (int)(ret)
 }
 
-func QApplication_IsEffectEnabled(param1 uintptr) bool {
+func QApplication_IsEffectEnabled(param1 UIEffect) bool {
 	ret := C.QApplication_IsEffectEnabled((C.uintptr_t)(param1))
 	return (bool)(ret)
 }
 
-func QApplication_SetEffectEnabled(param1 uintptr) {
+func QApplication_SetEffectEnabled(param1 UIEffect) {
 	C.QApplication_SetEffectEnabled((C.uintptr_t)(param1))
 }
 
@@ -491,7 +499,7 @@ func QApplication_Alert2(widget *QWidget, duration int) {
 	C.QApplication_Alert2(widget.cPointer(), (C.int)(duration))
 }
 
-func QApplication_SetEffectEnabled2(param1 uintptr, enable bool) {
+func QApplication_SetEffectEnabled2(param1 UIEffect, enable bool) {
 	C.QApplication_SetEffectEnabled2((C.uintptr_t)(param1), (C.bool)(enable))
 }
 

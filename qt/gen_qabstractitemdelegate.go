@@ -14,6 +14,16 @@ import (
 	"unsafe"
 )
 
+type QAbstractItemDelegate__EndEditHint int
+
+const (
+	QAbstractItemDelegate__EndEditHint__NoHint           QAbstractItemDelegate__EndEditHint = 0
+	QAbstractItemDelegate__EndEditHint__EditNextItem     QAbstractItemDelegate__EndEditHint = 1
+	QAbstractItemDelegate__EndEditHint__EditPreviousItem QAbstractItemDelegate__EndEditHint = 2
+	QAbstractItemDelegate__EndEditHint__SubmitModelCache QAbstractItemDelegate__EndEditHint = 3
+	QAbstractItemDelegate__EndEditHint__RevertModelCache QAbstractItemDelegate__EndEditHint = 4
+)
+
 type QAbstractItemDelegate struct {
 	h *C.QAbstractItemDelegate
 	*QObject
@@ -105,7 +115,7 @@ func (this *QAbstractItemDelegate) EditorEvent(event *QEvent, model *QAbstractIt
 	return (bool)(ret)
 }
 
-func QAbstractItemDelegate_ElidedText(fontMetrics *QFontMetrics, width int, mode uintptr, text string) string {
+func QAbstractItemDelegate_ElidedText(fontMetrics *QFontMetrics, width int, mode TextElideMode, text string) string {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
 	var _out *C.char = nil
@@ -214,7 +224,7 @@ func QAbstractItemDelegate_TrUtf83(s string, c string, n int) string {
 	return ret
 }
 
-func (this *QAbstractItemDelegate) CloseEditor2(editor *QWidget, hint uintptr) {
+func (this *QAbstractItemDelegate) CloseEditor2(editor *QWidget, hint QAbstractItemDelegate__EndEditHint) {
 	C.QAbstractItemDelegate_CloseEditor2(this.h, editor.cPointer(), (C.uintptr_t)(hint))
 }
 

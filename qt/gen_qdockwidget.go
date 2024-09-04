@@ -13,6 +13,19 @@ import (
 	"unsafe"
 )
 
+type QDockWidget__DockWidgetFeature int
+
+const (
+	QDockWidget__DockWidgetFeature__DockWidgetClosable         QDockWidget__DockWidgetFeature = 1
+	QDockWidget__DockWidgetFeature__DockWidgetMovable          QDockWidget__DockWidgetFeature = 2
+	QDockWidget__DockWidgetFeature__DockWidgetFloatable        QDockWidget__DockWidgetFeature = 4
+	QDockWidget__DockWidgetFeature__DockWidgetVerticalTitleBar QDockWidget__DockWidgetFeature = 8
+	QDockWidget__DockWidgetFeature__DockWidgetFeatureMask      QDockWidget__DockWidgetFeature = 15
+	QDockWidget__DockWidgetFeature__AllDockWidgetFeatures      QDockWidget__DockWidgetFeature = 7
+	QDockWidget__DockWidgetFeature__NoDockWidgetFeatures       QDockWidget__DockWidgetFeature = 0
+	QDockWidget__DockWidgetFeature__Reserved                   QDockWidget__DockWidgetFeature = 255
+)
+
 type QDockWidget struct {
 	h *C.QDockWidget
 	*QWidget
@@ -150,7 +163,7 @@ func (this *QDockWidget) TitleBarWidget() *QWidget {
 	return newQWidget_U(unsafe.Pointer(ret))
 }
 
-func (this *QDockWidget) IsAreaAllowed(area uintptr) bool {
+func (this *QDockWidget) IsAreaAllowed(area DockWidgetArea) bool {
 	ret := C.QDockWidget_IsAreaAllowed(this.h, (C.uintptr_t)(area))
 	return (bool)(ret)
 }
@@ -208,7 +221,7 @@ func (this *QDockWidget) OnVisibilityChanged(slot func()) {
 	C.QDockWidget_connect_VisibilityChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
 }
 
-func (this *QDockWidget) DockLocationChanged(area uintptr) {
+func (this *QDockWidget) DockLocationChanged(area DockWidgetArea) {
 	C.QDockWidget_DockLocationChanged(this.h, (C.uintptr_t)(area))
 }
 

@@ -13,6 +13,47 @@ import (
 	"unsafe"
 )
 
+type QPalette__ColorGroup int
+
+const (
+	QPalette__ColorGroup__Active       QPalette__ColorGroup = 0
+	QPalette__ColorGroup__Disabled     QPalette__ColorGroup = 1
+	QPalette__ColorGroup__Inactive     QPalette__ColorGroup = 2
+	QPalette__ColorGroup__NColorGroups QPalette__ColorGroup = 3
+	QPalette__ColorGroup__Current      QPalette__ColorGroup = 4
+	QPalette__ColorGroup__All          QPalette__ColorGroup = 5
+	QPalette__ColorGroup__Normal       QPalette__ColorGroup = 0
+)
+
+type QPalette__ColorRole int
+
+const (
+	QPalette__ColorRole__WindowText      QPalette__ColorRole = 0
+	QPalette__ColorRole__Button          QPalette__ColorRole = 1
+	QPalette__ColorRole__Light           QPalette__ColorRole = 2
+	QPalette__ColorRole__Midlight        QPalette__ColorRole = 3
+	QPalette__ColorRole__Dark            QPalette__ColorRole = 4
+	QPalette__ColorRole__Mid             QPalette__ColorRole = 5
+	QPalette__ColorRole__Text            QPalette__ColorRole = 6
+	QPalette__ColorRole__BrightText      QPalette__ColorRole = 7
+	QPalette__ColorRole__ButtonText      QPalette__ColorRole = 8
+	QPalette__ColorRole__Base            QPalette__ColorRole = 9
+	QPalette__ColorRole__Window          QPalette__ColorRole = 10
+	QPalette__ColorRole__Shadow          QPalette__ColorRole = 11
+	QPalette__ColorRole__Highlight       QPalette__ColorRole = 12
+	QPalette__ColorRole__HighlightedText QPalette__ColorRole = 13
+	QPalette__ColorRole__Link            QPalette__ColorRole = 14
+	QPalette__ColorRole__LinkVisited     QPalette__ColorRole = 15
+	QPalette__ColorRole__AlternateBase   QPalette__ColorRole = 16
+	QPalette__ColorRole__NoRole          QPalette__ColorRole = 17
+	QPalette__ColorRole__ToolTipBase     QPalette__ColorRole = 18
+	QPalette__ColorRole__ToolTipText     QPalette__ColorRole = 19
+	QPalette__ColorRole__PlaceholderText QPalette__ColorRole = 20
+	QPalette__ColorRole__NColorRoles     QPalette__ColorRole = 21
+	QPalette__ColorRole__Foreground      QPalette__ColorRole = 0
+	QPalette__ColorRole__Background      QPalette__ColorRole = 10
+)
+
 type QPalette struct {
 	h *C.QPalette
 }
@@ -48,7 +89,7 @@ func NewQPalette2(button *QColor) *QPalette {
 }
 
 // NewQPalette3 constructs a new QPalette object.
-func NewQPalette3(button uintptr) *QPalette {
+func NewQPalette3(button GlobalColor) *QPalette {
 	ret := C.QPalette_new3((C.uintptr_t)(button))
 	return newQPalette(ret)
 }
@@ -85,61 +126,61 @@ func (this *QPalette) Swap(other *QPalette) {
 	C.QPalette_Swap(this.h, other.cPointer())
 }
 
-func (this *QPalette) CurrentColorGroup() uintptr {
+func (this *QPalette) CurrentColorGroup() QPalette__ColorGroup {
 	ret := C.QPalette_CurrentColorGroup(this.h)
-	return (uintptr)(ret)
+	return (QPalette__ColorGroup)(ret)
 }
 
-func (this *QPalette) SetCurrentColorGroup(cg uintptr) {
+func (this *QPalette) SetCurrentColorGroup(cg QPalette__ColorGroup) {
 	C.QPalette_SetCurrentColorGroup(this.h, (C.uintptr_t)(cg))
 }
 
-func (this *QPalette) Color(cg uintptr, cr uintptr) *QColor {
+func (this *QPalette) Color(cg QPalette__ColorGroup, cr QPalette__ColorRole) *QColor {
 	ret := C.QPalette_Color(this.h, (C.uintptr_t)(cg), (C.uintptr_t)(cr))
 	return newQColor_U(unsafe.Pointer(ret))
 }
 
-func (this *QPalette) Brush(cg uintptr, cr uintptr) *QBrush {
+func (this *QPalette) Brush(cg QPalette__ColorGroup, cr QPalette__ColorRole) *QBrush {
 	ret := C.QPalette_Brush(this.h, (C.uintptr_t)(cg), (C.uintptr_t)(cr))
 	return newQBrush_U(unsafe.Pointer(ret))
 }
 
-func (this *QPalette) SetColor(cg uintptr, cr uintptr, color *QColor) {
+func (this *QPalette) SetColor(cg QPalette__ColorGroup, cr QPalette__ColorRole, color *QColor) {
 	C.QPalette_SetColor(this.h, (C.uintptr_t)(cg), (C.uintptr_t)(cr), color.cPointer())
 }
 
-func (this *QPalette) SetColor2(cr uintptr, color *QColor) {
+func (this *QPalette) SetColor2(cr QPalette__ColorRole, color *QColor) {
 	C.QPalette_SetColor2(this.h, (C.uintptr_t)(cr), color.cPointer())
 }
 
-func (this *QPalette) SetBrush(cr uintptr, brush *QBrush) {
+func (this *QPalette) SetBrush(cr QPalette__ColorRole, brush *QBrush) {
 	C.QPalette_SetBrush(this.h, (C.uintptr_t)(cr), brush.cPointer())
 }
 
-func (this *QPalette) IsBrushSet(cg uintptr, cr uintptr) bool {
+func (this *QPalette) IsBrushSet(cg QPalette__ColorGroup, cr QPalette__ColorRole) bool {
 	ret := C.QPalette_IsBrushSet(this.h, (C.uintptr_t)(cg), (C.uintptr_t)(cr))
 	return (bool)(ret)
 }
 
-func (this *QPalette) SetBrush2(cg uintptr, cr uintptr, brush *QBrush) {
+func (this *QPalette) SetBrush2(cg QPalette__ColorGroup, cr QPalette__ColorRole, brush *QBrush) {
 	C.QPalette_SetBrush2(this.h, (C.uintptr_t)(cg), (C.uintptr_t)(cr), brush.cPointer())
 }
 
-func (this *QPalette) SetColorGroup(cr uintptr, windowText *QBrush, button *QBrush, light *QBrush, dark *QBrush, mid *QBrush, text *QBrush, bright_text *QBrush, base *QBrush, window *QBrush) {
+func (this *QPalette) SetColorGroup(cr QPalette__ColorGroup, windowText *QBrush, button *QBrush, light *QBrush, dark *QBrush, mid *QBrush, text *QBrush, bright_text *QBrush, base *QBrush, window *QBrush) {
 	C.QPalette_SetColorGroup(this.h, (C.uintptr_t)(cr), windowText.cPointer(), button.cPointer(), light.cPointer(), dark.cPointer(), mid.cPointer(), text.cPointer(), bright_text.cPointer(), base.cPointer(), window.cPointer())
 }
 
-func (this *QPalette) IsEqual(cr1 uintptr, cr2 uintptr) bool {
+func (this *QPalette) IsEqual(cr1 QPalette__ColorGroup, cr2 QPalette__ColorGroup) bool {
 	ret := C.QPalette_IsEqual(this.h, (C.uintptr_t)(cr1), (C.uintptr_t)(cr2))
 	return (bool)(ret)
 }
 
-func (this *QPalette) ColorWithCr(cr uintptr) *QColor {
+func (this *QPalette) ColorWithCr(cr QPalette__ColorRole) *QColor {
 	ret := C.QPalette_ColorWithCr(this.h, (C.uintptr_t)(cr))
 	return newQColor_U(unsafe.Pointer(ret))
 }
 
-func (this *QPalette) BrushWithCr(cr uintptr) *QBrush {
+func (this *QPalette) BrushWithCr(cr QPalette__ColorRole) *QBrush {
 	ret := C.QPalette_BrushWithCr(this.h, (C.uintptr_t)(cr))
 	return newQBrush_U(unsafe.Pointer(ret))
 }

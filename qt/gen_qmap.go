@@ -12,6 +12,19 @@ import (
 	"unsafe"
 )
 
+type QMapNodeBase__Color int
+
+const (
+	QMapNodeBase__Color__Red   QMapNodeBase__Color = 0
+	QMapNodeBase__Color__Black QMapNodeBase__Color = 1
+)
+
+type QMapNodeBase__ int
+
+const (
+	QMapNodeBase____Mask QMapNodeBase__ = 3
+)
+
 type QMapNodeBase struct {
 	h *C.QMapNodeBase
 }
@@ -60,12 +73,12 @@ func (this *QMapNodeBase) PreviousNode2() *QMapNodeBase {
 	return newQMapNodeBase_U(unsafe.Pointer(ret))
 }
 
-func (this *QMapNodeBase) Color() uintptr {
+func (this *QMapNodeBase) Color() QMapNodeBase__Color {
 	ret := C.QMapNodeBase_Color(this.h)
-	return (uintptr)(ret)
+	return (QMapNodeBase__Color)(ret)
 }
 
-func (this *QMapNodeBase) SetColor(c uintptr) {
+func (this *QMapNodeBase) SetColor(c QMapNodeBase__Color) {
 	C.QMapNodeBase_SetColor(this.h, (C.uintptr_t)(c))
 }
 

@@ -13,6 +13,40 @@ import (
 	"unsafe"
 )
 
+type DeprecatedRefClassBehavior__EmittingClass int
+
+const (
+	DeprecatedRefClassBehavior__EmittingClass__QByteRef DeprecatedRefClassBehavior__EmittingClass = 0
+	DeprecatedRefClassBehavior__EmittingClass__QCharRef DeprecatedRefClassBehavior__EmittingClass = 1
+)
+
+type DeprecatedRefClassBehavior__WarningType int
+
+const (
+	DeprecatedRefClassBehavior__WarningType__OutOfRange    DeprecatedRefClassBehavior__WarningType = 0
+	DeprecatedRefClassBehavior__WarningType__DelayedDetach DeprecatedRefClassBehavior__WarningType = 1
+)
+
+type QByteArray__Base64Option int
+
+const (
+	QByteArray__Base64Option__Base64Encoding              QByteArray__Base64Option = 0
+	QByteArray__Base64Option__Base64UrlEncoding           QByteArray__Base64Option = 1
+	QByteArray__Base64Option__KeepTrailingEquals          QByteArray__Base64Option = 0
+	QByteArray__Base64Option__OmitTrailingEquals          QByteArray__Base64Option = 2
+	QByteArray__Base64Option__IgnoreBase64DecodingErrors  QByteArray__Base64Option = 0
+	QByteArray__Base64Option__AbortOnBase64DecodingErrors QByteArray__Base64Option = 4
+)
+
+type QByteArray__Base64DecodingStatus int
+
+const (
+	QByteArray__Base64DecodingStatus__Ok                 QByteArray__Base64DecodingStatus = 0
+	QByteArray__Base64DecodingStatus__IllegalInputLength QByteArray__Base64DecodingStatus = 1
+	QByteArray__Base64DecodingStatus__IllegalCharacter   QByteArray__Base64DecodingStatus = 2
+	QByteArray__Base64DecodingStatus__IllegalPadding     QByteArray__Base64DecodingStatus = 3
+)
+
 type QByteArrayDataPtr struct {
 	h *C.QByteArrayDataPtr
 }
@@ -94,7 +128,7 @@ func NewQByteArray3(size int, c byte) *QByteArray {
 }
 
 // NewQByteArray4 constructs a new QByteArray object.
-func NewQByteArray4(size int, param2 uintptr) *QByteArray {
+func NewQByteArray4(size int, param2 Initialization) *QByteArray {
 	ret := C.QByteArray_new4((C.int)(size), (C.uintptr_t)(param2))
 	return newQByteArray(ret)
 }
@@ -1216,14 +1250,14 @@ func (this *QByteArray) LastIndexOf23(a *QByteArray, from int) int {
 	return (int)(ret)
 }
 
-func (this *QByteArray) Compare2(c string, cs uintptr) int {
+func (this *QByteArray) Compare2(c string, cs CaseSensitivity) int {
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
 	ret := C.QByteArray_Compare2(this.h, c_Cstring, (C.uintptr_t)(cs))
 	return (int)(ret)
 }
 
-func (this *QByteArray) Compare22(a *QByteArray, cs uintptr) int {
+func (this *QByteArray) Compare22(a *QByteArray, cs CaseSensitivity) int {
 	ret := C.QByteArray_Compare22(this.h, a.cPointer(), (C.uintptr_t)(cs))
 	return (int)(ret)
 }

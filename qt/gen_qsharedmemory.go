@@ -12,6 +12,27 @@ import (
 	"unsafe"
 )
 
+type QSharedMemory__AccessMode int
+
+const (
+	QSharedMemory__AccessMode__ReadOnly  QSharedMemory__AccessMode = 0
+	QSharedMemory__AccessMode__ReadWrite QSharedMemory__AccessMode = 1
+)
+
+type QSharedMemory__SharedMemoryError int
+
+const (
+	QSharedMemory__SharedMemoryError__NoError          QSharedMemory__SharedMemoryError = 0
+	QSharedMemory__SharedMemoryError__PermissionDenied QSharedMemory__SharedMemoryError = 1
+	QSharedMemory__SharedMemoryError__InvalidSize      QSharedMemory__SharedMemoryError = 2
+	QSharedMemory__SharedMemoryError__KeyError         QSharedMemory__SharedMemoryError = 3
+	QSharedMemory__SharedMemoryError__AlreadyExists    QSharedMemory__SharedMemoryError = 4
+	QSharedMemory__SharedMemoryError__NotFound         QSharedMemory__SharedMemoryError = 5
+	QSharedMemory__SharedMemoryError__LockError        QSharedMemory__SharedMemoryError = 6
+	QSharedMemory__SharedMemoryError__OutOfResources   QSharedMemory__SharedMemoryError = 7
+	QSharedMemory__SharedMemoryError__UnknownError     QSharedMemory__SharedMemoryError = 8
+)
+
 type QSharedMemory struct {
 	h *C.QSharedMemory
 	*QObject
@@ -155,9 +176,9 @@ func (this *QSharedMemory) Unlock() bool {
 	return (bool)(ret)
 }
 
-func (this *QSharedMemory) Error() uintptr {
+func (this *QSharedMemory) Error() QSharedMemory__SharedMemoryError {
 	ret := C.QSharedMemory_Error(this.h)
-	return (uintptr)(ret)
+	return (QSharedMemory__SharedMemoryError)(ret)
 }
 
 func (this *QSharedMemory) ErrorString() string {
@@ -221,12 +242,12 @@ func QSharedMemory_TrUtf83(s string, c string, n int) string {
 	return ret
 }
 
-func (this *QSharedMemory) Create2(size int, mode uintptr) bool {
+func (this *QSharedMemory) Create2(size int, mode QSharedMemory__AccessMode) bool {
 	ret := C.QSharedMemory_Create2(this.h, (C.int)(size), (C.uintptr_t)(mode))
 	return (bool)(ret)
 }
 
-func (this *QSharedMemory) Attach1(mode uintptr) bool {
+func (this *QSharedMemory) Attach1(mode QSharedMemory__AccessMode) bool {
 	ret := C.QSharedMemory_Attach1(this.h, (C.uintptr_t)(mode))
 	return (bool)(ret)
 }

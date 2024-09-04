@@ -12,6 +12,13 @@ import (
 	"unsafe"
 )
 
+type QRubberBand__Shape int
+
+const (
+	QRubberBand__Shape__Line      QRubberBand__Shape = 0
+	QRubberBand__Shape__Rectangle QRubberBand__Shape = 1
+)
+
 type QRubberBand struct {
 	h *C.QRubberBand
 	*QWidget
@@ -36,13 +43,13 @@ func newQRubberBand_U(h unsafe.Pointer) *QRubberBand {
 }
 
 // NewQRubberBand constructs a new QRubberBand object.
-func NewQRubberBand(param1 uintptr) *QRubberBand {
+func NewQRubberBand(param1 QRubberBand__Shape) *QRubberBand {
 	ret := C.QRubberBand_new((C.uintptr_t)(param1))
 	return newQRubberBand(ret)
 }
 
 // NewQRubberBand2 constructs a new QRubberBand object.
-func NewQRubberBand2(param1 uintptr, param2 *QWidget) *QRubberBand {
+func NewQRubberBand2(param1 QRubberBand__Shape, param2 *QWidget) *QRubberBand {
 	ret := C.QRubberBand_new2((C.uintptr_t)(param1), param2.cPointer())
 	return newQRubberBand(ret)
 }
@@ -74,9 +81,9 @@ func QRubberBand_TrUtf8(s string) string {
 	return ret
 }
 
-func (this *QRubberBand) Shape() uintptr {
+func (this *QRubberBand) Shape() QRubberBand__Shape {
 	ret := C.QRubberBand_Shape(this.h)
-	return (uintptr)(ret)
+	return (QRubberBand__Shape)(ret)
 }
 
 func (this *QRubberBand) SetGeometry(r *QRect) {

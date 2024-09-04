@@ -13,6 +13,30 @@ import (
 	"unsafe"
 )
 
+type QFormLayout__FieldGrowthPolicy int
+
+const (
+	QFormLayout__FieldGrowthPolicy__FieldsStayAtSizeHint  QFormLayout__FieldGrowthPolicy = 0
+	QFormLayout__FieldGrowthPolicy__ExpandingFieldsGrow   QFormLayout__FieldGrowthPolicy = 1
+	QFormLayout__FieldGrowthPolicy__AllNonFixedFieldsGrow QFormLayout__FieldGrowthPolicy = 2
+)
+
+type QFormLayout__RowWrapPolicy int
+
+const (
+	QFormLayout__RowWrapPolicy__DontWrapRows QFormLayout__RowWrapPolicy = 0
+	QFormLayout__RowWrapPolicy__WrapLongRows QFormLayout__RowWrapPolicy = 1
+	QFormLayout__RowWrapPolicy__WrapAllRows  QFormLayout__RowWrapPolicy = 2
+)
+
+type QFormLayout__ItemRole int
+
+const (
+	QFormLayout__ItemRole__LabelRole    QFormLayout__ItemRole = 0
+	QFormLayout__ItemRole__FieldRole    QFormLayout__ItemRole = 1
+	QFormLayout__ItemRole__SpanningRole QFormLayout__ItemRole = 2
+)
+
 type QFormLayout struct {
 	h *C.QFormLayout
 	*QLayout
@@ -75,13 +99,13 @@ func QFormLayout_TrUtf8(s string) string {
 	return ret
 }
 
-func (this *QFormLayout) SetFieldGrowthPolicy(policy uintptr) {
+func (this *QFormLayout) SetFieldGrowthPolicy(policy QFormLayout__FieldGrowthPolicy) {
 	C.QFormLayout_SetFieldGrowthPolicy(this.h, (C.uintptr_t)(policy))
 }
 
-func (this *QFormLayout) FieldGrowthPolicy() uintptr {
+func (this *QFormLayout) FieldGrowthPolicy() QFormLayout__FieldGrowthPolicy {
 	ret := C.QFormLayout_FieldGrowthPolicy(this.h)
-	return (uintptr)(ret)
+	return (QFormLayout__FieldGrowthPolicy)(ret)
 }
 
 func (this *QFormLayout) SetRowWrapPolicy(policy int) {

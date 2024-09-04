@@ -12,6 +12,26 @@ import (
 	"unsafe"
 )
 
+type QTextBoundaryFinder__BoundaryType int
+
+const (
+	QTextBoundaryFinder__BoundaryType__Grapheme QTextBoundaryFinder__BoundaryType = 0
+	QTextBoundaryFinder__BoundaryType__Word     QTextBoundaryFinder__BoundaryType = 1
+	QTextBoundaryFinder__BoundaryType__Sentence QTextBoundaryFinder__BoundaryType = 2
+	QTextBoundaryFinder__BoundaryType__Line     QTextBoundaryFinder__BoundaryType = 3
+)
+
+type QTextBoundaryFinder__BoundaryReason int
+
+const (
+	QTextBoundaryFinder__BoundaryReason__NotAtBoundary    QTextBoundaryFinder__BoundaryReason = 0
+	QTextBoundaryFinder__BoundaryReason__BreakOpportunity QTextBoundaryFinder__BoundaryReason = 31
+	QTextBoundaryFinder__BoundaryReason__StartOfItem      QTextBoundaryFinder__BoundaryReason = 32
+	QTextBoundaryFinder__BoundaryReason__EndOfItem        QTextBoundaryFinder__BoundaryReason = 64
+	QTextBoundaryFinder__BoundaryReason__MandatoryBreak   QTextBoundaryFinder__BoundaryReason = 128
+	QTextBoundaryFinder__BoundaryReason__SoftHyphen       QTextBoundaryFinder__BoundaryReason = 256
+)
+
 type QTextBoundaryFinder struct {
 	h *C.QTextBoundaryFinder
 }
@@ -47,7 +67,7 @@ func NewQTextBoundaryFinder2(other *QTextBoundaryFinder) *QTextBoundaryFinder {
 }
 
 // NewQTextBoundaryFinder3 constructs a new QTextBoundaryFinder object.
-func NewQTextBoundaryFinder3(typeVal uintptr, stringVal string) *QTextBoundaryFinder {
+func NewQTextBoundaryFinder3(typeVal QTextBoundaryFinder__BoundaryType, stringVal string) *QTextBoundaryFinder {
 	stringVal_Cstring := C.CString(stringVal)
 	defer C.free(unsafe.Pointer(stringVal_Cstring))
 	ret := C.QTextBoundaryFinder_new3((C.uintptr_t)(typeVal), stringVal_Cstring, C.size_t(len(stringVal)))
@@ -55,19 +75,19 @@ func NewQTextBoundaryFinder3(typeVal uintptr, stringVal string) *QTextBoundaryFi
 }
 
 // NewQTextBoundaryFinder4 constructs a new QTextBoundaryFinder object.
-func NewQTextBoundaryFinder4(typeVal uintptr, chars *QChar, length int) *QTextBoundaryFinder {
+func NewQTextBoundaryFinder4(typeVal QTextBoundaryFinder__BoundaryType, chars *QChar, length int) *QTextBoundaryFinder {
 	ret := C.QTextBoundaryFinder_new4((C.uintptr_t)(typeVal), chars.cPointer(), (C.int)(length))
 	return newQTextBoundaryFinder(ret)
 }
 
 // NewQTextBoundaryFinder5 constructs a new QTextBoundaryFinder object.
-func NewQTextBoundaryFinder5(typeVal uintptr, chars *QChar, length int, buffer *byte) *QTextBoundaryFinder {
+func NewQTextBoundaryFinder5(typeVal QTextBoundaryFinder__BoundaryType, chars *QChar, length int, buffer *byte) *QTextBoundaryFinder {
 	ret := C.QTextBoundaryFinder_new5((C.uintptr_t)(typeVal), chars.cPointer(), (C.int)(length), (*C.uchar)(unsafe.Pointer(buffer)))
 	return newQTextBoundaryFinder(ret)
 }
 
 // NewQTextBoundaryFinder6 constructs a new QTextBoundaryFinder object.
-func NewQTextBoundaryFinder6(typeVal uintptr, chars *QChar, length int, buffer *byte, bufferSize int) *QTextBoundaryFinder {
+func NewQTextBoundaryFinder6(typeVal QTextBoundaryFinder__BoundaryType, chars *QChar, length int, buffer *byte, bufferSize int) *QTextBoundaryFinder {
 	ret := C.QTextBoundaryFinder_new6((C.uintptr_t)(typeVal), chars.cPointer(), (C.int)(length), (*C.uchar)(unsafe.Pointer(buffer)), (C.int)(bufferSize))
 	return newQTextBoundaryFinder(ret)
 }
@@ -81,9 +101,9 @@ func (this *QTextBoundaryFinder) IsValid() bool {
 	return (bool)(ret)
 }
 
-func (this *QTextBoundaryFinder) Type() uintptr {
+func (this *QTextBoundaryFinder) Type() QTextBoundaryFinder__BoundaryType {
 	ret := C.QTextBoundaryFinder_Type(this.h)
-	return (uintptr)(ret)
+	return (QTextBoundaryFinder__BoundaryType)(ret)
 }
 
 func (this *QTextBoundaryFinder) String() string {

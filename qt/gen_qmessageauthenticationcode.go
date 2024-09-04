@@ -36,13 +36,13 @@ func newQMessageAuthenticationCode_U(h unsafe.Pointer) *QMessageAuthenticationCo
 }
 
 // NewQMessageAuthenticationCode constructs a new QMessageAuthenticationCode object.
-func NewQMessageAuthenticationCode(method uintptr) *QMessageAuthenticationCode {
+func NewQMessageAuthenticationCode(method QCryptographicHash__Algorithm) *QMessageAuthenticationCode {
 	ret := C.QMessageAuthenticationCode_new((C.uintptr_t)(method))
 	return newQMessageAuthenticationCode(ret)
 }
 
 // NewQMessageAuthenticationCode2 constructs a new QMessageAuthenticationCode object.
-func NewQMessageAuthenticationCode2(method uintptr, key *QByteArray) *QMessageAuthenticationCode {
+func NewQMessageAuthenticationCode2(method QCryptographicHash__Algorithm, key *QByteArray) *QMessageAuthenticationCode {
 	ret := C.QMessageAuthenticationCode_new2((C.uintptr_t)(method), key.cPointer())
 	return newQMessageAuthenticationCode(ret)
 }
@@ -81,7 +81,7 @@ func (this *QMessageAuthenticationCode) Result() *QByteArray {
 	return ret1
 }
 
-func QMessageAuthenticationCode_Hash(message *QByteArray, key *QByteArray, method uintptr) *QByteArray {
+func QMessageAuthenticationCode_Hash(message *QByteArray, key *QByteArray, method QCryptographicHash__Algorithm) *QByteArray {
 	ret := C.QMessageAuthenticationCode_Hash(message.cPointer(), key.cPointer(), (C.uintptr_t)(method))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQByteArray(ret)

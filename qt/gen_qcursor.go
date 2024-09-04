@@ -42,7 +42,7 @@ func NewQCursor() *QCursor {
 }
 
 // NewQCursor2 constructs a new QCursor object.
-func NewQCursor2(shape uintptr) *QCursor {
+func NewQCursor2(shape CursorShape) *QCursor {
 	ret := C.QCursor_new2((C.uintptr_t)(shape))
 	return newQCursor(ret)
 }
@@ -97,12 +97,12 @@ func (this *QCursor) Swap(other *QCursor) {
 	C.QCursor_Swap(this.h, other.cPointer())
 }
 
-func (this *QCursor) Shape() uintptr {
+func (this *QCursor) Shape() CursorShape {
 	ret := C.QCursor_Shape(this.h)
-	return (uintptr)(ret)
+	return (CursorShape)(ret)
 }
 
-func (this *QCursor) SetShape(newShape uintptr) {
+func (this *QCursor) SetShape(newShape CursorShape) {
 	C.QCursor_SetShape(this.h, (C.uintptr_t)(newShape))
 }
 
@@ -116,7 +116,7 @@ func (this *QCursor) Mask() *QBitmap {
 	return newQBitmap_U(unsafe.Pointer(ret))
 }
 
-func (this *QCursor) BitmapWithQtReturnByValueConstant(param1 uintptr) *QBitmap {
+func (this *QCursor) BitmapWithQtReturnByValueConstant(param1 ReturnByValueConstant) *QBitmap {
 	ret := C.QCursor_BitmapWithQtReturnByValueConstant(this.h, (C.uintptr_t)(param1))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQBitmap(ret)
@@ -127,7 +127,7 @@ func (this *QCursor) BitmapWithQtReturnByValueConstant(param1 uintptr) *QBitmap 
 	return ret1
 }
 
-func (this *QCursor) MaskWithQtReturnByValueConstant(param1 uintptr) *QBitmap {
+func (this *QCursor) MaskWithQtReturnByValueConstant(param1 ReturnByValueConstant) *QBitmap {
 	ret := C.QCursor_MaskWithQtReturnByValueConstant(this.h, (C.uintptr_t)(param1))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQBitmap(ret)

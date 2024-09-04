@@ -13,6 +13,17 @@ import (
 	"unsafe"
 )
 
+type QTransform__TransformationType int
+
+const (
+	QTransform__TransformationType__TxNone      QTransform__TransformationType = 0
+	QTransform__TransformationType__TxTranslate QTransform__TransformationType = 1
+	QTransform__TransformationType__TxScale     QTransform__TransformationType = 2
+	QTransform__TransformationType__TxRotate    QTransform__TransformationType = 4
+	QTransform__TransformationType__TxShear     QTransform__TransformationType = 8
+	QTransform__TransformationType__TxProject   QTransform__TransformationType = 16
+)
+
 type QTransform struct {
 	h *C.QTransform
 }
@@ -36,7 +47,7 @@ func newQTransform_U(h unsafe.Pointer) *QTransform {
 }
 
 // NewQTransform constructs a new QTransform object.
-func NewQTransform(param1 uintptr) *QTransform {
+func NewQTransform(param1 Initialization) *QTransform {
 	ret := C.QTransform_new((C.uintptr_t)(param1))
 	return newQTransform(ret)
 }
@@ -111,9 +122,9 @@ func (this *QTransform) IsTranslating() bool {
 	return (bool)(ret)
 }
 
-func (this *QTransform) Type() uintptr {
+func (this *QTransform) Type() QTransform__TransformationType {
 	ret := C.QTransform_Type(this.h)
-	return (uintptr)(ret)
+	return (QTransform__TransformationType)(ret)
 }
 
 func (this *QTransform) Determinant() float64 {
@@ -427,12 +438,12 @@ func (this *QTransform) Inverted1(invertible *bool) *QTransform {
 	return ret1
 }
 
-func (this *QTransform) Rotate2(a float64, axis uintptr) *QTransform {
+func (this *QTransform) Rotate2(a float64, axis Axis) *QTransform {
 	ret := C.QTransform_Rotate2(this.h, (C.double)(a), (C.uintptr_t)(axis))
 	return newQTransform_U(unsafe.Pointer(ret))
 }
 
-func (this *QTransform) RotateRadians2(a float64, axis uintptr) *QTransform {
+func (this *QTransform) RotateRadians2(a float64, axis Axis) *QTransform {
 	ret := C.QTransform_RotateRadians2(this.h, (C.double)(a), (C.uintptr_t)(axis))
 	return newQTransform_U(unsafe.Pointer(ret))
 }

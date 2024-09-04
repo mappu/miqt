@@ -12,6 +12,18 @@ import (
 	"unsafe"
 )
 
+type QEventLoop__ProcessEventsFlag int
+
+const (
+	QEventLoop__ProcessEventsFlag__AllEvents              QEventLoop__ProcessEventsFlag = 0
+	QEventLoop__ProcessEventsFlag__ExcludeUserInputEvents QEventLoop__ProcessEventsFlag = 1
+	QEventLoop__ProcessEventsFlag__ExcludeSocketNotifiers QEventLoop__ProcessEventsFlag = 2
+	QEventLoop__ProcessEventsFlag__WaitForMoreEvents      QEventLoop__ProcessEventsFlag = 4
+	QEventLoop__ProcessEventsFlag__X11ExcludeTimers       QEventLoop__ProcessEventsFlag = 8
+	QEventLoop__ProcessEventsFlag__EventLoopExec          QEventLoop__ProcessEventsFlag = 32
+	QEventLoop__ProcessEventsFlag__DialogExec             QEventLoop__ProcessEventsFlag = 64
+)
+
 type QEventLoop struct {
 	h *C.QEventLoop
 	*QObject

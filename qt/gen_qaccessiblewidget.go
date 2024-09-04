@@ -44,13 +44,13 @@ func NewQAccessibleWidget(o *QWidget) *QAccessibleWidget {
 }
 
 // NewQAccessibleWidget2 constructs a new QAccessibleWidget object.
-func NewQAccessibleWidget2(o *QWidget, r uintptr) *QAccessibleWidget {
+func NewQAccessibleWidget2(o *QWidget, r QAccessible__Role) *QAccessibleWidget {
 	ret := C.QAccessibleWidget_new2(o.cPointer(), (C.uintptr_t)(r))
 	return newQAccessibleWidget(ret)
 }
 
 // NewQAccessibleWidget3 constructs a new QAccessibleWidget object.
-func NewQAccessibleWidget3(o *QWidget, r uintptr, name string) *QAccessibleWidget {
+func NewQAccessibleWidget3(o *QWidget, r QAccessible__Role, name string) *QAccessibleWidget {
 	name_Cstring := C.CString(name)
 	defer C.free(unsafe.Pointer(name_Cstring))
 	ret := C.QAccessibleWidget_new3(o.cPointer(), (C.uintptr_t)(r), name_Cstring, C.size_t(len(name)))
@@ -103,7 +103,7 @@ func (this *QAccessibleWidget) Child(index int) *QAccessibleInterface {
 	return newQAccessibleInterface_U(unsafe.Pointer(ret))
 }
 
-func (this *QAccessibleWidget) Text(t uintptr) string {
+func (this *QAccessibleWidget) Text(t QAccessible__Text) string {
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
 	C.QAccessibleWidget_Text(this.h, (C.uintptr_t)(t), &_out, &_out_Strlen)
@@ -112,9 +112,9 @@ func (this *QAccessibleWidget) Text(t uintptr) string {
 	return ret
 }
 
-func (this *QAccessibleWidget) Role() uintptr {
+func (this *QAccessibleWidget) Role() QAccessible__Role {
 	ret := C.QAccessibleWidget_Role(this.h)
-	return (uintptr)(ret)
+	return (QAccessible__Role)(ret)
 }
 
 func (this *QAccessibleWidget) State() *QAccessible__State {

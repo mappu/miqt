@@ -283,7 +283,7 @@ func (this *QStringListModel) RemoveRows3(row int, count int, parent *QModelInde
 	return (bool)(ret)
 }
 
-func (this *QStringListModel) Sort2(column int, order uintptr) {
+func (this *QStringListModel) Sort2(column int, order SortOrder) {
 	C.QStringListModel_Sort2(this.h, (C.int)(column), (C.uintptr_t)(order))
 }
 

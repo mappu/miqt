@@ -14,6 +14,13 @@ import (
 	"unsafe"
 )
 
+type QDialog__DialogCode int
+
+const (
+	QDialog__DialogCode__Rejected QDialog__DialogCode = 0
+	QDialog__DialogCode__Accepted QDialog__DialogCode = 1
+)
+
 type QDialog struct {
 	h *C.QDialog
 	*QWidget
@@ -91,13 +98,13 @@ func (this *QDialog) SetVisible(visible bool) {
 	C.QDialog_SetVisible(this.h, (C.bool)(visible))
 }
 
-func (this *QDialog) SetOrientation(orientation uintptr) {
+func (this *QDialog) SetOrientation(orientation Orientation) {
 	C.QDialog_SetOrientation(this.h, (C.uintptr_t)(orientation))
 }
 
-func (this *QDialog) Orientation() uintptr {
+func (this *QDialog) Orientation() Orientation {
 	ret := C.QDialog_Orientation(this.h)
-	return (uintptr)(ret)
+	return (Orientation)(ret)
 }
 
 func (this *QDialog) SetExtension(extension *QWidget) {

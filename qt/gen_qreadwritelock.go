@@ -12,6 +12,13 @@ import (
 	"unsafe"
 )
 
+type QReadWriteLock__RecursionMode int
+
+const (
+	QReadWriteLock__RecursionMode__NonRecursive QReadWriteLock__RecursionMode = 0
+	QReadWriteLock__RecursionMode__Recursive    QReadWriteLock__RecursionMode = 1
+)
+
 type QReadWriteLock struct {
 	h *C.QReadWriteLock
 }
@@ -41,7 +48,7 @@ func NewQReadWriteLock() *QReadWriteLock {
 }
 
 // NewQReadWriteLock2 constructs a new QReadWriteLock object.
-func NewQReadWriteLock2(recursionMode uintptr) *QReadWriteLock {
+func NewQReadWriteLock2(recursionMode QReadWriteLock__RecursionMode) *QReadWriteLock {
 	ret := C.QReadWriteLock_new2((C.uintptr_t)(recursionMode))
 	return newQReadWriteLock(ret)
 }

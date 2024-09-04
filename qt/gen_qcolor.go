@@ -13,6 +13,24 @@ import (
 	"unsafe"
 )
 
+type QColor__Spec int
+
+const (
+	QColor__Spec__Invalid     QColor__Spec = 0
+	QColor__Spec__Rgb         QColor__Spec = 1
+	QColor__Spec__Hsv         QColor__Spec = 2
+	QColor__Spec__Cmyk        QColor__Spec = 3
+	QColor__Spec__Hsl         QColor__Spec = 4
+	QColor__Spec__ExtendedRgb QColor__Spec = 5
+)
+
+type QColor__NameFormat int
+
+const (
+	QColor__NameFormat__HexRgb  QColor__NameFormat = 0
+	QColor__NameFormat__HexArgb QColor__NameFormat = 1
+)
+
 type QColor struct {
 	h *C.QColor
 }
@@ -42,7 +60,7 @@ func NewQColor() *QColor {
 }
 
 // NewQColor2 constructs a new QColor object.
-func NewQColor2(color uintptr) *QColor {
+func NewQColor2(color GlobalColor) *QColor {
 	ret := C.QColor_new2((C.uintptr_t)(color))
 	return newQColor(ret)
 }
@@ -82,7 +100,7 @@ func NewQColor7(aname string) *QColor {
 }
 
 // NewQColor8 constructs a new QColor object.
-func NewQColor8(spec uintptr) *QColor {
+func NewQColor8(spec QColor__Spec) *QColor {
 	ret := C.QColor_new8((C.uintptr_t)(spec))
 	return newQColor(ret)
 }
@@ -94,7 +112,7 @@ func NewQColor9(color *QColor) *QColor {
 }
 
 // NewQColor10 constructs a new QColor object.
-func NewQColor10(spec uintptr, a1 uint16, a2 uint16, a3 uint16, a4 uint16) *QColor {
+func NewQColor10(spec QColor__Spec, a1 uint16, a2 uint16, a3 uint16, a4 uint16) *QColor {
 	ret := C.QColor_new10((C.uintptr_t)(spec), (C.uint16_t)(a1), (C.uint16_t)(a2), (C.uint16_t)(a3), (C.uint16_t)(a4))
 	return newQColor(ret)
 }
@@ -106,7 +124,7 @@ func NewQColor11(r int, g int, b int, a int) *QColor {
 }
 
 // NewQColor12 constructs a new QColor object.
-func NewQColor12(spec uintptr, a1 uint16, a2 uint16, a3 uint16, a4 uint16, a5 uint16) *QColor {
+func NewQColor12(spec QColor__Spec, a1 uint16, a2 uint16, a3 uint16, a4 uint16, a5 uint16) *QColor {
 	ret := C.QColor_new12((C.uintptr_t)(spec), (C.uint16_t)(a1), (C.uint16_t)(a2), (C.uint16_t)(a3), (C.uint16_t)(a4), (C.uint16_t)(a5))
 	return newQColor(ret)
 }
@@ -115,7 +133,7 @@ func (this *QColor) OperatorAssign(param1 *QColor) {
 	C.QColor_OperatorAssign(this.h, param1.cPointer())
 }
 
-func (this *QColor) OperatorAssignWithColor(color uintptr) {
+func (this *QColor) OperatorAssignWithColor(color GlobalColor) {
 	C.QColor_OperatorAssignWithColor(this.h, (C.uintptr_t)(color))
 }
 
@@ -133,7 +151,7 @@ func (this *QColor) Name() string {
 	return ret
 }
 
-func (this *QColor) NameWithFormat(format uintptr) string {
+func (this *QColor) NameWithFormat(format QColor__NameFormat) string {
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
 	C.QColor_NameWithFormat(this.h, (C.uintptr_t)(format), &_out, &_out_Strlen)
@@ -163,9 +181,9 @@ func QColor_ColorNames() []string {
 	return ret
 }
 
-func (this *QColor) Spec() uintptr {
+func (this *QColor) Spec() QColor__Spec {
 	ret := C.QColor_Spec(this.h)
-	return (uintptr)(ret)
+	return (QColor__Spec)(ret)
 }
 
 func (this *QColor) Alpha() int {
@@ -520,7 +538,7 @@ func (this *QColor) ToExtendedRgb() *QColor {
 	return ret1
 }
 
-func (this *QColor) ConvertTo(colorSpec uintptr) *QColor {
+func (this *QColor) ConvertTo(colorSpec QColor__Spec) *QColor {
 	ret := C.QColor_ConvertTo(this.h, (C.uintptr_t)(colorSpec))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQColor(ret)

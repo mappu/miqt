@@ -382,7 +382,7 @@ func (this *QTreeView) SortByColumn(column int) {
 	C.QTreeView_SortByColumn(this.h, (C.int)(column))
 }
 
-func (this *QTreeView) SortByColumn2(column int, order uintptr) {
+func (this *QTreeView) SortByColumn2(column int, order SortOrder) {
 	C.QTreeView_SortByColumn2(this.h, (C.int)(column), (C.uintptr_t)(order))
 }
 
@@ -454,7 +454,7 @@ func QTreeView_TrUtf83(s string, c string, n int) string {
 	return ret
 }
 
-func (this *QTreeView) ScrollTo2(index *QModelIndex, hint uintptr) {
+func (this *QTreeView) ScrollTo2(index *QModelIndex, hint QAbstractItemView__ScrollHint) {
 	C.QTreeView_ScrollTo2(this.h, index.cPointer(), (C.uintptr_t)(hint))
 }
 

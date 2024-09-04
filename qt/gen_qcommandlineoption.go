@@ -12,6 +12,13 @@ import (
 	"unsafe"
 )
 
+type QCommandLineOption__Flag int
+
+const (
+	QCommandLineOption__Flag__HiddenFromHelp   QCommandLineOption__Flag = 1
+	QCommandLineOption__Flag__ShortOptionStyle QCommandLineOption__Flag = 2
+)
+
 type QCommandLineOption struct {
 	h *C.QCommandLineOption
 }

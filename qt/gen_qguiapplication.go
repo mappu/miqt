@@ -285,13 +285,13 @@ func QGuiApplication_MouseButtons() int {
 	return (int)(ret)
 }
 
-func QGuiApplication_SetLayoutDirection(direction uintptr) {
+func QGuiApplication_SetLayoutDirection(direction LayoutDirection) {
 	C.QGuiApplication_SetLayoutDirection((C.uintptr_t)(direction))
 }
 
-func QGuiApplication_LayoutDirection() uintptr {
+func QGuiApplication_LayoutDirection() LayoutDirection {
 	ret := C.QGuiApplication_LayoutDirection()
-	return (uintptr)(ret)
+	return (LayoutDirection)(ret)
 }
 
 func QGuiApplication_IsRightToLeft() bool {
@@ -332,18 +332,18 @@ func QGuiApplication_QuitOnLastWindowClosed() bool {
 	return (bool)(ret)
 }
 
-func QGuiApplication_ApplicationState() uintptr {
+func QGuiApplication_ApplicationState() ApplicationState {
 	ret := C.QGuiApplication_ApplicationState()
-	return (uintptr)(ret)
+	return (ApplicationState)(ret)
 }
 
-func QGuiApplication_SetHighDpiScaleFactorRoundingPolicy(policy uintptr) {
+func QGuiApplication_SetHighDpiScaleFactorRoundingPolicy(policy HighDpiScaleFactorRoundingPolicy) {
 	C.QGuiApplication_SetHighDpiScaleFactorRoundingPolicy((C.uintptr_t)(policy))
 }
 
-func QGuiApplication_HighDpiScaleFactorRoundingPolicy() uintptr {
+func QGuiApplication_HighDpiScaleFactorRoundingPolicy() HighDpiScaleFactorRoundingPolicy {
 	ret := C.QGuiApplication_HighDpiScaleFactorRoundingPolicy()
-	return (uintptr)(ret)
+	return (HighDpiScaleFactorRoundingPolicy)(ret)
 }
 
 func QGuiApplication_Exec() int {
@@ -481,7 +481,7 @@ func (this *QGuiApplication) OnFocusWindowChanged(slot func()) {
 	C.QGuiApplication_connect_FocusWindowChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
 }
 
-func (this *QGuiApplication) ApplicationStateChanged(state uintptr) {
+func (this *QGuiApplication) ApplicationStateChanged(state ApplicationState) {
 	C.QGuiApplication_ApplicationStateChanged(this.h, (C.uintptr_t)(state))
 }
 
@@ -493,7 +493,7 @@ func (this *QGuiApplication) OnApplicationStateChanged(slot func()) {
 	C.QGuiApplication_connect_ApplicationStateChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
 }
 
-func (this *QGuiApplication) LayoutDirectionChanged(direction uintptr) {
+func (this *QGuiApplication) LayoutDirectionChanged(direction LayoutDirection) {
 	C.QGuiApplication_LayoutDirectionChanged(this.h, (C.uintptr_t)(direction))
 }
 

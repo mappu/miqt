@@ -13,6 +13,21 @@ import (
 	"unsafe"
 )
 
+type QRawFont__AntialiasingType int
+
+const (
+	QRawFont__AntialiasingType__PixelAntialiasing    QRawFont__AntialiasingType = 0
+	QRawFont__AntialiasingType__SubPixelAntialiasing QRawFont__AntialiasingType = 1
+)
+
+type QRawFont__LayoutFlag int
+
+const (
+	QRawFont__LayoutFlag__SeparateAdvances QRawFont__LayoutFlag = 0
+	QRawFont__LayoutFlag__KernedAdvances   QRawFont__LayoutFlag = 1
+	QRawFont__LayoutFlag__UseDesignMetrics QRawFont__LayoutFlag = 2
+)
+
 type QRawFont struct {
 	h *C.QRawFont
 }
@@ -62,7 +77,7 @@ func NewQRawFont4(other *QRawFont) *QRawFont {
 }
 
 // NewQRawFont5 constructs a new QRawFont object.
-func NewQRawFont5(fileName string, pixelSize float64, hintingPreference uintptr) *QRawFont {
+func NewQRawFont5(fileName string, pixelSize float64, hintingPreference QFont__HintingPreference) *QRawFont {
 	fileName_Cstring := C.CString(fileName)
 	defer C.free(unsafe.Pointer(fileName_Cstring))
 	ret := C.QRawFont_new5(fileName_Cstring, C.size_t(len(fileName)), (C.double)(pixelSize), (C.uintptr_t)(hintingPreference))
@@ -70,7 +85,7 @@ func NewQRawFont5(fileName string, pixelSize float64, hintingPreference uintptr)
 }
 
 // NewQRawFont6 constructs a new QRawFont object.
-func NewQRawFont6(fontData *QByteArray, pixelSize float64, hintingPreference uintptr) *QRawFont {
+func NewQRawFont6(fontData *QByteArray, pixelSize float64, hintingPreference QFont__HintingPreference) *QRawFont {
 	ret := C.QRawFont_new6(fontData.cPointer(), (C.double)(pixelSize), (C.uintptr_t)(hintingPreference))
 	return newQRawFont(ret)
 }
@@ -116,9 +131,9 @@ func (this *QRawFont) StyleName() string {
 	return ret
 }
 
-func (this *QRawFont) Style() uintptr {
+func (this *QRawFont) Style() QFont__Style {
 	ret := C.QRawFont_Style(this.h)
-	return (uintptr)(ret)
+	return (QFont__Style)(ret)
 }
 
 func (this *QRawFont) Weight() int {
@@ -236,9 +251,9 @@ func (this *QRawFont) PixelSize() float64 {
 	return (float64)(ret)
 }
 
-func (this *QRawFont) HintingPreference() uintptr {
+func (this *QRawFont) HintingPreference() QFont__HintingPreference {
 	ret := C.QRawFont_HintingPreference(this.h)
-	return (uintptr)(ret)
+	return (QFont__HintingPreference)(ret)
 }
 
 func (this *QRawFont) Ascent() float64 {
@@ -291,13 +306,13 @@ func (this *QRawFont) UnitsPerEm() float64 {
 	return (float64)(ret)
 }
 
-func (this *QRawFont) LoadFromFile(fileName string, pixelSize float64, hintingPreference uintptr) {
+func (this *QRawFont) LoadFromFile(fileName string, pixelSize float64, hintingPreference QFont__HintingPreference) {
 	fileName_Cstring := C.CString(fileName)
 	defer C.free(unsafe.Pointer(fileName_Cstring))
 	C.QRawFont_LoadFromFile(this.h, fileName_Cstring, C.size_t(len(fileName)), (C.double)(pixelSize), (C.uintptr_t)(hintingPreference))
 }
 
-func (this *QRawFont) LoadFromData(fontData *QByteArray, pixelSize float64, hintingPreference uintptr) {
+func (this *QRawFont) LoadFromData(fontData *QByteArray, pixelSize float64, hintingPreference QFont__HintingPreference) {
 	C.QRawFont_LoadFromData(this.h, fontData.cPointer(), (C.double)(pixelSize), (C.uintptr_t)(hintingPreference))
 }
 
@@ -311,14 +326,14 @@ func (this *QRawFont) SupportsCharacterWithCharacter(character QChar) bool {
 	return (bool)(ret)
 }
 
-func (this *QRawFont) SupportedWritingSystems() []uintptr {
+func (this *QRawFont) SupportedWritingSystems() []QFontDatabase__WritingSystem {
 	var _out *C.uintptr_t = nil
 	var _out_len C.size_t = 0
 	C.QRawFont_SupportedWritingSystems(this.h, &_out, &_out_len)
-	ret := make([]uintptr, int(_out_len))
+	ret := make([]QFontDatabase__WritingSystem, int(_out_len))
 	_outCast := (*[0xffff]C.uintptr_t)(unsafe.Pointer(_out)) // mrs jackson
 	for i := 0; i < int(_out_len); i++ {
-		ret[i] = (uintptr)(_outCast[i])
+		ret[i] = (QFontDatabase__WritingSystem)(_outCast[i])
 	}
 	C.free(unsafe.Pointer(_out))
 	return ret
@@ -348,7 +363,7 @@ func QRawFont_FromFont(font *QFont) *QRawFont {
 	return ret1
 }
 
-func (this *QRawFont) AlphaMapForGlyph2(glyphIndex uint, antialiasingType uintptr) *QImage {
+func (this *QRawFont) AlphaMapForGlyph2(glyphIndex uint, antialiasingType QRawFont__AntialiasingType) *QImage {
 	ret := C.QRawFont_AlphaMapForGlyph2(this.h, (C.uint)(glyphIndex), (C.uintptr_t)(antialiasingType))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQImage(ret)
@@ -359,7 +374,7 @@ func (this *QRawFont) AlphaMapForGlyph2(glyphIndex uint, antialiasingType uintpt
 	return ret1
 }
 
-func (this *QRawFont) AlphaMapForGlyph3(glyphIndex uint, antialiasingType uintptr, transform *QTransform) *QImage {
+func (this *QRawFont) AlphaMapForGlyph3(glyphIndex uint, antialiasingType QRawFont__AntialiasingType, transform *QTransform) *QImage {
 	ret := C.QRawFont_AlphaMapForGlyph3(this.h, (C.uint)(glyphIndex), (C.uintptr_t)(antialiasingType), transform.cPointer())
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQImage(ret)
@@ -370,7 +385,7 @@ func (this *QRawFont) AlphaMapForGlyph3(glyphIndex uint, antialiasingType uintpt
 	return ret1
 }
 
-func QRawFont_FromFont2(font *QFont, writingSystem uintptr) *QRawFont {
+func QRawFont_FromFont2(font *QFont, writingSystem QFontDatabase__WritingSystem) *QRawFont {
 	ret := C.QRawFont_FromFont2(font.cPointer(), (C.uintptr_t)(writingSystem))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQRawFont(ret)

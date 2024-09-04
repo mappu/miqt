@@ -12,6 +12,20 @@ import (
 	"unsafe"
 )
 
+type QState__ChildMode int
+
+const (
+	QState__ChildMode__ExclusiveStates QState__ChildMode = 0
+	QState__ChildMode__ParallelStates  QState__ChildMode = 1
+)
+
+type QState__RestorePolicy int
+
+const (
+	QState__RestorePolicy__DontRestoreProperties QState__RestorePolicy = 0
+	QState__RestorePolicy__RestoreProperties     QState__RestorePolicy = 1
+)
+
 type QState struct {
 	h *C.QState
 	*QAbstractState
@@ -42,7 +56,7 @@ func NewQState() *QState {
 }
 
 // NewQState2 constructs a new QState object.
-func NewQState2(childMode uintptr) *QState {
+func NewQState2(childMode QState__ChildMode) *QState {
 	ret := C.QState_new2((C.uintptr_t)(childMode))
 	return newQState(ret)
 }
@@ -54,7 +68,7 @@ func NewQState3(parent *QState) *QState {
 }
 
 // NewQState4 constructs a new QState object.
-func NewQState4(childMode uintptr, parent *QState) *QState {
+func NewQState4(childMode QState__ChildMode, parent *QState) *QState {
 	ret := C.QState_new4((C.uintptr_t)(childMode), parent.cPointer())
 	return newQState(ret)
 }
@@ -137,12 +151,12 @@ func (this *QState) SetInitialState(state *QAbstractState) {
 	C.QState_SetInitialState(this.h, state.cPointer())
 }
 
-func (this *QState) ChildMode() uintptr {
+func (this *QState) ChildMode() QState__ChildMode {
 	ret := C.QState_ChildMode(this.h)
-	return (uintptr)(ret)
+	return (QState__ChildMode)(ret)
 }
 
-func (this *QState) SetChildMode(mode uintptr) {
+func (this *QState) SetChildMode(mode QState__ChildMode) {
 	C.QState_SetChildMode(this.h, (C.uintptr_t)(mode))
 }
 

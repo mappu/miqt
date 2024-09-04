@@ -12,6 +12,13 @@ import (
 	"unsafe"
 )
 
+type QAbstractTransition__TransitionType int
+
+const (
+	QAbstractTransition__TransitionType__ExternalTransition QAbstractTransition__TransitionType = 0
+	QAbstractTransition__TransitionType__InternalTransition QAbstractTransition__TransitionType = 1
+)
+
 type QAbstractTransition struct {
 	h *C.QAbstractTransition
 	*QObject
@@ -99,12 +106,12 @@ func (this *QAbstractTransition) SetTargetStates(targets []*QAbstractState) {
 	C.QAbstractTransition_SetTargetStates(this.h, &targets_CArray[0], C.size_t(len(targets)))
 }
 
-func (this *QAbstractTransition) TransitionType() uintptr {
+func (this *QAbstractTransition) TransitionType() QAbstractTransition__TransitionType {
 	ret := C.QAbstractTransition_TransitionType(this.h)
-	return (uintptr)(ret)
+	return (QAbstractTransition__TransitionType)(ret)
 }
 
-func (this *QAbstractTransition) SetTransitionType(typeVal uintptr) {
+func (this *QAbstractTransition) SetTransitionType(typeVal QAbstractTransition__TransitionType) {
 	C.QAbstractTransition_SetTransitionType(this.h, (C.uintptr_t)(typeVal))
 }
 

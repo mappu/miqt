@@ -13,6 +13,56 @@ import (
 	"unsafe"
 )
 
+type QFontDatabase__WritingSystem int
+
+const (
+	QFontDatabase__WritingSystem__Any                 QFontDatabase__WritingSystem = 0
+	QFontDatabase__WritingSystem__Latin               QFontDatabase__WritingSystem = 1
+	QFontDatabase__WritingSystem__Greek               QFontDatabase__WritingSystem = 2
+	QFontDatabase__WritingSystem__Cyrillic            QFontDatabase__WritingSystem = 3
+	QFontDatabase__WritingSystem__Armenian            QFontDatabase__WritingSystem = 4
+	QFontDatabase__WritingSystem__Hebrew              QFontDatabase__WritingSystem = 5
+	QFontDatabase__WritingSystem__Arabic              QFontDatabase__WritingSystem = 6
+	QFontDatabase__WritingSystem__Syriac              QFontDatabase__WritingSystem = 7
+	QFontDatabase__WritingSystem__Thaana              QFontDatabase__WritingSystem = 8
+	QFontDatabase__WritingSystem__Devanagari          QFontDatabase__WritingSystem = 9
+	QFontDatabase__WritingSystem__Bengali             QFontDatabase__WritingSystem = 10
+	QFontDatabase__WritingSystem__Gurmukhi            QFontDatabase__WritingSystem = 11
+	QFontDatabase__WritingSystem__Gujarati            QFontDatabase__WritingSystem = 12
+	QFontDatabase__WritingSystem__Oriya               QFontDatabase__WritingSystem = 13
+	QFontDatabase__WritingSystem__Tamil               QFontDatabase__WritingSystem = 14
+	QFontDatabase__WritingSystem__Telugu              QFontDatabase__WritingSystem = 15
+	QFontDatabase__WritingSystem__Kannada             QFontDatabase__WritingSystem = 16
+	QFontDatabase__WritingSystem__Malayalam           QFontDatabase__WritingSystem = 17
+	QFontDatabase__WritingSystem__Sinhala             QFontDatabase__WritingSystem = 18
+	QFontDatabase__WritingSystem__Thai                QFontDatabase__WritingSystem = 19
+	QFontDatabase__WritingSystem__Lao                 QFontDatabase__WritingSystem = 20
+	QFontDatabase__WritingSystem__Tibetan             QFontDatabase__WritingSystem = 21
+	QFontDatabase__WritingSystem__Myanmar             QFontDatabase__WritingSystem = 22
+	QFontDatabase__WritingSystem__Georgian            QFontDatabase__WritingSystem = 23
+	QFontDatabase__WritingSystem__Khmer               QFontDatabase__WritingSystem = 24
+	QFontDatabase__WritingSystem__SimplifiedChinese   QFontDatabase__WritingSystem = 25
+	QFontDatabase__WritingSystem__TraditionalChinese  QFontDatabase__WritingSystem = 26
+	QFontDatabase__WritingSystem__Japanese            QFontDatabase__WritingSystem = 27
+	QFontDatabase__WritingSystem__Korean              QFontDatabase__WritingSystem = 28
+	QFontDatabase__WritingSystem__Vietnamese          QFontDatabase__WritingSystem = 29
+	QFontDatabase__WritingSystem__Symbol              QFontDatabase__WritingSystem = 30
+	QFontDatabase__WritingSystem__Other               QFontDatabase__WritingSystem = 30
+	QFontDatabase__WritingSystem__Ogham               QFontDatabase__WritingSystem = 31
+	QFontDatabase__WritingSystem__Runic               QFontDatabase__WritingSystem = 32
+	QFontDatabase__WritingSystem__Nko                 QFontDatabase__WritingSystem = 33
+	QFontDatabase__WritingSystem__WritingSystemsCount QFontDatabase__WritingSystem = 34
+)
+
+type QFontDatabase__SystemFont int
+
+const (
+	QFontDatabase__SystemFont__GeneralFont          QFontDatabase__SystemFont = 0
+	QFontDatabase__SystemFont__FixedFont            QFontDatabase__SystemFont = 1
+	QFontDatabase__SystemFont__TitleFont            QFontDatabase__SystemFont = 2
+	QFontDatabase__SystemFont__SmallestReadableFont QFontDatabase__SystemFont = 3
+)
+
 type QFontDatabase struct {
 	h *C.QFontDatabase
 }
@@ -54,29 +104,29 @@ func QFontDatabase_StandardSizes() []int {
 	return ret
 }
 
-func (this *QFontDatabase) WritingSystems() []uintptr {
+func (this *QFontDatabase) WritingSystems() []QFontDatabase__WritingSystem {
 	var _out *C.uintptr_t = nil
 	var _out_len C.size_t = 0
 	C.QFontDatabase_WritingSystems(this.h, &_out, &_out_len)
-	ret := make([]uintptr, int(_out_len))
+	ret := make([]QFontDatabase__WritingSystem, int(_out_len))
 	_outCast := (*[0xffff]C.uintptr_t)(unsafe.Pointer(_out)) // mrs jackson
 	for i := 0; i < int(_out_len); i++ {
-		ret[i] = (uintptr)(_outCast[i])
+		ret[i] = (QFontDatabase__WritingSystem)(_outCast[i])
 	}
 	C.free(unsafe.Pointer(_out))
 	return ret
 }
 
-func (this *QFontDatabase) WritingSystemsWithFamily(family string) []uintptr {
+func (this *QFontDatabase) WritingSystemsWithFamily(family string) []QFontDatabase__WritingSystem {
 	family_Cstring := C.CString(family)
 	defer C.free(unsafe.Pointer(family_Cstring))
 	var _out *C.uintptr_t = nil
 	var _out_len C.size_t = 0
 	C.QFontDatabase_WritingSystemsWithFamily(this.h, family_Cstring, C.size_t(len(family)), &_out, &_out_len)
-	ret := make([]uintptr, int(_out_len))
+	ret := make([]QFontDatabase__WritingSystem, int(_out_len))
 	_outCast := (*[0xffff]C.uintptr_t)(unsafe.Pointer(_out)) // mrs jackson
 	for i := 0; i < int(_out_len); i++ {
-		ret[i] = (uintptr)(_outCast[i])
+		ret[i] = (QFontDatabase__WritingSystem)(_outCast[i])
 	}
 	C.free(unsafe.Pointer(_out))
 	return ret
@@ -248,7 +298,7 @@ func (this *QFontDatabase) IsPrivateFamily(family string) bool {
 	return (bool)(ret)
 }
 
-func QFontDatabase_WritingSystemName(writingSystem uintptr) string {
+func QFontDatabase_WritingSystemName(writingSystem QFontDatabase__WritingSystem) string {
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
 	C.QFontDatabase_WritingSystemName((C.uintptr_t)(writingSystem), &_out, &_out_Strlen)
@@ -257,7 +307,7 @@ func QFontDatabase_WritingSystemName(writingSystem uintptr) string {
 	return ret
 }
 
-func QFontDatabase_WritingSystemSample(writingSystem uintptr) string {
+func QFontDatabase_WritingSystemSample(writingSystem QFontDatabase__WritingSystem) string {
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
 	C.QFontDatabase_WritingSystemSample((C.uintptr_t)(writingSystem), &_out, &_out_Strlen)
@@ -308,7 +358,7 @@ func QFontDatabase_SupportsThreadedFontRendering() bool {
 	return (bool)(ret)
 }
 
-func QFontDatabase_SystemFont(typeVal uintptr) *QFont {
+func QFontDatabase_SystemFont(typeVal QFontDatabase__SystemFont) *QFont {
 	ret := C.QFontDatabase_SystemFont((C.uintptr_t)(typeVal))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQFont(ret)
@@ -319,7 +369,7 @@ func QFontDatabase_SystemFont(typeVal uintptr) *QFont {
 	return ret1
 }
 
-func (this *QFontDatabase) Families1(writingSystem uintptr) []string {
+func (this *QFontDatabase) Families1(writingSystem QFontDatabase__WritingSystem) []string {
 	var _out **C.char = nil
 	var _out_Lengths *C.int = nil
 	var _out_len C.size_t = 0

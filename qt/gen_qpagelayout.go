@@ -13,6 +13,31 @@ import (
 	"unsafe"
 )
 
+type QPageLayout__Unit int
+
+const (
+	QPageLayout__Unit__Millimeter QPageLayout__Unit = 0
+	QPageLayout__Unit__Point      QPageLayout__Unit = 1
+	QPageLayout__Unit__Inch       QPageLayout__Unit = 2
+	QPageLayout__Unit__Pica       QPageLayout__Unit = 3
+	QPageLayout__Unit__Didot      QPageLayout__Unit = 4
+	QPageLayout__Unit__Cicero     QPageLayout__Unit = 5
+)
+
+type QPageLayout__Orientation int
+
+const (
+	QPageLayout__Orientation__Portrait  QPageLayout__Orientation = 0
+	QPageLayout__Orientation__Landscape QPageLayout__Orientation = 1
+)
+
+type QPageLayout__Mode int
+
+const (
+	QPageLayout__Mode__StandardMode QPageLayout__Mode = 0
+	QPageLayout__Mode__FullPageMode QPageLayout__Mode = 1
+)
+
 type QPageLayout struct {
 	h *C.QPageLayout
 }
@@ -42,7 +67,7 @@ func NewQPageLayout() *QPageLayout {
 }
 
 // NewQPageLayout2 constructs a new QPageLayout object.
-func NewQPageLayout2(pageSize *QPageSize, orientation uintptr, margins *QMarginsF) *QPageLayout {
+func NewQPageLayout2(pageSize *QPageSize, orientation QPageLayout__Orientation, margins *QMarginsF) *QPageLayout {
 	ret := C.QPageLayout_new2(pageSize.cPointer(), (C.uintptr_t)(orientation), margins.cPointer())
 	return newQPageLayout(ret)
 }
@@ -54,13 +79,13 @@ func NewQPageLayout3(other *QPageLayout) *QPageLayout {
 }
 
 // NewQPageLayout4 constructs a new QPageLayout object.
-func NewQPageLayout4(pageSize *QPageSize, orientation uintptr, margins *QMarginsF, units uintptr) *QPageLayout {
+func NewQPageLayout4(pageSize *QPageSize, orientation QPageLayout__Orientation, margins *QMarginsF, units QPageLayout__Unit) *QPageLayout {
 	ret := C.QPageLayout_new4(pageSize.cPointer(), (C.uintptr_t)(orientation), margins.cPointer(), (C.uintptr_t)(units))
 	return newQPageLayout(ret)
 }
 
 // NewQPageLayout5 constructs a new QPageLayout object.
-func NewQPageLayout5(pageSize *QPageSize, orientation uintptr, margins *QMarginsF, units uintptr, minMargins *QMarginsF) *QPageLayout {
+func NewQPageLayout5(pageSize *QPageSize, orientation QPageLayout__Orientation, margins *QMarginsF, units QPageLayout__Unit, minMargins *QMarginsF) *QPageLayout {
 	ret := C.QPageLayout_new5(pageSize.cPointer(), (C.uintptr_t)(orientation), margins.cPointer(), (C.uintptr_t)(units), minMargins.cPointer())
 	return newQPageLayout(ret)
 }
@@ -83,13 +108,13 @@ func (this *QPageLayout) IsValid() bool {
 	return (bool)(ret)
 }
 
-func (this *QPageLayout) SetMode(mode uintptr) {
+func (this *QPageLayout) SetMode(mode QPageLayout__Mode) {
 	C.QPageLayout_SetMode(this.h, (C.uintptr_t)(mode))
 }
 
-func (this *QPageLayout) Mode() uintptr {
+func (this *QPageLayout) Mode() QPageLayout__Mode {
 	ret := C.QPageLayout_Mode(this.h)
-	return (uintptr)(ret)
+	return (QPageLayout__Mode)(ret)
 }
 
 func (this *QPageLayout) SetPageSize(pageSize *QPageSize) {
@@ -107,22 +132,22 @@ func (this *QPageLayout) PageSize() *QPageSize {
 	return ret1
 }
 
-func (this *QPageLayout) SetOrientation(orientation uintptr) {
+func (this *QPageLayout) SetOrientation(orientation QPageLayout__Orientation) {
 	C.QPageLayout_SetOrientation(this.h, (C.uintptr_t)(orientation))
 }
 
-func (this *QPageLayout) Orientation() uintptr {
+func (this *QPageLayout) Orientation() QPageLayout__Orientation {
 	ret := C.QPageLayout_Orientation(this.h)
-	return (uintptr)(ret)
+	return (QPageLayout__Orientation)(ret)
 }
 
-func (this *QPageLayout) SetUnits(units uintptr) {
+func (this *QPageLayout) SetUnits(units QPageLayout__Unit) {
 	C.QPageLayout_SetUnits(this.h, (C.uintptr_t)(units))
 }
 
-func (this *QPageLayout) Units() uintptr {
+func (this *QPageLayout) Units() QPageLayout__Unit {
 	ret := C.QPageLayout_Units(this.h)
-	return (uintptr)(ret)
+	return (QPageLayout__Unit)(ret)
 }
 
 func (this *QPageLayout) SetMargins(margins *QMarginsF) bool {
@@ -161,7 +186,7 @@ func (this *QPageLayout) Margins() *QMarginsF {
 	return ret1
 }
 
-func (this *QPageLayout) MarginsWithUnits(units uintptr) *QMarginsF {
+func (this *QPageLayout) MarginsWithUnits(units QPageLayout__Unit) *QMarginsF {
 	ret := C.QPageLayout_MarginsWithUnits(this.h, (C.uintptr_t)(units))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQMarginsF(ret)
@@ -231,7 +256,7 @@ func (this *QPageLayout) FullRect() *QRectF {
 	return ret1
 }
 
-func (this *QPageLayout) FullRectWithUnits(units uintptr) *QRectF {
+func (this *QPageLayout) FullRectWithUnits(units QPageLayout__Unit) *QRectF {
 	ret := C.QPageLayout_FullRectWithUnits(this.h, (C.uintptr_t)(units))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQRectF(ret)
@@ -275,7 +300,7 @@ func (this *QPageLayout) PaintRect() *QRectF {
 	return ret1
 }
 
-func (this *QPageLayout) PaintRectWithUnits(units uintptr) *QRectF {
+func (this *QPageLayout) PaintRectWithUnits(units QPageLayout__Unit) *QRectF {
 	ret := C.QPageLayout_PaintRectWithUnits(this.h, (C.uintptr_t)(units))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQRectF(ret)

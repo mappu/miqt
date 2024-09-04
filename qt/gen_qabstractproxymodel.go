@@ -114,7 +114,7 @@ func (this *QAbstractProxyModel) Data(proxyIndex *QModelIndex) *QVariant {
 	return ret1
 }
 
-func (this *QAbstractProxyModel) HeaderData(section int, orientation uintptr) *QVariant {
+func (this *QAbstractProxyModel) HeaderData(section int, orientation Orientation) *QVariant {
 	ret := C.QAbstractProxyModel_HeaderData(this.h, (C.int)(section), (C.uintptr_t)(orientation))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQVariant(ret)
@@ -135,7 +135,7 @@ func (this *QAbstractProxyModel) SetData(index *QModelIndex, value *QVariant) bo
 	return (bool)(ret)
 }
 
-func (this *QAbstractProxyModel) SetHeaderData(section int, orientation uintptr, value *QVariant) bool {
+func (this *QAbstractProxyModel) SetHeaderData(section int, orientation Orientation, value *QVariant) bool {
 	ret := C.QAbstractProxyModel_SetHeaderData(this.h, (C.int)(section), (C.uintptr_t)(orientation), value.cPointer())
 	return (bool)(ret)
 }
@@ -202,12 +202,12 @@ func (this *QAbstractProxyModel) MimeData(indexes []QModelIndex) *QMimeData {
 	return newQMimeData_U(unsafe.Pointer(ret))
 }
 
-func (this *QAbstractProxyModel) CanDropMimeData(data *QMimeData, action uintptr, row int, column int, parent *QModelIndex) bool {
+func (this *QAbstractProxyModel) CanDropMimeData(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool {
 	ret := C.QAbstractProxyModel_CanDropMimeData(this.h, data.cPointer(), (C.uintptr_t)(action), (C.int)(row), (C.int)(column), parent.cPointer())
 	return (bool)(ret)
 }
 
-func (this *QAbstractProxyModel) DropMimeData(data *QMimeData, action uintptr, row int, column int, parent *QModelIndex) bool {
+func (this *QAbstractProxyModel) DropMimeData(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool {
 	ret := C.QAbstractProxyModel_DropMimeData(this.h, data.cPointer(), (C.uintptr_t)(action), (C.int)(row), (C.int)(column), parent.cPointer())
 	return (bool)(ret)
 }
@@ -300,7 +300,7 @@ func (this *QAbstractProxyModel) Data2(proxyIndex *QModelIndex, role int) *QVari
 	return ret1
 }
 
-func (this *QAbstractProxyModel) HeaderData3(section int, orientation uintptr, role int) *QVariant {
+func (this *QAbstractProxyModel) HeaderData3(section int, orientation Orientation, role int) *QVariant {
 	ret := C.QAbstractProxyModel_HeaderData3(this.h, (C.int)(section), (C.uintptr_t)(orientation), (C.int)(role))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQVariant(ret)
@@ -316,12 +316,12 @@ func (this *QAbstractProxyModel) SetData3(index *QModelIndex, value *QVariant, r
 	return (bool)(ret)
 }
 
-func (this *QAbstractProxyModel) SetHeaderData4(section int, orientation uintptr, value *QVariant, role int) bool {
+func (this *QAbstractProxyModel) SetHeaderData4(section int, orientation Orientation, value *QVariant, role int) bool {
 	ret := C.QAbstractProxyModel_SetHeaderData4(this.h, (C.int)(section), (C.uintptr_t)(orientation), value.cPointer(), (C.int)(role))
 	return (bool)(ret)
 }
 
-func (this *QAbstractProxyModel) Sort2(column int, order uintptr) {
+func (this *QAbstractProxyModel) Sort2(column int, order SortOrder) {
 	C.QAbstractProxyModel_Sort2(this.h, (C.int)(column), (C.uintptr_t)(order))
 }
 

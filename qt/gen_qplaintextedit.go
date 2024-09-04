@@ -14,6 +14,13 @@ import (
 	"unsafe"
 )
 
+type QPlainTextEdit__LineWrapMode int
+
+const (
+	QPlainTextEdit__LineWrapMode__NoWrap      QPlainTextEdit__LineWrapMode = 0
+	QPlainTextEdit__LineWrapMode__WidgetWidth QPlainTextEdit__LineWrapMode = 1
+)
+
 type QPlainTextEdit struct {
 	h *C.QPlainTextEdit
 	*QAbstractScrollArea
@@ -210,21 +217,21 @@ func (this *QPlainTextEdit) MaximumBlockCount() int {
 	return (int)(ret)
 }
 
-func (this *QPlainTextEdit) LineWrapMode() uintptr {
+func (this *QPlainTextEdit) LineWrapMode() QPlainTextEdit__LineWrapMode {
 	ret := C.QPlainTextEdit_LineWrapMode(this.h)
-	return (uintptr)(ret)
+	return (QPlainTextEdit__LineWrapMode)(ret)
 }
 
-func (this *QPlainTextEdit) SetLineWrapMode(mode uintptr) {
+func (this *QPlainTextEdit) SetLineWrapMode(mode QPlainTextEdit__LineWrapMode) {
 	C.QPlainTextEdit_SetLineWrapMode(this.h, (C.uintptr_t)(mode))
 }
 
-func (this *QPlainTextEdit) WordWrapMode() uintptr {
+func (this *QPlainTextEdit) WordWrapMode() QTextOption__WrapMode {
 	ret := C.QPlainTextEdit_WordWrapMode(this.h)
-	return (uintptr)(ret)
+	return (QTextOption__WrapMode)(ret)
 }
 
-func (this *QPlainTextEdit) SetWordWrapMode(policy uintptr) {
+func (this *QPlainTextEdit) SetWordWrapMode(policy QTextOption__WrapMode) {
 	C.QPlainTextEdit_SetWordWrapMode(this.h, (C.uintptr_t)(policy))
 }
 
@@ -398,7 +405,7 @@ func (this *QPlainTextEdit) ExtraSelections() []QTextEdit__ExtraSelection {
 	return ret
 }
 
-func (this *QPlainTextEdit) MoveCursor(operation uintptr) {
+func (this *QPlainTextEdit) MoveCursor(operation QTextCursor__MoveOperation) {
 	C.QPlainTextEdit_MoveCursor(this.h, (C.uintptr_t)(operation))
 }
 
@@ -416,7 +423,7 @@ func (this *QPlainTextEdit) BlockCount() int {
 	return (int)(ret)
 }
 
-func (this *QPlainTextEdit) InputMethodQuery(property uintptr) *QVariant {
+func (this *QPlainTextEdit) InputMethodQuery(property InputMethodQuery) *QVariant {
 	ret := C.QPlainTextEdit_InputMethodQuery(this.h, (C.uintptr_t)(property))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQVariant(ret)
@@ -427,7 +434,7 @@ func (this *QPlainTextEdit) InputMethodQuery(property uintptr) *QVariant {
 	return ret1
 }
 
-func (this *QPlainTextEdit) InputMethodQuery2(query uintptr, argument QVariant) *QVariant {
+func (this *QPlainTextEdit) InputMethodQuery2(query InputMethodQuery, argument QVariant) *QVariant {
 	ret := C.QPlainTextEdit_InputMethodQuery2(this.h, (C.uintptr_t)(query), argument.cPointer())
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQVariant(ret)
@@ -679,7 +686,7 @@ func (this *QPlainTextEdit) Find24(exp *QRegularExpression, options int) bool {
 	return (bool)(ret)
 }
 
-func (this *QPlainTextEdit) MoveCursor2(operation uintptr, mode uintptr) {
+func (this *QPlainTextEdit) MoveCursor2(operation QTextCursor__MoveOperation, mode QTextCursor__MoveMode) {
 	C.QPlainTextEdit_MoveCursor2(this.h, (C.uintptr_t)(operation), (C.uintptr_t)(mode))
 }
 
@@ -755,7 +762,7 @@ func (this *QPlainTextDocumentLayout) Draw(param1 *QPainter, param2 *QAbstractTe
 	C.QPlainTextDocumentLayout_Draw(this.h, param1.cPointer(), param2.cPointer())
 }
 
-func (this *QPlainTextDocumentLayout) HitTest(param1 *QPointF, param2 uintptr) int {
+func (this *QPlainTextDocumentLayout) HitTest(param1 *QPointF, param2 HitTestAccuracy) int {
 	ret := C.QPlainTextDocumentLayout_HitTest(this.h, param1.cPointer(), (C.uintptr_t)(param2))
 	return (int)(ret)
 }

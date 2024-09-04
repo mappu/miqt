@@ -12,6 +12,38 @@ import (
 	"unsafe"
 )
 
+type QStandardPaths__StandardLocation int
+
+const (
+	QStandardPaths__StandardLocation__DesktopLocation       QStandardPaths__StandardLocation = 0
+	QStandardPaths__StandardLocation__DocumentsLocation     QStandardPaths__StandardLocation = 1
+	QStandardPaths__StandardLocation__FontsLocation         QStandardPaths__StandardLocation = 2
+	QStandardPaths__StandardLocation__ApplicationsLocation  QStandardPaths__StandardLocation = 3
+	QStandardPaths__StandardLocation__MusicLocation         QStandardPaths__StandardLocation = 4
+	QStandardPaths__StandardLocation__MoviesLocation        QStandardPaths__StandardLocation = 5
+	QStandardPaths__StandardLocation__PicturesLocation      QStandardPaths__StandardLocation = 6
+	QStandardPaths__StandardLocation__TempLocation          QStandardPaths__StandardLocation = 7
+	QStandardPaths__StandardLocation__HomeLocation          QStandardPaths__StandardLocation = 8
+	QStandardPaths__StandardLocation__DataLocation          QStandardPaths__StandardLocation = 9
+	QStandardPaths__StandardLocation__CacheLocation         QStandardPaths__StandardLocation = 10
+	QStandardPaths__StandardLocation__GenericDataLocation   QStandardPaths__StandardLocation = 11
+	QStandardPaths__StandardLocation__RuntimeLocation       QStandardPaths__StandardLocation = 12
+	QStandardPaths__StandardLocation__ConfigLocation        QStandardPaths__StandardLocation = 13
+	QStandardPaths__StandardLocation__DownloadLocation      QStandardPaths__StandardLocation = 14
+	QStandardPaths__StandardLocation__GenericCacheLocation  QStandardPaths__StandardLocation = 15
+	QStandardPaths__StandardLocation__GenericConfigLocation QStandardPaths__StandardLocation = 16
+	QStandardPaths__StandardLocation__AppDataLocation       QStandardPaths__StandardLocation = 17
+	QStandardPaths__StandardLocation__AppConfigLocation     QStandardPaths__StandardLocation = 18
+	QStandardPaths__StandardLocation__AppLocalDataLocation  QStandardPaths__StandardLocation = 9
+)
+
+type QStandardPaths__LocateOption int
+
+const (
+	QStandardPaths__LocateOption__LocateFile      QStandardPaths__LocateOption = 0
+	QStandardPaths__LocateOption__LocateDirectory QStandardPaths__LocateOption = 1
+)
+
 type QStandardPaths struct {
 	h *C.QStandardPaths
 }
@@ -34,7 +66,7 @@ func newQStandardPaths_U(h unsafe.Pointer) *QStandardPaths {
 	return newQStandardPaths((*C.QStandardPaths)(h))
 }
 
-func QStandardPaths_WritableLocation(typeVal uintptr) string {
+func QStandardPaths_WritableLocation(typeVal QStandardPaths__StandardLocation) string {
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
 	C.QStandardPaths_WritableLocation((C.uintptr_t)(typeVal), &_out, &_out_Strlen)
@@ -43,7 +75,7 @@ func QStandardPaths_WritableLocation(typeVal uintptr) string {
 	return ret
 }
 
-func QStandardPaths_StandardLocations(typeVal uintptr) []string {
+func QStandardPaths_StandardLocations(typeVal QStandardPaths__StandardLocation) []string {
 	var _out **C.char = nil
 	var _out_Lengths *C.int = nil
 	var _out_len C.size_t = 0
@@ -58,7 +90,7 @@ func QStandardPaths_StandardLocations(typeVal uintptr) []string {
 	return ret
 }
 
-func QStandardPaths_Locate(typeVal uintptr, fileName string) string {
+func QStandardPaths_Locate(typeVal QStandardPaths__StandardLocation, fileName string) string {
 	fileName_Cstring := C.CString(fileName)
 	defer C.free(unsafe.Pointer(fileName_Cstring))
 	var _out *C.char = nil
@@ -69,7 +101,7 @@ func QStandardPaths_Locate(typeVal uintptr, fileName string) string {
 	return ret
 }
 
-func QStandardPaths_LocateAll(typeVal uintptr, fileName string) []string {
+func QStandardPaths_LocateAll(typeVal QStandardPaths__StandardLocation, fileName string) []string {
 	fileName_Cstring := C.CString(fileName)
 	defer C.free(unsafe.Pointer(fileName_Cstring))
 	var _out **C.char = nil
@@ -86,7 +118,7 @@ func QStandardPaths_LocateAll(typeVal uintptr, fileName string) []string {
 	return ret
 }
 
-func QStandardPaths_DisplayName(typeVal uintptr) string {
+func QStandardPaths_DisplayName(typeVal QStandardPaths__StandardLocation) string {
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
 	C.QStandardPaths_DisplayName((C.uintptr_t)(typeVal), &_out, &_out_Strlen)
@@ -119,7 +151,7 @@ func QStandardPaths_IsTestModeEnabled() bool {
 	return (bool)(ret)
 }
 
-func QStandardPaths_Locate3(typeVal uintptr, fileName string, options int) string {
+func QStandardPaths_Locate3(typeVal QStandardPaths__StandardLocation, fileName string, options int) string {
 	fileName_Cstring := C.CString(fileName)
 	defer C.free(unsafe.Pointer(fileName_Cstring))
 	var _out *C.char = nil
@@ -130,7 +162,7 @@ func QStandardPaths_Locate3(typeVal uintptr, fileName string, options int) strin
 	return ret
 }
 
-func QStandardPaths_LocateAll3(typeVal uintptr, fileName string, options int) []string {
+func QStandardPaths_LocateAll3(typeVal QStandardPaths__StandardLocation, fileName string, options int) []string {
 	fileName_Cstring := C.CString(fileName)
 	defer C.free(unsafe.Pointer(fileName_Cstring))
 	var _out **C.char = nil

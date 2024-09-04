@@ -12,6 +12,25 @@ import (
 	"unsafe"
 )
 
+type QTouchDevice__DeviceType int
+
+const (
+	QTouchDevice__DeviceType__TouchScreen QTouchDevice__DeviceType = 0
+	QTouchDevice__DeviceType__TouchPad    QTouchDevice__DeviceType = 1
+)
+
+type QTouchDevice__CapabilityFlag int
+
+const (
+	QTouchDevice__CapabilityFlag__Position           QTouchDevice__CapabilityFlag = 1
+	QTouchDevice__CapabilityFlag__Area               QTouchDevice__CapabilityFlag = 2
+	QTouchDevice__CapabilityFlag__Pressure           QTouchDevice__CapabilityFlag = 4
+	QTouchDevice__CapabilityFlag__Velocity           QTouchDevice__CapabilityFlag = 8
+	QTouchDevice__CapabilityFlag__RawPositions       QTouchDevice__CapabilityFlag = 16
+	QTouchDevice__CapabilityFlag__NormalizedPosition QTouchDevice__CapabilityFlag = 32
+	QTouchDevice__CapabilityFlag__MouseEmulation     QTouchDevice__CapabilityFlag = 64
+)
+
 type QTouchDevice struct {
 	h *C.QTouchDevice
 }
@@ -62,9 +81,9 @@ func (this *QTouchDevice) Name() string {
 	return ret
 }
 
-func (this *QTouchDevice) Type() uintptr {
+func (this *QTouchDevice) Type() QTouchDevice__DeviceType {
 	ret := C.QTouchDevice_Type(this.h)
-	return (uintptr)(ret)
+	return (QTouchDevice__DeviceType)(ret)
 }
 
 func (this *QTouchDevice) Capabilities() int {
@@ -83,7 +102,7 @@ func (this *QTouchDevice) SetName(name string) {
 	C.QTouchDevice_SetName(this.h, name_Cstring, C.size_t(len(name)))
 }
 
-func (this *QTouchDevice) SetType(devType uintptr) {
+func (this *QTouchDevice) SetType(devType QTouchDevice__DeviceType) {
 	C.QTouchDevice_SetType(this.h, (C.uintptr_t)(devType))
 }
 

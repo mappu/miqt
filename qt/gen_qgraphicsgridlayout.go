@@ -244,7 +244,7 @@ func (this *QGraphicsGridLayout) SetGeometry(rect *QRectF) {
 	C.QGraphicsGridLayout_SetGeometry(this.h, rect.cPointer())
 }
 
-func (this *QGraphicsGridLayout) SizeHint(which uintptr) *QSizeF {
+func (this *QGraphicsGridLayout) SizeHint(which SizeHint) *QSizeF {
 	ret := C.QGraphicsGridLayout_SizeHint(this.h, (C.uintptr_t)(which))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQSizeF(ret)
@@ -263,7 +263,7 @@ func (this *QGraphicsGridLayout) AddItem4(item *QGraphicsLayoutItem, row int, co
 	C.QGraphicsGridLayout_AddItem4(this.h, item.cPointer(), (C.int)(row), (C.int)(column), (C.int)(alignment))
 }
 
-func (this *QGraphicsGridLayout) SizeHint2(which uintptr, constraint *QSizeF) *QSizeF {
+func (this *QGraphicsGridLayout) SizeHint2(which SizeHint, constraint *QSizeF) *QSizeF {
 	ret := C.QGraphicsGridLayout_SizeHint2(this.h, (C.uintptr_t)(which), constraint.cPointer())
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQSizeF(ret)

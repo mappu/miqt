@@ -13,6 +13,12 @@ import (
 	"unsafe"
 )
 
+type QCoreApplication__ int
+
+const (
+	QCoreApplication____ApplicationFlags QCoreApplication__ = 331528
+)
+
 type QCoreApplication struct {
 	h *C.QCoreApplication
 	*QObject
@@ -104,11 +110,11 @@ func QCoreApplication_Arguments() []string {
 	return ret
 }
 
-func QCoreApplication_SetAttribute(attribute uintptr) {
+func QCoreApplication_SetAttribute(attribute ApplicationAttribute) {
 	C.QCoreApplication_SetAttribute((C.uintptr_t)(attribute))
 }
 
-func QCoreApplication_TestAttribute(attribute uintptr) bool {
+func QCoreApplication_TestAttribute(attribute ApplicationAttribute) bool {
 	ret := C.QCoreApplication_TestAttribute((C.uintptr_t)(attribute))
 	return (bool)(ret)
 }
@@ -463,7 +469,7 @@ func QCoreApplication_TrUtf83(s string, c string, n int) string {
 	return ret
 }
 
-func QCoreApplication_SetAttribute2(attribute uintptr, on bool) {
+func QCoreApplication_SetAttribute2(attribute ApplicationAttribute, on bool) {
 	C.QCoreApplication_SetAttribute2((C.uintptr_t)(attribute), (C.bool)(on))
 }
 

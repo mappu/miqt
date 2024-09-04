@@ -13,6 +13,30 @@ import (
 	"unsafe"
 )
 
+type QTimeZone__ int
+
+const (
+	QTimeZone____MinUtcOffsetSecs QTimeZone__ = -50400
+	QTimeZone____MaxUtcOffsetSecs QTimeZone__ = 50400
+)
+
+type QTimeZone__TimeType int
+
+const (
+	QTimeZone__TimeType__StandardTime QTimeZone__TimeType = 0
+	QTimeZone__TimeType__DaylightTime QTimeZone__TimeType = 1
+	QTimeZone__TimeType__GenericTime  QTimeZone__TimeType = 2
+)
+
+type QTimeZone__NameType int
+
+const (
+	QTimeZone__NameType__DefaultName QTimeZone__NameType = 0
+	QTimeZone__NameType__LongName    QTimeZone__NameType = 1
+	QTimeZone__NameType__ShortName   QTimeZone__NameType = 2
+	QTimeZone__NameType__OffsetName  QTimeZone__NameType = 3
+)
+
 type QTimeZone struct {
 	h *C.QTimeZone
 }
@@ -70,7 +94,7 @@ func NewQTimeZone5(other *QTimeZone) *QTimeZone {
 }
 
 // NewQTimeZone6 constructs a new QTimeZone object.
-func NewQTimeZone6(zoneId *QByteArray, offsetSeconds int, name string, abbreviation string, country uintptr) *QTimeZone {
+func NewQTimeZone6(zoneId *QByteArray, offsetSeconds int, name string, abbreviation string, country QLocale__Country) *QTimeZone {
 	name_Cstring := C.CString(name)
 	defer C.free(unsafe.Pointer(name_Cstring))
 	abbreviation_Cstring := C.CString(abbreviation)
@@ -80,7 +104,7 @@ func NewQTimeZone6(zoneId *QByteArray, offsetSeconds int, name string, abbreviat
 }
 
 // NewQTimeZone7 constructs a new QTimeZone object.
-func NewQTimeZone7(zoneId *QByteArray, offsetSeconds int, name string, abbreviation string, country uintptr, comment string) *QTimeZone {
+func NewQTimeZone7(zoneId *QByteArray, offsetSeconds int, name string, abbreviation string, country QLocale__Country, comment string) *QTimeZone {
 	name_Cstring := C.CString(name)
 	defer C.free(unsafe.Pointer(name_Cstring))
 	abbreviation_Cstring := C.CString(abbreviation)
@@ -125,9 +149,9 @@ func (this *QTimeZone) Id() *QByteArray {
 	return ret1
 }
 
-func (this *QTimeZone) Country() uintptr {
+func (this *QTimeZone) Country() QLocale__Country {
 	ret := C.QTimeZone_Country(this.h)
-	return (uintptr)(ret)
+	return (QLocale__Country)(ret)
 }
 
 func (this *QTimeZone) Comment() string {
@@ -148,7 +172,7 @@ func (this *QTimeZone) DisplayName(atDateTime *QDateTime) string {
 	return ret
 }
 
-func (this *QTimeZone) DisplayNameWithTimeType(timeType uintptr) string {
+func (this *QTimeZone) DisplayNameWithTimeType(timeType QTimeZone__TimeType) string {
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
 	C.QTimeZone_DisplayNameWithTimeType(this.h, (C.uintptr_t)(timeType), &_out, &_out_Strlen)
@@ -293,7 +317,7 @@ func QTimeZone_AvailableTimeZoneIds() []QByteArray {
 	return ret
 }
 
-func QTimeZone_AvailableTimeZoneIdsWithCountry(country uintptr) []QByteArray {
+func QTimeZone_AvailableTimeZoneIdsWithCountry(country QLocale__Country) []QByteArray {
 	var _out **C.QByteArray = nil
 	var _out_len C.size_t = 0
 	C.QTimeZone_AvailableTimeZoneIdsWithCountry((C.uintptr_t)(country), &_out, &_out_len)
@@ -341,7 +365,7 @@ func QTimeZone_WindowsIdToDefaultIanaId(windowsId *QByteArray) *QByteArray {
 	return ret1
 }
 
-func QTimeZone_WindowsIdToDefaultIanaId2(windowsId *QByteArray, country uintptr) *QByteArray {
+func QTimeZone_WindowsIdToDefaultIanaId2(windowsId *QByteArray, country QLocale__Country) *QByteArray {
 	ret := C.QTimeZone_WindowsIdToDefaultIanaId2(windowsId.cPointer(), (C.uintptr_t)(country))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQByteArray(ret)
@@ -365,7 +389,7 @@ func QTimeZone_WindowsIdToIanaIds(windowsId *QByteArray) []QByteArray {
 	return ret
 }
 
-func QTimeZone_WindowsIdToIanaIds2(windowsId *QByteArray, country uintptr) []QByteArray {
+func QTimeZone_WindowsIdToIanaIds2(windowsId *QByteArray, country QLocale__Country) []QByteArray {
 	var _out **C.QByteArray = nil
 	var _out_len C.size_t = 0
 	C.QTimeZone_WindowsIdToIanaIds2(windowsId.cPointer(), (C.uintptr_t)(country), &_out, &_out_len)
@@ -378,7 +402,7 @@ func QTimeZone_WindowsIdToIanaIds2(windowsId *QByteArray, country uintptr) []QBy
 	return ret
 }
 
-func (this *QTimeZone) DisplayName2(atDateTime *QDateTime, nameType uintptr) string {
+func (this *QTimeZone) DisplayName2(atDateTime *QDateTime, nameType QTimeZone__NameType) string {
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
 	C.QTimeZone_DisplayName2(this.h, atDateTime.cPointer(), (C.uintptr_t)(nameType), &_out, &_out_Strlen)
@@ -387,7 +411,7 @@ func (this *QTimeZone) DisplayName2(atDateTime *QDateTime, nameType uintptr) str
 	return ret
 }
 
-func (this *QTimeZone) DisplayName3(atDateTime *QDateTime, nameType uintptr, locale *QLocale) string {
+func (this *QTimeZone) DisplayName3(atDateTime *QDateTime, nameType QTimeZone__NameType, locale *QLocale) string {
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
 	C.QTimeZone_DisplayName3(this.h, atDateTime.cPointer(), (C.uintptr_t)(nameType), locale.cPointer(), &_out, &_out_Strlen)
@@ -396,7 +420,7 @@ func (this *QTimeZone) DisplayName3(atDateTime *QDateTime, nameType uintptr, loc
 	return ret
 }
 
-func (this *QTimeZone) DisplayName22(timeType uintptr, nameType uintptr) string {
+func (this *QTimeZone) DisplayName22(timeType QTimeZone__TimeType, nameType QTimeZone__NameType) string {
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
 	C.QTimeZone_DisplayName22(this.h, (C.uintptr_t)(timeType), (C.uintptr_t)(nameType), &_out, &_out_Strlen)
@@ -405,7 +429,7 @@ func (this *QTimeZone) DisplayName22(timeType uintptr, nameType uintptr) string 
 	return ret
 }
 
-func (this *QTimeZone) DisplayName32(timeType uintptr, nameType uintptr, locale *QLocale) string {
+func (this *QTimeZone) DisplayName32(timeType QTimeZone__TimeType, nameType QTimeZone__NameType, locale *QLocale) string {
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
 	C.QTimeZone_DisplayName32(this.h, (C.uintptr_t)(timeType), (C.uintptr_t)(nameType), locale.cPointer(), &_out, &_out_Strlen)

@@ -133,21 +133,21 @@ func (this *QSortFilterProxyModel) SetFilterKeyColumn(column int) {
 	C.QSortFilterProxyModel_SetFilterKeyColumn(this.h, (C.int)(column))
 }
 
-func (this *QSortFilterProxyModel) FilterCaseSensitivity() uintptr {
+func (this *QSortFilterProxyModel) FilterCaseSensitivity() CaseSensitivity {
 	ret := C.QSortFilterProxyModel_FilterCaseSensitivity(this.h)
-	return (uintptr)(ret)
+	return (CaseSensitivity)(ret)
 }
 
-func (this *QSortFilterProxyModel) SetFilterCaseSensitivity(cs uintptr) {
+func (this *QSortFilterProxyModel) SetFilterCaseSensitivity(cs CaseSensitivity) {
 	C.QSortFilterProxyModel_SetFilterCaseSensitivity(this.h, (C.uintptr_t)(cs))
 }
 
-func (this *QSortFilterProxyModel) SortCaseSensitivity() uintptr {
+func (this *QSortFilterProxyModel) SortCaseSensitivity() CaseSensitivity {
 	ret := C.QSortFilterProxyModel_SortCaseSensitivity(this.h)
-	return (uintptr)(ret)
+	return (CaseSensitivity)(ret)
 }
 
-func (this *QSortFilterProxyModel) SetSortCaseSensitivity(cs uintptr) {
+func (this *QSortFilterProxyModel) SetSortCaseSensitivity(cs CaseSensitivity) {
 	C.QSortFilterProxyModel_SetSortCaseSensitivity(this.h, (C.uintptr_t)(cs))
 }
 
@@ -165,9 +165,9 @@ func (this *QSortFilterProxyModel) SortColumn() int {
 	return (int)(ret)
 }
 
-func (this *QSortFilterProxyModel) SortOrder() uintptr {
+func (this *QSortFilterProxyModel) SortOrder() SortOrder {
 	ret := C.QSortFilterProxyModel_SortOrder(this.h)
-	return (uintptr)(ret)
+	return (SortOrder)(ret)
 }
 
 func (this *QSortFilterProxyModel) DynamicSortFilter() bool {
@@ -310,7 +310,7 @@ func (this *QSortFilterProxyModel) SetData(index *QModelIndex, value *QVariant) 
 	return (bool)(ret)
 }
 
-func (this *QSortFilterProxyModel) HeaderData(section int, orientation uintptr) *QVariant {
+func (this *QSortFilterProxyModel) HeaderData(section int, orientation Orientation) *QVariant {
 	ret := C.QSortFilterProxyModel_HeaderData(this.h, (C.int)(section), (C.uintptr_t)(orientation))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQVariant(ret)
@@ -321,7 +321,7 @@ func (this *QSortFilterProxyModel) HeaderData(section int, orientation uintptr) 
 	return ret1
 }
 
-func (this *QSortFilterProxyModel) SetHeaderData(section int, orientation uintptr, value *QVariant) bool {
+func (this *QSortFilterProxyModel) SetHeaderData(section int, orientation Orientation, value *QVariant) bool {
 	ret := C.QSortFilterProxyModel_SetHeaderData(this.h, (C.int)(section), (C.uintptr_t)(orientation), value.cPointer())
 	return (bool)(ret)
 }
@@ -337,7 +337,7 @@ func (this *QSortFilterProxyModel) MimeData(indexes []QModelIndex) *QMimeData {
 	return newQMimeData_U(unsafe.Pointer(ret))
 }
 
-func (this *QSortFilterProxyModel) DropMimeData(data *QMimeData, action uintptr, row int, column int, parent *QModelIndex) bool {
+func (this *QSortFilterProxyModel) DropMimeData(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool {
 	ret := C.QSortFilterProxyModel_DropMimeData(this.h, data.cPointer(), (C.uintptr_t)(action), (C.int)(row), (C.int)(column), parent.cPointer())
 	return (bool)(ret)
 }
@@ -447,7 +447,7 @@ func (this *QSortFilterProxyModel) OnDynamicSortFilterChanged(slot func()) {
 	C.QSortFilterProxyModel_connect_DynamicSortFilterChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
 }
 
-func (this *QSortFilterProxyModel) FilterCaseSensitivityChanged(filterCaseSensitivity uintptr) {
+func (this *QSortFilterProxyModel) FilterCaseSensitivityChanged(filterCaseSensitivity CaseSensitivity) {
 	C.QSortFilterProxyModel_FilterCaseSensitivityChanged(this.h, (C.uintptr_t)(filterCaseSensitivity))
 }
 
@@ -459,7 +459,7 @@ func (this *QSortFilterProxyModel) OnFilterCaseSensitivityChanged(slot func()) {
 	C.QSortFilterProxyModel_connect_FilterCaseSensitivityChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
 }
 
-func (this *QSortFilterProxyModel) SortCaseSensitivityChanged(sortCaseSensitivity uintptr) {
+func (this *QSortFilterProxyModel) SortCaseSensitivityChanged(sortCaseSensitivity CaseSensitivity) {
 	C.QSortFilterProxyModel_SortCaseSensitivityChanged(this.h, (C.uintptr_t)(sortCaseSensitivity))
 }
 
@@ -613,7 +613,7 @@ func (this *QSortFilterProxyModel) SetData3(index *QModelIndex, value *QVariant,
 	return (bool)(ret)
 }
 
-func (this *QSortFilterProxyModel) HeaderData3(section int, orientation uintptr, role int) *QVariant {
+func (this *QSortFilterProxyModel) HeaderData3(section int, orientation Orientation, role int) *QVariant {
 	ret := C.QSortFilterProxyModel_HeaderData3(this.h, (C.int)(section), (C.uintptr_t)(orientation), (C.int)(role))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQVariant(ret)
@@ -624,7 +624,7 @@ func (this *QSortFilterProxyModel) HeaderData3(section int, orientation uintptr,
 	return ret1
 }
 
-func (this *QSortFilterProxyModel) SetHeaderData4(section int, orientation uintptr, value *QVariant, role int) bool {
+func (this *QSortFilterProxyModel) SetHeaderData4(section int, orientation Orientation, value *QVariant, role int) bool {
 	ret := C.QSortFilterProxyModel_SetHeaderData4(this.h, (C.int)(section), (C.uintptr_t)(orientation), value.cPointer(), (C.int)(role))
 	return (bool)(ret)
 }
@@ -675,7 +675,7 @@ func (this *QSortFilterProxyModel) Match5(start *QModelIndex, role int, value *Q
 	return ret
 }
 
-func (this *QSortFilterProxyModel) Sort2(column int, order uintptr) {
+func (this *QSortFilterProxyModel) Sort2(column int, order SortOrder) {
 	C.QSortFilterProxyModel_Sort2(this.h, (C.int)(column), (C.uintptr_t)(order))
 }
 

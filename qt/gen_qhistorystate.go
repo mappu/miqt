@@ -12,6 +12,13 @@ import (
 	"unsafe"
 )
 
+type QHistoryState__HistoryType int
+
+const (
+	QHistoryState__HistoryType__ShallowHistory QHistoryState__HistoryType = 0
+	QHistoryState__HistoryType__DeepHistory    QHistoryState__HistoryType = 1
+)
+
 type QHistoryState struct {
 	h *C.QHistoryState
 	*QAbstractState
@@ -42,7 +49,7 @@ func NewQHistoryState() *QHistoryState {
 }
 
 // NewQHistoryState2 constructs a new QHistoryState object.
-func NewQHistoryState2(typeVal uintptr) *QHistoryState {
+func NewQHistoryState2(typeVal QHistoryState__HistoryType) *QHistoryState {
 	ret := C.QHistoryState_new2((C.uintptr_t)(typeVal))
 	return newQHistoryState(ret)
 }
@@ -54,7 +61,7 @@ func NewQHistoryState3(parent *QState) *QHistoryState {
 }
 
 // NewQHistoryState4 constructs a new QHistoryState object.
-func NewQHistoryState4(typeVal uintptr, parent *QState) *QHistoryState {
+func NewQHistoryState4(typeVal QHistoryState__HistoryType, parent *QState) *QHistoryState {
 	ret := C.QHistoryState_new4((C.uintptr_t)(typeVal), parent.cPointer())
 	return newQHistoryState(ret)
 }
@@ -104,12 +111,12 @@ func (this *QHistoryState) SetDefaultState(state *QAbstractState) {
 	C.QHistoryState_SetDefaultState(this.h, state.cPointer())
 }
 
-func (this *QHistoryState) HistoryType() uintptr {
+func (this *QHistoryState) HistoryType() QHistoryState__HistoryType {
 	ret := C.QHistoryState_HistoryType(this.h)
-	return (uintptr)(ret)
+	return (QHistoryState__HistoryType)(ret)
 }
 
-func (this *QHistoryState) SetHistoryType(typeVal uintptr) {
+func (this *QHistoryState) SetHistoryType(typeVal QHistoryState__HistoryType) {
 	C.QHistoryState_SetHistoryType(this.h, (C.uintptr_t)(typeVal))
 }
 

@@ -12,6 +12,19 @@ import (
 	"unsafe"
 )
 
+type QGestureRecognizer__ResultFlag int
+
+const (
+	QGestureRecognizer__ResultFlag__Ignore           QGestureRecognizer__ResultFlag = 1
+	QGestureRecognizer__ResultFlag__MayBeGesture     QGestureRecognizer__ResultFlag = 2
+	QGestureRecognizer__ResultFlag__TriggerGesture   QGestureRecognizer__ResultFlag = 4
+	QGestureRecognizer__ResultFlag__FinishGesture    QGestureRecognizer__ResultFlag = 8
+	QGestureRecognizer__ResultFlag__CancelGesture    QGestureRecognizer__ResultFlag = 16
+	QGestureRecognizer__ResultFlag__ResultState_Mask QGestureRecognizer__ResultFlag = 255
+	QGestureRecognizer__ResultFlag__ConsumeEventHint QGestureRecognizer__ResultFlag = 256
+	QGestureRecognizer__ResultFlag__ResultHint_Mask  QGestureRecognizer__ResultFlag = 65280
+)
+
 type QGestureRecognizer struct {
 	h *C.QGestureRecognizer
 }
@@ -48,12 +61,12 @@ func (this *QGestureRecognizer) Reset(state *QGesture) {
 	C.QGestureRecognizer_Reset(this.h, state.cPointer())
 }
 
-func QGestureRecognizer_RegisterRecognizer(recognizer *QGestureRecognizer) uintptr {
+func QGestureRecognizer_RegisterRecognizer(recognizer *QGestureRecognizer) GestureType {
 	ret := C.QGestureRecognizer_RegisterRecognizer(recognizer.cPointer())
-	return (uintptr)(ret)
+	return (GestureType)(ret)
 }
 
-func QGestureRecognizer_UnregisterRecognizer(typeVal uintptr) {
+func QGestureRecognizer_UnregisterRecognizer(typeVal GestureType) {
 	C.QGestureRecognizer_UnregisterRecognizer((C.uintptr_t)(typeVal))
 }
 

@@ -14,6 +14,48 @@ import (
 	"unsafe"
 )
 
+type QGraphicsView__ViewportAnchor int
+
+const (
+	QGraphicsView__ViewportAnchor__NoAnchor         QGraphicsView__ViewportAnchor = 0
+	QGraphicsView__ViewportAnchor__AnchorViewCenter QGraphicsView__ViewportAnchor = 1
+	QGraphicsView__ViewportAnchor__AnchorUnderMouse QGraphicsView__ViewportAnchor = 2
+)
+
+type QGraphicsView__CacheModeFlag int
+
+const (
+	QGraphicsView__CacheModeFlag__CacheNone       QGraphicsView__CacheModeFlag = 0
+	QGraphicsView__CacheModeFlag__CacheBackground QGraphicsView__CacheModeFlag = 1
+)
+
+type QGraphicsView__DragMode int
+
+const (
+	QGraphicsView__DragMode__NoDrag         QGraphicsView__DragMode = 0
+	QGraphicsView__DragMode__ScrollHandDrag QGraphicsView__DragMode = 1
+	QGraphicsView__DragMode__RubberBandDrag QGraphicsView__DragMode = 2
+)
+
+type QGraphicsView__ViewportUpdateMode int
+
+const (
+	QGraphicsView__ViewportUpdateMode__FullViewportUpdate         QGraphicsView__ViewportUpdateMode = 0
+	QGraphicsView__ViewportUpdateMode__MinimalViewportUpdate      QGraphicsView__ViewportUpdateMode = 1
+	QGraphicsView__ViewportUpdateMode__SmartViewportUpdate        QGraphicsView__ViewportUpdateMode = 2
+	QGraphicsView__ViewportUpdateMode__NoViewportUpdate           QGraphicsView__ViewportUpdateMode = 3
+	QGraphicsView__ViewportUpdateMode__BoundingRectViewportUpdate QGraphicsView__ViewportUpdateMode = 4
+)
+
+type QGraphicsView__OptimizationFlag int
+
+const (
+	QGraphicsView__OptimizationFlag__DontClipPainter           QGraphicsView__OptimizationFlag = 1
+	QGraphicsView__OptimizationFlag__DontSavePainterState      QGraphicsView__OptimizationFlag = 2
+	QGraphicsView__OptimizationFlag__DontAdjustForAntialiasing QGraphicsView__OptimizationFlag = 4
+	QGraphicsView__OptimizationFlag__IndirectPainting          QGraphicsView__OptimizationFlag = 8
+)
+
 type QGraphicsView struct {
 	h *C.QGraphicsView
 	*QAbstractScrollArea
@@ -104,7 +146,7 @@ func (this *QGraphicsView) RenderHints() int {
 	return (int)(ret)
 }
 
-func (this *QGraphicsView) SetRenderHint(hint uintptr) {
+func (this *QGraphicsView) SetRenderHint(hint QPainter__RenderHint) {
 	C.QGraphicsView_SetRenderHint(this.h, (C.uintptr_t)(hint))
 }
 
@@ -121,30 +163,30 @@ func (this *QGraphicsView) SetAlignment(alignment int) {
 	C.QGraphicsView_SetAlignment(this.h, (C.int)(alignment))
 }
 
-func (this *QGraphicsView) TransformationAnchor() uintptr {
+func (this *QGraphicsView) TransformationAnchor() QGraphicsView__ViewportAnchor {
 	ret := C.QGraphicsView_TransformationAnchor(this.h)
-	return (uintptr)(ret)
+	return (QGraphicsView__ViewportAnchor)(ret)
 }
 
-func (this *QGraphicsView) SetTransformationAnchor(anchor uintptr) {
+func (this *QGraphicsView) SetTransformationAnchor(anchor QGraphicsView__ViewportAnchor) {
 	C.QGraphicsView_SetTransformationAnchor(this.h, (C.uintptr_t)(anchor))
 }
 
-func (this *QGraphicsView) ResizeAnchor() uintptr {
+func (this *QGraphicsView) ResizeAnchor() QGraphicsView__ViewportAnchor {
 	ret := C.QGraphicsView_ResizeAnchor(this.h)
-	return (uintptr)(ret)
+	return (QGraphicsView__ViewportAnchor)(ret)
 }
 
-func (this *QGraphicsView) SetResizeAnchor(anchor uintptr) {
+func (this *QGraphicsView) SetResizeAnchor(anchor QGraphicsView__ViewportAnchor) {
 	C.QGraphicsView_SetResizeAnchor(this.h, (C.uintptr_t)(anchor))
 }
 
-func (this *QGraphicsView) ViewportUpdateMode() uintptr {
+func (this *QGraphicsView) ViewportUpdateMode() QGraphicsView__ViewportUpdateMode {
 	ret := C.QGraphicsView_ViewportUpdateMode(this.h)
-	return (uintptr)(ret)
+	return (QGraphicsView__ViewportUpdateMode)(ret)
 }
 
-func (this *QGraphicsView) SetViewportUpdateMode(mode uintptr) {
+func (this *QGraphicsView) SetViewportUpdateMode(mode QGraphicsView__ViewportUpdateMode) {
 	C.QGraphicsView_SetViewportUpdateMode(this.h, (C.uintptr_t)(mode))
 }
 
@@ -153,7 +195,7 @@ func (this *QGraphicsView) OptimizationFlags() int {
 	return (int)(ret)
 }
 
-func (this *QGraphicsView) SetOptimizationFlag(flag uintptr) {
+func (this *QGraphicsView) SetOptimizationFlag(flag QGraphicsView__OptimizationFlag) {
 	C.QGraphicsView_SetOptimizationFlag(this.h, (C.uintptr_t)(flag))
 }
 
@@ -161,21 +203,21 @@ func (this *QGraphicsView) SetOptimizationFlags(flags int) {
 	C.QGraphicsView_SetOptimizationFlags(this.h, (C.int)(flags))
 }
 
-func (this *QGraphicsView) DragMode() uintptr {
+func (this *QGraphicsView) DragMode() QGraphicsView__DragMode {
 	ret := C.QGraphicsView_DragMode(this.h)
-	return (uintptr)(ret)
+	return (QGraphicsView__DragMode)(ret)
 }
 
-func (this *QGraphicsView) SetDragMode(mode uintptr) {
+func (this *QGraphicsView) SetDragMode(mode QGraphicsView__DragMode) {
 	C.QGraphicsView_SetDragMode(this.h, (C.uintptr_t)(mode))
 }
 
-func (this *QGraphicsView) RubberBandSelectionMode() uintptr {
+func (this *QGraphicsView) RubberBandSelectionMode() ItemSelectionMode {
 	ret := C.QGraphicsView_RubberBandSelectionMode(this.h)
-	return (uintptr)(ret)
+	return (ItemSelectionMode)(ret)
 }
 
-func (this *QGraphicsView) SetRubberBandSelectionMode(mode uintptr) {
+func (this *QGraphicsView) SetRubberBandSelectionMode(mode ItemSelectionMode) {
 	C.QGraphicsView_SetRubberBandSelectionMode(this.h, (C.uintptr_t)(mode))
 }
 
@@ -504,7 +546,7 @@ func (this *QGraphicsView) MapFromScene2(x float64, y float64) *QPoint {
 	return ret1
 }
 
-func (this *QGraphicsView) InputMethodQuery(query uintptr) *QVariant {
+func (this *QGraphicsView) InputMethodQuery(query InputMethodQuery) *QVariant {
 	ret := C.QGraphicsView_InputMethodQuery(this.h, (C.uintptr_t)(query))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQVariant(ret)
@@ -627,11 +669,11 @@ func QGraphicsView_TrUtf83(s string, c string, n int) string {
 	return ret
 }
 
-func (this *QGraphicsView) SetRenderHint2(hint uintptr, enabled bool) {
+func (this *QGraphicsView) SetRenderHint2(hint QPainter__RenderHint, enabled bool) {
 	C.QGraphicsView_SetRenderHint2(this.h, (C.uintptr_t)(hint), (C.bool)(enabled))
 }
 
-func (this *QGraphicsView) SetOptimizationFlag2(flag uintptr, enabled bool) {
+func (this *QGraphicsView) SetOptimizationFlag2(flag QGraphicsView__OptimizationFlag, enabled bool) {
 	C.QGraphicsView_SetOptimizationFlag2(this.h, (C.uintptr_t)(flag), (C.bool)(enabled))
 }
 
@@ -667,15 +709,15 @@ func (this *QGraphicsView) EnsureVisible32(item *QGraphicsItem, xmargin int, yma
 	C.QGraphicsView_EnsureVisible32(this.h, item.cPointer(), (C.int)(xmargin), (C.int)(ymargin))
 }
 
-func (this *QGraphicsView) FitInView22(rect *QRectF, aspectRadioMode uintptr) {
+func (this *QGraphicsView) FitInView22(rect *QRectF, aspectRadioMode AspectRatioMode) {
 	C.QGraphicsView_FitInView22(this.h, rect.cPointer(), (C.uintptr_t)(aspectRadioMode))
 }
 
-func (this *QGraphicsView) FitInView5(x float64, y float64, w float64, h float64, aspectRadioMode uintptr) {
+func (this *QGraphicsView) FitInView5(x float64, y float64, w float64, h float64, aspectRadioMode AspectRatioMode) {
 	C.QGraphicsView_FitInView5(this.h, (C.double)(x), (C.double)(y), (C.double)(w), (C.double)(h), (C.uintptr_t)(aspectRadioMode))
 }
 
-func (this *QGraphicsView) FitInView23(item *QGraphicsItem, aspectRadioMode uintptr) {
+func (this *QGraphicsView) FitInView23(item *QGraphicsItem, aspectRadioMode AspectRatioMode) {
 	C.QGraphicsView_FitInView23(this.h, item.cPointer(), (C.uintptr_t)(aspectRadioMode))
 }
 
@@ -687,11 +729,11 @@ func (this *QGraphicsView) Render3(painter *QPainter, target *QRectF, source *QR
 	C.QGraphicsView_Render3(this.h, painter.cPointer(), target.cPointer(), source.cPointer())
 }
 
-func (this *QGraphicsView) Render4(painter *QPainter, target *QRectF, source *QRect, aspectRatioMode uintptr) {
+func (this *QGraphicsView) Render4(painter *QPainter, target *QRectF, source *QRect, aspectRatioMode AspectRatioMode) {
 	C.QGraphicsView_Render4(this.h, painter.cPointer(), target.cPointer(), source.cPointer(), (C.uintptr_t)(aspectRatioMode))
 }
 
-func (this *QGraphicsView) Items22(rect *QRect, mode uintptr) []*QGraphicsItem {
+func (this *QGraphicsView) Items22(rect *QRect, mode ItemSelectionMode) []*QGraphicsItem {
 	var _out **C.QGraphicsItem = nil
 	var _out_len C.size_t = 0
 	C.QGraphicsView_Items22(this.h, rect.cPointer(), (C.uintptr_t)(mode), &_out, &_out_len)
@@ -704,7 +746,7 @@ func (this *QGraphicsView) Items22(rect *QRect, mode uintptr) []*QGraphicsItem {
 	return ret
 }
 
-func (this *QGraphicsView) Items5(x int, y int, w int, h int, mode uintptr) []*QGraphicsItem {
+func (this *QGraphicsView) Items5(x int, y int, w int, h int, mode ItemSelectionMode) []*QGraphicsItem {
 	var _out **C.QGraphicsItem = nil
 	var _out_len C.size_t = 0
 	C.QGraphicsView_Items5(this.h, (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), (C.uintptr_t)(mode), &_out, &_out_len)
@@ -717,7 +759,7 @@ func (this *QGraphicsView) Items5(x int, y int, w int, h int, mode uintptr) []*Q
 	return ret
 }
 
-func (this *QGraphicsView) Items24(path *QPainterPath, mode uintptr) []*QGraphicsItem {
+func (this *QGraphicsView) Items24(path *QPainterPath, mode ItemSelectionMode) []*QGraphicsItem {
 	var _out **C.QGraphicsItem = nil
 	var _out_len C.size_t = 0
 	C.QGraphicsView_Items24(this.h, path.cPointer(), (C.uintptr_t)(mode), &_out, &_out_len)

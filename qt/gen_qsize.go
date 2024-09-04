@@ -101,15 +101,15 @@ func (this *QSize) Transposed() *QSize {
 	return ret1
 }
 
-func (this *QSize) Scale(w int, h int, mode uintptr) {
+func (this *QSize) Scale(w int, h int, mode AspectRatioMode) {
 	C.QSize_Scale(this.h, (C.int)(w), (C.int)(h), (C.uintptr_t)(mode))
 }
 
-func (this *QSize) Scale2(s *QSize, mode uintptr) {
+func (this *QSize) Scale2(s *QSize, mode AspectRatioMode) {
 	C.QSize_Scale2(this.h, s.cPointer(), (C.uintptr_t)(mode))
 }
 
-func (this *QSize) Scaled(w int, h int, mode uintptr) *QSize {
+func (this *QSize) Scaled(w int, h int, mode AspectRatioMode) *QSize {
 	ret := C.QSize_Scaled(this.h, (C.int)(w), (C.int)(h), (C.uintptr_t)(mode))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQSize(ret)
@@ -120,7 +120,7 @@ func (this *QSize) Scaled(w int, h int, mode uintptr) *QSize {
 	return ret1
 }
 
-func (this *QSize) Scaled2(s *QSize, mode uintptr) *QSize {
+func (this *QSize) Scaled2(s *QSize, mode AspectRatioMode) *QSize {
 	ret := C.QSize_Scaled2(this.h, s.cPointer(), (C.uintptr_t)(mode))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQSize(ret)
@@ -293,15 +293,15 @@ func (this *QSizeF) Transposed() *QSizeF {
 	return ret1
 }
 
-func (this *QSizeF) Scale(w float64, h float64, mode uintptr) {
+func (this *QSizeF) Scale(w float64, h float64, mode AspectRatioMode) {
 	C.QSizeF_Scale(this.h, (C.double)(w), (C.double)(h), (C.uintptr_t)(mode))
 }
 
-func (this *QSizeF) Scale2(s *QSizeF, mode uintptr) {
+func (this *QSizeF) Scale2(s *QSizeF, mode AspectRatioMode) {
 	C.QSizeF_Scale2(this.h, s.cPointer(), (C.uintptr_t)(mode))
 }
 
-func (this *QSizeF) Scaled(w float64, h float64, mode uintptr) *QSizeF {
+func (this *QSizeF) Scaled(w float64, h float64, mode AspectRatioMode) *QSizeF {
 	ret := C.QSizeF_Scaled(this.h, (C.double)(w), (C.double)(h), (C.uintptr_t)(mode))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQSizeF(ret)
@@ -312,7 +312,7 @@ func (this *QSizeF) Scaled(w float64, h float64, mode uintptr) *QSizeF {
 	return ret1
 }
 
-func (this *QSizeF) Scaled2(s *QSizeF, mode uintptr) *QSizeF {
+func (this *QSizeF) Scaled2(s *QSizeF, mode AspectRatioMode) *QSizeF {
 	ret := C.QSizeF_Scaled2(this.h, s.cPointer(), (C.uintptr_t)(mode))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQSizeF(ret)

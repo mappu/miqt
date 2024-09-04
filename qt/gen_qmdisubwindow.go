@@ -14,6 +14,15 @@ import (
 	"unsafe"
 )
 
+type QMdiSubWindow__SubWindowOption int
+
+const (
+	QMdiSubWindow__SubWindowOption__AllowOutsideAreaHorizontally QMdiSubWindow__SubWindowOption = 1
+	QMdiSubWindow__SubWindowOption__AllowOutsideAreaVertically   QMdiSubWindow__SubWindowOption = 2
+	QMdiSubWindow__SubWindowOption__RubberBandResize             QMdiSubWindow__SubWindowOption = 4
+	QMdiSubWindow__SubWindowOption__RubberBandMove               QMdiSubWindow__SubWindowOption = 8
+)
+
 type QMdiSubWindow struct {
 	h *C.QMdiSubWindow
 	*QWidget
@@ -128,11 +137,11 @@ func (this *QMdiSubWindow) IsShaded() bool {
 	return (bool)(ret)
 }
 
-func (this *QMdiSubWindow) SetOption(option uintptr) {
+func (this *QMdiSubWindow) SetOption(option QMdiSubWindow__SubWindowOption) {
 	C.QMdiSubWindow_SetOption(this.h, (C.uintptr_t)(option))
 }
 
-func (this *QMdiSubWindow) TestOption(param1 uintptr) bool {
+func (this *QMdiSubWindow) TestOption(param1 QMdiSubWindow__SubWindowOption) bool {
 	ret := C.QMdiSubWindow_TestOption(this.h, (C.uintptr_t)(param1))
 	return (bool)(ret)
 }
@@ -253,7 +262,7 @@ func QMdiSubWindow_TrUtf83(s string, c string, n int) string {
 	return ret
 }
 
-func (this *QMdiSubWindow) SetOption2(option uintptr, on bool) {
+func (this *QMdiSubWindow) SetOption2(option QMdiSubWindow__SubWindowOption, on bool) {
 	C.QMdiSubWindow_SetOption2(this.h, (C.uintptr_t)(option), (C.bool)(on))
 }
 

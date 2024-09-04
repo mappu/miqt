@@ -57,7 +57,7 @@ func (this *QAccessibleObject) Rect() *QRect {
 	return ret1
 }
 
-func (this *QAccessibleObject) SetText(t uintptr, text string) {
+func (this *QAccessibleObject) SetText(t QAccessible__Text, text string) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
 	C.QAccessibleObject_SetText(this.h, (C.uintptr_t)(t), text_Cstring, C.size_t(len(text)))
@@ -127,7 +127,7 @@ func (this *QAccessibleApplication) Child(index int) *QAccessibleInterface {
 	return newQAccessibleInterface_U(unsafe.Pointer(ret))
 }
 
-func (this *QAccessibleApplication) Text(t uintptr) string {
+func (this *QAccessibleApplication) Text(t QAccessible__Text) string {
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
 	C.QAccessibleApplication_Text(this.h, (C.uintptr_t)(t), &_out, &_out_Strlen)
@@ -136,9 +136,9 @@ func (this *QAccessibleApplication) Text(t uintptr) string {
 	return ret
 }
 
-func (this *QAccessibleApplication) Role() uintptr {
+func (this *QAccessibleApplication) Role() QAccessible__Role {
 	ret := C.QAccessibleApplication_Role(this.h)
-	return (uintptr)(ret)
+	return (QAccessible__Role)(ret)
 }
 
 func (this *QAccessibleApplication) State() *QAccessible__State {

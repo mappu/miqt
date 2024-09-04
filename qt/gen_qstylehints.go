@@ -188,12 +188,12 @@ func (this *QStyleHints) SetFocusOnTouchRelease() bool {
 	return (bool)(ret)
 }
 
-func (this *QStyleHints) TabFocusBehavior() uintptr {
+func (this *QStyleHints) TabFocusBehavior() TabFocusBehavior {
 	ret := C.QStyleHints_TabFocusBehavior(this.h)
-	return (uintptr)(ret)
+	return (TabFocusBehavior)(ret)
 }
 
-func (this *QStyleHints) SetTabFocusBehavior(tabFocusBehavior uintptr) {
+func (this *QStyleHints) SetTabFocusBehavior(tabFocusBehavior TabFocusBehavior) {
 	C.QStyleHints_SetTabFocusBehavior(this.h, (C.uintptr_t)(tabFocusBehavior))
 }
 
@@ -301,7 +301,7 @@ func (this *QStyleHints) OnStartDragTimeChanged(slot func()) {
 	C.QStyleHints_connect_StartDragTimeChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
 }
 
-func (this *QStyleHints) TabFocusBehaviorChanged(tabFocusBehavior uintptr) {
+func (this *QStyleHints) TabFocusBehaviorChanged(tabFocusBehavior TabFocusBehavior) {
 	C.QStyleHints_TabFocusBehaviorChanged(this.h, (C.uintptr_t)(tabFocusBehavior))
 }
 

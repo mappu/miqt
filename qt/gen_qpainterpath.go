@@ -13,6 +13,15 @@ import (
 	"unsafe"
 )
 
+type QPainterPath__ElementType int
+
+const (
+	QPainterPath__ElementType__MoveToElement      QPainterPath__ElementType = 0
+	QPainterPath__ElementType__LineToElement      QPainterPath__ElementType = 1
+	QPainterPath__ElementType__CurveToElement     QPainterPath__ElementType = 2
+	QPainterPath__ElementType__CurveToDataElement QPainterPath__ElementType = 3
+)
+
 type QPainterPath struct {
 	h *C.QPainterPath
 }
@@ -272,12 +281,12 @@ func (this *QPainterPath) ControlPointRect() *QRectF {
 	return ret1
 }
 
-func (this *QPainterPath) FillRule() uintptr {
+func (this *QPainterPath) FillRule() FillRule {
 	ret := C.QPainterPath_FillRule(this.h)
-	return (uintptr)(ret)
+	return (FillRule)(ret)
 }
 
-func (this *QPainterPath) SetFillRule(fillRule uintptr) {
+func (this *QPainterPath) SetFillRule(fillRule FillRule) {
 	C.QPainterPath_SetFillRule(this.h, (C.uintptr_t)(fillRule))
 }
 
@@ -485,11 +494,11 @@ func (this *QPainterPath) OperatorMinusAssign(other *QPainterPath) *QPainterPath
 	return newQPainterPath_U(unsafe.Pointer(ret))
 }
 
-func (this *QPainterPath) AddRoundedRect4(rect *QRectF, xRadius float64, yRadius float64, mode uintptr) {
+func (this *QPainterPath) AddRoundedRect4(rect *QRectF, xRadius float64, yRadius float64, mode SizeMode) {
 	C.QPainterPath_AddRoundedRect4(this.h, rect.cPointer(), (C.double)(xRadius), (C.double)(yRadius), (C.uintptr_t)(mode))
 }
 
-func (this *QPainterPath) AddRoundedRect7(x float64, y float64, w float64, h float64, xRadius float64, yRadius float64, mode uintptr) {
+func (this *QPainterPath) AddRoundedRect7(x float64, y float64, w float64, h float64, xRadius float64, yRadius float64, mode SizeMode) {
 	C.QPainterPath_AddRoundedRect7(this.h, (C.double)(x), (C.double)(y), (C.double)(w), (C.double)(h), (C.double)(xRadius), (C.double)(yRadius), (C.uintptr_t)(mode))
 }
 
@@ -540,22 +549,22 @@ func (this *QPainterPathStroker) Width() float64 {
 	return (float64)(ret)
 }
 
-func (this *QPainterPathStroker) SetCapStyle(style uintptr) {
+func (this *QPainterPathStroker) SetCapStyle(style PenCapStyle) {
 	C.QPainterPathStroker_SetCapStyle(this.h, (C.uintptr_t)(style))
 }
 
-func (this *QPainterPathStroker) CapStyle() uintptr {
+func (this *QPainterPathStroker) CapStyle() PenCapStyle {
 	ret := C.QPainterPathStroker_CapStyle(this.h)
-	return (uintptr)(ret)
+	return (PenCapStyle)(ret)
 }
 
-func (this *QPainterPathStroker) SetJoinStyle(style uintptr) {
+func (this *QPainterPathStroker) SetJoinStyle(style PenJoinStyle) {
 	C.QPainterPathStroker_SetJoinStyle(this.h, (C.uintptr_t)(style))
 }
 
-func (this *QPainterPathStroker) JoinStyle() uintptr {
+func (this *QPainterPathStroker) JoinStyle() PenJoinStyle {
 	ret := C.QPainterPathStroker_JoinStyle(this.h)
-	return (uintptr)(ret)
+	return (PenJoinStyle)(ret)
 }
 
 func (this *QPainterPathStroker) SetMiterLimit(length float64) {
@@ -576,7 +585,7 @@ func (this *QPainterPathStroker) CurveThreshold() float64 {
 	return (float64)(ret)
 }
 
-func (this *QPainterPathStroker) SetDashPattern(dashPattern uintptr) {
+func (this *QPainterPathStroker) SetDashPattern(dashPattern PenStyle) {
 	C.QPainterPathStroker_SetDashPattern(this.h, (C.uintptr_t)(dashPattern))
 }
 

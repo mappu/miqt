@@ -13,6 +13,14 @@ import (
 	"unsafe"
 )
 
+type QActionGroup__ExclusionPolicy int
+
+const (
+	QActionGroup__ExclusionPolicy__None              QActionGroup__ExclusionPolicy = 0
+	QActionGroup__ExclusionPolicy__Exclusive         QActionGroup__ExclusionPolicy = 1
+	QActionGroup__ExclusionPolicy__ExclusiveOptional QActionGroup__ExclusionPolicy = 2
+)
+
 type QActionGroup struct {
 	h *C.QActionGroup
 	*QObject
@@ -125,9 +133,9 @@ func (this *QActionGroup) IsVisible() bool {
 	return (bool)(ret)
 }
 
-func (this *QActionGroup) ExclusionPolicy() uintptr {
+func (this *QActionGroup) ExclusionPolicy() QActionGroup__ExclusionPolicy {
 	ret := C.QActionGroup_ExclusionPolicy(this.h)
-	return (uintptr)(ret)
+	return (QActionGroup__ExclusionPolicy)(ret)
 }
 
 func (this *QActionGroup) SetEnabled(enabled bool) {
@@ -146,7 +154,7 @@ func (this *QActionGroup) SetExclusive(exclusive bool) {
 	C.QActionGroup_SetExclusive(this.h, (C.bool)(exclusive))
 }
 
-func (this *QActionGroup) SetExclusionPolicy(policy uintptr) {
+func (this *QActionGroup) SetExclusionPolicy(policy QActionGroup__ExclusionPolicy) {
 	C.QActionGroup_SetExclusionPolicy(this.h, (C.uintptr_t)(policy))
 }
 

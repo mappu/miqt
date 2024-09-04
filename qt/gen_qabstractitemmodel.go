@@ -14,6 +14,23 @@ import (
 	"unsafe"
 )
 
+type QAbstractItemModel__LayoutChangeHint int
+
+const (
+	QAbstractItemModel__LayoutChangeHint__NoLayoutChangeHint QAbstractItemModel__LayoutChangeHint = 0
+	QAbstractItemModel__LayoutChangeHint__VerticalSortHint   QAbstractItemModel__LayoutChangeHint = 1
+	QAbstractItemModel__LayoutChangeHint__HorizontalSortHint QAbstractItemModel__LayoutChangeHint = 2
+)
+
+type QAbstractItemModel__CheckIndexOption int
+
+const (
+	QAbstractItemModel__CheckIndexOption__NoOption        QAbstractItemModel__CheckIndexOption = 0
+	QAbstractItemModel__CheckIndexOption__IndexIsValid    QAbstractItemModel__CheckIndexOption = 1
+	QAbstractItemModel__CheckIndexOption__DoNotUseParent  QAbstractItemModel__CheckIndexOption = 2
+	QAbstractItemModel__CheckIndexOption__ParentIsInvalid QAbstractItemModel__CheckIndexOption = 4
+)
+
 type QModelIndex struct {
 	h *C.QModelIndex
 }
@@ -459,7 +476,7 @@ func (this *QAbstractItemModel) SetData(index *QModelIndex, value *QVariant) boo
 	return (bool)(ret)
 }
 
-func (this *QAbstractItemModel) HeaderData(section int, orientation uintptr) *QVariant {
+func (this *QAbstractItemModel) HeaderData(section int, orientation Orientation) *QVariant {
 	ret := C.QAbstractItemModel_HeaderData(this.h, (C.int)(section), (C.uintptr_t)(orientation))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQVariant(ret)
@@ -470,7 +487,7 @@ func (this *QAbstractItemModel) HeaderData(section int, orientation uintptr) *QV
 	return ret1
 }
 
-func (this *QAbstractItemModel) SetHeaderData(section int, orientation uintptr, value *QVariant) bool {
+func (this *QAbstractItemModel) SetHeaderData(section int, orientation Orientation, value *QVariant) bool {
 	ret := C.QAbstractItemModel_SetHeaderData(this.h, (C.int)(section), (C.uintptr_t)(orientation), value.cPointer())
 	return (bool)(ret)
 }
@@ -501,12 +518,12 @@ func (this *QAbstractItemModel) MimeData(indexes []QModelIndex) *QMimeData {
 	return newQMimeData_U(unsafe.Pointer(ret))
 }
 
-func (this *QAbstractItemModel) CanDropMimeData(data *QMimeData, action uintptr, row int, column int, parent *QModelIndex) bool {
+func (this *QAbstractItemModel) CanDropMimeData(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool {
 	ret := C.QAbstractItemModel_CanDropMimeData(this.h, data.cPointer(), (C.uintptr_t)(action), (C.int)(row), (C.int)(column), parent.cPointer())
 	return (bool)(ret)
 }
 
-func (this *QAbstractItemModel) DropMimeData(data *QMimeData, action uintptr, row int, column int, parent *QModelIndex) bool {
+func (this *QAbstractItemModel) DropMimeData(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool {
 	ret := C.QAbstractItemModel_DropMimeData(this.h, data.cPointer(), (C.uintptr_t)(action), (C.int)(row), (C.int)(column), parent.cPointer())
 	return (bool)(ret)
 }
@@ -643,7 +660,7 @@ func (this *QAbstractItemModel) DataChanged(topLeft *QModelIndex, bottomRight *Q
 	C.QAbstractItemModel_DataChanged(this.h, topLeft.cPointer(), bottomRight.cPointer())
 }
 
-func (this *QAbstractItemModel) HeaderDataChanged(orientation uintptr, first int, last int) {
+func (this *QAbstractItemModel) HeaderDataChanged(orientation Orientation, first int, last int) {
 	C.QAbstractItemModel_HeaderDataChanged(this.h, (C.uintptr_t)(orientation), (C.int)(first), (C.int)(last))
 }
 
@@ -771,7 +788,7 @@ func (this *QAbstractItemModel) SetData3(index *QModelIndex, value *QVariant, ro
 	return (bool)(ret)
 }
 
-func (this *QAbstractItemModel) HeaderData3(section int, orientation uintptr, role int) *QVariant {
+func (this *QAbstractItemModel) HeaderData3(section int, orientation Orientation, role int) *QVariant {
 	ret := C.QAbstractItemModel_HeaderData3(this.h, (C.int)(section), (C.uintptr_t)(orientation), (C.int)(role))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQVariant(ret)
@@ -782,7 +799,7 @@ func (this *QAbstractItemModel) HeaderData3(section int, orientation uintptr, ro
 	return ret1
 }
 
-func (this *QAbstractItemModel) SetHeaderData4(section int, orientation uintptr, value *QVariant, role int) bool {
+func (this *QAbstractItemModel) SetHeaderData4(section int, orientation Orientation, value *QVariant, role int) bool {
 	ret := C.QAbstractItemModel_SetHeaderData4(this.h, (C.int)(section), (C.uintptr_t)(orientation), value.cPointer(), (C.int)(role))
 	return (bool)(ret)
 }
@@ -827,7 +844,7 @@ func (this *QAbstractItemModel) RemoveColumn2(column int, parent *QModelIndex) b
 	return (bool)(ret)
 }
 
-func (this *QAbstractItemModel) Sort2(column int, order uintptr) {
+func (this *QAbstractItemModel) Sort2(column int, order SortOrder) {
 	C.QAbstractItemModel_Sort2(this.h, (C.int)(column), (C.uintptr_t)(order))
 }
 
@@ -890,7 +907,7 @@ func (this *QAbstractItemModel) LayoutChanged1(parents []QPersistentModelIndex) 
 	C.QAbstractItemModel_LayoutChanged1(this.h, &parents_CArray[0], C.size_t(len(parents)))
 }
 
-func (this *QAbstractItemModel) LayoutChanged2(parents []QPersistentModelIndex, hint uintptr) {
+func (this *QAbstractItemModel) LayoutChanged2(parents []QPersistentModelIndex, hint QAbstractItemModel__LayoutChangeHint) {
 	// For the C ABI, malloc a C array of raw pointers
 	parents_CArray := (*[0xffff]*C.QPersistentModelIndex)(C.malloc(C.size_t(8 * len(parents))))
 	defer C.free(unsafe.Pointer(parents_CArray))
@@ -918,7 +935,7 @@ func (this *QAbstractItemModel) LayoutAboutToBeChanged1(parents []QPersistentMod
 	C.QAbstractItemModel_LayoutAboutToBeChanged1(this.h, &parents_CArray[0], C.size_t(len(parents)))
 }
 
-func (this *QAbstractItemModel) LayoutAboutToBeChanged2(parents []QPersistentModelIndex, hint uintptr) {
+func (this *QAbstractItemModel) LayoutAboutToBeChanged2(parents []QPersistentModelIndex, hint QAbstractItemModel__LayoutChangeHint) {
 	// For the C ABI, malloc a C array of raw pointers
 	parents_CArray := (*[0xffff]*C.QPersistentModelIndex)(C.malloc(C.size_t(8 * len(parents))))
 	defer C.free(unsafe.Pointer(parents_CArray))
@@ -1012,7 +1029,7 @@ func (this *QAbstractTableModel) Sibling(row int, column int, idx *QModelIndex) 
 	return ret1
 }
 
-func (this *QAbstractTableModel) DropMimeData(data *QMimeData, action uintptr, row int, column int, parent *QModelIndex) bool {
+func (this *QAbstractTableModel) DropMimeData(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool {
 	ret := C.QAbstractTableModel_DropMimeData(this.h, data.cPointer(), (C.uintptr_t)(action), (C.int)(row), (C.int)(column), parent.cPointer())
 	return (bool)(ret)
 }
@@ -1161,7 +1178,7 @@ func (this *QAbstractListModel) Sibling(row int, column int, idx *QModelIndex) *
 	return ret1
 }
 
-func (this *QAbstractListModel) DropMimeData(data *QMimeData, action uintptr, row int, column int, parent *QModelIndex) bool {
+func (this *QAbstractListModel) DropMimeData(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool {
 	ret := C.QAbstractListModel_DropMimeData(this.h, data.cPointer(), (C.uintptr_t)(action), (C.int)(row), (C.int)(column), parent.cPointer())
 	return (bool)(ret)
 }

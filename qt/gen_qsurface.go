@@ -13,6 +13,24 @@ import (
 	"unsafe"
 )
 
+type QSurface__SurfaceClass int
+
+const (
+	QSurface__SurfaceClass__Window    QSurface__SurfaceClass = 0
+	QSurface__SurfaceClass__Offscreen QSurface__SurfaceClass = 1
+)
+
+type QSurface__SurfaceType int
+
+const (
+	QSurface__SurfaceType__RasterSurface   QSurface__SurfaceType = 0
+	QSurface__SurfaceType__OpenGLSurface   QSurface__SurfaceType = 1
+	QSurface__SurfaceType__RasterGLSurface QSurface__SurfaceType = 2
+	QSurface__SurfaceType__OpenVGSurface   QSurface__SurfaceType = 3
+	QSurface__SurfaceType__VulkanSurface   QSurface__SurfaceType = 4
+	QSurface__SurfaceType__MetalSurface    QSurface__SurfaceType = 5
+)
+
 type QSurface struct {
 	h *C.QSurface
 }
@@ -35,9 +53,9 @@ func newQSurface_U(h unsafe.Pointer) *QSurface {
 	return newQSurface((*C.QSurface)(h))
 }
 
-func (this *QSurface) SurfaceClass() uintptr {
+func (this *QSurface) SurfaceClass() QSurface__SurfaceClass {
 	ret := C.QSurface_SurfaceClass(this.h)
-	return (uintptr)(ret)
+	return (QSurface__SurfaceClass)(ret)
 }
 
 func (this *QSurface) Format() *QSurfaceFormat {
@@ -51,9 +69,9 @@ func (this *QSurface) Format() *QSurfaceFormat {
 	return ret1
 }
 
-func (this *QSurface) SurfaceType() uintptr {
+func (this *QSurface) SurfaceType() QSurface__SurfaceType {
 	ret := C.QSurface_SurfaceType(this.h)
-	return (uintptr)(ret)
+	return (QSurface__SurfaceType)(ret)
 }
 
 func (this *QSurface) SupportsOpenGL() bool {

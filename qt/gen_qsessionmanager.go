@@ -12,6 +12,15 @@ import (
 	"unsafe"
 )
 
+type QSessionManager__RestartHint int
+
+const (
+	QSessionManager__RestartHint__RestartIfRunning   QSessionManager__RestartHint = 0
+	QSessionManager__RestartHint__RestartAnyway      QSessionManager__RestartHint = 1
+	QSessionManager__RestartHint__RestartImmediately QSessionManager__RestartHint = 2
+	QSessionManager__RestartHint__RestartNever       QSessionManager__RestartHint = 3
+)
+
 type QSessionManager struct {
 	h *C.QSessionManager
 	*QObject
@@ -98,13 +107,13 @@ func (this *QSessionManager) Cancel() {
 	C.QSessionManager_Cancel(this.h)
 }
 
-func (this *QSessionManager) SetRestartHint(restartHint uintptr) {
+func (this *QSessionManager) SetRestartHint(restartHint QSessionManager__RestartHint) {
 	C.QSessionManager_SetRestartHint(this.h, (C.uintptr_t)(restartHint))
 }
 
-func (this *QSessionManager) RestartHint() uintptr {
+func (this *QSessionManager) RestartHint() QSessionManager__RestartHint {
 	ret := C.QSessionManager_RestartHint(this.h)
-	return (uintptr)(ret)
+	return (QSessionManager__RestartHint)(ret)
 }
 
 func (this *QSessionManager) SetRestartCommand(restartCommand []string) {

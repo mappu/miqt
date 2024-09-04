@@ -39,7 +39,7 @@ func (this *QGraphicsLayoutItem) SetSizePolicy(policy *QSizePolicy) {
 	C.QGraphicsLayoutItem_SetSizePolicy(this.h, policy.cPointer())
 }
 
-func (this *QGraphicsLayoutItem) SetSizePolicy2(hPolicy uintptr, vPolicy uintptr) {
+func (this *QGraphicsLayoutItem) SetSizePolicy2(hPolicy QSizePolicy__Policy, vPolicy QSizePolicy__Policy) {
 	C.QGraphicsLayoutItem_SetSizePolicy2(this.h, (C.uintptr_t)(hPolicy), (C.uintptr_t)(vPolicy))
 }
 
@@ -195,7 +195,7 @@ func (this *QGraphicsLayoutItem) ContentsRect() *QRectF {
 	return ret1
 }
 
-func (this *QGraphicsLayoutItem) EffectiveSizeHint(which uintptr) *QSizeF {
+func (this *QGraphicsLayoutItem) EffectiveSizeHint(which SizeHint) *QSizeF {
 	ret := C.QGraphicsLayoutItem_EffectiveSizeHint(this.h, (C.uintptr_t)(which))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQSizeF(ret)
@@ -234,11 +234,11 @@ func (this *QGraphicsLayoutItem) OwnedByLayout() bool {
 	return (bool)(ret)
 }
 
-func (this *QGraphicsLayoutItem) SetSizePolicy3(hPolicy uintptr, vPolicy uintptr, controlType uintptr) {
+func (this *QGraphicsLayoutItem) SetSizePolicy3(hPolicy QSizePolicy__Policy, vPolicy QSizePolicy__Policy, controlType QSizePolicy__ControlType) {
 	C.QGraphicsLayoutItem_SetSizePolicy3(this.h, (C.uintptr_t)(hPolicy), (C.uintptr_t)(vPolicy), (C.uintptr_t)(controlType))
 }
 
-func (this *QGraphicsLayoutItem) EffectiveSizeHint2(which uintptr, constraint *QSizeF) *QSizeF {
+func (this *QGraphicsLayoutItem) EffectiveSizeHint2(which SizeHint, constraint *QSizeF) *QSizeF {
 	ret := C.QGraphicsLayoutItem_EffectiveSizeHint2(this.h, (C.uintptr_t)(which), constraint.cPointer())
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQSizeF(ret)

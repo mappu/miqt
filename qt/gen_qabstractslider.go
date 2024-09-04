@@ -13,6 +13,19 @@ import (
 	"unsafe"
 )
 
+type QAbstractSlider__SliderAction int
+
+const (
+	QAbstractSlider__SliderAction__SliderNoAction      QAbstractSlider__SliderAction = 0
+	QAbstractSlider__SliderAction__SliderSingleStepAdd QAbstractSlider__SliderAction = 1
+	QAbstractSlider__SliderAction__SliderSingleStepSub QAbstractSlider__SliderAction = 2
+	QAbstractSlider__SliderAction__SliderPageStepAdd   QAbstractSlider__SliderAction = 3
+	QAbstractSlider__SliderAction__SliderPageStepSub   QAbstractSlider__SliderAction = 4
+	QAbstractSlider__SliderAction__SliderToMinimum     QAbstractSlider__SliderAction = 5
+	QAbstractSlider__SliderAction__SliderToMaximum     QAbstractSlider__SliderAction = 6
+	QAbstractSlider__SliderAction__SliderMove          QAbstractSlider__SliderAction = 7
+)
+
 type QAbstractSlider struct {
 	h *C.QAbstractSlider
 	*QWidget
@@ -75,9 +88,9 @@ func QAbstractSlider_TrUtf8(s string) string {
 	return ret
 }
 
-func (this *QAbstractSlider) Orientation() uintptr {
+func (this *QAbstractSlider) Orientation() Orientation {
 	ret := C.QAbstractSlider_Orientation(this.h)
-	return (uintptr)(ret)
+	return (Orientation)(ret)
 }
 
 func (this *QAbstractSlider) SetMinimum(minimum int) {
@@ -166,7 +179,7 @@ func (this *QAbstractSlider) Value() int {
 	return (int)(ret)
 }
 
-func (this *QAbstractSlider) TriggerAction(action uintptr) {
+func (this *QAbstractSlider) TriggerAction(action QAbstractSlider__SliderAction) {
 	C.QAbstractSlider_TriggerAction(this.h, (C.uintptr_t)(action))
 }
 
@@ -174,7 +187,7 @@ func (this *QAbstractSlider) SetValue(value int) {
 	C.QAbstractSlider_SetValue(this.h, (C.int)(value))
 }
 
-func (this *QAbstractSlider) SetOrientation(orientation uintptr) {
+func (this *QAbstractSlider) SetOrientation(orientation Orientation) {
 	C.QAbstractSlider_SetOrientation(this.h, (C.uintptr_t)(orientation))
 }
 

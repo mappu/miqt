@@ -13,6 +13,17 @@ import (
 	"unsafe"
 )
 
+type QBoxLayout__Direction int
+
+const (
+	QBoxLayout__Direction__LeftToRight QBoxLayout__Direction = 0
+	QBoxLayout__Direction__RightToLeft QBoxLayout__Direction = 1
+	QBoxLayout__Direction__TopToBottom QBoxLayout__Direction = 2
+	QBoxLayout__Direction__BottomToTop QBoxLayout__Direction = 3
+	QBoxLayout__Direction__Down        QBoxLayout__Direction = 2
+	QBoxLayout__Direction__Up          QBoxLayout__Direction = 3
+)
+
 type QBoxLayout struct {
 	h *C.QBoxLayout
 	*QLayout
@@ -37,13 +48,13 @@ func newQBoxLayout_U(h unsafe.Pointer) *QBoxLayout {
 }
 
 // NewQBoxLayout constructs a new QBoxLayout object.
-func NewQBoxLayout(param1 uintptr) *QBoxLayout {
+func NewQBoxLayout(param1 QBoxLayout__Direction) *QBoxLayout {
 	ret := C.QBoxLayout_new((C.uintptr_t)(param1))
 	return newQBoxLayout(ret)
 }
 
 // NewQBoxLayout2 constructs a new QBoxLayout object.
-func NewQBoxLayout2(param1 uintptr, parent *QWidget) *QBoxLayout {
+func NewQBoxLayout2(param1 QBoxLayout__Direction, parent *QWidget) *QBoxLayout {
 	ret := C.QBoxLayout_new2((C.uintptr_t)(param1), parent.cPointer())
 	return newQBoxLayout(ret)
 }
@@ -75,12 +86,12 @@ func QBoxLayout_TrUtf8(s string) string {
 	return ret
 }
 
-func (this *QBoxLayout) Direction() uintptr {
+func (this *QBoxLayout) Direction() QBoxLayout__Direction {
 	ret := C.QBoxLayout_Direction(this.h)
-	return (uintptr)(ret)
+	return (QBoxLayout__Direction)(ret)
 }
 
-func (this *QBoxLayout) SetDirection(direction uintptr) {
+func (this *QBoxLayout) SetDirection(direction QBoxLayout__Direction) {
 	C.QBoxLayout_SetDirection(this.h, (C.uintptr_t)(direction))
 }
 

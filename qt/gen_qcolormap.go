@@ -13,6 +13,14 @@ import (
 	"unsafe"
 )
 
+type QColormap__Mode int
+
+const (
+	QColormap__Mode__Direct  QColormap__Mode = 0
+	QColormap__Mode__Indexed QColormap__Mode = 1
+	QColormap__Mode__Gray    QColormap__Mode = 2
+)
+
 type QColormap struct {
 	h *C.QColormap
 }
@@ -64,9 +72,9 @@ func (this *QColormap) OperatorAssign(colormap *QColormap) {
 	C.QColormap_OperatorAssign(this.h, colormap.cPointer())
 }
 
-func (this *QColormap) Mode() uintptr {
+func (this *QColormap) Mode() QColormap__Mode {
 	ret := C.QColormap_Mode(this.h)
-	return (uintptr)(ret)
+	return (QColormap__Mode)(ret)
 }
 
 func (this *QColormap) Depth() int {

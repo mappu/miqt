@@ -42,7 +42,7 @@ func NewQMatrix4x4() *QMatrix4x4 {
 }
 
 // NewQMatrix4x42 constructs a new QMatrix4x4 object.
-func NewQMatrix4x42(param1 uintptr) *QMatrix4x4 {
+func NewQMatrix4x42(param1 Initialization) *QMatrix4x4 {
 	ret := C.QMatrix4x4_new2((C.uintptr_t)(param1))
 	return newQMatrix4x4(ret)
 }

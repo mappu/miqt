@@ -14,6 +14,21 @@ import (
 	"unsafe"
 )
 
+type QTreeWidgetItem__ItemType int
+
+const (
+	QTreeWidgetItem__ItemType__Type     QTreeWidgetItem__ItemType = 0
+	QTreeWidgetItem__ItemType__UserType QTreeWidgetItem__ItemType = 1000
+)
+
+type QTreeWidgetItem__ChildIndicatorPolicy int
+
+const (
+	QTreeWidgetItem__ChildIndicatorPolicy__ShowIndicator                  QTreeWidgetItem__ChildIndicatorPolicy = 0
+	QTreeWidgetItem__ChildIndicatorPolicy__DontShowIndicator              QTreeWidgetItem__ChildIndicatorPolicy = 1
+	QTreeWidgetItem__ChildIndicatorPolicy__DontShowIndicatorWhenChildless QTreeWidgetItem__ChildIndicatorPolicy = 2
+)
+
 type QTreeWidgetItem struct {
 	h *C.QTreeWidgetItem
 }
@@ -259,13 +274,13 @@ func (this *QTreeWidgetItem) IsDisabled() bool {
 	return (bool)(ret)
 }
 
-func (this *QTreeWidgetItem) SetChildIndicatorPolicy(policy uintptr) {
+func (this *QTreeWidgetItem) SetChildIndicatorPolicy(policy QTreeWidgetItem__ChildIndicatorPolicy) {
 	C.QTreeWidgetItem_SetChildIndicatorPolicy(this.h, (C.uintptr_t)(policy))
 }
 
-func (this *QTreeWidgetItem) ChildIndicatorPolicy() uintptr {
+func (this *QTreeWidgetItem) ChildIndicatorPolicy() QTreeWidgetItem__ChildIndicatorPolicy {
 	ret := C.QTreeWidgetItem_ChildIndicatorPolicy(this.h)
-	return (uintptr)(ret)
+	return (QTreeWidgetItem__ChildIndicatorPolicy)(ret)
 }
 
 func (this *QTreeWidgetItem) Flags() int {
@@ -436,12 +451,12 @@ func (this *QTreeWidgetItem) SetForeground(column int, brush *QBrush) {
 	C.QTreeWidgetItem_SetForeground(this.h, (C.int)(column), brush.cPointer())
 }
 
-func (this *QTreeWidgetItem) CheckState(column int) uintptr {
+func (this *QTreeWidgetItem) CheckState(column int) CheckState {
 	ret := C.QTreeWidgetItem_CheckState(this.h, (C.int)(column))
-	return (uintptr)(ret)
+	return (CheckState)(ret)
 }
 
-func (this *QTreeWidgetItem) SetCheckState(column int, state uintptr) {
+func (this *QTreeWidgetItem) SetCheckState(column int, state CheckState) {
 	C.QTreeWidgetItem_SetCheckState(this.h, (C.int)(column), (C.uintptr_t)(state))
 }
 
@@ -572,7 +587,7 @@ func (this *QTreeWidgetItem) Type() int {
 	return (int)(ret)
 }
 
-func (this *QTreeWidgetItem) SortChildren(column int, order uintptr) {
+func (this *QTreeWidgetItem) SortChildren(column int, order SortOrder) {
 	C.QTreeWidgetItem_SortChildren(this.h, (C.int)(column), (C.uintptr_t)(order))
 }
 
@@ -782,7 +797,7 @@ func (this *QTreeWidget) SortColumn() int {
 	return (int)(ret)
 }
 
-func (this *QTreeWidget) SortItems(column int, order uintptr) {
+func (this *QTreeWidget) SortItems(column int, order SortOrder) {
 	C.QTreeWidget_SortItems(this.h, (C.int)(column), (C.uintptr_t)(order))
 }
 
@@ -1114,7 +1129,7 @@ func (this *QTreeWidget) FindItems3(text string, flags int, column int) []*QTree
 	return ret
 }
 
-func (this *QTreeWidget) ScrollToItem2(item *QTreeWidgetItem, hint uintptr) {
+func (this *QTreeWidget) ScrollToItem2(item *QTreeWidgetItem, hint QAbstractItemView__ScrollHint) {
 	C.QTreeWidget_ScrollToItem2(this.h, item.cPointer(), (C.uintptr_t)(hint))
 }
 

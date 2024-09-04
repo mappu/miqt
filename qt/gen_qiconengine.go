@@ -13,6 +13,15 @@ import (
 	"unsafe"
 )
 
+type QIconEngine__IconEngineHook int
+
+const (
+	QIconEngine__IconEngineHook__AvailableSizesHook QIconEngine__IconEngineHook = 1
+	QIconEngine__IconEngineHook__IconNameHook       QIconEngine__IconEngineHook = 2
+	QIconEngine__IconEngineHook__IsNullHook         QIconEngine__IconEngineHook = 3
+	QIconEngine__IconEngineHook__ScaledPixmapHook   QIconEngine__IconEngineHook = 4
+)
+
 type QIconEngine struct {
 	h *C.QIconEngine
 }
@@ -35,11 +44,11 @@ func newQIconEngine_U(h unsafe.Pointer) *QIconEngine {
 	return newQIconEngine((*C.QIconEngine)(h))
 }
 
-func (this *QIconEngine) Paint(painter *QPainter, rect *QRect, mode uintptr, state uintptr) {
+func (this *QIconEngine) Paint(painter *QPainter, rect *QRect, mode QIcon__Mode, state QIcon__State) {
 	C.QIconEngine_Paint(this.h, painter.cPointer(), rect.cPointer(), (C.uintptr_t)(mode), (C.uintptr_t)(state))
 }
 
-func (this *QIconEngine) ActualSize(size *QSize, mode uintptr, state uintptr) *QSize {
+func (this *QIconEngine) ActualSize(size *QSize, mode QIcon__Mode, state QIcon__State) *QSize {
 	ret := C.QIconEngine_ActualSize(this.h, size.cPointer(), (C.uintptr_t)(mode), (C.uintptr_t)(state))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQSize(ret)
@@ -50,7 +59,7 @@ func (this *QIconEngine) ActualSize(size *QSize, mode uintptr, state uintptr) *Q
 	return ret1
 }
 
-func (this *QIconEngine) Pixmap(size *QSize, mode uintptr, state uintptr) *QPixmap {
+func (this *QIconEngine) Pixmap(size *QSize, mode QIcon__Mode, state QIcon__State) *QPixmap {
 	ret := C.QIconEngine_Pixmap(this.h, size.cPointer(), (C.uintptr_t)(mode), (C.uintptr_t)(state))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQPixmap(ret)
@@ -61,11 +70,11 @@ func (this *QIconEngine) Pixmap(size *QSize, mode uintptr, state uintptr) *QPixm
 	return ret1
 }
 
-func (this *QIconEngine) AddPixmap(pixmap *QPixmap, mode uintptr, state uintptr) {
+func (this *QIconEngine) AddPixmap(pixmap *QPixmap, mode QIcon__Mode, state QIcon__State) {
 	C.QIconEngine_AddPixmap(this.h, pixmap.cPointer(), (C.uintptr_t)(mode), (C.uintptr_t)(state))
 }
 
-func (this *QIconEngine) AddFile(fileName string, size *QSize, mode uintptr, state uintptr) {
+func (this *QIconEngine) AddFile(fileName string, size *QSize, mode QIcon__Mode, state QIcon__State) {
 	fileName_Cstring := C.CString(fileName)
 	defer C.free(unsafe.Pointer(fileName_Cstring))
 	C.QIconEngine_AddFile(this.h, fileName_Cstring, C.size_t(len(fileName)), size.cPointer(), (C.uintptr_t)(mode), (C.uintptr_t)(state))
@@ -122,7 +131,7 @@ func (this *QIconEngine) IsNull() bool {
 	return (bool)(ret)
 }
 
-func (this *QIconEngine) ScaledPixmap(size *QSize, mode uintptr, state uintptr, scale float64) *QPixmap {
+func (this *QIconEngine) ScaledPixmap(size *QSize, mode QIcon__Mode, state QIcon__State, scale float64) *QPixmap {
 	ret := C.QIconEngine_ScaledPixmap(this.h, size.cPointer(), (C.uintptr_t)(mode), (C.uintptr_t)(state), (C.double)(scale))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQPixmap(ret)
@@ -133,7 +142,7 @@ func (this *QIconEngine) ScaledPixmap(size *QSize, mode uintptr, state uintptr, 
 	return ret1
 }
 
-func (this *QIconEngine) AvailableSizes1(mode uintptr) []QSize {
+func (this *QIconEngine) AvailableSizes1(mode QIcon__Mode) []QSize {
 	var _out **C.QSize = nil
 	var _out_len C.size_t = 0
 	C.QIconEngine_AvailableSizes1(this.h, (C.uintptr_t)(mode), &_out, &_out_len)
@@ -146,7 +155,7 @@ func (this *QIconEngine) AvailableSizes1(mode uintptr) []QSize {
 	return ret
 }
 
-func (this *QIconEngine) AvailableSizes2(mode uintptr, state uintptr) []QSize {
+func (this *QIconEngine) AvailableSizes2(mode QIcon__Mode, state QIcon__State) []QSize {
 	var _out **C.QSize = nil
 	var _out_len C.size_t = 0
 	C.QIconEngine_AvailableSizes2(this.h, (C.uintptr_t)(mode), (C.uintptr_t)(state), &_out, &_out_len)

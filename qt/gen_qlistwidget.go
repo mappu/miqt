@@ -14,6 +14,13 @@ import (
 	"unsafe"
 )
 
+type QListWidgetItem__ItemType int
+
+const (
+	QListWidgetItem__ItemType__Type     QListWidgetItem__ItemType = 0
+	QListWidgetItem__ItemType__UserType QListWidgetItem__ItemType = 1000
+)
+
 type QListWidgetItem struct {
 	h *C.QListWidgetItem
 }
@@ -304,12 +311,12 @@ func (this *QListWidgetItem) SetForeground(brush *QBrush) {
 	C.QListWidgetItem_SetForeground(this.h, brush.cPointer())
 }
 
-func (this *QListWidgetItem) CheckState() uintptr {
+func (this *QListWidgetItem) CheckState() CheckState {
 	ret := C.QListWidgetItem_CheckState(this.h)
-	return (uintptr)(ret)
+	return (CheckState)(ret)
 }
 
-func (this *QListWidgetItem) SetCheckState(state uintptr) {
+func (this *QListWidgetItem) SetCheckState(state CheckState) {
 	C.QListWidgetItem_SetCheckState(this.h, (C.uintptr_t)(state))
 }
 
@@ -827,11 +834,11 @@ func QListWidget_TrUtf83(s string, c string, n int) string {
 	return ret
 }
 
-func (this *QListWidget) SortItems1(order uintptr) {
+func (this *QListWidget) SortItems1(order SortOrder) {
 	C.QListWidget_SortItems1(this.h, (C.uintptr_t)(order))
 }
 
-func (this *QListWidget) ScrollToItem2(item *QListWidgetItem, hint uintptr) {
+func (this *QListWidget) ScrollToItem2(item *QListWidgetItem, hint QAbstractItemView__ScrollHint) {
 	C.QListWidget_ScrollToItem2(this.h, item.cPointer(), (C.uintptr_t)(hint))
 }
 

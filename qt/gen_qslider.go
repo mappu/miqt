@@ -13,6 +13,17 @@ import (
 	"unsafe"
 )
 
+type QSlider__TickPosition int
+
+const (
+	QSlider__TickPosition__NoTicks        QSlider__TickPosition = 0
+	QSlider__TickPosition__TicksAbove     QSlider__TickPosition = 1
+	QSlider__TickPosition__TicksLeft      QSlider__TickPosition = 1
+	QSlider__TickPosition__TicksBelow     QSlider__TickPosition = 2
+	QSlider__TickPosition__TicksRight     QSlider__TickPosition = 2
+	QSlider__TickPosition__TicksBothSides QSlider__TickPosition = 3
+)
+
 type QSlider struct {
 	h *C.QSlider
 	*QAbstractSlider
@@ -43,7 +54,7 @@ func NewQSlider() *QSlider {
 }
 
 // NewQSlider2 constructs a new QSlider object.
-func NewQSlider2(orientation uintptr) *QSlider {
+func NewQSlider2(orientation Orientation) *QSlider {
 	ret := C.QSlider_new2((C.uintptr_t)(orientation))
 	return newQSlider(ret)
 }
@@ -55,7 +66,7 @@ func NewQSlider3(parent *QWidget) *QSlider {
 }
 
 // NewQSlider4 constructs a new QSlider object.
-func NewQSlider4(orientation uintptr, parent *QWidget) *QSlider {
+func NewQSlider4(orientation Orientation, parent *QWidget) *QSlider {
 	ret := C.QSlider_new4((C.uintptr_t)(orientation), parent.cPointer())
 	return newQSlider(ret)
 }
@@ -109,13 +120,13 @@ func (this *QSlider) MinimumSizeHint() *QSize {
 	return ret1
 }
 
-func (this *QSlider) SetTickPosition(position uintptr) {
+func (this *QSlider) SetTickPosition(position QSlider__TickPosition) {
 	C.QSlider_SetTickPosition(this.h, (C.uintptr_t)(position))
 }
 
-func (this *QSlider) TickPosition() uintptr {
+func (this *QSlider) TickPosition() QSlider__TickPosition {
 	ret := C.QSlider_TickPosition(this.h)
-	return (uintptr)(ret)
+	return (QSlider__TickPosition)(ret)
 }
 
 func (this *QSlider) SetTickInterval(ti int) {

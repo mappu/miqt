@@ -13,6 +13,47 @@ import (
 	"unsafe"
 )
 
+type QSizePolicy__PolicyFlag int
+
+const (
+	QSizePolicy__PolicyFlag__GrowFlag   QSizePolicy__PolicyFlag = 1
+	QSizePolicy__PolicyFlag__ExpandFlag QSizePolicy__PolicyFlag = 2
+	QSizePolicy__PolicyFlag__ShrinkFlag QSizePolicy__PolicyFlag = 4
+	QSizePolicy__PolicyFlag__IgnoreFlag QSizePolicy__PolicyFlag = 8
+)
+
+type QSizePolicy__Policy int
+
+const (
+	QSizePolicy__Policy__Fixed            QSizePolicy__Policy = 0
+	QSizePolicy__Policy__Minimum          QSizePolicy__Policy = 1
+	QSizePolicy__Policy__Maximum          QSizePolicy__Policy = 4
+	QSizePolicy__Policy__Preferred        QSizePolicy__Policy = 5
+	QSizePolicy__Policy__MinimumExpanding QSizePolicy__Policy = 3
+	QSizePolicy__Policy__Expanding        QSizePolicy__Policy = 7
+	QSizePolicy__Policy__Ignored          QSizePolicy__Policy = 13
+)
+
+type QSizePolicy__ControlType int
+
+const (
+	QSizePolicy__ControlType__DefaultType QSizePolicy__ControlType = 1
+	QSizePolicy__ControlType__ButtonBox   QSizePolicy__ControlType = 2
+	QSizePolicy__ControlType__CheckBox    QSizePolicy__ControlType = 4
+	QSizePolicy__ControlType__ComboBox    QSizePolicy__ControlType = 8
+	QSizePolicy__ControlType__Frame       QSizePolicy__ControlType = 16
+	QSizePolicy__ControlType__GroupBox    QSizePolicy__ControlType = 32
+	QSizePolicy__ControlType__Label       QSizePolicy__ControlType = 64
+	QSizePolicy__ControlType__Line        QSizePolicy__ControlType = 128
+	QSizePolicy__ControlType__LineEdit    QSizePolicy__ControlType = 256
+	QSizePolicy__ControlType__PushButton  QSizePolicy__ControlType = 512
+	QSizePolicy__ControlType__RadioButton QSizePolicy__ControlType = 1024
+	QSizePolicy__ControlType__Slider      QSizePolicy__ControlType = 2048
+	QSizePolicy__ControlType__SpinBox     QSizePolicy__ControlType = 4096
+	QSizePolicy__ControlType__TabWidget   QSizePolicy__ControlType = 8192
+	QSizePolicy__ControlType__ToolButton  QSizePolicy__ControlType = 16384
+)
+
 type QSizePolicy struct {
 	h *C.QSizePolicy
 }
@@ -42,7 +83,7 @@ func NewQSizePolicy() *QSizePolicy {
 }
 
 // NewQSizePolicy2 constructs a new QSizePolicy object.
-func NewQSizePolicy2(horizontal uintptr, vertical uintptr) *QSizePolicy {
+func NewQSizePolicy2(horizontal QSizePolicy__Policy, vertical QSizePolicy__Policy) *QSizePolicy {
 	ret := C.QSizePolicy_new2((C.uintptr_t)(horizontal), (C.uintptr_t)(vertical))
 	return newQSizePolicy(ret)
 }
@@ -54,35 +95,35 @@ func NewQSizePolicy3(param1 *QSizePolicy) *QSizePolicy {
 }
 
 // NewQSizePolicy4 constructs a new QSizePolicy object.
-func NewQSizePolicy4(horizontal uintptr, vertical uintptr, typeVal uintptr) *QSizePolicy {
+func NewQSizePolicy4(horizontal QSizePolicy__Policy, vertical QSizePolicy__Policy, typeVal QSizePolicy__ControlType) *QSizePolicy {
 	ret := C.QSizePolicy_new4((C.uintptr_t)(horizontal), (C.uintptr_t)(vertical), (C.uintptr_t)(typeVal))
 	return newQSizePolicy(ret)
 }
 
-func (this *QSizePolicy) HorizontalPolicy() uintptr {
+func (this *QSizePolicy) HorizontalPolicy() QSizePolicy__Policy {
 	ret := C.QSizePolicy_HorizontalPolicy(this.h)
-	return (uintptr)(ret)
+	return (QSizePolicy__Policy)(ret)
 }
 
-func (this *QSizePolicy) VerticalPolicy() uintptr {
+func (this *QSizePolicy) VerticalPolicy() QSizePolicy__Policy {
 	ret := C.QSizePolicy_VerticalPolicy(this.h)
-	return (uintptr)(ret)
+	return (QSizePolicy__Policy)(ret)
 }
 
-func (this *QSizePolicy) ControlType() uintptr {
+func (this *QSizePolicy) ControlType() QSizePolicy__ControlType {
 	ret := C.QSizePolicy_ControlType(this.h)
-	return (uintptr)(ret)
+	return (QSizePolicy__ControlType)(ret)
 }
 
-func (this *QSizePolicy) SetHorizontalPolicy(d uintptr) {
+func (this *QSizePolicy) SetHorizontalPolicy(d QSizePolicy__Policy) {
 	C.QSizePolicy_SetHorizontalPolicy(this.h, (C.uintptr_t)(d))
 }
 
-func (this *QSizePolicy) SetVerticalPolicy(d uintptr) {
+func (this *QSizePolicy) SetVerticalPolicy(d QSizePolicy__Policy) {
 	C.QSizePolicy_SetVerticalPolicy(this.h, (C.uintptr_t)(d))
 }
 
-func (this *QSizePolicy) SetControlType(typeVal uintptr) {
+func (this *QSizePolicy) SetControlType(typeVal QSizePolicy__ControlType) {
 	C.QSizePolicy_SetControlType(this.h, (C.uintptr_t)(typeVal))
 }
 

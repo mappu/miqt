@@ -14,6 +14,24 @@ import (
 	"unsafe"
 )
 
+type QWindow__Visibility int
+
+const (
+	QWindow__Visibility__Hidden              QWindow__Visibility = 0
+	QWindow__Visibility__AutomaticVisibility QWindow__Visibility = 1
+	QWindow__Visibility__Windowed            QWindow__Visibility = 2
+	QWindow__Visibility__Minimized           QWindow__Visibility = 3
+	QWindow__Visibility__Maximized           QWindow__Visibility = 4
+	QWindow__Visibility__FullScreen          QWindow__Visibility = 5
+)
+
+type QWindow__AncestorMode int
+
+const (
+	QWindow__AncestorMode__ExcludeTransients QWindow__AncestorMode = 0
+	QWindow__AncestorMode__IncludeTransients QWindow__AncestorMode = 1
+)
+
 type QWindow struct {
 	h *C.QWindow
 	*QObject
@@ -83,13 +101,13 @@ func QWindow_TrUtf8(s string) string {
 	return ret
 }
 
-func (this *QWindow) SetSurfaceType(surfaceType uintptr) {
+func (this *QWindow) SetSurfaceType(surfaceType QSurface__SurfaceType) {
 	C.QWindow_SetSurfaceType(this.h, (C.uintptr_t)(surfaceType))
 }
 
-func (this *QWindow) SurfaceType() uintptr {
+func (this *QWindow) SurfaceType() QSurface__SurfaceType {
 	ret := C.QWindow_SurfaceType(this.h)
-	return (uintptr)(ret)
+	return (QSurface__SurfaceType)(ret)
 }
 
 func (this *QWindow) IsVisible() bool {
@@ -97,12 +115,12 @@ func (this *QWindow) IsVisible() bool {
 	return (bool)(ret)
 }
 
-func (this *QWindow) Visibility() uintptr {
+func (this *QWindow) Visibility() QWindow__Visibility {
 	ret := C.QWindow_Visibility(this.h)
-	return (uintptr)(ret)
+	return (QWindow__Visibility)(ret)
 }
 
-func (this *QWindow) SetVisibility(v uintptr) {
+func (this *QWindow) SetVisibility(v QWindow__Visibility) {
 	C.QWindow_SetVisibility(this.h, (C.uintptr_t)(v))
 }
 
@@ -115,7 +133,7 @@ func (this *QWindow) WinId() uintptr {
 	return (uintptr)(ret)
 }
 
-func (this *QWindow) Parent(mode uintptr) *QWindow {
+func (this *QWindow) Parent(mode QWindow__AncestorMode) *QWindow {
 	ret := C.QWindow_Parent(this.h, (C.uintptr_t)(mode))
 	return newQWindow_U(unsafe.Pointer(ret))
 }
@@ -139,12 +157,12 @@ func (this *QWindow) IsModal() bool {
 	return (bool)(ret)
 }
 
-func (this *QWindow) Modality() uintptr {
+func (this *QWindow) Modality() WindowModality {
 	ret := C.QWindow_Modality(this.h)
-	return (uintptr)(ret)
+	return (WindowModality)(ret)
 }
 
-func (this *QWindow) SetModality(modality uintptr) {
+func (this *QWindow) SetModality(modality WindowModality) {
 	C.QWindow_SetModality(this.h, (C.uintptr_t)(modality))
 }
 
@@ -183,13 +201,13 @@ func (this *QWindow) Flags() int {
 	return (int)(ret)
 }
 
-func (this *QWindow) SetFlag(param1 uintptr) {
+func (this *QWindow) SetFlag(param1 WindowType) {
 	C.QWindow_SetFlag(this.h, (C.uintptr_t)(param1))
 }
 
-func (this *QWindow) Type() uintptr {
+func (this *QWindow) Type() WindowType {
 	ret := C.QWindow_Type(this.h)
-	return (uintptr)(ret)
+	return (WindowType)(ret)
 }
 
 func (this *QWindow) Title() string {
@@ -230,13 +248,13 @@ func (this *QWindow) IsActive() bool {
 	return (bool)(ret)
 }
 
-func (this *QWindow) ReportContentOrientationChange(orientation uintptr) {
+func (this *QWindow) ReportContentOrientationChange(orientation ScreenOrientation) {
 	C.QWindow_ReportContentOrientationChange(this.h, (C.uintptr_t)(orientation))
 }
 
-func (this *QWindow) ContentOrientation() uintptr {
+func (this *QWindow) ContentOrientation() ScreenOrientation {
 	ret := C.QWindow_ContentOrientation(this.h)
-	return (uintptr)(ret)
+	return (ScreenOrientation)(ret)
 }
 
 func (this *QWindow) DevicePixelRatio() float64 {
@@ -244,9 +262,9 @@ func (this *QWindow) DevicePixelRatio() float64 {
 	return (float64)(ret)
 }
 
-func (this *QWindow) WindowState() uintptr {
+func (this *QWindow) WindowState() WindowState {
 	ret := C.QWindow_WindowState(this.h)
-	return (uintptr)(ret)
+	return (WindowState)(ret)
 }
 
 func (this *QWindow) WindowStates() int {
@@ -254,7 +272,7 @@ func (this *QWindow) WindowStates() int {
 	return (int)(ret)
 }
 
-func (this *QWindow) SetWindowState(state uintptr) {
+func (this *QWindow) SetWindowState(state WindowState) {
 	C.QWindow_SetWindowState(this.h, (C.uintptr_t)(state))
 }
 
@@ -697,7 +715,7 @@ func (this *QWindow) OnScreenChanged(slot func()) {
 	C.QWindow_connect_ScreenChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
 }
 
-func (this *QWindow) ModalityChanged(modality uintptr) {
+func (this *QWindow) ModalityChanged(modality WindowModality) {
 	C.QWindow_ModalityChanged(this.h, (C.uintptr_t)(modality))
 }
 
@@ -709,7 +727,7 @@ func (this *QWindow) OnModalityChanged(slot func()) {
 	C.QWindow_connect_ModalityChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
 }
 
-func (this *QWindow) WindowStateChanged(windowState uintptr) {
+func (this *QWindow) WindowStateChanged(windowState WindowState) {
 	C.QWindow_WindowStateChanged(this.h, (C.uintptr_t)(windowState))
 }
 
@@ -843,7 +861,7 @@ func (this *QWindow) OnVisibleChanged(slot func()) {
 	C.QWindow_connect_VisibleChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
 }
 
-func (this *QWindow) VisibilityChanged(visibility uintptr) {
+func (this *QWindow) VisibilityChanged(visibility QWindow__Visibility) {
 	C.QWindow_VisibilityChanged(this.h, (C.uintptr_t)(visibility))
 }
 
@@ -867,7 +885,7 @@ func (this *QWindow) OnActiveChanged(slot func()) {
 	C.QWindow_connect_ActiveChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
 }
 
-func (this *QWindow) ContentOrientationChanged(orientation uintptr) {
+func (this *QWindow) ContentOrientationChanged(orientation ScreenOrientation) {
 	C.QWindow_ContentOrientationChanged(this.h, (C.uintptr_t)(orientation))
 }
 
@@ -967,11 +985,11 @@ func QWindow_TrUtf83(s string, c string, n int) string {
 	return ret
 }
 
-func (this *QWindow) SetFlag2(param1 uintptr, on bool) {
+func (this *QWindow) SetFlag2(param1 WindowType, on bool) {
 	C.QWindow_SetFlag2(this.h, (C.uintptr_t)(param1), (C.bool)(on))
 }
 
-func (this *QWindow) IsAncestorOf2(child *QWindow, mode uintptr) bool {
+func (this *QWindow) IsAncestorOf2(child *QWindow, mode QWindow__AncestorMode) bool {
 	ret := C.QWindow_IsAncestorOf2(this.h, child.cPointer(), (C.uintptr_t)(mode))
 	return (bool)(ret)
 }

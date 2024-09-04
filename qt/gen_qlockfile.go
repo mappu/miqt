@@ -12,6 +12,15 @@ import (
 	"unsafe"
 )
 
+type QLockFile__LockError int
+
+const (
+	QLockFile__LockError__NoError         QLockFile__LockError = 0
+	QLockFile__LockError__LockFailedError QLockFile__LockError = 1
+	QLockFile__LockError__PermissionError QLockFile__LockError = 2
+	QLockFile__LockError__UnknownError    QLockFile__LockError = 3
+)
+
 type QLockFile struct {
 	h *C.QLockFile
 }
@@ -75,9 +84,9 @@ func (this *QLockFile) RemoveStaleLockFile() bool {
 	return (bool)(ret)
 }
 
-func (this *QLockFile) Error() uintptr {
+func (this *QLockFile) Error() QLockFile__LockError {
 	ret := C.QLockFile_Error(this.h)
-	return (uintptr)(ret)
+	return (QLockFile__LockError)(ret)
 }
 
 func (this *QLockFile) TryLock1(timeout int) bool {

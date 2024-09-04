@@ -43,7 +43,7 @@ func NewQGraphicsLinearLayout() *QGraphicsLinearLayout {
 }
 
 // NewQGraphicsLinearLayout2 constructs a new QGraphicsLinearLayout object.
-func NewQGraphicsLinearLayout2(orientation uintptr) *QGraphicsLinearLayout {
+func NewQGraphicsLinearLayout2(orientation Orientation) *QGraphicsLinearLayout {
 	ret := C.QGraphicsLinearLayout_new2((C.uintptr_t)(orientation))
 	return newQGraphicsLinearLayout(ret)
 }
@@ -55,18 +55,18 @@ func NewQGraphicsLinearLayout3(parent *QGraphicsLayoutItem) *QGraphicsLinearLayo
 }
 
 // NewQGraphicsLinearLayout4 constructs a new QGraphicsLinearLayout object.
-func NewQGraphicsLinearLayout4(orientation uintptr, parent *QGraphicsLayoutItem) *QGraphicsLinearLayout {
+func NewQGraphicsLinearLayout4(orientation Orientation, parent *QGraphicsLayoutItem) *QGraphicsLinearLayout {
 	ret := C.QGraphicsLinearLayout_new4((C.uintptr_t)(orientation), parent.cPointer())
 	return newQGraphicsLinearLayout(ret)
 }
 
-func (this *QGraphicsLinearLayout) SetOrientation(orientation uintptr) {
+func (this *QGraphicsLinearLayout) SetOrientation(orientation Orientation) {
 	C.QGraphicsLinearLayout_SetOrientation(this.h, (C.uintptr_t)(orientation))
 }
 
-func (this *QGraphicsLinearLayout) Orientation() uintptr {
+func (this *QGraphicsLinearLayout) Orientation() Orientation {
 	ret := C.QGraphicsLinearLayout_Orientation(this.h)
-	return (uintptr)(ret)
+	return (Orientation)(ret)
 }
 
 func (this *QGraphicsLinearLayout) AddItem(item *QGraphicsLayoutItem) {
@@ -147,7 +147,7 @@ func (this *QGraphicsLinearLayout) Invalidate() {
 	C.QGraphicsLinearLayout_Invalidate(this.h)
 }
 
-func (this *QGraphicsLinearLayout) SizeHint(which uintptr) *QSizeF {
+func (this *QGraphicsLinearLayout) SizeHint(which SizeHint) *QSizeF {
 	ret := C.QGraphicsLinearLayout_SizeHint(this.h, (C.uintptr_t)(which))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQSizeF(ret)
@@ -170,7 +170,7 @@ func (this *QGraphicsLinearLayout) InsertStretch2(index int, stretch int) {
 	C.QGraphicsLinearLayout_InsertStretch2(this.h, (C.int)(index), (C.int)(stretch))
 }
 
-func (this *QGraphicsLinearLayout) SizeHint2(which uintptr, constraint *QSizeF) *QSizeF {
+func (this *QGraphicsLinearLayout) SizeHint2(which SizeHint, constraint *QSizeF) *QSizeF {
 	ret := C.QGraphicsLinearLayout_SizeHint2(this.h, (C.uintptr_t)(which), constraint.cPointer())
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQSizeF(ret)

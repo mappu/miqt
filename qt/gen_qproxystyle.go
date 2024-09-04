@@ -92,15 +92,15 @@ func (this *QProxyStyle) SetBaseStyle(style *QStyle) {
 	C.QProxyStyle_SetBaseStyle(this.h, style.cPointer())
 }
 
-func (this *QProxyStyle) DrawPrimitive(element uintptr, option *QStyleOption, painter *QPainter) {
+func (this *QProxyStyle) DrawPrimitive(element QStyle__PrimitiveElement, option *QStyleOption, painter *QPainter) {
 	C.QProxyStyle_DrawPrimitive(this.h, (C.uintptr_t)(element), option.cPointer(), painter.cPointer())
 }
 
-func (this *QProxyStyle) DrawControl(element uintptr, option *QStyleOption, painter *QPainter) {
+func (this *QProxyStyle) DrawControl(element QStyle__ControlElement, option *QStyleOption, painter *QPainter) {
 	C.QProxyStyle_DrawControl(this.h, (C.uintptr_t)(element), option.cPointer(), painter.cPointer())
 }
 
-func (this *QProxyStyle) DrawComplexControl(control uintptr, option *QStyleOptionComplex, painter *QPainter) {
+func (this *QProxyStyle) DrawComplexControl(control QStyle__ComplexControl, option *QStyleOptionComplex, painter *QPainter) {
 	C.QProxyStyle_DrawComplexControl(this.h, (C.uintptr_t)(control), option.cPointer(), painter.cPointer())
 }
 
@@ -114,7 +114,7 @@ func (this *QProxyStyle) DrawItemPixmap(painter *QPainter, rect *QRect, alignmen
 	C.QProxyStyle_DrawItemPixmap(this.h, painter.cPointer(), rect.cPointer(), (C.int)(alignment), pixmap.cPointer())
 }
 
-func (this *QProxyStyle) SizeFromContents(typeVal uintptr, option *QStyleOption, size *QSize, widget *QWidget) *QSize {
+func (this *QProxyStyle) SizeFromContents(typeVal QStyle__ContentsType, option *QStyleOption, size *QSize, widget *QWidget) *QSize {
 	ret := C.QProxyStyle_SizeFromContents(this.h, (C.uintptr_t)(typeVal), option.cPointer(), size.cPointer(), widget.cPointer())
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQSize(ret)
@@ -125,7 +125,7 @@ func (this *QProxyStyle) SizeFromContents(typeVal uintptr, option *QStyleOption,
 	return ret1
 }
 
-func (this *QProxyStyle) SubElementRect(element uintptr, option *QStyleOption, widget *QWidget) *QRect {
+func (this *QProxyStyle) SubElementRect(element QStyle__SubElement, option *QStyleOption, widget *QWidget) *QRect {
 	ret := C.QProxyStyle_SubElementRect(this.h, (C.uintptr_t)(element), option.cPointer(), widget.cPointer())
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQRect(ret)
@@ -136,7 +136,7 @@ func (this *QProxyStyle) SubElementRect(element uintptr, option *QStyleOption, w
 	return ret1
 }
 
-func (this *QProxyStyle) SubControlRect(cc uintptr, opt *QStyleOptionComplex, sc uintptr, widget *QWidget) *QRect {
+func (this *QProxyStyle) SubControlRect(cc QStyle__ComplexControl, opt *QStyleOptionComplex, sc QStyle__SubControl, widget *QWidget) *QRect {
 	ret := C.QProxyStyle_SubControlRect(this.h, (C.uintptr_t)(cc), opt.cPointer(), (C.uintptr_t)(sc), widget.cPointer())
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQRect(ret)
@@ -171,27 +171,27 @@ func (this *QProxyStyle) ItemPixmapRect(r *QRect, flags int, pixmap *QPixmap) *Q
 	return ret1
 }
 
-func (this *QProxyStyle) HitTestComplexControl(control uintptr, option *QStyleOptionComplex, pos *QPoint) uintptr {
+func (this *QProxyStyle) HitTestComplexControl(control QStyle__ComplexControl, option *QStyleOptionComplex, pos *QPoint) QStyle__SubControl {
 	ret := C.QProxyStyle_HitTestComplexControl(this.h, (C.uintptr_t)(control), option.cPointer(), pos.cPointer())
-	return (uintptr)(ret)
+	return (QStyle__SubControl)(ret)
 }
 
-func (this *QProxyStyle) StyleHint(hint uintptr) int {
+func (this *QProxyStyle) StyleHint(hint QStyle__StyleHint) int {
 	ret := C.QProxyStyle_StyleHint(this.h, (C.uintptr_t)(hint))
 	return (int)(ret)
 }
 
-func (this *QProxyStyle) PixelMetric(metric uintptr) int {
+func (this *QProxyStyle) PixelMetric(metric QStyle__PixelMetric) int {
 	ret := C.QProxyStyle_PixelMetric(this.h, (C.uintptr_t)(metric))
 	return (int)(ret)
 }
 
-func (this *QProxyStyle) LayoutSpacing(control1 uintptr, control2 uintptr, orientation uintptr) int {
+func (this *QProxyStyle) LayoutSpacing(control1 QSizePolicy__ControlType, control2 QSizePolicy__ControlType, orientation Orientation) int {
 	ret := C.QProxyStyle_LayoutSpacing(this.h, (C.uintptr_t)(control1), (C.uintptr_t)(control2), (C.uintptr_t)(orientation))
 	return (int)(ret)
 }
 
-func (this *QProxyStyle) StandardIcon(standardIcon uintptr) *QIcon {
+func (this *QProxyStyle) StandardIcon(standardIcon QStyle__StandardPixmap) *QIcon {
 	ret := C.QProxyStyle_StandardIcon(this.h, (C.uintptr_t)(standardIcon))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQIcon(ret)
@@ -202,7 +202,7 @@ func (this *QProxyStyle) StandardIcon(standardIcon uintptr) *QIcon {
 	return ret1
 }
 
-func (this *QProxyStyle) StandardPixmap(standardPixmap uintptr, opt *QStyleOption) *QPixmap {
+func (this *QProxyStyle) StandardPixmap(standardPixmap QStyle__StandardPixmap, opt *QStyleOption) *QPixmap {
 	ret := C.QProxyStyle_StandardPixmap(this.h, (C.uintptr_t)(standardPixmap), opt.cPointer())
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQPixmap(ret)
@@ -213,7 +213,7 @@ func (this *QProxyStyle) StandardPixmap(standardPixmap uintptr, opt *QStyleOptio
 	return ret1
 }
 
-func (this *QProxyStyle) GeneratedIconPixmap(iconMode uintptr, pixmap *QPixmap, opt *QStyleOption) *QPixmap {
+func (this *QProxyStyle) GeneratedIconPixmap(iconMode QIcon__Mode, pixmap *QPixmap, opt *QStyleOption) *QPixmap {
 	ret := C.QProxyStyle_GeneratedIconPixmap(this.h, (C.uintptr_t)(iconMode), pixmap.cPointer(), opt.cPointer())
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQPixmap(ret)
@@ -307,65 +307,65 @@ func QProxyStyle_TrUtf83(s string, c string, n int) string {
 	return ret
 }
 
-func (this *QProxyStyle) DrawPrimitive4(element uintptr, option *QStyleOption, painter *QPainter, widget *QWidget) {
+func (this *QProxyStyle) DrawPrimitive4(element QStyle__PrimitiveElement, option *QStyleOption, painter *QPainter, widget *QWidget) {
 	C.QProxyStyle_DrawPrimitive4(this.h, (C.uintptr_t)(element), option.cPointer(), painter.cPointer(), widget.cPointer())
 }
 
-func (this *QProxyStyle) DrawControl4(element uintptr, option *QStyleOption, painter *QPainter, widget *QWidget) {
+func (this *QProxyStyle) DrawControl4(element QStyle__ControlElement, option *QStyleOption, painter *QPainter, widget *QWidget) {
 	C.QProxyStyle_DrawControl4(this.h, (C.uintptr_t)(element), option.cPointer(), painter.cPointer(), widget.cPointer())
 }
 
-func (this *QProxyStyle) DrawComplexControl4(control uintptr, option *QStyleOptionComplex, painter *QPainter, widget *QWidget) {
+func (this *QProxyStyle) DrawComplexControl4(control QStyle__ComplexControl, option *QStyleOptionComplex, painter *QPainter, widget *QWidget) {
 	C.QProxyStyle_DrawComplexControl4(this.h, (C.uintptr_t)(control), option.cPointer(), painter.cPointer(), widget.cPointer())
 }
 
-func (this *QProxyStyle) DrawItemText7(painter *QPainter, rect *QRect, flags int, pal *QPalette, enabled bool, text string, textRole uintptr) {
+func (this *QProxyStyle) DrawItemText7(painter *QPainter, rect *QRect, flags int, pal *QPalette, enabled bool, text string, textRole QPalette__ColorRole) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
 	C.QProxyStyle_DrawItemText7(this.h, painter.cPointer(), rect.cPointer(), (C.int)(flags), pal.cPointer(), (C.bool)(enabled), text_Cstring, C.size_t(len(text)), (C.uintptr_t)(textRole))
 }
 
-func (this *QProxyStyle) HitTestComplexControl4(control uintptr, option *QStyleOptionComplex, pos *QPoint, widget *QWidget) uintptr {
+func (this *QProxyStyle) HitTestComplexControl4(control QStyle__ComplexControl, option *QStyleOptionComplex, pos *QPoint, widget *QWidget) QStyle__SubControl {
 	ret := C.QProxyStyle_HitTestComplexControl4(this.h, (C.uintptr_t)(control), option.cPointer(), pos.cPointer(), widget.cPointer())
-	return (uintptr)(ret)
+	return (QStyle__SubControl)(ret)
 }
 
-func (this *QProxyStyle) StyleHint2(hint uintptr, option *QStyleOption) int {
+func (this *QProxyStyle) StyleHint2(hint QStyle__StyleHint, option *QStyleOption) int {
 	ret := C.QProxyStyle_StyleHint2(this.h, (C.uintptr_t)(hint), option.cPointer())
 	return (int)(ret)
 }
 
-func (this *QProxyStyle) StyleHint3(hint uintptr, option *QStyleOption, widget *QWidget) int {
+func (this *QProxyStyle) StyleHint3(hint QStyle__StyleHint, option *QStyleOption, widget *QWidget) int {
 	ret := C.QProxyStyle_StyleHint3(this.h, (C.uintptr_t)(hint), option.cPointer(), widget.cPointer())
 	return (int)(ret)
 }
 
-func (this *QProxyStyle) StyleHint4(hint uintptr, option *QStyleOption, widget *QWidget, returnData *QStyleHintReturn) int {
+func (this *QProxyStyle) StyleHint4(hint QStyle__StyleHint, option *QStyleOption, widget *QWidget, returnData *QStyleHintReturn) int {
 	ret := C.QProxyStyle_StyleHint4(this.h, (C.uintptr_t)(hint), option.cPointer(), widget.cPointer(), returnData.cPointer())
 	return (int)(ret)
 }
 
-func (this *QProxyStyle) PixelMetric2(metric uintptr, option *QStyleOption) int {
+func (this *QProxyStyle) PixelMetric2(metric QStyle__PixelMetric, option *QStyleOption) int {
 	ret := C.QProxyStyle_PixelMetric2(this.h, (C.uintptr_t)(metric), option.cPointer())
 	return (int)(ret)
 }
 
-func (this *QProxyStyle) PixelMetric3(metric uintptr, option *QStyleOption, widget *QWidget) int {
+func (this *QProxyStyle) PixelMetric3(metric QStyle__PixelMetric, option *QStyleOption, widget *QWidget) int {
 	ret := C.QProxyStyle_PixelMetric3(this.h, (C.uintptr_t)(metric), option.cPointer(), widget.cPointer())
 	return (int)(ret)
 }
 
-func (this *QProxyStyle) LayoutSpacing4(control1 uintptr, control2 uintptr, orientation uintptr, option *QStyleOption) int {
+func (this *QProxyStyle) LayoutSpacing4(control1 QSizePolicy__ControlType, control2 QSizePolicy__ControlType, orientation Orientation, option *QStyleOption) int {
 	ret := C.QProxyStyle_LayoutSpacing4(this.h, (C.uintptr_t)(control1), (C.uintptr_t)(control2), (C.uintptr_t)(orientation), option.cPointer())
 	return (int)(ret)
 }
 
-func (this *QProxyStyle) LayoutSpacing5(control1 uintptr, control2 uintptr, orientation uintptr, option *QStyleOption, widget *QWidget) int {
+func (this *QProxyStyle) LayoutSpacing5(control1 QSizePolicy__ControlType, control2 QSizePolicy__ControlType, orientation Orientation, option *QStyleOption, widget *QWidget) int {
 	ret := C.QProxyStyle_LayoutSpacing5(this.h, (C.uintptr_t)(control1), (C.uintptr_t)(control2), (C.uintptr_t)(orientation), option.cPointer(), widget.cPointer())
 	return (int)(ret)
 }
 
-func (this *QProxyStyle) StandardIcon2(standardIcon uintptr, option *QStyleOption) *QIcon {
+func (this *QProxyStyle) StandardIcon2(standardIcon QStyle__StandardPixmap, option *QStyleOption) *QIcon {
 	ret := C.QProxyStyle_StandardIcon2(this.h, (C.uintptr_t)(standardIcon), option.cPointer())
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQIcon(ret)
@@ -376,7 +376,7 @@ func (this *QProxyStyle) StandardIcon2(standardIcon uintptr, option *QStyleOptio
 	return ret1
 }
 
-func (this *QProxyStyle) StandardIcon3(standardIcon uintptr, option *QStyleOption, widget *QWidget) *QIcon {
+func (this *QProxyStyle) StandardIcon3(standardIcon QStyle__StandardPixmap, option *QStyleOption, widget *QWidget) *QIcon {
 	ret := C.QProxyStyle_StandardIcon3(this.h, (C.uintptr_t)(standardIcon), option.cPointer(), widget.cPointer())
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQIcon(ret)
@@ -387,7 +387,7 @@ func (this *QProxyStyle) StandardIcon3(standardIcon uintptr, option *QStyleOptio
 	return ret1
 }
 
-func (this *QProxyStyle) StandardPixmap3(standardPixmap uintptr, opt *QStyleOption, widget *QWidget) *QPixmap {
+func (this *QProxyStyle) StandardPixmap3(standardPixmap QStyle__StandardPixmap, opt *QStyleOption, widget *QWidget) *QPixmap {
 	ret := C.QProxyStyle_StandardPixmap3(this.h, (C.uintptr_t)(standardPixmap), opt.cPointer(), widget.cPointer())
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQPixmap(ret)

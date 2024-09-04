@@ -14,6 +14,36 @@ import (
 	"unsafe"
 )
 
+type QAbstractSpinBox__StepEnabledFlag int
+
+const (
+	QAbstractSpinBox__StepEnabledFlag__StepNone        QAbstractSpinBox__StepEnabledFlag = 0
+	QAbstractSpinBox__StepEnabledFlag__StepUpEnabled   QAbstractSpinBox__StepEnabledFlag = 1
+	QAbstractSpinBox__StepEnabledFlag__StepDownEnabled QAbstractSpinBox__StepEnabledFlag = 2
+)
+
+type QAbstractSpinBox__ButtonSymbols int
+
+const (
+	QAbstractSpinBox__ButtonSymbols__UpDownArrows QAbstractSpinBox__ButtonSymbols = 0
+	QAbstractSpinBox__ButtonSymbols__PlusMinus    QAbstractSpinBox__ButtonSymbols = 1
+	QAbstractSpinBox__ButtonSymbols__NoButtons    QAbstractSpinBox__ButtonSymbols = 2
+)
+
+type QAbstractSpinBox__CorrectionMode int
+
+const (
+	QAbstractSpinBox__CorrectionMode__CorrectToPreviousValue QAbstractSpinBox__CorrectionMode = 0
+	QAbstractSpinBox__CorrectionMode__CorrectToNearestValue  QAbstractSpinBox__CorrectionMode = 1
+)
+
+type QAbstractSpinBox__StepType int
+
+const (
+	QAbstractSpinBox__StepType__DefaultStepType         QAbstractSpinBox__StepType = 0
+	QAbstractSpinBox__StepType__AdaptiveDecimalStepType QAbstractSpinBox__StepType = 1
+)
+
 type QAbstractSpinBox struct {
 	h *C.QAbstractSpinBox
 	*QWidget
@@ -76,22 +106,22 @@ func QAbstractSpinBox_TrUtf8(s string) string {
 	return ret
 }
 
-func (this *QAbstractSpinBox) ButtonSymbols() uintptr {
+func (this *QAbstractSpinBox) ButtonSymbols() QAbstractSpinBox__ButtonSymbols {
 	ret := C.QAbstractSpinBox_ButtonSymbols(this.h)
-	return (uintptr)(ret)
+	return (QAbstractSpinBox__ButtonSymbols)(ret)
 }
 
-func (this *QAbstractSpinBox) SetButtonSymbols(bs uintptr) {
+func (this *QAbstractSpinBox) SetButtonSymbols(bs QAbstractSpinBox__ButtonSymbols) {
 	C.QAbstractSpinBox_SetButtonSymbols(this.h, (C.uintptr_t)(bs))
 }
 
-func (this *QAbstractSpinBox) SetCorrectionMode(cm uintptr) {
+func (this *QAbstractSpinBox) SetCorrectionMode(cm QAbstractSpinBox__CorrectionMode) {
 	C.QAbstractSpinBox_SetCorrectionMode(this.h, (C.uintptr_t)(cm))
 }
 
-func (this *QAbstractSpinBox) CorrectionMode() uintptr {
+func (this *QAbstractSpinBox) CorrectionMode() QAbstractSpinBox__CorrectionMode {
 	ret := C.QAbstractSpinBox_CorrectionMode(this.h)
-	return (uintptr)(ret)
+	return (QAbstractSpinBox__CorrectionMode)(ret)
 }
 
 func (this *QAbstractSpinBox) HasAcceptableInput() bool {
@@ -217,7 +247,7 @@ func (this *QAbstractSpinBox) Event(event *QEvent) bool {
 	return (bool)(ret)
 }
 
-func (this *QAbstractSpinBox) InputMethodQuery(param1 uintptr) *QVariant {
+func (this *QAbstractSpinBox) InputMethodQuery(param1 InputMethodQuery) *QVariant {
 	ret := C.QAbstractSpinBox_InputMethodQuery(this.h, (C.uintptr_t)(param1))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQVariant(ret)
@@ -228,11 +258,11 @@ func (this *QAbstractSpinBox) InputMethodQuery(param1 uintptr) *QVariant {
 	return ret1
 }
 
-func (this *QAbstractSpinBox) Validate(input string, pos *int) uintptr {
+func (this *QAbstractSpinBox) Validate(input string, pos *int) QValidator__State {
 	input_Cstring := C.CString(input)
 	defer C.free(unsafe.Pointer(input_Cstring))
 	ret := C.QAbstractSpinBox_Validate(this.h, input_Cstring, C.size_t(len(input)), (*C.int)(unsafe.Pointer(pos)))
-	return (uintptr)(ret)
+	return (QValidator__State)(ret)
 }
 
 func (this *QAbstractSpinBox) Fixup(input string) {

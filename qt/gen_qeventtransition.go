@@ -42,7 +42,7 @@ func NewQEventTransition() *QEventTransition {
 }
 
 // NewQEventTransition2 constructs a new QEventTransition object.
-func NewQEventTransition2(object *QObject, typeVal uintptr) *QEventTransition {
+func NewQEventTransition2(object *QObject, typeVal QEvent__Type) *QEventTransition {
 	ret := C.QEventTransition_new2(object.cPointer(), (C.uintptr_t)(typeVal))
 	return newQEventTransition(ret)
 }
@@ -54,7 +54,7 @@ func NewQEventTransition3(sourceState *QState) *QEventTransition {
 }
 
 // NewQEventTransition4 constructs a new QEventTransition object.
-func NewQEventTransition4(object *QObject, typeVal uintptr, sourceState *QState) *QEventTransition {
+func NewQEventTransition4(object *QObject, typeVal QEvent__Type, sourceState *QState) *QEventTransition {
 	ret := C.QEventTransition_new4(object.cPointer(), (C.uintptr_t)(typeVal), sourceState.cPointer())
 	return newQEventTransition(ret)
 }
@@ -95,12 +95,12 @@ func (this *QEventTransition) SetEventSource(object *QObject) {
 	C.QEventTransition_SetEventSource(this.h, object.cPointer())
 }
 
-func (this *QEventTransition) EventType() uintptr {
+func (this *QEventTransition) EventType() QEvent__Type {
 	ret := C.QEventTransition_EventType(this.h)
-	return (uintptr)(ret)
+	return (QEvent__Type)(ret)
 }
 
-func (this *QEventTransition) SetEventType(typeVal uintptr) {
+func (this *QEventTransition) SetEventType(typeVal QEvent__Type) {
 	C.QEventTransition_SetEventType(this.h, (C.uintptr_t)(typeVal))
 }
 

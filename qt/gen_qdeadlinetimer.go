@@ -13,6 +13,12 @@ import (
 	"unsafe"
 )
 
+type QDeadlineTimer__ForeverConstant int
+
+const (
+	QDeadlineTimer__ForeverConstant__Forever QDeadlineTimer__ForeverConstant = 0
+)
+
 type QDeadlineTimer struct {
 	h *C.QDeadlineTimer
 }
@@ -42,7 +48,7 @@ func NewQDeadlineTimer() *QDeadlineTimer {
 }
 
 // NewQDeadlineTimer2 constructs a new QDeadlineTimer object.
-func NewQDeadlineTimer2(param1 uintptr) *QDeadlineTimer {
+func NewQDeadlineTimer2(param1 QDeadlineTimer__ForeverConstant) *QDeadlineTimer {
 	ret := C.QDeadlineTimer_new2((C.uintptr_t)(param1))
 	return newQDeadlineTimer(ret)
 }
@@ -60,19 +66,19 @@ func NewQDeadlineTimer4(param1 *QDeadlineTimer) *QDeadlineTimer {
 }
 
 // NewQDeadlineTimer5 constructs a new QDeadlineTimer object.
-func NewQDeadlineTimer5(type_ uintptr) *QDeadlineTimer {
+func NewQDeadlineTimer5(type_ TimerType) *QDeadlineTimer {
 	ret := C.QDeadlineTimer_new5((C.uintptr_t)(type_))
 	return newQDeadlineTimer(ret)
 }
 
 // NewQDeadlineTimer6 constructs a new QDeadlineTimer object.
-func NewQDeadlineTimer6(param1 uintptr, type_ uintptr) *QDeadlineTimer {
+func NewQDeadlineTimer6(param1 QDeadlineTimer__ForeverConstant, type_ TimerType) *QDeadlineTimer {
 	ret := C.QDeadlineTimer_new6((C.uintptr_t)(param1), (C.uintptr_t)(type_))
 	return newQDeadlineTimer(ret)
 }
 
 // NewQDeadlineTimer7 constructs a new QDeadlineTimer object.
-func NewQDeadlineTimer7(msecs int64, typeVal uintptr) *QDeadlineTimer {
+func NewQDeadlineTimer7(msecs int64, typeVal TimerType) *QDeadlineTimer {
 	ret := C.QDeadlineTimer_new7((C.longlong)(msecs), (C.uintptr_t)(typeVal))
 	return newQDeadlineTimer(ret)
 }
@@ -91,12 +97,12 @@ func (this *QDeadlineTimer) HasExpired() bool {
 	return (bool)(ret)
 }
 
-func (this *QDeadlineTimer) TimerType() uintptr {
+func (this *QDeadlineTimer) TimerType() TimerType {
 	ret := C.QDeadlineTimer_TimerType(this.h)
-	return (uintptr)(ret)
+	return (TimerType)(ret)
 }
 
-func (this *QDeadlineTimer) SetTimerType(typeVal uintptr) {
+func (this *QDeadlineTimer) SetTimerType(typeVal TimerType) {
 	C.QDeadlineTimer_SetTimerType(this.h, (C.uintptr_t)(typeVal))
 }
 
@@ -172,7 +178,7 @@ func (this *QDeadlineTimer) OperatorAssign(param1 *QDeadlineTimer) {
 	C.QDeadlineTimer_OperatorAssign(this.h, param1.cPointer())
 }
 
-func (this *QDeadlineTimer) SetRemainingTime2(msecs int64, typeVal uintptr) {
+func (this *QDeadlineTimer) SetRemainingTime2(msecs int64, typeVal TimerType) {
 	C.QDeadlineTimer_SetRemainingTime2(this.h, (C.longlong)(msecs), (C.uintptr_t)(typeVal))
 }
 
@@ -180,11 +186,11 @@ func (this *QDeadlineTimer) SetPreciseRemainingTime2(secs int64, nsecs int64) {
 	C.QDeadlineTimer_SetPreciseRemainingTime2(this.h, (C.longlong)(secs), (C.longlong)(nsecs))
 }
 
-func (this *QDeadlineTimer) SetPreciseRemainingTime3(secs int64, nsecs int64, typeVal uintptr) {
+func (this *QDeadlineTimer) SetPreciseRemainingTime3(secs int64, nsecs int64, typeVal TimerType) {
 	C.QDeadlineTimer_SetPreciseRemainingTime3(this.h, (C.longlong)(secs), (C.longlong)(nsecs), (C.uintptr_t)(typeVal))
 }
 
-func (this *QDeadlineTimer) SetDeadline2(msecs int64, timerType uintptr) {
+func (this *QDeadlineTimer) SetDeadline2(msecs int64, timerType TimerType) {
 	C.QDeadlineTimer_SetDeadline2(this.h, (C.longlong)(msecs), (C.uintptr_t)(timerType))
 }
 
@@ -192,11 +198,11 @@ func (this *QDeadlineTimer) SetPreciseDeadline2(secs int64, nsecs int64) {
 	C.QDeadlineTimer_SetPreciseDeadline2(this.h, (C.longlong)(secs), (C.longlong)(nsecs))
 }
 
-func (this *QDeadlineTimer) SetPreciseDeadline3(secs int64, nsecs int64, typeVal uintptr) {
+func (this *QDeadlineTimer) SetPreciseDeadline3(secs int64, nsecs int64, typeVal TimerType) {
 	C.QDeadlineTimer_SetPreciseDeadline3(this.h, (C.longlong)(secs), (C.longlong)(nsecs), (C.uintptr_t)(typeVal))
 }
 
-func QDeadlineTimer_Current1(timerType uintptr) *QDeadlineTimer {
+func QDeadlineTimer_Current1(timerType TimerType) *QDeadlineTimer {
 	ret := C.QDeadlineTimer_Current1((C.uintptr_t)(timerType))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQDeadlineTimer(ret)

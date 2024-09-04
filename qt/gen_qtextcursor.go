@@ -13,6 +13,52 @@ import (
 	"unsafe"
 )
 
+type QTextCursor__MoveMode int
+
+const (
+	QTextCursor__MoveMode__MoveAnchor QTextCursor__MoveMode = 0
+	QTextCursor__MoveMode__KeepAnchor QTextCursor__MoveMode = 1
+)
+
+type QTextCursor__MoveOperation int
+
+const (
+	QTextCursor__MoveOperation__NoMove            QTextCursor__MoveOperation = 0
+	QTextCursor__MoveOperation__Start             QTextCursor__MoveOperation = 1
+	QTextCursor__MoveOperation__Up                QTextCursor__MoveOperation = 2
+	QTextCursor__MoveOperation__StartOfLine       QTextCursor__MoveOperation = 3
+	QTextCursor__MoveOperation__StartOfBlock      QTextCursor__MoveOperation = 4
+	QTextCursor__MoveOperation__StartOfWord       QTextCursor__MoveOperation = 5
+	QTextCursor__MoveOperation__PreviousBlock     QTextCursor__MoveOperation = 6
+	QTextCursor__MoveOperation__PreviousCharacter QTextCursor__MoveOperation = 7
+	QTextCursor__MoveOperation__PreviousWord      QTextCursor__MoveOperation = 8
+	QTextCursor__MoveOperation__Left              QTextCursor__MoveOperation = 9
+	QTextCursor__MoveOperation__WordLeft          QTextCursor__MoveOperation = 10
+	QTextCursor__MoveOperation__End               QTextCursor__MoveOperation = 11
+	QTextCursor__MoveOperation__Down              QTextCursor__MoveOperation = 12
+	QTextCursor__MoveOperation__EndOfLine         QTextCursor__MoveOperation = 13
+	QTextCursor__MoveOperation__EndOfWord         QTextCursor__MoveOperation = 14
+	QTextCursor__MoveOperation__EndOfBlock        QTextCursor__MoveOperation = 15
+	QTextCursor__MoveOperation__NextBlock         QTextCursor__MoveOperation = 16
+	QTextCursor__MoveOperation__NextCharacter     QTextCursor__MoveOperation = 17
+	QTextCursor__MoveOperation__NextWord          QTextCursor__MoveOperation = 18
+	QTextCursor__MoveOperation__Right             QTextCursor__MoveOperation = 19
+	QTextCursor__MoveOperation__WordRight         QTextCursor__MoveOperation = 20
+	QTextCursor__MoveOperation__NextCell          QTextCursor__MoveOperation = 21
+	QTextCursor__MoveOperation__PreviousCell      QTextCursor__MoveOperation = 22
+	QTextCursor__MoveOperation__NextRow           QTextCursor__MoveOperation = 23
+	QTextCursor__MoveOperation__PreviousRow       QTextCursor__MoveOperation = 24
+)
+
+type QTextCursor__SelectionType int
+
+const (
+	QTextCursor__SelectionType__WordUnderCursor  QTextCursor__SelectionType = 0
+	QTextCursor__SelectionType__LineUnderCursor  QTextCursor__SelectionType = 1
+	QTextCursor__SelectionType__BlockUnderCursor QTextCursor__SelectionType = 2
+	QTextCursor__SelectionType__Document         QTextCursor__SelectionType = 3
+)
+
 type QTextCursor struct {
 	h *C.QTextCursor
 }
@@ -109,7 +155,7 @@ func (this *QTextCursor) InsertText2(text string, format *QTextCharFormat) {
 	C.QTextCursor_InsertText2(this.h, text_Cstring, C.size_t(len(text)), format.cPointer())
 }
 
-func (this *QTextCursor) MovePosition(op uintptr) bool {
+func (this *QTextCursor) MovePosition(op QTextCursor__MoveOperation) bool {
 	ret := C.QTextCursor_MovePosition(this.h, (C.uintptr_t)(op))
 	return (bool)(ret)
 }
@@ -149,7 +195,7 @@ func (this *QTextCursor) DeletePreviousChar() {
 	C.QTextCursor_DeletePreviousChar(this.h)
 }
 
-func (this *QTextCursor) Select(selection uintptr) {
+func (this *QTextCursor) Select(selection QTextCursor__SelectionType) {
 	C.QTextCursor_Select(this.h, (C.uintptr_t)(selection))
 }
 
@@ -310,7 +356,7 @@ func (this *QTextCursor) InsertList(format *QTextListFormat) *QTextList {
 	return newQTextList_U(unsafe.Pointer(ret))
 }
 
-func (this *QTextCursor) InsertListWithStyle(style uintptr) *QTextList {
+func (this *QTextCursor) InsertListWithStyle(style QTextListFormat__Style) *QTextList {
 	ret := C.QTextCursor_InsertListWithStyle(this.h, (C.uintptr_t)(style))
 	return newQTextList_U(unsafe.Pointer(ret))
 }
@@ -320,7 +366,7 @@ func (this *QTextCursor) CreateList(format *QTextListFormat) *QTextList {
 	return newQTextList_U(unsafe.Pointer(ret))
 }
 
-func (this *QTextCursor) CreateListWithStyle(style uintptr) *QTextList {
+func (this *QTextCursor) CreateListWithStyle(style QTextListFormat__Style) *QTextList {
 	ret := C.QTextCursor_CreateListWithStyle(this.h, (C.uintptr_t)(style))
 	return newQTextList_U(unsafe.Pointer(ret))
 }
@@ -365,7 +411,7 @@ func (this *QTextCursor) InsertHtml(html string) {
 	C.QTextCursor_InsertHtml(this.h, html_Cstring, C.size_t(len(html)))
 }
 
-func (this *QTextCursor) InsertImage(format *QTextImageFormat, alignment uintptr) {
+func (this *QTextCursor) InsertImage(format *QTextImageFormat, alignment QTextFrameFormat__Position) {
 	C.QTextCursor_InsertImage(this.h, format.cPointer(), (C.uintptr_t)(alignment))
 }
 
@@ -445,16 +491,16 @@ func (this *QTextCursor) Document() *QTextDocument {
 	return newQTextDocument_U(unsafe.Pointer(ret))
 }
 
-func (this *QTextCursor) SetPosition2(pos int, mode uintptr) {
+func (this *QTextCursor) SetPosition2(pos int, mode QTextCursor__MoveMode) {
 	C.QTextCursor_SetPosition2(this.h, (C.int)(pos), (C.uintptr_t)(mode))
 }
 
-func (this *QTextCursor) MovePosition2(op uintptr, param2 uintptr) bool {
+func (this *QTextCursor) MovePosition2(op QTextCursor__MoveOperation, param2 QTextCursor__MoveMode) bool {
 	ret := C.QTextCursor_MovePosition2(this.h, (C.uintptr_t)(op), (C.uintptr_t)(param2))
 	return (bool)(ret)
 }
 
-func (this *QTextCursor) MovePosition3(op uintptr, param2 uintptr, n int) bool {
+func (this *QTextCursor) MovePosition3(op QTextCursor__MoveOperation, param2 QTextCursor__MoveMode, n int) bool {
 	ret := C.QTextCursor_MovePosition3(this.h, (C.uintptr_t)(op), (C.uintptr_t)(param2), (C.int)(n))
 	return (bool)(ret)
 }

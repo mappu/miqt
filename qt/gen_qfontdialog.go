@@ -14,6 +14,17 @@ import (
 	"unsafe"
 )
 
+type QFontDialog__FontDialogOption int
+
+const (
+	QFontDialog__FontDialogOption__NoButtons           QFontDialog__FontDialogOption = 1
+	QFontDialog__FontDialogOption__DontUseNativeDialog QFontDialog__FontDialogOption = 2
+	QFontDialog__FontDialogOption__ScalableFonts       QFontDialog__FontDialogOption = 4
+	QFontDialog__FontDialogOption__NonScalableFonts    QFontDialog__FontDialogOption = 8
+	QFontDialog__FontDialogOption__MonospacedFonts     QFontDialog__FontDialogOption = 16
+	QFontDialog__FontDialogOption__ProportionalFonts   QFontDialog__FontDialogOption = 32
+)
+
 type QFontDialog struct {
 	h *C.QFontDialog
 	*QDialog
@@ -114,11 +125,11 @@ func (this *QFontDialog) SelectedFont() *QFont {
 	return ret1
 }
 
-func (this *QFontDialog) SetOption(option uintptr) {
+func (this *QFontDialog) SetOption(option QFontDialog__FontDialogOption) {
 	C.QFontDialog_SetOption(this.h, (C.uintptr_t)(option))
 }
 
-func (this *QFontDialog) TestOption(option uintptr) bool {
+func (this *QFontDialog) TestOption(option QFontDialog__FontDialogOption) bool {
 	ret := C.QFontDialog_TestOption(this.h, (C.uintptr_t)(option))
 	return (bool)(ret)
 }
@@ -234,7 +245,7 @@ func QFontDialog_TrUtf83(s string, c string, n int) string {
 	return ret
 }
 
-func (this *QFontDialog) SetOption2(option uintptr, on bool) {
+func (this *QFontDialog) SetOption2(option QFontDialog__FontDialogOption, on bool) {
 	C.QFontDialog_SetOption2(this.h, (C.uintptr_t)(option), (C.bool)(on))
 }
 

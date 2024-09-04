@@ -43,7 +43,7 @@ func NewQScrollBar() *QScrollBar {
 }
 
 // NewQScrollBar2 constructs a new QScrollBar object.
-func NewQScrollBar2(param1 uintptr) *QScrollBar {
+func NewQScrollBar2(param1 Orientation) *QScrollBar {
 	ret := C.QScrollBar_new2((C.uintptr_t)(param1))
 	return newQScrollBar(ret)
 }
@@ -55,7 +55,7 @@ func NewQScrollBar3(parent *QWidget) *QScrollBar {
 }
 
 // NewQScrollBar4 constructs a new QScrollBar object.
-func NewQScrollBar4(param1 uintptr, parent *QWidget) *QScrollBar {
+func NewQScrollBar4(param1 Orientation, parent *QWidget) *QScrollBar {
 	ret := C.QScrollBar_new4((C.uintptr_t)(param1), parent.cPointer())
 	return newQScrollBar(ret)
 }

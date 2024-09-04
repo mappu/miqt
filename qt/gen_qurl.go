@@ -13,6 +13,52 @@ import (
 	"unsafe"
 )
 
+type QUrl__ParsingMode int
+
+const (
+	QUrl__ParsingMode__TolerantMode QUrl__ParsingMode = 0
+	QUrl__ParsingMode__StrictMode   QUrl__ParsingMode = 1
+	QUrl__ParsingMode__DecodedMode  QUrl__ParsingMode = 2
+)
+
+type QUrl__UrlFormattingOption int
+
+const (
+	QUrl__UrlFormattingOption__None                  QUrl__UrlFormattingOption = 0
+	QUrl__UrlFormattingOption__RemoveScheme          QUrl__UrlFormattingOption = 1
+	QUrl__UrlFormattingOption__RemovePassword        QUrl__UrlFormattingOption = 2
+	QUrl__UrlFormattingOption__RemoveUserInfo        QUrl__UrlFormattingOption = 6
+	QUrl__UrlFormattingOption__RemovePort            QUrl__UrlFormattingOption = 8
+	QUrl__UrlFormattingOption__RemoveAuthority       QUrl__UrlFormattingOption = 30
+	QUrl__UrlFormattingOption__RemovePath            QUrl__UrlFormattingOption = 32
+	QUrl__UrlFormattingOption__RemoveQuery           QUrl__UrlFormattingOption = 64
+	QUrl__UrlFormattingOption__RemoveFragment        QUrl__UrlFormattingOption = 128
+	QUrl__UrlFormattingOption__PreferLocalFile       QUrl__UrlFormattingOption = 512
+	QUrl__UrlFormattingOption__StripTrailingSlash    QUrl__UrlFormattingOption = 1024
+	QUrl__UrlFormattingOption__RemoveFilename        QUrl__UrlFormattingOption = 2048
+	QUrl__UrlFormattingOption__NormalizePathSegments QUrl__UrlFormattingOption = 4096
+)
+
+type QUrl__ComponentFormattingOption int
+
+const (
+	QUrl__ComponentFormattingOption__PrettyDecoded    QUrl__ComponentFormattingOption = 0
+	QUrl__ComponentFormattingOption__EncodeSpaces     QUrl__ComponentFormattingOption = 1048576
+	QUrl__ComponentFormattingOption__EncodeUnicode    QUrl__ComponentFormattingOption = 2097152
+	QUrl__ComponentFormattingOption__EncodeDelimiters QUrl__ComponentFormattingOption = 12582912
+	QUrl__ComponentFormattingOption__EncodeReserved   QUrl__ComponentFormattingOption = 16777216
+	QUrl__ComponentFormattingOption__DecodeReserved   QUrl__ComponentFormattingOption = 33554432
+	QUrl__ComponentFormattingOption__FullyEncoded     QUrl__ComponentFormattingOption = 32505856
+	QUrl__ComponentFormattingOption__FullyDecoded     QUrl__ComponentFormattingOption = 133169152
+)
+
+type QUrl__UserInputResolutionOption int
+
+const (
+	QUrl__UserInputResolutionOption__DefaultResolution QUrl__UserInputResolutionOption = 0
+	QUrl__UserInputResolutionOption__AssumeLocalFile   QUrl__UserInputResolutionOption = 1
+)
+
 type QUrl struct {
 	h *C.QUrl
 }
@@ -56,7 +102,7 @@ func NewQUrl3(url string) *QUrl {
 }
 
 // NewQUrl4 constructs a new QUrl object.
-func NewQUrl4(url string, mode uintptr) *QUrl {
+func NewQUrl4(url string, mode QUrl__ParsingMode) *QUrl {
 	url_Cstring := C.CString(url)
 	defer C.free(unsafe.Pointer(url_Cstring))
 	ret := C.QUrl_new4(url_Cstring, C.size_t(len(url)), (C.uintptr_t)(mode))
@@ -550,13 +596,13 @@ func QUrl_SetIdnWhitelist(idnWhitelist []string) {
 	C.QUrl_SetIdnWhitelist(&idnWhitelist_CArray[0], &idnWhitelist_Lengths[0], C.size_t(len(idnWhitelist)))
 }
 
-func (this *QUrl) SetUrl2(url string, mode uintptr) {
+func (this *QUrl) SetUrl2(url string, mode QUrl__ParsingMode) {
 	url_Cstring := C.CString(url)
 	defer C.free(unsafe.Pointer(url_Cstring))
 	C.QUrl_SetUrl2(this.h, url_Cstring, C.size_t(len(url)), (C.uintptr_t)(mode))
 }
 
-func QUrl_FromEncoded2(url *QByteArray, mode uintptr) *QUrl {
+func QUrl_FromEncoded2(url *QByteArray, mode QUrl__ParsingMode) *QUrl {
 	ret := C.QUrl_FromEncoded2(url.cPointer(), (C.uintptr_t)(mode))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQUrl(ret)
@@ -582,7 +628,7 @@ func QUrl_FromUserInput3(userInput string, workingDirectory string, options int)
 	return ret1
 }
 
-func (this *QUrl) SetAuthority2(authority string, mode uintptr) {
+func (this *QUrl) SetAuthority2(authority string, mode QUrl__ParsingMode) {
 	authority_Cstring := C.CString(authority)
 	defer C.free(unsafe.Pointer(authority_Cstring))
 	C.QUrl_SetAuthority2(this.h, authority_Cstring, C.size_t(len(authority)), (C.uintptr_t)(mode))
@@ -597,7 +643,7 @@ func (this *QUrl) Authority1(options int) string {
 	return ret
 }
 
-func (this *QUrl) SetUserInfo2(userInfo string, mode uintptr) {
+func (this *QUrl) SetUserInfo2(userInfo string, mode QUrl__ParsingMode) {
 	userInfo_Cstring := C.CString(userInfo)
 	defer C.free(unsafe.Pointer(userInfo_Cstring))
 	C.QUrl_SetUserInfo2(this.h, userInfo_Cstring, C.size_t(len(userInfo)), (C.uintptr_t)(mode))
@@ -612,7 +658,7 @@ func (this *QUrl) UserInfo1(options int) string {
 	return ret
 }
 
-func (this *QUrl) SetUserName2(userName string, mode uintptr) {
+func (this *QUrl) SetUserName2(userName string, mode QUrl__ParsingMode) {
 	userName_Cstring := C.CString(userName)
 	defer C.free(unsafe.Pointer(userName_Cstring))
 	C.QUrl_SetUserName2(this.h, userName_Cstring, C.size_t(len(userName)), (C.uintptr_t)(mode))
@@ -627,7 +673,7 @@ func (this *QUrl) UserName1(options int) string {
 	return ret
 }
 
-func (this *QUrl) SetPassword2(password string, mode uintptr) {
+func (this *QUrl) SetPassword2(password string, mode QUrl__ParsingMode) {
 	password_Cstring := C.CString(password)
 	defer C.free(unsafe.Pointer(password_Cstring))
 	C.QUrl_SetPassword2(this.h, password_Cstring, C.size_t(len(password)), (C.uintptr_t)(mode))
@@ -642,7 +688,7 @@ func (this *QUrl) Password1(param1 int) string {
 	return ret
 }
 
-func (this *QUrl) SetHost2(host string, mode uintptr) {
+func (this *QUrl) SetHost2(host string, mode QUrl__ParsingMode) {
 	host_Cstring := C.CString(host)
 	defer C.free(unsafe.Pointer(host_Cstring))
 	C.QUrl_SetHost2(this.h, host_Cstring, C.size_t(len(host)), (C.uintptr_t)(mode))
@@ -671,7 +717,7 @@ func (this *QUrl) Port1(defaultPort int) int {
 	return (int)(ret)
 }
 
-func (this *QUrl) SetPath2(path string, mode uintptr) {
+func (this *QUrl) SetPath2(path string, mode QUrl__ParsingMode) {
 	path_Cstring := C.CString(path)
 	defer C.free(unsafe.Pointer(path_Cstring))
 	C.QUrl_SetPath2(this.h, path_Cstring, C.size_t(len(path)), (C.uintptr_t)(mode))
@@ -695,7 +741,7 @@ func (this *QUrl) FileName1(options int) string {
 	return ret
 }
 
-func (this *QUrl) SetQuery2(query string, mode uintptr) {
+func (this *QUrl) SetQuery2(query string, mode QUrl__ParsingMode) {
 	query_Cstring := C.CString(query)
 	defer C.free(unsafe.Pointer(query_Cstring))
 	C.QUrl_SetQuery2(this.h, query_Cstring, C.size_t(len(query)), (C.uintptr_t)(mode))
@@ -719,7 +765,7 @@ func (this *QUrl) Fragment1(options int) string {
 	return ret
 }
 
-func (this *QUrl) SetFragment2(fragment string, mode uintptr) {
+func (this *QUrl) SetFragment2(fragment string, mode QUrl__ParsingMode) {
 	fragment_Cstring := C.CString(fragment)
 	defer C.free(unsafe.Pointer(fragment_Cstring))
 	C.QUrl_SetFragment2(this.h, fragment_Cstring, C.size_t(len(fragment)), (C.uintptr_t)(mode))
@@ -751,7 +797,7 @@ func QUrl_ToPercentEncoding3(param1 string, exclude *QByteArray, include *QByteA
 	return ret1
 }
 
-func QUrl_FromStringList2(uris []string, mode uintptr) []QUrl {
+func QUrl_FromStringList2(uris []string, mode QUrl__ParsingMode) []QUrl {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
 	uris_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(uris))))
 	uris_Lengths := (*[0xffff]C.uint64_t)(C.malloc(C.size_t(8 * len(uris))))

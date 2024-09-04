@@ -13,6 +13,24 @@ import (
 	"unsafe"
 )
 
+type QFileIconProvider__IconType int
+
+const (
+	QFileIconProvider__IconType__Computer QFileIconProvider__IconType = 0
+	QFileIconProvider__IconType__Desktop  QFileIconProvider__IconType = 1
+	QFileIconProvider__IconType__Trashcan QFileIconProvider__IconType = 2
+	QFileIconProvider__IconType__Network  QFileIconProvider__IconType = 3
+	QFileIconProvider__IconType__Drive    QFileIconProvider__IconType = 4
+	QFileIconProvider__IconType__Folder   QFileIconProvider__IconType = 5
+	QFileIconProvider__IconType__File     QFileIconProvider__IconType = 6
+)
+
+type QFileIconProvider__Option int
+
+const (
+	QFileIconProvider__Option__DontUseCustomDirectoryIcons QFileIconProvider__Option = 1
+)
+
 type QFileIconProvider struct {
 	h *C.QFileIconProvider
 }
@@ -41,7 +59,7 @@ func NewQFileIconProvider() *QFileIconProvider {
 	return newQFileIconProvider(ret)
 }
 
-func (this *QFileIconProvider) Icon(typeVal uintptr) *QIcon {
+func (this *QFileIconProvider) Icon(typeVal QFileIconProvider__IconType) *QIcon {
 	ret := C.QFileIconProvider_Icon(this.h, (C.uintptr_t)(typeVal))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQIcon(ret)

@@ -14,6 +14,22 @@ import (
 	"unsafe"
 )
 
+type QInputDialog__InputDialogOption int
+
+const (
+	QInputDialog__InputDialogOption__NoButtons                    QInputDialog__InputDialogOption = 1
+	QInputDialog__InputDialogOption__UseListViewForComboBoxItems  QInputDialog__InputDialogOption = 2
+	QInputDialog__InputDialogOption__UsePlainTextEditForTextInput QInputDialog__InputDialogOption = 4
+)
+
+type QInputDialog__InputMode int
+
+const (
+	QInputDialog__InputMode__TextInput   QInputDialog__InputMode = 0
+	QInputDialog__InputMode__IntInput    QInputDialog__InputMode = 1
+	QInputDialog__InputMode__DoubleInput QInputDialog__InputMode = 2
+)
+
 type QInputDialog struct {
 	h *C.QInputDialog
 	*QDialog
@@ -82,13 +98,13 @@ func QInputDialog_TrUtf8(s string) string {
 	return ret
 }
 
-func (this *QInputDialog) SetInputMode(mode uintptr) {
+func (this *QInputDialog) SetInputMode(mode QInputDialog__InputMode) {
 	C.QInputDialog_SetInputMode(this.h, (C.uintptr_t)(mode))
 }
 
-func (this *QInputDialog) InputMode() uintptr {
+func (this *QInputDialog) InputMode() QInputDialog__InputMode {
 	ret := C.QInputDialog_InputMode(this.h)
-	return (uintptr)(ret)
+	return (QInputDialog__InputMode)(ret)
 }
 
 func (this *QInputDialog) SetLabelText(text string) {
@@ -106,11 +122,11 @@ func (this *QInputDialog) LabelText() string {
 	return ret
 }
 
-func (this *QInputDialog) SetOption(option uintptr) {
+func (this *QInputDialog) SetOption(option QInputDialog__InputDialogOption) {
 	C.QInputDialog_SetOption(this.h, (C.uintptr_t)(option))
 }
 
-func (this *QInputDialog) TestOption(option uintptr) bool {
+func (this *QInputDialog) TestOption(option QInputDialog__InputDialogOption) bool {
 	ret := C.QInputDialog_TestOption(this.h, (C.uintptr_t)(option))
 	return (bool)(ret)
 }
@@ -139,13 +155,13 @@ func (this *QInputDialog) TextValue() string {
 	return ret
 }
 
-func (this *QInputDialog) SetTextEchoMode(mode uintptr) {
+func (this *QInputDialog) SetTextEchoMode(mode QLineEdit__EchoMode) {
 	C.QInputDialog_SetTextEchoMode(this.h, (C.uintptr_t)(mode))
 }
 
-func (this *QInputDialog) TextEchoMode() uintptr {
+func (this *QInputDialog) TextEchoMode() QLineEdit__EchoMode {
 	ret := C.QInputDialog_TextEchoMode(this.h)
-	return (uintptr)(ret)
+	return (QLineEdit__EchoMode)(ret)
 }
 
 func (this *QInputDialog) SetComboBoxEditable(editable bool) {
@@ -541,11 +557,11 @@ func QInputDialog_TrUtf83(s string, c string, n int) string {
 	return ret
 }
 
-func (this *QInputDialog) SetOption2(option uintptr, on bool) {
+func (this *QInputDialog) SetOption2(option QInputDialog__InputDialogOption, on bool) {
 	C.QInputDialog_SetOption2(this.h, (C.uintptr_t)(option), (C.bool)(on))
 }
 
-func QInputDialog_GetText4(parent *QWidget, title string, label string, echo uintptr) string {
+func QInputDialog_GetText4(parent *QWidget, title string, label string, echo QLineEdit__EchoMode) string {
 	title_Cstring := C.CString(title)
 	defer C.free(unsafe.Pointer(title_Cstring))
 	label_Cstring := C.CString(label)
@@ -558,7 +574,7 @@ func QInputDialog_GetText4(parent *QWidget, title string, label string, echo uin
 	return ret
 }
 
-func QInputDialog_GetText5(parent *QWidget, title string, label string, echo uintptr, text string) string {
+func QInputDialog_GetText5(parent *QWidget, title string, label string, echo QLineEdit__EchoMode, text string) string {
 	title_Cstring := C.CString(title)
 	defer C.free(unsafe.Pointer(title_Cstring))
 	label_Cstring := C.CString(label)
@@ -573,7 +589,7 @@ func QInputDialog_GetText5(parent *QWidget, title string, label string, echo uin
 	return ret
 }
 
-func QInputDialog_GetText6(parent *QWidget, title string, label string, echo uintptr, text string, ok *bool) string {
+func QInputDialog_GetText6(parent *QWidget, title string, label string, echo QLineEdit__EchoMode, text string, ok *bool) string {
 	title_Cstring := C.CString(title)
 	defer C.free(unsafe.Pointer(title_Cstring))
 	label_Cstring := C.CString(label)
@@ -588,7 +604,7 @@ func QInputDialog_GetText6(parent *QWidget, title string, label string, echo uin
 	return ret
 }
 
-func QInputDialog_GetText7(parent *QWidget, title string, label string, echo uintptr, text string, ok *bool, flags int) string {
+func QInputDialog_GetText7(parent *QWidget, title string, label string, echo QLineEdit__EchoMode, text string, ok *bool, flags int) string {
 	title_Cstring := C.CString(title)
 	defer C.free(unsafe.Pointer(title_Cstring))
 	label_Cstring := C.CString(label)
@@ -603,7 +619,7 @@ func QInputDialog_GetText7(parent *QWidget, title string, label string, echo uin
 	return ret
 }
 
-func QInputDialog_GetText8(parent *QWidget, title string, label string, echo uintptr, text string, ok *bool, flags int, inputMethodHints int) string {
+func QInputDialog_GetText8(parent *QWidget, title string, label string, echo QLineEdit__EchoMode, text string, ok *bool, flags int, inputMethodHints int) string {
 	title_Cstring := C.CString(title)
 	defer C.free(unsafe.Pointer(title_Cstring))
 	label_Cstring := C.CString(label)

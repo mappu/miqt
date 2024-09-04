@@ -12,6 +12,25 @@ import (
 	"unsafe"
 )
 
+type QRegExp__PatternSyntax int
+
+const (
+	QRegExp__PatternSyntax__RegExp         QRegExp__PatternSyntax = 0
+	QRegExp__PatternSyntax__Wildcard       QRegExp__PatternSyntax = 1
+	QRegExp__PatternSyntax__FixedString    QRegExp__PatternSyntax = 2
+	QRegExp__PatternSyntax__RegExp2        QRegExp__PatternSyntax = 3
+	QRegExp__PatternSyntax__WildcardUnix   QRegExp__PatternSyntax = 4
+	QRegExp__PatternSyntax__W3CXmlSchema11 QRegExp__PatternSyntax = 5
+)
+
+type QRegExp__CaretMode int
+
+const (
+	QRegExp__CaretMode__CaretAtZero    QRegExp__CaretMode = 0
+	QRegExp__CaretMode__CaretAtOffset  QRegExp__CaretMode = 1
+	QRegExp__CaretMode__CaretWontMatch QRegExp__CaretMode = 2
+)
+
 type QRegExp struct {
 	h *C.QRegExp
 }
@@ -55,7 +74,7 @@ func NewQRegExp3(rx *QRegExp) *QRegExp {
 }
 
 // NewQRegExp4 constructs a new QRegExp object.
-func NewQRegExp4(pattern string, cs uintptr) *QRegExp {
+func NewQRegExp4(pattern string, cs CaseSensitivity) *QRegExp {
 	pattern_Cstring := C.CString(pattern)
 	defer C.free(unsafe.Pointer(pattern_Cstring))
 	ret := C.QRegExp_new4(pattern_Cstring, C.size_t(len(pattern)), (C.uintptr_t)(cs))
@@ -63,7 +82,7 @@ func NewQRegExp4(pattern string, cs uintptr) *QRegExp {
 }
 
 // NewQRegExp5 constructs a new QRegExp object.
-func NewQRegExp5(pattern string, cs uintptr, syntax uintptr) *QRegExp {
+func NewQRegExp5(pattern string, cs CaseSensitivity, syntax QRegExp__PatternSyntax) *QRegExp {
 	pattern_Cstring := C.CString(pattern)
 	defer C.free(unsafe.Pointer(pattern_Cstring))
 	ret := C.QRegExp_new5(pattern_Cstring, C.size_t(len(pattern)), (C.uintptr_t)(cs), (C.uintptr_t)(syntax))
@@ -113,21 +132,21 @@ func (this *QRegExp) SetPattern(pattern string) {
 	C.QRegExp_SetPattern(this.h, pattern_Cstring, C.size_t(len(pattern)))
 }
 
-func (this *QRegExp) CaseSensitivity() uintptr {
+func (this *QRegExp) CaseSensitivity() CaseSensitivity {
 	ret := C.QRegExp_CaseSensitivity(this.h)
-	return (uintptr)(ret)
+	return (CaseSensitivity)(ret)
 }
 
-func (this *QRegExp) SetCaseSensitivity(cs uintptr) {
+func (this *QRegExp) SetCaseSensitivity(cs CaseSensitivity) {
 	C.QRegExp_SetCaseSensitivity(this.h, (C.uintptr_t)(cs))
 }
 
-func (this *QRegExp) PatternSyntax() uintptr {
+func (this *QRegExp) PatternSyntax() QRegExp__PatternSyntax {
 	ret := C.QRegExp_PatternSyntax(this.h)
-	return (uintptr)(ret)
+	return (QRegExp__PatternSyntax)(ret)
 }
 
-func (this *QRegExp) SetPatternSyntax(syntax uintptr) {
+func (this *QRegExp) SetPatternSyntax(syntax QRegExp__PatternSyntax) {
 	C.QRegExp_SetPatternSyntax(this.h, (C.uintptr_t)(syntax))
 }
 
@@ -265,7 +284,7 @@ func (this *QRegExp) IndexIn2(str string, offset int) int {
 	return (int)(ret)
 }
 
-func (this *QRegExp) IndexIn3(str string, offset int, caretMode uintptr) int {
+func (this *QRegExp) IndexIn3(str string, offset int, caretMode QRegExp__CaretMode) int {
 	str_Cstring := C.CString(str)
 	defer C.free(unsafe.Pointer(str_Cstring))
 	ret := C.QRegExp_IndexIn3(this.h, str_Cstring, C.size_t(len(str)), (C.int)(offset), (C.uintptr_t)(caretMode))
@@ -279,7 +298,7 @@ func (this *QRegExp) LastIndexIn2(str string, offset int) int {
 	return (int)(ret)
 }
 
-func (this *QRegExp) LastIndexIn3(str string, offset int, caretMode uintptr) int {
+func (this *QRegExp) LastIndexIn3(str string, offset int, caretMode QRegExp__CaretMode) int {
 	str_Cstring := C.CString(str)
 	defer C.free(unsafe.Pointer(str_Cstring))
 	ret := C.QRegExp_LastIndexIn3(this.h, str_Cstring, C.size_t(len(str)), (C.int)(offset), (C.uintptr_t)(caretMode))

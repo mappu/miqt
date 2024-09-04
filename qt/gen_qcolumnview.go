@@ -234,7 +234,7 @@ func QColumnView_TrUtf83(s string, c string, n int) string {
 	return ret
 }
 
-func (this *QColumnView) ScrollTo2(index *QModelIndex, hint uintptr) {
+func (this *QColumnView) ScrollTo2(index *QModelIndex, hint QAbstractItemView__ScrollHint) {
 	C.QColumnView_ScrollTo2(this.h, index.cPointer(), (C.uintptr_t)(hint))
 }
 

@@ -13,6 +13,28 @@ import (
 	"unsafe"
 )
 
+type QAbstractAnimation__Direction int
+
+const (
+	QAbstractAnimation__Direction__Forward  QAbstractAnimation__Direction = 0
+	QAbstractAnimation__Direction__Backward QAbstractAnimation__Direction = 1
+)
+
+type QAbstractAnimation__State int
+
+const (
+	QAbstractAnimation__State__Stopped QAbstractAnimation__State = 0
+	QAbstractAnimation__State__Paused  QAbstractAnimation__State = 1
+	QAbstractAnimation__State__Running QAbstractAnimation__State = 2
+)
+
+type QAbstractAnimation__DeletionPolicy int
+
+const (
+	QAbstractAnimation__DeletionPolicy__KeepWhenStopped   QAbstractAnimation__DeletionPolicy = 0
+	QAbstractAnimation__DeletionPolicy__DeleteWhenStopped QAbstractAnimation__DeletionPolicy = 1
+)
+
 type QAbstractAnimation struct {
 	h *C.QAbstractAnimation
 	*QObject
@@ -63,9 +85,9 @@ func QAbstractAnimation_TrUtf8(s string) string {
 	return ret
 }
 
-func (this *QAbstractAnimation) State() uintptr {
+func (this *QAbstractAnimation) State() QAbstractAnimation__State {
 	ret := C.QAbstractAnimation_State(this.h)
-	return (uintptr)(ret)
+	return (QAbstractAnimation__State)(ret)
 }
 
 func (this *QAbstractAnimation) Group() *QAnimationGroup {
@@ -73,12 +95,12 @@ func (this *QAbstractAnimation) Group() *QAnimationGroup {
 	return newQAnimationGroup_U(unsafe.Pointer(ret))
 }
 
-func (this *QAbstractAnimation) Direction() uintptr {
+func (this *QAbstractAnimation) Direction() QAbstractAnimation__Direction {
 	ret := C.QAbstractAnimation_Direction(this.h)
-	return (uintptr)(ret)
+	return (QAbstractAnimation__Direction)(ret)
 }
 
-func (this *QAbstractAnimation) SetDirection(direction uintptr) {
+func (this *QAbstractAnimation) SetDirection(direction QAbstractAnimation__Direction) {
 	C.QAbstractAnimation_SetDirection(this.h, (C.uintptr_t)(direction))
 }
 
@@ -128,7 +150,7 @@ func (this *QAbstractAnimation) OnFinished(slot func()) {
 	C.QAbstractAnimation_connect_Finished(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
 }
 
-func (this *QAbstractAnimation) StateChanged(newState uintptr, oldState uintptr) {
+func (this *QAbstractAnimation) StateChanged(newState QAbstractAnimation__State, oldState QAbstractAnimation__State) {
 	C.QAbstractAnimation_StateChanged(this.h, (C.uintptr_t)(newState), (C.uintptr_t)(oldState))
 }
 
@@ -152,7 +174,7 @@ func (this *QAbstractAnimation) OnCurrentLoopChanged(slot func()) {
 	C.QAbstractAnimation_connect_CurrentLoopChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
 }
 
-func (this *QAbstractAnimation) DirectionChanged(param1 uintptr) {
+func (this *QAbstractAnimation) DirectionChanged(param1 QAbstractAnimation__Direction) {
 	C.QAbstractAnimation_DirectionChanged(this.h, (C.uintptr_t)(param1))
 }
 
@@ -240,7 +262,7 @@ func QAbstractAnimation_TrUtf83(s string, c string, n int) string {
 	return ret
 }
 
-func (this *QAbstractAnimation) Start1(policy uintptr) {
+func (this *QAbstractAnimation) Start1(policy QAbstractAnimation__DeletionPolicy) {
 	C.QAbstractAnimation_Start1(this.h, (C.uintptr_t)(policy))
 }
 

@@ -14,6 +14,23 @@ import (
 	"unsafe"
 )
 
+type QTextEdit__LineWrapMode int
+
+const (
+	QTextEdit__LineWrapMode__NoWrap           QTextEdit__LineWrapMode = 0
+	QTextEdit__LineWrapMode__WidgetWidth      QTextEdit__LineWrapMode = 1
+	QTextEdit__LineWrapMode__FixedPixelWidth  QTextEdit__LineWrapMode = 2
+	QTextEdit__LineWrapMode__FixedColumnWidth QTextEdit__LineWrapMode = 3
+)
+
+type QTextEdit__AutoFormattingFlag int
+
+const (
+	QTextEdit__AutoFormattingFlag__AutoNone       QTextEdit__AutoFormattingFlag = 0
+	QTextEdit__AutoFormattingFlag__AutoBulletList QTextEdit__AutoFormattingFlag = 1
+	QTextEdit__AutoFormattingFlag__AutoAll        QTextEdit__AutoFormattingFlag = 4294967295
+)
+
 type QTextEdit struct {
 	h *C.QTextEdit
 	*QAbstractScrollArea
@@ -277,12 +294,12 @@ func (this *QTextEdit) SetUndoRedoEnabled(enable bool) {
 	C.QTextEdit_SetUndoRedoEnabled(this.h, (C.bool)(enable))
 }
 
-func (this *QTextEdit) LineWrapMode() uintptr {
+func (this *QTextEdit) LineWrapMode() QTextEdit__LineWrapMode {
 	ret := C.QTextEdit_LineWrapMode(this.h)
-	return (uintptr)(ret)
+	return (QTextEdit__LineWrapMode)(ret)
 }
 
-func (this *QTextEdit) SetLineWrapMode(mode uintptr) {
+func (this *QTextEdit) SetLineWrapMode(mode QTextEdit__LineWrapMode) {
 	C.QTextEdit_SetLineWrapMode(this.h, (C.uintptr_t)(mode))
 }
 
@@ -295,12 +312,12 @@ func (this *QTextEdit) SetLineWrapColumnOrWidth(w int) {
 	C.QTextEdit_SetLineWrapColumnOrWidth(this.h, (C.int)(w))
 }
 
-func (this *QTextEdit) WordWrapMode() uintptr {
+func (this *QTextEdit) WordWrapMode() QTextOption__WrapMode {
 	ret := C.QTextEdit_WordWrapMode(this.h)
-	return (uintptr)(ret)
+	return (QTextOption__WrapMode)(ret)
 }
 
-func (this *QTextEdit) SetWordWrapMode(policy uintptr) {
+func (this *QTextEdit) SetWordWrapMode(policy QTextOption__WrapMode) {
 	C.QTextEdit_SetWordWrapMode(this.h, (C.uintptr_t)(policy))
 }
 
@@ -483,7 +500,7 @@ func (this *QTextEdit) ExtraSelections() []QTextEdit__ExtraSelection {
 	return ret
 }
 
-func (this *QTextEdit) MoveCursor(operation uintptr) {
+func (this *QTextEdit) MoveCursor(operation QTextCursor__MoveOperation) {
 	C.QTextEdit_MoveCursor(this.h, (C.uintptr_t)(operation))
 }
 
@@ -496,7 +513,7 @@ func (this *QTextEdit) Print(printer *QPagedPaintDevice) {
 	C.QTextEdit_Print(this.h, printer.cPointer())
 }
 
-func (this *QTextEdit) InputMethodQuery(property uintptr) *QVariant {
+func (this *QTextEdit) InputMethodQuery(property InputMethodQuery) *QVariant {
 	ret := C.QTextEdit_InputMethodQuery(this.h, (C.uintptr_t)(property))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQVariant(ret)
@@ -507,7 +524,7 @@ func (this *QTextEdit) InputMethodQuery(property uintptr) *QVariant {
 	return ret1
 }
 
-func (this *QTextEdit) InputMethodQuery2(query uintptr, argument QVariant) *QVariant {
+func (this *QTextEdit) InputMethodQuery2(query InputMethodQuery, argument QVariant) *QVariant {
 	ret := C.QTextEdit_InputMethodQuery2(this.h, (C.uintptr_t)(query), argument.cPointer())
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQVariant(ret)
@@ -802,7 +819,7 @@ func (this *QTextEdit) ToMarkdown1(features int) string {
 	return ret
 }
 
-func (this *QTextEdit) MoveCursor2(operation uintptr, mode uintptr) {
+func (this *QTextEdit) MoveCursor2(operation QTextCursor__MoveOperation, mode QTextCursor__MoveMode) {
 	C.QTextEdit_MoveCursor2(this.h, (C.uintptr_t)(operation), (C.uintptr_t)(mode))
 }
 

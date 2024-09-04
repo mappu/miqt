@@ -14,6 +14,21 @@ import (
 	"unsafe"
 )
 
+type QValidator__State int
+
+const (
+	QValidator__State__Invalid      QValidator__State = 0
+	QValidator__State__Intermediate QValidator__State = 1
+	QValidator__State__Acceptable   QValidator__State = 2
+)
+
+type QDoubleValidator__Notation int
+
+const (
+	QDoubleValidator__Notation__StandardNotation   QDoubleValidator__Notation = 0
+	QDoubleValidator__Notation__ScientificNotation QDoubleValidator__Notation = 1
+)
+
 type QValidator struct {
 	h *C.QValidator
 	*QObject
@@ -79,11 +94,11 @@ func (this *QValidator) Locale() *QLocale {
 	return ret1
 }
 
-func (this *QValidator) Validate(param1 string, param2 *int) uintptr {
+func (this *QValidator) Validate(param1 string, param2 *int) QValidator__State {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	ret := C.QValidator_Validate(this.h, param1_Cstring, C.size_t(len(param1)), (*C.int)(unsafe.Pointer(param2)))
-	return (uintptr)(ret)
+	return (QValidator__State)(ret)
 }
 
 func (this *QValidator) Fixup(param1 string) {
@@ -234,11 +249,11 @@ func QIntValidator_TrUtf8(s string) string {
 	return ret
 }
 
-func (this *QIntValidator) Validate(param1 string, param2 *int) uintptr {
+func (this *QIntValidator) Validate(param1 string, param2 *int) QValidator__State {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	ret := C.QIntValidator_Validate(this.h, param1_Cstring, C.size_t(len(param1)), (*C.int)(unsafe.Pointer(param2)))
-	return (uintptr)(ret)
+	return (QValidator__State)(ret)
 }
 
 func (this *QIntValidator) Fixup(input string) {
@@ -423,11 +438,11 @@ func QDoubleValidator_TrUtf8(s string) string {
 	return ret
 }
 
-func (this *QDoubleValidator) Validate(param1 string, param2 *int) uintptr {
+func (this *QDoubleValidator) Validate(param1 string, param2 *int) QValidator__State {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	ret := C.QDoubleValidator_Validate(this.h, param1_Cstring, C.size_t(len(param1)), (*C.int)(unsafe.Pointer(param2)))
-	return (uintptr)(ret)
+	return (QValidator__State)(ret)
 }
 
 func (this *QDoubleValidator) SetRange(bottom float64, top float64) {
@@ -446,7 +461,7 @@ func (this *QDoubleValidator) SetDecimals(decimals int) {
 	C.QDoubleValidator_SetDecimals(this.h, (C.int)(decimals))
 }
 
-func (this *QDoubleValidator) SetNotation(notation uintptr) {
+func (this *QDoubleValidator) SetNotation(notation QDoubleValidator__Notation) {
 	C.QDoubleValidator_SetNotation(this.h, (C.uintptr_t)(notation))
 }
 
@@ -465,9 +480,9 @@ func (this *QDoubleValidator) Decimals() int {
 	return (int)(ret)
 }
 
-func (this *QDoubleValidator) Notation() uintptr {
+func (this *QDoubleValidator) Notation() QDoubleValidator__Notation {
 	ret := C.QDoubleValidator_Notation(this.h)
-	return (uintptr)(ret)
+	return (QDoubleValidator__Notation)(ret)
 }
 
 func (this *QDoubleValidator) BottomChanged(bottom float64) {
@@ -506,7 +521,7 @@ func (this *QDoubleValidator) OnDecimalsChanged(slot func()) {
 	C.QDoubleValidator_connect_DecimalsChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
 }
 
-func (this *QDoubleValidator) NotationChanged(notation uintptr) {
+func (this *QDoubleValidator) NotationChanged(notation QDoubleValidator__Notation) {
 	C.QDoubleValidator_NotationChanged(this.h, (C.uintptr_t)(notation))
 }
 
@@ -652,11 +667,11 @@ func QRegExpValidator_TrUtf8(s string) string {
 	return ret
 }
 
-func (this *QRegExpValidator) Validate(input string, pos *int) uintptr {
+func (this *QRegExpValidator) Validate(input string, pos *int) QValidator__State {
 	input_Cstring := C.CString(input)
 	defer C.free(unsafe.Pointer(input_Cstring))
 	ret := C.QRegExpValidator_Validate(this.h, input_Cstring, C.size_t(len(input)), (*C.int)(unsafe.Pointer(pos)))
-	return (uintptr)(ret)
+	return (QValidator__State)(ret)
 }
 
 func (this *QRegExpValidator) SetRegExp(rx *QRegExp) {
@@ -810,11 +825,11 @@ func QRegularExpressionValidator_TrUtf8(s string) string {
 	return ret
 }
 
-func (this *QRegularExpressionValidator) Validate(input string, pos *int) uintptr {
+func (this *QRegularExpressionValidator) Validate(input string, pos *int) QValidator__State {
 	input_Cstring := C.CString(input)
 	defer C.free(unsafe.Pointer(input_Cstring))
 	ret := C.QRegularExpressionValidator_Validate(this.h, input_Cstring, C.size_t(len(input)), (*C.int)(unsafe.Pointer(pos)))
-	return (uintptr)(ret)
+	return (QValidator__State)(ret)
 }
 
 func (this *QRegularExpressionValidator) RegularExpression() *QRegularExpression {

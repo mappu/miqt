@@ -257,19 +257,19 @@ func (this *QScreen) AvailableVirtualGeometry() *QRect {
 	return ret1
 }
 
-func (this *QScreen) PrimaryOrientation() uintptr {
+func (this *QScreen) PrimaryOrientation() ScreenOrientation {
 	ret := C.QScreen_PrimaryOrientation(this.h)
-	return (uintptr)(ret)
+	return (ScreenOrientation)(ret)
 }
 
-func (this *QScreen) Orientation() uintptr {
+func (this *QScreen) Orientation() ScreenOrientation {
 	ret := C.QScreen_Orientation(this.h)
-	return (uintptr)(ret)
+	return (ScreenOrientation)(ret)
 }
 
-func (this *QScreen) NativeOrientation() uintptr {
+func (this *QScreen) NativeOrientation() ScreenOrientation {
 	ret := C.QScreen_NativeOrientation(this.h)
-	return (uintptr)(ret)
+	return (ScreenOrientation)(ret)
 }
 
 func (this *QScreen) OrientationUpdateMask() int {
@@ -281,12 +281,12 @@ func (this *QScreen) SetOrientationUpdateMask(mask int) {
 	C.QScreen_SetOrientationUpdateMask(this.h, (C.int)(mask))
 }
 
-func (this *QScreen) AngleBetween(a uintptr, b uintptr) int {
+func (this *QScreen) AngleBetween(a ScreenOrientation, b ScreenOrientation) int {
 	ret := C.QScreen_AngleBetween(this.h, (C.uintptr_t)(a), (C.uintptr_t)(b))
 	return (int)(ret)
 }
 
-func (this *QScreen) TransformBetween(a uintptr, b uintptr, target *QRect) *QTransform {
+func (this *QScreen) TransformBetween(a ScreenOrientation, b ScreenOrientation, target *QRect) *QTransform {
 	ret := C.QScreen_TransformBetween(this.h, (C.uintptr_t)(a), (C.uintptr_t)(b), target.cPointer())
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQTransform(ret)
@@ -297,7 +297,7 @@ func (this *QScreen) TransformBetween(a uintptr, b uintptr, target *QRect) *QTra
 	return ret1
 }
 
-func (this *QScreen) MapBetween(a uintptr, b uintptr, rect *QRect) *QRect {
+func (this *QScreen) MapBetween(a ScreenOrientation, b ScreenOrientation, rect *QRect) *QRect {
 	ret := C.QScreen_MapBetween(this.h, (C.uintptr_t)(a), (C.uintptr_t)(b), rect.cPointer())
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQRect(ret)
@@ -308,12 +308,12 @@ func (this *QScreen) MapBetween(a uintptr, b uintptr, rect *QRect) *QRect {
 	return ret1
 }
 
-func (this *QScreen) IsPortrait(orientation uintptr) bool {
+func (this *QScreen) IsPortrait(orientation ScreenOrientation) bool {
 	ret := C.QScreen_IsPortrait(this.h, (C.uintptr_t)(orientation))
 	return (bool)(ret)
 }
 
-func (this *QScreen) IsLandscape(orientation uintptr) bool {
+func (this *QScreen) IsLandscape(orientation ScreenOrientation) bool {
 	ret := C.QScreen_IsLandscape(this.h, (C.uintptr_t)(orientation))
 	return (bool)(ret)
 }
@@ -406,7 +406,7 @@ func (this *QScreen) OnVirtualGeometryChanged(slot func()) {
 	C.QScreen_connect_VirtualGeometryChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
 }
 
-func (this *QScreen) PrimaryOrientationChanged(orientation uintptr) {
+func (this *QScreen) PrimaryOrientationChanged(orientation ScreenOrientation) {
 	C.QScreen_PrimaryOrientationChanged(this.h, (C.uintptr_t)(orientation))
 }
 
@@ -418,7 +418,7 @@ func (this *QScreen) OnPrimaryOrientationChanged(slot func()) {
 	C.QScreen_connect_PrimaryOrientationChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
 }
 
-func (this *QScreen) OrientationChanged(orientation uintptr) {
+func (this *QScreen) OrientationChanged(orientation ScreenOrientation) {
 	C.QScreen_OrientationChanged(this.h, (C.uintptr_t)(orientation))
 }
 

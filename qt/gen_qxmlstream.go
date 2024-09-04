@@ -12,6 +12,40 @@ import (
 	"unsafe"
 )
 
+type QXmlStreamReader__TokenType int
+
+const (
+	QXmlStreamReader__TokenType__NoToken               QXmlStreamReader__TokenType = 0
+	QXmlStreamReader__TokenType__Invalid               QXmlStreamReader__TokenType = 1
+	QXmlStreamReader__TokenType__StartDocument         QXmlStreamReader__TokenType = 2
+	QXmlStreamReader__TokenType__EndDocument           QXmlStreamReader__TokenType = 3
+	QXmlStreamReader__TokenType__StartElement          QXmlStreamReader__TokenType = 4
+	QXmlStreamReader__TokenType__EndElement            QXmlStreamReader__TokenType = 5
+	QXmlStreamReader__TokenType__Characters            QXmlStreamReader__TokenType = 6
+	QXmlStreamReader__TokenType__Comment               QXmlStreamReader__TokenType = 7
+	QXmlStreamReader__TokenType__DTD                   QXmlStreamReader__TokenType = 8
+	QXmlStreamReader__TokenType__EntityReference       QXmlStreamReader__TokenType = 9
+	QXmlStreamReader__TokenType__ProcessingInstruction QXmlStreamReader__TokenType = 10
+)
+
+type QXmlStreamReader__ReadElementTextBehaviour int
+
+const (
+	QXmlStreamReader__ReadElementTextBehaviour__ErrorOnUnexpectedElement QXmlStreamReader__ReadElementTextBehaviour = 0
+	QXmlStreamReader__ReadElementTextBehaviour__IncludeChildElements     QXmlStreamReader__ReadElementTextBehaviour = 1
+	QXmlStreamReader__ReadElementTextBehaviour__SkipChildElements        QXmlStreamReader__ReadElementTextBehaviour = 2
+)
+
+type QXmlStreamReader__Error int
+
+const (
+	QXmlStreamReader__Error__NoError                     QXmlStreamReader__Error = 0
+	QXmlStreamReader__Error__UnexpectedElementError      QXmlStreamReader__Error = 1
+	QXmlStreamReader__Error__CustomError                 QXmlStreamReader__Error = 2
+	QXmlStreamReader__Error__NotWellFormedError          QXmlStreamReader__Error = 3
+	QXmlStreamReader__Error__PrematureEndOfDocumentError QXmlStreamReader__Error = 4
+)
+
 type QXmlStreamStringRef struct {
 	h *C.QXmlStreamStringRef
 }
@@ -478,9 +512,9 @@ func (this *QXmlStreamReader) AtEnd() bool {
 	return (bool)(ret)
 }
 
-func (this *QXmlStreamReader) ReadNext() uintptr {
+func (this *QXmlStreamReader) ReadNext() QXmlStreamReader__TokenType {
 	ret := C.QXmlStreamReader_ReadNext(this.h)
-	return (uintptr)(ret)
+	return (QXmlStreamReader__TokenType)(ret)
 }
 
 func (this *QXmlStreamReader) ReadNextStartElement() bool {
@@ -492,9 +526,9 @@ func (this *QXmlStreamReader) SkipCurrentElement() {
 	C.QXmlStreamReader_SkipCurrentElement(this.h)
 }
 
-func (this *QXmlStreamReader) TokenType() uintptr {
+func (this *QXmlStreamReader) TokenType() QXmlStreamReader__TokenType {
 	ret := C.QXmlStreamReader_TokenType(this.h)
-	return (uintptr)(ret)
+	return (QXmlStreamReader__TokenType)(ret)
 }
 
 func (this *QXmlStreamReader) TokenString() string {
@@ -674,9 +708,9 @@ func (this *QXmlStreamReader) ErrorString() string {
 	return ret
 }
 
-func (this *QXmlStreamReader) Error() uintptr {
+func (this *QXmlStreamReader) Error() QXmlStreamReader__Error {
 	ret := C.QXmlStreamReader_Error(this.h)
-	return (uintptr)(ret)
+	return (QXmlStreamReader__Error)(ret)
 }
 
 func (this *QXmlStreamReader) HasError() bool {
@@ -693,7 +727,7 @@ func (this *QXmlStreamReader) EntityResolver() *QXmlStreamEntityResolver {
 	return newQXmlStreamEntityResolver_U(unsafe.Pointer(ret))
 }
 
-func (this *QXmlStreamReader) ReadElementText1(behaviour uintptr) string {
+func (this *QXmlStreamReader) ReadElementText1(behaviour QXmlStreamReader__ReadElementTextBehaviour) string {
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
 	C.QXmlStreamReader_ReadElementText1(this.h, (C.uintptr_t)(behaviour), &_out, &_out_Strlen)

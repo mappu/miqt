@@ -136,7 +136,7 @@ func (this *QStringView) CompareWithQChar(c QChar) int {
 	return (int)(ret)
 }
 
-func (this *QStringView) Compare2(c QChar, cs uintptr) int {
+func (this *QStringView) Compare2(c QChar, cs CaseSensitivity) int {
 	ret := C.QStringView_Compare2(this.h, c.cPointer(), (C.uintptr_t)(cs))
 	return (int)(ret)
 }
@@ -146,7 +146,7 @@ func (this *QStringView) StartsWithWithQChar(c QChar) bool {
 	return (bool)(ret)
 }
 
-func (this *QStringView) StartsWith2(c QChar, cs uintptr) bool {
+func (this *QStringView) StartsWith2(c QChar, cs CaseSensitivity) bool {
 	ret := C.QStringView_StartsWith2(this.h, c.cPointer(), (C.uintptr_t)(cs))
 	return (bool)(ret)
 }
@@ -156,7 +156,7 @@ func (this *QStringView) EndsWithWithQChar(c QChar) bool {
 	return (bool)(ret)
 }
 
-func (this *QStringView) EndsWith2(c QChar, cs uintptr) bool {
+func (this *QStringView) EndsWith2(c QChar, cs CaseSensitivity) bool {
 	ret := C.QStringView_EndsWith2(this.h, c.cPointer(), (C.uintptr_t)(cs))
 	return (bool)(ret)
 }
@@ -310,17 +310,17 @@ func (this *QStringView) IndexOf2(c QChar, from uint64) uint64 {
 	return (uint64)(ret)
 }
 
-func (this *QStringView) IndexOf3(c QChar, from uint64, cs uintptr) uint64 {
+func (this *QStringView) IndexOf3(c QChar, from uint64, cs CaseSensitivity) uint64 {
 	ret := C.QStringView_IndexOf3(this.h, c.cPointer(), (C.size_t)(from), (C.uintptr_t)(cs))
 	return (uint64)(ret)
 }
 
-func (this *QStringView) Contains2(c QChar, cs uintptr) bool {
+func (this *QStringView) Contains2(c QChar, cs CaseSensitivity) bool {
 	ret := C.QStringView_Contains2(this.h, c.cPointer(), (C.uintptr_t)(cs))
 	return (bool)(ret)
 }
 
-func (this *QStringView) Count2(c QChar, cs uintptr) uint64 {
+func (this *QStringView) Count2(c QChar, cs CaseSensitivity) uint64 {
 	ret := C.QStringView_Count2(this.h, c.cPointer(), (C.uintptr_t)(cs))
 	return (uint64)(ret)
 }
@@ -330,7 +330,7 @@ func (this *QStringView) LastIndexOf2(c QChar, from uint64) uint64 {
 	return (uint64)(ret)
 }
 
-func (this *QStringView) LastIndexOf3(c QChar, from uint64, cs uintptr) uint64 {
+func (this *QStringView) LastIndexOf3(c QChar, from uint64, cs CaseSensitivity) uint64 {
 	ret := C.QStringView_LastIndexOf3(this.h, c.cPointer(), (C.size_t)(from), (C.uintptr_t)(cs))
 	return (uint64)(ret)
 }

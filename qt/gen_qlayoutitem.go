@@ -181,13 +181,13 @@ func NewQSpacerItem2(param1 *QSpacerItem) *QSpacerItem {
 }
 
 // NewQSpacerItem3 constructs a new QSpacerItem object.
-func NewQSpacerItem3(w int, h int, hData uintptr) *QSpacerItem {
+func NewQSpacerItem3(w int, h int, hData QSizePolicy__Policy) *QSpacerItem {
 	ret := C.QSpacerItem_new3((C.int)(w), (C.int)(h), (C.uintptr_t)(hData))
 	return newQSpacerItem(ret)
 }
 
 // NewQSpacerItem4 constructs a new QSpacerItem object.
-func NewQSpacerItem4(w int, h int, hData uintptr, vData uintptr) *QSpacerItem {
+func NewQSpacerItem4(w int, h int, hData QSizePolicy__Policy, vData QSizePolicy__Policy) *QSpacerItem {
 	ret := C.QSpacerItem_new4((C.int)(w), (C.int)(h), (C.uintptr_t)(hData), (C.uintptr_t)(vData))
 	return newQSpacerItem(ret)
 }
@@ -270,11 +270,11 @@ func (this *QSpacerItem) SizePolicy() *QSizePolicy {
 	return ret1
 }
 
-func (this *QSpacerItem) ChangeSize3(w int, h int, hData uintptr) {
+func (this *QSpacerItem) ChangeSize3(w int, h int, hData QSizePolicy__Policy) {
 	C.QSpacerItem_ChangeSize3(this.h, (C.int)(w), (C.int)(h), (C.uintptr_t)(hData))
 }
 
-func (this *QSpacerItem) ChangeSize4(w int, h int, hData uintptr, vData uintptr) {
+func (this *QSpacerItem) ChangeSize4(w int, h int, hData QSizePolicy__Policy, vData QSizePolicy__Policy) {
 	C.QSpacerItem_ChangeSize4(this.h, (C.int)(w), (C.int)(h), (C.uintptr_t)(hData), (C.uintptr_t)(vData))
 }
 

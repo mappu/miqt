@@ -12,6 +12,25 @@ import (
 	"unsafe"
 )
 
+type QSystemSemaphore__AccessMode int
+
+const (
+	QSystemSemaphore__AccessMode__Open   QSystemSemaphore__AccessMode = 0
+	QSystemSemaphore__AccessMode__Create QSystemSemaphore__AccessMode = 1
+)
+
+type QSystemSemaphore__SystemSemaphoreError int
+
+const (
+	QSystemSemaphore__SystemSemaphoreError__NoError          QSystemSemaphore__SystemSemaphoreError = 0
+	QSystemSemaphore__SystemSemaphoreError__PermissionDenied QSystemSemaphore__SystemSemaphoreError = 1
+	QSystemSemaphore__SystemSemaphoreError__KeyError         QSystemSemaphore__SystemSemaphoreError = 2
+	QSystemSemaphore__SystemSemaphoreError__AlreadyExists    QSystemSemaphore__SystemSemaphoreError = 3
+	QSystemSemaphore__SystemSemaphoreError__NotFound         QSystemSemaphore__SystemSemaphoreError = 4
+	QSystemSemaphore__SystemSemaphoreError__OutOfResources   QSystemSemaphore__SystemSemaphoreError = 5
+	QSystemSemaphore__SystemSemaphoreError__UnknownError     QSystemSemaphore__SystemSemaphoreError = 6
+)
+
 type QSystemSemaphore struct {
 	h *C.QSystemSemaphore
 }
@@ -51,7 +70,7 @@ func NewQSystemSemaphore2(key string, initialValue int) *QSystemSemaphore {
 }
 
 // NewQSystemSemaphore3 constructs a new QSystemSemaphore object.
-func NewQSystemSemaphore3(key string, initialValue int, mode uintptr) *QSystemSemaphore {
+func NewQSystemSemaphore3(key string, initialValue int, mode QSystemSemaphore__AccessMode) *QSystemSemaphore {
 	key_Cstring := C.CString(key)
 	defer C.free(unsafe.Pointer(key_Cstring))
 	ret := C.QSystemSemaphore_new3(key_Cstring, C.size_t(len(key)), (C.int)(initialValue), (C.uintptr_t)(mode))
@@ -83,9 +102,9 @@ func (this *QSystemSemaphore) Release() bool {
 	return (bool)(ret)
 }
 
-func (this *QSystemSemaphore) Error() uintptr {
+func (this *QSystemSemaphore) Error() QSystemSemaphore__SystemSemaphoreError {
 	ret := C.QSystemSemaphore_Error(this.h)
-	return (uintptr)(ret)
+	return (QSystemSemaphore__SystemSemaphoreError)(ret)
 }
 
 func (this *QSystemSemaphore) ErrorString() string {
@@ -103,7 +122,7 @@ func (this *QSystemSemaphore) SetKey2(key string, initialValue int) {
 	C.QSystemSemaphore_SetKey2(this.h, key_Cstring, C.size_t(len(key)), (C.int)(initialValue))
 }
 
-func (this *QSystemSemaphore) SetKey3(key string, initialValue int, mode uintptr) {
+func (this *QSystemSemaphore) SetKey3(key string, initialValue int, mode QSystemSemaphore__AccessMode) {
 	key_Cstring := C.CString(key)
 	defer C.free(unsafe.Pointer(key_Cstring))
 	C.QSystemSemaphore_SetKey3(this.h, key_Cstring, C.size_t(len(key)), (C.int)(initialValue), (C.uintptr_t)(mode))

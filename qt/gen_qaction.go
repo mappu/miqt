@@ -14,6 +14,33 @@ import (
 	"unsafe"
 )
 
+type QAction__MenuRole int
+
+const (
+	QAction__MenuRole__NoRole                  QAction__MenuRole = 0
+	QAction__MenuRole__TextHeuristicRole       QAction__MenuRole = 1
+	QAction__MenuRole__ApplicationSpecificRole QAction__MenuRole = 2
+	QAction__MenuRole__AboutQtRole             QAction__MenuRole = 3
+	QAction__MenuRole__AboutRole               QAction__MenuRole = 4
+	QAction__MenuRole__PreferencesRole         QAction__MenuRole = 5
+	QAction__MenuRole__QuitRole                QAction__MenuRole = 6
+)
+
+type QAction__Priority int
+
+const (
+	QAction__Priority__LowPriority    QAction__Priority = 0
+	QAction__Priority__NormalPriority QAction__Priority = 128
+	QAction__Priority__HighPriority   QAction__Priority = 256
+)
+
+type QAction__ActionEvent int
+
+const (
+	QAction__ActionEvent__Trigger QAction__ActionEvent = 0
+	QAction__ActionEvent__Hover   QAction__ActionEvent = 1
+)
+
 type QAction struct {
 	h *C.QAction
 	*QObject
@@ -207,13 +234,13 @@ func (this *QAction) WhatsThis() string {
 	return ret
 }
 
-func (this *QAction) SetPriority(priority uintptr) {
+func (this *QAction) SetPriority(priority QAction__Priority) {
 	C.QAction_SetPriority(this.h, (C.uintptr_t)(priority))
 }
 
-func (this *QAction) Priority() uintptr {
+func (this *QAction) Priority() QAction__Priority {
 	ret := C.QAction_Priority(this.h)
-	return (uintptr)(ret)
+	return (QAction__Priority)(ret)
 }
 
 func (this *QAction) Menu() *QMenu {
@@ -259,7 +286,7 @@ func (this *QAction) SetShortcuts(shortcuts []QKeySequence) {
 	C.QAction_SetShortcuts(this.h, &shortcuts_CArray[0], C.size_t(len(shortcuts)))
 }
 
-func (this *QAction) SetShortcutsWithShortcuts(shortcuts uintptr) {
+func (this *QAction) SetShortcutsWithShortcuts(shortcuts QKeySequence__StandardKey) {
 	C.QAction_SetShortcutsWithShortcuts(this.h, (C.uintptr_t)(shortcuts))
 }
 
@@ -276,13 +303,13 @@ func (this *QAction) Shortcuts() []QKeySequence {
 	return ret
 }
 
-func (this *QAction) SetShortcutContext(context uintptr) {
+func (this *QAction) SetShortcutContext(context ShortcutContext) {
 	C.QAction_SetShortcutContext(this.h, (C.uintptr_t)(context))
 }
 
-func (this *QAction) ShortcutContext() uintptr {
+func (this *QAction) ShortcutContext() ShortcutContext {
 	ret := C.QAction_ShortcutContext(this.h)
-	return (uintptr)(ret)
+	return (ShortcutContext)(ret)
 }
 
 func (this *QAction) SetAutoRepeat(autoRepeat bool) {
@@ -348,7 +375,7 @@ func (this *QAction) IsVisible() bool {
 	return (bool)(ret)
 }
 
-func (this *QAction) Activate(event uintptr) {
+func (this *QAction) Activate(event QAction__ActionEvent) {
 	C.QAction_Activate(this.h, (C.uintptr_t)(event))
 }
 
@@ -357,13 +384,13 @@ func (this *QAction) ShowStatusText() bool {
 	return (bool)(ret)
 }
 
-func (this *QAction) SetMenuRole(menuRole uintptr) {
+func (this *QAction) SetMenuRole(menuRole QAction__MenuRole) {
 	C.QAction_SetMenuRole(this.h, (C.uintptr_t)(menuRole))
 }
 
-func (this *QAction) MenuRole() uintptr {
+func (this *QAction) MenuRole() QAction__MenuRole {
 	ret := C.QAction_MenuRole(this.h)
-	return (uintptr)(ret)
+	return (QAction__MenuRole)(ret)
 }
 
 func (this *QAction) SetIconVisibleInMenu(visible bool) {

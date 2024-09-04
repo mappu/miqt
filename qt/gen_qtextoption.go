@@ -12,6 +12,36 @@ import (
 	"unsafe"
 )
 
+type QTextOption__TabType int
+
+const (
+	QTextOption__TabType__LeftTab      QTextOption__TabType = 0
+	QTextOption__TabType__RightTab     QTextOption__TabType = 1
+	QTextOption__TabType__CenterTab    QTextOption__TabType = 2
+	QTextOption__TabType__DelimiterTab QTextOption__TabType = 3
+)
+
+type QTextOption__WrapMode int
+
+const (
+	QTextOption__WrapMode__NoWrap                       QTextOption__WrapMode = 0
+	QTextOption__WrapMode__WordWrap                     QTextOption__WrapMode = 1
+	QTextOption__WrapMode__ManualWrap                   QTextOption__WrapMode = 2
+	QTextOption__WrapMode__WrapAnywhere                 QTextOption__WrapMode = 3
+	QTextOption__WrapMode__WrapAtWordBoundaryOrAnywhere QTextOption__WrapMode = 4
+)
+
+type QTextOption__Flag int
+
+const (
+	QTextOption__Flag__ShowTabsAndSpaces                     QTextOption__Flag = 1
+	QTextOption__Flag__ShowLineAndParagraphSeparators        QTextOption__Flag = 2
+	QTextOption__Flag__AddSpaceForLineAndParagraphSeparators QTextOption__Flag = 4
+	QTextOption__Flag__SuppressColors                        QTextOption__Flag = 8
+	QTextOption__Flag__ShowDocumentTerminator                QTextOption__Flag = 16
+	QTextOption__Flag__IncludeTrailingSpaces                 QTextOption__Flag = 2147483648
+)
+
 type QTextOption struct {
 	h *C.QTextOption
 }
@@ -65,22 +95,22 @@ func (this *QTextOption) Alignment() int {
 	return (int)(ret)
 }
 
-func (this *QTextOption) SetTextDirection(aDirection uintptr) {
+func (this *QTextOption) SetTextDirection(aDirection LayoutDirection) {
 	C.QTextOption_SetTextDirection(this.h, (C.uintptr_t)(aDirection))
 }
 
-func (this *QTextOption) TextDirection() uintptr {
+func (this *QTextOption) TextDirection() LayoutDirection {
 	ret := C.QTextOption_TextDirection(this.h)
-	return (uintptr)(ret)
+	return (LayoutDirection)(ret)
 }
 
-func (this *QTextOption) SetWrapMode(wrap uintptr) {
+func (this *QTextOption) SetWrapMode(wrap QTextOption__WrapMode) {
 	C.QTextOption_SetWrapMode(this.h, (C.uintptr_t)(wrap))
 }
 
-func (this *QTextOption) WrapMode() uintptr {
+func (this *QTextOption) WrapMode() QTextOption__WrapMode {
 	ret := C.QTextOption_WrapMode(this.h)
-	return (uintptr)(ret)
+	return (QTextOption__WrapMode)(ret)
 }
 
 func (this *QTextOption) SetFlags(flags int) {
@@ -198,7 +228,7 @@ func NewQTextOption__Tab() *QTextOption__Tab {
 }
 
 // NewQTextOption__Tab2 constructs a new QTextOption::Tab object.
-func NewQTextOption__Tab2(pos float64, tabType uintptr) *QTextOption__Tab {
+func NewQTextOption__Tab2(pos float64, tabType QTextOption__TabType) *QTextOption__Tab {
 	ret := C.QTextOption__Tab_new2((C.double)(pos), (C.uintptr_t)(tabType))
 	return newQTextOption__Tab(ret)
 }
@@ -210,7 +240,7 @@ func NewQTextOption__Tab3(param1 *QTextOption__Tab) *QTextOption__Tab {
 }
 
 // NewQTextOption__Tab4 constructs a new QTextOption::Tab object.
-func NewQTextOption__Tab4(pos float64, tabType uintptr, delim QChar) *QTextOption__Tab {
+func NewQTextOption__Tab4(pos float64, tabType QTextOption__TabType, delim QChar) *QTextOption__Tab {
 	ret := C.QTextOption__Tab_new4((C.double)(pos), (C.uintptr_t)(tabType), delim.cPointer())
 	return newQTextOption__Tab(ret)
 }

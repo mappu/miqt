@@ -13,6 +13,18 @@ import (
 	"unsafe"
 )
 
+type QOperatingSystemVersion__OSType int
+
+const (
+	QOperatingSystemVersion__OSType__Unknown QOperatingSystemVersion__OSType = 0
+	QOperatingSystemVersion__OSType__Windows QOperatingSystemVersion__OSType = 1
+	QOperatingSystemVersion__OSType__MacOS   QOperatingSystemVersion__OSType = 2
+	QOperatingSystemVersion__OSType__IOS     QOperatingSystemVersion__OSType = 3
+	QOperatingSystemVersion__OSType__TvOS    QOperatingSystemVersion__OSType = 4
+	QOperatingSystemVersion__OSType__WatchOS QOperatingSystemVersion__OSType = 5
+	QOperatingSystemVersion__OSType__Android QOperatingSystemVersion__OSType = 6
+)
+
 type QOperatingSystemVersion struct {
 	h *C.QOperatingSystemVersion
 }
@@ -36,19 +48,19 @@ func newQOperatingSystemVersion_U(h unsafe.Pointer) *QOperatingSystemVersion {
 }
 
 // NewQOperatingSystemVersion constructs a new QOperatingSystemVersion object.
-func NewQOperatingSystemVersion(osType uintptr, vmajor int) *QOperatingSystemVersion {
+func NewQOperatingSystemVersion(osType QOperatingSystemVersion__OSType, vmajor int) *QOperatingSystemVersion {
 	ret := C.QOperatingSystemVersion_new((C.uintptr_t)(osType), (C.int)(vmajor))
 	return newQOperatingSystemVersion(ret)
 }
 
 // NewQOperatingSystemVersion2 constructs a new QOperatingSystemVersion object.
-func NewQOperatingSystemVersion2(osType uintptr, vmajor int, vminor int) *QOperatingSystemVersion {
+func NewQOperatingSystemVersion2(osType QOperatingSystemVersion__OSType, vmajor int, vminor int) *QOperatingSystemVersion {
 	ret := C.QOperatingSystemVersion_new2((C.uintptr_t)(osType), (C.int)(vmajor), (C.int)(vminor))
 	return newQOperatingSystemVersion(ret)
 }
 
 // NewQOperatingSystemVersion3 constructs a new QOperatingSystemVersion object.
-func NewQOperatingSystemVersion3(osType uintptr, vmajor int, vminor int, vmicro int) *QOperatingSystemVersion {
+func NewQOperatingSystemVersion3(osType QOperatingSystemVersion__OSType, vmajor int, vminor int, vmicro int) *QOperatingSystemVersion {
 	ret := C.QOperatingSystemVersion_new3((C.uintptr_t)(osType), (C.int)(vmajor), (C.int)(vminor), (C.int)(vmicro))
 	return newQOperatingSystemVersion(ret)
 }
@@ -64,9 +76,9 @@ func QOperatingSystemVersion_Current() *QOperatingSystemVersion {
 	return ret1
 }
 
-func QOperatingSystemVersion_CurrentType() uintptr {
+func QOperatingSystemVersion_CurrentType() QOperatingSystemVersion__OSType {
 	ret := C.QOperatingSystemVersion_CurrentType()
-	return (uintptr)(ret)
+	return (QOperatingSystemVersion__OSType)(ret)
 }
 
 func (this *QOperatingSystemVersion) MajorVersion() int {
@@ -89,9 +101,9 @@ func (this *QOperatingSystemVersion) SegmentCount() int {
 	return (int)(ret)
 }
 
-func (this *QOperatingSystemVersion) Type() uintptr {
+func (this *QOperatingSystemVersion) Type() QOperatingSystemVersion__OSType {
 	ret := C.QOperatingSystemVersion_Type(this.h)
-	return (uintptr)(ret)
+	return (QOperatingSystemVersion__OSType)(ret)
 }
 
 func (this *QOperatingSystemVersion) Name() string {

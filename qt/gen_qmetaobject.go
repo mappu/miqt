@@ -13,6 +13,31 @@ import (
 	"unsafe"
 )
 
+type QMetaMethod__Access int
+
+const (
+	QMetaMethod__Access__Private   QMetaMethod__Access = 0
+	QMetaMethod__Access__Protected QMetaMethod__Access = 1
+	QMetaMethod__Access__Public    QMetaMethod__Access = 2
+)
+
+type QMetaMethod__MethodType int
+
+const (
+	QMetaMethod__MethodType__Method      QMetaMethod__MethodType = 0
+	QMetaMethod__MethodType__Signal      QMetaMethod__MethodType = 1
+	QMetaMethod__MethodType__Slot        QMetaMethod__MethodType = 2
+	QMetaMethod__MethodType__Constructor QMetaMethod__MethodType = 3
+)
+
+type QMetaMethod__Attributes int
+
+const (
+	QMetaMethod__Attributes__Compatibility QMetaMethod__Attributes = 1
+	QMetaMethod__Attributes__Cloned        QMetaMethod__Attributes = 2
+	QMetaMethod__Attributes__Scriptable    QMetaMethod__Attributes = 4
+)
+
 type QMetaMethod struct {
 	h *C.QMetaMethod
 }
@@ -124,14 +149,14 @@ func (this *QMetaMethod) Tag() unsafe.Pointer {
 	return (unsafe.Pointer)(ret)
 }
 
-func (this *QMetaMethod) Access() uintptr {
+func (this *QMetaMethod) Access() QMetaMethod__Access {
 	ret := C.QMetaMethod_Access(this.h)
-	return (uintptr)(ret)
+	return (QMetaMethod__Access)(ret)
 }
 
-func (this *QMetaMethod) MethodType() uintptr {
+func (this *QMetaMethod) MethodType() QMetaMethod__MethodType {
 	ret := C.QMetaMethod_MethodType(this.h)
-	return (uintptr)(ret)
+	return (QMetaMethod__MethodType)(ret)
 }
 
 func (this *QMetaMethod) Attributes() int {
@@ -154,7 +179,7 @@ func (this *QMetaMethod) EnclosingMetaObject() *QMetaObject {
 	return newQMetaObject_U(unsafe.Pointer(ret))
 }
 
-func (this *QMetaMethod) Invoke(object *QObject, connectionType uintptr, returnValue QGenericReturnArgument) bool {
+func (this *QMetaMethod) Invoke(object *QObject, connectionType ConnectionType, returnValue QGenericReturnArgument) bool {
 	ret := C.QMetaMethod_Invoke(this.h, object.cPointer(), (C.uintptr_t)(connectionType), returnValue.cPointer())
 	return (bool)(ret)
 }
@@ -164,7 +189,7 @@ func (this *QMetaMethod) Invoke2(object *QObject, returnValue QGenericReturnArgu
 	return (bool)(ret)
 }
 
-func (this *QMetaMethod) Invoke3(object *QObject, connectionType uintptr) bool {
+func (this *QMetaMethod) Invoke3(object *QObject, connectionType ConnectionType) bool {
 	ret := C.QMetaMethod_Invoke3(this.h, object.cPointer(), (C.uintptr_t)(connectionType))
 	return (bool)(ret)
 }
@@ -179,52 +204,52 @@ func (this *QMetaMethod) IsValid() bool {
 	return (bool)(ret)
 }
 
-func (this *QMetaMethod) Invoke4(object *QObject, connectionType uintptr, returnValue QGenericReturnArgument, val0 QGenericArgument) bool {
+func (this *QMetaMethod) Invoke4(object *QObject, connectionType ConnectionType, returnValue QGenericReturnArgument, val0 QGenericArgument) bool {
 	ret := C.QMetaMethod_Invoke4(this.h, object.cPointer(), (C.uintptr_t)(connectionType), returnValue.cPointer(), val0.cPointer())
 	return (bool)(ret)
 }
 
-func (this *QMetaMethod) Invoke5(object *QObject, connectionType uintptr, returnValue QGenericReturnArgument, val0 QGenericArgument, val1 QGenericArgument) bool {
+func (this *QMetaMethod) Invoke5(object *QObject, connectionType ConnectionType, returnValue QGenericReturnArgument, val0 QGenericArgument, val1 QGenericArgument) bool {
 	ret := C.QMetaMethod_Invoke5(this.h, object.cPointer(), (C.uintptr_t)(connectionType), returnValue.cPointer(), val0.cPointer(), val1.cPointer())
 	return (bool)(ret)
 }
 
-func (this *QMetaMethod) Invoke6(object *QObject, connectionType uintptr, returnValue QGenericReturnArgument, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument) bool {
+func (this *QMetaMethod) Invoke6(object *QObject, connectionType ConnectionType, returnValue QGenericReturnArgument, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument) bool {
 	ret := C.QMetaMethod_Invoke6(this.h, object.cPointer(), (C.uintptr_t)(connectionType), returnValue.cPointer(), val0.cPointer(), val1.cPointer(), val2.cPointer())
 	return (bool)(ret)
 }
 
-func (this *QMetaMethod) Invoke7(object *QObject, connectionType uintptr, returnValue QGenericReturnArgument, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument) bool {
+func (this *QMetaMethod) Invoke7(object *QObject, connectionType ConnectionType, returnValue QGenericReturnArgument, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument) bool {
 	ret := C.QMetaMethod_Invoke7(this.h, object.cPointer(), (C.uintptr_t)(connectionType), returnValue.cPointer(), val0.cPointer(), val1.cPointer(), val2.cPointer(), val3.cPointer())
 	return (bool)(ret)
 }
 
-func (this *QMetaMethod) Invoke8(object *QObject, connectionType uintptr, returnValue QGenericReturnArgument, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument, val4 QGenericArgument) bool {
+func (this *QMetaMethod) Invoke8(object *QObject, connectionType ConnectionType, returnValue QGenericReturnArgument, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument, val4 QGenericArgument) bool {
 	ret := C.QMetaMethod_Invoke8(this.h, object.cPointer(), (C.uintptr_t)(connectionType), returnValue.cPointer(), val0.cPointer(), val1.cPointer(), val2.cPointer(), val3.cPointer(), val4.cPointer())
 	return (bool)(ret)
 }
 
-func (this *QMetaMethod) Invoke9(object *QObject, connectionType uintptr, returnValue QGenericReturnArgument, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument, val4 QGenericArgument, val5 QGenericArgument) bool {
+func (this *QMetaMethod) Invoke9(object *QObject, connectionType ConnectionType, returnValue QGenericReturnArgument, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument, val4 QGenericArgument, val5 QGenericArgument) bool {
 	ret := C.QMetaMethod_Invoke9(this.h, object.cPointer(), (C.uintptr_t)(connectionType), returnValue.cPointer(), val0.cPointer(), val1.cPointer(), val2.cPointer(), val3.cPointer(), val4.cPointer(), val5.cPointer())
 	return (bool)(ret)
 }
 
-func (this *QMetaMethod) Invoke10(object *QObject, connectionType uintptr, returnValue QGenericReturnArgument, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument, val4 QGenericArgument, val5 QGenericArgument, val6 QGenericArgument) bool {
+func (this *QMetaMethod) Invoke10(object *QObject, connectionType ConnectionType, returnValue QGenericReturnArgument, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument, val4 QGenericArgument, val5 QGenericArgument, val6 QGenericArgument) bool {
 	ret := C.QMetaMethod_Invoke10(this.h, object.cPointer(), (C.uintptr_t)(connectionType), returnValue.cPointer(), val0.cPointer(), val1.cPointer(), val2.cPointer(), val3.cPointer(), val4.cPointer(), val5.cPointer(), val6.cPointer())
 	return (bool)(ret)
 }
 
-func (this *QMetaMethod) Invoke11(object *QObject, connectionType uintptr, returnValue QGenericReturnArgument, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument, val4 QGenericArgument, val5 QGenericArgument, val6 QGenericArgument, val7 QGenericArgument) bool {
+func (this *QMetaMethod) Invoke11(object *QObject, connectionType ConnectionType, returnValue QGenericReturnArgument, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument, val4 QGenericArgument, val5 QGenericArgument, val6 QGenericArgument, val7 QGenericArgument) bool {
 	ret := C.QMetaMethod_Invoke11(this.h, object.cPointer(), (C.uintptr_t)(connectionType), returnValue.cPointer(), val0.cPointer(), val1.cPointer(), val2.cPointer(), val3.cPointer(), val4.cPointer(), val5.cPointer(), val6.cPointer(), val7.cPointer())
 	return (bool)(ret)
 }
 
-func (this *QMetaMethod) Invoke12(object *QObject, connectionType uintptr, returnValue QGenericReturnArgument, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument, val4 QGenericArgument, val5 QGenericArgument, val6 QGenericArgument, val7 QGenericArgument, val8 QGenericArgument) bool {
+func (this *QMetaMethod) Invoke12(object *QObject, connectionType ConnectionType, returnValue QGenericReturnArgument, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument, val4 QGenericArgument, val5 QGenericArgument, val6 QGenericArgument, val7 QGenericArgument, val8 QGenericArgument) bool {
 	ret := C.QMetaMethod_Invoke12(this.h, object.cPointer(), (C.uintptr_t)(connectionType), returnValue.cPointer(), val0.cPointer(), val1.cPointer(), val2.cPointer(), val3.cPointer(), val4.cPointer(), val5.cPointer(), val6.cPointer(), val7.cPointer(), val8.cPointer())
 	return (bool)(ret)
 }
 
-func (this *QMetaMethod) Invoke13(object *QObject, connectionType uintptr, returnValue QGenericReturnArgument, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument, val4 QGenericArgument, val5 QGenericArgument, val6 QGenericArgument, val7 QGenericArgument, val8 QGenericArgument, val9 QGenericArgument) bool {
+func (this *QMetaMethod) Invoke13(object *QObject, connectionType ConnectionType, returnValue QGenericReturnArgument, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument, val4 QGenericArgument, val5 QGenericArgument, val6 QGenericArgument, val7 QGenericArgument, val8 QGenericArgument, val9 QGenericArgument) bool {
 	ret := C.QMetaMethod_Invoke13(this.h, object.cPointer(), (C.uintptr_t)(connectionType), returnValue.cPointer(), val0.cPointer(), val1.cPointer(), val2.cPointer(), val3.cPointer(), val4.cPointer(), val5.cPointer(), val6.cPointer(), val7.cPointer(), val8.cPointer(), val9.cPointer())
 	return (bool)(ret)
 }
@@ -279,52 +304,52 @@ func (this *QMetaMethod) Invoke122(object *QObject, returnValue QGenericReturnAr
 	return (bool)(ret)
 }
 
-func (this *QMetaMethod) Invoke33(object *QObject, connectionType uintptr, val0 QGenericArgument) bool {
+func (this *QMetaMethod) Invoke33(object *QObject, connectionType ConnectionType, val0 QGenericArgument) bool {
 	ret := C.QMetaMethod_Invoke33(this.h, object.cPointer(), (C.uintptr_t)(connectionType), val0.cPointer())
 	return (bool)(ret)
 }
 
-func (this *QMetaMethod) Invoke43(object *QObject, connectionType uintptr, val0 QGenericArgument, val1 QGenericArgument) bool {
+func (this *QMetaMethod) Invoke43(object *QObject, connectionType ConnectionType, val0 QGenericArgument, val1 QGenericArgument) bool {
 	ret := C.QMetaMethod_Invoke43(this.h, object.cPointer(), (C.uintptr_t)(connectionType), val0.cPointer(), val1.cPointer())
 	return (bool)(ret)
 }
 
-func (this *QMetaMethod) Invoke53(object *QObject, connectionType uintptr, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument) bool {
+func (this *QMetaMethod) Invoke53(object *QObject, connectionType ConnectionType, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument) bool {
 	ret := C.QMetaMethod_Invoke53(this.h, object.cPointer(), (C.uintptr_t)(connectionType), val0.cPointer(), val1.cPointer(), val2.cPointer())
 	return (bool)(ret)
 }
 
-func (this *QMetaMethod) Invoke63(object *QObject, connectionType uintptr, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument) bool {
+func (this *QMetaMethod) Invoke63(object *QObject, connectionType ConnectionType, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument) bool {
 	ret := C.QMetaMethod_Invoke63(this.h, object.cPointer(), (C.uintptr_t)(connectionType), val0.cPointer(), val1.cPointer(), val2.cPointer(), val3.cPointer())
 	return (bool)(ret)
 }
 
-func (this *QMetaMethod) Invoke73(object *QObject, connectionType uintptr, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument, val4 QGenericArgument) bool {
+func (this *QMetaMethod) Invoke73(object *QObject, connectionType ConnectionType, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument, val4 QGenericArgument) bool {
 	ret := C.QMetaMethod_Invoke73(this.h, object.cPointer(), (C.uintptr_t)(connectionType), val0.cPointer(), val1.cPointer(), val2.cPointer(), val3.cPointer(), val4.cPointer())
 	return (bool)(ret)
 }
 
-func (this *QMetaMethod) Invoke83(object *QObject, connectionType uintptr, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument, val4 QGenericArgument, val5 QGenericArgument) bool {
+func (this *QMetaMethod) Invoke83(object *QObject, connectionType ConnectionType, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument, val4 QGenericArgument, val5 QGenericArgument) bool {
 	ret := C.QMetaMethod_Invoke83(this.h, object.cPointer(), (C.uintptr_t)(connectionType), val0.cPointer(), val1.cPointer(), val2.cPointer(), val3.cPointer(), val4.cPointer(), val5.cPointer())
 	return (bool)(ret)
 }
 
-func (this *QMetaMethod) Invoke93(object *QObject, connectionType uintptr, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument, val4 QGenericArgument, val5 QGenericArgument, val6 QGenericArgument) bool {
+func (this *QMetaMethod) Invoke93(object *QObject, connectionType ConnectionType, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument, val4 QGenericArgument, val5 QGenericArgument, val6 QGenericArgument) bool {
 	ret := C.QMetaMethod_Invoke93(this.h, object.cPointer(), (C.uintptr_t)(connectionType), val0.cPointer(), val1.cPointer(), val2.cPointer(), val3.cPointer(), val4.cPointer(), val5.cPointer(), val6.cPointer())
 	return (bool)(ret)
 }
 
-func (this *QMetaMethod) Invoke103(object *QObject, connectionType uintptr, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument, val4 QGenericArgument, val5 QGenericArgument, val6 QGenericArgument, val7 QGenericArgument) bool {
+func (this *QMetaMethod) Invoke103(object *QObject, connectionType ConnectionType, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument, val4 QGenericArgument, val5 QGenericArgument, val6 QGenericArgument, val7 QGenericArgument) bool {
 	ret := C.QMetaMethod_Invoke103(this.h, object.cPointer(), (C.uintptr_t)(connectionType), val0.cPointer(), val1.cPointer(), val2.cPointer(), val3.cPointer(), val4.cPointer(), val5.cPointer(), val6.cPointer(), val7.cPointer())
 	return (bool)(ret)
 }
 
-func (this *QMetaMethod) Invoke113(object *QObject, connectionType uintptr, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument, val4 QGenericArgument, val5 QGenericArgument, val6 QGenericArgument, val7 QGenericArgument, val8 QGenericArgument) bool {
+func (this *QMetaMethod) Invoke113(object *QObject, connectionType ConnectionType, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument, val4 QGenericArgument, val5 QGenericArgument, val6 QGenericArgument, val7 QGenericArgument, val8 QGenericArgument) bool {
 	ret := C.QMetaMethod_Invoke113(this.h, object.cPointer(), (C.uintptr_t)(connectionType), val0.cPointer(), val1.cPointer(), val2.cPointer(), val3.cPointer(), val4.cPointer(), val5.cPointer(), val6.cPointer(), val7.cPointer(), val8.cPointer())
 	return (bool)(ret)
 }
 
-func (this *QMetaMethod) Invoke123(object *QObject, connectionType uintptr, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument, val4 QGenericArgument, val5 QGenericArgument, val6 QGenericArgument, val7 QGenericArgument, val8 QGenericArgument, val9 QGenericArgument) bool {
+func (this *QMetaMethod) Invoke123(object *QObject, connectionType ConnectionType, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument, val4 QGenericArgument, val5 QGenericArgument, val6 QGenericArgument, val7 QGenericArgument, val8 QGenericArgument, val9 QGenericArgument) bool {
 	ret := C.QMetaMethod_Invoke123(this.h, object.cPointer(), (C.uintptr_t)(connectionType), val0.cPointer(), val1.cPointer(), val2.cPointer(), val3.cPointer(), val4.cPointer(), val5.cPointer(), val6.cPointer(), val7.cPointer(), val8.cPointer(), val9.cPointer())
 	return (bool)(ret)
 }
@@ -553,9 +578,9 @@ func (this *QMetaProperty) TypeName() unsafe.Pointer {
 	return (unsafe.Pointer)(ret)
 }
 
-func (this *QMetaProperty) Type() uintptr {
+func (this *QMetaProperty) Type() QVariant__Type {
 	ret := C.QMetaProperty_Type(this.h)
-	return (uintptr)(ret)
+	return (QVariant__Type)(ret)
 }
 
 func (this *QMetaProperty) UserType() int {

@@ -13,6 +13,13 @@ import (
 	"unsafe"
 )
 
+type QStaticText__PerformanceHint int
+
+const (
+	QStaticText__PerformanceHint__ModerateCaching   QStaticText__PerformanceHint = 0
+	QStaticText__PerformanceHint__AggressiveCaching QStaticText__PerformanceHint = 1
+)
+
 type QStaticText struct {
 	h *C.QStaticText
 }
@@ -78,13 +85,13 @@ func (this *QStaticText) Text() string {
 	return ret
 }
 
-func (this *QStaticText) SetTextFormat(textFormat uintptr) {
+func (this *QStaticText) SetTextFormat(textFormat TextFormat) {
 	C.QStaticText_SetTextFormat(this.h, (C.uintptr_t)(textFormat))
 }
 
-func (this *QStaticText) TextFormat() uintptr {
+func (this *QStaticText) TextFormat() TextFormat {
 	ret := C.QStaticText_TextFormat(this.h)
-	return (uintptr)(ret)
+	return (TextFormat)(ret)
 }
 
 func (this *QStaticText) SetTextWidth(textWidth float64) {
@@ -126,13 +133,13 @@ func (this *QStaticText) Prepare() {
 	C.QStaticText_Prepare(this.h)
 }
 
-func (this *QStaticText) SetPerformanceHint(performanceHint uintptr) {
+func (this *QStaticText) SetPerformanceHint(performanceHint QStaticText__PerformanceHint) {
 	C.QStaticText_SetPerformanceHint(this.h, (C.uintptr_t)(performanceHint))
 }
 
-func (this *QStaticText) PerformanceHint() uintptr {
+func (this *QStaticText) PerformanceHint() QStaticText__PerformanceHint {
 	ret := C.QStaticText_PerformanceHint(this.h)
-	return (uintptr)(ret)
+	return (QStaticText__PerformanceHint)(ret)
 }
 
 func (this *QStaticText) OperatorEqual(param1 *QStaticText) bool {

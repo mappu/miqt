@@ -43,7 +43,7 @@ func NewQMouseEventTransition() *QMouseEventTransition {
 }
 
 // NewQMouseEventTransition2 constructs a new QMouseEventTransition object.
-func NewQMouseEventTransition2(object *QObject, typeVal uintptr, button uintptr) *QMouseEventTransition {
+func NewQMouseEventTransition2(object *QObject, typeVal QEvent__Type, button MouseButton) *QMouseEventTransition {
 	ret := C.QMouseEventTransition_new2(object.cPointer(), (C.uintptr_t)(typeVal), (C.uintptr_t)(button))
 	return newQMouseEventTransition(ret)
 }
@@ -55,7 +55,7 @@ func NewQMouseEventTransition3(sourceState *QState) *QMouseEventTransition {
 }
 
 // NewQMouseEventTransition4 constructs a new QMouseEventTransition object.
-func NewQMouseEventTransition4(object *QObject, typeVal uintptr, button uintptr, sourceState *QState) *QMouseEventTransition {
+func NewQMouseEventTransition4(object *QObject, typeVal QEvent__Type, button MouseButton, sourceState *QState) *QMouseEventTransition {
 	ret := C.QMouseEventTransition_new4(object.cPointer(), (C.uintptr_t)(typeVal), (C.uintptr_t)(button), sourceState.cPointer())
 	return newQMouseEventTransition(ret)
 }
@@ -87,12 +87,12 @@ func QMouseEventTransition_TrUtf8(s string) string {
 	return ret
 }
 
-func (this *QMouseEventTransition) Button() uintptr {
+func (this *QMouseEventTransition) Button() MouseButton {
 	ret := C.QMouseEventTransition_Button(this.h)
-	return (uintptr)(ret)
+	return (MouseButton)(ret)
 }
 
-func (this *QMouseEventTransition) SetButton(button uintptr) {
+func (this *QMouseEventTransition) SetButton(button MouseButton) {
 	C.QMouseEventTransition_SetButton(this.h, (C.uintptr_t)(button))
 }
 

@@ -14,6 +14,13 @@ import (
 	"unsafe"
 )
 
+type QStackedLayout__StackingMode int
+
+const (
+	QStackedLayout__StackingMode__StackOne QStackedLayout__StackingMode = 0
+	QStackedLayout__StackingMode__StackAll QStackedLayout__StackingMode = 1
+)
+
 type QStackedLayout struct {
 	h *C.QStackedLayout
 	*QLayout
@@ -112,12 +119,12 @@ func (this *QStackedLayout) Count() int {
 	return (int)(ret)
 }
 
-func (this *QStackedLayout) StackingMode() uintptr {
+func (this *QStackedLayout) StackingMode() QStackedLayout__StackingMode {
 	ret := C.QStackedLayout_StackingMode(this.h)
-	return (uintptr)(ret)
+	return (QStackedLayout__StackingMode)(ret)
 }
 
-func (this *QStackedLayout) SetStackingMode(stackingMode uintptr) {
+func (this *QStackedLayout) SetStackingMode(stackingMode QStackedLayout__StackingMode) {
 	C.QStackedLayout_SetStackingMode(this.h, (C.uintptr_t)(stackingMode))
 }
 

@@ -14,6 +14,13 @@ import (
 	"unsafe"
 )
 
+type QTableWidgetItem__ItemType int
+
+const (
+	QTableWidgetItem__ItemType__Type     QTableWidgetItem__ItemType = 0
+	QTableWidgetItem__ItemType__UserType QTableWidgetItem__ItemType = 1000
+)
+
 type QTableWidgetSelectionRange struct {
 	h *C.QTableWidgetSelectionRange
 }
@@ -361,12 +368,12 @@ func (this *QTableWidgetItem) SetForeground(brush *QBrush) {
 	C.QTableWidgetItem_SetForeground(this.h, brush.cPointer())
 }
 
-func (this *QTableWidgetItem) CheckState() uintptr {
+func (this *QTableWidgetItem) CheckState() CheckState {
 	ret := C.QTableWidgetItem_CheckState(this.h)
-	return (uintptr)(ret)
+	return (CheckState)(ret)
 }
 
-func (this *QTableWidgetItem) SetCheckState(state uintptr) {
+func (this *QTableWidgetItem) SetCheckState(state CheckState) {
 	C.QTableWidgetItem_SetCheckState(this.h, (C.uintptr_t)(state))
 }
 
@@ -1028,11 +1035,11 @@ func QTableWidget_TrUtf83(s string, c string, n int) string {
 	return ret
 }
 
-func (this *QTableWidget) SortItems2(column int, order uintptr) {
+func (this *QTableWidget) SortItems2(column int, order SortOrder) {
 	C.QTableWidget_SortItems2(this.h, (C.int)(column), (C.uintptr_t)(order))
 }
 
-func (this *QTableWidget) ScrollToItem2(item *QTableWidgetItem, hint uintptr) {
+func (this *QTableWidget) ScrollToItem2(item *QTableWidgetItem, hint QAbstractItemView__ScrollHint) {
 	C.QTableWidget_ScrollToItem2(this.h, item.cPointer(), (C.uintptr_t)(hint))
 }
 

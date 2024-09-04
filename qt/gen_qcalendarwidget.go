@@ -14,6 +14,29 @@ import (
 	"unsafe"
 )
 
+type QCalendarWidget__HorizontalHeaderFormat int
+
+const (
+	QCalendarWidget__HorizontalHeaderFormat__NoHorizontalHeader   QCalendarWidget__HorizontalHeaderFormat = 0
+	QCalendarWidget__HorizontalHeaderFormat__SingleLetterDayNames QCalendarWidget__HorizontalHeaderFormat = 1
+	QCalendarWidget__HorizontalHeaderFormat__ShortDayNames        QCalendarWidget__HorizontalHeaderFormat = 2
+	QCalendarWidget__HorizontalHeaderFormat__LongDayNames         QCalendarWidget__HorizontalHeaderFormat = 3
+)
+
+type QCalendarWidget__VerticalHeaderFormat int
+
+const (
+	QCalendarWidget__VerticalHeaderFormat__NoVerticalHeader QCalendarWidget__VerticalHeaderFormat = 0
+	QCalendarWidget__VerticalHeaderFormat__ISOWeekNumbers   QCalendarWidget__VerticalHeaderFormat = 1
+)
+
+type QCalendarWidget__SelectionMode int
+
+const (
+	QCalendarWidget__SelectionMode__NoSelection     QCalendarWidget__SelectionMode = 0
+	QCalendarWidget__SelectionMode__SingleSelection QCalendarWidget__SelectionMode = 1
+)
+
 type QCalendarWidget struct {
 	h *C.QCalendarWidget
 	*QWidget
@@ -149,12 +172,12 @@ func (this *QCalendarWidget) SetMaximumDate(date *QDate) {
 	C.QCalendarWidget_SetMaximumDate(this.h, date.cPointer())
 }
 
-func (this *QCalendarWidget) FirstDayOfWeek() uintptr {
+func (this *QCalendarWidget) FirstDayOfWeek() DayOfWeek {
 	ret := C.QCalendarWidget_FirstDayOfWeek(this.h)
-	return (uintptr)(ret)
+	return (DayOfWeek)(ret)
 }
 
-func (this *QCalendarWidget) SetFirstDayOfWeek(dayOfWeek uintptr) {
+func (this *QCalendarWidget) SetFirstDayOfWeek(dayOfWeek DayOfWeek) {
 	C.QCalendarWidget_SetFirstDayOfWeek(this.h, (C.uintptr_t)(dayOfWeek))
 }
 
@@ -183,30 +206,30 @@ func (this *QCalendarWidget) SetCalendar(calendar QCalendar) {
 	C.QCalendarWidget_SetCalendar(this.h, calendar.cPointer())
 }
 
-func (this *QCalendarWidget) SelectionMode() uintptr {
+func (this *QCalendarWidget) SelectionMode() QCalendarWidget__SelectionMode {
 	ret := C.QCalendarWidget_SelectionMode(this.h)
-	return (uintptr)(ret)
+	return (QCalendarWidget__SelectionMode)(ret)
 }
 
-func (this *QCalendarWidget) SetSelectionMode(mode uintptr) {
+func (this *QCalendarWidget) SetSelectionMode(mode QCalendarWidget__SelectionMode) {
 	C.QCalendarWidget_SetSelectionMode(this.h, (C.uintptr_t)(mode))
 }
 
-func (this *QCalendarWidget) HorizontalHeaderFormat() uintptr {
+func (this *QCalendarWidget) HorizontalHeaderFormat() QCalendarWidget__HorizontalHeaderFormat {
 	ret := C.QCalendarWidget_HorizontalHeaderFormat(this.h)
-	return (uintptr)(ret)
+	return (QCalendarWidget__HorizontalHeaderFormat)(ret)
 }
 
-func (this *QCalendarWidget) SetHorizontalHeaderFormat(format uintptr) {
+func (this *QCalendarWidget) SetHorizontalHeaderFormat(format QCalendarWidget__HorizontalHeaderFormat) {
 	C.QCalendarWidget_SetHorizontalHeaderFormat(this.h, (C.uintptr_t)(format))
 }
 
-func (this *QCalendarWidget) VerticalHeaderFormat() uintptr {
+func (this *QCalendarWidget) VerticalHeaderFormat() QCalendarWidget__VerticalHeaderFormat {
 	ret := C.QCalendarWidget_VerticalHeaderFormat(this.h)
-	return (uintptr)(ret)
+	return (QCalendarWidget__VerticalHeaderFormat)(ret)
 }
 
-func (this *QCalendarWidget) SetVerticalHeaderFormat(format uintptr) {
+func (this *QCalendarWidget) SetVerticalHeaderFormat(format QCalendarWidget__VerticalHeaderFormat) {
 	C.QCalendarWidget_SetVerticalHeaderFormat(this.h, (C.uintptr_t)(format))
 }
 
@@ -225,7 +248,7 @@ func (this *QCalendarWidget) SetHeaderTextFormat(format *QTextCharFormat) {
 	C.QCalendarWidget_SetHeaderTextFormat(this.h, format.cPointer())
 }
 
-func (this *QCalendarWidget) WeekdayTextFormat(dayOfWeek uintptr) *QTextCharFormat {
+func (this *QCalendarWidget) WeekdayTextFormat(dayOfWeek DayOfWeek) *QTextCharFormat {
 	ret := C.QCalendarWidget_WeekdayTextFormat(this.h, (C.uintptr_t)(dayOfWeek))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQTextCharFormat(ret)
@@ -236,7 +259,7 @@ func (this *QCalendarWidget) WeekdayTextFormat(dayOfWeek uintptr) *QTextCharForm
 	return ret1
 }
 
-func (this *QCalendarWidget) SetWeekdayTextFormat(dayOfWeek uintptr, format *QTextCharFormat) {
+func (this *QCalendarWidget) SetWeekdayTextFormat(dayOfWeek DayOfWeek, format *QTextCharFormat) {
 	C.QCalendarWidget_SetWeekdayTextFormat(this.h, (C.uintptr_t)(dayOfWeek), format.cPointer())
 }
 

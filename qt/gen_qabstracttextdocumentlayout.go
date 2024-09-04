@@ -68,7 +68,7 @@ func (this *QAbstractTextDocumentLayout) Draw(painter *QPainter, context *QAbstr
 	C.QAbstractTextDocumentLayout_Draw(this.h, painter.cPointer(), context.cPointer())
 }
 
-func (this *QAbstractTextDocumentLayout) HitTest(point *QPointF, accuracy uintptr) int {
+func (this *QAbstractTextDocumentLayout) HitTest(point *QPointF, accuracy HitTestAccuracy) int {
 	ret := C.QAbstractTextDocumentLayout_HitTest(this.h, point.cPointer(), (C.uintptr_t)(accuracy))
 	return (int)(ret)
 }

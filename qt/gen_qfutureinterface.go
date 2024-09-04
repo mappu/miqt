@@ -12,6 +12,18 @@ import (
 	"unsafe"
 )
 
+type QFutureInterfaceBase__State int
+
+const (
+	QFutureInterfaceBase__State__NoState   QFutureInterfaceBase__State = 0
+	QFutureInterfaceBase__State__Running   QFutureInterfaceBase__State = 1
+	QFutureInterfaceBase__State__Started   QFutureInterfaceBase__State = 2
+	QFutureInterfaceBase__State__Finished  QFutureInterfaceBase__State = 4
+	QFutureInterfaceBase__State__Canceled  QFutureInterfaceBase__State = 8
+	QFutureInterfaceBase__State__Paused    QFutureInterfaceBase__State = 16
+	QFutureInterfaceBase__State__Throttled QFutureInterfaceBase__State = 32
+)
+
 type QFutureInterfaceBase struct {
 	h *C.QFutureInterfaceBase
 }
@@ -47,7 +59,7 @@ func NewQFutureInterfaceBase2(other *QFutureInterfaceBase) *QFutureInterfaceBase
 }
 
 // NewQFutureInterfaceBase3 constructs a new QFutureInterfaceBase object.
-func NewQFutureInterfaceBase3(initialState uintptr) *QFutureInterfaceBase {
+func NewQFutureInterfaceBase3(initialState QFutureInterfaceBase__State) *QFutureInterfaceBase {
 	ret := C.QFutureInterfaceBase_new3((C.uintptr_t)(initialState))
 	return newQFutureInterfaceBase(ret)
 }
@@ -137,7 +149,7 @@ func (this *QFutureInterfaceBase) ResultCount() int {
 	return (int)(ret)
 }
 
-func (this *QFutureInterfaceBase) QueryState(state uintptr) bool {
+func (this *QFutureInterfaceBase) QueryState(state QFutureInterfaceBase__State) bool {
 	ret := C.QFutureInterfaceBase_QueryState(this.h, (C.uintptr_t)(state))
 	return (bool)(ret)
 }

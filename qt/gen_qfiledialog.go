@@ -14,6 +14,53 @@ import (
 	"unsafe"
 )
 
+type QFileDialog__ViewMode int
+
+const (
+	QFileDialog__ViewMode__Detail QFileDialog__ViewMode = 0
+	QFileDialog__ViewMode__List   QFileDialog__ViewMode = 1
+)
+
+type QFileDialog__FileMode int
+
+const (
+	QFileDialog__FileMode__AnyFile       QFileDialog__FileMode = 0
+	QFileDialog__FileMode__ExistingFile  QFileDialog__FileMode = 1
+	QFileDialog__FileMode__Directory     QFileDialog__FileMode = 2
+	QFileDialog__FileMode__ExistingFiles QFileDialog__FileMode = 3
+	QFileDialog__FileMode__DirectoryOnly QFileDialog__FileMode = 4
+)
+
+type QFileDialog__AcceptMode int
+
+const (
+	QFileDialog__AcceptMode__AcceptOpen QFileDialog__AcceptMode = 0
+	QFileDialog__AcceptMode__AcceptSave QFileDialog__AcceptMode = 1
+)
+
+type QFileDialog__DialogLabel int
+
+const (
+	QFileDialog__DialogLabel__LookIn   QFileDialog__DialogLabel = 0
+	QFileDialog__DialogLabel__FileName QFileDialog__DialogLabel = 1
+	QFileDialog__DialogLabel__FileType QFileDialog__DialogLabel = 2
+	QFileDialog__DialogLabel__Accept   QFileDialog__DialogLabel = 3
+	QFileDialog__DialogLabel__Reject   QFileDialog__DialogLabel = 4
+)
+
+type QFileDialog__Option int
+
+const (
+	QFileDialog__Option__ShowDirsOnly                QFileDialog__Option = 1
+	QFileDialog__Option__DontResolveSymlinks         QFileDialog__Option = 2
+	QFileDialog__Option__DontConfirmOverwrite        QFileDialog__Option = 4
+	QFileDialog__Option__DontUseSheet                QFileDialog__Option = 8
+	QFileDialog__Option__DontUseNativeDialog         QFileDialog__Option = 16
+	QFileDialog__Option__ReadOnly                    QFileDialog__Option = 32
+	QFileDialog__Option__HideNameFilterDetails       QFileDialog__Option = 64
+	QFileDialog__Option__DontUseCustomDirectoryIcons QFileDialog__Option = 128
+)
+
 type QFileDialog struct {
 	h *C.QFileDialog
 	*QDialog
@@ -300,31 +347,31 @@ func (this *QFileDialog) SetFilter(filters int) {
 	C.QFileDialog_SetFilter(this.h, (C.int)(filters))
 }
 
-func (this *QFileDialog) SetViewMode(mode uintptr) {
+func (this *QFileDialog) SetViewMode(mode QFileDialog__ViewMode) {
 	C.QFileDialog_SetViewMode(this.h, (C.uintptr_t)(mode))
 }
 
-func (this *QFileDialog) ViewMode() uintptr {
+func (this *QFileDialog) ViewMode() QFileDialog__ViewMode {
 	ret := C.QFileDialog_ViewMode(this.h)
-	return (uintptr)(ret)
+	return (QFileDialog__ViewMode)(ret)
 }
 
-func (this *QFileDialog) SetFileMode(mode uintptr) {
+func (this *QFileDialog) SetFileMode(mode QFileDialog__FileMode) {
 	C.QFileDialog_SetFileMode(this.h, (C.uintptr_t)(mode))
 }
 
-func (this *QFileDialog) FileMode() uintptr {
+func (this *QFileDialog) FileMode() QFileDialog__FileMode {
 	ret := C.QFileDialog_FileMode(this.h)
-	return (uintptr)(ret)
+	return (QFileDialog__FileMode)(ret)
 }
 
-func (this *QFileDialog) SetAcceptMode(mode uintptr) {
+func (this *QFileDialog) SetAcceptMode(mode QFileDialog__AcceptMode) {
 	C.QFileDialog_SetAcceptMode(this.h, (C.uintptr_t)(mode))
 }
 
-func (this *QFileDialog) AcceptMode() uintptr {
+func (this *QFileDialog) AcceptMode() QFileDialog__AcceptMode {
 	ret := C.QFileDialog_AcceptMode(this.h)
-	return (uintptr)(ret)
+	return (QFileDialog__AcceptMode)(ret)
 }
 
 func (this *QFileDialog) SetReadOnly(enabled bool) {
@@ -456,13 +503,13 @@ func (this *QFileDialog) IconProvider() *QFileIconProvider {
 	return newQFileIconProvider_U(unsafe.Pointer(ret))
 }
 
-func (this *QFileDialog) SetLabelText(label uintptr, text string) {
+func (this *QFileDialog) SetLabelText(label QFileDialog__DialogLabel, text string) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
 	C.QFileDialog_SetLabelText(this.h, (C.uintptr_t)(label), text_Cstring, C.size_t(len(text)))
 }
 
-func (this *QFileDialog) LabelText(label uintptr) string {
+func (this *QFileDialog) LabelText(label QFileDialog__DialogLabel) string {
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
 	C.QFileDialog_LabelText(this.h, (C.uintptr_t)(label), &_out, &_out_Strlen)
@@ -510,11 +557,11 @@ func (this *QFileDialog) ProxyModel() *QAbstractProxyModel {
 	return newQAbstractProxyModel_U(unsafe.Pointer(ret))
 }
 
-func (this *QFileDialog) SetOption(option uintptr) {
+func (this *QFileDialog) SetOption(option QFileDialog__Option) {
 	C.QFileDialog_SetOption(this.h, (C.uintptr_t)(option))
 }
 
-func (this *QFileDialog) TestOption(option uintptr) bool {
+func (this *QFileDialog) TestOption(option QFileDialog__Option) bool {
 	ret := C.QFileDialog_TestOption(this.h, (C.uintptr_t)(option))
 	return (bool)(ret)
 }
@@ -809,7 +856,7 @@ func QFileDialog_TrUtf83(s string, c string, n int) string {
 	return ret
 }
 
-func (this *QFileDialog) SetOption2(option uintptr, on bool) {
+func (this *QFileDialog) SetOption2(option QFileDialog__Option, on bool) {
 	C.QFileDialog_SetOption2(this.h, (C.uintptr_t)(option), (C.bool)(on))
 }
 

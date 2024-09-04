@@ -12,6 +12,25 @@ import (
 	"unsafe"
 )
 
+type QArrayData__AllocationOption int
+
+const (
+	QArrayData__AllocationOption__CapacityReserved QArrayData__AllocationOption = 1
+	QArrayData__AllocationOption__Unsharable       QArrayData__AllocationOption = 2
+	QArrayData__AllocationOption__RawData          QArrayData__AllocationOption = 4
+	QArrayData__AllocationOption__Grow             QArrayData__AllocationOption = 8
+	QArrayData__AllocationOption__Default          QArrayData__AllocationOption = 0
+)
+
+type QtPrivate__QContainerImplHelper__CutResult int
+
+const (
+	QtPrivate__QContainerImplHelper__CutResult__Null   QtPrivate__QContainerImplHelper__CutResult = 0
+	QtPrivate__QContainerImplHelper__CutResult__Empty  QtPrivate__QContainerImplHelper__CutResult = 1
+	QtPrivate__QContainerImplHelper__CutResult__Full   QtPrivate__QContainerImplHelper__CutResult = 2
+	QtPrivate__QContainerImplHelper__CutResult__Subset QtPrivate__QContainerImplHelper__CutResult = 3
+)
+
 type QArrayData struct {
 	h *C.QArrayData
 }
@@ -109,9 +128,9 @@ func newQtPrivate__QContainerImplHelper_U(h unsafe.Pointer) *QtPrivate__QContain
 	return newQtPrivate__QContainerImplHelper((*C.QtPrivate__QContainerImplHelper)(h))
 }
 
-func QtPrivate__QContainerImplHelper_Mid(originalLength int, position *int, length *int) uintptr {
+func QtPrivate__QContainerImplHelper_Mid(originalLength int, position *int, length *int) QtPrivate__QContainerImplHelper__CutResult {
 	ret := C.QtPrivate__QContainerImplHelper_Mid((C.int)(originalLength), (*C.int)(unsafe.Pointer(position)), (*C.int)(unsafe.Pointer(length)))
-	return (uintptr)(ret)
+	return (QtPrivate__QContainerImplHelper__CutResult)(ret)
 }
 
 func (this *QtPrivate__QContainerImplHelper) Delete() {

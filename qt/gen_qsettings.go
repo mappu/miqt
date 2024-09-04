@@ -13,6 +13,45 @@ import (
 	"unsafe"
 )
 
+type QSettings__Status int
+
+const (
+	QSettings__Status__NoError     QSettings__Status = 0
+	QSettings__Status__AccessError QSettings__Status = 1
+	QSettings__Status__FormatError QSettings__Status = 2
+)
+
+type QSettings__Format int
+
+const (
+	QSettings__Format__NativeFormat   QSettings__Format = 0
+	QSettings__Format__IniFormat      QSettings__Format = 1
+	QSettings__Format__InvalidFormat  QSettings__Format = 16
+	QSettings__Format__CustomFormat1  QSettings__Format = 17
+	QSettings__Format__CustomFormat2  QSettings__Format = 18
+	QSettings__Format__CustomFormat3  QSettings__Format = 19
+	QSettings__Format__CustomFormat4  QSettings__Format = 20
+	QSettings__Format__CustomFormat5  QSettings__Format = 21
+	QSettings__Format__CustomFormat6  QSettings__Format = 22
+	QSettings__Format__CustomFormat7  QSettings__Format = 23
+	QSettings__Format__CustomFormat8  QSettings__Format = 24
+	QSettings__Format__CustomFormat9  QSettings__Format = 25
+	QSettings__Format__CustomFormat10 QSettings__Format = 26
+	QSettings__Format__CustomFormat11 QSettings__Format = 27
+	QSettings__Format__CustomFormat12 QSettings__Format = 28
+	QSettings__Format__CustomFormat13 QSettings__Format = 29
+	QSettings__Format__CustomFormat14 QSettings__Format = 30
+	QSettings__Format__CustomFormat15 QSettings__Format = 31
+	QSettings__Format__CustomFormat16 QSettings__Format = 32
+)
+
+type QSettings__Scope int
+
+const (
+	QSettings__Scope__UserScope   QSettings__Scope = 0
+	QSettings__Scope__SystemScope QSettings__Scope = 1
+)
+
 type QSettings struct {
 	h *C.QSettings
 	*QObject
@@ -45,7 +84,7 @@ func NewQSettings(organization string) *QSettings {
 }
 
 // NewQSettings2 constructs a new QSettings object.
-func NewQSettings2(scope uintptr, organization string) *QSettings {
+func NewQSettings2(scope QSettings__Scope, organization string) *QSettings {
 	organization_Cstring := C.CString(organization)
 	defer C.free(unsafe.Pointer(organization_Cstring))
 	ret := C.QSettings_new2((C.uintptr_t)(scope), organization_Cstring, C.size_t(len(organization)))
@@ -53,7 +92,7 @@ func NewQSettings2(scope uintptr, organization string) *QSettings {
 }
 
 // NewQSettings3 constructs a new QSettings object.
-func NewQSettings3(format uintptr, scope uintptr, organization string) *QSettings {
+func NewQSettings3(format QSettings__Format, scope QSettings__Scope, organization string) *QSettings {
 	organization_Cstring := C.CString(organization)
 	defer C.free(unsafe.Pointer(organization_Cstring))
 	ret := C.QSettings_new3((C.uintptr_t)(format), (C.uintptr_t)(scope), organization_Cstring, C.size_t(len(organization)))
@@ -61,7 +100,7 @@ func NewQSettings3(format uintptr, scope uintptr, organization string) *QSetting
 }
 
 // NewQSettings4 constructs a new QSettings object.
-func NewQSettings4(fileName string, format uintptr) *QSettings {
+func NewQSettings4(fileName string, format QSettings__Format) *QSettings {
 	fileName_Cstring := C.CString(fileName)
 	defer C.free(unsafe.Pointer(fileName_Cstring))
 	ret := C.QSettings_new4(fileName_Cstring, C.size_t(len(fileName)), (C.uintptr_t)(format))
@@ -75,7 +114,7 @@ func NewQSettings5() *QSettings {
 }
 
 // NewQSettings6 constructs a new QSettings object.
-func NewQSettings6(scope uintptr) *QSettings {
+func NewQSettings6(scope QSettings__Scope) *QSettings {
 	ret := C.QSettings_new6((C.uintptr_t)(scope))
 	return newQSettings(ret)
 }
@@ -101,7 +140,7 @@ func NewQSettings8(organization string, application string, parent *QObject) *QS
 }
 
 // NewQSettings9 constructs a new QSettings object.
-func NewQSettings9(scope uintptr, organization string, application string) *QSettings {
+func NewQSettings9(scope QSettings__Scope, organization string, application string) *QSettings {
 	organization_Cstring := C.CString(organization)
 	defer C.free(unsafe.Pointer(organization_Cstring))
 	application_Cstring := C.CString(application)
@@ -111,7 +150,7 @@ func NewQSettings9(scope uintptr, organization string, application string) *QSet
 }
 
 // NewQSettings10 constructs a new QSettings object.
-func NewQSettings10(scope uintptr, organization string, application string, parent *QObject) *QSettings {
+func NewQSettings10(scope QSettings__Scope, organization string, application string, parent *QObject) *QSettings {
 	organization_Cstring := C.CString(organization)
 	defer C.free(unsafe.Pointer(organization_Cstring))
 	application_Cstring := C.CString(application)
@@ -121,7 +160,7 @@ func NewQSettings10(scope uintptr, organization string, application string, pare
 }
 
 // NewQSettings11 constructs a new QSettings object.
-func NewQSettings11(format uintptr, scope uintptr, organization string, application string) *QSettings {
+func NewQSettings11(format QSettings__Format, scope QSettings__Scope, organization string, application string) *QSettings {
 	organization_Cstring := C.CString(organization)
 	defer C.free(unsafe.Pointer(organization_Cstring))
 	application_Cstring := C.CString(application)
@@ -131,7 +170,7 @@ func NewQSettings11(format uintptr, scope uintptr, organization string, applicat
 }
 
 // NewQSettings12 constructs a new QSettings object.
-func NewQSettings12(format uintptr, scope uintptr, organization string, application string, parent *QObject) *QSettings {
+func NewQSettings12(format QSettings__Format, scope QSettings__Scope, organization string, application string, parent *QObject) *QSettings {
 	organization_Cstring := C.CString(organization)
 	defer C.free(unsafe.Pointer(organization_Cstring))
 	application_Cstring := C.CString(application)
@@ -141,7 +180,7 @@ func NewQSettings12(format uintptr, scope uintptr, organization string, applicat
 }
 
 // NewQSettings13 constructs a new QSettings object.
-func NewQSettings13(fileName string, format uintptr, parent *QObject) *QSettings {
+func NewQSettings13(fileName string, format QSettings__Format, parent *QObject) *QSettings {
 	fileName_Cstring := C.CString(fileName)
 	defer C.free(unsafe.Pointer(fileName_Cstring))
 	ret := C.QSettings_new13(fileName_Cstring, C.size_t(len(fileName)), (C.uintptr_t)(format), parent.cPointer())
@@ -155,7 +194,7 @@ func NewQSettings14(parent *QObject) *QSettings {
 }
 
 // NewQSettings15 constructs a new QSettings object.
-func NewQSettings15(scope uintptr, parent *QObject) *QSettings {
+func NewQSettings15(scope QSettings__Scope, parent *QObject) *QSettings {
 	ret := C.QSettings_new15((C.uintptr_t)(scope), parent.cPointer())
 	return newQSettings(ret)
 }
@@ -195,9 +234,9 @@ func (this *QSettings) Sync() {
 	C.QSettings_Sync(this.h)
 }
 
-func (this *QSettings) Status() uintptr {
+func (this *QSettings) Status() QSettings__Status {
 	ret := C.QSettings_Status(this.h)
-	return (uintptr)(ret)
+	return (QSettings__Status)(ret)
 }
 
 func (this *QSettings) IsAtomicSyncRequired() bool {
@@ -349,14 +388,14 @@ func (this *QSettings) FileName() string {
 	return ret
 }
 
-func (this *QSettings) Format() uintptr {
+func (this *QSettings) Format() QSettings__Format {
 	ret := C.QSettings_Format(this.h)
-	return (uintptr)(ret)
+	return (QSettings__Format)(ret)
 }
 
-func (this *QSettings) Scope() uintptr {
+func (this *QSettings) Scope() QSettings__Scope {
 	ret := C.QSettings_Scope(this.h)
-	return (uintptr)(ret)
+	return (QSettings__Scope)(ret)
 }
 
 func (this *QSettings) OrganizationName() string {
@@ -392,13 +431,13 @@ func (this *QSettings) IniCodec() *QTextCodec {
 	return newQTextCodec_U(unsafe.Pointer(ret))
 }
 
-func QSettings_SetDefaultFormat(format uintptr) {
+func QSettings_SetDefaultFormat(format QSettings__Format) {
 	C.QSettings_SetDefaultFormat((C.uintptr_t)(format))
 }
 
-func QSettings_DefaultFormat() uintptr {
+func QSettings_DefaultFormat() QSettings__Format {
 	ret := C.QSettings_DefaultFormat()
-	return (uintptr)(ret)
+	return (QSettings__Format)(ret)
 }
 
 func QSettings_SetSystemIniPath(dir string) {
@@ -413,7 +452,7 @@ func QSettings_SetUserIniPath(dir string) {
 	C.QSettings_SetUserIniPath(dir_Cstring, C.size_t(len(dir)))
 }
 
-func QSettings_SetPath(format uintptr, scope uintptr, path string) {
+func QSettings_SetPath(format QSettings__Format, scope QSettings__Scope, path string) {
 	path_Cstring := C.CString(path)
 	defer C.free(unsafe.Pointer(path_Cstring))
 	C.QSettings_SetPath((C.uintptr_t)(format), (C.uintptr_t)(scope), path_Cstring, C.size_t(len(path)))

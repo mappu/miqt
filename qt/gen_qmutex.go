@@ -12,6 +12,13 @@ import (
 	"unsafe"
 )
 
+type QMutex__RecursionMode int
+
+const (
+	QMutex__RecursionMode__NonRecursive QMutex__RecursionMode = 0
+	QMutex__RecursionMode__Recursive    QMutex__RecursionMode = 1
+)
+
 type QBasicMutex struct {
 	h *C.QBasicMutex
 }
@@ -102,7 +109,7 @@ func NewQMutex() *QMutex {
 }
 
 // NewQMutex2 constructs a new QMutex object.
-func NewQMutex2(mode uintptr) *QMutex {
+func NewQMutex2(mode QMutex__RecursionMode) *QMutex {
 	ret := C.QMutex_new2((C.uintptr_t)(mode))
 	return newQMutex(ret)
 }

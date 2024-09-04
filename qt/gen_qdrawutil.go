@@ -12,6 +12,24 @@ import (
 	"unsafe"
 )
 
+type QDrawBorderPixmap__DrawingHint int
+
+const (
+	QDrawBorderPixmap__DrawingHint__OpaqueTopLeft     QDrawBorderPixmap__DrawingHint = 1
+	QDrawBorderPixmap__DrawingHint__OpaqueTop         QDrawBorderPixmap__DrawingHint = 2
+	QDrawBorderPixmap__DrawingHint__OpaqueTopRight    QDrawBorderPixmap__DrawingHint = 4
+	QDrawBorderPixmap__DrawingHint__OpaqueLeft        QDrawBorderPixmap__DrawingHint = 8
+	QDrawBorderPixmap__DrawingHint__OpaqueCenter      QDrawBorderPixmap__DrawingHint = 16
+	QDrawBorderPixmap__DrawingHint__OpaqueRight       QDrawBorderPixmap__DrawingHint = 32
+	QDrawBorderPixmap__DrawingHint__OpaqueBottomLeft  QDrawBorderPixmap__DrawingHint = 64
+	QDrawBorderPixmap__DrawingHint__OpaqueBottom      QDrawBorderPixmap__DrawingHint = 128
+	QDrawBorderPixmap__DrawingHint__OpaqueBottomRight QDrawBorderPixmap__DrawingHint = 256
+	QDrawBorderPixmap__DrawingHint__OpaqueCorners     QDrawBorderPixmap__DrawingHint = 325
+	QDrawBorderPixmap__DrawingHint__OpaqueEdges       QDrawBorderPixmap__DrawingHint = 170
+	QDrawBorderPixmap__DrawingHint__OpaqueFrame       QDrawBorderPixmap__DrawingHint = 495
+	QDrawBorderPixmap__DrawingHint__OpaqueAll         QDrawBorderPixmap__DrawingHint = 511
+)
+
 type QTileRules struct {
 	h *C.QTileRules
 }
@@ -35,7 +53,7 @@ func newQTileRules_U(h unsafe.Pointer) *QTileRules {
 }
 
 // NewQTileRules constructs a new QTileRules object.
-func NewQTileRules(horizontalRule uintptr, verticalRule uintptr) *QTileRules {
+func NewQTileRules(horizontalRule TileRule, verticalRule TileRule) *QTileRules {
 	ret := C.QTileRules_new((C.uintptr_t)(horizontalRule), (C.uintptr_t)(verticalRule))
 	return newQTileRules(ret)
 }
@@ -53,7 +71,7 @@ func NewQTileRules3(param1 *QTileRules) *QTileRules {
 }
 
 // NewQTileRules4 constructs a new QTileRules object.
-func NewQTileRules4(rule uintptr) *QTileRules {
+func NewQTileRules4(rule TileRule) *QTileRules {
 	ret := C.QTileRules_new4((C.uintptr_t)(rule))
 	return newQTileRules(ret)
 }

@@ -12,6 +12,67 @@ import (
 	"unsafe"
 )
 
+type QDataStream__Version int
+
+const (
+	QDataStream__Version__Qt_1_0                    QDataStream__Version = 1
+	QDataStream__Version__Qt_2_0                    QDataStream__Version = 2
+	QDataStream__Version__Qt_2_1                    QDataStream__Version = 3
+	QDataStream__Version__Qt_3_0                    QDataStream__Version = 4
+	QDataStream__Version__Qt_3_1                    QDataStream__Version = 5
+	QDataStream__Version__Qt_3_3                    QDataStream__Version = 6
+	QDataStream__Version__Qt_4_0                    QDataStream__Version = 7
+	QDataStream__Version__Qt_4_1                    QDataStream__Version = 7
+	QDataStream__Version__Qt_4_2                    QDataStream__Version = 8
+	QDataStream__Version__Qt_4_3                    QDataStream__Version = 9
+	QDataStream__Version__Qt_4_4                    QDataStream__Version = 10
+	QDataStream__Version__Qt_4_5                    QDataStream__Version = 11
+	QDataStream__Version__Qt_4_6                    QDataStream__Version = 12
+	QDataStream__Version__Qt_4_7                    QDataStream__Version = 12
+	QDataStream__Version__Qt_4_8                    QDataStream__Version = 12
+	QDataStream__Version__Qt_4_9                    QDataStream__Version = 12
+	QDataStream__Version__Qt_5_0                    QDataStream__Version = 13
+	QDataStream__Version__Qt_5_1                    QDataStream__Version = 14
+	QDataStream__Version__Qt_5_2                    QDataStream__Version = 15
+	QDataStream__Version__Qt_5_3                    QDataStream__Version = 15
+	QDataStream__Version__Qt_5_4                    QDataStream__Version = 16
+	QDataStream__Version__Qt_5_5                    QDataStream__Version = 16
+	QDataStream__Version__Qt_5_6                    QDataStream__Version = 17
+	QDataStream__Version__Qt_5_7                    QDataStream__Version = 17
+	QDataStream__Version__Qt_5_8                    QDataStream__Version = 17
+	QDataStream__Version__Qt_5_9                    QDataStream__Version = 17
+	QDataStream__Version__Qt_5_10                   QDataStream__Version = 17
+	QDataStream__Version__Qt_5_11                   QDataStream__Version = 17
+	QDataStream__Version__Qt_5_12                   QDataStream__Version = 18
+	QDataStream__Version__Qt_5_13                   QDataStream__Version = 19
+	QDataStream__Version__Qt_5_14                   QDataStream__Version = 19
+	QDataStream__Version__Qt_5_15                   QDataStream__Version = 19
+	QDataStream__Version__Qt_DefaultCompiledVersion QDataStream__Version = 19
+)
+
+type QDataStream__ByteOrder int
+
+const (
+	QDataStream__ByteOrder__BigEndian    QDataStream__ByteOrder = 0
+	QDataStream__ByteOrder__LittleEndian QDataStream__ByteOrder = 1
+)
+
+type QDataStream__Status int
+
+const (
+	QDataStream__Status__Ok              QDataStream__Status = 0
+	QDataStream__Status__ReadPastEnd     QDataStream__Status = 1
+	QDataStream__Status__ReadCorruptData QDataStream__Status = 2
+	QDataStream__Status__WriteFailed     QDataStream__Status = 3
+)
+
+type QDataStream__FloatingPointPrecision int
+
+const (
+	QDataStream__FloatingPointPrecision__SinglePrecision QDataStream__FloatingPointPrecision = 0
+	QDataStream__FloatingPointPrecision__DoublePrecision QDataStream__FloatingPointPrecision = 1
+)
+
 type QDataStream struct {
 	h *C.QDataStream
 }
@@ -76,12 +137,12 @@ func (this *QDataStream) AtEnd() bool {
 	return (bool)(ret)
 }
 
-func (this *QDataStream) Status() uintptr {
+func (this *QDataStream) Status() QDataStream__Status {
 	ret := C.QDataStream_Status(this.h)
-	return (uintptr)(ret)
+	return (QDataStream__Status)(ret)
 }
 
-func (this *QDataStream) SetStatus(status uintptr) {
+func (this *QDataStream) SetStatus(status QDataStream__Status) {
 	C.QDataStream_SetStatus(this.h, (C.uintptr_t)(status))
 }
 
@@ -89,21 +150,21 @@ func (this *QDataStream) ResetStatus() {
 	C.QDataStream_ResetStatus(this.h)
 }
 
-func (this *QDataStream) FloatingPointPrecision() uintptr {
+func (this *QDataStream) FloatingPointPrecision() QDataStream__FloatingPointPrecision {
 	ret := C.QDataStream_FloatingPointPrecision(this.h)
-	return (uintptr)(ret)
+	return (QDataStream__FloatingPointPrecision)(ret)
 }
 
-func (this *QDataStream) SetFloatingPointPrecision(precision uintptr) {
+func (this *QDataStream) SetFloatingPointPrecision(precision QDataStream__FloatingPointPrecision) {
 	C.QDataStream_SetFloatingPointPrecision(this.h, (C.uintptr_t)(precision))
 }
 
-func (this *QDataStream) ByteOrder() uintptr {
+func (this *QDataStream) ByteOrder() QDataStream__ByteOrder {
 	ret := C.QDataStream_ByteOrder(this.h)
-	return (uintptr)(ret)
+	return (QDataStream__ByteOrder)(ret)
 }
 
-func (this *QDataStream) SetByteOrder(byteOrder uintptr) {
+func (this *QDataStream) SetByteOrder(byteOrder QDataStream__ByteOrder) {
 	C.QDataStream_SetByteOrder(this.h, (C.uintptr_t)(byteOrder))
 }
 

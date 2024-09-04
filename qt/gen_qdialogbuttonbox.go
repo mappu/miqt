@@ -13,6 +13,58 @@ import (
 	"unsafe"
 )
 
+type QDialogButtonBox__ButtonRole int
+
+const (
+	QDialogButtonBox__ButtonRole__InvalidRole     QDialogButtonBox__ButtonRole = -1
+	QDialogButtonBox__ButtonRole__AcceptRole      QDialogButtonBox__ButtonRole = 0
+	QDialogButtonBox__ButtonRole__RejectRole      QDialogButtonBox__ButtonRole = 1
+	QDialogButtonBox__ButtonRole__DestructiveRole QDialogButtonBox__ButtonRole = 2
+	QDialogButtonBox__ButtonRole__ActionRole      QDialogButtonBox__ButtonRole = 3
+	QDialogButtonBox__ButtonRole__HelpRole        QDialogButtonBox__ButtonRole = 4
+	QDialogButtonBox__ButtonRole__YesRole         QDialogButtonBox__ButtonRole = 5
+	QDialogButtonBox__ButtonRole__NoRole          QDialogButtonBox__ButtonRole = 6
+	QDialogButtonBox__ButtonRole__ResetRole       QDialogButtonBox__ButtonRole = 7
+	QDialogButtonBox__ButtonRole__ApplyRole       QDialogButtonBox__ButtonRole = 8
+	QDialogButtonBox__ButtonRole__NRoles          QDialogButtonBox__ButtonRole = 9
+)
+
+type QDialogButtonBox__StandardButton int
+
+const (
+	QDialogButtonBox__StandardButton__NoButton        QDialogButtonBox__StandardButton = 0
+	QDialogButtonBox__StandardButton__Ok              QDialogButtonBox__StandardButton = 1024
+	QDialogButtonBox__StandardButton__Save            QDialogButtonBox__StandardButton = 2048
+	QDialogButtonBox__StandardButton__SaveAll         QDialogButtonBox__StandardButton = 4096
+	QDialogButtonBox__StandardButton__Open            QDialogButtonBox__StandardButton = 8192
+	QDialogButtonBox__StandardButton__Yes             QDialogButtonBox__StandardButton = 16384
+	QDialogButtonBox__StandardButton__YesToAll        QDialogButtonBox__StandardButton = 32768
+	QDialogButtonBox__StandardButton__No              QDialogButtonBox__StandardButton = 65536
+	QDialogButtonBox__StandardButton__NoToAll         QDialogButtonBox__StandardButton = 131072
+	QDialogButtonBox__StandardButton__Abort           QDialogButtonBox__StandardButton = 262144
+	QDialogButtonBox__StandardButton__Retry           QDialogButtonBox__StandardButton = 524288
+	QDialogButtonBox__StandardButton__Ignore          QDialogButtonBox__StandardButton = 1048576
+	QDialogButtonBox__StandardButton__Close           QDialogButtonBox__StandardButton = 2097152
+	QDialogButtonBox__StandardButton__Cancel          QDialogButtonBox__StandardButton = 4194304
+	QDialogButtonBox__StandardButton__Discard         QDialogButtonBox__StandardButton = 8388608
+	QDialogButtonBox__StandardButton__Help            QDialogButtonBox__StandardButton = 16777216
+	QDialogButtonBox__StandardButton__Apply           QDialogButtonBox__StandardButton = 33554432
+	QDialogButtonBox__StandardButton__Reset           QDialogButtonBox__StandardButton = 67108864
+	QDialogButtonBox__StandardButton__RestoreDefaults QDialogButtonBox__StandardButton = 134217728
+	QDialogButtonBox__StandardButton__FirstButton     QDialogButtonBox__StandardButton = 1024
+	QDialogButtonBox__StandardButton__LastButton      QDialogButtonBox__StandardButton = 134217728
+)
+
+type QDialogButtonBox__ButtonLayout int
+
+const (
+	QDialogButtonBox__ButtonLayout__WinLayout     QDialogButtonBox__ButtonLayout = 0
+	QDialogButtonBox__ButtonLayout__MacLayout     QDialogButtonBox__ButtonLayout = 1
+	QDialogButtonBox__ButtonLayout__KdeLayout     QDialogButtonBox__ButtonLayout = 2
+	QDialogButtonBox__ButtonLayout__GnomeLayout   QDialogButtonBox__ButtonLayout = 3
+	QDialogButtonBox__ButtonLayout__AndroidLayout QDialogButtonBox__ButtonLayout = 5
+)
+
 type QDialogButtonBox struct {
 	h *C.QDialogButtonBox
 	*QWidget
@@ -43,7 +95,7 @@ func NewQDialogButtonBox() *QDialogButtonBox {
 }
 
 // NewQDialogButtonBox2 constructs a new QDialogButtonBox object.
-func NewQDialogButtonBox2(orientation uintptr) *QDialogButtonBox {
+func NewQDialogButtonBox2(orientation Orientation) *QDialogButtonBox {
 	ret := C.QDialogButtonBox_new2((C.uintptr_t)(orientation))
 	return newQDialogButtonBox(ret)
 }
@@ -55,7 +107,7 @@ func NewQDialogButtonBox3(buttons int) *QDialogButtonBox {
 }
 
 // NewQDialogButtonBox4 constructs a new QDialogButtonBox object.
-func NewQDialogButtonBox4(buttons int, orientation uintptr) *QDialogButtonBox {
+func NewQDialogButtonBox4(buttons int, orientation Orientation) *QDialogButtonBox {
 	ret := C.QDialogButtonBox_new4((C.int)(buttons), (C.uintptr_t)(orientation))
 	return newQDialogButtonBox(ret)
 }
@@ -67,7 +119,7 @@ func NewQDialogButtonBox5(parent *QWidget) *QDialogButtonBox {
 }
 
 // NewQDialogButtonBox6 constructs a new QDialogButtonBox object.
-func NewQDialogButtonBox6(orientation uintptr, parent *QWidget) *QDialogButtonBox {
+func NewQDialogButtonBox6(orientation Orientation, parent *QWidget) *QDialogButtonBox {
 	ret := C.QDialogButtonBox_new6((C.uintptr_t)(orientation), parent.cPointer())
 	return newQDialogButtonBox(ret)
 }
@@ -79,7 +131,7 @@ func NewQDialogButtonBox7(buttons int, parent *QWidget) *QDialogButtonBox {
 }
 
 // NewQDialogButtonBox8 constructs a new QDialogButtonBox object.
-func NewQDialogButtonBox8(buttons int, orientation uintptr, parent *QWidget) *QDialogButtonBox {
+func NewQDialogButtonBox8(buttons int, orientation Orientation, parent *QWidget) *QDialogButtonBox {
 	ret := C.QDialogButtonBox_new8((C.int)(buttons), (C.uintptr_t)(orientation), parent.cPointer())
 	return newQDialogButtonBox(ret)
 }
@@ -111,27 +163,27 @@ func QDialogButtonBox_TrUtf8(s string) string {
 	return ret
 }
 
-func (this *QDialogButtonBox) SetOrientation(orientation uintptr) {
+func (this *QDialogButtonBox) SetOrientation(orientation Orientation) {
 	C.QDialogButtonBox_SetOrientation(this.h, (C.uintptr_t)(orientation))
 }
 
-func (this *QDialogButtonBox) Orientation() uintptr {
+func (this *QDialogButtonBox) Orientation() Orientation {
 	ret := C.QDialogButtonBox_Orientation(this.h)
-	return (uintptr)(ret)
+	return (Orientation)(ret)
 }
 
-func (this *QDialogButtonBox) AddButton(button *QAbstractButton, role uintptr) {
+func (this *QDialogButtonBox) AddButton(button *QAbstractButton, role QDialogButtonBox__ButtonRole) {
 	C.QDialogButtonBox_AddButton(this.h, button.cPointer(), (C.uintptr_t)(role))
 }
 
-func (this *QDialogButtonBox) AddButton2(text string, role uintptr) *QPushButton {
+func (this *QDialogButtonBox) AddButton2(text string, role QDialogButtonBox__ButtonRole) *QPushButton {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
 	ret := C.QDialogButtonBox_AddButton2(this.h, text_Cstring, C.size_t(len(text)), (C.uintptr_t)(role))
 	return newQPushButton_U(unsafe.Pointer(ret))
 }
 
-func (this *QDialogButtonBox) AddButtonWithButton(button uintptr) *QPushButton {
+func (this *QDialogButtonBox) AddButtonWithButton(button QDialogButtonBox__StandardButton) *QPushButton {
 	ret := C.QDialogButtonBox_AddButtonWithButton(this.h, (C.uintptr_t)(button))
 	return newQPushButton_U(unsafe.Pointer(ret))
 }
@@ -157,9 +209,9 @@ func (this *QDialogButtonBox) Buttons() []*QAbstractButton {
 	return ret
 }
 
-func (this *QDialogButtonBox) ButtonRole(button *QAbstractButton) uintptr {
+func (this *QDialogButtonBox) ButtonRole(button *QAbstractButton) QDialogButtonBox__ButtonRole {
 	ret := C.QDialogButtonBox_ButtonRole(this.h, button.cPointer())
-	return (uintptr)(ret)
+	return (QDialogButtonBox__ButtonRole)(ret)
 }
 
 func (this *QDialogButtonBox) SetStandardButtons(buttons int) {
@@ -171,12 +223,12 @@ func (this *QDialogButtonBox) StandardButtons() int {
 	return (int)(ret)
 }
 
-func (this *QDialogButtonBox) StandardButton(button *QAbstractButton) uintptr {
+func (this *QDialogButtonBox) StandardButton(button *QAbstractButton) QDialogButtonBox__StandardButton {
 	ret := C.QDialogButtonBox_StandardButton(this.h, button.cPointer())
-	return (uintptr)(ret)
+	return (QDialogButtonBox__StandardButton)(ret)
 }
 
-func (this *QDialogButtonBox) Button(which uintptr) *QPushButton {
+func (this *QDialogButtonBox) Button(which QDialogButtonBox__StandardButton) *QPushButton {
 	ret := C.QDialogButtonBox_Button(this.h, (C.uintptr_t)(which))
 	return newQPushButton_U(unsafe.Pointer(ret))
 }

@@ -13,6 +13,14 @@ import (
 	"unsafe"
 )
 
+type QDirModel__Roles int
+
+const (
+	QDirModel__Roles__FileIconRole QDirModel__Roles = 1
+	QDirModel__Roles__FilePathRole QDirModel__Roles = 257
+	QDirModel__Roles__FileNameRole QDirModel__Roles = 258
+)
+
 type QDirModel struct {
 	h *C.QDirModel
 	*QAbstractItemModel
@@ -157,7 +165,7 @@ func (this *QDirModel) SetData(index *QModelIndex, value *QVariant) bool {
 	return (bool)(ret)
 }
 
-func (this *QDirModel) HeaderData(section int, orientation uintptr) *QVariant {
+func (this *QDirModel) HeaderData(section int, orientation Orientation) *QVariant {
 	ret := C.QDirModel_HeaderData(this.h, (C.int)(section), (C.uintptr_t)(orientation))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQVariant(ret)
@@ -208,7 +216,7 @@ func (this *QDirModel) MimeData(indexes []QModelIndex) *QMimeData {
 	return newQMimeData_U(unsafe.Pointer(ret))
 }
 
-func (this *QDirModel) DropMimeData(data *QMimeData, action uintptr, row int, column int, parent *QModelIndex) bool {
+func (this *QDirModel) DropMimeData(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool {
 	ret := C.QDirModel_DropMimeData(this.h, data.cPointer(), (C.uintptr_t)(action), (C.int)(row), (C.int)(column), parent.cPointer())
 	return (bool)(ret)
 }
@@ -476,7 +484,7 @@ func (this *QDirModel) SetData3(index *QModelIndex, value *QVariant, role int) b
 	return (bool)(ret)
 }
 
-func (this *QDirModel) HeaderData3(section int, orientation uintptr, role int) *QVariant {
+func (this *QDirModel) HeaderData3(section int, orientation Orientation, role int) *QVariant {
 	ret := C.QDirModel_HeaderData3(this.h, (C.int)(section), (C.uintptr_t)(orientation), (C.int)(role))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQVariant(ret)
@@ -492,7 +500,7 @@ func (this *QDirModel) HasChildren1(index *QModelIndex) bool {
 	return (bool)(ret)
 }
 
-func (this *QDirModel) Sort2(column int, order uintptr) {
+func (this *QDirModel) Sort2(column int, order SortOrder) {
 	C.QDirModel_Sort2(this.h, (C.int)(column), (C.uintptr_t)(order))
 }
 

@@ -13,6 +13,32 @@ import (
 	"unsafe"
 )
 
+type QTimeLine__State int
+
+const (
+	QTimeLine__State__NotRunning QTimeLine__State = 0
+	QTimeLine__State__Paused     QTimeLine__State = 1
+	QTimeLine__State__Running    QTimeLine__State = 2
+)
+
+type QTimeLine__Direction int
+
+const (
+	QTimeLine__Direction__Forward  QTimeLine__Direction = 0
+	QTimeLine__Direction__Backward QTimeLine__Direction = 1
+)
+
+type QTimeLine__CurveShape int
+
+const (
+	QTimeLine__CurveShape__EaseInCurve    QTimeLine__CurveShape = 0
+	QTimeLine__CurveShape__EaseOutCurve   QTimeLine__CurveShape = 1
+	QTimeLine__CurveShape__EaseInOutCurve QTimeLine__CurveShape = 2
+	QTimeLine__CurveShape__LinearCurve    QTimeLine__CurveShape = 3
+	QTimeLine__CurveShape__SineCurve      QTimeLine__CurveShape = 4
+	QTimeLine__CurveShape__CosineCurve    QTimeLine__CurveShape = 5
+)
+
 type QTimeLine struct {
 	h *C.QTimeLine
 	*QObject
@@ -81,9 +107,9 @@ func QTimeLine_TrUtf8(s string) string {
 	return ret
 }
 
-func (this *QTimeLine) State() uintptr {
+func (this *QTimeLine) State() QTimeLine__State {
 	ret := C.QTimeLine_State(this.h)
-	return (uintptr)(ret)
+	return (QTimeLine__State)(ret)
 }
 
 func (this *QTimeLine) LoopCount() int {
@@ -95,12 +121,12 @@ func (this *QTimeLine) SetLoopCount(count int) {
 	C.QTimeLine_SetLoopCount(this.h, (C.int)(count))
 }
 
-func (this *QTimeLine) Direction() uintptr {
+func (this *QTimeLine) Direction() QTimeLine__Direction {
 	ret := C.QTimeLine_Direction(this.h)
-	return (uintptr)(ret)
+	return (QTimeLine__Direction)(ret)
 }
 
-func (this *QTimeLine) SetDirection(direction uintptr) {
+func (this *QTimeLine) SetDirection(direction QTimeLine__Direction) {
 	C.QTimeLine_SetDirection(this.h, (C.uintptr_t)(direction))
 }
 
@@ -144,12 +170,12 @@ func (this *QTimeLine) SetUpdateInterval(interval int) {
 	C.QTimeLine_SetUpdateInterval(this.h, (C.int)(interval))
 }
 
-func (this *QTimeLine) CurveShape() uintptr {
+func (this *QTimeLine) CurveShape() QTimeLine__CurveShape {
 	ret := C.QTimeLine_CurveShape(this.h)
-	return (uintptr)(ret)
+	return (QTimeLine__CurveShape)(ret)
 }
 
-func (this *QTimeLine) SetCurveShape(shape uintptr) {
+func (this *QTimeLine) SetCurveShape(shape QTimeLine__CurveShape) {
 	C.QTimeLine_SetCurveShape(this.h, (C.uintptr_t)(shape))
 }
 

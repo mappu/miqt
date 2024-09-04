@@ -12,6 +12,16 @@ import (
 	"unsafe"
 )
 
+type QElapsedTimer__ClockType int
+
+const (
+	QElapsedTimer__ClockType__SystemTime         QElapsedTimer__ClockType = 0
+	QElapsedTimer__ClockType__MonotonicClock     QElapsedTimer__ClockType = 1
+	QElapsedTimer__ClockType__TickCounter        QElapsedTimer__ClockType = 2
+	QElapsedTimer__ClockType__MachAbsoluteTime   QElapsedTimer__ClockType = 3
+	QElapsedTimer__ClockType__PerformanceCounter QElapsedTimer__ClockType = 4
+)
+
 type QElapsedTimer struct {
 	h *C.QElapsedTimer
 }
@@ -40,9 +50,9 @@ func NewQElapsedTimer() *QElapsedTimer {
 	return newQElapsedTimer(ret)
 }
 
-func QElapsedTimer_ClockType() uintptr {
+func QElapsedTimer_ClockType() QElapsedTimer__ClockType {
 	ret := C.QElapsedTimer_ClockType()
-	return (uintptr)(ret)
+	return (QElapsedTimer__ClockType)(ret)
 }
 
 func QElapsedTimer_IsMonotonic() bool {

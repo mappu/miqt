@@ -92,9 +92,9 @@ func (this *QFontInfo) Italic() bool {
 	return (bool)(ret)
 }
 
-func (this *QFontInfo) Style() uintptr {
+func (this *QFontInfo) Style() QFont__Style {
 	ret := C.QFontInfo_Style(this.h)
-	return (uintptr)(ret)
+	return (QFont__Style)(ret)
 }
 
 func (this *QFontInfo) Weight() int {
@@ -127,9 +127,9 @@ func (this *QFontInfo) FixedPitch() bool {
 	return (bool)(ret)
 }
 
-func (this *QFontInfo) StyleHint() uintptr {
+func (this *QFontInfo) StyleHint() QFont__StyleHint {
 	ret := C.QFontInfo_StyleHint(this.h)
-	return (uintptr)(ret)
+	return (QFont__StyleHint)(ret)
 }
 
 func (this *QFontInfo) RawMode() bool {

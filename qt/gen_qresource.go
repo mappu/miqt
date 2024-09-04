@@ -13,6 +13,14 @@ import (
 	"unsafe"
 )
 
+type QResource__Compression int
+
+const (
+	QResource__Compression__NoCompression   QResource__Compression = 0
+	QResource__Compression__ZlibCompression QResource__Compression = 1
+	QResource__Compression__ZstdCompression QResource__Compression = 2
+)
+
 type QResource struct {
 	h *C.QResource
 }
@@ -101,9 +109,9 @@ func (this *QResource) IsValid() bool {
 	return (bool)(ret)
 }
 
-func (this *QResource) CompressionAlgorithm() uintptr {
+func (this *QResource) CompressionAlgorithm() QResource__Compression {
 	ret := C.QResource_CompressionAlgorithm(this.h)
-	return (uintptr)(ret)
+	return (QResource__Compression)(ret)
 }
 
 func (this *QResource) Size() int64 {

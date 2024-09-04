@@ -13,6 +13,24 @@ import (
 	"unsafe"
 )
 
+type QMetaObject__Call int
+
+const (
+	QMetaObject__Call__InvokeMetaMethod               QMetaObject__Call = 0
+	QMetaObject__Call__ReadProperty                   QMetaObject__Call = 1
+	QMetaObject__Call__WriteProperty                  QMetaObject__Call = 2
+	QMetaObject__Call__ResetProperty                  QMetaObject__Call = 3
+	QMetaObject__Call__QueryPropertyDesignable        QMetaObject__Call = 4
+	QMetaObject__Call__QueryPropertyScriptable        QMetaObject__Call = 5
+	QMetaObject__Call__QueryPropertyStored            QMetaObject__Call = 6
+	QMetaObject__Call__QueryPropertyEditable          QMetaObject__Call = 7
+	QMetaObject__Call__QueryPropertyUser              QMetaObject__Call = 8
+	QMetaObject__Call__CreateInstance                 QMetaObject__Call = 9
+	QMetaObject__Call__IndexOfMethod                  QMetaObject__Call = 10
+	QMetaObject__Call__RegisterPropertyMetaType       QMetaObject__Call = 11
+	QMetaObject__Call__RegisterMethodArgumentMetaType QMetaObject__Call = 12
+)
+
 type QGenericArgument struct {
 	h *C.QGenericArgument
 }
@@ -408,7 +426,7 @@ func QMetaObject_ConnectSlotsByName(o *QObject) {
 	C.QMetaObject_ConnectSlotsByName(o.cPointer())
 }
 
-func QMetaObject_InvokeMethod(obj *QObject, member string, param3 uintptr, retVal QGenericReturnArgument) bool {
+func QMetaObject_InvokeMethod(obj *QObject, member string, param3 ConnectionType, retVal QGenericReturnArgument) bool {
 	member_Cstring := C.CString(member)
 	defer C.free(unsafe.Pointer(member_Cstring))
 	ret := C.QMetaObject_InvokeMethod(obj.cPointer(), member_Cstring, (C.uintptr_t)(param3), retVal.cPointer())
@@ -422,7 +440,7 @@ func QMetaObject_InvokeMethod2(obj *QObject, member string, retVal QGenericRetur
 	return (bool)(ret)
 }
 
-func QMetaObject_InvokeMethod3(obj *QObject, member string, typeVal uintptr) bool {
+func QMetaObject_InvokeMethod3(obj *QObject, member string, typeVal ConnectionType) bool {
 	member_Cstring := C.CString(member)
 	defer C.free(unsafe.Pointer(member_Cstring))
 	ret := C.QMetaObject_InvokeMethod3(obj.cPointer(), member_Cstring, (C.uintptr_t)(typeVal))
@@ -476,70 +494,70 @@ func QMetaObject_Connect6(sender *QObject, signal_index int, receiver *QObject, 
 	return ret1
 }
 
-func QMetaObject_InvokeMethod5(obj *QObject, member string, param3 uintptr, retVal QGenericReturnArgument, val0 QGenericArgument) bool {
+func QMetaObject_InvokeMethod5(obj *QObject, member string, param3 ConnectionType, retVal QGenericReturnArgument, val0 QGenericArgument) bool {
 	member_Cstring := C.CString(member)
 	defer C.free(unsafe.Pointer(member_Cstring))
 	ret := C.QMetaObject_InvokeMethod5(obj.cPointer(), member_Cstring, (C.uintptr_t)(param3), retVal.cPointer(), val0.cPointer())
 	return (bool)(ret)
 }
 
-func QMetaObject_InvokeMethod6(obj *QObject, member string, param3 uintptr, retVal QGenericReturnArgument, val0 QGenericArgument, val1 QGenericArgument) bool {
+func QMetaObject_InvokeMethod6(obj *QObject, member string, param3 ConnectionType, retVal QGenericReturnArgument, val0 QGenericArgument, val1 QGenericArgument) bool {
 	member_Cstring := C.CString(member)
 	defer C.free(unsafe.Pointer(member_Cstring))
 	ret := C.QMetaObject_InvokeMethod6(obj.cPointer(), member_Cstring, (C.uintptr_t)(param3), retVal.cPointer(), val0.cPointer(), val1.cPointer())
 	return (bool)(ret)
 }
 
-func QMetaObject_InvokeMethod7(obj *QObject, member string, param3 uintptr, retVal QGenericReturnArgument, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument) bool {
+func QMetaObject_InvokeMethod7(obj *QObject, member string, param3 ConnectionType, retVal QGenericReturnArgument, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument) bool {
 	member_Cstring := C.CString(member)
 	defer C.free(unsafe.Pointer(member_Cstring))
 	ret := C.QMetaObject_InvokeMethod7(obj.cPointer(), member_Cstring, (C.uintptr_t)(param3), retVal.cPointer(), val0.cPointer(), val1.cPointer(), val2.cPointer())
 	return (bool)(ret)
 }
 
-func QMetaObject_InvokeMethod8(obj *QObject, member string, param3 uintptr, retVal QGenericReturnArgument, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument) bool {
+func QMetaObject_InvokeMethod8(obj *QObject, member string, param3 ConnectionType, retVal QGenericReturnArgument, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument) bool {
 	member_Cstring := C.CString(member)
 	defer C.free(unsafe.Pointer(member_Cstring))
 	ret := C.QMetaObject_InvokeMethod8(obj.cPointer(), member_Cstring, (C.uintptr_t)(param3), retVal.cPointer(), val0.cPointer(), val1.cPointer(), val2.cPointer(), val3.cPointer())
 	return (bool)(ret)
 }
 
-func QMetaObject_InvokeMethod9(obj *QObject, member string, param3 uintptr, retVal QGenericReturnArgument, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument, val4 QGenericArgument) bool {
+func QMetaObject_InvokeMethod9(obj *QObject, member string, param3 ConnectionType, retVal QGenericReturnArgument, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument, val4 QGenericArgument) bool {
 	member_Cstring := C.CString(member)
 	defer C.free(unsafe.Pointer(member_Cstring))
 	ret := C.QMetaObject_InvokeMethod9(obj.cPointer(), member_Cstring, (C.uintptr_t)(param3), retVal.cPointer(), val0.cPointer(), val1.cPointer(), val2.cPointer(), val3.cPointer(), val4.cPointer())
 	return (bool)(ret)
 }
 
-func QMetaObject_InvokeMethod10(obj *QObject, member string, param3 uintptr, retVal QGenericReturnArgument, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument, val4 QGenericArgument, val5 QGenericArgument) bool {
+func QMetaObject_InvokeMethod10(obj *QObject, member string, param3 ConnectionType, retVal QGenericReturnArgument, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument, val4 QGenericArgument, val5 QGenericArgument) bool {
 	member_Cstring := C.CString(member)
 	defer C.free(unsafe.Pointer(member_Cstring))
 	ret := C.QMetaObject_InvokeMethod10(obj.cPointer(), member_Cstring, (C.uintptr_t)(param3), retVal.cPointer(), val0.cPointer(), val1.cPointer(), val2.cPointer(), val3.cPointer(), val4.cPointer(), val5.cPointer())
 	return (bool)(ret)
 }
 
-func QMetaObject_InvokeMethod11(obj *QObject, member string, param3 uintptr, retVal QGenericReturnArgument, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument, val4 QGenericArgument, val5 QGenericArgument, val6 QGenericArgument) bool {
+func QMetaObject_InvokeMethod11(obj *QObject, member string, param3 ConnectionType, retVal QGenericReturnArgument, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument, val4 QGenericArgument, val5 QGenericArgument, val6 QGenericArgument) bool {
 	member_Cstring := C.CString(member)
 	defer C.free(unsafe.Pointer(member_Cstring))
 	ret := C.QMetaObject_InvokeMethod11(obj.cPointer(), member_Cstring, (C.uintptr_t)(param3), retVal.cPointer(), val0.cPointer(), val1.cPointer(), val2.cPointer(), val3.cPointer(), val4.cPointer(), val5.cPointer(), val6.cPointer())
 	return (bool)(ret)
 }
 
-func QMetaObject_InvokeMethod12(obj *QObject, member string, param3 uintptr, retVal QGenericReturnArgument, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument, val4 QGenericArgument, val5 QGenericArgument, val6 QGenericArgument, val7 QGenericArgument) bool {
+func QMetaObject_InvokeMethod12(obj *QObject, member string, param3 ConnectionType, retVal QGenericReturnArgument, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument, val4 QGenericArgument, val5 QGenericArgument, val6 QGenericArgument, val7 QGenericArgument) bool {
 	member_Cstring := C.CString(member)
 	defer C.free(unsafe.Pointer(member_Cstring))
 	ret := C.QMetaObject_InvokeMethod12(obj.cPointer(), member_Cstring, (C.uintptr_t)(param3), retVal.cPointer(), val0.cPointer(), val1.cPointer(), val2.cPointer(), val3.cPointer(), val4.cPointer(), val5.cPointer(), val6.cPointer(), val7.cPointer())
 	return (bool)(ret)
 }
 
-func QMetaObject_InvokeMethod13(obj *QObject, member string, param3 uintptr, retVal QGenericReturnArgument, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument, val4 QGenericArgument, val5 QGenericArgument, val6 QGenericArgument, val7 QGenericArgument, val8 QGenericArgument) bool {
+func QMetaObject_InvokeMethod13(obj *QObject, member string, param3 ConnectionType, retVal QGenericReturnArgument, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument, val4 QGenericArgument, val5 QGenericArgument, val6 QGenericArgument, val7 QGenericArgument, val8 QGenericArgument) bool {
 	member_Cstring := C.CString(member)
 	defer C.free(unsafe.Pointer(member_Cstring))
 	ret := C.QMetaObject_InvokeMethod13(obj.cPointer(), member_Cstring, (C.uintptr_t)(param3), retVal.cPointer(), val0.cPointer(), val1.cPointer(), val2.cPointer(), val3.cPointer(), val4.cPointer(), val5.cPointer(), val6.cPointer(), val7.cPointer(), val8.cPointer())
 	return (bool)(ret)
 }
 
-func QMetaObject_InvokeMethod14(obj *QObject, member string, param3 uintptr, retVal QGenericReturnArgument, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument, val4 QGenericArgument, val5 QGenericArgument, val6 QGenericArgument, val7 QGenericArgument, val8 QGenericArgument, val9 QGenericArgument) bool {
+func QMetaObject_InvokeMethod14(obj *QObject, member string, param3 ConnectionType, retVal QGenericReturnArgument, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument, val4 QGenericArgument, val5 QGenericArgument, val6 QGenericArgument, val7 QGenericArgument, val8 QGenericArgument, val9 QGenericArgument) bool {
 	member_Cstring := C.CString(member)
 	defer C.free(unsafe.Pointer(member_Cstring))
 	ret := C.QMetaObject_InvokeMethod14(obj.cPointer(), member_Cstring, (C.uintptr_t)(param3), retVal.cPointer(), val0.cPointer(), val1.cPointer(), val2.cPointer(), val3.cPointer(), val4.cPointer(), val5.cPointer(), val6.cPointer(), val7.cPointer(), val8.cPointer(), val9.cPointer())
@@ -616,70 +634,70 @@ func QMetaObject_InvokeMethod132(obj *QObject, member string, retVal QGenericRet
 	return (bool)(ret)
 }
 
-func QMetaObject_InvokeMethod43(obj *QObject, member string, typeVal uintptr, val0 QGenericArgument) bool {
+func QMetaObject_InvokeMethod43(obj *QObject, member string, typeVal ConnectionType, val0 QGenericArgument) bool {
 	member_Cstring := C.CString(member)
 	defer C.free(unsafe.Pointer(member_Cstring))
 	ret := C.QMetaObject_InvokeMethod43(obj.cPointer(), member_Cstring, (C.uintptr_t)(typeVal), val0.cPointer())
 	return (bool)(ret)
 }
 
-func QMetaObject_InvokeMethod53(obj *QObject, member string, typeVal uintptr, val0 QGenericArgument, val1 QGenericArgument) bool {
+func QMetaObject_InvokeMethod53(obj *QObject, member string, typeVal ConnectionType, val0 QGenericArgument, val1 QGenericArgument) bool {
 	member_Cstring := C.CString(member)
 	defer C.free(unsafe.Pointer(member_Cstring))
 	ret := C.QMetaObject_InvokeMethod53(obj.cPointer(), member_Cstring, (C.uintptr_t)(typeVal), val0.cPointer(), val1.cPointer())
 	return (bool)(ret)
 }
 
-func QMetaObject_InvokeMethod63(obj *QObject, member string, typeVal uintptr, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument) bool {
+func QMetaObject_InvokeMethod63(obj *QObject, member string, typeVal ConnectionType, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument) bool {
 	member_Cstring := C.CString(member)
 	defer C.free(unsafe.Pointer(member_Cstring))
 	ret := C.QMetaObject_InvokeMethod63(obj.cPointer(), member_Cstring, (C.uintptr_t)(typeVal), val0.cPointer(), val1.cPointer(), val2.cPointer())
 	return (bool)(ret)
 }
 
-func QMetaObject_InvokeMethod73(obj *QObject, member string, typeVal uintptr, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument) bool {
+func QMetaObject_InvokeMethod73(obj *QObject, member string, typeVal ConnectionType, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument) bool {
 	member_Cstring := C.CString(member)
 	defer C.free(unsafe.Pointer(member_Cstring))
 	ret := C.QMetaObject_InvokeMethod73(obj.cPointer(), member_Cstring, (C.uintptr_t)(typeVal), val0.cPointer(), val1.cPointer(), val2.cPointer(), val3.cPointer())
 	return (bool)(ret)
 }
 
-func QMetaObject_InvokeMethod83(obj *QObject, member string, typeVal uintptr, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument, val4 QGenericArgument) bool {
+func QMetaObject_InvokeMethod83(obj *QObject, member string, typeVal ConnectionType, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument, val4 QGenericArgument) bool {
 	member_Cstring := C.CString(member)
 	defer C.free(unsafe.Pointer(member_Cstring))
 	ret := C.QMetaObject_InvokeMethod83(obj.cPointer(), member_Cstring, (C.uintptr_t)(typeVal), val0.cPointer(), val1.cPointer(), val2.cPointer(), val3.cPointer(), val4.cPointer())
 	return (bool)(ret)
 }
 
-func QMetaObject_InvokeMethod93(obj *QObject, member string, typeVal uintptr, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument, val4 QGenericArgument, val5 QGenericArgument) bool {
+func QMetaObject_InvokeMethod93(obj *QObject, member string, typeVal ConnectionType, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument, val4 QGenericArgument, val5 QGenericArgument) bool {
 	member_Cstring := C.CString(member)
 	defer C.free(unsafe.Pointer(member_Cstring))
 	ret := C.QMetaObject_InvokeMethod93(obj.cPointer(), member_Cstring, (C.uintptr_t)(typeVal), val0.cPointer(), val1.cPointer(), val2.cPointer(), val3.cPointer(), val4.cPointer(), val5.cPointer())
 	return (bool)(ret)
 }
 
-func QMetaObject_InvokeMethod103(obj *QObject, member string, typeVal uintptr, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument, val4 QGenericArgument, val5 QGenericArgument, val6 QGenericArgument) bool {
+func QMetaObject_InvokeMethod103(obj *QObject, member string, typeVal ConnectionType, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument, val4 QGenericArgument, val5 QGenericArgument, val6 QGenericArgument) bool {
 	member_Cstring := C.CString(member)
 	defer C.free(unsafe.Pointer(member_Cstring))
 	ret := C.QMetaObject_InvokeMethod103(obj.cPointer(), member_Cstring, (C.uintptr_t)(typeVal), val0.cPointer(), val1.cPointer(), val2.cPointer(), val3.cPointer(), val4.cPointer(), val5.cPointer(), val6.cPointer())
 	return (bool)(ret)
 }
 
-func QMetaObject_InvokeMethod113(obj *QObject, member string, typeVal uintptr, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument, val4 QGenericArgument, val5 QGenericArgument, val6 QGenericArgument, val7 QGenericArgument) bool {
+func QMetaObject_InvokeMethod113(obj *QObject, member string, typeVal ConnectionType, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument, val4 QGenericArgument, val5 QGenericArgument, val6 QGenericArgument, val7 QGenericArgument) bool {
 	member_Cstring := C.CString(member)
 	defer C.free(unsafe.Pointer(member_Cstring))
 	ret := C.QMetaObject_InvokeMethod113(obj.cPointer(), member_Cstring, (C.uintptr_t)(typeVal), val0.cPointer(), val1.cPointer(), val2.cPointer(), val3.cPointer(), val4.cPointer(), val5.cPointer(), val6.cPointer(), val7.cPointer())
 	return (bool)(ret)
 }
 
-func QMetaObject_InvokeMethod123(obj *QObject, member string, typeVal uintptr, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument, val4 QGenericArgument, val5 QGenericArgument, val6 QGenericArgument, val7 QGenericArgument, val8 QGenericArgument) bool {
+func QMetaObject_InvokeMethod123(obj *QObject, member string, typeVal ConnectionType, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument, val4 QGenericArgument, val5 QGenericArgument, val6 QGenericArgument, val7 QGenericArgument, val8 QGenericArgument) bool {
 	member_Cstring := C.CString(member)
 	defer C.free(unsafe.Pointer(member_Cstring))
 	ret := C.QMetaObject_InvokeMethod123(obj.cPointer(), member_Cstring, (C.uintptr_t)(typeVal), val0.cPointer(), val1.cPointer(), val2.cPointer(), val3.cPointer(), val4.cPointer(), val5.cPointer(), val6.cPointer(), val7.cPointer(), val8.cPointer())
 	return (bool)(ret)
 }
 
-func QMetaObject_InvokeMethod133(obj *QObject, member string, typeVal uintptr, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument, val4 QGenericArgument, val5 QGenericArgument, val6 QGenericArgument, val7 QGenericArgument, val8 QGenericArgument, val9 QGenericArgument) bool {
+func QMetaObject_InvokeMethod133(obj *QObject, member string, typeVal ConnectionType, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument, val4 QGenericArgument, val5 QGenericArgument, val6 QGenericArgument, val7 QGenericArgument, val8 QGenericArgument, val9 QGenericArgument) bool {
 	member_Cstring := C.CString(member)
 	defer C.free(unsafe.Pointer(member_Cstring))
 	ret := C.QMetaObject_InvokeMethod133(obj.cPointer(), member_Cstring, (C.uintptr_t)(typeVal), val0.cPointer(), val1.cPointer(), val2.cPointer(), val3.cPointer(), val4.cPointer(), val5.cPointer(), val6.cPointer(), val7.cPointer(), val8.cPointer(), val9.cPointer())

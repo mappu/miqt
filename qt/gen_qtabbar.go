@@ -14,6 +14,34 @@ import (
 	"unsafe"
 )
 
+type QTabBar__Shape int
+
+const (
+	QTabBar__Shape__RoundedNorth    QTabBar__Shape = 0
+	QTabBar__Shape__RoundedSouth    QTabBar__Shape = 1
+	QTabBar__Shape__RoundedWest     QTabBar__Shape = 2
+	QTabBar__Shape__RoundedEast     QTabBar__Shape = 3
+	QTabBar__Shape__TriangularNorth QTabBar__Shape = 4
+	QTabBar__Shape__TriangularSouth QTabBar__Shape = 5
+	QTabBar__Shape__TriangularWest  QTabBar__Shape = 6
+	QTabBar__Shape__TriangularEast  QTabBar__Shape = 7
+)
+
+type QTabBar__ButtonPosition int
+
+const (
+	QTabBar__ButtonPosition__LeftSide  QTabBar__ButtonPosition = 0
+	QTabBar__ButtonPosition__RightSide QTabBar__ButtonPosition = 1
+)
+
+type QTabBar__SelectionBehavior int
+
+const (
+	QTabBar__SelectionBehavior__SelectLeftTab     QTabBar__SelectionBehavior = 0
+	QTabBar__SelectionBehavior__SelectRightTab    QTabBar__SelectionBehavior = 1
+	QTabBar__SelectionBehavior__SelectPreviousTab QTabBar__SelectionBehavior = 2
+)
+
 type QTabBar struct {
 	h *C.QTabBar
 	*QWidget
@@ -76,12 +104,12 @@ func QTabBar_TrUtf8(s string) string {
 	return ret
 }
 
-func (this *QTabBar) Shape() uintptr {
+func (this *QTabBar) Shape() QTabBar__Shape {
 	ret := C.QTabBar_Shape(this.h)
-	return (uintptr)(ret)
+	return (QTabBar__Shape)(ret)
 }
 
-func (this *QTabBar) SetShape(shape uintptr) {
+func (this *QTabBar) SetShape(shape QTabBar__Shape) {
 	C.QTabBar_SetShape(this.h, (C.uintptr_t)(shape))
 }
 
@@ -184,12 +212,12 @@ func (this *QTabBar) SetTabIcon(index int, icon *QIcon) {
 	C.QTabBar_SetTabIcon(this.h, (C.int)(index), icon.cPointer())
 }
 
-func (this *QTabBar) ElideMode() uintptr {
+func (this *QTabBar) ElideMode() TextElideMode {
 	ret := C.QTabBar_ElideMode(this.h)
-	return (uintptr)(ret)
+	return (TextElideMode)(ret)
 }
 
-func (this *QTabBar) SetElideMode(mode uintptr) {
+func (this *QTabBar) SetElideMode(mode TextElideMode) {
 	C.QTabBar_SetElideMode(this.h, (C.uintptr_t)(mode))
 }
 
@@ -328,21 +356,21 @@ func (this *QTabBar) SetTabsClosable(closable bool) {
 	C.QTabBar_SetTabsClosable(this.h, (C.bool)(closable))
 }
 
-func (this *QTabBar) SetTabButton(index int, position uintptr, widget *QWidget) {
+func (this *QTabBar) SetTabButton(index int, position QTabBar__ButtonPosition, widget *QWidget) {
 	C.QTabBar_SetTabButton(this.h, (C.int)(index), (C.uintptr_t)(position), widget.cPointer())
 }
 
-func (this *QTabBar) TabButton(index int, position uintptr) *QWidget {
+func (this *QTabBar) TabButton(index int, position QTabBar__ButtonPosition) *QWidget {
 	ret := C.QTabBar_TabButton(this.h, (C.int)(index), (C.uintptr_t)(position))
 	return newQWidget_U(unsafe.Pointer(ret))
 }
 
-func (this *QTabBar) SelectionBehaviorOnRemove() uintptr {
+func (this *QTabBar) SelectionBehaviorOnRemove() QTabBar__SelectionBehavior {
 	ret := C.QTabBar_SelectionBehaviorOnRemove(this.h)
-	return (uintptr)(ret)
+	return (QTabBar__SelectionBehavior)(ret)
 }
 
-func (this *QTabBar) SetSelectionBehaviorOnRemove(behavior uintptr) {
+func (this *QTabBar) SetSelectionBehaviorOnRemove(behavior QTabBar__SelectionBehavior) {
 	C.QTabBar_SetSelectionBehaviorOnRemove(this.h, (C.uintptr_t)(behavior))
 }
 

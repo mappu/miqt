@@ -13,6 +13,18 @@ import (
 	"unsafe"
 )
 
+type QJsonValue__Type int
+
+const (
+	QJsonValue__Type__Null      QJsonValue__Type = 0
+	QJsonValue__Type__Bool      QJsonValue__Type = 1
+	QJsonValue__Type__Double    QJsonValue__Type = 2
+	QJsonValue__Type__String    QJsonValue__Type = 3
+	QJsonValue__Type__Array     QJsonValue__Type = 4
+	QJsonValue__Type__Object    QJsonValue__Type = 5
+	QJsonValue__Type__Undefined QJsonValue__Type = 128
+)
+
 type QJsonValue struct {
 	h *C.QJsonValue
 }
@@ -100,7 +112,7 @@ func NewQJsonValue10(other *QJsonValue) *QJsonValue {
 }
 
 // NewQJsonValue11 constructs a new QJsonValue object.
-func NewQJsonValue11(param1 uintptr) *QJsonValue {
+func NewQJsonValue11(param1 QJsonValue__Type) *QJsonValue {
 	ret := C.QJsonValue_new11((C.uintptr_t)(param1))
 	return newQJsonValue(ret)
 }
@@ -135,9 +147,9 @@ func (this *QJsonValue) ToVariant() *QVariant {
 	return ret1
 }
 
-func (this *QJsonValue) Type() uintptr {
+func (this *QJsonValue) Type() QJsonValue__Type {
 	ret := C.QJsonValue_Type(this.h)
-	return (uintptr)(ret)
+	return (QJsonValue__Type)(ret)
 }
 
 func (this *QJsonValue) IsNull() bool {
@@ -366,9 +378,9 @@ func (this *QJsonValueRef) ToVariant() *QVariant {
 	return ret1
 }
 
-func (this *QJsonValueRef) Type() uintptr {
+func (this *QJsonValueRef) Type() QJsonValue__Type {
 	ret := C.QJsonValueRef_Type(this.h)
-	return (uintptr)(ret)
+	return (QJsonValue__Type)(ret)
 }
 
 func (this *QJsonValueRef) IsNull() bool {

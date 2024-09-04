@@ -13,6 +13,31 @@ import (
 	"unsafe"
 )
 
+type QGesture__GestureCancelPolicy int
+
+const (
+	QGesture__GestureCancelPolicy__CancelNone         QGesture__GestureCancelPolicy = 0
+	QGesture__GestureCancelPolicy__CancelAllInContext QGesture__GestureCancelPolicy = 1
+)
+
+type QPinchGesture__ChangeFlag int
+
+const (
+	QPinchGesture__ChangeFlag__ScaleFactorChanged   QPinchGesture__ChangeFlag = 1
+	QPinchGesture__ChangeFlag__RotationAngleChanged QPinchGesture__ChangeFlag = 2
+	QPinchGesture__ChangeFlag__CenterPointChanged   QPinchGesture__ChangeFlag = 4
+)
+
+type QSwipeGesture__SwipeDirection int
+
+const (
+	QSwipeGesture__SwipeDirection__NoDirection QSwipeGesture__SwipeDirection = 0
+	QSwipeGesture__SwipeDirection__Left        QSwipeGesture__SwipeDirection = 1
+	QSwipeGesture__SwipeDirection__Right       QSwipeGesture__SwipeDirection = 2
+	QSwipeGesture__SwipeDirection__Up          QSwipeGesture__SwipeDirection = 3
+	QSwipeGesture__SwipeDirection__Down        QSwipeGesture__SwipeDirection = 4
+)
+
 type QGesture struct {
 	h *C.QGesture
 	*QObject
@@ -75,14 +100,14 @@ func QGesture_TrUtf8(s string) string {
 	return ret
 }
 
-func (this *QGesture) GestureType() uintptr {
+func (this *QGesture) GestureType() GestureType {
 	ret := C.QGesture_GestureType(this.h)
-	return (uintptr)(ret)
+	return (GestureType)(ret)
 }
 
-func (this *QGesture) State() uintptr {
+func (this *QGesture) State() GestureState {
 	ret := C.QGesture_State(this.h)
-	return (uintptr)(ret)
+	return (GestureState)(ret)
 }
 
 func (this *QGesture) HotSpot() *QPointF {
@@ -109,13 +134,13 @@ func (this *QGesture) UnsetHotSpot() {
 	C.QGesture_UnsetHotSpot(this.h)
 }
 
-func (this *QGesture) SetGestureCancelPolicy(policy uintptr) {
+func (this *QGesture) SetGestureCancelPolicy(policy QGesture__GestureCancelPolicy) {
 	C.QGesture_SetGestureCancelPolicy(this.h, (C.uintptr_t)(policy))
 }
 
-func (this *QGesture) GestureCancelPolicy() uintptr {
+func (this *QGesture) GestureCancelPolicy() QGesture__GestureCancelPolicy {
 	ret := C.QGesture_GestureCancelPolicy(this.h)
-	return (uintptr)(ret)
+	return (QGesture__GestureCancelPolicy)(ret)
 }
 
 func QGesture_Tr2(s string, c string) string {
@@ -639,14 +664,14 @@ func QSwipeGesture_TrUtf8(s string) string {
 	return ret
 }
 
-func (this *QSwipeGesture) HorizontalDirection() uintptr {
+func (this *QSwipeGesture) HorizontalDirection() QSwipeGesture__SwipeDirection {
 	ret := C.QSwipeGesture_HorizontalDirection(this.h)
-	return (uintptr)(ret)
+	return (QSwipeGesture__SwipeDirection)(ret)
 }
 
-func (this *QSwipeGesture) VerticalDirection() uintptr {
+func (this *QSwipeGesture) VerticalDirection() QSwipeGesture__SwipeDirection {
 	ret := C.QSwipeGesture_VerticalDirection(this.h)
-	return (uintptr)(ret)
+	return (QSwipeGesture__SwipeDirection)(ret)
 }
 
 func (this *QSwipeGesture) SwipeAngle() float64 {
@@ -1043,7 +1068,7 @@ func (this *QGestureEvent) Gestures() []*QGesture {
 	return ret
 }
 
-func (this *QGestureEvent) Gesture(typeVal uintptr) *QGesture {
+func (this *QGestureEvent) Gesture(typeVal GestureType) *QGesture {
 	ret := C.QGestureEvent_Gesture(this.h, (C.uintptr_t)(typeVal))
 	return newQGesture_U(unsafe.Pointer(ret))
 }
@@ -1091,19 +1116,19 @@ func (this *QGestureEvent) IsAccepted(param1 *QGesture) bool {
 	return (bool)(ret)
 }
 
-func (this *QGestureEvent) SetAccepted2(param1 uintptr, param2 bool) {
+func (this *QGestureEvent) SetAccepted2(param1 GestureType, param2 bool) {
 	C.QGestureEvent_SetAccepted2(this.h, (C.uintptr_t)(param1), (C.bool)(param2))
 }
 
-func (this *QGestureEvent) AcceptWithQtGestureType(param1 uintptr) {
+func (this *QGestureEvent) AcceptWithQtGestureType(param1 GestureType) {
 	C.QGestureEvent_AcceptWithQtGestureType(this.h, (C.uintptr_t)(param1))
 }
 
-func (this *QGestureEvent) IgnoreWithQtGestureType(param1 uintptr) {
+func (this *QGestureEvent) IgnoreWithQtGestureType(param1 GestureType) {
 	C.QGestureEvent_IgnoreWithQtGestureType(this.h, (C.uintptr_t)(param1))
 }
 
-func (this *QGestureEvent) IsAcceptedWithQtGestureType(param1 uintptr) bool {
+func (this *QGestureEvent) IsAcceptedWithQtGestureType(param1 GestureType) bool {
 	ret := C.QGestureEvent_IsAcceptedWithQtGestureType(this.h, (C.uintptr_t)(param1))
 	return (bool)(ret)
 }

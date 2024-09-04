@@ -14,6 +14,22 @@ import (
 	"unsafe"
 )
 
+type QTabWidget__TabPosition int
+
+const (
+	QTabWidget__TabPosition__North QTabWidget__TabPosition = 0
+	QTabWidget__TabPosition__South QTabWidget__TabPosition = 1
+	QTabWidget__TabPosition__West  QTabWidget__TabPosition = 2
+	QTabWidget__TabPosition__East  QTabWidget__TabPosition = 3
+)
+
+type QTabWidget__TabShape int
+
+const (
+	QTabWidget__TabShape__Rounded    QTabWidget__TabShape = 0
+	QTabWidget__TabShape__Triangular QTabWidget__TabShape = 1
+)
+
 type QTabWidget struct {
 	h *C.QTabWidget
 	*QWidget
@@ -211,12 +227,12 @@ func (this *QTabWidget) Count() int {
 	return (int)(ret)
 }
 
-func (this *QTabWidget) TabPosition() uintptr {
+func (this *QTabWidget) TabPosition() QTabWidget__TabPosition {
 	ret := C.QTabWidget_TabPosition(this.h)
-	return (uintptr)(ret)
+	return (QTabWidget__TabPosition)(ret)
 }
 
-func (this *QTabWidget) SetTabPosition(position uintptr) {
+func (this *QTabWidget) SetTabPosition(position QTabWidget__TabPosition) {
 	C.QTabWidget_SetTabPosition(this.h, (C.uintptr_t)(position))
 }
 
@@ -238,12 +254,12 @@ func (this *QTabWidget) SetMovable(movable bool) {
 	C.QTabWidget_SetMovable(this.h, (C.bool)(movable))
 }
 
-func (this *QTabWidget) TabShape() uintptr {
+func (this *QTabWidget) TabShape() QTabWidget__TabShape {
 	ret := C.QTabWidget_TabShape(this.h)
-	return (uintptr)(ret)
+	return (QTabWidget__TabShape)(ret)
 }
 
-func (this *QTabWidget) SetTabShape(s uintptr) {
+func (this *QTabWidget) SetTabShape(s QTabWidget__TabShape) {
 	C.QTabWidget_SetTabShape(this.h, (C.uintptr_t)(s))
 }
 
@@ -288,12 +304,12 @@ func (this *QTabWidget) CornerWidget() *QWidget {
 	return newQWidget_U(unsafe.Pointer(ret))
 }
 
-func (this *QTabWidget) ElideMode() uintptr {
+func (this *QTabWidget) ElideMode() TextElideMode {
 	ret := C.QTabWidget_ElideMode(this.h)
-	return (uintptr)(ret)
+	return (TextElideMode)(ret)
 }
 
-func (this *QTabWidget) SetElideMode(mode uintptr) {
+func (this *QTabWidget) SetElideMode(mode TextElideMode) {
 	C.QTabWidget_SetElideMode(this.h, (C.uintptr_t)(mode))
 }
 
@@ -456,11 +472,11 @@ func QTabWidget_TrUtf83(s string, c string, n int) string {
 	return ret
 }
 
-func (this *QTabWidget) SetCornerWidget2(w *QWidget, corner uintptr) {
+func (this *QTabWidget) SetCornerWidget2(w *QWidget, corner Corner) {
 	C.QTabWidget_SetCornerWidget2(this.h, w.cPointer(), (C.uintptr_t)(corner))
 }
 
-func (this *QTabWidget) CornerWidget1(corner uintptr) *QWidget {
+func (this *QTabWidget) CornerWidget1(corner Corner) *QWidget {
 	ret := C.QTabWidget_CornerWidget1(this.h, (C.uintptr_t)(corner))
 	return newQWidget_U(unsafe.Pointer(ret))
 }

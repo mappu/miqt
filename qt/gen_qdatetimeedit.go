@@ -14,6 +14,22 @@ import (
 	"unsafe"
 )
 
+type QDateTimeEdit__Section int
+
+const (
+	QDateTimeEdit__Section__NoSection         QDateTimeEdit__Section = 0
+	QDateTimeEdit__Section__AmPmSection       QDateTimeEdit__Section = 1
+	QDateTimeEdit__Section__MSecSection       QDateTimeEdit__Section = 2
+	QDateTimeEdit__Section__SecondSection     QDateTimeEdit__Section = 4
+	QDateTimeEdit__Section__MinuteSection     QDateTimeEdit__Section = 8
+	QDateTimeEdit__Section__HourSection       QDateTimeEdit__Section = 16
+	QDateTimeEdit__Section__DaySection        QDateTimeEdit__Section = 256
+	QDateTimeEdit__Section__MonthSection      QDateTimeEdit__Section = 512
+	QDateTimeEdit__Section__YearSection       QDateTimeEdit__Section = 1024
+	QDateTimeEdit__Section__TimeSections_Mask QDateTimeEdit__Section = 31
+	QDateTimeEdit__Section__DateSections_Mask QDateTimeEdit__Section = 1792
+)
+
 type QDateTimeEdit struct {
 	h *C.QDateTimeEdit
 	*QAbstractSpinBox
@@ -291,17 +307,17 @@ func (this *QDateTimeEdit) DisplayedSections() int {
 	return (int)(ret)
 }
 
-func (this *QDateTimeEdit) CurrentSection() uintptr {
+func (this *QDateTimeEdit) CurrentSection() QDateTimeEdit__Section {
 	ret := C.QDateTimeEdit_CurrentSection(this.h)
-	return (uintptr)(ret)
+	return (QDateTimeEdit__Section)(ret)
 }
 
-func (this *QDateTimeEdit) SectionAt(index int) uintptr {
+func (this *QDateTimeEdit) SectionAt(index int) QDateTimeEdit__Section {
 	ret := C.QDateTimeEdit_SectionAt(this.h, (C.int)(index))
-	return (uintptr)(ret)
+	return (QDateTimeEdit__Section)(ret)
 }
 
-func (this *QDateTimeEdit) SetCurrentSection(section uintptr) {
+func (this *QDateTimeEdit) SetCurrentSection(section QDateTimeEdit__Section) {
 	C.QDateTimeEdit_SetCurrentSection(this.h, (C.uintptr_t)(section))
 }
 
@@ -328,11 +344,11 @@ func (this *QDateTimeEdit) SectionCount() int {
 	return (int)(ret)
 }
 
-func (this *QDateTimeEdit) SetSelectedSection(section uintptr) {
+func (this *QDateTimeEdit) SetSelectedSection(section QDateTimeEdit__Section) {
 	C.QDateTimeEdit_SetSelectedSection(this.h, (C.uintptr_t)(section))
 }
 
-func (this *QDateTimeEdit) SectionText(section uintptr) string {
+func (this *QDateTimeEdit) SectionText(section QDateTimeEdit__Section) string {
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
 	C.QDateTimeEdit_SectionText(this.h, (C.uintptr_t)(section), &_out, &_out_Strlen)
@@ -365,12 +381,12 @@ func (this *QDateTimeEdit) SetCalendarPopup(enable bool) {
 	C.QDateTimeEdit_SetCalendarPopup(this.h, (C.bool)(enable))
 }
 
-func (this *QDateTimeEdit) TimeSpec() uintptr {
+func (this *QDateTimeEdit) TimeSpec() TimeSpec {
 	ret := C.QDateTimeEdit_TimeSpec(this.h)
-	return (uintptr)(ret)
+	return (TimeSpec)(ret)
 }
 
-func (this *QDateTimeEdit) SetTimeSpec(spec uintptr) {
+func (this *QDateTimeEdit) SetTimeSpec(spec TimeSpec) {
 	C.QDateTimeEdit_SetTimeSpec(this.h, (C.uintptr_t)(spec))
 }
 

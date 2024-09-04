@@ -13,6 +13,20 @@ import (
 	"unsafe"
 )
 
+type QDate__MonthNameType int
+
+const (
+	QDate__MonthNameType__DateFormat       QDate__MonthNameType = 0
+	QDate__MonthNameType__StandaloneFormat QDate__MonthNameType = 1
+)
+
+type QDateTime__YearRange int
+
+const (
+	QDateTime__YearRange__First QDateTime__YearRange = -292275056
+	QDateTime__YearRange__Last  QDateTime__YearRange = 292278994
+)
+
 type QDate struct {
 	h *C.QDate
 }
@@ -233,7 +247,7 @@ func (this *QDate) ToString() string {
 	return ret
 }
 
-func (this *QDate) ToString2(format uintptr, cal QCalendar) string {
+func (this *QDate) ToString2(format DateFormat, cal QCalendar) string {
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
 	C.QDate_ToString2(this.h, (C.uintptr_t)(format), cal.cPointer(), &_out, &_out_Strlen)
@@ -457,7 +471,7 @@ func (this *QDate) WeekNumber1(yearNum *int) int {
 	return (int)(ret)
 }
 
-func (this *QDate) StartOfDay1(spec uintptr) *QDateTime {
+func (this *QDate) StartOfDay1(spec TimeSpec) *QDateTime {
 	ret := C.QDate_StartOfDay1(this.h, (C.uintptr_t)(spec))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQDateTime(ret)
@@ -468,7 +482,7 @@ func (this *QDate) StartOfDay1(spec uintptr) *QDateTime {
 	return ret1
 }
 
-func (this *QDate) StartOfDay2(spec uintptr, offsetSeconds int) *QDateTime {
+func (this *QDate) StartOfDay2(spec TimeSpec, offsetSeconds int) *QDateTime {
 	ret := C.QDate_StartOfDay2(this.h, (C.uintptr_t)(spec), (C.int)(offsetSeconds))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQDateTime(ret)
@@ -479,7 +493,7 @@ func (this *QDate) StartOfDay2(spec uintptr, offsetSeconds int) *QDateTime {
 	return ret1
 }
 
-func (this *QDate) EndOfDay1(spec uintptr) *QDateTime {
+func (this *QDate) EndOfDay1(spec TimeSpec) *QDateTime {
 	ret := C.QDate_EndOfDay1(this.h, (C.uintptr_t)(spec))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQDateTime(ret)
@@ -490,7 +504,7 @@ func (this *QDate) EndOfDay1(spec uintptr) *QDateTime {
 	return ret1
 }
 
-func (this *QDate) EndOfDay2(spec uintptr, offsetSeconds int) *QDateTime {
+func (this *QDate) EndOfDay2(spec TimeSpec, offsetSeconds int) *QDateTime {
 	ret := C.QDate_EndOfDay2(this.h, (C.uintptr_t)(spec), (C.int)(offsetSeconds))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQDateTime(ret)
@@ -501,7 +515,7 @@ func (this *QDate) EndOfDay2(spec uintptr, offsetSeconds int) *QDateTime {
 	return ret1
 }
 
-func QDate_ShortMonthName2(month int, typeVal uintptr) string {
+func QDate_ShortMonthName2(month int, typeVal QDate__MonthNameType) string {
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
 	C.QDate_ShortMonthName2((C.int)(month), (C.uintptr_t)(typeVal), &_out, &_out_Strlen)
@@ -510,7 +524,7 @@ func QDate_ShortMonthName2(month int, typeVal uintptr) string {
 	return ret
 }
 
-func QDate_ShortDayName2(weekday int, typeVal uintptr) string {
+func QDate_ShortDayName2(weekday int, typeVal QDate__MonthNameType) string {
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
 	C.QDate_ShortDayName2((C.int)(weekday), (C.uintptr_t)(typeVal), &_out, &_out_Strlen)
@@ -519,7 +533,7 @@ func QDate_ShortDayName2(weekday int, typeVal uintptr) string {
 	return ret
 }
 
-func QDate_LongMonthName2(month int, typeVal uintptr) string {
+func QDate_LongMonthName2(month int, typeVal QDate__MonthNameType) string {
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
 	C.QDate_LongMonthName2((C.int)(month), (C.uintptr_t)(typeVal), &_out, &_out_Strlen)
@@ -528,7 +542,7 @@ func QDate_LongMonthName2(month int, typeVal uintptr) string {
 	return ret
 }
 
-func QDate_LongDayName2(weekday int, typeVal uintptr) string {
+func QDate_LongDayName2(weekday int, typeVal QDate__MonthNameType) string {
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
 	C.QDate_LongDayName2((C.int)(weekday), (C.uintptr_t)(typeVal), &_out, &_out_Strlen)
@@ -537,7 +551,7 @@ func QDate_LongDayName2(weekday int, typeVal uintptr) string {
 	return ret
 }
 
-func (this *QDate) ToString1(format uintptr) string {
+func (this *QDate) ToString1(format DateFormat) string {
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
 	C.QDate_ToString1(this.h, (C.uintptr_t)(format), &_out, &_out_Strlen)
@@ -546,7 +560,7 @@ func (this *QDate) ToString1(format uintptr) string {
 	return ret
 }
 
-func QDate_FromString22(s string, f uintptr) *QDate {
+func QDate_FromString22(s string, f DateFormat) *QDate {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
 	ret := C.QDate_FromString22(s_Cstring, C.size_t(len(s)), (C.uintptr_t)(f))
@@ -806,7 +820,7 @@ func (this *QTime) Elapsed() int {
 	return (int)(ret)
 }
 
-func (this *QTime) ToString1(f uintptr) string {
+func (this *QTime) ToString1(f DateFormat) string {
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
 	C.QTime_ToString1(this.h, (C.uintptr_t)(f), &_out, &_out_Strlen)
@@ -820,7 +834,7 @@ func (this *QTime) SetHMS4(h int, m int, s int, ms int) bool {
 	return (bool)(ret)
 }
 
-func QTime_FromString22(s string, f uintptr) *QTime {
+func QTime_FromString22(s string, f DateFormat) *QTime {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
 	ret := C.QTime_FromString22(s_Cstring, C.size_t(len(s)), (C.uintptr_t)(f))
@@ -877,7 +891,7 @@ func NewQDateTime2(param1 *QDate, param2 *QTime) *QDateTime {
 }
 
 // NewQDateTime3 constructs a new QDateTime object.
-func NewQDateTime3(date *QDate, time *QTime, spec uintptr, offsetSeconds int) *QDateTime {
+func NewQDateTime3(date *QDate, time *QTime, spec TimeSpec, offsetSeconds int) *QDateTime {
 	ret := C.QDateTime_new3(date.cPointer(), time.cPointer(), (C.uintptr_t)(spec), (C.int)(offsetSeconds))
 	return newQDateTime(ret)
 }
@@ -895,7 +909,7 @@ func NewQDateTime5(other *QDateTime) *QDateTime {
 }
 
 // NewQDateTime6 constructs a new QDateTime object.
-func NewQDateTime6(param1 *QDate, param2 *QTime, spec uintptr) *QDateTime {
+func NewQDateTime6(param1 *QDate, param2 *QTime, spec TimeSpec) *QDateTime {
 	ret := C.QDateTime_new6(param1.cPointer(), param2.cPointer(), (C.uintptr_t)(spec))
 	return newQDateTime(ret)
 }
@@ -940,9 +954,9 @@ func (this *QDateTime) Time() *QTime {
 	return ret1
 }
 
-func (this *QDateTime) TimeSpec() uintptr {
+func (this *QDateTime) TimeSpec() TimeSpec {
 	ret := C.QDateTime_TimeSpec(this.h)
-	return (uintptr)(ret)
+	return (TimeSpec)(ret)
 }
 
 func (this *QDateTime) OffsetFromUtc() int {
@@ -993,7 +1007,7 @@ func (this *QDateTime) SetTime(time *QTime) {
 	C.QDateTime_SetTime(this.h, time.cPointer())
 }
 
-func (this *QDateTime) SetTimeSpec(spec uintptr) {
+func (this *QDateTime) SetTimeSpec(spec TimeSpec) {
 	C.QDateTime_SetTimeSpec(this.h, (C.uintptr_t)(spec))
 }
 
@@ -1099,7 +1113,7 @@ func (this *QDateTime) AddMSecs(msecs int64) *QDateTime {
 	return ret1
 }
 
-func (this *QDateTime) ToTimeSpec(spec uintptr) *QDateTime {
+func (this *QDateTime) ToTimeSpec(spec TimeSpec) *QDateTime {
 	ret := C.QDateTime_ToTimeSpec(this.h, (C.uintptr_t)(spec))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQDateTime(ret)
@@ -1293,7 +1307,7 @@ func QDateTime_FromTimeT(secsSince1Jan1970UTC uint) *QDateTime {
 	return ret1
 }
 
-func QDateTime_FromTimeT2(secsSince1Jan1970UTC uint, spec uintptr) *QDateTime {
+func QDateTime_FromTimeT2(secsSince1Jan1970UTC uint, spec TimeSpec) *QDateTime {
 	ret := C.QDateTime_FromTimeT2((C.uint)(secsSince1Jan1970UTC), (C.uintptr_t)(spec))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQDateTime(ret)
@@ -1326,7 +1340,7 @@ func QDateTime_FromMSecsSinceEpoch(msecs int64) *QDateTime {
 	return ret1
 }
 
-func QDateTime_FromMSecsSinceEpoch2(msecs int64, spec uintptr) *QDateTime {
+func QDateTime_FromMSecsSinceEpoch2(msecs int64, spec TimeSpec) *QDateTime {
 	ret := C.QDateTime_FromMSecsSinceEpoch2((C.longlong)(msecs), (C.uintptr_t)(spec))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQDateTime(ret)
@@ -1380,7 +1394,7 @@ func QDateTime_CurrentSecsSinceEpoch() int64 {
 	return (int64)(ret)
 }
 
-func (this *QDateTime) ToString1(format uintptr) string {
+func (this *QDateTime) ToString1(format DateFormat) string {
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
 	C.QDateTime_ToString1(this.h, (C.uintptr_t)(format), &_out, &_out_Strlen)
@@ -1389,7 +1403,7 @@ func (this *QDateTime) ToString1(format uintptr) string {
 	return ret
 }
 
-func QDateTime_FromString22(s string, f uintptr) *QDateTime {
+func QDateTime_FromString22(s string, f DateFormat) *QDateTime {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
 	ret := C.QDateTime_FromString22(s_Cstring, C.size_t(len(s)), (C.uintptr_t)(f))
@@ -1402,7 +1416,7 @@ func QDateTime_FromString22(s string, f uintptr) *QDateTime {
 	return ret1
 }
 
-func QDateTime_FromTimeT32(secsSince1Jan1970UTC uint, spec uintptr, offsetFromUtc int) *QDateTime {
+func QDateTime_FromTimeT32(secsSince1Jan1970UTC uint, spec TimeSpec, offsetFromUtc int) *QDateTime {
 	ret := C.QDateTime_FromTimeT32((C.uint)(secsSince1Jan1970UTC), (C.uintptr_t)(spec), (C.int)(offsetFromUtc))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQDateTime(ret)
@@ -1413,7 +1427,7 @@ func QDateTime_FromTimeT32(secsSince1Jan1970UTC uint, spec uintptr, offsetFromUt
 	return ret1
 }
 
-func QDateTime_FromMSecsSinceEpoch32(msecs int64, spec uintptr, offsetFromUtc int) *QDateTime {
+func QDateTime_FromMSecsSinceEpoch32(msecs int64, spec TimeSpec, offsetFromUtc int) *QDateTime {
 	ret := C.QDateTime_FromMSecsSinceEpoch32((C.longlong)(msecs), (C.uintptr_t)(spec), (C.int)(offsetFromUtc))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQDateTime(ret)
@@ -1424,7 +1438,7 @@ func QDateTime_FromMSecsSinceEpoch32(msecs int64, spec uintptr, offsetFromUtc in
 	return ret1
 }
 
-func QDateTime_FromSecsSinceEpoch22(secs int64, spe uintptr) *QDateTime {
+func QDateTime_FromSecsSinceEpoch22(secs int64, spe TimeSpec) *QDateTime {
 	ret := C.QDateTime_FromSecsSinceEpoch22((C.longlong)(secs), (C.uintptr_t)(spe))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQDateTime(ret)
@@ -1435,7 +1449,7 @@ func QDateTime_FromSecsSinceEpoch22(secs int64, spe uintptr) *QDateTime {
 	return ret1
 }
 
-func QDateTime_FromSecsSinceEpoch3(secs int64, spe uintptr, offsetFromUtc int) *QDateTime {
+func QDateTime_FromSecsSinceEpoch3(secs int64, spe TimeSpec, offsetFromUtc int) *QDateTime {
 	ret := C.QDateTime_FromSecsSinceEpoch3((C.longlong)(secs), (C.uintptr_t)(spe), (C.int)(offsetFromUtc))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQDateTime(ret)

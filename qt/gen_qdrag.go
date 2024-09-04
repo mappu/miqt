@@ -119,26 +119,26 @@ func (this *QDrag) Target() *QObject {
 	return newQObject_U(unsafe.Pointer(ret))
 }
 
-func (this *QDrag) Start() uintptr {
+func (this *QDrag) Start() DropAction {
 	ret := C.QDrag_Start(this.h)
-	return (uintptr)(ret)
+	return (DropAction)(ret)
 }
 
-func (this *QDrag) Exec() uintptr {
+func (this *QDrag) Exec() DropAction {
 	ret := C.QDrag_Exec(this.h)
-	return (uintptr)(ret)
+	return (DropAction)(ret)
 }
 
-func (this *QDrag) Exec2(supportedActions int, defaultAction uintptr) uintptr {
+func (this *QDrag) Exec2(supportedActions int, defaultAction DropAction) DropAction {
 	ret := C.QDrag_Exec2(this.h, (C.int)(supportedActions), (C.uintptr_t)(defaultAction))
-	return (uintptr)(ret)
+	return (DropAction)(ret)
 }
 
-func (this *QDrag) SetDragCursor(cursor *QPixmap, action uintptr) {
+func (this *QDrag) SetDragCursor(cursor *QPixmap, action DropAction) {
 	C.QDrag_SetDragCursor(this.h, cursor.cPointer(), (C.uintptr_t)(action))
 }
 
-func (this *QDrag) DragCursor(action uintptr) *QPixmap {
+func (this *QDrag) DragCursor(action DropAction) *QPixmap {
 	ret := C.QDrag_DragCursor(this.h, (C.uintptr_t)(action))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQPixmap(ret)
@@ -154,16 +154,16 @@ func (this *QDrag) SupportedActions() int {
 	return (int)(ret)
 }
 
-func (this *QDrag) DefaultAction() uintptr {
+func (this *QDrag) DefaultAction() DropAction {
 	ret := C.QDrag_DefaultAction(this.h)
-	return (uintptr)(ret)
+	return (DropAction)(ret)
 }
 
 func QDrag_Cancel() {
 	C.QDrag_Cancel()
 }
 
-func (this *QDrag) ActionChanged(action uintptr) {
+func (this *QDrag) ActionChanged(action DropAction) {
 	C.QDrag_ActionChanged(this.h, (C.uintptr_t)(action))
 }
 
@@ -239,14 +239,14 @@ func QDrag_TrUtf83(s string, c string, n int) string {
 	return ret
 }
 
-func (this *QDrag) Start1(supportedActions int) uintptr {
+func (this *QDrag) Start1(supportedActions int) DropAction {
 	ret := C.QDrag_Start1(this.h, (C.int)(supportedActions))
-	return (uintptr)(ret)
+	return (DropAction)(ret)
 }
 
-func (this *QDrag) Exec1(supportedActions int) uintptr {
+func (this *QDrag) Exec1(supportedActions int) DropAction {
 	ret := C.QDrag_Exec1(this.h, (C.int)(supportedActions))
-	return (uintptr)(ret)
+	return (DropAction)(ret)
 }
 
 func (this *QDrag) Delete() {

@@ -14,6 +14,13 @@ import (
 	"unsafe"
 )
 
+type QProgressBar__Direction int
+
+const (
+	QProgressBar__Direction__TopToBottom QProgressBar__Direction = 0
+	QProgressBar__Direction__BottomToTop QProgressBar__Direction = 1
+)
+
 type QProgressBar struct {
 	h *C.QProgressBar
 	*QWidget
@@ -140,9 +147,9 @@ func (this *QProgressBar) MinimumSizeHint() *QSize {
 	return ret1
 }
 
-func (this *QProgressBar) Orientation() uintptr {
+func (this *QProgressBar) Orientation() Orientation {
 	ret := C.QProgressBar_Orientation(this.h)
-	return (uintptr)(ret)
+	return (Orientation)(ret)
 }
 
 func (this *QProgressBar) SetInvertedAppearance(invert bool) {
@@ -154,13 +161,13 @@ func (this *QProgressBar) InvertedAppearance() bool {
 	return (bool)(ret)
 }
 
-func (this *QProgressBar) SetTextDirection(textDirection uintptr) {
+func (this *QProgressBar) SetTextDirection(textDirection QProgressBar__Direction) {
 	C.QProgressBar_SetTextDirection(this.h, (C.uintptr_t)(textDirection))
 }
 
-func (this *QProgressBar) TextDirection() uintptr {
+func (this *QProgressBar) TextDirection() QProgressBar__Direction {
 	ret := C.QProgressBar_TextDirection(this.h)
-	return (uintptr)(ret)
+	return (QProgressBar__Direction)(ret)
 }
 
 func (this *QProgressBar) SetFormat(format string) {
@@ -202,7 +209,7 @@ func (this *QProgressBar) SetValue(value int) {
 	C.QProgressBar_SetValue(this.h, (C.int)(value))
 }
 
-func (this *QProgressBar) SetOrientation(orientation uintptr) {
+func (this *QProgressBar) SetOrientation(orientation Orientation) {
 	C.QProgressBar_SetOrientation(this.h, (C.uintptr_t)(orientation))
 }
 

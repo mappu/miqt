@@ -87,9 +87,9 @@ func (this *QTextBrowser) Source() *QUrl {
 	return ret1
 }
 
-func (this *QTextBrowser) SourceType() uintptr {
+func (this *QTextBrowser) SourceType() QTextDocument__ResourceType {
 	ret := C.QTextBrowser_SourceType(this.h)
-	return (uintptr)(ret)
+	return (QTextDocument__ResourceType)(ret)
 }
 
 func (this *QTextBrowser) SearchPaths() []string {
@@ -199,7 +199,7 @@ func (this *QTextBrowser) SetSource(name *QUrl) {
 	C.QTextBrowser_SetSource(this.h, name.cPointer())
 }
 
-func (this *QTextBrowser) SetSource2(name *QUrl, typeVal uintptr) {
+func (this *QTextBrowser) SetSource2(name *QUrl, typeVal QTextDocument__ResourceType) {
 	C.QTextBrowser_SetSource2(this.h, name.cPointer(), (C.uintptr_t)(typeVal))
 }
 

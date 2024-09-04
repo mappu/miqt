@@ -14,6 +14,27 @@ import (
 	"unsafe"
 )
 
+type QComboBox__InsertPolicy int
+
+const (
+	QComboBox__InsertPolicy__NoInsert             QComboBox__InsertPolicy = 0
+	QComboBox__InsertPolicy__InsertAtTop          QComboBox__InsertPolicy = 1
+	QComboBox__InsertPolicy__InsertAtCurrent      QComboBox__InsertPolicy = 2
+	QComboBox__InsertPolicy__InsertAtBottom       QComboBox__InsertPolicy = 3
+	QComboBox__InsertPolicy__InsertAfterCurrent   QComboBox__InsertPolicy = 4
+	QComboBox__InsertPolicy__InsertBeforeCurrent  QComboBox__InsertPolicy = 5
+	QComboBox__InsertPolicy__InsertAlphabetically QComboBox__InsertPolicy = 6
+)
+
+type QComboBox__SizeAdjustPolicy int
+
+const (
+	QComboBox__SizeAdjustPolicy__AdjustToContents                      QComboBox__SizeAdjustPolicy = 0
+	QComboBox__SizeAdjustPolicy__AdjustToContentsOnFirstShow           QComboBox__SizeAdjustPolicy = 1
+	QComboBox__SizeAdjustPolicy__AdjustToMinimumContentsLength         QComboBox__SizeAdjustPolicy = 2
+	QComboBox__SizeAdjustPolicy__AdjustToMinimumContentsLengthWithIcon QComboBox__SizeAdjustPolicy = 3
+)
+
 type QComboBox struct {
 	h *C.QComboBox
 	*QWidget
@@ -108,12 +129,12 @@ func (this *QComboBox) SetAutoCompletion(enable bool) {
 	C.QComboBox_SetAutoCompletion(this.h, (C.bool)(enable))
 }
 
-func (this *QComboBox) AutoCompletionCaseSensitivity() uintptr {
+func (this *QComboBox) AutoCompletionCaseSensitivity() CaseSensitivity {
 	ret := C.QComboBox_AutoCompletionCaseSensitivity(this.h)
-	return (uintptr)(ret)
+	return (CaseSensitivity)(ret)
 }
 
-func (this *QComboBox) SetAutoCompletionCaseSensitivity(sensitivity uintptr) {
+func (this *QComboBox) SetAutoCompletionCaseSensitivity(sensitivity CaseSensitivity) {
 	C.QComboBox_SetAutoCompletionCaseSensitivity(this.h, (C.uintptr_t)(sensitivity))
 }
 
@@ -147,21 +168,21 @@ func (this *QComboBox) FindData(data *QVariant) int {
 	return (int)(ret)
 }
 
-func (this *QComboBox) InsertPolicy() uintptr {
+func (this *QComboBox) InsertPolicy() QComboBox__InsertPolicy {
 	ret := C.QComboBox_InsertPolicy(this.h)
-	return (uintptr)(ret)
+	return (QComboBox__InsertPolicy)(ret)
 }
 
-func (this *QComboBox) SetInsertPolicy(policy uintptr) {
+func (this *QComboBox) SetInsertPolicy(policy QComboBox__InsertPolicy) {
 	C.QComboBox_SetInsertPolicy(this.h, (C.uintptr_t)(policy))
 }
 
-func (this *QComboBox) SizeAdjustPolicy() uintptr {
+func (this *QComboBox) SizeAdjustPolicy() QComboBox__SizeAdjustPolicy {
 	ret := C.QComboBox_SizeAdjustPolicy(this.h)
-	return (uintptr)(ret)
+	return (QComboBox__SizeAdjustPolicy)(ret)
 }
 
-func (this *QComboBox) SetSizeAdjustPolicy(policy uintptr) {
+func (this *QComboBox) SetSizeAdjustPolicy(policy QComboBox__SizeAdjustPolicy) {
 	C.QComboBox_SetSizeAdjustPolicy(this.h, (C.uintptr_t)(policy))
 }
 
@@ -458,7 +479,7 @@ func (this *QComboBox) Event(event *QEvent) bool {
 	return (bool)(ret)
 }
 
-func (this *QComboBox) InputMethodQuery(param1 uintptr) *QVariant {
+func (this *QComboBox) InputMethodQuery(param1 InputMethodQuery) *QVariant {
 	ret := C.QComboBox_InputMethodQuery(this.h, (C.uintptr_t)(param1))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQVariant(ret)
@@ -469,7 +490,7 @@ func (this *QComboBox) InputMethodQuery(param1 uintptr) *QVariant {
 	return ret1
 }
 
-func (this *QComboBox) InputMethodQuery2(query uintptr, argument *QVariant) *QVariant {
+func (this *QComboBox) InputMethodQuery2(query InputMethodQuery, argument *QVariant) *QVariant {
 	ret := C.QComboBox_InputMethodQuery2(this.h, (C.uintptr_t)(query), argument.cPointer())
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQVariant(ret)

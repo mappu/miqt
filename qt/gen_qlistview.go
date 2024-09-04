@@ -14,6 +14,42 @@ import (
 	"unsafe"
 )
 
+type QListView__Movement int
+
+const (
+	QListView__Movement__Static QListView__Movement = 0
+	QListView__Movement__Free   QListView__Movement = 1
+	QListView__Movement__Snap   QListView__Movement = 2
+)
+
+type QListView__Flow int
+
+const (
+	QListView__Flow__LeftToRight QListView__Flow = 0
+	QListView__Flow__TopToBottom QListView__Flow = 1
+)
+
+type QListView__ResizeMode int
+
+const (
+	QListView__ResizeMode__Fixed  QListView__ResizeMode = 0
+	QListView__ResizeMode__Adjust QListView__ResizeMode = 1
+)
+
+type QListView__LayoutMode int
+
+const (
+	QListView__LayoutMode__SinglePass QListView__LayoutMode = 0
+	QListView__LayoutMode__Batched    QListView__LayoutMode = 1
+)
+
+type QListView__ViewMode int
+
+const (
+	QListView__ViewMode__ListMode QListView__ViewMode = 0
+	QListView__ViewMode__IconMode QListView__ViewMode = 1
+)
+
 type QListView struct {
 	h *C.QListView
 	*QAbstractItemView
@@ -76,22 +112,22 @@ func QListView_TrUtf8(s string) string {
 	return ret
 }
 
-func (this *QListView) SetMovement(movement uintptr) {
+func (this *QListView) SetMovement(movement QListView__Movement) {
 	C.QListView_SetMovement(this.h, (C.uintptr_t)(movement))
 }
 
-func (this *QListView) Movement() uintptr {
+func (this *QListView) Movement() QListView__Movement {
 	ret := C.QListView_Movement(this.h)
-	return (uintptr)(ret)
+	return (QListView__Movement)(ret)
 }
 
-func (this *QListView) SetFlow(flow uintptr) {
+func (this *QListView) SetFlow(flow QListView__Flow) {
 	C.QListView_SetFlow(this.h, (C.uintptr_t)(flow))
 }
 
-func (this *QListView) Flow() uintptr {
+func (this *QListView) Flow() QListView__Flow {
 	ret := C.QListView_Flow(this.h)
-	return (uintptr)(ret)
+	return (QListView__Flow)(ret)
 }
 
 func (this *QListView) SetWrapping(enable bool) {
@@ -103,22 +139,22 @@ func (this *QListView) IsWrapping() bool {
 	return (bool)(ret)
 }
 
-func (this *QListView) SetResizeMode(mode uintptr) {
+func (this *QListView) SetResizeMode(mode QListView__ResizeMode) {
 	C.QListView_SetResizeMode(this.h, (C.uintptr_t)(mode))
 }
 
-func (this *QListView) ResizeMode() uintptr {
+func (this *QListView) ResizeMode() QListView__ResizeMode {
 	ret := C.QListView_ResizeMode(this.h)
-	return (uintptr)(ret)
+	return (QListView__ResizeMode)(ret)
 }
 
-func (this *QListView) SetLayoutMode(mode uintptr) {
+func (this *QListView) SetLayoutMode(mode QListView__LayoutMode) {
 	C.QListView_SetLayoutMode(this.h, (C.uintptr_t)(mode))
 }
 
-func (this *QListView) LayoutMode() uintptr {
+func (this *QListView) LayoutMode() QListView__LayoutMode {
 	ret := C.QListView_LayoutMode(this.h)
-	return (uintptr)(ret)
+	return (QListView__LayoutMode)(ret)
 }
 
 func (this *QListView) SetSpacing(space int) {
@@ -154,13 +190,13 @@ func (this *QListView) GridSize() *QSize {
 	return ret1
 }
 
-func (this *QListView) SetViewMode(mode uintptr) {
+func (this *QListView) SetViewMode(mode QListView__ViewMode) {
 	C.QListView_SetViewMode(this.h, (C.uintptr_t)(mode))
 }
 
-func (this *QListView) ViewMode() uintptr {
+func (this *QListView) ViewMode() QListView__ViewMode {
 	ret := C.QListView_ViewMode(this.h)
-	return (uintptr)(ret)
+	return (QListView__ViewMode)(ret)
 }
 
 func (this *QListView) ClearPropertyFlags() {
@@ -329,7 +365,7 @@ func QListView_TrUtf83(s string, c string, n int) string {
 	return ret
 }
 
-func (this *QListView) ScrollTo2(index *QModelIndex, hint uintptr) {
+func (this *QListView) ScrollTo2(index *QModelIndex, hint QAbstractItemView__ScrollHint) {
 	C.QListView_ScrollTo2(this.h, index.cPointer(), (C.uintptr_t)(hint))
 }
 

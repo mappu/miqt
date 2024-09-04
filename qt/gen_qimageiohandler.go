@@ -13,6 +13,52 @@ import (
 	"unsafe"
 )
 
+type QImageIOHandler__ImageOption int
+
+const (
+	QImageIOHandler__ImageOption__Size                 QImageIOHandler__ImageOption = 0
+	QImageIOHandler__ImageOption__ClipRect             QImageIOHandler__ImageOption = 1
+	QImageIOHandler__ImageOption__Description          QImageIOHandler__ImageOption = 2
+	QImageIOHandler__ImageOption__ScaledClipRect       QImageIOHandler__ImageOption = 3
+	QImageIOHandler__ImageOption__ScaledSize           QImageIOHandler__ImageOption = 4
+	QImageIOHandler__ImageOption__CompressionRatio     QImageIOHandler__ImageOption = 5
+	QImageIOHandler__ImageOption__Gamma                QImageIOHandler__ImageOption = 6
+	QImageIOHandler__ImageOption__Quality              QImageIOHandler__ImageOption = 7
+	QImageIOHandler__ImageOption__Name                 QImageIOHandler__ImageOption = 8
+	QImageIOHandler__ImageOption__SubType              QImageIOHandler__ImageOption = 9
+	QImageIOHandler__ImageOption__IncrementalReading   QImageIOHandler__ImageOption = 10
+	QImageIOHandler__ImageOption__Endianness           QImageIOHandler__ImageOption = 11
+	QImageIOHandler__ImageOption__Animation            QImageIOHandler__ImageOption = 12
+	QImageIOHandler__ImageOption__BackgroundColor      QImageIOHandler__ImageOption = 13
+	QImageIOHandler__ImageOption__ImageFormat          QImageIOHandler__ImageOption = 14
+	QImageIOHandler__ImageOption__SupportedSubTypes    QImageIOHandler__ImageOption = 15
+	QImageIOHandler__ImageOption__OptimizedWrite       QImageIOHandler__ImageOption = 16
+	QImageIOHandler__ImageOption__ProgressiveScanWrite QImageIOHandler__ImageOption = 17
+	QImageIOHandler__ImageOption__ImageTransformation  QImageIOHandler__ImageOption = 18
+	QImageIOHandler__ImageOption__TransformedByDefault QImageIOHandler__ImageOption = 19
+)
+
+type QImageIOHandler__Transformation int
+
+const (
+	QImageIOHandler__Transformation__TransformationNone              QImageIOHandler__Transformation = 0
+	QImageIOHandler__Transformation__TransformationMirror            QImageIOHandler__Transformation = 1
+	QImageIOHandler__Transformation__TransformationFlip              QImageIOHandler__Transformation = 2
+	QImageIOHandler__Transformation__TransformationRotate180         QImageIOHandler__Transformation = 3
+	QImageIOHandler__Transformation__TransformationRotate90          QImageIOHandler__Transformation = 4
+	QImageIOHandler__Transformation__TransformationMirrorAndRotate90 QImageIOHandler__Transformation = 5
+	QImageIOHandler__Transformation__TransformationFlipAndRotate90   QImageIOHandler__Transformation = 6
+	QImageIOHandler__Transformation__TransformationRotate270         QImageIOHandler__Transformation = 7
+)
+
+type QImageIOPlugin__Capability int
+
+const (
+	QImageIOPlugin__Capability__CanRead            QImageIOPlugin__Capability = 1
+	QImageIOPlugin__Capability__CanWrite           QImageIOPlugin__Capability = 2
+	QImageIOPlugin__Capability__CanReadIncremental QImageIOPlugin__Capability = 4
+)
+
 type QImageIOHandler struct {
 	h *C.QImageIOHandler
 }
@@ -89,7 +135,7 @@ func (this *QImageIOHandler) Write(image *QImage) bool {
 	return (bool)(ret)
 }
 
-func (this *QImageIOHandler) Option(option uintptr) *QVariant {
+func (this *QImageIOHandler) Option(option QImageIOHandler__ImageOption) *QVariant {
 	ret := C.QImageIOHandler_Option(this.h, (C.uintptr_t)(option))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQVariant(ret)
@@ -100,11 +146,11 @@ func (this *QImageIOHandler) Option(option uintptr) *QVariant {
 	return ret1
 }
 
-func (this *QImageIOHandler) SetOption(option uintptr, value *QVariant) {
+func (this *QImageIOHandler) SetOption(option QImageIOHandler__ImageOption, value *QVariant) {
 	C.QImageIOHandler_SetOption(this.h, (C.uintptr_t)(option), value.cPointer())
 }
 
-func (this *QImageIOHandler) SupportsOption(option uintptr) bool {
+func (this *QImageIOHandler) SupportsOption(option QImageIOHandler__ImageOption) bool {
 	ret := C.QImageIOHandler_SupportsOption(this.h, (C.uintptr_t)(option))
 	return (bool)(ret)
 }

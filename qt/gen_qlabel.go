@@ -120,7 +120,7 @@ func (this *QLabel) Pixmap() *QPixmap {
 	return newQPixmap_U(unsafe.Pointer(ret))
 }
 
-func (this *QLabel) PixmapWithQtReturnByValueConstant(param1 uintptr) *QPixmap {
+func (this *QLabel) PixmapWithQtReturnByValueConstant(param1 ReturnByValueConstant) *QPixmap {
 	ret := C.QLabel_PixmapWithQtReturnByValueConstant(this.h, (C.uintptr_t)(param1))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQPixmap(ret)
@@ -136,7 +136,7 @@ func (this *QLabel) Picture() *QPicture {
 	return newQPicture_U(unsafe.Pointer(ret))
 }
 
-func (this *QLabel) PictureWithQtReturnByValueConstant(param1 uintptr) *QPicture {
+func (this *QLabel) PictureWithQtReturnByValueConstant(param1 ReturnByValueConstant) *QPicture {
 	ret := C.QLabel_PictureWithQtReturnByValueConstant(this.h, (C.uintptr_t)(param1))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQPicture(ret)
@@ -152,12 +152,12 @@ func (this *QLabel) Movie() *QMovie {
 	return newQMovie_U(unsafe.Pointer(ret))
 }
 
-func (this *QLabel) TextFormat() uintptr {
+func (this *QLabel) TextFormat() TextFormat {
 	ret := C.QLabel_TextFormat(this.h)
-	return (uintptr)(ret)
+	return (TextFormat)(ret)
 }
 
-func (this *QLabel) SetTextFormat(textFormat uintptr) {
+func (this *QLabel) SetTextFormat(textFormat TextFormat) {
 	C.QLabel_SetTextFormat(this.h, (C.uintptr_t)(textFormat))
 }
 

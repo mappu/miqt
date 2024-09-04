@@ -89,7 +89,7 @@ func (this *QTransposeProxyModel) ColumnCount() int {
 	return (int)(ret)
 }
 
-func (this *QTransposeProxyModel) HeaderData(section int, orientation uintptr) *QVariant {
+func (this *QTransposeProxyModel) HeaderData(section int, orientation Orientation) *QVariant {
 	ret := C.QTransposeProxyModel_HeaderData(this.h, (C.int)(section), (C.uintptr_t)(orientation))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQVariant(ret)
@@ -100,7 +100,7 @@ func (this *QTransposeProxyModel) HeaderData(section int, orientation uintptr) *
 	return ret1
 }
 
-func (this *QTransposeProxyModel) SetHeaderData(section int, orientation uintptr, value *QVariant) bool {
+func (this *QTransposeProxyModel) SetHeaderData(section int, orientation Orientation, value *QVariant) bool {
 	ret := C.QTransposeProxyModel_SetHeaderData(this.h, (C.int)(section), (C.uintptr_t)(orientation), value.cPointer())
 	return (bool)(ret)
 }
@@ -256,7 +256,7 @@ func (this *QTransposeProxyModel) ColumnCount1(parent *QModelIndex) int {
 	return (int)(ret)
 }
 
-func (this *QTransposeProxyModel) HeaderData3(section int, orientation uintptr, role int) *QVariant {
+func (this *QTransposeProxyModel) HeaderData3(section int, orientation Orientation, role int) *QVariant {
 	ret := C.QTransposeProxyModel_HeaderData3(this.h, (C.int)(section), (C.uintptr_t)(orientation), (C.int)(role))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQVariant(ret)
@@ -267,7 +267,7 @@ func (this *QTransposeProxyModel) HeaderData3(section int, orientation uintptr, 
 	return ret1
 }
 
-func (this *QTransposeProxyModel) SetHeaderData4(section int, orientation uintptr, value *QVariant, role int) bool {
+func (this *QTransposeProxyModel) SetHeaderData4(section int, orientation Orientation, value *QVariant, role int) bool {
 	ret := C.QTransposeProxyModel_SetHeaderData4(this.h, (C.int)(section), (C.uintptr_t)(orientation), value.cPointer(), (C.int)(role))
 	return (bool)(ret)
 }
@@ -303,7 +303,7 @@ func (this *QTransposeProxyModel) RemoveColumns3(column int, count int, parent *
 	return (bool)(ret)
 }
 
-func (this *QTransposeProxyModel) Sort2(column int, order uintptr) {
+func (this *QTransposeProxyModel) Sort2(column int, order SortOrder) {
 	C.QTransposeProxyModel_Sort2(this.h, (C.int)(column), (C.uintptr_t)(order))
 }
 

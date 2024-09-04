@@ -14,6 +14,14 @@ import (
 	"unsafe"
 )
 
+type QColorDialog__ColorDialogOption int
+
+const (
+	QColorDialog__ColorDialogOption__ShowAlphaChannel    QColorDialog__ColorDialogOption = 1
+	QColorDialog__ColorDialogOption__NoButtons           QColorDialog__ColorDialogOption = 2
+	QColorDialog__ColorDialogOption__DontUseNativeDialog QColorDialog__ColorDialogOption = 4
+)
+
 type QColorDialog struct {
 	h *C.QColorDialog
 	*QDialog
@@ -114,11 +122,11 @@ func (this *QColorDialog) SelectedColor() *QColor {
 	return ret1
 }
 
-func (this *QColorDialog) SetOption(option uintptr) {
+func (this *QColorDialog) SetOption(option QColorDialog__ColorDialogOption) {
 	C.QColorDialog_SetOption(this.h, (C.uintptr_t)(option))
 }
 
-func (this *QColorDialog) TestOption(option uintptr) bool {
+func (this *QColorDialog) TestOption(option QColorDialog__ColorDialogOption) bool {
 	ret := C.QColorDialog_TestOption(this.h, (C.uintptr_t)(option))
 	return (bool)(ret)
 }
@@ -263,7 +271,7 @@ func QColorDialog_TrUtf83(s string, c string, n int) string {
 	return ret
 }
 
-func (this *QColorDialog) SetOption2(option uintptr, on bool) {
+func (this *QColorDialog) SetOption2(option QColorDialog__ColorDialogOption, on bool) {
 	C.QColorDialog_SetOption2(this.h, (C.uintptr_t)(option), (C.bool)(on))
 }
 

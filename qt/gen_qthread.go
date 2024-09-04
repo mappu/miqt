@@ -12,6 +12,19 @@ import (
 	"unsafe"
 )
 
+type QThread__Priority int
+
+const (
+	QThread__Priority__IdlePriority         QThread__Priority = 0
+	QThread__Priority__LowestPriority       QThread__Priority = 1
+	QThread__Priority__LowPriority          QThread__Priority = 2
+	QThread__Priority__NormalPriority       QThread__Priority = 3
+	QThread__Priority__HighPriority         QThread__Priority = 4
+	QThread__Priority__HighestPriority      QThread__Priority = 5
+	QThread__Priority__TimeCriticalPriority QThread__Priority = 6
+	QThread__Priority__InheritPriority      QThread__Priority = 7
+)
+
 type QThread struct {
 	h *C.QThread
 	*QObject
@@ -88,13 +101,13 @@ func QThread_YieldCurrentThread() {
 	C.QThread_YieldCurrentThread()
 }
 
-func (this *QThread) SetPriority(priority uintptr) {
+func (this *QThread) SetPriority(priority QThread__Priority) {
 	C.QThread_SetPriority(this.h, (C.uintptr_t)(priority))
 }
 
-func (this *QThread) Priority() uintptr {
+func (this *QThread) Priority() QThread__Priority {
 	ret := C.QThread_Priority(this.h)
-	return (uintptr)(ret)
+	return (QThread__Priority)(ret)
 }
 
 func (this *QThread) IsFinished() bool {
@@ -238,7 +251,7 @@ func (this *QThread) Exit1(retcode int) {
 	C.QThread_Exit1(this.h, (C.int)(retcode))
 }
 
-func (this *QThread) Start1(param1 uintptr) {
+func (this *QThread) Start1(param1 QThread__Priority) {
 	C.QThread_Start1(this.h, (C.uintptr_t)(param1))
 }
 

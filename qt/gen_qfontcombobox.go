@@ -14,6 +14,16 @@ import (
 	"unsafe"
 )
 
+type QFontComboBox__FontFilter int
+
+const (
+	QFontComboBox__FontFilter__AllFonts          QFontComboBox__FontFilter = 0
+	QFontComboBox__FontFilter__ScalableFonts     QFontComboBox__FontFilter = 1
+	QFontComboBox__FontFilter__NonScalableFonts  QFontComboBox__FontFilter = 2
+	QFontComboBox__FontFilter__MonospacedFonts   QFontComboBox__FontFilter = 4
+	QFontComboBox__FontFilter__ProportionalFonts QFontComboBox__FontFilter = 8
+)
+
 type QFontComboBox struct {
 	h *C.QFontComboBox
 	*QComboBox
@@ -76,13 +86,13 @@ func QFontComboBox_TrUtf8(s string) string {
 	return ret
 }
 
-func (this *QFontComboBox) SetWritingSystem(writingSystem uintptr) {
+func (this *QFontComboBox) SetWritingSystem(writingSystem QFontDatabase__WritingSystem) {
 	C.QFontComboBox_SetWritingSystem(this.h, (C.uintptr_t)(writingSystem))
 }
 
-func (this *QFontComboBox) WritingSystem() uintptr {
+func (this *QFontComboBox) WritingSystem() QFontDatabase__WritingSystem {
 	ret := C.QFontComboBox_WritingSystem(this.h)
-	return (uintptr)(ret)
+	return (QFontDatabase__WritingSystem)(ret)
 }
 
 func (this *QFontComboBox) SetFontFilters(filters int) {

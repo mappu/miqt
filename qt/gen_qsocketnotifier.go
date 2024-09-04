@@ -13,6 +13,14 @@ import (
 	"unsafe"
 )
 
+type QSocketNotifier__Type int
+
+const (
+	QSocketNotifier__Type__Read      QSocketNotifier__Type = 0
+	QSocketNotifier__Type__Write     QSocketNotifier__Type = 1
+	QSocketNotifier__Type__Exception QSocketNotifier__Type = 2
+)
+
 type QSocketNotifier struct {
 	h *C.QSocketNotifier
 	*QObject
@@ -37,13 +45,13 @@ func newQSocketNotifier_U(h unsafe.Pointer) *QSocketNotifier {
 }
 
 // NewQSocketNotifier constructs a new QSocketNotifier object.
-func NewQSocketNotifier(socket uint64, param2 uintptr) *QSocketNotifier {
+func NewQSocketNotifier(socket uint64, param2 QSocketNotifier__Type) *QSocketNotifier {
 	ret := C.QSocketNotifier_new((C.ptrdiff_t)(socket), (C.uintptr_t)(param2))
 	return newQSocketNotifier(ret)
 }
 
 // NewQSocketNotifier2 constructs a new QSocketNotifier object.
-func NewQSocketNotifier2(socket uint64, param2 uintptr, parent *QObject) *QSocketNotifier {
+func NewQSocketNotifier2(socket uint64, param2 QSocketNotifier__Type, parent *QObject) *QSocketNotifier {
 	ret := C.QSocketNotifier_new2((C.ptrdiff_t)(socket), (C.uintptr_t)(param2), parent.cPointer())
 	return newQSocketNotifier(ret)
 }
@@ -80,9 +88,9 @@ func (this *QSocketNotifier) Socket() uint64 {
 	return (uint64)(ret)
 }
 
-func (this *QSocketNotifier) Type() uintptr {
+func (this *QSocketNotifier) Type() QSocketNotifier__Type {
 	ret := C.QSocketNotifier_Type(this.h)
-	return (uintptr)(ret)
+	return (QSocketNotifier__Type)(ret)
 }
 
 func (this *QSocketNotifier) IsEnabled() bool {

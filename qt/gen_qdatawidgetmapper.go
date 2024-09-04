@@ -14,6 +14,13 @@ import (
 	"unsafe"
 )
 
+type QDataWidgetMapper__SubmitPolicy int
+
+const (
+	QDataWidgetMapper__SubmitPolicy__AutoSubmit   QDataWidgetMapper__SubmitPolicy = 0
+	QDataWidgetMapper__SubmitPolicy__ManualSubmit QDataWidgetMapper__SubmitPolicy = 1
+)
+
 type QDataWidgetMapper struct {
 	h *C.QDataWidgetMapper
 	*QObject
@@ -109,22 +116,22 @@ func (this *QDataWidgetMapper) RootIndex() *QModelIndex {
 	return ret1
 }
 
-func (this *QDataWidgetMapper) SetOrientation(aOrientation uintptr) {
+func (this *QDataWidgetMapper) SetOrientation(aOrientation Orientation) {
 	C.QDataWidgetMapper_SetOrientation(this.h, (C.uintptr_t)(aOrientation))
 }
 
-func (this *QDataWidgetMapper) Orientation() uintptr {
+func (this *QDataWidgetMapper) Orientation() Orientation {
 	ret := C.QDataWidgetMapper_Orientation(this.h)
-	return (uintptr)(ret)
+	return (Orientation)(ret)
 }
 
-func (this *QDataWidgetMapper) SetSubmitPolicy(policy uintptr) {
+func (this *QDataWidgetMapper) SetSubmitPolicy(policy QDataWidgetMapper__SubmitPolicy) {
 	C.QDataWidgetMapper_SetSubmitPolicy(this.h, (C.uintptr_t)(policy))
 }
 
-func (this *QDataWidgetMapper) SubmitPolicy() uintptr {
+func (this *QDataWidgetMapper) SubmitPolicy() QDataWidgetMapper__SubmitPolicy {
 	ret := C.QDataWidgetMapper_SubmitPolicy(this.h)
-	return (uintptr)(ret)
+	return (QDataWidgetMapper__SubmitPolicy)(ret)
 }
 
 func (this *QDataWidgetMapper) AddMapping(widget *QWidget, section int) {

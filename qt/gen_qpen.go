@@ -42,7 +42,7 @@ func NewQPen() *QPen {
 }
 
 // NewQPen2 constructs a new QPen object.
-func NewQPen2(param1 uintptr) *QPen {
+func NewQPen2(param1 PenStyle) *QPen {
 	ret := C.QPen_new2((C.uintptr_t)(param1))
 	return newQPen(ret)
 }
@@ -66,19 +66,19 @@ func NewQPen5(pen *QPen) *QPen {
 }
 
 // NewQPen6 constructs a new QPen object.
-func NewQPen6(brush *QBrush, width float64, s uintptr) *QPen {
+func NewQPen6(brush *QBrush, width float64, s PenStyle) *QPen {
 	ret := C.QPen_new6(brush.cPointer(), (C.double)(width), (C.uintptr_t)(s))
 	return newQPen(ret)
 }
 
 // NewQPen7 constructs a new QPen object.
-func NewQPen7(brush *QBrush, width float64, s uintptr, c uintptr) *QPen {
+func NewQPen7(brush *QBrush, width float64, s PenStyle, c PenCapStyle) *QPen {
 	ret := C.QPen_new7(brush.cPointer(), (C.double)(width), (C.uintptr_t)(s), (C.uintptr_t)(c))
 	return newQPen(ret)
 }
 
 // NewQPen8 constructs a new QPen object.
-func NewQPen8(brush *QBrush, width float64, s uintptr, c uintptr, j uintptr) *QPen {
+func NewQPen8(brush *QBrush, width float64, s PenStyle, c PenCapStyle, j PenJoinStyle) *QPen {
 	ret := C.QPen_new8(brush.cPointer(), (C.double)(width), (C.uintptr_t)(s), (C.uintptr_t)(c), (C.uintptr_t)(j))
 	return newQPen(ret)
 }
@@ -91,12 +91,12 @@ func (this *QPen) Swap(other *QPen) {
 	C.QPen_Swap(this.h, other.cPointer())
 }
 
-func (this *QPen) Style() uintptr {
+func (this *QPen) Style() PenStyle {
 	ret := C.QPen_Style(this.h)
-	return (uintptr)(ret)
+	return (PenStyle)(ret)
 }
 
-func (this *QPen) SetStyle(style uintptr) {
+func (this *QPen) SetStyle(style PenStyle) {
 	C.QPen_SetStyle(this.h, (C.uintptr_t)(style))
 }
 
@@ -194,21 +194,21 @@ func (this *QPen) IsSolid() bool {
 	return (bool)(ret)
 }
 
-func (this *QPen) CapStyle() uintptr {
+func (this *QPen) CapStyle() PenCapStyle {
 	ret := C.QPen_CapStyle(this.h)
-	return (uintptr)(ret)
+	return (PenCapStyle)(ret)
 }
 
-func (this *QPen) SetCapStyle(pcs uintptr) {
+func (this *QPen) SetCapStyle(pcs PenCapStyle) {
 	C.QPen_SetCapStyle(this.h, (C.uintptr_t)(pcs))
 }
 
-func (this *QPen) JoinStyle() uintptr {
+func (this *QPen) JoinStyle() PenJoinStyle {
 	ret := C.QPen_JoinStyle(this.h)
-	return (uintptr)(ret)
+	return (PenJoinStyle)(ret)
 }
 
-func (this *QPen) SetJoinStyle(pcs uintptr) {
+func (this *QPen) SetJoinStyle(pcs PenJoinStyle) {
 	C.QPen_SetJoinStyle(this.h, (C.uintptr_t)(pcs))
 }
 

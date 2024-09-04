@@ -129,7 +129,7 @@ func (this *QIdentityProxyModel) RowCount() int {
 	return (int)(ret)
 }
 
-func (this *QIdentityProxyModel) HeaderData(section int, orientation uintptr) *QVariant {
+func (this *QIdentityProxyModel) HeaderData(section int, orientation Orientation) *QVariant {
 	ret := C.QIdentityProxyModel_HeaderData(this.h, (C.int)(section), (C.uintptr_t)(orientation))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQVariant(ret)
@@ -140,7 +140,7 @@ func (this *QIdentityProxyModel) HeaderData(section int, orientation uintptr) *Q
 	return ret1
 }
 
-func (this *QIdentityProxyModel) DropMimeData(data *QMimeData, action uintptr, row int, column int, parent *QModelIndex) bool {
+func (this *QIdentityProxyModel) DropMimeData(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool {
 	ret := C.QIdentityProxyModel_DropMimeData(this.h, data.cPointer(), (C.uintptr_t)(action), (C.int)(row), (C.int)(column), parent.cPointer())
 	return (bool)(ret)
 }
@@ -276,7 +276,7 @@ func (this *QIdentityProxyModel) RowCount1(parent *QModelIndex) int {
 	return (int)(ret)
 }
 
-func (this *QIdentityProxyModel) HeaderData3(section int, orientation uintptr, role int) *QVariant {
+func (this *QIdentityProxyModel) HeaderData3(section int, orientation Orientation, role int) *QVariant {
 	ret := C.QIdentityProxyModel_HeaderData3(this.h, (C.int)(section), (C.uintptr_t)(orientation), (C.int)(role))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQVariant(ret)

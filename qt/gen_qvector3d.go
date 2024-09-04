@@ -42,7 +42,7 @@ func NewQVector3D() *QVector3D {
 }
 
 // NewQVector3D2 constructs a new QVector3D object.
-func NewQVector3D2(param1 uintptr) *QVector3D {
+func NewQVector3D2(param1 Initialization) *QVector3D {
 	ret := C.QVector3D_new2((C.uintptr_t)(param1))
 	return newQVector3D(ret)
 }

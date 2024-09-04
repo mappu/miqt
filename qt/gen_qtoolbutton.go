@@ -14,6 +14,14 @@ import (
 	"unsafe"
 )
 
+type QToolButton__ToolButtonPopupMode int
+
+const (
+	QToolButton__ToolButtonPopupMode__DelayedPopup    QToolButton__ToolButtonPopupMode = 0
+	QToolButton__ToolButtonPopupMode__MenuButtonPopup QToolButton__ToolButtonPopupMode = 1
+	QToolButton__ToolButtonPopupMode__InstantPopup    QToolButton__ToolButtonPopupMode = 2
+)
+
 type QToolButton struct {
 	h *C.QToolButton
 	*QAbstractButton
@@ -98,17 +106,17 @@ func (this *QToolButton) MinimumSizeHint() *QSize {
 	return ret1
 }
 
-func (this *QToolButton) ToolButtonStyle() uintptr {
+func (this *QToolButton) ToolButtonStyle() ToolButtonStyle {
 	ret := C.QToolButton_ToolButtonStyle(this.h)
-	return (uintptr)(ret)
+	return (ToolButtonStyle)(ret)
 }
 
-func (this *QToolButton) ArrowType() uintptr {
+func (this *QToolButton) ArrowType() ArrowType {
 	ret := C.QToolButton_ArrowType(this.h)
-	return (uintptr)(ret)
+	return (ArrowType)(ret)
 }
 
-func (this *QToolButton) SetArrowType(typeVal uintptr) {
+func (this *QToolButton) SetArrowType(typeVal ArrowType) {
 	C.QToolButton_SetArrowType(this.h, (C.uintptr_t)(typeVal))
 }
 
@@ -121,13 +129,13 @@ func (this *QToolButton) Menu() *QMenu {
 	return newQMenu_U(unsafe.Pointer(ret))
 }
 
-func (this *QToolButton) SetPopupMode(mode uintptr) {
+func (this *QToolButton) SetPopupMode(mode QToolButton__ToolButtonPopupMode) {
 	C.QToolButton_SetPopupMode(this.h, (C.uintptr_t)(mode))
 }
 
-func (this *QToolButton) PopupMode() uintptr {
+func (this *QToolButton) PopupMode() QToolButton__ToolButtonPopupMode {
 	ret := C.QToolButton_PopupMode(this.h)
-	return (uintptr)(ret)
+	return (QToolButton__ToolButtonPopupMode)(ret)
 }
 
 func (this *QToolButton) DefaultAction() *QAction {
@@ -148,7 +156,7 @@ func (this *QToolButton) ShowMenu() {
 	C.QToolButton_ShowMenu(this.h)
 }
 
-func (this *QToolButton) SetToolButtonStyle(style uintptr) {
+func (this *QToolButton) SetToolButtonStyle(style ToolButtonStyle) {
 	C.QToolButton_SetToolButtonStyle(this.h, (C.uintptr_t)(style))
 }
 

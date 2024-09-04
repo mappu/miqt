@@ -13,6 +13,14 @@ import (
 	"unsafe"
 )
 
+type QLineF__IntersectType int
+
+const (
+	QLineF__IntersectType__NoIntersection        QLineF__IntersectType = 0
+	QLineF__IntersectType__BoundedIntersection   QLineF__IntersectType = 1
+	QLineF__IntersectType__UnboundedIntersection QLineF__IntersectType = 2
+)
+
 type QLine struct {
 	h *C.QLine
 }
@@ -357,9 +365,9 @@ func (this *QLineF) Intersects(l *QLineF, intersectionPoint *QPointF) uintptr {
 	return (uintptr)(ret)
 }
 
-func (this *QLineF) Intersect(l *QLineF, intersectionPoint *QPointF) uintptr {
+func (this *QLineF) Intersect(l *QLineF, intersectionPoint *QPointF) QLineF__IntersectType {
 	ret := C.QLineF_Intersect(this.h, l.cPointer(), intersectionPoint.cPointer())
-	return (uintptr)(ret)
+	return (QLineF__IntersectType)(ret)
 }
 
 func (this *QLineF) AngleWithQLineF(l *QLineF) float64 {

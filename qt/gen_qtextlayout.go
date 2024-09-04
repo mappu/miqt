@@ -13,6 +13,27 @@ import (
 	"unsafe"
 )
 
+type QTextLayout__CursorMode int
+
+const (
+	QTextLayout__CursorMode__SkipCharacters QTextLayout__CursorMode = 0
+	QTextLayout__CursorMode__SkipWords      QTextLayout__CursorMode = 1
+)
+
+type QTextLine__Edge int
+
+const (
+	QTextLine__Edge__Leading  QTextLine__Edge = 0
+	QTextLine__Edge__Trailing QTextLine__Edge = 1
+)
+
+type QTextLine__CursorPosition int
+
+const (
+	QTextLine__CursorPosition__CursorBetweenCharacters QTextLine__CursorPosition = 0
+	QTextLine__CursorPosition__CursorOnCharacter       QTextLine__CursorPosition = 1
+)
+
 type QTextInlineObject struct {
 	h *C.QTextInlineObject
 }
@@ -77,9 +98,9 @@ func (this *QTextInlineObject) Height() float64 {
 	return (float64)(ret)
 }
 
-func (this *QTextInlineObject) TextDirection() uintptr {
+func (this *QTextInlineObject) TextDirection() LayoutDirection {
 	ret := C.QTextInlineObject_TextDirection(this.h)
-	return (uintptr)(ret)
+	return (LayoutDirection)(ret)
 }
 
 func (this *QTextInlineObject) SetWidth(w float64) {
@@ -303,13 +324,13 @@ func (this *QTextLayout) CacheEnabled() bool {
 	return (bool)(ret)
 }
 
-func (this *QTextLayout) SetCursorMoveStyle(style uintptr) {
+func (this *QTextLayout) SetCursorMoveStyle(style CursorMoveStyle) {
 	C.QTextLayout_SetCursorMoveStyle(this.h, (C.uintptr_t)(style))
 }
 
-func (this *QTextLayout) CursorMoveStyle() uintptr {
+func (this *QTextLayout) CursorMoveStyle() CursorMoveStyle {
 	ret := C.QTextLayout_CursorMoveStyle(this.h)
-	return (uintptr)(ret)
+	return (CursorMoveStyle)(ret)
 }
 
 func (this *QTextLayout) BeginLayout() {
@@ -452,12 +473,12 @@ func (this *QTextLayout) SetFlags(flags int) {
 	C.QTextLayout_SetFlags(this.h, (C.int)(flags))
 }
 
-func (this *QTextLayout) NextCursorPosition2(oldPos int, mode uintptr) int {
+func (this *QTextLayout) NextCursorPosition2(oldPos int, mode QTextLayout__CursorMode) int {
 	ret := C.QTextLayout_NextCursorPosition2(this.h, (C.int)(oldPos), (C.uintptr_t)(mode))
 	return (int)(ret)
 }
 
-func (this *QTextLayout) PreviousCursorPosition2(oldPos int, mode uintptr) int {
+func (this *QTextLayout) PreviousCursorPosition2(oldPos int, mode QTextLayout__CursorMode) int {
 	ret := C.QTextLayout_PreviousCursorPosition2(this.h, (C.int)(oldPos), (C.uintptr_t)(mode))
 	return (int)(ret)
 }
@@ -695,17 +716,17 @@ func (this *QTextLine) GlyphRuns() []QGlyphRun {
 	return ret
 }
 
-func (this *QTextLine) CursorToX2(cursorPos *int, edge uintptr) float64 {
+func (this *QTextLine) CursorToX2(cursorPos *int, edge QTextLine__Edge) float64 {
 	ret := C.QTextLine_CursorToX2(this.h, (*C.int)(unsafe.Pointer(cursorPos)), (C.uintptr_t)(edge))
 	return (float64)(ret)
 }
 
-func (this *QTextLine) CursorToX22(cursorPos int, edge uintptr) float64 {
+func (this *QTextLine) CursorToX22(cursorPos int, edge QTextLine__Edge) float64 {
 	ret := C.QTextLine_CursorToX22(this.h, (C.int)(cursorPos), (C.uintptr_t)(edge))
 	return (float64)(ret)
 }
 
-func (this *QTextLine) XToCursor2(x float64, param2 uintptr) int {
+func (this *QTextLine) XToCursor2(x float64, param2 QTextLine__CursorPosition) int {
 	ret := C.QTextLine_XToCursor2(this.h, (C.double)(x), (C.uintptr_t)(param2))
 	return (int)(ret)
 }

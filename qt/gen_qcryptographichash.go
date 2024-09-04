@@ -13,6 +13,30 @@ import (
 	"unsafe"
 )
 
+type QCryptographicHash__Algorithm int
+
+const (
+	QCryptographicHash__Algorithm__Md4          QCryptographicHash__Algorithm = 0
+	QCryptographicHash__Algorithm__Md5          QCryptographicHash__Algorithm = 1
+	QCryptographicHash__Algorithm__Sha1         QCryptographicHash__Algorithm = 2
+	QCryptographicHash__Algorithm__Sha224       QCryptographicHash__Algorithm = 3
+	QCryptographicHash__Algorithm__Sha256       QCryptographicHash__Algorithm = 4
+	QCryptographicHash__Algorithm__Sha384       QCryptographicHash__Algorithm = 5
+	QCryptographicHash__Algorithm__Sha512       QCryptographicHash__Algorithm = 6
+	QCryptographicHash__Algorithm__Keccak_224   QCryptographicHash__Algorithm = 7
+	QCryptographicHash__Algorithm__Keccak_256   QCryptographicHash__Algorithm = 8
+	QCryptographicHash__Algorithm__Keccak_384   QCryptographicHash__Algorithm = 9
+	QCryptographicHash__Algorithm__Keccak_512   QCryptographicHash__Algorithm = 10
+	QCryptographicHash__Algorithm__RealSha3_224 QCryptographicHash__Algorithm = 11
+	QCryptographicHash__Algorithm__RealSha3_256 QCryptographicHash__Algorithm = 12
+	QCryptographicHash__Algorithm__RealSha3_384 QCryptographicHash__Algorithm = 13
+	QCryptographicHash__Algorithm__RealSha3_512 QCryptographicHash__Algorithm = 14
+	QCryptographicHash__Algorithm__Sha3_224     QCryptographicHash__Algorithm = 11
+	QCryptographicHash__Algorithm__Sha3_256     QCryptographicHash__Algorithm = 12
+	QCryptographicHash__Algorithm__Sha3_384     QCryptographicHash__Algorithm = 13
+	QCryptographicHash__Algorithm__Sha3_512     QCryptographicHash__Algorithm = 14
+)
+
 type QCryptographicHash struct {
 	h *C.QCryptographicHash
 }
@@ -36,7 +60,7 @@ func newQCryptographicHash_U(h unsafe.Pointer) *QCryptographicHash {
 }
 
 // NewQCryptographicHash constructs a new QCryptographicHash object.
-func NewQCryptographicHash(method uintptr) *QCryptographicHash {
+func NewQCryptographicHash(method QCryptographicHash__Algorithm) *QCryptographicHash {
 	ret := C.QCryptographicHash_new((C.uintptr_t)(method))
 	return newQCryptographicHash(ret)
 }
@@ -71,7 +95,7 @@ func (this *QCryptographicHash) Result() *QByteArray {
 	return ret1
 }
 
-func QCryptographicHash_Hash(data *QByteArray, method uintptr) *QByteArray {
+func QCryptographicHash_Hash(data *QByteArray, method QCryptographicHash__Algorithm) *QByteArray {
 	ret := C.QCryptographicHash_Hash(data.cPointer(), (C.uintptr_t)(method))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQByteArray(ret)
@@ -82,7 +106,7 @@ func QCryptographicHash_Hash(data *QByteArray, method uintptr) *QByteArray {
 	return ret1
 }
 
-func QCryptographicHash_HashLength(method uintptr) int {
+func QCryptographicHash_HashLength(method QCryptographicHash__Algorithm) int {
 	ret := C.QCryptographicHash_HashLength((C.uintptr_t)(method))
 	return (int)(ret)
 }

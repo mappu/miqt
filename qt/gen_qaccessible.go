@@ -13,6 +13,218 @@ import (
 	"unsafe"
 )
 
+type QAccessible__Event int
+
+const (
+	QAccessible__Event__SoundPlayed                     QAccessible__Event = 1
+	QAccessible__Event__Alert                           QAccessible__Event = 2
+	QAccessible__Event__ForegroundChanged               QAccessible__Event = 3
+	QAccessible__Event__MenuStart                       QAccessible__Event = 4
+	QAccessible__Event__MenuEnd                         QAccessible__Event = 5
+	QAccessible__Event__PopupMenuStart                  QAccessible__Event = 6
+	QAccessible__Event__PopupMenuEnd                    QAccessible__Event = 7
+	QAccessible__Event__ContextHelpStart                QAccessible__Event = 12
+	QAccessible__Event__ContextHelpEnd                  QAccessible__Event = 13
+	QAccessible__Event__DragDropStart                   QAccessible__Event = 14
+	QAccessible__Event__DragDropEnd                     QAccessible__Event = 15
+	QAccessible__Event__DialogStart                     QAccessible__Event = 16
+	QAccessible__Event__DialogEnd                       QAccessible__Event = 17
+	QAccessible__Event__ScrollingStart                  QAccessible__Event = 18
+	QAccessible__Event__ScrollingEnd                    QAccessible__Event = 19
+	QAccessible__Event__MenuCommand                     QAccessible__Event = 24
+	QAccessible__Event__ActionChanged                   QAccessible__Event = 257
+	QAccessible__Event__ActiveDescendantChanged         QAccessible__Event = 258
+	QAccessible__Event__AttributeChanged                QAccessible__Event = 259
+	QAccessible__Event__DocumentContentChanged          QAccessible__Event = 260
+	QAccessible__Event__DocumentLoadComplete            QAccessible__Event = 261
+	QAccessible__Event__DocumentLoadStopped             QAccessible__Event = 262
+	QAccessible__Event__DocumentReload                  QAccessible__Event = 263
+	QAccessible__Event__HyperlinkEndIndexChanged        QAccessible__Event = 264
+	QAccessible__Event__HyperlinkNumberOfAnchorsChanged QAccessible__Event = 265
+	QAccessible__Event__HyperlinkSelectedLinkChanged    QAccessible__Event = 266
+	QAccessible__Event__HypertextLinkActivated          QAccessible__Event = 267
+	QAccessible__Event__HypertextLinkSelected           QAccessible__Event = 268
+	QAccessible__Event__HyperlinkStartIndexChanged      QAccessible__Event = 269
+	QAccessible__Event__HypertextChanged                QAccessible__Event = 270
+	QAccessible__Event__HypertextNLinksChanged          QAccessible__Event = 271
+	QAccessible__Event__ObjectAttributeChanged          QAccessible__Event = 272
+	QAccessible__Event__PageChanged                     QAccessible__Event = 273
+	QAccessible__Event__SectionChanged                  QAccessible__Event = 274
+	QAccessible__Event__TableCaptionChanged             QAccessible__Event = 275
+	QAccessible__Event__TableColumnDescriptionChanged   QAccessible__Event = 276
+	QAccessible__Event__TableColumnHeaderChanged        QAccessible__Event = 277
+	QAccessible__Event__TableModelChanged               QAccessible__Event = 278
+	QAccessible__Event__TableRowDescriptionChanged      QAccessible__Event = 279
+	QAccessible__Event__TableRowHeaderChanged           QAccessible__Event = 280
+	QAccessible__Event__TableSummaryChanged             QAccessible__Event = 281
+	QAccessible__Event__TextAttributeChanged            QAccessible__Event = 282
+	QAccessible__Event__TextCaretMoved                  QAccessible__Event = 283
+	QAccessible__Event__TextColumnChanged               QAccessible__Event = 285
+	QAccessible__Event__TextInserted                    QAccessible__Event = 286
+	QAccessible__Event__TextRemoved                     QAccessible__Event = 287
+	QAccessible__Event__TextUpdated                     QAccessible__Event = 288
+	QAccessible__Event__TextSelectionChanged            QAccessible__Event = 289
+	QAccessible__Event__VisibleDataChanged              QAccessible__Event = 290
+	QAccessible__Event__ObjectCreated                   QAccessible__Event = 32768
+	QAccessible__Event__ObjectDestroyed                 QAccessible__Event = 32769
+	QAccessible__Event__ObjectShow                      QAccessible__Event = 32770
+	QAccessible__Event__ObjectHide                      QAccessible__Event = 32771
+	QAccessible__Event__ObjectReorder                   QAccessible__Event = 32772
+	QAccessible__Event__Focus                           QAccessible__Event = 32773
+	QAccessible__Event__Selection                       QAccessible__Event = 32774
+	QAccessible__Event__SelectionAdd                    QAccessible__Event = 32775
+	QAccessible__Event__SelectionRemove                 QAccessible__Event = 32776
+	QAccessible__Event__SelectionWithin                 QAccessible__Event = 32777
+	QAccessible__Event__StateChanged                    QAccessible__Event = 32778
+	QAccessible__Event__LocationChanged                 QAccessible__Event = 32779
+	QAccessible__Event__NameChanged                     QAccessible__Event = 32780
+	QAccessible__Event__DescriptionChanged              QAccessible__Event = 32781
+	QAccessible__Event__ValueChanged                    QAccessible__Event = 32782
+	QAccessible__Event__ParentChanged                   QAccessible__Event = 32783
+	QAccessible__Event__HelpChanged                     QAccessible__Event = 32928
+	QAccessible__Event__DefaultActionChanged            QAccessible__Event = 32944
+	QAccessible__Event__AcceleratorChanged              QAccessible__Event = 32960
+	QAccessible__Event__InvalidEvent                    QAccessible__Event = 32961
+)
+
+type QAccessible__Role int
+
+const (
+	QAccessible__Role__NoRole               QAccessible__Role = 0
+	QAccessible__Role__TitleBar             QAccessible__Role = 1
+	QAccessible__Role__MenuBar              QAccessible__Role = 2
+	QAccessible__Role__ScrollBar            QAccessible__Role = 3
+	QAccessible__Role__Grip                 QAccessible__Role = 4
+	QAccessible__Role__Sound                QAccessible__Role = 5
+	QAccessible__Role__Cursor               QAccessible__Role = 6
+	QAccessible__Role__Caret                QAccessible__Role = 7
+	QAccessible__Role__AlertMessage         QAccessible__Role = 8
+	QAccessible__Role__Window               QAccessible__Role = 9
+	QAccessible__Role__Client               QAccessible__Role = 10
+	QAccessible__Role__PopupMenu            QAccessible__Role = 11
+	QAccessible__Role__MenuItem             QAccessible__Role = 12
+	QAccessible__Role__ToolTip              QAccessible__Role = 13
+	QAccessible__Role__Application          QAccessible__Role = 14
+	QAccessible__Role__Document             QAccessible__Role = 15
+	QAccessible__Role__Pane                 QAccessible__Role = 16
+	QAccessible__Role__Chart                QAccessible__Role = 17
+	QAccessible__Role__Dialog               QAccessible__Role = 18
+	QAccessible__Role__Border               QAccessible__Role = 19
+	QAccessible__Role__Grouping             QAccessible__Role = 20
+	QAccessible__Role__Separator            QAccessible__Role = 21
+	QAccessible__Role__ToolBar              QAccessible__Role = 22
+	QAccessible__Role__StatusBar            QAccessible__Role = 23
+	QAccessible__Role__Table                QAccessible__Role = 24
+	QAccessible__Role__ColumnHeader         QAccessible__Role = 25
+	QAccessible__Role__RowHeader            QAccessible__Role = 26
+	QAccessible__Role__Column               QAccessible__Role = 27
+	QAccessible__Role__Row                  QAccessible__Role = 28
+	QAccessible__Role__Cell                 QAccessible__Role = 29
+	QAccessible__Role__Link                 QAccessible__Role = 30
+	QAccessible__Role__HelpBalloon          QAccessible__Role = 31
+	QAccessible__Role__Assistant            QAccessible__Role = 32
+	QAccessible__Role__List                 QAccessible__Role = 33
+	QAccessible__Role__ListItem             QAccessible__Role = 34
+	QAccessible__Role__Tree                 QAccessible__Role = 35
+	QAccessible__Role__TreeItem             QAccessible__Role = 36
+	QAccessible__Role__PageTab              QAccessible__Role = 37
+	QAccessible__Role__PropertyPage         QAccessible__Role = 38
+	QAccessible__Role__Indicator            QAccessible__Role = 39
+	QAccessible__Role__Graphic              QAccessible__Role = 40
+	QAccessible__Role__StaticText           QAccessible__Role = 41
+	QAccessible__Role__EditableText         QAccessible__Role = 42
+	QAccessible__Role__Button               QAccessible__Role = 43
+	QAccessible__Role__PushButton           QAccessible__Role = 43
+	QAccessible__Role__CheckBox             QAccessible__Role = 44
+	QAccessible__Role__RadioButton          QAccessible__Role = 45
+	QAccessible__Role__ComboBox             QAccessible__Role = 46
+	QAccessible__Role__ProgressBar          QAccessible__Role = 48
+	QAccessible__Role__Dial                 QAccessible__Role = 49
+	QAccessible__Role__HotkeyField          QAccessible__Role = 50
+	QAccessible__Role__Slider               QAccessible__Role = 51
+	QAccessible__Role__SpinBox              QAccessible__Role = 52
+	QAccessible__Role__Canvas               QAccessible__Role = 53
+	QAccessible__Role__Animation            QAccessible__Role = 54
+	QAccessible__Role__Equation             QAccessible__Role = 55
+	QAccessible__Role__ButtonDropDown       QAccessible__Role = 56
+	QAccessible__Role__ButtonMenu           QAccessible__Role = 57
+	QAccessible__Role__ButtonDropGrid       QAccessible__Role = 58
+	QAccessible__Role__Whitespace           QAccessible__Role = 59
+	QAccessible__Role__PageTabList          QAccessible__Role = 60
+	QAccessible__Role__Clock                QAccessible__Role = 61
+	QAccessible__Role__Splitter             QAccessible__Role = 62
+	QAccessible__Role__LayeredPane          QAccessible__Role = 128
+	QAccessible__Role__Terminal             QAccessible__Role = 129
+	QAccessible__Role__Desktop              QAccessible__Role = 130
+	QAccessible__Role__Paragraph            QAccessible__Role = 131
+	QAccessible__Role__WebDocument          QAccessible__Role = 132
+	QAccessible__Role__Section              QAccessible__Role = 133
+	QAccessible__Role__Notification         QAccessible__Role = 134
+	QAccessible__Role__ColorChooser         QAccessible__Role = 1028
+	QAccessible__Role__Footer               QAccessible__Role = 1038
+	QAccessible__Role__Form                 QAccessible__Role = 1040
+	QAccessible__Role__Heading              QAccessible__Role = 1044
+	QAccessible__Role__Note                 QAccessible__Role = 1051
+	QAccessible__Role__ComplementaryContent QAccessible__Role = 1068
+	QAccessible__Role__UserRole             QAccessible__Role = 65535
+)
+
+type QAccessible__Text int
+
+const (
+	QAccessible__Text__Name             QAccessible__Text = 0
+	QAccessible__Text__Description      QAccessible__Text = 1
+	QAccessible__Text__Value            QAccessible__Text = 2
+	QAccessible__Text__Help             QAccessible__Text = 3
+	QAccessible__Text__Accelerator      QAccessible__Text = 4
+	QAccessible__Text__DebugDescription QAccessible__Text = 5
+	QAccessible__Text__UserText         QAccessible__Text = 65535
+)
+
+type QAccessible__RelationFlag int
+
+const (
+	QAccessible__RelationFlag__Label        QAccessible__RelationFlag = 1
+	QAccessible__RelationFlag__Labelled     QAccessible__RelationFlag = 2
+	QAccessible__RelationFlag__Controller   QAccessible__RelationFlag = 4
+	QAccessible__RelationFlag__Controlled   QAccessible__RelationFlag = 8
+	QAccessible__RelationFlag__AllRelations QAccessible__RelationFlag = 4294967295
+)
+
+type QAccessible__InterfaceType int
+
+const (
+	QAccessible__InterfaceType__TextInterface         QAccessible__InterfaceType = 0
+	QAccessible__InterfaceType__EditableTextInterface QAccessible__InterfaceType = 1
+	QAccessible__InterfaceType__ValueInterface        QAccessible__InterfaceType = 2
+	QAccessible__InterfaceType__ActionInterface       QAccessible__InterfaceType = 3
+	QAccessible__InterfaceType__ImageInterface        QAccessible__InterfaceType = 4
+	QAccessible__InterfaceType__TableInterface        QAccessible__InterfaceType = 5
+	QAccessible__InterfaceType__TableCellInterface    QAccessible__InterfaceType = 6
+)
+
+type QAccessible__TextBoundaryType int
+
+const (
+	QAccessible__TextBoundaryType__CharBoundary      QAccessible__TextBoundaryType = 0
+	QAccessible__TextBoundaryType__WordBoundary      QAccessible__TextBoundaryType = 1
+	QAccessible__TextBoundaryType__SentenceBoundary  QAccessible__TextBoundaryType = 2
+	QAccessible__TextBoundaryType__ParagraphBoundary QAccessible__TextBoundaryType = 3
+	QAccessible__TextBoundaryType__LineBoundary      QAccessible__TextBoundaryType = 4
+	QAccessible__TextBoundaryType__NoBoundary        QAccessible__TextBoundaryType = 5
+)
+
+type QAccessibleTableModelChangeEvent__ModelChangeType int
+
+const (
+	QAccessibleTableModelChangeEvent__ModelChangeType__ModelReset      QAccessibleTableModelChangeEvent__ModelChangeType = 0
+	QAccessibleTableModelChangeEvent__ModelChangeType__DataChanged     QAccessibleTableModelChangeEvent__ModelChangeType = 1
+	QAccessibleTableModelChangeEvent__ModelChangeType__RowsInserted    QAccessibleTableModelChangeEvent__ModelChangeType = 2
+	QAccessibleTableModelChangeEvent__ModelChangeType__ColumnsInserted QAccessibleTableModelChangeEvent__ModelChangeType = 3
+	QAccessibleTableModelChangeEvent__ModelChangeType__RowsRemoved     QAccessibleTableModelChangeEvent__ModelChangeType = 4
+	QAccessibleTableModelChangeEvent__ModelChangeType__ColumnsRemoved  QAccessibleTableModelChangeEvent__ModelChangeType = 5
+)
+
 type QAccessible struct {
 	h *C.QAccessible
 }
@@ -159,7 +371,7 @@ func (this *QAccessibleInterface) IndexOfChild(param1 *QAccessibleInterface) int
 	return (int)(ret)
 }
 
-func (this *QAccessibleInterface) Text(t uintptr) string {
+func (this *QAccessibleInterface) Text(t QAccessible__Text) string {
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
 	C.QAccessibleInterface_Text(this.h, (C.uintptr_t)(t), &_out, &_out_Strlen)
@@ -168,7 +380,7 @@ func (this *QAccessibleInterface) Text(t uintptr) string {
 	return ret
 }
 
-func (this *QAccessibleInterface) SetText(t uintptr, text string) {
+func (this *QAccessibleInterface) SetText(t QAccessible__Text, text string) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
 	C.QAccessibleInterface_SetText(this.h, (C.uintptr_t)(t), text_Cstring, C.size_t(len(text)))
@@ -185,9 +397,9 @@ func (this *QAccessibleInterface) Rect() *QRect {
 	return ret1
 }
 
-func (this *QAccessibleInterface) Role() uintptr {
+func (this *QAccessibleInterface) Role() QAccessible__Role {
 	ret := C.QAccessibleInterface_Role(this.h)
-	return (uintptr)(ret)
+	return (QAccessible__Role)(ret)
 }
 
 func (this *QAccessibleInterface) State() *QAccessible__State {
@@ -319,7 +531,7 @@ func (this *QAccessibleTextInterface) Text(startOffset int, endOffset int) strin
 	return ret
 }
 
-func (this *QAccessibleTextInterface) TextBeforeOffset(offset int, boundaryType uintptr, startOffset *int, endOffset *int) string {
+func (this *QAccessibleTextInterface) TextBeforeOffset(offset int, boundaryType QAccessible__TextBoundaryType, startOffset *int, endOffset *int) string {
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
 	C.QAccessibleTextInterface_TextBeforeOffset(this.h, (C.int)(offset), (C.uintptr_t)(boundaryType), (*C.int)(unsafe.Pointer(startOffset)), (*C.int)(unsafe.Pointer(endOffset)), &_out, &_out_Strlen)
@@ -328,7 +540,7 @@ func (this *QAccessibleTextInterface) TextBeforeOffset(offset int, boundaryType 
 	return ret
 }
 
-func (this *QAccessibleTextInterface) TextAfterOffset(offset int, boundaryType uintptr, startOffset *int, endOffset *int) string {
+func (this *QAccessibleTextInterface) TextAfterOffset(offset int, boundaryType QAccessible__TextBoundaryType, startOffset *int, endOffset *int) string {
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
 	C.QAccessibleTextInterface_TextAfterOffset(this.h, (C.int)(offset), (C.uintptr_t)(boundaryType), (*C.int)(unsafe.Pointer(startOffset)), (*C.int)(unsafe.Pointer(endOffset)), &_out, &_out_Strlen)
@@ -337,7 +549,7 @@ func (this *QAccessibleTextInterface) TextAfterOffset(offset int, boundaryType u
 	return ret
 }
 
-func (this *QAccessibleTextInterface) TextAtOffset(offset int, boundaryType uintptr, startOffset *int, endOffset *int) string {
+func (this *QAccessibleTextInterface) TextAtOffset(offset int, boundaryType QAccessible__TextBoundaryType, startOffset *int, endOffset *int) string {
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
 	C.QAccessibleTextInterface_TextAtOffset(this.h, (C.int)(offset), (C.uintptr_t)(boundaryType), (*C.int)(unsafe.Pointer(startOffset)), (*C.int)(unsafe.Pointer(endOffset)), &_out, &_out_Strlen)
@@ -1111,20 +1323,20 @@ func newQAccessibleEvent_U(h unsafe.Pointer) *QAccessibleEvent {
 }
 
 // NewQAccessibleEvent constructs a new QAccessibleEvent object.
-func NewQAccessibleEvent(obj *QObject, typ uintptr) *QAccessibleEvent {
+func NewQAccessibleEvent(obj *QObject, typ QAccessible__Event) *QAccessibleEvent {
 	ret := C.QAccessibleEvent_new(obj.cPointer(), (C.uintptr_t)(typ))
 	return newQAccessibleEvent(ret)
 }
 
 // NewQAccessibleEvent2 constructs a new QAccessibleEvent object.
-func NewQAccessibleEvent2(iface *QAccessibleInterface, typ uintptr) *QAccessibleEvent {
+func NewQAccessibleEvent2(iface *QAccessibleInterface, typ QAccessible__Event) *QAccessibleEvent {
 	ret := C.QAccessibleEvent_new2(iface.cPointer(), (C.uintptr_t)(typ))
 	return newQAccessibleEvent(ret)
 }
 
-func (this *QAccessibleEvent) Type() uintptr {
+func (this *QAccessibleEvent) Type() QAccessible__Event {
 	ret := C.QAccessibleEvent_Type(this.h)
-	return (uintptr)(ret)
+	return (QAccessible__Event)(ret)
 }
 
 func (this *QAccessibleEvent) Object() *QObject {
@@ -1568,24 +1780,24 @@ func newQAccessibleTableModelChangeEvent_U(h unsafe.Pointer) *QAccessibleTableMo
 }
 
 // NewQAccessibleTableModelChangeEvent constructs a new QAccessibleTableModelChangeEvent object.
-func NewQAccessibleTableModelChangeEvent(obj *QObject, changeType uintptr) *QAccessibleTableModelChangeEvent {
+func NewQAccessibleTableModelChangeEvent(obj *QObject, changeType QAccessibleTableModelChangeEvent__ModelChangeType) *QAccessibleTableModelChangeEvent {
 	ret := C.QAccessibleTableModelChangeEvent_new(obj.cPointer(), (C.uintptr_t)(changeType))
 	return newQAccessibleTableModelChangeEvent(ret)
 }
 
 // NewQAccessibleTableModelChangeEvent2 constructs a new QAccessibleTableModelChangeEvent object.
-func NewQAccessibleTableModelChangeEvent2(iface *QAccessibleInterface, changeType uintptr) *QAccessibleTableModelChangeEvent {
+func NewQAccessibleTableModelChangeEvent2(iface *QAccessibleInterface, changeType QAccessibleTableModelChangeEvent__ModelChangeType) *QAccessibleTableModelChangeEvent {
 	ret := C.QAccessibleTableModelChangeEvent_new2(iface.cPointer(), (C.uintptr_t)(changeType))
 	return newQAccessibleTableModelChangeEvent(ret)
 }
 
-func (this *QAccessibleTableModelChangeEvent) SetModelChangeType(changeType uintptr) {
+func (this *QAccessibleTableModelChangeEvent) SetModelChangeType(changeType QAccessibleTableModelChangeEvent__ModelChangeType) {
 	C.QAccessibleTableModelChangeEvent_SetModelChangeType(this.h, (C.uintptr_t)(changeType))
 }
 
-func (this *QAccessibleTableModelChangeEvent) ModelChangeType() uintptr {
+func (this *QAccessibleTableModelChangeEvent) ModelChangeType() QAccessibleTableModelChangeEvent__ModelChangeType {
 	ret := C.QAccessibleTableModelChangeEvent_ModelChangeType(this.h)
-	return (uintptr)(ret)
+	return (QAccessibleTableModelChangeEvent__ModelChangeType)(ret)
 }
 
 func (this *QAccessibleTableModelChangeEvent) SetFirstRow(row int) {

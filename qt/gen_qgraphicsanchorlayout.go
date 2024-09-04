@@ -75,13 +75,13 @@ func (this *QGraphicsAnchor) Spacing() float64 {
 	return (float64)(ret)
 }
 
-func (this *QGraphicsAnchor) SetSizePolicy(policy uintptr) {
+func (this *QGraphicsAnchor) SetSizePolicy(policy QSizePolicy__Policy) {
 	C.QGraphicsAnchor_SetSizePolicy(this.h, (C.uintptr_t)(policy))
 }
 
-func (this *QGraphicsAnchor) SizePolicy() uintptr {
+func (this *QGraphicsAnchor) SizePolicy() QSizePolicy__Policy {
 	ret := C.QGraphicsAnchor_SizePolicy(this.h)
-	return (uintptr)(ret)
+	return (QSizePolicy__Policy)(ret)
 }
 
 func QGraphicsAnchor_Tr2(s string, c string) string {
@@ -175,17 +175,17 @@ func NewQGraphicsAnchorLayout2(parent *QGraphicsLayoutItem) *QGraphicsAnchorLayo
 	return newQGraphicsAnchorLayout(ret)
 }
 
-func (this *QGraphicsAnchorLayout) AddAnchor(firstItem *QGraphicsLayoutItem, firstEdge uintptr, secondItem *QGraphicsLayoutItem, secondEdge uintptr) *QGraphicsAnchor {
+func (this *QGraphicsAnchorLayout) AddAnchor(firstItem *QGraphicsLayoutItem, firstEdge AnchorPoint, secondItem *QGraphicsLayoutItem, secondEdge AnchorPoint) *QGraphicsAnchor {
 	ret := C.QGraphicsAnchorLayout_AddAnchor(this.h, firstItem.cPointer(), (C.uintptr_t)(firstEdge), secondItem.cPointer(), (C.uintptr_t)(secondEdge))
 	return newQGraphicsAnchor_U(unsafe.Pointer(ret))
 }
 
-func (this *QGraphicsAnchorLayout) Anchor(firstItem *QGraphicsLayoutItem, firstEdge uintptr, secondItem *QGraphicsLayoutItem, secondEdge uintptr) *QGraphicsAnchor {
+func (this *QGraphicsAnchorLayout) Anchor(firstItem *QGraphicsLayoutItem, firstEdge AnchorPoint, secondItem *QGraphicsLayoutItem, secondEdge AnchorPoint) *QGraphicsAnchor {
 	ret := C.QGraphicsAnchorLayout_Anchor(this.h, firstItem.cPointer(), (C.uintptr_t)(firstEdge), secondItem.cPointer(), (C.uintptr_t)(secondEdge))
 	return newQGraphicsAnchor_U(unsafe.Pointer(ret))
 }
 
-func (this *QGraphicsAnchorLayout) AddCornerAnchors(firstItem *QGraphicsLayoutItem, firstCorner uintptr, secondItem *QGraphicsLayoutItem, secondCorner uintptr) {
+func (this *QGraphicsAnchorLayout) AddCornerAnchors(firstItem *QGraphicsLayoutItem, firstCorner Corner, secondItem *QGraphicsLayoutItem, secondCorner Corner) {
 	C.QGraphicsAnchorLayout_AddCornerAnchors(this.h, firstItem.cPointer(), (C.uintptr_t)(firstCorner), secondItem.cPointer(), (C.uintptr_t)(secondCorner))
 }
 

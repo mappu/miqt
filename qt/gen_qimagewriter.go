@@ -13,6 +13,15 @@ import (
 	"unsafe"
 )
 
+type QImageWriter__ImageWriterError int
+
+const (
+	QImageWriter__ImageWriterError__UnknownError           QImageWriter__ImageWriterError = 0
+	QImageWriter__ImageWriterError__DeviceError            QImageWriter__ImageWriterError = 1
+	QImageWriter__ImageWriterError__UnsupportedFormatError QImageWriter__ImageWriterError = 2
+	QImageWriter__ImageWriterError__InvalidImageError      QImageWriter__ImageWriterError = 3
+)
+
 type QImageWriter struct {
 	h *C.QImageWriter
 }
@@ -239,9 +248,9 @@ func (this *QImageWriter) Write(image *QImage) bool {
 	return (bool)(ret)
 }
 
-func (this *QImageWriter) Error() uintptr {
+func (this *QImageWriter) Error() QImageWriter__ImageWriterError {
 	ret := C.QImageWriter_Error(this.h)
-	return (uintptr)(ret)
+	return (QImageWriter__ImageWriterError)(ret)
 }
 
 func (this *QImageWriter) ErrorString() string {
@@ -253,7 +262,7 @@ func (this *QImageWriter) ErrorString() string {
 	return ret
 }
 
-func (this *QImageWriter) SupportsOption(option uintptr) bool {
+func (this *QImageWriter) SupportsOption(option QImageIOHandler__ImageOption) bool {
 	ret := C.QImageWriter_SupportsOption(this.h, (C.uintptr_t)(option))
 	return (bool)(ret)
 }

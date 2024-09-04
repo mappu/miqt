@@ -625,9 +625,9 @@ func (this *QTextBlock) CharFormatIndex() int {
 	return (int)(ret)
 }
 
-func (this *QTextBlock) TextDirection() uintptr {
+func (this *QTextBlock) TextDirection() LayoutDirection {
 	ret := C.QTextBlock_TextDirection(this.h)
-	return (uintptr)(ret)
+	return (LayoutDirection)(ret)
 }
 
 func (this *QTextBlock) Text() string {

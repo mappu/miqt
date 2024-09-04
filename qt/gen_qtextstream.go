@@ -13,6 +13,42 @@ import (
 	"unsafe"
 )
 
+type QTextStream__RealNumberNotation int
+
+const (
+	QTextStream__RealNumberNotation__SmartNotation      QTextStream__RealNumberNotation = 0
+	QTextStream__RealNumberNotation__FixedNotation      QTextStream__RealNumberNotation = 1
+	QTextStream__RealNumberNotation__ScientificNotation QTextStream__RealNumberNotation = 2
+)
+
+type QTextStream__FieldAlignment int
+
+const (
+	QTextStream__FieldAlignment__AlignLeft            QTextStream__FieldAlignment = 0
+	QTextStream__FieldAlignment__AlignRight           QTextStream__FieldAlignment = 1
+	QTextStream__FieldAlignment__AlignCenter          QTextStream__FieldAlignment = 2
+	QTextStream__FieldAlignment__AlignAccountingStyle QTextStream__FieldAlignment = 3
+)
+
+type QTextStream__Status int
+
+const (
+	QTextStream__Status__Ok              QTextStream__Status = 0
+	QTextStream__Status__ReadPastEnd     QTextStream__Status = 1
+	QTextStream__Status__ReadCorruptData QTextStream__Status = 2
+	QTextStream__Status__WriteFailed     QTextStream__Status = 3
+)
+
+type QTextStream__NumberFlag int
+
+const (
+	QTextStream__NumberFlag__ShowBase        QTextStream__NumberFlag = 1
+	QTextStream__NumberFlag__ForcePoint      QTextStream__NumberFlag = 2
+	QTextStream__NumberFlag__ForceSign       QTextStream__NumberFlag = 4
+	QTextStream__NumberFlag__UppercaseBase   QTextStream__NumberFlag = 8
+	QTextStream__NumberFlag__UppercaseDigits QTextStream__NumberFlag = 16
+)
+
 type QTextStream struct {
 	h *C.QTextStream
 }
@@ -137,12 +173,12 @@ func (this *QTextStream) String() string {
 	return ret
 }
 
-func (this *QTextStream) Status() uintptr {
+func (this *QTextStream) Status() QTextStream__Status {
 	ret := C.QTextStream_Status(this.h)
-	return (uintptr)(ret)
+	return (QTextStream__Status)(ret)
 }
 
-func (this *QTextStream) SetStatus(status uintptr) {
+func (this *QTextStream) SetStatus(status QTextStream__Status) {
 	C.QTextStream_SetStatus(this.h, (C.uintptr_t)(status))
 }
 
@@ -204,13 +240,13 @@ func (this *QTextStream) Read(maxlen int64) string {
 	return ret
 }
 
-func (this *QTextStream) SetFieldAlignment(alignment uintptr) {
+func (this *QTextStream) SetFieldAlignment(alignment QTextStream__FieldAlignment) {
 	C.QTextStream_SetFieldAlignment(this.h, (C.uintptr_t)(alignment))
 }
 
-func (this *QTextStream) FieldAlignment() uintptr {
+func (this *QTextStream) FieldAlignment() QTextStream__FieldAlignment {
 	ret := C.QTextStream_FieldAlignment(this.h)
-	return (uintptr)(ret)
+	return (QTextStream__FieldAlignment)(ret)
 }
 
 func (this *QTextStream) SetPadChar(ch QChar) {
@@ -255,13 +291,13 @@ func (this *QTextStream) IntegerBase() int {
 	return (int)(ret)
 }
 
-func (this *QTextStream) SetRealNumberNotation(notation uintptr) {
+func (this *QTextStream) SetRealNumberNotation(notation QTextStream__RealNumberNotation) {
 	C.QTextStream_SetRealNumberNotation(this.h, (C.uintptr_t)(notation))
 }
 
-func (this *QTextStream) RealNumberNotation() uintptr {
+func (this *QTextStream) RealNumberNotation() QTextStream__RealNumberNotation {
 	ret := C.QTextStream_RealNumberNotation(this.h)
-	return (uintptr)(ret)
+	return (QTextStream__RealNumberNotation)(ret)
 }
 
 func (this *QTextStream) SetRealNumberPrecision(precision int) {

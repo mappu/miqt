@@ -61,7 +61,7 @@ func NewQStringMatcher4(other *QStringMatcher) *QStringMatcher {
 }
 
 // NewQStringMatcher5 constructs a new QStringMatcher object.
-func NewQStringMatcher5(pattern string, cs uintptr) *QStringMatcher {
+func NewQStringMatcher5(pattern string, cs CaseSensitivity) *QStringMatcher {
 	pattern_Cstring := C.CString(pattern)
 	defer C.free(unsafe.Pointer(pattern_Cstring))
 	ret := C.QStringMatcher_new5(pattern_Cstring, C.size_t(len(pattern)), (C.uintptr_t)(cs))
@@ -69,7 +69,7 @@ func NewQStringMatcher5(pattern string, cs uintptr) *QStringMatcher {
 }
 
 // NewQStringMatcher6 constructs a new QStringMatcher object.
-func NewQStringMatcher6(uc *QChar, lenVal int, cs uintptr) *QStringMatcher {
+func NewQStringMatcher6(uc *QChar, lenVal int, cs CaseSensitivity) *QStringMatcher {
 	ret := C.QStringMatcher_new6(uc.cPointer(), (C.int)(lenVal), (C.uintptr_t)(cs))
 	return newQStringMatcher(ret)
 }
@@ -84,7 +84,7 @@ func (this *QStringMatcher) SetPattern(pattern string) {
 	C.QStringMatcher_SetPattern(this.h, pattern_Cstring, C.size_t(len(pattern)))
 }
 
-func (this *QStringMatcher) SetCaseSensitivity(cs uintptr) {
+func (this *QStringMatcher) SetCaseSensitivity(cs CaseSensitivity) {
 	C.QStringMatcher_SetCaseSensitivity(this.h, (C.uintptr_t)(cs))
 }
 
@@ -109,9 +109,9 @@ func (this *QStringMatcher) Pattern() string {
 	return ret
 }
 
-func (this *QStringMatcher) CaseSensitivity() uintptr {
+func (this *QStringMatcher) CaseSensitivity() CaseSensitivity {
 	ret := C.QStringMatcher_CaseSensitivity(this.h)
-	return (uintptr)(ret)
+	return (CaseSensitivity)(ret)
 }
 
 func (this *QStringMatcher) IndexIn22(str string, from int) int {

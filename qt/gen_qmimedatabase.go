@@ -13,6 +13,14 @@ import (
 	"unsafe"
 )
 
+type QMimeDatabase__MatchMode int
+
+const (
+	QMimeDatabase__MatchMode__MatchDefault   QMimeDatabase__MatchMode = 0
+	QMimeDatabase__MatchMode__MatchExtension QMimeDatabase__MatchMode = 1
+	QMimeDatabase__MatchMode__MatchContent   QMimeDatabase__MatchMode = 2
+)
+
 type QMimeDatabase struct {
 	h *C.QMimeDatabase
 }
@@ -176,7 +184,7 @@ func (this *QMimeDatabase) AllMimeTypes() []QMimeType {
 	return ret
 }
 
-func (this *QMimeDatabase) MimeTypeForFile2(fileName string, mode uintptr) *QMimeType {
+func (this *QMimeDatabase) MimeTypeForFile2(fileName string, mode QMimeDatabase__MatchMode) *QMimeType {
 	fileName_Cstring := C.CString(fileName)
 	defer C.free(unsafe.Pointer(fileName_Cstring))
 	ret := C.QMimeDatabase_MimeTypeForFile2(this.h, fileName_Cstring, C.size_t(len(fileName)), (C.uintptr_t)(mode))
@@ -189,7 +197,7 @@ func (this *QMimeDatabase) MimeTypeForFile2(fileName string, mode uintptr) *QMim
 	return ret1
 }
 
-func (this *QMimeDatabase) MimeTypeForFile22(fileInfo *QFileInfo, mode uintptr) *QMimeType {
+func (this *QMimeDatabase) MimeTypeForFile22(fileInfo *QFileInfo, mode QMimeDatabase__MatchMode) *QMimeType {
 	ret := C.QMimeDatabase_MimeTypeForFile22(this.h, fileInfo.cPointer(), (C.uintptr_t)(mode))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQMimeType(ret)

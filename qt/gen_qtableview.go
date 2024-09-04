@@ -179,12 +179,12 @@ func (this *QTableView) ShowGrid() bool {
 	return (bool)(ret)
 }
 
-func (this *QTableView) GridStyle() uintptr {
+func (this *QTableView) GridStyle() PenStyle {
 	ret := C.QTableView_GridStyle(this.h)
-	return (uintptr)(ret)
+	return (PenStyle)(ret)
 }
 
-func (this *QTableView) SetGridStyle(style uintptr) {
+func (this *QTableView) SetGridStyle(style PenStyle) {
 	C.QTableView_SetGridStyle(this.h, (C.uintptr_t)(style))
 }
 
@@ -294,7 +294,7 @@ func (this *QTableView) SortByColumn(column int) {
 	C.QTableView_SortByColumn(this.h, (C.int)(column))
 }
 
-func (this *QTableView) SortByColumn2(column int, order uintptr) {
+func (this *QTableView) SortByColumn2(column int, order SortOrder) {
 	C.QTableView_SortByColumn2(this.h, (C.int)(column), (C.uintptr_t)(order))
 }
 
@@ -354,7 +354,7 @@ func QTableView_TrUtf83(s string, c string, n int) string {
 	return ret
 }
 
-func (this *QTableView) ScrollTo2(index *QModelIndex, hint uintptr) {
+func (this *QTableView) ScrollTo2(index *QModelIndex, hint QAbstractItemView__ScrollHint) {
 	C.QTableView_ScrollTo2(this.h, index.cPointer(), (C.uintptr_t)(hint))
 }
 

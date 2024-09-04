@@ -13,6 +13,20 @@ import (
 	"unsafe"
 )
 
+type QCommandLineParser__SingleDashWordOptionMode int
+
+const (
+	QCommandLineParser__SingleDashWordOptionMode__ParseAsCompactedShortOptions QCommandLineParser__SingleDashWordOptionMode = 0
+	QCommandLineParser__SingleDashWordOptionMode__ParseAsLongOptions           QCommandLineParser__SingleDashWordOptionMode = 1
+)
+
+type QCommandLineParser__OptionsAfterPositionalArgumentsMode int
+
+const (
+	QCommandLineParser__OptionsAfterPositionalArgumentsMode__ParseAsOptions             QCommandLineParser__OptionsAfterPositionalArgumentsMode = 0
+	QCommandLineParser__OptionsAfterPositionalArgumentsMode__ParseAsPositionalArguments QCommandLineParser__OptionsAfterPositionalArgumentsMode = 1
+)
+
 type QCommandLineParser struct {
 	h *C.QCommandLineParser
 }
@@ -63,11 +77,11 @@ func QCommandLineParser_TrUtf8(sourceText string) string {
 	return ret
 }
 
-func (this *QCommandLineParser) SetSingleDashWordOptionMode(parsingMode uintptr) {
+func (this *QCommandLineParser) SetSingleDashWordOptionMode(parsingMode QCommandLineParser__SingleDashWordOptionMode) {
 	C.QCommandLineParser_SetSingleDashWordOptionMode(this.h, (C.uintptr_t)(parsingMode))
 }
 
-func (this *QCommandLineParser) SetOptionsAfterPositionalArgumentsMode(mode uintptr) {
+func (this *QCommandLineParser) SetOptionsAfterPositionalArgumentsMode(mode QCommandLineParser__OptionsAfterPositionalArgumentsMode) {
 	C.QCommandLineParser_SetOptionsAfterPositionalArgumentsMode(this.h, (C.uintptr_t)(mode))
 }
 

@@ -13,6 +13,34 @@ import (
 	"unsafe"
 )
 
+type QCborStreamReader__Type int
+
+const (
+	QCborStreamReader__Type__UnsignedInteger QCborStreamReader__Type = 0
+	QCborStreamReader__Type__NegativeInteger QCborStreamReader__Type = 32
+	QCborStreamReader__Type__ByteString      QCborStreamReader__Type = 64
+	QCborStreamReader__Type__ByteArray       QCborStreamReader__Type = 64
+	QCborStreamReader__Type__TextString      QCborStreamReader__Type = 96
+	QCborStreamReader__Type__String          QCborStreamReader__Type = 96
+	QCborStreamReader__Type__Array           QCborStreamReader__Type = 128
+	QCborStreamReader__Type__Map             QCborStreamReader__Type = 160
+	QCborStreamReader__Type__Tag             QCborStreamReader__Type = 192
+	QCborStreamReader__Type__SimpleType      QCborStreamReader__Type = 224
+	QCborStreamReader__Type__HalfFloat       QCborStreamReader__Type = 249
+	QCborStreamReader__Type__Float16         QCborStreamReader__Type = 249
+	QCborStreamReader__Type__Float           QCborStreamReader__Type = 250
+	QCborStreamReader__Type__Double          QCborStreamReader__Type = 251
+	QCborStreamReader__Type__Invalid         QCborStreamReader__Type = 255
+)
+
+type QCborStreamReader__StringResultCode int
+
+const (
+	QCborStreamReader__StringResultCode__EndOfString QCborStreamReader__StringResultCode = 0
+	QCborStreamReader__StringResultCode__Ok          QCborStreamReader__StringResultCode = 1
+	QCborStreamReader__StringResultCode__Error       QCborStreamReader__StringResultCode = -1
+)
+
 type QCborStreamReader struct {
 	h *C.QCborStreamReader
 }
@@ -128,9 +156,9 @@ func (this *QCborStreamReader) ContainerDepth() int {
 	return (int)(ret)
 }
 
-func (this *QCborStreamReader) ParentContainerType() uintptr {
+func (this *QCborStreamReader) ParentContainerType() QCborStreamReader__Type {
 	ret := C.QCborStreamReader_ParentContainerType(this.h)
-	return (uintptr)(ret)
+	return (QCborStreamReader__Type)(ret)
 }
 
 func (this *QCborStreamReader) HasNext() bool {
@@ -143,9 +171,9 @@ func (this *QCborStreamReader) Next() bool {
 	return (bool)(ret)
 }
 
-func (this *QCborStreamReader) Type() uintptr {
+func (this *QCborStreamReader) Type() QCborStreamReader__Type {
 	ret := C.QCborStreamReader_Type(this.h)
-	return (uintptr)(ret)
+	return (QCborStreamReader__Type)(ret)
 }
 
 func (this *QCborStreamReader) IsUnsignedInteger() bool {

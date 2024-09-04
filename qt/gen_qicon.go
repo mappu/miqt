@@ -13,6 +13,22 @@ import (
 	"unsafe"
 )
 
+type QIcon__Mode int
+
+const (
+	QIcon__Mode__Normal   QIcon__Mode = 0
+	QIcon__Mode__Disabled QIcon__Mode = 1
+	QIcon__Mode__Active   QIcon__Mode = 2
+	QIcon__Mode__Selected QIcon__Mode = 3
+)
+
+type QIcon__State int
+
+const (
+	QIcon__State__On  QIcon__State = 0
+	QIcon__State__Off QIcon__State = 1
+)
+
 type QIcon struct {
 	h *C.QIcon
 }
@@ -332,7 +348,7 @@ func QIcon_SetFallbackThemeName(name string) {
 	C.QIcon_SetFallbackThemeName(name_Cstring, C.size_t(len(name)))
 }
 
-func (this *QIcon) Pixmap22(size *QSize, mode uintptr) *QPixmap {
+func (this *QIcon) Pixmap22(size *QSize, mode QIcon__Mode) *QPixmap {
 	ret := C.QIcon_Pixmap22(this.h, size.cPointer(), (C.uintptr_t)(mode))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQPixmap(ret)
@@ -343,7 +359,7 @@ func (this *QIcon) Pixmap22(size *QSize, mode uintptr) *QPixmap {
 	return ret1
 }
 
-func (this *QIcon) Pixmap32(size *QSize, mode uintptr, state uintptr) *QPixmap {
+func (this *QIcon) Pixmap32(size *QSize, mode QIcon__Mode, state QIcon__State) *QPixmap {
 	ret := C.QIcon_Pixmap32(this.h, size.cPointer(), (C.uintptr_t)(mode), (C.uintptr_t)(state))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQPixmap(ret)
@@ -354,7 +370,7 @@ func (this *QIcon) Pixmap32(size *QSize, mode uintptr, state uintptr) *QPixmap {
 	return ret1
 }
 
-func (this *QIcon) Pixmap33(w int, h int, mode uintptr) *QPixmap {
+func (this *QIcon) Pixmap33(w int, h int, mode QIcon__Mode) *QPixmap {
 	ret := C.QIcon_Pixmap33(this.h, (C.int)(w), (C.int)(h), (C.uintptr_t)(mode))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQPixmap(ret)
@@ -365,7 +381,7 @@ func (this *QIcon) Pixmap33(w int, h int, mode uintptr) *QPixmap {
 	return ret1
 }
 
-func (this *QIcon) Pixmap4(w int, h int, mode uintptr, state uintptr) *QPixmap {
+func (this *QIcon) Pixmap4(w int, h int, mode QIcon__Mode, state QIcon__State) *QPixmap {
 	ret := C.QIcon_Pixmap4(this.h, (C.int)(w), (C.int)(h), (C.uintptr_t)(mode), (C.uintptr_t)(state))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQPixmap(ret)
@@ -376,7 +392,7 @@ func (this *QIcon) Pixmap4(w int, h int, mode uintptr, state uintptr) *QPixmap {
 	return ret1
 }
 
-func (this *QIcon) Pixmap23(extent int, mode uintptr) *QPixmap {
+func (this *QIcon) Pixmap23(extent int, mode QIcon__Mode) *QPixmap {
 	ret := C.QIcon_Pixmap23(this.h, (C.int)(extent), (C.uintptr_t)(mode))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQPixmap(ret)
@@ -387,7 +403,7 @@ func (this *QIcon) Pixmap23(extent int, mode uintptr) *QPixmap {
 	return ret1
 }
 
-func (this *QIcon) Pixmap34(extent int, mode uintptr, state uintptr) *QPixmap {
+func (this *QIcon) Pixmap34(extent int, mode QIcon__Mode, state QIcon__State) *QPixmap {
 	ret := C.QIcon_Pixmap34(this.h, (C.int)(extent), (C.uintptr_t)(mode), (C.uintptr_t)(state))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQPixmap(ret)
@@ -398,7 +414,7 @@ func (this *QIcon) Pixmap34(extent int, mode uintptr, state uintptr) *QPixmap {
 	return ret1
 }
 
-func (this *QIcon) Pixmap35(window *QWindow, size *QSize, mode uintptr) *QPixmap {
+func (this *QIcon) Pixmap35(window *QWindow, size *QSize, mode QIcon__Mode) *QPixmap {
 	ret := C.QIcon_Pixmap35(this.h, window.cPointer(), size.cPointer(), (C.uintptr_t)(mode))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQPixmap(ret)
@@ -409,7 +425,7 @@ func (this *QIcon) Pixmap35(window *QWindow, size *QSize, mode uintptr) *QPixmap
 	return ret1
 }
 
-func (this *QIcon) Pixmap42(window *QWindow, size *QSize, mode uintptr, state uintptr) *QPixmap {
+func (this *QIcon) Pixmap42(window *QWindow, size *QSize, mode QIcon__Mode, state QIcon__State) *QPixmap {
 	ret := C.QIcon_Pixmap42(this.h, window.cPointer(), size.cPointer(), (C.uintptr_t)(mode), (C.uintptr_t)(state))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQPixmap(ret)
@@ -420,7 +436,7 @@ func (this *QIcon) Pixmap42(window *QWindow, size *QSize, mode uintptr, state ui
 	return ret1
 }
 
-func (this *QIcon) ActualSize22(size *QSize, mode uintptr) *QSize {
+func (this *QIcon) ActualSize22(size *QSize, mode QIcon__Mode) *QSize {
 	ret := C.QIcon_ActualSize22(this.h, size.cPointer(), (C.uintptr_t)(mode))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQSize(ret)
@@ -431,7 +447,7 @@ func (this *QIcon) ActualSize22(size *QSize, mode uintptr) *QSize {
 	return ret1
 }
 
-func (this *QIcon) ActualSize3(size *QSize, mode uintptr, state uintptr) *QSize {
+func (this *QIcon) ActualSize3(size *QSize, mode QIcon__Mode, state QIcon__State) *QSize {
 	ret := C.QIcon_ActualSize3(this.h, size.cPointer(), (C.uintptr_t)(mode), (C.uintptr_t)(state))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQSize(ret)
@@ -442,7 +458,7 @@ func (this *QIcon) ActualSize3(size *QSize, mode uintptr, state uintptr) *QSize 
 	return ret1
 }
 
-func (this *QIcon) ActualSize32(window *QWindow, size *QSize, mode uintptr) *QSize {
+func (this *QIcon) ActualSize32(window *QWindow, size *QSize, mode QIcon__Mode) *QSize {
 	ret := C.QIcon_ActualSize32(this.h, window.cPointer(), size.cPointer(), (C.uintptr_t)(mode))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQSize(ret)
@@ -453,7 +469,7 @@ func (this *QIcon) ActualSize32(window *QWindow, size *QSize, mode uintptr) *QSi
 	return ret1
 }
 
-func (this *QIcon) ActualSize4(window *QWindow, size *QSize, mode uintptr, state uintptr) *QSize {
+func (this *QIcon) ActualSize4(window *QWindow, size *QSize, mode QIcon__Mode, state QIcon__State) *QSize {
 	ret := C.QIcon_ActualSize4(this.h, window.cPointer(), size.cPointer(), (C.uintptr_t)(mode), (C.uintptr_t)(state))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQSize(ret)
@@ -468,11 +484,11 @@ func (this *QIcon) Paint3(painter *QPainter, rect *QRect, alignment int) {
 	C.QIcon_Paint3(this.h, painter.cPointer(), rect.cPointer(), (C.int)(alignment))
 }
 
-func (this *QIcon) Paint4(painter *QPainter, rect *QRect, alignment int, mode uintptr) {
+func (this *QIcon) Paint4(painter *QPainter, rect *QRect, alignment int, mode QIcon__Mode) {
 	C.QIcon_Paint4(this.h, painter.cPointer(), rect.cPointer(), (C.int)(alignment), (C.uintptr_t)(mode))
 }
 
-func (this *QIcon) Paint5(painter *QPainter, rect *QRect, alignment int, mode uintptr, state uintptr) {
+func (this *QIcon) Paint5(painter *QPainter, rect *QRect, alignment int, mode QIcon__Mode, state QIcon__State) {
 	C.QIcon_Paint5(this.h, painter.cPointer(), rect.cPointer(), (C.int)(alignment), (C.uintptr_t)(mode), (C.uintptr_t)(state))
 }
 
@@ -480,19 +496,19 @@ func (this *QIcon) Paint6(painter *QPainter, x int, y int, w int, h int, alignme
 	C.QIcon_Paint6(this.h, painter.cPointer(), (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), (C.int)(alignment))
 }
 
-func (this *QIcon) Paint7(painter *QPainter, x int, y int, w int, h int, alignment int, mode uintptr) {
+func (this *QIcon) Paint7(painter *QPainter, x int, y int, w int, h int, alignment int, mode QIcon__Mode) {
 	C.QIcon_Paint7(this.h, painter.cPointer(), (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), (C.int)(alignment), (C.uintptr_t)(mode))
 }
 
-func (this *QIcon) Paint8(painter *QPainter, x int, y int, w int, h int, alignment int, mode uintptr, state uintptr) {
+func (this *QIcon) Paint8(painter *QPainter, x int, y int, w int, h int, alignment int, mode QIcon__Mode, state QIcon__State) {
 	C.QIcon_Paint8(this.h, painter.cPointer(), (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), (C.int)(alignment), (C.uintptr_t)(mode), (C.uintptr_t)(state))
 }
 
-func (this *QIcon) AddPixmap2(pixmap *QPixmap, mode uintptr) {
+func (this *QIcon) AddPixmap2(pixmap *QPixmap, mode QIcon__Mode) {
 	C.QIcon_AddPixmap2(this.h, pixmap.cPointer(), (C.uintptr_t)(mode))
 }
 
-func (this *QIcon) AddPixmap3(pixmap *QPixmap, mode uintptr, state uintptr) {
+func (this *QIcon) AddPixmap3(pixmap *QPixmap, mode QIcon__Mode, state QIcon__State) {
 	C.QIcon_AddPixmap3(this.h, pixmap.cPointer(), (C.uintptr_t)(mode), (C.uintptr_t)(state))
 }
 
@@ -502,19 +518,19 @@ func (this *QIcon) AddFile2(fileName string, size *QSize) {
 	C.QIcon_AddFile2(this.h, fileName_Cstring, C.size_t(len(fileName)), size.cPointer())
 }
 
-func (this *QIcon) AddFile3(fileName string, size *QSize, mode uintptr) {
+func (this *QIcon) AddFile3(fileName string, size *QSize, mode QIcon__Mode) {
 	fileName_Cstring := C.CString(fileName)
 	defer C.free(unsafe.Pointer(fileName_Cstring))
 	C.QIcon_AddFile3(this.h, fileName_Cstring, C.size_t(len(fileName)), size.cPointer(), (C.uintptr_t)(mode))
 }
 
-func (this *QIcon) AddFile4(fileName string, size *QSize, mode uintptr, state uintptr) {
+func (this *QIcon) AddFile4(fileName string, size *QSize, mode QIcon__Mode, state QIcon__State) {
 	fileName_Cstring := C.CString(fileName)
 	defer C.free(unsafe.Pointer(fileName_Cstring))
 	C.QIcon_AddFile4(this.h, fileName_Cstring, C.size_t(len(fileName)), size.cPointer(), (C.uintptr_t)(mode), (C.uintptr_t)(state))
 }
 
-func (this *QIcon) AvailableSizes1(mode uintptr) []QSize {
+func (this *QIcon) AvailableSizes1(mode QIcon__Mode) []QSize {
 	var _out **C.QSize = nil
 	var _out_len C.size_t = 0
 	C.QIcon_AvailableSizes1(this.h, (C.uintptr_t)(mode), &_out, &_out_len)
@@ -527,7 +543,7 @@ func (this *QIcon) AvailableSizes1(mode uintptr) []QSize {
 	return ret
 }
 
-func (this *QIcon) AvailableSizes2(mode uintptr, state uintptr) []QSize {
+func (this *QIcon) AvailableSizes2(mode QIcon__Mode, state QIcon__State) []QSize {
 	var _out **C.QSize = nil
 	var _out_len C.size_t = 0
 	C.QIcon_AvailableSizes2(this.h, (C.uintptr_t)(mode), (C.uintptr_t)(state), &_out, &_out_len)

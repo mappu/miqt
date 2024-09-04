@@ -14,6 +14,23 @@ import (
 	"unsafe"
 )
 
+type QFileSystemModel__Roles int
+
+const (
+	QFileSystemModel__Roles__FileIconRole    QFileSystemModel__Roles = 1
+	QFileSystemModel__Roles__FilePathRole    QFileSystemModel__Roles = 257
+	QFileSystemModel__Roles__FileNameRole    QFileSystemModel__Roles = 258
+	QFileSystemModel__Roles__FilePermissions QFileSystemModel__Roles = 259
+)
+
+type QFileSystemModel__Option int
+
+const (
+	QFileSystemModel__Option__DontWatchForChanges         QFileSystemModel__Option = 1
+	QFileSystemModel__Option__DontResolveSymlinks         QFileSystemModel__Option = 2
+	QFileSystemModel__Option__DontUseCustomDirectoryIcons QFileSystemModel__Option = 4
+)
+
 type QFileSystemModel struct {
 	h *C.QFileSystemModel
 	*QAbstractItemModel
@@ -219,7 +236,7 @@ func (this *QFileSystemModel) SetData(index *QModelIndex, value *QVariant) bool 
 	return (bool)(ret)
 }
 
-func (this *QFileSystemModel) HeaderData(section int, orientation uintptr) *QVariant {
+func (this *QFileSystemModel) HeaderData(section int, orientation Orientation) *QVariant {
 	ret := C.QFileSystemModel_HeaderData(this.h, (C.int)(section), (C.uintptr_t)(orientation))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQVariant(ret)
@@ -265,7 +282,7 @@ func (this *QFileSystemModel) MimeData(indexes []QModelIndex) *QMimeData {
 	return newQMimeData_U(unsafe.Pointer(ret))
 }
 
-func (this *QFileSystemModel) DropMimeData(data *QMimeData, action uintptr, row int, column int, parent *QModelIndex) bool {
+func (this *QFileSystemModel) DropMimeData(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool {
 	ret := C.QFileSystemModel_DropMimeData(this.h, data.cPointer(), (C.uintptr_t)(action), (C.int)(row), (C.int)(column), parent.cPointer())
 	return (bool)(ret)
 }
@@ -383,11 +400,11 @@ func (this *QFileSystemModel) NameFilters() []string {
 	return ret
 }
 
-func (this *QFileSystemModel) SetOption(option uintptr) {
+func (this *QFileSystemModel) SetOption(option QFileSystemModel__Option) {
 	C.QFileSystemModel_SetOption(this.h, (C.uintptr_t)(option))
 }
 
-func (this *QFileSystemModel) TestOption(option uintptr) bool {
+func (this *QFileSystemModel) TestOption(option QFileSystemModel__Option) bool {
 	ret := C.QFileSystemModel_TestOption(this.h, (C.uintptr_t)(option))
 	return (bool)(ret)
 }
@@ -617,7 +634,7 @@ func (this *QFileSystemModel) SetData3(index *QModelIndex, value *QVariant, role
 	return (bool)(ret)
 }
 
-func (this *QFileSystemModel) HeaderData3(section int, orientation uintptr, role int) *QVariant {
+func (this *QFileSystemModel) HeaderData3(section int, orientation Orientation, role int) *QVariant {
 	ret := C.QFileSystemModel_HeaderData3(this.h, (C.int)(section), (C.uintptr_t)(orientation), (C.int)(role))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQVariant(ret)
@@ -628,11 +645,11 @@ func (this *QFileSystemModel) HeaderData3(section int, orientation uintptr, role
 	return ret1
 }
 
-func (this *QFileSystemModel) Sort2(column int, order uintptr) {
+func (this *QFileSystemModel) Sort2(column int, order SortOrder) {
 	C.QFileSystemModel_Sort2(this.h, (C.int)(column), (C.uintptr_t)(order))
 }
 
-func (this *QFileSystemModel) SetOption2(option uintptr, on bool) {
+func (this *QFileSystemModel) SetOption2(option QFileSystemModel__Option, on bool) {
 	C.QFileSystemModel_SetOption2(this.h, (C.uintptr_t)(option), (C.bool)(on))
 }
 

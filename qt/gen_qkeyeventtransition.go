@@ -42,7 +42,7 @@ func NewQKeyEventTransition() *QKeyEventTransition {
 }
 
 // NewQKeyEventTransition2 constructs a new QKeyEventTransition object.
-func NewQKeyEventTransition2(object *QObject, typeVal uintptr, key int) *QKeyEventTransition {
+func NewQKeyEventTransition2(object *QObject, typeVal QEvent__Type, key int) *QKeyEventTransition {
 	ret := C.QKeyEventTransition_new2(object.cPointer(), (C.uintptr_t)(typeVal), (C.int)(key))
 	return newQKeyEventTransition(ret)
 }
@@ -54,7 +54,7 @@ func NewQKeyEventTransition3(sourceState *QState) *QKeyEventTransition {
 }
 
 // NewQKeyEventTransition4 constructs a new QKeyEventTransition object.
-func NewQKeyEventTransition4(object *QObject, typeVal uintptr, key int, sourceState *QState) *QKeyEventTransition {
+func NewQKeyEventTransition4(object *QObject, typeVal QEvent__Type, key int, sourceState *QState) *QKeyEventTransition {
 	ret := C.QKeyEventTransition_new4(object.cPointer(), (C.uintptr_t)(typeVal), (C.int)(key), sourceState.cPointer())
 	return newQKeyEventTransition(ret)
 }

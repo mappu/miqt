@@ -13,6 +13,242 @@ import (
 	"unsafe"
 )
 
+type QTextLength__Type int
+
+const (
+	QTextLength__Type__VariableLength   QTextLength__Type = 0
+	QTextLength__Type__FixedLength      QTextLength__Type = 1
+	QTextLength__Type__PercentageLength QTextLength__Type = 2
+)
+
+type QTextFormat__FormatType int
+
+const (
+	QTextFormat__FormatType__InvalidFormat QTextFormat__FormatType = -1
+	QTextFormat__FormatType__BlockFormat   QTextFormat__FormatType = 1
+	QTextFormat__FormatType__CharFormat    QTextFormat__FormatType = 2
+	QTextFormat__FormatType__ListFormat    QTextFormat__FormatType = 3
+	QTextFormat__FormatType__TableFormat   QTextFormat__FormatType = 4
+	QTextFormat__FormatType__FrameFormat   QTextFormat__FormatType = 5
+	QTextFormat__FormatType__UserFormat    QTextFormat__FormatType = 100
+)
+
+type QTextFormat__Property int
+
+const (
+	QTextFormat__Property__ObjectIndex                       QTextFormat__Property = 0
+	QTextFormat__Property__CssFloat                          QTextFormat__Property = 2048
+	QTextFormat__Property__LayoutDirection                   QTextFormat__Property = 2049
+	QTextFormat__Property__OutlinePen                        QTextFormat__Property = 2064
+	QTextFormat__Property__BackgroundBrush                   QTextFormat__Property = 2080
+	QTextFormat__Property__ForegroundBrush                   QTextFormat__Property = 2081
+	QTextFormat__Property__BackgroundImageUrl                QTextFormat__Property = 2083
+	QTextFormat__Property__BlockAlignment                    QTextFormat__Property = 4112
+	QTextFormat__Property__BlockTopMargin                    QTextFormat__Property = 4144
+	QTextFormat__Property__BlockBottomMargin                 QTextFormat__Property = 4145
+	QTextFormat__Property__BlockLeftMargin                   QTextFormat__Property = 4146
+	QTextFormat__Property__BlockRightMargin                  QTextFormat__Property = 4147
+	QTextFormat__Property__TextIndent                        QTextFormat__Property = 4148
+	QTextFormat__Property__TabPositions                      QTextFormat__Property = 4149
+	QTextFormat__Property__BlockIndent                       QTextFormat__Property = 4160
+	QTextFormat__Property__LineHeight                        QTextFormat__Property = 4168
+	QTextFormat__Property__LineHeightType                    QTextFormat__Property = 4169
+	QTextFormat__Property__BlockNonBreakableLines            QTextFormat__Property = 4176
+	QTextFormat__Property__BlockTrailingHorizontalRulerWidth QTextFormat__Property = 4192
+	QTextFormat__Property__HeadingLevel                      QTextFormat__Property = 4208
+	QTextFormat__Property__BlockQuoteLevel                   QTextFormat__Property = 4224
+	QTextFormat__Property__BlockCodeLanguage                 QTextFormat__Property = 4240
+	QTextFormat__Property__BlockCodeFence                    QTextFormat__Property = 4241
+	QTextFormat__Property__BlockMarker                       QTextFormat__Property = 4256
+	QTextFormat__Property__FirstFontProperty                 QTextFormat__Property = 8160
+	QTextFormat__Property__FontCapitalization                QTextFormat__Property = 8160
+	QTextFormat__Property__FontLetterSpacingType             QTextFormat__Property = 8243
+	QTextFormat__Property__FontLetterSpacing                 QTextFormat__Property = 8161
+	QTextFormat__Property__FontWordSpacing                   QTextFormat__Property = 8162
+	QTextFormat__Property__FontStretch                       QTextFormat__Property = 8244
+	QTextFormat__Property__FontStyleHint                     QTextFormat__Property = 8163
+	QTextFormat__Property__FontStyleStrategy                 QTextFormat__Property = 8164
+	QTextFormat__Property__FontKerning                       QTextFormat__Property = 8165
+	QTextFormat__Property__FontHintingPreference             QTextFormat__Property = 8166
+	QTextFormat__Property__FontFamilies                      QTextFormat__Property = 8167
+	QTextFormat__Property__FontStyleName                     QTextFormat__Property = 8168
+	QTextFormat__Property__FontFamily                        QTextFormat__Property = 8192
+	QTextFormat__Property__FontPointSize                     QTextFormat__Property = 8193
+	QTextFormat__Property__FontSizeAdjustment                QTextFormat__Property = 8194
+	QTextFormat__Property__FontSizeIncrement                 QTextFormat__Property = 8194
+	QTextFormat__Property__FontWeight                        QTextFormat__Property = 8195
+	QTextFormat__Property__FontItalic                        QTextFormat__Property = 8196
+	QTextFormat__Property__FontUnderline                     QTextFormat__Property = 8197
+	QTextFormat__Property__FontOverline                      QTextFormat__Property = 8198
+	QTextFormat__Property__FontStrikeOut                     QTextFormat__Property = 8199
+	QTextFormat__Property__FontFixedPitch                    QTextFormat__Property = 8200
+	QTextFormat__Property__FontPixelSize                     QTextFormat__Property = 8201
+	QTextFormat__Property__LastFontProperty                  QTextFormat__Property = 8201
+	QTextFormat__Property__TextUnderlineColor                QTextFormat__Property = 8208
+	QTextFormat__Property__TextVerticalAlignment             QTextFormat__Property = 8225
+	QTextFormat__Property__TextOutline                       QTextFormat__Property = 8226
+	QTextFormat__Property__TextUnderlineStyle                QTextFormat__Property = 8227
+	QTextFormat__Property__TextToolTip                       QTextFormat__Property = 8228
+	QTextFormat__Property__IsAnchor                          QTextFormat__Property = 8240
+	QTextFormat__Property__AnchorHref                        QTextFormat__Property = 8241
+	QTextFormat__Property__AnchorName                        QTextFormat__Property = 8242
+	QTextFormat__Property__ObjectType                        QTextFormat__Property = 12032
+	QTextFormat__Property__ListStyle                         QTextFormat__Property = 12288
+	QTextFormat__Property__ListIndent                        QTextFormat__Property = 12289
+	QTextFormat__Property__ListNumberPrefix                  QTextFormat__Property = 12290
+	QTextFormat__Property__ListNumberSuffix                  QTextFormat__Property = 12291
+	QTextFormat__Property__FrameBorder                       QTextFormat__Property = 16384
+	QTextFormat__Property__FrameMargin                       QTextFormat__Property = 16385
+	QTextFormat__Property__FramePadding                      QTextFormat__Property = 16386
+	QTextFormat__Property__FrameWidth                        QTextFormat__Property = 16387
+	QTextFormat__Property__FrameHeight                       QTextFormat__Property = 16388
+	QTextFormat__Property__FrameTopMargin                    QTextFormat__Property = 16389
+	QTextFormat__Property__FrameBottomMargin                 QTextFormat__Property = 16390
+	QTextFormat__Property__FrameLeftMargin                   QTextFormat__Property = 16391
+	QTextFormat__Property__FrameRightMargin                  QTextFormat__Property = 16392
+	QTextFormat__Property__FrameBorderBrush                  QTextFormat__Property = 16393
+	QTextFormat__Property__FrameBorderStyle                  QTextFormat__Property = 16400
+	QTextFormat__Property__TableColumns                      QTextFormat__Property = 16640
+	QTextFormat__Property__TableColumnWidthConstraints       QTextFormat__Property = 16641
+	QTextFormat__Property__TableCellSpacing                  QTextFormat__Property = 16642
+	QTextFormat__Property__TableCellPadding                  QTextFormat__Property = 16643
+	QTextFormat__Property__TableHeaderRowCount               QTextFormat__Property = 16644
+	QTextFormat__Property__TableBorderCollapse               QTextFormat__Property = 16645
+	QTextFormat__Property__TableCellRowSpan                  QTextFormat__Property = 18448
+	QTextFormat__Property__TableCellColumnSpan               QTextFormat__Property = 18449
+	QTextFormat__Property__TableCellTopPadding               QTextFormat__Property = 18450
+	QTextFormat__Property__TableCellBottomPadding            QTextFormat__Property = 18451
+	QTextFormat__Property__TableCellLeftPadding              QTextFormat__Property = 18452
+	QTextFormat__Property__TableCellRightPadding             QTextFormat__Property = 18453
+	QTextFormat__Property__TableCellTopBorder                QTextFormat__Property = 18454
+	QTextFormat__Property__TableCellBottomBorder             QTextFormat__Property = 18455
+	QTextFormat__Property__TableCellLeftBorder               QTextFormat__Property = 18456
+	QTextFormat__Property__TableCellRightBorder              QTextFormat__Property = 18457
+	QTextFormat__Property__TableCellTopBorderStyle           QTextFormat__Property = 18458
+	QTextFormat__Property__TableCellBottomBorderStyle        QTextFormat__Property = 18459
+	QTextFormat__Property__TableCellLeftBorderStyle          QTextFormat__Property = 18460
+	QTextFormat__Property__TableCellRightBorderStyle         QTextFormat__Property = 18461
+	QTextFormat__Property__TableCellTopBorderBrush           QTextFormat__Property = 18462
+	QTextFormat__Property__TableCellBottomBorderBrush        QTextFormat__Property = 18463
+	QTextFormat__Property__TableCellLeftBorderBrush          QTextFormat__Property = 18464
+	QTextFormat__Property__TableCellRightBorderBrush         QTextFormat__Property = 18465
+	QTextFormat__Property__ImageName                         QTextFormat__Property = 20480
+	QTextFormat__Property__ImageTitle                        QTextFormat__Property = 20481
+	QTextFormat__Property__ImageAltText                      QTextFormat__Property = 20482
+	QTextFormat__Property__ImageWidth                        QTextFormat__Property = 20496
+	QTextFormat__Property__ImageHeight                       QTextFormat__Property = 20497
+	QTextFormat__Property__ImageQuality                      QTextFormat__Property = 20500
+	QTextFormat__Property__FullWidthSelection                QTextFormat__Property = 24576
+	QTextFormat__Property__PageBreakPolicy                   QTextFormat__Property = 28672
+	QTextFormat__Property__UserProperty                      QTextFormat__Property = 1048576
+)
+
+type QTextFormat__ObjectTypes int
+
+const (
+	QTextFormat__ObjectTypes__NoObject        QTextFormat__ObjectTypes = 0
+	QTextFormat__ObjectTypes__ImageObject     QTextFormat__ObjectTypes = 1
+	QTextFormat__ObjectTypes__TableObject     QTextFormat__ObjectTypes = 2
+	QTextFormat__ObjectTypes__TableCellObject QTextFormat__ObjectTypes = 3
+	QTextFormat__ObjectTypes__UserObject      QTextFormat__ObjectTypes = 4096
+)
+
+type QTextFormat__PageBreakFlag int
+
+const (
+	QTextFormat__PageBreakFlag__PageBreak_Auto         QTextFormat__PageBreakFlag = 0
+	QTextFormat__PageBreakFlag__PageBreak_AlwaysBefore QTextFormat__PageBreakFlag = 1
+	QTextFormat__PageBreakFlag__PageBreak_AlwaysAfter  QTextFormat__PageBreakFlag = 16
+)
+
+type QTextCharFormat__VerticalAlignment int
+
+const (
+	QTextCharFormat__VerticalAlignment__AlignNormal      QTextCharFormat__VerticalAlignment = 0
+	QTextCharFormat__VerticalAlignment__AlignSuperScript QTextCharFormat__VerticalAlignment = 1
+	QTextCharFormat__VerticalAlignment__AlignSubScript   QTextCharFormat__VerticalAlignment = 2
+	QTextCharFormat__VerticalAlignment__AlignMiddle      QTextCharFormat__VerticalAlignment = 3
+	QTextCharFormat__VerticalAlignment__AlignTop         QTextCharFormat__VerticalAlignment = 4
+	QTextCharFormat__VerticalAlignment__AlignBottom      QTextCharFormat__VerticalAlignment = 5
+	QTextCharFormat__VerticalAlignment__AlignBaseline    QTextCharFormat__VerticalAlignment = 6
+)
+
+type QTextCharFormat__UnderlineStyle int
+
+const (
+	QTextCharFormat__UnderlineStyle__NoUnderline         QTextCharFormat__UnderlineStyle = 0
+	QTextCharFormat__UnderlineStyle__SingleUnderline     QTextCharFormat__UnderlineStyle = 1
+	QTextCharFormat__UnderlineStyle__DashUnderline       QTextCharFormat__UnderlineStyle = 2
+	QTextCharFormat__UnderlineStyle__DotLine             QTextCharFormat__UnderlineStyle = 3
+	QTextCharFormat__UnderlineStyle__DashDotLine         QTextCharFormat__UnderlineStyle = 4
+	QTextCharFormat__UnderlineStyle__DashDotDotLine      QTextCharFormat__UnderlineStyle = 5
+	QTextCharFormat__UnderlineStyle__WaveUnderline       QTextCharFormat__UnderlineStyle = 6
+	QTextCharFormat__UnderlineStyle__SpellCheckUnderline QTextCharFormat__UnderlineStyle = 7
+)
+
+type QTextCharFormat__FontPropertiesInheritanceBehavior int
+
+const (
+	QTextCharFormat__FontPropertiesInheritanceBehavior__FontPropertiesSpecifiedOnly QTextCharFormat__FontPropertiesInheritanceBehavior = 0
+	QTextCharFormat__FontPropertiesInheritanceBehavior__FontPropertiesAll           QTextCharFormat__FontPropertiesInheritanceBehavior = 1
+)
+
+type QTextBlockFormat__LineHeightTypes int
+
+const (
+	QTextBlockFormat__LineHeightTypes__SingleHeight       QTextBlockFormat__LineHeightTypes = 0
+	QTextBlockFormat__LineHeightTypes__ProportionalHeight QTextBlockFormat__LineHeightTypes = 1
+	QTextBlockFormat__LineHeightTypes__FixedHeight        QTextBlockFormat__LineHeightTypes = 2
+	QTextBlockFormat__LineHeightTypes__MinimumHeight      QTextBlockFormat__LineHeightTypes = 3
+	QTextBlockFormat__LineHeightTypes__LineDistanceHeight QTextBlockFormat__LineHeightTypes = 4
+)
+
+type QTextBlockFormat__MarkerType int
+
+const (
+	QTextBlockFormat__MarkerType__NoMarker  QTextBlockFormat__MarkerType = 0
+	QTextBlockFormat__MarkerType__Unchecked QTextBlockFormat__MarkerType = 1
+	QTextBlockFormat__MarkerType__Checked   QTextBlockFormat__MarkerType = 2
+)
+
+type QTextListFormat__Style int
+
+const (
+	QTextListFormat__Style__ListDisc           QTextListFormat__Style = -1
+	QTextListFormat__Style__ListCircle         QTextListFormat__Style = -2
+	QTextListFormat__Style__ListSquare         QTextListFormat__Style = -3
+	QTextListFormat__Style__ListDecimal        QTextListFormat__Style = -4
+	QTextListFormat__Style__ListLowerAlpha     QTextListFormat__Style = -5
+	QTextListFormat__Style__ListUpperAlpha     QTextListFormat__Style = -6
+	QTextListFormat__Style__ListLowerRoman     QTextListFormat__Style = -7
+	QTextListFormat__Style__ListUpperRoman     QTextListFormat__Style = -8
+	QTextListFormat__Style__ListStyleUndefined QTextListFormat__Style = 0
+)
+
+type QTextFrameFormat__Position int
+
+const (
+	QTextFrameFormat__Position__InFlow     QTextFrameFormat__Position = 0
+	QTextFrameFormat__Position__FloatLeft  QTextFrameFormat__Position = 1
+	QTextFrameFormat__Position__FloatRight QTextFrameFormat__Position = 2
+)
+
+type QTextFrameFormat__BorderStyle int
+
+const (
+	QTextFrameFormat__BorderStyle__BorderStyle_None       QTextFrameFormat__BorderStyle = 0
+	QTextFrameFormat__BorderStyle__BorderStyle_Dotted     QTextFrameFormat__BorderStyle = 1
+	QTextFrameFormat__BorderStyle__BorderStyle_Dashed     QTextFrameFormat__BorderStyle = 2
+	QTextFrameFormat__BorderStyle__BorderStyle_Solid      QTextFrameFormat__BorderStyle = 3
+	QTextFrameFormat__BorderStyle__BorderStyle_Double     QTextFrameFormat__BorderStyle = 4
+	QTextFrameFormat__BorderStyle__BorderStyle_DotDash    QTextFrameFormat__BorderStyle = 5
+	QTextFrameFormat__BorderStyle__BorderStyle_DotDotDash QTextFrameFormat__BorderStyle = 6
+	QTextFrameFormat__BorderStyle__BorderStyle_Groove     QTextFrameFormat__BorderStyle = 7
+	QTextFrameFormat__BorderStyle__BorderStyle_Ridge      QTextFrameFormat__BorderStyle = 8
+	QTextFrameFormat__BorderStyle__BorderStyle_Inset      QTextFrameFormat__BorderStyle = 9
+	QTextFrameFormat__BorderStyle__BorderStyle_Outset     QTextFrameFormat__BorderStyle = 10
+)
+
 type QTextLength struct {
 	h *C.QTextLength
 }
@@ -42,7 +278,7 @@ func NewQTextLength() *QTextLength {
 }
 
 // NewQTextLength2 constructs a new QTextLength object.
-func NewQTextLength2(typeVal uintptr, value float64) *QTextLength {
+func NewQTextLength2(typeVal QTextLength__Type, value float64) *QTextLength {
 	ret := C.QTextLength_new2((C.uintptr_t)(typeVal), (C.double)(value))
 	return newQTextLength(ret)
 }
@@ -53,9 +289,9 @@ func NewQTextLength3(param1 *QTextLength) *QTextLength {
 	return newQTextLength(ret)
 }
 
-func (this *QTextLength) Type() uintptr {
+func (this *QTextLength) Type() QTextLength__Type {
 	ret := C.QTextLength_Type(this.h)
-	return (uintptr)(ret)
+	return (QTextLength__Type)(ret)
 }
 
 func (this *QTextLength) Value(maximumLength float64) float64 {
@@ -409,13 +645,13 @@ func (this *QTextFormat) OperatorNotEqual(rhs *QTextFormat) bool {
 	return (bool)(ret)
 }
 
-func (this *QTextFormat) SetLayoutDirection(direction uintptr) {
+func (this *QTextFormat) SetLayoutDirection(direction LayoutDirection) {
 	C.QTextFormat_SetLayoutDirection(this.h, (C.uintptr_t)(direction))
 }
 
-func (this *QTextFormat) LayoutDirection() uintptr {
+func (this *QTextFormat) LayoutDirection() LayoutDirection {
 	ret := C.QTextFormat_LayoutDirection(this.h)
-	return (uintptr)(ret)
+	return (LayoutDirection)(ret)
 }
 
 func (this *QTextFormat) SetBackground(brush *QBrush) {
@@ -500,7 +736,7 @@ func (this *QTextCharFormat) IsValid() bool {
 	return (bool)(ret)
 }
 
-func (this *QTextCharFormat) SetFont(font *QFont, behavior uintptr) {
+func (this *QTextCharFormat) SetFont(font *QFont, behavior QTextCharFormat__FontPropertiesInheritanceBehavior) {
 	C.QTextCharFormat_SetFont(this.h, font.cPointer(), (C.uintptr_t)(behavior))
 }
 
@@ -604,22 +840,22 @@ func (this *QTextCharFormat) FontItalic() bool {
 	return (bool)(ret)
 }
 
-func (this *QTextCharFormat) SetFontCapitalization(capitalization uintptr) {
+func (this *QTextCharFormat) SetFontCapitalization(capitalization QFont__Capitalization) {
 	C.QTextCharFormat_SetFontCapitalization(this.h, (C.uintptr_t)(capitalization))
 }
 
-func (this *QTextCharFormat) FontCapitalization() uintptr {
+func (this *QTextCharFormat) FontCapitalization() QFont__Capitalization {
 	ret := C.QTextCharFormat_FontCapitalization(this.h)
-	return (uintptr)(ret)
+	return (QFont__Capitalization)(ret)
 }
 
-func (this *QTextCharFormat) SetFontLetterSpacingType(letterSpacingType uintptr) {
+func (this *QTextCharFormat) SetFontLetterSpacingType(letterSpacingType QFont__SpacingType) {
 	C.QTextCharFormat_SetFontLetterSpacingType(this.h, (C.uintptr_t)(letterSpacingType))
 }
 
-func (this *QTextCharFormat) FontLetterSpacingType() uintptr {
+func (this *QTextCharFormat) FontLetterSpacingType() QFont__SpacingType {
 	ret := C.QTextCharFormat_FontLetterSpacingType(this.h)
-	return (uintptr)(ret)
+	return (QFont__SpacingType)(ret)
 }
 
 func (this *QTextCharFormat) SetFontLetterSpacing(spacing float64) {
@@ -700,31 +936,31 @@ func (this *QTextCharFormat) FontStretch() int {
 	return (int)(ret)
 }
 
-func (this *QTextCharFormat) SetFontStyleHint(hint uintptr) {
+func (this *QTextCharFormat) SetFontStyleHint(hint QFont__StyleHint) {
 	C.QTextCharFormat_SetFontStyleHint(this.h, (C.uintptr_t)(hint))
 }
 
-func (this *QTextCharFormat) SetFontStyleStrategy(strategy uintptr) {
+func (this *QTextCharFormat) SetFontStyleStrategy(strategy QFont__StyleStrategy) {
 	C.QTextCharFormat_SetFontStyleStrategy(this.h, (C.uintptr_t)(strategy))
 }
 
-func (this *QTextCharFormat) FontStyleHint() uintptr {
+func (this *QTextCharFormat) FontStyleHint() QFont__StyleHint {
 	ret := C.QTextCharFormat_FontStyleHint(this.h)
-	return (uintptr)(ret)
+	return (QFont__StyleHint)(ret)
 }
 
-func (this *QTextCharFormat) FontStyleStrategy() uintptr {
+func (this *QTextCharFormat) FontStyleStrategy() QFont__StyleStrategy {
 	ret := C.QTextCharFormat_FontStyleStrategy(this.h)
-	return (uintptr)(ret)
+	return (QFont__StyleStrategy)(ret)
 }
 
-func (this *QTextCharFormat) SetFontHintingPreference(hintingPreference uintptr) {
+func (this *QTextCharFormat) SetFontHintingPreference(hintingPreference QFont__HintingPreference) {
 	C.QTextCharFormat_SetFontHintingPreference(this.h, (C.uintptr_t)(hintingPreference))
 }
 
-func (this *QTextCharFormat) FontHintingPreference() uintptr {
+func (this *QTextCharFormat) FontHintingPreference() QFont__HintingPreference {
 	ret := C.QTextCharFormat_FontHintingPreference(this.h)
-	return (uintptr)(ret)
+	return (QFont__HintingPreference)(ret)
 }
 
 func (this *QTextCharFormat) SetFontKerning(enable bool) {
@@ -736,22 +972,22 @@ func (this *QTextCharFormat) FontKerning() bool {
 	return (bool)(ret)
 }
 
-func (this *QTextCharFormat) SetUnderlineStyle(style uintptr) {
+func (this *QTextCharFormat) SetUnderlineStyle(style QTextCharFormat__UnderlineStyle) {
 	C.QTextCharFormat_SetUnderlineStyle(this.h, (C.uintptr_t)(style))
 }
 
-func (this *QTextCharFormat) UnderlineStyle() uintptr {
+func (this *QTextCharFormat) UnderlineStyle() QTextCharFormat__UnderlineStyle {
 	ret := C.QTextCharFormat_UnderlineStyle(this.h)
-	return (uintptr)(ret)
+	return (QTextCharFormat__UnderlineStyle)(ret)
 }
 
-func (this *QTextCharFormat) SetVerticalAlignment(alignment uintptr) {
+func (this *QTextCharFormat) SetVerticalAlignment(alignment QTextCharFormat__VerticalAlignment) {
 	C.QTextCharFormat_SetVerticalAlignment(this.h, (C.uintptr_t)(alignment))
 }
 
-func (this *QTextCharFormat) VerticalAlignment() uintptr {
+func (this *QTextCharFormat) VerticalAlignment() QTextCharFormat__VerticalAlignment {
 	ret := C.QTextCharFormat_VerticalAlignment(this.h)
-	return (uintptr)(ret)
+	return (QTextCharFormat__VerticalAlignment)(ret)
 }
 
 func (this *QTextCharFormat) SetTextOutline(pen *QPen) {
@@ -871,7 +1107,7 @@ func (this *QTextCharFormat) TableCellColumnSpan() int {
 	return (int)(ret)
 }
 
-func (this *QTextCharFormat) SetFontStyleHint2(hint uintptr, strategy uintptr) {
+func (this *QTextCharFormat) SetFontStyleHint2(hint QFont__StyleHint, strategy QFont__StyleStrategy) {
 	C.QTextCharFormat_SetFontStyleHint2(this.h, (C.uintptr_t)(hint), (C.uintptr_t)(strategy))
 }
 
@@ -1051,13 +1287,13 @@ func (this *QTextBlockFormat) TabPositions() []QTextOption__Tab {
 	return ret
 }
 
-func (this *QTextBlockFormat) SetMarker(marker uintptr) {
+func (this *QTextBlockFormat) SetMarker(marker QTextBlockFormat__MarkerType) {
 	C.QTextBlockFormat_SetMarker(this.h, (C.uintptr_t)(marker))
 }
 
-func (this *QTextBlockFormat) Marker() uintptr {
+func (this *QTextBlockFormat) Marker() QTextBlockFormat__MarkerType {
 	ret := C.QTextBlockFormat_Marker(this.h)
-	return (uintptr)(ret)
+	return (QTextBlockFormat__MarkerType)(ret)
 }
 
 func (this *QTextBlockFormat) Delete() {
@@ -1104,13 +1340,13 @@ func (this *QTextListFormat) IsValid() bool {
 	return (bool)(ret)
 }
 
-func (this *QTextListFormat) SetStyle(style uintptr) {
+func (this *QTextListFormat) SetStyle(style QTextListFormat__Style) {
 	C.QTextListFormat_SetStyle(this.h, (C.uintptr_t)(style))
 }
 
-func (this *QTextListFormat) Style() uintptr {
+func (this *QTextListFormat) Style() QTextListFormat__Style {
 	ret := C.QTextListFormat_Style(this.h)
-	return (uintptr)(ret)
+	return (QTextListFormat__Style)(ret)
 }
 
 func (this *QTextListFormat) SetIndent(indent int) {
@@ -1280,13 +1516,13 @@ func (this *QTextFrameFormat) IsValid() bool {
 	return (bool)(ret)
 }
 
-func (this *QTextFrameFormat) SetPosition(f uintptr) {
+func (this *QTextFrameFormat) SetPosition(f QTextFrameFormat__Position) {
 	C.QTextFrameFormat_SetPosition(this.h, (C.uintptr_t)(f))
 }
 
-func (this *QTextFrameFormat) Position() uintptr {
+func (this *QTextFrameFormat) Position() QTextFrameFormat__Position {
 	ret := C.QTextFrameFormat_Position(this.h)
-	return (uintptr)(ret)
+	return (QTextFrameFormat__Position)(ret)
 }
 
 func (this *QTextFrameFormat) SetBorder(border float64) {
@@ -1313,13 +1549,13 @@ func (this *QTextFrameFormat) BorderBrush() *QBrush {
 	return ret1
 }
 
-func (this *QTextFrameFormat) SetBorderStyle(style uintptr) {
+func (this *QTextFrameFormat) SetBorderStyle(style QTextFrameFormat__BorderStyle) {
 	C.QTextFrameFormat_SetBorderStyle(this.h, (C.uintptr_t)(style))
 }
 
-func (this *QTextFrameFormat) BorderStyle() uintptr {
+func (this *QTextFrameFormat) BorderStyle() QTextFrameFormat__BorderStyle {
 	ret := C.QTextFrameFormat_BorderStyle(this.h)
-	return (uintptr)(ret)
+	return (QTextFrameFormat__BorderStyle)(ret)
 }
 
 func (this *QTextFrameFormat) SetMargin(margin float64) {
@@ -1660,43 +1896,43 @@ func (this *QTextTableCellFormat) SetBorder(width float64) {
 	C.QTextTableCellFormat_SetBorder(this.h, (C.double)(width))
 }
 
-func (this *QTextTableCellFormat) SetTopBorderStyle(style uintptr) {
+func (this *QTextTableCellFormat) SetTopBorderStyle(style QTextFrameFormat__BorderStyle) {
 	C.QTextTableCellFormat_SetTopBorderStyle(this.h, (C.uintptr_t)(style))
 }
 
-func (this *QTextTableCellFormat) TopBorderStyle() uintptr {
+func (this *QTextTableCellFormat) TopBorderStyle() QTextFrameFormat__BorderStyle {
 	ret := C.QTextTableCellFormat_TopBorderStyle(this.h)
-	return (uintptr)(ret)
+	return (QTextFrameFormat__BorderStyle)(ret)
 }
 
-func (this *QTextTableCellFormat) SetBottomBorderStyle(style uintptr) {
+func (this *QTextTableCellFormat) SetBottomBorderStyle(style QTextFrameFormat__BorderStyle) {
 	C.QTextTableCellFormat_SetBottomBorderStyle(this.h, (C.uintptr_t)(style))
 }
 
-func (this *QTextTableCellFormat) BottomBorderStyle() uintptr {
+func (this *QTextTableCellFormat) BottomBorderStyle() QTextFrameFormat__BorderStyle {
 	ret := C.QTextTableCellFormat_BottomBorderStyle(this.h)
-	return (uintptr)(ret)
+	return (QTextFrameFormat__BorderStyle)(ret)
 }
 
-func (this *QTextTableCellFormat) SetLeftBorderStyle(style uintptr) {
+func (this *QTextTableCellFormat) SetLeftBorderStyle(style QTextFrameFormat__BorderStyle) {
 	C.QTextTableCellFormat_SetLeftBorderStyle(this.h, (C.uintptr_t)(style))
 }
 
-func (this *QTextTableCellFormat) LeftBorderStyle() uintptr {
+func (this *QTextTableCellFormat) LeftBorderStyle() QTextFrameFormat__BorderStyle {
 	ret := C.QTextTableCellFormat_LeftBorderStyle(this.h)
-	return (uintptr)(ret)
+	return (QTextFrameFormat__BorderStyle)(ret)
 }
 
-func (this *QTextTableCellFormat) SetRightBorderStyle(style uintptr) {
+func (this *QTextTableCellFormat) SetRightBorderStyle(style QTextFrameFormat__BorderStyle) {
 	C.QTextTableCellFormat_SetRightBorderStyle(this.h, (C.uintptr_t)(style))
 }
 
-func (this *QTextTableCellFormat) RightBorderStyle() uintptr {
+func (this *QTextTableCellFormat) RightBorderStyle() QTextFrameFormat__BorderStyle {
 	ret := C.QTextTableCellFormat_RightBorderStyle(this.h)
-	return (uintptr)(ret)
+	return (QTextFrameFormat__BorderStyle)(ret)
 }
 
-func (this *QTextTableCellFormat) SetBorderStyle(style uintptr) {
+func (this *QTextTableCellFormat) SetBorderStyle(style QTextFrameFormat__BorderStyle) {
 	C.QTextTableCellFormat_SetBorderStyle(this.h, (C.uintptr_t)(style))
 }
 

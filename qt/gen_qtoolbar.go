@@ -110,18 +110,18 @@ func (this *QToolBar) AllowedAreas() int {
 	return (int)(ret)
 }
 
-func (this *QToolBar) IsAreaAllowed(area uintptr) bool {
+func (this *QToolBar) IsAreaAllowed(area ToolBarArea) bool {
 	ret := C.QToolBar_IsAreaAllowed(this.h, (C.uintptr_t)(area))
 	return (bool)(ret)
 }
 
-func (this *QToolBar) SetOrientation(orientation uintptr) {
+func (this *QToolBar) SetOrientation(orientation Orientation) {
 	C.QToolBar_SetOrientation(this.h, (C.uintptr_t)(orientation))
 }
 
-func (this *QToolBar) Orientation() uintptr {
+func (this *QToolBar) Orientation() Orientation {
 	ret := C.QToolBar_Orientation(this.h)
-	return (uintptr)(ret)
+	return (Orientation)(ret)
 }
 
 func (this *QToolBar) Clear() {
@@ -199,9 +199,9 @@ func (this *QToolBar) IconSize() *QSize {
 	return ret1
 }
 
-func (this *QToolBar) ToolButtonStyle() uintptr {
+func (this *QToolBar) ToolButtonStyle() ToolButtonStyle {
 	ret := C.QToolBar_ToolButtonStyle(this.h)
-	return (uintptr)(ret)
+	return (ToolButtonStyle)(ret)
 }
 
 func (this *QToolBar) WidgetForAction(action *QAction) *QWidget {
@@ -227,7 +227,7 @@ func (this *QToolBar) SetIconSize(iconSize *QSize) {
 	C.QToolBar_SetIconSize(this.h, iconSize.cPointer())
 }
 
-func (this *QToolBar) SetToolButtonStyle(toolButtonStyle uintptr) {
+func (this *QToolBar) SetToolButtonStyle(toolButtonStyle ToolButtonStyle) {
 	C.QToolBar_SetToolButtonStyle(this.h, (C.uintptr_t)(toolButtonStyle))
 }
 
@@ -267,7 +267,7 @@ func (this *QToolBar) OnAllowedAreasChanged(slot func()) {
 	C.QToolBar_connect_AllowedAreasChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
 }
 
-func (this *QToolBar) OrientationChanged(orientation uintptr) {
+func (this *QToolBar) OrientationChanged(orientation Orientation) {
 	C.QToolBar_OrientationChanged(this.h, (C.uintptr_t)(orientation))
 }
 
@@ -291,7 +291,7 @@ func (this *QToolBar) OnIconSizeChanged(slot func()) {
 	C.QToolBar_connect_IconSizeChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
 }
 
-func (this *QToolBar) ToolButtonStyleChanged(toolButtonStyle uintptr) {
+func (this *QToolBar) ToolButtonStyleChanged(toolButtonStyle ToolButtonStyle) {
 	C.QToolBar_ToolButtonStyleChanged(this.h, (C.uintptr_t)(toolButtonStyle))
 }
 

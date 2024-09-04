@@ -12,6 +12,14 @@ import (
 	"unsafe"
 )
 
+type QDebug__VerbosityLevel int
+
+const (
+	QDebug__VerbosityLevel__MinimumVerbosity QDebug__VerbosityLevel = 0
+	QDebug__VerbosityLevel__DefaultVerbosity QDebug__VerbosityLevel = 2
+	QDebug__VerbosityLevel__MaximumVerbosity QDebug__VerbosityLevel = 7
+)
+
 type QDebug struct {
 	h *C.QDebug
 }

@@ -13,6 +13,38 @@ import (
 	"unsafe"
 )
 
+type QRegularExpression__PatternOption int
+
+const (
+	QRegularExpression__PatternOption__NoPatternOption                 QRegularExpression__PatternOption = 0
+	QRegularExpression__PatternOption__CaseInsensitiveOption           QRegularExpression__PatternOption = 1
+	QRegularExpression__PatternOption__DotMatchesEverythingOption      QRegularExpression__PatternOption = 2
+	QRegularExpression__PatternOption__MultilineOption                 QRegularExpression__PatternOption = 4
+	QRegularExpression__PatternOption__ExtendedPatternSyntaxOption     QRegularExpression__PatternOption = 8
+	QRegularExpression__PatternOption__InvertedGreedinessOption        QRegularExpression__PatternOption = 16
+	QRegularExpression__PatternOption__DontCaptureOption               QRegularExpression__PatternOption = 32
+	QRegularExpression__PatternOption__UseUnicodePropertiesOption      QRegularExpression__PatternOption = 64
+	QRegularExpression__PatternOption__OptimizeOnFirstUsageOption      QRegularExpression__PatternOption = 128
+	QRegularExpression__PatternOption__DontAutomaticallyOptimizeOption QRegularExpression__PatternOption = 256
+)
+
+type QRegularExpression__MatchType int
+
+const (
+	QRegularExpression__MatchType__NormalMatch                QRegularExpression__MatchType = 0
+	QRegularExpression__MatchType__PartialPreferCompleteMatch QRegularExpression__MatchType = 1
+	QRegularExpression__MatchType__PartialPreferFirstMatch    QRegularExpression__MatchType = 2
+	QRegularExpression__MatchType__NoMatch                    QRegularExpression__MatchType = 3
+)
+
+type QRegularExpression__MatchOption int
+
+const (
+	QRegularExpression__MatchOption__NoMatchOption                     QRegularExpression__MatchOption = 0
+	QRegularExpression__MatchOption__AnchoredMatchOption               QRegularExpression__MatchOption = 1
+	QRegularExpression__MatchOption__DontCheckSubjectStringMatchOption QRegularExpression__MatchOption = 2
+)
+
 type QRegularExpression struct {
 	h *C.QRegularExpression
 }
@@ -220,7 +252,7 @@ func (this *QRegularExpression) Match2(subject string, offset int) *QRegularExpr
 	return ret1
 }
 
-func (this *QRegularExpression) Match3(subject string, offset int, matchType uintptr) *QRegularExpressionMatch {
+func (this *QRegularExpression) Match3(subject string, offset int, matchType QRegularExpression__MatchType) *QRegularExpressionMatch {
 	subject_Cstring := C.CString(subject)
 	defer C.free(unsafe.Pointer(subject_Cstring))
 	ret := C.QRegularExpression_Match3(this.h, subject_Cstring, C.size_t(len(subject)), (C.int)(offset), (C.uintptr_t)(matchType))
@@ -233,7 +265,7 @@ func (this *QRegularExpression) Match3(subject string, offset int, matchType uin
 	return ret1
 }
 
-func (this *QRegularExpression) Match4(subject string, offset int, matchType uintptr, matchOptions int) *QRegularExpressionMatch {
+func (this *QRegularExpression) Match4(subject string, offset int, matchType QRegularExpression__MatchType, matchOptions int) *QRegularExpressionMatch {
 	subject_Cstring := C.CString(subject)
 	defer C.free(unsafe.Pointer(subject_Cstring))
 	ret := C.QRegularExpression_Match4(this.h, subject_Cstring, C.size_t(len(subject)), (C.int)(offset), (C.uintptr_t)(matchType), (C.int)(matchOptions))
@@ -259,7 +291,7 @@ func (this *QRegularExpression) GlobalMatch2(subject string, offset int) *QRegul
 	return ret1
 }
 
-func (this *QRegularExpression) GlobalMatch3(subject string, offset int, matchType uintptr) *QRegularExpressionMatchIterator {
+func (this *QRegularExpression) GlobalMatch3(subject string, offset int, matchType QRegularExpression__MatchType) *QRegularExpressionMatchIterator {
 	subject_Cstring := C.CString(subject)
 	defer C.free(unsafe.Pointer(subject_Cstring))
 	ret := C.QRegularExpression_GlobalMatch3(this.h, subject_Cstring, C.size_t(len(subject)), (C.int)(offset), (C.uintptr_t)(matchType))
@@ -272,7 +304,7 @@ func (this *QRegularExpression) GlobalMatch3(subject string, offset int, matchTy
 	return ret1
 }
 
-func (this *QRegularExpression) GlobalMatch4(subject string, offset int, matchType uintptr, matchOptions int) *QRegularExpressionMatchIterator {
+func (this *QRegularExpression) GlobalMatch4(subject string, offset int, matchType QRegularExpression__MatchType, matchOptions int) *QRegularExpressionMatchIterator {
 	subject_Cstring := C.CString(subject)
 	defer C.free(unsafe.Pointer(subject_Cstring))
 	ret := C.QRegularExpression_GlobalMatch4(this.h, subject_Cstring, C.size_t(len(subject)), (C.int)(offset), (C.uintptr_t)(matchType), (C.int)(matchOptions))
@@ -342,9 +374,9 @@ func (this *QRegularExpressionMatch) RegularExpression() *QRegularExpression {
 	return ret1
 }
 
-func (this *QRegularExpressionMatch) MatchType() uintptr {
+func (this *QRegularExpressionMatch) MatchType() QRegularExpression__MatchType {
 	ret := C.QRegularExpressionMatch_MatchType(this.h)
-	return (uintptr)(ret)
+	return (QRegularExpression__MatchType)(ret)
 }
 
 func (this *QRegularExpressionMatch) MatchOptions() int {
@@ -556,9 +588,9 @@ func (this *QRegularExpressionMatchIterator) RegularExpression() *QRegularExpres
 	return ret1
 }
 
-func (this *QRegularExpressionMatchIterator) MatchType() uintptr {
+func (this *QRegularExpressionMatchIterator) MatchType() QRegularExpression__MatchType {
 	ret := C.QRegularExpressionMatchIterator_MatchType(this.h)
-	return (uintptr)(ret)
+	return (QRegularExpression__MatchType)(ret)
 }
 
 func (this *QRegularExpressionMatchIterator) MatchOptions() int {

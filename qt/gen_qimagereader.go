@@ -13,6 +13,16 @@ import (
 	"unsafe"
 )
 
+type QImageReader__ImageReaderError int
+
+const (
+	QImageReader__ImageReaderError__UnknownError           QImageReader__ImageReaderError = 0
+	QImageReader__ImageReaderError__FileNotFoundError      QImageReader__ImageReaderError = 1
+	QImageReader__ImageReaderError__DeviceError            QImageReader__ImageReaderError = 2
+	QImageReader__ImageReaderError__UnsupportedFormatError QImageReader__ImageReaderError = 3
+	QImageReader__ImageReaderError__InvalidDataError       QImageReader__ImageReaderError = 4
+)
+
 type QImageReader struct {
 	h *C.QImageReader
 }
@@ -159,9 +169,9 @@ func (this *QImageReader) Size() *QSize {
 	return ret1
 }
 
-func (this *QImageReader) ImageFormat() uintptr {
+func (this *QImageReader) ImageFormat() QImage__Format {
 	ret := C.QImageReader_ImageFormat(this.h)
-	return (uintptr)(ret)
+	return (QImage__Format)(ret)
 }
 
 func (this *QImageReader) TextKeys() []string {
@@ -373,9 +383,9 @@ func (this *QImageReader) CurrentImageRect() *QRect {
 	return ret1
 }
 
-func (this *QImageReader) Error() uintptr {
+func (this *QImageReader) Error() QImageReader__ImageReaderError {
 	ret := C.QImageReader_Error(this.h)
-	return (uintptr)(ret)
+	return (QImageReader__ImageReaderError)(ret)
 }
 
 func (this *QImageReader) ErrorString() string {
@@ -387,7 +397,7 @@ func (this *QImageReader) ErrorString() string {
 	return ret
 }
 
-func (this *QImageReader) SupportsOption(option uintptr) bool {
+func (this *QImageReader) SupportsOption(option QImageIOHandler__ImageOption) bool {
 	ret := C.QImageReader_SupportsOption(this.h, (C.uintptr_t)(option))
 	return (bool)(ret)
 }

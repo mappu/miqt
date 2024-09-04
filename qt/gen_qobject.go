@@ -14,6 +14,12 @@ import (
 	"unsafe"
 )
 
+type QObjectData__ int
+
+const (
+	QObjectData____CheckForParentChildLoopsWarnDepth QObjectData__ = 4096
+)
+
 type QObjectData struct {
 	h *C.QObjectData
 }
@@ -365,12 +371,12 @@ func QObject_TrUtf83(s string, c string, n int) string {
 	return ret
 }
 
-func (this *QObject) StartTimer2(interval int, timerType uintptr) int {
+func (this *QObject) StartTimer2(interval int, timerType TimerType) int {
 	ret := C.QObject_StartTimer2(this.h, (C.int)(interval), (C.uintptr_t)(timerType))
 	return (int)(ret)
 }
 
-func QObject_Connect5(sender *QObject, signal *QMetaMethod, receiver *QObject, method *QMetaMethod, typeVal uintptr) *QMetaObject__Connection {
+func QObject_Connect5(sender *QObject, signal *QMetaMethod, receiver *QObject, method *QMetaMethod, typeVal ConnectionType) *QMetaObject__Connection {
 	ret := C.QObject_Connect5(sender.cPointer(), signal.cPointer(), receiver.cPointer(), method.cPointer(), (C.uintptr_t)(typeVal))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQMetaObject__Connection(ret)
@@ -381,7 +387,7 @@ func QObject_Connect5(sender *QObject, signal *QMetaMethod, receiver *QObject, m
 	return ret1
 }
 
-func (this *QObject) Connect4(sender *QObject, signal string, member string, typeVal uintptr) *QMetaObject__Connection {
+func (this *QObject) Connect4(sender *QObject, signal string, member string, typeVal ConnectionType) *QMetaObject__Connection {
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 	member_Cstring := C.CString(member)

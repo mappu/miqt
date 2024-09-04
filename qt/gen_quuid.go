@@ -13,6 +13,36 @@ import (
 	"unsafe"
 )
 
+type QUuid__Variant int
+
+const (
+	QUuid__Variant__VarUnknown QUuid__Variant = -1
+	QUuid__Variant__NCS        QUuid__Variant = 0
+	QUuid__Variant__DCE        QUuid__Variant = 2
+	QUuid__Variant__Microsoft  QUuid__Variant = 6
+	QUuid__Variant__Reserved   QUuid__Variant = 7
+)
+
+type QUuid__Version int
+
+const (
+	QUuid__Version__VerUnknown    QUuid__Version = -1
+	QUuid__Version__Time          QUuid__Version = 1
+	QUuid__Version__EmbeddedPOSIX QUuid__Version = 2
+	QUuid__Version__Md5           QUuid__Version = 3
+	QUuid__Version__Name          QUuid__Version = 3
+	QUuid__Version__Random        QUuid__Version = 4
+	QUuid__Version__Sha1          QUuid__Version = 5
+)
+
+type QUuid__StringFormat int
+
+const (
+	QUuid__StringFormat__WithBraces    QUuid__StringFormat = 0
+	QUuid__StringFormat__WithoutBraces QUuid__StringFormat = 1
+	QUuid__StringFormat__Id128         QUuid__StringFormat = 3
+)
+
 type QUuid struct {
 	h *C.QUuid
 }
@@ -84,7 +114,7 @@ func (this *QUuid) ToString() string {
 	return ret
 }
 
-func (this *QUuid) ToStringWithMode(mode uintptr) string {
+func (this *QUuid) ToStringWithMode(mode QUuid__StringFormat) string {
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
 	C.QUuid_ToStringWithMode(this.h, (C.uintptr_t)(mode), &_out, &_out_Strlen)
@@ -104,7 +134,7 @@ func (this *QUuid) ToByteArray() *QByteArray {
 	return ret1
 }
 
-func (this *QUuid) ToByteArrayWithMode(mode uintptr) *QByteArray {
+func (this *QUuid) ToByteArrayWithMode(mode QUuid__StringFormat) *QByteArray {
 	ret := C.QUuid_ToByteArrayWithMode(this.h, (C.uintptr_t)(mode))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQByteArray(ret)
@@ -221,14 +251,14 @@ func QUuid_CreateUuidV52(ns *QUuid, baseData string) *QUuid {
 	return ret1
 }
 
-func (this *QUuid) Variant() uintptr {
+func (this *QUuid) Variant() QUuid__Variant {
 	ret := C.QUuid_Variant(this.h)
-	return (uintptr)(ret)
+	return (QUuid__Variant)(ret)
 }
 
-func (this *QUuid) Version() uintptr {
+func (this *QUuid) Version() QUuid__Version {
 	ret := C.QUuid_Version(this.h)
-	return (uintptr)(ret)
+	return (QUuid__Version)(ret)
 }
 
 func (this *QUuid) Delete() {

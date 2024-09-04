@@ -236,13 +236,13 @@ func (this *QGridLayout) AddLayout2(param1 *QLayout, row int, column int, rowSpa
 	C.QGridLayout_AddLayout2(this.h, param1.cPointer(), (C.int)(row), (C.int)(column), (C.int)(rowSpan), (C.int)(columnSpan))
 }
 
-func (this *QGridLayout) SetOriginCorner(originCorner uintptr) {
+func (this *QGridLayout) SetOriginCorner(originCorner Corner) {
 	C.QGridLayout_SetOriginCorner(this.h, (C.uintptr_t)(originCorner))
 }
 
-func (this *QGridLayout) OriginCorner() uintptr {
+func (this *QGridLayout) OriginCorner() Corner {
 	ret := C.QGridLayout_OriginCorner(this.h)
-	return (uintptr)(ret)
+	return (Corner)(ret)
 }
 
 func (this *QGridLayout) ItemAt(index int) *QLayoutItem {
@@ -273,7 +273,7 @@ func (this *QGridLayout) AddItem(item *QLayoutItem, row int, column int) {
 	C.QGridLayout_AddItem(this.h, item.cPointer(), (C.int)(row), (C.int)(column))
 }
 
-func (this *QGridLayout) SetDefaultPositioning(n int, orient uintptr) {
+func (this *QGridLayout) SetDefaultPositioning(n int, orient Orientation) {
 	C.QGridLayout_SetDefaultPositioning(this.h, (C.int)(n), (C.uintptr_t)(orient))
 }
 

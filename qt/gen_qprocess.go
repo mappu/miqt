@@ -14,6 +14,56 @@ import (
 	"unsafe"
 )
 
+type QProcess__ProcessError int
+
+const (
+	QProcess__ProcessError__FailedToStart QProcess__ProcessError = 0
+	QProcess__ProcessError__Crashed       QProcess__ProcessError = 1
+	QProcess__ProcessError__Timedout      QProcess__ProcessError = 2
+	QProcess__ProcessError__ReadError     QProcess__ProcessError = 3
+	QProcess__ProcessError__WriteError    QProcess__ProcessError = 4
+	QProcess__ProcessError__UnknownError  QProcess__ProcessError = 5
+)
+
+type QProcess__ProcessState int
+
+const (
+	QProcess__ProcessState__NotRunning QProcess__ProcessState = 0
+	QProcess__ProcessState__Starting   QProcess__ProcessState = 1
+	QProcess__ProcessState__Running    QProcess__ProcessState = 2
+)
+
+type QProcess__ProcessChannel int
+
+const (
+	QProcess__ProcessChannel__StandardOutput QProcess__ProcessChannel = 0
+	QProcess__ProcessChannel__StandardError  QProcess__ProcessChannel = 1
+)
+
+type QProcess__ProcessChannelMode int
+
+const (
+	QProcess__ProcessChannelMode__SeparateChannels       QProcess__ProcessChannelMode = 0
+	QProcess__ProcessChannelMode__MergedChannels         QProcess__ProcessChannelMode = 1
+	QProcess__ProcessChannelMode__ForwardedChannels      QProcess__ProcessChannelMode = 2
+	QProcess__ProcessChannelMode__ForwardedOutputChannel QProcess__ProcessChannelMode = 3
+	QProcess__ProcessChannelMode__ForwardedErrorChannel  QProcess__ProcessChannelMode = 4
+)
+
+type QProcess__InputChannelMode int
+
+const (
+	QProcess__InputChannelMode__ManagedInputChannel   QProcess__InputChannelMode = 0
+	QProcess__InputChannelMode__ForwardedInputChannel QProcess__InputChannelMode = 1
+)
+
+type QProcess__ExitStatus int
+
+const (
+	QProcess__ExitStatus__NormalExit QProcess__ExitStatus = 0
+	QProcess__ExitStatus__CrashExit  QProcess__ExitStatus = 1
+)
+
 type QProcessEnvironment struct {
 	h *C.QProcessEnvironment
 }
@@ -313,43 +363,43 @@ func (this *QProcess) SetArguments(arguments []string) {
 	C.QProcess_SetArguments(this.h, &arguments_CArray[0], &arguments_Lengths[0], C.size_t(len(arguments)))
 }
 
-func (this *QProcess) ReadChannelMode() uintptr {
+func (this *QProcess) ReadChannelMode() QProcess__ProcessChannelMode {
 	ret := C.QProcess_ReadChannelMode(this.h)
-	return (uintptr)(ret)
+	return (QProcess__ProcessChannelMode)(ret)
 }
 
-func (this *QProcess) SetReadChannelMode(mode uintptr) {
+func (this *QProcess) SetReadChannelMode(mode QProcess__ProcessChannelMode) {
 	C.QProcess_SetReadChannelMode(this.h, (C.uintptr_t)(mode))
 }
 
-func (this *QProcess) ProcessChannelMode() uintptr {
+func (this *QProcess) ProcessChannelMode() QProcess__ProcessChannelMode {
 	ret := C.QProcess_ProcessChannelMode(this.h)
-	return (uintptr)(ret)
+	return (QProcess__ProcessChannelMode)(ret)
 }
 
-func (this *QProcess) SetProcessChannelMode(mode uintptr) {
+func (this *QProcess) SetProcessChannelMode(mode QProcess__ProcessChannelMode) {
 	C.QProcess_SetProcessChannelMode(this.h, (C.uintptr_t)(mode))
 }
 
-func (this *QProcess) InputChannelMode() uintptr {
+func (this *QProcess) InputChannelMode() QProcess__InputChannelMode {
 	ret := C.QProcess_InputChannelMode(this.h)
-	return (uintptr)(ret)
+	return (QProcess__InputChannelMode)(ret)
 }
 
-func (this *QProcess) SetInputChannelMode(mode uintptr) {
+func (this *QProcess) SetInputChannelMode(mode QProcess__InputChannelMode) {
 	C.QProcess_SetInputChannelMode(this.h, (C.uintptr_t)(mode))
 }
 
-func (this *QProcess) ReadChannel() uintptr {
+func (this *QProcess) ReadChannel() QProcess__ProcessChannel {
 	ret := C.QProcess_ReadChannel(this.h)
-	return (uintptr)(ret)
+	return (QProcess__ProcessChannel)(ret)
 }
 
-func (this *QProcess) SetReadChannel(channel uintptr) {
+func (this *QProcess) SetReadChannel(channel QProcess__ProcessChannel) {
 	C.QProcess_SetReadChannel(this.h, (C.uintptr_t)(channel))
 }
 
-func (this *QProcess) CloseReadChannel(channel uintptr) {
+func (this *QProcess) CloseReadChannel(channel QProcess__ProcessChannel) {
 	C.QProcess_CloseReadChannel(this.h, (C.uintptr_t)(channel))
 }
 
@@ -439,14 +489,14 @@ func (this *QProcess) ProcessEnvironment() *QProcessEnvironment {
 	return ret1
 }
 
-func (this *QProcess) Error() uintptr {
+func (this *QProcess) Error() QProcess__ProcessError {
 	ret := C.QProcess_Error(this.h)
-	return (uintptr)(ret)
+	return (QProcess__ProcessError)(ret)
 }
 
-func (this *QProcess) State() uintptr {
+func (this *QProcess) State() QProcess__ProcessState {
 	ret := C.QProcess_State(this.h)
-	return (uintptr)(ret)
+	return (QProcess__ProcessState)(ret)
 }
 
 func (this *QProcess) Pid() int64 {
@@ -511,9 +561,9 @@ func (this *QProcess) ExitCode() int {
 	return (int)(ret)
 }
 
-func (this *QProcess) ExitStatus() uintptr {
+func (this *QProcess) ExitStatus() QProcess__ExitStatus {
 	ret := C.QProcess_ExitStatus(this.h)
-	return (uintptr)(ret)
+	return (QProcess__ExitStatus)(ret)
 }
 
 func (this *QProcess) BytesAvailable() int64 {
@@ -659,7 +709,7 @@ func (this *QProcess) OnFinished(slot func()) {
 	C.QProcess_connect_Finished(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
 }
 
-func (this *QProcess) Finished2(exitCode int, exitStatus uintptr) {
+func (this *QProcess) Finished2(exitCode int, exitStatus QProcess__ExitStatus) {
 	C.QProcess_Finished2(this.h, (C.int)(exitCode), (C.uintptr_t)(exitStatus))
 }
 
@@ -671,7 +721,7 @@ func (this *QProcess) OnFinished2(slot func()) {
 	C.QProcess_connect_Finished2(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
 }
 
-func (this *QProcess) ErrorWithError(error uintptr) {
+func (this *QProcess) ErrorWithError(error QProcess__ProcessError) {
 	C.QProcess_ErrorWithError(this.h, (C.uintptr_t)(error))
 }
 
@@ -683,7 +733,7 @@ func (this *QProcess) OnErrorWithError(slot func()) {
 	C.QProcess_connect_ErrorWithError(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
 }
 
-func (this *QProcess) ErrorOccurred(error uintptr) {
+func (this *QProcess) ErrorOccurred(error QProcess__ProcessError) {
 	C.QProcess_ErrorOccurred(this.h, (C.uintptr_t)(error))
 }
 

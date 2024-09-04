@@ -449,7 +449,7 @@ func (this *QGraphicsRotation) SetAxis(axis *QVector3D) {
 	C.QGraphicsRotation_SetAxis(this.h, axis.cPointer())
 }
 
-func (this *QGraphicsRotation) SetAxisWithAxis(axis uintptr) {
+func (this *QGraphicsRotation) SetAxisWithAxis(axis Axis) {
 	C.QGraphicsRotation_SetAxisWithAxis(this.h, (C.uintptr_t)(axis))
 }
 

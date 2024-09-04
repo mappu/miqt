@@ -14,6 +14,48 @@ import (
 	"unsafe"
 )
 
+type QTextDocument__MetaInformation int
+
+const (
+	QTextDocument__MetaInformation__DocumentTitle QTextDocument__MetaInformation = 0
+	QTextDocument__MetaInformation__DocumentUrl   QTextDocument__MetaInformation = 1
+)
+
+type QTextDocument__MarkdownFeature int
+
+const (
+	QTextDocument__MarkdownFeature__MarkdownNoHTML            QTextDocument__MarkdownFeature = 96
+	QTextDocument__MarkdownFeature__MarkdownDialectCommonMark QTextDocument__MarkdownFeature = 0
+	QTextDocument__MarkdownFeature__MarkdownDialectGitHub     QTextDocument__MarkdownFeature = 3852
+)
+
+type QTextDocument__FindFlag int
+
+const (
+	QTextDocument__FindFlag__FindBackward        QTextDocument__FindFlag = 1
+	QTextDocument__FindFlag__FindCaseSensitively QTextDocument__FindFlag = 2
+	QTextDocument__FindFlag__FindWholeWords      QTextDocument__FindFlag = 4
+)
+
+type QTextDocument__ResourceType int
+
+const (
+	QTextDocument__ResourceType__UnknownResource    QTextDocument__ResourceType = 0
+	QTextDocument__ResourceType__HtmlResource       QTextDocument__ResourceType = 1
+	QTextDocument__ResourceType__ImageResource      QTextDocument__ResourceType = 2
+	QTextDocument__ResourceType__StyleSheetResource QTextDocument__ResourceType = 3
+	QTextDocument__ResourceType__MarkdownResource   QTextDocument__ResourceType = 4
+	QTextDocument__ResourceType__UserResource       QTextDocument__ResourceType = 100
+)
+
+type QTextDocument__Stacks int
+
+const (
+	QTextDocument__Stacks__UndoStack         QTextDocument__Stacks = 1
+	QTextDocument__Stacks__RedoStack         QTextDocument__Stacks = 2
+	QTextDocument__Stacks__UndoAndRedoStacks QTextDocument__Stacks = 3
+)
+
 type QAbstractUndoItem struct {
 	h *C.QAbstractUndoItem
 }
@@ -183,13 +225,13 @@ func (this *QTextDocument) DocumentLayout() *QAbstractTextDocumentLayout {
 	return newQAbstractTextDocumentLayout_U(unsafe.Pointer(ret))
 }
 
-func (this *QTextDocument) SetMetaInformation(info uintptr, param2 string) {
+func (this *QTextDocument) SetMetaInformation(info QTextDocument__MetaInformation, param2 string) {
 	param2_Cstring := C.CString(param2)
 	defer C.free(unsafe.Pointer(param2_Cstring))
 	C.QTextDocument_SetMetaInformation(this.h, (C.uintptr_t)(info), param2_Cstring, C.size_t(len(param2)))
 }
 
-func (this *QTextDocument) MetaInformation(info uintptr) string {
+func (this *QTextDocument) MetaInformation(info QTextDocument__MetaInformation) string {
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
 	C.QTextDocument_MetaInformation(this.h, (C.uintptr_t)(info), &_out, &_out_Strlen)
@@ -647,12 +689,12 @@ func (this *QTextDocument) SetBaseUrl(url *QUrl) {
 	C.QTextDocument_SetBaseUrl(this.h, url.cPointer())
 }
 
-func (this *QTextDocument) DefaultCursorMoveStyle() uintptr {
+func (this *QTextDocument) DefaultCursorMoveStyle() CursorMoveStyle {
 	ret := C.QTextDocument_DefaultCursorMoveStyle(this.h)
-	return (uintptr)(ret)
+	return (CursorMoveStyle)(ret)
 }
 
-func (this *QTextDocument) SetDefaultCursorMoveStyle(style uintptr) {
+func (this *QTextDocument) SetDefaultCursorMoveStyle(style CursorMoveStyle) {
 	C.QTextDocument_SetDefaultCursorMoveStyle(this.h, (C.uintptr_t)(style))
 }
 
@@ -978,7 +1020,7 @@ func (this *QTextDocument) DrawContents2(painter *QPainter, rect *QRectF) {
 	C.QTextDocument_DrawContents2(this.h, painter.cPointer(), rect.cPointer())
 }
 
-func (this *QTextDocument) ClearUndoRedoStacks1(historyToClear uintptr) {
+func (this *QTextDocument) ClearUndoRedoStacks1(historyToClear QTextDocument__Stacks) {
 	C.QTextDocument_ClearUndoRedoStacks1(this.h, (C.uintptr_t)(historyToClear))
 }
 
