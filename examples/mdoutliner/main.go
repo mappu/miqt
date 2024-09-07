@@ -1,28 +1,60 @@
 package main
 
 import (
+	"embed"
 	"fmt"
 	"io/ioutil"
 	"os"
+	"path/filepath"
 	"strings"
 
 	"github.com/mappu/miqt/qt"
 )
 
-const sampleContent = `# Markdown Outliner
+//go:embed README.md
+var embedContent embed.FS
 
-This is sample markdown content.
-
-## Features
-
-- You can use the outline on the left to jump to parts of the document
-- Demonstrates use of the MIQT library`
+const (
+	lineNumberRole = int(qt.ItemDataRole__UserRole + 1)
+)
 
 type AppWindow struct {
-	w        *qt.QMainWindow
-	cw       *qt.QWidget
+	w  *qt.QMainWindow
+	cw *qt.QWidget
+
+	tabs    *qt.QTabWidget
+	tabData []AppTab
+}
+
+type AppTab struct {
+	tab      *qt.QWidget
 	outline  *qt.QListWidget
 	textArea *qt.QTextEdit
+}
+
+func NewAppTab() *AppTab {
+	var ret AppTab
+
+	tab := qt.NewQWidget()
+	ret.tab = tab
+
+	layout := qt.NewQHBoxLayout2(tab)
+
+	panes := qt.NewQSplitter()
+	layout.AddWidget(panes.QWidget)
+
+	ret.outline = qt.NewQListWidget2(tab)
+	panes.AddWidget(ret.outline.QWidget)
+	ret.outline.OnCurrentItemChanged(ret.handleJumpToBookmark)
+
+	ret.textArea = qt.NewQTextEdit3(tab)
+	ret.textArea.OnTextChanged(ret.handleTextChanged)
+
+	panes.AddWidget(ret.textArea.QWidget)
+
+	panes.SetSizes([]int{250, 550})
+
+	return &ret
 }
 
 func NewAppWindow() *AppWindow {
@@ -36,6 +68,14 @@ func NewAppWindow() *AppWindow {
 
 	mnu := qt.NewQMenuBar()
 	fileMenu := mnu.AddMenuWithTitle("&File")
+
+	newtab := fileMenu.AddAction("New Tab")
+	newtab.SetShortcut(qt.NewQKeySequence2("Ctrl+N"))
+	newtab.SetIcon(qt.QIcon_FromTheme("document-new"))
+	newtab.OnTriggered1(func() {
+		ret.createTabWithContents("New Document", "")
+	})
+
 	open := fileMenu.AddAction("Open...")
 	open.SetShortcut(qt.NewQKeySequence2("Ctrl+O"))
 	open.SetIcon(qt.QIcon_FromTheme("document-open"))
@@ -59,28 +99,19 @@ func NewAppWindow() *AppWindow {
 
 	// Main widgets
 
-	ret.cw = qt.NewQWidget2(ret.w.QWidget)
-	ret.w.SetCentralWidget(ret.cw)
-	layout := qt.NewQHBoxLayout2(ret.cw)
+	ret.tabs = qt.NewQTabWidget2(ret.w.QWidget)
+	ret.w.SetCentralWidget(ret.tabs.QWidget)
 
-	panes := qt.NewQSplitter()
-	layout.AddWidget(panes.QWidget)
+	// Add initial tab
 
-	ret.outline = qt.NewQListWidget2(ret.cw)
-	panes.AddWidget(ret.outline.QWidget)
-	ret.outline.OnCurrentItemChanged(ret.handleJumpToBookmark)
-
-	ret.textArea = qt.NewQTextEdit3(ret.cw)
-	ret.textArea.OnTextChanged(ret.handleTextChanged)
-	ret.textArea.SetText(sampleContent)
-	panes.AddWidget(ret.textArea.QWidget)
-
-	panes.SetSizes([]int{250, 550})
+	sampleContent, err := embedContent.ReadFile("README.md")
+	if err != nil {
+		panic(err)
+	}
+	ret.createTabWithContents("README.md", string(sampleContent))
 
 	return &ret
 }
-
-const lineNumberRole = int(qt.ItemDataRole__UserRole + 1)
 
 func (a *AppWindow) handleFileOpen() {
 	fname := qt.QFileDialog_GetOpenFileName4(a.w.QWidget, "Open markdown file...", "", "Markdown files (*.md *.txt);;All Files (*)")
@@ -94,41 +125,50 @@ func (a *AppWindow) handleFileOpen() {
 		return
 	}
 
-	a.textArea.SetText(string(contents))
+	a.createTabWithContents(filepath.Base(fname), string(contents))
 }
 
-func (a *AppWindow) handleTextChanged() {
-	content := a.textArea.ToPlainText()
-	a.updateOutlineForContent(content)
+func (a *AppWindow) createTabWithContents(tabTitle, tabContent string) {
+
+	tab := NewAppTab()
+	tab.textArea.SetText(tabContent)
+
+	tabIdx := a.tabs.AddTab2(tab.tab, qt.QIcon_FromTheme("text-markdown"), tabTitle)
+	a.tabs.SetCurrentIndex(tabIdx)
 }
 
-func (a *AppWindow) updateOutlineForContent(content string) {
-	a.outline.Clear()
+func (t *AppTab) handleTextChanged() {
+	content := t.textArea.ToPlainText()
+	t.updateOutlineForContent(content)
+}
+
+func (t *AppTab) updateOutlineForContent(content string) {
+	t.outline.Clear()
 
 	lines := strings.Split(content, "\n")
 
 	for lineNumber, line := range lines {
 		if strings.HasPrefix(line, `#`) {
 
-			bookmark := qt.NewQListWidgetItem7(line, a.outline)
+			bookmark := qt.NewQListWidgetItem7(line, t.outline)
 			bookmark.SetToolTip(fmt.Sprintf("Line %d", lineNumber+1))
 			bookmark.SetData(lineNumberRole, qt.NewQVariant5(lineNumber))
 		}
 	}
 }
 
-func (a *AppWindow) handleJumpToBookmark() {
-	itm := a.outline.CurrentItem()
+func (t *AppTab) handleJumpToBookmark() {
+	itm := t.outline.CurrentItem()
 	if itm == nil {
 		return
 	}
 
 	lineNumber := itm.Data(lineNumberRole).ToInt()
 
-	targetBlock := a.textArea.Document().FindBlockByLineNumber(lineNumber)
-	a.textArea.SetTextCursor(qt.NewQTextCursor4(targetBlock))
+	targetBlock := t.textArea.Document().FindBlockByLineNumber(lineNumber)
+	t.textArea.SetTextCursor(qt.NewQTextCursor4(targetBlock))
 
-	a.textArea.SetFocus()
+	t.textArea.SetFocus()
 }
 
 func main() {
