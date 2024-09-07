@@ -40,7 +40,7 @@ func TestParseMethodTypes(t *testing.T) {
 	}
 
 	for _, tc := range cases {
-		r, p, err := parseTypeString(tc.input)
+		r, p, _ /* isConst */, err := parseTypeString(tc.input)
 
 		if tc.expectErr {
 			if err == nil {
