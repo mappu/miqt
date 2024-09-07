@@ -38,15 +38,19 @@ func NewAppWindow() *AppWindow {
 	fileMenu := mnu.AddMenuWithTitle("&File")
 	open := fileMenu.AddAction("Open...")
 	open.SetShortcut(qt.NewQKeySequence2("Ctrl+O"))
+	open.SetIcon(qt.QIcon_FromTheme("document-open"))
 	open.OnTriggered1(ret.handleFileOpen)
+
 	fileMenu.AddSeparator()
 	exit := fileMenu.AddAction("Exit")
+	exit.SetIcon(qt.QIcon_FromTheme("application-exit"))
 	exit.OnTriggered1(func() {
 		os.Exit(0)
 	})
 
 	helpMenu := mnu.AddMenuWithTitle("&Help")
 	aboutQt := helpMenu.AddAction("About Qt")
+	aboutQt.SetIcon(qt.QIcon_FromTheme("help-about"))
 	aboutQt.SetShortcut(qt.NewQKeySequence2("F1"))
 	aboutQt.OnTriggered1(func() {
 		qt.QApplication_AboutQt()
@@ -76,7 +80,7 @@ func NewAppWindow() *AppWindow {
 	return &ret
 }
 
-const lineNumberRole = 0x0100 // Qt::UserDataRole
+const lineNumberRole = int(qt.ItemDataRole__UserRole + 1)
 
 func (a *AppWindow) handleFileOpen() {
 	fname := qt.QFileDialog_GetOpenFileName4(a.w.QWidget, "Open markdown file...", "", "Markdown files (*.md *.txt);;All Files (*)")
@@ -107,6 +111,7 @@ func (a *AppWindow) updateOutlineForContent(content string) {
 		if strings.HasPrefix(line, `#`) {
 
 			bookmark := qt.NewQListWidgetItem7(line, a.outline)
+			bookmark.SetToolTip(fmt.Sprintf("Line %d", lineNumber+1))
 			bookmark.SetData(lineNumberRole, qt.NewQVariant5(lineNumber))
 		}
 	}
