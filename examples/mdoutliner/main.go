@@ -22,8 +22,7 @@ type AppWindow struct {
 	w  *qt.QMainWindow
 	cw *qt.QWidget
 
-	tabs    *qt.QTabWidget
-	tabData []AppTab
+	tabs *qt.QTabWidget
 }
 
 type AppTab struct {
@@ -100,6 +99,11 @@ func NewAppWindow() *AppWindow {
 	// Main widgets
 
 	ret.tabs = qt.NewQTabWidget2(ret.w.QWidget)
+	ret.tabs.SetTabsClosable(true)
+	ret.tabs.OnTabCloseRequested(func() {
+		ret.handleTabClose(ret.tabs.CurrentIndex()) // FIXME need to get this from the signal
+	})
+
 	ret.w.SetCentralWidget(ret.tabs.QWidget)
 
 	// Add initial tab
@@ -111,6 +115,10 @@ func NewAppWindow() *AppWindow {
 	ret.createTabWithContents("README.md", string(sampleContent))
 
 	return &ret
+}
+
+func (a *AppWindow) handleTabClose(tabIndex int) {
+	a.tabs.RemoveTab(tabIndex)
 }
 
 func (a *AppWindow) handleFileOpen() {
