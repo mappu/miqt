@@ -71,19 +71,19 @@ func NewAppWindow() *AppWindow {
 	newtab := fileMenu.AddAction("New Tab")
 	newtab.SetShortcut(qt.NewQKeySequence2("Ctrl+N"))
 	newtab.SetIcon(qt.QIcon_FromTheme("document-new"))
-	newtab.OnTriggered1(func() {
+	newtab.OnTriggered(func() {
 		ret.createTabWithContents("New Document", "")
 	})
 
 	open := fileMenu.AddAction("Open...")
 	open.SetShortcut(qt.NewQKeySequence2("Ctrl+O"))
 	open.SetIcon(qt.QIcon_FromTheme("document-open"))
-	open.OnTriggered1(ret.handleFileOpen)
+	open.OnTriggered(ret.handleFileOpen)
 
 	fileMenu.AddSeparator()
 	exit := fileMenu.AddAction("Exit")
 	exit.SetIcon(qt.QIcon_FromTheme("application-exit"))
-	exit.OnTriggered1(func() {
+	exit.OnTriggered(func() {
 		os.Exit(0)
 	})
 
@@ -91,7 +91,7 @@ func NewAppWindow() *AppWindow {
 	aboutQt := helpMenu.AddAction("About Qt")
 	aboutQt.SetIcon(qt.QIcon_FromTheme("help-about"))
 	aboutQt.SetShortcut(qt.NewQKeySequence2("F1"))
-	aboutQt.OnTriggered1(func() {
+	aboutQt.OnTriggered(func() {
 		qt.QApplication_AboutQt()
 	})
 	ret.w.SetMenuBar(mnu)
