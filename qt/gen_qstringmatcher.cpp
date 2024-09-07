@@ -75,11 +75,11 @@ uintptr_t QStringMatcher_CaseSensitivity(QStringMatcher* self) {
 
 int QStringMatcher_IndexIn22(QStringMatcher* self, const char* str, size_t str_Strlen, int from) {
 	QString str_QString = QString::fromUtf8(str, str_Strlen);
-	return self->indexIn(str_QString, static_cast<int>(from));
+	return const_cast<const QStringMatcher*>(self)->indexIn(str_QString, static_cast<int>(from));
 }
 
 int QStringMatcher_IndexIn3(QStringMatcher* self, QChar* str, int length, int from) {
-	return self->indexIn(str, static_cast<int>(length), static_cast<int>(from));
+	return const_cast<const QStringMatcher*>(self)->indexIn(str, static_cast<int>(length), static_cast<int>(from));
 }
 
 void QStringMatcher_Delete(QStringMatcher* self) {

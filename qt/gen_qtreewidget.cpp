@@ -842,12 +842,12 @@ void QTreeWidget_ClosePersistentEditor2(QTreeWidget* self, QTreeWidgetItem* item
 }
 
 bool QTreeWidget_IsPersistentEditorOpen2(QTreeWidget* self, QTreeWidgetItem* item, int column) {
-	return self->isPersistentEditorOpen(item, static_cast<int>(column));
+	return const_cast<const QTreeWidget*>(self)->isPersistentEditorOpen(item, static_cast<int>(column));
 }
 
 void QTreeWidget_FindItems3(QTreeWidget* self, const char* text, size_t text_Strlen, int flags, int column, QTreeWidgetItem*** _out, size_t* _out_len) {
 	QString text_QString = QString::fromUtf8(text, text_Strlen);
-	QList<QTreeWidgetItem*> ret = self->findItems(text_QString, static_cast<Qt::MatchFlags>(flags), static_cast<int>(column));
+	QList<QTreeWidgetItem*> ret = const_cast<const QTreeWidget*>(self)->findItems(text_QString, static_cast<Qt::MatchFlags>(flags), static_cast<int>(column));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QTreeWidgetItem** __out = static_cast<QTreeWidgetItem**>(malloc(sizeof(QTreeWidgetItem*) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {

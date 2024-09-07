@@ -206,7 +206,7 @@ void QMenuBar_SetCornerWidget2(QMenuBar* self, QWidget* w, uintptr_t corner) {
 }
 
 QWidget* QMenuBar_CornerWidget1(QMenuBar* self, uintptr_t corner) {
-	return self->cornerWidget(static_cast<Qt::Corner>(corner));
+	return const_cast<const QMenuBar*>(self)->cornerWidget(static_cast<Qt::Corner>(corner));
 }
 
 void QMenuBar_Delete(QMenuBar* self) {

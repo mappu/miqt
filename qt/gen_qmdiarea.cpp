@@ -238,7 +238,7 @@ void QMdiArea_TrUtf83(const char* s, const char* c, int n, char** _out, int* _ou
 }
 
 void QMdiArea_SubWindowList1(QMdiArea* self, uintptr_t order, QMdiSubWindow*** _out, size_t* _out_len) {
-	QList<QMdiSubWindow*> ret = self->subWindowList(static_cast<QMdiArea::WindowOrder>(order));
+	QList<QMdiSubWindow*> ret = const_cast<const QMdiArea*>(self)->subWindowList(static_cast<QMdiArea::WindowOrder>(order));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QMdiSubWindow** __out = static_cast<QMdiSubWindow**>(malloc(sizeof(QMdiSubWindow*) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {

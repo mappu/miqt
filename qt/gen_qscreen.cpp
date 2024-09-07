@@ -226,7 +226,7 @@ bool QScreen_IsLandscape(QScreen* self, uintptr_t orientation) {
 }
 
 QPixmap* QScreen_GrabWindow(QScreen* self, uintptr_t window) {
-	QPixmap ret = self->grabWindow(static_cast<WId>(window));
+	QPixmap ret = self->grabWindow(static_cast<quintptr>(window));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPixmap*>(new QPixmap(ret));
 }
@@ -362,25 +362,25 @@ void QScreen_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out
 }
 
 QPixmap* QScreen_GrabWindow2(QScreen* self, uintptr_t window, int x) {
-	QPixmap ret = self->grabWindow(static_cast<WId>(window), static_cast<int>(x));
+	QPixmap ret = self->grabWindow(static_cast<quintptr>(window), static_cast<int>(x));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPixmap*>(new QPixmap(ret));
 }
 
 QPixmap* QScreen_GrabWindow3(QScreen* self, uintptr_t window, int x, int y) {
-	QPixmap ret = self->grabWindow(static_cast<WId>(window), static_cast<int>(x), static_cast<int>(y));
+	QPixmap ret = self->grabWindow(static_cast<quintptr>(window), static_cast<int>(x), static_cast<int>(y));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPixmap*>(new QPixmap(ret));
 }
 
 QPixmap* QScreen_GrabWindow4(QScreen* self, uintptr_t window, int x, int y, int w) {
-	QPixmap ret = self->grabWindow(static_cast<WId>(window), static_cast<int>(x), static_cast<int>(y), static_cast<int>(w));
+	QPixmap ret = self->grabWindow(static_cast<quintptr>(window), static_cast<int>(x), static_cast<int>(y), static_cast<int>(w));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPixmap*>(new QPixmap(ret));
 }
 
 QPixmap* QScreen_GrabWindow5(QScreen* self, uintptr_t window, int x, int y, int w, int h) {
-	QPixmap ret = self->grabWindow(static_cast<WId>(window), static_cast<int>(x), static_cast<int>(y), static_cast<int>(w), static_cast<int>(h));
+	QPixmap ret = self->grabWindow(static_cast<quintptr>(window), static_cast<int>(x), static_cast<int>(y), static_cast<int>(w), static_cast<int>(h));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPixmap*>(new QPixmap(ret));
 }

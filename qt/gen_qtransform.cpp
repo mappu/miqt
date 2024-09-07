@@ -304,7 +304,7 @@ QTransform* QTransform_FromScale(double dx, double dy) {
 }
 
 QTransform* QTransform_Inverted1(QTransform* self, bool* invertible) {
-	QTransform ret = self->inverted(invertible);
+	QTransform ret = const_cast<const QTransform*>(self)->inverted(invertible);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QTransform*>(new QTransform(ret));
 }

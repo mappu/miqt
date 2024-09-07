@@ -110,6 +110,12 @@ void QGroupBox_Clicked(QGroupBox* self) {
 	self->clicked();
 }
 
+void QGroupBox_connect_Clicked(QGroupBox* self, void* slot) {
+	QGroupBox::connect(self, static_cast<void (QGroupBox::*)(bool)>(&QGroupBox::clicked), self, [=]() {
+		miqt_exec_callback(slot, 0, nullptr);
+	});
+}
+
 void QGroupBox_Toggled(QGroupBox* self, bool param1) {
 	self->toggled(param1);
 }

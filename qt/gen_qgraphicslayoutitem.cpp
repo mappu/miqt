@@ -170,7 +170,7 @@ void QGraphicsLayoutItem_SetSizePolicy3(QGraphicsLayoutItem* self, uintptr_t hPo
 }
 
 QSizeF* QGraphicsLayoutItem_EffectiveSizeHint2(QGraphicsLayoutItem* self, uintptr_t which, QSizeF* constraint) {
-	QSizeF ret = self->effectiveSizeHint(static_cast<Qt::SizeHint>(which), *constraint);
+	QSizeF ret = const_cast<const QGraphicsLayoutItem*>(self)->effectiveSizeHint(static_cast<Qt::SizeHint>(which), *constraint);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSizeF*>(new QSizeF(ret));
 }

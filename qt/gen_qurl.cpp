@@ -463,7 +463,7 @@ void QUrl_SetAuthority2(QUrl* self, const char* authority, size_t authority_Strl
 }
 
 void QUrl_Authority1(QUrl* self, int options, char** _out, int* _out_Strlen) {
-	QString ret = self->authority(static_cast<QUrl::ComponentFormattingOptions>(options));
+	QString ret = const_cast<const QUrl*>(self)->authority(static_cast<QUrl::ComponentFormattingOptions>(options));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -477,7 +477,7 @@ void QUrl_SetUserInfo2(QUrl* self, const char* userInfo, size_t userInfo_Strlen,
 }
 
 void QUrl_UserInfo1(QUrl* self, int options, char** _out, int* _out_Strlen) {
-	QString ret = self->userInfo(static_cast<QUrl::ComponentFormattingOptions>(options));
+	QString ret = const_cast<const QUrl*>(self)->userInfo(static_cast<QUrl::ComponentFormattingOptions>(options));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -491,7 +491,7 @@ void QUrl_SetUserName2(QUrl* self, const char* userName, size_t userName_Strlen,
 }
 
 void QUrl_UserName1(QUrl* self, int options, char** _out, int* _out_Strlen) {
-	QString ret = self->userName(static_cast<QUrl::ComponentFormattingOptions>(options));
+	QString ret = const_cast<const QUrl*>(self)->userName(static_cast<QUrl::ComponentFormattingOptions>(options));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -505,7 +505,7 @@ void QUrl_SetPassword2(QUrl* self, const char* password, size_t password_Strlen,
 }
 
 void QUrl_Password1(QUrl* self, int param1, char** _out, int* _out_Strlen) {
-	QString ret = self->password(static_cast<QUrl::ComponentFormattingOptions>(param1));
+	QString ret = const_cast<const QUrl*>(self)->password(static_cast<QUrl::ComponentFormattingOptions>(param1));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -519,7 +519,7 @@ void QUrl_SetHost2(QUrl* self, const char* host, size_t host_Strlen, uintptr_t m
 }
 
 void QUrl_Host1(QUrl* self, int param1, char** _out, int* _out_Strlen) {
-	QString ret = self->host(static_cast<QUrl::ComponentFormattingOptions>(param1));
+	QString ret = const_cast<const QUrl*>(self)->host(static_cast<QUrl::ComponentFormattingOptions>(param1));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -528,7 +528,7 @@ void QUrl_Host1(QUrl* self, int param1, char** _out, int* _out_Strlen) {
 }
 
 void QUrl_TopLevelDomain1(QUrl* self, int options, char** _out, int* _out_Strlen) {
-	QString ret = self->topLevelDomain(static_cast<QUrl::ComponentFormattingOptions>(options));
+	QString ret = const_cast<const QUrl*>(self)->topLevelDomain(static_cast<QUrl::ComponentFormattingOptions>(options));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -537,7 +537,7 @@ void QUrl_TopLevelDomain1(QUrl* self, int options, char** _out, int* _out_Strlen
 }
 
 int QUrl_Port1(QUrl* self, int defaultPort) {
-	return self->port(static_cast<int>(defaultPort));
+	return const_cast<const QUrl*>(self)->port(static_cast<int>(defaultPort));
 }
 
 void QUrl_SetPath2(QUrl* self, const char* path, size_t path_Strlen, uintptr_t mode) {
@@ -546,7 +546,7 @@ void QUrl_SetPath2(QUrl* self, const char* path, size_t path_Strlen, uintptr_t m
 }
 
 void QUrl_Path1(QUrl* self, int options, char** _out, int* _out_Strlen) {
-	QString ret = self->path(static_cast<QUrl::ComponentFormattingOptions>(options));
+	QString ret = const_cast<const QUrl*>(self)->path(static_cast<QUrl::ComponentFormattingOptions>(options));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -555,7 +555,7 @@ void QUrl_Path1(QUrl* self, int options, char** _out, int* _out_Strlen) {
 }
 
 void QUrl_FileName1(QUrl* self, int options, char** _out, int* _out_Strlen) {
-	QString ret = self->fileName(static_cast<QUrl::ComponentFormattingOptions>(options));
+	QString ret = const_cast<const QUrl*>(self)->fileName(static_cast<QUrl::ComponentFormattingOptions>(options));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -569,7 +569,7 @@ void QUrl_SetQuery2(QUrl* self, const char* query, size_t query_Strlen, uintptr_
 }
 
 void QUrl_Query1(QUrl* self, int param1, char** _out, int* _out_Strlen) {
-	QString ret = self->query(static_cast<QUrl::ComponentFormattingOptions>(param1));
+	QString ret = const_cast<const QUrl*>(self)->query(static_cast<QUrl::ComponentFormattingOptions>(param1));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -578,7 +578,7 @@ void QUrl_Query1(QUrl* self, int param1, char** _out, int* _out_Strlen) {
 }
 
 void QUrl_Fragment1(QUrl* self, int options, char** _out, int* _out_Strlen) {
-	QString ret = self->fragment(static_cast<QUrl::ComponentFormattingOptions>(options));
+	QString ret = const_cast<const QUrl*>(self)->fragment(static_cast<QUrl::ComponentFormattingOptions>(options));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));

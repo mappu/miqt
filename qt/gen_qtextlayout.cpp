@@ -339,11 +339,11 @@ void QTextLayout_SetFlags(QTextLayout* self, int flags) {
 }
 
 int QTextLayout_NextCursorPosition2(QTextLayout* self, int oldPos, uintptr_t mode) {
-	return self->nextCursorPosition(static_cast<int>(oldPos), static_cast<QTextLayout::CursorMode>(mode));
+	return const_cast<const QTextLayout*>(self)->nextCursorPosition(static_cast<int>(oldPos), static_cast<QTextLayout::CursorMode>(mode));
 }
 
 int QTextLayout_PreviousCursorPosition2(QTextLayout* self, int oldPos, uintptr_t mode) {
-	return self->previousCursorPosition(static_cast<int>(oldPos), static_cast<QTextLayout::CursorMode>(mode));
+	return const_cast<const QTextLayout*>(self)->previousCursorPosition(static_cast<int>(oldPos), static_cast<QTextLayout::CursorMode>(mode));
 }
 
 void QTextLayout_Draw3(QTextLayout* self, QPainter* p, QPointF* pos, QTextLayout__FormatRange** selections, size_t selections_len) {
@@ -352,7 +352,7 @@ void QTextLayout_Draw3(QTextLayout* self, QPainter* p, QPointF* pos, QTextLayout
 	for(size_t i = 0; i < selections_len; ++i) {
 		selections_QList.push_back(*(selections[i]));
 	}
-	self->draw(p, *pos, selections_QList);
+	const_cast<const QTextLayout*>(self)->draw(p, *pos, selections_QList);
 }
 
 void QTextLayout_Draw4(QTextLayout* self, QPainter* p, QPointF* pos, QTextLayout__FormatRange** selections, size_t selections_len, QRectF* clip) {
@@ -361,11 +361,11 @@ void QTextLayout_Draw4(QTextLayout* self, QPainter* p, QPointF* pos, QTextLayout
 	for(size_t i = 0; i < selections_len; ++i) {
 		selections_QList.push_back(*(selections[i]));
 	}
-	self->draw(p, *pos, selections_QList, *clip);
+	const_cast<const QTextLayout*>(self)->draw(p, *pos, selections_QList, *clip);
 }
 
 void QTextLayout_GlyphRuns1(QTextLayout* self, int from, QGlyphRun*** _out, size_t* _out_len) {
-	QList<QGlyphRun> ret = self->glyphRuns(static_cast<int>(from));
+	QList<QGlyphRun> ret = const_cast<const QTextLayout*>(self)->glyphRuns(static_cast<int>(from));
 	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
 	QGlyphRun** __out = static_cast<QGlyphRun**>(malloc(sizeof(QGlyphRun**) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {
@@ -376,7 +376,7 @@ void QTextLayout_GlyphRuns1(QTextLayout* self, int from, QGlyphRun*** _out, size
 }
 
 void QTextLayout_GlyphRuns2(QTextLayout* self, int from, int length, QGlyphRun*** _out, size_t* _out_len) {
-	QList<QGlyphRun> ret = self->glyphRuns(static_cast<int>(from), static_cast<int>(length));
+	QList<QGlyphRun> ret = const_cast<const QTextLayout*>(self)->glyphRuns(static_cast<int>(from), static_cast<int>(length));
 	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
 	QGlyphRun** __out = static_cast<QGlyphRun**>(malloc(sizeof(QGlyphRun**) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {
@@ -516,23 +516,23 @@ void QTextLine_GlyphRuns(QTextLine* self, QGlyphRun*** _out, size_t* _out_len) {
 }
 
 double QTextLine_CursorToX2(QTextLine* self, int* cursorPos, uintptr_t edge) {
-	return self->cursorToX(static_cast<int*>(cursorPos), static_cast<QTextLine::Edge>(edge));
+	return const_cast<const QTextLine*>(self)->cursorToX(static_cast<int*>(cursorPos), static_cast<QTextLine::Edge>(edge));
 }
 
 double QTextLine_CursorToX22(QTextLine* self, int cursorPos, uintptr_t edge) {
-	return self->cursorToX(static_cast<int>(cursorPos), static_cast<QTextLine::Edge>(edge));
+	return const_cast<const QTextLine*>(self)->cursorToX(static_cast<int>(cursorPos), static_cast<QTextLine::Edge>(edge));
 }
 
 int QTextLine_XToCursor2(QTextLine* self, double x, uintptr_t param2) {
-	return self->xToCursor(static_cast<qreal>(x), static_cast<QTextLine::CursorPosition>(param2));
+	return const_cast<const QTextLine*>(self)->xToCursor(static_cast<qreal>(x), static_cast<QTextLine::CursorPosition>(param2));
 }
 
 void QTextLine_Draw3(QTextLine* self, QPainter* p, QPointF* point, QTextLayout__FormatRange* selection) {
-	self->draw(p, *point, selection);
+	const_cast<const QTextLine*>(self)->draw(p, *point, selection);
 }
 
 void QTextLine_GlyphRuns1(QTextLine* self, int from, QGlyphRun*** _out, size_t* _out_len) {
-	QList<QGlyphRun> ret = self->glyphRuns(static_cast<int>(from));
+	QList<QGlyphRun> ret = const_cast<const QTextLine*>(self)->glyphRuns(static_cast<int>(from));
 	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
 	QGlyphRun** __out = static_cast<QGlyphRun**>(malloc(sizeof(QGlyphRun**) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {
@@ -543,7 +543,7 @@ void QTextLine_GlyphRuns1(QTextLine* self, int from, QGlyphRun*** _out, size_t* 
 }
 
 void QTextLine_GlyphRuns2(QTextLine* self, int from, int length, QGlyphRun*** _out, size_t* _out_len) {
-	QList<QGlyphRun> ret = self->glyphRuns(static_cast<int>(from), static_cast<int>(length));
+	QList<QGlyphRun> ret = const_cast<const QTextLine*>(self)->glyphRuns(static_cast<int>(from), static_cast<int>(length));
 	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
 	QGlyphRun** __out = static_cast<QGlyphRun**>(malloc(sizeof(QGlyphRun**) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {

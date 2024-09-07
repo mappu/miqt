@@ -877,7 +877,7 @@ void QGraphicsItem_SetMatrix2(QGraphicsItem* self, QMatrix* matrix, bool combine
 }
 
 QTransform* QGraphicsItem_ItemTransform2(QGraphicsItem* self, QGraphicsItem* other, bool* ok) {
-	QTransform ret = self->itemTransform(other, ok);
+	QTransform ret = const_cast<const QGraphicsItem*>(self)->itemTransform(other, ok);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QTransform*>(new QTransform(ret));
 }
@@ -887,15 +887,15 @@ void QGraphicsItem_SetTransform2(QGraphicsItem* self, QTransform* matrix, bool c
 }
 
 bool QGraphicsItem_CollidesWithItem2(QGraphicsItem* self, QGraphicsItem* other, uintptr_t mode) {
-	return self->collidesWithItem(other, static_cast<Qt::ItemSelectionMode>(mode));
+	return const_cast<const QGraphicsItem*>(self)->collidesWithItem(other, static_cast<Qt::ItemSelectionMode>(mode));
 }
 
 bool QGraphicsItem_CollidesWithPath2(QGraphicsItem* self, QPainterPath* path, uintptr_t mode) {
-	return self->collidesWithPath(*path, static_cast<Qt::ItemSelectionMode>(mode));
+	return const_cast<const QGraphicsItem*>(self)->collidesWithPath(*path, static_cast<Qt::ItemSelectionMode>(mode));
 }
 
 void QGraphicsItem_CollidingItems1(QGraphicsItem* self, uintptr_t mode, QGraphicsItem*** _out, size_t* _out_len) {
-	QList<QGraphicsItem*> ret = self->collidingItems(static_cast<Qt::ItemSelectionMode>(mode));
+	QList<QGraphicsItem*> ret = const_cast<const QGraphicsItem*>(self)->collidingItems(static_cast<Qt::ItemSelectionMode>(mode));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QGraphicsItem** __out = static_cast<QGraphicsItem**>(malloc(sizeof(QGraphicsItem*) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {
@@ -906,7 +906,7 @@ void QGraphicsItem_CollidingItems1(QGraphicsItem* self, uintptr_t mode, QGraphic
 }
 
 bool QGraphicsItem_IsObscured1(QGraphicsItem* self, QRectF* rect) {
-	return self->isObscured(*rect);
+	return const_cast<const QGraphicsItem*>(self)->isObscured(*rect);
 }
 
 void QGraphicsItem_Paint3(QGraphicsItem* self, QPainter* painter, QStyleOptionGraphicsItem* option, QWidget* widget) {

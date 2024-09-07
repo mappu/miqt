@@ -197,7 +197,7 @@ void QConcatenateTablesProxyModel_TrUtf83(const char* s, const char* c, int n, c
 }
 
 QVariant* QConcatenateTablesProxyModel_Data2(QConcatenateTablesProxyModel* self, QModelIndex* index, int role) {
-	QVariant ret = self->data(*index, static_cast<int>(role));
+	QVariant ret = const_cast<const QConcatenateTablesProxyModel*>(self)->data(*index, static_cast<int>(role));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVariant*>(new QVariant(ret));
 }
@@ -207,23 +207,23 @@ bool QConcatenateTablesProxyModel_SetData3(QConcatenateTablesProxyModel* self, Q
 }
 
 QModelIndex* QConcatenateTablesProxyModel_Index3(QConcatenateTablesProxyModel* self, int row, int column, QModelIndex* parent) {
-	QModelIndex ret = self->index(static_cast<int>(row), static_cast<int>(column), *parent);
+	QModelIndex ret = const_cast<const QConcatenateTablesProxyModel*>(self)->index(static_cast<int>(row), static_cast<int>(column), *parent);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QModelIndex*>(new QModelIndex(ret));
 }
 
 int QConcatenateTablesProxyModel_RowCount1(QConcatenateTablesProxyModel* self, QModelIndex* parent) {
-	return self->rowCount(*parent);
+	return const_cast<const QConcatenateTablesProxyModel*>(self)->rowCount(*parent);
 }
 
 QVariant* QConcatenateTablesProxyModel_HeaderData3(QConcatenateTablesProxyModel* self, int section, uintptr_t orientation, int role) {
-	QVariant ret = self->headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), static_cast<int>(role));
+	QVariant ret = const_cast<const QConcatenateTablesProxyModel*>(self)->headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), static_cast<int>(role));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVariant*>(new QVariant(ret));
 }
 
 int QConcatenateTablesProxyModel_ColumnCount1(QConcatenateTablesProxyModel* self, QModelIndex* parent) {
-	return self->columnCount(*parent);
+	return const_cast<const QConcatenateTablesProxyModel*>(self)->columnCount(*parent);
 }
 
 void QConcatenateTablesProxyModel_Delete(QConcatenateTablesProxyModel* self) {

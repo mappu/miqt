@@ -345,11 +345,11 @@ QRect* QRect_OperatorMinusAssign(QRect* self, QMargins* margins) {
 }
 
 bool QRect_Contains22(QRect* self, QRect* r, bool proper) {
-	return self->contains(*r, proper);
+	return const_cast<const QRect*>(self)->contains(*r, proper);
 }
 
 bool QRect_Contains23(QRect* self, QPoint* p, bool proper) {
-	return self->contains(*p, proper);
+	return const_cast<const QRect*>(self)->contains(*p, proper);
 }
 
 void QRect_Delete(QRect* self) {

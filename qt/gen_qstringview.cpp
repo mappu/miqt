@@ -208,99 +208,99 @@ QChar* QStringView_Last(QStringView* self) {
 }
 
 size_t QStringView_IndexOf2(QStringView* self, QChar* c, size_t from) {
-	return self->indexOf(*c, static_cast<qsizetype>(from));
+	return const_cast<const QStringView*>(self)->indexOf(*c, static_cast<qsizetype>(from));
 }
 
 size_t QStringView_IndexOf3(QStringView* self, QChar* c, size_t from, uintptr_t cs) {
-	return self->indexOf(*c, static_cast<qsizetype>(from), static_cast<Qt::CaseSensitivity>(cs));
+	return const_cast<const QStringView*>(self)->indexOf(*c, static_cast<qsizetype>(from), static_cast<Qt::CaseSensitivity>(cs));
 }
 
 bool QStringView_Contains2(QStringView* self, QChar* c, uintptr_t cs) {
-	return self->contains(*c, static_cast<Qt::CaseSensitivity>(cs));
+	return const_cast<const QStringView*>(self)->contains(*c, static_cast<Qt::CaseSensitivity>(cs));
 }
 
 size_t QStringView_Count2(QStringView* self, QChar* c, uintptr_t cs) {
-	return self->count(*c, static_cast<Qt::CaseSensitivity>(cs));
+	return const_cast<const QStringView*>(self)->count(*c, static_cast<Qt::CaseSensitivity>(cs));
 }
 
 size_t QStringView_LastIndexOf2(QStringView* self, QChar* c, size_t from) {
-	return self->lastIndexOf(*c, static_cast<qsizetype>(from));
+	return const_cast<const QStringView*>(self)->lastIndexOf(*c, static_cast<qsizetype>(from));
 }
 
 size_t QStringView_LastIndexOf3(QStringView* self, QChar* c, size_t from, uintptr_t cs) {
-	return self->lastIndexOf(*c, static_cast<qsizetype>(from), static_cast<Qt::CaseSensitivity>(cs));
+	return const_cast<const QStringView*>(self)->lastIndexOf(*c, static_cast<qsizetype>(from), static_cast<Qt::CaseSensitivity>(cs));
 }
 
 int16_t QStringView_ToShort1(QStringView* self, bool* ok) {
-	return self->toShort(ok);
+	return const_cast<const QStringView*>(self)->toShort(ok);
 }
 
 int16_t QStringView_ToShort2(QStringView* self, bool* ok, int base) {
-	return self->toShort(ok, static_cast<int>(base));
+	return const_cast<const QStringView*>(self)->toShort(ok, static_cast<int>(base));
 }
 
 uint16_t QStringView_ToUShort1(QStringView* self, bool* ok) {
-	return self->toUShort(ok);
+	return const_cast<const QStringView*>(self)->toUShort(ok);
 }
 
 uint16_t QStringView_ToUShort2(QStringView* self, bool* ok, int base) {
-	return self->toUShort(ok, static_cast<int>(base));
+	return const_cast<const QStringView*>(self)->toUShort(ok, static_cast<int>(base));
 }
 
 int QStringView_ToInt1(QStringView* self, bool* ok) {
-	return self->toInt(ok);
+	return const_cast<const QStringView*>(self)->toInt(ok);
 }
 
 int QStringView_ToInt2(QStringView* self, bool* ok, int base) {
-	return self->toInt(ok, static_cast<int>(base));
+	return const_cast<const QStringView*>(self)->toInt(ok, static_cast<int>(base));
 }
 
 unsigned int QStringView_ToUInt1(QStringView* self, bool* ok) {
-	return self->toUInt(ok);
+	return const_cast<const QStringView*>(self)->toUInt(ok);
 }
 
 unsigned int QStringView_ToUInt2(QStringView* self, bool* ok, int base) {
-	return self->toUInt(ok, static_cast<int>(base));
+	return const_cast<const QStringView*>(self)->toUInt(ok, static_cast<int>(base));
 }
 
 long QStringView_ToLong1(QStringView* self, bool* ok) {
-	return self->toLong(ok);
+	return const_cast<const QStringView*>(self)->toLong(ok);
 }
 
 long QStringView_ToLong2(QStringView* self, bool* ok, int base) {
-	return self->toLong(ok, static_cast<int>(base));
+	return const_cast<const QStringView*>(self)->toLong(ok, static_cast<int>(base));
 }
 
 unsigned long QStringView_ToULong1(QStringView* self, bool* ok) {
-	return self->toULong(ok);
+	return const_cast<const QStringView*>(self)->toULong(ok);
 }
 
 unsigned long QStringView_ToULong2(QStringView* self, bool* ok, int base) {
-	return self->toULong(ok, static_cast<int>(base));
+	return const_cast<const QStringView*>(self)->toULong(ok, static_cast<int>(base));
 }
 
 int64_t QStringView_ToLongLong1(QStringView* self, bool* ok) {
-	return self->toLongLong(ok);
+	return const_cast<const QStringView*>(self)->toLongLong(ok);
 }
 
 int64_t QStringView_ToLongLong2(QStringView* self, bool* ok, int base) {
-	return self->toLongLong(ok, static_cast<int>(base));
+	return const_cast<const QStringView*>(self)->toLongLong(ok, static_cast<int>(base));
 }
 
 uint64_t QStringView_ToULongLong1(QStringView* self, bool* ok) {
-	return self->toULongLong(ok);
+	return const_cast<const QStringView*>(self)->toULongLong(ok);
 }
 
 uint64_t QStringView_ToULongLong2(QStringView* self, bool* ok, int base) {
-	return self->toULongLong(ok, static_cast<int>(base));
+	return const_cast<const QStringView*>(self)->toULongLong(ok, static_cast<int>(base));
 }
 
 float QStringView_ToFloat1(QStringView* self, bool* ok) {
-	return self->toFloat(ok);
+	return const_cast<const QStringView*>(self)->toFloat(ok);
 }
 
 double QStringView_ToDouble1(QStringView* self, bool* ok) {
-	return self->toDouble(ok);
+	return const_cast<const QStringView*>(self)->toDouble(ok);
 }
 
 void QStringView_Delete(QStringView* self) {

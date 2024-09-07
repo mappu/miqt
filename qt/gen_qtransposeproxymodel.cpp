@@ -163,15 +163,15 @@ void QTransposeProxyModel_TrUtf83(const char* s, const char* c, int n, char** _o
 }
 
 int QTransposeProxyModel_RowCount1(QTransposeProxyModel* self, QModelIndex* parent) {
-	return self->rowCount(*parent);
+	return const_cast<const QTransposeProxyModel*>(self)->rowCount(*parent);
 }
 
 int QTransposeProxyModel_ColumnCount1(QTransposeProxyModel* self, QModelIndex* parent) {
-	return self->columnCount(*parent);
+	return const_cast<const QTransposeProxyModel*>(self)->columnCount(*parent);
 }
 
 QVariant* QTransposeProxyModel_HeaderData3(QTransposeProxyModel* self, int section, uintptr_t orientation, int role) {
-	QVariant ret = self->headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), static_cast<int>(role));
+	QVariant ret = const_cast<const QTransposeProxyModel*>(self)->headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), static_cast<int>(role));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVariant*>(new QVariant(ret));
 }
@@ -181,7 +181,7 @@ bool QTransposeProxyModel_SetHeaderData4(QTransposeProxyModel* self, int section
 }
 
 QModelIndex* QTransposeProxyModel_Index3(QTransposeProxyModel* self, int row, int column, QModelIndex* parent) {
-	QModelIndex ret = self->index(static_cast<int>(row), static_cast<int>(column), *parent);
+	QModelIndex ret = const_cast<const QTransposeProxyModel*>(self)->index(static_cast<int>(row), static_cast<int>(column), *parent);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QModelIndex*>(new QModelIndex(ret));
 }

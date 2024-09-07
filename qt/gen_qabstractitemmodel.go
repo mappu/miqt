@@ -660,6 +660,14 @@ func (this *QAbstractItemModel) DataChanged(topLeft *QModelIndex, bottomRight *Q
 	C.QAbstractItemModel_DataChanged(this.h, topLeft.cPointer(), bottomRight.cPointer())
 }
 
+func (this *QAbstractItemModel) OnDataChanged(slot func()) {
+	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
+		slot()
+	}
+
+	C.QAbstractItemModel_connect_DataChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+}
+
 func (this *QAbstractItemModel) HeaderDataChanged(orientation Orientation, first int, last int) {
 	C.QAbstractItemModel_HeaderDataChanged(this.h, (C.uintptr_t)(orientation), (C.int)(first), (C.int)(last))
 }
@@ -676,8 +684,24 @@ func (this *QAbstractItemModel) LayoutChanged() {
 	C.QAbstractItemModel_LayoutChanged(this.h)
 }
 
+func (this *QAbstractItemModel) OnLayoutChanged(slot func()) {
+	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
+		slot()
+	}
+
+	C.QAbstractItemModel_connect_LayoutChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+}
+
 func (this *QAbstractItemModel) LayoutAboutToBeChanged() {
 	C.QAbstractItemModel_LayoutAboutToBeChanged(this.h)
+}
+
+func (this *QAbstractItemModel) OnLayoutAboutToBeChanged(slot func()) {
+	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
+		slot()
+	}
+
+	C.QAbstractItemModel_connect_LayoutAboutToBeChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
 }
 
 func (this *QAbstractItemModel) Submit() bool {
@@ -907,6 +931,14 @@ func (this *QAbstractItemModel) LayoutChanged1(parents []QPersistentModelIndex) 
 	C.QAbstractItemModel_LayoutChanged1(this.h, &parents_CArray[0], C.size_t(len(parents)))
 }
 
+func (this *QAbstractItemModel) OnLayoutChanged1(slot func()) {
+	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
+		slot()
+	}
+
+	C.QAbstractItemModel_connect_LayoutChanged1(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+}
+
 func (this *QAbstractItemModel) LayoutChanged2(parents []QPersistentModelIndex, hint QAbstractItemModel__LayoutChangeHint) {
 	// For the C ABI, malloc a C array of raw pointers
 	parents_CArray := (*[0xffff]*C.QPersistentModelIndex)(C.malloc(C.size_t(8 * len(parents))))
@@ -933,6 +965,14 @@ func (this *QAbstractItemModel) LayoutAboutToBeChanged1(parents []QPersistentMod
 		parents_CArray[i] = parents[i].cPointer()
 	}
 	C.QAbstractItemModel_LayoutAboutToBeChanged1(this.h, &parents_CArray[0], C.size_t(len(parents)))
+}
+
+func (this *QAbstractItemModel) OnLayoutAboutToBeChanged1(slot func()) {
+	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
+		slot()
+	}
+
+	C.QAbstractItemModel_connect_LayoutAboutToBeChanged1(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
 }
 
 func (this *QAbstractItemModel) LayoutAboutToBeChanged2(parents []QPersistentModelIndex, hint QAbstractItemModel__LayoutChangeHint) {

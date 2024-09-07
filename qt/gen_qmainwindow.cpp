@@ -363,7 +363,7 @@ void QMainWindow_AddToolBarBreak1(QMainWindow* self, uintptr_t area) {
 }
 
 QByteArray* QMainWindow_SaveState1(QMainWindow* self, int version) {
-	QByteArray ret = self->saveState(static_cast<int>(version));
+	QByteArray ret = const_cast<const QMainWindow*>(self)->saveState(static_cast<int>(version));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QByteArray*>(new QByteArray(ret));
 }

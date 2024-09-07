@@ -171,27 +171,27 @@ void QIdentityProxyModel_TrUtf83(const char* s, const char* c, int n, char** _ou
 }
 
 int QIdentityProxyModel_ColumnCount1(QIdentityProxyModel* self, QModelIndex* parent) {
-	return self->columnCount(*parent);
+	return const_cast<const QIdentityProxyModel*>(self)->columnCount(*parent);
 }
 
 QModelIndex* QIdentityProxyModel_Index3(QIdentityProxyModel* self, int row, int column, QModelIndex* parent) {
-	QModelIndex ret = self->index(static_cast<int>(row), static_cast<int>(column), *parent);
+	QModelIndex ret = const_cast<const QIdentityProxyModel*>(self)->index(static_cast<int>(row), static_cast<int>(column), *parent);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QModelIndex*>(new QModelIndex(ret));
 }
 
 int QIdentityProxyModel_RowCount1(QIdentityProxyModel* self, QModelIndex* parent) {
-	return self->rowCount(*parent);
+	return const_cast<const QIdentityProxyModel*>(self)->rowCount(*parent);
 }
 
 QVariant* QIdentityProxyModel_HeaderData3(QIdentityProxyModel* self, int section, uintptr_t orientation, int role) {
-	QVariant ret = self->headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), static_cast<int>(role));
+	QVariant ret = const_cast<const QIdentityProxyModel*>(self)->headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), static_cast<int>(role));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVariant*>(new QVariant(ret));
 }
 
 void QIdentityProxyModel_Match4(QIdentityProxyModel* self, QModelIndex* start, int role, QVariant* value, int hits, QModelIndex*** _out, size_t* _out_len) {
-	QModelIndexList ret = self->match(*start, static_cast<int>(role), *value, static_cast<int>(hits));
+	QModelIndexList ret = const_cast<const QIdentityProxyModel*>(self)->match(*start, static_cast<int>(role), *value, static_cast<int>(hits));
 	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
 	QModelIndex** __out = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex**) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {
@@ -202,7 +202,7 @@ void QIdentityProxyModel_Match4(QIdentityProxyModel* self, QModelIndex* start, i
 }
 
 void QIdentityProxyModel_Match5(QIdentityProxyModel* self, QModelIndex* start, int role, QVariant* value, int hits, int flags, QModelIndex*** _out, size_t* _out_len) {
-	QModelIndexList ret = self->match(*start, static_cast<int>(role), *value, static_cast<int>(hits), static_cast<Qt::MatchFlags>(flags));
+	QModelIndexList ret = const_cast<const QIdentityProxyModel*>(self)->match(*start, static_cast<int>(role), *value, static_cast<int>(hits), static_cast<Qt::MatchFlags>(flags));
 	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
 	QModelIndex** __out = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex**) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {

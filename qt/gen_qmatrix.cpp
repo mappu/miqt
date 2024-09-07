@@ -186,7 +186,7 @@ QMatrix* QMatrix_OperatorMultiply(QMatrix* self, QMatrix* o) {
 }
 
 QMatrix* QMatrix_Inverted1(QMatrix* self, bool* invertible) {
-	QMatrix ret = self->inverted(invertible);
+	QMatrix ret = const_cast<const QMatrix*>(self)->inverted(invertible);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QMatrix*>(new QMatrix(ret));
 }

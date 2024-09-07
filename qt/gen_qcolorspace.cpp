@@ -109,7 +109,7 @@ void QColorSpace_SetTransferFunction2(QColorSpace* self, uintptr_t transferFunct
 }
 
 QColorSpace* QColorSpace_WithTransferFunction2(QColorSpace* self, uintptr_t transferFunction, float gamma) {
-	QColorSpace ret = self->withTransferFunction(static_cast<QColorSpace::TransferFunction>(transferFunction), static_cast<float>(gamma));
+	QColorSpace ret = const_cast<const QColorSpace*>(self)->withTransferFunction(static_cast<QColorSpace::TransferFunction>(transferFunction), static_cast<float>(gamma));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QColorSpace*>(new QColorSpace(ret));
 }

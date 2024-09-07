@@ -177,6 +177,14 @@ func (this *QAbstractTextDocumentLayout) Update() {
 	C.QAbstractTextDocumentLayout_Update(this.h)
 }
 
+func (this *QAbstractTextDocumentLayout) OnUpdate(slot func()) {
+	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
+		slot()
+	}
+
+	C.QAbstractTextDocumentLayout_connect_Update(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+}
+
 func (this *QAbstractTextDocumentLayout) UpdateBlock(block *QTextBlock) {
 	C.QAbstractTextDocumentLayout_UpdateBlock(this.h, block.cPointer())
 }

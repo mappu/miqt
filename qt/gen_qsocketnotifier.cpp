@@ -13,12 +13,12 @@ extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
 }
 
-QSocketNotifier* QSocketNotifier_new(ptrdiff_t socket, uintptr_t param2) {
-	return new QSocketNotifier(static_cast<qintptr>(socket), static_cast<QSocketNotifier::Type>(param2));
+QSocketNotifier* QSocketNotifier_new(uintptr_t socket, uintptr_t param2) {
+	return new QSocketNotifier(static_cast<qptrdiff>(socket), static_cast<QSocketNotifier::Type>(param2));
 }
 
-QSocketNotifier* QSocketNotifier_new2(ptrdiff_t socket, uintptr_t param2, QObject* parent) {
-	return new QSocketNotifier(static_cast<qintptr>(socket), static_cast<QSocketNotifier::Type>(param2), parent);
+QSocketNotifier* QSocketNotifier_new2(uintptr_t socket, uintptr_t param2, QObject* parent) {
+	return new QSocketNotifier(static_cast<qptrdiff>(socket), static_cast<QSocketNotifier::Type>(param2), parent);
 }
 
 QMetaObject* QSocketNotifier_MetaObject(QSocketNotifier* self) {

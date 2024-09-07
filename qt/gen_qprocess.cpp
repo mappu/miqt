@@ -120,7 +120,7 @@ QProcessEnvironment* QProcessEnvironment_SystemEnvironment() {
 void QProcessEnvironment_Value2(QProcessEnvironment* self, const char* name, size_t name_Strlen, const char* defaultValue, size_t defaultValue_Strlen, char** _out, int* _out_Strlen) {
 	QString name_QString = QString::fromUtf8(name, name_Strlen);
 	QString defaultValue_QString = QString::fromUtf8(defaultValue, defaultValue_Strlen);
-	QString ret = self->value(name_QString, defaultValue_QString);
+	QString ret = const_cast<const QProcessEnvironment*>(self)->value(name_QString, defaultValue_QString);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));

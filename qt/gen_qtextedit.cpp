@@ -645,7 +645,7 @@ bool QTextEdit_Find24(QTextEdit* self, QRegularExpression* exp, int options) {
 }
 
 void QTextEdit_ToMarkdown1(QTextEdit* self, int features, char** _out, int* _out_Strlen) {
-	QString ret = self->toMarkdown(static_cast<QTextDocument::MarkdownFeatures>(features));
+	QString ret = const_cast<const QTextEdit*>(self)->toMarkdown(static_cast<QTextDocument::MarkdownFeatures>(features));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));

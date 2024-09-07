@@ -193,7 +193,7 @@ void QClipboard_Clear1(QClipboard* self, uintptr_t mode) {
 }
 
 void QClipboard_Text1(QClipboard* self, uintptr_t mode, char** _out, int* _out_Strlen) {
-	QString ret = self->text(static_cast<QClipboard::Mode>(mode));
+	QString ret = const_cast<const QClipboard*>(self)->text(static_cast<QClipboard::Mode>(mode));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -203,7 +203,7 @@ void QClipboard_Text1(QClipboard* self, uintptr_t mode, char** _out, int* _out_S
 
 void QClipboard_Text2(QClipboard* self, const char* subtype, size_t subtype_Strlen, uintptr_t mode, char** _out, int* _out_Strlen) {
 	QString subtype_QString = QString::fromUtf8(subtype, subtype_Strlen);
-	QString ret = self->text(subtype_QString, static_cast<QClipboard::Mode>(mode));
+	QString ret = const_cast<const QClipboard*>(self)->text(subtype_QString, static_cast<QClipboard::Mode>(mode));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -217,7 +217,7 @@ void QClipboard_SetText2(QClipboard* self, const char* param1, size_t param1_Str
 }
 
 QMimeData* QClipboard_MimeData1(QClipboard* self, uintptr_t mode) {
-	return (QMimeData*) self->mimeData(static_cast<QClipboard::Mode>(mode));
+	return (QMimeData*) const_cast<const QClipboard*>(self)->mimeData(static_cast<QClipboard::Mode>(mode));
 }
 
 void QClipboard_SetMimeData2(QClipboard* self, QMimeData* data, uintptr_t mode) {
@@ -225,13 +225,13 @@ void QClipboard_SetMimeData2(QClipboard* self, QMimeData* data, uintptr_t mode) 
 }
 
 QImage* QClipboard_Image1(QClipboard* self, uintptr_t mode) {
-	QImage ret = self->image(static_cast<QClipboard::Mode>(mode));
+	QImage ret = const_cast<const QClipboard*>(self)->image(static_cast<QClipboard::Mode>(mode));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QImage*>(new QImage(ret));
 }
 
 QPixmap* QClipboard_Pixmap1(QClipboard* self, uintptr_t mode) {
-	QPixmap ret = self->pixmap(static_cast<QClipboard::Mode>(mode));
+	QPixmap ret = const_cast<const QClipboard*>(self)->pixmap(static_cast<QClipboard::Mode>(mode));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPixmap*>(new QPixmap(ret));
 }

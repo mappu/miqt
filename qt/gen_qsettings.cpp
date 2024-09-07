@@ -372,7 +372,7 @@ void QSettings_BeginWriteArray2(QSettings* self, const char* prefix, size_t pref
 
 QVariant* QSettings_Value2(QSettings* self, const char* key, size_t key_Strlen, QVariant* defaultValue) {
 	QString key_QString = QString::fromUtf8(key, key_Strlen);
-	QVariant ret = self->value(key_QString, *defaultValue);
+	QVariant ret = const_cast<const QSettings*>(self)->value(key_QString, *defaultValue);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVariant*>(new QVariant(ret));
 }

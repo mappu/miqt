@@ -177,6 +177,12 @@ void QAbstractButton_Clicked(QAbstractButton* self) {
 	self->clicked();
 }
 
+void QAbstractButton_connect_Clicked(QAbstractButton* self, void* slot) {
+	QAbstractButton::connect(self, static_cast<void (QAbstractButton::*)(bool)>(&QAbstractButton::clicked), self, [=]() {
+		miqt_exec_callback(slot, 0, nullptr);
+	});
+}
+
 void QAbstractButton_Toggled(QAbstractButton* self, bool checked) {
 	self->toggled(checked);
 }

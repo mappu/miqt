@@ -774,7 +774,7 @@ void QWindow_SetFlag2(QWindow* self, uintptr_t param1, bool on) {
 }
 
 bool QWindow_IsAncestorOf2(QWindow* self, QWindow* child, uintptr_t mode) {
-	return self->isAncestorOf(child, static_cast<QWindow::AncestorMode>(mode));
+	return const_cast<const QWindow*>(self)->isAncestorOf(child, static_cast<QWindow::AncestorMode>(mode));
 }
 
 void QWindow_Delete(QWindow* self) {

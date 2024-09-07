@@ -117,6 +117,12 @@ void QAbstractItemDelegate_CloseEditor(QAbstractItemDelegate* self, QWidget* edi
 	self->closeEditor(editor);
 }
 
+void QAbstractItemDelegate_connect_CloseEditor(QAbstractItemDelegate* self, void* slot) {
+	QAbstractItemDelegate::connect(self, static_cast<void (QAbstractItemDelegate::*)(QWidget*, QAbstractItemDelegate::EndEditHint)>(&QAbstractItemDelegate::closeEditor), self, [=](QWidget* editor) {
+		miqt_exec_callback(slot, 0, nullptr);
+	});
+}
+
 void QAbstractItemDelegate_SizeHintChanged(QAbstractItemDelegate* self, QModelIndex* param1) {
 	self->sizeHintChanged(*param1);
 }

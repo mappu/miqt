@@ -158,6 +158,14 @@ func (this *QGroupBox) Clicked() {
 	C.QGroupBox_Clicked(this.h)
 }
 
+func (this *QGroupBox) OnClicked(slot func()) {
+	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
+		slot()
+	}
+
+	C.QGroupBox_connect_Clicked(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+}
+
 func (this *QGroupBox) Toggled(param1 bool) {
 	C.QGroupBox_Toggled(this.h, (C.bool)(param1))
 }

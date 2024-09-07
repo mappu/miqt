@@ -589,8 +589,8 @@ void QLocale_CurrencySymbol(QLocale* self, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QLocale_ToCurrencyString(QLocale* self, int64_t param1, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QLocale*>(self)->toCurrencyString((qlonglong)(param1));
+void QLocale_ToCurrencyString(QLocale* self, long long param1, char** _out, int* _out_Strlen) {
+	QString ret = const_cast<const QLocale*>(self)->toCurrencyString(static_cast<qint64>(param1));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -598,8 +598,8 @@ void QLocale_ToCurrencyString(QLocale* self, int64_t param1, char** _out, int* _
 	*_out_Strlen = b.length();
 }
 
-void QLocale_ToCurrencyStringWithQulonglong(QLocale* self, uint64_t param1, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QLocale*>(self)->toCurrencyString((qulonglong)(param1));
+void QLocale_ToCurrencyStringWithQulonglong(QLocale* self, unsigned long long param1, char** _out, int* _out_Strlen) {
+	QString ret = const_cast<const QLocale*>(self)->toCurrencyString(static_cast<quint64>(param1));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -824,56 +824,56 @@ void QLocale_CreateSeparatedList(QLocale* self, char** strl, uint64_t* strl_Leng
 
 int16_t QLocale_ToShort2(QLocale* self, const char* s, size_t s_Strlen, bool* ok) {
 	QString s_QString = QString::fromUtf8(s, s_Strlen);
-	return self->toShort(s_QString, ok);
+	return const_cast<const QLocale*>(self)->toShort(s_QString, ok);
 }
 
 uint16_t QLocale_ToUShort2(QLocale* self, const char* s, size_t s_Strlen, bool* ok) {
 	QString s_QString = QString::fromUtf8(s, s_Strlen);
-	return self->toUShort(s_QString, ok);
+	return const_cast<const QLocale*>(self)->toUShort(s_QString, ok);
 }
 
 int QLocale_ToInt2(QLocale* self, const char* s, size_t s_Strlen, bool* ok) {
 	QString s_QString = QString::fromUtf8(s, s_Strlen);
-	return self->toInt(s_QString, ok);
+	return const_cast<const QLocale*>(self)->toInt(s_QString, ok);
 }
 
 unsigned int QLocale_ToUInt2(QLocale* self, const char* s, size_t s_Strlen, bool* ok) {
 	QString s_QString = QString::fromUtf8(s, s_Strlen);
-	return self->toUInt(s_QString, ok);
+	return const_cast<const QLocale*>(self)->toUInt(s_QString, ok);
 }
 
 long QLocale_ToLong2(QLocale* self, const char* s, size_t s_Strlen, bool* ok) {
 	QString s_QString = QString::fromUtf8(s, s_Strlen);
-	return self->toLong(s_QString, ok);
+	return const_cast<const QLocale*>(self)->toLong(s_QString, ok);
 }
 
 unsigned long QLocale_ToULong2(QLocale* self, const char* s, size_t s_Strlen, bool* ok) {
 	QString s_QString = QString::fromUtf8(s, s_Strlen);
-	return self->toULong(s_QString, ok);
+	return const_cast<const QLocale*>(self)->toULong(s_QString, ok);
 }
 
 int64_t QLocale_ToLongLong2(QLocale* self, const char* s, size_t s_Strlen, bool* ok) {
 	QString s_QString = QString::fromUtf8(s, s_Strlen);
-	return self->toLongLong(s_QString, ok);
+	return const_cast<const QLocale*>(self)->toLongLong(s_QString, ok);
 }
 
 uint64_t QLocale_ToULongLong2(QLocale* self, const char* s, size_t s_Strlen, bool* ok) {
 	QString s_QString = QString::fromUtf8(s, s_Strlen);
-	return self->toULongLong(s_QString, ok);
+	return const_cast<const QLocale*>(self)->toULongLong(s_QString, ok);
 }
 
 float QLocale_ToFloat2(QLocale* self, const char* s, size_t s_Strlen, bool* ok) {
 	QString s_QString = QString::fromUtf8(s, s_Strlen);
-	return self->toFloat(s_QString, ok);
+	return const_cast<const QLocale*>(self)->toFloat(s_QString, ok);
 }
 
 double QLocale_ToDouble2(QLocale* self, const char* s, size_t s_Strlen, bool* ok) {
 	QString s_QString = QString::fromUtf8(s, s_Strlen);
-	return self->toDouble(s_QString, ok);
+	return const_cast<const QLocale*>(self)->toDouble(s_QString, ok);
 }
 
 void QLocale_ToString22(QLocale* self, double i, char f, char** _out, int* _out_Strlen) {
-	QString ret = self->toString(static_cast<double>(i), static_cast<char>(f));
+	QString ret = const_cast<const QLocale*>(self)->toString(static_cast<double>(i), static_cast<char>(f));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -882,7 +882,7 @@ void QLocale_ToString22(QLocale* self, double i, char f, char** _out, int* _out_
 }
 
 void QLocale_ToString32(QLocale* self, double i, char f, int prec, char** _out, int* _out_Strlen) {
-	QString ret = self->toString(static_cast<double>(i), static_cast<char>(f), static_cast<int>(prec));
+	QString ret = const_cast<const QLocale*>(self)->toString(static_cast<double>(i), static_cast<char>(f), static_cast<int>(prec));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -891,7 +891,7 @@ void QLocale_ToString32(QLocale* self, double i, char f, int prec, char** _out, 
 }
 
 void QLocale_ToString23(QLocale* self, float i, char f, char** _out, int* _out_Strlen) {
-	QString ret = self->toString(static_cast<float>(i), static_cast<char>(f));
+	QString ret = const_cast<const QLocale*>(self)->toString(static_cast<float>(i), static_cast<char>(f));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -900,7 +900,7 @@ void QLocale_ToString23(QLocale* self, float i, char f, char** _out, int* _out_S
 }
 
 void QLocale_ToString33(QLocale* self, float i, char f, int prec, char** _out, int* _out_Strlen) {
-	QString ret = self->toString(static_cast<float>(i), static_cast<char>(f), static_cast<int>(prec));
+	QString ret = const_cast<const QLocale*>(self)->toString(static_cast<float>(i), static_cast<char>(f), static_cast<int>(prec));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -909,7 +909,7 @@ void QLocale_ToString33(QLocale* self, float i, char f, int prec, char** _out, i
 }
 
 void QLocale_ToString24(QLocale* self, QDate* date, uintptr_t format, char** _out, int* _out_Strlen) {
-	QString ret = self->toString(*date, static_cast<QLocale::FormatType>(format));
+	QString ret = const_cast<const QLocale*>(self)->toString(*date, static_cast<QLocale::FormatType>(format));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -918,7 +918,7 @@ void QLocale_ToString24(QLocale* self, QDate* date, uintptr_t format, char** _ou
 }
 
 void QLocale_ToString25(QLocale* self, QTime* time, uintptr_t format, char** _out, int* _out_Strlen) {
-	QString ret = self->toString(*time, static_cast<QLocale::FormatType>(format));
+	QString ret = const_cast<const QLocale*>(self)->toString(*time, static_cast<QLocale::FormatType>(format));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -927,7 +927,7 @@ void QLocale_ToString25(QLocale* self, QTime* time, uintptr_t format, char** _ou
 }
 
 void QLocale_ToString26(QLocale* self, QDateTime* dateTime, uintptr_t format, char** _out, int* _out_Strlen) {
-	QString ret = self->toString(*dateTime, static_cast<QLocale::FormatType>(format));
+	QString ret = const_cast<const QLocale*>(self)->toString(*dateTime, static_cast<QLocale::FormatType>(format));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -936,7 +936,7 @@ void QLocale_ToString26(QLocale* self, QDateTime* dateTime, uintptr_t format, ch
 }
 
 void QLocale_DateFormat1(QLocale* self, uintptr_t format, char** _out, int* _out_Strlen) {
-	QString ret = self->dateFormat(static_cast<QLocale::FormatType>(format));
+	QString ret = const_cast<const QLocale*>(self)->dateFormat(static_cast<QLocale::FormatType>(format));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -945,7 +945,7 @@ void QLocale_DateFormat1(QLocale* self, uintptr_t format, char** _out, int* _out
 }
 
 void QLocale_TimeFormat1(QLocale* self, uintptr_t format, char** _out, int* _out_Strlen) {
-	QString ret = self->timeFormat(static_cast<QLocale::FormatType>(format));
+	QString ret = const_cast<const QLocale*>(self)->timeFormat(static_cast<QLocale::FormatType>(format));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -954,7 +954,7 @@ void QLocale_TimeFormat1(QLocale* self, uintptr_t format, char** _out, int* _out
 }
 
 void QLocale_DateTimeFormat1(QLocale* self, uintptr_t format, char** _out, int* _out_Strlen) {
-	QString ret = self->dateTimeFormat(static_cast<QLocale::FormatType>(format));
+	QString ret = const_cast<const QLocale*>(self)->dateTimeFormat(static_cast<QLocale::FormatType>(format));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -964,27 +964,27 @@ void QLocale_DateTimeFormat1(QLocale* self, uintptr_t format, char** _out, int* 
 
 QDate* QLocale_ToDate22(QLocale* self, const char* stringVal, size_t stringVal_Strlen, uintptr_t param2) {
 	QString stringVal_QString = QString::fromUtf8(stringVal, stringVal_Strlen);
-	QDate ret = self->toDate(stringVal_QString, static_cast<QLocale::FormatType>(param2));
+	QDate ret = const_cast<const QLocale*>(self)->toDate(stringVal_QString, static_cast<QLocale::FormatType>(param2));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QDate*>(new QDate(ret));
 }
 
 QTime* QLocale_ToTime22(QLocale* self, const char* stringVal, size_t stringVal_Strlen, uintptr_t param2) {
 	QString stringVal_QString = QString::fromUtf8(stringVal, stringVal_Strlen);
-	QTime ret = self->toTime(stringVal_QString, static_cast<QLocale::FormatType>(param2));
+	QTime ret = const_cast<const QLocale*>(self)->toTime(stringVal_QString, static_cast<QLocale::FormatType>(param2));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QTime*>(new QTime(ret));
 }
 
 QDateTime* QLocale_ToDateTime22(QLocale* self, const char* stringVal, size_t stringVal_Strlen, uintptr_t format) {
 	QString stringVal_QString = QString::fromUtf8(stringVal, stringVal_Strlen);
-	QDateTime ret = self->toDateTime(stringVal_QString, static_cast<QLocale::FormatType>(format));
+	QDateTime ret = const_cast<const QLocale*>(self)->toDateTime(stringVal_QString, static_cast<QLocale::FormatType>(format));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QDateTime*>(new QDateTime(ret));
 }
 
 void QLocale_MonthName2(QLocale* self, int param1, uintptr_t format, char** _out, int* _out_Strlen) {
-	QString ret = self->monthName(static_cast<int>(param1), static_cast<QLocale::FormatType>(format));
+	QString ret = const_cast<const QLocale*>(self)->monthName(static_cast<int>(param1), static_cast<QLocale::FormatType>(format));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -993,7 +993,7 @@ void QLocale_MonthName2(QLocale* self, int param1, uintptr_t format, char** _out
 }
 
 void QLocale_StandaloneMonthName2(QLocale* self, int param1, uintptr_t format, char** _out, int* _out_Strlen) {
-	QString ret = self->standaloneMonthName(static_cast<int>(param1), static_cast<QLocale::FormatType>(format));
+	QString ret = const_cast<const QLocale*>(self)->standaloneMonthName(static_cast<int>(param1), static_cast<QLocale::FormatType>(format));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -1002,7 +1002,7 @@ void QLocale_StandaloneMonthName2(QLocale* self, int param1, uintptr_t format, c
 }
 
 void QLocale_DayName2(QLocale* self, int param1, uintptr_t format, char** _out, int* _out_Strlen) {
-	QString ret = self->dayName(static_cast<int>(param1), static_cast<QLocale::FormatType>(format));
+	QString ret = const_cast<const QLocale*>(self)->dayName(static_cast<int>(param1), static_cast<QLocale::FormatType>(format));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -1011,7 +1011,7 @@ void QLocale_DayName2(QLocale* self, int param1, uintptr_t format, char** _out, 
 }
 
 void QLocale_StandaloneDayName2(QLocale* self, int param1, uintptr_t format, char** _out, int* _out_Strlen) {
-	QString ret = self->standaloneDayName(static_cast<int>(param1), static_cast<QLocale::FormatType>(format));
+	QString ret = const_cast<const QLocale*>(self)->standaloneDayName(static_cast<int>(param1), static_cast<QLocale::FormatType>(format));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -1020,7 +1020,7 @@ void QLocale_StandaloneDayName2(QLocale* self, int param1, uintptr_t format, cha
 }
 
 void QLocale_CurrencySymbol1(QLocale* self, uintptr_t param1, char** _out, int* _out_Strlen) {
-	QString ret = self->currencySymbol(static_cast<QLocale::CurrencySymbolFormat>(param1));
+	QString ret = const_cast<const QLocale*>(self)->currencySymbol(static_cast<QLocale::CurrencySymbolFormat>(param1));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -1028,9 +1028,9 @@ void QLocale_CurrencySymbol1(QLocale* self, uintptr_t param1, char** _out, int* 
 	*_out_Strlen = b.length();
 }
 
-void QLocale_ToCurrencyString22(QLocale* self, int64_t param1, const char* symbol, size_t symbol_Strlen, char** _out, int* _out_Strlen) {
+void QLocale_ToCurrencyString22(QLocale* self, long long param1, const char* symbol, size_t symbol_Strlen, char** _out, int* _out_Strlen) {
 	QString symbol_QString = QString::fromUtf8(symbol, symbol_Strlen);
-	QString ret = self->toCurrencyString((qlonglong)(param1), symbol_QString);
+	QString ret = const_cast<const QLocale*>(self)->toCurrencyString(static_cast<qint64>(param1), symbol_QString);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -1038,9 +1038,9 @@ void QLocale_ToCurrencyString22(QLocale* self, int64_t param1, const char* symbo
 	*_out_Strlen = b.length();
 }
 
-void QLocale_ToCurrencyString23(QLocale* self, uint64_t param1, const char* symbol, size_t symbol_Strlen, char** _out, int* _out_Strlen) {
+void QLocale_ToCurrencyString23(QLocale* self, unsigned long long param1, const char* symbol, size_t symbol_Strlen, char** _out, int* _out_Strlen) {
 	QString symbol_QString = QString::fromUtf8(symbol, symbol_Strlen);
-	QString ret = self->toCurrencyString((qulonglong)(param1), symbol_QString);
+	QString ret = const_cast<const QLocale*>(self)->toCurrencyString(static_cast<quint64>(param1), symbol_QString);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -1050,7 +1050,7 @@ void QLocale_ToCurrencyString23(QLocale* self, uint64_t param1, const char* symb
 
 void QLocale_ToCurrencyString24(QLocale* self, int16_t param1, const char* symbol, size_t symbol_Strlen, char** _out, int* _out_Strlen) {
 	QString symbol_QString = QString::fromUtf8(symbol, symbol_Strlen);
-	QString ret = self->toCurrencyString(static_cast<short>(param1), symbol_QString);
+	QString ret = const_cast<const QLocale*>(self)->toCurrencyString(static_cast<short>(param1), symbol_QString);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -1060,7 +1060,7 @@ void QLocale_ToCurrencyString24(QLocale* self, int16_t param1, const char* symbo
 
 void QLocale_ToCurrencyString25(QLocale* self, uint16_t param1, const char* symbol, size_t symbol_Strlen, char** _out, int* _out_Strlen) {
 	QString symbol_QString = QString::fromUtf8(symbol, symbol_Strlen);
-	QString ret = self->toCurrencyString(static_cast<ushort>(param1), symbol_QString);
+	QString ret = const_cast<const QLocale*>(self)->toCurrencyString(static_cast<ushort>(param1), symbol_QString);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -1070,7 +1070,7 @@ void QLocale_ToCurrencyString25(QLocale* self, uint16_t param1, const char* symb
 
 void QLocale_ToCurrencyString26(QLocale* self, int param1, const char* symbol, size_t symbol_Strlen, char** _out, int* _out_Strlen) {
 	QString symbol_QString = QString::fromUtf8(symbol, symbol_Strlen);
-	QString ret = self->toCurrencyString(static_cast<int>(param1), symbol_QString);
+	QString ret = const_cast<const QLocale*>(self)->toCurrencyString(static_cast<int>(param1), symbol_QString);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -1080,7 +1080,7 @@ void QLocale_ToCurrencyString26(QLocale* self, int param1, const char* symbol, s
 
 void QLocale_ToCurrencyString27(QLocale* self, unsigned int param1, const char* symbol, size_t symbol_Strlen, char** _out, int* _out_Strlen) {
 	QString symbol_QString = QString::fromUtf8(symbol, symbol_Strlen);
-	QString ret = self->toCurrencyString(static_cast<uint>(param1), symbol_QString);
+	QString ret = const_cast<const QLocale*>(self)->toCurrencyString(static_cast<uint>(param1), symbol_QString);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -1090,7 +1090,7 @@ void QLocale_ToCurrencyString27(QLocale* self, unsigned int param1, const char* 
 
 void QLocale_ToCurrencyString28(QLocale* self, double param1, const char* symbol, size_t symbol_Strlen, char** _out, int* _out_Strlen) {
 	QString symbol_QString = QString::fromUtf8(symbol, symbol_Strlen);
-	QString ret = self->toCurrencyString(static_cast<double>(param1), symbol_QString);
+	QString ret = const_cast<const QLocale*>(self)->toCurrencyString(static_cast<double>(param1), symbol_QString);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -1100,7 +1100,7 @@ void QLocale_ToCurrencyString28(QLocale* self, double param1, const char* symbol
 
 void QLocale_ToCurrencyString29(QLocale* self, float i, const char* symbol, size_t symbol_Strlen, char** _out, int* _out_Strlen) {
 	QString symbol_QString = QString::fromUtf8(symbol, symbol_Strlen);
-	QString ret = self->toCurrencyString(static_cast<float>(i), symbol_QString);
+	QString ret = const_cast<const QLocale*>(self)->toCurrencyString(static_cast<float>(i), symbol_QString);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -1127,7 +1127,7 @@ void QLocale_FormattedDataSize3(QLocale* self, long long bytes, int precision, i
 }
 
 void QLocale_FormattedDataSize22(QLocale* self, long long bytes, int precision, char** _out, int* _out_Strlen) {
-	QString ret = self->formattedDataSize(static_cast<qint64>(bytes), static_cast<int>(precision));
+	QString ret = const_cast<const QLocale*>(self)->formattedDataSize(static_cast<qint64>(bytes), static_cast<int>(precision));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -1136,7 +1136,7 @@ void QLocale_FormattedDataSize22(QLocale* self, long long bytes, int precision, 
 }
 
 void QLocale_FormattedDataSize32(QLocale* self, long long bytes, int precision, int format, char** _out, int* _out_Strlen) {
-	QString ret = self->formattedDataSize(static_cast<qint64>(bytes), static_cast<int>(precision), static_cast<QLocale::DataSizeFormats>(format));
+	QString ret = const_cast<const QLocale*>(self)->formattedDataSize(static_cast<qint64>(bytes), static_cast<int>(precision), static_cast<QLocale::DataSizeFormats>(format));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -1146,7 +1146,7 @@ void QLocale_FormattedDataSize32(QLocale* self, long long bytes, int precision, 
 
 void QLocale_QuoteString2(QLocale* self, const char* str, size_t str_Strlen, uintptr_t style, char** _out, int* _out_Strlen) {
 	QString str_QString = QString::fromUtf8(str, str_Strlen);
-	QString ret = self->quoteString(str_QString, static_cast<QLocale::QuotationStyle>(style));
+	QString ret = const_cast<const QLocale*>(self)->quoteString(str_QString, static_cast<QLocale::QuotationStyle>(style));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));

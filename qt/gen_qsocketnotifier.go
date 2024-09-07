@@ -45,14 +45,14 @@ func newQSocketNotifier_U(h unsafe.Pointer) *QSocketNotifier {
 }
 
 // NewQSocketNotifier constructs a new QSocketNotifier object.
-func NewQSocketNotifier(socket uint64, param2 QSocketNotifier__Type) *QSocketNotifier {
-	ret := C.QSocketNotifier_new((C.ptrdiff_t)(socket), (C.uintptr_t)(param2))
+func NewQSocketNotifier(socket uintptr, param2 QSocketNotifier__Type) *QSocketNotifier {
+	ret := C.QSocketNotifier_new((C.uintptr_t)(socket), (C.uintptr_t)(param2))
 	return newQSocketNotifier(ret)
 }
 
 // NewQSocketNotifier2 constructs a new QSocketNotifier object.
-func NewQSocketNotifier2(socket uint64, param2 QSocketNotifier__Type, parent *QObject) *QSocketNotifier {
-	ret := C.QSocketNotifier_new2((C.ptrdiff_t)(socket), (C.uintptr_t)(param2), parent.cPointer())
+func NewQSocketNotifier2(socket uintptr, param2 QSocketNotifier__Type, parent *QObject) *QSocketNotifier {
+	ret := C.QSocketNotifier_new2((C.uintptr_t)(socket), (C.uintptr_t)(param2), parent.cPointer())
 	return newQSocketNotifier(ret)
 }
 

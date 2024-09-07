@@ -107,13 +107,13 @@ void QMimeDatabase_AllMimeTypes(QMimeDatabase* self, QMimeType*** _out, size_t* 
 
 QMimeType* QMimeDatabase_MimeTypeForFile2(QMimeDatabase* self, const char* fileName, size_t fileName_Strlen, uintptr_t mode) {
 	QString fileName_QString = QString::fromUtf8(fileName, fileName_Strlen);
-	QMimeType ret = self->mimeTypeForFile(fileName_QString, static_cast<QMimeDatabase::MatchMode>(mode));
+	QMimeType ret = const_cast<const QMimeDatabase*>(self)->mimeTypeForFile(fileName_QString, static_cast<QMimeDatabase::MatchMode>(mode));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QMimeType*>(new QMimeType(ret));
 }
 
 QMimeType* QMimeDatabase_MimeTypeForFile22(QMimeDatabase* self, QFileInfo* fileInfo, uintptr_t mode) {
-	QMimeType ret = self->mimeTypeForFile(*fileInfo, static_cast<QMimeDatabase::MatchMode>(mode));
+	QMimeType ret = const_cast<const QMimeDatabase*>(self)->mimeTypeForFile(*fileInfo, static_cast<QMimeDatabase::MatchMode>(mode));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QMimeType*>(new QMimeType(ret));
 }

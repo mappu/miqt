@@ -295,7 +295,7 @@ void QMatrix4x4_Optimize(QMatrix4x4* self) {
 }
 
 QMatrix4x4* QMatrix4x4_Inverted1(QMatrix4x4* self, bool* invertible) {
-	QMatrix4x4 ret = self->inverted(invertible);
+	QMatrix4x4 ret = const_cast<const QMatrix4x4*>(self)->inverted(invertible);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QMatrix4x4*>(new QMatrix4x4(ret));
 }

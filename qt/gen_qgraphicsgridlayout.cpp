@@ -212,7 +212,7 @@ void QGraphicsGridLayout_AddItem4(QGraphicsGridLayout* self, QGraphicsLayoutItem
 }
 
 QSizeF* QGraphicsGridLayout_SizeHint2(QGraphicsGridLayout* self, uintptr_t which, QSizeF* constraint) {
-	QSizeF ret = self->sizeHint(static_cast<Qt::SizeHint>(which), *constraint);
+	QSizeF ret = const_cast<const QGraphicsGridLayout*>(self)->sizeHint(static_cast<Qt::SizeHint>(which), *constraint);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSizeF*>(new QSizeF(ret));
 }

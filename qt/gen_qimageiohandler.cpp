@@ -173,7 +173,7 @@ void QImageIOPlugin_TrUtf83(const char* s, const char* c, int n, char** _out, in
 }
 
 QImageIOHandler* QImageIOPlugin_Create2(QImageIOPlugin* self, QIODevice* device, QByteArray* format) {
-	return self->create(device, *format);
+	return const_cast<const QImageIOPlugin*>(self)->create(device, *format);
 }
 
 void QImageIOPlugin_Delete(QImageIOPlugin* self) {

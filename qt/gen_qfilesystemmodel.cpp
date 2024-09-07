@@ -413,38 +413,38 @@ void QFileSystemModel_TrUtf83(const char* s, const char* c, int n, char** _out, 
 }
 
 QModelIndex* QFileSystemModel_Index3(QFileSystemModel* self, int row, int column, QModelIndex* parent) {
-	QModelIndex ret = self->index(static_cast<int>(row), static_cast<int>(column), *parent);
+	QModelIndex ret = const_cast<const QFileSystemModel*>(self)->index(static_cast<int>(row), static_cast<int>(column), *parent);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QModelIndex*>(new QModelIndex(ret));
 }
 
 QModelIndex* QFileSystemModel_Index2(QFileSystemModel* self, const char* path, size_t path_Strlen, int column) {
 	QString path_QString = QString::fromUtf8(path, path_Strlen);
-	QModelIndex ret = self->index(path_QString, static_cast<int>(column));
+	QModelIndex ret = const_cast<const QFileSystemModel*>(self)->index(path_QString, static_cast<int>(column));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QModelIndex*>(new QModelIndex(ret));
 }
 
 bool QFileSystemModel_HasChildren1(QFileSystemModel* self, QModelIndex* parent) {
-	return self->hasChildren(*parent);
+	return const_cast<const QFileSystemModel*>(self)->hasChildren(*parent);
 }
 
 int QFileSystemModel_RowCount1(QFileSystemModel* self, QModelIndex* parent) {
-	return self->rowCount(*parent);
+	return const_cast<const QFileSystemModel*>(self)->rowCount(*parent);
 }
 
 int QFileSystemModel_ColumnCount1(QFileSystemModel* self, QModelIndex* parent) {
-	return self->columnCount(*parent);
+	return const_cast<const QFileSystemModel*>(self)->columnCount(*parent);
 }
 
 QVariant* QFileSystemModel_MyComputer1(QFileSystemModel* self, int role) {
-	QVariant ret = self->myComputer(static_cast<int>(role));
+	QVariant ret = const_cast<const QFileSystemModel*>(self)->myComputer(static_cast<int>(role));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVariant*>(new QVariant(ret));
 }
 
 QVariant* QFileSystemModel_Data2(QFileSystemModel* self, QModelIndex* index, int role) {
-	QVariant ret = self->data(*index, static_cast<int>(role));
+	QVariant ret = const_cast<const QFileSystemModel*>(self)->data(*index, static_cast<int>(role));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVariant*>(new QVariant(ret));
 }
@@ -454,7 +454,7 @@ bool QFileSystemModel_SetData3(QFileSystemModel* self, QModelIndex* index, QVari
 }
 
 QVariant* QFileSystemModel_HeaderData3(QFileSystemModel* self, int section, uintptr_t orientation, int role) {
-	QVariant ret = self->headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), static_cast<int>(role));
+	QVariant ret = const_cast<const QFileSystemModel*>(self)->headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), static_cast<int>(role));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVariant*>(new QVariant(ret));
 }

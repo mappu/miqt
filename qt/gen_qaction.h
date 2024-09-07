@@ -105,6 +105,7 @@ void QAction_SetVisible(QAction* self, bool visible);
 void QAction_Changed(QAction* self);
 void QAction_connect_Changed(QAction* self, void* slot);
 void QAction_Triggered(QAction* self);
+void QAction_connect_Triggered(QAction* self, void* slot);
 void QAction_Hovered(QAction* self);
 void QAction_connect_Hovered(QAction* self, void* slot);
 void QAction_Toggled(QAction* self, bool param1);

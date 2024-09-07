@@ -48,11 +48,11 @@ QByteArray* QByteArrayMatcher_Pattern(QByteArrayMatcher* self) {
 }
 
 int QByteArrayMatcher_IndexIn22(QByteArrayMatcher* self, QByteArray* ba, int from) {
-	return self->indexIn(*ba, static_cast<int>(from));
+	return const_cast<const QByteArrayMatcher*>(self)->indexIn(*ba, static_cast<int>(from));
 }
 
 int QByteArrayMatcher_IndexIn3(QByteArrayMatcher* self, const char* str, int lenVal, int from) {
-	return self->indexIn(str, static_cast<int>(lenVal), static_cast<int>(from));
+	return const_cast<const QByteArrayMatcher*>(self)->indexIn(str, static_cast<int>(lenVal), static_cast<int>(from));
 }
 
 void QByteArrayMatcher_Delete(QByteArrayMatcher* self) {

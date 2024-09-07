@@ -563,7 +563,7 @@ void QTextFragment_GlyphRuns(QTextFragment* self, QGlyphRun*** _out, size_t* _ou
 }
 
 void QTextFragment_GlyphRuns1(QTextFragment* self, int from, QGlyphRun*** _out, size_t* _out_len) {
-	QList<QGlyphRun> ret = self->glyphRuns(static_cast<int>(from));
+	QList<QGlyphRun> ret = const_cast<const QTextFragment*>(self)->glyphRuns(static_cast<int>(from));
 	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
 	QGlyphRun** __out = static_cast<QGlyphRun**>(malloc(sizeof(QGlyphRun**) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {
@@ -574,7 +574,7 @@ void QTextFragment_GlyphRuns1(QTextFragment* self, int from, QGlyphRun*** _out, 
 }
 
 void QTextFragment_GlyphRuns2(QTextFragment* self, int from, int length, QGlyphRun*** _out, size_t* _out_len) {
-	QList<QGlyphRun> ret = self->glyphRuns(static_cast<int>(from), static_cast<int>(length));
+	QList<QGlyphRun> ret = const_cast<const QTextFragment*>(self)->glyphRuns(static_cast<int>(from), static_cast<int>(length));
 	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
 	QGlyphRun** __out = static_cast<QGlyphRun**>(malloc(sizeof(QGlyphRun**) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {

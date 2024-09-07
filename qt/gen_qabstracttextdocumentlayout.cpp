@@ -130,6 +130,12 @@ void QAbstractTextDocumentLayout_Update(QAbstractTextDocumentLayout* self) {
 	self->update();
 }
 
+void QAbstractTextDocumentLayout_connect_Update(QAbstractTextDocumentLayout* self, void* slot) {
+	QAbstractTextDocumentLayout::connect(self, static_cast<void (QAbstractTextDocumentLayout::*)(const QRectF&)>(&QAbstractTextDocumentLayout::update), self, [=]() {
+		miqt_exec_callback(slot, 0, nullptr);
+	});
+}
+
 void QAbstractTextDocumentLayout_UpdateBlock(QAbstractTextDocumentLayout* self, QTextBlock* block) {
 	self->updateBlock(*block);
 }

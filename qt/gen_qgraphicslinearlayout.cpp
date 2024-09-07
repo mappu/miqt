@@ -127,13 +127,13 @@ void QGraphicsLinearLayout_InsertStretch2(QGraphicsLinearLayout* self, int index
 }
 
 QSizeF* QGraphicsLinearLayout_SizeHint2(QGraphicsLinearLayout* self, uintptr_t which, QSizeF* constraint) {
-	QSizeF ret = self->sizeHint(static_cast<Qt::SizeHint>(which), *constraint);
+	QSizeF ret = const_cast<const QGraphicsLinearLayout*>(self)->sizeHint(static_cast<Qt::SizeHint>(which), *constraint);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSizeF*>(new QSizeF(ret));
 }
 
 void QGraphicsLinearLayout_Dump1(QGraphicsLinearLayout* self, int indent) {
-	self->dump(static_cast<int>(indent));
+	const_cast<const QGraphicsLinearLayout*>(self)->dump(static_cast<int>(indent));
 }
 
 void QGraphicsLinearLayout_Delete(QGraphicsLinearLayout* self) {

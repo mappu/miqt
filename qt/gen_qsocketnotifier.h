@@ -23,8 +23,8 @@ typedef struct QSocketDescriptor QSocketDescriptor;
 typedef struct QSocketNotifier QSocketNotifier;
 #endif
 
-QSocketNotifier* QSocketNotifier_new(ptrdiff_t socket, uintptr_t param2);
-QSocketNotifier* QSocketNotifier_new2(ptrdiff_t socket, uintptr_t param2, QObject* parent);
+QSocketNotifier* QSocketNotifier_new(uintptr_t socket, uintptr_t param2);
+QSocketNotifier* QSocketNotifier_new2(uintptr_t socket, uintptr_t param2, QObject* parent);
 QMetaObject* QSocketNotifier_MetaObject(QSocketNotifier* self);
 void QSocketNotifier_Tr(const char* s, char** _out, int* _out_Strlen);
 void QSocketNotifier_TrUtf8(const char* s, char** _out, int* _out_Strlen);

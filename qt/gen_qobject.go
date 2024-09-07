@@ -303,6 +303,14 @@ func (this *QObject) Destroyed() {
 	C.QObject_Destroyed(this.h)
 }
 
+func (this *QObject) OnDestroyed(slot func()) {
+	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
+		slot()
+	}
+
+	C.QObject_connect_Destroyed(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+}
+
 func (this *QObject) Parent() *QObject {
 	ret := C.QObject_Parent(this.h)
 	return newQObject_U(unsafe.Pointer(ret))

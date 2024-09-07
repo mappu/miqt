@@ -207,13 +207,13 @@ void QAbstractProxyModel_TrUtf83(const char* s, const char* c, int n, char** _ou
 }
 
 QVariant* QAbstractProxyModel_Data2(QAbstractProxyModel* self, QModelIndex* proxyIndex, int role) {
-	QVariant ret = self->data(*proxyIndex, static_cast<int>(role));
+	QVariant ret = const_cast<const QAbstractProxyModel*>(self)->data(*proxyIndex, static_cast<int>(role));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVariant*>(new QVariant(ret));
 }
 
 QVariant* QAbstractProxyModel_HeaderData3(QAbstractProxyModel* self, int section, uintptr_t orientation, int role) {
-	QVariant ret = self->headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), static_cast<int>(role));
+	QVariant ret = const_cast<const QAbstractProxyModel*>(self)->headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), static_cast<int>(role));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVariant*>(new QVariant(ret));
 }
@@ -231,7 +231,7 @@ void QAbstractProxyModel_Sort2(QAbstractProxyModel* self, int column, uintptr_t 
 }
 
 bool QAbstractProxyModel_HasChildren1(QAbstractProxyModel* self, QModelIndex* parent) {
-	return self->hasChildren(*parent);
+	return const_cast<const QAbstractProxyModel*>(self)->hasChildren(*parent);
 }
 
 void QAbstractProxyModel_Delete(QAbstractProxyModel* self) {

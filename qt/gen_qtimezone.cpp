@@ -266,7 +266,7 @@ void QTimeZone_WindowsIdToIanaIds2(QByteArray* windowsId, uintptr_t country, QBy
 }
 
 void QTimeZone_DisplayName2(QTimeZone* self, QDateTime* atDateTime, uintptr_t nameType, char** _out, int* _out_Strlen) {
-	QString ret = self->displayName(*atDateTime, static_cast<QTimeZone::NameType>(nameType));
+	QString ret = const_cast<const QTimeZone*>(self)->displayName(*atDateTime, static_cast<QTimeZone::NameType>(nameType));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -275,7 +275,7 @@ void QTimeZone_DisplayName2(QTimeZone* self, QDateTime* atDateTime, uintptr_t na
 }
 
 void QTimeZone_DisplayName3(QTimeZone* self, QDateTime* atDateTime, uintptr_t nameType, QLocale* locale, char** _out, int* _out_Strlen) {
-	QString ret = self->displayName(*atDateTime, static_cast<QTimeZone::NameType>(nameType), *locale);
+	QString ret = const_cast<const QTimeZone*>(self)->displayName(*atDateTime, static_cast<QTimeZone::NameType>(nameType), *locale);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -284,7 +284,7 @@ void QTimeZone_DisplayName3(QTimeZone* self, QDateTime* atDateTime, uintptr_t na
 }
 
 void QTimeZone_DisplayName22(QTimeZone* self, uintptr_t timeType, uintptr_t nameType, char** _out, int* _out_Strlen) {
-	QString ret = self->displayName(static_cast<QTimeZone::TimeType>(timeType), static_cast<QTimeZone::NameType>(nameType));
+	QString ret = const_cast<const QTimeZone*>(self)->displayName(static_cast<QTimeZone::TimeType>(timeType), static_cast<QTimeZone::NameType>(nameType));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -293,7 +293,7 @@ void QTimeZone_DisplayName22(QTimeZone* self, uintptr_t timeType, uintptr_t name
 }
 
 void QTimeZone_DisplayName32(QTimeZone* self, uintptr_t timeType, uintptr_t nameType, QLocale* locale, char** _out, int* _out_Strlen) {
-	QString ret = self->displayName(static_cast<QTimeZone::TimeType>(timeType), static_cast<QTimeZone::NameType>(nameType), *locale);
+	QString ret = const_cast<const QTimeZone*>(self)->displayName(static_cast<QTimeZone::TimeType>(timeType), static_cast<QTimeZone::NameType>(nameType), *locale);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));

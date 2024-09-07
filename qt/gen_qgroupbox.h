@@ -42,6 +42,7 @@ void QGroupBox_SetCheckable(QGroupBox* self, bool checkable);
 bool QGroupBox_IsChecked(QGroupBox* self);
 void QGroupBox_SetChecked(QGroupBox* self, bool checked);
 void QGroupBox_Clicked(QGroupBox* self);
+void QGroupBox_connect_Clicked(QGroupBox* self, void* slot);
 void QGroupBox_Toggled(QGroupBox* self, bool param1);
 void QGroupBox_connect_Toggled(QGroupBox* self, void* slot);
 void QGroupBox_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);

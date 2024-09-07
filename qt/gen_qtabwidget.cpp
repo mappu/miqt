@@ -359,7 +359,7 @@ void QTabWidget_SetCornerWidget2(QTabWidget* self, QWidget* w, uintptr_t corner)
 }
 
 QWidget* QTabWidget_CornerWidget1(QTabWidget* self, uintptr_t corner) {
-	return self->cornerWidget(static_cast<Qt::Corner>(corner));
+	return const_cast<const QTabWidget*>(self)->cornerWidget(static_cast<Qt::Corner>(corner));
 }
 
 void QTabWidget_Delete(QTabWidget* self) {

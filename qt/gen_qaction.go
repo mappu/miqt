@@ -486,6 +486,14 @@ func (this *QAction) Triggered() {
 	C.QAction_Triggered(this.h)
 }
 
+func (this *QAction) OnTriggered(slot func()) {
+	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
+		slot()
+	}
+
+	C.QAction_connect_Triggered(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+}
+
 func (this *QAction) Hovered() {
 	C.QAction_Hovered(this.h)
 }

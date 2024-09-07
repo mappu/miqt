@@ -1647,7 +1647,7 @@ func (this *QLocale) CurrencySymbol() string {
 func (this *QLocale) ToCurrencyString(param1 int64) string {
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
-	C.QLocale_ToCurrencyString(this.h, (C.int64_t)(param1), &_out, &_out_Strlen)
+	C.QLocale_ToCurrencyString(this.h, (C.longlong)(param1), &_out, &_out_Strlen)
 	ret := C.GoStringN(_out, _out_Strlen)
 	C.free(unsafe.Pointer(_out))
 	return ret
@@ -1656,7 +1656,7 @@ func (this *QLocale) ToCurrencyString(param1 int64) string {
 func (this *QLocale) ToCurrencyStringWithQulonglong(param1 uint64) string {
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
-	C.QLocale_ToCurrencyStringWithQulonglong(this.h, (C.uint64_t)(param1), &_out, &_out_Strlen)
+	C.QLocale_ToCurrencyStringWithQulonglong(this.h, (C.ulonglong)(param1), &_out, &_out_Strlen)
 	ret := C.GoStringN(_out, _out_Strlen)
 	C.free(unsafe.Pointer(_out))
 	return ret
@@ -2149,7 +2149,7 @@ func (this *QLocale) ToCurrencyString22(param1 int64, symbol string) string {
 	defer C.free(unsafe.Pointer(symbol_Cstring))
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
-	C.QLocale_ToCurrencyString22(this.h, (C.int64_t)(param1), symbol_Cstring, C.size_t(len(symbol)), &_out, &_out_Strlen)
+	C.QLocale_ToCurrencyString22(this.h, (C.longlong)(param1), symbol_Cstring, C.size_t(len(symbol)), &_out, &_out_Strlen)
 	ret := C.GoStringN(_out, _out_Strlen)
 	C.free(unsafe.Pointer(_out))
 	return ret
@@ -2160,7 +2160,7 @@ func (this *QLocale) ToCurrencyString23(param1 uint64, symbol string) string {
 	defer C.free(unsafe.Pointer(symbol_Cstring))
 	var _out *C.char = nil
 	var _out_Strlen C.int = 0
-	C.QLocale_ToCurrencyString23(this.h, (C.uint64_t)(param1), symbol_Cstring, C.size_t(len(symbol)), &_out, &_out_Strlen)
+	C.QLocale_ToCurrencyString23(this.h, (C.ulonglong)(param1), symbol_Cstring, C.size_t(len(symbol)), &_out, &_out_Strlen)
 	ret := C.GoStringN(_out, _out_Strlen)
 	C.free(unsafe.Pointer(_out))
 	return ret

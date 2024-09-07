@@ -77,7 +77,7 @@ QTextDocumentFragment* QTextDocumentFragment_FromHtml2(const char* html, size_t 
 }
 
 void QTextDocumentFragment_ToHtml1(QTextDocumentFragment* self, QByteArray* encoding, char** _out, int* _out_Strlen) {
-	QString ret = self->toHtml(*encoding);
+	QString ret = const_cast<const QTextDocumentFragment*>(self)->toHtml(*encoding);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));

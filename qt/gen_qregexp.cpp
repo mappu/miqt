@@ -211,26 +211,26 @@ void QRegExp_Escape(const char* str, size_t str_Strlen, char** _out, int* _out_S
 
 int QRegExp_IndexIn2(QRegExp* self, const char* str, size_t str_Strlen, int offset) {
 	QString str_QString = QString::fromUtf8(str, str_Strlen);
-	return self->indexIn(str_QString, static_cast<int>(offset));
+	return const_cast<const QRegExp*>(self)->indexIn(str_QString, static_cast<int>(offset));
 }
 
 int QRegExp_IndexIn3(QRegExp* self, const char* str, size_t str_Strlen, int offset, uintptr_t caretMode) {
 	QString str_QString = QString::fromUtf8(str, str_Strlen);
-	return self->indexIn(str_QString, static_cast<int>(offset), static_cast<QRegExp::CaretMode>(caretMode));
+	return const_cast<const QRegExp*>(self)->indexIn(str_QString, static_cast<int>(offset), static_cast<QRegExp::CaretMode>(caretMode));
 }
 
 int QRegExp_LastIndexIn2(QRegExp* self, const char* str, size_t str_Strlen, int offset) {
 	QString str_QString = QString::fromUtf8(str, str_Strlen);
-	return self->lastIndexIn(str_QString, static_cast<int>(offset));
+	return const_cast<const QRegExp*>(self)->lastIndexIn(str_QString, static_cast<int>(offset));
 }
 
 int QRegExp_LastIndexIn3(QRegExp* self, const char* str, size_t str_Strlen, int offset, uintptr_t caretMode) {
 	QString str_QString = QString::fromUtf8(str, str_Strlen);
-	return self->lastIndexIn(str_QString, static_cast<int>(offset), static_cast<QRegExp::CaretMode>(caretMode));
+	return const_cast<const QRegExp*>(self)->lastIndexIn(str_QString, static_cast<int>(offset), static_cast<QRegExp::CaretMode>(caretMode));
 }
 
 void QRegExp_Cap1(QRegExp* self, int nth, char** _out, int* _out_Strlen) {
-	QString ret = self->cap(static_cast<int>(nth));
+	QString ret = const_cast<const QRegExp*>(self)->cap(static_cast<int>(nth));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -248,7 +248,7 @@ void QRegExp_Cap1WithNth(QRegExp* self, int nth, char** _out, int* _out_Strlen) 
 }
 
 int QRegExp_Pos1(QRegExp* self, int nth) {
-	return self->pos(static_cast<int>(nth));
+	return const_cast<const QRegExp*>(self)->pos(static_cast<int>(nth));
 }
 
 int QRegExp_Pos1WithNth(QRegExp* self, int nth) {

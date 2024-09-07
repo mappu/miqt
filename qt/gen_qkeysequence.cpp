@@ -163,7 +163,7 @@ bool QKeySequence_IsDetached(QKeySequence* self) {
 }
 
 void QKeySequence_ToString1(QKeySequence* self, uintptr_t format, char** _out, int* _out_Strlen) {
-	QString ret = self->toString(static_cast<QKeySequence::SequenceFormat>(format));
+	QString ret = const_cast<const QKeySequence*>(self)->toString(static_cast<QKeySequence::SequenceFormat>(format));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));

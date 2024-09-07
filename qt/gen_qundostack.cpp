@@ -337,12 +337,12 @@ void QUndoStack_TrUtf83(const char* s, const char* c, int n, char** _out, int* _
 
 QAction* QUndoStack_CreateUndoAction2(QUndoStack* self, QObject* parent, const char* prefix, size_t prefix_Strlen) {
 	QString prefix_QString = QString::fromUtf8(prefix, prefix_Strlen);
-	return self->createUndoAction(parent, prefix_QString);
+	return const_cast<const QUndoStack*>(self)->createUndoAction(parent, prefix_QString);
 }
 
 QAction* QUndoStack_CreateRedoAction2(QUndoStack* self, QObject* parent, const char* prefix, size_t prefix_Strlen) {
 	QString prefix_QString = QString::fromUtf8(prefix, prefix_Strlen);
-	return self->createRedoAction(parent, prefix_QString);
+	return const_cast<const QUndoStack*>(self)->createRedoAction(parent, prefix_QString);
 }
 
 void QUndoStack_SetActive1(QUndoStack* self, bool active) {

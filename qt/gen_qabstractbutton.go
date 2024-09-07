@@ -232,6 +232,14 @@ func (this *QAbstractButton) Clicked() {
 	C.QAbstractButton_Clicked(this.h)
 }
 
+func (this *QAbstractButton) OnClicked(slot func()) {
+	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
+		slot()
+	}
+
+	C.QAbstractButton_connect_Clicked(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+}
+
 func (this *QAbstractButton) Toggled(checked bool) {
 	C.QAbstractButton_Toggled(this.h, (C.bool)(checked))
 }

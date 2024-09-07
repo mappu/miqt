@@ -153,7 +153,7 @@ int QTextCodec_MibEnum(QTextCodec* self) {
 }
 
 void QTextCodec_ToUnicode3(QTextCodec* self, const char* in, int length, QTextCodec__ConverterState* state, char** _out, int* _out_Strlen) {
-	QString ret = self->toUnicode(in, static_cast<int>(length), state);
+	QString ret = const_cast<const QTextCodec*>(self)->toUnicode(in, static_cast<int>(length), state);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -162,17 +162,17 @@ void QTextCodec_ToUnicode3(QTextCodec* self, const char* in, int length, QTextCo
 }
 
 QByteArray* QTextCodec_FromUnicode3(QTextCodec* self, QChar* in, int length, QTextCodec__ConverterState* state) {
-	QByteArray ret = self->fromUnicode(in, static_cast<int>(length), state);
+	QByteArray ret = const_cast<const QTextCodec*>(self)->fromUnicode(in, static_cast<int>(length), state);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QByteArray*>(new QByteArray(ret));
 }
 
 QTextDecoder* QTextCodec_MakeDecoder1(QTextCodec* self, int flags) {
-	return self->makeDecoder(static_cast<QTextCodec::ConversionFlags>(flags));
+	return const_cast<const QTextCodec*>(self)->makeDecoder(static_cast<QTextCodec::ConversionFlags>(flags));
 }
 
 QTextEncoder* QTextCodec_MakeEncoder1(QTextCodec* self, int flags) {
-	return self->makeEncoder(static_cast<QTextCodec::ConversionFlags>(flags));
+	return const_cast<const QTextCodec*>(self)->makeEncoder(static_cast<QTextCodec::ConversionFlags>(flags));
 }
 
 QTextEncoder* QTextEncoder_new(QTextCodec* codec) {

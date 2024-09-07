@@ -160,6 +160,14 @@ func (this *QAbstractItemDelegate) CloseEditor(editor *QWidget) {
 	C.QAbstractItemDelegate_CloseEditor(this.h, editor.cPointer())
 }
 
+func (this *QAbstractItemDelegate) OnCloseEditor(slot func()) {
+	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
+		slot()
+	}
+
+	C.QAbstractItemDelegate_connect_CloseEditor(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+}
+
 func (this *QAbstractItemDelegate) SizeHintChanged(param1 *QModelIndex) {
 	C.QAbstractItemDelegate_SizeHintChanged(this.h, param1.cPointer())
 }

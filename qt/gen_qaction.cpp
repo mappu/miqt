@@ -376,6 +376,12 @@ void QAction_Triggered(QAction* self) {
 	self->triggered();
 }
 
+void QAction_connect_Triggered(QAction* self, void* slot) {
+	QAction::connect(self, static_cast<void (QAction::*)(bool)>(&QAction::triggered), self, [=]() {
+		miqt_exec_callback(slot, 0, nullptr);
+	});
+}
+
 void QAction_Hovered(QAction* self) {
 	self->hovered();
 }

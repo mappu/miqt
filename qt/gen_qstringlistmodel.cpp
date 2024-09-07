@@ -172,11 +172,11 @@ void QStringListModel_TrUtf83(const char* s, const char* c, int n, char** _out, 
 }
 
 int QStringListModel_RowCount1(QStringListModel* self, QModelIndex* parent) {
-	return self->rowCount(*parent);
+	return const_cast<const QStringListModel*>(self)->rowCount(*parent);
 }
 
 QVariant* QStringListModel_Data2(QStringListModel* self, QModelIndex* index, int role) {
-	QVariant ret = self->data(*index, static_cast<int>(role));
+	QVariant ret = const_cast<const QStringListModel*>(self)->data(*index, static_cast<int>(role));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVariant*>(new QVariant(ret));
 }

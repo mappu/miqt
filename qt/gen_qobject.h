@@ -80,6 +80,7 @@ unsigned int QObject_RegisterUserData();
 void QObject_SetUserData(QObject* self, unsigned int id, QObjectUserData* data);
 QObjectUserData* QObject_UserData(QObject* self, unsigned int id);
 void QObject_Destroyed(QObject* self);
+void QObject_connect_Destroyed(QObject* self, void* slot);
 QObject* QObject_Parent(QObject* self);
 bool QObject_Inherits(QObject* self, const char* classname);
 void QObject_DeleteLater(QObject* self);

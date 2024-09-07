@@ -630,11 +630,11 @@ void QTextDocument_TrUtf83(const char* s, const char* c, int n, char** _out, int
 }
 
 QTextDocument* QTextDocument_Clone1(QTextDocument* self, QObject* parent) {
-	return self->clone(parent);
+	return const_cast<const QTextDocument*>(self)->clone(parent);
 }
 
 void QTextDocument_ToHtml1(QTextDocument* self, QByteArray* encoding, char** _out, int* _out_Strlen) {
-	QString ret = self->toHtml(*encoding);
+	QString ret = const_cast<const QTextDocument*>(self)->toHtml(*encoding);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -643,7 +643,7 @@ void QTextDocument_ToHtml1(QTextDocument* self, QByteArray* encoding, char** _ou
 }
 
 void QTextDocument_ToMarkdown1(QTextDocument* self, int features, char** _out, int* _out_Strlen) {
-	QString ret = self->toMarkdown(static_cast<QTextDocument::MarkdownFeatures>(features));
+	QString ret = const_cast<const QTextDocument*>(self)->toMarkdown(static_cast<QTextDocument::MarkdownFeatures>(features));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -658,57 +658,57 @@ void QTextDocument_SetMarkdown2(QTextDocument* self, const char* markdown, size_
 
 QTextCursor* QTextDocument_Find22(QTextDocument* self, const char* subString, size_t subString_Strlen, int from) {
 	QString subString_QString = QString::fromUtf8(subString, subString_Strlen);
-	QTextCursor ret = self->find(subString_QString, static_cast<int>(from));
+	QTextCursor ret = const_cast<const QTextDocument*>(self)->find(subString_QString, static_cast<int>(from));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QTextCursor*>(new QTextCursor(ret));
 }
 
 QTextCursor* QTextDocument_Find32(QTextDocument* self, const char* subString, size_t subString_Strlen, int from, int options) {
 	QString subString_QString = QString::fromUtf8(subString, subString_Strlen);
-	QTextCursor ret = self->find(subString_QString, static_cast<int>(from), static_cast<QTextDocument::FindFlags>(options));
+	QTextCursor ret = const_cast<const QTextDocument*>(self)->find(subString_QString, static_cast<int>(from), static_cast<QTextDocument::FindFlags>(options));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QTextCursor*>(new QTextCursor(ret));
 }
 
 QTextCursor* QTextDocument_Find33(QTextDocument* self, const char* subString, size_t subString_Strlen, QTextCursor* cursor, int options) {
 	QString subString_QString = QString::fromUtf8(subString, subString_Strlen);
-	QTextCursor ret = self->find(subString_QString, *cursor, static_cast<QTextDocument::FindFlags>(options));
+	QTextCursor ret = const_cast<const QTextDocument*>(self)->find(subString_QString, *cursor, static_cast<QTextDocument::FindFlags>(options));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QTextCursor*>(new QTextCursor(ret));
 }
 
 QTextCursor* QTextDocument_Find23(QTextDocument* self, QRegExp* expr, int from) {
-	QTextCursor ret = self->find(*expr, static_cast<int>(from));
+	QTextCursor ret = const_cast<const QTextDocument*>(self)->find(*expr, static_cast<int>(from));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QTextCursor*>(new QTextCursor(ret));
 }
 
 QTextCursor* QTextDocument_Find34(QTextDocument* self, QRegExp* expr, int from, int options) {
-	QTextCursor ret = self->find(*expr, static_cast<int>(from), static_cast<QTextDocument::FindFlags>(options));
+	QTextCursor ret = const_cast<const QTextDocument*>(self)->find(*expr, static_cast<int>(from), static_cast<QTextDocument::FindFlags>(options));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QTextCursor*>(new QTextCursor(ret));
 }
 
 QTextCursor* QTextDocument_Find35(QTextDocument* self, QRegExp* expr, QTextCursor* cursor, int options) {
-	QTextCursor ret = self->find(*expr, *cursor, static_cast<QTextDocument::FindFlags>(options));
+	QTextCursor ret = const_cast<const QTextDocument*>(self)->find(*expr, *cursor, static_cast<QTextDocument::FindFlags>(options));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QTextCursor*>(new QTextCursor(ret));
 }
 
 QTextCursor* QTextDocument_Find24(QTextDocument* self, QRegularExpression* expr, int from) {
-	QTextCursor ret = self->find(*expr, static_cast<int>(from));
+	QTextCursor ret = const_cast<const QTextDocument*>(self)->find(*expr, static_cast<int>(from));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QTextCursor*>(new QTextCursor(ret));
 }
 
 QTextCursor* QTextDocument_Find36(QTextDocument* self, QRegularExpression* expr, int from, int options) {
-	QTextCursor ret = self->find(*expr, static_cast<int>(from), static_cast<QTextDocument::FindFlags>(options));
+	QTextCursor ret = const_cast<const QTextDocument*>(self)->find(*expr, static_cast<int>(from), static_cast<QTextDocument::FindFlags>(options));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QTextCursor*>(new QTextCursor(ret));
 }
 
 QTextCursor* QTextDocument_Find37(QTextDocument* self, QRegularExpression* expr, QTextCursor* cursor, int options) {
-	QTextCursor ret = self->find(*expr, *cursor, static_cast<QTextDocument::FindFlags>(options));
+	QTextCursor ret = const_cast<const QTextDocument*>(self)->find(*expr, *cursor, static_cast<QTextDocument::FindFlags>(options));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QTextCursor*>(new QTextCursor(ret));
 }

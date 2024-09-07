@@ -557,7 +557,7 @@ void QGraphicsView_Render4(QGraphicsView* self, QPainter* painter, QRectF* targe
 }
 
 void QGraphicsView_Items22(QGraphicsView* self, QRect* rect, uintptr_t mode, QGraphicsItem*** _out, size_t* _out_len) {
-	QList<QGraphicsItem*> ret = self->items(*rect, static_cast<Qt::ItemSelectionMode>(mode));
+	QList<QGraphicsItem*> ret = const_cast<const QGraphicsView*>(self)->items(*rect, static_cast<Qt::ItemSelectionMode>(mode));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QGraphicsItem** __out = static_cast<QGraphicsItem**>(malloc(sizeof(QGraphicsItem*) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {
@@ -568,7 +568,7 @@ void QGraphicsView_Items22(QGraphicsView* self, QRect* rect, uintptr_t mode, QGr
 }
 
 void QGraphicsView_Items5(QGraphicsView* self, int x, int y, int w, int h, uintptr_t mode, QGraphicsItem*** _out, size_t* _out_len) {
-	QList<QGraphicsItem*> ret = self->items(static_cast<int>(x), static_cast<int>(y), static_cast<int>(w), static_cast<int>(h), static_cast<Qt::ItemSelectionMode>(mode));
+	QList<QGraphicsItem*> ret = const_cast<const QGraphicsView*>(self)->items(static_cast<int>(x), static_cast<int>(y), static_cast<int>(w), static_cast<int>(h), static_cast<Qt::ItemSelectionMode>(mode));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QGraphicsItem** __out = static_cast<QGraphicsItem**>(malloc(sizeof(QGraphicsItem*) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {
@@ -579,7 +579,7 @@ void QGraphicsView_Items5(QGraphicsView* self, int x, int y, int w, int h, uintp
 }
 
 void QGraphicsView_Items24(QGraphicsView* self, QPainterPath* path, uintptr_t mode, QGraphicsItem*** _out, size_t* _out_len) {
-	QList<QGraphicsItem*> ret = self->items(*path, static_cast<Qt::ItemSelectionMode>(mode));
+	QList<QGraphicsItem*> ret = const_cast<const QGraphicsView*>(self)->items(*path, static_cast<Qt::ItemSelectionMode>(mode));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QGraphicsItem** __out = static_cast<QGraphicsItem**>(malloc(sizeof(QGraphicsItem*) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {

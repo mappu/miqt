@@ -72,6 +72,7 @@ QTextDocument* QAbstractTextDocumentLayout_Document(QAbstractTextDocumentLayout*
 void QAbstractTextDocumentLayout_RegisterHandler(QAbstractTextDocumentLayout* self, int objectType, QObject* component);
 void QAbstractTextDocumentLayout_UnregisterHandler(QAbstractTextDocumentLayout* self, int objectType);
 void QAbstractTextDocumentLayout_Update(QAbstractTextDocumentLayout* self);
+void QAbstractTextDocumentLayout_connect_Update(QAbstractTextDocumentLayout* self, void* slot);
 void QAbstractTextDocumentLayout_UpdateBlock(QAbstractTextDocumentLayout* self, QTextBlock* block);
 void QAbstractTextDocumentLayout_connect_UpdateBlock(QAbstractTextDocumentLayout* self, void* slot);
 void QAbstractTextDocumentLayout_DocumentSizeChanged(QAbstractTextDocumentLayout* self, QSizeF* newSize);

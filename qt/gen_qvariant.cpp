@@ -518,31 +518,31 @@ bool QVariant_OperatorGreaterOrEqual(QVariant* self, QVariant* v) {
 }
 
 int QVariant_ToInt1(QVariant* self, bool* ok) {
-	return self->toInt(ok);
+	return const_cast<const QVariant*>(self)->toInt(ok);
 }
 
 unsigned int QVariant_ToUInt1(QVariant* self, bool* ok) {
-	return self->toUInt(ok);
+	return const_cast<const QVariant*>(self)->toUInt(ok);
 }
 
 int64_t QVariant_ToLongLong1(QVariant* self, bool* ok) {
-	return self->toLongLong(ok);
+	return const_cast<const QVariant*>(self)->toLongLong(ok);
 }
 
 uint64_t QVariant_ToULongLong1(QVariant* self, bool* ok) {
-	return self->toULongLong(ok);
+	return const_cast<const QVariant*>(self)->toULongLong(ok);
 }
 
 double QVariant_ToDouble1(QVariant* self, bool* ok) {
-	return self->toDouble(ok);
+	return const_cast<const QVariant*>(self)->toDouble(ok);
 }
 
 float QVariant_ToFloat1(QVariant* self, bool* ok) {
-	return self->toFloat(ok);
+	return const_cast<const QVariant*>(self)->toFloat(ok);
 }
 
 double QVariant_ToReal1(QVariant* self, bool* ok) {
-	return self->toReal(ok);
+	return const_cast<const QVariant*>(self)->toReal(ok);
 }
 
 void QVariant_Delete(QVariant* self) {

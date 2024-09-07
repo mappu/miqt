@@ -243,99 +243,99 @@ void QIcon_SetFallbackThemeName(const char* name, size_t name_Strlen) {
 }
 
 QPixmap* QIcon_Pixmap22(QIcon* self, QSize* size, uintptr_t mode) {
-	QPixmap ret = self->pixmap(*size, static_cast<QIcon::Mode>(mode));
+	QPixmap ret = const_cast<const QIcon*>(self)->pixmap(*size, static_cast<QIcon::Mode>(mode));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPixmap*>(new QPixmap(ret));
 }
 
 QPixmap* QIcon_Pixmap32(QIcon* self, QSize* size, uintptr_t mode, uintptr_t state) {
-	QPixmap ret = self->pixmap(*size, static_cast<QIcon::Mode>(mode), static_cast<QIcon::State>(state));
+	QPixmap ret = const_cast<const QIcon*>(self)->pixmap(*size, static_cast<QIcon::Mode>(mode), static_cast<QIcon::State>(state));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPixmap*>(new QPixmap(ret));
 }
 
 QPixmap* QIcon_Pixmap33(QIcon* self, int w, int h, uintptr_t mode) {
-	QPixmap ret = self->pixmap(static_cast<int>(w), static_cast<int>(h), static_cast<QIcon::Mode>(mode));
+	QPixmap ret = const_cast<const QIcon*>(self)->pixmap(static_cast<int>(w), static_cast<int>(h), static_cast<QIcon::Mode>(mode));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPixmap*>(new QPixmap(ret));
 }
 
 QPixmap* QIcon_Pixmap4(QIcon* self, int w, int h, uintptr_t mode, uintptr_t state) {
-	QPixmap ret = self->pixmap(static_cast<int>(w), static_cast<int>(h), static_cast<QIcon::Mode>(mode), static_cast<QIcon::State>(state));
+	QPixmap ret = const_cast<const QIcon*>(self)->pixmap(static_cast<int>(w), static_cast<int>(h), static_cast<QIcon::Mode>(mode), static_cast<QIcon::State>(state));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPixmap*>(new QPixmap(ret));
 }
 
 QPixmap* QIcon_Pixmap23(QIcon* self, int extent, uintptr_t mode) {
-	QPixmap ret = self->pixmap(static_cast<int>(extent), static_cast<QIcon::Mode>(mode));
+	QPixmap ret = const_cast<const QIcon*>(self)->pixmap(static_cast<int>(extent), static_cast<QIcon::Mode>(mode));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPixmap*>(new QPixmap(ret));
 }
 
 QPixmap* QIcon_Pixmap34(QIcon* self, int extent, uintptr_t mode, uintptr_t state) {
-	QPixmap ret = self->pixmap(static_cast<int>(extent), static_cast<QIcon::Mode>(mode), static_cast<QIcon::State>(state));
+	QPixmap ret = const_cast<const QIcon*>(self)->pixmap(static_cast<int>(extent), static_cast<QIcon::Mode>(mode), static_cast<QIcon::State>(state));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPixmap*>(new QPixmap(ret));
 }
 
 QPixmap* QIcon_Pixmap35(QIcon* self, QWindow* window, QSize* size, uintptr_t mode) {
-	QPixmap ret = self->pixmap(window, *size, static_cast<QIcon::Mode>(mode));
+	QPixmap ret = const_cast<const QIcon*>(self)->pixmap(window, *size, static_cast<QIcon::Mode>(mode));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPixmap*>(new QPixmap(ret));
 }
 
 QPixmap* QIcon_Pixmap42(QIcon* self, QWindow* window, QSize* size, uintptr_t mode, uintptr_t state) {
-	QPixmap ret = self->pixmap(window, *size, static_cast<QIcon::Mode>(mode), static_cast<QIcon::State>(state));
+	QPixmap ret = const_cast<const QIcon*>(self)->pixmap(window, *size, static_cast<QIcon::Mode>(mode), static_cast<QIcon::State>(state));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPixmap*>(new QPixmap(ret));
 }
 
 QSize* QIcon_ActualSize22(QIcon* self, QSize* size, uintptr_t mode) {
-	QSize ret = self->actualSize(*size, static_cast<QIcon::Mode>(mode));
+	QSize ret = const_cast<const QIcon*>(self)->actualSize(*size, static_cast<QIcon::Mode>(mode));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
 
 QSize* QIcon_ActualSize3(QIcon* self, QSize* size, uintptr_t mode, uintptr_t state) {
-	QSize ret = self->actualSize(*size, static_cast<QIcon::Mode>(mode), static_cast<QIcon::State>(state));
+	QSize ret = const_cast<const QIcon*>(self)->actualSize(*size, static_cast<QIcon::Mode>(mode), static_cast<QIcon::State>(state));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
 
 QSize* QIcon_ActualSize32(QIcon* self, QWindow* window, QSize* size, uintptr_t mode) {
-	QSize ret = self->actualSize(window, *size, static_cast<QIcon::Mode>(mode));
+	QSize ret = const_cast<const QIcon*>(self)->actualSize(window, *size, static_cast<QIcon::Mode>(mode));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
 
 QSize* QIcon_ActualSize4(QIcon* self, QWindow* window, QSize* size, uintptr_t mode, uintptr_t state) {
-	QSize ret = self->actualSize(window, *size, static_cast<QIcon::Mode>(mode), static_cast<QIcon::State>(state));
+	QSize ret = const_cast<const QIcon*>(self)->actualSize(window, *size, static_cast<QIcon::Mode>(mode), static_cast<QIcon::State>(state));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
 
 void QIcon_Paint3(QIcon* self, QPainter* painter, QRect* rect, int alignment) {
-	self->paint(painter, *rect, static_cast<Qt::Alignment>(alignment));
+	const_cast<const QIcon*>(self)->paint(painter, *rect, static_cast<Qt::Alignment>(alignment));
 }
 
 void QIcon_Paint4(QIcon* self, QPainter* painter, QRect* rect, int alignment, uintptr_t mode) {
-	self->paint(painter, *rect, static_cast<Qt::Alignment>(alignment), static_cast<QIcon::Mode>(mode));
+	const_cast<const QIcon*>(self)->paint(painter, *rect, static_cast<Qt::Alignment>(alignment), static_cast<QIcon::Mode>(mode));
 }
 
 void QIcon_Paint5(QIcon* self, QPainter* painter, QRect* rect, int alignment, uintptr_t mode, uintptr_t state) {
-	self->paint(painter, *rect, static_cast<Qt::Alignment>(alignment), static_cast<QIcon::Mode>(mode), static_cast<QIcon::State>(state));
+	const_cast<const QIcon*>(self)->paint(painter, *rect, static_cast<Qt::Alignment>(alignment), static_cast<QIcon::Mode>(mode), static_cast<QIcon::State>(state));
 }
 
 void QIcon_Paint6(QIcon* self, QPainter* painter, int x, int y, int w, int h, int alignment) {
-	self->paint(painter, static_cast<int>(x), static_cast<int>(y), static_cast<int>(w), static_cast<int>(h), static_cast<Qt::Alignment>(alignment));
+	const_cast<const QIcon*>(self)->paint(painter, static_cast<int>(x), static_cast<int>(y), static_cast<int>(w), static_cast<int>(h), static_cast<Qt::Alignment>(alignment));
 }
 
 void QIcon_Paint7(QIcon* self, QPainter* painter, int x, int y, int w, int h, int alignment, uintptr_t mode) {
-	self->paint(painter, static_cast<int>(x), static_cast<int>(y), static_cast<int>(w), static_cast<int>(h), static_cast<Qt::Alignment>(alignment), static_cast<QIcon::Mode>(mode));
+	const_cast<const QIcon*>(self)->paint(painter, static_cast<int>(x), static_cast<int>(y), static_cast<int>(w), static_cast<int>(h), static_cast<Qt::Alignment>(alignment), static_cast<QIcon::Mode>(mode));
 }
 
 void QIcon_Paint8(QIcon* self, QPainter* painter, int x, int y, int w, int h, int alignment, uintptr_t mode, uintptr_t state) {
-	self->paint(painter, static_cast<int>(x), static_cast<int>(y), static_cast<int>(w), static_cast<int>(h), static_cast<Qt::Alignment>(alignment), static_cast<QIcon::Mode>(mode), static_cast<QIcon::State>(state));
+	const_cast<const QIcon*>(self)->paint(painter, static_cast<int>(x), static_cast<int>(y), static_cast<int>(w), static_cast<int>(h), static_cast<Qt::Alignment>(alignment), static_cast<QIcon::Mode>(mode), static_cast<QIcon::State>(state));
 }
 
 void QIcon_AddPixmap2(QIcon* self, QPixmap* pixmap, uintptr_t mode) {
@@ -362,7 +362,7 @@ void QIcon_AddFile4(QIcon* self, const char* fileName, size_t fileName_Strlen, Q
 }
 
 void QIcon_AvailableSizes1(QIcon* self, uintptr_t mode, QSize*** _out, size_t* _out_len) {
-	QList<QSize> ret = self->availableSizes(static_cast<QIcon::Mode>(mode));
+	QList<QSize> ret = const_cast<const QIcon*>(self)->availableSizes(static_cast<QIcon::Mode>(mode));
 	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
 	QSize** __out = static_cast<QSize**>(malloc(sizeof(QSize**) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {
@@ -373,7 +373,7 @@ void QIcon_AvailableSizes1(QIcon* self, uintptr_t mode, QSize*** _out, size_t* _
 }
 
 void QIcon_AvailableSizes2(QIcon* self, uintptr_t mode, uintptr_t state, QSize*** _out, size_t* _out_len) {
-	QList<QSize> ret = self->availableSizes(static_cast<QIcon::Mode>(mode), static_cast<QIcon::State>(state));
+	QList<QSize> ret = const_cast<const QIcon*>(self)->availableSizes(static_cast<QIcon::Mode>(mode), static_cast<QIcon::State>(state));
 	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
 	QSize** __out = static_cast<QSize**>(malloc(sizeof(QSize**) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {

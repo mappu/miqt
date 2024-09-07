@@ -56,6 +56,7 @@ void QAbstractItemDelegate_PaintingRoles(QAbstractItemDelegate* self, int** _out
 void QAbstractItemDelegate_CommitData(QAbstractItemDelegate* self, QWidget* editor);
 void QAbstractItemDelegate_connect_CommitData(QAbstractItemDelegate* self, void* slot);
 void QAbstractItemDelegate_CloseEditor(QAbstractItemDelegate* self, QWidget* editor);
+void QAbstractItemDelegate_connect_CloseEditor(QAbstractItemDelegate* self, void* slot);
 void QAbstractItemDelegate_SizeHintChanged(QAbstractItemDelegate* self, QModelIndex* param1);
 void QAbstractItemDelegate_connect_SizeHintChanged(QAbstractItemDelegate* self, void* slot);
 void QAbstractItemDelegate_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);

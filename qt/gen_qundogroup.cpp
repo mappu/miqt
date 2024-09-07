@@ -228,12 +228,12 @@ void QUndoGroup_TrUtf83(const char* s, const char* c, int n, char** _out, int* _
 
 QAction* QUndoGroup_CreateUndoAction2(QUndoGroup* self, QObject* parent, const char* prefix, size_t prefix_Strlen) {
 	QString prefix_QString = QString::fromUtf8(prefix, prefix_Strlen);
-	return self->createUndoAction(parent, prefix_QString);
+	return const_cast<const QUndoGroup*>(self)->createUndoAction(parent, prefix_QString);
 }
 
 QAction* QUndoGroup_CreateRedoAction2(QUndoGroup* self, QObject* parent, const char* prefix, size_t prefix_Strlen) {
 	QString prefix_QString = QString::fromUtf8(prefix, prefix_Strlen);
-	return self->createRedoAction(parent, prefix_QString);
+	return const_cast<const QUndoGroup*>(self)->createRedoAction(parent, prefix_QString);
 }
 
 void QUndoGroup_Delete(QUndoGroup* self) {

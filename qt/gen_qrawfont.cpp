@@ -260,13 +260,13 @@ QRawFont* QRawFont_FromFont(QFont* font) {
 }
 
 QImage* QRawFont_AlphaMapForGlyph2(QRawFont* self, unsigned int glyphIndex, uintptr_t antialiasingType) {
-	QImage ret = self->alphaMapForGlyph(static_cast<quint32>(glyphIndex), static_cast<QRawFont::AntialiasingType>(antialiasingType));
+	QImage ret = const_cast<const QRawFont*>(self)->alphaMapForGlyph(static_cast<quint32>(glyphIndex), static_cast<QRawFont::AntialiasingType>(antialiasingType));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QImage*>(new QImage(ret));
 }
 
 QImage* QRawFont_AlphaMapForGlyph3(QRawFont* self, unsigned int glyphIndex, uintptr_t antialiasingType, QTransform* transform) {
-	QImage ret = self->alphaMapForGlyph(static_cast<quint32>(glyphIndex), static_cast<QRawFont::AntialiasingType>(antialiasingType), *transform);
+	QImage ret = const_cast<const QRawFont*>(self)->alphaMapForGlyph(static_cast<quint32>(glyphIndex), static_cast<QRawFont::AntialiasingType>(antialiasingType), *transform);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QImage*>(new QImage(ret));
 }

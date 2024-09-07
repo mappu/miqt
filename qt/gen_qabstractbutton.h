@@ -61,6 +61,7 @@ void QAbstractButton_connect_Pressed(QAbstractButton* self, void* slot);
 void QAbstractButton_Released(QAbstractButton* self);
 void QAbstractButton_connect_Released(QAbstractButton* self, void* slot);
 void QAbstractButton_Clicked(QAbstractButton* self);
+void QAbstractButton_connect_Clicked(QAbstractButton* self, void* slot);
 void QAbstractButton_Toggled(QAbstractButton* self, bool checked);
 void QAbstractButton_connect_Toggled(QAbstractButton* self, void* slot);
 void QAbstractButton_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);

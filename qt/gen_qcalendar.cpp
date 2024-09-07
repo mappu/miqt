@@ -167,11 +167,11 @@ void QCalendar_AvailableCalendars(char*** _out, int** _out_Lengths, size_t* _out
 }
 
 int QCalendar_DaysInMonth2(QCalendar* self, int month, int year) {
-	return self->daysInMonth(static_cast<int>(month), static_cast<int>(year));
+	return const_cast<const QCalendar*>(self)->daysInMonth(static_cast<int>(month), static_cast<int>(year));
 }
 
 void QCalendar_MonthName3(QCalendar* self, QLocale* locale, int month, int year, char** _out, int* _out_Strlen) {
-	QString ret = self->monthName(*locale, static_cast<int>(month), static_cast<int>(year));
+	QString ret = const_cast<const QCalendar*>(self)->monthName(*locale, static_cast<int>(month), static_cast<int>(year));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -180,7 +180,7 @@ void QCalendar_MonthName3(QCalendar* self, QLocale* locale, int month, int year,
 }
 
 void QCalendar_MonthName4(QCalendar* self, QLocale* locale, int month, int year, uintptr_t format, char** _out, int* _out_Strlen) {
-	QString ret = self->monthName(*locale, static_cast<int>(month), static_cast<int>(year), static_cast<QLocale::FormatType>(format));
+	QString ret = const_cast<const QCalendar*>(self)->monthName(*locale, static_cast<int>(month), static_cast<int>(year), static_cast<QLocale::FormatType>(format));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -189,7 +189,7 @@ void QCalendar_MonthName4(QCalendar* self, QLocale* locale, int month, int year,
 }
 
 void QCalendar_StandaloneMonthName3(QCalendar* self, QLocale* locale, int month, int year, char** _out, int* _out_Strlen) {
-	QString ret = self->standaloneMonthName(*locale, static_cast<int>(month), static_cast<int>(year));
+	QString ret = const_cast<const QCalendar*>(self)->standaloneMonthName(*locale, static_cast<int>(month), static_cast<int>(year));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -198,7 +198,7 @@ void QCalendar_StandaloneMonthName3(QCalendar* self, QLocale* locale, int month,
 }
 
 void QCalendar_StandaloneMonthName4(QCalendar* self, QLocale* locale, int month, int year, uintptr_t format, char** _out, int* _out_Strlen) {
-	QString ret = self->standaloneMonthName(*locale, static_cast<int>(month), static_cast<int>(year), static_cast<QLocale::FormatType>(format));
+	QString ret = const_cast<const QCalendar*>(self)->standaloneMonthName(*locale, static_cast<int>(month), static_cast<int>(year), static_cast<QLocale::FormatType>(format));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -207,7 +207,7 @@ void QCalendar_StandaloneMonthName4(QCalendar* self, QLocale* locale, int month,
 }
 
 void QCalendar_WeekDayName3(QCalendar* self, QLocale* locale, int day, uintptr_t format, char** _out, int* _out_Strlen) {
-	QString ret = self->weekDayName(*locale, static_cast<int>(day), static_cast<QLocale::FormatType>(format));
+	QString ret = const_cast<const QCalendar*>(self)->weekDayName(*locale, static_cast<int>(day), static_cast<QLocale::FormatType>(format));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -216,7 +216,7 @@ void QCalendar_WeekDayName3(QCalendar* self, QLocale* locale, int day, uintptr_t
 }
 
 void QCalendar_StandaloneWeekDayName3(QCalendar* self, QLocale* locale, int day, uintptr_t format, char** _out, int* _out_Strlen) {
-	QString ret = self->standaloneWeekDayName(*locale, static_cast<int>(day), static_cast<QLocale::FormatType>(format));
+	QString ret = const_cast<const QCalendar*>(self)->standaloneWeekDayName(*locale, static_cast<int>(day), static_cast<QLocale::FormatType>(format));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));

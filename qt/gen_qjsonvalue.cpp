@@ -191,15 +191,15 @@ bool QJsonValue_OperatorNotEqual(QJsonValue* self, QJsonValue* other) {
 }
 
 bool QJsonValue_ToBool1(QJsonValue* self, bool defaultValue) {
-	return self->toBool(defaultValue);
+	return const_cast<const QJsonValue*>(self)->toBool(defaultValue);
 }
 
 int QJsonValue_ToInt1(QJsonValue* self, int defaultValue) {
-	return self->toInt(static_cast<int>(defaultValue));
+	return const_cast<const QJsonValue*>(self)->toInt(static_cast<int>(defaultValue));
 }
 
 double QJsonValue_ToDouble1(QJsonValue* self, double defaultValue) {
-	return self->toDouble(static_cast<double>(defaultValue));
+	return const_cast<const QJsonValue*>(self)->toDouble(static_cast<double>(defaultValue));
 }
 
 void QJsonValue_Delete(QJsonValue* self) {

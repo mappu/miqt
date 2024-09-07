@@ -118,10 +118,13 @@ void QAbstractItemModel_Match(QAbstractItemModel* self, QModelIndex* start, int 
 QSize* QAbstractItemModel_Span(QAbstractItemModel* self, QModelIndex* index);
 bool QAbstractItemModel_CheckIndex(QAbstractItemModel* self, QModelIndex* index);
 void QAbstractItemModel_DataChanged(QAbstractItemModel* self, QModelIndex* topLeft, QModelIndex* bottomRight);
+void QAbstractItemModel_connect_DataChanged(QAbstractItemModel* self, void* slot);
 void QAbstractItemModel_HeaderDataChanged(QAbstractItemModel* self, uintptr_t orientation, int first, int last);
 void QAbstractItemModel_connect_HeaderDataChanged(QAbstractItemModel* self, void* slot);
 void QAbstractItemModel_LayoutChanged(QAbstractItemModel* self);
+void QAbstractItemModel_connect_LayoutChanged(QAbstractItemModel* self, void* slot);
 void QAbstractItemModel_LayoutAboutToBeChanged(QAbstractItemModel* self);
+void QAbstractItemModel_connect_LayoutAboutToBeChanged(QAbstractItemModel* self, void* slot);
 bool QAbstractItemModel_Submit(QAbstractItemModel* self);
 void QAbstractItemModel_Revert(QAbstractItemModel* self);
 void QAbstractItemModel_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
@@ -152,9 +155,11 @@ bool QAbstractItemModel_CheckIndex2(QAbstractItemModel* self, QModelIndex* index
 void QAbstractItemModel_DataChanged3(QAbstractItemModel* self, QModelIndex* topLeft, QModelIndex* bottomRight, int* roles, size_t roles_len);
 void QAbstractItemModel_connect_DataChanged3(QAbstractItemModel* self, void* slot);
 void QAbstractItemModel_LayoutChanged1(QAbstractItemModel* self, QPersistentModelIndex** parents, size_t parents_len);
+void QAbstractItemModel_connect_LayoutChanged1(QAbstractItemModel* self, void* slot);
 void QAbstractItemModel_LayoutChanged2(QAbstractItemModel* self, QPersistentModelIndex** parents, size_t parents_len, uintptr_t hint);
 void QAbstractItemModel_connect_LayoutChanged2(QAbstractItemModel* self, void* slot);
 void QAbstractItemModel_LayoutAboutToBeChanged1(QAbstractItemModel* self, QPersistentModelIndex** parents, size_t parents_len);
+void QAbstractItemModel_connect_LayoutAboutToBeChanged1(QAbstractItemModel* self, void* slot);
 void QAbstractItemModel_LayoutAboutToBeChanged2(QAbstractItemModel* self, QPersistentModelIndex** parents, size_t parents_len, uintptr_t hint);
 void QAbstractItemModel_connect_LayoutAboutToBeChanged2(QAbstractItemModel* self, void* slot);
 void QAbstractItemModel_Delete(QAbstractItemModel* self);

@@ -324,21 +324,21 @@ void QDirModel_TrUtf83(const char* s, const char* c, int n, char** _out, int* _o
 }
 
 QModelIndex* QDirModel_Index3(QDirModel* self, int row, int column, QModelIndex* parent) {
-	QModelIndex ret = self->index(static_cast<int>(row), static_cast<int>(column), *parent);
+	QModelIndex ret = const_cast<const QDirModel*>(self)->index(static_cast<int>(row), static_cast<int>(column), *parent);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QModelIndex*>(new QModelIndex(ret));
 }
 
 int QDirModel_RowCount1(QDirModel* self, QModelIndex* parent) {
-	return self->rowCount(*parent);
+	return const_cast<const QDirModel*>(self)->rowCount(*parent);
 }
 
 int QDirModel_ColumnCount1(QDirModel* self, QModelIndex* parent) {
-	return self->columnCount(*parent);
+	return const_cast<const QDirModel*>(self)->columnCount(*parent);
 }
 
 QVariant* QDirModel_Data2(QDirModel* self, QModelIndex* index, int role) {
-	QVariant ret = self->data(*index, static_cast<int>(role));
+	QVariant ret = const_cast<const QDirModel*>(self)->data(*index, static_cast<int>(role));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVariant*>(new QVariant(ret));
 }
@@ -348,13 +348,13 @@ bool QDirModel_SetData3(QDirModel* self, QModelIndex* index, QVariant* value, in
 }
 
 QVariant* QDirModel_HeaderData3(QDirModel* self, int section, uintptr_t orientation, int role) {
-	QVariant ret = self->headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), static_cast<int>(role));
+	QVariant ret = const_cast<const QDirModel*>(self)->headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), static_cast<int>(role));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVariant*>(new QVariant(ret));
 }
 
 bool QDirModel_HasChildren1(QDirModel* self, QModelIndex* index) {
-	return self->hasChildren(*index);
+	return const_cast<const QDirModel*>(self)->hasChildren(*index);
 }
 
 void QDirModel_Sort2(QDirModel* self, int column, uintptr_t order) {
@@ -363,7 +363,7 @@ void QDirModel_Sort2(QDirModel* self, int column, uintptr_t order) {
 
 QModelIndex* QDirModel_Index2(QDirModel* self, const char* path, size_t path_Strlen, int column) {
 	QString path_QString = QString::fromUtf8(path, path_Strlen);
-	QModelIndex ret = self->index(path_QString, static_cast<int>(column));
+	QModelIndex ret = const_cast<const QDirModel*>(self)->index(path_QString, static_cast<int>(column));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QModelIndex*>(new QModelIndex(ret));
 }

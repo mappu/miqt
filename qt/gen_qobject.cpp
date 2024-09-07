@@ -209,6 +209,12 @@ void QObject_Destroyed(QObject* self) {
 	self->destroyed();
 }
 
+void QObject_connect_Destroyed(QObject* self, void* slot) {
+	QObject::connect(self, static_cast<void (QObject::*)(QObject*)>(&QObject::destroyed), self, [=]() {
+		miqt_exec_callback(slot, 0, nullptr);
+	});
+}
+
 QObject* QObject_Parent(QObject* self) {
 	return const_cast<const QObject*>(self)->parent();
 }
@@ -268,7 +274,7 @@ QMetaObject__Connection* QObject_Connect5(QObject* sender, QMetaMethod* signal, 
 }
 
 QMetaObject__Connection* QObject_Connect4(QObject* self, QObject* sender, const char* signal, const char* member, uintptr_t typeVal) {
-	QMetaObject::Connection ret = self->connect(sender, signal, member, static_cast<Qt::ConnectionType>(typeVal));
+	QMetaObject::Connection ret = const_cast<const QObject*>(self)->connect(sender, signal, member, static_cast<Qt::ConnectionType>(typeVal));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QMetaObject::Connection*>(new QMetaObject::Connection(ret));
 }

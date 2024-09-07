@@ -252,7 +252,7 @@ QObject* QMetaObject_NewInstance(QMetaObject* self) {
 }
 
 void QMetaObject_Tr3(QMetaObject* self, const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = self->tr(s, c, static_cast<int>(n));
+	QString ret = const_cast<const QMetaObject*>(self)->tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -433,43 +433,43 @@ bool QMetaObject_InvokeMethod124(QObject* obj, const char* member, QGenericArgum
 }
 
 QObject* QMetaObject_NewInstance1(QMetaObject* self, QGenericArgument* val0) {
-	return self->newInstance(*val0);
+	return const_cast<const QMetaObject*>(self)->newInstance(*val0);
 }
 
 QObject* QMetaObject_NewInstance2(QMetaObject* self, QGenericArgument* val0, QGenericArgument* val1) {
-	return self->newInstance(*val0, *val1);
+	return const_cast<const QMetaObject*>(self)->newInstance(*val0, *val1);
 }
 
 QObject* QMetaObject_NewInstance3(QMetaObject* self, QGenericArgument* val0, QGenericArgument* val1, QGenericArgument* val2) {
-	return self->newInstance(*val0, *val1, *val2);
+	return const_cast<const QMetaObject*>(self)->newInstance(*val0, *val1, *val2);
 }
 
 QObject* QMetaObject_NewInstance4(QMetaObject* self, QGenericArgument* val0, QGenericArgument* val1, QGenericArgument* val2, QGenericArgument* val3) {
-	return self->newInstance(*val0, *val1, *val2, *val3);
+	return const_cast<const QMetaObject*>(self)->newInstance(*val0, *val1, *val2, *val3);
 }
 
 QObject* QMetaObject_NewInstance5(QMetaObject* self, QGenericArgument* val0, QGenericArgument* val1, QGenericArgument* val2, QGenericArgument* val3, QGenericArgument* val4) {
-	return self->newInstance(*val0, *val1, *val2, *val3, *val4);
+	return const_cast<const QMetaObject*>(self)->newInstance(*val0, *val1, *val2, *val3, *val4);
 }
 
 QObject* QMetaObject_NewInstance6(QMetaObject* self, QGenericArgument* val0, QGenericArgument* val1, QGenericArgument* val2, QGenericArgument* val3, QGenericArgument* val4, QGenericArgument* val5) {
-	return self->newInstance(*val0, *val1, *val2, *val3, *val4, *val5);
+	return const_cast<const QMetaObject*>(self)->newInstance(*val0, *val1, *val2, *val3, *val4, *val5);
 }
 
 QObject* QMetaObject_NewInstance7(QMetaObject* self, QGenericArgument* val0, QGenericArgument* val1, QGenericArgument* val2, QGenericArgument* val3, QGenericArgument* val4, QGenericArgument* val5, QGenericArgument* val6) {
-	return self->newInstance(*val0, *val1, *val2, *val3, *val4, *val5, *val6);
+	return const_cast<const QMetaObject*>(self)->newInstance(*val0, *val1, *val2, *val3, *val4, *val5, *val6);
 }
 
 QObject* QMetaObject_NewInstance8(QMetaObject* self, QGenericArgument* val0, QGenericArgument* val1, QGenericArgument* val2, QGenericArgument* val3, QGenericArgument* val4, QGenericArgument* val5, QGenericArgument* val6, QGenericArgument* val7) {
-	return self->newInstance(*val0, *val1, *val2, *val3, *val4, *val5, *val6, *val7);
+	return const_cast<const QMetaObject*>(self)->newInstance(*val0, *val1, *val2, *val3, *val4, *val5, *val6, *val7);
 }
 
 QObject* QMetaObject_NewInstance9(QMetaObject* self, QGenericArgument* val0, QGenericArgument* val1, QGenericArgument* val2, QGenericArgument* val3, QGenericArgument* val4, QGenericArgument* val5, QGenericArgument* val6, QGenericArgument* val7, QGenericArgument* val8) {
-	return self->newInstance(*val0, *val1, *val2, *val3, *val4, *val5, *val6, *val7, *val8);
+	return const_cast<const QMetaObject*>(self)->newInstance(*val0, *val1, *val2, *val3, *val4, *val5, *val6, *val7, *val8);
 }
 
 QObject* QMetaObject_NewInstance10(QMetaObject* self, QGenericArgument* val0, QGenericArgument* val1, QGenericArgument* val2, QGenericArgument* val3, QGenericArgument* val4, QGenericArgument* val5, QGenericArgument* val6, QGenericArgument* val7, QGenericArgument* val8, QGenericArgument* val9) {
-	return self->newInstance(*val0, *val1, *val2, *val3, *val4, *val5, *val6, *val7, *val8, *val9);
+	return const_cast<const QMetaObject*>(self)->newInstance(*val0, *val1, *val2, *val3, *val4, *val5, *val6, *val7, *val8, *val9);
 }
 
 void QMetaObject_Delete(QMetaObject* self) {

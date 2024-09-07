@@ -125,7 +125,7 @@ void QTranslator_TrUtf83(const char* s, const char* c, int n, char** _out, int* 
 }
 
 void QTranslator_Translate3(QTranslator* self, const char* context, const char* sourceText, const char* disambiguation, char** _out, int* _out_Strlen) {
-	QString ret = self->translate(context, sourceText, disambiguation);
+	QString ret = const_cast<const QTranslator*>(self)->translate(context, sourceText, disambiguation);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -134,7 +134,7 @@ void QTranslator_Translate3(QTranslator* self, const char* context, const char* 
 }
 
 void QTranslator_Translate4(QTranslator* self, const char* context, const char* sourceText, const char* disambiguation, int n, char** _out, int* _out_Strlen) {
-	QString ret = self->translate(context, sourceText, disambiguation, static_cast<int>(n));
+	QString ret = const_cast<const QTranslator*>(self)->translate(context, sourceText, disambiguation, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));

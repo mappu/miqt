@@ -542,25 +542,25 @@ void QComboBox_TrUtf83(const char* s, const char* c, int n, char** _out, int* _o
 
 int QComboBox_FindText2(QComboBox* self, const char* text, size_t text_Strlen, int flags) {
 	QString text_QString = QString::fromUtf8(text, text_Strlen);
-	return self->findText(text_QString, static_cast<Qt::MatchFlags>(flags));
+	return const_cast<const QComboBox*>(self)->findText(text_QString, static_cast<Qt::MatchFlags>(flags));
 }
 
 int QComboBox_FindData2(QComboBox* self, QVariant* data, int role) {
-	return self->findData(*data, static_cast<int>(role));
+	return const_cast<const QComboBox*>(self)->findData(*data, static_cast<int>(role));
 }
 
 int QComboBox_FindData3(QComboBox* self, QVariant* data, int role, int flags) {
-	return self->findData(*data, static_cast<int>(role), static_cast<Qt::MatchFlags>(flags));
+	return const_cast<const QComboBox*>(self)->findData(*data, static_cast<int>(role), static_cast<Qt::MatchFlags>(flags));
 }
 
 QVariant* QComboBox_CurrentData1(QComboBox* self, int role) {
-	QVariant ret = self->currentData(static_cast<int>(role));
+	QVariant ret = const_cast<const QComboBox*>(self)->currentData(static_cast<int>(role));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVariant*>(new QVariant(ret));
 }
 
 QVariant* QComboBox_ItemData2(QComboBox* self, int index, int role) {
-	QVariant ret = self->itemData(static_cast<int>(index), static_cast<int>(role));
+	QVariant ret = const_cast<const QComboBox*>(self)->itemData(static_cast<int>(index), static_cast<int>(role));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVariant*>(new QVariant(ret));
 }

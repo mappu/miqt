@@ -975,12 +975,12 @@ func (this *QByteArray) SetNumWithUint(param1 uint) *QByteArray {
 }
 
 func (this *QByteArray) SetNumWithQlonglong(param1 int64) *QByteArray {
-	ret := C.QByteArray_SetNumWithQlonglong(this.h, (C.int64_t)(param1))
+	ret := C.QByteArray_SetNumWithQlonglong(this.h, (C.longlong)(param1))
 	return newQByteArray_U(unsafe.Pointer(ret))
 }
 
 func (this *QByteArray) SetNumWithQulonglong(param1 uint64) *QByteArray {
-	ret := C.QByteArray_SetNumWithQulonglong(this.h, (C.uint64_t)(param1))
+	ret := C.QByteArray_SetNumWithQulonglong(this.h, (C.ulonglong)(param1))
 	return newQByteArray_U(unsafe.Pointer(ret))
 }
 
@@ -1024,7 +1024,7 @@ func QByteArray_NumberWithUint(param1 uint) *QByteArray {
 }
 
 func QByteArray_NumberWithQlonglong(param1 int64) *QByteArray {
-	ret := C.QByteArray_NumberWithQlonglong((C.int64_t)(param1))
+	ret := C.QByteArray_NumberWithQlonglong((C.longlong)(param1))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQByteArray(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QByteArray) {
@@ -1035,7 +1035,7 @@ func QByteArray_NumberWithQlonglong(param1 int64) *QByteArray {
 }
 
 func QByteArray_NumberWithQulonglong(param1 uint64) *QByteArray {
-	ret := C.QByteArray_NumberWithQulonglong((C.uint64_t)(param1))
+	ret := C.QByteArray_NumberWithQulonglong((C.ulonglong)(param1))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQByteArray(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QByteArray) {
@@ -1475,12 +1475,12 @@ func (this *QByteArray) SetNum24(param1 uint, base int) *QByteArray {
 }
 
 func (this *QByteArray) SetNum25(param1 int64, base int) *QByteArray {
-	ret := C.QByteArray_SetNum25(this.h, (C.int64_t)(param1), (C.int)(base))
+	ret := C.QByteArray_SetNum25(this.h, (C.longlong)(param1), (C.int)(base))
 	return newQByteArray_U(unsafe.Pointer(ret))
 }
 
 func (this *QByteArray) SetNum26(param1 uint64, base int) *QByteArray {
-	ret := C.QByteArray_SetNum26(this.h, (C.uint64_t)(param1), (C.int)(base))
+	ret := C.QByteArray_SetNum26(this.h, (C.ulonglong)(param1), (C.int)(base))
 	return newQByteArray_U(unsafe.Pointer(ret))
 }
 
@@ -1527,7 +1527,7 @@ func QByteArray_Number22(param1 uint, base int) *QByteArray {
 }
 
 func QByteArray_Number23(param1 int64, base int) *QByteArray {
-	ret := C.QByteArray_Number23((C.int64_t)(param1), (C.int)(base))
+	ret := C.QByteArray_Number23((C.longlong)(param1), (C.int)(base))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQByteArray(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QByteArray) {
@@ -1538,7 +1538,7 @@ func QByteArray_Number23(param1 int64, base int) *QByteArray {
 }
 
 func QByteArray_Number24(param1 uint64, base int) *QByteArray {
-	ret := C.QByteArray_Number24((C.uint64_t)(param1), (C.int)(base))
+	ret := C.QByteArray_Number24((C.ulonglong)(param1), (C.int)(base))
 	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	ret1 := newQByteArray(ret)
 	runtime.SetFinalizer(ret1, func(ret2 *QByteArray) {

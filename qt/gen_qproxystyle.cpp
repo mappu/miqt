@@ -218,69 +218,69 @@ void QProxyStyle_TrUtf83(const char* s, const char* c, int n, char** _out, int* 
 }
 
 void QProxyStyle_DrawPrimitive4(QProxyStyle* self, uintptr_t element, QStyleOption* option, QPainter* painter, QWidget* widget) {
-	self->drawPrimitive(static_cast<QStyle::PrimitiveElement>(element), option, painter, widget);
+	const_cast<const QProxyStyle*>(self)->drawPrimitive(static_cast<QStyle::PrimitiveElement>(element), option, painter, widget);
 }
 
 void QProxyStyle_DrawControl4(QProxyStyle* self, uintptr_t element, QStyleOption* option, QPainter* painter, QWidget* widget) {
-	self->drawControl(static_cast<QStyle::ControlElement>(element), option, painter, widget);
+	const_cast<const QProxyStyle*>(self)->drawControl(static_cast<QStyle::ControlElement>(element), option, painter, widget);
 }
 
 void QProxyStyle_DrawComplexControl4(QProxyStyle* self, uintptr_t control, QStyleOptionComplex* option, QPainter* painter, QWidget* widget) {
-	self->drawComplexControl(static_cast<QStyle::ComplexControl>(control), option, painter, widget);
+	const_cast<const QProxyStyle*>(self)->drawComplexControl(static_cast<QStyle::ComplexControl>(control), option, painter, widget);
 }
 
 void QProxyStyle_DrawItemText7(QProxyStyle* self, QPainter* painter, QRect* rect, int flags, QPalette* pal, bool enabled, const char* text, size_t text_Strlen, uintptr_t textRole) {
 	QString text_QString = QString::fromUtf8(text, text_Strlen);
-	self->drawItemText(painter, *rect, static_cast<int>(flags), *pal, enabled, text_QString, static_cast<QPalette::ColorRole>(textRole));
+	const_cast<const QProxyStyle*>(self)->drawItemText(painter, *rect, static_cast<int>(flags), *pal, enabled, text_QString, static_cast<QPalette::ColorRole>(textRole));
 }
 
 uintptr_t QProxyStyle_HitTestComplexControl4(QProxyStyle* self, uintptr_t control, QStyleOptionComplex* option, QPoint* pos, QWidget* widget) {
-	QStyle::SubControl ret = self->hitTestComplexControl(static_cast<QStyle::ComplexControl>(control), option, *pos, widget);
+	QStyle::SubControl ret = const_cast<const QProxyStyle*>(self)->hitTestComplexControl(static_cast<QStyle::ComplexControl>(control), option, *pos, widget);
 	return static_cast<uintptr_t>(ret);
 }
 
 int QProxyStyle_StyleHint2(QProxyStyle* self, uintptr_t hint, QStyleOption* option) {
-	return self->styleHint(static_cast<QStyle::StyleHint>(hint), option);
+	return const_cast<const QProxyStyle*>(self)->styleHint(static_cast<QStyle::StyleHint>(hint), option);
 }
 
 int QProxyStyle_StyleHint3(QProxyStyle* self, uintptr_t hint, QStyleOption* option, QWidget* widget) {
-	return self->styleHint(static_cast<QStyle::StyleHint>(hint), option, widget);
+	return const_cast<const QProxyStyle*>(self)->styleHint(static_cast<QStyle::StyleHint>(hint), option, widget);
 }
 
 int QProxyStyle_StyleHint4(QProxyStyle* self, uintptr_t hint, QStyleOption* option, QWidget* widget, QStyleHintReturn* returnData) {
-	return self->styleHint(static_cast<QStyle::StyleHint>(hint), option, widget, returnData);
+	return const_cast<const QProxyStyle*>(self)->styleHint(static_cast<QStyle::StyleHint>(hint), option, widget, returnData);
 }
 
 int QProxyStyle_PixelMetric2(QProxyStyle* self, uintptr_t metric, QStyleOption* option) {
-	return self->pixelMetric(static_cast<QStyle::PixelMetric>(metric), option);
+	return const_cast<const QProxyStyle*>(self)->pixelMetric(static_cast<QStyle::PixelMetric>(metric), option);
 }
 
 int QProxyStyle_PixelMetric3(QProxyStyle* self, uintptr_t metric, QStyleOption* option, QWidget* widget) {
-	return self->pixelMetric(static_cast<QStyle::PixelMetric>(metric), option, widget);
+	return const_cast<const QProxyStyle*>(self)->pixelMetric(static_cast<QStyle::PixelMetric>(metric), option, widget);
 }
 
 int QProxyStyle_LayoutSpacing4(QProxyStyle* self, uintptr_t control1, uintptr_t control2, uintptr_t orientation, QStyleOption* option) {
-	return self->layoutSpacing(static_cast<QSizePolicy::ControlType>(control1), static_cast<QSizePolicy::ControlType>(control2), static_cast<Qt::Orientation>(orientation), option);
+	return const_cast<const QProxyStyle*>(self)->layoutSpacing(static_cast<QSizePolicy::ControlType>(control1), static_cast<QSizePolicy::ControlType>(control2), static_cast<Qt::Orientation>(orientation), option);
 }
 
 int QProxyStyle_LayoutSpacing5(QProxyStyle* self, uintptr_t control1, uintptr_t control2, uintptr_t orientation, QStyleOption* option, QWidget* widget) {
-	return self->layoutSpacing(static_cast<QSizePolicy::ControlType>(control1), static_cast<QSizePolicy::ControlType>(control2), static_cast<Qt::Orientation>(orientation), option, widget);
+	return const_cast<const QProxyStyle*>(self)->layoutSpacing(static_cast<QSizePolicy::ControlType>(control1), static_cast<QSizePolicy::ControlType>(control2), static_cast<Qt::Orientation>(orientation), option, widget);
 }
 
 QIcon* QProxyStyle_StandardIcon2(QProxyStyle* self, uintptr_t standardIcon, QStyleOption* option) {
-	QIcon ret = self->standardIcon(static_cast<QStyle::StandardPixmap>(standardIcon), option);
+	QIcon ret = const_cast<const QProxyStyle*>(self)->standardIcon(static_cast<QStyle::StandardPixmap>(standardIcon), option);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QIcon*>(new QIcon(ret));
 }
 
 QIcon* QProxyStyle_StandardIcon3(QProxyStyle* self, uintptr_t standardIcon, QStyleOption* option, QWidget* widget) {
-	QIcon ret = self->standardIcon(static_cast<QStyle::StandardPixmap>(standardIcon), option, widget);
+	QIcon ret = const_cast<const QProxyStyle*>(self)->standardIcon(static_cast<QStyle::StandardPixmap>(standardIcon), option, widget);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QIcon*>(new QIcon(ret));
 }
 
 QPixmap* QProxyStyle_StandardPixmap3(QProxyStyle* self, uintptr_t standardPixmap, QStyleOption* opt, QWidget* widget) {
-	QPixmap ret = self->standardPixmap(static_cast<QStyle::StandardPixmap>(standardPixmap), opt, widget);
+	QPixmap ret = const_cast<const QProxyStyle*>(self)->standardPixmap(static_cast<QStyle::StandardPixmap>(standardPixmap), opt, widget);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPixmap*>(new QPixmap(ret));
 }
