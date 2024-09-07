@@ -32,23 +32,19 @@ func astTransformOptional(parsed *CppParsedHeader) {
 
 			// Add method copies
 			for x := optionalStart; x < len(m.Parameters); x++ {
-				dupMethod := CppMethod{
-					MethodName:         m.MethodName + fmt.Sprintf("%d", x+1),
-					OverrideMethodName: m.MethodName,
-					ReturnType:         m.ReturnType,
-					Parameters:         nil,
-					IsSignal:           m.IsSignal,
-					IsStatic:           m.IsStatic,
-					HasHiddenParams:    (x != len(m.Parameters)-1),
-				}
-				dupMethod.Parameters = append(dupMethod.Parameters, m.Parameters[0:x+1]...)
+				dupMethod := m // copy
+				dupMethod.MethodName = m.MethodName + fmt.Sprintf("%d", x+1)
+				dupMethod.OverrideMethodName = m.MethodName
+				dupMethod.Parameters = m.Parameters[0 : x+1]
+				dupMethod.HiddenParams = m.Parameters[x+1:]
+
 				c.Methods = append(c.Methods, dupMethod) // TODO can we insert them next, instead of at the end?
 			}
 
 			// Truncate the original method's parameters to only the
 			// mandatory ones
+			m.HiddenParams = m.Parameters[optionalStart:]
 			m.Parameters = m.Parameters[0:optionalStart]
-			m.HasHiddenParams = true
 			c.Methods[j] = m
 		}
 
@@ -73,20 +69,16 @@ func astTransformOptional(parsed *CppParsedHeader) {
 
 			// Add ctor copies
 			for x := optionalStart; x < len(m.Parameters); x++ {
-				dupCtor := CppMethod{
-					ReturnType:      m.ReturnType,
-					Parameters:      nil,
-					IsStatic:        m.IsStatic,
-					HasHiddenParams: (x != len(m.Parameters)-1),
-				}
-				dupCtor.Parameters = append(dupCtor.Parameters, m.Parameters[0:x+1]...)
+				dupCtor := m // copy
+				dupCtor.Parameters = m.Parameters[0 : x+1]
+				dupCtor.HiddenParams = m.Parameters[x+1:]
 				c.Ctors = append(c.Ctors, dupCtor)
 			}
 
 			// Truncate the original ctor's parameters to only the
 			// mandatory ones
+			m.HiddenParams = m.Parameters[optionalStart:]
 			m.Parameters = m.Parameters[0:optionalStart]
-			m.HasHiddenParams = true
 			c.Ctors[j] = m
 		}
 

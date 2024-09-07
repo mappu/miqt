@@ -119,10 +119,15 @@ func emitParametersCpp(m CppMethod) string {
 	return strings.Join(tmp, `, `)
 }
 
-func emitParameterTypesCpp(m CppMethod) string {
+func emitParameterTypesCpp(m CppMethod, includeHidden bool) string {
 	tmp := make([]string, 0, len(m.Parameters))
 	for _, p := range m.Parameters {
 		tmp = append(tmp, p.RenderTypeQtCpp())
+	}
+	if includeHidden {
+		for _, p := range m.HiddenParams {
+			tmp = append(tmp, p.RenderTypeQtCpp())
+		}
 	}
 
 	return strings.Join(tmp, `, `)
@@ -457,7 +462,7 @@ extern "C" {
 		for _, m := range c.Methods {
 			ret.WriteString(fmt.Sprintf("%s %s_%s(%s);\n", emitReturnTypeCabi(m.ReturnType), cClassName, m.SafeMethodName(), emitParametersCabi(m, cClassName+"*")))
 
-			if m.IsSignal && !m.HasHiddenParams {
+			if m.IsSignal {
 				ret.WriteString(fmt.Sprintf("%s %s_connect_%s(%s* self, void* slot);\n", emitReturnTypeCabi(m.ReturnType), cClassName, m.SafeMethodName(), cClassName))
 			}
 		}
@@ -723,8 +728,10 @@ extern "C" {
 
 			}
 
-			if m.IsSignal && !m.HasHiddenParams {
-				exactSignal := `static_cast<void (` + c.ClassName + `::*)(` + emitParameterTypesCpp(m) + `)>(&` + c.ClassName + `::` + nativeMethodName + `)`
+			if m.IsSignal {
+				// If there are hidden parameters, the type of the signal itself
+				// needs to include them
+				exactSignal := `static_cast<void (` + c.ClassName + `::*)(` + emitParameterTypesCpp(m, true) + `)>(&` + c.ClassName + `::` + nativeMethodName + `)`
 
 				ret.WriteString(
 					`void ` + cClassName + `_connect_` + m.SafeMethodName() + `(` + cClassName + `* self, void* slot) {` + "\n" +

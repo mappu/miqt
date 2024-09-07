@@ -187,7 +187,7 @@ type CppMethod struct {
 	IsStatic           bool
 	IsSignal           bool
 	IsConst            bool
-	HasHiddenParams    bool // Set to true if there is an overload with more parameters
+	HiddenParams       []CppParameter // Populated if there is an overload with more parameters
 	LinuxOnly          bool
 }
 

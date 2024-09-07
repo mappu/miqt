@@ -540,7 +540,7 @@ import "C"
 			}
 
 			// Add Connect() wrappers for signal functions
-			if m.IsSignal && !m.HasHiddenParams {
+			if m.IsSignal {
 				gfs.imports["unsafe"] = struct{}{}
 				gfs.imports["runtime/cgo"] = struct{}{}
 				ret.WriteString(`func (this *` + goClassName + `) On` + m.SafeMethodName() + `(slot func()) {
