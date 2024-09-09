@@ -1,0 +1,33 @@
+name: miqt.yml
+
+on:
+  push:
+    branches: [ "**" ]
+  pull_request:
+    branches: [ "**" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+    
+    - name: Linux64 docker build
+      run: cd docker && docker build -t miqt/linux64:latest -f linux64-go1.19-qt5.15-dynamic.Dockerfile .
+    
+    - name: Rebuild binding source
+      run: docker run -v $PWD:/src -w /src miqt/linux64:latest /bin/bash -c 'cd cmd/genbindings && go build && ./genbindings'
+    
+    - name: Assert no changes
+      run: git update-index --really-refresh && git diff-index HEAD
+    
+    - name: Linux64 bindings compile
+      run: docker run -v $PWD:/src -w /src miqt/linux64:latest /bin/bash -c 'cd qt && go build'
+    
+    - name: Win64 docker build
+      run: cd docker && docker build -t miqt/win64:latest -f win64-cross-go1.23-qt5.15-static.Dockerfile .
+    
+    - name: Win64 bindings compile
+      run: docker run -v $PWD:/src -w /src miqt/win64:latest /bin/bash -c 'cd qt && go build'
