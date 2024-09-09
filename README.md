@@ -2,6 +2,7 @@
 
 ![](https://img.shields.io/badge/License-MIT-green)
 [![Go Reference](https://pkg.go.dev/badge/github.com/mappu/miqt/qt.svg)](https://pkg.go.dev/github.com/mappu/miqt/qt)
+[![GitHub Actions CI](https://github.com/mappu/miqt/actions/workflows/miqt.yml/badge.svg?branch=master)](https://github.com/mappu/miqt/actions)
 
 # MIQT
 
