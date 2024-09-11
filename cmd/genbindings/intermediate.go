@@ -191,6 +191,13 @@ type CppMethod struct {
 	LinuxOnly          bool
 }
 
+func (m CppMethod) CppCallTarget() string {
+	if m.OverrideMethodName != "" {
+		return m.OverrideMethodName
+	}
+	return m.MethodName
+}
+
 func IsArgcArgv(params []CppParameter, pos int) bool {
 	// Check if the arguments starting at position=pos are the argc/argv pattern.
 	// QApplication/QGuiApplication constructors are the only expected example of this.
