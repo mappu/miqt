@@ -198,6 +198,16 @@ func (m CppMethod) CppCallTarget() string {
 	return m.MethodName
 }
 
+func (m *CppMethod) Rename(newName string) {
+	if m.OverrideMethodName == "" {
+		m.OverrideMethodName = m.MethodName
+	} else {
+		// If it was already set, we're already a level of overload resolution deep - preserve it
+	}
+
+	m.MethodName = newName
+}
+
 func IsArgcArgv(params []CppParameter, pos int) bool {
 	// Check if the arguments starting at position=pos are the argc/argv pattern.
 	// QApplication/QGuiApplication constructors are the only expected example of this.

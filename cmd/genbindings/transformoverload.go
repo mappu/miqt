@@ -63,12 +63,7 @@ func astTransformOverloads(parsed *CppParsedHeader) {
 			}
 
 			existing[proposedName] = struct{}{}
-			if m.OverrideMethodName == "" {
-				m.OverrideMethodName = m.MethodName
-			} else {
-				// If it was already set, we're already a level of overload resolution deep - preserve it
-			}
-			m.MethodName = proposedName
+			m.Rename(proposedName)
 			c.Methods[j] = m
 		}
 
