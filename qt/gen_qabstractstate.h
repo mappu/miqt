@@ -23,12 +23,12 @@ typedef struct QState QState;
 typedef struct QStateMachine QStateMachine;
 #endif
 
-QMetaObject* QAbstractState_MetaObject(QAbstractState* self);
+QMetaObject* QAbstractState_MetaObject(const QAbstractState* self);
 void QAbstractState_Tr(const char* s, char** _out, int* _out_Strlen);
 void QAbstractState_TrUtf8(const char* s, char** _out, int* _out_Strlen);
-QState* QAbstractState_ParentState(QAbstractState* self);
-QStateMachine* QAbstractState_Machine(QAbstractState* self);
-bool QAbstractState_Active(QAbstractState* self);
+QState* QAbstractState_ParentState(const QAbstractState* self);
+QStateMachine* QAbstractState_Machine(const QAbstractState* self);
+bool QAbstractState_Active(const QAbstractState* self);
 void QAbstractState_ActiveChanged(QAbstractState* self, bool active);
 void QAbstractState_connect_ActiveChanged(QAbstractState* self, void* slot);
 void QAbstractState_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);

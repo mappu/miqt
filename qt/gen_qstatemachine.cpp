@@ -34,8 +34,8 @@ QStateMachine* QStateMachine_new4(uintptr_t childMode, QObject* parent) {
 	return new QStateMachine(static_cast<QState::ChildMode>(childMode), parent);
 }
 
-QMetaObject* QStateMachine_MetaObject(QStateMachine* self) {
-	return (QMetaObject*) const_cast<const QStateMachine*>(self)->metaObject();
+QMetaObject* QStateMachine_MetaObject(const QStateMachine* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QStateMachine_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -64,13 +64,13 @@ void QStateMachine_RemoveState(QStateMachine* self, QAbstractState* state) {
 	self->removeState(state);
 }
 
-uintptr_t QStateMachine_Error(QStateMachine* self) {
-	QStateMachine::Error ret = const_cast<const QStateMachine*>(self)->error();
+uintptr_t QStateMachine_Error(const QStateMachine* self) {
+	QStateMachine::Error ret = self->error();
 	return static_cast<uintptr_t>(ret);
 }
 
-void QStateMachine_ErrorString(QStateMachine* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QStateMachine*>(self)->errorString();
+void QStateMachine_ErrorString(const QStateMachine* self, char** _out, int* _out_Strlen) {
+	QString ret = self->errorString();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -82,12 +82,12 @@ void QStateMachine_ClearError(QStateMachine* self) {
 	self->clearError();
 }
 
-bool QStateMachine_IsRunning(QStateMachine* self) {
-	return const_cast<const QStateMachine*>(self)->isRunning();
+bool QStateMachine_IsRunning(const QStateMachine* self) {
+	return self->isRunning();
 }
 
-bool QStateMachine_IsAnimated(QStateMachine* self) {
-	return const_cast<const QStateMachine*>(self)->isAnimated();
+bool QStateMachine_IsAnimated(const QStateMachine* self) {
+	return self->isAnimated();
 }
 
 void QStateMachine_SetAnimated(QStateMachine* self, bool enabled) {
@@ -98,8 +98,8 @@ void QStateMachine_AddDefaultAnimation(QStateMachine* self, QAbstractAnimation* 
 	self->addDefaultAnimation(animation);
 }
 
-void QStateMachine_DefaultAnimations(QStateMachine* self, QAbstractAnimation*** _out, size_t* _out_len) {
-	QList<QAbstractAnimation*> ret = const_cast<const QStateMachine*>(self)->defaultAnimations();
+void QStateMachine_DefaultAnimations(const QStateMachine* self, QAbstractAnimation*** _out, size_t* _out_len) {
+	QList<QAbstractAnimation*> ret = self->defaultAnimations();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QAbstractAnimation** __out = static_cast<QAbstractAnimation**>(malloc(sizeof(QAbstractAnimation*) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {
@@ -113,8 +113,8 @@ void QStateMachine_RemoveDefaultAnimation(QStateMachine* self, QAbstractAnimatio
 	self->removeDefaultAnimation(animation);
 }
 
-uintptr_t QStateMachine_GlobalRestorePolicy(QStateMachine* self) {
-	QState::RestorePolicy ret = const_cast<const QStateMachine*>(self)->globalRestorePolicy();
+uintptr_t QStateMachine_GlobalRestorePolicy(const QStateMachine* self) {
+	QState::RestorePolicy ret = self->globalRestorePolicy();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -208,12 +208,12 @@ QStateMachine__SignalEvent* QStateMachine__SignalEvent_new(QStateMachine__Signal
 	return new QStateMachine::SignalEvent(*param1);
 }
 
-QObject* QStateMachine__SignalEvent_Sender(QStateMachine__SignalEvent* self) {
-	return const_cast<const QStateMachine::SignalEvent*>(self)->sender();
+QObject* QStateMachine__SignalEvent_Sender(const QStateMachine__SignalEvent* self) {
+	return self->sender();
 }
 
-int QStateMachine__SignalEvent_SignalIndex(QStateMachine__SignalEvent* self) {
-	return const_cast<const QStateMachine::SignalEvent*>(self)->signalIndex();
+int QStateMachine__SignalEvent_SignalIndex(const QStateMachine__SignalEvent* self) {
+	return self->signalIndex();
 }
 
 void QStateMachine__SignalEvent_Delete(QStateMachine__SignalEvent* self) {
@@ -228,12 +228,12 @@ QStateMachine__WrappedEvent* QStateMachine__WrappedEvent_new2(QStateMachine__Wra
 	return new QStateMachine::WrappedEvent(*param1);
 }
 
-QObject* QStateMachine__WrappedEvent_Object(QStateMachine__WrappedEvent* self) {
-	return const_cast<const QStateMachine::WrappedEvent*>(self)->object();
+QObject* QStateMachine__WrappedEvent_Object(const QStateMachine__WrappedEvent* self) {
+	return self->object();
 }
 
-QEvent* QStateMachine__WrappedEvent_Event(QStateMachine__WrappedEvent* self) {
-	return const_cast<const QStateMachine::WrappedEvent*>(self)->event();
+QEvent* QStateMachine__WrappedEvent_Event(const QStateMachine__WrappedEvent* self) {
+	return self->event();
 }
 
 void QStateMachine__WrappedEvent_Delete(QStateMachine__WrappedEvent* self) {

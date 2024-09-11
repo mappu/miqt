@@ -26,8 +26,8 @@ QTableView* QTableView_new2(QWidget* parent) {
 	return new QTableView(parent);
 }
 
-QMetaObject* QTableView_MetaObject(QTableView* self) {
-	return (QMetaObject*) const_cast<const QTableView*>(self)->metaObject();
+QMetaObject* QTableView_MetaObject(const QTableView* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QTableView_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -64,12 +64,12 @@ void QTableView_DoItemsLayout(QTableView* self) {
 	self->doItemsLayout();
 }
 
-QHeaderView* QTableView_HorizontalHeader(QTableView* self) {
-	return const_cast<const QTableView*>(self)->horizontalHeader();
+QHeaderView* QTableView_HorizontalHeader(const QTableView* self) {
+	return self->horizontalHeader();
 }
 
-QHeaderView* QTableView_VerticalHeader(QTableView* self) {
-	return const_cast<const QTableView*>(self)->verticalHeader();
+QHeaderView* QTableView_VerticalHeader(const QTableView* self) {
+	return self->verticalHeader();
 }
 
 void QTableView_SetHorizontalHeader(QTableView* self, QHeaderView* header) {
@@ -80,48 +80,48 @@ void QTableView_SetVerticalHeader(QTableView* self, QHeaderView* header) {
 	self->setVerticalHeader(header);
 }
 
-int QTableView_RowViewportPosition(QTableView* self, int row) {
-	return const_cast<const QTableView*>(self)->rowViewportPosition(static_cast<int>(row));
+int QTableView_RowViewportPosition(const QTableView* self, int row) {
+	return self->rowViewportPosition(static_cast<int>(row));
 }
 
-int QTableView_RowAt(QTableView* self, int y) {
-	return const_cast<const QTableView*>(self)->rowAt(static_cast<int>(y));
+int QTableView_RowAt(const QTableView* self, int y) {
+	return self->rowAt(static_cast<int>(y));
 }
 
 void QTableView_SetRowHeight(QTableView* self, int row, int height) {
 	self->setRowHeight(static_cast<int>(row), static_cast<int>(height));
 }
 
-int QTableView_RowHeight(QTableView* self, int row) {
-	return const_cast<const QTableView*>(self)->rowHeight(static_cast<int>(row));
+int QTableView_RowHeight(const QTableView* self, int row) {
+	return self->rowHeight(static_cast<int>(row));
 }
 
-int QTableView_ColumnViewportPosition(QTableView* self, int column) {
-	return const_cast<const QTableView*>(self)->columnViewportPosition(static_cast<int>(column));
+int QTableView_ColumnViewportPosition(const QTableView* self, int column) {
+	return self->columnViewportPosition(static_cast<int>(column));
 }
 
-int QTableView_ColumnAt(QTableView* self, int x) {
-	return const_cast<const QTableView*>(self)->columnAt(static_cast<int>(x));
+int QTableView_ColumnAt(const QTableView* self, int x) {
+	return self->columnAt(static_cast<int>(x));
 }
 
 void QTableView_SetColumnWidth(QTableView* self, int column, int width) {
 	self->setColumnWidth(static_cast<int>(column), static_cast<int>(width));
 }
 
-int QTableView_ColumnWidth(QTableView* self, int column) {
-	return const_cast<const QTableView*>(self)->columnWidth(static_cast<int>(column));
+int QTableView_ColumnWidth(const QTableView* self, int column) {
+	return self->columnWidth(static_cast<int>(column));
 }
 
-bool QTableView_IsRowHidden(QTableView* self, int row) {
-	return const_cast<const QTableView*>(self)->isRowHidden(static_cast<int>(row));
+bool QTableView_IsRowHidden(const QTableView* self, int row) {
+	return self->isRowHidden(static_cast<int>(row));
 }
 
 void QTableView_SetRowHidden(QTableView* self, int row, bool hide) {
 	self->setRowHidden(static_cast<int>(row), hide);
 }
 
-bool QTableView_IsColumnHidden(QTableView* self, int column) {
-	return const_cast<const QTableView*>(self)->isColumnHidden(static_cast<int>(column));
+bool QTableView_IsColumnHidden(const QTableView* self, int column) {
+	return self->isColumnHidden(static_cast<int>(column));
 }
 
 void QTableView_SetColumnHidden(QTableView* self, int column, bool hide) {
@@ -132,16 +132,16 @@ void QTableView_SetSortingEnabled(QTableView* self, bool enable) {
 	self->setSortingEnabled(enable);
 }
 
-bool QTableView_IsSortingEnabled(QTableView* self) {
-	return const_cast<const QTableView*>(self)->isSortingEnabled();
+bool QTableView_IsSortingEnabled(const QTableView* self) {
+	return self->isSortingEnabled();
 }
 
-bool QTableView_ShowGrid(QTableView* self) {
-	return const_cast<const QTableView*>(self)->showGrid();
+bool QTableView_ShowGrid(const QTableView* self) {
+	return self->showGrid();
 }
 
-uintptr_t QTableView_GridStyle(QTableView* self) {
-	Qt::PenStyle ret = const_cast<const QTableView*>(self)->gridStyle();
+uintptr_t QTableView_GridStyle(const QTableView* self) {
+	Qt::PenStyle ret = self->gridStyle();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -153,20 +153,20 @@ void QTableView_SetWordWrap(QTableView* self, bool on) {
 	self->setWordWrap(on);
 }
 
-bool QTableView_WordWrap(QTableView* self) {
-	return const_cast<const QTableView*>(self)->wordWrap();
+bool QTableView_WordWrap(const QTableView* self) {
+	return self->wordWrap();
 }
 
 void QTableView_SetCornerButtonEnabled(QTableView* self, bool enable) {
 	self->setCornerButtonEnabled(enable);
 }
 
-bool QTableView_IsCornerButtonEnabled(QTableView* self) {
-	return const_cast<const QTableView*>(self)->isCornerButtonEnabled();
+bool QTableView_IsCornerButtonEnabled(const QTableView* self) {
+	return self->isCornerButtonEnabled();
 }
 
-QRect* QTableView_VisualRect(QTableView* self, QModelIndex* index) {
-	QRect ret = const_cast<const QTableView*>(self)->visualRect(*index);
+QRect* QTableView_VisualRect(const QTableView* self, QModelIndex* index) {
+	QRect ret = self->visualRect(*index);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRect*>(new QRect(ret));
 }
@@ -175,8 +175,8 @@ void QTableView_ScrollTo(QTableView* self, QModelIndex* index) {
 	self->scrollTo(*index);
 }
 
-QModelIndex* QTableView_IndexAt(QTableView* self, QPoint* p) {
-	QModelIndex ret = const_cast<const QTableView*>(self)->indexAt(*p);
+QModelIndex* QTableView_IndexAt(const QTableView* self, QPoint* p) {
+	QModelIndex ret = self->indexAt(*p);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QModelIndex*>(new QModelIndex(ret));
 }
@@ -185,12 +185,12 @@ void QTableView_SetSpan(QTableView* self, int row, int column, int rowSpan, int 
 	self->setSpan(static_cast<int>(row), static_cast<int>(column), static_cast<int>(rowSpan), static_cast<int>(columnSpan));
 }
 
-int QTableView_RowSpan(QTableView* self, int row, int column) {
-	return const_cast<const QTableView*>(self)->rowSpan(static_cast<int>(row), static_cast<int>(column));
+int QTableView_RowSpan(const QTableView* self, int row, int column) {
+	return self->rowSpan(static_cast<int>(row), static_cast<int>(column));
 }
 
-int QTableView_ColumnSpan(QTableView* self, int row, int column) {
-	return const_cast<const QTableView*>(self)->columnSpan(static_cast<int>(row), static_cast<int>(column));
+int QTableView_ColumnSpan(const QTableView* self, int row, int column) {
+	return self->columnSpan(static_cast<int>(row), static_cast<int>(column));
 }
 
 void QTableView_ClearSpans(QTableView* self) {

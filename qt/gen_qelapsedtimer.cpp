@@ -32,40 +32,40 @@ void QElapsedTimer_Invalidate(QElapsedTimer* self) {
 	self->invalidate();
 }
 
-bool QElapsedTimer_IsValid(QElapsedTimer* self) {
-	return const_cast<const QElapsedTimer*>(self)->isValid();
+bool QElapsedTimer_IsValid(const QElapsedTimer* self) {
+	return self->isValid();
 }
 
-long long QElapsedTimer_NsecsElapsed(QElapsedTimer* self) {
-	return const_cast<const QElapsedTimer*>(self)->nsecsElapsed();
+long long QElapsedTimer_NsecsElapsed(const QElapsedTimer* self) {
+	return self->nsecsElapsed();
 }
 
-long long QElapsedTimer_Elapsed(QElapsedTimer* self) {
-	return const_cast<const QElapsedTimer*>(self)->elapsed();
+long long QElapsedTimer_Elapsed(const QElapsedTimer* self) {
+	return self->elapsed();
 }
 
-bool QElapsedTimer_HasExpired(QElapsedTimer* self, long long timeout) {
-	return const_cast<const QElapsedTimer*>(self)->hasExpired(static_cast<qint64>(timeout));
+bool QElapsedTimer_HasExpired(const QElapsedTimer* self, long long timeout) {
+	return self->hasExpired(static_cast<qint64>(timeout));
 }
 
-long long QElapsedTimer_MsecsSinceReference(QElapsedTimer* self) {
-	return const_cast<const QElapsedTimer*>(self)->msecsSinceReference();
+long long QElapsedTimer_MsecsSinceReference(const QElapsedTimer* self) {
+	return self->msecsSinceReference();
 }
 
-long long QElapsedTimer_MsecsTo(QElapsedTimer* self, QElapsedTimer* other) {
-	return const_cast<const QElapsedTimer*>(self)->msecsTo(*other);
+long long QElapsedTimer_MsecsTo(const QElapsedTimer* self, QElapsedTimer* other) {
+	return self->msecsTo(*other);
 }
 
-long long QElapsedTimer_SecsTo(QElapsedTimer* self, QElapsedTimer* other) {
-	return const_cast<const QElapsedTimer*>(self)->secsTo(*other);
+long long QElapsedTimer_SecsTo(const QElapsedTimer* self, QElapsedTimer* other) {
+	return self->secsTo(*other);
 }
 
-bool QElapsedTimer_OperatorEqual(QElapsedTimer* self, QElapsedTimer* other) {
-	return const_cast<const QElapsedTimer*>(self)->operator==(*other);
+bool QElapsedTimer_OperatorEqual(const QElapsedTimer* self, QElapsedTimer* other) {
+	return self->operator==(*other);
 }
 
-bool QElapsedTimer_OperatorNotEqual(QElapsedTimer* self, QElapsedTimer* other) {
-	return const_cast<const QElapsedTimer*>(self)->operator!=(*other);
+bool QElapsedTimer_OperatorNotEqual(const QElapsedTimer* self, QElapsedTimer* other) {
+	return self->operator!=(*other);
 }
 
 void QElapsedTimer_Delete(QElapsedTimer* self) {

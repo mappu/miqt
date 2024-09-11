@@ -19,8 +19,8 @@ QActionGroup* QActionGroup_new(QObject* parent) {
 	return new QActionGroup(parent);
 }
 
-QMetaObject* QActionGroup_MetaObject(QActionGroup* self) {
-	return (QMetaObject*) const_cast<const QActionGroup*>(self)->metaObject();
+QMetaObject* QActionGroup_MetaObject(const QActionGroup* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QActionGroup_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -59,8 +59,8 @@ void QActionGroup_RemoveAction(QActionGroup* self, QAction* a) {
 	self->removeAction(a);
 }
 
-void QActionGroup_Actions(QActionGroup* self, QAction*** _out, size_t* _out_len) {
-	QList<QAction*> ret = const_cast<const QActionGroup*>(self)->actions();
+void QActionGroup_Actions(const QActionGroup* self, QAction*** _out, size_t* _out_len) {
+	QList<QAction*> ret = self->actions();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QAction** __out = static_cast<QAction**>(malloc(sizeof(QAction*) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {
@@ -70,24 +70,24 @@ void QActionGroup_Actions(QActionGroup* self, QAction*** _out, size_t* _out_len)
 	*_out_len = ret.length();
 }
 
-QAction* QActionGroup_CheckedAction(QActionGroup* self) {
-	return const_cast<const QActionGroup*>(self)->checkedAction();
+QAction* QActionGroup_CheckedAction(const QActionGroup* self) {
+	return self->checkedAction();
 }
 
-bool QActionGroup_IsExclusive(QActionGroup* self) {
-	return const_cast<const QActionGroup*>(self)->isExclusive();
+bool QActionGroup_IsExclusive(const QActionGroup* self) {
+	return self->isExclusive();
 }
 
-bool QActionGroup_IsEnabled(QActionGroup* self) {
-	return const_cast<const QActionGroup*>(self)->isEnabled();
+bool QActionGroup_IsEnabled(const QActionGroup* self) {
+	return self->isEnabled();
 }
 
-bool QActionGroup_IsVisible(QActionGroup* self) {
-	return const_cast<const QActionGroup*>(self)->isVisible();
+bool QActionGroup_IsVisible(const QActionGroup* self) {
+	return self->isVisible();
 }
 
-uintptr_t QActionGroup_ExclusionPolicy(QActionGroup* self) {
-	QActionGroup::ExclusionPolicy ret = const_cast<const QActionGroup*>(self)->exclusionPolicy();
+uintptr_t QActionGroup_ExclusionPolicy(const QActionGroup* self) {
+	QActionGroup::ExclusionPolicy ret = self->exclusionPolicy();
 	return static_cast<uintptr_t>(ret);
 }
 

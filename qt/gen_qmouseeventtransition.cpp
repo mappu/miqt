@@ -30,8 +30,8 @@ QMouseEventTransition* QMouseEventTransition_new4(QObject* object, uintptr_t typ
 	return new QMouseEventTransition(object, static_cast<QEvent::Type>(typeVal), static_cast<Qt::MouseButton>(button), sourceState);
 }
 
-QMetaObject* QMouseEventTransition_MetaObject(QMouseEventTransition* self) {
-	return (QMetaObject*) const_cast<const QMouseEventTransition*>(self)->metaObject();
+QMetaObject* QMouseEventTransition_MetaObject(const QMouseEventTransition* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QMouseEventTransition_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -52,8 +52,8 @@ void QMouseEventTransition_TrUtf8(const char* s, char** _out, int* _out_Strlen) 
 	*_out_Strlen = b.length();
 }
 
-uintptr_t QMouseEventTransition_Button(QMouseEventTransition* self) {
-	Qt::MouseButton ret = const_cast<const QMouseEventTransition*>(self)->button();
+uintptr_t QMouseEventTransition_Button(const QMouseEventTransition* self) {
+	Qt::MouseButton ret = self->button();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -61,8 +61,8 @@ void QMouseEventTransition_SetButton(QMouseEventTransition* self, uintptr_t butt
 	self->setButton(static_cast<Qt::MouseButton>(button));
 }
 
-int QMouseEventTransition_ModifierMask(QMouseEventTransition* self) {
-	Qt::KeyboardModifiers ret = const_cast<const QMouseEventTransition*>(self)->modifierMask();
+int QMouseEventTransition_ModifierMask(const QMouseEventTransition* self) {
+	Qt::KeyboardModifiers ret = self->modifierMask();
 	return static_cast<int>(ret);
 }
 
@@ -70,8 +70,8 @@ void QMouseEventTransition_SetModifierMask(QMouseEventTransition* self, int modi
 	self->setModifierMask(static_cast<Qt::KeyboardModifiers>(modifiers));
 }
 
-QPainterPath* QMouseEventTransition_HitTestPath(QMouseEventTransition* self) {
-	QPainterPath ret = const_cast<const QMouseEventTransition*>(self)->hitTestPath();
+QPainterPath* QMouseEventTransition_HitTestPath(const QMouseEventTransition* self) {
+	QPainterPath ret = self->hitTestPath();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPainterPath*>(new QPainterPath(ret));
 }

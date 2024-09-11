@@ -23,8 +23,8 @@ QThread* QThread_new2(QObject* parent) {
 	return new QThread(parent);
 }
 
-QMetaObject* QThread_MetaObject(QThread* self) {
-	return (QMetaObject*) const_cast<const QThread*>(self)->metaObject();
+QMetaObject* QThread_MetaObject(const QThread* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QThread_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -61,41 +61,41 @@ void QThread_SetPriority(QThread* self, uintptr_t priority) {
 	self->setPriority(static_cast<QThread::Priority>(priority));
 }
 
-uintptr_t QThread_Priority(QThread* self) {
-	QThread::Priority ret = const_cast<const QThread*>(self)->priority();
+uintptr_t QThread_Priority(const QThread* self) {
+	QThread::Priority ret = self->priority();
 	return static_cast<uintptr_t>(ret);
 }
 
-bool QThread_IsFinished(QThread* self) {
-	return const_cast<const QThread*>(self)->isFinished();
+bool QThread_IsFinished(const QThread* self) {
+	return self->isFinished();
 }
 
-bool QThread_IsRunning(QThread* self) {
-	return const_cast<const QThread*>(self)->isRunning();
+bool QThread_IsRunning(const QThread* self) {
+	return self->isRunning();
 }
 
 void QThread_RequestInterruption(QThread* self) {
 	self->requestInterruption();
 }
 
-bool QThread_IsInterruptionRequested(QThread* self) {
-	return const_cast<const QThread*>(self)->isInterruptionRequested();
+bool QThread_IsInterruptionRequested(const QThread* self) {
+	return self->isInterruptionRequested();
 }
 
 void QThread_SetStackSize(QThread* self, unsigned int stackSize) {
 	self->setStackSize(static_cast<uint>(stackSize));
 }
 
-unsigned int QThread_StackSize(QThread* self) {
-	return const_cast<const QThread*>(self)->stackSize();
+unsigned int QThread_StackSize(const QThread* self) {
+	return self->stackSize();
 }
 
 void QThread_Exit(QThread* self) {
 	self->exit();
 }
 
-QAbstractEventDispatcher* QThread_EventDispatcher(QThread* self) {
-	return const_cast<const QThread*>(self)->eventDispatcher();
+QAbstractEventDispatcher* QThread_EventDispatcher(const QThread* self) {
+	return self->eventDispatcher();
 }
 
 void QThread_SetEventDispatcher(QThread* self, QAbstractEventDispatcher* eventDispatcher) {
@@ -106,8 +106,8 @@ bool QThread_Event(QThread* self, QEvent* event) {
 	return self->event(event);
 }
 
-int QThread_LoopLevel(QThread* self) {
-	return const_cast<const QThread*>(self)->loopLevel();
+int QThread_LoopLevel(const QThread* self) {
+	return self->loopLevel();
 }
 
 void QThread_Start(QThread* self) {

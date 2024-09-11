@@ -19,11 +19,11 @@ typedef struct qfloat16 qfloat16;
 
 qfloat16* qfloat16_new();
 qfloat16* qfloat16_new2(float f);
-bool qfloat16_IsInf(qfloat16* self);
-bool qfloat16_IsNaN(qfloat16* self);
-bool qfloat16_IsFinite(qfloat16* self);
-int qfloat16_FpClassify(qfloat16* self);
-bool qfloat16_IsNormal(qfloat16* self);
+bool qfloat16_IsInf(const qfloat16* self);
+bool qfloat16_IsNaN(const qfloat16* self);
+bool qfloat16_IsFinite(const qfloat16* self);
+int qfloat16_FpClassify(const qfloat16* self);
+bool qfloat16_IsNormal(const qfloat16* self);
 void qfloat16_Delete(qfloat16* self);
 
 #ifdef __cplusplus

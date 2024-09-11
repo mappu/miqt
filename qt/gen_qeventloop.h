@@ -29,14 +29,14 @@ typedef struct QThread QThread;
 
 QEventLoop* QEventLoop_new();
 QEventLoop* QEventLoop_new2(QObject* parent);
-QMetaObject* QEventLoop_MetaObject(QEventLoop* self);
+QMetaObject* QEventLoop_MetaObject(const QEventLoop* self);
 void QEventLoop_Tr(const char* s, char** _out, int* _out_Strlen);
 void QEventLoop_TrUtf8(const char* s, char** _out, int* _out_Strlen);
 bool QEventLoop_ProcessEvents(QEventLoop* self);
 void QEventLoop_ProcessEvents2(QEventLoop* self, int flags, int maximumTime);
 int QEventLoop_Exec(QEventLoop* self);
 void QEventLoop_Exit(QEventLoop* self);
-bool QEventLoop_IsRunning(QEventLoop* self);
+bool QEventLoop_IsRunning(const QEventLoop* self);
 void QEventLoop_WakeUp(QEventLoop* self);
 bool QEventLoop_Event(QEventLoop* self, QEvent* event);
 void QEventLoop_Quit(QEventLoop* self);

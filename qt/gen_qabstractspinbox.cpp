@@ -23,8 +23,8 @@ QAbstractSpinBox* QAbstractSpinBox_new2(QWidget* parent) {
 	return new QAbstractSpinBox(parent);
 }
 
-QMetaObject* QAbstractSpinBox_MetaObject(QAbstractSpinBox* self) {
-	return (QMetaObject*) const_cast<const QAbstractSpinBox*>(self)->metaObject();
+QMetaObject* QAbstractSpinBox_MetaObject(const QAbstractSpinBox* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QAbstractSpinBox_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -45,8 +45,8 @@ void QAbstractSpinBox_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-uintptr_t QAbstractSpinBox_ButtonSymbols(QAbstractSpinBox* self) {
-	QAbstractSpinBox::ButtonSymbols ret = const_cast<const QAbstractSpinBox*>(self)->buttonSymbols();
+uintptr_t QAbstractSpinBox_ButtonSymbols(const QAbstractSpinBox* self) {
+	QAbstractSpinBox::ButtonSymbols ret = self->buttonSymbols();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -58,17 +58,17 @@ void QAbstractSpinBox_SetCorrectionMode(QAbstractSpinBox* self, uintptr_t cm) {
 	self->setCorrectionMode(static_cast<QAbstractSpinBox::CorrectionMode>(cm));
 }
 
-uintptr_t QAbstractSpinBox_CorrectionMode(QAbstractSpinBox* self) {
-	QAbstractSpinBox::CorrectionMode ret = const_cast<const QAbstractSpinBox*>(self)->correctionMode();
+uintptr_t QAbstractSpinBox_CorrectionMode(const QAbstractSpinBox* self) {
+	QAbstractSpinBox::CorrectionMode ret = self->correctionMode();
 	return static_cast<uintptr_t>(ret);
 }
 
-bool QAbstractSpinBox_HasAcceptableInput(QAbstractSpinBox* self) {
-	return const_cast<const QAbstractSpinBox*>(self)->hasAcceptableInput();
+bool QAbstractSpinBox_HasAcceptableInput(const QAbstractSpinBox* self) {
+	return self->hasAcceptableInput();
 }
 
-void QAbstractSpinBox_Text(QAbstractSpinBox* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QAbstractSpinBox*>(self)->text();
+void QAbstractSpinBox_Text(const QAbstractSpinBox* self, char** _out, int* _out_Strlen) {
+	QString ret = self->text();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -76,8 +76,8 @@ void QAbstractSpinBox_Text(QAbstractSpinBox* self, char** _out, int* _out_Strlen
 	*_out_Strlen = b.length();
 }
 
-void QAbstractSpinBox_SpecialValueText(QAbstractSpinBox* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QAbstractSpinBox*>(self)->specialValueText();
+void QAbstractSpinBox_SpecialValueText(const QAbstractSpinBox* self, char** _out, int* _out_Strlen) {
+	QString ret = self->specialValueText();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -90,8 +90,8 @@ void QAbstractSpinBox_SetSpecialValueText(QAbstractSpinBox* self, const char* tx
 	self->setSpecialValueText(txt_QString);
 }
 
-bool QAbstractSpinBox_Wrapping(QAbstractSpinBox* self) {
-	return const_cast<const QAbstractSpinBox*>(self)->wrapping();
+bool QAbstractSpinBox_Wrapping(const QAbstractSpinBox* self) {
+	return self->wrapping();
 }
 
 void QAbstractSpinBox_SetWrapping(QAbstractSpinBox* self, bool w) {
@@ -102,24 +102,24 @@ void QAbstractSpinBox_SetReadOnly(QAbstractSpinBox* self, bool r) {
 	self->setReadOnly(r);
 }
 
-bool QAbstractSpinBox_IsReadOnly(QAbstractSpinBox* self) {
-	return const_cast<const QAbstractSpinBox*>(self)->isReadOnly();
+bool QAbstractSpinBox_IsReadOnly(const QAbstractSpinBox* self) {
+	return self->isReadOnly();
 }
 
 void QAbstractSpinBox_SetKeyboardTracking(QAbstractSpinBox* self, bool kt) {
 	self->setKeyboardTracking(kt);
 }
 
-bool QAbstractSpinBox_KeyboardTracking(QAbstractSpinBox* self) {
-	return const_cast<const QAbstractSpinBox*>(self)->keyboardTracking();
+bool QAbstractSpinBox_KeyboardTracking(const QAbstractSpinBox* self) {
+	return self->keyboardTracking();
 }
 
 void QAbstractSpinBox_SetAlignment(QAbstractSpinBox* self, int flag) {
 	self->setAlignment(static_cast<Qt::Alignment>(flag));
 }
 
-int QAbstractSpinBox_Alignment(QAbstractSpinBox* self) {
-	Qt::Alignment ret = const_cast<const QAbstractSpinBox*>(self)->alignment();
+int QAbstractSpinBox_Alignment(const QAbstractSpinBox* self) {
+	Qt::Alignment ret = self->alignment();
 	return static_cast<int>(ret);
 }
 
@@ -127,34 +127,34 @@ void QAbstractSpinBox_SetFrame(QAbstractSpinBox* self, bool frame) {
 	self->setFrame(frame);
 }
 
-bool QAbstractSpinBox_HasFrame(QAbstractSpinBox* self) {
-	return const_cast<const QAbstractSpinBox*>(self)->hasFrame();
+bool QAbstractSpinBox_HasFrame(const QAbstractSpinBox* self) {
+	return self->hasFrame();
 }
 
 void QAbstractSpinBox_SetAccelerated(QAbstractSpinBox* self, bool on) {
 	self->setAccelerated(on);
 }
 
-bool QAbstractSpinBox_IsAccelerated(QAbstractSpinBox* self) {
-	return const_cast<const QAbstractSpinBox*>(self)->isAccelerated();
+bool QAbstractSpinBox_IsAccelerated(const QAbstractSpinBox* self) {
+	return self->isAccelerated();
 }
 
 void QAbstractSpinBox_SetGroupSeparatorShown(QAbstractSpinBox* self, bool shown) {
 	self->setGroupSeparatorShown(shown);
 }
 
-bool QAbstractSpinBox_IsGroupSeparatorShown(QAbstractSpinBox* self) {
-	return const_cast<const QAbstractSpinBox*>(self)->isGroupSeparatorShown();
+bool QAbstractSpinBox_IsGroupSeparatorShown(const QAbstractSpinBox* self) {
+	return self->isGroupSeparatorShown();
 }
 
-QSize* QAbstractSpinBox_SizeHint(QAbstractSpinBox* self) {
-	QSize ret = const_cast<const QAbstractSpinBox*>(self)->sizeHint();
+QSize* QAbstractSpinBox_SizeHint(const QAbstractSpinBox* self) {
+	QSize ret = self->sizeHint();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
 
-QSize* QAbstractSpinBox_MinimumSizeHint(QAbstractSpinBox* self) {
-	QSize ret = const_cast<const QAbstractSpinBox*>(self)->minimumSizeHint();
+QSize* QAbstractSpinBox_MinimumSizeHint(const QAbstractSpinBox* self) {
+	QSize ret = self->minimumSizeHint();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
@@ -167,21 +167,21 @@ bool QAbstractSpinBox_Event(QAbstractSpinBox* self, QEvent* event) {
 	return self->event(event);
 }
 
-QVariant* QAbstractSpinBox_InputMethodQuery(QAbstractSpinBox* self, uintptr_t param1) {
-	QVariant ret = const_cast<const QAbstractSpinBox*>(self)->inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1));
+QVariant* QAbstractSpinBox_InputMethodQuery(const QAbstractSpinBox* self, uintptr_t param1) {
+	QVariant ret = self->inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVariant*>(new QVariant(ret));
 }
 
-uintptr_t QAbstractSpinBox_Validate(QAbstractSpinBox* self, const char* input, size_t input_Strlen, int* pos) {
+uintptr_t QAbstractSpinBox_Validate(const QAbstractSpinBox* self, const char* input, size_t input_Strlen, int* pos) {
 	QString input_QString = QString::fromUtf8(input, input_Strlen);
-	QValidator::State ret = const_cast<const QAbstractSpinBox*>(self)->validate(input_QString, static_cast<int&>(*pos));
+	QValidator::State ret = self->validate(input_QString, static_cast<int&>(*pos));
 	return static_cast<uintptr_t>(ret);
 }
 
-void QAbstractSpinBox_Fixup(QAbstractSpinBox* self, const char* input, size_t input_Strlen) {
+void QAbstractSpinBox_Fixup(const QAbstractSpinBox* self, const char* input, size_t input_Strlen) {
 	QString input_QString = QString::fromUtf8(input, input_Strlen);
-	const_cast<const QAbstractSpinBox*>(self)->fixup(input_QString);
+	self->fixup(input_QString);
 }
 
 void QAbstractSpinBox_StepBy(QAbstractSpinBox* self, int steps) {

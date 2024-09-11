@@ -12,8 +12,8 @@ extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
 }
 
-QMetaObject* QAnimationGroup_MetaObject(QAnimationGroup* self) {
-	return (QMetaObject*) const_cast<const QAnimationGroup*>(self)->metaObject();
+QMetaObject* QAnimationGroup_MetaObject(const QAnimationGroup* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QAnimationGroup_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -34,16 +34,16 @@ void QAnimationGroup_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-QAbstractAnimation* QAnimationGroup_AnimationAt(QAnimationGroup* self, int index) {
-	return const_cast<const QAnimationGroup*>(self)->animationAt(static_cast<int>(index));
+QAbstractAnimation* QAnimationGroup_AnimationAt(const QAnimationGroup* self, int index) {
+	return self->animationAt(static_cast<int>(index));
 }
 
-int QAnimationGroup_AnimationCount(QAnimationGroup* self) {
-	return const_cast<const QAnimationGroup*>(self)->animationCount();
+int QAnimationGroup_AnimationCount(const QAnimationGroup* self) {
+	return self->animationCount();
 }
 
-int QAnimationGroup_IndexOfAnimation(QAnimationGroup* self, QAbstractAnimation* animation) {
-	return const_cast<const QAnimationGroup*>(self)->indexOfAnimation(animation);
+int QAnimationGroup_IndexOfAnimation(const QAnimationGroup* self, QAbstractAnimation* animation) {
+	return self->indexOfAnimation(animation);
 }
 
 void QAnimationGroup_AddAnimation(QAnimationGroup* self, QAbstractAnimation* animation) {

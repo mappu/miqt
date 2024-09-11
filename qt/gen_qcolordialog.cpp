@@ -29,8 +29,8 @@ QColorDialog* QColorDialog_new4(QColor* initial, QWidget* parent) {
 	return new QColorDialog(*initial, parent);
 }
 
-QMetaObject* QColorDialog_MetaObject(QColorDialog* self) {
-	return (QMetaObject*) const_cast<const QColorDialog*>(self)->metaObject();
+QMetaObject* QColorDialog_MetaObject(const QColorDialog* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QColorDialog_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -55,14 +55,14 @@ void QColorDialog_SetCurrentColor(QColorDialog* self, QColor* color) {
 	self->setCurrentColor(*color);
 }
 
-QColor* QColorDialog_CurrentColor(QColorDialog* self) {
-	QColor ret = const_cast<const QColorDialog*>(self)->currentColor();
+QColor* QColorDialog_CurrentColor(const QColorDialog* self) {
+	QColor ret = self->currentColor();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QColor*>(new QColor(ret));
 }
 
-QColor* QColorDialog_SelectedColor(QColorDialog* self) {
-	QColor ret = const_cast<const QColorDialog*>(self)->selectedColor();
+QColor* QColorDialog_SelectedColor(const QColorDialog* self) {
+	QColor ret = self->selectedColor();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QColor*>(new QColor(ret));
 }
@@ -71,16 +71,16 @@ void QColorDialog_SetOption(QColorDialog* self, uintptr_t option) {
 	self->setOption(static_cast<QColorDialog::ColorDialogOption>(option));
 }
 
-bool QColorDialog_TestOption(QColorDialog* self, uintptr_t option) {
-	return const_cast<const QColorDialog*>(self)->testOption(static_cast<QColorDialog::ColorDialogOption>(option));
+bool QColorDialog_TestOption(const QColorDialog* self, uintptr_t option) {
+	return self->testOption(static_cast<QColorDialog::ColorDialogOption>(option));
 }
 
 void QColorDialog_SetOptions(QColorDialog* self, int options) {
 	self->setOptions(static_cast<QColorDialog::ColorDialogOptions>(options));
 }
 
-int QColorDialog_Options(QColorDialog* self) {
-	QColorDialog::ColorDialogOptions ret = const_cast<const QColorDialog*>(self)->options();
+int QColorDialog_Options(const QColorDialog* self) {
+	QColorDialog::ColorDialogOptions ret = self->options();
 	return static_cast<int>(ret);
 }
 

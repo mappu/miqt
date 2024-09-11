@@ -32,8 +32,8 @@ QComboBox* QComboBox_new2(QWidget* parent) {
 	return new QComboBox(parent);
 }
 
-QMetaObject* QComboBox_MetaObject(QComboBox* self) {
-	return (QMetaObject*) const_cast<const QComboBox*>(self)->metaObject();
+QMetaObject* QComboBox_MetaObject(const QComboBox* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QComboBox_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -54,36 +54,36 @@ void QComboBox_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-int QComboBox_MaxVisibleItems(QComboBox* self) {
-	return const_cast<const QComboBox*>(self)->maxVisibleItems();
+int QComboBox_MaxVisibleItems(const QComboBox* self) {
+	return self->maxVisibleItems();
 }
 
 void QComboBox_SetMaxVisibleItems(QComboBox* self, int maxItems) {
 	self->setMaxVisibleItems(static_cast<int>(maxItems));
 }
 
-int QComboBox_Count(QComboBox* self) {
-	return const_cast<const QComboBox*>(self)->count();
+int QComboBox_Count(const QComboBox* self) {
+	return self->count();
 }
 
 void QComboBox_SetMaxCount(QComboBox* self, int max) {
 	self->setMaxCount(static_cast<int>(max));
 }
 
-int QComboBox_MaxCount(QComboBox* self) {
-	return const_cast<const QComboBox*>(self)->maxCount();
+int QComboBox_MaxCount(const QComboBox* self) {
+	return self->maxCount();
 }
 
-bool QComboBox_AutoCompletion(QComboBox* self) {
-	return const_cast<const QComboBox*>(self)->autoCompletion();
+bool QComboBox_AutoCompletion(const QComboBox* self) {
+	return self->autoCompletion();
 }
 
 void QComboBox_SetAutoCompletion(QComboBox* self, bool enable) {
 	self->setAutoCompletion(enable);
 }
 
-uintptr_t QComboBox_AutoCompletionCaseSensitivity(QComboBox* self) {
-	Qt::CaseSensitivity ret = const_cast<const QComboBox*>(self)->autoCompletionCaseSensitivity();
+uintptr_t QComboBox_AutoCompletionCaseSensitivity(const QComboBox* self) {
+	Qt::CaseSensitivity ret = self->autoCompletionCaseSensitivity();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -91,8 +91,8 @@ void QComboBox_SetAutoCompletionCaseSensitivity(QComboBox* self, uintptr_t sensi
 	self->setAutoCompletionCaseSensitivity(static_cast<Qt::CaseSensitivity>(sensitivity));
 }
 
-bool QComboBox_DuplicatesEnabled(QComboBox* self) {
-	return const_cast<const QComboBox*>(self)->duplicatesEnabled();
+bool QComboBox_DuplicatesEnabled(const QComboBox* self) {
+	return self->duplicatesEnabled();
 }
 
 void QComboBox_SetDuplicatesEnabled(QComboBox* self, bool enable) {
@@ -103,21 +103,21 @@ void QComboBox_SetFrame(QComboBox* self, bool frame) {
 	self->setFrame(frame);
 }
 
-bool QComboBox_HasFrame(QComboBox* self) {
-	return const_cast<const QComboBox*>(self)->hasFrame();
+bool QComboBox_HasFrame(const QComboBox* self) {
+	return self->hasFrame();
 }
 
-int QComboBox_FindText(QComboBox* self, const char* text, size_t text_Strlen) {
+int QComboBox_FindText(const QComboBox* self, const char* text, size_t text_Strlen) {
 	QString text_QString = QString::fromUtf8(text, text_Strlen);
-	return const_cast<const QComboBox*>(self)->findText(text_QString);
+	return self->findText(text_QString);
 }
 
-int QComboBox_FindData(QComboBox* self, QVariant* data) {
-	return const_cast<const QComboBox*>(self)->findData(*data);
+int QComboBox_FindData(const QComboBox* self, QVariant* data) {
+	return self->findData(*data);
 }
 
-uintptr_t QComboBox_InsertPolicy(QComboBox* self) {
-	QComboBox::InsertPolicy ret = const_cast<const QComboBox*>(self)->insertPolicy();
+uintptr_t QComboBox_InsertPolicy(const QComboBox* self) {
+	QComboBox::InsertPolicy ret = self->insertPolicy();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -125,8 +125,8 @@ void QComboBox_SetInsertPolicy(QComboBox* self, uintptr_t policy) {
 	self->setInsertPolicy(static_cast<QComboBox::InsertPolicy>(policy));
 }
 
-uintptr_t QComboBox_SizeAdjustPolicy(QComboBox* self) {
-	QComboBox::SizeAdjustPolicy ret = const_cast<const QComboBox*>(self)->sizeAdjustPolicy();
+uintptr_t QComboBox_SizeAdjustPolicy(const QComboBox* self) {
+	QComboBox::SizeAdjustPolicy ret = self->sizeAdjustPolicy();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -134,16 +134,16 @@ void QComboBox_SetSizeAdjustPolicy(QComboBox* self, uintptr_t policy) {
 	self->setSizeAdjustPolicy(static_cast<QComboBox::SizeAdjustPolicy>(policy));
 }
 
-int QComboBox_MinimumContentsLength(QComboBox* self) {
-	return const_cast<const QComboBox*>(self)->minimumContentsLength();
+int QComboBox_MinimumContentsLength(const QComboBox* self) {
+	return self->minimumContentsLength();
 }
 
 void QComboBox_SetMinimumContentsLength(QComboBox* self, int characters) {
 	self->setMinimumContentsLength(static_cast<int>(characters));
 }
 
-QSize* QComboBox_IconSize(QComboBox* self) {
-	QSize ret = const_cast<const QComboBox*>(self)->iconSize();
+QSize* QComboBox_IconSize(const QComboBox* self) {
+	QSize ret = self->iconSize();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
@@ -157,8 +157,8 @@ void QComboBox_SetPlaceholderText(QComboBox* self, const char* placeholderText, 
 	self->setPlaceholderText(placeholderText_QString);
 }
 
-void QComboBox_PlaceholderText(QComboBox* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QComboBox*>(self)->placeholderText();
+void QComboBox_PlaceholderText(const QComboBox* self, char** _out, int* _out_Strlen) {
+	QString ret = self->placeholderText();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -166,8 +166,8 @@ void QComboBox_PlaceholderText(QComboBox* self, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-bool QComboBox_IsEditable(QComboBox* self) {
-	return const_cast<const QComboBox*>(self)->isEditable();
+bool QComboBox_IsEditable(const QComboBox* self) {
+	return self->isEditable();
 }
 
 void QComboBox_SetEditable(QComboBox* self, bool editable) {
@@ -178,44 +178,44 @@ void QComboBox_SetLineEdit(QComboBox* self, QLineEdit* edit) {
 	self->setLineEdit(edit);
 }
 
-QLineEdit* QComboBox_LineEdit(QComboBox* self) {
-	return const_cast<const QComboBox*>(self)->lineEdit();
+QLineEdit* QComboBox_LineEdit(const QComboBox* self) {
+	return self->lineEdit();
 }
 
 void QComboBox_SetValidator(QComboBox* self, QValidator* v) {
 	self->setValidator(v);
 }
 
-QValidator* QComboBox_Validator(QComboBox* self) {
-	return (QValidator*) const_cast<const QComboBox*>(self)->validator();
+QValidator* QComboBox_Validator(const QComboBox* self) {
+	return (QValidator*) self->validator();
 }
 
 void QComboBox_SetCompleter(QComboBox* self, QCompleter* c) {
 	self->setCompleter(c);
 }
 
-QCompleter* QComboBox_Completer(QComboBox* self) {
-	return const_cast<const QComboBox*>(self)->completer();
+QCompleter* QComboBox_Completer(const QComboBox* self) {
+	return self->completer();
 }
 
-QAbstractItemDelegate* QComboBox_ItemDelegate(QComboBox* self) {
-	return const_cast<const QComboBox*>(self)->itemDelegate();
+QAbstractItemDelegate* QComboBox_ItemDelegate(const QComboBox* self) {
+	return self->itemDelegate();
 }
 
 void QComboBox_SetItemDelegate(QComboBox* self, QAbstractItemDelegate* delegate) {
 	self->setItemDelegate(delegate);
 }
 
-QAbstractItemModel* QComboBox_Model(QComboBox* self) {
-	return const_cast<const QComboBox*>(self)->model();
+QAbstractItemModel* QComboBox_Model(const QComboBox* self) {
+	return self->model();
 }
 
 void QComboBox_SetModel(QComboBox* self, QAbstractItemModel* model) {
 	self->setModel(model);
 }
 
-QModelIndex* QComboBox_RootModelIndex(QComboBox* self) {
-	QModelIndex ret = const_cast<const QComboBox*>(self)->rootModelIndex();
+QModelIndex* QComboBox_RootModelIndex(const QComboBox* self) {
+	QModelIndex ret = self->rootModelIndex();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QModelIndex*>(new QModelIndex(ret));
 }
@@ -224,20 +224,20 @@ void QComboBox_SetRootModelIndex(QComboBox* self, QModelIndex* index) {
 	self->setRootModelIndex(*index);
 }
 
-int QComboBox_ModelColumn(QComboBox* self) {
-	return const_cast<const QComboBox*>(self)->modelColumn();
+int QComboBox_ModelColumn(const QComboBox* self) {
+	return self->modelColumn();
 }
 
 void QComboBox_SetModelColumn(QComboBox* self, int visibleColumn) {
 	self->setModelColumn(static_cast<int>(visibleColumn));
 }
 
-int QComboBox_CurrentIndex(QComboBox* self) {
-	return const_cast<const QComboBox*>(self)->currentIndex();
+int QComboBox_CurrentIndex(const QComboBox* self) {
+	return self->currentIndex();
 }
 
-void QComboBox_CurrentText(QComboBox* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QComboBox*>(self)->currentText();
+void QComboBox_CurrentText(const QComboBox* self, char** _out, int* _out_Strlen) {
+	QString ret = self->currentText();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -245,14 +245,14 @@ void QComboBox_CurrentText(QComboBox* self, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-QVariant* QComboBox_CurrentData(QComboBox* self) {
-	QVariant ret = const_cast<const QComboBox*>(self)->currentData();
+QVariant* QComboBox_CurrentData(const QComboBox* self) {
+	QVariant ret = self->currentData();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVariant*>(new QVariant(ret));
 }
 
-void QComboBox_ItemText(QComboBox* self, int index, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QComboBox*>(self)->itemText(static_cast<int>(index));
+void QComboBox_ItemText(const QComboBox* self, int index, char** _out, int* _out_Strlen) {
+	QString ret = self->itemText(static_cast<int>(index));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -260,14 +260,14 @@ void QComboBox_ItemText(QComboBox* self, int index, char** _out, int* _out_Strle
 	*_out_Strlen = b.length();
 }
 
-QIcon* QComboBox_ItemIcon(QComboBox* self, int index) {
-	QIcon ret = const_cast<const QComboBox*>(self)->itemIcon(static_cast<int>(index));
+QIcon* QComboBox_ItemIcon(const QComboBox* self, int index) {
+	QIcon ret = self->itemIcon(static_cast<int>(index));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QIcon*>(new QIcon(ret));
 }
 
-QVariant* QComboBox_ItemData(QComboBox* self, int index) {
-	QVariant ret = const_cast<const QComboBox*>(self)->itemData(static_cast<int>(index));
+QVariant* QComboBox_ItemData(const QComboBox* self, int index) {
+	QVariant ret = self->itemData(static_cast<int>(index));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVariant*>(new QVariant(ret));
 }
@@ -331,22 +331,22 @@ void QComboBox_SetItemData(QComboBox* self, int index, QVariant* value) {
 	self->setItemData(static_cast<int>(index), *value);
 }
 
-QAbstractItemView* QComboBox_View(QComboBox* self) {
-	return const_cast<const QComboBox*>(self)->view();
+QAbstractItemView* QComboBox_View(const QComboBox* self) {
+	return self->view();
 }
 
 void QComboBox_SetView(QComboBox* self, QAbstractItemView* itemView) {
 	self->setView(itemView);
 }
 
-QSize* QComboBox_SizeHint(QComboBox* self) {
-	QSize ret = const_cast<const QComboBox*>(self)->sizeHint();
+QSize* QComboBox_SizeHint(const QComboBox* self) {
+	QSize ret = self->sizeHint();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
 
-QSize* QComboBox_MinimumSizeHint(QComboBox* self) {
-	QSize ret = const_cast<const QComboBox*>(self)->minimumSizeHint();
+QSize* QComboBox_MinimumSizeHint(const QComboBox* self) {
+	QSize ret = self->minimumSizeHint();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
@@ -363,14 +363,14 @@ bool QComboBox_Event(QComboBox* self, QEvent* event) {
 	return self->event(event);
 }
 
-QVariant* QComboBox_InputMethodQuery(QComboBox* self, uintptr_t param1) {
-	QVariant ret = const_cast<const QComboBox*>(self)->inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1));
+QVariant* QComboBox_InputMethodQuery(const QComboBox* self, uintptr_t param1) {
+	QVariant ret = self->inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVariant*>(new QVariant(ret));
 }
 
-QVariant* QComboBox_InputMethodQuery2(QComboBox* self, uintptr_t query, QVariant* argument) {
-	QVariant ret = const_cast<const QComboBox*>(self)->inputMethodQuery(static_cast<Qt::InputMethodQuery>(query), *argument);
+QVariant* QComboBox_InputMethodQuery2(const QComboBox* self, uintptr_t query, QVariant* argument) {
+	QVariant ret = self->inputMethodQuery(static_cast<Qt::InputMethodQuery>(query), *argument);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVariant*>(new QVariant(ret));
 }
@@ -540,27 +540,27 @@ void QComboBox_TrUtf83(const char* s, const char* c, int n, char** _out, int* _o
 	*_out_Strlen = b.length();
 }
 
-int QComboBox_FindText2(QComboBox* self, const char* text, size_t text_Strlen, int flags) {
+int QComboBox_FindText2(const QComboBox* self, const char* text, size_t text_Strlen, int flags) {
 	QString text_QString = QString::fromUtf8(text, text_Strlen);
-	return const_cast<const QComboBox*>(self)->findText(text_QString, static_cast<Qt::MatchFlags>(flags));
+	return self->findText(text_QString, static_cast<Qt::MatchFlags>(flags));
 }
 
-int QComboBox_FindData2(QComboBox* self, QVariant* data, int role) {
-	return const_cast<const QComboBox*>(self)->findData(*data, static_cast<int>(role));
+int QComboBox_FindData2(const QComboBox* self, QVariant* data, int role) {
+	return self->findData(*data, static_cast<int>(role));
 }
 
-int QComboBox_FindData3(QComboBox* self, QVariant* data, int role, int flags) {
-	return const_cast<const QComboBox*>(self)->findData(*data, static_cast<int>(role), static_cast<Qt::MatchFlags>(flags));
+int QComboBox_FindData3(const QComboBox* self, QVariant* data, int role, int flags) {
+	return self->findData(*data, static_cast<int>(role), static_cast<Qt::MatchFlags>(flags));
 }
 
-QVariant* QComboBox_CurrentData1(QComboBox* self, int role) {
-	QVariant ret = const_cast<const QComboBox*>(self)->currentData(static_cast<int>(role));
+QVariant* QComboBox_CurrentData1(const QComboBox* self, int role) {
+	QVariant ret = self->currentData(static_cast<int>(role));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVariant*>(new QVariant(ret));
 }
 
-QVariant* QComboBox_ItemData2(QComboBox* self, int index, int role) {
-	QVariant ret = const_cast<const QComboBox*>(self)->itemData(static_cast<int>(index), static_cast<int>(role));
+QVariant* QComboBox_ItemData2(const QComboBox* self, int index, int role) {
+	QVariant ret = self->itemData(static_cast<int>(index), static_cast<int>(role));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVariant*>(new QVariant(ret));
 }

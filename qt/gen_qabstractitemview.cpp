@@ -20,8 +20,8 @@ extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
 }
 
-QMetaObject* QAbstractItemView_MetaObject(QAbstractItemView* self) {
-	return (QMetaObject*) const_cast<const QAbstractItemView*>(self)->metaObject();
+QMetaObject* QAbstractItemView_MetaObject(const QAbstractItemView* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QAbstractItemView_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -46,32 +46,32 @@ void QAbstractItemView_SetModel(QAbstractItemView* self, QAbstractItemModel* mod
 	self->setModel(model);
 }
 
-QAbstractItemModel* QAbstractItemView_Model(QAbstractItemView* self) {
-	return const_cast<const QAbstractItemView*>(self)->model();
+QAbstractItemModel* QAbstractItemView_Model(const QAbstractItemView* self) {
+	return self->model();
 }
 
 void QAbstractItemView_SetSelectionModel(QAbstractItemView* self, QItemSelectionModel* selectionModel) {
 	self->setSelectionModel(selectionModel);
 }
 
-QItemSelectionModel* QAbstractItemView_SelectionModel(QAbstractItemView* self) {
-	return const_cast<const QAbstractItemView*>(self)->selectionModel();
+QItemSelectionModel* QAbstractItemView_SelectionModel(const QAbstractItemView* self) {
+	return self->selectionModel();
 }
 
 void QAbstractItemView_SetItemDelegate(QAbstractItemView* self, QAbstractItemDelegate* delegate) {
 	self->setItemDelegate(delegate);
 }
 
-QAbstractItemDelegate* QAbstractItemView_ItemDelegate(QAbstractItemView* self) {
-	return const_cast<const QAbstractItemView*>(self)->itemDelegate();
+QAbstractItemDelegate* QAbstractItemView_ItemDelegate(const QAbstractItemView* self) {
+	return self->itemDelegate();
 }
 
 void QAbstractItemView_SetSelectionMode(QAbstractItemView* self, uintptr_t mode) {
 	self->setSelectionMode(static_cast<QAbstractItemView::SelectionMode>(mode));
 }
 
-uintptr_t QAbstractItemView_SelectionMode(QAbstractItemView* self) {
-	QAbstractItemView::SelectionMode ret = const_cast<const QAbstractItemView*>(self)->selectionMode();
+uintptr_t QAbstractItemView_SelectionMode(const QAbstractItemView* self) {
+	QAbstractItemView::SelectionMode ret = self->selectionMode();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -79,19 +79,19 @@ void QAbstractItemView_SetSelectionBehavior(QAbstractItemView* self, uintptr_t b
 	self->setSelectionBehavior(static_cast<QAbstractItemView::SelectionBehavior>(behavior));
 }
 
-uintptr_t QAbstractItemView_SelectionBehavior(QAbstractItemView* self) {
-	QAbstractItemView::SelectionBehavior ret = const_cast<const QAbstractItemView*>(self)->selectionBehavior();
+uintptr_t QAbstractItemView_SelectionBehavior(const QAbstractItemView* self) {
+	QAbstractItemView::SelectionBehavior ret = self->selectionBehavior();
 	return static_cast<uintptr_t>(ret);
 }
 
-QModelIndex* QAbstractItemView_CurrentIndex(QAbstractItemView* self) {
-	QModelIndex ret = const_cast<const QAbstractItemView*>(self)->currentIndex();
+QModelIndex* QAbstractItemView_CurrentIndex(const QAbstractItemView* self) {
+	QModelIndex ret = self->currentIndex();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QModelIndex*>(new QModelIndex(ret));
 }
 
-QModelIndex* QAbstractItemView_RootIndex(QAbstractItemView* self) {
-	QModelIndex ret = const_cast<const QAbstractItemView*>(self)->rootIndex();
+QModelIndex* QAbstractItemView_RootIndex(const QAbstractItemView* self) {
+	QModelIndex ret = self->rootIndex();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QModelIndex*>(new QModelIndex(ret));
 }
@@ -100,8 +100,8 @@ void QAbstractItemView_SetEditTriggers(QAbstractItemView* self, int triggers) {
 	self->setEditTriggers(static_cast<QAbstractItemView::EditTriggers>(triggers));
 }
 
-int QAbstractItemView_EditTriggers(QAbstractItemView* self) {
-	QAbstractItemView::EditTriggers ret = const_cast<const QAbstractItemView*>(self)->editTriggers();
+int QAbstractItemView_EditTriggers(const QAbstractItemView* self) {
+	QAbstractItemView::EditTriggers ret = self->editTriggers();
 	return static_cast<int>(ret);
 }
 
@@ -109,8 +109,8 @@ void QAbstractItemView_SetVerticalScrollMode(QAbstractItemView* self, uintptr_t 
 	self->setVerticalScrollMode(static_cast<QAbstractItemView::ScrollMode>(mode));
 }
 
-uintptr_t QAbstractItemView_VerticalScrollMode(QAbstractItemView* self) {
-	QAbstractItemView::ScrollMode ret = const_cast<const QAbstractItemView*>(self)->verticalScrollMode();
+uintptr_t QAbstractItemView_VerticalScrollMode(const QAbstractItemView* self) {
+	QAbstractItemView::ScrollMode ret = self->verticalScrollMode();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -122,8 +122,8 @@ void QAbstractItemView_SetHorizontalScrollMode(QAbstractItemView* self, uintptr_
 	self->setHorizontalScrollMode(static_cast<QAbstractItemView::ScrollMode>(mode));
 }
 
-uintptr_t QAbstractItemView_HorizontalScrollMode(QAbstractItemView* self) {
-	QAbstractItemView::ScrollMode ret = const_cast<const QAbstractItemView*>(self)->horizontalScrollMode();
+uintptr_t QAbstractItemView_HorizontalScrollMode(const QAbstractItemView* self) {
+	QAbstractItemView::ScrollMode ret = self->horizontalScrollMode();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -135,56 +135,56 @@ void QAbstractItemView_SetAutoScroll(QAbstractItemView* self, bool enable) {
 	self->setAutoScroll(enable);
 }
 
-bool QAbstractItemView_HasAutoScroll(QAbstractItemView* self) {
-	return const_cast<const QAbstractItemView*>(self)->hasAutoScroll();
+bool QAbstractItemView_HasAutoScroll(const QAbstractItemView* self) {
+	return self->hasAutoScroll();
 }
 
 void QAbstractItemView_SetAutoScrollMargin(QAbstractItemView* self, int margin) {
 	self->setAutoScrollMargin(static_cast<int>(margin));
 }
 
-int QAbstractItemView_AutoScrollMargin(QAbstractItemView* self) {
-	return const_cast<const QAbstractItemView*>(self)->autoScrollMargin();
+int QAbstractItemView_AutoScrollMargin(const QAbstractItemView* self) {
+	return self->autoScrollMargin();
 }
 
 void QAbstractItemView_SetTabKeyNavigation(QAbstractItemView* self, bool enable) {
 	self->setTabKeyNavigation(enable);
 }
 
-bool QAbstractItemView_TabKeyNavigation(QAbstractItemView* self) {
-	return const_cast<const QAbstractItemView*>(self)->tabKeyNavigation();
+bool QAbstractItemView_TabKeyNavigation(const QAbstractItemView* self) {
+	return self->tabKeyNavigation();
 }
 
 void QAbstractItemView_SetDropIndicatorShown(QAbstractItemView* self, bool enable) {
 	self->setDropIndicatorShown(enable);
 }
 
-bool QAbstractItemView_ShowDropIndicator(QAbstractItemView* self) {
-	return const_cast<const QAbstractItemView*>(self)->showDropIndicator();
+bool QAbstractItemView_ShowDropIndicator(const QAbstractItemView* self) {
+	return self->showDropIndicator();
 }
 
 void QAbstractItemView_SetDragEnabled(QAbstractItemView* self, bool enable) {
 	self->setDragEnabled(enable);
 }
 
-bool QAbstractItemView_DragEnabled(QAbstractItemView* self) {
-	return const_cast<const QAbstractItemView*>(self)->dragEnabled();
+bool QAbstractItemView_DragEnabled(const QAbstractItemView* self) {
+	return self->dragEnabled();
 }
 
 void QAbstractItemView_SetDragDropOverwriteMode(QAbstractItemView* self, bool overwrite) {
 	self->setDragDropOverwriteMode(overwrite);
 }
 
-bool QAbstractItemView_DragDropOverwriteMode(QAbstractItemView* self) {
-	return const_cast<const QAbstractItemView*>(self)->dragDropOverwriteMode();
+bool QAbstractItemView_DragDropOverwriteMode(const QAbstractItemView* self) {
+	return self->dragDropOverwriteMode();
 }
 
 void QAbstractItemView_SetDragDropMode(QAbstractItemView* self, uintptr_t behavior) {
 	self->setDragDropMode(static_cast<QAbstractItemView::DragDropMode>(behavior));
 }
 
-uintptr_t QAbstractItemView_DragDropMode(QAbstractItemView* self) {
-	QAbstractItemView::DragDropMode ret = const_cast<const QAbstractItemView*>(self)->dragDropMode();
+uintptr_t QAbstractItemView_DragDropMode(const QAbstractItemView* self) {
+	QAbstractItemView::DragDropMode ret = self->dragDropMode();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -192,8 +192,8 @@ void QAbstractItemView_SetDefaultDropAction(QAbstractItemView* self, uintptr_t d
 	self->setDefaultDropAction(static_cast<Qt::DropAction>(dropAction));
 }
 
-uintptr_t QAbstractItemView_DefaultDropAction(QAbstractItemView* self) {
-	Qt::DropAction ret = const_cast<const QAbstractItemView*>(self)->defaultDropAction();
+uintptr_t QAbstractItemView_DefaultDropAction(const QAbstractItemView* self) {
+	Qt::DropAction ret = self->defaultDropAction();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -201,16 +201,16 @@ void QAbstractItemView_SetAlternatingRowColors(QAbstractItemView* self, bool ena
 	self->setAlternatingRowColors(enable);
 }
 
-bool QAbstractItemView_AlternatingRowColors(QAbstractItemView* self) {
-	return const_cast<const QAbstractItemView*>(self)->alternatingRowColors();
+bool QAbstractItemView_AlternatingRowColors(const QAbstractItemView* self) {
+	return self->alternatingRowColors();
 }
 
 void QAbstractItemView_SetIconSize(QAbstractItemView* self, QSize* size) {
 	self->setIconSize(*size);
 }
 
-QSize* QAbstractItemView_IconSize(QAbstractItemView* self) {
-	QSize ret = const_cast<const QAbstractItemView*>(self)->iconSize();
+QSize* QAbstractItemView_IconSize(const QAbstractItemView* self) {
+	QSize ret = self->iconSize();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
@@ -219,8 +219,8 @@ void QAbstractItemView_SetTextElideMode(QAbstractItemView* self, uintptr_t mode)
 	self->setTextElideMode(static_cast<Qt::TextElideMode>(mode));
 }
 
-uintptr_t QAbstractItemView_TextElideMode(QAbstractItemView* self) {
-	Qt::TextElideMode ret = const_cast<const QAbstractItemView*>(self)->textElideMode();
+uintptr_t QAbstractItemView_TextElideMode(const QAbstractItemView* self) {
+	Qt::TextElideMode ret = self->textElideMode();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -229,8 +229,8 @@ void QAbstractItemView_KeyboardSearch(QAbstractItemView* self, const char* searc
 	self->keyboardSearch(search_QString);
 }
 
-QRect* QAbstractItemView_VisualRect(QAbstractItemView* self, QModelIndex* index) {
-	QRect ret = const_cast<const QAbstractItemView*>(self)->visualRect(*index);
+QRect* QAbstractItemView_VisualRect(const QAbstractItemView* self, QModelIndex* index) {
+	QRect ret = self->visualRect(*index);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRect*>(new QRect(ret));
 }
@@ -239,24 +239,24 @@ void QAbstractItemView_ScrollTo(QAbstractItemView* self, QModelIndex* index) {
 	self->scrollTo(*index);
 }
 
-QModelIndex* QAbstractItemView_IndexAt(QAbstractItemView* self, QPoint* point) {
-	QModelIndex ret = const_cast<const QAbstractItemView*>(self)->indexAt(*point);
+QModelIndex* QAbstractItemView_IndexAt(const QAbstractItemView* self, QPoint* point) {
+	QModelIndex ret = self->indexAt(*point);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QModelIndex*>(new QModelIndex(ret));
 }
 
-QSize* QAbstractItemView_SizeHintForIndex(QAbstractItemView* self, QModelIndex* index) {
-	QSize ret = const_cast<const QAbstractItemView*>(self)->sizeHintForIndex(*index);
+QSize* QAbstractItemView_SizeHintForIndex(const QAbstractItemView* self, QModelIndex* index) {
+	QSize ret = self->sizeHintForIndex(*index);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
 
-int QAbstractItemView_SizeHintForRow(QAbstractItemView* self, int row) {
-	return const_cast<const QAbstractItemView*>(self)->sizeHintForRow(static_cast<int>(row));
+int QAbstractItemView_SizeHintForRow(const QAbstractItemView* self, int row) {
+	return self->sizeHintForRow(static_cast<int>(row));
 }
 
-int QAbstractItemView_SizeHintForColumn(QAbstractItemView* self, int column) {
-	return const_cast<const QAbstractItemView*>(self)->sizeHintForColumn(static_cast<int>(column));
+int QAbstractItemView_SizeHintForColumn(const QAbstractItemView* self, int column) {
+	return self->sizeHintForColumn(static_cast<int>(column));
 }
 
 void QAbstractItemView_OpenPersistentEditor(QAbstractItemView* self, QModelIndex* index) {
@@ -267,40 +267,40 @@ void QAbstractItemView_ClosePersistentEditor(QAbstractItemView* self, QModelInde
 	self->closePersistentEditor(*index);
 }
 
-bool QAbstractItemView_IsPersistentEditorOpen(QAbstractItemView* self, QModelIndex* index) {
-	return const_cast<const QAbstractItemView*>(self)->isPersistentEditorOpen(*index);
+bool QAbstractItemView_IsPersistentEditorOpen(const QAbstractItemView* self, QModelIndex* index) {
+	return self->isPersistentEditorOpen(*index);
 }
 
 void QAbstractItemView_SetIndexWidget(QAbstractItemView* self, QModelIndex* index, QWidget* widget) {
 	self->setIndexWidget(*index, widget);
 }
 
-QWidget* QAbstractItemView_IndexWidget(QAbstractItemView* self, QModelIndex* index) {
-	return const_cast<const QAbstractItemView*>(self)->indexWidget(*index);
+QWidget* QAbstractItemView_IndexWidget(const QAbstractItemView* self, QModelIndex* index) {
+	return self->indexWidget(*index);
 }
 
 void QAbstractItemView_SetItemDelegateForRow(QAbstractItemView* self, int row, QAbstractItemDelegate* delegate) {
 	self->setItemDelegateForRow(static_cast<int>(row), delegate);
 }
 
-QAbstractItemDelegate* QAbstractItemView_ItemDelegateForRow(QAbstractItemView* self, int row) {
-	return const_cast<const QAbstractItemView*>(self)->itemDelegateForRow(static_cast<int>(row));
+QAbstractItemDelegate* QAbstractItemView_ItemDelegateForRow(const QAbstractItemView* self, int row) {
+	return self->itemDelegateForRow(static_cast<int>(row));
 }
 
 void QAbstractItemView_SetItemDelegateForColumn(QAbstractItemView* self, int column, QAbstractItemDelegate* delegate) {
 	self->setItemDelegateForColumn(static_cast<int>(column), delegate);
 }
 
-QAbstractItemDelegate* QAbstractItemView_ItemDelegateForColumn(QAbstractItemView* self, int column) {
-	return const_cast<const QAbstractItemView*>(self)->itemDelegateForColumn(static_cast<int>(column));
+QAbstractItemDelegate* QAbstractItemView_ItemDelegateForColumn(const QAbstractItemView* self, int column) {
+	return self->itemDelegateForColumn(static_cast<int>(column));
 }
 
-QAbstractItemDelegate* QAbstractItemView_ItemDelegateWithIndex(QAbstractItemView* self, QModelIndex* index) {
-	return const_cast<const QAbstractItemView*>(self)->itemDelegate(*index);
+QAbstractItemDelegate* QAbstractItemView_ItemDelegateWithIndex(const QAbstractItemView* self, QModelIndex* index) {
+	return self->itemDelegate(*index);
 }
 
-QVariant* QAbstractItemView_InputMethodQuery(QAbstractItemView* self, uintptr_t query) {
-	QVariant ret = const_cast<const QAbstractItemView*>(self)->inputMethodQuery(static_cast<Qt::InputMethodQuery>(query));
+QVariant* QAbstractItemView_InputMethodQuery(const QAbstractItemView* self, uintptr_t query) {
+	QVariant ret = self->inputMethodQuery(static_cast<Qt::InputMethodQuery>(query));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVariant*>(new QVariant(ret));
 }

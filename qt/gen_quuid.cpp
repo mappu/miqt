@@ -36,8 +36,8 @@ QUuid* QUuid_new6(QUuid* param1) {
 	return new QUuid(*param1);
 }
 
-void QUuid_ToString(QUuid* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QUuid*>(self)->toString();
+void QUuid_ToString(const QUuid* self, char** _out, int* _out_Strlen) {
+	QString ret = self->toString();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -45,8 +45,8 @@ void QUuid_ToString(QUuid* self, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QUuid_ToStringWithMode(QUuid* self, uintptr_t mode, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QUuid*>(self)->toString(static_cast<QUuid::StringFormat>(mode));
+void QUuid_ToStringWithMode(const QUuid* self, uintptr_t mode, char** _out, int* _out_Strlen) {
+	QString ret = self->toString(static_cast<QUuid::StringFormat>(mode));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -54,20 +54,20 @@ void QUuid_ToStringWithMode(QUuid* self, uintptr_t mode, char** _out, int* _out_
 	*_out_Strlen = b.length();
 }
 
-QByteArray* QUuid_ToByteArray(QUuid* self) {
-	QByteArray ret = const_cast<const QUuid*>(self)->toByteArray();
+QByteArray* QUuid_ToByteArray(const QUuid* self) {
+	QByteArray ret = self->toByteArray();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QByteArray*>(new QByteArray(ret));
 }
 
-QByteArray* QUuid_ToByteArrayWithMode(QUuid* self, uintptr_t mode) {
-	QByteArray ret = const_cast<const QUuid*>(self)->toByteArray(static_cast<QUuid::StringFormat>(mode));
+QByteArray* QUuid_ToByteArrayWithMode(const QUuid* self, uintptr_t mode) {
+	QByteArray ret = self->toByteArray(static_cast<QUuid::StringFormat>(mode));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QByteArray*>(new QByteArray(ret));
 }
 
-QByteArray* QUuid_ToRfc4122(QUuid* self) {
-	QByteArray ret = const_cast<const QUuid*>(self)->toRfc4122();
+QByteArray* QUuid_ToRfc4122(const QUuid* self) {
+	QByteArray ret = self->toRfc4122();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QByteArray*>(new QByteArray(ret));
 }
@@ -78,24 +78,24 @@ QUuid* QUuid_FromRfc4122(QByteArray* param1) {
 	return static_cast<QUuid*>(new QUuid(ret));
 }
 
-bool QUuid_IsNull(QUuid* self) {
-	return const_cast<const QUuid*>(self)->isNull();
+bool QUuid_IsNull(const QUuid* self) {
+	return self->isNull();
 }
 
-bool QUuid_OperatorEqual(QUuid* self, QUuid* orig) {
-	return const_cast<const QUuid*>(self)->operator==(*orig);
+bool QUuid_OperatorEqual(const QUuid* self, QUuid* orig) {
+	return self->operator==(*orig);
 }
 
-bool QUuid_OperatorNotEqual(QUuid* self, QUuid* orig) {
-	return const_cast<const QUuid*>(self)->operator!=(*orig);
+bool QUuid_OperatorNotEqual(const QUuid* self, QUuid* orig) {
+	return self->operator!=(*orig);
 }
 
-bool QUuid_OperatorLesser(QUuid* self, QUuid* other) {
-	return const_cast<const QUuid*>(self)->operator<(*other);
+bool QUuid_OperatorLesser(const QUuid* self, QUuid* other) {
+	return self->operator<(*other);
 }
 
-bool QUuid_OperatorGreater(QUuid* self, QUuid* other) {
-	return const_cast<const QUuid*>(self)->operator>(*other);
+bool QUuid_OperatorGreater(const QUuid* self, QUuid* other) {
+	return self->operator>(*other);
 }
 
 QUuid* QUuid_CreateUuid() {
@@ -130,13 +130,13 @@ QUuid* QUuid_CreateUuidV52(QUuid* ns, const char* baseData, size_t baseData_Strl
 	return static_cast<QUuid*>(new QUuid(ret));
 }
 
-uintptr_t QUuid_Variant(QUuid* self) {
-	QUuid::Variant ret = const_cast<const QUuid*>(self)->variant();
+uintptr_t QUuid_Variant(const QUuid* self) {
+	QUuid::Variant ret = self->variant();
 	return static_cast<uintptr_t>(ret);
 }
 
-uintptr_t QUuid_Version(QUuid* self) {
-	QUuid::Version ret = const_cast<const QUuid*>(self)->version();
+uintptr_t QUuid_Version(const QUuid* self) {
+	QUuid::Version ret = self->version();
 	return static_cast<uintptr_t>(ret);
 }
 

@@ -24,11 +24,11 @@ typedef struct QWidgetAction QWidgetAction;
 #endif
 
 QWidgetAction* QWidgetAction_new(QObject* parent);
-QMetaObject* QWidgetAction_MetaObject(QWidgetAction* self);
+QMetaObject* QWidgetAction_MetaObject(const QWidgetAction* self);
 void QWidgetAction_Tr(const char* s, char** _out, int* _out_Strlen);
 void QWidgetAction_TrUtf8(const char* s, char** _out, int* _out_Strlen);
 void QWidgetAction_SetDefaultWidget(QWidgetAction* self, QWidget* w);
-QWidget* QWidgetAction_DefaultWidget(QWidgetAction* self);
+QWidget* QWidgetAction_DefaultWidget(const QWidgetAction* self);
 QWidget* QWidgetAction_RequestWidget(QWidgetAction* self, QWidget* parent);
 void QWidgetAction_ReleaseWidget(QWidgetAction* self, QWidget* widget);
 void QWidgetAction_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);

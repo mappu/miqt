@@ -25,14 +25,14 @@ typedef struct QMetaObject QMetaObject;
 typedef struct QRectF QRectF;
 #endif
 
-QMetaObject* QGraphicsAnchor_MetaObject(QGraphicsAnchor* self);
+QMetaObject* QGraphicsAnchor_MetaObject(const QGraphicsAnchor* self);
 void QGraphicsAnchor_Tr(const char* s, char** _out, int* _out_Strlen);
 void QGraphicsAnchor_TrUtf8(const char* s, char** _out, int* _out_Strlen);
 void QGraphicsAnchor_SetSpacing(QGraphicsAnchor* self, double spacing);
 void QGraphicsAnchor_UnsetSpacing(QGraphicsAnchor* self);
-double QGraphicsAnchor_Spacing(QGraphicsAnchor* self);
+double QGraphicsAnchor_Spacing(const QGraphicsAnchor* self);
 void QGraphicsAnchor_SetSizePolicy(QGraphicsAnchor* self, uintptr_t policy);
-uintptr_t QGraphicsAnchor_SizePolicy(QGraphicsAnchor* self);
+uintptr_t QGraphicsAnchor_SizePolicy(const QGraphicsAnchor* self);
 void QGraphicsAnchor_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
 void QGraphicsAnchor_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
 void QGraphicsAnchor_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
@@ -48,12 +48,12 @@ void QGraphicsAnchorLayout_AddAnchors(QGraphicsAnchorLayout* self, QGraphicsLayo
 void QGraphicsAnchorLayout_SetHorizontalSpacing(QGraphicsAnchorLayout* self, double spacing);
 void QGraphicsAnchorLayout_SetVerticalSpacing(QGraphicsAnchorLayout* self, double spacing);
 void QGraphicsAnchorLayout_SetSpacing(QGraphicsAnchorLayout* self, double spacing);
-double QGraphicsAnchorLayout_HorizontalSpacing(QGraphicsAnchorLayout* self);
-double QGraphicsAnchorLayout_VerticalSpacing(QGraphicsAnchorLayout* self);
+double QGraphicsAnchorLayout_HorizontalSpacing(const QGraphicsAnchorLayout* self);
+double QGraphicsAnchorLayout_VerticalSpacing(const QGraphicsAnchorLayout* self);
 void QGraphicsAnchorLayout_RemoveAt(QGraphicsAnchorLayout* self, int index);
 void QGraphicsAnchorLayout_SetGeometry(QGraphicsAnchorLayout* self, QRectF* rect);
-int QGraphicsAnchorLayout_Count(QGraphicsAnchorLayout* self);
-QGraphicsLayoutItem* QGraphicsAnchorLayout_ItemAt(QGraphicsAnchorLayout* self, int index);
+int QGraphicsAnchorLayout_Count(const QGraphicsAnchorLayout* self);
+QGraphicsLayoutItem* QGraphicsAnchorLayout_ItemAt(const QGraphicsAnchorLayout* self, int index);
 void QGraphicsAnchorLayout_Invalidate(QGraphicsAnchorLayout* self);
 void QGraphicsAnchorLayout_AddAnchors3(QGraphicsAnchorLayout* self, QGraphicsLayoutItem* firstItem, QGraphicsLayoutItem* secondItem, int orientations);
 void QGraphicsAnchorLayout_Delete(QGraphicsAnchorLayout* self);

@@ -24,8 +24,8 @@ QHeaderView* QHeaderView_new2(uintptr_t orientation, QWidget* parent) {
 	return new QHeaderView(static_cast<Qt::Orientation>(orientation), parent);
 }
 
-QMetaObject* QHeaderView_MetaObject(QHeaderView* self) {
-	return (QMetaObject*) const_cast<const QHeaderView*>(self)->metaObject();
+QMetaObject* QHeaderView_MetaObject(const QHeaderView* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QHeaderView_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -50,21 +50,21 @@ void QHeaderView_SetModel(QHeaderView* self, QAbstractItemModel* model) {
 	self->setModel(model);
 }
 
-uintptr_t QHeaderView_Orientation(QHeaderView* self) {
-	Qt::Orientation ret = const_cast<const QHeaderView*>(self)->orientation();
+uintptr_t QHeaderView_Orientation(const QHeaderView* self) {
+	Qt::Orientation ret = self->orientation();
 	return static_cast<uintptr_t>(ret);
 }
 
-int QHeaderView_Offset(QHeaderView* self) {
-	return const_cast<const QHeaderView*>(self)->offset();
+int QHeaderView_Offset(const QHeaderView* self) {
+	return self->offset();
 }
 
-int QHeaderView_Length(QHeaderView* self) {
-	return const_cast<const QHeaderView*>(self)->length();
+int QHeaderView_Length(const QHeaderView* self) {
+	return self->length();
 }
 
-QSize* QHeaderView_SizeHint(QHeaderView* self) {
-	QSize ret = const_cast<const QHeaderView*>(self)->sizeHint();
+QSize* QHeaderView_SizeHint(const QHeaderView* self) {
+	QSize ret = self->sizeHint();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
@@ -73,36 +73,36 @@ void QHeaderView_SetVisible(QHeaderView* self, bool v) {
 	self->setVisible(v);
 }
 
-int QHeaderView_SectionSizeHint(QHeaderView* self, int logicalIndex) {
-	return const_cast<const QHeaderView*>(self)->sectionSizeHint(static_cast<int>(logicalIndex));
+int QHeaderView_SectionSizeHint(const QHeaderView* self, int logicalIndex) {
+	return self->sectionSizeHint(static_cast<int>(logicalIndex));
 }
 
-int QHeaderView_VisualIndexAt(QHeaderView* self, int position) {
-	return const_cast<const QHeaderView*>(self)->visualIndexAt(static_cast<int>(position));
+int QHeaderView_VisualIndexAt(const QHeaderView* self, int position) {
+	return self->visualIndexAt(static_cast<int>(position));
 }
 
-int QHeaderView_LogicalIndexAt(QHeaderView* self, int position) {
-	return const_cast<const QHeaderView*>(self)->logicalIndexAt(static_cast<int>(position));
+int QHeaderView_LogicalIndexAt(const QHeaderView* self, int position) {
+	return self->logicalIndexAt(static_cast<int>(position));
 }
 
-int QHeaderView_LogicalIndexAt2(QHeaderView* self, int x, int y) {
-	return const_cast<const QHeaderView*>(self)->logicalIndexAt(static_cast<int>(x), static_cast<int>(y));
+int QHeaderView_LogicalIndexAt2(const QHeaderView* self, int x, int y) {
+	return self->logicalIndexAt(static_cast<int>(x), static_cast<int>(y));
 }
 
-int QHeaderView_LogicalIndexAtWithPos(QHeaderView* self, QPoint* pos) {
-	return const_cast<const QHeaderView*>(self)->logicalIndexAt(*pos);
+int QHeaderView_LogicalIndexAtWithPos(const QHeaderView* self, QPoint* pos) {
+	return self->logicalIndexAt(*pos);
 }
 
-int QHeaderView_SectionSize(QHeaderView* self, int logicalIndex) {
-	return const_cast<const QHeaderView*>(self)->sectionSize(static_cast<int>(logicalIndex));
+int QHeaderView_SectionSize(const QHeaderView* self, int logicalIndex) {
+	return self->sectionSize(static_cast<int>(logicalIndex));
 }
 
-int QHeaderView_SectionPosition(QHeaderView* self, int logicalIndex) {
-	return const_cast<const QHeaderView*>(self)->sectionPosition(static_cast<int>(logicalIndex));
+int QHeaderView_SectionPosition(const QHeaderView* self, int logicalIndex) {
+	return self->sectionPosition(static_cast<int>(logicalIndex));
 }
 
-int QHeaderView_SectionViewportPosition(QHeaderView* self, int logicalIndex) {
-	return const_cast<const QHeaderView*>(self)->sectionViewportPosition(static_cast<int>(logicalIndex));
+int QHeaderView_SectionViewportPosition(const QHeaderView* self, int logicalIndex) {
+	return self->sectionViewportPosition(static_cast<int>(logicalIndex));
 }
 
 void QHeaderView_MoveSection(QHeaderView* self, int from, int to) {
@@ -121,16 +121,16 @@ void QHeaderView_ResizeSections(QHeaderView* self, uintptr_t mode) {
 	self->resizeSections(static_cast<QHeaderView::ResizeMode>(mode));
 }
 
-bool QHeaderView_IsSectionHidden(QHeaderView* self, int logicalIndex) {
-	return const_cast<const QHeaderView*>(self)->isSectionHidden(static_cast<int>(logicalIndex));
+bool QHeaderView_IsSectionHidden(const QHeaderView* self, int logicalIndex) {
+	return self->isSectionHidden(static_cast<int>(logicalIndex));
 }
 
 void QHeaderView_SetSectionHidden(QHeaderView* self, int logicalIndex, bool hide) {
 	self->setSectionHidden(static_cast<int>(logicalIndex), hide);
 }
 
-int QHeaderView_HiddenSectionCount(QHeaderView* self) {
-	return const_cast<const QHeaderView*>(self)->hiddenSectionCount();
+int QHeaderView_HiddenSectionCount(const QHeaderView* self) {
+	return self->hiddenSectionCount();
 }
 
 void QHeaderView_HideSection(QHeaderView* self, int logicalIndex) {
@@ -141,52 +141,52 @@ void QHeaderView_ShowSection(QHeaderView* self, int logicalIndex) {
 	self->showSection(static_cast<int>(logicalIndex));
 }
 
-int QHeaderView_Count(QHeaderView* self) {
-	return const_cast<const QHeaderView*>(self)->count();
+int QHeaderView_Count(const QHeaderView* self) {
+	return self->count();
 }
 
-int QHeaderView_VisualIndex(QHeaderView* self, int logicalIndex) {
-	return const_cast<const QHeaderView*>(self)->visualIndex(static_cast<int>(logicalIndex));
+int QHeaderView_VisualIndex(const QHeaderView* self, int logicalIndex) {
+	return self->visualIndex(static_cast<int>(logicalIndex));
 }
 
-int QHeaderView_LogicalIndex(QHeaderView* self, int visualIndex) {
-	return const_cast<const QHeaderView*>(self)->logicalIndex(static_cast<int>(visualIndex));
+int QHeaderView_LogicalIndex(const QHeaderView* self, int visualIndex) {
+	return self->logicalIndex(static_cast<int>(visualIndex));
 }
 
 void QHeaderView_SetSectionsMovable(QHeaderView* self, bool movable) {
 	self->setSectionsMovable(movable);
 }
 
-bool QHeaderView_SectionsMovable(QHeaderView* self) {
-	return const_cast<const QHeaderView*>(self)->sectionsMovable();
+bool QHeaderView_SectionsMovable(const QHeaderView* self) {
+	return self->sectionsMovable();
 }
 
 void QHeaderView_SetFirstSectionMovable(QHeaderView* self, bool movable) {
 	self->setFirstSectionMovable(movable);
 }
 
-bool QHeaderView_IsFirstSectionMovable(QHeaderView* self) {
-	return const_cast<const QHeaderView*>(self)->isFirstSectionMovable();
+bool QHeaderView_IsFirstSectionMovable(const QHeaderView* self) {
+	return self->isFirstSectionMovable();
 }
 
 void QHeaderView_SetSectionsClickable(QHeaderView* self, bool clickable) {
 	self->setSectionsClickable(clickable);
 }
 
-bool QHeaderView_SectionsClickable(QHeaderView* self) {
-	return const_cast<const QHeaderView*>(self)->sectionsClickable();
+bool QHeaderView_SectionsClickable(const QHeaderView* self) {
+	return self->sectionsClickable();
 }
 
 void QHeaderView_SetHighlightSections(QHeaderView* self, bool highlight) {
 	self->setHighlightSections(highlight);
 }
 
-bool QHeaderView_HighlightSections(QHeaderView* self) {
-	return const_cast<const QHeaderView*>(self)->highlightSections();
+bool QHeaderView_HighlightSections(const QHeaderView* self) {
+	return self->highlightSections();
 }
 
-uintptr_t QHeaderView_SectionResizeMode(QHeaderView* self, int logicalIndex) {
-	QHeaderView::ResizeMode ret = const_cast<const QHeaderView*>(self)->sectionResizeMode(static_cast<int>(logicalIndex));
+uintptr_t QHeaderView_SectionResizeMode(const QHeaderView* self, int logicalIndex) {
+	QHeaderView::ResizeMode ret = self->sectionResizeMode(static_cast<int>(logicalIndex));
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -202,53 +202,53 @@ void QHeaderView_SetResizeContentsPrecision(QHeaderView* self, int precision) {
 	self->setResizeContentsPrecision(static_cast<int>(precision));
 }
 
-int QHeaderView_ResizeContentsPrecision(QHeaderView* self) {
-	return const_cast<const QHeaderView*>(self)->resizeContentsPrecision();
+int QHeaderView_ResizeContentsPrecision(const QHeaderView* self) {
+	return self->resizeContentsPrecision();
 }
 
-int QHeaderView_StretchSectionCount(QHeaderView* self) {
-	return const_cast<const QHeaderView*>(self)->stretchSectionCount();
+int QHeaderView_StretchSectionCount(const QHeaderView* self) {
+	return self->stretchSectionCount();
 }
 
 void QHeaderView_SetSortIndicatorShown(QHeaderView* self, bool show) {
 	self->setSortIndicatorShown(show);
 }
 
-bool QHeaderView_IsSortIndicatorShown(QHeaderView* self) {
-	return const_cast<const QHeaderView*>(self)->isSortIndicatorShown();
+bool QHeaderView_IsSortIndicatorShown(const QHeaderView* self) {
+	return self->isSortIndicatorShown();
 }
 
 void QHeaderView_SetSortIndicator(QHeaderView* self, int logicalIndex, uintptr_t order) {
 	self->setSortIndicator(static_cast<int>(logicalIndex), static_cast<Qt::SortOrder>(order));
 }
 
-int QHeaderView_SortIndicatorSection(QHeaderView* self) {
-	return const_cast<const QHeaderView*>(self)->sortIndicatorSection();
+int QHeaderView_SortIndicatorSection(const QHeaderView* self) {
+	return self->sortIndicatorSection();
 }
 
-uintptr_t QHeaderView_SortIndicatorOrder(QHeaderView* self) {
-	Qt::SortOrder ret = const_cast<const QHeaderView*>(self)->sortIndicatorOrder();
+uintptr_t QHeaderView_SortIndicatorOrder(const QHeaderView* self) {
+	Qt::SortOrder ret = self->sortIndicatorOrder();
 	return static_cast<uintptr_t>(ret);
 }
 
-bool QHeaderView_StretchLastSection(QHeaderView* self) {
-	return const_cast<const QHeaderView*>(self)->stretchLastSection();
+bool QHeaderView_StretchLastSection(const QHeaderView* self) {
+	return self->stretchLastSection();
 }
 
 void QHeaderView_SetStretchLastSection(QHeaderView* self, bool stretch) {
 	self->setStretchLastSection(stretch);
 }
 
-bool QHeaderView_CascadingSectionResizes(QHeaderView* self) {
-	return const_cast<const QHeaderView*>(self)->cascadingSectionResizes();
+bool QHeaderView_CascadingSectionResizes(const QHeaderView* self) {
+	return self->cascadingSectionResizes();
 }
 
 void QHeaderView_SetCascadingSectionResizes(QHeaderView* self, bool enable) {
 	self->setCascadingSectionResizes(enable);
 }
 
-int QHeaderView_DefaultSectionSize(QHeaderView* self) {
-	return const_cast<const QHeaderView*>(self)->defaultSectionSize();
+int QHeaderView_DefaultSectionSize(const QHeaderView* self) {
+	return self->defaultSectionSize();
 }
 
 void QHeaderView_SetDefaultSectionSize(QHeaderView* self, int size) {
@@ -259,24 +259,24 @@ void QHeaderView_ResetDefaultSectionSize(QHeaderView* self) {
 	self->resetDefaultSectionSize();
 }
 
-int QHeaderView_MinimumSectionSize(QHeaderView* self) {
-	return const_cast<const QHeaderView*>(self)->minimumSectionSize();
+int QHeaderView_MinimumSectionSize(const QHeaderView* self) {
+	return self->minimumSectionSize();
 }
 
 void QHeaderView_SetMinimumSectionSize(QHeaderView* self, int size) {
 	self->setMinimumSectionSize(static_cast<int>(size));
 }
 
-int QHeaderView_MaximumSectionSize(QHeaderView* self) {
-	return const_cast<const QHeaderView*>(self)->maximumSectionSize();
+int QHeaderView_MaximumSectionSize(const QHeaderView* self) {
+	return self->maximumSectionSize();
 }
 
 void QHeaderView_SetMaximumSectionSize(QHeaderView* self, int size) {
 	self->setMaximumSectionSize(static_cast<int>(size));
 }
 
-int QHeaderView_DefaultAlignment(QHeaderView* self) {
-	Qt::Alignment ret = const_cast<const QHeaderView*>(self)->defaultAlignment();
+int QHeaderView_DefaultAlignment(const QHeaderView* self) {
+	Qt::Alignment ret = self->defaultAlignment();
 	return static_cast<int>(ret);
 }
 
@@ -288,16 +288,16 @@ void QHeaderView_DoItemsLayout(QHeaderView* self) {
 	self->doItemsLayout();
 }
 
-bool QHeaderView_SectionsMoved(QHeaderView* self) {
-	return const_cast<const QHeaderView*>(self)->sectionsMoved();
+bool QHeaderView_SectionsMoved(const QHeaderView* self) {
+	return self->sectionsMoved();
 }
 
-bool QHeaderView_SectionsHidden(QHeaderView* self) {
-	return const_cast<const QHeaderView*>(self)->sectionsHidden();
+bool QHeaderView_SectionsHidden(const QHeaderView* self) {
+	return self->sectionsHidden();
 }
 
-QByteArray* QHeaderView_SaveState(QHeaderView* self) {
-	QByteArray ret = const_cast<const QHeaderView*>(self)->saveState();
+QByteArray* QHeaderView_SaveState(const QHeaderView* self) {
+	QByteArray ret = self->saveState();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QByteArray*>(new QByteArray(ret));
 }

@@ -20,8 +20,8 @@ QStackedWidget* QStackedWidget_new2(QWidget* parent) {
 	return new QStackedWidget(parent);
 }
 
-QMetaObject* QStackedWidget_MetaObject(QStackedWidget* self) {
-	return (QMetaObject*) const_cast<const QStackedWidget*>(self)->metaObject();
+QMetaObject* QStackedWidget_MetaObject(const QStackedWidget* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QStackedWidget_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -54,24 +54,24 @@ void QStackedWidget_RemoveWidget(QStackedWidget* self, QWidget* w) {
 	self->removeWidget(w);
 }
 
-QWidget* QStackedWidget_CurrentWidget(QStackedWidget* self) {
-	return const_cast<const QStackedWidget*>(self)->currentWidget();
+QWidget* QStackedWidget_CurrentWidget(const QStackedWidget* self) {
+	return self->currentWidget();
 }
 
-int QStackedWidget_CurrentIndex(QStackedWidget* self) {
-	return const_cast<const QStackedWidget*>(self)->currentIndex();
+int QStackedWidget_CurrentIndex(const QStackedWidget* self) {
+	return self->currentIndex();
 }
 
-int QStackedWidget_IndexOf(QStackedWidget* self, QWidget* param1) {
-	return const_cast<const QStackedWidget*>(self)->indexOf(param1);
+int QStackedWidget_IndexOf(const QStackedWidget* self, QWidget* param1) {
+	return self->indexOf(param1);
 }
 
-QWidget* QStackedWidget_Widget(QStackedWidget* self, int param1) {
-	return const_cast<const QStackedWidget*>(self)->widget(static_cast<int>(param1));
+QWidget* QStackedWidget_Widget(const QStackedWidget* self, int param1) {
+	return self->widget(static_cast<int>(param1));
 }
 
-int QStackedWidget_Count(QStackedWidget* self) {
-	return const_cast<const QStackedWidget*>(self)->count();
+int QStackedWidget_Count(const QStackedWidget* self) {
+	return self->count();
 }
 
 void QStackedWidget_SetCurrentIndex(QStackedWidget* self, int index) {

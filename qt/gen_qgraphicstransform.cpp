@@ -16,8 +16,8 @@ extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
 }
 
-QMetaObject* QGraphicsTransform_MetaObject(QGraphicsTransform* self) {
-	return (QMetaObject*) const_cast<const QGraphicsTransform*>(self)->metaObject();
+QMetaObject* QGraphicsTransform_MetaObject(const QGraphicsTransform* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QGraphicsTransform_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -38,8 +38,8 @@ void QGraphicsTransform_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QGraphicsTransform_ApplyTo(QGraphicsTransform* self, QMatrix4x4* matrix) {
-	const_cast<const QGraphicsTransform*>(self)->applyTo(matrix);
+void QGraphicsTransform_ApplyTo(const QGraphicsTransform* self, QMatrix4x4* matrix) {
+	self->applyTo(matrix);
 }
 
 void QGraphicsTransform_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
@@ -90,8 +90,8 @@ QGraphicsScale* QGraphicsScale_new2(QObject* parent) {
 	return new QGraphicsScale(parent);
 }
 
-QMetaObject* QGraphicsScale_MetaObject(QGraphicsScale* self) {
-	return (QMetaObject*) const_cast<const QGraphicsScale*>(self)->metaObject();
+QMetaObject* QGraphicsScale_MetaObject(const QGraphicsScale* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QGraphicsScale_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -112,8 +112,8 @@ void QGraphicsScale_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-QVector3D* QGraphicsScale_Origin(QGraphicsScale* self) {
-	QVector3D ret = const_cast<const QGraphicsScale*>(self)->origin();
+QVector3D* QGraphicsScale_Origin(const QGraphicsScale* self) {
+	QVector3D ret = self->origin();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVector3D*>(new QVector3D(ret));
 }
@@ -122,32 +122,32 @@ void QGraphicsScale_SetOrigin(QGraphicsScale* self, QVector3D* point) {
 	self->setOrigin(*point);
 }
 
-double QGraphicsScale_XScale(QGraphicsScale* self) {
-	return const_cast<const QGraphicsScale*>(self)->xScale();
+double QGraphicsScale_XScale(const QGraphicsScale* self) {
+	return self->xScale();
 }
 
 void QGraphicsScale_SetXScale(QGraphicsScale* self, double xScale) {
 	self->setXScale(static_cast<qreal>(xScale));
 }
 
-double QGraphicsScale_YScale(QGraphicsScale* self) {
-	return const_cast<const QGraphicsScale*>(self)->yScale();
+double QGraphicsScale_YScale(const QGraphicsScale* self) {
+	return self->yScale();
 }
 
 void QGraphicsScale_SetYScale(QGraphicsScale* self, double yScale) {
 	self->setYScale(static_cast<qreal>(yScale));
 }
 
-double QGraphicsScale_ZScale(QGraphicsScale* self) {
-	return const_cast<const QGraphicsScale*>(self)->zScale();
+double QGraphicsScale_ZScale(const QGraphicsScale* self) {
+	return self->zScale();
 }
 
 void QGraphicsScale_SetZScale(QGraphicsScale* self, double zScale) {
 	self->setZScale(static_cast<qreal>(zScale));
 }
 
-void QGraphicsScale_ApplyTo(QGraphicsScale* self, QMatrix4x4* matrix) {
-	const_cast<const QGraphicsScale*>(self)->applyTo(matrix);
+void QGraphicsScale_ApplyTo(const QGraphicsScale* self, QMatrix4x4* matrix) {
+	self->applyTo(matrix);
 }
 
 void QGraphicsScale_OriginChanged(QGraphicsScale* self) {
@@ -248,8 +248,8 @@ QGraphicsRotation* QGraphicsRotation_new2(QObject* parent) {
 	return new QGraphicsRotation(parent);
 }
 
-QMetaObject* QGraphicsRotation_MetaObject(QGraphicsRotation* self) {
-	return (QMetaObject*) const_cast<const QGraphicsRotation*>(self)->metaObject();
+QMetaObject* QGraphicsRotation_MetaObject(const QGraphicsRotation* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QGraphicsRotation_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -270,8 +270,8 @@ void QGraphicsRotation_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-QVector3D* QGraphicsRotation_Origin(QGraphicsRotation* self) {
-	QVector3D ret = const_cast<const QGraphicsRotation*>(self)->origin();
+QVector3D* QGraphicsRotation_Origin(const QGraphicsRotation* self) {
+	QVector3D ret = self->origin();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVector3D*>(new QVector3D(ret));
 }
@@ -280,16 +280,16 @@ void QGraphicsRotation_SetOrigin(QGraphicsRotation* self, QVector3D* point) {
 	self->setOrigin(*point);
 }
 
-double QGraphicsRotation_Angle(QGraphicsRotation* self) {
-	return const_cast<const QGraphicsRotation*>(self)->angle();
+double QGraphicsRotation_Angle(const QGraphicsRotation* self) {
+	return self->angle();
 }
 
 void QGraphicsRotation_SetAngle(QGraphicsRotation* self, double angle) {
 	self->setAngle(static_cast<qreal>(angle));
 }
 
-QVector3D* QGraphicsRotation_Axis(QGraphicsRotation* self) {
-	QVector3D ret = const_cast<const QGraphicsRotation*>(self)->axis();
+QVector3D* QGraphicsRotation_Axis(const QGraphicsRotation* self) {
+	QVector3D ret = self->axis();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVector3D*>(new QVector3D(ret));
 }
@@ -302,8 +302,8 @@ void QGraphicsRotation_SetAxisWithAxis(QGraphicsRotation* self, uintptr_t axis) 
 	self->setAxis(static_cast<Qt::Axis>(axis));
 }
 
-void QGraphicsRotation_ApplyTo(QGraphicsRotation* self, QMatrix4x4* matrix) {
-	const_cast<const QGraphicsRotation*>(self)->applyTo(matrix);
+void QGraphicsRotation_ApplyTo(const QGraphicsRotation* self, QMatrix4x4* matrix) {
+	self->applyTo(matrix);
 }
 
 void QGraphicsRotation_OriginChanged(QGraphicsRotation* self) {

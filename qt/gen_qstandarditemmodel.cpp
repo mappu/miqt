@@ -44,8 +44,8 @@ QStandardItem* QStandardItem_new5(int rows, int columns) {
 	return new QStandardItem(static_cast<int>(rows), static_cast<int>(columns));
 }
 
-QVariant* QStandardItem_Data(QStandardItem* self) {
-	QVariant ret = const_cast<const QStandardItem*>(self)->data();
+QVariant* QStandardItem_Data(const QStandardItem* self) {
+	QVariant ret = self->data();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVariant*>(new QVariant(ret));
 }
@@ -58,8 +58,8 @@ void QStandardItem_ClearData(QStandardItem* self) {
 	self->clearData();
 }
 
-void QStandardItem_Text(QStandardItem* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QStandardItem*>(self)->text();
+void QStandardItem_Text(const QStandardItem* self, char** _out, int* _out_Strlen) {
+	QString ret = self->text();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -72,8 +72,8 @@ void QStandardItem_SetText(QStandardItem* self, const char* text, size_t text_St
 	self->setText(text_QString);
 }
 
-QIcon* QStandardItem_Icon(QStandardItem* self) {
-	QIcon ret = const_cast<const QStandardItem*>(self)->icon();
+QIcon* QStandardItem_Icon(const QStandardItem* self) {
+	QIcon ret = self->icon();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QIcon*>(new QIcon(ret));
 }
@@ -82,8 +82,8 @@ void QStandardItem_SetIcon(QStandardItem* self, QIcon* icon) {
 	self->setIcon(*icon);
 }
 
-void QStandardItem_ToolTip(QStandardItem* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QStandardItem*>(self)->toolTip();
+void QStandardItem_ToolTip(const QStandardItem* self, char** _out, int* _out_Strlen) {
+	QString ret = self->toolTip();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -96,8 +96,8 @@ void QStandardItem_SetToolTip(QStandardItem* self, const char* toolTip, size_t t
 	self->setToolTip(toolTip_QString);
 }
 
-void QStandardItem_StatusTip(QStandardItem* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QStandardItem*>(self)->statusTip();
+void QStandardItem_StatusTip(const QStandardItem* self, char** _out, int* _out_Strlen) {
+	QString ret = self->statusTip();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -110,8 +110,8 @@ void QStandardItem_SetStatusTip(QStandardItem* self, const char* statusTip, size
 	self->setStatusTip(statusTip_QString);
 }
 
-void QStandardItem_WhatsThis(QStandardItem* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QStandardItem*>(self)->whatsThis();
+void QStandardItem_WhatsThis(const QStandardItem* self, char** _out, int* _out_Strlen) {
+	QString ret = self->whatsThis();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -124,8 +124,8 @@ void QStandardItem_SetWhatsThis(QStandardItem* self, const char* whatsThis, size
 	self->setWhatsThis(whatsThis_QString);
 }
 
-QSize* QStandardItem_SizeHint(QStandardItem* self) {
-	QSize ret = const_cast<const QStandardItem*>(self)->sizeHint();
+QSize* QStandardItem_SizeHint(const QStandardItem* self) {
+	QSize ret = self->sizeHint();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
@@ -134,8 +134,8 @@ void QStandardItem_SetSizeHint(QStandardItem* self, QSize* sizeHint) {
 	self->setSizeHint(*sizeHint);
 }
 
-QFont* QStandardItem_Font(QStandardItem* self) {
-	QFont ret = const_cast<const QStandardItem*>(self)->font();
+QFont* QStandardItem_Font(const QStandardItem* self) {
+	QFont ret = self->font();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QFont*>(new QFont(ret));
 }
@@ -144,8 +144,8 @@ void QStandardItem_SetFont(QStandardItem* self, QFont* font) {
 	self->setFont(*font);
 }
 
-int QStandardItem_TextAlignment(QStandardItem* self) {
-	Qt::Alignment ret = const_cast<const QStandardItem*>(self)->textAlignment();
+int QStandardItem_TextAlignment(const QStandardItem* self) {
+	Qt::Alignment ret = self->textAlignment();
 	return static_cast<int>(ret);
 }
 
@@ -153,8 +153,8 @@ void QStandardItem_SetTextAlignment(QStandardItem* self, int textAlignment) {
 	self->setTextAlignment(static_cast<Qt::Alignment>(textAlignment));
 }
 
-QBrush* QStandardItem_Background(QStandardItem* self) {
-	QBrush ret = const_cast<const QStandardItem*>(self)->background();
+QBrush* QStandardItem_Background(const QStandardItem* self) {
+	QBrush ret = self->background();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QBrush*>(new QBrush(ret));
 }
@@ -163,8 +163,8 @@ void QStandardItem_SetBackground(QStandardItem* self, QBrush* brush) {
 	self->setBackground(*brush);
 }
 
-QBrush* QStandardItem_Foreground(QStandardItem* self) {
-	QBrush ret = const_cast<const QStandardItem*>(self)->foreground();
+QBrush* QStandardItem_Foreground(const QStandardItem* self) {
+	QBrush ret = self->foreground();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QBrush*>(new QBrush(ret));
 }
@@ -173,8 +173,8 @@ void QStandardItem_SetForeground(QStandardItem* self, QBrush* brush) {
 	self->setForeground(*brush);
 }
 
-uintptr_t QStandardItem_CheckState(QStandardItem* self) {
-	Qt::CheckState ret = const_cast<const QStandardItem*>(self)->checkState();
+uintptr_t QStandardItem_CheckState(const QStandardItem* self) {
+	Qt::CheckState ret = self->checkState();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -182,8 +182,8 @@ void QStandardItem_SetCheckState(QStandardItem* self, uintptr_t checkState) {
 	self->setCheckState(static_cast<Qt::CheckState>(checkState));
 }
 
-void QStandardItem_AccessibleText(QStandardItem* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QStandardItem*>(self)->accessibleText();
+void QStandardItem_AccessibleText(const QStandardItem* self, char** _out, int* _out_Strlen) {
+	QString ret = self->accessibleText();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -196,8 +196,8 @@ void QStandardItem_SetAccessibleText(QStandardItem* self, const char* accessible
 	self->setAccessibleText(accessibleText_QString);
 }
 
-void QStandardItem_AccessibleDescription(QStandardItem* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QStandardItem*>(self)->accessibleDescription();
+void QStandardItem_AccessibleDescription(const QStandardItem* self, char** _out, int* _out_Strlen) {
+	QString ret = self->accessibleDescription();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -210,8 +210,8 @@ void QStandardItem_SetAccessibleDescription(QStandardItem* self, const char* acc
 	self->setAccessibleDescription(accessibleDescription_QString);
 }
 
-int QStandardItem_Flags(QStandardItem* self) {
-	Qt::ItemFlags ret = const_cast<const QStandardItem*>(self)->flags();
+int QStandardItem_Flags(const QStandardItem* self) {
+	Qt::ItemFlags ret = self->flags();
 	return static_cast<int>(ret);
 }
 
@@ -219,122 +219,122 @@ void QStandardItem_SetFlags(QStandardItem* self, int flags) {
 	self->setFlags(static_cast<Qt::ItemFlags>(flags));
 }
 
-bool QStandardItem_IsEnabled(QStandardItem* self) {
-	return const_cast<const QStandardItem*>(self)->isEnabled();
+bool QStandardItem_IsEnabled(const QStandardItem* self) {
+	return self->isEnabled();
 }
 
 void QStandardItem_SetEnabled(QStandardItem* self, bool enabled) {
 	self->setEnabled(enabled);
 }
 
-bool QStandardItem_IsEditable(QStandardItem* self) {
-	return const_cast<const QStandardItem*>(self)->isEditable();
+bool QStandardItem_IsEditable(const QStandardItem* self) {
+	return self->isEditable();
 }
 
 void QStandardItem_SetEditable(QStandardItem* self, bool editable) {
 	self->setEditable(editable);
 }
 
-bool QStandardItem_IsSelectable(QStandardItem* self) {
-	return const_cast<const QStandardItem*>(self)->isSelectable();
+bool QStandardItem_IsSelectable(const QStandardItem* self) {
+	return self->isSelectable();
 }
 
 void QStandardItem_SetSelectable(QStandardItem* self, bool selectable) {
 	self->setSelectable(selectable);
 }
 
-bool QStandardItem_IsCheckable(QStandardItem* self) {
-	return const_cast<const QStandardItem*>(self)->isCheckable();
+bool QStandardItem_IsCheckable(const QStandardItem* self) {
+	return self->isCheckable();
 }
 
 void QStandardItem_SetCheckable(QStandardItem* self, bool checkable) {
 	self->setCheckable(checkable);
 }
 
-bool QStandardItem_IsAutoTristate(QStandardItem* self) {
-	return const_cast<const QStandardItem*>(self)->isAutoTristate();
+bool QStandardItem_IsAutoTristate(const QStandardItem* self) {
+	return self->isAutoTristate();
 }
 
 void QStandardItem_SetAutoTristate(QStandardItem* self, bool tristate) {
 	self->setAutoTristate(tristate);
 }
 
-bool QStandardItem_IsUserTristate(QStandardItem* self) {
-	return const_cast<const QStandardItem*>(self)->isUserTristate();
+bool QStandardItem_IsUserTristate(const QStandardItem* self) {
+	return self->isUserTristate();
 }
 
 void QStandardItem_SetUserTristate(QStandardItem* self, bool tristate) {
 	self->setUserTristate(tristate);
 }
 
-bool QStandardItem_IsTristate(QStandardItem* self) {
-	return const_cast<const QStandardItem*>(self)->isTristate();
+bool QStandardItem_IsTristate(const QStandardItem* self) {
+	return self->isTristate();
 }
 
 void QStandardItem_SetTristate(QStandardItem* self, bool tristate) {
 	self->setTristate(tristate);
 }
 
-bool QStandardItem_IsDragEnabled(QStandardItem* self) {
-	return const_cast<const QStandardItem*>(self)->isDragEnabled();
+bool QStandardItem_IsDragEnabled(const QStandardItem* self) {
+	return self->isDragEnabled();
 }
 
 void QStandardItem_SetDragEnabled(QStandardItem* self, bool dragEnabled) {
 	self->setDragEnabled(dragEnabled);
 }
 
-bool QStandardItem_IsDropEnabled(QStandardItem* self) {
-	return const_cast<const QStandardItem*>(self)->isDropEnabled();
+bool QStandardItem_IsDropEnabled(const QStandardItem* self) {
+	return self->isDropEnabled();
 }
 
 void QStandardItem_SetDropEnabled(QStandardItem* self, bool dropEnabled) {
 	self->setDropEnabled(dropEnabled);
 }
 
-QStandardItem* QStandardItem_Parent(QStandardItem* self) {
-	return const_cast<const QStandardItem*>(self)->parent();
+QStandardItem* QStandardItem_Parent(const QStandardItem* self) {
+	return self->parent();
 }
 
-int QStandardItem_Row(QStandardItem* self) {
-	return const_cast<const QStandardItem*>(self)->row();
+int QStandardItem_Row(const QStandardItem* self) {
+	return self->row();
 }
 
-int QStandardItem_Column(QStandardItem* self) {
-	return const_cast<const QStandardItem*>(self)->column();
+int QStandardItem_Column(const QStandardItem* self) {
+	return self->column();
 }
 
-QModelIndex* QStandardItem_Index(QStandardItem* self) {
-	QModelIndex ret = const_cast<const QStandardItem*>(self)->index();
+QModelIndex* QStandardItem_Index(const QStandardItem* self) {
+	QModelIndex ret = self->index();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QModelIndex*>(new QModelIndex(ret));
 }
 
-QStandardItemModel* QStandardItem_Model(QStandardItem* self) {
-	return const_cast<const QStandardItem*>(self)->model();
+QStandardItemModel* QStandardItem_Model(const QStandardItem* self) {
+	return self->model();
 }
 
-int QStandardItem_RowCount(QStandardItem* self) {
-	return const_cast<const QStandardItem*>(self)->rowCount();
+int QStandardItem_RowCount(const QStandardItem* self) {
+	return self->rowCount();
 }
 
 void QStandardItem_SetRowCount(QStandardItem* self, int rows) {
 	self->setRowCount(static_cast<int>(rows));
 }
 
-int QStandardItem_ColumnCount(QStandardItem* self) {
-	return const_cast<const QStandardItem*>(self)->columnCount();
+int QStandardItem_ColumnCount(const QStandardItem* self) {
+	return self->columnCount();
 }
 
 void QStandardItem_SetColumnCount(QStandardItem* self, int columns) {
 	self->setColumnCount(static_cast<int>(columns));
 }
 
-bool QStandardItem_HasChildren(QStandardItem* self) {
-	return const_cast<const QStandardItem*>(self)->hasChildren();
+bool QStandardItem_HasChildren(const QStandardItem* self) {
+	return self->hasChildren();
 }
 
-QStandardItem* QStandardItem_Child(QStandardItem* self, int row) {
-	return const_cast<const QStandardItem*>(self)->child(static_cast<int>(row));
+QStandardItem* QStandardItem_Child(const QStandardItem* self, int row) {
+	return self->child(static_cast<int>(row));
 }
 
 void QStandardItem_SetChild(QStandardItem* self, int row, int column, QStandardItem* item) {
@@ -461,28 +461,28 @@ void QStandardItem_SortChildren(QStandardItem* self, int column) {
 	self->sortChildren(static_cast<int>(column));
 }
 
-QStandardItem* QStandardItem_Clone(QStandardItem* self) {
-	return const_cast<const QStandardItem*>(self)->clone();
+QStandardItem* QStandardItem_Clone(const QStandardItem* self) {
+	return self->clone();
 }
 
-int QStandardItem_Type(QStandardItem* self) {
-	return const_cast<const QStandardItem*>(self)->type();
+int QStandardItem_Type(const QStandardItem* self) {
+	return self->type();
 }
 
 void QStandardItem_Read(QStandardItem* self, QDataStream* in) {
 	self->read(*in);
 }
 
-void QStandardItem_Write(QStandardItem* self, QDataStream* out) {
-	const_cast<const QStandardItem*>(self)->write(*out);
+void QStandardItem_Write(const QStandardItem* self, QDataStream* out) {
+	self->write(*out);
 }
 
-bool QStandardItem_OperatorLesser(QStandardItem* self, QStandardItem* other) {
-	return const_cast<const QStandardItem*>(self)->operator<(*other);
+bool QStandardItem_OperatorLesser(const QStandardItem* self, QStandardItem* other) {
+	return self->operator<(*other);
 }
 
-QVariant* QStandardItem_Data1(QStandardItem* self, int role) {
-	QVariant ret = const_cast<const QStandardItem*>(self)->data(static_cast<int>(role));
+QVariant* QStandardItem_Data1(const QStandardItem* self, int role) {
+	QVariant ret = self->data(static_cast<int>(role));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVariant*>(new QVariant(ret));
 }
@@ -491,8 +491,8 @@ void QStandardItem_SetData2(QStandardItem* self, QVariant* value, int role) {
 	self->setData(*value, static_cast<int>(role));
 }
 
-QStandardItem* QStandardItem_Child2(QStandardItem* self, int row, int column) {
-	return const_cast<const QStandardItem*>(self)->child(static_cast<int>(row), static_cast<int>(column));
+QStandardItem* QStandardItem_Child2(const QStandardItem* self, int row, int column) {
+	return self->child(static_cast<int>(row), static_cast<int>(column));
 }
 
 QStandardItem* QStandardItem_TakeChild2(QStandardItem* self, int row, int column) {
@@ -523,8 +523,8 @@ QStandardItemModel* QStandardItemModel_new4(int rows, int columns, QObject* pare
 	return new QStandardItemModel(static_cast<int>(rows), static_cast<int>(columns), parent);
 }
 
-QMetaObject* QStandardItemModel_MetaObject(QStandardItemModel* self) {
-	return (QMetaObject*) const_cast<const QStandardItemModel*>(self)->metaObject();
+QMetaObject* QStandardItemModel_MetaObject(const QStandardItemModel* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QStandardItemModel_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -545,38 +545,38 @@ void QStandardItemModel_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-QModelIndex* QStandardItemModel_Index(QStandardItemModel* self, int row, int column) {
-	QModelIndex ret = const_cast<const QStandardItemModel*>(self)->index(static_cast<int>(row), static_cast<int>(column));
+QModelIndex* QStandardItemModel_Index(const QStandardItemModel* self, int row, int column) {
+	QModelIndex ret = self->index(static_cast<int>(row), static_cast<int>(column));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QModelIndex*>(new QModelIndex(ret));
 }
 
-QModelIndex* QStandardItemModel_Parent(QStandardItemModel* self, QModelIndex* child) {
-	QModelIndex ret = const_cast<const QStandardItemModel*>(self)->parent(*child);
+QModelIndex* QStandardItemModel_Parent(const QStandardItemModel* self, QModelIndex* child) {
+	QModelIndex ret = self->parent(*child);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QModelIndex*>(new QModelIndex(ret));
 }
 
-int QStandardItemModel_RowCount(QStandardItemModel* self) {
-	return const_cast<const QStandardItemModel*>(self)->rowCount();
+int QStandardItemModel_RowCount(const QStandardItemModel* self) {
+	return self->rowCount();
 }
 
-int QStandardItemModel_ColumnCount(QStandardItemModel* self) {
-	return const_cast<const QStandardItemModel*>(self)->columnCount();
+int QStandardItemModel_ColumnCount(const QStandardItemModel* self) {
+	return self->columnCount();
 }
 
-bool QStandardItemModel_HasChildren(QStandardItemModel* self) {
-	return const_cast<const QStandardItemModel*>(self)->hasChildren();
+bool QStandardItemModel_HasChildren(const QStandardItemModel* self) {
+	return self->hasChildren();
 }
 
-QModelIndex* QStandardItemModel_Sibling(QStandardItemModel* self, int row, int column, QModelIndex* idx) {
-	QModelIndex ret = const_cast<const QStandardItemModel*>(self)->sibling(static_cast<int>(row), static_cast<int>(column), *idx);
+QModelIndex* QStandardItemModel_Sibling(const QStandardItemModel* self, int row, int column, QModelIndex* idx) {
+	QModelIndex ret = self->sibling(static_cast<int>(row), static_cast<int>(column), *idx);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QModelIndex*>(new QModelIndex(ret));
 }
 
-QVariant* QStandardItemModel_Data(QStandardItemModel* self, QModelIndex* index) {
-	QVariant ret = const_cast<const QStandardItemModel*>(self)->data(*index);
+QVariant* QStandardItemModel_Data(const QStandardItemModel* self, QModelIndex* index) {
+	QVariant ret = self->data(*index);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVariant*>(new QVariant(ret));
 }
@@ -589,8 +589,8 @@ bool QStandardItemModel_ClearItemData(QStandardItemModel* self, QModelIndex* ind
 	return self->clearItemData(*index);
 }
 
-QVariant* QStandardItemModel_HeaderData(QStandardItemModel* self, int section, uintptr_t orientation) {
-	QVariant ret = const_cast<const QStandardItemModel*>(self)->headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation));
+QVariant* QStandardItemModel_HeaderData(const QStandardItemModel* self, int section, uintptr_t orientation) {
+	QVariant ret = self->headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVariant*>(new QVariant(ret));
 }
@@ -615,13 +615,13 @@ bool QStandardItemModel_RemoveColumns(QStandardItemModel* self, int column, int 
 	return self->removeColumns(static_cast<int>(column), static_cast<int>(count));
 }
 
-int QStandardItemModel_Flags(QStandardItemModel* self, QModelIndex* index) {
-	Qt::ItemFlags ret = const_cast<const QStandardItemModel*>(self)->flags(*index);
+int QStandardItemModel_Flags(const QStandardItemModel* self, QModelIndex* index) {
+	Qt::ItemFlags ret = self->flags(*index);
 	return static_cast<int>(ret);
 }
 
-int QStandardItemModel_SupportedDropActions(QStandardItemModel* self) {
-	Qt::DropActions ret = const_cast<const QStandardItemModel*>(self)->supportedDropActions();
+int QStandardItemModel_SupportedDropActions(const QStandardItemModel* self) {
+	Qt::DropActions ret = self->supportedDropActions();
 	return static_cast<int>(ret);
 }
 
@@ -633,18 +633,18 @@ void QStandardItemModel_Sort(QStandardItemModel* self, int column) {
 	self->sort(static_cast<int>(column));
 }
 
-QStandardItem* QStandardItemModel_ItemFromIndex(QStandardItemModel* self, QModelIndex* index) {
-	return const_cast<const QStandardItemModel*>(self)->itemFromIndex(*index);
+QStandardItem* QStandardItemModel_ItemFromIndex(const QStandardItemModel* self, QModelIndex* index) {
+	return self->itemFromIndex(*index);
 }
 
-QModelIndex* QStandardItemModel_IndexFromItem(QStandardItemModel* self, QStandardItem* item) {
-	QModelIndex ret = const_cast<const QStandardItemModel*>(self)->indexFromItem(item);
+QModelIndex* QStandardItemModel_IndexFromItem(const QStandardItemModel* self, QStandardItem* item) {
+	QModelIndex ret = self->indexFromItem(item);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QModelIndex*>(new QModelIndex(ret));
 }
 
-QStandardItem* QStandardItemModel_Item(QStandardItemModel* self, int row) {
-	return const_cast<const QStandardItemModel*>(self)->item(static_cast<int>(row));
+QStandardItem* QStandardItemModel_Item(const QStandardItemModel* self, int row) {
+	return self->item(static_cast<int>(row));
 }
 
 void QStandardItemModel_SetItem(QStandardItemModel* self, int row, int column, QStandardItem* item) {
@@ -655,20 +655,20 @@ void QStandardItemModel_SetItem2(QStandardItemModel* self, int row, QStandardIte
 	self->setItem(static_cast<int>(row), item);
 }
 
-QStandardItem* QStandardItemModel_InvisibleRootItem(QStandardItemModel* self) {
-	return const_cast<const QStandardItemModel*>(self)->invisibleRootItem();
+QStandardItem* QStandardItemModel_InvisibleRootItem(const QStandardItemModel* self) {
+	return self->invisibleRootItem();
 }
 
-QStandardItem* QStandardItemModel_HorizontalHeaderItem(QStandardItemModel* self, int column) {
-	return const_cast<const QStandardItemModel*>(self)->horizontalHeaderItem(static_cast<int>(column));
+QStandardItem* QStandardItemModel_HorizontalHeaderItem(const QStandardItemModel* self, int column) {
+	return self->horizontalHeaderItem(static_cast<int>(column));
 }
 
 void QStandardItemModel_SetHorizontalHeaderItem(QStandardItemModel* self, int column, QStandardItem* item) {
 	self->setHorizontalHeaderItem(static_cast<int>(column), item);
 }
 
-QStandardItem* QStandardItemModel_VerticalHeaderItem(QStandardItemModel* self, int row) {
-	return const_cast<const QStandardItemModel*>(self)->verticalHeaderItem(static_cast<int>(row));
+QStandardItem* QStandardItemModel_VerticalHeaderItem(const QStandardItemModel* self, int row) {
+	return self->verticalHeaderItem(static_cast<int>(row));
 }
 
 void QStandardItemModel_SetVerticalHeaderItem(QStandardItemModel* self, int row, QStandardItem* item) {
@@ -787,17 +787,17 @@ QStandardItem* QStandardItemModel_TakeVerticalHeaderItem(QStandardItemModel* sel
 	return self->takeVerticalHeaderItem(static_cast<int>(row));
 }
 
-QStandardItem* QStandardItemModel_ItemPrototype(QStandardItemModel* self) {
-	return (QStandardItem*) const_cast<const QStandardItemModel*>(self)->itemPrototype();
+QStandardItem* QStandardItemModel_ItemPrototype(const QStandardItemModel* self) {
+	return (QStandardItem*) self->itemPrototype();
 }
 
 void QStandardItemModel_SetItemPrototype(QStandardItemModel* self, QStandardItem* item) {
 	self->setItemPrototype(item);
 }
 
-void QStandardItemModel_FindItems(QStandardItemModel* self, const char* text, size_t text_Strlen, QStandardItem*** _out, size_t* _out_len) {
+void QStandardItemModel_FindItems(const QStandardItemModel* self, const char* text, size_t text_Strlen, QStandardItem*** _out, size_t* _out_len) {
 	QString text_QString = QString::fromUtf8(text, text_Strlen);
-	QList<QStandardItem*> ret = const_cast<const QStandardItemModel*>(self)->findItems(text_QString);
+	QList<QStandardItem*> ret = self->findItems(text_QString);
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QStandardItem** __out = static_cast<QStandardItem**>(malloc(sizeof(QStandardItem*) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {
@@ -807,16 +807,16 @@ void QStandardItemModel_FindItems(QStandardItemModel* self, const char* text, si
 	*_out_len = ret.length();
 }
 
-int QStandardItemModel_SortRole(QStandardItemModel* self) {
-	return const_cast<const QStandardItemModel*>(self)->sortRole();
+int QStandardItemModel_SortRole(const QStandardItemModel* self) {
+	return self->sortRole();
 }
 
 void QStandardItemModel_SetSortRole(QStandardItemModel* self, int role) {
 	self->setSortRole(static_cast<int>(role));
 }
 
-void QStandardItemModel_MimeTypes(QStandardItemModel* self, char*** _out, int** _out_Lengths, size_t* _out_len) {
-	QStringList ret = const_cast<const QStandardItemModel*>(self)->mimeTypes();
+void QStandardItemModel_MimeTypes(const QStandardItemModel* self, char*** _out, int** _out_Lengths, size_t* _out_len) {
+	QStringList ret = self->mimeTypes();
 	// Convert QStringList from C++ memory to manually-managed C memory
 	char** __out = static_cast<char**>(malloc(sizeof(char*) * ret.length()));
 	int* __out_Lengths = static_cast<int*>(malloc(sizeof(int) * ret.length()));
@@ -832,13 +832,13 @@ void QStandardItemModel_MimeTypes(QStandardItemModel* self, char*** _out, int** 
 	*_out_len = ret.length();
 }
 
-QMimeData* QStandardItemModel_MimeData(QStandardItemModel* self, QModelIndex** indexes, size_t indexes_len) {
+QMimeData* QStandardItemModel_MimeData(const QStandardItemModel* self, QModelIndex** indexes, size_t indexes_len) {
 	QList<QModelIndex> indexes_QList;
 	indexes_QList.reserve(indexes_len);
 	for(size_t i = 0; i < indexes_len; ++i) {
 		indexes_QList.push_back(*(indexes[i]));
 	}
-	return const_cast<const QStandardItemModel*>(self)->mimeData(indexes_QList);
+	return self->mimeData(indexes_QList);
 }
 
 bool QStandardItemModel_DropMimeData(QStandardItemModel* self, QMimeData* data, uintptr_t action, int row, int column, QModelIndex* parent) {
@@ -891,26 +891,26 @@ void QStandardItemModel_TrUtf83(const char* s, const char* c, int n, char** _out
 	*_out_Strlen = b.length();
 }
 
-QModelIndex* QStandardItemModel_Index3(QStandardItemModel* self, int row, int column, QModelIndex* parent) {
-	QModelIndex ret = const_cast<const QStandardItemModel*>(self)->index(static_cast<int>(row), static_cast<int>(column), *parent);
+QModelIndex* QStandardItemModel_Index3(const QStandardItemModel* self, int row, int column, QModelIndex* parent) {
+	QModelIndex ret = self->index(static_cast<int>(row), static_cast<int>(column), *parent);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QModelIndex*>(new QModelIndex(ret));
 }
 
-int QStandardItemModel_RowCount1(QStandardItemModel* self, QModelIndex* parent) {
-	return const_cast<const QStandardItemModel*>(self)->rowCount(*parent);
+int QStandardItemModel_RowCount1(const QStandardItemModel* self, QModelIndex* parent) {
+	return self->rowCount(*parent);
 }
 
-int QStandardItemModel_ColumnCount1(QStandardItemModel* self, QModelIndex* parent) {
-	return const_cast<const QStandardItemModel*>(self)->columnCount(*parent);
+int QStandardItemModel_ColumnCount1(const QStandardItemModel* self, QModelIndex* parent) {
+	return self->columnCount(*parent);
 }
 
-bool QStandardItemModel_HasChildren1(QStandardItemModel* self, QModelIndex* parent) {
-	return const_cast<const QStandardItemModel*>(self)->hasChildren(*parent);
+bool QStandardItemModel_HasChildren1(const QStandardItemModel* self, QModelIndex* parent) {
+	return self->hasChildren(*parent);
 }
 
-QVariant* QStandardItemModel_Data2(QStandardItemModel* self, QModelIndex* index, int role) {
-	QVariant ret = const_cast<const QStandardItemModel*>(self)->data(*index, static_cast<int>(role));
+QVariant* QStandardItemModel_Data2(const QStandardItemModel* self, QModelIndex* index, int role) {
+	QVariant ret = self->data(*index, static_cast<int>(role));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVariant*>(new QVariant(ret));
 }
@@ -919,8 +919,8 @@ bool QStandardItemModel_SetData3(QStandardItemModel* self, QModelIndex* index, Q
 	return self->setData(*index, *value, static_cast<int>(role));
 }
 
-QVariant* QStandardItemModel_HeaderData3(QStandardItemModel* self, int section, uintptr_t orientation, int role) {
-	QVariant ret = const_cast<const QStandardItemModel*>(self)->headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), static_cast<int>(role));
+QVariant* QStandardItemModel_HeaderData3(const QStandardItemModel* self, int section, uintptr_t orientation, int role) {
+	QVariant ret = self->headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), static_cast<int>(role));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVariant*>(new QVariant(ret));
 }
@@ -949,8 +949,8 @@ void QStandardItemModel_Sort2(QStandardItemModel* self, int column, uintptr_t or
 	self->sort(static_cast<int>(column), static_cast<Qt::SortOrder>(order));
 }
 
-QStandardItem* QStandardItemModel_Item2(QStandardItemModel* self, int row, int column) {
-	return const_cast<const QStandardItemModel*>(self)->item(static_cast<int>(row), static_cast<int>(column));
+QStandardItem* QStandardItemModel_Item2(const QStandardItemModel* self, int row, int column) {
+	return self->item(static_cast<int>(row), static_cast<int>(column));
 }
 
 bool QStandardItemModel_InsertRow22(QStandardItemModel* self, int row, QModelIndex* parent) {
@@ -965,9 +965,9 @@ QStandardItem* QStandardItemModel_TakeItem2(QStandardItemModel* self, int row, i
 	return self->takeItem(static_cast<int>(row), static_cast<int>(column));
 }
 
-void QStandardItemModel_FindItems2(QStandardItemModel* self, const char* text, size_t text_Strlen, int flags, QStandardItem*** _out, size_t* _out_len) {
+void QStandardItemModel_FindItems2(const QStandardItemModel* self, const char* text, size_t text_Strlen, int flags, QStandardItem*** _out, size_t* _out_len) {
 	QString text_QString = QString::fromUtf8(text, text_Strlen);
-	QList<QStandardItem*> ret = const_cast<const QStandardItemModel*>(self)->findItems(text_QString, static_cast<Qt::MatchFlags>(flags));
+	QList<QStandardItem*> ret = self->findItems(text_QString, static_cast<Qt::MatchFlags>(flags));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QStandardItem** __out = static_cast<QStandardItem**>(malloc(sizeof(QStandardItem*) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {
@@ -977,9 +977,9 @@ void QStandardItemModel_FindItems2(QStandardItemModel* self, const char* text, s
 	*_out_len = ret.length();
 }
 
-void QStandardItemModel_FindItems3(QStandardItemModel* self, const char* text, size_t text_Strlen, int flags, int column, QStandardItem*** _out, size_t* _out_len) {
+void QStandardItemModel_FindItems3(const QStandardItemModel* self, const char* text, size_t text_Strlen, int flags, int column, QStandardItem*** _out, size_t* _out_len) {
 	QString text_QString = QString::fromUtf8(text, text_Strlen);
-	QList<QStandardItem*> ret = const_cast<const QStandardItemModel*>(self)->findItems(text_QString, static_cast<Qt::MatchFlags>(flags), static_cast<int>(column));
+	QList<QStandardItem*> ret = self->findItems(text_QString, static_cast<Qt::MatchFlags>(flags), static_cast<int>(column));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QStandardItem** __out = static_cast<QStandardItem**>(malloc(sizeof(QStandardItem*) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {

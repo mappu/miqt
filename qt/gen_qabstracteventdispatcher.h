@@ -33,7 +33,7 @@ typedef struct QSocketNotifier QSocketNotifier;
 typedef struct QThread QThread;
 #endif
 
-QMetaObject* QAbstractEventDispatcher_MetaObject(QAbstractEventDispatcher* self);
+QMetaObject* QAbstractEventDispatcher_MetaObject(const QAbstractEventDispatcher* self);
 void QAbstractEventDispatcher_Tr(const char* s, char** _out, int* _out_Strlen);
 void QAbstractEventDispatcher_TrUtf8(const char* s, char** _out, int* _out_Strlen);
 QAbstractEventDispatcher* QAbstractEventDispatcher_Instance();
@@ -45,7 +45,7 @@ int QAbstractEventDispatcher_RegisterTimer(QAbstractEventDispatcher* self, int i
 void QAbstractEventDispatcher_RegisterTimer2(QAbstractEventDispatcher* self, int timerId, int interval, uintptr_t timerType, QObject* object);
 bool QAbstractEventDispatcher_UnregisterTimer(QAbstractEventDispatcher* self, int timerId);
 bool QAbstractEventDispatcher_UnregisterTimers(QAbstractEventDispatcher* self, QObject* object);
-void QAbstractEventDispatcher_RegisteredTimers(QAbstractEventDispatcher* self, QObject* object, QAbstractEventDispatcher__TimerInfo*** _out, size_t* _out_len);
+void QAbstractEventDispatcher_RegisteredTimers(const QAbstractEventDispatcher* self, QObject* object, QAbstractEventDispatcher__TimerInfo*** _out, size_t* _out_len);
 int QAbstractEventDispatcher_RemainingTime(QAbstractEventDispatcher* self, int timerId);
 void QAbstractEventDispatcher_WakeUp(QAbstractEventDispatcher* self);
 void QAbstractEventDispatcher_Interrupt(QAbstractEventDispatcher* self);

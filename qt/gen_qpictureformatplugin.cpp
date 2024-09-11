@@ -12,8 +12,8 @@ extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
 }
 
-QMetaObject* QPictureFormatPlugin_MetaObject(QPictureFormatPlugin* self) {
-	return (QMetaObject*) const_cast<const QPictureFormatPlugin*>(self)->metaObject();
+QMetaObject* QPictureFormatPlugin_MetaObject(const QPictureFormatPlugin* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QPictureFormatPlugin_Tr(const char* s, char** _out, int* _out_Strlen) {

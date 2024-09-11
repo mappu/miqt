@@ -31,8 +31,8 @@ QFile* QFile_new4(const char* name, size_t name_Strlen, QObject* parent) {
 	return new QFile(name_QString, parent);
 }
 
-QMetaObject* QFile_MetaObject(QFile* self) {
-	return (QMetaObject*) const_cast<const QFile*>(self)->metaObject();
+QMetaObject* QFile_MetaObject(const QFile* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QFile_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -53,8 +53,8 @@ void QFile_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QFile_FileName(QFile* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QFile*>(self)->fileName();
+void QFile_FileName(const QFile* self, char** _out, int* _out_Strlen) {
+	QString ret = self->fileName();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -92,8 +92,8 @@ void QFile_DecodeNameWithLocalFileName(const char* localFileName, char** _out, i
 	*_out_Strlen = b.length();
 }
 
-bool QFile_Exists(QFile* self) {
-	return const_cast<const QFile*>(self)->exists();
+bool QFile_Exists(const QFile* self) {
+	return self->exists();
 }
 
 bool QFile_ExistsWithFileName(const char* fileName, size_t fileName_Strlen) {
@@ -101,8 +101,8 @@ bool QFile_ExistsWithFileName(const char* fileName, size_t fileName_Strlen) {
 	return QFile::exists(fileName_QString);
 }
 
-void QFile_ReadLink(QFile* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QFile*>(self)->readLink();
+void QFile_ReadLink(const QFile* self, char** _out, int* _out_Strlen) {
+	QString ret = self->readLink();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -120,8 +120,8 @@ void QFile_ReadLinkWithFileName(const char* fileName, size_t fileName_Strlen, ch
 	*_out_Strlen = b.length();
 }
 
-void QFile_SymLinkTarget(QFile* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QFile*>(self)->symLinkTarget();
+void QFile_SymLinkTarget(const QFile* self, char** _out, int* _out_Strlen) {
+	QString ret = self->symLinkTarget();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -198,8 +198,8 @@ bool QFile_Open3(QFile* self, int fd, int ioFlags) {
 	return self->open(static_cast<int>(fd), static_cast<QIODevice::OpenMode>(ioFlags));
 }
 
-long long QFile_Size(QFile* self) {
-	return const_cast<const QFile*>(self)->size();
+long long QFile_Size(const QFile* self) {
+	return self->size();
 }
 
 bool QFile_Resize(QFile* self, long long sz) {
@@ -211,8 +211,8 @@ bool QFile_Resize2(const char* filename, size_t filename_Strlen, long long sz) {
 	return QFile::resize(filename_QString, static_cast<qint64>(sz));
 }
 
-int QFile_Permissions(QFile* self) {
-	QFileDevice::Permissions ret = const_cast<const QFile*>(self)->permissions();
+int QFile_Permissions(const QFile* self) {
+	QFileDevice::Permissions ret = self->permissions();
 	return static_cast<int>(ret);
 }
 

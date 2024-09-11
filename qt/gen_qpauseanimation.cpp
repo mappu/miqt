@@ -28,8 +28,8 @@ QPauseAnimation* QPauseAnimation_new4(int msecs, QObject* parent) {
 	return new QPauseAnimation(static_cast<int>(msecs), parent);
 }
 
-QMetaObject* QPauseAnimation_MetaObject(QPauseAnimation* self) {
-	return (QMetaObject*) const_cast<const QPauseAnimation*>(self)->metaObject();
+QMetaObject* QPauseAnimation_MetaObject(const QPauseAnimation* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QPauseAnimation_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -50,8 +50,8 @@ void QPauseAnimation_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-int QPauseAnimation_Duration(QPauseAnimation* self) {
-	return const_cast<const QPauseAnimation*>(self)->duration();
+int QPauseAnimation_Duration(const QPauseAnimation* self) {
+	return self->duration();
 }
 
 void QPauseAnimation_SetDuration(QPauseAnimation* self, int msecs) {

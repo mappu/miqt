@@ -31,8 +31,8 @@ QCheckBox* QCheckBox_new4(const char* text, size_t text_Strlen, QWidget* parent)
 	return new QCheckBox(text_QString, parent);
 }
 
-QMetaObject* QCheckBox_MetaObject(QCheckBox* self) {
-	return (QMetaObject*) const_cast<const QCheckBox*>(self)->metaObject();
+QMetaObject* QCheckBox_MetaObject(const QCheckBox* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QCheckBox_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -53,14 +53,14 @@ void QCheckBox_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-QSize* QCheckBox_SizeHint(QCheckBox* self) {
-	QSize ret = const_cast<const QCheckBox*>(self)->sizeHint();
+QSize* QCheckBox_SizeHint(const QCheckBox* self) {
+	QSize ret = self->sizeHint();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
 
-QSize* QCheckBox_MinimumSizeHint(QCheckBox* self) {
-	QSize ret = const_cast<const QCheckBox*>(self)->minimumSizeHint();
+QSize* QCheckBox_MinimumSizeHint(const QCheckBox* self) {
+	QSize ret = self->minimumSizeHint();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
@@ -69,12 +69,12 @@ void QCheckBox_SetTristate(QCheckBox* self) {
 	self->setTristate();
 }
 
-bool QCheckBox_IsTristate(QCheckBox* self) {
-	return const_cast<const QCheckBox*>(self)->isTristate();
+bool QCheckBox_IsTristate(const QCheckBox* self) {
+	return self->isTristate();
 }
 
-uintptr_t QCheckBox_CheckState(QCheckBox* self) {
-	Qt::CheckState ret = const_cast<const QCheckBox*>(self)->checkState();
+uintptr_t QCheckBox_CheckState(const QCheckBox* self) {
+	Qt::CheckState ret = self->checkState();
 	return static_cast<uintptr_t>(ret);
 }
 

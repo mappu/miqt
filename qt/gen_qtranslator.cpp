@@ -21,8 +21,8 @@ QTranslator* QTranslator_new2(QObject* parent) {
 	return new QTranslator(parent);
 }
 
-QMetaObject* QTranslator_MetaObject(QTranslator* self) {
-	return (QMetaObject*) const_cast<const QTranslator*>(self)->metaObject();
+QMetaObject* QTranslator_MetaObject(const QTranslator* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QTranslator_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -43,8 +43,8 @@ void QTranslator_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QTranslator_Translate(QTranslator* self, const char* context, const char* sourceText, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QTranslator*>(self)->translate(context, sourceText);
+void QTranslator_Translate(const QTranslator* self, const char* context, const char* sourceText, char** _out, int* _out_Strlen) {
+	QString ret = self->translate(context, sourceText);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -52,12 +52,12 @@ void QTranslator_Translate(QTranslator* self, const char* context, const char* s
 	*_out_Strlen = b.length();
 }
 
-bool QTranslator_IsEmpty(QTranslator* self) {
-	return const_cast<const QTranslator*>(self)->isEmpty();
+bool QTranslator_IsEmpty(const QTranslator* self) {
+	return self->isEmpty();
 }
 
-void QTranslator_Language(QTranslator* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QTranslator*>(self)->language();
+void QTranslator_Language(const QTranslator* self, char** _out, int* _out_Strlen) {
+	QString ret = self->language();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -65,8 +65,8 @@ void QTranslator_Language(QTranslator* self, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QTranslator_FilePath(QTranslator* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QTranslator*>(self)->filePath();
+void QTranslator_FilePath(const QTranslator* self, char** _out, int* _out_Strlen) {
+	QString ret = self->filePath();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -124,8 +124,8 @@ void QTranslator_TrUtf83(const char* s, const char* c, int n, char** _out, int* 
 	*_out_Strlen = b.length();
 }
 
-void QTranslator_Translate3(QTranslator* self, const char* context, const char* sourceText, const char* disambiguation, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QTranslator*>(self)->translate(context, sourceText, disambiguation);
+void QTranslator_Translate3(const QTranslator* self, const char* context, const char* sourceText, const char* disambiguation, char** _out, int* _out_Strlen) {
+	QString ret = self->translate(context, sourceText, disambiguation);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -133,8 +133,8 @@ void QTranslator_Translate3(QTranslator* self, const char* context, const char* 
 	*_out_Strlen = b.length();
 }
 
-void QTranslator_Translate4(QTranslator* self, const char* context, const char* sourceText, const char* disambiguation, int n, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QTranslator*>(self)->translate(context, sourceText, disambiguation, static_cast<int>(n));
+void QTranslator_Translate4(const QTranslator* self, const char* context, const char* sourceText, const char* disambiguation, int n, char** _out, int* _out_Strlen) {
+	QString ret = self->translate(context, sourceText, disambiguation, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));

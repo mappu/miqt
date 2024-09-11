@@ -17,8 +17,8 @@ QWidgetAction* QWidgetAction_new(QObject* parent) {
 	return new QWidgetAction(parent);
 }
 
-QMetaObject* QWidgetAction_MetaObject(QWidgetAction* self) {
-	return (QMetaObject*) const_cast<const QWidgetAction*>(self)->metaObject();
+QMetaObject* QWidgetAction_MetaObject(const QWidgetAction* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QWidgetAction_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -43,8 +43,8 @@ void QWidgetAction_SetDefaultWidget(QWidgetAction* self, QWidget* w) {
 	self->setDefaultWidget(w);
 }
 
-QWidget* QWidgetAction_DefaultWidget(QWidgetAction* self) {
-	return const_cast<const QWidgetAction*>(self)->defaultWidget();
+QWidget* QWidgetAction_DefaultWidget(const QWidgetAction* self) {
+	return self->defaultWidget();
 }
 
 QWidget* QWidgetAction_RequestWidget(QWidgetAction* self, QWidget* parent) {

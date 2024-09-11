@@ -40,8 +40,8 @@ void QUndoCommand_Redo(QUndoCommand* self) {
 	self->redo();
 }
 
-void QUndoCommand_Text(QUndoCommand* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QUndoCommand*>(self)->text();
+void QUndoCommand_Text(const QUndoCommand* self, char** _out, int* _out_Strlen) {
+	QString ret = self->text();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -49,8 +49,8 @@ void QUndoCommand_Text(QUndoCommand* self, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QUndoCommand_ActionText(QUndoCommand* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QUndoCommand*>(self)->actionText();
+void QUndoCommand_ActionText(const QUndoCommand* self, char** _out, int* _out_Strlen) {
+	QString ret = self->actionText();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -63,28 +63,28 @@ void QUndoCommand_SetText(QUndoCommand* self, const char* text, size_t text_Strl
 	self->setText(text_QString);
 }
 
-bool QUndoCommand_IsObsolete(QUndoCommand* self) {
-	return const_cast<const QUndoCommand*>(self)->isObsolete();
+bool QUndoCommand_IsObsolete(const QUndoCommand* self) {
+	return self->isObsolete();
 }
 
 void QUndoCommand_SetObsolete(QUndoCommand* self, bool obsolete) {
 	self->setObsolete(obsolete);
 }
 
-int QUndoCommand_Id(QUndoCommand* self) {
-	return const_cast<const QUndoCommand*>(self)->id();
+int QUndoCommand_Id(const QUndoCommand* self) {
+	return self->id();
 }
 
 bool QUndoCommand_MergeWith(QUndoCommand* self, QUndoCommand* other) {
 	return self->mergeWith(other);
 }
 
-int QUndoCommand_ChildCount(QUndoCommand* self) {
-	return const_cast<const QUndoCommand*>(self)->childCount();
+int QUndoCommand_ChildCount(const QUndoCommand* self) {
+	return self->childCount();
 }
 
-QUndoCommand* QUndoCommand_Child(QUndoCommand* self, int index) {
-	return (QUndoCommand*) const_cast<const QUndoCommand*>(self)->child(static_cast<int>(index));
+QUndoCommand* QUndoCommand_Child(const QUndoCommand* self, int index) {
+	return (QUndoCommand*) self->child(static_cast<int>(index));
 }
 
 void QUndoCommand_Delete(QUndoCommand* self) {
@@ -99,8 +99,8 @@ QUndoStack* QUndoStack_new2(QObject* parent) {
 	return new QUndoStack(parent);
 }
 
-QMetaObject* QUndoStack_MetaObject(QUndoStack* self) {
-	return (QMetaObject*) const_cast<const QUndoStack*>(self)->metaObject();
+QMetaObject* QUndoStack_MetaObject(const QUndoStack* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QUndoStack_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -129,16 +129,16 @@ void QUndoStack_Push(QUndoStack* self, QUndoCommand* cmd) {
 	self->push(cmd);
 }
 
-bool QUndoStack_CanUndo(QUndoStack* self) {
-	return const_cast<const QUndoStack*>(self)->canUndo();
+bool QUndoStack_CanUndo(const QUndoStack* self) {
+	return self->canUndo();
 }
 
-bool QUndoStack_CanRedo(QUndoStack* self) {
-	return const_cast<const QUndoStack*>(self)->canRedo();
+bool QUndoStack_CanRedo(const QUndoStack* self) {
+	return self->canRedo();
 }
 
-void QUndoStack_UndoText(QUndoStack* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QUndoStack*>(self)->undoText();
+void QUndoStack_UndoText(const QUndoStack* self, char** _out, int* _out_Strlen) {
+	QString ret = self->undoText();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -146,8 +146,8 @@ void QUndoStack_UndoText(QUndoStack* self, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QUndoStack_RedoText(QUndoStack* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QUndoStack*>(self)->redoText();
+void QUndoStack_RedoText(const QUndoStack* self, char** _out, int* _out_Strlen) {
+	QString ret = self->redoText();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -155,16 +155,16 @@ void QUndoStack_RedoText(QUndoStack* self, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-int QUndoStack_Count(QUndoStack* self) {
-	return const_cast<const QUndoStack*>(self)->count();
+int QUndoStack_Count(const QUndoStack* self) {
+	return self->count();
 }
 
-int QUndoStack_Index(QUndoStack* self) {
-	return const_cast<const QUndoStack*>(self)->index();
+int QUndoStack_Index(const QUndoStack* self) {
+	return self->index();
 }
 
-void QUndoStack_Text(QUndoStack* self, int idx, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QUndoStack*>(self)->text(static_cast<int>(idx));
+void QUndoStack_Text(const QUndoStack* self, int idx, char** _out, int* _out_Strlen) {
+	QString ret = self->text(static_cast<int>(idx));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -172,24 +172,24 @@ void QUndoStack_Text(QUndoStack* self, int idx, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-QAction* QUndoStack_CreateUndoAction(QUndoStack* self, QObject* parent) {
-	return const_cast<const QUndoStack*>(self)->createUndoAction(parent);
+QAction* QUndoStack_CreateUndoAction(const QUndoStack* self, QObject* parent) {
+	return self->createUndoAction(parent);
 }
 
-QAction* QUndoStack_CreateRedoAction(QUndoStack* self, QObject* parent) {
-	return const_cast<const QUndoStack*>(self)->createRedoAction(parent);
+QAction* QUndoStack_CreateRedoAction(const QUndoStack* self, QObject* parent) {
+	return self->createRedoAction(parent);
 }
 
-bool QUndoStack_IsActive(QUndoStack* self) {
-	return const_cast<const QUndoStack*>(self)->isActive();
+bool QUndoStack_IsActive(const QUndoStack* self) {
+	return self->isActive();
 }
 
-bool QUndoStack_IsClean(QUndoStack* self) {
-	return const_cast<const QUndoStack*>(self)->isClean();
+bool QUndoStack_IsClean(const QUndoStack* self) {
+	return self->isClean();
 }
 
-int QUndoStack_CleanIndex(QUndoStack* self) {
-	return const_cast<const QUndoStack*>(self)->cleanIndex();
+int QUndoStack_CleanIndex(const QUndoStack* self) {
+	return self->cleanIndex();
 }
 
 void QUndoStack_BeginMacro(QUndoStack* self, const char* text, size_t text_Strlen) {
@@ -205,12 +205,12 @@ void QUndoStack_SetUndoLimit(QUndoStack* self, int limit) {
 	self->setUndoLimit(static_cast<int>(limit));
 }
 
-int QUndoStack_UndoLimit(QUndoStack* self) {
-	return const_cast<const QUndoStack*>(self)->undoLimit();
+int QUndoStack_UndoLimit(const QUndoStack* self) {
+	return self->undoLimit();
 }
 
-QUndoCommand* QUndoStack_Command(QUndoStack* self, int index) {
-	return (QUndoCommand*) const_cast<const QUndoStack*>(self)->command(static_cast<int>(index));
+QUndoCommand* QUndoStack_Command(const QUndoStack* self, int index) {
+	return (QUndoCommand*) self->command(static_cast<int>(index));
 }
 
 void QUndoStack_SetClean(QUndoStack* self) {
@@ -335,14 +335,14 @@ void QUndoStack_TrUtf83(const char* s, const char* c, int n, char** _out, int* _
 	*_out_Strlen = b.length();
 }
 
-QAction* QUndoStack_CreateUndoAction2(QUndoStack* self, QObject* parent, const char* prefix, size_t prefix_Strlen) {
+QAction* QUndoStack_CreateUndoAction2(const QUndoStack* self, QObject* parent, const char* prefix, size_t prefix_Strlen) {
 	QString prefix_QString = QString::fromUtf8(prefix, prefix_Strlen);
-	return const_cast<const QUndoStack*>(self)->createUndoAction(parent, prefix_QString);
+	return self->createUndoAction(parent, prefix_QString);
 }
 
-QAction* QUndoStack_CreateRedoAction2(QUndoStack* self, QObject* parent, const char* prefix, size_t prefix_Strlen) {
+QAction* QUndoStack_CreateRedoAction2(const QUndoStack* self, QObject* parent, const char* prefix, size_t prefix_Strlen) {
 	QString prefix_QString = QString::fromUtf8(prefix, prefix_Strlen);
-	return const_cast<const QUndoStack*>(self)->createRedoAction(parent, prefix_QString);
+	return self->createRedoAction(parent, prefix_QString);
 }
 
 void QUndoStack_SetActive1(QUndoStack* self, bool active) {

@@ -20,24 +20,24 @@ QMargins* QMargins_new3(QMargins* param1) {
 	return new QMargins(*param1);
 }
 
-bool QMargins_IsNull(QMargins* self) {
-	return const_cast<const QMargins*>(self)->isNull();
+bool QMargins_IsNull(const QMargins* self) {
+	return self->isNull();
 }
 
-int QMargins_Left(QMargins* self) {
-	return const_cast<const QMargins*>(self)->left();
+int QMargins_Left(const QMargins* self) {
+	return self->left();
 }
 
-int QMargins_Top(QMargins* self) {
-	return const_cast<const QMargins*>(self)->top();
+int QMargins_Top(const QMargins* self) {
+	return self->top();
 }
 
-int QMargins_Right(QMargins* self) {
-	return const_cast<const QMargins*>(self)->right();
+int QMargins_Right(const QMargins* self) {
+	return self->right();
 }
 
-int QMargins_Bottom(QMargins* self) {
-	return const_cast<const QMargins*>(self)->bottom();
+int QMargins_Bottom(const QMargins* self) {
+	return self->bottom();
 }
 
 void QMargins_SetLeft(QMargins* self, int left) {
@@ -124,24 +124,24 @@ QMarginsF* QMarginsF_new4(QMarginsF* param1) {
 	return new QMarginsF(*param1);
 }
 
-bool QMarginsF_IsNull(QMarginsF* self) {
-	return const_cast<const QMarginsF*>(self)->isNull();
+bool QMarginsF_IsNull(const QMarginsF* self) {
+	return self->isNull();
 }
 
-double QMarginsF_Left(QMarginsF* self) {
-	return const_cast<const QMarginsF*>(self)->left();
+double QMarginsF_Left(const QMarginsF* self) {
+	return self->left();
 }
 
-double QMarginsF_Top(QMarginsF* self) {
-	return const_cast<const QMarginsF*>(self)->top();
+double QMarginsF_Top(const QMarginsF* self) {
+	return self->top();
 }
 
-double QMarginsF_Right(QMarginsF* self) {
-	return const_cast<const QMarginsF*>(self)->right();
+double QMarginsF_Right(const QMarginsF* self) {
+	return self->right();
 }
 
-double QMarginsF_Bottom(QMarginsF* self) {
-	return const_cast<const QMarginsF*>(self)->bottom();
+double QMarginsF_Bottom(const QMarginsF* self) {
+	return self->bottom();
 }
 
 void QMarginsF_SetLeft(QMarginsF* self, double left) {
@@ -196,8 +196,8 @@ QMarginsF* QMarginsF_OperatorDivideAssign(QMarginsF* self, double divisor) {
 	return &ret;
 }
 
-QMargins* QMarginsF_ToMargins(QMarginsF* self) {
-	QMargins ret = const_cast<const QMarginsF*>(self)->toMargins();
+QMargins* QMarginsF_ToMargins(const QMarginsF* self) {
+	QMargins ret = self->toMargins();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QMargins*>(new QMargins(ret));
 }

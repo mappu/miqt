@@ -35,8 +35,8 @@ QToolBar* QToolBar_new4(QWidget* parent) {
 	return new QToolBar(parent);
 }
 
-QMetaObject* QToolBar_MetaObject(QToolBar* self) {
-	return (QMetaObject*) const_cast<const QToolBar*>(self)->metaObject();
+QMetaObject* QToolBar_MetaObject(const QToolBar* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QToolBar_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -61,29 +61,29 @@ void QToolBar_SetMovable(QToolBar* self, bool movable) {
 	self->setMovable(movable);
 }
 
-bool QToolBar_IsMovable(QToolBar* self) {
-	return const_cast<const QToolBar*>(self)->isMovable();
+bool QToolBar_IsMovable(const QToolBar* self) {
+	return self->isMovable();
 }
 
 void QToolBar_SetAllowedAreas(QToolBar* self, int areas) {
 	self->setAllowedAreas(static_cast<Qt::ToolBarAreas>(areas));
 }
 
-int QToolBar_AllowedAreas(QToolBar* self) {
-	Qt::ToolBarAreas ret = const_cast<const QToolBar*>(self)->allowedAreas();
+int QToolBar_AllowedAreas(const QToolBar* self) {
+	Qt::ToolBarAreas ret = self->allowedAreas();
 	return static_cast<int>(ret);
 }
 
-bool QToolBar_IsAreaAllowed(QToolBar* self, uintptr_t area) {
-	return const_cast<const QToolBar*>(self)->isAreaAllowed(static_cast<Qt::ToolBarArea>(area));
+bool QToolBar_IsAreaAllowed(const QToolBar* self, uintptr_t area) {
+	return self->isAreaAllowed(static_cast<Qt::ToolBarArea>(area));
 }
 
 void QToolBar_SetOrientation(QToolBar* self, uintptr_t orientation) {
 	self->setOrientation(static_cast<Qt::Orientation>(orientation));
 }
 
-uintptr_t QToolBar_Orientation(QToolBar* self) {
-	Qt::Orientation ret = const_cast<const QToolBar*>(self)->orientation();
+uintptr_t QToolBar_Orientation(const QToolBar* self) {
+	Qt::Orientation ret = self->orientation();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -117,49 +117,49 @@ QAction* QToolBar_InsertWidget(QToolBar* self, QAction* before, QWidget* widget)
 	return self->insertWidget(before, widget);
 }
 
-QRect* QToolBar_ActionGeometry(QToolBar* self, QAction* action) {
-	QRect ret = const_cast<const QToolBar*>(self)->actionGeometry(action);
+QRect* QToolBar_ActionGeometry(const QToolBar* self, QAction* action) {
+	QRect ret = self->actionGeometry(action);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRect*>(new QRect(ret));
 }
 
-QAction* QToolBar_ActionAt(QToolBar* self, QPoint* p) {
-	return const_cast<const QToolBar*>(self)->actionAt(*p);
+QAction* QToolBar_ActionAt(const QToolBar* self, QPoint* p) {
+	return self->actionAt(*p);
 }
 
-QAction* QToolBar_ActionAt2(QToolBar* self, int x, int y) {
-	return const_cast<const QToolBar*>(self)->actionAt(static_cast<int>(x), static_cast<int>(y));
+QAction* QToolBar_ActionAt2(const QToolBar* self, int x, int y) {
+	return self->actionAt(static_cast<int>(x), static_cast<int>(y));
 }
 
-QAction* QToolBar_ToggleViewAction(QToolBar* self) {
-	return const_cast<const QToolBar*>(self)->toggleViewAction();
+QAction* QToolBar_ToggleViewAction(const QToolBar* self) {
+	return self->toggleViewAction();
 }
 
-QSize* QToolBar_IconSize(QToolBar* self) {
-	QSize ret = const_cast<const QToolBar*>(self)->iconSize();
+QSize* QToolBar_IconSize(const QToolBar* self) {
+	QSize ret = self->iconSize();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
 
-uintptr_t QToolBar_ToolButtonStyle(QToolBar* self) {
-	Qt::ToolButtonStyle ret = const_cast<const QToolBar*>(self)->toolButtonStyle();
+uintptr_t QToolBar_ToolButtonStyle(const QToolBar* self) {
+	Qt::ToolButtonStyle ret = self->toolButtonStyle();
 	return static_cast<uintptr_t>(ret);
 }
 
-QWidget* QToolBar_WidgetForAction(QToolBar* self, QAction* action) {
-	return const_cast<const QToolBar*>(self)->widgetForAction(action);
+QWidget* QToolBar_WidgetForAction(const QToolBar* self, QAction* action) {
+	return self->widgetForAction(action);
 }
 
-bool QToolBar_IsFloatable(QToolBar* self) {
-	return const_cast<const QToolBar*>(self)->isFloatable();
+bool QToolBar_IsFloatable(const QToolBar* self) {
+	return self->isFloatable();
 }
 
 void QToolBar_SetFloatable(QToolBar* self, bool floatable) {
 	self->setFloatable(floatable);
 }
 
-bool QToolBar_IsFloating(QToolBar* self) {
-	return const_cast<const QToolBar*>(self)->isFloating();
+bool QToolBar_IsFloating(const QToolBar* self) {
+	return self->isFloating();
 }
 
 void QToolBar_SetIconSize(QToolBar* self, QSize* iconSize) {

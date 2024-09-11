@@ -33,16 +33,16 @@ QQuaternion* QQuaternion_new6(QQuaternion* param1) {
 	return new QQuaternion(*param1);
 }
 
-bool QQuaternion_IsNull(QQuaternion* self) {
-	return const_cast<const QQuaternion*>(self)->isNull();
+bool QQuaternion_IsNull(const QQuaternion* self) {
+	return self->isNull();
 }
 
-bool QQuaternion_IsIdentity(QQuaternion* self) {
-	return const_cast<const QQuaternion*>(self)->isIdentity();
+bool QQuaternion_IsIdentity(const QQuaternion* self) {
+	return self->isIdentity();
 }
 
-QVector3D* QQuaternion_Vector(QQuaternion* self) {
-	QVector3D ret = const_cast<const QQuaternion*>(self)->vector();
+QVector3D* QQuaternion_Vector(const QQuaternion* self) {
+	QVector3D ret = self->vector();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVector3D*>(new QVector3D(ret));
 }
@@ -55,20 +55,20 @@ void QQuaternion_SetVector2(QQuaternion* self, float x, float y, float z) {
 	self->setVector(static_cast<float>(x), static_cast<float>(y), static_cast<float>(z));
 }
 
-float QQuaternion_X(QQuaternion* self) {
-	return const_cast<const QQuaternion*>(self)->x();
+float QQuaternion_X(const QQuaternion* self) {
+	return self->x();
 }
 
-float QQuaternion_Y(QQuaternion* self) {
-	return const_cast<const QQuaternion*>(self)->y();
+float QQuaternion_Y(const QQuaternion* self) {
+	return self->y();
 }
 
-float QQuaternion_Z(QQuaternion* self) {
-	return const_cast<const QQuaternion*>(self)->z();
+float QQuaternion_Z(const QQuaternion* self) {
+	return self->z();
 }
 
-float QQuaternion_Scalar(QQuaternion* self) {
-	return const_cast<const QQuaternion*>(self)->scalar();
+float QQuaternion_Scalar(const QQuaternion* self) {
+	return self->scalar();
 }
 
 void QQuaternion_SetX(QQuaternion* self, float x) {
@@ -91,16 +91,16 @@ float QQuaternion_DotProduct(QQuaternion* q1, QQuaternion* q2) {
 	return QQuaternion::dotProduct(*q1, *q2);
 }
 
-float QQuaternion_Length(QQuaternion* self) {
-	return const_cast<const QQuaternion*>(self)->length();
+float QQuaternion_Length(const QQuaternion* self) {
+	return self->length();
 }
 
-float QQuaternion_LengthSquared(QQuaternion* self) {
-	return const_cast<const QQuaternion*>(self)->lengthSquared();
+float QQuaternion_LengthSquared(const QQuaternion* self) {
+	return self->lengthSquared();
 }
 
-QQuaternion* QQuaternion_Normalized(QQuaternion* self) {
-	QQuaternion ret = const_cast<const QQuaternion*>(self)->normalized();
+QQuaternion* QQuaternion_Normalized(const QQuaternion* self) {
+	QQuaternion ret = self->normalized();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QQuaternion*>(new QQuaternion(ret));
 }
@@ -109,26 +109,26 @@ void QQuaternion_Normalize(QQuaternion* self) {
 	self->normalize();
 }
 
-QQuaternion* QQuaternion_Inverted(QQuaternion* self) {
-	QQuaternion ret = const_cast<const QQuaternion*>(self)->inverted();
+QQuaternion* QQuaternion_Inverted(const QQuaternion* self) {
+	QQuaternion ret = self->inverted();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QQuaternion*>(new QQuaternion(ret));
 }
 
-QQuaternion* QQuaternion_Conjugated(QQuaternion* self) {
-	QQuaternion ret = const_cast<const QQuaternion*>(self)->conjugated();
+QQuaternion* QQuaternion_Conjugated(const QQuaternion* self) {
+	QQuaternion ret = self->conjugated();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QQuaternion*>(new QQuaternion(ret));
 }
 
-QQuaternion* QQuaternion_Conjugate(QQuaternion* self) {
-	QQuaternion ret = const_cast<const QQuaternion*>(self)->conjugate();
+QQuaternion* QQuaternion_Conjugate(const QQuaternion* self) {
+	QQuaternion ret = self->conjugate();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QQuaternion*>(new QQuaternion(ret));
 }
 
-QVector3D* QQuaternion_RotatedVector(QQuaternion* self, QVector3D* vector) {
-	QVector3D ret = const_cast<const QQuaternion*>(self)->rotatedVector(*vector);
+QVector3D* QQuaternion_RotatedVector(const QQuaternion* self, QVector3D* vector) {
+	QVector3D ret = self->rotatedVector(*vector);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVector3D*>(new QVector3D(ret));
 }
@@ -163,14 +163,14 @@ QQuaternion* QQuaternion_OperatorDivideAssign(QQuaternion* self, float divisor) 
 	return &ret;
 }
 
-QVector4D* QQuaternion_ToVector4D(QQuaternion* self) {
-	QVector4D ret = const_cast<const QQuaternion*>(self)->toVector4D();
+QVector4D* QQuaternion_ToVector4D(const QQuaternion* self) {
+	QVector4D ret = self->toVector4D();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVector4D*>(new QVector4D(ret));
 }
 
-void QQuaternion_GetAxisAndAngle(QQuaternion* self, QVector3D* axis, float* angle) {
-	const_cast<const QQuaternion*>(self)->getAxisAndAngle(axis, static_cast<float*>(angle));
+void QQuaternion_GetAxisAndAngle(const QQuaternion* self, QVector3D* axis, float* angle) {
+	self->getAxisAndAngle(axis, static_cast<float*>(angle));
 }
 
 QQuaternion* QQuaternion_FromAxisAndAngle(QVector3D* axis, float angle) {
@@ -179,8 +179,8 @@ QQuaternion* QQuaternion_FromAxisAndAngle(QVector3D* axis, float angle) {
 	return static_cast<QQuaternion*>(new QQuaternion(ret));
 }
 
-void QQuaternion_GetAxisAndAngle2(QQuaternion* self, float* x, float* y, float* z, float* angle) {
-	const_cast<const QQuaternion*>(self)->getAxisAndAngle(static_cast<float*>(x), static_cast<float*>(y), static_cast<float*>(z), static_cast<float*>(angle));
+void QQuaternion_GetAxisAndAngle2(const QQuaternion* self, float* x, float* y, float* z, float* angle) {
+	self->getAxisAndAngle(static_cast<float*>(x), static_cast<float*>(y), static_cast<float*>(z), static_cast<float*>(angle));
 }
 
 QQuaternion* QQuaternion_FromAxisAndAngle2(float x, float y, float z, float angle) {
@@ -189,8 +189,8 @@ QQuaternion* QQuaternion_FromAxisAndAngle2(float x, float y, float z, float angl
 	return static_cast<QQuaternion*>(new QQuaternion(ret));
 }
 
-QVector3D* QQuaternion_ToEulerAngles(QQuaternion* self) {
-	QVector3D ret = const_cast<const QQuaternion*>(self)->toEulerAngles();
+QVector3D* QQuaternion_ToEulerAngles(const QQuaternion* self) {
+	QVector3D ret = self->toEulerAngles();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVector3D*>(new QVector3D(ret));
 }
@@ -201,8 +201,8 @@ QQuaternion* QQuaternion_FromEulerAngles(QVector3D* eulerAngles) {
 	return static_cast<QQuaternion*>(new QQuaternion(ret));
 }
 
-void QQuaternion_GetEulerAngles(QQuaternion* self, float* pitch, float* yaw, float* roll) {
-	const_cast<const QQuaternion*>(self)->getEulerAngles(static_cast<float*>(pitch), static_cast<float*>(yaw), static_cast<float*>(roll));
+void QQuaternion_GetEulerAngles(const QQuaternion* self, float* pitch, float* yaw, float* roll) {
+	self->getEulerAngles(static_cast<float*>(pitch), static_cast<float*>(yaw), static_cast<float*>(roll));
 }
 
 QQuaternion* QQuaternion_FromEulerAngles2(float pitch, float yaw, float roll) {
@@ -211,8 +211,8 @@ QQuaternion* QQuaternion_FromEulerAngles2(float pitch, float yaw, float roll) {
 	return static_cast<QQuaternion*>(new QQuaternion(ret));
 }
 
-void QQuaternion_GetAxes(QQuaternion* self, QVector3D* xAxis, QVector3D* yAxis, QVector3D* zAxis) {
-	const_cast<const QQuaternion*>(self)->getAxes(xAxis, yAxis, zAxis);
+void QQuaternion_GetAxes(const QQuaternion* self, QVector3D* xAxis, QVector3D* yAxis, QVector3D* zAxis) {
+	self->getAxes(xAxis, yAxis, zAxis);
 }
 
 QQuaternion* QQuaternion_FromAxes(QVector3D* xAxis, QVector3D* yAxis, QVector3D* zAxis) {

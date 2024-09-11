@@ -27,8 +27,8 @@ QTreeView* QTreeView_new2(QWidget* parent) {
 	return new QTreeView(parent);
 }
 
-QMetaObject* QTreeView_MetaObject(QTreeView* self) {
-	return (QMetaObject*) const_cast<const QTreeView*>(self)->metaObject();
+QMetaObject* QTreeView_MetaObject(const QTreeView* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QTreeView_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -61,24 +61,24 @@ void QTreeView_SetSelectionModel(QTreeView* self, QItemSelectionModel* selection
 	self->setSelectionModel(selectionModel);
 }
 
-QHeaderView* QTreeView_Header(QTreeView* self) {
-	return const_cast<const QTreeView*>(self)->header();
+QHeaderView* QTreeView_Header(const QTreeView* self) {
+	return self->header();
 }
 
 void QTreeView_SetHeader(QTreeView* self, QHeaderView* header) {
 	self->setHeader(header);
 }
 
-int QTreeView_AutoExpandDelay(QTreeView* self) {
-	return const_cast<const QTreeView*>(self)->autoExpandDelay();
+int QTreeView_AutoExpandDelay(const QTreeView* self) {
+	return self->autoExpandDelay();
 }
 
 void QTreeView_SetAutoExpandDelay(QTreeView* self, int delay) {
 	self->setAutoExpandDelay(static_cast<int>(delay));
 }
 
-int QTreeView_Indentation(QTreeView* self) {
-	return const_cast<const QTreeView*>(self)->indentation();
+int QTreeView_Indentation(const QTreeView* self) {
+	return self->indentation();
 }
 
 void QTreeView_SetIndentation(QTreeView* self, int i) {
@@ -89,88 +89,88 @@ void QTreeView_ResetIndentation(QTreeView* self) {
 	self->resetIndentation();
 }
 
-bool QTreeView_RootIsDecorated(QTreeView* self) {
-	return const_cast<const QTreeView*>(self)->rootIsDecorated();
+bool QTreeView_RootIsDecorated(const QTreeView* self) {
+	return self->rootIsDecorated();
 }
 
 void QTreeView_SetRootIsDecorated(QTreeView* self, bool show) {
 	self->setRootIsDecorated(show);
 }
 
-bool QTreeView_UniformRowHeights(QTreeView* self) {
-	return const_cast<const QTreeView*>(self)->uniformRowHeights();
+bool QTreeView_UniformRowHeights(const QTreeView* self) {
+	return self->uniformRowHeights();
 }
 
 void QTreeView_SetUniformRowHeights(QTreeView* self, bool uniform) {
 	self->setUniformRowHeights(uniform);
 }
 
-bool QTreeView_ItemsExpandable(QTreeView* self) {
-	return const_cast<const QTreeView*>(self)->itemsExpandable();
+bool QTreeView_ItemsExpandable(const QTreeView* self) {
+	return self->itemsExpandable();
 }
 
 void QTreeView_SetItemsExpandable(QTreeView* self, bool enable) {
 	self->setItemsExpandable(enable);
 }
 
-bool QTreeView_ExpandsOnDoubleClick(QTreeView* self) {
-	return const_cast<const QTreeView*>(self)->expandsOnDoubleClick();
+bool QTreeView_ExpandsOnDoubleClick(const QTreeView* self) {
+	return self->expandsOnDoubleClick();
 }
 
 void QTreeView_SetExpandsOnDoubleClick(QTreeView* self, bool enable) {
 	self->setExpandsOnDoubleClick(enable);
 }
 
-int QTreeView_ColumnViewportPosition(QTreeView* self, int column) {
-	return const_cast<const QTreeView*>(self)->columnViewportPosition(static_cast<int>(column));
+int QTreeView_ColumnViewportPosition(const QTreeView* self, int column) {
+	return self->columnViewportPosition(static_cast<int>(column));
 }
 
-int QTreeView_ColumnWidth(QTreeView* self, int column) {
-	return const_cast<const QTreeView*>(self)->columnWidth(static_cast<int>(column));
+int QTreeView_ColumnWidth(const QTreeView* self, int column) {
+	return self->columnWidth(static_cast<int>(column));
 }
 
 void QTreeView_SetColumnWidth(QTreeView* self, int column, int width) {
 	self->setColumnWidth(static_cast<int>(column), static_cast<int>(width));
 }
 
-int QTreeView_ColumnAt(QTreeView* self, int x) {
-	return const_cast<const QTreeView*>(self)->columnAt(static_cast<int>(x));
+int QTreeView_ColumnAt(const QTreeView* self, int x) {
+	return self->columnAt(static_cast<int>(x));
 }
 
-bool QTreeView_IsColumnHidden(QTreeView* self, int column) {
-	return const_cast<const QTreeView*>(self)->isColumnHidden(static_cast<int>(column));
+bool QTreeView_IsColumnHidden(const QTreeView* self, int column) {
+	return self->isColumnHidden(static_cast<int>(column));
 }
 
 void QTreeView_SetColumnHidden(QTreeView* self, int column, bool hide) {
 	self->setColumnHidden(static_cast<int>(column), hide);
 }
 
-bool QTreeView_IsHeaderHidden(QTreeView* self) {
-	return const_cast<const QTreeView*>(self)->isHeaderHidden();
+bool QTreeView_IsHeaderHidden(const QTreeView* self) {
+	return self->isHeaderHidden();
 }
 
 void QTreeView_SetHeaderHidden(QTreeView* self, bool hide) {
 	self->setHeaderHidden(hide);
 }
 
-bool QTreeView_IsRowHidden(QTreeView* self, int row, QModelIndex* parent) {
-	return const_cast<const QTreeView*>(self)->isRowHidden(static_cast<int>(row), *parent);
+bool QTreeView_IsRowHidden(const QTreeView* self, int row, QModelIndex* parent) {
+	return self->isRowHidden(static_cast<int>(row), *parent);
 }
 
 void QTreeView_SetRowHidden(QTreeView* self, int row, QModelIndex* parent, bool hide) {
 	self->setRowHidden(static_cast<int>(row), *parent, hide);
 }
 
-bool QTreeView_IsFirstColumnSpanned(QTreeView* self, int row, QModelIndex* parent) {
-	return const_cast<const QTreeView*>(self)->isFirstColumnSpanned(static_cast<int>(row), *parent);
+bool QTreeView_IsFirstColumnSpanned(const QTreeView* self, int row, QModelIndex* parent) {
+	return self->isFirstColumnSpanned(static_cast<int>(row), *parent);
 }
 
 void QTreeView_SetFirstColumnSpanned(QTreeView* self, int row, QModelIndex* parent, bool span) {
 	self->setFirstColumnSpanned(static_cast<int>(row), *parent, span);
 }
 
-bool QTreeView_IsExpanded(QTreeView* self, QModelIndex* index) {
-	return const_cast<const QTreeView*>(self)->isExpanded(*index);
+bool QTreeView_IsExpanded(const QTreeView* self, QModelIndex* index) {
+	return self->isExpanded(*index);
 }
 
 void QTreeView_SetExpanded(QTreeView* self, QModelIndex* index, bool expand) {
@@ -181,40 +181,40 @@ void QTreeView_SetSortingEnabled(QTreeView* self, bool enable) {
 	self->setSortingEnabled(enable);
 }
 
-bool QTreeView_IsSortingEnabled(QTreeView* self) {
-	return const_cast<const QTreeView*>(self)->isSortingEnabled();
+bool QTreeView_IsSortingEnabled(const QTreeView* self) {
+	return self->isSortingEnabled();
 }
 
 void QTreeView_SetAnimated(QTreeView* self, bool enable) {
 	self->setAnimated(enable);
 }
 
-bool QTreeView_IsAnimated(QTreeView* self) {
-	return const_cast<const QTreeView*>(self)->isAnimated();
+bool QTreeView_IsAnimated(const QTreeView* self) {
+	return self->isAnimated();
 }
 
 void QTreeView_SetAllColumnsShowFocus(QTreeView* self, bool enable) {
 	self->setAllColumnsShowFocus(enable);
 }
 
-bool QTreeView_AllColumnsShowFocus(QTreeView* self) {
-	return const_cast<const QTreeView*>(self)->allColumnsShowFocus();
+bool QTreeView_AllColumnsShowFocus(const QTreeView* self) {
+	return self->allColumnsShowFocus();
 }
 
 void QTreeView_SetWordWrap(QTreeView* self, bool on) {
 	self->setWordWrap(on);
 }
 
-bool QTreeView_WordWrap(QTreeView* self) {
-	return const_cast<const QTreeView*>(self)->wordWrap();
+bool QTreeView_WordWrap(const QTreeView* self) {
+	return self->wordWrap();
 }
 
 void QTreeView_SetTreePosition(QTreeView* self, int logicalIndex) {
 	self->setTreePosition(static_cast<int>(logicalIndex));
 }
 
-int QTreeView_TreePosition(QTreeView* self) {
-	return const_cast<const QTreeView*>(self)->treePosition();
+int QTreeView_TreePosition(const QTreeView* self) {
+	return self->treePosition();
 }
 
 void QTreeView_KeyboardSearch(QTreeView* self, const char* search, size_t search_Strlen) {
@@ -222,8 +222,8 @@ void QTreeView_KeyboardSearch(QTreeView* self, const char* search, size_t search
 	self->keyboardSearch(search_QString);
 }
 
-QRect* QTreeView_VisualRect(QTreeView* self, QModelIndex* index) {
-	QRect ret = const_cast<const QTreeView*>(self)->visualRect(*index);
+QRect* QTreeView_VisualRect(const QTreeView* self, QModelIndex* index) {
+	QRect ret = self->visualRect(*index);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRect*>(new QRect(ret));
 }
@@ -232,20 +232,20 @@ void QTreeView_ScrollTo(QTreeView* self, QModelIndex* index) {
 	self->scrollTo(*index);
 }
 
-QModelIndex* QTreeView_IndexAt(QTreeView* self, QPoint* p) {
-	QModelIndex ret = const_cast<const QTreeView*>(self)->indexAt(*p);
+QModelIndex* QTreeView_IndexAt(const QTreeView* self, QPoint* p) {
+	QModelIndex ret = self->indexAt(*p);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QModelIndex*>(new QModelIndex(ret));
 }
 
-QModelIndex* QTreeView_IndexAbove(QTreeView* self, QModelIndex* index) {
-	QModelIndex ret = const_cast<const QTreeView*>(self)->indexAbove(*index);
+QModelIndex* QTreeView_IndexAbove(const QTreeView* self, QModelIndex* index) {
+	QModelIndex ret = self->indexAbove(*index);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QModelIndex*>(new QModelIndex(ret));
 }
 
-QModelIndex* QTreeView_IndexBelow(QTreeView* self, QModelIndex* index) {
-	QModelIndex ret = const_cast<const QTreeView*>(self)->indexBelow(*index);
+QModelIndex* QTreeView_IndexBelow(const QTreeView* self, QModelIndex* index) {
+	QModelIndex ret = self->indexBelow(*index);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QModelIndex*>(new QModelIndex(ret));
 }

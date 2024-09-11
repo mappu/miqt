@@ -29,8 +29,8 @@ QLCDNumber* QLCDNumber_new4(unsigned int numDigits, QWidget* parent) {
 	return new QLCDNumber(static_cast<uint>(numDigits), parent);
 }
 
-QMetaObject* QLCDNumber_MetaObject(QLCDNumber* self) {
-	return (QMetaObject*) const_cast<const QLCDNumber*>(self)->metaObject();
+QMetaObject* QLCDNumber_MetaObject(const QLCDNumber* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QLCDNumber_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -51,28 +51,28 @@ void QLCDNumber_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-bool QLCDNumber_SmallDecimalPoint(QLCDNumber* self) {
-	return const_cast<const QLCDNumber*>(self)->smallDecimalPoint();
+bool QLCDNumber_SmallDecimalPoint(const QLCDNumber* self) {
+	return self->smallDecimalPoint();
 }
 
-int QLCDNumber_DigitCount(QLCDNumber* self) {
-	return const_cast<const QLCDNumber*>(self)->digitCount();
+int QLCDNumber_DigitCount(const QLCDNumber* self) {
+	return self->digitCount();
 }
 
 void QLCDNumber_SetDigitCount(QLCDNumber* self, int nDigits) {
 	self->setDigitCount(static_cast<int>(nDigits));
 }
 
-bool QLCDNumber_CheckOverflow(QLCDNumber* self, double num) {
-	return const_cast<const QLCDNumber*>(self)->checkOverflow(static_cast<double>(num));
+bool QLCDNumber_CheckOverflow(const QLCDNumber* self, double num) {
+	return self->checkOverflow(static_cast<double>(num));
 }
 
-bool QLCDNumber_CheckOverflowWithNum(QLCDNumber* self, int num) {
-	return const_cast<const QLCDNumber*>(self)->checkOverflow(static_cast<int>(num));
+bool QLCDNumber_CheckOverflowWithNum(const QLCDNumber* self, int num) {
+	return self->checkOverflow(static_cast<int>(num));
 }
 
-uintptr_t QLCDNumber_Mode(QLCDNumber* self) {
-	QLCDNumber::Mode ret = const_cast<const QLCDNumber*>(self)->mode();
+uintptr_t QLCDNumber_Mode(const QLCDNumber* self) {
+	QLCDNumber::Mode ret = self->mode();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -80,8 +80,8 @@ void QLCDNumber_SetMode(QLCDNumber* self, uintptr_t mode) {
 	self->setMode(static_cast<QLCDNumber::Mode>(mode));
 }
 
-uintptr_t QLCDNumber_SegmentStyle(QLCDNumber* self) {
-	QLCDNumber::SegmentStyle ret = const_cast<const QLCDNumber*>(self)->segmentStyle();
+uintptr_t QLCDNumber_SegmentStyle(const QLCDNumber* self) {
+	QLCDNumber::SegmentStyle ret = self->segmentStyle();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -89,16 +89,16 @@ void QLCDNumber_SetSegmentStyle(QLCDNumber* self, uintptr_t segmentStyle) {
 	self->setSegmentStyle(static_cast<QLCDNumber::SegmentStyle>(segmentStyle));
 }
 
-double QLCDNumber_Value(QLCDNumber* self) {
-	return const_cast<const QLCDNumber*>(self)->value();
+double QLCDNumber_Value(const QLCDNumber* self) {
+	return self->value();
 }
 
-int QLCDNumber_IntValue(QLCDNumber* self) {
-	return const_cast<const QLCDNumber*>(self)->intValue();
+int QLCDNumber_IntValue(const QLCDNumber* self) {
+	return self->intValue();
 }
 
-QSize* QLCDNumber_SizeHint(QLCDNumber* self) {
-	QSize ret = const_cast<const QLCDNumber*>(self)->sizeHint();
+QSize* QLCDNumber_SizeHint(const QLCDNumber* self) {
+	QSize ret = self->sizeHint();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }

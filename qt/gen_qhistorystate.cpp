@@ -30,8 +30,8 @@ QHistoryState* QHistoryState_new4(uintptr_t typeVal, QState* parent) {
 	return new QHistoryState(static_cast<QHistoryState::HistoryType>(typeVal), parent);
 }
 
-QMetaObject* QHistoryState_MetaObject(QHistoryState* self) {
-	return (QMetaObject*) const_cast<const QHistoryState*>(self)->metaObject();
+QMetaObject* QHistoryState_MetaObject(const QHistoryState* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QHistoryState_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -52,24 +52,24 @@ void QHistoryState_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-QAbstractTransition* QHistoryState_DefaultTransition(QHistoryState* self) {
-	return const_cast<const QHistoryState*>(self)->defaultTransition();
+QAbstractTransition* QHistoryState_DefaultTransition(const QHistoryState* self) {
+	return self->defaultTransition();
 }
 
 void QHistoryState_SetDefaultTransition(QHistoryState* self, QAbstractTransition* transition) {
 	self->setDefaultTransition(transition);
 }
 
-QAbstractState* QHistoryState_DefaultState(QHistoryState* self) {
-	return const_cast<const QHistoryState*>(self)->defaultState();
+QAbstractState* QHistoryState_DefaultState(const QHistoryState* self) {
+	return self->defaultState();
 }
 
 void QHistoryState_SetDefaultState(QHistoryState* self, QAbstractState* state) {
 	self->setDefaultState(state);
 }
 
-uintptr_t QHistoryState_HistoryType(QHistoryState* self) {
-	QHistoryState::HistoryType ret = const_cast<const QHistoryState*>(self)->historyType();
+uintptr_t QHistoryState_HistoryType(const QHistoryState* self) {
+	QHistoryState::HistoryType ret = self->historyType();
 	return static_cast<uintptr_t>(ret);
 }
 

@@ -22,10 +22,10 @@ bool QLockFile_Lock(QLockFile* self);
 bool QLockFile_TryLock(QLockFile* self);
 void QLockFile_Unlock(QLockFile* self);
 void QLockFile_SetStaleLockTime(QLockFile* self, int staleLockTime);
-int QLockFile_StaleLockTime(QLockFile* self);
-bool QLockFile_IsLocked(QLockFile* self);
+int QLockFile_StaleLockTime(const QLockFile* self);
+bool QLockFile_IsLocked(const QLockFile* self);
 bool QLockFile_RemoveStaleLockFile(QLockFile* self);
-uintptr_t QLockFile_Error(QLockFile* self);
+uintptr_t QLockFile_Error(const QLockFile* self);
 bool QLockFile_TryLock1(QLockFile* self, int timeout);
 void QLockFile_Delete(QLockFile* self);
 

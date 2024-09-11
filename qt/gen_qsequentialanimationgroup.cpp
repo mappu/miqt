@@ -22,8 +22,8 @@ QSequentialAnimationGroup* QSequentialAnimationGroup_new2(QObject* parent) {
 	return new QSequentialAnimationGroup(parent);
 }
 
-QMetaObject* QSequentialAnimationGroup_MetaObject(QSequentialAnimationGroup* self) {
-	return (QMetaObject*) const_cast<const QSequentialAnimationGroup*>(self)->metaObject();
+QMetaObject* QSequentialAnimationGroup_MetaObject(const QSequentialAnimationGroup* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QSequentialAnimationGroup_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -52,12 +52,12 @@ QPauseAnimation* QSequentialAnimationGroup_InsertPause(QSequentialAnimationGroup
 	return self->insertPause(static_cast<int>(index), static_cast<int>(msecs));
 }
 
-QAbstractAnimation* QSequentialAnimationGroup_CurrentAnimation(QSequentialAnimationGroup* self) {
-	return const_cast<const QSequentialAnimationGroup*>(self)->currentAnimation();
+QAbstractAnimation* QSequentialAnimationGroup_CurrentAnimation(const QSequentialAnimationGroup* self) {
+	return self->currentAnimation();
 }
 
-int QSequentialAnimationGroup_Duration(QSequentialAnimationGroup* self) {
-	return const_cast<const QSequentialAnimationGroup*>(self)->duration();
+int QSequentialAnimationGroup_Duration(const QSequentialAnimationGroup* self) {
+	return self->duration();
 }
 
 void QSequentialAnimationGroup_CurrentAnimationChanged(QSequentialAnimationGroup* self, QAbstractAnimation* current) {

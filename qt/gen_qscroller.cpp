@@ -16,8 +16,8 @@ extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
 }
 
-QMetaObject* QScroller_MetaObject(QScroller* self) {
-	return (QMetaObject*) const_cast<const QScroller*>(self)->metaObject();
+QMetaObject* QScroller_MetaObject(const QScroller* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QScroller_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -75,12 +75,12 @@ void QScroller_ActiveScrollers(QScroller*** _out, size_t* _out_len) {
 	*_out_len = ret.length();
 }
 
-QObject* QScroller_Target(QScroller* self) {
-	return const_cast<const QScroller*>(self)->target();
+QObject* QScroller_Target(const QScroller* self) {
+	return self->target();
 }
 
-uintptr_t QScroller_State(QScroller* self) {
-	QScroller::State ret = const_cast<const QScroller*>(self)->state();
+uintptr_t QScroller_State(const QScroller* self) {
+	QScroller::State ret = self->state();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -92,26 +92,26 @@ void QScroller_Stop(QScroller* self) {
 	self->stop();
 }
 
-QPointF* QScroller_Velocity(QScroller* self) {
-	QPointF ret = const_cast<const QScroller*>(self)->velocity();
+QPointF* QScroller_Velocity(const QScroller* self) {
+	QPointF ret = self->velocity();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPointF*>(new QPointF(ret));
 }
 
-QPointF* QScroller_FinalPosition(QScroller* self) {
-	QPointF ret = const_cast<const QScroller*>(self)->finalPosition();
+QPointF* QScroller_FinalPosition(const QScroller* self) {
+	QPointF ret = self->finalPosition();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPointF*>(new QPointF(ret));
 }
 
-QPointF* QScroller_PixelPerMeter(QScroller* self) {
-	QPointF ret = const_cast<const QScroller*>(self)->pixelPerMeter();
+QPointF* QScroller_PixelPerMeter(const QScroller* self) {
+	QPointF ret = self->pixelPerMeter();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPointF*>(new QPointF(ret));
 }
 
-QScrollerProperties* QScroller_ScrollerProperties(QScroller* self) {
-	QScrollerProperties ret = const_cast<const QScroller*>(self)->scrollerProperties();
+QScrollerProperties* QScroller_ScrollerProperties(const QScroller* self) {
+	QScrollerProperties ret = self->scrollerProperties();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QScrollerProperties*>(new QScrollerProperties(ret));
 }

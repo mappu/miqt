@@ -29,8 +29,8 @@ QBuffer* QBuffer_new4(QByteArray* buf, QObject* parent) {
 	return new QBuffer(buf, parent);
 }
 
-QMetaObject* QBuffer_MetaObject(QBuffer* self) {
-	return (QMetaObject*) const_cast<const QBuffer*>(self)->metaObject();
+QMetaObject* QBuffer_MetaObject(const QBuffer* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QBuffer_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -57,8 +57,8 @@ QByteArray* QBuffer_Buffer(QBuffer* self) {
 	return &ret;
 }
 
-QByteArray* QBuffer_Buffer2(QBuffer* self) {
-	const QByteArray& ret = const_cast<const QBuffer*>(self)->buffer();
+QByteArray* QBuffer_Buffer2(const QBuffer* self) {
+	const QByteArray& ret = self->buffer();
 	// Cast returned reference into pointer
 	return const_cast<QByteArray*>(&ret);
 }
@@ -75,8 +75,8 @@ void QBuffer_SetData2(QBuffer* self, const char* data, int lenVal) {
 	self->setData(data, static_cast<int>(lenVal));
 }
 
-QByteArray* QBuffer_Data(QBuffer* self) {
-	const QByteArray& ret = const_cast<const QBuffer*>(self)->data();
+QByteArray* QBuffer_Data(const QBuffer* self) {
+	const QByteArray& ret = self->data();
 	// Cast returned reference into pointer
 	return const_cast<QByteArray*>(&ret);
 }
@@ -89,24 +89,24 @@ void QBuffer_Close(QBuffer* self) {
 	self->close();
 }
 
-long long QBuffer_Size(QBuffer* self) {
-	return const_cast<const QBuffer*>(self)->size();
+long long QBuffer_Size(const QBuffer* self) {
+	return self->size();
 }
 
-long long QBuffer_Pos(QBuffer* self) {
-	return const_cast<const QBuffer*>(self)->pos();
+long long QBuffer_Pos(const QBuffer* self) {
+	return self->pos();
 }
 
 bool QBuffer_Seek(QBuffer* self, long long off) {
 	return self->seek(static_cast<qint64>(off));
 }
 
-bool QBuffer_AtEnd(QBuffer* self) {
-	return const_cast<const QBuffer*>(self)->atEnd();
+bool QBuffer_AtEnd(const QBuffer* self) {
+	return self->atEnd();
 }
 
-bool QBuffer_CanReadLine(QBuffer* self) {
-	return const_cast<const QBuffer*>(self)->canReadLine();
+bool QBuffer_CanReadLine(const QBuffer* self) {
+	return self->canReadLine();
 }
 
 void QBuffer_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {

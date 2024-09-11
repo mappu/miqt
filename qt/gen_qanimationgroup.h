@@ -21,12 +21,12 @@ typedef struct QAnimationGroup QAnimationGroup;
 typedef struct QMetaObject QMetaObject;
 #endif
 
-QMetaObject* QAnimationGroup_MetaObject(QAnimationGroup* self);
+QMetaObject* QAnimationGroup_MetaObject(const QAnimationGroup* self);
 void QAnimationGroup_Tr(const char* s, char** _out, int* _out_Strlen);
 void QAnimationGroup_TrUtf8(const char* s, char** _out, int* _out_Strlen);
-QAbstractAnimation* QAnimationGroup_AnimationAt(QAnimationGroup* self, int index);
-int QAnimationGroup_AnimationCount(QAnimationGroup* self);
-int QAnimationGroup_IndexOfAnimation(QAnimationGroup* self, QAbstractAnimation* animation);
+QAbstractAnimation* QAnimationGroup_AnimationAt(const QAnimationGroup* self, int index);
+int QAnimationGroup_AnimationCount(const QAnimationGroup* self);
+int QAnimationGroup_IndexOfAnimation(const QAnimationGroup* self, QAbstractAnimation* animation);
 void QAnimationGroup_AddAnimation(QAnimationGroup* self, QAbstractAnimation* animation);
 void QAnimationGroup_InsertAnimation(QAnimationGroup* self, int index, QAbstractAnimation* animation);
 void QAnimationGroup_RemoveAnimation(QAnimationGroup* self, QAbstractAnimation* animation);

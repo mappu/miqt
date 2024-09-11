@@ -23,7 +23,7 @@ typedef struct QRect QRect;
 typedef struct QRegion QRegion;
 #endif
 
-QMetaObject* QPaintDeviceWindow_MetaObject(QPaintDeviceWindow* self);
+QMetaObject* QPaintDeviceWindow_MetaObject(const QPaintDeviceWindow* self);
 void QPaintDeviceWindow_Tr(const char* s, char** _out, int* _out_Strlen);
 void QPaintDeviceWindow_TrUtf8(const char* s, char** _out, int* _out_Strlen);
 void QPaintDeviceWindow_Update(QPaintDeviceWindow* self, QRect* rect);

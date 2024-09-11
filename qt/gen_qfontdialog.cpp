@@ -29,8 +29,8 @@ QFontDialog* QFontDialog_new4(QFont* initial, QWidget* parent) {
 	return new QFontDialog(*initial, parent);
 }
 
-QMetaObject* QFontDialog_MetaObject(QFontDialog* self) {
-	return (QMetaObject*) const_cast<const QFontDialog*>(self)->metaObject();
+QMetaObject* QFontDialog_MetaObject(const QFontDialog* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QFontDialog_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -55,14 +55,14 @@ void QFontDialog_SetCurrentFont(QFontDialog* self, QFont* font) {
 	self->setCurrentFont(*font);
 }
 
-QFont* QFontDialog_CurrentFont(QFontDialog* self) {
-	QFont ret = const_cast<const QFontDialog*>(self)->currentFont();
+QFont* QFontDialog_CurrentFont(const QFontDialog* self) {
+	QFont ret = self->currentFont();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QFont*>(new QFont(ret));
 }
 
-QFont* QFontDialog_SelectedFont(QFontDialog* self) {
-	QFont ret = const_cast<const QFontDialog*>(self)->selectedFont();
+QFont* QFontDialog_SelectedFont(const QFontDialog* self) {
+	QFont ret = self->selectedFont();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QFont*>(new QFont(ret));
 }
@@ -71,16 +71,16 @@ void QFontDialog_SetOption(QFontDialog* self, uintptr_t option) {
 	self->setOption(static_cast<QFontDialog::FontDialogOption>(option));
 }
 
-bool QFontDialog_TestOption(QFontDialog* self, uintptr_t option) {
-	return const_cast<const QFontDialog*>(self)->testOption(static_cast<QFontDialog::FontDialogOption>(option));
+bool QFontDialog_TestOption(const QFontDialog* self, uintptr_t option) {
+	return self->testOption(static_cast<QFontDialog::FontDialogOption>(option));
 }
 
 void QFontDialog_SetOptions(QFontDialog* self, int options) {
 	self->setOptions(static_cast<QFontDialog::FontDialogOptions>(options));
 }
 
-int QFontDialog_Options(QFontDialog* self) {
-	QFontDialog::FontDialogOptions ret = const_cast<const QFontDialog*>(self)->options();
+int QFontDialog_Options(const QFontDialog* self) {
+	QFontDialog::FontDialogOptions ret = self->options();
 	return static_cast<int>(ret);
 }
 

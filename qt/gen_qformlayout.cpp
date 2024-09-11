@@ -25,8 +25,8 @@ QFormLayout* QFormLayout_new2(QWidget* parent) {
 	return new QFormLayout(parent);
 }
 
-QMetaObject* QFormLayout_MetaObject(QFormLayout* self) {
-	return (QMetaObject*) const_cast<const QFormLayout*>(self)->metaObject();
+QMetaObject* QFormLayout_MetaObject(const QFormLayout* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QFormLayout_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -51,8 +51,8 @@ void QFormLayout_SetFieldGrowthPolicy(QFormLayout* self, uintptr_t policy) {
 	self->setFieldGrowthPolicy(static_cast<QFormLayout::FieldGrowthPolicy>(policy));
 }
 
-uintptr_t QFormLayout_FieldGrowthPolicy(QFormLayout* self) {
-	QFormLayout::FieldGrowthPolicy ret = const_cast<const QFormLayout*>(self)->fieldGrowthPolicy();
+uintptr_t QFormLayout_FieldGrowthPolicy(const QFormLayout* self) {
+	QFormLayout::FieldGrowthPolicy ret = self->fieldGrowthPolicy();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -60,8 +60,8 @@ void QFormLayout_SetRowWrapPolicy(QFormLayout* self, int policy) {
 	self->setRowWrapPolicy(static_cast<QFormLayout::RowWrapPolicy>(policy));
 }
 
-int QFormLayout_RowWrapPolicy(QFormLayout* self) {
-	QFormLayout::RowWrapPolicy ret = const_cast<const QFormLayout*>(self)->rowWrapPolicy();
+int QFormLayout_RowWrapPolicy(const QFormLayout* self) {
+	QFormLayout::RowWrapPolicy ret = self->rowWrapPolicy();
 	return static_cast<int>(ret);
 }
 
@@ -69,8 +69,8 @@ void QFormLayout_SetLabelAlignment(QFormLayout* self, int alignment) {
 	self->setLabelAlignment(static_cast<Qt::Alignment>(alignment));
 }
 
-int QFormLayout_LabelAlignment(QFormLayout* self) {
-	Qt::Alignment ret = const_cast<const QFormLayout*>(self)->labelAlignment();
+int QFormLayout_LabelAlignment(const QFormLayout* self) {
+	Qt::Alignment ret = self->labelAlignment();
 	return static_cast<int>(ret);
 }
 
@@ -78,8 +78,8 @@ void QFormLayout_SetFormAlignment(QFormLayout* self, int alignment) {
 	self->setFormAlignment(static_cast<Qt::Alignment>(alignment));
 }
 
-int QFormLayout_FormAlignment(QFormLayout* self) {
-	Qt::Alignment ret = const_cast<const QFormLayout*>(self)->formAlignment();
+int QFormLayout_FormAlignment(const QFormLayout* self) {
+	Qt::Alignment ret = self->formAlignment();
 	return static_cast<int>(ret);
 }
 
@@ -87,20 +87,20 @@ void QFormLayout_SetHorizontalSpacing(QFormLayout* self, int spacing) {
 	self->setHorizontalSpacing(static_cast<int>(spacing));
 }
 
-int QFormLayout_HorizontalSpacing(QFormLayout* self) {
-	return const_cast<const QFormLayout*>(self)->horizontalSpacing();
+int QFormLayout_HorizontalSpacing(const QFormLayout* self) {
+	return self->horizontalSpacing();
 }
 
 void QFormLayout_SetVerticalSpacing(QFormLayout* self, int spacing) {
 	self->setVerticalSpacing(static_cast<int>(spacing));
 }
 
-int QFormLayout_VerticalSpacing(QFormLayout* self) {
-	return const_cast<const QFormLayout*>(self)->verticalSpacing();
+int QFormLayout_VerticalSpacing(const QFormLayout* self) {
+	return self->verticalSpacing();
 }
 
-int QFormLayout_Spacing(QFormLayout* self) {
-	return const_cast<const QFormLayout*>(self)->spacing();
+int QFormLayout_Spacing(const QFormLayout* self) {
+	return self->spacing();
 }
 
 void QFormLayout_SetSpacing(QFormLayout* self, int spacing) {
@@ -201,24 +201,24 @@ void QFormLayout_SetLayout(QFormLayout* self, int row, int role, QLayout* layout
 	self->setLayout(static_cast<int>(row), static_cast<QFormLayout::ItemRole>(role), layout);
 }
 
-QLayoutItem* QFormLayout_ItemAt(QFormLayout* self, int row, int role) {
-	return const_cast<const QFormLayout*>(self)->itemAt(static_cast<int>(row), static_cast<QFormLayout::ItemRole>(role));
+QLayoutItem* QFormLayout_ItemAt(const QFormLayout* self, int row, int role) {
+	return self->itemAt(static_cast<int>(row), static_cast<QFormLayout::ItemRole>(role));
 }
 
-QWidget* QFormLayout_LabelForField(QFormLayout* self, QWidget* field) {
-	return const_cast<const QFormLayout*>(self)->labelForField(field);
+QWidget* QFormLayout_LabelForField(const QFormLayout* self, QWidget* field) {
+	return self->labelForField(field);
 }
 
-QWidget* QFormLayout_LabelForFieldWithField(QFormLayout* self, QLayout* field) {
-	return const_cast<const QFormLayout*>(self)->labelForField(field);
+QWidget* QFormLayout_LabelForFieldWithField(const QFormLayout* self, QLayout* field) {
+	return self->labelForField(field);
 }
 
 void QFormLayout_AddItem(QFormLayout* self, QLayoutItem* item) {
 	self->addItem(item);
 }
 
-QLayoutItem* QFormLayout_ItemAtWithIndex(QFormLayout* self, int index) {
-	return const_cast<const QFormLayout*>(self)->itemAt(static_cast<int>(index));
+QLayoutItem* QFormLayout_ItemAtWithIndex(const QFormLayout* self, int index) {
+	return self->itemAt(static_cast<int>(index));
 }
 
 QLayoutItem* QFormLayout_TakeAt(QFormLayout* self, int index) {
@@ -229,14 +229,14 @@ void QFormLayout_SetGeometry(QFormLayout* self, QRect* rect) {
 	self->setGeometry(*rect);
 }
 
-QSize* QFormLayout_MinimumSize(QFormLayout* self) {
-	QSize ret = const_cast<const QFormLayout*>(self)->minimumSize();
+QSize* QFormLayout_MinimumSize(const QFormLayout* self) {
+	QSize ret = self->minimumSize();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
 
-QSize* QFormLayout_SizeHint(QFormLayout* self) {
-	QSize ret = const_cast<const QFormLayout*>(self)->sizeHint();
+QSize* QFormLayout_SizeHint(const QFormLayout* self) {
+	QSize ret = self->sizeHint();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
@@ -245,25 +245,25 @@ void QFormLayout_Invalidate(QFormLayout* self) {
 	self->invalidate();
 }
 
-bool QFormLayout_HasHeightForWidth(QFormLayout* self) {
-	return const_cast<const QFormLayout*>(self)->hasHeightForWidth();
+bool QFormLayout_HasHeightForWidth(const QFormLayout* self) {
+	return self->hasHeightForWidth();
 }
 
-int QFormLayout_HeightForWidth(QFormLayout* self, int width) {
-	return const_cast<const QFormLayout*>(self)->heightForWidth(static_cast<int>(width));
+int QFormLayout_HeightForWidth(const QFormLayout* self, int width) {
+	return self->heightForWidth(static_cast<int>(width));
 }
 
-int QFormLayout_ExpandingDirections(QFormLayout* self) {
-	Qt::Orientations ret = const_cast<const QFormLayout*>(self)->expandingDirections();
+int QFormLayout_ExpandingDirections(const QFormLayout* self) {
+	Qt::Orientations ret = self->expandingDirections();
 	return static_cast<int>(ret);
 }
 
-int QFormLayout_Count(QFormLayout* self) {
-	return const_cast<const QFormLayout*>(self)->count();
+int QFormLayout_Count(const QFormLayout* self) {
+	return self->count();
 }
 
-int QFormLayout_RowCount(QFormLayout* self) {
-	return const_cast<const QFormLayout*>(self)->rowCount();
+int QFormLayout_RowCount(const QFormLayout* self) {
+	return self->rowCount();
 }
 
 void QFormLayout_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {

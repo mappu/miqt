@@ -32,8 +32,8 @@ void QSemaphore_Release(QSemaphore* self) {
 	self->release();
 }
 
-int QSemaphore_Available(QSemaphore* self) {
-	return const_cast<const QSemaphore*>(self)->available();
+int QSemaphore_Available(const QSemaphore* self) {
+	return self->available();
 }
 
 void QSemaphore_Acquire1(QSemaphore* self, int n) {
@@ -76,8 +76,8 @@ void QSemaphoreReleaser_Swap(QSemaphoreReleaser* self, QSemaphoreReleaser* other
 	self->swap(*other);
 }
 
-QSemaphore* QSemaphoreReleaser_Semaphore(QSemaphoreReleaser* self) {
-	return const_cast<const QSemaphoreReleaser*>(self)->semaphore();
+QSemaphore* QSemaphoreReleaser_Semaphore(const QSemaphoreReleaser* self) {
+	return self->semaphore();
 }
 
 QSemaphore* QSemaphoreReleaser_Cancel(QSemaphoreReleaser* self) {

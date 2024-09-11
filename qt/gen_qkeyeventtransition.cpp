@@ -29,8 +29,8 @@ QKeyEventTransition* QKeyEventTransition_new4(QObject* object, uintptr_t typeVal
 	return new QKeyEventTransition(object, static_cast<QEvent::Type>(typeVal), static_cast<int>(key), sourceState);
 }
 
-QMetaObject* QKeyEventTransition_MetaObject(QKeyEventTransition* self) {
-	return (QMetaObject*) const_cast<const QKeyEventTransition*>(self)->metaObject();
+QMetaObject* QKeyEventTransition_MetaObject(const QKeyEventTransition* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QKeyEventTransition_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -51,16 +51,16 @@ void QKeyEventTransition_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-int QKeyEventTransition_Key(QKeyEventTransition* self) {
-	return const_cast<const QKeyEventTransition*>(self)->key();
+int QKeyEventTransition_Key(const QKeyEventTransition* self) {
+	return self->key();
 }
 
 void QKeyEventTransition_SetKey(QKeyEventTransition* self, int key) {
 	self->setKey(static_cast<int>(key));
 }
 
-int QKeyEventTransition_ModifierMask(QKeyEventTransition* self) {
-	Qt::KeyboardModifiers ret = const_cast<const QKeyEventTransition*>(self)->modifierMask();
+int QKeyEventTransition_ModifierMask(const QKeyEventTransition* self) {
+	Qt::KeyboardModifiers ret = self->modifierMask();
 	return static_cast<int>(ret);
 }
 

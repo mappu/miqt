@@ -22,8 +22,8 @@ QVariantAnimation* QVariantAnimation_new2(QObject* parent) {
 	return new QVariantAnimation(parent);
 }
 
-QMetaObject* QVariantAnimation_MetaObject(QVariantAnimation* self) {
-	return (QMetaObject*) const_cast<const QVariantAnimation*>(self)->metaObject();
+QMetaObject* QVariantAnimation_MetaObject(const QVariantAnimation* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QVariantAnimation_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -44,8 +44,8 @@ void QVariantAnimation_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-QVariant* QVariantAnimation_StartValue(QVariantAnimation* self) {
-	QVariant ret = const_cast<const QVariantAnimation*>(self)->startValue();
+QVariant* QVariantAnimation_StartValue(const QVariantAnimation* self) {
+	QVariant ret = self->startValue();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVariant*>(new QVariant(ret));
 }
@@ -54,8 +54,8 @@ void QVariantAnimation_SetStartValue(QVariantAnimation* self, QVariant* value) {
 	self->setStartValue(*value);
 }
 
-QVariant* QVariantAnimation_EndValue(QVariantAnimation* self) {
-	QVariant ret = const_cast<const QVariantAnimation*>(self)->endValue();
+QVariant* QVariantAnimation_EndValue(const QVariantAnimation* self) {
+	QVariant ret = self->endValue();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVariant*>(new QVariant(ret));
 }
@@ -64,8 +64,8 @@ void QVariantAnimation_SetEndValue(QVariantAnimation* self, QVariant* value) {
 	self->setEndValue(*value);
 }
 
-QVariant* QVariantAnimation_KeyValueAt(QVariantAnimation* self, double step) {
-	QVariant ret = const_cast<const QVariantAnimation*>(self)->keyValueAt(static_cast<qreal>(step));
+QVariant* QVariantAnimation_KeyValueAt(const QVariantAnimation* self, double step) {
+	QVariant ret = self->keyValueAt(static_cast<qreal>(step));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVariant*>(new QVariant(ret));
 }
@@ -74,22 +74,22 @@ void QVariantAnimation_SetKeyValueAt(QVariantAnimation* self, double step, QVari
 	self->setKeyValueAt(static_cast<qreal>(step), *value);
 }
 
-QVariant* QVariantAnimation_CurrentValue(QVariantAnimation* self) {
-	QVariant ret = const_cast<const QVariantAnimation*>(self)->currentValue();
+QVariant* QVariantAnimation_CurrentValue(const QVariantAnimation* self) {
+	QVariant ret = self->currentValue();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVariant*>(new QVariant(ret));
 }
 
-int QVariantAnimation_Duration(QVariantAnimation* self) {
-	return const_cast<const QVariantAnimation*>(self)->duration();
+int QVariantAnimation_Duration(const QVariantAnimation* self) {
+	return self->duration();
 }
 
 void QVariantAnimation_SetDuration(QVariantAnimation* self, int msecs) {
 	self->setDuration(static_cast<int>(msecs));
 }
 
-QEasingCurve* QVariantAnimation_EasingCurve(QVariantAnimation* self) {
-	QEasingCurve ret = const_cast<const QVariantAnimation*>(self)->easingCurve();
+QEasingCurve* QVariantAnimation_EasingCurve(const QVariantAnimation* self) {
+	QEasingCurve ret = self->easingCurve();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QEasingCurve*>(new QEasingCurve(ret));
 }

@@ -18,8 +18,8 @@ QTextList* QTextList_new(QTextDocument* doc) {
 	return new QTextList(doc);
 }
 
-QMetaObject* QTextList_MetaObject(QTextList* self) {
-	return (QMetaObject*) const_cast<const QTextList*>(self)->metaObject();
+QMetaObject* QTextList_MetaObject(const QTextList* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QTextList_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -40,26 +40,26 @@ void QTextList_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-int QTextList_Count(QTextList* self) {
-	return const_cast<const QTextList*>(self)->count();
+int QTextList_Count(const QTextList* self) {
+	return self->count();
 }
 
-bool QTextList_IsEmpty(QTextList* self) {
-	return const_cast<const QTextList*>(self)->isEmpty();
+bool QTextList_IsEmpty(const QTextList* self) {
+	return self->isEmpty();
 }
 
-QTextBlock* QTextList_Item(QTextList* self, int i) {
-	QTextBlock ret = const_cast<const QTextList*>(self)->item(static_cast<int>(i));
+QTextBlock* QTextList_Item(const QTextList* self, int i) {
+	QTextBlock ret = self->item(static_cast<int>(i));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QTextBlock*>(new QTextBlock(ret));
 }
 
-int QTextList_ItemNumber(QTextList* self, QTextBlock* param1) {
-	return const_cast<const QTextList*>(self)->itemNumber(*param1);
+int QTextList_ItemNumber(const QTextList* self, QTextBlock* param1) {
+	return self->itemNumber(*param1);
 }
 
-void QTextList_ItemText(QTextList* self, QTextBlock* param1, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QTextList*>(self)->itemText(*param1);
+void QTextList_ItemText(const QTextList* self, QTextBlock* param1, char** _out, int* _out_Strlen) {
+	QString ret = self->itemText(*param1);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -83,8 +83,8 @@ void QTextList_SetFormat(QTextList* self, QTextListFormat* format) {
 	self->setFormat(*format);
 }
 
-QTextListFormat* QTextList_Format(QTextList* self) {
-	QTextListFormat ret = const_cast<const QTextList*>(self)->format();
+QTextListFormat* QTextList_Format(const QTextList* self) {
+	QTextListFormat ret = self->format();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QTextListFormat*>(new QTextListFormat(ret));
 }

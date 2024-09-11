@@ -30,42 +30,42 @@ QAccessibleWidget* QAccessibleWidget_new3(QWidget* o, uintptr_t r, const char* n
 	return new QAccessibleWidget(o, static_cast<QAccessible::Role>(r), name_QString);
 }
 
-bool QAccessibleWidget_IsValid(QAccessibleWidget* self) {
-	return const_cast<const QAccessibleWidget*>(self)->isValid();
+bool QAccessibleWidget_IsValid(const QAccessibleWidget* self) {
+	return self->isValid();
 }
 
-QWindow* QAccessibleWidget_Window(QAccessibleWidget* self) {
-	return const_cast<const QAccessibleWidget*>(self)->window();
+QWindow* QAccessibleWidget_Window(const QAccessibleWidget* self) {
+	return self->window();
 }
 
-int QAccessibleWidget_ChildCount(QAccessibleWidget* self) {
-	return const_cast<const QAccessibleWidget*>(self)->childCount();
+int QAccessibleWidget_ChildCount(const QAccessibleWidget* self) {
+	return self->childCount();
 }
 
-int QAccessibleWidget_IndexOfChild(QAccessibleWidget* self, QAccessibleInterface* child) {
-	return const_cast<const QAccessibleWidget*>(self)->indexOfChild(child);
+int QAccessibleWidget_IndexOfChild(const QAccessibleWidget* self, QAccessibleInterface* child) {
+	return self->indexOfChild(child);
 }
 
-QAccessibleInterface* QAccessibleWidget_FocusChild(QAccessibleWidget* self) {
-	return const_cast<const QAccessibleWidget*>(self)->focusChild();
+QAccessibleInterface* QAccessibleWidget_FocusChild(const QAccessibleWidget* self) {
+	return self->focusChild();
 }
 
-QRect* QAccessibleWidget_Rect(QAccessibleWidget* self) {
-	QRect ret = const_cast<const QAccessibleWidget*>(self)->rect();
+QRect* QAccessibleWidget_Rect(const QAccessibleWidget* self) {
+	QRect ret = self->rect();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRect*>(new QRect(ret));
 }
 
-QAccessibleInterface* QAccessibleWidget_Parent(QAccessibleWidget* self) {
-	return const_cast<const QAccessibleWidget*>(self)->parent();
+QAccessibleInterface* QAccessibleWidget_Parent(const QAccessibleWidget* self) {
+	return self->parent();
 }
 
-QAccessibleInterface* QAccessibleWidget_Child(QAccessibleWidget* self, int index) {
-	return const_cast<const QAccessibleWidget*>(self)->child(static_cast<int>(index));
+QAccessibleInterface* QAccessibleWidget_Child(const QAccessibleWidget* self, int index) {
+	return self->child(static_cast<int>(index));
 }
 
-void QAccessibleWidget_Text(QAccessibleWidget* self, uintptr_t t, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QAccessibleWidget*>(self)->text(static_cast<QAccessible::Text>(t));
+void QAccessibleWidget_Text(const QAccessibleWidget* self, uintptr_t t, char** _out, int* _out_Strlen) {
+	QString ret = self->text(static_cast<QAccessible::Text>(t));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -73,31 +73,31 @@ void QAccessibleWidget_Text(QAccessibleWidget* self, uintptr_t t, char** _out, i
 	*_out_Strlen = b.length();
 }
 
-uintptr_t QAccessibleWidget_Role(QAccessibleWidget* self) {
-	QAccessible::Role ret = const_cast<const QAccessibleWidget*>(self)->role();
+uintptr_t QAccessibleWidget_Role(const QAccessibleWidget* self) {
+	QAccessible::Role ret = self->role();
 	return static_cast<uintptr_t>(ret);
 }
 
-QAccessible__State* QAccessibleWidget_State(QAccessibleWidget* self) {
-	QAccessible::State ret = const_cast<const QAccessibleWidget*>(self)->state();
+QAccessible__State* QAccessibleWidget_State(const QAccessibleWidget* self) {
+	QAccessible::State ret = self->state();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QAccessible::State*>(new QAccessible::State(ret));
 }
 
-QColor* QAccessibleWidget_ForegroundColor(QAccessibleWidget* self) {
-	QColor ret = const_cast<const QAccessibleWidget*>(self)->foregroundColor();
+QColor* QAccessibleWidget_ForegroundColor(const QAccessibleWidget* self) {
+	QColor ret = self->foregroundColor();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QColor*>(new QColor(ret));
 }
 
-QColor* QAccessibleWidget_BackgroundColor(QAccessibleWidget* self) {
-	QColor ret = const_cast<const QAccessibleWidget*>(self)->backgroundColor();
+QColor* QAccessibleWidget_BackgroundColor(const QAccessibleWidget* self) {
+	QColor ret = self->backgroundColor();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QColor*>(new QColor(ret));
 }
 
-void QAccessibleWidget_ActionNames(QAccessibleWidget* self, char*** _out, int** _out_Lengths, size_t* _out_len) {
-	QStringList ret = const_cast<const QAccessibleWidget*>(self)->actionNames();
+void QAccessibleWidget_ActionNames(const QAccessibleWidget* self, char*** _out, int** _out_Lengths, size_t* _out_len) {
+	QStringList ret = self->actionNames();
 	// Convert QStringList from C++ memory to manually-managed C memory
 	char** __out = static_cast<char**>(malloc(sizeof(char*) * ret.length()));
 	int* __out_Lengths = static_cast<int*>(malloc(sizeof(int) * ret.length()));
@@ -118,9 +118,9 @@ void QAccessibleWidget_DoAction(QAccessibleWidget* self, const char* actionName,
 	self->doAction(actionName_QString);
 }
 
-void QAccessibleWidget_KeyBindingsForAction(QAccessibleWidget* self, const char* actionName, size_t actionName_Strlen, char*** _out, int** _out_Lengths, size_t* _out_len) {
+void QAccessibleWidget_KeyBindingsForAction(const QAccessibleWidget* self, const char* actionName, size_t actionName_Strlen, char*** _out, int** _out_Lengths, size_t* _out_len) {
 	QString actionName_QString = QString::fromUtf8(actionName, actionName_Strlen);
-	QStringList ret = const_cast<const QAccessibleWidget*>(self)->keyBindingsForAction(actionName_QString);
+	QStringList ret = self->keyBindingsForAction(actionName_QString);
 	// Convert QStringList from C++ memory to manually-managed C memory
 	char** __out = static_cast<char**>(malloc(sizeof(char*) * ret.length()));
 	int* __out_Lengths = static_cast<int*>(malloc(sizeof(int) * ret.length()));

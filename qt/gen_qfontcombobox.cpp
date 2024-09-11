@@ -22,8 +22,8 @@ QFontComboBox* QFontComboBox_new2(QWidget* parent) {
 	return new QFontComboBox(parent);
 }
 
-QMetaObject* QFontComboBox_MetaObject(QFontComboBox* self) {
-	return (QMetaObject*) const_cast<const QFontComboBox*>(self)->metaObject();
+QMetaObject* QFontComboBox_MetaObject(const QFontComboBox* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QFontComboBox_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -48,8 +48,8 @@ void QFontComboBox_SetWritingSystem(QFontComboBox* self, uintptr_t writingSystem
 	self->setWritingSystem(static_cast<QFontDatabase::WritingSystem>(writingSystem));
 }
 
-uintptr_t QFontComboBox_WritingSystem(QFontComboBox* self) {
-	QFontDatabase::WritingSystem ret = const_cast<const QFontComboBox*>(self)->writingSystem();
+uintptr_t QFontComboBox_WritingSystem(const QFontComboBox* self) {
+	QFontDatabase::WritingSystem ret = self->writingSystem();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -57,19 +57,19 @@ void QFontComboBox_SetFontFilters(QFontComboBox* self, int filters) {
 	self->setFontFilters(static_cast<QFontComboBox::FontFilters>(filters));
 }
 
-int QFontComboBox_FontFilters(QFontComboBox* self) {
-	QFontComboBox::FontFilters ret = const_cast<const QFontComboBox*>(self)->fontFilters();
+int QFontComboBox_FontFilters(const QFontComboBox* self) {
+	QFontComboBox::FontFilters ret = self->fontFilters();
 	return static_cast<int>(ret);
 }
 
-QFont* QFontComboBox_CurrentFont(QFontComboBox* self) {
-	QFont ret = const_cast<const QFontComboBox*>(self)->currentFont();
+QFont* QFontComboBox_CurrentFont(const QFontComboBox* self) {
+	QFont ret = self->currentFont();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QFont*>(new QFont(ret));
 }
 
-QSize* QFontComboBox_SizeHint(QFontComboBox* self) {
-	QSize ret = const_cast<const QFontComboBox*>(self)->sizeHint();
+QSize* QFontComboBox_SizeHint(const QFontComboBox* self) {
+	QSize ret = self->sizeHint();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }

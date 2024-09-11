@@ -13,8 +13,8 @@ extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
 }
 
-QMetaObject* QPaintDeviceWindow_MetaObject(QPaintDeviceWindow* self) {
-	return (QMetaObject*) const_cast<const QPaintDeviceWindow*>(self)->metaObject();
+QMetaObject* QPaintDeviceWindow_MetaObject(const QPaintDeviceWindow* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QPaintDeviceWindow_Tr(const char* s, char** _out, int* _out_Strlen) {

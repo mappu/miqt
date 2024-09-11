@@ -23,8 +23,8 @@ QRubberBand* QRubberBand_new2(uintptr_t param1, QWidget* param2) {
 	return new QRubberBand(static_cast<QRubberBand::Shape>(param1), param2);
 }
 
-QMetaObject* QRubberBand_MetaObject(QRubberBand* self) {
-	return (QMetaObject*) const_cast<const QRubberBand*>(self)->metaObject();
+QMetaObject* QRubberBand_MetaObject(const QRubberBand* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QRubberBand_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -45,8 +45,8 @@ void QRubberBand_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-uintptr_t QRubberBand_Shape(QRubberBand* self) {
-	QRubberBand::Shape ret = const_cast<const QRubberBand*>(self)->shape();
+uintptr_t QRubberBand_Shape(const QRubberBand* self) {
+	QRubberBand::Shape ret = self->shape();
 	return static_cast<uintptr_t>(ret);
 }
 

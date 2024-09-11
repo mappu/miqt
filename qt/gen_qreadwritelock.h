@@ -35,13 +35,13 @@ void QReadWriteLock_Delete(QReadWriteLock* self);
 QReadLocker* QReadLocker_new(QReadWriteLock* readWriteLock);
 void QReadLocker_Unlock(QReadLocker* self);
 void QReadLocker_Relock(QReadLocker* self);
-QReadWriteLock* QReadLocker_ReadWriteLock(QReadLocker* self);
+QReadWriteLock* QReadLocker_ReadWriteLock(const QReadLocker* self);
 void QReadLocker_Delete(QReadLocker* self);
 
 QWriteLocker* QWriteLocker_new(QReadWriteLock* readWriteLock);
 void QWriteLocker_Unlock(QWriteLocker* self);
 void QWriteLocker_Relock(QWriteLocker* self);
-QReadWriteLock* QWriteLocker_ReadWriteLock(QWriteLocker* self);
+QReadWriteLock* QWriteLocker_ReadWriteLock(const QWriteLocker* self);
 void QWriteLocker_Delete(QWriteLocker* self);
 
 #ifdef __cplusplus

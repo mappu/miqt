@@ -29,25 +29,25 @@ extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
 }
 
-double QTextItem_Descent(QTextItem* self) {
-	return const_cast<const QTextItem*>(self)->descent();
+double QTextItem_Descent(const QTextItem* self) {
+	return self->descent();
 }
 
-double QTextItem_Ascent(QTextItem* self) {
-	return const_cast<const QTextItem*>(self)->ascent();
+double QTextItem_Ascent(const QTextItem* self) {
+	return self->ascent();
 }
 
-double QTextItem_Width(QTextItem* self) {
-	return const_cast<const QTextItem*>(self)->width();
+double QTextItem_Width(const QTextItem* self) {
+	return self->width();
 }
 
-int QTextItem_RenderFlags(QTextItem* self) {
-	QTextItem::RenderFlags ret = const_cast<const QTextItem*>(self)->renderFlags();
+int QTextItem_RenderFlags(const QTextItem* self) {
+	QTextItem::RenderFlags ret = self->renderFlags();
 	return static_cast<int>(ret);
 }
 
-void QTextItem_Text(QTextItem* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QTextItem*>(self)->text();
+void QTextItem_Text(const QTextItem* self, char** _out, int* _out_Strlen) {
+	QString ret = self->text();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -55,8 +55,8 @@ void QTextItem_Text(QTextItem* self, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-QFont* QTextItem_Font(QTextItem* self) {
-	QFont ret = const_cast<const QTextItem*>(self)->font();
+QFont* QTextItem_Font(const QTextItem* self) {
+	QFont ret = self->font();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QFont*>(new QFont(ret));
 }
@@ -65,8 +65,8 @@ void QTextItem_Delete(QTextItem* self) {
 	delete self;
 }
 
-bool QPaintEngine_IsActive(QPaintEngine* self) {
-	return const_cast<const QPaintEngine*>(self)->isActive();
+bool QPaintEngine_IsActive(const QPaintEngine* self) {
+	return self->isActive();
 }
 
 void QPaintEngine_SetActive(QPaintEngine* self, bool newState) {
@@ -149,16 +149,16 @@ void QPaintEngine_SetPaintDevice(QPaintEngine* self, QPaintDevice* device) {
 	self->setPaintDevice(device);
 }
 
-QPaintDevice* QPaintEngine_PaintDevice(QPaintEngine* self) {
-	return const_cast<const QPaintEngine*>(self)->paintDevice();
+QPaintDevice* QPaintEngine_PaintDevice(const QPaintEngine* self) {
+	return self->paintDevice();
 }
 
 void QPaintEngine_SetSystemClip(QPaintEngine* self, QRegion* baseClip) {
 	self->setSystemClip(*baseClip);
 }
 
-QRegion* QPaintEngine_SystemClip(QPaintEngine* self) {
-	QRegion ret = const_cast<const QPaintEngine*>(self)->systemClip();
+QRegion* QPaintEngine_SystemClip(const QPaintEngine* self) {
+	QRegion ret = self->systemClip();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRegion*>(new QRegion(ret));
 }
@@ -167,20 +167,20 @@ void QPaintEngine_SetSystemRect(QPaintEngine* self, QRect* rect) {
 	self->setSystemRect(*rect);
 }
 
-QRect* QPaintEngine_SystemRect(QPaintEngine* self) {
-	QRect ret = const_cast<const QPaintEngine*>(self)->systemRect();
+QRect* QPaintEngine_SystemRect(const QPaintEngine* self) {
+	QRect ret = self->systemRect();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRect*>(new QRect(ret));
 }
 
-QPoint* QPaintEngine_CoordinateOffset(QPaintEngine* self) {
-	QPoint ret = const_cast<const QPaintEngine*>(self)->coordinateOffset();
+QPoint* QPaintEngine_CoordinateOffset(const QPaintEngine* self) {
+	QPoint ret = self->coordinateOffset();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPoint*>(new QPoint(ret));
 }
 
-uintptr_t QPaintEngine_Type(QPaintEngine* self) {
-	QPaintEngine::Type ret = const_cast<const QPaintEngine*>(self)->type();
+uintptr_t QPaintEngine_Type(const QPaintEngine* self) {
+	QPaintEngine::Type ret = self->type();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -200,20 +200,20 @@ void QPaintEngine_ClearDirty(QPaintEngine* self, int df) {
 	self->clearDirty(static_cast<QPaintEngine::DirtyFlags>(df));
 }
 
-bool QPaintEngine_HasFeature(QPaintEngine* self, int feature) {
-	return const_cast<const QPaintEngine*>(self)->hasFeature(static_cast<QPaintEngine::PaintEngineFeatures>(feature));
+bool QPaintEngine_HasFeature(const QPaintEngine* self, int feature) {
+	return self->hasFeature(static_cast<QPaintEngine::PaintEngineFeatures>(feature));
 }
 
-QPainter* QPaintEngine_Painter(QPaintEngine* self) {
-	return const_cast<const QPaintEngine*>(self)->painter();
+QPainter* QPaintEngine_Painter(const QPaintEngine* self) {
+	return self->painter();
 }
 
 void QPaintEngine_SyncState(QPaintEngine* self) {
 	self->syncState();
 }
 
-bool QPaintEngine_IsExtended(QPaintEngine* self) {
-	return const_cast<const QPaintEngine*>(self)->isExtended();
+bool QPaintEngine_IsExtended(const QPaintEngine* self) {
+	return self->isExtended();
 }
 
 void QPaintEngine_DrawImage4(QPaintEngine* self, QRectF* r, QImage* pm, QRectF* sr, int flags) {
@@ -224,103 +224,103 @@ void QPaintEngine_Delete(QPaintEngine* self) {
 	delete self;
 }
 
-int QPaintEngineState_State(QPaintEngineState* self) {
-	QPaintEngine::DirtyFlags ret = const_cast<const QPaintEngineState*>(self)->state();
+int QPaintEngineState_State(const QPaintEngineState* self) {
+	QPaintEngine::DirtyFlags ret = self->state();
 	return static_cast<int>(ret);
 }
 
-QPen* QPaintEngineState_Pen(QPaintEngineState* self) {
-	QPen ret = const_cast<const QPaintEngineState*>(self)->pen();
+QPen* QPaintEngineState_Pen(const QPaintEngineState* self) {
+	QPen ret = self->pen();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPen*>(new QPen(ret));
 }
 
-QBrush* QPaintEngineState_Brush(QPaintEngineState* self) {
-	QBrush ret = const_cast<const QPaintEngineState*>(self)->brush();
+QBrush* QPaintEngineState_Brush(const QPaintEngineState* self) {
+	QBrush ret = self->brush();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QBrush*>(new QBrush(ret));
 }
 
-QPointF* QPaintEngineState_BrushOrigin(QPaintEngineState* self) {
-	QPointF ret = const_cast<const QPaintEngineState*>(self)->brushOrigin();
+QPointF* QPaintEngineState_BrushOrigin(const QPaintEngineState* self) {
+	QPointF ret = self->brushOrigin();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPointF*>(new QPointF(ret));
 }
 
-QBrush* QPaintEngineState_BackgroundBrush(QPaintEngineState* self) {
-	QBrush ret = const_cast<const QPaintEngineState*>(self)->backgroundBrush();
+QBrush* QPaintEngineState_BackgroundBrush(const QPaintEngineState* self) {
+	QBrush ret = self->backgroundBrush();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QBrush*>(new QBrush(ret));
 }
 
-uintptr_t QPaintEngineState_BackgroundMode(QPaintEngineState* self) {
-	Qt::BGMode ret = const_cast<const QPaintEngineState*>(self)->backgroundMode();
+uintptr_t QPaintEngineState_BackgroundMode(const QPaintEngineState* self) {
+	Qt::BGMode ret = self->backgroundMode();
 	return static_cast<uintptr_t>(ret);
 }
 
-QFont* QPaintEngineState_Font(QPaintEngineState* self) {
-	QFont ret = const_cast<const QPaintEngineState*>(self)->font();
+QFont* QPaintEngineState_Font(const QPaintEngineState* self) {
+	QFont ret = self->font();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QFont*>(new QFont(ret));
 }
 
-QMatrix* QPaintEngineState_Matrix(QPaintEngineState* self) {
-	QMatrix ret = const_cast<const QPaintEngineState*>(self)->matrix();
+QMatrix* QPaintEngineState_Matrix(const QPaintEngineState* self) {
+	QMatrix ret = self->matrix();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QMatrix*>(new QMatrix(ret));
 }
 
-QTransform* QPaintEngineState_Transform(QPaintEngineState* self) {
-	QTransform ret = const_cast<const QPaintEngineState*>(self)->transform();
+QTransform* QPaintEngineState_Transform(const QPaintEngineState* self) {
+	QTransform ret = self->transform();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QTransform*>(new QTransform(ret));
 }
 
-uintptr_t QPaintEngineState_ClipOperation(QPaintEngineState* self) {
-	Qt::ClipOperation ret = const_cast<const QPaintEngineState*>(self)->clipOperation();
+uintptr_t QPaintEngineState_ClipOperation(const QPaintEngineState* self) {
+	Qt::ClipOperation ret = self->clipOperation();
 	return static_cast<uintptr_t>(ret);
 }
 
-QRegion* QPaintEngineState_ClipRegion(QPaintEngineState* self) {
-	QRegion ret = const_cast<const QPaintEngineState*>(self)->clipRegion();
+QRegion* QPaintEngineState_ClipRegion(const QPaintEngineState* self) {
+	QRegion ret = self->clipRegion();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRegion*>(new QRegion(ret));
 }
 
-QPainterPath* QPaintEngineState_ClipPath(QPaintEngineState* self) {
-	QPainterPath ret = const_cast<const QPaintEngineState*>(self)->clipPath();
+QPainterPath* QPaintEngineState_ClipPath(const QPaintEngineState* self) {
+	QPainterPath ret = self->clipPath();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPainterPath*>(new QPainterPath(ret));
 }
 
-bool QPaintEngineState_IsClipEnabled(QPaintEngineState* self) {
-	return const_cast<const QPaintEngineState*>(self)->isClipEnabled();
+bool QPaintEngineState_IsClipEnabled(const QPaintEngineState* self) {
+	return self->isClipEnabled();
 }
 
-int QPaintEngineState_RenderHints(QPaintEngineState* self) {
-	QPainter::RenderHints ret = const_cast<const QPaintEngineState*>(self)->renderHints();
+int QPaintEngineState_RenderHints(const QPaintEngineState* self) {
+	QPainter::RenderHints ret = self->renderHints();
 	return static_cast<int>(ret);
 }
 
-uintptr_t QPaintEngineState_CompositionMode(QPaintEngineState* self) {
-	QPainter::CompositionMode ret = const_cast<const QPaintEngineState*>(self)->compositionMode();
+uintptr_t QPaintEngineState_CompositionMode(const QPaintEngineState* self) {
+	QPainter::CompositionMode ret = self->compositionMode();
 	return static_cast<uintptr_t>(ret);
 }
 
-double QPaintEngineState_Opacity(QPaintEngineState* self) {
-	return const_cast<const QPaintEngineState*>(self)->opacity();
+double QPaintEngineState_Opacity(const QPaintEngineState* self) {
+	return self->opacity();
 }
 
-QPainter* QPaintEngineState_Painter(QPaintEngineState* self) {
-	return const_cast<const QPaintEngineState*>(self)->painter();
+QPainter* QPaintEngineState_Painter(const QPaintEngineState* self) {
+	return self->painter();
 }
 
-bool QPaintEngineState_BrushNeedsResolving(QPaintEngineState* self) {
-	return const_cast<const QPaintEngineState*>(self)->brushNeedsResolving();
+bool QPaintEngineState_BrushNeedsResolving(const QPaintEngineState* self) {
+	return self->brushNeedsResolving();
 }
 
-bool QPaintEngineState_PenNeedsResolving(QPaintEngineState* self) {
-	return const_cast<const QPaintEngineState*>(self)->penNeedsResolving();
+bool QPaintEngineState_PenNeedsResolving(const QPaintEngineState* self) {
+	return self->penNeedsResolving();
 }
 
 void QPaintEngineState_Delete(QPaintEngineState* self) {

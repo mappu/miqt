@@ -29,8 +29,8 @@ bool QCryptographicHash_AddDataWithDevice(QCryptographicHash* self, QIODevice* d
 	return self->addData(device);
 }
 
-QByteArray* QCryptographicHash_Result(QCryptographicHash* self) {
-	QByteArray ret = const_cast<const QCryptographicHash*>(self)->result();
+QByteArray* QCryptographicHash_Result(const QCryptographicHash* self) {
+	QByteArray ret = self->result();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QByteArray*>(new QByteArray(ret));
 }

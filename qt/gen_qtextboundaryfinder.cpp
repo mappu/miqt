@@ -40,17 +40,17 @@ void QTextBoundaryFinder_OperatorAssign(QTextBoundaryFinder* self, QTextBoundary
 	self->operator=(*other);
 }
 
-bool QTextBoundaryFinder_IsValid(QTextBoundaryFinder* self) {
-	return const_cast<const QTextBoundaryFinder*>(self)->isValid();
+bool QTextBoundaryFinder_IsValid(const QTextBoundaryFinder* self) {
+	return self->isValid();
 }
 
-uintptr_t QTextBoundaryFinder_Type(QTextBoundaryFinder* self) {
-	QTextBoundaryFinder::BoundaryType ret = const_cast<const QTextBoundaryFinder*>(self)->type();
+uintptr_t QTextBoundaryFinder_Type(const QTextBoundaryFinder* self) {
+	QTextBoundaryFinder::BoundaryType ret = self->type();
 	return static_cast<uintptr_t>(ret);
 }
 
-void QTextBoundaryFinder_String(QTextBoundaryFinder* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QTextBoundaryFinder*>(self)->string();
+void QTextBoundaryFinder_String(const QTextBoundaryFinder* self, char** _out, int* _out_Strlen) {
+	QString ret = self->string();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -66,8 +66,8 @@ void QTextBoundaryFinder_ToEnd(QTextBoundaryFinder* self) {
 	self->toEnd();
 }
 
-int QTextBoundaryFinder_Position(QTextBoundaryFinder* self) {
-	return const_cast<const QTextBoundaryFinder*>(self)->position();
+int QTextBoundaryFinder_Position(const QTextBoundaryFinder* self) {
+	return self->position();
 }
 
 void QTextBoundaryFinder_SetPosition(QTextBoundaryFinder* self, int position) {
@@ -82,12 +82,12 @@ int QTextBoundaryFinder_ToPreviousBoundary(QTextBoundaryFinder* self) {
 	return self->toPreviousBoundary();
 }
 
-bool QTextBoundaryFinder_IsAtBoundary(QTextBoundaryFinder* self) {
-	return const_cast<const QTextBoundaryFinder*>(self)->isAtBoundary();
+bool QTextBoundaryFinder_IsAtBoundary(const QTextBoundaryFinder* self) {
+	return self->isAtBoundary();
 }
 
-int QTextBoundaryFinder_BoundaryReasons(QTextBoundaryFinder* self) {
-	QTextBoundaryFinder::BoundaryReasons ret = const_cast<const QTextBoundaryFinder*>(self)->boundaryReasons();
+int QTextBoundaryFinder_BoundaryReasons(const QTextBoundaryFinder* self) {
+	QTextBoundaryFinder::BoundaryReasons ret = self->boundaryReasons();
 	return static_cast<int>(ret);
 }
 

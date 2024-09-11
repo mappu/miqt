@@ -51,24 +51,24 @@ void QTextCursor_Swap(QTextCursor* self, QTextCursor* other) {
 	self->swap(*other);
 }
 
-bool QTextCursor_IsNull(QTextCursor* self) {
-	return const_cast<const QTextCursor*>(self)->isNull();
+bool QTextCursor_IsNull(const QTextCursor* self) {
+	return self->isNull();
 }
 
 void QTextCursor_SetPosition(QTextCursor* self, int pos) {
 	self->setPosition(static_cast<int>(pos));
 }
 
-int QTextCursor_Position(QTextCursor* self) {
-	return const_cast<const QTextCursor*>(self)->position();
+int QTextCursor_Position(const QTextCursor* self) {
+	return self->position();
 }
 
-int QTextCursor_PositionInBlock(QTextCursor* self) {
-	return const_cast<const QTextCursor*>(self)->positionInBlock();
+int QTextCursor_PositionInBlock(const QTextCursor* self) {
+	return self->positionInBlock();
 }
 
-int QTextCursor_Anchor(QTextCursor* self) {
-	return const_cast<const QTextCursor*>(self)->anchor();
+int QTextCursor_Anchor(const QTextCursor* self) {
+	return self->anchor();
 }
 
 void QTextCursor_InsertText(QTextCursor* self, const char* text, size_t text_Strlen) {
@@ -85,8 +85,8 @@ bool QTextCursor_MovePosition(QTextCursor* self, uintptr_t op) {
 	return self->movePosition(static_cast<QTextCursor::MoveOperation>(op));
 }
 
-bool QTextCursor_VisualNavigation(QTextCursor* self) {
-	return const_cast<const QTextCursor*>(self)->visualNavigation();
+bool QTextCursor_VisualNavigation(const QTextCursor* self) {
+	return self->visualNavigation();
 }
 
 void QTextCursor_SetVisualNavigation(QTextCursor* self, bool b) {
@@ -97,16 +97,16 @@ void QTextCursor_SetVerticalMovementX(QTextCursor* self, int x) {
 	self->setVerticalMovementX(static_cast<int>(x));
 }
 
-int QTextCursor_VerticalMovementX(QTextCursor* self) {
-	return const_cast<const QTextCursor*>(self)->verticalMovementX();
+int QTextCursor_VerticalMovementX(const QTextCursor* self) {
+	return self->verticalMovementX();
 }
 
 void QTextCursor_SetKeepPositionOnInsert(QTextCursor* self, bool b) {
 	self->setKeepPositionOnInsert(b);
 }
 
-bool QTextCursor_KeepPositionOnInsert(QTextCursor* self) {
-	return const_cast<const QTextCursor*>(self)->keepPositionOnInsert();
+bool QTextCursor_KeepPositionOnInsert(const QTextCursor* self) {
+	return self->keepPositionOnInsert();
 }
 
 void QTextCursor_DeleteChar(QTextCursor* self) {
@@ -121,12 +121,12 @@ void QTextCursor_Select(QTextCursor* self, uintptr_t selection) {
 	self->select(static_cast<QTextCursor::SelectionType>(selection));
 }
 
-bool QTextCursor_HasSelection(QTextCursor* self) {
-	return const_cast<const QTextCursor*>(self)->hasSelection();
+bool QTextCursor_HasSelection(const QTextCursor* self) {
+	return self->hasSelection();
 }
 
-bool QTextCursor_HasComplexSelection(QTextCursor* self) {
-	return const_cast<const QTextCursor*>(self)->hasComplexSelection();
+bool QTextCursor_HasComplexSelection(const QTextCursor* self) {
+	return self->hasComplexSelection();
 }
 
 void QTextCursor_RemoveSelectedText(QTextCursor* self) {
@@ -137,16 +137,16 @@ void QTextCursor_ClearSelection(QTextCursor* self) {
 	self->clearSelection();
 }
 
-int QTextCursor_SelectionStart(QTextCursor* self) {
-	return const_cast<const QTextCursor*>(self)->selectionStart();
+int QTextCursor_SelectionStart(const QTextCursor* self) {
+	return self->selectionStart();
 }
 
-int QTextCursor_SelectionEnd(QTextCursor* self) {
-	return const_cast<const QTextCursor*>(self)->selectionEnd();
+int QTextCursor_SelectionEnd(const QTextCursor* self) {
+	return self->selectionEnd();
 }
 
-void QTextCursor_SelectedText(QTextCursor* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QTextCursor*>(self)->selectedText();
+void QTextCursor_SelectedText(const QTextCursor* self, char** _out, int* _out_Strlen) {
+	QString ret = self->selectedText();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -154,24 +154,24 @@ void QTextCursor_SelectedText(QTextCursor* self, char** _out, int* _out_Strlen) 
 	*_out_Strlen = b.length();
 }
 
-QTextDocumentFragment* QTextCursor_Selection(QTextCursor* self) {
-	QTextDocumentFragment ret = const_cast<const QTextCursor*>(self)->selection();
+QTextDocumentFragment* QTextCursor_Selection(const QTextCursor* self) {
+	QTextDocumentFragment ret = self->selection();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QTextDocumentFragment*>(new QTextDocumentFragment(ret));
 }
 
-void QTextCursor_SelectedTableCells(QTextCursor* self, int* firstRow, int* numRows, int* firstColumn, int* numColumns) {
-	const_cast<const QTextCursor*>(self)->selectedTableCells(static_cast<int*>(firstRow), static_cast<int*>(numRows), static_cast<int*>(firstColumn), static_cast<int*>(numColumns));
+void QTextCursor_SelectedTableCells(const QTextCursor* self, int* firstRow, int* numRows, int* firstColumn, int* numColumns) {
+	self->selectedTableCells(static_cast<int*>(firstRow), static_cast<int*>(numRows), static_cast<int*>(firstColumn), static_cast<int*>(numColumns));
 }
 
-QTextBlock* QTextCursor_Block(QTextCursor* self) {
-	QTextBlock ret = const_cast<const QTextCursor*>(self)->block();
+QTextBlock* QTextCursor_Block(const QTextCursor* self) {
+	QTextBlock ret = self->block();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QTextBlock*>(new QTextBlock(ret));
 }
 
-QTextCharFormat* QTextCursor_CharFormat(QTextCursor* self) {
-	QTextCharFormat ret = const_cast<const QTextCursor*>(self)->charFormat();
+QTextCharFormat* QTextCursor_CharFormat(const QTextCursor* self) {
+	QTextCharFormat ret = self->charFormat();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QTextCharFormat*>(new QTextCharFormat(ret));
 }
@@ -184,8 +184,8 @@ void QTextCursor_MergeCharFormat(QTextCursor* self, QTextCharFormat* modifier) {
 	self->mergeCharFormat(*modifier);
 }
 
-QTextBlockFormat* QTextCursor_BlockFormat(QTextCursor* self) {
-	QTextBlockFormat ret = const_cast<const QTextCursor*>(self)->blockFormat();
+QTextBlockFormat* QTextCursor_BlockFormat(const QTextCursor* self) {
+	QTextBlockFormat ret = self->blockFormat();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QTextBlockFormat*>(new QTextBlockFormat(ret));
 }
@@ -198,8 +198,8 @@ void QTextCursor_MergeBlockFormat(QTextCursor* self, QTextBlockFormat* modifier)
 	self->mergeBlockFormat(*modifier);
 }
 
-QTextCharFormat* QTextCursor_BlockCharFormat(QTextCursor* self) {
-	QTextCharFormat ret = const_cast<const QTextCursor*>(self)->blockCharFormat();
+QTextCharFormat* QTextCursor_BlockCharFormat(const QTextCursor* self) {
+	QTextCharFormat ret = self->blockCharFormat();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QTextCharFormat*>(new QTextCharFormat(ret));
 }
@@ -212,20 +212,20 @@ void QTextCursor_MergeBlockCharFormat(QTextCursor* self, QTextCharFormat* modifi
 	self->mergeBlockCharFormat(*modifier);
 }
 
-bool QTextCursor_AtBlockStart(QTextCursor* self) {
-	return const_cast<const QTextCursor*>(self)->atBlockStart();
+bool QTextCursor_AtBlockStart(const QTextCursor* self) {
+	return self->atBlockStart();
 }
 
-bool QTextCursor_AtBlockEnd(QTextCursor* self) {
-	return const_cast<const QTextCursor*>(self)->atBlockEnd();
+bool QTextCursor_AtBlockEnd(const QTextCursor* self) {
+	return self->atBlockEnd();
 }
 
-bool QTextCursor_AtStart(QTextCursor* self) {
-	return const_cast<const QTextCursor*>(self)->atStart();
+bool QTextCursor_AtStart(const QTextCursor* self) {
+	return self->atStart();
 }
 
-bool QTextCursor_AtEnd(QTextCursor* self) {
-	return const_cast<const QTextCursor*>(self)->atEnd();
+bool QTextCursor_AtEnd(const QTextCursor* self) {
+	return self->atEnd();
 }
 
 void QTextCursor_InsertBlock(QTextCursor* self) {
@@ -256,8 +256,8 @@ QTextList* QTextCursor_CreateListWithStyle(QTextCursor* self, uintptr_t style) {
 	return self->createList(static_cast<QTextListFormat::Style>(style));
 }
 
-QTextList* QTextCursor_CurrentList(QTextCursor* self) {
-	return const_cast<const QTextCursor*>(self)->currentList();
+QTextList* QTextCursor_CurrentList(const QTextCursor* self) {
+	return self->currentList();
 }
 
 QTextTable* QTextCursor_InsertTable(QTextCursor* self, int rows, int cols, QTextTableFormat* format) {
@@ -268,16 +268,16 @@ QTextTable* QTextCursor_InsertTable2(QTextCursor* self, int rows, int cols) {
 	return self->insertTable(static_cast<int>(rows), static_cast<int>(cols));
 }
 
-QTextTable* QTextCursor_CurrentTable(QTextCursor* self) {
-	return const_cast<const QTextCursor*>(self)->currentTable();
+QTextTable* QTextCursor_CurrentTable(const QTextCursor* self) {
+	return self->currentTable();
 }
 
 QTextFrame* QTextCursor_InsertFrame(QTextCursor* self, QTextFrameFormat* format) {
 	return self->insertFrame(*format);
 }
 
-QTextFrame* QTextCursor_CurrentFrame(QTextCursor* self) {
-	return const_cast<const QTextCursor*>(self)->currentFrame();
+QTextFrame* QTextCursor_CurrentFrame(const QTextCursor* self) {
+	return self->currentFrame();
 }
 
 void QTextCursor_InsertFragment(QTextCursor* self, QTextDocumentFragment* fragment) {
@@ -318,44 +318,44 @@ void QTextCursor_EndEditBlock(QTextCursor* self) {
 	self->endEditBlock();
 }
 
-bool QTextCursor_OperatorNotEqual(QTextCursor* self, QTextCursor* rhs) {
-	return const_cast<const QTextCursor*>(self)->operator!=(*rhs);
+bool QTextCursor_OperatorNotEqual(const QTextCursor* self, QTextCursor* rhs) {
+	return self->operator!=(*rhs);
 }
 
-bool QTextCursor_OperatorLesser(QTextCursor* self, QTextCursor* rhs) {
-	return const_cast<const QTextCursor*>(self)->operator<(*rhs);
+bool QTextCursor_OperatorLesser(const QTextCursor* self, QTextCursor* rhs) {
+	return self->operator<(*rhs);
 }
 
-bool QTextCursor_OperatorLesserOrEqual(QTextCursor* self, QTextCursor* rhs) {
-	return const_cast<const QTextCursor*>(self)->operator<=(*rhs);
+bool QTextCursor_OperatorLesserOrEqual(const QTextCursor* self, QTextCursor* rhs) {
+	return self->operator<=(*rhs);
 }
 
-bool QTextCursor_OperatorEqual(QTextCursor* self, QTextCursor* rhs) {
-	return const_cast<const QTextCursor*>(self)->operator==(*rhs);
+bool QTextCursor_OperatorEqual(const QTextCursor* self, QTextCursor* rhs) {
+	return self->operator==(*rhs);
 }
 
-bool QTextCursor_OperatorGreaterOrEqual(QTextCursor* self, QTextCursor* rhs) {
-	return const_cast<const QTextCursor*>(self)->operator>=(*rhs);
+bool QTextCursor_OperatorGreaterOrEqual(const QTextCursor* self, QTextCursor* rhs) {
+	return self->operator>=(*rhs);
 }
 
-bool QTextCursor_OperatorGreater(QTextCursor* self, QTextCursor* rhs) {
-	return const_cast<const QTextCursor*>(self)->operator>(*rhs);
+bool QTextCursor_OperatorGreater(const QTextCursor* self, QTextCursor* rhs) {
+	return self->operator>(*rhs);
 }
 
-bool QTextCursor_IsCopyOf(QTextCursor* self, QTextCursor* other) {
-	return const_cast<const QTextCursor*>(self)->isCopyOf(*other);
+bool QTextCursor_IsCopyOf(const QTextCursor* self, QTextCursor* other) {
+	return self->isCopyOf(*other);
 }
 
-int QTextCursor_BlockNumber(QTextCursor* self) {
-	return const_cast<const QTextCursor*>(self)->blockNumber();
+int QTextCursor_BlockNumber(const QTextCursor* self) {
+	return self->blockNumber();
 }
 
-int QTextCursor_ColumnNumber(QTextCursor* self) {
-	return const_cast<const QTextCursor*>(self)->columnNumber();
+int QTextCursor_ColumnNumber(const QTextCursor* self) {
+	return self->columnNumber();
 }
 
-QTextDocument* QTextCursor_Document(QTextCursor* self) {
-	return const_cast<const QTextCursor*>(self)->document();
+QTextDocument* QTextCursor_Document(const QTextCursor* self) {
+	return self->document();
 }
 
 void QTextCursor_SetPosition2(QTextCursor* self, int pos, uintptr_t mode) {

@@ -20,8 +20,8 @@ QFinalState* QFinalState_new2(QState* parent) {
 	return new QFinalState(parent);
 }
 
-QMetaObject* QFinalState_MetaObject(QFinalState* self) {
-	return (QMetaObject*) const_cast<const QFinalState*>(self)->metaObject();
+QMetaObject* QFinalState_MetaObject(const QFinalState* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QFinalState_Tr(const char* s, char** _out, int* _out_Strlen) {

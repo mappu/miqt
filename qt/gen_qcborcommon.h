@@ -17,7 +17,7 @@ class QCborError;
 typedef struct QCborError QCborError;
 #endif
 
-void QCborError_ToString(QCborError* self, char** _out, int* _out_Strlen);
+void QCborError_ToString(const QCborError* self, char** _out, int* _out_Strlen);
 void QCborError_Delete(QCborError* self);
 
 #ifdef __cplusplus

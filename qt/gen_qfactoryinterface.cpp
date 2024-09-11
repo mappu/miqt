@@ -11,8 +11,8 @@ extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
 }
 
-void QFactoryInterface_Keys(QFactoryInterface* self, char*** _out, int** _out_Lengths, size_t* _out_len) {
-	QStringList ret = const_cast<const QFactoryInterface*>(self)->keys();
+void QFactoryInterface_Keys(const QFactoryInterface* self, char*** _out, int** _out_Lengths, size_t* _out_len) {
+	QStringList ret = self->keys();
 	// Convert QStringList from C++ memory to manually-managed C memory
 	char** __out = static_cast<char**>(malloc(sizeof(char*) * ret.length()));
 	int* __out_Lengths = static_cast<int*>(malloc(sizeof(int) * ret.length()));

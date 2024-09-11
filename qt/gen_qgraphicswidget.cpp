@@ -38,8 +38,8 @@ QGraphicsWidget* QGraphicsWidget_new3(QGraphicsItem* parent, int wFlags) {
 	return new QGraphicsWidget(parent, static_cast<Qt::WindowFlags>(wFlags));
 }
 
-QMetaObject* QGraphicsWidget_MetaObject(QGraphicsWidget* self) {
-	return (QMetaObject*) const_cast<const QGraphicsWidget*>(self)->metaObject();
+QMetaObject* QGraphicsWidget_MetaObject(const QGraphicsWidget* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QGraphicsWidget_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -60,8 +60,8 @@ void QGraphicsWidget_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-QGraphicsLayout* QGraphicsWidget_Layout(QGraphicsWidget* self) {
-	return const_cast<const QGraphicsWidget*>(self)->layout();
+QGraphicsLayout* QGraphicsWidget_Layout(const QGraphicsWidget* self) {
+	return self->layout();
 }
 
 void QGraphicsWidget_SetLayout(QGraphicsWidget* self, QGraphicsLayout* layout) {
@@ -72,8 +72,8 @@ void QGraphicsWidget_AdjustSize(QGraphicsWidget* self) {
 	self->adjustSize();
 }
 
-uintptr_t QGraphicsWidget_LayoutDirection(QGraphicsWidget* self) {
-	Qt::LayoutDirection ret = const_cast<const QGraphicsWidget*>(self)->layoutDirection();
+uintptr_t QGraphicsWidget_LayoutDirection(const QGraphicsWidget* self) {
+	Qt::LayoutDirection ret = self->layoutDirection();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -85,16 +85,16 @@ void QGraphicsWidget_UnsetLayoutDirection(QGraphicsWidget* self) {
 	self->unsetLayoutDirection();
 }
 
-QStyle* QGraphicsWidget_Style(QGraphicsWidget* self) {
-	return const_cast<const QGraphicsWidget*>(self)->style();
+QStyle* QGraphicsWidget_Style(const QGraphicsWidget* self) {
+	return self->style();
 }
 
 void QGraphicsWidget_SetStyle(QGraphicsWidget* self, QStyle* style) {
 	self->setStyle(style);
 }
 
-QFont* QGraphicsWidget_Font(QGraphicsWidget* self) {
-	QFont ret = const_cast<const QGraphicsWidget*>(self)->font();
+QFont* QGraphicsWidget_Font(const QGraphicsWidget* self) {
+	QFont ret = self->font();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QFont*>(new QFont(ret));
 }
@@ -103,8 +103,8 @@ void QGraphicsWidget_SetFont(QGraphicsWidget* self, QFont* font) {
 	self->setFont(*font);
 }
 
-QPalette* QGraphicsWidget_Palette(QGraphicsWidget* self) {
-	QPalette ret = const_cast<const QGraphicsWidget*>(self)->palette();
+QPalette* QGraphicsWidget_Palette(const QGraphicsWidget* self) {
+	QPalette ret = self->palette();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPalette*>(new QPalette(ret));
 }
@@ -113,8 +113,8 @@ void QGraphicsWidget_SetPalette(QGraphicsWidget* self, QPalette* palette) {
 	self->setPalette(*palette);
 }
 
-bool QGraphicsWidget_AutoFillBackground(QGraphicsWidget* self) {
-	return const_cast<const QGraphicsWidget*>(self)->autoFillBackground();
+bool QGraphicsWidget_AutoFillBackground(const QGraphicsWidget* self) {
+	return self->autoFillBackground();
 }
 
 void QGraphicsWidget_SetAutoFillBackground(QGraphicsWidget* self, bool enabled) {
@@ -129,8 +129,8 @@ void QGraphicsWidget_Resize2(QGraphicsWidget* self, double w, double h) {
 	self->resize(static_cast<qreal>(w), static_cast<qreal>(h));
 }
 
-QSizeF* QGraphicsWidget_Size(QGraphicsWidget* self) {
-	QSizeF ret = const_cast<const QGraphicsWidget*>(self)->size();
+QSizeF* QGraphicsWidget_Size(const QGraphicsWidget* self) {
+	QSizeF ret = self->size();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSizeF*>(new QSizeF(ret));
 }
@@ -143,8 +143,8 @@ void QGraphicsWidget_SetGeometry2(QGraphicsWidget* self, double x, double y, dou
 	self->setGeometry(static_cast<qreal>(x), static_cast<qreal>(y), static_cast<qreal>(w), static_cast<qreal>(h));
 }
 
-QRectF* QGraphicsWidget_Rect(QGraphicsWidget* self) {
-	QRectF ret = const_cast<const QGraphicsWidget*>(self)->rect();
+QRectF* QGraphicsWidget_Rect(const QGraphicsWidget* self) {
+	QRectF ret = self->rect();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRectF*>(new QRectF(ret));
 }
@@ -157,8 +157,8 @@ void QGraphicsWidget_SetContentsMarginsWithMargins(QGraphicsWidget* self, QMargi
 	self->setContentsMargins(*margins);
 }
 
-void QGraphicsWidget_GetContentsMargins(QGraphicsWidget* self, double* left, double* top, double* right, double* bottom) {
-	const_cast<const QGraphicsWidget*>(self)->getContentsMargins(static_cast<qreal*>(left), static_cast<qreal*>(top), static_cast<qreal*>(right), static_cast<qreal*>(bottom));
+void QGraphicsWidget_GetContentsMargins(const QGraphicsWidget* self, double* left, double* top, double* right, double* bottom) {
+	self->getContentsMargins(static_cast<qreal*>(left), static_cast<qreal*>(top), static_cast<qreal*>(right), static_cast<qreal*>(bottom));
 }
 
 void QGraphicsWidget_SetWindowFrameMargins(QGraphicsWidget* self, double left, double top, double right, double bottom) {
@@ -169,33 +169,33 @@ void QGraphicsWidget_SetWindowFrameMarginsWithMargins(QGraphicsWidget* self, QMa
 	self->setWindowFrameMargins(*margins);
 }
 
-void QGraphicsWidget_GetWindowFrameMargins(QGraphicsWidget* self, double* left, double* top, double* right, double* bottom) {
-	const_cast<const QGraphicsWidget*>(self)->getWindowFrameMargins(static_cast<qreal*>(left), static_cast<qreal*>(top), static_cast<qreal*>(right), static_cast<qreal*>(bottom));
+void QGraphicsWidget_GetWindowFrameMargins(const QGraphicsWidget* self, double* left, double* top, double* right, double* bottom) {
+	self->getWindowFrameMargins(static_cast<qreal*>(left), static_cast<qreal*>(top), static_cast<qreal*>(right), static_cast<qreal*>(bottom));
 }
 
 void QGraphicsWidget_UnsetWindowFrameMargins(QGraphicsWidget* self) {
 	self->unsetWindowFrameMargins();
 }
 
-QRectF* QGraphicsWidget_WindowFrameGeometry(QGraphicsWidget* self) {
-	QRectF ret = const_cast<const QGraphicsWidget*>(self)->windowFrameGeometry();
+QRectF* QGraphicsWidget_WindowFrameGeometry(const QGraphicsWidget* self) {
+	QRectF ret = self->windowFrameGeometry();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRectF*>(new QRectF(ret));
 }
 
-QRectF* QGraphicsWidget_WindowFrameRect(QGraphicsWidget* self) {
-	QRectF ret = const_cast<const QGraphicsWidget*>(self)->windowFrameRect();
+QRectF* QGraphicsWidget_WindowFrameRect(const QGraphicsWidget* self) {
+	QRectF ret = self->windowFrameRect();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRectF*>(new QRectF(ret));
 }
 
-int QGraphicsWidget_WindowFlags(QGraphicsWidget* self) {
-	Qt::WindowFlags ret = const_cast<const QGraphicsWidget*>(self)->windowFlags();
+int QGraphicsWidget_WindowFlags(const QGraphicsWidget* self) {
+	Qt::WindowFlags ret = self->windowFlags();
 	return static_cast<int>(ret);
 }
 
-uintptr_t QGraphicsWidget_WindowType(QGraphicsWidget* self) {
-	Qt::WindowType ret = const_cast<const QGraphicsWidget*>(self)->windowType();
+uintptr_t QGraphicsWidget_WindowType(const QGraphicsWidget* self) {
+	Qt::WindowType ret = self->windowType();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -203,8 +203,8 @@ void QGraphicsWidget_SetWindowFlags(QGraphicsWidget* self, int wFlags) {
 	self->setWindowFlags(static_cast<Qt::WindowFlags>(wFlags));
 }
 
-bool QGraphicsWidget_IsActiveWindow(QGraphicsWidget* self) {
-	return const_cast<const QGraphicsWidget*>(self)->isActiveWindow();
+bool QGraphicsWidget_IsActiveWindow(const QGraphicsWidget* self) {
+	return self->isActiveWindow();
 }
 
 void QGraphicsWidget_SetWindowTitle(QGraphicsWidget* self, const char* title, size_t title_Strlen) {
@@ -212,8 +212,8 @@ void QGraphicsWidget_SetWindowTitle(QGraphicsWidget* self, const char* title, si
 	self->setWindowTitle(title_QString);
 }
 
-void QGraphicsWidget_WindowTitle(QGraphicsWidget* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QGraphicsWidget*>(self)->windowTitle();
+void QGraphicsWidget_WindowTitle(const QGraphicsWidget* self, char** _out, int* _out_Strlen) {
+	QString ret = self->windowTitle();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -221,8 +221,8 @@ void QGraphicsWidget_WindowTitle(QGraphicsWidget* self, char** _out, int* _out_S
 	*_out_Strlen = b.length();
 }
 
-uintptr_t QGraphicsWidget_FocusPolicy(QGraphicsWidget* self) {
-	Qt::FocusPolicy ret = const_cast<const QGraphicsWidget*>(self)->focusPolicy();
+uintptr_t QGraphicsWidget_FocusPolicy(const QGraphicsWidget* self) {
+	Qt::FocusPolicy ret = self->focusPolicy();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -234,8 +234,8 @@ void QGraphicsWidget_SetTabOrder(QGraphicsWidget* first, QGraphicsWidget* second
 	QGraphicsWidget::setTabOrder(first, second);
 }
 
-QGraphicsWidget* QGraphicsWidget_FocusWidget(QGraphicsWidget* self) {
-	return const_cast<const QGraphicsWidget*>(self)->focusWidget();
+QGraphicsWidget* QGraphicsWidget_FocusWidget(const QGraphicsWidget* self) {
+	return self->focusWidget();
 }
 
 int QGraphicsWidget_GrabShortcut(QGraphicsWidget* self, QKeySequence* sequence) {
@@ -284,8 +284,8 @@ void QGraphicsWidget_RemoveAction(QGraphicsWidget* self, QAction* action) {
 	self->removeAction(action);
 }
 
-void QGraphicsWidget_Actions(QGraphicsWidget* self, QAction*** _out, size_t* _out_len) {
-	QList<QAction*> ret = const_cast<const QGraphicsWidget*>(self)->actions();
+void QGraphicsWidget_Actions(const QGraphicsWidget* self, QAction*** _out, size_t* _out_len) {
+	QList<QAction*> ret = self->actions();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QAction** __out = static_cast<QAction**>(malloc(sizeof(QAction*) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {
@@ -299,12 +299,12 @@ void QGraphicsWidget_SetAttribute(QGraphicsWidget* self, uintptr_t attribute) {
 	self->setAttribute(static_cast<Qt::WidgetAttribute>(attribute));
 }
 
-bool QGraphicsWidget_TestAttribute(QGraphicsWidget* self, uintptr_t attribute) {
-	return const_cast<const QGraphicsWidget*>(self)->testAttribute(static_cast<Qt::WidgetAttribute>(attribute));
+bool QGraphicsWidget_TestAttribute(const QGraphicsWidget* self, uintptr_t attribute) {
+	return self->testAttribute(static_cast<Qt::WidgetAttribute>(attribute));
 }
 
-int QGraphicsWidget_Type(QGraphicsWidget* self) {
-	return const_cast<const QGraphicsWidget*>(self)->type();
+int QGraphicsWidget_Type(const QGraphicsWidget* self) {
+	return self->type();
 }
 
 void QGraphicsWidget_Paint(QGraphicsWidget* self, QPainter* painter, QStyleOptionGraphicsItem* option) {
@@ -315,14 +315,14 @@ void QGraphicsWidget_PaintWindowFrame(QGraphicsWidget* self, QPainter* painter, 
 	self->paintWindowFrame(painter, option);
 }
 
-QRectF* QGraphicsWidget_BoundingRect(QGraphicsWidget* self) {
-	QRectF ret = const_cast<const QGraphicsWidget*>(self)->boundingRect();
+QRectF* QGraphicsWidget_BoundingRect(const QGraphicsWidget* self) {
+	QRectF ret = self->boundingRect();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRectF*>(new QRectF(ret));
 }
 
-QPainterPath* QGraphicsWidget_Shape(QGraphicsWidget* self) {
-	QPainterPath ret = const_cast<const QGraphicsWidget*>(self)->shape();
+QPainterPath* QGraphicsWidget_Shape(const QGraphicsWidget* self) {
+	QPainterPath ret = self->shape();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPainterPath*>(new QPainterPath(ret));
 }

@@ -44,16 +44,16 @@ QSize* QIconEngine_ActualSize(QIconEngine* self, QSize* size, uintptr_t mode, ui
 QPixmap* QIconEngine_Pixmap(QIconEngine* self, QSize* size, uintptr_t mode, uintptr_t state);
 void QIconEngine_AddPixmap(QIconEngine* self, QPixmap* pixmap, uintptr_t mode, uintptr_t state);
 void QIconEngine_AddFile(QIconEngine* self, const char* fileName, size_t fileName_Strlen, QSize* size, uintptr_t mode, uintptr_t state);
-void QIconEngine_Key(QIconEngine* self, char** _out, int* _out_Strlen);
-QIconEngine* QIconEngine_Clone(QIconEngine* self);
+void QIconEngine_Key(const QIconEngine* self, char** _out, int* _out_Strlen);
+QIconEngine* QIconEngine_Clone(const QIconEngine* self);
 bool QIconEngine_Read(QIconEngine* self, QDataStream* in);
-bool QIconEngine_Write(QIconEngine* self, QDataStream* out);
-void QIconEngine_AvailableSizes(QIconEngine* self, QSize*** _out, size_t* _out_len);
-void QIconEngine_IconName(QIconEngine* self, char** _out, int* _out_Strlen);
-bool QIconEngine_IsNull(QIconEngine* self);
+bool QIconEngine_Write(const QIconEngine* self, QDataStream* out);
+void QIconEngine_AvailableSizes(const QIconEngine* self, QSize*** _out, size_t* _out_len);
+void QIconEngine_IconName(const QIconEngine* self, char** _out, int* _out_Strlen);
+bool QIconEngine_IsNull(const QIconEngine* self);
 QPixmap* QIconEngine_ScaledPixmap(QIconEngine* self, QSize* size, uintptr_t mode, uintptr_t state, double scale);
-void QIconEngine_AvailableSizes1(QIconEngine* self, uintptr_t mode, QSize*** _out, size_t* _out_len);
-void QIconEngine_AvailableSizes2(QIconEngine* self, uintptr_t mode, uintptr_t state, QSize*** _out, size_t* _out_len);
+void QIconEngine_AvailableSizes1(const QIconEngine* self, uintptr_t mode, QSize*** _out, size_t* _out_len);
+void QIconEngine_AvailableSizes2(const QIconEngine* self, uintptr_t mode, uintptr_t state, QSize*** _out, size_t* _out_len);
 void QIconEngine_Delete(QIconEngine* self);
 
 QIconEngine__AvailableSizesArgument* QIconEngine__AvailableSizesArgument_new(QIconEngine__AvailableSizesArgument* param1);

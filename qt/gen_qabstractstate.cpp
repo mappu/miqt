@@ -13,8 +13,8 @@ extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
 }
 
-QMetaObject* QAbstractState_MetaObject(QAbstractState* self) {
-	return (QMetaObject*) const_cast<const QAbstractState*>(self)->metaObject();
+QMetaObject* QAbstractState_MetaObject(const QAbstractState* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QAbstractState_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -35,16 +35,16 @@ void QAbstractState_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-QState* QAbstractState_ParentState(QAbstractState* self) {
-	return const_cast<const QAbstractState*>(self)->parentState();
+QState* QAbstractState_ParentState(const QAbstractState* self) {
+	return self->parentState();
 }
 
-QStateMachine* QAbstractState_Machine(QAbstractState* self) {
-	return const_cast<const QAbstractState*>(self)->machine();
+QStateMachine* QAbstractState_Machine(const QAbstractState* self) {
+	return self->machine();
 }
 
-bool QAbstractState_Active(QAbstractState* self) {
-	return const_cast<const QAbstractState*>(self)->active();
+bool QAbstractState_Active(const QAbstractState* self) {
+	return self->active();
 }
 
 void QAbstractState_ActiveChanged(QAbstractState* self, bool active) {

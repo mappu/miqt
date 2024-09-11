@@ -22,11 +22,11 @@ typedef struct QVariant QVariant;
 QScrollerProperties* QScrollerProperties_new();
 QScrollerProperties* QScrollerProperties_new2(QScrollerProperties* sp);
 void QScrollerProperties_OperatorAssign(QScrollerProperties* self, QScrollerProperties* sp);
-bool QScrollerProperties_OperatorEqual(QScrollerProperties* self, QScrollerProperties* sp);
-bool QScrollerProperties_OperatorNotEqual(QScrollerProperties* self, QScrollerProperties* sp);
+bool QScrollerProperties_OperatorEqual(const QScrollerProperties* self, QScrollerProperties* sp);
+bool QScrollerProperties_OperatorNotEqual(const QScrollerProperties* self, QScrollerProperties* sp);
 void QScrollerProperties_SetDefaultScrollerProperties(QScrollerProperties* sp);
 void QScrollerProperties_UnsetDefaultScrollerProperties();
-QVariant* QScrollerProperties_ScrollMetric(QScrollerProperties* self, uintptr_t metric);
+QVariant* QScrollerProperties_ScrollMetric(const QScrollerProperties* self, uintptr_t metric);
 void QScrollerProperties_SetScrollMetric(QScrollerProperties* self, uintptr_t metric, QVariant* value);
 void QScrollerProperties_Delete(QScrollerProperties* self);
 

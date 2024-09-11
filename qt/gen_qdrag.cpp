@@ -19,8 +19,8 @@ QDrag* QDrag_new(QObject* dragSource) {
 	return new QDrag(dragSource);
 }
 
-QMetaObject* QDrag_MetaObject(QDrag* self) {
-	return (QMetaObject*) const_cast<const QDrag*>(self)->metaObject();
+QMetaObject* QDrag_MetaObject(const QDrag* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QDrag_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -45,16 +45,16 @@ void QDrag_SetMimeData(QDrag* self, QMimeData* data) {
 	self->setMimeData(data);
 }
 
-QMimeData* QDrag_MimeData(QDrag* self) {
-	return const_cast<const QDrag*>(self)->mimeData();
+QMimeData* QDrag_MimeData(const QDrag* self) {
+	return self->mimeData();
 }
 
 void QDrag_SetPixmap(QDrag* self, QPixmap* pixmap) {
 	self->setPixmap(*pixmap);
 }
 
-QPixmap* QDrag_Pixmap(QDrag* self) {
-	QPixmap ret = const_cast<const QDrag*>(self)->pixmap();
+QPixmap* QDrag_Pixmap(const QDrag* self) {
+	QPixmap ret = self->pixmap();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPixmap*>(new QPixmap(ret));
 }
@@ -63,18 +63,18 @@ void QDrag_SetHotSpot(QDrag* self, QPoint* hotspot) {
 	self->setHotSpot(*hotspot);
 }
 
-QPoint* QDrag_HotSpot(QDrag* self) {
-	QPoint ret = const_cast<const QDrag*>(self)->hotSpot();
+QPoint* QDrag_HotSpot(const QDrag* self) {
+	QPoint ret = self->hotSpot();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPoint*>(new QPoint(ret));
 }
 
-QObject* QDrag_Source(QDrag* self) {
-	return const_cast<const QDrag*>(self)->source();
+QObject* QDrag_Source(const QDrag* self) {
+	return self->source();
 }
 
-QObject* QDrag_Target(QDrag* self) {
-	return const_cast<const QDrag*>(self)->target();
+QObject* QDrag_Target(const QDrag* self) {
+	return self->target();
 }
 
 uintptr_t QDrag_Start(QDrag* self) {
@@ -96,19 +96,19 @@ void QDrag_SetDragCursor(QDrag* self, QPixmap* cursor, uintptr_t action) {
 	self->setDragCursor(*cursor, static_cast<Qt::DropAction>(action));
 }
 
-QPixmap* QDrag_DragCursor(QDrag* self, uintptr_t action) {
-	QPixmap ret = const_cast<const QDrag*>(self)->dragCursor(static_cast<Qt::DropAction>(action));
+QPixmap* QDrag_DragCursor(const QDrag* self, uintptr_t action) {
+	QPixmap ret = self->dragCursor(static_cast<Qt::DropAction>(action));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPixmap*>(new QPixmap(ret));
 }
 
-int QDrag_SupportedActions(QDrag* self) {
-	Qt::DropActions ret = const_cast<const QDrag*>(self)->supportedActions();
+int QDrag_SupportedActions(const QDrag* self) {
+	Qt::DropActions ret = self->supportedActions();
 	return static_cast<int>(ret);
 }
 
-uintptr_t QDrag_DefaultAction(QDrag* self) {
-	Qt::DropAction ret = const_cast<const QDrag*>(self)->defaultAction();
+uintptr_t QDrag_DefaultAction(const QDrag* self) {
+	Qt::DropAction ret = self->defaultAction();
 	return static_cast<uintptr_t>(ret);
 }
 

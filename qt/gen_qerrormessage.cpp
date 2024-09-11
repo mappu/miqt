@@ -20,8 +20,8 @@ QErrorMessage* QErrorMessage_new2(QWidget* parent) {
 	return new QErrorMessage(parent);
 }
 
-QMetaObject* QErrorMessage_MetaObject(QErrorMessage* self) {
-	return (QMetaObject*) const_cast<const QErrorMessage*>(self)->metaObject();
+QMetaObject* QErrorMessage_MetaObject(const QErrorMessage* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QErrorMessage_Tr(const char* s, char** _out, int* _out_Strlen) {

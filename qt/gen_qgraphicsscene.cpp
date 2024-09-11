@@ -64,8 +64,8 @@ QGraphicsScene* QGraphicsScene_new6(double x, double y, double width, double hei
 	return new QGraphicsScene(static_cast<qreal>(x), static_cast<qreal>(y), static_cast<qreal>(width), static_cast<qreal>(height), parent);
 }
 
-QMetaObject* QGraphicsScene_MetaObject(QGraphicsScene* self) {
-	return (QMetaObject*) const_cast<const QGraphicsScene*>(self)->metaObject();
+QMetaObject* QGraphicsScene_MetaObject(const QGraphicsScene* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QGraphicsScene_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -86,18 +86,18 @@ void QGraphicsScene_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-QRectF* QGraphicsScene_SceneRect(QGraphicsScene* self) {
-	QRectF ret = const_cast<const QGraphicsScene*>(self)->sceneRect();
+QRectF* QGraphicsScene_SceneRect(const QGraphicsScene* self) {
+	QRectF ret = self->sceneRect();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRectF*>(new QRectF(ret));
 }
 
-double QGraphicsScene_Width(QGraphicsScene* self) {
-	return const_cast<const QGraphicsScene*>(self)->width();
+double QGraphicsScene_Width(const QGraphicsScene* self) {
+	return self->width();
 }
 
-double QGraphicsScene_Height(QGraphicsScene* self) {
-	return const_cast<const QGraphicsScene*>(self)->height();
+double QGraphicsScene_Height(const QGraphicsScene* self) {
+	return self->height();
 }
 
 void QGraphicsScene_SetSceneRect(QGraphicsScene* self, QRectF* rect) {
@@ -112,8 +112,8 @@ void QGraphicsScene_Render(QGraphicsScene* self, QPainter* painter) {
 	self->render(painter);
 }
 
-uintptr_t QGraphicsScene_ItemIndexMethod(QGraphicsScene* self) {
-	QGraphicsScene::ItemIndexMethod ret = const_cast<const QGraphicsScene*>(self)->itemIndexMethod();
+uintptr_t QGraphicsScene_ItemIndexMethod(const QGraphicsScene* self) {
+	QGraphicsScene::ItemIndexMethod ret = self->itemIndexMethod();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -121,30 +121,30 @@ void QGraphicsScene_SetItemIndexMethod(QGraphicsScene* self, uintptr_t method) {
 	self->setItemIndexMethod(static_cast<QGraphicsScene::ItemIndexMethod>(method));
 }
 
-bool QGraphicsScene_IsSortCacheEnabled(QGraphicsScene* self) {
-	return const_cast<const QGraphicsScene*>(self)->isSortCacheEnabled();
+bool QGraphicsScene_IsSortCacheEnabled(const QGraphicsScene* self) {
+	return self->isSortCacheEnabled();
 }
 
 void QGraphicsScene_SetSortCacheEnabled(QGraphicsScene* self, bool enabled) {
 	self->setSortCacheEnabled(enabled);
 }
 
-int QGraphicsScene_BspTreeDepth(QGraphicsScene* self) {
-	return const_cast<const QGraphicsScene*>(self)->bspTreeDepth();
+int QGraphicsScene_BspTreeDepth(const QGraphicsScene* self) {
+	return self->bspTreeDepth();
 }
 
 void QGraphicsScene_SetBspTreeDepth(QGraphicsScene* self, int depth) {
 	self->setBspTreeDepth(static_cast<int>(depth));
 }
 
-QRectF* QGraphicsScene_ItemsBoundingRect(QGraphicsScene* self) {
-	QRectF ret = const_cast<const QGraphicsScene*>(self)->itemsBoundingRect();
+QRectF* QGraphicsScene_ItemsBoundingRect(const QGraphicsScene* self) {
+	QRectF ret = self->itemsBoundingRect();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRectF*>(new QRectF(ret));
 }
 
-void QGraphicsScene_Items(QGraphicsScene* self, QGraphicsItem*** _out, size_t* _out_len) {
-	QList<QGraphicsItem*> ret = const_cast<const QGraphicsScene*>(self)->items();
+void QGraphicsScene_Items(const QGraphicsScene* self, QGraphicsItem*** _out, size_t* _out_len) {
+	QList<QGraphicsItem*> ret = self->items();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QGraphicsItem** __out = static_cast<QGraphicsItem**>(malloc(sizeof(QGraphicsItem*) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {
@@ -154,8 +154,8 @@ void QGraphicsScene_Items(QGraphicsScene* self, QGraphicsItem*** _out, size_t* _
 	*_out_len = ret.length();
 }
 
-void QGraphicsScene_ItemsWithPos(QGraphicsScene* self, QPointF* pos, QGraphicsItem*** _out, size_t* _out_len) {
-	QList<QGraphicsItem*> ret = const_cast<const QGraphicsScene*>(self)->items(*pos);
+void QGraphicsScene_ItemsWithPos(const QGraphicsScene* self, QPointF* pos, QGraphicsItem*** _out, size_t* _out_len) {
+	QList<QGraphicsItem*> ret = self->items(*pos);
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QGraphicsItem** __out = static_cast<QGraphicsItem**>(malloc(sizeof(QGraphicsItem*) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {
@@ -165,8 +165,8 @@ void QGraphicsScene_ItemsWithPos(QGraphicsScene* self, QPointF* pos, QGraphicsIt
 	*_out_len = ret.length();
 }
 
-void QGraphicsScene_ItemsWithRect(QGraphicsScene* self, QRectF* rect, QGraphicsItem*** _out, size_t* _out_len) {
-	QList<QGraphicsItem*> ret = const_cast<const QGraphicsScene*>(self)->items(*rect);
+void QGraphicsScene_ItemsWithRect(const QGraphicsScene* self, QRectF* rect, QGraphicsItem*** _out, size_t* _out_len) {
+	QList<QGraphicsItem*> ret = self->items(*rect);
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QGraphicsItem** __out = static_cast<QGraphicsItem**>(malloc(sizeof(QGraphicsItem*) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {
@@ -176,8 +176,8 @@ void QGraphicsScene_ItemsWithRect(QGraphicsScene* self, QRectF* rect, QGraphicsI
 	*_out_len = ret.length();
 }
 
-void QGraphicsScene_ItemsWithPath(QGraphicsScene* self, QPainterPath* path, QGraphicsItem*** _out, size_t* _out_len) {
-	QList<QGraphicsItem*> ret = const_cast<const QGraphicsScene*>(self)->items(*path);
+void QGraphicsScene_ItemsWithPath(const QGraphicsScene* self, QPainterPath* path, QGraphicsItem*** _out, size_t* _out_len) {
+	QList<QGraphicsItem*> ret = self->items(*path);
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QGraphicsItem** __out = static_cast<QGraphicsItem**>(malloc(sizeof(QGraphicsItem*) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {
@@ -187,8 +187,8 @@ void QGraphicsScene_ItemsWithPath(QGraphicsScene* self, QPainterPath* path, QGra
 	*_out_len = ret.length();
 }
 
-void QGraphicsScene_CollidingItems(QGraphicsScene* self, QGraphicsItem* item, QGraphicsItem*** _out, size_t* _out_len) {
-	QList<QGraphicsItem*> ret = const_cast<const QGraphicsScene*>(self)->collidingItems(item);
+void QGraphicsScene_CollidingItems(const QGraphicsScene* self, QGraphicsItem* item, QGraphicsItem*** _out, size_t* _out_len) {
+	QList<QGraphicsItem*> ret = self->collidingItems(item);
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QGraphicsItem** __out = static_cast<QGraphicsItem**>(malloc(sizeof(QGraphicsItem*) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {
@@ -198,12 +198,12 @@ void QGraphicsScene_CollidingItems(QGraphicsScene* self, QGraphicsItem* item, QG
 	*_out_len = ret.length();
 }
 
-QGraphicsItem* QGraphicsScene_ItemAt(QGraphicsScene* self, QPointF* pos, QTransform* deviceTransform) {
-	return const_cast<const QGraphicsScene*>(self)->itemAt(*pos, *deviceTransform);
+QGraphicsItem* QGraphicsScene_ItemAt(const QGraphicsScene* self, QPointF* pos, QTransform* deviceTransform) {
+	return self->itemAt(*pos, *deviceTransform);
 }
 
-void QGraphicsScene_Items2(QGraphicsScene* self, double x, double y, double w, double h, uintptr_t mode, uintptr_t order, QGraphicsItem*** _out, size_t* _out_len) {
-	QList<QGraphicsItem*> ret = const_cast<const QGraphicsScene*>(self)->items(static_cast<qreal>(x), static_cast<qreal>(y), static_cast<qreal>(w), static_cast<qreal>(h), static_cast<Qt::ItemSelectionMode>(mode), static_cast<Qt::SortOrder>(order));
+void QGraphicsScene_Items2(const QGraphicsScene* self, double x, double y, double w, double h, uintptr_t mode, uintptr_t order, QGraphicsItem*** _out, size_t* _out_len) {
+	QList<QGraphicsItem*> ret = self->items(static_cast<qreal>(x), static_cast<qreal>(y), static_cast<qreal>(w), static_cast<qreal>(h), static_cast<Qt::ItemSelectionMode>(mode), static_cast<Qt::SortOrder>(order));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QGraphicsItem** __out = static_cast<QGraphicsItem**>(malloc(sizeof(QGraphicsItem*) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {
@@ -213,12 +213,12 @@ void QGraphicsScene_Items2(QGraphicsScene* self, double x, double y, double w, d
 	*_out_len = ret.length();
 }
 
-QGraphicsItem* QGraphicsScene_ItemAt2(QGraphicsScene* self, double x, double y, QTransform* deviceTransform) {
-	return const_cast<const QGraphicsScene*>(self)->itemAt(static_cast<qreal>(x), static_cast<qreal>(y), *deviceTransform);
+QGraphicsItem* QGraphicsScene_ItemAt2(const QGraphicsScene* self, double x, double y, QTransform* deviceTransform) {
+	return self->itemAt(static_cast<qreal>(x), static_cast<qreal>(y), *deviceTransform);
 }
 
-void QGraphicsScene_SelectedItems(QGraphicsScene* self, QGraphicsItem*** _out, size_t* _out_len) {
-	QList<QGraphicsItem*> ret = const_cast<const QGraphicsScene*>(self)->selectedItems();
+void QGraphicsScene_SelectedItems(const QGraphicsScene* self, QGraphicsItem*** _out, size_t* _out_len) {
+	QList<QGraphicsItem*> ret = self->selectedItems();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QGraphicsItem** __out = static_cast<QGraphicsItem**>(malloc(sizeof(QGraphicsItem*) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {
@@ -228,8 +228,8 @@ void QGraphicsScene_SelectedItems(QGraphicsScene* self, QGraphicsItem*** _out, s
 	*_out_len = ret.length();
 }
 
-QPainterPath* QGraphicsScene_SelectionArea(QGraphicsScene* self) {
-	QPainterPath ret = const_cast<const QGraphicsScene*>(self)->selectionArea();
+QPainterPath* QGraphicsScene_SelectionArea(const QGraphicsScene* self) {
+	QPainterPath ret = self->selectionArea();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPainterPath*>(new QPainterPath(ret));
 }
@@ -313,16 +313,16 @@ void QGraphicsScene_RemoveItem(QGraphicsScene* self, QGraphicsItem* item) {
 	self->removeItem(item);
 }
 
-QGraphicsItem* QGraphicsScene_FocusItem(QGraphicsScene* self) {
-	return const_cast<const QGraphicsScene*>(self)->focusItem();
+QGraphicsItem* QGraphicsScene_FocusItem(const QGraphicsScene* self) {
+	return self->focusItem();
 }
 
 void QGraphicsScene_SetFocusItem(QGraphicsScene* self, QGraphicsItem* item) {
 	self->setFocusItem(item);
 }
 
-bool QGraphicsScene_HasFocus(QGraphicsScene* self) {
-	return const_cast<const QGraphicsScene*>(self)->hasFocus();
+bool QGraphicsScene_HasFocus(const QGraphicsScene* self) {
+	return self->hasFocus();
 }
 
 void QGraphicsScene_SetFocus(QGraphicsScene* self) {
@@ -337,16 +337,16 @@ void QGraphicsScene_SetStickyFocus(QGraphicsScene* self, bool enabled) {
 	self->setStickyFocus(enabled);
 }
 
-bool QGraphicsScene_StickyFocus(QGraphicsScene* self) {
-	return const_cast<const QGraphicsScene*>(self)->stickyFocus();
+bool QGraphicsScene_StickyFocus(const QGraphicsScene* self) {
+	return self->stickyFocus();
 }
 
-QGraphicsItem* QGraphicsScene_MouseGrabberItem(QGraphicsScene* self) {
-	return const_cast<const QGraphicsScene*>(self)->mouseGrabberItem();
+QGraphicsItem* QGraphicsScene_MouseGrabberItem(const QGraphicsScene* self) {
+	return self->mouseGrabberItem();
 }
 
-QBrush* QGraphicsScene_BackgroundBrush(QGraphicsScene* self) {
-	QBrush ret = const_cast<const QGraphicsScene*>(self)->backgroundBrush();
+QBrush* QGraphicsScene_BackgroundBrush(const QGraphicsScene* self) {
+	QBrush ret = self->backgroundBrush();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QBrush*>(new QBrush(ret));
 }
@@ -355,8 +355,8 @@ void QGraphicsScene_SetBackgroundBrush(QGraphicsScene* self, QBrush* brush) {
 	self->setBackgroundBrush(*brush);
 }
 
-QBrush* QGraphicsScene_ForegroundBrush(QGraphicsScene* self) {
-	QBrush ret = const_cast<const QGraphicsScene*>(self)->foregroundBrush();
+QBrush* QGraphicsScene_ForegroundBrush(const QGraphicsScene* self) {
+	QBrush ret = self->foregroundBrush();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QBrush*>(new QBrush(ret));
 }
@@ -365,14 +365,14 @@ void QGraphicsScene_SetForegroundBrush(QGraphicsScene* self, QBrush* brush) {
 	self->setForegroundBrush(*brush);
 }
 
-QVariant* QGraphicsScene_InputMethodQuery(QGraphicsScene* self, uintptr_t query) {
-	QVariant ret = const_cast<const QGraphicsScene*>(self)->inputMethodQuery(static_cast<Qt::InputMethodQuery>(query));
+QVariant* QGraphicsScene_InputMethodQuery(const QGraphicsScene* self, uintptr_t query) {
+	QVariant ret = self->inputMethodQuery(static_cast<Qt::InputMethodQuery>(query));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVariant*>(new QVariant(ret));
 }
 
-void QGraphicsScene_Views(QGraphicsScene* self, QGraphicsView*** _out, size_t* _out_len) {
-	QList<QGraphicsView*> ret = const_cast<const QGraphicsScene*>(self)->views();
+void QGraphicsScene_Views(const QGraphicsScene* self, QGraphicsView*** _out, size_t* _out_len) {
+	QList<QGraphicsView*> ret = self->views();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QGraphicsView** __out = static_cast<QGraphicsView**>(malloc(sizeof(QGraphicsView*) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {
@@ -390,16 +390,16 @@ void QGraphicsScene_Invalidate(QGraphicsScene* self, double x, double y, double 
 	self->invalidate(static_cast<qreal>(x), static_cast<qreal>(y), static_cast<qreal>(w), static_cast<qreal>(h));
 }
 
-QStyle* QGraphicsScene_Style(QGraphicsScene* self) {
-	return const_cast<const QGraphicsScene*>(self)->style();
+QStyle* QGraphicsScene_Style(const QGraphicsScene* self) {
+	return self->style();
 }
 
 void QGraphicsScene_SetStyle(QGraphicsScene* self, QStyle* style) {
 	self->setStyle(style);
 }
 
-QFont* QGraphicsScene_Font(QGraphicsScene* self) {
-	QFont ret = const_cast<const QGraphicsScene*>(self)->font();
+QFont* QGraphicsScene_Font(const QGraphicsScene* self) {
+	QFont ret = self->font();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QFont*>(new QFont(ret));
 }
@@ -408,8 +408,8 @@ void QGraphicsScene_SetFont(QGraphicsScene* self, QFont* font) {
 	self->setFont(*font);
 }
 
-QPalette* QGraphicsScene_Palette(QGraphicsScene* self) {
-	QPalette ret = const_cast<const QGraphicsScene*>(self)->palette();
+QPalette* QGraphicsScene_Palette(const QGraphicsScene* self) {
+	QPalette ret = self->palette();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPalette*>(new QPalette(ret));
 }
@@ -418,20 +418,20 @@ void QGraphicsScene_SetPalette(QGraphicsScene* self, QPalette* palette) {
 	self->setPalette(*palette);
 }
 
-bool QGraphicsScene_IsActive(QGraphicsScene* self) {
-	return const_cast<const QGraphicsScene*>(self)->isActive();
+bool QGraphicsScene_IsActive(const QGraphicsScene* self) {
+	return self->isActive();
 }
 
-QGraphicsItem* QGraphicsScene_ActivePanel(QGraphicsScene* self) {
-	return const_cast<const QGraphicsScene*>(self)->activePanel();
+QGraphicsItem* QGraphicsScene_ActivePanel(const QGraphicsScene* self) {
+	return self->activePanel();
 }
 
 void QGraphicsScene_SetActivePanel(QGraphicsScene* self, QGraphicsItem* item) {
 	self->setActivePanel(item);
 }
 
-QGraphicsWidget* QGraphicsScene_ActiveWindow(QGraphicsScene* self) {
-	return const_cast<const QGraphicsScene*>(self)->activeWindow();
+QGraphicsWidget* QGraphicsScene_ActiveWindow(const QGraphicsScene* self) {
+	return self->activeWindow();
 }
 
 void QGraphicsScene_SetActiveWindow(QGraphicsScene* self, QGraphicsWidget* widget) {
@@ -442,16 +442,16 @@ bool QGraphicsScene_SendEvent(QGraphicsScene* self, QGraphicsItem* item, QEvent*
 	return self->sendEvent(item, event);
 }
 
-double QGraphicsScene_MinimumRenderSize(QGraphicsScene* self) {
-	return const_cast<const QGraphicsScene*>(self)->minimumRenderSize();
+double QGraphicsScene_MinimumRenderSize(const QGraphicsScene* self) {
+	return self->minimumRenderSize();
 }
 
 void QGraphicsScene_SetMinimumRenderSize(QGraphicsScene* self, double minSize) {
 	self->setMinimumRenderSize(static_cast<qreal>(minSize));
 }
 
-bool QGraphicsScene_FocusOnTouch(QGraphicsScene* self) {
-	return const_cast<const QGraphicsScene*>(self)->focusOnTouch();
+bool QGraphicsScene_FocusOnTouch(const QGraphicsScene* self) {
+	return self->focusOnTouch();
 }
 
 void QGraphicsScene_SetFocusOnTouch(QGraphicsScene* self, bool enabled) {
@@ -571,8 +571,8 @@ void QGraphicsScene_Render4(QGraphicsScene* self, QPainter* painter, QRectF* tar
 	self->render(painter, *target, *source, static_cast<Qt::AspectRatioMode>(aspectRatioMode));
 }
 
-void QGraphicsScene_Items1(QGraphicsScene* self, uintptr_t order, QGraphicsItem*** _out, size_t* _out_len) {
-	QList<QGraphicsItem*> ret = const_cast<const QGraphicsScene*>(self)->items(static_cast<Qt::SortOrder>(order));
+void QGraphicsScene_Items1(const QGraphicsScene* self, uintptr_t order, QGraphicsItem*** _out, size_t* _out_len) {
+	QList<QGraphicsItem*> ret = self->items(static_cast<Qt::SortOrder>(order));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QGraphicsItem** __out = static_cast<QGraphicsItem**>(malloc(sizeof(QGraphicsItem*) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {
@@ -582,8 +582,8 @@ void QGraphicsScene_Items1(QGraphicsScene* self, uintptr_t order, QGraphicsItem*
 	*_out_len = ret.length();
 }
 
-void QGraphicsScene_Items22(QGraphicsScene* self, QPointF* pos, uintptr_t mode, QGraphicsItem*** _out, size_t* _out_len) {
-	QList<QGraphicsItem*> ret = const_cast<const QGraphicsScene*>(self)->items(*pos, static_cast<Qt::ItemSelectionMode>(mode));
+void QGraphicsScene_Items22(const QGraphicsScene* self, QPointF* pos, uintptr_t mode, QGraphicsItem*** _out, size_t* _out_len) {
+	QList<QGraphicsItem*> ret = self->items(*pos, static_cast<Qt::ItemSelectionMode>(mode));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QGraphicsItem** __out = static_cast<QGraphicsItem**>(malloc(sizeof(QGraphicsItem*) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {
@@ -593,8 +593,8 @@ void QGraphicsScene_Items22(QGraphicsScene* self, QPointF* pos, uintptr_t mode, 
 	*_out_len = ret.length();
 }
 
-void QGraphicsScene_Items3(QGraphicsScene* self, QPointF* pos, uintptr_t mode, uintptr_t order, QGraphicsItem*** _out, size_t* _out_len) {
-	QList<QGraphicsItem*> ret = const_cast<const QGraphicsScene*>(self)->items(*pos, static_cast<Qt::ItemSelectionMode>(mode), static_cast<Qt::SortOrder>(order));
+void QGraphicsScene_Items3(const QGraphicsScene* self, QPointF* pos, uintptr_t mode, uintptr_t order, QGraphicsItem*** _out, size_t* _out_len) {
+	QList<QGraphicsItem*> ret = self->items(*pos, static_cast<Qt::ItemSelectionMode>(mode), static_cast<Qt::SortOrder>(order));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QGraphicsItem** __out = static_cast<QGraphicsItem**>(malloc(sizeof(QGraphicsItem*) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {
@@ -604,8 +604,8 @@ void QGraphicsScene_Items3(QGraphicsScene* self, QPointF* pos, uintptr_t mode, u
 	*_out_len = ret.length();
 }
 
-void QGraphicsScene_Items4(QGraphicsScene* self, QPointF* pos, uintptr_t mode, uintptr_t order, QTransform* deviceTransform, QGraphicsItem*** _out, size_t* _out_len) {
-	QList<QGraphicsItem*> ret = const_cast<const QGraphicsScene*>(self)->items(*pos, static_cast<Qt::ItemSelectionMode>(mode), static_cast<Qt::SortOrder>(order), *deviceTransform);
+void QGraphicsScene_Items4(const QGraphicsScene* self, QPointF* pos, uintptr_t mode, uintptr_t order, QTransform* deviceTransform, QGraphicsItem*** _out, size_t* _out_len) {
+	QList<QGraphicsItem*> ret = self->items(*pos, static_cast<Qt::ItemSelectionMode>(mode), static_cast<Qt::SortOrder>(order), *deviceTransform);
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QGraphicsItem** __out = static_cast<QGraphicsItem**>(malloc(sizeof(QGraphicsItem*) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {
@@ -615,8 +615,8 @@ void QGraphicsScene_Items4(QGraphicsScene* self, QPointF* pos, uintptr_t mode, u
 	*_out_len = ret.length();
 }
 
-void QGraphicsScene_Items23(QGraphicsScene* self, QRectF* rect, uintptr_t mode, QGraphicsItem*** _out, size_t* _out_len) {
-	QList<QGraphicsItem*> ret = const_cast<const QGraphicsScene*>(self)->items(*rect, static_cast<Qt::ItemSelectionMode>(mode));
+void QGraphicsScene_Items23(const QGraphicsScene* self, QRectF* rect, uintptr_t mode, QGraphicsItem*** _out, size_t* _out_len) {
+	QList<QGraphicsItem*> ret = self->items(*rect, static_cast<Qt::ItemSelectionMode>(mode));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QGraphicsItem** __out = static_cast<QGraphicsItem**>(malloc(sizeof(QGraphicsItem*) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {
@@ -626,8 +626,8 @@ void QGraphicsScene_Items23(QGraphicsScene* self, QRectF* rect, uintptr_t mode, 
 	*_out_len = ret.length();
 }
 
-void QGraphicsScene_Items32(QGraphicsScene* self, QRectF* rect, uintptr_t mode, uintptr_t order, QGraphicsItem*** _out, size_t* _out_len) {
-	QList<QGraphicsItem*> ret = const_cast<const QGraphicsScene*>(self)->items(*rect, static_cast<Qt::ItemSelectionMode>(mode), static_cast<Qt::SortOrder>(order));
+void QGraphicsScene_Items32(const QGraphicsScene* self, QRectF* rect, uintptr_t mode, uintptr_t order, QGraphicsItem*** _out, size_t* _out_len) {
+	QList<QGraphicsItem*> ret = self->items(*rect, static_cast<Qt::ItemSelectionMode>(mode), static_cast<Qt::SortOrder>(order));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QGraphicsItem** __out = static_cast<QGraphicsItem**>(malloc(sizeof(QGraphicsItem*) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {
@@ -637,8 +637,8 @@ void QGraphicsScene_Items32(QGraphicsScene* self, QRectF* rect, uintptr_t mode, 
 	*_out_len = ret.length();
 }
 
-void QGraphicsScene_Items42(QGraphicsScene* self, QRectF* rect, uintptr_t mode, uintptr_t order, QTransform* deviceTransform, QGraphicsItem*** _out, size_t* _out_len) {
-	QList<QGraphicsItem*> ret = const_cast<const QGraphicsScene*>(self)->items(*rect, static_cast<Qt::ItemSelectionMode>(mode), static_cast<Qt::SortOrder>(order), *deviceTransform);
+void QGraphicsScene_Items42(const QGraphicsScene* self, QRectF* rect, uintptr_t mode, uintptr_t order, QTransform* deviceTransform, QGraphicsItem*** _out, size_t* _out_len) {
+	QList<QGraphicsItem*> ret = self->items(*rect, static_cast<Qt::ItemSelectionMode>(mode), static_cast<Qt::SortOrder>(order), *deviceTransform);
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QGraphicsItem** __out = static_cast<QGraphicsItem**>(malloc(sizeof(QGraphicsItem*) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {
@@ -648,8 +648,8 @@ void QGraphicsScene_Items42(QGraphicsScene* self, QRectF* rect, uintptr_t mode, 
 	*_out_len = ret.length();
 }
 
-void QGraphicsScene_Items25(QGraphicsScene* self, QPainterPath* path, uintptr_t mode, QGraphicsItem*** _out, size_t* _out_len) {
-	QList<QGraphicsItem*> ret = const_cast<const QGraphicsScene*>(self)->items(*path, static_cast<Qt::ItemSelectionMode>(mode));
+void QGraphicsScene_Items25(const QGraphicsScene* self, QPainterPath* path, uintptr_t mode, QGraphicsItem*** _out, size_t* _out_len) {
+	QList<QGraphicsItem*> ret = self->items(*path, static_cast<Qt::ItemSelectionMode>(mode));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QGraphicsItem** __out = static_cast<QGraphicsItem**>(malloc(sizeof(QGraphicsItem*) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {
@@ -659,8 +659,8 @@ void QGraphicsScene_Items25(QGraphicsScene* self, QPainterPath* path, uintptr_t 
 	*_out_len = ret.length();
 }
 
-void QGraphicsScene_Items34(QGraphicsScene* self, QPainterPath* path, uintptr_t mode, uintptr_t order, QGraphicsItem*** _out, size_t* _out_len) {
-	QList<QGraphicsItem*> ret = const_cast<const QGraphicsScene*>(self)->items(*path, static_cast<Qt::ItemSelectionMode>(mode), static_cast<Qt::SortOrder>(order));
+void QGraphicsScene_Items34(const QGraphicsScene* self, QPainterPath* path, uintptr_t mode, uintptr_t order, QGraphicsItem*** _out, size_t* _out_len) {
+	QList<QGraphicsItem*> ret = self->items(*path, static_cast<Qt::ItemSelectionMode>(mode), static_cast<Qt::SortOrder>(order));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QGraphicsItem** __out = static_cast<QGraphicsItem**>(malloc(sizeof(QGraphicsItem*) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {
@@ -670,8 +670,8 @@ void QGraphicsScene_Items34(QGraphicsScene* self, QPainterPath* path, uintptr_t 
 	*_out_len = ret.length();
 }
 
-void QGraphicsScene_Items44(QGraphicsScene* self, QPainterPath* path, uintptr_t mode, uintptr_t order, QTransform* deviceTransform, QGraphicsItem*** _out, size_t* _out_len) {
-	QList<QGraphicsItem*> ret = const_cast<const QGraphicsScene*>(self)->items(*path, static_cast<Qt::ItemSelectionMode>(mode), static_cast<Qt::SortOrder>(order), *deviceTransform);
+void QGraphicsScene_Items44(const QGraphicsScene* self, QPainterPath* path, uintptr_t mode, uintptr_t order, QTransform* deviceTransform, QGraphicsItem*** _out, size_t* _out_len) {
+	QList<QGraphicsItem*> ret = self->items(*path, static_cast<Qt::ItemSelectionMode>(mode), static_cast<Qt::SortOrder>(order), *deviceTransform);
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QGraphicsItem** __out = static_cast<QGraphicsItem**>(malloc(sizeof(QGraphicsItem*) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {
@@ -681,8 +681,8 @@ void QGraphicsScene_Items44(QGraphicsScene* self, QPainterPath* path, uintptr_t 
 	*_out_len = ret.length();
 }
 
-void QGraphicsScene_CollidingItems2(QGraphicsScene* self, QGraphicsItem* item, uintptr_t mode, QGraphicsItem*** _out, size_t* _out_len) {
-	QList<QGraphicsItem*> ret = const_cast<const QGraphicsScene*>(self)->collidingItems(item, static_cast<Qt::ItemSelectionMode>(mode));
+void QGraphicsScene_CollidingItems2(const QGraphicsScene* self, QGraphicsItem* item, uintptr_t mode, QGraphicsItem*** _out, size_t* _out_len) {
+	QList<QGraphicsItem*> ret = self->collidingItems(item, static_cast<Qt::ItemSelectionMode>(mode));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QGraphicsItem** __out = static_cast<QGraphicsItem**>(malloc(sizeof(QGraphicsItem*) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {
@@ -692,8 +692,8 @@ void QGraphicsScene_CollidingItems2(QGraphicsScene* self, QGraphicsItem* item, u
 	*_out_len = ret.length();
 }
 
-void QGraphicsScene_Items7(QGraphicsScene* self, double x, double y, double w, double h, uintptr_t mode, uintptr_t order, QTransform* deviceTransform, QGraphicsItem*** _out, size_t* _out_len) {
-	QList<QGraphicsItem*> ret = const_cast<const QGraphicsScene*>(self)->items(static_cast<qreal>(x), static_cast<qreal>(y), static_cast<qreal>(w), static_cast<qreal>(h), static_cast<Qt::ItemSelectionMode>(mode), static_cast<Qt::SortOrder>(order), *deviceTransform);
+void QGraphicsScene_Items7(const QGraphicsScene* self, double x, double y, double w, double h, uintptr_t mode, uintptr_t order, QTransform* deviceTransform, QGraphicsItem*** _out, size_t* _out_len) {
+	QList<QGraphicsItem*> ret = self->items(static_cast<qreal>(x), static_cast<qreal>(y), static_cast<qreal>(w), static_cast<qreal>(h), static_cast<Qt::ItemSelectionMode>(mode), static_cast<Qt::SortOrder>(order), *deviceTransform);
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QGraphicsItem** __out = static_cast<QGraphicsItem**>(malloc(sizeof(QGraphicsItem*) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {

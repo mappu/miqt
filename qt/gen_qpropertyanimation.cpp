@@ -29,8 +29,8 @@ QPropertyAnimation* QPropertyAnimation_new4(QObject* target, QByteArray* propert
 	return new QPropertyAnimation(target, *propertyName, parent);
 }
 
-QMetaObject* QPropertyAnimation_MetaObject(QPropertyAnimation* self) {
-	return (QMetaObject*) const_cast<const QPropertyAnimation*>(self)->metaObject();
+QMetaObject* QPropertyAnimation_MetaObject(const QPropertyAnimation* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QPropertyAnimation_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -51,16 +51,16 @@ void QPropertyAnimation_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-QObject* QPropertyAnimation_TargetObject(QPropertyAnimation* self) {
-	return const_cast<const QPropertyAnimation*>(self)->targetObject();
+QObject* QPropertyAnimation_TargetObject(const QPropertyAnimation* self) {
+	return self->targetObject();
 }
 
 void QPropertyAnimation_SetTargetObject(QPropertyAnimation* self, QObject* target) {
 	self->setTargetObject(target);
 }
 
-QByteArray* QPropertyAnimation_PropertyName(QPropertyAnimation* self) {
-	QByteArray ret = const_cast<const QPropertyAnimation*>(self)->propertyName();
+QByteArray* QPropertyAnimation_PropertyName(const QPropertyAnimation* self) {
+	QByteArray ret = self->propertyName();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QByteArray*>(new QByteArray(ret));
 }

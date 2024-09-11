@@ -23,11 +23,11 @@ typedef struct QTextBlock QTextBlock;
 typedef struct QTextDocument QTextDocument;
 #endif
 
-QMetaObject* QSyntaxHighlighter_MetaObject(QSyntaxHighlighter* self);
+QMetaObject* QSyntaxHighlighter_MetaObject(const QSyntaxHighlighter* self);
 void QSyntaxHighlighter_Tr(const char* s, char** _out, int* _out_Strlen);
 void QSyntaxHighlighter_TrUtf8(const char* s, char** _out, int* _out_Strlen);
 void QSyntaxHighlighter_SetDocument(QSyntaxHighlighter* self, QTextDocument* doc);
-QTextDocument* QSyntaxHighlighter_Document(QSyntaxHighlighter* self);
+QTextDocument* QSyntaxHighlighter_Document(const QSyntaxHighlighter* self);
 void QSyntaxHighlighter_Rehighlight(QSyntaxHighlighter* self);
 void QSyntaxHighlighter_RehighlightBlock(QSyntaxHighlighter* self, QTextBlock* block);
 void QSyntaxHighlighter_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);

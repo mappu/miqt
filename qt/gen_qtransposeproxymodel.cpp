@@ -24,8 +24,8 @@ QTransposeProxyModel* QTransposeProxyModel_new2(QObject* parent) {
 	return new QTransposeProxyModel(parent);
 }
 
-QMetaObject* QTransposeProxyModel_MetaObject(QTransposeProxyModel* self) {
-	return (QMetaObject*) const_cast<const QTransposeProxyModel*>(self)->metaObject();
+QMetaObject* QTransposeProxyModel_MetaObject(const QTransposeProxyModel* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QTransposeProxyModel_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -50,16 +50,16 @@ void QTransposeProxyModel_SetSourceModel(QTransposeProxyModel* self, QAbstractIt
 	self->setSourceModel(newSourceModel);
 }
 
-int QTransposeProxyModel_RowCount(QTransposeProxyModel* self) {
-	return const_cast<const QTransposeProxyModel*>(self)->rowCount();
+int QTransposeProxyModel_RowCount(const QTransposeProxyModel* self) {
+	return self->rowCount();
 }
 
-int QTransposeProxyModel_ColumnCount(QTransposeProxyModel* self) {
-	return const_cast<const QTransposeProxyModel*>(self)->columnCount();
+int QTransposeProxyModel_ColumnCount(const QTransposeProxyModel* self) {
+	return self->columnCount();
 }
 
-QVariant* QTransposeProxyModel_HeaderData(QTransposeProxyModel* self, int section, uintptr_t orientation) {
-	QVariant ret = const_cast<const QTransposeProxyModel*>(self)->headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation));
+QVariant* QTransposeProxyModel_HeaderData(const QTransposeProxyModel* self, int section, uintptr_t orientation) {
+	QVariant ret = self->headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVariant*>(new QVariant(ret));
 }
@@ -68,32 +68,32 @@ bool QTransposeProxyModel_SetHeaderData(QTransposeProxyModel* self, int section,
 	return self->setHeaderData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), *value);
 }
 
-QSize* QTransposeProxyModel_Span(QTransposeProxyModel* self, QModelIndex* index) {
-	QSize ret = const_cast<const QTransposeProxyModel*>(self)->span(*index);
+QSize* QTransposeProxyModel_Span(const QTransposeProxyModel* self, QModelIndex* index) {
+	QSize ret = self->span(*index);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
 
-QModelIndex* QTransposeProxyModel_MapFromSource(QTransposeProxyModel* self, QModelIndex* sourceIndex) {
-	QModelIndex ret = const_cast<const QTransposeProxyModel*>(self)->mapFromSource(*sourceIndex);
+QModelIndex* QTransposeProxyModel_MapFromSource(const QTransposeProxyModel* self, QModelIndex* sourceIndex) {
+	QModelIndex ret = self->mapFromSource(*sourceIndex);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QModelIndex*>(new QModelIndex(ret));
 }
 
-QModelIndex* QTransposeProxyModel_MapToSource(QTransposeProxyModel* self, QModelIndex* proxyIndex) {
-	QModelIndex ret = const_cast<const QTransposeProxyModel*>(self)->mapToSource(*proxyIndex);
+QModelIndex* QTransposeProxyModel_MapToSource(const QTransposeProxyModel* self, QModelIndex* proxyIndex) {
+	QModelIndex ret = self->mapToSource(*proxyIndex);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QModelIndex*>(new QModelIndex(ret));
 }
 
-QModelIndex* QTransposeProxyModel_Parent(QTransposeProxyModel* self, QModelIndex* index) {
-	QModelIndex ret = const_cast<const QTransposeProxyModel*>(self)->parent(*index);
+QModelIndex* QTransposeProxyModel_Parent(const QTransposeProxyModel* self, QModelIndex* index) {
+	QModelIndex ret = self->parent(*index);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QModelIndex*>(new QModelIndex(ret));
 }
 
-QModelIndex* QTransposeProxyModel_Index(QTransposeProxyModel* self, int row, int column) {
-	QModelIndex ret = const_cast<const QTransposeProxyModel*>(self)->index(static_cast<int>(row), static_cast<int>(column));
+QModelIndex* QTransposeProxyModel_Index(const QTransposeProxyModel* self, int row, int column) {
+	QModelIndex ret = self->index(static_cast<int>(row), static_cast<int>(column));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QModelIndex*>(new QModelIndex(ret));
 }
@@ -162,16 +162,16 @@ void QTransposeProxyModel_TrUtf83(const char* s, const char* c, int n, char** _o
 	*_out_Strlen = b.length();
 }
 
-int QTransposeProxyModel_RowCount1(QTransposeProxyModel* self, QModelIndex* parent) {
-	return const_cast<const QTransposeProxyModel*>(self)->rowCount(*parent);
+int QTransposeProxyModel_RowCount1(const QTransposeProxyModel* self, QModelIndex* parent) {
+	return self->rowCount(*parent);
 }
 
-int QTransposeProxyModel_ColumnCount1(QTransposeProxyModel* self, QModelIndex* parent) {
-	return const_cast<const QTransposeProxyModel*>(self)->columnCount(*parent);
+int QTransposeProxyModel_ColumnCount1(const QTransposeProxyModel* self, QModelIndex* parent) {
+	return self->columnCount(*parent);
 }
 
-QVariant* QTransposeProxyModel_HeaderData3(QTransposeProxyModel* self, int section, uintptr_t orientation, int role) {
-	QVariant ret = const_cast<const QTransposeProxyModel*>(self)->headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), static_cast<int>(role));
+QVariant* QTransposeProxyModel_HeaderData3(const QTransposeProxyModel* self, int section, uintptr_t orientation, int role) {
+	QVariant ret = self->headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), static_cast<int>(role));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVariant*>(new QVariant(ret));
 }
@@ -180,8 +180,8 @@ bool QTransposeProxyModel_SetHeaderData4(QTransposeProxyModel* self, int section
 	return self->setHeaderData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), *value, static_cast<int>(role));
 }
 
-QModelIndex* QTransposeProxyModel_Index3(QTransposeProxyModel* self, int row, int column, QModelIndex* parent) {
-	QModelIndex ret = const_cast<const QTransposeProxyModel*>(self)->index(static_cast<int>(row), static_cast<int>(column), *parent);
+QModelIndex* QTransposeProxyModel_Index3(const QTransposeProxyModel* self, int row, int column, QModelIndex* parent) {
+	QModelIndex ret = self->index(static_cast<int>(row), static_cast<int>(column), *parent);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QModelIndex*>(new QModelIndex(ret));
 }

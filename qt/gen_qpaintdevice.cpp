@@ -8,64 +8,64 @@ extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
 }
 
-int QPaintDevice_DevType(QPaintDevice* self) {
-	return const_cast<const QPaintDevice*>(self)->devType();
+int QPaintDevice_DevType(const QPaintDevice* self) {
+	return self->devType();
 }
 
-bool QPaintDevice_PaintingActive(QPaintDevice* self) {
-	return const_cast<const QPaintDevice*>(self)->paintingActive();
+bool QPaintDevice_PaintingActive(const QPaintDevice* self) {
+	return self->paintingActive();
 }
 
-QPaintEngine* QPaintDevice_PaintEngine(QPaintDevice* self) {
-	return const_cast<const QPaintDevice*>(self)->paintEngine();
+QPaintEngine* QPaintDevice_PaintEngine(const QPaintDevice* self) {
+	return self->paintEngine();
 }
 
-int QPaintDevice_Width(QPaintDevice* self) {
-	return const_cast<const QPaintDevice*>(self)->width();
+int QPaintDevice_Width(const QPaintDevice* self) {
+	return self->width();
 }
 
-int QPaintDevice_Height(QPaintDevice* self) {
-	return const_cast<const QPaintDevice*>(self)->height();
+int QPaintDevice_Height(const QPaintDevice* self) {
+	return self->height();
 }
 
-int QPaintDevice_WidthMM(QPaintDevice* self) {
-	return const_cast<const QPaintDevice*>(self)->widthMM();
+int QPaintDevice_WidthMM(const QPaintDevice* self) {
+	return self->widthMM();
 }
 
-int QPaintDevice_HeightMM(QPaintDevice* self) {
-	return const_cast<const QPaintDevice*>(self)->heightMM();
+int QPaintDevice_HeightMM(const QPaintDevice* self) {
+	return self->heightMM();
 }
 
-int QPaintDevice_LogicalDpiX(QPaintDevice* self) {
-	return const_cast<const QPaintDevice*>(self)->logicalDpiX();
+int QPaintDevice_LogicalDpiX(const QPaintDevice* self) {
+	return self->logicalDpiX();
 }
 
-int QPaintDevice_LogicalDpiY(QPaintDevice* self) {
-	return const_cast<const QPaintDevice*>(self)->logicalDpiY();
+int QPaintDevice_LogicalDpiY(const QPaintDevice* self) {
+	return self->logicalDpiY();
 }
 
-int QPaintDevice_PhysicalDpiX(QPaintDevice* self) {
-	return const_cast<const QPaintDevice*>(self)->physicalDpiX();
+int QPaintDevice_PhysicalDpiX(const QPaintDevice* self) {
+	return self->physicalDpiX();
 }
 
-int QPaintDevice_PhysicalDpiY(QPaintDevice* self) {
-	return const_cast<const QPaintDevice*>(self)->physicalDpiY();
+int QPaintDevice_PhysicalDpiY(const QPaintDevice* self) {
+	return self->physicalDpiY();
 }
 
-int QPaintDevice_DevicePixelRatio(QPaintDevice* self) {
-	return const_cast<const QPaintDevice*>(self)->devicePixelRatio();
+int QPaintDevice_DevicePixelRatio(const QPaintDevice* self) {
+	return self->devicePixelRatio();
 }
 
-double QPaintDevice_DevicePixelRatioF(QPaintDevice* self) {
-	return const_cast<const QPaintDevice*>(self)->devicePixelRatioF();
+double QPaintDevice_DevicePixelRatioF(const QPaintDevice* self) {
+	return self->devicePixelRatioF();
 }
 
-int QPaintDevice_ColorCount(QPaintDevice* self) {
-	return const_cast<const QPaintDevice*>(self)->colorCount();
+int QPaintDevice_ColorCount(const QPaintDevice* self) {
+	return self->colorCount();
 }
 
-int QPaintDevice_Depth(QPaintDevice* self) {
-	return const_cast<const QPaintDevice*>(self)->depth();
+int QPaintDevice_Depth(const QPaintDevice* self) {
+	return self->depth();
 }
 
 double QPaintDevice_DevicePixelRatioFScale() {

@@ -28,7 +28,7 @@ void QMessageAuthenticationCode_SetKey(QMessageAuthenticationCode* self, QByteAr
 void QMessageAuthenticationCode_AddData(QMessageAuthenticationCode* self, const char* data, int length);
 void QMessageAuthenticationCode_AddDataWithData(QMessageAuthenticationCode* self, QByteArray* data);
 bool QMessageAuthenticationCode_AddDataWithDevice(QMessageAuthenticationCode* self, QIODevice* device);
-QByteArray* QMessageAuthenticationCode_Result(QMessageAuthenticationCode* self);
+QByteArray* QMessageAuthenticationCode_Result(const QMessageAuthenticationCode* self);
 QByteArray* QMessageAuthenticationCode_Hash(QByteArray* message, QByteArray* key, uintptr_t method);
 void QMessageAuthenticationCode_Delete(QMessageAuthenticationCode* self);
 

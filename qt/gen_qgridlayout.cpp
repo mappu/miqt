@@ -24,8 +24,8 @@ QGridLayout* QGridLayout_new2() {
 	return new QGridLayout();
 }
 
-QMetaObject* QGridLayout_MetaObject(QGridLayout* self) {
-	return (QMetaObject*) const_cast<const QGridLayout*>(self)->metaObject();
+QMetaObject* QGridLayout_MetaObject(const QGridLayout* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QGridLayout_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -46,20 +46,20 @@ void QGridLayout_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-QSize* QGridLayout_SizeHint(QGridLayout* self) {
-	QSize ret = const_cast<const QGridLayout*>(self)->sizeHint();
+QSize* QGridLayout_SizeHint(const QGridLayout* self) {
+	QSize ret = self->sizeHint();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
 
-QSize* QGridLayout_MinimumSize(QGridLayout* self) {
-	QSize ret = const_cast<const QGridLayout*>(self)->minimumSize();
+QSize* QGridLayout_MinimumSize(const QGridLayout* self) {
+	QSize ret = self->minimumSize();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
 
-QSize* QGridLayout_MaximumSize(QGridLayout* self) {
-	QSize ret = const_cast<const QGridLayout*>(self)->maximumSize();
+QSize* QGridLayout_MaximumSize(const QGridLayout* self) {
+	QSize ret = self->maximumSize();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
@@ -68,24 +68,24 @@ void QGridLayout_SetHorizontalSpacing(QGridLayout* self, int spacing) {
 	self->setHorizontalSpacing(static_cast<int>(spacing));
 }
 
-int QGridLayout_HorizontalSpacing(QGridLayout* self) {
-	return const_cast<const QGridLayout*>(self)->horizontalSpacing();
+int QGridLayout_HorizontalSpacing(const QGridLayout* self) {
+	return self->horizontalSpacing();
 }
 
 void QGridLayout_SetVerticalSpacing(QGridLayout* self, int spacing) {
 	self->setVerticalSpacing(static_cast<int>(spacing));
 }
 
-int QGridLayout_VerticalSpacing(QGridLayout* self) {
-	return const_cast<const QGridLayout*>(self)->verticalSpacing();
+int QGridLayout_VerticalSpacing(const QGridLayout* self) {
+	return self->verticalSpacing();
 }
 
 void QGridLayout_SetSpacing(QGridLayout* self, int spacing) {
 	self->setSpacing(static_cast<int>(spacing));
 }
 
-int QGridLayout_Spacing(QGridLayout* self) {
-	return const_cast<const QGridLayout*>(self)->spacing();
+int QGridLayout_Spacing(const QGridLayout* self) {
+	return self->spacing();
 }
 
 void QGridLayout_SetRowStretch(QGridLayout* self, int row, int stretch) {
@@ -96,12 +96,12 @@ void QGridLayout_SetColumnStretch(QGridLayout* self, int column, int stretch) {
 	self->setColumnStretch(static_cast<int>(column), static_cast<int>(stretch));
 }
 
-int QGridLayout_RowStretch(QGridLayout* self, int row) {
-	return const_cast<const QGridLayout*>(self)->rowStretch(static_cast<int>(row));
+int QGridLayout_RowStretch(const QGridLayout* self, int row) {
+	return self->rowStretch(static_cast<int>(row));
 }
 
-int QGridLayout_ColumnStretch(QGridLayout* self, int column) {
-	return const_cast<const QGridLayout*>(self)->columnStretch(static_cast<int>(column));
+int QGridLayout_ColumnStretch(const QGridLayout* self, int column) {
+	return self->columnStretch(static_cast<int>(column));
 }
 
 void QGridLayout_SetRowMinimumHeight(QGridLayout* self, int row, int minSize) {
@@ -112,42 +112,42 @@ void QGridLayout_SetColumnMinimumWidth(QGridLayout* self, int column, int minSiz
 	self->setColumnMinimumWidth(static_cast<int>(column), static_cast<int>(minSize));
 }
 
-int QGridLayout_RowMinimumHeight(QGridLayout* self, int row) {
-	return const_cast<const QGridLayout*>(self)->rowMinimumHeight(static_cast<int>(row));
+int QGridLayout_RowMinimumHeight(const QGridLayout* self, int row) {
+	return self->rowMinimumHeight(static_cast<int>(row));
 }
 
-int QGridLayout_ColumnMinimumWidth(QGridLayout* self, int column) {
-	return const_cast<const QGridLayout*>(self)->columnMinimumWidth(static_cast<int>(column));
+int QGridLayout_ColumnMinimumWidth(const QGridLayout* self, int column) {
+	return self->columnMinimumWidth(static_cast<int>(column));
 }
 
-int QGridLayout_ColumnCount(QGridLayout* self) {
-	return const_cast<const QGridLayout*>(self)->columnCount();
+int QGridLayout_ColumnCount(const QGridLayout* self) {
+	return self->columnCount();
 }
 
-int QGridLayout_RowCount(QGridLayout* self) {
-	return const_cast<const QGridLayout*>(self)->rowCount();
+int QGridLayout_RowCount(const QGridLayout* self) {
+	return self->rowCount();
 }
 
-QRect* QGridLayout_CellRect(QGridLayout* self, int row, int column) {
-	QRect ret = const_cast<const QGridLayout*>(self)->cellRect(static_cast<int>(row), static_cast<int>(column));
+QRect* QGridLayout_CellRect(const QGridLayout* self, int row, int column) {
+	QRect ret = self->cellRect(static_cast<int>(row), static_cast<int>(column));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRect*>(new QRect(ret));
 }
 
-bool QGridLayout_HasHeightForWidth(QGridLayout* self) {
-	return const_cast<const QGridLayout*>(self)->hasHeightForWidth();
+bool QGridLayout_HasHeightForWidth(const QGridLayout* self) {
+	return self->hasHeightForWidth();
 }
 
-int QGridLayout_HeightForWidth(QGridLayout* self, int param1) {
-	return const_cast<const QGridLayout*>(self)->heightForWidth(static_cast<int>(param1));
+int QGridLayout_HeightForWidth(const QGridLayout* self, int param1) {
+	return self->heightForWidth(static_cast<int>(param1));
 }
 
-int QGridLayout_MinimumHeightForWidth(QGridLayout* self, int param1) {
-	return const_cast<const QGridLayout*>(self)->minimumHeightForWidth(static_cast<int>(param1));
+int QGridLayout_MinimumHeightForWidth(const QGridLayout* self, int param1) {
+	return self->minimumHeightForWidth(static_cast<int>(param1));
 }
 
-int QGridLayout_ExpandingDirections(QGridLayout* self) {
-	Qt::Orientations ret = const_cast<const QGridLayout*>(self)->expandingDirections();
+int QGridLayout_ExpandingDirections(const QGridLayout* self) {
+	Qt::Orientations ret = self->expandingDirections();
 	return static_cast<int>(ret);
 }
 
@@ -179,25 +179,25 @@ void QGridLayout_SetOriginCorner(QGridLayout* self, uintptr_t originCorner) {
 	self->setOriginCorner(static_cast<Qt::Corner>(originCorner));
 }
 
-uintptr_t QGridLayout_OriginCorner(QGridLayout* self) {
-	Qt::Corner ret = const_cast<const QGridLayout*>(self)->originCorner();
+uintptr_t QGridLayout_OriginCorner(const QGridLayout* self) {
+	Qt::Corner ret = self->originCorner();
 	return static_cast<uintptr_t>(ret);
 }
 
-QLayoutItem* QGridLayout_ItemAt(QGridLayout* self, int index) {
-	return const_cast<const QGridLayout*>(self)->itemAt(static_cast<int>(index));
+QLayoutItem* QGridLayout_ItemAt(const QGridLayout* self, int index) {
+	return self->itemAt(static_cast<int>(index));
 }
 
-QLayoutItem* QGridLayout_ItemAtPosition(QGridLayout* self, int row, int column) {
-	return const_cast<const QGridLayout*>(self)->itemAtPosition(static_cast<int>(row), static_cast<int>(column));
+QLayoutItem* QGridLayout_ItemAtPosition(const QGridLayout* self, int row, int column) {
+	return self->itemAtPosition(static_cast<int>(row), static_cast<int>(column));
 }
 
 QLayoutItem* QGridLayout_TakeAt(QGridLayout* self, int index) {
 	return self->takeAt(static_cast<int>(index));
 }
 
-int QGridLayout_Count(QGridLayout* self) {
-	return const_cast<const QGridLayout*>(self)->count();
+int QGridLayout_Count(const QGridLayout* self) {
+	return self->count();
 }
 
 void QGridLayout_SetGeometry(QGridLayout* self, QRect* geometry) {
@@ -212,8 +212,8 @@ void QGridLayout_SetDefaultPositioning(QGridLayout* self, int n, uintptr_t orien
 	self->setDefaultPositioning(static_cast<int>(n), static_cast<Qt::Orientation>(orient));
 }
 
-void QGridLayout_GetItemPosition(QGridLayout* self, int idx, int* row, int* column, int* rowSpan, int* columnSpan) {
-	const_cast<const QGridLayout*>(self)->getItemPosition(static_cast<int>(idx), static_cast<int*>(row), static_cast<int*>(column), static_cast<int*>(rowSpan), static_cast<int*>(columnSpan));
+void QGridLayout_GetItemPosition(const QGridLayout* self, int idx, int* row, int* column, int* rowSpan, int* columnSpan) {
+	self->getItemPosition(static_cast<int>(idx), static_cast<int*>(row), static_cast<int*>(column), static_cast<int*>(rowSpan), static_cast<int*>(columnSpan));
 }
 
 void QGridLayout_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {

@@ -21,7 +21,7 @@ typedef struct QIconEnginePlugin QIconEnginePlugin;
 typedef struct QMetaObject QMetaObject;
 #endif
 
-QMetaObject* QIconEnginePlugin_MetaObject(QIconEnginePlugin* self);
+QMetaObject* QIconEnginePlugin_MetaObject(const QIconEnginePlugin* self);
 void QIconEnginePlugin_Tr(const char* s, char** _out, int* _out_Strlen);
 void QIconEnginePlugin_TrUtf8(const char* s, char** _out, int* _out_Strlen);
 QIconEngine* QIconEnginePlugin_Create(QIconEnginePlugin* self);

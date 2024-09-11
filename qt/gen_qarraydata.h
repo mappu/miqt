@@ -23,10 +23,10 @@ typedef struct QArrayData QArrayData;
 typedef struct QtPrivate__QContainerImplHelper QtPrivate__QContainerImplHelper;
 #endif
 
-bool QArrayData_IsMutable(QArrayData* self);
-size_t QArrayData_DetachCapacity(QArrayData* self, size_t newSize);
-int QArrayData_DetachFlags(QArrayData* self);
-int QArrayData_CloneFlags(QArrayData* self);
+bool QArrayData_IsMutable(const QArrayData* self);
+size_t QArrayData_DetachCapacity(const QArrayData* self, size_t newSize);
+int QArrayData_DetachFlags(const QArrayData* self);
+int QArrayData_CloneFlags(const QArrayData* self);
 QArrayData* QArrayData_Allocate(size_t objectSize, size_t alignment, size_t capacity);
 QArrayData* QArrayData_ReallocateUnaligned(QArrayData* data, size_t objectSize, size_t newCapacity);
 void QArrayData_Deallocate(QArrayData* data, size_t objectSize, size_t alignment);

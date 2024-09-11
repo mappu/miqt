@@ -37,8 +37,8 @@ bool QMessageAuthenticationCode_AddDataWithDevice(QMessageAuthenticationCode* se
 	return self->addData(device);
 }
 
-QByteArray* QMessageAuthenticationCode_Result(QMessageAuthenticationCode* self) {
-	QByteArray ret = const_cast<const QMessageAuthenticationCode*>(self)->result();
+QByteArray* QMessageAuthenticationCode_Result(const QMessageAuthenticationCode* self) {
+	QByteArray ret = self->result();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QByteArray*>(new QByteArray(ret));
 }

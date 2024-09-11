@@ -33,22 +33,22 @@ typedef struct QRect QRect;
 typedef struct QWindow QWindow;
 #endif
 
-bool QAccessibleObject_IsValid(QAccessibleObject* self);
-QObject* QAccessibleObject_Object(QAccessibleObject* self);
-QRect* QAccessibleObject_Rect(QAccessibleObject* self);
+bool QAccessibleObject_IsValid(const QAccessibleObject* self);
+QObject* QAccessibleObject_Object(const QAccessibleObject* self);
+QRect* QAccessibleObject_Rect(const QAccessibleObject* self);
 void QAccessibleObject_SetText(QAccessibleObject* self, uintptr_t t, const char* text, size_t text_Strlen);
-QAccessibleInterface* QAccessibleObject_ChildAt(QAccessibleObject* self, int x, int y);
+QAccessibleInterface* QAccessibleObject_ChildAt(const QAccessibleObject* self, int x, int y);
 
 QAccessibleApplication* QAccessibleApplication_new();
-QWindow* QAccessibleApplication_Window(QAccessibleApplication* self);
-int QAccessibleApplication_ChildCount(QAccessibleApplication* self);
-int QAccessibleApplication_IndexOfChild(QAccessibleApplication* self, QAccessibleInterface* param1);
-QAccessibleInterface* QAccessibleApplication_FocusChild(QAccessibleApplication* self);
-QAccessibleInterface* QAccessibleApplication_Parent(QAccessibleApplication* self);
-QAccessibleInterface* QAccessibleApplication_Child(QAccessibleApplication* self, int index);
-void QAccessibleApplication_Text(QAccessibleApplication* self, uintptr_t t, char** _out, int* _out_Strlen);
-uintptr_t QAccessibleApplication_Role(QAccessibleApplication* self);
-QAccessible__State* QAccessibleApplication_State(QAccessibleApplication* self);
+QWindow* QAccessibleApplication_Window(const QAccessibleApplication* self);
+int QAccessibleApplication_ChildCount(const QAccessibleApplication* self);
+int QAccessibleApplication_IndexOfChild(const QAccessibleApplication* self, QAccessibleInterface* param1);
+QAccessibleInterface* QAccessibleApplication_FocusChild(const QAccessibleApplication* self);
+QAccessibleInterface* QAccessibleApplication_Parent(const QAccessibleApplication* self);
+QAccessibleInterface* QAccessibleApplication_Child(const QAccessibleApplication* self, int index);
+void QAccessibleApplication_Text(const QAccessibleApplication* self, uintptr_t t, char** _out, int* _out_Strlen);
+uintptr_t QAccessibleApplication_Role(const QAccessibleApplication* self);
+QAccessible__State* QAccessibleApplication_State(const QAccessibleApplication* self);
 void QAccessibleApplication_Delete(QAccessibleApplication* self);
 
 #ifdef __cplusplus

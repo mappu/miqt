@@ -55,8 +55,8 @@ void QCursor_Swap(QCursor* self, QCursor* other) {
 	self->swap(*other);
 }
 
-uintptr_t QCursor_Shape(QCursor* self) {
-	Qt::CursorShape ret = const_cast<const QCursor*>(self)->shape();
+uintptr_t QCursor_Shape(const QCursor* self) {
+	Qt::CursorShape ret = self->shape();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -64,34 +64,34 @@ void QCursor_SetShape(QCursor* self, uintptr_t newShape) {
 	self->setShape(static_cast<Qt::CursorShape>(newShape));
 }
 
-QBitmap* QCursor_Bitmap(QCursor* self) {
-	return (QBitmap*) const_cast<const QCursor*>(self)->bitmap();
+QBitmap* QCursor_Bitmap(const QCursor* self) {
+	return (QBitmap*) self->bitmap();
 }
 
-QBitmap* QCursor_Mask(QCursor* self) {
-	return (QBitmap*) const_cast<const QCursor*>(self)->mask();
+QBitmap* QCursor_Mask(const QCursor* self) {
+	return (QBitmap*) self->mask();
 }
 
-QBitmap* QCursor_BitmapWithQtReturnByValueConstant(QCursor* self, uintptr_t param1) {
-	QBitmap ret = const_cast<const QCursor*>(self)->bitmap(static_cast<Qt::ReturnByValueConstant>(param1));
+QBitmap* QCursor_BitmapWithQtReturnByValueConstant(const QCursor* self, uintptr_t param1) {
+	QBitmap ret = self->bitmap(static_cast<Qt::ReturnByValueConstant>(param1));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QBitmap*>(new QBitmap(ret));
 }
 
-QBitmap* QCursor_MaskWithQtReturnByValueConstant(QCursor* self, uintptr_t param1) {
-	QBitmap ret = const_cast<const QCursor*>(self)->mask(static_cast<Qt::ReturnByValueConstant>(param1));
+QBitmap* QCursor_MaskWithQtReturnByValueConstant(const QCursor* self, uintptr_t param1) {
+	QBitmap ret = self->mask(static_cast<Qt::ReturnByValueConstant>(param1));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QBitmap*>(new QBitmap(ret));
 }
 
-QPixmap* QCursor_Pixmap(QCursor* self) {
-	QPixmap ret = const_cast<const QCursor*>(self)->pixmap();
+QPixmap* QCursor_Pixmap(const QCursor* self) {
+	QPixmap ret = self->pixmap();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPixmap*>(new QPixmap(ret));
 }
 
-QPoint* QCursor_HotSpot(QCursor* self) {
-	QPoint ret = const_cast<const QCursor*>(self)->hotSpot();
+QPoint* QCursor_HotSpot(const QCursor* self) {
+	QPoint ret = self->hotSpot();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPoint*>(new QPoint(ret));
 }

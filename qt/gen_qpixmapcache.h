@@ -41,10 +41,10 @@ void QPixmapCache_Delete(QPixmapCache* self);
 
 QPixmapCache__Key* QPixmapCache__Key_new();
 QPixmapCache__Key* QPixmapCache__Key_new2(QPixmapCache__Key* other);
-bool QPixmapCache__Key_OperatorEqual(QPixmapCache__Key* self, QPixmapCache__Key* key);
-bool QPixmapCache__Key_OperatorNotEqual(QPixmapCache__Key* self, QPixmapCache__Key* key);
+bool QPixmapCache__Key_OperatorEqual(const QPixmapCache__Key* self, QPixmapCache__Key* key);
+bool QPixmapCache__Key_OperatorNotEqual(const QPixmapCache__Key* self, QPixmapCache__Key* key);
 void QPixmapCache__Key_Swap(QPixmapCache__Key* self, QPixmapCache__Key* other);
-bool QPixmapCache__Key_IsValid(QPixmapCache__Key* self);
+bool QPixmapCache__Key_IsValid(const QPixmapCache__Key* self);
 void QPixmapCache__Key_Delete(QPixmapCache__Key* self);
 
 #ifdef __cplusplus

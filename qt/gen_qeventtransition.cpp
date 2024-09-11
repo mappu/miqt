@@ -29,8 +29,8 @@ QEventTransition* QEventTransition_new4(QObject* object, uintptr_t typeVal, QSta
 	return new QEventTransition(object, static_cast<QEvent::Type>(typeVal), sourceState);
 }
 
-QMetaObject* QEventTransition_MetaObject(QEventTransition* self) {
-	return (QMetaObject*) const_cast<const QEventTransition*>(self)->metaObject();
+QMetaObject* QEventTransition_MetaObject(const QEventTransition* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QEventTransition_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -51,16 +51,16 @@ void QEventTransition_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-QObject* QEventTransition_EventSource(QEventTransition* self) {
-	return const_cast<const QEventTransition*>(self)->eventSource();
+QObject* QEventTransition_EventSource(const QEventTransition* self) {
+	return self->eventSource();
 }
 
 void QEventTransition_SetEventSource(QEventTransition* self, QObject* object) {
 	self->setEventSource(object);
 }
 
-uintptr_t QEventTransition_EventType(QEventTransition* self) {
-	QEvent::Type ret = const_cast<const QEventTransition*>(self)->eventType();
+uintptr_t QEventTransition_EventType(const QEventTransition* self) {
+	QEvent::Type ret = self->eventType();
 	return static_cast<uintptr_t>(ret);
 }
 

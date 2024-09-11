@@ -19,16 +19,16 @@ bool QtPrivate__RefCount_SetSharable(QtPrivate__RefCount* self, bool sharable) {
 	return self->setSharable(sharable);
 }
 
-bool QtPrivate__RefCount_IsSharable(QtPrivate__RefCount* self) {
-	return const_cast<const QtPrivate::RefCount*>(self)->isSharable();
+bool QtPrivate__RefCount_IsSharable(const QtPrivate__RefCount* self) {
+	return self->isSharable();
 }
 
-bool QtPrivate__RefCount_IsStatic(QtPrivate__RefCount* self) {
-	return const_cast<const QtPrivate::RefCount*>(self)->isStatic();
+bool QtPrivate__RefCount_IsStatic(const QtPrivate__RefCount* self) {
+	return self->isStatic();
 }
 
-bool QtPrivate__RefCount_IsShared(QtPrivate__RefCount* self) {
-	return const_cast<const QtPrivate::RefCount*>(self)->isShared();
+bool QtPrivate__RefCount_IsShared(const QtPrivate__RefCount* self) {
+	return self->isShared();
 }
 
 void QtPrivate__RefCount_InitializeOwned(QtPrivate__RefCount* self) {

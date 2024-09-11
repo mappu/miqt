@@ -26,8 +26,8 @@ QDataStream* QDataStream_new4(QByteArray* param1) {
 	return new QDataStream(*param1);
 }
 
-QIODevice* QDataStream_Device(QDataStream* self) {
-	return const_cast<const QDataStream*>(self)->device();
+QIODevice* QDataStream_Device(const QDataStream* self) {
+	return self->device();
 }
 
 void QDataStream_SetDevice(QDataStream* self, QIODevice* device) {
@@ -38,12 +38,12 @@ void QDataStream_UnsetDevice(QDataStream* self) {
 	self->unsetDevice();
 }
 
-bool QDataStream_AtEnd(QDataStream* self) {
-	return const_cast<const QDataStream*>(self)->atEnd();
+bool QDataStream_AtEnd(const QDataStream* self) {
+	return self->atEnd();
 }
 
-uintptr_t QDataStream_Status(QDataStream* self) {
-	QDataStream::Status ret = const_cast<const QDataStream*>(self)->status();
+uintptr_t QDataStream_Status(const QDataStream* self) {
+	QDataStream::Status ret = self->status();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -55,8 +55,8 @@ void QDataStream_ResetStatus(QDataStream* self) {
 	self->resetStatus();
 }
 
-uintptr_t QDataStream_FloatingPointPrecision(QDataStream* self) {
-	QDataStream::FloatingPointPrecision ret = const_cast<const QDataStream*>(self)->floatingPointPrecision();
+uintptr_t QDataStream_FloatingPointPrecision(const QDataStream* self) {
+	QDataStream::FloatingPointPrecision ret = self->floatingPointPrecision();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -64,8 +64,8 @@ void QDataStream_SetFloatingPointPrecision(QDataStream* self, uintptr_t precisio
 	self->setFloatingPointPrecision(static_cast<QDataStream::FloatingPointPrecision>(precision));
 }
 
-uintptr_t QDataStream_ByteOrder(QDataStream* self) {
-	QDataStream::ByteOrder ret = const_cast<const QDataStream*>(self)->byteOrder();
+uintptr_t QDataStream_ByteOrder(const QDataStream* self) {
+	QDataStream::ByteOrder ret = self->byteOrder();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -73,8 +73,8 @@ void QDataStream_SetByteOrder(QDataStream* self, uintptr_t byteOrder) {
 	self->setByteOrder(static_cast<QDataStream::ByteOrder>(byteOrder));
 }
 
-int QDataStream_Version(QDataStream* self) {
-	return const_cast<const QDataStream*>(self)->version();
+int QDataStream_Version(const QDataStream* self) {
+	return self->version();
 }
 
 void QDataStream_SetVersion(QDataStream* self, int version) {

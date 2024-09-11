@@ -40,8 +40,8 @@ QDockWidget* QDockWidget_new6(QWidget* parent, int flags) {
 	return new QDockWidget(parent, static_cast<Qt::WindowFlags>(flags));
 }
 
-QMetaObject* QDockWidget_MetaObject(QDockWidget* self) {
-	return (QMetaObject*) const_cast<const QDockWidget*>(self)->metaObject();
+QMetaObject* QDockWidget_MetaObject(const QDockWidget* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QDockWidget_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -62,8 +62,8 @@ void QDockWidget_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-QWidget* QDockWidget_Widget(QDockWidget* self) {
-	return const_cast<const QDockWidget*>(self)->widget();
+QWidget* QDockWidget_Widget(const QDockWidget* self) {
+	return self->widget();
 }
 
 void QDockWidget_SetWidget(QDockWidget* self, QWidget* widget) {
@@ -74,8 +74,8 @@ void QDockWidget_SetFeatures(QDockWidget* self, int features) {
 	self->setFeatures(static_cast<QDockWidget::DockWidgetFeatures>(features));
 }
 
-int QDockWidget_Features(QDockWidget* self) {
-	QDockWidget::DockWidgetFeatures ret = const_cast<const QDockWidget*>(self)->features();
+int QDockWidget_Features(const QDockWidget* self) {
+	QDockWidget::DockWidgetFeatures ret = self->features();
 	return static_cast<int>(ret);
 }
 
@@ -83,16 +83,16 @@ void QDockWidget_SetFloating(QDockWidget* self, bool floating) {
 	self->setFloating(floating);
 }
 
-bool QDockWidget_IsFloating(QDockWidget* self) {
-	return const_cast<const QDockWidget*>(self)->isFloating();
+bool QDockWidget_IsFloating(const QDockWidget* self) {
+	return self->isFloating();
 }
 
 void QDockWidget_SetAllowedAreas(QDockWidget* self, int areas) {
 	self->setAllowedAreas(static_cast<Qt::DockWidgetAreas>(areas));
 }
 
-int QDockWidget_AllowedAreas(QDockWidget* self) {
-	Qt::DockWidgetAreas ret = const_cast<const QDockWidget*>(self)->allowedAreas();
+int QDockWidget_AllowedAreas(const QDockWidget* self) {
+	Qt::DockWidgetAreas ret = self->allowedAreas();
 	return static_cast<int>(ret);
 }
 
@@ -100,16 +100,16 @@ void QDockWidget_SetTitleBarWidget(QDockWidget* self, QWidget* widget) {
 	self->setTitleBarWidget(widget);
 }
 
-QWidget* QDockWidget_TitleBarWidget(QDockWidget* self) {
-	return const_cast<const QDockWidget*>(self)->titleBarWidget();
+QWidget* QDockWidget_TitleBarWidget(const QDockWidget* self) {
+	return self->titleBarWidget();
 }
 
-bool QDockWidget_IsAreaAllowed(QDockWidget* self, uintptr_t area) {
-	return const_cast<const QDockWidget*>(self)->isAreaAllowed(static_cast<Qt::DockWidgetArea>(area));
+bool QDockWidget_IsAreaAllowed(const QDockWidget* self, uintptr_t area) {
+	return self->isAreaAllowed(static_cast<Qt::DockWidgetArea>(area));
 }
 
-QAction* QDockWidget_ToggleViewAction(QDockWidget* self) {
-	return const_cast<const QDockWidget*>(self)->toggleViewAction();
+QAction* QDockWidget_ToggleViewAction(const QDockWidget* self) {
+	return self->toggleViewAction();
 }
 
 void QDockWidget_FeaturesChanged(QDockWidget* self, int features) {

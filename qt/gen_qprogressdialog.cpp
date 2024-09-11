@@ -46,8 +46,8 @@ QProgressDialog* QProgressDialog_new6(const char* labelText, size_t labelText_St
 	return new QProgressDialog(labelText_QString, cancelButtonText_QString, static_cast<int>(minimum), static_cast<int>(maximum), parent, static_cast<Qt::WindowFlags>(flags));
 }
 
-QMetaObject* QProgressDialog_MetaObject(QProgressDialog* self) {
-	return (QMetaObject*) const_cast<const QProgressDialog*>(self)->metaObject();
+QMetaObject* QProgressDialog_MetaObject(const QProgressDialog* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QProgressDialog_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -80,30 +80,30 @@ void QProgressDialog_SetBar(QProgressDialog* self, QProgressBar* bar) {
 	self->setBar(bar);
 }
 
-bool QProgressDialog_WasCanceled(QProgressDialog* self) {
-	return const_cast<const QProgressDialog*>(self)->wasCanceled();
+bool QProgressDialog_WasCanceled(const QProgressDialog* self) {
+	return self->wasCanceled();
 }
 
-int QProgressDialog_Minimum(QProgressDialog* self) {
-	return const_cast<const QProgressDialog*>(self)->minimum();
+int QProgressDialog_Minimum(const QProgressDialog* self) {
+	return self->minimum();
 }
 
-int QProgressDialog_Maximum(QProgressDialog* self) {
-	return const_cast<const QProgressDialog*>(self)->maximum();
+int QProgressDialog_Maximum(const QProgressDialog* self) {
+	return self->maximum();
 }
 
-int QProgressDialog_Value(QProgressDialog* self) {
-	return const_cast<const QProgressDialog*>(self)->value();
+int QProgressDialog_Value(const QProgressDialog* self) {
+	return self->value();
 }
 
-QSize* QProgressDialog_SizeHint(QProgressDialog* self) {
-	QSize ret = const_cast<const QProgressDialog*>(self)->sizeHint();
+QSize* QProgressDialog_SizeHint(const QProgressDialog* self) {
+	QSize ret = self->sizeHint();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
 
-void QProgressDialog_LabelText(QProgressDialog* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QProgressDialog*>(self)->labelText();
+void QProgressDialog_LabelText(const QProgressDialog* self, char** _out, int* _out_Strlen) {
+	QString ret = self->labelText();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -111,24 +111,24 @@ void QProgressDialog_LabelText(QProgressDialog* self, char** _out, int* _out_Str
 	*_out_Strlen = b.length();
 }
 
-int QProgressDialog_MinimumDuration(QProgressDialog* self) {
-	return const_cast<const QProgressDialog*>(self)->minimumDuration();
+int QProgressDialog_MinimumDuration(const QProgressDialog* self) {
+	return self->minimumDuration();
 }
 
 void QProgressDialog_SetAutoReset(QProgressDialog* self, bool reset) {
 	self->setAutoReset(reset);
 }
 
-bool QProgressDialog_AutoReset(QProgressDialog* self) {
-	return const_cast<const QProgressDialog*>(self)->autoReset();
+bool QProgressDialog_AutoReset(const QProgressDialog* self) {
+	return self->autoReset();
 }
 
 void QProgressDialog_SetAutoClose(QProgressDialog* self, bool close) {
 	self->setAutoClose(close);
 }
 
-bool QProgressDialog_AutoClose(QProgressDialog* self) {
-	return const_cast<const QProgressDialog*>(self)->autoClose();
+bool QProgressDialog_AutoClose(const QProgressDialog* self) {
+	return self->autoClose();
 }
 
 void QProgressDialog_Cancel(QProgressDialog* self) {

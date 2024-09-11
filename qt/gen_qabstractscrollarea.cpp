@@ -23,8 +23,8 @@ QAbstractScrollArea* QAbstractScrollArea_new2(QWidget* parent) {
 	return new QAbstractScrollArea(parent);
 }
 
-QMetaObject* QAbstractScrollArea_MetaObject(QAbstractScrollArea* self) {
-	return (QMetaObject*) const_cast<const QAbstractScrollArea*>(self)->metaObject();
+QMetaObject* QAbstractScrollArea_MetaObject(const QAbstractScrollArea* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QAbstractScrollArea_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -45,8 +45,8 @@ void QAbstractScrollArea_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-uintptr_t QAbstractScrollArea_VerticalScrollBarPolicy(QAbstractScrollArea* self) {
-	Qt::ScrollBarPolicy ret = const_cast<const QAbstractScrollArea*>(self)->verticalScrollBarPolicy();
+uintptr_t QAbstractScrollArea_VerticalScrollBarPolicy(const QAbstractScrollArea* self) {
+	Qt::ScrollBarPolicy ret = self->verticalScrollBarPolicy();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -54,16 +54,16 @@ void QAbstractScrollArea_SetVerticalScrollBarPolicy(QAbstractScrollArea* self, u
 	self->setVerticalScrollBarPolicy(static_cast<Qt::ScrollBarPolicy>(verticalScrollBarPolicy));
 }
 
-QScrollBar* QAbstractScrollArea_VerticalScrollBar(QAbstractScrollArea* self) {
-	return const_cast<const QAbstractScrollArea*>(self)->verticalScrollBar();
+QScrollBar* QAbstractScrollArea_VerticalScrollBar(const QAbstractScrollArea* self) {
+	return self->verticalScrollBar();
 }
 
 void QAbstractScrollArea_SetVerticalScrollBar(QAbstractScrollArea* self, QScrollBar* scrollbar) {
 	self->setVerticalScrollBar(scrollbar);
 }
 
-uintptr_t QAbstractScrollArea_HorizontalScrollBarPolicy(QAbstractScrollArea* self) {
-	Qt::ScrollBarPolicy ret = const_cast<const QAbstractScrollArea*>(self)->horizontalScrollBarPolicy();
+uintptr_t QAbstractScrollArea_HorizontalScrollBarPolicy(const QAbstractScrollArea* self) {
+	Qt::ScrollBarPolicy ret = self->horizontalScrollBarPolicy();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -71,16 +71,16 @@ void QAbstractScrollArea_SetHorizontalScrollBarPolicy(QAbstractScrollArea* self,
 	self->setHorizontalScrollBarPolicy(static_cast<Qt::ScrollBarPolicy>(horizontalScrollBarPolicy));
 }
 
-QScrollBar* QAbstractScrollArea_HorizontalScrollBar(QAbstractScrollArea* self) {
-	return const_cast<const QAbstractScrollArea*>(self)->horizontalScrollBar();
+QScrollBar* QAbstractScrollArea_HorizontalScrollBar(const QAbstractScrollArea* self) {
+	return self->horizontalScrollBar();
 }
 
 void QAbstractScrollArea_SetHorizontalScrollBar(QAbstractScrollArea* self, QScrollBar* scrollbar) {
 	self->setHorizontalScrollBar(scrollbar);
 }
 
-QWidget* QAbstractScrollArea_CornerWidget(QAbstractScrollArea* self) {
-	return const_cast<const QAbstractScrollArea*>(self)->cornerWidget();
+QWidget* QAbstractScrollArea_CornerWidget(const QAbstractScrollArea* self) {
+	return self->cornerWidget();
 }
 
 void QAbstractScrollArea_SetCornerWidget(QAbstractScrollArea* self, QWidget* widget) {
@@ -102,28 +102,28 @@ void QAbstractScrollArea_ScrollBarWidgets(QAbstractScrollArea* self, int alignme
 	*_out_len = ret.length();
 }
 
-QWidget* QAbstractScrollArea_Viewport(QAbstractScrollArea* self) {
-	return const_cast<const QAbstractScrollArea*>(self)->viewport();
+QWidget* QAbstractScrollArea_Viewport(const QAbstractScrollArea* self) {
+	return self->viewport();
 }
 
 void QAbstractScrollArea_SetViewport(QAbstractScrollArea* self, QWidget* widget) {
 	self->setViewport(widget);
 }
 
-QSize* QAbstractScrollArea_MaximumViewportSize(QAbstractScrollArea* self) {
-	QSize ret = const_cast<const QAbstractScrollArea*>(self)->maximumViewportSize();
+QSize* QAbstractScrollArea_MaximumViewportSize(const QAbstractScrollArea* self) {
+	QSize ret = self->maximumViewportSize();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
 
-QSize* QAbstractScrollArea_MinimumSizeHint(QAbstractScrollArea* self) {
-	QSize ret = const_cast<const QAbstractScrollArea*>(self)->minimumSizeHint();
+QSize* QAbstractScrollArea_MinimumSizeHint(const QAbstractScrollArea* self) {
+	QSize ret = self->minimumSizeHint();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
 
-QSize* QAbstractScrollArea_SizeHint(QAbstractScrollArea* self) {
-	QSize ret = const_cast<const QAbstractScrollArea*>(self)->sizeHint();
+QSize* QAbstractScrollArea_SizeHint(const QAbstractScrollArea* self) {
+	QSize ret = self->sizeHint();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
@@ -132,8 +132,8 @@ void QAbstractScrollArea_SetupViewport(QAbstractScrollArea* self, QWidget* viewp
 	self->setupViewport(viewport);
 }
 
-uintptr_t QAbstractScrollArea_SizeAdjustPolicy(QAbstractScrollArea* self) {
-	QAbstractScrollArea::SizeAdjustPolicy ret = const_cast<const QAbstractScrollArea*>(self)->sizeAdjustPolicy();
+uintptr_t QAbstractScrollArea_SizeAdjustPolicy(const QAbstractScrollArea* self) {
+	QAbstractScrollArea::SizeAdjustPolicy ret = self->sizeAdjustPolicy();
 	return static_cast<uintptr_t>(ret);
 }
 

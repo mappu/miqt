@@ -43,16 +43,16 @@ QVector2D* QVector2D_new8(QVector2D* param1) {
 	return new QVector2D(*param1);
 }
 
-bool QVector2D_IsNull(QVector2D* self) {
-	return const_cast<const QVector2D*>(self)->isNull();
+bool QVector2D_IsNull(const QVector2D* self) {
+	return self->isNull();
 }
 
-float QVector2D_X(QVector2D* self) {
-	return const_cast<const QVector2D*>(self)->x();
+float QVector2D_X(const QVector2D* self) {
+	return self->x();
 }
 
-float QVector2D_Y(QVector2D* self) {
-	return const_cast<const QVector2D*>(self)->y();
+float QVector2D_Y(const QVector2D* self) {
+	return self->y();
 }
 
 void QVector2D_SetX(QVector2D* self, float x) {
@@ -63,20 +63,20 @@ void QVector2D_SetY(QVector2D* self, float y) {
 	self->setY(static_cast<float>(y));
 }
 
-float QVector2D_OperatorSubscript(QVector2D* self, int i) {
-	return const_cast<const QVector2D*>(self)->operator[](static_cast<int>(i));
+float QVector2D_OperatorSubscript(const QVector2D* self, int i) {
+	return self->operator[](static_cast<int>(i));
 }
 
-float QVector2D_Length(QVector2D* self) {
-	return const_cast<const QVector2D*>(self)->length();
+float QVector2D_Length(const QVector2D* self) {
+	return self->length();
 }
 
-float QVector2D_LengthSquared(QVector2D* self) {
-	return const_cast<const QVector2D*>(self)->lengthSquared();
+float QVector2D_LengthSquared(const QVector2D* self) {
+	return self->lengthSquared();
 }
 
-QVector2D* QVector2D_Normalized(QVector2D* self) {
-	QVector2D ret = const_cast<const QVector2D*>(self)->normalized();
+QVector2D* QVector2D_Normalized(const QVector2D* self) {
+	QVector2D ret = self->normalized();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVector2D*>(new QVector2D(ret));
 }
@@ -85,12 +85,12 @@ void QVector2D_Normalize(QVector2D* self) {
 	self->normalize();
 }
 
-float QVector2D_DistanceToPoint(QVector2D* self, QVector2D* point) {
-	return const_cast<const QVector2D*>(self)->distanceToPoint(*point);
+float QVector2D_DistanceToPoint(const QVector2D* self, QVector2D* point) {
+	return self->distanceToPoint(*point);
 }
 
-float QVector2D_DistanceToLine(QVector2D* self, QVector2D* point, QVector2D* direction) {
-	return const_cast<const QVector2D*>(self)->distanceToLine(*point, *direction);
+float QVector2D_DistanceToLine(const QVector2D* self, QVector2D* point, QVector2D* direction) {
+	return self->distanceToLine(*point, *direction);
 }
 
 QVector2D* QVector2D_OperatorPlusAssign(QVector2D* self, QVector2D* vector) {
@@ -133,26 +133,26 @@ float QVector2D_DotProduct(QVector2D* v1, QVector2D* v2) {
 	return QVector2D::dotProduct(*v1, *v2);
 }
 
-QVector3D* QVector2D_ToVector3D(QVector2D* self) {
-	QVector3D ret = const_cast<const QVector2D*>(self)->toVector3D();
+QVector3D* QVector2D_ToVector3D(const QVector2D* self) {
+	QVector3D ret = self->toVector3D();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVector3D*>(new QVector3D(ret));
 }
 
-QVector4D* QVector2D_ToVector4D(QVector2D* self) {
-	QVector4D ret = const_cast<const QVector2D*>(self)->toVector4D();
+QVector4D* QVector2D_ToVector4D(const QVector2D* self) {
+	QVector4D ret = self->toVector4D();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVector4D*>(new QVector4D(ret));
 }
 
-QPoint* QVector2D_ToPoint(QVector2D* self) {
-	QPoint ret = const_cast<const QVector2D*>(self)->toPoint();
+QPoint* QVector2D_ToPoint(const QVector2D* self) {
+	QPoint ret = self->toPoint();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPoint*>(new QPoint(ret));
 }
 
-QPointF* QVector2D_ToPointF(QVector2D* self) {
-	QPointF ret = const_cast<const QVector2D*>(self)->toPointF();
+QPointF* QVector2D_ToPointF(const QVector2D* self) {
+	QPointF ret = self->toPointF();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPointF*>(new QPointF(ret));
 }

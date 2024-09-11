@@ -15,8 +15,8 @@ extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
 }
 
-QMetaObject* QAbstractButton_MetaObject(QAbstractButton* self) {
-	return (QMetaObject*) const_cast<const QAbstractButton*>(self)->metaObject();
+QMetaObject* QAbstractButton_MetaObject(const QAbstractButton* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QAbstractButton_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -42,8 +42,8 @@ void QAbstractButton_SetText(QAbstractButton* self, const char* text, size_t tex
 	self->setText(text_QString);
 }
 
-void QAbstractButton_Text(QAbstractButton* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QAbstractButton*>(self)->text();
+void QAbstractButton_Text(const QAbstractButton* self, char** _out, int* _out_Strlen) {
+	QString ret = self->text();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -55,14 +55,14 @@ void QAbstractButton_SetIcon(QAbstractButton* self, QIcon* icon) {
 	self->setIcon(*icon);
 }
 
-QIcon* QAbstractButton_Icon(QAbstractButton* self) {
-	QIcon ret = const_cast<const QAbstractButton*>(self)->icon();
+QIcon* QAbstractButton_Icon(const QAbstractButton* self) {
+	QIcon ret = self->icon();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QIcon*>(new QIcon(ret));
 }
 
-QSize* QAbstractButton_IconSize(QAbstractButton* self) {
-	QSize ret = const_cast<const QAbstractButton*>(self)->iconSize();
+QSize* QAbstractButton_IconSize(const QAbstractButton* self) {
+	QSize ret = self->iconSize();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
@@ -71,8 +71,8 @@ void QAbstractButton_SetShortcut(QAbstractButton* self, QKeySequence* key) {
 	self->setShortcut(*key);
 }
 
-QKeySequence* QAbstractButton_Shortcut(QAbstractButton* self) {
-	QKeySequence ret = const_cast<const QAbstractButton*>(self)->shortcut();
+QKeySequence* QAbstractButton_Shortcut(const QAbstractButton* self) {
+	QKeySequence ret = self->shortcut();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QKeySequence*>(new QKeySequence(ret));
 }
@@ -81,56 +81,56 @@ void QAbstractButton_SetCheckable(QAbstractButton* self, bool checkable) {
 	self->setCheckable(checkable);
 }
 
-bool QAbstractButton_IsCheckable(QAbstractButton* self) {
-	return const_cast<const QAbstractButton*>(self)->isCheckable();
+bool QAbstractButton_IsCheckable(const QAbstractButton* self) {
+	return self->isCheckable();
 }
 
-bool QAbstractButton_IsChecked(QAbstractButton* self) {
-	return const_cast<const QAbstractButton*>(self)->isChecked();
+bool QAbstractButton_IsChecked(const QAbstractButton* self) {
+	return self->isChecked();
 }
 
 void QAbstractButton_SetDown(QAbstractButton* self, bool down) {
 	self->setDown(down);
 }
 
-bool QAbstractButton_IsDown(QAbstractButton* self) {
-	return const_cast<const QAbstractButton*>(self)->isDown();
+bool QAbstractButton_IsDown(const QAbstractButton* self) {
+	return self->isDown();
 }
 
 void QAbstractButton_SetAutoRepeat(QAbstractButton* self, bool autoRepeat) {
 	self->setAutoRepeat(autoRepeat);
 }
 
-bool QAbstractButton_AutoRepeat(QAbstractButton* self) {
-	return const_cast<const QAbstractButton*>(self)->autoRepeat();
+bool QAbstractButton_AutoRepeat(const QAbstractButton* self) {
+	return self->autoRepeat();
 }
 
 void QAbstractButton_SetAutoRepeatDelay(QAbstractButton* self, int autoRepeatDelay) {
 	self->setAutoRepeatDelay(static_cast<int>(autoRepeatDelay));
 }
 
-int QAbstractButton_AutoRepeatDelay(QAbstractButton* self) {
-	return const_cast<const QAbstractButton*>(self)->autoRepeatDelay();
+int QAbstractButton_AutoRepeatDelay(const QAbstractButton* self) {
+	return self->autoRepeatDelay();
 }
 
 void QAbstractButton_SetAutoRepeatInterval(QAbstractButton* self, int autoRepeatInterval) {
 	self->setAutoRepeatInterval(static_cast<int>(autoRepeatInterval));
 }
 
-int QAbstractButton_AutoRepeatInterval(QAbstractButton* self) {
-	return const_cast<const QAbstractButton*>(self)->autoRepeatInterval();
+int QAbstractButton_AutoRepeatInterval(const QAbstractButton* self) {
+	return self->autoRepeatInterval();
 }
 
 void QAbstractButton_SetAutoExclusive(QAbstractButton* self, bool autoExclusive) {
 	self->setAutoExclusive(autoExclusive);
 }
 
-bool QAbstractButton_AutoExclusive(QAbstractButton* self) {
-	return const_cast<const QAbstractButton*>(self)->autoExclusive();
+bool QAbstractButton_AutoExclusive(const QAbstractButton* self) {
+	return self->autoExclusive();
 }
 
-QButtonGroup* QAbstractButton_Group(QAbstractButton* self) {
-	return const_cast<const QAbstractButton*>(self)->group();
+QButtonGroup* QAbstractButton_Group(const QAbstractButton* self) {
+	return self->group();
 }
 
 void QAbstractButton_SetIconSize(QAbstractButton* self, QSize* size) {

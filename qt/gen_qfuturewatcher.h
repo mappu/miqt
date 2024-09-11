@@ -21,18 +21,18 @@ typedef struct QFutureWatcherBase QFutureWatcherBase;
 typedef struct QMetaObject QMetaObject;
 #endif
 
-QMetaObject* QFutureWatcherBase_MetaObject(QFutureWatcherBase* self);
+QMetaObject* QFutureWatcherBase_MetaObject(const QFutureWatcherBase* self);
 void QFutureWatcherBase_Tr(const char* s, char** _out, int* _out_Strlen);
 void QFutureWatcherBase_TrUtf8(const char* s, char** _out, int* _out_Strlen);
-int QFutureWatcherBase_ProgressValue(QFutureWatcherBase* self);
-int QFutureWatcherBase_ProgressMinimum(QFutureWatcherBase* self);
-int QFutureWatcherBase_ProgressMaximum(QFutureWatcherBase* self);
-void QFutureWatcherBase_ProgressText(QFutureWatcherBase* self, char** _out, int* _out_Strlen);
-bool QFutureWatcherBase_IsStarted(QFutureWatcherBase* self);
-bool QFutureWatcherBase_IsFinished(QFutureWatcherBase* self);
-bool QFutureWatcherBase_IsRunning(QFutureWatcherBase* self);
-bool QFutureWatcherBase_IsCanceled(QFutureWatcherBase* self);
-bool QFutureWatcherBase_IsPaused(QFutureWatcherBase* self);
+int QFutureWatcherBase_ProgressValue(const QFutureWatcherBase* self);
+int QFutureWatcherBase_ProgressMinimum(const QFutureWatcherBase* self);
+int QFutureWatcherBase_ProgressMaximum(const QFutureWatcherBase* self);
+void QFutureWatcherBase_ProgressText(const QFutureWatcherBase* self, char** _out, int* _out_Strlen);
+bool QFutureWatcherBase_IsStarted(const QFutureWatcherBase* self);
+bool QFutureWatcherBase_IsFinished(const QFutureWatcherBase* self);
+bool QFutureWatcherBase_IsRunning(const QFutureWatcherBase* self);
+bool QFutureWatcherBase_IsCanceled(const QFutureWatcherBase* self);
+bool QFutureWatcherBase_IsPaused(const QFutureWatcherBase* self);
 void QFutureWatcherBase_WaitForFinished(QFutureWatcherBase* self);
 void QFutureWatcherBase_SetPendingResultsLimit(QFutureWatcherBase* self, int limit);
 bool QFutureWatcherBase_Event(QFutureWatcherBase* self, QEvent* event);

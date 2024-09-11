@@ -30,8 +30,8 @@ QSlider* QSlider_new4(uintptr_t orientation, QWidget* parent) {
 	return new QSlider(static_cast<Qt::Orientation>(orientation), parent);
 }
 
-QMetaObject* QSlider_MetaObject(QSlider* self) {
-	return (QMetaObject*) const_cast<const QSlider*>(self)->metaObject();
+QMetaObject* QSlider_MetaObject(const QSlider* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QSlider_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -52,14 +52,14 @@ void QSlider_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-QSize* QSlider_SizeHint(QSlider* self) {
-	QSize ret = const_cast<const QSlider*>(self)->sizeHint();
+QSize* QSlider_SizeHint(const QSlider* self) {
+	QSize ret = self->sizeHint();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
 
-QSize* QSlider_MinimumSizeHint(QSlider* self) {
-	QSize ret = const_cast<const QSlider*>(self)->minimumSizeHint();
+QSize* QSlider_MinimumSizeHint(const QSlider* self) {
+	QSize ret = self->minimumSizeHint();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
@@ -68,8 +68,8 @@ void QSlider_SetTickPosition(QSlider* self, uintptr_t position) {
 	self->setTickPosition(static_cast<QSlider::TickPosition>(position));
 }
 
-uintptr_t QSlider_TickPosition(QSlider* self) {
-	QSlider::TickPosition ret = const_cast<const QSlider*>(self)->tickPosition();
+uintptr_t QSlider_TickPosition(const QSlider* self) {
+	QSlider::TickPosition ret = self->tickPosition();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -77,8 +77,8 @@ void QSlider_SetTickInterval(QSlider* self, int ti) {
 	self->setTickInterval(static_cast<int>(ti));
 }
 
-int QSlider_TickInterval(QSlider* self) {
-	return const_cast<const QSlider*>(self)->tickInterval();
+int QSlider_TickInterval(const QSlider* self) {
+	return self->tickInterval();
 }
 
 bool QSlider_Event(QSlider* self, QEvent* event) {

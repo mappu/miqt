@@ -19,8 +19,8 @@ extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
 }
 
-QMetaObject* QValidator_MetaObject(QValidator* self) {
-	return (QMetaObject*) const_cast<const QValidator*>(self)->metaObject();
+QMetaObject* QValidator_MetaObject(const QValidator* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QValidator_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -45,21 +45,21 @@ void QValidator_SetLocale(QValidator* self, QLocale* locale) {
 	self->setLocale(*locale);
 }
 
-QLocale* QValidator_Locale(QValidator* self) {
-	QLocale ret = const_cast<const QValidator*>(self)->locale();
+QLocale* QValidator_Locale(const QValidator* self) {
+	QLocale ret = self->locale();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QLocale*>(new QLocale(ret));
 }
 
-uintptr_t QValidator_Validate(QValidator* self, const char* param1, size_t param1_Strlen, int* param2) {
+uintptr_t QValidator_Validate(const QValidator* self, const char* param1, size_t param1_Strlen, int* param2) {
 	QString param1_QString = QString::fromUtf8(param1, param1_Strlen);
-	QValidator::State ret = const_cast<const QValidator*>(self)->validate(param1_QString, static_cast<int&>(*param2));
+	QValidator::State ret = self->validate(param1_QString, static_cast<int&>(*param2));
 	return static_cast<uintptr_t>(ret);
 }
 
-void QValidator_Fixup(QValidator* self, const char* param1, size_t param1_Strlen) {
+void QValidator_Fixup(const QValidator* self, const char* param1, size_t param1_Strlen) {
 	QString param1_QString = QString::fromUtf8(param1, param1_Strlen);
-	const_cast<const QValidator*>(self)->fixup(param1_QString);
+	self->fixup(param1_QString);
 }
 
 void QValidator_Changed(QValidator* self) {
@@ -128,8 +128,8 @@ QIntValidator* QIntValidator_new4(int bottom, int top, QObject* parent) {
 	return new QIntValidator(static_cast<int>(bottom), static_cast<int>(top), parent);
 }
 
-QMetaObject* QIntValidator_MetaObject(QIntValidator* self) {
-	return (QMetaObject*) const_cast<const QIntValidator*>(self)->metaObject();
+QMetaObject* QIntValidator_MetaObject(const QIntValidator* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QIntValidator_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -150,15 +150,15 @@ void QIntValidator_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-uintptr_t QIntValidator_Validate(QIntValidator* self, const char* param1, size_t param1_Strlen, int* param2) {
+uintptr_t QIntValidator_Validate(const QIntValidator* self, const char* param1, size_t param1_Strlen, int* param2) {
 	QString param1_QString = QString::fromUtf8(param1, param1_Strlen);
-	QValidator::State ret = const_cast<const QIntValidator*>(self)->validate(param1_QString, static_cast<int&>(*param2));
+	QValidator::State ret = self->validate(param1_QString, static_cast<int&>(*param2));
 	return static_cast<uintptr_t>(ret);
 }
 
-void QIntValidator_Fixup(QIntValidator* self, const char* input, size_t input_Strlen) {
+void QIntValidator_Fixup(const QIntValidator* self, const char* input, size_t input_Strlen) {
 	QString input_QString = QString::fromUtf8(input, input_Strlen);
-	const_cast<const QIntValidator*>(self)->fixup(input_QString);
+	self->fixup(input_QString);
 }
 
 void QIntValidator_SetBottom(QIntValidator* self, int bottom) {
@@ -173,12 +173,12 @@ void QIntValidator_SetRange(QIntValidator* self, int bottom, int top) {
 	self->setRange(static_cast<int>(bottom), static_cast<int>(top));
 }
 
-int QIntValidator_Bottom(QIntValidator* self) {
-	return const_cast<const QIntValidator*>(self)->bottom();
+int QIntValidator_Bottom(const QIntValidator* self) {
+	return self->bottom();
 }
 
-int QIntValidator_Top(QIntValidator* self) {
-	return const_cast<const QIntValidator*>(self)->top();
+int QIntValidator_Top(const QIntValidator* self) {
+	return self->top();
 }
 
 void QIntValidator_BottomChanged(QIntValidator* self, int bottom) {
@@ -257,8 +257,8 @@ QDoubleValidator* QDoubleValidator_new4(double bottom, double top, int decimals,
 	return new QDoubleValidator(static_cast<double>(bottom), static_cast<double>(top), static_cast<int>(decimals), parent);
 }
 
-QMetaObject* QDoubleValidator_MetaObject(QDoubleValidator* self) {
-	return (QMetaObject*) const_cast<const QDoubleValidator*>(self)->metaObject();
+QMetaObject* QDoubleValidator_MetaObject(const QDoubleValidator* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QDoubleValidator_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -279,9 +279,9 @@ void QDoubleValidator_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-uintptr_t QDoubleValidator_Validate(QDoubleValidator* self, const char* param1, size_t param1_Strlen, int* param2) {
+uintptr_t QDoubleValidator_Validate(const QDoubleValidator* self, const char* param1, size_t param1_Strlen, int* param2) {
 	QString param1_QString = QString::fromUtf8(param1, param1_Strlen);
-	QValidator::State ret = const_cast<const QDoubleValidator*>(self)->validate(param1_QString, static_cast<int&>(*param2));
+	QValidator::State ret = self->validate(param1_QString, static_cast<int&>(*param2));
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -305,20 +305,20 @@ void QDoubleValidator_SetNotation(QDoubleValidator* self, uintptr_t notation) {
 	self->setNotation(static_cast<QDoubleValidator::Notation>(notation));
 }
 
-double QDoubleValidator_Bottom(QDoubleValidator* self) {
-	return const_cast<const QDoubleValidator*>(self)->bottom();
+double QDoubleValidator_Bottom(const QDoubleValidator* self) {
+	return self->bottom();
 }
 
-double QDoubleValidator_Top(QDoubleValidator* self) {
-	return const_cast<const QDoubleValidator*>(self)->top();
+double QDoubleValidator_Top(const QDoubleValidator* self) {
+	return self->top();
 }
 
-int QDoubleValidator_Decimals(QDoubleValidator* self) {
-	return const_cast<const QDoubleValidator*>(self)->decimals();
+int QDoubleValidator_Decimals(const QDoubleValidator* self) {
+	return self->decimals();
 }
 
-uintptr_t QDoubleValidator_Notation(QDoubleValidator* self) {
-	QDoubleValidator::Notation ret = const_cast<const QDoubleValidator*>(self)->notation();
+uintptr_t QDoubleValidator_Notation(const QDoubleValidator* self) {
+	QDoubleValidator::Notation ret = self->notation();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -422,8 +422,8 @@ QRegExpValidator* QRegExpValidator_new4(QRegExp* rx, QObject* parent) {
 	return new QRegExpValidator(*rx, parent);
 }
 
-QMetaObject* QRegExpValidator_MetaObject(QRegExpValidator* self) {
-	return (QMetaObject*) const_cast<const QRegExpValidator*>(self)->metaObject();
+QMetaObject* QRegExpValidator_MetaObject(const QRegExpValidator* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QRegExpValidator_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -444,9 +444,9 @@ void QRegExpValidator_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-uintptr_t QRegExpValidator_Validate(QRegExpValidator* self, const char* input, size_t input_Strlen, int* pos) {
+uintptr_t QRegExpValidator_Validate(const QRegExpValidator* self, const char* input, size_t input_Strlen, int* pos) {
 	QString input_QString = QString::fromUtf8(input, input_Strlen);
-	QValidator::State ret = const_cast<const QRegExpValidator*>(self)->validate(input_QString, static_cast<int&>(*pos));
+	QValidator::State ret = self->validate(input_QString, static_cast<int&>(*pos));
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -454,8 +454,8 @@ void QRegExpValidator_SetRegExp(QRegExpValidator* self, QRegExp* rx) {
 	self->setRegExp(*rx);
 }
 
-QRegExp* QRegExpValidator_RegExp(QRegExpValidator* self) {
-	const QRegExp& ret = const_cast<const QRegExpValidator*>(self)->regExp();
+QRegExp* QRegExpValidator_RegExp(const QRegExpValidator* self) {
+	const QRegExp& ret = self->regExp();
 	// Cast returned reference into pointer
 	return const_cast<QRegExp*>(&ret);
 }
@@ -526,8 +526,8 @@ QRegularExpressionValidator* QRegularExpressionValidator_new4(QRegularExpression
 	return new QRegularExpressionValidator(*re, parent);
 }
 
-QMetaObject* QRegularExpressionValidator_MetaObject(QRegularExpressionValidator* self) {
-	return (QMetaObject*) const_cast<const QRegularExpressionValidator*>(self)->metaObject();
+QMetaObject* QRegularExpressionValidator_MetaObject(const QRegularExpressionValidator* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QRegularExpressionValidator_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -548,14 +548,14 @@ void QRegularExpressionValidator_TrUtf8(const char* s, char** _out, int* _out_St
 	*_out_Strlen = b.length();
 }
 
-uintptr_t QRegularExpressionValidator_Validate(QRegularExpressionValidator* self, const char* input, size_t input_Strlen, int* pos) {
+uintptr_t QRegularExpressionValidator_Validate(const QRegularExpressionValidator* self, const char* input, size_t input_Strlen, int* pos) {
 	QString input_QString = QString::fromUtf8(input, input_Strlen);
-	QValidator::State ret = const_cast<const QRegularExpressionValidator*>(self)->validate(input_QString, static_cast<int&>(*pos));
+	QValidator::State ret = self->validate(input_QString, static_cast<int&>(*pos));
 	return static_cast<uintptr_t>(ret);
 }
 
-QRegularExpression* QRegularExpressionValidator_RegularExpression(QRegularExpressionValidator* self) {
-	QRegularExpression ret = const_cast<const QRegularExpressionValidator*>(self)->regularExpression();
+QRegularExpression* QRegularExpressionValidator_RegularExpression(const QRegularExpressionValidator* self) {
+	QRegularExpression ret = self->regularExpression();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRegularExpression*>(new QRegularExpression(ret));
 }

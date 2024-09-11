@@ -21,8 +21,8 @@ QSocketNotifier* QSocketNotifier_new2(uintptr_t socket, uintptr_t param2, QObjec
 	return new QSocketNotifier(static_cast<qptrdiff>(socket), static_cast<QSocketNotifier::Type>(param2), parent);
 }
 
-QMetaObject* QSocketNotifier_MetaObject(QSocketNotifier* self) {
-	return (QMetaObject*) const_cast<const QSocketNotifier*>(self)->metaObject();
+QMetaObject* QSocketNotifier_MetaObject(const QSocketNotifier* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QSocketNotifier_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -43,17 +43,17 @@ void QSocketNotifier_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-ptrdiff_t QSocketNotifier_Socket(QSocketNotifier* self) {
-	return const_cast<const QSocketNotifier*>(self)->socket();
+ptrdiff_t QSocketNotifier_Socket(const QSocketNotifier* self) {
+	return self->socket();
 }
 
-uintptr_t QSocketNotifier_Type(QSocketNotifier* self) {
-	QSocketNotifier::Type ret = const_cast<const QSocketNotifier*>(self)->type();
+uintptr_t QSocketNotifier_Type(const QSocketNotifier* self) {
+	QSocketNotifier::Type ret = self->type();
 	return static_cast<uintptr_t>(ret);
 }
 
-bool QSocketNotifier_IsEnabled(QSocketNotifier* self) {
-	return const_cast<const QSocketNotifier*>(self)->isEnabled();
+bool QSocketNotifier_IsEnabled(const QSocketNotifier* self) {
+	return self->isEnabled();
 }
 
 void QSocketNotifier_SetEnabled(QSocketNotifier* self, bool enabled) {
@@ -116,8 +116,8 @@ QSocketDescriptor* QSocketDescriptor_new3(uintptr_t descriptor) {
 #endif
 }
 
-bool QSocketDescriptor_IsValid(QSocketDescriptor* self) {
-	return const_cast<const QSocketDescriptor*>(self)->isValid();
+bool QSocketDescriptor_IsValid(const QSocketDescriptor* self) {
+	return self->isValid();
 }
 
 void QSocketDescriptor_Delete(QSocketDescriptor* self) {

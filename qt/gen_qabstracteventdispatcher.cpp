@@ -17,8 +17,8 @@ extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
 }
 
-QMetaObject* QAbstractEventDispatcher_MetaObject(QAbstractEventDispatcher* self) {
-	return (QMetaObject*) const_cast<const QAbstractEventDispatcher*>(self)->metaObject();
+QMetaObject* QAbstractEventDispatcher_MetaObject(const QAbstractEventDispatcher* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QAbstractEventDispatcher_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -75,8 +75,8 @@ bool QAbstractEventDispatcher_UnregisterTimers(QAbstractEventDispatcher* self, Q
 	return self->unregisterTimers(object);
 }
 
-void QAbstractEventDispatcher_RegisteredTimers(QAbstractEventDispatcher* self, QObject* object, QAbstractEventDispatcher__TimerInfo*** _out, size_t* _out_len) {
-	QList<QAbstractEventDispatcher::TimerInfo> ret = const_cast<const QAbstractEventDispatcher*>(self)->registeredTimers(object);
+void QAbstractEventDispatcher_RegisteredTimers(const QAbstractEventDispatcher* self, QObject* object, QAbstractEventDispatcher__TimerInfo*** _out, size_t* _out_len) {
+	QList<QAbstractEventDispatcher::TimerInfo> ret = self->registeredTimers(object);
 	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
 	QAbstractEventDispatcher__TimerInfo** __out = static_cast<QAbstractEventDispatcher__TimerInfo**>(malloc(sizeof(QAbstractEventDispatcher__TimerInfo**) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {

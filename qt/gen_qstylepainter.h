@@ -43,7 +43,7 @@ void QStylePainter_DrawControl(QStylePainter* self, uintptr_t ce, QStyleOption* 
 void QStylePainter_DrawComplexControl(QStylePainter* self, uintptr_t cc, QStyleOptionComplex* opt);
 void QStylePainter_DrawItemText(QStylePainter* self, QRect* r, int flags, QPalette* pal, bool enabled, const char* text, size_t text_Strlen);
 void QStylePainter_DrawItemPixmap(QStylePainter* self, QRect* r, int flags, QPixmap* pixmap);
-QStyle* QStylePainter_Style(QStylePainter* self);
+QStyle* QStylePainter_Style(const QStylePainter* self);
 void QStylePainter_DrawItemText6(QStylePainter* self, QRect* r, int flags, QPalette* pal, bool enabled, const char* text, size_t text_Strlen, uintptr_t textRole);
 void QStylePainter_Delete(QStylePainter* self);
 

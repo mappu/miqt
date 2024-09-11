@@ -16,8 +16,8 @@ extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
 }
 
-QMetaObject* QAbstractTransition_MetaObject(QAbstractTransition* self) {
-	return (QMetaObject*) const_cast<const QAbstractTransition*>(self)->metaObject();
+QMetaObject* QAbstractTransition_MetaObject(const QAbstractTransition* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QAbstractTransition_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -38,20 +38,20 @@ void QAbstractTransition_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-QState* QAbstractTransition_SourceState(QAbstractTransition* self) {
-	return const_cast<const QAbstractTransition*>(self)->sourceState();
+QState* QAbstractTransition_SourceState(const QAbstractTransition* self) {
+	return self->sourceState();
 }
 
-QAbstractState* QAbstractTransition_TargetState(QAbstractTransition* self) {
-	return const_cast<const QAbstractTransition*>(self)->targetState();
+QAbstractState* QAbstractTransition_TargetState(const QAbstractTransition* self) {
+	return self->targetState();
 }
 
 void QAbstractTransition_SetTargetState(QAbstractTransition* self, QAbstractState* target) {
 	self->setTargetState(target);
 }
 
-void QAbstractTransition_TargetStates(QAbstractTransition* self, QAbstractState*** _out, size_t* _out_len) {
-	QList<QAbstractState*> ret = const_cast<const QAbstractTransition*>(self)->targetStates();
+void QAbstractTransition_TargetStates(const QAbstractTransition* self, QAbstractState*** _out, size_t* _out_len) {
+	QList<QAbstractState*> ret = self->targetStates();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QAbstractState** __out = static_cast<QAbstractState**>(malloc(sizeof(QAbstractState*) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {
@@ -70,8 +70,8 @@ void QAbstractTransition_SetTargetStates(QAbstractTransition* self, QAbstractSta
 	self->setTargetStates(targets_QList);
 }
 
-uintptr_t QAbstractTransition_TransitionType(QAbstractTransition* self) {
-	QAbstractTransition::TransitionType ret = const_cast<const QAbstractTransition*>(self)->transitionType();
+uintptr_t QAbstractTransition_TransitionType(const QAbstractTransition* self) {
+	QAbstractTransition::TransitionType ret = self->transitionType();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -79,8 +79,8 @@ void QAbstractTransition_SetTransitionType(QAbstractTransition* self, uintptr_t 
 	self->setTransitionType(static_cast<QAbstractTransition::TransitionType>(typeVal));
 }
 
-QStateMachine* QAbstractTransition_Machine(QAbstractTransition* self) {
-	return const_cast<const QAbstractTransition*>(self)->machine();
+QStateMachine* QAbstractTransition_Machine(const QAbstractTransition* self) {
+	return self->machine();
 }
 
 void QAbstractTransition_AddAnimation(QAbstractTransition* self, QAbstractAnimation* animation) {
@@ -91,8 +91,8 @@ void QAbstractTransition_RemoveAnimation(QAbstractTransition* self, QAbstractAni
 	self->removeAnimation(animation);
 }
 
-void QAbstractTransition_Animations(QAbstractTransition* self, QAbstractAnimation*** _out, size_t* _out_len) {
-	QList<QAbstractAnimation*> ret = const_cast<const QAbstractTransition*>(self)->animations();
+void QAbstractTransition_Animations(const QAbstractTransition* self, QAbstractAnimation*** _out, size_t* _out_len) {
+	QList<QAbstractAnimation*> ret = self->animations();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QAbstractAnimation** __out = static_cast<QAbstractAnimation**>(malloc(sizeof(QAbstractAnimation*) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {

@@ -45,8 +45,8 @@ QTextEdit* QTextEdit_new4(const char* text, size_t text_Strlen, QWidget* parent)
 	return new QTextEdit(text_QString, parent);
 }
 
-QMetaObject* QTextEdit_MetaObject(QTextEdit* self) {
-	return (QMetaObject*) const_cast<const QTextEdit*>(self)->metaObject();
+QMetaObject* QTextEdit_MetaObject(const QTextEdit* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QTextEdit_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -71,8 +71,8 @@ void QTextEdit_SetDocument(QTextEdit* self, QTextDocument* document) {
 	self->setDocument(document);
 }
 
-QTextDocument* QTextEdit_Document(QTextEdit* self) {
-	return const_cast<const QTextEdit*>(self)->document();
+QTextDocument* QTextEdit_Document(const QTextEdit* self) {
+	return self->document();
 }
 
 void QTextEdit_SetPlaceholderText(QTextEdit* self, const char* placeholderText, size_t placeholderText_Strlen) {
@@ -80,8 +80,8 @@ void QTextEdit_SetPlaceholderText(QTextEdit* self, const char* placeholderText, 
 	self->setPlaceholderText(placeholderText_QString);
 }
 
-void QTextEdit_PlaceholderText(QTextEdit* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QTextEdit*>(self)->placeholderText();
+void QTextEdit_PlaceholderText(const QTextEdit* self, char** _out, int* _out_Strlen) {
+	QString ret = self->placeholderText();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -93,14 +93,14 @@ void QTextEdit_SetTextCursor(QTextEdit* self, QTextCursor* cursor) {
 	self->setTextCursor(*cursor);
 }
 
-QTextCursor* QTextEdit_TextCursor(QTextEdit* self) {
-	QTextCursor ret = const_cast<const QTextEdit*>(self)->textCursor();
+QTextCursor* QTextEdit_TextCursor(const QTextEdit* self) {
+	QTextCursor ret = self->textCursor();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QTextCursor*>(new QTextCursor(ret));
 }
 
-bool QTextEdit_IsReadOnly(QTextEdit* self) {
-	return const_cast<const QTextEdit*>(self)->isReadOnly();
+bool QTextEdit_IsReadOnly(const QTextEdit* self) {
+	return self->isReadOnly();
 }
 
 void QTextEdit_SetReadOnly(QTextEdit* self, bool ro) {
@@ -111,17 +111,17 @@ void QTextEdit_SetTextInteractionFlags(QTextEdit* self, int flags) {
 	self->setTextInteractionFlags(static_cast<Qt::TextInteractionFlags>(flags));
 }
 
-int QTextEdit_TextInteractionFlags(QTextEdit* self) {
-	Qt::TextInteractionFlags ret = const_cast<const QTextEdit*>(self)->textInteractionFlags();
+int QTextEdit_TextInteractionFlags(const QTextEdit* self) {
+	Qt::TextInteractionFlags ret = self->textInteractionFlags();
 	return static_cast<int>(ret);
 }
 
-double QTextEdit_FontPointSize(QTextEdit* self) {
-	return const_cast<const QTextEdit*>(self)->fontPointSize();
+double QTextEdit_FontPointSize(const QTextEdit* self) {
+	return self->fontPointSize();
 }
 
-void QTextEdit_FontFamily(QTextEdit* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QTextEdit*>(self)->fontFamily();
+void QTextEdit_FontFamily(const QTextEdit* self, char** _out, int* _out_Strlen) {
+	QString ret = self->fontFamily();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -129,38 +129,38 @@ void QTextEdit_FontFamily(QTextEdit* self, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-int QTextEdit_FontWeight(QTextEdit* self) {
-	return const_cast<const QTextEdit*>(self)->fontWeight();
+int QTextEdit_FontWeight(const QTextEdit* self) {
+	return self->fontWeight();
 }
 
-bool QTextEdit_FontUnderline(QTextEdit* self) {
-	return const_cast<const QTextEdit*>(self)->fontUnderline();
+bool QTextEdit_FontUnderline(const QTextEdit* self) {
+	return self->fontUnderline();
 }
 
-bool QTextEdit_FontItalic(QTextEdit* self) {
-	return const_cast<const QTextEdit*>(self)->fontItalic();
+bool QTextEdit_FontItalic(const QTextEdit* self) {
+	return self->fontItalic();
 }
 
-QColor* QTextEdit_TextColor(QTextEdit* self) {
-	QColor ret = const_cast<const QTextEdit*>(self)->textColor();
+QColor* QTextEdit_TextColor(const QTextEdit* self) {
+	QColor ret = self->textColor();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QColor*>(new QColor(ret));
 }
 
-QColor* QTextEdit_TextBackgroundColor(QTextEdit* self) {
-	QColor ret = const_cast<const QTextEdit*>(self)->textBackgroundColor();
+QColor* QTextEdit_TextBackgroundColor(const QTextEdit* self) {
+	QColor ret = self->textBackgroundColor();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QColor*>(new QColor(ret));
 }
 
-QFont* QTextEdit_CurrentFont(QTextEdit* self) {
-	QFont ret = const_cast<const QTextEdit*>(self)->currentFont();
+QFont* QTextEdit_CurrentFont(const QTextEdit* self) {
+	QFont ret = self->currentFont();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QFont*>(new QFont(ret));
 }
 
-int QTextEdit_Alignment(QTextEdit* self) {
-	Qt::Alignment ret = const_cast<const QTextEdit*>(self)->alignment();
+int QTextEdit_Alignment(const QTextEdit* self) {
+	Qt::Alignment ret = self->alignment();
 	return static_cast<int>(ret);
 }
 
@@ -172,14 +172,14 @@ void QTextEdit_SetCurrentCharFormat(QTextEdit* self, QTextCharFormat* format) {
 	self->setCurrentCharFormat(*format);
 }
 
-QTextCharFormat* QTextEdit_CurrentCharFormat(QTextEdit* self) {
-	QTextCharFormat ret = const_cast<const QTextEdit*>(self)->currentCharFormat();
+QTextCharFormat* QTextEdit_CurrentCharFormat(const QTextEdit* self) {
+	QTextCharFormat ret = self->currentCharFormat();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QTextCharFormat*>(new QTextCharFormat(ret));
 }
 
-int QTextEdit_AutoFormatting(QTextEdit* self) {
-	QTextEdit::AutoFormatting ret = const_cast<const QTextEdit*>(self)->autoFormatting();
+int QTextEdit_AutoFormatting(const QTextEdit* self) {
+	QTextEdit::AutoFormatting ret = self->autoFormatting();
 	return static_cast<int>(ret);
 }
 
@@ -187,8 +187,8 @@ void QTextEdit_SetAutoFormatting(QTextEdit* self, int features) {
 	self->setAutoFormatting(static_cast<QTextEdit::AutoFormatting>(features));
 }
 
-bool QTextEdit_TabChangesFocus(QTextEdit* self) {
-	return const_cast<const QTextEdit*>(self)->tabChangesFocus();
+bool QTextEdit_TabChangesFocus(const QTextEdit* self) {
+	return self->tabChangesFocus();
 }
 
 void QTextEdit_SetTabChangesFocus(QTextEdit* self, bool b) {
@@ -200,8 +200,8 @@ void QTextEdit_SetDocumentTitle(QTextEdit* self, const char* title, size_t title
 	self->setDocumentTitle(title_QString);
 }
 
-void QTextEdit_DocumentTitle(QTextEdit* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QTextEdit*>(self)->documentTitle();
+void QTextEdit_DocumentTitle(const QTextEdit* self, char** _out, int* _out_Strlen) {
+	QString ret = self->documentTitle();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -209,16 +209,16 @@ void QTextEdit_DocumentTitle(QTextEdit* self, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-bool QTextEdit_IsUndoRedoEnabled(QTextEdit* self) {
-	return const_cast<const QTextEdit*>(self)->isUndoRedoEnabled();
+bool QTextEdit_IsUndoRedoEnabled(const QTextEdit* self) {
+	return self->isUndoRedoEnabled();
 }
 
 void QTextEdit_SetUndoRedoEnabled(QTextEdit* self, bool enable) {
 	self->setUndoRedoEnabled(enable);
 }
 
-uintptr_t QTextEdit_LineWrapMode(QTextEdit* self) {
-	QTextEdit::LineWrapMode ret = const_cast<const QTextEdit*>(self)->lineWrapMode();
+uintptr_t QTextEdit_LineWrapMode(const QTextEdit* self) {
+	QTextEdit::LineWrapMode ret = self->lineWrapMode();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -226,16 +226,16 @@ void QTextEdit_SetLineWrapMode(QTextEdit* self, uintptr_t mode) {
 	self->setLineWrapMode(static_cast<QTextEdit::LineWrapMode>(mode));
 }
 
-int QTextEdit_LineWrapColumnOrWidth(QTextEdit* self) {
-	return const_cast<const QTextEdit*>(self)->lineWrapColumnOrWidth();
+int QTextEdit_LineWrapColumnOrWidth(const QTextEdit* self) {
+	return self->lineWrapColumnOrWidth();
 }
 
 void QTextEdit_SetLineWrapColumnOrWidth(QTextEdit* self, int w) {
 	self->setLineWrapColumnOrWidth(static_cast<int>(w));
 }
 
-uintptr_t QTextEdit_WordWrapMode(QTextEdit* self) {
-	QTextOption::WrapMode ret = const_cast<const QTextEdit*>(self)->wordWrapMode();
+uintptr_t QTextEdit_WordWrapMode(const QTextEdit* self) {
+	QTextOption::WrapMode ret = self->wordWrapMode();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -256,8 +256,8 @@ bool QTextEdit_Find2(QTextEdit* self, QRegularExpression* exp) {
 	return self->find(*exp);
 }
 
-void QTextEdit_ToPlainText(QTextEdit* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QTextEdit*>(self)->toPlainText();
+void QTextEdit_ToPlainText(const QTextEdit* self, char** _out, int* _out_Strlen) {
+	QString ret = self->toPlainText();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -265,8 +265,8 @@ void QTextEdit_ToPlainText(QTextEdit* self, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QTextEdit_ToHtml(QTextEdit* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QTextEdit*>(self)->toHtml();
+void QTextEdit_ToHtml(const QTextEdit* self, char** _out, int* _out_Strlen) {
+	QString ret = self->toHtml();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -274,8 +274,8 @@ void QTextEdit_ToHtml(QTextEdit* self, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QTextEdit_ToMarkdown(QTextEdit* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QTextEdit*>(self)->toMarkdown();
+void QTextEdit_ToMarkdown(const QTextEdit* self, char** _out, int* _out_Strlen) {
+	QString ret = self->toMarkdown();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -301,26 +301,26 @@ QMenu* QTextEdit_CreateStandardContextMenuWithPosition(QTextEdit* self, QPoint* 
 	return self->createStandardContextMenu(*position);
 }
 
-QTextCursor* QTextEdit_CursorForPosition(QTextEdit* self, QPoint* pos) {
-	QTextCursor ret = const_cast<const QTextEdit*>(self)->cursorForPosition(*pos);
+QTextCursor* QTextEdit_CursorForPosition(const QTextEdit* self, QPoint* pos) {
+	QTextCursor ret = self->cursorForPosition(*pos);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QTextCursor*>(new QTextCursor(ret));
 }
 
-QRect* QTextEdit_CursorRect(QTextEdit* self, QTextCursor* cursor) {
-	QRect ret = const_cast<const QTextEdit*>(self)->cursorRect(*cursor);
+QRect* QTextEdit_CursorRect(const QTextEdit* self, QTextCursor* cursor) {
+	QRect ret = self->cursorRect(*cursor);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRect*>(new QRect(ret));
 }
 
-QRect* QTextEdit_CursorRect2(QTextEdit* self) {
-	QRect ret = const_cast<const QTextEdit*>(self)->cursorRect();
+QRect* QTextEdit_CursorRect2(const QTextEdit* self) {
+	QRect ret = self->cursorRect();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRect*>(new QRect(ret));
 }
 
-void QTextEdit_AnchorAt(QTextEdit* self, QPoint* pos, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QTextEdit*>(self)->anchorAt(*pos);
+void QTextEdit_AnchorAt(const QTextEdit* self, QPoint* pos, char** _out, int* _out_Strlen) {
+	QString ret = self->anchorAt(*pos);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -328,40 +328,40 @@ void QTextEdit_AnchorAt(QTextEdit* self, QPoint* pos, char** _out, int* _out_Str
 	*_out_Strlen = b.length();
 }
 
-bool QTextEdit_OverwriteMode(QTextEdit* self) {
-	return const_cast<const QTextEdit*>(self)->overwriteMode();
+bool QTextEdit_OverwriteMode(const QTextEdit* self) {
+	return self->overwriteMode();
 }
 
 void QTextEdit_SetOverwriteMode(QTextEdit* self, bool overwrite) {
 	self->setOverwriteMode(overwrite);
 }
 
-int QTextEdit_TabStopWidth(QTextEdit* self) {
-	return const_cast<const QTextEdit*>(self)->tabStopWidth();
+int QTextEdit_TabStopWidth(const QTextEdit* self) {
+	return self->tabStopWidth();
 }
 
 void QTextEdit_SetTabStopWidth(QTextEdit* self, int width) {
 	self->setTabStopWidth(static_cast<int>(width));
 }
 
-double QTextEdit_TabStopDistance(QTextEdit* self) {
-	return const_cast<const QTextEdit*>(self)->tabStopDistance();
+double QTextEdit_TabStopDistance(const QTextEdit* self) {
+	return self->tabStopDistance();
 }
 
 void QTextEdit_SetTabStopDistance(QTextEdit* self, double distance) {
 	self->setTabStopDistance(static_cast<qreal>(distance));
 }
 
-int QTextEdit_CursorWidth(QTextEdit* self) {
-	return const_cast<const QTextEdit*>(self)->cursorWidth();
+int QTextEdit_CursorWidth(const QTextEdit* self) {
+	return self->cursorWidth();
 }
 
 void QTextEdit_SetCursorWidth(QTextEdit* self, int width) {
 	self->setCursorWidth(static_cast<int>(width));
 }
 
-bool QTextEdit_AcceptRichText(QTextEdit* self) {
-	return const_cast<const QTextEdit*>(self)->acceptRichText();
+bool QTextEdit_AcceptRichText(const QTextEdit* self) {
+	return self->acceptRichText();
 }
 
 void QTextEdit_SetAcceptRichText(QTextEdit* self, bool accept) {
@@ -377,8 +377,8 @@ void QTextEdit_SetExtraSelections(QTextEdit* self, QTextEdit__ExtraSelection** s
 	self->setExtraSelections(selections_QList);
 }
 
-void QTextEdit_ExtraSelections(QTextEdit* self, QTextEdit__ExtraSelection*** _out, size_t* _out_len) {
-	QList<QTextEdit::ExtraSelection> ret = const_cast<const QTextEdit*>(self)->extraSelections();
+void QTextEdit_ExtraSelections(const QTextEdit* self, QTextEdit__ExtraSelection*** _out, size_t* _out_len) {
+	QList<QTextEdit::ExtraSelection> ret = self->extraSelections();
 	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
 	QTextEdit__ExtraSelection** __out = static_cast<QTextEdit__ExtraSelection**>(malloc(sizeof(QTextEdit__ExtraSelection**) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {
@@ -392,22 +392,22 @@ void QTextEdit_MoveCursor(QTextEdit* self, uintptr_t operation) {
 	self->moveCursor(static_cast<QTextCursor::MoveOperation>(operation));
 }
 
-bool QTextEdit_CanPaste(QTextEdit* self) {
-	return const_cast<const QTextEdit*>(self)->canPaste();
+bool QTextEdit_CanPaste(const QTextEdit* self) {
+	return self->canPaste();
 }
 
-void QTextEdit_Print(QTextEdit* self, QPagedPaintDevice* printer) {
-	const_cast<const QTextEdit*>(self)->print(printer);
+void QTextEdit_Print(const QTextEdit* self, QPagedPaintDevice* printer) {
+	self->print(printer);
 }
 
-QVariant* QTextEdit_InputMethodQuery(QTextEdit* self, uintptr_t property) {
-	QVariant ret = const_cast<const QTextEdit*>(self)->inputMethodQuery(static_cast<Qt::InputMethodQuery>(property));
+QVariant* QTextEdit_InputMethodQuery(const QTextEdit* self, uintptr_t property) {
+	QVariant ret = self->inputMethodQuery(static_cast<Qt::InputMethodQuery>(property));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVariant*>(new QVariant(ret));
 }
 
-QVariant* QTextEdit_InputMethodQuery2(QTextEdit* self, uintptr_t query, QVariant* argument) {
-	QVariant ret = const_cast<const QTextEdit*>(self)->inputMethodQuery(static_cast<Qt::InputMethodQuery>(query), *argument);
+QVariant* QTextEdit_InputMethodQuery2(const QTextEdit* self, uintptr_t query, QVariant* argument) {
+	QVariant ret = self->inputMethodQuery(static_cast<Qt::InputMethodQuery>(query), *argument);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVariant*>(new QVariant(ret));
 }
@@ -644,8 +644,8 @@ bool QTextEdit_Find24(QTextEdit* self, QRegularExpression* exp, int options) {
 	return self->find(*exp, static_cast<QTextDocument::FindFlags>(options));
 }
 
-void QTextEdit_ToMarkdown1(QTextEdit* self, int features, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QTextEdit*>(self)->toMarkdown(static_cast<QTextDocument::MarkdownFeatures>(features));
+void QTextEdit_ToMarkdown1(const QTextEdit* self, int features, char** _out, int* _out_Strlen) {
+	QString ret = self->toMarkdown(static_cast<QTextDocument::MarkdownFeatures>(features));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));

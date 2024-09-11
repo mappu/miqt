@@ -51,8 +51,8 @@ QPlainTextEdit* QPlainTextEdit_new4(const char* text, size_t text_Strlen, QWidge
 	return new QPlainTextEdit(text_QString, parent);
 }
 
-QMetaObject* QPlainTextEdit_MetaObject(QPlainTextEdit* self) {
-	return (QMetaObject*) const_cast<const QPlainTextEdit*>(self)->metaObject();
+QMetaObject* QPlainTextEdit_MetaObject(const QPlainTextEdit* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QPlainTextEdit_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -77,8 +77,8 @@ void QPlainTextEdit_SetDocument(QPlainTextEdit* self, QTextDocument* document) {
 	self->setDocument(document);
 }
 
-QTextDocument* QPlainTextEdit_Document(QPlainTextEdit* self) {
-	return const_cast<const QPlainTextEdit*>(self)->document();
+QTextDocument* QPlainTextEdit_Document(const QPlainTextEdit* self) {
+	return self->document();
 }
 
 void QPlainTextEdit_SetPlaceholderText(QPlainTextEdit* self, const char* placeholderText, size_t placeholderText_Strlen) {
@@ -86,8 +86,8 @@ void QPlainTextEdit_SetPlaceholderText(QPlainTextEdit* self, const char* placeho
 	self->setPlaceholderText(placeholderText_QString);
 }
 
-void QPlainTextEdit_PlaceholderText(QPlainTextEdit* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QPlainTextEdit*>(self)->placeholderText();
+void QPlainTextEdit_PlaceholderText(const QPlainTextEdit* self, char** _out, int* _out_Strlen) {
+	QString ret = self->placeholderText();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -99,14 +99,14 @@ void QPlainTextEdit_SetTextCursor(QPlainTextEdit* self, QTextCursor* cursor) {
 	self->setTextCursor(*cursor);
 }
 
-QTextCursor* QPlainTextEdit_TextCursor(QPlainTextEdit* self) {
-	QTextCursor ret = const_cast<const QPlainTextEdit*>(self)->textCursor();
+QTextCursor* QPlainTextEdit_TextCursor(const QPlainTextEdit* self) {
+	QTextCursor ret = self->textCursor();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QTextCursor*>(new QTextCursor(ret));
 }
 
-bool QPlainTextEdit_IsReadOnly(QPlainTextEdit* self) {
-	return const_cast<const QPlainTextEdit*>(self)->isReadOnly();
+bool QPlainTextEdit_IsReadOnly(const QPlainTextEdit* self) {
+	return self->isReadOnly();
 }
 
 void QPlainTextEdit_SetReadOnly(QPlainTextEdit* self, bool ro) {
@@ -117,8 +117,8 @@ void QPlainTextEdit_SetTextInteractionFlags(QPlainTextEdit* self, int flags) {
 	self->setTextInteractionFlags(static_cast<Qt::TextInteractionFlags>(flags));
 }
 
-int QPlainTextEdit_TextInteractionFlags(QPlainTextEdit* self) {
-	Qt::TextInteractionFlags ret = const_cast<const QPlainTextEdit*>(self)->textInteractionFlags();
+int QPlainTextEdit_TextInteractionFlags(const QPlainTextEdit* self) {
+	Qt::TextInteractionFlags ret = self->textInteractionFlags();
 	return static_cast<int>(ret);
 }
 
@@ -130,14 +130,14 @@ void QPlainTextEdit_SetCurrentCharFormat(QPlainTextEdit* self, QTextCharFormat* 
 	self->setCurrentCharFormat(*format);
 }
 
-QTextCharFormat* QPlainTextEdit_CurrentCharFormat(QPlainTextEdit* self) {
-	QTextCharFormat ret = const_cast<const QPlainTextEdit*>(self)->currentCharFormat();
+QTextCharFormat* QPlainTextEdit_CurrentCharFormat(const QPlainTextEdit* self) {
+	QTextCharFormat ret = self->currentCharFormat();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QTextCharFormat*>(new QTextCharFormat(ret));
 }
 
-bool QPlainTextEdit_TabChangesFocus(QPlainTextEdit* self) {
-	return const_cast<const QPlainTextEdit*>(self)->tabChangesFocus();
+bool QPlainTextEdit_TabChangesFocus(const QPlainTextEdit* self) {
+	return self->tabChangesFocus();
 }
 
 void QPlainTextEdit_SetTabChangesFocus(QPlainTextEdit* self, bool b) {
@@ -149,8 +149,8 @@ void QPlainTextEdit_SetDocumentTitle(QPlainTextEdit* self, const char* title, si
 	self->setDocumentTitle(title_QString);
 }
 
-void QPlainTextEdit_DocumentTitle(QPlainTextEdit* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QPlainTextEdit*>(self)->documentTitle();
+void QPlainTextEdit_DocumentTitle(const QPlainTextEdit* self, char** _out, int* _out_Strlen) {
+	QString ret = self->documentTitle();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -158,8 +158,8 @@ void QPlainTextEdit_DocumentTitle(QPlainTextEdit* self, char** _out, int* _out_S
 	*_out_Strlen = b.length();
 }
 
-bool QPlainTextEdit_IsUndoRedoEnabled(QPlainTextEdit* self) {
-	return const_cast<const QPlainTextEdit*>(self)->isUndoRedoEnabled();
+bool QPlainTextEdit_IsUndoRedoEnabled(const QPlainTextEdit* self) {
+	return self->isUndoRedoEnabled();
 }
 
 void QPlainTextEdit_SetUndoRedoEnabled(QPlainTextEdit* self, bool enable) {
@@ -170,12 +170,12 @@ void QPlainTextEdit_SetMaximumBlockCount(QPlainTextEdit* self, int maximum) {
 	self->setMaximumBlockCount(static_cast<int>(maximum));
 }
 
-int QPlainTextEdit_MaximumBlockCount(QPlainTextEdit* self) {
-	return const_cast<const QPlainTextEdit*>(self)->maximumBlockCount();
+int QPlainTextEdit_MaximumBlockCount(const QPlainTextEdit* self) {
+	return self->maximumBlockCount();
 }
 
-uintptr_t QPlainTextEdit_LineWrapMode(QPlainTextEdit* self) {
-	QPlainTextEdit::LineWrapMode ret = const_cast<const QPlainTextEdit*>(self)->lineWrapMode();
+uintptr_t QPlainTextEdit_LineWrapMode(const QPlainTextEdit* self) {
+	QPlainTextEdit::LineWrapMode ret = self->lineWrapMode();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -183,8 +183,8 @@ void QPlainTextEdit_SetLineWrapMode(QPlainTextEdit* self, uintptr_t mode) {
 	self->setLineWrapMode(static_cast<QPlainTextEdit::LineWrapMode>(mode));
 }
 
-uintptr_t QPlainTextEdit_WordWrapMode(QPlainTextEdit* self) {
-	QTextOption::WrapMode ret = const_cast<const QPlainTextEdit*>(self)->wordWrapMode();
+uintptr_t QPlainTextEdit_WordWrapMode(const QPlainTextEdit* self) {
+	QTextOption::WrapMode ret = self->wordWrapMode();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -196,16 +196,16 @@ void QPlainTextEdit_SetBackgroundVisible(QPlainTextEdit* self, bool visible) {
 	self->setBackgroundVisible(visible);
 }
 
-bool QPlainTextEdit_BackgroundVisible(QPlainTextEdit* self) {
-	return const_cast<const QPlainTextEdit*>(self)->backgroundVisible();
+bool QPlainTextEdit_BackgroundVisible(const QPlainTextEdit* self) {
+	return self->backgroundVisible();
 }
 
 void QPlainTextEdit_SetCenterOnScroll(QPlainTextEdit* self, bool enabled) {
 	self->setCenterOnScroll(enabled);
 }
 
-bool QPlainTextEdit_CenterOnScroll(QPlainTextEdit* self) {
-	return const_cast<const QPlainTextEdit*>(self)->centerOnScroll();
+bool QPlainTextEdit_CenterOnScroll(const QPlainTextEdit* self) {
+	return self->centerOnScroll();
 }
 
 bool QPlainTextEdit_Find(QPlainTextEdit* self, const char* exp, size_t exp_Strlen) {
@@ -221,8 +221,8 @@ bool QPlainTextEdit_Find2(QPlainTextEdit* self, QRegularExpression* exp) {
 	return self->find(*exp);
 }
 
-void QPlainTextEdit_ToPlainText(QPlainTextEdit* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QPlainTextEdit*>(self)->toPlainText();
+void QPlainTextEdit_ToPlainText(const QPlainTextEdit* self, char** _out, int* _out_Strlen) {
+	QString ret = self->toPlainText();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -248,26 +248,26 @@ QMenu* QPlainTextEdit_CreateStandardContextMenuWithPosition(QPlainTextEdit* self
 	return self->createStandardContextMenu(*position);
 }
 
-QTextCursor* QPlainTextEdit_CursorForPosition(QPlainTextEdit* self, QPoint* pos) {
-	QTextCursor ret = const_cast<const QPlainTextEdit*>(self)->cursorForPosition(*pos);
+QTextCursor* QPlainTextEdit_CursorForPosition(const QPlainTextEdit* self, QPoint* pos) {
+	QTextCursor ret = self->cursorForPosition(*pos);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QTextCursor*>(new QTextCursor(ret));
 }
 
-QRect* QPlainTextEdit_CursorRect(QPlainTextEdit* self, QTextCursor* cursor) {
-	QRect ret = const_cast<const QPlainTextEdit*>(self)->cursorRect(*cursor);
+QRect* QPlainTextEdit_CursorRect(const QPlainTextEdit* self, QTextCursor* cursor) {
+	QRect ret = self->cursorRect(*cursor);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRect*>(new QRect(ret));
 }
 
-QRect* QPlainTextEdit_CursorRect2(QPlainTextEdit* self) {
-	QRect ret = const_cast<const QPlainTextEdit*>(self)->cursorRect();
+QRect* QPlainTextEdit_CursorRect2(const QPlainTextEdit* self) {
+	QRect ret = self->cursorRect();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRect*>(new QRect(ret));
 }
 
-void QPlainTextEdit_AnchorAt(QPlainTextEdit* self, QPoint* pos, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QPlainTextEdit*>(self)->anchorAt(*pos);
+void QPlainTextEdit_AnchorAt(const QPlainTextEdit* self, QPoint* pos, char** _out, int* _out_Strlen) {
+	QString ret = self->anchorAt(*pos);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -275,32 +275,32 @@ void QPlainTextEdit_AnchorAt(QPlainTextEdit* self, QPoint* pos, char** _out, int
 	*_out_Strlen = b.length();
 }
 
-bool QPlainTextEdit_OverwriteMode(QPlainTextEdit* self) {
-	return const_cast<const QPlainTextEdit*>(self)->overwriteMode();
+bool QPlainTextEdit_OverwriteMode(const QPlainTextEdit* self) {
+	return self->overwriteMode();
 }
 
 void QPlainTextEdit_SetOverwriteMode(QPlainTextEdit* self, bool overwrite) {
 	self->setOverwriteMode(overwrite);
 }
 
-int QPlainTextEdit_TabStopWidth(QPlainTextEdit* self) {
-	return const_cast<const QPlainTextEdit*>(self)->tabStopWidth();
+int QPlainTextEdit_TabStopWidth(const QPlainTextEdit* self) {
+	return self->tabStopWidth();
 }
 
 void QPlainTextEdit_SetTabStopWidth(QPlainTextEdit* self, int width) {
 	self->setTabStopWidth(static_cast<int>(width));
 }
 
-double QPlainTextEdit_TabStopDistance(QPlainTextEdit* self) {
-	return const_cast<const QPlainTextEdit*>(self)->tabStopDistance();
+double QPlainTextEdit_TabStopDistance(const QPlainTextEdit* self) {
+	return self->tabStopDistance();
 }
 
 void QPlainTextEdit_SetTabStopDistance(QPlainTextEdit* self, double distance) {
 	self->setTabStopDistance(static_cast<qreal>(distance));
 }
 
-int QPlainTextEdit_CursorWidth(QPlainTextEdit* self) {
-	return const_cast<const QPlainTextEdit*>(self)->cursorWidth();
+int QPlainTextEdit_CursorWidth(const QPlainTextEdit* self) {
+	return self->cursorWidth();
 }
 
 void QPlainTextEdit_SetCursorWidth(QPlainTextEdit* self, int width) {
@@ -316,8 +316,8 @@ void QPlainTextEdit_SetExtraSelections(QPlainTextEdit* self, QTextEdit__ExtraSel
 	self->setExtraSelections(selections_QList);
 }
 
-void QPlainTextEdit_ExtraSelections(QPlainTextEdit* self, QTextEdit__ExtraSelection*** _out, size_t* _out_len) {
-	QList<QTextEdit::ExtraSelection> ret = const_cast<const QPlainTextEdit*>(self)->extraSelections();
+void QPlainTextEdit_ExtraSelections(const QPlainTextEdit* self, QTextEdit__ExtraSelection*** _out, size_t* _out_len) {
+	QList<QTextEdit::ExtraSelection> ret = self->extraSelections();
 	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
 	QTextEdit__ExtraSelection** __out = static_cast<QTextEdit__ExtraSelection**>(malloc(sizeof(QTextEdit__ExtraSelection**) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {
@@ -331,26 +331,26 @@ void QPlainTextEdit_MoveCursor(QPlainTextEdit* self, uintptr_t operation) {
 	self->moveCursor(static_cast<QTextCursor::MoveOperation>(operation));
 }
 
-bool QPlainTextEdit_CanPaste(QPlainTextEdit* self) {
-	return const_cast<const QPlainTextEdit*>(self)->canPaste();
+bool QPlainTextEdit_CanPaste(const QPlainTextEdit* self) {
+	return self->canPaste();
 }
 
-void QPlainTextEdit_Print(QPlainTextEdit* self, QPagedPaintDevice* printer) {
-	const_cast<const QPlainTextEdit*>(self)->print(printer);
+void QPlainTextEdit_Print(const QPlainTextEdit* self, QPagedPaintDevice* printer) {
+	self->print(printer);
 }
 
-int QPlainTextEdit_BlockCount(QPlainTextEdit* self) {
-	return const_cast<const QPlainTextEdit*>(self)->blockCount();
+int QPlainTextEdit_BlockCount(const QPlainTextEdit* self) {
+	return self->blockCount();
 }
 
-QVariant* QPlainTextEdit_InputMethodQuery(QPlainTextEdit* self, uintptr_t property) {
-	QVariant ret = const_cast<const QPlainTextEdit*>(self)->inputMethodQuery(static_cast<Qt::InputMethodQuery>(property));
+QVariant* QPlainTextEdit_InputMethodQuery(const QPlainTextEdit* self, uintptr_t property) {
+	QVariant ret = self->inputMethodQuery(static_cast<Qt::InputMethodQuery>(property));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVariant*>(new QVariant(ret));
 }
 
-QVariant* QPlainTextEdit_InputMethodQuery2(QPlainTextEdit* self, uintptr_t query, QVariant* argument) {
-	QVariant ret = const_cast<const QPlainTextEdit*>(self)->inputMethodQuery(static_cast<Qt::InputMethodQuery>(query), *argument);
+QVariant* QPlainTextEdit_InputMethodQuery2(const QPlainTextEdit* self, uintptr_t query, QVariant* argument) {
+	QVariant ret = self->inputMethodQuery(static_cast<Qt::InputMethodQuery>(query), *argument);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVariant*>(new QVariant(ret));
 }
@@ -574,8 +574,8 @@ QPlainTextDocumentLayout* QPlainTextDocumentLayout_new(QTextDocument* document) 
 	return new QPlainTextDocumentLayout(document);
 }
 
-QMetaObject* QPlainTextDocumentLayout_MetaObject(QPlainTextDocumentLayout* self) {
-	return (QMetaObject*) const_cast<const QPlainTextDocumentLayout*>(self)->metaObject();
+QMetaObject* QPlainTextDocumentLayout_MetaObject(const QPlainTextDocumentLayout* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QPlainTextDocumentLayout_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -600,42 +600,42 @@ void QPlainTextDocumentLayout_Draw(QPlainTextDocumentLayout* self, QPainter* par
 	self->draw(param1, *param2);
 }
 
-int QPlainTextDocumentLayout_HitTest(QPlainTextDocumentLayout* self, QPointF* param1, uintptr_t param2) {
-	return const_cast<const QPlainTextDocumentLayout*>(self)->hitTest(*param1, static_cast<Qt::HitTestAccuracy>(param2));
+int QPlainTextDocumentLayout_HitTest(const QPlainTextDocumentLayout* self, QPointF* param1, uintptr_t param2) {
+	return self->hitTest(*param1, static_cast<Qt::HitTestAccuracy>(param2));
 }
 
-int QPlainTextDocumentLayout_PageCount(QPlainTextDocumentLayout* self) {
-	return const_cast<const QPlainTextDocumentLayout*>(self)->pageCount();
+int QPlainTextDocumentLayout_PageCount(const QPlainTextDocumentLayout* self) {
+	return self->pageCount();
 }
 
-QSizeF* QPlainTextDocumentLayout_DocumentSize(QPlainTextDocumentLayout* self) {
-	QSizeF ret = const_cast<const QPlainTextDocumentLayout*>(self)->documentSize();
+QSizeF* QPlainTextDocumentLayout_DocumentSize(const QPlainTextDocumentLayout* self) {
+	QSizeF ret = self->documentSize();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSizeF*>(new QSizeF(ret));
 }
 
-QRectF* QPlainTextDocumentLayout_FrameBoundingRect(QPlainTextDocumentLayout* self, QTextFrame* param1) {
-	QRectF ret = const_cast<const QPlainTextDocumentLayout*>(self)->frameBoundingRect(param1);
+QRectF* QPlainTextDocumentLayout_FrameBoundingRect(const QPlainTextDocumentLayout* self, QTextFrame* param1) {
+	QRectF ret = self->frameBoundingRect(param1);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRectF*>(new QRectF(ret));
 }
 
-QRectF* QPlainTextDocumentLayout_BlockBoundingRect(QPlainTextDocumentLayout* self, QTextBlock* block) {
-	QRectF ret = const_cast<const QPlainTextDocumentLayout*>(self)->blockBoundingRect(*block);
+QRectF* QPlainTextDocumentLayout_BlockBoundingRect(const QPlainTextDocumentLayout* self, QTextBlock* block) {
+	QRectF ret = self->blockBoundingRect(*block);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRectF*>(new QRectF(ret));
 }
 
-void QPlainTextDocumentLayout_EnsureBlockLayout(QPlainTextDocumentLayout* self, QTextBlock* block) {
-	const_cast<const QPlainTextDocumentLayout*>(self)->ensureBlockLayout(*block);
+void QPlainTextDocumentLayout_EnsureBlockLayout(const QPlainTextDocumentLayout* self, QTextBlock* block) {
+	self->ensureBlockLayout(*block);
 }
 
 void QPlainTextDocumentLayout_SetCursorWidth(QPlainTextDocumentLayout* self, int width) {
 	self->setCursorWidth(static_cast<int>(width));
 }
 
-int QPlainTextDocumentLayout_CursorWidth(QPlainTextDocumentLayout* self) {
-	return const_cast<const QPlainTextDocumentLayout*>(self)->cursorWidth();
+int QPlainTextDocumentLayout_CursorWidth(const QPlainTextDocumentLayout* self) {
+	return self->cursorWidth();
 }
 
 void QPlainTextDocumentLayout_RequestUpdate(QPlainTextDocumentLayout* self) {

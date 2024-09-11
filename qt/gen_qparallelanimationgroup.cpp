@@ -20,8 +20,8 @@ QParallelAnimationGroup* QParallelAnimationGroup_new2(QObject* parent) {
 	return new QParallelAnimationGroup(parent);
 }
 
-QMetaObject* QParallelAnimationGroup_MetaObject(QParallelAnimationGroup* self) {
-	return (QMetaObject*) const_cast<const QParallelAnimationGroup*>(self)->metaObject();
+QMetaObject* QParallelAnimationGroup_MetaObject(const QParallelAnimationGroup* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QParallelAnimationGroup_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -42,8 +42,8 @@ void QParallelAnimationGroup_TrUtf8(const char* s, char** _out, int* _out_Strlen
 	*_out_Strlen = b.length();
 }
 
-int QParallelAnimationGroup_Duration(QParallelAnimationGroup* self) {
-	return const_cast<const QParallelAnimationGroup*>(self)->duration();
+int QParallelAnimationGroup_Duration(const QParallelAnimationGroup* self) {
+	return self->duration();
 }
 
 void QParallelAnimationGroup_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {

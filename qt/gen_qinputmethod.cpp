@@ -15,8 +15,8 @@ extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
 }
 
-QMetaObject* QInputMethod_MetaObject(QInputMethod* self) {
-	return (QMetaObject*) const_cast<const QInputMethod*>(self)->metaObject();
+QMetaObject* QInputMethod_MetaObject(const QInputMethod* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QInputMethod_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -37,8 +37,8 @@ void QInputMethod_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-QTransform* QInputMethod_InputItemTransform(QInputMethod* self) {
-	QTransform ret = const_cast<const QInputMethod*>(self)->inputItemTransform();
+QTransform* QInputMethod_InputItemTransform(const QInputMethod* self) {
+	QTransform ret = self->inputItemTransform();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QTransform*>(new QTransform(ret));
 }
@@ -47,8 +47,8 @@ void QInputMethod_SetInputItemTransform(QInputMethod* self, QTransform* transfor
 	self->setInputItemTransform(*transform);
 }
 
-QRectF* QInputMethod_InputItemRectangle(QInputMethod* self) {
-	QRectF ret = const_cast<const QInputMethod*>(self)->inputItemRectangle();
+QRectF* QInputMethod_InputItemRectangle(const QInputMethod* self) {
+	QRectF ret = self->inputItemRectangle();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRectF*>(new QRectF(ret));
 }
@@ -57,50 +57,50 @@ void QInputMethod_SetInputItemRectangle(QInputMethod* self, QRectF* rect) {
 	self->setInputItemRectangle(*rect);
 }
 
-QRectF* QInputMethod_CursorRectangle(QInputMethod* self) {
-	QRectF ret = const_cast<const QInputMethod*>(self)->cursorRectangle();
+QRectF* QInputMethod_CursorRectangle(const QInputMethod* self) {
+	QRectF ret = self->cursorRectangle();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRectF*>(new QRectF(ret));
 }
 
-QRectF* QInputMethod_AnchorRectangle(QInputMethod* self) {
-	QRectF ret = const_cast<const QInputMethod*>(self)->anchorRectangle();
+QRectF* QInputMethod_AnchorRectangle(const QInputMethod* self) {
+	QRectF ret = self->anchorRectangle();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRectF*>(new QRectF(ret));
 }
 
-QRectF* QInputMethod_KeyboardRectangle(QInputMethod* self) {
-	QRectF ret = const_cast<const QInputMethod*>(self)->keyboardRectangle();
+QRectF* QInputMethod_KeyboardRectangle(const QInputMethod* self) {
+	QRectF ret = self->keyboardRectangle();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRectF*>(new QRectF(ret));
 }
 
-QRectF* QInputMethod_InputItemClipRectangle(QInputMethod* self) {
-	QRectF ret = const_cast<const QInputMethod*>(self)->inputItemClipRectangle();
+QRectF* QInputMethod_InputItemClipRectangle(const QInputMethod* self) {
+	QRectF ret = self->inputItemClipRectangle();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRectF*>(new QRectF(ret));
 }
 
-bool QInputMethod_IsVisible(QInputMethod* self) {
-	return const_cast<const QInputMethod*>(self)->isVisible();
+bool QInputMethod_IsVisible(const QInputMethod* self) {
+	return self->isVisible();
 }
 
 void QInputMethod_SetVisible(QInputMethod* self, bool visible) {
 	self->setVisible(visible);
 }
 
-bool QInputMethod_IsAnimating(QInputMethod* self) {
-	return const_cast<const QInputMethod*>(self)->isAnimating();
+bool QInputMethod_IsAnimating(const QInputMethod* self) {
+	return self->isAnimating();
 }
 
-QLocale* QInputMethod_Locale(QInputMethod* self) {
-	QLocale ret = const_cast<const QInputMethod*>(self)->locale();
+QLocale* QInputMethod_Locale(const QInputMethod* self) {
+	QLocale ret = self->locale();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QLocale*>(new QLocale(ret));
 }
 
-uintptr_t QInputMethod_InputDirection(QInputMethod* self) {
-	Qt::LayoutDirection ret = const_cast<const QInputMethod*>(self)->inputDirection();
+uintptr_t QInputMethod_InputDirection(const QInputMethod* self) {
+	Qt::LayoutDirection ret = self->inputDirection();
 	return static_cast<uintptr_t>(ret);
 }
 

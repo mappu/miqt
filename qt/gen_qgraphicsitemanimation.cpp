@@ -25,8 +25,8 @@ QGraphicsItemAnimation* QGraphicsItemAnimation_new2(QObject* parent) {
 	return new QGraphicsItemAnimation(parent);
 }
 
-QMetaObject* QGraphicsItemAnimation_MetaObject(QGraphicsItemAnimation* self) {
-	return (QMetaObject*) const_cast<const QGraphicsItemAnimation*>(self)->metaObject();
+QMetaObject* QGraphicsItemAnimation_MetaObject(const QGraphicsItemAnimation* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QGraphicsItemAnimation_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -47,24 +47,24 @@ void QGraphicsItemAnimation_TrUtf8(const char* s, char** _out, int* _out_Strlen)
 	*_out_Strlen = b.length();
 }
 
-QGraphicsItem* QGraphicsItemAnimation_Item(QGraphicsItemAnimation* self) {
-	return const_cast<const QGraphicsItemAnimation*>(self)->item();
+QGraphicsItem* QGraphicsItemAnimation_Item(const QGraphicsItemAnimation* self) {
+	return self->item();
 }
 
 void QGraphicsItemAnimation_SetItem(QGraphicsItemAnimation* self, QGraphicsItem* item) {
 	self->setItem(item);
 }
 
-QTimeLine* QGraphicsItemAnimation_TimeLine(QGraphicsItemAnimation* self) {
-	return const_cast<const QGraphicsItemAnimation*>(self)->timeLine();
+QTimeLine* QGraphicsItemAnimation_TimeLine(const QGraphicsItemAnimation* self) {
+	return self->timeLine();
 }
 
 void QGraphicsItemAnimation_SetTimeLine(QGraphicsItemAnimation* self, QTimeLine* timeLine) {
 	self->setTimeLine(timeLine);
 }
 
-QPointF* QGraphicsItemAnimation_PosAt(QGraphicsItemAnimation* self, double step) {
-	QPointF ret = const_cast<const QGraphicsItemAnimation*>(self)->posAt(static_cast<qreal>(step));
+QPointF* QGraphicsItemAnimation_PosAt(const QGraphicsItemAnimation* self, double step) {
+	QPointF ret = self->posAt(static_cast<qreal>(step));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPointF*>(new QPointF(ret));
 }
@@ -73,56 +73,56 @@ void QGraphicsItemAnimation_SetPosAt(QGraphicsItemAnimation* self, double step, 
 	self->setPosAt(static_cast<qreal>(step), *pos);
 }
 
-QMatrix* QGraphicsItemAnimation_MatrixAt(QGraphicsItemAnimation* self, double step) {
-	QMatrix ret = const_cast<const QGraphicsItemAnimation*>(self)->matrixAt(static_cast<qreal>(step));
+QMatrix* QGraphicsItemAnimation_MatrixAt(const QGraphicsItemAnimation* self, double step) {
+	QMatrix ret = self->matrixAt(static_cast<qreal>(step));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QMatrix*>(new QMatrix(ret));
 }
 
-QTransform* QGraphicsItemAnimation_TransformAt(QGraphicsItemAnimation* self, double step) {
-	QTransform ret = const_cast<const QGraphicsItemAnimation*>(self)->transformAt(static_cast<qreal>(step));
+QTransform* QGraphicsItemAnimation_TransformAt(const QGraphicsItemAnimation* self, double step) {
+	QTransform ret = self->transformAt(static_cast<qreal>(step));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QTransform*>(new QTransform(ret));
 }
 
-double QGraphicsItemAnimation_RotationAt(QGraphicsItemAnimation* self, double step) {
-	return const_cast<const QGraphicsItemAnimation*>(self)->rotationAt(static_cast<qreal>(step));
+double QGraphicsItemAnimation_RotationAt(const QGraphicsItemAnimation* self, double step) {
+	return self->rotationAt(static_cast<qreal>(step));
 }
 
 void QGraphicsItemAnimation_SetRotationAt(QGraphicsItemAnimation* self, double step, double angle) {
 	self->setRotationAt(static_cast<qreal>(step), static_cast<qreal>(angle));
 }
 
-double QGraphicsItemAnimation_XTranslationAt(QGraphicsItemAnimation* self, double step) {
-	return const_cast<const QGraphicsItemAnimation*>(self)->xTranslationAt(static_cast<qreal>(step));
+double QGraphicsItemAnimation_XTranslationAt(const QGraphicsItemAnimation* self, double step) {
+	return self->xTranslationAt(static_cast<qreal>(step));
 }
 
-double QGraphicsItemAnimation_YTranslationAt(QGraphicsItemAnimation* self, double step) {
-	return const_cast<const QGraphicsItemAnimation*>(self)->yTranslationAt(static_cast<qreal>(step));
+double QGraphicsItemAnimation_YTranslationAt(const QGraphicsItemAnimation* self, double step) {
+	return self->yTranslationAt(static_cast<qreal>(step));
 }
 
 void QGraphicsItemAnimation_SetTranslationAt(QGraphicsItemAnimation* self, double step, double dx, double dy) {
 	self->setTranslationAt(static_cast<qreal>(step), static_cast<qreal>(dx), static_cast<qreal>(dy));
 }
 
-double QGraphicsItemAnimation_VerticalScaleAt(QGraphicsItemAnimation* self, double step) {
-	return const_cast<const QGraphicsItemAnimation*>(self)->verticalScaleAt(static_cast<qreal>(step));
+double QGraphicsItemAnimation_VerticalScaleAt(const QGraphicsItemAnimation* self, double step) {
+	return self->verticalScaleAt(static_cast<qreal>(step));
 }
 
-double QGraphicsItemAnimation_HorizontalScaleAt(QGraphicsItemAnimation* self, double step) {
-	return const_cast<const QGraphicsItemAnimation*>(self)->horizontalScaleAt(static_cast<qreal>(step));
+double QGraphicsItemAnimation_HorizontalScaleAt(const QGraphicsItemAnimation* self, double step) {
+	return self->horizontalScaleAt(static_cast<qreal>(step));
 }
 
 void QGraphicsItemAnimation_SetScaleAt(QGraphicsItemAnimation* self, double step, double sx, double sy) {
 	self->setScaleAt(static_cast<qreal>(step), static_cast<qreal>(sx), static_cast<qreal>(sy));
 }
 
-double QGraphicsItemAnimation_VerticalShearAt(QGraphicsItemAnimation* self, double step) {
-	return const_cast<const QGraphicsItemAnimation*>(self)->verticalShearAt(static_cast<qreal>(step));
+double QGraphicsItemAnimation_VerticalShearAt(const QGraphicsItemAnimation* self, double step) {
+	return self->verticalShearAt(static_cast<qreal>(step));
 }
 
-double QGraphicsItemAnimation_HorizontalShearAt(QGraphicsItemAnimation* self, double step) {
-	return const_cast<const QGraphicsItemAnimation*>(self)->horizontalShearAt(static_cast<qreal>(step));
+double QGraphicsItemAnimation_HorizontalShearAt(const QGraphicsItemAnimation* self, double step) {
+	return self->horizontalShearAt(static_cast<qreal>(step));
 }
 
 void QGraphicsItemAnimation_SetShearAt(QGraphicsItemAnimation* self, double step, double sh, double sv) {

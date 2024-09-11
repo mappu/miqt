@@ -29,8 +29,8 @@ QKeySequenceEdit* QKeySequenceEdit_new4(QKeySequence* keySequence, QWidget* pare
 	return new QKeySequenceEdit(*keySequence, parent);
 }
 
-QMetaObject* QKeySequenceEdit_MetaObject(QKeySequenceEdit* self) {
-	return (QMetaObject*) const_cast<const QKeySequenceEdit*>(self)->metaObject();
+QMetaObject* QKeySequenceEdit_MetaObject(const QKeySequenceEdit* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QKeySequenceEdit_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -51,8 +51,8 @@ void QKeySequenceEdit_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-QKeySequence* QKeySequenceEdit_KeySequence(QKeySequenceEdit* self) {
-	QKeySequence ret = const_cast<const QKeySequenceEdit*>(self)->keySequence();
+QKeySequence* QKeySequenceEdit_KeySequence(const QKeySequenceEdit* self) {
+	QKeySequence ret = self->keySequence();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QKeySequence*>(new QKeySequence(ret));
 }

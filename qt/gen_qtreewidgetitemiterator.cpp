@@ -69,8 +69,8 @@ QTreeWidgetItemIterator* QTreeWidgetItemIterator_OperatorMinusAssign(QTreeWidget
 	return &ret;
 }
 
-QTreeWidgetItem* QTreeWidgetItemIterator_OperatorMultiply(QTreeWidgetItemIterator* self) {
-	return const_cast<const QTreeWidgetItemIterator*>(self)->operator*();
+QTreeWidgetItem* QTreeWidgetItemIterator_OperatorMultiply(const QTreeWidgetItemIterator* self) {
+	return self->operator*();
 }
 
 void QTreeWidgetItemIterator_Delete(QTreeWidgetItemIterator* self) {

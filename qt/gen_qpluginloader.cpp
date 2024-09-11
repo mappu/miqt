@@ -33,8 +33,8 @@ QPluginLoader* QPluginLoader_new4(const char* fileName, size_t fileName_Strlen, 
 	return new QPluginLoader(fileName_QString, parent);
 }
 
-QMetaObject* QPluginLoader_MetaObject(QPluginLoader* self) {
-	return (QMetaObject*) const_cast<const QPluginLoader*>(self)->metaObject();
+QMetaObject* QPluginLoader_MetaObject(const QPluginLoader* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QPluginLoader_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -59,8 +59,8 @@ QObject* QPluginLoader_Instance(QPluginLoader* self) {
 	return self->instance();
 }
 
-QJsonObject* QPluginLoader_MetaData(QPluginLoader* self) {
-	QJsonObject ret = const_cast<const QPluginLoader*>(self)->metaData();
+QJsonObject* QPluginLoader_MetaData(const QPluginLoader* self) {
+	QJsonObject ret = self->metaData();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QJsonObject*>(new QJsonObject(ret));
 }
@@ -95,8 +95,8 @@ bool QPluginLoader_Unload(QPluginLoader* self) {
 	return self->unload();
 }
 
-bool QPluginLoader_IsLoaded(QPluginLoader* self) {
-	return const_cast<const QPluginLoader*>(self)->isLoaded();
+bool QPluginLoader_IsLoaded(const QPluginLoader* self) {
+	return self->isLoaded();
 }
 
 void QPluginLoader_SetFileName(QPluginLoader* self, const char* fileName, size_t fileName_Strlen) {
@@ -104,8 +104,8 @@ void QPluginLoader_SetFileName(QPluginLoader* self, const char* fileName, size_t
 	self->setFileName(fileName_QString);
 }
 
-void QPluginLoader_FileName(QPluginLoader* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QPluginLoader*>(self)->fileName();
+void QPluginLoader_FileName(const QPluginLoader* self, char** _out, int* _out_Strlen) {
+	QString ret = self->fileName();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -113,8 +113,8 @@ void QPluginLoader_FileName(QPluginLoader* self, char** _out, int* _out_Strlen) 
 	*_out_Strlen = b.length();
 }
 
-void QPluginLoader_ErrorString(QPluginLoader* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QPluginLoader*>(self)->errorString();
+void QPluginLoader_ErrorString(const QPluginLoader* self, char** _out, int* _out_Strlen) {
+	QString ret = self->errorString();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -126,8 +126,8 @@ void QPluginLoader_SetLoadHints(QPluginLoader* self, int loadHints) {
 	self->setLoadHints(static_cast<QLibrary::LoadHints>(loadHints));
 }
 
-int QPluginLoader_LoadHints(QPluginLoader* self) {
-	QLibrary::LoadHints ret = const_cast<const QPluginLoader*>(self)->loadHints();
+int QPluginLoader_LoadHints(const QPluginLoader* self) {
+	QLibrary::LoadHints ret = self->loadHints();
 	return static_cast<int>(ret);
 }
 

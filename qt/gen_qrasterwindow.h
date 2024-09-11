@@ -23,7 +23,7 @@ typedef struct QWindow QWindow;
 
 QRasterWindow* QRasterWindow_new();
 QRasterWindow* QRasterWindow_new2(QWindow* parent);
-QMetaObject* QRasterWindow_MetaObject(QRasterWindow* self);
+QMetaObject* QRasterWindow_MetaObject(const QRasterWindow* self);
 void QRasterWindow_Tr(const char* s, char** _out, int* _out_Strlen);
 void QRasterWindow_TrUtf8(const char* s, char** _out, int* _out_Strlen);
 void QRasterWindow_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);

@@ -25,8 +25,8 @@ QDialog* QDialog_new3(QWidget* parent, int f) {
 	return new QDialog(parent, static_cast<Qt::WindowFlags>(f));
 }
 
-QMetaObject* QDialog_MetaObject(QDialog* self) {
-	return (QMetaObject*) const_cast<const QDialog*>(self)->metaObject();
+QMetaObject* QDialog_MetaObject(const QDialog* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QDialog_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -47,8 +47,8 @@ void QDialog_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-int QDialog_Result(QDialog* self) {
-	return const_cast<const QDialog*>(self)->result();
+int QDialog_Result(const QDialog* self) {
+	return self->result();
 }
 
 void QDialog_SetVisible(QDialog* self, bool visible) {
@@ -59,8 +59,8 @@ void QDialog_SetOrientation(QDialog* self, uintptr_t orientation) {
 	self->setOrientation(static_cast<Qt::Orientation>(orientation));
 }
 
-uintptr_t QDialog_Orientation(QDialog* self) {
-	Qt::Orientation ret = const_cast<const QDialog*>(self)->orientation();
+uintptr_t QDialog_Orientation(const QDialog* self) {
+	Qt::Orientation ret = self->orientation();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -68,18 +68,18 @@ void QDialog_SetExtension(QDialog* self, QWidget* extension) {
 	self->setExtension(extension);
 }
 
-QWidget* QDialog_Extension(QDialog* self) {
-	return const_cast<const QDialog*>(self)->extension();
+QWidget* QDialog_Extension(const QDialog* self) {
+	return self->extension();
 }
 
-QSize* QDialog_SizeHint(QDialog* self) {
-	QSize ret = const_cast<const QDialog*>(self)->sizeHint();
+QSize* QDialog_SizeHint(const QDialog* self) {
+	QSize ret = self->sizeHint();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
 
-QSize* QDialog_MinimumSizeHint(QDialog* self) {
-	QSize ret = const_cast<const QDialog*>(self)->minimumSizeHint();
+QSize* QDialog_MinimumSizeHint(const QDialog* self) {
+	QSize ret = self->minimumSizeHint();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
@@ -88,8 +88,8 @@ void QDialog_SetSizeGripEnabled(QDialog* self, bool sizeGripEnabled) {
 	self->setSizeGripEnabled(sizeGripEnabled);
 }
 
-bool QDialog_IsSizeGripEnabled(QDialog* self) {
-	return const_cast<const QDialog*>(self)->isSizeGripEnabled();
+bool QDialog_IsSizeGripEnabled(const QDialog* self) {
+	return self->isSizeGripEnabled();
 }
 
 void QDialog_SetModal(QDialog* self, bool modal) {

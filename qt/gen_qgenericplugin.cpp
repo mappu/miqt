@@ -12,8 +12,8 @@ extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
 }
 
-QMetaObject* QGenericPlugin_MetaObject(QGenericPlugin* self) {
-	return (QMetaObject*) const_cast<const QGenericPlugin*>(self)->metaObject();
+QMetaObject* QGenericPlugin_MetaObject(const QGenericPlugin* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QGenericPlugin_Tr(const char* s, char** _out, int* _out_Strlen) {

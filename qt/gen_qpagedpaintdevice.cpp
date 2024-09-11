@@ -36,8 +36,8 @@ bool QPagedPaintDevice_SetPageMargins2(QPagedPaintDevice* self, QMarginsF* margi
 	return self->setPageMargins(*margins, static_cast<QPageLayout::Unit>(units));
 }
 
-QPageLayout* QPagedPaintDevice_PageLayout(QPagedPaintDevice* self) {
-	QPageLayout ret = const_cast<const QPagedPaintDevice*>(self)->pageLayout();
+QPageLayout* QPagedPaintDevice_PageLayout(const QPagedPaintDevice* self) {
+	QPageLayout ret = self->pageLayout();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPageLayout*>(new QPageLayout(ret));
 }
@@ -46,8 +46,8 @@ void QPagedPaintDevice_SetPageSizeWithSize(QPagedPaintDevice* self, uintptr_t si
 	self->setPageSize(static_cast<QPagedPaintDevice::PageSize>(size));
 }
 
-uintptr_t QPagedPaintDevice_PageSize(QPagedPaintDevice* self) {
-	QPagedPaintDevice::PageSize ret = const_cast<const QPagedPaintDevice*>(self)->pageSize();
+uintptr_t QPagedPaintDevice_PageSize(const QPagedPaintDevice* self) {
+	QPagedPaintDevice::PageSize ret = self->pageSize();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -55,8 +55,8 @@ void QPagedPaintDevice_SetPageSizeMM(QPagedPaintDevice* self, QSizeF* size) {
 	self->setPageSizeMM(*size);
 }
 
-QSizeF* QPagedPaintDevice_PageSizeMM(QPagedPaintDevice* self) {
-	QSizeF ret = const_cast<const QPagedPaintDevice*>(self)->pageSizeMM();
+QSizeF* QPagedPaintDevice_PageSizeMM(const QPagedPaintDevice* self) {
+	QSizeF ret = self->pageSizeMM();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSizeF*>(new QSizeF(ret));
 }
@@ -65,8 +65,8 @@ void QPagedPaintDevice_SetMargins(QPagedPaintDevice* self, QPagedPaintDevice__Ma
 	self->setMargins(*margins);
 }
 
-QPagedPaintDevice__Margins* QPagedPaintDevice_Margins(QPagedPaintDevice* self) {
-	QPagedPaintDevice::Margins ret = const_cast<const QPagedPaintDevice*>(self)->margins();
+QPagedPaintDevice__Margins* QPagedPaintDevice_Margins(const QPagedPaintDevice* self) {
+	QPagedPaintDevice::Margins ret = self->margins();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPagedPaintDevice::Margins*>(new QPagedPaintDevice::Margins(ret));
 }

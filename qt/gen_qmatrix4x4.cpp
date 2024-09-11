@@ -48,8 +48,8 @@ QMatrix4x4* QMatrix4x4_new8(QMatrix4x4* param1) {
 	return new QMatrix4x4(*param1);
 }
 
-QVector4D* QMatrix4x4_Column(QMatrix4x4* self, int index) {
-	QVector4D ret = const_cast<const QMatrix4x4*>(self)->column(static_cast<int>(index));
+QVector4D* QMatrix4x4_Column(const QMatrix4x4* self, int index) {
+	QVector4D ret = self->column(static_cast<int>(index));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVector4D*>(new QVector4D(ret));
 }
@@ -58,8 +58,8 @@ void QMatrix4x4_SetColumn(QMatrix4x4* self, int index, QVector4D* value) {
 	self->setColumn(static_cast<int>(index), *value);
 }
 
-QVector4D* QMatrix4x4_Row(QMatrix4x4* self, int index) {
-	QVector4D ret = const_cast<const QMatrix4x4*>(self)->row(static_cast<int>(index));
+QVector4D* QMatrix4x4_Row(const QMatrix4x4* self, int index) {
+	QVector4D ret = self->row(static_cast<int>(index));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVector4D*>(new QVector4D(ret));
 }
@@ -68,12 +68,12 @@ void QMatrix4x4_SetRow(QMatrix4x4* self, int index, QVector4D* value) {
 	self->setRow(static_cast<int>(index), *value);
 }
 
-bool QMatrix4x4_IsAffine(QMatrix4x4* self) {
-	return const_cast<const QMatrix4x4*>(self)->isAffine();
+bool QMatrix4x4_IsAffine(const QMatrix4x4* self) {
+	return self->isAffine();
 }
 
-bool QMatrix4x4_IsIdentity(QMatrix4x4* self) {
-	return const_cast<const QMatrix4x4*>(self)->isIdentity();
+bool QMatrix4x4_IsIdentity(const QMatrix4x4* self) {
+	return self->isIdentity();
 }
 
 void QMatrix4x4_SetToIdentity(QMatrix4x4* self) {
@@ -84,18 +84,18 @@ void QMatrix4x4_Fill(QMatrix4x4* self, float value) {
 	self->fill(static_cast<float>(value));
 }
 
-double QMatrix4x4_Determinant(QMatrix4x4* self) {
-	return const_cast<const QMatrix4x4*>(self)->determinant();
+double QMatrix4x4_Determinant(const QMatrix4x4* self) {
+	return self->determinant();
 }
 
-QMatrix4x4* QMatrix4x4_Inverted(QMatrix4x4* self) {
-	QMatrix4x4 ret = const_cast<const QMatrix4x4*>(self)->inverted();
+QMatrix4x4* QMatrix4x4_Inverted(const QMatrix4x4* self) {
+	QMatrix4x4 ret = self->inverted();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QMatrix4x4*>(new QMatrix4x4(ret));
 }
 
-QMatrix4x4* QMatrix4x4_Transposed(QMatrix4x4* self) {
-	QMatrix4x4 ret = const_cast<const QMatrix4x4*>(self)->transposed();
+QMatrix4x4* QMatrix4x4_Transposed(const QMatrix4x4* self) {
+	QMatrix4x4 ret = self->transposed();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QMatrix4x4*>(new QMatrix4x4(ret));
 }
@@ -130,12 +130,12 @@ QMatrix4x4* QMatrix4x4_OperatorDivideAssign(QMatrix4x4* self, float divisor) {
 	return &ret;
 }
 
-bool QMatrix4x4_OperatorEqual(QMatrix4x4* self, QMatrix4x4* other) {
-	return const_cast<const QMatrix4x4*>(self)->operator==(*other);
+bool QMatrix4x4_OperatorEqual(const QMatrix4x4* self, QMatrix4x4* other) {
+	return self->operator==(*other);
 }
 
-bool QMatrix4x4_OperatorNotEqual(QMatrix4x4* self, QMatrix4x4* other) {
-	return const_cast<const QMatrix4x4*>(self)->operator!=(*other);
+bool QMatrix4x4_OperatorNotEqual(const QMatrix4x4* self, QMatrix4x4* other) {
+	return self->operator!=(*other);
 }
 
 void QMatrix4x4_Scale(QMatrix4x4* self, QVector3D* vector) {
@@ -214,66 +214,66 @@ void QMatrix4x4_FlipCoordinates(QMatrix4x4* self) {
 	self->flipCoordinates();
 }
 
-void QMatrix4x4_CopyDataTo(QMatrix4x4* self, float* values) {
-	const_cast<const QMatrix4x4*>(self)->copyDataTo(static_cast<float*>(values));
+void QMatrix4x4_CopyDataTo(const QMatrix4x4* self, float* values) {
+	self->copyDataTo(static_cast<float*>(values));
 }
 
-QMatrix* QMatrix4x4_ToAffine(QMatrix4x4* self) {
-	QMatrix ret = const_cast<const QMatrix4x4*>(self)->toAffine();
+QMatrix* QMatrix4x4_ToAffine(const QMatrix4x4* self) {
+	QMatrix ret = self->toAffine();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QMatrix*>(new QMatrix(ret));
 }
 
-QTransform* QMatrix4x4_ToTransform(QMatrix4x4* self) {
-	QTransform ret = const_cast<const QMatrix4x4*>(self)->toTransform();
+QTransform* QMatrix4x4_ToTransform(const QMatrix4x4* self) {
+	QTransform ret = self->toTransform();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QTransform*>(new QTransform(ret));
 }
 
-QTransform* QMatrix4x4_ToTransformWithDistanceToPlane(QMatrix4x4* self, float distanceToPlane) {
-	QTransform ret = const_cast<const QMatrix4x4*>(self)->toTransform(static_cast<float>(distanceToPlane));
+QTransform* QMatrix4x4_ToTransformWithDistanceToPlane(const QMatrix4x4* self, float distanceToPlane) {
+	QTransform ret = self->toTransform(static_cast<float>(distanceToPlane));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QTransform*>(new QTransform(ret));
 }
 
-QPoint* QMatrix4x4_Map(QMatrix4x4* self, QPoint* point) {
-	QPoint ret = const_cast<const QMatrix4x4*>(self)->map(*point);
+QPoint* QMatrix4x4_Map(const QMatrix4x4* self, QPoint* point) {
+	QPoint ret = self->map(*point);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPoint*>(new QPoint(ret));
 }
 
-QPointF* QMatrix4x4_MapWithPoint(QMatrix4x4* self, QPointF* point) {
-	QPointF ret = const_cast<const QMatrix4x4*>(self)->map(*point);
+QPointF* QMatrix4x4_MapWithPoint(const QMatrix4x4* self, QPointF* point) {
+	QPointF ret = self->map(*point);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPointF*>(new QPointF(ret));
 }
 
-QVector3D* QMatrix4x4_Map2(QMatrix4x4* self, QVector3D* point) {
-	QVector3D ret = const_cast<const QMatrix4x4*>(self)->map(*point);
+QVector3D* QMatrix4x4_Map2(const QMatrix4x4* self, QVector3D* point) {
+	QVector3D ret = self->map(*point);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVector3D*>(new QVector3D(ret));
 }
 
-QVector3D* QMatrix4x4_MapVector(QMatrix4x4* self, QVector3D* vector) {
-	QVector3D ret = const_cast<const QMatrix4x4*>(self)->mapVector(*vector);
+QVector3D* QMatrix4x4_MapVector(const QMatrix4x4* self, QVector3D* vector) {
+	QVector3D ret = self->mapVector(*vector);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVector3D*>(new QVector3D(ret));
 }
 
-QVector4D* QMatrix4x4_Map3(QMatrix4x4* self, QVector4D* point) {
-	QVector4D ret = const_cast<const QMatrix4x4*>(self)->map(*point);
+QVector4D* QMatrix4x4_Map3(const QMatrix4x4* self, QVector4D* point) {
+	QVector4D ret = self->map(*point);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVector4D*>(new QVector4D(ret));
 }
 
-QRect* QMatrix4x4_MapRect(QMatrix4x4* self, QRect* rect) {
-	QRect ret = const_cast<const QMatrix4x4*>(self)->mapRect(*rect);
+QRect* QMatrix4x4_MapRect(const QMatrix4x4* self, QRect* rect) {
+	QRect ret = self->mapRect(*rect);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRect*>(new QRect(ret));
 }
 
-QRectF* QMatrix4x4_MapRectWithRect(QMatrix4x4* self, QRectF* rect) {
-	QRectF ret = const_cast<const QMatrix4x4*>(self)->mapRect(*rect);
+QRectF* QMatrix4x4_MapRectWithRect(const QMatrix4x4* self, QRectF* rect) {
+	QRectF ret = self->mapRect(*rect);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRectF*>(new QRectF(ret));
 }
@@ -282,20 +282,20 @@ float* QMatrix4x4_Data(QMatrix4x4* self) {
 	return self->data();
 }
 
-const float* QMatrix4x4_Data2(QMatrix4x4* self) {
-	return (const float*) const_cast<const QMatrix4x4*>(self)->data();
+const float* QMatrix4x4_Data2(const QMatrix4x4* self) {
+	return (const float*) self->data();
 }
 
-const float* QMatrix4x4_ConstData(QMatrix4x4* self) {
-	return (const float*) const_cast<const QMatrix4x4*>(self)->constData();
+const float* QMatrix4x4_ConstData(const QMatrix4x4* self) {
+	return (const float*) self->constData();
 }
 
 void QMatrix4x4_Optimize(QMatrix4x4* self) {
 	self->optimize();
 }
 
-QMatrix4x4* QMatrix4x4_Inverted1(QMatrix4x4* self, bool* invertible) {
-	QMatrix4x4 ret = const_cast<const QMatrix4x4*>(self)->inverted(invertible);
+QMatrix4x4* QMatrix4x4_Inverted1(const QMatrix4x4* self, bool* invertible) {
+	QMatrix4x4 ret = self->inverted(invertible);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QMatrix4x4*>(new QMatrix4x4(ret));
 }

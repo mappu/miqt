@@ -27,8 +27,8 @@ QBoxLayout* QBoxLayout_new2(uintptr_t param1, QWidget* parent) {
 	return new QBoxLayout(static_cast<QBoxLayout::Direction>(param1), parent);
 }
 
-QMetaObject* QBoxLayout_MetaObject(QBoxLayout* self) {
-	return (QMetaObject*) const_cast<const QBoxLayout*>(self)->metaObject();
+QMetaObject* QBoxLayout_MetaObject(const QBoxLayout* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QBoxLayout_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -49,8 +49,8 @@ void QBoxLayout_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-uintptr_t QBoxLayout_Direction(QBoxLayout* self) {
-	QBoxLayout::Direction ret = const_cast<const QBoxLayout*>(self)->direction();
+uintptr_t QBoxLayout_Direction(const QBoxLayout* self) {
+	QBoxLayout::Direction ret = self->direction();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -110,8 +110,8 @@ void QBoxLayout_InsertItem(QBoxLayout* self, int index, QLayoutItem* param2) {
 	self->insertItem(static_cast<int>(index), param2);
 }
 
-int QBoxLayout_Spacing(QBoxLayout* self) {
-	return const_cast<const QBoxLayout*>(self)->spacing();
+int QBoxLayout_Spacing(const QBoxLayout* self) {
+	return self->spacing();
 }
 
 void QBoxLayout_SetSpacing(QBoxLayout* self, int spacing) {
@@ -130,42 +130,42 @@ void QBoxLayout_SetStretch(QBoxLayout* self, int index, int stretch) {
 	self->setStretch(static_cast<int>(index), static_cast<int>(stretch));
 }
 
-int QBoxLayout_Stretch(QBoxLayout* self, int index) {
-	return const_cast<const QBoxLayout*>(self)->stretch(static_cast<int>(index));
+int QBoxLayout_Stretch(const QBoxLayout* self, int index) {
+	return self->stretch(static_cast<int>(index));
 }
 
-QSize* QBoxLayout_SizeHint(QBoxLayout* self) {
-	QSize ret = const_cast<const QBoxLayout*>(self)->sizeHint();
+QSize* QBoxLayout_SizeHint(const QBoxLayout* self) {
+	QSize ret = self->sizeHint();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
 
-QSize* QBoxLayout_MinimumSize(QBoxLayout* self) {
-	QSize ret = const_cast<const QBoxLayout*>(self)->minimumSize();
+QSize* QBoxLayout_MinimumSize(const QBoxLayout* self) {
+	QSize ret = self->minimumSize();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
 
-QSize* QBoxLayout_MaximumSize(QBoxLayout* self) {
-	QSize ret = const_cast<const QBoxLayout*>(self)->maximumSize();
+QSize* QBoxLayout_MaximumSize(const QBoxLayout* self) {
+	QSize ret = self->maximumSize();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
 
-bool QBoxLayout_HasHeightForWidth(QBoxLayout* self) {
-	return const_cast<const QBoxLayout*>(self)->hasHeightForWidth();
+bool QBoxLayout_HasHeightForWidth(const QBoxLayout* self) {
+	return self->hasHeightForWidth();
 }
 
-int QBoxLayout_HeightForWidth(QBoxLayout* self, int param1) {
-	return const_cast<const QBoxLayout*>(self)->heightForWidth(static_cast<int>(param1));
+int QBoxLayout_HeightForWidth(const QBoxLayout* self, int param1) {
+	return self->heightForWidth(static_cast<int>(param1));
 }
 
-int QBoxLayout_MinimumHeightForWidth(QBoxLayout* self, int param1) {
-	return const_cast<const QBoxLayout*>(self)->minimumHeightForWidth(static_cast<int>(param1));
+int QBoxLayout_MinimumHeightForWidth(const QBoxLayout* self, int param1) {
+	return self->minimumHeightForWidth(static_cast<int>(param1));
 }
 
-int QBoxLayout_ExpandingDirections(QBoxLayout* self) {
-	Qt::Orientations ret = const_cast<const QBoxLayout*>(self)->expandingDirections();
+int QBoxLayout_ExpandingDirections(const QBoxLayout* self) {
+	Qt::Orientations ret = self->expandingDirections();
 	return static_cast<int>(ret);
 }
 
@@ -173,16 +173,16 @@ void QBoxLayout_Invalidate(QBoxLayout* self) {
 	self->invalidate();
 }
 
-QLayoutItem* QBoxLayout_ItemAt(QBoxLayout* self, int param1) {
-	return const_cast<const QBoxLayout*>(self)->itemAt(static_cast<int>(param1));
+QLayoutItem* QBoxLayout_ItemAt(const QBoxLayout* self, int param1) {
+	return self->itemAt(static_cast<int>(param1));
 }
 
 QLayoutItem* QBoxLayout_TakeAt(QBoxLayout* self, int param1) {
 	return self->takeAt(static_cast<int>(param1));
 }
 
-int QBoxLayout_Count(QBoxLayout* self) {
-	return const_cast<const QBoxLayout*>(self)->count();
+int QBoxLayout_Count(const QBoxLayout* self) {
+	return self->count();
 }
 
 void QBoxLayout_SetGeometry(QBoxLayout* self, QRect* geometry) {
@@ -269,8 +269,8 @@ QHBoxLayout* QHBoxLayout_new2(QWidget* parent) {
 	return new QHBoxLayout(parent);
 }
 
-QMetaObject* QHBoxLayout_MetaObject(QHBoxLayout* self) {
-	return (QMetaObject*) const_cast<const QHBoxLayout*>(self)->metaObject();
+QMetaObject* QHBoxLayout_MetaObject(const QHBoxLayout* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QHBoxLayout_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -339,8 +339,8 @@ QVBoxLayout* QVBoxLayout_new2(QWidget* parent) {
 	return new QVBoxLayout(parent);
 }
 
-QMetaObject* QVBoxLayout_MetaObject(QVBoxLayout* self) {
-	return (QMetaObject*) const_cast<const QVBoxLayout*>(self)->metaObject();
+QMetaObject* QVBoxLayout_MetaObject(const QVBoxLayout* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QVBoxLayout_Tr(const char* s, char** _out, int* _out_Strlen) {

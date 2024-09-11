@@ -31,11 +31,11 @@ QDirIterator* QDirIterator_new7(const char* path, size_t path_Strlen, int filter
 QDirIterator* QDirIterator_new8(const char* path, size_t path_Strlen, char** nameFilters, uint64_t* nameFilters_Lengths, size_t nameFilters_len, int filters);
 QDirIterator* QDirIterator_new9(const char* path, size_t path_Strlen, char** nameFilters, uint64_t* nameFilters_Lengths, size_t nameFilters_len, int filters, int flags);
 void QDirIterator_Next(QDirIterator* self, char** _out, int* _out_Strlen);
-bool QDirIterator_HasNext(QDirIterator* self);
-void QDirIterator_FileName(QDirIterator* self, char** _out, int* _out_Strlen);
-void QDirIterator_FilePath(QDirIterator* self, char** _out, int* _out_Strlen);
-QFileInfo* QDirIterator_FileInfo(QDirIterator* self);
-void QDirIterator_Path(QDirIterator* self, char** _out, int* _out_Strlen);
+bool QDirIterator_HasNext(const QDirIterator* self);
+void QDirIterator_FileName(const QDirIterator* self, char** _out, int* _out_Strlen);
+void QDirIterator_FilePath(const QDirIterator* self, char** _out, int* _out_Strlen);
+QFileInfo* QDirIterator_FileInfo(const QDirIterator* self);
+void QDirIterator_Path(const QDirIterator* self, char** _out, int* _out_Strlen);
 void QDirIterator_Delete(QDirIterator* self);
 
 #ifdef __cplusplus

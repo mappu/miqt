@@ -27,11 +27,11 @@ QByteArrayMatcher* QByteArrayMatcher_new3(const char* pattern, int length);
 QByteArrayMatcher* QByteArrayMatcher_new4(QByteArrayMatcher* other);
 void QByteArrayMatcher_OperatorAssign(QByteArrayMatcher* self, QByteArrayMatcher* other);
 void QByteArrayMatcher_SetPattern(QByteArrayMatcher* self, QByteArray* pattern);
-int QByteArrayMatcher_IndexIn(QByteArrayMatcher* self, QByteArray* ba);
-int QByteArrayMatcher_IndexIn2(QByteArrayMatcher* self, const char* str, int lenVal);
-QByteArray* QByteArrayMatcher_Pattern(QByteArrayMatcher* self);
-int QByteArrayMatcher_IndexIn22(QByteArrayMatcher* self, QByteArray* ba, int from);
-int QByteArrayMatcher_IndexIn3(QByteArrayMatcher* self, const char* str, int lenVal, int from);
+int QByteArrayMatcher_IndexIn(const QByteArrayMatcher* self, QByteArray* ba);
+int QByteArrayMatcher_IndexIn2(const QByteArrayMatcher* self, const char* str, int lenVal);
+QByteArray* QByteArrayMatcher_Pattern(const QByteArrayMatcher* self);
+int QByteArrayMatcher_IndexIn22(const QByteArrayMatcher* self, QByteArray* ba, int from);
+int QByteArrayMatcher_IndexIn3(const QByteArrayMatcher* self, const char* str, int lenVal, int from);
 void QByteArrayMatcher_Delete(QByteArrayMatcher* self);
 
 void QStaticByteArrayMatcherBase_Delete(QStaticByteArrayMatcherBase* self);

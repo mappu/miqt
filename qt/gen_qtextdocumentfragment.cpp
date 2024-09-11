@@ -33,12 +33,12 @@ void QTextDocumentFragment_OperatorAssign(QTextDocumentFragment* self, QTextDocu
 	self->operator=(*rhs);
 }
 
-bool QTextDocumentFragment_IsEmpty(QTextDocumentFragment* self) {
-	return const_cast<const QTextDocumentFragment*>(self)->isEmpty();
+bool QTextDocumentFragment_IsEmpty(const QTextDocumentFragment* self) {
+	return self->isEmpty();
 }
 
-void QTextDocumentFragment_ToPlainText(QTextDocumentFragment* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QTextDocumentFragment*>(self)->toPlainText();
+void QTextDocumentFragment_ToPlainText(const QTextDocumentFragment* self, char** _out, int* _out_Strlen) {
+	QString ret = self->toPlainText();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -46,8 +46,8 @@ void QTextDocumentFragment_ToPlainText(QTextDocumentFragment* self, char** _out,
 	*_out_Strlen = b.length();
 }
 
-void QTextDocumentFragment_ToHtml(QTextDocumentFragment* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QTextDocumentFragment*>(self)->toHtml();
+void QTextDocumentFragment_ToHtml(const QTextDocumentFragment* self, char** _out, int* _out_Strlen) {
+	QString ret = self->toHtml();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -76,8 +76,8 @@ QTextDocumentFragment* QTextDocumentFragment_FromHtml2(const char* html, size_t 
 	return static_cast<QTextDocumentFragment*>(new QTextDocumentFragment(ret));
 }
 
-void QTextDocumentFragment_ToHtml1(QTextDocumentFragment* self, QByteArray* encoding, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QTextDocumentFragment*>(self)->toHtml(*encoding);
+void QTextDocumentFragment_ToHtml1(const QTextDocumentFragment* self, QByteArray* encoding, char** _out, int* _out_Strlen) {
+	QString ret = self->toHtml(*encoding);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));

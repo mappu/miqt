@@ -8,21 +8,21 @@ extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
 }
 
-bool QArrayData_IsMutable(QArrayData* self) {
-	return const_cast<const QArrayData*>(self)->isMutable();
+bool QArrayData_IsMutable(const QArrayData* self) {
+	return self->isMutable();
 }
 
-size_t QArrayData_DetachCapacity(QArrayData* self, size_t newSize) {
-	return const_cast<const QArrayData*>(self)->detachCapacity(static_cast<size_t>(newSize));
+size_t QArrayData_DetachCapacity(const QArrayData* self, size_t newSize) {
+	return self->detachCapacity(static_cast<size_t>(newSize));
 }
 
-int QArrayData_DetachFlags(QArrayData* self) {
-	QArrayData::AllocationOptions ret = const_cast<const QArrayData*>(self)->detachFlags();
+int QArrayData_DetachFlags(const QArrayData* self) {
+	QArrayData::AllocationOptions ret = self->detachFlags();
 	return static_cast<int>(ret);
 }
 
-int QArrayData_CloneFlags(QArrayData* self) {
-	QArrayData::AllocationOptions ret = const_cast<const QArrayData*>(self)->cloneFlags();
+int QArrayData_CloneFlags(const QArrayData* self) {
+	QArrayData::AllocationOptions ret = self->cloneFlags();
 	return static_cast<int>(ret);
 }
 

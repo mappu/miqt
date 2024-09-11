@@ -12,8 +12,8 @@ extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
 }
 
-QMetaObject* QFutureWatcherBase_MetaObject(QFutureWatcherBase* self) {
-	return (QMetaObject*) const_cast<const QFutureWatcherBase*>(self)->metaObject();
+QMetaObject* QFutureWatcherBase_MetaObject(const QFutureWatcherBase* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QFutureWatcherBase_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -34,20 +34,20 @@ void QFutureWatcherBase_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-int QFutureWatcherBase_ProgressValue(QFutureWatcherBase* self) {
-	return const_cast<const QFutureWatcherBase*>(self)->progressValue();
+int QFutureWatcherBase_ProgressValue(const QFutureWatcherBase* self) {
+	return self->progressValue();
 }
 
-int QFutureWatcherBase_ProgressMinimum(QFutureWatcherBase* self) {
-	return const_cast<const QFutureWatcherBase*>(self)->progressMinimum();
+int QFutureWatcherBase_ProgressMinimum(const QFutureWatcherBase* self) {
+	return self->progressMinimum();
 }
 
-int QFutureWatcherBase_ProgressMaximum(QFutureWatcherBase* self) {
-	return const_cast<const QFutureWatcherBase*>(self)->progressMaximum();
+int QFutureWatcherBase_ProgressMaximum(const QFutureWatcherBase* self) {
+	return self->progressMaximum();
 }
 
-void QFutureWatcherBase_ProgressText(QFutureWatcherBase* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QFutureWatcherBase*>(self)->progressText();
+void QFutureWatcherBase_ProgressText(const QFutureWatcherBase* self, char** _out, int* _out_Strlen) {
+	QString ret = self->progressText();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -55,24 +55,24 @@ void QFutureWatcherBase_ProgressText(QFutureWatcherBase* self, char** _out, int*
 	*_out_Strlen = b.length();
 }
 
-bool QFutureWatcherBase_IsStarted(QFutureWatcherBase* self) {
-	return const_cast<const QFutureWatcherBase*>(self)->isStarted();
+bool QFutureWatcherBase_IsStarted(const QFutureWatcherBase* self) {
+	return self->isStarted();
 }
 
-bool QFutureWatcherBase_IsFinished(QFutureWatcherBase* self) {
-	return const_cast<const QFutureWatcherBase*>(self)->isFinished();
+bool QFutureWatcherBase_IsFinished(const QFutureWatcherBase* self) {
+	return self->isFinished();
 }
 
-bool QFutureWatcherBase_IsRunning(QFutureWatcherBase* self) {
-	return const_cast<const QFutureWatcherBase*>(self)->isRunning();
+bool QFutureWatcherBase_IsRunning(const QFutureWatcherBase* self) {
+	return self->isRunning();
 }
 
-bool QFutureWatcherBase_IsCanceled(QFutureWatcherBase* self) {
-	return const_cast<const QFutureWatcherBase*>(self)->isCanceled();
+bool QFutureWatcherBase_IsCanceled(const QFutureWatcherBase* self) {
+	return self->isCanceled();
 }
 
-bool QFutureWatcherBase_IsPaused(QFutureWatcherBase* self) {
-	return const_cast<const QFutureWatcherBase*>(self)->isPaused();
+bool QFutureWatcherBase_IsPaused(const QFutureWatcherBase* self) {
+	return self->isPaused();
 }
 
 void QFutureWatcherBase_WaitForFinished(QFutureWatcherBase* self) {

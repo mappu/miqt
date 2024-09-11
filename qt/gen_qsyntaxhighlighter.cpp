@@ -13,8 +13,8 @@ extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
 }
 
-QMetaObject* QSyntaxHighlighter_MetaObject(QSyntaxHighlighter* self) {
-	return (QMetaObject*) const_cast<const QSyntaxHighlighter*>(self)->metaObject();
+QMetaObject* QSyntaxHighlighter_MetaObject(const QSyntaxHighlighter* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QSyntaxHighlighter_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -39,8 +39,8 @@ void QSyntaxHighlighter_SetDocument(QSyntaxHighlighter* self, QTextDocument* doc
 	self->setDocument(doc);
 }
 
-QTextDocument* QSyntaxHighlighter_Document(QSyntaxHighlighter* self) {
-	return const_cast<const QSyntaxHighlighter*>(self)->document();
+QTextDocument* QSyntaxHighlighter_Document(const QSyntaxHighlighter* self) {
+	return self->document();
 }
 
 void QSyntaxHighlighter_Rehighlight(QSyntaxHighlighter* self) {

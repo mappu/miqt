@@ -22,8 +22,8 @@ QButtonGroup* QButtonGroup_new2(QObject* parent) {
 	return new QButtonGroup(parent);
 }
 
-QMetaObject* QButtonGroup_MetaObject(QButtonGroup* self) {
-	return (QMetaObject*) const_cast<const QButtonGroup*>(self)->metaObject();
+QMetaObject* QButtonGroup_MetaObject(const QButtonGroup* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QButtonGroup_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -48,8 +48,8 @@ void QButtonGroup_SetExclusive(QButtonGroup* self, bool exclusive) {
 	self->setExclusive(exclusive);
 }
 
-bool QButtonGroup_Exclusive(QButtonGroup* self) {
-	return const_cast<const QButtonGroup*>(self)->exclusive();
+bool QButtonGroup_Exclusive(const QButtonGroup* self) {
+	return self->exclusive();
 }
 
 void QButtonGroup_AddButton(QButtonGroup* self, QAbstractButton* param1) {
@@ -60,8 +60,8 @@ void QButtonGroup_RemoveButton(QButtonGroup* self, QAbstractButton* param1) {
 	self->removeButton(param1);
 }
 
-void QButtonGroup_Buttons(QButtonGroup* self, QAbstractButton*** _out, size_t* _out_len) {
-	QList<QAbstractButton*> ret = const_cast<const QButtonGroup*>(self)->buttons();
+void QButtonGroup_Buttons(const QButtonGroup* self, QAbstractButton*** _out, size_t* _out_len) {
+	QList<QAbstractButton*> ret = self->buttons();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QAbstractButton** __out = static_cast<QAbstractButton**>(malloc(sizeof(QAbstractButton*) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {
@@ -71,24 +71,24 @@ void QButtonGroup_Buttons(QButtonGroup* self, QAbstractButton*** _out, size_t* _
 	*_out_len = ret.length();
 }
 
-QAbstractButton* QButtonGroup_CheckedButton(QButtonGroup* self) {
-	return const_cast<const QButtonGroup*>(self)->checkedButton();
+QAbstractButton* QButtonGroup_CheckedButton(const QButtonGroup* self) {
+	return self->checkedButton();
 }
 
-QAbstractButton* QButtonGroup_Button(QButtonGroup* self, int id) {
-	return const_cast<const QButtonGroup*>(self)->button(static_cast<int>(id));
+QAbstractButton* QButtonGroup_Button(const QButtonGroup* self, int id) {
+	return self->button(static_cast<int>(id));
 }
 
 void QButtonGroup_SetId(QButtonGroup* self, QAbstractButton* button, int id) {
 	self->setId(button, static_cast<int>(id));
 }
 
-int QButtonGroup_Id(QButtonGroup* self, QAbstractButton* button) {
-	return const_cast<const QButtonGroup*>(self)->id(button);
+int QButtonGroup_Id(const QButtonGroup* self, QAbstractButton* button) {
+	return self->id(button);
 }
 
-int QButtonGroup_CheckedId(QButtonGroup* self) {
-	return const_cast<const QButtonGroup*>(self)->checkedId();
+int QButtonGroup_CheckedId(const QButtonGroup* self) {
+	return self->checkedId();
 }
 
 void QButtonGroup_ButtonClicked(QButtonGroup* self, QAbstractButton* param1) {

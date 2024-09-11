@@ -20,8 +20,8 @@ QRasterWindow* QRasterWindow_new2(QWindow* parent) {
 	return new QRasterWindow(parent);
 }
 
-QMetaObject* QRasterWindow_MetaObject(QRasterWindow* self) {
-	return (QMetaObject*) const_cast<const QRasterWindow*>(self)->metaObject();
+QMetaObject* QRasterWindow_MetaObject(const QRasterWindow* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QRasterWindow_Tr(const char* s, char** _out, int* _out_Strlen) {

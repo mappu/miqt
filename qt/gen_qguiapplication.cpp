@@ -33,8 +33,8 @@ QGuiApplication* QGuiApplication_new2(int* argc, char** argv, int param3) {
 	return new QGuiApplication(static_cast<int&>(*argc), argv, static_cast<int>(param3));
 }
 
-QMetaObject* QGuiApplication_MetaObject(QGuiApplication* self) {
-	return (QMetaObject*) const_cast<const QGuiApplication*>(self)->metaObject();
+QMetaObject* QGuiApplication_MetaObject(const QGuiApplication* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QGuiApplication_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -159,8 +159,8 @@ QScreen* QGuiApplication_ScreenAt(QPoint* point) {
 	return QGuiApplication::screenAt(*point);
 }
 
-double QGuiApplication_DevicePixelRatio(QGuiApplication* self) {
-	return const_cast<const QGuiApplication*>(self)->devicePixelRatio();
+double QGuiApplication_DevicePixelRatio(const QGuiApplication* self) {
+	return self->devicePixelRatio();
 }
 
 QCursor* QGuiApplication_OverrideCursor() {
@@ -281,12 +281,12 @@ bool QGuiApplication_Notify(QGuiApplication* self, QObject* param1, QEvent* para
 	return self->notify(param1, param2);
 }
 
-bool QGuiApplication_IsSessionRestored(QGuiApplication* self) {
-	return const_cast<const QGuiApplication*>(self)->isSessionRestored();
+bool QGuiApplication_IsSessionRestored(const QGuiApplication* self) {
+	return self->isSessionRestored();
 }
 
-void QGuiApplication_SessionId(QGuiApplication* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QGuiApplication*>(self)->sessionId();
+void QGuiApplication_SessionId(const QGuiApplication* self, char** _out, int* _out_Strlen) {
+	QString ret = self->sessionId();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -294,8 +294,8 @@ void QGuiApplication_SessionId(QGuiApplication* self, char** _out, int* _out_Str
 	*_out_Strlen = b.length();
 }
 
-void QGuiApplication_SessionKey(QGuiApplication* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QGuiApplication*>(self)->sessionKey();
+void QGuiApplication_SessionKey(const QGuiApplication* self, char** _out, int* _out_Strlen) {
+	QString ret = self->sessionKey();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -303,8 +303,8 @@ void QGuiApplication_SessionKey(QGuiApplication* self, char** _out, int* _out_St
 	*_out_Strlen = b.length();
 }
 
-bool QGuiApplication_IsSavingSession(QGuiApplication* self) {
-	return const_cast<const QGuiApplication*>(self)->isSavingSession();
+bool QGuiApplication_IsSavingSession(const QGuiApplication* self) {
+	return self->isSavingSession();
 }
 
 bool QGuiApplication_IsFallbackSessionManagementEnabled() {

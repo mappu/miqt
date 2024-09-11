@@ -34,32 +34,32 @@ void QUrlQuery_OperatorAssign(QUrlQuery* self, QUrlQuery* other) {
 	self->operator=(*other);
 }
 
-bool QUrlQuery_OperatorEqual(QUrlQuery* self, QUrlQuery* other) {
-	return const_cast<const QUrlQuery*>(self)->operator==(*other);
+bool QUrlQuery_OperatorEqual(const QUrlQuery* self, QUrlQuery* other) {
+	return self->operator==(*other);
 }
 
-bool QUrlQuery_OperatorNotEqual(QUrlQuery* self, QUrlQuery* other) {
-	return const_cast<const QUrlQuery*>(self)->operator!=(*other);
+bool QUrlQuery_OperatorNotEqual(const QUrlQuery* self, QUrlQuery* other) {
+	return self->operator!=(*other);
 }
 
 void QUrlQuery_Swap(QUrlQuery* self, QUrlQuery* other) {
 	self->swap(*other);
 }
 
-bool QUrlQuery_IsEmpty(QUrlQuery* self) {
-	return const_cast<const QUrlQuery*>(self)->isEmpty();
+bool QUrlQuery_IsEmpty(const QUrlQuery* self) {
+	return self->isEmpty();
 }
 
-bool QUrlQuery_IsDetached(QUrlQuery* self) {
-	return const_cast<const QUrlQuery*>(self)->isDetached();
+bool QUrlQuery_IsDetached(const QUrlQuery* self) {
+	return self->isDetached();
 }
 
 void QUrlQuery_Clear(QUrlQuery* self) {
 	self->clear();
 }
 
-void QUrlQuery_Query(QUrlQuery* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QUrlQuery*>(self)->query();
+void QUrlQuery_Query(const QUrlQuery* self, char** _out, int* _out_Strlen) {
+	QString ret = self->query();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -72,8 +72,8 @@ void QUrlQuery_SetQuery(QUrlQuery* self, const char* queryString, size_t querySt
 	self->setQuery(queryString_QString);
 }
 
-void QUrlQuery_ToString(QUrlQuery* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QUrlQuery*>(self)->toString();
+void QUrlQuery_ToString(const QUrlQuery* self, char** _out, int* _out_Strlen) {
+	QString ret = self->toString();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -85,21 +85,21 @@ void QUrlQuery_SetQueryDelimiters(QUrlQuery* self, QChar* valueDelimiter, QChar*
 	self->setQueryDelimiters(*valueDelimiter, *pairDelimiter);
 }
 
-QChar* QUrlQuery_QueryValueDelimiter(QUrlQuery* self) {
-	QChar ret = const_cast<const QUrlQuery*>(self)->queryValueDelimiter();
+QChar* QUrlQuery_QueryValueDelimiter(const QUrlQuery* self) {
+	QChar ret = self->queryValueDelimiter();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QChar*>(new QChar(ret));
 }
 
-QChar* QUrlQuery_QueryPairDelimiter(QUrlQuery* self) {
-	QChar ret = const_cast<const QUrlQuery*>(self)->queryPairDelimiter();
+QChar* QUrlQuery_QueryPairDelimiter(const QUrlQuery* self) {
+	QChar ret = self->queryPairDelimiter();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QChar*>(new QChar(ret));
 }
 
-bool QUrlQuery_HasQueryItem(QUrlQuery* self, const char* key, size_t key_Strlen) {
+bool QUrlQuery_HasQueryItem(const QUrlQuery* self, const char* key, size_t key_Strlen) {
 	QString key_QString = QString::fromUtf8(key, key_Strlen);
-	return const_cast<const QUrlQuery*>(self)->hasQueryItem(key_QString);
+	return self->hasQueryItem(key_QString);
 }
 
 void QUrlQuery_AddQueryItem(QUrlQuery* self, const char* key, size_t key_Strlen, const char* value, size_t value_Strlen) {
@@ -113,9 +113,9 @@ void QUrlQuery_RemoveQueryItem(QUrlQuery* self, const char* key, size_t key_Strl
 	self->removeQueryItem(key_QString);
 }
 
-void QUrlQuery_QueryItemValue(QUrlQuery* self, const char* key, size_t key_Strlen, char** _out, int* _out_Strlen) {
+void QUrlQuery_QueryItemValue(const QUrlQuery* self, const char* key, size_t key_Strlen, char** _out, int* _out_Strlen) {
 	QString key_QString = QString::fromUtf8(key, key_Strlen);
-	QString ret = const_cast<const QUrlQuery*>(self)->queryItemValue(key_QString);
+	QString ret = self->queryItemValue(key_QString);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -123,9 +123,9 @@ void QUrlQuery_QueryItemValue(QUrlQuery* self, const char* key, size_t key_Strle
 	*_out_Strlen = b.length();
 }
 
-void QUrlQuery_AllQueryItemValues(QUrlQuery* self, const char* key, size_t key_Strlen, char*** _out, int** _out_Lengths, size_t* _out_len) {
+void QUrlQuery_AllQueryItemValues(const QUrlQuery* self, const char* key, size_t key_Strlen, char*** _out, int** _out_Lengths, size_t* _out_len) {
 	QString key_QString = QString::fromUtf8(key, key_Strlen);
-	QStringList ret = const_cast<const QUrlQuery*>(self)->allQueryItemValues(key_QString);
+	QStringList ret = self->allQueryItemValues(key_QString);
 	// Convert QStringList from C++ memory to manually-managed C memory
 	char** __out = static_cast<char**>(malloc(sizeof(char*) * ret.length()));
 	int* __out_Lengths = static_cast<int*>(malloc(sizeof(int) * ret.length()));
@@ -158,8 +158,8 @@ QChar* QUrlQuery_DefaultQueryPairDelimiter() {
 	return static_cast<QChar*>(new QChar(ret));
 }
 
-void QUrlQuery_Query1(QUrlQuery* self, int encoding, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QUrlQuery*>(self)->query(static_cast<QUrl::ComponentFormattingOptions>(encoding));
+void QUrlQuery_Query1(const QUrlQuery* self, int encoding, char** _out, int* _out_Strlen) {
+	QString ret = self->query(static_cast<QUrl::ComponentFormattingOptions>(encoding));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -167,8 +167,8 @@ void QUrlQuery_Query1(QUrlQuery* self, int encoding, char** _out, int* _out_Strl
 	*_out_Strlen = b.length();
 }
 
-void QUrlQuery_ToString1(QUrlQuery* self, int encoding, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QUrlQuery*>(self)->toString(static_cast<QUrl::ComponentFormattingOptions>(encoding));
+void QUrlQuery_ToString1(const QUrlQuery* self, int encoding, char** _out, int* _out_Strlen) {
+	QString ret = self->toString(static_cast<QUrl::ComponentFormattingOptions>(encoding));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -176,9 +176,9 @@ void QUrlQuery_ToString1(QUrlQuery* self, int encoding, char** _out, int* _out_S
 	*_out_Strlen = b.length();
 }
 
-void QUrlQuery_QueryItemValue2(QUrlQuery* self, const char* key, size_t key_Strlen, int encoding, char** _out, int* _out_Strlen) {
+void QUrlQuery_QueryItemValue2(const QUrlQuery* self, const char* key, size_t key_Strlen, int encoding, char** _out, int* _out_Strlen) {
 	QString key_QString = QString::fromUtf8(key, key_Strlen);
-	QString ret = const_cast<const QUrlQuery*>(self)->queryItemValue(key_QString, static_cast<QUrl::ComponentFormattingOptions>(encoding));
+	QString ret = self->queryItemValue(key_QString, static_cast<QUrl::ComponentFormattingOptions>(encoding));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -186,9 +186,9 @@ void QUrlQuery_QueryItemValue2(QUrlQuery* self, const char* key, size_t key_Strl
 	*_out_Strlen = b.length();
 }
 
-void QUrlQuery_AllQueryItemValues2(QUrlQuery* self, const char* key, size_t key_Strlen, int encoding, char*** _out, int** _out_Lengths, size_t* _out_len) {
+void QUrlQuery_AllQueryItemValues2(const QUrlQuery* self, const char* key, size_t key_Strlen, int encoding, char*** _out, int** _out_Lengths, size_t* _out_len) {
 	QString key_QString = QString::fromUtf8(key, key_Strlen);
-	QStringList ret = const_cast<const QUrlQuery*>(self)->allQueryItemValues(key_QString, static_cast<QUrl::ComponentFormattingOptions>(encoding));
+	QStringList ret = self->allQueryItemValues(key_QString, static_cast<QUrl::ComponentFormattingOptions>(encoding));
 	// Convert QStringList from C++ memory to manually-managed C memory
 	char** __out = static_cast<char**>(malloc(sizeof(char*) * ret.length()));
 	int* __out_Lengths = static_cast<int*>(malloc(sizeof(int) * ret.length()));

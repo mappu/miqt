@@ -39,28 +39,28 @@ QRgba64* QRgba64_FromArgb32(unsigned int rgb) {
 	return static_cast<QRgba64*>(new QRgba64(ret));
 }
 
-bool QRgba64_IsOpaque(QRgba64* self) {
-	return const_cast<const QRgba64*>(self)->isOpaque();
+bool QRgba64_IsOpaque(const QRgba64* self) {
+	return self->isOpaque();
 }
 
-bool QRgba64_IsTransparent(QRgba64* self) {
-	return const_cast<const QRgba64*>(self)->isTransparent();
+bool QRgba64_IsTransparent(const QRgba64* self) {
+	return self->isTransparent();
 }
 
-uint16_t QRgba64_Red(QRgba64* self) {
-	return const_cast<const QRgba64*>(self)->red();
+uint16_t QRgba64_Red(const QRgba64* self) {
+	return self->red();
 }
 
-uint16_t QRgba64_Green(QRgba64* self) {
-	return const_cast<const QRgba64*>(self)->green();
+uint16_t QRgba64_Green(const QRgba64* self) {
+	return self->green();
 }
 
-uint16_t QRgba64_Blue(QRgba64* self) {
-	return const_cast<const QRgba64*>(self)->blue();
+uint16_t QRgba64_Blue(const QRgba64* self) {
+	return self->blue();
 }
 
-uint16_t QRgba64_Alpha(QRgba64* self) {
-	return const_cast<const QRgba64*>(self)->alpha();
+uint16_t QRgba64_Alpha(const QRgba64* self) {
+	return self->alpha();
 }
 
 void QRgba64_SetRed(QRgba64* self, uint16_t _red) {
@@ -79,38 +79,38 @@ void QRgba64_SetAlpha(QRgba64* self, uint16_t _alpha) {
 	self->setAlpha(static_cast<quint16>(_alpha));
 }
 
-unsigned char QRgba64_Red8(QRgba64* self) {
-	return const_cast<const QRgba64*>(self)->red8();
+unsigned char QRgba64_Red8(const QRgba64* self) {
+	return self->red8();
 }
 
-unsigned char QRgba64_Green8(QRgba64* self) {
-	return const_cast<const QRgba64*>(self)->green8();
+unsigned char QRgba64_Green8(const QRgba64* self) {
+	return self->green8();
 }
 
-unsigned char QRgba64_Blue8(QRgba64* self) {
-	return const_cast<const QRgba64*>(self)->blue8();
+unsigned char QRgba64_Blue8(const QRgba64* self) {
+	return self->blue8();
 }
 
-unsigned char QRgba64_Alpha8(QRgba64* self) {
-	return const_cast<const QRgba64*>(self)->alpha8();
+unsigned char QRgba64_Alpha8(const QRgba64* self) {
+	return self->alpha8();
 }
 
-unsigned int QRgba64_ToArgb32(QRgba64* self) {
-	return const_cast<const QRgba64*>(self)->toArgb32();
+unsigned int QRgba64_ToArgb32(const QRgba64* self) {
+	return self->toArgb32();
 }
 
-uint16_t QRgba64_ToRgb16(QRgba64* self) {
-	return const_cast<const QRgba64*>(self)->toRgb16();
+uint16_t QRgba64_ToRgb16(const QRgba64* self) {
+	return self->toRgb16();
 }
 
-QRgba64* QRgba64_Premultiplied(QRgba64* self) {
-	QRgba64 ret = const_cast<const QRgba64*>(self)->premultiplied();
+QRgba64* QRgba64_Premultiplied(const QRgba64* self) {
+	QRgba64 ret = self->premultiplied();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRgba64*>(new QRgba64(ret));
 }
 
-QRgba64* QRgba64_Unpremultiplied(QRgba64* self) {
-	QRgba64 ret = const_cast<const QRgba64*>(self)->unpremultiplied();
+QRgba64* QRgba64_Unpremultiplied(const QRgba64* self) {
+	QRgba64 ret = self->unpremultiplied();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRgba64*>(new QRgba64(ret));
 }

@@ -20,8 +20,8 @@ QTimer* QTimer_new2(QObject* parent) {
 	return new QTimer(parent);
 }
 
-QMetaObject* QTimer_MetaObject(QTimer* self) {
-	return (QMetaObject*) const_cast<const QTimer*>(self)->metaObject();
+QMetaObject* QTimer_MetaObject(const QTimer* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QTimer_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -42,32 +42,32 @@ void QTimer_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-bool QTimer_IsActive(QTimer* self) {
-	return const_cast<const QTimer*>(self)->isActive();
+bool QTimer_IsActive(const QTimer* self) {
+	return self->isActive();
 }
 
-int QTimer_TimerId(QTimer* self) {
-	return const_cast<const QTimer*>(self)->timerId();
+int QTimer_TimerId(const QTimer* self) {
+	return self->timerId();
 }
 
 void QTimer_SetInterval(QTimer* self, int msec) {
 	self->setInterval(static_cast<int>(msec));
 }
 
-int QTimer_Interval(QTimer* self) {
-	return const_cast<const QTimer*>(self)->interval();
+int QTimer_Interval(const QTimer* self) {
+	return self->interval();
 }
 
-int QTimer_RemainingTime(QTimer* self) {
-	return const_cast<const QTimer*>(self)->remainingTime();
+int QTimer_RemainingTime(const QTimer* self) {
+	return self->remainingTime();
 }
 
 void QTimer_SetTimerType(QTimer* self, uintptr_t atype) {
 	self->setTimerType(static_cast<Qt::TimerType>(atype));
 }
 
-uintptr_t QTimer_TimerType(QTimer* self) {
-	Qt::TimerType ret = const_cast<const QTimer*>(self)->timerType();
+uintptr_t QTimer_TimerType(const QTimer* self) {
+	Qt::TimerType ret = self->timerType();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -75,8 +75,8 @@ void QTimer_SetSingleShot(QTimer* self, bool singleShot) {
 	self->setSingleShot(singleShot);
 }
 
-bool QTimer_IsSingleShot(QTimer* self) {
-	return const_cast<const QTimer*>(self)->isSingleShot();
+bool QTimer_IsSingleShot(const QTimer* self) {
+	return self->isSingleShot();
 }
 
 void QTimer_Start(QTimer* self, int msec) {

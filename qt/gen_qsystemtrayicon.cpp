@@ -31,8 +31,8 @@ QSystemTrayIcon* QSystemTrayIcon_new4(QIcon* icon, QObject* parent) {
 	return new QSystemTrayIcon(*icon, parent);
 }
 
-QMetaObject* QSystemTrayIcon_MetaObject(QSystemTrayIcon* self) {
-	return (QMetaObject*) const_cast<const QSystemTrayIcon*>(self)->metaObject();
+QMetaObject* QSystemTrayIcon_MetaObject(const QSystemTrayIcon* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QSystemTrayIcon_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -57,12 +57,12 @@ void QSystemTrayIcon_SetContextMenu(QSystemTrayIcon* self, QMenu* menu) {
 	self->setContextMenu(menu);
 }
 
-QMenu* QSystemTrayIcon_ContextMenu(QSystemTrayIcon* self) {
-	return const_cast<const QSystemTrayIcon*>(self)->contextMenu();
+QMenu* QSystemTrayIcon_ContextMenu(const QSystemTrayIcon* self) {
+	return self->contextMenu();
 }
 
-QIcon* QSystemTrayIcon_Icon(QSystemTrayIcon* self) {
-	QIcon ret = const_cast<const QSystemTrayIcon*>(self)->icon();
+QIcon* QSystemTrayIcon_Icon(const QSystemTrayIcon* self) {
+	QIcon ret = self->icon();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QIcon*>(new QIcon(ret));
 }
@@ -71,8 +71,8 @@ void QSystemTrayIcon_SetIcon(QSystemTrayIcon* self, QIcon* icon) {
 	self->setIcon(*icon);
 }
 
-void QSystemTrayIcon_ToolTip(QSystemTrayIcon* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QSystemTrayIcon*>(self)->toolTip();
+void QSystemTrayIcon_ToolTip(const QSystemTrayIcon* self, char** _out, int* _out_Strlen) {
+	QString ret = self->toolTip();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -93,14 +93,14 @@ bool QSystemTrayIcon_SupportsMessages() {
 	return QSystemTrayIcon::supportsMessages();
 }
 
-QRect* QSystemTrayIcon_Geometry(QSystemTrayIcon* self) {
-	QRect ret = const_cast<const QSystemTrayIcon*>(self)->geometry();
+QRect* QSystemTrayIcon_Geometry(const QSystemTrayIcon* self) {
+	QRect ret = self->geometry();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRect*>(new QRect(ret));
 }
 
-bool QSystemTrayIcon_IsVisible(QSystemTrayIcon* self) {
-	return const_cast<const QSystemTrayIcon*>(self)->isVisible();
+bool QSystemTrayIcon_IsVisible(const QSystemTrayIcon* self) {
+	return self->isVisible();
 }
 
 void QSystemTrayIcon_SetVisible(QSystemTrayIcon* self, bool visible) {

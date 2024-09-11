@@ -23,8 +23,8 @@ QTabWidget* QTabWidget_new2(QWidget* parent) {
 	return new QTabWidget(parent);
 }
 
-QMetaObject* QTabWidget_MetaObject(QTabWidget* self) {
-	return (QMetaObject*) const_cast<const QTabWidget*>(self)->metaObject();
+QMetaObject* QTabWidget_MetaObject(const QTabWidget* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QTabWidget_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -69,24 +69,24 @@ void QTabWidget_RemoveTab(QTabWidget* self, int index) {
 	self->removeTab(static_cast<int>(index));
 }
 
-bool QTabWidget_IsTabEnabled(QTabWidget* self, int index) {
-	return const_cast<const QTabWidget*>(self)->isTabEnabled(static_cast<int>(index));
+bool QTabWidget_IsTabEnabled(const QTabWidget* self, int index) {
+	return self->isTabEnabled(static_cast<int>(index));
 }
 
 void QTabWidget_SetTabEnabled(QTabWidget* self, int index, bool enabled) {
 	self->setTabEnabled(static_cast<int>(index), enabled);
 }
 
-bool QTabWidget_IsTabVisible(QTabWidget* self, int index) {
-	return const_cast<const QTabWidget*>(self)->isTabVisible(static_cast<int>(index));
+bool QTabWidget_IsTabVisible(const QTabWidget* self, int index) {
+	return self->isTabVisible(static_cast<int>(index));
 }
 
 void QTabWidget_SetTabVisible(QTabWidget* self, int index, bool visible) {
 	self->setTabVisible(static_cast<int>(index), visible);
 }
 
-void QTabWidget_TabText(QTabWidget* self, int index, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QTabWidget*>(self)->tabText(static_cast<int>(index));
+void QTabWidget_TabText(const QTabWidget* self, int index, char** _out, int* _out_Strlen) {
+	QString ret = self->tabText(static_cast<int>(index));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -99,8 +99,8 @@ void QTabWidget_SetTabText(QTabWidget* self, int index, const char* text, size_t
 	self->setTabText(static_cast<int>(index), text_QString);
 }
 
-QIcon* QTabWidget_TabIcon(QTabWidget* self, int index) {
-	QIcon ret = const_cast<const QTabWidget*>(self)->tabIcon(static_cast<int>(index));
+QIcon* QTabWidget_TabIcon(const QTabWidget* self, int index) {
+	QIcon ret = self->tabIcon(static_cast<int>(index));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QIcon*>(new QIcon(ret));
 }
@@ -114,8 +114,8 @@ void QTabWidget_SetTabToolTip(QTabWidget* self, int index, const char* tip, size
 	self->setTabToolTip(static_cast<int>(index), tip_QString);
 }
 
-void QTabWidget_TabToolTip(QTabWidget* self, int index, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QTabWidget*>(self)->tabToolTip(static_cast<int>(index));
+void QTabWidget_TabToolTip(const QTabWidget* self, int index, char** _out, int* _out_Strlen) {
+	QString ret = self->tabToolTip(static_cast<int>(index));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -128,8 +128,8 @@ void QTabWidget_SetTabWhatsThis(QTabWidget* self, int index, const char* text, s
 	self->setTabWhatsThis(static_cast<int>(index), text_QString);
 }
 
-void QTabWidget_TabWhatsThis(QTabWidget* self, int index, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QTabWidget*>(self)->tabWhatsThis(static_cast<int>(index));
+void QTabWidget_TabWhatsThis(const QTabWidget* self, int index, char** _out, int* _out_Strlen) {
+	QString ret = self->tabWhatsThis(static_cast<int>(index));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -137,28 +137,28 @@ void QTabWidget_TabWhatsThis(QTabWidget* self, int index, char** _out, int* _out
 	*_out_Strlen = b.length();
 }
 
-int QTabWidget_CurrentIndex(QTabWidget* self) {
-	return const_cast<const QTabWidget*>(self)->currentIndex();
+int QTabWidget_CurrentIndex(const QTabWidget* self) {
+	return self->currentIndex();
 }
 
-QWidget* QTabWidget_CurrentWidget(QTabWidget* self) {
-	return const_cast<const QTabWidget*>(self)->currentWidget();
+QWidget* QTabWidget_CurrentWidget(const QTabWidget* self) {
+	return self->currentWidget();
 }
 
-QWidget* QTabWidget_Widget(QTabWidget* self, int index) {
-	return const_cast<const QTabWidget*>(self)->widget(static_cast<int>(index));
+QWidget* QTabWidget_Widget(const QTabWidget* self, int index) {
+	return self->widget(static_cast<int>(index));
 }
 
-int QTabWidget_IndexOf(QTabWidget* self, QWidget* widget) {
-	return const_cast<const QTabWidget*>(self)->indexOf(widget);
+int QTabWidget_IndexOf(const QTabWidget* self, QWidget* widget) {
+	return self->indexOf(widget);
 }
 
-int QTabWidget_Count(QTabWidget* self) {
-	return const_cast<const QTabWidget*>(self)->count();
+int QTabWidget_Count(const QTabWidget* self) {
+	return self->count();
 }
 
-uintptr_t QTabWidget_TabPosition(QTabWidget* self) {
-	QTabWidget::TabPosition ret = const_cast<const QTabWidget*>(self)->tabPosition();
+uintptr_t QTabWidget_TabPosition(const QTabWidget* self) {
+	QTabWidget::TabPosition ret = self->tabPosition();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -166,24 +166,24 @@ void QTabWidget_SetTabPosition(QTabWidget* self, uintptr_t position) {
 	self->setTabPosition(static_cast<QTabWidget::TabPosition>(position));
 }
 
-bool QTabWidget_TabsClosable(QTabWidget* self) {
-	return const_cast<const QTabWidget*>(self)->tabsClosable();
+bool QTabWidget_TabsClosable(const QTabWidget* self) {
+	return self->tabsClosable();
 }
 
 void QTabWidget_SetTabsClosable(QTabWidget* self, bool closeable) {
 	self->setTabsClosable(closeable);
 }
 
-bool QTabWidget_IsMovable(QTabWidget* self) {
-	return const_cast<const QTabWidget*>(self)->isMovable();
+bool QTabWidget_IsMovable(const QTabWidget* self) {
+	return self->isMovable();
 }
 
 void QTabWidget_SetMovable(QTabWidget* self, bool movable) {
 	self->setMovable(movable);
 }
 
-uintptr_t QTabWidget_TabShape(QTabWidget* self) {
-	QTabWidget::TabShape ret = const_cast<const QTabWidget*>(self)->tabShape();
+uintptr_t QTabWidget_TabShape(const QTabWidget* self) {
+	QTabWidget::TabShape ret = self->tabShape();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -191,36 +191,36 @@ void QTabWidget_SetTabShape(QTabWidget* self, uintptr_t s) {
 	self->setTabShape(static_cast<QTabWidget::TabShape>(s));
 }
 
-QSize* QTabWidget_SizeHint(QTabWidget* self) {
-	QSize ret = const_cast<const QTabWidget*>(self)->sizeHint();
+QSize* QTabWidget_SizeHint(const QTabWidget* self) {
+	QSize ret = self->sizeHint();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
 
-QSize* QTabWidget_MinimumSizeHint(QTabWidget* self) {
-	QSize ret = const_cast<const QTabWidget*>(self)->minimumSizeHint();
+QSize* QTabWidget_MinimumSizeHint(const QTabWidget* self) {
+	QSize ret = self->minimumSizeHint();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
 
-int QTabWidget_HeightForWidth(QTabWidget* self, int width) {
-	return const_cast<const QTabWidget*>(self)->heightForWidth(static_cast<int>(width));
+int QTabWidget_HeightForWidth(const QTabWidget* self, int width) {
+	return self->heightForWidth(static_cast<int>(width));
 }
 
-bool QTabWidget_HasHeightForWidth(QTabWidget* self) {
-	return const_cast<const QTabWidget*>(self)->hasHeightForWidth();
+bool QTabWidget_HasHeightForWidth(const QTabWidget* self) {
+	return self->hasHeightForWidth();
 }
 
 void QTabWidget_SetCornerWidget(QTabWidget* self, QWidget* w) {
 	self->setCornerWidget(w);
 }
 
-QWidget* QTabWidget_CornerWidget(QTabWidget* self) {
-	return const_cast<const QTabWidget*>(self)->cornerWidget();
+QWidget* QTabWidget_CornerWidget(const QTabWidget* self) {
+	return self->cornerWidget();
 }
 
-uintptr_t QTabWidget_ElideMode(QTabWidget* self) {
-	Qt::TextElideMode ret = const_cast<const QTabWidget*>(self)->elideMode();
+uintptr_t QTabWidget_ElideMode(const QTabWidget* self) {
+	Qt::TextElideMode ret = self->elideMode();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -228,8 +228,8 @@ void QTabWidget_SetElideMode(QTabWidget* self, uintptr_t mode) {
 	self->setElideMode(static_cast<Qt::TextElideMode>(mode));
 }
 
-QSize* QTabWidget_IconSize(QTabWidget* self) {
-	QSize ret = const_cast<const QTabWidget*>(self)->iconSize();
+QSize* QTabWidget_IconSize(const QTabWidget* self) {
+	QSize ret = self->iconSize();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
@@ -238,24 +238,24 @@ void QTabWidget_SetIconSize(QTabWidget* self, QSize* size) {
 	self->setIconSize(*size);
 }
 
-bool QTabWidget_UsesScrollButtons(QTabWidget* self) {
-	return const_cast<const QTabWidget*>(self)->usesScrollButtons();
+bool QTabWidget_UsesScrollButtons(const QTabWidget* self) {
+	return self->usesScrollButtons();
 }
 
 void QTabWidget_SetUsesScrollButtons(QTabWidget* self, bool useButtons) {
 	self->setUsesScrollButtons(useButtons);
 }
 
-bool QTabWidget_DocumentMode(QTabWidget* self) {
-	return const_cast<const QTabWidget*>(self)->documentMode();
+bool QTabWidget_DocumentMode(const QTabWidget* self) {
+	return self->documentMode();
 }
 
 void QTabWidget_SetDocumentMode(QTabWidget* self, bool set) {
 	self->setDocumentMode(set);
 }
 
-bool QTabWidget_TabBarAutoHide(QTabWidget* self) {
-	return const_cast<const QTabWidget*>(self)->tabBarAutoHide();
+bool QTabWidget_TabBarAutoHide(const QTabWidget* self) {
+	return self->tabBarAutoHide();
 }
 
 void QTabWidget_SetTabBarAutoHide(QTabWidget* self, bool enabled) {
@@ -266,8 +266,8 @@ void QTabWidget_Clear(QTabWidget* self) {
 	self->clear();
 }
 
-QTabBar* QTabWidget_TabBar(QTabWidget* self) {
-	return const_cast<const QTabWidget*>(self)->tabBar();
+QTabBar* QTabWidget_TabBar(const QTabWidget* self) {
+	return self->tabBar();
 }
 
 void QTabWidget_SetCurrentIndex(QTabWidget* self, int index) {
@@ -358,8 +358,8 @@ void QTabWidget_SetCornerWidget2(QTabWidget* self, QWidget* w, uintptr_t corner)
 	self->setCornerWidget(w, static_cast<Qt::Corner>(corner));
 }
 
-QWidget* QTabWidget_CornerWidget1(QTabWidget* self, uintptr_t corner) {
-	return const_cast<const QTabWidget*>(self)->cornerWidget(static_cast<Qt::Corner>(corner));
+QWidget* QTabWidget_CornerWidget1(const QTabWidget* self, uintptr_t corner) {
+	return self->cornerWidget(static_cast<Qt::Corner>(corner));
 }
 
 void QTabWidget_Delete(QTabWidget* self) {

@@ -30,8 +30,8 @@ QSaveFile* QSaveFile_new4(QObject* parent) {
 	return new QSaveFile(parent);
 }
 
-QMetaObject* QSaveFile_MetaObject(QSaveFile* self) {
-	return (QMetaObject*) const_cast<const QSaveFile*>(self)->metaObject();
+QMetaObject* QSaveFile_MetaObject(const QSaveFile* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QSaveFile_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -52,8 +52,8 @@ void QSaveFile_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QSaveFile_FileName(QSaveFile* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QSaveFile*>(self)->fileName();
+void QSaveFile_FileName(const QSaveFile* self, char** _out, int* _out_Strlen) {
+	QString ret = self->fileName();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -82,8 +82,8 @@ void QSaveFile_SetDirectWriteFallback(QSaveFile* self, bool enabled) {
 	self->setDirectWriteFallback(enabled);
 }
 
-bool QSaveFile_DirectWriteFallback(QSaveFile* self) {
-	return const_cast<const QSaveFile*>(self)->directWriteFallback();
+bool QSaveFile_DirectWriteFallback(const QSaveFile* self) {
+	return self->directWriteFallback();
 }
 
 void QSaveFile_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {

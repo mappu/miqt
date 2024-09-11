@@ -38,8 +38,8 @@ void QTextDocumentWriter_SetFormat(QTextDocumentWriter* self, QByteArray* format
 	self->setFormat(*format);
 }
 
-QByteArray* QTextDocumentWriter_Format(QTextDocumentWriter* self) {
-	QByteArray ret = const_cast<const QTextDocumentWriter*>(self)->format();
+QByteArray* QTextDocumentWriter_Format(const QTextDocumentWriter* self) {
+	QByteArray ret = self->format();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QByteArray*>(new QByteArray(ret));
 }
@@ -48,8 +48,8 @@ void QTextDocumentWriter_SetDevice(QTextDocumentWriter* self, QIODevice* device)
 	self->setDevice(device);
 }
 
-QIODevice* QTextDocumentWriter_Device(QTextDocumentWriter* self) {
-	return const_cast<const QTextDocumentWriter*>(self)->device();
+QIODevice* QTextDocumentWriter_Device(const QTextDocumentWriter* self) {
+	return self->device();
 }
 
 void QTextDocumentWriter_SetFileName(QTextDocumentWriter* self, const char* fileName, size_t fileName_Strlen) {
@@ -57,8 +57,8 @@ void QTextDocumentWriter_SetFileName(QTextDocumentWriter* self, const char* file
 	self->setFileName(fileName_QString);
 }
 
-void QTextDocumentWriter_FileName(QTextDocumentWriter* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QTextDocumentWriter*>(self)->fileName();
+void QTextDocumentWriter_FileName(const QTextDocumentWriter* self, char** _out, int* _out_Strlen) {
+	QString ret = self->fileName();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -78,8 +78,8 @@ void QTextDocumentWriter_SetCodec(QTextDocumentWriter* self, QTextCodec* codec) 
 	self->setCodec(codec);
 }
 
-QTextCodec* QTextDocumentWriter_Codec(QTextDocumentWriter* self) {
-	return const_cast<const QTextDocumentWriter*>(self)->codec();
+QTextCodec* QTextDocumentWriter_Codec(const QTextDocumentWriter* self) {
+	return self->codec();
 }
 
 void QTextDocumentWriter_SupportedDocumentFormats(QByteArray*** _out, size_t* _out_len) {

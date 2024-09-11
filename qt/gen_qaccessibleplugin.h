@@ -23,7 +23,7 @@ typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
 #endif
 
-QMetaObject* QAccessiblePlugin_MetaObject(QAccessiblePlugin* self);
+QMetaObject* QAccessiblePlugin_MetaObject(const QAccessiblePlugin* self);
 void QAccessiblePlugin_Tr(const char* s, char** _out, int* _out_Strlen);
 void QAccessiblePlugin_TrUtf8(const char* s, char** _out, int* _out_Strlen);
 QAccessibleInterface* QAccessiblePlugin_Create(QAccessiblePlugin* self, const char* key, size_t key_Strlen, QObject* object);

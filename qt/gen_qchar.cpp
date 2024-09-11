@@ -19,12 +19,12 @@ QLatin1Char* QLatin1Char_new2(QLatin1Char* param1) {
 	return new QLatin1Char(*param1);
 }
 
-char QLatin1Char_ToLatin1(QLatin1Char* self) {
-	return const_cast<const QLatin1Char*>(self)->toLatin1();
+char QLatin1Char_ToLatin1(const QLatin1Char* self) {
+	return self->toLatin1();
 }
 
-uint16_t QLatin1Char_Unicode(QLatin1Char* self) {
-	return const_cast<const QLatin1Char*>(self)->unicode();
+uint16_t QLatin1Char_Unicode(const QLatin1Char* self) {
+	return self->unicode();
 }
 
 void QLatin1Char_Delete(QLatin1Char* self) {
@@ -75,42 +75,42 @@ QChar* QChar_new11(QChar* param1) {
 	return new QChar(*param1);
 }
 
-uintptr_t QChar_Category(QChar* self) {
-	QChar::Category ret = const_cast<const QChar*>(self)->category();
+uintptr_t QChar_Category(const QChar* self) {
+	QChar::Category ret = self->category();
 	return static_cast<uintptr_t>(ret);
 }
 
-uintptr_t QChar_Direction(QChar* self) {
-	QChar::Direction ret = const_cast<const QChar*>(self)->direction();
+uintptr_t QChar_Direction(const QChar* self) {
+	QChar::Direction ret = self->direction();
 	return static_cast<uintptr_t>(ret);
 }
 
-uintptr_t QChar_JoiningType(QChar* self) {
-	QChar::JoiningType ret = const_cast<const QChar*>(self)->joiningType();
+uintptr_t QChar_JoiningType(const QChar* self) {
+	QChar::JoiningType ret = self->joiningType();
 	return static_cast<uintptr_t>(ret);
 }
 
-uintptr_t QChar_Joining(QChar* self) {
-	QChar::Joining ret = const_cast<const QChar*>(self)->joining();
+uintptr_t QChar_Joining(const QChar* self) {
+	QChar::Joining ret = self->joining();
 	return static_cast<uintptr_t>(ret);
 }
 
-unsigned char QChar_CombiningClass(QChar* self) {
-	return const_cast<const QChar*>(self)->combiningClass();
+unsigned char QChar_CombiningClass(const QChar* self) {
+	return self->combiningClass();
 }
 
-QChar* QChar_MirroredChar(QChar* self) {
-	QChar ret = const_cast<const QChar*>(self)->mirroredChar();
+QChar* QChar_MirroredChar(const QChar* self) {
+	QChar ret = self->mirroredChar();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QChar*>(new QChar(ret));
 }
 
-bool QChar_HasMirrored(QChar* self) {
-	return const_cast<const QChar*>(self)->hasMirrored();
+bool QChar_HasMirrored(const QChar* self) {
+	return self->hasMirrored();
 }
 
-void QChar_Decomposition(QChar* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QChar*>(self)->decomposition();
+void QChar_Decomposition(const QChar* self, char** _out, int* _out_Strlen) {
+	QString ret = self->decomposition();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -118,55 +118,55 @@ void QChar_Decomposition(QChar* self, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-uintptr_t QChar_DecompositionTag(QChar* self) {
-	QChar::Decomposition ret = const_cast<const QChar*>(self)->decompositionTag();
+uintptr_t QChar_DecompositionTag(const QChar* self) {
+	QChar::Decomposition ret = self->decompositionTag();
 	return static_cast<uintptr_t>(ret);
 }
 
-int QChar_DigitValue(QChar* self) {
-	return const_cast<const QChar*>(self)->digitValue();
+int QChar_DigitValue(const QChar* self) {
+	return self->digitValue();
 }
 
-QChar* QChar_ToLower(QChar* self) {
-	QChar ret = const_cast<const QChar*>(self)->toLower();
+QChar* QChar_ToLower(const QChar* self) {
+	QChar ret = self->toLower();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QChar*>(new QChar(ret));
 }
 
-QChar* QChar_ToUpper(QChar* self) {
-	QChar ret = const_cast<const QChar*>(self)->toUpper();
+QChar* QChar_ToUpper(const QChar* self) {
+	QChar ret = self->toUpper();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QChar*>(new QChar(ret));
 }
 
-QChar* QChar_ToTitleCase(QChar* self) {
-	QChar ret = const_cast<const QChar*>(self)->toTitleCase();
+QChar* QChar_ToTitleCase(const QChar* self) {
+	QChar ret = self->toTitleCase();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QChar*>(new QChar(ret));
 }
 
-QChar* QChar_ToCaseFolded(QChar* self) {
-	QChar ret = const_cast<const QChar*>(self)->toCaseFolded();
+QChar* QChar_ToCaseFolded(const QChar* self) {
+	QChar ret = self->toCaseFolded();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QChar*>(new QChar(ret));
 }
 
-uintptr_t QChar_Script(QChar* self) {
-	QChar::Script ret = const_cast<const QChar*>(self)->script();
+uintptr_t QChar_Script(const QChar* self) {
+	QChar::Script ret = self->script();
 	return static_cast<uintptr_t>(ret);
 }
 
-uintptr_t QChar_UnicodeVersion(QChar* self) {
-	QChar::UnicodeVersion ret = const_cast<const QChar*>(self)->unicodeVersion();
+uintptr_t QChar_UnicodeVersion(const QChar* self) {
+	QChar::UnicodeVersion ret = self->unicodeVersion();
 	return static_cast<uintptr_t>(ret);
 }
 
-char QChar_ToLatin1(QChar* self) {
-	return const_cast<const QChar*>(self)->toLatin1();
+char QChar_ToLatin1(const QChar* self) {
+	return self->toLatin1();
 }
 
-uint16_t QChar_Unicode(QChar* self) {
-	return const_cast<const QChar*>(self)->unicode();
+uint16_t QChar_Unicode(const QChar* self) {
+	return self->unicode();
 }
 
 QChar* QChar_FromLatin1(char c) {
@@ -175,80 +175,80 @@ QChar* QChar_FromLatin1(char c) {
 	return static_cast<QChar*>(new QChar(ret));
 }
 
-bool QChar_IsNull(QChar* self) {
-	return const_cast<const QChar*>(self)->isNull();
+bool QChar_IsNull(const QChar* self) {
+	return self->isNull();
 }
 
-bool QChar_IsPrint(QChar* self) {
-	return const_cast<const QChar*>(self)->isPrint();
+bool QChar_IsPrint(const QChar* self) {
+	return self->isPrint();
 }
 
-bool QChar_IsSpace(QChar* self) {
-	return const_cast<const QChar*>(self)->isSpace();
+bool QChar_IsSpace(const QChar* self) {
+	return self->isSpace();
 }
 
-bool QChar_IsMark(QChar* self) {
-	return const_cast<const QChar*>(self)->isMark();
+bool QChar_IsMark(const QChar* self) {
+	return self->isMark();
 }
 
-bool QChar_IsPunct(QChar* self) {
-	return const_cast<const QChar*>(self)->isPunct();
+bool QChar_IsPunct(const QChar* self) {
+	return self->isPunct();
 }
 
-bool QChar_IsSymbol(QChar* self) {
-	return const_cast<const QChar*>(self)->isSymbol();
+bool QChar_IsSymbol(const QChar* self) {
+	return self->isSymbol();
 }
 
-bool QChar_IsLetter(QChar* self) {
-	return const_cast<const QChar*>(self)->isLetter();
+bool QChar_IsLetter(const QChar* self) {
+	return self->isLetter();
 }
 
-bool QChar_IsNumber(QChar* self) {
-	return const_cast<const QChar*>(self)->isNumber();
+bool QChar_IsNumber(const QChar* self) {
+	return self->isNumber();
 }
 
-bool QChar_IsLetterOrNumber(QChar* self) {
-	return const_cast<const QChar*>(self)->isLetterOrNumber();
+bool QChar_IsLetterOrNumber(const QChar* self) {
+	return self->isLetterOrNumber();
 }
 
-bool QChar_IsDigit(QChar* self) {
-	return const_cast<const QChar*>(self)->isDigit();
+bool QChar_IsDigit(const QChar* self) {
+	return self->isDigit();
 }
 
-bool QChar_IsLower(QChar* self) {
-	return const_cast<const QChar*>(self)->isLower();
+bool QChar_IsLower(const QChar* self) {
+	return self->isLower();
 }
 
-bool QChar_IsUpper(QChar* self) {
-	return const_cast<const QChar*>(self)->isUpper();
+bool QChar_IsUpper(const QChar* self) {
+	return self->isUpper();
 }
 
-bool QChar_IsTitleCase(QChar* self) {
-	return const_cast<const QChar*>(self)->isTitleCase();
+bool QChar_IsTitleCase(const QChar* self) {
+	return self->isTitleCase();
 }
 
-bool QChar_IsNonCharacter(QChar* self) {
-	return const_cast<const QChar*>(self)->isNonCharacter();
+bool QChar_IsNonCharacter(const QChar* self) {
+	return self->isNonCharacter();
 }
 
-bool QChar_IsHighSurrogate(QChar* self) {
-	return const_cast<const QChar*>(self)->isHighSurrogate();
+bool QChar_IsHighSurrogate(const QChar* self) {
+	return self->isHighSurrogate();
 }
 
-bool QChar_IsLowSurrogate(QChar* self) {
-	return const_cast<const QChar*>(self)->isLowSurrogate();
+bool QChar_IsLowSurrogate(const QChar* self) {
+	return self->isLowSurrogate();
 }
 
-bool QChar_IsSurrogate(QChar* self) {
-	return const_cast<const QChar*>(self)->isSurrogate();
+bool QChar_IsSurrogate(const QChar* self) {
+	return self->isSurrogate();
 }
 
-unsigned char QChar_Cell(QChar* self) {
-	return const_cast<const QChar*>(self)->cell();
+unsigned char QChar_Cell(const QChar* self) {
+	return self->cell();
 }
 
-unsigned char QChar_Row(QChar* self) {
-	return const_cast<const QChar*>(self)->row();
+unsigned char QChar_Row(const QChar* self) {
+	return self->row();
 }
 
 void QChar_SetCell(QChar* self, unsigned char acell) {

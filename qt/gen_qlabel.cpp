@@ -43,8 +43,8 @@ QLabel* QLabel_new6(const char* text, size_t text_Strlen, QWidget* parent, int f
 	return new QLabel(text_QString, parent, static_cast<Qt::WindowFlags>(f));
 }
 
-QMetaObject* QLabel_MetaObject(QLabel* self) {
-	return (QMetaObject*) const_cast<const QLabel*>(self)->metaObject();
+QMetaObject* QLabel_MetaObject(const QLabel* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QLabel_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -65,8 +65,8 @@ void QLabel_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QLabel_Text(QLabel* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QLabel*>(self)->text();
+void QLabel_Text(const QLabel* self, char** _out, int* _out_Strlen) {
+	QString ret = self->text();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -74,32 +74,32 @@ void QLabel_Text(QLabel* self, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-QPixmap* QLabel_Pixmap(QLabel* self) {
-	return (QPixmap*) const_cast<const QLabel*>(self)->pixmap();
+QPixmap* QLabel_Pixmap(const QLabel* self) {
+	return (QPixmap*) self->pixmap();
 }
 
-QPixmap* QLabel_PixmapWithQtReturnByValueConstant(QLabel* self, uintptr_t param1) {
-	QPixmap ret = const_cast<const QLabel*>(self)->pixmap(static_cast<Qt::ReturnByValueConstant>(param1));
+QPixmap* QLabel_PixmapWithQtReturnByValueConstant(const QLabel* self, uintptr_t param1) {
+	QPixmap ret = self->pixmap(static_cast<Qt::ReturnByValueConstant>(param1));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPixmap*>(new QPixmap(ret));
 }
 
-QPicture* QLabel_Picture(QLabel* self) {
-	return (QPicture*) const_cast<const QLabel*>(self)->picture();
+QPicture* QLabel_Picture(const QLabel* self) {
+	return (QPicture*) self->picture();
 }
 
-QPicture* QLabel_PictureWithQtReturnByValueConstant(QLabel* self, uintptr_t param1) {
-	QPicture ret = const_cast<const QLabel*>(self)->picture(static_cast<Qt::ReturnByValueConstant>(param1));
+QPicture* QLabel_PictureWithQtReturnByValueConstant(const QLabel* self, uintptr_t param1) {
+	QPicture ret = self->picture(static_cast<Qt::ReturnByValueConstant>(param1));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPicture*>(new QPicture(ret));
 }
 
-QMovie* QLabel_Movie(QLabel* self) {
-	return const_cast<const QLabel*>(self)->movie();
+QMovie* QLabel_Movie(const QLabel* self) {
+	return self->movie();
 }
 
-uintptr_t QLabel_TextFormat(QLabel* self) {
-	Qt::TextFormat ret = const_cast<const QLabel*>(self)->textFormat();
+uintptr_t QLabel_TextFormat(const QLabel* self) {
+	Qt::TextFormat ret = self->textFormat();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -107,8 +107,8 @@ void QLabel_SetTextFormat(QLabel* self, uintptr_t textFormat) {
 	self->setTextFormat(static_cast<Qt::TextFormat>(textFormat));
 }
 
-int QLabel_Alignment(QLabel* self) {
-	Qt::Alignment ret = const_cast<const QLabel*>(self)->alignment();
+int QLabel_Alignment(const QLabel* self) {
+	Qt::Alignment ret = self->alignment();
 	return static_cast<int>(ret);
 }
 
@@ -120,42 +120,42 @@ void QLabel_SetWordWrap(QLabel* self, bool on) {
 	self->setWordWrap(on);
 }
 
-bool QLabel_WordWrap(QLabel* self) {
-	return const_cast<const QLabel*>(self)->wordWrap();
+bool QLabel_WordWrap(const QLabel* self) {
+	return self->wordWrap();
 }
 
-int QLabel_Indent(QLabel* self) {
-	return const_cast<const QLabel*>(self)->indent();
+int QLabel_Indent(const QLabel* self) {
+	return self->indent();
 }
 
 void QLabel_SetIndent(QLabel* self, int indent) {
 	self->setIndent(static_cast<int>(indent));
 }
 
-int QLabel_Margin(QLabel* self) {
-	return const_cast<const QLabel*>(self)->margin();
+int QLabel_Margin(const QLabel* self) {
+	return self->margin();
 }
 
 void QLabel_SetMargin(QLabel* self, int margin) {
 	self->setMargin(static_cast<int>(margin));
 }
 
-bool QLabel_HasScaledContents(QLabel* self) {
-	return const_cast<const QLabel*>(self)->hasScaledContents();
+bool QLabel_HasScaledContents(const QLabel* self) {
+	return self->hasScaledContents();
 }
 
 void QLabel_SetScaledContents(QLabel* self, bool scaledContents) {
 	self->setScaledContents(scaledContents);
 }
 
-QSize* QLabel_SizeHint(QLabel* self) {
-	QSize ret = const_cast<const QLabel*>(self)->sizeHint();
+QSize* QLabel_SizeHint(const QLabel* self) {
+	QSize ret = self->sizeHint();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
 
-QSize* QLabel_MinimumSizeHint(QLabel* self) {
-	QSize ret = const_cast<const QLabel*>(self)->minimumSizeHint();
+QSize* QLabel_MinimumSizeHint(const QLabel* self) {
+	QSize ret = self->minimumSizeHint();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
@@ -164,16 +164,16 @@ void QLabel_SetBuddy(QLabel* self, QWidget* buddy) {
 	self->setBuddy(buddy);
 }
 
-QWidget* QLabel_Buddy(QLabel* self) {
-	return const_cast<const QLabel*>(self)->buddy();
+QWidget* QLabel_Buddy(const QLabel* self) {
+	return self->buddy();
 }
 
-int QLabel_HeightForWidth(QLabel* self, int param1) {
-	return const_cast<const QLabel*>(self)->heightForWidth(static_cast<int>(param1));
+int QLabel_HeightForWidth(const QLabel* self, int param1) {
+	return self->heightForWidth(static_cast<int>(param1));
 }
 
-bool QLabel_OpenExternalLinks(QLabel* self) {
-	return const_cast<const QLabel*>(self)->openExternalLinks();
+bool QLabel_OpenExternalLinks(const QLabel* self) {
+	return self->openExternalLinks();
 }
 
 void QLabel_SetOpenExternalLinks(QLabel* self, bool open) {
@@ -184,8 +184,8 @@ void QLabel_SetTextInteractionFlags(QLabel* self, int flags) {
 	self->setTextInteractionFlags(static_cast<Qt::TextInteractionFlags>(flags));
 }
 
-int QLabel_TextInteractionFlags(QLabel* self) {
-	Qt::TextInteractionFlags ret = const_cast<const QLabel*>(self)->textInteractionFlags();
+int QLabel_TextInteractionFlags(const QLabel* self) {
+	Qt::TextInteractionFlags ret = self->textInteractionFlags();
 	return static_cast<int>(ret);
 }
 
@@ -193,12 +193,12 @@ void QLabel_SetSelection(QLabel* self, int param1, int param2) {
 	self->setSelection(static_cast<int>(param1), static_cast<int>(param2));
 }
 
-bool QLabel_HasSelectedText(QLabel* self) {
-	return const_cast<const QLabel*>(self)->hasSelectedText();
+bool QLabel_HasSelectedText(const QLabel* self) {
+	return self->hasSelectedText();
 }
 
-void QLabel_SelectedText(QLabel* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QLabel*>(self)->selectedText();
+void QLabel_SelectedText(const QLabel* self, char** _out, int* _out_Strlen) {
+	QString ret = self->selectedText();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -206,8 +206,8 @@ void QLabel_SelectedText(QLabel* self, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-int QLabel_SelectionStart(QLabel* self) {
-	return const_cast<const QLabel*>(self)->selectionStart();
+int QLabel_SelectionStart(const QLabel* self) {
+	return self->selectionStart();
 }
 
 void QLabel_SetText(QLabel* self, const char* text, size_t text_Strlen) {

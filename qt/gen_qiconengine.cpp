@@ -43,8 +43,8 @@ void QIconEngine_AddFile(QIconEngine* self, const char* fileName, size_t fileNam
 	self->addFile(fileName_QString, *size, static_cast<QIcon::Mode>(mode), static_cast<QIcon::State>(state));
 }
 
-void QIconEngine_Key(QIconEngine* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QIconEngine*>(self)->key();
+void QIconEngine_Key(const QIconEngine* self, char** _out, int* _out_Strlen) {
+	QString ret = self->key();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -52,20 +52,20 @@ void QIconEngine_Key(QIconEngine* self, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-QIconEngine* QIconEngine_Clone(QIconEngine* self) {
-	return const_cast<const QIconEngine*>(self)->clone();
+QIconEngine* QIconEngine_Clone(const QIconEngine* self) {
+	return self->clone();
 }
 
 bool QIconEngine_Read(QIconEngine* self, QDataStream* in) {
 	return self->read(*in);
 }
 
-bool QIconEngine_Write(QIconEngine* self, QDataStream* out) {
-	return const_cast<const QIconEngine*>(self)->write(*out);
+bool QIconEngine_Write(const QIconEngine* self, QDataStream* out) {
+	return self->write(*out);
 }
 
-void QIconEngine_AvailableSizes(QIconEngine* self, QSize*** _out, size_t* _out_len) {
-	QList<QSize> ret = const_cast<const QIconEngine*>(self)->availableSizes();
+void QIconEngine_AvailableSizes(const QIconEngine* self, QSize*** _out, size_t* _out_len) {
+	QList<QSize> ret = self->availableSizes();
 	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
 	QSize** __out = static_cast<QSize**>(malloc(sizeof(QSize**) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {
@@ -75,8 +75,8 @@ void QIconEngine_AvailableSizes(QIconEngine* self, QSize*** _out, size_t* _out_l
 	*_out_len = ret.length();
 }
 
-void QIconEngine_IconName(QIconEngine* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QIconEngine*>(self)->iconName();
+void QIconEngine_IconName(const QIconEngine* self, char** _out, int* _out_Strlen) {
+	QString ret = self->iconName();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -84,8 +84,8 @@ void QIconEngine_IconName(QIconEngine* self, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-bool QIconEngine_IsNull(QIconEngine* self) {
-	return const_cast<const QIconEngine*>(self)->isNull();
+bool QIconEngine_IsNull(const QIconEngine* self) {
+	return self->isNull();
 }
 
 QPixmap* QIconEngine_ScaledPixmap(QIconEngine* self, QSize* size, uintptr_t mode, uintptr_t state, double scale) {
@@ -94,8 +94,8 @@ QPixmap* QIconEngine_ScaledPixmap(QIconEngine* self, QSize* size, uintptr_t mode
 	return static_cast<QPixmap*>(new QPixmap(ret));
 }
 
-void QIconEngine_AvailableSizes1(QIconEngine* self, uintptr_t mode, QSize*** _out, size_t* _out_len) {
-	QList<QSize> ret = const_cast<const QIconEngine*>(self)->availableSizes(static_cast<QIcon::Mode>(mode));
+void QIconEngine_AvailableSizes1(const QIconEngine* self, uintptr_t mode, QSize*** _out, size_t* _out_len) {
+	QList<QSize> ret = self->availableSizes(static_cast<QIcon::Mode>(mode));
 	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
 	QSize** __out = static_cast<QSize**>(malloc(sizeof(QSize**) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {
@@ -105,8 +105,8 @@ void QIconEngine_AvailableSizes1(QIconEngine* self, uintptr_t mode, QSize*** _ou
 	*_out_len = ret.length();
 }
 
-void QIconEngine_AvailableSizes2(QIconEngine* self, uintptr_t mode, uintptr_t state, QSize*** _out, size_t* _out_len) {
-	QList<QSize> ret = const_cast<const QIconEngine*>(self)->availableSizes(static_cast<QIcon::Mode>(mode), static_cast<QIcon::State>(state));
+void QIconEngine_AvailableSizes2(const QIconEngine* self, uintptr_t mode, uintptr_t state, QSize*** _out, size_t* _out_len) {
+	QList<QSize> ret = self->availableSizes(static_cast<QIcon::Mode>(mode), static_cast<QIcon::State>(state));
 	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
 	QSize** __out = static_cast<QSize**>(malloc(sizeof(QSize**) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {

@@ -73,14 +73,14 @@ QBitmap* QBitmap_FromData(QSize* size, const unsigned char* bits) {
 	return static_cast<QBitmap*>(new QBitmap(ret));
 }
 
-QBitmap* QBitmap_Transformed(QBitmap* self, QMatrix* param1) {
-	QBitmap ret = const_cast<const QBitmap*>(self)->transformed(*param1);
+QBitmap* QBitmap_Transformed(const QBitmap* self, QMatrix* param1) {
+	QBitmap ret = self->transformed(*param1);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QBitmap*>(new QBitmap(ret));
 }
 
-QBitmap* QBitmap_TransformedWithMatrix(QBitmap* self, QTransform* matrix) {
-	QBitmap ret = const_cast<const QBitmap*>(self)->transformed(*matrix);
+QBitmap* QBitmap_TransformedWithMatrix(const QBitmap* self, QTransform* matrix) {
+	QBitmap ret = self->transformed(*matrix);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QBitmap*>(new QBitmap(ret));
 }

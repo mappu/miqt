@@ -20,8 +20,8 @@ QAbstractSlider* QAbstractSlider_new2(QWidget* parent) {
 	return new QAbstractSlider(parent);
 }
 
-QMetaObject* QAbstractSlider_MetaObject(QAbstractSlider* self) {
-	return (QMetaObject*) const_cast<const QAbstractSlider*>(self)->metaObject();
+QMetaObject* QAbstractSlider_MetaObject(const QAbstractSlider* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QAbstractSlider_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -42,8 +42,8 @@ void QAbstractSlider_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-uintptr_t QAbstractSlider_Orientation(QAbstractSlider* self) {
-	Qt::Orientation ret = const_cast<const QAbstractSlider*>(self)->orientation();
+uintptr_t QAbstractSlider_Orientation(const QAbstractSlider* self) {
+	Qt::Orientation ret = self->orientation();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -51,76 +51,76 @@ void QAbstractSlider_SetMinimum(QAbstractSlider* self, int minimum) {
 	self->setMinimum(static_cast<int>(minimum));
 }
 
-int QAbstractSlider_Minimum(QAbstractSlider* self) {
-	return const_cast<const QAbstractSlider*>(self)->minimum();
+int QAbstractSlider_Minimum(const QAbstractSlider* self) {
+	return self->minimum();
 }
 
 void QAbstractSlider_SetMaximum(QAbstractSlider* self, int maximum) {
 	self->setMaximum(static_cast<int>(maximum));
 }
 
-int QAbstractSlider_Maximum(QAbstractSlider* self) {
-	return const_cast<const QAbstractSlider*>(self)->maximum();
+int QAbstractSlider_Maximum(const QAbstractSlider* self) {
+	return self->maximum();
 }
 
 void QAbstractSlider_SetSingleStep(QAbstractSlider* self, int singleStep) {
 	self->setSingleStep(static_cast<int>(singleStep));
 }
 
-int QAbstractSlider_SingleStep(QAbstractSlider* self) {
-	return const_cast<const QAbstractSlider*>(self)->singleStep();
+int QAbstractSlider_SingleStep(const QAbstractSlider* self) {
+	return self->singleStep();
 }
 
 void QAbstractSlider_SetPageStep(QAbstractSlider* self, int pageStep) {
 	self->setPageStep(static_cast<int>(pageStep));
 }
 
-int QAbstractSlider_PageStep(QAbstractSlider* self) {
-	return const_cast<const QAbstractSlider*>(self)->pageStep();
+int QAbstractSlider_PageStep(const QAbstractSlider* self) {
+	return self->pageStep();
 }
 
 void QAbstractSlider_SetTracking(QAbstractSlider* self, bool enable) {
 	self->setTracking(enable);
 }
 
-bool QAbstractSlider_HasTracking(QAbstractSlider* self) {
-	return const_cast<const QAbstractSlider*>(self)->hasTracking();
+bool QAbstractSlider_HasTracking(const QAbstractSlider* self) {
+	return self->hasTracking();
 }
 
 void QAbstractSlider_SetSliderDown(QAbstractSlider* self, bool sliderDown) {
 	self->setSliderDown(sliderDown);
 }
 
-bool QAbstractSlider_IsSliderDown(QAbstractSlider* self) {
-	return const_cast<const QAbstractSlider*>(self)->isSliderDown();
+bool QAbstractSlider_IsSliderDown(const QAbstractSlider* self) {
+	return self->isSliderDown();
 }
 
 void QAbstractSlider_SetSliderPosition(QAbstractSlider* self, int sliderPosition) {
 	self->setSliderPosition(static_cast<int>(sliderPosition));
 }
 
-int QAbstractSlider_SliderPosition(QAbstractSlider* self) {
-	return const_cast<const QAbstractSlider*>(self)->sliderPosition();
+int QAbstractSlider_SliderPosition(const QAbstractSlider* self) {
+	return self->sliderPosition();
 }
 
 void QAbstractSlider_SetInvertedAppearance(QAbstractSlider* self, bool invertedAppearance) {
 	self->setInvertedAppearance(invertedAppearance);
 }
 
-bool QAbstractSlider_InvertedAppearance(QAbstractSlider* self) {
-	return const_cast<const QAbstractSlider*>(self)->invertedAppearance();
+bool QAbstractSlider_InvertedAppearance(const QAbstractSlider* self) {
+	return self->invertedAppearance();
 }
 
 void QAbstractSlider_SetInvertedControls(QAbstractSlider* self, bool invertedControls) {
 	self->setInvertedControls(invertedControls);
 }
 
-bool QAbstractSlider_InvertedControls(QAbstractSlider* self) {
-	return const_cast<const QAbstractSlider*>(self)->invertedControls();
+bool QAbstractSlider_InvertedControls(const QAbstractSlider* self) {
+	return self->invertedControls();
 }
 
-int QAbstractSlider_Value(QAbstractSlider* self) {
-	return const_cast<const QAbstractSlider*>(self)->value();
+int QAbstractSlider_Value(const QAbstractSlider* self) {
+	return self->value();
 }
 
 void QAbstractSlider_TriggerAction(QAbstractSlider* self, uintptr_t action) {

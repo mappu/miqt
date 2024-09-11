@@ -47,32 +47,32 @@ void QTextStream_SetCodecWithCodecName(QTextStream* self, const char* codecName)
 	self->setCodec(codecName);
 }
 
-QTextCodec* QTextStream_Codec(QTextStream* self) {
-	return const_cast<const QTextStream*>(self)->codec();
+QTextCodec* QTextStream_Codec(const QTextStream* self) {
+	return self->codec();
 }
 
 void QTextStream_SetAutoDetectUnicode(QTextStream* self, bool enabled) {
 	self->setAutoDetectUnicode(enabled);
 }
 
-bool QTextStream_AutoDetectUnicode(QTextStream* self) {
-	return const_cast<const QTextStream*>(self)->autoDetectUnicode();
+bool QTextStream_AutoDetectUnicode(const QTextStream* self) {
+	return self->autoDetectUnicode();
 }
 
 void QTextStream_SetGenerateByteOrderMark(QTextStream* self, bool generate) {
 	self->setGenerateByteOrderMark(generate);
 }
 
-bool QTextStream_GenerateByteOrderMark(QTextStream* self) {
-	return const_cast<const QTextStream*>(self)->generateByteOrderMark();
+bool QTextStream_GenerateByteOrderMark(const QTextStream* self) {
+	return self->generateByteOrderMark();
 }
 
 void QTextStream_SetLocale(QTextStream* self, QLocale* locale) {
 	self->setLocale(*locale);
 }
 
-QLocale* QTextStream_Locale(QTextStream* self) {
-	QLocale ret = const_cast<const QTextStream*>(self)->locale();
+QLocale* QTextStream_Locale(const QTextStream* self) {
+	QLocale ret = self->locale();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QLocale*>(new QLocale(ret));
 }
@@ -81,12 +81,12 @@ void QTextStream_SetDevice(QTextStream* self, QIODevice* device) {
 	self->setDevice(device);
 }
 
-QIODevice* QTextStream_Device(QTextStream* self) {
-	return const_cast<const QTextStream*>(self)->device();
+QIODevice* QTextStream_Device(const QTextStream* self) {
+	return self->device();
 }
 
-void QTextStream_String(QTextStream* self, char** _out, int* _out_Strlen) {
-	QString* ret = const_cast<const QTextStream*>(self)->string();
+void QTextStream_String(const QTextStream* self, char** _out, int* _out_Strlen) {
+	QString* ret = self->string();
 	// Convert QString pointer from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret->toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -94,8 +94,8 @@ void QTextStream_String(QTextStream* self, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-uintptr_t QTextStream_Status(QTextStream* self) {
-	QTextStream::Status ret = const_cast<const QTextStream*>(self)->status();
+uintptr_t QTextStream_Status(const QTextStream* self) {
+	QTextStream::Status ret = self->status();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -107,8 +107,8 @@ void QTextStream_ResetStatus(QTextStream* self) {
 	self->resetStatus();
 }
 
-bool QTextStream_AtEnd(QTextStream* self) {
-	return const_cast<const QTextStream*>(self)->atEnd();
+bool QTextStream_AtEnd(const QTextStream* self) {
+	return self->atEnd();
 }
 
 void QTextStream_Reset(QTextStream* self) {
@@ -123,8 +123,8 @@ bool QTextStream_Seek(QTextStream* self, long long pos) {
 	return self->seek(static_cast<qint64>(pos));
 }
 
-long long QTextStream_Pos(QTextStream* self) {
-	return const_cast<const QTextStream*>(self)->pos();
+long long QTextStream_Pos(const QTextStream* self) {
+	return self->pos();
 }
 
 void QTextStream_SkipWhiteSpace(QTextStream* self) {
@@ -162,8 +162,8 @@ void QTextStream_SetFieldAlignment(QTextStream* self, uintptr_t alignment) {
 	self->setFieldAlignment(static_cast<QTextStream::FieldAlignment>(alignment));
 }
 
-uintptr_t QTextStream_FieldAlignment(QTextStream* self) {
-	QTextStream::FieldAlignment ret = const_cast<const QTextStream*>(self)->fieldAlignment();
+uintptr_t QTextStream_FieldAlignment(const QTextStream* self) {
+	QTextStream::FieldAlignment ret = self->fieldAlignment();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -171,8 +171,8 @@ void QTextStream_SetPadChar(QTextStream* self, QChar* ch) {
 	self->setPadChar(*ch);
 }
 
-QChar* QTextStream_PadChar(QTextStream* self) {
-	QChar ret = const_cast<const QTextStream*>(self)->padChar();
+QChar* QTextStream_PadChar(const QTextStream* self) {
+	QChar ret = self->padChar();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QChar*>(new QChar(ret));
 }
@@ -181,16 +181,16 @@ void QTextStream_SetFieldWidth(QTextStream* self, int width) {
 	self->setFieldWidth(static_cast<int>(width));
 }
 
-int QTextStream_FieldWidth(QTextStream* self) {
-	return const_cast<const QTextStream*>(self)->fieldWidth();
+int QTextStream_FieldWidth(const QTextStream* self) {
+	return self->fieldWidth();
 }
 
 void QTextStream_SetNumberFlags(QTextStream* self, int flags) {
 	self->setNumberFlags(static_cast<QTextStream::NumberFlags>(flags));
 }
 
-int QTextStream_NumberFlags(QTextStream* self) {
-	QTextStream::NumberFlags ret = const_cast<const QTextStream*>(self)->numberFlags();
+int QTextStream_NumberFlags(const QTextStream* self) {
+	QTextStream::NumberFlags ret = self->numberFlags();
 	return static_cast<int>(ret);
 }
 
@@ -198,16 +198,16 @@ void QTextStream_SetIntegerBase(QTextStream* self, int base) {
 	self->setIntegerBase(static_cast<int>(base));
 }
 
-int QTextStream_IntegerBase(QTextStream* self) {
-	return const_cast<const QTextStream*>(self)->integerBase();
+int QTextStream_IntegerBase(const QTextStream* self) {
+	return self->integerBase();
 }
 
 void QTextStream_SetRealNumberNotation(QTextStream* self, uintptr_t notation) {
 	self->setRealNumberNotation(static_cast<QTextStream::RealNumberNotation>(notation));
 }
 
-uintptr_t QTextStream_RealNumberNotation(QTextStream* self) {
-	QTextStream::RealNumberNotation ret = const_cast<const QTextStream*>(self)->realNumberNotation();
+uintptr_t QTextStream_RealNumberNotation(const QTextStream* self) {
+	QTextStream::RealNumberNotation ret = self->realNumberNotation();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -215,8 +215,8 @@ void QTextStream_SetRealNumberPrecision(QTextStream* self, int precision) {
 	self->setRealNumberPrecision(static_cast<int>(precision));
 }
 
-int QTextStream_RealNumberPrecision(QTextStream* self) {
-	return const_cast<const QTextStream*>(self)->realNumberPrecision();
+int QTextStream_RealNumberPrecision(const QTextStream* self) {
+	return self->realNumberPrecision();
 }
 
 QTextStream* QTextStream_OperatorShiftRight(QTextStream* self, QChar* ch) {

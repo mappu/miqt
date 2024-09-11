@@ -26,8 +26,8 @@ void QTouchDevice_Devices(const QTouchDevice*** _out, size_t* _out_len) {
 	*_out_len = ret.length();
 }
 
-void QTouchDevice_Name(QTouchDevice* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QTouchDevice*>(self)->name();
+void QTouchDevice_Name(const QTouchDevice* self, char** _out, int* _out_Strlen) {
+	QString ret = self->name();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -35,18 +35,18 @@ void QTouchDevice_Name(QTouchDevice* self, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-uintptr_t QTouchDevice_Type(QTouchDevice* self) {
-	QTouchDevice::DeviceType ret = const_cast<const QTouchDevice*>(self)->type();
+uintptr_t QTouchDevice_Type(const QTouchDevice* self) {
+	QTouchDevice::DeviceType ret = self->type();
 	return static_cast<uintptr_t>(ret);
 }
 
-int QTouchDevice_Capabilities(QTouchDevice* self) {
-	QTouchDevice::Capabilities ret = const_cast<const QTouchDevice*>(self)->capabilities();
+int QTouchDevice_Capabilities(const QTouchDevice* self) {
+	QTouchDevice::Capabilities ret = self->capabilities();
 	return static_cast<int>(ret);
 }
 
-int QTouchDevice_MaximumTouchPoints(QTouchDevice* self) {
-	return const_cast<const QTouchDevice*>(self)->maximumTouchPoints();
+int QTouchDevice_MaximumTouchPoints(const QTouchDevice* self) {
+	return self->maximumTouchPoints();
 }
 
 void QTouchDevice_SetName(QTouchDevice* self, const char* name, size_t name_Strlen) {

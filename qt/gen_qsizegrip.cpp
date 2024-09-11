@@ -17,8 +17,8 @@ QSizeGrip* QSizeGrip_new(QWidget* parent) {
 	return new QSizeGrip(parent);
 }
 
-QMetaObject* QSizeGrip_MetaObject(QSizeGrip* self) {
-	return (QMetaObject*) const_cast<const QSizeGrip*>(self)->metaObject();
+QMetaObject* QSizeGrip_MetaObject(const QSizeGrip* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QSizeGrip_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -39,8 +39,8 @@ void QSizeGrip_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-QSize* QSizeGrip_SizeHint(QSizeGrip* self) {
-	QSize ret = const_cast<const QSizeGrip*>(self)->sizeHint();
+QSize* QSizeGrip_SizeHint(const QSizeGrip* self) {
+	QSize ret = self->sizeHint();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }

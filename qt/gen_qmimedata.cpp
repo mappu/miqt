@@ -19,8 +19,8 @@ QMimeData* QMimeData_new() {
 	return new QMimeData();
 }
 
-QMetaObject* QMimeData_MetaObject(QMimeData* self) {
-	return (QMetaObject*) const_cast<const QMimeData*>(self)->metaObject();
+QMetaObject* QMimeData_MetaObject(const QMimeData* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QMimeData_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -41,8 +41,8 @@ void QMimeData_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QMimeData_Urls(QMimeData* self, QUrl*** _out, size_t* _out_len) {
-	QList<QUrl> ret = const_cast<const QMimeData*>(self)->urls();
+void QMimeData_Urls(const QMimeData* self, QUrl*** _out, size_t* _out_len) {
+	QList<QUrl> ret = self->urls();
 	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
 	QUrl** __out = static_cast<QUrl**>(malloc(sizeof(QUrl**) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {
@@ -61,12 +61,12 @@ void QMimeData_SetUrls(QMimeData* self, QUrl** urls, size_t urls_len) {
 	self->setUrls(urls_QList);
 }
 
-bool QMimeData_HasUrls(QMimeData* self) {
-	return const_cast<const QMimeData*>(self)->hasUrls();
+bool QMimeData_HasUrls(const QMimeData* self) {
+	return self->hasUrls();
 }
 
-void QMimeData_Text(QMimeData* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QMimeData*>(self)->text();
+void QMimeData_Text(const QMimeData* self, char** _out, int* _out_Strlen) {
+	QString ret = self->text();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -79,12 +79,12 @@ void QMimeData_SetText(QMimeData* self, const char* text, size_t text_Strlen) {
 	self->setText(text_QString);
 }
 
-bool QMimeData_HasText(QMimeData* self) {
-	return const_cast<const QMimeData*>(self)->hasText();
+bool QMimeData_HasText(const QMimeData* self) {
+	return self->hasText();
 }
 
-void QMimeData_Html(QMimeData* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QMimeData*>(self)->html();
+void QMimeData_Html(const QMimeData* self, char** _out, int* _out_Strlen) {
+	QString ret = self->html();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -97,12 +97,12 @@ void QMimeData_SetHtml(QMimeData* self, const char* html, size_t html_Strlen) {
 	self->setHtml(html_QString);
 }
 
-bool QMimeData_HasHtml(QMimeData* self) {
-	return const_cast<const QMimeData*>(self)->hasHtml();
+bool QMimeData_HasHtml(const QMimeData* self) {
+	return self->hasHtml();
 }
 
-QVariant* QMimeData_ImageData(QMimeData* self) {
-	QVariant ret = const_cast<const QMimeData*>(self)->imageData();
+QVariant* QMimeData_ImageData(const QMimeData* self) {
+	QVariant ret = self->imageData();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVariant*>(new QVariant(ret));
 }
@@ -111,12 +111,12 @@ void QMimeData_SetImageData(QMimeData* self, QVariant* image) {
 	self->setImageData(*image);
 }
 
-bool QMimeData_HasImage(QMimeData* self) {
-	return const_cast<const QMimeData*>(self)->hasImage();
+bool QMimeData_HasImage(const QMimeData* self) {
+	return self->hasImage();
 }
 
-QVariant* QMimeData_ColorData(QMimeData* self) {
-	QVariant ret = const_cast<const QMimeData*>(self)->colorData();
+QVariant* QMimeData_ColorData(const QMimeData* self) {
+	QVariant ret = self->colorData();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVariant*>(new QVariant(ret));
 }
@@ -125,13 +125,13 @@ void QMimeData_SetColorData(QMimeData* self, QVariant* color) {
 	self->setColorData(*color);
 }
 
-bool QMimeData_HasColor(QMimeData* self) {
-	return const_cast<const QMimeData*>(self)->hasColor();
+bool QMimeData_HasColor(const QMimeData* self) {
+	return self->hasColor();
 }
 
-QByteArray* QMimeData_Data(QMimeData* self, const char* mimetype, size_t mimetype_Strlen) {
+QByteArray* QMimeData_Data(const QMimeData* self, const char* mimetype, size_t mimetype_Strlen) {
 	QString mimetype_QString = QString::fromUtf8(mimetype, mimetype_Strlen);
-	QByteArray ret = const_cast<const QMimeData*>(self)->data(mimetype_QString);
+	QByteArray ret = self->data(mimetype_QString);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QByteArray*>(new QByteArray(ret));
 }
@@ -146,13 +146,13 @@ void QMimeData_RemoveFormat(QMimeData* self, const char* mimetype, size_t mimety
 	self->removeFormat(mimetype_QString);
 }
 
-bool QMimeData_HasFormat(QMimeData* self, const char* mimetype, size_t mimetype_Strlen) {
+bool QMimeData_HasFormat(const QMimeData* self, const char* mimetype, size_t mimetype_Strlen) {
 	QString mimetype_QString = QString::fromUtf8(mimetype, mimetype_Strlen);
-	return const_cast<const QMimeData*>(self)->hasFormat(mimetype_QString);
+	return self->hasFormat(mimetype_QString);
 }
 
-void QMimeData_Formats(QMimeData* self, char*** _out, int** _out_Lengths, size_t* _out_len) {
-	QStringList ret = const_cast<const QMimeData*>(self)->formats();
+void QMimeData_Formats(const QMimeData* self, char*** _out, int** _out_Lengths, size_t* _out_len) {
+	QStringList ret = self->formats();
 	// Convert QStringList from C++ memory to manually-managed C memory
 	char** __out = static_cast<char**>(malloc(sizeof(char*) * ret.length()));
 	int* __out_Lengths = static_cast<int*>(malloc(sizeof(int) * ret.length()));

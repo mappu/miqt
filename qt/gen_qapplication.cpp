@@ -31,8 +31,8 @@ QApplication* QApplication_new2(int* argc, char** argv, int param3) {
 	return new QApplication(static_cast<int&>(*argc), argv, static_cast<int>(param3));
 }
 
-QMetaObject* QApplication_MetaObject(QApplication* self) {
-	return (QMetaObject*) const_cast<const QApplication*>(self)->metaObject();
+QMetaObject* QApplication_MetaObject(const QApplication* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QApplication_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -282,8 +282,8 @@ void QApplication_connect_FocusChanged(QApplication* self, void* slot) {
 	});
 }
 
-void QApplication_StyleSheet(QApplication* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QApplication*>(self)->styleSheet();
+void QApplication_StyleSheet(const QApplication* self, char** _out, int* _out_Strlen) {
+	QString ret = self->styleSheet();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -300,8 +300,8 @@ void QApplication_SetAutoSipEnabled(QApplication* self, const bool enabled) {
 	self->setAutoSipEnabled(enabled);
 }
 
-bool QApplication_AutoSipEnabled(QApplication* self) {
-	return const_cast<const QApplication*>(self)->autoSipEnabled();
+bool QApplication_AutoSipEnabled(const QApplication* self) {
+	return self->autoSipEnabled();
 }
 
 void QApplication_CloseAllWindows() {

@@ -30,8 +30,8 @@ QScrollBar* QScrollBar_new4(uintptr_t param1, QWidget* parent) {
 	return new QScrollBar(static_cast<Qt::Orientation>(param1), parent);
 }
 
-QMetaObject* QScrollBar_MetaObject(QScrollBar* self) {
-	return (QMetaObject*) const_cast<const QScrollBar*>(self)->metaObject();
+QMetaObject* QScrollBar_MetaObject(const QScrollBar* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QScrollBar_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -52,8 +52,8 @@ void QScrollBar_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-QSize* QScrollBar_SizeHint(QScrollBar* self) {
-	QSize ret = const_cast<const QScrollBar*>(self)->sizeHint();
+QSize* QScrollBar_SizeHint(const QScrollBar* self) {
+	QSize ret = self->sizeHint();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }

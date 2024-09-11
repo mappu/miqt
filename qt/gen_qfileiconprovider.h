@@ -22,11 +22,11 @@ typedef struct QIcon QIcon;
 #endif
 
 QFileIconProvider* QFileIconProvider_new();
-QIcon* QFileIconProvider_Icon(QFileIconProvider* self, uintptr_t typeVal);
-QIcon* QFileIconProvider_IconWithInfo(QFileIconProvider* self, QFileInfo* info);
-void QFileIconProvider_Type(QFileIconProvider* self, QFileInfo* info, char** _out, int* _out_Strlen);
+QIcon* QFileIconProvider_Icon(const QFileIconProvider* self, uintptr_t typeVal);
+QIcon* QFileIconProvider_IconWithInfo(const QFileIconProvider* self, QFileInfo* info);
+void QFileIconProvider_Type(const QFileIconProvider* self, QFileInfo* info, char** _out, int* _out_Strlen);
 void QFileIconProvider_SetOptions(QFileIconProvider* self, int options);
-int QFileIconProvider_Options(QFileIconProvider* self);
+int QFileIconProvider_Options(const QFileIconProvider* self);
 void QFileIconProvider_Delete(QFileIconProvider* self);
 
 #ifdef __cplusplus

@@ -47,44 +47,44 @@ extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
 }
 
-QGraphicsScene* QGraphicsItem_Scene(QGraphicsItem* self) {
-	return const_cast<const QGraphicsItem*>(self)->scene();
+QGraphicsScene* QGraphicsItem_Scene(const QGraphicsItem* self) {
+	return self->scene();
 }
 
-QGraphicsItem* QGraphicsItem_ParentItem(QGraphicsItem* self) {
-	return const_cast<const QGraphicsItem*>(self)->parentItem();
+QGraphicsItem* QGraphicsItem_ParentItem(const QGraphicsItem* self) {
+	return self->parentItem();
 }
 
-QGraphicsItem* QGraphicsItem_TopLevelItem(QGraphicsItem* self) {
-	return const_cast<const QGraphicsItem*>(self)->topLevelItem();
+QGraphicsItem* QGraphicsItem_TopLevelItem(const QGraphicsItem* self) {
+	return self->topLevelItem();
 }
 
-QGraphicsObject* QGraphicsItem_ParentObject(QGraphicsItem* self) {
-	return const_cast<const QGraphicsItem*>(self)->parentObject();
+QGraphicsObject* QGraphicsItem_ParentObject(const QGraphicsItem* self) {
+	return self->parentObject();
 }
 
-QGraphicsWidget* QGraphicsItem_ParentWidget(QGraphicsItem* self) {
-	return const_cast<const QGraphicsItem*>(self)->parentWidget();
+QGraphicsWidget* QGraphicsItem_ParentWidget(const QGraphicsItem* self) {
+	return self->parentWidget();
 }
 
-QGraphicsWidget* QGraphicsItem_TopLevelWidget(QGraphicsItem* self) {
-	return const_cast<const QGraphicsItem*>(self)->topLevelWidget();
+QGraphicsWidget* QGraphicsItem_TopLevelWidget(const QGraphicsItem* self) {
+	return self->topLevelWidget();
 }
 
-QGraphicsWidget* QGraphicsItem_Window(QGraphicsItem* self) {
-	return const_cast<const QGraphicsItem*>(self)->window();
+QGraphicsWidget* QGraphicsItem_Window(const QGraphicsItem* self) {
+	return self->window();
 }
 
-QGraphicsItem* QGraphicsItem_Panel(QGraphicsItem* self) {
-	return const_cast<const QGraphicsItem*>(self)->panel();
+QGraphicsItem* QGraphicsItem_Panel(const QGraphicsItem* self) {
+	return self->panel();
 }
 
 void QGraphicsItem_SetParentItem(QGraphicsItem* self, QGraphicsItem* parent) {
 	self->setParentItem(parent);
 }
 
-void QGraphicsItem_ChildItems(QGraphicsItem* self, QGraphicsItem*** _out, size_t* _out_len) {
-	QList<QGraphicsItem*> ret = const_cast<const QGraphicsItem*>(self)->childItems();
+void QGraphicsItem_ChildItems(const QGraphicsItem* self, QGraphicsItem*** _out, size_t* _out_len) {
+	QList<QGraphicsItem*> ret = self->childItems();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QGraphicsItem** __out = static_cast<QGraphicsItem**>(malloc(sizeof(QGraphicsItem*) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {
@@ -94,36 +94,36 @@ void QGraphicsItem_ChildItems(QGraphicsItem* self, QGraphicsItem*** _out, size_t
 	*_out_len = ret.length();
 }
 
-bool QGraphicsItem_IsWidget(QGraphicsItem* self) {
-	return const_cast<const QGraphicsItem*>(self)->isWidget();
+bool QGraphicsItem_IsWidget(const QGraphicsItem* self) {
+	return self->isWidget();
 }
 
-bool QGraphicsItem_IsWindow(QGraphicsItem* self) {
-	return const_cast<const QGraphicsItem*>(self)->isWindow();
+bool QGraphicsItem_IsWindow(const QGraphicsItem* self) {
+	return self->isWindow();
 }
 
-bool QGraphicsItem_IsPanel(QGraphicsItem* self) {
-	return const_cast<const QGraphicsItem*>(self)->isPanel();
+bool QGraphicsItem_IsPanel(const QGraphicsItem* self) {
+	return self->isPanel();
 }
 
 QGraphicsObject* QGraphicsItem_ToGraphicsObject(QGraphicsItem* self) {
 	return self->toGraphicsObject();
 }
 
-QGraphicsObject* QGraphicsItem_ToGraphicsObject2(QGraphicsItem* self) {
-	return (QGraphicsObject*) const_cast<const QGraphicsItem*>(self)->toGraphicsObject();
+QGraphicsObject* QGraphicsItem_ToGraphicsObject2(const QGraphicsItem* self) {
+	return (QGraphicsObject*) self->toGraphicsObject();
 }
 
-QGraphicsItemGroup* QGraphicsItem_Group(QGraphicsItem* self) {
-	return const_cast<const QGraphicsItem*>(self)->group();
+QGraphicsItemGroup* QGraphicsItem_Group(const QGraphicsItem* self) {
+	return self->group();
 }
 
 void QGraphicsItem_SetGroup(QGraphicsItem* self, QGraphicsItemGroup* group) {
 	self->setGroup(group);
 }
 
-int QGraphicsItem_Flags(QGraphicsItem* self) {
-	QGraphicsItem::GraphicsItemFlags ret = const_cast<const QGraphicsItem*>(self)->flags();
+int QGraphicsItem_Flags(const QGraphicsItem* self) {
+	QGraphicsItem::GraphicsItemFlags ret = self->flags();
 	return static_cast<int>(ret);
 }
 
@@ -135,8 +135,8 @@ void QGraphicsItem_SetFlags(QGraphicsItem* self, int flags) {
 	self->setFlags(static_cast<QGraphicsItem::GraphicsItemFlags>(flags));
 }
 
-uintptr_t QGraphicsItem_CacheMode(QGraphicsItem* self) {
-	QGraphicsItem::CacheMode ret = const_cast<const QGraphicsItem*>(self)->cacheMode();
+uintptr_t QGraphicsItem_CacheMode(const QGraphicsItem* self) {
+	QGraphicsItem::CacheMode ret = self->cacheMode();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -144,8 +144,8 @@ void QGraphicsItem_SetCacheMode(QGraphicsItem* self, uintptr_t mode) {
 	self->setCacheMode(static_cast<QGraphicsItem::CacheMode>(mode));
 }
 
-uintptr_t QGraphicsItem_PanelModality(QGraphicsItem* self) {
-	QGraphicsItem::PanelModality ret = const_cast<const QGraphicsItem*>(self)->panelModality();
+uintptr_t QGraphicsItem_PanelModality(const QGraphicsItem* self) {
+	QGraphicsItem::PanelModality ret = self->panelModality();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -153,12 +153,12 @@ void QGraphicsItem_SetPanelModality(QGraphicsItem* self, uintptr_t panelModality
 	self->setPanelModality(static_cast<QGraphicsItem::PanelModality>(panelModality));
 }
 
-bool QGraphicsItem_IsBlockedByModalPanel(QGraphicsItem* self) {
-	return const_cast<const QGraphicsItem*>(self)->isBlockedByModalPanel();
+bool QGraphicsItem_IsBlockedByModalPanel(const QGraphicsItem* self) {
+	return self->isBlockedByModalPanel();
 }
 
-void QGraphicsItem_ToolTip(QGraphicsItem* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QGraphicsItem*>(self)->toolTip();
+void QGraphicsItem_ToolTip(const QGraphicsItem* self, char** _out, int* _out_Strlen) {
+	QString ret = self->toolTip();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -171,8 +171,8 @@ void QGraphicsItem_SetToolTip(QGraphicsItem* self, const char* toolTip, size_t t
 	self->setToolTip(toolTip_QString);
 }
 
-QCursor* QGraphicsItem_Cursor(QGraphicsItem* self) {
-	QCursor ret = const_cast<const QGraphicsItem*>(self)->cursor();
+QCursor* QGraphicsItem_Cursor(const QGraphicsItem* self) {
+	QCursor ret = self->cursor();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QCursor*>(new QCursor(ret));
 }
@@ -181,20 +181,20 @@ void QGraphicsItem_SetCursor(QGraphicsItem* self, QCursor* cursor) {
 	self->setCursor(*cursor);
 }
 
-bool QGraphicsItem_HasCursor(QGraphicsItem* self) {
-	return const_cast<const QGraphicsItem*>(self)->hasCursor();
+bool QGraphicsItem_HasCursor(const QGraphicsItem* self) {
+	return self->hasCursor();
 }
 
 void QGraphicsItem_UnsetCursor(QGraphicsItem* self) {
 	self->unsetCursor();
 }
 
-bool QGraphicsItem_IsVisible(QGraphicsItem* self) {
-	return const_cast<const QGraphicsItem*>(self)->isVisible();
+bool QGraphicsItem_IsVisible(const QGraphicsItem* self) {
+	return self->isVisible();
 }
 
-bool QGraphicsItem_IsVisibleTo(QGraphicsItem* self, QGraphicsItem* parent) {
-	return const_cast<const QGraphicsItem*>(self)->isVisibleTo(parent);
+bool QGraphicsItem_IsVisibleTo(const QGraphicsItem* self, QGraphicsItem* parent) {
+	return self->isVisibleTo(parent);
 }
 
 void QGraphicsItem_SetVisible(QGraphicsItem* self, bool visible) {
@@ -209,52 +209,52 @@ void QGraphicsItem_Show(QGraphicsItem* self) {
 	self->show();
 }
 
-bool QGraphicsItem_IsEnabled(QGraphicsItem* self) {
-	return const_cast<const QGraphicsItem*>(self)->isEnabled();
+bool QGraphicsItem_IsEnabled(const QGraphicsItem* self) {
+	return self->isEnabled();
 }
 
 void QGraphicsItem_SetEnabled(QGraphicsItem* self, bool enabled) {
 	self->setEnabled(enabled);
 }
 
-bool QGraphicsItem_IsSelected(QGraphicsItem* self) {
-	return const_cast<const QGraphicsItem*>(self)->isSelected();
+bool QGraphicsItem_IsSelected(const QGraphicsItem* self) {
+	return self->isSelected();
 }
 
 void QGraphicsItem_SetSelected(QGraphicsItem* self, bool selected) {
 	self->setSelected(selected);
 }
 
-bool QGraphicsItem_AcceptDrops(QGraphicsItem* self) {
-	return const_cast<const QGraphicsItem*>(self)->acceptDrops();
+bool QGraphicsItem_AcceptDrops(const QGraphicsItem* self) {
+	return self->acceptDrops();
 }
 
 void QGraphicsItem_SetAcceptDrops(QGraphicsItem* self, bool on) {
 	self->setAcceptDrops(on);
 }
 
-double QGraphicsItem_Opacity(QGraphicsItem* self) {
-	return const_cast<const QGraphicsItem*>(self)->opacity();
+double QGraphicsItem_Opacity(const QGraphicsItem* self) {
+	return self->opacity();
 }
 
-double QGraphicsItem_EffectiveOpacity(QGraphicsItem* self) {
-	return const_cast<const QGraphicsItem*>(self)->effectiveOpacity();
+double QGraphicsItem_EffectiveOpacity(const QGraphicsItem* self) {
+	return self->effectiveOpacity();
 }
 
 void QGraphicsItem_SetOpacity(QGraphicsItem* self, double opacity) {
 	self->setOpacity(static_cast<qreal>(opacity));
 }
 
-QGraphicsEffect* QGraphicsItem_GraphicsEffect(QGraphicsItem* self) {
-	return const_cast<const QGraphicsItem*>(self)->graphicsEffect();
+QGraphicsEffect* QGraphicsItem_GraphicsEffect(const QGraphicsItem* self) {
+	return self->graphicsEffect();
 }
 
 void QGraphicsItem_SetGraphicsEffect(QGraphicsItem* self, QGraphicsEffect* effect) {
 	self->setGraphicsEffect(effect);
 }
 
-int QGraphicsItem_AcceptedMouseButtons(QGraphicsItem* self) {
-	Qt::MouseButtons ret = const_cast<const QGraphicsItem*>(self)->acceptedMouseButtons();
+int QGraphicsItem_AcceptedMouseButtons(const QGraphicsItem* self) {
+	Qt::MouseButtons ret = self->acceptedMouseButtons();
 	return static_cast<int>(ret);
 }
 
@@ -262,48 +262,48 @@ void QGraphicsItem_SetAcceptedMouseButtons(QGraphicsItem* self, int buttons) {
 	self->setAcceptedMouseButtons(static_cast<Qt::MouseButtons>(buttons));
 }
 
-bool QGraphicsItem_AcceptHoverEvents(QGraphicsItem* self) {
-	return const_cast<const QGraphicsItem*>(self)->acceptHoverEvents();
+bool QGraphicsItem_AcceptHoverEvents(const QGraphicsItem* self) {
+	return self->acceptHoverEvents();
 }
 
 void QGraphicsItem_SetAcceptHoverEvents(QGraphicsItem* self, bool enabled) {
 	self->setAcceptHoverEvents(enabled);
 }
 
-bool QGraphicsItem_AcceptTouchEvents(QGraphicsItem* self) {
-	return const_cast<const QGraphicsItem*>(self)->acceptTouchEvents();
+bool QGraphicsItem_AcceptTouchEvents(const QGraphicsItem* self) {
+	return self->acceptTouchEvents();
 }
 
 void QGraphicsItem_SetAcceptTouchEvents(QGraphicsItem* self, bool enabled) {
 	self->setAcceptTouchEvents(enabled);
 }
 
-bool QGraphicsItem_FiltersChildEvents(QGraphicsItem* self) {
-	return const_cast<const QGraphicsItem*>(self)->filtersChildEvents();
+bool QGraphicsItem_FiltersChildEvents(const QGraphicsItem* self) {
+	return self->filtersChildEvents();
 }
 
 void QGraphicsItem_SetFiltersChildEvents(QGraphicsItem* self, bool enabled) {
 	self->setFiltersChildEvents(enabled);
 }
 
-bool QGraphicsItem_HandlesChildEvents(QGraphicsItem* self) {
-	return const_cast<const QGraphicsItem*>(self)->handlesChildEvents();
+bool QGraphicsItem_HandlesChildEvents(const QGraphicsItem* self) {
+	return self->handlesChildEvents();
 }
 
 void QGraphicsItem_SetHandlesChildEvents(QGraphicsItem* self, bool enabled) {
 	self->setHandlesChildEvents(enabled);
 }
 
-bool QGraphicsItem_IsActive(QGraphicsItem* self) {
-	return const_cast<const QGraphicsItem*>(self)->isActive();
+bool QGraphicsItem_IsActive(const QGraphicsItem* self) {
+	return self->isActive();
 }
 
 void QGraphicsItem_SetActive(QGraphicsItem* self, bool active) {
 	self->setActive(active);
 }
 
-bool QGraphicsItem_HasFocus(QGraphicsItem* self) {
-	return const_cast<const QGraphicsItem*>(self)->hasFocus();
+bool QGraphicsItem_HasFocus(const QGraphicsItem* self) {
+	return self->hasFocus();
 }
 
 void QGraphicsItem_SetFocus(QGraphicsItem* self) {
@@ -314,20 +314,20 @@ void QGraphicsItem_ClearFocus(QGraphicsItem* self) {
 	self->clearFocus();
 }
 
-QGraphicsItem* QGraphicsItem_FocusProxy(QGraphicsItem* self) {
-	return const_cast<const QGraphicsItem*>(self)->focusProxy();
+QGraphicsItem* QGraphicsItem_FocusProxy(const QGraphicsItem* self) {
+	return self->focusProxy();
 }
 
 void QGraphicsItem_SetFocusProxy(QGraphicsItem* self, QGraphicsItem* item) {
 	self->setFocusProxy(item);
 }
 
-QGraphicsItem* QGraphicsItem_FocusItem(QGraphicsItem* self) {
-	return const_cast<const QGraphicsItem*>(self)->focusItem();
+QGraphicsItem* QGraphicsItem_FocusItem(const QGraphicsItem* self) {
+	return self->focusItem();
 }
 
-QGraphicsItem* QGraphicsItem_FocusScopeItem(QGraphicsItem* self) {
-	return const_cast<const QGraphicsItem*>(self)->focusScopeItem();
+QGraphicsItem* QGraphicsItem_FocusScopeItem(const QGraphicsItem* self) {
+	return self->focusScopeItem();
 }
 
 void QGraphicsItem_GrabMouse(QGraphicsItem* self) {
@@ -346,30 +346,30 @@ void QGraphicsItem_UngrabKeyboard(QGraphicsItem* self) {
 	self->ungrabKeyboard();
 }
 
-QPointF* QGraphicsItem_Pos(QGraphicsItem* self) {
-	QPointF ret = const_cast<const QGraphicsItem*>(self)->pos();
+QPointF* QGraphicsItem_Pos(const QGraphicsItem* self) {
+	QPointF ret = self->pos();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPointF*>(new QPointF(ret));
 }
 
-double QGraphicsItem_X(QGraphicsItem* self) {
-	return const_cast<const QGraphicsItem*>(self)->x();
+double QGraphicsItem_X(const QGraphicsItem* self) {
+	return self->x();
 }
 
 void QGraphicsItem_SetX(QGraphicsItem* self, double x) {
 	self->setX(static_cast<qreal>(x));
 }
 
-double QGraphicsItem_Y(QGraphicsItem* self) {
-	return const_cast<const QGraphicsItem*>(self)->y();
+double QGraphicsItem_Y(const QGraphicsItem* self) {
+	return self->y();
 }
 
 void QGraphicsItem_SetY(QGraphicsItem* self, double y) {
 	self->setY(static_cast<qreal>(y));
 }
 
-QPointF* QGraphicsItem_ScenePos(QGraphicsItem* self) {
-	QPointF ret = const_cast<const QGraphicsItem*>(self)->scenePos();
+QPointF* QGraphicsItem_ScenePos(const QGraphicsItem* self) {
+	QPointF ret = self->scenePos();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPointF*>(new QPointF(ret));
 }
@@ -394,14 +394,14 @@ void QGraphicsItem_EnsureVisible2(QGraphicsItem* self, double x, double y, doubl
 	self->ensureVisible(static_cast<qreal>(x), static_cast<qreal>(y), static_cast<qreal>(w), static_cast<qreal>(h));
 }
 
-QMatrix* QGraphicsItem_Matrix(QGraphicsItem* self) {
-	QMatrix ret = const_cast<const QGraphicsItem*>(self)->matrix();
+QMatrix* QGraphicsItem_Matrix(const QGraphicsItem* self) {
+	QMatrix ret = self->matrix();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QMatrix*>(new QMatrix(ret));
 }
 
-QMatrix* QGraphicsItem_SceneMatrix(QGraphicsItem* self) {
-	QMatrix ret = const_cast<const QGraphicsItem*>(self)->sceneMatrix();
+QMatrix* QGraphicsItem_SceneMatrix(const QGraphicsItem* self) {
+	QMatrix ret = self->sceneMatrix();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QMatrix*>(new QMatrix(ret));
 }
@@ -414,26 +414,26 @@ void QGraphicsItem_ResetMatrix(QGraphicsItem* self) {
 	self->resetMatrix();
 }
 
-QTransform* QGraphicsItem_Transform(QGraphicsItem* self) {
-	QTransform ret = const_cast<const QGraphicsItem*>(self)->transform();
+QTransform* QGraphicsItem_Transform(const QGraphicsItem* self) {
+	QTransform ret = self->transform();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QTransform*>(new QTransform(ret));
 }
 
-QTransform* QGraphicsItem_SceneTransform(QGraphicsItem* self) {
-	QTransform ret = const_cast<const QGraphicsItem*>(self)->sceneTransform();
+QTransform* QGraphicsItem_SceneTransform(const QGraphicsItem* self) {
+	QTransform ret = self->sceneTransform();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QTransform*>(new QTransform(ret));
 }
 
-QTransform* QGraphicsItem_DeviceTransform(QGraphicsItem* self, QTransform* viewportTransform) {
-	QTransform ret = const_cast<const QGraphicsItem*>(self)->deviceTransform(*viewportTransform);
+QTransform* QGraphicsItem_DeviceTransform(const QGraphicsItem* self, QTransform* viewportTransform) {
+	QTransform ret = self->deviceTransform(*viewportTransform);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QTransform*>(new QTransform(ret));
 }
 
-QTransform* QGraphicsItem_ItemTransform(QGraphicsItem* self, QGraphicsItem* other) {
-	QTransform ret = const_cast<const QGraphicsItem*>(self)->itemTransform(other);
+QTransform* QGraphicsItem_ItemTransform(const QGraphicsItem* self, QGraphicsItem* other) {
+	QTransform ret = self->itemTransform(other);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QTransform*>(new QTransform(ret));
 }
@@ -450,20 +450,20 @@ void QGraphicsItem_SetRotation(QGraphicsItem* self, double angle) {
 	self->setRotation(static_cast<qreal>(angle));
 }
 
-double QGraphicsItem_Rotation(QGraphicsItem* self) {
-	return const_cast<const QGraphicsItem*>(self)->rotation();
+double QGraphicsItem_Rotation(const QGraphicsItem* self) {
+	return self->rotation();
 }
 
 void QGraphicsItem_SetScale(QGraphicsItem* self, double scale) {
 	self->setScale(static_cast<qreal>(scale));
 }
 
-double QGraphicsItem_Scale(QGraphicsItem* self) {
-	return const_cast<const QGraphicsItem*>(self)->scale();
+double QGraphicsItem_Scale(const QGraphicsItem* self) {
+	return self->scale();
 }
 
-void QGraphicsItem_Transformations(QGraphicsItem* self, QGraphicsTransform*** _out, size_t* _out_len) {
-	QList<QGraphicsTransform*> ret = const_cast<const QGraphicsItem*>(self)->transformations();
+void QGraphicsItem_Transformations(const QGraphicsItem* self, QGraphicsTransform*** _out, size_t* _out_len) {
+	QList<QGraphicsTransform*> ret = self->transformations();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QGraphicsTransform** __out = static_cast<QGraphicsTransform**>(malloc(sizeof(QGraphicsTransform*) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {
@@ -482,8 +482,8 @@ void QGraphicsItem_SetTransformations(QGraphicsItem* self, QGraphicsTransform** 
 	self->setTransformations(transformations_QList);
 }
 
-QPointF* QGraphicsItem_TransformOriginPoint(QGraphicsItem* self) {
-	QPointF ret = const_cast<const QGraphicsItem*>(self)->transformOriginPoint();
+QPointF* QGraphicsItem_TransformOriginPoint(const QGraphicsItem* self) {
+	QPointF ret = self->transformOriginPoint();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPointF*>(new QPointF(ret));
 }
@@ -500,8 +500,8 @@ void QGraphicsItem_Advance(QGraphicsItem* self, int phase) {
 	self->advance(static_cast<int>(phase));
 }
 
-double QGraphicsItem_ZValue(QGraphicsItem* self) {
-	return const_cast<const QGraphicsItem*>(self)->zValue();
+double QGraphicsItem_ZValue(const QGraphicsItem* self) {
+	return self->zValue();
 }
 
 void QGraphicsItem_SetZValue(QGraphicsItem* self, double z) {
@@ -512,54 +512,54 @@ void QGraphicsItem_StackBefore(QGraphicsItem* self, QGraphicsItem* sibling) {
 	self->stackBefore(sibling);
 }
 
-QRectF* QGraphicsItem_BoundingRect(QGraphicsItem* self) {
-	QRectF ret = const_cast<const QGraphicsItem*>(self)->boundingRect();
+QRectF* QGraphicsItem_BoundingRect(const QGraphicsItem* self) {
+	QRectF ret = self->boundingRect();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRectF*>(new QRectF(ret));
 }
 
-QRectF* QGraphicsItem_ChildrenBoundingRect(QGraphicsItem* self) {
-	QRectF ret = const_cast<const QGraphicsItem*>(self)->childrenBoundingRect();
+QRectF* QGraphicsItem_ChildrenBoundingRect(const QGraphicsItem* self) {
+	QRectF ret = self->childrenBoundingRect();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRectF*>(new QRectF(ret));
 }
 
-QRectF* QGraphicsItem_SceneBoundingRect(QGraphicsItem* self) {
-	QRectF ret = const_cast<const QGraphicsItem*>(self)->sceneBoundingRect();
+QRectF* QGraphicsItem_SceneBoundingRect(const QGraphicsItem* self) {
+	QRectF ret = self->sceneBoundingRect();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRectF*>(new QRectF(ret));
 }
 
-QPainterPath* QGraphicsItem_Shape(QGraphicsItem* self) {
-	QPainterPath ret = const_cast<const QGraphicsItem*>(self)->shape();
+QPainterPath* QGraphicsItem_Shape(const QGraphicsItem* self) {
+	QPainterPath ret = self->shape();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPainterPath*>(new QPainterPath(ret));
 }
 
-bool QGraphicsItem_IsClipped(QGraphicsItem* self) {
-	return const_cast<const QGraphicsItem*>(self)->isClipped();
+bool QGraphicsItem_IsClipped(const QGraphicsItem* self) {
+	return self->isClipped();
 }
 
-QPainterPath* QGraphicsItem_ClipPath(QGraphicsItem* self) {
-	QPainterPath ret = const_cast<const QGraphicsItem*>(self)->clipPath();
+QPainterPath* QGraphicsItem_ClipPath(const QGraphicsItem* self) {
+	QPainterPath ret = self->clipPath();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPainterPath*>(new QPainterPath(ret));
 }
 
-bool QGraphicsItem_Contains(QGraphicsItem* self, QPointF* point) {
-	return const_cast<const QGraphicsItem*>(self)->contains(*point);
+bool QGraphicsItem_Contains(const QGraphicsItem* self, QPointF* point) {
+	return self->contains(*point);
 }
 
-bool QGraphicsItem_CollidesWithItem(QGraphicsItem* self, QGraphicsItem* other) {
-	return const_cast<const QGraphicsItem*>(self)->collidesWithItem(other);
+bool QGraphicsItem_CollidesWithItem(const QGraphicsItem* self, QGraphicsItem* other) {
+	return self->collidesWithItem(other);
 }
 
-bool QGraphicsItem_CollidesWithPath(QGraphicsItem* self, QPainterPath* path) {
-	return const_cast<const QGraphicsItem*>(self)->collidesWithPath(*path);
+bool QGraphicsItem_CollidesWithPath(const QGraphicsItem* self, QPainterPath* path) {
+	return self->collidesWithPath(*path);
 }
 
-void QGraphicsItem_CollidingItems(QGraphicsItem* self, QGraphicsItem*** _out, size_t* _out_len) {
-	QList<QGraphicsItem*> ret = const_cast<const QGraphicsItem*>(self)->collidingItems();
+void QGraphicsItem_CollidingItems(const QGraphicsItem* self, QGraphicsItem*** _out, size_t* _out_len) {
+	QList<QGraphicsItem*> ret = self->collidingItems();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QGraphicsItem** __out = static_cast<QGraphicsItem**>(malloc(sizeof(QGraphicsItem*) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {
@@ -569,32 +569,32 @@ void QGraphicsItem_CollidingItems(QGraphicsItem* self, QGraphicsItem*** _out, si
 	*_out_len = ret.length();
 }
 
-bool QGraphicsItem_IsObscured(QGraphicsItem* self) {
-	return const_cast<const QGraphicsItem*>(self)->isObscured();
+bool QGraphicsItem_IsObscured(const QGraphicsItem* self) {
+	return self->isObscured();
 }
 
-bool QGraphicsItem_IsObscured2(QGraphicsItem* self, double x, double y, double w, double h) {
-	return const_cast<const QGraphicsItem*>(self)->isObscured(static_cast<qreal>(x), static_cast<qreal>(y), static_cast<qreal>(w), static_cast<qreal>(h));
+bool QGraphicsItem_IsObscured2(const QGraphicsItem* self, double x, double y, double w, double h) {
+	return self->isObscured(static_cast<qreal>(x), static_cast<qreal>(y), static_cast<qreal>(w), static_cast<qreal>(h));
 }
 
-bool QGraphicsItem_IsObscuredBy(QGraphicsItem* self, QGraphicsItem* item) {
-	return const_cast<const QGraphicsItem*>(self)->isObscuredBy(item);
+bool QGraphicsItem_IsObscuredBy(const QGraphicsItem* self, QGraphicsItem* item) {
+	return self->isObscuredBy(item);
 }
 
-QPainterPath* QGraphicsItem_OpaqueArea(QGraphicsItem* self) {
-	QPainterPath ret = const_cast<const QGraphicsItem*>(self)->opaqueArea();
+QPainterPath* QGraphicsItem_OpaqueArea(const QGraphicsItem* self) {
+	QPainterPath ret = self->opaqueArea();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPainterPath*>(new QPainterPath(ret));
 }
 
-QRegion* QGraphicsItem_BoundingRegion(QGraphicsItem* self, QTransform* itemToDeviceTransform) {
-	QRegion ret = const_cast<const QGraphicsItem*>(self)->boundingRegion(*itemToDeviceTransform);
+QRegion* QGraphicsItem_BoundingRegion(const QGraphicsItem* self, QTransform* itemToDeviceTransform) {
+	QRegion ret = self->boundingRegion(*itemToDeviceTransform);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRegion*>(new QRegion(ret));
 }
 
-double QGraphicsItem_BoundingRegionGranularity(QGraphicsItem* self) {
-	return const_cast<const QGraphicsItem*>(self)->boundingRegionGranularity();
+double QGraphicsItem_BoundingRegionGranularity(const QGraphicsItem* self) {
+	return self->boundingRegionGranularity();
 }
 
 void QGraphicsItem_SetBoundingRegionGranularity(QGraphicsItem* self, double granularity) {
@@ -617,200 +617,200 @@ void QGraphicsItem_Scroll(QGraphicsItem* self, double dx, double dy) {
 	self->scroll(static_cast<qreal>(dx), static_cast<qreal>(dy));
 }
 
-QPointF* QGraphicsItem_MapToItem(QGraphicsItem* self, QGraphicsItem* item, QPointF* point) {
-	QPointF ret = const_cast<const QGraphicsItem*>(self)->mapToItem(item, *point);
+QPointF* QGraphicsItem_MapToItem(const QGraphicsItem* self, QGraphicsItem* item, QPointF* point) {
+	QPointF ret = self->mapToItem(item, *point);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPointF*>(new QPointF(ret));
 }
 
-QPointF* QGraphicsItem_MapToParent(QGraphicsItem* self, QPointF* point) {
-	QPointF ret = const_cast<const QGraphicsItem*>(self)->mapToParent(*point);
+QPointF* QGraphicsItem_MapToParent(const QGraphicsItem* self, QPointF* point) {
+	QPointF ret = self->mapToParent(*point);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPointF*>(new QPointF(ret));
 }
 
-QPointF* QGraphicsItem_MapToScene(QGraphicsItem* self, QPointF* point) {
-	QPointF ret = const_cast<const QGraphicsItem*>(self)->mapToScene(*point);
+QPointF* QGraphicsItem_MapToScene(const QGraphicsItem* self, QPointF* point) {
+	QPointF ret = self->mapToScene(*point);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPointF*>(new QPointF(ret));
 }
 
-QRectF* QGraphicsItem_MapRectToItem(QGraphicsItem* self, QGraphicsItem* item, QRectF* rect) {
-	QRectF ret = const_cast<const QGraphicsItem*>(self)->mapRectToItem(item, *rect);
+QRectF* QGraphicsItem_MapRectToItem(const QGraphicsItem* self, QGraphicsItem* item, QRectF* rect) {
+	QRectF ret = self->mapRectToItem(item, *rect);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRectF*>(new QRectF(ret));
 }
 
-QRectF* QGraphicsItem_MapRectToParent(QGraphicsItem* self, QRectF* rect) {
-	QRectF ret = const_cast<const QGraphicsItem*>(self)->mapRectToParent(*rect);
+QRectF* QGraphicsItem_MapRectToParent(const QGraphicsItem* self, QRectF* rect) {
+	QRectF ret = self->mapRectToParent(*rect);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRectF*>(new QRectF(ret));
 }
 
-QRectF* QGraphicsItem_MapRectToScene(QGraphicsItem* self, QRectF* rect) {
-	QRectF ret = const_cast<const QGraphicsItem*>(self)->mapRectToScene(*rect);
+QRectF* QGraphicsItem_MapRectToScene(const QGraphicsItem* self, QRectF* rect) {
+	QRectF ret = self->mapRectToScene(*rect);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRectF*>(new QRectF(ret));
 }
 
-QPainterPath* QGraphicsItem_MapToItem4(QGraphicsItem* self, QGraphicsItem* item, QPainterPath* path) {
-	QPainterPath ret = const_cast<const QGraphicsItem*>(self)->mapToItem(item, *path);
+QPainterPath* QGraphicsItem_MapToItem4(const QGraphicsItem* self, QGraphicsItem* item, QPainterPath* path) {
+	QPainterPath ret = self->mapToItem(item, *path);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPainterPath*>(new QPainterPath(ret));
 }
 
-QPainterPath* QGraphicsItem_MapToParentWithPath(QGraphicsItem* self, QPainterPath* path) {
-	QPainterPath ret = const_cast<const QGraphicsItem*>(self)->mapToParent(*path);
+QPainterPath* QGraphicsItem_MapToParentWithPath(const QGraphicsItem* self, QPainterPath* path) {
+	QPainterPath ret = self->mapToParent(*path);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPainterPath*>(new QPainterPath(ret));
 }
 
-QPainterPath* QGraphicsItem_MapToSceneWithPath(QGraphicsItem* self, QPainterPath* path) {
-	QPainterPath ret = const_cast<const QGraphicsItem*>(self)->mapToScene(*path);
+QPainterPath* QGraphicsItem_MapToSceneWithPath(const QGraphicsItem* self, QPainterPath* path) {
+	QPainterPath ret = self->mapToScene(*path);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPainterPath*>(new QPainterPath(ret));
 }
 
-QPointF* QGraphicsItem_MapFromItem(QGraphicsItem* self, QGraphicsItem* item, QPointF* point) {
-	QPointF ret = const_cast<const QGraphicsItem*>(self)->mapFromItem(item, *point);
+QPointF* QGraphicsItem_MapFromItem(const QGraphicsItem* self, QGraphicsItem* item, QPointF* point) {
+	QPointF ret = self->mapFromItem(item, *point);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPointF*>(new QPointF(ret));
 }
 
-QPointF* QGraphicsItem_MapFromParent(QGraphicsItem* self, QPointF* point) {
-	QPointF ret = const_cast<const QGraphicsItem*>(self)->mapFromParent(*point);
+QPointF* QGraphicsItem_MapFromParent(const QGraphicsItem* self, QPointF* point) {
+	QPointF ret = self->mapFromParent(*point);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPointF*>(new QPointF(ret));
 }
 
-QPointF* QGraphicsItem_MapFromScene(QGraphicsItem* self, QPointF* point) {
-	QPointF ret = const_cast<const QGraphicsItem*>(self)->mapFromScene(*point);
+QPointF* QGraphicsItem_MapFromScene(const QGraphicsItem* self, QPointF* point) {
+	QPointF ret = self->mapFromScene(*point);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPointF*>(new QPointF(ret));
 }
 
-QRectF* QGraphicsItem_MapRectFromItem(QGraphicsItem* self, QGraphicsItem* item, QRectF* rect) {
-	QRectF ret = const_cast<const QGraphicsItem*>(self)->mapRectFromItem(item, *rect);
+QRectF* QGraphicsItem_MapRectFromItem(const QGraphicsItem* self, QGraphicsItem* item, QRectF* rect) {
+	QRectF ret = self->mapRectFromItem(item, *rect);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRectF*>(new QRectF(ret));
 }
 
-QRectF* QGraphicsItem_MapRectFromParent(QGraphicsItem* self, QRectF* rect) {
-	QRectF ret = const_cast<const QGraphicsItem*>(self)->mapRectFromParent(*rect);
+QRectF* QGraphicsItem_MapRectFromParent(const QGraphicsItem* self, QRectF* rect) {
+	QRectF ret = self->mapRectFromParent(*rect);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRectF*>(new QRectF(ret));
 }
 
-QRectF* QGraphicsItem_MapRectFromScene(QGraphicsItem* self, QRectF* rect) {
-	QRectF ret = const_cast<const QGraphicsItem*>(self)->mapRectFromScene(*rect);
+QRectF* QGraphicsItem_MapRectFromScene(const QGraphicsItem* self, QRectF* rect) {
+	QRectF ret = self->mapRectFromScene(*rect);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRectF*>(new QRectF(ret));
 }
 
-QPainterPath* QGraphicsItem_MapFromItem4(QGraphicsItem* self, QGraphicsItem* item, QPainterPath* path) {
-	QPainterPath ret = const_cast<const QGraphicsItem*>(self)->mapFromItem(item, *path);
+QPainterPath* QGraphicsItem_MapFromItem4(const QGraphicsItem* self, QGraphicsItem* item, QPainterPath* path) {
+	QPainterPath ret = self->mapFromItem(item, *path);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPainterPath*>(new QPainterPath(ret));
 }
 
-QPainterPath* QGraphicsItem_MapFromParentWithPath(QGraphicsItem* self, QPainterPath* path) {
-	QPainterPath ret = const_cast<const QGraphicsItem*>(self)->mapFromParent(*path);
+QPainterPath* QGraphicsItem_MapFromParentWithPath(const QGraphicsItem* self, QPainterPath* path) {
+	QPainterPath ret = self->mapFromParent(*path);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPainterPath*>(new QPainterPath(ret));
 }
 
-QPainterPath* QGraphicsItem_MapFromSceneWithPath(QGraphicsItem* self, QPainterPath* path) {
-	QPainterPath ret = const_cast<const QGraphicsItem*>(self)->mapFromScene(*path);
+QPainterPath* QGraphicsItem_MapFromSceneWithPath(const QGraphicsItem* self, QPainterPath* path) {
+	QPainterPath ret = self->mapFromScene(*path);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPainterPath*>(new QPainterPath(ret));
 }
 
-QPointF* QGraphicsItem_MapToItem5(QGraphicsItem* self, QGraphicsItem* item, double x, double y) {
-	QPointF ret = const_cast<const QGraphicsItem*>(self)->mapToItem(item, static_cast<qreal>(x), static_cast<qreal>(y));
+QPointF* QGraphicsItem_MapToItem5(const QGraphicsItem* self, QGraphicsItem* item, double x, double y) {
+	QPointF ret = self->mapToItem(item, static_cast<qreal>(x), static_cast<qreal>(y));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPointF*>(new QPointF(ret));
 }
 
-QPointF* QGraphicsItem_MapToParent2(QGraphicsItem* self, double x, double y) {
-	QPointF ret = const_cast<const QGraphicsItem*>(self)->mapToParent(static_cast<qreal>(x), static_cast<qreal>(y));
+QPointF* QGraphicsItem_MapToParent2(const QGraphicsItem* self, double x, double y) {
+	QPointF ret = self->mapToParent(static_cast<qreal>(x), static_cast<qreal>(y));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPointF*>(new QPointF(ret));
 }
 
-QPointF* QGraphicsItem_MapToScene2(QGraphicsItem* self, double x, double y) {
-	QPointF ret = const_cast<const QGraphicsItem*>(self)->mapToScene(static_cast<qreal>(x), static_cast<qreal>(y));
+QPointF* QGraphicsItem_MapToScene2(const QGraphicsItem* self, double x, double y) {
+	QPointF ret = self->mapToScene(static_cast<qreal>(x), static_cast<qreal>(y));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPointF*>(new QPointF(ret));
 }
 
-QRectF* QGraphicsItem_MapRectToItem2(QGraphicsItem* self, QGraphicsItem* item, double x, double y, double w, double h) {
-	QRectF ret = const_cast<const QGraphicsItem*>(self)->mapRectToItem(item, static_cast<qreal>(x), static_cast<qreal>(y), static_cast<qreal>(w), static_cast<qreal>(h));
+QRectF* QGraphicsItem_MapRectToItem2(const QGraphicsItem* self, QGraphicsItem* item, double x, double y, double w, double h) {
+	QRectF ret = self->mapRectToItem(item, static_cast<qreal>(x), static_cast<qreal>(y), static_cast<qreal>(w), static_cast<qreal>(h));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRectF*>(new QRectF(ret));
 }
 
-QRectF* QGraphicsItem_MapRectToParent2(QGraphicsItem* self, double x, double y, double w, double h) {
-	QRectF ret = const_cast<const QGraphicsItem*>(self)->mapRectToParent(static_cast<qreal>(x), static_cast<qreal>(y), static_cast<qreal>(w), static_cast<qreal>(h));
+QRectF* QGraphicsItem_MapRectToParent2(const QGraphicsItem* self, double x, double y, double w, double h) {
+	QRectF ret = self->mapRectToParent(static_cast<qreal>(x), static_cast<qreal>(y), static_cast<qreal>(w), static_cast<qreal>(h));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRectF*>(new QRectF(ret));
 }
 
-QRectF* QGraphicsItem_MapRectToScene2(QGraphicsItem* self, double x, double y, double w, double h) {
-	QRectF ret = const_cast<const QGraphicsItem*>(self)->mapRectToScene(static_cast<qreal>(x), static_cast<qreal>(y), static_cast<qreal>(w), static_cast<qreal>(h));
+QRectF* QGraphicsItem_MapRectToScene2(const QGraphicsItem* self, double x, double y, double w, double h) {
+	QRectF ret = self->mapRectToScene(static_cast<qreal>(x), static_cast<qreal>(y), static_cast<qreal>(w), static_cast<qreal>(h));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRectF*>(new QRectF(ret));
 }
 
-QPointF* QGraphicsItem_MapFromItem5(QGraphicsItem* self, QGraphicsItem* item, double x, double y) {
-	QPointF ret = const_cast<const QGraphicsItem*>(self)->mapFromItem(item, static_cast<qreal>(x), static_cast<qreal>(y));
+QPointF* QGraphicsItem_MapFromItem5(const QGraphicsItem* self, QGraphicsItem* item, double x, double y) {
+	QPointF ret = self->mapFromItem(item, static_cast<qreal>(x), static_cast<qreal>(y));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPointF*>(new QPointF(ret));
 }
 
-QPointF* QGraphicsItem_MapFromParent2(QGraphicsItem* self, double x, double y) {
-	QPointF ret = const_cast<const QGraphicsItem*>(self)->mapFromParent(static_cast<qreal>(x), static_cast<qreal>(y));
+QPointF* QGraphicsItem_MapFromParent2(const QGraphicsItem* self, double x, double y) {
+	QPointF ret = self->mapFromParent(static_cast<qreal>(x), static_cast<qreal>(y));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPointF*>(new QPointF(ret));
 }
 
-QPointF* QGraphicsItem_MapFromScene2(QGraphicsItem* self, double x, double y) {
-	QPointF ret = const_cast<const QGraphicsItem*>(self)->mapFromScene(static_cast<qreal>(x), static_cast<qreal>(y));
+QPointF* QGraphicsItem_MapFromScene2(const QGraphicsItem* self, double x, double y) {
+	QPointF ret = self->mapFromScene(static_cast<qreal>(x), static_cast<qreal>(y));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPointF*>(new QPointF(ret));
 }
 
-QRectF* QGraphicsItem_MapRectFromItem2(QGraphicsItem* self, QGraphicsItem* item, double x, double y, double w, double h) {
-	QRectF ret = const_cast<const QGraphicsItem*>(self)->mapRectFromItem(item, static_cast<qreal>(x), static_cast<qreal>(y), static_cast<qreal>(w), static_cast<qreal>(h));
+QRectF* QGraphicsItem_MapRectFromItem2(const QGraphicsItem* self, QGraphicsItem* item, double x, double y, double w, double h) {
+	QRectF ret = self->mapRectFromItem(item, static_cast<qreal>(x), static_cast<qreal>(y), static_cast<qreal>(w), static_cast<qreal>(h));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRectF*>(new QRectF(ret));
 }
 
-QRectF* QGraphicsItem_MapRectFromParent2(QGraphicsItem* self, double x, double y, double w, double h) {
-	QRectF ret = const_cast<const QGraphicsItem*>(self)->mapRectFromParent(static_cast<qreal>(x), static_cast<qreal>(y), static_cast<qreal>(w), static_cast<qreal>(h));
+QRectF* QGraphicsItem_MapRectFromParent2(const QGraphicsItem* self, double x, double y, double w, double h) {
+	QRectF ret = self->mapRectFromParent(static_cast<qreal>(x), static_cast<qreal>(y), static_cast<qreal>(w), static_cast<qreal>(h));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRectF*>(new QRectF(ret));
 }
 
-QRectF* QGraphicsItem_MapRectFromScene2(QGraphicsItem* self, double x, double y, double w, double h) {
-	QRectF ret = const_cast<const QGraphicsItem*>(self)->mapRectFromScene(static_cast<qreal>(x), static_cast<qreal>(y), static_cast<qreal>(w), static_cast<qreal>(h));
+QRectF* QGraphicsItem_MapRectFromScene2(const QGraphicsItem* self, double x, double y, double w, double h) {
+	QRectF ret = self->mapRectFromScene(static_cast<qreal>(x), static_cast<qreal>(y), static_cast<qreal>(w), static_cast<qreal>(h));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRectF*>(new QRectF(ret));
 }
 
-bool QGraphicsItem_IsAncestorOf(QGraphicsItem* self, QGraphicsItem* child) {
-	return const_cast<const QGraphicsItem*>(self)->isAncestorOf(child);
+bool QGraphicsItem_IsAncestorOf(const QGraphicsItem* self, QGraphicsItem* child) {
+	return self->isAncestorOf(child);
 }
 
-QGraphicsItem* QGraphicsItem_CommonAncestorItem(QGraphicsItem* self, QGraphicsItem* other) {
-	return const_cast<const QGraphicsItem*>(self)->commonAncestorItem(other);
+QGraphicsItem* QGraphicsItem_CommonAncestorItem(const QGraphicsItem* self, QGraphicsItem* other) {
+	return self->commonAncestorItem(other);
 }
 
-bool QGraphicsItem_IsUnderMouse(QGraphicsItem* self) {
-	return const_cast<const QGraphicsItem*>(self)->isUnderMouse();
+bool QGraphicsItem_IsUnderMouse(const QGraphicsItem* self) {
+	return self->isUnderMouse();
 }
 
-QVariant* QGraphicsItem_Data(QGraphicsItem* self, int key) {
-	QVariant ret = const_cast<const QGraphicsItem*>(self)->data(static_cast<int>(key));
+QVariant* QGraphicsItem_Data(const QGraphicsItem* self, int key) {
+	QVariant ret = self->data(static_cast<int>(key));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVariant*>(new QVariant(ret));
 }
@@ -819,8 +819,8 @@ void QGraphicsItem_SetData(QGraphicsItem* self, int key, QVariant* value) {
 	self->setData(static_cast<int>(key), *value);
 }
 
-int QGraphicsItem_InputMethodHints(QGraphicsItem* self) {
-	Qt::InputMethodHints ret = const_cast<const QGraphicsItem*>(self)->inputMethodHints();
+int QGraphicsItem_InputMethodHints(const QGraphicsItem* self) {
+	Qt::InputMethodHints ret = self->inputMethodHints();
 	return static_cast<int>(ret);
 }
 
@@ -828,8 +828,8 @@ void QGraphicsItem_SetInputMethodHints(QGraphicsItem* self, int hints) {
 	self->setInputMethodHints(static_cast<Qt::InputMethodHints>(hints));
 }
 
-int QGraphicsItem_Type(QGraphicsItem* self) {
-	return const_cast<const QGraphicsItem*>(self)->type();
+int QGraphicsItem_Type(const QGraphicsItem* self) {
+	return self->type();
 }
 
 void QGraphicsItem_InstallSceneEventFilter(QGraphicsItem* self, QGraphicsItem* filterItem) {
@@ -876,8 +876,8 @@ void QGraphicsItem_SetMatrix2(QGraphicsItem* self, QMatrix* matrix, bool combine
 	self->setMatrix(*matrix, combine);
 }
 
-QTransform* QGraphicsItem_ItemTransform2(QGraphicsItem* self, QGraphicsItem* other, bool* ok) {
-	QTransform ret = const_cast<const QGraphicsItem*>(self)->itemTransform(other, ok);
+QTransform* QGraphicsItem_ItemTransform2(const QGraphicsItem* self, QGraphicsItem* other, bool* ok) {
+	QTransform ret = self->itemTransform(other, ok);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QTransform*>(new QTransform(ret));
 }
@@ -886,16 +886,16 @@ void QGraphicsItem_SetTransform2(QGraphicsItem* self, QTransform* matrix, bool c
 	self->setTransform(*matrix, combine);
 }
 
-bool QGraphicsItem_CollidesWithItem2(QGraphicsItem* self, QGraphicsItem* other, uintptr_t mode) {
-	return const_cast<const QGraphicsItem*>(self)->collidesWithItem(other, static_cast<Qt::ItemSelectionMode>(mode));
+bool QGraphicsItem_CollidesWithItem2(const QGraphicsItem* self, QGraphicsItem* other, uintptr_t mode) {
+	return self->collidesWithItem(other, static_cast<Qt::ItemSelectionMode>(mode));
 }
 
-bool QGraphicsItem_CollidesWithPath2(QGraphicsItem* self, QPainterPath* path, uintptr_t mode) {
-	return const_cast<const QGraphicsItem*>(self)->collidesWithPath(*path, static_cast<Qt::ItemSelectionMode>(mode));
+bool QGraphicsItem_CollidesWithPath2(const QGraphicsItem* self, QPainterPath* path, uintptr_t mode) {
+	return self->collidesWithPath(*path, static_cast<Qt::ItemSelectionMode>(mode));
 }
 
-void QGraphicsItem_CollidingItems1(QGraphicsItem* self, uintptr_t mode, QGraphicsItem*** _out, size_t* _out_len) {
-	QList<QGraphicsItem*> ret = const_cast<const QGraphicsItem*>(self)->collidingItems(static_cast<Qt::ItemSelectionMode>(mode));
+void QGraphicsItem_CollidingItems1(const QGraphicsItem* self, uintptr_t mode, QGraphicsItem*** _out, size_t* _out_len) {
+	QList<QGraphicsItem*> ret = self->collidingItems(static_cast<Qt::ItemSelectionMode>(mode));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QGraphicsItem** __out = static_cast<QGraphicsItem**>(malloc(sizeof(QGraphicsItem*) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {
@@ -905,8 +905,8 @@ void QGraphicsItem_CollidingItems1(QGraphicsItem* self, uintptr_t mode, QGraphic
 	*_out_len = ret.length();
 }
 
-bool QGraphicsItem_IsObscured1(QGraphicsItem* self, QRectF* rect) {
-	return const_cast<const QGraphicsItem*>(self)->isObscured(*rect);
+bool QGraphicsItem_IsObscured1(const QGraphicsItem* self, QRectF* rect) {
+	return self->isObscured(*rect);
 }
 
 void QGraphicsItem_Paint3(QGraphicsItem* self, QPainter* painter, QStyleOptionGraphicsItem* option, QWidget* widget) {
@@ -925,8 +925,8 @@ void QGraphicsItem_Delete(QGraphicsItem* self) {
 	delete self;
 }
 
-QMetaObject* QGraphicsObject_MetaObject(QGraphicsObject* self) {
-	return (QMetaObject*) const_cast<const QGraphicsObject*>(self)->metaObject();
+QMetaObject* QGraphicsObject_MetaObject(const QGraphicsObject* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QGraphicsObject_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -1119,8 +1119,8 @@ void QGraphicsObject_Delete(QGraphicsObject* self) {
 	delete self;
 }
 
-QPen* QAbstractGraphicsShapeItem_Pen(QAbstractGraphicsShapeItem* self) {
-	QPen ret = const_cast<const QAbstractGraphicsShapeItem*>(self)->pen();
+QPen* QAbstractGraphicsShapeItem_Pen(const QAbstractGraphicsShapeItem* self) {
+	QPen ret = self->pen();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPen*>(new QPen(ret));
 }
@@ -1129,8 +1129,8 @@ void QAbstractGraphicsShapeItem_SetPen(QAbstractGraphicsShapeItem* self, QPen* p
 	self->setPen(*pen);
 }
 
-QBrush* QAbstractGraphicsShapeItem_Brush(QAbstractGraphicsShapeItem* self) {
-	QBrush ret = const_cast<const QAbstractGraphicsShapeItem*>(self)->brush();
+QBrush* QAbstractGraphicsShapeItem_Brush(const QAbstractGraphicsShapeItem* self) {
+	QBrush ret = self->brush();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QBrush*>(new QBrush(ret));
 }
@@ -1139,12 +1139,12 @@ void QAbstractGraphicsShapeItem_SetBrush(QAbstractGraphicsShapeItem* self, QBrus
 	self->setBrush(*brush);
 }
 
-bool QAbstractGraphicsShapeItem_IsObscuredBy(QAbstractGraphicsShapeItem* self, QGraphicsItem* item) {
-	return const_cast<const QAbstractGraphicsShapeItem*>(self)->isObscuredBy(item);
+bool QAbstractGraphicsShapeItem_IsObscuredBy(const QAbstractGraphicsShapeItem* self, QGraphicsItem* item) {
+	return self->isObscuredBy(item);
 }
 
-QPainterPath* QAbstractGraphicsShapeItem_OpaqueArea(QAbstractGraphicsShapeItem* self) {
-	QPainterPath ret = const_cast<const QAbstractGraphicsShapeItem*>(self)->opaqueArea();
+QPainterPath* QAbstractGraphicsShapeItem_OpaqueArea(const QAbstractGraphicsShapeItem* self) {
+	QPainterPath ret = self->opaqueArea();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPainterPath*>(new QPainterPath(ret));
 }
@@ -1169,8 +1169,8 @@ QGraphicsPathItem* QGraphicsPathItem_new4(QPainterPath* path, QGraphicsItem* par
 	return new QGraphicsPathItem(*path, parent);
 }
 
-QPainterPath* QGraphicsPathItem_Path(QGraphicsPathItem* self) {
-	QPainterPath ret = const_cast<const QGraphicsPathItem*>(self)->path();
+QPainterPath* QGraphicsPathItem_Path(const QGraphicsPathItem* self) {
+	QPainterPath ret = self->path();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPainterPath*>(new QPainterPath(ret));
 }
@@ -1179,38 +1179,38 @@ void QGraphicsPathItem_SetPath(QGraphicsPathItem* self, QPainterPath* path) {
 	self->setPath(*path);
 }
 
-QRectF* QGraphicsPathItem_BoundingRect(QGraphicsPathItem* self) {
-	QRectF ret = const_cast<const QGraphicsPathItem*>(self)->boundingRect();
+QRectF* QGraphicsPathItem_BoundingRect(const QGraphicsPathItem* self) {
+	QRectF ret = self->boundingRect();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRectF*>(new QRectF(ret));
 }
 
-QPainterPath* QGraphicsPathItem_Shape(QGraphicsPathItem* self) {
-	QPainterPath ret = const_cast<const QGraphicsPathItem*>(self)->shape();
+QPainterPath* QGraphicsPathItem_Shape(const QGraphicsPathItem* self) {
+	QPainterPath ret = self->shape();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPainterPath*>(new QPainterPath(ret));
 }
 
-bool QGraphicsPathItem_Contains(QGraphicsPathItem* self, QPointF* point) {
-	return const_cast<const QGraphicsPathItem*>(self)->contains(*point);
+bool QGraphicsPathItem_Contains(const QGraphicsPathItem* self, QPointF* point) {
+	return self->contains(*point);
 }
 
 void QGraphicsPathItem_Paint(QGraphicsPathItem* self, QPainter* painter, QStyleOptionGraphicsItem* option) {
 	self->paint(painter, option);
 }
 
-bool QGraphicsPathItem_IsObscuredBy(QGraphicsPathItem* self, QGraphicsItem* item) {
-	return const_cast<const QGraphicsPathItem*>(self)->isObscuredBy(item);
+bool QGraphicsPathItem_IsObscuredBy(const QGraphicsPathItem* self, QGraphicsItem* item) {
+	return self->isObscuredBy(item);
 }
 
-QPainterPath* QGraphicsPathItem_OpaqueArea(QGraphicsPathItem* self) {
-	QPainterPath ret = const_cast<const QGraphicsPathItem*>(self)->opaqueArea();
+QPainterPath* QGraphicsPathItem_OpaqueArea(const QGraphicsPathItem* self) {
+	QPainterPath ret = self->opaqueArea();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPainterPath*>(new QPainterPath(ret));
 }
 
-int QGraphicsPathItem_Type(QGraphicsPathItem* self) {
-	return const_cast<const QGraphicsPathItem*>(self)->type();
+int QGraphicsPathItem_Type(const QGraphicsPathItem* self) {
+	return self->type();
 }
 
 void QGraphicsPathItem_Paint3(QGraphicsPathItem* self, QPainter* painter, QStyleOptionGraphicsItem* option, QWidget* widget) {
@@ -1245,8 +1245,8 @@ QGraphicsRectItem* QGraphicsRectItem_new6(double x, double y, double w, double h
 	return new QGraphicsRectItem(static_cast<qreal>(x), static_cast<qreal>(y), static_cast<qreal>(w), static_cast<qreal>(h), parent);
 }
 
-QRectF* QGraphicsRectItem_Rect(QGraphicsRectItem* self) {
-	QRectF ret = const_cast<const QGraphicsRectItem*>(self)->rect();
+QRectF* QGraphicsRectItem_Rect(const QGraphicsRectItem* self) {
+	QRectF ret = self->rect();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRectF*>(new QRectF(ret));
 }
@@ -1259,38 +1259,38 @@ void QGraphicsRectItem_SetRect2(QGraphicsRectItem* self, double x, double y, dou
 	self->setRect(static_cast<qreal>(x), static_cast<qreal>(y), static_cast<qreal>(w), static_cast<qreal>(h));
 }
 
-QRectF* QGraphicsRectItem_BoundingRect(QGraphicsRectItem* self) {
-	QRectF ret = const_cast<const QGraphicsRectItem*>(self)->boundingRect();
+QRectF* QGraphicsRectItem_BoundingRect(const QGraphicsRectItem* self) {
+	QRectF ret = self->boundingRect();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRectF*>(new QRectF(ret));
 }
 
-QPainterPath* QGraphicsRectItem_Shape(QGraphicsRectItem* self) {
-	QPainterPath ret = const_cast<const QGraphicsRectItem*>(self)->shape();
+QPainterPath* QGraphicsRectItem_Shape(const QGraphicsRectItem* self) {
+	QPainterPath ret = self->shape();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPainterPath*>(new QPainterPath(ret));
 }
 
-bool QGraphicsRectItem_Contains(QGraphicsRectItem* self, QPointF* point) {
-	return const_cast<const QGraphicsRectItem*>(self)->contains(*point);
+bool QGraphicsRectItem_Contains(const QGraphicsRectItem* self, QPointF* point) {
+	return self->contains(*point);
 }
 
 void QGraphicsRectItem_Paint(QGraphicsRectItem* self, QPainter* painter, QStyleOptionGraphicsItem* option) {
 	self->paint(painter, option);
 }
 
-bool QGraphicsRectItem_IsObscuredBy(QGraphicsRectItem* self, QGraphicsItem* item) {
-	return const_cast<const QGraphicsRectItem*>(self)->isObscuredBy(item);
+bool QGraphicsRectItem_IsObscuredBy(const QGraphicsRectItem* self, QGraphicsItem* item) {
+	return self->isObscuredBy(item);
 }
 
-QPainterPath* QGraphicsRectItem_OpaqueArea(QGraphicsRectItem* self) {
-	QPainterPath ret = const_cast<const QGraphicsRectItem*>(self)->opaqueArea();
+QPainterPath* QGraphicsRectItem_OpaqueArea(const QGraphicsRectItem* self) {
+	QPainterPath ret = self->opaqueArea();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPainterPath*>(new QPainterPath(ret));
 }
 
-int QGraphicsRectItem_Type(QGraphicsRectItem* self) {
-	return const_cast<const QGraphicsRectItem*>(self)->type();
+int QGraphicsRectItem_Type(const QGraphicsRectItem* self) {
+	return self->type();
 }
 
 void QGraphicsRectItem_Paint3(QGraphicsRectItem* self, QPainter* painter, QStyleOptionGraphicsItem* option, QWidget* widget) {
@@ -1325,8 +1325,8 @@ QGraphicsEllipseItem* QGraphicsEllipseItem_new6(double x, double y, double w, do
 	return new QGraphicsEllipseItem(static_cast<qreal>(x), static_cast<qreal>(y), static_cast<qreal>(w), static_cast<qreal>(h), parent);
 }
 
-QRectF* QGraphicsEllipseItem_Rect(QGraphicsEllipseItem* self) {
-	QRectF ret = const_cast<const QGraphicsEllipseItem*>(self)->rect();
+QRectF* QGraphicsEllipseItem_Rect(const QGraphicsEllipseItem* self) {
+	QRectF ret = self->rect();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRectF*>(new QRectF(ret));
 }
@@ -1339,54 +1339,54 @@ void QGraphicsEllipseItem_SetRect2(QGraphicsEllipseItem* self, double x, double 
 	self->setRect(static_cast<qreal>(x), static_cast<qreal>(y), static_cast<qreal>(w), static_cast<qreal>(h));
 }
 
-int QGraphicsEllipseItem_StartAngle(QGraphicsEllipseItem* self) {
-	return const_cast<const QGraphicsEllipseItem*>(self)->startAngle();
+int QGraphicsEllipseItem_StartAngle(const QGraphicsEllipseItem* self) {
+	return self->startAngle();
 }
 
 void QGraphicsEllipseItem_SetStartAngle(QGraphicsEllipseItem* self, int angle) {
 	self->setStartAngle(static_cast<int>(angle));
 }
 
-int QGraphicsEllipseItem_SpanAngle(QGraphicsEllipseItem* self) {
-	return const_cast<const QGraphicsEllipseItem*>(self)->spanAngle();
+int QGraphicsEllipseItem_SpanAngle(const QGraphicsEllipseItem* self) {
+	return self->spanAngle();
 }
 
 void QGraphicsEllipseItem_SetSpanAngle(QGraphicsEllipseItem* self, int angle) {
 	self->setSpanAngle(static_cast<int>(angle));
 }
 
-QRectF* QGraphicsEllipseItem_BoundingRect(QGraphicsEllipseItem* self) {
-	QRectF ret = const_cast<const QGraphicsEllipseItem*>(self)->boundingRect();
+QRectF* QGraphicsEllipseItem_BoundingRect(const QGraphicsEllipseItem* self) {
+	QRectF ret = self->boundingRect();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRectF*>(new QRectF(ret));
 }
 
-QPainterPath* QGraphicsEllipseItem_Shape(QGraphicsEllipseItem* self) {
-	QPainterPath ret = const_cast<const QGraphicsEllipseItem*>(self)->shape();
+QPainterPath* QGraphicsEllipseItem_Shape(const QGraphicsEllipseItem* self) {
+	QPainterPath ret = self->shape();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPainterPath*>(new QPainterPath(ret));
 }
 
-bool QGraphicsEllipseItem_Contains(QGraphicsEllipseItem* self, QPointF* point) {
-	return const_cast<const QGraphicsEllipseItem*>(self)->contains(*point);
+bool QGraphicsEllipseItem_Contains(const QGraphicsEllipseItem* self, QPointF* point) {
+	return self->contains(*point);
 }
 
 void QGraphicsEllipseItem_Paint(QGraphicsEllipseItem* self, QPainter* painter, QStyleOptionGraphicsItem* option) {
 	self->paint(painter, option);
 }
 
-bool QGraphicsEllipseItem_IsObscuredBy(QGraphicsEllipseItem* self, QGraphicsItem* item) {
-	return const_cast<const QGraphicsEllipseItem*>(self)->isObscuredBy(item);
+bool QGraphicsEllipseItem_IsObscuredBy(const QGraphicsEllipseItem* self, QGraphicsItem* item) {
+	return self->isObscuredBy(item);
 }
 
-QPainterPath* QGraphicsEllipseItem_OpaqueArea(QGraphicsEllipseItem* self) {
-	QPainterPath ret = const_cast<const QGraphicsEllipseItem*>(self)->opaqueArea();
+QPainterPath* QGraphicsEllipseItem_OpaqueArea(const QGraphicsEllipseItem* self) {
+	QPainterPath ret = self->opaqueArea();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPainterPath*>(new QPainterPath(ret));
 }
 
-int QGraphicsEllipseItem_Type(QGraphicsEllipseItem* self) {
-	return const_cast<const QGraphicsEllipseItem*>(self)->type();
+int QGraphicsEllipseItem_Type(const QGraphicsEllipseItem* self) {
+	return self->type();
 }
 
 void QGraphicsEllipseItem_Paint3(QGraphicsEllipseItem* self, QPainter* painter, QStyleOptionGraphicsItem* option, QWidget* widget) {
@@ -1405,8 +1405,8 @@ QGraphicsPolygonItem* QGraphicsPolygonItem_new2(QGraphicsItem* parent) {
 	return new QGraphicsPolygonItem(parent);
 }
 
-uintptr_t QGraphicsPolygonItem_FillRule(QGraphicsPolygonItem* self) {
-	Qt::FillRule ret = const_cast<const QGraphicsPolygonItem*>(self)->fillRule();
+uintptr_t QGraphicsPolygonItem_FillRule(const QGraphicsPolygonItem* self) {
+	Qt::FillRule ret = self->fillRule();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -1414,38 +1414,38 @@ void QGraphicsPolygonItem_SetFillRule(QGraphicsPolygonItem* self, uintptr_t rule
 	self->setFillRule(static_cast<Qt::FillRule>(rule));
 }
 
-QRectF* QGraphicsPolygonItem_BoundingRect(QGraphicsPolygonItem* self) {
-	QRectF ret = const_cast<const QGraphicsPolygonItem*>(self)->boundingRect();
+QRectF* QGraphicsPolygonItem_BoundingRect(const QGraphicsPolygonItem* self) {
+	QRectF ret = self->boundingRect();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRectF*>(new QRectF(ret));
 }
 
-QPainterPath* QGraphicsPolygonItem_Shape(QGraphicsPolygonItem* self) {
-	QPainterPath ret = const_cast<const QGraphicsPolygonItem*>(self)->shape();
+QPainterPath* QGraphicsPolygonItem_Shape(const QGraphicsPolygonItem* self) {
+	QPainterPath ret = self->shape();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPainterPath*>(new QPainterPath(ret));
 }
 
-bool QGraphicsPolygonItem_Contains(QGraphicsPolygonItem* self, QPointF* point) {
-	return const_cast<const QGraphicsPolygonItem*>(self)->contains(*point);
+bool QGraphicsPolygonItem_Contains(const QGraphicsPolygonItem* self, QPointF* point) {
+	return self->contains(*point);
 }
 
 void QGraphicsPolygonItem_Paint(QGraphicsPolygonItem* self, QPainter* painter, QStyleOptionGraphicsItem* option) {
 	self->paint(painter, option);
 }
 
-bool QGraphicsPolygonItem_IsObscuredBy(QGraphicsPolygonItem* self, QGraphicsItem* item) {
-	return const_cast<const QGraphicsPolygonItem*>(self)->isObscuredBy(item);
+bool QGraphicsPolygonItem_IsObscuredBy(const QGraphicsPolygonItem* self, QGraphicsItem* item) {
+	return self->isObscuredBy(item);
 }
 
-QPainterPath* QGraphicsPolygonItem_OpaqueArea(QGraphicsPolygonItem* self) {
-	QPainterPath ret = const_cast<const QGraphicsPolygonItem*>(self)->opaqueArea();
+QPainterPath* QGraphicsPolygonItem_OpaqueArea(const QGraphicsPolygonItem* self) {
+	QPainterPath ret = self->opaqueArea();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPainterPath*>(new QPainterPath(ret));
 }
 
-int QGraphicsPolygonItem_Type(QGraphicsPolygonItem* self) {
-	return const_cast<const QGraphicsPolygonItem*>(self)->type();
+int QGraphicsPolygonItem_Type(const QGraphicsPolygonItem* self) {
+	return self->type();
 }
 
 void QGraphicsPolygonItem_Paint3(QGraphicsPolygonItem* self, QPainter* painter, QStyleOptionGraphicsItem* option, QWidget* widget) {
@@ -1480,8 +1480,8 @@ QGraphicsLineItem* QGraphicsLineItem_new6(double x1, double y1, double x2, doubl
 	return new QGraphicsLineItem(static_cast<qreal>(x1), static_cast<qreal>(y1), static_cast<qreal>(x2), static_cast<qreal>(y2), parent);
 }
 
-QPen* QGraphicsLineItem_Pen(QGraphicsLineItem* self) {
-	QPen ret = const_cast<const QGraphicsLineItem*>(self)->pen();
+QPen* QGraphicsLineItem_Pen(const QGraphicsLineItem* self) {
+	QPen ret = self->pen();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPen*>(new QPen(ret));
 }
@@ -1490,8 +1490,8 @@ void QGraphicsLineItem_SetPen(QGraphicsLineItem* self, QPen* pen) {
 	self->setPen(*pen);
 }
 
-QLineF* QGraphicsLineItem_Line(QGraphicsLineItem* self) {
-	QLineF ret = const_cast<const QGraphicsLineItem*>(self)->line();
+QLineF* QGraphicsLineItem_Line(const QGraphicsLineItem* self) {
+	QLineF ret = self->line();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QLineF*>(new QLineF(ret));
 }
@@ -1504,38 +1504,38 @@ void QGraphicsLineItem_SetLine2(QGraphicsLineItem* self, double x1, double y1, d
 	self->setLine(static_cast<qreal>(x1), static_cast<qreal>(y1), static_cast<qreal>(x2), static_cast<qreal>(y2));
 }
 
-QRectF* QGraphicsLineItem_BoundingRect(QGraphicsLineItem* self) {
-	QRectF ret = const_cast<const QGraphicsLineItem*>(self)->boundingRect();
+QRectF* QGraphicsLineItem_BoundingRect(const QGraphicsLineItem* self) {
+	QRectF ret = self->boundingRect();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRectF*>(new QRectF(ret));
 }
 
-QPainterPath* QGraphicsLineItem_Shape(QGraphicsLineItem* self) {
-	QPainterPath ret = const_cast<const QGraphicsLineItem*>(self)->shape();
+QPainterPath* QGraphicsLineItem_Shape(const QGraphicsLineItem* self) {
+	QPainterPath ret = self->shape();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPainterPath*>(new QPainterPath(ret));
 }
 
-bool QGraphicsLineItem_Contains(QGraphicsLineItem* self, QPointF* point) {
-	return const_cast<const QGraphicsLineItem*>(self)->contains(*point);
+bool QGraphicsLineItem_Contains(const QGraphicsLineItem* self, QPointF* point) {
+	return self->contains(*point);
 }
 
 void QGraphicsLineItem_Paint(QGraphicsLineItem* self, QPainter* painter, QStyleOptionGraphicsItem* option) {
 	self->paint(painter, option);
 }
 
-bool QGraphicsLineItem_IsObscuredBy(QGraphicsLineItem* self, QGraphicsItem* item) {
-	return const_cast<const QGraphicsLineItem*>(self)->isObscuredBy(item);
+bool QGraphicsLineItem_IsObscuredBy(const QGraphicsLineItem* self, QGraphicsItem* item) {
+	return self->isObscuredBy(item);
 }
 
-QPainterPath* QGraphicsLineItem_OpaqueArea(QGraphicsLineItem* self) {
-	QPainterPath ret = const_cast<const QGraphicsLineItem*>(self)->opaqueArea();
+QPainterPath* QGraphicsLineItem_OpaqueArea(const QGraphicsLineItem* self) {
+	QPainterPath ret = self->opaqueArea();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPainterPath*>(new QPainterPath(ret));
 }
 
-int QGraphicsLineItem_Type(QGraphicsLineItem* self) {
-	return const_cast<const QGraphicsLineItem*>(self)->type();
+int QGraphicsLineItem_Type(const QGraphicsLineItem* self) {
+	return self->type();
 }
 
 void QGraphicsLineItem_Paint3(QGraphicsLineItem* self, QPainter* painter, QStyleOptionGraphicsItem* option, QWidget* widget) {
@@ -1562,8 +1562,8 @@ QGraphicsPixmapItem* QGraphicsPixmapItem_new4(QPixmap* pixmap, QGraphicsItem* pa
 	return new QGraphicsPixmapItem(*pixmap, parent);
 }
 
-QPixmap* QGraphicsPixmapItem_Pixmap(QGraphicsPixmapItem* self) {
-	QPixmap ret = const_cast<const QGraphicsPixmapItem*>(self)->pixmap();
+QPixmap* QGraphicsPixmapItem_Pixmap(const QGraphicsPixmapItem* self) {
+	QPixmap ret = self->pixmap();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPixmap*>(new QPixmap(ret));
 }
@@ -1572,8 +1572,8 @@ void QGraphicsPixmapItem_SetPixmap(QGraphicsPixmapItem* self, QPixmap* pixmap) {
 	self->setPixmap(*pixmap);
 }
 
-uintptr_t QGraphicsPixmapItem_TransformationMode(QGraphicsPixmapItem* self) {
-	Qt::TransformationMode ret = const_cast<const QGraphicsPixmapItem*>(self)->transformationMode();
+uintptr_t QGraphicsPixmapItem_TransformationMode(const QGraphicsPixmapItem* self) {
+	Qt::TransformationMode ret = self->transformationMode();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -1581,8 +1581,8 @@ void QGraphicsPixmapItem_SetTransformationMode(QGraphicsPixmapItem* self, uintpt
 	self->setTransformationMode(static_cast<Qt::TransformationMode>(mode));
 }
 
-QPointF* QGraphicsPixmapItem_Offset(QGraphicsPixmapItem* self) {
-	QPointF ret = const_cast<const QGraphicsPixmapItem*>(self)->offset();
+QPointF* QGraphicsPixmapItem_Offset(const QGraphicsPixmapItem* self) {
+	QPointF ret = self->offset();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPointF*>(new QPointF(ret));
 }
@@ -1595,42 +1595,42 @@ void QGraphicsPixmapItem_SetOffset2(QGraphicsPixmapItem* self, double x, double 
 	self->setOffset(static_cast<qreal>(x), static_cast<qreal>(y));
 }
 
-QRectF* QGraphicsPixmapItem_BoundingRect(QGraphicsPixmapItem* self) {
-	QRectF ret = const_cast<const QGraphicsPixmapItem*>(self)->boundingRect();
+QRectF* QGraphicsPixmapItem_BoundingRect(const QGraphicsPixmapItem* self) {
+	QRectF ret = self->boundingRect();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRectF*>(new QRectF(ret));
 }
 
-QPainterPath* QGraphicsPixmapItem_Shape(QGraphicsPixmapItem* self) {
-	QPainterPath ret = const_cast<const QGraphicsPixmapItem*>(self)->shape();
+QPainterPath* QGraphicsPixmapItem_Shape(const QGraphicsPixmapItem* self) {
+	QPainterPath ret = self->shape();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPainterPath*>(new QPainterPath(ret));
 }
 
-bool QGraphicsPixmapItem_Contains(QGraphicsPixmapItem* self, QPointF* point) {
-	return const_cast<const QGraphicsPixmapItem*>(self)->contains(*point);
+bool QGraphicsPixmapItem_Contains(const QGraphicsPixmapItem* self, QPointF* point) {
+	return self->contains(*point);
 }
 
 void QGraphicsPixmapItem_Paint(QGraphicsPixmapItem* self, QPainter* painter, QStyleOptionGraphicsItem* option, QWidget* widget) {
 	self->paint(painter, option, widget);
 }
 
-bool QGraphicsPixmapItem_IsObscuredBy(QGraphicsPixmapItem* self, QGraphicsItem* item) {
-	return const_cast<const QGraphicsPixmapItem*>(self)->isObscuredBy(item);
+bool QGraphicsPixmapItem_IsObscuredBy(const QGraphicsPixmapItem* self, QGraphicsItem* item) {
+	return self->isObscuredBy(item);
 }
 
-QPainterPath* QGraphicsPixmapItem_OpaqueArea(QGraphicsPixmapItem* self) {
-	QPainterPath ret = const_cast<const QGraphicsPixmapItem*>(self)->opaqueArea();
+QPainterPath* QGraphicsPixmapItem_OpaqueArea(const QGraphicsPixmapItem* self) {
+	QPainterPath ret = self->opaqueArea();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPainterPath*>(new QPainterPath(ret));
 }
 
-int QGraphicsPixmapItem_Type(QGraphicsPixmapItem* self) {
-	return const_cast<const QGraphicsPixmapItem*>(self)->type();
+int QGraphicsPixmapItem_Type(const QGraphicsPixmapItem* self) {
+	return self->type();
 }
 
-uintptr_t QGraphicsPixmapItem_ShapeMode(QGraphicsPixmapItem* self) {
-	QGraphicsPixmapItem::ShapeMode ret = const_cast<const QGraphicsPixmapItem*>(self)->shapeMode();
+uintptr_t QGraphicsPixmapItem_ShapeMode(const QGraphicsPixmapItem* self) {
+	QGraphicsPixmapItem::ShapeMode ret = self->shapeMode();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -1660,8 +1660,8 @@ QGraphicsTextItem* QGraphicsTextItem_new4(const char* text, size_t text_Strlen, 
 	return new QGraphicsTextItem(text_QString, parent);
 }
 
-QMetaObject* QGraphicsTextItem_MetaObject(QGraphicsTextItem* self) {
-	return (QMetaObject*) const_cast<const QGraphicsTextItem*>(self)->metaObject();
+QMetaObject* QGraphicsTextItem_MetaObject(const QGraphicsTextItem* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QGraphicsTextItem_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -1682,8 +1682,8 @@ void QGraphicsTextItem_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QGraphicsTextItem_ToHtml(QGraphicsTextItem* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QGraphicsTextItem*>(self)->toHtml();
+void QGraphicsTextItem_ToHtml(const QGraphicsTextItem* self, char** _out, int* _out_Strlen) {
+	QString ret = self->toHtml();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -1696,8 +1696,8 @@ void QGraphicsTextItem_SetHtml(QGraphicsTextItem* self, const char* html, size_t
 	self->setHtml(html_QString);
 }
 
-void QGraphicsTextItem_ToPlainText(QGraphicsTextItem* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QGraphicsTextItem*>(self)->toPlainText();
+void QGraphicsTextItem_ToPlainText(const QGraphicsTextItem* self, char** _out, int* _out_Strlen) {
+	QString ret = self->toPlainText();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -1710,8 +1710,8 @@ void QGraphicsTextItem_SetPlainText(QGraphicsTextItem* self, const char* text, s
 	self->setPlainText(text_QString);
 }
 
-QFont* QGraphicsTextItem_Font(QGraphicsTextItem* self) {
-	QFont ret = const_cast<const QGraphicsTextItem*>(self)->font();
+QFont* QGraphicsTextItem_Font(const QGraphicsTextItem* self) {
+	QFont ret = self->font();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QFont*>(new QFont(ret));
 }
@@ -1724,52 +1724,52 @@ void QGraphicsTextItem_SetDefaultTextColor(QGraphicsTextItem* self, QColor* c) {
 	self->setDefaultTextColor(*c);
 }
 
-QColor* QGraphicsTextItem_DefaultTextColor(QGraphicsTextItem* self) {
-	QColor ret = const_cast<const QGraphicsTextItem*>(self)->defaultTextColor();
+QColor* QGraphicsTextItem_DefaultTextColor(const QGraphicsTextItem* self) {
+	QColor ret = self->defaultTextColor();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QColor*>(new QColor(ret));
 }
 
-QRectF* QGraphicsTextItem_BoundingRect(QGraphicsTextItem* self) {
-	QRectF ret = const_cast<const QGraphicsTextItem*>(self)->boundingRect();
+QRectF* QGraphicsTextItem_BoundingRect(const QGraphicsTextItem* self) {
+	QRectF ret = self->boundingRect();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRectF*>(new QRectF(ret));
 }
 
-QPainterPath* QGraphicsTextItem_Shape(QGraphicsTextItem* self) {
-	QPainterPath ret = const_cast<const QGraphicsTextItem*>(self)->shape();
+QPainterPath* QGraphicsTextItem_Shape(const QGraphicsTextItem* self) {
+	QPainterPath ret = self->shape();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPainterPath*>(new QPainterPath(ret));
 }
 
-bool QGraphicsTextItem_Contains(QGraphicsTextItem* self, QPointF* point) {
-	return const_cast<const QGraphicsTextItem*>(self)->contains(*point);
+bool QGraphicsTextItem_Contains(const QGraphicsTextItem* self, QPointF* point) {
+	return self->contains(*point);
 }
 
 void QGraphicsTextItem_Paint(QGraphicsTextItem* self, QPainter* painter, QStyleOptionGraphicsItem* option, QWidget* widget) {
 	self->paint(painter, option, widget);
 }
 
-bool QGraphicsTextItem_IsObscuredBy(QGraphicsTextItem* self, QGraphicsItem* item) {
-	return const_cast<const QGraphicsTextItem*>(self)->isObscuredBy(item);
+bool QGraphicsTextItem_IsObscuredBy(const QGraphicsTextItem* self, QGraphicsItem* item) {
+	return self->isObscuredBy(item);
 }
 
-QPainterPath* QGraphicsTextItem_OpaqueArea(QGraphicsTextItem* self) {
-	QPainterPath ret = const_cast<const QGraphicsTextItem*>(self)->opaqueArea();
+QPainterPath* QGraphicsTextItem_OpaqueArea(const QGraphicsTextItem* self) {
+	QPainterPath ret = self->opaqueArea();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPainterPath*>(new QPainterPath(ret));
 }
 
-int QGraphicsTextItem_Type(QGraphicsTextItem* self) {
-	return const_cast<const QGraphicsTextItem*>(self)->type();
+int QGraphicsTextItem_Type(const QGraphicsTextItem* self) {
+	return self->type();
 }
 
 void QGraphicsTextItem_SetTextWidth(QGraphicsTextItem* self, double width) {
 	self->setTextWidth(static_cast<qreal>(width));
 }
 
-double QGraphicsTextItem_TextWidth(QGraphicsTextItem* self) {
-	return const_cast<const QGraphicsTextItem*>(self)->textWidth();
+double QGraphicsTextItem_TextWidth(const QGraphicsTextItem* self) {
+	return self->textWidth();
 }
 
 void QGraphicsTextItem_AdjustSize(QGraphicsTextItem* self) {
@@ -1780,16 +1780,16 @@ void QGraphicsTextItem_SetDocument(QGraphicsTextItem* self, QTextDocument* docum
 	self->setDocument(document);
 }
 
-QTextDocument* QGraphicsTextItem_Document(QGraphicsTextItem* self) {
-	return const_cast<const QGraphicsTextItem*>(self)->document();
+QTextDocument* QGraphicsTextItem_Document(const QGraphicsTextItem* self) {
+	return self->document();
 }
 
 void QGraphicsTextItem_SetTextInteractionFlags(QGraphicsTextItem* self, int flags) {
 	self->setTextInteractionFlags(static_cast<Qt::TextInteractionFlags>(flags));
 }
 
-int QGraphicsTextItem_TextInteractionFlags(QGraphicsTextItem* self) {
-	Qt::TextInteractionFlags ret = const_cast<const QGraphicsTextItem*>(self)->textInteractionFlags();
+int QGraphicsTextItem_TextInteractionFlags(const QGraphicsTextItem* self) {
+	Qt::TextInteractionFlags ret = self->textInteractionFlags();
 	return static_cast<int>(ret);
 }
 
@@ -1797,24 +1797,24 @@ void QGraphicsTextItem_SetTabChangesFocus(QGraphicsTextItem* self, bool b) {
 	self->setTabChangesFocus(b);
 }
 
-bool QGraphicsTextItem_TabChangesFocus(QGraphicsTextItem* self) {
-	return const_cast<const QGraphicsTextItem*>(self)->tabChangesFocus();
+bool QGraphicsTextItem_TabChangesFocus(const QGraphicsTextItem* self) {
+	return self->tabChangesFocus();
 }
 
 void QGraphicsTextItem_SetOpenExternalLinks(QGraphicsTextItem* self, bool open) {
 	self->setOpenExternalLinks(open);
 }
 
-bool QGraphicsTextItem_OpenExternalLinks(QGraphicsTextItem* self) {
-	return const_cast<const QGraphicsTextItem*>(self)->openExternalLinks();
+bool QGraphicsTextItem_OpenExternalLinks(const QGraphicsTextItem* self) {
+	return self->openExternalLinks();
 }
 
 void QGraphicsTextItem_SetTextCursor(QGraphicsTextItem* self, QTextCursor* cursor) {
 	self->setTextCursor(*cursor);
 }
 
-QTextCursor* QGraphicsTextItem_TextCursor(QGraphicsTextItem* self) {
-	QTextCursor ret = const_cast<const QGraphicsTextItem*>(self)->textCursor();
+QTextCursor* QGraphicsTextItem_TextCursor(const QGraphicsTextItem* self) {
+	QTextCursor ret = self->textCursor();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QTextCursor*>(new QTextCursor(ret));
 }
@@ -1904,8 +1904,8 @@ void QGraphicsSimpleTextItem_SetText(QGraphicsSimpleTextItem* self, const char* 
 	self->setText(text_QString);
 }
 
-void QGraphicsSimpleTextItem_Text(QGraphicsSimpleTextItem* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QGraphicsSimpleTextItem*>(self)->text();
+void QGraphicsSimpleTextItem_Text(const QGraphicsSimpleTextItem* self, char** _out, int* _out_Strlen) {
+	QString ret = self->text();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -1917,44 +1917,44 @@ void QGraphicsSimpleTextItem_SetFont(QGraphicsSimpleTextItem* self, QFont* font)
 	self->setFont(*font);
 }
 
-QFont* QGraphicsSimpleTextItem_Font(QGraphicsSimpleTextItem* self) {
-	QFont ret = const_cast<const QGraphicsSimpleTextItem*>(self)->font();
+QFont* QGraphicsSimpleTextItem_Font(const QGraphicsSimpleTextItem* self) {
+	QFont ret = self->font();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QFont*>(new QFont(ret));
 }
 
-QRectF* QGraphicsSimpleTextItem_BoundingRect(QGraphicsSimpleTextItem* self) {
-	QRectF ret = const_cast<const QGraphicsSimpleTextItem*>(self)->boundingRect();
+QRectF* QGraphicsSimpleTextItem_BoundingRect(const QGraphicsSimpleTextItem* self) {
+	QRectF ret = self->boundingRect();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRectF*>(new QRectF(ret));
 }
 
-QPainterPath* QGraphicsSimpleTextItem_Shape(QGraphicsSimpleTextItem* self) {
-	QPainterPath ret = const_cast<const QGraphicsSimpleTextItem*>(self)->shape();
+QPainterPath* QGraphicsSimpleTextItem_Shape(const QGraphicsSimpleTextItem* self) {
+	QPainterPath ret = self->shape();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPainterPath*>(new QPainterPath(ret));
 }
 
-bool QGraphicsSimpleTextItem_Contains(QGraphicsSimpleTextItem* self, QPointF* point) {
-	return const_cast<const QGraphicsSimpleTextItem*>(self)->contains(*point);
+bool QGraphicsSimpleTextItem_Contains(const QGraphicsSimpleTextItem* self, QPointF* point) {
+	return self->contains(*point);
 }
 
 void QGraphicsSimpleTextItem_Paint(QGraphicsSimpleTextItem* self, QPainter* painter, QStyleOptionGraphicsItem* option, QWidget* widget) {
 	self->paint(painter, option, widget);
 }
 
-bool QGraphicsSimpleTextItem_IsObscuredBy(QGraphicsSimpleTextItem* self, QGraphicsItem* item) {
-	return const_cast<const QGraphicsSimpleTextItem*>(self)->isObscuredBy(item);
+bool QGraphicsSimpleTextItem_IsObscuredBy(const QGraphicsSimpleTextItem* self, QGraphicsItem* item) {
+	return self->isObscuredBy(item);
 }
 
-QPainterPath* QGraphicsSimpleTextItem_OpaqueArea(QGraphicsSimpleTextItem* self) {
-	QPainterPath ret = const_cast<const QGraphicsSimpleTextItem*>(self)->opaqueArea();
+QPainterPath* QGraphicsSimpleTextItem_OpaqueArea(const QGraphicsSimpleTextItem* self) {
+	QPainterPath ret = self->opaqueArea();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPainterPath*>(new QPainterPath(ret));
 }
 
-int QGraphicsSimpleTextItem_Type(QGraphicsSimpleTextItem* self) {
-	return const_cast<const QGraphicsSimpleTextItem*>(self)->type();
+int QGraphicsSimpleTextItem_Type(const QGraphicsSimpleTextItem* self) {
+	return self->type();
 }
 
 void QGraphicsSimpleTextItem_Delete(QGraphicsSimpleTextItem* self) {
@@ -1977,8 +1977,8 @@ void QGraphicsItemGroup_RemoveFromGroup(QGraphicsItemGroup* self, QGraphicsItem*
 	self->removeFromGroup(item);
 }
 
-QRectF* QGraphicsItemGroup_BoundingRect(QGraphicsItemGroup* self) {
-	QRectF ret = const_cast<const QGraphicsItemGroup*>(self)->boundingRect();
+QRectF* QGraphicsItemGroup_BoundingRect(const QGraphicsItemGroup* self) {
+	QRectF ret = self->boundingRect();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRectF*>(new QRectF(ret));
 }
@@ -1987,18 +1987,18 @@ void QGraphicsItemGroup_Paint(QGraphicsItemGroup* self, QPainter* painter, QStyl
 	self->paint(painter, option);
 }
 
-bool QGraphicsItemGroup_IsObscuredBy(QGraphicsItemGroup* self, QGraphicsItem* item) {
-	return const_cast<const QGraphicsItemGroup*>(self)->isObscuredBy(item);
+bool QGraphicsItemGroup_IsObscuredBy(const QGraphicsItemGroup* self, QGraphicsItem* item) {
+	return self->isObscuredBy(item);
 }
 
-QPainterPath* QGraphicsItemGroup_OpaqueArea(QGraphicsItemGroup* self) {
-	QPainterPath ret = const_cast<const QGraphicsItemGroup*>(self)->opaqueArea();
+QPainterPath* QGraphicsItemGroup_OpaqueArea(const QGraphicsItemGroup* self) {
+	QPainterPath ret = self->opaqueArea();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPainterPath*>(new QPainterPath(ret));
 }
 
-int QGraphicsItemGroup_Type(QGraphicsItemGroup* self) {
-	return const_cast<const QGraphicsItemGroup*>(self)->type();
+int QGraphicsItemGroup_Type(const QGraphicsItemGroup* self) {
+	return self->type();
 }
 
 void QGraphicsItemGroup_Paint3(QGraphicsItemGroup* self, QPainter* painter, QStyleOptionGraphicsItem* option, QWidget* widget) {

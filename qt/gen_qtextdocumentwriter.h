@@ -32,15 +32,15 @@ QTextDocumentWriter* QTextDocumentWriter_new2(QIODevice* device, QByteArray* for
 QTextDocumentWriter* QTextDocumentWriter_new3(const char* fileName, size_t fileName_Strlen);
 QTextDocumentWriter* QTextDocumentWriter_new4(const char* fileName, size_t fileName_Strlen, QByteArray* format);
 void QTextDocumentWriter_SetFormat(QTextDocumentWriter* self, QByteArray* format);
-QByteArray* QTextDocumentWriter_Format(QTextDocumentWriter* self);
+QByteArray* QTextDocumentWriter_Format(const QTextDocumentWriter* self);
 void QTextDocumentWriter_SetDevice(QTextDocumentWriter* self, QIODevice* device);
-QIODevice* QTextDocumentWriter_Device(QTextDocumentWriter* self);
+QIODevice* QTextDocumentWriter_Device(const QTextDocumentWriter* self);
 void QTextDocumentWriter_SetFileName(QTextDocumentWriter* self, const char* fileName, size_t fileName_Strlen);
-void QTextDocumentWriter_FileName(QTextDocumentWriter* self, char** _out, int* _out_Strlen);
+void QTextDocumentWriter_FileName(const QTextDocumentWriter* self, char** _out, int* _out_Strlen);
 bool QTextDocumentWriter_Write(QTextDocumentWriter* self, QTextDocument* document);
 bool QTextDocumentWriter_WriteWithFragment(QTextDocumentWriter* self, QTextDocumentFragment* fragment);
 void QTextDocumentWriter_SetCodec(QTextDocumentWriter* self, QTextCodec* codec);
-QTextCodec* QTextDocumentWriter_Codec(QTextDocumentWriter* self);
+QTextCodec* QTextDocumentWriter_Codec(const QTextDocumentWriter* self);
 void QTextDocumentWriter_SupportedDocumentFormats(QByteArray*** _out, size_t* _out_len);
 void QTextDocumentWriter_Delete(QTextDocumentWriter* self);
 

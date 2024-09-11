@@ -20,12 +20,12 @@ void QScrollerProperties_OperatorAssign(QScrollerProperties* self, QScrollerProp
 	self->operator=(*sp);
 }
 
-bool QScrollerProperties_OperatorEqual(QScrollerProperties* self, QScrollerProperties* sp) {
-	return const_cast<const QScrollerProperties*>(self)->operator==(*sp);
+bool QScrollerProperties_OperatorEqual(const QScrollerProperties* self, QScrollerProperties* sp) {
+	return self->operator==(*sp);
 }
 
-bool QScrollerProperties_OperatorNotEqual(QScrollerProperties* self, QScrollerProperties* sp) {
-	return const_cast<const QScrollerProperties*>(self)->operator!=(*sp);
+bool QScrollerProperties_OperatorNotEqual(const QScrollerProperties* self, QScrollerProperties* sp) {
+	return self->operator!=(*sp);
 }
 
 void QScrollerProperties_SetDefaultScrollerProperties(QScrollerProperties* sp) {
@@ -36,8 +36,8 @@ void QScrollerProperties_UnsetDefaultScrollerProperties() {
 	QScrollerProperties::unsetDefaultScrollerProperties();
 }
 
-QVariant* QScrollerProperties_ScrollMetric(QScrollerProperties* self, uintptr_t metric) {
-	QVariant ret = const_cast<const QScrollerProperties*>(self)->scrollMetric(static_cast<QScrollerProperties::ScrollMetric>(metric));
+QVariant* QScrollerProperties_ScrollMetric(const QScrollerProperties* self, uintptr_t metric) {
+	QVariant ret = self->scrollMetric(static_cast<QScrollerProperties::ScrollMetric>(metric));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVariant*>(new QVariant(ret));
 }

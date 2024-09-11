@@ -66,8 +66,8 @@ QWidget* QWidget_new3(QWidget* parent, int f) {
 	return new QWidget(parent, static_cast<Qt::WindowFlags>(f));
 }
 
-QMetaObject* QWidget_MetaObject(QWidget* self) {
-	return (QMetaObject*) const_cast<const QWidget*>(self)->metaObject();
+QMetaObject* QWidget_MetaObject(const QWidget* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QWidget_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -88,48 +88,48 @@ void QWidget_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-int QWidget_DevType(QWidget* self) {
-	return const_cast<const QWidget*>(self)->devType();
+int QWidget_DevType(const QWidget* self) {
+	return self->devType();
 }
 
-uintptr_t QWidget_WinId(QWidget* self) {
-	return const_cast<const QWidget*>(self)->winId();
+uintptr_t QWidget_WinId(const QWidget* self) {
+	return self->winId();
 }
 
 void QWidget_CreateWinId(QWidget* self) {
 	self->createWinId();
 }
 
-uintptr_t QWidget_InternalWinId(QWidget* self) {
-	return const_cast<const QWidget*>(self)->internalWinId();
+uintptr_t QWidget_InternalWinId(const QWidget* self) {
+	return self->internalWinId();
 }
 
-uintptr_t QWidget_EffectiveWinId(QWidget* self) {
-	return const_cast<const QWidget*>(self)->effectiveWinId();
+uintptr_t QWidget_EffectiveWinId(const QWidget* self) {
+	return self->effectiveWinId();
 }
 
-QStyle* QWidget_Style(QWidget* self) {
-	return const_cast<const QWidget*>(self)->style();
+QStyle* QWidget_Style(const QWidget* self) {
+	return self->style();
 }
 
 void QWidget_SetStyle(QWidget* self, QStyle* style) {
 	self->setStyle(style);
 }
 
-bool QWidget_IsTopLevel(QWidget* self) {
-	return const_cast<const QWidget*>(self)->isTopLevel();
+bool QWidget_IsTopLevel(const QWidget* self) {
+	return self->isTopLevel();
 }
 
-bool QWidget_IsWindow(QWidget* self) {
-	return const_cast<const QWidget*>(self)->isWindow();
+bool QWidget_IsWindow(const QWidget* self) {
+	return self->isWindow();
 }
 
-bool QWidget_IsModal(QWidget* self) {
-	return const_cast<const QWidget*>(self)->isModal();
+bool QWidget_IsModal(const QWidget* self) {
+	return self->isModal();
 }
 
-uintptr_t QWidget_WindowModality(QWidget* self) {
-	Qt::WindowModality ret = const_cast<const QWidget*>(self)->windowModality();
+uintptr_t QWidget_WindowModality(const QWidget* self) {
+	Qt::WindowModality ret = self->windowModality();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -137,16 +137,16 @@ void QWidget_SetWindowModality(QWidget* self, uintptr_t windowModality) {
 	self->setWindowModality(static_cast<Qt::WindowModality>(windowModality));
 }
 
-bool QWidget_IsEnabled(QWidget* self) {
-	return const_cast<const QWidget*>(self)->isEnabled();
+bool QWidget_IsEnabled(const QWidget* self) {
+	return self->isEnabled();
 }
 
-bool QWidget_IsEnabledTo(QWidget* self, QWidget* param1) {
-	return const_cast<const QWidget*>(self)->isEnabledTo(param1);
+bool QWidget_IsEnabledTo(const QWidget* self, QWidget* param1) {
+	return self->isEnabledTo(param1);
 }
 
-bool QWidget_IsEnabledToTLW(QWidget* self) {
-	return const_cast<const QWidget*>(self)->isEnabledToTLW();
+bool QWidget_IsEnabledToTLW(const QWidget* self) {
+	return self->isEnabledToTLW();
 }
 
 void QWidget_SetEnabled(QWidget* self, bool enabled) {
@@ -161,102 +161,102 @@ void QWidget_SetWindowModified(QWidget* self, bool windowModified) {
 	self->setWindowModified(windowModified);
 }
 
-QRect* QWidget_FrameGeometry(QWidget* self) {
-	QRect ret = const_cast<const QWidget*>(self)->frameGeometry();
+QRect* QWidget_FrameGeometry(const QWidget* self) {
+	QRect ret = self->frameGeometry();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRect*>(new QRect(ret));
 }
 
-QRect* QWidget_Geometry(QWidget* self) {
-	const QRect& ret = const_cast<const QWidget*>(self)->geometry();
+QRect* QWidget_Geometry(const QWidget* self) {
+	const QRect& ret = self->geometry();
 	// Cast returned reference into pointer
 	return const_cast<QRect*>(&ret);
 }
 
-QRect* QWidget_NormalGeometry(QWidget* self) {
-	QRect ret = const_cast<const QWidget*>(self)->normalGeometry();
+QRect* QWidget_NormalGeometry(const QWidget* self) {
+	QRect ret = self->normalGeometry();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRect*>(new QRect(ret));
 }
 
-int QWidget_X(QWidget* self) {
-	return const_cast<const QWidget*>(self)->x();
+int QWidget_X(const QWidget* self) {
+	return self->x();
 }
 
-int QWidget_Y(QWidget* self) {
-	return const_cast<const QWidget*>(self)->y();
+int QWidget_Y(const QWidget* self) {
+	return self->y();
 }
 
-QPoint* QWidget_Pos(QWidget* self) {
-	QPoint ret = const_cast<const QWidget*>(self)->pos();
+QPoint* QWidget_Pos(const QWidget* self) {
+	QPoint ret = self->pos();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPoint*>(new QPoint(ret));
 }
 
-QSize* QWidget_FrameSize(QWidget* self) {
-	QSize ret = const_cast<const QWidget*>(self)->frameSize();
+QSize* QWidget_FrameSize(const QWidget* self) {
+	QSize ret = self->frameSize();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
 
-QSize* QWidget_Size(QWidget* self) {
-	QSize ret = const_cast<const QWidget*>(self)->size();
+QSize* QWidget_Size(const QWidget* self) {
+	QSize ret = self->size();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
 
-int QWidget_Width(QWidget* self) {
-	return const_cast<const QWidget*>(self)->width();
+int QWidget_Width(const QWidget* self) {
+	return self->width();
 }
 
-int QWidget_Height(QWidget* self) {
-	return const_cast<const QWidget*>(self)->height();
+int QWidget_Height(const QWidget* self) {
+	return self->height();
 }
 
-QRect* QWidget_Rect(QWidget* self) {
-	QRect ret = const_cast<const QWidget*>(self)->rect();
+QRect* QWidget_Rect(const QWidget* self) {
+	QRect ret = self->rect();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRect*>(new QRect(ret));
 }
 
-QRect* QWidget_ChildrenRect(QWidget* self) {
-	QRect ret = const_cast<const QWidget*>(self)->childrenRect();
+QRect* QWidget_ChildrenRect(const QWidget* self) {
+	QRect ret = self->childrenRect();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRect*>(new QRect(ret));
 }
 
-QRegion* QWidget_ChildrenRegion(QWidget* self) {
-	QRegion ret = const_cast<const QWidget*>(self)->childrenRegion();
+QRegion* QWidget_ChildrenRegion(const QWidget* self) {
+	QRegion ret = self->childrenRegion();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRegion*>(new QRegion(ret));
 }
 
-QSize* QWidget_MinimumSize(QWidget* self) {
-	QSize ret = const_cast<const QWidget*>(self)->minimumSize();
+QSize* QWidget_MinimumSize(const QWidget* self) {
+	QSize ret = self->minimumSize();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
 
-QSize* QWidget_MaximumSize(QWidget* self) {
-	QSize ret = const_cast<const QWidget*>(self)->maximumSize();
+QSize* QWidget_MaximumSize(const QWidget* self) {
+	QSize ret = self->maximumSize();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
 
-int QWidget_MinimumWidth(QWidget* self) {
-	return const_cast<const QWidget*>(self)->minimumWidth();
+int QWidget_MinimumWidth(const QWidget* self) {
+	return self->minimumWidth();
 }
 
-int QWidget_MinimumHeight(QWidget* self) {
-	return const_cast<const QWidget*>(self)->minimumHeight();
+int QWidget_MinimumHeight(const QWidget* self) {
+	return self->minimumHeight();
 }
 
-int QWidget_MaximumWidth(QWidget* self) {
-	return const_cast<const QWidget*>(self)->maximumWidth();
+int QWidget_MaximumWidth(const QWidget* self) {
+	return self->maximumWidth();
 }
 
-int QWidget_MaximumHeight(QWidget* self) {
-	return const_cast<const QWidget*>(self)->maximumHeight();
+int QWidget_MaximumHeight(const QWidget* self) {
+	return self->maximumHeight();
 }
 
 void QWidget_SetMinimumSize(QWidget* self, QSize* minimumSize) {
@@ -291,8 +291,8 @@ void QWidget_SetMaximumHeight(QWidget* self, int maxh) {
 	self->setMaximumHeight(static_cast<int>(maxh));
 }
 
-QSize* QWidget_SizeIncrement(QWidget* self) {
-	QSize ret = const_cast<const QWidget*>(self)->sizeIncrement();
+QSize* QWidget_SizeIncrement(const QWidget* self) {
+	QSize ret = self->sizeIncrement();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
@@ -305,8 +305,8 @@ void QWidget_SetSizeIncrement2(QWidget* self, int w, int h) {
 	self->setSizeIncrement(static_cast<int>(w), static_cast<int>(h));
 }
 
-QSize* QWidget_BaseSize(QWidget* self) {
-	QSize ret = const_cast<const QWidget*>(self)->baseSize();
+QSize* QWidget_BaseSize(const QWidget* self) {
+	QSize ret = self->baseSize();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
@@ -335,56 +335,56 @@ void QWidget_SetFixedHeight(QWidget* self, int h) {
 	self->setFixedHeight(static_cast<int>(h));
 }
 
-QPoint* QWidget_MapToGlobal(QWidget* self, QPoint* param1) {
-	QPoint ret = const_cast<const QWidget*>(self)->mapToGlobal(*param1);
+QPoint* QWidget_MapToGlobal(const QWidget* self, QPoint* param1) {
+	QPoint ret = self->mapToGlobal(*param1);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPoint*>(new QPoint(ret));
 }
 
-QPoint* QWidget_MapFromGlobal(QWidget* self, QPoint* param1) {
-	QPoint ret = const_cast<const QWidget*>(self)->mapFromGlobal(*param1);
+QPoint* QWidget_MapFromGlobal(const QWidget* self, QPoint* param1) {
+	QPoint ret = self->mapFromGlobal(*param1);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPoint*>(new QPoint(ret));
 }
 
-QPoint* QWidget_MapToParent(QWidget* self, QPoint* param1) {
-	QPoint ret = const_cast<const QWidget*>(self)->mapToParent(*param1);
+QPoint* QWidget_MapToParent(const QWidget* self, QPoint* param1) {
+	QPoint ret = self->mapToParent(*param1);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPoint*>(new QPoint(ret));
 }
 
-QPoint* QWidget_MapFromParent(QWidget* self, QPoint* param1) {
-	QPoint ret = const_cast<const QWidget*>(self)->mapFromParent(*param1);
+QPoint* QWidget_MapFromParent(const QWidget* self, QPoint* param1) {
+	QPoint ret = self->mapFromParent(*param1);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPoint*>(new QPoint(ret));
 }
 
-QPoint* QWidget_MapTo(QWidget* self, QWidget* param1, QPoint* param2) {
-	QPoint ret = const_cast<const QWidget*>(self)->mapTo(param1, *param2);
+QPoint* QWidget_MapTo(const QWidget* self, QWidget* param1, QPoint* param2) {
+	QPoint ret = self->mapTo(param1, *param2);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPoint*>(new QPoint(ret));
 }
 
-QPoint* QWidget_MapFrom(QWidget* self, QWidget* param1, QPoint* param2) {
-	QPoint ret = const_cast<const QWidget*>(self)->mapFrom(param1, *param2);
+QPoint* QWidget_MapFrom(const QWidget* self, QWidget* param1, QPoint* param2) {
+	QPoint ret = self->mapFrom(param1, *param2);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPoint*>(new QPoint(ret));
 }
 
-QWidget* QWidget_Window(QWidget* self) {
-	return const_cast<const QWidget*>(self)->window();
+QWidget* QWidget_Window(const QWidget* self) {
+	return self->window();
 }
 
-QWidget* QWidget_NativeParentWidget(QWidget* self) {
-	return const_cast<const QWidget*>(self)->nativeParentWidget();
+QWidget* QWidget_NativeParentWidget(const QWidget* self) {
+	return self->nativeParentWidget();
 }
 
-QWidget* QWidget_TopLevelWidget(QWidget* self) {
-	return const_cast<const QWidget*>(self)->topLevelWidget();
+QWidget* QWidget_TopLevelWidget(const QWidget* self) {
+	return self->topLevelWidget();
 }
 
-QPalette* QWidget_Palette(QWidget* self) {
-	const QPalette& ret = const_cast<const QWidget*>(self)->palette();
+QPalette* QWidget_Palette(const QWidget* self) {
+	const QPalette& ret = self->palette();
 	// Cast returned reference into pointer
 	return const_cast<QPalette*>(&ret);
 }
@@ -397,8 +397,8 @@ void QWidget_SetBackgroundRole(QWidget* self, uintptr_t backgroundRole) {
 	self->setBackgroundRole(static_cast<QPalette::ColorRole>(backgroundRole));
 }
 
-uintptr_t QWidget_BackgroundRole(QWidget* self) {
-	QPalette::ColorRole ret = const_cast<const QWidget*>(self)->backgroundRole();
+uintptr_t QWidget_BackgroundRole(const QWidget* self) {
+	QPalette::ColorRole ret = self->backgroundRole();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -406,13 +406,13 @@ void QWidget_SetForegroundRole(QWidget* self, uintptr_t foregroundRole) {
 	self->setForegroundRole(static_cast<QPalette::ColorRole>(foregroundRole));
 }
 
-uintptr_t QWidget_ForegroundRole(QWidget* self) {
-	QPalette::ColorRole ret = const_cast<const QWidget*>(self)->foregroundRole();
+uintptr_t QWidget_ForegroundRole(const QWidget* self) {
+	QPalette::ColorRole ret = self->foregroundRole();
 	return static_cast<uintptr_t>(ret);
 }
 
-QFont* QWidget_Font(QWidget* self) {
-	const QFont& ret = const_cast<const QWidget*>(self)->font();
+QFont* QWidget_Font(const QWidget* self) {
+	const QFont& ret = self->font();
 	// Cast returned reference into pointer
 	return const_cast<QFont*>(&ret);
 }
@@ -421,20 +421,20 @@ void QWidget_SetFont(QWidget* self, QFont* font) {
 	self->setFont(*font);
 }
 
-QFontMetrics* QWidget_FontMetrics(QWidget* self) {
-	QFontMetrics ret = const_cast<const QWidget*>(self)->fontMetrics();
+QFontMetrics* QWidget_FontMetrics(const QWidget* self) {
+	QFontMetrics ret = self->fontMetrics();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QFontMetrics*>(new QFontMetrics(ret));
 }
 
-QFontInfo* QWidget_FontInfo(QWidget* self) {
-	QFontInfo ret = const_cast<const QWidget*>(self)->fontInfo();
+QFontInfo* QWidget_FontInfo(const QWidget* self) {
+	QFontInfo ret = self->fontInfo();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QFontInfo*>(new QFontInfo(ret));
 }
 
-QCursor* QWidget_Cursor(QWidget* self) {
-	QCursor ret = const_cast<const QWidget*>(self)->cursor();
+QCursor* QWidget_Cursor(const QWidget* self) {
+	QCursor ret = self->cursor();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QCursor*>(new QCursor(ret));
 }
@@ -451,20 +451,20 @@ void QWidget_SetMouseTracking(QWidget* self, bool enable) {
 	self->setMouseTracking(enable);
 }
 
-bool QWidget_HasMouseTracking(QWidget* self) {
-	return const_cast<const QWidget*>(self)->hasMouseTracking();
+bool QWidget_HasMouseTracking(const QWidget* self) {
+	return self->hasMouseTracking();
 }
 
-bool QWidget_UnderMouse(QWidget* self) {
-	return const_cast<const QWidget*>(self)->underMouse();
+bool QWidget_UnderMouse(const QWidget* self) {
+	return self->underMouse();
 }
 
 void QWidget_SetTabletTracking(QWidget* self, bool enable) {
 	self->setTabletTracking(enable);
 }
 
-bool QWidget_HasTabletTracking(QWidget* self) {
-	return const_cast<const QWidget*>(self)->hasTabletTracking();
+bool QWidget_HasTabletTracking(const QWidget* self) {
+	return self->hasTabletTracking();
 }
 
 void QWidget_SetMask(QWidget* self, QBitmap* mask) {
@@ -475,8 +475,8 @@ void QWidget_SetMaskWithMask(QWidget* self, QRegion* mask) {
 	self->setMask(*mask);
 }
 
-QRegion* QWidget_Mask(QWidget* self) {
-	QRegion ret = const_cast<const QWidget*>(self)->mask();
+QRegion* QWidget_Mask(const QWidget* self) {
+	QRegion ret = self->mask();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRegion*>(new QRegion(ret));
 }
@@ -499,8 +499,8 @@ QPixmap* QWidget_Grab(QWidget* self) {
 	return static_cast<QPixmap*>(new QPixmap(ret));
 }
 
-QGraphicsEffect* QWidget_GraphicsEffect(QWidget* self) {
-	return const_cast<const QWidget*>(self)->graphicsEffect();
+QGraphicsEffect* QWidget_GraphicsEffect(const QWidget* self) {
+	return self->graphicsEffect();
 }
 
 void QWidget_SetGraphicsEffect(QWidget* self, QGraphicsEffect* effect) {
@@ -525,8 +525,8 @@ void QWidget_SetStyleSheet(QWidget* self, const char* styleSheet, size_t styleSh
 	self->setStyleSheet(styleSheet_QString);
 }
 
-void QWidget_StyleSheet(QWidget* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QWidget*>(self)->styleSheet();
+void QWidget_StyleSheet(const QWidget* self, char** _out, int* _out_Strlen) {
+	QString ret = self->styleSheet();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -534,8 +534,8 @@ void QWidget_StyleSheet(QWidget* self, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QWidget_WindowTitle(QWidget* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QWidget*>(self)->windowTitle();
+void QWidget_WindowTitle(const QWidget* self, char** _out, int* _out_Strlen) {
+	QString ret = self->windowTitle();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -547,8 +547,8 @@ void QWidget_SetWindowIcon(QWidget* self, QIcon* icon) {
 	self->setWindowIcon(*icon);
 }
 
-QIcon* QWidget_WindowIcon(QWidget* self) {
-	QIcon ret = const_cast<const QWidget*>(self)->windowIcon();
+QIcon* QWidget_WindowIcon(const QWidget* self) {
+	QIcon ret = self->windowIcon();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QIcon*>(new QIcon(ret));
 }
@@ -558,8 +558,8 @@ void QWidget_SetWindowIconText(QWidget* self, const char* windowIconText, size_t
 	self->setWindowIconText(windowIconText_QString);
 }
 
-void QWidget_WindowIconText(QWidget* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QWidget*>(self)->windowIconText();
+void QWidget_WindowIconText(const QWidget* self, char** _out, int* _out_Strlen) {
+	QString ret = self->windowIconText();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -572,8 +572,8 @@ void QWidget_SetWindowRole(QWidget* self, const char* windowRole, size_t windowR
 	self->setWindowRole(windowRole_QString);
 }
 
-void QWidget_WindowRole(QWidget* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QWidget*>(self)->windowRole();
+void QWidget_WindowRole(const QWidget* self, char** _out, int* _out_Strlen) {
+	QString ret = self->windowRole();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -586,8 +586,8 @@ void QWidget_SetWindowFilePath(QWidget* self, const char* filePath, size_t fileP
 	self->setWindowFilePath(filePath_QString);
 }
 
-void QWidget_WindowFilePath(QWidget* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QWidget*>(self)->windowFilePath();
+void QWidget_WindowFilePath(const QWidget* self, char** _out, int* _out_Strlen) {
+	QString ret = self->windowFilePath();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -599,12 +599,12 @@ void QWidget_SetWindowOpacity(QWidget* self, double level) {
 	self->setWindowOpacity(static_cast<qreal>(level));
 }
 
-double QWidget_WindowOpacity(QWidget* self) {
-	return const_cast<const QWidget*>(self)->windowOpacity();
+double QWidget_WindowOpacity(const QWidget* self) {
+	return self->windowOpacity();
 }
 
-bool QWidget_IsWindowModified(QWidget* self) {
-	return const_cast<const QWidget*>(self)->isWindowModified();
+bool QWidget_IsWindowModified(const QWidget* self) {
+	return self->isWindowModified();
 }
 
 void QWidget_SetToolTip(QWidget* self, const char* toolTip, size_t toolTip_Strlen) {
@@ -612,8 +612,8 @@ void QWidget_SetToolTip(QWidget* self, const char* toolTip, size_t toolTip_Strle
 	self->setToolTip(toolTip_QString);
 }
 
-void QWidget_ToolTip(QWidget* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QWidget*>(self)->toolTip();
+void QWidget_ToolTip(const QWidget* self, char** _out, int* _out_Strlen) {
+	QString ret = self->toolTip();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -625,8 +625,8 @@ void QWidget_SetToolTipDuration(QWidget* self, int msec) {
 	self->setToolTipDuration(static_cast<int>(msec));
 }
 
-int QWidget_ToolTipDuration(QWidget* self) {
-	return const_cast<const QWidget*>(self)->toolTipDuration();
+int QWidget_ToolTipDuration(const QWidget* self) {
+	return self->toolTipDuration();
 }
 
 void QWidget_SetStatusTip(QWidget* self, const char* statusTip, size_t statusTip_Strlen) {
@@ -634,8 +634,8 @@ void QWidget_SetStatusTip(QWidget* self, const char* statusTip, size_t statusTip
 	self->setStatusTip(statusTip_QString);
 }
 
-void QWidget_StatusTip(QWidget* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QWidget*>(self)->statusTip();
+void QWidget_StatusTip(const QWidget* self, char** _out, int* _out_Strlen) {
+	QString ret = self->statusTip();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -648,8 +648,8 @@ void QWidget_SetWhatsThis(QWidget* self, const char* whatsThis, size_t whatsThis
 	self->setWhatsThis(whatsThis_QString);
 }
 
-void QWidget_WhatsThis(QWidget* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QWidget*>(self)->whatsThis();
+void QWidget_WhatsThis(const QWidget* self, char** _out, int* _out_Strlen) {
+	QString ret = self->whatsThis();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -657,8 +657,8 @@ void QWidget_WhatsThis(QWidget* self, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QWidget_AccessibleName(QWidget* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QWidget*>(self)->accessibleName();
+void QWidget_AccessibleName(const QWidget* self, char** _out, int* _out_Strlen) {
+	QString ret = self->accessibleName();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -671,8 +671,8 @@ void QWidget_SetAccessibleName(QWidget* self, const char* name, size_t name_Strl
 	self->setAccessibleName(name_QString);
 }
 
-void QWidget_AccessibleDescription(QWidget* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QWidget*>(self)->accessibleDescription();
+void QWidget_AccessibleDescription(const QWidget* self, char** _out, int* _out_Strlen) {
+	QString ret = self->accessibleDescription();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -689,8 +689,8 @@ void QWidget_SetLayoutDirection(QWidget* self, uintptr_t direction) {
 	self->setLayoutDirection(static_cast<Qt::LayoutDirection>(direction));
 }
 
-uintptr_t QWidget_LayoutDirection(QWidget* self) {
-	Qt::LayoutDirection ret = const_cast<const QWidget*>(self)->layoutDirection();
+uintptr_t QWidget_LayoutDirection(const QWidget* self) {
+	Qt::LayoutDirection ret = self->layoutDirection();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -702,8 +702,8 @@ void QWidget_SetLocale(QWidget* self, QLocale* locale) {
 	self->setLocale(*locale);
 }
 
-QLocale* QWidget_Locale(QWidget* self) {
-	QLocale ret = const_cast<const QWidget*>(self)->locale();
+QLocale* QWidget_Locale(const QWidget* self) {
+	QLocale ret = self->locale();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QLocale*>(new QLocale(ret));
 }
@@ -712,20 +712,20 @@ void QWidget_UnsetLocale(QWidget* self) {
 	self->unsetLocale();
 }
 
-bool QWidget_IsRightToLeft(QWidget* self) {
-	return const_cast<const QWidget*>(self)->isRightToLeft();
+bool QWidget_IsRightToLeft(const QWidget* self) {
+	return self->isRightToLeft();
 }
 
-bool QWidget_IsLeftToRight(QWidget* self) {
-	return const_cast<const QWidget*>(self)->isLeftToRight();
+bool QWidget_IsLeftToRight(const QWidget* self) {
+	return self->isLeftToRight();
 }
 
 void QWidget_SetFocus(QWidget* self) {
 	self->setFocus();
 }
 
-bool QWidget_IsActiveWindow(QWidget* self) {
-	return const_cast<const QWidget*>(self)->isActiveWindow();
+bool QWidget_IsActiveWindow(const QWidget* self) {
+	return self->isActiveWindow();
 }
 
 void QWidget_ActivateWindow(QWidget* self) {
@@ -740,8 +740,8 @@ void QWidget_SetFocusWithReason(QWidget* self, uintptr_t reason) {
 	self->setFocus(static_cast<Qt::FocusReason>(reason));
 }
 
-uintptr_t QWidget_FocusPolicy(QWidget* self) {
-	Qt::FocusPolicy ret = const_cast<const QWidget*>(self)->focusPolicy();
+uintptr_t QWidget_FocusPolicy(const QWidget* self) {
+	Qt::FocusPolicy ret = self->focusPolicy();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -749,8 +749,8 @@ void QWidget_SetFocusPolicy(QWidget* self, uintptr_t policy) {
 	self->setFocusPolicy(static_cast<Qt::FocusPolicy>(policy));
 }
 
-bool QWidget_HasFocus(QWidget* self) {
-	return const_cast<const QWidget*>(self)->hasFocus();
+bool QWidget_HasFocus(const QWidget* self) {
+	return self->hasFocus();
 }
 
 void QWidget_SetTabOrder(QWidget* param1, QWidget* param2) {
@@ -761,12 +761,12 @@ void QWidget_SetFocusProxy(QWidget* self, QWidget* focusProxy) {
 	self->setFocusProxy(focusProxy);
 }
 
-QWidget* QWidget_FocusProxy(QWidget* self) {
-	return const_cast<const QWidget*>(self)->focusProxy();
+QWidget* QWidget_FocusProxy(const QWidget* self) {
+	return self->focusProxy();
 }
 
-uintptr_t QWidget_ContextMenuPolicy(QWidget* self) {
-	Qt::ContextMenuPolicy ret = const_cast<const QWidget*>(self)->contextMenuPolicy();
+uintptr_t QWidget_ContextMenuPolicy(const QWidget* self) {
+	Qt::ContextMenuPolicy ret = self->contextMenuPolicy();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -818,16 +818,16 @@ QWidget* QWidget_KeyboardGrabber() {
 	return QWidget::keyboardGrabber();
 }
 
-bool QWidget_UpdatesEnabled(QWidget* self) {
-	return const_cast<const QWidget*>(self)->updatesEnabled();
+bool QWidget_UpdatesEnabled(const QWidget* self) {
+	return self->updatesEnabled();
 }
 
 void QWidget_SetUpdatesEnabled(QWidget* self, bool enable) {
 	self->setUpdatesEnabled(enable);
 }
 
-QGraphicsProxyWidget* QWidget_GraphicsProxyWidget(QWidget* self) {
-	return const_cast<const QWidget*>(self)->graphicsProxyWidget();
+QGraphicsProxyWidget* QWidget_GraphicsProxyWidget(const QWidget* self) {
+	return self->graphicsProxyWidget();
 }
 
 void QWidget_Update(QWidget* self) {
@@ -934,8 +934,8 @@ void QWidget_SetGeometryWithGeometry(QWidget* self, QRect* geometry) {
 	self->setGeometry(*geometry);
 }
 
-QByteArray* QWidget_SaveGeometry(QWidget* self) {
-	QByteArray ret = const_cast<const QWidget*>(self)->saveGeometry();
+QByteArray* QWidget_SaveGeometry(const QWidget* self) {
+	QByteArray ret = self->saveGeometry();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QByteArray*>(new QByteArray(ret));
 }
@@ -948,32 +948,32 @@ void QWidget_AdjustSize(QWidget* self) {
 	self->adjustSize();
 }
 
-bool QWidget_IsVisible(QWidget* self) {
-	return const_cast<const QWidget*>(self)->isVisible();
+bool QWidget_IsVisible(const QWidget* self) {
+	return self->isVisible();
 }
 
-bool QWidget_IsVisibleTo(QWidget* self, QWidget* param1) {
-	return const_cast<const QWidget*>(self)->isVisibleTo(param1);
+bool QWidget_IsVisibleTo(const QWidget* self, QWidget* param1) {
+	return self->isVisibleTo(param1);
 }
 
-bool QWidget_IsHidden(QWidget* self) {
-	return const_cast<const QWidget*>(self)->isHidden();
+bool QWidget_IsHidden(const QWidget* self) {
+	return self->isHidden();
 }
 
-bool QWidget_IsMinimized(QWidget* self) {
-	return const_cast<const QWidget*>(self)->isMinimized();
+bool QWidget_IsMinimized(const QWidget* self) {
+	return self->isMinimized();
 }
 
-bool QWidget_IsMaximized(QWidget* self) {
-	return const_cast<const QWidget*>(self)->isMaximized();
+bool QWidget_IsMaximized(const QWidget* self) {
+	return self->isMaximized();
 }
 
-bool QWidget_IsFullScreen(QWidget* self) {
-	return const_cast<const QWidget*>(self)->isFullScreen();
+bool QWidget_IsFullScreen(const QWidget* self) {
+	return self->isFullScreen();
 }
 
-int QWidget_WindowState(QWidget* self) {
-	Qt::WindowStates ret = const_cast<const QWidget*>(self)->windowState();
+int QWidget_WindowState(const QWidget* self) {
+	Qt::WindowStates ret = self->windowState();
 	return static_cast<int>(ret);
 }
 
@@ -985,20 +985,20 @@ void QWidget_OverrideWindowState(QWidget* self, int state) {
 	self->overrideWindowState(static_cast<Qt::WindowStates>(state));
 }
 
-QSize* QWidget_SizeHint(QWidget* self) {
-	QSize ret = const_cast<const QWidget*>(self)->sizeHint();
+QSize* QWidget_SizeHint(const QWidget* self) {
+	QSize ret = self->sizeHint();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
 
-QSize* QWidget_MinimumSizeHint(QWidget* self) {
-	QSize ret = const_cast<const QWidget*>(self)->minimumSizeHint();
+QSize* QWidget_MinimumSizeHint(const QWidget* self) {
+	QSize ret = self->minimumSizeHint();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
 
-QSizePolicy* QWidget_SizePolicy(QWidget* self) {
-	QSizePolicy ret = const_cast<const QWidget*>(self)->sizePolicy();
+QSizePolicy* QWidget_SizePolicy(const QWidget* self) {
+	QSizePolicy ret = self->sizePolicy();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSizePolicy*>(new QSizePolicy(ret));
 }
@@ -1011,16 +1011,16 @@ void QWidget_SetSizePolicy2(QWidget* self, uintptr_t horizontal, uintptr_t verti
 	self->setSizePolicy(static_cast<QSizePolicy::Policy>(horizontal), static_cast<QSizePolicy::Policy>(vertical));
 }
 
-int QWidget_HeightForWidth(QWidget* self, int param1) {
-	return const_cast<const QWidget*>(self)->heightForWidth(static_cast<int>(param1));
+int QWidget_HeightForWidth(const QWidget* self, int param1) {
+	return self->heightForWidth(static_cast<int>(param1));
 }
 
-bool QWidget_HasHeightForWidth(QWidget* self) {
-	return const_cast<const QWidget*>(self)->hasHeightForWidth();
+bool QWidget_HasHeightForWidth(const QWidget* self) {
+	return self->hasHeightForWidth();
 }
 
-QRegion* QWidget_VisibleRegion(QWidget* self) {
-	QRegion ret = const_cast<const QWidget*>(self)->visibleRegion();
+QRegion* QWidget_VisibleRegion(const QWidget* self) {
+	QRegion ret = self->visibleRegion();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRegion*>(new QRegion(ret));
 }
@@ -1033,24 +1033,24 @@ void QWidget_SetContentsMarginsWithMargins(QWidget* self, QMargins* margins) {
 	self->setContentsMargins(*margins);
 }
 
-void QWidget_GetContentsMargins(QWidget* self, int* left, int* top, int* right, int* bottom) {
-	const_cast<const QWidget*>(self)->getContentsMargins(static_cast<int*>(left), static_cast<int*>(top), static_cast<int*>(right), static_cast<int*>(bottom));
+void QWidget_GetContentsMargins(const QWidget* self, int* left, int* top, int* right, int* bottom) {
+	self->getContentsMargins(static_cast<int*>(left), static_cast<int*>(top), static_cast<int*>(right), static_cast<int*>(bottom));
 }
 
-QMargins* QWidget_ContentsMargins(QWidget* self) {
-	QMargins ret = const_cast<const QWidget*>(self)->contentsMargins();
+QMargins* QWidget_ContentsMargins(const QWidget* self) {
+	QMargins ret = self->contentsMargins();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QMargins*>(new QMargins(ret));
 }
 
-QRect* QWidget_ContentsRect(QWidget* self) {
-	QRect ret = const_cast<const QWidget*>(self)->contentsRect();
+QRect* QWidget_ContentsRect(const QWidget* self) {
+	QRect ret = self->contentsRect();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRect*>(new QRect(ret));
 }
 
-QLayout* QWidget_Layout(QWidget* self) {
-	return const_cast<const QWidget*>(self)->layout();
+QLayout* QWidget_Layout(const QWidget* self) {
+	return self->layout();
 }
 
 void QWidget_SetLayout(QWidget* self, QLayout* layout) {
@@ -1077,20 +1077,20 @@ void QWidget_Scroll2(QWidget* self, int dx, int dy, QRect* param3) {
 	self->scroll(static_cast<int>(dx), static_cast<int>(dy), *param3);
 }
 
-QWidget* QWidget_FocusWidget(QWidget* self) {
-	return const_cast<const QWidget*>(self)->focusWidget();
+QWidget* QWidget_FocusWidget(const QWidget* self) {
+	return self->focusWidget();
 }
 
-QWidget* QWidget_NextInFocusChain(QWidget* self) {
-	return const_cast<const QWidget*>(self)->nextInFocusChain();
+QWidget* QWidget_NextInFocusChain(const QWidget* self) {
+	return self->nextInFocusChain();
 }
 
-QWidget* QWidget_PreviousInFocusChain(QWidget* self) {
-	return const_cast<const QWidget*>(self)->previousInFocusChain();
+QWidget* QWidget_PreviousInFocusChain(const QWidget* self) {
+	return self->previousInFocusChain();
 }
 
-bool QWidget_AcceptDrops(QWidget* self) {
-	return const_cast<const QWidget*>(self)->acceptDrops();
+bool QWidget_AcceptDrops(const QWidget* self) {
+	return self->acceptDrops();
 }
 
 void QWidget_SetAcceptDrops(QWidget* self, bool on) {
@@ -1127,8 +1127,8 @@ void QWidget_RemoveAction(QWidget* self, QAction* action) {
 	self->removeAction(action);
 }
 
-void QWidget_Actions(QWidget* self, QAction*** _out, size_t* _out_len) {
-	QList<QAction*> ret = const_cast<const QWidget*>(self)->actions();
+void QWidget_Actions(const QWidget* self, QAction*** _out, size_t* _out_len) {
+	QList<QAction*> ret = self->actions();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QAction** __out = static_cast<QAction**>(malloc(sizeof(QAction*) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {
@@ -1138,16 +1138,16 @@ void QWidget_Actions(QWidget* self, QAction*** _out, size_t* _out_len) {
 	*_out_len = ret.length();
 }
 
-QWidget* QWidget_ParentWidget(QWidget* self) {
-	return const_cast<const QWidget*>(self)->parentWidget();
+QWidget* QWidget_ParentWidget(const QWidget* self) {
+	return self->parentWidget();
 }
 
 void QWidget_SetWindowFlags(QWidget* self, int typeVal) {
 	self->setWindowFlags(static_cast<Qt::WindowFlags>(typeVal));
 }
 
-int QWidget_WindowFlags(QWidget* self) {
-	Qt::WindowFlags ret = const_cast<const QWidget*>(self)->windowFlags();
+int QWidget_WindowFlags(const QWidget* self) {
+	Qt::WindowFlags ret = self->windowFlags();
 	return static_cast<int>(ret);
 }
 
@@ -1159,8 +1159,8 @@ void QWidget_OverrideWindowFlags(QWidget* self, int typeVal) {
 	self->overrideWindowFlags(static_cast<Qt::WindowFlags>(typeVal));
 }
 
-uintptr_t QWidget_WindowType(QWidget* self) {
-	Qt::WindowType ret = const_cast<const QWidget*>(self)->windowType();
+uintptr_t QWidget_WindowType(const QWidget* self) {
+	Qt::WindowType ret = self->windowType();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -1168,52 +1168,52 @@ QWidget* QWidget_Find(uintptr_t param1) {
 	return QWidget::find(static_cast<WId>(param1));
 }
 
-QWidget* QWidget_ChildAt(QWidget* self, int x, int y) {
-	return const_cast<const QWidget*>(self)->childAt(static_cast<int>(x), static_cast<int>(y));
+QWidget* QWidget_ChildAt(const QWidget* self, int x, int y) {
+	return self->childAt(static_cast<int>(x), static_cast<int>(y));
 }
 
-QWidget* QWidget_ChildAtWithQPoint(QWidget* self, QPoint* p) {
-	return const_cast<const QWidget*>(self)->childAt(*p);
+QWidget* QWidget_ChildAtWithQPoint(const QWidget* self, QPoint* p) {
+	return self->childAt(*p);
 }
 
 void QWidget_SetAttribute(QWidget* self, uintptr_t param1) {
 	self->setAttribute(static_cast<Qt::WidgetAttribute>(param1));
 }
 
-bool QWidget_TestAttribute(QWidget* self, uintptr_t param1) {
-	return const_cast<const QWidget*>(self)->testAttribute(static_cast<Qt::WidgetAttribute>(param1));
+bool QWidget_TestAttribute(const QWidget* self, uintptr_t param1) {
+	return self->testAttribute(static_cast<Qt::WidgetAttribute>(param1));
 }
 
-QPaintEngine* QWidget_PaintEngine(QWidget* self) {
-	return const_cast<const QWidget*>(self)->paintEngine();
+QPaintEngine* QWidget_PaintEngine(const QWidget* self) {
+	return self->paintEngine();
 }
 
-void QWidget_EnsurePolished(QWidget* self) {
-	const_cast<const QWidget*>(self)->ensurePolished();
+void QWidget_EnsurePolished(const QWidget* self) {
+	self->ensurePolished();
 }
 
-bool QWidget_IsAncestorOf(QWidget* self, QWidget* child) {
-	return const_cast<const QWidget*>(self)->isAncestorOf(child);
+bool QWidget_IsAncestorOf(const QWidget* self, QWidget* child) {
+	return self->isAncestorOf(child);
 }
 
-bool QWidget_AutoFillBackground(QWidget* self) {
-	return const_cast<const QWidget*>(self)->autoFillBackground();
+bool QWidget_AutoFillBackground(const QWidget* self) {
+	return self->autoFillBackground();
 }
 
 void QWidget_SetAutoFillBackground(QWidget* self, bool enabled) {
 	self->setAutoFillBackground(enabled);
 }
 
-QBackingStore* QWidget_BackingStore(QWidget* self) {
-	return const_cast<const QWidget*>(self)->backingStore();
+QBackingStore* QWidget_BackingStore(const QWidget* self) {
+	return self->backingStore();
 }
 
-QWindow* QWidget_WindowHandle(QWidget* self) {
-	return const_cast<const QWidget*>(self)->windowHandle();
+QWindow* QWidget_WindowHandle(const QWidget* self) {
+	return self->windowHandle();
 }
 
-QScreen* QWidget_Screen(QWidget* self) {
-	return const_cast<const QWidget*>(self)->screen();
+QScreen* QWidget_Screen(const QWidget* self) {
+	return self->screen();
 }
 
 QWidget* QWidget_CreateWindowContainer(QWindow* window) {
@@ -1262,14 +1262,14 @@ void QWidget_connect_CustomContextMenuRequested(QWidget* self, void* slot) {
 	});
 }
 
-QVariant* QWidget_InputMethodQuery(QWidget* self, uintptr_t param1) {
-	QVariant ret = const_cast<const QWidget*>(self)->inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1));
+QVariant* QWidget_InputMethodQuery(const QWidget* self, uintptr_t param1) {
+	QVariant ret = self->inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVariant*>(new QVariant(ret));
 }
 
-int QWidget_InputMethodHints(QWidget* self) {
-	Qt::InputMethodHints ret = const_cast<const QWidget*>(self)->inputMethodHints();
+int QWidget_InputMethodHints(const QWidget* self) {
+	Qt::InputMethodHints ret = self->inputMethodHints();
 	return static_cast<int>(ret);
 }
 

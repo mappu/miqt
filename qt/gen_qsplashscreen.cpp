@@ -51,8 +51,8 @@ QSplashScreen* QSplashScreen_new9(QWidget* parent, QPixmap* pixmap, int f) {
 	return new QSplashScreen(parent, *pixmap, static_cast<Qt::WindowFlags>(f));
 }
 
-QMetaObject* QSplashScreen_MetaObject(QSplashScreen* self) {
-	return (QMetaObject*) const_cast<const QSplashScreen*>(self)->metaObject();
+QMetaObject* QSplashScreen_MetaObject(const QSplashScreen* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QSplashScreen_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -77,8 +77,8 @@ void QSplashScreen_SetPixmap(QSplashScreen* self, QPixmap* pixmap) {
 	self->setPixmap(*pixmap);
 }
 
-QPixmap* QSplashScreen_Pixmap(QSplashScreen* self) {
-	QPixmap ret = const_cast<const QSplashScreen*>(self)->pixmap();
+QPixmap* QSplashScreen_Pixmap(const QSplashScreen* self) {
+	QPixmap ret = self->pixmap();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPixmap*>(new QPixmap(ret));
 }
@@ -91,8 +91,8 @@ void QSplashScreen_Repaint(QSplashScreen* self) {
 	self->repaint();
 }
 
-void QSplashScreen_Message(QSplashScreen* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QSplashScreen*>(self)->message();
+void QSplashScreen_Message(const QSplashScreen* self, char** _out, int* _out_Strlen) {
+	QString ret = self->message();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));

@@ -79,20 +79,20 @@ QPixmapCache__Key* QPixmapCache__Key_new2(QPixmapCache__Key* other) {
 	return new QPixmapCache::Key(*other);
 }
 
-bool QPixmapCache__Key_OperatorEqual(QPixmapCache__Key* self, QPixmapCache__Key* key) {
-	return const_cast<const QPixmapCache::Key*>(self)->operator==(*key);
+bool QPixmapCache__Key_OperatorEqual(const QPixmapCache__Key* self, QPixmapCache__Key* key) {
+	return self->operator==(*key);
 }
 
-bool QPixmapCache__Key_OperatorNotEqual(QPixmapCache__Key* self, QPixmapCache__Key* key) {
-	return const_cast<const QPixmapCache::Key*>(self)->operator!=(*key);
+bool QPixmapCache__Key_OperatorNotEqual(const QPixmapCache__Key* self, QPixmapCache__Key* key) {
+	return self->operator!=(*key);
 }
 
 void QPixmapCache__Key_Swap(QPixmapCache__Key* self, QPixmapCache__Key* other) {
 	self->swap(*other);
 }
 
-bool QPixmapCache__Key_IsValid(QPixmapCache__Key* self) {
-	return const_cast<const QPixmapCache::Key*>(self)->isValid();
+bool QPixmapCache__Key_IsValid(const QPixmapCache__Key* self) {
+	return self->isValid();
 }
 
 void QPixmapCache__Key_Delete(QPixmapCache__Key* self) {

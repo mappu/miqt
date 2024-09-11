@@ -41,8 +41,8 @@ QStringListModel* QStringListModel_new4(char** strings, uint64_t* strings_Length
 	return new QStringListModel(strings_QList, parent);
 }
 
-QMetaObject* QStringListModel_MetaObject(QStringListModel* self) {
-	return (QMetaObject*) const_cast<const QStringListModel*>(self)->metaObject();
+QMetaObject* QStringListModel_MetaObject(const QStringListModel* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QStringListModel_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -63,18 +63,18 @@ void QStringListModel_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-int QStringListModel_RowCount(QStringListModel* self) {
-	return const_cast<const QStringListModel*>(self)->rowCount();
+int QStringListModel_RowCount(const QStringListModel* self) {
+	return self->rowCount();
 }
 
-QModelIndex* QStringListModel_Sibling(QStringListModel* self, int row, int column, QModelIndex* idx) {
-	QModelIndex ret = const_cast<const QStringListModel*>(self)->sibling(static_cast<int>(row), static_cast<int>(column), *idx);
+QModelIndex* QStringListModel_Sibling(const QStringListModel* self, int row, int column, QModelIndex* idx) {
+	QModelIndex ret = self->sibling(static_cast<int>(row), static_cast<int>(column), *idx);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QModelIndex*>(new QModelIndex(ret));
 }
 
-QVariant* QStringListModel_Data(QStringListModel* self, QModelIndex* index) {
-	QVariant ret = const_cast<const QStringListModel*>(self)->data(*index);
+QVariant* QStringListModel_Data(const QStringListModel* self, QModelIndex* index) {
+	QVariant ret = self->data(*index);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVariant*>(new QVariant(ret));
 }
@@ -83,8 +83,8 @@ bool QStringListModel_SetData(QStringListModel* self, QModelIndex* index, QVaria
 	return self->setData(*index, *value);
 }
 
-int QStringListModel_Flags(QStringListModel* self, QModelIndex* index) {
-	Qt::ItemFlags ret = const_cast<const QStringListModel*>(self)->flags(*index);
+int QStringListModel_Flags(const QStringListModel* self, QModelIndex* index) {
+	Qt::ItemFlags ret = self->flags(*index);
 	return static_cast<int>(ret);
 }
 
@@ -104,8 +104,8 @@ void QStringListModel_Sort(QStringListModel* self, int column) {
 	self->sort(static_cast<int>(column));
 }
 
-void QStringListModel_StringList(QStringListModel* self, char*** _out, int** _out_Lengths, size_t* _out_len) {
-	QStringList ret = const_cast<const QStringListModel*>(self)->stringList();
+void QStringListModel_StringList(const QStringListModel* self, char*** _out, int** _out_Lengths, size_t* _out_len) {
+	QStringList ret = self->stringList();
 	// Convert QStringList from C++ memory to manually-managed C memory
 	char** __out = static_cast<char**>(malloc(sizeof(char*) * ret.length()));
 	int* __out_Lengths = static_cast<int*>(malloc(sizeof(int) * ret.length()));
@@ -130,8 +130,8 @@ void QStringListModel_SetStringList(QStringListModel* self, char** strings, uint
 	self->setStringList(strings_QList);
 }
 
-int QStringListModel_SupportedDropActions(QStringListModel* self) {
-	Qt::DropActions ret = const_cast<const QStringListModel*>(self)->supportedDropActions();
+int QStringListModel_SupportedDropActions(const QStringListModel* self) {
+	Qt::DropActions ret = self->supportedDropActions();
 	return static_cast<int>(ret);
 }
 
@@ -171,12 +171,12 @@ void QStringListModel_TrUtf83(const char* s, const char* c, int n, char** _out, 
 	*_out_Strlen = b.length();
 }
 
-int QStringListModel_RowCount1(QStringListModel* self, QModelIndex* parent) {
-	return const_cast<const QStringListModel*>(self)->rowCount(*parent);
+int QStringListModel_RowCount1(const QStringListModel* self, QModelIndex* parent) {
+	return self->rowCount(*parent);
 }
 
-QVariant* QStringListModel_Data2(QStringListModel* self, QModelIndex* index, int role) {
-	QVariant ret = const_cast<const QStringListModel*>(self)->data(*index, static_cast<int>(role));
+QVariant* QStringListModel_Data2(const QStringListModel* self, QModelIndex* index, int role) {
+	QVariant ret = self->data(*index, static_cast<int>(role));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVariant*>(new QVariant(ret));
 }

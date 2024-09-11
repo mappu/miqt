@@ -21,8 +21,8 @@ QScrollArea* QScrollArea_new2(QWidget* parent) {
 	return new QScrollArea(parent);
 }
 
-QMetaObject* QScrollArea_MetaObject(QScrollArea* self) {
-	return (QMetaObject*) const_cast<const QScrollArea*>(self)->metaObject();
+QMetaObject* QScrollArea_MetaObject(const QScrollArea* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QScrollArea_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -43,8 +43,8 @@ void QScrollArea_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-QWidget* QScrollArea_Widget(QScrollArea* self) {
-	return const_cast<const QScrollArea*>(self)->widget();
+QWidget* QScrollArea_Widget(const QScrollArea* self) {
+	return self->widget();
 }
 
 void QScrollArea_SetWidget(QScrollArea* self, QWidget* widget) {
@@ -55,16 +55,16 @@ QWidget* QScrollArea_TakeWidget(QScrollArea* self) {
 	return self->takeWidget();
 }
 
-bool QScrollArea_WidgetResizable(QScrollArea* self) {
-	return const_cast<const QScrollArea*>(self)->widgetResizable();
+bool QScrollArea_WidgetResizable(const QScrollArea* self) {
+	return self->widgetResizable();
 }
 
 void QScrollArea_SetWidgetResizable(QScrollArea* self, bool resizable) {
 	self->setWidgetResizable(resizable);
 }
 
-QSize* QScrollArea_SizeHint(QScrollArea* self) {
-	QSize ret = const_cast<const QScrollArea*>(self)->sizeHint();
+QSize* QScrollArea_SizeHint(const QScrollArea* self) {
+	QSize ret = self->sizeHint();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
@@ -73,8 +73,8 @@ bool QScrollArea_FocusNextPrevChild(QScrollArea* self, bool next) {
 	return self->focusNextPrevChild(next);
 }
 
-int QScrollArea_Alignment(QScrollArea* self) {
-	Qt::Alignment ret = const_cast<const QScrollArea*>(self)->alignment();
+int QScrollArea_Alignment(const QScrollArea* self) {
+	Qt::Alignment ret = self->alignment();
 	return static_cast<int>(ret);
 }
 

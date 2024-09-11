@@ -14,24 +14,24 @@ QLoggingCategory* QLoggingCategory_new(const char* category) {
 	return new QLoggingCategory(category);
 }
 
-bool QLoggingCategory_IsDebugEnabled(QLoggingCategory* self) {
-	return const_cast<const QLoggingCategory*>(self)->isDebugEnabled();
+bool QLoggingCategory_IsDebugEnabled(const QLoggingCategory* self) {
+	return self->isDebugEnabled();
 }
 
-bool QLoggingCategory_IsInfoEnabled(QLoggingCategory* self) {
-	return const_cast<const QLoggingCategory*>(self)->isInfoEnabled();
+bool QLoggingCategory_IsInfoEnabled(const QLoggingCategory* self) {
+	return self->isInfoEnabled();
 }
 
-bool QLoggingCategory_IsWarningEnabled(QLoggingCategory* self) {
-	return const_cast<const QLoggingCategory*>(self)->isWarningEnabled();
+bool QLoggingCategory_IsWarningEnabled(const QLoggingCategory* self) {
+	return self->isWarningEnabled();
 }
 
-bool QLoggingCategory_IsCriticalEnabled(QLoggingCategory* self) {
-	return const_cast<const QLoggingCategory*>(self)->isCriticalEnabled();
+bool QLoggingCategory_IsCriticalEnabled(const QLoggingCategory* self) {
+	return self->isCriticalEnabled();
 }
 
-const char* QLoggingCategory_CategoryName(QLoggingCategory* self) {
-	return (const char*) const_cast<const QLoggingCategory*>(self)->categoryName();
+const char* QLoggingCategory_CategoryName(const QLoggingCategory* self) {
+	return (const char*) self->categoryName();
 }
 
 QLoggingCategory* QLoggingCategory_OperatorCall(QLoggingCategory* self) {
@@ -40,8 +40,8 @@ QLoggingCategory* QLoggingCategory_OperatorCall(QLoggingCategory* self) {
 	return &ret;
 }
 
-QLoggingCategory* QLoggingCategory_OperatorCall2(QLoggingCategory* self) {
-	const QLoggingCategory& ret = const_cast<const QLoggingCategory*>(self)->operator()();
+QLoggingCategory* QLoggingCategory_OperatorCall2(const QLoggingCategory* self) {
+	const QLoggingCategory& ret = self->operator()();
 	// Cast returned reference into pointer
 	return const_cast<QLoggingCategory*>(&ret);
 }

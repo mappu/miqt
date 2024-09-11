@@ -21,8 +21,8 @@ QProgressBar* QProgressBar_new2(QWidget* parent) {
 	return new QProgressBar(parent);
 }
 
-QMetaObject* QProgressBar_MetaObject(QProgressBar* self) {
-	return (QMetaObject*) const_cast<const QProgressBar*>(self)->metaObject();
+QMetaObject* QProgressBar_MetaObject(const QProgressBar* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QProgressBar_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -43,20 +43,20 @@ void QProgressBar_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-int QProgressBar_Minimum(QProgressBar* self) {
-	return const_cast<const QProgressBar*>(self)->minimum();
+int QProgressBar_Minimum(const QProgressBar* self) {
+	return self->minimum();
 }
 
-int QProgressBar_Maximum(QProgressBar* self) {
-	return const_cast<const QProgressBar*>(self)->maximum();
+int QProgressBar_Maximum(const QProgressBar* self) {
+	return self->maximum();
 }
 
-int QProgressBar_Value(QProgressBar* self) {
-	return const_cast<const QProgressBar*>(self)->value();
+int QProgressBar_Value(const QProgressBar* self) {
+	return self->value();
 }
 
-void QProgressBar_Text(QProgressBar* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QProgressBar*>(self)->text();
+void QProgressBar_Text(const QProgressBar* self, char** _out, int* _out_Strlen) {
+	QString ret = self->text();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -68,12 +68,12 @@ void QProgressBar_SetTextVisible(QProgressBar* self, bool visible) {
 	self->setTextVisible(visible);
 }
 
-bool QProgressBar_IsTextVisible(QProgressBar* self) {
-	return const_cast<const QProgressBar*>(self)->isTextVisible();
+bool QProgressBar_IsTextVisible(const QProgressBar* self) {
+	return self->isTextVisible();
 }
 
-int QProgressBar_Alignment(QProgressBar* self) {
-	Qt::Alignment ret = const_cast<const QProgressBar*>(self)->alignment();
+int QProgressBar_Alignment(const QProgressBar* self) {
+	Qt::Alignment ret = self->alignment();
 	return static_cast<int>(ret);
 }
 
@@ -81,20 +81,20 @@ void QProgressBar_SetAlignment(QProgressBar* self, int alignment) {
 	self->setAlignment(static_cast<Qt::Alignment>(alignment));
 }
 
-QSize* QProgressBar_SizeHint(QProgressBar* self) {
-	QSize ret = const_cast<const QProgressBar*>(self)->sizeHint();
+QSize* QProgressBar_SizeHint(const QProgressBar* self) {
+	QSize ret = self->sizeHint();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
 
-QSize* QProgressBar_MinimumSizeHint(QProgressBar* self) {
-	QSize ret = const_cast<const QProgressBar*>(self)->minimumSizeHint();
+QSize* QProgressBar_MinimumSizeHint(const QProgressBar* self) {
+	QSize ret = self->minimumSizeHint();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
 
-uintptr_t QProgressBar_Orientation(QProgressBar* self) {
-	Qt::Orientation ret = const_cast<const QProgressBar*>(self)->orientation();
+uintptr_t QProgressBar_Orientation(const QProgressBar* self) {
+	Qt::Orientation ret = self->orientation();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -102,16 +102,16 @@ void QProgressBar_SetInvertedAppearance(QProgressBar* self, bool invert) {
 	self->setInvertedAppearance(invert);
 }
 
-bool QProgressBar_InvertedAppearance(QProgressBar* self) {
-	return const_cast<const QProgressBar*>(self)->invertedAppearance();
+bool QProgressBar_InvertedAppearance(const QProgressBar* self) {
+	return self->invertedAppearance();
 }
 
 void QProgressBar_SetTextDirection(QProgressBar* self, uintptr_t textDirection) {
 	self->setTextDirection(static_cast<QProgressBar::Direction>(textDirection));
 }
 
-uintptr_t QProgressBar_TextDirection(QProgressBar* self) {
-	QProgressBar::Direction ret = const_cast<const QProgressBar*>(self)->textDirection();
+uintptr_t QProgressBar_TextDirection(const QProgressBar* self) {
+	QProgressBar::Direction ret = self->textDirection();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -124,8 +124,8 @@ void QProgressBar_ResetFormat(QProgressBar* self) {
 	self->resetFormat();
 }
 
-void QProgressBar_Format(QProgressBar* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QProgressBar*>(self)->format();
+void QProgressBar_Format(const QProgressBar* self, char** _out, int* _out_Strlen) {
+	QString ret = self->format();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));

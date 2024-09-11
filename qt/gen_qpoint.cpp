@@ -20,16 +20,16 @@ QPoint* QPoint_new3(QPoint* param1) {
 	return new QPoint(*param1);
 }
 
-bool QPoint_IsNull(QPoint* self) {
-	return const_cast<const QPoint*>(self)->isNull();
+bool QPoint_IsNull(const QPoint* self) {
+	return self->isNull();
 }
 
-int QPoint_X(QPoint* self) {
-	return const_cast<const QPoint*>(self)->x();
+int QPoint_X(const QPoint* self) {
+	return self->x();
 }
 
-int QPoint_Y(QPoint* self) {
-	return const_cast<const QPoint*>(self)->y();
+int QPoint_Y(const QPoint* self) {
+	return self->y();
 }
 
 void QPoint_SetX(QPoint* self, int x) {
@@ -40,12 +40,12 @@ void QPoint_SetY(QPoint* self, int y) {
 	self->setY(static_cast<int>(y));
 }
 
-int QPoint_ManhattanLength(QPoint* self) {
-	return const_cast<const QPoint*>(self)->manhattanLength();
+int QPoint_ManhattanLength(const QPoint* self) {
+	return self->manhattanLength();
 }
 
-QPoint* QPoint_Transposed(QPoint* self) {
-	QPoint ret = const_cast<const QPoint*>(self)->transposed();
+QPoint* QPoint_Transposed(const QPoint* self) {
+	QPoint ret = self->transposed();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPoint*>(new QPoint(ret));
 }
@@ -110,20 +110,20 @@ QPointF* QPointF_new4(QPointF* param1) {
 	return new QPointF(*param1);
 }
 
-double QPointF_ManhattanLength(QPointF* self) {
-	return const_cast<const QPointF*>(self)->manhattanLength();
+double QPointF_ManhattanLength(const QPointF* self) {
+	return self->manhattanLength();
 }
 
-bool QPointF_IsNull(QPointF* self) {
-	return const_cast<const QPointF*>(self)->isNull();
+bool QPointF_IsNull(const QPointF* self) {
+	return self->isNull();
 }
 
-double QPointF_X(QPointF* self) {
-	return const_cast<const QPointF*>(self)->x();
+double QPointF_X(const QPointF* self) {
+	return self->x();
 }
 
-double QPointF_Y(QPointF* self) {
-	return const_cast<const QPointF*>(self)->y();
+double QPointF_Y(const QPointF* self) {
+	return self->y();
 }
 
 void QPointF_SetX(QPointF* self, double x) {
@@ -134,8 +134,8 @@ void QPointF_SetY(QPointF* self, double y) {
 	self->setY(static_cast<qreal>(y));
 }
 
-QPointF* QPointF_Transposed(QPointF* self) {
-	QPointF ret = const_cast<const QPointF*>(self)->transposed();
+QPointF* QPointF_Transposed(const QPointF* self) {
+	QPointF ret = self->transposed();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPointF*>(new QPointF(ret));
 }
@@ -168,8 +168,8 @@ double QPointF_DotProduct(QPointF* p1, QPointF* p2) {
 	return QPointF::dotProduct(*p1, *p2);
 }
 
-QPoint* QPointF_ToPoint(QPointF* self) {
-	QPoint ret = const_cast<const QPointF*>(self)->toPoint();
+QPoint* QPointF_ToPoint(const QPointF* self) {
+	QPoint ret = self->toPoint();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPoint*>(new QPoint(ret));
 }

@@ -32,10 +32,10 @@ typedef struct QTimerEvent QTimerEvent;
 QEvent* QEvent_new(uintptr_t typeVal);
 QEvent* QEvent_new2(QEvent* other);
 void QEvent_OperatorAssign(QEvent* self, QEvent* other);
-uintptr_t QEvent_Type(QEvent* self);
-bool QEvent_Spontaneous(QEvent* self);
+uintptr_t QEvent_Type(const QEvent* self);
+bool QEvent_Spontaneous(const QEvent* self);
 void QEvent_SetAccepted(QEvent* self, bool accepted);
-bool QEvent_IsAccepted(QEvent* self);
+bool QEvent_IsAccepted(const QEvent* self);
 void QEvent_Accept(QEvent* self);
 void QEvent_Ignore(QEvent* self);
 int QEvent_RegisterEventType();
@@ -44,25 +44,25 @@ void QEvent_Delete(QEvent* self);
 
 QTimerEvent* QTimerEvent_new(int timerId);
 QTimerEvent* QTimerEvent_new2(QTimerEvent* param1);
-int QTimerEvent_TimerId(QTimerEvent* self);
+int QTimerEvent_TimerId(const QTimerEvent* self);
 void QTimerEvent_Delete(QTimerEvent* self);
 
 QChildEvent* QChildEvent_new(uintptr_t typeVal, QObject* child);
 QChildEvent* QChildEvent_new2(QChildEvent* param1);
-QObject* QChildEvent_Child(QChildEvent* self);
-bool QChildEvent_Added(QChildEvent* self);
-bool QChildEvent_Polished(QChildEvent* self);
-bool QChildEvent_Removed(QChildEvent* self);
+QObject* QChildEvent_Child(const QChildEvent* self);
+bool QChildEvent_Added(const QChildEvent* self);
+bool QChildEvent_Polished(const QChildEvent* self);
+bool QChildEvent_Removed(const QChildEvent* self);
 void QChildEvent_Delete(QChildEvent* self);
 
 QDynamicPropertyChangeEvent* QDynamicPropertyChangeEvent_new(QByteArray* name);
 QDynamicPropertyChangeEvent* QDynamicPropertyChangeEvent_new2(QDynamicPropertyChangeEvent* param1);
-QByteArray* QDynamicPropertyChangeEvent_PropertyName(QDynamicPropertyChangeEvent* self);
+QByteArray* QDynamicPropertyChangeEvent_PropertyName(const QDynamicPropertyChangeEvent* self);
 void QDynamicPropertyChangeEvent_Delete(QDynamicPropertyChangeEvent* self);
 
 QDeferredDeleteEvent* QDeferredDeleteEvent_new();
 QDeferredDeleteEvent* QDeferredDeleteEvent_new2(QDeferredDeleteEvent* param1);
-int QDeferredDeleteEvent_LoopLevel(QDeferredDeleteEvent* self);
+int QDeferredDeleteEvent_LoopLevel(const QDeferredDeleteEvent* self);
 void QDeferredDeleteEvent_Delete(QDeferredDeleteEvent* self);
 
 #ifdef __cplusplus

@@ -14,8 +14,8 @@ extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
 }
 
-QMetaObject* QGraphicsAnchor_MetaObject(QGraphicsAnchor* self) {
-	return (QMetaObject*) const_cast<const QGraphicsAnchor*>(self)->metaObject();
+QMetaObject* QGraphicsAnchor_MetaObject(const QGraphicsAnchor* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QGraphicsAnchor_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -44,16 +44,16 @@ void QGraphicsAnchor_UnsetSpacing(QGraphicsAnchor* self) {
 	self->unsetSpacing();
 }
 
-double QGraphicsAnchor_Spacing(QGraphicsAnchor* self) {
-	return const_cast<const QGraphicsAnchor*>(self)->spacing();
+double QGraphicsAnchor_Spacing(const QGraphicsAnchor* self) {
+	return self->spacing();
 }
 
 void QGraphicsAnchor_SetSizePolicy(QGraphicsAnchor* self, uintptr_t policy) {
 	self->setSizePolicy(static_cast<QSizePolicy::Policy>(policy));
 }
 
-uintptr_t QGraphicsAnchor_SizePolicy(QGraphicsAnchor* self) {
-	QSizePolicy::Policy ret = const_cast<const QGraphicsAnchor*>(self)->sizePolicy();
+uintptr_t QGraphicsAnchor_SizePolicy(const QGraphicsAnchor* self) {
+	QSizePolicy::Policy ret = self->sizePolicy();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -133,12 +133,12 @@ void QGraphicsAnchorLayout_SetSpacing(QGraphicsAnchorLayout* self, double spacin
 	self->setSpacing(static_cast<qreal>(spacing));
 }
 
-double QGraphicsAnchorLayout_HorizontalSpacing(QGraphicsAnchorLayout* self) {
-	return const_cast<const QGraphicsAnchorLayout*>(self)->horizontalSpacing();
+double QGraphicsAnchorLayout_HorizontalSpacing(const QGraphicsAnchorLayout* self) {
+	return self->horizontalSpacing();
 }
 
-double QGraphicsAnchorLayout_VerticalSpacing(QGraphicsAnchorLayout* self) {
-	return const_cast<const QGraphicsAnchorLayout*>(self)->verticalSpacing();
+double QGraphicsAnchorLayout_VerticalSpacing(const QGraphicsAnchorLayout* self) {
+	return self->verticalSpacing();
 }
 
 void QGraphicsAnchorLayout_RemoveAt(QGraphicsAnchorLayout* self, int index) {
@@ -149,12 +149,12 @@ void QGraphicsAnchorLayout_SetGeometry(QGraphicsAnchorLayout* self, QRectF* rect
 	self->setGeometry(*rect);
 }
 
-int QGraphicsAnchorLayout_Count(QGraphicsAnchorLayout* self) {
-	return const_cast<const QGraphicsAnchorLayout*>(self)->count();
+int QGraphicsAnchorLayout_Count(const QGraphicsAnchorLayout* self) {
+	return self->count();
 }
 
-QGraphicsLayoutItem* QGraphicsAnchorLayout_ItemAt(QGraphicsAnchorLayout* self, int index) {
-	return const_cast<const QGraphicsAnchorLayout*>(self)->itemAt(static_cast<int>(index));
+QGraphicsLayoutItem* QGraphicsAnchorLayout_ItemAt(const QGraphicsAnchorLayout* self, int index) {
+	return self->itemAt(static_cast<int>(index));
 }
 
 void QGraphicsAnchorLayout_Invalidate(QGraphicsAnchorLayout* self) {

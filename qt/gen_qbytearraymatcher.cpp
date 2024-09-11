@@ -33,26 +33,26 @@ void QByteArrayMatcher_SetPattern(QByteArrayMatcher* self, QByteArray* pattern) 
 	self->setPattern(*pattern);
 }
 
-int QByteArrayMatcher_IndexIn(QByteArrayMatcher* self, QByteArray* ba) {
-	return const_cast<const QByteArrayMatcher*>(self)->indexIn(*ba);
+int QByteArrayMatcher_IndexIn(const QByteArrayMatcher* self, QByteArray* ba) {
+	return self->indexIn(*ba);
 }
 
-int QByteArrayMatcher_IndexIn2(QByteArrayMatcher* self, const char* str, int lenVal) {
-	return const_cast<const QByteArrayMatcher*>(self)->indexIn(str, static_cast<int>(lenVal));
+int QByteArrayMatcher_IndexIn2(const QByteArrayMatcher* self, const char* str, int lenVal) {
+	return self->indexIn(str, static_cast<int>(lenVal));
 }
 
-QByteArray* QByteArrayMatcher_Pattern(QByteArrayMatcher* self) {
-	QByteArray ret = const_cast<const QByteArrayMatcher*>(self)->pattern();
+QByteArray* QByteArrayMatcher_Pattern(const QByteArrayMatcher* self) {
+	QByteArray ret = self->pattern();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QByteArray*>(new QByteArray(ret));
 }
 
-int QByteArrayMatcher_IndexIn22(QByteArrayMatcher* self, QByteArray* ba, int from) {
-	return const_cast<const QByteArrayMatcher*>(self)->indexIn(*ba, static_cast<int>(from));
+int QByteArrayMatcher_IndexIn22(const QByteArrayMatcher* self, QByteArray* ba, int from) {
+	return self->indexIn(*ba, static_cast<int>(from));
 }
 
-int QByteArrayMatcher_IndexIn3(QByteArrayMatcher* self, const char* str, int lenVal, int from) {
-	return const_cast<const QByteArrayMatcher*>(self)->indexIn(str, static_cast<int>(lenVal), static_cast<int>(from));
+int QByteArrayMatcher_IndexIn3(const QByteArrayMatcher* self, const char* str, int lenVal, int from) {
+	return self->indexIn(str, static_cast<int>(lenVal), static_cast<int>(from));
 }
 
 void QByteArrayMatcher_Delete(QByteArrayMatcher* self) {

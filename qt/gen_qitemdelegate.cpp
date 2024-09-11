@@ -27,8 +27,8 @@ QItemDelegate* QItemDelegate_new2(QObject* parent) {
 	return new QItemDelegate(parent);
 }
 
-QMetaObject* QItemDelegate_MetaObject(QItemDelegate* self) {
-	return (QMetaObject*) const_cast<const QItemDelegate*>(self)->metaObject();
+QMetaObject* QItemDelegate_MetaObject(const QItemDelegate* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QItemDelegate_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -49,42 +49,42 @@ void QItemDelegate_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-bool QItemDelegate_HasClipping(QItemDelegate* self) {
-	return const_cast<const QItemDelegate*>(self)->hasClipping();
+bool QItemDelegate_HasClipping(const QItemDelegate* self) {
+	return self->hasClipping();
 }
 
 void QItemDelegate_SetClipping(QItemDelegate* self, bool clip) {
 	self->setClipping(clip);
 }
 
-void QItemDelegate_Paint(QItemDelegate* self, QPainter* painter, QStyleOptionViewItem* option, QModelIndex* index) {
-	const_cast<const QItemDelegate*>(self)->paint(painter, *option, *index);
+void QItemDelegate_Paint(const QItemDelegate* self, QPainter* painter, QStyleOptionViewItem* option, QModelIndex* index) {
+	self->paint(painter, *option, *index);
 }
 
-QSize* QItemDelegate_SizeHint(QItemDelegate* self, QStyleOptionViewItem* option, QModelIndex* index) {
-	QSize ret = const_cast<const QItemDelegate*>(self)->sizeHint(*option, *index);
+QSize* QItemDelegate_SizeHint(const QItemDelegate* self, QStyleOptionViewItem* option, QModelIndex* index) {
+	QSize ret = self->sizeHint(*option, *index);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
 
-QWidget* QItemDelegate_CreateEditor(QItemDelegate* self, QWidget* parent, QStyleOptionViewItem* option, QModelIndex* index) {
-	return const_cast<const QItemDelegate*>(self)->createEditor(parent, *option, *index);
+QWidget* QItemDelegate_CreateEditor(const QItemDelegate* self, QWidget* parent, QStyleOptionViewItem* option, QModelIndex* index) {
+	return self->createEditor(parent, *option, *index);
 }
 
-void QItemDelegate_SetEditorData(QItemDelegate* self, QWidget* editor, QModelIndex* index) {
-	const_cast<const QItemDelegate*>(self)->setEditorData(editor, *index);
+void QItemDelegate_SetEditorData(const QItemDelegate* self, QWidget* editor, QModelIndex* index) {
+	self->setEditorData(editor, *index);
 }
 
-void QItemDelegate_SetModelData(QItemDelegate* self, QWidget* editor, QAbstractItemModel* model, QModelIndex* index) {
-	const_cast<const QItemDelegate*>(self)->setModelData(editor, model, *index);
+void QItemDelegate_SetModelData(const QItemDelegate* self, QWidget* editor, QAbstractItemModel* model, QModelIndex* index) {
+	self->setModelData(editor, model, *index);
 }
 
-void QItemDelegate_UpdateEditorGeometry(QItemDelegate* self, QWidget* editor, QStyleOptionViewItem* option, QModelIndex* index) {
-	const_cast<const QItemDelegate*>(self)->updateEditorGeometry(editor, *option, *index);
+void QItemDelegate_UpdateEditorGeometry(const QItemDelegate* self, QWidget* editor, QStyleOptionViewItem* option, QModelIndex* index) {
+	self->updateEditorGeometry(editor, *option, *index);
 }
 
-QItemEditorFactory* QItemDelegate_ItemEditorFactory(QItemDelegate* self) {
-	return const_cast<const QItemDelegate*>(self)->itemEditorFactory();
+QItemEditorFactory* QItemDelegate_ItemEditorFactory(const QItemDelegate* self) {
+	return self->itemEditorFactory();
 }
 
 void QItemDelegate_SetItemEditorFactory(QItemDelegate* self, QItemEditorFactory* factory) {

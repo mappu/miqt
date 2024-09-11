@@ -27,8 +27,8 @@ QColumnView* QColumnView_new2(QWidget* parent) {
 	return new QColumnView(parent);
 }
 
-QMetaObject* QColumnView_MetaObject(QColumnView* self) {
-	return (QMetaObject*) const_cast<const QColumnView*>(self)->metaObject();
+QMetaObject* QColumnView_MetaObject(const QColumnView* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QColumnView_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -59,8 +59,8 @@ void QColumnView_connect_UpdatePreviewWidget(QColumnView* self, void* slot) {
 	});
 }
 
-QModelIndex* QColumnView_IndexAt(QColumnView* self, QPoint* point) {
-	QModelIndex ret = const_cast<const QColumnView*>(self)->indexAt(*point);
+QModelIndex* QColumnView_IndexAt(const QColumnView* self, QPoint* point) {
+	QModelIndex ret = self->indexAt(*point);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QModelIndex*>(new QModelIndex(ret));
 }
@@ -69,14 +69,14 @@ void QColumnView_ScrollTo(QColumnView* self, QModelIndex* index) {
 	self->scrollTo(*index);
 }
 
-QSize* QColumnView_SizeHint(QColumnView* self) {
-	QSize ret = const_cast<const QColumnView*>(self)->sizeHint();
+QSize* QColumnView_SizeHint(const QColumnView* self) {
+	QSize ret = self->sizeHint();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
 
-QRect* QColumnView_VisualRect(QColumnView* self, QModelIndex* index) {
-	QRect ret = const_cast<const QColumnView*>(self)->visualRect(*index);
+QRect* QColumnView_VisualRect(const QColumnView* self, QModelIndex* index) {
+	QRect ret = self->visualRect(*index);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRect*>(new QRect(ret));
 }
@@ -101,12 +101,12 @@ void QColumnView_SetResizeGripsVisible(QColumnView* self, bool visible) {
 	self->setResizeGripsVisible(visible);
 }
 
-bool QColumnView_ResizeGripsVisible(QColumnView* self) {
-	return const_cast<const QColumnView*>(self)->resizeGripsVisible();
+bool QColumnView_ResizeGripsVisible(const QColumnView* self) {
+	return self->resizeGripsVisible();
 }
 
-QWidget* QColumnView_PreviewWidget(QColumnView* self) {
-	return const_cast<const QColumnView*>(self)->previewWidget();
+QWidget* QColumnView_PreviewWidget(const QColumnView* self) {
+	return self->previewWidget();
 }
 
 void QColumnView_SetPreviewWidget(QColumnView* self, QWidget* widget) {
@@ -122,8 +122,8 @@ void QColumnView_SetColumnWidths(QColumnView* self, int* list, size_t list_len) 
 	self->setColumnWidths(list_QList);
 }
 
-void QColumnView_ColumnWidths(QColumnView* self, int** _out, size_t* _out_len) {
-	QList<int> ret = const_cast<const QColumnView*>(self)->columnWidths();
+void QColumnView_ColumnWidths(const QColumnView* self, int** _out, size_t* _out_len) {
+	QList<int> ret = self->columnWidths();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	int* __out = static_cast<int*>(malloc(sizeof(int) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {

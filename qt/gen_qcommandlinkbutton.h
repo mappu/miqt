@@ -27,10 +27,10 @@ QCommandLinkButton* QCommandLinkButton_new3(const char* text, size_t text_Strlen
 QCommandLinkButton* QCommandLinkButton_new4(QWidget* parent);
 QCommandLinkButton* QCommandLinkButton_new5(const char* text, size_t text_Strlen, QWidget* parent);
 QCommandLinkButton* QCommandLinkButton_new6(const char* text, size_t text_Strlen, const char* description, size_t description_Strlen, QWidget* parent);
-QMetaObject* QCommandLinkButton_MetaObject(QCommandLinkButton* self);
+QMetaObject* QCommandLinkButton_MetaObject(const QCommandLinkButton* self);
 void QCommandLinkButton_Tr(const char* s, char** _out, int* _out_Strlen);
 void QCommandLinkButton_TrUtf8(const char* s, char** _out, int* _out_Strlen);
-void QCommandLinkButton_Description(QCommandLinkButton* self, char** _out, int* _out_Strlen);
+void QCommandLinkButton_Description(const QCommandLinkButton* self, char** _out, int* _out_Strlen);
 void QCommandLinkButton_SetDescription(QCommandLinkButton* self, const char* description, size_t description_Strlen);
 void QCommandLinkButton_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
 void QCommandLinkButton_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);

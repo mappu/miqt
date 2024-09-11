@@ -25,21 +25,21 @@ void QEvent_OperatorAssign(QEvent* self, QEvent* other) {
 	self->operator=(*other);
 }
 
-uintptr_t QEvent_Type(QEvent* self) {
-	QEvent::Type ret = const_cast<const QEvent*>(self)->type();
+uintptr_t QEvent_Type(const QEvent* self) {
+	QEvent::Type ret = self->type();
 	return static_cast<uintptr_t>(ret);
 }
 
-bool QEvent_Spontaneous(QEvent* self) {
-	return const_cast<const QEvent*>(self)->spontaneous();
+bool QEvent_Spontaneous(const QEvent* self) {
+	return self->spontaneous();
 }
 
 void QEvent_SetAccepted(QEvent* self, bool accepted) {
 	self->setAccepted(accepted);
 }
 
-bool QEvent_IsAccepted(QEvent* self) {
-	return const_cast<const QEvent*>(self)->isAccepted();
+bool QEvent_IsAccepted(const QEvent* self) {
+	return self->isAccepted();
 }
 
 void QEvent_Accept(QEvent* self) {
@@ -70,8 +70,8 @@ QTimerEvent* QTimerEvent_new2(QTimerEvent* param1) {
 	return new QTimerEvent(*param1);
 }
 
-int QTimerEvent_TimerId(QTimerEvent* self) {
-	return const_cast<const QTimerEvent*>(self)->timerId();
+int QTimerEvent_TimerId(const QTimerEvent* self) {
+	return self->timerId();
 }
 
 void QTimerEvent_Delete(QTimerEvent* self) {
@@ -86,20 +86,20 @@ QChildEvent* QChildEvent_new2(QChildEvent* param1) {
 	return new QChildEvent(*param1);
 }
 
-QObject* QChildEvent_Child(QChildEvent* self) {
-	return const_cast<const QChildEvent*>(self)->child();
+QObject* QChildEvent_Child(const QChildEvent* self) {
+	return self->child();
 }
 
-bool QChildEvent_Added(QChildEvent* self) {
-	return const_cast<const QChildEvent*>(self)->added();
+bool QChildEvent_Added(const QChildEvent* self) {
+	return self->added();
 }
 
-bool QChildEvent_Polished(QChildEvent* self) {
-	return const_cast<const QChildEvent*>(self)->polished();
+bool QChildEvent_Polished(const QChildEvent* self) {
+	return self->polished();
 }
 
-bool QChildEvent_Removed(QChildEvent* self) {
-	return const_cast<const QChildEvent*>(self)->removed();
+bool QChildEvent_Removed(const QChildEvent* self) {
+	return self->removed();
 }
 
 void QChildEvent_Delete(QChildEvent* self) {
@@ -114,8 +114,8 @@ QDynamicPropertyChangeEvent* QDynamicPropertyChangeEvent_new2(QDynamicPropertyCh
 	return new QDynamicPropertyChangeEvent(*param1);
 }
 
-QByteArray* QDynamicPropertyChangeEvent_PropertyName(QDynamicPropertyChangeEvent* self) {
-	QByteArray ret = const_cast<const QDynamicPropertyChangeEvent*>(self)->propertyName();
+QByteArray* QDynamicPropertyChangeEvent_PropertyName(const QDynamicPropertyChangeEvent* self) {
+	QByteArray ret = self->propertyName();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QByteArray*>(new QByteArray(ret));
 }
@@ -132,8 +132,8 @@ QDeferredDeleteEvent* QDeferredDeleteEvent_new2(QDeferredDeleteEvent* param1) {
 	return new QDeferredDeleteEvent(*param1);
 }
 
-int QDeferredDeleteEvent_LoopLevel(QDeferredDeleteEvent* self) {
-	return const_cast<const QDeferredDeleteEvent*>(self)->loopLevel();
+int QDeferredDeleteEvent_LoopLevel(const QDeferredDeleteEvent* self) {
+	return self->loopLevel();
 }
 
 void QDeferredDeleteEvent_Delete(QDeferredDeleteEvent* self) {

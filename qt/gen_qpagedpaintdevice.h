@@ -37,13 +37,13 @@ bool QPagedPaintDevice_SetPageSize(QPagedPaintDevice* self, QPageSize* pageSize)
 bool QPagedPaintDevice_SetPageOrientation(QPagedPaintDevice* self, uintptr_t orientation);
 bool QPagedPaintDevice_SetPageMargins(QPagedPaintDevice* self, QMarginsF* margins);
 bool QPagedPaintDevice_SetPageMargins2(QPagedPaintDevice* self, QMarginsF* margins, uintptr_t units);
-QPageLayout* QPagedPaintDevice_PageLayout(QPagedPaintDevice* self);
+QPageLayout* QPagedPaintDevice_PageLayout(const QPagedPaintDevice* self);
 void QPagedPaintDevice_SetPageSizeWithSize(QPagedPaintDevice* self, uintptr_t size);
-uintptr_t QPagedPaintDevice_PageSize(QPagedPaintDevice* self);
+uintptr_t QPagedPaintDevice_PageSize(const QPagedPaintDevice* self);
 void QPagedPaintDevice_SetPageSizeMM(QPagedPaintDevice* self, QSizeF* size);
-QSizeF* QPagedPaintDevice_PageSizeMM(QPagedPaintDevice* self);
+QSizeF* QPagedPaintDevice_PageSizeMM(const QPagedPaintDevice* self);
 void QPagedPaintDevice_SetMargins(QPagedPaintDevice* self, QPagedPaintDevice__Margins* margins);
-QPagedPaintDevice__Margins* QPagedPaintDevice_Margins(QPagedPaintDevice* self);
+QPagedPaintDevice__Margins* QPagedPaintDevice_Margins(const QPagedPaintDevice* self);
 void QPagedPaintDevice_Delete(QPagedPaintDevice* self);
 
 void QPagedPaintDevice__Margins_Delete(QPagedPaintDevice__Margins* self);

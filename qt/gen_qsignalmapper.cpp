@@ -21,8 +21,8 @@ QSignalMapper* QSignalMapper_new2(QObject* parent) {
 	return new QSignalMapper(parent);
 }
 
-QMetaObject* QSignalMapper_MetaObject(QSignalMapper* self) {
-	return (QMetaObject*) const_cast<const QSignalMapper*>(self)->metaObject();
+QMetaObject* QSignalMapper_MetaObject(const QSignalMapper* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QSignalMapper_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -64,21 +64,21 @@ void QSignalMapper_RemoveMappings(QSignalMapper* self, QObject* sender) {
 	self->removeMappings(sender);
 }
 
-QObject* QSignalMapper_Mapping(QSignalMapper* self, int id) {
-	return const_cast<const QSignalMapper*>(self)->mapping(static_cast<int>(id));
+QObject* QSignalMapper_Mapping(const QSignalMapper* self, int id) {
+	return self->mapping(static_cast<int>(id));
 }
 
-QObject* QSignalMapper_MappingWithText(QSignalMapper* self, const char* text, size_t text_Strlen) {
+QObject* QSignalMapper_MappingWithText(const QSignalMapper* self, const char* text, size_t text_Strlen) {
 	QString text_QString = QString::fromUtf8(text, text_Strlen);
-	return const_cast<const QSignalMapper*>(self)->mapping(text_QString);
+	return self->mapping(text_QString);
 }
 
-QObject* QSignalMapper_MappingWithWidget(QSignalMapper* self, QWidget* widget) {
-	return const_cast<const QSignalMapper*>(self)->mapping(widget);
+QObject* QSignalMapper_MappingWithWidget(const QSignalMapper* self, QWidget* widget) {
+	return self->mapping(widget);
 }
 
-QObject* QSignalMapper_MappingWithObject(QSignalMapper* self, QObject* object) {
-	return const_cast<const QSignalMapper*>(self)->mapping(object);
+QObject* QSignalMapper_MappingWithObject(const QSignalMapper* self, QObject* object) {
+	return self->mapping(object);
 }
 
 void QSignalMapper_Mapped(QSignalMapper* self, int param1) {

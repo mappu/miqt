@@ -33,8 +33,8 @@ QMainWindow* QMainWindow_new3(QWidget* parent, int flags) {
 	return new QMainWindow(parent, static_cast<Qt::WindowFlags>(flags));
 }
 
-QMetaObject* QMainWindow_MetaObject(QMainWindow* self) {
-	return (QMetaObject*) const_cast<const QMainWindow*>(self)->metaObject();
+QMetaObject* QMainWindow_MetaObject(const QMainWindow* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QMainWindow_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -55,8 +55,8 @@ void QMainWindow_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-QSize* QMainWindow_IconSize(QMainWindow* self) {
-	QSize ret = const_cast<const QMainWindow*>(self)->iconSize();
+QSize* QMainWindow_IconSize(const QMainWindow* self) {
+	QSize ret = self->iconSize();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
@@ -65,8 +65,8 @@ void QMainWindow_SetIconSize(QMainWindow* self, QSize* iconSize) {
 	self->setIconSize(*iconSize);
 }
 
-uintptr_t QMainWindow_ToolButtonStyle(QMainWindow* self) {
-	Qt::ToolButtonStyle ret = const_cast<const QMainWindow*>(self)->toolButtonStyle();
+uintptr_t QMainWindow_ToolButtonStyle(const QMainWindow* self) {
+	Qt::ToolButtonStyle ret = self->toolButtonStyle();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -74,24 +74,24 @@ void QMainWindow_SetToolButtonStyle(QMainWindow* self, uintptr_t toolButtonStyle
 	self->setToolButtonStyle(static_cast<Qt::ToolButtonStyle>(toolButtonStyle));
 }
 
-bool QMainWindow_IsAnimated(QMainWindow* self) {
-	return const_cast<const QMainWindow*>(self)->isAnimated();
+bool QMainWindow_IsAnimated(const QMainWindow* self) {
+	return self->isAnimated();
 }
 
-bool QMainWindow_IsDockNestingEnabled(QMainWindow* self) {
-	return const_cast<const QMainWindow*>(self)->isDockNestingEnabled();
+bool QMainWindow_IsDockNestingEnabled(const QMainWindow* self) {
+	return self->isDockNestingEnabled();
 }
 
-bool QMainWindow_DocumentMode(QMainWindow* self) {
-	return const_cast<const QMainWindow*>(self)->documentMode();
+bool QMainWindow_DocumentMode(const QMainWindow* self) {
+	return self->documentMode();
 }
 
 void QMainWindow_SetDocumentMode(QMainWindow* self, bool enabled) {
 	self->setDocumentMode(enabled);
 }
 
-uintptr_t QMainWindow_TabShape(QMainWindow* self) {
-	QTabWidget::TabShape ret = const_cast<const QMainWindow*>(self)->tabShape();
+uintptr_t QMainWindow_TabShape(const QMainWindow* self) {
+	QTabWidget::TabShape ret = self->tabShape();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -99,8 +99,8 @@ void QMainWindow_SetTabShape(QMainWindow* self, uintptr_t tabShape) {
 	self->setTabShape(static_cast<QTabWidget::TabShape>(tabShape));
 }
 
-uintptr_t QMainWindow_TabPosition(QMainWindow* self, uintptr_t area) {
-	QTabWidget::TabPosition ret = const_cast<const QMainWindow*>(self)->tabPosition(static_cast<Qt::DockWidgetArea>(area));
+uintptr_t QMainWindow_TabPosition(const QMainWindow* self, uintptr_t area) {
+	QTabWidget::TabPosition ret = self->tabPosition(static_cast<Qt::DockWidgetArea>(area));
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -112,41 +112,41 @@ void QMainWindow_SetDockOptions(QMainWindow* self, int options) {
 	self->setDockOptions(static_cast<QMainWindow::DockOptions>(options));
 }
 
-int QMainWindow_DockOptions(QMainWindow* self) {
-	QMainWindow::DockOptions ret = const_cast<const QMainWindow*>(self)->dockOptions();
+int QMainWindow_DockOptions(const QMainWindow* self) {
+	QMainWindow::DockOptions ret = self->dockOptions();
 	return static_cast<int>(ret);
 }
 
-bool QMainWindow_IsSeparator(QMainWindow* self, QPoint* pos) {
-	return const_cast<const QMainWindow*>(self)->isSeparator(*pos);
+bool QMainWindow_IsSeparator(const QMainWindow* self, QPoint* pos) {
+	return self->isSeparator(*pos);
 }
 
-QMenuBar* QMainWindow_MenuBar(QMainWindow* self) {
-	return const_cast<const QMainWindow*>(self)->menuBar();
+QMenuBar* QMainWindow_MenuBar(const QMainWindow* self) {
+	return self->menuBar();
 }
 
 void QMainWindow_SetMenuBar(QMainWindow* self, QMenuBar* menubar) {
 	self->setMenuBar(menubar);
 }
 
-QWidget* QMainWindow_MenuWidget(QMainWindow* self) {
-	return const_cast<const QMainWindow*>(self)->menuWidget();
+QWidget* QMainWindow_MenuWidget(const QMainWindow* self) {
+	return self->menuWidget();
 }
 
 void QMainWindow_SetMenuWidget(QMainWindow* self, QWidget* menubar) {
 	self->setMenuWidget(menubar);
 }
 
-QStatusBar* QMainWindow_StatusBar(QMainWindow* self) {
-	return const_cast<const QMainWindow*>(self)->statusBar();
+QStatusBar* QMainWindow_StatusBar(const QMainWindow* self) {
+	return self->statusBar();
 }
 
 void QMainWindow_SetStatusBar(QMainWindow* self, QStatusBar* statusbar) {
 	self->setStatusBar(statusbar);
 }
 
-QWidget* QMainWindow_CentralWidget(QMainWindow* self) {
-	return const_cast<const QMainWindow*>(self)->centralWidget();
+QWidget* QMainWindow_CentralWidget(const QMainWindow* self) {
+	return self->centralWidget();
 }
 
 void QMainWindow_SetCentralWidget(QMainWindow* self, QWidget* widget) {
@@ -161,8 +161,8 @@ void QMainWindow_SetCorner(QMainWindow* self, uintptr_t corner, uintptr_t area) 
 	self->setCorner(static_cast<Qt::Corner>(corner), static_cast<Qt::DockWidgetArea>(area));
 }
 
-uintptr_t QMainWindow_Corner(QMainWindow* self, uintptr_t corner) {
-	Qt::DockWidgetArea ret = const_cast<const QMainWindow*>(self)->corner(static_cast<Qt::Corner>(corner));
+uintptr_t QMainWindow_Corner(const QMainWindow* self, uintptr_t corner) {
+	Qt::DockWidgetArea ret = self->corner(static_cast<Qt::Corner>(corner));
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -199,17 +199,17 @@ void QMainWindow_RemoveToolBarBreak(QMainWindow* self, QToolBar* before) {
 	self->removeToolBarBreak(before);
 }
 
-bool QMainWindow_UnifiedTitleAndToolBarOnMac(QMainWindow* self) {
-	return const_cast<const QMainWindow*>(self)->unifiedTitleAndToolBarOnMac();
+bool QMainWindow_UnifiedTitleAndToolBarOnMac(const QMainWindow* self) {
+	return self->unifiedTitleAndToolBarOnMac();
 }
 
-uintptr_t QMainWindow_ToolBarArea(QMainWindow* self, QToolBar* toolbar) {
-	Qt::ToolBarArea ret = const_cast<const QMainWindow*>(self)->toolBarArea(toolbar);
+uintptr_t QMainWindow_ToolBarArea(const QMainWindow* self, QToolBar* toolbar) {
+	Qt::ToolBarArea ret = self->toolBarArea(toolbar);
 	return static_cast<uintptr_t>(ret);
 }
 
-bool QMainWindow_ToolBarBreak(QMainWindow* self, QToolBar* toolbar) {
-	return const_cast<const QMainWindow*>(self)->toolBarBreak(toolbar);
+bool QMainWindow_ToolBarBreak(const QMainWindow* self, QToolBar* toolbar) {
+	return self->toolBarBreak(toolbar);
 }
 
 void QMainWindow_AddDockWidget(QMainWindow* self, uintptr_t area, QDockWidget* dockwidget) {
@@ -228,8 +228,8 @@ void QMainWindow_TabifyDockWidget(QMainWindow* self, QDockWidget* first, QDockWi
 	self->tabifyDockWidget(first, second);
 }
 
-void QMainWindow_TabifiedDockWidgets(QMainWindow* self, QDockWidget* dockwidget, QDockWidget*** _out, size_t* _out_len) {
-	QList<QDockWidget*> ret = const_cast<const QMainWindow*>(self)->tabifiedDockWidgets(dockwidget);
+void QMainWindow_TabifiedDockWidgets(const QMainWindow* self, QDockWidget* dockwidget, QDockWidget*** _out, size_t* _out_len) {
+	QList<QDockWidget*> ret = self->tabifiedDockWidgets(dockwidget);
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QDockWidget** __out = static_cast<QDockWidget**>(malloc(sizeof(QDockWidget*) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {
@@ -247,8 +247,8 @@ bool QMainWindow_RestoreDockWidget(QMainWindow* self, QDockWidget* dockwidget) {
 	return self->restoreDockWidget(dockwidget);
 }
 
-uintptr_t QMainWindow_DockWidgetArea(QMainWindow* self, QDockWidget* dockwidget) {
-	Qt::DockWidgetArea ret = const_cast<const QMainWindow*>(self)->dockWidgetArea(dockwidget);
+uintptr_t QMainWindow_DockWidgetArea(const QMainWindow* self, QDockWidget* dockwidget) {
+	Qt::DockWidgetArea ret = self->dockWidgetArea(dockwidget);
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -266,8 +266,8 @@ void QMainWindow_ResizeDocks(QMainWindow* self, QDockWidget** docks, size_t dock
 	self->resizeDocks(docks_QList, sizes_QList, static_cast<Qt::Orientation>(orientation));
 }
 
-QByteArray* QMainWindow_SaveState(QMainWindow* self) {
-	QByteArray ret = const_cast<const QMainWindow*>(self)->saveState();
+QByteArray* QMainWindow_SaveState(const QMainWindow* self) {
+	QByteArray ret = self->saveState();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QByteArray*>(new QByteArray(ret));
 }
@@ -362,8 +362,8 @@ void QMainWindow_AddToolBarBreak1(QMainWindow* self, uintptr_t area) {
 	self->addToolBarBreak(static_cast<Qt::ToolBarArea>(area));
 }
 
-QByteArray* QMainWindow_SaveState1(QMainWindow* self, int version) {
-	QByteArray ret = const_cast<const QMainWindow*>(self)->saveState(static_cast<int>(version));
+QByteArray* QMainWindow_SaveState1(const QMainWindow* self, int version) {
+	QByteArray ret = self->saveState(static_cast<int>(version));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QByteArray*>(new QByteArray(ret));
 }

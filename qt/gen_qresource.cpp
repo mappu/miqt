@@ -33,8 +33,8 @@ void QResource_SetFileName(QResource* self, const char* file, size_t file_Strlen
 	self->setFileName(file_QString);
 }
 
-void QResource_FileName(QResource* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QResource*>(self)->fileName();
+void QResource_FileName(const QResource* self, char** _out, int* _out_Strlen) {
+	QString ret = self->fileName();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -42,8 +42,8 @@ void QResource_FileName(QResource* self, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QResource_AbsoluteFilePath(QResource* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QResource*>(self)->absoluteFilePath();
+void QResource_AbsoluteFilePath(const QResource* self, char** _out, int* _out_Strlen) {
+	QString ret = self->absoluteFilePath();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -55,41 +55,41 @@ void QResource_SetLocale(QResource* self, QLocale* locale) {
 	self->setLocale(*locale);
 }
 
-QLocale* QResource_Locale(QResource* self) {
-	QLocale ret = const_cast<const QResource*>(self)->locale();
+QLocale* QResource_Locale(const QResource* self) {
+	QLocale ret = self->locale();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QLocale*>(new QLocale(ret));
 }
 
-bool QResource_IsValid(QResource* self) {
-	return const_cast<const QResource*>(self)->isValid();
+bool QResource_IsValid(const QResource* self) {
+	return self->isValid();
 }
 
-uintptr_t QResource_CompressionAlgorithm(QResource* self) {
-	QResource::Compression ret = const_cast<const QResource*>(self)->compressionAlgorithm();
+uintptr_t QResource_CompressionAlgorithm(const QResource* self) {
+	QResource::Compression ret = self->compressionAlgorithm();
 	return static_cast<uintptr_t>(ret);
 }
 
-long long QResource_Size(QResource* self) {
-	return const_cast<const QResource*>(self)->size();
+long long QResource_Size(const QResource* self) {
+	return self->size();
 }
 
-const unsigned char* QResource_Data(QResource* self) {
-	return (const unsigned char*) const_cast<const QResource*>(self)->data();
+const unsigned char* QResource_Data(const QResource* self) {
+	return (const unsigned char*) self->data();
 }
 
-long long QResource_UncompressedSize(QResource* self) {
-	return const_cast<const QResource*>(self)->uncompressedSize();
+long long QResource_UncompressedSize(const QResource* self) {
+	return self->uncompressedSize();
 }
 
-QByteArray* QResource_UncompressedData(QResource* self) {
-	QByteArray ret = const_cast<const QResource*>(self)->uncompressedData();
+QByteArray* QResource_UncompressedData(const QResource* self) {
+	QByteArray ret = self->uncompressedData();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QByteArray*>(new QByteArray(ret));
 }
 
-QDateTime* QResource_LastModified(QResource* self) {
-	QDateTime ret = const_cast<const QResource*>(self)->lastModified();
+QDateTime* QResource_LastModified(const QResource* self) {
+	QDateTime ret = self->lastModified();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QDateTime*>(new QDateTime(ret));
 }
@@ -116,8 +116,8 @@ void QResource_SearchPaths(char*** _out, int** _out_Lengths, size_t* _out_len) {
 	*_out_len = ret.length();
 }
 
-bool QResource_IsCompressed(QResource* self) {
-	return const_cast<const QResource*>(self)->isCompressed();
+bool QResource_IsCompressed(const QResource* self) {
+	return self->isCompressed();
 }
 
 bool QResource_RegisterResource(const char* rccFilename, size_t rccFilename_Strlen) {

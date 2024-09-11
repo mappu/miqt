@@ -80,8 +80,8 @@ QInputEvent* QInputEvent_new3(uintptr_t typeVal, int modifiers) {
 	return new QInputEvent(static_cast<QEvent::Type>(typeVal), static_cast<Qt::KeyboardModifiers>(modifiers));
 }
 
-int QInputEvent_Modifiers(QInputEvent* self) {
-	Qt::KeyboardModifiers ret = const_cast<const QInputEvent*>(self)->modifiers();
+int QInputEvent_Modifiers(const QInputEvent* self) {
+	Qt::KeyboardModifiers ret = self->modifiers();
 	return static_cast<int>(ret);
 }
 
@@ -89,8 +89,8 @@ void QInputEvent_SetModifiers(QInputEvent* self, int amodifiers) {
 	self->setModifiers(static_cast<Qt::KeyboardModifiers>(amodifiers));
 }
 
-unsigned long QInputEvent_Timestamp(QInputEvent* self) {
-	return const_cast<const QInputEvent*>(self)->timestamp();
+unsigned long QInputEvent_Timestamp(const QInputEvent* self) {
+	return self->timestamp();
 }
 
 void QInputEvent_SetTimestamp(QInputEvent* self, unsigned long atimestamp) {
@@ -109,48 +109,48 @@ QEnterEvent* QEnterEvent_new2(QEnterEvent* param1) {
 	return new QEnterEvent(*param1);
 }
 
-QPoint* QEnterEvent_Pos(QEnterEvent* self) {
-	QPoint ret = const_cast<const QEnterEvent*>(self)->pos();
+QPoint* QEnterEvent_Pos(const QEnterEvent* self) {
+	QPoint ret = self->pos();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPoint*>(new QPoint(ret));
 }
 
-QPoint* QEnterEvent_GlobalPos(QEnterEvent* self) {
-	QPoint ret = const_cast<const QEnterEvent*>(self)->globalPos();
+QPoint* QEnterEvent_GlobalPos(const QEnterEvent* self) {
+	QPoint ret = self->globalPos();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPoint*>(new QPoint(ret));
 }
 
-int QEnterEvent_X(QEnterEvent* self) {
-	return const_cast<const QEnterEvent*>(self)->x();
+int QEnterEvent_X(const QEnterEvent* self) {
+	return self->x();
 }
 
-int QEnterEvent_Y(QEnterEvent* self) {
-	return const_cast<const QEnterEvent*>(self)->y();
+int QEnterEvent_Y(const QEnterEvent* self) {
+	return self->y();
 }
 
-int QEnterEvent_GlobalX(QEnterEvent* self) {
-	return const_cast<const QEnterEvent*>(self)->globalX();
+int QEnterEvent_GlobalX(const QEnterEvent* self) {
+	return self->globalX();
 }
 
-int QEnterEvent_GlobalY(QEnterEvent* self) {
-	return const_cast<const QEnterEvent*>(self)->globalY();
+int QEnterEvent_GlobalY(const QEnterEvent* self) {
+	return self->globalY();
 }
 
-QPointF* QEnterEvent_LocalPos(QEnterEvent* self) {
-	const QPointF& ret = const_cast<const QEnterEvent*>(self)->localPos();
+QPointF* QEnterEvent_LocalPos(const QEnterEvent* self) {
+	const QPointF& ret = self->localPos();
 	// Cast returned reference into pointer
 	return const_cast<QPointF*>(&ret);
 }
 
-QPointF* QEnterEvent_WindowPos(QEnterEvent* self) {
-	const QPointF& ret = const_cast<const QEnterEvent*>(self)->windowPos();
+QPointF* QEnterEvent_WindowPos(const QEnterEvent* self) {
+	const QPointF& ret = self->windowPos();
 	// Cast returned reference into pointer
 	return const_cast<QPointF*>(&ret);
 }
 
-QPointF* QEnterEvent_ScreenPos(QEnterEvent* self) {
-	const QPointF& ret = const_cast<const QEnterEvent*>(self)->screenPos();
+QPointF* QEnterEvent_ScreenPos(const QEnterEvent* self) {
+	const QPointF& ret = self->screenPos();
 	// Cast returned reference into pointer
 	return const_cast<QPointF*>(&ret);
 }
@@ -179,59 +179,59 @@ QMouseEvent* QMouseEvent_new5(QMouseEvent* param1) {
 	return new QMouseEvent(*param1);
 }
 
-QPoint* QMouseEvent_Pos(QMouseEvent* self) {
-	QPoint ret = const_cast<const QMouseEvent*>(self)->pos();
+QPoint* QMouseEvent_Pos(const QMouseEvent* self) {
+	QPoint ret = self->pos();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPoint*>(new QPoint(ret));
 }
 
-QPoint* QMouseEvent_GlobalPos(QMouseEvent* self) {
-	QPoint ret = const_cast<const QMouseEvent*>(self)->globalPos();
+QPoint* QMouseEvent_GlobalPos(const QMouseEvent* self) {
+	QPoint ret = self->globalPos();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPoint*>(new QPoint(ret));
 }
 
-int QMouseEvent_X(QMouseEvent* self) {
-	return const_cast<const QMouseEvent*>(self)->x();
+int QMouseEvent_X(const QMouseEvent* self) {
+	return self->x();
 }
 
-int QMouseEvent_Y(QMouseEvent* self) {
-	return const_cast<const QMouseEvent*>(self)->y();
+int QMouseEvent_Y(const QMouseEvent* self) {
+	return self->y();
 }
 
-int QMouseEvent_GlobalX(QMouseEvent* self) {
-	return const_cast<const QMouseEvent*>(self)->globalX();
+int QMouseEvent_GlobalX(const QMouseEvent* self) {
+	return self->globalX();
 }
 
-int QMouseEvent_GlobalY(QMouseEvent* self) {
-	return const_cast<const QMouseEvent*>(self)->globalY();
+int QMouseEvent_GlobalY(const QMouseEvent* self) {
+	return self->globalY();
 }
 
-QPointF* QMouseEvent_LocalPos(QMouseEvent* self) {
-	const QPointF& ret = const_cast<const QMouseEvent*>(self)->localPos();
+QPointF* QMouseEvent_LocalPos(const QMouseEvent* self) {
+	const QPointF& ret = self->localPos();
 	// Cast returned reference into pointer
 	return const_cast<QPointF*>(&ret);
 }
 
-QPointF* QMouseEvent_WindowPos(QMouseEvent* self) {
-	const QPointF& ret = const_cast<const QMouseEvent*>(self)->windowPos();
+QPointF* QMouseEvent_WindowPos(const QMouseEvent* self) {
+	const QPointF& ret = self->windowPos();
 	// Cast returned reference into pointer
 	return const_cast<QPointF*>(&ret);
 }
 
-QPointF* QMouseEvent_ScreenPos(QMouseEvent* self) {
-	const QPointF& ret = const_cast<const QMouseEvent*>(self)->screenPos();
+QPointF* QMouseEvent_ScreenPos(const QMouseEvent* self) {
+	const QPointF& ret = self->screenPos();
 	// Cast returned reference into pointer
 	return const_cast<QPointF*>(&ret);
 }
 
-uintptr_t QMouseEvent_Button(QMouseEvent* self) {
-	Qt::MouseButton ret = const_cast<const QMouseEvent*>(self)->button();
+uintptr_t QMouseEvent_Button(const QMouseEvent* self) {
+	Qt::MouseButton ret = self->button();
 	return static_cast<uintptr_t>(ret);
 }
 
-int QMouseEvent_Buttons(QMouseEvent* self) {
-	Qt::MouseButtons ret = const_cast<const QMouseEvent*>(self)->buttons();
+int QMouseEvent_Buttons(const QMouseEvent* self) {
+	Qt::MouseButtons ret = self->buttons();
 	return static_cast<int>(ret);
 }
 
@@ -239,13 +239,13 @@ void QMouseEvent_SetLocalPos(QMouseEvent* self, QPointF* localPosition) {
 	self->setLocalPos(*localPosition);
 }
 
-uintptr_t QMouseEvent_Source(QMouseEvent* self) {
-	Qt::MouseEventSource ret = const_cast<const QMouseEvent*>(self)->source();
+uintptr_t QMouseEvent_Source(const QMouseEvent* self) {
+	Qt::MouseEventSource ret = self->source();
 	return static_cast<uintptr_t>(ret);
 }
 
-int QMouseEvent_Flags(QMouseEvent* self) {
-	Qt::MouseEventFlags ret = const_cast<const QMouseEvent*>(self)->flags();
+int QMouseEvent_Flags(const QMouseEvent* self) {
+	Qt::MouseEventFlags ret = self->flags();
 	return static_cast<int>(ret);
 }
 
@@ -265,26 +265,26 @@ QHoverEvent* QHoverEvent_new3(uintptr_t typeVal, QPointF* pos, QPointF* oldPos, 
 	return new QHoverEvent(static_cast<QEvent::Type>(typeVal), *pos, *oldPos, static_cast<Qt::KeyboardModifiers>(modifiers));
 }
 
-QPoint* QHoverEvent_Pos(QHoverEvent* self) {
-	QPoint ret = const_cast<const QHoverEvent*>(self)->pos();
+QPoint* QHoverEvent_Pos(const QHoverEvent* self) {
+	QPoint ret = self->pos();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPoint*>(new QPoint(ret));
 }
 
-QPoint* QHoverEvent_OldPos(QHoverEvent* self) {
-	QPoint ret = const_cast<const QHoverEvent*>(self)->oldPos();
+QPoint* QHoverEvent_OldPos(const QHoverEvent* self) {
+	QPoint ret = self->oldPos();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPoint*>(new QPoint(ret));
 }
 
-QPointF* QHoverEvent_PosF(QHoverEvent* self) {
-	const QPointF& ret = const_cast<const QHoverEvent*>(self)->posF();
+QPointF* QHoverEvent_PosF(const QHoverEvent* self) {
+	const QPointF& ret = self->posF();
 	// Cast returned reference into pointer
 	return const_cast<QPointF*>(&ret);
 }
 
-QPointF* QHoverEvent_OldPosF(QHoverEvent* self) {
-	const QPointF& ret = const_cast<const QHoverEvent*>(self)->oldPosF();
+QPointF* QHoverEvent_OldPosF(const QHoverEvent* self) {
+	const QPointF& ret = self->oldPosF();
 	// Cast returned reference into pointer
 	return const_cast<QPointF*>(&ret);
 }
@@ -337,95 +337,95 @@ QWheelEvent* QWheelEvent_new11(QPointF* pos, QPointF* globalPos, QPoint* pixelDe
 	return new QWheelEvent(*pos, *globalPos, *pixelDelta, *angleDelta, static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<Qt::ScrollPhase>(phase), inverted, static_cast<Qt::MouseEventSource>(source));
 }
 
-QPoint* QWheelEvent_PixelDelta(QWheelEvent* self) {
-	QPoint ret = const_cast<const QWheelEvent*>(self)->pixelDelta();
+QPoint* QWheelEvent_PixelDelta(const QWheelEvent* self) {
+	QPoint ret = self->pixelDelta();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPoint*>(new QPoint(ret));
 }
 
-QPoint* QWheelEvent_AngleDelta(QWheelEvent* self) {
-	QPoint ret = const_cast<const QWheelEvent*>(self)->angleDelta();
+QPoint* QWheelEvent_AngleDelta(const QWheelEvent* self) {
+	QPoint ret = self->angleDelta();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPoint*>(new QPoint(ret));
 }
 
-int QWheelEvent_Delta(QWheelEvent* self) {
-	return const_cast<const QWheelEvent*>(self)->delta();
+int QWheelEvent_Delta(const QWheelEvent* self) {
+	return self->delta();
 }
 
-uintptr_t QWheelEvent_Orientation(QWheelEvent* self) {
-	Qt::Orientation ret = const_cast<const QWheelEvent*>(self)->orientation();
+uintptr_t QWheelEvent_Orientation(const QWheelEvent* self) {
+	Qt::Orientation ret = self->orientation();
 	return static_cast<uintptr_t>(ret);
 }
 
-QPoint* QWheelEvent_Pos(QWheelEvent* self) {
-	QPoint ret = const_cast<const QWheelEvent*>(self)->pos();
+QPoint* QWheelEvent_Pos(const QWheelEvent* self) {
+	QPoint ret = self->pos();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPoint*>(new QPoint(ret));
 }
 
-QPoint* QWheelEvent_GlobalPos(QWheelEvent* self) {
-	QPoint ret = const_cast<const QWheelEvent*>(self)->globalPos();
+QPoint* QWheelEvent_GlobalPos(const QWheelEvent* self) {
+	QPoint ret = self->globalPos();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPoint*>(new QPoint(ret));
 }
 
-int QWheelEvent_X(QWheelEvent* self) {
-	return const_cast<const QWheelEvent*>(self)->x();
+int QWheelEvent_X(const QWheelEvent* self) {
+	return self->x();
 }
 
-int QWheelEvent_Y(QWheelEvent* self) {
-	return const_cast<const QWheelEvent*>(self)->y();
+int QWheelEvent_Y(const QWheelEvent* self) {
+	return self->y();
 }
 
-int QWheelEvent_GlobalX(QWheelEvent* self) {
-	return const_cast<const QWheelEvent*>(self)->globalX();
+int QWheelEvent_GlobalX(const QWheelEvent* self) {
+	return self->globalX();
 }
 
-int QWheelEvent_GlobalY(QWheelEvent* self) {
-	return const_cast<const QWheelEvent*>(self)->globalY();
+int QWheelEvent_GlobalY(const QWheelEvent* self) {
+	return self->globalY();
 }
 
-QPointF* QWheelEvent_PosF(QWheelEvent* self) {
-	const QPointF& ret = const_cast<const QWheelEvent*>(self)->posF();
+QPointF* QWheelEvent_PosF(const QWheelEvent* self) {
+	const QPointF& ret = self->posF();
 	// Cast returned reference into pointer
 	return const_cast<QPointF*>(&ret);
 }
 
-QPointF* QWheelEvent_GlobalPosF(QWheelEvent* self) {
-	const QPointF& ret = const_cast<const QWheelEvent*>(self)->globalPosF();
+QPointF* QWheelEvent_GlobalPosF(const QWheelEvent* self) {
+	const QPointF& ret = self->globalPosF();
 	// Cast returned reference into pointer
 	return const_cast<QPointF*>(&ret);
 }
 
-QPointF* QWheelEvent_Position(QWheelEvent* self) {
-	QPointF ret = const_cast<const QWheelEvent*>(self)->position();
+QPointF* QWheelEvent_Position(const QWheelEvent* self) {
+	QPointF ret = self->position();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPointF*>(new QPointF(ret));
 }
 
-QPointF* QWheelEvent_GlobalPosition(QWheelEvent* self) {
-	QPointF ret = const_cast<const QWheelEvent*>(self)->globalPosition();
+QPointF* QWheelEvent_GlobalPosition(const QWheelEvent* self) {
+	QPointF ret = self->globalPosition();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPointF*>(new QPointF(ret));
 }
 
-int QWheelEvent_Buttons(QWheelEvent* self) {
-	Qt::MouseButtons ret = const_cast<const QWheelEvent*>(self)->buttons();
+int QWheelEvent_Buttons(const QWheelEvent* self) {
+	Qt::MouseButtons ret = self->buttons();
 	return static_cast<int>(ret);
 }
 
-uintptr_t QWheelEvent_Phase(QWheelEvent* self) {
-	Qt::ScrollPhase ret = const_cast<const QWheelEvent*>(self)->phase();
+uintptr_t QWheelEvent_Phase(const QWheelEvent* self) {
+	Qt::ScrollPhase ret = self->phase();
 	return static_cast<uintptr_t>(ret);
 }
 
-bool QWheelEvent_Inverted(QWheelEvent* self) {
-	return const_cast<const QWheelEvent*>(self)->inverted();
+bool QWheelEvent_Inverted(const QWheelEvent* self) {
+	return self->inverted();
 }
 
-uintptr_t QWheelEvent_Source(QWheelEvent* self) {
-	Qt::MouseEventSource ret = const_cast<const QWheelEvent*>(self)->source();
+uintptr_t QWheelEvent_Source(const QWheelEvent* self) {
+	Qt::MouseEventSource ret = self->source();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -445,104 +445,104 @@ QTabletEvent* QTabletEvent_new3(QTabletEvent* param1) {
 	return new QTabletEvent(*param1);
 }
 
-QPoint* QTabletEvent_Pos(QTabletEvent* self) {
-	QPoint ret = const_cast<const QTabletEvent*>(self)->pos();
+QPoint* QTabletEvent_Pos(const QTabletEvent* self) {
+	QPoint ret = self->pos();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPoint*>(new QPoint(ret));
 }
 
-QPoint* QTabletEvent_GlobalPos(QTabletEvent* self) {
-	QPoint ret = const_cast<const QTabletEvent*>(self)->globalPos();
+QPoint* QTabletEvent_GlobalPos(const QTabletEvent* self) {
+	QPoint ret = self->globalPos();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPoint*>(new QPoint(ret));
 }
 
-QPointF* QTabletEvent_PosF(QTabletEvent* self) {
-	const QPointF& ret = const_cast<const QTabletEvent*>(self)->posF();
+QPointF* QTabletEvent_PosF(const QTabletEvent* self) {
+	const QPointF& ret = self->posF();
 	// Cast returned reference into pointer
 	return const_cast<QPointF*>(&ret);
 }
 
-QPointF* QTabletEvent_GlobalPosF(QTabletEvent* self) {
-	const QPointF& ret = const_cast<const QTabletEvent*>(self)->globalPosF();
+QPointF* QTabletEvent_GlobalPosF(const QTabletEvent* self) {
+	const QPointF& ret = self->globalPosF();
 	// Cast returned reference into pointer
 	return const_cast<QPointF*>(&ret);
 }
 
-int QTabletEvent_X(QTabletEvent* self) {
-	return const_cast<const QTabletEvent*>(self)->x();
+int QTabletEvent_X(const QTabletEvent* self) {
+	return self->x();
 }
 
-int QTabletEvent_Y(QTabletEvent* self) {
-	return const_cast<const QTabletEvent*>(self)->y();
+int QTabletEvent_Y(const QTabletEvent* self) {
+	return self->y();
 }
 
-int QTabletEvent_GlobalX(QTabletEvent* self) {
-	return const_cast<const QTabletEvent*>(self)->globalX();
+int QTabletEvent_GlobalX(const QTabletEvent* self) {
+	return self->globalX();
 }
 
-int QTabletEvent_GlobalY(QTabletEvent* self) {
-	return const_cast<const QTabletEvent*>(self)->globalY();
+int QTabletEvent_GlobalY(const QTabletEvent* self) {
+	return self->globalY();
 }
 
-double QTabletEvent_HiResGlobalX(QTabletEvent* self) {
-	return const_cast<const QTabletEvent*>(self)->hiResGlobalX();
+double QTabletEvent_HiResGlobalX(const QTabletEvent* self) {
+	return self->hiResGlobalX();
 }
 
-double QTabletEvent_HiResGlobalY(QTabletEvent* self) {
-	return const_cast<const QTabletEvent*>(self)->hiResGlobalY();
+double QTabletEvent_HiResGlobalY(const QTabletEvent* self) {
+	return self->hiResGlobalY();
 }
 
-uintptr_t QTabletEvent_Device(QTabletEvent* self) {
-	QTabletEvent::TabletDevice ret = const_cast<const QTabletEvent*>(self)->device();
+uintptr_t QTabletEvent_Device(const QTabletEvent* self) {
+	QTabletEvent::TabletDevice ret = self->device();
 	return static_cast<uintptr_t>(ret);
 }
 
-uintptr_t QTabletEvent_DeviceType(QTabletEvent* self) {
-	QTabletEvent::TabletDevice ret = const_cast<const QTabletEvent*>(self)->deviceType();
+uintptr_t QTabletEvent_DeviceType(const QTabletEvent* self) {
+	QTabletEvent::TabletDevice ret = self->deviceType();
 	return static_cast<uintptr_t>(ret);
 }
 
-uintptr_t QTabletEvent_PointerType(QTabletEvent* self) {
-	QTabletEvent::PointerType ret = const_cast<const QTabletEvent*>(self)->pointerType();
+uintptr_t QTabletEvent_PointerType(const QTabletEvent* self) {
+	QTabletEvent::PointerType ret = self->pointerType();
 	return static_cast<uintptr_t>(ret);
 }
 
-long long QTabletEvent_UniqueId(QTabletEvent* self) {
-	return const_cast<const QTabletEvent*>(self)->uniqueId();
+long long QTabletEvent_UniqueId(const QTabletEvent* self) {
+	return self->uniqueId();
 }
 
-double QTabletEvent_Pressure(QTabletEvent* self) {
-	return const_cast<const QTabletEvent*>(self)->pressure();
+double QTabletEvent_Pressure(const QTabletEvent* self) {
+	return self->pressure();
 }
 
-int QTabletEvent_Z(QTabletEvent* self) {
-	return const_cast<const QTabletEvent*>(self)->z();
+int QTabletEvent_Z(const QTabletEvent* self) {
+	return self->z();
 }
 
-double QTabletEvent_TangentialPressure(QTabletEvent* self) {
-	return const_cast<const QTabletEvent*>(self)->tangentialPressure();
+double QTabletEvent_TangentialPressure(const QTabletEvent* self) {
+	return self->tangentialPressure();
 }
 
-double QTabletEvent_Rotation(QTabletEvent* self) {
-	return const_cast<const QTabletEvent*>(self)->rotation();
+double QTabletEvent_Rotation(const QTabletEvent* self) {
+	return self->rotation();
 }
 
-int QTabletEvent_XTilt(QTabletEvent* self) {
-	return const_cast<const QTabletEvent*>(self)->xTilt();
+int QTabletEvent_XTilt(const QTabletEvent* self) {
+	return self->xTilt();
 }
 
-int QTabletEvent_YTilt(QTabletEvent* self) {
-	return const_cast<const QTabletEvent*>(self)->yTilt();
+int QTabletEvent_YTilt(const QTabletEvent* self) {
+	return self->yTilt();
 }
 
-uintptr_t QTabletEvent_Button(QTabletEvent* self) {
-	Qt::MouseButton ret = const_cast<const QTabletEvent*>(self)->button();
+uintptr_t QTabletEvent_Button(const QTabletEvent* self) {
+	Qt::MouseButton ret = self->button();
 	return static_cast<uintptr_t>(ret);
 }
 
-int QTabletEvent_Buttons(QTabletEvent* self) {
-	Qt::MouseButtons ret = const_cast<const QTabletEvent*>(self)->buttons();
+int QTabletEvent_Buttons(const QTabletEvent* self) {
+	Qt::MouseButtons ret = self->buttons();
 	return static_cast<int>(ret);
 }
 
@@ -562,47 +562,47 @@ QNativeGestureEvent* QNativeGestureEvent_new3(QNativeGestureEvent* param1) {
 	return new QNativeGestureEvent(*param1);
 }
 
-uintptr_t QNativeGestureEvent_GestureType(QNativeGestureEvent* self) {
-	Qt::NativeGestureType ret = const_cast<const QNativeGestureEvent*>(self)->gestureType();
+uintptr_t QNativeGestureEvent_GestureType(const QNativeGestureEvent* self) {
+	Qt::NativeGestureType ret = self->gestureType();
 	return static_cast<uintptr_t>(ret);
 }
 
-double QNativeGestureEvent_Value(QNativeGestureEvent* self) {
-	return const_cast<const QNativeGestureEvent*>(self)->value();
+double QNativeGestureEvent_Value(const QNativeGestureEvent* self) {
+	return self->value();
 }
 
-QPoint* QNativeGestureEvent_Pos(QNativeGestureEvent* self) {
-	QPoint ret = const_cast<const QNativeGestureEvent*>(self)->pos();
+QPoint* QNativeGestureEvent_Pos(const QNativeGestureEvent* self) {
+	QPoint ret = self->pos();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPoint*>(new QPoint(ret));
 }
 
-QPoint* QNativeGestureEvent_GlobalPos(QNativeGestureEvent* self) {
-	QPoint ret = const_cast<const QNativeGestureEvent*>(self)->globalPos();
+QPoint* QNativeGestureEvent_GlobalPos(const QNativeGestureEvent* self) {
+	QPoint ret = self->globalPos();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPoint*>(new QPoint(ret));
 }
 
-QPointF* QNativeGestureEvent_LocalPos(QNativeGestureEvent* self) {
-	const QPointF& ret = const_cast<const QNativeGestureEvent*>(self)->localPos();
+QPointF* QNativeGestureEvent_LocalPos(const QNativeGestureEvent* self) {
+	const QPointF& ret = self->localPos();
 	// Cast returned reference into pointer
 	return const_cast<QPointF*>(&ret);
 }
 
-QPointF* QNativeGestureEvent_WindowPos(QNativeGestureEvent* self) {
-	const QPointF& ret = const_cast<const QNativeGestureEvent*>(self)->windowPos();
+QPointF* QNativeGestureEvent_WindowPos(const QNativeGestureEvent* self) {
+	const QPointF& ret = self->windowPos();
 	// Cast returned reference into pointer
 	return const_cast<QPointF*>(&ret);
 }
 
-QPointF* QNativeGestureEvent_ScreenPos(QNativeGestureEvent* self) {
-	const QPointF& ret = const_cast<const QNativeGestureEvent*>(self)->screenPos();
+QPointF* QNativeGestureEvent_ScreenPos(const QNativeGestureEvent* self) {
+	const QPointF& ret = self->screenPos();
 	// Cast returned reference into pointer
 	return const_cast<QPointF*>(&ret);
 }
 
-QTouchDevice* QNativeGestureEvent_Device(QNativeGestureEvent* self) {
-	return (QTouchDevice*) const_cast<const QNativeGestureEvent*>(self)->device();
+QTouchDevice* QNativeGestureEvent_Device(const QNativeGestureEvent* self) {
+	return (QTouchDevice*) self->device();
 }
 
 void QNativeGestureEvent_Delete(QNativeGestureEvent* self) {
@@ -651,21 +651,21 @@ QKeyEvent* QKeyEvent_new9(uintptr_t typeVal, int key, int modifiers, unsigned in
 	return new QKeyEvent(static_cast<QEvent::Type>(typeVal), static_cast<int>(key), static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<quint32>(nativeScanCode), static_cast<quint32>(nativeVirtualKey), static_cast<quint32>(nativeModifiers), text_QString, autorep, static_cast<ushort>(count));
 }
 
-int QKeyEvent_Key(QKeyEvent* self) {
-	return const_cast<const QKeyEvent*>(self)->key();
+int QKeyEvent_Key(const QKeyEvent* self) {
+	return self->key();
 }
 
-bool QKeyEvent_Matches(QKeyEvent* self, uintptr_t key) {
-	return const_cast<const QKeyEvent*>(self)->matches(static_cast<QKeySequence::StandardKey>(key));
+bool QKeyEvent_Matches(const QKeyEvent* self, uintptr_t key) {
+	return self->matches(static_cast<QKeySequence::StandardKey>(key));
 }
 
-int QKeyEvent_Modifiers(QKeyEvent* self) {
-	Qt::KeyboardModifiers ret = const_cast<const QKeyEvent*>(self)->modifiers();
+int QKeyEvent_Modifiers(const QKeyEvent* self) {
+	Qt::KeyboardModifiers ret = self->modifiers();
 	return static_cast<int>(ret);
 }
 
-void QKeyEvent_Text(QKeyEvent* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QKeyEvent*>(self)->text();
+void QKeyEvent_Text(const QKeyEvent* self, char** _out, int* _out_Strlen) {
+	QString ret = self->text();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -673,24 +673,24 @@ void QKeyEvent_Text(QKeyEvent* self, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-bool QKeyEvent_IsAutoRepeat(QKeyEvent* self) {
-	return const_cast<const QKeyEvent*>(self)->isAutoRepeat();
+bool QKeyEvent_IsAutoRepeat(const QKeyEvent* self) {
+	return self->isAutoRepeat();
 }
 
-int QKeyEvent_Count(QKeyEvent* self) {
-	return const_cast<const QKeyEvent*>(self)->count();
+int QKeyEvent_Count(const QKeyEvent* self) {
+	return self->count();
 }
 
-unsigned int QKeyEvent_NativeScanCode(QKeyEvent* self) {
-	return const_cast<const QKeyEvent*>(self)->nativeScanCode();
+unsigned int QKeyEvent_NativeScanCode(const QKeyEvent* self) {
+	return self->nativeScanCode();
 }
 
-unsigned int QKeyEvent_NativeVirtualKey(QKeyEvent* self) {
-	return const_cast<const QKeyEvent*>(self)->nativeVirtualKey();
+unsigned int QKeyEvent_NativeVirtualKey(const QKeyEvent* self) {
+	return self->nativeVirtualKey();
 }
 
-unsigned int QKeyEvent_NativeModifiers(QKeyEvent* self) {
-	return const_cast<const QKeyEvent*>(self)->nativeModifiers();
+unsigned int QKeyEvent_NativeModifiers(const QKeyEvent* self) {
+	return self->nativeModifiers();
 }
 
 void QKeyEvent_Delete(QKeyEvent* self) {
@@ -709,16 +709,16 @@ QFocusEvent* QFocusEvent_new3(uintptr_t typeVal, uintptr_t reason) {
 	return new QFocusEvent(static_cast<QEvent::Type>(typeVal), static_cast<Qt::FocusReason>(reason));
 }
 
-bool QFocusEvent_GotFocus(QFocusEvent* self) {
-	return const_cast<const QFocusEvent*>(self)->gotFocus();
+bool QFocusEvent_GotFocus(const QFocusEvent* self) {
+	return self->gotFocus();
 }
 
-bool QFocusEvent_LostFocus(QFocusEvent* self) {
-	return const_cast<const QFocusEvent*>(self)->lostFocus();
+bool QFocusEvent_LostFocus(const QFocusEvent* self) {
+	return self->lostFocus();
 }
 
-uintptr_t QFocusEvent_Reason(QFocusEvent* self) {
-	Qt::FocusReason ret = const_cast<const QFocusEvent*>(self)->reason();
+uintptr_t QFocusEvent_Reason(const QFocusEvent* self) {
+	Qt::FocusReason ret = self->reason();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -738,14 +738,14 @@ QPaintEvent* QPaintEvent_new3(QPaintEvent* param1) {
 	return new QPaintEvent(*param1);
 }
 
-QRect* QPaintEvent_Rect(QPaintEvent* self) {
-	const QRect& ret = const_cast<const QPaintEvent*>(self)->rect();
+QRect* QPaintEvent_Rect(const QPaintEvent* self) {
+	const QRect& ret = self->rect();
 	// Cast returned reference into pointer
 	return const_cast<QRect*>(&ret);
 }
 
-QRegion* QPaintEvent_Region(QPaintEvent* self) {
-	const QRegion& ret = const_cast<const QPaintEvent*>(self)->region();
+QRegion* QPaintEvent_Region(const QPaintEvent* self) {
+	const QRegion& ret = self->region();
 	// Cast returned reference into pointer
 	return const_cast<QRegion*>(&ret);
 }
@@ -762,14 +762,14 @@ QMoveEvent* QMoveEvent_new2(QMoveEvent* param1) {
 	return new QMoveEvent(*param1);
 }
 
-QPoint* QMoveEvent_Pos(QMoveEvent* self) {
-	const QPoint& ret = const_cast<const QMoveEvent*>(self)->pos();
+QPoint* QMoveEvent_Pos(const QMoveEvent* self) {
+	const QPoint& ret = self->pos();
 	// Cast returned reference into pointer
 	return const_cast<QPoint*>(&ret);
 }
 
-QPoint* QMoveEvent_OldPos(QMoveEvent* self) {
-	const QPoint& ret = const_cast<const QMoveEvent*>(self)->oldPos();
+QPoint* QMoveEvent_OldPos(const QMoveEvent* self) {
+	const QPoint& ret = self->oldPos();
 	// Cast returned reference into pointer
 	return const_cast<QPoint*>(&ret);
 }
@@ -786,8 +786,8 @@ QExposeEvent* QExposeEvent_new2(QExposeEvent* param1) {
 	return new QExposeEvent(*param1);
 }
 
-QRegion* QExposeEvent_Region(QExposeEvent* self) {
-	const QRegion& ret = const_cast<const QExposeEvent*>(self)->region();
+QRegion* QExposeEvent_Region(const QExposeEvent* self) {
+	const QRegion& ret = self->region();
 	// Cast returned reference into pointer
 	return const_cast<QRegion*>(&ret);
 }
@@ -804,8 +804,8 @@ QPlatformSurfaceEvent* QPlatformSurfaceEvent_new2(QPlatformSurfaceEvent* param1)
 	return new QPlatformSurfaceEvent(*param1);
 }
 
-uintptr_t QPlatformSurfaceEvent_SurfaceEventType(QPlatformSurfaceEvent* self) {
-	QPlatformSurfaceEvent::SurfaceEventType ret = const_cast<const QPlatformSurfaceEvent*>(self)->surfaceEventType();
+uintptr_t QPlatformSurfaceEvent_SurfaceEventType(const QPlatformSurfaceEvent* self) {
+	QPlatformSurfaceEvent::SurfaceEventType ret = self->surfaceEventType();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -821,14 +821,14 @@ QResizeEvent* QResizeEvent_new2(QResizeEvent* param1) {
 	return new QResizeEvent(*param1);
 }
 
-QSize* QResizeEvent_Size(QResizeEvent* self) {
-	const QSize& ret = const_cast<const QResizeEvent*>(self)->size();
+QSize* QResizeEvent_Size(const QResizeEvent* self) {
+	const QSize& ret = self->size();
 	// Cast returned reference into pointer
 	return const_cast<QSize*>(&ret);
 }
 
-QSize* QResizeEvent_OldSize(QResizeEvent* self) {
-	const QSize& ret = const_cast<const QResizeEvent*>(self)->oldSize();
+QSize* QResizeEvent_OldSize(const QResizeEvent* self) {
+	const QSize& ret = self->oldSize();
 	// Cast returned reference into pointer
 	return const_cast<QSize*>(&ret);
 }
@@ -917,36 +917,36 @@ QContextMenuEvent* QContextMenuEvent_new4(QContextMenuEvent* param1) {
 	return new QContextMenuEvent(*param1);
 }
 
-int QContextMenuEvent_X(QContextMenuEvent* self) {
-	return const_cast<const QContextMenuEvent*>(self)->x();
+int QContextMenuEvent_X(const QContextMenuEvent* self) {
+	return self->x();
 }
 
-int QContextMenuEvent_Y(QContextMenuEvent* self) {
-	return const_cast<const QContextMenuEvent*>(self)->y();
+int QContextMenuEvent_Y(const QContextMenuEvent* self) {
+	return self->y();
 }
 
-int QContextMenuEvent_GlobalX(QContextMenuEvent* self) {
-	return const_cast<const QContextMenuEvent*>(self)->globalX();
+int QContextMenuEvent_GlobalX(const QContextMenuEvent* self) {
+	return self->globalX();
 }
 
-int QContextMenuEvent_GlobalY(QContextMenuEvent* self) {
-	return const_cast<const QContextMenuEvent*>(self)->globalY();
+int QContextMenuEvent_GlobalY(const QContextMenuEvent* self) {
+	return self->globalY();
 }
 
-QPoint* QContextMenuEvent_Pos(QContextMenuEvent* self) {
-	const QPoint& ret = const_cast<const QContextMenuEvent*>(self)->pos();
+QPoint* QContextMenuEvent_Pos(const QContextMenuEvent* self) {
+	const QPoint& ret = self->pos();
 	// Cast returned reference into pointer
 	return const_cast<QPoint*>(&ret);
 }
 
-QPoint* QContextMenuEvent_GlobalPos(QContextMenuEvent* self) {
-	const QPoint& ret = const_cast<const QContextMenuEvent*>(self)->globalPos();
+QPoint* QContextMenuEvent_GlobalPos(const QContextMenuEvent* self) {
+	const QPoint& ret = self->globalPos();
 	// Cast returned reference into pointer
 	return const_cast<QPoint*>(&ret);
 }
 
-uintptr_t QContextMenuEvent_Reason(QContextMenuEvent* self) {
-	QContextMenuEvent::Reason ret = const_cast<const QContextMenuEvent*>(self)->reason();
+uintptr_t QContextMenuEvent_Reason(const QContextMenuEvent* self) {
+	QContextMenuEvent::Reason ret = self->reason();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -977,8 +977,8 @@ void QInputMethodEvent_SetCommitString(QInputMethodEvent* self, const char* comm
 	self->setCommitString(commitString_QString);
 }
 
-void QInputMethodEvent_PreeditString(QInputMethodEvent* self, char** _out, int* _out_Strlen) {
-	const QString ret = const_cast<const QInputMethodEvent*>(self)->preeditString();
+void QInputMethodEvent_PreeditString(const QInputMethodEvent* self, char** _out, int* _out_Strlen) {
+	const QString ret = self->preeditString();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -986,8 +986,8 @@ void QInputMethodEvent_PreeditString(QInputMethodEvent* self, char** _out, int* 
 	*_out_Strlen = b.length();
 }
 
-void QInputMethodEvent_CommitString(QInputMethodEvent* self, char** _out, int* _out_Strlen) {
-	const QString ret = const_cast<const QInputMethodEvent*>(self)->commitString();
+void QInputMethodEvent_CommitString(const QInputMethodEvent* self, char** _out, int* _out_Strlen) {
+	const QString ret = self->commitString();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -995,12 +995,12 @@ void QInputMethodEvent_CommitString(QInputMethodEvent* self, char** _out, int* _
 	*_out_Strlen = b.length();
 }
 
-int QInputMethodEvent_ReplacementStart(QInputMethodEvent* self) {
-	return const_cast<const QInputMethodEvent*>(self)->replacementStart();
+int QInputMethodEvent_ReplacementStart(const QInputMethodEvent* self) {
+	return self->replacementStart();
 }
 
-int QInputMethodEvent_ReplacementLength(QInputMethodEvent* self) {
-	return const_cast<const QInputMethodEvent*>(self)->replacementLength();
+int QInputMethodEvent_ReplacementLength(const QInputMethodEvent* self) {
+	return self->replacementLength();
 }
 
 void QInputMethodEvent_SetCommitString2(QInputMethodEvent* self, const char* commitString, size_t commitString_Strlen, int replaceFrom) {
@@ -1025,8 +1025,8 @@ QInputMethodQueryEvent* QInputMethodQueryEvent_new2(QInputMethodQueryEvent* para
 	return new QInputMethodQueryEvent(*param1);
 }
 
-int QInputMethodQueryEvent_Queries(QInputMethodQueryEvent* self) {
-	Qt::InputMethodQueries ret = const_cast<const QInputMethodQueryEvent*>(self)->queries();
+int QInputMethodQueryEvent_Queries(const QInputMethodQueryEvent* self) {
+	Qt::InputMethodQueries ret = self->queries();
 	return static_cast<int>(ret);
 }
 
@@ -1034,8 +1034,8 @@ void QInputMethodQueryEvent_SetValue(QInputMethodQueryEvent* self, uintptr_t que
 	self->setValue(static_cast<Qt::InputMethodQuery>(query), *value);
 }
 
-QVariant* QInputMethodQueryEvent_Value(QInputMethodQueryEvent* self, uintptr_t query) {
-	QVariant ret = const_cast<const QInputMethodQueryEvent*>(self)->value(static_cast<Qt::InputMethodQuery>(query));
+QVariant* QInputMethodQueryEvent_Value(const QInputMethodQueryEvent* self, uintptr_t query) {
+	QVariant ret = self->value(static_cast<Qt::InputMethodQuery>(query));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVariant*>(new QVariant(ret));
 }
@@ -1056,35 +1056,35 @@ QDropEvent* QDropEvent_new3(QPointF* pos, int actions, QMimeData* data, int butt
 	return new QDropEvent(*pos, static_cast<Qt::DropActions>(actions), data, static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<QEvent::Type>(typeVal));
 }
 
-QPoint* QDropEvent_Pos(QDropEvent* self) {
-	QPoint ret = const_cast<const QDropEvent*>(self)->pos();
+QPoint* QDropEvent_Pos(const QDropEvent* self) {
+	QPoint ret = self->pos();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPoint*>(new QPoint(ret));
 }
 
-QPointF* QDropEvent_PosF(QDropEvent* self) {
-	const QPointF& ret = const_cast<const QDropEvent*>(self)->posF();
+QPointF* QDropEvent_PosF(const QDropEvent* self) {
+	const QPointF& ret = self->posF();
 	// Cast returned reference into pointer
 	return const_cast<QPointF*>(&ret);
 }
 
-int QDropEvent_MouseButtons(QDropEvent* self) {
-	Qt::MouseButtons ret = const_cast<const QDropEvent*>(self)->mouseButtons();
+int QDropEvent_MouseButtons(const QDropEvent* self) {
+	Qt::MouseButtons ret = self->mouseButtons();
 	return static_cast<int>(ret);
 }
 
-int QDropEvent_KeyboardModifiers(QDropEvent* self) {
-	Qt::KeyboardModifiers ret = const_cast<const QDropEvent*>(self)->keyboardModifiers();
+int QDropEvent_KeyboardModifiers(const QDropEvent* self) {
+	Qt::KeyboardModifiers ret = self->keyboardModifiers();
 	return static_cast<int>(ret);
 }
 
-int QDropEvent_PossibleActions(QDropEvent* self) {
-	Qt::DropActions ret = const_cast<const QDropEvent*>(self)->possibleActions();
+int QDropEvent_PossibleActions(const QDropEvent* self) {
+	Qt::DropActions ret = self->possibleActions();
 	return static_cast<int>(ret);
 }
 
-uintptr_t QDropEvent_ProposedAction(QDropEvent* self) {
-	Qt::DropAction ret = const_cast<const QDropEvent*>(self)->proposedAction();
+uintptr_t QDropEvent_ProposedAction(const QDropEvent* self) {
+	Qt::DropAction ret = self->proposedAction();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -1092,8 +1092,8 @@ void QDropEvent_AcceptProposedAction(QDropEvent* self) {
 	self->acceptProposedAction();
 }
 
-uintptr_t QDropEvent_DropAction(QDropEvent* self) {
-	Qt::DropAction ret = const_cast<const QDropEvent*>(self)->dropAction();
+uintptr_t QDropEvent_DropAction(const QDropEvent* self) {
+	Qt::DropAction ret = self->dropAction();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -1101,12 +1101,12 @@ void QDropEvent_SetDropAction(QDropEvent* self, uintptr_t action) {
 	self->setDropAction(static_cast<Qt::DropAction>(action));
 }
 
-QObject* QDropEvent_Source(QDropEvent* self) {
-	return const_cast<const QDropEvent*>(self)->source();
+QObject* QDropEvent_Source(const QDropEvent* self) {
+	return self->source();
 }
 
-QMimeData* QDropEvent_MimeData(QDropEvent* self) {
-	return (QMimeData*) const_cast<const QDropEvent*>(self)->mimeData();
+QMimeData* QDropEvent_MimeData(const QDropEvent* self) {
+	return (QMimeData*) self->mimeData();
 }
 
 void QDropEvent_Delete(QDropEvent* self) {
@@ -1125,8 +1125,8 @@ QDragMoveEvent* QDragMoveEvent_new3(QPoint* pos, int actions, QMimeData* data, i
 	return new QDragMoveEvent(*pos, static_cast<Qt::DropActions>(actions), data, static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<QEvent::Type>(typeVal));
 }
 
-QRect* QDragMoveEvent_AnswerRect(QDragMoveEvent* self) {
-	QRect ret = const_cast<const QDragMoveEvent*>(self)->answerRect();
+QRect* QDragMoveEvent_AnswerRect(const QDragMoveEvent* self) {
+	QRect ret = self->answerRect();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRect*>(new QRect(ret));
 }
@@ -1191,30 +1191,30 @@ QHelpEvent* QHelpEvent_new2(QHelpEvent* param1) {
 	return new QHelpEvent(*param1);
 }
 
-int QHelpEvent_X(QHelpEvent* self) {
-	return const_cast<const QHelpEvent*>(self)->x();
+int QHelpEvent_X(const QHelpEvent* self) {
+	return self->x();
 }
 
-int QHelpEvent_Y(QHelpEvent* self) {
-	return const_cast<const QHelpEvent*>(self)->y();
+int QHelpEvent_Y(const QHelpEvent* self) {
+	return self->y();
 }
 
-int QHelpEvent_GlobalX(QHelpEvent* self) {
-	return const_cast<const QHelpEvent*>(self)->globalX();
+int QHelpEvent_GlobalX(const QHelpEvent* self) {
+	return self->globalX();
 }
 
-int QHelpEvent_GlobalY(QHelpEvent* self) {
-	return const_cast<const QHelpEvent*>(self)->globalY();
+int QHelpEvent_GlobalY(const QHelpEvent* self) {
+	return self->globalY();
 }
 
-QPoint* QHelpEvent_Pos(QHelpEvent* self) {
-	const QPoint& ret = const_cast<const QHelpEvent*>(self)->pos();
+QPoint* QHelpEvent_Pos(const QHelpEvent* self) {
+	const QPoint& ret = self->pos();
 	// Cast returned reference into pointer
 	return const_cast<QPoint*>(&ret);
 }
 
-QPoint* QHelpEvent_GlobalPos(QHelpEvent* self) {
-	const QPoint& ret = const_cast<const QHelpEvent*>(self)->globalPos();
+QPoint* QHelpEvent_GlobalPos(const QHelpEvent* self) {
+	const QPoint& ret = self->globalPos();
 	// Cast returned reference into pointer
 	return const_cast<QPoint*>(&ret);
 }
@@ -1232,8 +1232,8 @@ QStatusTipEvent* QStatusTipEvent_new2(QStatusTipEvent* param1) {
 	return new QStatusTipEvent(*param1);
 }
 
-void QStatusTipEvent_Tip(QStatusTipEvent* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QStatusTipEvent*>(self)->tip();
+void QStatusTipEvent_Tip(const QStatusTipEvent* self, char** _out, int* _out_Strlen) {
+	QString ret = self->tip();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -1254,8 +1254,8 @@ QWhatsThisClickedEvent* QWhatsThisClickedEvent_new2(QWhatsThisClickedEvent* para
 	return new QWhatsThisClickedEvent(*param1);
 }
 
-void QWhatsThisClickedEvent_Href(QWhatsThisClickedEvent* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QWhatsThisClickedEvent*>(self)->href();
+void QWhatsThisClickedEvent_Href(const QWhatsThisClickedEvent* self, char** _out, int* _out_Strlen) {
+	QString ret = self->href();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -1279,12 +1279,12 @@ QActionEvent* QActionEvent_new3(int typeVal, QAction* action, QAction* before) {
 	return new QActionEvent(static_cast<int>(typeVal), action, before);
 }
 
-QAction* QActionEvent_Action(QActionEvent* self) {
-	return const_cast<const QActionEvent*>(self)->action();
+QAction* QActionEvent_Action(const QActionEvent* self) {
+	return self->action();
 }
 
-QAction* QActionEvent_Before(QActionEvent* self) {
-	return const_cast<const QActionEvent*>(self)->before();
+QAction* QActionEvent_Before(const QActionEvent* self) {
+	return self->before();
 }
 
 void QActionEvent_OperatorAssign(QActionEvent* self, QActionEvent* param1) {
@@ -1308,8 +1308,8 @@ QFileOpenEvent* QFileOpenEvent_new3(QFileOpenEvent* param1) {
 	return new QFileOpenEvent(*param1);
 }
 
-void QFileOpenEvent_File(QFileOpenEvent* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QFileOpenEvent*>(self)->file();
+void QFileOpenEvent_File(const QFileOpenEvent* self, char** _out, int* _out_Strlen) {
+	QString ret = self->file();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -1317,14 +1317,14 @@ void QFileOpenEvent_File(QFileOpenEvent* self, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-QUrl* QFileOpenEvent_Url(QFileOpenEvent* self) {
-	QUrl ret = const_cast<const QFileOpenEvent*>(self)->url();
+QUrl* QFileOpenEvent_Url(const QFileOpenEvent* self) {
+	QUrl ret = self->url();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QUrl*>(new QUrl(ret));
 }
 
-bool QFileOpenEvent_OpenFile(QFileOpenEvent* self, QFile* file, int flags) {
-	return const_cast<const QFileOpenEvent*>(self)->openFile(*file, static_cast<QIODevice::OpenMode>(flags));
+bool QFileOpenEvent_OpenFile(const QFileOpenEvent* self, QFile* file, int flags) {
+	return self->openFile(*file, static_cast<QIODevice::OpenMode>(flags));
 }
 
 void QFileOpenEvent_Delete(QFileOpenEvent* self) {
@@ -1339,8 +1339,8 @@ QToolBarChangeEvent* QToolBarChangeEvent_new2(QToolBarChangeEvent* param1) {
 	return new QToolBarChangeEvent(*param1);
 }
 
-bool QToolBarChangeEvent_Toggle(QToolBarChangeEvent* self) {
-	return const_cast<const QToolBarChangeEvent*>(self)->toggle();
+bool QToolBarChangeEvent_Toggle(const QToolBarChangeEvent* self) {
+	return self->toggle();
 }
 
 void QToolBarChangeEvent_Delete(QToolBarChangeEvent* self) {
@@ -1359,18 +1359,18 @@ QShortcutEvent* QShortcutEvent_new3(QKeySequence* key, int id, bool ambiguous) {
 	return new QShortcutEvent(*key, static_cast<int>(id), ambiguous);
 }
 
-QKeySequence* QShortcutEvent_Key(QShortcutEvent* self) {
-	const QKeySequence& ret = const_cast<const QShortcutEvent*>(self)->key();
+QKeySequence* QShortcutEvent_Key(const QShortcutEvent* self) {
+	const QKeySequence& ret = self->key();
 	// Cast returned reference into pointer
 	return const_cast<QKeySequence*>(&ret);
 }
 
-int QShortcutEvent_ShortcutId(QShortcutEvent* self) {
-	return const_cast<const QShortcutEvent*>(self)->shortcutId();
+int QShortcutEvent_ShortcutId(const QShortcutEvent* self) {
+	return self->shortcutId();
 }
 
-bool QShortcutEvent_IsAmbiguous(QShortcutEvent* self) {
-	return const_cast<const QShortcutEvent*>(self)->isAmbiguous();
+bool QShortcutEvent_IsAmbiguous(const QShortcutEvent* self) {
+	return self->isAmbiguous();
 }
 
 void QShortcutEvent_Delete(QShortcutEvent* self) {
@@ -1389,13 +1389,13 @@ QWindowStateChangeEvent* QWindowStateChangeEvent_new3(int aOldState, bool isOver
 	return new QWindowStateChangeEvent(static_cast<Qt::WindowStates>(aOldState), isOverride);
 }
 
-int QWindowStateChangeEvent_OldState(QWindowStateChangeEvent* self) {
-	Qt::WindowStates ret = const_cast<const QWindowStateChangeEvent*>(self)->oldState();
+int QWindowStateChangeEvent_OldState(const QWindowStateChangeEvent* self) {
+	Qt::WindowStates ret = self->oldState();
 	return static_cast<int>(ret);
 }
 
-bool QWindowStateChangeEvent_IsOverride(QWindowStateChangeEvent* self) {
-	return const_cast<const QWindowStateChangeEvent*>(self)->isOverride();
+bool QWindowStateChangeEvent_IsOverride(const QWindowStateChangeEvent* self) {
+	return self->isOverride();
 }
 
 void QWindowStateChangeEvent_Delete(QWindowStateChangeEvent* self) {
@@ -1416,12 +1416,12 @@ QPointingDeviceUniqueId* QPointingDeviceUniqueId_FromNumericId(long long id) {
 	return static_cast<QPointingDeviceUniqueId*>(new QPointingDeviceUniqueId(ret));
 }
 
-bool QPointingDeviceUniqueId_IsValid(QPointingDeviceUniqueId* self) {
-	return const_cast<const QPointingDeviceUniqueId*>(self)->isValid();
+bool QPointingDeviceUniqueId_IsValid(const QPointingDeviceUniqueId* self) {
+	return self->isValid();
 }
 
-long long QPointingDeviceUniqueId_NumericId(QPointingDeviceUniqueId* self) {
-	return const_cast<const QPointingDeviceUniqueId*>(self)->numericId();
+long long QPointingDeviceUniqueId_NumericId(const QPointingDeviceUniqueId* self) {
+	return self->numericId();
 }
 
 void QPointingDeviceUniqueId_Delete(QPointingDeviceUniqueId* self) {
@@ -1457,21 +1457,21 @@ QTouchEvent* QTouchEvent_new6(uintptr_t eventType, QTouchDevice* device, int mod
 	return new QTouchEvent(static_cast<QEvent::Type>(eventType), device, static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<Qt::TouchPointStates>(touchPointStates), touchPoints_QList);
 }
 
-QWindow* QTouchEvent_Window(QTouchEvent* self) {
-	return const_cast<const QTouchEvent*>(self)->window();
+QWindow* QTouchEvent_Window(const QTouchEvent* self) {
+	return self->window();
 }
 
-QObject* QTouchEvent_Target(QTouchEvent* self) {
-	return const_cast<const QTouchEvent*>(self)->target();
+QObject* QTouchEvent_Target(const QTouchEvent* self) {
+	return self->target();
 }
 
-int QTouchEvent_TouchPointStates(QTouchEvent* self) {
-	Qt::TouchPointStates ret = const_cast<const QTouchEvent*>(self)->touchPointStates();
+int QTouchEvent_TouchPointStates(const QTouchEvent* self) {
+	Qt::TouchPointStates ret = self->touchPointStates();
 	return static_cast<int>(ret);
 }
 
-QTouchDevice* QTouchEvent_Device(QTouchEvent* self) {
-	return const_cast<const QTouchEvent*>(self)->device();
+QTouchDevice* QTouchEvent_Device(const QTouchEvent* self) {
+	return self->device();
 }
 
 void QTouchEvent_SetWindow(QTouchEvent* self, QWindow* awindow) {
@@ -1511,26 +1511,26 @@ QScrollPrepareEvent* QScrollPrepareEvent_new2(QScrollPrepareEvent* param1) {
 	return new QScrollPrepareEvent(*param1);
 }
 
-QPointF* QScrollPrepareEvent_StartPos(QScrollPrepareEvent* self) {
-	QPointF ret = const_cast<const QScrollPrepareEvent*>(self)->startPos();
+QPointF* QScrollPrepareEvent_StartPos(const QScrollPrepareEvent* self) {
+	QPointF ret = self->startPos();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPointF*>(new QPointF(ret));
 }
 
-QSizeF* QScrollPrepareEvent_ViewportSize(QScrollPrepareEvent* self) {
-	QSizeF ret = const_cast<const QScrollPrepareEvent*>(self)->viewportSize();
+QSizeF* QScrollPrepareEvent_ViewportSize(const QScrollPrepareEvent* self) {
+	QSizeF ret = self->viewportSize();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSizeF*>(new QSizeF(ret));
 }
 
-QRectF* QScrollPrepareEvent_ContentPosRange(QScrollPrepareEvent* self) {
-	QRectF ret = const_cast<const QScrollPrepareEvent*>(self)->contentPosRange();
+QRectF* QScrollPrepareEvent_ContentPosRange(const QScrollPrepareEvent* self) {
+	QRectF ret = self->contentPosRange();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRectF*>(new QRectF(ret));
 }
 
-QPointF* QScrollPrepareEvent_ContentPos(QScrollPrepareEvent* self) {
-	QPointF ret = const_cast<const QScrollPrepareEvent*>(self)->contentPos();
+QPointF* QScrollPrepareEvent_ContentPos(const QScrollPrepareEvent* self) {
+	QPointF ret = self->contentPos();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPointF*>(new QPointF(ret));
 }
@@ -1559,20 +1559,20 @@ QScrollEvent* QScrollEvent_new2(QScrollEvent* param1) {
 	return new QScrollEvent(*param1);
 }
 
-QPointF* QScrollEvent_ContentPos(QScrollEvent* self) {
-	QPointF ret = const_cast<const QScrollEvent*>(self)->contentPos();
+QPointF* QScrollEvent_ContentPos(const QScrollEvent* self) {
+	QPointF ret = self->contentPos();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPointF*>(new QPointF(ret));
 }
 
-QPointF* QScrollEvent_OvershootDistance(QScrollEvent* self) {
-	QPointF ret = const_cast<const QScrollEvent*>(self)->overshootDistance();
+QPointF* QScrollEvent_OvershootDistance(const QScrollEvent* self) {
+	QPointF ret = self->overshootDistance();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPointF*>(new QPointF(ret));
 }
 
-uintptr_t QScrollEvent_ScrollState(QScrollEvent* self) {
-	QScrollEvent::ScrollState ret = const_cast<const QScrollEvent*>(self)->scrollState();
+uintptr_t QScrollEvent_ScrollState(const QScrollEvent* self) {
+	QScrollEvent::ScrollState ret = self->scrollState();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -1588,12 +1588,12 @@ QScreenOrientationChangeEvent* QScreenOrientationChangeEvent_new2(QScreenOrienta
 	return new QScreenOrientationChangeEvent(*param1);
 }
 
-QScreen* QScreenOrientationChangeEvent_Screen(QScreenOrientationChangeEvent* self) {
-	return const_cast<const QScreenOrientationChangeEvent*>(self)->screen();
+QScreen* QScreenOrientationChangeEvent_Screen(const QScreenOrientationChangeEvent* self) {
+	return self->screen();
 }
 
-uintptr_t QScreenOrientationChangeEvent_Orientation(QScreenOrientationChangeEvent* self) {
-	Qt::ScreenOrientation ret = const_cast<const QScreenOrientationChangeEvent*>(self)->orientation();
+uintptr_t QScreenOrientationChangeEvent_Orientation(const QScreenOrientationChangeEvent* self) {
+	Qt::ScreenOrientation ret = self->orientation();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -1609,8 +1609,8 @@ QApplicationStateChangeEvent* QApplicationStateChangeEvent_new2(QApplicationStat
 	return new QApplicationStateChangeEvent(*param1);
 }
 
-uintptr_t QApplicationStateChangeEvent_ApplicationState(QApplicationStateChangeEvent* self) {
-	Qt::ApplicationState ret = const_cast<const QApplicationStateChangeEvent*>(self)->applicationState();
+uintptr_t QApplicationStateChangeEvent_ApplicationState(const QApplicationStateChangeEvent* self) {
+	Qt::ApplicationState ret = self->applicationState();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -1650,107 +1650,107 @@ void QTouchEvent__TouchPoint_Swap(QTouchEvent__TouchPoint* self, QTouchEvent__To
 	self->swap(*other);
 }
 
-int QTouchEvent__TouchPoint_Id(QTouchEvent__TouchPoint* self) {
-	return const_cast<const QTouchEvent::TouchPoint*>(self)->id();
+int QTouchEvent__TouchPoint_Id(const QTouchEvent__TouchPoint* self) {
+	return self->id();
 }
 
-QPointingDeviceUniqueId* QTouchEvent__TouchPoint_UniqueId(QTouchEvent__TouchPoint* self) {
-	QPointingDeviceUniqueId ret = const_cast<const QTouchEvent::TouchPoint*>(self)->uniqueId();
+QPointingDeviceUniqueId* QTouchEvent__TouchPoint_UniqueId(const QTouchEvent__TouchPoint* self) {
+	QPointingDeviceUniqueId ret = self->uniqueId();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPointingDeviceUniqueId*>(new QPointingDeviceUniqueId(ret));
 }
 
-uintptr_t QTouchEvent__TouchPoint_State(QTouchEvent__TouchPoint* self) {
-	Qt::TouchPointState ret = const_cast<const QTouchEvent::TouchPoint*>(self)->state();
+uintptr_t QTouchEvent__TouchPoint_State(const QTouchEvent__TouchPoint* self) {
+	Qt::TouchPointState ret = self->state();
 	return static_cast<uintptr_t>(ret);
 }
 
-QPointF* QTouchEvent__TouchPoint_Pos(QTouchEvent__TouchPoint* self) {
-	QPointF ret = const_cast<const QTouchEvent::TouchPoint*>(self)->pos();
+QPointF* QTouchEvent__TouchPoint_Pos(const QTouchEvent__TouchPoint* self) {
+	QPointF ret = self->pos();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPointF*>(new QPointF(ret));
 }
 
-QPointF* QTouchEvent__TouchPoint_StartPos(QTouchEvent__TouchPoint* self) {
-	QPointF ret = const_cast<const QTouchEvent::TouchPoint*>(self)->startPos();
+QPointF* QTouchEvent__TouchPoint_StartPos(const QTouchEvent__TouchPoint* self) {
+	QPointF ret = self->startPos();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPointF*>(new QPointF(ret));
 }
 
-QPointF* QTouchEvent__TouchPoint_LastPos(QTouchEvent__TouchPoint* self) {
-	QPointF ret = const_cast<const QTouchEvent::TouchPoint*>(self)->lastPos();
+QPointF* QTouchEvent__TouchPoint_LastPos(const QTouchEvent__TouchPoint* self) {
+	QPointF ret = self->lastPos();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPointF*>(new QPointF(ret));
 }
 
-QPointF* QTouchEvent__TouchPoint_ScenePos(QTouchEvent__TouchPoint* self) {
-	QPointF ret = const_cast<const QTouchEvent::TouchPoint*>(self)->scenePos();
+QPointF* QTouchEvent__TouchPoint_ScenePos(const QTouchEvent__TouchPoint* self) {
+	QPointF ret = self->scenePos();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPointF*>(new QPointF(ret));
 }
 
-QPointF* QTouchEvent__TouchPoint_StartScenePos(QTouchEvent__TouchPoint* self) {
-	QPointF ret = const_cast<const QTouchEvent::TouchPoint*>(self)->startScenePos();
+QPointF* QTouchEvent__TouchPoint_StartScenePos(const QTouchEvent__TouchPoint* self) {
+	QPointF ret = self->startScenePos();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPointF*>(new QPointF(ret));
 }
 
-QPointF* QTouchEvent__TouchPoint_LastScenePos(QTouchEvent__TouchPoint* self) {
-	QPointF ret = const_cast<const QTouchEvent::TouchPoint*>(self)->lastScenePos();
+QPointF* QTouchEvent__TouchPoint_LastScenePos(const QTouchEvent__TouchPoint* self) {
+	QPointF ret = self->lastScenePos();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPointF*>(new QPointF(ret));
 }
 
-QPointF* QTouchEvent__TouchPoint_ScreenPos(QTouchEvent__TouchPoint* self) {
-	QPointF ret = const_cast<const QTouchEvent::TouchPoint*>(self)->screenPos();
+QPointF* QTouchEvent__TouchPoint_ScreenPos(const QTouchEvent__TouchPoint* self) {
+	QPointF ret = self->screenPos();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPointF*>(new QPointF(ret));
 }
 
-QPointF* QTouchEvent__TouchPoint_StartScreenPos(QTouchEvent__TouchPoint* self) {
-	QPointF ret = const_cast<const QTouchEvent::TouchPoint*>(self)->startScreenPos();
+QPointF* QTouchEvent__TouchPoint_StartScreenPos(const QTouchEvent__TouchPoint* self) {
+	QPointF ret = self->startScreenPos();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPointF*>(new QPointF(ret));
 }
 
-QPointF* QTouchEvent__TouchPoint_LastScreenPos(QTouchEvent__TouchPoint* self) {
-	QPointF ret = const_cast<const QTouchEvent::TouchPoint*>(self)->lastScreenPos();
+QPointF* QTouchEvent__TouchPoint_LastScreenPos(const QTouchEvent__TouchPoint* self) {
+	QPointF ret = self->lastScreenPos();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPointF*>(new QPointF(ret));
 }
 
-QPointF* QTouchEvent__TouchPoint_NormalizedPos(QTouchEvent__TouchPoint* self) {
-	QPointF ret = const_cast<const QTouchEvent::TouchPoint*>(self)->normalizedPos();
+QPointF* QTouchEvent__TouchPoint_NormalizedPos(const QTouchEvent__TouchPoint* self) {
+	QPointF ret = self->normalizedPos();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPointF*>(new QPointF(ret));
 }
 
-QPointF* QTouchEvent__TouchPoint_StartNormalizedPos(QTouchEvent__TouchPoint* self) {
-	QPointF ret = const_cast<const QTouchEvent::TouchPoint*>(self)->startNormalizedPos();
+QPointF* QTouchEvent__TouchPoint_StartNormalizedPos(const QTouchEvent__TouchPoint* self) {
+	QPointF ret = self->startNormalizedPos();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPointF*>(new QPointF(ret));
 }
 
-QPointF* QTouchEvent__TouchPoint_LastNormalizedPos(QTouchEvent__TouchPoint* self) {
-	QPointF ret = const_cast<const QTouchEvent::TouchPoint*>(self)->lastNormalizedPos();
+QPointF* QTouchEvent__TouchPoint_LastNormalizedPos(const QTouchEvent__TouchPoint* self) {
+	QPointF ret = self->lastNormalizedPos();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPointF*>(new QPointF(ret));
 }
 
-QRectF* QTouchEvent__TouchPoint_Rect(QTouchEvent__TouchPoint* self) {
-	QRectF ret = const_cast<const QTouchEvent::TouchPoint*>(self)->rect();
+QRectF* QTouchEvent__TouchPoint_Rect(const QTouchEvent__TouchPoint* self) {
+	QRectF ret = self->rect();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRectF*>(new QRectF(ret));
 }
 
-QRectF* QTouchEvent__TouchPoint_SceneRect(QTouchEvent__TouchPoint* self) {
-	QRectF ret = const_cast<const QTouchEvent::TouchPoint*>(self)->sceneRect();
+QRectF* QTouchEvent__TouchPoint_SceneRect(const QTouchEvent__TouchPoint* self) {
+	QRectF ret = self->sceneRect();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRectF*>(new QRectF(ret));
 }
 
-QRectF* QTouchEvent__TouchPoint_ScreenRect(QTouchEvent__TouchPoint* self) {
-	QRectF ret = const_cast<const QTouchEvent::TouchPoint*>(self)->screenRect();
+QRectF* QTouchEvent__TouchPoint_ScreenRect(const QTouchEvent__TouchPoint* self) {
+	QRectF ret = self->screenRect();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRectF*>(new QRectF(ret));
 }
@@ -1767,33 +1767,33 @@ void QTouchEvent__TouchPoint_SetScreenRect(QTouchEvent__TouchPoint* self, QRectF
 	self->setScreenRect(*screenRect);
 }
 
-double QTouchEvent__TouchPoint_Pressure(QTouchEvent__TouchPoint* self) {
-	return const_cast<const QTouchEvent::TouchPoint*>(self)->pressure();
+double QTouchEvent__TouchPoint_Pressure(const QTouchEvent__TouchPoint* self) {
+	return self->pressure();
 }
 
-double QTouchEvent__TouchPoint_Rotation(QTouchEvent__TouchPoint* self) {
-	return const_cast<const QTouchEvent::TouchPoint*>(self)->rotation();
+double QTouchEvent__TouchPoint_Rotation(const QTouchEvent__TouchPoint* self) {
+	return self->rotation();
 }
 
-QSizeF* QTouchEvent__TouchPoint_EllipseDiameters(QTouchEvent__TouchPoint* self) {
-	QSizeF ret = const_cast<const QTouchEvent::TouchPoint*>(self)->ellipseDiameters();
+QSizeF* QTouchEvent__TouchPoint_EllipseDiameters(const QTouchEvent__TouchPoint* self) {
+	QSizeF ret = self->ellipseDiameters();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSizeF*>(new QSizeF(ret));
 }
 
-QVector2D* QTouchEvent__TouchPoint_Velocity(QTouchEvent__TouchPoint* self) {
-	QVector2D ret = const_cast<const QTouchEvent::TouchPoint*>(self)->velocity();
+QVector2D* QTouchEvent__TouchPoint_Velocity(const QTouchEvent__TouchPoint* self) {
+	QVector2D ret = self->velocity();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVector2D*>(new QVector2D(ret));
 }
 
-int QTouchEvent__TouchPoint_Flags(QTouchEvent__TouchPoint* self) {
-	QTouchEvent::TouchPoint::InfoFlags ret = const_cast<const QTouchEvent::TouchPoint*>(self)->flags();
+int QTouchEvent__TouchPoint_Flags(const QTouchEvent__TouchPoint* self) {
+	QTouchEvent::TouchPoint::InfoFlags ret = self->flags();
 	return static_cast<int>(ret);
 }
 
-void QTouchEvent__TouchPoint_RawScreenPositions(QTouchEvent__TouchPoint* self, QPointF*** _out, size_t* _out_len) {
-	QVector<QPointF> ret = const_cast<const QTouchEvent::TouchPoint*>(self)->rawScreenPositions();
+void QTouchEvent__TouchPoint_RawScreenPositions(const QTouchEvent__TouchPoint* self, QPointF*** _out, size_t* _out_len) {
+	QVector<QPointF> ret = self->rawScreenPositions();
 	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
 	QPointF** __out = static_cast<QPointF**>(malloc(sizeof(QPointF**) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {

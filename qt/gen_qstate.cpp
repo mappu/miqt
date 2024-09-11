@@ -33,8 +33,8 @@ QState* QState_new4(uintptr_t childMode, QState* parent) {
 	return new QState(static_cast<QState::ChildMode>(childMode), parent);
 }
 
-QMetaObject* QState_MetaObject(QState* self) {
-	return (QMetaObject*) const_cast<const QState*>(self)->metaObject();
+QMetaObject* QState_MetaObject(const QState* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QState_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -55,8 +55,8 @@ void QState_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-QAbstractState* QState_ErrorState(QState* self) {
-	return const_cast<const QState*>(self)->errorState();
+QAbstractState* QState_ErrorState(const QState* self) {
+	return self->errorState();
 }
 
 void QState_SetErrorState(QState* self, QAbstractState* state) {
@@ -79,8 +79,8 @@ void QState_RemoveTransition(QState* self, QAbstractTransition* transition) {
 	self->removeTransition(transition);
 }
 
-void QState_Transitions(QState* self, QAbstractTransition*** _out, size_t* _out_len) {
-	QList<QAbstractTransition*> ret = const_cast<const QState*>(self)->transitions();
+void QState_Transitions(const QState* self, QAbstractTransition*** _out, size_t* _out_len) {
+	QList<QAbstractTransition*> ret = self->transitions();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QAbstractTransition** __out = static_cast<QAbstractTransition**>(malloc(sizeof(QAbstractTransition*) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {
@@ -90,16 +90,16 @@ void QState_Transitions(QState* self, QAbstractTransition*** _out, size_t* _out_
 	*_out_len = ret.length();
 }
 
-QAbstractState* QState_InitialState(QState* self) {
-	return const_cast<const QState*>(self)->initialState();
+QAbstractState* QState_InitialState(const QState* self) {
+	return self->initialState();
 }
 
 void QState_SetInitialState(QState* self, QAbstractState* state) {
 	self->setInitialState(state);
 }
 
-uintptr_t QState_ChildMode(QState* self) {
-	QState::ChildMode ret = const_cast<const QState*>(self)->childMode();
+uintptr_t QState_ChildMode(const QState* self) {
+	QState::ChildMode ret = self->childMode();
 	return static_cast<uintptr_t>(ret);
 }
 

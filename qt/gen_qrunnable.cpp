@@ -11,8 +11,8 @@ void QRunnable_Run(QRunnable* self) {
 	self->run();
 }
 
-bool QRunnable_AutoDelete(QRunnable* self) {
-	return const_cast<const QRunnable*>(self)->autoDelete();
+bool QRunnable_AutoDelete(const QRunnable* self) {
+	return self->autoDelete();
 }
 
 void QRunnable_SetAutoDelete(QRunnable* self, bool _autoDelete) {

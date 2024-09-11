@@ -17,7 +17,7 @@ class QFactoryInterface;
 typedef struct QFactoryInterface QFactoryInterface;
 #endif
 
-void QFactoryInterface_Keys(QFactoryInterface* self, char*** _out, int** _out_Lengths, size_t* _out_len);
+void QFactoryInterface_Keys(const QFactoryInterface* self, char*** _out, int** _out_Lengths, size_t* _out_len);
 void QFactoryInterface_Delete(QFactoryInterface* self);
 
 #ifdef __cplusplus

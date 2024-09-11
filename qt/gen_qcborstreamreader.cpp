@@ -34,8 +34,8 @@ void QCborStreamReader_SetDevice(QCborStreamReader* self, QIODevice* device) {
 	self->setDevice(device);
 }
 
-QIODevice* QCborStreamReader_Device(QCborStreamReader* self) {
-	return const_cast<const QCborStreamReader*>(self)->device();
+QIODevice* QCborStreamReader_Device(const QCborStreamReader* self) {
+	return self->device();
 }
 
 void QCborStreamReader_AddData(QCborStreamReader* self, QByteArray* data) {
@@ -68,118 +68,118 @@ QCborError* QCborStreamReader_LastError(QCborStreamReader* self) {
 	return static_cast<QCborError*>(new QCborError(ret));
 }
 
-long long QCborStreamReader_CurrentOffset(QCborStreamReader* self) {
-	return const_cast<const QCborStreamReader*>(self)->currentOffset();
+long long QCborStreamReader_CurrentOffset(const QCborStreamReader* self) {
+	return self->currentOffset();
 }
 
-bool QCborStreamReader_IsValid(QCborStreamReader* self) {
-	return const_cast<const QCborStreamReader*>(self)->isValid();
+bool QCborStreamReader_IsValid(const QCborStreamReader* self) {
+	return self->isValid();
 }
 
-int QCborStreamReader_ContainerDepth(QCborStreamReader* self) {
-	return const_cast<const QCborStreamReader*>(self)->containerDepth();
+int QCborStreamReader_ContainerDepth(const QCborStreamReader* self) {
+	return self->containerDepth();
 }
 
-uintptr_t QCborStreamReader_ParentContainerType(QCborStreamReader* self) {
-	QCborStreamReader::Type ret = const_cast<const QCborStreamReader*>(self)->parentContainerType();
+uintptr_t QCborStreamReader_ParentContainerType(const QCborStreamReader* self) {
+	QCborStreamReader::Type ret = self->parentContainerType();
 	return static_cast<uintptr_t>(ret);
 }
 
-bool QCborStreamReader_HasNext(QCborStreamReader* self) {
-	return const_cast<const QCborStreamReader*>(self)->hasNext();
+bool QCborStreamReader_HasNext(const QCborStreamReader* self) {
+	return self->hasNext();
 }
 
 bool QCborStreamReader_Next(QCborStreamReader* self) {
 	return self->next();
 }
 
-uintptr_t QCborStreamReader_Type(QCborStreamReader* self) {
-	QCborStreamReader::Type ret = const_cast<const QCborStreamReader*>(self)->type();
+uintptr_t QCborStreamReader_Type(const QCborStreamReader* self) {
+	QCborStreamReader::Type ret = self->type();
 	return static_cast<uintptr_t>(ret);
 }
 
-bool QCborStreamReader_IsUnsignedInteger(QCborStreamReader* self) {
-	return const_cast<const QCborStreamReader*>(self)->isUnsignedInteger();
+bool QCborStreamReader_IsUnsignedInteger(const QCborStreamReader* self) {
+	return self->isUnsignedInteger();
 }
 
-bool QCborStreamReader_IsNegativeInteger(QCborStreamReader* self) {
-	return const_cast<const QCborStreamReader*>(self)->isNegativeInteger();
+bool QCborStreamReader_IsNegativeInteger(const QCborStreamReader* self) {
+	return self->isNegativeInteger();
 }
 
-bool QCborStreamReader_IsInteger(QCborStreamReader* self) {
-	return const_cast<const QCborStreamReader*>(self)->isInteger();
+bool QCborStreamReader_IsInteger(const QCborStreamReader* self) {
+	return self->isInteger();
 }
 
-bool QCborStreamReader_IsByteArray(QCborStreamReader* self) {
-	return const_cast<const QCborStreamReader*>(self)->isByteArray();
+bool QCborStreamReader_IsByteArray(const QCborStreamReader* self) {
+	return self->isByteArray();
 }
 
-bool QCborStreamReader_IsString(QCborStreamReader* self) {
-	return const_cast<const QCborStreamReader*>(self)->isString();
+bool QCborStreamReader_IsString(const QCborStreamReader* self) {
+	return self->isString();
 }
 
-bool QCborStreamReader_IsArray(QCborStreamReader* self) {
-	return const_cast<const QCborStreamReader*>(self)->isArray();
+bool QCborStreamReader_IsArray(const QCborStreamReader* self) {
+	return self->isArray();
 }
 
-bool QCborStreamReader_IsMap(QCborStreamReader* self) {
-	return const_cast<const QCborStreamReader*>(self)->isMap();
+bool QCborStreamReader_IsMap(const QCborStreamReader* self) {
+	return self->isMap();
 }
 
-bool QCborStreamReader_IsTag(QCborStreamReader* self) {
-	return const_cast<const QCborStreamReader*>(self)->isTag();
+bool QCborStreamReader_IsTag(const QCborStreamReader* self) {
+	return self->isTag();
 }
 
-bool QCborStreamReader_IsSimpleType(QCborStreamReader* self) {
-	return const_cast<const QCborStreamReader*>(self)->isSimpleType();
+bool QCborStreamReader_IsSimpleType(const QCborStreamReader* self) {
+	return self->isSimpleType();
 }
 
-bool QCborStreamReader_IsFloat16(QCborStreamReader* self) {
-	return const_cast<const QCborStreamReader*>(self)->isFloat16();
+bool QCborStreamReader_IsFloat16(const QCborStreamReader* self) {
+	return self->isFloat16();
 }
 
-bool QCborStreamReader_IsFloat(QCborStreamReader* self) {
-	return const_cast<const QCborStreamReader*>(self)->isFloat();
+bool QCborStreamReader_IsFloat(const QCborStreamReader* self) {
+	return self->isFloat();
 }
 
-bool QCborStreamReader_IsDouble(QCborStreamReader* self) {
-	return const_cast<const QCborStreamReader*>(self)->isDouble();
+bool QCborStreamReader_IsDouble(const QCborStreamReader* self) {
+	return self->isDouble();
 }
 
-bool QCborStreamReader_IsInvalid(QCborStreamReader* self) {
-	return const_cast<const QCborStreamReader*>(self)->isInvalid();
+bool QCborStreamReader_IsInvalid(const QCborStreamReader* self) {
+	return self->isInvalid();
 }
 
-bool QCborStreamReader_IsFalse(QCborStreamReader* self) {
-	return const_cast<const QCborStreamReader*>(self)->isFalse();
+bool QCborStreamReader_IsFalse(const QCborStreamReader* self) {
+	return self->isFalse();
 }
 
-bool QCborStreamReader_IsTrue(QCborStreamReader* self) {
-	return const_cast<const QCborStreamReader*>(self)->isTrue();
+bool QCborStreamReader_IsTrue(const QCborStreamReader* self) {
+	return self->isTrue();
 }
 
-bool QCborStreamReader_IsBool(QCborStreamReader* self) {
-	return const_cast<const QCborStreamReader*>(self)->isBool();
+bool QCborStreamReader_IsBool(const QCborStreamReader* self) {
+	return self->isBool();
 }
 
-bool QCborStreamReader_IsNull(QCborStreamReader* self) {
-	return const_cast<const QCborStreamReader*>(self)->isNull();
+bool QCborStreamReader_IsNull(const QCborStreamReader* self) {
+	return self->isNull();
 }
 
-bool QCborStreamReader_IsUndefined(QCborStreamReader* self) {
-	return const_cast<const QCborStreamReader*>(self)->isUndefined();
+bool QCborStreamReader_IsUndefined(const QCborStreamReader* self) {
+	return self->isUndefined();
 }
 
-bool QCborStreamReader_IsLengthKnown(QCborStreamReader* self) {
-	return const_cast<const QCborStreamReader*>(self)->isLengthKnown();
+bool QCborStreamReader_IsLengthKnown(const QCborStreamReader* self) {
+	return self->isLengthKnown();
 }
 
-unsigned long long QCborStreamReader_Length(QCborStreamReader* self) {
-	return const_cast<const QCborStreamReader*>(self)->length();
+unsigned long long QCborStreamReader_Length(const QCborStreamReader* self) {
+	return self->length();
 }
 
-bool QCborStreamReader_IsContainer(QCborStreamReader* self) {
-	return const_cast<const QCborStreamReader*>(self)->isContainer();
+bool QCborStreamReader_IsContainer(const QCborStreamReader* self) {
+	return self->isContainer();
 }
 
 bool QCborStreamReader_EnterContainer(QCborStreamReader* self) {
@@ -190,28 +190,28 @@ bool QCborStreamReader_LeaveContainer(QCborStreamReader* self) {
 	return self->leaveContainer();
 }
 
-size_t QCborStreamReader_CurrentStringChunkSize(QCborStreamReader* self) {
-	return const_cast<const QCborStreamReader*>(self)->currentStringChunkSize();
+size_t QCborStreamReader_CurrentStringChunkSize(const QCborStreamReader* self) {
+	return self->currentStringChunkSize();
 }
 
-bool QCborStreamReader_ToBool(QCborStreamReader* self) {
-	return const_cast<const QCborStreamReader*>(self)->toBool();
+bool QCborStreamReader_ToBool(const QCborStreamReader* self) {
+	return self->toBool();
 }
 
-unsigned long long QCborStreamReader_ToUnsignedInteger(QCborStreamReader* self) {
-	return const_cast<const QCborStreamReader*>(self)->toUnsignedInteger();
+unsigned long long QCborStreamReader_ToUnsignedInteger(const QCborStreamReader* self) {
+	return self->toUnsignedInteger();
 }
 
-float QCborStreamReader_ToFloat(QCborStreamReader* self) {
-	return const_cast<const QCborStreamReader*>(self)->toFloat();
+float QCborStreamReader_ToFloat(const QCborStreamReader* self) {
+	return self->toFloat();
 }
 
-double QCborStreamReader_ToDouble(QCborStreamReader* self) {
-	return const_cast<const QCborStreamReader*>(self)->toDouble();
+double QCborStreamReader_ToDouble(const QCborStreamReader* self) {
+	return self->toDouble();
 }
 
-long long QCborStreamReader_ToInteger(QCborStreamReader* self) {
-	return const_cast<const QCborStreamReader*>(self)->toInteger();
+long long QCborStreamReader_ToInteger(const QCborStreamReader* self) {
+	return self->toInteger();
 }
 
 bool QCborStreamReader_Next1(QCborStreamReader* self, int maxRecursion) {

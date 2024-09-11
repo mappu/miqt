@@ -32,36 +32,36 @@ typedef struct QVariant QVariant;
 #endif
 
 void QImageIOHandler_SetDevice(QImageIOHandler* self, QIODevice* device);
-QIODevice* QImageIOHandler_Device(QImageIOHandler* self);
+QIODevice* QImageIOHandler_Device(const QImageIOHandler* self);
 void QImageIOHandler_SetFormat(QImageIOHandler* self, QByteArray* format);
-void QImageIOHandler_SetFormatWithFormat(QImageIOHandler* self, QByteArray* format);
-QByteArray* QImageIOHandler_Format(QImageIOHandler* self);
-QByteArray* QImageIOHandler_Name(QImageIOHandler* self);
-bool QImageIOHandler_CanRead(QImageIOHandler* self);
+void QImageIOHandler_SetFormatWithFormat(const QImageIOHandler* self, QByteArray* format);
+QByteArray* QImageIOHandler_Format(const QImageIOHandler* self);
+QByteArray* QImageIOHandler_Name(const QImageIOHandler* self);
+bool QImageIOHandler_CanRead(const QImageIOHandler* self);
 bool QImageIOHandler_Read(QImageIOHandler* self, QImage* image);
 bool QImageIOHandler_Write(QImageIOHandler* self, QImage* image);
-QVariant* QImageIOHandler_Option(QImageIOHandler* self, uintptr_t option);
+QVariant* QImageIOHandler_Option(const QImageIOHandler* self, uintptr_t option);
 void QImageIOHandler_SetOption(QImageIOHandler* self, uintptr_t option, QVariant* value);
-bool QImageIOHandler_SupportsOption(QImageIOHandler* self, uintptr_t option);
+bool QImageIOHandler_SupportsOption(const QImageIOHandler* self, uintptr_t option);
 bool QImageIOHandler_JumpToNextImage(QImageIOHandler* self);
 bool QImageIOHandler_JumpToImage(QImageIOHandler* self, int imageNumber);
-int QImageIOHandler_LoopCount(QImageIOHandler* self);
-int QImageIOHandler_ImageCount(QImageIOHandler* self);
-int QImageIOHandler_NextImageDelay(QImageIOHandler* self);
-int QImageIOHandler_CurrentImageNumber(QImageIOHandler* self);
-QRect* QImageIOHandler_CurrentImageRect(QImageIOHandler* self);
+int QImageIOHandler_LoopCount(const QImageIOHandler* self);
+int QImageIOHandler_ImageCount(const QImageIOHandler* self);
+int QImageIOHandler_NextImageDelay(const QImageIOHandler* self);
+int QImageIOHandler_CurrentImageNumber(const QImageIOHandler* self);
+QRect* QImageIOHandler_CurrentImageRect(const QImageIOHandler* self);
 void QImageIOHandler_Delete(QImageIOHandler* self);
 
-QMetaObject* QImageIOPlugin_MetaObject(QImageIOPlugin* self);
+QMetaObject* QImageIOPlugin_MetaObject(const QImageIOPlugin* self);
 void QImageIOPlugin_Tr(const char* s, char** _out, int* _out_Strlen);
 void QImageIOPlugin_TrUtf8(const char* s, char** _out, int* _out_Strlen);
-int QImageIOPlugin_Capabilities(QImageIOPlugin* self, QIODevice* device, QByteArray* format);
-QImageIOHandler* QImageIOPlugin_Create(QImageIOPlugin* self, QIODevice* device);
+int QImageIOPlugin_Capabilities(const QImageIOPlugin* self, QIODevice* device, QByteArray* format);
+QImageIOHandler* QImageIOPlugin_Create(const QImageIOPlugin* self, QIODevice* device);
 void QImageIOPlugin_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
 void QImageIOPlugin_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
 void QImageIOPlugin_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
 void QImageIOPlugin_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-QImageIOHandler* QImageIOPlugin_Create2(QImageIOPlugin* self, QIODevice* device, QByteArray* format);
+QImageIOHandler* QImageIOPlugin_Create2(const QImageIOPlugin* self, QIODevice* device, QByteArray* format);
 void QImageIOPlugin_Delete(QImageIOPlugin* self);
 
 #ifdef __cplusplus

@@ -14,8 +14,8 @@ extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
 }
 
-QMetaObject* QAbstractAnimation_MetaObject(QAbstractAnimation* self) {
-	return (QMetaObject*) const_cast<const QAbstractAnimation*>(self)->metaObject();
+QMetaObject* QAbstractAnimation_MetaObject(const QAbstractAnimation* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QAbstractAnimation_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -36,17 +36,17 @@ void QAbstractAnimation_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-uintptr_t QAbstractAnimation_State(QAbstractAnimation* self) {
-	QAbstractAnimation::State ret = const_cast<const QAbstractAnimation*>(self)->state();
+uintptr_t QAbstractAnimation_State(const QAbstractAnimation* self) {
+	QAbstractAnimation::State ret = self->state();
 	return static_cast<uintptr_t>(ret);
 }
 
-QAnimationGroup* QAbstractAnimation_Group(QAbstractAnimation* self) {
-	return const_cast<const QAbstractAnimation*>(self)->group();
+QAnimationGroup* QAbstractAnimation_Group(const QAbstractAnimation* self) {
+	return self->group();
 }
 
-uintptr_t QAbstractAnimation_Direction(QAbstractAnimation* self) {
-	QAbstractAnimation::Direction ret = const_cast<const QAbstractAnimation*>(self)->direction();
+uintptr_t QAbstractAnimation_Direction(const QAbstractAnimation* self) {
+	QAbstractAnimation::Direction ret = self->direction();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -54,32 +54,32 @@ void QAbstractAnimation_SetDirection(QAbstractAnimation* self, uintptr_t directi
 	self->setDirection(static_cast<QAbstractAnimation::Direction>(direction));
 }
 
-int QAbstractAnimation_CurrentTime(QAbstractAnimation* self) {
-	return const_cast<const QAbstractAnimation*>(self)->currentTime();
+int QAbstractAnimation_CurrentTime(const QAbstractAnimation* self) {
+	return self->currentTime();
 }
 
-int QAbstractAnimation_CurrentLoopTime(QAbstractAnimation* self) {
-	return const_cast<const QAbstractAnimation*>(self)->currentLoopTime();
+int QAbstractAnimation_CurrentLoopTime(const QAbstractAnimation* self) {
+	return self->currentLoopTime();
 }
 
-int QAbstractAnimation_LoopCount(QAbstractAnimation* self) {
-	return const_cast<const QAbstractAnimation*>(self)->loopCount();
+int QAbstractAnimation_LoopCount(const QAbstractAnimation* self) {
+	return self->loopCount();
 }
 
 void QAbstractAnimation_SetLoopCount(QAbstractAnimation* self, int loopCount) {
 	self->setLoopCount(static_cast<int>(loopCount));
 }
 
-int QAbstractAnimation_CurrentLoop(QAbstractAnimation* self) {
-	return const_cast<const QAbstractAnimation*>(self)->currentLoop();
+int QAbstractAnimation_CurrentLoop(const QAbstractAnimation* self) {
+	return self->currentLoop();
 }
 
-int QAbstractAnimation_Duration(QAbstractAnimation* self) {
-	return const_cast<const QAbstractAnimation*>(self)->duration();
+int QAbstractAnimation_Duration(const QAbstractAnimation* self) {
+	return self->duration();
 }
 
-int QAbstractAnimation_TotalDuration(QAbstractAnimation* self) {
-	return const_cast<const QAbstractAnimation*>(self)->totalDuration();
+int QAbstractAnimation_TotalDuration(const QAbstractAnimation* self) {
+	return self->totalDuration();
 }
 
 void QAbstractAnimation_Finished(QAbstractAnimation* self) {
@@ -198,8 +198,8 @@ QAnimationDriver* QAnimationDriver_new2(QObject* parent) {
 	return new QAnimationDriver(parent);
 }
 
-QMetaObject* QAnimationDriver_MetaObject(QAnimationDriver* self) {
-	return (QMetaObject*) const_cast<const QAnimationDriver*>(self)->metaObject();
+QMetaObject* QAnimationDriver_MetaObject(const QAnimationDriver* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QAnimationDriver_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -232,20 +232,20 @@ void QAnimationDriver_Uninstall(QAnimationDriver* self) {
 	self->uninstall();
 }
 
-bool QAnimationDriver_IsRunning(QAnimationDriver* self) {
-	return const_cast<const QAnimationDriver*>(self)->isRunning();
+bool QAnimationDriver_IsRunning(const QAnimationDriver* self) {
+	return self->isRunning();
 }
 
-long long QAnimationDriver_Elapsed(QAnimationDriver* self) {
-	return const_cast<const QAnimationDriver*>(self)->elapsed();
+long long QAnimationDriver_Elapsed(const QAnimationDriver* self) {
+	return self->elapsed();
 }
 
 void QAnimationDriver_SetStartTime(QAnimationDriver* self, long long startTime) {
 	self->setStartTime(static_cast<qint64>(startTime));
 }
 
-long long QAnimationDriver_StartTime(QAnimationDriver* self) {
-	return const_cast<const QAnimationDriver*>(self)->startTime();
+long long QAnimationDriver_StartTime(const QAnimationDriver* self) {
+	return self->startTime();
 }
 
 void QAnimationDriver_Started(QAnimationDriver* self) {

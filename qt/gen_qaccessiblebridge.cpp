@@ -30,8 +30,8 @@ void QAccessibleBridge_Delete(QAccessibleBridge* self) {
 	delete self;
 }
 
-QMetaObject* QAccessibleBridgePlugin_MetaObject(QAccessibleBridgePlugin* self) {
-	return (QMetaObject*) const_cast<const QAccessibleBridgePlugin*>(self)->metaObject();
+QMetaObject* QAccessibleBridgePlugin_MetaObject(const QAccessibleBridgePlugin* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QAccessibleBridgePlugin_Tr(const char* s, char** _out, int* _out_Strlen) {

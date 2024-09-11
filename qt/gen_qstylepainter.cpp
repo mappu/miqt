@@ -59,8 +59,8 @@ void QStylePainter_DrawItemPixmap(QStylePainter* self, QRect* r, int flags, QPix
 	self->drawItemPixmap(*r, static_cast<int>(flags), *pixmap);
 }
 
-QStyle* QStylePainter_Style(QStylePainter* self) {
-	return const_cast<const QStylePainter*>(self)->style();
+QStyle* QStylePainter_Style(const QStylePainter* self) {
+	return self->style();
 }
 
 void QStylePainter_DrawItemText6(QStylePainter* self, QRect* r, int flags, QPalette* pal, bool enabled, const char* text, size_t text_Strlen, uintptr_t textRole) {

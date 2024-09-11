@@ -17,8 +17,8 @@ extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
 }
 
-QMetaObject* QAbstractProxyModel_MetaObject(QAbstractProxyModel* self) {
-	return (QMetaObject*) const_cast<const QAbstractProxyModel*>(self)->metaObject();
+QMetaObject* QAbstractProxyModel_MetaObject(const QAbstractProxyModel* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QAbstractProxyModel_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -43,18 +43,18 @@ void QAbstractProxyModel_SetSourceModel(QAbstractProxyModel* self, QAbstractItem
 	self->setSourceModel(sourceModel);
 }
 
-QAbstractItemModel* QAbstractProxyModel_SourceModel(QAbstractProxyModel* self) {
-	return const_cast<const QAbstractProxyModel*>(self)->sourceModel();
+QAbstractItemModel* QAbstractProxyModel_SourceModel(const QAbstractProxyModel* self) {
+	return self->sourceModel();
 }
 
-QModelIndex* QAbstractProxyModel_MapToSource(QAbstractProxyModel* self, QModelIndex* proxyIndex) {
-	QModelIndex ret = const_cast<const QAbstractProxyModel*>(self)->mapToSource(*proxyIndex);
+QModelIndex* QAbstractProxyModel_MapToSource(const QAbstractProxyModel* self, QModelIndex* proxyIndex) {
+	QModelIndex ret = self->mapToSource(*proxyIndex);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QModelIndex*>(new QModelIndex(ret));
 }
 
-QModelIndex* QAbstractProxyModel_MapFromSource(QAbstractProxyModel* self, QModelIndex* sourceIndex) {
-	QModelIndex ret = const_cast<const QAbstractProxyModel*>(self)->mapFromSource(*sourceIndex);
+QModelIndex* QAbstractProxyModel_MapFromSource(const QAbstractProxyModel* self, QModelIndex* sourceIndex) {
+	QModelIndex ret = self->mapFromSource(*sourceIndex);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QModelIndex*>(new QModelIndex(ret));
 }
@@ -67,20 +67,20 @@ void QAbstractProxyModel_Revert(QAbstractProxyModel* self) {
 	self->revert();
 }
 
-QVariant* QAbstractProxyModel_Data(QAbstractProxyModel* self, QModelIndex* proxyIndex) {
-	QVariant ret = const_cast<const QAbstractProxyModel*>(self)->data(*proxyIndex);
+QVariant* QAbstractProxyModel_Data(const QAbstractProxyModel* self, QModelIndex* proxyIndex) {
+	QVariant ret = self->data(*proxyIndex);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVariant*>(new QVariant(ret));
 }
 
-QVariant* QAbstractProxyModel_HeaderData(QAbstractProxyModel* self, int section, uintptr_t orientation) {
-	QVariant ret = const_cast<const QAbstractProxyModel*>(self)->headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation));
+QVariant* QAbstractProxyModel_HeaderData(const QAbstractProxyModel* self, int section, uintptr_t orientation) {
+	QVariant ret = self->headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVariant*>(new QVariant(ret));
 }
 
-int QAbstractProxyModel_Flags(QAbstractProxyModel* self, QModelIndex* index) {
-	Qt::ItemFlags ret = const_cast<const QAbstractProxyModel*>(self)->flags(*index);
+int QAbstractProxyModel_Flags(const QAbstractProxyModel* self, QModelIndex* index) {
+	Qt::ItemFlags ret = self->flags(*index);
 	return static_cast<int>(ret);
 }
 
@@ -92,14 +92,14 @@ bool QAbstractProxyModel_SetHeaderData(QAbstractProxyModel* self, int section, u
 	return self->setHeaderData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), *value);
 }
 
-QModelIndex* QAbstractProxyModel_Buddy(QAbstractProxyModel* self, QModelIndex* index) {
-	QModelIndex ret = const_cast<const QAbstractProxyModel*>(self)->buddy(*index);
+QModelIndex* QAbstractProxyModel_Buddy(const QAbstractProxyModel* self, QModelIndex* index) {
+	QModelIndex ret = self->buddy(*index);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QModelIndex*>(new QModelIndex(ret));
 }
 
-bool QAbstractProxyModel_CanFetchMore(QAbstractProxyModel* self, QModelIndex* parent) {
-	return const_cast<const QAbstractProxyModel*>(self)->canFetchMore(*parent);
+bool QAbstractProxyModel_CanFetchMore(const QAbstractProxyModel* self, QModelIndex* parent) {
+	return self->canFetchMore(*parent);
 }
 
 void QAbstractProxyModel_FetchMore(QAbstractProxyModel* self, QModelIndex* parent) {
@@ -110,41 +110,41 @@ void QAbstractProxyModel_Sort(QAbstractProxyModel* self, int column) {
 	self->sort(static_cast<int>(column));
 }
 
-QSize* QAbstractProxyModel_Span(QAbstractProxyModel* self, QModelIndex* index) {
-	QSize ret = const_cast<const QAbstractProxyModel*>(self)->span(*index);
+QSize* QAbstractProxyModel_Span(const QAbstractProxyModel* self, QModelIndex* index) {
+	QSize ret = self->span(*index);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
 
-bool QAbstractProxyModel_HasChildren(QAbstractProxyModel* self) {
-	return const_cast<const QAbstractProxyModel*>(self)->hasChildren();
+bool QAbstractProxyModel_HasChildren(const QAbstractProxyModel* self) {
+	return self->hasChildren();
 }
 
-QModelIndex* QAbstractProxyModel_Sibling(QAbstractProxyModel* self, int row, int column, QModelIndex* idx) {
-	QModelIndex ret = const_cast<const QAbstractProxyModel*>(self)->sibling(static_cast<int>(row), static_cast<int>(column), *idx);
+QModelIndex* QAbstractProxyModel_Sibling(const QAbstractProxyModel* self, int row, int column, QModelIndex* idx) {
+	QModelIndex ret = self->sibling(static_cast<int>(row), static_cast<int>(column), *idx);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QModelIndex*>(new QModelIndex(ret));
 }
 
-QMimeData* QAbstractProxyModel_MimeData(QAbstractProxyModel* self, QModelIndex** indexes, size_t indexes_len) {
+QMimeData* QAbstractProxyModel_MimeData(const QAbstractProxyModel* self, QModelIndex** indexes, size_t indexes_len) {
 	QList<QModelIndex> indexes_QList;
 	indexes_QList.reserve(indexes_len);
 	for(size_t i = 0; i < indexes_len; ++i) {
 		indexes_QList.push_back(*(indexes[i]));
 	}
-	return const_cast<const QAbstractProxyModel*>(self)->mimeData(indexes_QList);
+	return self->mimeData(indexes_QList);
 }
 
-bool QAbstractProxyModel_CanDropMimeData(QAbstractProxyModel* self, QMimeData* data, uintptr_t action, int row, int column, QModelIndex* parent) {
-	return const_cast<const QAbstractProxyModel*>(self)->canDropMimeData(data, static_cast<Qt::DropAction>(action), static_cast<int>(row), static_cast<int>(column), *parent);
+bool QAbstractProxyModel_CanDropMimeData(const QAbstractProxyModel* self, QMimeData* data, uintptr_t action, int row, int column, QModelIndex* parent) {
+	return self->canDropMimeData(data, static_cast<Qt::DropAction>(action), static_cast<int>(row), static_cast<int>(column), *parent);
 }
 
 bool QAbstractProxyModel_DropMimeData(QAbstractProxyModel* self, QMimeData* data, uintptr_t action, int row, int column, QModelIndex* parent) {
 	return self->dropMimeData(data, static_cast<Qt::DropAction>(action), static_cast<int>(row), static_cast<int>(column), *parent);
 }
 
-void QAbstractProxyModel_MimeTypes(QAbstractProxyModel* self, char*** _out, int** _out_Lengths, size_t* _out_len) {
-	QStringList ret = const_cast<const QAbstractProxyModel*>(self)->mimeTypes();
+void QAbstractProxyModel_MimeTypes(const QAbstractProxyModel* self, char*** _out, int** _out_Lengths, size_t* _out_len) {
+	QStringList ret = self->mimeTypes();
 	// Convert QStringList from C++ memory to manually-managed C memory
 	char** __out = static_cast<char**>(malloc(sizeof(char*) * ret.length()));
 	int* __out_Lengths = static_cast<int*>(malloc(sizeof(int) * ret.length()));
@@ -160,13 +160,13 @@ void QAbstractProxyModel_MimeTypes(QAbstractProxyModel* self, char*** _out, int*
 	*_out_len = ret.length();
 }
 
-int QAbstractProxyModel_SupportedDragActions(QAbstractProxyModel* self) {
-	Qt::DropActions ret = const_cast<const QAbstractProxyModel*>(self)->supportedDragActions();
+int QAbstractProxyModel_SupportedDragActions(const QAbstractProxyModel* self) {
+	Qt::DropActions ret = self->supportedDragActions();
 	return static_cast<int>(ret);
 }
 
-int QAbstractProxyModel_SupportedDropActions(QAbstractProxyModel* self) {
-	Qt::DropActions ret = const_cast<const QAbstractProxyModel*>(self)->supportedDropActions();
+int QAbstractProxyModel_SupportedDropActions(const QAbstractProxyModel* self) {
+	Qt::DropActions ret = self->supportedDropActions();
 	return static_cast<int>(ret);
 }
 
@@ -206,14 +206,14 @@ void QAbstractProxyModel_TrUtf83(const char* s, const char* c, int n, char** _ou
 	*_out_Strlen = b.length();
 }
 
-QVariant* QAbstractProxyModel_Data2(QAbstractProxyModel* self, QModelIndex* proxyIndex, int role) {
-	QVariant ret = const_cast<const QAbstractProxyModel*>(self)->data(*proxyIndex, static_cast<int>(role));
+QVariant* QAbstractProxyModel_Data2(const QAbstractProxyModel* self, QModelIndex* proxyIndex, int role) {
+	QVariant ret = self->data(*proxyIndex, static_cast<int>(role));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVariant*>(new QVariant(ret));
 }
 
-QVariant* QAbstractProxyModel_HeaderData3(QAbstractProxyModel* self, int section, uintptr_t orientation, int role) {
-	QVariant ret = const_cast<const QAbstractProxyModel*>(self)->headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), static_cast<int>(role));
+QVariant* QAbstractProxyModel_HeaderData3(const QAbstractProxyModel* self, int section, uintptr_t orientation, int role) {
+	QVariant ret = self->headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), static_cast<int>(role));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVariant*>(new QVariant(ret));
 }
@@ -230,8 +230,8 @@ void QAbstractProxyModel_Sort2(QAbstractProxyModel* self, int column, uintptr_t 
 	self->sort(static_cast<int>(column), static_cast<Qt::SortOrder>(order));
 }
 
-bool QAbstractProxyModel_HasChildren1(QAbstractProxyModel* self, QModelIndex* parent) {
-	return const_cast<const QAbstractProxyModel*>(self)->hasChildren(*parent);
+bool QAbstractProxyModel_HasChildren1(const QAbstractProxyModel* self, QModelIndex* parent) {
+	return self->hasChildren(*parent);
 }
 
 void QAbstractProxyModel_Delete(QAbstractProxyModel* self) {

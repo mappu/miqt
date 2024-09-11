@@ -22,12 +22,12 @@ QOperatingSystemVersion* QOperatingSystemVersion_new2(uintptr_t osType, int vmaj
 QOperatingSystemVersion* QOperatingSystemVersion_new3(uintptr_t osType, int vmajor, int vminor, int vmicro);
 QOperatingSystemVersion* QOperatingSystemVersion_Current();
 uintptr_t QOperatingSystemVersion_CurrentType();
-int QOperatingSystemVersion_MajorVersion(QOperatingSystemVersion* self);
-int QOperatingSystemVersion_MinorVersion(QOperatingSystemVersion* self);
-int QOperatingSystemVersion_MicroVersion(QOperatingSystemVersion* self);
-int QOperatingSystemVersion_SegmentCount(QOperatingSystemVersion* self);
-uintptr_t QOperatingSystemVersion_Type(QOperatingSystemVersion* self);
-void QOperatingSystemVersion_Name(QOperatingSystemVersion* self, char** _out, int* _out_Strlen);
+int QOperatingSystemVersion_MajorVersion(const QOperatingSystemVersion* self);
+int QOperatingSystemVersion_MinorVersion(const QOperatingSystemVersion* self);
+int QOperatingSystemVersion_MicroVersion(const QOperatingSystemVersion* self);
+int QOperatingSystemVersion_SegmentCount(const QOperatingSystemVersion* self);
+uintptr_t QOperatingSystemVersion_Type(const QOperatingSystemVersion* self);
+void QOperatingSystemVersion_Name(const QOperatingSystemVersion* self, char** _out, int* _out_Strlen);
 void QOperatingSystemVersion_Delete(QOperatingSystemVersion* self);
 
 #ifdef __cplusplus

@@ -61,16 +61,16 @@ QDebug* QDebug_Verbosity(QDebug* self, int verbosityLevel) {
 	return &ret;
 }
 
-int QDebug_Verbosity2(QDebug* self) {
-	return const_cast<const QDebug*>(self)->verbosity();
+int QDebug_Verbosity2(const QDebug* self) {
+	return self->verbosity();
 }
 
 void QDebug_SetVerbosity(QDebug* self, int verbosityLevel) {
 	self->setVerbosity(static_cast<int>(verbosityLevel));
 }
 
-bool QDebug_AutoInsertSpaces(QDebug* self) {
-	return const_cast<const QDebug*>(self)->autoInsertSpaces();
+bool QDebug_AutoInsertSpaces(const QDebug* self) {
+	return self->autoInsertSpaces();
 }
 
 void QDebug_SetAutoInsertSpaces(QDebug* self, bool b) {

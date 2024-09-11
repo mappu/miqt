@@ -26,8 +26,8 @@ QInputDialog* QInputDialog_new3(QWidget* parent, int flags) {
 	return new QInputDialog(parent, static_cast<Qt::WindowFlags>(flags));
 }
 
-QMetaObject* QInputDialog_MetaObject(QInputDialog* self) {
-	return (QMetaObject*) const_cast<const QInputDialog*>(self)->metaObject();
+QMetaObject* QInputDialog_MetaObject(const QInputDialog* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QInputDialog_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -52,8 +52,8 @@ void QInputDialog_SetInputMode(QInputDialog* self, uintptr_t mode) {
 	self->setInputMode(static_cast<QInputDialog::InputMode>(mode));
 }
 
-uintptr_t QInputDialog_InputMode(QInputDialog* self) {
-	QInputDialog::InputMode ret = const_cast<const QInputDialog*>(self)->inputMode();
+uintptr_t QInputDialog_InputMode(const QInputDialog* self) {
+	QInputDialog::InputMode ret = self->inputMode();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -62,8 +62,8 @@ void QInputDialog_SetLabelText(QInputDialog* self, const char* text, size_t text
 	self->setLabelText(text_QString);
 }
 
-void QInputDialog_LabelText(QInputDialog* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QInputDialog*>(self)->labelText();
+void QInputDialog_LabelText(const QInputDialog* self, char** _out, int* _out_Strlen) {
+	QString ret = self->labelText();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -75,16 +75,16 @@ void QInputDialog_SetOption(QInputDialog* self, uintptr_t option) {
 	self->setOption(static_cast<QInputDialog::InputDialogOption>(option));
 }
 
-bool QInputDialog_TestOption(QInputDialog* self, uintptr_t option) {
-	return const_cast<const QInputDialog*>(self)->testOption(static_cast<QInputDialog::InputDialogOption>(option));
+bool QInputDialog_TestOption(const QInputDialog* self, uintptr_t option) {
+	return self->testOption(static_cast<QInputDialog::InputDialogOption>(option));
 }
 
 void QInputDialog_SetOptions(QInputDialog* self, int options) {
 	self->setOptions(static_cast<QInputDialog::InputDialogOptions>(options));
 }
 
-int QInputDialog_Options(QInputDialog* self) {
-	QInputDialog::InputDialogOptions ret = const_cast<const QInputDialog*>(self)->options();
+int QInputDialog_Options(const QInputDialog* self) {
+	QInputDialog::InputDialogOptions ret = self->options();
 	return static_cast<int>(ret);
 }
 
@@ -93,8 +93,8 @@ void QInputDialog_SetTextValue(QInputDialog* self, const char* text, size_t text
 	self->setTextValue(text_QString);
 }
 
-void QInputDialog_TextValue(QInputDialog* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QInputDialog*>(self)->textValue();
+void QInputDialog_TextValue(const QInputDialog* self, char** _out, int* _out_Strlen) {
+	QString ret = self->textValue();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -106,8 +106,8 @@ void QInputDialog_SetTextEchoMode(QInputDialog* self, uintptr_t mode) {
 	self->setTextEchoMode(static_cast<QLineEdit::EchoMode>(mode));
 }
 
-uintptr_t QInputDialog_TextEchoMode(QInputDialog* self) {
-	QLineEdit::EchoMode ret = const_cast<const QInputDialog*>(self)->textEchoMode();
+uintptr_t QInputDialog_TextEchoMode(const QInputDialog* self) {
+	QLineEdit::EchoMode ret = self->textEchoMode();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -115,8 +115,8 @@ void QInputDialog_SetComboBoxEditable(QInputDialog* self, bool editable) {
 	self->setComboBoxEditable(editable);
 }
 
-bool QInputDialog_IsComboBoxEditable(QInputDialog* self) {
-	return const_cast<const QInputDialog*>(self)->isComboBoxEditable();
+bool QInputDialog_IsComboBoxEditable(const QInputDialog* self) {
+	return self->isComboBoxEditable();
 }
 
 void QInputDialog_SetComboBoxItems(QInputDialog* self, char** items, uint64_t* items_Lengths, size_t items_len) {
@@ -128,8 +128,8 @@ void QInputDialog_SetComboBoxItems(QInputDialog* self, char** items, uint64_t* i
 	self->setComboBoxItems(items_QList);
 }
 
-void QInputDialog_ComboBoxItems(QInputDialog* self, char*** _out, int** _out_Lengths, size_t* _out_len) {
-	QStringList ret = const_cast<const QInputDialog*>(self)->comboBoxItems();
+void QInputDialog_ComboBoxItems(const QInputDialog* self, char*** _out, int** _out_Lengths, size_t* _out_len) {
+	QStringList ret = self->comboBoxItems();
 	// Convert QStringList from C++ memory to manually-managed C memory
 	char** __out = static_cast<char**>(malloc(sizeof(char*) * ret.length()));
 	int* __out_Lengths = static_cast<int*>(malloc(sizeof(int) * ret.length()));
@@ -149,24 +149,24 @@ void QInputDialog_SetIntValue(QInputDialog* self, int value) {
 	self->setIntValue(static_cast<int>(value));
 }
 
-int QInputDialog_IntValue(QInputDialog* self) {
-	return const_cast<const QInputDialog*>(self)->intValue();
+int QInputDialog_IntValue(const QInputDialog* self) {
+	return self->intValue();
 }
 
 void QInputDialog_SetIntMinimum(QInputDialog* self, int min) {
 	self->setIntMinimum(static_cast<int>(min));
 }
 
-int QInputDialog_IntMinimum(QInputDialog* self) {
-	return const_cast<const QInputDialog*>(self)->intMinimum();
+int QInputDialog_IntMinimum(const QInputDialog* self) {
+	return self->intMinimum();
 }
 
 void QInputDialog_SetIntMaximum(QInputDialog* self, int max) {
 	self->setIntMaximum(static_cast<int>(max));
 }
 
-int QInputDialog_IntMaximum(QInputDialog* self) {
-	return const_cast<const QInputDialog*>(self)->intMaximum();
+int QInputDialog_IntMaximum(const QInputDialog* self) {
+	return self->intMaximum();
 }
 
 void QInputDialog_SetIntRange(QInputDialog* self, int min, int max) {
@@ -177,32 +177,32 @@ void QInputDialog_SetIntStep(QInputDialog* self, int step) {
 	self->setIntStep(static_cast<int>(step));
 }
 
-int QInputDialog_IntStep(QInputDialog* self) {
-	return const_cast<const QInputDialog*>(self)->intStep();
+int QInputDialog_IntStep(const QInputDialog* self) {
+	return self->intStep();
 }
 
 void QInputDialog_SetDoubleValue(QInputDialog* self, double value) {
 	self->setDoubleValue(static_cast<double>(value));
 }
 
-double QInputDialog_DoubleValue(QInputDialog* self) {
-	return const_cast<const QInputDialog*>(self)->doubleValue();
+double QInputDialog_DoubleValue(const QInputDialog* self) {
+	return self->doubleValue();
 }
 
 void QInputDialog_SetDoubleMinimum(QInputDialog* self, double min) {
 	self->setDoubleMinimum(static_cast<double>(min));
 }
 
-double QInputDialog_DoubleMinimum(QInputDialog* self) {
-	return const_cast<const QInputDialog*>(self)->doubleMinimum();
+double QInputDialog_DoubleMinimum(const QInputDialog* self) {
+	return self->doubleMinimum();
 }
 
 void QInputDialog_SetDoubleMaximum(QInputDialog* self, double max) {
 	self->setDoubleMaximum(static_cast<double>(max));
 }
 
-double QInputDialog_DoubleMaximum(QInputDialog* self) {
-	return const_cast<const QInputDialog*>(self)->doubleMaximum();
+double QInputDialog_DoubleMaximum(const QInputDialog* self) {
+	return self->doubleMaximum();
 }
 
 void QInputDialog_SetDoubleRange(QInputDialog* self, double min, double max) {
@@ -213,8 +213,8 @@ void QInputDialog_SetDoubleDecimals(QInputDialog* self, int decimals) {
 	self->setDoubleDecimals(static_cast<int>(decimals));
 }
 
-int QInputDialog_DoubleDecimals(QInputDialog* self) {
-	return const_cast<const QInputDialog*>(self)->doubleDecimals();
+int QInputDialog_DoubleDecimals(const QInputDialog* self) {
+	return self->doubleDecimals();
 }
 
 void QInputDialog_SetOkButtonText(QInputDialog* self, const char* text, size_t text_Strlen) {
@@ -222,8 +222,8 @@ void QInputDialog_SetOkButtonText(QInputDialog* self, const char* text, size_t t
 	self->setOkButtonText(text_QString);
 }
 
-void QInputDialog_OkButtonText(QInputDialog* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QInputDialog*>(self)->okButtonText();
+void QInputDialog_OkButtonText(const QInputDialog* self, char** _out, int* _out_Strlen) {
+	QString ret = self->okButtonText();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -236,8 +236,8 @@ void QInputDialog_SetCancelButtonText(QInputDialog* self, const char* text, size
 	self->setCancelButtonText(text_QString);
 }
 
-void QInputDialog_CancelButtonText(QInputDialog* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QInputDialog*>(self)->cancelButtonText();
+void QInputDialog_CancelButtonText(const QInputDialog* self, char** _out, int* _out_Strlen) {
+	QString ret = self->cancelButtonText();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -245,14 +245,14 @@ void QInputDialog_CancelButtonText(QInputDialog* self, char** _out, int* _out_St
 	*_out_Strlen = b.length();
 }
 
-QSize* QInputDialog_MinimumSizeHint(QInputDialog* self) {
-	QSize ret = const_cast<const QInputDialog*>(self)->minimumSizeHint();
+QSize* QInputDialog_MinimumSizeHint(const QInputDialog* self) {
+	QSize ret = self->minimumSizeHint();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
 
-QSize* QInputDialog_SizeHint(QInputDialog* self) {
-	QSize ret = const_cast<const QInputDialog*>(self)->sizeHint();
+QSize* QInputDialog_SizeHint(const QInputDialog* self) {
+	QSize ret = self->sizeHint();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
@@ -321,8 +321,8 @@ void QInputDialog_SetDoubleStep(QInputDialog* self, double step) {
 	self->setDoubleStep(static_cast<double>(step));
 }
 
-double QInputDialog_DoubleStep(QInputDialog* self) {
-	return const_cast<const QInputDialog*>(self)->doubleStep();
+double QInputDialog_DoubleStep(const QInputDialog* self) {
+	return self->doubleStep();
 }
 
 void QInputDialog_TextValueChanged(QInputDialog* self, const char* text, size_t text_Strlen) {

@@ -29,8 +29,8 @@ QGesture* QGesture_new2(QObject* parent) {
 	return new QGesture(parent);
 }
 
-QMetaObject* QGesture_MetaObject(QGesture* self) {
-	return (QMetaObject*) const_cast<const QGesture*>(self)->metaObject();
+QMetaObject* QGesture_MetaObject(const QGesture* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QGesture_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -51,18 +51,18 @@ void QGesture_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-uintptr_t QGesture_GestureType(QGesture* self) {
-	Qt::GestureType ret = const_cast<const QGesture*>(self)->gestureType();
+uintptr_t QGesture_GestureType(const QGesture* self) {
+	Qt::GestureType ret = self->gestureType();
 	return static_cast<uintptr_t>(ret);
 }
 
-uintptr_t QGesture_State(QGesture* self) {
-	Qt::GestureState ret = const_cast<const QGesture*>(self)->state();
+uintptr_t QGesture_State(const QGesture* self) {
+	Qt::GestureState ret = self->state();
 	return static_cast<uintptr_t>(ret);
 }
 
-QPointF* QGesture_HotSpot(QGesture* self) {
-	QPointF ret = const_cast<const QGesture*>(self)->hotSpot();
+QPointF* QGesture_HotSpot(const QGesture* self) {
+	QPointF ret = self->hotSpot();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPointF*>(new QPointF(ret));
 }
@@ -71,8 +71,8 @@ void QGesture_SetHotSpot(QGesture* self, QPointF* value) {
 	self->setHotSpot(*value);
 }
 
-bool QGesture_HasHotSpot(QGesture* self) {
-	return const_cast<const QGesture*>(self)->hasHotSpot();
+bool QGesture_HasHotSpot(const QGesture* self) {
+	return self->hasHotSpot();
 }
 
 void QGesture_UnsetHotSpot(QGesture* self) {
@@ -83,8 +83,8 @@ void QGesture_SetGestureCancelPolicy(QGesture* self, uintptr_t policy) {
 	self->setGestureCancelPolicy(static_cast<QGesture::GestureCancelPolicy>(policy));
 }
 
-uintptr_t QGesture_GestureCancelPolicy(QGesture* self) {
-	QGesture::GestureCancelPolicy ret = const_cast<const QGesture*>(self)->gestureCancelPolicy();
+uintptr_t QGesture_GestureCancelPolicy(const QGesture* self) {
+	QGesture::GestureCancelPolicy ret = self->gestureCancelPolicy();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -136,8 +136,8 @@ QPanGesture* QPanGesture_new2(QObject* parent) {
 	return new QPanGesture(parent);
 }
 
-QMetaObject* QPanGesture_MetaObject(QPanGesture* self) {
-	return (QMetaObject*) const_cast<const QPanGesture*>(self)->metaObject();
+QMetaObject* QPanGesture_MetaObject(const QPanGesture* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QPanGesture_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -158,26 +158,26 @@ void QPanGesture_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-QPointF* QPanGesture_LastOffset(QPanGesture* self) {
-	QPointF ret = const_cast<const QPanGesture*>(self)->lastOffset();
+QPointF* QPanGesture_LastOffset(const QPanGesture* self) {
+	QPointF ret = self->lastOffset();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPointF*>(new QPointF(ret));
 }
 
-QPointF* QPanGesture_Offset(QPanGesture* self) {
-	QPointF ret = const_cast<const QPanGesture*>(self)->offset();
+QPointF* QPanGesture_Offset(const QPanGesture* self) {
+	QPointF ret = self->offset();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPointF*>(new QPointF(ret));
 }
 
-QPointF* QPanGesture_Delta(QPanGesture* self) {
-	QPointF ret = const_cast<const QPanGesture*>(self)->delta();
+QPointF* QPanGesture_Delta(const QPanGesture* self) {
+	QPointF ret = self->delta();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPointF*>(new QPointF(ret));
 }
 
-double QPanGesture_Acceleration(QPanGesture* self) {
-	return const_cast<const QPanGesture*>(self)->acceleration();
+double QPanGesture_Acceleration(const QPanGesture* self) {
+	return self->acceleration();
 }
 
 void QPanGesture_SetLastOffset(QPanGesture* self, QPointF* value) {
@@ -240,8 +240,8 @@ QPinchGesture* QPinchGesture_new2(QObject* parent) {
 	return new QPinchGesture(parent);
 }
 
-QMetaObject* QPinchGesture_MetaObject(QPinchGesture* self) {
-	return (QMetaObject*) const_cast<const QPinchGesture*>(self)->metaObject();
+QMetaObject* QPinchGesture_MetaObject(const QPinchGesture* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QPinchGesture_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -262,8 +262,8 @@ void QPinchGesture_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-int QPinchGesture_TotalChangeFlags(QPinchGesture* self) {
-	QPinchGesture::ChangeFlags ret = const_cast<const QPinchGesture*>(self)->totalChangeFlags();
+int QPinchGesture_TotalChangeFlags(const QPinchGesture* self) {
+	QPinchGesture::ChangeFlags ret = self->totalChangeFlags();
 	return static_cast<int>(ret);
 }
 
@@ -271,8 +271,8 @@ void QPinchGesture_SetTotalChangeFlags(QPinchGesture* self, int value) {
 	self->setTotalChangeFlags(static_cast<QPinchGesture::ChangeFlags>(value));
 }
 
-int QPinchGesture_ChangeFlags(QPinchGesture* self) {
-	QPinchGesture::ChangeFlags ret = const_cast<const QPinchGesture*>(self)->changeFlags();
+int QPinchGesture_ChangeFlags(const QPinchGesture* self) {
+	QPinchGesture::ChangeFlags ret = self->changeFlags();
 	return static_cast<int>(ret);
 }
 
@@ -280,20 +280,20 @@ void QPinchGesture_SetChangeFlags(QPinchGesture* self, int value) {
 	self->setChangeFlags(static_cast<QPinchGesture::ChangeFlags>(value));
 }
 
-QPointF* QPinchGesture_StartCenterPoint(QPinchGesture* self) {
-	QPointF ret = const_cast<const QPinchGesture*>(self)->startCenterPoint();
+QPointF* QPinchGesture_StartCenterPoint(const QPinchGesture* self) {
+	QPointF ret = self->startCenterPoint();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPointF*>(new QPointF(ret));
 }
 
-QPointF* QPinchGesture_LastCenterPoint(QPinchGesture* self) {
-	QPointF ret = const_cast<const QPinchGesture*>(self)->lastCenterPoint();
+QPointF* QPinchGesture_LastCenterPoint(const QPinchGesture* self) {
+	QPointF ret = self->lastCenterPoint();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPointF*>(new QPointF(ret));
 }
 
-QPointF* QPinchGesture_CenterPoint(QPinchGesture* self) {
-	QPointF ret = const_cast<const QPinchGesture*>(self)->centerPoint();
+QPointF* QPinchGesture_CenterPoint(const QPinchGesture* self) {
+	QPointF ret = self->centerPoint();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPointF*>(new QPointF(ret));
 }
@@ -310,16 +310,16 @@ void QPinchGesture_SetCenterPoint(QPinchGesture* self, QPointF* value) {
 	self->setCenterPoint(*value);
 }
 
-double QPinchGesture_TotalScaleFactor(QPinchGesture* self) {
-	return const_cast<const QPinchGesture*>(self)->totalScaleFactor();
+double QPinchGesture_TotalScaleFactor(const QPinchGesture* self) {
+	return self->totalScaleFactor();
 }
 
-double QPinchGesture_LastScaleFactor(QPinchGesture* self) {
-	return const_cast<const QPinchGesture*>(self)->lastScaleFactor();
+double QPinchGesture_LastScaleFactor(const QPinchGesture* self) {
+	return self->lastScaleFactor();
 }
 
-double QPinchGesture_ScaleFactor(QPinchGesture* self) {
-	return const_cast<const QPinchGesture*>(self)->scaleFactor();
+double QPinchGesture_ScaleFactor(const QPinchGesture* self) {
+	return self->scaleFactor();
 }
 
 void QPinchGesture_SetTotalScaleFactor(QPinchGesture* self, double value) {
@@ -334,16 +334,16 @@ void QPinchGesture_SetScaleFactor(QPinchGesture* self, double value) {
 	self->setScaleFactor(static_cast<qreal>(value));
 }
 
-double QPinchGesture_TotalRotationAngle(QPinchGesture* self) {
-	return const_cast<const QPinchGesture*>(self)->totalRotationAngle();
+double QPinchGesture_TotalRotationAngle(const QPinchGesture* self) {
+	return self->totalRotationAngle();
 }
 
-double QPinchGesture_LastRotationAngle(QPinchGesture* self) {
-	return const_cast<const QPinchGesture*>(self)->lastRotationAngle();
+double QPinchGesture_LastRotationAngle(const QPinchGesture* self) {
+	return self->lastRotationAngle();
 }
 
-double QPinchGesture_RotationAngle(QPinchGesture* self) {
-	return const_cast<const QPinchGesture*>(self)->rotationAngle();
+double QPinchGesture_RotationAngle(const QPinchGesture* self) {
+	return self->rotationAngle();
 }
 
 void QPinchGesture_SetTotalRotationAngle(QPinchGesture* self, double value) {
@@ -406,8 +406,8 @@ QSwipeGesture* QSwipeGesture_new2(QObject* parent) {
 	return new QSwipeGesture(parent);
 }
 
-QMetaObject* QSwipeGesture_MetaObject(QSwipeGesture* self) {
-	return (QMetaObject*) const_cast<const QSwipeGesture*>(self)->metaObject();
+QMetaObject* QSwipeGesture_MetaObject(const QSwipeGesture* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QSwipeGesture_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -428,18 +428,18 @@ void QSwipeGesture_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-uintptr_t QSwipeGesture_HorizontalDirection(QSwipeGesture* self) {
-	QSwipeGesture::SwipeDirection ret = const_cast<const QSwipeGesture*>(self)->horizontalDirection();
+uintptr_t QSwipeGesture_HorizontalDirection(const QSwipeGesture* self) {
+	QSwipeGesture::SwipeDirection ret = self->horizontalDirection();
 	return static_cast<uintptr_t>(ret);
 }
 
-uintptr_t QSwipeGesture_VerticalDirection(QSwipeGesture* self) {
-	QSwipeGesture::SwipeDirection ret = const_cast<const QSwipeGesture*>(self)->verticalDirection();
+uintptr_t QSwipeGesture_VerticalDirection(const QSwipeGesture* self) {
+	QSwipeGesture::SwipeDirection ret = self->verticalDirection();
 	return static_cast<uintptr_t>(ret);
 }
 
-double QSwipeGesture_SwipeAngle(QSwipeGesture* self) {
-	return const_cast<const QSwipeGesture*>(self)->swipeAngle();
+double QSwipeGesture_SwipeAngle(const QSwipeGesture* self) {
+	return self->swipeAngle();
 }
 
 void QSwipeGesture_SetSwipeAngle(QSwipeGesture* self, double value) {
@@ -494,8 +494,8 @@ QTapGesture* QTapGesture_new2(QObject* parent) {
 	return new QTapGesture(parent);
 }
 
-QMetaObject* QTapGesture_MetaObject(QTapGesture* self) {
-	return (QMetaObject*) const_cast<const QTapGesture*>(self)->metaObject();
+QMetaObject* QTapGesture_MetaObject(const QTapGesture* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QTapGesture_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -516,8 +516,8 @@ void QTapGesture_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-QPointF* QTapGesture_Position(QTapGesture* self) {
-	QPointF ret = const_cast<const QTapGesture*>(self)->position();
+QPointF* QTapGesture_Position(const QTapGesture* self) {
+	QPointF ret = self->position();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPointF*>(new QPointF(ret));
 }
@@ -574,8 +574,8 @@ QTapAndHoldGesture* QTapAndHoldGesture_new2(QObject* parent) {
 	return new QTapAndHoldGesture(parent);
 }
 
-QMetaObject* QTapAndHoldGesture_MetaObject(QTapAndHoldGesture* self) {
-	return (QMetaObject*) const_cast<const QTapAndHoldGesture*>(self)->metaObject();
+QMetaObject* QTapAndHoldGesture_MetaObject(const QTapAndHoldGesture* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QTapAndHoldGesture_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -596,8 +596,8 @@ void QTapAndHoldGesture_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-QPointF* QTapAndHoldGesture_Position(QTapAndHoldGesture* self) {
-	QPointF ret = const_cast<const QTapAndHoldGesture*>(self)->position();
+QPointF* QTapAndHoldGesture_Position(const QTapAndHoldGesture* self) {
+	QPointF ret = self->position();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPointF*>(new QPointF(ret));
 }
@@ -667,8 +667,8 @@ QGestureEvent* QGestureEvent_new2(QGestureEvent* param1) {
 	return new QGestureEvent(*param1);
 }
 
-void QGestureEvent_Gestures(QGestureEvent* self, QGesture*** _out, size_t* _out_len) {
-	QList<QGesture*> ret = const_cast<const QGestureEvent*>(self)->gestures();
+void QGestureEvent_Gestures(const QGestureEvent* self, QGesture*** _out, size_t* _out_len) {
+	QList<QGesture*> ret = self->gestures();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QGesture** __out = static_cast<QGesture**>(malloc(sizeof(QGesture*) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {
@@ -678,12 +678,12 @@ void QGestureEvent_Gestures(QGestureEvent* self, QGesture*** _out, size_t* _out_
 	*_out_len = ret.length();
 }
 
-QGesture* QGestureEvent_Gesture(QGestureEvent* self, uintptr_t typeVal) {
-	return const_cast<const QGestureEvent*>(self)->gesture(static_cast<Qt::GestureType>(typeVal));
+QGesture* QGestureEvent_Gesture(const QGestureEvent* self, uintptr_t typeVal) {
+	return self->gesture(static_cast<Qt::GestureType>(typeVal));
 }
 
-void QGestureEvent_ActiveGestures(QGestureEvent* self, QGesture*** _out, size_t* _out_len) {
-	QList<QGesture*> ret = const_cast<const QGestureEvent*>(self)->activeGestures();
+void QGestureEvent_ActiveGestures(const QGestureEvent* self, QGesture*** _out, size_t* _out_len) {
+	QList<QGesture*> ret = self->activeGestures();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QGesture** __out = static_cast<QGesture**>(malloc(sizeof(QGesture*) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {
@@ -693,8 +693,8 @@ void QGestureEvent_ActiveGestures(QGestureEvent* self, QGesture*** _out, size_t*
 	*_out_len = ret.length();
 }
 
-void QGestureEvent_CanceledGestures(QGestureEvent* self, QGesture*** _out, size_t* _out_len) {
-	QList<QGesture*> ret = const_cast<const QGestureEvent*>(self)->canceledGestures();
+void QGestureEvent_CanceledGestures(const QGestureEvent* self, QGesture*** _out, size_t* _out_len) {
+	QList<QGesture*> ret = self->canceledGestures();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QGesture** __out = static_cast<QGesture**>(malloc(sizeof(QGesture*) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {
@@ -716,8 +716,8 @@ void QGestureEvent_Ignore(QGestureEvent* self, QGesture* param1) {
 	self->ignore(param1);
 }
 
-bool QGestureEvent_IsAccepted(QGestureEvent* self, QGesture* param1) {
-	return const_cast<const QGestureEvent*>(self)->isAccepted(param1);
+bool QGestureEvent_IsAccepted(const QGestureEvent* self, QGesture* param1) {
+	return self->isAccepted(param1);
 }
 
 void QGestureEvent_SetAccepted2(QGestureEvent* self, uintptr_t param1, bool param2) {
@@ -732,20 +732,20 @@ void QGestureEvent_IgnoreWithQtGestureType(QGestureEvent* self, uintptr_t param1
 	self->ignore(static_cast<Qt::GestureType>(param1));
 }
 
-bool QGestureEvent_IsAcceptedWithQtGestureType(QGestureEvent* self, uintptr_t param1) {
-	return const_cast<const QGestureEvent*>(self)->isAccepted(static_cast<Qt::GestureType>(param1));
+bool QGestureEvent_IsAcceptedWithQtGestureType(const QGestureEvent* self, uintptr_t param1) {
+	return self->isAccepted(static_cast<Qt::GestureType>(param1));
 }
 
 void QGestureEvent_SetWidget(QGestureEvent* self, QWidget* widget) {
 	self->setWidget(widget);
 }
 
-QWidget* QGestureEvent_Widget(QGestureEvent* self) {
-	return const_cast<const QGestureEvent*>(self)->widget();
+QWidget* QGestureEvent_Widget(const QGestureEvent* self) {
+	return self->widget();
 }
 
-QPointF* QGestureEvent_MapToGraphicsScene(QGestureEvent* self, QPointF* gesturePoint) {
-	QPointF ret = const_cast<const QGestureEvent*>(self)->mapToGraphicsScene(*gesturePoint);
+QPointF* QGestureEvent_MapToGraphicsScene(const QGestureEvent* self, QPointF* gesturePoint) {
+	QPointF ret = self->mapToGraphicsScene(*gesturePoint);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPointF*>(new QPointF(ret));
 }

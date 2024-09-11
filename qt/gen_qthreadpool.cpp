@@ -22,8 +22,8 @@ QThreadPool* QThreadPool_new2(QObject* parent) {
 	return new QThreadPool(parent);
 }
 
-QMetaObject* QThreadPool_MetaObject(QThreadPool* self) {
-	return (QMetaObject*) const_cast<const QThreadPool*>(self)->metaObject();
+QMetaObject* QThreadPool_MetaObject(const QThreadPool* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QThreadPool_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -56,32 +56,32 @@ bool QThreadPool_TryStart(QThreadPool* self, QRunnable* runnable) {
 	return self->tryStart(runnable);
 }
 
-int QThreadPool_ExpiryTimeout(QThreadPool* self) {
-	return const_cast<const QThreadPool*>(self)->expiryTimeout();
+int QThreadPool_ExpiryTimeout(const QThreadPool* self) {
+	return self->expiryTimeout();
 }
 
 void QThreadPool_SetExpiryTimeout(QThreadPool* self, int expiryTimeout) {
 	self->setExpiryTimeout(static_cast<int>(expiryTimeout));
 }
 
-int QThreadPool_MaxThreadCount(QThreadPool* self) {
-	return const_cast<const QThreadPool*>(self)->maxThreadCount();
+int QThreadPool_MaxThreadCount(const QThreadPool* self) {
+	return self->maxThreadCount();
 }
 
 void QThreadPool_SetMaxThreadCount(QThreadPool* self, int maxThreadCount) {
 	self->setMaxThreadCount(static_cast<int>(maxThreadCount));
 }
 
-int QThreadPool_ActiveThreadCount(QThreadPool* self) {
-	return const_cast<const QThreadPool*>(self)->activeThreadCount();
+int QThreadPool_ActiveThreadCount(const QThreadPool* self) {
+	return self->activeThreadCount();
 }
 
 void QThreadPool_SetStackSize(QThreadPool* self, unsigned int stackSize) {
 	self->setStackSize(static_cast<uint>(stackSize));
 }
 
-unsigned int QThreadPool_StackSize(QThreadPool* self) {
-	return const_cast<const QThreadPool*>(self)->stackSize();
+unsigned int QThreadPool_StackSize(const QThreadPool* self) {
+	return self->stackSize();
 }
 
 void QThreadPool_ReserveThread(QThreadPool* self) {
@@ -100,8 +100,8 @@ void QThreadPool_Clear(QThreadPool* self) {
 	self->clear();
 }
 
-bool QThreadPool_Contains(QThreadPool* self, QThread* thread) {
-	return const_cast<const QThreadPool*>(self)->contains(thread);
+bool QThreadPool_Contains(const QThreadPool* self, QThread* thread) {
+	return self->contains(thread);
 }
 
 void QThreadPool_Cancel(QThreadPool* self, QRunnable* runnable) {

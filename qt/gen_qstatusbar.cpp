@@ -20,8 +20,8 @@ QStatusBar* QStatusBar_new2(QWidget* parent) {
 	return new QStatusBar(parent);
 }
 
-QMetaObject* QStatusBar_MetaObject(QStatusBar* self) {
-	return (QMetaObject*) const_cast<const QStatusBar*>(self)->metaObject();
+QMetaObject* QStatusBar_MetaObject(const QStatusBar* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QStatusBar_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -66,12 +66,12 @@ void QStatusBar_SetSizeGripEnabled(QStatusBar* self, bool sizeGripEnabled) {
 	self->setSizeGripEnabled(sizeGripEnabled);
 }
 
-bool QStatusBar_IsSizeGripEnabled(QStatusBar* self) {
-	return const_cast<const QStatusBar*>(self)->isSizeGripEnabled();
+bool QStatusBar_IsSizeGripEnabled(const QStatusBar* self) {
+	return self->isSizeGripEnabled();
 }
 
-void QStatusBar_CurrentMessage(QStatusBar* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QStatusBar*>(self)->currentMessage();
+void QStatusBar_CurrentMessage(const QStatusBar* self, char** _out, int* _out_Strlen) {
+	QString ret = self->currentMessage();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));

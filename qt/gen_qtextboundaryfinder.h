@@ -26,17 +26,17 @@ QTextBoundaryFinder* QTextBoundaryFinder_new4(uintptr_t typeVal, QChar* chars, i
 QTextBoundaryFinder* QTextBoundaryFinder_new5(uintptr_t typeVal, QChar* chars, int length, unsigned char* buffer);
 QTextBoundaryFinder* QTextBoundaryFinder_new6(uintptr_t typeVal, QChar* chars, int length, unsigned char* buffer, int bufferSize);
 void QTextBoundaryFinder_OperatorAssign(QTextBoundaryFinder* self, QTextBoundaryFinder* other);
-bool QTextBoundaryFinder_IsValid(QTextBoundaryFinder* self);
-uintptr_t QTextBoundaryFinder_Type(QTextBoundaryFinder* self);
-void QTextBoundaryFinder_String(QTextBoundaryFinder* self, char** _out, int* _out_Strlen);
+bool QTextBoundaryFinder_IsValid(const QTextBoundaryFinder* self);
+uintptr_t QTextBoundaryFinder_Type(const QTextBoundaryFinder* self);
+void QTextBoundaryFinder_String(const QTextBoundaryFinder* self, char** _out, int* _out_Strlen);
 void QTextBoundaryFinder_ToStart(QTextBoundaryFinder* self);
 void QTextBoundaryFinder_ToEnd(QTextBoundaryFinder* self);
-int QTextBoundaryFinder_Position(QTextBoundaryFinder* self);
+int QTextBoundaryFinder_Position(const QTextBoundaryFinder* self);
 void QTextBoundaryFinder_SetPosition(QTextBoundaryFinder* self, int position);
 int QTextBoundaryFinder_ToNextBoundary(QTextBoundaryFinder* self);
 int QTextBoundaryFinder_ToPreviousBoundary(QTextBoundaryFinder* self);
-bool QTextBoundaryFinder_IsAtBoundary(QTextBoundaryFinder* self);
-int QTextBoundaryFinder_BoundaryReasons(QTextBoundaryFinder* self);
+bool QTextBoundaryFinder_IsAtBoundary(const QTextBoundaryFinder* self);
+int QTextBoundaryFinder_BoundaryReasons(const QTextBoundaryFinder* self);
 void QTextBoundaryFinder_Delete(QTextBoundaryFinder* self);
 
 #ifdef __cplusplus

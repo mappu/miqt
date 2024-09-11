@@ -16,8 +16,8 @@ QObjectCleanupHandler* QObjectCleanupHandler_new() {
 	return new QObjectCleanupHandler();
 }
 
-QMetaObject* QObjectCleanupHandler_MetaObject(QObjectCleanupHandler* self) {
-	return (QMetaObject*) const_cast<const QObjectCleanupHandler*>(self)->metaObject();
+QMetaObject* QObjectCleanupHandler_MetaObject(const QObjectCleanupHandler* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QObjectCleanupHandler_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -46,8 +46,8 @@ void QObjectCleanupHandler_Remove(QObjectCleanupHandler* self, QObject* object) 
 	self->remove(object);
 }
 
-bool QObjectCleanupHandler_IsEmpty(QObjectCleanupHandler* self) {
-	return const_cast<const QObjectCleanupHandler*>(self)->isEmpty();
+bool QObjectCleanupHandler_IsEmpty(const QObjectCleanupHandler* self) {
+	return self->isEmpty();
 }
 
 void QObjectCleanupHandler_Clear(QObjectCleanupHandler* self) {

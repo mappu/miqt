@@ -12,8 +12,8 @@ extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
 }
 
-QMetaObject* QIODevice_MetaObject(QIODevice* self) {
-	return (QMetaObject*) const_cast<const QIODevice*>(self)->metaObject();
+QMetaObject* QIODevice_MetaObject(const QIODevice* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QIODevice_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -34,8 +34,8 @@ void QIODevice_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-int QIODevice_OpenMode(QIODevice* self) {
-	QIODevice::OpenMode ret = const_cast<const QIODevice*>(self)->openMode();
+int QIODevice_OpenMode(const QIODevice* self) {
+	QIODevice::OpenMode ret = self->openMode();
 	return static_cast<int>(ret);
 }
 
@@ -43,44 +43,44 @@ void QIODevice_SetTextModeEnabled(QIODevice* self, bool enabled) {
 	self->setTextModeEnabled(enabled);
 }
 
-bool QIODevice_IsTextModeEnabled(QIODevice* self) {
-	return const_cast<const QIODevice*>(self)->isTextModeEnabled();
+bool QIODevice_IsTextModeEnabled(const QIODevice* self) {
+	return self->isTextModeEnabled();
 }
 
-bool QIODevice_IsOpen(QIODevice* self) {
-	return const_cast<const QIODevice*>(self)->isOpen();
+bool QIODevice_IsOpen(const QIODevice* self) {
+	return self->isOpen();
 }
 
-bool QIODevice_IsReadable(QIODevice* self) {
-	return const_cast<const QIODevice*>(self)->isReadable();
+bool QIODevice_IsReadable(const QIODevice* self) {
+	return self->isReadable();
 }
 
-bool QIODevice_IsWritable(QIODevice* self) {
-	return const_cast<const QIODevice*>(self)->isWritable();
+bool QIODevice_IsWritable(const QIODevice* self) {
+	return self->isWritable();
 }
 
-bool QIODevice_IsSequential(QIODevice* self) {
-	return const_cast<const QIODevice*>(self)->isSequential();
+bool QIODevice_IsSequential(const QIODevice* self) {
+	return self->isSequential();
 }
 
-int QIODevice_ReadChannelCount(QIODevice* self) {
-	return const_cast<const QIODevice*>(self)->readChannelCount();
+int QIODevice_ReadChannelCount(const QIODevice* self) {
+	return self->readChannelCount();
 }
 
-int QIODevice_WriteChannelCount(QIODevice* self) {
-	return const_cast<const QIODevice*>(self)->writeChannelCount();
+int QIODevice_WriteChannelCount(const QIODevice* self) {
+	return self->writeChannelCount();
 }
 
-int QIODevice_CurrentReadChannel(QIODevice* self) {
-	return const_cast<const QIODevice*>(self)->currentReadChannel();
+int QIODevice_CurrentReadChannel(const QIODevice* self) {
+	return self->currentReadChannel();
 }
 
 void QIODevice_SetCurrentReadChannel(QIODevice* self, int channel) {
 	self->setCurrentReadChannel(static_cast<int>(channel));
 }
 
-int QIODevice_CurrentWriteChannel(QIODevice* self) {
-	return const_cast<const QIODevice*>(self)->currentWriteChannel();
+int QIODevice_CurrentWriteChannel(const QIODevice* self) {
+	return self->currentWriteChannel();
 }
 
 void QIODevice_SetCurrentWriteChannel(QIODevice* self, int channel) {
@@ -95,32 +95,32 @@ void QIODevice_Close(QIODevice* self) {
 	self->close();
 }
 
-long long QIODevice_Pos(QIODevice* self) {
-	return const_cast<const QIODevice*>(self)->pos();
+long long QIODevice_Pos(const QIODevice* self) {
+	return self->pos();
 }
 
-long long QIODevice_Size(QIODevice* self) {
-	return const_cast<const QIODevice*>(self)->size();
+long long QIODevice_Size(const QIODevice* self) {
+	return self->size();
 }
 
 bool QIODevice_Seek(QIODevice* self, long long pos) {
 	return self->seek(static_cast<qint64>(pos));
 }
 
-bool QIODevice_AtEnd(QIODevice* self) {
-	return const_cast<const QIODevice*>(self)->atEnd();
+bool QIODevice_AtEnd(const QIODevice* self) {
+	return self->atEnd();
 }
 
 bool QIODevice_Reset(QIODevice* self) {
 	return self->reset();
 }
 
-long long QIODevice_BytesAvailable(QIODevice* self) {
-	return const_cast<const QIODevice*>(self)->bytesAvailable();
+long long QIODevice_BytesAvailable(const QIODevice* self) {
+	return self->bytesAvailable();
 }
 
-long long QIODevice_BytesToWrite(QIODevice* self) {
-	return const_cast<const QIODevice*>(self)->bytesToWrite();
+long long QIODevice_BytesToWrite(const QIODevice* self) {
+	return self->bytesToWrite();
 }
 
 long long QIODevice_Read(QIODevice* self, char* data, long long maxlen) {
@@ -149,8 +149,8 @@ QByteArray* QIODevice_ReadLine2(QIODevice* self) {
 	return static_cast<QByteArray*>(new QByteArray(ret));
 }
 
-bool QIODevice_CanReadLine(QIODevice* self) {
-	return const_cast<const QIODevice*>(self)->canReadLine();
+bool QIODevice_CanReadLine(const QIODevice* self) {
+	return self->canReadLine();
 }
 
 void QIODevice_StartTransaction(QIODevice* self) {
@@ -165,8 +165,8 @@ void QIODevice_RollbackTransaction(QIODevice* self) {
 	self->rollbackTransaction();
 }
 
-bool QIODevice_IsTransactionStarted(QIODevice* self) {
-	return const_cast<const QIODevice*>(self)->isTransactionStarted();
+bool QIODevice_IsTransactionStarted(const QIODevice* self) {
+	return self->isTransactionStarted();
 }
 
 long long QIODevice_Write(QIODevice* self, const char* data, long long lenVal) {
@@ -215,8 +215,8 @@ bool QIODevice_GetChar(QIODevice* self, char* c) {
 	return self->getChar(c);
 }
 
-void QIODevice_ErrorString(QIODevice* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QIODevice*>(self)->errorString();
+void QIODevice_ErrorString(const QIODevice* self, char** _out, int* _out_Strlen) {
+	QString ret = self->errorString();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));

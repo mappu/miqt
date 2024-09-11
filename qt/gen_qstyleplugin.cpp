@@ -12,8 +12,8 @@ extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
 }
 
-QMetaObject* QStylePlugin_MetaObject(QStylePlugin* self) {
-	return (QMetaObject*) const_cast<const QStylePlugin*>(self)->metaObject();
+QMetaObject* QStylePlugin_MetaObject(const QStylePlugin* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QStylePlugin_Tr(const char* s, char** _out, int* _out_Strlen) {

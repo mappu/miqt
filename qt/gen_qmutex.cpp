@@ -34,8 +34,8 @@ bool QBasicMutex_IsRecursive(QBasicMutex* self) {
 	return self->isRecursive();
 }
 
-bool QBasicMutex_IsRecursive2(QBasicMutex* self) {
-	return const_cast<const QBasicMutex*>(self)->isRecursive();
+bool QBasicMutex_IsRecursive2(const QBasicMutex* self) {
+	return self->isRecursive();
 }
 
 void QBasicMutex_Delete(QBasicMutex* self) {
@@ -66,8 +66,8 @@ bool QMutex_TryLock2(QMutex* self) {
 	return self->try_lock();
 }
 
-bool QMutex_IsRecursive(QMutex* self) {
-	return const_cast<const QMutex*>(self)->isRecursive();
+bool QMutex_IsRecursive(const QMutex* self) {
+	return self->isRecursive();
 }
 
 bool QMutex_TryLock1(QMutex* self, int timeout) {
@@ -102,8 +102,8 @@ void QMutexLocker_Relock(QMutexLocker* self) {
 	self->relock();
 }
 
-QMutex* QMutexLocker_Mutex(QMutexLocker* self) {
-	return const_cast<const QMutexLocker*>(self)->mutex();
+QMutex* QMutexLocker_Mutex(const QMutexLocker* self) {
+	return self->mutex();
 }
 
 void QMutexLocker_Delete(QMutexLocker* self) {

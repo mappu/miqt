@@ -24,12 +24,12 @@ void QBasicTimer_Swap(QBasicTimer* self, QBasicTimer* other) {
 	self->swap(*other);
 }
 
-bool QBasicTimer_IsActive(QBasicTimer* self) {
-	return const_cast<const QBasicTimer*>(self)->isActive();
+bool QBasicTimer_IsActive(const QBasicTimer* self) {
+	return self->isActive();
 }
 
-int QBasicTimer_TimerId(QBasicTimer* self) {
-	return const_cast<const QBasicTimer*>(self)->timerId();
+int QBasicTimer_TimerId(const QBasicTimer* self) {
+	return self->timerId();
 }
 
 void QBasicTimer_Start(QBasicTimer* self, int msec, QObject* obj) {

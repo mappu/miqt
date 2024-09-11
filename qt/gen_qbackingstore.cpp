@@ -16,8 +16,8 @@ QBackingStore* QBackingStore_new(QWindow* window) {
 	return new QBackingStore(window);
 }
 
-QWindow* QBackingStore_Window(QBackingStore* self) {
-	return const_cast<const QBackingStore*>(self)->window();
+QWindow* QBackingStore_Window(const QBackingStore* self) {
+	return self->window();
 }
 
 QPaintDevice* QBackingStore_PaintDevice(QBackingStore* self) {
@@ -32,8 +32,8 @@ void QBackingStore_Resize(QBackingStore* self, QSize* size) {
 	self->resize(*size);
 }
 
-QSize* QBackingStore_Size(QBackingStore* self) {
-	QSize ret = const_cast<const QBackingStore*>(self)->size();
+QSize* QBackingStore_Size(const QBackingStore* self) {
+	QSize ret = self->size();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
@@ -54,14 +54,14 @@ void QBackingStore_SetStaticContents(QBackingStore* self, QRegion* region) {
 	self->setStaticContents(*region);
 }
 
-QRegion* QBackingStore_StaticContents(QBackingStore* self) {
-	QRegion ret = const_cast<const QBackingStore*>(self)->staticContents();
+QRegion* QBackingStore_StaticContents(const QBackingStore* self) {
+	QRegion ret = self->staticContents();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRegion*>(new QRegion(ret));
 }
 
-bool QBackingStore_HasStaticContents(QBackingStore* self) {
-	return const_cast<const QBackingStore*>(self)->hasStaticContents();
+bool QBackingStore_HasStaticContents(const QBackingStore* self) {
+	return self->hasStaticContents();
 }
 
 void QBackingStore_Flush2(QBackingStore* self, QRegion* region, QWindow* window) {

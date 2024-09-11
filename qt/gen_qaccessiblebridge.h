@@ -30,7 +30,7 @@ void QAccessibleBridge_NotifyAccessibilityUpdate(QAccessibleBridge* self, QAcces
 void QAccessibleBridge_OperatorAssign(QAccessibleBridge* self, QAccessibleBridge* param1);
 void QAccessibleBridge_Delete(QAccessibleBridge* self);
 
-QMetaObject* QAccessibleBridgePlugin_MetaObject(QAccessibleBridgePlugin* self);
+QMetaObject* QAccessibleBridgePlugin_MetaObject(const QAccessibleBridgePlugin* self);
 void QAccessibleBridgePlugin_Tr(const char* s, char** _out, int* _out_Strlen);
 void QAccessibleBridgePlugin_TrUtf8(const char* s, char** _out, int* _out_Strlen);
 QAccessibleBridge* QAccessibleBridgePlugin_Create(QAccessibleBridgePlugin* self, const char* key, size_t key_Strlen);

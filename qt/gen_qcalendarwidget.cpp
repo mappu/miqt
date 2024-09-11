@@ -24,8 +24,8 @@ QCalendarWidget* QCalendarWidget_new2(QWidget* parent) {
 	return new QCalendarWidget(parent);
 }
 
-QMetaObject* QCalendarWidget_MetaObject(QCalendarWidget* self) {
-	return (QMetaObject*) const_cast<const QCalendarWidget*>(self)->metaObject();
+QMetaObject* QCalendarWidget_MetaObject(const QCalendarWidget* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QCalendarWidget_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -46,34 +46,34 @@ void QCalendarWidget_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-QSize* QCalendarWidget_SizeHint(QCalendarWidget* self) {
-	QSize ret = const_cast<const QCalendarWidget*>(self)->sizeHint();
+QSize* QCalendarWidget_SizeHint(const QCalendarWidget* self) {
+	QSize ret = self->sizeHint();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
 
-QSize* QCalendarWidget_MinimumSizeHint(QCalendarWidget* self) {
-	QSize ret = const_cast<const QCalendarWidget*>(self)->minimumSizeHint();
+QSize* QCalendarWidget_MinimumSizeHint(const QCalendarWidget* self) {
+	QSize ret = self->minimumSizeHint();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
 
-QDate* QCalendarWidget_SelectedDate(QCalendarWidget* self) {
-	QDate ret = const_cast<const QCalendarWidget*>(self)->selectedDate();
+QDate* QCalendarWidget_SelectedDate(const QCalendarWidget* self) {
+	QDate ret = self->selectedDate();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QDate*>(new QDate(ret));
 }
 
-int QCalendarWidget_YearShown(QCalendarWidget* self) {
-	return const_cast<const QCalendarWidget*>(self)->yearShown();
+int QCalendarWidget_YearShown(const QCalendarWidget* self) {
+	return self->yearShown();
 }
 
-int QCalendarWidget_MonthShown(QCalendarWidget* self) {
-	return const_cast<const QCalendarWidget*>(self)->monthShown();
+int QCalendarWidget_MonthShown(const QCalendarWidget* self) {
+	return self->monthShown();
 }
 
-QDate* QCalendarWidget_MinimumDate(QCalendarWidget* self) {
-	QDate ret = const_cast<const QCalendarWidget*>(self)->minimumDate();
+QDate* QCalendarWidget_MinimumDate(const QCalendarWidget* self) {
+	QDate ret = self->minimumDate();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QDate*>(new QDate(ret));
 }
@@ -82,8 +82,8 @@ void QCalendarWidget_SetMinimumDate(QCalendarWidget* self, QDate* date) {
 	self->setMinimumDate(*date);
 }
 
-QDate* QCalendarWidget_MaximumDate(QCalendarWidget* self) {
-	QDate ret = const_cast<const QCalendarWidget*>(self)->maximumDate();
+QDate* QCalendarWidget_MaximumDate(const QCalendarWidget* self) {
+	QDate ret = self->maximumDate();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QDate*>(new QDate(ret));
 }
@@ -92,8 +92,8 @@ void QCalendarWidget_SetMaximumDate(QCalendarWidget* self, QDate* date) {
 	self->setMaximumDate(*date);
 }
 
-uintptr_t QCalendarWidget_FirstDayOfWeek(QCalendarWidget* self) {
-	Qt::DayOfWeek ret = const_cast<const QCalendarWidget*>(self)->firstDayOfWeek();
+uintptr_t QCalendarWidget_FirstDayOfWeek(const QCalendarWidget* self) {
+	Qt::DayOfWeek ret = self->firstDayOfWeek();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -101,16 +101,16 @@ void QCalendarWidget_SetFirstDayOfWeek(QCalendarWidget* self, uintptr_t dayOfWee
 	self->setFirstDayOfWeek(static_cast<Qt::DayOfWeek>(dayOfWeek));
 }
 
-bool QCalendarWidget_IsNavigationBarVisible(QCalendarWidget* self) {
-	return const_cast<const QCalendarWidget*>(self)->isNavigationBarVisible();
+bool QCalendarWidget_IsNavigationBarVisible(const QCalendarWidget* self) {
+	return self->isNavigationBarVisible();
 }
 
-bool QCalendarWidget_IsGridVisible(QCalendarWidget* self) {
-	return const_cast<const QCalendarWidget*>(self)->isGridVisible();
+bool QCalendarWidget_IsGridVisible(const QCalendarWidget* self) {
+	return self->isGridVisible();
 }
 
-QCalendar* QCalendarWidget_Calendar(QCalendarWidget* self) {
-	QCalendar ret = const_cast<const QCalendarWidget*>(self)->calendar();
+QCalendar* QCalendarWidget_Calendar(const QCalendarWidget* self) {
+	QCalendar ret = self->calendar();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QCalendar*>(new QCalendar(ret));
 }
@@ -119,8 +119,8 @@ void QCalendarWidget_SetCalendar(QCalendarWidget* self, QCalendar* calendar) {
 	self->setCalendar(*calendar);
 }
 
-uintptr_t QCalendarWidget_SelectionMode(QCalendarWidget* self) {
-	QCalendarWidget::SelectionMode ret = const_cast<const QCalendarWidget*>(self)->selectionMode();
+uintptr_t QCalendarWidget_SelectionMode(const QCalendarWidget* self) {
+	QCalendarWidget::SelectionMode ret = self->selectionMode();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -128,8 +128,8 @@ void QCalendarWidget_SetSelectionMode(QCalendarWidget* self, uintptr_t mode) {
 	self->setSelectionMode(static_cast<QCalendarWidget::SelectionMode>(mode));
 }
 
-uintptr_t QCalendarWidget_HorizontalHeaderFormat(QCalendarWidget* self) {
-	QCalendarWidget::HorizontalHeaderFormat ret = const_cast<const QCalendarWidget*>(self)->horizontalHeaderFormat();
+uintptr_t QCalendarWidget_HorizontalHeaderFormat(const QCalendarWidget* self) {
+	QCalendarWidget::HorizontalHeaderFormat ret = self->horizontalHeaderFormat();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -137,8 +137,8 @@ void QCalendarWidget_SetHorizontalHeaderFormat(QCalendarWidget* self, uintptr_t 
 	self->setHorizontalHeaderFormat(static_cast<QCalendarWidget::HorizontalHeaderFormat>(format));
 }
 
-uintptr_t QCalendarWidget_VerticalHeaderFormat(QCalendarWidget* self) {
-	QCalendarWidget::VerticalHeaderFormat ret = const_cast<const QCalendarWidget*>(self)->verticalHeaderFormat();
+uintptr_t QCalendarWidget_VerticalHeaderFormat(const QCalendarWidget* self) {
+	QCalendarWidget::VerticalHeaderFormat ret = self->verticalHeaderFormat();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -146,8 +146,8 @@ void QCalendarWidget_SetVerticalHeaderFormat(QCalendarWidget* self, uintptr_t fo
 	self->setVerticalHeaderFormat(static_cast<QCalendarWidget::VerticalHeaderFormat>(format));
 }
 
-QTextCharFormat* QCalendarWidget_HeaderTextFormat(QCalendarWidget* self) {
-	QTextCharFormat ret = const_cast<const QCalendarWidget*>(self)->headerTextFormat();
+QTextCharFormat* QCalendarWidget_HeaderTextFormat(const QCalendarWidget* self) {
+	QTextCharFormat ret = self->headerTextFormat();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QTextCharFormat*>(new QTextCharFormat(ret));
 }
@@ -156,8 +156,8 @@ void QCalendarWidget_SetHeaderTextFormat(QCalendarWidget* self, QTextCharFormat*
 	self->setHeaderTextFormat(*format);
 }
 
-QTextCharFormat* QCalendarWidget_WeekdayTextFormat(QCalendarWidget* self, uintptr_t dayOfWeek) {
-	QTextCharFormat ret = const_cast<const QCalendarWidget*>(self)->weekdayTextFormat(static_cast<Qt::DayOfWeek>(dayOfWeek));
+QTextCharFormat* QCalendarWidget_WeekdayTextFormat(const QCalendarWidget* self, uintptr_t dayOfWeek) {
+	QTextCharFormat ret = self->weekdayTextFormat(static_cast<Qt::DayOfWeek>(dayOfWeek));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QTextCharFormat*>(new QTextCharFormat(ret));
 }
@@ -166,8 +166,8 @@ void QCalendarWidget_SetWeekdayTextFormat(QCalendarWidget* self, uintptr_t dayOf
 	self->setWeekdayTextFormat(static_cast<Qt::DayOfWeek>(dayOfWeek), *format);
 }
 
-QTextCharFormat* QCalendarWidget_DateTextFormatWithDate(QCalendarWidget* self, QDate* date) {
-	QTextCharFormat ret = const_cast<const QCalendarWidget*>(self)->dateTextFormat(*date);
+QTextCharFormat* QCalendarWidget_DateTextFormatWithDate(const QCalendarWidget* self, QDate* date) {
+	QTextCharFormat ret = self->dateTextFormat(*date);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QTextCharFormat*>(new QTextCharFormat(ret));
 }
@@ -176,16 +176,16 @@ void QCalendarWidget_SetDateTextFormat(QCalendarWidget* self, QDate* date, QText
 	self->setDateTextFormat(*date, *format);
 }
 
-bool QCalendarWidget_IsDateEditEnabled(QCalendarWidget* self) {
-	return const_cast<const QCalendarWidget*>(self)->isDateEditEnabled();
+bool QCalendarWidget_IsDateEditEnabled(const QCalendarWidget* self) {
+	return self->isDateEditEnabled();
 }
 
 void QCalendarWidget_SetDateEditEnabled(QCalendarWidget* self, bool enable) {
 	self->setDateEditEnabled(enable);
 }
 
-int QCalendarWidget_DateEditAcceptDelay(QCalendarWidget* self) {
-	return const_cast<const QCalendarWidget*>(self)->dateEditAcceptDelay();
+int QCalendarWidget_DateEditAcceptDelay(const QCalendarWidget* self) {
+	return self->dateEditAcceptDelay();
 }
 
 void QCalendarWidget_SetDateEditAcceptDelay(QCalendarWidget* self, int delay) {

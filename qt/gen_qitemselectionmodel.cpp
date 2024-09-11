@@ -41,92 +41,92 @@ void QItemSelectionRange_Swap(QItemSelectionRange* self, QItemSelectionRange* ot
 	self->swap(*other);
 }
 
-int QItemSelectionRange_Top(QItemSelectionRange* self) {
-	return const_cast<const QItemSelectionRange*>(self)->top();
+int QItemSelectionRange_Top(const QItemSelectionRange* self) {
+	return self->top();
 }
 
-int QItemSelectionRange_Left(QItemSelectionRange* self) {
-	return const_cast<const QItemSelectionRange*>(self)->left();
+int QItemSelectionRange_Left(const QItemSelectionRange* self) {
+	return self->left();
 }
 
-int QItemSelectionRange_Bottom(QItemSelectionRange* self) {
-	return const_cast<const QItemSelectionRange*>(self)->bottom();
+int QItemSelectionRange_Bottom(const QItemSelectionRange* self) {
+	return self->bottom();
 }
 
-int QItemSelectionRange_Right(QItemSelectionRange* self) {
-	return const_cast<const QItemSelectionRange*>(self)->right();
+int QItemSelectionRange_Right(const QItemSelectionRange* self) {
+	return self->right();
 }
 
-int QItemSelectionRange_Width(QItemSelectionRange* self) {
-	return const_cast<const QItemSelectionRange*>(self)->width();
+int QItemSelectionRange_Width(const QItemSelectionRange* self) {
+	return self->width();
 }
 
-int QItemSelectionRange_Height(QItemSelectionRange* self) {
-	return const_cast<const QItemSelectionRange*>(self)->height();
+int QItemSelectionRange_Height(const QItemSelectionRange* self) {
+	return self->height();
 }
 
-QPersistentModelIndex* QItemSelectionRange_TopLeft(QItemSelectionRange* self) {
-	const QPersistentModelIndex& ret = const_cast<const QItemSelectionRange*>(self)->topLeft();
+QPersistentModelIndex* QItemSelectionRange_TopLeft(const QItemSelectionRange* self) {
+	const QPersistentModelIndex& ret = self->topLeft();
 	// Cast returned reference into pointer
 	return const_cast<QPersistentModelIndex*>(&ret);
 }
 
-QPersistentModelIndex* QItemSelectionRange_BottomRight(QItemSelectionRange* self) {
-	const QPersistentModelIndex& ret = const_cast<const QItemSelectionRange*>(self)->bottomRight();
+QPersistentModelIndex* QItemSelectionRange_BottomRight(const QItemSelectionRange* self) {
+	const QPersistentModelIndex& ret = self->bottomRight();
 	// Cast returned reference into pointer
 	return const_cast<QPersistentModelIndex*>(&ret);
 }
 
-QModelIndex* QItemSelectionRange_Parent(QItemSelectionRange* self) {
-	QModelIndex ret = const_cast<const QItemSelectionRange*>(self)->parent();
+QModelIndex* QItemSelectionRange_Parent(const QItemSelectionRange* self) {
+	QModelIndex ret = self->parent();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QModelIndex*>(new QModelIndex(ret));
 }
 
-QAbstractItemModel* QItemSelectionRange_Model(QItemSelectionRange* self) {
-	return (QAbstractItemModel*) const_cast<const QItemSelectionRange*>(self)->model();
+QAbstractItemModel* QItemSelectionRange_Model(const QItemSelectionRange* self) {
+	return (QAbstractItemModel*) self->model();
 }
 
-bool QItemSelectionRange_Contains(QItemSelectionRange* self, QModelIndex* index) {
-	return const_cast<const QItemSelectionRange*>(self)->contains(*index);
+bool QItemSelectionRange_Contains(const QItemSelectionRange* self, QModelIndex* index) {
+	return self->contains(*index);
 }
 
-bool QItemSelectionRange_Contains2(QItemSelectionRange* self, int row, int column, QModelIndex* parentIndex) {
-	return const_cast<const QItemSelectionRange*>(self)->contains(static_cast<int>(row), static_cast<int>(column), *parentIndex);
+bool QItemSelectionRange_Contains2(const QItemSelectionRange* self, int row, int column, QModelIndex* parentIndex) {
+	return self->contains(static_cast<int>(row), static_cast<int>(column), *parentIndex);
 }
 
-bool QItemSelectionRange_Intersects(QItemSelectionRange* self, QItemSelectionRange* other) {
-	return const_cast<const QItemSelectionRange*>(self)->intersects(*other);
+bool QItemSelectionRange_Intersects(const QItemSelectionRange* self, QItemSelectionRange* other) {
+	return self->intersects(*other);
 }
 
-QItemSelectionRange* QItemSelectionRange_Intersected(QItemSelectionRange* self, QItemSelectionRange* other) {
-	QItemSelectionRange ret = const_cast<const QItemSelectionRange*>(self)->intersected(*other);
+QItemSelectionRange* QItemSelectionRange_Intersected(const QItemSelectionRange* self, QItemSelectionRange* other) {
+	QItemSelectionRange ret = self->intersected(*other);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QItemSelectionRange*>(new QItemSelectionRange(ret));
 }
 
-bool QItemSelectionRange_OperatorEqual(QItemSelectionRange* self, QItemSelectionRange* other) {
-	return const_cast<const QItemSelectionRange*>(self)->operator==(*other);
+bool QItemSelectionRange_OperatorEqual(const QItemSelectionRange* self, QItemSelectionRange* other) {
+	return self->operator==(*other);
 }
 
-bool QItemSelectionRange_OperatorNotEqual(QItemSelectionRange* self, QItemSelectionRange* other) {
-	return const_cast<const QItemSelectionRange*>(self)->operator!=(*other);
+bool QItemSelectionRange_OperatorNotEqual(const QItemSelectionRange* self, QItemSelectionRange* other) {
+	return self->operator!=(*other);
 }
 
-bool QItemSelectionRange_OperatorLesser(QItemSelectionRange* self, QItemSelectionRange* other) {
-	return const_cast<const QItemSelectionRange*>(self)->operator<(*other);
+bool QItemSelectionRange_OperatorLesser(const QItemSelectionRange* self, QItemSelectionRange* other) {
+	return self->operator<(*other);
 }
 
-bool QItemSelectionRange_IsValid(QItemSelectionRange* self) {
-	return const_cast<const QItemSelectionRange*>(self)->isValid();
+bool QItemSelectionRange_IsValid(const QItemSelectionRange* self) {
+	return self->isValid();
 }
 
-bool QItemSelectionRange_IsEmpty(QItemSelectionRange* self) {
-	return const_cast<const QItemSelectionRange*>(self)->isEmpty();
+bool QItemSelectionRange_IsEmpty(const QItemSelectionRange* self) {
+	return self->isEmpty();
 }
 
-void QItemSelectionRange_Indexes(QItemSelectionRange* self, QModelIndex*** _out, size_t* _out_len) {
-	QModelIndexList ret = const_cast<const QItemSelectionRange*>(self)->indexes();
+void QItemSelectionRange_Indexes(const QItemSelectionRange* self, QModelIndex*** _out, size_t* _out_len) {
+	QModelIndexList ret = self->indexes();
 	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
 	QModelIndex** __out = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex**) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {
@@ -152,8 +152,8 @@ QItemSelectionModel* QItemSelectionModel_new3(QAbstractItemModel* model) {
 	return new QItemSelectionModel(model);
 }
 
-QMetaObject* QItemSelectionModel_MetaObject(QItemSelectionModel* self) {
-	return (QMetaObject*) const_cast<const QItemSelectionModel*>(self)->metaObject();
+QMetaObject* QItemSelectionModel_MetaObject(const QItemSelectionModel* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QItemSelectionModel_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -174,38 +174,38 @@ void QItemSelectionModel_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-QModelIndex* QItemSelectionModel_CurrentIndex(QItemSelectionModel* self) {
-	QModelIndex ret = const_cast<const QItemSelectionModel*>(self)->currentIndex();
+QModelIndex* QItemSelectionModel_CurrentIndex(const QItemSelectionModel* self) {
+	QModelIndex ret = self->currentIndex();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QModelIndex*>(new QModelIndex(ret));
 }
 
-bool QItemSelectionModel_IsSelected(QItemSelectionModel* self, QModelIndex* index) {
-	return const_cast<const QItemSelectionModel*>(self)->isSelected(*index);
+bool QItemSelectionModel_IsSelected(const QItemSelectionModel* self, QModelIndex* index) {
+	return self->isSelected(*index);
 }
 
-bool QItemSelectionModel_IsRowSelected(QItemSelectionModel* self, int row) {
-	return const_cast<const QItemSelectionModel*>(self)->isRowSelected(static_cast<int>(row));
+bool QItemSelectionModel_IsRowSelected(const QItemSelectionModel* self, int row) {
+	return self->isRowSelected(static_cast<int>(row));
 }
 
-bool QItemSelectionModel_IsColumnSelected(QItemSelectionModel* self, int column) {
-	return const_cast<const QItemSelectionModel*>(self)->isColumnSelected(static_cast<int>(column));
+bool QItemSelectionModel_IsColumnSelected(const QItemSelectionModel* self, int column) {
+	return self->isColumnSelected(static_cast<int>(column));
 }
 
-bool QItemSelectionModel_RowIntersectsSelection(QItemSelectionModel* self, int row) {
-	return const_cast<const QItemSelectionModel*>(self)->rowIntersectsSelection(static_cast<int>(row));
+bool QItemSelectionModel_RowIntersectsSelection(const QItemSelectionModel* self, int row) {
+	return self->rowIntersectsSelection(static_cast<int>(row));
 }
 
-bool QItemSelectionModel_ColumnIntersectsSelection(QItemSelectionModel* self, int column) {
-	return const_cast<const QItemSelectionModel*>(self)->columnIntersectsSelection(static_cast<int>(column));
+bool QItemSelectionModel_ColumnIntersectsSelection(const QItemSelectionModel* self, int column) {
+	return self->columnIntersectsSelection(static_cast<int>(column));
 }
 
-bool QItemSelectionModel_HasSelection(QItemSelectionModel* self) {
-	return const_cast<const QItemSelectionModel*>(self)->hasSelection();
+bool QItemSelectionModel_HasSelection(const QItemSelectionModel* self) {
+	return self->hasSelection();
 }
 
-void QItemSelectionModel_SelectedIndexes(QItemSelectionModel* self, QModelIndex*** _out, size_t* _out_len) {
-	QModelIndexList ret = const_cast<const QItemSelectionModel*>(self)->selectedIndexes();
+void QItemSelectionModel_SelectedIndexes(const QItemSelectionModel* self, QModelIndex*** _out, size_t* _out_len) {
+	QModelIndexList ret = self->selectedIndexes();
 	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
 	QModelIndex** __out = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex**) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {
@@ -215,8 +215,8 @@ void QItemSelectionModel_SelectedIndexes(QItemSelectionModel* self, QModelIndex*
 	*_out_len = ret.length();
 }
 
-void QItemSelectionModel_SelectedRows(QItemSelectionModel* self, QModelIndex*** _out, size_t* _out_len) {
-	QModelIndexList ret = const_cast<const QItemSelectionModel*>(self)->selectedRows();
+void QItemSelectionModel_SelectedRows(const QItemSelectionModel* self, QModelIndex*** _out, size_t* _out_len) {
+	QModelIndexList ret = self->selectedRows();
 	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
 	QModelIndex** __out = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex**) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {
@@ -226,8 +226,8 @@ void QItemSelectionModel_SelectedRows(QItemSelectionModel* self, QModelIndex*** 
 	*_out_len = ret.length();
 }
 
-void QItemSelectionModel_SelectedColumns(QItemSelectionModel* self, QModelIndex*** _out, size_t* _out_len) {
-	QModelIndexList ret = const_cast<const QItemSelectionModel*>(self)->selectedColumns();
+void QItemSelectionModel_SelectedColumns(const QItemSelectionModel* self, QModelIndex*** _out, size_t* _out_len) {
+	QModelIndexList ret = self->selectedColumns();
 	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
 	QModelIndex** __out = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex**) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {
@@ -237,8 +237,8 @@ void QItemSelectionModel_SelectedColumns(QItemSelectionModel* self, QModelIndex*
 	*_out_len = ret.length();
 }
 
-QAbstractItemModel* QItemSelectionModel_Model(QItemSelectionModel* self) {
-	return (QAbstractItemModel*) const_cast<const QItemSelectionModel*>(self)->model();
+QAbstractItemModel* QItemSelectionModel_Model(const QItemSelectionModel* self) {
+	return (QAbstractItemModel*) self->model();
 }
 
 QAbstractItemModel* QItemSelectionModel_Model2(QItemSelectionModel* self) {
@@ -349,24 +349,24 @@ void QItemSelectionModel_TrUtf83(const char* s, const char* c, int n, char** _ou
 	*_out_Strlen = b.length();
 }
 
-bool QItemSelectionModel_IsRowSelected2(QItemSelectionModel* self, int row, QModelIndex* parent) {
-	return const_cast<const QItemSelectionModel*>(self)->isRowSelected(static_cast<int>(row), *parent);
+bool QItemSelectionModel_IsRowSelected2(const QItemSelectionModel* self, int row, QModelIndex* parent) {
+	return self->isRowSelected(static_cast<int>(row), *parent);
 }
 
-bool QItemSelectionModel_IsColumnSelected2(QItemSelectionModel* self, int column, QModelIndex* parent) {
-	return const_cast<const QItemSelectionModel*>(self)->isColumnSelected(static_cast<int>(column), *parent);
+bool QItemSelectionModel_IsColumnSelected2(const QItemSelectionModel* self, int column, QModelIndex* parent) {
+	return self->isColumnSelected(static_cast<int>(column), *parent);
 }
 
-bool QItemSelectionModel_RowIntersectsSelection2(QItemSelectionModel* self, int row, QModelIndex* parent) {
-	return const_cast<const QItemSelectionModel*>(self)->rowIntersectsSelection(static_cast<int>(row), *parent);
+bool QItemSelectionModel_RowIntersectsSelection2(const QItemSelectionModel* self, int row, QModelIndex* parent) {
+	return self->rowIntersectsSelection(static_cast<int>(row), *parent);
 }
 
-bool QItemSelectionModel_ColumnIntersectsSelection2(QItemSelectionModel* self, int column, QModelIndex* parent) {
-	return const_cast<const QItemSelectionModel*>(self)->columnIntersectsSelection(static_cast<int>(column), *parent);
+bool QItemSelectionModel_ColumnIntersectsSelection2(const QItemSelectionModel* self, int column, QModelIndex* parent) {
+	return self->columnIntersectsSelection(static_cast<int>(column), *parent);
 }
 
-void QItemSelectionModel_SelectedRows1(QItemSelectionModel* self, int column, QModelIndex*** _out, size_t* _out_len) {
-	QModelIndexList ret = const_cast<const QItemSelectionModel*>(self)->selectedRows(static_cast<int>(column));
+void QItemSelectionModel_SelectedRows1(const QItemSelectionModel* self, int column, QModelIndex*** _out, size_t* _out_len) {
+	QModelIndexList ret = self->selectedRows(static_cast<int>(column));
 	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
 	QModelIndex** __out = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex**) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {
@@ -376,8 +376,8 @@ void QItemSelectionModel_SelectedRows1(QItemSelectionModel* self, int column, QM
 	*_out_len = ret.length();
 }
 
-void QItemSelectionModel_SelectedColumns1(QItemSelectionModel* self, int row, QModelIndex*** _out, size_t* _out_len) {
-	QModelIndexList ret = const_cast<const QItemSelectionModel*>(self)->selectedColumns(static_cast<int>(row));
+void QItemSelectionModel_SelectedColumns1(const QItemSelectionModel* self, int row, QModelIndex*** _out, size_t* _out_len) {
+	QModelIndexList ret = self->selectedColumns(static_cast<int>(row));
 	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
 	QModelIndex** __out = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex**) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {

@@ -13,8 +13,8 @@ extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
 }
 
-QMetaObject* QAccessiblePlugin_MetaObject(QAccessiblePlugin* self) {
-	return (QMetaObject*) const_cast<const QAccessiblePlugin*>(self)->metaObject();
+QMetaObject* QAccessiblePlugin_MetaObject(const QAccessiblePlugin* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QAccessiblePlugin_Tr(const char* s, char** _out, int* _out_Strlen) {

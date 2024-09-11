@@ -49,16 +49,16 @@ QKeySequence* QKeySequence_new9(int k1, int k2, int k3, int k4) {
 	return new QKeySequence(static_cast<int>(k1), static_cast<int>(k2), static_cast<int>(k3), static_cast<int>(k4));
 }
 
-int QKeySequence_Count(QKeySequence* self) {
-	return const_cast<const QKeySequence*>(self)->count();
+int QKeySequence_Count(const QKeySequence* self) {
+	return self->count();
 }
 
-bool QKeySequence_IsEmpty(QKeySequence* self) {
-	return const_cast<const QKeySequence*>(self)->isEmpty();
+bool QKeySequence_IsEmpty(const QKeySequence* self) {
+	return self->isEmpty();
 }
 
-void QKeySequence_ToString(QKeySequence* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QKeySequence*>(self)->toString();
+void QKeySequence_ToString(const QKeySequence* self, char** _out, int* _out_Strlen) {
+	QString ret = self->toString();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -99,8 +99,8 @@ void QKeySequence_ListToString(QKeySequence** list, size_t list_len, char** _out
 	*_out_Strlen = b.length();
 }
 
-uintptr_t QKeySequence_Matches(QKeySequence* self, QKeySequence* seq) {
-	QKeySequence::SequenceMatch ret = const_cast<const QKeySequence*>(self)->matches(*seq);
+uintptr_t QKeySequence_Matches(const QKeySequence* self, QKeySequence* seq) {
+	QKeySequence::SequenceMatch ret = self->matches(*seq);
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -122,8 +122,8 @@ void QKeySequence_KeyBindings(uintptr_t key, QKeySequence*** _out, size_t* _out_
 	*_out_len = ret.length();
 }
 
-int QKeySequence_OperatorSubscript(QKeySequence* self, unsigned int i) {
-	return const_cast<const QKeySequence*>(self)->operator[](static_cast<uint>(i));
+int QKeySequence_OperatorSubscript(const QKeySequence* self, unsigned int i) {
+	return self->operator[](static_cast<uint>(i));
 }
 
 void QKeySequence_OperatorAssign(QKeySequence* self, QKeySequence* other) {
@@ -134,36 +134,36 @@ void QKeySequence_Swap(QKeySequence* self, QKeySequence* other) {
 	self->swap(*other);
 }
 
-bool QKeySequence_OperatorEqual(QKeySequence* self, QKeySequence* other) {
-	return const_cast<const QKeySequence*>(self)->operator==(*other);
+bool QKeySequence_OperatorEqual(const QKeySequence* self, QKeySequence* other) {
+	return self->operator==(*other);
 }
 
-bool QKeySequence_OperatorNotEqual(QKeySequence* self, QKeySequence* other) {
-	return const_cast<const QKeySequence*>(self)->operator!=(*other);
+bool QKeySequence_OperatorNotEqual(const QKeySequence* self, QKeySequence* other) {
+	return self->operator!=(*other);
 }
 
-bool QKeySequence_OperatorLesser(QKeySequence* self, QKeySequence* ks) {
-	return const_cast<const QKeySequence*>(self)->operator<(*ks);
+bool QKeySequence_OperatorLesser(const QKeySequence* self, QKeySequence* ks) {
+	return self->operator<(*ks);
 }
 
-bool QKeySequence_OperatorGreater(QKeySequence* self, QKeySequence* other) {
-	return const_cast<const QKeySequence*>(self)->operator>(*other);
+bool QKeySequence_OperatorGreater(const QKeySequence* self, QKeySequence* other) {
+	return self->operator>(*other);
 }
 
-bool QKeySequence_OperatorLesserOrEqual(QKeySequence* self, QKeySequence* other) {
-	return const_cast<const QKeySequence*>(self)->operator<=(*other);
+bool QKeySequence_OperatorLesserOrEqual(const QKeySequence* self, QKeySequence* other) {
+	return self->operator<=(*other);
 }
 
-bool QKeySequence_OperatorGreaterOrEqual(QKeySequence* self, QKeySequence* other) {
-	return const_cast<const QKeySequence*>(self)->operator>=(*other);
+bool QKeySequence_OperatorGreaterOrEqual(const QKeySequence* self, QKeySequence* other) {
+	return self->operator>=(*other);
 }
 
-bool QKeySequence_IsDetached(QKeySequence* self) {
-	return const_cast<const QKeySequence*>(self)->isDetached();
+bool QKeySequence_IsDetached(const QKeySequence* self) {
+	return self->isDetached();
 }
 
-void QKeySequence_ToString1(QKeySequence* self, uintptr_t format, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QKeySequence*>(self)->toString(static_cast<QKeySequence::SequenceFormat>(format));
+void QKeySequence_ToString1(const QKeySequence* self, uintptr_t format, char** _out, int* _out_Strlen) {
+	QString ret = self->toString(static_cast<QKeySequence::SequenceFormat>(format));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));

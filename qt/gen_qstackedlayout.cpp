@@ -28,8 +28,8 @@ QStackedLayout* QStackedLayout_new3(QLayout* parentLayout) {
 	return new QStackedLayout(parentLayout);
 }
 
-QMetaObject* QStackedLayout_MetaObject(QStackedLayout* self) {
-	return (QMetaObject*) const_cast<const QStackedLayout*>(self)->metaObject();
+QMetaObject* QStackedLayout_MetaObject(const QStackedLayout* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QStackedLayout_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -58,24 +58,24 @@ int QStackedLayout_InsertWidget(QStackedLayout* self, int index, QWidget* w) {
 	return self->insertWidget(static_cast<int>(index), w);
 }
 
-QWidget* QStackedLayout_CurrentWidget(QStackedLayout* self) {
-	return const_cast<const QStackedLayout*>(self)->currentWidget();
+QWidget* QStackedLayout_CurrentWidget(const QStackedLayout* self) {
+	return self->currentWidget();
 }
 
-int QStackedLayout_CurrentIndex(QStackedLayout* self) {
-	return const_cast<const QStackedLayout*>(self)->currentIndex();
+int QStackedLayout_CurrentIndex(const QStackedLayout* self) {
+	return self->currentIndex();
 }
 
-QWidget* QStackedLayout_Widget(QStackedLayout* self, int param1) {
-	return const_cast<const QStackedLayout*>(self)->widget(static_cast<int>(param1));
+QWidget* QStackedLayout_Widget(const QStackedLayout* self, int param1) {
+	return self->widget(static_cast<int>(param1));
 }
 
-int QStackedLayout_Count(QStackedLayout* self) {
-	return const_cast<const QStackedLayout*>(self)->count();
+int QStackedLayout_Count(const QStackedLayout* self) {
+	return self->count();
 }
 
-uintptr_t QStackedLayout_StackingMode(QStackedLayout* self) {
-	QStackedLayout::StackingMode ret = const_cast<const QStackedLayout*>(self)->stackingMode();
+uintptr_t QStackedLayout_StackingMode(const QStackedLayout* self) {
+	QStackedLayout::StackingMode ret = self->stackingMode();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -87,20 +87,20 @@ void QStackedLayout_AddItem(QStackedLayout* self, QLayoutItem* item) {
 	self->addItem(item);
 }
 
-QSize* QStackedLayout_SizeHint(QStackedLayout* self) {
-	QSize ret = const_cast<const QStackedLayout*>(self)->sizeHint();
+QSize* QStackedLayout_SizeHint(const QStackedLayout* self) {
+	QSize ret = self->sizeHint();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
 
-QSize* QStackedLayout_MinimumSize(QStackedLayout* self) {
-	QSize ret = const_cast<const QStackedLayout*>(self)->minimumSize();
+QSize* QStackedLayout_MinimumSize(const QStackedLayout* self) {
+	QSize ret = self->minimumSize();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
 
-QLayoutItem* QStackedLayout_ItemAt(QStackedLayout* self, int param1) {
-	return const_cast<const QStackedLayout*>(self)->itemAt(static_cast<int>(param1));
+QLayoutItem* QStackedLayout_ItemAt(const QStackedLayout* self, int param1) {
+	return self->itemAt(static_cast<int>(param1));
 }
 
 QLayoutItem* QStackedLayout_TakeAt(QStackedLayout* self, int param1) {
@@ -111,12 +111,12 @@ void QStackedLayout_SetGeometry(QStackedLayout* self, QRect* rect) {
 	self->setGeometry(*rect);
 }
 
-bool QStackedLayout_HasHeightForWidth(QStackedLayout* self) {
-	return const_cast<const QStackedLayout*>(self)->hasHeightForWidth();
+bool QStackedLayout_HasHeightForWidth(const QStackedLayout* self) {
+	return self->hasHeightForWidth();
 }
 
-int QStackedLayout_HeightForWidth(QStackedLayout* self, int width) {
-	return const_cast<const QStackedLayout*>(self)->heightForWidth(static_cast<int>(width));
+int QStackedLayout_HeightForWidth(const QStackedLayout* self, int width) {
+	return self->heightForWidth(static_cast<int>(width));
 }
 
 void QStackedLayout_WidgetRemoved(QStackedLayout* self, int index) {

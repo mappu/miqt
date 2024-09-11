@@ -23,8 +23,8 @@ QUndoGroup* QUndoGroup_new2(QObject* parent) {
 	return new QUndoGroup(parent);
 }
 
-QMetaObject* QUndoGroup_MetaObject(QUndoGroup* self) {
-	return (QMetaObject*) const_cast<const QUndoGroup*>(self)->metaObject();
+QMetaObject* QUndoGroup_MetaObject(const QUndoGroup* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QUndoGroup_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -53,8 +53,8 @@ void QUndoGroup_RemoveStack(QUndoGroup* self, QUndoStack* stack) {
 	self->removeStack(stack);
 }
 
-void QUndoGroup_Stacks(QUndoGroup* self, QUndoStack*** _out, size_t* _out_len) {
-	QList<QUndoStack*> ret = const_cast<const QUndoGroup*>(self)->stacks();
+void QUndoGroup_Stacks(const QUndoGroup* self, QUndoStack*** _out, size_t* _out_len) {
+	QList<QUndoStack*> ret = self->stacks();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QUndoStack** __out = static_cast<QUndoStack**>(malloc(sizeof(QUndoStack*) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {
@@ -64,28 +64,28 @@ void QUndoGroup_Stacks(QUndoGroup* self, QUndoStack*** _out, size_t* _out_len) {
 	*_out_len = ret.length();
 }
 
-QUndoStack* QUndoGroup_ActiveStack(QUndoGroup* self) {
-	return const_cast<const QUndoGroup*>(self)->activeStack();
+QUndoStack* QUndoGroup_ActiveStack(const QUndoGroup* self) {
+	return self->activeStack();
 }
 
-QAction* QUndoGroup_CreateUndoAction(QUndoGroup* self, QObject* parent) {
-	return const_cast<const QUndoGroup*>(self)->createUndoAction(parent);
+QAction* QUndoGroup_CreateUndoAction(const QUndoGroup* self, QObject* parent) {
+	return self->createUndoAction(parent);
 }
 
-QAction* QUndoGroup_CreateRedoAction(QUndoGroup* self, QObject* parent) {
-	return const_cast<const QUndoGroup*>(self)->createRedoAction(parent);
+QAction* QUndoGroup_CreateRedoAction(const QUndoGroup* self, QObject* parent) {
+	return self->createRedoAction(parent);
 }
 
-bool QUndoGroup_CanUndo(QUndoGroup* self) {
-	return const_cast<const QUndoGroup*>(self)->canUndo();
+bool QUndoGroup_CanUndo(const QUndoGroup* self) {
+	return self->canUndo();
 }
 
-bool QUndoGroup_CanRedo(QUndoGroup* self) {
-	return const_cast<const QUndoGroup*>(self)->canRedo();
+bool QUndoGroup_CanRedo(const QUndoGroup* self) {
+	return self->canRedo();
 }
 
-void QUndoGroup_UndoText(QUndoGroup* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QUndoGroup*>(self)->undoText();
+void QUndoGroup_UndoText(const QUndoGroup* self, char** _out, int* _out_Strlen) {
+	QString ret = self->undoText();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -93,8 +93,8 @@ void QUndoGroup_UndoText(QUndoGroup* self, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QUndoGroup_RedoText(QUndoGroup* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QUndoGroup*>(self)->redoText();
+void QUndoGroup_RedoText(const QUndoGroup* self, char** _out, int* _out_Strlen) {
+	QString ret = self->redoText();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -102,8 +102,8 @@ void QUndoGroup_RedoText(QUndoGroup* self, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-bool QUndoGroup_IsClean(QUndoGroup* self) {
-	return const_cast<const QUndoGroup*>(self)->isClean();
+bool QUndoGroup_IsClean(const QUndoGroup* self) {
+	return self->isClean();
 }
 
 void QUndoGroup_Undo(QUndoGroup* self) {
@@ -226,14 +226,14 @@ void QUndoGroup_TrUtf83(const char* s, const char* c, int n, char** _out, int* _
 	*_out_Strlen = b.length();
 }
 
-QAction* QUndoGroup_CreateUndoAction2(QUndoGroup* self, QObject* parent, const char* prefix, size_t prefix_Strlen) {
+QAction* QUndoGroup_CreateUndoAction2(const QUndoGroup* self, QObject* parent, const char* prefix, size_t prefix_Strlen) {
 	QString prefix_QString = QString::fromUtf8(prefix, prefix_Strlen);
-	return const_cast<const QUndoGroup*>(self)->createUndoAction(parent, prefix_QString);
+	return self->createUndoAction(parent, prefix_QString);
 }
 
-QAction* QUndoGroup_CreateRedoAction2(QUndoGroup* self, QObject* parent, const char* prefix, size_t prefix_Strlen) {
+QAction* QUndoGroup_CreateRedoAction2(const QUndoGroup* self, QObject* parent, const char* prefix, size_t prefix_Strlen) {
 	QString prefix_QString = QString::fromUtf8(prefix, prefix_Strlen);
-	return const_cast<const QUndoGroup*>(self)->createRedoAction(parent, prefix_QString);
+	return self->createRedoAction(parent, prefix_QString);
 }
 
 void QUndoGroup_Delete(QUndoGroup* self) {

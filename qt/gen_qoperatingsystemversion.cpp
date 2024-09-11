@@ -33,29 +33,29 @@ uintptr_t QOperatingSystemVersion_CurrentType() {
 	return static_cast<uintptr_t>(ret);
 }
 
-int QOperatingSystemVersion_MajorVersion(QOperatingSystemVersion* self) {
-	return const_cast<const QOperatingSystemVersion*>(self)->majorVersion();
+int QOperatingSystemVersion_MajorVersion(const QOperatingSystemVersion* self) {
+	return self->majorVersion();
 }
 
-int QOperatingSystemVersion_MinorVersion(QOperatingSystemVersion* self) {
-	return const_cast<const QOperatingSystemVersion*>(self)->minorVersion();
+int QOperatingSystemVersion_MinorVersion(const QOperatingSystemVersion* self) {
+	return self->minorVersion();
 }
 
-int QOperatingSystemVersion_MicroVersion(QOperatingSystemVersion* self) {
-	return const_cast<const QOperatingSystemVersion*>(self)->microVersion();
+int QOperatingSystemVersion_MicroVersion(const QOperatingSystemVersion* self) {
+	return self->microVersion();
 }
 
-int QOperatingSystemVersion_SegmentCount(QOperatingSystemVersion* self) {
-	return const_cast<const QOperatingSystemVersion*>(self)->segmentCount();
+int QOperatingSystemVersion_SegmentCount(const QOperatingSystemVersion* self) {
+	return self->segmentCount();
 }
 
-uintptr_t QOperatingSystemVersion_Type(QOperatingSystemVersion* self) {
-	QOperatingSystemVersion::OSType ret = const_cast<const QOperatingSystemVersion*>(self)->type();
+uintptr_t QOperatingSystemVersion_Type(const QOperatingSystemVersion* self) {
+	QOperatingSystemVersion::OSType ret = self->type();
 	return static_cast<uintptr_t>(ret);
 }
 
-void QOperatingSystemVersion_Name(QOperatingSystemVersion* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QOperatingSystemVersion*>(self)->name();
+void QOperatingSystemVersion_Name(const QOperatingSystemVersion* self, char** _out, int* _out_Strlen) {
+	QString ret = self->name();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));

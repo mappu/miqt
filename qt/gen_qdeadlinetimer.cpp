@@ -39,16 +39,16 @@ void QDeadlineTimer_Swap(QDeadlineTimer* self, QDeadlineTimer* other) {
 	self->swap(*other);
 }
 
-bool QDeadlineTimer_IsForever(QDeadlineTimer* self) {
-	return const_cast<const QDeadlineTimer*>(self)->isForever();
+bool QDeadlineTimer_IsForever(const QDeadlineTimer* self) {
+	return self->isForever();
 }
 
-bool QDeadlineTimer_HasExpired(QDeadlineTimer* self) {
-	return const_cast<const QDeadlineTimer*>(self)->hasExpired();
+bool QDeadlineTimer_HasExpired(const QDeadlineTimer* self) {
+	return self->hasExpired();
 }
 
-uintptr_t QDeadlineTimer_TimerType(QDeadlineTimer* self) {
-	Qt::TimerType ret = const_cast<const QDeadlineTimer*>(self)->timerType();
+uintptr_t QDeadlineTimer_TimerType(const QDeadlineTimer* self) {
+	Qt::TimerType ret = self->timerType();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -56,12 +56,12 @@ void QDeadlineTimer_SetTimerType(QDeadlineTimer* self, uintptr_t typeVal) {
 	self->setTimerType(static_cast<Qt::TimerType>(typeVal));
 }
 
-long long QDeadlineTimer_RemainingTime(QDeadlineTimer* self) {
-	return const_cast<const QDeadlineTimer*>(self)->remainingTime();
+long long QDeadlineTimer_RemainingTime(const QDeadlineTimer* self) {
+	return self->remainingTime();
 }
 
-long long QDeadlineTimer_RemainingTimeNSecs(QDeadlineTimer* self) {
-	return const_cast<const QDeadlineTimer*>(self)->remainingTimeNSecs();
+long long QDeadlineTimer_RemainingTimeNSecs(const QDeadlineTimer* self) {
+	return self->remainingTimeNSecs();
 }
 
 void QDeadlineTimer_SetRemainingTime(QDeadlineTimer* self, long long msecs) {
@@ -72,12 +72,12 @@ void QDeadlineTimer_SetPreciseRemainingTime(QDeadlineTimer* self, long long secs
 	self->setPreciseRemainingTime(static_cast<qint64>(secs));
 }
 
-long long QDeadlineTimer_Deadline(QDeadlineTimer* self) {
-	return const_cast<const QDeadlineTimer*>(self)->deadline();
+long long QDeadlineTimer_Deadline(const QDeadlineTimer* self) {
+	return self->deadline();
 }
 
-long long QDeadlineTimer_DeadlineNSecs(QDeadlineTimer* self) {
-	return const_cast<const QDeadlineTimer*>(self)->deadlineNSecs();
+long long QDeadlineTimer_DeadlineNSecs(const QDeadlineTimer* self) {
+	return self->deadlineNSecs();
 }
 
 void QDeadlineTimer_SetDeadline(QDeadlineTimer* self, long long msecs) {

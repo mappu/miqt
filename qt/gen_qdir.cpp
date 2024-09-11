@@ -62,8 +62,8 @@ void QDir_SetPath(QDir* self, const char* path, size_t path_Strlen) {
 	self->setPath(path_QString);
 }
 
-void QDir_Path(QDir* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QDir*>(self)->path();
+void QDir_Path(const QDir* self, char** _out, int* _out_Strlen) {
+	QString ret = self->path();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -71,8 +71,8 @@ void QDir_Path(QDir* self, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QDir_AbsolutePath(QDir* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QDir*>(self)->absolutePath();
+void QDir_AbsolutePath(const QDir* self, char** _out, int* _out_Strlen) {
+	QString ret = self->absolutePath();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -80,8 +80,8 @@ void QDir_AbsolutePath(QDir* self, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QDir_CanonicalPath(QDir* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QDir*>(self)->canonicalPath();
+void QDir_CanonicalPath(const QDir* self, char** _out, int* _out_Strlen) {
+	QString ret = self->canonicalPath();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -128,8 +128,8 @@ void QDir_SearchPaths(const char* prefix, size_t prefix_Strlen, char*** _out, in
 	*_out_len = ret.length();
 }
 
-void QDir_DirName(QDir* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QDir*>(self)->dirName();
+void QDir_DirName(const QDir* self, char** _out, int* _out_Strlen) {
+	QString ret = self->dirName();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -137,9 +137,9 @@ void QDir_DirName(QDir* self, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QDir_FilePath(QDir* self, const char* fileName, size_t fileName_Strlen, char** _out, int* _out_Strlen) {
+void QDir_FilePath(const QDir* self, const char* fileName, size_t fileName_Strlen, char** _out, int* _out_Strlen) {
 	QString fileName_QString = QString::fromUtf8(fileName, fileName_Strlen);
-	QString ret = const_cast<const QDir*>(self)->filePath(fileName_QString);
+	QString ret = self->filePath(fileName_QString);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -147,9 +147,9 @@ void QDir_FilePath(QDir* self, const char* fileName, size_t fileName_Strlen, cha
 	*_out_Strlen = b.length();
 }
 
-void QDir_AbsoluteFilePath(QDir* self, const char* fileName, size_t fileName_Strlen, char** _out, int* _out_Strlen) {
+void QDir_AbsoluteFilePath(const QDir* self, const char* fileName, size_t fileName_Strlen, char** _out, int* _out_Strlen) {
 	QString fileName_QString = QString::fromUtf8(fileName, fileName_Strlen);
-	QString ret = const_cast<const QDir*>(self)->absoluteFilePath(fileName_QString);
+	QString ret = self->absoluteFilePath(fileName_QString);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -157,9 +157,9 @@ void QDir_AbsoluteFilePath(QDir* self, const char* fileName, size_t fileName_Str
 	*_out_Strlen = b.length();
 }
 
-void QDir_RelativeFilePath(QDir* self, const char* fileName, size_t fileName_Strlen, char** _out, int* _out_Strlen) {
+void QDir_RelativeFilePath(const QDir* self, const char* fileName, size_t fileName_Strlen, char** _out, int* _out_Strlen) {
 	QString fileName_QString = QString::fromUtf8(fileName, fileName_Strlen);
-	QString ret = const_cast<const QDir*>(self)->relativeFilePath(fileName_QString);
+	QString ret = self->relativeFilePath(fileName_QString);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -196,8 +196,8 @@ bool QDir_CdUp(QDir* self) {
 	return self->cdUp();
 }
 
-void QDir_NameFilters(QDir* self, char*** _out, int** _out_Lengths, size_t* _out_len) {
-	QStringList ret = const_cast<const QDir*>(self)->nameFilters();
+void QDir_NameFilters(const QDir* self, char*** _out, int** _out_Lengths, size_t* _out_len) {
+	QStringList ret = self->nameFilters();
 	// Convert QStringList from C++ memory to manually-managed C memory
 	char** __out = static_cast<char**>(malloc(sizeof(char*) * ret.length()));
 	int* __out_Lengths = static_cast<int*>(malloc(sizeof(int) * ret.length()));
@@ -222,8 +222,8 @@ void QDir_SetNameFilters(QDir* self, char** nameFilters, uint64_t* nameFilters_L
 	self->setNameFilters(nameFilters_QList);
 }
 
-int QDir_Filter(QDir* self) {
-	QDir::Filters ret = const_cast<const QDir*>(self)->filter();
+int QDir_Filter(const QDir* self) {
+	QDir::Filters ret = self->filter();
 	return static_cast<int>(ret);
 }
 
@@ -231,8 +231,8 @@ void QDir_SetFilter(QDir* self, int filter) {
 	self->setFilter(static_cast<QDir::Filters>(filter));
 }
 
-int QDir_Sorting(QDir* self) {
-	QDir::SortFlags ret = const_cast<const QDir*>(self)->sorting();
+int QDir_Sorting(const QDir* self) {
+	QDir::SortFlags ret = self->sorting();
 	return static_cast<int>(ret);
 }
 
@@ -240,16 +240,16 @@ void QDir_SetSorting(QDir* self, int sort) {
 	self->setSorting(static_cast<QDir::SortFlags>(sort));
 }
 
-unsigned int QDir_Count(QDir* self) {
-	return const_cast<const QDir*>(self)->count();
+unsigned int QDir_Count(const QDir* self) {
+	return self->count();
 }
 
-bool QDir_IsEmpty(QDir* self) {
-	return const_cast<const QDir*>(self)->isEmpty();
+bool QDir_IsEmpty(const QDir* self) {
+	return self->isEmpty();
 }
 
-void QDir_OperatorSubscript(QDir* self, int param1, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QDir*>(self)->operator[](static_cast<int>(param1));
+void QDir_OperatorSubscript(const QDir* self, int param1, char** _out, int* _out_Strlen) {
+	QString ret = self->operator[](static_cast<int>(param1));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -275,8 +275,8 @@ void QDir_NameFiltersFromString(const char* nameFilter, size_t nameFilter_Strlen
 	*_out_len = ret.length();
 }
 
-void QDir_EntryList(QDir* self, char*** _out, int** _out_Lengths, size_t* _out_len) {
-	QStringList ret = const_cast<const QDir*>(self)->entryList();
+void QDir_EntryList(const QDir* self, char*** _out, int** _out_Lengths, size_t* _out_len) {
+	QStringList ret = self->entryList();
 	// Convert QStringList from C++ memory to manually-managed C memory
 	char** __out = static_cast<char**>(malloc(sizeof(char*) * ret.length()));
 	int* __out_Lengths = static_cast<int*>(malloc(sizeof(int) * ret.length()));
@@ -292,13 +292,13 @@ void QDir_EntryList(QDir* self, char*** _out, int** _out_Lengths, size_t* _out_l
 	*_out_len = ret.length();
 }
 
-void QDir_EntryListWithNameFilters(QDir* self, char** nameFilters, uint64_t* nameFilters_Lengths, size_t nameFilters_len, char*** _out, int** _out_Lengths, size_t* _out_len) {
+void QDir_EntryListWithNameFilters(const QDir* self, char** nameFilters, uint64_t* nameFilters_Lengths, size_t nameFilters_len, char*** _out, int** _out_Lengths, size_t* _out_len) {
 	QList<QString> nameFilters_QList;
 	nameFilters_QList.reserve(nameFilters_len);
 	for(size_t i = 0; i < nameFilters_len; ++i) {
 		nameFilters_QList.push_back(QString::fromUtf8(nameFilters[i], nameFilters_Lengths[i]));
 	}
-	QStringList ret = const_cast<const QDir*>(self)->entryList(nameFilters_QList);
+	QStringList ret = self->entryList(nameFilters_QList);
 	// Convert QStringList from C++ memory to manually-managed C memory
 	char** __out = static_cast<char**>(malloc(sizeof(char*) * ret.length()));
 	int* __out_Lengths = static_cast<int*>(malloc(sizeof(int) * ret.length()));
@@ -314,8 +314,8 @@ void QDir_EntryListWithNameFilters(QDir* self, char** nameFilters, uint64_t* nam
 	*_out_len = ret.length();
 }
 
-void QDir_EntryInfoList(QDir* self, QFileInfo*** _out, size_t* _out_len) {
-	QFileInfoList ret = const_cast<const QDir*>(self)->entryInfoList();
+void QDir_EntryInfoList(const QDir* self, QFileInfo*** _out, size_t* _out_len) {
+	QFileInfoList ret = self->entryInfoList();
 	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
 	QFileInfo** __out = static_cast<QFileInfo**>(malloc(sizeof(QFileInfo**) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {
@@ -325,13 +325,13 @@ void QDir_EntryInfoList(QDir* self, QFileInfo*** _out, size_t* _out_len) {
 	*_out_len = ret.length();
 }
 
-void QDir_EntryInfoListWithNameFilters(QDir* self, char** nameFilters, uint64_t* nameFilters_Lengths, size_t nameFilters_len, QFileInfo*** _out, size_t* _out_len) {
+void QDir_EntryInfoListWithNameFilters(const QDir* self, char** nameFilters, uint64_t* nameFilters_Lengths, size_t nameFilters_len, QFileInfo*** _out, size_t* _out_len) {
 	QList<QString> nameFilters_QList;
 	nameFilters_QList.reserve(nameFilters_len);
 	for(size_t i = 0; i < nameFilters_len; ++i) {
 		nameFilters_QList.push_back(QString::fromUtf8(nameFilters[i], nameFilters_Lengths[i]));
 	}
-	QFileInfoList ret = const_cast<const QDir*>(self)->entryInfoList(nameFilters_QList);
+	QFileInfoList ret = self->entryInfoList(nameFilters_QList);
 	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
 	QFileInfo** __out = static_cast<QFileInfo**>(malloc(sizeof(QFileInfo**) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {
@@ -341,40 +341,40 @@ void QDir_EntryInfoListWithNameFilters(QDir* self, char** nameFilters, uint64_t*
 	*_out_len = ret.length();
 }
 
-bool QDir_Mkdir(QDir* self, const char* dirName, size_t dirName_Strlen) {
+bool QDir_Mkdir(const QDir* self, const char* dirName, size_t dirName_Strlen) {
 	QString dirName_QString = QString::fromUtf8(dirName, dirName_Strlen);
-	return const_cast<const QDir*>(self)->mkdir(dirName_QString);
+	return self->mkdir(dirName_QString);
 }
 
-bool QDir_Rmdir(QDir* self, const char* dirName, size_t dirName_Strlen) {
+bool QDir_Rmdir(const QDir* self, const char* dirName, size_t dirName_Strlen) {
 	QString dirName_QString = QString::fromUtf8(dirName, dirName_Strlen);
-	return const_cast<const QDir*>(self)->rmdir(dirName_QString);
+	return self->rmdir(dirName_QString);
 }
 
-bool QDir_Mkpath(QDir* self, const char* dirPath, size_t dirPath_Strlen) {
+bool QDir_Mkpath(const QDir* self, const char* dirPath, size_t dirPath_Strlen) {
 	QString dirPath_QString = QString::fromUtf8(dirPath, dirPath_Strlen);
-	return const_cast<const QDir*>(self)->mkpath(dirPath_QString);
+	return self->mkpath(dirPath_QString);
 }
 
-bool QDir_Rmpath(QDir* self, const char* dirPath, size_t dirPath_Strlen) {
+bool QDir_Rmpath(const QDir* self, const char* dirPath, size_t dirPath_Strlen) {
 	QString dirPath_QString = QString::fromUtf8(dirPath, dirPath_Strlen);
-	return const_cast<const QDir*>(self)->rmpath(dirPath_QString);
+	return self->rmpath(dirPath_QString);
 }
 
 bool QDir_RemoveRecursively(QDir* self) {
 	return self->removeRecursively();
 }
 
-bool QDir_IsReadable(QDir* self) {
-	return const_cast<const QDir*>(self)->isReadable();
+bool QDir_IsReadable(const QDir* self) {
+	return self->isReadable();
 }
 
-bool QDir_Exists(QDir* self) {
-	return const_cast<const QDir*>(self)->exists();
+bool QDir_Exists(const QDir* self) {
+	return self->exists();
 }
 
-bool QDir_IsRoot(QDir* self) {
-	return const_cast<const QDir*>(self)->isRoot();
+bool QDir_IsRoot(const QDir* self) {
+	return self->isRoot();
 }
 
 bool QDir_IsRelativePath(const char* path, size_t path_Strlen) {
@@ -387,24 +387,24 @@ bool QDir_IsAbsolutePath(const char* path, size_t path_Strlen) {
 	return QDir::isAbsolutePath(path_QString);
 }
 
-bool QDir_IsRelative(QDir* self) {
-	return const_cast<const QDir*>(self)->isRelative();
+bool QDir_IsRelative(const QDir* self) {
+	return self->isRelative();
 }
 
-bool QDir_IsAbsolute(QDir* self) {
-	return const_cast<const QDir*>(self)->isAbsolute();
+bool QDir_IsAbsolute(const QDir* self) {
+	return self->isAbsolute();
 }
 
 bool QDir_MakeAbsolute(QDir* self) {
 	return self->makeAbsolute();
 }
 
-bool QDir_OperatorEqual(QDir* self, QDir* dir) {
-	return const_cast<const QDir*>(self)->operator==(*dir);
+bool QDir_OperatorEqual(const QDir* self, QDir* dir) {
+	return self->operator==(*dir);
 }
 
-bool QDir_OperatorNotEqual(QDir* self, QDir* dir) {
-	return const_cast<const QDir*>(self)->operator!=(*dir);
+bool QDir_OperatorNotEqual(const QDir* self, QDir* dir) {
+	return self->operator!=(*dir);
 }
 
 bool QDir_Remove(QDir* self, const char* fileName, size_t fileName_Strlen) {
@@ -418,9 +418,9 @@ bool QDir_Rename(QDir* self, const char* oldName, size_t oldName_Strlen, const c
 	return self->rename(oldName_QString, newName_QString);
 }
 
-bool QDir_ExistsWithName(QDir* self, const char* name, size_t name_Strlen) {
+bool QDir_ExistsWithName(const QDir* self, const char* name, size_t name_Strlen) {
 	QString name_QString = QString::fromUtf8(name, name_Strlen);
-	return const_cast<const QDir*>(self)->exists(name_QString);
+	return self->exists(name_QString);
 }
 
 void QDir_Drives(QFileInfo*** _out, size_t* _out_len) {
@@ -537,16 +537,16 @@ void QDir_CleanPath(const char* path, size_t path_Strlen, char** _out, int* _out
 	*_out_Strlen = b.length();
 }
 
-void QDir_Refresh(QDir* self) {
-	const_cast<const QDir*>(self)->refresh();
+void QDir_Refresh(const QDir* self) {
+	self->refresh();
 }
 
-bool QDir_IsEmpty1(QDir* self, int filters) {
-	return const_cast<const QDir*>(self)->isEmpty(static_cast<QDir::Filters>(filters));
+bool QDir_IsEmpty1(const QDir* self, int filters) {
+	return self->isEmpty(static_cast<QDir::Filters>(filters));
 }
 
-void QDir_EntryList1(QDir* self, int filters, char*** _out, int** _out_Lengths, size_t* _out_len) {
-	QStringList ret = const_cast<const QDir*>(self)->entryList(static_cast<QDir::Filters>(filters));
+void QDir_EntryList1(const QDir* self, int filters, char*** _out, int** _out_Lengths, size_t* _out_len) {
+	QStringList ret = self->entryList(static_cast<QDir::Filters>(filters));
 	// Convert QStringList from C++ memory to manually-managed C memory
 	char** __out = static_cast<char**>(malloc(sizeof(char*) * ret.length()));
 	int* __out_Lengths = static_cast<int*>(malloc(sizeof(int) * ret.length()));
@@ -562,8 +562,8 @@ void QDir_EntryList1(QDir* self, int filters, char*** _out, int** _out_Lengths, 
 	*_out_len = ret.length();
 }
 
-void QDir_EntryList2(QDir* self, int filters, int sort, char*** _out, int** _out_Lengths, size_t* _out_len) {
-	QStringList ret = const_cast<const QDir*>(self)->entryList(static_cast<QDir::Filters>(filters), static_cast<QDir::SortFlags>(sort));
+void QDir_EntryList2(const QDir* self, int filters, int sort, char*** _out, int** _out_Lengths, size_t* _out_len) {
+	QStringList ret = self->entryList(static_cast<QDir::Filters>(filters), static_cast<QDir::SortFlags>(sort));
 	// Convert QStringList from C++ memory to manually-managed C memory
 	char** __out = static_cast<char**>(malloc(sizeof(char*) * ret.length()));
 	int* __out_Lengths = static_cast<int*>(malloc(sizeof(int) * ret.length()));
@@ -579,13 +579,13 @@ void QDir_EntryList2(QDir* self, int filters, int sort, char*** _out, int** _out
 	*_out_len = ret.length();
 }
 
-void QDir_EntryList22(QDir* self, char** nameFilters, uint64_t* nameFilters_Lengths, size_t nameFilters_len, int filters, char*** _out, int** _out_Lengths, size_t* _out_len) {
+void QDir_EntryList22(const QDir* self, char** nameFilters, uint64_t* nameFilters_Lengths, size_t nameFilters_len, int filters, char*** _out, int** _out_Lengths, size_t* _out_len) {
 	QList<QString> nameFilters_QList;
 	nameFilters_QList.reserve(nameFilters_len);
 	for(size_t i = 0; i < nameFilters_len; ++i) {
 		nameFilters_QList.push_back(QString::fromUtf8(nameFilters[i], nameFilters_Lengths[i]));
 	}
-	QStringList ret = const_cast<const QDir*>(self)->entryList(nameFilters_QList, static_cast<QDir::Filters>(filters));
+	QStringList ret = self->entryList(nameFilters_QList, static_cast<QDir::Filters>(filters));
 	// Convert QStringList from C++ memory to manually-managed C memory
 	char** __out = static_cast<char**>(malloc(sizeof(char*) * ret.length()));
 	int* __out_Lengths = static_cast<int*>(malloc(sizeof(int) * ret.length()));
@@ -601,13 +601,13 @@ void QDir_EntryList22(QDir* self, char** nameFilters, uint64_t* nameFilters_Leng
 	*_out_len = ret.length();
 }
 
-void QDir_EntryList3(QDir* self, char** nameFilters, uint64_t* nameFilters_Lengths, size_t nameFilters_len, int filters, int sort, char*** _out, int** _out_Lengths, size_t* _out_len) {
+void QDir_EntryList3(const QDir* self, char** nameFilters, uint64_t* nameFilters_Lengths, size_t nameFilters_len, int filters, int sort, char*** _out, int** _out_Lengths, size_t* _out_len) {
 	QList<QString> nameFilters_QList;
 	nameFilters_QList.reserve(nameFilters_len);
 	for(size_t i = 0; i < nameFilters_len; ++i) {
 		nameFilters_QList.push_back(QString::fromUtf8(nameFilters[i], nameFilters_Lengths[i]));
 	}
-	QStringList ret = const_cast<const QDir*>(self)->entryList(nameFilters_QList, static_cast<QDir::Filters>(filters), static_cast<QDir::SortFlags>(sort));
+	QStringList ret = self->entryList(nameFilters_QList, static_cast<QDir::Filters>(filters), static_cast<QDir::SortFlags>(sort));
 	// Convert QStringList from C++ memory to manually-managed C memory
 	char** __out = static_cast<char**>(malloc(sizeof(char*) * ret.length()));
 	int* __out_Lengths = static_cast<int*>(malloc(sizeof(int) * ret.length()));
@@ -623,8 +623,8 @@ void QDir_EntryList3(QDir* self, char** nameFilters, uint64_t* nameFilters_Lengt
 	*_out_len = ret.length();
 }
 
-void QDir_EntryInfoList1(QDir* self, int filters, QFileInfo*** _out, size_t* _out_len) {
-	QFileInfoList ret = const_cast<const QDir*>(self)->entryInfoList(static_cast<QDir::Filters>(filters));
+void QDir_EntryInfoList1(const QDir* self, int filters, QFileInfo*** _out, size_t* _out_len) {
+	QFileInfoList ret = self->entryInfoList(static_cast<QDir::Filters>(filters));
 	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
 	QFileInfo** __out = static_cast<QFileInfo**>(malloc(sizeof(QFileInfo**) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {
@@ -634,8 +634,8 @@ void QDir_EntryInfoList1(QDir* self, int filters, QFileInfo*** _out, size_t* _ou
 	*_out_len = ret.length();
 }
 
-void QDir_EntryInfoList2(QDir* self, int filters, int sort, QFileInfo*** _out, size_t* _out_len) {
-	QFileInfoList ret = const_cast<const QDir*>(self)->entryInfoList(static_cast<QDir::Filters>(filters), static_cast<QDir::SortFlags>(sort));
+void QDir_EntryInfoList2(const QDir* self, int filters, int sort, QFileInfo*** _out, size_t* _out_len) {
+	QFileInfoList ret = self->entryInfoList(static_cast<QDir::Filters>(filters), static_cast<QDir::SortFlags>(sort));
 	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
 	QFileInfo** __out = static_cast<QFileInfo**>(malloc(sizeof(QFileInfo**) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {
@@ -645,13 +645,13 @@ void QDir_EntryInfoList2(QDir* self, int filters, int sort, QFileInfo*** _out, s
 	*_out_len = ret.length();
 }
 
-void QDir_EntryInfoList22(QDir* self, char** nameFilters, uint64_t* nameFilters_Lengths, size_t nameFilters_len, int filters, QFileInfo*** _out, size_t* _out_len) {
+void QDir_EntryInfoList22(const QDir* self, char** nameFilters, uint64_t* nameFilters_Lengths, size_t nameFilters_len, int filters, QFileInfo*** _out, size_t* _out_len) {
 	QList<QString> nameFilters_QList;
 	nameFilters_QList.reserve(nameFilters_len);
 	for(size_t i = 0; i < nameFilters_len; ++i) {
 		nameFilters_QList.push_back(QString::fromUtf8(nameFilters[i], nameFilters_Lengths[i]));
 	}
-	QFileInfoList ret = const_cast<const QDir*>(self)->entryInfoList(nameFilters_QList, static_cast<QDir::Filters>(filters));
+	QFileInfoList ret = self->entryInfoList(nameFilters_QList, static_cast<QDir::Filters>(filters));
 	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
 	QFileInfo** __out = static_cast<QFileInfo**>(malloc(sizeof(QFileInfo**) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {
@@ -661,13 +661,13 @@ void QDir_EntryInfoList22(QDir* self, char** nameFilters, uint64_t* nameFilters_
 	*_out_len = ret.length();
 }
 
-void QDir_EntryInfoList3(QDir* self, char** nameFilters, uint64_t* nameFilters_Lengths, size_t nameFilters_len, int filters, int sort, QFileInfo*** _out, size_t* _out_len) {
+void QDir_EntryInfoList3(const QDir* self, char** nameFilters, uint64_t* nameFilters_Lengths, size_t nameFilters_len, int filters, int sort, QFileInfo*** _out, size_t* _out_len) {
 	QList<QString> nameFilters_QList;
 	nameFilters_QList.reserve(nameFilters_len);
 	for(size_t i = 0; i < nameFilters_len; ++i) {
 		nameFilters_QList.push_back(QString::fromUtf8(nameFilters[i], nameFilters_Lengths[i]));
 	}
-	QFileInfoList ret = const_cast<const QDir*>(self)->entryInfoList(nameFilters_QList, static_cast<QDir::Filters>(filters), static_cast<QDir::SortFlags>(sort));
+	QFileInfoList ret = self->entryInfoList(nameFilters_QList, static_cast<QDir::Filters>(filters), static_cast<QDir::SortFlags>(sort));
 	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
 	QFileInfo** __out = static_cast<QFileInfo**>(malloc(sizeof(QFileInfo**) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {

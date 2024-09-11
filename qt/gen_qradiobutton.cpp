@@ -31,8 +31,8 @@ QRadioButton* QRadioButton_new4(const char* text, size_t text_Strlen, QWidget* p
 	return new QRadioButton(text_QString, parent);
 }
 
-QMetaObject* QRadioButton_MetaObject(QRadioButton* self) {
-	return (QMetaObject*) const_cast<const QRadioButton*>(self)->metaObject();
+QMetaObject* QRadioButton_MetaObject(const QRadioButton* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QRadioButton_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -53,14 +53,14 @@ void QRadioButton_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-QSize* QRadioButton_SizeHint(QRadioButton* self) {
-	QSize ret = const_cast<const QRadioButton*>(self)->sizeHint();
+QSize* QRadioButton_SizeHint(const QRadioButton* self) {
+	QSize ret = self->sizeHint();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
 
-QSize* QRadioButton_MinimumSizeHint(QRadioButton* self) {
-	QSize ret = const_cast<const QRadioButton*>(self)->minimumSizeHint();
+QSize* QRadioButton_MinimumSizeHint(const QRadioButton* self) {
+	QSize ret = self->minimumSizeHint();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }

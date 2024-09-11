@@ -25,18 +25,18 @@ void QColorTransform_Swap(QColorTransform* self, QColorTransform* other) {
 	self->swap(*other);
 }
 
-unsigned int QColorTransform_Map(QColorTransform* self, unsigned int argb) {
-	return const_cast<const QColorTransform*>(self)->map(static_cast<QRgb>(argb));
+unsigned int QColorTransform_Map(const QColorTransform* self, unsigned int argb) {
+	return self->map(static_cast<QRgb>(argb));
 }
 
-QRgba64* QColorTransform_MapWithRgba64(QColorTransform* self, QRgba64* rgba64) {
-	QRgba64 ret = const_cast<const QColorTransform*>(self)->map(*rgba64);
+QRgba64* QColorTransform_MapWithRgba64(const QColorTransform* self, QRgba64* rgba64) {
+	QRgba64 ret = self->map(*rgba64);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRgba64*>(new QRgba64(ret));
 }
 
-QColor* QColorTransform_MapWithColor(QColorTransform* self, QColor* color) {
-	QColor ret = const_cast<const QColorTransform*>(self)->map(*color);
+QColor* QColorTransform_MapWithColor(const QColorTransform* self, QColor* color) {
+	QColor ret = self->map(*color);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QColor*>(new QColor(ret));
 }

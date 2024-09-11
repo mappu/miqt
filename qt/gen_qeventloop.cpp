@@ -23,8 +23,8 @@ QEventLoop* QEventLoop_new2(QObject* parent) {
 	return new QEventLoop(parent);
 }
 
-QMetaObject* QEventLoop_MetaObject(QEventLoop* self) {
-	return (QMetaObject*) const_cast<const QEventLoop*>(self)->metaObject();
+QMetaObject* QEventLoop_MetaObject(const QEventLoop* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QEventLoop_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -61,8 +61,8 @@ void QEventLoop_Exit(QEventLoop* self) {
 	self->exit();
 }
 
-bool QEventLoop_IsRunning(QEventLoop* self) {
-	return const_cast<const QEventLoop*>(self)->isRunning();
+bool QEventLoop_IsRunning(const QEventLoop* self) {
+	return self->isRunning();
 }
 
 void QEventLoop_WakeUp(QEventLoop* self) {

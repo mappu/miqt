@@ -61,8 +61,8 @@ void QReadLocker_Relock(QReadLocker* self) {
 	self->relock();
 }
 
-QReadWriteLock* QReadLocker_ReadWriteLock(QReadLocker* self) {
-	return const_cast<const QReadLocker*>(self)->readWriteLock();
+QReadWriteLock* QReadLocker_ReadWriteLock(const QReadLocker* self) {
+	return self->readWriteLock();
 }
 
 void QReadLocker_Delete(QReadLocker* self) {
@@ -81,8 +81,8 @@ void QWriteLocker_Relock(QWriteLocker* self) {
 	self->relock();
 }
 
-QReadWriteLock* QWriteLocker_ReadWriteLock(QWriteLocker* self) {
-	return const_cast<const QWriteLocker*>(self)->readWriteLock();
+QReadWriteLock* QWriteLocker_ReadWriteLock(const QWriteLocker* self) {
+	return self->readWriteLock();
 }
 
 void QWriteLocker_Delete(QWriteLocker* self) {

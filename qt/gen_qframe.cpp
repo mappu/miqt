@@ -26,8 +26,8 @@ QFrame* QFrame_new3(QWidget* parent, int f) {
 	return new QFrame(parent, static_cast<Qt::WindowFlags>(f));
 }
 
-QMetaObject* QFrame_MetaObject(QFrame* self) {
-	return (QMetaObject*) const_cast<const QFrame*>(self)->metaObject();
+QMetaObject* QFrame_MetaObject(const QFrame* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QFrame_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -48,26 +48,26 @@ void QFrame_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-int QFrame_FrameStyle(QFrame* self) {
-	return const_cast<const QFrame*>(self)->frameStyle();
+int QFrame_FrameStyle(const QFrame* self) {
+	return self->frameStyle();
 }
 
 void QFrame_SetFrameStyle(QFrame* self, int frameStyle) {
 	self->setFrameStyle(static_cast<int>(frameStyle));
 }
 
-int QFrame_FrameWidth(QFrame* self) {
-	return const_cast<const QFrame*>(self)->frameWidth();
+int QFrame_FrameWidth(const QFrame* self) {
+	return self->frameWidth();
 }
 
-QSize* QFrame_SizeHint(QFrame* self) {
-	QSize ret = const_cast<const QFrame*>(self)->sizeHint();
+QSize* QFrame_SizeHint(const QFrame* self) {
+	QSize ret = self->sizeHint();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
 
-uintptr_t QFrame_FrameShape(QFrame* self) {
-	QFrame::Shape ret = const_cast<const QFrame*>(self)->frameShape();
+uintptr_t QFrame_FrameShape(const QFrame* self) {
+	QFrame::Shape ret = self->frameShape();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -75,8 +75,8 @@ void QFrame_SetFrameShape(QFrame* self, uintptr_t frameShape) {
 	self->setFrameShape(static_cast<QFrame::Shape>(frameShape));
 }
 
-uintptr_t QFrame_FrameShadow(QFrame* self) {
-	QFrame::Shadow ret = const_cast<const QFrame*>(self)->frameShadow();
+uintptr_t QFrame_FrameShadow(const QFrame* self) {
+	QFrame::Shadow ret = self->frameShadow();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -84,24 +84,24 @@ void QFrame_SetFrameShadow(QFrame* self, uintptr_t frameShadow) {
 	self->setFrameShadow(static_cast<QFrame::Shadow>(frameShadow));
 }
 
-int QFrame_LineWidth(QFrame* self) {
-	return const_cast<const QFrame*>(self)->lineWidth();
+int QFrame_LineWidth(const QFrame* self) {
+	return self->lineWidth();
 }
 
 void QFrame_SetLineWidth(QFrame* self, int lineWidth) {
 	self->setLineWidth(static_cast<int>(lineWidth));
 }
 
-int QFrame_MidLineWidth(QFrame* self) {
-	return const_cast<const QFrame*>(self)->midLineWidth();
+int QFrame_MidLineWidth(const QFrame* self) {
+	return self->midLineWidth();
 }
 
 void QFrame_SetMidLineWidth(QFrame* self, int midLineWidth) {
 	self->setMidLineWidth(static_cast<int>(midLineWidth));
 }
 
-QRect* QFrame_FrameRect(QFrame* self) {
-	QRect ret = const_cast<const QFrame*>(self)->frameRect();
+QRect* QFrame_FrameRect(const QFrame* self) {
+	QRect ret = self->frameRect();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRect*>(new QRect(ret));
 }

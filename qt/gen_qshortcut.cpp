@@ -33,8 +33,8 @@ QShortcut* QShortcut_new5(QKeySequence* key, QWidget* parent, const char* member
 	return new QShortcut(*key, parent, member, ambiguousMember, static_cast<Qt::ShortcutContext>(shortcutContext));
 }
 
-QMetaObject* QShortcut_MetaObject(QShortcut* self) {
-	return (QMetaObject*) const_cast<const QShortcut*>(self)->metaObject();
+QMetaObject* QShortcut_MetaObject(const QShortcut* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QShortcut_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -59,8 +59,8 @@ void QShortcut_SetKey(QShortcut* self, QKeySequence* key) {
 	self->setKey(*key);
 }
 
-QKeySequence* QShortcut_Key(QShortcut* self) {
-	QKeySequence ret = const_cast<const QShortcut*>(self)->key();
+QKeySequence* QShortcut_Key(const QShortcut* self) {
+	QKeySequence ret = self->key();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QKeySequence*>(new QKeySequence(ret));
 }
@@ -69,16 +69,16 @@ void QShortcut_SetEnabled(QShortcut* self, bool enable) {
 	self->setEnabled(enable);
 }
 
-bool QShortcut_IsEnabled(QShortcut* self) {
-	return const_cast<const QShortcut*>(self)->isEnabled();
+bool QShortcut_IsEnabled(const QShortcut* self) {
+	return self->isEnabled();
 }
 
 void QShortcut_SetContext(QShortcut* self, uintptr_t context) {
 	self->setContext(static_cast<Qt::ShortcutContext>(context));
 }
 
-uintptr_t QShortcut_Context(QShortcut* self) {
-	Qt::ShortcutContext ret = const_cast<const QShortcut*>(self)->context();
+uintptr_t QShortcut_Context(const QShortcut* self) {
+	Qt::ShortcutContext ret = self->context();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -87,8 +87,8 @@ void QShortcut_SetWhatsThis(QShortcut* self, const char* text, size_t text_Strle
 	self->setWhatsThis(text_QString);
 }
 
-void QShortcut_WhatsThis(QShortcut* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QShortcut*>(self)->whatsThis();
+void QShortcut_WhatsThis(const QShortcut* self, char** _out, int* _out_Strlen) {
+	QString ret = self->whatsThis();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -100,16 +100,16 @@ void QShortcut_SetAutoRepeat(QShortcut* self, bool on) {
 	self->setAutoRepeat(on);
 }
 
-bool QShortcut_AutoRepeat(QShortcut* self) {
-	return const_cast<const QShortcut*>(self)->autoRepeat();
+bool QShortcut_AutoRepeat(const QShortcut* self) {
+	return self->autoRepeat();
 }
 
-int QShortcut_Id(QShortcut* self) {
-	return const_cast<const QShortcut*>(self)->id();
+int QShortcut_Id(const QShortcut* self) {
+	return self->id();
 }
 
-QWidget* QShortcut_ParentWidget(QShortcut* self) {
-	return const_cast<const QShortcut*>(self)->parentWidget();
+QWidget* QShortcut_ParentWidget(const QShortcut* self) {
+	return self->parentWidget();
 }
 
 void QShortcut_Activated(QShortcut* self) {

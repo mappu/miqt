@@ -25,8 +25,8 @@ QCoreApplication* QCoreApplication_new2(int* argc, char** argv, int param3) {
 	return new QCoreApplication(static_cast<int&>(*argc), argv, static_cast<int>(param3));
 }
 
-QMetaObject* QCoreApplication_MetaObject(QCoreApplication* self) {
-	return (QMetaObject*) const_cast<const QCoreApplication*>(self)->metaObject();
+QMetaObject* QCoreApplication_MetaObject(const QCoreApplication* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QCoreApplication_Tr(const char* s, char** _out, int* _out_Strlen) {

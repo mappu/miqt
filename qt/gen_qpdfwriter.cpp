@@ -24,8 +24,8 @@ QPdfWriter* QPdfWriter_new2(QIODevice* device) {
 	return new QPdfWriter(device);
 }
 
-QMetaObject* QPdfWriter_MetaObject(QPdfWriter* self) {
-	return (QMetaObject*) const_cast<const QPdfWriter*>(self)->metaObject();
+QMetaObject* QPdfWriter_MetaObject(const QPdfWriter* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QPdfWriter_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -50,13 +50,13 @@ void QPdfWriter_SetPdfVersion(QPdfWriter* self, uintptr_t version) {
 	self->setPdfVersion(static_cast<QPagedPaintDevice::PdfVersion>(version));
 }
 
-uintptr_t QPdfWriter_PdfVersion(QPdfWriter* self) {
-	QPagedPaintDevice::PdfVersion ret = const_cast<const QPdfWriter*>(self)->pdfVersion();
+uintptr_t QPdfWriter_PdfVersion(const QPdfWriter* self) {
+	QPagedPaintDevice::PdfVersion ret = self->pdfVersion();
 	return static_cast<uintptr_t>(ret);
 }
 
-void QPdfWriter_Title(QPdfWriter* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QPdfWriter*>(self)->title();
+void QPdfWriter_Title(const QPdfWriter* self, char** _out, int* _out_Strlen) {
+	QString ret = self->title();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -69,8 +69,8 @@ void QPdfWriter_SetTitle(QPdfWriter* self, const char* title, size_t title_Strle
 	self->setTitle(title_QString);
 }
 
-void QPdfWriter_Creator(QPdfWriter* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QPdfWriter*>(self)->creator();
+void QPdfWriter_Creator(const QPdfWriter* self, char** _out, int* _out_Strlen) {
+	QString ret = self->creator();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -91,16 +91,16 @@ void QPdfWriter_SetResolution(QPdfWriter* self, int resolution) {
 	self->setResolution(static_cast<int>(resolution));
 }
 
-int QPdfWriter_Resolution(QPdfWriter* self) {
-	return const_cast<const QPdfWriter*>(self)->resolution();
+int QPdfWriter_Resolution(const QPdfWriter* self) {
+	return self->resolution();
 }
 
 void QPdfWriter_SetDocumentXmpMetadata(QPdfWriter* self, QByteArray* xmpMetadata) {
 	self->setDocumentXmpMetadata(*xmpMetadata);
 }
 
-QByteArray* QPdfWriter_DocumentXmpMetadata(QPdfWriter* self) {
-	QByteArray ret = const_cast<const QPdfWriter*>(self)->documentXmpMetadata();
+QByteArray* QPdfWriter_DocumentXmpMetadata(const QPdfWriter* self) {
+	QByteArray ret = self->documentXmpMetadata();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QByteArray*>(new QByteArray(ret));
 }

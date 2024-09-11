@@ -20,13 +20,13 @@ typedef struct QMapNodeBase QMapNodeBase;
 #endif
 
 QMapNodeBase* QMapNodeBase_new(QMapNodeBase* param1);
-QMapNodeBase* QMapNodeBase_NextNode(QMapNodeBase* self);
+QMapNodeBase* QMapNodeBase_NextNode(const QMapNodeBase* self);
 QMapNodeBase* QMapNodeBase_NextNode2(QMapNodeBase* self);
-QMapNodeBase* QMapNodeBase_PreviousNode(QMapNodeBase* self);
+QMapNodeBase* QMapNodeBase_PreviousNode(const QMapNodeBase* self);
 QMapNodeBase* QMapNodeBase_PreviousNode2(QMapNodeBase* self);
-uintptr_t QMapNodeBase_Color(QMapNodeBase* self);
+uintptr_t QMapNodeBase_Color(const QMapNodeBase* self);
 void QMapNodeBase_SetColor(QMapNodeBase* self, uintptr_t c);
-QMapNodeBase* QMapNodeBase_Parent(QMapNodeBase* self);
+QMapNodeBase* QMapNodeBase_Parent(const QMapNodeBase* self);
 void QMapNodeBase_SetParent(QMapNodeBase* self, QMapNodeBase* pp);
 void QMapNodeBase_OperatorAssign(QMapNodeBase* self, QMapNodeBase* param1);
 void QMapNodeBase_Delete(QMapNodeBase* self);

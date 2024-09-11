@@ -32,8 +32,8 @@ QGenericArgument* QGenericArgument_new3(const char* aName) {
 	return new QGenericArgument(aName);
 }
 
-const char* QGenericArgument_Name(QGenericArgument* self) {
-	return (const char*) const_cast<const QGenericArgument*>(self)->name();
+const char* QGenericArgument_Name(const QGenericArgument* self) {
+	return (const char*) self->name();
 }
 
 void QGenericArgument_Delete(QGenericArgument* self) {
@@ -64,28 +64,28 @@ QMetaObject* QMetaObject_new2(QMetaObject* param1) {
 	return new QMetaObject(*param1);
 }
 
-const char* QMetaObject_ClassName(QMetaObject* self) {
-	return (const char*) const_cast<const QMetaObject*>(self)->className();
+const char* QMetaObject_ClassName(const QMetaObject* self) {
+	return (const char*) self->className();
 }
 
-QMetaObject* QMetaObject_SuperClass(QMetaObject* self) {
-	return (QMetaObject*) const_cast<const QMetaObject*>(self)->superClass();
+QMetaObject* QMetaObject_SuperClass(const QMetaObject* self) {
+	return (QMetaObject*) self->superClass();
 }
 
-bool QMetaObject_Inherits(QMetaObject* self, QMetaObject* metaObject) {
-	return const_cast<const QMetaObject*>(self)->inherits(metaObject);
+bool QMetaObject_Inherits(const QMetaObject* self, QMetaObject* metaObject) {
+	return self->inherits(metaObject);
 }
 
-QObject* QMetaObject_Cast(QMetaObject* self, QObject* obj) {
-	return const_cast<const QMetaObject*>(self)->cast(obj);
+QObject* QMetaObject_Cast(const QMetaObject* self, QObject* obj) {
+	return self->cast(obj);
 }
 
-QObject* QMetaObject_CastWithObj(QMetaObject* self, QObject* obj) {
-	return (QObject*) const_cast<const QMetaObject*>(self)->cast(obj);
+QObject* QMetaObject_CastWithObj(const QMetaObject* self, QObject* obj) {
+	return (QObject*) self->cast(obj);
 }
 
-void QMetaObject_Tr(QMetaObject* self, const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QMetaObject*>(self)->tr(s, c);
+void QMetaObject_Tr(const QMetaObject* self, const char* s, const char* c, char** _out, int* _out_Strlen) {
+	QString ret = self->tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -93,102 +93,102 @@ void QMetaObject_Tr(QMetaObject* self, const char* s, const char* c, char** _out
 	*_out_Strlen = b.length();
 }
 
-int QMetaObject_MethodOffset(QMetaObject* self) {
-	return const_cast<const QMetaObject*>(self)->methodOffset();
+int QMetaObject_MethodOffset(const QMetaObject* self) {
+	return self->methodOffset();
 }
 
-int QMetaObject_EnumeratorOffset(QMetaObject* self) {
-	return const_cast<const QMetaObject*>(self)->enumeratorOffset();
+int QMetaObject_EnumeratorOffset(const QMetaObject* self) {
+	return self->enumeratorOffset();
 }
 
-int QMetaObject_PropertyOffset(QMetaObject* self) {
-	return const_cast<const QMetaObject*>(self)->propertyOffset();
+int QMetaObject_PropertyOffset(const QMetaObject* self) {
+	return self->propertyOffset();
 }
 
-int QMetaObject_ClassInfoOffset(QMetaObject* self) {
-	return const_cast<const QMetaObject*>(self)->classInfoOffset();
+int QMetaObject_ClassInfoOffset(const QMetaObject* self) {
+	return self->classInfoOffset();
 }
 
-int QMetaObject_ConstructorCount(QMetaObject* self) {
-	return const_cast<const QMetaObject*>(self)->constructorCount();
+int QMetaObject_ConstructorCount(const QMetaObject* self) {
+	return self->constructorCount();
 }
 
-int QMetaObject_MethodCount(QMetaObject* self) {
-	return const_cast<const QMetaObject*>(self)->methodCount();
+int QMetaObject_MethodCount(const QMetaObject* self) {
+	return self->methodCount();
 }
 
-int QMetaObject_EnumeratorCount(QMetaObject* self) {
-	return const_cast<const QMetaObject*>(self)->enumeratorCount();
+int QMetaObject_EnumeratorCount(const QMetaObject* self) {
+	return self->enumeratorCount();
 }
 
-int QMetaObject_PropertyCount(QMetaObject* self) {
-	return const_cast<const QMetaObject*>(self)->propertyCount();
+int QMetaObject_PropertyCount(const QMetaObject* self) {
+	return self->propertyCount();
 }
 
-int QMetaObject_ClassInfoCount(QMetaObject* self) {
-	return const_cast<const QMetaObject*>(self)->classInfoCount();
+int QMetaObject_ClassInfoCount(const QMetaObject* self) {
+	return self->classInfoCount();
 }
 
-int QMetaObject_IndexOfConstructor(QMetaObject* self, const char* constructor) {
-	return const_cast<const QMetaObject*>(self)->indexOfConstructor(constructor);
+int QMetaObject_IndexOfConstructor(const QMetaObject* self, const char* constructor) {
+	return self->indexOfConstructor(constructor);
 }
 
-int QMetaObject_IndexOfMethod(QMetaObject* self, const char* method) {
-	return const_cast<const QMetaObject*>(self)->indexOfMethod(method);
+int QMetaObject_IndexOfMethod(const QMetaObject* self, const char* method) {
+	return self->indexOfMethod(method);
 }
 
-int QMetaObject_IndexOfSignal(QMetaObject* self, const char* signal) {
-	return const_cast<const QMetaObject*>(self)->indexOfSignal(signal);
+int QMetaObject_IndexOfSignal(const QMetaObject* self, const char* signal) {
+	return self->indexOfSignal(signal);
 }
 
-int QMetaObject_IndexOfSlot(QMetaObject* self, const char* slot) {
-	return const_cast<const QMetaObject*>(self)->indexOfSlot(slot);
+int QMetaObject_IndexOfSlot(const QMetaObject* self, const char* slot) {
+	return self->indexOfSlot(slot);
 }
 
-int QMetaObject_IndexOfEnumerator(QMetaObject* self, const char* name) {
-	return const_cast<const QMetaObject*>(self)->indexOfEnumerator(name);
+int QMetaObject_IndexOfEnumerator(const QMetaObject* self, const char* name) {
+	return self->indexOfEnumerator(name);
 }
 
-int QMetaObject_IndexOfProperty(QMetaObject* self, const char* name) {
-	return const_cast<const QMetaObject*>(self)->indexOfProperty(name);
+int QMetaObject_IndexOfProperty(const QMetaObject* self, const char* name) {
+	return self->indexOfProperty(name);
 }
 
-int QMetaObject_IndexOfClassInfo(QMetaObject* self, const char* name) {
-	return const_cast<const QMetaObject*>(self)->indexOfClassInfo(name);
+int QMetaObject_IndexOfClassInfo(const QMetaObject* self, const char* name) {
+	return self->indexOfClassInfo(name);
 }
 
-QMetaMethod* QMetaObject_Constructor(QMetaObject* self, int index) {
-	QMetaMethod ret = const_cast<const QMetaObject*>(self)->constructor(static_cast<int>(index));
+QMetaMethod* QMetaObject_Constructor(const QMetaObject* self, int index) {
+	QMetaMethod ret = self->constructor(static_cast<int>(index));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QMetaMethod*>(new QMetaMethod(ret));
 }
 
-QMetaMethod* QMetaObject_Method(QMetaObject* self, int index) {
-	QMetaMethod ret = const_cast<const QMetaObject*>(self)->method(static_cast<int>(index));
+QMetaMethod* QMetaObject_Method(const QMetaObject* self, int index) {
+	QMetaMethod ret = self->method(static_cast<int>(index));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QMetaMethod*>(new QMetaMethod(ret));
 }
 
-QMetaEnum* QMetaObject_Enumerator(QMetaObject* self, int index) {
-	QMetaEnum ret = const_cast<const QMetaObject*>(self)->enumerator(static_cast<int>(index));
+QMetaEnum* QMetaObject_Enumerator(const QMetaObject* self, int index) {
+	QMetaEnum ret = self->enumerator(static_cast<int>(index));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QMetaEnum*>(new QMetaEnum(ret));
 }
 
-QMetaProperty* QMetaObject_Property(QMetaObject* self, int index) {
-	QMetaProperty ret = const_cast<const QMetaObject*>(self)->property(static_cast<int>(index));
+QMetaProperty* QMetaObject_Property(const QMetaObject* self, int index) {
+	QMetaProperty ret = self->property(static_cast<int>(index));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QMetaProperty*>(new QMetaProperty(ret));
 }
 
-QMetaClassInfo* QMetaObject_ClassInfo(QMetaObject* self, int index) {
-	QMetaClassInfo ret = const_cast<const QMetaObject*>(self)->classInfo(static_cast<int>(index));
+QMetaClassInfo* QMetaObject_ClassInfo(const QMetaObject* self, int index) {
+	QMetaClassInfo ret = self->classInfo(static_cast<int>(index));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QMetaClassInfo*>(new QMetaClassInfo(ret));
 }
 
-QMetaProperty* QMetaObject_UserProperty(QMetaObject* self) {
-	QMetaProperty ret = const_cast<const QMetaObject*>(self)->userProperty();
+QMetaProperty* QMetaObject_UserProperty(const QMetaObject* self) {
+	QMetaProperty ret = self->userProperty();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QMetaProperty*>(new QMetaProperty(ret));
 }
@@ -247,12 +247,12 @@ bool QMetaObject_InvokeMethod4(QObject* obj, const char* member) {
 	return QMetaObject::invokeMethod(obj, member);
 }
 
-QObject* QMetaObject_NewInstance(QMetaObject* self) {
-	return const_cast<const QMetaObject*>(self)->newInstance();
+QObject* QMetaObject_NewInstance(const QMetaObject* self) {
+	return self->newInstance();
 }
 
-void QMetaObject_Tr3(QMetaObject* self, const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QMetaObject*>(self)->tr(s, c, static_cast<int>(n));
+void QMetaObject_Tr3(const QMetaObject* self, const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
+	QString ret = self->tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -432,44 +432,44 @@ bool QMetaObject_InvokeMethod124(QObject* obj, const char* member, QGenericArgum
 	return QMetaObject::invokeMethod(obj, member, *val0, *val1, *val2, *val3, *val4, *val5, *val6, *val7, *val8, *val9);
 }
 
-QObject* QMetaObject_NewInstance1(QMetaObject* self, QGenericArgument* val0) {
-	return const_cast<const QMetaObject*>(self)->newInstance(*val0);
+QObject* QMetaObject_NewInstance1(const QMetaObject* self, QGenericArgument* val0) {
+	return self->newInstance(*val0);
 }
 
-QObject* QMetaObject_NewInstance2(QMetaObject* self, QGenericArgument* val0, QGenericArgument* val1) {
-	return const_cast<const QMetaObject*>(self)->newInstance(*val0, *val1);
+QObject* QMetaObject_NewInstance2(const QMetaObject* self, QGenericArgument* val0, QGenericArgument* val1) {
+	return self->newInstance(*val0, *val1);
 }
 
-QObject* QMetaObject_NewInstance3(QMetaObject* self, QGenericArgument* val0, QGenericArgument* val1, QGenericArgument* val2) {
-	return const_cast<const QMetaObject*>(self)->newInstance(*val0, *val1, *val2);
+QObject* QMetaObject_NewInstance3(const QMetaObject* self, QGenericArgument* val0, QGenericArgument* val1, QGenericArgument* val2) {
+	return self->newInstance(*val0, *val1, *val2);
 }
 
-QObject* QMetaObject_NewInstance4(QMetaObject* self, QGenericArgument* val0, QGenericArgument* val1, QGenericArgument* val2, QGenericArgument* val3) {
-	return const_cast<const QMetaObject*>(self)->newInstance(*val0, *val1, *val2, *val3);
+QObject* QMetaObject_NewInstance4(const QMetaObject* self, QGenericArgument* val0, QGenericArgument* val1, QGenericArgument* val2, QGenericArgument* val3) {
+	return self->newInstance(*val0, *val1, *val2, *val3);
 }
 
-QObject* QMetaObject_NewInstance5(QMetaObject* self, QGenericArgument* val0, QGenericArgument* val1, QGenericArgument* val2, QGenericArgument* val3, QGenericArgument* val4) {
-	return const_cast<const QMetaObject*>(self)->newInstance(*val0, *val1, *val2, *val3, *val4);
+QObject* QMetaObject_NewInstance5(const QMetaObject* self, QGenericArgument* val0, QGenericArgument* val1, QGenericArgument* val2, QGenericArgument* val3, QGenericArgument* val4) {
+	return self->newInstance(*val0, *val1, *val2, *val3, *val4);
 }
 
-QObject* QMetaObject_NewInstance6(QMetaObject* self, QGenericArgument* val0, QGenericArgument* val1, QGenericArgument* val2, QGenericArgument* val3, QGenericArgument* val4, QGenericArgument* val5) {
-	return const_cast<const QMetaObject*>(self)->newInstance(*val0, *val1, *val2, *val3, *val4, *val5);
+QObject* QMetaObject_NewInstance6(const QMetaObject* self, QGenericArgument* val0, QGenericArgument* val1, QGenericArgument* val2, QGenericArgument* val3, QGenericArgument* val4, QGenericArgument* val5) {
+	return self->newInstance(*val0, *val1, *val2, *val3, *val4, *val5);
 }
 
-QObject* QMetaObject_NewInstance7(QMetaObject* self, QGenericArgument* val0, QGenericArgument* val1, QGenericArgument* val2, QGenericArgument* val3, QGenericArgument* val4, QGenericArgument* val5, QGenericArgument* val6) {
-	return const_cast<const QMetaObject*>(self)->newInstance(*val0, *val1, *val2, *val3, *val4, *val5, *val6);
+QObject* QMetaObject_NewInstance7(const QMetaObject* self, QGenericArgument* val0, QGenericArgument* val1, QGenericArgument* val2, QGenericArgument* val3, QGenericArgument* val4, QGenericArgument* val5, QGenericArgument* val6) {
+	return self->newInstance(*val0, *val1, *val2, *val3, *val4, *val5, *val6);
 }
 
-QObject* QMetaObject_NewInstance8(QMetaObject* self, QGenericArgument* val0, QGenericArgument* val1, QGenericArgument* val2, QGenericArgument* val3, QGenericArgument* val4, QGenericArgument* val5, QGenericArgument* val6, QGenericArgument* val7) {
-	return const_cast<const QMetaObject*>(self)->newInstance(*val0, *val1, *val2, *val3, *val4, *val5, *val6, *val7);
+QObject* QMetaObject_NewInstance8(const QMetaObject* self, QGenericArgument* val0, QGenericArgument* val1, QGenericArgument* val2, QGenericArgument* val3, QGenericArgument* val4, QGenericArgument* val5, QGenericArgument* val6, QGenericArgument* val7) {
+	return self->newInstance(*val0, *val1, *val2, *val3, *val4, *val5, *val6, *val7);
 }
 
-QObject* QMetaObject_NewInstance9(QMetaObject* self, QGenericArgument* val0, QGenericArgument* val1, QGenericArgument* val2, QGenericArgument* val3, QGenericArgument* val4, QGenericArgument* val5, QGenericArgument* val6, QGenericArgument* val7, QGenericArgument* val8) {
-	return const_cast<const QMetaObject*>(self)->newInstance(*val0, *val1, *val2, *val3, *val4, *val5, *val6, *val7, *val8);
+QObject* QMetaObject_NewInstance9(const QMetaObject* self, QGenericArgument* val0, QGenericArgument* val1, QGenericArgument* val2, QGenericArgument* val3, QGenericArgument* val4, QGenericArgument* val5, QGenericArgument* val6, QGenericArgument* val7, QGenericArgument* val8) {
+	return self->newInstance(*val0, *val1, *val2, *val3, *val4, *val5, *val6, *val7, *val8);
 }
 
-QObject* QMetaObject_NewInstance10(QMetaObject* self, QGenericArgument* val0, QGenericArgument* val1, QGenericArgument* val2, QGenericArgument* val3, QGenericArgument* val4, QGenericArgument* val5, QGenericArgument* val6, QGenericArgument* val7, QGenericArgument* val8, QGenericArgument* val9) {
-	return const_cast<const QMetaObject*>(self)->newInstance(*val0, *val1, *val2, *val3, *val4, *val5, *val6, *val7, *val8, *val9);
+QObject* QMetaObject_NewInstance10(const QMetaObject* self, QGenericArgument* val0, QGenericArgument* val1, QGenericArgument* val2, QGenericArgument* val3, QGenericArgument* val4, QGenericArgument* val5, QGenericArgument* val6, QGenericArgument* val7, QGenericArgument* val8, QGenericArgument* val9) {
+	return self->newInstance(*val0, *val1, *val2, *val3, *val4, *val5, *val6, *val7, *val8, *val9);
 }
 
 void QMetaObject_Delete(QMetaObject* self) {
@@ -500,8 +500,8 @@ QMetaObject__SuperData* QMetaObject__SuperData_new3(QMetaObject__SuperData* para
 	return new QMetaObject::SuperData(*param1);
 }
 
-QMetaObject* QMetaObject__SuperData_OperatorMinusGreater(QMetaObject__SuperData* self) {
-	return (QMetaObject*) const_cast<const QMetaObject::SuperData*>(self)->operator->();
+QMetaObject* QMetaObject__SuperData_OperatorMinusGreater(const QMetaObject__SuperData* self) {
+	return (QMetaObject*) self->operator->();
 }
 
 void QMetaObject__SuperData_Delete(QMetaObject__SuperData* self) {

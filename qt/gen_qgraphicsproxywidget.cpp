@@ -28,8 +28,8 @@ QGraphicsProxyWidget* QGraphicsProxyWidget_new3(QGraphicsItem* parent, int wFlag
 	return new QGraphicsProxyWidget(parent, static_cast<Qt::WindowFlags>(wFlags));
 }
 
-QMetaObject* QGraphicsProxyWidget_MetaObject(QGraphicsProxyWidget* self) {
-	return (QMetaObject*) const_cast<const QGraphicsProxyWidget*>(self)->metaObject();
+QMetaObject* QGraphicsProxyWidget_MetaObject(const QGraphicsProxyWidget* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QGraphicsProxyWidget_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -54,12 +54,12 @@ void QGraphicsProxyWidget_SetWidget(QGraphicsProxyWidget* self, QWidget* widget)
 	self->setWidget(widget);
 }
 
-QWidget* QGraphicsProxyWidget_Widget(QGraphicsProxyWidget* self) {
-	return const_cast<const QGraphicsProxyWidget*>(self)->widget();
+QWidget* QGraphicsProxyWidget_Widget(const QGraphicsProxyWidget* self) {
+	return self->widget();
 }
 
-QRectF* QGraphicsProxyWidget_SubWidgetRect(QGraphicsProxyWidget* self, QWidget* widget) {
-	QRectF ret = const_cast<const QGraphicsProxyWidget*>(self)->subWidgetRect(widget);
+QRectF* QGraphicsProxyWidget_SubWidgetRect(const QGraphicsProxyWidget* self, QWidget* widget) {
+	QRectF ret = self->subWidgetRect(widget);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRectF*>(new QRectF(ret));
 }
@@ -72,8 +72,8 @@ void QGraphicsProxyWidget_Paint(QGraphicsProxyWidget* self, QPainter* painter, Q
 	self->paint(painter, option, widget);
 }
 
-int QGraphicsProxyWidget_Type(QGraphicsProxyWidget* self) {
-	return const_cast<const QGraphicsProxyWidget*>(self)->type();
+int QGraphicsProxyWidget_Type(const QGraphicsProxyWidget* self) {
+	return self->type();
 }
 
 QGraphicsProxyWidget* QGraphicsProxyWidget_CreateProxyForChildWidget(QGraphicsProxyWidget* self, QWidget* child) {

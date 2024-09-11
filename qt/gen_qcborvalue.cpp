@@ -23,8 +23,8 @@ extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
 }
 
-void QCborParserError_ErrorString(QCborParserError* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QCborParserError*>(self)->errorString();
+void QCborParserError_ErrorString(const QCborParserError* self, char** _out, int* _out_Strlen) {
+	QString ret = self->errorString();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -113,113 +113,113 @@ void QCborValue_Swap(QCborValue* self, QCborValue* other) {
 	self->swap(*other);
 }
 
-uintptr_t QCborValue_Type(QCborValue* self) {
-	QCborValue::Type ret = const_cast<const QCborValue*>(self)->type();
+uintptr_t QCborValue_Type(const QCborValue* self) {
+	QCborValue::Type ret = self->type();
 	return static_cast<uintptr_t>(ret);
 }
 
-bool QCborValue_IsInteger(QCborValue* self) {
-	return const_cast<const QCborValue*>(self)->isInteger();
+bool QCborValue_IsInteger(const QCborValue* self) {
+	return self->isInteger();
 }
 
-bool QCborValue_IsByteArray(QCborValue* self) {
-	return const_cast<const QCborValue*>(self)->isByteArray();
+bool QCborValue_IsByteArray(const QCborValue* self) {
+	return self->isByteArray();
 }
 
-bool QCborValue_IsString(QCborValue* self) {
-	return const_cast<const QCborValue*>(self)->isString();
+bool QCborValue_IsString(const QCborValue* self) {
+	return self->isString();
 }
 
-bool QCborValue_IsArray(QCborValue* self) {
-	return const_cast<const QCborValue*>(self)->isArray();
+bool QCborValue_IsArray(const QCborValue* self) {
+	return self->isArray();
 }
 
-bool QCborValue_IsMap(QCborValue* self) {
-	return const_cast<const QCborValue*>(self)->isMap();
+bool QCborValue_IsMap(const QCborValue* self) {
+	return self->isMap();
 }
 
-bool QCborValue_IsTag(QCborValue* self) {
-	return const_cast<const QCborValue*>(self)->isTag();
+bool QCborValue_IsTag(const QCborValue* self) {
+	return self->isTag();
 }
 
-bool QCborValue_IsFalse(QCborValue* self) {
-	return const_cast<const QCborValue*>(self)->isFalse();
+bool QCborValue_IsFalse(const QCborValue* self) {
+	return self->isFalse();
 }
 
-bool QCborValue_IsTrue(QCborValue* self) {
-	return const_cast<const QCborValue*>(self)->isTrue();
+bool QCborValue_IsTrue(const QCborValue* self) {
+	return self->isTrue();
 }
 
-bool QCborValue_IsBool(QCborValue* self) {
-	return const_cast<const QCborValue*>(self)->isBool();
+bool QCborValue_IsBool(const QCborValue* self) {
+	return self->isBool();
 }
 
-bool QCborValue_IsNull(QCborValue* self) {
-	return const_cast<const QCborValue*>(self)->isNull();
+bool QCborValue_IsNull(const QCborValue* self) {
+	return self->isNull();
 }
 
-bool QCborValue_IsUndefined(QCborValue* self) {
-	return const_cast<const QCborValue*>(self)->isUndefined();
+bool QCborValue_IsUndefined(const QCborValue* self) {
+	return self->isUndefined();
 }
 
-bool QCborValue_IsDouble(QCborValue* self) {
-	return const_cast<const QCborValue*>(self)->isDouble();
+bool QCborValue_IsDouble(const QCborValue* self) {
+	return self->isDouble();
 }
 
-bool QCborValue_IsDateTime(QCborValue* self) {
-	return const_cast<const QCborValue*>(self)->isDateTime();
+bool QCborValue_IsDateTime(const QCborValue* self) {
+	return self->isDateTime();
 }
 
-bool QCborValue_IsUrl(QCborValue* self) {
-	return const_cast<const QCborValue*>(self)->isUrl();
+bool QCborValue_IsUrl(const QCborValue* self) {
+	return self->isUrl();
 }
 
-bool QCborValue_IsRegularExpression(QCborValue* self) {
-	return const_cast<const QCborValue*>(self)->isRegularExpression();
+bool QCborValue_IsRegularExpression(const QCborValue* self) {
+	return self->isRegularExpression();
 }
 
-bool QCborValue_IsUuid(QCborValue* self) {
-	return const_cast<const QCborValue*>(self)->isUuid();
+bool QCborValue_IsUuid(const QCborValue* self) {
+	return self->isUuid();
 }
 
-bool QCborValue_IsInvalid(QCborValue* self) {
-	return const_cast<const QCborValue*>(self)->isInvalid();
+bool QCborValue_IsInvalid(const QCborValue* self) {
+	return self->isInvalid();
 }
 
-bool QCborValue_IsContainer(QCborValue* self) {
-	return const_cast<const QCborValue*>(self)->isContainer();
+bool QCborValue_IsContainer(const QCborValue* self) {
+	return self->isContainer();
 }
 
-bool QCborValue_IsSimpleType(QCborValue* self) {
-	return const_cast<const QCborValue*>(self)->isSimpleType();
+bool QCborValue_IsSimpleType(const QCborValue* self) {
+	return self->isSimpleType();
 }
 
-long long QCborValue_ToInteger(QCborValue* self) {
-	return const_cast<const QCborValue*>(self)->toInteger();
+long long QCborValue_ToInteger(const QCborValue* self) {
+	return self->toInteger();
 }
 
-bool QCborValue_ToBool(QCborValue* self) {
-	return const_cast<const QCborValue*>(self)->toBool();
+bool QCborValue_ToBool(const QCborValue* self) {
+	return self->toBool();
 }
 
-double QCborValue_ToDouble(QCborValue* self) {
-	return const_cast<const QCborValue*>(self)->toDouble();
+double QCborValue_ToDouble(const QCborValue* self) {
+	return self->toDouble();
 }
 
-QCborValue* QCborValue_TaggedValue(QCborValue* self) {
-	QCborValue ret = const_cast<const QCborValue*>(self)->taggedValue();
+QCborValue* QCborValue_TaggedValue(const QCborValue* self) {
+	QCborValue ret = self->taggedValue();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QCborValue*>(new QCborValue(ret));
 }
 
-QByteArray* QCborValue_ToByteArray(QCborValue* self) {
-	QByteArray ret = const_cast<const QCborValue*>(self)->toByteArray();
+QByteArray* QCborValue_ToByteArray(const QCborValue* self) {
+	QByteArray ret = self->toByteArray();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QByteArray*>(new QByteArray(ret));
 }
 
-void QCborValue_ToString(QCborValue* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QCborValue*>(self)->toString();
+void QCborValue_ToString(const QCborValue* self, char** _out, int* _out_Strlen) {
+	QString ret = self->toString();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -227,63 +227,63 @@ void QCborValue_ToString(QCborValue* self, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-QDateTime* QCborValue_ToDateTime(QCborValue* self) {
-	QDateTime ret = const_cast<const QCborValue*>(self)->toDateTime();
+QDateTime* QCborValue_ToDateTime(const QCborValue* self) {
+	QDateTime ret = self->toDateTime();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QDateTime*>(new QDateTime(ret));
 }
 
-QUrl* QCborValue_ToUrl(QCborValue* self) {
-	QUrl ret = const_cast<const QCborValue*>(self)->toUrl();
+QUrl* QCborValue_ToUrl(const QCborValue* self) {
+	QUrl ret = self->toUrl();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QUrl*>(new QUrl(ret));
 }
 
-QRegularExpression* QCborValue_ToRegularExpression(QCborValue* self) {
-	QRegularExpression ret = const_cast<const QCborValue*>(self)->toRegularExpression();
+QRegularExpression* QCborValue_ToRegularExpression(const QCborValue* self) {
+	QRegularExpression ret = self->toRegularExpression();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRegularExpression*>(new QRegularExpression(ret));
 }
 
-QUuid* QCborValue_ToUuid(QCborValue* self) {
-	QUuid ret = const_cast<const QCborValue*>(self)->toUuid();
+QUuid* QCborValue_ToUuid(const QCborValue* self) {
+	QUuid ret = self->toUuid();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QUuid*>(new QUuid(ret));
 }
 
-QCborArray* QCborValue_ToArray(QCborValue* self) {
-	QCborArray ret = const_cast<const QCborValue*>(self)->toArray();
+QCborArray* QCborValue_ToArray(const QCborValue* self) {
+	QCborArray ret = self->toArray();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QCborArray*>(new QCborArray(ret));
 }
 
-QCborArray* QCborValue_ToArrayWithDefaultValue(QCborValue* self, QCborArray* defaultValue) {
-	QCborArray ret = const_cast<const QCborValue*>(self)->toArray(*defaultValue);
+QCborArray* QCborValue_ToArrayWithDefaultValue(const QCborValue* self, QCborArray* defaultValue) {
+	QCborArray ret = self->toArray(*defaultValue);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QCborArray*>(new QCborArray(ret));
 }
 
-QCborMap* QCborValue_ToMap(QCborValue* self) {
-	QCborMap ret = const_cast<const QCborValue*>(self)->toMap();
+QCborMap* QCborValue_ToMap(const QCborValue* self) {
+	QCborMap ret = self->toMap();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QCborMap*>(new QCborMap(ret));
 }
 
-QCborMap* QCborValue_ToMapWithDefaultValue(QCborValue* self, QCborMap* defaultValue) {
-	QCborMap ret = const_cast<const QCborValue*>(self)->toMap(*defaultValue);
+QCborMap* QCborValue_ToMapWithDefaultValue(const QCborValue* self, QCborMap* defaultValue) {
+	QCborMap ret = self->toMap(*defaultValue);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QCborMap*>(new QCborMap(ret));
 }
 
-QCborValue* QCborValue_OperatorSubscript(QCborValue* self, const char* key, size_t key_Strlen) {
+QCborValue* QCborValue_OperatorSubscript(const QCborValue* self, const char* key, size_t key_Strlen) {
 	QString key_QString = QString::fromUtf8(key, key_Strlen);
-	QCborValue ret = const_cast<const QCborValue*>(self)->operator[](key_QString);
+	QCborValue ret = self->operator[](key_QString);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QCborValue*>(new QCborValue(ret));
 }
 
-QCborValue* QCborValue_OperatorSubscript2(QCborValue* self, long long key) {
-	QCborValue ret = const_cast<const QCborValue*>(self)->operator[](static_cast<qint64>(key));
+QCborValue* QCborValue_OperatorSubscript2(const QCborValue* self, long long key) {
+	QCborValue ret = self->operator[](static_cast<qint64>(key));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QCborValue*>(new QCborValue(ret));
 }
@@ -301,20 +301,20 @@ QCborValueRef* QCborValue_OperatorSubscript5(QCborValue* self, const char* key, 
 	return static_cast<QCborValueRef*>(new QCborValueRef(ret));
 }
 
-int QCborValue_Compare(QCborValue* self, QCborValue* other) {
-	return const_cast<const QCborValue*>(self)->compare(*other);
+int QCborValue_Compare(const QCborValue* self, QCborValue* other) {
+	return self->compare(*other);
 }
 
-bool QCborValue_OperatorEqual(QCborValue* self, QCborValue* other) {
-	return const_cast<const QCborValue*>(self)->operator==(*other);
+bool QCborValue_OperatorEqual(const QCborValue* self, QCborValue* other) {
+	return self->operator==(*other);
 }
 
-bool QCborValue_OperatorNotEqual(QCborValue* self, QCborValue* other) {
-	return const_cast<const QCborValue*>(self)->operator!=(*other);
+bool QCborValue_OperatorNotEqual(const QCborValue* self, QCborValue* other) {
+	return self->operator!=(*other);
 }
 
-bool QCborValue_OperatorLesser(QCborValue* self, QCborValue* other) {
-	return const_cast<const QCborValue*>(self)->operator<(*other);
+bool QCborValue_OperatorLesser(const QCborValue* self, QCborValue* other) {
+	return self->operator<(*other);
 }
 
 QCborValue* QCborValue_FromVariant(QVariant* variant) {
@@ -323,8 +323,8 @@ QCborValue* QCborValue_FromVariant(QVariant* variant) {
 	return static_cast<QCborValue*>(new QCborValue(ret));
 }
 
-QVariant* QCborValue_ToVariant(QCborValue* self) {
-	QVariant ret = const_cast<const QCborValue*>(self)->toVariant();
+QVariant* QCborValue_ToVariant(const QCborValue* self) {
+	QVariant ret = self->toVariant();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVariant*>(new QVariant(ret));
 }
@@ -335,8 +335,8 @@ QCborValue* QCborValue_FromJsonValue(QJsonValue* v) {
 	return static_cast<QCborValue*>(new QCborValue(ret));
 }
 
-QJsonValue* QCborValue_ToJsonValue(QCborValue* self) {
-	QJsonValue ret = const_cast<const QCborValue*>(self)->toJsonValue();
+QJsonValue* QCborValue_ToJsonValue(const QCborValue* self) {
+	QJsonValue ret = self->toJsonValue();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QJsonValue*>(new QJsonValue(ret));
 }
@@ -375,8 +375,8 @@ void QCborValue_ToCborWithWriter(QCborValue* self, QCborStreamWriter* writer) {
 	self->toCbor(*writer);
 }
 
-void QCborValue_ToDiagnosticNotation(QCborValue* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QCborValue*>(self)->toDiagnosticNotation();
+void QCborValue_ToDiagnosticNotation(const QCborValue* self, char** _out, int* _out_Strlen) {
+	QString ret = self->toDiagnosticNotation();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -384,33 +384,33 @@ void QCborValue_ToDiagnosticNotation(QCborValue* self, char** _out, int* _out_St
 	*_out_Strlen = b.length();
 }
 
-long long QCborValue_ToInteger1(QCborValue* self, long long defaultValue) {
-	return const_cast<const QCborValue*>(self)->toInteger(static_cast<qint64>(defaultValue));
+long long QCborValue_ToInteger1(const QCborValue* self, long long defaultValue) {
+	return self->toInteger(static_cast<qint64>(defaultValue));
 }
 
-bool QCborValue_ToBool1(QCborValue* self, bool defaultValue) {
-	return const_cast<const QCborValue*>(self)->toBool(defaultValue);
+bool QCborValue_ToBool1(const QCborValue* self, bool defaultValue) {
+	return self->toBool(defaultValue);
 }
 
-double QCborValue_ToDouble1(QCborValue* self, double defaultValue) {
-	return const_cast<const QCborValue*>(self)->toDouble(static_cast<double>(defaultValue));
+double QCborValue_ToDouble1(const QCborValue* self, double defaultValue) {
+	return self->toDouble(static_cast<double>(defaultValue));
 }
 
-QCborValue* QCborValue_TaggedValue1(QCborValue* self, QCborValue* defaultValue) {
-	QCborValue ret = const_cast<const QCborValue*>(self)->taggedValue(*defaultValue);
+QCborValue* QCborValue_TaggedValue1(const QCborValue* self, QCborValue* defaultValue) {
+	QCborValue ret = self->taggedValue(*defaultValue);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QCborValue*>(new QCborValue(ret));
 }
 
-QByteArray* QCborValue_ToByteArray1(QCborValue* self, QByteArray* defaultValue) {
-	QByteArray ret = const_cast<const QCborValue*>(self)->toByteArray(*defaultValue);
+QByteArray* QCborValue_ToByteArray1(const QCborValue* self, QByteArray* defaultValue) {
+	QByteArray ret = self->toByteArray(*defaultValue);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QByteArray*>(new QByteArray(ret));
 }
 
-void QCborValue_ToString1(QCborValue* self, const char* defaultValue, size_t defaultValue_Strlen, char** _out, int* _out_Strlen) {
+void QCborValue_ToString1(const QCborValue* self, const char* defaultValue, size_t defaultValue_Strlen, char** _out, int* _out_Strlen) {
 	QString defaultValue_QString = QString::fromUtf8(defaultValue, defaultValue_Strlen);
-	QString ret = const_cast<const QCborValue*>(self)->toString(defaultValue_QString);
+	QString ret = self->toString(defaultValue_QString);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -418,26 +418,26 @@ void QCborValue_ToString1(QCborValue* self, const char* defaultValue, size_t def
 	*_out_Strlen = b.length();
 }
 
-QDateTime* QCborValue_ToDateTime1(QCborValue* self, QDateTime* defaultValue) {
-	QDateTime ret = const_cast<const QCborValue*>(self)->toDateTime(*defaultValue);
+QDateTime* QCborValue_ToDateTime1(const QCborValue* self, QDateTime* defaultValue) {
+	QDateTime ret = self->toDateTime(*defaultValue);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QDateTime*>(new QDateTime(ret));
 }
 
-QUrl* QCborValue_ToUrl1(QCborValue* self, QUrl* defaultValue) {
-	QUrl ret = const_cast<const QCborValue*>(self)->toUrl(*defaultValue);
+QUrl* QCborValue_ToUrl1(const QCborValue* self, QUrl* defaultValue) {
+	QUrl ret = self->toUrl(*defaultValue);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QUrl*>(new QUrl(ret));
 }
 
-QRegularExpression* QCborValue_ToRegularExpression1(QCborValue* self, QRegularExpression* defaultValue) {
-	QRegularExpression ret = const_cast<const QCborValue*>(self)->toRegularExpression(*defaultValue);
+QRegularExpression* QCborValue_ToRegularExpression1(const QCborValue* self, QRegularExpression* defaultValue) {
+	QRegularExpression ret = self->toRegularExpression(*defaultValue);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRegularExpression*>(new QRegularExpression(ret));
 }
 
-QUuid* QCborValue_ToUuid1(QCborValue* self, QUuid* defaultValue) {
-	QUuid ret = const_cast<const QCborValue*>(self)->toUuid(*defaultValue);
+QUuid* QCborValue_ToUuid1(const QCborValue* self, QUuid* defaultValue) {
+	QUuid ret = self->toUuid(*defaultValue);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QUuid*>(new QUuid(ret));
 }
@@ -470,8 +470,8 @@ void QCborValue_ToCbor2(QCborValue* self, QCborStreamWriter* writer, int opt) {
 	self->toCbor(*writer, static_cast<QCborValue::EncodingOptions>(opt));
 }
 
-void QCborValue_ToDiagnosticNotation1(QCborValue* self, int opts, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QCborValue*>(self)->toDiagnosticNotation(static_cast<QCborValue::DiagnosticNotationOptions>(opts));
+void QCborValue_ToDiagnosticNotation1(const QCborValue* self, int opts, char** _out, int* _out_Strlen) {
+	QString ret = self->toDiagnosticNotation(static_cast<QCborValue::DiagnosticNotationOptions>(opts));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -495,113 +495,113 @@ void QCborValueRef_OperatorAssignWithOther(QCborValueRef* self, QCborValueRef* o
 	self->operator=(*other);
 }
 
-uintptr_t QCborValueRef_Type(QCborValueRef* self) {
-	QCborValue::Type ret = const_cast<const QCborValueRef*>(self)->type();
+uintptr_t QCborValueRef_Type(const QCborValueRef* self) {
+	QCborValue::Type ret = self->type();
 	return static_cast<uintptr_t>(ret);
 }
 
-bool QCborValueRef_IsInteger(QCborValueRef* self) {
-	return const_cast<const QCborValueRef*>(self)->isInteger();
+bool QCborValueRef_IsInteger(const QCborValueRef* self) {
+	return self->isInteger();
 }
 
-bool QCborValueRef_IsByteArray(QCborValueRef* self) {
-	return const_cast<const QCborValueRef*>(self)->isByteArray();
+bool QCborValueRef_IsByteArray(const QCborValueRef* self) {
+	return self->isByteArray();
 }
 
-bool QCborValueRef_IsString(QCborValueRef* self) {
-	return const_cast<const QCborValueRef*>(self)->isString();
+bool QCborValueRef_IsString(const QCborValueRef* self) {
+	return self->isString();
 }
 
-bool QCborValueRef_IsArray(QCborValueRef* self) {
-	return const_cast<const QCborValueRef*>(self)->isArray();
+bool QCborValueRef_IsArray(const QCborValueRef* self) {
+	return self->isArray();
 }
 
-bool QCborValueRef_IsMap(QCborValueRef* self) {
-	return const_cast<const QCborValueRef*>(self)->isMap();
+bool QCborValueRef_IsMap(const QCborValueRef* self) {
+	return self->isMap();
 }
 
-bool QCborValueRef_IsTag(QCborValueRef* self) {
-	return const_cast<const QCborValueRef*>(self)->isTag();
+bool QCborValueRef_IsTag(const QCborValueRef* self) {
+	return self->isTag();
 }
 
-bool QCborValueRef_IsFalse(QCborValueRef* self) {
-	return const_cast<const QCborValueRef*>(self)->isFalse();
+bool QCborValueRef_IsFalse(const QCborValueRef* self) {
+	return self->isFalse();
 }
 
-bool QCborValueRef_IsTrue(QCborValueRef* self) {
-	return const_cast<const QCborValueRef*>(self)->isTrue();
+bool QCborValueRef_IsTrue(const QCborValueRef* self) {
+	return self->isTrue();
 }
 
-bool QCborValueRef_IsBool(QCborValueRef* self) {
-	return const_cast<const QCborValueRef*>(self)->isBool();
+bool QCborValueRef_IsBool(const QCborValueRef* self) {
+	return self->isBool();
 }
 
-bool QCborValueRef_IsNull(QCborValueRef* self) {
-	return const_cast<const QCborValueRef*>(self)->isNull();
+bool QCborValueRef_IsNull(const QCborValueRef* self) {
+	return self->isNull();
 }
 
-bool QCborValueRef_IsUndefined(QCborValueRef* self) {
-	return const_cast<const QCborValueRef*>(self)->isUndefined();
+bool QCborValueRef_IsUndefined(const QCborValueRef* self) {
+	return self->isUndefined();
 }
 
-bool QCborValueRef_IsDouble(QCborValueRef* self) {
-	return const_cast<const QCborValueRef*>(self)->isDouble();
+bool QCborValueRef_IsDouble(const QCborValueRef* self) {
+	return self->isDouble();
 }
 
-bool QCborValueRef_IsDateTime(QCborValueRef* self) {
-	return const_cast<const QCborValueRef*>(self)->isDateTime();
+bool QCborValueRef_IsDateTime(const QCborValueRef* self) {
+	return self->isDateTime();
 }
 
-bool QCborValueRef_IsUrl(QCborValueRef* self) {
-	return const_cast<const QCborValueRef*>(self)->isUrl();
+bool QCborValueRef_IsUrl(const QCborValueRef* self) {
+	return self->isUrl();
 }
 
-bool QCborValueRef_IsRegularExpression(QCborValueRef* self) {
-	return const_cast<const QCborValueRef*>(self)->isRegularExpression();
+bool QCborValueRef_IsRegularExpression(const QCborValueRef* self) {
+	return self->isRegularExpression();
 }
 
-bool QCborValueRef_IsUuid(QCborValueRef* self) {
-	return const_cast<const QCborValueRef*>(self)->isUuid();
+bool QCborValueRef_IsUuid(const QCborValueRef* self) {
+	return self->isUuid();
 }
 
-bool QCborValueRef_IsInvalid(QCborValueRef* self) {
-	return const_cast<const QCborValueRef*>(self)->isInvalid();
+bool QCborValueRef_IsInvalid(const QCborValueRef* self) {
+	return self->isInvalid();
 }
 
-bool QCborValueRef_IsContainer(QCborValueRef* self) {
-	return const_cast<const QCborValueRef*>(self)->isContainer();
+bool QCborValueRef_IsContainer(const QCborValueRef* self) {
+	return self->isContainer();
 }
 
-bool QCborValueRef_IsSimpleType(QCborValueRef* self) {
-	return const_cast<const QCborValueRef*>(self)->isSimpleType();
+bool QCborValueRef_IsSimpleType(const QCborValueRef* self) {
+	return self->isSimpleType();
 }
 
-QCborValue* QCborValueRef_TaggedValue(QCborValueRef* self) {
-	QCborValue ret = const_cast<const QCborValueRef*>(self)->taggedValue();
+QCborValue* QCborValueRef_TaggedValue(const QCborValueRef* self) {
+	QCborValue ret = self->taggedValue();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QCborValue*>(new QCborValue(ret));
 }
 
-long long QCborValueRef_ToInteger(QCborValueRef* self) {
-	return const_cast<const QCborValueRef*>(self)->toInteger();
+long long QCborValueRef_ToInteger(const QCborValueRef* self) {
+	return self->toInteger();
 }
 
-bool QCborValueRef_ToBool(QCborValueRef* self) {
-	return const_cast<const QCborValueRef*>(self)->toBool();
+bool QCborValueRef_ToBool(const QCborValueRef* self) {
+	return self->toBool();
 }
 
-double QCborValueRef_ToDouble(QCborValueRef* self) {
-	return const_cast<const QCborValueRef*>(self)->toDouble();
+double QCborValueRef_ToDouble(const QCborValueRef* self) {
+	return self->toDouble();
 }
 
-QByteArray* QCborValueRef_ToByteArray(QCborValueRef* self) {
-	QByteArray ret = const_cast<const QCborValueRef*>(self)->toByteArray();
+QByteArray* QCborValueRef_ToByteArray(const QCborValueRef* self) {
+	QByteArray ret = self->toByteArray();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QByteArray*>(new QByteArray(ret));
 }
 
-void QCborValueRef_ToString(QCborValueRef* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QCborValueRef*>(self)->toString();
+void QCborValueRef_ToString(const QCborValueRef* self, char** _out, int* _out_Strlen) {
+	QString ret = self->toString();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -609,63 +609,63 @@ void QCborValueRef_ToString(QCborValueRef* self, char** _out, int* _out_Strlen) 
 	*_out_Strlen = b.length();
 }
 
-QDateTime* QCborValueRef_ToDateTime(QCborValueRef* self) {
-	QDateTime ret = const_cast<const QCborValueRef*>(self)->toDateTime();
+QDateTime* QCborValueRef_ToDateTime(const QCborValueRef* self) {
+	QDateTime ret = self->toDateTime();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QDateTime*>(new QDateTime(ret));
 }
 
-QUrl* QCborValueRef_ToUrl(QCborValueRef* self) {
-	QUrl ret = const_cast<const QCborValueRef*>(self)->toUrl();
+QUrl* QCborValueRef_ToUrl(const QCborValueRef* self) {
+	QUrl ret = self->toUrl();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QUrl*>(new QUrl(ret));
 }
 
-QRegularExpression* QCborValueRef_ToRegularExpression(QCborValueRef* self) {
-	QRegularExpression ret = const_cast<const QCborValueRef*>(self)->toRegularExpression();
+QRegularExpression* QCborValueRef_ToRegularExpression(const QCborValueRef* self) {
+	QRegularExpression ret = self->toRegularExpression();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRegularExpression*>(new QRegularExpression(ret));
 }
 
-QUuid* QCborValueRef_ToUuid(QCborValueRef* self) {
-	QUuid ret = const_cast<const QCborValueRef*>(self)->toUuid();
+QUuid* QCborValueRef_ToUuid(const QCborValueRef* self) {
+	QUuid ret = self->toUuid();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QUuid*>(new QUuid(ret));
 }
 
-QCborArray* QCborValueRef_ToArray(QCborValueRef* self) {
-	QCborArray ret = const_cast<const QCborValueRef*>(self)->toArray();
+QCborArray* QCborValueRef_ToArray(const QCborValueRef* self) {
+	QCborArray ret = self->toArray();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QCborArray*>(new QCborArray(ret));
 }
 
-QCborArray* QCborValueRef_ToArrayWithQCborArray(QCborValueRef* self, QCborArray* a) {
-	QCborArray ret = const_cast<const QCborValueRef*>(self)->toArray(*a);
+QCborArray* QCborValueRef_ToArrayWithQCborArray(const QCborValueRef* self, QCborArray* a) {
+	QCborArray ret = self->toArray(*a);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QCborArray*>(new QCborArray(ret));
 }
 
-QCborMap* QCborValueRef_ToMap(QCborValueRef* self) {
-	QCborMap ret = const_cast<const QCborValueRef*>(self)->toMap();
+QCborMap* QCborValueRef_ToMap(const QCborValueRef* self) {
+	QCborMap ret = self->toMap();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QCborMap*>(new QCborMap(ret));
 }
 
-QCborMap* QCborValueRef_ToMapWithQCborMap(QCborValueRef* self, QCborMap* m) {
-	QCborMap ret = const_cast<const QCborValueRef*>(self)->toMap(*m);
+QCborMap* QCborValueRef_ToMapWithQCborMap(const QCborValueRef* self, QCborMap* m) {
+	QCborMap ret = self->toMap(*m);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QCborMap*>(new QCborMap(ret));
 }
 
-QCborValue* QCborValueRef_OperatorSubscript(QCborValueRef* self, const char* key, size_t key_Strlen) {
+QCborValue* QCborValueRef_OperatorSubscript(const QCborValueRef* self, const char* key, size_t key_Strlen) {
 	QString key_QString = QString::fromUtf8(key, key_Strlen);
-	QCborValue ret = const_cast<const QCborValueRef*>(self)->operator[](key_QString);
+	QCborValue ret = self->operator[](key_QString);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QCborValue*>(new QCborValue(ret));
 }
 
-QCborValue* QCborValueRef_OperatorSubscript2(QCborValueRef* self, long long key) {
-	QCborValue ret = const_cast<const QCborValueRef*>(self)->operator[](static_cast<qint64>(key));
+QCborValue* QCborValueRef_OperatorSubscript2(const QCborValueRef* self, long long key) {
+	QCborValue ret = self->operator[](static_cast<qint64>(key));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QCborValue*>(new QCborValue(ret));
 }
@@ -683,30 +683,30 @@ QCborValueRef* QCborValueRef_OperatorSubscript5(QCborValueRef* self, const char*
 	return static_cast<QCborValueRef*>(new QCborValueRef(ret));
 }
 
-int QCborValueRef_Compare(QCborValueRef* self, QCborValue* other) {
-	return const_cast<const QCborValueRef*>(self)->compare(*other);
+int QCborValueRef_Compare(const QCborValueRef* self, QCborValue* other) {
+	return self->compare(*other);
 }
 
-bool QCborValueRef_OperatorEqual(QCborValueRef* self, QCborValue* other) {
-	return const_cast<const QCborValueRef*>(self)->operator==(*other);
+bool QCborValueRef_OperatorEqual(const QCborValueRef* self, QCborValue* other) {
+	return self->operator==(*other);
 }
 
-bool QCborValueRef_OperatorNotEqual(QCborValueRef* self, QCborValue* other) {
-	return const_cast<const QCborValueRef*>(self)->operator!=(*other);
+bool QCborValueRef_OperatorNotEqual(const QCborValueRef* self, QCborValue* other) {
+	return self->operator!=(*other);
 }
 
-bool QCborValueRef_OperatorLesser(QCborValueRef* self, QCborValue* other) {
-	return const_cast<const QCborValueRef*>(self)->operator<(*other);
+bool QCborValueRef_OperatorLesser(const QCborValueRef* self, QCborValue* other) {
+	return self->operator<(*other);
 }
 
-QVariant* QCborValueRef_ToVariant(QCborValueRef* self) {
-	QVariant ret = const_cast<const QCborValueRef*>(self)->toVariant();
+QVariant* QCborValueRef_ToVariant(const QCborValueRef* self) {
+	QVariant ret = self->toVariant();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVariant*>(new QVariant(ret));
 }
 
-QJsonValue* QCborValueRef_ToJsonValue(QCborValueRef* self) {
-	QJsonValue ret = const_cast<const QCborValueRef*>(self)->toJsonValue();
+QJsonValue* QCborValueRef_ToJsonValue(const QCborValueRef* self) {
+	QJsonValue ret = self->toJsonValue();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QJsonValue*>(new QJsonValue(ret));
 }
@@ -730,33 +730,33 @@ void QCborValueRef_ToDiagnosticNotation(QCborValueRef* self, char** _out, int* _
 	*_out_Strlen = b.length();
 }
 
-QCborValue* QCborValueRef_TaggedValue1(QCborValueRef* self, QCborValue* defaultValue) {
-	QCborValue ret = const_cast<const QCborValueRef*>(self)->taggedValue(*defaultValue);
+QCborValue* QCborValueRef_TaggedValue1(const QCborValueRef* self, QCborValue* defaultValue) {
+	QCborValue ret = self->taggedValue(*defaultValue);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QCborValue*>(new QCborValue(ret));
 }
 
-long long QCborValueRef_ToInteger1(QCborValueRef* self, long long defaultValue) {
-	return const_cast<const QCborValueRef*>(self)->toInteger(static_cast<qint64>(defaultValue));
+long long QCborValueRef_ToInteger1(const QCborValueRef* self, long long defaultValue) {
+	return self->toInteger(static_cast<qint64>(defaultValue));
 }
 
-bool QCborValueRef_ToBool1(QCborValueRef* self, bool defaultValue) {
-	return const_cast<const QCborValueRef*>(self)->toBool(defaultValue);
+bool QCborValueRef_ToBool1(const QCborValueRef* self, bool defaultValue) {
+	return self->toBool(defaultValue);
 }
 
-double QCborValueRef_ToDouble1(QCborValueRef* self, double defaultValue) {
-	return const_cast<const QCborValueRef*>(self)->toDouble(static_cast<double>(defaultValue));
+double QCborValueRef_ToDouble1(const QCborValueRef* self, double defaultValue) {
+	return self->toDouble(static_cast<double>(defaultValue));
 }
 
-QByteArray* QCborValueRef_ToByteArray1(QCborValueRef* self, QByteArray* defaultValue) {
-	QByteArray ret = const_cast<const QCborValueRef*>(self)->toByteArray(*defaultValue);
+QByteArray* QCborValueRef_ToByteArray1(const QCborValueRef* self, QByteArray* defaultValue) {
+	QByteArray ret = self->toByteArray(*defaultValue);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QByteArray*>(new QByteArray(ret));
 }
 
-void QCborValueRef_ToString1(QCborValueRef* self, const char* defaultValue, size_t defaultValue_Strlen, char** _out, int* _out_Strlen) {
+void QCborValueRef_ToString1(const QCborValueRef* self, const char* defaultValue, size_t defaultValue_Strlen, char** _out, int* _out_Strlen) {
 	QString defaultValue_QString = QString::fromUtf8(defaultValue, defaultValue_Strlen);
-	QString ret = const_cast<const QCborValueRef*>(self)->toString(defaultValue_QString);
+	QString ret = self->toString(defaultValue_QString);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -764,26 +764,26 @@ void QCborValueRef_ToString1(QCborValueRef* self, const char* defaultValue, size
 	*_out_Strlen = b.length();
 }
 
-QDateTime* QCborValueRef_ToDateTime1(QCborValueRef* self, QDateTime* defaultValue) {
-	QDateTime ret = const_cast<const QCborValueRef*>(self)->toDateTime(*defaultValue);
+QDateTime* QCborValueRef_ToDateTime1(const QCborValueRef* self, QDateTime* defaultValue) {
+	QDateTime ret = self->toDateTime(*defaultValue);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QDateTime*>(new QDateTime(ret));
 }
 
-QUrl* QCborValueRef_ToUrl1(QCborValueRef* self, QUrl* defaultValue) {
-	QUrl ret = const_cast<const QCborValueRef*>(self)->toUrl(*defaultValue);
+QUrl* QCborValueRef_ToUrl1(const QCborValueRef* self, QUrl* defaultValue) {
+	QUrl ret = self->toUrl(*defaultValue);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QUrl*>(new QUrl(ret));
 }
 
-QRegularExpression* QCborValueRef_ToRegularExpression1(QCborValueRef* self, QRegularExpression* defaultValue) {
-	QRegularExpression ret = const_cast<const QCborValueRef*>(self)->toRegularExpression(*defaultValue);
+QRegularExpression* QCborValueRef_ToRegularExpression1(const QCborValueRef* self, QRegularExpression* defaultValue) {
+	QRegularExpression ret = self->toRegularExpression(*defaultValue);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRegularExpression*>(new QRegularExpression(ret));
 }
 
-QUuid* QCborValueRef_ToUuid1(QCborValueRef* self, QUuid* defaultValue) {
-	QUuid ret = const_cast<const QCborValueRef*>(self)->toUuid(*defaultValue);
+QUuid* QCborValueRef_ToUuid1(const QCborValueRef* self, QUuid* defaultValue) {
+	QUuid ret = self->toUuid(*defaultValue);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QUuid*>(new QUuid(ret));
 }

@@ -21,8 +21,8 @@ void QCborStreamWriter_SetDevice(QCborStreamWriter* self, QIODevice* device) {
 	self->setDevice(device);
 }
 
-QIODevice* QCborStreamWriter_Device(QCborStreamWriter* self) {
-	return const_cast<const QCborStreamWriter*>(self)->device();
+QIODevice* QCborStreamWriter_Device(const QCborStreamWriter* self) {
+	return self->device();
 }
 
 void QCborStreamWriter_Append(QCborStreamWriter* self, unsigned long long u) {

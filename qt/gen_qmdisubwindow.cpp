@@ -27,8 +27,8 @@ QMdiSubWindow* QMdiSubWindow_new3(QWidget* parent, int flags) {
 	return new QMdiSubWindow(parent, static_cast<Qt::WindowFlags>(flags));
 }
 
-QMetaObject* QMdiSubWindow_MetaObject(QMdiSubWindow* self) {
-	return (QMetaObject*) const_cast<const QMdiSubWindow*>(self)->metaObject();
+QMetaObject* QMdiSubWindow_MetaObject(const QMdiSubWindow* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QMdiSubWindow_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -49,14 +49,14 @@ void QMdiSubWindow_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-QSize* QMdiSubWindow_SizeHint(QMdiSubWindow* self) {
-	QSize ret = const_cast<const QMdiSubWindow*>(self)->sizeHint();
+QSize* QMdiSubWindow_SizeHint(const QMdiSubWindow* self) {
+	QSize ret = self->sizeHint();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
 
-QSize* QMdiSubWindow_MinimumSizeHint(QMdiSubWindow* self) {
-	QSize ret = const_cast<const QMdiSubWindow*>(self)->minimumSizeHint();
+QSize* QMdiSubWindow_MinimumSizeHint(const QMdiSubWindow* self) {
+	QSize ret = self->minimumSizeHint();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
@@ -65,56 +65,56 @@ void QMdiSubWindow_SetWidget(QMdiSubWindow* self, QWidget* widget) {
 	self->setWidget(widget);
 }
 
-QWidget* QMdiSubWindow_Widget(QMdiSubWindow* self) {
-	return const_cast<const QMdiSubWindow*>(self)->widget();
+QWidget* QMdiSubWindow_Widget(const QMdiSubWindow* self) {
+	return self->widget();
 }
 
-QWidget* QMdiSubWindow_MaximizedButtonsWidget(QMdiSubWindow* self) {
-	return const_cast<const QMdiSubWindow*>(self)->maximizedButtonsWidget();
+QWidget* QMdiSubWindow_MaximizedButtonsWidget(const QMdiSubWindow* self) {
+	return self->maximizedButtonsWidget();
 }
 
-QWidget* QMdiSubWindow_MaximizedSystemMenuIconWidget(QMdiSubWindow* self) {
-	return const_cast<const QMdiSubWindow*>(self)->maximizedSystemMenuIconWidget();
+QWidget* QMdiSubWindow_MaximizedSystemMenuIconWidget(const QMdiSubWindow* self) {
+	return self->maximizedSystemMenuIconWidget();
 }
 
-bool QMdiSubWindow_IsShaded(QMdiSubWindow* self) {
-	return const_cast<const QMdiSubWindow*>(self)->isShaded();
+bool QMdiSubWindow_IsShaded(const QMdiSubWindow* self) {
+	return self->isShaded();
 }
 
 void QMdiSubWindow_SetOption(QMdiSubWindow* self, uintptr_t option) {
 	self->setOption(static_cast<QMdiSubWindow::SubWindowOption>(option));
 }
 
-bool QMdiSubWindow_TestOption(QMdiSubWindow* self, uintptr_t param1) {
-	return const_cast<const QMdiSubWindow*>(self)->testOption(static_cast<QMdiSubWindow::SubWindowOption>(param1));
+bool QMdiSubWindow_TestOption(const QMdiSubWindow* self, uintptr_t param1) {
+	return self->testOption(static_cast<QMdiSubWindow::SubWindowOption>(param1));
 }
 
 void QMdiSubWindow_SetKeyboardSingleStep(QMdiSubWindow* self, int step) {
 	self->setKeyboardSingleStep(static_cast<int>(step));
 }
 
-int QMdiSubWindow_KeyboardSingleStep(QMdiSubWindow* self) {
-	return const_cast<const QMdiSubWindow*>(self)->keyboardSingleStep();
+int QMdiSubWindow_KeyboardSingleStep(const QMdiSubWindow* self) {
+	return self->keyboardSingleStep();
 }
 
 void QMdiSubWindow_SetKeyboardPageStep(QMdiSubWindow* self, int step) {
 	self->setKeyboardPageStep(static_cast<int>(step));
 }
 
-int QMdiSubWindow_KeyboardPageStep(QMdiSubWindow* self) {
-	return const_cast<const QMdiSubWindow*>(self)->keyboardPageStep();
+int QMdiSubWindow_KeyboardPageStep(const QMdiSubWindow* self) {
+	return self->keyboardPageStep();
 }
 
 void QMdiSubWindow_SetSystemMenu(QMdiSubWindow* self, QMenu* systemMenu) {
 	self->setSystemMenu(systemMenu);
 }
 
-QMenu* QMdiSubWindow_SystemMenu(QMdiSubWindow* self) {
-	return const_cast<const QMdiSubWindow*>(self)->systemMenu();
+QMenu* QMdiSubWindow_SystemMenu(const QMdiSubWindow* self) {
+	return self->systemMenu();
 }
 
-QMdiArea* QMdiSubWindow_MdiArea(QMdiSubWindow* self) {
-	return const_cast<const QMdiSubWindow*>(self)->mdiArea();
+QMdiArea* QMdiSubWindow_MdiArea(const QMdiSubWindow* self) {
+	return self->mdiArea();
 }
 
 void QMdiSubWindow_WindowStateChanged(QMdiSubWindow* self, int oldState, int newState) {

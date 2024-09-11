@@ -12,8 +12,8 @@ extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
 }
 
-QMetaObject* QStyleHints_MetaObject(QStyleHints* self) {
-	return (QMetaObject*) const_cast<const QStyleHints*>(self)->metaObject();
+QMetaObject* QStyleHints_MetaObject(const QStyleHints* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QStyleHints_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -38,106 +38,106 @@ void QStyleHints_SetMouseDoubleClickInterval(QStyleHints* self, int mouseDoubleC
 	self->setMouseDoubleClickInterval(static_cast<int>(mouseDoubleClickInterval));
 }
 
-int QStyleHints_MouseDoubleClickInterval(QStyleHints* self) {
-	return const_cast<const QStyleHints*>(self)->mouseDoubleClickInterval();
+int QStyleHints_MouseDoubleClickInterval(const QStyleHints* self) {
+	return self->mouseDoubleClickInterval();
 }
 
-int QStyleHints_MouseDoubleClickDistance(QStyleHints* self) {
-	return const_cast<const QStyleHints*>(self)->mouseDoubleClickDistance();
+int QStyleHints_MouseDoubleClickDistance(const QStyleHints* self) {
+	return self->mouseDoubleClickDistance();
 }
 
-int QStyleHints_TouchDoubleTapDistance(QStyleHints* self) {
-	return const_cast<const QStyleHints*>(self)->touchDoubleTapDistance();
+int QStyleHints_TouchDoubleTapDistance(const QStyleHints* self) {
+	return self->touchDoubleTapDistance();
 }
 
 void QStyleHints_SetMousePressAndHoldInterval(QStyleHints* self, int mousePressAndHoldInterval) {
 	self->setMousePressAndHoldInterval(static_cast<int>(mousePressAndHoldInterval));
 }
 
-int QStyleHints_MousePressAndHoldInterval(QStyleHints* self) {
-	return const_cast<const QStyleHints*>(self)->mousePressAndHoldInterval();
+int QStyleHints_MousePressAndHoldInterval(const QStyleHints* self) {
+	return self->mousePressAndHoldInterval();
 }
 
 void QStyleHints_SetStartDragDistance(QStyleHints* self, int startDragDistance) {
 	self->setStartDragDistance(static_cast<int>(startDragDistance));
 }
 
-int QStyleHints_StartDragDistance(QStyleHints* self) {
-	return const_cast<const QStyleHints*>(self)->startDragDistance();
+int QStyleHints_StartDragDistance(const QStyleHints* self) {
+	return self->startDragDistance();
 }
 
 void QStyleHints_SetStartDragTime(QStyleHints* self, int startDragTime) {
 	self->setStartDragTime(static_cast<int>(startDragTime));
 }
 
-int QStyleHints_StartDragTime(QStyleHints* self) {
-	return const_cast<const QStyleHints*>(self)->startDragTime();
+int QStyleHints_StartDragTime(const QStyleHints* self) {
+	return self->startDragTime();
 }
 
-int QStyleHints_StartDragVelocity(QStyleHints* self) {
-	return const_cast<const QStyleHints*>(self)->startDragVelocity();
+int QStyleHints_StartDragVelocity(const QStyleHints* self) {
+	return self->startDragVelocity();
 }
 
 void QStyleHints_SetKeyboardInputInterval(QStyleHints* self, int keyboardInputInterval) {
 	self->setKeyboardInputInterval(static_cast<int>(keyboardInputInterval));
 }
 
-int QStyleHints_KeyboardInputInterval(QStyleHints* self) {
-	return const_cast<const QStyleHints*>(self)->keyboardInputInterval();
+int QStyleHints_KeyboardInputInterval(const QStyleHints* self) {
+	return self->keyboardInputInterval();
 }
 
-int QStyleHints_KeyboardAutoRepeatRate(QStyleHints* self) {
-	return const_cast<const QStyleHints*>(self)->keyboardAutoRepeatRate();
+int QStyleHints_KeyboardAutoRepeatRate(const QStyleHints* self) {
+	return self->keyboardAutoRepeatRate();
 }
 
 void QStyleHints_SetCursorFlashTime(QStyleHints* self, int cursorFlashTime) {
 	self->setCursorFlashTime(static_cast<int>(cursorFlashTime));
 }
 
-int QStyleHints_CursorFlashTime(QStyleHints* self) {
-	return const_cast<const QStyleHints*>(self)->cursorFlashTime();
+int QStyleHints_CursorFlashTime(const QStyleHints* self) {
+	return self->cursorFlashTime();
 }
 
-bool QStyleHints_ShowIsFullScreen(QStyleHints* self) {
-	return const_cast<const QStyleHints*>(self)->showIsFullScreen();
+bool QStyleHints_ShowIsFullScreen(const QStyleHints* self) {
+	return self->showIsFullScreen();
 }
 
-bool QStyleHints_ShowIsMaximized(QStyleHints* self) {
-	return const_cast<const QStyleHints*>(self)->showIsMaximized();
+bool QStyleHints_ShowIsMaximized(const QStyleHints* self) {
+	return self->showIsMaximized();
 }
 
-bool QStyleHints_ShowShortcutsInContextMenus(QStyleHints* self) {
-	return const_cast<const QStyleHints*>(self)->showShortcutsInContextMenus();
+bool QStyleHints_ShowShortcutsInContextMenus(const QStyleHints* self) {
+	return self->showShortcutsInContextMenus();
 }
 
 void QStyleHints_SetShowShortcutsInContextMenus(QStyleHints* self, bool showShortcutsInContextMenus) {
 	self->setShowShortcutsInContextMenus(showShortcutsInContextMenus);
 }
 
-int QStyleHints_PasswordMaskDelay(QStyleHints* self) {
-	return const_cast<const QStyleHints*>(self)->passwordMaskDelay();
+int QStyleHints_PasswordMaskDelay(const QStyleHints* self) {
+	return self->passwordMaskDelay();
 }
 
-QChar* QStyleHints_PasswordMaskCharacter(QStyleHints* self) {
-	QChar ret = const_cast<const QStyleHints*>(self)->passwordMaskCharacter();
+QChar* QStyleHints_PasswordMaskCharacter(const QStyleHints* self) {
+	QChar ret = self->passwordMaskCharacter();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QChar*>(new QChar(ret));
 }
 
-double QStyleHints_FontSmoothingGamma(QStyleHints* self) {
-	return const_cast<const QStyleHints*>(self)->fontSmoothingGamma();
+double QStyleHints_FontSmoothingGamma(const QStyleHints* self) {
+	return self->fontSmoothingGamma();
 }
 
-bool QStyleHints_UseRtlExtensions(QStyleHints* self) {
-	return const_cast<const QStyleHints*>(self)->useRtlExtensions();
+bool QStyleHints_UseRtlExtensions(const QStyleHints* self) {
+	return self->useRtlExtensions();
 }
 
-bool QStyleHints_SetFocusOnTouchRelease(QStyleHints* self) {
-	return const_cast<const QStyleHints*>(self)->setFocusOnTouchRelease();
+bool QStyleHints_SetFocusOnTouchRelease(const QStyleHints* self) {
+	return self->setFocusOnTouchRelease();
 }
 
-uintptr_t QStyleHints_TabFocusBehavior(QStyleHints* self) {
-	Qt::TabFocusBehavior ret = const_cast<const QStyleHints*>(self)->tabFocusBehavior();
+uintptr_t QStyleHints_TabFocusBehavior(const QStyleHints* self) {
+	Qt::TabFocusBehavior ret = self->tabFocusBehavior();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -145,20 +145,20 @@ void QStyleHints_SetTabFocusBehavior(QStyleHints* self, uintptr_t tabFocusBehavi
 	self->setTabFocusBehavior(static_cast<Qt::TabFocusBehavior>(tabFocusBehavior));
 }
 
-bool QStyleHints_SingleClickActivation(QStyleHints* self) {
-	return const_cast<const QStyleHints*>(self)->singleClickActivation();
+bool QStyleHints_SingleClickActivation(const QStyleHints* self) {
+	return self->singleClickActivation();
 }
 
-bool QStyleHints_UseHoverEffects(QStyleHints* self) {
-	return const_cast<const QStyleHints*>(self)->useHoverEffects();
+bool QStyleHints_UseHoverEffects(const QStyleHints* self) {
+	return self->useHoverEffects();
 }
 
 void QStyleHints_SetUseHoverEffects(QStyleHints* self, bool useHoverEffects) {
 	self->setUseHoverEffects(useHoverEffects);
 }
 
-int QStyleHints_WheelScrollLines(QStyleHints* self) {
-	return const_cast<const QStyleHints*>(self)->wheelScrollLines();
+int QStyleHints_WheelScrollLines(const QStyleHints* self) {
+	return self->wheelScrollLines();
 }
 
 void QStyleHints_SetWheelScrollLines(QStyleHints* self, int scrollLines) {
@@ -169,8 +169,8 @@ void QStyleHints_SetMouseQuickSelectionThreshold(QStyleHints* self, int threshol
 	self->setMouseQuickSelectionThreshold(static_cast<int>(threshold));
 }
 
-int QStyleHints_MouseQuickSelectionThreshold(QStyleHints* self) {
-	return const_cast<const QStyleHints*>(self)->mouseQuickSelectionThreshold();
+int QStyleHints_MouseQuickSelectionThreshold(const QStyleHints* self) {
+	return self->mouseQuickSelectionThreshold();
 }
 
 void QStyleHints_CursorFlashTimeChanged(QStyleHints* self, int cursorFlashTime) {

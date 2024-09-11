@@ -47,8 +47,8 @@ QDialogButtonBox* QDialogButtonBox_new8(int buttons, uintptr_t orientation, QWid
 	return new QDialogButtonBox(static_cast<QDialogButtonBox::StandardButtons>(buttons), static_cast<Qt::Orientation>(orientation), parent);
 }
 
-QMetaObject* QDialogButtonBox_MetaObject(QDialogButtonBox* self) {
-	return (QMetaObject*) const_cast<const QDialogButtonBox*>(self)->metaObject();
+QMetaObject* QDialogButtonBox_MetaObject(const QDialogButtonBox* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QDialogButtonBox_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -73,8 +73,8 @@ void QDialogButtonBox_SetOrientation(QDialogButtonBox* self, uintptr_t orientati
 	self->setOrientation(static_cast<Qt::Orientation>(orientation));
 }
 
-uintptr_t QDialogButtonBox_Orientation(QDialogButtonBox* self) {
-	Qt::Orientation ret = const_cast<const QDialogButtonBox*>(self)->orientation();
+uintptr_t QDialogButtonBox_Orientation(const QDialogButtonBox* self) {
+	Qt::Orientation ret = self->orientation();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -99,8 +99,8 @@ void QDialogButtonBox_Clear(QDialogButtonBox* self) {
 	self->clear();
 }
 
-void QDialogButtonBox_Buttons(QDialogButtonBox* self, QAbstractButton*** _out, size_t* _out_len) {
-	QList<QAbstractButton*> ret = const_cast<const QDialogButtonBox*>(self)->buttons();
+void QDialogButtonBox_Buttons(const QDialogButtonBox* self, QAbstractButton*** _out, size_t* _out_len) {
+	QList<QAbstractButton*> ret = self->buttons();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QAbstractButton** __out = static_cast<QAbstractButton**>(malloc(sizeof(QAbstractButton*) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {
@@ -110,8 +110,8 @@ void QDialogButtonBox_Buttons(QDialogButtonBox* self, QAbstractButton*** _out, s
 	*_out_len = ret.length();
 }
 
-uintptr_t QDialogButtonBox_ButtonRole(QDialogButtonBox* self, QAbstractButton* button) {
-	QDialogButtonBox::ButtonRole ret = const_cast<const QDialogButtonBox*>(self)->buttonRole(button);
+uintptr_t QDialogButtonBox_ButtonRole(const QDialogButtonBox* self, QAbstractButton* button) {
+	QDialogButtonBox::ButtonRole ret = self->buttonRole(button);
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -119,26 +119,26 @@ void QDialogButtonBox_SetStandardButtons(QDialogButtonBox* self, int buttons) {
 	self->setStandardButtons(static_cast<QDialogButtonBox::StandardButtons>(buttons));
 }
 
-int QDialogButtonBox_StandardButtons(QDialogButtonBox* self) {
-	QDialogButtonBox::StandardButtons ret = const_cast<const QDialogButtonBox*>(self)->standardButtons();
+int QDialogButtonBox_StandardButtons(const QDialogButtonBox* self) {
+	QDialogButtonBox::StandardButtons ret = self->standardButtons();
 	return static_cast<int>(ret);
 }
 
-uintptr_t QDialogButtonBox_StandardButton(QDialogButtonBox* self, QAbstractButton* button) {
-	QDialogButtonBox::StandardButton ret = const_cast<const QDialogButtonBox*>(self)->standardButton(button);
+uintptr_t QDialogButtonBox_StandardButton(const QDialogButtonBox* self, QAbstractButton* button) {
+	QDialogButtonBox::StandardButton ret = self->standardButton(button);
 	return static_cast<uintptr_t>(ret);
 }
 
-QPushButton* QDialogButtonBox_Button(QDialogButtonBox* self, uintptr_t which) {
-	return const_cast<const QDialogButtonBox*>(self)->button(static_cast<QDialogButtonBox::StandardButton>(which));
+QPushButton* QDialogButtonBox_Button(const QDialogButtonBox* self, uintptr_t which) {
+	return self->button(static_cast<QDialogButtonBox::StandardButton>(which));
 }
 
 void QDialogButtonBox_SetCenterButtons(QDialogButtonBox* self, bool center) {
 	self->setCenterButtons(center);
 }
 
-bool QDialogButtonBox_CenterButtons(QDialogButtonBox* self) {
-	return const_cast<const QDialogButtonBox*>(self)->centerButtons();
+bool QDialogButtonBox_CenterButtons(const QDialogButtonBox* self) {
+	return self->centerButtons();
 }
 
 void QDialogButtonBox_Clicked(QDialogButtonBox* self, QAbstractButton* button) {

@@ -39,8 +39,8 @@ QFileSystemWatcher* QFileSystemWatcher_new4(char** paths, uint64_t* paths_Length
 	return new QFileSystemWatcher(paths_QList, parent);
 }
 
-QMetaObject* QFileSystemWatcher_MetaObject(QFileSystemWatcher* self) {
-	return (QMetaObject*) const_cast<const QFileSystemWatcher*>(self)->metaObject();
+QMetaObject* QFileSystemWatcher_MetaObject(const QFileSystemWatcher* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QFileSystemWatcher_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -115,8 +115,8 @@ void QFileSystemWatcher_RemovePaths(QFileSystemWatcher* self, char** files, uint
 	*_out_len = ret.length();
 }
 
-void QFileSystemWatcher_Files(QFileSystemWatcher* self, char*** _out, int** _out_Lengths, size_t* _out_len) {
-	QStringList ret = const_cast<const QFileSystemWatcher*>(self)->files();
+void QFileSystemWatcher_Files(const QFileSystemWatcher* self, char*** _out, int** _out_Lengths, size_t* _out_len) {
+	QStringList ret = self->files();
 	// Convert QStringList from C++ memory to manually-managed C memory
 	char** __out = static_cast<char**>(malloc(sizeof(char*) * ret.length()));
 	int* __out_Lengths = static_cast<int*>(malloc(sizeof(int) * ret.length()));
@@ -132,8 +132,8 @@ void QFileSystemWatcher_Files(QFileSystemWatcher* self, char*** _out, int** _out
 	*_out_len = ret.length();
 }
 
-void QFileSystemWatcher_Directories(QFileSystemWatcher* self, char*** _out, int** _out_Lengths, size_t* _out_len) {
-	QStringList ret = const_cast<const QFileSystemWatcher*>(self)->directories();
+void QFileSystemWatcher_Directories(const QFileSystemWatcher* self, char*** _out, int** _out_Lengths, size_t* _out_len) {
+	QStringList ret = self->directories();
 	// Convert QStringList from C++ memory to manually-managed C memory
 	char** __out = static_cast<char**>(malloc(sizeof(char*) * ret.length()));
 	int* __out_Lengths = static_cast<int*>(malloc(sizeof(int) * ret.length()));

@@ -45,8 +45,8 @@ QPainter* QPainter_new2(QPaintDevice* param1) {
 	return new QPainter(param1);
 }
 
-QPaintDevice* QPainter_Device(QPainter* self) {
-	return const_cast<const QPainter*>(self)->device();
+QPaintDevice* QPainter_Device(const QPainter* self) {
+	return self->device();
 }
 
 bool QPainter_Begin(QPainter* self, QPaintDevice* param1) {
@@ -57,8 +57,8 @@ bool QPainter_End(QPainter* self) {
 	return self->end();
 }
 
-bool QPainter_IsActive(QPainter* self) {
-	return const_cast<const QPainter*>(self)->isActive();
+bool QPainter_IsActive(const QPainter* self) {
+	return self->isActive();
 }
 
 void QPainter_InitFrom(QPainter* self, QPaintDevice* device) {
@@ -69,13 +69,13 @@ void QPainter_SetCompositionMode(QPainter* self, uintptr_t mode) {
 	self->setCompositionMode(static_cast<QPainter::CompositionMode>(mode));
 }
 
-uintptr_t QPainter_CompositionMode(QPainter* self) {
-	QPainter::CompositionMode ret = const_cast<const QPainter*>(self)->compositionMode();
+uintptr_t QPainter_CompositionMode(const QPainter* self) {
+	QPainter::CompositionMode ret = self->compositionMode();
 	return static_cast<uintptr_t>(ret);
 }
 
-QFont* QPainter_Font(QPainter* self) {
-	const QFont& ret = const_cast<const QPainter*>(self)->font();
+QFont* QPainter_Font(const QPainter* self) {
+	const QFont& ret = self->font();
 	// Cast returned reference into pointer
 	return const_cast<QFont*>(&ret);
 }
@@ -84,14 +84,14 @@ void QPainter_SetFont(QPainter* self, QFont* f) {
 	self->setFont(*f);
 }
 
-QFontMetrics* QPainter_FontMetrics(QPainter* self) {
-	QFontMetrics ret = const_cast<const QPainter*>(self)->fontMetrics();
+QFontMetrics* QPainter_FontMetrics(const QPainter* self) {
+	QFontMetrics ret = self->fontMetrics();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QFontMetrics*>(new QFontMetrics(ret));
 }
 
-QFontInfo* QPainter_FontInfo(QPainter* self) {
-	QFontInfo ret = const_cast<const QPainter*>(self)->fontInfo();
+QFontInfo* QPainter_FontInfo(const QPainter* self) {
+	QFontInfo ret = self->fontInfo();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QFontInfo*>(new QFontInfo(ret));
 }
@@ -108,8 +108,8 @@ void QPainter_SetPenWithStyle(QPainter* self, uintptr_t style) {
 	self->setPen(static_cast<Qt::PenStyle>(style));
 }
 
-QPen* QPainter_Pen(QPainter* self) {
-	const QPen& ret = const_cast<const QPainter*>(self)->pen();
+QPen* QPainter_Pen(const QPainter* self) {
+	const QPen& ret = self->pen();
 	// Cast returned reference into pointer
 	return const_cast<QPen*>(&ret);
 }
@@ -122,8 +122,8 @@ void QPainter_SetBrushWithStyle(QPainter* self, uintptr_t style) {
 	self->setBrush(static_cast<Qt::BrushStyle>(style));
 }
 
-QBrush* QPainter_Brush(QPainter* self) {
-	const QBrush& ret = const_cast<const QPainter*>(self)->brush();
+QBrush* QPainter_Brush(const QPainter* self) {
+	const QBrush& ret = self->brush();
 	// Cast returned reference into pointer
 	return const_cast<QBrush*>(&ret);
 }
@@ -132,13 +132,13 @@ void QPainter_SetBackgroundMode(QPainter* self, uintptr_t mode) {
 	self->setBackgroundMode(static_cast<Qt::BGMode>(mode));
 }
 
-uintptr_t QPainter_BackgroundMode(QPainter* self) {
-	Qt::BGMode ret = const_cast<const QPainter*>(self)->backgroundMode();
+uintptr_t QPainter_BackgroundMode(const QPainter* self) {
+	Qt::BGMode ret = self->backgroundMode();
 	return static_cast<uintptr_t>(ret);
 }
 
-QPoint* QPainter_BrushOrigin(QPainter* self) {
-	QPoint ret = const_cast<const QPainter*>(self)->brushOrigin();
+QPoint* QPainter_BrushOrigin(const QPainter* self) {
+	QPoint ret = self->brushOrigin();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPoint*>(new QPoint(ret));
 }
@@ -159,28 +159,28 @@ void QPainter_SetBackground(QPainter* self, QBrush* bg) {
 	self->setBackground(*bg);
 }
 
-QBrush* QPainter_Background(QPainter* self) {
-	const QBrush& ret = const_cast<const QPainter*>(self)->background();
+QBrush* QPainter_Background(const QPainter* self) {
+	const QBrush& ret = self->background();
 	// Cast returned reference into pointer
 	return const_cast<QBrush*>(&ret);
 }
 
-double QPainter_Opacity(QPainter* self) {
-	return const_cast<const QPainter*>(self)->opacity();
+double QPainter_Opacity(const QPainter* self) {
+	return self->opacity();
 }
 
 void QPainter_SetOpacity(QPainter* self, double opacity) {
 	self->setOpacity(static_cast<qreal>(opacity));
 }
 
-QRegion* QPainter_ClipRegion(QPainter* self) {
-	QRegion ret = const_cast<const QPainter*>(self)->clipRegion();
+QRegion* QPainter_ClipRegion(const QPainter* self) {
+	QRegion ret = self->clipRegion();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRegion*>(new QRegion(ret));
 }
 
-QPainterPath* QPainter_ClipPath(QPainter* self) {
-	QPainterPath ret = const_cast<const QPainter*>(self)->clipPath();
+QPainterPath* QPainter_ClipPath(const QPainter* self) {
+	QPainterPath ret = self->clipPath();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPainterPath*>(new QPainterPath(ret));
 }
@@ -209,12 +209,12 @@ void QPainter_SetClipping(QPainter* self, bool enable) {
 	self->setClipping(enable);
 }
 
-bool QPainter_HasClipping(QPainter* self) {
-	return const_cast<const QPainter*>(self)->hasClipping();
+bool QPainter_HasClipping(const QPainter* self) {
+	return self->hasClipping();
 }
 
-QRectF* QPainter_ClipBoundingRect(QPainter* self) {
-	QRectF ret = const_cast<const QPainter*>(self)->clipBoundingRect();
+QRectF* QPainter_ClipBoundingRect(const QPainter* self) {
+	QRectF ret = self->clipBoundingRect();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRectF*>(new QRectF(ret));
 }
@@ -231,14 +231,14 @@ void QPainter_SetMatrix(QPainter* self, QMatrix* matrix) {
 	self->setMatrix(*matrix);
 }
 
-QMatrix* QPainter_Matrix(QPainter* self) {
-	const QMatrix& ret = const_cast<const QPainter*>(self)->matrix();
+QMatrix* QPainter_Matrix(const QPainter* self) {
+	const QMatrix& ret = self->matrix();
 	// Cast returned reference into pointer
 	return const_cast<QMatrix*>(&ret);
 }
 
-QMatrix* QPainter_DeviceMatrix(QPainter* self) {
-	const QMatrix& ret = const_cast<const QPainter*>(self)->deviceMatrix();
+QMatrix* QPainter_DeviceMatrix(const QPainter* self) {
+	const QMatrix& ret = self->deviceMatrix();
 	// Cast returned reference into pointer
 	return const_cast<QMatrix*>(&ret);
 }
@@ -251,14 +251,14 @@ void QPainter_SetTransform(QPainter* self, QTransform* transform) {
 	self->setTransform(*transform);
 }
 
-QTransform* QPainter_Transform(QPainter* self) {
-	const QTransform& ret = const_cast<const QPainter*>(self)->transform();
+QTransform* QPainter_Transform(const QPainter* self) {
+	const QTransform& ret = self->transform();
 	// Cast returned reference into pointer
 	return const_cast<QTransform*>(&ret);
 }
 
-QTransform* QPainter_DeviceTransform(QPainter* self) {
-	const QTransform& ret = const_cast<const QPainter*>(self)->deviceTransform();
+QTransform* QPainter_DeviceTransform(const QPainter* self) {
+	const QTransform& ret = self->deviceTransform();
 	// Cast returned reference into pointer
 	return const_cast<QTransform*>(&ret);
 }
@@ -271,14 +271,14 @@ void QPainter_SetWorldMatrix(QPainter* self, QMatrix* matrix) {
 	self->setWorldMatrix(*matrix);
 }
 
-QMatrix* QPainter_WorldMatrix(QPainter* self) {
-	const QMatrix& ret = const_cast<const QPainter*>(self)->worldMatrix();
+QMatrix* QPainter_WorldMatrix(const QPainter* self) {
+	const QMatrix& ret = self->worldMatrix();
 	// Cast returned reference into pointer
 	return const_cast<QMatrix*>(&ret);
 }
 
-QMatrix* QPainter_CombinedMatrix(QPainter* self) {
-	QMatrix ret = const_cast<const QPainter*>(self)->combinedMatrix();
+QMatrix* QPainter_CombinedMatrix(const QPainter* self) {
+	QMatrix ret = self->combinedMatrix();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QMatrix*>(new QMatrix(ret));
 }
@@ -287,22 +287,22 @@ void QPainter_SetMatrixEnabled(QPainter* self, bool enabled) {
 	self->setMatrixEnabled(enabled);
 }
 
-bool QPainter_MatrixEnabled(QPainter* self) {
-	return const_cast<const QPainter*>(self)->matrixEnabled();
+bool QPainter_MatrixEnabled(const QPainter* self) {
+	return self->matrixEnabled();
 }
 
 void QPainter_SetWorldTransform(QPainter* self, QTransform* matrix) {
 	self->setWorldTransform(*matrix);
 }
 
-QTransform* QPainter_WorldTransform(QPainter* self) {
-	const QTransform& ret = const_cast<const QPainter*>(self)->worldTransform();
+QTransform* QPainter_WorldTransform(const QPainter* self) {
+	const QTransform& ret = self->worldTransform();
 	// Cast returned reference into pointer
 	return const_cast<QTransform*>(&ret);
 }
 
-QTransform* QPainter_CombinedTransform(QPainter* self) {
-	QTransform ret = const_cast<const QPainter*>(self)->combinedTransform();
+QTransform* QPainter_CombinedTransform(const QPainter* self) {
+	QTransform ret = self->combinedTransform();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QTransform*>(new QTransform(ret));
 }
@@ -311,8 +311,8 @@ void QPainter_SetWorldMatrixEnabled(QPainter* self, bool enabled) {
 	self->setWorldMatrixEnabled(enabled);
 }
 
-bool QPainter_WorldMatrixEnabled(QPainter* self) {
-	return const_cast<const QPainter*>(self)->worldMatrixEnabled();
+bool QPainter_WorldMatrixEnabled(const QPainter* self) {
+	return self->worldMatrixEnabled();
 }
 
 void QPainter_Scale(QPainter* self, double sx, double sy) {
@@ -339,8 +339,8 @@ void QPainter_Translate2(QPainter* self, double dx, double dy) {
 	self->translate(static_cast<qreal>(dx), static_cast<qreal>(dy));
 }
 
-QRect* QPainter_Window(QPainter* self) {
-	QRect ret = const_cast<const QPainter*>(self)->window();
+QRect* QPainter_Window(const QPainter* self) {
+	QRect ret = self->window();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRect*>(new QRect(ret));
 }
@@ -353,8 +353,8 @@ void QPainter_SetWindow2(QPainter* self, int x, int y, int w, int h) {
 	self->setWindow(static_cast<int>(x), static_cast<int>(y), static_cast<int>(w), static_cast<int>(h));
 }
 
-QRect* QPainter_Viewport(QPainter* self) {
-	QRect ret = const_cast<const QPainter*>(self)->viewport();
+QRect* QPainter_Viewport(const QPainter* self) {
+	QRect ret = self->viewport();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRect*>(new QRect(ret));
 }
@@ -371,8 +371,8 @@ void QPainter_SetViewTransformEnabled(QPainter* self, bool enable) {
 	self->setViewTransformEnabled(enable);
 }
 
-bool QPainter_ViewTransformEnabled(QPainter* self) {
-	return const_cast<const QPainter*>(self)->viewTransformEnabled();
+bool QPainter_ViewTransformEnabled(const QPainter* self) {
+	return self->viewTransformEnabled();
 }
 
 void QPainter_StrokePath(QPainter* self, QPainterPath* path, QPen* pen) {
@@ -733,8 +733,8 @@ void QPainter_SetLayoutDirection(QPainter* self, uintptr_t direction) {
 	self->setLayoutDirection(static_cast<Qt::LayoutDirection>(direction));
 }
 
-uintptr_t QPainter_LayoutDirection(QPainter* self) {
-	Qt::LayoutDirection ret = const_cast<const QPainter*>(self)->layoutDirection();
+uintptr_t QPainter_LayoutDirection(const QPainter* self) {
+	Qt::LayoutDirection ret = self->layoutDirection();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -914,17 +914,17 @@ void QPainter_SetRenderHints(QPainter* self, int hints) {
 	self->setRenderHints(static_cast<QPainter::RenderHints>(hints));
 }
 
-int QPainter_RenderHints(QPainter* self) {
-	QPainter::RenderHints ret = const_cast<const QPainter*>(self)->renderHints();
+int QPainter_RenderHints(const QPainter* self) {
+	QPainter::RenderHints ret = self->renderHints();
 	return static_cast<int>(ret);
 }
 
-bool QPainter_TestRenderHint(QPainter* self, uintptr_t hint) {
-	return const_cast<const QPainter*>(self)->testRenderHint(static_cast<QPainter::RenderHint>(hint));
+bool QPainter_TestRenderHint(const QPainter* self, uintptr_t hint) {
+	return self->testRenderHint(static_cast<QPainter::RenderHint>(hint));
 }
 
-QPaintEngine* QPainter_PaintEngine(QPainter* self) {
-	return const_cast<const QPainter*>(self)->paintEngine();
+QPaintEngine* QPainter_PaintEngine(const QPainter* self) {
+	return self->paintEngine();
 }
 
 void QPainter_SetRedirected(QPaintDevice* device, QPaintDevice* replacement) {

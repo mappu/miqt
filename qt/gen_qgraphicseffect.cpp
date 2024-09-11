@@ -20,8 +20,8 @@ extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
 }
 
-QMetaObject* QGraphicsEffect_MetaObject(QGraphicsEffect* self) {
-	return (QMetaObject*) const_cast<const QGraphicsEffect*>(self)->metaObject();
+QMetaObject* QGraphicsEffect_MetaObject(const QGraphicsEffect* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QGraphicsEffect_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -42,20 +42,20 @@ void QGraphicsEffect_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-QRectF* QGraphicsEffect_BoundingRectFor(QGraphicsEffect* self, QRectF* sourceRect) {
-	QRectF ret = const_cast<const QGraphicsEffect*>(self)->boundingRectFor(*sourceRect);
+QRectF* QGraphicsEffect_BoundingRectFor(const QGraphicsEffect* self, QRectF* sourceRect) {
+	QRectF ret = self->boundingRectFor(*sourceRect);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRectF*>(new QRectF(ret));
 }
 
-QRectF* QGraphicsEffect_BoundingRect(QGraphicsEffect* self) {
-	QRectF ret = const_cast<const QGraphicsEffect*>(self)->boundingRect();
+QRectF* QGraphicsEffect_BoundingRect(const QGraphicsEffect* self) {
+	QRectF ret = self->boundingRect();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRectF*>(new QRectF(ret));
 }
 
-bool QGraphicsEffect_IsEnabled(QGraphicsEffect* self) {
-	return const_cast<const QGraphicsEffect*>(self)->isEnabled();
+bool QGraphicsEffect_IsEnabled(const QGraphicsEffect* self) {
+	return self->isEnabled();
 }
 
 void QGraphicsEffect_SetEnabled(QGraphicsEffect* self, bool enable) {
@@ -124,8 +124,8 @@ QGraphicsColorizeEffect* QGraphicsColorizeEffect_new2(QObject* parent) {
 	return new QGraphicsColorizeEffect(parent);
 }
 
-QMetaObject* QGraphicsColorizeEffect_MetaObject(QGraphicsColorizeEffect* self) {
-	return (QMetaObject*) const_cast<const QGraphicsColorizeEffect*>(self)->metaObject();
+QMetaObject* QGraphicsColorizeEffect_MetaObject(const QGraphicsColorizeEffect* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QGraphicsColorizeEffect_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -146,14 +146,14 @@ void QGraphicsColorizeEffect_TrUtf8(const char* s, char** _out, int* _out_Strlen
 	*_out_Strlen = b.length();
 }
 
-QColor* QGraphicsColorizeEffect_Color(QGraphicsColorizeEffect* self) {
-	QColor ret = const_cast<const QGraphicsColorizeEffect*>(self)->color();
+QColor* QGraphicsColorizeEffect_Color(const QGraphicsColorizeEffect* self) {
+	QColor ret = self->color();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QColor*>(new QColor(ret));
 }
 
-double QGraphicsColorizeEffect_Strength(QGraphicsColorizeEffect* self) {
-	return const_cast<const QGraphicsColorizeEffect*>(self)->strength();
+double QGraphicsColorizeEffect_Strength(const QGraphicsColorizeEffect* self) {
+	return self->strength();
 }
 
 void QGraphicsColorizeEffect_SetColor(QGraphicsColorizeEffect* self, QColor* c) {
@@ -232,8 +232,8 @@ QGraphicsBlurEffect* QGraphicsBlurEffect_new2(QObject* parent) {
 	return new QGraphicsBlurEffect(parent);
 }
 
-QMetaObject* QGraphicsBlurEffect_MetaObject(QGraphicsBlurEffect* self) {
-	return (QMetaObject*) const_cast<const QGraphicsBlurEffect*>(self)->metaObject();
+QMetaObject* QGraphicsBlurEffect_MetaObject(const QGraphicsBlurEffect* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QGraphicsBlurEffect_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -254,18 +254,18 @@ void QGraphicsBlurEffect_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-QRectF* QGraphicsBlurEffect_BoundingRectFor(QGraphicsBlurEffect* self, QRectF* rect) {
-	QRectF ret = const_cast<const QGraphicsBlurEffect*>(self)->boundingRectFor(*rect);
+QRectF* QGraphicsBlurEffect_BoundingRectFor(const QGraphicsBlurEffect* self, QRectF* rect) {
+	QRectF ret = self->boundingRectFor(*rect);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRectF*>(new QRectF(ret));
 }
 
-double QGraphicsBlurEffect_BlurRadius(QGraphicsBlurEffect* self) {
-	return const_cast<const QGraphicsBlurEffect*>(self)->blurRadius();
+double QGraphicsBlurEffect_BlurRadius(const QGraphicsBlurEffect* self) {
+	return self->blurRadius();
 }
 
-int QGraphicsBlurEffect_BlurHints(QGraphicsBlurEffect* self) {
-	QGraphicsBlurEffect::BlurHints ret = const_cast<const QGraphicsBlurEffect*>(self)->blurHints();
+int QGraphicsBlurEffect_BlurHints(const QGraphicsBlurEffect* self) {
+	QGraphicsBlurEffect::BlurHints ret = self->blurHints();
 	return static_cast<int>(ret);
 }
 
@@ -345,8 +345,8 @@ QGraphicsDropShadowEffect* QGraphicsDropShadowEffect_new2(QObject* parent) {
 	return new QGraphicsDropShadowEffect(parent);
 }
 
-QMetaObject* QGraphicsDropShadowEffect_MetaObject(QGraphicsDropShadowEffect* self) {
-	return (QMetaObject*) const_cast<const QGraphicsDropShadowEffect*>(self)->metaObject();
+QMetaObject* QGraphicsDropShadowEffect_MetaObject(const QGraphicsDropShadowEffect* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QGraphicsDropShadowEffect_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -367,32 +367,32 @@ void QGraphicsDropShadowEffect_TrUtf8(const char* s, char** _out, int* _out_Strl
 	*_out_Strlen = b.length();
 }
 
-QRectF* QGraphicsDropShadowEffect_BoundingRectFor(QGraphicsDropShadowEffect* self, QRectF* rect) {
-	QRectF ret = const_cast<const QGraphicsDropShadowEffect*>(self)->boundingRectFor(*rect);
+QRectF* QGraphicsDropShadowEffect_BoundingRectFor(const QGraphicsDropShadowEffect* self, QRectF* rect) {
+	QRectF ret = self->boundingRectFor(*rect);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRectF*>(new QRectF(ret));
 }
 
-QPointF* QGraphicsDropShadowEffect_Offset(QGraphicsDropShadowEffect* self) {
-	QPointF ret = const_cast<const QGraphicsDropShadowEffect*>(self)->offset();
+QPointF* QGraphicsDropShadowEffect_Offset(const QGraphicsDropShadowEffect* self) {
+	QPointF ret = self->offset();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPointF*>(new QPointF(ret));
 }
 
-double QGraphicsDropShadowEffect_XOffset(QGraphicsDropShadowEffect* self) {
-	return const_cast<const QGraphicsDropShadowEffect*>(self)->xOffset();
+double QGraphicsDropShadowEffect_XOffset(const QGraphicsDropShadowEffect* self) {
+	return self->xOffset();
 }
 
-double QGraphicsDropShadowEffect_YOffset(QGraphicsDropShadowEffect* self) {
-	return const_cast<const QGraphicsDropShadowEffect*>(self)->yOffset();
+double QGraphicsDropShadowEffect_YOffset(const QGraphicsDropShadowEffect* self) {
+	return self->yOffset();
 }
 
-double QGraphicsDropShadowEffect_BlurRadius(QGraphicsDropShadowEffect* self) {
-	return const_cast<const QGraphicsDropShadowEffect*>(self)->blurRadius();
+double QGraphicsDropShadowEffect_BlurRadius(const QGraphicsDropShadowEffect* self) {
+	return self->blurRadius();
 }
 
-QColor* QGraphicsDropShadowEffect_Color(QGraphicsDropShadowEffect* self) {
-	QColor ret = const_cast<const QGraphicsDropShadowEffect*>(self)->color();
+QColor* QGraphicsDropShadowEffect_Color(const QGraphicsDropShadowEffect* self) {
+	QColor ret = self->color();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QColor*>(new QColor(ret));
 }
@@ -503,8 +503,8 @@ QGraphicsOpacityEffect* QGraphicsOpacityEffect_new2(QObject* parent) {
 	return new QGraphicsOpacityEffect(parent);
 }
 
-QMetaObject* QGraphicsOpacityEffect_MetaObject(QGraphicsOpacityEffect* self) {
-	return (QMetaObject*) const_cast<const QGraphicsOpacityEffect*>(self)->metaObject();
+QMetaObject* QGraphicsOpacityEffect_MetaObject(const QGraphicsOpacityEffect* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QGraphicsOpacityEffect_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -525,12 +525,12 @@ void QGraphicsOpacityEffect_TrUtf8(const char* s, char** _out, int* _out_Strlen)
 	*_out_Strlen = b.length();
 }
 
-double QGraphicsOpacityEffect_Opacity(QGraphicsOpacityEffect* self) {
-	return const_cast<const QGraphicsOpacityEffect*>(self)->opacity();
+double QGraphicsOpacityEffect_Opacity(const QGraphicsOpacityEffect* self) {
+	return self->opacity();
 }
 
-QBrush* QGraphicsOpacityEffect_OpacityMask(QGraphicsOpacityEffect* self) {
-	QBrush ret = const_cast<const QGraphicsOpacityEffect*>(self)->opacityMask();
+QBrush* QGraphicsOpacityEffect_OpacityMask(const QGraphicsOpacityEffect* self) {
+	QBrush ret = self->opacityMask();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QBrush*>(new QBrush(ret));
 }

@@ -13,16 +13,16 @@ void QGraphicsLayout_SetContentsMargins(QGraphicsLayout* self, double left, doub
 	self->setContentsMargins(static_cast<qreal>(left), static_cast<qreal>(top), static_cast<qreal>(right), static_cast<qreal>(bottom));
 }
 
-void QGraphicsLayout_GetContentsMargins(QGraphicsLayout* self, double* left, double* top, double* right, double* bottom) {
-	const_cast<const QGraphicsLayout*>(self)->getContentsMargins(static_cast<qreal*>(left), static_cast<qreal*>(top), static_cast<qreal*>(right), static_cast<qreal*>(bottom));
+void QGraphicsLayout_GetContentsMargins(const QGraphicsLayout* self, double* left, double* top, double* right, double* bottom) {
+	self->getContentsMargins(static_cast<qreal*>(left), static_cast<qreal*>(top), static_cast<qreal*>(right), static_cast<qreal*>(bottom));
 }
 
 void QGraphicsLayout_Activate(QGraphicsLayout* self) {
 	self->activate();
 }
 
-bool QGraphicsLayout_IsActivated(QGraphicsLayout* self) {
-	return const_cast<const QGraphicsLayout*>(self)->isActivated();
+bool QGraphicsLayout_IsActivated(const QGraphicsLayout* self) {
+	return self->isActivated();
 }
 
 void QGraphicsLayout_Invalidate(QGraphicsLayout* self) {
@@ -37,12 +37,12 @@ void QGraphicsLayout_WidgetEvent(QGraphicsLayout* self, QEvent* e) {
 	self->widgetEvent(e);
 }
 
-int QGraphicsLayout_Count(QGraphicsLayout* self) {
-	return const_cast<const QGraphicsLayout*>(self)->count();
+int QGraphicsLayout_Count(const QGraphicsLayout* self) {
+	return self->count();
 }
 
-QGraphicsLayoutItem* QGraphicsLayout_ItemAt(QGraphicsLayout* self, int i) {
-	return const_cast<const QGraphicsLayout*>(self)->itemAt(static_cast<int>(i));
+QGraphicsLayoutItem* QGraphicsLayout_ItemAt(const QGraphicsLayout* self, int i) {
+	return self->itemAt(static_cast<int>(i));
 }
 
 void QGraphicsLayout_RemoveAt(QGraphicsLayout* self, int index) {

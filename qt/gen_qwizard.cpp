@@ -30,8 +30,8 @@ QWizard* QWizard_new3(QWidget* parent, int flags) {
 	return new QWizard(parent, static_cast<Qt::WindowFlags>(flags));
 }
 
-QMetaObject* QWizard_MetaObject(QWizard* self) {
-	return (QMetaObject*) const_cast<const QWizard*>(self)->metaObject();
+QMetaObject* QWizard_MetaObject(const QWizard* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QWizard_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -64,16 +64,16 @@ void QWizard_RemovePage(QWizard* self, int id) {
 	self->removePage(static_cast<int>(id));
 }
 
-QWizardPage* QWizard_Page(QWizard* self, int id) {
-	return const_cast<const QWizard*>(self)->page(static_cast<int>(id));
+QWizardPage* QWizard_Page(const QWizard* self, int id) {
+	return self->page(static_cast<int>(id));
 }
 
-bool QWizard_HasVisitedPage(QWizard* self, int id) {
-	return const_cast<const QWizard*>(self)->hasVisitedPage(static_cast<int>(id));
+bool QWizard_HasVisitedPage(const QWizard* self, int id) {
+	return self->hasVisitedPage(static_cast<int>(id));
 }
 
-void QWizard_VisitedPages(QWizard* self, int** _out, size_t* _out_len) {
-	QList<int> ret = const_cast<const QWizard*>(self)->visitedPages();
+void QWizard_VisitedPages(const QWizard* self, int** _out, size_t* _out_len) {
+	QList<int> ret = self->visitedPages();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	int* __out = static_cast<int*>(malloc(sizeof(int) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {
@@ -83,8 +83,8 @@ void QWizard_VisitedPages(QWizard* self, int** _out, size_t* _out_len) {
 	*_out_len = ret.length();
 }
 
-void QWizard_VisitedIds(QWizard* self, int** _out, size_t* _out_len) {
-	QList<int> ret = const_cast<const QWizard*>(self)->visitedIds();
+void QWizard_VisitedIds(const QWizard* self, int** _out, size_t* _out_len) {
+	QList<int> ret = self->visitedIds();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	int* __out = static_cast<int*>(malloc(sizeof(int) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {
@@ -94,8 +94,8 @@ void QWizard_VisitedIds(QWizard* self, int** _out, size_t* _out_len) {
 	*_out_len = ret.length();
 }
 
-void QWizard_PageIds(QWizard* self, int** _out, size_t* _out_len) {
-	QList<int> ret = const_cast<const QWizard*>(self)->pageIds();
+void QWizard_PageIds(const QWizard* self, int** _out, size_t* _out_len) {
+	QList<int> ret = self->pageIds();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	int* __out = static_cast<int*>(malloc(sizeof(int) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {
@@ -109,24 +109,24 @@ void QWizard_SetStartId(QWizard* self, int id) {
 	self->setStartId(static_cast<int>(id));
 }
 
-int QWizard_StartId(QWizard* self) {
-	return const_cast<const QWizard*>(self)->startId();
+int QWizard_StartId(const QWizard* self) {
+	return self->startId();
 }
 
-QWizardPage* QWizard_CurrentPage(QWizard* self) {
-	return const_cast<const QWizard*>(self)->currentPage();
+QWizardPage* QWizard_CurrentPage(const QWizard* self) {
+	return self->currentPage();
 }
 
-int QWizard_CurrentId(QWizard* self) {
-	return const_cast<const QWizard*>(self)->currentId();
+int QWizard_CurrentId(const QWizard* self) {
+	return self->currentId();
 }
 
 bool QWizard_ValidateCurrentPage(QWizard* self) {
 	return self->validateCurrentPage();
 }
 
-int QWizard_NextId(QWizard* self) {
-	return const_cast<const QWizard*>(self)->nextId();
+int QWizard_NextId(const QWizard* self) {
+	return self->nextId();
 }
 
 void QWizard_SetField(QWizard* self, const char* name, size_t name_Strlen, QVariant* value) {
@@ -134,9 +134,9 @@ void QWizard_SetField(QWizard* self, const char* name, size_t name_Strlen, QVari
 	self->setField(name_QString, *value);
 }
 
-QVariant* QWizard_Field(QWizard* self, const char* name, size_t name_Strlen) {
+QVariant* QWizard_Field(const QWizard* self, const char* name, size_t name_Strlen) {
 	QString name_QString = QString::fromUtf8(name, name_Strlen);
-	QVariant ret = const_cast<const QWizard*>(self)->field(name_QString);
+	QVariant ret = self->field(name_QString);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVariant*>(new QVariant(ret));
 }
@@ -145,8 +145,8 @@ void QWizard_SetWizardStyle(QWizard* self, uintptr_t style) {
 	self->setWizardStyle(static_cast<QWizard::WizardStyle>(style));
 }
 
-uintptr_t QWizard_WizardStyle(QWizard* self) {
-	QWizard::WizardStyle ret = const_cast<const QWizard*>(self)->wizardStyle();
+uintptr_t QWizard_WizardStyle(const QWizard* self) {
+	QWizard::WizardStyle ret = self->wizardStyle();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -154,16 +154,16 @@ void QWizard_SetOption(QWizard* self, uintptr_t option) {
 	self->setOption(static_cast<QWizard::WizardOption>(option));
 }
 
-bool QWizard_TestOption(QWizard* self, uintptr_t option) {
-	return const_cast<const QWizard*>(self)->testOption(static_cast<QWizard::WizardOption>(option));
+bool QWizard_TestOption(const QWizard* self, uintptr_t option) {
+	return self->testOption(static_cast<QWizard::WizardOption>(option));
 }
 
 void QWizard_SetOptions(QWizard* self, int options) {
 	self->setOptions(static_cast<QWizard::WizardOptions>(options));
 }
 
-int QWizard_Options(QWizard* self) {
-	QWizard::WizardOptions ret = const_cast<const QWizard*>(self)->options();
+int QWizard_Options(const QWizard* self) {
+	QWizard::WizardOptions ret = self->options();
 	return static_cast<int>(ret);
 }
 
@@ -172,8 +172,8 @@ void QWizard_SetButtonText(QWizard* self, int which, const char* text, size_t te
 	self->setButtonText(static_cast<QWizard::WizardButton>(which), text_QString);
 }
 
-void QWizard_ButtonText(QWizard* self, int which, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QWizard*>(self)->buttonText(static_cast<QWizard::WizardButton>(which));
+void QWizard_ButtonText(const QWizard* self, int which, char** _out, int* _out_Strlen) {
+	QString ret = self->buttonText(static_cast<QWizard::WizardButton>(which));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -194,16 +194,16 @@ void QWizard_SetButton(QWizard* self, int which, QAbstractButton* button) {
 	self->setButton(static_cast<QWizard::WizardButton>(which), button);
 }
 
-QAbstractButton* QWizard_Button(QWizard* self, int which) {
-	return const_cast<const QWizard*>(self)->button(static_cast<QWizard::WizardButton>(which));
+QAbstractButton* QWizard_Button(const QWizard* self, int which) {
+	return self->button(static_cast<QWizard::WizardButton>(which));
 }
 
 void QWizard_SetTitleFormat(QWizard* self, uintptr_t format) {
 	self->setTitleFormat(static_cast<Qt::TextFormat>(format));
 }
 
-uintptr_t QWizard_TitleFormat(QWizard* self) {
-	Qt::TextFormat ret = const_cast<const QWizard*>(self)->titleFormat();
+uintptr_t QWizard_TitleFormat(const QWizard* self) {
+	Qt::TextFormat ret = self->titleFormat();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -211,8 +211,8 @@ void QWizard_SetSubTitleFormat(QWizard* self, uintptr_t format) {
 	self->setSubTitleFormat(static_cast<Qt::TextFormat>(format));
 }
 
-uintptr_t QWizard_SubTitleFormat(QWizard* self) {
-	Qt::TextFormat ret = const_cast<const QWizard*>(self)->subTitleFormat();
+uintptr_t QWizard_SubTitleFormat(const QWizard* self) {
+	Qt::TextFormat ret = self->subTitleFormat();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -220,8 +220,8 @@ void QWizard_SetPixmap(QWizard* self, uintptr_t which, QPixmap* pixmap) {
 	self->setPixmap(static_cast<QWizard::WizardPixmap>(which), *pixmap);
 }
 
-QPixmap* QWizard_Pixmap(QWizard* self, uintptr_t which) {
-	QPixmap ret = const_cast<const QWizard*>(self)->pixmap(static_cast<QWizard::WizardPixmap>(which));
+QPixmap* QWizard_Pixmap(const QWizard* self, uintptr_t which) {
+	QPixmap ret = self->pixmap(static_cast<QWizard::WizardPixmap>(which));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPixmap*>(new QPixmap(ret));
 }
@@ -230,8 +230,8 @@ void QWizard_SetSideWidget(QWizard* self, QWidget* widget) {
 	self->setSideWidget(widget);
 }
 
-QWidget* QWizard_SideWidget(QWizard* self) {
-	return const_cast<const QWizard*>(self)->sideWidget();
+QWidget* QWizard_SideWidget(const QWizard* self) {
+	return self->sideWidget();
 }
 
 void QWizard_SetDefaultProperty(QWizard* self, const char* className, const char* property, const char* changedSignal) {
@@ -242,8 +242,8 @@ void QWizard_SetVisible(QWizard* self, bool visible) {
 	self->setVisible(visible);
 }
 
-QSize* QWizard_SizeHint(QWizard* self) {
-	QSize ret = const_cast<const QWizard*>(self)->sizeHint();
+QSize* QWizard_SizeHint(const QWizard* self) {
+	QSize ret = self->sizeHint();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
@@ -362,8 +362,8 @@ QWizardPage* QWizardPage_new2(QWidget* parent) {
 	return new QWizardPage(parent);
 }
 
-QMetaObject* QWizardPage_MetaObject(QWizardPage* self) {
-	return (QMetaObject*) const_cast<const QWizardPage*>(self)->metaObject();
+QMetaObject* QWizardPage_MetaObject(const QWizardPage* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QWizardPage_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -389,8 +389,8 @@ void QWizardPage_SetTitle(QWizardPage* self, const char* title, size_t title_Str
 	self->setTitle(title_QString);
 }
 
-void QWizardPage_Title(QWizardPage* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QWizardPage*>(self)->title();
+void QWizardPage_Title(const QWizardPage* self, char** _out, int* _out_Strlen) {
+	QString ret = self->title();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -403,8 +403,8 @@ void QWizardPage_SetSubTitle(QWizardPage* self, const char* subTitle, size_t sub
 	self->setSubTitle(subTitle_QString);
 }
 
-void QWizardPage_SubTitle(QWizardPage* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QWizardPage*>(self)->subTitle();
+void QWizardPage_SubTitle(const QWizardPage* self, char** _out, int* _out_Strlen) {
+	QString ret = self->subTitle();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -416,8 +416,8 @@ void QWizardPage_SetPixmap(QWizardPage* self, uintptr_t which, QPixmap* pixmap) 
 	self->setPixmap(static_cast<QWizard::WizardPixmap>(which), *pixmap);
 }
 
-QPixmap* QWizardPage_Pixmap(QWizardPage* self, uintptr_t which) {
-	QPixmap ret = const_cast<const QWizardPage*>(self)->pixmap(static_cast<QWizard::WizardPixmap>(which));
+QPixmap* QWizardPage_Pixmap(const QWizardPage* self, uintptr_t which) {
+	QPixmap ret = self->pixmap(static_cast<QWizard::WizardPixmap>(which));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPixmap*>(new QPixmap(ret));
 }
@@ -426,16 +426,16 @@ void QWizardPage_SetFinalPage(QWizardPage* self, bool finalPage) {
 	self->setFinalPage(finalPage);
 }
 
-bool QWizardPage_IsFinalPage(QWizardPage* self) {
-	return const_cast<const QWizardPage*>(self)->isFinalPage();
+bool QWizardPage_IsFinalPage(const QWizardPage* self) {
+	return self->isFinalPage();
 }
 
 void QWizardPage_SetCommitPage(QWizardPage* self, bool commitPage) {
 	self->setCommitPage(commitPage);
 }
 
-bool QWizardPage_IsCommitPage(QWizardPage* self) {
-	return const_cast<const QWizardPage*>(self)->isCommitPage();
+bool QWizardPage_IsCommitPage(const QWizardPage* self) {
+	return self->isCommitPage();
 }
 
 void QWizardPage_SetButtonText(QWizardPage* self, int which, const char* text, size_t text_Strlen) {
@@ -443,8 +443,8 @@ void QWizardPage_SetButtonText(QWizardPage* self, int which, const char* text, s
 	self->setButtonText(static_cast<QWizard::WizardButton>(which), text_QString);
 }
 
-void QWizardPage_ButtonText(QWizardPage* self, int which, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QWizardPage*>(self)->buttonText(static_cast<QWizard::WizardButton>(which));
+void QWizardPage_ButtonText(const QWizardPage* self, int which, char** _out, int* _out_Strlen) {
+	QString ret = self->buttonText(static_cast<QWizard::WizardButton>(which));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -464,12 +464,12 @@ bool QWizardPage_ValidatePage(QWizardPage* self) {
 	return self->validatePage();
 }
 
-bool QWizardPage_IsComplete(QWizardPage* self) {
-	return const_cast<const QWizardPage*>(self)->isComplete();
+bool QWizardPage_IsComplete(const QWizardPage* self) {
+	return self->isComplete();
 }
 
-int QWizardPage_NextId(QWizardPage* self) {
-	return const_cast<const QWizardPage*>(self)->nextId();
+int QWizardPage_NextId(const QWizardPage* self) {
+	return self->nextId();
 }
 
 void QWizardPage_CompleteChanged(QWizardPage* self) {

@@ -33,19 +33,19 @@ QColorSpace* QColorSpace_new7(uintptr_t primaries, uintptr_t transferFunction, f
 QColorSpace* QColorSpace_new8(QPointF* whitePoint, QPointF* redPoint, QPointF* greenPoint, QPointF* bluePoint, uintptr_t transferFunction, float gamma);
 void QColorSpace_OperatorAssign(QColorSpace* self, QColorSpace* colorSpace);
 void QColorSpace_Swap(QColorSpace* self, QColorSpace* colorSpace);
-uintptr_t QColorSpace_Primaries(QColorSpace* self);
-uintptr_t QColorSpace_TransferFunction(QColorSpace* self);
-float QColorSpace_Gamma(QColorSpace* self);
+uintptr_t QColorSpace_Primaries(const QColorSpace* self);
+uintptr_t QColorSpace_TransferFunction(const QColorSpace* self);
+float QColorSpace_Gamma(const QColorSpace* self);
 void QColorSpace_SetTransferFunction(QColorSpace* self, uintptr_t transferFunction);
-QColorSpace* QColorSpace_WithTransferFunction(QColorSpace* self, uintptr_t transferFunction);
+QColorSpace* QColorSpace_WithTransferFunction(const QColorSpace* self, uintptr_t transferFunction);
 void QColorSpace_SetPrimaries(QColorSpace* self, uintptr_t primariesId);
 void QColorSpace_SetPrimaries2(QColorSpace* self, QPointF* whitePoint, QPointF* redPoint, QPointF* greenPoint, QPointF* bluePoint);
-bool QColorSpace_IsValid(QColorSpace* self);
+bool QColorSpace_IsValid(const QColorSpace* self);
 QColorSpace* QColorSpace_FromIccProfile(QByteArray* iccProfile);
-QByteArray* QColorSpace_IccProfile(QColorSpace* self);
-QColorTransform* QColorSpace_TransformationToColorSpace(QColorSpace* self, QColorSpace* colorspace);
+QByteArray* QColorSpace_IccProfile(const QColorSpace* self);
+QColorTransform* QColorSpace_TransformationToColorSpace(const QColorSpace* self, QColorSpace* colorspace);
 void QColorSpace_SetTransferFunction2(QColorSpace* self, uintptr_t transferFunction, float gamma);
-QColorSpace* QColorSpace_WithTransferFunction2(QColorSpace* self, uintptr_t transferFunction, float gamma);
+QColorSpace* QColorSpace_WithTransferFunction2(const QColorSpace* self, uintptr_t transferFunction, float gamma);
 void QColorSpace_Delete(QColorSpace* self);
 
 #ifdef __cplusplus

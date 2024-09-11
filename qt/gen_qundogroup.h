@@ -27,20 +27,20 @@ typedef struct QUndoStack QUndoStack;
 
 QUndoGroup* QUndoGroup_new();
 QUndoGroup* QUndoGroup_new2(QObject* parent);
-QMetaObject* QUndoGroup_MetaObject(QUndoGroup* self);
+QMetaObject* QUndoGroup_MetaObject(const QUndoGroup* self);
 void QUndoGroup_Tr(const char* s, char** _out, int* _out_Strlen);
 void QUndoGroup_TrUtf8(const char* s, char** _out, int* _out_Strlen);
 void QUndoGroup_AddStack(QUndoGroup* self, QUndoStack* stack);
 void QUndoGroup_RemoveStack(QUndoGroup* self, QUndoStack* stack);
-void QUndoGroup_Stacks(QUndoGroup* self, QUndoStack*** _out, size_t* _out_len);
-QUndoStack* QUndoGroup_ActiveStack(QUndoGroup* self);
-QAction* QUndoGroup_CreateUndoAction(QUndoGroup* self, QObject* parent);
-QAction* QUndoGroup_CreateRedoAction(QUndoGroup* self, QObject* parent);
-bool QUndoGroup_CanUndo(QUndoGroup* self);
-bool QUndoGroup_CanRedo(QUndoGroup* self);
-void QUndoGroup_UndoText(QUndoGroup* self, char** _out, int* _out_Strlen);
-void QUndoGroup_RedoText(QUndoGroup* self, char** _out, int* _out_Strlen);
-bool QUndoGroup_IsClean(QUndoGroup* self);
+void QUndoGroup_Stacks(const QUndoGroup* self, QUndoStack*** _out, size_t* _out_len);
+QUndoStack* QUndoGroup_ActiveStack(const QUndoGroup* self);
+QAction* QUndoGroup_CreateUndoAction(const QUndoGroup* self, QObject* parent);
+QAction* QUndoGroup_CreateRedoAction(const QUndoGroup* self, QObject* parent);
+bool QUndoGroup_CanUndo(const QUndoGroup* self);
+bool QUndoGroup_CanRedo(const QUndoGroup* self);
+void QUndoGroup_UndoText(const QUndoGroup* self, char** _out, int* _out_Strlen);
+void QUndoGroup_RedoText(const QUndoGroup* self, char** _out, int* _out_Strlen);
+bool QUndoGroup_IsClean(const QUndoGroup* self);
 void QUndoGroup_Undo(QUndoGroup* self);
 void QUndoGroup_Redo(QUndoGroup* self);
 void QUndoGroup_SetActiveStack(QUndoGroup* self, QUndoStack* stack);
@@ -62,8 +62,8 @@ void QUndoGroup_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen)
 void QUndoGroup_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
 void QUndoGroup_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
 void QUndoGroup_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-QAction* QUndoGroup_CreateUndoAction2(QUndoGroup* self, QObject* parent, const char* prefix, size_t prefix_Strlen);
-QAction* QUndoGroup_CreateRedoAction2(QUndoGroup* self, QObject* parent, const char* prefix, size_t prefix_Strlen);
+QAction* QUndoGroup_CreateUndoAction2(const QUndoGroup* self, QObject* parent, const char* prefix, size_t prefix_Strlen);
+QAction* QUndoGroup_CreateRedoAction2(const QUndoGroup* self, QObject* parent, const char* prefix, size_t prefix_Strlen);
 void QUndoGroup_Delete(QUndoGroup* self);
 
 #ifdef __cplusplus

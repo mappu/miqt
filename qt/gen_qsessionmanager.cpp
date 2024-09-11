@@ -12,8 +12,8 @@ extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
 }
 
-QMetaObject* QSessionManager_MetaObject(QSessionManager* self) {
-	return (QMetaObject*) const_cast<const QSessionManager*>(self)->metaObject();
+QMetaObject* QSessionManager_MetaObject(const QSessionManager* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QSessionManager_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -34,8 +34,8 @@ void QSessionManager_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QSessionManager_SessionId(QSessionManager* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QSessionManager*>(self)->sessionId();
+void QSessionManager_SessionId(const QSessionManager* self, char** _out, int* _out_Strlen) {
+	QString ret = self->sessionId();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -43,8 +43,8 @@ void QSessionManager_SessionId(QSessionManager* self, char** _out, int* _out_Str
 	*_out_Strlen = b.length();
 }
 
-void QSessionManager_SessionKey(QSessionManager* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QSessionManager*>(self)->sessionKey();
+void QSessionManager_SessionKey(const QSessionManager* self, char** _out, int* _out_Strlen) {
+	QString ret = self->sessionKey();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -72,8 +72,8 @@ void QSessionManager_SetRestartHint(QSessionManager* self, uintptr_t restartHint
 	self->setRestartHint(static_cast<QSessionManager::RestartHint>(restartHint));
 }
 
-uintptr_t QSessionManager_RestartHint(QSessionManager* self) {
-	QSessionManager::RestartHint ret = const_cast<const QSessionManager*>(self)->restartHint();
+uintptr_t QSessionManager_RestartHint(const QSessionManager* self) {
+	QSessionManager::RestartHint ret = self->restartHint();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -86,8 +86,8 @@ void QSessionManager_SetRestartCommand(QSessionManager* self, char** restartComm
 	self->setRestartCommand(restartCommand_QList);
 }
 
-void QSessionManager_RestartCommand(QSessionManager* self, char*** _out, int** _out_Lengths, size_t* _out_len) {
-	QStringList ret = const_cast<const QSessionManager*>(self)->restartCommand();
+void QSessionManager_RestartCommand(const QSessionManager* self, char*** _out, int** _out_Lengths, size_t* _out_len) {
+	QStringList ret = self->restartCommand();
 	// Convert QStringList from C++ memory to manually-managed C memory
 	char** __out = static_cast<char**>(malloc(sizeof(char*) * ret.length()));
 	int* __out_Lengths = static_cast<int*>(malloc(sizeof(int) * ret.length()));
@@ -112,8 +112,8 @@ void QSessionManager_SetDiscardCommand(QSessionManager* self, char** discardComm
 	self->setDiscardCommand(discardCommand_QList);
 }
 
-void QSessionManager_DiscardCommand(QSessionManager* self, char*** _out, int** _out_Lengths, size_t* _out_len) {
-	QStringList ret = const_cast<const QSessionManager*>(self)->discardCommand();
+void QSessionManager_DiscardCommand(const QSessionManager* self, char*** _out, int** _out_Lengths, size_t* _out_len) {
+	QStringList ret = self->discardCommand();
 	// Convert QStringList from C++ memory to manually-managed C memory
 	char** __out = static_cast<char**>(malloc(sizeof(char*) * ret.length()));
 	int* __out_Lengths = static_cast<int*>(malloc(sizeof(int) * ret.length()));
@@ -145,8 +145,8 @@ void QSessionManager_SetManagerProperty2(QSessionManager* self, const char* name
 	self->setManagerProperty(name_QString, value_QList);
 }
 
-bool QSessionManager_IsPhase2(QSessionManager* self) {
-	return const_cast<const QSessionManager*>(self)->isPhase2();
+bool QSessionManager_IsPhase2(const QSessionManager* self) {
+	return self->isPhase2();
 }
 
 void QSessionManager_RequestPhase2(QSessionManager* self) {

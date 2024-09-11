@@ -39,8 +39,8 @@ QUndoView* QUndoView_new6(QUndoGroup* group, QWidget* parent) {
 	return new QUndoView(group, parent);
 }
 
-QMetaObject* QUndoView_MetaObject(QUndoView* self) {
-	return (QMetaObject*) const_cast<const QUndoView*>(self)->metaObject();
+QMetaObject* QUndoView_MetaObject(const QUndoView* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QUndoView_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -61,12 +61,12 @@ void QUndoView_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-QUndoStack* QUndoView_Stack(QUndoView* self) {
-	return const_cast<const QUndoView*>(self)->stack();
+QUndoStack* QUndoView_Stack(const QUndoView* self) {
+	return self->stack();
 }
 
-QUndoGroup* QUndoView_Group(QUndoView* self) {
-	return const_cast<const QUndoView*>(self)->group();
+QUndoGroup* QUndoView_Group(const QUndoView* self) {
+	return self->group();
 }
 
 void QUndoView_SetEmptyLabel(QUndoView* self, const char* label, size_t label_Strlen) {
@@ -74,8 +74,8 @@ void QUndoView_SetEmptyLabel(QUndoView* self, const char* label, size_t label_St
 	self->setEmptyLabel(label_QString);
 }
 
-void QUndoView_EmptyLabel(QUndoView* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QUndoView*>(self)->emptyLabel();
+void QUndoView_EmptyLabel(const QUndoView* self, char** _out, int* _out_Strlen) {
+	QString ret = self->emptyLabel();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -87,8 +87,8 @@ void QUndoView_SetCleanIcon(QUndoView* self, QIcon* icon) {
 	self->setCleanIcon(*icon);
 }
 
-QIcon* QUndoView_CleanIcon(QUndoView* self) {
-	QIcon ret = const_cast<const QUndoView*>(self)->cleanIcon();
+QIcon* QUndoView_CleanIcon(const QUndoView* self) {
+	QIcon ret = self->cleanIcon();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QIcon*>(new QIcon(ret));
 }

@@ -21,32 +21,32 @@ void QImageIOHandler_SetDevice(QImageIOHandler* self, QIODevice* device) {
 	self->setDevice(device);
 }
 
-QIODevice* QImageIOHandler_Device(QImageIOHandler* self) {
-	return const_cast<const QImageIOHandler*>(self)->device();
+QIODevice* QImageIOHandler_Device(const QImageIOHandler* self) {
+	return self->device();
 }
 
 void QImageIOHandler_SetFormat(QImageIOHandler* self, QByteArray* format) {
 	self->setFormat(*format);
 }
 
-void QImageIOHandler_SetFormatWithFormat(QImageIOHandler* self, QByteArray* format) {
-	const_cast<const QImageIOHandler*>(self)->setFormat(*format);
+void QImageIOHandler_SetFormatWithFormat(const QImageIOHandler* self, QByteArray* format) {
+	self->setFormat(*format);
 }
 
-QByteArray* QImageIOHandler_Format(QImageIOHandler* self) {
-	QByteArray ret = const_cast<const QImageIOHandler*>(self)->format();
+QByteArray* QImageIOHandler_Format(const QImageIOHandler* self) {
+	QByteArray ret = self->format();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QByteArray*>(new QByteArray(ret));
 }
 
-QByteArray* QImageIOHandler_Name(QImageIOHandler* self) {
-	QByteArray ret = const_cast<const QImageIOHandler*>(self)->name();
+QByteArray* QImageIOHandler_Name(const QImageIOHandler* self) {
+	QByteArray ret = self->name();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QByteArray*>(new QByteArray(ret));
 }
 
-bool QImageIOHandler_CanRead(QImageIOHandler* self) {
-	return const_cast<const QImageIOHandler*>(self)->canRead();
+bool QImageIOHandler_CanRead(const QImageIOHandler* self) {
+	return self->canRead();
 }
 
 bool QImageIOHandler_Read(QImageIOHandler* self, QImage* image) {
@@ -57,8 +57,8 @@ bool QImageIOHandler_Write(QImageIOHandler* self, QImage* image) {
 	return self->write(*image);
 }
 
-QVariant* QImageIOHandler_Option(QImageIOHandler* self, uintptr_t option) {
-	QVariant ret = const_cast<const QImageIOHandler*>(self)->option(static_cast<QImageIOHandler::ImageOption>(option));
+QVariant* QImageIOHandler_Option(const QImageIOHandler* self, uintptr_t option) {
+	QVariant ret = self->option(static_cast<QImageIOHandler::ImageOption>(option));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVariant*>(new QVariant(ret));
 }
@@ -67,8 +67,8 @@ void QImageIOHandler_SetOption(QImageIOHandler* self, uintptr_t option, QVariant
 	self->setOption(static_cast<QImageIOHandler::ImageOption>(option), *value);
 }
 
-bool QImageIOHandler_SupportsOption(QImageIOHandler* self, uintptr_t option) {
-	return const_cast<const QImageIOHandler*>(self)->supportsOption(static_cast<QImageIOHandler::ImageOption>(option));
+bool QImageIOHandler_SupportsOption(const QImageIOHandler* self, uintptr_t option) {
+	return self->supportsOption(static_cast<QImageIOHandler::ImageOption>(option));
 }
 
 bool QImageIOHandler_JumpToNextImage(QImageIOHandler* self) {
@@ -79,24 +79,24 @@ bool QImageIOHandler_JumpToImage(QImageIOHandler* self, int imageNumber) {
 	return self->jumpToImage(static_cast<int>(imageNumber));
 }
 
-int QImageIOHandler_LoopCount(QImageIOHandler* self) {
-	return const_cast<const QImageIOHandler*>(self)->loopCount();
+int QImageIOHandler_LoopCount(const QImageIOHandler* self) {
+	return self->loopCount();
 }
 
-int QImageIOHandler_ImageCount(QImageIOHandler* self) {
-	return const_cast<const QImageIOHandler*>(self)->imageCount();
+int QImageIOHandler_ImageCount(const QImageIOHandler* self) {
+	return self->imageCount();
 }
 
-int QImageIOHandler_NextImageDelay(QImageIOHandler* self) {
-	return const_cast<const QImageIOHandler*>(self)->nextImageDelay();
+int QImageIOHandler_NextImageDelay(const QImageIOHandler* self) {
+	return self->nextImageDelay();
 }
 
-int QImageIOHandler_CurrentImageNumber(QImageIOHandler* self) {
-	return const_cast<const QImageIOHandler*>(self)->currentImageNumber();
+int QImageIOHandler_CurrentImageNumber(const QImageIOHandler* self) {
+	return self->currentImageNumber();
 }
 
-QRect* QImageIOHandler_CurrentImageRect(QImageIOHandler* self) {
-	QRect ret = const_cast<const QImageIOHandler*>(self)->currentImageRect();
+QRect* QImageIOHandler_CurrentImageRect(const QImageIOHandler* self) {
+	QRect ret = self->currentImageRect();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRect*>(new QRect(ret));
 }
@@ -105,8 +105,8 @@ void QImageIOHandler_Delete(QImageIOHandler* self) {
 	delete self;
 }
 
-QMetaObject* QImageIOPlugin_MetaObject(QImageIOPlugin* self) {
-	return (QMetaObject*) const_cast<const QImageIOPlugin*>(self)->metaObject();
+QMetaObject* QImageIOPlugin_MetaObject(const QImageIOPlugin* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QImageIOPlugin_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -127,13 +127,13 @@ void QImageIOPlugin_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-int QImageIOPlugin_Capabilities(QImageIOPlugin* self, QIODevice* device, QByteArray* format) {
-	QImageIOPlugin::Capabilities ret = const_cast<const QImageIOPlugin*>(self)->capabilities(device, *format);
+int QImageIOPlugin_Capabilities(const QImageIOPlugin* self, QIODevice* device, QByteArray* format) {
+	QImageIOPlugin::Capabilities ret = self->capabilities(device, *format);
 	return static_cast<int>(ret);
 }
 
-QImageIOHandler* QImageIOPlugin_Create(QImageIOPlugin* self, QIODevice* device) {
-	return const_cast<const QImageIOPlugin*>(self)->create(device);
+QImageIOHandler* QImageIOPlugin_Create(const QImageIOPlugin* self, QIODevice* device) {
+	return self->create(device);
 }
 
 void QImageIOPlugin_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
@@ -172,8 +172,8 @@ void QImageIOPlugin_TrUtf83(const char* s, const char* c, int n, char** _out, in
 	*_out_Strlen = b.length();
 }
 
-QImageIOHandler* QImageIOPlugin_Create2(QImageIOPlugin* self, QIODevice* device, QByteArray* format) {
-	return const_cast<const QImageIOPlugin*>(self)->create(device, *format);
+QImageIOHandler* QImageIOPlugin_Create2(const QImageIOPlugin* self, QIODevice* device, QByteArray* format) {
+	return self->create(device, *format);
 }
 
 void QImageIOPlugin_Delete(QImageIOPlugin* self) {

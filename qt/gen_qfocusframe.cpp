@@ -20,8 +20,8 @@ QFocusFrame* QFocusFrame_new2(QWidget* parent) {
 	return new QFocusFrame(parent);
 }
 
-QMetaObject* QFocusFrame_MetaObject(QFocusFrame* self) {
-	return (QMetaObject*) const_cast<const QFocusFrame*>(self)->metaObject();
+QMetaObject* QFocusFrame_MetaObject(const QFocusFrame* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QFocusFrame_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -46,8 +46,8 @@ void QFocusFrame_SetWidget(QFocusFrame* self, QWidget* widget) {
 	self->setWidget(widget);
 }
 
-QWidget* QFocusFrame_Widget(QFocusFrame* self) {
-	return const_cast<const QFocusFrame*>(self)->widget();
+QWidget* QFocusFrame_Widget(const QFocusFrame* self) {
+	return self->widget();
 }
 
 void QFocusFrame_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {

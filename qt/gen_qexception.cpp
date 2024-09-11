@@ -28,8 +28,8 @@ QtPrivate__ExceptionStore* QtPrivate__ExceptionStore_new(QtPrivate__ExceptionSto
 	return new QtPrivate::ExceptionStore(*param1);
 }
 
-bool QtPrivate__ExceptionStore_HasException(QtPrivate__ExceptionStore* self) {
-	return const_cast<const QtPrivate::ExceptionStore*>(self)->hasException();
+bool QtPrivate__ExceptionStore_HasException(const QtPrivate__ExceptionStore* self) {
+	return self->hasException();
 }
 
 QtPrivate__ExceptionHolder* QtPrivate__ExceptionStore_Exception(QtPrivate__ExceptionStore* self) {
@@ -42,8 +42,8 @@ void QtPrivate__ExceptionStore_ThrowPossibleException(QtPrivate__ExceptionStore*
 	self->throwPossibleException();
 }
 
-bool QtPrivate__ExceptionStore_HasThrown(QtPrivate__ExceptionStore* self) {
-	return const_cast<const QtPrivate::ExceptionStore*>(self)->hasThrown();
+bool QtPrivate__ExceptionStore_HasThrown(const QtPrivate__ExceptionStore* self) {
+	return self->hasThrown();
 }
 
 void QtPrivate__ExceptionStore_Delete(QtPrivate__ExceptionStore* self) {

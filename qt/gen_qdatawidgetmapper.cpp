@@ -25,8 +25,8 @@ QDataWidgetMapper* QDataWidgetMapper_new2(QObject* parent) {
 	return new QDataWidgetMapper(parent);
 }
 
-QMetaObject* QDataWidgetMapper_MetaObject(QDataWidgetMapper* self) {
-	return (QMetaObject*) const_cast<const QDataWidgetMapper*>(self)->metaObject();
+QMetaObject* QDataWidgetMapper_MetaObject(const QDataWidgetMapper* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QDataWidgetMapper_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -51,24 +51,24 @@ void QDataWidgetMapper_SetModel(QDataWidgetMapper* self, QAbstractItemModel* mod
 	self->setModel(model);
 }
 
-QAbstractItemModel* QDataWidgetMapper_Model(QDataWidgetMapper* self) {
-	return const_cast<const QDataWidgetMapper*>(self)->model();
+QAbstractItemModel* QDataWidgetMapper_Model(const QDataWidgetMapper* self) {
+	return self->model();
 }
 
 void QDataWidgetMapper_SetItemDelegate(QDataWidgetMapper* self, QAbstractItemDelegate* delegate) {
 	self->setItemDelegate(delegate);
 }
 
-QAbstractItemDelegate* QDataWidgetMapper_ItemDelegate(QDataWidgetMapper* self) {
-	return const_cast<const QDataWidgetMapper*>(self)->itemDelegate();
+QAbstractItemDelegate* QDataWidgetMapper_ItemDelegate(const QDataWidgetMapper* self) {
+	return self->itemDelegate();
 }
 
 void QDataWidgetMapper_SetRootIndex(QDataWidgetMapper* self, QModelIndex* index) {
 	self->setRootIndex(*index);
 }
 
-QModelIndex* QDataWidgetMapper_RootIndex(QDataWidgetMapper* self) {
-	QModelIndex ret = const_cast<const QDataWidgetMapper*>(self)->rootIndex();
+QModelIndex* QDataWidgetMapper_RootIndex(const QDataWidgetMapper* self) {
+	QModelIndex ret = self->rootIndex();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QModelIndex*>(new QModelIndex(ret));
 }
@@ -77,8 +77,8 @@ void QDataWidgetMapper_SetOrientation(QDataWidgetMapper* self, uintptr_t aOrient
 	self->setOrientation(static_cast<Qt::Orientation>(aOrientation));
 }
 
-uintptr_t QDataWidgetMapper_Orientation(QDataWidgetMapper* self) {
-	Qt::Orientation ret = const_cast<const QDataWidgetMapper*>(self)->orientation();
+uintptr_t QDataWidgetMapper_Orientation(const QDataWidgetMapper* self) {
+	Qt::Orientation ret = self->orientation();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -86,8 +86,8 @@ void QDataWidgetMapper_SetSubmitPolicy(QDataWidgetMapper* self, uintptr_t policy
 	self->setSubmitPolicy(static_cast<QDataWidgetMapper::SubmitPolicy>(policy));
 }
 
-uintptr_t QDataWidgetMapper_SubmitPolicy(QDataWidgetMapper* self) {
-	QDataWidgetMapper::SubmitPolicy ret = const_cast<const QDataWidgetMapper*>(self)->submitPolicy();
+uintptr_t QDataWidgetMapper_SubmitPolicy(const QDataWidgetMapper* self) {
+	QDataWidgetMapper::SubmitPolicy ret = self->submitPolicy();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -103,26 +103,26 @@ void QDataWidgetMapper_RemoveMapping(QDataWidgetMapper* self, QWidget* widget) {
 	self->removeMapping(widget);
 }
 
-int QDataWidgetMapper_MappedSection(QDataWidgetMapper* self, QWidget* widget) {
-	return const_cast<const QDataWidgetMapper*>(self)->mappedSection(widget);
+int QDataWidgetMapper_MappedSection(const QDataWidgetMapper* self, QWidget* widget) {
+	return self->mappedSection(widget);
 }
 
-QByteArray* QDataWidgetMapper_MappedPropertyName(QDataWidgetMapper* self, QWidget* widget) {
-	QByteArray ret = const_cast<const QDataWidgetMapper*>(self)->mappedPropertyName(widget);
+QByteArray* QDataWidgetMapper_MappedPropertyName(const QDataWidgetMapper* self, QWidget* widget) {
+	QByteArray ret = self->mappedPropertyName(widget);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QByteArray*>(new QByteArray(ret));
 }
 
-QWidget* QDataWidgetMapper_MappedWidgetAt(QDataWidgetMapper* self, int section) {
-	return const_cast<const QDataWidgetMapper*>(self)->mappedWidgetAt(static_cast<int>(section));
+QWidget* QDataWidgetMapper_MappedWidgetAt(const QDataWidgetMapper* self, int section) {
+	return self->mappedWidgetAt(static_cast<int>(section));
 }
 
 void QDataWidgetMapper_ClearMapping(QDataWidgetMapper* self) {
 	self->clearMapping();
 }
 
-int QDataWidgetMapper_CurrentIndex(QDataWidgetMapper* self) {
-	return const_cast<const QDataWidgetMapper*>(self)->currentIndex();
+int QDataWidgetMapper_CurrentIndex(const QDataWidgetMapper* self) {
+	return self->currentIndex();
 }
 
 void QDataWidgetMapper_Revert(QDataWidgetMapper* self) {

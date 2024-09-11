@@ -36,8 +36,8 @@ QMenu* QMenu_new4(const char* title, size_t title_Strlen, QWidget* parent) {
 	return new QMenu(title_QString, parent);
 }
 
-QMetaObject* QMenu_MetaObject(QMenu* self) {
-	return (QMetaObject*) const_cast<const QMenu*>(self)->metaObject();
+QMetaObject* QMenu_MetaObject(const QMenu* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QMenu_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -114,8 +114,8 @@ QAction* QMenu_InsertSection2(QMenu* self, QAction* before, QIcon* icon, const c
 	return self->insertSection(before, *icon, text_QString);
 }
 
-bool QMenu_IsEmpty(QMenu* self) {
-	return const_cast<const QMenu*>(self)->isEmpty();
+bool QMenu_IsEmpty(const QMenu* self) {
+	return self->isEmpty();
 }
 
 void QMenu_Clear(QMenu* self) {
@@ -126,12 +126,12 @@ void QMenu_SetTearOffEnabled(QMenu* self, bool tearOffEnabled) {
 	self->setTearOffEnabled(tearOffEnabled);
 }
 
-bool QMenu_IsTearOffEnabled(QMenu* self) {
-	return const_cast<const QMenu*>(self)->isTearOffEnabled();
+bool QMenu_IsTearOffEnabled(const QMenu* self) {
+	return self->isTearOffEnabled();
 }
 
-bool QMenu_IsTearOffMenuVisible(QMenu* self) {
-	return const_cast<const QMenu*>(self)->isTearOffMenuVisible();
+bool QMenu_IsTearOffMenuVisible(const QMenu* self) {
+	return self->isTearOffMenuVisible();
 }
 
 void QMenu_ShowTearOffMenu(QMenu* self) {
@@ -150,16 +150,16 @@ void QMenu_SetDefaultAction(QMenu* self, QAction* defaultAction) {
 	self->setDefaultAction(defaultAction);
 }
 
-QAction* QMenu_DefaultAction(QMenu* self) {
-	return const_cast<const QMenu*>(self)->defaultAction();
+QAction* QMenu_DefaultAction(const QMenu* self) {
+	return self->defaultAction();
 }
 
 void QMenu_SetActiveAction(QMenu* self, QAction* act) {
 	self->setActiveAction(act);
 }
 
-QAction* QMenu_ActiveAction(QMenu* self) {
-	return const_cast<const QMenu*>(self)->activeAction();
+QAction* QMenu_ActiveAction(const QMenu* self) {
+	return self->activeAction();
 }
 
 void QMenu_Popup(QMenu* self, QPoint* pos) {
@@ -183,28 +183,28 @@ QAction* QMenu_Exec2(QAction** actions, size_t actions_len, QPoint* pos) {
 	return QMenu::exec(actions_QList, *pos);
 }
 
-QSize* QMenu_SizeHint(QMenu* self) {
-	QSize ret = const_cast<const QMenu*>(self)->sizeHint();
+QSize* QMenu_SizeHint(const QMenu* self) {
+	QSize ret = self->sizeHint();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
 
-QRect* QMenu_ActionGeometry(QMenu* self, QAction* param1) {
-	QRect ret = const_cast<const QMenu*>(self)->actionGeometry(param1);
+QRect* QMenu_ActionGeometry(const QMenu* self, QAction* param1) {
+	QRect ret = self->actionGeometry(param1);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRect*>(new QRect(ret));
 }
 
-QAction* QMenu_ActionAt(QMenu* self, QPoint* param1) {
-	return const_cast<const QMenu*>(self)->actionAt(*param1);
+QAction* QMenu_ActionAt(const QMenu* self, QPoint* param1) {
+	return self->actionAt(*param1);
 }
 
-QAction* QMenu_MenuAction(QMenu* self) {
-	return const_cast<const QMenu*>(self)->menuAction();
+QAction* QMenu_MenuAction(const QMenu* self) {
+	return self->menuAction();
 }
 
-void QMenu_Title(QMenu* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QMenu*>(self)->title();
+void QMenu_Title(const QMenu* self, char** _out, int* _out_Strlen) {
+	QString ret = self->title();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -217,8 +217,8 @@ void QMenu_SetTitle(QMenu* self, const char* title, size_t title_Strlen) {
 	self->setTitle(title_QString);
 }
 
-QIcon* QMenu_Icon(QMenu* self) {
-	QIcon ret = const_cast<const QMenu*>(self)->icon();
+QIcon* QMenu_Icon(const QMenu* self) {
+	QIcon ret = self->icon();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QIcon*>(new QIcon(ret));
 }
@@ -231,16 +231,16 @@ void QMenu_SetNoReplayFor(QMenu* self, QWidget* widget) {
 	self->setNoReplayFor(widget);
 }
 
-bool QMenu_SeparatorsCollapsible(QMenu* self) {
-	return const_cast<const QMenu*>(self)->separatorsCollapsible();
+bool QMenu_SeparatorsCollapsible(const QMenu* self) {
+	return self->separatorsCollapsible();
 }
 
 void QMenu_SetSeparatorsCollapsible(QMenu* self, bool collapse) {
 	self->setSeparatorsCollapsible(collapse);
 }
 
-bool QMenu_ToolTipsVisible(QMenu* self) {
-	return const_cast<const QMenu*>(self)->toolTipsVisible();
+bool QMenu_ToolTipsVisible(const QMenu* self) {
+	return self->toolTipsVisible();
 }
 
 void QMenu_SetToolTipsVisible(QMenu* self, bool visible) {

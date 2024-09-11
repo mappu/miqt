@@ -30,8 +30,8 @@ QSharedMemory* QSharedMemory_new4(const char* key, size_t key_Strlen, QObject* p
 	return new QSharedMemory(key_QString, parent);
 }
 
-QMetaObject* QSharedMemory_MetaObject(QSharedMemory* self) {
-	return (QMetaObject*) const_cast<const QSharedMemory*>(self)->metaObject();
+QMetaObject* QSharedMemory_MetaObject(const QSharedMemory* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QSharedMemory_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -57,8 +57,8 @@ void QSharedMemory_SetKey(QSharedMemory* self, const char* key, size_t key_Strle
 	self->setKey(key_QString);
 }
 
-void QSharedMemory_Key(QSharedMemory* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QSharedMemory*>(self)->key();
+void QSharedMemory_Key(const QSharedMemory* self, char** _out, int* _out_Strlen) {
+	QString ret = self->key();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -71,8 +71,8 @@ void QSharedMemory_SetNativeKey(QSharedMemory* self, const char* key, size_t key
 	self->setNativeKey(key_QString);
 }
 
-void QSharedMemory_NativeKey(QSharedMemory* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QSharedMemory*>(self)->nativeKey();
+void QSharedMemory_NativeKey(const QSharedMemory* self, char** _out, int* _out_Strlen) {
+	QString ret = self->nativeKey();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -84,16 +84,16 @@ bool QSharedMemory_Create(QSharedMemory* self, int size) {
 	return self->create(static_cast<int>(size));
 }
 
-int QSharedMemory_Size(QSharedMemory* self) {
-	return const_cast<const QSharedMemory*>(self)->size();
+int QSharedMemory_Size(const QSharedMemory* self) {
+	return self->size();
 }
 
 bool QSharedMemory_Attach(QSharedMemory* self) {
 	return self->attach();
 }
 
-bool QSharedMemory_IsAttached(QSharedMemory* self) {
-	return const_cast<const QSharedMemory*>(self)->isAttached();
+bool QSharedMemory_IsAttached(const QSharedMemory* self) {
+	return self->isAttached();
 }
 
 bool QSharedMemory_Detach(QSharedMemory* self) {
@@ -108,13 +108,13 @@ bool QSharedMemory_Unlock(QSharedMemory* self) {
 	return self->unlock();
 }
 
-uintptr_t QSharedMemory_Error(QSharedMemory* self) {
-	QSharedMemory::SharedMemoryError ret = const_cast<const QSharedMemory*>(self)->error();
+uintptr_t QSharedMemory_Error(const QSharedMemory* self) {
+	QSharedMemory::SharedMemoryError ret = self->error();
 	return static_cast<uintptr_t>(ret);
 }
 
-void QSharedMemory_ErrorString(QSharedMemory* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QSharedMemory*>(self)->errorString();
+void QSharedMemory_ErrorString(const QSharedMemory* self, char** _out, int* _out_Strlen) {
+	QString ret = self->errorString();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));

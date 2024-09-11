@@ -12,8 +12,8 @@ extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
 }
 
-QMetaObject* QIconEnginePlugin_MetaObject(QIconEnginePlugin* self) {
-	return (QMetaObject*) const_cast<const QIconEnginePlugin*>(self)->metaObject();
+QMetaObject* QIconEnginePlugin_MetaObject(const QIconEnginePlugin* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QIconEnginePlugin_Tr(const char* s, char** _out, int* _out_Strlen) {

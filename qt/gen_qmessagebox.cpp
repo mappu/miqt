@@ -67,8 +67,8 @@ QMessageBox* QMessageBox_new9(const char* title, size_t title_Strlen, const char
 	return new QMessageBox(title_QString, text_QString, static_cast<QMessageBox::Icon>(icon), static_cast<int>(button0), static_cast<int>(button1), static_cast<int>(button2), parent, static_cast<Qt::WindowFlags>(f));
 }
 
-QMetaObject* QMessageBox_MetaObject(QMessageBox* self) {
-	return (QMetaObject*) const_cast<const QMessageBox*>(self)->metaObject();
+QMetaObject* QMessageBox_MetaObject(const QMessageBox* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QMessageBox_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -106,8 +106,8 @@ void QMessageBox_RemoveButton(QMessageBox* self, QAbstractButton* button) {
 	self->removeButton(button);
 }
 
-void QMessageBox_Buttons(QMessageBox* self, QAbstractButton*** _out, size_t* _out_len) {
-	QList<QAbstractButton*> ret = const_cast<const QMessageBox*>(self)->buttons();
+void QMessageBox_Buttons(const QMessageBox* self, QAbstractButton*** _out, size_t* _out_len) {
+	QList<QAbstractButton*> ret = self->buttons();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QAbstractButton** __out = static_cast<QAbstractButton**>(malloc(sizeof(QAbstractButton*) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {
@@ -117,8 +117,8 @@ void QMessageBox_Buttons(QMessageBox* self, QAbstractButton*** _out, size_t* _ou
 	*_out_len = ret.length();
 }
 
-uintptr_t QMessageBox_ButtonRole(QMessageBox* self, QAbstractButton* button) {
-	QMessageBox::ButtonRole ret = const_cast<const QMessageBox*>(self)->buttonRole(button);
+uintptr_t QMessageBox_ButtonRole(const QMessageBox* self, QAbstractButton* button) {
+	QMessageBox::ButtonRole ret = self->buttonRole(button);
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -126,22 +126,22 @@ void QMessageBox_SetStandardButtons(QMessageBox* self, int buttons) {
 	self->setStandardButtons(static_cast<QMessageBox::StandardButtons>(buttons));
 }
 
-int QMessageBox_StandardButtons(QMessageBox* self) {
-	QMessageBox::StandardButtons ret = const_cast<const QMessageBox*>(self)->standardButtons();
+int QMessageBox_StandardButtons(const QMessageBox* self) {
+	QMessageBox::StandardButtons ret = self->standardButtons();
 	return static_cast<int>(ret);
 }
 
-uintptr_t QMessageBox_StandardButton(QMessageBox* self, QAbstractButton* button) {
-	QMessageBox::StandardButton ret = const_cast<const QMessageBox*>(self)->standardButton(button);
+uintptr_t QMessageBox_StandardButton(const QMessageBox* self, QAbstractButton* button) {
+	QMessageBox::StandardButton ret = self->standardButton(button);
 	return static_cast<uintptr_t>(ret);
 }
 
-QAbstractButton* QMessageBox_Button(QMessageBox* self, uintptr_t which) {
-	return const_cast<const QMessageBox*>(self)->button(static_cast<QMessageBox::StandardButton>(which));
+QAbstractButton* QMessageBox_Button(const QMessageBox* self, uintptr_t which) {
+	return self->button(static_cast<QMessageBox::StandardButton>(which));
 }
 
-QPushButton* QMessageBox_DefaultButton(QMessageBox* self) {
-	return const_cast<const QMessageBox*>(self)->defaultButton();
+QPushButton* QMessageBox_DefaultButton(const QMessageBox* self) {
+	return self->defaultButton();
 }
 
 void QMessageBox_SetDefaultButton(QMessageBox* self, QPushButton* button) {
@@ -152,8 +152,8 @@ void QMessageBox_SetDefaultButtonWithButton(QMessageBox* self, uintptr_t button)
 	self->setDefaultButton(static_cast<QMessageBox::StandardButton>(button));
 }
 
-QAbstractButton* QMessageBox_EscapeButton(QMessageBox* self) {
-	return const_cast<const QMessageBox*>(self)->escapeButton();
+QAbstractButton* QMessageBox_EscapeButton(const QMessageBox* self) {
+	return self->escapeButton();
 }
 
 void QMessageBox_SetEscapeButton(QMessageBox* self, QAbstractButton* button) {
@@ -164,12 +164,12 @@ void QMessageBox_SetEscapeButtonWithButton(QMessageBox* self, uintptr_t button) 
 	self->setEscapeButton(static_cast<QMessageBox::StandardButton>(button));
 }
 
-QAbstractButton* QMessageBox_ClickedButton(QMessageBox* self) {
-	return const_cast<const QMessageBox*>(self)->clickedButton();
+QAbstractButton* QMessageBox_ClickedButton(const QMessageBox* self) {
+	return self->clickedButton();
 }
 
-void QMessageBox_Text(QMessageBox* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QMessageBox*>(self)->text();
+void QMessageBox_Text(const QMessageBox* self, char** _out, int* _out_Strlen) {
+	QString ret = self->text();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -182,8 +182,8 @@ void QMessageBox_SetText(QMessageBox* self, const char* text, size_t text_Strlen
 	self->setText(text_QString);
 }
 
-uintptr_t QMessageBox_Icon(QMessageBox* self) {
-	QMessageBox::Icon ret = const_cast<const QMessageBox*>(self)->icon();
+uintptr_t QMessageBox_Icon(const QMessageBox* self) {
+	QMessageBox::Icon ret = self->icon();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -191,8 +191,8 @@ void QMessageBox_SetIcon(QMessageBox* self, uintptr_t icon) {
 	self->setIcon(static_cast<QMessageBox::Icon>(icon));
 }
 
-QPixmap* QMessageBox_IconPixmap(QMessageBox* self) {
-	QPixmap ret = const_cast<const QMessageBox*>(self)->iconPixmap();
+QPixmap* QMessageBox_IconPixmap(const QMessageBox* self) {
+	QPixmap ret = self->iconPixmap();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPixmap*>(new QPixmap(ret));
 }
@@ -201,8 +201,8 @@ void QMessageBox_SetIconPixmap(QMessageBox* self, QPixmap* pixmap) {
 	self->setIconPixmap(*pixmap);
 }
 
-uintptr_t QMessageBox_TextFormat(QMessageBox* self) {
-	Qt::TextFormat ret = const_cast<const QMessageBox*>(self)->textFormat();
+uintptr_t QMessageBox_TextFormat(const QMessageBox* self) {
+	Qt::TextFormat ret = self->textFormat();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -214,8 +214,8 @@ void QMessageBox_SetTextInteractionFlags(QMessageBox* self, int flags) {
 	self->setTextInteractionFlags(static_cast<Qt::TextInteractionFlags>(flags));
 }
 
-int QMessageBox_TextInteractionFlags(QMessageBox* self) {
-	Qt::TextInteractionFlags ret = const_cast<const QMessageBox*>(self)->textInteractionFlags();
+int QMessageBox_TextInteractionFlags(const QMessageBox* self) {
+	Qt::TextInteractionFlags ret = self->textInteractionFlags();
 	return static_cast<int>(ret);
 }
 
@@ -223,8 +223,8 @@ void QMessageBox_SetCheckBox(QMessageBox* self, QCheckBox* cb) {
 	self->setCheckBox(cb);
 }
 
-QCheckBox* QMessageBox_CheckBox(QMessageBox* self) {
-	return const_cast<const QMessageBox*>(self)->checkBox();
+QCheckBox* QMessageBox_CheckBox(const QMessageBox* self) {
+	return self->checkBox();
 }
 
 uintptr_t QMessageBox_Information(QWidget* parent, const char* title, size_t title_Strlen, const char* text, size_t text_Strlen) {
@@ -342,8 +342,8 @@ int QMessageBox_Critical4(QWidget* parent, const char* title, size_t title_Strle
 	return QMessageBox::critical(parent, title_QString, text_QString, static_cast<QMessageBox::StandardButton>(button0), static_cast<QMessageBox::StandardButton>(button1));
 }
 
-void QMessageBox_ButtonText(QMessageBox* self, int button, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QMessageBox*>(self)->buttonText(static_cast<int>(button));
+void QMessageBox_ButtonText(const QMessageBox* self, int button, char** _out, int* _out_Strlen) {
+	QString ret = self->buttonText(static_cast<int>(button));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -356,8 +356,8 @@ void QMessageBox_SetButtonText(QMessageBox* self, int button, const char* text, 
 	self->setButtonText(static_cast<int>(button), text_QString);
 }
 
-void QMessageBox_InformativeText(QMessageBox* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QMessageBox*>(self)->informativeText();
+void QMessageBox_InformativeText(const QMessageBox* self, char** _out, int* _out_Strlen) {
+	QString ret = self->informativeText();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -370,8 +370,8 @@ void QMessageBox_SetInformativeText(QMessageBox* self, const char* text, size_t 
 	self->setInformativeText(text_QString);
 }
 
-void QMessageBox_DetailedText(QMessageBox* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QMessageBox*>(self)->detailedText();
+void QMessageBox_DetailedText(const QMessageBox* self, char** _out, int* _out_Strlen) {
+	QString ret = self->detailedText();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));

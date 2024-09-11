@@ -31,20 +31,20 @@ void QLockFile_SetStaleLockTime(QLockFile* self, int staleLockTime) {
 	self->setStaleLockTime(static_cast<int>(staleLockTime));
 }
 
-int QLockFile_StaleLockTime(QLockFile* self) {
-	return const_cast<const QLockFile*>(self)->staleLockTime();
+int QLockFile_StaleLockTime(const QLockFile* self) {
+	return self->staleLockTime();
 }
 
-bool QLockFile_IsLocked(QLockFile* self) {
-	return const_cast<const QLockFile*>(self)->isLocked();
+bool QLockFile_IsLocked(const QLockFile* self) {
+	return self->isLocked();
 }
 
 bool QLockFile_RemoveStaleLockFile(QLockFile* self) {
 	return self->removeStaleLockFile();
 }
 
-uintptr_t QLockFile_Error(QLockFile* self) {
-	QLockFile::LockError ret = const_cast<const QLockFile*>(self)->error();
+uintptr_t QLockFile_Error(const QLockFile* self) {
+	QLockFile::LockError ret = self->error();
 	return static_cast<uintptr_t>(ret);
 }
 

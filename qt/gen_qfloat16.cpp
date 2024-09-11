@@ -14,24 +14,24 @@ qfloat16* qfloat16_new2(float f) {
 	return new qfloat16(static_cast<float>(f));
 }
 
-bool qfloat16_IsInf(qfloat16* self) {
-	return const_cast<const qfloat16*>(self)->isInf();
+bool qfloat16_IsInf(const qfloat16* self) {
+	return self->isInf();
 }
 
-bool qfloat16_IsNaN(qfloat16* self) {
-	return const_cast<const qfloat16*>(self)->isNaN();
+bool qfloat16_IsNaN(const qfloat16* self) {
+	return self->isNaN();
 }
 
-bool qfloat16_IsFinite(qfloat16* self) {
-	return const_cast<const qfloat16*>(self)->isFinite();
+bool qfloat16_IsFinite(const qfloat16* self) {
+	return self->isFinite();
 }
 
-int qfloat16_FpClassify(qfloat16* self) {
-	return const_cast<const qfloat16*>(self)->fpClassify();
+int qfloat16_FpClassify(const qfloat16* self) {
+	return self->fpClassify();
 }
 
-bool qfloat16_IsNormal(qfloat16* self) {
-	return const_cast<const qfloat16*>(self)->isNormal();
+bool qfloat16_IsNormal(const qfloat16* self) {
+	return self->isNormal();
 }
 
 void qfloat16_Delete(qfloat16* self) {

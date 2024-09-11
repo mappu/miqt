@@ -92,8 +92,8 @@ QSettings* QSettings_new15(uintptr_t scope, QObject* parent) {
 	return new QSettings(static_cast<QSettings::Scope>(scope), parent);
 }
 
-QMetaObject* QSettings_MetaObject(QSettings* self) {
-	return (QMetaObject*) const_cast<const QSettings*>(self)->metaObject();
+QMetaObject* QSettings_MetaObject(const QSettings* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QSettings_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -122,13 +122,13 @@ void QSettings_Sync(QSettings* self) {
 	self->sync();
 }
 
-uintptr_t QSettings_Status(QSettings* self) {
-	QSettings::Status ret = const_cast<const QSettings*>(self)->status();
+uintptr_t QSettings_Status(const QSettings* self) {
+	QSettings::Status ret = self->status();
 	return static_cast<uintptr_t>(ret);
 }
 
-bool QSettings_IsAtomicSyncRequired(QSettings* self) {
-	return const_cast<const QSettings*>(self)->isAtomicSyncRequired();
+bool QSettings_IsAtomicSyncRequired(const QSettings* self) {
+	return self->isAtomicSyncRequired();
 }
 
 void QSettings_SetAtomicSyncRequired(QSettings* self, bool enable) {
@@ -144,8 +144,8 @@ void QSettings_EndGroup(QSettings* self) {
 	self->endGroup();
 }
 
-void QSettings_Group(QSettings* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QSettings*>(self)->group();
+void QSettings_Group(const QSettings* self, char** _out, int* _out_Strlen) {
+	QString ret = self->group();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -171,8 +171,8 @@ void QSettings_SetArrayIndex(QSettings* self, int i) {
 	self->setArrayIndex(static_cast<int>(i));
 }
 
-void QSettings_AllKeys(QSettings* self, char*** _out, int** _out_Lengths, size_t* _out_len) {
-	QStringList ret = const_cast<const QSettings*>(self)->allKeys();
+void QSettings_AllKeys(const QSettings* self, char*** _out, int** _out_Lengths, size_t* _out_len) {
+	QStringList ret = self->allKeys();
 	// Convert QStringList from C++ memory to manually-managed C memory
 	char** __out = static_cast<char**>(malloc(sizeof(char*) * ret.length()));
 	int* __out_Lengths = static_cast<int*>(malloc(sizeof(int) * ret.length()));
@@ -188,8 +188,8 @@ void QSettings_AllKeys(QSettings* self, char*** _out, int** _out_Lengths, size_t
 	*_out_len = ret.length();
 }
 
-void QSettings_ChildKeys(QSettings* self, char*** _out, int** _out_Lengths, size_t* _out_len) {
-	QStringList ret = const_cast<const QSettings*>(self)->childKeys();
+void QSettings_ChildKeys(const QSettings* self, char*** _out, int** _out_Lengths, size_t* _out_len) {
+	QStringList ret = self->childKeys();
 	// Convert QStringList from C++ memory to manually-managed C memory
 	char** __out = static_cast<char**>(malloc(sizeof(char*) * ret.length()));
 	int* __out_Lengths = static_cast<int*>(malloc(sizeof(int) * ret.length()));
@@ -205,8 +205,8 @@ void QSettings_ChildKeys(QSettings* self, char*** _out, int** _out_Lengths, size
 	*_out_len = ret.length();
 }
 
-void QSettings_ChildGroups(QSettings* self, char*** _out, int** _out_Lengths, size_t* _out_len) {
-	QStringList ret = const_cast<const QSettings*>(self)->childGroups();
+void QSettings_ChildGroups(const QSettings* self, char*** _out, int** _out_Lengths, size_t* _out_len) {
+	QStringList ret = self->childGroups();
 	// Convert QStringList from C++ memory to manually-managed C memory
 	char** __out = static_cast<char**>(malloc(sizeof(char*) * ret.length()));
 	int* __out_Lengths = static_cast<int*>(malloc(sizeof(int) * ret.length()));
@@ -222,8 +222,8 @@ void QSettings_ChildGroups(QSettings* self, char*** _out, int** _out_Lengths, si
 	*_out_len = ret.length();
 }
 
-bool QSettings_IsWritable(QSettings* self) {
-	return const_cast<const QSettings*>(self)->isWritable();
+bool QSettings_IsWritable(const QSettings* self) {
+	return self->isWritable();
 }
 
 void QSettings_SetValue(QSettings* self, const char* key, size_t key_Strlen, QVariant* value) {
@@ -231,9 +231,9 @@ void QSettings_SetValue(QSettings* self, const char* key, size_t key_Strlen, QVa
 	self->setValue(key_QString, *value);
 }
 
-QVariant* QSettings_Value(QSettings* self, const char* key, size_t key_Strlen) {
+QVariant* QSettings_Value(const QSettings* self, const char* key, size_t key_Strlen) {
 	QString key_QString = QString::fromUtf8(key, key_Strlen);
-	QVariant ret = const_cast<const QSettings*>(self)->value(key_QString);
+	QVariant ret = self->value(key_QString);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVariant*>(new QVariant(ret));
 }
@@ -243,21 +243,21 @@ void QSettings_Remove(QSettings* self, const char* key, size_t key_Strlen) {
 	self->remove(key_QString);
 }
 
-bool QSettings_Contains(QSettings* self, const char* key, size_t key_Strlen) {
+bool QSettings_Contains(const QSettings* self, const char* key, size_t key_Strlen) {
 	QString key_QString = QString::fromUtf8(key, key_Strlen);
-	return const_cast<const QSettings*>(self)->contains(key_QString);
+	return self->contains(key_QString);
 }
 
 void QSettings_SetFallbacksEnabled(QSettings* self, bool b) {
 	self->setFallbacksEnabled(b);
 }
 
-bool QSettings_FallbacksEnabled(QSettings* self) {
-	return const_cast<const QSettings*>(self)->fallbacksEnabled();
+bool QSettings_FallbacksEnabled(const QSettings* self) {
+	return self->fallbacksEnabled();
 }
 
-void QSettings_FileName(QSettings* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QSettings*>(self)->fileName();
+void QSettings_FileName(const QSettings* self, char** _out, int* _out_Strlen) {
+	QString ret = self->fileName();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -265,18 +265,18 @@ void QSettings_FileName(QSettings* self, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-uintptr_t QSettings_Format(QSettings* self) {
-	QSettings::Format ret = const_cast<const QSettings*>(self)->format();
+uintptr_t QSettings_Format(const QSettings* self) {
+	QSettings::Format ret = self->format();
 	return static_cast<uintptr_t>(ret);
 }
 
-uintptr_t QSettings_Scope(QSettings* self) {
-	QSettings::Scope ret = const_cast<const QSettings*>(self)->scope();
+uintptr_t QSettings_Scope(const QSettings* self) {
+	QSettings::Scope ret = self->scope();
 	return static_cast<uintptr_t>(ret);
 }
 
-void QSettings_OrganizationName(QSettings* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QSettings*>(self)->organizationName();
+void QSettings_OrganizationName(const QSettings* self, char** _out, int* _out_Strlen) {
+	QString ret = self->organizationName();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -284,8 +284,8 @@ void QSettings_OrganizationName(QSettings* self, char** _out, int* _out_Strlen) 
 	*_out_Strlen = b.length();
 }
 
-void QSettings_ApplicationName(QSettings* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QSettings*>(self)->applicationName();
+void QSettings_ApplicationName(const QSettings* self, char** _out, int* _out_Strlen) {
+	QString ret = self->applicationName();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -301,8 +301,8 @@ void QSettings_SetIniCodecWithCodecName(QSettings* self, const char* codecName) 
 	self->setIniCodec(codecName);
 }
 
-QTextCodec* QSettings_IniCodec(QSettings* self) {
-	return const_cast<const QSettings*>(self)->iniCodec();
+QTextCodec* QSettings_IniCodec(const QSettings* self) {
+	return self->iniCodec();
 }
 
 void QSettings_SetDefaultFormat(uintptr_t format) {
@@ -370,9 +370,9 @@ void QSettings_BeginWriteArray2(QSettings* self, const char* prefix, size_t pref
 	self->beginWriteArray(prefix_QString, static_cast<int>(size));
 }
 
-QVariant* QSettings_Value2(QSettings* self, const char* key, size_t key_Strlen, QVariant* defaultValue) {
+QVariant* QSettings_Value2(const QSettings* self, const char* key, size_t key_Strlen, QVariant* defaultValue) {
 	QString key_QString = QString::fromUtf8(key, key_Strlen);
-	QVariant ret = const_cast<const QSettings*>(self)->value(key_QString, *defaultValue);
+	QVariant ret = self->value(key_QString, *defaultValue);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVariant*>(new QVariant(ret));
 }

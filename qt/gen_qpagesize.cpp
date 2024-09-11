@@ -62,16 +62,16 @@ void QPageSize_Swap(QPageSize* self, QPageSize* other) {
 	self->swap(*other);
 }
 
-bool QPageSize_IsEquivalentTo(QPageSize* self, QPageSize* other) {
-	return const_cast<const QPageSize*>(self)->isEquivalentTo(*other);
+bool QPageSize_IsEquivalentTo(const QPageSize* self, QPageSize* other) {
+	return self->isEquivalentTo(*other);
 }
 
-bool QPageSize_IsValid(QPageSize* self) {
-	return const_cast<const QPageSize*>(self)->isValid();
+bool QPageSize_IsValid(const QPageSize* self) {
+	return self->isValid();
 }
 
-void QPageSize_Key(QPageSize* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QPageSize*>(self)->key();
+void QPageSize_Key(const QPageSize* self, char** _out, int* _out_Strlen) {
+	QString ret = self->key();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -79,8 +79,8 @@ void QPageSize_Key(QPageSize* self, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QPageSize_Name(QPageSize* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QPageSize*>(self)->name();
+void QPageSize_Name(const QPageSize* self, char** _out, int* _out_Strlen) {
+	QString ret = self->name();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -88,58 +88,58 @@ void QPageSize_Name(QPageSize* self, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-uintptr_t QPageSize_Id(QPageSize* self) {
-	QPageSize::PageSizeId ret = const_cast<const QPageSize*>(self)->id();
+uintptr_t QPageSize_Id(const QPageSize* self) {
+	QPageSize::PageSizeId ret = self->id();
 	return static_cast<uintptr_t>(ret);
 }
 
-int QPageSize_WindowsId(QPageSize* self) {
-	return const_cast<const QPageSize*>(self)->windowsId();
+int QPageSize_WindowsId(const QPageSize* self) {
+	return self->windowsId();
 }
 
-QSizeF* QPageSize_DefinitionSize(QPageSize* self) {
-	QSizeF ret = const_cast<const QPageSize*>(self)->definitionSize();
+QSizeF* QPageSize_DefinitionSize(const QPageSize* self) {
+	QSizeF ret = self->definitionSize();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSizeF*>(new QSizeF(ret));
 }
 
-uintptr_t QPageSize_DefinitionUnits(QPageSize* self) {
-	QPageSize::Unit ret = const_cast<const QPageSize*>(self)->definitionUnits();
+uintptr_t QPageSize_DefinitionUnits(const QPageSize* self) {
+	QPageSize::Unit ret = self->definitionUnits();
 	return static_cast<uintptr_t>(ret);
 }
 
-QSizeF* QPageSize_Size(QPageSize* self, uintptr_t units) {
-	QSizeF ret = const_cast<const QPageSize*>(self)->size(static_cast<QPageSize::Unit>(units));
+QSizeF* QPageSize_Size(const QPageSize* self, uintptr_t units) {
+	QSizeF ret = self->size(static_cast<QPageSize::Unit>(units));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSizeF*>(new QSizeF(ret));
 }
 
-QSize* QPageSize_SizePoints(QPageSize* self) {
-	QSize ret = const_cast<const QPageSize*>(self)->sizePoints();
+QSize* QPageSize_SizePoints(const QPageSize* self) {
+	QSize ret = self->sizePoints();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
 
-QSize* QPageSize_SizePixels(QPageSize* self, int resolution) {
-	QSize ret = const_cast<const QPageSize*>(self)->sizePixels(static_cast<int>(resolution));
+QSize* QPageSize_SizePixels(const QPageSize* self, int resolution) {
+	QSize ret = self->sizePixels(static_cast<int>(resolution));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
 
-QRectF* QPageSize_Rect(QPageSize* self, uintptr_t units) {
-	QRectF ret = const_cast<const QPageSize*>(self)->rect(static_cast<QPageSize::Unit>(units));
+QRectF* QPageSize_Rect(const QPageSize* self, uintptr_t units) {
+	QRectF ret = self->rect(static_cast<QPageSize::Unit>(units));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRectF*>(new QRectF(ret));
 }
 
-QRect* QPageSize_RectPoints(QPageSize* self) {
-	QRect ret = const_cast<const QPageSize*>(self)->rectPoints();
+QRect* QPageSize_RectPoints(const QPageSize* self) {
+	QRect ret = self->rectPoints();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRect*>(new QRect(ret));
 }
 
-QRect* QPageSize_RectPixels(QPageSize* self, int resolution) {
-	QRect ret = const_cast<const QPageSize*>(self)->rectPixels(static_cast<int>(resolution));
+QRect* QPageSize_RectPixels(const QPageSize* self, int resolution) {
+	QRect ret = self->rectPixels(static_cast<int>(resolution));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRect*>(new QRect(ret));
 }

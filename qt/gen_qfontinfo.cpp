@@ -27,8 +27,8 @@ void QFontInfo_Swap(QFontInfo* self, QFontInfo* other) {
 	self->swap(*other);
 }
 
-void QFontInfo_Family(QFontInfo* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QFontInfo*>(self)->family();
+void QFontInfo_Family(const QFontInfo* self, char** _out, int* _out_Strlen) {
+	QString ret = self->family();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -36,8 +36,8 @@ void QFontInfo_Family(QFontInfo* self, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-void QFontInfo_StyleName(QFontInfo* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QFontInfo*>(self)->styleName();
+void QFontInfo_StyleName(const QFontInfo* self, char** _out, int* _out_Strlen) {
+	QString ret = self->styleName();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -45,62 +45,62 @@ void QFontInfo_StyleName(QFontInfo* self, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-int QFontInfo_PixelSize(QFontInfo* self) {
-	return const_cast<const QFontInfo*>(self)->pixelSize();
+int QFontInfo_PixelSize(const QFontInfo* self) {
+	return self->pixelSize();
 }
 
-int QFontInfo_PointSize(QFontInfo* self) {
-	return const_cast<const QFontInfo*>(self)->pointSize();
+int QFontInfo_PointSize(const QFontInfo* self) {
+	return self->pointSize();
 }
 
-double QFontInfo_PointSizeF(QFontInfo* self) {
-	return const_cast<const QFontInfo*>(self)->pointSizeF();
+double QFontInfo_PointSizeF(const QFontInfo* self) {
+	return self->pointSizeF();
 }
 
-bool QFontInfo_Italic(QFontInfo* self) {
-	return const_cast<const QFontInfo*>(self)->italic();
+bool QFontInfo_Italic(const QFontInfo* self) {
+	return self->italic();
 }
 
-uintptr_t QFontInfo_Style(QFontInfo* self) {
-	QFont::Style ret = const_cast<const QFontInfo*>(self)->style();
+uintptr_t QFontInfo_Style(const QFontInfo* self) {
+	QFont::Style ret = self->style();
 	return static_cast<uintptr_t>(ret);
 }
 
-int QFontInfo_Weight(QFontInfo* self) {
-	return const_cast<const QFontInfo*>(self)->weight();
+int QFontInfo_Weight(const QFontInfo* self) {
+	return self->weight();
 }
 
-bool QFontInfo_Bold(QFontInfo* self) {
-	return const_cast<const QFontInfo*>(self)->bold();
+bool QFontInfo_Bold(const QFontInfo* self) {
+	return self->bold();
 }
 
-bool QFontInfo_Underline(QFontInfo* self) {
-	return const_cast<const QFontInfo*>(self)->underline();
+bool QFontInfo_Underline(const QFontInfo* self) {
+	return self->underline();
 }
 
-bool QFontInfo_Overline(QFontInfo* self) {
-	return const_cast<const QFontInfo*>(self)->overline();
+bool QFontInfo_Overline(const QFontInfo* self) {
+	return self->overline();
 }
 
-bool QFontInfo_StrikeOut(QFontInfo* self) {
-	return const_cast<const QFontInfo*>(self)->strikeOut();
+bool QFontInfo_StrikeOut(const QFontInfo* self) {
+	return self->strikeOut();
 }
 
-bool QFontInfo_FixedPitch(QFontInfo* self) {
-	return const_cast<const QFontInfo*>(self)->fixedPitch();
+bool QFontInfo_FixedPitch(const QFontInfo* self) {
+	return self->fixedPitch();
 }
 
-uintptr_t QFontInfo_StyleHint(QFontInfo* self) {
-	QFont::StyleHint ret = const_cast<const QFontInfo*>(self)->styleHint();
+uintptr_t QFontInfo_StyleHint(const QFontInfo* self) {
+	QFont::StyleHint ret = self->styleHint();
 	return static_cast<uintptr_t>(ret);
 }
 
-bool QFontInfo_RawMode(QFontInfo* self) {
-	return const_cast<const QFontInfo*>(self)->rawMode();
+bool QFontInfo_RawMode(const QFontInfo* self) {
+	return self->rawMode();
 }
 
-bool QFontInfo_ExactMatch(QFontInfo* self) {
-	return const_cast<const QFontInfo*>(self)->exactMatch();
+bool QFontInfo_ExactMatch(const QFontInfo* self) {
+	return self->exactMatch();
 }
 
 void QFontInfo_Delete(QFontInfo* self) {

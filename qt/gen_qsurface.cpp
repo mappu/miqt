@@ -9,28 +9,28 @@ extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
 }
 
-uintptr_t QSurface_SurfaceClass(QSurface* self) {
-	QSurface::SurfaceClass ret = const_cast<const QSurface*>(self)->surfaceClass();
+uintptr_t QSurface_SurfaceClass(const QSurface* self) {
+	QSurface::SurfaceClass ret = self->surfaceClass();
 	return static_cast<uintptr_t>(ret);
 }
 
-QSurfaceFormat* QSurface_Format(QSurface* self) {
-	QSurfaceFormat ret = const_cast<const QSurface*>(self)->format();
+QSurfaceFormat* QSurface_Format(const QSurface* self) {
+	QSurfaceFormat ret = self->format();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSurfaceFormat*>(new QSurfaceFormat(ret));
 }
 
-uintptr_t QSurface_SurfaceType(QSurface* self) {
-	QSurface::SurfaceType ret = const_cast<const QSurface*>(self)->surfaceType();
+uintptr_t QSurface_SurfaceType(const QSurface* self) {
+	QSurface::SurfaceType ret = self->surfaceType();
 	return static_cast<uintptr_t>(ret);
 }
 
-bool QSurface_SupportsOpenGL(QSurface* self) {
-	return const_cast<const QSurface*>(self)->supportsOpenGL();
+bool QSurface_SupportsOpenGL(const QSurface* self) {
+	return self->supportsOpenGL();
 }
 
-QSize* QSurface_Size(QSurface* self) {
-	QSize ret = const_cast<const QSurface*>(self)->size();
+QSize* QSurface_Size(const QSurface* self) {
+	QSize ret = self->size();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }

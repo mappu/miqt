@@ -43,8 +43,8 @@ QPushButton* QPushButton_new6(QIcon* icon, const char* text, size_t text_Strlen,
 	return new QPushButton(*icon, text_QString, parent);
 }
 
-QMetaObject* QPushButton_MetaObject(QPushButton* self) {
-	return (QMetaObject*) const_cast<const QPushButton*>(self)->metaObject();
+QMetaObject* QPushButton_MetaObject(const QPushButton* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QPushButton_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -65,28 +65,28 @@ void QPushButton_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-QSize* QPushButton_SizeHint(QPushButton* self) {
-	QSize ret = const_cast<const QPushButton*>(self)->sizeHint();
+QSize* QPushButton_SizeHint(const QPushButton* self) {
+	QSize ret = self->sizeHint();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
 
-QSize* QPushButton_MinimumSizeHint(QPushButton* self) {
-	QSize ret = const_cast<const QPushButton*>(self)->minimumSizeHint();
+QSize* QPushButton_MinimumSizeHint(const QPushButton* self) {
+	QSize ret = self->minimumSizeHint();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
 
-bool QPushButton_AutoDefault(QPushButton* self) {
-	return const_cast<const QPushButton*>(self)->autoDefault();
+bool QPushButton_AutoDefault(const QPushButton* self) {
+	return self->autoDefault();
 }
 
 void QPushButton_SetAutoDefault(QPushButton* self, bool autoDefault) {
 	self->setAutoDefault(autoDefault);
 }
 
-bool QPushButton_IsDefault(QPushButton* self) {
-	return const_cast<const QPushButton*>(self)->isDefault();
+bool QPushButton_IsDefault(const QPushButton* self) {
+	return self->isDefault();
 }
 
 void QPushButton_SetDefault(QPushButton* self, bool defaultVal) {
@@ -97,16 +97,16 @@ void QPushButton_SetMenu(QPushButton* self, QMenu* menu) {
 	self->setMenu(menu);
 }
 
-QMenu* QPushButton_Menu(QPushButton* self) {
-	return const_cast<const QPushButton*>(self)->menu();
+QMenu* QPushButton_Menu(const QPushButton* self) {
+	return self->menu();
 }
 
 void QPushButton_SetFlat(QPushButton* self, bool flat) {
 	self->setFlat(flat);
 }
 
-bool QPushButton_IsFlat(QPushButton* self) {
-	return const_cast<const QPushButton*>(self)->isFlat();
+bool QPushButton_IsFlat(const QPushButton* self) {
+	return self->isFlat();
 }
 
 void QPushButton_ShowMenu(QPushButton* self) {

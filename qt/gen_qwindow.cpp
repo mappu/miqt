@@ -34,8 +34,8 @@ QWindow* QWindow_new3(QScreen* screen) {
 	return new QWindow(screen);
 }
 
-QMetaObject* QWindow_MetaObject(QWindow* self) {
-	return (QMetaObject*) const_cast<const QWindow*>(self)->metaObject();
+QMetaObject* QWindow_MetaObject(const QWindow* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QWindow_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -60,17 +60,17 @@ void QWindow_SetSurfaceType(QWindow* self, uintptr_t surfaceType) {
 	self->setSurfaceType(static_cast<QSurface::SurfaceType>(surfaceType));
 }
 
-uintptr_t QWindow_SurfaceType(QWindow* self) {
-	QSurface::SurfaceType ret = const_cast<const QWindow*>(self)->surfaceType();
+uintptr_t QWindow_SurfaceType(const QWindow* self) {
+	QSurface::SurfaceType ret = self->surfaceType();
 	return static_cast<uintptr_t>(ret);
 }
 
-bool QWindow_IsVisible(QWindow* self) {
-	return const_cast<const QWindow*>(self)->isVisible();
+bool QWindow_IsVisible(const QWindow* self) {
+	return self->isVisible();
 }
 
-uintptr_t QWindow_Visibility(QWindow* self) {
-	QWindow::Visibility ret = const_cast<const QWindow*>(self)->visibility();
+uintptr_t QWindow_Visibility(const QWindow* self) {
+	QWindow::Visibility ret = self->visibility();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -82,32 +82,32 @@ void QWindow_Create(QWindow* self) {
 	self->create();
 }
 
-uintptr_t QWindow_WinId(QWindow* self) {
-	return const_cast<const QWindow*>(self)->winId();
+uintptr_t QWindow_WinId(const QWindow* self) {
+	return self->winId();
 }
 
-QWindow* QWindow_Parent(QWindow* self, uintptr_t mode) {
-	return const_cast<const QWindow*>(self)->parent(static_cast<QWindow::AncestorMode>(mode));
+QWindow* QWindow_Parent(const QWindow* self, uintptr_t mode) {
+	return self->parent(static_cast<QWindow::AncestorMode>(mode));
 }
 
-QWindow* QWindow_Parent2(QWindow* self) {
-	return const_cast<const QWindow*>(self)->parent();
+QWindow* QWindow_Parent2(const QWindow* self) {
+	return self->parent();
 }
 
 void QWindow_SetParent(QWindow* self, QWindow* parent) {
 	self->setParent(parent);
 }
 
-bool QWindow_IsTopLevel(QWindow* self) {
-	return const_cast<const QWindow*>(self)->isTopLevel();
+bool QWindow_IsTopLevel(const QWindow* self) {
+	return self->isTopLevel();
 }
 
-bool QWindow_IsModal(QWindow* self) {
-	return const_cast<const QWindow*>(self)->isModal();
+bool QWindow_IsModal(const QWindow* self) {
+	return self->isModal();
 }
 
-uintptr_t QWindow_Modality(QWindow* self) {
-	Qt::WindowModality ret = const_cast<const QWindow*>(self)->modality();
+uintptr_t QWindow_Modality(const QWindow* self) {
+	Qt::WindowModality ret = self->modality();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -119,14 +119,14 @@ void QWindow_SetFormat(QWindow* self, QSurfaceFormat* format) {
 	self->setFormat(*format);
 }
 
-QSurfaceFormat* QWindow_Format(QWindow* self) {
-	QSurfaceFormat ret = const_cast<const QWindow*>(self)->format();
+QSurfaceFormat* QWindow_Format(const QWindow* self) {
+	QSurfaceFormat ret = self->format();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSurfaceFormat*>(new QSurfaceFormat(ret));
 }
 
-QSurfaceFormat* QWindow_RequestedFormat(QWindow* self) {
-	QSurfaceFormat ret = const_cast<const QWindow*>(self)->requestedFormat();
+QSurfaceFormat* QWindow_RequestedFormat(const QWindow* self) {
+	QSurfaceFormat ret = self->requestedFormat();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSurfaceFormat*>(new QSurfaceFormat(ret));
 }
@@ -135,8 +135,8 @@ void QWindow_SetFlags(QWindow* self, int flags) {
 	self->setFlags(static_cast<Qt::WindowFlags>(flags));
 }
 
-int QWindow_Flags(QWindow* self) {
-	Qt::WindowFlags ret = const_cast<const QWindow*>(self)->flags();
+int QWindow_Flags(const QWindow* self) {
+	Qt::WindowFlags ret = self->flags();
 	return static_cast<int>(ret);
 }
 
@@ -144,13 +144,13 @@ void QWindow_SetFlag(QWindow* self, uintptr_t param1) {
 	self->setFlag(static_cast<Qt::WindowType>(param1));
 }
 
-uintptr_t QWindow_Type(QWindow* self) {
-	Qt::WindowType ret = const_cast<const QWindow*>(self)->type();
+uintptr_t QWindow_Type(const QWindow* self) {
+	Qt::WindowType ret = self->type();
 	return static_cast<uintptr_t>(ret);
 }
 
-void QWindow_Title(QWindow* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QWindow*>(self)->title();
+void QWindow_Title(const QWindow* self, char** _out, int* _out_Strlen) {
+	QString ret = self->title();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -162,44 +162,44 @@ void QWindow_SetOpacity(QWindow* self, double level) {
 	self->setOpacity(static_cast<qreal>(level));
 }
 
-double QWindow_Opacity(QWindow* self) {
-	return const_cast<const QWindow*>(self)->opacity();
+double QWindow_Opacity(const QWindow* self) {
+	return self->opacity();
 }
 
 void QWindow_SetMask(QWindow* self, QRegion* region) {
 	self->setMask(*region);
 }
 
-QRegion* QWindow_Mask(QWindow* self) {
-	QRegion ret = const_cast<const QWindow*>(self)->mask();
+QRegion* QWindow_Mask(const QWindow* self) {
+	QRegion ret = self->mask();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRegion*>(new QRegion(ret));
 }
 
-bool QWindow_IsActive(QWindow* self) {
-	return const_cast<const QWindow*>(self)->isActive();
+bool QWindow_IsActive(const QWindow* self) {
+	return self->isActive();
 }
 
 void QWindow_ReportContentOrientationChange(QWindow* self, uintptr_t orientation) {
 	self->reportContentOrientationChange(static_cast<Qt::ScreenOrientation>(orientation));
 }
 
-uintptr_t QWindow_ContentOrientation(QWindow* self) {
-	Qt::ScreenOrientation ret = const_cast<const QWindow*>(self)->contentOrientation();
+uintptr_t QWindow_ContentOrientation(const QWindow* self) {
+	Qt::ScreenOrientation ret = self->contentOrientation();
 	return static_cast<uintptr_t>(ret);
 }
 
-double QWindow_DevicePixelRatio(QWindow* self) {
-	return const_cast<const QWindow*>(self)->devicePixelRatio();
+double QWindow_DevicePixelRatio(const QWindow* self) {
+	return self->devicePixelRatio();
 }
 
-uintptr_t QWindow_WindowState(QWindow* self) {
-	Qt::WindowState ret = const_cast<const QWindow*>(self)->windowState();
+uintptr_t QWindow_WindowState(const QWindow* self) {
+	Qt::WindowState ret = self->windowState();
 	return static_cast<uintptr_t>(ret);
 }
 
-int QWindow_WindowStates(QWindow* self) {
-	Qt::WindowStates ret = const_cast<const QWindow*>(self)->windowStates();
+int QWindow_WindowStates(const QWindow* self) {
+	Qt::WindowStates ret = self->windowStates();
 	return static_cast<int>(ret);
 }
 
@@ -215,54 +215,54 @@ void QWindow_SetTransientParent(QWindow* self, QWindow* parent) {
 	self->setTransientParent(parent);
 }
 
-QWindow* QWindow_TransientParent(QWindow* self) {
-	return const_cast<const QWindow*>(self)->transientParent();
+QWindow* QWindow_TransientParent(const QWindow* self) {
+	return self->transientParent();
 }
 
-bool QWindow_IsAncestorOf(QWindow* self, QWindow* child) {
-	return const_cast<const QWindow*>(self)->isAncestorOf(child);
+bool QWindow_IsAncestorOf(const QWindow* self, QWindow* child) {
+	return self->isAncestorOf(child);
 }
 
-bool QWindow_IsExposed(QWindow* self) {
-	return const_cast<const QWindow*>(self)->isExposed();
+bool QWindow_IsExposed(const QWindow* self) {
+	return self->isExposed();
 }
 
-int QWindow_MinimumWidth(QWindow* self) {
-	return const_cast<const QWindow*>(self)->minimumWidth();
+int QWindow_MinimumWidth(const QWindow* self) {
+	return self->minimumWidth();
 }
 
-int QWindow_MinimumHeight(QWindow* self) {
-	return const_cast<const QWindow*>(self)->minimumHeight();
+int QWindow_MinimumHeight(const QWindow* self) {
+	return self->minimumHeight();
 }
 
-int QWindow_MaximumWidth(QWindow* self) {
-	return const_cast<const QWindow*>(self)->maximumWidth();
+int QWindow_MaximumWidth(const QWindow* self) {
+	return self->maximumWidth();
 }
 
-int QWindow_MaximumHeight(QWindow* self) {
-	return const_cast<const QWindow*>(self)->maximumHeight();
+int QWindow_MaximumHeight(const QWindow* self) {
+	return self->maximumHeight();
 }
 
-QSize* QWindow_MinimumSize(QWindow* self) {
-	QSize ret = const_cast<const QWindow*>(self)->minimumSize();
+QSize* QWindow_MinimumSize(const QWindow* self) {
+	QSize ret = self->minimumSize();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
 
-QSize* QWindow_MaximumSize(QWindow* self) {
-	QSize ret = const_cast<const QWindow*>(self)->maximumSize();
+QSize* QWindow_MaximumSize(const QWindow* self) {
+	QSize ret = self->maximumSize();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
 
-QSize* QWindow_BaseSize(QWindow* self) {
-	QSize ret = const_cast<const QWindow*>(self)->baseSize();
+QSize* QWindow_BaseSize(const QWindow* self) {
+	QSize ret = self->baseSize();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
 
-QSize* QWindow_SizeIncrement(QWindow* self) {
-	QSize ret = const_cast<const QWindow*>(self)->sizeIncrement();
+QSize* QWindow_SizeIncrement(const QWindow* self) {
+	QSize ret = self->sizeIncrement();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
@@ -283,26 +283,26 @@ void QWindow_SetSizeIncrement(QWindow* self, QSize* size) {
 	self->setSizeIncrement(*size);
 }
 
-QRect* QWindow_Geometry(QWindow* self) {
-	QRect ret = const_cast<const QWindow*>(self)->geometry();
+QRect* QWindow_Geometry(const QWindow* self) {
+	QRect ret = self->geometry();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRect*>(new QRect(ret));
 }
 
-QMargins* QWindow_FrameMargins(QWindow* self) {
-	QMargins ret = const_cast<const QWindow*>(self)->frameMargins();
+QMargins* QWindow_FrameMargins(const QWindow* self) {
+	QMargins ret = self->frameMargins();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QMargins*>(new QMargins(ret));
 }
 
-QRect* QWindow_FrameGeometry(QWindow* self) {
-	QRect ret = const_cast<const QWindow*>(self)->frameGeometry();
+QRect* QWindow_FrameGeometry(const QWindow* self) {
+	QRect ret = self->frameGeometry();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRect*>(new QRect(ret));
 }
 
-QPoint* QWindow_FramePosition(QWindow* self) {
-	QPoint ret = const_cast<const QWindow*>(self)->framePosition();
+QPoint* QWindow_FramePosition(const QWindow* self) {
+	QPoint ret = self->framePosition();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPoint*>(new QPoint(ret));
 }
@@ -311,30 +311,30 @@ void QWindow_SetFramePosition(QWindow* self, QPoint* point) {
 	self->setFramePosition(*point);
 }
 
-int QWindow_Width(QWindow* self) {
-	return const_cast<const QWindow*>(self)->width();
+int QWindow_Width(const QWindow* self) {
+	return self->width();
 }
 
-int QWindow_Height(QWindow* self) {
-	return const_cast<const QWindow*>(self)->height();
+int QWindow_Height(const QWindow* self) {
+	return self->height();
 }
 
-int QWindow_X(QWindow* self) {
-	return const_cast<const QWindow*>(self)->x();
+int QWindow_X(const QWindow* self) {
+	return self->x();
 }
 
-int QWindow_Y(QWindow* self) {
-	return const_cast<const QWindow*>(self)->y();
+int QWindow_Y(const QWindow* self) {
+	return self->y();
 }
 
-QSize* QWindow_Size(QWindow* self) {
-	QSize ret = const_cast<const QWindow*>(self)->size();
+QSize* QWindow_Size(const QWindow* self) {
+	QSize ret = self->size();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
 
-QPoint* QWindow_Position(QWindow* self) {
-	QPoint ret = const_cast<const QWindow*>(self)->position();
+QPoint* QWindow_Position(const QWindow* self) {
+	QPoint ret = self->position();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPoint*>(new QPoint(ret));
 }
@@ -360,8 +360,8 @@ void QWindow_SetFilePath(QWindow* self, const char* filePath, size_t filePath_St
 	self->setFilePath(filePath_QString);
 }
 
-void QWindow_FilePath(QWindow* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QWindow*>(self)->filePath();
+void QWindow_FilePath(const QWindow* self, char** _out, int* _out_Strlen) {
+	QString ret = self->filePath();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -373,8 +373,8 @@ void QWindow_SetIcon(QWindow* self, QIcon* icon) {
 	self->setIcon(*icon);
 }
 
-QIcon* QWindow_Icon(QWindow* self) {
-	QIcon ret = const_cast<const QWindow*>(self)->icon();
+QIcon* QWindow_Icon(const QWindow* self) {
+	QIcon ret = self->icon();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QIcon*>(new QIcon(ret));
 }
@@ -391,36 +391,36 @@ bool QWindow_SetMouseGrabEnabled(QWindow* self, bool grab) {
 	return self->setMouseGrabEnabled(grab);
 }
 
-QScreen* QWindow_Screen(QWindow* self) {
-	return const_cast<const QWindow*>(self)->screen();
+QScreen* QWindow_Screen(const QWindow* self) {
+	return self->screen();
 }
 
 void QWindow_SetScreen(QWindow* self, QScreen* screen) {
 	self->setScreen(screen);
 }
 
-QAccessibleInterface* QWindow_AccessibleRoot(QWindow* self) {
-	return const_cast<const QWindow*>(self)->accessibleRoot();
+QAccessibleInterface* QWindow_AccessibleRoot(const QWindow* self) {
+	return self->accessibleRoot();
 }
 
-QObject* QWindow_FocusObject(QWindow* self) {
-	return const_cast<const QWindow*>(self)->focusObject();
+QObject* QWindow_FocusObject(const QWindow* self) {
+	return self->focusObject();
 }
 
-QPoint* QWindow_MapToGlobal(QWindow* self, QPoint* pos) {
-	QPoint ret = const_cast<const QWindow*>(self)->mapToGlobal(*pos);
+QPoint* QWindow_MapToGlobal(const QWindow* self, QPoint* pos) {
+	QPoint ret = self->mapToGlobal(*pos);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPoint*>(new QPoint(ret));
 }
 
-QPoint* QWindow_MapFromGlobal(QWindow* self, QPoint* pos) {
-	QPoint ret = const_cast<const QWindow*>(self)->mapFromGlobal(*pos);
+QPoint* QWindow_MapFromGlobal(const QWindow* self, QPoint* pos) {
+	QPoint ret = self->mapFromGlobal(*pos);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPoint*>(new QPoint(ret));
 }
 
-QCursor* QWindow_Cursor(QWindow* self) {
-	QCursor ret = const_cast<const QWindow*>(self)->cursor();
+QCursor* QWindow_Cursor(const QWindow* self) {
+	QCursor ret = self->cursor();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QCursor*>(new QCursor(ret));
 }
@@ -773,8 +773,8 @@ void QWindow_SetFlag2(QWindow* self, uintptr_t param1, bool on) {
 	self->setFlag(static_cast<Qt::WindowType>(param1), on);
 }
 
-bool QWindow_IsAncestorOf2(QWindow* self, QWindow* child, uintptr_t mode) {
-	return const_cast<const QWindow*>(self)->isAncestorOf(child, static_cast<QWindow::AncestorMode>(mode));
+bool QWindow_IsAncestorOf2(const QWindow* self, QWindow* child, uintptr_t mode) {
+	return self->isAncestorOf(child, static_cast<QWindow::AncestorMode>(mode));
 }
 
 void QWindow_Delete(QWindow* self) {

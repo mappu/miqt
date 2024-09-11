@@ -23,7 +23,7 @@ typedef struct QWidget QWidget;
 
 QErrorMessage* QErrorMessage_new();
 QErrorMessage* QErrorMessage_new2(QWidget* parent);
-QMetaObject* QErrorMessage_MetaObject(QErrorMessage* self);
+QMetaObject* QErrorMessage_MetaObject(const QErrorMessage* self);
 void QErrorMessage_Tr(const char* s, char** _out, int* _out_Strlen);
 void QErrorMessage_TrUtf8(const char* s, char** _out, int* _out_Strlen);
 QErrorMessage* QErrorMessage_QtHandler();

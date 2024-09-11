@@ -25,7 +25,7 @@ void QSemaphore_Acquire(QSemaphore* self);
 bool QSemaphore_TryAcquire(QSemaphore* self);
 bool QSemaphore_TryAcquire2(QSemaphore* self, int n, int timeout);
 void QSemaphore_Release(QSemaphore* self);
-int QSemaphore_Available(QSemaphore* self);
+int QSemaphore_Available(const QSemaphore* self);
 void QSemaphore_Acquire1(QSemaphore* self, int n);
 bool QSemaphore_TryAcquire1(QSemaphore* self, int n);
 void QSemaphore_Release1(QSemaphore* self, int n);
@@ -37,7 +37,7 @@ QSemaphoreReleaser* QSemaphoreReleaser_new3(QSemaphore* sem);
 QSemaphoreReleaser* QSemaphoreReleaser_new4(QSemaphore* sem, int n);
 QSemaphoreReleaser* QSemaphoreReleaser_new5(QSemaphore* sem, int n);
 void QSemaphoreReleaser_Swap(QSemaphoreReleaser* self, QSemaphoreReleaser* other);
-QSemaphore* QSemaphoreReleaser_Semaphore(QSemaphoreReleaser* self);
+QSemaphore* QSemaphoreReleaser_Semaphore(const QSemaphoreReleaser* self);
 QSemaphore* QSemaphoreReleaser_Cancel(QSemaphoreReleaser* self);
 void QSemaphoreReleaser_Delete(QSemaphoreReleaser* self);
 

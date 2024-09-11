@@ -28,18 +28,18 @@ QCommandLineOption* QCommandLineOption_new8(char** names, uint64_t* names_Length
 QCommandLineOption* QCommandLineOption_new9(char** names, uint64_t* names_Lengths, size_t names_len, const char* description, size_t description_Strlen, const char* valueName, size_t valueName_Strlen, const char* defaultValue, size_t defaultValue_Strlen);
 void QCommandLineOption_OperatorAssign(QCommandLineOption* self, QCommandLineOption* other);
 void QCommandLineOption_Swap(QCommandLineOption* self, QCommandLineOption* other);
-void QCommandLineOption_Names(QCommandLineOption* self, char*** _out, int** _out_Lengths, size_t* _out_len);
+void QCommandLineOption_Names(const QCommandLineOption* self, char*** _out, int** _out_Lengths, size_t* _out_len);
 void QCommandLineOption_SetValueName(QCommandLineOption* self, const char* name, size_t name_Strlen);
-void QCommandLineOption_ValueName(QCommandLineOption* self, char** _out, int* _out_Strlen);
+void QCommandLineOption_ValueName(const QCommandLineOption* self, char** _out, int* _out_Strlen);
 void QCommandLineOption_SetDescription(QCommandLineOption* self, const char* description, size_t description_Strlen);
-void QCommandLineOption_Description(QCommandLineOption* self, char** _out, int* _out_Strlen);
+void QCommandLineOption_Description(const QCommandLineOption* self, char** _out, int* _out_Strlen);
 void QCommandLineOption_SetDefaultValue(QCommandLineOption* self, const char* defaultValue, size_t defaultValue_Strlen);
 void QCommandLineOption_SetDefaultValues(QCommandLineOption* self, char** defaultValues, uint64_t* defaultValues_Lengths, size_t defaultValues_len);
-void QCommandLineOption_DefaultValues(QCommandLineOption* self, char*** _out, int** _out_Lengths, size_t* _out_len);
-int QCommandLineOption_Flags(QCommandLineOption* self);
+void QCommandLineOption_DefaultValues(const QCommandLineOption* self, char*** _out, int** _out_Lengths, size_t* _out_len);
+int QCommandLineOption_Flags(const QCommandLineOption* self);
 void QCommandLineOption_SetFlags(QCommandLineOption* self, int aflags);
 void QCommandLineOption_SetHidden(QCommandLineOption* self, bool hidden);
-bool QCommandLineOption_IsHidden(QCommandLineOption* self);
+bool QCommandLineOption_IsHidden(const QCommandLineOption* self);
 void QCommandLineOption_Delete(QCommandLineOption* self);
 
 #ifdef __cplusplus

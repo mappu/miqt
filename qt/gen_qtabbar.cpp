@@ -26,8 +26,8 @@ QTabBar* QTabBar_new2(QWidget* parent) {
 	return new QTabBar(parent);
 }
 
-QMetaObject* QTabBar_MetaObject(QTabBar* self) {
-	return (QMetaObject*) const_cast<const QTabBar*>(self)->metaObject();
+QMetaObject* QTabBar_MetaObject(const QTabBar* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QTabBar_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -48,8 +48,8 @@ void QTabBar_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-uintptr_t QTabBar_Shape(QTabBar* self) {
-	QTabBar::Shape ret = const_cast<const QTabBar*>(self)->shape();
+uintptr_t QTabBar_Shape(const QTabBar* self) {
+	QTabBar::Shape ret = self->shape();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -85,24 +85,24 @@ void QTabBar_MoveTab(QTabBar* self, int from, int to) {
 	self->moveTab(static_cast<int>(from), static_cast<int>(to));
 }
 
-bool QTabBar_IsTabEnabled(QTabBar* self, int index) {
-	return const_cast<const QTabBar*>(self)->isTabEnabled(static_cast<int>(index));
+bool QTabBar_IsTabEnabled(const QTabBar* self, int index) {
+	return self->isTabEnabled(static_cast<int>(index));
 }
 
 void QTabBar_SetTabEnabled(QTabBar* self, int index, bool enabled) {
 	self->setTabEnabled(static_cast<int>(index), enabled);
 }
 
-bool QTabBar_IsTabVisible(QTabBar* self, int index) {
-	return const_cast<const QTabBar*>(self)->isTabVisible(static_cast<int>(index));
+bool QTabBar_IsTabVisible(const QTabBar* self, int index) {
+	return self->isTabVisible(static_cast<int>(index));
 }
 
 void QTabBar_SetTabVisible(QTabBar* self, int index, bool visible) {
 	self->setTabVisible(static_cast<int>(index), visible);
 }
 
-void QTabBar_TabText(QTabBar* self, int index, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QTabBar*>(self)->tabText(static_cast<int>(index));
+void QTabBar_TabText(const QTabBar* self, int index, char** _out, int* _out_Strlen) {
+	QString ret = self->tabText(static_cast<int>(index));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -115,8 +115,8 @@ void QTabBar_SetTabText(QTabBar* self, int index, const char* text, size_t text_
 	self->setTabText(static_cast<int>(index), text_QString);
 }
 
-QColor* QTabBar_TabTextColor(QTabBar* self, int index) {
-	QColor ret = const_cast<const QTabBar*>(self)->tabTextColor(static_cast<int>(index));
+QColor* QTabBar_TabTextColor(const QTabBar* self, int index) {
+	QColor ret = self->tabTextColor(static_cast<int>(index));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QColor*>(new QColor(ret));
 }
@@ -125,8 +125,8 @@ void QTabBar_SetTabTextColor(QTabBar* self, int index, QColor* color) {
 	self->setTabTextColor(static_cast<int>(index), *color);
 }
 
-QIcon* QTabBar_TabIcon(QTabBar* self, int index) {
-	QIcon ret = const_cast<const QTabBar*>(self)->tabIcon(static_cast<int>(index));
+QIcon* QTabBar_TabIcon(const QTabBar* self, int index) {
+	QIcon ret = self->tabIcon(static_cast<int>(index));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QIcon*>(new QIcon(ret));
 }
@@ -135,8 +135,8 @@ void QTabBar_SetTabIcon(QTabBar* self, int index, QIcon* icon) {
 	self->setTabIcon(static_cast<int>(index), *icon);
 }
 
-uintptr_t QTabBar_ElideMode(QTabBar* self) {
-	Qt::TextElideMode ret = const_cast<const QTabBar*>(self)->elideMode();
+uintptr_t QTabBar_ElideMode(const QTabBar* self) {
+	Qt::TextElideMode ret = self->elideMode();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -149,8 +149,8 @@ void QTabBar_SetTabToolTip(QTabBar* self, int index, const char* tip, size_t tip
 	self->setTabToolTip(static_cast<int>(index), tip_QString);
 }
 
-void QTabBar_TabToolTip(QTabBar* self, int index, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QTabBar*>(self)->tabToolTip(static_cast<int>(index));
+void QTabBar_TabToolTip(const QTabBar* self, int index, char** _out, int* _out_Strlen) {
+	QString ret = self->tabToolTip(static_cast<int>(index));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -163,8 +163,8 @@ void QTabBar_SetTabWhatsThis(QTabBar* self, int index, const char* text, size_t 
 	self->setTabWhatsThis(static_cast<int>(index), text_QString);
 }
 
-void QTabBar_TabWhatsThis(QTabBar* self, int index, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QTabBar*>(self)->tabWhatsThis(static_cast<int>(index));
+void QTabBar_TabWhatsThis(const QTabBar* self, int index, char** _out, int* _out_Strlen) {
+	QString ret = self->tabWhatsThis(static_cast<int>(index));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -176,38 +176,38 @@ void QTabBar_SetTabData(QTabBar* self, int index, QVariant* data) {
 	self->setTabData(static_cast<int>(index), *data);
 }
 
-QVariant* QTabBar_TabData(QTabBar* self, int index) {
-	QVariant ret = const_cast<const QTabBar*>(self)->tabData(static_cast<int>(index));
+QVariant* QTabBar_TabData(const QTabBar* self, int index) {
+	QVariant ret = self->tabData(static_cast<int>(index));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVariant*>(new QVariant(ret));
 }
 
-QRect* QTabBar_TabRect(QTabBar* self, int index) {
-	QRect ret = const_cast<const QTabBar*>(self)->tabRect(static_cast<int>(index));
+QRect* QTabBar_TabRect(const QTabBar* self, int index) {
+	QRect ret = self->tabRect(static_cast<int>(index));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRect*>(new QRect(ret));
 }
 
-int QTabBar_TabAt(QTabBar* self, QPoint* pos) {
-	return const_cast<const QTabBar*>(self)->tabAt(*pos);
+int QTabBar_TabAt(const QTabBar* self, QPoint* pos) {
+	return self->tabAt(*pos);
 }
 
-int QTabBar_CurrentIndex(QTabBar* self) {
-	return const_cast<const QTabBar*>(self)->currentIndex();
+int QTabBar_CurrentIndex(const QTabBar* self) {
+	return self->currentIndex();
 }
 
-int QTabBar_Count(QTabBar* self) {
-	return const_cast<const QTabBar*>(self)->count();
+int QTabBar_Count(const QTabBar* self) {
+	return self->count();
 }
 
-QSize* QTabBar_SizeHint(QTabBar* self) {
-	QSize ret = const_cast<const QTabBar*>(self)->sizeHint();
+QSize* QTabBar_SizeHint(const QTabBar* self) {
+	QSize ret = self->sizeHint();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
 
-QSize* QTabBar_MinimumSizeHint(QTabBar* self) {
-	QSize ret = const_cast<const QTabBar*>(self)->minimumSizeHint();
+QSize* QTabBar_MinimumSizeHint(const QTabBar* self) {
+	QSize ret = self->minimumSizeHint();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
@@ -216,12 +216,12 @@ void QTabBar_SetDrawBase(QTabBar* self, bool drawTheBase) {
 	self->setDrawBase(drawTheBase);
 }
 
-bool QTabBar_DrawBase(QTabBar* self) {
-	return const_cast<const QTabBar*>(self)->drawBase();
+bool QTabBar_DrawBase(const QTabBar* self) {
+	return self->drawBase();
 }
 
-QSize* QTabBar_IconSize(QTabBar* self) {
-	QSize ret = const_cast<const QTabBar*>(self)->iconSize();
+QSize* QTabBar_IconSize(const QTabBar* self) {
+	QSize ret = self->iconSize();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
@@ -230,16 +230,16 @@ void QTabBar_SetIconSize(QTabBar* self, QSize* size) {
 	self->setIconSize(*size);
 }
 
-bool QTabBar_UsesScrollButtons(QTabBar* self) {
-	return const_cast<const QTabBar*>(self)->usesScrollButtons();
+bool QTabBar_UsesScrollButtons(const QTabBar* self) {
+	return self->usesScrollButtons();
 }
 
 void QTabBar_SetUsesScrollButtons(QTabBar* self, bool useButtons) {
 	self->setUsesScrollButtons(useButtons);
 }
 
-bool QTabBar_TabsClosable(QTabBar* self) {
-	return const_cast<const QTabBar*>(self)->tabsClosable();
+bool QTabBar_TabsClosable(const QTabBar* self) {
+	return self->tabsClosable();
 }
 
 void QTabBar_SetTabsClosable(QTabBar* self, bool closable) {
@@ -250,12 +250,12 @@ void QTabBar_SetTabButton(QTabBar* self, int index, uintptr_t position, QWidget*
 	self->setTabButton(static_cast<int>(index), static_cast<QTabBar::ButtonPosition>(position), widget);
 }
 
-QWidget* QTabBar_TabButton(QTabBar* self, int index, uintptr_t position) {
-	return const_cast<const QTabBar*>(self)->tabButton(static_cast<int>(index), static_cast<QTabBar::ButtonPosition>(position));
+QWidget* QTabBar_TabButton(const QTabBar* self, int index, uintptr_t position) {
+	return self->tabButton(static_cast<int>(index), static_cast<QTabBar::ButtonPosition>(position));
 }
 
-uintptr_t QTabBar_SelectionBehaviorOnRemove(QTabBar* self) {
-	QTabBar::SelectionBehavior ret = const_cast<const QTabBar*>(self)->selectionBehaviorOnRemove();
+uintptr_t QTabBar_SelectionBehaviorOnRemove(const QTabBar* self) {
+	QTabBar::SelectionBehavior ret = self->selectionBehaviorOnRemove();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -263,48 +263,48 @@ void QTabBar_SetSelectionBehaviorOnRemove(QTabBar* self, uintptr_t behavior) {
 	self->setSelectionBehaviorOnRemove(static_cast<QTabBar::SelectionBehavior>(behavior));
 }
 
-bool QTabBar_Expanding(QTabBar* self) {
-	return const_cast<const QTabBar*>(self)->expanding();
+bool QTabBar_Expanding(const QTabBar* self) {
+	return self->expanding();
 }
 
 void QTabBar_SetExpanding(QTabBar* self, bool enabled) {
 	self->setExpanding(enabled);
 }
 
-bool QTabBar_IsMovable(QTabBar* self) {
-	return const_cast<const QTabBar*>(self)->isMovable();
+bool QTabBar_IsMovable(const QTabBar* self) {
+	return self->isMovable();
 }
 
 void QTabBar_SetMovable(QTabBar* self, bool movable) {
 	self->setMovable(movable);
 }
 
-bool QTabBar_DocumentMode(QTabBar* self) {
-	return const_cast<const QTabBar*>(self)->documentMode();
+bool QTabBar_DocumentMode(const QTabBar* self) {
+	return self->documentMode();
 }
 
 void QTabBar_SetDocumentMode(QTabBar* self, bool set) {
 	self->setDocumentMode(set);
 }
 
-bool QTabBar_AutoHide(QTabBar* self) {
-	return const_cast<const QTabBar*>(self)->autoHide();
+bool QTabBar_AutoHide(const QTabBar* self) {
+	return self->autoHide();
 }
 
 void QTabBar_SetAutoHide(QTabBar* self, bool hide) {
 	self->setAutoHide(hide);
 }
 
-bool QTabBar_ChangeCurrentOnDrag(QTabBar* self) {
-	return const_cast<const QTabBar*>(self)->changeCurrentOnDrag();
+bool QTabBar_ChangeCurrentOnDrag(const QTabBar* self) {
+	return self->changeCurrentOnDrag();
 }
 
 void QTabBar_SetChangeCurrentOnDrag(QTabBar* self, bool change) {
 	self->setChangeCurrentOnDrag(change);
 }
 
-void QTabBar_AccessibleTabName(QTabBar* self, int index, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QTabBar*>(self)->accessibleTabName(static_cast<int>(index));
+void QTabBar_AccessibleTabName(const QTabBar* self, int index, char** _out, int* _out_Strlen) {
+	QString ret = self->accessibleTabName(static_cast<int>(index));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));

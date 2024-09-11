@@ -18,13 +18,13 @@ typedef struct QLoggingCategory QLoggingCategory;
 #endif
 
 QLoggingCategory* QLoggingCategory_new(const char* category);
-bool QLoggingCategory_IsDebugEnabled(QLoggingCategory* self);
-bool QLoggingCategory_IsInfoEnabled(QLoggingCategory* self);
-bool QLoggingCategory_IsWarningEnabled(QLoggingCategory* self);
-bool QLoggingCategory_IsCriticalEnabled(QLoggingCategory* self);
-const char* QLoggingCategory_CategoryName(QLoggingCategory* self);
+bool QLoggingCategory_IsDebugEnabled(const QLoggingCategory* self);
+bool QLoggingCategory_IsInfoEnabled(const QLoggingCategory* self);
+bool QLoggingCategory_IsWarningEnabled(const QLoggingCategory* self);
+bool QLoggingCategory_IsCriticalEnabled(const QLoggingCategory* self);
+const char* QLoggingCategory_CategoryName(const QLoggingCategory* self);
 QLoggingCategory* QLoggingCategory_OperatorCall(QLoggingCategory* self);
-QLoggingCategory* QLoggingCategory_OperatorCall2(QLoggingCategory* self);
+QLoggingCategory* QLoggingCategory_OperatorCall2(const QLoggingCategory* self);
 QLoggingCategory* QLoggingCategory_DefaultCategory();
 void QLoggingCategory_SetFilterRules(const char* rules, size_t rules_Strlen);
 void QLoggingCategory_Delete(QLoggingCategory* self);

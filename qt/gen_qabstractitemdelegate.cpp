@@ -22,8 +22,8 @@ extern "C" {
     extern void miqt_exec_callback(void* cb, int argc, void* argv);
 }
 
-QMetaObject* QAbstractItemDelegate_MetaObject(QAbstractItemDelegate* self) {
-	return (QMetaObject*) const_cast<const QAbstractItemDelegate*>(self)->metaObject();
+QMetaObject* QAbstractItemDelegate_MetaObject(const QAbstractItemDelegate* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QAbstractItemDelegate_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -44,34 +44,34 @@ void QAbstractItemDelegate_TrUtf8(const char* s, char** _out, int* _out_Strlen) 
 	*_out_Strlen = b.length();
 }
 
-void QAbstractItemDelegate_Paint(QAbstractItemDelegate* self, QPainter* painter, QStyleOptionViewItem* option, QModelIndex* index) {
-	const_cast<const QAbstractItemDelegate*>(self)->paint(painter, *option, *index);
+void QAbstractItemDelegate_Paint(const QAbstractItemDelegate* self, QPainter* painter, QStyleOptionViewItem* option, QModelIndex* index) {
+	self->paint(painter, *option, *index);
 }
 
-QSize* QAbstractItemDelegate_SizeHint(QAbstractItemDelegate* self, QStyleOptionViewItem* option, QModelIndex* index) {
-	QSize ret = const_cast<const QAbstractItemDelegate*>(self)->sizeHint(*option, *index);
+QSize* QAbstractItemDelegate_SizeHint(const QAbstractItemDelegate* self, QStyleOptionViewItem* option, QModelIndex* index) {
+	QSize ret = self->sizeHint(*option, *index);
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
 
-QWidget* QAbstractItemDelegate_CreateEditor(QAbstractItemDelegate* self, QWidget* parent, QStyleOptionViewItem* option, QModelIndex* index) {
-	return const_cast<const QAbstractItemDelegate*>(self)->createEditor(parent, *option, *index);
+QWidget* QAbstractItemDelegate_CreateEditor(const QAbstractItemDelegate* self, QWidget* parent, QStyleOptionViewItem* option, QModelIndex* index) {
+	return self->createEditor(parent, *option, *index);
 }
 
-void QAbstractItemDelegate_DestroyEditor(QAbstractItemDelegate* self, QWidget* editor, QModelIndex* index) {
-	const_cast<const QAbstractItemDelegate*>(self)->destroyEditor(editor, *index);
+void QAbstractItemDelegate_DestroyEditor(const QAbstractItemDelegate* self, QWidget* editor, QModelIndex* index) {
+	self->destroyEditor(editor, *index);
 }
 
-void QAbstractItemDelegate_SetEditorData(QAbstractItemDelegate* self, QWidget* editor, QModelIndex* index) {
-	const_cast<const QAbstractItemDelegate*>(self)->setEditorData(editor, *index);
+void QAbstractItemDelegate_SetEditorData(const QAbstractItemDelegate* self, QWidget* editor, QModelIndex* index) {
+	self->setEditorData(editor, *index);
 }
 
-void QAbstractItemDelegate_SetModelData(QAbstractItemDelegate* self, QWidget* editor, QAbstractItemModel* model, QModelIndex* index) {
-	const_cast<const QAbstractItemDelegate*>(self)->setModelData(editor, model, *index);
+void QAbstractItemDelegate_SetModelData(const QAbstractItemDelegate* self, QWidget* editor, QAbstractItemModel* model, QModelIndex* index) {
+	self->setModelData(editor, model, *index);
 }
 
-void QAbstractItemDelegate_UpdateEditorGeometry(QAbstractItemDelegate* self, QWidget* editor, QStyleOptionViewItem* option, QModelIndex* index) {
-	const_cast<const QAbstractItemDelegate*>(self)->updateEditorGeometry(editor, *option, *index);
+void QAbstractItemDelegate_UpdateEditorGeometry(const QAbstractItemDelegate* self, QWidget* editor, QStyleOptionViewItem* option, QModelIndex* index) {
+	self->updateEditorGeometry(editor, *option, *index);
 }
 
 bool QAbstractItemDelegate_EditorEvent(QAbstractItemDelegate* self, QEvent* event, QAbstractItemModel* model, QStyleOptionViewItem* option, QModelIndex* index) {
@@ -92,8 +92,8 @@ bool QAbstractItemDelegate_HelpEvent(QAbstractItemDelegate* self, QHelpEvent* ev
 	return self->helpEvent(event, view, *option, *index);
 }
 
-void QAbstractItemDelegate_PaintingRoles(QAbstractItemDelegate* self, int** _out, size_t* _out_len) {
-	QVector<int> ret = const_cast<const QAbstractItemDelegate*>(self)->paintingRoles();
+void QAbstractItemDelegate_PaintingRoles(const QAbstractItemDelegate* self, int** _out, size_t* _out_len) {
+	QVector<int> ret = self->paintingRoles();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	int* __out = static_cast<int*>(malloc(sizeof(int) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {

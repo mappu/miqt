@@ -30,8 +30,8 @@ QSignalTransition* QSignalTransition_new4(QObject* sender, const char* signal, Q
 	return new QSignalTransition(sender, signal, sourceState);
 }
 
-QMetaObject* QSignalTransition_MetaObject(QSignalTransition* self) {
-	return (QMetaObject*) const_cast<const QSignalTransition*>(self)->metaObject();
+QMetaObject* QSignalTransition_MetaObject(const QSignalTransition* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QSignalTransition_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -52,16 +52,16 @@ void QSignalTransition_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
 	*_out_Strlen = b.length();
 }
 
-QObject* QSignalTransition_SenderObject(QSignalTransition* self) {
-	return const_cast<const QSignalTransition*>(self)->senderObject();
+QObject* QSignalTransition_SenderObject(const QSignalTransition* self) {
+	return self->senderObject();
 }
 
 void QSignalTransition_SetSenderObject(QSignalTransition* self, QObject* sender) {
 	self->setSenderObject(sender);
 }
 
-QByteArray* QSignalTransition_Signal(QSignalTransition* self) {
-	QByteArray ret = const_cast<const QSignalTransition*>(self)->signal();
+QByteArray* QSignalTransition_Signal(const QSignalTransition* self) {
+	QByteArray ret = self->signal();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QByteArray*>(new QByteArray(ret));
 }

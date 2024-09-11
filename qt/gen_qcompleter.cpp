@@ -52,8 +52,8 @@ QCompleter* QCompleter_new6(char** completions, uint64_t* completions_Lengths, s
 	return new QCompleter(completions_QList, parent);
 }
 
-QMetaObject* QCompleter_MetaObject(QCompleter* self) {
-	return (QMetaObject*) const_cast<const QCompleter*>(self)->metaObject();
+QMetaObject* QCompleter_MetaObject(const QCompleter* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QCompleter_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -78,24 +78,24 @@ void QCompleter_SetWidget(QCompleter* self, QWidget* widget) {
 	self->setWidget(widget);
 }
 
-QWidget* QCompleter_Widget(QCompleter* self) {
-	return const_cast<const QCompleter*>(self)->widget();
+QWidget* QCompleter_Widget(const QCompleter* self) {
+	return self->widget();
 }
 
 void QCompleter_SetModel(QCompleter* self, QAbstractItemModel* c) {
 	self->setModel(c);
 }
 
-QAbstractItemModel* QCompleter_Model(QCompleter* self) {
-	return const_cast<const QCompleter*>(self)->model();
+QAbstractItemModel* QCompleter_Model(const QCompleter* self) {
+	return self->model();
 }
 
 void QCompleter_SetCompletionMode(QCompleter* self, uintptr_t mode) {
 	self->setCompletionMode(static_cast<QCompleter::CompletionMode>(mode));
 }
 
-uintptr_t QCompleter_CompletionMode(QCompleter* self) {
-	QCompleter::CompletionMode ret = const_cast<const QCompleter*>(self)->completionMode();
+uintptr_t QCompleter_CompletionMode(const QCompleter* self) {
+	QCompleter::CompletionMode ret = self->completionMode();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -103,13 +103,13 @@ void QCompleter_SetFilterMode(QCompleter* self, int filterMode) {
 	self->setFilterMode(static_cast<Qt::MatchFlags>(filterMode));
 }
 
-int QCompleter_FilterMode(QCompleter* self) {
-	Qt::MatchFlags ret = const_cast<const QCompleter*>(self)->filterMode();
+int QCompleter_FilterMode(const QCompleter* self) {
+	Qt::MatchFlags ret = self->filterMode();
 	return static_cast<int>(ret);
 }
 
-QAbstractItemView* QCompleter_Popup(QCompleter* self) {
-	return const_cast<const QCompleter*>(self)->popup();
+QAbstractItemView* QCompleter_Popup(const QCompleter* self) {
+	return self->popup();
 }
 
 void QCompleter_SetPopup(QCompleter* self, QAbstractItemView* popup) {
@@ -120,8 +120,8 @@ void QCompleter_SetCaseSensitivity(QCompleter* self, uintptr_t caseSensitivity) 
 	self->setCaseSensitivity(static_cast<Qt::CaseSensitivity>(caseSensitivity));
 }
 
-uintptr_t QCompleter_CaseSensitivity(QCompleter* self) {
-	Qt::CaseSensitivity ret = const_cast<const QCompleter*>(self)->caseSensitivity();
+uintptr_t QCompleter_CaseSensitivity(const QCompleter* self) {
+	Qt::CaseSensitivity ret = self->caseSensitivity();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -129,8 +129,8 @@ void QCompleter_SetModelSorting(QCompleter* self, uintptr_t sorting) {
 	self->setModelSorting(static_cast<QCompleter::ModelSorting>(sorting));
 }
 
-uintptr_t QCompleter_ModelSorting(QCompleter* self) {
-	QCompleter::ModelSorting ret = const_cast<const QCompleter*>(self)->modelSorting();
+uintptr_t QCompleter_ModelSorting(const QCompleter* self) {
+	QCompleter::ModelSorting ret = self->modelSorting();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -138,50 +138,50 @@ void QCompleter_SetCompletionColumn(QCompleter* self, int column) {
 	self->setCompletionColumn(static_cast<int>(column));
 }
 
-int QCompleter_CompletionColumn(QCompleter* self) {
-	return const_cast<const QCompleter*>(self)->completionColumn();
+int QCompleter_CompletionColumn(const QCompleter* self) {
+	return self->completionColumn();
 }
 
 void QCompleter_SetCompletionRole(QCompleter* self, int role) {
 	self->setCompletionRole(static_cast<int>(role));
 }
 
-int QCompleter_CompletionRole(QCompleter* self) {
-	return const_cast<const QCompleter*>(self)->completionRole();
+int QCompleter_CompletionRole(const QCompleter* self) {
+	return self->completionRole();
 }
 
-bool QCompleter_WrapAround(QCompleter* self) {
-	return const_cast<const QCompleter*>(self)->wrapAround();
+bool QCompleter_WrapAround(const QCompleter* self) {
+	return self->wrapAround();
 }
 
-int QCompleter_MaxVisibleItems(QCompleter* self) {
-	return const_cast<const QCompleter*>(self)->maxVisibleItems();
+int QCompleter_MaxVisibleItems(const QCompleter* self) {
+	return self->maxVisibleItems();
 }
 
 void QCompleter_SetMaxVisibleItems(QCompleter* self, int maxItems) {
 	self->setMaxVisibleItems(static_cast<int>(maxItems));
 }
 
-int QCompleter_CompletionCount(QCompleter* self) {
-	return const_cast<const QCompleter*>(self)->completionCount();
+int QCompleter_CompletionCount(const QCompleter* self) {
+	return self->completionCount();
 }
 
 bool QCompleter_SetCurrentRow(QCompleter* self, int row) {
 	return self->setCurrentRow(static_cast<int>(row));
 }
 
-int QCompleter_CurrentRow(QCompleter* self) {
-	return const_cast<const QCompleter*>(self)->currentRow();
+int QCompleter_CurrentRow(const QCompleter* self) {
+	return self->currentRow();
 }
 
-QModelIndex* QCompleter_CurrentIndex(QCompleter* self) {
-	QModelIndex ret = const_cast<const QCompleter*>(self)->currentIndex();
+QModelIndex* QCompleter_CurrentIndex(const QCompleter* self) {
+	QModelIndex ret = self->currentIndex();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QModelIndex*>(new QModelIndex(ret));
 }
 
-void QCompleter_CurrentCompletion(QCompleter* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QCompleter*>(self)->currentCompletion();
+void QCompleter_CurrentCompletion(const QCompleter* self, char** _out, int* _out_Strlen) {
+	QString ret = self->currentCompletion();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -189,12 +189,12 @@ void QCompleter_CurrentCompletion(QCompleter* self, char** _out, int* _out_Strle
 	*_out_Strlen = b.length();
 }
 
-QAbstractItemModel* QCompleter_CompletionModel(QCompleter* self) {
-	return const_cast<const QCompleter*>(self)->completionModel();
+QAbstractItemModel* QCompleter_CompletionModel(const QCompleter* self) {
+	return self->completionModel();
 }
 
-void QCompleter_CompletionPrefix(QCompleter* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QCompleter*>(self)->completionPrefix();
+void QCompleter_CompletionPrefix(const QCompleter* self, char** _out, int* _out_Strlen) {
+	QString ret = self->completionPrefix();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -215,8 +215,8 @@ void QCompleter_SetWrapAround(QCompleter* self, bool wrap) {
 	self->setWrapAround(wrap);
 }
 
-void QCompleter_PathFromIndex(QCompleter* self, QModelIndex* index, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QCompleter*>(self)->pathFromIndex(*index);
+void QCompleter_PathFromIndex(const QCompleter* self, QModelIndex* index, char** _out, int* _out_Strlen) {
+	QString ret = self->pathFromIndex(*index);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -224,9 +224,9 @@ void QCompleter_PathFromIndex(QCompleter* self, QModelIndex* index, char** _out,
 	*_out_Strlen = b.length();
 }
 
-void QCompleter_SplitPath(QCompleter* self, const char* path, size_t path_Strlen, char*** _out, int** _out_Lengths, size_t* _out_len) {
+void QCompleter_SplitPath(const QCompleter* self, const char* path, size_t path_Strlen, char*** _out, int** _out_Lengths, size_t* _out_len) {
 	QString path_QString = QString::fromUtf8(path, path_Strlen);
-	QStringList ret = const_cast<const QCompleter*>(self)->splitPath(path_QString);
+	QStringList ret = self->splitPath(path_QString);
 	// Convert QStringList from C++ memory to manually-managed C memory
 	char** __out = static_cast<char**>(malloc(sizeof(char*) * ret.length()));
 	int* __out_Lengths = static_cast<int*>(malloc(sizeof(int) * ret.length()));

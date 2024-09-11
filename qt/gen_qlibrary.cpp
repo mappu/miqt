@@ -52,8 +52,8 @@ QLibrary* QLibrary_new8(const char* fileName, size_t fileName_Strlen, const char
 	return new QLibrary(fileName_QString, version_QString, parent);
 }
 
-QMetaObject* QLibrary_MetaObject(QLibrary* self) {
-	return (QMetaObject*) const_cast<const QLibrary*>(self)->metaObject();
+QMetaObject* QLibrary_MetaObject(const QLibrary* self) {
+	return (QMetaObject*) self->metaObject();
 }
 
 void QLibrary_Tr(const char* s, char** _out, int* _out_Strlen) {
@@ -82,8 +82,8 @@ bool QLibrary_Unload(QLibrary* self) {
 	return self->unload();
 }
 
-bool QLibrary_IsLoaded(QLibrary* self) {
-	return const_cast<const QLibrary*>(self)->isLoaded();
+bool QLibrary_IsLoaded(const QLibrary* self) {
+	return self->isLoaded();
 }
 
 bool QLibrary_IsLibrary(const char* fileName, size_t fileName_Strlen) {
@@ -96,8 +96,8 @@ void QLibrary_SetFileName(QLibrary* self, const char* fileName, size_t fileName_
 	self->setFileName(fileName_QString);
 }
 
-void QLibrary_FileName(QLibrary* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QLibrary*>(self)->fileName();
+void QLibrary_FileName(const QLibrary* self, char** _out, int* _out_Strlen) {
+	QString ret = self->fileName();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -116,8 +116,8 @@ void QLibrary_SetFileNameAndVersion2(QLibrary* self, const char* fileName, size_
 	self->setFileNameAndVersion(fileName_QString, version_QString);
 }
 
-void QLibrary_ErrorString(QLibrary* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QLibrary*>(self)->errorString();
+void QLibrary_ErrorString(const QLibrary* self, char** _out, int* _out_Strlen) {
+	QString ret = self->errorString();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -129,8 +129,8 @@ void QLibrary_SetLoadHints(QLibrary* self, int hints) {
 	self->setLoadHints(static_cast<QLibrary::LoadHints>(hints));
 }
 
-int QLibrary_LoadHints(QLibrary* self) {
-	QLibrary::LoadHints ret = const_cast<const QLibrary*>(self)->loadHints();
+int QLibrary_LoadHints(const QLibrary* self) {
+	QLibrary::LoadHints ret = self->loadHints();
 	return static_cast<int>(ret);
 }
 

@@ -89,44 +89,44 @@ void QAccessible_Delete(QAccessible* self) {
 	delete self;
 }
 
-bool QAccessibleInterface_IsValid(QAccessibleInterface* self) {
-	return const_cast<const QAccessibleInterface*>(self)->isValid();
+bool QAccessibleInterface_IsValid(const QAccessibleInterface* self) {
+	return self->isValid();
 }
 
-QObject* QAccessibleInterface_Object(QAccessibleInterface* self) {
-	return const_cast<const QAccessibleInterface*>(self)->object();
+QObject* QAccessibleInterface_Object(const QAccessibleInterface* self) {
+	return self->object();
 }
 
-QWindow* QAccessibleInterface_Window(QAccessibleInterface* self) {
-	return const_cast<const QAccessibleInterface*>(self)->window();
+QWindow* QAccessibleInterface_Window(const QAccessibleInterface* self) {
+	return self->window();
 }
 
-QAccessibleInterface* QAccessibleInterface_FocusChild(QAccessibleInterface* self) {
-	return const_cast<const QAccessibleInterface*>(self)->focusChild();
+QAccessibleInterface* QAccessibleInterface_FocusChild(const QAccessibleInterface* self) {
+	return self->focusChild();
 }
 
-QAccessibleInterface* QAccessibleInterface_ChildAt(QAccessibleInterface* self, int x, int y) {
-	return const_cast<const QAccessibleInterface*>(self)->childAt(static_cast<int>(x), static_cast<int>(y));
+QAccessibleInterface* QAccessibleInterface_ChildAt(const QAccessibleInterface* self, int x, int y) {
+	return self->childAt(static_cast<int>(x), static_cast<int>(y));
 }
 
-QAccessibleInterface* QAccessibleInterface_Parent(QAccessibleInterface* self) {
-	return const_cast<const QAccessibleInterface*>(self)->parent();
+QAccessibleInterface* QAccessibleInterface_Parent(const QAccessibleInterface* self) {
+	return self->parent();
 }
 
-QAccessibleInterface* QAccessibleInterface_Child(QAccessibleInterface* self, int index) {
-	return const_cast<const QAccessibleInterface*>(self)->child(static_cast<int>(index));
+QAccessibleInterface* QAccessibleInterface_Child(const QAccessibleInterface* self, int index) {
+	return self->child(static_cast<int>(index));
 }
 
-int QAccessibleInterface_ChildCount(QAccessibleInterface* self) {
-	return const_cast<const QAccessibleInterface*>(self)->childCount();
+int QAccessibleInterface_ChildCount(const QAccessibleInterface* self) {
+	return self->childCount();
 }
 
-int QAccessibleInterface_IndexOfChild(QAccessibleInterface* self, QAccessibleInterface* param1) {
-	return const_cast<const QAccessibleInterface*>(self)->indexOfChild(param1);
+int QAccessibleInterface_IndexOfChild(const QAccessibleInterface* self, QAccessibleInterface* param1) {
+	return self->indexOfChild(param1);
 }
 
-void QAccessibleInterface_Text(QAccessibleInterface* self, uintptr_t t, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QAccessibleInterface*>(self)->text(static_cast<QAccessible::Text>(t));
+void QAccessibleInterface_Text(const QAccessibleInterface* self, uintptr_t t, char** _out, int* _out_Strlen) {
+	QString ret = self->text(static_cast<QAccessible::Text>(t));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -139,31 +139,31 @@ void QAccessibleInterface_SetText(QAccessibleInterface* self, uintptr_t t, const
 	self->setText(static_cast<QAccessible::Text>(t), text_QString);
 }
 
-QRect* QAccessibleInterface_Rect(QAccessibleInterface* self) {
-	QRect ret = const_cast<const QAccessibleInterface*>(self)->rect();
+QRect* QAccessibleInterface_Rect(const QAccessibleInterface* self) {
+	QRect ret = self->rect();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRect*>(new QRect(ret));
 }
 
-uintptr_t QAccessibleInterface_Role(QAccessibleInterface* self) {
-	QAccessible::Role ret = const_cast<const QAccessibleInterface*>(self)->role();
+uintptr_t QAccessibleInterface_Role(const QAccessibleInterface* self) {
+	QAccessible::Role ret = self->role();
 	return static_cast<uintptr_t>(ret);
 }
 
-QAccessible__State* QAccessibleInterface_State(QAccessibleInterface* self) {
-	QAccessible::State ret = const_cast<const QAccessibleInterface*>(self)->state();
+QAccessible__State* QAccessibleInterface_State(const QAccessibleInterface* self) {
+	QAccessible::State ret = self->state();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QAccessible::State*>(new QAccessible::State(ret));
 }
 
-QColor* QAccessibleInterface_ForegroundColor(QAccessibleInterface* self) {
-	QColor ret = const_cast<const QAccessibleInterface*>(self)->foregroundColor();
+QColor* QAccessibleInterface_ForegroundColor(const QAccessibleInterface* self) {
+	QColor ret = self->foregroundColor();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QColor*>(new QColor(ret));
 }
 
-QColor* QAccessibleInterface_BackgroundColor(QAccessibleInterface* self) {
-	QColor ret = const_cast<const QAccessibleInterface*>(self)->backgroundColor();
+QColor* QAccessibleInterface_BackgroundColor(const QAccessibleInterface* self) {
+	QColor ret = self->backgroundColor();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QColor*>(new QColor(ret));
 }
@@ -196,12 +196,12 @@ QAccessibleTableCellInterface* QAccessibleInterface_TableCellInterface(QAccessib
 	return self->tableCellInterface();
 }
 
-void QAccessibleTextInterface_Selection(QAccessibleTextInterface* self, int selectionIndex, int* startOffset, int* endOffset) {
-	const_cast<const QAccessibleTextInterface*>(self)->selection(static_cast<int>(selectionIndex), static_cast<int*>(startOffset), static_cast<int*>(endOffset));
+void QAccessibleTextInterface_Selection(const QAccessibleTextInterface* self, int selectionIndex, int* startOffset, int* endOffset) {
+	self->selection(static_cast<int>(selectionIndex), static_cast<int*>(startOffset), static_cast<int*>(endOffset));
 }
 
-int QAccessibleTextInterface_SelectionCount(QAccessibleTextInterface* self) {
-	return const_cast<const QAccessibleTextInterface*>(self)->selectionCount();
+int QAccessibleTextInterface_SelectionCount(const QAccessibleTextInterface* self) {
+	return self->selectionCount();
 }
 
 void QAccessibleTextInterface_AddSelection(QAccessibleTextInterface* self, int startOffset, int endOffset) {
@@ -216,16 +216,16 @@ void QAccessibleTextInterface_SetSelection(QAccessibleTextInterface* self, int s
 	self->setSelection(static_cast<int>(selectionIndex), static_cast<int>(startOffset), static_cast<int>(endOffset));
 }
 
-int QAccessibleTextInterface_CursorPosition(QAccessibleTextInterface* self) {
-	return const_cast<const QAccessibleTextInterface*>(self)->cursorPosition();
+int QAccessibleTextInterface_CursorPosition(const QAccessibleTextInterface* self) {
+	return self->cursorPosition();
 }
 
 void QAccessibleTextInterface_SetCursorPosition(QAccessibleTextInterface* self, int position) {
 	self->setCursorPosition(static_cast<int>(position));
 }
 
-void QAccessibleTextInterface_Text(QAccessibleTextInterface* self, int startOffset, int endOffset, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QAccessibleTextInterface*>(self)->text(static_cast<int>(startOffset), static_cast<int>(endOffset));
+void QAccessibleTextInterface_Text(const QAccessibleTextInterface* self, int startOffset, int endOffset, char** _out, int* _out_Strlen) {
+	QString ret = self->text(static_cast<int>(startOffset), static_cast<int>(endOffset));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -233,8 +233,8 @@ void QAccessibleTextInterface_Text(QAccessibleTextInterface* self, int startOffs
 	*_out_Strlen = b.length();
 }
 
-void QAccessibleTextInterface_TextBeforeOffset(QAccessibleTextInterface* self, int offset, uintptr_t boundaryType, int* startOffset, int* endOffset, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QAccessibleTextInterface*>(self)->textBeforeOffset(static_cast<int>(offset), static_cast<QAccessible::TextBoundaryType>(boundaryType), static_cast<int*>(startOffset), static_cast<int*>(endOffset));
+void QAccessibleTextInterface_TextBeforeOffset(const QAccessibleTextInterface* self, int offset, uintptr_t boundaryType, int* startOffset, int* endOffset, char** _out, int* _out_Strlen) {
+	QString ret = self->textBeforeOffset(static_cast<int>(offset), static_cast<QAccessible::TextBoundaryType>(boundaryType), static_cast<int*>(startOffset), static_cast<int*>(endOffset));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -242,8 +242,8 @@ void QAccessibleTextInterface_TextBeforeOffset(QAccessibleTextInterface* self, i
 	*_out_Strlen = b.length();
 }
 
-void QAccessibleTextInterface_TextAfterOffset(QAccessibleTextInterface* self, int offset, uintptr_t boundaryType, int* startOffset, int* endOffset, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QAccessibleTextInterface*>(self)->textAfterOffset(static_cast<int>(offset), static_cast<QAccessible::TextBoundaryType>(boundaryType), static_cast<int*>(startOffset), static_cast<int*>(endOffset));
+void QAccessibleTextInterface_TextAfterOffset(const QAccessibleTextInterface* self, int offset, uintptr_t boundaryType, int* startOffset, int* endOffset, char** _out, int* _out_Strlen) {
+	QString ret = self->textAfterOffset(static_cast<int>(offset), static_cast<QAccessible::TextBoundaryType>(boundaryType), static_cast<int*>(startOffset), static_cast<int*>(endOffset));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -251,8 +251,8 @@ void QAccessibleTextInterface_TextAfterOffset(QAccessibleTextInterface* self, in
 	*_out_Strlen = b.length();
 }
 
-void QAccessibleTextInterface_TextAtOffset(QAccessibleTextInterface* self, int offset, uintptr_t boundaryType, int* startOffset, int* endOffset, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QAccessibleTextInterface*>(self)->textAtOffset(static_cast<int>(offset), static_cast<QAccessible::TextBoundaryType>(boundaryType), static_cast<int*>(startOffset), static_cast<int*>(endOffset));
+void QAccessibleTextInterface_TextAtOffset(const QAccessibleTextInterface* self, int offset, uintptr_t boundaryType, int* startOffset, int* endOffset, char** _out, int* _out_Strlen) {
+	QString ret = self->textAtOffset(static_cast<int>(offset), static_cast<QAccessible::TextBoundaryType>(boundaryType), static_cast<int*>(startOffset), static_cast<int*>(endOffset));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -260,26 +260,26 @@ void QAccessibleTextInterface_TextAtOffset(QAccessibleTextInterface* self, int o
 	*_out_Strlen = b.length();
 }
 
-int QAccessibleTextInterface_CharacterCount(QAccessibleTextInterface* self) {
-	return const_cast<const QAccessibleTextInterface*>(self)->characterCount();
+int QAccessibleTextInterface_CharacterCount(const QAccessibleTextInterface* self) {
+	return self->characterCount();
 }
 
-QRect* QAccessibleTextInterface_CharacterRect(QAccessibleTextInterface* self, int offset) {
-	QRect ret = const_cast<const QAccessibleTextInterface*>(self)->characterRect(static_cast<int>(offset));
+QRect* QAccessibleTextInterface_CharacterRect(const QAccessibleTextInterface* self, int offset) {
+	QRect ret = self->characterRect(static_cast<int>(offset));
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QRect*>(new QRect(ret));
 }
 
-int QAccessibleTextInterface_OffsetAtPoint(QAccessibleTextInterface* self, QPoint* point) {
-	return const_cast<const QAccessibleTextInterface*>(self)->offsetAtPoint(*point);
+int QAccessibleTextInterface_OffsetAtPoint(const QAccessibleTextInterface* self, QPoint* point) {
+	return self->offsetAtPoint(*point);
 }
 
 void QAccessibleTextInterface_ScrollToSubstring(QAccessibleTextInterface* self, int startIndex, int endIndex) {
 	self->scrollToSubstring(static_cast<int>(startIndex), static_cast<int>(endIndex));
 }
 
-void QAccessibleTextInterface_Attributes(QAccessibleTextInterface* self, int offset, int* startOffset, int* endOffset, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QAccessibleTextInterface*>(self)->attributes(static_cast<int>(offset), static_cast<int*>(startOffset), static_cast<int*>(endOffset));
+void QAccessibleTextInterface_Attributes(const QAccessibleTextInterface* self, int offset, int* startOffset, int* endOffset, char** _out, int* _out_Strlen) {
+	QString ret = self->attributes(static_cast<int>(offset), static_cast<int*>(startOffset), static_cast<int*>(endOffset));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -317,8 +317,8 @@ void QAccessibleEditableTextInterface_Delete(QAccessibleEditableTextInterface* s
 	delete self;
 }
 
-QVariant* QAccessibleValueInterface_CurrentValue(QAccessibleValueInterface* self) {
-	QVariant ret = const_cast<const QAccessibleValueInterface*>(self)->currentValue();
+QVariant* QAccessibleValueInterface_CurrentValue(const QAccessibleValueInterface* self) {
+	QVariant ret = self->currentValue();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVariant*>(new QVariant(ret));
 }
@@ -327,20 +327,20 @@ void QAccessibleValueInterface_SetCurrentValue(QAccessibleValueInterface* self, 
 	self->setCurrentValue(*value);
 }
 
-QVariant* QAccessibleValueInterface_MaximumValue(QAccessibleValueInterface* self) {
-	QVariant ret = const_cast<const QAccessibleValueInterface*>(self)->maximumValue();
+QVariant* QAccessibleValueInterface_MaximumValue(const QAccessibleValueInterface* self) {
+	QVariant ret = self->maximumValue();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVariant*>(new QVariant(ret));
 }
 
-QVariant* QAccessibleValueInterface_MinimumValue(QAccessibleValueInterface* self) {
-	QVariant ret = const_cast<const QAccessibleValueInterface*>(self)->minimumValue();
+QVariant* QAccessibleValueInterface_MinimumValue(const QAccessibleValueInterface* self) {
+	QVariant ret = self->minimumValue();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVariant*>(new QVariant(ret));
 }
 
-QVariant* QAccessibleValueInterface_MinimumStepSize(QAccessibleValueInterface* self) {
-	QVariant ret = const_cast<const QAccessibleValueInterface*>(self)->minimumStepSize();
+QVariant* QAccessibleValueInterface_MinimumStepSize(const QAccessibleValueInterface* self) {
+	QVariant ret = self->minimumStepSize();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVariant*>(new QVariant(ret));
 }
@@ -353,12 +353,12 @@ void QAccessibleValueInterface_Delete(QAccessibleValueInterface* self) {
 	delete self;
 }
 
-bool QAccessibleTableCellInterface_IsSelected(QAccessibleTableCellInterface* self) {
-	return const_cast<const QAccessibleTableCellInterface*>(self)->isSelected();
+bool QAccessibleTableCellInterface_IsSelected(const QAccessibleTableCellInterface* self) {
+	return self->isSelected();
 }
 
-void QAccessibleTableCellInterface_ColumnHeaderCells(QAccessibleTableCellInterface* self, QAccessibleInterface*** _out, size_t* _out_len) {
-	QList<QAccessibleInterface*> ret = const_cast<const QAccessibleTableCellInterface*>(self)->columnHeaderCells();
+void QAccessibleTableCellInterface_ColumnHeaderCells(const QAccessibleTableCellInterface* self, QAccessibleInterface*** _out, size_t* _out_len) {
+	QList<QAccessibleInterface*> ret = self->columnHeaderCells();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QAccessibleInterface** __out = static_cast<QAccessibleInterface**>(malloc(sizeof(QAccessibleInterface*) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {
@@ -368,8 +368,8 @@ void QAccessibleTableCellInterface_ColumnHeaderCells(QAccessibleTableCellInterfa
 	*_out_len = ret.length();
 }
 
-void QAccessibleTableCellInterface_RowHeaderCells(QAccessibleTableCellInterface* self, QAccessibleInterface*** _out, size_t* _out_len) {
-	QList<QAccessibleInterface*> ret = const_cast<const QAccessibleTableCellInterface*>(self)->rowHeaderCells();
+void QAccessibleTableCellInterface_RowHeaderCells(const QAccessibleTableCellInterface* self, QAccessibleInterface*** _out, size_t* _out_len) {
+	QList<QAccessibleInterface*> ret = self->rowHeaderCells();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QAccessibleInterface** __out = static_cast<QAccessibleInterface**>(malloc(sizeof(QAccessibleInterface*) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {
@@ -379,24 +379,24 @@ void QAccessibleTableCellInterface_RowHeaderCells(QAccessibleTableCellInterface*
 	*_out_len = ret.length();
 }
 
-int QAccessibleTableCellInterface_ColumnIndex(QAccessibleTableCellInterface* self) {
-	return const_cast<const QAccessibleTableCellInterface*>(self)->columnIndex();
+int QAccessibleTableCellInterface_ColumnIndex(const QAccessibleTableCellInterface* self) {
+	return self->columnIndex();
 }
 
-int QAccessibleTableCellInterface_RowIndex(QAccessibleTableCellInterface* self) {
-	return const_cast<const QAccessibleTableCellInterface*>(self)->rowIndex();
+int QAccessibleTableCellInterface_RowIndex(const QAccessibleTableCellInterface* self) {
+	return self->rowIndex();
 }
 
-int QAccessibleTableCellInterface_ColumnExtent(QAccessibleTableCellInterface* self) {
-	return const_cast<const QAccessibleTableCellInterface*>(self)->columnExtent();
+int QAccessibleTableCellInterface_ColumnExtent(const QAccessibleTableCellInterface* self) {
+	return self->columnExtent();
 }
 
-int QAccessibleTableCellInterface_RowExtent(QAccessibleTableCellInterface* self) {
-	return const_cast<const QAccessibleTableCellInterface*>(self)->rowExtent();
+int QAccessibleTableCellInterface_RowExtent(const QAccessibleTableCellInterface* self) {
+	return self->rowExtent();
 }
 
-QAccessibleInterface* QAccessibleTableCellInterface_Table(QAccessibleTableCellInterface* self) {
-	return const_cast<const QAccessibleTableCellInterface*>(self)->table();
+QAccessibleInterface* QAccessibleTableCellInterface_Table(const QAccessibleTableCellInterface* self) {
+	return self->table();
 }
 
 void QAccessibleTableCellInterface_OperatorAssign(QAccessibleTableCellInterface* self, QAccessibleTableCellInterface* param1) {
@@ -407,24 +407,24 @@ void QAccessibleTableCellInterface_Delete(QAccessibleTableCellInterface* self) {
 	delete self;
 }
 
-QAccessibleInterface* QAccessibleTableInterface_Caption(QAccessibleTableInterface* self) {
-	return const_cast<const QAccessibleTableInterface*>(self)->caption();
+QAccessibleInterface* QAccessibleTableInterface_Caption(const QAccessibleTableInterface* self) {
+	return self->caption();
 }
 
-QAccessibleInterface* QAccessibleTableInterface_Summary(QAccessibleTableInterface* self) {
-	return const_cast<const QAccessibleTableInterface*>(self)->summary();
+QAccessibleInterface* QAccessibleTableInterface_Summary(const QAccessibleTableInterface* self) {
+	return self->summary();
 }
 
-QAccessibleInterface* QAccessibleTableInterface_CellAt(QAccessibleTableInterface* self, int row, int column) {
-	return const_cast<const QAccessibleTableInterface*>(self)->cellAt(static_cast<int>(row), static_cast<int>(column));
+QAccessibleInterface* QAccessibleTableInterface_CellAt(const QAccessibleTableInterface* self, int row, int column) {
+	return self->cellAt(static_cast<int>(row), static_cast<int>(column));
 }
 
-int QAccessibleTableInterface_SelectedCellCount(QAccessibleTableInterface* self) {
-	return const_cast<const QAccessibleTableInterface*>(self)->selectedCellCount();
+int QAccessibleTableInterface_SelectedCellCount(const QAccessibleTableInterface* self) {
+	return self->selectedCellCount();
 }
 
-void QAccessibleTableInterface_SelectedCells(QAccessibleTableInterface* self, QAccessibleInterface*** _out, size_t* _out_len) {
-	QList<QAccessibleInterface*> ret = const_cast<const QAccessibleTableInterface*>(self)->selectedCells();
+void QAccessibleTableInterface_SelectedCells(const QAccessibleTableInterface* self, QAccessibleInterface*** _out, size_t* _out_len) {
+	QList<QAccessibleInterface*> ret = self->selectedCells();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QAccessibleInterface** __out = static_cast<QAccessibleInterface**>(malloc(sizeof(QAccessibleInterface*) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {
@@ -434,8 +434,8 @@ void QAccessibleTableInterface_SelectedCells(QAccessibleTableInterface* self, QA
 	*_out_len = ret.length();
 }
 
-void QAccessibleTableInterface_ColumnDescription(QAccessibleTableInterface* self, int column, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QAccessibleTableInterface*>(self)->columnDescription(static_cast<int>(column));
+void QAccessibleTableInterface_ColumnDescription(const QAccessibleTableInterface* self, int column, char** _out, int* _out_Strlen) {
+	QString ret = self->columnDescription(static_cast<int>(column));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -443,8 +443,8 @@ void QAccessibleTableInterface_ColumnDescription(QAccessibleTableInterface* self
 	*_out_Strlen = b.length();
 }
 
-void QAccessibleTableInterface_RowDescription(QAccessibleTableInterface* self, int row, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QAccessibleTableInterface*>(self)->rowDescription(static_cast<int>(row));
+void QAccessibleTableInterface_RowDescription(const QAccessibleTableInterface* self, int row, char** _out, int* _out_Strlen) {
+	QString ret = self->rowDescription(static_cast<int>(row));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -452,24 +452,24 @@ void QAccessibleTableInterface_RowDescription(QAccessibleTableInterface* self, i
 	*_out_Strlen = b.length();
 }
 
-int QAccessibleTableInterface_SelectedColumnCount(QAccessibleTableInterface* self) {
-	return const_cast<const QAccessibleTableInterface*>(self)->selectedColumnCount();
+int QAccessibleTableInterface_SelectedColumnCount(const QAccessibleTableInterface* self) {
+	return self->selectedColumnCount();
 }
 
-int QAccessibleTableInterface_SelectedRowCount(QAccessibleTableInterface* self) {
-	return const_cast<const QAccessibleTableInterface*>(self)->selectedRowCount();
+int QAccessibleTableInterface_SelectedRowCount(const QAccessibleTableInterface* self) {
+	return self->selectedRowCount();
 }
 
-int QAccessibleTableInterface_ColumnCount(QAccessibleTableInterface* self) {
-	return const_cast<const QAccessibleTableInterface*>(self)->columnCount();
+int QAccessibleTableInterface_ColumnCount(const QAccessibleTableInterface* self) {
+	return self->columnCount();
 }
 
-int QAccessibleTableInterface_RowCount(QAccessibleTableInterface* self) {
-	return const_cast<const QAccessibleTableInterface*>(self)->rowCount();
+int QAccessibleTableInterface_RowCount(const QAccessibleTableInterface* self) {
+	return self->rowCount();
 }
 
-void QAccessibleTableInterface_SelectedColumns(QAccessibleTableInterface* self, int** _out, size_t* _out_len) {
-	QList<int> ret = const_cast<const QAccessibleTableInterface*>(self)->selectedColumns();
+void QAccessibleTableInterface_SelectedColumns(const QAccessibleTableInterface* self, int** _out, size_t* _out_len) {
+	QList<int> ret = self->selectedColumns();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	int* __out = static_cast<int*>(malloc(sizeof(int) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {
@@ -479,8 +479,8 @@ void QAccessibleTableInterface_SelectedColumns(QAccessibleTableInterface* self, 
 	*_out_len = ret.length();
 }
 
-void QAccessibleTableInterface_SelectedRows(QAccessibleTableInterface* self, int** _out, size_t* _out_len) {
-	QList<int> ret = const_cast<const QAccessibleTableInterface*>(self)->selectedRows();
+void QAccessibleTableInterface_SelectedRows(const QAccessibleTableInterface* self, int** _out, size_t* _out_len) {
+	QList<int> ret = self->selectedRows();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	int* __out = static_cast<int*>(malloc(sizeof(int) * ret.length()));
 	for (size_t i = 0, e = ret.length(); i < e; ++i) {
@@ -490,12 +490,12 @@ void QAccessibleTableInterface_SelectedRows(QAccessibleTableInterface* self, int
 	*_out_len = ret.length();
 }
 
-bool QAccessibleTableInterface_IsColumnSelected(QAccessibleTableInterface* self, int column) {
-	return const_cast<const QAccessibleTableInterface*>(self)->isColumnSelected(static_cast<int>(column));
+bool QAccessibleTableInterface_IsColumnSelected(const QAccessibleTableInterface* self, int column) {
+	return self->isColumnSelected(static_cast<int>(column));
 }
 
-bool QAccessibleTableInterface_IsRowSelected(QAccessibleTableInterface* self, int row) {
-	return const_cast<const QAccessibleTableInterface*>(self)->isRowSelected(static_cast<int>(row));
+bool QAccessibleTableInterface_IsRowSelected(const QAccessibleTableInterface* self, int row) {
+	return self->isRowSelected(static_cast<int>(row));
 }
 
 bool QAccessibleTableInterface_SelectRow(QAccessibleTableInterface* self, int row) {
@@ -540,8 +540,8 @@ void QAccessibleActionInterface_TrUtf8(const char* sourceText, char** _out, int*
 	*_out_Strlen = b.length();
 }
 
-void QAccessibleActionInterface_ActionNames(QAccessibleActionInterface* self, char*** _out, int** _out_Lengths, size_t* _out_len) {
-	QStringList ret = const_cast<const QAccessibleActionInterface*>(self)->actionNames();
+void QAccessibleActionInterface_ActionNames(const QAccessibleActionInterface* self, char*** _out, int** _out_Lengths, size_t* _out_len) {
+	QStringList ret = self->actionNames();
 	// Convert QStringList from C++ memory to manually-managed C memory
 	char** __out = static_cast<char**>(malloc(sizeof(char*) * ret.length()));
 	int* __out_Lengths = static_cast<int*>(malloc(sizeof(int) * ret.length()));
@@ -557,9 +557,9 @@ void QAccessibleActionInterface_ActionNames(QAccessibleActionInterface* self, ch
 	*_out_len = ret.length();
 }
 
-void QAccessibleActionInterface_LocalizedActionName(QAccessibleActionInterface* self, const char* name, size_t name_Strlen, char** _out, int* _out_Strlen) {
+void QAccessibleActionInterface_LocalizedActionName(const QAccessibleActionInterface* self, const char* name, size_t name_Strlen, char** _out, int* _out_Strlen) {
 	QString name_QString = QString::fromUtf8(name, name_Strlen);
-	QString ret = const_cast<const QAccessibleActionInterface*>(self)->localizedActionName(name_QString);
+	QString ret = self->localizedActionName(name_QString);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -567,9 +567,9 @@ void QAccessibleActionInterface_LocalizedActionName(QAccessibleActionInterface* 
 	*_out_Strlen = b.length();
 }
 
-void QAccessibleActionInterface_LocalizedActionDescription(QAccessibleActionInterface* self, const char* name, size_t name_Strlen, char** _out, int* _out_Strlen) {
+void QAccessibleActionInterface_LocalizedActionDescription(const QAccessibleActionInterface* self, const char* name, size_t name_Strlen, char** _out, int* _out_Strlen) {
 	QString name_QString = QString::fromUtf8(name, name_Strlen);
-	QString ret = const_cast<const QAccessibleActionInterface*>(self)->localizedActionDescription(name_QString);
+	QString ret = self->localizedActionDescription(name_QString);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -582,9 +582,9 @@ void QAccessibleActionInterface_DoAction(QAccessibleActionInterface* self, const
 	self->doAction(actionName_QString);
 }
 
-void QAccessibleActionInterface_KeyBindingsForAction(QAccessibleActionInterface* self, const char* actionName, size_t actionName_Strlen, char*** _out, int** _out_Lengths, size_t* _out_len) {
+void QAccessibleActionInterface_KeyBindingsForAction(const QAccessibleActionInterface* self, const char* actionName, size_t actionName_Strlen, char*** _out, int** _out_Lengths, size_t* _out_len) {
 	QString actionName_QString = QString::fromUtf8(actionName, actionName_Strlen);
-	QStringList ret = const_cast<const QAccessibleActionInterface*>(self)->keyBindingsForAction(actionName_QString);
+	QStringList ret = self->keyBindingsForAction(actionName_QString);
 	// Convert QStringList from C++ memory to manually-managed C memory
 	char** __out = static_cast<char**>(malloc(sizeof(char*) * ret.length()));
 	int* __out_Lengths = static_cast<int*>(malloc(sizeof(int) * ret.length()));
@@ -752,8 +752,8 @@ void QAccessibleActionInterface_Delete(QAccessibleActionInterface* self) {
 	delete self;
 }
 
-void QAccessibleImageInterface_ImageDescription(QAccessibleImageInterface* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QAccessibleImageInterface*>(self)->imageDescription();
+void QAccessibleImageInterface_ImageDescription(const QAccessibleImageInterface* self, char** _out, int* _out_Strlen) {
+	QString ret = self->imageDescription();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -761,14 +761,14 @@ void QAccessibleImageInterface_ImageDescription(QAccessibleImageInterface* self,
 	*_out_Strlen = b.length();
 }
 
-QSize* QAccessibleImageInterface_ImageSize(QAccessibleImageInterface* self) {
-	QSize ret = const_cast<const QAccessibleImageInterface*>(self)->imageSize();
+QSize* QAccessibleImageInterface_ImageSize(const QAccessibleImageInterface* self) {
+	QSize ret = self->imageSize();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QSize*>(new QSize(ret));
 }
 
-QPoint* QAccessibleImageInterface_ImagePosition(QAccessibleImageInterface* self) {
-	QPoint ret = const_cast<const QAccessibleImageInterface*>(self)->imagePosition();
+QPoint* QAccessibleImageInterface_ImagePosition(const QAccessibleImageInterface* self) {
+	QPoint ret = self->imagePosition();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QPoint*>(new QPoint(ret));
 }
@@ -789,29 +789,29 @@ QAccessibleEvent* QAccessibleEvent_new2(QAccessibleInterface* iface, uintptr_t t
 	return new QAccessibleEvent(iface, static_cast<QAccessible::Event>(typ));
 }
 
-uintptr_t QAccessibleEvent_Type(QAccessibleEvent* self) {
-	QAccessible::Event ret = const_cast<const QAccessibleEvent*>(self)->type();
+uintptr_t QAccessibleEvent_Type(const QAccessibleEvent* self) {
+	QAccessible::Event ret = self->type();
 	return static_cast<uintptr_t>(ret);
 }
 
-QObject* QAccessibleEvent_Object(QAccessibleEvent* self) {
-	return const_cast<const QAccessibleEvent*>(self)->object();
+QObject* QAccessibleEvent_Object(const QAccessibleEvent* self) {
+	return self->object();
 }
 
-unsigned int QAccessibleEvent_UniqueId(QAccessibleEvent* self) {
-	return const_cast<const QAccessibleEvent*>(self)->uniqueId();
+unsigned int QAccessibleEvent_UniqueId(const QAccessibleEvent* self) {
+	return self->uniqueId();
 }
 
 void QAccessibleEvent_SetChild(QAccessibleEvent* self, int chld) {
 	self->setChild(static_cast<int>(chld));
 }
 
-int QAccessibleEvent_Child(QAccessibleEvent* self) {
-	return const_cast<const QAccessibleEvent*>(self)->child();
+int QAccessibleEvent_Child(const QAccessibleEvent* self) {
+	return self->child();
 }
 
-QAccessibleInterface* QAccessibleEvent_AccessibleInterface(QAccessibleEvent* self) {
-	return const_cast<const QAccessibleEvent*>(self)->accessibleInterface();
+QAccessibleInterface* QAccessibleEvent_AccessibleInterface(const QAccessibleEvent* self) {
+	return self->accessibleInterface();
 }
 
 void QAccessibleEvent_Delete(QAccessibleEvent* self) {
@@ -826,8 +826,8 @@ QAccessibleStateChangeEvent* QAccessibleStateChangeEvent_new2(QAccessibleInterfa
 	return new QAccessibleStateChangeEvent(iface, *state);
 }
 
-QAccessible__State* QAccessibleStateChangeEvent_ChangedStates(QAccessibleStateChangeEvent* self) {
-	QAccessible::State ret = const_cast<const QAccessibleStateChangeEvent*>(self)->changedStates();
+QAccessible__State* QAccessibleStateChangeEvent_ChangedStates(const QAccessibleStateChangeEvent* self) {
+	QAccessible::State ret = self->changedStates();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QAccessible::State*>(new QAccessible::State(ret));
 }
@@ -848,8 +848,8 @@ void QAccessibleTextCursorEvent_SetCursorPosition(QAccessibleTextCursorEvent* se
 	self->setCursorPosition(static_cast<int>(position));
 }
 
-int QAccessibleTextCursorEvent_CursorPosition(QAccessibleTextCursorEvent* self) {
-	return const_cast<const QAccessibleTextCursorEvent*>(self)->cursorPosition();
+int QAccessibleTextCursorEvent_CursorPosition(const QAccessibleTextCursorEvent* self) {
+	return self->cursorPosition();
 }
 
 void QAccessibleTextCursorEvent_Delete(QAccessibleTextCursorEvent* self) {
@@ -868,12 +868,12 @@ void QAccessibleTextSelectionEvent_SetSelection(QAccessibleTextSelectionEvent* s
 	self->setSelection(static_cast<int>(start), static_cast<int>(end));
 }
 
-int QAccessibleTextSelectionEvent_SelectionStart(QAccessibleTextSelectionEvent* self) {
-	return const_cast<const QAccessibleTextSelectionEvent*>(self)->selectionStart();
+int QAccessibleTextSelectionEvent_SelectionStart(const QAccessibleTextSelectionEvent* self) {
+	return self->selectionStart();
 }
 
-int QAccessibleTextSelectionEvent_SelectionEnd(QAccessibleTextSelectionEvent* self) {
-	return const_cast<const QAccessibleTextSelectionEvent*>(self)->selectionEnd();
+int QAccessibleTextSelectionEvent_SelectionEnd(const QAccessibleTextSelectionEvent* self) {
+	return self->selectionEnd();
 }
 
 void QAccessibleTextSelectionEvent_Delete(QAccessibleTextSelectionEvent* self) {
@@ -890,8 +890,8 @@ QAccessibleTextInsertEvent* QAccessibleTextInsertEvent_new2(QAccessibleInterface
 	return new QAccessibleTextInsertEvent(iface, static_cast<int>(position), text_QString);
 }
 
-void QAccessibleTextInsertEvent_TextInserted(QAccessibleTextInsertEvent* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QAccessibleTextInsertEvent*>(self)->textInserted();
+void QAccessibleTextInsertEvent_TextInserted(const QAccessibleTextInsertEvent* self, char** _out, int* _out_Strlen) {
+	QString ret = self->textInserted();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -899,8 +899,8 @@ void QAccessibleTextInsertEvent_TextInserted(QAccessibleTextInsertEvent* self, c
 	*_out_Strlen = b.length();
 }
 
-int QAccessibleTextInsertEvent_ChangePosition(QAccessibleTextInsertEvent* self) {
-	return const_cast<const QAccessibleTextInsertEvent*>(self)->changePosition();
+int QAccessibleTextInsertEvent_ChangePosition(const QAccessibleTextInsertEvent* self) {
+	return self->changePosition();
 }
 
 void QAccessibleTextInsertEvent_Delete(QAccessibleTextInsertEvent* self) {
@@ -917,8 +917,8 @@ QAccessibleTextRemoveEvent* QAccessibleTextRemoveEvent_new2(QAccessibleInterface
 	return new QAccessibleTextRemoveEvent(iface, static_cast<int>(position), text_QString);
 }
 
-void QAccessibleTextRemoveEvent_TextRemoved(QAccessibleTextRemoveEvent* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QAccessibleTextRemoveEvent*>(self)->textRemoved();
+void QAccessibleTextRemoveEvent_TextRemoved(const QAccessibleTextRemoveEvent* self, char** _out, int* _out_Strlen) {
+	QString ret = self->textRemoved();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -926,8 +926,8 @@ void QAccessibleTextRemoveEvent_TextRemoved(QAccessibleTextRemoveEvent* self, ch
 	*_out_Strlen = b.length();
 }
 
-int QAccessibleTextRemoveEvent_ChangePosition(QAccessibleTextRemoveEvent* self) {
-	return const_cast<const QAccessibleTextRemoveEvent*>(self)->changePosition();
+int QAccessibleTextRemoveEvent_ChangePosition(const QAccessibleTextRemoveEvent* self) {
+	return self->changePosition();
 }
 
 void QAccessibleTextRemoveEvent_Delete(QAccessibleTextRemoveEvent* self) {
@@ -946,8 +946,8 @@ QAccessibleTextUpdateEvent* QAccessibleTextUpdateEvent_new2(QAccessibleInterface
 	return new QAccessibleTextUpdateEvent(iface, static_cast<int>(position), oldText_QString, text_QString);
 }
 
-void QAccessibleTextUpdateEvent_TextRemoved(QAccessibleTextUpdateEvent* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QAccessibleTextUpdateEvent*>(self)->textRemoved();
+void QAccessibleTextUpdateEvent_TextRemoved(const QAccessibleTextUpdateEvent* self, char** _out, int* _out_Strlen) {
+	QString ret = self->textRemoved();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -955,8 +955,8 @@ void QAccessibleTextUpdateEvent_TextRemoved(QAccessibleTextUpdateEvent* self, ch
 	*_out_Strlen = b.length();
 }
 
-void QAccessibleTextUpdateEvent_TextInserted(QAccessibleTextUpdateEvent* self, char** _out, int* _out_Strlen) {
-	QString ret = const_cast<const QAccessibleTextUpdateEvent*>(self)->textInserted();
+void QAccessibleTextUpdateEvent_TextInserted(const QAccessibleTextUpdateEvent* self, char** _out, int* _out_Strlen) {
+	QString ret = self->textInserted();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray b = ret.toUtf8();
 	*_out = static_cast<char*>(malloc(b.length()));
@@ -964,8 +964,8 @@ void QAccessibleTextUpdateEvent_TextInserted(QAccessibleTextUpdateEvent* self, c
 	*_out_Strlen = b.length();
 }
 
-int QAccessibleTextUpdateEvent_ChangePosition(QAccessibleTextUpdateEvent* self) {
-	return const_cast<const QAccessibleTextUpdateEvent*>(self)->changePosition();
+int QAccessibleTextUpdateEvent_ChangePosition(const QAccessibleTextUpdateEvent* self) {
+	return self->changePosition();
 }
 
 void QAccessibleTextUpdateEvent_Delete(QAccessibleTextUpdateEvent* self) {
@@ -984,8 +984,8 @@ void QAccessibleValueChangeEvent_SetValue(QAccessibleValueChangeEvent* self, QVa
 	self->setValue(*val);
 }
 
-QVariant* QAccessibleValueChangeEvent_Value(QAccessibleValueChangeEvent* self) {
-	QVariant ret = const_cast<const QAccessibleValueChangeEvent*>(self)->value();
+QVariant* QAccessibleValueChangeEvent_Value(const QAccessibleValueChangeEvent* self) {
+	QVariant ret = self->value();
 	// Copy-construct value returned type into heap-allocated copy
 	return static_cast<QVariant*>(new QVariant(ret));
 }
@@ -1006,8 +1006,8 @@ void QAccessibleTableModelChangeEvent_SetModelChangeType(QAccessibleTableModelCh
 	self->setModelChangeType(static_cast<QAccessibleTableModelChangeEvent::ModelChangeType>(changeType));
 }
 
-uintptr_t QAccessibleTableModelChangeEvent_ModelChangeType(QAccessibleTableModelChangeEvent* self) {
-	QAccessibleTableModelChangeEvent::ModelChangeType ret = const_cast<const QAccessibleTableModelChangeEvent*>(self)->modelChangeType();
+uintptr_t QAccessibleTableModelChangeEvent_ModelChangeType(const QAccessibleTableModelChangeEvent* self) {
+	QAccessibleTableModelChangeEvent::ModelChangeType ret = self->modelChangeType();
 	return static_cast<uintptr_t>(ret);
 }
 
@@ -1027,20 +1027,20 @@ void QAccessibleTableModelChangeEvent_SetLastColumn(QAccessibleTableModelChangeE
 	self->setLastColumn(static_cast<int>(col));
 }
 
-int QAccessibleTableModelChangeEvent_FirstRow(QAccessibleTableModelChangeEvent* self) {
-	return const_cast<const QAccessibleTableModelChangeEvent*>(self)->firstRow();
+int QAccessibleTableModelChangeEvent_FirstRow(const QAccessibleTableModelChangeEvent* self) {
+	return self->firstRow();
 }
 
-int QAccessibleTableModelChangeEvent_FirstColumn(QAccessibleTableModelChangeEvent* self) {
-	return const_cast<const QAccessibleTableModelChangeEvent*>(self)->firstColumn();
+int QAccessibleTableModelChangeEvent_FirstColumn(const QAccessibleTableModelChangeEvent* self) {
+	return self->firstColumn();
 }
 
-int QAccessibleTableModelChangeEvent_LastRow(QAccessibleTableModelChangeEvent* self) {
-	return const_cast<const QAccessibleTableModelChangeEvent*>(self)->lastRow();
+int QAccessibleTableModelChangeEvent_LastRow(const QAccessibleTableModelChangeEvent* self) {
+	return self->lastRow();
 }
 
-int QAccessibleTableModelChangeEvent_LastColumn(QAccessibleTableModelChangeEvent* self) {
-	return const_cast<const QAccessibleTableModelChangeEvent*>(self)->lastColumn();
+int QAccessibleTableModelChangeEvent_LastColumn(const QAccessibleTableModelChangeEvent* self) {
+	return self->lastColumn();
 }
 
 void QAccessibleTableModelChangeEvent_Delete(QAccessibleTableModelChangeEvent* self) {
