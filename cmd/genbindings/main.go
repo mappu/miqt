@@ -9,6 +9,7 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
+	"time"
 )
 
 func cacheFilePath(inputHeader string) string {
@@ -96,9 +97,22 @@ func main() {
 			log.Printf("No AST cache for file %q, running clang...", filepath.Base(inputHeader))
 
 			// Parse the file
-			astInner, err = clangExec(ctx, *clang, inputHeader, strings.Fields(*cflags))
+			// This seems to intermittently fail, so allow retrying
+		nextRetry:
+			for retryCt := 0; retryCt < 5; retryCt++ {
+				astInner, err = clangExec(ctx, *clang, inputHeader, strings.Fields(*cflags))
+				if err != nil {
+					// Log and continue with next retry
+					log.Printf("WARNING: Clang execution failed: %v", err)
+					time.Sleep(3 * time.Second)
+					log.Printf("Retrying...")
+
+				} else { // err == nil
+					break nextRetry
+				}
+			}
 			if err != nil {
-				panic(err)
+				panic("Clang execution failed after 5x retries")
 			}
 
 			// Write to cache
