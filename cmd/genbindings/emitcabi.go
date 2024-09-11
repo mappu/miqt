@@ -460,7 +460,7 @@ extern "C" {
 		}
 
 		for _, m := range c.Methods {
-			ret.WriteString(fmt.Sprintf("%s %s_%s(%s);\n", emitReturnTypeCabi(m.ReturnType), cClassName, m.SafeMethodName(), emitParametersCabi(m, cClassName+"*")))
+			ret.WriteString(fmt.Sprintf("%s %s_%s(%s);\n", emitReturnTypeCabi(m.ReturnType), cClassName, m.SafeMethodName(), emitParametersCabi(m, ifv(m.IsConst, "const ", "")+cClassName+"*")))
 
 			if m.IsSignal {
 				ret.WriteString(fmt.Sprintf("%s %s_connect_%s(%s* self, void* slot);\n", emitReturnTypeCabi(m.ReturnType), cClassName, m.SafeMethodName(), cClassName))
@@ -687,8 +687,6 @@ extern "C" {
 			if m.IsStatic {
 				callTarget = c.ClassName + "::"
 
-			} else if m.IsConst {
-				callTarget = "const_cast<const " + c.ClassName + "*>(self)->"
 			}
 
 			if m.LinuxOnly {
@@ -704,7 +702,7 @@ extern "C" {
 						"#endif\n"+
 						"}\n"+
 						"\n",
-					emitReturnTypeCabi(m.ReturnType), cClassName, m.SafeMethodName(), emitParametersCabi(m, cClassName+"*"),
+					emitReturnTypeCabi(m.ReturnType), cClassName, m.SafeMethodName(), emitParametersCabi(m, ifv(m.IsConst, "const ", "")+cClassName+"*"),
 					preamble,
 					shouldReturn, callTarget, nativeMethodName, forwarding,
 					afterCall,
@@ -720,7 +718,7 @@ extern "C" {
 						"%s"+
 						"}\n"+
 						"\n",
-					emitReturnTypeCabi(m.ReturnType), cClassName, m.SafeMethodName(), emitParametersCabi(m, cClassName+"*"),
+					emitReturnTypeCabi(m.ReturnType), cClassName, m.SafeMethodName(), emitParametersCabi(m, ifv(m.IsConst, "const ", "")+cClassName+"*"),
 					preamble,
 					shouldReturn, callTarget, nativeMethodName, forwarding,
 					afterCall,

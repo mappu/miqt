@@ -27,3 +27,10 @@ func prettyPrint(obj interface{}) {
 
 	log.Println(string(jb))
 }
+
+func ifv[T any](condition bool, trueval T, falseval T) T {
+	if condition {
+		return trueval
+	}
+	return falseval
+}
