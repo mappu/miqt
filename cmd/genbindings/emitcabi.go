@@ -536,6 +536,8 @@ func emitBindingHeader(src *CppParsedHeader, filename string) (string, error) {
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -638,12 +640,6 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 
 	ret.WriteString(`#include "` + filename + "\"\n\n")
 	ret.WriteString(`#include "gen_` + filename + "\"\n")
-	ret.WriteString(`
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
-
-`)
 
 	for _, c := range src.Classes {
 
