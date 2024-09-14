@@ -15,7 +15,7 @@ jobs:
       uses: actions/checkout@v4
     
     - name: Linux64 docker build
-      run: cd docker && docker build -t miqt/linux64:latest -f genbindings.Dockerfile .
+      run: cd docker && docker build -t miqt/genbindings:latest -f genbindings.Dockerfile .
     
     - name: Cache clang ASTs
       uses: actions/cache@v4
@@ -24,7 +24,7 @@ jobs:
         key: linux64-clang-cache
         
     - name: Rebuild binding source
-      run: docker run -v ~/.cache/go-build:/root/.cache/go-build -v $PWD:/src -w /src miqt/linux64:latest /bin/bash -c 'cd cmd/genbindings && go build && ./genbindings'
+      run: docker run -v ~/.cache/go-build:/root/.cache/go-build -v $PWD:/src -w /src miqt/genbindings:latest /bin/bash -c 'cd cmd/genbindings && go build && ./genbindings'
     
     - name: Assert no changes
       run: git update-index --really-refresh && git diff-index HEAD
