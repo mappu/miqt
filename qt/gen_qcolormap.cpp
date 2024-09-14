@@ -2,12 +2,8 @@
 #include <QColormap>
 #include <QList>
 #include "qcolormap.h"
-
 #include "gen_qcolormap.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QColormap* QColormap_new(QColormap* colormap) {
 	return new QColormap(*colormap);
@@ -22,9 +18,9 @@ void QColormap_Cleanup() {
 }
 
 QColormap* QColormap_Instance() {
-	QColormap ret = QColormap::instance();
+	QColormap _ret = QColormap::instance();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QColormap*>(new QColormap(ret));
+	return static_cast<QColormap*>(new QColormap(_ret));
 }
 
 void QColormap_OperatorAssign(QColormap* self, QColormap* colormap) {
@@ -32,8 +28,8 @@ void QColormap_OperatorAssign(QColormap* self, QColormap* colormap) {
 }
 
 uintptr_t QColormap_Mode(const QColormap* self) {
-	QColormap::Mode ret = self->mode();
-	return static_cast<uintptr_t>(ret);
+	QColormap::Mode _ret = self->mode();
+	return static_cast<uintptr_t>(_ret);
 }
 
 int QColormap_Depth(const QColormap* self) {
@@ -49,26 +45,28 @@ unsigned int QColormap_Pixel(const QColormap* self, QColor* color) {
 }
 
 QColor* QColormap_ColorAt(const QColormap* self, unsigned int pixel) {
-	QColor ret = self->colorAt(static_cast<uint>(pixel));
+	QColor _ret = self->colorAt(static_cast<uint>(pixel));
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QColor*>(new QColor(ret));
+	return static_cast<QColor*>(new QColor(_ret));
 }
 
-void QColormap_Colormap(const QColormap* self, QColor*** _out, size_t* _out_len) {
-	const QVector<QColor> ret = self->colormap();
+struct miqt_array* QColormap_Colormap(const QColormap* self) {
+	const QVector<QColor> _ret = self->colormap();
 	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
-	QColor** __out = static_cast<QColor**>(malloc(sizeof(QColor**) * ret.length()));
-	for (size_t i = 0, e = ret.length(); i < e; ++i) {
-		__out[i] = new QColor(ret[i]);
+	QColor** _arr = static_cast<QColor**>(malloc(sizeof(QColor**) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		_arr[i] = new QColor(_ret[i]);
 	}
-	*_out = __out;
-	*_out_len = ret.length();
+	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
+	_out->len = _ret.length();
+	_out->data = static_cast<void*>(_arr);
+	return _out;
 }
 
 QColormap* QColormap_Instance1(int screen) {
-	QColormap ret = QColormap::instance(static_cast<int>(screen));
+	QColormap _ret = QColormap::instance(static_cast<int>(screen));
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QColormap*>(new QColormap(ret));
+	return static_cast<QColormap*>(new QColormap(_ret));
 }
 
 void QColormap_Delete(QColormap* self) {

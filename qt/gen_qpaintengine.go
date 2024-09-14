@@ -124,47 +124,51 @@ func newQTextItem_U(h unsafe.Pointer) *QTextItem {
 }
 
 func (this *QTextItem) Descent() float64 {
-	ret := C.QTextItem_Descent(this.h)
-	return (float64)(ret)
+	_ret := C.QTextItem_Descent(this.h)
+	return (float64)(_ret)
 }
 
 func (this *QTextItem) Ascent() float64 {
-	ret := C.QTextItem_Ascent(this.h)
-	return (float64)(ret)
+	_ret := C.QTextItem_Ascent(this.h)
+	return (float64)(_ret)
 }
 
 func (this *QTextItem) Width() float64 {
-	ret := C.QTextItem_Width(this.h)
-	return (float64)(ret)
+	_ret := C.QTextItem_Width(this.h)
+	return (float64)(_ret)
 }
 
 func (this *QTextItem) RenderFlags() int {
-	ret := C.QTextItem_RenderFlags(this.h)
-	return (int)(ret)
+	_ret := C.QTextItem_RenderFlags(this.h)
+	return (int)(_ret)
 }
 
 func (this *QTextItem) Text() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTextItem_Text(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTextItem_Text(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QTextItem) Font() *QFont {
-	ret := C.QTextItem_Font(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQFont(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QFont) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QTextItem_Font(this.h)
+	_goptr := newQFont(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
+// Delete this object from C++ memory.
 func (this *QTextItem) Delete() {
 	C.QTextItem_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QTextItem) GoGC() {
+	runtime.SetFinalizer(this, func(this *QTextItem) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
 
 type QPaintEngine struct {
@@ -190,8 +194,8 @@ func newQPaintEngine_U(h unsafe.Pointer) *QPaintEngine {
 }
 
 func (this *QPaintEngine) IsActive() bool {
-	ret := C.QPaintEngine_IsActive(this.h)
-	return (bool)(ret)
+	_ret := C.QPaintEngine_IsActive(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QPaintEngine) SetActive(newState bool) {
@@ -199,13 +203,13 @@ func (this *QPaintEngine) SetActive(newState bool) {
 }
 
 func (this *QPaintEngine) Begin(pdev *QPaintDevice) bool {
-	ret := C.QPaintEngine_Begin(this.h, pdev.cPointer())
-	return (bool)(ret)
+	_ret := C.QPaintEngine_Begin(this.h, pdev.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QPaintEngine) End() bool {
-	ret := C.QPaintEngine_End(this.h)
-	return (bool)(ret)
+	_ret := C.QPaintEngine_End(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QPaintEngine) UpdateState(state *QPaintEngineState) {
@@ -277,8 +281,8 @@ func (this *QPaintEngine) SetPaintDevice(device *QPaintDevice) {
 }
 
 func (this *QPaintEngine) PaintDevice() *QPaintDevice {
-	ret := C.QPaintEngine_PaintDevice(this.h)
-	return newQPaintDevice_U(unsafe.Pointer(ret))
+	_ret := C.QPaintEngine_PaintDevice(this.h)
+	return newQPaintDevice_U(unsafe.Pointer(_ret))
 }
 
 func (this *QPaintEngine) SetSystemClip(baseClip *QRegion) {
@@ -286,14 +290,10 @@ func (this *QPaintEngine) SetSystemClip(baseClip *QRegion) {
 }
 
 func (this *QPaintEngine) SystemClip() *QRegion {
-	ret := C.QPaintEngine_SystemClip(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRegion(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRegion) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QPaintEngine_SystemClip(this.h)
+	_goptr := newQRegion(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QPaintEngine) SetSystemRect(rect *QRect) {
@@ -301,30 +301,22 @@ func (this *QPaintEngine) SetSystemRect(rect *QRect) {
 }
 
 func (this *QPaintEngine) SystemRect() *QRect {
-	ret := C.QPaintEngine_SystemRect(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRect(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRect) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QPaintEngine_SystemRect(this.h)
+	_goptr := newQRect(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QPaintEngine) CoordinateOffset() *QPoint {
-	ret := C.QPaintEngine_CoordinateOffset(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPoint(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPoint) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QPaintEngine_CoordinateOffset(this.h)
+	_goptr := newQPoint(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QPaintEngine) Type() QPaintEngine__Type {
-	ret := C.QPaintEngine_Type(this.h)
-	return (QPaintEngine__Type)(ret)
+	_ret := C.QPaintEngine_Type(this.h)
+	return (QPaintEngine__Type)(_ret)
 }
 
 func (this *QPaintEngine) FixNegRect(x *int, y *int, w *int, h *int) {
@@ -332,8 +324,8 @@ func (this *QPaintEngine) FixNegRect(x *int, y *int, w *int, h *int) {
 }
 
 func (this *QPaintEngine) TestDirty(df int) bool {
-	ret := C.QPaintEngine_TestDirty(this.h, (C.int)(df))
-	return (bool)(ret)
+	_ret := C.QPaintEngine_TestDirty(this.h, (C.int)(df))
+	return (bool)(_ret)
 }
 
 func (this *QPaintEngine) SetDirty(df int) {
@@ -345,13 +337,13 @@ func (this *QPaintEngine) ClearDirty(df int) {
 }
 
 func (this *QPaintEngine) HasFeature(feature int) bool {
-	ret := C.QPaintEngine_HasFeature(this.h, (C.int)(feature))
-	return (bool)(ret)
+	_ret := C.QPaintEngine_HasFeature(this.h, (C.int)(feature))
+	return (bool)(_ret)
 }
 
 func (this *QPaintEngine) Painter() *QPainter {
-	ret := C.QPaintEngine_Painter(this.h)
-	return newQPainter_U(unsafe.Pointer(ret))
+	_ret := C.QPaintEngine_Painter(this.h)
+	return newQPainter_U(unsafe.Pointer(_ret))
 }
 
 func (this *QPaintEngine) SyncState() {
@@ -359,16 +351,26 @@ func (this *QPaintEngine) SyncState() {
 }
 
 func (this *QPaintEngine) IsExtended() bool {
-	ret := C.QPaintEngine_IsExtended(this.h)
-	return (bool)(ret)
+	_ret := C.QPaintEngine_IsExtended(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QPaintEngine) DrawImage4(r *QRectF, pm *QImage, sr *QRectF, flags int) {
 	C.QPaintEngine_DrawImage4(this.h, r.cPointer(), pm.cPointer(), sr.cPointer(), (C.int)(flags))
 }
 
+// Delete this object from C++ memory.
 func (this *QPaintEngine) Delete() {
 	C.QPaintEngine_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QPaintEngine) GoGC() {
+	runtime.SetFinalizer(this, func(this *QPaintEngine) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
 
 type QPaintEngineState struct {
@@ -394,154 +396,128 @@ func newQPaintEngineState_U(h unsafe.Pointer) *QPaintEngineState {
 }
 
 func (this *QPaintEngineState) State() int {
-	ret := C.QPaintEngineState_State(this.h)
-	return (int)(ret)
+	_ret := C.QPaintEngineState_State(this.h)
+	return (int)(_ret)
 }
 
 func (this *QPaintEngineState) Pen() *QPen {
-	ret := C.QPaintEngineState_Pen(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPen(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPen) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QPaintEngineState_Pen(this.h)
+	_goptr := newQPen(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QPaintEngineState) Brush() *QBrush {
-	ret := C.QPaintEngineState_Brush(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQBrush(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QBrush) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QPaintEngineState_Brush(this.h)
+	_goptr := newQBrush(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QPaintEngineState) BrushOrigin() *QPointF {
-	ret := C.QPaintEngineState_BrushOrigin(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPointF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPointF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QPaintEngineState_BrushOrigin(this.h)
+	_goptr := newQPointF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QPaintEngineState) BackgroundBrush() *QBrush {
-	ret := C.QPaintEngineState_BackgroundBrush(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQBrush(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QBrush) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QPaintEngineState_BackgroundBrush(this.h)
+	_goptr := newQBrush(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QPaintEngineState) BackgroundMode() BGMode {
-	ret := C.QPaintEngineState_BackgroundMode(this.h)
-	return (BGMode)(ret)
+	_ret := C.QPaintEngineState_BackgroundMode(this.h)
+	return (BGMode)(_ret)
 }
 
 func (this *QPaintEngineState) Font() *QFont {
-	ret := C.QPaintEngineState_Font(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQFont(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QFont) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QPaintEngineState_Font(this.h)
+	_goptr := newQFont(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QPaintEngineState) Matrix() *QMatrix {
-	ret := C.QPaintEngineState_Matrix(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQMatrix(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QMatrix) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QPaintEngineState_Matrix(this.h)
+	_goptr := newQMatrix(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QPaintEngineState) Transform() *QTransform {
-	ret := C.QPaintEngineState_Transform(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQTransform(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QTransform) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QPaintEngineState_Transform(this.h)
+	_goptr := newQTransform(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QPaintEngineState) ClipOperation() ClipOperation {
-	ret := C.QPaintEngineState_ClipOperation(this.h)
-	return (ClipOperation)(ret)
+	_ret := C.QPaintEngineState_ClipOperation(this.h)
+	return (ClipOperation)(_ret)
 }
 
 func (this *QPaintEngineState) ClipRegion() *QRegion {
-	ret := C.QPaintEngineState_ClipRegion(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRegion(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRegion) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QPaintEngineState_ClipRegion(this.h)
+	_goptr := newQRegion(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QPaintEngineState) ClipPath() *QPainterPath {
-	ret := C.QPaintEngineState_ClipPath(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPainterPath(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPainterPath) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QPaintEngineState_ClipPath(this.h)
+	_goptr := newQPainterPath(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QPaintEngineState) IsClipEnabled() bool {
-	ret := C.QPaintEngineState_IsClipEnabled(this.h)
-	return (bool)(ret)
+	_ret := C.QPaintEngineState_IsClipEnabled(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QPaintEngineState) RenderHints() int {
-	ret := C.QPaintEngineState_RenderHints(this.h)
-	return (int)(ret)
+	_ret := C.QPaintEngineState_RenderHints(this.h)
+	return (int)(_ret)
 }
 
 func (this *QPaintEngineState) CompositionMode() QPainter__CompositionMode {
-	ret := C.QPaintEngineState_CompositionMode(this.h)
-	return (QPainter__CompositionMode)(ret)
+	_ret := C.QPaintEngineState_CompositionMode(this.h)
+	return (QPainter__CompositionMode)(_ret)
 }
 
 func (this *QPaintEngineState) Opacity() float64 {
-	ret := C.QPaintEngineState_Opacity(this.h)
-	return (float64)(ret)
+	_ret := C.QPaintEngineState_Opacity(this.h)
+	return (float64)(_ret)
 }
 
 func (this *QPaintEngineState) Painter() *QPainter {
-	ret := C.QPaintEngineState_Painter(this.h)
-	return newQPainter_U(unsafe.Pointer(ret))
+	_ret := C.QPaintEngineState_Painter(this.h)
+	return newQPainter_U(unsafe.Pointer(_ret))
 }
 
 func (this *QPaintEngineState) BrushNeedsResolving() bool {
-	ret := C.QPaintEngineState_BrushNeedsResolving(this.h)
-	return (bool)(ret)
+	_ret := C.QPaintEngineState_BrushNeedsResolving(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QPaintEngineState) PenNeedsResolving() bool {
-	ret := C.QPaintEngineState_PenNeedsResolving(this.h)
-	return (bool)(ret)
+	_ret := C.QPaintEngineState_PenNeedsResolving(this.h)
+	return (bool)(_ret)
 }
 
+// Delete this object from C++ memory.
 func (this *QPaintEngineState) Delete() {
 	C.QPaintEngineState_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QPaintEngineState) GoGC() {
+	runtime.SetFinalizer(this, func(this *QPaintEngineState) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

@@ -10,33 +10,25 @@
 #include <cstring>
 #include <QVariant>
 #include "qabstractproxymodel.h"
-
 #include "gen_qabstractproxymodel.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QMetaObject* QAbstractProxyModel_MetaObject(const QAbstractProxyModel* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void QAbstractProxyModel_Tr(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QAbstractProxyModel::tr(s);
+struct miqt_string* QAbstractProxyModel_Tr(const char* s) {
+	QString _ret = QAbstractProxyModel::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QAbstractProxyModel_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QAbstractProxyModel::trUtf8(s);
+struct miqt_string* QAbstractProxyModel_TrUtf8(const char* s) {
+	QString _ret = QAbstractProxyModel::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QAbstractProxyModel_SetSourceModel(QAbstractProxyModel* self, QAbstractItemModel* sourceModel) {
@@ -48,15 +40,15 @@ QAbstractItemModel* QAbstractProxyModel_SourceModel(const QAbstractProxyModel* s
 }
 
 QModelIndex* QAbstractProxyModel_MapToSource(const QAbstractProxyModel* self, QModelIndex* proxyIndex) {
-	QModelIndex ret = self->mapToSource(*proxyIndex);
+	QModelIndex _ret = self->mapToSource(*proxyIndex);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QModelIndex*>(new QModelIndex(ret));
+	return static_cast<QModelIndex*>(new QModelIndex(_ret));
 }
 
 QModelIndex* QAbstractProxyModel_MapFromSource(const QAbstractProxyModel* self, QModelIndex* sourceIndex) {
-	QModelIndex ret = self->mapFromSource(*sourceIndex);
+	QModelIndex _ret = self->mapFromSource(*sourceIndex);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QModelIndex*>(new QModelIndex(ret));
+	return static_cast<QModelIndex*>(new QModelIndex(_ret));
 }
 
 bool QAbstractProxyModel_Submit(QAbstractProxyModel* self) {
@@ -68,20 +60,20 @@ void QAbstractProxyModel_Revert(QAbstractProxyModel* self) {
 }
 
 QVariant* QAbstractProxyModel_Data(const QAbstractProxyModel* self, QModelIndex* proxyIndex) {
-	QVariant ret = self->data(*proxyIndex);
+	QVariant _ret = self->data(*proxyIndex);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(ret));
+	return static_cast<QVariant*>(new QVariant(_ret));
 }
 
 QVariant* QAbstractProxyModel_HeaderData(const QAbstractProxyModel* self, int section, uintptr_t orientation) {
-	QVariant ret = self->headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation));
+	QVariant _ret = self->headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation));
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(ret));
+	return static_cast<QVariant*>(new QVariant(_ret));
 }
 
 int QAbstractProxyModel_Flags(const QAbstractProxyModel* self, QModelIndex* index) {
-	Qt::ItemFlags ret = self->flags(*index);
-	return static_cast<int>(ret);
+	Qt::ItemFlags _ret = self->flags(*index);
+	return static_cast<int>(_ret);
 }
 
 bool QAbstractProxyModel_SetData(QAbstractProxyModel* self, QModelIndex* index, QVariant* value) {
@@ -93,9 +85,9 @@ bool QAbstractProxyModel_SetHeaderData(QAbstractProxyModel* self, int section, u
 }
 
 QModelIndex* QAbstractProxyModel_Buddy(const QAbstractProxyModel* self, QModelIndex* index) {
-	QModelIndex ret = self->buddy(*index);
+	QModelIndex _ret = self->buddy(*index);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QModelIndex*>(new QModelIndex(ret));
+	return static_cast<QModelIndex*>(new QModelIndex(_ret));
 }
 
 bool QAbstractProxyModel_CanFetchMore(const QAbstractProxyModel* self, QModelIndex* parent) {
@@ -111,9 +103,9 @@ void QAbstractProxyModel_Sort(QAbstractProxyModel* self, int column) {
 }
 
 QSize* QAbstractProxyModel_Span(const QAbstractProxyModel* self, QModelIndex* index) {
-	QSize ret = self->span(*index);
+	QSize _ret = self->span(*index);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(ret));
+	return static_cast<QSize*>(new QSize(_ret));
 }
 
 bool QAbstractProxyModel_HasChildren(const QAbstractProxyModel* self) {
@@ -121,16 +113,17 @@ bool QAbstractProxyModel_HasChildren(const QAbstractProxyModel* self) {
 }
 
 QModelIndex* QAbstractProxyModel_Sibling(const QAbstractProxyModel* self, int row, int column, QModelIndex* idx) {
-	QModelIndex ret = self->sibling(static_cast<int>(row), static_cast<int>(column), *idx);
+	QModelIndex _ret = self->sibling(static_cast<int>(row), static_cast<int>(column), *idx);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QModelIndex*>(new QModelIndex(ret));
+	return static_cast<QModelIndex*>(new QModelIndex(_ret));
 }
 
-QMimeData* QAbstractProxyModel_MimeData(const QAbstractProxyModel* self, QModelIndex** indexes, size_t indexes_len) {
+QMimeData* QAbstractProxyModel_MimeData(const QAbstractProxyModel* self, struct miqt_array* /* of QModelIndex */ indexes) {
 	QList<QModelIndex> indexes_QList;
-	indexes_QList.reserve(indexes_len);
-	for(size_t i = 0; i < indexes_len; ++i) {
-		indexes_QList.push_back(*(indexes[i]));
+	indexes_QList.reserve(indexes->len);
+	QModelIndex** indexes_arr = static_cast<QModelIndex**>(indexes->data);
+	for(size_t i = 0; i < indexes->len; ++i) {
+		indexes_QList.push_back(*(indexes_arr[i]));
 	}
 	return self->mimeData(indexes_QList);
 }
@@ -143,79 +136,70 @@ bool QAbstractProxyModel_DropMimeData(QAbstractProxyModel* self, QMimeData* data
 	return self->dropMimeData(data, static_cast<Qt::DropAction>(action), static_cast<int>(row), static_cast<int>(column), *parent);
 }
 
-void QAbstractProxyModel_MimeTypes(const QAbstractProxyModel* self, char*** _out, int** _out_Lengths, size_t* _out_len) {
-	QStringList ret = self->mimeTypes();
+struct miqt_array* QAbstractProxyModel_MimeTypes(const QAbstractProxyModel* self) {
+	QStringList _ret = self->mimeTypes();
 	// Convert QStringList from C++ memory to manually-managed C memory
-	char** __out = static_cast<char**>(malloc(sizeof(char*) * ret.length()));
-	int* __out_Lengths = static_cast<int*>(malloc(sizeof(int) * ret.length()));
-	for (size_t i = 0, e = ret.length(); i < e; ++i) {
+	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-		QByteArray b = ret[i].toUtf8();
-		__out[i] = static_cast<char*>(malloc(b.length()));
-		memcpy(__out[i], b.data(), b.length());
-		__out_Lengths[i] = b.length();
+		QByteArray _lv_b = _lv_ret.toUtf8();
+		_arr[i] = miqt_strdup(_lv_b.data(), _lv_b.length());
 	}
-	*_out = __out;
-	*_out_Lengths = __out_Lengths;
-	*_out_len = ret.length();
+	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
+	_out->len = _ret.length();
+	_out->data = static_cast<void*>(_arr);
+	return _out;
 }
 
 int QAbstractProxyModel_SupportedDragActions(const QAbstractProxyModel* self) {
-	Qt::DropActions ret = self->supportedDragActions();
-	return static_cast<int>(ret);
+	Qt::DropActions _ret = self->supportedDragActions();
+	return static_cast<int>(_ret);
 }
 
 int QAbstractProxyModel_SupportedDropActions(const QAbstractProxyModel* self) {
-	Qt::DropActions ret = self->supportedDropActions();
-	return static_cast<int>(ret);
+	Qt::DropActions _ret = self->supportedDropActions();
+	return static_cast<int>(_ret);
 }
 
-void QAbstractProxyModel_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QAbstractProxyModel::tr(s, c);
+struct miqt_string* QAbstractProxyModel_Tr2(const char* s, const char* c) {
+	QString _ret = QAbstractProxyModel::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QAbstractProxyModel_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QAbstractProxyModel::tr(s, c, static_cast<int>(n));
+struct miqt_string* QAbstractProxyModel_Tr3(const char* s, const char* c, int n) {
+	QString _ret = QAbstractProxyModel::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QAbstractProxyModel_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QAbstractProxyModel::trUtf8(s, c);
+struct miqt_string* QAbstractProxyModel_TrUtf82(const char* s, const char* c) {
+	QString _ret = QAbstractProxyModel::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QAbstractProxyModel_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QAbstractProxyModel::trUtf8(s, c, static_cast<int>(n));
+struct miqt_string* QAbstractProxyModel_TrUtf83(const char* s, const char* c, int n) {
+	QString _ret = QAbstractProxyModel::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 QVariant* QAbstractProxyModel_Data2(const QAbstractProxyModel* self, QModelIndex* proxyIndex, int role) {
-	QVariant ret = self->data(*proxyIndex, static_cast<int>(role));
+	QVariant _ret = self->data(*proxyIndex, static_cast<int>(role));
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(ret));
+	return static_cast<QVariant*>(new QVariant(_ret));
 }
 
 QVariant* QAbstractProxyModel_HeaderData3(const QAbstractProxyModel* self, int section, uintptr_t orientation, int role) {
-	QVariant ret = self->headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), static_cast<int>(role));
+	QVariant _ret = self->headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), static_cast<int>(role));
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(ret));
+	return static_cast<QVariant*>(new QVariant(_ret));
 }
 
 bool QAbstractProxyModel_SetData3(QAbstractProxyModel* self, QModelIndex* index, QVariant* value, int role) {

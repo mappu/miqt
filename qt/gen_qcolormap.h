@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -29,7 +31,7 @@ int QColormap_Depth(const QColormap* self);
 int QColormap_Size(const QColormap* self);
 unsigned int QColormap_Pixel(const QColormap* self, QColor* color);
 QColor* QColormap_ColorAt(const QColormap* self, unsigned int pixel);
-void QColormap_Colormap(const QColormap* self, QColor*** _out, size_t* _out_len);
+struct miqt_array* QColormap_Colormap(const QColormap* self);
 QColormap* QColormap_Instance1(int screen);
 void QColormap_Delete(QColormap* self);
 

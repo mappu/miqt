@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"runtime"
 	"runtime/cgo"
 	"unsafe"
 )
@@ -49,30 +50,26 @@ func NewQStatusBar2(parent *QWidget) *QStatusBar {
 }
 
 func (this *QStatusBar) MetaObject() *QMetaObject {
-	ret := C.QStatusBar_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QStatusBar_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QStatusBar_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QStatusBar_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QStatusBar_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QStatusBar_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QStatusBar_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QStatusBar_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QStatusBar) AddWidget(widget *QWidget) {
@@ -80,8 +77,8 @@ func (this *QStatusBar) AddWidget(widget *QWidget) {
 }
 
 func (this *QStatusBar) InsertWidget(index int, widget *QWidget) int {
-	ret := C.QStatusBar_InsertWidget(this.h, (C.int)(index), widget.cPointer())
-	return (int)(ret)
+	_ret := C.QStatusBar_InsertWidget(this.h, (C.int)(index), widget.cPointer())
+	return (int)(_ret)
 }
 
 func (this *QStatusBar) AddPermanentWidget(widget *QWidget) {
@@ -89,8 +86,8 @@ func (this *QStatusBar) AddPermanentWidget(widget *QWidget) {
 }
 
 func (this *QStatusBar) InsertPermanentWidget(index int, widget *QWidget) int {
-	ret := C.QStatusBar_InsertPermanentWidget(this.h, (C.int)(index), widget.cPointer())
-	return (int)(ret)
+	_ret := C.QStatusBar_InsertPermanentWidget(this.h, (C.int)(index), widget.cPointer())
+	return (int)(_ret)
 }
 
 func (this *QStatusBar) RemoveWidget(widget *QWidget) {
@@ -102,23 +99,21 @@ func (this *QStatusBar) SetSizeGripEnabled(sizeGripEnabled bool) {
 }
 
 func (this *QStatusBar) IsSizeGripEnabled() bool {
-	ret := C.QStatusBar_IsSizeGripEnabled(this.h)
-	return (bool)(ret)
+	_ret := C.QStatusBar_IsSizeGripEnabled(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QStatusBar) CurrentMessage() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QStatusBar_CurrentMessage(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QStatusBar_CurrentMessage(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QStatusBar) ShowMessage(text string) {
-	text_Cstring := C.CString(text)
-	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QStatusBar_ShowMessage(this.h, text_Cstring, C.size_t(len(text)))
+	text_ms := miqt_strdupg(text)
+	defer C.free(text_ms)
+	C.QStatusBar_ShowMessage(this.h, (*C.struct_miqt_string)(text_ms))
 }
 
 func (this *QStatusBar) ClearMessage() {
@@ -126,17 +121,28 @@ func (this *QStatusBar) ClearMessage() {
 }
 
 func (this *QStatusBar) MessageChanged(text string) {
-	text_Cstring := C.CString(text)
-	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QStatusBar_MessageChanged(this.h, text_Cstring, C.size_t(len(text)))
+	text_ms := miqt_strdupg(text)
+	defer C.free(text_ms)
+	C.QStatusBar_MessageChanged(this.h, (*C.struct_miqt_string)(text_ms))
+}
+func (this *QStatusBar) OnMessageChanged(slot func(text string)) {
+	C.QStatusBar_connect_MessageChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
 }
 
-func (this *QStatusBar) OnMessageChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QStatusBar_MessageChanged
+func miqt_exec_callback_QStatusBar_MessageChanged(cb *C.void, text *C.struct_miqt_string) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(text string))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QStatusBar_connect_MessageChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	var text_ms *C.struct_miqt_string = text
+	text_ret := C.GoStringN(&text_ms.data, C.int(int64(text_ms.len)))
+	C.free(unsafe.Pointer(text_ms))
+	slotval1 := text_ret
+
+	gofunc(slotval1)
 }
 
 func QStatusBar_Tr2(s string, c string) string {
@@ -144,12 +150,10 @@ func QStatusBar_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QStatusBar_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QStatusBar_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QStatusBar_Tr3(s string, c string, n int) string {
@@ -157,12 +161,10 @@ func QStatusBar_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QStatusBar_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QStatusBar_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QStatusBar_TrUtf82(s string, c string) string {
@@ -170,12 +172,10 @@ func QStatusBar_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QStatusBar_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QStatusBar_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QStatusBar_TrUtf83(s string, c string, n int) string {
@@ -183,12 +183,10 @@ func QStatusBar_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QStatusBar_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QStatusBar_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QStatusBar) AddWidget2(widget *QWidget, stretch int) {
@@ -196,8 +194,8 @@ func (this *QStatusBar) AddWidget2(widget *QWidget, stretch int) {
 }
 
 func (this *QStatusBar) InsertWidget3(index int, widget *QWidget, stretch int) int {
-	ret := C.QStatusBar_InsertWidget3(this.h, (C.int)(index), widget.cPointer(), (C.int)(stretch))
-	return (int)(ret)
+	_ret := C.QStatusBar_InsertWidget3(this.h, (C.int)(index), widget.cPointer(), (C.int)(stretch))
+	return (int)(_ret)
 }
 
 func (this *QStatusBar) AddPermanentWidget2(widget *QWidget, stretch int) {
@@ -205,16 +203,26 @@ func (this *QStatusBar) AddPermanentWidget2(widget *QWidget, stretch int) {
 }
 
 func (this *QStatusBar) InsertPermanentWidget3(index int, widget *QWidget, stretch int) int {
-	ret := C.QStatusBar_InsertPermanentWidget3(this.h, (C.int)(index), widget.cPointer(), (C.int)(stretch))
-	return (int)(ret)
+	_ret := C.QStatusBar_InsertPermanentWidget3(this.h, (C.int)(index), widget.cPointer(), (C.int)(stretch))
+	return (int)(_ret)
 }
 
 func (this *QStatusBar) ShowMessage2(text string, timeout int) {
-	text_Cstring := C.CString(text)
-	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QStatusBar_ShowMessage2(this.h, text_Cstring, C.size_t(len(text)), (C.int)(timeout))
+	text_ms := miqt_strdupg(text)
+	defer C.free(text_ms)
+	C.QStatusBar_ShowMessage2(this.h, (*C.struct_miqt_string)(text_ms), (C.int)(timeout))
 }
 
+// Delete this object from C++ memory.
 func (this *QStatusBar) Delete() {
 	C.QStatusBar_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QStatusBar) GoGC() {
+	runtime.SetFinalizer(this, func(this *QStatusBar) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

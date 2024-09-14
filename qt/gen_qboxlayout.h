@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -38,8 +40,8 @@ typedef struct QWidget QWidget;
 QBoxLayout* QBoxLayout_new(uintptr_t param1);
 QBoxLayout* QBoxLayout_new2(uintptr_t param1, QWidget* parent);
 QMetaObject* QBoxLayout_MetaObject(const QBoxLayout* self);
-void QBoxLayout_Tr(const char* s, char** _out, int* _out_Strlen);
-void QBoxLayout_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QBoxLayout_Tr(const char* s);
+struct miqt_string* QBoxLayout_TrUtf8(const char* s);
 uintptr_t QBoxLayout_Direction(const QBoxLayout* self);
 void QBoxLayout_SetDirection(QBoxLayout* self, uintptr_t direction);
 void QBoxLayout_AddSpacing(QBoxLayout* self, int size);
@@ -73,10 +75,10 @@ QLayoutItem* QBoxLayout_ItemAt(const QBoxLayout* self, int param1);
 QLayoutItem* QBoxLayout_TakeAt(QBoxLayout* self, int param1);
 int QBoxLayout_Count(const QBoxLayout* self);
 void QBoxLayout_SetGeometry(QBoxLayout* self, QRect* geometry);
-void QBoxLayout_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QBoxLayout_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QBoxLayout_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QBoxLayout_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QBoxLayout_Tr2(const char* s, const char* c);
+struct miqt_string* QBoxLayout_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QBoxLayout_TrUtf82(const char* s, const char* c);
+struct miqt_string* QBoxLayout_TrUtf83(const char* s, const char* c, int n);
 void QBoxLayout_AddStretch1(QBoxLayout* self, int stretch);
 void QBoxLayout_AddWidget2(QBoxLayout* self, QWidget* param1, int stretch);
 void QBoxLayout_AddWidget3(QBoxLayout* self, QWidget* param1, int stretch, int alignment);
@@ -90,23 +92,23 @@ void QBoxLayout_Delete(QBoxLayout* self);
 QHBoxLayout* QHBoxLayout_new();
 QHBoxLayout* QHBoxLayout_new2(QWidget* parent);
 QMetaObject* QHBoxLayout_MetaObject(const QHBoxLayout* self);
-void QHBoxLayout_Tr(const char* s, char** _out, int* _out_Strlen);
-void QHBoxLayout_TrUtf8(const char* s, char** _out, int* _out_Strlen);
-void QHBoxLayout_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QHBoxLayout_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QHBoxLayout_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QHBoxLayout_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QHBoxLayout_Tr(const char* s);
+struct miqt_string* QHBoxLayout_TrUtf8(const char* s);
+struct miqt_string* QHBoxLayout_Tr2(const char* s, const char* c);
+struct miqt_string* QHBoxLayout_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QHBoxLayout_TrUtf82(const char* s, const char* c);
+struct miqt_string* QHBoxLayout_TrUtf83(const char* s, const char* c, int n);
 void QHBoxLayout_Delete(QHBoxLayout* self);
 
 QVBoxLayout* QVBoxLayout_new();
 QVBoxLayout* QVBoxLayout_new2(QWidget* parent);
 QMetaObject* QVBoxLayout_MetaObject(const QVBoxLayout* self);
-void QVBoxLayout_Tr(const char* s, char** _out, int* _out_Strlen);
-void QVBoxLayout_TrUtf8(const char* s, char** _out, int* _out_Strlen);
-void QVBoxLayout_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QVBoxLayout_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QVBoxLayout_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QVBoxLayout_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QVBoxLayout_Tr(const char* s);
+struct miqt_string* QVBoxLayout_TrUtf8(const char* s);
+struct miqt_string* QVBoxLayout_Tr2(const char* s, const char* c);
+struct miqt_string* QVBoxLayout_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QVBoxLayout_TrUtf82(const char* s, const char* c);
+struct miqt_string* QVBoxLayout_TrUtf83(const char* s, const char* c, int n);
 void QVBoxLayout_Delete(QVBoxLayout* self);
 
 #ifdef __cplusplus

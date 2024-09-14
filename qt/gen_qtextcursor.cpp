@@ -16,12 +16,8 @@
 #include <QTextTable>
 #include <QTextTableFormat>
 #include "qtextcursor.h"
-
 #include "gen_qtextcursor.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QTextCursor* QTextCursor_new() {
 	return new QTextCursor();
@@ -71,13 +67,13 @@ int QTextCursor_Anchor(const QTextCursor* self) {
 	return self->anchor();
 }
 
-void QTextCursor_InsertText(QTextCursor* self, const char* text, size_t text_Strlen) {
-	QString text_QString = QString::fromUtf8(text, text_Strlen);
+void QTextCursor_InsertText(QTextCursor* self, struct miqt_string* text) {
+	QString text_QString = QString::fromUtf8(&text->data, text->len);
 	self->insertText(text_QString);
 }
 
-void QTextCursor_InsertText2(QTextCursor* self, const char* text, size_t text_Strlen, QTextCharFormat* format) {
-	QString text_QString = QString::fromUtf8(text, text_Strlen);
+void QTextCursor_InsertText2(QTextCursor* self, struct miqt_string* text, QTextCharFormat* format) {
+	QString text_QString = QString::fromUtf8(&text->data, text->len);
 	self->insertText(text_QString, *format);
 }
 
@@ -145,19 +141,17 @@ int QTextCursor_SelectionEnd(const QTextCursor* self) {
 	return self->selectionEnd();
 }
 
-void QTextCursor_SelectedText(const QTextCursor* self, char** _out, int* _out_Strlen) {
-	QString ret = self->selectedText();
+struct miqt_string* QTextCursor_SelectedText(const QTextCursor* self) {
+	QString _ret = self->selectedText();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 QTextDocumentFragment* QTextCursor_Selection(const QTextCursor* self) {
-	QTextDocumentFragment ret = self->selection();
+	QTextDocumentFragment _ret = self->selection();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextDocumentFragment*>(new QTextDocumentFragment(ret));
+	return static_cast<QTextDocumentFragment*>(new QTextDocumentFragment(_ret));
 }
 
 void QTextCursor_SelectedTableCells(const QTextCursor* self, int* firstRow, int* numRows, int* firstColumn, int* numColumns) {
@@ -165,15 +159,15 @@ void QTextCursor_SelectedTableCells(const QTextCursor* self, int* firstRow, int*
 }
 
 QTextBlock* QTextCursor_Block(const QTextCursor* self) {
-	QTextBlock ret = self->block();
+	QTextBlock _ret = self->block();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextBlock*>(new QTextBlock(ret));
+	return static_cast<QTextBlock*>(new QTextBlock(_ret));
 }
 
 QTextCharFormat* QTextCursor_CharFormat(const QTextCursor* self) {
-	QTextCharFormat ret = self->charFormat();
+	QTextCharFormat _ret = self->charFormat();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextCharFormat*>(new QTextCharFormat(ret));
+	return static_cast<QTextCharFormat*>(new QTextCharFormat(_ret));
 }
 
 void QTextCursor_SetCharFormat(QTextCursor* self, QTextCharFormat* format) {
@@ -185,9 +179,9 @@ void QTextCursor_MergeCharFormat(QTextCursor* self, QTextCharFormat* modifier) {
 }
 
 QTextBlockFormat* QTextCursor_BlockFormat(const QTextCursor* self) {
-	QTextBlockFormat ret = self->blockFormat();
+	QTextBlockFormat _ret = self->blockFormat();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextBlockFormat*>(new QTextBlockFormat(ret));
+	return static_cast<QTextBlockFormat*>(new QTextBlockFormat(_ret));
 }
 
 void QTextCursor_SetBlockFormat(QTextCursor* self, QTextBlockFormat* format) {
@@ -199,9 +193,9 @@ void QTextCursor_MergeBlockFormat(QTextCursor* self, QTextBlockFormat* modifier)
 }
 
 QTextCharFormat* QTextCursor_BlockCharFormat(const QTextCursor* self) {
-	QTextCharFormat ret = self->blockCharFormat();
+	QTextCharFormat _ret = self->blockCharFormat();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextCharFormat*>(new QTextCharFormat(ret));
+	return static_cast<QTextCharFormat*>(new QTextCharFormat(_ret));
 }
 
 void QTextCursor_SetBlockCharFormat(QTextCursor* self, QTextCharFormat* format) {
@@ -284,8 +278,8 @@ void QTextCursor_InsertFragment(QTextCursor* self, QTextDocumentFragment* fragme
 	self->insertFragment(*fragment);
 }
 
-void QTextCursor_InsertHtml(QTextCursor* self, const char* html, size_t html_Strlen) {
-	QString html_QString = QString::fromUtf8(html, html_Strlen);
+void QTextCursor_InsertHtml(QTextCursor* self, struct miqt_string* html) {
+	QString html_QString = QString::fromUtf8(&html->data, html->len);
 	self->insertHtml(html_QString);
 }
 
@@ -297,8 +291,8 @@ void QTextCursor_InsertImageWithFormat(QTextCursor* self, QTextImageFormat* form
 	self->insertImage(*format);
 }
 
-void QTextCursor_InsertImageWithName(QTextCursor* self, const char* name, size_t name_Strlen) {
-	QString name_QString = QString::fromUtf8(name, name_Strlen);
+void QTextCursor_InsertImageWithName(QTextCursor* self, struct miqt_string* name) {
+	QString name_QString = QString::fromUtf8(&name->data, name->len);
 	self->insertImage(name_QString);
 }
 
@@ -370,8 +364,8 @@ bool QTextCursor_MovePosition3(QTextCursor* self, uintptr_t op, uintptr_t param2
 	return self->movePosition(static_cast<QTextCursor::MoveOperation>(op), static_cast<QTextCursor::MoveMode>(param2), static_cast<int>(n));
 }
 
-void QTextCursor_InsertImage2(QTextCursor* self, QImage* image, const char* name, size_t name_Strlen) {
-	QString name_QString = QString::fromUtf8(name, name_Strlen);
+void QTextCursor_InsertImage2(QTextCursor* self, QImage* image, struct miqt_string* name) {
+	QString name_QString = QString::fromUtf8(&name->data, name->len);
 	self->insertImage(*image, name_QString);
 }
 

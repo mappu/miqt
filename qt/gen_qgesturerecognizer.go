@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"runtime"
 	"unsafe"
 )
 
@@ -48,13 +49,13 @@ func newQGestureRecognizer_U(h unsafe.Pointer) *QGestureRecognizer {
 }
 
 func (this *QGestureRecognizer) Create(target *QObject) *QGesture {
-	ret := C.QGestureRecognizer_Create(this.h, target.cPointer())
-	return newQGesture_U(unsafe.Pointer(ret))
+	_ret := C.QGestureRecognizer_Create(this.h, target.cPointer())
+	return newQGesture_U(unsafe.Pointer(_ret))
 }
 
 func (this *QGestureRecognizer) Recognize(state *QGesture, watched *QObject, event *QEvent) int {
-	ret := C.QGestureRecognizer_Recognize(this.h, state.cPointer(), watched.cPointer(), event.cPointer())
-	return (int)(ret)
+	_ret := C.QGestureRecognizer_Recognize(this.h, state.cPointer(), watched.cPointer(), event.cPointer())
+	return (int)(_ret)
 }
 
 func (this *QGestureRecognizer) Reset(state *QGesture) {
@@ -62,8 +63,8 @@ func (this *QGestureRecognizer) Reset(state *QGesture) {
 }
 
 func QGestureRecognizer_RegisterRecognizer(recognizer *QGestureRecognizer) GestureType {
-	ret := C.QGestureRecognizer_RegisterRecognizer(recognizer.cPointer())
-	return (GestureType)(ret)
+	_ret := C.QGestureRecognizer_RegisterRecognizer(recognizer.cPointer())
+	return (GestureType)(_ret)
 }
 
 func QGestureRecognizer_UnregisterRecognizer(typeVal GestureType) {
@@ -74,6 +75,16 @@ func (this *QGestureRecognizer) OperatorAssign(param1 *QGestureRecognizer) {
 	C.QGestureRecognizer_OperatorAssign(this.h, param1.cPointer())
 }
 
+// Delete this object from C++ memory.
 func (this *QGestureRecognizer) Delete() {
 	C.QGestureRecognizer_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QGestureRecognizer) GoGC() {
+	runtime.SetFinalizer(this, func(this *QGestureRecognizer) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

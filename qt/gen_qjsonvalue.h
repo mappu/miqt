@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -34,7 +36,7 @@ QJsonValue* QJsonValue_new2(bool b);
 QJsonValue* QJsonValue_new3(double n);
 QJsonValue* QJsonValue_new4(int n);
 QJsonValue* QJsonValue_new5(long long v);
-QJsonValue* QJsonValue_new6(const char* s, size_t s_Strlen);
+QJsonValue* QJsonValue_new6(struct miqt_string* s);
 QJsonValue* QJsonValue_new7(const char* s);
 QJsonValue* QJsonValue_new8(QJsonArray* a);
 QJsonValue* QJsonValue_new9(QJsonObject* o);
@@ -55,13 +57,13 @@ bool QJsonValue_IsUndefined(const QJsonValue* self);
 bool QJsonValue_ToBool(const QJsonValue* self);
 int QJsonValue_ToInt(const QJsonValue* self);
 double QJsonValue_ToDouble(const QJsonValue* self);
-void QJsonValue_ToString(const QJsonValue* self, char** _out, int* _out_Strlen);
-void QJsonValue_ToStringWithDefaultValue(const QJsonValue* self, const char* defaultValue, size_t defaultValue_Strlen, char** _out, int* _out_Strlen);
+struct miqt_string* QJsonValue_ToString(const QJsonValue* self);
+struct miqt_string* QJsonValue_ToStringWithDefaultValue(const QJsonValue* self, struct miqt_string* defaultValue);
 QJsonArray* QJsonValue_ToArray(const QJsonValue* self);
 QJsonArray* QJsonValue_ToArrayWithDefaultValue(const QJsonValue* self, QJsonArray* defaultValue);
 QJsonObject* QJsonValue_ToObject(const QJsonValue* self);
 QJsonObject* QJsonValue_ToObjectWithDefaultValue(const QJsonValue* self, QJsonObject* defaultValue);
-QJsonValue* QJsonValue_OperatorSubscript(const QJsonValue* self, const char* key, size_t key_Strlen);
+QJsonValue* QJsonValue_OperatorSubscript(const QJsonValue* self, struct miqt_string* key);
 QJsonValue* QJsonValue_OperatorSubscriptWithInt(const QJsonValue* self, int i);
 bool QJsonValue_OperatorEqual(const QJsonValue* self, QJsonValue* other);
 bool QJsonValue_OperatorNotEqual(const QJsonValue* self, QJsonValue* other);
@@ -87,13 +89,13 @@ bool QJsonValueRef_IsUndefined(const QJsonValueRef* self);
 bool QJsonValueRef_ToBool(const QJsonValueRef* self);
 int QJsonValueRef_ToInt(const QJsonValueRef* self);
 double QJsonValueRef_ToDouble(const QJsonValueRef* self);
-void QJsonValueRef_ToString(const QJsonValueRef* self, char** _out, int* _out_Strlen);
+struct miqt_string* QJsonValueRef_ToString(const QJsonValueRef* self);
 QJsonArray* QJsonValueRef_ToArray(const QJsonValueRef* self);
 QJsonObject* QJsonValueRef_ToObject(const QJsonValueRef* self);
 bool QJsonValueRef_ToBoolWithDefaultValue(const QJsonValueRef* self, bool defaultValue);
 int QJsonValueRef_ToIntWithDefaultValue(const QJsonValueRef* self, int defaultValue);
 double QJsonValueRef_ToDoubleWithDefaultValue(const QJsonValueRef* self, double defaultValue);
-void QJsonValueRef_ToStringWithDefaultValue(const QJsonValueRef* self, const char* defaultValue, size_t defaultValue_Strlen, char** _out, int* _out_Strlen);
+struct miqt_string* QJsonValueRef_ToStringWithDefaultValue(const QJsonValueRef* self, struct miqt_string* defaultValue);
 bool QJsonValueRef_OperatorEqual(const QJsonValueRef* self, QJsonValue* other);
 bool QJsonValueRef_OperatorNotEqual(const QJsonValueRef* self, QJsonValue* other);
 void QJsonValueRef_Delete(QJsonValueRef* self);

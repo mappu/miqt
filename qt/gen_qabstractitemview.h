@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -38,8 +40,8 @@ typedef struct QWidget QWidget;
 #endif
 
 QMetaObject* QAbstractItemView_MetaObject(const QAbstractItemView* self);
-void QAbstractItemView_Tr(const char* s, char** _out, int* _out_Strlen);
-void QAbstractItemView_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QAbstractItemView_Tr(const char* s);
+struct miqt_string* QAbstractItemView_TrUtf8(const char* s);
 void QAbstractItemView_SetModel(QAbstractItemView* self, QAbstractItemModel* model);
 QAbstractItemModel* QAbstractItemView_Model(const QAbstractItemView* self);
 void QAbstractItemView_SetSelectionModel(QAbstractItemView* self, QItemSelectionModel* selectionModel);
@@ -82,7 +84,7 @@ void QAbstractItemView_SetIconSize(QAbstractItemView* self, QSize* size);
 QSize* QAbstractItemView_IconSize(const QAbstractItemView* self);
 void QAbstractItemView_SetTextElideMode(QAbstractItemView* self, uintptr_t mode);
 uintptr_t QAbstractItemView_TextElideMode(const QAbstractItemView* self);
-void QAbstractItemView_KeyboardSearch(QAbstractItemView* self, const char* search, size_t search_Strlen);
+void QAbstractItemView_KeyboardSearch(QAbstractItemView* self, struct miqt_string* search);
 QRect* QAbstractItemView_VisualRect(const QAbstractItemView* self, QModelIndex* index);
 void QAbstractItemView_ScrollTo(QAbstractItemView* self, QModelIndex* index);
 QModelIndex* QAbstractItemView_IndexAt(const QAbstractItemView* self, QPoint* point);
@@ -124,10 +126,10 @@ void QAbstractItemView_ViewportEntered(QAbstractItemView* self);
 void QAbstractItemView_connect_ViewportEntered(QAbstractItemView* self, void* slot);
 void QAbstractItemView_IconSizeChanged(QAbstractItemView* self, QSize* size);
 void QAbstractItemView_connect_IconSizeChanged(QAbstractItemView* self, void* slot);
-void QAbstractItemView_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QAbstractItemView_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QAbstractItemView_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QAbstractItemView_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QAbstractItemView_Tr2(const char* s, const char* c);
+struct miqt_string* QAbstractItemView_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QAbstractItemView_TrUtf82(const char* s, const char* c);
+struct miqt_string* QAbstractItemView_TrUtf83(const char* s, const char* c, int n);
 void QAbstractItemView_ScrollTo2(QAbstractItemView* self, QModelIndex* index, uintptr_t hint);
 void QAbstractItemView_Delete(QAbstractItemView* self);
 

@@ -12,12 +12,8 @@
 #include <cstring>
 #include <QWidget>
 #include "qcolumnview.h"
-
 #include "gen_qcolumnview.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QColumnView* QColumnView_new() {
 	return new QColumnView();
@@ -31,22 +27,18 @@ QMetaObject* QColumnView_MetaObject(const QColumnView* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void QColumnView_Tr(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QColumnView::tr(s);
+struct miqt_string* QColumnView_Tr(const char* s) {
+	QString _ret = QColumnView::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QColumnView_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QColumnView::trUtf8(s);
+struct miqt_string* QColumnView_TrUtf8(const char* s) {
+	QString _ret = QColumnView::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QColumnView_UpdatePreviewWidget(QColumnView* self, QModelIndex* index) {
@@ -55,14 +47,17 @@ void QColumnView_UpdatePreviewWidget(QColumnView* self, QModelIndex* index) {
 
 void QColumnView_connect_UpdatePreviewWidget(QColumnView* self, void* slot) {
 	QColumnView::connect(self, static_cast<void (QColumnView::*)(const QModelIndex&)>(&QColumnView::updatePreviewWidget), self, [=](const QModelIndex& index) {
-		miqt_exec_callback(slot, 0, nullptr);
+		const QModelIndex& index_ret = index;
+		// Cast returned reference into pointer
+		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
+		miqt_exec_callback_QColumnView_UpdatePreviewWidget(slot, sigval1);
 	});
 }
 
 QModelIndex* QColumnView_IndexAt(const QColumnView* self, QPoint* point) {
-	QModelIndex ret = self->indexAt(*point);
+	QModelIndex _ret = self->indexAt(*point);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QModelIndex*>(new QModelIndex(ret));
+	return static_cast<QModelIndex*>(new QModelIndex(_ret));
 }
 
 void QColumnView_ScrollTo(QColumnView* self, QModelIndex* index) {
@@ -70,15 +65,15 @@ void QColumnView_ScrollTo(QColumnView* self, QModelIndex* index) {
 }
 
 QSize* QColumnView_SizeHint(const QColumnView* self) {
-	QSize ret = self->sizeHint();
+	QSize _ret = self->sizeHint();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(ret));
+	return static_cast<QSize*>(new QSize(_ret));
 }
 
 QRect* QColumnView_VisualRect(const QColumnView* self, QModelIndex* index) {
-	QRect ret = self->visualRect(*index);
+	QRect _ret = self->visualRect(*index);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(ret));
+	return static_cast<QRect*>(new QRect(_ret));
 }
 
 void QColumnView_SetModel(QColumnView* self, QAbstractItemModel* model) {
@@ -113,60 +108,55 @@ void QColumnView_SetPreviewWidget(QColumnView* self, QWidget* widget) {
 	self->setPreviewWidget(widget);
 }
 
-void QColumnView_SetColumnWidths(QColumnView* self, int* list, size_t list_len) {
+void QColumnView_SetColumnWidths(QColumnView* self, struct miqt_array* /* of int */ list) {
 	QList<int> list_QList;
-	list_QList.reserve(list_len);
-	for(size_t i = 0; i < list_len; ++i) {
-		list_QList.push_back(list[i]);
+	list_QList.reserve(list->len);
+	int* list_arr = static_cast<int*>(list->data);
+	for(size_t i = 0; i < list->len; ++i) {
+		list_QList.push_back(list_arr[i]);
 	}
 	self->setColumnWidths(list_QList);
 }
 
-void QColumnView_ColumnWidths(const QColumnView* self, int** _out, size_t* _out_len) {
-	QList<int> ret = self->columnWidths();
+struct miqt_array* QColumnView_ColumnWidths(const QColumnView* self) {
+	QList<int> _ret = self->columnWidths();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	int* __out = static_cast<int*>(malloc(sizeof(int) * ret.length()));
-	for (size_t i = 0, e = ret.length(); i < e; ++i) {
-		__out[i] = ret[i];
+	int* _arr = static_cast<int*>(malloc(sizeof(int) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		_arr[i] = _ret[i];
 	}
-	*_out = __out;
-	*_out_len = ret.length();
+	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
+	_out->len = _ret.length();
+	_out->data = static_cast<void*>(_arr);
+	return _out;
 }
 
-void QColumnView_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QColumnView::tr(s, c);
+struct miqt_string* QColumnView_Tr2(const char* s, const char* c) {
+	QString _ret = QColumnView::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QColumnView_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QColumnView::tr(s, c, static_cast<int>(n));
+struct miqt_string* QColumnView_Tr3(const char* s, const char* c, int n) {
+	QString _ret = QColumnView::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QColumnView_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QColumnView::trUtf8(s, c);
+struct miqt_string* QColumnView_TrUtf82(const char* s, const char* c) {
+	QString _ret = QColumnView::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QColumnView_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QColumnView::trUtf8(s, c, static_cast<int>(n));
+struct miqt_string* QColumnView_TrUtf83(const char* s, const char* c, int n) {
+	QString _ret = QColumnView::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QColumnView_ScrollTo2(QColumnView* self, QModelIndex* index, uintptr_t hint) {

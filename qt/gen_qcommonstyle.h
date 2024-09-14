@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -45,8 +47,8 @@ typedef struct QWidget QWidget;
 
 QCommonStyle* QCommonStyle_new();
 QMetaObject* QCommonStyle_MetaObject(const QCommonStyle* self);
-void QCommonStyle_Tr(const char* s, char** _out, int* _out_Strlen);
-void QCommonStyle_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QCommonStyle_Tr(const char* s);
+struct miqt_string* QCommonStyle_TrUtf8(const char* s);
 void QCommonStyle_DrawPrimitive(const QCommonStyle* self, uintptr_t pe, QStyleOption* opt, QPainter* p);
 void QCommonStyle_DrawControl(const QCommonStyle* self, uintptr_t element, QStyleOption* opt, QPainter* p);
 QRect* QCommonStyle_SubElementRect(const QCommonStyle* self, uintptr_t r, QStyleOption* opt);
@@ -65,10 +67,10 @@ void QCommonStyle_PolishWithApp(QCommonStyle* self, QApplication* app);
 void QCommonStyle_PolishWithWidget(QCommonStyle* self, QWidget* widget);
 void QCommonStyle_Unpolish(QCommonStyle* self, QWidget* widget);
 void QCommonStyle_UnpolishWithApplication(QCommonStyle* self, QApplication* application);
-void QCommonStyle_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QCommonStyle_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QCommonStyle_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QCommonStyle_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QCommonStyle_Tr2(const char* s, const char* c);
+struct miqt_string* QCommonStyle_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QCommonStyle_TrUtf82(const char* s, const char* c);
+struct miqt_string* QCommonStyle_TrUtf83(const char* s, const char* c, int n);
 void QCommonStyle_DrawPrimitive4(const QCommonStyle* self, uintptr_t pe, QStyleOption* opt, QPainter* p, QWidget* w);
 void QCommonStyle_DrawControl4(const QCommonStyle* self, uintptr_t element, QStyleOption* opt, QPainter* p, QWidget* w);
 QRect* QCommonStyle_SubElementRect3(const QCommonStyle* self, uintptr_t r, QStyleOption* opt, QWidget* widget);

@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -62,8 +64,8 @@ void QPainterPath_AddRect2(QPainterPath* self, double x, double y, double w, dou
 void QPainterPath_AddEllipse(QPainterPath* self, QRectF* rect);
 void QPainterPath_AddEllipse2(QPainterPath* self, double x, double y, double w, double h);
 void QPainterPath_AddEllipse3(QPainterPath* self, QPointF* center, double rx, double ry);
-void QPainterPath_AddText(QPainterPath* self, QPointF* point, QFont* f, const char* text, size_t text_Strlen);
-void QPainterPath_AddText2(QPainterPath* self, double x, double y, QFont* f, const char* text, size_t text_Strlen);
+void QPainterPath_AddText(QPainterPath* self, QPointF* point, QFont* f, struct miqt_string* text);
+void QPainterPath_AddText2(QPainterPath* self, double x, double y, QFont* f, struct miqt_string* text);
 void QPainterPath_AddPath(QPainterPath* self, QPainterPath* path);
 void QPainterPath_AddRegion(QPainterPath* self, QRegion* region);
 void QPainterPath_AddRoundedRect(QPainterPath* self, QRectF* rect, double xRadius, double yRadius);
@@ -128,8 +130,8 @@ double QPainterPathStroker_MiterLimit(const QPainterPathStroker* self);
 void QPainterPathStroker_SetCurveThreshold(QPainterPathStroker* self, double threshold);
 double QPainterPathStroker_CurveThreshold(const QPainterPathStroker* self);
 void QPainterPathStroker_SetDashPattern(QPainterPathStroker* self, uintptr_t dashPattern);
-void QPainterPathStroker_SetDashPatternWithDashPattern(QPainterPathStroker* self, double* dashPattern, size_t dashPattern_len);
-void QPainterPathStroker_DashPattern(const QPainterPathStroker* self, double** _out, size_t* _out_len);
+void QPainterPathStroker_SetDashPatternWithDashPattern(QPainterPathStroker* self, struct miqt_array* /* of double */ dashPattern);
+struct miqt_array* QPainterPathStroker_DashPattern(const QPainterPathStroker* self);
 void QPainterPathStroker_SetDashOffset(QPainterPathStroker* self, double offset);
 double QPainterPathStroker_DashOffset(const QPainterPathStroker* self);
 QPainterPath* QPainterPathStroker_CreateStroke(const QPainterPathStroker* self, QPainterPath* path);

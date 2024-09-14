@@ -73,30 +73,26 @@ func NewQFormLayout2(parent *QWidget) *QFormLayout {
 }
 
 func (this *QFormLayout) MetaObject() *QMetaObject {
-	ret := C.QFormLayout_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QFormLayout_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QFormLayout_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QFormLayout_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QFormLayout_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QFormLayout_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QFormLayout_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QFormLayout_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QFormLayout) SetFieldGrowthPolicy(policy QFormLayout__FieldGrowthPolicy) {
@@ -104,8 +100,8 @@ func (this *QFormLayout) SetFieldGrowthPolicy(policy QFormLayout__FieldGrowthPol
 }
 
 func (this *QFormLayout) FieldGrowthPolicy() QFormLayout__FieldGrowthPolicy {
-	ret := C.QFormLayout_FieldGrowthPolicy(this.h)
-	return (QFormLayout__FieldGrowthPolicy)(ret)
+	_ret := C.QFormLayout_FieldGrowthPolicy(this.h)
+	return (QFormLayout__FieldGrowthPolicy)(_ret)
 }
 
 func (this *QFormLayout) SetRowWrapPolicy(policy int) {
@@ -113,8 +109,8 @@ func (this *QFormLayout) SetRowWrapPolicy(policy int) {
 }
 
 func (this *QFormLayout) RowWrapPolicy() int {
-	ret := C.QFormLayout_RowWrapPolicy(this.h)
-	return (int)(ret)
+	_ret := C.QFormLayout_RowWrapPolicy(this.h)
+	return (int)(_ret)
 }
 
 func (this *QFormLayout) SetLabelAlignment(alignment int) {
@@ -122,8 +118,8 @@ func (this *QFormLayout) SetLabelAlignment(alignment int) {
 }
 
 func (this *QFormLayout) LabelAlignment() int {
-	ret := C.QFormLayout_LabelAlignment(this.h)
-	return (int)(ret)
+	_ret := C.QFormLayout_LabelAlignment(this.h)
+	return (int)(_ret)
 }
 
 func (this *QFormLayout) SetFormAlignment(alignment int) {
@@ -131,8 +127,8 @@ func (this *QFormLayout) SetFormAlignment(alignment int) {
 }
 
 func (this *QFormLayout) FormAlignment() int {
-	ret := C.QFormLayout_FormAlignment(this.h)
-	return (int)(ret)
+	_ret := C.QFormLayout_FormAlignment(this.h)
+	return (int)(_ret)
 }
 
 func (this *QFormLayout) SetHorizontalSpacing(spacing int) {
@@ -140,8 +136,8 @@ func (this *QFormLayout) SetHorizontalSpacing(spacing int) {
 }
 
 func (this *QFormLayout) HorizontalSpacing() int {
-	ret := C.QFormLayout_HorizontalSpacing(this.h)
-	return (int)(ret)
+	_ret := C.QFormLayout_HorizontalSpacing(this.h)
+	return (int)(_ret)
 }
 
 func (this *QFormLayout) SetVerticalSpacing(spacing int) {
@@ -149,13 +145,13 @@ func (this *QFormLayout) SetVerticalSpacing(spacing int) {
 }
 
 func (this *QFormLayout) VerticalSpacing() int {
-	ret := C.QFormLayout_VerticalSpacing(this.h)
-	return (int)(ret)
+	_ret := C.QFormLayout_VerticalSpacing(this.h)
+	return (int)(_ret)
 }
 
 func (this *QFormLayout) Spacing() int {
-	ret := C.QFormLayout_Spacing(this.h)
-	return (int)(ret)
+	_ret := C.QFormLayout_Spacing(this.h)
+	return (int)(_ret)
 }
 
 func (this *QFormLayout) SetSpacing(spacing int) {
@@ -171,15 +167,15 @@ func (this *QFormLayout) AddRow2(label *QWidget, field *QLayout) {
 }
 
 func (this *QFormLayout) AddRow3(labelText string, field *QWidget) {
-	labelText_Cstring := C.CString(labelText)
-	defer C.free(unsafe.Pointer(labelText_Cstring))
-	C.QFormLayout_AddRow3(this.h, labelText_Cstring, C.size_t(len(labelText)), field.cPointer())
+	labelText_ms := miqt_strdupg(labelText)
+	defer C.free(labelText_ms)
+	C.QFormLayout_AddRow3(this.h, (*C.struct_miqt_string)(labelText_ms), field.cPointer())
 }
 
 func (this *QFormLayout) AddRow4(labelText string, field *QLayout) {
-	labelText_Cstring := C.CString(labelText)
-	defer C.free(unsafe.Pointer(labelText_Cstring))
-	C.QFormLayout_AddRow4(this.h, labelText_Cstring, C.size_t(len(labelText)), field.cPointer())
+	labelText_ms := miqt_strdupg(labelText)
+	defer C.free(labelText_ms)
+	C.QFormLayout_AddRow4(this.h, (*C.struct_miqt_string)(labelText_ms), field.cPointer())
 }
 
 func (this *QFormLayout) AddRowWithWidget(widget *QWidget) {
@@ -199,15 +195,15 @@ func (this *QFormLayout) InsertRow2(row int, label *QWidget, field *QLayout) {
 }
 
 func (this *QFormLayout) InsertRow3(row int, labelText string, field *QWidget) {
-	labelText_Cstring := C.CString(labelText)
-	defer C.free(unsafe.Pointer(labelText_Cstring))
-	C.QFormLayout_InsertRow3(this.h, (C.int)(row), labelText_Cstring, C.size_t(len(labelText)), field.cPointer())
+	labelText_ms := miqt_strdupg(labelText)
+	defer C.free(labelText_ms)
+	C.QFormLayout_InsertRow3(this.h, (C.int)(row), (*C.struct_miqt_string)(labelText_ms), field.cPointer())
 }
 
 func (this *QFormLayout) InsertRow4(row int, labelText string, field *QLayout) {
-	labelText_Cstring := C.CString(labelText)
-	defer C.free(unsafe.Pointer(labelText_Cstring))
-	C.QFormLayout_InsertRow4(this.h, (C.int)(row), labelText_Cstring, C.size_t(len(labelText)), field.cPointer())
+	labelText_ms := miqt_strdupg(labelText)
+	defer C.free(labelText_ms)
+	C.QFormLayout_InsertRow4(this.h, (C.int)(row), (*C.struct_miqt_string)(labelText_ms), field.cPointer())
 }
 
 func (this *QFormLayout) InsertRow5(row int, widget *QWidget) {
@@ -231,36 +227,24 @@ func (this *QFormLayout) RemoveRowWithLayout(layout *QLayout) {
 }
 
 func (this *QFormLayout) TakeRow(row int) *QFormLayout__TakeRowResult {
-	ret := C.QFormLayout_TakeRow(this.h, (C.int)(row))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQFormLayout__TakeRowResult(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QFormLayout__TakeRowResult) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QFormLayout_TakeRow(this.h, (C.int)(row))
+	_goptr := newQFormLayout__TakeRowResult(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QFormLayout) TakeRowWithWidget(widget *QWidget) *QFormLayout__TakeRowResult {
-	ret := C.QFormLayout_TakeRowWithWidget(this.h, widget.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQFormLayout__TakeRowResult(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QFormLayout__TakeRowResult) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QFormLayout_TakeRowWithWidget(this.h, widget.cPointer())
+	_goptr := newQFormLayout__TakeRowResult(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QFormLayout) TakeRowWithLayout(layout *QLayout) *QFormLayout__TakeRowResult {
-	ret := C.QFormLayout_TakeRowWithLayout(this.h, layout.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQFormLayout__TakeRowResult(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QFormLayout__TakeRowResult) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QFormLayout_TakeRowWithLayout(this.h, layout.cPointer())
+	_goptr := newQFormLayout__TakeRowResult(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QFormLayout) SetItem(row int, role int, item *QLayoutItem) {
@@ -276,18 +260,18 @@ func (this *QFormLayout) SetLayout(row int, role int, layout *QLayout) {
 }
 
 func (this *QFormLayout) ItemAt(row int, role int) *QLayoutItem {
-	ret := C.QFormLayout_ItemAt(this.h, (C.int)(row), (C.int)(role))
-	return newQLayoutItem_U(unsafe.Pointer(ret))
+	_ret := C.QFormLayout_ItemAt(this.h, (C.int)(row), (C.int)(role))
+	return newQLayoutItem_U(unsafe.Pointer(_ret))
 }
 
 func (this *QFormLayout) LabelForField(field *QWidget) *QWidget {
-	ret := C.QFormLayout_LabelForField(this.h, field.cPointer())
-	return newQWidget_U(unsafe.Pointer(ret))
+	_ret := C.QFormLayout_LabelForField(this.h, field.cPointer())
+	return newQWidget_U(unsafe.Pointer(_ret))
 }
 
 func (this *QFormLayout) LabelForFieldWithField(field *QLayout) *QWidget {
-	ret := C.QFormLayout_LabelForFieldWithField(this.h, field.cPointer())
-	return newQWidget_U(unsafe.Pointer(ret))
+	_ret := C.QFormLayout_LabelForFieldWithField(this.h, field.cPointer())
+	return newQWidget_U(unsafe.Pointer(_ret))
 }
 
 func (this *QFormLayout) AddItem(item *QLayoutItem) {
@@ -295,13 +279,13 @@ func (this *QFormLayout) AddItem(item *QLayoutItem) {
 }
 
 func (this *QFormLayout) ItemAtWithIndex(index int) *QLayoutItem {
-	ret := C.QFormLayout_ItemAtWithIndex(this.h, (C.int)(index))
-	return newQLayoutItem_U(unsafe.Pointer(ret))
+	_ret := C.QFormLayout_ItemAtWithIndex(this.h, (C.int)(index))
+	return newQLayoutItem_U(unsafe.Pointer(_ret))
 }
 
 func (this *QFormLayout) TakeAt(index int) *QLayoutItem {
-	ret := C.QFormLayout_TakeAt(this.h, (C.int)(index))
-	return newQLayoutItem_U(unsafe.Pointer(ret))
+	_ret := C.QFormLayout_TakeAt(this.h, (C.int)(index))
+	return newQLayoutItem_U(unsafe.Pointer(_ret))
 }
 
 func (this *QFormLayout) SetGeometry(rect *QRect) {
@@ -309,25 +293,17 @@ func (this *QFormLayout) SetGeometry(rect *QRect) {
 }
 
 func (this *QFormLayout) MinimumSize() *QSize {
-	ret := C.QFormLayout_MinimumSize(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSize(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QFormLayout_MinimumSize(this.h)
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QFormLayout) SizeHint() *QSize {
-	ret := C.QFormLayout_SizeHint(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSize(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QFormLayout_SizeHint(this.h)
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QFormLayout) Invalidate() {
@@ -335,28 +311,28 @@ func (this *QFormLayout) Invalidate() {
 }
 
 func (this *QFormLayout) HasHeightForWidth() bool {
-	ret := C.QFormLayout_HasHeightForWidth(this.h)
-	return (bool)(ret)
+	_ret := C.QFormLayout_HasHeightForWidth(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QFormLayout) HeightForWidth(width int) int {
-	ret := C.QFormLayout_HeightForWidth(this.h, (C.int)(width))
-	return (int)(ret)
+	_ret := C.QFormLayout_HeightForWidth(this.h, (C.int)(width))
+	return (int)(_ret)
 }
 
 func (this *QFormLayout) ExpandingDirections() int {
-	ret := C.QFormLayout_ExpandingDirections(this.h)
-	return (int)(ret)
+	_ret := C.QFormLayout_ExpandingDirections(this.h)
+	return (int)(_ret)
 }
 
 func (this *QFormLayout) Count() int {
-	ret := C.QFormLayout_Count(this.h)
-	return (int)(ret)
+	_ret := C.QFormLayout_Count(this.h)
+	return (int)(_ret)
 }
 
 func (this *QFormLayout) RowCount() int {
-	ret := C.QFormLayout_RowCount(this.h)
-	return (int)(ret)
+	_ret := C.QFormLayout_RowCount(this.h)
+	return (int)(_ret)
 }
 
 func QFormLayout_Tr2(s string, c string) string {
@@ -364,12 +340,10 @@ func QFormLayout_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QFormLayout_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QFormLayout_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QFormLayout_Tr3(s string, c string, n int) string {
@@ -377,12 +351,10 @@ func QFormLayout_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QFormLayout_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QFormLayout_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QFormLayout_TrUtf82(s string, c string) string {
@@ -390,12 +362,10 @@ func QFormLayout_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QFormLayout_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QFormLayout_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QFormLayout_TrUtf83(s string, c string, n int) string {
@@ -403,16 +373,24 @@ func QFormLayout_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QFormLayout_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QFormLayout_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
+// Delete this object from C++ memory.
 func (this *QFormLayout) Delete() {
 	C.QFormLayout_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QFormLayout) GoGC() {
+	runtime.SetFinalizer(this, func(this *QFormLayout) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
 
 type QFormLayout__TakeRowResult struct {
@@ -437,6 +415,16 @@ func newQFormLayout__TakeRowResult_U(h unsafe.Pointer) *QFormLayout__TakeRowResu
 	return newQFormLayout__TakeRowResult((*C.QFormLayout__TakeRowResult)(h))
 }
 
+// Delete this object from C++ memory.
 func (this *QFormLayout__TakeRowResult) Delete() {
 	C.QFormLayout__TakeRowResult_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QFormLayout__TakeRowResult) GoGC() {
+	runtime.SetFinalizer(this, func(this *QFormLayout__TakeRowResult) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

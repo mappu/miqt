@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"runtime"
 	"unsafe"
 )
 
@@ -46,6 +47,16 @@ func NewQSharedData2(param1 *QSharedData) *QSharedData {
 	return newQSharedData(ret)
 }
 
+// Delete this object from C++ memory.
 func (this *QSharedData) Delete() {
 	C.QSharedData_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QSharedData) GoGC() {
+	runtime.SetFinalizer(this, func(this *QSharedData) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

@@ -1,11 +1,7 @@
 #include <QPixelFormat>
 #include "qpixelformat.h"
-
 #include "gen_qpixelformat.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QPixelFormat* QPixelFormat_new() {
 	return new QPixelFormat();
@@ -28,8 +24,8 @@ QPixelFormat* QPixelFormat_new5(uintptr_t colorModel, unsigned char firstSize, u
 }
 
 uintptr_t QPixelFormat_ColorModel(const QPixelFormat* self) {
-	QPixelFormat::ColorModel ret = self->colorModel();
-	return static_cast<uintptr_t>(ret);
+	QPixelFormat::ColorModel _ret = self->colorModel();
+	return static_cast<uintptr_t>(_ret);
 }
 
 unsigned char QPixelFormat_ChannelCount(const QPixelFormat* self) {
@@ -89,33 +85,33 @@ unsigned char QPixelFormat_BitsPerPixel(const QPixelFormat* self) {
 }
 
 uintptr_t QPixelFormat_AlphaUsage(const QPixelFormat* self) {
-	QPixelFormat::AlphaUsage ret = self->alphaUsage();
-	return static_cast<uintptr_t>(ret);
+	QPixelFormat::AlphaUsage _ret = self->alphaUsage();
+	return static_cast<uintptr_t>(_ret);
 }
 
 uintptr_t QPixelFormat_AlphaPosition(const QPixelFormat* self) {
-	QPixelFormat::AlphaPosition ret = self->alphaPosition();
-	return static_cast<uintptr_t>(ret);
+	QPixelFormat::AlphaPosition _ret = self->alphaPosition();
+	return static_cast<uintptr_t>(_ret);
 }
 
 uintptr_t QPixelFormat_Premultiplied(const QPixelFormat* self) {
-	QPixelFormat::AlphaPremultiplied ret = self->premultiplied();
-	return static_cast<uintptr_t>(ret);
+	QPixelFormat::AlphaPremultiplied _ret = self->premultiplied();
+	return static_cast<uintptr_t>(_ret);
 }
 
 uintptr_t QPixelFormat_TypeInterpretation(const QPixelFormat* self) {
-	QPixelFormat::TypeInterpretation ret = self->typeInterpretation();
-	return static_cast<uintptr_t>(ret);
+	QPixelFormat::TypeInterpretation _ret = self->typeInterpretation();
+	return static_cast<uintptr_t>(_ret);
 }
 
 uintptr_t QPixelFormat_ByteOrder(const QPixelFormat* self) {
-	QPixelFormat::ByteOrder ret = self->byteOrder();
-	return static_cast<uintptr_t>(ret);
+	QPixelFormat::ByteOrder _ret = self->byteOrder();
+	return static_cast<uintptr_t>(_ret);
 }
 
 uintptr_t QPixelFormat_YuvLayout(const QPixelFormat* self) {
-	QPixelFormat::YUVLayout ret = self->yuvLayout();
-	return static_cast<uintptr_t>(ret);
+	QPixelFormat::YUVLayout _ret = self->yuvLayout();
+	return static_cast<uintptr_t>(_ret);
 }
 
 unsigned char QPixelFormat_SubEnum(const QPixelFormat* self) {

@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"runtime"
 	"unsafe"
 )
 
@@ -67,75 +68,61 @@ func newQStandardPaths_U(h unsafe.Pointer) *QStandardPaths {
 }
 
 func QStandardPaths_WritableLocation(typeVal QStandardPaths__StandardLocation) string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QStandardPaths_WritableLocation((C.uintptr_t)(typeVal), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QStandardPaths_WritableLocation((C.uintptr_t)(typeVal))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QStandardPaths_StandardLocations(typeVal QStandardPaths__StandardLocation) []string {
-	var _out **C.char = nil
-	var _out_Lengths *C.int = nil
-	var _out_len C.size_t = 0
-	C.QStandardPaths_StandardLocations((C.uintptr_t)(typeVal), &_out, &_out_Lengths, &_out_len)
-	ret := make([]string, int(_out_len))
-	_outCast := (*[0xffff]*C.char)(unsafe.Pointer(_out)) // hey ya
-	_out_LengthsCast := (*[0xffff]C.int)(unsafe.Pointer(_out_Lengths))
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = C.GoStringN(_outCast[i], _out_LengthsCast[i])
+	var _ma *C.struct_miqt_array = C.QStandardPaths_StandardLocations((C.uintptr_t)(typeVal))
+	_ret := make([]string, int(_ma.len))
+	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = C.GoStringN(&_outCast[i].data, C.int(int64(_outCast[i].len)))
+		C.free(unsafe.Pointer(_outCast[i])) // free the inner miqt_string*
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
 func QStandardPaths_Locate(typeVal QStandardPaths__StandardLocation, fileName string) string {
-	fileName_Cstring := C.CString(fileName)
-	defer C.free(unsafe.Pointer(fileName_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QStandardPaths_Locate((C.uintptr_t)(typeVal), fileName_Cstring, C.size_t(len(fileName)), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	fileName_ms := miqt_strdupg(fileName)
+	defer C.free(fileName_ms)
+	var _ms *C.struct_miqt_string = C.QStandardPaths_Locate((C.uintptr_t)(typeVal), (*C.struct_miqt_string)(fileName_ms))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QStandardPaths_LocateAll(typeVal QStandardPaths__StandardLocation, fileName string) []string {
-	fileName_Cstring := C.CString(fileName)
-	defer C.free(unsafe.Pointer(fileName_Cstring))
-	var _out **C.char = nil
-	var _out_Lengths *C.int = nil
-	var _out_len C.size_t = 0
-	C.QStandardPaths_LocateAll((C.uintptr_t)(typeVal), fileName_Cstring, C.size_t(len(fileName)), &_out, &_out_Lengths, &_out_len)
-	ret := make([]string, int(_out_len))
-	_outCast := (*[0xffff]*C.char)(unsafe.Pointer(_out)) // hey ya
-	_out_LengthsCast := (*[0xffff]C.int)(unsafe.Pointer(_out_Lengths))
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = C.GoStringN(_outCast[i], _out_LengthsCast[i])
+	fileName_ms := miqt_strdupg(fileName)
+	defer C.free(fileName_ms)
+	var _ma *C.struct_miqt_array = C.QStandardPaths_LocateAll((C.uintptr_t)(typeVal), (*C.struct_miqt_string)(fileName_ms))
+	_ret := make([]string, int(_ma.len))
+	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = C.GoStringN(&_outCast[i].data, C.int(int64(_outCast[i].len)))
+		C.free(unsafe.Pointer(_outCast[i])) // free the inner miqt_string*
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
 func QStandardPaths_DisplayName(typeVal QStandardPaths__StandardLocation) string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QStandardPaths_DisplayName((C.uintptr_t)(typeVal), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QStandardPaths_DisplayName((C.uintptr_t)(typeVal))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QStandardPaths_FindExecutable(executableName string) string {
-	executableName_Cstring := C.CString(executableName)
-	defer C.free(unsafe.Pointer(executableName_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QStandardPaths_FindExecutable(executableName_Cstring, C.size_t(len(executableName)), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	executableName_ms := miqt_strdupg(executableName)
+	defer C.free(executableName_ms)
+	var _ms *C.struct_miqt_string = C.QStandardPaths_FindExecutable((*C.struct_miqt_string)(executableName_ms))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QStandardPaths_EnableTestMode(testMode bool) {
@@ -147,56 +134,48 @@ func QStandardPaths_SetTestModeEnabled(testMode bool) {
 }
 
 func QStandardPaths_IsTestModeEnabled() bool {
-	ret := C.QStandardPaths_IsTestModeEnabled()
-	return (bool)(ret)
+	_ret := C.QStandardPaths_IsTestModeEnabled()
+	return (bool)(_ret)
 }
 
 func QStandardPaths_Locate3(typeVal QStandardPaths__StandardLocation, fileName string, options int) string {
-	fileName_Cstring := C.CString(fileName)
-	defer C.free(unsafe.Pointer(fileName_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QStandardPaths_Locate3((C.uintptr_t)(typeVal), fileName_Cstring, C.size_t(len(fileName)), (C.int)(options), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	fileName_ms := miqt_strdupg(fileName)
+	defer C.free(fileName_ms)
+	var _ms *C.struct_miqt_string = C.QStandardPaths_Locate3((C.uintptr_t)(typeVal), (*C.struct_miqt_string)(fileName_ms), (C.int)(options))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QStandardPaths_LocateAll3(typeVal QStandardPaths__StandardLocation, fileName string, options int) []string {
-	fileName_Cstring := C.CString(fileName)
-	defer C.free(unsafe.Pointer(fileName_Cstring))
-	var _out **C.char = nil
-	var _out_Lengths *C.int = nil
-	var _out_len C.size_t = 0
-	C.QStandardPaths_LocateAll3((C.uintptr_t)(typeVal), fileName_Cstring, C.size_t(len(fileName)), (C.int)(options), &_out, &_out_Lengths, &_out_len)
-	ret := make([]string, int(_out_len))
-	_outCast := (*[0xffff]*C.char)(unsafe.Pointer(_out)) // hey ya
-	_out_LengthsCast := (*[0xffff]C.int)(unsafe.Pointer(_out_Lengths))
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = C.GoStringN(_outCast[i], _out_LengthsCast[i])
+	fileName_ms := miqt_strdupg(fileName)
+	defer C.free(fileName_ms)
+	var _ma *C.struct_miqt_array = C.QStandardPaths_LocateAll3((C.uintptr_t)(typeVal), (*C.struct_miqt_string)(fileName_ms), (C.int)(options))
+	_ret := make([]string, int(_ma.len))
+	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = C.GoStringN(&_outCast[i].data, C.int(int64(_outCast[i].len)))
+		C.free(unsafe.Pointer(_outCast[i])) // free the inner miqt_string*
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
 func QStandardPaths_FindExecutable2(executableName string, paths []string) string {
-	executableName_Cstring := C.CString(executableName)
-	defer C.free(unsafe.Pointer(executableName_Cstring))
+	executableName_ms := miqt_strdupg(executableName)
+	defer C.free(executableName_ms)
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
-	paths_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(paths))))
-	paths_Lengths := (*[0xffff]C.uint64_t)(C.malloc(C.size_t(8 * len(paths))))
+	paths_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(paths))))
 	defer C.free(unsafe.Pointer(paths_CArray))
-	defer C.free(unsafe.Pointer(paths_Lengths))
 	for i := range paths {
-		single_cstring := C.CString(paths[i])
-		defer C.free(unsafe.Pointer(single_cstring))
-		paths_CArray[i] = single_cstring
-		paths_Lengths[i] = (C.uint64_t)(len(paths[i]))
+		single_ms := miqt_strdupg(paths[i])
+		defer C.free(single_ms)
+		paths_CArray[i] = (*C.struct_miqt_string)(single_ms)
 	}
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QStandardPaths_FindExecutable2(executableName_Cstring, C.size_t(len(executableName)), &paths_CArray[0], &paths_Lengths[0], C.size_t(len(paths)), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	paths_ma := &C.struct_miqt_array{len: C.size_t(len(paths)), data: unsafe.Pointer(paths_CArray)}
+	defer runtime.KeepAlive(unsafe.Pointer(paths_ma))
+	var _ms *C.struct_miqt_string = C.QStandardPaths_FindExecutable2((*C.struct_miqt_string)(executableName_ms), paths_ma)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }

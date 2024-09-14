@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"runtime"
 	"unsafe"
 )
 
@@ -47,30 +48,40 @@ func Newqfloat162(f float32) *qfloat16 {
 }
 
 func (this *qfloat16) IsInf() bool {
-	ret := C.qfloat16_IsInf(this.h)
-	return (bool)(ret)
+	_ret := C.qfloat16_IsInf(this.h)
+	return (bool)(_ret)
 }
 
 func (this *qfloat16) IsNaN() bool {
-	ret := C.qfloat16_IsNaN(this.h)
-	return (bool)(ret)
+	_ret := C.qfloat16_IsNaN(this.h)
+	return (bool)(_ret)
 }
 
 func (this *qfloat16) IsFinite() bool {
-	ret := C.qfloat16_IsFinite(this.h)
-	return (bool)(ret)
+	_ret := C.qfloat16_IsFinite(this.h)
+	return (bool)(_ret)
 }
 
 func (this *qfloat16) FpClassify() int {
-	ret := C.qfloat16_FpClassify(this.h)
-	return (int)(ret)
+	_ret := C.qfloat16_FpClassify(this.h)
+	return (int)(_ret)
 }
 
 func (this *qfloat16) IsNormal() bool {
-	ret := C.qfloat16_IsNormal(this.h)
-	return (bool)(ret)
+	_ret := C.qfloat16_IsNormal(this.h)
+	return (bool)(_ret)
 }
 
+// Delete this object from C++ memory.
 func (this *qfloat16) Delete() {
 	C.qfloat16_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *qfloat16) GoGC() {
+	runtime.SetFinalizer(this, func(this *qfloat16) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

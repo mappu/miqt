@@ -17,33 +17,25 @@
 #include <QStyleOptionComplex>
 #include <QWidget>
 #include "qstyle.h"
-
 #include "gen_qstyle.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QMetaObject* QStyle_MetaObject(const QStyle* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void QStyle_Tr(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QStyle::tr(s);
+struct miqt_string* QStyle_Tr(const char* s) {
+	QString _ret = QStyle::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QStyle_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QStyle::trUtf8(s);
+struct miqt_string* QStyle_TrUtf8(const char* s) {
+	QString _ret = QStyle::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QStyle_Polish(QStyle* self, QWidget* widget) {
@@ -66,21 +58,21 @@ void QStyle_PolishWithPalette(QStyle* self, QPalette* palette) {
 	self->polish(*palette);
 }
 
-QRect* QStyle_ItemTextRect(const QStyle* self, QFontMetrics* fm, QRect* r, int flags, bool enabled, const char* text, size_t text_Strlen) {
-	QString text_QString = QString::fromUtf8(text, text_Strlen);
-	QRect ret = self->itemTextRect(*fm, *r, static_cast<int>(flags), enabled, text_QString);
+QRect* QStyle_ItemTextRect(const QStyle* self, QFontMetrics* fm, QRect* r, int flags, bool enabled, struct miqt_string* text) {
+	QString text_QString = QString::fromUtf8(&text->data, text->len);
+	QRect _ret = self->itemTextRect(*fm, *r, static_cast<int>(flags), enabled, text_QString);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(ret));
+	return static_cast<QRect*>(new QRect(_ret));
 }
 
 QRect* QStyle_ItemPixmapRect(const QStyle* self, QRect* r, int flags, QPixmap* pixmap) {
-	QRect ret = self->itemPixmapRect(*r, static_cast<int>(flags), *pixmap);
+	QRect _ret = self->itemPixmapRect(*r, static_cast<int>(flags), *pixmap);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(ret));
+	return static_cast<QRect*>(new QRect(_ret));
 }
 
-void QStyle_DrawItemText(const QStyle* self, QPainter* painter, QRect* rect, int flags, QPalette* pal, bool enabled, const char* text, size_t text_Strlen) {
-	QString text_QString = QString::fromUtf8(text, text_Strlen);
+void QStyle_DrawItemText(const QStyle* self, QPainter* painter, QRect* rect, int flags, QPalette* pal, bool enabled, struct miqt_string* text) {
+	QString text_QString = QString::fromUtf8(&text->data, text->len);
 	self->drawItemText(painter, *rect, static_cast<int>(flags), *pal, enabled, text_QString);
 }
 
@@ -89,9 +81,9 @@ void QStyle_DrawItemPixmap(const QStyle* self, QPainter* painter, QRect* rect, i
 }
 
 QPalette* QStyle_StandardPalette(const QStyle* self) {
-	QPalette ret = self->standardPalette();
+	QPalette _ret = self->standardPalette();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPalette*>(new QPalette(ret));
+	return static_cast<QPalette*>(new QPalette(_ret));
 }
 
 void QStyle_DrawPrimitive(const QStyle* self, uintptr_t pe, QStyleOption* opt, QPainter* p) {
@@ -103,9 +95,9 @@ void QStyle_DrawControl(const QStyle* self, uintptr_t element, QStyleOption* opt
 }
 
 QRect* QStyle_SubElementRect(const QStyle* self, uintptr_t subElement, QStyleOption* option) {
-	QRect ret = self->subElementRect(static_cast<QStyle::SubElement>(subElement), option);
+	QRect _ret = self->subElementRect(static_cast<QStyle::SubElement>(subElement), option);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(ret));
+	return static_cast<QRect*>(new QRect(_ret));
 }
 
 void QStyle_DrawComplexControl(const QStyle* self, uintptr_t cc, QStyleOptionComplex* opt, QPainter* p) {
@@ -113,14 +105,14 @@ void QStyle_DrawComplexControl(const QStyle* self, uintptr_t cc, QStyleOptionCom
 }
 
 uintptr_t QStyle_HitTestComplexControl(const QStyle* self, uintptr_t cc, QStyleOptionComplex* opt, QPoint* pt) {
-	QStyle::SubControl ret = self->hitTestComplexControl(static_cast<QStyle::ComplexControl>(cc), opt, *pt);
-	return static_cast<uintptr_t>(ret);
+	QStyle::SubControl _ret = self->hitTestComplexControl(static_cast<QStyle::ComplexControl>(cc), opt, *pt);
+	return static_cast<uintptr_t>(_ret);
 }
 
 QRect* QStyle_SubControlRect(const QStyle* self, uintptr_t cc, QStyleOptionComplex* opt, uintptr_t sc) {
-	QRect ret = self->subControlRect(static_cast<QStyle::ComplexControl>(cc), opt, static_cast<QStyle::SubControl>(sc));
+	QRect _ret = self->subControlRect(static_cast<QStyle::ComplexControl>(cc), opt, static_cast<QStyle::SubControl>(sc));
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(ret));
+	return static_cast<QRect*>(new QRect(_ret));
 }
 
 int QStyle_PixelMetric(const QStyle* self, uintptr_t metric) {
@@ -128,9 +120,9 @@ int QStyle_PixelMetric(const QStyle* self, uintptr_t metric) {
 }
 
 QSize* QStyle_SizeFromContents(const QStyle* self, uintptr_t ct, QStyleOption* opt, QSize* contentsSize) {
-	QSize ret = self->sizeFromContents(static_cast<QStyle::ContentsType>(ct), opt, *contentsSize);
+	QSize _ret = self->sizeFromContents(static_cast<QStyle::ContentsType>(ct), opt, *contentsSize);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(ret));
+	return static_cast<QSize*>(new QSize(_ret));
 }
 
 int QStyle_StyleHint(const QStyle* self, uintptr_t stylehint) {
@@ -138,33 +130,33 @@ int QStyle_StyleHint(const QStyle* self, uintptr_t stylehint) {
 }
 
 QPixmap* QStyle_StandardPixmap(const QStyle* self, uintptr_t standardPixmap) {
-	QPixmap ret = self->standardPixmap(static_cast<QStyle::StandardPixmap>(standardPixmap));
+	QPixmap _ret = self->standardPixmap(static_cast<QStyle::StandardPixmap>(standardPixmap));
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPixmap*>(new QPixmap(ret));
+	return static_cast<QPixmap*>(new QPixmap(_ret));
 }
 
 QIcon* QStyle_StandardIcon(const QStyle* self, uintptr_t standardIcon) {
-	QIcon ret = self->standardIcon(static_cast<QStyle::StandardPixmap>(standardIcon));
+	QIcon _ret = self->standardIcon(static_cast<QStyle::StandardPixmap>(standardIcon));
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QIcon*>(new QIcon(ret));
+	return static_cast<QIcon*>(new QIcon(_ret));
 }
 
 QPixmap* QStyle_GeneratedIconPixmap(const QStyle* self, uintptr_t iconMode, QPixmap* pixmap, QStyleOption* opt) {
-	QPixmap ret = self->generatedIconPixmap(static_cast<QIcon::Mode>(iconMode), *pixmap, opt);
+	QPixmap _ret = self->generatedIconPixmap(static_cast<QIcon::Mode>(iconMode), *pixmap, opt);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPixmap*>(new QPixmap(ret));
+	return static_cast<QPixmap*>(new QPixmap(_ret));
 }
 
 QRect* QStyle_VisualRect(uintptr_t direction, QRect* boundingRect, QRect* logicalRect) {
-	QRect ret = QStyle::visualRect(static_cast<Qt::LayoutDirection>(direction), *boundingRect, *logicalRect);
+	QRect _ret = QStyle::visualRect(static_cast<Qt::LayoutDirection>(direction), *boundingRect, *logicalRect);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(ret));
+	return static_cast<QRect*>(new QRect(_ret));
 }
 
 QPoint* QStyle_VisualPos(uintptr_t direction, QRect* boundingRect, QPoint* logicalPos) {
-	QPoint ret = QStyle::visualPos(static_cast<Qt::LayoutDirection>(direction), *boundingRect, *logicalPos);
+	QPoint _ret = QStyle::visualPos(static_cast<Qt::LayoutDirection>(direction), *boundingRect, *logicalPos);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPoint*>(new QPoint(ret));
+	return static_cast<QPoint*>(new QPoint(_ret));
 }
 
 int QStyle_SliderPositionFromValue(int min, int max, int val, int space) {
@@ -176,14 +168,14 @@ int QStyle_SliderValueFromPosition(int min, int max, int pos, int space) {
 }
 
 int QStyle_VisualAlignment(uintptr_t direction, int alignment) {
-	Qt::Alignment ret = QStyle::visualAlignment(static_cast<Qt::LayoutDirection>(direction), static_cast<Qt::Alignment>(alignment));
-	return static_cast<int>(ret);
+	Qt::Alignment _ret = QStyle::visualAlignment(static_cast<Qt::LayoutDirection>(direction), static_cast<Qt::Alignment>(alignment));
+	return static_cast<int>(_ret);
 }
 
 QRect* QStyle_AlignedRect(uintptr_t direction, int alignment, QSize* size, QRect* rectangle) {
-	QRect ret = QStyle::alignedRect(static_cast<Qt::LayoutDirection>(direction), static_cast<Qt::Alignment>(alignment), *size, *rectangle);
+	QRect _ret = QStyle::alignedRect(static_cast<Qt::LayoutDirection>(direction), static_cast<Qt::Alignment>(alignment), *size, *rectangle);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(ret));
+	return static_cast<QRect*>(new QRect(_ret));
 }
 
 int QStyle_LayoutSpacing(const QStyle* self, uintptr_t control1, uintptr_t control2, uintptr_t orientation) {
@@ -198,44 +190,36 @@ QStyle* QStyle_Proxy(const QStyle* self) {
 	return (QStyle*) self->proxy();
 }
 
-void QStyle_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QStyle::tr(s, c);
+struct miqt_string* QStyle_Tr2(const char* s, const char* c) {
+	QString _ret = QStyle::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QStyle_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QStyle::tr(s, c, static_cast<int>(n));
+struct miqt_string* QStyle_Tr3(const char* s, const char* c, int n) {
+	QString _ret = QStyle::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QStyle_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QStyle::trUtf8(s, c);
+struct miqt_string* QStyle_TrUtf82(const char* s, const char* c) {
+	QString _ret = QStyle::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QStyle_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QStyle::trUtf8(s, c, static_cast<int>(n));
+struct miqt_string* QStyle_TrUtf83(const char* s, const char* c, int n) {
+	QString _ret = QStyle::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QStyle_DrawItemText7(const QStyle* self, QPainter* painter, QRect* rect, int flags, QPalette* pal, bool enabled, const char* text, size_t text_Strlen, uintptr_t textRole) {
-	QString text_QString = QString::fromUtf8(text, text_Strlen);
+void QStyle_DrawItemText7(const QStyle* self, QPainter* painter, QRect* rect, int flags, QPalette* pal, bool enabled, struct miqt_string* text, uintptr_t textRole) {
+	QString text_QString = QString::fromUtf8(&text->data, text->len);
 	self->drawItemText(painter, *rect, static_cast<int>(flags), *pal, enabled, text_QString, static_cast<QPalette::ColorRole>(textRole));
 }
 
@@ -248,9 +232,9 @@ void QStyle_DrawControl4(const QStyle* self, uintptr_t element, QStyleOption* op
 }
 
 QRect* QStyle_SubElementRect3(const QStyle* self, uintptr_t subElement, QStyleOption* option, QWidget* widget) {
-	QRect ret = self->subElementRect(static_cast<QStyle::SubElement>(subElement), option, widget);
+	QRect _ret = self->subElementRect(static_cast<QStyle::SubElement>(subElement), option, widget);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(ret));
+	return static_cast<QRect*>(new QRect(_ret));
 }
 
 void QStyle_DrawComplexControl4(const QStyle* self, uintptr_t cc, QStyleOptionComplex* opt, QPainter* p, QWidget* widget) {
@@ -258,14 +242,14 @@ void QStyle_DrawComplexControl4(const QStyle* self, uintptr_t cc, QStyleOptionCo
 }
 
 uintptr_t QStyle_HitTestComplexControl4(const QStyle* self, uintptr_t cc, QStyleOptionComplex* opt, QPoint* pt, QWidget* widget) {
-	QStyle::SubControl ret = self->hitTestComplexControl(static_cast<QStyle::ComplexControl>(cc), opt, *pt, widget);
-	return static_cast<uintptr_t>(ret);
+	QStyle::SubControl _ret = self->hitTestComplexControl(static_cast<QStyle::ComplexControl>(cc), opt, *pt, widget);
+	return static_cast<uintptr_t>(_ret);
 }
 
 QRect* QStyle_SubControlRect4(const QStyle* self, uintptr_t cc, QStyleOptionComplex* opt, uintptr_t sc, QWidget* widget) {
-	QRect ret = self->subControlRect(static_cast<QStyle::ComplexControl>(cc), opt, static_cast<QStyle::SubControl>(sc), widget);
+	QRect _ret = self->subControlRect(static_cast<QStyle::ComplexControl>(cc), opt, static_cast<QStyle::SubControl>(sc), widget);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(ret));
+	return static_cast<QRect*>(new QRect(_ret));
 }
 
 int QStyle_PixelMetric2(const QStyle* self, uintptr_t metric, QStyleOption* option) {
@@ -277,9 +261,9 @@ int QStyle_PixelMetric3(const QStyle* self, uintptr_t metric, QStyleOption* opti
 }
 
 QSize* QStyle_SizeFromContents4(const QStyle* self, uintptr_t ct, QStyleOption* opt, QSize* contentsSize, QWidget* w) {
-	QSize ret = self->sizeFromContents(static_cast<QStyle::ContentsType>(ct), opt, *contentsSize, w);
+	QSize _ret = self->sizeFromContents(static_cast<QStyle::ContentsType>(ct), opt, *contentsSize, w);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(ret));
+	return static_cast<QSize*>(new QSize(_ret));
 }
 
 int QStyle_StyleHint2(const QStyle* self, uintptr_t stylehint, QStyleOption* opt) {
@@ -295,27 +279,27 @@ int QStyle_StyleHint4(const QStyle* self, uintptr_t stylehint, QStyleOption* opt
 }
 
 QPixmap* QStyle_StandardPixmap2(const QStyle* self, uintptr_t standardPixmap, QStyleOption* opt) {
-	QPixmap ret = self->standardPixmap(static_cast<QStyle::StandardPixmap>(standardPixmap), opt);
+	QPixmap _ret = self->standardPixmap(static_cast<QStyle::StandardPixmap>(standardPixmap), opt);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPixmap*>(new QPixmap(ret));
+	return static_cast<QPixmap*>(new QPixmap(_ret));
 }
 
 QPixmap* QStyle_StandardPixmap3(const QStyle* self, uintptr_t standardPixmap, QStyleOption* opt, QWidget* widget) {
-	QPixmap ret = self->standardPixmap(static_cast<QStyle::StandardPixmap>(standardPixmap), opt, widget);
+	QPixmap _ret = self->standardPixmap(static_cast<QStyle::StandardPixmap>(standardPixmap), opt, widget);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPixmap*>(new QPixmap(ret));
+	return static_cast<QPixmap*>(new QPixmap(_ret));
 }
 
 QIcon* QStyle_StandardIcon2(const QStyle* self, uintptr_t standardIcon, QStyleOption* option) {
-	QIcon ret = self->standardIcon(static_cast<QStyle::StandardPixmap>(standardIcon), option);
+	QIcon _ret = self->standardIcon(static_cast<QStyle::StandardPixmap>(standardIcon), option);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QIcon*>(new QIcon(ret));
+	return static_cast<QIcon*>(new QIcon(_ret));
 }
 
 QIcon* QStyle_StandardIcon3(const QStyle* self, uintptr_t standardIcon, QStyleOption* option, QWidget* widget) {
-	QIcon ret = self->standardIcon(static_cast<QStyle::StandardPixmap>(standardIcon), option, widget);
+	QIcon _ret = self->standardIcon(static_cast<QStyle::StandardPixmap>(standardIcon), option, widget);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QIcon*>(new QIcon(ret));
+	return static_cast<QIcon*>(new QIcon(_ret));
 }
 
 int QStyle_SliderPositionFromValue5(int min, int max, int val, int space, bool upsideDown) {

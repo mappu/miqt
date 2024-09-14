@@ -3,12 +3,8 @@
 #include <QPoint>
 #include <QPointF>
 #include "qline.h"
-
 #include "gen_qline.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QLine* QLine_new() {
 	return new QLine();
@@ -31,15 +27,15 @@ bool QLine_IsNull(const QLine* self) {
 }
 
 QPoint* QLine_P1(const QLine* self) {
-	QPoint ret = self->p1();
+	QPoint _ret = self->p1();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPoint*>(new QPoint(ret));
+	return static_cast<QPoint*>(new QPoint(_ret));
 }
 
 QPoint* QLine_P2(const QLine* self) {
-	QPoint ret = self->p2();
+	QPoint _ret = self->p2();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPoint*>(new QPoint(ret));
+	return static_cast<QPoint*>(new QPoint(_ret));
 }
 
 int QLine_X1(const QLine* self) {
@@ -75,21 +71,21 @@ void QLine_Translate2(QLine* self, int dx, int dy) {
 }
 
 QLine* QLine_Translated(const QLine* self, QPoint* p) {
-	QLine ret = self->translated(*p);
+	QLine _ret = self->translated(*p);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QLine*>(new QLine(ret));
+	return static_cast<QLine*>(new QLine(_ret));
 }
 
 QLine* QLine_Translated2(const QLine* self, int dx, int dy) {
-	QLine ret = self->translated(static_cast<int>(dx), static_cast<int>(dy));
+	QLine _ret = self->translated(static_cast<int>(dx), static_cast<int>(dy));
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QLine*>(new QLine(ret));
+	return static_cast<QLine*>(new QLine(_ret));
 }
 
 QPoint* QLine_Center(const QLine* self) {
-	QPoint ret = self->center();
+	QPoint _ret = self->center();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPoint*>(new QPoint(ret));
+	return static_cast<QPoint*>(new QPoint(_ret));
 }
 
 void QLine_SetP1(QLine* self, QPoint* p1) {
@@ -141,9 +137,9 @@ QLineF* QLineF_new5(QLineF* param1) {
 }
 
 QLineF* QLineF_FromPolar(double length, double angle) {
-	QLineF ret = QLineF::fromPolar(static_cast<qreal>(length), static_cast<qreal>(angle));
+	QLineF _ret = QLineF::fromPolar(static_cast<qreal>(length), static_cast<qreal>(angle));
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QLineF*>(new QLineF(ret));
+	return static_cast<QLineF*>(new QLineF(_ret));
 }
 
 bool QLineF_IsNull(const QLineF* self) {
@@ -151,15 +147,15 @@ bool QLineF_IsNull(const QLineF* self) {
 }
 
 QPointF* QLineF_P1(const QLineF* self) {
-	QPointF ret = self->p1();
+	QPointF _ret = self->p1();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPointF*>(new QPointF(ret));
+	return static_cast<QPointF*>(new QPointF(_ret));
 }
 
 QPointF* QLineF_P2(const QLineF* self) {
-	QPointF ret = self->p2();
+	QPointF _ret = self->p2();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPointF*>(new QPointF(ret));
+	return static_cast<QPointF*>(new QPointF(_ret));
 }
 
 double QLineF_X1(const QLineF* self) {
@@ -207,25 +203,25 @@ double QLineF_AngleTo(const QLineF* self, QLineF* l) {
 }
 
 QLineF* QLineF_UnitVector(const QLineF* self) {
-	QLineF ret = self->unitVector();
+	QLineF _ret = self->unitVector();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QLineF*>(new QLineF(ret));
+	return static_cast<QLineF*>(new QLineF(_ret));
 }
 
 QLineF* QLineF_NormalVector(const QLineF* self) {
-	QLineF ret = self->normalVector();
+	QLineF _ret = self->normalVector();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QLineF*>(new QLineF(ret));
+	return static_cast<QLineF*>(new QLineF(_ret));
 }
 
 uintptr_t QLineF_Intersects(const QLineF* self, QLineF* l, QPointF* intersectionPoint) {
-	QLineF::IntersectionType ret = self->intersects(*l, intersectionPoint);
-	return static_cast<uintptr_t>(ret);
+	QLineF::IntersectionType _ret = self->intersects(*l, intersectionPoint);
+	return static_cast<uintptr_t>(_ret);
 }
 
 uintptr_t QLineF_Intersect(const QLineF* self, QLineF* l, QPointF* intersectionPoint) {
-	QLineF::IntersectType ret = self->intersect(*l, intersectionPoint);
-	return static_cast<uintptr_t>(ret);
+	QLineF::IntersectType _ret = self->intersect(*l, intersectionPoint);
+	return static_cast<uintptr_t>(_ret);
 }
 
 double QLineF_AngleWithQLineF(const QLineF* self, QLineF* l) {
@@ -233,9 +229,9 @@ double QLineF_AngleWithQLineF(const QLineF* self, QLineF* l) {
 }
 
 QPointF* QLineF_PointAt(const QLineF* self, double t) {
-	QPointF ret = self->pointAt(static_cast<qreal>(t));
+	QPointF _ret = self->pointAt(static_cast<qreal>(t));
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPointF*>(new QPointF(ret));
+	return static_cast<QPointF*>(new QPointF(_ret));
 }
 
 void QLineF_Translate(QLineF* self, QPointF* p) {
@@ -247,21 +243,21 @@ void QLineF_Translate2(QLineF* self, double dx, double dy) {
 }
 
 QLineF* QLineF_Translated(const QLineF* self, QPointF* p) {
-	QLineF ret = self->translated(*p);
+	QLineF _ret = self->translated(*p);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QLineF*>(new QLineF(ret));
+	return static_cast<QLineF*>(new QLineF(_ret));
 }
 
 QLineF* QLineF_Translated2(const QLineF* self, double dx, double dy) {
-	QLineF ret = self->translated(static_cast<qreal>(dx), static_cast<qreal>(dy));
+	QLineF _ret = self->translated(static_cast<qreal>(dx), static_cast<qreal>(dy));
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QLineF*>(new QLineF(ret));
+	return static_cast<QLineF*>(new QLineF(_ret));
 }
 
 QPointF* QLineF_Center(const QLineF* self) {
-	QPointF ret = self->center();
+	QPointF _ret = self->center();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPointF*>(new QPointF(ret));
+	return static_cast<QPointF*>(new QPointF(_ret));
 }
 
 void QLineF_SetP1(QLineF* self, QPointF* p1) {
@@ -289,9 +285,9 @@ bool QLineF_OperatorNotEqual(const QLineF* self, QLineF* d) {
 }
 
 QLine* QLineF_ToLine(const QLineF* self) {
-	QLine ret = self->toLine();
+	QLine _ret = self->toLine();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QLine*>(new QLine(ret));
+	return static_cast<QLine*>(new QLine(_ret));
 }
 
 void QLineF_Delete(QLineF* self) {

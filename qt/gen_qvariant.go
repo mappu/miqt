@@ -190,26 +190,25 @@ func NewQVariant14(bitarray *QBitArray) *QVariant {
 
 // NewQVariant15 constructs a new QVariant object.
 func NewQVariant15(stringVal string) *QVariant {
-	stringVal_Cstring := C.CString(stringVal)
-	defer C.free(unsafe.Pointer(stringVal_Cstring))
-	ret := C.QVariant_new15(stringVal_Cstring, C.size_t(len(stringVal)))
+	stringVal_ms := miqt_strdupg(stringVal)
+	defer C.free(stringVal_ms)
+	ret := C.QVariant_new15((*C.struct_miqt_string)(stringVal_ms))
 	return newQVariant(ret)
 }
 
 // NewQVariant16 constructs a new QVariant object.
 func NewQVariant16(stringlist []string) *QVariant {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
-	stringlist_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(stringlist))))
-	stringlist_Lengths := (*[0xffff]C.uint64_t)(C.malloc(C.size_t(8 * len(stringlist))))
+	stringlist_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(stringlist))))
 	defer C.free(unsafe.Pointer(stringlist_CArray))
-	defer C.free(unsafe.Pointer(stringlist_Lengths))
 	for i := range stringlist {
-		single_cstring := C.CString(stringlist[i])
-		defer C.free(unsafe.Pointer(single_cstring))
-		stringlist_CArray[i] = single_cstring
-		stringlist_Lengths[i] = (C.uint64_t)(len(stringlist[i]))
+		single_ms := miqt_strdupg(stringlist[i])
+		defer C.free(single_ms)
+		stringlist_CArray[i] = (*C.struct_miqt_string)(single_ms)
 	}
-	ret := C.QVariant_new16(&stringlist_CArray[0], &stringlist_Lengths[0], C.size_t(len(stringlist)))
+	stringlist_ma := &C.struct_miqt_array{len: C.size_t(len(stringlist)), data: unsafe.Pointer(stringlist_CArray)}
+	defer runtime.KeepAlive(unsafe.Pointer(stringlist_ma))
+	ret := C.QVariant_new16(stringlist_ma)
 	return newQVariant(ret)
 }
 
@@ -366,38 +365,38 @@ func (this *QVariant) Swap(other *QVariant) {
 }
 
 func (this *QVariant) Type() QVariant__Type {
-	ret := C.QVariant_Type(this.h)
-	return (QVariant__Type)(ret)
+	_ret := C.QVariant_Type(this.h)
+	return (QVariant__Type)(_ret)
 }
 
 func (this *QVariant) UserType() int {
-	ret := C.QVariant_UserType(this.h)
-	return (int)(ret)
+	_ret := C.QVariant_UserType(this.h)
+	return (int)(_ret)
 }
 
 func (this *QVariant) TypeName() unsafe.Pointer {
-	ret := C.QVariant_TypeName(this.h)
-	return (unsafe.Pointer)(ret)
+	_ret := C.QVariant_TypeName(this.h)
+	return (unsafe.Pointer)(_ret)
 }
 
 func (this *QVariant) CanConvert(targetTypeId int) bool {
-	ret := C.QVariant_CanConvert(this.h, (C.int)(targetTypeId))
-	return (bool)(ret)
+	_ret := C.QVariant_CanConvert(this.h, (C.int)(targetTypeId))
+	return (bool)(_ret)
 }
 
 func (this *QVariant) Convert(targetTypeId int) bool {
-	ret := C.QVariant_Convert(this.h, (C.int)(targetTypeId))
-	return (bool)(ret)
+	_ret := C.QVariant_Convert(this.h, (C.int)(targetTypeId))
+	return (bool)(_ret)
 }
 
 func (this *QVariant) IsValid() bool {
-	ret := C.QVariant_IsValid(this.h)
-	return (bool)(ret)
+	_ret := C.QVariant_IsValid(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QVariant) IsNull() bool {
-	ret := C.QVariant_IsNull(this.h)
-	return (bool)(ret)
+	_ret := C.QVariant_IsNull(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QVariant) Clear() {
@@ -409,358 +408,249 @@ func (this *QVariant) Detach() {
 }
 
 func (this *QVariant) IsDetached() bool {
-	ret := C.QVariant_IsDetached(this.h)
-	return (bool)(ret)
+	_ret := C.QVariant_IsDetached(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QVariant) ToInt() int {
-	ret := C.QVariant_ToInt(this.h)
-	return (int)(ret)
+	_ret := C.QVariant_ToInt(this.h)
+	return (int)(_ret)
 }
 
 func (this *QVariant) ToUInt() uint {
-	ret := C.QVariant_ToUInt(this.h)
-	return (uint)(ret)
+	_ret := C.QVariant_ToUInt(this.h)
+	return (uint)(_ret)
 }
 
 func (this *QVariant) ToLongLong() int64 {
-	ret := C.QVariant_ToLongLong(this.h)
-	return (int64)(ret)
+	_ret := C.QVariant_ToLongLong(this.h)
+	return (int64)(_ret)
 }
 
 func (this *QVariant) ToULongLong() uint64 {
-	ret := C.QVariant_ToULongLong(this.h)
-	return (uint64)(ret)
+	_ret := C.QVariant_ToULongLong(this.h)
+	return (uint64)(_ret)
 }
 
 func (this *QVariant) ToBool() bool {
-	ret := C.QVariant_ToBool(this.h)
-	return (bool)(ret)
+	_ret := C.QVariant_ToBool(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QVariant) ToDouble() float64 {
-	ret := C.QVariant_ToDouble(this.h)
-	return (float64)(ret)
+	_ret := C.QVariant_ToDouble(this.h)
+	return (float64)(_ret)
 }
 
 func (this *QVariant) ToFloat() float32 {
-	ret := C.QVariant_ToFloat(this.h)
-	return (float32)(ret)
+	_ret := C.QVariant_ToFloat(this.h)
+	return (float32)(_ret)
 }
 
 func (this *QVariant) ToReal() float64 {
-	ret := C.QVariant_ToReal(this.h)
-	return (float64)(ret)
+	_ret := C.QVariant_ToReal(this.h)
+	return (float64)(_ret)
 }
 
 func (this *QVariant) ToByteArray() *QByteArray {
-	ret := C.QVariant_ToByteArray(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQByteArray(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QByteArray) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QVariant_ToByteArray(this.h)
+	_goptr := newQByteArray(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QVariant) ToBitArray() *QBitArray {
-	ret := C.QVariant_ToBitArray(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQBitArray(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QBitArray) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QVariant_ToBitArray(this.h)
+	_goptr := newQBitArray(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QVariant) ToString() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QVariant_ToString(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QVariant_ToString(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QVariant) ToStringList() []string {
-	var _out **C.char = nil
-	var _out_Lengths *C.int = nil
-	var _out_len C.size_t = 0
-	C.QVariant_ToStringList(this.h, &_out, &_out_Lengths, &_out_len)
-	ret := make([]string, int(_out_len))
-	_outCast := (*[0xffff]*C.char)(unsafe.Pointer(_out)) // hey ya
-	_out_LengthsCast := (*[0xffff]C.int)(unsafe.Pointer(_out_Lengths))
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = C.GoStringN(_outCast[i], _out_LengthsCast[i])
+	var _ma *C.struct_miqt_array = C.QVariant_ToStringList(this.h)
+	_ret := make([]string, int(_ma.len))
+	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = C.GoStringN(&_outCast[i].data, C.int(int64(_outCast[i].len)))
+		C.free(unsafe.Pointer(_outCast[i])) // free the inner miqt_string*
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
 func (this *QVariant) ToChar() *QChar {
-	ret := C.QVariant_ToChar(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQChar(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QChar) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QVariant_ToChar(this.h)
+	_goptr := newQChar(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QVariant) ToDate() *QDate {
-	ret := C.QVariant_ToDate(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQDate(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QDate) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QVariant_ToDate(this.h)
+	_goptr := newQDate(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QVariant) ToTime() *QTime {
-	ret := C.QVariant_ToTime(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQTime(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QTime) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QVariant_ToTime(this.h)
+	_goptr := newQTime(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QVariant) ToDateTime() *QDateTime {
-	ret := C.QVariant_ToDateTime(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQDateTime(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QDateTime) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QVariant_ToDateTime(this.h)
+	_goptr := newQDateTime(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QVariant) ToPoint() *QPoint {
-	ret := C.QVariant_ToPoint(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPoint(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPoint) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QVariant_ToPoint(this.h)
+	_goptr := newQPoint(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QVariant) ToPointF() *QPointF {
-	ret := C.QVariant_ToPointF(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPointF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPointF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QVariant_ToPointF(this.h)
+	_goptr := newQPointF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QVariant) ToRect() *QRect {
-	ret := C.QVariant_ToRect(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRect(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRect) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QVariant_ToRect(this.h)
+	_goptr := newQRect(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QVariant) ToSize() *QSize {
-	ret := C.QVariant_ToSize(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSize(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QVariant_ToSize(this.h)
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QVariant) ToSizeF() *QSizeF {
-	ret := C.QVariant_ToSizeF(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSizeF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSizeF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QVariant_ToSizeF(this.h)
+	_goptr := newQSizeF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QVariant) ToLine() *QLine {
-	ret := C.QVariant_ToLine(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQLine(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QLine) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QVariant_ToLine(this.h)
+	_goptr := newQLine(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QVariant) ToLineF() *QLineF {
-	ret := C.QVariant_ToLineF(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQLineF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QLineF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QVariant_ToLineF(this.h)
+	_goptr := newQLineF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QVariant) ToRectF() *QRectF {
-	ret := C.QVariant_ToRectF(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRectF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRectF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QVariant_ToRectF(this.h)
+	_goptr := newQRectF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QVariant) ToLocale() *QLocale {
-	ret := C.QVariant_ToLocale(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQLocale(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QLocale) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QVariant_ToLocale(this.h)
+	_goptr := newQLocale(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QVariant) ToRegExp() *QRegExp {
-	ret := C.QVariant_ToRegExp(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRegExp(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRegExp) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QVariant_ToRegExp(this.h)
+	_goptr := newQRegExp(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QVariant) ToRegularExpression() *QRegularExpression {
-	ret := C.QVariant_ToRegularExpression(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRegularExpression(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRegularExpression) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QVariant_ToRegularExpression(this.h)
+	_goptr := newQRegularExpression(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QVariant) ToEasingCurve() *QEasingCurve {
-	ret := C.QVariant_ToEasingCurve(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQEasingCurve(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QEasingCurve) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QVariant_ToEasingCurve(this.h)
+	_goptr := newQEasingCurve(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QVariant) ToUuid() *QUuid {
-	ret := C.QVariant_ToUuid(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQUuid(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QUuid) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QVariant_ToUuid(this.h)
+	_goptr := newQUuid(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QVariant) ToUrl() *QUrl {
-	ret := C.QVariant_ToUrl(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQUrl(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QUrl) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QVariant_ToUrl(this.h)
+	_goptr := newQUrl(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QVariant) ToJsonValue() *QJsonValue {
-	ret := C.QVariant_ToJsonValue(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQJsonValue(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QJsonValue) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QVariant_ToJsonValue(this.h)
+	_goptr := newQJsonValue(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QVariant) ToJsonObject() *QJsonObject {
-	ret := C.QVariant_ToJsonObject(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQJsonObject(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QJsonObject) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QVariant_ToJsonObject(this.h)
+	_goptr := newQJsonObject(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QVariant) ToJsonArray() *QJsonArray {
-	ret := C.QVariant_ToJsonArray(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQJsonArray(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QJsonArray) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QVariant_ToJsonArray(this.h)
+	_goptr := newQJsonArray(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QVariant) ToJsonDocument() *QJsonDocument {
-	ret := C.QVariant_ToJsonDocument(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQJsonDocument(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QJsonDocument) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QVariant_ToJsonDocument(this.h)
+	_goptr := newQJsonDocument(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QVariant) ToModelIndex() *QModelIndex {
-	ret := C.QVariant_ToModelIndex(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQModelIndex(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QModelIndex) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QVariant_ToModelIndex(this.h)
+	_goptr := newQModelIndex(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QVariant) ToPersistentModelIndex() *QPersistentModelIndex {
-	ret := C.QVariant_ToPersistentModelIndex(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPersistentModelIndex(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPersistentModelIndex) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QVariant_ToPersistentModelIndex(this.h)
+	_goptr := newQPersistentModelIndex(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QVariant) Load(ds *QDataStream) {
@@ -772,84 +662,94 @@ func (this *QVariant) Save(ds *QDataStream) {
 }
 
 func QVariant_TypeToName(typeId int) unsafe.Pointer {
-	ret := C.QVariant_TypeToName((C.int)(typeId))
-	return (unsafe.Pointer)(ret)
+	_ret := C.QVariant_TypeToName((C.int)(typeId))
+	return (unsafe.Pointer)(_ret)
 }
 
 func QVariant_NameToType(name string) QVariant__Type {
 	name_Cstring := C.CString(name)
 	defer C.free(unsafe.Pointer(name_Cstring))
-	ret := C.QVariant_NameToType(name_Cstring)
-	return (QVariant__Type)(ret)
+	_ret := C.QVariant_NameToType(name_Cstring)
+	return (QVariant__Type)(_ret)
 }
 
 func (this *QVariant) OperatorEqual(v *QVariant) bool {
-	ret := C.QVariant_OperatorEqual(this.h, v.cPointer())
-	return (bool)(ret)
+	_ret := C.QVariant_OperatorEqual(this.h, v.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QVariant) OperatorNotEqual(v *QVariant) bool {
-	ret := C.QVariant_OperatorNotEqual(this.h, v.cPointer())
-	return (bool)(ret)
+	_ret := C.QVariant_OperatorNotEqual(this.h, v.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QVariant) OperatorLesser(v *QVariant) bool {
-	ret := C.QVariant_OperatorLesser(this.h, v.cPointer())
-	return (bool)(ret)
+	_ret := C.QVariant_OperatorLesser(this.h, v.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QVariant) OperatorLesserOrEqual(v *QVariant) bool {
-	ret := C.QVariant_OperatorLesserOrEqual(this.h, v.cPointer())
-	return (bool)(ret)
+	_ret := C.QVariant_OperatorLesserOrEqual(this.h, v.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QVariant) OperatorGreater(v *QVariant) bool {
-	ret := C.QVariant_OperatorGreater(this.h, v.cPointer())
-	return (bool)(ret)
+	_ret := C.QVariant_OperatorGreater(this.h, v.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QVariant) OperatorGreaterOrEqual(v *QVariant) bool {
-	ret := C.QVariant_OperatorGreaterOrEqual(this.h, v.cPointer())
-	return (bool)(ret)
+	_ret := C.QVariant_OperatorGreaterOrEqual(this.h, v.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QVariant) ToInt1(ok *bool) int {
-	ret := C.QVariant_ToInt1(this.h, (*C.bool)(unsafe.Pointer(ok)))
-	return (int)(ret)
+	_ret := C.QVariant_ToInt1(this.h, (*C.bool)(unsafe.Pointer(ok)))
+	return (int)(_ret)
 }
 
 func (this *QVariant) ToUInt1(ok *bool) uint {
-	ret := C.QVariant_ToUInt1(this.h, (*C.bool)(unsafe.Pointer(ok)))
-	return (uint)(ret)
+	_ret := C.QVariant_ToUInt1(this.h, (*C.bool)(unsafe.Pointer(ok)))
+	return (uint)(_ret)
 }
 
 func (this *QVariant) ToLongLong1(ok *bool) int64 {
-	ret := C.QVariant_ToLongLong1(this.h, (*C.bool)(unsafe.Pointer(ok)))
-	return (int64)(ret)
+	_ret := C.QVariant_ToLongLong1(this.h, (*C.bool)(unsafe.Pointer(ok)))
+	return (int64)(_ret)
 }
 
 func (this *QVariant) ToULongLong1(ok *bool) uint64 {
-	ret := C.QVariant_ToULongLong1(this.h, (*C.bool)(unsafe.Pointer(ok)))
-	return (uint64)(ret)
+	_ret := C.QVariant_ToULongLong1(this.h, (*C.bool)(unsafe.Pointer(ok)))
+	return (uint64)(_ret)
 }
 
 func (this *QVariant) ToDouble1(ok *bool) float64 {
-	ret := C.QVariant_ToDouble1(this.h, (*C.bool)(unsafe.Pointer(ok)))
-	return (float64)(ret)
+	_ret := C.QVariant_ToDouble1(this.h, (*C.bool)(unsafe.Pointer(ok)))
+	return (float64)(_ret)
 }
 
 func (this *QVariant) ToFloat1(ok *bool) float32 {
-	ret := C.QVariant_ToFloat1(this.h, (*C.bool)(unsafe.Pointer(ok)))
-	return (float32)(ret)
+	_ret := C.QVariant_ToFloat1(this.h, (*C.bool)(unsafe.Pointer(ok)))
+	return (float32)(_ret)
 }
 
 func (this *QVariant) ToReal1(ok *bool) float64 {
-	ret := C.QVariant_ToReal1(this.h, (*C.bool)(unsafe.Pointer(ok)))
-	return (float64)(ret)
+	_ret := C.QVariant_ToReal1(this.h, (*C.bool)(unsafe.Pointer(ok)))
+	return (float64)(_ret)
 }
 
+// Delete this object from C++ memory.
 func (this *QVariant) Delete() {
 	C.QVariant_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QVariant) GoGC() {
+	runtime.SetFinalizer(this, func(this *QVariant) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
 
 type QVariantComparisonHelper struct {
@@ -886,8 +786,18 @@ func NewQVariantComparisonHelper2(param1 *QVariantComparisonHelper) *QVariantCom
 	return newQVariantComparisonHelper(ret)
 }
 
+// Delete this object from C++ memory.
 func (this *QVariantComparisonHelper) Delete() {
 	C.QVariantComparisonHelper_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QVariantComparisonHelper) GoGC() {
+	runtime.SetFinalizer(this, func(this *QVariantComparisonHelper) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
 
 type QSequentialIterable struct {
@@ -925,50 +835,48 @@ func NewQSequentialIterable2(param1 *QSequentialIterable) *QSequentialIterable {
 }
 
 func (this *QSequentialIterable) Begin() *QSequentialIterable__const_iterator {
-	ret := C.QSequentialIterable_Begin(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSequentialIterable__const_iterator(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSequentialIterable__const_iterator) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QSequentialIterable_Begin(this.h)
+	_goptr := newQSequentialIterable__const_iterator(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QSequentialIterable) End() *QSequentialIterable__const_iterator {
-	ret := C.QSequentialIterable_End(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSequentialIterable__const_iterator(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSequentialIterable__const_iterator) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QSequentialIterable_End(this.h)
+	_goptr := newQSequentialIterable__const_iterator(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QSequentialIterable) At(idx int) *QVariant {
-	ret := C.QSequentialIterable_At(this.h, (C.int)(idx))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQVariant(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QVariant) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QSequentialIterable_At(this.h, (C.int)(idx))
+	_goptr := newQVariant(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QSequentialIterable) Size() int {
-	ret := C.QSequentialIterable_Size(this.h)
-	return (int)(ret)
+	_ret := C.QSequentialIterable_Size(this.h)
+	return (int)(_ret)
 }
 
 func (this *QSequentialIterable) CanReverseIterate() bool {
-	ret := C.QSequentialIterable_CanReverseIterate(this.h)
-	return (bool)(ret)
+	_ret := C.QSequentialIterable_CanReverseIterate(this.h)
+	return (bool)(_ret)
 }
 
+// Delete this object from C++ memory.
 func (this *QSequentialIterable) Delete() {
 	C.QSequentialIterable_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QSequentialIterable) GoGC() {
+	runtime.SetFinalizer(this, func(this *QSequentialIterable) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
 
 type QAssociativeIterable struct {
@@ -1006,56 +914,50 @@ func NewQAssociativeIterable2(param1 *QAssociativeIterable) *QAssociativeIterabl
 }
 
 func (this *QAssociativeIterable) Begin() *QAssociativeIterable__const_iterator {
-	ret := C.QAssociativeIterable_Begin(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQAssociativeIterable__const_iterator(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QAssociativeIterable__const_iterator) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QAssociativeIterable_Begin(this.h)
+	_goptr := newQAssociativeIterable__const_iterator(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QAssociativeIterable) End() *QAssociativeIterable__const_iterator {
-	ret := C.QAssociativeIterable_End(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQAssociativeIterable__const_iterator(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QAssociativeIterable__const_iterator) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QAssociativeIterable_End(this.h)
+	_goptr := newQAssociativeIterable__const_iterator(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QAssociativeIterable) Find(key *QVariant) *QAssociativeIterable__const_iterator {
-	ret := C.QAssociativeIterable_Find(this.h, key.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQAssociativeIterable__const_iterator(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QAssociativeIterable__const_iterator) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QAssociativeIterable_Find(this.h, key.cPointer())
+	_goptr := newQAssociativeIterable__const_iterator(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QAssociativeIterable) Value(key *QVariant) *QVariant {
-	ret := C.QAssociativeIterable_Value(this.h, key.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQVariant(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QVariant) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QAssociativeIterable_Value(this.h, key.cPointer())
+	_goptr := newQVariant(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QAssociativeIterable) Size() int {
-	ret := C.QAssociativeIterable_Size(this.h)
-	return (int)(ret)
+	_ret := C.QAssociativeIterable_Size(this.h)
+	return (int)(_ret)
 }
 
+// Delete this object from C++ memory.
 func (this *QAssociativeIterable) Delete() {
 	C.QAssociativeIterable_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QAssociativeIterable) GoGC() {
+	runtime.SetFinalizer(this, func(this *QAssociativeIterable) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
 
 type QVariant__PrivateShared struct {
@@ -1080,8 +982,18 @@ func newQVariant__PrivateShared_U(h unsafe.Pointer) *QVariant__PrivateShared {
 	return newQVariant__PrivateShared((*C.QVariant__PrivateShared)(h))
 }
 
+// Delete this object from C++ memory.
 func (this *QVariant__PrivateShared) Delete() {
 	C.QVariant__PrivateShared_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QVariant__PrivateShared) GoGC() {
+	runtime.SetFinalizer(this, func(this *QVariant__PrivateShared) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
 
 type QVariant__Handler struct {
@@ -1106,8 +1018,18 @@ func newQVariant__Handler_U(h unsafe.Pointer) *QVariant__Handler {
 	return newQVariant__Handler((*C.QVariant__Handler)(h))
 }
 
+// Delete this object from C++ memory.
 func (this *QVariant__Handler) Delete() {
 	C.QVariant__Handler_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QVariant__Handler) GoGC() {
+	runtime.SetFinalizer(this, func(this *QVariant__Handler) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
 
 type QSequentialIterable__const_iterator struct {
@@ -1139,72 +1061,62 @@ func NewQSequentialIterable__const_iterator(other *QSequentialIterable__const_it
 }
 
 func (this *QSequentialIterable__const_iterator) OperatorMultiply() *QVariant {
-	ret := C.QSequentialIterable__const_iterator_OperatorMultiply(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQVariant(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QVariant) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QSequentialIterable__const_iterator_OperatorMultiply(this.h)
+	_goptr := newQVariant(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QSequentialIterable__const_iterator) OperatorEqual(o *QSequentialIterable__const_iterator) bool {
-	ret := C.QSequentialIterable__const_iterator_OperatorEqual(this.h, o.cPointer())
-	return (bool)(ret)
+	_ret := C.QSequentialIterable__const_iterator_OperatorEqual(this.h, o.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QSequentialIterable__const_iterator) OperatorNotEqual(o *QSequentialIterable__const_iterator) bool {
-	ret := C.QSequentialIterable__const_iterator_OperatorNotEqual(this.h, o.cPointer())
-	return (bool)(ret)
+	_ret := C.QSequentialIterable__const_iterator_OperatorNotEqual(this.h, o.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QSequentialIterable__const_iterator) OperatorPlusPlus(param1 int) *QSequentialIterable__const_iterator {
-	ret := C.QSequentialIterable__const_iterator_OperatorPlusPlus(this.h, (C.int)(param1))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSequentialIterable__const_iterator(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSequentialIterable__const_iterator) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QSequentialIterable__const_iterator_OperatorPlusPlus(this.h, (C.int)(param1))
+	_goptr := newQSequentialIterable__const_iterator(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QSequentialIterable__const_iterator) OperatorMinusMinus(param1 int) *QSequentialIterable__const_iterator {
-	ret := C.QSequentialIterable__const_iterator_OperatorMinusMinus(this.h, (C.int)(param1))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSequentialIterable__const_iterator(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSequentialIterable__const_iterator) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QSequentialIterable__const_iterator_OperatorMinusMinus(this.h, (C.int)(param1))
+	_goptr := newQSequentialIterable__const_iterator(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QSequentialIterable__const_iterator) OperatorPlus(j int) *QSequentialIterable__const_iterator {
-	ret := C.QSequentialIterable__const_iterator_OperatorPlus(this.h, (C.int)(j))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSequentialIterable__const_iterator(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSequentialIterable__const_iterator) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QSequentialIterable__const_iterator_OperatorPlus(this.h, (C.int)(j))
+	_goptr := newQSequentialIterable__const_iterator(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QSequentialIterable__const_iterator) OperatorMinus(j int) *QSequentialIterable__const_iterator {
-	ret := C.QSequentialIterable__const_iterator_OperatorMinus(this.h, (C.int)(j))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSequentialIterable__const_iterator(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSequentialIterable__const_iterator) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QSequentialIterable__const_iterator_OperatorMinus(this.h, (C.int)(j))
+	_goptr := newQSequentialIterable__const_iterator(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
+// Delete this object from C++ memory.
 func (this *QSequentialIterable__const_iterator) Delete() {
 	C.QSequentialIterable__const_iterator_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QSequentialIterable__const_iterator) GoGC() {
+	runtime.SetFinalizer(this, func(this *QSequentialIterable__const_iterator) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
 
 type QAssociativeIterable__const_iterator struct {
@@ -1236,92 +1148,74 @@ func NewQAssociativeIterable__const_iterator(other *QAssociativeIterable__const_
 }
 
 func (this *QAssociativeIterable__const_iterator) Key() *QVariant {
-	ret := C.QAssociativeIterable__const_iterator_Key(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQVariant(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QVariant) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QAssociativeIterable__const_iterator_Key(this.h)
+	_goptr := newQVariant(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QAssociativeIterable__const_iterator) Value() *QVariant {
-	ret := C.QAssociativeIterable__const_iterator_Value(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQVariant(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QVariant) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QAssociativeIterable__const_iterator_Value(this.h)
+	_goptr := newQVariant(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QAssociativeIterable__const_iterator) OperatorMultiply() *QVariant {
-	ret := C.QAssociativeIterable__const_iterator_OperatorMultiply(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQVariant(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QVariant) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QAssociativeIterable__const_iterator_OperatorMultiply(this.h)
+	_goptr := newQVariant(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QAssociativeIterable__const_iterator) OperatorEqual(o *QAssociativeIterable__const_iterator) bool {
-	ret := C.QAssociativeIterable__const_iterator_OperatorEqual(this.h, o.cPointer())
-	return (bool)(ret)
+	_ret := C.QAssociativeIterable__const_iterator_OperatorEqual(this.h, o.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QAssociativeIterable__const_iterator) OperatorNotEqual(o *QAssociativeIterable__const_iterator) bool {
-	ret := C.QAssociativeIterable__const_iterator_OperatorNotEqual(this.h, o.cPointer())
-	return (bool)(ret)
+	_ret := C.QAssociativeIterable__const_iterator_OperatorNotEqual(this.h, o.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QAssociativeIterable__const_iterator) OperatorPlusPlus(param1 int) *QAssociativeIterable__const_iterator {
-	ret := C.QAssociativeIterable__const_iterator_OperatorPlusPlus(this.h, (C.int)(param1))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQAssociativeIterable__const_iterator(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QAssociativeIterable__const_iterator) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QAssociativeIterable__const_iterator_OperatorPlusPlus(this.h, (C.int)(param1))
+	_goptr := newQAssociativeIterable__const_iterator(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QAssociativeIterable__const_iterator) OperatorMinusMinus(param1 int) *QAssociativeIterable__const_iterator {
-	ret := C.QAssociativeIterable__const_iterator_OperatorMinusMinus(this.h, (C.int)(param1))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQAssociativeIterable__const_iterator(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QAssociativeIterable__const_iterator) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QAssociativeIterable__const_iterator_OperatorMinusMinus(this.h, (C.int)(param1))
+	_goptr := newQAssociativeIterable__const_iterator(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QAssociativeIterable__const_iterator) OperatorPlus(j int) *QAssociativeIterable__const_iterator {
-	ret := C.QAssociativeIterable__const_iterator_OperatorPlus(this.h, (C.int)(j))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQAssociativeIterable__const_iterator(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QAssociativeIterable__const_iterator) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QAssociativeIterable__const_iterator_OperatorPlus(this.h, (C.int)(j))
+	_goptr := newQAssociativeIterable__const_iterator(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QAssociativeIterable__const_iterator) OperatorMinus(j int) *QAssociativeIterable__const_iterator {
-	ret := C.QAssociativeIterable__const_iterator_OperatorMinus(this.h, (C.int)(j))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQAssociativeIterable__const_iterator(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QAssociativeIterable__const_iterator) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QAssociativeIterable__const_iterator_OperatorMinus(this.h, (C.int)(j))
+	_goptr := newQAssociativeIterable__const_iterator(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
+// Delete this object from C++ memory.
 func (this *QAssociativeIterable__const_iterator) Delete() {
 	C.QAssociativeIterable__const_iterator_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QAssociativeIterable__const_iterator) GoGC() {
+	runtime.SetFinalizer(this, func(this *QAssociativeIterable__const_iterator) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

@@ -63,35 +63,31 @@ func NewQDialog3(parent *QWidget, f int) *QDialog {
 }
 
 func (this *QDialog) MetaObject() *QMetaObject {
-	ret := C.QDialog_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QDialog_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QDialog_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QDialog_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QDialog_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QDialog_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QDialog_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QDialog_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QDialog) Result() int {
-	ret := C.QDialog_Result(this.h)
-	return (int)(ret)
+	_ret := C.QDialog_Result(this.h)
+	return (int)(_ret)
 }
 
 func (this *QDialog) SetVisible(visible bool) {
@@ -103,8 +99,8 @@ func (this *QDialog) SetOrientation(orientation Orientation) {
 }
 
 func (this *QDialog) Orientation() Orientation {
-	ret := C.QDialog_Orientation(this.h)
-	return (Orientation)(ret)
+	_ret := C.QDialog_Orientation(this.h)
+	return (Orientation)(_ret)
 }
 
 func (this *QDialog) SetExtension(extension *QWidget) {
@@ -112,30 +108,22 @@ func (this *QDialog) SetExtension(extension *QWidget) {
 }
 
 func (this *QDialog) Extension() *QWidget {
-	ret := C.QDialog_Extension(this.h)
-	return newQWidget_U(unsafe.Pointer(ret))
+	_ret := C.QDialog_Extension(this.h)
+	return newQWidget_U(unsafe.Pointer(_ret))
 }
 
 func (this *QDialog) SizeHint() *QSize {
-	ret := C.QDialog_SizeHint(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSize(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QDialog_SizeHint(this.h)
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QDialog) MinimumSizeHint() *QSize {
-	ret := C.QDialog_MinimumSizeHint(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSize(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QDialog_MinimumSizeHint(this.h)
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QDialog) SetSizeGripEnabled(sizeGripEnabled bool) {
@@ -143,8 +131,8 @@ func (this *QDialog) SetSizeGripEnabled(sizeGripEnabled bool) {
 }
 
 func (this *QDialog) IsSizeGripEnabled() bool {
-	ret := C.QDialog_IsSizeGripEnabled(this.h)
-	return (bool)(ret)
+	_ret := C.QDialog_IsSizeGripEnabled(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QDialog) SetModal(modal bool) {
@@ -158,37 +146,56 @@ func (this *QDialog) SetResult(r int) {
 func (this *QDialog) Finished(result int) {
 	C.QDialog_Finished(this.h, (C.int)(result))
 }
+func (this *QDialog) OnFinished(slot func(result int)) {
+	C.QDialog_connect_Finished(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QDialog) OnFinished(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QDialog_Finished
+func miqt_exec_callback_QDialog_Finished(cb *C.void, result C.int) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(result int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QDialog_connect_Finished(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	result_ret := result
+	slotval1 := (int)(result_ret)
+
+	gofunc(slotval1)
 }
 
 func (this *QDialog) Accepted() {
 	C.QDialog_Accepted(this.h)
 }
-
 func (this *QDialog) OnAccepted(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+	C.QDialog_connect_Accepted(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
+
+//export miqt_exec_callback_QDialog_Accepted
+func miqt_exec_callback_QDialog_Accepted(cb *C.void) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QDialog_connect_Accepted(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	gofunc()
 }
 
 func (this *QDialog) Rejected() {
 	C.QDialog_Rejected(this.h)
 }
-
 func (this *QDialog) OnRejected(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+	C.QDialog_connect_Rejected(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
+
+//export miqt_exec_callback_QDialog_Rejected
+func miqt_exec_callback_QDialog_Rejected(cb *C.void) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QDialog_connect_Rejected(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	gofunc()
 }
 
 func (this *QDialog) Open() {
@@ -196,8 +203,8 @@ func (this *QDialog) Open() {
 }
 
 func (this *QDialog) Exec() int {
-	ret := C.QDialog_Exec(this.h)
-	return (int)(ret)
+	_ret := C.QDialog_Exec(this.h)
+	return (int)(_ret)
 }
 
 func (this *QDialog) Done(param1 int) {
@@ -221,12 +228,10 @@ func QDialog_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QDialog_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QDialog_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QDialog_Tr3(s string, c string, n int) string {
@@ -234,12 +239,10 @@ func QDialog_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QDialog_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QDialog_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QDialog_TrUtf82(s string, c string) string {
@@ -247,12 +250,10 @@ func QDialog_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QDialog_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QDialog_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QDialog_TrUtf83(s string, c string, n int) string {
@@ -260,14 +261,22 @@ func QDialog_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QDialog_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QDialog_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
+// Delete this object from C++ memory.
 func (this *QDialog) Delete() {
 	C.QDialog_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QDialog) GoGC() {
+	runtime.SetFinalizer(this, func(this *QDialog) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

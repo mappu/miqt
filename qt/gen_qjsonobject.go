@@ -56,251 +56,198 @@ func (this *QJsonObject) Swap(other *QJsonObject) {
 }
 
 func (this *QJsonObject) Keys() []string {
-	var _out **C.char = nil
-	var _out_Lengths *C.int = nil
-	var _out_len C.size_t = 0
-	C.QJsonObject_Keys(this.h, &_out, &_out_Lengths, &_out_len)
-	ret := make([]string, int(_out_len))
-	_outCast := (*[0xffff]*C.char)(unsafe.Pointer(_out)) // hey ya
-	_out_LengthsCast := (*[0xffff]C.int)(unsafe.Pointer(_out_Lengths))
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = C.GoStringN(_outCast[i], _out_LengthsCast[i])
+	var _ma *C.struct_miqt_array = C.QJsonObject_Keys(this.h)
+	_ret := make([]string, int(_ma.len))
+	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = C.GoStringN(&_outCast[i].data, C.int(int64(_outCast[i].len)))
+		C.free(unsafe.Pointer(_outCast[i])) // free the inner miqt_string*
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
 func (this *QJsonObject) Size() int {
-	ret := C.QJsonObject_Size(this.h)
-	return (int)(ret)
+	_ret := C.QJsonObject_Size(this.h)
+	return (int)(_ret)
 }
 
 func (this *QJsonObject) Count() int {
-	ret := C.QJsonObject_Count(this.h)
-	return (int)(ret)
+	_ret := C.QJsonObject_Count(this.h)
+	return (int)(_ret)
 }
 
 func (this *QJsonObject) Length() int {
-	ret := C.QJsonObject_Length(this.h)
-	return (int)(ret)
+	_ret := C.QJsonObject_Length(this.h)
+	return (int)(_ret)
 }
 
 func (this *QJsonObject) IsEmpty() bool {
-	ret := C.QJsonObject_IsEmpty(this.h)
-	return (bool)(ret)
+	_ret := C.QJsonObject_IsEmpty(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QJsonObject) Value(key string) *QJsonValue {
-	key_Cstring := C.CString(key)
-	defer C.free(unsafe.Pointer(key_Cstring))
-	ret := C.QJsonObject_Value(this.h, key_Cstring, C.size_t(len(key)))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQJsonValue(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QJsonValue) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	key_ms := miqt_strdupg(key)
+	defer C.free(key_ms)
+	_ret := C.QJsonObject_Value(this.h, (*C.struct_miqt_string)(key_ms))
+	_goptr := newQJsonValue(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QJsonObject) OperatorSubscript(key string) *QJsonValue {
-	key_Cstring := C.CString(key)
-	defer C.free(unsafe.Pointer(key_Cstring))
-	ret := C.QJsonObject_OperatorSubscript(this.h, key_Cstring, C.size_t(len(key)))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQJsonValue(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QJsonValue) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	key_ms := miqt_strdupg(key)
+	defer C.free(key_ms)
+	_ret := C.QJsonObject_OperatorSubscript(this.h, (*C.struct_miqt_string)(key_ms))
+	_goptr := newQJsonValue(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QJsonObject) OperatorSubscriptWithKey(key string) *QJsonValueRef {
-	key_Cstring := C.CString(key)
-	defer C.free(unsafe.Pointer(key_Cstring))
-	ret := C.QJsonObject_OperatorSubscriptWithKey(this.h, key_Cstring, C.size_t(len(key)))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQJsonValueRef(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QJsonValueRef) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	key_ms := miqt_strdupg(key)
+	defer C.free(key_ms)
+	_ret := C.QJsonObject_OperatorSubscriptWithKey(this.h, (*C.struct_miqt_string)(key_ms))
+	_goptr := newQJsonValueRef(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QJsonObject) Remove(key string) {
-	key_Cstring := C.CString(key)
-	defer C.free(unsafe.Pointer(key_Cstring))
-	C.QJsonObject_Remove(this.h, key_Cstring, C.size_t(len(key)))
+	key_ms := miqt_strdupg(key)
+	defer C.free(key_ms)
+	C.QJsonObject_Remove(this.h, (*C.struct_miqt_string)(key_ms))
 }
 
 func (this *QJsonObject) Take(key string) *QJsonValue {
-	key_Cstring := C.CString(key)
-	defer C.free(unsafe.Pointer(key_Cstring))
-	ret := C.QJsonObject_Take(this.h, key_Cstring, C.size_t(len(key)))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQJsonValue(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QJsonValue) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	key_ms := miqt_strdupg(key)
+	defer C.free(key_ms)
+	_ret := C.QJsonObject_Take(this.h, (*C.struct_miqt_string)(key_ms))
+	_goptr := newQJsonValue(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QJsonObject) Contains(key string) bool {
-	key_Cstring := C.CString(key)
-	defer C.free(unsafe.Pointer(key_Cstring))
-	ret := C.QJsonObject_Contains(this.h, key_Cstring, C.size_t(len(key)))
-	return (bool)(ret)
+	key_ms := miqt_strdupg(key)
+	defer C.free(key_ms)
+	_ret := C.QJsonObject_Contains(this.h, (*C.struct_miqt_string)(key_ms))
+	return (bool)(_ret)
 }
 
 func (this *QJsonObject) OperatorEqual(other *QJsonObject) bool {
-	ret := C.QJsonObject_OperatorEqual(this.h, other.cPointer())
-	return (bool)(ret)
+	_ret := C.QJsonObject_OperatorEqual(this.h, other.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QJsonObject) OperatorNotEqual(other *QJsonObject) bool {
-	ret := C.QJsonObject_OperatorNotEqual(this.h, other.cPointer())
-	return (bool)(ret)
+	_ret := C.QJsonObject_OperatorNotEqual(this.h, other.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QJsonObject) Begin() *QJsonObject__iterator {
-	ret := C.QJsonObject_Begin(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQJsonObject__iterator(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QJsonObject__iterator) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QJsonObject_Begin(this.h)
+	_goptr := newQJsonObject__iterator(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QJsonObject) Begin2() *QJsonObject__const_iterator {
-	ret := C.QJsonObject_Begin2(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQJsonObject__const_iterator(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QJsonObject__const_iterator) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QJsonObject_Begin2(this.h)
+	_goptr := newQJsonObject__const_iterator(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QJsonObject) ConstBegin() *QJsonObject__const_iterator {
-	ret := C.QJsonObject_ConstBegin(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQJsonObject__const_iterator(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QJsonObject__const_iterator) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QJsonObject_ConstBegin(this.h)
+	_goptr := newQJsonObject__const_iterator(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QJsonObject) End() *QJsonObject__iterator {
-	ret := C.QJsonObject_End(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQJsonObject__iterator(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QJsonObject__iterator) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QJsonObject_End(this.h)
+	_goptr := newQJsonObject__iterator(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QJsonObject) End2() *QJsonObject__const_iterator {
-	ret := C.QJsonObject_End2(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQJsonObject__const_iterator(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QJsonObject__const_iterator) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QJsonObject_End2(this.h)
+	_goptr := newQJsonObject__const_iterator(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QJsonObject) ConstEnd() *QJsonObject__const_iterator {
-	ret := C.QJsonObject_ConstEnd(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQJsonObject__const_iterator(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QJsonObject__const_iterator) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QJsonObject_ConstEnd(this.h)
+	_goptr := newQJsonObject__const_iterator(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QJsonObject) Erase(it QJsonObject__iterator) *QJsonObject__iterator {
-	ret := C.QJsonObject_Erase(this.h, it.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQJsonObject__iterator(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QJsonObject__iterator) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QJsonObject_Erase(this.h, it.cPointer())
+	_goptr := newQJsonObject__iterator(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QJsonObject) Find(key string) *QJsonObject__iterator {
-	key_Cstring := C.CString(key)
-	defer C.free(unsafe.Pointer(key_Cstring))
-	ret := C.QJsonObject_Find(this.h, key_Cstring, C.size_t(len(key)))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQJsonObject__iterator(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QJsonObject__iterator) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	key_ms := miqt_strdupg(key)
+	defer C.free(key_ms)
+	_ret := C.QJsonObject_Find(this.h, (*C.struct_miqt_string)(key_ms))
+	_goptr := newQJsonObject__iterator(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QJsonObject) FindWithKey(key string) *QJsonObject__const_iterator {
-	key_Cstring := C.CString(key)
-	defer C.free(unsafe.Pointer(key_Cstring))
-	ret := C.QJsonObject_FindWithKey(this.h, key_Cstring, C.size_t(len(key)))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQJsonObject__const_iterator(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QJsonObject__const_iterator) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	key_ms := miqt_strdupg(key)
+	defer C.free(key_ms)
+	_ret := C.QJsonObject_FindWithKey(this.h, (*C.struct_miqt_string)(key_ms))
+	_goptr := newQJsonObject__const_iterator(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QJsonObject) ConstFind(key string) *QJsonObject__const_iterator {
-	key_Cstring := C.CString(key)
-	defer C.free(unsafe.Pointer(key_Cstring))
-	ret := C.QJsonObject_ConstFind(this.h, key_Cstring, C.size_t(len(key)))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQJsonObject__const_iterator(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QJsonObject__const_iterator) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	key_ms := miqt_strdupg(key)
+	defer C.free(key_ms)
+	_ret := C.QJsonObject_ConstFind(this.h, (*C.struct_miqt_string)(key_ms))
+	_goptr := newQJsonObject__const_iterator(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QJsonObject) Insert(key string, value *QJsonValue) *QJsonObject__iterator {
-	key_Cstring := C.CString(key)
-	defer C.free(unsafe.Pointer(key_Cstring))
-	ret := C.QJsonObject_Insert(this.h, key_Cstring, C.size_t(len(key)), value.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQJsonObject__iterator(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QJsonObject__iterator) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	key_ms := miqt_strdupg(key)
+	defer C.free(key_ms)
+	_ret := C.QJsonObject_Insert(this.h, (*C.struct_miqt_string)(key_ms), value.cPointer())
+	_goptr := newQJsonObject__iterator(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QJsonObject) Empty() bool {
-	ret := C.QJsonObject_Empty(this.h)
-	return (bool)(ret)
+	_ret := C.QJsonObject_Empty(this.h)
+	return (bool)(_ret)
 }
 
+// Delete this object from C++ memory.
 func (this *QJsonObject) Delete() {
 	C.QJsonObject_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QJsonObject) GoGC() {
+	runtime.SetFinalizer(this, func(this *QJsonObject) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
 
 type QJsonObject__iterator struct {
@@ -344,169 +291,145 @@ func NewQJsonObject__iterator3(param1 *QJsonObject__iterator) *QJsonObject__iter
 }
 
 func (this *QJsonObject__iterator) Key() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QJsonObject__iterator_Key(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QJsonObject__iterator_Key(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QJsonObject__iterator) Value() *QJsonValueRef {
-	ret := C.QJsonObject__iterator_Value(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQJsonValueRef(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QJsonValueRef) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QJsonObject__iterator_Value(this.h)
+	_goptr := newQJsonValueRef(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QJsonObject__iterator) OperatorMultiply() *QJsonValueRef {
-	ret := C.QJsonObject__iterator_OperatorMultiply(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQJsonValueRef(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QJsonValueRef) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QJsonObject__iterator_OperatorMultiply(this.h)
+	_goptr := newQJsonValueRef(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QJsonObject__iterator) OperatorMinusGreater() *QJsonValueRefPtr {
-	ret := C.QJsonObject__iterator_OperatorMinusGreater(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQJsonValueRefPtr(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QJsonValueRefPtr) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QJsonObject__iterator_OperatorMinusGreater(this.h)
+	_goptr := newQJsonValueRefPtr(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QJsonObject__iterator) OperatorSubscript(j int) *QJsonValueRef {
-	ret := C.QJsonObject__iterator_OperatorSubscript(this.h, (C.int)(j))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQJsonValueRef(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QJsonValueRef) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QJsonObject__iterator_OperatorSubscript(this.h, (C.int)(j))
+	_goptr := newQJsonValueRef(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QJsonObject__iterator) OperatorEqual(other *QJsonObject__iterator) bool {
-	ret := C.QJsonObject__iterator_OperatorEqual(this.h, other.cPointer())
-	return (bool)(ret)
+	_ret := C.QJsonObject__iterator_OperatorEqual(this.h, other.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QJsonObject__iterator) OperatorNotEqual(other *QJsonObject__iterator) bool {
-	ret := C.QJsonObject__iterator_OperatorNotEqual(this.h, other.cPointer())
-	return (bool)(ret)
+	_ret := C.QJsonObject__iterator_OperatorNotEqual(this.h, other.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QJsonObject__iterator) OperatorLesser(other *QJsonObject__iterator) bool {
-	ret := C.QJsonObject__iterator_OperatorLesser(this.h, other.cPointer())
-	return (bool)(ret)
+	_ret := C.QJsonObject__iterator_OperatorLesser(this.h, other.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QJsonObject__iterator) OperatorLesserOrEqual(other *QJsonObject__iterator) bool {
-	ret := C.QJsonObject__iterator_OperatorLesserOrEqual(this.h, other.cPointer())
-	return (bool)(ret)
+	_ret := C.QJsonObject__iterator_OperatorLesserOrEqual(this.h, other.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QJsonObject__iterator) OperatorGreater(other *QJsonObject__iterator) bool {
-	ret := C.QJsonObject__iterator_OperatorGreater(this.h, other.cPointer())
-	return (bool)(ret)
+	_ret := C.QJsonObject__iterator_OperatorGreater(this.h, other.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QJsonObject__iterator) OperatorGreaterOrEqual(other *QJsonObject__iterator) bool {
-	ret := C.QJsonObject__iterator_OperatorGreaterOrEqual(this.h, other.cPointer())
-	return (bool)(ret)
+	_ret := C.QJsonObject__iterator_OperatorGreaterOrEqual(this.h, other.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QJsonObject__iterator) OperatorPlusPlus(param1 int) *QJsonObject__iterator {
-	ret := C.QJsonObject__iterator_OperatorPlusPlus(this.h, (C.int)(param1))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQJsonObject__iterator(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QJsonObject__iterator) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QJsonObject__iterator_OperatorPlusPlus(this.h, (C.int)(param1))
+	_goptr := newQJsonObject__iterator(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QJsonObject__iterator) OperatorMinusMinus(param1 int) *QJsonObject__iterator {
-	ret := C.QJsonObject__iterator_OperatorMinusMinus(this.h, (C.int)(param1))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQJsonObject__iterator(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QJsonObject__iterator) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QJsonObject__iterator_OperatorMinusMinus(this.h, (C.int)(param1))
+	_goptr := newQJsonObject__iterator(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QJsonObject__iterator) OperatorPlus(j int) *QJsonObject__iterator {
-	ret := C.QJsonObject__iterator_OperatorPlus(this.h, (C.int)(j))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQJsonObject__iterator(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QJsonObject__iterator) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QJsonObject__iterator_OperatorPlus(this.h, (C.int)(j))
+	_goptr := newQJsonObject__iterator(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QJsonObject__iterator) OperatorMinus(j int) *QJsonObject__iterator {
-	ret := C.QJsonObject__iterator_OperatorMinus(this.h, (C.int)(j))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQJsonObject__iterator(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QJsonObject__iterator) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QJsonObject__iterator_OperatorMinus(this.h, (C.int)(j))
+	_goptr := newQJsonObject__iterator(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QJsonObject__iterator) OperatorMinusWithQJsonObjectiterator(j QJsonObject__iterator) int {
-	ret := C.QJsonObject__iterator_OperatorMinusWithQJsonObjectiterator(this.h, j.cPointer())
-	return (int)(ret)
+	_ret := C.QJsonObject__iterator_OperatorMinusWithQJsonObjectiterator(this.h, j.cPointer())
+	return (int)(_ret)
 }
 
 func (this *QJsonObject__iterator) OperatorEqualWithOther(other *QJsonObject__const_iterator) bool {
-	ret := C.QJsonObject__iterator_OperatorEqualWithOther(this.h, other.cPointer())
-	return (bool)(ret)
+	_ret := C.QJsonObject__iterator_OperatorEqualWithOther(this.h, other.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QJsonObject__iterator) OperatorNotEqualWithOther(other *QJsonObject__const_iterator) bool {
-	ret := C.QJsonObject__iterator_OperatorNotEqualWithOther(this.h, other.cPointer())
-	return (bool)(ret)
+	_ret := C.QJsonObject__iterator_OperatorNotEqualWithOther(this.h, other.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QJsonObject__iterator) OperatorLesserWithOther(other *QJsonObject__const_iterator) bool {
-	ret := C.QJsonObject__iterator_OperatorLesserWithOther(this.h, other.cPointer())
-	return (bool)(ret)
+	_ret := C.QJsonObject__iterator_OperatorLesserWithOther(this.h, other.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QJsonObject__iterator) OperatorLesserOrEqualWithOther(other *QJsonObject__const_iterator) bool {
-	ret := C.QJsonObject__iterator_OperatorLesserOrEqualWithOther(this.h, other.cPointer())
-	return (bool)(ret)
+	_ret := C.QJsonObject__iterator_OperatorLesserOrEqualWithOther(this.h, other.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QJsonObject__iterator) OperatorGreaterWithOther(other *QJsonObject__const_iterator) bool {
-	ret := C.QJsonObject__iterator_OperatorGreaterWithOther(this.h, other.cPointer())
-	return (bool)(ret)
+	_ret := C.QJsonObject__iterator_OperatorGreaterWithOther(this.h, other.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QJsonObject__iterator) OperatorGreaterOrEqualWithOther(other *QJsonObject__const_iterator) bool {
-	ret := C.QJsonObject__iterator_OperatorGreaterOrEqualWithOther(this.h, other.cPointer())
-	return (bool)(ret)
+	_ret := C.QJsonObject__iterator_OperatorGreaterOrEqualWithOther(this.h, other.cPointer())
+	return (bool)(_ret)
 }
 
+// Delete this object from C++ memory.
 func (this *QJsonObject__iterator) Delete() {
 	C.QJsonObject__iterator_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QJsonObject__iterator) GoGC() {
+	runtime.SetFinalizer(this, func(this *QJsonObject__iterator) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
 
 type QJsonObject__const_iterator struct {
@@ -556,167 +479,143 @@ func NewQJsonObject__const_iterator4(param1 *QJsonObject__const_iterator) *QJson
 }
 
 func (this *QJsonObject__const_iterator) Key() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QJsonObject__const_iterator_Key(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QJsonObject__const_iterator_Key(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QJsonObject__const_iterator) Value() *QJsonValue {
-	ret := C.QJsonObject__const_iterator_Value(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQJsonValue(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QJsonValue) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QJsonObject__const_iterator_Value(this.h)
+	_goptr := newQJsonValue(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QJsonObject__const_iterator) OperatorMultiply() *QJsonValue {
-	ret := C.QJsonObject__const_iterator_OperatorMultiply(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQJsonValue(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QJsonValue) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QJsonObject__const_iterator_OperatorMultiply(this.h)
+	_goptr := newQJsonValue(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QJsonObject__const_iterator) OperatorMinusGreater() *QJsonValuePtr {
-	ret := C.QJsonObject__const_iterator_OperatorMinusGreater(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQJsonValuePtr(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QJsonValuePtr) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QJsonObject__const_iterator_OperatorMinusGreater(this.h)
+	_goptr := newQJsonValuePtr(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QJsonObject__const_iterator) OperatorSubscript(j int) *QJsonValue {
-	ret := C.QJsonObject__const_iterator_OperatorSubscript(this.h, (C.int)(j))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQJsonValue(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QJsonValue) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QJsonObject__const_iterator_OperatorSubscript(this.h, (C.int)(j))
+	_goptr := newQJsonValue(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QJsonObject__const_iterator) OperatorEqual(other *QJsonObject__const_iterator) bool {
-	ret := C.QJsonObject__const_iterator_OperatorEqual(this.h, other.cPointer())
-	return (bool)(ret)
+	_ret := C.QJsonObject__const_iterator_OperatorEqual(this.h, other.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QJsonObject__const_iterator) OperatorNotEqual(other *QJsonObject__const_iterator) bool {
-	ret := C.QJsonObject__const_iterator_OperatorNotEqual(this.h, other.cPointer())
-	return (bool)(ret)
+	_ret := C.QJsonObject__const_iterator_OperatorNotEqual(this.h, other.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QJsonObject__const_iterator) OperatorLesser(other *QJsonObject__const_iterator) bool {
-	ret := C.QJsonObject__const_iterator_OperatorLesser(this.h, other.cPointer())
-	return (bool)(ret)
+	_ret := C.QJsonObject__const_iterator_OperatorLesser(this.h, other.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QJsonObject__const_iterator) OperatorLesserOrEqual(other *QJsonObject__const_iterator) bool {
-	ret := C.QJsonObject__const_iterator_OperatorLesserOrEqual(this.h, other.cPointer())
-	return (bool)(ret)
+	_ret := C.QJsonObject__const_iterator_OperatorLesserOrEqual(this.h, other.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QJsonObject__const_iterator) OperatorGreater(other *QJsonObject__const_iterator) bool {
-	ret := C.QJsonObject__const_iterator_OperatorGreater(this.h, other.cPointer())
-	return (bool)(ret)
+	_ret := C.QJsonObject__const_iterator_OperatorGreater(this.h, other.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QJsonObject__const_iterator) OperatorGreaterOrEqual(other *QJsonObject__const_iterator) bool {
-	ret := C.QJsonObject__const_iterator_OperatorGreaterOrEqual(this.h, other.cPointer())
-	return (bool)(ret)
+	_ret := C.QJsonObject__const_iterator_OperatorGreaterOrEqual(this.h, other.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QJsonObject__const_iterator) OperatorPlusPlus(param1 int) *QJsonObject__const_iterator {
-	ret := C.QJsonObject__const_iterator_OperatorPlusPlus(this.h, (C.int)(param1))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQJsonObject__const_iterator(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QJsonObject__const_iterator) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QJsonObject__const_iterator_OperatorPlusPlus(this.h, (C.int)(param1))
+	_goptr := newQJsonObject__const_iterator(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QJsonObject__const_iterator) OperatorMinusMinus(param1 int) *QJsonObject__const_iterator {
-	ret := C.QJsonObject__const_iterator_OperatorMinusMinus(this.h, (C.int)(param1))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQJsonObject__const_iterator(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QJsonObject__const_iterator) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QJsonObject__const_iterator_OperatorMinusMinus(this.h, (C.int)(param1))
+	_goptr := newQJsonObject__const_iterator(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QJsonObject__const_iterator) OperatorPlus(j int) *QJsonObject__const_iterator {
-	ret := C.QJsonObject__const_iterator_OperatorPlus(this.h, (C.int)(j))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQJsonObject__const_iterator(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QJsonObject__const_iterator) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QJsonObject__const_iterator_OperatorPlus(this.h, (C.int)(j))
+	_goptr := newQJsonObject__const_iterator(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QJsonObject__const_iterator) OperatorMinus(j int) *QJsonObject__const_iterator {
-	ret := C.QJsonObject__const_iterator_OperatorMinus(this.h, (C.int)(j))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQJsonObject__const_iterator(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QJsonObject__const_iterator) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QJsonObject__const_iterator_OperatorMinus(this.h, (C.int)(j))
+	_goptr := newQJsonObject__const_iterator(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QJsonObject__const_iterator) OperatorMinusWithQJsonObjectconstIterator(j QJsonObject__const_iterator) int {
-	ret := C.QJsonObject__const_iterator_OperatorMinusWithQJsonObjectconstIterator(this.h, j.cPointer())
-	return (int)(ret)
+	_ret := C.QJsonObject__const_iterator_OperatorMinusWithQJsonObjectconstIterator(this.h, j.cPointer())
+	return (int)(_ret)
 }
 
 func (this *QJsonObject__const_iterator) OperatorEqualWithOther(other *QJsonObject__iterator) bool {
-	ret := C.QJsonObject__const_iterator_OperatorEqualWithOther(this.h, other.cPointer())
-	return (bool)(ret)
+	_ret := C.QJsonObject__const_iterator_OperatorEqualWithOther(this.h, other.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QJsonObject__const_iterator) OperatorNotEqualWithOther(other *QJsonObject__iterator) bool {
-	ret := C.QJsonObject__const_iterator_OperatorNotEqualWithOther(this.h, other.cPointer())
-	return (bool)(ret)
+	_ret := C.QJsonObject__const_iterator_OperatorNotEqualWithOther(this.h, other.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QJsonObject__const_iterator) OperatorLesserWithOther(other *QJsonObject__iterator) bool {
-	ret := C.QJsonObject__const_iterator_OperatorLesserWithOther(this.h, other.cPointer())
-	return (bool)(ret)
+	_ret := C.QJsonObject__const_iterator_OperatorLesserWithOther(this.h, other.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QJsonObject__const_iterator) OperatorLesserOrEqualWithOther(other *QJsonObject__iterator) bool {
-	ret := C.QJsonObject__const_iterator_OperatorLesserOrEqualWithOther(this.h, other.cPointer())
-	return (bool)(ret)
+	_ret := C.QJsonObject__const_iterator_OperatorLesserOrEqualWithOther(this.h, other.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QJsonObject__const_iterator) OperatorGreaterWithOther(other *QJsonObject__iterator) bool {
-	ret := C.QJsonObject__const_iterator_OperatorGreaterWithOther(this.h, other.cPointer())
-	return (bool)(ret)
+	_ret := C.QJsonObject__const_iterator_OperatorGreaterWithOther(this.h, other.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QJsonObject__const_iterator) OperatorGreaterOrEqualWithOther(other *QJsonObject__iterator) bool {
-	ret := C.QJsonObject__const_iterator_OperatorGreaterOrEqualWithOther(this.h, other.cPointer())
-	return (bool)(ret)
+	_ret := C.QJsonObject__const_iterator_OperatorGreaterOrEqualWithOther(this.h, other.cPointer())
+	return (bool)(_ret)
 }
 
+// Delete this object from C++ memory.
 func (this *QJsonObject__const_iterator) Delete() {
 	C.QJsonObject__const_iterator_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QJsonObject__const_iterator) GoGC() {
+	runtime.SetFinalizer(this, func(this *QJsonObject__const_iterator) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

@@ -65,8 +65,8 @@ func (this *QGraphicsLinearLayout) SetOrientation(orientation Orientation) {
 }
 
 func (this *QGraphicsLinearLayout) Orientation() Orientation {
-	ret := C.QGraphicsLinearLayout_Orientation(this.h)
-	return (Orientation)(ret)
+	_ret := C.QGraphicsLinearLayout_Orientation(this.h)
+	return (Orientation)(_ret)
 }
 
 func (this *QGraphicsLinearLayout) AddItem(item *QGraphicsLayoutItem) {
@@ -98,8 +98,8 @@ func (this *QGraphicsLinearLayout) SetSpacing(spacing float64) {
 }
 
 func (this *QGraphicsLinearLayout) Spacing() float64 {
-	ret := C.QGraphicsLinearLayout_Spacing(this.h)
-	return (float64)(ret)
+	_ret := C.QGraphicsLinearLayout_Spacing(this.h)
+	return (float64)(_ret)
 }
 
 func (this *QGraphicsLinearLayout) SetItemSpacing(index int, spacing float64) {
@@ -107,8 +107,8 @@ func (this *QGraphicsLinearLayout) SetItemSpacing(index int, spacing float64) {
 }
 
 func (this *QGraphicsLinearLayout) ItemSpacing(index int) float64 {
-	ret := C.QGraphicsLinearLayout_ItemSpacing(this.h, (C.int)(index))
-	return (float64)(ret)
+	_ret := C.QGraphicsLinearLayout_ItemSpacing(this.h, (C.int)(index))
+	return (float64)(_ret)
 }
 
 func (this *QGraphicsLinearLayout) SetStretchFactor(item *QGraphicsLayoutItem, stretch int) {
@@ -116,8 +116,8 @@ func (this *QGraphicsLinearLayout) SetStretchFactor(item *QGraphicsLayoutItem, s
 }
 
 func (this *QGraphicsLinearLayout) StretchFactor(item *QGraphicsLayoutItem) int {
-	ret := C.QGraphicsLinearLayout_StretchFactor(this.h, item.cPointer())
-	return (int)(ret)
+	_ret := C.QGraphicsLinearLayout_StretchFactor(this.h, item.cPointer())
+	return (int)(_ret)
 }
 
 func (this *QGraphicsLinearLayout) SetAlignment(item *QGraphicsLayoutItem, alignment int) {
@@ -125,8 +125,8 @@ func (this *QGraphicsLinearLayout) SetAlignment(item *QGraphicsLayoutItem, align
 }
 
 func (this *QGraphicsLinearLayout) Alignment(item *QGraphicsLayoutItem) int {
-	ret := C.QGraphicsLinearLayout_Alignment(this.h, item.cPointer())
-	return (int)(ret)
+	_ret := C.QGraphicsLinearLayout_Alignment(this.h, item.cPointer())
+	return (int)(_ret)
 }
 
 func (this *QGraphicsLinearLayout) SetGeometry(rect *QRectF) {
@@ -134,13 +134,13 @@ func (this *QGraphicsLinearLayout) SetGeometry(rect *QRectF) {
 }
 
 func (this *QGraphicsLinearLayout) Count() int {
-	ret := C.QGraphicsLinearLayout_Count(this.h)
-	return (int)(ret)
+	_ret := C.QGraphicsLinearLayout_Count(this.h)
+	return (int)(_ret)
 }
 
 func (this *QGraphicsLinearLayout) ItemAt(index int) *QGraphicsLayoutItem {
-	ret := C.QGraphicsLinearLayout_ItemAt(this.h, (C.int)(index))
-	return newQGraphicsLayoutItem_U(unsafe.Pointer(ret))
+	_ret := C.QGraphicsLinearLayout_ItemAt(this.h, (C.int)(index))
+	return newQGraphicsLayoutItem_U(unsafe.Pointer(_ret))
 }
 
 func (this *QGraphicsLinearLayout) Invalidate() {
@@ -148,14 +148,10 @@ func (this *QGraphicsLinearLayout) Invalidate() {
 }
 
 func (this *QGraphicsLinearLayout) SizeHint(which SizeHint) *QSizeF {
-	ret := C.QGraphicsLinearLayout_SizeHint(this.h, (C.uintptr_t)(which))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSizeF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSizeF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QGraphicsLinearLayout_SizeHint(this.h, (C.uintptr_t)(which))
+	_goptr := newQSizeF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QGraphicsLinearLayout) Dump() {
@@ -171,20 +167,26 @@ func (this *QGraphicsLinearLayout) InsertStretch2(index int, stretch int) {
 }
 
 func (this *QGraphicsLinearLayout) SizeHint2(which SizeHint, constraint *QSizeF) *QSizeF {
-	ret := C.QGraphicsLinearLayout_SizeHint2(this.h, (C.uintptr_t)(which), constraint.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSizeF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSizeF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QGraphicsLinearLayout_SizeHint2(this.h, (C.uintptr_t)(which), constraint.cPointer())
+	_goptr := newQSizeF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QGraphicsLinearLayout) Dump1(indent int) {
 	C.QGraphicsLinearLayout_Dump1(this.h, (C.int)(indent))
 }
 
+// Delete this object from C++ memory.
 func (this *QGraphicsLinearLayout) Delete() {
 	C.QGraphicsLinearLayout_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QGraphicsLinearLayout) GoGC() {
+	runtime.SetFinalizer(this, func(this *QGraphicsLinearLayout) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

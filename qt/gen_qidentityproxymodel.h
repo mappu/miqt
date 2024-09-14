@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -32,8 +34,8 @@ typedef struct QVariant QVariant;
 QIdentityProxyModel* QIdentityProxyModel_new();
 QIdentityProxyModel* QIdentityProxyModel_new2(QObject* parent);
 QMetaObject* QIdentityProxyModel_MetaObject(const QIdentityProxyModel* self);
-void QIdentityProxyModel_Tr(const char* s, char** _out, int* _out_Strlen);
-void QIdentityProxyModel_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QIdentityProxyModel_Tr(const char* s);
+struct miqt_string* QIdentityProxyModel_TrUtf8(const char* s);
 int QIdentityProxyModel_ColumnCount(const QIdentityProxyModel* self);
 QModelIndex* QIdentityProxyModel_Index(const QIdentityProxyModel* self, int row, int column);
 QModelIndex* QIdentityProxyModel_MapFromSource(const QIdentityProxyModel* self, QModelIndex* sourceIndex);
@@ -43,7 +45,7 @@ int QIdentityProxyModel_RowCount(const QIdentityProxyModel* self);
 QVariant* QIdentityProxyModel_HeaderData(const QIdentityProxyModel* self, int section, uintptr_t orientation);
 bool QIdentityProxyModel_DropMimeData(QIdentityProxyModel* self, QMimeData* data, uintptr_t action, int row, int column, QModelIndex* parent);
 QModelIndex* QIdentityProxyModel_Sibling(const QIdentityProxyModel* self, int row, int column, QModelIndex* idx);
-void QIdentityProxyModel_Match(const QIdentityProxyModel* self, QModelIndex* start, int role, QVariant* value, QModelIndex*** _out, size_t* _out_len);
+struct miqt_array* QIdentityProxyModel_Match(const QIdentityProxyModel* self, QModelIndex* start, int role, QVariant* value);
 void QIdentityProxyModel_SetSourceModel(QIdentityProxyModel* self, QAbstractItemModel* sourceModel);
 bool QIdentityProxyModel_InsertColumns(QIdentityProxyModel* self, int column, int count);
 bool QIdentityProxyModel_InsertRows(QIdentityProxyModel* self, int row, int count);
@@ -51,16 +53,16 @@ bool QIdentityProxyModel_RemoveColumns(QIdentityProxyModel* self, int column, in
 bool QIdentityProxyModel_RemoveRows(QIdentityProxyModel* self, int row, int count);
 bool QIdentityProxyModel_MoveRows(QIdentityProxyModel* self, QModelIndex* sourceParent, int sourceRow, int count, QModelIndex* destinationParent, int destinationChild);
 bool QIdentityProxyModel_MoveColumns(QIdentityProxyModel* self, QModelIndex* sourceParent, int sourceColumn, int count, QModelIndex* destinationParent, int destinationChild);
-void QIdentityProxyModel_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QIdentityProxyModel_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QIdentityProxyModel_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QIdentityProxyModel_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QIdentityProxyModel_Tr2(const char* s, const char* c);
+struct miqt_string* QIdentityProxyModel_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QIdentityProxyModel_TrUtf82(const char* s, const char* c);
+struct miqt_string* QIdentityProxyModel_TrUtf83(const char* s, const char* c, int n);
 int QIdentityProxyModel_ColumnCount1(const QIdentityProxyModel* self, QModelIndex* parent);
 QModelIndex* QIdentityProxyModel_Index3(const QIdentityProxyModel* self, int row, int column, QModelIndex* parent);
 int QIdentityProxyModel_RowCount1(const QIdentityProxyModel* self, QModelIndex* parent);
 QVariant* QIdentityProxyModel_HeaderData3(const QIdentityProxyModel* self, int section, uintptr_t orientation, int role);
-void QIdentityProxyModel_Match4(const QIdentityProxyModel* self, QModelIndex* start, int role, QVariant* value, int hits, QModelIndex*** _out, size_t* _out_len);
-void QIdentityProxyModel_Match5(const QIdentityProxyModel* self, QModelIndex* start, int role, QVariant* value, int hits, int flags, QModelIndex*** _out, size_t* _out_len);
+struct miqt_array* QIdentityProxyModel_Match4(const QIdentityProxyModel* self, QModelIndex* start, int role, QVariant* value, int hits);
+struct miqt_array* QIdentityProxyModel_Match5(const QIdentityProxyModel* self, QModelIndex* start, int role, QVariant* value, int hits, int flags);
 bool QIdentityProxyModel_InsertColumns3(QIdentityProxyModel* self, int column, int count, QModelIndex* parent);
 bool QIdentityProxyModel_InsertRows3(QIdentityProxyModel* self, int row, int count, QModelIndex* parent);
 bool QIdentityProxyModel_RemoveColumns3(QIdentityProxyModel* self, int column, int count, QModelIndex* parent);

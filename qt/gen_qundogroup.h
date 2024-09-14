@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -28,18 +30,18 @@ typedef struct QUndoStack QUndoStack;
 QUndoGroup* QUndoGroup_new();
 QUndoGroup* QUndoGroup_new2(QObject* parent);
 QMetaObject* QUndoGroup_MetaObject(const QUndoGroup* self);
-void QUndoGroup_Tr(const char* s, char** _out, int* _out_Strlen);
-void QUndoGroup_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QUndoGroup_Tr(const char* s);
+struct miqt_string* QUndoGroup_TrUtf8(const char* s);
 void QUndoGroup_AddStack(QUndoGroup* self, QUndoStack* stack);
 void QUndoGroup_RemoveStack(QUndoGroup* self, QUndoStack* stack);
-void QUndoGroup_Stacks(const QUndoGroup* self, QUndoStack*** _out, size_t* _out_len);
+struct miqt_array* QUndoGroup_Stacks(const QUndoGroup* self);
 QUndoStack* QUndoGroup_ActiveStack(const QUndoGroup* self);
 QAction* QUndoGroup_CreateUndoAction(const QUndoGroup* self, QObject* parent);
 QAction* QUndoGroup_CreateRedoAction(const QUndoGroup* self, QObject* parent);
 bool QUndoGroup_CanUndo(const QUndoGroup* self);
 bool QUndoGroup_CanRedo(const QUndoGroup* self);
-void QUndoGroup_UndoText(const QUndoGroup* self, char** _out, int* _out_Strlen);
-void QUndoGroup_RedoText(const QUndoGroup* self, char** _out, int* _out_Strlen);
+struct miqt_string* QUndoGroup_UndoText(const QUndoGroup* self);
+struct miqt_string* QUndoGroup_RedoText(const QUndoGroup* self);
 bool QUndoGroup_IsClean(const QUndoGroup* self);
 void QUndoGroup_Undo(QUndoGroup* self);
 void QUndoGroup_Redo(QUndoGroup* self);
@@ -54,16 +56,16 @@ void QUndoGroup_CanUndoChanged(QUndoGroup* self, bool canUndo);
 void QUndoGroup_connect_CanUndoChanged(QUndoGroup* self, void* slot);
 void QUndoGroup_CanRedoChanged(QUndoGroup* self, bool canRedo);
 void QUndoGroup_connect_CanRedoChanged(QUndoGroup* self, void* slot);
-void QUndoGroup_UndoTextChanged(QUndoGroup* self, const char* undoText, size_t undoText_Strlen);
+void QUndoGroup_UndoTextChanged(QUndoGroup* self, struct miqt_string* undoText);
 void QUndoGroup_connect_UndoTextChanged(QUndoGroup* self, void* slot);
-void QUndoGroup_RedoTextChanged(QUndoGroup* self, const char* redoText, size_t redoText_Strlen);
+void QUndoGroup_RedoTextChanged(QUndoGroup* self, struct miqt_string* redoText);
 void QUndoGroup_connect_RedoTextChanged(QUndoGroup* self, void* slot);
-void QUndoGroup_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QUndoGroup_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QUndoGroup_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QUndoGroup_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-QAction* QUndoGroup_CreateUndoAction2(const QUndoGroup* self, QObject* parent, const char* prefix, size_t prefix_Strlen);
-QAction* QUndoGroup_CreateRedoAction2(const QUndoGroup* self, QObject* parent, const char* prefix, size_t prefix_Strlen);
+struct miqt_string* QUndoGroup_Tr2(const char* s, const char* c);
+struct miqt_string* QUndoGroup_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QUndoGroup_TrUtf82(const char* s, const char* c);
+struct miqt_string* QUndoGroup_TrUtf83(const char* s, const char* c, int n);
+QAction* QUndoGroup_CreateUndoAction2(const QUndoGroup* self, QObject* parent, struct miqt_string* prefix);
+QAction* QUndoGroup_CreateRedoAction2(const QUndoGroup* self, QObject* parent, struct miqt_string* prefix);
 void QUndoGroup_Delete(QUndoGroup* self);
 
 #ifdef __cplusplus

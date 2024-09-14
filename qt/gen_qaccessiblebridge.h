@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -31,13 +33,13 @@ void QAccessibleBridge_OperatorAssign(QAccessibleBridge* self, QAccessibleBridge
 void QAccessibleBridge_Delete(QAccessibleBridge* self);
 
 QMetaObject* QAccessibleBridgePlugin_MetaObject(const QAccessibleBridgePlugin* self);
-void QAccessibleBridgePlugin_Tr(const char* s, char** _out, int* _out_Strlen);
-void QAccessibleBridgePlugin_TrUtf8(const char* s, char** _out, int* _out_Strlen);
-QAccessibleBridge* QAccessibleBridgePlugin_Create(QAccessibleBridgePlugin* self, const char* key, size_t key_Strlen);
-void QAccessibleBridgePlugin_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QAccessibleBridgePlugin_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QAccessibleBridgePlugin_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QAccessibleBridgePlugin_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QAccessibleBridgePlugin_Tr(const char* s);
+struct miqt_string* QAccessibleBridgePlugin_TrUtf8(const char* s);
+QAccessibleBridge* QAccessibleBridgePlugin_Create(QAccessibleBridgePlugin* self, struct miqt_string* key);
+struct miqt_string* QAccessibleBridgePlugin_Tr2(const char* s, const char* c);
+struct miqt_string* QAccessibleBridgePlugin_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QAccessibleBridgePlugin_TrUtf82(const char* s, const char* c);
+struct miqt_string* QAccessibleBridgePlugin_TrUtf83(const char* s, const char* c, int n);
 void QAccessibleBridgePlugin_Delete(QAccessibleBridgePlugin* self);
 
 #ifdef __cplusplus

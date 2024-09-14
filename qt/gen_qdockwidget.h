@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -23,15 +25,15 @@ typedef struct QMetaObject QMetaObject;
 typedef struct QWidget QWidget;
 #endif
 
-QDockWidget* QDockWidget_new(const char* title, size_t title_Strlen);
+QDockWidget* QDockWidget_new(struct miqt_string* title);
 QDockWidget* QDockWidget_new2();
-QDockWidget* QDockWidget_new3(const char* title, size_t title_Strlen, QWidget* parent);
-QDockWidget* QDockWidget_new4(const char* title, size_t title_Strlen, QWidget* parent, int flags);
+QDockWidget* QDockWidget_new3(struct miqt_string* title, QWidget* parent);
+QDockWidget* QDockWidget_new4(struct miqt_string* title, QWidget* parent, int flags);
 QDockWidget* QDockWidget_new5(QWidget* parent);
 QDockWidget* QDockWidget_new6(QWidget* parent, int flags);
 QMetaObject* QDockWidget_MetaObject(const QDockWidget* self);
-void QDockWidget_Tr(const char* s, char** _out, int* _out_Strlen);
-void QDockWidget_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QDockWidget_Tr(const char* s);
+struct miqt_string* QDockWidget_TrUtf8(const char* s);
 QWidget* QDockWidget_Widget(const QDockWidget* self);
 void QDockWidget_SetWidget(QDockWidget* self, QWidget* widget);
 void QDockWidget_SetFeatures(QDockWidget* self, int features);
@@ -54,10 +56,10 @@ void QDockWidget_VisibilityChanged(QDockWidget* self, bool visible);
 void QDockWidget_connect_VisibilityChanged(QDockWidget* self, void* slot);
 void QDockWidget_DockLocationChanged(QDockWidget* self, uintptr_t area);
 void QDockWidget_connect_DockLocationChanged(QDockWidget* self, void* slot);
-void QDockWidget_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QDockWidget_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QDockWidget_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QDockWidget_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QDockWidget_Tr2(const char* s, const char* c);
+struct miqt_string* QDockWidget_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QDockWidget_TrUtf82(const char* s, const char* c);
+struct miqt_string* QDockWidget_TrUtf83(const char* s, const char* c, int n);
 void QDockWidget_Delete(QDockWidget* self);
 
 #ifdef __cplusplus

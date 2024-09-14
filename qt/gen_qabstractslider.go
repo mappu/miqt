@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"runtime"
 	"runtime/cgo"
 	"unsafe"
 )
@@ -62,35 +63,31 @@ func NewQAbstractSlider2(parent *QWidget) *QAbstractSlider {
 }
 
 func (this *QAbstractSlider) MetaObject() *QMetaObject {
-	ret := C.QAbstractSlider_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QAbstractSlider_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QAbstractSlider_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QAbstractSlider_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QAbstractSlider_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QAbstractSlider_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QAbstractSlider_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QAbstractSlider_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QAbstractSlider) Orientation() Orientation {
-	ret := C.QAbstractSlider_Orientation(this.h)
-	return (Orientation)(ret)
+	_ret := C.QAbstractSlider_Orientation(this.h)
+	return (Orientation)(_ret)
 }
 
 func (this *QAbstractSlider) SetMinimum(minimum int) {
@@ -98,8 +95,8 @@ func (this *QAbstractSlider) SetMinimum(minimum int) {
 }
 
 func (this *QAbstractSlider) Minimum() int {
-	ret := C.QAbstractSlider_Minimum(this.h)
-	return (int)(ret)
+	_ret := C.QAbstractSlider_Minimum(this.h)
+	return (int)(_ret)
 }
 
 func (this *QAbstractSlider) SetMaximum(maximum int) {
@@ -107,8 +104,8 @@ func (this *QAbstractSlider) SetMaximum(maximum int) {
 }
 
 func (this *QAbstractSlider) Maximum() int {
-	ret := C.QAbstractSlider_Maximum(this.h)
-	return (int)(ret)
+	_ret := C.QAbstractSlider_Maximum(this.h)
+	return (int)(_ret)
 }
 
 func (this *QAbstractSlider) SetSingleStep(singleStep int) {
@@ -116,8 +113,8 @@ func (this *QAbstractSlider) SetSingleStep(singleStep int) {
 }
 
 func (this *QAbstractSlider) SingleStep() int {
-	ret := C.QAbstractSlider_SingleStep(this.h)
-	return (int)(ret)
+	_ret := C.QAbstractSlider_SingleStep(this.h)
+	return (int)(_ret)
 }
 
 func (this *QAbstractSlider) SetPageStep(pageStep int) {
@@ -125,8 +122,8 @@ func (this *QAbstractSlider) SetPageStep(pageStep int) {
 }
 
 func (this *QAbstractSlider) PageStep() int {
-	ret := C.QAbstractSlider_PageStep(this.h)
-	return (int)(ret)
+	_ret := C.QAbstractSlider_PageStep(this.h)
+	return (int)(_ret)
 }
 
 func (this *QAbstractSlider) SetTracking(enable bool) {
@@ -134,8 +131,8 @@ func (this *QAbstractSlider) SetTracking(enable bool) {
 }
 
 func (this *QAbstractSlider) HasTracking() bool {
-	ret := C.QAbstractSlider_HasTracking(this.h)
-	return (bool)(ret)
+	_ret := C.QAbstractSlider_HasTracking(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QAbstractSlider) SetSliderDown(sliderDown bool) {
@@ -143,8 +140,8 @@ func (this *QAbstractSlider) SetSliderDown(sliderDown bool) {
 }
 
 func (this *QAbstractSlider) IsSliderDown() bool {
-	ret := C.QAbstractSlider_IsSliderDown(this.h)
-	return (bool)(ret)
+	_ret := C.QAbstractSlider_IsSliderDown(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QAbstractSlider) SetSliderPosition(sliderPosition int) {
@@ -152,8 +149,8 @@ func (this *QAbstractSlider) SetSliderPosition(sliderPosition int) {
 }
 
 func (this *QAbstractSlider) SliderPosition() int {
-	ret := C.QAbstractSlider_SliderPosition(this.h)
-	return (int)(ret)
+	_ret := C.QAbstractSlider_SliderPosition(this.h)
+	return (int)(_ret)
 }
 
 func (this *QAbstractSlider) SetInvertedAppearance(invertedAppearance bool) {
@@ -161,8 +158,8 @@ func (this *QAbstractSlider) SetInvertedAppearance(invertedAppearance bool) {
 }
 
 func (this *QAbstractSlider) InvertedAppearance() bool {
-	ret := C.QAbstractSlider_InvertedAppearance(this.h)
-	return (bool)(ret)
+	_ret := C.QAbstractSlider_InvertedAppearance(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QAbstractSlider) SetInvertedControls(invertedControls bool) {
@@ -170,13 +167,13 @@ func (this *QAbstractSlider) SetInvertedControls(invertedControls bool) {
 }
 
 func (this *QAbstractSlider) InvertedControls() bool {
-	ret := C.QAbstractSlider_InvertedControls(this.h)
-	return (bool)(ret)
+	_ret := C.QAbstractSlider_InvertedControls(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QAbstractSlider) Value() int {
-	ret := C.QAbstractSlider_Value(this.h)
-	return (int)(ret)
+	_ret := C.QAbstractSlider_Value(this.h)
+	return (int)(_ret)
 }
 
 func (this *QAbstractSlider) TriggerAction(action QAbstractSlider__SliderAction) {
@@ -198,73 +195,122 @@ func (this *QAbstractSlider) SetRange(min int, max int) {
 func (this *QAbstractSlider) ValueChanged(value int) {
 	C.QAbstractSlider_ValueChanged(this.h, (C.int)(value))
 }
+func (this *QAbstractSlider) OnValueChanged(slot func(value int)) {
+	C.QAbstractSlider_connect_ValueChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QAbstractSlider) OnValueChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QAbstractSlider_ValueChanged
+func miqt_exec_callback_QAbstractSlider_ValueChanged(cb *C.void, value C.int) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(value int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QAbstractSlider_connect_ValueChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	value_ret := value
+	slotval1 := (int)(value_ret)
+
+	gofunc(slotval1)
 }
 
 func (this *QAbstractSlider) SliderPressed() {
 	C.QAbstractSlider_SliderPressed(this.h)
 }
-
 func (this *QAbstractSlider) OnSliderPressed(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+	C.QAbstractSlider_connect_SliderPressed(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
+
+//export miqt_exec_callback_QAbstractSlider_SliderPressed
+func miqt_exec_callback_QAbstractSlider_SliderPressed(cb *C.void) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QAbstractSlider_connect_SliderPressed(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	gofunc()
 }
 
 func (this *QAbstractSlider) SliderMoved(position int) {
 	C.QAbstractSlider_SliderMoved(this.h, (C.int)(position))
 }
+func (this *QAbstractSlider) OnSliderMoved(slot func(position int)) {
+	C.QAbstractSlider_connect_SliderMoved(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QAbstractSlider) OnSliderMoved(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QAbstractSlider_SliderMoved
+func miqt_exec_callback_QAbstractSlider_SliderMoved(cb *C.void, position C.int) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(position int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QAbstractSlider_connect_SliderMoved(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	position_ret := position
+	slotval1 := (int)(position_ret)
+
+	gofunc(slotval1)
 }
 
 func (this *QAbstractSlider) SliderReleased() {
 	C.QAbstractSlider_SliderReleased(this.h)
 }
-
 func (this *QAbstractSlider) OnSliderReleased(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+	C.QAbstractSlider_connect_SliderReleased(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
+
+//export miqt_exec_callback_QAbstractSlider_SliderReleased
+func miqt_exec_callback_QAbstractSlider_SliderReleased(cb *C.void) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QAbstractSlider_connect_SliderReleased(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	gofunc()
 }
 
 func (this *QAbstractSlider) RangeChanged(min int, max int) {
 	C.QAbstractSlider_RangeChanged(this.h, (C.int)(min), (C.int)(max))
 }
+func (this *QAbstractSlider) OnRangeChanged(slot func(min int, max int)) {
+	C.QAbstractSlider_connect_RangeChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QAbstractSlider) OnRangeChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QAbstractSlider_RangeChanged
+func miqt_exec_callback_QAbstractSlider_RangeChanged(cb *C.void, min C.int, max C.int) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(min int, max int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QAbstractSlider_connect_RangeChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	min_ret := min
+	slotval1 := (int)(min_ret)
+
+	max_ret := max
+	slotval2 := (int)(max_ret)
+
+	gofunc(slotval1, slotval2)
 }
 
 func (this *QAbstractSlider) ActionTriggered(action int) {
 	C.QAbstractSlider_ActionTriggered(this.h, (C.int)(action))
 }
+func (this *QAbstractSlider) OnActionTriggered(slot func(action int)) {
+	C.QAbstractSlider_connect_ActionTriggered(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QAbstractSlider) OnActionTriggered(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QAbstractSlider_ActionTriggered
+func miqt_exec_callback_QAbstractSlider_ActionTriggered(cb *C.void, action C.int) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(action int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QAbstractSlider_connect_ActionTriggered(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	action_ret := action
+	slotval1 := (int)(action_ret)
+
+	gofunc(slotval1)
 }
 
 func QAbstractSlider_Tr2(s string, c string) string {
@@ -272,12 +318,10 @@ func QAbstractSlider_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QAbstractSlider_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QAbstractSlider_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QAbstractSlider_Tr3(s string, c string, n int) string {
@@ -285,12 +329,10 @@ func QAbstractSlider_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QAbstractSlider_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QAbstractSlider_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QAbstractSlider_TrUtf82(s string, c string) string {
@@ -298,12 +340,10 @@ func QAbstractSlider_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QAbstractSlider_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QAbstractSlider_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QAbstractSlider_TrUtf83(s string, c string, n int) string {
@@ -311,14 +351,22 @@ func QAbstractSlider_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QAbstractSlider_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QAbstractSlider_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
+// Delete this object from C++ memory.
 func (this *QAbstractSlider) Delete() {
 	C.QAbstractSlider_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QAbstractSlider) GoGC() {
+	runtime.SetFinalizer(this, func(this *QAbstractSlider) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

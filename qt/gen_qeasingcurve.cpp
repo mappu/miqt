@@ -2,12 +2,8 @@
 #include <QList>
 #include <QPointF>
 #include "qeasingcurve.h"
-
 #include "gen_qeasingcurve.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QEasingCurve* QEasingCurve_new() {
 	return new QEasingCurve();
@@ -69,20 +65,22 @@ void QEasingCurve_AddTCBSegment(QEasingCurve* self, QPointF* nextPoint, double t
 	self->addTCBSegment(*nextPoint, static_cast<qreal>(t), static_cast<qreal>(c), static_cast<qreal>(b));
 }
 
-void QEasingCurve_ToCubicSpline(const QEasingCurve* self, QPointF*** _out, size_t* _out_len) {
-	QVector<QPointF> ret = self->toCubicSpline();
+struct miqt_array* QEasingCurve_ToCubicSpline(const QEasingCurve* self) {
+	QVector<QPointF> _ret = self->toCubicSpline();
 	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
-	QPointF** __out = static_cast<QPointF**>(malloc(sizeof(QPointF**) * ret.length()));
-	for (size_t i = 0, e = ret.length(); i < e; ++i) {
-		__out[i] = new QPointF(ret[i]);
+	QPointF** _arr = static_cast<QPointF**>(malloc(sizeof(QPointF**) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		_arr[i] = new QPointF(_ret[i]);
 	}
-	*_out = __out;
-	*_out_len = ret.length();
+	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
+	_out->len = _ret.length();
+	_out->data = static_cast<void*>(_arr);
+	return _out;
 }
 
 uintptr_t QEasingCurve_Type(const QEasingCurve* self) {
-	QEasingCurve::Type ret = self->type();
-	return static_cast<uintptr_t>(ret);
+	QEasingCurve::Type _ret = self->type();
+	return static_cast<uintptr_t>(_ret);
 }
 
 void QEasingCurve_SetType(QEasingCurve* self, uintptr_t typeVal) {

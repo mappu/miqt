@@ -10,33 +10,25 @@
 #include <cstring>
 #include <QThread>
 #include "qabstracteventdispatcher.h"
-
 #include "gen_qabstracteventdispatcher.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QMetaObject* QAbstractEventDispatcher_MetaObject(const QAbstractEventDispatcher* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void QAbstractEventDispatcher_Tr(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QAbstractEventDispatcher::tr(s);
+struct miqt_string* QAbstractEventDispatcher_Tr(const char* s) {
+	QString _ret = QAbstractEventDispatcher::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QAbstractEventDispatcher_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QAbstractEventDispatcher::trUtf8(s);
+struct miqt_string* QAbstractEventDispatcher_TrUtf8(const char* s) {
+	QString _ret = QAbstractEventDispatcher::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 QAbstractEventDispatcher* QAbstractEventDispatcher_Instance() {
@@ -75,15 +67,17 @@ bool QAbstractEventDispatcher_UnregisterTimers(QAbstractEventDispatcher* self, Q
 	return self->unregisterTimers(object);
 }
 
-void QAbstractEventDispatcher_RegisteredTimers(const QAbstractEventDispatcher* self, QObject* object, QAbstractEventDispatcher__TimerInfo*** _out, size_t* _out_len) {
-	QList<QAbstractEventDispatcher::TimerInfo> ret = self->registeredTimers(object);
+struct miqt_array* QAbstractEventDispatcher_RegisteredTimers(const QAbstractEventDispatcher* self, QObject* object) {
+	QList<QAbstractEventDispatcher::TimerInfo> _ret = self->registeredTimers(object);
 	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
-	QAbstractEventDispatcher__TimerInfo** __out = static_cast<QAbstractEventDispatcher__TimerInfo**>(malloc(sizeof(QAbstractEventDispatcher__TimerInfo**) * ret.length()));
-	for (size_t i = 0, e = ret.length(); i < e; ++i) {
-		__out[i] = new QAbstractEventDispatcher::TimerInfo(ret[i]);
+	QAbstractEventDispatcher__TimerInfo** _arr = static_cast<QAbstractEventDispatcher__TimerInfo**>(malloc(sizeof(QAbstractEventDispatcher__TimerInfo**) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		_arr[i] = new QAbstractEventDispatcher::TimerInfo(_ret[i]);
 	}
-	*_out = __out;
-	*_out_len = ret.length();
+	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
+	_out->len = _ret.length();
+	_out->data = static_cast<void*>(_arr);
+	return _out;
 }
 
 int QAbstractEventDispatcher_RemainingTime(QAbstractEventDispatcher* self, int timerId) {
@@ -124,7 +118,7 @@ void QAbstractEventDispatcher_AboutToBlock(QAbstractEventDispatcher* self) {
 
 void QAbstractEventDispatcher_connect_AboutToBlock(QAbstractEventDispatcher* self, void* slot) {
 	QAbstractEventDispatcher::connect(self, static_cast<void (QAbstractEventDispatcher::*)()>(&QAbstractEventDispatcher::aboutToBlock), self, [=]() {
-		miqt_exec_callback(slot, 0, nullptr);
+		miqt_exec_callback_QAbstractEventDispatcher_AboutToBlock(slot);
 	});
 }
 
@@ -134,44 +128,36 @@ void QAbstractEventDispatcher_Awake(QAbstractEventDispatcher* self) {
 
 void QAbstractEventDispatcher_connect_Awake(QAbstractEventDispatcher* self, void* slot) {
 	QAbstractEventDispatcher::connect(self, static_cast<void (QAbstractEventDispatcher::*)()>(&QAbstractEventDispatcher::awake), self, [=]() {
-		miqt_exec_callback(slot, 0, nullptr);
+		miqt_exec_callback_QAbstractEventDispatcher_Awake(slot);
 	});
 }
 
-void QAbstractEventDispatcher_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QAbstractEventDispatcher::tr(s, c);
+struct miqt_string* QAbstractEventDispatcher_Tr2(const char* s, const char* c) {
+	QString _ret = QAbstractEventDispatcher::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QAbstractEventDispatcher_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QAbstractEventDispatcher::tr(s, c, static_cast<int>(n));
+struct miqt_string* QAbstractEventDispatcher_Tr3(const char* s, const char* c, int n) {
+	QString _ret = QAbstractEventDispatcher::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QAbstractEventDispatcher_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QAbstractEventDispatcher::trUtf8(s, c);
+struct miqt_string* QAbstractEventDispatcher_TrUtf82(const char* s, const char* c) {
+	QString _ret = QAbstractEventDispatcher::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QAbstractEventDispatcher_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QAbstractEventDispatcher::trUtf8(s, c, static_cast<int>(n));
+struct miqt_string* QAbstractEventDispatcher_TrUtf83(const char* s, const char* c, int n) {
+	QString _ret = QAbstractEventDispatcher::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 QAbstractEventDispatcher* QAbstractEventDispatcher_Instance1(QThread* thread) {

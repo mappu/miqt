@@ -72,35 +72,31 @@ func NewQApplication2(args []string, param3 int) *QApplication {
 }
 
 func (this *QApplication) MetaObject() *QMetaObject {
-	ret := C.QApplication_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QApplication_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QApplication_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QApplication_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QApplication_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QApplication_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QApplication_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QApplication_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QApplication_Style() *QStyle {
-	ret := C.QApplication_Style()
-	return newQStyle_U(unsafe.Pointer(ret))
+	_ret := C.QApplication_Style()
+	return newQStyle_U(unsafe.Pointer(_ret))
 }
 
 func QApplication_SetStyle(style *QStyle) {
@@ -108,15 +104,15 @@ func QApplication_SetStyle(style *QStyle) {
 }
 
 func QApplication_SetStyleWithStyle(style string) *QStyle {
-	style_Cstring := C.CString(style)
-	defer C.free(unsafe.Pointer(style_Cstring))
-	ret := C.QApplication_SetStyleWithStyle(style_Cstring, C.size_t(len(style)))
-	return newQStyle_U(unsafe.Pointer(ret))
+	style_ms := miqt_strdupg(style)
+	defer C.free(style_ms)
+	_ret := C.QApplication_SetStyleWithStyle((*C.struct_miqt_string)(style_ms))
+	return newQStyle_U(unsafe.Pointer(_ret))
 }
 
 func QApplication_ColorSpec() int {
-	ret := C.QApplication_ColorSpec()
-	return (int)(ret)
+	_ret := C.QApplication_ColorSpec()
+	return (int)(_ret)
 }
 
 func QApplication_SetColorSpec(colorSpec int) {
@@ -124,27 +120,19 @@ func QApplication_SetColorSpec(colorSpec int) {
 }
 
 func QApplication_Palette(param1 *QWidget) *QPalette {
-	ret := C.QApplication_Palette(param1.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPalette(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPalette) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QApplication_Palette(param1.cPointer())
+	_goptr := newQPalette(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func QApplication_PaletteWithClassName(className string) *QPalette {
 	className_Cstring := C.CString(className)
 	defer C.free(unsafe.Pointer(className_Cstring))
-	ret := C.QApplication_PaletteWithClassName(className_Cstring)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPalette(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPalette) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QApplication_PaletteWithClassName(className_Cstring)
+	_goptr := newQPalette(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func QApplication_SetPalette(param1 *QPalette) {
@@ -152,38 +140,26 @@ func QApplication_SetPalette(param1 *QPalette) {
 }
 
 func QApplication_Font() *QFont {
-	ret := C.QApplication_Font()
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQFont(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QFont) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QApplication_Font()
+	_goptr := newQFont(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func QApplication_FontWithQWidget(param1 *QWidget) *QFont {
-	ret := C.QApplication_FontWithQWidget(param1.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQFont(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QFont) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QApplication_FontWithQWidget(param1.cPointer())
+	_goptr := newQFont(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func QApplication_FontWithClassName(className string) *QFont {
 	className_Cstring := C.CString(className)
 	defer C.free(unsafe.Pointer(className_Cstring))
-	ret := C.QApplication_FontWithClassName(className_Cstring)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQFont(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QFont) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QApplication_FontWithClassName(className_Cstring)
+	_goptr := newQFont(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func QApplication_SetFont(param1 *QFont) {
@@ -191,14 +167,10 @@ func QApplication_SetFont(param1 *QFont) {
 }
 
 func QApplication_FontMetrics() *QFontMetrics {
-	ret := C.QApplication_FontMetrics()
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQFontMetrics(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QFontMetrics) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QApplication_FontMetrics()
+	_goptr := newQFontMetrics(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func QApplication_SetWindowIcon(icon *QIcon) {
@@ -206,65 +178,57 @@ func QApplication_SetWindowIcon(icon *QIcon) {
 }
 
 func QApplication_WindowIcon() *QIcon {
-	ret := C.QApplication_WindowIcon()
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQIcon(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QIcon) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QApplication_WindowIcon()
+	_goptr := newQIcon(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func QApplication_AllWidgets() []*QWidget {
-	var _out **C.QWidget = nil
-	var _out_len C.size_t = 0
-	C.QApplication_AllWidgets(&_out, &_out_len)
-	ret := make([]*QWidget, int(_out_len))
-	_outCast := (*[0xffff]*C.QWidget)(unsafe.Pointer(_out)) // so fresh so clean
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = newQWidget(_outCast[i])
+	var _ma *C.struct_miqt_array = C.QApplication_AllWidgets()
+	_ret := make([]*QWidget, int(_ma.len))
+	_outCast := (*[0xffff]*C.QWidget)(unsafe.Pointer(_ma.data)) // mrs jackson
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = newQWidget(_outCast[i])
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
 func QApplication_TopLevelWidgets() []*QWidget {
-	var _out **C.QWidget = nil
-	var _out_len C.size_t = 0
-	C.QApplication_TopLevelWidgets(&_out, &_out_len)
-	ret := make([]*QWidget, int(_out_len))
-	_outCast := (*[0xffff]*C.QWidget)(unsafe.Pointer(_out)) // so fresh so clean
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = newQWidget(_outCast[i])
+	var _ma *C.struct_miqt_array = C.QApplication_TopLevelWidgets()
+	_ret := make([]*QWidget, int(_ma.len))
+	_outCast := (*[0xffff]*C.QWidget)(unsafe.Pointer(_ma.data)) // mrs jackson
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = newQWidget(_outCast[i])
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
 func QApplication_Desktop() *QDesktopWidget {
-	ret := C.QApplication_Desktop()
-	return newQDesktopWidget_U(unsafe.Pointer(ret))
+	_ret := C.QApplication_Desktop()
+	return newQDesktopWidget_U(unsafe.Pointer(_ret))
 }
 
 func QApplication_ActivePopupWidget() *QWidget {
-	ret := C.QApplication_ActivePopupWidget()
-	return newQWidget_U(unsafe.Pointer(ret))
+	_ret := C.QApplication_ActivePopupWidget()
+	return newQWidget_U(unsafe.Pointer(_ret))
 }
 
 func QApplication_ActiveModalWidget() *QWidget {
-	ret := C.QApplication_ActiveModalWidget()
-	return newQWidget_U(unsafe.Pointer(ret))
+	_ret := C.QApplication_ActiveModalWidget()
+	return newQWidget_U(unsafe.Pointer(_ret))
 }
 
 func QApplication_FocusWidget() *QWidget {
-	ret := C.QApplication_FocusWidget()
-	return newQWidget_U(unsafe.Pointer(ret))
+	_ret := C.QApplication_FocusWidget()
+	return newQWidget_U(unsafe.Pointer(_ret))
 }
 
 func QApplication_ActiveWindow() *QWidget {
-	ret := C.QApplication_ActiveWindow()
-	return newQWidget_U(unsafe.Pointer(ret))
+	_ret := C.QApplication_ActiveWindow()
+	return newQWidget_U(unsafe.Pointer(_ret))
 }
 
 func QApplication_SetActiveWindow(act *QWidget) {
@@ -272,23 +236,23 @@ func QApplication_SetActiveWindow(act *QWidget) {
 }
 
 func QApplication_WidgetAt(p *QPoint) *QWidget {
-	ret := C.QApplication_WidgetAt(p.cPointer())
-	return newQWidget_U(unsafe.Pointer(ret))
+	_ret := C.QApplication_WidgetAt(p.cPointer())
+	return newQWidget_U(unsafe.Pointer(_ret))
 }
 
 func QApplication_WidgetAt2(x int, y int) *QWidget {
-	ret := C.QApplication_WidgetAt2((C.int)(x), (C.int)(y))
-	return newQWidget_U(unsafe.Pointer(ret))
+	_ret := C.QApplication_WidgetAt2((C.int)(x), (C.int)(y))
+	return newQWidget_U(unsafe.Pointer(_ret))
 }
 
 func QApplication_TopLevelAt(p *QPoint) *QWidget {
-	ret := C.QApplication_TopLevelAt(p.cPointer())
-	return newQWidget_U(unsafe.Pointer(ret))
+	_ret := C.QApplication_TopLevelAt(p.cPointer())
+	return newQWidget_U(unsafe.Pointer(_ret))
 }
 
 func QApplication_TopLevelAt2(x int, y int) *QWidget {
-	ret := C.QApplication_TopLevelAt2((C.int)(x), (C.int)(y))
-	return newQWidget_U(unsafe.Pointer(ret))
+	_ret := C.QApplication_TopLevelAt2((C.int)(x), (C.int)(y))
+	return newQWidget_U(unsafe.Pointer(_ret))
 }
 
 func QApplication_Beep() {
@@ -304,8 +268,8 @@ func QApplication_SetCursorFlashTime(cursorFlashTime int) {
 }
 
 func QApplication_CursorFlashTime() int {
-	ret := C.QApplication_CursorFlashTime()
-	return (int)(ret)
+	_ret := C.QApplication_CursorFlashTime()
+	return (int)(_ret)
 }
 
 func QApplication_SetDoubleClickInterval(doubleClickInterval int) {
@@ -313,8 +277,8 @@ func QApplication_SetDoubleClickInterval(doubleClickInterval int) {
 }
 
 func QApplication_DoubleClickInterval() int {
-	ret := C.QApplication_DoubleClickInterval()
-	return (int)(ret)
+	_ret := C.QApplication_DoubleClickInterval()
+	return (int)(_ret)
 }
 
 func QApplication_SetKeyboardInputInterval(keyboardInputInterval int) {
@@ -322,8 +286,8 @@ func QApplication_SetKeyboardInputInterval(keyboardInputInterval int) {
 }
 
 func QApplication_KeyboardInputInterval() int {
-	ret := C.QApplication_KeyboardInputInterval()
-	return (int)(ret)
+	_ret := C.QApplication_KeyboardInputInterval()
+	return (int)(_ret)
 }
 
 func QApplication_SetWheelScrollLines(wheelScrollLines int) {
@@ -331,8 +295,8 @@ func QApplication_SetWheelScrollLines(wheelScrollLines int) {
 }
 
 func QApplication_WheelScrollLines() int {
-	ret := C.QApplication_WheelScrollLines()
-	return (int)(ret)
+	_ret := C.QApplication_WheelScrollLines()
+	return (int)(_ret)
 }
 
 func QApplication_SetGlobalStrut(globalStrut *QSize) {
@@ -340,14 +304,10 @@ func QApplication_SetGlobalStrut(globalStrut *QSize) {
 }
 
 func QApplication_GlobalStrut() *QSize {
-	ret := C.QApplication_GlobalStrut()
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSize(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QApplication_GlobalStrut()
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func QApplication_SetStartDragTime(ms int) {
@@ -355,8 +315,8 @@ func QApplication_SetStartDragTime(ms int) {
 }
 
 func QApplication_StartDragTime() int {
-	ret := C.QApplication_StartDragTime()
-	return (int)(ret)
+	_ret := C.QApplication_StartDragTime()
+	return (int)(_ret)
 }
 
 func QApplication_SetStartDragDistance(l int) {
@@ -364,13 +324,13 @@ func QApplication_SetStartDragDistance(l int) {
 }
 
 func QApplication_StartDragDistance() int {
-	ret := C.QApplication_StartDragDistance()
-	return (int)(ret)
+	_ret := C.QApplication_StartDragDistance()
+	return (int)(_ret)
 }
 
 func QApplication_IsEffectEnabled(param1 UIEffect) bool {
-	ret := C.QApplication_IsEffectEnabled((C.uintptr_t)(param1))
-	return (bool)(ret)
+	_ret := C.QApplication_IsEffectEnabled((C.uintptr_t)(param1))
+	return (bool)(_ret)
 }
 
 func QApplication_SetEffectEnabled(param1 UIEffect) {
@@ -378,40 +338,49 @@ func QApplication_SetEffectEnabled(param1 UIEffect) {
 }
 
 func QApplication_Exec() int {
-	ret := C.QApplication_Exec()
-	return (int)(ret)
+	_ret := C.QApplication_Exec()
+	return (int)(_ret)
 }
 
 func (this *QApplication) Notify(param1 *QObject, param2 *QEvent) bool {
-	ret := C.QApplication_Notify(this.h, param1.cPointer(), param2.cPointer())
-	return (bool)(ret)
+	_ret := C.QApplication_Notify(this.h, param1.cPointer(), param2.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QApplication) FocusChanged(old *QWidget, now *QWidget) {
 	C.QApplication_FocusChanged(this.h, old.cPointer(), now.cPointer())
 }
+func (this *QApplication) OnFocusChanged(slot func(old *QWidget, now *QWidget)) {
+	C.QApplication_connect_FocusChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QApplication) OnFocusChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QApplication_FocusChanged
+func miqt_exec_callback_QApplication_FocusChanged(cb *C.void, old *C.QWidget, now *C.QWidget) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(old *QWidget, now *QWidget))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QApplication_connect_FocusChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	old_ret := old
+	slotval1 := newQWidget_U(unsafe.Pointer(old_ret))
+	now_ret := now
+	slotval2 := newQWidget_U(unsafe.Pointer(now_ret))
+
+	gofunc(slotval1, slotval2)
 }
 
 func (this *QApplication) StyleSheet() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QApplication_StyleSheet(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QApplication_StyleSheet(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QApplication) SetStyleSheet(sheet string) {
-	sheet_Cstring := C.CString(sheet)
-	defer C.free(unsafe.Pointer(sheet_Cstring))
-	C.QApplication_SetStyleSheet(this.h, sheet_Cstring, C.size_t(len(sheet)))
+	sheet_ms := miqt_strdupg(sheet)
+	defer C.free(sheet_ms)
+	C.QApplication_SetStyleSheet(this.h, (*C.struct_miqt_string)(sheet_ms))
 }
 
 func (this *QApplication) SetAutoSipEnabled(enabled bool) {
@@ -419,8 +388,8 @@ func (this *QApplication) SetAutoSipEnabled(enabled bool) {
 }
 
 func (this *QApplication) AutoSipEnabled() bool {
-	ret := C.QApplication_AutoSipEnabled(this.h)
-	return (bool)(ret)
+	_ret := C.QApplication_AutoSipEnabled(this.h)
+	return (bool)(_ret)
 }
 
 func QApplication_CloseAllWindows() {
@@ -436,12 +405,10 @@ func QApplication_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QApplication_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QApplication_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QApplication_Tr3(s string, c string, n int) string {
@@ -449,12 +416,10 @@ func QApplication_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QApplication_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QApplication_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QApplication_TrUtf82(s string, c string) string {
@@ -462,12 +427,10 @@ func QApplication_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QApplication_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QApplication_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QApplication_TrUtf83(s string, c string, n int) string {
@@ -475,12 +438,10 @@ func QApplication_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QApplication_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QApplication_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QApplication_SetPalette2(param1 *QPalette, className string) {
@@ -503,6 +464,16 @@ func QApplication_SetEffectEnabled2(param1 UIEffect, enable bool) {
 	C.QApplication_SetEffectEnabled2((C.uintptr_t)(param1), (C.bool)(enable))
 }
 
+// Delete this object from C++ memory.
 func (this *QApplication) Delete() {
 	C.QApplication_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QApplication) GoGC() {
+	runtime.SetFinalizer(this, func(this *QApplication) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

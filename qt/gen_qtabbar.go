@@ -78,35 +78,31 @@ func NewQTabBar2(parent *QWidget) *QTabBar {
 }
 
 func (this *QTabBar) MetaObject() *QMetaObject {
-	ret := C.QTabBar_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QTabBar_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QTabBar_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTabBar_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTabBar_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QTabBar_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTabBar_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTabBar_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QTabBar) Shape() QTabBar__Shape {
-	ret := C.QTabBar_Shape(this.h)
-	return (QTabBar__Shape)(ret)
+	_ret := C.QTabBar_Shape(this.h)
+	return (QTabBar__Shape)(_ret)
 }
 
 func (this *QTabBar) SetShape(shape QTabBar__Shape) {
@@ -114,31 +110,31 @@ func (this *QTabBar) SetShape(shape QTabBar__Shape) {
 }
 
 func (this *QTabBar) AddTab(text string) int {
-	text_Cstring := C.CString(text)
-	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QTabBar_AddTab(this.h, text_Cstring, C.size_t(len(text)))
-	return (int)(ret)
+	text_ms := miqt_strdupg(text)
+	defer C.free(text_ms)
+	_ret := C.QTabBar_AddTab(this.h, (*C.struct_miqt_string)(text_ms))
+	return (int)(_ret)
 }
 
 func (this *QTabBar) AddTab2(icon *QIcon, text string) int {
-	text_Cstring := C.CString(text)
-	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QTabBar_AddTab2(this.h, icon.cPointer(), text_Cstring, C.size_t(len(text)))
-	return (int)(ret)
+	text_ms := miqt_strdupg(text)
+	defer C.free(text_ms)
+	_ret := C.QTabBar_AddTab2(this.h, icon.cPointer(), (*C.struct_miqt_string)(text_ms))
+	return (int)(_ret)
 }
 
 func (this *QTabBar) InsertTab(index int, text string) int {
-	text_Cstring := C.CString(text)
-	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QTabBar_InsertTab(this.h, (C.int)(index), text_Cstring, C.size_t(len(text)))
-	return (int)(ret)
+	text_ms := miqt_strdupg(text)
+	defer C.free(text_ms)
+	_ret := C.QTabBar_InsertTab(this.h, (C.int)(index), (*C.struct_miqt_string)(text_ms))
+	return (int)(_ret)
 }
 
 func (this *QTabBar) InsertTab2(index int, icon *QIcon, text string) int {
-	text_Cstring := C.CString(text)
-	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QTabBar_InsertTab2(this.h, (C.int)(index), icon.cPointer(), text_Cstring, C.size_t(len(text)))
-	return (int)(ret)
+	text_ms := miqt_strdupg(text)
+	defer C.free(text_ms)
+	_ret := C.QTabBar_InsertTab2(this.h, (C.int)(index), icon.cPointer(), (*C.struct_miqt_string)(text_ms))
+	return (int)(_ret)
 }
 
 func (this *QTabBar) RemoveTab(index int) {
@@ -150,8 +146,8 @@ func (this *QTabBar) MoveTab(from int, to int) {
 }
 
 func (this *QTabBar) IsTabEnabled(index int) bool {
-	ret := C.QTabBar_IsTabEnabled(this.h, (C.int)(index))
-	return (bool)(ret)
+	_ret := C.QTabBar_IsTabEnabled(this.h, (C.int)(index))
+	return (bool)(_ret)
 }
 
 func (this *QTabBar) SetTabEnabled(index int, enabled bool) {
@@ -159,8 +155,8 @@ func (this *QTabBar) SetTabEnabled(index int, enabled bool) {
 }
 
 func (this *QTabBar) IsTabVisible(index int) bool {
-	ret := C.QTabBar_IsTabVisible(this.h, (C.int)(index))
-	return (bool)(ret)
+	_ret := C.QTabBar_IsTabVisible(this.h, (C.int)(index))
+	return (bool)(_ret)
 }
 
 func (this *QTabBar) SetTabVisible(index int, visible bool) {
@@ -168,29 +164,23 @@ func (this *QTabBar) SetTabVisible(index int, visible bool) {
 }
 
 func (this *QTabBar) TabText(index int) string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTabBar_TabText(this.h, (C.int)(index), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTabBar_TabText(this.h, (C.int)(index))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QTabBar) SetTabText(index int, text string) {
-	text_Cstring := C.CString(text)
-	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QTabBar_SetTabText(this.h, (C.int)(index), text_Cstring, C.size_t(len(text)))
+	text_ms := miqt_strdupg(text)
+	defer C.free(text_ms)
+	C.QTabBar_SetTabText(this.h, (C.int)(index), (*C.struct_miqt_string)(text_ms))
 }
 
 func (this *QTabBar) TabTextColor(index int) *QColor {
-	ret := C.QTabBar_TabTextColor(this.h, (C.int)(index))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQColor(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QColor) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QTabBar_TabTextColor(this.h, (C.int)(index))
+	_goptr := newQColor(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QTabBar) SetTabTextColor(index int, color *QColor) {
@@ -198,14 +188,10 @@ func (this *QTabBar) SetTabTextColor(index int, color *QColor) {
 }
 
 func (this *QTabBar) TabIcon(index int) *QIcon {
-	ret := C.QTabBar_TabIcon(this.h, (C.int)(index))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQIcon(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QIcon) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QTabBar_TabIcon(this.h, (C.int)(index))
+	_goptr := newQIcon(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QTabBar) SetTabIcon(index int, icon *QIcon) {
@@ -213,8 +199,8 @@ func (this *QTabBar) SetTabIcon(index int, icon *QIcon) {
 }
 
 func (this *QTabBar) ElideMode() TextElideMode {
-	ret := C.QTabBar_ElideMode(this.h)
-	return (TextElideMode)(ret)
+	_ret := C.QTabBar_ElideMode(this.h)
+	return (TextElideMode)(_ret)
 }
 
 func (this *QTabBar) SetElideMode(mode TextElideMode) {
@@ -222,33 +208,29 @@ func (this *QTabBar) SetElideMode(mode TextElideMode) {
 }
 
 func (this *QTabBar) SetTabToolTip(index int, tip string) {
-	tip_Cstring := C.CString(tip)
-	defer C.free(unsafe.Pointer(tip_Cstring))
-	C.QTabBar_SetTabToolTip(this.h, (C.int)(index), tip_Cstring, C.size_t(len(tip)))
+	tip_ms := miqt_strdupg(tip)
+	defer C.free(tip_ms)
+	C.QTabBar_SetTabToolTip(this.h, (C.int)(index), (*C.struct_miqt_string)(tip_ms))
 }
 
 func (this *QTabBar) TabToolTip(index int) string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTabBar_TabToolTip(this.h, (C.int)(index), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTabBar_TabToolTip(this.h, (C.int)(index))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QTabBar) SetTabWhatsThis(index int, text string) {
-	text_Cstring := C.CString(text)
-	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QTabBar_SetTabWhatsThis(this.h, (C.int)(index), text_Cstring, C.size_t(len(text)))
+	text_ms := miqt_strdupg(text)
+	defer C.free(text_ms)
+	C.QTabBar_SetTabWhatsThis(this.h, (C.int)(index), (*C.struct_miqt_string)(text_ms))
 }
 
 func (this *QTabBar) TabWhatsThis(index int) string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTabBar_TabWhatsThis(this.h, (C.int)(index), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTabBar_TabWhatsThis(this.h, (C.int)(index))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QTabBar) SetTabData(index int, data *QVariant) {
@@ -256,62 +238,46 @@ func (this *QTabBar) SetTabData(index int, data *QVariant) {
 }
 
 func (this *QTabBar) TabData(index int) *QVariant {
-	ret := C.QTabBar_TabData(this.h, (C.int)(index))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQVariant(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QVariant) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QTabBar_TabData(this.h, (C.int)(index))
+	_goptr := newQVariant(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QTabBar) TabRect(index int) *QRect {
-	ret := C.QTabBar_TabRect(this.h, (C.int)(index))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRect(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRect) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QTabBar_TabRect(this.h, (C.int)(index))
+	_goptr := newQRect(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QTabBar) TabAt(pos *QPoint) int {
-	ret := C.QTabBar_TabAt(this.h, pos.cPointer())
-	return (int)(ret)
+	_ret := C.QTabBar_TabAt(this.h, pos.cPointer())
+	return (int)(_ret)
 }
 
 func (this *QTabBar) CurrentIndex() int {
-	ret := C.QTabBar_CurrentIndex(this.h)
-	return (int)(ret)
+	_ret := C.QTabBar_CurrentIndex(this.h)
+	return (int)(_ret)
 }
 
 func (this *QTabBar) Count() int {
-	ret := C.QTabBar_Count(this.h)
-	return (int)(ret)
+	_ret := C.QTabBar_Count(this.h)
+	return (int)(_ret)
 }
 
 func (this *QTabBar) SizeHint() *QSize {
-	ret := C.QTabBar_SizeHint(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSize(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QTabBar_SizeHint(this.h)
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QTabBar) MinimumSizeHint() *QSize {
-	ret := C.QTabBar_MinimumSizeHint(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSize(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QTabBar_MinimumSizeHint(this.h)
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QTabBar) SetDrawBase(drawTheBase bool) {
@@ -319,19 +285,15 @@ func (this *QTabBar) SetDrawBase(drawTheBase bool) {
 }
 
 func (this *QTabBar) DrawBase() bool {
-	ret := C.QTabBar_DrawBase(this.h)
-	return (bool)(ret)
+	_ret := C.QTabBar_DrawBase(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QTabBar) IconSize() *QSize {
-	ret := C.QTabBar_IconSize(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSize(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QTabBar_IconSize(this.h)
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QTabBar) SetIconSize(size *QSize) {
@@ -339,8 +301,8 @@ func (this *QTabBar) SetIconSize(size *QSize) {
 }
 
 func (this *QTabBar) UsesScrollButtons() bool {
-	ret := C.QTabBar_UsesScrollButtons(this.h)
-	return (bool)(ret)
+	_ret := C.QTabBar_UsesScrollButtons(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QTabBar) SetUsesScrollButtons(useButtons bool) {
@@ -348,8 +310,8 @@ func (this *QTabBar) SetUsesScrollButtons(useButtons bool) {
 }
 
 func (this *QTabBar) TabsClosable() bool {
-	ret := C.QTabBar_TabsClosable(this.h)
-	return (bool)(ret)
+	_ret := C.QTabBar_TabsClosable(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QTabBar) SetTabsClosable(closable bool) {
@@ -361,13 +323,13 @@ func (this *QTabBar) SetTabButton(index int, position QTabBar__ButtonPosition, w
 }
 
 func (this *QTabBar) TabButton(index int, position QTabBar__ButtonPosition) *QWidget {
-	ret := C.QTabBar_TabButton(this.h, (C.int)(index), (C.uintptr_t)(position))
-	return newQWidget_U(unsafe.Pointer(ret))
+	_ret := C.QTabBar_TabButton(this.h, (C.int)(index), (C.uintptr_t)(position))
+	return newQWidget_U(unsafe.Pointer(_ret))
 }
 
 func (this *QTabBar) SelectionBehaviorOnRemove() QTabBar__SelectionBehavior {
-	ret := C.QTabBar_SelectionBehaviorOnRemove(this.h)
-	return (QTabBar__SelectionBehavior)(ret)
+	_ret := C.QTabBar_SelectionBehaviorOnRemove(this.h)
+	return (QTabBar__SelectionBehavior)(_ret)
 }
 
 func (this *QTabBar) SetSelectionBehaviorOnRemove(behavior QTabBar__SelectionBehavior) {
@@ -375,8 +337,8 @@ func (this *QTabBar) SetSelectionBehaviorOnRemove(behavior QTabBar__SelectionBeh
 }
 
 func (this *QTabBar) Expanding() bool {
-	ret := C.QTabBar_Expanding(this.h)
-	return (bool)(ret)
+	_ret := C.QTabBar_Expanding(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QTabBar) SetExpanding(enabled bool) {
@@ -384,8 +346,8 @@ func (this *QTabBar) SetExpanding(enabled bool) {
 }
 
 func (this *QTabBar) IsMovable() bool {
-	ret := C.QTabBar_IsMovable(this.h)
-	return (bool)(ret)
+	_ret := C.QTabBar_IsMovable(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QTabBar) SetMovable(movable bool) {
@@ -393,8 +355,8 @@ func (this *QTabBar) SetMovable(movable bool) {
 }
 
 func (this *QTabBar) DocumentMode() bool {
-	ret := C.QTabBar_DocumentMode(this.h)
-	return (bool)(ret)
+	_ret := C.QTabBar_DocumentMode(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QTabBar) SetDocumentMode(set bool) {
@@ -402,8 +364,8 @@ func (this *QTabBar) SetDocumentMode(set bool) {
 }
 
 func (this *QTabBar) AutoHide() bool {
-	ret := C.QTabBar_AutoHide(this.h)
-	return (bool)(ret)
+	_ret := C.QTabBar_AutoHide(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QTabBar) SetAutoHide(hide bool) {
@@ -411,8 +373,8 @@ func (this *QTabBar) SetAutoHide(hide bool) {
 }
 
 func (this *QTabBar) ChangeCurrentOnDrag() bool {
-	ret := C.QTabBar_ChangeCurrentOnDrag(this.h)
-	return (bool)(ret)
+	_ret := C.QTabBar_ChangeCurrentOnDrag(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QTabBar) SetChangeCurrentOnDrag(change bool) {
@@ -420,18 +382,16 @@ func (this *QTabBar) SetChangeCurrentOnDrag(change bool) {
 }
 
 func (this *QTabBar) AccessibleTabName(index int) string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTabBar_AccessibleTabName(this.h, (C.int)(index), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTabBar_AccessibleTabName(this.h, (C.int)(index))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QTabBar) SetAccessibleTabName(index int, name string) {
-	name_Cstring := C.CString(name)
-	defer C.free(unsafe.Pointer(name_Cstring))
-	C.QTabBar_SetAccessibleTabName(this.h, (C.int)(index), name_Cstring, C.size_t(len(name)))
+	name_ms := miqt_strdupg(name)
+	defer C.free(name_ms)
+	C.QTabBar_SetAccessibleTabName(this.h, (C.int)(index), (*C.struct_miqt_string)(name_ms))
 }
 
 func (this *QTabBar) SetCurrentIndex(index int) {
@@ -441,61 +401,109 @@ func (this *QTabBar) SetCurrentIndex(index int) {
 func (this *QTabBar) CurrentChanged(index int) {
 	C.QTabBar_CurrentChanged(this.h, (C.int)(index))
 }
+func (this *QTabBar) OnCurrentChanged(slot func(index int)) {
+	C.QTabBar_connect_CurrentChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QTabBar) OnCurrentChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QTabBar_CurrentChanged
+func miqt_exec_callback_QTabBar_CurrentChanged(cb *C.void, index C.int) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(index int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QTabBar_connect_CurrentChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	index_ret := index
+	slotval1 := (int)(index_ret)
+
+	gofunc(slotval1)
 }
 
 func (this *QTabBar) TabCloseRequested(index int) {
 	C.QTabBar_TabCloseRequested(this.h, (C.int)(index))
 }
+func (this *QTabBar) OnTabCloseRequested(slot func(index int)) {
+	C.QTabBar_connect_TabCloseRequested(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QTabBar) OnTabCloseRequested(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QTabBar_TabCloseRequested
+func miqt_exec_callback_QTabBar_TabCloseRequested(cb *C.void, index C.int) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(index int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QTabBar_connect_TabCloseRequested(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	index_ret := index
+	slotval1 := (int)(index_ret)
+
+	gofunc(slotval1)
 }
 
 func (this *QTabBar) TabMoved(from int, to int) {
 	C.QTabBar_TabMoved(this.h, (C.int)(from), (C.int)(to))
 }
+func (this *QTabBar) OnTabMoved(slot func(from int, to int)) {
+	C.QTabBar_connect_TabMoved(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QTabBar) OnTabMoved(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QTabBar_TabMoved
+func miqt_exec_callback_QTabBar_TabMoved(cb *C.void, from C.int, to C.int) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(from int, to int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QTabBar_connect_TabMoved(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	from_ret := from
+	slotval1 := (int)(from_ret)
+
+	to_ret := to
+	slotval2 := (int)(to_ret)
+
+	gofunc(slotval1, slotval2)
 }
 
 func (this *QTabBar) TabBarClicked(index int) {
 	C.QTabBar_TabBarClicked(this.h, (C.int)(index))
 }
+func (this *QTabBar) OnTabBarClicked(slot func(index int)) {
+	C.QTabBar_connect_TabBarClicked(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QTabBar) OnTabBarClicked(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QTabBar_TabBarClicked
+func miqt_exec_callback_QTabBar_TabBarClicked(cb *C.void, index C.int) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(index int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QTabBar_connect_TabBarClicked(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	index_ret := index
+	slotval1 := (int)(index_ret)
+
+	gofunc(slotval1)
 }
 
 func (this *QTabBar) TabBarDoubleClicked(index int) {
 	C.QTabBar_TabBarDoubleClicked(this.h, (C.int)(index))
 }
+func (this *QTabBar) OnTabBarDoubleClicked(slot func(index int)) {
+	C.QTabBar_connect_TabBarDoubleClicked(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QTabBar) OnTabBarDoubleClicked(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QTabBar_TabBarDoubleClicked
+func miqt_exec_callback_QTabBar_TabBarDoubleClicked(cb *C.void, index C.int) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(index int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QTabBar_connect_TabBarDoubleClicked(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	index_ret := index
+	slotval1 := (int)(index_ret)
+
+	gofunc(slotval1)
 }
 
 func QTabBar_Tr2(s string, c string) string {
@@ -503,12 +511,10 @@ func QTabBar_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTabBar_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTabBar_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QTabBar_Tr3(s string, c string, n int) string {
@@ -516,12 +522,10 @@ func QTabBar_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTabBar_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTabBar_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QTabBar_TrUtf82(s string, c string) string {
@@ -529,12 +533,10 @@ func QTabBar_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTabBar_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTabBar_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QTabBar_TrUtf83(s string, c string, n int) string {
@@ -542,14 +544,22 @@ func QTabBar_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTabBar_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTabBar_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
+// Delete this object from C++ memory.
 func (this *QTabBar) Delete() {
 	C.QTabBar_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QTabBar) GoGC() {
+	runtime.SetFinalizer(this, func(this *QTabBar) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

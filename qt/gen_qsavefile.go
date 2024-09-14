@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"runtime"
 	"unsafe"
 )
 
@@ -37,9 +38,9 @@ func newQSaveFile_U(h unsafe.Pointer) *QSaveFile {
 
 // NewQSaveFile constructs a new QSaveFile object.
 func NewQSaveFile(name string) *QSaveFile {
-	name_Cstring := C.CString(name)
-	defer C.free(unsafe.Pointer(name_Cstring))
-	ret := C.QSaveFile_new(name_Cstring, C.size_t(len(name)))
+	name_ms := miqt_strdupg(name)
+	defer C.free(name_ms)
+	ret := C.QSaveFile_new((*C.struct_miqt_string)(name_ms))
 	return newQSaveFile(ret)
 }
 
@@ -51,9 +52,9 @@ func NewQSaveFile2() *QSaveFile {
 
 // NewQSaveFile3 constructs a new QSaveFile object.
 func NewQSaveFile3(name string, parent *QObject) *QSaveFile {
-	name_Cstring := C.CString(name)
-	defer C.free(unsafe.Pointer(name_Cstring))
-	ret := C.QSaveFile_new3(name_Cstring, C.size_t(len(name)), parent.cPointer())
+	name_ms := miqt_strdupg(name)
+	defer C.free(name_ms)
+	ret := C.QSaveFile_new3((*C.struct_miqt_string)(name_ms), parent.cPointer())
 	return newQSaveFile(ret)
 }
 
@@ -64,55 +65,49 @@ func NewQSaveFile4(parent *QObject) *QSaveFile {
 }
 
 func (this *QSaveFile) MetaObject() *QMetaObject {
-	ret := C.QSaveFile_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QSaveFile_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QSaveFile_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QSaveFile_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QSaveFile_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QSaveFile_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QSaveFile_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QSaveFile_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QSaveFile) FileName() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QSaveFile_FileName(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QSaveFile_FileName(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QSaveFile) SetFileName(name string) {
-	name_Cstring := C.CString(name)
-	defer C.free(unsafe.Pointer(name_Cstring))
-	C.QSaveFile_SetFileName(this.h, name_Cstring, C.size_t(len(name)))
+	name_ms := miqt_strdupg(name)
+	defer C.free(name_ms)
+	C.QSaveFile_SetFileName(this.h, (*C.struct_miqt_string)(name_ms))
 }
 
 func (this *QSaveFile) Open(flags int) bool {
-	ret := C.QSaveFile_Open(this.h, (C.int)(flags))
-	return (bool)(ret)
+	_ret := C.QSaveFile_Open(this.h, (C.int)(flags))
+	return (bool)(_ret)
 }
 
 func (this *QSaveFile) Commit() bool {
-	ret := C.QSaveFile_Commit(this.h)
-	return (bool)(ret)
+	_ret := C.QSaveFile_Commit(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QSaveFile) CancelWriting() {
@@ -124,8 +119,8 @@ func (this *QSaveFile) SetDirectWriteFallback(enabled bool) {
 }
 
 func (this *QSaveFile) DirectWriteFallback() bool {
-	ret := C.QSaveFile_DirectWriteFallback(this.h)
-	return (bool)(ret)
+	_ret := C.QSaveFile_DirectWriteFallback(this.h)
+	return (bool)(_ret)
 }
 
 func QSaveFile_Tr2(s string, c string) string {
@@ -133,12 +128,10 @@ func QSaveFile_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QSaveFile_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QSaveFile_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QSaveFile_Tr3(s string, c string, n int) string {
@@ -146,12 +139,10 @@ func QSaveFile_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QSaveFile_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QSaveFile_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QSaveFile_TrUtf82(s string, c string) string {
@@ -159,12 +150,10 @@ func QSaveFile_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QSaveFile_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QSaveFile_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QSaveFile_TrUtf83(s string, c string, n int) string {
@@ -172,14 +161,22 @@ func QSaveFile_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QSaveFile_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QSaveFile_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
+// Delete this object from C++ memory.
 func (this *QSaveFile) Delete() {
 	C.QSaveFile_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QSaveFile) GoGC() {
+	runtime.SetFinalizer(this, func(this *QSaveFile) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

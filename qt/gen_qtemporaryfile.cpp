@@ -6,19 +6,15 @@
 #include <cstring>
 #include <QTemporaryFile>
 #include "qtemporaryfile.h"
-
 #include "gen_qtemporaryfile.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QTemporaryFile* QTemporaryFile_new() {
 	return new QTemporaryFile();
 }
 
-QTemporaryFile* QTemporaryFile_new2(const char* templateName, size_t templateName_Strlen) {
-	QString templateName_QString = QString::fromUtf8(templateName, templateName_Strlen);
+QTemporaryFile* QTemporaryFile_new2(struct miqt_string* templateName) {
+	QString templateName_QString = QString::fromUtf8(&templateName->data, templateName->len);
 	return new QTemporaryFile(templateName_QString);
 }
 
@@ -26,8 +22,8 @@ QTemporaryFile* QTemporaryFile_new3(QObject* parent) {
 	return new QTemporaryFile(parent);
 }
 
-QTemporaryFile* QTemporaryFile_new4(const char* templateName, size_t templateName_Strlen, QObject* parent) {
-	QString templateName_QString = QString::fromUtf8(templateName, templateName_Strlen);
+QTemporaryFile* QTemporaryFile_new4(struct miqt_string* templateName, QObject* parent) {
+	QString templateName_QString = QString::fromUtf8(&templateName->data, templateName->len);
 	return new QTemporaryFile(templateName_QString, parent);
 }
 
@@ -35,22 +31,18 @@ QMetaObject* QTemporaryFile_MetaObject(const QTemporaryFile* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void QTemporaryFile_Tr(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QTemporaryFile::tr(s);
+struct miqt_string* QTemporaryFile_Tr(const char* s) {
+	QString _ret = QTemporaryFile::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QTemporaryFile_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QTemporaryFile::trUtf8(s);
+struct miqt_string* QTemporaryFile_TrUtf8(const char* s) {
+	QString _ret = QTemporaryFile::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 bool QTemporaryFile_AutoRemove(const QTemporaryFile* self) {
@@ -65,36 +57,32 @@ bool QTemporaryFile_Open(QTemporaryFile* self) {
 	return self->open();
 }
 
-void QTemporaryFile_FileName(const QTemporaryFile* self, char** _out, int* _out_Strlen) {
-	QString ret = self->fileName();
+struct miqt_string* QTemporaryFile_FileName(const QTemporaryFile* self) {
+	QString _ret = self->fileName();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QTemporaryFile_FileTemplate(const QTemporaryFile* self, char** _out, int* _out_Strlen) {
-	QString ret = self->fileTemplate();
+struct miqt_string* QTemporaryFile_FileTemplate(const QTemporaryFile* self) {
+	QString _ret = self->fileTemplate();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QTemporaryFile_SetFileTemplate(QTemporaryFile* self, const char* name, size_t name_Strlen) {
-	QString name_QString = QString::fromUtf8(name, name_Strlen);
+void QTemporaryFile_SetFileTemplate(QTemporaryFile* self, struct miqt_string* name) {
+	QString name_QString = QString::fromUtf8(&name->data, name->len);
 	self->setFileTemplate(name_QString);
 }
 
-bool QTemporaryFile_Rename(QTemporaryFile* self, const char* newName, size_t newName_Strlen) {
-	QString newName_QString = QString::fromUtf8(newName, newName_Strlen);
+bool QTemporaryFile_Rename(QTemporaryFile* self, struct miqt_string* newName) {
+	QString newName_QString = QString::fromUtf8(&newName->data, newName->len);
 	return self->rename(newName_QString);
 }
 
-QTemporaryFile* QTemporaryFile_CreateLocalFile(const char* fileName, size_t fileName_Strlen) {
-	QString fileName_QString = QString::fromUtf8(fileName, fileName_Strlen);
+QTemporaryFile* QTemporaryFile_CreateLocalFile(struct miqt_string* fileName) {
+	QString fileName_QString = QString::fromUtf8(&fileName->data, fileName->len);
 	return QTemporaryFile::createLocalFile(fileName_QString);
 }
 
@@ -102,8 +90,8 @@ QTemporaryFile* QTemporaryFile_CreateLocalFileWithFile(QFile* file) {
 	return QTemporaryFile::createLocalFile(*file);
 }
 
-QTemporaryFile* QTemporaryFile_CreateNativeFile(const char* fileName, size_t fileName_Strlen) {
-	QString fileName_QString = QString::fromUtf8(fileName, fileName_Strlen);
+QTemporaryFile* QTemporaryFile_CreateNativeFile(struct miqt_string* fileName) {
+	QString fileName_QString = QString::fromUtf8(&fileName->data, fileName->len);
 	return QTemporaryFile::createNativeFile(fileName_QString);
 }
 
@@ -111,40 +99,32 @@ QTemporaryFile* QTemporaryFile_CreateNativeFileWithFile(QFile* file) {
 	return QTemporaryFile::createNativeFile(*file);
 }
 
-void QTemporaryFile_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QTemporaryFile::tr(s, c);
+struct miqt_string* QTemporaryFile_Tr2(const char* s, const char* c) {
+	QString _ret = QTemporaryFile::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QTemporaryFile_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QTemporaryFile::tr(s, c, static_cast<int>(n));
+struct miqt_string* QTemporaryFile_Tr3(const char* s, const char* c, int n) {
+	QString _ret = QTemporaryFile::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QTemporaryFile_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QTemporaryFile::trUtf8(s, c);
+struct miqt_string* QTemporaryFile_TrUtf82(const char* s, const char* c) {
+	QString _ret = QTemporaryFile::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QTemporaryFile_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QTemporaryFile::trUtf8(s, c, static_cast<int>(n));
+struct miqt_string* QTemporaryFile_TrUtf83(const char* s, const char* c, int n) {
+	QString _ret = QTemporaryFile::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QTemporaryFile_Delete(QTemporaryFile* self) {

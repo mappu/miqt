@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -24,8 +26,8 @@ typedef struct QWidget QWidget;
 QAbstractSlider* QAbstractSlider_new();
 QAbstractSlider* QAbstractSlider_new2(QWidget* parent);
 QMetaObject* QAbstractSlider_MetaObject(const QAbstractSlider* self);
-void QAbstractSlider_Tr(const char* s, char** _out, int* _out_Strlen);
-void QAbstractSlider_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QAbstractSlider_Tr(const char* s);
+struct miqt_string* QAbstractSlider_TrUtf8(const char* s);
 uintptr_t QAbstractSlider_Orientation(const QAbstractSlider* self);
 void QAbstractSlider_SetMinimum(QAbstractSlider* self, int minimum);
 int QAbstractSlider_Minimum(const QAbstractSlider* self);
@@ -62,10 +64,10 @@ void QAbstractSlider_RangeChanged(QAbstractSlider* self, int min, int max);
 void QAbstractSlider_connect_RangeChanged(QAbstractSlider* self, void* slot);
 void QAbstractSlider_ActionTriggered(QAbstractSlider* self, int action);
 void QAbstractSlider_connect_ActionTriggered(QAbstractSlider* self, void* slot);
-void QAbstractSlider_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QAbstractSlider_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QAbstractSlider_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QAbstractSlider_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QAbstractSlider_Tr2(const char* s, const char* c);
+struct miqt_string* QAbstractSlider_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QAbstractSlider_TrUtf82(const char* s, const char* c);
+struct miqt_string* QAbstractSlider_TrUtf83(const char* s, const char* c, int n);
 void QAbstractSlider_Delete(QAbstractSlider* self);
 
 #ifdef __cplusplus

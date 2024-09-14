@@ -54,8 +54,18 @@ func (this *QWidgetData) OperatorAssign(param1 *QWidgetData) {
 	C.QWidgetData_OperatorAssign(this.h, param1.cPointer())
 }
 
+// Delete this object from C++ memory.
 func (this *QWidgetData) Delete() {
 	C.QWidgetData_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QWidgetData) GoGC() {
+	runtime.SetFinalizer(this, func(this *QWidgetData) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
 
 type QWidget struct {
@@ -101,40 +111,36 @@ func NewQWidget3(parent *QWidget, f int) *QWidget {
 }
 
 func (this *QWidget) MetaObject() *QMetaObject {
-	ret := C.QWidget_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QWidget_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QWidget_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QWidget_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QWidget_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QWidget_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QWidget_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QWidget_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QWidget) DevType() int {
-	ret := C.QWidget_DevType(this.h)
-	return (int)(ret)
+	_ret := C.QWidget_DevType(this.h)
+	return (int)(_ret)
 }
 
 func (this *QWidget) WinId() uintptr {
-	ret := C.QWidget_WinId(this.h)
-	return (uintptr)(ret)
+	_ret := C.QWidget_WinId(this.h)
+	return (uintptr)(_ret)
 }
 
 func (this *QWidget) CreateWinId() {
@@ -142,18 +148,18 @@ func (this *QWidget) CreateWinId() {
 }
 
 func (this *QWidget) InternalWinId() uintptr {
-	ret := C.QWidget_InternalWinId(this.h)
-	return (uintptr)(ret)
+	_ret := C.QWidget_InternalWinId(this.h)
+	return (uintptr)(_ret)
 }
 
 func (this *QWidget) EffectiveWinId() uintptr {
-	ret := C.QWidget_EffectiveWinId(this.h)
-	return (uintptr)(ret)
+	_ret := C.QWidget_EffectiveWinId(this.h)
+	return (uintptr)(_ret)
 }
 
 func (this *QWidget) Style() *QStyle {
-	ret := C.QWidget_Style(this.h)
-	return newQStyle_U(unsafe.Pointer(ret))
+	_ret := C.QWidget_Style(this.h)
+	return newQStyle_U(unsafe.Pointer(_ret))
 }
 
 func (this *QWidget) SetStyle(style *QStyle) {
@@ -161,23 +167,23 @@ func (this *QWidget) SetStyle(style *QStyle) {
 }
 
 func (this *QWidget) IsTopLevel() bool {
-	ret := C.QWidget_IsTopLevel(this.h)
-	return (bool)(ret)
+	_ret := C.QWidget_IsTopLevel(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QWidget) IsWindow() bool {
-	ret := C.QWidget_IsWindow(this.h)
-	return (bool)(ret)
+	_ret := C.QWidget_IsWindow(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QWidget) IsModal() bool {
-	ret := C.QWidget_IsModal(this.h)
-	return (bool)(ret)
+	_ret := C.QWidget_IsModal(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QWidget) WindowModality() WindowModality {
-	ret := C.QWidget_WindowModality(this.h)
-	return (WindowModality)(ret)
+	_ret := C.QWidget_WindowModality(this.h)
+	return (WindowModality)(_ret)
 }
 
 func (this *QWidget) SetWindowModality(windowModality WindowModality) {
@@ -185,18 +191,18 @@ func (this *QWidget) SetWindowModality(windowModality WindowModality) {
 }
 
 func (this *QWidget) IsEnabled() bool {
-	ret := C.QWidget_IsEnabled(this.h)
-	return (bool)(ret)
+	_ret := C.QWidget_IsEnabled(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QWidget) IsEnabledTo(param1 *QWidget) bool {
-	ret := C.QWidget_IsEnabledTo(this.h, param1.cPointer())
-	return (bool)(ret)
+	_ret := C.QWidget_IsEnabledTo(this.h, param1.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QWidget) IsEnabledToTLW() bool {
-	ret := C.QWidget_IsEnabledToTLW(this.h)
-	return (bool)(ret)
+	_ret := C.QWidget_IsEnabledToTLW(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QWidget) SetEnabled(enabled bool) {
@@ -212,158 +218,118 @@ func (this *QWidget) SetWindowModified(windowModified bool) {
 }
 
 func (this *QWidget) FrameGeometry() *QRect {
-	ret := C.QWidget_FrameGeometry(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRect(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRect) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QWidget_FrameGeometry(this.h)
+	_goptr := newQRect(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QWidget) Geometry() *QRect {
-	ret := C.QWidget_Geometry(this.h)
-	return newQRect_U(unsafe.Pointer(ret))
+	_ret := C.QWidget_Geometry(this.h)
+	return newQRect_U(unsafe.Pointer(_ret))
 }
 
 func (this *QWidget) NormalGeometry() *QRect {
-	ret := C.QWidget_NormalGeometry(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRect(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRect) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QWidget_NormalGeometry(this.h)
+	_goptr := newQRect(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QWidget) X() int {
-	ret := C.QWidget_X(this.h)
-	return (int)(ret)
+	_ret := C.QWidget_X(this.h)
+	return (int)(_ret)
 }
 
 func (this *QWidget) Y() int {
-	ret := C.QWidget_Y(this.h)
-	return (int)(ret)
+	_ret := C.QWidget_Y(this.h)
+	return (int)(_ret)
 }
 
 func (this *QWidget) Pos() *QPoint {
-	ret := C.QWidget_Pos(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPoint(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPoint) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QWidget_Pos(this.h)
+	_goptr := newQPoint(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QWidget) FrameSize() *QSize {
-	ret := C.QWidget_FrameSize(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSize(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QWidget_FrameSize(this.h)
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QWidget) Size() *QSize {
-	ret := C.QWidget_Size(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSize(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QWidget_Size(this.h)
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QWidget) Width() int {
-	ret := C.QWidget_Width(this.h)
-	return (int)(ret)
+	_ret := C.QWidget_Width(this.h)
+	return (int)(_ret)
 }
 
 func (this *QWidget) Height() int {
-	ret := C.QWidget_Height(this.h)
-	return (int)(ret)
+	_ret := C.QWidget_Height(this.h)
+	return (int)(_ret)
 }
 
 func (this *QWidget) Rect() *QRect {
-	ret := C.QWidget_Rect(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRect(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRect) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QWidget_Rect(this.h)
+	_goptr := newQRect(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QWidget) ChildrenRect() *QRect {
-	ret := C.QWidget_ChildrenRect(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRect(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRect) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QWidget_ChildrenRect(this.h)
+	_goptr := newQRect(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QWidget) ChildrenRegion() *QRegion {
-	ret := C.QWidget_ChildrenRegion(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRegion(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRegion) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QWidget_ChildrenRegion(this.h)
+	_goptr := newQRegion(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QWidget) MinimumSize() *QSize {
-	ret := C.QWidget_MinimumSize(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSize(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QWidget_MinimumSize(this.h)
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QWidget) MaximumSize() *QSize {
-	ret := C.QWidget_MaximumSize(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSize(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QWidget_MaximumSize(this.h)
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QWidget) MinimumWidth() int {
-	ret := C.QWidget_MinimumWidth(this.h)
-	return (int)(ret)
+	_ret := C.QWidget_MinimumWidth(this.h)
+	return (int)(_ret)
 }
 
 func (this *QWidget) MinimumHeight() int {
-	ret := C.QWidget_MinimumHeight(this.h)
-	return (int)(ret)
+	_ret := C.QWidget_MinimumHeight(this.h)
+	return (int)(_ret)
 }
 
 func (this *QWidget) MaximumWidth() int {
-	ret := C.QWidget_MaximumWidth(this.h)
-	return (int)(ret)
+	_ret := C.QWidget_MaximumWidth(this.h)
+	return (int)(_ret)
 }
 
 func (this *QWidget) MaximumHeight() int {
-	ret := C.QWidget_MaximumHeight(this.h)
-	return (int)(ret)
+	_ret := C.QWidget_MaximumHeight(this.h)
+	return (int)(_ret)
 }
 
 func (this *QWidget) SetMinimumSize(minimumSize *QSize) {
@@ -399,14 +365,10 @@ func (this *QWidget) SetMaximumHeight(maxh int) {
 }
 
 func (this *QWidget) SizeIncrement() *QSize {
-	ret := C.QWidget_SizeIncrement(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSize(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QWidget_SizeIncrement(this.h)
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QWidget) SetSizeIncrement(sizeIncrement *QSize) {
@@ -418,14 +380,10 @@ func (this *QWidget) SetSizeIncrement2(w int, h int) {
 }
 
 func (this *QWidget) BaseSize() *QSize {
-	ret := C.QWidget_BaseSize(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSize(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QWidget_BaseSize(this.h)
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QWidget) SetBaseSize(baseSize *QSize) {
@@ -453,89 +411,65 @@ func (this *QWidget) SetFixedHeight(h int) {
 }
 
 func (this *QWidget) MapToGlobal(param1 *QPoint) *QPoint {
-	ret := C.QWidget_MapToGlobal(this.h, param1.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPoint(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPoint) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QWidget_MapToGlobal(this.h, param1.cPointer())
+	_goptr := newQPoint(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QWidget) MapFromGlobal(param1 *QPoint) *QPoint {
-	ret := C.QWidget_MapFromGlobal(this.h, param1.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPoint(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPoint) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QWidget_MapFromGlobal(this.h, param1.cPointer())
+	_goptr := newQPoint(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QWidget) MapToParent(param1 *QPoint) *QPoint {
-	ret := C.QWidget_MapToParent(this.h, param1.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPoint(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPoint) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QWidget_MapToParent(this.h, param1.cPointer())
+	_goptr := newQPoint(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QWidget) MapFromParent(param1 *QPoint) *QPoint {
-	ret := C.QWidget_MapFromParent(this.h, param1.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPoint(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPoint) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QWidget_MapFromParent(this.h, param1.cPointer())
+	_goptr := newQPoint(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QWidget) MapTo(param1 *QWidget, param2 *QPoint) *QPoint {
-	ret := C.QWidget_MapTo(this.h, param1.cPointer(), param2.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPoint(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPoint) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QWidget_MapTo(this.h, param1.cPointer(), param2.cPointer())
+	_goptr := newQPoint(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QWidget) MapFrom(param1 *QWidget, param2 *QPoint) *QPoint {
-	ret := C.QWidget_MapFrom(this.h, param1.cPointer(), param2.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPoint(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPoint) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QWidget_MapFrom(this.h, param1.cPointer(), param2.cPointer())
+	_goptr := newQPoint(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QWidget) Window() *QWidget {
-	ret := C.QWidget_Window(this.h)
-	return newQWidget_U(unsafe.Pointer(ret))
+	_ret := C.QWidget_Window(this.h)
+	return newQWidget_U(unsafe.Pointer(_ret))
 }
 
 func (this *QWidget) NativeParentWidget() *QWidget {
-	ret := C.QWidget_NativeParentWidget(this.h)
-	return newQWidget_U(unsafe.Pointer(ret))
+	_ret := C.QWidget_NativeParentWidget(this.h)
+	return newQWidget_U(unsafe.Pointer(_ret))
 }
 
 func (this *QWidget) TopLevelWidget() *QWidget {
-	ret := C.QWidget_TopLevelWidget(this.h)
-	return newQWidget_U(unsafe.Pointer(ret))
+	_ret := C.QWidget_TopLevelWidget(this.h)
+	return newQWidget_U(unsafe.Pointer(_ret))
 }
 
 func (this *QWidget) Palette() *QPalette {
-	ret := C.QWidget_Palette(this.h)
-	return newQPalette_U(unsafe.Pointer(ret))
+	_ret := C.QWidget_Palette(this.h)
+	return newQPalette_U(unsafe.Pointer(_ret))
 }
 
 func (this *QWidget) SetPalette(palette *QPalette) {
@@ -547,8 +481,8 @@ func (this *QWidget) SetBackgroundRole(backgroundRole QPalette__ColorRole) {
 }
 
 func (this *QWidget) BackgroundRole() QPalette__ColorRole {
-	ret := C.QWidget_BackgroundRole(this.h)
-	return (QPalette__ColorRole)(ret)
+	_ret := C.QWidget_BackgroundRole(this.h)
+	return (QPalette__ColorRole)(_ret)
 }
 
 func (this *QWidget) SetForegroundRole(foregroundRole QPalette__ColorRole) {
@@ -556,13 +490,13 @@ func (this *QWidget) SetForegroundRole(foregroundRole QPalette__ColorRole) {
 }
 
 func (this *QWidget) ForegroundRole() QPalette__ColorRole {
-	ret := C.QWidget_ForegroundRole(this.h)
-	return (QPalette__ColorRole)(ret)
+	_ret := C.QWidget_ForegroundRole(this.h)
+	return (QPalette__ColorRole)(_ret)
 }
 
 func (this *QWidget) Font() *QFont {
-	ret := C.QWidget_Font(this.h)
-	return newQFont_U(unsafe.Pointer(ret))
+	_ret := C.QWidget_Font(this.h)
+	return newQFont_U(unsafe.Pointer(_ret))
 }
 
 func (this *QWidget) SetFont(font *QFont) {
@@ -570,36 +504,24 @@ func (this *QWidget) SetFont(font *QFont) {
 }
 
 func (this *QWidget) FontMetrics() *QFontMetrics {
-	ret := C.QWidget_FontMetrics(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQFontMetrics(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QFontMetrics) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QWidget_FontMetrics(this.h)
+	_goptr := newQFontMetrics(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QWidget) FontInfo() *QFontInfo {
-	ret := C.QWidget_FontInfo(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQFontInfo(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QFontInfo) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QWidget_FontInfo(this.h)
+	_goptr := newQFontInfo(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QWidget) Cursor() *QCursor {
-	ret := C.QWidget_Cursor(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQCursor(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QCursor) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QWidget_Cursor(this.h)
+	_goptr := newQCursor(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QWidget) SetCursor(cursor *QCursor) {
@@ -615,13 +537,13 @@ func (this *QWidget) SetMouseTracking(enable bool) {
 }
 
 func (this *QWidget) HasMouseTracking() bool {
-	ret := C.QWidget_HasMouseTracking(this.h)
-	return (bool)(ret)
+	_ret := C.QWidget_HasMouseTracking(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QWidget) UnderMouse() bool {
-	ret := C.QWidget_UnderMouse(this.h)
-	return (bool)(ret)
+	_ret := C.QWidget_UnderMouse(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QWidget) SetTabletTracking(enable bool) {
@@ -629,8 +551,8 @@ func (this *QWidget) SetTabletTracking(enable bool) {
 }
 
 func (this *QWidget) HasTabletTracking() bool {
-	ret := C.QWidget_HasTabletTracking(this.h)
-	return (bool)(ret)
+	_ret := C.QWidget_HasTabletTracking(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QWidget) SetMask(mask *QBitmap) {
@@ -642,14 +564,10 @@ func (this *QWidget) SetMaskWithMask(mask *QRegion) {
 }
 
 func (this *QWidget) Mask() *QRegion {
-	ret := C.QWidget_Mask(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRegion(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRegion) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QWidget_Mask(this.h)
+	_goptr := newQRegion(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QWidget) ClearMask() {
@@ -665,19 +583,15 @@ func (this *QWidget) RenderWithPainter(painter *QPainter) {
 }
 
 func (this *QWidget) Grab() *QPixmap {
-	ret := C.QWidget_Grab(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPixmap(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPixmap) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QWidget_Grab(this.h)
+	_goptr := newQPixmap(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QWidget) GraphicsEffect() *QGraphicsEffect {
-	ret := C.QWidget_GraphicsEffect(this.h)
-	return newQGraphicsEffect_U(unsafe.Pointer(ret))
+	_ret := C.QWidget_GraphicsEffect(this.h)
+	return newQGraphicsEffect_U(unsafe.Pointer(_ret))
 }
 
 func (this *QWidget) SetGraphicsEffect(effect *QGraphicsEffect) {
@@ -693,33 +607,29 @@ func (this *QWidget) UngrabGesture(typeVal GestureType) {
 }
 
 func (this *QWidget) SetWindowTitle(windowTitle string) {
-	windowTitle_Cstring := C.CString(windowTitle)
-	defer C.free(unsafe.Pointer(windowTitle_Cstring))
-	C.QWidget_SetWindowTitle(this.h, windowTitle_Cstring, C.size_t(len(windowTitle)))
+	windowTitle_ms := miqt_strdupg(windowTitle)
+	defer C.free(windowTitle_ms)
+	C.QWidget_SetWindowTitle(this.h, (*C.struct_miqt_string)(windowTitle_ms))
 }
 
 func (this *QWidget) SetStyleSheet(styleSheet string) {
-	styleSheet_Cstring := C.CString(styleSheet)
-	defer C.free(unsafe.Pointer(styleSheet_Cstring))
-	C.QWidget_SetStyleSheet(this.h, styleSheet_Cstring, C.size_t(len(styleSheet)))
+	styleSheet_ms := miqt_strdupg(styleSheet)
+	defer C.free(styleSheet_ms)
+	C.QWidget_SetStyleSheet(this.h, (*C.struct_miqt_string)(styleSheet_ms))
 }
 
 func (this *QWidget) StyleSheet() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QWidget_StyleSheet(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QWidget_StyleSheet(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QWidget) WindowTitle() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QWidget_WindowTitle(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QWidget_WindowTitle(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QWidget) SetWindowIcon(icon *QIcon) {
@@ -727,59 +637,49 @@ func (this *QWidget) SetWindowIcon(icon *QIcon) {
 }
 
 func (this *QWidget) WindowIcon() *QIcon {
-	ret := C.QWidget_WindowIcon(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQIcon(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QIcon) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QWidget_WindowIcon(this.h)
+	_goptr := newQIcon(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QWidget) SetWindowIconText(windowIconText string) {
-	windowIconText_Cstring := C.CString(windowIconText)
-	defer C.free(unsafe.Pointer(windowIconText_Cstring))
-	C.QWidget_SetWindowIconText(this.h, windowIconText_Cstring, C.size_t(len(windowIconText)))
+	windowIconText_ms := miqt_strdupg(windowIconText)
+	defer C.free(windowIconText_ms)
+	C.QWidget_SetWindowIconText(this.h, (*C.struct_miqt_string)(windowIconText_ms))
 }
 
 func (this *QWidget) WindowIconText() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QWidget_WindowIconText(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QWidget_WindowIconText(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QWidget) SetWindowRole(windowRole string) {
-	windowRole_Cstring := C.CString(windowRole)
-	defer C.free(unsafe.Pointer(windowRole_Cstring))
-	C.QWidget_SetWindowRole(this.h, windowRole_Cstring, C.size_t(len(windowRole)))
+	windowRole_ms := miqt_strdupg(windowRole)
+	defer C.free(windowRole_ms)
+	C.QWidget_SetWindowRole(this.h, (*C.struct_miqt_string)(windowRole_ms))
 }
 
 func (this *QWidget) WindowRole() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QWidget_WindowRole(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QWidget_WindowRole(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QWidget) SetWindowFilePath(filePath string) {
-	filePath_Cstring := C.CString(filePath)
-	defer C.free(unsafe.Pointer(filePath_Cstring))
-	C.QWidget_SetWindowFilePath(this.h, filePath_Cstring, C.size_t(len(filePath)))
+	filePath_ms := miqt_strdupg(filePath)
+	defer C.free(filePath_ms)
+	C.QWidget_SetWindowFilePath(this.h, (*C.struct_miqt_string)(filePath_ms))
 }
 
 func (this *QWidget) WindowFilePath() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QWidget_WindowFilePath(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QWidget_WindowFilePath(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QWidget) SetWindowOpacity(level float64) {
@@ -787,28 +687,26 @@ func (this *QWidget) SetWindowOpacity(level float64) {
 }
 
 func (this *QWidget) WindowOpacity() float64 {
-	ret := C.QWidget_WindowOpacity(this.h)
-	return (float64)(ret)
+	_ret := C.QWidget_WindowOpacity(this.h)
+	return (float64)(_ret)
 }
 
 func (this *QWidget) IsWindowModified() bool {
-	ret := C.QWidget_IsWindowModified(this.h)
-	return (bool)(ret)
+	_ret := C.QWidget_IsWindowModified(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QWidget) SetToolTip(toolTip string) {
-	toolTip_Cstring := C.CString(toolTip)
-	defer C.free(unsafe.Pointer(toolTip_Cstring))
-	C.QWidget_SetToolTip(this.h, toolTip_Cstring, C.size_t(len(toolTip)))
+	toolTip_ms := miqt_strdupg(toolTip)
+	defer C.free(toolTip_ms)
+	C.QWidget_SetToolTip(this.h, (*C.struct_miqt_string)(toolTip_ms))
 }
 
 func (this *QWidget) ToolTip() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QWidget_ToolTip(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QWidget_ToolTip(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QWidget) SetToolTipDuration(msec int) {
@@ -816,68 +714,60 @@ func (this *QWidget) SetToolTipDuration(msec int) {
 }
 
 func (this *QWidget) ToolTipDuration() int {
-	ret := C.QWidget_ToolTipDuration(this.h)
-	return (int)(ret)
+	_ret := C.QWidget_ToolTipDuration(this.h)
+	return (int)(_ret)
 }
 
 func (this *QWidget) SetStatusTip(statusTip string) {
-	statusTip_Cstring := C.CString(statusTip)
-	defer C.free(unsafe.Pointer(statusTip_Cstring))
-	C.QWidget_SetStatusTip(this.h, statusTip_Cstring, C.size_t(len(statusTip)))
+	statusTip_ms := miqt_strdupg(statusTip)
+	defer C.free(statusTip_ms)
+	C.QWidget_SetStatusTip(this.h, (*C.struct_miqt_string)(statusTip_ms))
 }
 
 func (this *QWidget) StatusTip() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QWidget_StatusTip(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QWidget_StatusTip(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QWidget) SetWhatsThis(whatsThis string) {
-	whatsThis_Cstring := C.CString(whatsThis)
-	defer C.free(unsafe.Pointer(whatsThis_Cstring))
-	C.QWidget_SetWhatsThis(this.h, whatsThis_Cstring, C.size_t(len(whatsThis)))
+	whatsThis_ms := miqt_strdupg(whatsThis)
+	defer C.free(whatsThis_ms)
+	C.QWidget_SetWhatsThis(this.h, (*C.struct_miqt_string)(whatsThis_ms))
 }
 
 func (this *QWidget) WhatsThis() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QWidget_WhatsThis(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QWidget_WhatsThis(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QWidget) AccessibleName() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QWidget_AccessibleName(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QWidget_AccessibleName(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QWidget) SetAccessibleName(name string) {
-	name_Cstring := C.CString(name)
-	defer C.free(unsafe.Pointer(name_Cstring))
-	C.QWidget_SetAccessibleName(this.h, name_Cstring, C.size_t(len(name)))
+	name_ms := miqt_strdupg(name)
+	defer C.free(name_ms)
+	C.QWidget_SetAccessibleName(this.h, (*C.struct_miqt_string)(name_ms))
 }
 
 func (this *QWidget) AccessibleDescription() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QWidget_AccessibleDescription(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QWidget_AccessibleDescription(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QWidget) SetAccessibleDescription(description string) {
-	description_Cstring := C.CString(description)
-	defer C.free(unsafe.Pointer(description_Cstring))
-	C.QWidget_SetAccessibleDescription(this.h, description_Cstring, C.size_t(len(description)))
+	description_ms := miqt_strdupg(description)
+	defer C.free(description_ms)
+	C.QWidget_SetAccessibleDescription(this.h, (*C.struct_miqt_string)(description_ms))
 }
 
 func (this *QWidget) SetLayoutDirection(direction LayoutDirection) {
@@ -885,8 +775,8 @@ func (this *QWidget) SetLayoutDirection(direction LayoutDirection) {
 }
 
 func (this *QWidget) LayoutDirection() LayoutDirection {
-	ret := C.QWidget_LayoutDirection(this.h)
-	return (LayoutDirection)(ret)
+	_ret := C.QWidget_LayoutDirection(this.h)
+	return (LayoutDirection)(_ret)
 }
 
 func (this *QWidget) UnsetLayoutDirection() {
@@ -898,14 +788,10 @@ func (this *QWidget) SetLocale(locale *QLocale) {
 }
 
 func (this *QWidget) Locale() *QLocale {
-	ret := C.QWidget_Locale(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQLocale(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QLocale) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QWidget_Locale(this.h)
+	_goptr := newQLocale(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QWidget) UnsetLocale() {
@@ -913,13 +799,13 @@ func (this *QWidget) UnsetLocale() {
 }
 
 func (this *QWidget) IsRightToLeft() bool {
-	ret := C.QWidget_IsRightToLeft(this.h)
-	return (bool)(ret)
+	_ret := C.QWidget_IsRightToLeft(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QWidget) IsLeftToRight() bool {
-	ret := C.QWidget_IsLeftToRight(this.h)
-	return (bool)(ret)
+	_ret := C.QWidget_IsLeftToRight(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QWidget) SetFocus() {
@@ -927,8 +813,8 @@ func (this *QWidget) SetFocus() {
 }
 
 func (this *QWidget) IsActiveWindow() bool {
-	ret := C.QWidget_IsActiveWindow(this.h)
-	return (bool)(ret)
+	_ret := C.QWidget_IsActiveWindow(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QWidget) ActivateWindow() {
@@ -944,8 +830,8 @@ func (this *QWidget) SetFocusWithReason(reason FocusReason) {
 }
 
 func (this *QWidget) FocusPolicy() FocusPolicy {
-	ret := C.QWidget_FocusPolicy(this.h)
-	return (FocusPolicy)(ret)
+	_ret := C.QWidget_FocusPolicy(this.h)
+	return (FocusPolicy)(_ret)
 }
 
 func (this *QWidget) SetFocusPolicy(policy FocusPolicy) {
@@ -953,8 +839,8 @@ func (this *QWidget) SetFocusPolicy(policy FocusPolicy) {
 }
 
 func (this *QWidget) HasFocus() bool {
-	ret := C.QWidget_HasFocus(this.h)
-	return (bool)(ret)
+	_ret := C.QWidget_HasFocus(this.h)
+	return (bool)(_ret)
 }
 
 func QWidget_SetTabOrder(param1 *QWidget, param2 *QWidget) {
@@ -966,13 +852,13 @@ func (this *QWidget) SetFocusProxy(focusProxy *QWidget) {
 }
 
 func (this *QWidget) FocusProxy() *QWidget {
-	ret := C.QWidget_FocusProxy(this.h)
-	return newQWidget_U(unsafe.Pointer(ret))
+	_ret := C.QWidget_FocusProxy(this.h)
+	return newQWidget_U(unsafe.Pointer(_ret))
 }
 
 func (this *QWidget) ContextMenuPolicy() ContextMenuPolicy {
-	ret := C.QWidget_ContextMenuPolicy(this.h)
-	return (ContextMenuPolicy)(ret)
+	_ret := C.QWidget_ContextMenuPolicy(this.h)
+	return (ContextMenuPolicy)(_ret)
 }
 
 func (this *QWidget) SetContextMenuPolicy(policy ContextMenuPolicy) {
@@ -1000,8 +886,8 @@ func (this *QWidget) ReleaseKeyboard() {
 }
 
 func (this *QWidget) GrabShortcut(key *QKeySequence) int {
-	ret := C.QWidget_GrabShortcut(this.h, key.cPointer())
-	return (int)(ret)
+	_ret := C.QWidget_GrabShortcut(this.h, key.cPointer())
+	return (int)(_ret)
 }
 
 func (this *QWidget) ReleaseShortcut(id int) {
@@ -1017,18 +903,18 @@ func (this *QWidget) SetShortcutAutoRepeat(id int) {
 }
 
 func QWidget_MouseGrabber() *QWidget {
-	ret := C.QWidget_MouseGrabber()
-	return newQWidget_U(unsafe.Pointer(ret))
+	_ret := C.QWidget_MouseGrabber()
+	return newQWidget_U(unsafe.Pointer(_ret))
 }
 
 func QWidget_KeyboardGrabber() *QWidget {
-	ret := C.QWidget_KeyboardGrabber()
-	return newQWidget_U(unsafe.Pointer(ret))
+	_ret := C.QWidget_KeyboardGrabber()
+	return newQWidget_U(unsafe.Pointer(_ret))
 }
 
 func (this *QWidget) UpdatesEnabled() bool {
-	ret := C.QWidget_UpdatesEnabled(this.h)
-	return (bool)(ret)
+	_ret := C.QWidget_UpdatesEnabled(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QWidget) SetUpdatesEnabled(enable bool) {
@@ -1036,8 +922,8 @@ func (this *QWidget) SetUpdatesEnabled(enable bool) {
 }
 
 func (this *QWidget) GraphicsProxyWidget() *QGraphicsProxyWidget {
-	ret := C.QWidget_GraphicsProxyWidget(this.h)
-	return newQGraphicsProxyWidget_U(unsafe.Pointer(ret))
+	_ret := C.QWidget_GraphicsProxyWidget(this.h)
+	return newQGraphicsProxyWidget_U(unsafe.Pointer(_ret))
 }
 
 func (this *QWidget) Update() {
@@ -1105,8 +991,8 @@ func (this *QWidget) ShowNormal() {
 }
 
 func (this *QWidget) Close() bool {
-	ret := C.QWidget_Close(this.h)
-	return (bool)(ret)
+	_ret := C.QWidget_Close(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QWidget) Raise() {
@@ -1146,19 +1032,15 @@ func (this *QWidget) SetGeometryWithGeometry(geometry *QRect) {
 }
 
 func (this *QWidget) SaveGeometry() *QByteArray {
-	ret := C.QWidget_SaveGeometry(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQByteArray(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QByteArray) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QWidget_SaveGeometry(this.h)
+	_goptr := newQByteArray(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QWidget) RestoreGeometry(geometry *QByteArray) bool {
-	ret := C.QWidget_RestoreGeometry(this.h, geometry.cPointer())
-	return (bool)(ret)
+	_ret := C.QWidget_RestoreGeometry(this.h, geometry.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QWidget) AdjustSize() {
@@ -1166,38 +1048,38 @@ func (this *QWidget) AdjustSize() {
 }
 
 func (this *QWidget) IsVisible() bool {
-	ret := C.QWidget_IsVisible(this.h)
-	return (bool)(ret)
+	_ret := C.QWidget_IsVisible(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QWidget) IsVisibleTo(param1 *QWidget) bool {
-	ret := C.QWidget_IsVisibleTo(this.h, param1.cPointer())
-	return (bool)(ret)
+	_ret := C.QWidget_IsVisibleTo(this.h, param1.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QWidget) IsHidden() bool {
-	ret := C.QWidget_IsHidden(this.h)
-	return (bool)(ret)
+	_ret := C.QWidget_IsHidden(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QWidget) IsMinimized() bool {
-	ret := C.QWidget_IsMinimized(this.h)
-	return (bool)(ret)
+	_ret := C.QWidget_IsMinimized(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QWidget) IsMaximized() bool {
-	ret := C.QWidget_IsMaximized(this.h)
-	return (bool)(ret)
+	_ret := C.QWidget_IsMaximized(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QWidget) IsFullScreen() bool {
-	ret := C.QWidget_IsFullScreen(this.h)
-	return (bool)(ret)
+	_ret := C.QWidget_IsFullScreen(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QWidget) WindowState() int {
-	ret := C.QWidget_WindowState(this.h)
-	return (int)(ret)
+	_ret := C.QWidget_WindowState(this.h)
+	return (int)(_ret)
 }
 
 func (this *QWidget) SetWindowState(state int) {
@@ -1209,36 +1091,24 @@ func (this *QWidget) OverrideWindowState(state int) {
 }
 
 func (this *QWidget) SizeHint() *QSize {
-	ret := C.QWidget_SizeHint(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSize(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QWidget_SizeHint(this.h)
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QWidget) MinimumSizeHint() *QSize {
-	ret := C.QWidget_MinimumSizeHint(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSize(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QWidget_MinimumSizeHint(this.h)
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QWidget) SizePolicy() *QSizePolicy {
-	ret := C.QWidget_SizePolicy(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSizePolicy(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSizePolicy) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QWidget_SizePolicy(this.h)
+	_goptr := newQSizePolicy(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QWidget) SetSizePolicy(sizePolicy QSizePolicy) {
@@ -1250,24 +1120,20 @@ func (this *QWidget) SetSizePolicy2(horizontal QSizePolicy__Policy, vertical QSi
 }
 
 func (this *QWidget) HeightForWidth(param1 int) int {
-	ret := C.QWidget_HeightForWidth(this.h, (C.int)(param1))
-	return (int)(ret)
+	_ret := C.QWidget_HeightForWidth(this.h, (C.int)(param1))
+	return (int)(_ret)
 }
 
 func (this *QWidget) HasHeightForWidth() bool {
-	ret := C.QWidget_HasHeightForWidth(this.h)
-	return (bool)(ret)
+	_ret := C.QWidget_HasHeightForWidth(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QWidget) VisibleRegion() *QRegion {
-	ret := C.QWidget_VisibleRegion(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRegion(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRegion) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QWidget_VisibleRegion(this.h)
+	_goptr := newQRegion(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QWidget) SetContentsMargins(left int, top int, right int, bottom int) {
@@ -1283,30 +1149,22 @@ func (this *QWidget) GetContentsMargins(left *int, top *int, right *int, bottom 
 }
 
 func (this *QWidget) ContentsMargins() *QMargins {
-	ret := C.QWidget_ContentsMargins(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQMargins(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QMargins) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QWidget_ContentsMargins(this.h)
+	_goptr := newQMargins(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QWidget) ContentsRect() *QRect {
-	ret := C.QWidget_ContentsRect(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRect(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRect) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QWidget_ContentsRect(this.h)
+	_goptr := newQRect(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QWidget) Layout() *QLayout {
-	ret := C.QWidget_Layout(this.h)
-	return newQLayout_U(unsafe.Pointer(ret))
+	_ret := C.QWidget_Layout(this.h)
+	return newQLayout_U(unsafe.Pointer(_ret))
 }
 
 func (this *QWidget) SetLayout(layout *QLayout) {
@@ -1334,23 +1192,23 @@ func (this *QWidget) Scroll2(dx int, dy int, param3 *QRect) {
 }
 
 func (this *QWidget) FocusWidget() *QWidget {
-	ret := C.QWidget_FocusWidget(this.h)
-	return newQWidget_U(unsafe.Pointer(ret))
+	_ret := C.QWidget_FocusWidget(this.h)
+	return newQWidget_U(unsafe.Pointer(_ret))
 }
 
 func (this *QWidget) NextInFocusChain() *QWidget {
-	ret := C.QWidget_NextInFocusChain(this.h)
-	return newQWidget_U(unsafe.Pointer(ret))
+	_ret := C.QWidget_NextInFocusChain(this.h)
+	return newQWidget_U(unsafe.Pointer(_ret))
 }
 
 func (this *QWidget) PreviousInFocusChain() *QWidget {
-	ret := C.QWidget_PreviousInFocusChain(this.h)
-	return newQWidget_U(unsafe.Pointer(ret))
+	_ret := C.QWidget_PreviousInFocusChain(this.h)
+	return newQWidget_U(unsafe.Pointer(_ret))
 }
 
 func (this *QWidget) AcceptDrops() bool {
-	ret := C.QWidget_AcceptDrops(this.h)
-	return (bool)(ret)
+	_ret := C.QWidget_AcceptDrops(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QWidget) SetAcceptDrops(on bool) {
@@ -1368,7 +1226,9 @@ func (this *QWidget) AddActions(actions []*QAction) {
 	for i := range actions {
 		actions_CArray[i] = actions[i].cPointer()
 	}
-	C.QWidget_AddActions(this.h, &actions_CArray[0], C.size_t(len(actions)))
+	actions_ma := &C.struct_miqt_array{len: C.size_t(len(actions)), data: unsafe.Pointer(actions_CArray)}
+	defer runtime.KeepAlive(unsafe.Pointer(actions_ma))
+	C.QWidget_AddActions(this.h, actions_ma)
 }
 
 func (this *QWidget) InsertActions(before *QAction, actions []*QAction) {
@@ -1378,7 +1238,9 @@ func (this *QWidget) InsertActions(before *QAction, actions []*QAction) {
 	for i := range actions {
 		actions_CArray[i] = actions[i].cPointer()
 	}
-	C.QWidget_InsertActions(this.h, before.cPointer(), &actions_CArray[0], C.size_t(len(actions)))
+	actions_ma := &C.struct_miqt_array{len: C.size_t(len(actions)), data: unsafe.Pointer(actions_CArray)}
+	defer runtime.KeepAlive(unsafe.Pointer(actions_ma))
+	C.QWidget_InsertActions(this.h, before.cPointer(), actions_ma)
 }
 
 func (this *QWidget) InsertAction(before *QAction, action *QAction) {
@@ -1390,21 +1252,19 @@ func (this *QWidget) RemoveAction(action *QAction) {
 }
 
 func (this *QWidget) Actions() []*QAction {
-	var _out **C.QAction = nil
-	var _out_len C.size_t = 0
-	C.QWidget_Actions(this.h, &_out, &_out_len)
-	ret := make([]*QAction, int(_out_len))
-	_outCast := (*[0xffff]*C.QAction)(unsafe.Pointer(_out)) // so fresh so clean
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = newQAction(_outCast[i])
+	var _ma *C.struct_miqt_array = C.QWidget_Actions(this.h)
+	_ret := make([]*QAction, int(_ma.len))
+	_outCast := (*[0xffff]*C.QAction)(unsafe.Pointer(_ma.data)) // mrs jackson
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = newQAction(_outCast[i])
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
 func (this *QWidget) ParentWidget() *QWidget {
-	ret := C.QWidget_ParentWidget(this.h)
-	return newQWidget_U(unsafe.Pointer(ret))
+	_ret := C.QWidget_ParentWidget(this.h)
+	return newQWidget_U(unsafe.Pointer(_ret))
 }
 
 func (this *QWidget) SetWindowFlags(typeVal int) {
@@ -1412,8 +1272,8 @@ func (this *QWidget) SetWindowFlags(typeVal int) {
 }
 
 func (this *QWidget) WindowFlags() int {
-	ret := C.QWidget_WindowFlags(this.h)
-	return (int)(ret)
+	_ret := C.QWidget_WindowFlags(this.h)
+	return (int)(_ret)
 }
 
 func (this *QWidget) SetWindowFlag(param1 WindowType) {
@@ -1425,23 +1285,23 @@ func (this *QWidget) OverrideWindowFlags(typeVal int) {
 }
 
 func (this *QWidget) WindowType() WindowType {
-	ret := C.QWidget_WindowType(this.h)
-	return (WindowType)(ret)
+	_ret := C.QWidget_WindowType(this.h)
+	return (WindowType)(_ret)
 }
 
 func QWidget_Find(param1 uintptr) *QWidget {
-	ret := C.QWidget_Find((C.uintptr_t)(param1))
-	return newQWidget_U(unsafe.Pointer(ret))
+	_ret := C.QWidget_Find((C.uintptr_t)(param1))
+	return newQWidget_U(unsafe.Pointer(_ret))
 }
 
 func (this *QWidget) ChildAt(x int, y int) *QWidget {
-	ret := C.QWidget_ChildAt(this.h, (C.int)(x), (C.int)(y))
-	return newQWidget_U(unsafe.Pointer(ret))
+	_ret := C.QWidget_ChildAt(this.h, (C.int)(x), (C.int)(y))
+	return newQWidget_U(unsafe.Pointer(_ret))
 }
 
 func (this *QWidget) ChildAtWithQPoint(p *QPoint) *QWidget {
-	ret := C.QWidget_ChildAtWithQPoint(this.h, p.cPointer())
-	return newQWidget_U(unsafe.Pointer(ret))
+	_ret := C.QWidget_ChildAtWithQPoint(this.h, p.cPointer())
+	return newQWidget_U(unsafe.Pointer(_ret))
 }
 
 func (this *QWidget) SetAttribute(param1 WidgetAttribute) {
@@ -1449,13 +1309,13 @@ func (this *QWidget) SetAttribute(param1 WidgetAttribute) {
 }
 
 func (this *QWidget) TestAttribute(param1 WidgetAttribute) bool {
-	ret := C.QWidget_TestAttribute(this.h, (C.uintptr_t)(param1))
-	return (bool)(ret)
+	_ret := C.QWidget_TestAttribute(this.h, (C.uintptr_t)(param1))
+	return (bool)(_ret)
 }
 
 func (this *QWidget) PaintEngine() *QPaintEngine {
-	ret := C.QWidget_PaintEngine(this.h)
-	return newQPaintEngine_U(unsafe.Pointer(ret))
+	_ret := C.QWidget_PaintEngine(this.h)
+	return newQPaintEngine_U(unsafe.Pointer(_ret))
 }
 
 func (this *QWidget) EnsurePolished() {
@@ -1463,13 +1323,13 @@ func (this *QWidget) EnsurePolished() {
 }
 
 func (this *QWidget) IsAncestorOf(child *QWidget) bool {
-	ret := C.QWidget_IsAncestorOf(this.h, child.cPointer())
-	return (bool)(ret)
+	_ret := C.QWidget_IsAncestorOf(this.h, child.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QWidget) AutoFillBackground() bool {
-	ret := C.QWidget_AutoFillBackground(this.h)
-	return (bool)(ret)
+	_ret := C.QWidget_AutoFillBackground(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QWidget) SetAutoFillBackground(enabled bool) {
@@ -1477,91 +1337,127 @@ func (this *QWidget) SetAutoFillBackground(enabled bool) {
 }
 
 func (this *QWidget) BackingStore() *QBackingStore {
-	ret := C.QWidget_BackingStore(this.h)
-	return newQBackingStore_U(unsafe.Pointer(ret))
+	_ret := C.QWidget_BackingStore(this.h)
+	return newQBackingStore_U(unsafe.Pointer(_ret))
 }
 
 func (this *QWidget) WindowHandle() *QWindow {
-	ret := C.QWidget_WindowHandle(this.h)
-	return newQWindow_U(unsafe.Pointer(ret))
+	_ret := C.QWidget_WindowHandle(this.h)
+	return newQWindow_U(unsafe.Pointer(_ret))
 }
 
 func (this *QWidget) Screen() *QScreen {
-	ret := C.QWidget_Screen(this.h)
-	return newQScreen_U(unsafe.Pointer(ret))
+	_ret := C.QWidget_Screen(this.h)
+	return newQScreen_U(unsafe.Pointer(_ret))
 }
 
 func QWidget_CreateWindowContainer(window *QWindow) *QWidget {
-	ret := C.QWidget_CreateWindowContainer(window.cPointer())
-	return newQWidget_U(unsafe.Pointer(ret))
+	_ret := C.QWidget_CreateWindowContainer(window.cPointer())
+	return newQWidget_U(unsafe.Pointer(_ret))
 }
 
 func (this *QWidget) WindowTitleChanged(title string) {
-	title_Cstring := C.CString(title)
-	defer C.free(unsafe.Pointer(title_Cstring))
-	C.QWidget_WindowTitleChanged(this.h, title_Cstring, C.size_t(len(title)))
+	title_ms := miqt_strdupg(title)
+	defer C.free(title_ms)
+	C.QWidget_WindowTitleChanged(this.h, (*C.struct_miqt_string)(title_ms))
+}
+func (this *QWidget) OnWindowTitleChanged(slot func(title string)) {
+	C.QWidget_connect_WindowTitleChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
 }
 
-func (this *QWidget) OnWindowTitleChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QWidget_WindowTitleChanged
+func miqt_exec_callback_QWidget_WindowTitleChanged(cb *C.void, title *C.struct_miqt_string) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(title string))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QWidget_connect_WindowTitleChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	var title_ms *C.struct_miqt_string = title
+	title_ret := C.GoStringN(&title_ms.data, C.int(int64(title_ms.len)))
+	C.free(unsafe.Pointer(title_ms))
+	slotval1 := title_ret
+
+	gofunc(slotval1)
 }
 
 func (this *QWidget) WindowIconChanged(icon *QIcon) {
 	C.QWidget_WindowIconChanged(this.h, icon.cPointer())
 }
+func (this *QWidget) OnWindowIconChanged(slot func(icon *QIcon)) {
+	C.QWidget_connect_WindowIconChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QWidget) OnWindowIconChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QWidget_WindowIconChanged
+func miqt_exec_callback_QWidget_WindowIconChanged(cb *C.void, icon *C.QIcon) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(icon *QIcon))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QWidget_connect_WindowIconChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	icon_ret := icon
+	slotval1 := newQIcon_U(unsafe.Pointer(icon_ret))
+
+	gofunc(slotval1)
 }
 
 func (this *QWidget) WindowIconTextChanged(iconText string) {
-	iconText_Cstring := C.CString(iconText)
-	defer C.free(unsafe.Pointer(iconText_Cstring))
-	C.QWidget_WindowIconTextChanged(this.h, iconText_Cstring, C.size_t(len(iconText)))
+	iconText_ms := miqt_strdupg(iconText)
+	defer C.free(iconText_ms)
+	C.QWidget_WindowIconTextChanged(this.h, (*C.struct_miqt_string)(iconText_ms))
+}
+func (this *QWidget) OnWindowIconTextChanged(slot func(iconText string)) {
+	C.QWidget_connect_WindowIconTextChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
 }
 
-func (this *QWidget) OnWindowIconTextChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QWidget_WindowIconTextChanged
+func miqt_exec_callback_QWidget_WindowIconTextChanged(cb *C.void, iconText *C.struct_miqt_string) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(iconText string))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QWidget_connect_WindowIconTextChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	var iconText_ms *C.struct_miqt_string = iconText
+	iconText_ret := C.GoStringN(&iconText_ms.data, C.int(int64(iconText_ms.len)))
+	C.free(unsafe.Pointer(iconText_ms))
+	slotval1 := iconText_ret
+
+	gofunc(slotval1)
 }
 
 func (this *QWidget) CustomContextMenuRequested(pos *QPoint) {
 	C.QWidget_CustomContextMenuRequested(this.h, pos.cPointer())
 }
+func (this *QWidget) OnCustomContextMenuRequested(slot func(pos *QPoint)) {
+	C.QWidget_connect_CustomContextMenuRequested(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QWidget) OnCustomContextMenuRequested(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QWidget_CustomContextMenuRequested
+func miqt_exec_callback_QWidget_CustomContextMenuRequested(cb *C.void, pos *C.QPoint) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(pos *QPoint))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QWidget_connect_CustomContextMenuRequested(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	pos_ret := pos
+	slotval1 := newQPoint_U(unsafe.Pointer(pos_ret))
+
+	gofunc(slotval1)
 }
 
 func (this *QWidget) InputMethodQuery(param1 InputMethodQuery) *QVariant {
-	ret := C.QWidget_InputMethodQuery(this.h, (C.uintptr_t)(param1))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQVariant(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QVariant) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QWidget_InputMethodQuery(this.h, (C.uintptr_t)(param1))
+	_goptr := newQVariant(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QWidget) InputMethodHints() int {
-	ret := C.QWidget_InputMethodHints(this.h)
-	return (int)(ret)
+	_ret := C.QWidget_InputMethodHints(this.h)
+	return (int)(_ret)
 }
 
 func (this *QWidget) SetInputMethodHints(hints int) {
@@ -1573,12 +1469,10 @@ func QWidget_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QWidget_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QWidget_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QWidget_Tr3(s string, c string, n int) string {
@@ -1586,12 +1480,10 @@ func QWidget_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QWidget_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QWidget_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QWidget_TrUtf82(s string, c string) string {
@@ -1599,12 +1491,10 @@ func QWidget_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QWidget_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QWidget_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QWidget_TrUtf83(s string, c string, n int) string {
@@ -1612,12 +1502,10 @@ func QWidget_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QWidget_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QWidget_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QWidget) Render2(target *QPaintDevice, targetOffset *QPoint) {
@@ -1645,14 +1533,10 @@ func (this *QWidget) Render42(painter *QPainter, targetOffset *QPoint, sourceReg
 }
 
 func (this *QWidget) Grab1(rectangle *QRect) *QPixmap {
-	ret := C.QWidget_Grab1(this.h, rectangle.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPixmap(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPixmap) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QWidget_Grab1(this.h, rectangle.cPointer())
+	_goptr := newQPixmap(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QWidget) GrabGesture2(typeVal GestureType, flags int) {
@@ -1660,8 +1544,8 @@ func (this *QWidget) GrabGesture2(typeVal GestureType, flags int) {
 }
 
 func (this *QWidget) GrabShortcut2(key *QKeySequence, context ShortcutContext) int {
-	ret := C.QWidget_GrabShortcut2(this.h, key.cPointer(), (C.uintptr_t)(context))
-	return (int)(ret)
+	_ret := C.QWidget_GrabShortcut2(this.h, key.cPointer(), (C.uintptr_t)(context))
+	return (int)(_ret)
 }
 
 func (this *QWidget) SetShortcutEnabled2(id int, enable bool) {
@@ -1681,15 +1565,25 @@ func (this *QWidget) SetAttribute2(param1 WidgetAttribute, on bool) {
 }
 
 func QWidget_CreateWindowContainer2(window *QWindow, parent *QWidget) *QWidget {
-	ret := C.QWidget_CreateWindowContainer2(window.cPointer(), parent.cPointer())
-	return newQWidget_U(unsafe.Pointer(ret))
+	_ret := C.QWidget_CreateWindowContainer2(window.cPointer(), parent.cPointer())
+	return newQWidget_U(unsafe.Pointer(_ret))
 }
 
 func QWidget_CreateWindowContainer3(window *QWindow, parent *QWidget, flags int) *QWidget {
-	ret := C.QWidget_CreateWindowContainer3(window.cPointer(), parent.cPointer(), (C.int)(flags))
-	return newQWidget_U(unsafe.Pointer(ret))
+	_ret := C.QWidget_CreateWindowContainer3(window.cPointer(), parent.cPointer(), (C.int)(flags))
+	return newQWidget_U(unsafe.Pointer(_ret))
 }
 
+// Delete this object from C++ memory.
 func (this *QWidget) Delete() {
 	C.QWidget_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QWidget) GoGC() {
+	runtime.SetFinalizer(this, func(this *QWidget) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -36,8 +38,8 @@ typedef struct QWidget QWidget;
 QTreeView* QTreeView_new();
 QTreeView* QTreeView_new2(QWidget* parent);
 QMetaObject* QTreeView_MetaObject(const QTreeView* self);
-void QTreeView_Tr(const char* s, char** _out, int* _out_Strlen);
-void QTreeView_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QTreeView_Tr(const char* s);
+struct miqt_string* QTreeView_TrUtf8(const char* s);
 void QTreeView_SetModel(QTreeView* self, QAbstractItemModel* model);
 void QTreeView_SetRootIndex(QTreeView* self, QModelIndex* index);
 void QTreeView_SetSelectionModel(QTreeView* self, QItemSelectionModel* selectionModel);
@@ -80,7 +82,7 @@ void QTreeView_SetWordWrap(QTreeView* self, bool on);
 bool QTreeView_WordWrap(const QTreeView* self);
 void QTreeView_SetTreePosition(QTreeView* self, int logicalIndex);
 int QTreeView_TreePosition(const QTreeView* self);
-void QTreeView_KeyboardSearch(QTreeView* self, const char* search, size_t search_Strlen);
+void QTreeView_KeyboardSearch(QTreeView* self, struct miqt_string* search);
 QRect* QTreeView_VisualRect(const QTreeView* self, QModelIndex* index);
 void QTreeView_ScrollTo(QTreeView* self, QModelIndex* index);
 QModelIndex* QTreeView_IndexAt(const QTreeView* self, QPoint* p);
@@ -105,12 +107,12 @@ void QTreeView_ExpandAll(QTreeView* self);
 void QTreeView_ExpandRecursively(QTreeView* self, QModelIndex* index);
 void QTreeView_CollapseAll(QTreeView* self);
 void QTreeView_ExpandToDepth(QTreeView* self, int depth);
-void QTreeView_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QTreeView_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QTreeView_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QTreeView_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QTreeView_Tr2(const char* s, const char* c);
+struct miqt_string* QTreeView_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QTreeView_TrUtf82(const char* s, const char* c);
+struct miqt_string* QTreeView_TrUtf83(const char* s, const char* c, int n);
 void QTreeView_ScrollTo2(QTreeView* self, QModelIndex* index, uintptr_t hint);
-void QTreeView_DataChanged3(QTreeView* self, QModelIndex* topLeft, QModelIndex* bottomRight, int* roles, size_t roles_len);
+void QTreeView_DataChanged3(QTreeView* self, QModelIndex* topLeft, QModelIndex* bottomRight, struct miqt_array* /* of int */ roles);
 void QTreeView_ExpandRecursively2(QTreeView* self, QModelIndex* index, int depth);
 void QTreeView_Delete(QTreeView* self);
 

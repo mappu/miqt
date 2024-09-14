@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -24,8 +26,8 @@ typedef struct QWidget QWidget;
 QStatusBar* QStatusBar_new();
 QStatusBar* QStatusBar_new2(QWidget* parent);
 QMetaObject* QStatusBar_MetaObject(const QStatusBar* self);
-void QStatusBar_Tr(const char* s, char** _out, int* _out_Strlen);
-void QStatusBar_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QStatusBar_Tr(const char* s);
+struct miqt_string* QStatusBar_TrUtf8(const char* s);
 void QStatusBar_AddWidget(QStatusBar* self, QWidget* widget);
 int QStatusBar_InsertWidget(QStatusBar* self, int index, QWidget* widget);
 void QStatusBar_AddPermanentWidget(QStatusBar* self, QWidget* widget);
@@ -33,20 +35,20 @@ int QStatusBar_InsertPermanentWidget(QStatusBar* self, int index, QWidget* widge
 void QStatusBar_RemoveWidget(QStatusBar* self, QWidget* widget);
 void QStatusBar_SetSizeGripEnabled(QStatusBar* self, bool sizeGripEnabled);
 bool QStatusBar_IsSizeGripEnabled(const QStatusBar* self);
-void QStatusBar_CurrentMessage(const QStatusBar* self, char** _out, int* _out_Strlen);
-void QStatusBar_ShowMessage(QStatusBar* self, const char* text, size_t text_Strlen);
+struct miqt_string* QStatusBar_CurrentMessage(const QStatusBar* self);
+void QStatusBar_ShowMessage(QStatusBar* self, struct miqt_string* text);
 void QStatusBar_ClearMessage(QStatusBar* self);
-void QStatusBar_MessageChanged(QStatusBar* self, const char* text, size_t text_Strlen);
+void QStatusBar_MessageChanged(QStatusBar* self, struct miqt_string* text);
 void QStatusBar_connect_MessageChanged(QStatusBar* self, void* slot);
-void QStatusBar_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QStatusBar_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QStatusBar_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QStatusBar_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QStatusBar_Tr2(const char* s, const char* c);
+struct miqt_string* QStatusBar_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QStatusBar_TrUtf82(const char* s, const char* c);
+struct miqt_string* QStatusBar_TrUtf83(const char* s, const char* c, int n);
 void QStatusBar_AddWidget2(QStatusBar* self, QWidget* widget, int stretch);
 int QStatusBar_InsertWidget3(QStatusBar* self, int index, QWidget* widget, int stretch);
 void QStatusBar_AddPermanentWidget2(QStatusBar* self, QWidget* widget, int stretch);
 int QStatusBar_InsertPermanentWidget3(QStatusBar* self, int index, QWidget* widget, int stretch);
-void QStatusBar_ShowMessage2(QStatusBar* self, const char* text, size_t text_Strlen, int timeout);
+void QStatusBar_ShowMessage2(QStatusBar* self, struct miqt_string* text, int timeout);
 void QStatusBar_Delete(QStatusBar* self);
 
 #ifdef __cplusplus

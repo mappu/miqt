@@ -3,12 +3,8 @@
 #include <QRectF>
 #include <QSizeF>
 #include "qgraphicslinearlayout.h"
-
 #include "gen_qgraphicslinearlayout.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QGraphicsLinearLayout* QGraphicsLinearLayout_new() {
 	return new QGraphicsLinearLayout();
@@ -31,8 +27,8 @@ void QGraphicsLinearLayout_SetOrientation(QGraphicsLinearLayout* self, uintptr_t
 }
 
 uintptr_t QGraphicsLinearLayout_Orientation(const QGraphicsLinearLayout* self) {
-	Qt::Orientation ret = self->orientation();
-	return static_cast<uintptr_t>(ret);
+	Qt::Orientation _ret = self->orientation();
+	return static_cast<uintptr_t>(_ret);
 }
 
 void QGraphicsLinearLayout_AddItem(QGraphicsLinearLayout* self, QGraphicsLayoutItem* item) {
@@ -88,8 +84,8 @@ void QGraphicsLinearLayout_SetAlignment(QGraphicsLinearLayout* self, QGraphicsLa
 }
 
 int QGraphicsLinearLayout_Alignment(const QGraphicsLinearLayout* self, QGraphicsLayoutItem* item) {
-	Qt::Alignment ret = self->alignment(item);
-	return static_cast<int>(ret);
+	Qt::Alignment _ret = self->alignment(item);
+	return static_cast<int>(_ret);
 }
 
 void QGraphicsLinearLayout_SetGeometry(QGraphicsLinearLayout* self, QRectF* rect) {
@@ -109,9 +105,9 @@ void QGraphicsLinearLayout_Invalidate(QGraphicsLinearLayout* self) {
 }
 
 QSizeF* QGraphicsLinearLayout_SizeHint(const QGraphicsLinearLayout* self, uintptr_t which) {
-	QSizeF ret = self->sizeHint(static_cast<Qt::SizeHint>(which));
+	QSizeF _ret = self->sizeHint(static_cast<Qt::SizeHint>(which));
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSizeF*>(new QSizeF(ret));
+	return static_cast<QSizeF*>(new QSizeF(_ret));
 }
 
 void QGraphicsLinearLayout_Dump(const QGraphicsLinearLayout* self) {
@@ -127,9 +123,9 @@ void QGraphicsLinearLayout_InsertStretch2(QGraphicsLinearLayout* self, int index
 }
 
 QSizeF* QGraphicsLinearLayout_SizeHint2(const QGraphicsLinearLayout* self, uintptr_t which, QSizeF* constraint) {
-	QSizeF ret = self->sizeHint(static_cast<Qt::SizeHint>(which), *constraint);
+	QSizeF _ret = self->sizeHint(static_cast<Qt::SizeHint>(which), *constraint);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSizeF*>(new QSizeF(ret));
+	return static_cast<QSizeF*>(new QSizeF(_ret));
 }
 
 void QGraphicsLinearLayout_Dump1(const QGraphicsLinearLayout* self, int indent) {

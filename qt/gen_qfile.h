@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -24,46 +26,46 @@ typedef struct QObject QObject;
 #endif
 
 QFile* QFile_new();
-QFile* QFile_new2(const char* name, size_t name_Strlen);
+QFile* QFile_new2(struct miqt_string* name);
 QFile* QFile_new3(QObject* parent);
-QFile* QFile_new4(const char* name, size_t name_Strlen, QObject* parent);
+QFile* QFile_new4(struct miqt_string* name, QObject* parent);
 QMetaObject* QFile_MetaObject(const QFile* self);
-void QFile_Tr(const char* s, char** _out, int* _out_Strlen);
-void QFile_TrUtf8(const char* s, char** _out, int* _out_Strlen);
-void QFile_FileName(const QFile* self, char** _out, int* _out_Strlen);
-void QFile_SetFileName(QFile* self, const char* name, size_t name_Strlen);
-QByteArray* QFile_EncodeName(const char* fileName, size_t fileName_Strlen);
-void QFile_DecodeName(QByteArray* localFileName, char** _out, int* _out_Strlen);
-void QFile_DecodeNameWithLocalFileName(const char* localFileName, char** _out, int* _out_Strlen);
+struct miqt_string* QFile_Tr(const char* s);
+struct miqt_string* QFile_TrUtf8(const char* s);
+struct miqt_string* QFile_FileName(const QFile* self);
+void QFile_SetFileName(QFile* self, struct miqt_string* name);
+QByteArray* QFile_EncodeName(struct miqt_string* fileName);
+struct miqt_string* QFile_DecodeName(QByteArray* localFileName);
+struct miqt_string* QFile_DecodeNameWithLocalFileName(const char* localFileName);
 bool QFile_Exists(const QFile* self);
-bool QFile_ExistsWithFileName(const char* fileName, size_t fileName_Strlen);
-void QFile_ReadLink(const QFile* self, char** _out, int* _out_Strlen);
-void QFile_ReadLinkWithFileName(const char* fileName, size_t fileName_Strlen, char** _out, int* _out_Strlen);
-void QFile_SymLinkTarget(const QFile* self, char** _out, int* _out_Strlen);
-void QFile_SymLinkTargetWithFileName(const char* fileName, size_t fileName_Strlen, char** _out, int* _out_Strlen);
+bool QFile_ExistsWithFileName(struct miqt_string* fileName);
+struct miqt_string* QFile_ReadLink(const QFile* self);
+struct miqt_string* QFile_ReadLinkWithFileName(struct miqt_string* fileName);
+struct miqt_string* QFile_SymLinkTarget(const QFile* self);
+struct miqt_string* QFile_SymLinkTargetWithFileName(struct miqt_string* fileName);
 bool QFile_Remove(QFile* self);
-bool QFile_RemoveWithFileName(const char* fileName, size_t fileName_Strlen);
+bool QFile_RemoveWithFileName(struct miqt_string* fileName);
 bool QFile_MoveToTrash(QFile* self);
-bool QFile_MoveToTrashWithFileName(const char* fileName, size_t fileName_Strlen);
-bool QFile_Rename(QFile* self, const char* newName, size_t newName_Strlen);
-bool QFile_Rename2(const char* oldName, size_t oldName_Strlen, const char* newName, size_t newName_Strlen);
-bool QFile_Link(QFile* self, const char* newName, size_t newName_Strlen);
-bool QFile_Link2(const char* oldname, size_t oldname_Strlen, const char* newName, size_t newName_Strlen);
-bool QFile_Copy(QFile* self, const char* newName, size_t newName_Strlen);
-bool QFile_Copy2(const char* fileName, size_t fileName_Strlen, const char* newName, size_t newName_Strlen);
+bool QFile_MoveToTrashWithFileName(struct miqt_string* fileName);
+bool QFile_Rename(QFile* self, struct miqt_string* newName);
+bool QFile_Rename2(struct miqt_string* oldName, struct miqt_string* newName);
+bool QFile_Link(QFile* self, struct miqt_string* newName);
+bool QFile_Link2(struct miqt_string* oldname, struct miqt_string* newName);
+bool QFile_Copy(QFile* self, struct miqt_string* newName);
+bool QFile_Copy2(struct miqt_string* fileName, struct miqt_string* newName);
 bool QFile_Open(QFile* self, int flags);
 bool QFile_Open3(QFile* self, int fd, int ioFlags);
 long long QFile_Size(const QFile* self);
 bool QFile_Resize(QFile* self, long long sz);
-bool QFile_Resize2(const char* filename, size_t filename_Strlen, long long sz);
+bool QFile_Resize2(struct miqt_string* filename, long long sz);
 int QFile_Permissions(const QFile* self);
-int QFile_PermissionsWithFilename(const char* filename, size_t filename_Strlen);
+int QFile_PermissionsWithFilename(struct miqt_string* filename);
 bool QFile_SetPermissions(QFile* self, int permissionSpec);
-bool QFile_SetPermissions2(const char* filename, size_t filename_Strlen, int permissionSpec);
-void QFile_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QFile_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QFile_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QFile_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+bool QFile_SetPermissions2(struct miqt_string* filename, int permissionSpec);
+struct miqt_string* QFile_Tr2(const char* s, const char* c);
+struct miqt_string* QFile_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QFile_TrUtf82(const char* s, const char* c);
+struct miqt_string* QFile_TrUtf83(const char* s, const char* c, int n);
 bool QFile_Open33(QFile* self, int fd, int ioFlags, int handleFlags);
 void QFile_Delete(QFile* self);
 

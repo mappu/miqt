@@ -10,12 +10,8 @@
 #include <QWidget>
 #include <QWindow>
 #include "qaccessiblewidget.h"
-
 #include "gen_qaccessiblewidget.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QAccessibleWidget* QAccessibleWidget_new(QWidget* o) {
 	return new QAccessibleWidget(o);
@@ -25,8 +21,8 @@ QAccessibleWidget* QAccessibleWidget_new2(QWidget* o, uintptr_t r) {
 	return new QAccessibleWidget(o, static_cast<QAccessible::Role>(r));
 }
 
-QAccessibleWidget* QAccessibleWidget_new3(QWidget* o, uintptr_t r, const char* name, size_t name_Strlen) {
-	QString name_QString = QString::fromUtf8(name, name_Strlen);
+QAccessibleWidget* QAccessibleWidget_new3(QWidget* o, uintptr_t r, struct miqt_string* name) {
+	QString name_QString = QString::fromUtf8(&name->data, name->len);
 	return new QAccessibleWidget(o, static_cast<QAccessible::Role>(r), name_QString);
 }
 
@@ -51,9 +47,9 @@ QAccessibleInterface* QAccessibleWidget_FocusChild(const QAccessibleWidget* self
 }
 
 QRect* QAccessibleWidget_Rect(const QAccessibleWidget* self) {
-	QRect ret = self->rect();
+	QRect _ret = self->rect();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(ret));
+	return static_cast<QRect*>(new QRect(_ret));
 }
 
 QAccessibleInterface* QAccessibleWidget_Parent(const QAccessibleWidget* self) {
@@ -64,75 +60,71 @@ QAccessibleInterface* QAccessibleWidget_Child(const QAccessibleWidget* self, int
 	return self->child(static_cast<int>(index));
 }
 
-void QAccessibleWidget_Text(const QAccessibleWidget* self, uintptr_t t, char** _out, int* _out_Strlen) {
-	QString ret = self->text(static_cast<QAccessible::Text>(t));
+struct miqt_string* QAccessibleWidget_Text(const QAccessibleWidget* self, uintptr_t t) {
+	QString _ret = self->text(static_cast<QAccessible::Text>(t));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 uintptr_t QAccessibleWidget_Role(const QAccessibleWidget* self) {
-	QAccessible::Role ret = self->role();
-	return static_cast<uintptr_t>(ret);
+	QAccessible::Role _ret = self->role();
+	return static_cast<uintptr_t>(_ret);
 }
 
 QAccessible__State* QAccessibleWidget_State(const QAccessibleWidget* self) {
-	QAccessible::State ret = self->state();
+	QAccessible::State _ret = self->state();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QAccessible::State*>(new QAccessible::State(ret));
+	return static_cast<QAccessible::State*>(new QAccessible::State(_ret));
 }
 
 QColor* QAccessibleWidget_ForegroundColor(const QAccessibleWidget* self) {
-	QColor ret = self->foregroundColor();
+	QColor _ret = self->foregroundColor();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QColor*>(new QColor(ret));
+	return static_cast<QColor*>(new QColor(_ret));
 }
 
 QColor* QAccessibleWidget_BackgroundColor(const QAccessibleWidget* self) {
-	QColor ret = self->backgroundColor();
+	QColor _ret = self->backgroundColor();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QColor*>(new QColor(ret));
+	return static_cast<QColor*>(new QColor(_ret));
 }
 
-void QAccessibleWidget_ActionNames(const QAccessibleWidget* self, char*** _out, int** _out_Lengths, size_t* _out_len) {
-	QStringList ret = self->actionNames();
+struct miqt_array* QAccessibleWidget_ActionNames(const QAccessibleWidget* self) {
+	QStringList _ret = self->actionNames();
 	// Convert QStringList from C++ memory to manually-managed C memory
-	char** __out = static_cast<char**>(malloc(sizeof(char*) * ret.length()));
-	int* __out_Lengths = static_cast<int*>(malloc(sizeof(int) * ret.length()));
-	for (size_t i = 0, e = ret.length(); i < e; ++i) {
+	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-		QByteArray b = ret[i].toUtf8();
-		__out[i] = static_cast<char*>(malloc(b.length()));
-		memcpy(__out[i], b.data(), b.length());
-		__out_Lengths[i] = b.length();
+		QByteArray _lv_b = _lv_ret.toUtf8();
+		_arr[i] = miqt_strdup(_lv_b.data(), _lv_b.length());
 	}
-	*_out = __out;
-	*_out_Lengths = __out_Lengths;
-	*_out_len = ret.length();
+	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
+	_out->len = _ret.length();
+	_out->data = static_cast<void*>(_arr);
+	return _out;
 }
 
-void QAccessibleWidget_DoAction(QAccessibleWidget* self, const char* actionName, size_t actionName_Strlen) {
-	QString actionName_QString = QString::fromUtf8(actionName, actionName_Strlen);
+void QAccessibleWidget_DoAction(QAccessibleWidget* self, struct miqt_string* actionName) {
+	QString actionName_QString = QString::fromUtf8(&actionName->data, actionName->len);
 	self->doAction(actionName_QString);
 }
 
-void QAccessibleWidget_KeyBindingsForAction(const QAccessibleWidget* self, const char* actionName, size_t actionName_Strlen, char*** _out, int** _out_Lengths, size_t* _out_len) {
-	QString actionName_QString = QString::fromUtf8(actionName, actionName_Strlen);
-	QStringList ret = self->keyBindingsForAction(actionName_QString);
+struct miqt_array* QAccessibleWidget_KeyBindingsForAction(const QAccessibleWidget* self, struct miqt_string* actionName) {
+	QString actionName_QString = QString::fromUtf8(&actionName->data, actionName->len);
+	QStringList _ret = self->keyBindingsForAction(actionName_QString);
 	// Convert QStringList from C++ memory to manually-managed C memory
-	char** __out = static_cast<char**>(malloc(sizeof(char*) * ret.length()));
-	int* __out_Lengths = static_cast<int*>(malloc(sizeof(int) * ret.length()));
-	for (size_t i = 0, e = ret.length(); i < e; ++i) {
+	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-		QByteArray b = ret[i].toUtf8();
-		__out[i] = static_cast<char*>(malloc(b.length()));
-		memcpy(__out[i], b.data(), b.length());
-		__out_Lengths[i] = b.length();
+		QByteArray _lv_b = _lv_ret.toUtf8();
+		_arr[i] = miqt_strdup(_lv_b.data(), _lv_b.length());
 	}
-	*_out = __out;
-	*_out_Lengths = __out_Lengths;
-	*_out_len = ret.length();
+	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
+	_out->len = _ret.length();
+	_out->data = static_cast<void*>(_arr);
+	return _out;
 }
 

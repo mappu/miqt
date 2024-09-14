@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -20,20 +22,20 @@ typedef struct QPaintDevice QPaintDevice;
 #endif
 
 QFont* QFont_new();
-QFont* QFont_new2(const char* family, size_t family_Strlen);
+QFont* QFont_new2(struct miqt_string* family);
 QFont* QFont_new3(QFont* font, QPaintDevice* pd);
 QFont* QFont_new4(QFont* font, QPaintDevice* pd);
 QFont* QFont_new5(QFont* font);
-QFont* QFont_new6(const char* family, size_t family_Strlen, int pointSize);
-QFont* QFont_new7(const char* family, size_t family_Strlen, int pointSize, int weight);
-QFont* QFont_new8(const char* family, size_t family_Strlen, int pointSize, int weight, bool italic);
+QFont* QFont_new6(struct miqt_string* family, int pointSize);
+QFont* QFont_new7(struct miqt_string* family, int pointSize, int weight);
+QFont* QFont_new8(struct miqt_string* family, int pointSize, int weight, bool italic);
 void QFont_Swap(QFont* self, QFont* other);
-void QFont_Family(const QFont* self, char** _out, int* _out_Strlen);
-void QFont_SetFamily(QFont* self, const char* family, size_t family_Strlen);
-void QFont_Families(const QFont* self, char*** _out, int** _out_Lengths, size_t* _out_len);
-void QFont_SetFamilies(QFont* self, char** families, uint64_t* families_Lengths, size_t families_len);
-void QFont_StyleName(const QFont* self, char** _out, int* _out_Strlen);
-void QFont_SetStyleName(QFont* self, const char* styleName, size_t styleName_Strlen);
+struct miqt_string* QFont_Family(const QFont* self);
+void QFont_SetFamily(QFont* self, struct miqt_string* family);
+struct miqt_array* QFont_Families(const QFont* self);
+void QFont_SetFamilies(QFont* self, struct miqt_array* /* of QString */ families);
+struct miqt_string* QFont_StyleName(const QFont* self);
+void QFont_SetStyleName(QFont* self, struct miqt_string* styleName);
 int QFont_PointSize(const QFont* self);
 void QFont_SetPointSize(QFont* self, int pointSize);
 double QFont_PointSizeF(const QFont* self);
@@ -81,23 +83,23 @@ bool QFont_OperatorEqual(const QFont* self, QFont* param1);
 bool QFont_OperatorNotEqual(const QFont* self, QFont* param1);
 bool QFont_OperatorLesser(const QFont* self, QFont* param1);
 bool QFont_IsCopyOf(const QFont* self, QFont* param1);
-void QFont_SetRawName(QFont* self, const char* rawName, size_t rawName_Strlen);
-void QFont_RawName(const QFont* self, char** _out, int* _out_Strlen);
-void QFont_Key(const QFont* self, char** _out, int* _out_Strlen);
-void QFont_ToString(const QFont* self, char** _out, int* _out_Strlen);
-bool QFont_FromString(QFont* self, const char* param1, size_t param1_Strlen);
-void QFont_Substitute(const char* param1, size_t param1_Strlen, char** _out, int* _out_Strlen);
-void QFont_Substitutes(const char* param1, size_t param1_Strlen, char*** _out, int** _out_Lengths, size_t* _out_len);
-void QFont_Substitutions(char*** _out, int** _out_Lengths, size_t* _out_len);
-void QFont_InsertSubstitution(const char* param1, size_t param1_Strlen, const char* param2, size_t param2_Strlen);
-void QFont_InsertSubstitutions(const char* param1, size_t param1_Strlen, char** param2, uint64_t* param2_Lengths, size_t param2_len);
-void QFont_RemoveSubstitutions(const char* param1, size_t param1_Strlen);
+void QFont_SetRawName(QFont* self, struct miqt_string* rawName);
+struct miqt_string* QFont_RawName(const QFont* self);
+struct miqt_string* QFont_Key(const QFont* self);
+struct miqt_string* QFont_ToString(const QFont* self);
+bool QFont_FromString(QFont* self, struct miqt_string* param1);
+struct miqt_string* QFont_Substitute(struct miqt_string* param1);
+struct miqt_array* QFont_Substitutes(struct miqt_string* param1);
+struct miqt_array* QFont_Substitutions();
+void QFont_InsertSubstitution(struct miqt_string* param1, struct miqt_string* param2);
+void QFont_InsertSubstitutions(struct miqt_string* param1, struct miqt_array* /* of QString */ param2);
+void QFont_RemoveSubstitutions(struct miqt_string* param1);
 void QFont_Initialize();
 void QFont_Cleanup();
 void QFont_CacheStatistics();
-void QFont_DefaultFamily(const QFont* self, char** _out, int* _out_Strlen);
-void QFont_LastResortFamily(const QFont* self, char** _out, int* _out_Strlen);
-void QFont_LastResortFont(const QFont* self, char** _out, int* _out_Strlen);
+struct miqt_string* QFont_DefaultFamily(const QFont* self);
+struct miqt_string* QFont_LastResortFamily(const QFont* self);
+struct miqt_string* QFont_LastResortFont(const QFont* self);
 QFont* QFont_Resolve(const QFont* self, QFont* param1);
 unsigned int QFont_Resolve2(const QFont* self);
 void QFont_ResolveWithMask(QFont* self, unsigned int mask);

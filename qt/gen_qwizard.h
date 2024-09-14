@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -35,33 +37,33 @@ QWizard* QWizard_new();
 QWizard* QWizard_new2(QWidget* parent);
 QWizard* QWizard_new3(QWidget* parent, int flags);
 QMetaObject* QWizard_MetaObject(const QWizard* self);
-void QWizard_Tr(const char* s, char** _out, int* _out_Strlen);
-void QWizard_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QWizard_Tr(const char* s);
+struct miqt_string* QWizard_TrUtf8(const char* s);
 int QWizard_AddPage(QWizard* self, QWizardPage* page);
 void QWizard_SetPage(QWizard* self, int id, QWizardPage* page);
 void QWizard_RemovePage(QWizard* self, int id);
 QWizardPage* QWizard_Page(const QWizard* self, int id);
 bool QWizard_HasVisitedPage(const QWizard* self, int id);
-void QWizard_VisitedPages(const QWizard* self, int** _out, size_t* _out_len);
-void QWizard_VisitedIds(const QWizard* self, int** _out, size_t* _out_len);
-void QWizard_PageIds(const QWizard* self, int** _out, size_t* _out_len);
+struct miqt_array* QWizard_VisitedPages(const QWizard* self);
+struct miqt_array* QWizard_VisitedIds(const QWizard* self);
+struct miqt_array* QWizard_PageIds(const QWizard* self);
 void QWizard_SetStartId(QWizard* self, int id);
 int QWizard_StartId(const QWizard* self);
 QWizardPage* QWizard_CurrentPage(const QWizard* self);
 int QWizard_CurrentId(const QWizard* self);
 bool QWizard_ValidateCurrentPage(QWizard* self);
 int QWizard_NextId(const QWizard* self);
-void QWizard_SetField(QWizard* self, const char* name, size_t name_Strlen, QVariant* value);
-QVariant* QWizard_Field(const QWizard* self, const char* name, size_t name_Strlen);
+void QWizard_SetField(QWizard* self, struct miqt_string* name, QVariant* value);
+QVariant* QWizard_Field(const QWizard* self, struct miqt_string* name);
 void QWizard_SetWizardStyle(QWizard* self, uintptr_t style);
 uintptr_t QWizard_WizardStyle(const QWizard* self);
 void QWizard_SetOption(QWizard* self, uintptr_t option);
 bool QWizard_TestOption(const QWizard* self, uintptr_t option);
 void QWizard_SetOptions(QWizard* self, int options);
 int QWizard_Options(const QWizard* self);
-void QWizard_SetButtonText(QWizard* self, int which, const char* text, size_t text_Strlen);
-void QWizard_ButtonText(const QWizard* self, int which, char** _out, int* _out_Strlen);
-void QWizard_SetButtonLayout(QWizard* self, int* layout, size_t layout_len);
+void QWizard_SetButtonText(QWizard* self, int which, struct miqt_string* text);
+struct miqt_string* QWizard_ButtonText(const QWizard* self, int which);
+void QWizard_SetButtonLayout(QWizard* self, struct miqt_array* /* of int */ layout);
 void QWizard_SetButton(QWizard* self, int which, QAbstractButton* button);
 QAbstractButton* QWizard_Button(const QWizard* self, int which);
 void QWizard_SetTitleFormat(QWizard* self, uintptr_t format);
@@ -88,30 +90,30 @@ void QWizard_connect_PageRemoved(QWizard* self, void* slot);
 void QWizard_Back(QWizard* self);
 void QWizard_Next(QWizard* self);
 void QWizard_Restart(QWizard* self);
-void QWizard_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QWizard_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QWizard_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QWizard_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QWizard_Tr2(const char* s, const char* c);
+struct miqt_string* QWizard_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QWizard_TrUtf82(const char* s, const char* c);
+struct miqt_string* QWizard_TrUtf83(const char* s, const char* c, int n);
 void QWizard_SetOption2(QWizard* self, uintptr_t option, bool on);
 void QWizard_Delete(QWizard* self);
 
 QWizardPage* QWizardPage_new();
 QWizardPage* QWizardPage_new2(QWidget* parent);
 QMetaObject* QWizardPage_MetaObject(const QWizardPage* self);
-void QWizardPage_Tr(const char* s, char** _out, int* _out_Strlen);
-void QWizardPage_TrUtf8(const char* s, char** _out, int* _out_Strlen);
-void QWizardPage_SetTitle(QWizardPage* self, const char* title, size_t title_Strlen);
-void QWizardPage_Title(const QWizardPage* self, char** _out, int* _out_Strlen);
-void QWizardPage_SetSubTitle(QWizardPage* self, const char* subTitle, size_t subTitle_Strlen);
-void QWizardPage_SubTitle(const QWizardPage* self, char** _out, int* _out_Strlen);
+struct miqt_string* QWizardPage_Tr(const char* s);
+struct miqt_string* QWizardPage_TrUtf8(const char* s);
+void QWizardPage_SetTitle(QWizardPage* self, struct miqt_string* title);
+struct miqt_string* QWizardPage_Title(const QWizardPage* self);
+void QWizardPage_SetSubTitle(QWizardPage* self, struct miqt_string* subTitle);
+struct miqt_string* QWizardPage_SubTitle(const QWizardPage* self);
 void QWizardPage_SetPixmap(QWizardPage* self, uintptr_t which, QPixmap* pixmap);
 QPixmap* QWizardPage_Pixmap(const QWizardPage* self, uintptr_t which);
 void QWizardPage_SetFinalPage(QWizardPage* self, bool finalPage);
 bool QWizardPage_IsFinalPage(const QWizardPage* self);
 void QWizardPage_SetCommitPage(QWizardPage* self, bool commitPage);
 bool QWizardPage_IsCommitPage(const QWizardPage* self);
-void QWizardPage_SetButtonText(QWizardPage* self, int which, const char* text, size_t text_Strlen);
-void QWizardPage_ButtonText(const QWizardPage* self, int which, char** _out, int* _out_Strlen);
+void QWizardPage_SetButtonText(QWizardPage* self, int which, struct miqt_string* text);
+struct miqt_string* QWizardPage_ButtonText(const QWizardPage* self, int which);
 void QWizardPage_InitializePage(QWizardPage* self);
 void QWizardPage_CleanupPage(QWizardPage* self);
 bool QWizardPage_ValidatePage(QWizardPage* self);
@@ -119,10 +121,10 @@ bool QWizardPage_IsComplete(const QWizardPage* self);
 int QWizardPage_NextId(const QWizardPage* self);
 void QWizardPage_CompleteChanged(QWizardPage* self);
 void QWizardPage_connect_CompleteChanged(QWizardPage* self, void* slot);
-void QWizardPage_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QWizardPage_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QWizardPage_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QWizardPage_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QWizardPage_Tr2(const char* s, const char* c);
+struct miqt_string* QWizardPage_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QWizardPage_TrUtf82(const char* s, const char* c);
+struct miqt_string* QWizardPage_TrUtf83(const char* s, const char* c, int n);
 void QWizardPage_Delete(QWizardPage* self);
 
 #ifdef __cplusplus

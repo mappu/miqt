@@ -4,12 +4,8 @@
 #include <QRawFont>
 #include <QRectF>
 #include "qglyphrun.h"
-
 #include "gen_qglyphrun.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QGlyphRun* QGlyphRun_new() {
 	return new QGlyphRun();
@@ -28,9 +24,9 @@ void QGlyphRun_Swap(QGlyphRun* self, QGlyphRun* other) {
 }
 
 QRawFont* QGlyphRun_RawFont(const QGlyphRun* self) {
-	QRawFont ret = self->rawFont();
+	QRawFont _ret = self->rawFont();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRawFont*>(new QRawFont(ret));
+	return static_cast<QRawFont*>(new QRawFont(_ret));
 }
 
 void QGlyphRun_SetRawFont(QGlyphRun* self, QRawFont* rawFont) {
@@ -41,42 +37,48 @@ void QGlyphRun_SetRawData(QGlyphRun* self, const unsigned int* glyphIndexArray, 
 	self->setRawData(static_cast<const quint32*>(glyphIndexArray), glyphPositionArray, static_cast<int>(size));
 }
 
-void QGlyphRun_GlyphIndexes(const QGlyphRun* self, unsigned int** _out, size_t* _out_len) {
-	QVector<unsigned int> ret = self->glyphIndexes();
+struct miqt_array* QGlyphRun_GlyphIndexes(const QGlyphRun* self) {
+	QVector<unsigned int> _ret = self->glyphIndexes();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	unsigned int* __out = static_cast<unsigned int*>(malloc(sizeof(unsigned int) * ret.length()));
-	for (size_t i = 0, e = ret.length(); i < e; ++i) {
-		__out[i] = ret[i];
+	unsigned int* _arr = static_cast<unsigned int*>(malloc(sizeof(unsigned int) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		_arr[i] = _ret[i];
 	}
-	*_out = __out;
-	*_out_len = ret.length();
+	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
+	_out->len = _ret.length();
+	_out->data = static_cast<void*>(_arr);
+	return _out;
 }
 
-void QGlyphRun_SetGlyphIndexes(QGlyphRun* self, unsigned int* glyphIndexes, size_t glyphIndexes_len) {
+void QGlyphRun_SetGlyphIndexes(QGlyphRun* self, struct miqt_array* /* of unsigned int */ glyphIndexes) {
 	QVector<unsigned int> glyphIndexes_QList;
-	glyphIndexes_QList.reserve(glyphIndexes_len);
-	for(size_t i = 0; i < glyphIndexes_len; ++i) {
-		glyphIndexes_QList.push_back(glyphIndexes[i]);
+	glyphIndexes_QList.reserve(glyphIndexes->len);
+	unsigned int* glyphIndexes_arr = static_cast<unsigned int*>(glyphIndexes->data);
+	for(size_t i = 0; i < glyphIndexes->len; ++i) {
+		glyphIndexes_QList.push_back(glyphIndexes_arr[i]);
 	}
 	self->setGlyphIndexes(glyphIndexes_QList);
 }
 
-void QGlyphRun_Positions(const QGlyphRun* self, QPointF*** _out, size_t* _out_len) {
-	QVector<QPointF> ret = self->positions();
+struct miqt_array* QGlyphRun_Positions(const QGlyphRun* self) {
+	QVector<QPointF> _ret = self->positions();
 	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
-	QPointF** __out = static_cast<QPointF**>(malloc(sizeof(QPointF**) * ret.length()));
-	for (size_t i = 0, e = ret.length(); i < e; ++i) {
-		__out[i] = new QPointF(ret[i]);
+	QPointF** _arr = static_cast<QPointF**>(malloc(sizeof(QPointF**) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		_arr[i] = new QPointF(_ret[i]);
 	}
-	*_out = __out;
-	*_out_len = ret.length();
+	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
+	_out->len = _ret.length();
+	_out->data = static_cast<void*>(_arr);
+	return _out;
 }
 
-void QGlyphRun_SetPositions(QGlyphRun* self, QPointF** positions, size_t positions_len) {
+void QGlyphRun_SetPositions(QGlyphRun* self, struct miqt_array* /* of QPointF */ positions) {
 	QVector<QPointF> positions_QList;
-	positions_QList.reserve(positions_len);
-	for(size_t i = 0; i < positions_len; ++i) {
-		positions_QList.push_back(*(positions[i]));
+	positions_QList.reserve(positions->len);
+	QPointF** positions_arr = static_cast<QPointF**>(positions->data);
+	for(size_t i = 0; i < positions->len; ++i) {
+		positions_QList.push_back(*(positions_arr[i]));
 	}
 	self->setPositions(positions_QList);
 }
@@ -134,8 +136,8 @@ void QGlyphRun_SetFlags(QGlyphRun* self, int flags) {
 }
 
 int QGlyphRun_Flags(const QGlyphRun* self) {
-	QGlyphRun::GlyphRunFlags ret = self->flags();
-	return static_cast<int>(ret);
+	QGlyphRun::GlyphRunFlags _ret = self->flags();
+	return static_cast<int>(_ret);
 }
 
 void QGlyphRun_SetBoundingRect(QGlyphRun* self, QRectF* boundingRect) {
@@ -143,9 +145,9 @@ void QGlyphRun_SetBoundingRect(QGlyphRun* self, QRectF* boundingRect) {
 }
 
 QRectF* QGlyphRun_BoundingRect(const QGlyphRun* self) {
-	QRectF ret = self->boundingRect();
+	QRectF _ret = self->boundingRect();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(ret));
+	return static_cast<QRectF*>(new QRectF(_ret));
 }
 
 bool QGlyphRun_IsEmpty(const QGlyphRun* self) {

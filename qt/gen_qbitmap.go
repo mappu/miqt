@@ -62,9 +62,9 @@ func NewQBitmap4(param1 *QSize) *QBitmap {
 
 // NewQBitmap5 constructs a new QBitmap object.
 func NewQBitmap5(fileName string) *QBitmap {
-	fileName_Cstring := C.CString(fileName)
-	defer C.free(unsafe.Pointer(fileName_Cstring))
-	ret := C.QBitmap_new5(fileName_Cstring, C.size_t(len(fileName)))
+	fileName_ms := miqt_strdupg(fileName)
+	defer C.free(fileName_ms)
+	ret := C.QBitmap_new5((*C.struct_miqt_string)(fileName_ms))
 	return newQBitmap(ret)
 }
 
@@ -76,11 +76,11 @@ func NewQBitmap6(other *QBitmap) *QBitmap {
 
 // NewQBitmap7 constructs a new QBitmap object.
 func NewQBitmap7(fileName string, format string) *QBitmap {
-	fileName_Cstring := C.CString(fileName)
-	defer C.free(unsafe.Pointer(fileName_Cstring))
+	fileName_ms := miqt_strdupg(fileName)
+	defer C.free(fileName_ms)
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
-	ret := C.QBitmap_new7(fileName_Cstring, C.size_t(len(fileName)), format_Cstring)
+	ret := C.QBitmap_new7((*C.struct_miqt_string)(fileName_ms), format_Cstring)
 	return newQBitmap(ret)
 }
 
@@ -101,71 +101,57 @@ func (this *QBitmap) Clear() {
 }
 
 func QBitmap_FromImage(image *QImage) *QBitmap {
-	ret := C.QBitmap_FromImage(image.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQBitmap(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QBitmap) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QBitmap_FromImage(image.cPointer())
+	_goptr := newQBitmap(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func QBitmap_FromData(size *QSize, bits *byte) *QBitmap {
-	ret := C.QBitmap_FromData(size.cPointer(), (*C.uchar)(unsafe.Pointer(bits)))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQBitmap(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QBitmap) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QBitmap_FromData(size.cPointer(), (*C.uchar)(unsafe.Pointer(bits)))
+	_goptr := newQBitmap(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QBitmap) Transformed(param1 *QMatrix) *QBitmap {
-	ret := C.QBitmap_Transformed(this.h, param1.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQBitmap(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QBitmap) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QBitmap_Transformed(this.h, param1.cPointer())
+	_goptr := newQBitmap(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QBitmap) TransformedWithMatrix(matrix *QTransform) *QBitmap {
-	ret := C.QBitmap_TransformedWithMatrix(this.h, matrix.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQBitmap(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QBitmap) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QBitmap_TransformedWithMatrix(this.h, matrix.cPointer())
+	_goptr := newQBitmap(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func QBitmap_FromImage2(image *QImage, flags int) *QBitmap {
-	ret := C.QBitmap_FromImage2(image.cPointer(), (C.int)(flags))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQBitmap(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QBitmap) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QBitmap_FromImage2(image.cPointer(), (C.int)(flags))
+	_goptr := newQBitmap(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func QBitmap_FromData3(size *QSize, bits *byte, monoFormat QImage__Format) *QBitmap {
-	ret := C.QBitmap_FromData3(size.cPointer(), (*C.uchar)(unsafe.Pointer(bits)), (C.uintptr_t)(monoFormat))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQBitmap(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QBitmap) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QBitmap_FromData3(size.cPointer(), (*C.uchar)(unsafe.Pointer(bits)), (C.uintptr_t)(monoFormat))
+	_goptr := newQBitmap(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
+// Delete this object from C++ memory.
 func (this *QBitmap) Delete() {
 	C.QBitmap_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QBitmap) GoGC() {
+	runtime.SetFinalizer(this, func(this *QBitmap) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

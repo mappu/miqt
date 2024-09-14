@@ -10,12 +10,8 @@
 #include <cstring>
 #include <QWidget>
 #include "qdatawidgetmapper.h"
-
 #include "gen_qdatawidgetmapper.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QDataWidgetMapper* QDataWidgetMapper_new() {
 	return new QDataWidgetMapper();
@@ -29,22 +25,18 @@ QMetaObject* QDataWidgetMapper_MetaObject(const QDataWidgetMapper* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void QDataWidgetMapper_Tr(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QDataWidgetMapper::tr(s);
+struct miqt_string* QDataWidgetMapper_Tr(const char* s) {
+	QString _ret = QDataWidgetMapper::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QDataWidgetMapper_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QDataWidgetMapper::trUtf8(s);
+struct miqt_string* QDataWidgetMapper_TrUtf8(const char* s) {
+	QString _ret = QDataWidgetMapper::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QDataWidgetMapper_SetModel(QDataWidgetMapper* self, QAbstractItemModel* model) {
@@ -68,9 +60,9 @@ void QDataWidgetMapper_SetRootIndex(QDataWidgetMapper* self, QModelIndex* index)
 }
 
 QModelIndex* QDataWidgetMapper_RootIndex(const QDataWidgetMapper* self) {
-	QModelIndex ret = self->rootIndex();
+	QModelIndex _ret = self->rootIndex();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QModelIndex*>(new QModelIndex(ret));
+	return static_cast<QModelIndex*>(new QModelIndex(_ret));
 }
 
 void QDataWidgetMapper_SetOrientation(QDataWidgetMapper* self, uintptr_t aOrientation) {
@@ -78,8 +70,8 @@ void QDataWidgetMapper_SetOrientation(QDataWidgetMapper* self, uintptr_t aOrient
 }
 
 uintptr_t QDataWidgetMapper_Orientation(const QDataWidgetMapper* self) {
-	Qt::Orientation ret = self->orientation();
-	return static_cast<uintptr_t>(ret);
+	Qt::Orientation _ret = self->orientation();
+	return static_cast<uintptr_t>(_ret);
 }
 
 void QDataWidgetMapper_SetSubmitPolicy(QDataWidgetMapper* self, uintptr_t policy) {
@@ -87,8 +79,8 @@ void QDataWidgetMapper_SetSubmitPolicy(QDataWidgetMapper* self, uintptr_t policy
 }
 
 uintptr_t QDataWidgetMapper_SubmitPolicy(const QDataWidgetMapper* self) {
-	QDataWidgetMapper::SubmitPolicy ret = self->submitPolicy();
-	return static_cast<uintptr_t>(ret);
+	QDataWidgetMapper::SubmitPolicy _ret = self->submitPolicy();
+	return static_cast<uintptr_t>(_ret);
 }
 
 void QDataWidgetMapper_AddMapping(QDataWidgetMapper* self, QWidget* widget, int section) {
@@ -108,9 +100,9 @@ int QDataWidgetMapper_MappedSection(const QDataWidgetMapper* self, QWidget* widg
 }
 
 QByteArray* QDataWidgetMapper_MappedPropertyName(const QDataWidgetMapper* self, QWidget* widget) {
-	QByteArray ret = self->mappedPropertyName(widget);
+	QByteArray _ret = self->mappedPropertyName(widget);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(ret));
+	return static_cast<QByteArray*>(new QByteArray(_ret));
 }
 
 QWidget* QDataWidgetMapper_MappedWidgetAt(const QDataWidgetMapper* self, int section) {
@@ -163,44 +155,37 @@ void QDataWidgetMapper_CurrentIndexChanged(QDataWidgetMapper* self, int index) {
 
 void QDataWidgetMapper_connect_CurrentIndexChanged(QDataWidgetMapper* self, void* slot) {
 	QDataWidgetMapper::connect(self, static_cast<void (QDataWidgetMapper::*)(int)>(&QDataWidgetMapper::currentIndexChanged), self, [=](int index) {
-		miqt_exec_callback(slot, 0, nullptr);
+		int sigval1 = index;
+		miqt_exec_callback_QDataWidgetMapper_CurrentIndexChanged(slot, sigval1);
 	});
 }
 
-void QDataWidgetMapper_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QDataWidgetMapper::tr(s, c);
+struct miqt_string* QDataWidgetMapper_Tr2(const char* s, const char* c) {
+	QString _ret = QDataWidgetMapper::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QDataWidgetMapper_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QDataWidgetMapper::tr(s, c, static_cast<int>(n));
+struct miqt_string* QDataWidgetMapper_Tr3(const char* s, const char* c, int n) {
+	QString _ret = QDataWidgetMapper::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QDataWidgetMapper_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QDataWidgetMapper::trUtf8(s, c);
+struct miqt_string* QDataWidgetMapper_TrUtf82(const char* s, const char* c) {
+	QString _ret = QDataWidgetMapper::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QDataWidgetMapper_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QDataWidgetMapper::trUtf8(s, c, static_cast<int>(n));
+struct miqt_string* QDataWidgetMapper_TrUtf83(const char* s, const char* c, int n) {
+	QString _ret = QDataWidgetMapper::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QDataWidgetMapper_Delete(QDataWidgetMapper* self) {

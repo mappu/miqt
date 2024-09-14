@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -45,8 +47,8 @@ QWindow* QWindow_new();
 QWindow* QWindow_new2(QWindow* parent);
 QWindow* QWindow_new3(QScreen* screen);
 QMetaObject* QWindow_MetaObject(const QWindow* self);
-void QWindow_Tr(const char* s, char** _out, int* _out_Strlen);
-void QWindow_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QWindow_Tr(const char* s);
+struct miqt_string* QWindow_TrUtf8(const char* s);
 void QWindow_SetSurfaceType(QWindow* self, uintptr_t surfaceType);
 uintptr_t QWindow_SurfaceType(const QWindow* self);
 bool QWindow_IsVisible(const QWindow* self);
@@ -68,7 +70,7 @@ void QWindow_SetFlags(QWindow* self, int flags);
 int QWindow_Flags(const QWindow* self);
 void QWindow_SetFlag(QWindow* self, uintptr_t param1);
 uintptr_t QWindow_Type(const QWindow* self);
-void QWindow_Title(const QWindow* self, char** _out, int* _out_Strlen);
+struct miqt_string* QWindow_Title(const QWindow* self);
 void QWindow_SetOpacity(QWindow* self, double level);
 double QWindow_Opacity(const QWindow* self);
 void QWindow_SetMask(QWindow* self, QRegion* region);
@@ -112,8 +114,8 @@ void QWindow_SetPosition(QWindow* self, QPoint* pt);
 void QWindow_SetPosition2(QWindow* self, int posx, int posy);
 void QWindow_Resize(QWindow* self, QSize* newSize);
 void QWindow_Resize2(QWindow* self, int w, int h);
-void QWindow_SetFilePath(QWindow* self, const char* filePath, size_t filePath_Strlen);
-void QWindow_FilePath(const QWindow* self, char** _out, int* _out_Strlen);
+void QWindow_SetFilePath(QWindow* self, struct miqt_string* filePath);
+struct miqt_string* QWindow_FilePath(const QWindow* self);
 void QWindow_SetIcon(QWindow* self, QIcon* icon);
 QIcon* QWindow_Icon(const QWindow* self);
 void QWindow_Destroy(QWindow* self);
@@ -142,7 +144,7 @@ void QWindow_Raise(QWindow* self);
 void QWindow_Lower(QWindow* self);
 bool QWindow_StartSystemResize(QWindow* self, int edges);
 bool QWindow_StartSystemMove(QWindow* self);
-void QWindow_SetTitle(QWindow* self, const char* title, size_t title_Strlen);
+void QWindow_SetTitle(QWindow* self, struct miqt_string* title);
 void QWindow_SetX(QWindow* self, int arg);
 void QWindow_SetY(QWindow* self, int arg);
 void QWindow_SetWidth(QWindow* self, int arg);
@@ -161,7 +163,7 @@ void QWindow_ModalityChanged(QWindow* self, uintptr_t modality);
 void QWindow_connect_ModalityChanged(QWindow* self, void* slot);
 void QWindow_WindowStateChanged(QWindow* self, uintptr_t windowState);
 void QWindow_connect_WindowStateChanged(QWindow* self, void* slot);
-void QWindow_WindowTitleChanged(QWindow* self, const char* title, size_t title_Strlen);
+void QWindow_WindowTitleChanged(QWindow* self, struct miqt_string* title);
 void QWindow_connect_WindowTitleChanged(QWindow* self, void* slot);
 void QWindow_XChanged(QWindow* self, int arg);
 void QWindow_connect_XChanged(QWindow* self, void* slot);
@@ -193,10 +195,10 @@ void QWindow_OpacityChanged(QWindow* self, double opacity);
 void QWindow_connect_OpacityChanged(QWindow* self, void* slot);
 void QWindow_TransientParentChanged(QWindow* self, QWindow* transientParent);
 void QWindow_connect_TransientParentChanged(QWindow* self, void* slot);
-void QWindow_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QWindow_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QWindow_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QWindow_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QWindow_Tr2(const char* s, const char* c);
+struct miqt_string* QWindow_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QWindow_TrUtf82(const char* s, const char* c);
+struct miqt_string* QWindow_TrUtf83(const char* s, const char* c, int n);
 void QWindow_SetFlag2(QWindow* self, uintptr_t param1, bool on);
 bool QWindow_IsAncestorOf2(const QWindow* self, QWindow* child, uintptr_t mode);
 void QWindow_Delete(QWindow* self);

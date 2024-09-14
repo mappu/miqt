@@ -6,19 +6,15 @@
 #include <QByteArray>
 #include <cstring>
 #include "qstorageinfo.h"
-
 #include "gen_qstorageinfo.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QStorageInfo* QStorageInfo_new() {
 	return new QStorageInfo();
 }
 
-QStorageInfo* QStorageInfo_new2(const char* path, size_t path_Strlen) {
-	QString path_QString = QString::fromUtf8(path, path_Strlen);
+QStorageInfo* QStorageInfo_new2(struct miqt_string* path) {
+	QString path_QString = QString::fromUtf8(&path->data, path->len);
 	return new QStorageInfo(path_QString);
 }
 
@@ -38,54 +34,48 @@ void QStorageInfo_Swap(QStorageInfo* self, QStorageInfo* other) {
 	self->swap(*other);
 }
 
-void QStorageInfo_SetPath(QStorageInfo* self, const char* path, size_t path_Strlen) {
-	QString path_QString = QString::fromUtf8(path, path_Strlen);
+void QStorageInfo_SetPath(QStorageInfo* self, struct miqt_string* path) {
+	QString path_QString = QString::fromUtf8(&path->data, path->len);
 	self->setPath(path_QString);
 }
 
-void QStorageInfo_RootPath(const QStorageInfo* self, char** _out, int* _out_Strlen) {
-	QString ret = self->rootPath();
+struct miqt_string* QStorageInfo_RootPath(const QStorageInfo* self) {
+	QString _ret = self->rootPath();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 QByteArray* QStorageInfo_Device(const QStorageInfo* self) {
-	QByteArray ret = self->device();
+	QByteArray _ret = self->device();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(ret));
+	return static_cast<QByteArray*>(new QByteArray(_ret));
 }
 
 QByteArray* QStorageInfo_Subvolume(const QStorageInfo* self) {
-	QByteArray ret = self->subvolume();
+	QByteArray _ret = self->subvolume();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(ret));
+	return static_cast<QByteArray*>(new QByteArray(_ret));
 }
 
 QByteArray* QStorageInfo_FileSystemType(const QStorageInfo* self) {
-	QByteArray ret = self->fileSystemType();
+	QByteArray _ret = self->fileSystemType();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(ret));
+	return static_cast<QByteArray*>(new QByteArray(_ret));
 }
 
-void QStorageInfo_Name(const QStorageInfo* self, char** _out, int* _out_Strlen) {
-	QString ret = self->name();
+struct miqt_string* QStorageInfo_Name(const QStorageInfo* self) {
+	QString _ret = self->name();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QStorageInfo_DisplayName(const QStorageInfo* self, char** _out, int* _out_Strlen) {
-	QString ret = self->displayName();
+struct miqt_string* QStorageInfo_DisplayName(const QStorageInfo* self) {
+	QString _ret = self->displayName();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 long long QStorageInfo_BytesTotal(const QStorageInfo* self) {
@@ -124,21 +114,23 @@ void QStorageInfo_Refresh(QStorageInfo* self) {
 	self->refresh();
 }
 
-void QStorageInfo_MountedVolumes(QStorageInfo*** _out, size_t* _out_len) {
-	QList<QStorageInfo> ret = QStorageInfo::mountedVolumes();
+struct miqt_array* QStorageInfo_MountedVolumes() {
+	QList<QStorageInfo> _ret = QStorageInfo::mountedVolumes();
 	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
-	QStorageInfo** __out = static_cast<QStorageInfo**>(malloc(sizeof(QStorageInfo**) * ret.length()));
-	for (size_t i = 0, e = ret.length(); i < e; ++i) {
-		__out[i] = new QStorageInfo(ret[i]);
+	QStorageInfo** _arr = static_cast<QStorageInfo**>(malloc(sizeof(QStorageInfo**) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		_arr[i] = new QStorageInfo(_ret[i]);
 	}
-	*_out = __out;
-	*_out_len = ret.length();
+	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
+	_out->len = _ret.length();
+	_out->data = static_cast<void*>(_arr);
+	return _out;
 }
 
 QStorageInfo* QStorageInfo_Root() {
-	QStorageInfo ret = QStorageInfo::root();
+	QStorageInfo _ret = QStorageInfo::root();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QStorageInfo*>(new QStorageInfo(ret));
+	return static_cast<QStorageInfo*>(new QStorageInfo(_ret));
 }
 
 void QStorageInfo_Delete(QStorageInfo* self) {

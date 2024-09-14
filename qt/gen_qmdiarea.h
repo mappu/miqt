@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -30,13 +32,13 @@ typedef struct QWidget QWidget;
 QMdiArea* QMdiArea_new();
 QMdiArea* QMdiArea_new2(QWidget* parent);
 QMetaObject* QMdiArea_MetaObject(const QMdiArea* self);
-void QMdiArea_Tr(const char* s, char** _out, int* _out_Strlen);
-void QMdiArea_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QMdiArea_Tr(const char* s);
+struct miqt_string* QMdiArea_TrUtf8(const char* s);
 QSize* QMdiArea_SizeHint(const QMdiArea* self);
 QSize* QMdiArea_MinimumSizeHint(const QMdiArea* self);
 QMdiSubWindow* QMdiArea_CurrentSubWindow(const QMdiArea* self);
 QMdiSubWindow* QMdiArea_ActiveSubWindow(const QMdiArea* self);
-void QMdiArea_SubWindowList(const QMdiArea* self, QMdiSubWindow*** _out, size_t* _out_len);
+struct miqt_array* QMdiArea_SubWindowList(const QMdiArea* self);
 QMdiSubWindow* QMdiArea_AddSubWindow(QMdiArea* self, QWidget* widget);
 void QMdiArea_RemoveSubWindow(QMdiArea* self, QWidget* widget);
 QBrush* QMdiArea_Background(const QMdiArea* self);
@@ -66,11 +68,11 @@ void QMdiArea_CloseActiveSubWindow(QMdiArea* self);
 void QMdiArea_CloseAllSubWindows(QMdiArea* self);
 void QMdiArea_ActivateNextSubWindow(QMdiArea* self);
 void QMdiArea_ActivatePreviousSubWindow(QMdiArea* self);
-void QMdiArea_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QMdiArea_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QMdiArea_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QMdiArea_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QMdiArea_SubWindowList1(const QMdiArea* self, uintptr_t order, QMdiSubWindow*** _out, size_t* _out_len);
+struct miqt_string* QMdiArea_Tr2(const char* s, const char* c);
+struct miqt_string* QMdiArea_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QMdiArea_TrUtf82(const char* s, const char* c);
+struct miqt_string* QMdiArea_TrUtf83(const char* s, const char* c, int n);
+struct miqt_array* QMdiArea_SubWindowList1(const QMdiArea* self, uintptr_t order);
 QMdiSubWindow* QMdiArea_AddSubWindow2(QMdiArea* self, QWidget* widget, int flags);
 void QMdiArea_SetOption2(QMdiArea* self, uintptr_t option, bool on);
 void QMdiArea_Delete(QMdiArea* self);

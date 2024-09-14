@@ -48,30 +48,26 @@ func newQAbstractItemDelegate_U(h unsafe.Pointer) *QAbstractItemDelegate {
 }
 
 func (this *QAbstractItemDelegate) MetaObject() *QMetaObject {
-	ret := C.QAbstractItemDelegate_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QAbstractItemDelegate_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QAbstractItemDelegate_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QAbstractItemDelegate_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QAbstractItemDelegate_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QAbstractItemDelegate_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QAbstractItemDelegate_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QAbstractItemDelegate_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QAbstractItemDelegate) Paint(painter *QPainter, option *QStyleOptionViewItem, index *QModelIndex) {
@@ -79,19 +75,15 @@ func (this *QAbstractItemDelegate) Paint(painter *QPainter, option *QStyleOption
 }
 
 func (this *QAbstractItemDelegate) SizeHint(option *QStyleOptionViewItem, index *QModelIndex) *QSize {
-	ret := C.QAbstractItemDelegate_SizeHint(this.h, option.cPointer(), index.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSize(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QAbstractItemDelegate_SizeHint(this.h, option.cPointer(), index.cPointer())
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QAbstractItemDelegate) CreateEditor(parent *QWidget, option *QStyleOptionViewItem, index *QModelIndex) *QWidget {
-	ret := C.QAbstractItemDelegate_CreateEditor(this.h, parent.cPointer(), option.cPointer(), index.cPointer())
-	return newQWidget_U(unsafe.Pointer(ret))
+	_ret := C.QAbstractItemDelegate_CreateEditor(this.h, parent.cPointer(), option.cPointer(), index.cPointer())
+	return newQWidget_U(unsafe.Pointer(_ret))
 }
 
 func (this *QAbstractItemDelegate) DestroyEditor(editor *QWidget, index *QModelIndex) {
@@ -111,73 +103,96 @@ func (this *QAbstractItemDelegate) UpdateEditorGeometry(editor *QWidget, option 
 }
 
 func (this *QAbstractItemDelegate) EditorEvent(event *QEvent, model *QAbstractItemModel, option *QStyleOptionViewItem, index *QModelIndex) bool {
-	ret := C.QAbstractItemDelegate_EditorEvent(this.h, event.cPointer(), model.cPointer(), option.cPointer(), index.cPointer())
-	return (bool)(ret)
+	_ret := C.QAbstractItemDelegate_EditorEvent(this.h, event.cPointer(), model.cPointer(), option.cPointer(), index.cPointer())
+	return (bool)(_ret)
 }
 
 func QAbstractItemDelegate_ElidedText(fontMetrics *QFontMetrics, width int, mode TextElideMode, text string) string {
-	text_Cstring := C.CString(text)
-	defer C.free(unsafe.Pointer(text_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QAbstractItemDelegate_ElidedText(fontMetrics.cPointer(), (C.int)(width), (C.uintptr_t)(mode), text_Cstring, C.size_t(len(text)), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	text_ms := miqt_strdupg(text)
+	defer C.free(text_ms)
+	var _ms *C.struct_miqt_string = C.QAbstractItemDelegate_ElidedText(fontMetrics.cPointer(), (C.int)(width), (C.uintptr_t)(mode), (*C.struct_miqt_string)(text_ms))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QAbstractItemDelegate) HelpEvent(event *QHelpEvent, view *QAbstractItemView, option *QStyleOptionViewItem, index *QModelIndex) bool {
-	ret := C.QAbstractItemDelegate_HelpEvent(this.h, event.cPointer(), view.cPointer(), option.cPointer(), index.cPointer())
-	return (bool)(ret)
+	_ret := C.QAbstractItemDelegate_HelpEvent(this.h, event.cPointer(), view.cPointer(), option.cPointer(), index.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QAbstractItemDelegate) PaintingRoles() []int {
-	var _out *C.int = nil
-	var _out_len C.size_t = 0
-	C.QAbstractItemDelegate_PaintingRoles(this.h, &_out, &_out_len)
-	ret := make([]int, int(_out_len))
-	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_out)) // mrs jackson
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = (int)(_outCast[i])
+	var _ma *C.struct_miqt_array = C.QAbstractItemDelegate_PaintingRoles(this.h)
+	_ret := make([]int, int(_ma.len))
+	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // mrs jackson
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = (int)(_outCast[i])
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
 func (this *QAbstractItemDelegate) CommitData(editor *QWidget) {
 	C.QAbstractItemDelegate_CommitData(this.h, editor.cPointer())
 }
+func (this *QAbstractItemDelegate) OnCommitData(slot func(editor *QWidget)) {
+	C.QAbstractItemDelegate_connect_CommitData(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QAbstractItemDelegate) OnCommitData(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QAbstractItemDelegate_CommitData
+func miqt_exec_callback_QAbstractItemDelegate_CommitData(cb *C.void, editor *C.QWidget) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(editor *QWidget))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QAbstractItemDelegate_connect_CommitData(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	editor_ret := editor
+	slotval1 := newQWidget_U(unsafe.Pointer(editor_ret))
+
+	gofunc(slotval1)
 }
 
 func (this *QAbstractItemDelegate) CloseEditor(editor *QWidget) {
 	C.QAbstractItemDelegate_CloseEditor(this.h, editor.cPointer())
 }
+func (this *QAbstractItemDelegate) OnCloseEditor(slot func(editor *QWidget)) {
+	C.QAbstractItemDelegate_connect_CloseEditor(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QAbstractItemDelegate) OnCloseEditor(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QAbstractItemDelegate_CloseEditor
+func miqt_exec_callback_QAbstractItemDelegate_CloseEditor(cb *C.void, editor *C.QWidget) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(editor *QWidget))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QAbstractItemDelegate_connect_CloseEditor(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	editor_ret := editor
+	slotval1 := newQWidget_U(unsafe.Pointer(editor_ret))
+
+	gofunc(slotval1)
 }
 
 func (this *QAbstractItemDelegate) SizeHintChanged(param1 *QModelIndex) {
 	C.QAbstractItemDelegate_SizeHintChanged(this.h, param1.cPointer())
 }
+func (this *QAbstractItemDelegate) OnSizeHintChanged(slot func(param1 *QModelIndex)) {
+	C.QAbstractItemDelegate_connect_SizeHintChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QAbstractItemDelegate) OnSizeHintChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QAbstractItemDelegate_SizeHintChanged
+func miqt_exec_callback_QAbstractItemDelegate_SizeHintChanged(cb *C.void, param1 *C.QModelIndex) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(param1 *QModelIndex))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QAbstractItemDelegate_connect_SizeHintChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	param1_ret := param1
+	slotval1 := newQModelIndex_U(unsafe.Pointer(param1_ret))
+
+	gofunc(slotval1)
 }
 
 func QAbstractItemDelegate_Tr2(s string, c string) string {
@@ -185,12 +200,10 @@ func QAbstractItemDelegate_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QAbstractItemDelegate_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QAbstractItemDelegate_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QAbstractItemDelegate_Tr3(s string, c string, n int) string {
@@ -198,12 +211,10 @@ func QAbstractItemDelegate_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QAbstractItemDelegate_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QAbstractItemDelegate_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QAbstractItemDelegate_TrUtf82(s string, c string) string {
@@ -211,12 +222,10 @@ func QAbstractItemDelegate_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QAbstractItemDelegate_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QAbstractItemDelegate_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QAbstractItemDelegate_TrUtf83(s string, c string, n int) string {
@@ -224,26 +233,45 @@ func QAbstractItemDelegate_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QAbstractItemDelegate_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QAbstractItemDelegate_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QAbstractItemDelegate) CloseEditor2(editor *QWidget, hint QAbstractItemDelegate__EndEditHint) {
 	C.QAbstractItemDelegate_CloseEditor2(this.h, editor.cPointer(), (C.uintptr_t)(hint))
 }
-
-func (this *QAbstractItemDelegate) OnCloseEditor2(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
-	}
-
-	C.QAbstractItemDelegate_connect_CloseEditor2(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+func (this *QAbstractItemDelegate) OnCloseEditor2(slot func(editor *QWidget, hint QAbstractItemDelegate__EndEditHint)) {
+	C.QAbstractItemDelegate_connect_CloseEditor2(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
 }
 
+//export miqt_exec_callback_QAbstractItemDelegate_CloseEditor2
+func miqt_exec_callback_QAbstractItemDelegate_CloseEditor2(cb *C.void, editor *C.QWidget, hint C.uintptr_t) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(editor *QWidget, hint QAbstractItemDelegate__EndEditHint))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	editor_ret := editor
+	slotval1 := newQWidget_U(unsafe.Pointer(editor_ret))
+	hint_ret := hint
+	slotval2 := (QAbstractItemDelegate__EndEditHint)(hint_ret)
+
+	gofunc(slotval1, slotval2)
+}
+
+// Delete this object from C++ memory.
 func (this *QAbstractItemDelegate) Delete() {
 	C.QAbstractItemDelegate_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QAbstractItemDelegate) GoGC() {
+	runtime.SetFinalizer(this, func(this *QAbstractItemDelegate) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

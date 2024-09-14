@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"runtime"
 	"unsafe"
 )
 
@@ -36,30 +37,26 @@ func newQGraphicsAnchor_U(h unsafe.Pointer) *QGraphicsAnchor {
 }
 
 func (this *QGraphicsAnchor) MetaObject() *QMetaObject {
-	ret := C.QGraphicsAnchor_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QGraphicsAnchor_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QGraphicsAnchor_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGraphicsAnchor_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGraphicsAnchor_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QGraphicsAnchor_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGraphicsAnchor_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGraphicsAnchor_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QGraphicsAnchor) SetSpacing(spacing float64) {
@@ -71,8 +68,8 @@ func (this *QGraphicsAnchor) UnsetSpacing() {
 }
 
 func (this *QGraphicsAnchor) Spacing() float64 {
-	ret := C.QGraphicsAnchor_Spacing(this.h)
-	return (float64)(ret)
+	_ret := C.QGraphicsAnchor_Spacing(this.h)
+	return (float64)(_ret)
 }
 
 func (this *QGraphicsAnchor) SetSizePolicy(policy QSizePolicy__Policy) {
@@ -80,8 +77,8 @@ func (this *QGraphicsAnchor) SetSizePolicy(policy QSizePolicy__Policy) {
 }
 
 func (this *QGraphicsAnchor) SizePolicy() QSizePolicy__Policy {
-	ret := C.QGraphicsAnchor_SizePolicy(this.h)
-	return (QSizePolicy__Policy)(ret)
+	_ret := C.QGraphicsAnchor_SizePolicy(this.h)
+	return (QSizePolicy__Policy)(_ret)
 }
 
 func QGraphicsAnchor_Tr2(s string, c string) string {
@@ -89,12 +86,10 @@ func QGraphicsAnchor_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGraphicsAnchor_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGraphicsAnchor_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QGraphicsAnchor_Tr3(s string, c string, n int) string {
@@ -102,12 +97,10 @@ func QGraphicsAnchor_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGraphicsAnchor_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGraphicsAnchor_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QGraphicsAnchor_TrUtf82(s string, c string) string {
@@ -115,12 +108,10 @@ func QGraphicsAnchor_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGraphicsAnchor_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGraphicsAnchor_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QGraphicsAnchor_TrUtf83(s string, c string, n int) string {
@@ -128,16 +119,24 @@ func QGraphicsAnchor_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGraphicsAnchor_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGraphicsAnchor_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
+// Delete this object from C++ memory.
 func (this *QGraphicsAnchor) Delete() {
 	C.QGraphicsAnchor_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QGraphicsAnchor) GoGC() {
+	runtime.SetFinalizer(this, func(this *QGraphicsAnchor) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
 
 type QGraphicsAnchorLayout struct {
@@ -176,13 +175,13 @@ func NewQGraphicsAnchorLayout2(parent *QGraphicsLayoutItem) *QGraphicsAnchorLayo
 }
 
 func (this *QGraphicsAnchorLayout) AddAnchor(firstItem *QGraphicsLayoutItem, firstEdge AnchorPoint, secondItem *QGraphicsLayoutItem, secondEdge AnchorPoint) *QGraphicsAnchor {
-	ret := C.QGraphicsAnchorLayout_AddAnchor(this.h, firstItem.cPointer(), (C.uintptr_t)(firstEdge), secondItem.cPointer(), (C.uintptr_t)(secondEdge))
-	return newQGraphicsAnchor_U(unsafe.Pointer(ret))
+	_ret := C.QGraphicsAnchorLayout_AddAnchor(this.h, firstItem.cPointer(), (C.uintptr_t)(firstEdge), secondItem.cPointer(), (C.uintptr_t)(secondEdge))
+	return newQGraphicsAnchor_U(unsafe.Pointer(_ret))
 }
 
 func (this *QGraphicsAnchorLayout) Anchor(firstItem *QGraphicsLayoutItem, firstEdge AnchorPoint, secondItem *QGraphicsLayoutItem, secondEdge AnchorPoint) *QGraphicsAnchor {
-	ret := C.QGraphicsAnchorLayout_Anchor(this.h, firstItem.cPointer(), (C.uintptr_t)(firstEdge), secondItem.cPointer(), (C.uintptr_t)(secondEdge))
-	return newQGraphicsAnchor_U(unsafe.Pointer(ret))
+	_ret := C.QGraphicsAnchorLayout_Anchor(this.h, firstItem.cPointer(), (C.uintptr_t)(firstEdge), secondItem.cPointer(), (C.uintptr_t)(secondEdge))
+	return newQGraphicsAnchor_U(unsafe.Pointer(_ret))
 }
 
 func (this *QGraphicsAnchorLayout) AddCornerAnchors(firstItem *QGraphicsLayoutItem, firstCorner Corner, secondItem *QGraphicsLayoutItem, secondCorner Corner) {
@@ -206,13 +205,13 @@ func (this *QGraphicsAnchorLayout) SetSpacing(spacing float64) {
 }
 
 func (this *QGraphicsAnchorLayout) HorizontalSpacing() float64 {
-	ret := C.QGraphicsAnchorLayout_HorizontalSpacing(this.h)
-	return (float64)(ret)
+	_ret := C.QGraphicsAnchorLayout_HorizontalSpacing(this.h)
+	return (float64)(_ret)
 }
 
 func (this *QGraphicsAnchorLayout) VerticalSpacing() float64 {
-	ret := C.QGraphicsAnchorLayout_VerticalSpacing(this.h)
-	return (float64)(ret)
+	_ret := C.QGraphicsAnchorLayout_VerticalSpacing(this.h)
+	return (float64)(_ret)
 }
 
 func (this *QGraphicsAnchorLayout) RemoveAt(index int) {
@@ -224,13 +223,13 @@ func (this *QGraphicsAnchorLayout) SetGeometry(rect *QRectF) {
 }
 
 func (this *QGraphicsAnchorLayout) Count() int {
-	ret := C.QGraphicsAnchorLayout_Count(this.h)
-	return (int)(ret)
+	_ret := C.QGraphicsAnchorLayout_Count(this.h)
+	return (int)(_ret)
 }
 
 func (this *QGraphicsAnchorLayout) ItemAt(index int) *QGraphicsLayoutItem {
-	ret := C.QGraphicsAnchorLayout_ItemAt(this.h, (C.int)(index))
-	return newQGraphicsLayoutItem_U(unsafe.Pointer(ret))
+	_ret := C.QGraphicsAnchorLayout_ItemAt(this.h, (C.int)(index))
+	return newQGraphicsLayoutItem_U(unsafe.Pointer(_ret))
 }
 
 func (this *QGraphicsAnchorLayout) Invalidate() {
@@ -241,6 +240,16 @@ func (this *QGraphicsAnchorLayout) AddAnchors3(firstItem *QGraphicsLayoutItem, s
 	C.QGraphicsAnchorLayout_AddAnchors3(this.h, firstItem.cPointer(), secondItem.cPointer(), (C.int)(orientations))
 }
 
+// Delete this object from C++ memory.
 func (this *QGraphicsAnchorLayout) Delete() {
 	C.QGraphicsAnchorLayout_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QGraphicsAnchorLayout) GoGC() {
+	runtime.SetFinalizer(this, func(this *QGraphicsAnchorLayout) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

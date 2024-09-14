@@ -11,12 +11,8 @@
 #include <QVariant>
 #include <QWidget>
 #include "qtabbar.h"
-
 #include "gen_qtabbar.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QTabBar* QTabBar_new() {
 	return new QTabBar();
@@ -30,50 +26,46 @@ QMetaObject* QTabBar_MetaObject(const QTabBar* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void QTabBar_Tr(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QTabBar::tr(s);
+struct miqt_string* QTabBar_Tr(const char* s) {
+	QString _ret = QTabBar::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QTabBar_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QTabBar::trUtf8(s);
+struct miqt_string* QTabBar_TrUtf8(const char* s) {
+	QString _ret = QTabBar::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 uintptr_t QTabBar_Shape(const QTabBar* self) {
-	QTabBar::Shape ret = self->shape();
-	return static_cast<uintptr_t>(ret);
+	QTabBar::Shape _ret = self->shape();
+	return static_cast<uintptr_t>(_ret);
 }
 
 void QTabBar_SetShape(QTabBar* self, uintptr_t shape) {
 	self->setShape(static_cast<QTabBar::Shape>(shape));
 }
 
-int QTabBar_AddTab(QTabBar* self, const char* text, size_t text_Strlen) {
-	QString text_QString = QString::fromUtf8(text, text_Strlen);
+int QTabBar_AddTab(QTabBar* self, struct miqt_string* text) {
+	QString text_QString = QString::fromUtf8(&text->data, text->len);
 	return self->addTab(text_QString);
 }
 
-int QTabBar_AddTab2(QTabBar* self, QIcon* icon, const char* text, size_t text_Strlen) {
-	QString text_QString = QString::fromUtf8(text, text_Strlen);
+int QTabBar_AddTab2(QTabBar* self, QIcon* icon, struct miqt_string* text) {
+	QString text_QString = QString::fromUtf8(&text->data, text->len);
 	return self->addTab(*icon, text_QString);
 }
 
-int QTabBar_InsertTab(QTabBar* self, int index, const char* text, size_t text_Strlen) {
-	QString text_QString = QString::fromUtf8(text, text_Strlen);
+int QTabBar_InsertTab(QTabBar* self, int index, struct miqt_string* text) {
+	QString text_QString = QString::fromUtf8(&text->data, text->len);
 	return self->insertTab(static_cast<int>(index), text_QString);
 }
 
-int QTabBar_InsertTab2(QTabBar* self, int index, QIcon* icon, const char* text, size_t text_Strlen) {
-	QString text_QString = QString::fromUtf8(text, text_Strlen);
+int QTabBar_InsertTab2(QTabBar* self, int index, QIcon* icon, struct miqt_string* text) {
+	QString text_QString = QString::fromUtf8(&text->data, text->len);
 	return self->insertTab(static_cast<int>(index), *icon, text_QString);
 }
 
@@ -101,24 +93,22 @@ void QTabBar_SetTabVisible(QTabBar* self, int index, bool visible) {
 	self->setTabVisible(static_cast<int>(index), visible);
 }
 
-void QTabBar_TabText(const QTabBar* self, int index, char** _out, int* _out_Strlen) {
-	QString ret = self->tabText(static_cast<int>(index));
+struct miqt_string* QTabBar_TabText(const QTabBar* self, int index) {
+	QString _ret = self->tabText(static_cast<int>(index));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QTabBar_SetTabText(QTabBar* self, int index, const char* text, size_t text_Strlen) {
-	QString text_QString = QString::fromUtf8(text, text_Strlen);
+void QTabBar_SetTabText(QTabBar* self, int index, struct miqt_string* text) {
+	QString text_QString = QString::fromUtf8(&text->data, text->len);
 	self->setTabText(static_cast<int>(index), text_QString);
 }
 
 QColor* QTabBar_TabTextColor(const QTabBar* self, int index) {
-	QColor ret = self->tabTextColor(static_cast<int>(index));
+	QColor _ret = self->tabTextColor(static_cast<int>(index));
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QColor*>(new QColor(ret));
+	return static_cast<QColor*>(new QColor(_ret));
 }
 
 void QTabBar_SetTabTextColor(QTabBar* self, int index, QColor* color) {
@@ -126,9 +116,9 @@ void QTabBar_SetTabTextColor(QTabBar* self, int index, QColor* color) {
 }
 
 QIcon* QTabBar_TabIcon(const QTabBar* self, int index) {
-	QIcon ret = self->tabIcon(static_cast<int>(index));
+	QIcon _ret = self->tabIcon(static_cast<int>(index));
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QIcon*>(new QIcon(ret));
+	return static_cast<QIcon*>(new QIcon(_ret));
 }
 
 void QTabBar_SetTabIcon(QTabBar* self, int index, QIcon* icon) {
@@ -136,40 +126,36 @@ void QTabBar_SetTabIcon(QTabBar* self, int index, QIcon* icon) {
 }
 
 uintptr_t QTabBar_ElideMode(const QTabBar* self) {
-	Qt::TextElideMode ret = self->elideMode();
-	return static_cast<uintptr_t>(ret);
+	Qt::TextElideMode _ret = self->elideMode();
+	return static_cast<uintptr_t>(_ret);
 }
 
 void QTabBar_SetElideMode(QTabBar* self, uintptr_t mode) {
 	self->setElideMode(static_cast<Qt::TextElideMode>(mode));
 }
 
-void QTabBar_SetTabToolTip(QTabBar* self, int index, const char* tip, size_t tip_Strlen) {
-	QString tip_QString = QString::fromUtf8(tip, tip_Strlen);
+void QTabBar_SetTabToolTip(QTabBar* self, int index, struct miqt_string* tip) {
+	QString tip_QString = QString::fromUtf8(&tip->data, tip->len);
 	self->setTabToolTip(static_cast<int>(index), tip_QString);
 }
 
-void QTabBar_TabToolTip(const QTabBar* self, int index, char** _out, int* _out_Strlen) {
-	QString ret = self->tabToolTip(static_cast<int>(index));
+struct miqt_string* QTabBar_TabToolTip(const QTabBar* self, int index) {
+	QString _ret = self->tabToolTip(static_cast<int>(index));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QTabBar_SetTabWhatsThis(QTabBar* self, int index, const char* text, size_t text_Strlen) {
-	QString text_QString = QString::fromUtf8(text, text_Strlen);
+void QTabBar_SetTabWhatsThis(QTabBar* self, int index, struct miqt_string* text) {
+	QString text_QString = QString::fromUtf8(&text->data, text->len);
 	self->setTabWhatsThis(static_cast<int>(index), text_QString);
 }
 
-void QTabBar_TabWhatsThis(const QTabBar* self, int index, char** _out, int* _out_Strlen) {
-	QString ret = self->tabWhatsThis(static_cast<int>(index));
+struct miqt_string* QTabBar_TabWhatsThis(const QTabBar* self, int index) {
+	QString _ret = self->tabWhatsThis(static_cast<int>(index));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QTabBar_SetTabData(QTabBar* self, int index, QVariant* data) {
@@ -177,15 +163,15 @@ void QTabBar_SetTabData(QTabBar* self, int index, QVariant* data) {
 }
 
 QVariant* QTabBar_TabData(const QTabBar* self, int index) {
-	QVariant ret = self->tabData(static_cast<int>(index));
+	QVariant _ret = self->tabData(static_cast<int>(index));
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(ret));
+	return static_cast<QVariant*>(new QVariant(_ret));
 }
 
 QRect* QTabBar_TabRect(const QTabBar* self, int index) {
-	QRect ret = self->tabRect(static_cast<int>(index));
+	QRect _ret = self->tabRect(static_cast<int>(index));
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(ret));
+	return static_cast<QRect*>(new QRect(_ret));
 }
 
 int QTabBar_TabAt(const QTabBar* self, QPoint* pos) {
@@ -201,15 +187,15 @@ int QTabBar_Count(const QTabBar* self) {
 }
 
 QSize* QTabBar_SizeHint(const QTabBar* self) {
-	QSize ret = self->sizeHint();
+	QSize _ret = self->sizeHint();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(ret));
+	return static_cast<QSize*>(new QSize(_ret));
 }
 
 QSize* QTabBar_MinimumSizeHint(const QTabBar* self) {
-	QSize ret = self->minimumSizeHint();
+	QSize _ret = self->minimumSizeHint();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(ret));
+	return static_cast<QSize*>(new QSize(_ret));
 }
 
 void QTabBar_SetDrawBase(QTabBar* self, bool drawTheBase) {
@@ -221,9 +207,9 @@ bool QTabBar_DrawBase(const QTabBar* self) {
 }
 
 QSize* QTabBar_IconSize(const QTabBar* self) {
-	QSize ret = self->iconSize();
+	QSize _ret = self->iconSize();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(ret));
+	return static_cast<QSize*>(new QSize(_ret));
 }
 
 void QTabBar_SetIconSize(QTabBar* self, QSize* size) {
@@ -255,8 +241,8 @@ QWidget* QTabBar_TabButton(const QTabBar* self, int index, uintptr_t position) {
 }
 
 uintptr_t QTabBar_SelectionBehaviorOnRemove(const QTabBar* self) {
-	QTabBar::SelectionBehavior ret = self->selectionBehaviorOnRemove();
-	return static_cast<uintptr_t>(ret);
+	QTabBar::SelectionBehavior _ret = self->selectionBehaviorOnRemove();
+	return static_cast<uintptr_t>(_ret);
 }
 
 void QTabBar_SetSelectionBehaviorOnRemove(QTabBar* self, uintptr_t behavior) {
@@ -303,17 +289,15 @@ void QTabBar_SetChangeCurrentOnDrag(QTabBar* self, bool change) {
 	self->setChangeCurrentOnDrag(change);
 }
 
-void QTabBar_AccessibleTabName(const QTabBar* self, int index, char** _out, int* _out_Strlen) {
-	QString ret = self->accessibleTabName(static_cast<int>(index));
+struct miqt_string* QTabBar_AccessibleTabName(const QTabBar* self, int index) {
+	QString _ret = self->accessibleTabName(static_cast<int>(index));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QTabBar_SetAccessibleTabName(QTabBar* self, int index, const char* name, size_t name_Strlen) {
-	QString name_QString = QString::fromUtf8(name, name_Strlen);
+void QTabBar_SetAccessibleTabName(QTabBar* self, int index, struct miqt_string* name) {
+	QString name_QString = QString::fromUtf8(&name->data, name->len);
 	self->setAccessibleTabName(static_cast<int>(index), name_QString);
 }
 
@@ -327,7 +311,8 @@ void QTabBar_CurrentChanged(QTabBar* self, int index) {
 
 void QTabBar_connect_CurrentChanged(QTabBar* self, void* slot) {
 	QTabBar::connect(self, static_cast<void (QTabBar::*)(int)>(&QTabBar::currentChanged), self, [=](int index) {
-		miqt_exec_callback(slot, 0, nullptr);
+		int sigval1 = index;
+		miqt_exec_callback_QTabBar_CurrentChanged(slot, sigval1);
 	});
 }
 
@@ -337,7 +322,8 @@ void QTabBar_TabCloseRequested(QTabBar* self, int index) {
 
 void QTabBar_connect_TabCloseRequested(QTabBar* self, void* slot) {
 	QTabBar::connect(self, static_cast<void (QTabBar::*)(int)>(&QTabBar::tabCloseRequested), self, [=](int index) {
-		miqt_exec_callback(slot, 0, nullptr);
+		int sigval1 = index;
+		miqt_exec_callback_QTabBar_TabCloseRequested(slot, sigval1);
 	});
 }
 
@@ -347,7 +333,9 @@ void QTabBar_TabMoved(QTabBar* self, int from, int to) {
 
 void QTabBar_connect_TabMoved(QTabBar* self, void* slot) {
 	QTabBar::connect(self, static_cast<void (QTabBar::*)(int, int)>(&QTabBar::tabMoved), self, [=](int from, int to) {
-		miqt_exec_callback(slot, 0, nullptr);
+		int sigval1 = from;
+		int sigval2 = to;
+		miqt_exec_callback_QTabBar_TabMoved(slot, sigval1, sigval2);
 	});
 }
 
@@ -357,7 +345,8 @@ void QTabBar_TabBarClicked(QTabBar* self, int index) {
 
 void QTabBar_connect_TabBarClicked(QTabBar* self, void* slot) {
 	QTabBar::connect(self, static_cast<void (QTabBar::*)(int)>(&QTabBar::tabBarClicked), self, [=](int index) {
-		miqt_exec_callback(slot, 0, nullptr);
+		int sigval1 = index;
+		miqt_exec_callback_QTabBar_TabBarClicked(slot, sigval1);
 	});
 }
 
@@ -367,44 +356,37 @@ void QTabBar_TabBarDoubleClicked(QTabBar* self, int index) {
 
 void QTabBar_connect_TabBarDoubleClicked(QTabBar* self, void* slot) {
 	QTabBar::connect(self, static_cast<void (QTabBar::*)(int)>(&QTabBar::tabBarDoubleClicked), self, [=](int index) {
-		miqt_exec_callback(slot, 0, nullptr);
+		int sigval1 = index;
+		miqt_exec_callback_QTabBar_TabBarDoubleClicked(slot, sigval1);
 	});
 }
 
-void QTabBar_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QTabBar::tr(s, c);
+struct miqt_string* QTabBar_Tr2(const char* s, const char* c) {
+	QString _ret = QTabBar::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QTabBar_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QTabBar::tr(s, c, static_cast<int>(n));
+struct miqt_string* QTabBar_Tr3(const char* s, const char* c, int n) {
+	QString _ret = QTabBar::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QTabBar_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QTabBar::trUtf8(s, c);
+struct miqt_string* QTabBar_TrUtf82(const char* s, const char* c) {
+	QString _ret = QTabBar::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QTabBar_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QTabBar::trUtf8(s, c, static_cast<int>(n));
+struct miqt_string* QTabBar_TrUtf83(const char* s, const char* c, int n) {
+	QString _ret = QTabBar::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QTabBar_Delete(QTabBar* self) {

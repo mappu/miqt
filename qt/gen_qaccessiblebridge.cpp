@@ -7,12 +7,8 @@
 #include <QByteArray>
 #include <cstring>
 #include "qaccessiblebridge.h"
-
 #include "gen_qaccessiblebridge.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 void QAccessibleBridge_SetRootObject(QAccessibleBridge* self, QAccessibleInterface* rootObject) {
 	self->setRootObject(rootObject);
@@ -34,63 +30,51 @@ QMetaObject* QAccessibleBridgePlugin_MetaObject(const QAccessibleBridgePlugin* s
 	return (QMetaObject*) self->metaObject();
 }
 
-void QAccessibleBridgePlugin_Tr(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QAccessibleBridgePlugin::tr(s);
+struct miqt_string* QAccessibleBridgePlugin_Tr(const char* s) {
+	QString _ret = QAccessibleBridgePlugin::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QAccessibleBridgePlugin_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QAccessibleBridgePlugin::trUtf8(s);
+struct miqt_string* QAccessibleBridgePlugin_TrUtf8(const char* s) {
+	QString _ret = QAccessibleBridgePlugin::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-QAccessibleBridge* QAccessibleBridgePlugin_Create(QAccessibleBridgePlugin* self, const char* key, size_t key_Strlen) {
-	QString key_QString = QString::fromUtf8(key, key_Strlen);
+QAccessibleBridge* QAccessibleBridgePlugin_Create(QAccessibleBridgePlugin* self, struct miqt_string* key) {
+	QString key_QString = QString::fromUtf8(&key->data, key->len);
 	return self->create(key_QString);
 }
 
-void QAccessibleBridgePlugin_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QAccessibleBridgePlugin::tr(s, c);
+struct miqt_string* QAccessibleBridgePlugin_Tr2(const char* s, const char* c) {
+	QString _ret = QAccessibleBridgePlugin::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QAccessibleBridgePlugin_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QAccessibleBridgePlugin::tr(s, c, static_cast<int>(n));
+struct miqt_string* QAccessibleBridgePlugin_Tr3(const char* s, const char* c, int n) {
+	QString _ret = QAccessibleBridgePlugin::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QAccessibleBridgePlugin_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QAccessibleBridgePlugin::trUtf8(s, c);
+struct miqt_string* QAccessibleBridgePlugin_TrUtf82(const char* s, const char* c) {
+	QString _ret = QAccessibleBridgePlugin::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QAccessibleBridgePlugin_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QAccessibleBridgePlugin::trUtf8(s, c, static_cast<int>(n));
+struct miqt_string* QAccessibleBridgePlugin_TrUtf83(const char* s, const char* c, int n) {
+	QString _ret = QAccessibleBridgePlugin::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QAccessibleBridgePlugin_Delete(QAccessibleBridgePlugin* self) {

@@ -79,8 +79,8 @@ func (this *QPainterPath) Reserve(size int) {
 }
 
 func (this *QPainterPath) Capacity() int {
-	ret := C.QPainterPath_Capacity(this.h)
-	return (int)(ret)
+	_ret := C.QPainterPath_Capacity(this.h)
+	return (int)(_ret)
 }
 
 func (this *QPainterPath) CloseSubpath() {
@@ -136,14 +136,10 @@ func (this *QPainterPath) QuadTo2(ctrlPtx float64, ctrlPty float64, endPtx float
 }
 
 func (this *QPainterPath) CurrentPosition() *QPointF {
-	ret := C.QPainterPath_CurrentPosition(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPointF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPointF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QPainterPath_CurrentPosition(this.h)
+	_goptr := newQPointF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QPainterPath) AddRect(rect *QRectF) {
@@ -167,15 +163,15 @@ func (this *QPainterPath) AddEllipse3(center *QPointF, rx float64, ry float64) {
 }
 
 func (this *QPainterPath) AddText(point *QPointF, f *QFont, text string) {
-	text_Cstring := C.CString(text)
-	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QPainterPath_AddText(this.h, point.cPointer(), f.cPointer(), text_Cstring, C.size_t(len(text)))
+	text_ms := miqt_strdupg(text)
+	defer C.free(text_ms)
+	C.QPainterPath_AddText(this.h, point.cPointer(), f.cPointer(), (*C.struct_miqt_string)(text_ms))
 }
 
 func (this *QPainterPath) AddText2(x float64, y float64, f *QFont, text string) {
-	text_Cstring := C.CString(text)
-	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QPainterPath_AddText2(this.h, (C.double)(x), (C.double)(y), f.cPointer(), text_Cstring, C.size_t(len(text)))
+	text_ms := miqt_strdupg(text)
+	defer C.free(text_ms)
+	C.QPainterPath_AddText2(this.h, (C.double)(x), (C.double)(y), f.cPointer(), (*C.struct_miqt_string)(text_ms))
 }
 
 func (this *QPainterPath) AddPath(path *QPainterPath) {
@@ -215,18 +211,18 @@ func (this *QPainterPath) ConnectPath(path *QPainterPath) {
 }
 
 func (this *QPainterPath) Contains(pt *QPointF) bool {
-	ret := C.QPainterPath_Contains(this.h, pt.cPointer())
-	return (bool)(ret)
+	_ret := C.QPainterPath_Contains(this.h, pt.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QPainterPath) ContainsWithRect(rect *QRectF) bool {
-	ret := C.QPainterPath_ContainsWithRect(this.h, rect.cPointer())
-	return (bool)(ret)
+	_ret := C.QPainterPath_ContainsWithRect(this.h, rect.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QPainterPath) Intersects(rect *QRectF) bool {
-	ret := C.QPainterPath_Intersects(this.h, rect.cPointer())
-	return (bool)(ret)
+	_ret := C.QPainterPath_Intersects(this.h, rect.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QPainterPath) Translate(dx float64, dy float64) {
@@ -238,52 +234,36 @@ func (this *QPainterPath) TranslateWithOffset(offset *QPointF) {
 }
 
 func (this *QPainterPath) Translated(dx float64, dy float64) *QPainterPath {
-	ret := C.QPainterPath_Translated(this.h, (C.double)(dx), (C.double)(dy))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPainterPath(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPainterPath) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QPainterPath_Translated(this.h, (C.double)(dx), (C.double)(dy))
+	_goptr := newQPainterPath(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QPainterPath) TranslatedWithOffset(offset *QPointF) *QPainterPath {
-	ret := C.QPainterPath_TranslatedWithOffset(this.h, offset.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPainterPath(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPainterPath) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QPainterPath_TranslatedWithOffset(this.h, offset.cPointer())
+	_goptr := newQPainterPath(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QPainterPath) BoundingRect() *QRectF {
-	ret := C.QPainterPath_BoundingRect(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRectF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRectF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QPainterPath_BoundingRect(this.h)
+	_goptr := newQRectF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QPainterPath) ControlPointRect() *QRectF {
-	ret := C.QPainterPath_ControlPointRect(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRectF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRectF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QPainterPath_ControlPointRect(this.h)
+	_goptr := newQRectF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QPainterPath) FillRule() FillRule {
-	ret := C.QPainterPath_FillRule(this.h)
-	return (FillRule)(ret)
+	_ret := C.QPainterPath_FillRule(this.h)
+	return (FillRule)(_ret)
 }
 
 func (this *QPainterPath) SetFillRule(fillRule FillRule) {
@@ -291,35 +271,27 @@ func (this *QPainterPath) SetFillRule(fillRule FillRule) {
 }
 
 func (this *QPainterPath) IsEmpty() bool {
-	ret := C.QPainterPath_IsEmpty(this.h)
-	return (bool)(ret)
+	_ret := C.QPainterPath_IsEmpty(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QPainterPath) ToReversed() *QPainterPath {
-	ret := C.QPainterPath_ToReversed(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPainterPath(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPainterPath) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QPainterPath_ToReversed(this.h)
+	_goptr := newQPainterPath(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QPainterPath) ElementCount() int {
-	ret := C.QPainterPath_ElementCount(this.h)
-	return (int)(ret)
+	_ret := C.QPainterPath_ElementCount(this.h)
+	return (int)(_ret)
 }
 
 func (this *QPainterPath) ElementAt(i int) *QPainterPath__Element {
-	ret := C.QPainterPath_ElementAt(this.h, (C.int)(i))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPainterPath__Element(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPainterPath__Element) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QPainterPath_ElementAt(this.h, (C.int)(i))
+	_goptr := newQPainterPath__Element(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QPainterPath) SetElementPositionAt(i int, x float64, y float64) {
@@ -327,153 +299,113 @@ func (this *QPainterPath) SetElementPositionAt(i int, x float64, y float64) {
 }
 
 func (this *QPainterPath) Length() float64 {
-	ret := C.QPainterPath_Length(this.h)
-	return (float64)(ret)
+	_ret := C.QPainterPath_Length(this.h)
+	return (float64)(_ret)
 }
 
 func (this *QPainterPath) PercentAtLength(t float64) float64 {
-	ret := C.QPainterPath_PercentAtLength(this.h, (C.double)(t))
-	return (float64)(ret)
+	_ret := C.QPainterPath_PercentAtLength(this.h, (C.double)(t))
+	return (float64)(_ret)
 }
 
 func (this *QPainterPath) PointAtPercent(t float64) *QPointF {
-	ret := C.QPainterPath_PointAtPercent(this.h, (C.double)(t))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPointF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPointF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QPainterPath_PointAtPercent(this.h, (C.double)(t))
+	_goptr := newQPointF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QPainterPath) AngleAtPercent(t float64) float64 {
-	ret := C.QPainterPath_AngleAtPercent(this.h, (C.double)(t))
-	return (float64)(ret)
+	_ret := C.QPainterPath_AngleAtPercent(this.h, (C.double)(t))
+	return (float64)(_ret)
 }
 
 func (this *QPainterPath) SlopeAtPercent(t float64) float64 {
-	ret := C.QPainterPath_SlopeAtPercent(this.h, (C.double)(t))
-	return (float64)(ret)
+	_ret := C.QPainterPath_SlopeAtPercent(this.h, (C.double)(t))
+	return (float64)(_ret)
 }
 
 func (this *QPainterPath) IntersectsWithQPainterPath(p *QPainterPath) bool {
-	ret := C.QPainterPath_IntersectsWithQPainterPath(this.h, p.cPointer())
-	return (bool)(ret)
+	_ret := C.QPainterPath_IntersectsWithQPainterPath(this.h, p.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QPainterPath) ContainsWithQPainterPath(p *QPainterPath) bool {
-	ret := C.QPainterPath_ContainsWithQPainterPath(this.h, p.cPointer())
-	return (bool)(ret)
+	_ret := C.QPainterPath_ContainsWithQPainterPath(this.h, p.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QPainterPath) United(r *QPainterPath) *QPainterPath {
-	ret := C.QPainterPath_United(this.h, r.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPainterPath(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPainterPath) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QPainterPath_United(this.h, r.cPointer())
+	_goptr := newQPainterPath(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QPainterPath) Intersected(r *QPainterPath) *QPainterPath {
-	ret := C.QPainterPath_Intersected(this.h, r.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPainterPath(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPainterPath) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QPainterPath_Intersected(this.h, r.cPointer())
+	_goptr := newQPainterPath(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QPainterPath) Subtracted(r *QPainterPath) *QPainterPath {
-	ret := C.QPainterPath_Subtracted(this.h, r.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPainterPath(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPainterPath) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QPainterPath_Subtracted(this.h, r.cPointer())
+	_goptr := newQPainterPath(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QPainterPath) SubtractedInverted(r *QPainterPath) *QPainterPath {
-	ret := C.QPainterPath_SubtractedInverted(this.h, r.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPainterPath(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPainterPath) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QPainterPath_SubtractedInverted(this.h, r.cPointer())
+	_goptr := newQPainterPath(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QPainterPath) Simplified() *QPainterPath {
-	ret := C.QPainterPath_Simplified(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPainterPath(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPainterPath) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QPainterPath_Simplified(this.h)
+	_goptr := newQPainterPath(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QPainterPath) OperatorEqual(other *QPainterPath) bool {
-	ret := C.QPainterPath_OperatorEqual(this.h, other.cPointer())
-	return (bool)(ret)
+	_ret := C.QPainterPath_OperatorEqual(this.h, other.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QPainterPath) OperatorNotEqual(other *QPainterPath) bool {
-	ret := C.QPainterPath_OperatorNotEqual(this.h, other.cPointer())
-	return (bool)(ret)
+	_ret := C.QPainterPath_OperatorNotEqual(this.h, other.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QPainterPath) OperatorBitwiseAnd(other *QPainterPath) *QPainterPath {
-	ret := C.QPainterPath_OperatorBitwiseAnd(this.h, other.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPainterPath(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPainterPath) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QPainterPath_OperatorBitwiseAnd(this.h, other.cPointer())
+	_goptr := newQPainterPath(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QPainterPath) OperatorBitwiseOr(other *QPainterPath) *QPainterPath {
-	ret := C.QPainterPath_OperatorBitwiseOr(this.h, other.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPainterPath(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPainterPath) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QPainterPath_OperatorBitwiseOr(this.h, other.cPointer())
+	_goptr := newQPainterPath(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QPainterPath) OperatorPlus(other *QPainterPath) *QPainterPath {
-	ret := C.QPainterPath_OperatorPlus(this.h, other.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPainterPath(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPainterPath) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QPainterPath_OperatorPlus(this.h, other.cPointer())
+	_goptr := newQPainterPath(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QPainterPath) OperatorMinus(other *QPainterPath) *QPainterPath {
-	ret := C.QPainterPath_OperatorMinus(this.h, other.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPainterPath(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPainterPath) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QPainterPath_OperatorMinus(this.h, other.cPointer())
+	_goptr := newQPainterPath(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QPainterPath) OperatorBitwiseAndAssign(other *QPainterPath) {
@@ -485,13 +417,13 @@ func (this *QPainterPath) OperatorBitwiseOrAssign(other *QPainterPath) {
 }
 
 func (this *QPainterPath) OperatorPlusAssign(other *QPainterPath) *QPainterPath {
-	ret := C.QPainterPath_OperatorPlusAssign(this.h, other.cPointer())
-	return newQPainterPath_U(unsafe.Pointer(ret))
+	_ret := C.QPainterPath_OperatorPlusAssign(this.h, other.cPointer())
+	return newQPainterPath_U(unsafe.Pointer(_ret))
 }
 
 func (this *QPainterPath) OperatorMinusAssign(other *QPainterPath) *QPainterPath {
-	ret := C.QPainterPath_OperatorMinusAssign(this.h, other.cPointer())
-	return newQPainterPath_U(unsafe.Pointer(ret))
+	_ret := C.QPainterPath_OperatorMinusAssign(this.h, other.cPointer())
+	return newQPainterPath_U(unsafe.Pointer(_ret))
 }
 
 func (this *QPainterPath) AddRoundedRect4(rect *QRectF, xRadius float64, yRadius float64, mode SizeMode) {
@@ -502,8 +434,18 @@ func (this *QPainterPath) AddRoundedRect7(x float64, y float64, w float64, h flo
 	C.QPainterPath_AddRoundedRect7(this.h, (C.double)(x), (C.double)(y), (C.double)(w), (C.double)(h), (C.double)(xRadius), (C.double)(yRadius), (C.uintptr_t)(mode))
 }
 
+// Delete this object from C++ memory.
 func (this *QPainterPath) Delete() {
 	C.QPainterPath_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QPainterPath) GoGC() {
+	runtime.SetFinalizer(this, func(this *QPainterPath) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
 
 type QPainterPathStroker struct {
@@ -545,8 +487,8 @@ func (this *QPainterPathStroker) SetWidth(width float64) {
 }
 
 func (this *QPainterPathStroker) Width() float64 {
-	ret := C.QPainterPathStroker_Width(this.h)
-	return (float64)(ret)
+	_ret := C.QPainterPathStroker_Width(this.h)
+	return (float64)(_ret)
 }
 
 func (this *QPainterPathStroker) SetCapStyle(style PenCapStyle) {
@@ -554,8 +496,8 @@ func (this *QPainterPathStroker) SetCapStyle(style PenCapStyle) {
 }
 
 func (this *QPainterPathStroker) CapStyle() PenCapStyle {
-	ret := C.QPainterPathStroker_CapStyle(this.h)
-	return (PenCapStyle)(ret)
+	_ret := C.QPainterPathStroker_CapStyle(this.h)
+	return (PenCapStyle)(_ret)
 }
 
 func (this *QPainterPathStroker) SetJoinStyle(style PenJoinStyle) {
@@ -563,8 +505,8 @@ func (this *QPainterPathStroker) SetJoinStyle(style PenJoinStyle) {
 }
 
 func (this *QPainterPathStroker) JoinStyle() PenJoinStyle {
-	ret := C.QPainterPathStroker_JoinStyle(this.h)
-	return (PenJoinStyle)(ret)
+	_ret := C.QPainterPathStroker_JoinStyle(this.h)
+	return (PenJoinStyle)(_ret)
 }
 
 func (this *QPainterPathStroker) SetMiterLimit(length float64) {
@@ -572,8 +514,8 @@ func (this *QPainterPathStroker) SetMiterLimit(length float64) {
 }
 
 func (this *QPainterPathStroker) MiterLimit() float64 {
-	ret := C.QPainterPathStroker_MiterLimit(this.h)
-	return (float64)(ret)
+	_ret := C.QPainterPathStroker_MiterLimit(this.h)
+	return (float64)(_ret)
 }
 
 func (this *QPainterPathStroker) SetCurveThreshold(threshold float64) {
@@ -581,8 +523,8 @@ func (this *QPainterPathStroker) SetCurveThreshold(threshold float64) {
 }
 
 func (this *QPainterPathStroker) CurveThreshold() float64 {
-	ret := C.QPainterPathStroker_CurveThreshold(this.h)
-	return (float64)(ret)
+	_ret := C.QPainterPathStroker_CurveThreshold(this.h)
+	return (float64)(_ret)
 }
 
 func (this *QPainterPathStroker) SetDashPattern(dashPattern PenStyle) {
@@ -596,20 +538,20 @@ func (this *QPainterPathStroker) SetDashPatternWithDashPattern(dashPattern []flo
 	for i := range dashPattern {
 		dashPattern_CArray[i] = (C.double)(dashPattern[i])
 	}
-	C.QPainterPathStroker_SetDashPatternWithDashPattern(this.h, &dashPattern_CArray[0], C.size_t(len(dashPattern)))
+	dashPattern_ma := &C.struct_miqt_array{len: C.size_t(len(dashPattern)), data: unsafe.Pointer(dashPattern_CArray)}
+	defer runtime.KeepAlive(unsafe.Pointer(dashPattern_ma))
+	C.QPainterPathStroker_SetDashPatternWithDashPattern(this.h, dashPattern_ma)
 }
 
 func (this *QPainterPathStroker) DashPattern() []float64 {
-	var _out *C.double = nil
-	var _out_len C.size_t = 0
-	C.QPainterPathStroker_DashPattern(this.h, &_out, &_out_len)
-	ret := make([]float64, int(_out_len))
-	_outCast := (*[0xffff]C.double)(unsafe.Pointer(_out)) // mrs jackson
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = (float64)(_outCast[i])
+	var _ma *C.struct_miqt_array = C.QPainterPathStroker_DashPattern(this.h)
+	_ret := make([]float64, int(_ma.len))
+	_outCast := (*[0xffff]C.double)(unsafe.Pointer(_ma.data)) // mrs jackson
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = (float64)(_outCast[i])
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
 func (this *QPainterPathStroker) SetDashOffset(offset float64) {
@@ -617,23 +559,29 @@ func (this *QPainterPathStroker) SetDashOffset(offset float64) {
 }
 
 func (this *QPainterPathStroker) DashOffset() float64 {
-	ret := C.QPainterPathStroker_DashOffset(this.h)
-	return (float64)(ret)
+	_ret := C.QPainterPathStroker_DashOffset(this.h)
+	return (float64)(_ret)
 }
 
 func (this *QPainterPathStroker) CreateStroke(path *QPainterPath) *QPainterPath {
-	ret := C.QPainterPathStroker_CreateStroke(this.h, path.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPainterPath(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPainterPath) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QPainterPathStroker_CreateStroke(this.h, path.cPointer())
+	_goptr := newQPainterPath(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
+// Delete this object from C++ memory.
 func (this *QPainterPathStroker) Delete() {
 	C.QPainterPathStroker_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QPainterPathStroker) GoGC() {
+	runtime.SetFinalizer(this, func(this *QPainterPathStroker) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
 
 type QPainterPath__Element struct {
@@ -659,30 +607,40 @@ func newQPainterPath__Element_U(h unsafe.Pointer) *QPainterPath__Element {
 }
 
 func (this *QPainterPath__Element) IsMoveTo() bool {
-	ret := C.QPainterPath__Element_IsMoveTo(this.h)
-	return (bool)(ret)
+	_ret := C.QPainterPath__Element_IsMoveTo(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QPainterPath__Element) IsLineTo() bool {
-	ret := C.QPainterPath__Element_IsLineTo(this.h)
-	return (bool)(ret)
+	_ret := C.QPainterPath__Element_IsLineTo(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QPainterPath__Element) IsCurveTo() bool {
-	ret := C.QPainterPath__Element_IsCurveTo(this.h)
-	return (bool)(ret)
+	_ret := C.QPainterPath__Element_IsCurveTo(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QPainterPath__Element) OperatorEqual(e *QPainterPath__Element) bool {
-	ret := C.QPainterPath__Element_OperatorEqual(this.h, e.cPointer())
-	return (bool)(ret)
+	_ret := C.QPainterPath__Element_OperatorEqual(this.h, e.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QPainterPath__Element) OperatorNotEqual(e *QPainterPath__Element) bool {
-	ret := C.QPainterPath__Element_OperatorNotEqual(this.h, e.cPointer())
-	return (bool)(ret)
+	_ret := C.QPainterPath__Element_OperatorNotEqual(this.h, e.cPointer())
+	return (bool)(_ret)
 }
 
+// Delete this object from C++ memory.
 func (this *QPainterPath__Element) Delete() {
 	C.QPainterPath__Element_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QPainterPath__Element) GoGC() {
+	runtime.SetFinalizer(this, func(this *QPainterPath__Element) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -64,12 +66,12 @@ void QAbstractUndoItem_Redo(QAbstractUndoItem* self);
 void QAbstractUndoItem_Delete(QAbstractUndoItem* self);
 
 QTextDocument* QTextDocument_new();
-QTextDocument* QTextDocument_new2(const char* text, size_t text_Strlen);
+QTextDocument* QTextDocument_new2(struct miqt_string* text);
 QTextDocument* QTextDocument_new3(QObject* parent);
-QTextDocument* QTextDocument_new4(const char* text, size_t text_Strlen, QObject* parent);
+QTextDocument* QTextDocument_new4(struct miqt_string* text, QObject* parent);
 QMetaObject* QTextDocument_MetaObject(const QTextDocument* self);
-void QTextDocument_Tr(const char* s, char** _out, int* _out_Strlen);
-void QTextDocument_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QTextDocument_Tr(const char* s);
+struct miqt_string* QTextDocument_TrUtf8(const char* s);
 QTextDocument* QTextDocument_Clone(const QTextDocument* self);
 bool QTextDocument_IsEmpty(const QTextDocument* self);
 void QTextDocument_Clear(QTextDocument* self);
@@ -82,18 +84,18 @@ int QTextDocument_AvailableRedoSteps(const QTextDocument* self);
 int QTextDocument_Revision(const QTextDocument* self);
 void QTextDocument_SetDocumentLayout(QTextDocument* self, QAbstractTextDocumentLayout* layout);
 QAbstractTextDocumentLayout* QTextDocument_DocumentLayout(const QTextDocument* self);
-void QTextDocument_SetMetaInformation(QTextDocument* self, uintptr_t info, const char* param2, size_t param2_Strlen);
-void QTextDocument_MetaInformation(const QTextDocument* self, uintptr_t info, char** _out, int* _out_Strlen);
-void QTextDocument_ToHtml(const QTextDocument* self, char** _out, int* _out_Strlen);
-void QTextDocument_SetHtml(QTextDocument* self, const char* html, size_t html_Strlen);
-void QTextDocument_ToMarkdown(const QTextDocument* self, char** _out, int* _out_Strlen);
-void QTextDocument_SetMarkdown(QTextDocument* self, const char* markdown, size_t markdown_Strlen);
-void QTextDocument_ToRawText(const QTextDocument* self, char** _out, int* _out_Strlen);
-void QTextDocument_ToPlainText(const QTextDocument* self, char** _out, int* _out_Strlen);
-void QTextDocument_SetPlainText(QTextDocument* self, const char* text, size_t text_Strlen);
+void QTextDocument_SetMetaInformation(QTextDocument* self, uintptr_t info, struct miqt_string* param2);
+struct miqt_string* QTextDocument_MetaInformation(const QTextDocument* self, uintptr_t info);
+struct miqt_string* QTextDocument_ToHtml(const QTextDocument* self);
+void QTextDocument_SetHtml(QTextDocument* self, struct miqt_string* html);
+struct miqt_string* QTextDocument_ToMarkdown(const QTextDocument* self);
+void QTextDocument_SetMarkdown(QTextDocument* self, struct miqt_string* markdown);
+struct miqt_string* QTextDocument_ToRawText(const QTextDocument* self);
+struct miqt_string* QTextDocument_ToPlainText(const QTextDocument* self);
+void QTextDocument_SetPlainText(QTextDocument* self, struct miqt_string* text);
 QChar* QTextDocument_CharacterAt(const QTextDocument* self, int pos);
-QTextCursor* QTextDocument_Find(const QTextDocument* self, const char* subString, size_t subString_Strlen);
-QTextCursor* QTextDocument_Find2(const QTextDocument* self, const char* subString, size_t subString_Strlen, QTextCursor* cursor);
+QTextCursor* QTextDocument_Find(const QTextDocument* self, struct miqt_string* subString);
+QTextCursor* QTextDocument_Find2(const QTextDocument* self, struct miqt_string* subString, QTextCursor* cursor);
 QTextCursor* QTextDocument_FindWithExpr(const QTextDocument* self, QRegExp* expr);
 QTextCursor* QTextDocument_Find3(const QTextDocument* self, QRegExp* expr, QTextCursor* cursor);
 QTextCursor* QTextDocument_Find4(const QTextDocument* self, QRegularExpression* expr);
@@ -118,7 +120,7 @@ bool QTextDocument_IsModified(const QTextDocument* self);
 void QTextDocument_Print(const QTextDocument* self, QPagedPaintDevice* printer);
 QVariant* QTextDocument_Resource(const QTextDocument* self, int typeVal, QUrl* name);
 void QTextDocument_AddResource(QTextDocument* self, int typeVal, QUrl* name, QVariant* resource);
-void QTextDocument_AllFormats(const QTextDocument* self, QTextFormat*** _out, size_t* _out_len);
+struct miqt_array* QTextDocument_AllFormats(const QTextDocument* self);
 void QTextDocument_MarkContentsDirty(QTextDocument* self, int from, int length);
 void QTextDocument_SetUseDesignMetrics(QTextDocument* self, bool b);
 bool QTextDocument_UseDesignMetrics(const QTextDocument* self);
@@ -135,8 +137,8 @@ QSizeF* QTextDocument_Size(const QTextDocument* self);
 int QTextDocument_BlockCount(const QTextDocument* self);
 int QTextDocument_LineCount(const QTextDocument* self);
 int QTextDocument_CharacterCount(const QTextDocument* self);
-void QTextDocument_SetDefaultStyleSheet(QTextDocument* self, const char* sheet, size_t sheet_Strlen);
-void QTextDocument_DefaultStyleSheet(const QTextDocument* self, char** _out, int* _out_Strlen);
+void QTextDocument_SetDefaultStyleSheet(QTextDocument* self, struct miqt_string* sheet);
+struct miqt_string* QTextDocument_DefaultStyleSheet(const QTextDocument* self);
 void QTextDocument_Undo(QTextDocument* self, QTextCursor* cursor);
 void QTextDocument_Redo(QTextDocument* self, QTextCursor* cursor);
 void QTextDocument_ClearUndoRedoStacks(QTextDocument* self);
@@ -171,17 +173,17 @@ void QTextDocument_connect_DocumentLayoutChanged(QTextDocument* self, void* slot
 void QTextDocument_Undo2(QTextDocument* self);
 void QTextDocument_Redo2(QTextDocument* self);
 void QTextDocument_SetModified(QTextDocument* self);
-void QTextDocument_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QTextDocument_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QTextDocument_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QTextDocument_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QTextDocument_Tr2(const char* s, const char* c);
+struct miqt_string* QTextDocument_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QTextDocument_TrUtf82(const char* s, const char* c);
+struct miqt_string* QTextDocument_TrUtf83(const char* s, const char* c, int n);
 QTextDocument* QTextDocument_Clone1(const QTextDocument* self, QObject* parent);
-void QTextDocument_ToHtml1(const QTextDocument* self, QByteArray* encoding, char** _out, int* _out_Strlen);
-void QTextDocument_ToMarkdown1(const QTextDocument* self, int features, char** _out, int* _out_Strlen);
-void QTextDocument_SetMarkdown2(QTextDocument* self, const char* markdown, size_t markdown_Strlen, int features);
-QTextCursor* QTextDocument_Find22(const QTextDocument* self, const char* subString, size_t subString_Strlen, int from);
-QTextCursor* QTextDocument_Find32(const QTextDocument* self, const char* subString, size_t subString_Strlen, int from, int options);
-QTextCursor* QTextDocument_Find33(const QTextDocument* self, const char* subString, size_t subString_Strlen, QTextCursor* cursor, int options);
+struct miqt_string* QTextDocument_ToHtml1(const QTextDocument* self, QByteArray* encoding);
+struct miqt_string* QTextDocument_ToMarkdown1(const QTextDocument* self, int features);
+void QTextDocument_SetMarkdown2(QTextDocument* self, struct miqt_string* markdown, int features);
+QTextCursor* QTextDocument_Find22(const QTextDocument* self, struct miqt_string* subString, int from);
+QTextCursor* QTextDocument_Find32(const QTextDocument* self, struct miqt_string* subString, int from, int options);
+QTextCursor* QTextDocument_Find33(const QTextDocument* self, struct miqt_string* subString, QTextCursor* cursor, int options);
 QTextCursor* QTextDocument_Find23(const QTextDocument* self, QRegExp* expr, int from);
 QTextCursor* QTextDocument_Find34(const QTextDocument* self, QRegExp* expr, int from, int options);
 QTextCursor* QTextDocument_Find35(const QTextDocument* self, QRegExp* expr, QTextCursor* cursor, int options);

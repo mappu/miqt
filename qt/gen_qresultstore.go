@@ -42,22 +42,32 @@ func NewQtPrivate__ResultItem() *QtPrivate__ResultItem {
 }
 
 func (this *QtPrivate__ResultItem) IsValid() bool {
-	ret := C.QtPrivate__ResultItem_IsValid(this.h)
-	return (bool)(ret)
+	_ret := C.QtPrivate__ResultItem_IsValid(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QtPrivate__ResultItem) IsVector() bool {
-	ret := C.QtPrivate__ResultItem_IsVector(this.h)
-	return (bool)(ret)
+	_ret := C.QtPrivate__ResultItem_IsVector(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QtPrivate__ResultItem) Count() int {
-	ret := C.QtPrivate__ResultItem_Count(this.h)
-	return (int)(ret)
+	_ret := C.QtPrivate__ResultItem_Count(this.h)
+	return (int)(_ret)
 }
 
+// Delete this object from C++ memory.
 func (this *QtPrivate__ResultItem) Delete() {
 	C.QtPrivate__ResultItem_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QtPrivate__ResultItem) GoGC() {
+	runtime.SetFinalizer(this, func(this *QtPrivate__ResultItem) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
 
 type QtPrivate__ResultIteratorBase struct {
@@ -89,29 +99,25 @@ func NewQtPrivate__ResultIteratorBase() *QtPrivate__ResultIteratorBase {
 }
 
 func (this *QtPrivate__ResultIteratorBase) VectorIndex() int {
-	ret := C.QtPrivate__ResultIteratorBase_VectorIndex(this.h)
-	return (int)(ret)
+	_ret := C.QtPrivate__ResultIteratorBase_VectorIndex(this.h)
+	return (int)(_ret)
 }
 
 func (this *QtPrivate__ResultIteratorBase) ResultIndex() int {
-	ret := C.QtPrivate__ResultIteratorBase_ResultIndex(this.h)
-	return (int)(ret)
+	_ret := C.QtPrivate__ResultIteratorBase_ResultIndex(this.h)
+	return (int)(_ret)
 }
 
 func (this *QtPrivate__ResultIteratorBase) OperatorPlusPlus() *QtPrivate__ResultIteratorBase {
-	ret := C.QtPrivate__ResultIteratorBase_OperatorPlusPlus(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQtPrivate__ResultIteratorBase(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QtPrivate__ResultIteratorBase) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QtPrivate__ResultIteratorBase_OperatorPlusPlus(this.h)
+	_goptr := newQtPrivate__ResultIteratorBase(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QtPrivate__ResultIteratorBase) BatchSize() int {
-	ret := C.QtPrivate__ResultIteratorBase_BatchSize(this.h)
-	return (int)(ret)
+	_ret := C.QtPrivate__ResultIteratorBase_BatchSize(this.h)
+	return (int)(_ret)
 }
 
 func (this *QtPrivate__ResultIteratorBase) BatchedAdvance() {
@@ -119,27 +125,37 @@ func (this *QtPrivate__ResultIteratorBase) BatchedAdvance() {
 }
 
 func (this *QtPrivate__ResultIteratorBase) OperatorEqual(other *QtPrivate__ResultIteratorBase) bool {
-	ret := C.QtPrivate__ResultIteratorBase_OperatorEqual(this.h, other.cPointer())
-	return (bool)(ret)
+	_ret := C.QtPrivate__ResultIteratorBase_OperatorEqual(this.h, other.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QtPrivate__ResultIteratorBase) OperatorNotEqual(other *QtPrivate__ResultIteratorBase) bool {
-	ret := C.QtPrivate__ResultIteratorBase_OperatorNotEqual(this.h, other.cPointer())
-	return (bool)(ret)
+	_ret := C.QtPrivate__ResultIteratorBase_OperatorNotEqual(this.h, other.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QtPrivate__ResultIteratorBase) IsVector() bool {
-	ret := C.QtPrivate__ResultIteratorBase_IsVector(this.h)
-	return (bool)(ret)
+	_ret := C.QtPrivate__ResultIteratorBase_IsVector(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QtPrivate__ResultIteratorBase) CanIncrementVectorIndex() bool {
-	ret := C.QtPrivate__ResultIteratorBase_CanIncrementVectorIndex(this.h)
-	return (bool)(ret)
+	_ret := C.QtPrivate__ResultIteratorBase_CanIncrementVectorIndex(this.h)
+	return (bool)(_ret)
 }
 
+// Delete this object from C++ memory.
 func (this *QtPrivate__ResultIteratorBase) Delete() {
 	C.QtPrivate__ResultIteratorBase_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QtPrivate__ResultIteratorBase) GoGC() {
+	runtime.SetFinalizer(this, func(this *QtPrivate__ResultIteratorBase) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
 
 type QtPrivate__ResultStoreBase struct {
@@ -181,63 +197,61 @@ func (this *QtPrivate__ResultStoreBase) SetFilterMode(enable bool) {
 }
 
 func (this *QtPrivate__ResultStoreBase) FilterMode() bool {
-	ret := C.QtPrivate__ResultStoreBase_FilterMode(this.h)
-	return (bool)(ret)
+	_ret := C.QtPrivate__ResultStoreBase_FilterMode(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QtPrivate__ResultStoreBase) Begin() *QtPrivate__ResultIteratorBase {
-	ret := C.QtPrivate__ResultStoreBase_Begin(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQtPrivate__ResultIteratorBase(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QtPrivate__ResultIteratorBase) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QtPrivate__ResultStoreBase_Begin(this.h)
+	_goptr := newQtPrivate__ResultIteratorBase(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QtPrivate__ResultStoreBase) End() *QtPrivate__ResultIteratorBase {
-	ret := C.QtPrivate__ResultStoreBase_End(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQtPrivate__ResultIteratorBase(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QtPrivate__ResultIteratorBase) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QtPrivate__ResultStoreBase_End(this.h)
+	_goptr := newQtPrivate__ResultIteratorBase(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QtPrivate__ResultStoreBase) HasNextResult() bool {
-	ret := C.QtPrivate__ResultStoreBase_HasNextResult(this.h)
-	return (bool)(ret)
+	_ret := C.QtPrivate__ResultStoreBase_HasNextResult(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QtPrivate__ResultStoreBase) ResultAt(index int) *QtPrivate__ResultIteratorBase {
-	ret := C.QtPrivate__ResultStoreBase_ResultAt(this.h, (C.int)(index))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQtPrivate__ResultIteratorBase(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QtPrivate__ResultIteratorBase) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QtPrivate__ResultStoreBase_ResultAt(this.h, (C.int)(index))
+	_goptr := newQtPrivate__ResultIteratorBase(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QtPrivate__ResultStoreBase) Contains(index int) bool {
-	ret := C.QtPrivate__ResultStoreBase_Contains(this.h, (C.int)(index))
-	return (bool)(ret)
+	_ret := C.QtPrivate__ResultStoreBase_Contains(this.h, (C.int)(index))
+	return (bool)(_ret)
 }
 
 func (this *QtPrivate__ResultStoreBase) Count() int {
-	ret := C.QtPrivate__ResultStoreBase_Count(this.h)
-	return (int)(ret)
+	_ret := C.QtPrivate__ResultStoreBase_Count(this.h)
+	return (int)(_ret)
 }
 
 func (this *QtPrivate__ResultStoreBase) AddCanceledResult(index int) int {
-	ret := C.QtPrivate__ResultStoreBase_AddCanceledResult(this.h, (C.int)(index))
-	return (int)(ret)
+	_ret := C.QtPrivate__ResultStoreBase_AddCanceledResult(this.h, (C.int)(index))
+	return (int)(_ret)
 }
 
+// Delete this object from C++ memory.
 func (this *QtPrivate__ResultStoreBase) Delete() {
 	C.QtPrivate__ResultStoreBase_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QtPrivate__ResultStoreBase) GoGC() {
+	runtime.SetFinalizer(this, func(this *QtPrivate__ResultStoreBase) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

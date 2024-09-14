@@ -72,17 +72,17 @@ func NewQAction() *QAction {
 
 // NewQAction2 constructs a new QAction object.
 func NewQAction2(text string) *QAction {
-	text_Cstring := C.CString(text)
-	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QAction_new2(text_Cstring, C.size_t(len(text)))
+	text_ms := miqt_strdupg(text)
+	defer C.free(text_ms)
+	ret := C.QAction_new2((*C.struct_miqt_string)(text_ms))
 	return newQAction(ret)
 }
 
 // NewQAction3 constructs a new QAction object.
 func NewQAction3(icon *QIcon, text string) *QAction {
-	text_Cstring := C.CString(text)
-	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QAction_new3(icon.cPointer(), text_Cstring, C.size_t(len(text)))
+	text_ms := miqt_strdupg(text)
+	defer C.free(text_ms)
+	ret := C.QAction_new3(icon.cPointer(), (*C.struct_miqt_string)(text_ms))
 	return newQAction(ret)
 }
 
@@ -94,45 +94,41 @@ func NewQAction4(parent *QObject) *QAction {
 
 // NewQAction5 constructs a new QAction object.
 func NewQAction5(text string, parent *QObject) *QAction {
-	text_Cstring := C.CString(text)
-	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QAction_new5(text_Cstring, C.size_t(len(text)), parent.cPointer())
+	text_ms := miqt_strdupg(text)
+	defer C.free(text_ms)
+	ret := C.QAction_new5((*C.struct_miqt_string)(text_ms), parent.cPointer())
 	return newQAction(ret)
 }
 
 // NewQAction6 constructs a new QAction object.
 func NewQAction6(icon *QIcon, text string, parent *QObject) *QAction {
-	text_Cstring := C.CString(text)
-	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QAction_new6(icon.cPointer(), text_Cstring, C.size_t(len(text)), parent.cPointer())
+	text_ms := miqt_strdupg(text)
+	defer C.free(text_ms)
+	ret := C.QAction_new6(icon.cPointer(), (*C.struct_miqt_string)(text_ms), parent.cPointer())
 	return newQAction(ret)
 }
 
 func (this *QAction) MetaObject() *QMetaObject {
-	ret := C.QAction_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QAction_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QAction_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QAction_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QAction_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QAction_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QAction_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QAction_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QAction) SetActionGroup(group *QActionGroup) {
@@ -140,8 +136,8 @@ func (this *QAction) SetActionGroup(group *QActionGroup) {
 }
 
 func (this *QAction) ActionGroup() *QActionGroup {
-	ret := C.QAction_ActionGroup(this.h)
-	return newQActionGroup_U(unsafe.Pointer(ret))
+	_ret := C.QAction_ActionGroup(this.h)
+	return newQActionGroup_U(unsafe.Pointer(_ret))
 }
 
 func (this *QAction) SetIcon(icon *QIcon) {
@@ -149,89 +145,75 @@ func (this *QAction) SetIcon(icon *QIcon) {
 }
 
 func (this *QAction) Icon() *QIcon {
-	ret := C.QAction_Icon(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQIcon(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QIcon) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QAction_Icon(this.h)
+	_goptr := newQIcon(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QAction) SetText(text string) {
-	text_Cstring := C.CString(text)
-	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QAction_SetText(this.h, text_Cstring, C.size_t(len(text)))
+	text_ms := miqt_strdupg(text)
+	defer C.free(text_ms)
+	C.QAction_SetText(this.h, (*C.struct_miqt_string)(text_ms))
 }
 
 func (this *QAction) Text() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QAction_Text(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QAction_Text(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QAction) SetIconText(text string) {
-	text_Cstring := C.CString(text)
-	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QAction_SetIconText(this.h, text_Cstring, C.size_t(len(text)))
+	text_ms := miqt_strdupg(text)
+	defer C.free(text_ms)
+	C.QAction_SetIconText(this.h, (*C.struct_miqt_string)(text_ms))
 }
 
 func (this *QAction) IconText() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QAction_IconText(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QAction_IconText(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QAction) SetToolTip(tip string) {
-	tip_Cstring := C.CString(tip)
-	defer C.free(unsafe.Pointer(tip_Cstring))
-	C.QAction_SetToolTip(this.h, tip_Cstring, C.size_t(len(tip)))
+	tip_ms := miqt_strdupg(tip)
+	defer C.free(tip_ms)
+	C.QAction_SetToolTip(this.h, (*C.struct_miqt_string)(tip_ms))
 }
 
 func (this *QAction) ToolTip() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QAction_ToolTip(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QAction_ToolTip(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QAction) SetStatusTip(statusTip string) {
-	statusTip_Cstring := C.CString(statusTip)
-	defer C.free(unsafe.Pointer(statusTip_Cstring))
-	C.QAction_SetStatusTip(this.h, statusTip_Cstring, C.size_t(len(statusTip)))
+	statusTip_ms := miqt_strdupg(statusTip)
+	defer C.free(statusTip_ms)
+	C.QAction_SetStatusTip(this.h, (*C.struct_miqt_string)(statusTip_ms))
 }
 
 func (this *QAction) StatusTip() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QAction_StatusTip(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QAction_StatusTip(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QAction) SetWhatsThis(what string) {
-	what_Cstring := C.CString(what)
-	defer C.free(unsafe.Pointer(what_Cstring))
-	C.QAction_SetWhatsThis(this.h, what_Cstring, C.size_t(len(what)))
+	what_ms := miqt_strdupg(what)
+	defer C.free(what_ms)
+	C.QAction_SetWhatsThis(this.h, (*C.struct_miqt_string)(what_ms))
 }
 
 func (this *QAction) WhatsThis() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QAction_WhatsThis(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QAction_WhatsThis(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QAction) SetPriority(priority QAction__Priority) {
@@ -239,13 +221,13 @@ func (this *QAction) SetPriority(priority QAction__Priority) {
 }
 
 func (this *QAction) Priority() QAction__Priority {
-	ret := C.QAction_Priority(this.h)
-	return (QAction__Priority)(ret)
+	_ret := C.QAction_Priority(this.h)
+	return (QAction__Priority)(_ret)
 }
 
 func (this *QAction) Menu() *QMenu {
-	ret := C.QAction_Menu(this.h)
-	return newQMenu_U(unsafe.Pointer(ret))
+	_ret := C.QAction_Menu(this.h)
+	return newQMenu_U(unsafe.Pointer(_ret))
 }
 
 func (this *QAction) SetMenu(menu *QMenu) {
@@ -257,8 +239,8 @@ func (this *QAction) SetSeparator(b bool) {
 }
 
 func (this *QAction) IsSeparator() bool {
-	ret := C.QAction_IsSeparator(this.h)
-	return (bool)(ret)
+	_ret := C.QAction_IsSeparator(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QAction) SetShortcut(shortcut *QKeySequence) {
@@ -266,14 +248,10 @@ func (this *QAction) SetShortcut(shortcut *QKeySequence) {
 }
 
 func (this *QAction) Shortcut() *QKeySequence {
-	ret := C.QAction_Shortcut(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQKeySequence(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QKeySequence) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QAction_Shortcut(this.h)
+	_goptr := newQKeySequence(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QAction) SetShortcuts(shortcuts []QKeySequence) {
@@ -283,7 +261,9 @@ func (this *QAction) SetShortcuts(shortcuts []QKeySequence) {
 	for i := range shortcuts {
 		shortcuts_CArray[i] = shortcuts[i].cPointer()
 	}
-	C.QAction_SetShortcuts(this.h, &shortcuts_CArray[0], C.size_t(len(shortcuts)))
+	shortcuts_ma := &C.struct_miqt_array{len: C.size_t(len(shortcuts)), data: unsafe.Pointer(shortcuts_CArray)}
+	defer runtime.KeepAlive(unsafe.Pointer(shortcuts_ma))
+	C.QAction_SetShortcuts(this.h, shortcuts_ma)
 }
 
 func (this *QAction) SetShortcutsWithShortcuts(shortcuts QKeySequence__StandardKey) {
@@ -291,16 +271,14 @@ func (this *QAction) SetShortcutsWithShortcuts(shortcuts QKeySequence__StandardK
 }
 
 func (this *QAction) Shortcuts() []QKeySequence {
-	var _out **C.QKeySequence = nil
-	var _out_len C.size_t = 0
-	C.QAction_Shortcuts(this.h, &_out, &_out_len)
-	ret := make([]QKeySequence, int(_out_len))
-	_outCast := (*[0xffff]*C.QKeySequence)(unsafe.Pointer(_out)) // so fresh so clean
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = *newQKeySequence(_outCast[i])
+	var _ma *C.struct_miqt_array = C.QAction_Shortcuts(this.h)
+	_ret := make([]QKeySequence, int(_ma.len))
+	_outCast := (*[0xffff]*C.QKeySequence)(unsafe.Pointer(_ma.data)) // mrs jackson
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = *newQKeySequence(_outCast[i])
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
 func (this *QAction) SetShortcutContext(context ShortcutContext) {
@@ -308,8 +286,8 @@ func (this *QAction) SetShortcutContext(context ShortcutContext) {
 }
 
 func (this *QAction) ShortcutContext() ShortcutContext {
-	ret := C.QAction_ShortcutContext(this.h)
-	return (ShortcutContext)(ret)
+	_ret := C.QAction_ShortcutContext(this.h)
+	return (ShortcutContext)(_ret)
 }
 
 func (this *QAction) SetAutoRepeat(autoRepeat bool) {
@@ -317,8 +295,8 @@ func (this *QAction) SetAutoRepeat(autoRepeat bool) {
 }
 
 func (this *QAction) AutoRepeat() bool {
-	ret := C.QAction_AutoRepeat(this.h)
-	return (bool)(ret)
+	_ret := C.QAction_AutoRepeat(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QAction) SetFont(font *QFont) {
@@ -326,14 +304,10 @@ func (this *QAction) SetFont(font *QFont) {
 }
 
 func (this *QAction) Font() *QFont {
-	ret := C.QAction_Font(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQFont(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QFont) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QAction_Font(this.h)
+	_goptr := newQFont(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QAction) SetCheckable(checkable bool) {
@@ -341,19 +315,15 @@ func (this *QAction) SetCheckable(checkable bool) {
 }
 
 func (this *QAction) IsCheckable() bool {
-	ret := C.QAction_IsCheckable(this.h)
-	return (bool)(ret)
+	_ret := C.QAction_IsCheckable(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QAction) Data() *QVariant {
-	ret := C.QAction_Data(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQVariant(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QVariant) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QAction_Data(this.h)
+	_goptr := newQVariant(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QAction) SetData(varVal *QVariant) {
@@ -361,18 +331,18 @@ func (this *QAction) SetData(varVal *QVariant) {
 }
 
 func (this *QAction) IsChecked() bool {
-	ret := C.QAction_IsChecked(this.h)
-	return (bool)(ret)
+	_ret := C.QAction_IsChecked(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QAction) IsEnabled() bool {
-	ret := C.QAction_IsEnabled(this.h)
-	return (bool)(ret)
+	_ret := C.QAction_IsEnabled(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QAction) IsVisible() bool {
-	ret := C.QAction_IsVisible(this.h)
-	return (bool)(ret)
+	_ret := C.QAction_IsVisible(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QAction) Activate(event QAction__ActionEvent) {
@@ -380,8 +350,8 @@ func (this *QAction) Activate(event QAction__ActionEvent) {
 }
 
 func (this *QAction) ShowStatusText() bool {
-	ret := C.QAction_ShowStatusText(this.h)
-	return (bool)(ret)
+	_ret := C.QAction_ShowStatusText(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QAction) SetMenuRole(menuRole QAction__MenuRole) {
@@ -389,8 +359,8 @@ func (this *QAction) SetMenuRole(menuRole QAction__MenuRole) {
 }
 
 func (this *QAction) MenuRole() QAction__MenuRole {
-	ret := C.QAction_MenuRole(this.h)
-	return (QAction__MenuRole)(ret)
+	_ret := C.QAction_MenuRole(this.h)
+	return (QAction__MenuRole)(_ret)
 }
 
 func (this *QAction) SetIconVisibleInMenu(visible bool) {
@@ -398,8 +368,8 @@ func (this *QAction) SetIconVisibleInMenu(visible bool) {
 }
 
 func (this *QAction) IsIconVisibleInMenu() bool {
-	ret := C.QAction_IsIconVisibleInMenu(this.h)
-	return (bool)(ret)
+	_ret := C.QAction_IsIconVisibleInMenu(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QAction) SetShortcutVisibleInContextMenu(show bool) {
@@ -407,39 +377,35 @@ func (this *QAction) SetShortcutVisibleInContextMenu(show bool) {
 }
 
 func (this *QAction) IsShortcutVisibleInContextMenu() bool {
-	ret := C.QAction_IsShortcutVisibleInContextMenu(this.h)
-	return (bool)(ret)
+	_ret := C.QAction_IsShortcutVisibleInContextMenu(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QAction) ParentWidget() *QWidget {
-	ret := C.QAction_ParentWidget(this.h)
-	return newQWidget_U(unsafe.Pointer(ret))
+	_ret := C.QAction_ParentWidget(this.h)
+	return newQWidget_U(unsafe.Pointer(_ret))
 }
 
 func (this *QAction) AssociatedWidgets() []*QWidget {
-	var _out **C.QWidget = nil
-	var _out_len C.size_t = 0
-	C.QAction_AssociatedWidgets(this.h, &_out, &_out_len)
-	ret := make([]*QWidget, int(_out_len))
-	_outCast := (*[0xffff]*C.QWidget)(unsafe.Pointer(_out)) // so fresh so clean
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = newQWidget(_outCast[i])
+	var _ma *C.struct_miqt_array = C.QAction_AssociatedWidgets(this.h)
+	_ret := make([]*QWidget, int(_ma.len))
+	_outCast := (*[0xffff]*C.QWidget)(unsafe.Pointer(_ma.data)) // mrs jackson
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = newQWidget(_outCast[i])
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
 func (this *QAction) AssociatedGraphicsWidgets() []*QGraphicsWidget {
-	var _out **C.QGraphicsWidget = nil
-	var _out_len C.size_t = 0
-	C.QAction_AssociatedGraphicsWidgets(this.h, &_out, &_out_len)
-	ret := make([]*QGraphicsWidget, int(_out_len))
-	_outCast := (*[0xffff]*C.QGraphicsWidget)(unsafe.Pointer(_out)) // so fresh so clean
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = newQGraphicsWidget(_outCast[i])
+	var _ma *C.struct_miqt_array = C.QAction_AssociatedGraphicsWidgets(this.h)
+	_ret := make([]*QGraphicsWidget, int(_ma.len))
+	_outCast := (*[0xffff]*C.QGraphicsWidget)(unsafe.Pointer(_ma.data)) // mrs jackson
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = newQGraphicsWidget(_outCast[i])
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
 func (this *QAction) Trigger() {
@@ -473,49 +439,73 @@ func (this *QAction) SetVisible(visible bool) {
 func (this *QAction) Changed() {
 	C.QAction_Changed(this.h)
 }
-
 func (this *QAction) OnChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+	C.QAction_connect_Changed(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
+
+//export miqt_exec_callback_QAction_Changed
+func miqt_exec_callback_QAction_Changed(cb *C.void) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QAction_connect_Changed(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	gofunc()
 }
 
 func (this *QAction) Triggered() {
 	C.QAction_Triggered(this.h)
 }
-
 func (this *QAction) OnTriggered(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+	C.QAction_connect_Triggered(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
+
+//export miqt_exec_callback_QAction_Triggered
+func miqt_exec_callback_QAction_Triggered(cb *C.void) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QAction_connect_Triggered(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	gofunc()
 }
 
 func (this *QAction) Hovered() {
 	C.QAction_Hovered(this.h)
 }
-
 func (this *QAction) OnHovered(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+	C.QAction_connect_Hovered(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
+
+//export miqt_exec_callback_QAction_Hovered
+func miqt_exec_callback_QAction_Hovered(cb *C.void) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QAction_connect_Hovered(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	gofunc()
 }
 
 func (this *QAction) Toggled(param1 bool) {
 	C.QAction_Toggled(this.h, (C.bool)(param1))
 }
+func (this *QAction) OnToggled(slot func(param1 bool)) {
+	C.QAction_connect_Toggled(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QAction) OnToggled(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QAction_Toggled
+func miqt_exec_callback_QAction_Toggled(cb *C.void, param1 C.bool) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(param1 bool))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QAction_connect_Toggled(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	param1_ret := param1
+	slotval1 := (bool)(param1_ret)
+
+	gofunc(slotval1)
 }
 
 func QAction_Tr2(s string, c string) string {
@@ -523,12 +513,10 @@ func QAction_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QAction_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QAction_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QAction_Tr3(s string, c string, n int) string {
@@ -536,12 +524,10 @@ func QAction_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QAction_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QAction_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QAction_TrUtf82(s string, c string) string {
@@ -549,12 +535,10 @@ func QAction_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QAction_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QAction_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QAction_TrUtf83(s string, c string, n int) string {
@@ -562,31 +546,48 @@ func QAction_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QAction_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QAction_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QAction) ShowStatusText1(widget *QWidget) bool {
-	ret := C.QAction_ShowStatusText1(this.h, widget.cPointer())
-	return (bool)(ret)
+	_ret := C.QAction_ShowStatusText1(this.h, widget.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QAction) Triggered1(checked bool) {
 	C.QAction_Triggered1(this.h, (C.bool)(checked))
 }
-
-func (this *QAction) OnTriggered1(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
-	}
-
-	C.QAction_connect_Triggered1(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+func (this *QAction) OnTriggered1(slot func(checked bool)) {
+	C.QAction_connect_Triggered1(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
 }
 
+//export miqt_exec_callback_QAction_Triggered1
+func miqt_exec_callback_QAction_Triggered1(cb *C.void, checked C.bool) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(checked bool))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	checked_ret := checked
+	slotval1 := (bool)(checked_ret)
+
+	gofunc(slotval1)
+}
+
+// Delete this object from C++ memory.
 func (this *QAction) Delete() {
 	C.QAction_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QAction) GoGC() {
+	runtime.SetFinalizer(this, func(this *QAction) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

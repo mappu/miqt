@@ -80,35 +80,31 @@ func NewQAbstractSpinBox2(parent *QWidget) *QAbstractSpinBox {
 }
 
 func (this *QAbstractSpinBox) MetaObject() *QMetaObject {
-	ret := C.QAbstractSpinBox_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QAbstractSpinBox_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QAbstractSpinBox_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QAbstractSpinBox_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QAbstractSpinBox_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QAbstractSpinBox_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QAbstractSpinBox_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QAbstractSpinBox_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QAbstractSpinBox) ButtonSymbols() QAbstractSpinBox__ButtonSymbols {
-	ret := C.QAbstractSpinBox_ButtonSymbols(this.h)
-	return (QAbstractSpinBox__ButtonSymbols)(ret)
+	_ret := C.QAbstractSpinBox_ButtonSymbols(this.h)
+	return (QAbstractSpinBox__ButtonSymbols)(_ret)
 }
 
 func (this *QAbstractSpinBox) SetButtonSymbols(bs QAbstractSpinBox__ButtonSymbols) {
@@ -120,42 +116,38 @@ func (this *QAbstractSpinBox) SetCorrectionMode(cm QAbstractSpinBox__CorrectionM
 }
 
 func (this *QAbstractSpinBox) CorrectionMode() QAbstractSpinBox__CorrectionMode {
-	ret := C.QAbstractSpinBox_CorrectionMode(this.h)
-	return (QAbstractSpinBox__CorrectionMode)(ret)
+	_ret := C.QAbstractSpinBox_CorrectionMode(this.h)
+	return (QAbstractSpinBox__CorrectionMode)(_ret)
 }
 
 func (this *QAbstractSpinBox) HasAcceptableInput() bool {
-	ret := C.QAbstractSpinBox_HasAcceptableInput(this.h)
-	return (bool)(ret)
+	_ret := C.QAbstractSpinBox_HasAcceptableInput(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QAbstractSpinBox) Text() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QAbstractSpinBox_Text(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QAbstractSpinBox_Text(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QAbstractSpinBox) SpecialValueText() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QAbstractSpinBox_SpecialValueText(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QAbstractSpinBox_SpecialValueText(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QAbstractSpinBox) SetSpecialValueText(txt string) {
-	txt_Cstring := C.CString(txt)
-	defer C.free(unsafe.Pointer(txt_Cstring))
-	C.QAbstractSpinBox_SetSpecialValueText(this.h, txt_Cstring, C.size_t(len(txt)))
+	txt_ms := miqt_strdupg(txt)
+	defer C.free(txt_ms)
+	C.QAbstractSpinBox_SetSpecialValueText(this.h, (*C.struct_miqt_string)(txt_ms))
 }
 
 func (this *QAbstractSpinBox) Wrapping() bool {
-	ret := C.QAbstractSpinBox_Wrapping(this.h)
-	return (bool)(ret)
+	_ret := C.QAbstractSpinBox_Wrapping(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QAbstractSpinBox) SetWrapping(w bool) {
@@ -167,8 +159,8 @@ func (this *QAbstractSpinBox) SetReadOnly(r bool) {
 }
 
 func (this *QAbstractSpinBox) IsReadOnly() bool {
-	ret := C.QAbstractSpinBox_IsReadOnly(this.h)
-	return (bool)(ret)
+	_ret := C.QAbstractSpinBox_IsReadOnly(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QAbstractSpinBox) SetKeyboardTracking(kt bool) {
@@ -176,8 +168,8 @@ func (this *QAbstractSpinBox) SetKeyboardTracking(kt bool) {
 }
 
 func (this *QAbstractSpinBox) KeyboardTracking() bool {
-	ret := C.QAbstractSpinBox_KeyboardTracking(this.h)
-	return (bool)(ret)
+	_ret := C.QAbstractSpinBox_KeyboardTracking(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QAbstractSpinBox) SetAlignment(flag int) {
@@ -185,8 +177,8 @@ func (this *QAbstractSpinBox) SetAlignment(flag int) {
 }
 
 func (this *QAbstractSpinBox) Alignment() int {
-	ret := C.QAbstractSpinBox_Alignment(this.h)
-	return (int)(ret)
+	_ret := C.QAbstractSpinBox_Alignment(this.h)
+	return (int)(_ret)
 }
 
 func (this *QAbstractSpinBox) SetFrame(frame bool) {
@@ -194,8 +186,8 @@ func (this *QAbstractSpinBox) SetFrame(frame bool) {
 }
 
 func (this *QAbstractSpinBox) HasFrame() bool {
-	ret := C.QAbstractSpinBox_HasFrame(this.h)
-	return (bool)(ret)
+	_ret := C.QAbstractSpinBox_HasFrame(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QAbstractSpinBox) SetAccelerated(on bool) {
@@ -203,8 +195,8 @@ func (this *QAbstractSpinBox) SetAccelerated(on bool) {
 }
 
 func (this *QAbstractSpinBox) IsAccelerated() bool {
-	ret := C.QAbstractSpinBox_IsAccelerated(this.h)
-	return (bool)(ret)
+	_ret := C.QAbstractSpinBox_IsAccelerated(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QAbstractSpinBox) SetGroupSeparatorShown(shown bool) {
@@ -212,30 +204,22 @@ func (this *QAbstractSpinBox) SetGroupSeparatorShown(shown bool) {
 }
 
 func (this *QAbstractSpinBox) IsGroupSeparatorShown() bool {
-	ret := C.QAbstractSpinBox_IsGroupSeparatorShown(this.h)
-	return (bool)(ret)
+	_ret := C.QAbstractSpinBox_IsGroupSeparatorShown(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QAbstractSpinBox) SizeHint() *QSize {
-	ret := C.QAbstractSpinBox_SizeHint(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSize(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QAbstractSpinBox_SizeHint(this.h)
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QAbstractSpinBox) MinimumSizeHint() *QSize {
-	ret := C.QAbstractSpinBox_MinimumSizeHint(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSize(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QAbstractSpinBox_MinimumSizeHint(this.h)
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QAbstractSpinBox) InterpretText() {
@@ -243,32 +227,28 @@ func (this *QAbstractSpinBox) InterpretText() {
 }
 
 func (this *QAbstractSpinBox) Event(event *QEvent) bool {
-	ret := C.QAbstractSpinBox_Event(this.h, event.cPointer())
-	return (bool)(ret)
+	_ret := C.QAbstractSpinBox_Event(this.h, event.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QAbstractSpinBox) InputMethodQuery(param1 InputMethodQuery) *QVariant {
-	ret := C.QAbstractSpinBox_InputMethodQuery(this.h, (C.uintptr_t)(param1))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQVariant(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QVariant) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QAbstractSpinBox_InputMethodQuery(this.h, (C.uintptr_t)(param1))
+	_goptr := newQVariant(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QAbstractSpinBox) Validate(input string, pos *int) QValidator__State {
-	input_Cstring := C.CString(input)
-	defer C.free(unsafe.Pointer(input_Cstring))
-	ret := C.QAbstractSpinBox_Validate(this.h, input_Cstring, C.size_t(len(input)), (*C.int)(unsafe.Pointer(pos)))
-	return (QValidator__State)(ret)
+	input_ms := miqt_strdupg(input)
+	defer C.free(input_ms)
+	_ret := C.QAbstractSpinBox_Validate(this.h, (*C.struct_miqt_string)(input_ms), (*C.int)(unsafe.Pointer(pos)))
+	return (QValidator__State)(_ret)
 }
 
 func (this *QAbstractSpinBox) Fixup(input string) {
-	input_Cstring := C.CString(input)
-	defer C.free(unsafe.Pointer(input_Cstring))
-	C.QAbstractSpinBox_Fixup(this.h, input_Cstring, C.size_t(len(input)))
+	input_ms := miqt_strdupg(input)
+	defer C.free(input_ms)
+	C.QAbstractSpinBox_Fixup(this.h, (*C.struct_miqt_string)(input_ms))
 }
 
 func (this *QAbstractSpinBox) StepBy(steps int) {
@@ -294,13 +274,18 @@ func (this *QAbstractSpinBox) Clear() {
 func (this *QAbstractSpinBox) EditingFinished() {
 	C.QAbstractSpinBox_EditingFinished(this.h)
 }
-
 func (this *QAbstractSpinBox) OnEditingFinished(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+	C.QAbstractSpinBox_connect_EditingFinished(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
+
+//export miqt_exec_callback_QAbstractSpinBox_EditingFinished
+func miqt_exec_callback_QAbstractSpinBox_EditingFinished(cb *C.void) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QAbstractSpinBox_connect_EditingFinished(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	gofunc()
 }
 
 func QAbstractSpinBox_Tr2(s string, c string) string {
@@ -308,12 +293,10 @@ func QAbstractSpinBox_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QAbstractSpinBox_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QAbstractSpinBox_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QAbstractSpinBox_Tr3(s string, c string, n int) string {
@@ -321,12 +304,10 @@ func QAbstractSpinBox_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QAbstractSpinBox_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QAbstractSpinBox_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QAbstractSpinBox_TrUtf82(s string, c string) string {
@@ -334,12 +315,10 @@ func QAbstractSpinBox_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QAbstractSpinBox_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QAbstractSpinBox_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QAbstractSpinBox_TrUtf83(s string, c string, n int) string {
@@ -347,14 +326,22 @@ func QAbstractSpinBox_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QAbstractSpinBox_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QAbstractSpinBox_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
+// Delete this object from C++ memory.
 func (this *QAbstractSpinBox) Delete() {
 	C.QAbstractSpinBox_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QAbstractSpinBox) GoGC() {
+	runtime.SetFinalizer(this, func(this *QAbstractSpinBox) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

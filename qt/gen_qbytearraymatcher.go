@@ -70,42 +70,48 @@ func (this *QByteArrayMatcher) SetPattern(pattern *QByteArray) {
 }
 
 func (this *QByteArrayMatcher) IndexIn(ba *QByteArray) int {
-	ret := C.QByteArrayMatcher_IndexIn(this.h, ba.cPointer())
-	return (int)(ret)
+	_ret := C.QByteArrayMatcher_IndexIn(this.h, ba.cPointer())
+	return (int)(_ret)
 }
 
 func (this *QByteArrayMatcher) IndexIn2(str string, lenVal int) int {
 	str_Cstring := C.CString(str)
 	defer C.free(unsafe.Pointer(str_Cstring))
-	ret := C.QByteArrayMatcher_IndexIn2(this.h, str_Cstring, (C.int)(lenVal))
-	return (int)(ret)
+	_ret := C.QByteArrayMatcher_IndexIn2(this.h, str_Cstring, (C.int)(lenVal))
+	return (int)(_ret)
 }
 
 func (this *QByteArrayMatcher) Pattern() *QByteArray {
-	ret := C.QByteArrayMatcher_Pattern(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQByteArray(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QByteArray) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QByteArrayMatcher_Pattern(this.h)
+	_goptr := newQByteArray(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QByteArrayMatcher) IndexIn22(ba *QByteArray, from int) int {
-	ret := C.QByteArrayMatcher_IndexIn22(this.h, ba.cPointer(), (C.int)(from))
-	return (int)(ret)
+	_ret := C.QByteArrayMatcher_IndexIn22(this.h, ba.cPointer(), (C.int)(from))
+	return (int)(_ret)
 }
 
 func (this *QByteArrayMatcher) IndexIn3(str string, lenVal int, from int) int {
 	str_Cstring := C.CString(str)
 	defer C.free(unsafe.Pointer(str_Cstring))
-	ret := C.QByteArrayMatcher_IndexIn3(this.h, str_Cstring, (C.int)(lenVal), (C.int)(from))
-	return (int)(ret)
+	_ret := C.QByteArrayMatcher_IndexIn3(this.h, str_Cstring, (C.int)(lenVal), (C.int)(from))
+	return (int)(_ret)
 }
 
+// Delete this object from C++ memory.
 func (this *QByteArrayMatcher) Delete() {
 	C.QByteArrayMatcher_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QByteArrayMatcher) GoGC() {
+	runtime.SetFinalizer(this, func(this *QByteArrayMatcher) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
 
 type QStaticByteArrayMatcherBase struct {
@@ -130,6 +136,16 @@ func newQStaticByteArrayMatcherBase_U(h unsafe.Pointer) *QStaticByteArrayMatcher
 	return newQStaticByteArrayMatcherBase((*C.QStaticByteArrayMatcherBase)(h))
 }
 
+// Delete this object from C++ memory.
 func (this *QStaticByteArrayMatcherBase) Delete() {
 	C.QStaticByteArrayMatcherBase_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QStaticByteArrayMatcherBase) GoGC() {
+	runtime.SetFinalizer(this, func(this *QStaticByteArrayMatcherBase) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

@@ -1,12 +1,8 @@
 #include <QSemaphore>
 #include <QSemaphoreReleaser>
 #include "qsemaphore.h"
-
 #include "gen_qsemaphore.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QSemaphore* QSemaphore_new() {
 	return new QSemaphore();

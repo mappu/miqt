@@ -2,12 +2,8 @@
 #define WORKAROUND_INNER_CLASS_DEFINITION_QHashData__Node
 #include <QHashDummyValue>
 #include "qhash.h"
-
 #include "gen_qhash.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 bool QHashData_WillGrow(QHashData* self) {
 	return self->willGrow();

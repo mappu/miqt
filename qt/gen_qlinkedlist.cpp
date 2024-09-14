@@ -1,11 +1,7 @@
 #include <QLinkedListData>
 #include "qlinkedlist.h"
-
 #include "gen_qlinkedlist.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QLinkedListData* QLinkedListData_new() {
 	return new QLinkedListData();

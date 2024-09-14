@@ -96,28 +96,28 @@ func NewQVector4D10(param1 *QVector4D) *QVector4D {
 }
 
 func (this *QVector4D) IsNull() bool {
-	ret := C.QVector4D_IsNull(this.h)
-	return (bool)(ret)
+	_ret := C.QVector4D_IsNull(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QVector4D) X() float32 {
-	ret := C.QVector4D_X(this.h)
-	return (float32)(ret)
+	_ret := C.QVector4D_X(this.h)
+	return (float32)(_ret)
 }
 
 func (this *QVector4D) Y() float32 {
-	ret := C.QVector4D_Y(this.h)
-	return (float32)(ret)
+	_ret := C.QVector4D_Y(this.h)
+	return (float32)(_ret)
 }
 
 func (this *QVector4D) Z() float32 {
-	ret := C.QVector4D_Z(this.h)
-	return (float32)(ret)
+	_ret := C.QVector4D_Z(this.h)
+	return (float32)(_ret)
 }
 
 func (this *QVector4D) W() float32 {
-	ret := C.QVector4D_W(this.h)
-	return (float32)(ret)
+	_ret := C.QVector4D_W(this.h)
+	return (float32)(_ret)
 }
 
 func (this *QVector4D) SetX(x float32) {
@@ -137,29 +137,25 @@ func (this *QVector4D) SetW(w float32) {
 }
 
 func (this *QVector4D) OperatorSubscript(i int) float32 {
-	ret := C.QVector4D_OperatorSubscript(this.h, (C.int)(i))
-	return (float32)(ret)
+	_ret := C.QVector4D_OperatorSubscript(this.h, (C.int)(i))
+	return (float32)(_ret)
 }
 
 func (this *QVector4D) Length() float32 {
-	ret := C.QVector4D_Length(this.h)
-	return (float32)(ret)
+	_ret := C.QVector4D_Length(this.h)
+	return (float32)(_ret)
 }
 
 func (this *QVector4D) LengthSquared() float32 {
-	ret := C.QVector4D_LengthSquared(this.h)
-	return (float32)(ret)
+	_ret := C.QVector4D_LengthSquared(this.h)
+	return (float32)(_ret)
 }
 
 func (this *QVector4D) Normalized() *QVector4D {
-	ret := C.QVector4D_Normalized(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQVector4D(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QVector4D) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QVector4D_Normalized(this.h)
+	_goptr := newQVector4D(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QVector4D) Normalize() {
@@ -167,106 +163,92 @@ func (this *QVector4D) Normalize() {
 }
 
 func (this *QVector4D) OperatorPlusAssign(vector *QVector4D) *QVector4D {
-	ret := C.QVector4D_OperatorPlusAssign(this.h, vector.cPointer())
-	return newQVector4D_U(unsafe.Pointer(ret))
+	_ret := C.QVector4D_OperatorPlusAssign(this.h, vector.cPointer())
+	return newQVector4D_U(unsafe.Pointer(_ret))
 }
 
 func (this *QVector4D) OperatorMinusAssign(vector *QVector4D) *QVector4D {
-	ret := C.QVector4D_OperatorMinusAssign(this.h, vector.cPointer())
-	return newQVector4D_U(unsafe.Pointer(ret))
+	_ret := C.QVector4D_OperatorMinusAssign(this.h, vector.cPointer())
+	return newQVector4D_U(unsafe.Pointer(_ret))
 }
 
 func (this *QVector4D) OperatorMultiplyAssign(factor float32) *QVector4D {
-	ret := C.QVector4D_OperatorMultiplyAssign(this.h, (C.float)(factor))
-	return newQVector4D_U(unsafe.Pointer(ret))
+	_ret := C.QVector4D_OperatorMultiplyAssign(this.h, (C.float)(factor))
+	return newQVector4D_U(unsafe.Pointer(_ret))
 }
 
 func (this *QVector4D) OperatorMultiplyAssignWithVector(vector *QVector4D) *QVector4D {
-	ret := C.QVector4D_OperatorMultiplyAssignWithVector(this.h, vector.cPointer())
-	return newQVector4D_U(unsafe.Pointer(ret))
+	_ret := C.QVector4D_OperatorMultiplyAssignWithVector(this.h, vector.cPointer())
+	return newQVector4D_U(unsafe.Pointer(_ret))
 }
 
 func (this *QVector4D) OperatorDivideAssign(divisor float32) *QVector4D {
-	ret := C.QVector4D_OperatorDivideAssign(this.h, (C.float)(divisor))
-	return newQVector4D_U(unsafe.Pointer(ret))
+	_ret := C.QVector4D_OperatorDivideAssign(this.h, (C.float)(divisor))
+	return newQVector4D_U(unsafe.Pointer(_ret))
 }
 
 func (this *QVector4D) OperatorDivideAssignWithVector(vector *QVector4D) *QVector4D {
-	ret := C.QVector4D_OperatorDivideAssignWithVector(this.h, vector.cPointer())
-	return newQVector4D_U(unsafe.Pointer(ret))
+	_ret := C.QVector4D_OperatorDivideAssignWithVector(this.h, vector.cPointer())
+	return newQVector4D_U(unsafe.Pointer(_ret))
 }
 
 func QVector4D_DotProduct(v1 *QVector4D, v2 *QVector4D) float32 {
-	ret := C.QVector4D_DotProduct(v1.cPointer(), v2.cPointer())
-	return (float32)(ret)
+	_ret := C.QVector4D_DotProduct(v1.cPointer(), v2.cPointer())
+	return (float32)(_ret)
 }
 
 func (this *QVector4D) ToVector2D() *QVector2D {
-	ret := C.QVector4D_ToVector2D(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQVector2D(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QVector2D) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QVector4D_ToVector2D(this.h)
+	_goptr := newQVector2D(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QVector4D) ToVector2DAffine() *QVector2D {
-	ret := C.QVector4D_ToVector2DAffine(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQVector2D(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QVector2D) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QVector4D_ToVector2DAffine(this.h)
+	_goptr := newQVector2D(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QVector4D) ToVector3D() *QVector3D {
-	ret := C.QVector4D_ToVector3D(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQVector3D(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QVector3D) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QVector4D_ToVector3D(this.h)
+	_goptr := newQVector3D(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QVector4D) ToVector3DAffine() *QVector3D {
-	ret := C.QVector4D_ToVector3DAffine(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQVector3D(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QVector3D) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QVector4D_ToVector3DAffine(this.h)
+	_goptr := newQVector3D(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QVector4D) ToPoint() *QPoint {
-	ret := C.QVector4D_ToPoint(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPoint(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPoint) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QVector4D_ToPoint(this.h)
+	_goptr := newQPoint(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QVector4D) ToPointF() *QPointF {
-	ret := C.QVector4D_ToPointF(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPointF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPointF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QVector4D_ToPointF(this.h)
+	_goptr := newQPointF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
+// Delete this object from C++ memory.
 func (this *QVector4D) Delete() {
 	C.QVector4D_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QVector4D) GoGC() {
+	runtime.SetFinalizer(this, func(this *QVector4D) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

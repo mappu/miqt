@@ -9,33 +9,25 @@
 #include <QByteArray>
 #include <cstring>
 #include "qscroller.h"
-
 #include "gen_qscroller.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QMetaObject* QScroller_MetaObject(const QScroller* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void QScroller_Tr(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QScroller::tr(s);
+struct miqt_string* QScroller_Tr(const char* s) {
+	QString _ret = QScroller::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QScroller_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QScroller::trUtf8(s);
+struct miqt_string* QScroller_TrUtf8(const char* s) {
+	QString _ret = QScroller::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 bool QScroller_HasScroller(QObject* target) {
@@ -51,28 +43,30 @@ QScroller* QScroller_ScrollerWithTarget(QObject* target) {
 }
 
 uintptr_t QScroller_GrabGesture(QObject* target) {
-	Qt::GestureType ret = QScroller::grabGesture(target);
-	return static_cast<uintptr_t>(ret);
+	Qt::GestureType _ret = QScroller::grabGesture(target);
+	return static_cast<uintptr_t>(_ret);
 }
 
 uintptr_t QScroller_GrabbedGesture(QObject* target) {
-	Qt::GestureType ret = QScroller::grabbedGesture(target);
-	return static_cast<uintptr_t>(ret);
+	Qt::GestureType _ret = QScroller::grabbedGesture(target);
+	return static_cast<uintptr_t>(_ret);
 }
 
 void QScroller_UngrabGesture(QObject* target) {
 	QScroller::ungrabGesture(target);
 }
 
-void QScroller_ActiveScrollers(QScroller*** _out, size_t* _out_len) {
-	QList<QScroller*> ret = QScroller::activeScrollers();
+struct miqt_array* QScroller_ActiveScrollers() {
+	QList<QScroller*> _ret = QScroller::activeScrollers();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QScroller** __out = static_cast<QScroller**>(malloc(sizeof(QScroller*) * ret.length()));
-	for (size_t i = 0, e = ret.length(); i < e; ++i) {
-		__out[i] = ret[i];
+	QScroller** _arr = static_cast<QScroller**>(malloc(sizeof(QScroller*) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		_arr[i] = _ret[i];
 	}
-	*_out = __out;
-	*_out_len = ret.length();
+	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
+	_out->len = _ret.length();
+	_out->data = static_cast<void*>(_arr);
+	return _out;
 }
 
 QObject* QScroller_Target(const QScroller* self) {
@@ -80,8 +74,8 @@ QObject* QScroller_Target(const QScroller* self) {
 }
 
 uintptr_t QScroller_State(const QScroller* self) {
-	QScroller::State ret = self->state();
-	return static_cast<uintptr_t>(ret);
+	QScroller::State _ret = self->state();
+	return static_cast<uintptr_t>(_ret);
 }
 
 bool QScroller_HandleInput(QScroller* self, uintptr_t input, QPointF* position) {
@@ -93,34 +87,35 @@ void QScroller_Stop(QScroller* self) {
 }
 
 QPointF* QScroller_Velocity(const QScroller* self) {
-	QPointF ret = self->velocity();
+	QPointF _ret = self->velocity();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPointF*>(new QPointF(ret));
+	return static_cast<QPointF*>(new QPointF(_ret));
 }
 
 QPointF* QScroller_FinalPosition(const QScroller* self) {
-	QPointF ret = self->finalPosition();
+	QPointF _ret = self->finalPosition();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPointF*>(new QPointF(ret));
+	return static_cast<QPointF*>(new QPointF(_ret));
 }
 
 QPointF* QScroller_PixelPerMeter(const QScroller* self) {
-	QPointF ret = self->pixelPerMeter();
+	QPointF _ret = self->pixelPerMeter();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPointF*>(new QPointF(ret));
+	return static_cast<QPointF*>(new QPointF(_ret));
 }
 
 QScrollerProperties* QScroller_ScrollerProperties(const QScroller* self) {
-	QScrollerProperties ret = self->scrollerProperties();
+	QScrollerProperties _ret = self->scrollerProperties();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QScrollerProperties*>(new QScrollerProperties(ret));
+	return static_cast<QScrollerProperties*>(new QScrollerProperties(_ret));
 }
 
-void QScroller_SetSnapPositionsX(QScroller* self, double* positions, size_t positions_len) {
+void QScroller_SetSnapPositionsX(QScroller* self, struct miqt_array* /* of double */ positions) {
 	QList<double> positions_QList;
-	positions_QList.reserve(positions_len);
-	for(size_t i = 0; i < positions_len; ++i) {
-		positions_QList.push_back(positions[i]);
+	positions_QList.reserve(positions->len);
+	double* positions_arr = static_cast<double*>(positions->data);
+	for(size_t i = 0; i < positions->len; ++i) {
+		positions_QList.push_back(positions_arr[i]);
 	}
 	self->setSnapPositionsX(positions_QList);
 }
@@ -129,11 +124,12 @@ void QScroller_SetSnapPositionsX2(QScroller* self, double first, double interval
 	self->setSnapPositionsX(static_cast<qreal>(first), static_cast<qreal>(interval));
 }
 
-void QScroller_SetSnapPositionsY(QScroller* self, double* positions, size_t positions_len) {
+void QScroller_SetSnapPositionsY(QScroller* self, struct miqt_array* /* of double */ positions) {
 	QList<double> positions_QList;
-	positions_QList.reserve(positions_len);
-	for(size_t i = 0; i < positions_len; ++i) {
-		positions_QList.push_back(positions[i]);
+	positions_QList.reserve(positions->len);
+	double* positions_arr = static_cast<double*>(positions->data);
+	for(size_t i = 0; i < positions->len; ++i) {
+		positions_QList.push_back(positions_arr[i]);
 	}
 	self->setSnapPositionsY(positions_QList);
 }
@@ -172,7 +168,9 @@ void QScroller_StateChanged(QScroller* self, uintptr_t newstate) {
 
 void QScroller_connect_StateChanged(QScroller* self, void* slot) {
 	QScroller::connect(self, static_cast<void (QScroller::*)(QScroller::State)>(&QScroller::stateChanged), self, [=](QScroller::State newstate) {
-		miqt_exec_callback(slot, 0, nullptr);
+		QScroller::State newstate_ret = newstate;
+		uintptr_t sigval1 = static_cast<uintptr_t>(newstate_ret);
+		miqt_exec_callback_QScroller_StateChanged(slot, sigval1);
 	});
 }
 
@@ -182,49 +180,44 @@ void QScroller_ScrollerPropertiesChanged(QScroller* self, QScrollerProperties* p
 
 void QScroller_connect_ScrollerPropertiesChanged(QScroller* self, void* slot) {
 	QScroller::connect(self, static_cast<void (QScroller::*)(const QScrollerProperties&)>(&QScroller::scrollerPropertiesChanged), self, [=](const QScrollerProperties& param1) {
-		miqt_exec_callback(slot, 0, nullptr);
+		const QScrollerProperties& param1_ret = param1;
+		// Cast returned reference into pointer
+		QScrollerProperties* sigval1 = const_cast<QScrollerProperties*>(&param1_ret);
+		miqt_exec_callback_QScroller_ScrollerPropertiesChanged(slot, sigval1);
 	});
 }
 
-void QScroller_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QScroller::tr(s, c);
+struct miqt_string* QScroller_Tr2(const char* s, const char* c) {
+	QString _ret = QScroller::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QScroller_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QScroller::tr(s, c, static_cast<int>(n));
+struct miqt_string* QScroller_Tr3(const char* s, const char* c, int n) {
+	QString _ret = QScroller::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QScroller_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QScroller::trUtf8(s, c);
+struct miqt_string* QScroller_TrUtf82(const char* s, const char* c) {
+	QString _ret = QScroller::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QScroller_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QScroller::trUtf8(s, c, static_cast<int>(n));
+struct miqt_string* QScroller_TrUtf83(const char* s, const char* c, int n) {
+	QString _ret = QScroller::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 uintptr_t QScroller_GrabGesture2(QObject* target, uintptr_t gestureType) {
-	Qt::GestureType ret = QScroller::grabGesture(target, static_cast<QScroller::ScrollerGestureType>(gestureType));
-	return static_cast<uintptr_t>(ret);
+	Qt::GestureType _ret = QScroller::grabGesture(target, static_cast<QScroller::ScrollerGestureType>(gestureType));
+	return static_cast<uintptr_t>(_ret);
 }
 
 bool QScroller_HandleInput3(QScroller* self, uintptr_t input, QPointF* position, long long timestamp) {

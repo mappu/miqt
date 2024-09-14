@@ -5,12 +5,8 @@
 #include <cstring>
 #include <QTimer>
 #include "qtimer.h"
-
 #include "gen_qtimer.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QTimer* QTimer_new() {
 	return new QTimer();
@@ -24,22 +20,18 @@ QMetaObject* QTimer_MetaObject(const QTimer* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void QTimer_Tr(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QTimer::tr(s);
+struct miqt_string* QTimer_Tr(const char* s) {
+	QString _ret = QTimer::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QTimer_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QTimer::trUtf8(s);
+struct miqt_string* QTimer_TrUtf8(const char* s) {
+	QString _ret = QTimer::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 bool QTimer_IsActive(const QTimer* self) {
@@ -67,8 +59,8 @@ void QTimer_SetTimerType(QTimer* self, uintptr_t atype) {
 }
 
 uintptr_t QTimer_TimerType(const QTimer* self) {
-	Qt::TimerType ret = self->timerType();
-	return static_cast<uintptr_t>(ret);
+	Qt::TimerType _ret = self->timerType();
+	return static_cast<uintptr_t>(_ret);
 }
 
 void QTimer_SetSingleShot(QTimer* self, bool singleShot) {
@@ -91,40 +83,32 @@ void QTimer_Stop(QTimer* self) {
 	self->stop();
 }
 
-void QTimer_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QTimer::tr(s, c);
+struct miqt_string* QTimer_Tr2(const char* s, const char* c) {
+	QString _ret = QTimer::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QTimer_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QTimer::tr(s, c, static_cast<int>(n));
+struct miqt_string* QTimer_Tr3(const char* s, const char* c, int n) {
+	QString _ret = QTimer::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QTimer_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QTimer::trUtf8(s, c);
+struct miqt_string* QTimer_TrUtf82(const char* s, const char* c) {
+	QString _ret = QTimer::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QTimer_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QTimer::trUtf8(s, c, static_cast<int>(n));
+struct miqt_string* QTimer_TrUtf83(const char* s, const char* c, int n) {
+	QString _ret = QTimer::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QTimer_Delete(QTimer* self) {

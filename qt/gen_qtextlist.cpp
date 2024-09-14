@@ -7,12 +7,8 @@
 #include <QTextList>
 #include <QTextListFormat>
 #include "qtextlist.h"
-
 #include "gen_qtextlist.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QTextList* QTextList_new(QTextDocument* doc) {
 	return new QTextList(doc);
@@ -22,22 +18,18 @@ QMetaObject* QTextList_MetaObject(const QTextList* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void QTextList_Tr(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QTextList::tr(s);
+struct miqt_string* QTextList_Tr(const char* s) {
+	QString _ret = QTextList::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QTextList_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QTextList::trUtf8(s);
+struct miqt_string* QTextList_TrUtf8(const char* s) {
+	QString _ret = QTextList::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 int QTextList_Count(const QTextList* self) {
@@ -49,22 +41,20 @@ bool QTextList_IsEmpty(const QTextList* self) {
 }
 
 QTextBlock* QTextList_Item(const QTextList* self, int i) {
-	QTextBlock ret = self->item(static_cast<int>(i));
+	QTextBlock _ret = self->item(static_cast<int>(i));
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextBlock*>(new QTextBlock(ret));
+	return static_cast<QTextBlock*>(new QTextBlock(_ret));
 }
 
 int QTextList_ItemNumber(const QTextList* self, QTextBlock* param1) {
 	return self->itemNumber(*param1);
 }
 
-void QTextList_ItemText(const QTextList* self, QTextBlock* param1, char** _out, int* _out_Strlen) {
-	QString ret = self->itemText(*param1);
+struct miqt_string* QTextList_ItemText(const QTextList* self, QTextBlock* param1) {
+	QString _ret = self->itemText(*param1);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QTextList_RemoveItem(QTextList* self, int i) {
@@ -84,45 +74,37 @@ void QTextList_SetFormat(QTextList* self, QTextListFormat* format) {
 }
 
 QTextListFormat* QTextList_Format(const QTextList* self) {
-	QTextListFormat ret = self->format();
+	QTextListFormat _ret = self->format();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextListFormat*>(new QTextListFormat(ret));
+	return static_cast<QTextListFormat*>(new QTextListFormat(_ret));
 }
 
-void QTextList_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QTextList::tr(s, c);
+struct miqt_string* QTextList_Tr2(const char* s, const char* c) {
+	QString _ret = QTextList::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QTextList_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QTextList::tr(s, c, static_cast<int>(n));
+struct miqt_string* QTextList_Tr3(const char* s, const char* c, int n) {
+	QString _ret = QTextList::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QTextList_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QTextList::trUtf8(s, c);
+struct miqt_string* QTextList_TrUtf82(const char* s, const char* c) {
+	QString _ret = QTextList::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QTextList_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QTextList::trUtf8(s, c, static_cast<int>(n));
+struct miqt_string* QTextList_TrUtf83(const char* s, const char* c, int n) {
+	QString _ret = QTextList::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QTextList_Delete(QTextList* self) {

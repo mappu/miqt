@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -52,8 +54,8 @@ QGraphicsView* QGraphicsView_new2(QGraphicsScene* scene);
 QGraphicsView* QGraphicsView_new3(QWidget* parent);
 QGraphicsView* QGraphicsView_new4(QGraphicsScene* scene, QWidget* parent);
 QMetaObject* QGraphicsView_MetaObject(const QGraphicsView* self);
-void QGraphicsView_Tr(const char* s, char** _out, int* _out_Strlen);
-void QGraphicsView_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QGraphicsView_Tr(const char* s);
+struct miqt_string* QGraphicsView_TrUtf8(const char* s);
 QSize* QGraphicsView_SizeHint(const QGraphicsView* self);
 int QGraphicsView_RenderHints(const QGraphicsView* self);
 void QGraphicsView_SetRenderHint(QGraphicsView* self, uintptr_t hint);
@@ -106,12 +108,12 @@ void QGraphicsView_FitInView(QGraphicsView* self, QRectF* rect);
 void QGraphicsView_FitInView2(QGraphicsView* self, double x, double y, double w, double h);
 void QGraphicsView_FitInViewWithItem(QGraphicsView* self, QGraphicsItem* item);
 void QGraphicsView_Render(QGraphicsView* self, QPainter* painter);
-void QGraphicsView_Items(const QGraphicsView* self, QGraphicsItem*** _out, size_t* _out_len);
-void QGraphicsView_ItemsWithPos(const QGraphicsView* self, QPoint* pos, QGraphicsItem*** _out, size_t* _out_len);
-void QGraphicsView_Items2(const QGraphicsView* self, int x, int y, QGraphicsItem*** _out, size_t* _out_len);
-void QGraphicsView_ItemsWithRect(const QGraphicsView* self, QRect* rect, QGraphicsItem*** _out, size_t* _out_len);
-void QGraphicsView_Items3(const QGraphicsView* self, int x, int y, int w, int h, QGraphicsItem*** _out, size_t* _out_len);
-void QGraphicsView_ItemsWithPath(const QGraphicsView* self, QPainterPath* path, QGraphicsItem*** _out, size_t* _out_len);
+struct miqt_array* QGraphicsView_Items(const QGraphicsView* self);
+struct miqt_array* QGraphicsView_ItemsWithPos(const QGraphicsView* self, QPoint* pos);
+struct miqt_array* QGraphicsView_Items2(const QGraphicsView* self, int x, int y);
+struct miqt_array* QGraphicsView_ItemsWithRect(const QGraphicsView* self, QRect* rect);
+struct miqt_array* QGraphicsView_Items3(const QGraphicsView* self, int x, int y, int w, int h);
+struct miqt_array* QGraphicsView_ItemsWithPath(const QGraphicsView* self, QPainterPath* path);
 QGraphicsItem* QGraphicsView_ItemAt(const QGraphicsView* self, QPoint* pos);
 QGraphicsItem* QGraphicsView_ItemAt2(const QGraphicsView* self, int x, int y);
 QPointF* QGraphicsView_MapToScene(const QGraphicsView* self, QPoint* point);
@@ -125,15 +127,15 @@ QBrush* QGraphicsView_BackgroundBrush(const QGraphicsView* self);
 void QGraphicsView_SetBackgroundBrush(QGraphicsView* self, QBrush* brush);
 QBrush* QGraphicsView_ForegroundBrush(const QGraphicsView* self);
 void QGraphicsView_SetForegroundBrush(QGraphicsView* self, QBrush* brush);
-void QGraphicsView_UpdateScene(QGraphicsView* self, QRectF** rects, size_t rects_len);
+void QGraphicsView_UpdateScene(QGraphicsView* self, struct miqt_array* /* of QRectF */ rects);
 void QGraphicsView_InvalidateScene(QGraphicsView* self);
 void QGraphicsView_UpdateSceneRect(QGraphicsView* self, QRectF* rect);
 void QGraphicsView_RubberBandChanged(QGraphicsView* self, QRect* viewportRect, QPointF* fromScenePoint, QPointF* toScenePoint);
 void QGraphicsView_connect_RubberBandChanged(QGraphicsView* self, void* slot);
-void QGraphicsView_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QGraphicsView_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QGraphicsView_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QGraphicsView_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QGraphicsView_Tr2(const char* s, const char* c);
+struct miqt_string* QGraphicsView_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QGraphicsView_TrUtf82(const char* s, const char* c);
+struct miqt_string* QGraphicsView_TrUtf83(const char* s, const char* c, int n);
 void QGraphicsView_SetRenderHint2(QGraphicsView* self, uintptr_t hint, bool enabled);
 void QGraphicsView_SetOptimizationFlag2(QGraphicsView* self, uintptr_t flag, bool enabled);
 void QGraphicsView_SetMatrix2(QGraphicsView* self, QMatrix* matrix, bool combine);
@@ -150,9 +152,9 @@ void QGraphicsView_FitInView23(QGraphicsView* self, QGraphicsItem* item, uintptr
 void QGraphicsView_Render2(QGraphicsView* self, QPainter* painter, QRectF* target);
 void QGraphicsView_Render3(QGraphicsView* self, QPainter* painter, QRectF* target, QRect* source);
 void QGraphicsView_Render4(QGraphicsView* self, QPainter* painter, QRectF* target, QRect* source, uintptr_t aspectRatioMode);
-void QGraphicsView_Items22(const QGraphicsView* self, QRect* rect, uintptr_t mode, QGraphicsItem*** _out, size_t* _out_len);
-void QGraphicsView_Items5(const QGraphicsView* self, int x, int y, int w, int h, uintptr_t mode, QGraphicsItem*** _out, size_t* _out_len);
-void QGraphicsView_Items24(const QGraphicsView* self, QPainterPath* path, uintptr_t mode, QGraphicsItem*** _out, size_t* _out_len);
+struct miqt_array* QGraphicsView_Items22(const QGraphicsView* self, QRect* rect, uintptr_t mode);
+struct miqt_array* QGraphicsView_Items5(const QGraphicsView* self, int x, int y, int w, int h, uintptr_t mode);
+struct miqt_array* QGraphicsView_Items24(const QGraphicsView* self, QPainterPath* path, uintptr_t mode);
 void QGraphicsView_InvalidateScene1(QGraphicsView* self, QRectF* rect);
 void QGraphicsView_InvalidateScene2(QGraphicsView* self, QRectF* rect, int layers);
 void QGraphicsView_Delete(QGraphicsView* self);

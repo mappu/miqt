@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -30,8 +32,8 @@ typedef struct QThread QThread;
 QThread* QThread_new();
 QThread* QThread_new2(QObject* parent);
 QMetaObject* QThread_MetaObject(const QThread* self);
-void QThread_Tr(const char* s, char** _out, int* _out_Strlen);
-void QThread_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QThread_Tr(const char* s);
+struct miqt_string* QThread_TrUtf8(const char* s);
 QThread* QThread_CurrentThread();
 int QThread_IdealThreadCount();
 void QThread_YieldCurrentThread();
@@ -56,10 +58,10 @@ bool QThread_WaitWithTime(QThread* self, unsigned long time);
 void QThread_Sleep(unsigned long param1);
 void QThread_Msleep(unsigned long param1);
 void QThread_Usleep(unsigned long param1);
-void QThread_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QThread_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QThread_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QThread_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QThread_Tr2(const char* s, const char* c);
+struct miqt_string* QThread_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QThread_TrUtf82(const char* s, const char* c);
+struct miqt_string* QThread_TrUtf83(const char* s, const char* c, int n);
 void QThread_Exit1(QThread* self, int retcode);
 void QThread_Start1(QThread* self, uintptr_t param1);
 bool QThread_Wait1(QThread* self, QDeadlineTimer* deadline);

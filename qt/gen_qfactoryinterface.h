@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -17,7 +19,7 @@ class QFactoryInterface;
 typedef struct QFactoryInterface QFactoryInterface;
 #endif
 
-void QFactoryInterface_Keys(const QFactoryInterface* self, char*** _out, int** _out_Lengths, size_t* _out_len);
+struct miqt_array* QFactoryInterface_Keys(const QFactoryInterface* self);
 void QFactoryInterface_Delete(QFactoryInterface* self);
 
 #ifdef __cplusplus

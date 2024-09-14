@@ -8,47 +8,37 @@
 #include <QByteArray>
 #include <cstring>
 #include "qabstractbutton.h"
-
 #include "gen_qabstractbutton.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QMetaObject* QAbstractButton_MetaObject(const QAbstractButton* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void QAbstractButton_Tr(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QAbstractButton::tr(s);
+struct miqt_string* QAbstractButton_Tr(const char* s) {
+	QString _ret = QAbstractButton::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QAbstractButton_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QAbstractButton::trUtf8(s);
+struct miqt_string* QAbstractButton_TrUtf8(const char* s) {
+	QString _ret = QAbstractButton::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QAbstractButton_SetText(QAbstractButton* self, const char* text, size_t text_Strlen) {
-	QString text_QString = QString::fromUtf8(text, text_Strlen);
+void QAbstractButton_SetText(QAbstractButton* self, struct miqt_string* text) {
+	QString text_QString = QString::fromUtf8(&text->data, text->len);
 	self->setText(text_QString);
 }
 
-void QAbstractButton_Text(const QAbstractButton* self, char** _out, int* _out_Strlen) {
-	QString ret = self->text();
+struct miqt_string* QAbstractButton_Text(const QAbstractButton* self) {
+	QString _ret = self->text();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QAbstractButton_SetIcon(QAbstractButton* self, QIcon* icon) {
@@ -56,15 +46,15 @@ void QAbstractButton_SetIcon(QAbstractButton* self, QIcon* icon) {
 }
 
 QIcon* QAbstractButton_Icon(const QAbstractButton* self) {
-	QIcon ret = self->icon();
+	QIcon _ret = self->icon();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QIcon*>(new QIcon(ret));
+	return static_cast<QIcon*>(new QIcon(_ret));
 }
 
 QSize* QAbstractButton_IconSize(const QAbstractButton* self) {
-	QSize ret = self->iconSize();
+	QSize _ret = self->iconSize();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(ret));
+	return static_cast<QSize*>(new QSize(_ret));
 }
 
 void QAbstractButton_SetShortcut(QAbstractButton* self, QKeySequence* key) {
@@ -72,9 +62,9 @@ void QAbstractButton_SetShortcut(QAbstractButton* self, QKeySequence* key) {
 }
 
 QKeySequence* QAbstractButton_Shortcut(const QAbstractButton* self) {
-	QKeySequence ret = self->shortcut();
+	QKeySequence _ret = self->shortcut();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QKeySequence*>(new QKeySequence(ret));
+	return static_cast<QKeySequence*>(new QKeySequence(_ret));
 }
 
 void QAbstractButton_SetCheckable(QAbstractButton* self, bool checkable) {
@@ -159,7 +149,7 @@ void QAbstractButton_Pressed(QAbstractButton* self) {
 
 void QAbstractButton_connect_Pressed(QAbstractButton* self, void* slot) {
 	QAbstractButton::connect(self, static_cast<void (QAbstractButton::*)()>(&QAbstractButton::pressed), self, [=]() {
-		miqt_exec_callback(slot, 0, nullptr);
+		miqt_exec_callback_QAbstractButton_Pressed(slot);
 	});
 }
 
@@ -169,7 +159,7 @@ void QAbstractButton_Released(QAbstractButton* self) {
 
 void QAbstractButton_connect_Released(QAbstractButton* self, void* slot) {
 	QAbstractButton::connect(self, static_cast<void (QAbstractButton::*)()>(&QAbstractButton::released), self, [=]() {
-		miqt_exec_callback(slot, 0, nullptr);
+		miqt_exec_callback_QAbstractButton_Released(slot);
 	});
 }
 
@@ -179,7 +169,7 @@ void QAbstractButton_Clicked(QAbstractButton* self) {
 
 void QAbstractButton_connect_Clicked(QAbstractButton* self, void* slot) {
 	QAbstractButton::connect(self, static_cast<void (QAbstractButton::*)(bool)>(&QAbstractButton::clicked), self, [=]() {
-		miqt_exec_callback(slot, 0, nullptr);
+		miqt_exec_callback_QAbstractButton_Clicked(slot);
 	});
 }
 
@@ -189,44 +179,37 @@ void QAbstractButton_Toggled(QAbstractButton* self, bool checked) {
 
 void QAbstractButton_connect_Toggled(QAbstractButton* self, void* slot) {
 	QAbstractButton::connect(self, static_cast<void (QAbstractButton::*)(bool)>(&QAbstractButton::toggled), self, [=](bool checked) {
-		miqt_exec_callback(slot, 0, nullptr);
+		bool sigval1 = checked;
+		miqt_exec_callback_QAbstractButton_Toggled(slot, sigval1);
 	});
 }
 
-void QAbstractButton_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QAbstractButton::tr(s, c);
+struct miqt_string* QAbstractButton_Tr2(const char* s, const char* c) {
+	QString _ret = QAbstractButton::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QAbstractButton_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QAbstractButton::tr(s, c, static_cast<int>(n));
+struct miqt_string* QAbstractButton_Tr3(const char* s, const char* c, int n) {
+	QString _ret = QAbstractButton::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QAbstractButton_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QAbstractButton::trUtf8(s, c);
+struct miqt_string* QAbstractButton_TrUtf82(const char* s, const char* c) {
+	QString _ret = QAbstractButton::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QAbstractButton_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QAbstractButton::trUtf8(s, c, static_cast<int>(n));
+struct miqt_string* QAbstractButton_TrUtf83(const char* s, const char* c, int n) {
+	QString _ret = QAbstractButton::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QAbstractButton_AnimateClick1(QAbstractButton* self, int msec) {
@@ -239,7 +222,8 @@ void QAbstractButton_Clicked1(QAbstractButton* self, bool checked) {
 
 void QAbstractButton_connect_Clicked1(QAbstractButton* self, void* slot) {
 	QAbstractButton::connect(self, static_cast<void (QAbstractButton::*)(bool)>(&QAbstractButton::clicked), self, [=](bool checked) {
-		miqt_exec_callback(slot, 0, nullptr);
+		bool sigval1 = checked;
+		miqt_exec_callback_QAbstractButton_Clicked1(slot, sigval1);
 	});
 }
 

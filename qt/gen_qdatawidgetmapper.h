@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -34,8 +36,8 @@ typedef struct QWidget QWidget;
 QDataWidgetMapper* QDataWidgetMapper_new();
 QDataWidgetMapper* QDataWidgetMapper_new2(QObject* parent);
 QMetaObject* QDataWidgetMapper_MetaObject(const QDataWidgetMapper* self);
-void QDataWidgetMapper_Tr(const char* s, char** _out, int* _out_Strlen);
-void QDataWidgetMapper_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QDataWidgetMapper_Tr(const char* s);
+struct miqt_string* QDataWidgetMapper_TrUtf8(const char* s);
 void QDataWidgetMapper_SetModel(QDataWidgetMapper* self, QAbstractItemModel* model);
 QAbstractItemModel* QDataWidgetMapper_Model(const QDataWidgetMapper* self);
 void QDataWidgetMapper_SetItemDelegate(QDataWidgetMapper* self, QAbstractItemDelegate* delegate);
@@ -64,10 +66,10 @@ void QDataWidgetMapper_SetCurrentIndex(QDataWidgetMapper* self, int index);
 void QDataWidgetMapper_SetCurrentModelIndex(QDataWidgetMapper* self, QModelIndex* index);
 void QDataWidgetMapper_CurrentIndexChanged(QDataWidgetMapper* self, int index);
 void QDataWidgetMapper_connect_CurrentIndexChanged(QDataWidgetMapper* self, void* slot);
-void QDataWidgetMapper_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QDataWidgetMapper_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QDataWidgetMapper_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QDataWidgetMapper_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QDataWidgetMapper_Tr2(const char* s, const char* c);
+struct miqt_string* QDataWidgetMapper_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QDataWidgetMapper_TrUtf82(const char* s, const char* c);
+struct miqt_string* QDataWidgetMapper_TrUtf83(const char* s, const char* c, int n);
 void QDataWidgetMapper_Delete(QDataWidgetMapper* self);
 
 #ifdef __cplusplus

@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -68,32 +70,32 @@ typedef struct QTextObject QTextObject;
 #endif
 
 QMetaObject* QTextObject_MetaObject(const QTextObject* self);
-void QTextObject_Tr(const char* s, char** _out, int* _out_Strlen);
-void QTextObject_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QTextObject_Tr(const char* s);
+struct miqt_string* QTextObject_TrUtf8(const char* s);
 QTextFormat* QTextObject_Format(const QTextObject* self);
 int QTextObject_FormatIndex(const QTextObject* self);
 QTextDocument* QTextObject_Document(const QTextObject* self);
 int QTextObject_ObjectIndex(const QTextObject* self);
-void QTextObject_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QTextObject_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QTextObject_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QTextObject_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QTextObject_Tr2(const char* s, const char* c);
+struct miqt_string* QTextObject_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QTextObject_TrUtf82(const char* s, const char* c);
+struct miqt_string* QTextObject_TrUtf83(const char* s, const char* c, int n);
 
 QMetaObject* QTextBlockGroup_MetaObject(const QTextBlockGroup* self);
-void QTextBlockGroup_Tr(const char* s, char** _out, int* _out_Strlen);
-void QTextBlockGroup_TrUtf8(const char* s, char** _out, int* _out_Strlen);
-void QTextBlockGroup_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QTextBlockGroup_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QTextBlockGroup_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QTextBlockGroup_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QTextBlockGroup_Tr(const char* s);
+struct miqt_string* QTextBlockGroup_TrUtf8(const char* s);
+struct miqt_string* QTextBlockGroup_Tr2(const char* s, const char* c);
+struct miqt_string* QTextBlockGroup_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QTextBlockGroup_TrUtf82(const char* s, const char* c);
+struct miqt_string* QTextBlockGroup_TrUtf83(const char* s, const char* c, int n);
 
 void QTextFrameLayoutData_OperatorAssign(QTextFrameLayoutData* self, QTextFrameLayoutData* param1);
 void QTextFrameLayoutData_Delete(QTextFrameLayoutData* self);
 
 QTextFrame* QTextFrame_new(QTextDocument* doc);
 QMetaObject* QTextFrame_MetaObject(const QTextFrame* self);
-void QTextFrame_Tr(const char* s, char** _out, int* _out_Strlen);
-void QTextFrame_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QTextFrame_Tr(const char* s);
+struct miqt_string* QTextFrame_TrUtf8(const char* s);
 void QTextFrame_SetFrameFormat(QTextFrame* self, QTextFrameFormat* format);
 QTextFrameFormat* QTextFrame_FrameFormat(const QTextFrame* self);
 QTextCursor* QTextFrame_FirstCursorPosition(const QTextFrame* self);
@@ -102,14 +104,14 @@ int QTextFrame_FirstPosition(const QTextFrame* self);
 int QTextFrame_LastPosition(const QTextFrame* self);
 QTextFrameLayoutData* QTextFrame_LayoutData(const QTextFrame* self);
 void QTextFrame_SetLayoutData(QTextFrame* self, QTextFrameLayoutData* data);
-void QTextFrame_ChildFrames(const QTextFrame* self, QTextFrame*** _out, size_t* _out_len);
+struct miqt_array* QTextFrame_ChildFrames(const QTextFrame* self);
 QTextFrame* QTextFrame_ParentFrame(const QTextFrame* self);
 QTextFrame__iterator* QTextFrame_Begin(const QTextFrame* self);
 QTextFrame__iterator* QTextFrame_End(const QTextFrame* self);
-void QTextFrame_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QTextFrame_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QTextFrame_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QTextFrame_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QTextFrame_Tr2(const char* s, const char* c);
+struct miqt_string* QTextFrame_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QTextFrame_TrUtf82(const char* s, const char* c);
+struct miqt_string* QTextFrame_TrUtf83(const char* s, const char* c, int n);
 void QTextFrame_Delete(QTextFrame* self);
 
 void QTextBlockUserData_OperatorAssign(QTextBlockUserData* self, QTextBlockUserData* param1);
@@ -132,8 +134,8 @@ int QTextBlock_BlockFormatIndex(const QTextBlock* self);
 QTextCharFormat* QTextBlock_CharFormat(const QTextBlock* self);
 int QTextBlock_CharFormatIndex(const QTextBlock* self);
 uintptr_t QTextBlock_TextDirection(const QTextBlock* self);
-void QTextBlock_Text(const QTextBlock* self, char** _out, int* _out_Strlen);
-void QTextBlock_TextFormats(const QTextBlock* self, QTextLayout__FormatRange*** _out, size_t* _out_len);
+struct miqt_string* QTextBlock_Text(const QTextBlock* self);
+struct miqt_array* QTextBlock_TextFormats(const QTextBlock* self);
 QTextDocument* QTextBlock_Document(const QTextBlock* self);
 QTextList* QTextBlock_TextList(const QTextBlock* self);
 QTextBlockUserData* QTextBlock_UserData(const QTextBlock* self);
@@ -167,10 +169,10 @@ int QTextFragment_Length(const QTextFragment* self);
 bool QTextFragment_Contains(const QTextFragment* self, int position);
 QTextCharFormat* QTextFragment_CharFormat(const QTextFragment* self);
 int QTextFragment_CharFormatIndex(const QTextFragment* self);
-void QTextFragment_Text(const QTextFragment* self, char** _out, int* _out_Strlen);
-void QTextFragment_GlyphRuns(const QTextFragment* self, QGlyphRun*** _out, size_t* _out_len);
-void QTextFragment_GlyphRuns1(const QTextFragment* self, int from, QGlyphRun*** _out, size_t* _out_len);
-void QTextFragment_GlyphRuns2(const QTextFragment* self, int from, int length, QGlyphRun*** _out, size_t* _out_len);
+struct miqt_string* QTextFragment_Text(const QTextFragment* self);
+struct miqt_array* QTextFragment_GlyphRuns(const QTextFragment* self);
+struct miqt_array* QTextFragment_GlyphRuns1(const QTextFragment* self, int from);
+struct miqt_array* QTextFragment_GlyphRuns2(const QTextFragment* self, int from, int length);
 void QTextFragment_Delete(QTextFragment* self);
 
 QTextFrame__iterator* QTextFrame__iterator_new();

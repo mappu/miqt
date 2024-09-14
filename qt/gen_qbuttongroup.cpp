@@ -7,12 +7,8 @@
 #include <QByteArray>
 #include <cstring>
 #include "qbuttongroup.h"
-
 #include "gen_qbuttongroup.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QButtonGroup* QButtonGroup_new() {
 	return new QButtonGroup();
@@ -26,22 +22,18 @@ QMetaObject* QButtonGroup_MetaObject(const QButtonGroup* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void QButtonGroup_Tr(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QButtonGroup::tr(s);
+struct miqt_string* QButtonGroup_Tr(const char* s) {
+	QString _ret = QButtonGroup::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QButtonGroup_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QButtonGroup::trUtf8(s);
+struct miqt_string* QButtonGroup_TrUtf8(const char* s) {
+	QString _ret = QButtonGroup::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QButtonGroup_SetExclusive(QButtonGroup* self, bool exclusive) {
@@ -60,15 +52,17 @@ void QButtonGroup_RemoveButton(QButtonGroup* self, QAbstractButton* param1) {
 	self->removeButton(param1);
 }
 
-void QButtonGroup_Buttons(const QButtonGroup* self, QAbstractButton*** _out, size_t* _out_len) {
-	QList<QAbstractButton*> ret = self->buttons();
+struct miqt_array* QButtonGroup_Buttons(const QButtonGroup* self) {
+	QList<QAbstractButton*> _ret = self->buttons();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QAbstractButton** __out = static_cast<QAbstractButton**>(malloc(sizeof(QAbstractButton*) * ret.length()));
-	for (size_t i = 0, e = ret.length(); i < e; ++i) {
-		__out[i] = ret[i];
+	QAbstractButton** _arr = static_cast<QAbstractButton**>(malloc(sizeof(QAbstractButton*) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		_arr[i] = _ret[i];
 	}
-	*_out = __out;
-	*_out_len = ret.length();
+	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
+	_out->len = _ret.length();
+	_out->data = static_cast<void*>(_arr);
+	return _out;
 }
 
 QAbstractButton* QButtonGroup_CheckedButton(const QButtonGroup* self) {
@@ -97,7 +91,8 @@ void QButtonGroup_ButtonClicked(QButtonGroup* self, QAbstractButton* param1) {
 
 void QButtonGroup_connect_ButtonClicked(QButtonGroup* self, void* slot) {
 	QButtonGroup::connect(self, static_cast<void (QButtonGroup::*)(QAbstractButton*)>(&QButtonGroup::buttonClicked), self, [=](QAbstractButton* param1) {
-		miqt_exec_callback(slot, 0, nullptr);
+		QAbstractButton* sigval1 = param1;
+		miqt_exec_callback_QButtonGroup_ButtonClicked(slot, sigval1);
 	});
 }
 
@@ -107,7 +102,8 @@ void QButtonGroup_ButtonPressed(QButtonGroup* self, QAbstractButton* param1) {
 
 void QButtonGroup_connect_ButtonPressed(QButtonGroup* self, void* slot) {
 	QButtonGroup::connect(self, static_cast<void (QButtonGroup::*)(QAbstractButton*)>(&QButtonGroup::buttonPressed), self, [=](QAbstractButton* param1) {
-		miqt_exec_callback(slot, 0, nullptr);
+		QAbstractButton* sigval1 = param1;
+		miqt_exec_callback_QButtonGroup_ButtonPressed(slot, sigval1);
 	});
 }
 
@@ -117,7 +113,8 @@ void QButtonGroup_ButtonReleased(QButtonGroup* self, QAbstractButton* param1) {
 
 void QButtonGroup_connect_ButtonReleased(QButtonGroup* self, void* slot) {
 	QButtonGroup::connect(self, static_cast<void (QButtonGroup::*)(QAbstractButton*)>(&QButtonGroup::buttonReleased), self, [=](QAbstractButton* param1) {
-		miqt_exec_callback(slot, 0, nullptr);
+		QAbstractButton* sigval1 = param1;
+		miqt_exec_callback_QButtonGroup_ButtonReleased(slot, sigval1);
 	});
 }
 
@@ -127,7 +124,9 @@ void QButtonGroup_ButtonToggled(QButtonGroup* self, QAbstractButton* param1, boo
 
 void QButtonGroup_connect_ButtonToggled(QButtonGroup* self, void* slot) {
 	QButtonGroup::connect(self, static_cast<void (QButtonGroup::*)(QAbstractButton*, bool)>(&QButtonGroup::buttonToggled), self, [=](QAbstractButton* param1, bool param2) {
-		miqt_exec_callback(slot, 0, nullptr);
+		QAbstractButton* sigval1 = param1;
+		bool sigval2 = param2;
+		miqt_exec_callback_QButtonGroup_ButtonToggled(slot, sigval1, sigval2);
 	});
 }
 
@@ -137,7 +136,8 @@ void QButtonGroup_IdClicked(QButtonGroup* self, int param1) {
 
 void QButtonGroup_connect_IdClicked(QButtonGroup* self, void* slot) {
 	QButtonGroup::connect(self, static_cast<void (QButtonGroup::*)(int)>(&QButtonGroup::idClicked), self, [=](int param1) {
-		miqt_exec_callback(slot, 0, nullptr);
+		int sigval1 = param1;
+		miqt_exec_callback_QButtonGroup_IdClicked(slot, sigval1);
 	});
 }
 
@@ -147,7 +147,8 @@ void QButtonGroup_IdPressed(QButtonGroup* self, int param1) {
 
 void QButtonGroup_connect_IdPressed(QButtonGroup* self, void* slot) {
 	QButtonGroup::connect(self, static_cast<void (QButtonGroup::*)(int)>(&QButtonGroup::idPressed), self, [=](int param1) {
-		miqt_exec_callback(slot, 0, nullptr);
+		int sigval1 = param1;
+		miqt_exec_callback_QButtonGroup_IdPressed(slot, sigval1);
 	});
 }
 
@@ -157,7 +158,8 @@ void QButtonGroup_IdReleased(QButtonGroup* self, int param1) {
 
 void QButtonGroup_connect_IdReleased(QButtonGroup* self, void* slot) {
 	QButtonGroup::connect(self, static_cast<void (QButtonGroup::*)(int)>(&QButtonGroup::idReleased), self, [=](int param1) {
-		miqt_exec_callback(slot, 0, nullptr);
+		int sigval1 = param1;
+		miqt_exec_callback_QButtonGroup_IdReleased(slot, sigval1);
 	});
 }
 
@@ -167,7 +169,9 @@ void QButtonGroup_IdToggled(QButtonGroup* self, int param1, bool param2) {
 
 void QButtonGroup_connect_IdToggled(QButtonGroup* self, void* slot) {
 	QButtonGroup::connect(self, static_cast<void (QButtonGroup::*)(int, bool)>(&QButtonGroup::idToggled), self, [=](int param1, bool param2) {
-		miqt_exec_callback(slot, 0, nullptr);
+		int sigval1 = param1;
+		bool sigval2 = param2;
+		miqt_exec_callback_QButtonGroup_IdToggled(slot, sigval1, sigval2);
 	});
 }
 
@@ -177,7 +181,8 @@ void QButtonGroup_ButtonClickedWithInt(QButtonGroup* self, int param1) {
 
 void QButtonGroup_connect_ButtonClickedWithInt(QButtonGroup* self, void* slot) {
 	QButtonGroup::connect(self, static_cast<void (QButtonGroup::*)(int)>(&QButtonGroup::buttonClicked), self, [=](int param1) {
-		miqt_exec_callback(slot, 0, nullptr);
+		int sigval1 = param1;
+		miqt_exec_callback_QButtonGroup_ButtonClickedWithInt(slot, sigval1);
 	});
 }
 
@@ -187,7 +192,8 @@ void QButtonGroup_ButtonPressedWithInt(QButtonGroup* self, int param1) {
 
 void QButtonGroup_connect_ButtonPressedWithInt(QButtonGroup* self, void* slot) {
 	QButtonGroup::connect(self, static_cast<void (QButtonGroup::*)(int)>(&QButtonGroup::buttonPressed), self, [=](int param1) {
-		miqt_exec_callback(slot, 0, nullptr);
+		int sigval1 = param1;
+		miqt_exec_callback_QButtonGroup_ButtonPressedWithInt(slot, sigval1);
 	});
 }
 
@@ -197,7 +203,8 @@ void QButtonGroup_ButtonReleasedWithInt(QButtonGroup* self, int param1) {
 
 void QButtonGroup_connect_ButtonReleasedWithInt(QButtonGroup* self, void* slot) {
 	QButtonGroup::connect(self, static_cast<void (QButtonGroup::*)(int)>(&QButtonGroup::buttonReleased), self, [=](int param1) {
-		miqt_exec_callback(slot, 0, nullptr);
+		int sigval1 = param1;
+		miqt_exec_callback_QButtonGroup_ButtonReleasedWithInt(slot, sigval1);
 	});
 }
 
@@ -207,44 +214,38 @@ void QButtonGroup_ButtonToggled2(QButtonGroup* self, int param1, bool param2) {
 
 void QButtonGroup_connect_ButtonToggled2(QButtonGroup* self, void* slot) {
 	QButtonGroup::connect(self, static_cast<void (QButtonGroup::*)(int, bool)>(&QButtonGroup::buttonToggled), self, [=](int param1, bool param2) {
-		miqt_exec_callback(slot, 0, nullptr);
+		int sigval1 = param1;
+		bool sigval2 = param2;
+		miqt_exec_callback_QButtonGroup_ButtonToggled2(slot, sigval1, sigval2);
 	});
 }
 
-void QButtonGroup_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QButtonGroup::tr(s, c);
+struct miqt_string* QButtonGroup_Tr2(const char* s, const char* c) {
+	QString _ret = QButtonGroup::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QButtonGroup_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QButtonGroup::tr(s, c, static_cast<int>(n));
+struct miqt_string* QButtonGroup_Tr3(const char* s, const char* c, int n) {
+	QString _ret = QButtonGroup::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QButtonGroup_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QButtonGroup::trUtf8(s, c);
+struct miqt_string* QButtonGroup_TrUtf82(const char* s, const char* c) {
+	QString _ret = QButtonGroup::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QButtonGroup_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QButtonGroup::trUtf8(s, c, static_cast<int>(n));
+struct miqt_string* QButtonGroup_TrUtf83(const char* s, const char* c, int n) {
+	QString _ret = QButtonGroup::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QButtonGroup_AddButton2(QButtonGroup* self, QAbstractButton* param1, int id) {

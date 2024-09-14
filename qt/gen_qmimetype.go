@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"runtime"
 	"unsafe"
 )
 
@@ -55,161 +56,144 @@ func (this *QMimeType) Swap(other *QMimeType) {
 }
 
 func (this *QMimeType) OperatorEqual(other *QMimeType) bool {
-	ret := C.QMimeType_OperatorEqual(this.h, other.cPointer())
-	return (bool)(ret)
+	_ret := C.QMimeType_OperatorEqual(this.h, other.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QMimeType) OperatorNotEqual(other *QMimeType) bool {
-	ret := C.QMimeType_OperatorNotEqual(this.h, other.cPointer())
-	return (bool)(ret)
+	_ret := C.QMimeType_OperatorNotEqual(this.h, other.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QMimeType) IsValid() bool {
-	ret := C.QMimeType_IsValid(this.h)
-	return (bool)(ret)
+	_ret := C.QMimeType_IsValid(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QMimeType) IsDefault() bool {
-	ret := C.QMimeType_IsDefault(this.h)
-	return (bool)(ret)
+	_ret := C.QMimeType_IsDefault(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QMimeType) Name() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QMimeType_Name(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QMimeType_Name(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QMimeType) Comment() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QMimeType_Comment(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QMimeType_Comment(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QMimeType) GenericIconName() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QMimeType_GenericIconName(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QMimeType_GenericIconName(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QMimeType) IconName() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QMimeType_IconName(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QMimeType_IconName(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QMimeType) GlobPatterns() []string {
-	var _out **C.char = nil
-	var _out_Lengths *C.int = nil
-	var _out_len C.size_t = 0
-	C.QMimeType_GlobPatterns(this.h, &_out, &_out_Lengths, &_out_len)
-	ret := make([]string, int(_out_len))
-	_outCast := (*[0xffff]*C.char)(unsafe.Pointer(_out)) // hey ya
-	_out_LengthsCast := (*[0xffff]C.int)(unsafe.Pointer(_out_Lengths))
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = C.GoStringN(_outCast[i], _out_LengthsCast[i])
+	var _ma *C.struct_miqt_array = C.QMimeType_GlobPatterns(this.h)
+	_ret := make([]string, int(_ma.len))
+	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = C.GoStringN(&_outCast[i].data, C.int(int64(_outCast[i].len)))
+		C.free(unsafe.Pointer(_outCast[i])) // free the inner miqt_string*
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
 func (this *QMimeType) ParentMimeTypes() []string {
-	var _out **C.char = nil
-	var _out_Lengths *C.int = nil
-	var _out_len C.size_t = 0
-	C.QMimeType_ParentMimeTypes(this.h, &_out, &_out_Lengths, &_out_len)
-	ret := make([]string, int(_out_len))
-	_outCast := (*[0xffff]*C.char)(unsafe.Pointer(_out)) // hey ya
-	_out_LengthsCast := (*[0xffff]C.int)(unsafe.Pointer(_out_Lengths))
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = C.GoStringN(_outCast[i], _out_LengthsCast[i])
+	var _ma *C.struct_miqt_array = C.QMimeType_ParentMimeTypes(this.h)
+	_ret := make([]string, int(_ma.len))
+	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = C.GoStringN(&_outCast[i].data, C.int(int64(_outCast[i].len)))
+		C.free(unsafe.Pointer(_outCast[i])) // free the inner miqt_string*
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
 func (this *QMimeType) AllAncestors() []string {
-	var _out **C.char = nil
-	var _out_Lengths *C.int = nil
-	var _out_len C.size_t = 0
-	C.QMimeType_AllAncestors(this.h, &_out, &_out_Lengths, &_out_len)
-	ret := make([]string, int(_out_len))
-	_outCast := (*[0xffff]*C.char)(unsafe.Pointer(_out)) // hey ya
-	_out_LengthsCast := (*[0xffff]C.int)(unsafe.Pointer(_out_Lengths))
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = C.GoStringN(_outCast[i], _out_LengthsCast[i])
+	var _ma *C.struct_miqt_array = C.QMimeType_AllAncestors(this.h)
+	_ret := make([]string, int(_ma.len))
+	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = C.GoStringN(&_outCast[i].data, C.int(int64(_outCast[i].len)))
+		C.free(unsafe.Pointer(_outCast[i])) // free the inner miqt_string*
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
 func (this *QMimeType) Aliases() []string {
-	var _out **C.char = nil
-	var _out_Lengths *C.int = nil
-	var _out_len C.size_t = 0
-	C.QMimeType_Aliases(this.h, &_out, &_out_Lengths, &_out_len)
-	ret := make([]string, int(_out_len))
-	_outCast := (*[0xffff]*C.char)(unsafe.Pointer(_out)) // hey ya
-	_out_LengthsCast := (*[0xffff]C.int)(unsafe.Pointer(_out_Lengths))
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = C.GoStringN(_outCast[i], _out_LengthsCast[i])
+	var _ma *C.struct_miqt_array = C.QMimeType_Aliases(this.h)
+	_ret := make([]string, int(_ma.len))
+	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = C.GoStringN(&_outCast[i].data, C.int(int64(_outCast[i].len)))
+		C.free(unsafe.Pointer(_outCast[i])) // free the inner miqt_string*
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
 func (this *QMimeType) Suffixes() []string {
-	var _out **C.char = nil
-	var _out_Lengths *C.int = nil
-	var _out_len C.size_t = 0
-	C.QMimeType_Suffixes(this.h, &_out, &_out_Lengths, &_out_len)
-	ret := make([]string, int(_out_len))
-	_outCast := (*[0xffff]*C.char)(unsafe.Pointer(_out)) // hey ya
-	_out_LengthsCast := (*[0xffff]C.int)(unsafe.Pointer(_out_Lengths))
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = C.GoStringN(_outCast[i], _out_LengthsCast[i])
+	var _ma *C.struct_miqt_array = C.QMimeType_Suffixes(this.h)
+	_ret := make([]string, int(_ma.len))
+	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = C.GoStringN(&_outCast[i].data, C.int(int64(_outCast[i].len)))
+		C.free(unsafe.Pointer(_outCast[i])) // free the inner miqt_string*
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
 func (this *QMimeType) PreferredSuffix() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QMimeType_PreferredSuffix(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QMimeType_PreferredSuffix(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QMimeType) Inherits(mimeTypeName string) bool {
-	mimeTypeName_Cstring := C.CString(mimeTypeName)
-	defer C.free(unsafe.Pointer(mimeTypeName_Cstring))
-	ret := C.QMimeType_Inherits(this.h, mimeTypeName_Cstring, C.size_t(len(mimeTypeName)))
-	return (bool)(ret)
+	mimeTypeName_ms := miqt_strdupg(mimeTypeName)
+	defer C.free(mimeTypeName_ms)
+	_ret := C.QMimeType_Inherits(this.h, (*C.struct_miqt_string)(mimeTypeName_ms))
+	return (bool)(_ret)
 }
 
 func (this *QMimeType) FilterString() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QMimeType_FilterString(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QMimeType_FilterString(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
+// Delete this object from C++ memory.
 func (this *QMimeType) Delete() {
 	C.QMimeType_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QMimeType) GoGC() {
+	runtime.SetFinalizer(this, func(this *QMimeType) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

@@ -73,84 +73,64 @@ func NewQCalendarWidget2(parent *QWidget) *QCalendarWidget {
 }
 
 func (this *QCalendarWidget) MetaObject() *QMetaObject {
-	ret := C.QCalendarWidget_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QCalendarWidget_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QCalendarWidget_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QCalendarWidget_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QCalendarWidget_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QCalendarWidget_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QCalendarWidget_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QCalendarWidget_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QCalendarWidget) SizeHint() *QSize {
-	ret := C.QCalendarWidget_SizeHint(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSize(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QCalendarWidget_SizeHint(this.h)
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QCalendarWidget) MinimumSizeHint() *QSize {
-	ret := C.QCalendarWidget_MinimumSizeHint(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSize(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QCalendarWidget_MinimumSizeHint(this.h)
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QCalendarWidget) SelectedDate() *QDate {
-	ret := C.QCalendarWidget_SelectedDate(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQDate(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QDate) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QCalendarWidget_SelectedDate(this.h)
+	_goptr := newQDate(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QCalendarWidget) YearShown() int {
-	ret := C.QCalendarWidget_YearShown(this.h)
-	return (int)(ret)
+	_ret := C.QCalendarWidget_YearShown(this.h)
+	return (int)(_ret)
 }
 
 func (this *QCalendarWidget) MonthShown() int {
-	ret := C.QCalendarWidget_MonthShown(this.h)
-	return (int)(ret)
+	_ret := C.QCalendarWidget_MonthShown(this.h)
+	return (int)(_ret)
 }
 
 func (this *QCalendarWidget) MinimumDate() *QDate {
-	ret := C.QCalendarWidget_MinimumDate(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQDate(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QDate) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QCalendarWidget_MinimumDate(this.h)
+	_goptr := newQDate(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QCalendarWidget) SetMinimumDate(date *QDate) {
@@ -158,14 +138,10 @@ func (this *QCalendarWidget) SetMinimumDate(date *QDate) {
 }
 
 func (this *QCalendarWidget) MaximumDate() *QDate {
-	ret := C.QCalendarWidget_MaximumDate(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQDate(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QDate) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QCalendarWidget_MaximumDate(this.h)
+	_goptr := newQDate(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QCalendarWidget) SetMaximumDate(date *QDate) {
@@ -173,8 +149,8 @@ func (this *QCalendarWidget) SetMaximumDate(date *QDate) {
 }
 
 func (this *QCalendarWidget) FirstDayOfWeek() DayOfWeek {
-	ret := C.QCalendarWidget_FirstDayOfWeek(this.h)
-	return (DayOfWeek)(ret)
+	_ret := C.QCalendarWidget_FirstDayOfWeek(this.h)
+	return (DayOfWeek)(_ret)
 }
 
 func (this *QCalendarWidget) SetFirstDayOfWeek(dayOfWeek DayOfWeek) {
@@ -182,24 +158,20 @@ func (this *QCalendarWidget) SetFirstDayOfWeek(dayOfWeek DayOfWeek) {
 }
 
 func (this *QCalendarWidget) IsNavigationBarVisible() bool {
-	ret := C.QCalendarWidget_IsNavigationBarVisible(this.h)
-	return (bool)(ret)
+	_ret := C.QCalendarWidget_IsNavigationBarVisible(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QCalendarWidget) IsGridVisible() bool {
-	ret := C.QCalendarWidget_IsGridVisible(this.h)
-	return (bool)(ret)
+	_ret := C.QCalendarWidget_IsGridVisible(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QCalendarWidget) Calendar() *QCalendar {
-	ret := C.QCalendarWidget_Calendar(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQCalendar(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QCalendar) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QCalendarWidget_Calendar(this.h)
+	_goptr := newQCalendar(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QCalendarWidget) SetCalendar(calendar QCalendar) {
@@ -207,8 +179,8 @@ func (this *QCalendarWidget) SetCalendar(calendar QCalendar) {
 }
 
 func (this *QCalendarWidget) SelectionMode() QCalendarWidget__SelectionMode {
-	ret := C.QCalendarWidget_SelectionMode(this.h)
-	return (QCalendarWidget__SelectionMode)(ret)
+	_ret := C.QCalendarWidget_SelectionMode(this.h)
+	return (QCalendarWidget__SelectionMode)(_ret)
 }
 
 func (this *QCalendarWidget) SetSelectionMode(mode QCalendarWidget__SelectionMode) {
@@ -216,8 +188,8 @@ func (this *QCalendarWidget) SetSelectionMode(mode QCalendarWidget__SelectionMod
 }
 
 func (this *QCalendarWidget) HorizontalHeaderFormat() QCalendarWidget__HorizontalHeaderFormat {
-	ret := C.QCalendarWidget_HorizontalHeaderFormat(this.h)
-	return (QCalendarWidget__HorizontalHeaderFormat)(ret)
+	_ret := C.QCalendarWidget_HorizontalHeaderFormat(this.h)
+	return (QCalendarWidget__HorizontalHeaderFormat)(_ret)
 }
 
 func (this *QCalendarWidget) SetHorizontalHeaderFormat(format QCalendarWidget__HorizontalHeaderFormat) {
@@ -225,8 +197,8 @@ func (this *QCalendarWidget) SetHorizontalHeaderFormat(format QCalendarWidget__H
 }
 
 func (this *QCalendarWidget) VerticalHeaderFormat() QCalendarWidget__VerticalHeaderFormat {
-	ret := C.QCalendarWidget_VerticalHeaderFormat(this.h)
-	return (QCalendarWidget__VerticalHeaderFormat)(ret)
+	_ret := C.QCalendarWidget_VerticalHeaderFormat(this.h)
+	return (QCalendarWidget__VerticalHeaderFormat)(_ret)
 }
 
 func (this *QCalendarWidget) SetVerticalHeaderFormat(format QCalendarWidget__VerticalHeaderFormat) {
@@ -234,14 +206,10 @@ func (this *QCalendarWidget) SetVerticalHeaderFormat(format QCalendarWidget__Ver
 }
 
 func (this *QCalendarWidget) HeaderTextFormat() *QTextCharFormat {
-	ret := C.QCalendarWidget_HeaderTextFormat(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQTextCharFormat(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QTextCharFormat) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QCalendarWidget_HeaderTextFormat(this.h)
+	_goptr := newQTextCharFormat(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QCalendarWidget) SetHeaderTextFormat(format *QTextCharFormat) {
@@ -249,14 +217,10 @@ func (this *QCalendarWidget) SetHeaderTextFormat(format *QTextCharFormat) {
 }
 
 func (this *QCalendarWidget) WeekdayTextFormat(dayOfWeek DayOfWeek) *QTextCharFormat {
-	ret := C.QCalendarWidget_WeekdayTextFormat(this.h, (C.uintptr_t)(dayOfWeek))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQTextCharFormat(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QTextCharFormat) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QCalendarWidget_WeekdayTextFormat(this.h, (C.uintptr_t)(dayOfWeek))
+	_goptr := newQTextCharFormat(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QCalendarWidget) SetWeekdayTextFormat(dayOfWeek DayOfWeek, format *QTextCharFormat) {
@@ -264,14 +228,10 @@ func (this *QCalendarWidget) SetWeekdayTextFormat(dayOfWeek DayOfWeek, format *Q
 }
 
 func (this *QCalendarWidget) DateTextFormatWithDate(date *QDate) *QTextCharFormat {
-	ret := C.QCalendarWidget_DateTextFormatWithDate(this.h, date.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQTextCharFormat(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QTextCharFormat) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QCalendarWidget_DateTextFormatWithDate(this.h, date.cPointer())
+	_goptr := newQTextCharFormat(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QCalendarWidget) SetDateTextFormat(date *QDate, format *QTextCharFormat) {
@@ -279,8 +239,8 @@ func (this *QCalendarWidget) SetDateTextFormat(date *QDate, format *QTextCharFor
 }
 
 func (this *QCalendarWidget) IsDateEditEnabled() bool {
-	ret := C.QCalendarWidget_IsDateEditEnabled(this.h)
-	return (bool)(ret)
+	_ret := C.QCalendarWidget_IsDateEditEnabled(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QCalendarWidget) SetDateEditEnabled(enable bool) {
@@ -288,8 +248,8 @@ func (this *QCalendarWidget) SetDateEditEnabled(enable bool) {
 }
 
 func (this *QCalendarWidget) DateEditAcceptDelay() int {
-	ret := C.QCalendarWidget_DateEditAcceptDelay(this.h)
-	return (int)(ret)
+	_ret := C.QCalendarWidget_DateEditAcceptDelay(this.h)
+	return (int)(_ret)
 }
 
 func (this *QCalendarWidget) SetDateEditAcceptDelay(delay int) {
@@ -343,49 +303,84 @@ func (this *QCalendarWidget) ShowToday() {
 func (this *QCalendarWidget) SelectionChanged() {
 	C.QCalendarWidget_SelectionChanged(this.h)
 }
-
 func (this *QCalendarWidget) OnSelectionChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+	C.QCalendarWidget_connect_SelectionChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
+
+//export miqt_exec_callback_QCalendarWidget_SelectionChanged
+func miqt_exec_callback_QCalendarWidget_SelectionChanged(cb *C.void) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QCalendarWidget_connect_SelectionChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	gofunc()
 }
 
 func (this *QCalendarWidget) Clicked(date *QDate) {
 	C.QCalendarWidget_Clicked(this.h, date.cPointer())
 }
+func (this *QCalendarWidget) OnClicked(slot func(date *QDate)) {
+	C.QCalendarWidget_connect_Clicked(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QCalendarWidget) OnClicked(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QCalendarWidget_Clicked
+func miqt_exec_callback_QCalendarWidget_Clicked(cb *C.void, date *C.QDate) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(date *QDate))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QCalendarWidget_connect_Clicked(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	date_ret := date
+	slotval1 := newQDate_U(unsafe.Pointer(date_ret))
+
+	gofunc(slotval1)
 }
 
 func (this *QCalendarWidget) Activated(date *QDate) {
 	C.QCalendarWidget_Activated(this.h, date.cPointer())
 }
+func (this *QCalendarWidget) OnActivated(slot func(date *QDate)) {
+	C.QCalendarWidget_connect_Activated(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QCalendarWidget) OnActivated(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QCalendarWidget_Activated
+func miqt_exec_callback_QCalendarWidget_Activated(cb *C.void, date *C.QDate) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(date *QDate))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QCalendarWidget_connect_Activated(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	date_ret := date
+	slotval1 := newQDate_U(unsafe.Pointer(date_ret))
+
+	gofunc(slotval1)
 }
 
 func (this *QCalendarWidget) CurrentPageChanged(year int, month int) {
 	C.QCalendarWidget_CurrentPageChanged(this.h, (C.int)(year), (C.int)(month))
 }
+func (this *QCalendarWidget) OnCurrentPageChanged(slot func(year int, month int)) {
+	C.QCalendarWidget_connect_CurrentPageChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QCalendarWidget) OnCurrentPageChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QCalendarWidget_CurrentPageChanged
+func miqt_exec_callback_QCalendarWidget_CurrentPageChanged(cb *C.void, year C.int, month C.int) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(year int, month int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QCalendarWidget_connect_CurrentPageChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	year_ret := year
+	slotval1 := (int)(year_ret)
+
+	month_ret := month
+	slotval2 := (int)(month_ret)
+
+	gofunc(slotval1, slotval2)
 }
 
 func QCalendarWidget_Tr2(s string, c string) string {
@@ -393,12 +388,10 @@ func QCalendarWidget_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QCalendarWidget_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QCalendarWidget_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QCalendarWidget_Tr3(s string, c string, n int) string {
@@ -406,12 +399,10 @@ func QCalendarWidget_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QCalendarWidget_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QCalendarWidget_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QCalendarWidget_TrUtf82(s string, c string) string {
@@ -419,12 +410,10 @@ func QCalendarWidget_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QCalendarWidget_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QCalendarWidget_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QCalendarWidget_TrUtf83(s string, c string, n int) string {
@@ -432,14 +421,22 @@ func QCalendarWidget_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QCalendarWidget_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QCalendarWidget_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
+// Delete this object from C++ memory.
 func (this *QCalendarWidget) Delete() {
 	C.QCalendarWidget_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QCalendarWidget) GoGC() {
+	runtime.SetFinalizer(this, func(this *QCalendarWidget) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

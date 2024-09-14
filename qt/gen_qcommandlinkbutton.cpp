@@ -5,25 +5,21 @@
 #include <cstring>
 #include <QWidget>
 #include "qcommandlinkbutton.h"
-
 #include "gen_qcommandlinkbutton.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QCommandLinkButton* QCommandLinkButton_new() {
 	return new QCommandLinkButton();
 }
 
-QCommandLinkButton* QCommandLinkButton_new2(const char* text, size_t text_Strlen) {
-	QString text_QString = QString::fromUtf8(text, text_Strlen);
+QCommandLinkButton* QCommandLinkButton_new2(struct miqt_string* text) {
+	QString text_QString = QString::fromUtf8(&text->data, text->len);
 	return new QCommandLinkButton(text_QString);
 }
 
-QCommandLinkButton* QCommandLinkButton_new3(const char* text, size_t text_Strlen, const char* description, size_t description_Strlen) {
-	QString text_QString = QString::fromUtf8(text, text_Strlen);
-	QString description_QString = QString::fromUtf8(description, description_Strlen);
+QCommandLinkButton* QCommandLinkButton_new3(struct miqt_string* text, struct miqt_string* description) {
+	QString text_QString = QString::fromUtf8(&text->data, text->len);
+	QString description_QString = QString::fromUtf8(&description->data, description->len);
 	return new QCommandLinkButton(text_QString, description_QString);
 }
 
@@ -31,14 +27,14 @@ QCommandLinkButton* QCommandLinkButton_new4(QWidget* parent) {
 	return new QCommandLinkButton(parent);
 }
 
-QCommandLinkButton* QCommandLinkButton_new5(const char* text, size_t text_Strlen, QWidget* parent) {
-	QString text_QString = QString::fromUtf8(text, text_Strlen);
+QCommandLinkButton* QCommandLinkButton_new5(struct miqt_string* text, QWidget* parent) {
+	QString text_QString = QString::fromUtf8(&text->data, text->len);
 	return new QCommandLinkButton(text_QString, parent);
 }
 
-QCommandLinkButton* QCommandLinkButton_new6(const char* text, size_t text_Strlen, const char* description, size_t description_Strlen, QWidget* parent) {
-	QString text_QString = QString::fromUtf8(text, text_Strlen);
-	QString description_QString = QString::fromUtf8(description, description_Strlen);
+QCommandLinkButton* QCommandLinkButton_new6(struct miqt_string* text, struct miqt_string* description, QWidget* parent) {
+	QString text_QString = QString::fromUtf8(&text->data, text->len);
+	QString description_QString = QString::fromUtf8(&description->data, description->len);
 	return new QCommandLinkButton(text_QString, description_QString, parent);
 }
 
@@ -46,72 +42,58 @@ QMetaObject* QCommandLinkButton_MetaObject(const QCommandLinkButton* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void QCommandLinkButton_Tr(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QCommandLinkButton::tr(s);
+struct miqt_string* QCommandLinkButton_Tr(const char* s) {
+	QString _ret = QCommandLinkButton::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QCommandLinkButton_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QCommandLinkButton::trUtf8(s);
+struct miqt_string* QCommandLinkButton_TrUtf8(const char* s) {
+	QString _ret = QCommandLinkButton::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QCommandLinkButton_Description(const QCommandLinkButton* self, char** _out, int* _out_Strlen) {
-	QString ret = self->description();
+struct miqt_string* QCommandLinkButton_Description(const QCommandLinkButton* self) {
+	QString _ret = self->description();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QCommandLinkButton_SetDescription(QCommandLinkButton* self, const char* description, size_t description_Strlen) {
-	QString description_QString = QString::fromUtf8(description, description_Strlen);
+void QCommandLinkButton_SetDescription(QCommandLinkButton* self, struct miqt_string* description) {
+	QString description_QString = QString::fromUtf8(&description->data, description->len);
 	self->setDescription(description_QString);
 }
 
-void QCommandLinkButton_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QCommandLinkButton::tr(s, c);
+struct miqt_string* QCommandLinkButton_Tr2(const char* s, const char* c) {
+	QString _ret = QCommandLinkButton::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QCommandLinkButton_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QCommandLinkButton::tr(s, c, static_cast<int>(n));
+struct miqt_string* QCommandLinkButton_Tr3(const char* s, const char* c, int n) {
+	QString _ret = QCommandLinkButton::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QCommandLinkButton_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QCommandLinkButton::trUtf8(s, c);
+struct miqt_string* QCommandLinkButton_TrUtf82(const char* s, const char* c) {
+	QString _ret = QCommandLinkButton::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QCommandLinkButton_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QCommandLinkButton::trUtf8(s, c, static_cast<int>(n));
+struct miqt_string* QCommandLinkButton_TrUtf83(const char* s, const char* c, int n) {
+	QString _ret = QCommandLinkButton::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QCommandLinkButton_Delete(QCommandLinkButton* self) {

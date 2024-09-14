@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -24,16 +26,16 @@ typedef struct QTextDocument QTextDocument;
 #endif
 
 QMetaObject* QSyntaxHighlighter_MetaObject(const QSyntaxHighlighter* self);
-void QSyntaxHighlighter_Tr(const char* s, char** _out, int* _out_Strlen);
-void QSyntaxHighlighter_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QSyntaxHighlighter_Tr(const char* s);
+struct miqt_string* QSyntaxHighlighter_TrUtf8(const char* s);
 void QSyntaxHighlighter_SetDocument(QSyntaxHighlighter* self, QTextDocument* doc);
 QTextDocument* QSyntaxHighlighter_Document(const QSyntaxHighlighter* self);
 void QSyntaxHighlighter_Rehighlight(QSyntaxHighlighter* self);
 void QSyntaxHighlighter_RehighlightBlock(QSyntaxHighlighter* self, QTextBlock* block);
-void QSyntaxHighlighter_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QSyntaxHighlighter_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QSyntaxHighlighter_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QSyntaxHighlighter_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QSyntaxHighlighter_Tr2(const char* s, const char* c);
+struct miqt_string* QSyntaxHighlighter_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QSyntaxHighlighter_TrUtf82(const char* s, const char* c);
+struct miqt_string* QSyntaxHighlighter_TrUtf83(const char* s, const char* c, int n);
 void QSyntaxHighlighter_Delete(QSyntaxHighlighter* self);
 
 #ifdef __cplusplus

@@ -57,35 +57,31 @@ func NewQAbstractScrollArea2(parent *QWidget) *QAbstractScrollArea {
 }
 
 func (this *QAbstractScrollArea) MetaObject() *QMetaObject {
-	ret := C.QAbstractScrollArea_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QAbstractScrollArea_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QAbstractScrollArea_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QAbstractScrollArea_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QAbstractScrollArea_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QAbstractScrollArea_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QAbstractScrollArea_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QAbstractScrollArea_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QAbstractScrollArea) VerticalScrollBarPolicy() ScrollBarPolicy {
-	ret := C.QAbstractScrollArea_VerticalScrollBarPolicy(this.h)
-	return (ScrollBarPolicy)(ret)
+	_ret := C.QAbstractScrollArea_VerticalScrollBarPolicy(this.h)
+	return (ScrollBarPolicy)(_ret)
 }
 
 func (this *QAbstractScrollArea) SetVerticalScrollBarPolicy(verticalScrollBarPolicy ScrollBarPolicy) {
@@ -93,8 +89,8 @@ func (this *QAbstractScrollArea) SetVerticalScrollBarPolicy(verticalScrollBarPol
 }
 
 func (this *QAbstractScrollArea) VerticalScrollBar() *QScrollBar {
-	ret := C.QAbstractScrollArea_VerticalScrollBar(this.h)
-	return newQScrollBar_U(unsafe.Pointer(ret))
+	_ret := C.QAbstractScrollArea_VerticalScrollBar(this.h)
+	return newQScrollBar_U(unsafe.Pointer(_ret))
 }
 
 func (this *QAbstractScrollArea) SetVerticalScrollBar(scrollbar *QScrollBar) {
@@ -102,8 +98,8 @@ func (this *QAbstractScrollArea) SetVerticalScrollBar(scrollbar *QScrollBar) {
 }
 
 func (this *QAbstractScrollArea) HorizontalScrollBarPolicy() ScrollBarPolicy {
-	ret := C.QAbstractScrollArea_HorizontalScrollBarPolicy(this.h)
-	return (ScrollBarPolicy)(ret)
+	_ret := C.QAbstractScrollArea_HorizontalScrollBarPolicy(this.h)
+	return (ScrollBarPolicy)(_ret)
 }
 
 func (this *QAbstractScrollArea) SetHorizontalScrollBarPolicy(horizontalScrollBarPolicy ScrollBarPolicy) {
@@ -111,8 +107,8 @@ func (this *QAbstractScrollArea) SetHorizontalScrollBarPolicy(horizontalScrollBa
 }
 
 func (this *QAbstractScrollArea) HorizontalScrollBar() *QScrollBar {
-	ret := C.QAbstractScrollArea_HorizontalScrollBar(this.h)
-	return newQScrollBar_U(unsafe.Pointer(ret))
+	_ret := C.QAbstractScrollArea_HorizontalScrollBar(this.h)
+	return newQScrollBar_U(unsafe.Pointer(_ret))
 }
 
 func (this *QAbstractScrollArea) SetHorizontalScrollBar(scrollbar *QScrollBar) {
@@ -120,8 +116,8 @@ func (this *QAbstractScrollArea) SetHorizontalScrollBar(scrollbar *QScrollBar) {
 }
 
 func (this *QAbstractScrollArea) CornerWidget() *QWidget {
-	ret := C.QAbstractScrollArea_CornerWidget(this.h)
-	return newQWidget_U(unsafe.Pointer(ret))
+	_ret := C.QAbstractScrollArea_CornerWidget(this.h)
+	return newQWidget_U(unsafe.Pointer(_ret))
 }
 
 func (this *QAbstractScrollArea) SetCornerWidget(widget *QWidget) {
@@ -133,21 +129,19 @@ func (this *QAbstractScrollArea) AddScrollBarWidget(widget *QWidget, alignment i
 }
 
 func (this *QAbstractScrollArea) ScrollBarWidgets(alignment int) []*QWidget {
-	var _out **C.QWidget = nil
-	var _out_len C.size_t = 0
-	C.QAbstractScrollArea_ScrollBarWidgets(this.h, (C.int)(alignment), &_out, &_out_len)
-	ret := make([]*QWidget, int(_out_len))
-	_outCast := (*[0xffff]*C.QWidget)(unsafe.Pointer(_out)) // so fresh so clean
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = newQWidget(_outCast[i])
+	var _ma *C.struct_miqt_array = C.QAbstractScrollArea_ScrollBarWidgets(this.h, (C.int)(alignment))
+	_ret := make([]*QWidget, int(_ma.len))
+	_outCast := (*[0xffff]*C.QWidget)(unsafe.Pointer(_ma.data)) // mrs jackson
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = newQWidget(_outCast[i])
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
 func (this *QAbstractScrollArea) Viewport() *QWidget {
-	ret := C.QAbstractScrollArea_Viewport(this.h)
-	return newQWidget_U(unsafe.Pointer(ret))
+	_ret := C.QAbstractScrollArea_Viewport(this.h)
+	return newQWidget_U(unsafe.Pointer(_ret))
 }
 
 func (this *QAbstractScrollArea) SetViewport(widget *QWidget) {
@@ -155,36 +149,24 @@ func (this *QAbstractScrollArea) SetViewport(widget *QWidget) {
 }
 
 func (this *QAbstractScrollArea) MaximumViewportSize() *QSize {
-	ret := C.QAbstractScrollArea_MaximumViewportSize(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSize(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QAbstractScrollArea_MaximumViewportSize(this.h)
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QAbstractScrollArea) MinimumSizeHint() *QSize {
-	ret := C.QAbstractScrollArea_MinimumSizeHint(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSize(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QAbstractScrollArea_MinimumSizeHint(this.h)
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QAbstractScrollArea) SizeHint() *QSize {
-	ret := C.QAbstractScrollArea_SizeHint(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSize(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QAbstractScrollArea_SizeHint(this.h)
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QAbstractScrollArea) SetupViewport(viewport *QWidget) {
@@ -192,8 +174,8 @@ func (this *QAbstractScrollArea) SetupViewport(viewport *QWidget) {
 }
 
 func (this *QAbstractScrollArea) SizeAdjustPolicy() QAbstractScrollArea__SizeAdjustPolicy {
-	ret := C.QAbstractScrollArea_SizeAdjustPolicy(this.h)
-	return (QAbstractScrollArea__SizeAdjustPolicy)(ret)
+	_ret := C.QAbstractScrollArea_SizeAdjustPolicy(this.h)
+	return (QAbstractScrollArea__SizeAdjustPolicy)(_ret)
 }
 
 func (this *QAbstractScrollArea) SetSizeAdjustPolicy(policy QAbstractScrollArea__SizeAdjustPolicy) {
@@ -205,12 +187,10 @@ func QAbstractScrollArea_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QAbstractScrollArea_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QAbstractScrollArea_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QAbstractScrollArea_Tr3(s string, c string, n int) string {
@@ -218,12 +198,10 @@ func QAbstractScrollArea_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QAbstractScrollArea_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QAbstractScrollArea_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QAbstractScrollArea_TrUtf82(s string, c string) string {
@@ -231,12 +209,10 @@ func QAbstractScrollArea_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QAbstractScrollArea_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QAbstractScrollArea_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QAbstractScrollArea_TrUtf83(s string, c string, n int) string {
@@ -244,14 +220,22 @@ func QAbstractScrollArea_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QAbstractScrollArea_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QAbstractScrollArea_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
+// Delete this object from C++ memory.
 func (this *QAbstractScrollArea) Delete() {
 	C.QAbstractScrollArea_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QAbstractScrollArea) GoGC() {
+	runtime.SetFinalizer(this, func(this *QAbstractScrollArea) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

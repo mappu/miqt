@@ -54,42 +54,44 @@ func newQSurface_U(h unsafe.Pointer) *QSurface {
 }
 
 func (this *QSurface) SurfaceClass() QSurface__SurfaceClass {
-	ret := C.QSurface_SurfaceClass(this.h)
-	return (QSurface__SurfaceClass)(ret)
+	_ret := C.QSurface_SurfaceClass(this.h)
+	return (QSurface__SurfaceClass)(_ret)
 }
 
 func (this *QSurface) Format() *QSurfaceFormat {
-	ret := C.QSurface_Format(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSurfaceFormat(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSurfaceFormat) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QSurface_Format(this.h)
+	_goptr := newQSurfaceFormat(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QSurface) SurfaceType() QSurface__SurfaceType {
-	ret := C.QSurface_SurfaceType(this.h)
-	return (QSurface__SurfaceType)(ret)
+	_ret := C.QSurface_SurfaceType(this.h)
+	return (QSurface__SurfaceType)(_ret)
 }
 
 func (this *QSurface) SupportsOpenGL() bool {
-	ret := C.QSurface_SupportsOpenGL(this.h)
-	return (bool)(ret)
+	_ret := C.QSurface_SupportsOpenGL(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QSurface) Size() *QSize {
-	ret := C.QSurface_Size(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSize(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QSurface_Size(this.h)
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
+// Delete this object from C++ memory.
 func (this *QSurface) Delete() {
 	C.QSurface_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QSurface) GoGC() {
+	runtime.SetFinalizer(this, func(this *QSurface) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

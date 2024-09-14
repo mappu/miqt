@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -17,7 +19,7 @@ class QCborError;
 typedef struct QCborError QCborError;
 #endif
 
-void QCborError_ToString(const QCborError* self, char** _out, int* _out_Strlen);
+struct miqt_string* QCborError_ToString(const QCborError* self);
 void QCborError_Delete(QCborError* self);
 
 #ifdef __cplusplus

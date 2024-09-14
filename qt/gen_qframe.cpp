@@ -7,12 +7,8 @@
 #include <cstring>
 #include <QWidget>
 #include "qframe.h"
-
 #include "gen_qframe.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QFrame* QFrame_new() {
 	return new QFrame();
@@ -30,22 +26,18 @@ QMetaObject* QFrame_MetaObject(const QFrame* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void QFrame_Tr(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QFrame::tr(s);
+struct miqt_string* QFrame_Tr(const char* s) {
+	QString _ret = QFrame::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QFrame_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QFrame::trUtf8(s);
+struct miqt_string* QFrame_TrUtf8(const char* s) {
+	QString _ret = QFrame::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 int QFrame_FrameStyle(const QFrame* self) {
@@ -61,14 +53,14 @@ int QFrame_FrameWidth(const QFrame* self) {
 }
 
 QSize* QFrame_SizeHint(const QFrame* self) {
-	QSize ret = self->sizeHint();
+	QSize _ret = self->sizeHint();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(ret));
+	return static_cast<QSize*>(new QSize(_ret));
 }
 
 uintptr_t QFrame_FrameShape(const QFrame* self) {
-	QFrame::Shape ret = self->frameShape();
-	return static_cast<uintptr_t>(ret);
+	QFrame::Shape _ret = self->frameShape();
+	return static_cast<uintptr_t>(_ret);
 }
 
 void QFrame_SetFrameShape(QFrame* self, uintptr_t frameShape) {
@@ -76,8 +68,8 @@ void QFrame_SetFrameShape(QFrame* self, uintptr_t frameShape) {
 }
 
 uintptr_t QFrame_FrameShadow(const QFrame* self) {
-	QFrame::Shadow ret = self->frameShadow();
-	return static_cast<uintptr_t>(ret);
+	QFrame::Shadow _ret = self->frameShadow();
+	return static_cast<uintptr_t>(_ret);
 }
 
 void QFrame_SetFrameShadow(QFrame* self, uintptr_t frameShadow) {
@@ -101,49 +93,41 @@ void QFrame_SetMidLineWidth(QFrame* self, int midLineWidth) {
 }
 
 QRect* QFrame_FrameRect(const QFrame* self) {
-	QRect ret = self->frameRect();
+	QRect _ret = self->frameRect();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(ret));
+	return static_cast<QRect*>(new QRect(_ret));
 }
 
 void QFrame_SetFrameRect(QFrame* self, QRect* frameRect) {
 	self->setFrameRect(*frameRect);
 }
 
-void QFrame_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QFrame::tr(s, c);
+struct miqt_string* QFrame_Tr2(const char* s, const char* c) {
+	QString _ret = QFrame::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QFrame_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QFrame::tr(s, c, static_cast<int>(n));
+struct miqt_string* QFrame_Tr3(const char* s, const char* c, int n) {
+	QString _ret = QFrame::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QFrame_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QFrame::trUtf8(s, c);
+struct miqt_string* QFrame_TrUtf82(const char* s, const char* c) {
+	QString _ret = QFrame::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QFrame_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QFrame::trUtf8(s, c, static_cast<int>(n));
+struct miqt_string* QFrame_TrUtf83(const char* s, const char* c, int n) {
+	QString _ret = QFrame::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QFrame_Delete(QFrame* self) {

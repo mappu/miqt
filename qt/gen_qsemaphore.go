@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"runtime"
 	"unsafe"
 )
 
@@ -51,13 +52,13 @@ func (this *QSemaphore) Acquire() {
 }
 
 func (this *QSemaphore) TryAcquire() bool {
-	ret := C.QSemaphore_TryAcquire(this.h)
-	return (bool)(ret)
+	_ret := C.QSemaphore_TryAcquire(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QSemaphore) TryAcquire2(n int, timeout int) bool {
-	ret := C.QSemaphore_TryAcquire2(this.h, (C.int)(n), (C.int)(timeout))
-	return (bool)(ret)
+	_ret := C.QSemaphore_TryAcquire2(this.h, (C.int)(n), (C.int)(timeout))
+	return (bool)(_ret)
 }
 
 func (this *QSemaphore) Release() {
@@ -65,8 +66,8 @@ func (this *QSemaphore) Release() {
 }
 
 func (this *QSemaphore) Available() int {
-	ret := C.QSemaphore_Available(this.h)
-	return (int)(ret)
+	_ret := C.QSemaphore_Available(this.h)
+	return (int)(_ret)
 }
 
 func (this *QSemaphore) Acquire1(n int) {
@@ -74,16 +75,26 @@ func (this *QSemaphore) Acquire1(n int) {
 }
 
 func (this *QSemaphore) TryAcquire1(n int) bool {
-	ret := C.QSemaphore_TryAcquire1(this.h, (C.int)(n))
-	return (bool)(ret)
+	_ret := C.QSemaphore_TryAcquire1(this.h, (C.int)(n))
+	return (bool)(_ret)
 }
 
 func (this *QSemaphore) Release1(n int) {
 	C.QSemaphore_Release1(this.h, (C.int)(n))
 }
 
+// Delete this object from C++ memory.
 func (this *QSemaphore) Delete() {
 	C.QSemaphore_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QSemaphore) GoGC() {
+	runtime.SetFinalizer(this, func(this *QSemaphore) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
 
 type QSemaphoreReleaser struct {
@@ -143,15 +154,25 @@ func (this *QSemaphoreReleaser) Swap(other *QSemaphoreReleaser) {
 }
 
 func (this *QSemaphoreReleaser) Semaphore() *QSemaphore {
-	ret := C.QSemaphoreReleaser_Semaphore(this.h)
-	return newQSemaphore_U(unsafe.Pointer(ret))
+	_ret := C.QSemaphoreReleaser_Semaphore(this.h)
+	return newQSemaphore_U(unsafe.Pointer(_ret))
 }
 
 func (this *QSemaphoreReleaser) Cancel() *QSemaphore {
-	ret := C.QSemaphoreReleaser_Cancel(this.h)
-	return newQSemaphore_U(unsafe.Pointer(ret))
+	_ret := C.QSemaphoreReleaser_Cancel(this.h)
+	return newQSemaphore_U(unsafe.Pointer(_ret))
 }
 
+// Delete this object from C++ memory.
 func (this *QSemaphoreReleaser) Delete() {
 	C.QSemaphoreReleaser_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QSemaphoreReleaser) GoGC() {
+	runtime.SetFinalizer(this, func(this *QSemaphoreReleaser) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

@@ -13,12 +13,8 @@
 #include <QByteArray>
 #include <cstring>
 #include "qobjectdefs.h"
-
 #include "gen_qobjectdefs.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QGenericArgument* QGenericArgument_new() {
 	return new QGenericArgument();
@@ -84,13 +80,11 @@ QObject* QMetaObject_CastWithObj(const QMetaObject* self, QObject* obj) {
 	return (QObject*) self->cast(obj);
 }
 
-void QMetaObject_Tr(const QMetaObject* self, const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = self->tr(s, c);
+struct miqt_string* QMetaObject_Tr(const QMetaObject* self, const char* s, const char* c) {
+	QString _ret = self->tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 int QMetaObject_MethodOffset(const QMetaObject* self) {
@@ -158,39 +152,39 @@ int QMetaObject_IndexOfClassInfo(const QMetaObject* self, const char* name) {
 }
 
 QMetaMethod* QMetaObject_Constructor(const QMetaObject* self, int index) {
-	QMetaMethod ret = self->constructor(static_cast<int>(index));
+	QMetaMethod _ret = self->constructor(static_cast<int>(index));
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QMetaMethod*>(new QMetaMethod(ret));
+	return static_cast<QMetaMethod*>(new QMetaMethod(_ret));
 }
 
 QMetaMethod* QMetaObject_Method(const QMetaObject* self, int index) {
-	QMetaMethod ret = self->method(static_cast<int>(index));
+	QMetaMethod _ret = self->method(static_cast<int>(index));
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QMetaMethod*>(new QMetaMethod(ret));
+	return static_cast<QMetaMethod*>(new QMetaMethod(_ret));
 }
 
 QMetaEnum* QMetaObject_Enumerator(const QMetaObject* self, int index) {
-	QMetaEnum ret = self->enumerator(static_cast<int>(index));
+	QMetaEnum _ret = self->enumerator(static_cast<int>(index));
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QMetaEnum*>(new QMetaEnum(ret));
+	return static_cast<QMetaEnum*>(new QMetaEnum(_ret));
 }
 
 QMetaProperty* QMetaObject_Property(const QMetaObject* self, int index) {
-	QMetaProperty ret = self->property(static_cast<int>(index));
+	QMetaProperty _ret = self->property(static_cast<int>(index));
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QMetaProperty*>(new QMetaProperty(ret));
+	return static_cast<QMetaProperty*>(new QMetaProperty(_ret));
 }
 
 QMetaClassInfo* QMetaObject_ClassInfo(const QMetaObject* self, int index) {
-	QMetaClassInfo ret = self->classInfo(static_cast<int>(index));
+	QMetaClassInfo _ret = self->classInfo(static_cast<int>(index));
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QMetaClassInfo*>(new QMetaClassInfo(ret));
+	return static_cast<QMetaClassInfo*>(new QMetaClassInfo(_ret));
 }
 
 QMetaProperty* QMetaObject_UserProperty(const QMetaObject* self) {
-	QMetaProperty ret = self->userProperty();
+	QMetaProperty _ret = self->userProperty();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QMetaProperty*>(new QMetaProperty(ret));
+	return static_cast<QMetaProperty*>(new QMetaProperty(_ret));
 }
 
 bool QMetaObject_CheckConnectArgs(const char* signal, const char* method) {
@@ -202,21 +196,21 @@ bool QMetaObject_CheckConnectArgs2(QMetaMethod* signal, QMetaMethod* method) {
 }
 
 QByteArray* QMetaObject_NormalizedSignature(const char* method) {
-	QByteArray ret = QMetaObject::normalizedSignature(method);
+	QByteArray _ret = QMetaObject::normalizedSignature(method);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(ret));
+	return static_cast<QByteArray*>(new QByteArray(_ret));
 }
 
 QByteArray* QMetaObject_NormalizedType(const char* typeVal) {
-	QByteArray ret = QMetaObject::normalizedType(typeVal);
+	QByteArray _ret = QMetaObject::normalizedType(typeVal);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(ret));
+	return static_cast<QByteArray*>(new QByteArray(_ret));
 }
 
 QMetaObject__Connection* QMetaObject_Connect(QObject* sender, int signal_index, QObject* receiver, int method_index) {
-	QMetaObject::Connection ret = QMetaObject::connect(sender, static_cast<int>(signal_index), receiver, static_cast<int>(method_index));
+	QMetaObject::Connection _ret = QMetaObject::connect(sender, static_cast<int>(signal_index), receiver, static_cast<int>(method_index));
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QMetaObject::Connection*>(new QMetaObject::Connection(ret));
+	return static_cast<QMetaObject::Connection*>(new QMetaObject::Connection(_ret));
 }
 
 bool QMetaObject_Disconnect(QObject* sender, int signal_index, QObject* receiver, int method_index) {
@@ -251,25 +245,23 @@ QObject* QMetaObject_NewInstance(const QMetaObject* self) {
 	return self->newInstance();
 }
 
-void QMetaObject_Tr3(const QMetaObject* self, const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = self->tr(s, c, static_cast<int>(n));
+struct miqt_string* QMetaObject_Tr3(const QMetaObject* self, const char* s, const char* c, int n) {
+	QString _ret = self->tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 QMetaObject__Connection* QMetaObject_Connect5(QObject* sender, int signal_index, QObject* receiver, int method_index, int typeVal) {
-	QMetaObject::Connection ret = QMetaObject::connect(sender, static_cast<int>(signal_index), receiver, static_cast<int>(method_index), static_cast<int>(typeVal));
+	QMetaObject::Connection _ret = QMetaObject::connect(sender, static_cast<int>(signal_index), receiver, static_cast<int>(method_index), static_cast<int>(typeVal));
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QMetaObject::Connection*>(new QMetaObject::Connection(ret));
+	return static_cast<QMetaObject::Connection*>(new QMetaObject::Connection(_ret));
 }
 
 QMetaObject__Connection* QMetaObject_Connect6(QObject* sender, int signal_index, QObject* receiver, int method_index, int typeVal, int* types) {
-	QMetaObject::Connection ret = QMetaObject::connect(sender, static_cast<int>(signal_index), receiver, static_cast<int>(method_index), static_cast<int>(typeVal), static_cast<int*>(types));
+	QMetaObject::Connection _ret = QMetaObject::connect(sender, static_cast<int>(signal_index), receiver, static_cast<int>(method_index), static_cast<int>(typeVal), static_cast<int*>(types));
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QMetaObject::Connection*>(new QMetaObject::Connection(ret));
+	return static_cast<QMetaObject::Connection*>(new QMetaObject::Connection(_ret));
 }
 
 bool QMetaObject_InvokeMethod5(QObject* obj, const char* member, uintptr_t param3, QGenericReturnArgument* retVal, QGenericArgument* val0) {

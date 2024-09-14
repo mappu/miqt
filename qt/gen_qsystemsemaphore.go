@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"runtime"
 	"unsafe"
 )
 
@@ -55,84 +56,90 @@ func newQSystemSemaphore_U(h unsafe.Pointer) *QSystemSemaphore {
 
 // NewQSystemSemaphore constructs a new QSystemSemaphore object.
 func NewQSystemSemaphore(key string) *QSystemSemaphore {
-	key_Cstring := C.CString(key)
-	defer C.free(unsafe.Pointer(key_Cstring))
-	ret := C.QSystemSemaphore_new(key_Cstring, C.size_t(len(key)))
+	key_ms := miqt_strdupg(key)
+	defer C.free(key_ms)
+	ret := C.QSystemSemaphore_new((*C.struct_miqt_string)(key_ms))
 	return newQSystemSemaphore(ret)
 }
 
 // NewQSystemSemaphore2 constructs a new QSystemSemaphore object.
 func NewQSystemSemaphore2(key string, initialValue int) *QSystemSemaphore {
-	key_Cstring := C.CString(key)
-	defer C.free(unsafe.Pointer(key_Cstring))
-	ret := C.QSystemSemaphore_new2(key_Cstring, C.size_t(len(key)), (C.int)(initialValue))
+	key_ms := miqt_strdupg(key)
+	defer C.free(key_ms)
+	ret := C.QSystemSemaphore_new2((*C.struct_miqt_string)(key_ms), (C.int)(initialValue))
 	return newQSystemSemaphore(ret)
 }
 
 // NewQSystemSemaphore3 constructs a new QSystemSemaphore object.
 func NewQSystemSemaphore3(key string, initialValue int, mode QSystemSemaphore__AccessMode) *QSystemSemaphore {
-	key_Cstring := C.CString(key)
-	defer C.free(unsafe.Pointer(key_Cstring))
-	ret := C.QSystemSemaphore_new3(key_Cstring, C.size_t(len(key)), (C.int)(initialValue), (C.uintptr_t)(mode))
+	key_ms := miqt_strdupg(key)
+	defer C.free(key_ms)
+	ret := C.QSystemSemaphore_new3((*C.struct_miqt_string)(key_ms), (C.int)(initialValue), (C.uintptr_t)(mode))
 	return newQSystemSemaphore(ret)
 }
 
 func (this *QSystemSemaphore) SetKey(key string) {
-	key_Cstring := C.CString(key)
-	defer C.free(unsafe.Pointer(key_Cstring))
-	C.QSystemSemaphore_SetKey(this.h, key_Cstring, C.size_t(len(key)))
+	key_ms := miqt_strdupg(key)
+	defer C.free(key_ms)
+	C.QSystemSemaphore_SetKey(this.h, (*C.struct_miqt_string)(key_ms))
 }
 
 func (this *QSystemSemaphore) Key() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QSystemSemaphore_Key(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QSystemSemaphore_Key(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QSystemSemaphore) Acquire() bool {
-	ret := C.QSystemSemaphore_Acquire(this.h)
-	return (bool)(ret)
+	_ret := C.QSystemSemaphore_Acquire(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QSystemSemaphore) Release() bool {
-	ret := C.QSystemSemaphore_Release(this.h)
-	return (bool)(ret)
+	_ret := C.QSystemSemaphore_Release(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QSystemSemaphore) Error() QSystemSemaphore__SystemSemaphoreError {
-	ret := C.QSystemSemaphore_Error(this.h)
-	return (QSystemSemaphore__SystemSemaphoreError)(ret)
+	_ret := C.QSystemSemaphore_Error(this.h)
+	return (QSystemSemaphore__SystemSemaphoreError)(_ret)
 }
 
 func (this *QSystemSemaphore) ErrorString() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QSystemSemaphore_ErrorString(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QSystemSemaphore_ErrorString(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QSystemSemaphore) SetKey2(key string, initialValue int) {
-	key_Cstring := C.CString(key)
-	defer C.free(unsafe.Pointer(key_Cstring))
-	C.QSystemSemaphore_SetKey2(this.h, key_Cstring, C.size_t(len(key)), (C.int)(initialValue))
+	key_ms := miqt_strdupg(key)
+	defer C.free(key_ms)
+	C.QSystemSemaphore_SetKey2(this.h, (*C.struct_miqt_string)(key_ms), (C.int)(initialValue))
 }
 
 func (this *QSystemSemaphore) SetKey3(key string, initialValue int, mode QSystemSemaphore__AccessMode) {
-	key_Cstring := C.CString(key)
-	defer C.free(unsafe.Pointer(key_Cstring))
-	C.QSystemSemaphore_SetKey3(this.h, key_Cstring, C.size_t(len(key)), (C.int)(initialValue), (C.uintptr_t)(mode))
+	key_ms := miqt_strdupg(key)
+	defer C.free(key_ms)
+	C.QSystemSemaphore_SetKey3(this.h, (*C.struct_miqt_string)(key_ms), (C.int)(initialValue), (C.uintptr_t)(mode))
 }
 
 func (this *QSystemSemaphore) Release1(n int) bool {
-	ret := C.QSystemSemaphore_Release1(this.h, (C.int)(n))
-	return (bool)(ret)
+	_ret := C.QSystemSemaphore_Release1(this.h, (C.int)(n))
+	return (bool)(_ret)
 }
 
+// Delete this object from C++ memory.
 func (this *QSystemSemaphore) Delete() {
 	C.QSystemSemaphore_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QSystemSemaphore) GoGC() {
+	runtime.SetFinalizer(this, func(this *QSystemSemaphore) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

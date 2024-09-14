@@ -116,35 +116,31 @@ func NewQWizard3(parent *QWidget, flags int) *QWizard {
 }
 
 func (this *QWizard) MetaObject() *QMetaObject {
-	ret := C.QWizard_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QWizard_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QWizard_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QWizard_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QWizard_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QWizard_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QWizard_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QWizard_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QWizard) AddPage(page *QWizardPage) int {
-	ret := C.QWizard_AddPage(this.h, page.cPointer())
-	return (int)(ret)
+	_ret := C.QWizard_AddPage(this.h, page.cPointer())
+	return (int)(_ret)
 }
 
 func (this *QWizard) SetPage(id int, page *QWizardPage) {
@@ -156,52 +152,46 @@ func (this *QWizard) RemovePage(id int) {
 }
 
 func (this *QWizard) Page(id int) *QWizardPage {
-	ret := C.QWizard_Page(this.h, (C.int)(id))
-	return newQWizardPage_U(unsafe.Pointer(ret))
+	_ret := C.QWizard_Page(this.h, (C.int)(id))
+	return newQWizardPage_U(unsafe.Pointer(_ret))
 }
 
 func (this *QWizard) HasVisitedPage(id int) bool {
-	ret := C.QWizard_HasVisitedPage(this.h, (C.int)(id))
-	return (bool)(ret)
+	_ret := C.QWizard_HasVisitedPage(this.h, (C.int)(id))
+	return (bool)(_ret)
 }
 
 func (this *QWizard) VisitedPages() []int {
-	var _out *C.int = nil
-	var _out_len C.size_t = 0
-	C.QWizard_VisitedPages(this.h, &_out, &_out_len)
-	ret := make([]int, int(_out_len))
-	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_out)) // mrs jackson
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = (int)(_outCast[i])
+	var _ma *C.struct_miqt_array = C.QWizard_VisitedPages(this.h)
+	_ret := make([]int, int(_ma.len))
+	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // mrs jackson
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = (int)(_outCast[i])
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
 func (this *QWizard) VisitedIds() []int {
-	var _out *C.int = nil
-	var _out_len C.size_t = 0
-	C.QWizard_VisitedIds(this.h, &_out, &_out_len)
-	ret := make([]int, int(_out_len))
-	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_out)) // mrs jackson
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = (int)(_outCast[i])
+	var _ma *C.struct_miqt_array = C.QWizard_VisitedIds(this.h)
+	_ret := make([]int, int(_ma.len))
+	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // mrs jackson
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = (int)(_outCast[i])
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
 func (this *QWizard) PageIds() []int {
-	var _out *C.int = nil
-	var _out_len C.size_t = 0
-	C.QWizard_PageIds(this.h, &_out, &_out_len)
-	ret := make([]int, int(_out_len))
-	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_out)) // mrs jackson
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = (int)(_outCast[i])
+	var _ma *C.struct_miqt_array = C.QWizard_PageIds(this.h)
+	_ret := make([]int, int(_ma.len))
+	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // mrs jackson
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = (int)(_outCast[i])
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
 func (this *QWizard) SetStartId(id int) {
@@ -209,47 +199,43 @@ func (this *QWizard) SetStartId(id int) {
 }
 
 func (this *QWizard) StartId() int {
-	ret := C.QWizard_StartId(this.h)
-	return (int)(ret)
+	_ret := C.QWizard_StartId(this.h)
+	return (int)(_ret)
 }
 
 func (this *QWizard) CurrentPage() *QWizardPage {
-	ret := C.QWizard_CurrentPage(this.h)
-	return newQWizardPage_U(unsafe.Pointer(ret))
+	_ret := C.QWizard_CurrentPage(this.h)
+	return newQWizardPage_U(unsafe.Pointer(_ret))
 }
 
 func (this *QWizard) CurrentId() int {
-	ret := C.QWizard_CurrentId(this.h)
-	return (int)(ret)
+	_ret := C.QWizard_CurrentId(this.h)
+	return (int)(_ret)
 }
 
 func (this *QWizard) ValidateCurrentPage() bool {
-	ret := C.QWizard_ValidateCurrentPage(this.h)
-	return (bool)(ret)
+	_ret := C.QWizard_ValidateCurrentPage(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QWizard) NextId() int {
-	ret := C.QWizard_NextId(this.h)
-	return (int)(ret)
+	_ret := C.QWizard_NextId(this.h)
+	return (int)(_ret)
 }
 
 func (this *QWizard) SetField(name string, value *QVariant) {
-	name_Cstring := C.CString(name)
-	defer C.free(unsafe.Pointer(name_Cstring))
-	C.QWizard_SetField(this.h, name_Cstring, C.size_t(len(name)), value.cPointer())
+	name_ms := miqt_strdupg(name)
+	defer C.free(name_ms)
+	C.QWizard_SetField(this.h, (*C.struct_miqt_string)(name_ms), value.cPointer())
 }
 
 func (this *QWizard) Field(name string) *QVariant {
-	name_Cstring := C.CString(name)
-	defer C.free(unsafe.Pointer(name_Cstring))
-	ret := C.QWizard_Field(this.h, name_Cstring, C.size_t(len(name)))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQVariant(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QVariant) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	name_ms := miqt_strdupg(name)
+	defer C.free(name_ms)
+	_ret := C.QWizard_Field(this.h, (*C.struct_miqt_string)(name_ms))
+	_goptr := newQVariant(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QWizard) SetWizardStyle(style QWizard__WizardStyle) {
@@ -257,8 +243,8 @@ func (this *QWizard) SetWizardStyle(style QWizard__WizardStyle) {
 }
 
 func (this *QWizard) WizardStyle() QWizard__WizardStyle {
-	ret := C.QWizard_WizardStyle(this.h)
-	return (QWizard__WizardStyle)(ret)
+	_ret := C.QWizard_WizardStyle(this.h)
+	return (QWizard__WizardStyle)(_ret)
 }
 
 func (this *QWizard) SetOption(option QWizard__WizardOption) {
@@ -266,8 +252,8 @@ func (this *QWizard) SetOption(option QWizard__WizardOption) {
 }
 
 func (this *QWizard) TestOption(option QWizard__WizardOption) bool {
-	ret := C.QWizard_TestOption(this.h, (C.uintptr_t)(option))
-	return (bool)(ret)
+	_ret := C.QWizard_TestOption(this.h, (C.uintptr_t)(option))
+	return (bool)(_ret)
 }
 
 func (this *QWizard) SetOptions(options int) {
@@ -275,23 +261,21 @@ func (this *QWizard) SetOptions(options int) {
 }
 
 func (this *QWizard) Options() int {
-	ret := C.QWizard_Options(this.h)
-	return (int)(ret)
+	_ret := C.QWizard_Options(this.h)
+	return (int)(_ret)
 }
 
 func (this *QWizard) SetButtonText(which int, text string) {
-	text_Cstring := C.CString(text)
-	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QWizard_SetButtonText(this.h, (C.int)(which), text_Cstring, C.size_t(len(text)))
+	text_ms := miqt_strdupg(text)
+	defer C.free(text_ms)
+	C.QWizard_SetButtonText(this.h, (C.int)(which), (*C.struct_miqt_string)(text_ms))
 }
 
 func (this *QWizard) ButtonText(which int) string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QWizard_ButtonText(this.h, (C.int)(which), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QWizard_ButtonText(this.h, (C.int)(which))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QWizard) SetButtonLayout(layout []int) {
@@ -301,7 +285,9 @@ func (this *QWizard) SetButtonLayout(layout []int) {
 	for i := range layout {
 		layout_CArray[i] = (C.int)(layout[i])
 	}
-	C.QWizard_SetButtonLayout(this.h, &layout_CArray[0], C.size_t(len(layout)))
+	layout_ma := &C.struct_miqt_array{len: C.size_t(len(layout)), data: unsafe.Pointer(layout_CArray)}
+	defer runtime.KeepAlive(unsafe.Pointer(layout_ma))
+	C.QWizard_SetButtonLayout(this.h, layout_ma)
 }
 
 func (this *QWizard) SetButton(which int, button *QAbstractButton) {
@@ -309,8 +295,8 @@ func (this *QWizard) SetButton(which int, button *QAbstractButton) {
 }
 
 func (this *QWizard) Button(which int) *QAbstractButton {
-	ret := C.QWizard_Button(this.h, (C.int)(which))
-	return newQAbstractButton_U(unsafe.Pointer(ret))
+	_ret := C.QWizard_Button(this.h, (C.int)(which))
+	return newQAbstractButton_U(unsafe.Pointer(_ret))
 }
 
 func (this *QWizard) SetTitleFormat(format TextFormat) {
@@ -318,8 +304,8 @@ func (this *QWizard) SetTitleFormat(format TextFormat) {
 }
 
 func (this *QWizard) TitleFormat() TextFormat {
-	ret := C.QWizard_TitleFormat(this.h)
-	return (TextFormat)(ret)
+	_ret := C.QWizard_TitleFormat(this.h)
+	return (TextFormat)(_ret)
 }
 
 func (this *QWizard) SetSubTitleFormat(format TextFormat) {
@@ -327,8 +313,8 @@ func (this *QWizard) SetSubTitleFormat(format TextFormat) {
 }
 
 func (this *QWizard) SubTitleFormat() TextFormat {
-	ret := C.QWizard_SubTitleFormat(this.h)
-	return (TextFormat)(ret)
+	_ret := C.QWizard_SubTitleFormat(this.h)
+	return (TextFormat)(_ret)
 }
 
 func (this *QWizard) SetPixmap(which QWizard__WizardPixmap, pixmap *QPixmap) {
@@ -336,14 +322,10 @@ func (this *QWizard) SetPixmap(which QWizard__WizardPixmap, pixmap *QPixmap) {
 }
 
 func (this *QWizard) Pixmap(which QWizard__WizardPixmap) *QPixmap {
-	ret := C.QWizard_Pixmap(this.h, (C.uintptr_t)(which))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPixmap(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPixmap) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QWizard_Pixmap(this.h, (C.uintptr_t)(which))
+	_goptr := newQPixmap(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QWizard) SetSideWidget(widget *QWidget) {
@@ -351,8 +333,8 @@ func (this *QWizard) SetSideWidget(widget *QWidget) {
 }
 
 func (this *QWizard) SideWidget() *QWidget {
-	ret := C.QWizard_SideWidget(this.h)
-	return newQWidget_U(unsafe.Pointer(ret))
+	_ret := C.QWizard_SideWidget(this.h)
+	return newQWidget_U(unsafe.Pointer(_ret))
 }
 
 func (this *QWizard) SetDefaultProperty(className string, property string, changedSignal string) {
@@ -370,74 +352,111 @@ func (this *QWizard) SetVisible(visible bool) {
 }
 
 func (this *QWizard) SizeHint() *QSize {
-	ret := C.QWizard_SizeHint(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSize(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QWizard_SizeHint(this.h)
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QWizard) CurrentIdChanged(id int) {
 	C.QWizard_CurrentIdChanged(this.h, (C.int)(id))
 }
+func (this *QWizard) OnCurrentIdChanged(slot func(id int)) {
+	C.QWizard_connect_CurrentIdChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QWizard) OnCurrentIdChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QWizard_CurrentIdChanged
+func miqt_exec_callback_QWizard_CurrentIdChanged(cb *C.void, id C.int) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(id int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QWizard_connect_CurrentIdChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	id_ret := id
+	slotval1 := (int)(id_ret)
+
+	gofunc(slotval1)
 }
 
 func (this *QWizard) HelpRequested() {
 	C.QWizard_HelpRequested(this.h)
 }
-
 func (this *QWizard) OnHelpRequested(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+	C.QWizard_connect_HelpRequested(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
+
+//export miqt_exec_callback_QWizard_HelpRequested
+func miqt_exec_callback_QWizard_HelpRequested(cb *C.void) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QWizard_connect_HelpRequested(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	gofunc()
 }
 
 func (this *QWizard) CustomButtonClicked(which int) {
 	C.QWizard_CustomButtonClicked(this.h, (C.int)(which))
 }
+func (this *QWizard) OnCustomButtonClicked(slot func(which int)) {
+	C.QWizard_connect_CustomButtonClicked(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QWizard) OnCustomButtonClicked(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QWizard_CustomButtonClicked
+func miqt_exec_callback_QWizard_CustomButtonClicked(cb *C.void, which C.int) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(which int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QWizard_connect_CustomButtonClicked(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	which_ret := which
+	slotval1 := (int)(which_ret)
+
+	gofunc(slotval1)
 }
 
 func (this *QWizard) PageAdded(id int) {
 	C.QWizard_PageAdded(this.h, (C.int)(id))
 }
+func (this *QWizard) OnPageAdded(slot func(id int)) {
+	C.QWizard_connect_PageAdded(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QWizard) OnPageAdded(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QWizard_PageAdded
+func miqt_exec_callback_QWizard_PageAdded(cb *C.void, id C.int) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(id int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QWizard_connect_PageAdded(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	id_ret := id
+	slotval1 := (int)(id_ret)
+
+	gofunc(slotval1)
 }
 
 func (this *QWizard) PageRemoved(id int) {
 	C.QWizard_PageRemoved(this.h, (C.int)(id))
 }
+func (this *QWizard) OnPageRemoved(slot func(id int)) {
+	C.QWizard_connect_PageRemoved(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QWizard) OnPageRemoved(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QWizard_PageRemoved
+func miqt_exec_callback_QWizard_PageRemoved(cb *C.void, id C.int) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(id int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QWizard_connect_PageRemoved(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	id_ret := id
+	slotval1 := (int)(id_ret)
+
+	gofunc(slotval1)
 }
 
 func (this *QWizard) Back() {
@@ -457,12 +476,10 @@ func QWizard_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QWizard_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QWizard_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QWizard_Tr3(s string, c string, n int) string {
@@ -470,12 +487,10 @@ func QWizard_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QWizard_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QWizard_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QWizard_TrUtf82(s string, c string) string {
@@ -483,12 +498,10 @@ func QWizard_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QWizard_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QWizard_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QWizard_TrUtf83(s string, c string, n int) string {
@@ -496,20 +509,28 @@ func QWizard_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QWizard_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QWizard_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QWizard) SetOption2(option QWizard__WizardOption, on bool) {
 	C.QWizard_SetOption2(this.h, (C.uintptr_t)(option), (C.bool)(on))
 }
 
+// Delete this object from C++ memory.
 func (this *QWizard) Delete() {
 	C.QWizard_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QWizard) GoGC() {
+	runtime.SetFinalizer(this, func(this *QWizard) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
 
 type QWizardPage struct {
@@ -548,60 +569,52 @@ func NewQWizardPage2(parent *QWidget) *QWizardPage {
 }
 
 func (this *QWizardPage) MetaObject() *QMetaObject {
-	ret := C.QWizardPage_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QWizardPage_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QWizardPage_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QWizardPage_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QWizardPage_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QWizardPage_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QWizardPage_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QWizardPage_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QWizardPage) SetTitle(title string) {
-	title_Cstring := C.CString(title)
-	defer C.free(unsafe.Pointer(title_Cstring))
-	C.QWizardPage_SetTitle(this.h, title_Cstring, C.size_t(len(title)))
+	title_ms := miqt_strdupg(title)
+	defer C.free(title_ms)
+	C.QWizardPage_SetTitle(this.h, (*C.struct_miqt_string)(title_ms))
 }
 
 func (this *QWizardPage) Title() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QWizardPage_Title(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QWizardPage_Title(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QWizardPage) SetSubTitle(subTitle string) {
-	subTitle_Cstring := C.CString(subTitle)
-	defer C.free(unsafe.Pointer(subTitle_Cstring))
-	C.QWizardPage_SetSubTitle(this.h, subTitle_Cstring, C.size_t(len(subTitle)))
+	subTitle_ms := miqt_strdupg(subTitle)
+	defer C.free(subTitle_ms)
+	C.QWizardPage_SetSubTitle(this.h, (*C.struct_miqt_string)(subTitle_ms))
 }
 
 func (this *QWizardPage) SubTitle() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QWizardPage_SubTitle(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QWizardPage_SubTitle(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QWizardPage) SetPixmap(which QWizard__WizardPixmap, pixmap *QPixmap) {
@@ -609,14 +622,10 @@ func (this *QWizardPage) SetPixmap(which QWizard__WizardPixmap, pixmap *QPixmap)
 }
 
 func (this *QWizardPage) Pixmap(which QWizard__WizardPixmap) *QPixmap {
-	ret := C.QWizardPage_Pixmap(this.h, (C.uintptr_t)(which))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPixmap(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPixmap) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QWizardPage_Pixmap(this.h, (C.uintptr_t)(which))
+	_goptr := newQPixmap(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QWizardPage) SetFinalPage(finalPage bool) {
@@ -624,8 +633,8 @@ func (this *QWizardPage) SetFinalPage(finalPage bool) {
 }
 
 func (this *QWizardPage) IsFinalPage() bool {
-	ret := C.QWizardPage_IsFinalPage(this.h)
-	return (bool)(ret)
+	_ret := C.QWizardPage_IsFinalPage(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QWizardPage) SetCommitPage(commitPage bool) {
@@ -633,23 +642,21 @@ func (this *QWizardPage) SetCommitPage(commitPage bool) {
 }
 
 func (this *QWizardPage) IsCommitPage() bool {
-	ret := C.QWizardPage_IsCommitPage(this.h)
-	return (bool)(ret)
+	_ret := C.QWizardPage_IsCommitPage(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QWizardPage) SetButtonText(which int, text string) {
-	text_Cstring := C.CString(text)
-	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QWizardPage_SetButtonText(this.h, (C.int)(which), text_Cstring, C.size_t(len(text)))
+	text_ms := miqt_strdupg(text)
+	defer C.free(text_ms)
+	C.QWizardPage_SetButtonText(this.h, (C.int)(which), (*C.struct_miqt_string)(text_ms))
 }
 
 func (this *QWizardPage) ButtonText(which int) string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QWizardPage_ButtonText(this.h, (C.int)(which), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QWizardPage_ButtonText(this.h, (C.int)(which))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QWizardPage) InitializePage() {
@@ -661,30 +668,35 @@ func (this *QWizardPage) CleanupPage() {
 }
 
 func (this *QWizardPage) ValidatePage() bool {
-	ret := C.QWizardPage_ValidatePage(this.h)
-	return (bool)(ret)
+	_ret := C.QWizardPage_ValidatePage(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QWizardPage) IsComplete() bool {
-	ret := C.QWizardPage_IsComplete(this.h)
-	return (bool)(ret)
+	_ret := C.QWizardPage_IsComplete(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QWizardPage) NextId() int {
-	ret := C.QWizardPage_NextId(this.h)
-	return (int)(ret)
+	_ret := C.QWizardPage_NextId(this.h)
+	return (int)(_ret)
 }
 
 func (this *QWizardPage) CompleteChanged() {
 	C.QWizardPage_CompleteChanged(this.h)
 }
-
 func (this *QWizardPage) OnCompleteChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+	C.QWizardPage_connect_CompleteChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
+
+//export miqt_exec_callback_QWizardPage_CompleteChanged
+func miqt_exec_callback_QWizardPage_CompleteChanged(cb *C.void) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QWizardPage_connect_CompleteChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	gofunc()
 }
 
 func QWizardPage_Tr2(s string, c string) string {
@@ -692,12 +704,10 @@ func QWizardPage_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QWizardPage_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QWizardPage_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QWizardPage_Tr3(s string, c string, n int) string {
@@ -705,12 +715,10 @@ func QWizardPage_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QWizardPage_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QWizardPage_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QWizardPage_TrUtf82(s string, c string) string {
@@ -718,12 +726,10 @@ func QWizardPage_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QWizardPage_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QWizardPage_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QWizardPage_TrUtf83(s string, c string, n int) string {
@@ -731,14 +737,22 @@ func QWizardPage_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QWizardPage_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QWizardPage_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
+// Delete this object from C++ memory.
 func (this *QWizardPage) Delete() {
 	C.QWizardPage_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QWizardPage) GoGC() {
+	runtime.SetFinalizer(this, func(this *QWizardPage) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

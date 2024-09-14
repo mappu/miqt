@@ -2,12 +2,8 @@
 #include <QCryptographicHash>
 #include <QIODevice>
 #include "qcryptographichash.h"
-
 #include "gen_qcryptographichash.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QCryptographicHash* QCryptographicHash_new(uintptr_t method) {
 	return new QCryptographicHash(static_cast<QCryptographicHash::Algorithm>(method));
@@ -30,15 +26,15 @@ bool QCryptographicHash_AddDataWithDevice(QCryptographicHash* self, QIODevice* d
 }
 
 QByteArray* QCryptographicHash_Result(const QCryptographicHash* self) {
-	QByteArray ret = self->result();
+	QByteArray _ret = self->result();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(ret));
+	return static_cast<QByteArray*>(new QByteArray(_ret));
 }
 
 QByteArray* QCryptographicHash_Hash(QByteArray* data, uintptr_t method) {
-	QByteArray ret = QCryptographicHash::hash(*data, static_cast<QCryptographicHash::Algorithm>(method));
+	QByteArray _ret = QCryptographicHash::hash(*data, static_cast<QCryptographicHash::Algorithm>(method));
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(ret));
+	return static_cast<QByteArray*>(new QByteArray(_ret));
 }
 
 int QCryptographicHash_HashLength(uintptr_t method) {

@@ -98,8 +98,8 @@ func (this *QCursor) Swap(other *QCursor) {
 }
 
 func (this *QCursor) Shape() CursorShape {
-	ret := C.QCursor_Shape(this.h)
-	return (CursorShape)(ret)
+	_ret := C.QCursor_Shape(this.h)
+	return (CursorShape)(_ret)
 }
 
 func (this *QCursor) SetShape(newShape CursorShape) {
@@ -107,79 +107,55 @@ func (this *QCursor) SetShape(newShape CursorShape) {
 }
 
 func (this *QCursor) Bitmap() *QBitmap {
-	ret := C.QCursor_Bitmap(this.h)
-	return newQBitmap_U(unsafe.Pointer(ret))
+	_ret := C.QCursor_Bitmap(this.h)
+	return newQBitmap_U(unsafe.Pointer(_ret))
 }
 
 func (this *QCursor) Mask() *QBitmap {
-	ret := C.QCursor_Mask(this.h)
-	return newQBitmap_U(unsafe.Pointer(ret))
+	_ret := C.QCursor_Mask(this.h)
+	return newQBitmap_U(unsafe.Pointer(_ret))
 }
 
 func (this *QCursor) BitmapWithQtReturnByValueConstant(param1 ReturnByValueConstant) *QBitmap {
-	ret := C.QCursor_BitmapWithQtReturnByValueConstant(this.h, (C.uintptr_t)(param1))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQBitmap(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QBitmap) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QCursor_BitmapWithQtReturnByValueConstant(this.h, (C.uintptr_t)(param1))
+	_goptr := newQBitmap(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QCursor) MaskWithQtReturnByValueConstant(param1 ReturnByValueConstant) *QBitmap {
-	ret := C.QCursor_MaskWithQtReturnByValueConstant(this.h, (C.uintptr_t)(param1))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQBitmap(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QBitmap) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QCursor_MaskWithQtReturnByValueConstant(this.h, (C.uintptr_t)(param1))
+	_goptr := newQBitmap(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QCursor) Pixmap() *QPixmap {
-	ret := C.QCursor_Pixmap(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPixmap(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPixmap) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QCursor_Pixmap(this.h)
+	_goptr := newQPixmap(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QCursor) HotSpot() *QPoint {
-	ret := C.QCursor_HotSpot(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPoint(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPoint) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QCursor_HotSpot(this.h)
+	_goptr := newQPoint(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func QCursor_Pos() *QPoint {
-	ret := C.QCursor_Pos()
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPoint(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPoint) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QCursor_Pos()
+	_goptr := newQPoint(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func QCursor_PosWithScreen(screen *QScreen) *QPoint {
-	ret := C.QCursor_PosWithScreen(screen.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPoint(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPoint) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QCursor_PosWithScreen(screen.cPointer())
+	_goptr := newQPoint(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func QCursor_SetPos(x int, y int) {
@@ -198,6 +174,16 @@ func QCursor_SetPos3(screen *QScreen, p *QPoint) {
 	C.QCursor_SetPos3(screen.cPointer(), p.cPointer())
 }
 
+// Delete this object from C++ memory.
 func (this *QCursor) Delete() {
 	C.QCursor_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QCursor) GoGC() {
+	runtime.SetFinalizer(this, func(this *QCursor) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

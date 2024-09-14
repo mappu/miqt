@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"runtime"
 	"unsafe"
 )
 
@@ -43,40 +44,36 @@ func newQAbstractTransition_U(h unsafe.Pointer) *QAbstractTransition {
 }
 
 func (this *QAbstractTransition) MetaObject() *QMetaObject {
-	ret := C.QAbstractTransition_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QAbstractTransition_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QAbstractTransition_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QAbstractTransition_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QAbstractTransition_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QAbstractTransition_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QAbstractTransition_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QAbstractTransition_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QAbstractTransition) SourceState() *QState {
-	ret := C.QAbstractTransition_SourceState(this.h)
-	return newQState_U(unsafe.Pointer(ret))
+	_ret := C.QAbstractTransition_SourceState(this.h)
+	return newQState_U(unsafe.Pointer(_ret))
 }
 
 func (this *QAbstractTransition) TargetState() *QAbstractState {
-	ret := C.QAbstractTransition_TargetState(this.h)
-	return newQAbstractState_U(unsafe.Pointer(ret))
+	_ret := C.QAbstractTransition_TargetState(this.h)
+	return newQAbstractState_U(unsafe.Pointer(_ret))
 }
 
 func (this *QAbstractTransition) SetTargetState(target *QAbstractState) {
@@ -84,16 +81,14 @@ func (this *QAbstractTransition) SetTargetState(target *QAbstractState) {
 }
 
 func (this *QAbstractTransition) TargetStates() []*QAbstractState {
-	var _out **C.QAbstractState = nil
-	var _out_len C.size_t = 0
-	C.QAbstractTransition_TargetStates(this.h, &_out, &_out_len)
-	ret := make([]*QAbstractState, int(_out_len))
-	_outCast := (*[0xffff]*C.QAbstractState)(unsafe.Pointer(_out)) // so fresh so clean
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = newQAbstractState(_outCast[i])
+	var _ma *C.struct_miqt_array = C.QAbstractTransition_TargetStates(this.h)
+	_ret := make([]*QAbstractState, int(_ma.len))
+	_outCast := (*[0xffff]*C.QAbstractState)(unsafe.Pointer(_ma.data)) // mrs jackson
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = newQAbstractState(_outCast[i])
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
 func (this *QAbstractTransition) SetTargetStates(targets []*QAbstractState) {
@@ -103,12 +98,14 @@ func (this *QAbstractTransition) SetTargetStates(targets []*QAbstractState) {
 	for i := range targets {
 		targets_CArray[i] = targets[i].cPointer()
 	}
-	C.QAbstractTransition_SetTargetStates(this.h, &targets_CArray[0], C.size_t(len(targets)))
+	targets_ma := &C.struct_miqt_array{len: C.size_t(len(targets)), data: unsafe.Pointer(targets_CArray)}
+	defer runtime.KeepAlive(unsafe.Pointer(targets_ma))
+	C.QAbstractTransition_SetTargetStates(this.h, targets_ma)
 }
 
 func (this *QAbstractTransition) TransitionType() QAbstractTransition__TransitionType {
-	ret := C.QAbstractTransition_TransitionType(this.h)
-	return (QAbstractTransition__TransitionType)(ret)
+	_ret := C.QAbstractTransition_TransitionType(this.h)
+	return (QAbstractTransition__TransitionType)(_ret)
 }
 
 func (this *QAbstractTransition) SetTransitionType(typeVal QAbstractTransition__TransitionType) {
@@ -116,8 +113,8 @@ func (this *QAbstractTransition) SetTransitionType(typeVal QAbstractTransition__
 }
 
 func (this *QAbstractTransition) Machine() *QStateMachine {
-	ret := C.QAbstractTransition_Machine(this.h)
-	return newQStateMachine_U(unsafe.Pointer(ret))
+	_ret := C.QAbstractTransition_Machine(this.h)
+	return newQStateMachine_U(unsafe.Pointer(_ret))
 }
 
 func (this *QAbstractTransition) AddAnimation(animation *QAbstractAnimation) {
@@ -129,16 +126,14 @@ func (this *QAbstractTransition) RemoveAnimation(animation *QAbstractAnimation) 
 }
 
 func (this *QAbstractTransition) Animations() []*QAbstractAnimation {
-	var _out **C.QAbstractAnimation = nil
-	var _out_len C.size_t = 0
-	C.QAbstractTransition_Animations(this.h, &_out, &_out_len)
-	ret := make([]*QAbstractAnimation, int(_out_len))
-	_outCast := (*[0xffff]*C.QAbstractAnimation)(unsafe.Pointer(_out)) // so fresh so clean
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = newQAbstractAnimation(_outCast[i])
+	var _ma *C.struct_miqt_array = C.QAbstractTransition_Animations(this.h)
+	_ret := make([]*QAbstractAnimation, int(_ma.len))
+	_outCast := (*[0xffff]*C.QAbstractAnimation)(unsafe.Pointer(_ma.data)) // mrs jackson
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = newQAbstractAnimation(_outCast[i])
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
 func QAbstractTransition_Tr2(s string, c string) string {
@@ -146,12 +141,10 @@ func QAbstractTransition_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QAbstractTransition_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QAbstractTransition_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QAbstractTransition_Tr3(s string, c string, n int) string {
@@ -159,12 +152,10 @@ func QAbstractTransition_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QAbstractTransition_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QAbstractTransition_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QAbstractTransition_TrUtf82(s string, c string) string {
@@ -172,12 +163,10 @@ func QAbstractTransition_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QAbstractTransition_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QAbstractTransition_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QAbstractTransition_TrUtf83(s string, c string, n int) string {
@@ -185,14 +174,22 @@ func QAbstractTransition_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QAbstractTransition_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QAbstractTransition_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
+// Delete this object from C++ memory.
 func (this *QAbstractTransition) Delete() {
 	C.QAbstractTransition_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QAbstractTransition) GoGC() {
+	runtime.SetFinalizer(this, func(this *QAbstractTransition) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -38,8 +40,8 @@ typedef struct QWidget QWidget;
 QFormLayout* QFormLayout_new();
 QFormLayout* QFormLayout_new2(QWidget* parent);
 QMetaObject* QFormLayout_MetaObject(const QFormLayout* self);
-void QFormLayout_Tr(const char* s, char** _out, int* _out_Strlen);
-void QFormLayout_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QFormLayout_Tr(const char* s);
+struct miqt_string* QFormLayout_TrUtf8(const char* s);
 void QFormLayout_SetFieldGrowthPolicy(QFormLayout* self, uintptr_t policy);
 uintptr_t QFormLayout_FieldGrowthPolicy(const QFormLayout* self);
 void QFormLayout_SetRowWrapPolicy(QFormLayout* self, int policy);
@@ -56,14 +58,14 @@ int QFormLayout_Spacing(const QFormLayout* self);
 void QFormLayout_SetSpacing(QFormLayout* self, int spacing);
 void QFormLayout_AddRow(QFormLayout* self, QWidget* label, QWidget* field);
 void QFormLayout_AddRow2(QFormLayout* self, QWidget* label, QLayout* field);
-void QFormLayout_AddRow3(QFormLayout* self, const char* labelText, size_t labelText_Strlen, QWidget* field);
-void QFormLayout_AddRow4(QFormLayout* self, const char* labelText, size_t labelText_Strlen, QLayout* field);
+void QFormLayout_AddRow3(QFormLayout* self, struct miqt_string* labelText, QWidget* field);
+void QFormLayout_AddRow4(QFormLayout* self, struct miqt_string* labelText, QLayout* field);
 void QFormLayout_AddRowWithWidget(QFormLayout* self, QWidget* widget);
 void QFormLayout_AddRowWithLayout(QFormLayout* self, QLayout* layout);
 void QFormLayout_InsertRow(QFormLayout* self, int row, QWidget* label, QWidget* field);
 void QFormLayout_InsertRow2(QFormLayout* self, int row, QWidget* label, QLayout* field);
-void QFormLayout_InsertRow3(QFormLayout* self, int row, const char* labelText, size_t labelText_Strlen, QWidget* field);
-void QFormLayout_InsertRow4(QFormLayout* self, int row, const char* labelText, size_t labelText_Strlen, QLayout* field);
+void QFormLayout_InsertRow3(QFormLayout* self, int row, struct miqt_string* labelText, QWidget* field);
+void QFormLayout_InsertRow4(QFormLayout* self, int row, struct miqt_string* labelText, QLayout* field);
 void QFormLayout_InsertRow5(QFormLayout* self, int row, QWidget* widget);
 void QFormLayout_InsertRow6(QFormLayout* self, int row, QLayout* layout);
 void QFormLayout_RemoveRow(QFormLayout* self, int row);
@@ -90,10 +92,10 @@ int QFormLayout_HeightForWidth(const QFormLayout* self, int width);
 int QFormLayout_ExpandingDirections(const QFormLayout* self);
 int QFormLayout_Count(const QFormLayout* self);
 int QFormLayout_RowCount(const QFormLayout* self);
-void QFormLayout_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QFormLayout_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QFormLayout_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QFormLayout_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QFormLayout_Tr2(const char* s, const char* c);
+struct miqt_string* QFormLayout_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QFormLayout_TrUtf82(const char* s, const char* c);
+struct miqt_string* QFormLayout_TrUtf83(const char* s, const char* c, int n);
 void QFormLayout_Delete(QFormLayout* self);
 
 void QFormLayout__TakeRowResult_Delete(QFormLayout__TakeRowResult* self);

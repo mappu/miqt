@@ -5,24 +5,20 @@
 #include <cstring>
 #include <QUrl>
 #include "qdesktopservices.h"
-
 #include "gen_qdesktopservices.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 bool QDesktopServices_OpenUrl(QUrl* url) {
 	return QDesktopServices::openUrl(*url);
 }
 
-void QDesktopServices_SetUrlHandler(const char* scheme, size_t scheme_Strlen, QObject* receiver, const char* method) {
-	QString scheme_QString = QString::fromUtf8(scheme, scheme_Strlen);
+void QDesktopServices_SetUrlHandler(struct miqt_string* scheme, QObject* receiver, const char* method) {
+	QString scheme_QString = QString::fromUtf8(&scheme->data, scheme->len);
 	QDesktopServices::setUrlHandler(scheme_QString, receiver, method);
 }
 
-void QDesktopServices_UnsetUrlHandler(const char* scheme, size_t scheme_Strlen) {
-	QString scheme_QString = QString::fromUtf8(scheme, scheme_Strlen);
+void QDesktopServices_UnsetUrlHandler(struct miqt_string* scheme) {
+	QString scheme_QString = QString::fromUtf8(&scheme->data, scheme->len);
 	QDesktopServices::unsetUrlHandler(scheme_QString);
 }
 

@@ -10,12 +10,8 @@
 #include <QByteArray>
 #include <cstring>
 #include "qimagereader.h"
-
 #include "gen_qimagereader.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QImageReader* QImageReader_new() {
 	return new QImageReader();
@@ -25,8 +21,8 @@ QImageReader* QImageReader_new2(QIODevice* device) {
 	return new QImageReader(device);
 }
 
-QImageReader* QImageReader_new3(const char* fileName, size_t fileName_Strlen) {
-	QString fileName_QString = QString::fromUtf8(fileName, fileName_Strlen);
+QImageReader* QImageReader_new3(struct miqt_string* fileName) {
+	QString fileName_QString = QString::fromUtf8(&fileName->data, fileName->len);
 	return new QImageReader(fileName_QString);
 }
 
@@ -34,27 +30,23 @@ QImageReader* QImageReader_new4(QIODevice* device, QByteArray* format) {
 	return new QImageReader(device, *format);
 }
 
-QImageReader* QImageReader_new5(const char* fileName, size_t fileName_Strlen, QByteArray* format) {
-	QString fileName_QString = QString::fromUtf8(fileName, fileName_Strlen);
+QImageReader* QImageReader_new5(struct miqt_string* fileName, QByteArray* format) {
+	QString fileName_QString = QString::fromUtf8(&fileName->data, fileName->len);
 	return new QImageReader(fileName_QString, *format);
 }
 
-void QImageReader_Tr(const char* sourceText, char** _out, int* _out_Strlen) {
-	QString ret = QImageReader::tr(sourceText);
+struct miqt_string* QImageReader_Tr(const char* sourceText) {
+	QString _ret = QImageReader::tr(sourceText);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QImageReader_TrUtf8(const char* sourceText, char** _out, int* _out_Strlen) {
-	QString ret = QImageReader::trUtf8(sourceText);
+struct miqt_string* QImageReader_TrUtf8(const char* sourceText) {
+	QString _ret = QImageReader::trUtf8(sourceText);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QImageReader_SetFormat(QImageReader* self, QByteArray* format) {
@@ -62,9 +54,9 @@ void QImageReader_SetFormat(QImageReader* self, QByteArray* format) {
 }
 
 QByteArray* QImageReader_Format(const QImageReader* self) {
-	QByteArray ret = self->format();
+	QByteArray _ret = self->format();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(ret));
+	return static_cast<QByteArray*>(new QByteArray(_ret));
 }
 
 void QImageReader_SetAutoDetectImageFormat(QImageReader* self, bool enabled) {
@@ -91,56 +83,51 @@ QIODevice* QImageReader_Device(const QImageReader* self) {
 	return self->device();
 }
 
-void QImageReader_SetFileName(QImageReader* self, const char* fileName, size_t fileName_Strlen) {
-	QString fileName_QString = QString::fromUtf8(fileName, fileName_Strlen);
+void QImageReader_SetFileName(QImageReader* self, struct miqt_string* fileName) {
+	QString fileName_QString = QString::fromUtf8(&fileName->data, fileName->len);
 	self->setFileName(fileName_QString);
 }
 
-void QImageReader_FileName(const QImageReader* self, char** _out, int* _out_Strlen) {
-	QString ret = self->fileName();
+struct miqt_string* QImageReader_FileName(const QImageReader* self) {
+	QString _ret = self->fileName();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 QSize* QImageReader_Size(const QImageReader* self) {
-	QSize ret = self->size();
+	QSize _ret = self->size();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(ret));
+	return static_cast<QSize*>(new QSize(_ret));
 }
 
 uintptr_t QImageReader_ImageFormat(const QImageReader* self) {
-	QImage::Format ret = self->imageFormat();
-	return static_cast<uintptr_t>(ret);
+	QImage::Format _ret = self->imageFormat();
+	return static_cast<uintptr_t>(_ret);
 }
 
-void QImageReader_TextKeys(const QImageReader* self, char*** _out, int** _out_Lengths, size_t* _out_len) {
-	QStringList ret = self->textKeys();
+struct miqt_array* QImageReader_TextKeys(const QImageReader* self) {
+	QStringList _ret = self->textKeys();
 	// Convert QStringList from C++ memory to manually-managed C memory
-	char** __out = static_cast<char**>(malloc(sizeof(char*) * ret.length()));
-	int* __out_Lengths = static_cast<int*>(malloc(sizeof(int) * ret.length()));
-	for (size_t i = 0, e = ret.length(); i < e; ++i) {
+	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-		QByteArray b = ret[i].toUtf8();
-		__out[i] = static_cast<char*>(malloc(b.length()));
-		memcpy(__out[i], b.data(), b.length());
-		__out_Lengths[i] = b.length();
+		QByteArray _lv_b = _lv_ret.toUtf8();
+		_arr[i] = miqt_strdup(_lv_b.data(), _lv_b.length());
 	}
-	*_out = __out;
-	*_out_Lengths = __out_Lengths;
-	*_out_len = ret.length();
+	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
+	_out->len = _ret.length();
+	_out->data = static_cast<void*>(_arr);
+	return _out;
 }
 
-void QImageReader_Text(const QImageReader* self, const char* key, size_t key_Strlen, char** _out, int* _out_Strlen) {
-	QString key_QString = QString::fromUtf8(key, key_Strlen);
-	QString ret = self->text(key_QString);
+struct miqt_string* QImageReader_Text(const QImageReader* self, struct miqt_string* key) {
+	QString key_QString = QString::fromUtf8(&key->data, key->len);
+	QString _ret = self->text(key_QString);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QImageReader_SetClipRect(QImageReader* self, QRect* rect) {
@@ -148,9 +135,9 @@ void QImageReader_SetClipRect(QImageReader* self, QRect* rect) {
 }
 
 QRect* QImageReader_ClipRect(const QImageReader* self) {
-	QRect ret = self->clipRect();
+	QRect _ret = self->clipRect();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(ret));
+	return static_cast<QRect*>(new QRect(_ret));
 }
 
 void QImageReader_SetScaledSize(QImageReader* self, QSize* size) {
@@ -158,9 +145,9 @@ void QImageReader_SetScaledSize(QImageReader* self, QSize* size) {
 }
 
 QSize* QImageReader_ScaledSize(const QImageReader* self) {
-	QSize ret = self->scaledSize();
+	QSize _ret = self->scaledSize();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(ret));
+	return static_cast<QSize*>(new QSize(_ret));
 }
 
 void QImageReader_SetQuality(QImageReader* self, int quality) {
@@ -176,9 +163,9 @@ void QImageReader_SetScaledClipRect(QImageReader* self, QRect* rect) {
 }
 
 QRect* QImageReader_ScaledClipRect(const QImageReader* self) {
-	QRect ret = self->scaledClipRect();
+	QRect _ret = self->scaledClipRect();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(ret));
+	return static_cast<QRect*>(new QRect(_ret));
 }
 
 void QImageReader_SetBackgroundColor(QImageReader* self, QColor* color) {
@@ -186,9 +173,9 @@ void QImageReader_SetBackgroundColor(QImageReader* self, QColor* color) {
 }
 
 QColor* QImageReader_BackgroundColor(const QImageReader* self) {
-	QColor ret = self->backgroundColor();
+	QColor _ret = self->backgroundColor();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QColor*>(new QColor(ret));
+	return static_cast<QColor*>(new QColor(_ret));
 }
 
 bool QImageReader_SupportsAnimation(const QImageReader* self) {
@@ -196,8 +183,8 @@ bool QImageReader_SupportsAnimation(const QImageReader* self) {
 }
 
 int QImageReader_Transformation(const QImageReader* self) {
-	QImageIOHandler::Transformations ret = self->transformation();
-	return static_cast<int>(ret);
+	QImageIOHandler::Transformations _ret = self->transformation();
+	return static_cast<int>(_ret);
 }
 
 void QImageReader_SetAutoTransform(QImageReader* self, bool enabled) {
@@ -217,20 +204,22 @@ float QImageReader_Gamma(const QImageReader* self) {
 }
 
 QByteArray* QImageReader_SubType(const QImageReader* self) {
-	QByteArray ret = self->subType();
+	QByteArray _ret = self->subType();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(ret));
+	return static_cast<QByteArray*>(new QByteArray(_ret));
 }
 
-void QImageReader_SupportedSubTypes(const QImageReader* self, QByteArray*** _out, size_t* _out_len) {
-	QList<QByteArray> ret = self->supportedSubTypes();
+struct miqt_array* QImageReader_SupportedSubTypes(const QImageReader* self) {
+	QList<QByteArray> _ret = self->supportedSubTypes();
 	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
-	QByteArray** __out = static_cast<QByteArray**>(malloc(sizeof(QByteArray**) * ret.length()));
-	for (size_t i = 0, e = ret.length(); i < e; ++i) {
-		__out[i] = new QByteArray(ret[i]);
+	QByteArray** _arr = static_cast<QByteArray**>(malloc(sizeof(QByteArray**) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		_arr[i] = new QByteArray(_ret[i]);
 	}
-	*_out = __out;
-	*_out_len = ret.length();
+	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
+	_out->len = _ret.length();
+	_out->data = static_cast<void*>(_arr);
+	return _out;
 }
 
 bool QImageReader_CanRead(const QImageReader* self) {
@@ -238,9 +227,9 @@ bool QImageReader_CanRead(const QImageReader* self) {
 }
 
 QImage* QImageReader_Read(QImageReader* self) {
-	QImage ret = self->read();
+	QImage _ret = self->read();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QImage*>(new QImage(ret));
+	return static_cast<QImage*>(new QImage(_ret));
 }
 
 bool QImageReader_ReadWithImage(QImageReader* self, QImage* image) {
@@ -272,109 +261,105 @@ int QImageReader_CurrentImageNumber(const QImageReader* self) {
 }
 
 QRect* QImageReader_CurrentImageRect(const QImageReader* self) {
-	QRect ret = self->currentImageRect();
+	QRect _ret = self->currentImageRect();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(ret));
+	return static_cast<QRect*>(new QRect(_ret));
 }
 
 uintptr_t QImageReader_Error(const QImageReader* self) {
-	QImageReader::ImageReaderError ret = self->error();
-	return static_cast<uintptr_t>(ret);
+	QImageReader::ImageReaderError _ret = self->error();
+	return static_cast<uintptr_t>(_ret);
 }
 
-void QImageReader_ErrorString(const QImageReader* self, char** _out, int* _out_Strlen) {
-	QString ret = self->errorString();
+struct miqt_string* QImageReader_ErrorString(const QImageReader* self) {
+	QString _ret = self->errorString();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 bool QImageReader_SupportsOption(const QImageReader* self, uintptr_t option) {
 	return self->supportsOption(static_cast<QImageIOHandler::ImageOption>(option));
 }
 
-QByteArray* QImageReader_ImageFormatWithFileName(const char* fileName, size_t fileName_Strlen) {
-	QString fileName_QString = QString::fromUtf8(fileName, fileName_Strlen);
-	QByteArray ret = QImageReader::imageFormat(fileName_QString);
+QByteArray* QImageReader_ImageFormatWithFileName(struct miqt_string* fileName) {
+	QString fileName_QString = QString::fromUtf8(&fileName->data, fileName->len);
+	QByteArray _ret = QImageReader::imageFormat(fileName_QString);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(ret));
+	return static_cast<QByteArray*>(new QByteArray(_ret));
 }
 
 QByteArray* QImageReader_ImageFormatWithDevice(QIODevice* device) {
-	QByteArray ret = QImageReader::imageFormat(device);
+	QByteArray _ret = QImageReader::imageFormat(device);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(ret));
+	return static_cast<QByteArray*>(new QByteArray(_ret));
 }
 
-void QImageReader_SupportedImageFormats(QByteArray*** _out, size_t* _out_len) {
-	QList<QByteArray> ret = QImageReader::supportedImageFormats();
+struct miqt_array* QImageReader_SupportedImageFormats() {
+	QList<QByteArray> _ret = QImageReader::supportedImageFormats();
 	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
-	QByteArray** __out = static_cast<QByteArray**>(malloc(sizeof(QByteArray**) * ret.length()));
-	for (size_t i = 0, e = ret.length(); i < e; ++i) {
-		__out[i] = new QByteArray(ret[i]);
+	QByteArray** _arr = static_cast<QByteArray**>(malloc(sizeof(QByteArray**) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		_arr[i] = new QByteArray(_ret[i]);
 	}
-	*_out = __out;
-	*_out_len = ret.length();
+	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
+	_out->len = _ret.length();
+	_out->data = static_cast<void*>(_arr);
+	return _out;
 }
 
-void QImageReader_SupportedMimeTypes(QByteArray*** _out, size_t* _out_len) {
-	QList<QByteArray> ret = QImageReader::supportedMimeTypes();
+struct miqt_array* QImageReader_SupportedMimeTypes() {
+	QList<QByteArray> _ret = QImageReader::supportedMimeTypes();
 	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
-	QByteArray** __out = static_cast<QByteArray**>(malloc(sizeof(QByteArray**) * ret.length()));
-	for (size_t i = 0, e = ret.length(); i < e; ++i) {
-		__out[i] = new QByteArray(ret[i]);
+	QByteArray** _arr = static_cast<QByteArray**>(malloc(sizeof(QByteArray**) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		_arr[i] = new QByteArray(_ret[i]);
 	}
-	*_out = __out;
-	*_out_len = ret.length();
+	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
+	_out->len = _ret.length();
+	_out->data = static_cast<void*>(_arr);
+	return _out;
 }
 
-void QImageReader_ImageFormatsForMimeType(QByteArray* mimeType, QByteArray*** _out, size_t* _out_len) {
-	QList<QByteArray> ret = QImageReader::imageFormatsForMimeType(*mimeType);
+struct miqt_array* QImageReader_ImageFormatsForMimeType(QByteArray* mimeType) {
+	QList<QByteArray> _ret = QImageReader::imageFormatsForMimeType(*mimeType);
 	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
-	QByteArray** __out = static_cast<QByteArray**>(malloc(sizeof(QByteArray**) * ret.length()));
-	for (size_t i = 0, e = ret.length(); i < e; ++i) {
-		__out[i] = new QByteArray(ret[i]);
+	QByteArray** _arr = static_cast<QByteArray**>(malloc(sizeof(QByteArray**) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		_arr[i] = new QByteArray(_ret[i]);
 	}
-	*_out = __out;
-	*_out_len = ret.length();
+	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
+	_out->len = _ret.length();
+	_out->data = static_cast<void*>(_arr);
+	return _out;
 }
 
-void QImageReader_Tr2(const char* sourceText, const char* disambiguation, char** _out, int* _out_Strlen) {
-	QString ret = QImageReader::tr(sourceText, disambiguation);
+struct miqt_string* QImageReader_Tr2(const char* sourceText, const char* disambiguation) {
+	QString _ret = QImageReader::tr(sourceText, disambiguation);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QImageReader_Tr3(const char* sourceText, const char* disambiguation, int n, char** _out, int* _out_Strlen) {
-	QString ret = QImageReader::tr(sourceText, disambiguation, static_cast<int>(n));
+struct miqt_string* QImageReader_Tr3(const char* sourceText, const char* disambiguation, int n) {
+	QString _ret = QImageReader::tr(sourceText, disambiguation, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QImageReader_TrUtf82(const char* sourceText, const char* disambiguation, char** _out, int* _out_Strlen) {
-	QString ret = QImageReader::trUtf8(sourceText, disambiguation);
+struct miqt_string* QImageReader_TrUtf82(const char* sourceText, const char* disambiguation) {
+	QString _ret = QImageReader::trUtf8(sourceText, disambiguation);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QImageReader_TrUtf83(const char* sourceText, const char* disambiguation, int n, char** _out, int* _out_Strlen) {
-	QString ret = QImageReader::trUtf8(sourceText, disambiguation, static_cast<int>(n));
+struct miqt_string* QImageReader_TrUtf83(const char* sourceText, const char* disambiguation, int n) {
+	QString _ret = QImageReader::trUtf8(sourceText, disambiguation, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QImageReader_Delete(QImageReader* self) {

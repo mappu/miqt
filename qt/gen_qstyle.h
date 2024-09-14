@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -46,16 +48,16 @@ typedef struct QWidget QWidget;
 #endif
 
 QMetaObject* QStyle_MetaObject(const QStyle* self);
-void QStyle_Tr(const char* s, char** _out, int* _out_Strlen);
-void QStyle_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QStyle_Tr(const char* s);
+struct miqt_string* QStyle_TrUtf8(const char* s);
 void QStyle_Polish(QStyle* self, QWidget* widget);
 void QStyle_Unpolish(QStyle* self, QWidget* widget);
 void QStyle_PolishWithApplication(QStyle* self, QApplication* application);
 void QStyle_UnpolishWithApplication(QStyle* self, QApplication* application);
 void QStyle_PolishWithPalette(QStyle* self, QPalette* palette);
-QRect* QStyle_ItemTextRect(const QStyle* self, QFontMetrics* fm, QRect* r, int flags, bool enabled, const char* text, size_t text_Strlen);
+QRect* QStyle_ItemTextRect(const QStyle* self, QFontMetrics* fm, QRect* r, int flags, bool enabled, struct miqt_string* text);
 QRect* QStyle_ItemPixmapRect(const QStyle* self, QRect* r, int flags, QPixmap* pixmap);
-void QStyle_DrawItemText(const QStyle* self, QPainter* painter, QRect* rect, int flags, QPalette* pal, bool enabled, const char* text, size_t text_Strlen);
+void QStyle_DrawItemText(const QStyle* self, QPainter* painter, QRect* rect, int flags, QPalette* pal, bool enabled, struct miqt_string* text);
 void QStyle_DrawItemPixmap(const QStyle* self, QPainter* painter, QRect* rect, int alignment, QPixmap* pixmap);
 QPalette* QStyle_StandardPalette(const QStyle* self);
 void QStyle_DrawPrimitive(const QStyle* self, uintptr_t pe, QStyleOption* opt, QPainter* p);
@@ -79,11 +81,11 @@ QRect* QStyle_AlignedRect(uintptr_t direction, int alignment, QSize* size, QRect
 int QStyle_LayoutSpacing(const QStyle* self, uintptr_t control1, uintptr_t control2, uintptr_t orientation);
 int QStyle_CombinedLayoutSpacing(const QStyle* self, int controls1, int controls2, uintptr_t orientation);
 QStyle* QStyle_Proxy(const QStyle* self);
-void QStyle_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QStyle_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QStyle_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QStyle_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QStyle_DrawItemText7(const QStyle* self, QPainter* painter, QRect* rect, int flags, QPalette* pal, bool enabled, const char* text, size_t text_Strlen, uintptr_t textRole);
+struct miqt_string* QStyle_Tr2(const char* s, const char* c);
+struct miqt_string* QStyle_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QStyle_TrUtf82(const char* s, const char* c);
+struct miqt_string* QStyle_TrUtf83(const char* s, const char* c, int n);
+void QStyle_DrawItemText7(const QStyle* self, QPainter* painter, QRect* rect, int flags, QPalette* pal, bool enabled, struct miqt_string* text, uintptr_t textRole);
 void QStyle_DrawPrimitive4(const QStyle* self, uintptr_t pe, QStyleOption* opt, QPainter* p, QWidget* w);
 void QStyle_DrawControl4(const QStyle* self, uintptr_t element, QStyleOption* opt, QPainter* p, QWidget* w);
 QRect* QStyle_SubElementRect3(const QStyle* self, uintptr_t subElement, QStyleOption* option, QWidget* widget);

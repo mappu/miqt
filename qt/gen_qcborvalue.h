@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -43,7 +45,7 @@ typedef struct QUuid QUuid;
 typedef struct QVariant QVariant;
 #endif
 
-void QCborParserError_ErrorString(const QCborParserError* self, char** _out, int* _out_Strlen);
+struct miqt_string* QCborParserError_ErrorString(const QCborParserError* self);
 void QCborParserError_Delete(QCborParserError* self);
 
 QCborValue* QCborValue_new();
@@ -54,7 +56,7 @@ QCborValue* QCborValue_new5(unsigned int u);
 QCborValue* QCborValue_new6(long long i);
 QCborValue* QCborValue_new7(double v);
 QCborValue* QCborValue_new8(QByteArray* ba);
-QCborValue* QCborValue_new9(const char* s, size_t s_Strlen);
+QCborValue* QCborValue_new9(struct miqt_string* s);
 QCborValue* QCborValue_new10(const char* s);
 QCborValue* QCborValue_new11(QCborArray* a);
 QCborValue* QCborValue_new12(QCborMap* m);
@@ -90,7 +92,7 @@ bool QCborValue_ToBool(const QCborValue* self);
 double QCborValue_ToDouble(const QCborValue* self);
 QCborValue* QCborValue_TaggedValue(const QCborValue* self);
 QByteArray* QCborValue_ToByteArray(const QCborValue* self);
-void QCborValue_ToString(const QCborValue* self, char** _out, int* _out_Strlen);
+struct miqt_string* QCborValue_ToString(const QCborValue* self);
 QDateTime* QCborValue_ToDateTime(const QCborValue* self);
 QUrl* QCborValue_ToUrl(const QCborValue* self);
 QRegularExpression* QCborValue_ToRegularExpression(const QCborValue* self);
@@ -99,10 +101,10 @@ QCborArray* QCborValue_ToArray(const QCborValue* self);
 QCborArray* QCborValue_ToArrayWithDefaultValue(const QCborValue* self, QCborArray* defaultValue);
 QCborMap* QCborValue_ToMap(const QCborValue* self);
 QCborMap* QCborValue_ToMapWithDefaultValue(const QCborValue* self, QCborMap* defaultValue);
-QCborValue* QCborValue_OperatorSubscript(const QCborValue* self, const char* key, size_t key_Strlen);
+QCborValue* QCborValue_OperatorSubscript(const QCborValue* self, struct miqt_string* key);
 QCborValue* QCborValue_OperatorSubscript2(const QCborValue* self, long long key);
 QCborValueRef* QCborValue_OperatorSubscript3(QCborValue* self, long long key);
-QCborValueRef* QCborValue_OperatorSubscript5(QCborValue* self, const char* key, size_t key_Strlen);
+QCborValueRef* QCborValue_OperatorSubscript5(QCborValue* self, struct miqt_string* key);
 int QCborValue_Compare(const QCborValue* self, QCborValue* other);
 bool QCborValue_OperatorEqual(const QCborValue* self, QCborValue* other);
 bool QCborValue_OperatorNotEqual(const QCborValue* self, QCborValue* other);
@@ -117,13 +119,13 @@ QCborValue* QCborValue_FromCbor2(const char* data, size_t lenVal);
 QCborValue* QCborValue_FromCbor3(const unsigned char* data, size_t lenVal);
 QByteArray* QCborValue_ToCbor(QCborValue* self);
 void QCborValue_ToCborWithWriter(QCborValue* self, QCborStreamWriter* writer);
-void QCborValue_ToDiagnosticNotation(const QCborValue* self, char** _out, int* _out_Strlen);
+struct miqt_string* QCborValue_ToDiagnosticNotation(const QCborValue* self);
 long long QCborValue_ToInteger1(const QCborValue* self, long long defaultValue);
 bool QCborValue_ToBool1(const QCborValue* self, bool defaultValue);
 double QCborValue_ToDouble1(const QCborValue* self, double defaultValue);
 QCborValue* QCborValue_TaggedValue1(const QCborValue* self, QCborValue* defaultValue);
 QByteArray* QCborValue_ToByteArray1(const QCborValue* self, QByteArray* defaultValue);
-void QCborValue_ToString1(const QCborValue* self, const char* defaultValue, size_t defaultValue_Strlen, char** _out, int* _out_Strlen);
+struct miqt_string* QCborValue_ToString1(const QCborValue* self, struct miqt_string* defaultValue);
 QDateTime* QCborValue_ToDateTime1(const QCborValue* self, QDateTime* defaultValue);
 QUrl* QCborValue_ToUrl1(const QCborValue* self, QUrl* defaultValue);
 QRegularExpression* QCborValue_ToRegularExpression1(const QCborValue* self, QRegularExpression* defaultValue);
@@ -133,7 +135,7 @@ QCborValue* QCborValue_FromCbor32(const char* data, size_t lenVal, QCborParserEr
 QCborValue* QCborValue_FromCbor33(const unsigned char* data, size_t lenVal, QCborParserError* error);
 QByteArray* QCborValue_ToCbor1(QCborValue* self, int opt);
 void QCborValue_ToCbor2(QCborValue* self, QCborStreamWriter* writer, int opt);
-void QCborValue_ToDiagnosticNotation1(const QCborValue* self, int opts, char** _out, int* _out_Strlen);
+struct miqt_string* QCborValue_ToDiagnosticNotation1(const QCborValue* self, int opts);
 void QCborValue_Delete(QCborValue* self);
 
 QCborValueRef* QCborValueRef_new(QCborValueRef* param1);
@@ -164,7 +166,7 @@ long long QCborValueRef_ToInteger(const QCborValueRef* self);
 bool QCborValueRef_ToBool(const QCborValueRef* self);
 double QCborValueRef_ToDouble(const QCborValueRef* self);
 QByteArray* QCborValueRef_ToByteArray(const QCborValueRef* self);
-void QCborValueRef_ToString(const QCborValueRef* self, char** _out, int* _out_Strlen);
+struct miqt_string* QCborValueRef_ToString(const QCborValueRef* self);
 QDateTime* QCborValueRef_ToDateTime(const QCborValueRef* self);
 QUrl* QCborValueRef_ToUrl(const QCborValueRef* self);
 QRegularExpression* QCborValueRef_ToRegularExpression(const QCborValueRef* self);
@@ -173,10 +175,10 @@ QCborArray* QCborValueRef_ToArray(const QCborValueRef* self);
 QCborArray* QCborValueRef_ToArrayWithQCborArray(const QCborValueRef* self, QCborArray* a);
 QCborMap* QCborValueRef_ToMap(const QCborValueRef* self);
 QCborMap* QCborValueRef_ToMapWithQCborMap(const QCborValueRef* self, QCborMap* m);
-QCborValue* QCborValueRef_OperatorSubscript(const QCborValueRef* self, const char* key, size_t key_Strlen);
+QCborValue* QCborValueRef_OperatorSubscript(const QCborValueRef* self, struct miqt_string* key);
 QCborValue* QCborValueRef_OperatorSubscript2(const QCborValueRef* self, long long key);
 QCborValueRef* QCborValueRef_OperatorSubscript3(QCborValueRef* self, long long key);
-QCborValueRef* QCborValueRef_OperatorSubscript5(QCborValueRef* self, const char* key, size_t key_Strlen);
+QCborValueRef* QCborValueRef_OperatorSubscript5(QCborValueRef* self, struct miqt_string* key);
 int QCborValueRef_Compare(const QCborValueRef* self, QCborValue* other);
 bool QCborValueRef_OperatorEqual(const QCborValueRef* self, QCborValue* other);
 bool QCborValueRef_OperatorNotEqual(const QCborValueRef* self, QCborValue* other);
@@ -185,20 +187,20 @@ QVariant* QCborValueRef_ToVariant(const QCborValueRef* self);
 QJsonValue* QCborValueRef_ToJsonValue(const QCborValueRef* self);
 QByteArray* QCborValueRef_ToCbor(QCborValueRef* self);
 void QCborValueRef_ToCborWithWriter(QCborValueRef* self, QCborStreamWriter* writer);
-void QCborValueRef_ToDiagnosticNotation(QCborValueRef* self, char** _out, int* _out_Strlen);
+struct miqt_string* QCborValueRef_ToDiagnosticNotation(QCborValueRef* self);
 QCborValue* QCborValueRef_TaggedValue1(const QCborValueRef* self, QCborValue* defaultValue);
 long long QCborValueRef_ToInteger1(const QCborValueRef* self, long long defaultValue);
 bool QCborValueRef_ToBool1(const QCborValueRef* self, bool defaultValue);
 double QCborValueRef_ToDouble1(const QCborValueRef* self, double defaultValue);
 QByteArray* QCborValueRef_ToByteArray1(const QCborValueRef* self, QByteArray* defaultValue);
-void QCborValueRef_ToString1(const QCborValueRef* self, const char* defaultValue, size_t defaultValue_Strlen, char** _out, int* _out_Strlen);
+struct miqt_string* QCborValueRef_ToString1(const QCborValueRef* self, struct miqt_string* defaultValue);
 QDateTime* QCborValueRef_ToDateTime1(const QCborValueRef* self, QDateTime* defaultValue);
 QUrl* QCborValueRef_ToUrl1(const QCborValueRef* self, QUrl* defaultValue);
 QRegularExpression* QCborValueRef_ToRegularExpression1(const QCborValueRef* self, QRegularExpression* defaultValue);
 QUuid* QCborValueRef_ToUuid1(const QCborValueRef* self, QUuid* defaultValue);
 QByteArray* QCborValueRef_ToCbor1(QCborValueRef* self, int opt);
 void QCborValueRef_ToCbor2(QCborValueRef* self, QCborStreamWriter* writer, int opt);
-void QCborValueRef_ToDiagnosticNotation1(QCborValueRef* self, int opt, char** _out, int* _out_Strlen);
+struct miqt_string* QCborValueRef_ToDiagnosticNotation1(QCborValueRef* self, int opt);
 void QCborValueRef_Delete(QCborValueRef* self);
 
 #ifdef __cplusplus

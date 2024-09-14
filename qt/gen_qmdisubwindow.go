@@ -65,52 +65,40 @@ func NewQMdiSubWindow3(parent *QWidget, flags int) *QMdiSubWindow {
 }
 
 func (this *QMdiSubWindow) MetaObject() *QMetaObject {
-	ret := C.QMdiSubWindow_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QMdiSubWindow_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QMdiSubWindow_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QMdiSubWindow_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QMdiSubWindow_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QMdiSubWindow_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QMdiSubWindow_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QMdiSubWindow_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QMdiSubWindow) SizeHint() *QSize {
-	ret := C.QMdiSubWindow_SizeHint(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSize(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QMdiSubWindow_SizeHint(this.h)
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QMdiSubWindow) MinimumSizeHint() *QSize {
-	ret := C.QMdiSubWindow_MinimumSizeHint(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSize(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QMdiSubWindow_MinimumSizeHint(this.h)
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QMdiSubWindow) SetWidget(widget *QWidget) {
@@ -118,23 +106,23 @@ func (this *QMdiSubWindow) SetWidget(widget *QWidget) {
 }
 
 func (this *QMdiSubWindow) Widget() *QWidget {
-	ret := C.QMdiSubWindow_Widget(this.h)
-	return newQWidget_U(unsafe.Pointer(ret))
+	_ret := C.QMdiSubWindow_Widget(this.h)
+	return newQWidget_U(unsafe.Pointer(_ret))
 }
 
 func (this *QMdiSubWindow) MaximizedButtonsWidget() *QWidget {
-	ret := C.QMdiSubWindow_MaximizedButtonsWidget(this.h)
-	return newQWidget_U(unsafe.Pointer(ret))
+	_ret := C.QMdiSubWindow_MaximizedButtonsWidget(this.h)
+	return newQWidget_U(unsafe.Pointer(_ret))
 }
 
 func (this *QMdiSubWindow) MaximizedSystemMenuIconWidget() *QWidget {
-	ret := C.QMdiSubWindow_MaximizedSystemMenuIconWidget(this.h)
-	return newQWidget_U(unsafe.Pointer(ret))
+	_ret := C.QMdiSubWindow_MaximizedSystemMenuIconWidget(this.h)
+	return newQWidget_U(unsafe.Pointer(_ret))
 }
 
 func (this *QMdiSubWindow) IsShaded() bool {
-	ret := C.QMdiSubWindow_IsShaded(this.h)
-	return (bool)(ret)
+	_ret := C.QMdiSubWindow_IsShaded(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QMdiSubWindow) SetOption(option QMdiSubWindow__SubWindowOption) {
@@ -142,8 +130,8 @@ func (this *QMdiSubWindow) SetOption(option QMdiSubWindow__SubWindowOption) {
 }
 
 func (this *QMdiSubWindow) TestOption(param1 QMdiSubWindow__SubWindowOption) bool {
-	ret := C.QMdiSubWindow_TestOption(this.h, (C.uintptr_t)(param1))
-	return (bool)(ret)
+	_ret := C.QMdiSubWindow_TestOption(this.h, (C.uintptr_t)(param1))
+	return (bool)(_ret)
 }
 
 func (this *QMdiSubWindow) SetKeyboardSingleStep(step int) {
@@ -151,8 +139,8 @@ func (this *QMdiSubWindow) SetKeyboardSingleStep(step int) {
 }
 
 func (this *QMdiSubWindow) KeyboardSingleStep() int {
-	ret := C.QMdiSubWindow_KeyboardSingleStep(this.h)
-	return (int)(ret)
+	_ret := C.QMdiSubWindow_KeyboardSingleStep(this.h)
+	return (int)(_ret)
 }
 
 func (this *QMdiSubWindow) SetKeyboardPageStep(step int) {
@@ -160,8 +148,8 @@ func (this *QMdiSubWindow) SetKeyboardPageStep(step int) {
 }
 
 func (this *QMdiSubWindow) KeyboardPageStep() int {
-	ret := C.QMdiSubWindow_KeyboardPageStep(this.h)
-	return (int)(ret)
+	_ret := C.QMdiSubWindow_KeyboardPageStep(this.h)
+	return (int)(_ret)
 }
 
 func (this *QMdiSubWindow) SetSystemMenu(systemMenu *QMenu) {
@@ -169,37 +157,54 @@ func (this *QMdiSubWindow) SetSystemMenu(systemMenu *QMenu) {
 }
 
 func (this *QMdiSubWindow) SystemMenu() *QMenu {
-	ret := C.QMdiSubWindow_SystemMenu(this.h)
-	return newQMenu_U(unsafe.Pointer(ret))
+	_ret := C.QMdiSubWindow_SystemMenu(this.h)
+	return newQMenu_U(unsafe.Pointer(_ret))
 }
 
 func (this *QMdiSubWindow) MdiArea() *QMdiArea {
-	ret := C.QMdiSubWindow_MdiArea(this.h)
-	return newQMdiArea_U(unsafe.Pointer(ret))
+	_ret := C.QMdiSubWindow_MdiArea(this.h)
+	return newQMdiArea_U(unsafe.Pointer(_ret))
 }
 
 func (this *QMdiSubWindow) WindowStateChanged(oldState int, newState int) {
 	C.QMdiSubWindow_WindowStateChanged(this.h, (C.int)(oldState), (C.int)(newState))
 }
+func (this *QMdiSubWindow) OnWindowStateChanged(slot func(oldState int, newState int)) {
+	C.QMdiSubWindow_connect_WindowStateChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QMdiSubWindow) OnWindowStateChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QMdiSubWindow_WindowStateChanged
+func miqt_exec_callback_QMdiSubWindow_WindowStateChanged(cb *C.void, oldState C.int, newState C.int) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(oldState int, newState int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QMdiSubWindow_connect_WindowStateChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	oldState_ret := oldState
+	slotval1 := (int)(oldState_ret)
+
+	newState_ret := newState
+	slotval2 := (int)(newState_ret)
+
+	gofunc(slotval1, slotval2)
 }
 
 func (this *QMdiSubWindow) AboutToActivate() {
 	C.QMdiSubWindow_AboutToActivate(this.h)
 }
-
 func (this *QMdiSubWindow) OnAboutToActivate(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+	C.QMdiSubWindow_connect_AboutToActivate(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
+
+//export miqt_exec_callback_QMdiSubWindow_AboutToActivate
+func miqt_exec_callback_QMdiSubWindow_AboutToActivate(cb *C.void) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QMdiSubWindow_connect_AboutToActivate(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	gofunc()
 }
 
 func (this *QMdiSubWindow) ShowSystemMenu() {
@@ -215,12 +220,10 @@ func QMdiSubWindow_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QMdiSubWindow_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QMdiSubWindow_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QMdiSubWindow_Tr3(s string, c string, n int) string {
@@ -228,12 +231,10 @@ func QMdiSubWindow_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QMdiSubWindow_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QMdiSubWindow_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QMdiSubWindow_TrUtf82(s string, c string) string {
@@ -241,12 +242,10 @@ func QMdiSubWindow_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QMdiSubWindow_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QMdiSubWindow_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QMdiSubWindow_TrUtf83(s string, c string, n int) string {
@@ -254,18 +253,26 @@ func QMdiSubWindow_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QMdiSubWindow_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QMdiSubWindow_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QMdiSubWindow) SetOption2(option QMdiSubWindow__SubWindowOption, on bool) {
 	C.QMdiSubWindow_SetOption2(this.h, (C.uintptr_t)(option), (C.bool)(on))
 }
 
+// Delete this object from C++ memory.
 func (this *QMdiSubWindow) Delete() {
 	C.QMdiSubWindow_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QMdiSubWindow) GoGC() {
+	runtime.SetFinalizer(this, func(this *QMdiSubWindow) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

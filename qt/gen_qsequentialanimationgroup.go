@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"runtime"
 	"runtime/cgo"
 	"unsafe"
 )
@@ -49,62 +50,67 @@ func NewQSequentialAnimationGroup2(parent *QObject) *QSequentialAnimationGroup {
 }
 
 func (this *QSequentialAnimationGroup) MetaObject() *QMetaObject {
-	ret := C.QSequentialAnimationGroup_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QSequentialAnimationGroup_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QSequentialAnimationGroup_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QSequentialAnimationGroup_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QSequentialAnimationGroup_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QSequentialAnimationGroup_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QSequentialAnimationGroup_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QSequentialAnimationGroup_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QSequentialAnimationGroup) AddPause(msecs int) *QPauseAnimation {
-	ret := C.QSequentialAnimationGroup_AddPause(this.h, (C.int)(msecs))
-	return newQPauseAnimation_U(unsafe.Pointer(ret))
+	_ret := C.QSequentialAnimationGroup_AddPause(this.h, (C.int)(msecs))
+	return newQPauseAnimation_U(unsafe.Pointer(_ret))
 }
 
 func (this *QSequentialAnimationGroup) InsertPause(index int, msecs int) *QPauseAnimation {
-	ret := C.QSequentialAnimationGroup_InsertPause(this.h, (C.int)(index), (C.int)(msecs))
-	return newQPauseAnimation_U(unsafe.Pointer(ret))
+	_ret := C.QSequentialAnimationGroup_InsertPause(this.h, (C.int)(index), (C.int)(msecs))
+	return newQPauseAnimation_U(unsafe.Pointer(_ret))
 }
 
 func (this *QSequentialAnimationGroup) CurrentAnimation() *QAbstractAnimation {
-	ret := C.QSequentialAnimationGroup_CurrentAnimation(this.h)
-	return newQAbstractAnimation_U(unsafe.Pointer(ret))
+	_ret := C.QSequentialAnimationGroup_CurrentAnimation(this.h)
+	return newQAbstractAnimation_U(unsafe.Pointer(_ret))
 }
 
 func (this *QSequentialAnimationGroup) Duration() int {
-	ret := C.QSequentialAnimationGroup_Duration(this.h)
-	return (int)(ret)
+	_ret := C.QSequentialAnimationGroup_Duration(this.h)
+	return (int)(_ret)
 }
 
 func (this *QSequentialAnimationGroup) CurrentAnimationChanged(current *QAbstractAnimation) {
 	C.QSequentialAnimationGroup_CurrentAnimationChanged(this.h, current.cPointer())
 }
+func (this *QSequentialAnimationGroup) OnCurrentAnimationChanged(slot func(current *QAbstractAnimation)) {
+	C.QSequentialAnimationGroup_connect_CurrentAnimationChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QSequentialAnimationGroup) OnCurrentAnimationChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QSequentialAnimationGroup_CurrentAnimationChanged
+func miqt_exec_callback_QSequentialAnimationGroup_CurrentAnimationChanged(cb *C.void, current *C.QAbstractAnimation) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(current *QAbstractAnimation))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QSequentialAnimationGroup_connect_CurrentAnimationChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	current_ret := current
+	slotval1 := newQAbstractAnimation_U(unsafe.Pointer(current_ret))
+
+	gofunc(slotval1)
 }
 
 func QSequentialAnimationGroup_Tr2(s string, c string) string {
@@ -112,12 +118,10 @@ func QSequentialAnimationGroup_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QSequentialAnimationGroup_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QSequentialAnimationGroup_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QSequentialAnimationGroup_Tr3(s string, c string, n int) string {
@@ -125,12 +129,10 @@ func QSequentialAnimationGroup_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QSequentialAnimationGroup_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QSequentialAnimationGroup_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QSequentialAnimationGroup_TrUtf82(s string, c string) string {
@@ -138,12 +140,10 @@ func QSequentialAnimationGroup_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QSequentialAnimationGroup_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QSequentialAnimationGroup_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QSequentialAnimationGroup_TrUtf83(s string, c string, n int) string {
@@ -151,14 +151,22 @@ func QSequentialAnimationGroup_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QSequentialAnimationGroup_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QSequentialAnimationGroup_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
+// Delete this object from C++ memory.
 func (this *QSequentialAnimationGroup) Delete() {
 	C.QSequentialAnimationGroup_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QSequentialAnimationGroup) GoGC() {
+	runtime.SetFinalizer(this, func(this *QSequentialAnimationGroup) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

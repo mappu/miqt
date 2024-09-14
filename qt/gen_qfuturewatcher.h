@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -22,12 +24,12 @@ typedef struct QMetaObject QMetaObject;
 #endif
 
 QMetaObject* QFutureWatcherBase_MetaObject(const QFutureWatcherBase* self);
-void QFutureWatcherBase_Tr(const char* s, char** _out, int* _out_Strlen);
-void QFutureWatcherBase_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QFutureWatcherBase_Tr(const char* s);
+struct miqt_string* QFutureWatcherBase_TrUtf8(const char* s);
 int QFutureWatcherBase_ProgressValue(const QFutureWatcherBase* self);
 int QFutureWatcherBase_ProgressMinimum(const QFutureWatcherBase* self);
 int QFutureWatcherBase_ProgressMaximum(const QFutureWatcherBase* self);
-void QFutureWatcherBase_ProgressText(const QFutureWatcherBase* self, char** _out, int* _out_Strlen);
+struct miqt_string* QFutureWatcherBase_ProgressText(const QFutureWatcherBase* self);
 bool QFutureWatcherBase_IsStarted(const QFutureWatcherBase* self);
 bool QFutureWatcherBase_IsFinished(const QFutureWatcherBase* self);
 bool QFutureWatcherBase_IsRunning(const QFutureWatcherBase* self);
@@ -54,17 +56,17 @@ void QFutureWatcherBase_ProgressRangeChanged(QFutureWatcherBase* self, int minim
 void QFutureWatcherBase_connect_ProgressRangeChanged(QFutureWatcherBase* self, void* slot);
 void QFutureWatcherBase_ProgressValueChanged(QFutureWatcherBase* self, int progressValue);
 void QFutureWatcherBase_connect_ProgressValueChanged(QFutureWatcherBase* self, void* slot);
-void QFutureWatcherBase_ProgressTextChanged(QFutureWatcherBase* self, const char* progressText, size_t progressText_Strlen);
+void QFutureWatcherBase_ProgressTextChanged(QFutureWatcherBase* self, struct miqt_string* progressText);
 void QFutureWatcherBase_connect_ProgressTextChanged(QFutureWatcherBase* self, void* slot);
 void QFutureWatcherBase_Cancel(QFutureWatcherBase* self);
 void QFutureWatcherBase_SetPaused(QFutureWatcherBase* self, bool paused);
 void QFutureWatcherBase_Pause(QFutureWatcherBase* self);
 void QFutureWatcherBase_Resume(QFutureWatcherBase* self);
 void QFutureWatcherBase_TogglePaused(QFutureWatcherBase* self);
-void QFutureWatcherBase_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QFutureWatcherBase_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QFutureWatcherBase_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QFutureWatcherBase_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QFutureWatcherBase_Tr2(const char* s, const char* c);
+struct miqt_string* QFutureWatcherBase_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QFutureWatcherBase_TrUtf82(const char* s, const char* c);
+struct miqt_string* QFutureWatcherBase_TrUtf83(const char* s, const char* c, int n);
 void QFutureWatcherBase_Delete(QFutureWatcherBase* self);
 
 #ifdef __cplusplus

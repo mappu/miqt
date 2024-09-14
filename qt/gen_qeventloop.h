@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -30,8 +32,8 @@ typedef struct QThread QThread;
 QEventLoop* QEventLoop_new();
 QEventLoop* QEventLoop_new2(QObject* parent);
 QMetaObject* QEventLoop_MetaObject(const QEventLoop* self);
-void QEventLoop_Tr(const char* s, char** _out, int* _out_Strlen);
-void QEventLoop_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QEventLoop_Tr(const char* s);
+struct miqt_string* QEventLoop_TrUtf8(const char* s);
 bool QEventLoop_ProcessEvents(QEventLoop* self);
 void QEventLoop_ProcessEvents2(QEventLoop* self, int flags, int maximumTime);
 int QEventLoop_Exec(QEventLoop* self);
@@ -40,10 +42,10 @@ bool QEventLoop_IsRunning(const QEventLoop* self);
 void QEventLoop_WakeUp(QEventLoop* self);
 bool QEventLoop_Event(QEventLoop* self, QEvent* event);
 void QEventLoop_Quit(QEventLoop* self);
-void QEventLoop_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QEventLoop_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QEventLoop_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QEventLoop_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QEventLoop_Tr2(const char* s, const char* c);
+struct miqt_string* QEventLoop_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QEventLoop_TrUtf82(const char* s, const char* c);
+struct miqt_string* QEventLoop_TrUtf83(const char* s, const char* c, int n);
 bool QEventLoop_ProcessEvents1(QEventLoop* self, int flags);
 int QEventLoop_Exec1(QEventLoop* self, int flags);
 void QEventLoop_Exit1(QEventLoop* self, int returnCode);

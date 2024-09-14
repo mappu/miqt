@@ -3,12 +3,8 @@
 #include <QByteArray>
 #include <cstring>
 #include "qloggingcategory.h"
-
 #include "gen_qloggingcategory.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QLoggingCategory* QLoggingCategory_new(const char* category) {
 	return new QLoggingCategory(category);
@@ -35,23 +31,23 @@ const char* QLoggingCategory_CategoryName(const QLoggingCategory* self) {
 }
 
 QLoggingCategory* QLoggingCategory_OperatorCall(QLoggingCategory* self) {
-	QLoggingCategory& ret = self->operator()();
+	QLoggingCategory& _ret = self->operator()();
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QLoggingCategory* QLoggingCategory_OperatorCall2(const QLoggingCategory* self) {
-	const QLoggingCategory& ret = self->operator()();
+	const QLoggingCategory& _ret = self->operator()();
 	// Cast returned reference into pointer
-	return const_cast<QLoggingCategory*>(&ret);
+	return const_cast<QLoggingCategory*>(&_ret);
 }
 
 QLoggingCategory* QLoggingCategory_DefaultCategory() {
 	return QLoggingCategory::defaultCategory();
 }
 
-void QLoggingCategory_SetFilterRules(const char* rules, size_t rules_Strlen) {
-	QString rules_QString = QString::fromUtf8(rules, rules_Strlen);
+void QLoggingCategory_SetFilterRules(struct miqt_string* rules) {
+	QString rules_QString = QString::fromUtf8(&rules->data, rules->len);
 	QLoggingCategory::setFilterRules(rules_QString);
 }
 

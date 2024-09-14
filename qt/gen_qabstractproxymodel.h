@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -30,8 +32,8 @@ typedef struct QVariant QVariant;
 #endif
 
 QMetaObject* QAbstractProxyModel_MetaObject(const QAbstractProxyModel* self);
-void QAbstractProxyModel_Tr(const char* s, char** _out, int* _out_Strlen);
-void QAbstractProxyModel_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QAbstractProxyModel_Tr(const char* s);
+struct miqt_string* QAbstractProxyModel_TrUtf8(const char* s);
 void QAbstractProxyModel_SetSourceModel(QAbstractProxyModel* self, QAbstractItemModel* sourceModel);
 QAbstractItemModel* QAbstractProxyModel_SourceModel(const QAbstractProxyModel* self);
 QModelIndex* QAbstractProxyModel_MapToSource(const QAbstractProxyModel* self, QModelIndex* proxyIndex);
@@ -50,16 +52,16 @@ void QAbstractProxyModel_Sort(QAbstractProxyModel* self, int column);
 QSize* QAbstractProxyModel_Span(const QAbstractProxyModel* self, QModelIndex* index);
 bool QAbstractProxyModel_HasChildren(const QAbstractProxyModel* self);
 QModelIndex* QAbstractProxyModel_Sibling(const QAbstractProxyModel* self, int row, int column, QModelIndex* idx);
-QMimeData* QAbstractProxyModel_MimeData(const QAbstractProxyModel* self, QModelIndex** indexes, size_t indexes_len);
+QMimeData* QAbstractProxyModel_MimeData(const QAbstractProxyModel* self, struct miqt_array* /* of QModelIndex */ indexes);
 bool QAbstractProxyModel_CanDropMimeData(const QAbstractProxyModel* self, QMimeData* data, uintptr_t action, int row, int column, QModelIndex* parent);
 bool QAbstractProxyModel_DropMimeData(QAbstractProxyModel* self, QMimeData* data, uintptr_t action, int row, int column, QModelIndex* parent);
-void QAbstractProxyModel_MimeTypes(const QAbstractProxyModel* self, char*** _out, int** _out_Lengths, size_t* _out_len);
+struct miqt_array* QAbstractProxyModel_MimeTypes(const QAbstractProxyModel* self);
 int QAbstractProxyModel_SupportedDragActions(const QAbstractProxyModel* self);
 int QAbstractProxyModel_SupportedDropActions(const QAbstractProxyModel* self);
-void QAbstractProxyModel_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QAbstractProxyModel_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QAbstractProxyModel_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QAbstractProxyModel_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QAbstractProxyModel_Tr2(const char* s, const char* c);
+struct miqt_string* QAbstractProxyModel_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QAbstractProxyModel_TrUtf82(const char* s, const char* c);
+struct miqt_string* QAbstractProxyModel_TrUtf83(const char* s, const char* c, int n);
 QVariant* QAbstractProxyModel_Data2(const QAbstractProxyModel* self, QModelIndex* proxyIndex, int role);
 QVariant* QAbstractProxyModel_HeaderData3(const QAbstractProxyModel* self, int section, uintptr_t orientation, int role);
 bool QAbstractProxyModel_SetData3(QAbstractProxyModel* self, QModelIndex* index, QVariant* value, int role);

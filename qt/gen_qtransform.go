@@ -93,103 +93,103 @@ func (this *QTransform) OperatorAssign(param1 *QTransform) {
 }
 
 func (this *QTransform) IsAffine() bool {
-	ret := C.QTransform_IsAffine(this.h)
-	return (bool)(ret)
+	_ret := C.QTransform_IsAffine(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QTransform) IsIdentity() bool {
-	ret := C.QTransform_IsIdentity(this.h)
-	return (bool)(ret)
+	_ret := C.QTransform_IsIdentity(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QTransform) IsInvertible() bool {
-	ret := C.QTransform_IsInvertible(this.h)
-	return (bool)(ret)
+	_ret := C.QTransform_IsInvertible(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QTransform) IsScaling() bool {
-	ret := C.QTransform_IsScaling(this.h)
-	return (bool)(ret)
+	_ret := C.QTransform_IsScaling(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QTransform) IsRotating() bool {
-	ret := C.QTransform_IsRotating(this.h)
-	return (bool)(ret)
+	_ret := C.QTransform_IsRotating(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QTransform) IsTranslating() bool {
-	ret := C.QTransform_IsTranslating(this.h)
-	return (bool)(ret)
+	_ret := C.QTransform_IsTranslating(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QTransform) Type() QTransform__TransformationType {
-	ret := C.QTransform_Type(this.h)
-	return (QTransform__TransformationType)(ret)
+	_ret := C.QTransform_Type(this.h)
+	return (QTransform__TransformationType)(_ret)
 }
 
 func (this *QTransform) Determinant() float64 {
-	ret := C.QTransform_Determinant(this.h)
-	return (float64)(ret)
+	_ret := C.QTransform_Determinant(this.h)
+	return (float64)(_ret)
 }
 
 func (this *QTransform) Det() float64 {
-	ret := C.QTransform_Det(this.h)
-	return (float64)(ret)
+	_ret := C.QTransform_Det(this.h)
+	return (float64)(_ret)
 }
 
 func (this *QTransform) M11() float64 {
-	ret := C.QTransform_M11(this.h)
-	return (float64)(ret)
+	_ret := C.QTransform_M11(this.h)
+	return (float64)(_ret)
 }
 
 func (this *QTransform) M12() float64 {
-	ret := C.QTransform_M12(this.h)
-	return (float64)(ret)
+	_ret := C.QTransform_M12(this.h)
+	return (float64)(_ret)
 }
 
 func (this *QTransform) M13() float64 {
-	ret := C.QTransform_M13(this.h)
-	return (float64)(ret)
+	_ret := C.QTransform_M13(this.h)
+	return (float64)(_ret)
 }
 
 func (this *QTransform) M21() float64 {
-	ret := C.QTransform_M21(this.h)
-	return (float64)(ret)
+	_ret := C.QTransform_M21(this.h)
+	return (float64)(_ret)
 }
 
 func (this *QTransform) M22() float64 {
-	ret := C.QTransform_M22(this.h)
-	return (float64)(ret)
+	_ret := C.QTransform_M22(this.h)
+	return (float64)(_ret)
 }
 
 func (this *QTransform) M23() float64 {
-	ret := C.QTransform_M23(this.h)
-	return (float64)(ret)
+	_ret := C.QTransform_M23(this.h)
+	return (float64)(_ret)
 }
 
 func (this *QTransform) M31() float64 {
-	ret := C.QTransform_M31(this.h)
-	return (float64)(ret)
+	_ret := C.QTransform_M31(this.h)
+	return (float64)(_ret)
 }
 
 func (this *QTransform) M32() float64 {
-	ret := C.QTransform_M32(this.h)
-	return (float64)(ret)
+	_ret := C.QTransform_M32(this.h)
+	return (float64)(_ret)
 }
 
 func (this *QTransform) M33() float64 {
-	ret := C.QTransform_M33(this.h)
-	return (float64)(ret)
+	_ret := C.QTransform_M33(this.h)
+	return (float64)(_ret)
 }
 
 func (this *QTransform) Dx() float64 {
-	ret := C.QTransform_Dx(this.h)
-	return (float64)(ret)
+	_ret := C.QTransform_Dx(this.h)
+	return (float64)(_ret)
 }
 
 func (this *QTransform) Dy() float64 {
-	ret := C.QTransform_Dy(this.h)
-	return (float64)(ret)
+	_ret := C.QTransform_Dy(this.h)
+	return (float64)(_ret)
 }
 
 func (this *QTransform) SetMatrix(m11 float64, m12 float64, m13 float64, m21 float64, m22 float64, m23 float64, m31 float64, m32 float64, m33 float64) {
@@ -197,87 +197,71 @@ func (this *QTransform) SetMatrix(m11 float64, m12 float64, m13 float64, m21 flo
 }
 
 func (this *QTransform) Inverted() *QTransform {
-	ret := C.QTransform_Inverted(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQTransform(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QTransform) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QTransform_Inverted(this.h)
+	_goptr := newQTransform(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QTransform) Adjoint() *QTransform {
-	ret := C.QTransform_Adjoint(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQTransform(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QTransform) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QTransform_Adjoint(this.h)
+	_goptr := newQTransform(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QTransform) Transposed() *QTransform {
-	ret := C.QTransform_Transposed(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQTransform(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QTransform) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QTransform_Transposed(this.h)
+	_goptr := newQTransform(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QTransform) Translate(dx float64, dy float64) *QTransform {
-	ret := C.QTransform_Translate(this.h, (C.double)(dx), (C.double)(dy))
-	return newQTransform_U(unsafe.Pointer(ret))
+	_ret := C.QTransform_Translate(this.h, (C.double)(dx), (C.double)(dy))
+	return newQTransform_U(unsafe.Pointer(_ret))
 }
 
 func (this *QTransform) Scale(sx float64, sy float64) *QTransform {
-	ret := C.QTransform_Scale(this.h, (C.double)(sx), (C.double)(sy))
-	return newQTransform_U(unsafe.Pointer(ret))
+	_ret := C.QTransform_Scale(this.h, (C.double)(sx), (C.double)(sy))
+	return newQTransform_U(unsafe.Pointer(_ret))
 }
 
 func (this *QTransform) Shear(sh float64, sv float64) *QTransform {
-	ret := C.QTransform_Shear(this.h, (C.double)(sh), (C.double)(sv))
-	return newQTransform_U(unsafe.Pointer(ret))
+	_ret := C.QTransform_Shear(this.h, (C.double)(sh), (C.double)(sv))
+	return newQTransform_U(unsafe.Pointer(_ret))
 }
 
 func (this *QTransform) Rotate(a float64) *QTransform {
-	ret := C.QTransform_Rotate(this.h, (C.double)(a))
-	return newQTransform_U(unsafe.Pointer(ret))
+	_ret := C.QTransform_Rotate(this.h, (C.double)(a))
+	return newQTransform_U(unsafe.Pointer(_ret))
 }
 
 func (this *QTransform) RotateRadians(a float64) *QTransform {
-	ret := C.QTransform_RotateRadians(this.h, (C.double)(a))
-	return newQTransform_U(unsafe.Pointer(ret))
+	_ret := C.QTransform_RotateRadians(this.h, (C.double)(a))
+	return newQTransform_U(unsafe.Pointer(_ret))
 }
 
 func (this *QTransform) OperatorEqual(param1 *QTransform) bool {
-	ret := C.QTransform_OperatorEqual(this.h, param1.cPointer())
-	return (bool)(ret)
+	_ret := C.QTransform_OperatorEqual(this.h, param1.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QTransform) OperatorNotEqual(param1 *QTransform) bool {
-	ret := C.QTransform_OperatorNotEqual(this.h, param1.cPointer())
-	return (bool)(ret)
+	_ret := C.QTransform_OperatorNotEqual(this.h, param1.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QTransform) OperatorMultiplyAssign(param1 *QTransform) *QTransform {
-	ret := C.QTransform_OperatorMultiplyAssign(this.h, param1.cPointer())
-	return newQTransform_U(unsafe.Pointer(ret))
+	_ret := C.QTransform_OperatorMultiplyAssign(this.h, param1.cPointer())
+	return newQTransform_U(unsafe.Pointer(_ret))
 }
 
 func (this *QTransform) OperatorMultiply(o *QTransform) *QTransform {
-	ret := C.QTransform_OperatorMultiply(this.h, o.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQTransform(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QTransform) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QTransform_OperatorMultiply(this.h, o.cPointer())
+	_goptr := newQTransform(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QTransform) Reset() {
@@ -285,91 +269,59 @@ func (this *QTransform) Reset() {
 }
 
 func (this *QTransform) Map(p *QPoint) *QPoint {
-	ret := C.QTransform_Map(this.h, p.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPoint(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPoint) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QTransform_Map(this.h, p.cPointer())
+	_goptr := newQPoint(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QTransform) MapWithQPointF(p *QPointF) *QPointF {
-	ret := C.QTransform_MapWithQPointF(this.h, p.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPointF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPointF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QTransform_MapWithQPointF(this.h, p.cPointer())
+	_goptr := newQPointF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QTransform) MapWithQLine(l *QLine) *QLine {
-	ret := C.QTransform_MapWithQLine(this.h, l.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQLine(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QLine) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QTransform_MapWithQLine(this.h, l.cPointer())
+	_goptr := newQLine(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QTransform) MapWithQLineF(l *QLineF) *QLineF {
-	ret := C.QTransform_MapWithQLineF(this.h, l.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQLineF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QLineF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QTransform_MapWithQLineF(this.h, l.cPointer())
+	_goptr := newQLineF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QTransform) MapWithQRegion(r *QRegion) *QRegion {
-	ret := C.QTransform_MapWithQRegion(this.h, r.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRegion(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRegion) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QTransform_MapWithQRegion(this.h, r.cPointer())
+	_goptr := newQRegion(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QTransform) MapWithQPainterPath(p *QPainterPath) *QPainterPath {
-	ret := C.QTransform_MapWithQPainterPath(this.h, p.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPainterPath(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPainterPath) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QTransform_MapWithQPainterPath(this.h, p.cPointer())
+	_goptr := newQPainterPath(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QTransform) MapRect(param1 *QRect) *QRect {
-	ret := C.QTransform_MapRect(this.h, param1.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRect(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRect) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QTransform_MapRect(this.h, param1.cPointer())
+	_goptr := newQRect(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QTransform) MapRectWithQRectF(param1 *QRectF) *QRectF {
-	ret := C.QTransform_MapRectWithQRectF(this.h, param1.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRectF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRectF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QTransform_MapRectWithQRectF(this.h, param1.cPointer())
+	_goptr := newQRectF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QTransform) Map2(x int, y int, tx *int, ty *int) {
@@ -381,73 +333,71 @@ func (this *QTransform) Map3(x float64, y float64, tx *float64, ty *float64) {
 }
 
 func (this *QTransform) ToAffine() *QMatrix {
-	ret := C.QTransform_ToAffine(this.h)
-	return newQMatrix_U(unsafe.Pointer(ret))
+	_ret := C.QTransform_ToAffine(this.h)
+	return newQMatrix_U(unsafe.Pointer(_ret))
 }
 
 func (this *QTransform) OperatorMultiplyAssignWithDiv(div float64) *QTransform {
-	ret := C.QTransform_OperatorMultiplyAssignWithDiv(this.h, (C.double)(div))
-	return newQTransform_U(unsafe.Pointer(ret))
+	_ret := C.QTransform_OperatorMultiplyAssignWithDiv(this.h, (C.double)(div))
+	return newQTransform_U(unsafe.Pointer(_ret))
 }
 
 func (this *QTransform) OperatorDivideAssign(div float64) *QTransform {
-	ret := C.QTransform_OperatorDivideAssign(this.h, (C.double)(div))
-	return newQTransform_U(unsafe.Pointer(ret))
+	_ret := C.QTransform_OperatorDivideAssign(this.h, (C.double)(div))
+	return newQTransform_U(unsafe.Pointer(_ret))
 }
 
 func (this *QTransform) OperatorPlusAssign(div float64) *QTransform {
-	ret := C.QTransform_OperatorPlusAssign(this.h, (C.double)(div))
-	return newQTransform_U(unsafe.Pointer(ret))
+	_ret := C.QTransform_OperatorPlusAssign(this.h, (C.double)(div))
+	return newQTransform_U(unsafe.Pointer(_ret))
 }
 
 func (this *QTransform) OperatorMinusAssign(div float64) *QTransform {
-	ret := C.QTransform_OperatorMinusAssign(this.h, (C.double)(div))
-	return newQTransform_U(unsafe.Pointer(ret))
+	_ret := C.QTransform_OperatorMinusAssign(this.h, (C.double)(div))
+	return newQTransform_U(unsafe.Pointer(_ret))
 }
 
 func QTransform_FromTranslate(dx float64, dy float64) *QTransform {
-	ret := C.QTransform_FromTranslate((C.double)(dx), (C.double)(dy))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQTransform(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QTransform) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QTransform_FromTranslate((C.double)(dx), (C.double)(dy))
+	_goptr := newQTransform(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func QTransform_FromScale(dx float64, dy float64) *QTransform {
-	ret := C.QTransform_FromScale((C.double)(dx), (C.double)(dy))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQTransform(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QTransform) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QTransform_FromScale((C.double)(dx), (C.double)(dy))
+	_goptr := newQTransform(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QTransform) Inverted1(invertible *bool) *QTransform {
-	ret := C.QTransform_Inverted1(this.h, (*C.bool)(unsafe.Pointer(invertible)))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQTransform(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QTransform) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QTransform_Inverted1(this.h, (*C.bool)(unsafe.Pointer(invertible)))
+	_goptr := newQTransform(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QTransform) Rotate2(a float64, axis Axis) *QTransform {
-	ret := C.QTransform_Rotate2(this.h, (C.double)(a), (C.uintptr_t)(axis))
-	return newQTransform_U(unsafe.Pointer(ret))
+	_ret := C.QTransform_Rotate2(this.h, (C.double)(a), (C.uintptr_t)(axis))
+	return newQTransform_U(unsafe.Pointer(_ret))
 }
 
 func (this *QTransform) RotateRadians2(a float64, axis Axis) *QTransform {
-	ret := C.QTransform_RotateRadians2(this.h, (C.double)(a), (C.uintptr_t)(axis))
-	return newQTransform_U(unsafe.Pointer(ret))
+	_ret := C.QTransform_RotateRadians2(this.h, (C.double)(a), (C.uintptr_t)(axis))
+	return newQTransform_U(unsafe.Pointer(_ret))
 }
 
+// Delete this object from C++ memory.
 func (this *QTransform) Delete() {
 	C.QTransform_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QTransform) GoGC() {
+	runtime.SetFinalizer(this, func(this *QTransform) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

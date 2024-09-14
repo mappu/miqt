@@ -50,30 +50,26 @@ func NewQTreeView2(parent *QWidget) *QTreeView {
 }
 
 func (this *QTreeView) MetaObject() *QMetaObject {
-	ret := C.QTreeView_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QTreeView_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QTreeView_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTreeView_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTreeView_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QTreeView_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTreeView_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTreeView_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QTreeView) SetModel(model *QAbstractItemModel) {
@@ -89,8 +85,8 @@ func (this *QTreeView) SetSelectionModel(selectionModel *QItemSelectionModel) {
 }
 
 func (this *QTreeView) Header() *QHeaderView {
-	ret := C.QTreeView_Header(this.h)
-	return newQHeaderView_U(unsafe.Pointer(ret))
+	_ret := C.QTreeView_Header(this.h)
+	return newQHeaderView_U(unsafe.Pointer(_ret))
 }
 
 func (this *QTreeView) SetHeader(header *QHeaderView) {
@@ -98,8 +94,8 @@ func (this *QTreeView) SetHeader(header *QHeaderView) {
 }
 
 func (this *QTreeView) AutoExpandDelay() int {
-	ret := C.QTreeView_AutoExpandDelay(this.h)
-	return (int)(ret)
+	_ret := C.QTreeView_AutoExpandDelay(this.h)
+	return (int)(_ret)
 }
 
 func (this *QTreeView) SetAutoExpandDelay(delay int) {
@@ -107,8 +103,8 @@ func (this *QTreeView) SetAutoExpandDelay(delay int) {
 }
 
 func (this *QTreeView) Indentation() int {
-	ret := C.QTreeView_Indentation(this.h)
-	return (int)(ret)
+	_ret := C.QTreeView_Indentation(this.h)
+	return (int)(_ret)
 }
 
 func (this *QTreeView) SetIndentation(i int) {
@@ -120,8 +116,8 @@ func (this *QTreeView) ResetIndentation() {
 }
 
 func (this *QTreeView) RootIsDecorated() bool {
-	ret := C.QTreeView_RootIsDecorated(this.h)
-	return (bool)(ret)
+	_ret := C.QTreeView_RootIsDecorated(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QTreeView) SetRootIsDecorated(show bool) {
@@ -129,8 +125,8 @@ func (this *QTreeView) SetRootIsDecorated(show bool) {
 }
 
 func (this *QTreeView) UniformRowHeights() bool {
-	ret := C.QTreeView_UniformRowHeights(this.h)
-	return (bool)(ret)
+	_ret := C.QTreeView_UniformRowHeights(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QTreeView) SetUniformRowHeights(uniform bool) {
@@ -138,8 +134,8 @@ func (this *QTreeView) SetUniformRowHeights(uniform bool) {
 }
 
 func (this *QTreeView) ItemsExpandable() bool {
-	ret := C.QTreeView_ItemsExpandable(this.h)
-	return (bool)(ret)
+	_ret := C.QTreeView_ItemsExpandable(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QTreeView) SetItemsExpandable(enable bool) {
@@ -147,8 +143,8 @@ func (this *QTreeView) SetItemsExpandable(enable bool) {
 }
 
 func (this *QTreeView) ExpandsOnDoubleClick() bool {
-	ret := C.QTreeView_ExpandsOnDoubleClick(this.h)
-	return (bool)(ret)
+	_ret := C.QTreeView_ExpandsOnDoubleClick(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QTreeView) SetExpandsOnDoubleClick(enable bool) {
@@ -156,13 +152,13 @@ func (this *QTreeView) SetExpandsOnDoubleClick(enable bool) {
 }
 
 func (this *QTreeView) ColumnViewportPosition(column int) int {
-	ret := C.QTreeView_ColumnViewportPosition(this.h, (C.int)(column))
-	return (int)(ret)
+	_ret := C.QTreeView_ColumnViewportPosition(this.h, (C.int)(column))
+	return (int)(_ret)
 }
 
 func (this *QTreeView) ColumnWidth(column int) int {
-	ret := C.QTreeView_ColumnWidth(this.h, (C.int)(column))
-	return (int)(ret)
+	_ret := C.QTreeView_ColumnWidth(this.h, (C.int)(column))
+	return (int)(_ret)
 }
 
 func (this *QTreeView) SetColumnWidth(column int, width int) {
@@ -170,13 +166,13 @@ func (this *QTreeView) SetColumnWidth(column int, width int) {
 }
 
 func (this *QTreeView) ColumnAt(x int) int {
-	ret := C.QTreeView_ColumnAt(this.h, (C.int)(x))
-	return (int)(ret)
+	_ret := C.QTreeView_ColumnAt(this.h, (C.int)(x))
+	return (int)(_ret)
 }
 
 func (this *QTreeView) IsColumnHidden(column int) bool {
-	ret := C.QTreeView_IsColumnHidden(this.h, (C.int)(column))
-	return (bool)(ret)
+	_ret := C.QTreeView_IsColumnHidden(this.h, (C.int)(column))
+	return (bool)(_ret)
 }
 
 func (this *QTreeView) SetColumnHidden(column int, hide bool) {
@@ -184,8 +180,8 @@ func (this *QTreeView) SetColumnHidden(column int, hide bool) {
 }
 
 func (this *QTreeView) IsHeaderHidden() bool {
-	ret := C.QTreeView_IsHeaderHidden(this.h)
-	return (bool)(ret)
+	_ret := C.QTreeView_IsHeaderHidden(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QTreeView) SetHeaderHidden(hide bool) {
@@ -193,8 +189,8 @@ func (this *QTreeView) SetHeaderHidden(hide bool) {
 }
 
 func (this *QTreeView) IsRowHidden(row int, parent *QModelIndex) bool {
-	ret := C.QTreeView_IsRowHidden(this.h, (C.int)(row), parent.cPointer())
-	return (bool)(ret)
+	_ret := C.QTreeView_IsRowHidden(this.h, (C.int)(row), parent.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QTreeView) SetRowHidden(row int, parent *QModelIndex, hide bool) {
@@ -202,8 +198,8 @@ func (this *QTreeView) SetRowHidden(row int, parent *QModelIndex, hide bool) {
 }
 
 func (this *QTreeView) IsFirstColumnSpanned(row int, parent *QModelIndex) bool {
-	ret := C.QTreeView_IsFirstColumnSpanned(this.h, (C.int)(row), parent.cPointer())
-	return (bool)(ret)
+	_ret := C.QTreeView_IsFirstColumnSpanned(this.h, (C.int)(row), parent.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QTreeView) SetFirstColumnSpanned(row int, parent *QModelIndex, span bool) {
@@ -211,8 +207,8 @@ func (this *QTreeView) SetFirstColumnSpanned(row int, parent *QModelIndex, span 
 }
 
 func (this *QTreeView) IsExpanded(index *QModelIndex) bool {
-	ret := C.QTreeView_IsExpanded(this.h, index.cPointer())
-	return (bool)(ret)
+	_ret := C.QTreeView_IsExpanded(this.h, index.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QTreeView) SetExpanded(index *QModelIndex, expand bool) {
@@ -224,8 +220,8 @@ func (this *QTreeView) SetSortingEnabled(enable bool) {
 }
 
 func (this *QTreeView) IsSortingEnabled() bool {
-	ret := C.QTreeView_IsSortingEnabled(this.h)
-	return (bool)(ret)
+	_ret := C.QTreeView_IsSortingEnabled(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QTreeView) SetAnimated(enable bool) {
@@ -233,8 +229,8 @@ func (this *QTreeView) SetAnimated(enable bool) {
 }
 
 func (this *QTreeView) IsAnimated() bool {
-	ret := C.QTreeView_IsAnimated(this.h)
-	return (bool)(ret)
+	_ret := C.QTreeView_IsAnimated(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QTreeView) SetAllColumnsShowFocus(enable bool) {
@@ -242,8 +238,8 @@ func (this *QTreeView) SetAllColumnsShowFocus(enable bool) {
 }
 
 func (this *QTreeView) AllColumnsShowFocus() bool {
-	ret := C.QTreeView_AllColumnsShowFocus(this.h)
-	return (bool)(ret)
+	_ret := C.QTreeView_AllColumnsShowFocus(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QTreeView) SetWordWrap(on bool) {
@@ -251,8 +247,8 @@ func (this *QTreeView) SetWordWrap(on bool) {
 }
 
 func (this *QTreeView) WordWrap() bool {
-	ret := C.QTreeView_WordWrap(this.h)
-	return (bool)(ret)
+	_ret := C.QTreeView_WordWrap(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QTreeView) SetTreePosition(logicalIndex int) {
@@ -260,25 +256,21 @@ func (this *QTreeView) SetTreePosition(logicalIndex int) {
 }
 
 func (this *QTreeView) TreePosition() int {
-	ret := C.QTreeView_TreePosition(this.h)
-	return (int)(ret)
+	_ret := C.QTreeView_TreePosition(this.h)
+	return (int)(_ret)
 }
 
 func (this *QTreeView) KeyboardSearch(search string) {
-	search_Cstring := C.CString(search)
-	defer C.free(unsafe.Pointer(search_Cstring))
-	C.QTreeView_KeyboardSearch(this.h, search_Cstring, C.size_t(len(search)))
+	search_ms := miqt_strdupg(search)
+	defer C.free(search_ms)
+	C.QTreeView_KeyboardSearch(this.h, (*C.struct_miqt_string)(search_ms))
 }
 
 func (this *QTreeView) VisualRect(index *QModelIndex) *QRect {
-	ret := C.QTreeView_VisualRect(this.h, index.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRect(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRect) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QTreeView_VisualRect(this.h, index.cPointer())
+	_goptr := newQRect(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QTreeView) ScrollTo(index *QModelIndex) {
@@ -286,36 +278,24 @@ func (this *QTreeView) ScrollTo(index *QModelIndex) {
 }
 
 func (this *QTreeView) IndexAt(p *QPoint) *QModelIndex {
-	ret := C.QTreeView_IndexAt(this.h, p.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQModelIndex(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QModelIndex) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QTreeView_IndexAt(this.h, p.cPointer())
+	_goptr := newQModelIndex(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QTreeView) IndexAbove(index *QModelIndex) *QModelIndex {
-	ret := C.QTreeView_IndexAbove(this.h, index.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQModelIndex(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QModelIndex) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QTreeView_IndexAbove(this.h, index.cPointer())
+	_goptr := newQModelIndex(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QTreeView) IndexBelow(index *QModelIndex) *QModelIndex {
-	ret := C.QTreeView_IndexBelow(this.h, index.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQModelIndex(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QModelIndex) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QTreeView_IndexBelow(this.h, index.cPointer())
+	_goptr := newQModelIndex(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QTreeView) DoItemsLayout() {
@@ -337,25 +317,43 @@ func (this *QTreeView) SelectAll() {
 func (this *QTreeView) Expanded(index *QModelIndex) {
 	C.QTreeView_Expanded(this.h, index.cPointer())
 }
+func (this *QTreeView) OnExpanded(slot func(index *QModelIndex)) {
+	C.QTreeView_connect_Expanded(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QTreeView) OnExpanded(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QTreeView_Expanded
+func miqt_exec_callback_QTreeView_Expanded(cb *C.void, index *C.QModelIndex) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(index *QModelIndex))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QTreeView_connect_Expanded(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	index_ret := index
+	slotval1 := newQModelIndex_U(unsafe.Pointer(index_ret))
+
+	gofunc(slotval1)
 }
 
 func (this *QTreeView) Collapsed(index *QModelIndex) {
 	C.QTreeView_Collapsed(this.h, index.cPointer())
 }
+func (this *QTreeView) OnCollapsed(slot func(index *QModelIndex)) {
+	C.QTreeView_connect_Collapsed(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QTreeView) OnCollapsed(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QTreeView_Collapsed
+func miqt_exec_callback_QTreeView_Collapsed(cb *C.void, index *C.QModelIndex) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(index *QModelIndex))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QTreeView_connect_Collapsed(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	index_ret := index
+	slotval1 := newQModelIndex_U(unsafe.Pointer(index_ret))
+
+	gofunc(slotval1)
 }
 
 func (this *QTreeView) HideColumn(column int) {
@@ -407,12 +405,10 @@ func QTreeView_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTreeView_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTreeView_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QTreeView_Tr3(s string, c string, n int) string {
@@ -420,12 +416,10 @@ func QTreeView_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTreeView_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTreeView_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QTreeView_TrUtf82(s string, c string) string {
@@ -433,12 +427,10 @@ func QTreeView_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTreeView_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTreeView_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QTreeView_TrUtf83(s string, c string, n int) string {
@@ -446,12 +438,10 @@ func QTreeView_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTreeView_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTreeView_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QTreeView) ScrollTo2(index *QModelIndex, hint QAbstractItemView__ScrollHint) {
@@ -465,13 +455,25 @@ func (this *QTreeView) DataChanged3(topLeft *QModelIndex, bottomRight *QModelInd
 	for i := range roles {
 		roles_CArray[i] = (C.int)(roles[i])
 	}
-	C.QTreeView_DataChanged3(this.h, topLeft.cPointer(), bottomRight.cPointer(), &roles_CArray[0], C.size_t(len(roles)))
+	roles_ma := &C.struct_miqt_array{len: C.size_t(len(roles)), data: unsafe.Pointer(roles_CArray)}
+	defer runtime.KeepAlive(unsafe.Pointer(roles_ma))
+	C.QTreeView_DataChanged3(this.h, topLeft.cPointer(), bottomRight.cPointer(), roles_ma)
 }
 
 func (this *QTreeView) ExpandRecursively2(index *QModelIndex, depth int) {
 	C.QTreeView_ExpandRecursively2(this.h, index.cPointer(), (C.int)(depth))
 }
 
+// Delete this object from C++ memory.
 func (this *QTreeView) Delete() {
 	C.QTreeView_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QTreeView) GoGC() {
+	runtime.SetFinalizer(this, func(this *QTreeView) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

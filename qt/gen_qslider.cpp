@@ -7,12 +7,8 @@
 #include <cstring>
 #include <QWidget>
 #include "qslider.h"
-
 #include "gen_qslider.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QSlider* QSlider_new() {
 	return new QSlider();
@@ -34,34 +30,30 @@ QMetaObject* QSlider_MetaObject(const QSlider* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void QSlider_Tr(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QSlider::tr(s);
+struct miqt_string* QSlider_Tr(const char* s) {
+	QString _ret = QSlider::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QSlider_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QSlider::trUtf8(s);
+struct miqt_string* QSlider_TrUtf8(const char* s) {
+	QString _ret = QSlider::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 QSize* QSlider_SizeHint(const QSlider* self) {
-	QSize ret = self->sizeHint();
+	QSize _ret = self->sizeHint();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(ret));
+	return static_cast<QSize*>(new QSize(_ret));
 }
 
 QSize* QSlider_MinimumSizeHint(const QSlider* self) {
-	QSize ret = self->minimumSizeHint();
+	QSize _ret = self->minimumSizeHint();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(ret));
+	return static_cast<QSize*>(new QSize(_ret));
 }
 
 void QSlider_SetTickPosition(QSlider* self, uintptr_t position) {
@@ -69,8 +61,8 @@ void QSlider_SetTickPosition(QSlider* self, uintptr_t position) {
 }
 
 uintptr_t QSlider_TickPosition(const QSlider* self) {
-	QSlider::TickPosition ret = self->tickPosition();
-	return static_cast<uintptr_t>(ret);
+	QSlider::TickPosition _ret = self->tickPosition();
+	return static_cast<uintptr_t>(_ret);
 }
 
 void QSlider_SetTickInterval(QSlider* self, int ti) {
@@ -85,40 +77,32 @@ bool QSlider_Event(QSlider* self, QEvent* event) {
 	return self->event(event);
 }
 
-void QSlider_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QSlider::tr(s, c);
+struct miqt_string* QSlider_Tr2(const char* s, const char* c) {
+	QString _ret = QSlider::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QSlider_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QSlider::tr(s, c, static_cast<int>(n));
+struct miqt_string* QSlider_Tr3(const char* s, const char* c, int n) {
+	QString _ret = QSlider::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QSlider_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QSlider::trUtf8(s, c);
+struct miqt_string* QSlider_TrUtf82(const char* s, const char* c) {
+	QString _ret = QSlider::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QSlider_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QSlider::trUtf8(s, c, static_cast<int>(n));
+struct miqt_string* QSlider_TrUtf83(const char* s, const char* c, int n) {
+	QString _ret = QSlider::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QSlider_Delete(QSlider* self) {

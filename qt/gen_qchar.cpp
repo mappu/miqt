@@ -4,12 +4,8 @@
 #include <QByteArray>
 #include <cstring>
 #include "qchar.h"
-
 #include "gen_qchar.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QLatin1Char* QLatin1Char_new(char c) {
 	return new QLatin1Char(static_cast<char>(c));
@@ -76,23 +72,23 @@ QChar* QChar_new11(QChar* param1) {
 }
 
 uintptr_t QChar_Category(const QChar* self) {
-	QChar::Category ret = self->category();
-	return static_cast<uintptr_t>(ret);
+	QChar::Category _ret = self->category();
+	return static_cast<uintptr_t>(_ret);
 }
 
 uintptr_t QChar_Direction(const QChar* self) {
-	QChar::Direction ret = self->direction();
-	return static_cast<uintptr_t>(ret);
+	QChar::Direction _ret = self->direction();
+	return static_cast<uintptr_t>(_ret);
 }
 
 uintptr_t QChar_JoiningType(const QChar* self) {
-	QChar::JoiningType ret = self->joiningType();
-	return static_cast<uintptr_t>(ret);
+	QChar::JoiningType _ret = self->joiningType();
+	return static_cast<uintptr_t>(_ret);
 }
 
 uintptr_t QChar_Joining(const QChar* self) {
-	QChar::Joining ret = self->joining();
-	return static_cast<uintptr_t>(ret);
+	QChar::Joining _ret = self->joining();
+	return static_cast<uintptr_t>(_ret);
 }
 
 unsigned char QChar_CombiningClass(const QChar* self) {
@@ -100,27 +96,25 @@ unsigned char QChar_CombiningClass(const QChar* self) {
 }
 
 QChar* QChar_MirroredChar(const QChar* self) {
-	QChar ret = self->mirroredChar();
+	QChar _ret = self->mirroredChar();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QChar*>(new QChar(ret));
+	return static_cast<QChar*>(new QChar(_ret));
 }
 
 bool QChar_HasMirrored(const QChar* self) {
 	return self->hasMirrored();
 }
 
-void QChar_Decomposition(const QChar* self, char** _out, int* _out_Strlen) {
-	QString ret = self->decomposition();
+struct miqt_string* QChar_Decomposition(const QChar* self) {
+	QString _ret = self->decomposition();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 uintptr_t QChar_DecompositionTag(const QChar* self) {
-	QChar::Decomposition ret = self->decompositionTag();
-	return static_cast<uintptr_t>(ret);
+	QChar::Decomposition _ret = self->decompositionTag();
+	return static_cast<uintptr_t>(_ret);
 }
 
 int QChar_DigitValue(const QChar* self) {
@@ -128,37 +122,37 @@ int QChar_DigitValue(const QChar* self) {
 }
 
 QChar* QChar_ToLower(const QChar* self) {
-	QChar ret = self->toLower();
+	QChar _ret = self->toLower();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QChar*>(new QChar(ret));
+	return static_cast<QChar*>(new QChar(_ret));
 }
 
 QChar* QChar_ToUpper(const QChar* self) {
-	QChar ret = self->toUpper();
+	QChar _ret = self->toUpper();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QChar*>(new QChar(ret));
+	return static_cast<QChar*>(new QChar(_ret));
 }
 
 QChar* QChar_ToTitleCase(const QChar* self) {
-	QChar ret = self->toTitleCase();
+	QChar _ret = self->toTitleCase();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QChar*>(new QChar(ret));
+	return static_cast<QChar*>(new QChar(_ret));
 }
 
 QChar* QChar_ToCaseFolded(const QChar* self) {
-	QChar ret = self->toCaseFolded();
+	QChar _ret = self->toCaseFolded();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QChar*>(new QChar(ret));
+	return static_cast<QChar*>(new QChar(_ret));
 }
 
 uintptr_t QChar_Script(const QChar* self) {
-	QChar::Script ret = self->script();
-	return static_cast<uintptr_t>(ret);
+	QChar::Script _ret = self->script();
+	return static_cast<uintptr_t>(_ret);
 }
 
 uintptr_t QChar_UnicodeVersion(const QChar* self) {
-	QChar::UnicodeVersion ret = self->unicodeVersion();
-	return static_cast<uintptr_t>(ret);
+	QChar::UnicodeVersion _ret = self->unicodeVersion();
+	return static_cast<uintptr_t>(_ret);
 }
 
 char QChar_ToLatin1(const QChar* self) {
@@ -170,9 +164,9 @@ uint16_t QChar_Unicode(const QChar* self) {
 }
 
 QChar* QChar_FromLatin1(char c) {
-	QChar ret = QChar::fromLatin1(static_cast<char>(c));
+	QChar _ret = QChar::fromLatin1(static_cast<char>(c));
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QChar*>(new QChar(ret));
+	return static_cast<QChar*>(new QChar(_ret));
 }
 
 bool QChar_IsNull(const QChar* self) {
@@ -296,23 +290,23 @@ uint16_t QChar_LowSurrogate(unsigned int ucs4) {
 }
 
 uintptr_t QChar_CategoryWithUcs4(unsigned int ucs4) {
-	QChar::Category ret = QChar::category(static_cast<uint>(ucs4));
-	return static_cast<uintptr_t>(ret);
+	QChar::Category _ret = QChar::category(static_cast<uint>(ucs4));
+	return static_cast<uintptr_t>(_ret);
 }
 
 uintptr_t QChar_DirectionWithUcs4(unsigned int ucs4) {
-	QChar::Direction ret = QChar::direction(static_cast<uint>(ucs4));
-	return static_cast<uintptr_t>(ret);
+	QChar::Direction _ret = QChar::direction(static_cast<uint>(ucs4));
+	return static_cast<uintptr_t>(_ret);
 }
 
 uintptr_t QChar_JoiningTypeWithUcs4(unsigned int ucs4) {
-	QChar::JoiningType ret = QChar::joiningType(static_cast<uint>(ucs4));
-	return static_cast<uintptr_t>(ret);
+	QChar::JoiningType _ret = QChar::joiningType(static_cast<uint>(ucs4));
+	return static_cast<uintptr_t>(_ret);
 }
 
 uintptr_t QChar_JoiningWithUcs4(unsigned int ucs4) {
-	QChar::Joining ret = QChar::joining(static_cast<uint>(ucs4));
-	return static_cast<uintptr_t>(ret);
+	QChar::Joining _ret = QChar::joining(static_cast<uint>(ucs4));
+	return static_cast<uintptr_t>(_ret);
 }
 
 unsigned char QChar_CombiningClassWithUcs4(unsigned int ucs4) {
@@ -327,18 +321,16 @@ bool QChar_HasMirroredWithUcs4(unsigned int ucs4) {
 	return QChar::hasMirrored(static_cast<uint>(ucs4));
 }
 
-void QChar_DecompositionWithUcs4(unsigned int ucs4, char** _out, int* _out_Strlen) {
-	QString ret = QChar::decomposition(static_cast<uint>(ucs4));
+struct miqt_string* QChar_DecompositionWithUcs4(unsigned int ucs4) {
+	QString _ret = QChar::decomposition(static_cast<uint>(ucs4));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 uintptr_t QChar_DecompositionTagWithUcs4(unsigned int ucs4) {
-	QChar::Decomposition ret = QChar::decompositionTag(static_cast<uint>(ucs4));
-	return static_cast<uintptr_t>(ret);
+	QChar::Decomposition _ret = QChar::decompositionTag(static_cast<uint>(ucs4));
+	return static_cast<uintptr_t>(_ret);
 }
 
 int QChar_DigitValueWithUcs4(unsigned int ucs4) {
@@ -362,18 +354,18 @@ unsigned int QChar_ToCaseFoldedWithUcs4(unsigned int ucs4) {
 }
 
 uintptr_t QChar_ScriptWithUcs4(unsigned int ucs4) {
-	QChar::Script ret = QChar::script(static_cast<uint>(ucs4));
-	return static_cast<uintptr_t>(ret);
+	QChar::Script _ret = QChar::script(static_cast<uint>(ucs4));
+	return static_cast<uintptr_t>(_ret);
 }
 
 uintptr_t QChar_UnicodeVersionWithUcs4(unsigned int ucs4) {
-	QChar::UnicodeVersion ret = QChar::unicodeVersion(static_cast<uint>(ucs4));
-	return static_cast<uintptr_t>(ret);
+	QChar::UnicodeVersion _ret = QChar::unicodeVersion(static_cast<uint>(ucs4));
+	return static_cast<uintptr_t>(_ret);
 }
 
 uintptr_t QChar_CurrentUnicodeVersion() {
-	QChar::UnicodeVersion ret = QChar::currentUnicodeVersion();
-	return static_cast<uintptr_t>(ret);
+	QChar::UnicodeVersion _ret = QChar::currentUnicodeVersion();
+	return static_cast<uintptr_t>(_ret);
 }
 
 bool QChar_IsPrintWithUcs4(unsigned int ucs4) {

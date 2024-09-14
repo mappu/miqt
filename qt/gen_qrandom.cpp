@@ -1,12 +1,8 @@
 #include <QRandomGenerator>
 #include <QRandomGenerator64>
 #include "qrandom.h"
-
 #include "gen_qrandom.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QRandomGenerator* QRandomGenerator_new() {
 	return new QRandomGenerator();
@@ -97,9 +93,9 @@ QRandomGenerator* QRandomGenerator_Global() {
 }
 
 QRandomGenerator* QRandomGenerator_SecurelySeeded() {
-	QRandomGenerator ret = QRandomGenerator::securelySeeded();
+	QRandomGenerator _ret = QRandomGenerator::securelySeeded();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRandomGenerator*>(new QRandomGenerator(ret));
+	return static_cast<QRandomGenerator*>(new QRandomGenerator(_ret));
 }
 
 void QRandomGenerator_Seed1(QRandomGenerator* self, unsigned int s) {
@@ -163,9 +159,9 @@ QRandomGenerator64* QRandomGenerator64_Global() {
 }
 
 QRandomGenerator64* QRandomGenerator64_SecurelySeeded() {
-	QRandomGenerator64 ret = QRandomGenerator64::securelySeeded();
+	QRandomGenerator64 _ret = QRandomGenerator64::securelySeeded();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRandomGenerator64*>(new QRandomGenerator64(ret));
+	return static_cast<QRandomGenerator64*>(new QRandomGenerator64(_ret));
 }
 
 void QRandomGenerator64_OperatorAssign(QRandomGenerator64* self, QRandomGenerator64* param1) {

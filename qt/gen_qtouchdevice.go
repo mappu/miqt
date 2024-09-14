@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"runtime"
 	"unsafe"
 )
 
@@ -60,46 +61,42 @@ func NewQTouchDevice() *QTouchDevice {
 }
 
 func QTouchDevice_Devices() []*QTouchDevice {
-	var _out **C.QTouchDevice = nil
-	var _out_len C.size_t = 0
-	C.QTouchDevice_Devices(&_out, &_out_len)
-	ret := make([]*QTouchDevice, int(_out_len))
-	_outCast := (*[0xffff]*C.QTouchDevice)(unsafe.Pointer(_out)) // so fresh so clean
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = newQTouchDevice(_outCast[i])
+	var _ma *C.struct_miqt_array = C.QTouchDevice_Devices()
+	_ret := make([]*QTouchDevice, int(_ma.len))
+	_outCast := (*[0xffff]*C.QTouchDevice)(unsafe.Pointer(_ma.data)) // mrs jackson
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = newQTouchDevice(_outCast[i])
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
 func (this *QTouchDevice) Name() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTouchDevice_Name(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTouchDevice_Name(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QTouchDevice) Type() QTouchDevice__DeviceType {
-	ret := C.QTouchDevice_Type(this.h)
-	return (QTouchDevice__DeviceType)(ret)
+	_ret := C.QTouchDevice_Type(this.h)
+	return (QTouchDevice__DeviceType)(_ret)
 }
 
 func (this *QTouchDevice) Capabilities() int {
-	ret := C.QTouchDevice_Capabilities(this.h)
-	return (int)(ret)
+	_ret := C.QTouchDevice_Capabilities(this.h)
+	return (int)(_ret)
 }
 
 func (this *QTouchDevice) MaximumTouchPoints() int {
-	ret := C.QTouchDevice_MaximumTouchPoints(this.h)
-	return (int)(ret)
+	_ret := C.QTouchDevice_MaximumTouchPoints(this.h)
+	return (int)(_ret)
 }
 
 func (this *QTouchDevice) SetName(name string) {
-	name_Cstring := C.CString(name)
-	defer C.free(unsafe.Pointer(name_Cstring))
-	C.QTouchDevice_SetName(this.h, name_Cstring, C.size_t(len(name)))
+	name_ms := miqt_strdupg(name)
+	defer C.free(name_ms)
+	C.QTouchDevice_SetName(this.h, (*C.struct_miqt_string)(name_ms))
 }
 
 func (this *QTouchDevice) SetType(devType QTouchDevice__DeviceType) {
@@ -114,6 +111,16 @@ func (this *QTouchDevice) SetMaximumTouchPoints(max int) {
 	C.QTouchDevice_SetMaximumTouchPoints(this.h, (C.int)(max))
 }
 
+// Delete this object from C++ memory.
 func (this *QTouchDevice) Delete() {
 	C.QTouchDevice_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QTouchDevice) GoGC() {
+	runtime.SetFinalizer(this, func(this *QTouchDevice) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

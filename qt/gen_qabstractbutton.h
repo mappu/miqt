@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -28,10 +30,10 @@ typedef struct QSize QSize;
 #endif
 
 QMetaObject* QAbstractButton_MetaObject(const QAbstractButton* self);
-void QAbstractButton_Tr(const char* s, char** _out, int* _out_Strlen);
-void QAbstractButton_TrUtf8(const char* s, char** _out, int* _out_Strlen);
-void QAbstractButton_SetText(QAbstractButton* self, const char* text, size_t text_Strlen);
-void QAbstractButton_Text(const QAbstractButton* self, char** _out, int* _out_Strlen);
+struct miqt_string* QAbstractButton_Tr(const char* s);
+struct miqt_string* QAbstractButton_TrUtf8(const char* s);
+void QAbstractButton_SetText(QAbstractButton* self, struct miqt_string* text);
+struct miqt_string* QAbstractButton_Text(const QAbstractButton* self);
 void QAbstractButton_SetIcon(QAbstractButton* self, QIcon* icon);
 QIcon* QAbstractButton_Icon(const QAbstractButton* self);
 QSize* QAbstractButton_IconSize(const QAbstractButton* self);
@@ -64,10 +66,10 @@ void QAbstractButton_Clicked(QAbstractButton* self);
 void QAbstractButton_connect_Clicked(QAbstractButton* self, void* slot);
 void QAbstractButton_Toggled(QAbstractButton* self, bool checked);
 void QAbstractButton_connect_Toggled(QAbstractButton* self, void* slot);
-void QAbstractButton_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QAbstractButton_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QAbstractButton_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QAbstractButton_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QAbstractButton_Tr2(const char* s, const char* c);
+struct miqt_string* QAbstractButton_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QAbstractButton_TrUtf82(const char* s, const char* c);
+struct miqt_string* QAbstractButton_TrUtf83(const char* s, const char* c, int n);
 void QAbstractButton_AnimateClick1(QAbstractButton* self, int msec);
 void QAbstractButton_Clicked1(QAbstractButton* self, bool checked);
 void QAbstractButton_connect_Clicked1(QAbstractButton* self, void* slot);

@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -26,17 +28,17 @@ typedef struct QPixmap QPixmap;
 #endif
 
 QMetaObject* QClipboard_MetaObject(const QClipboard* self);
-void QClipboard_Tr(const char* s, char** _out, int* _out_Strlen);
-void QClipboard_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QClipboard_Tr(const char* s);
+struct miqt_string* QClipboard_TrUtf8(const char* s);
 void QClipboard_Clear(QClipboard* self);
 bool QClipboard_SupportsSelection(const QClipboard* self);
 bool QClipboard_SupportsFindBuffer(const QClipboard* self);
 bool QClipboard_OwnsSelection(const QClipboard* self);
 bool QClipboard_OwnsClipboard(const QClipboard* self);
 bool QClipboard_OwnsFindBuffer(const QClipboard* self);
-void QClipboard_Text(const QClipboard* self, char** _out, int* _out_Strlen);
-void QClipboard_TextWithSubtype(const QClipboard* self, const char* subtype, size_t subtype_Strlen, char** _out, int* _out_Strlen);
-void QClipboard_SetText(QClipboard* self, const char* param1, size_t param1_Strlen);
+struct miqt_string* QClipboard_Text(const QClipboard* self);
+struct miqt_string* QClipboard_TextWithSubtype(const QClipboard* self, struct miqt_string* subtype);
+void QClipboard_SetText(QClipboard* self, struct miqt_string* param1);
 QMimeData* QClipboard_MimeData(const QClipboard* self);
 void QClipboard_SetMimeData(QClipboard* self, QMimeData* data);
 QImage* QClipboard_Image(const QClipboard* self);
@@ -51,14 +53,14 @@ void QClipboard_FindBufferChanged(QClipboard* self);
 void QClipboard_connect_FindBufferChanged(QClipboard* self, void* slot);
 void QClipboard_DataChanged(QClipboard* self);
 void QClipboard_connect_DataChanged(QClipboard* self, void* slot);
-void QClipboard_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QClipboard_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QClipboard_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QClipboard_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QClipboard_Tr2(const char* s, const char* c);
+struct miqt_string* QClipboard_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QClipboard_TrUtf82(const char* s, const char* c);
+struct miqt_string* QClipboard_TrUtf83(const char* s, const char* c, int n);
 void QClipboard_Clear1(QClipboard* self, uintptr_t mode);
-void QClipboard_Text1(const QClipboard* self, uintptr_t mode, char** _out, int* _out_Strlen);
-void QClipboard_Text2(const QClipboard* self, const char* subtype, size_t subtype_Strlen, uintptr_t mode, char** _out, int* _out_Strlen);
-void QClipboard_SetText2(QClipboard* self, const char* param1, size_t param1_Strlen, uintptr_t mode);
+struct miqt_string* QClipboard_Text1(const QClipboard* self, uintptr_t mode);
+struct miqt_string* QClipboard_Text2(const QClipboard* self, struct miqt_string* subtype, uintptr_t mode);
+void QClipboard_SetText2(QClipboard* self, struct miqt_string* param1, uintptr_t mode);
 QMimeData* QClipboard_MimeData1(const QClipboard* self, uintptr_t mode);
 void QClipboard_SetMimeData2(QClipboard* self, QMimeData* data, uintptr_t mode);
 QImage* QClipboard_Image1(const QClipboard* self, uintptr_t mode);

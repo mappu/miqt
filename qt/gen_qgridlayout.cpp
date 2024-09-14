@@ -9,12 +9,8 @@
 #include <cstring>
 #include <QWidget>
 #include "qgridlayout.h"
-
 #include "gen_qgridlayout.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QGridLayout* QGridLayout_new(QWidget* parent) {
 	return new QGridLayout(parent);
@@ -28,40 +24,36 @@ QMetaObject* QGridLayout_MetaObject(const QGridLayout* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void QGridLayout_Tr(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QGridLayout::tr(s);
+struct miqt_string* QGridLayout_Tr(const char* s) {
+	QString _ret = QGridLayout::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QGridLayout_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QGridLayout::trUtf8(s);
+struct miqt_string* QGridLayout_TrUtf8(const char* s) {
+	QString _ret = QGridLayout::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 QSize* QGridLayout_SizeHint(const QGridLayout* self) {
-	QSize ret = self->sizeHint();
+	QSize _ret = self->sizeHint();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(ret));
+	return static_cast<QSize*>(new QSize(_ret));
 }
 
 QSize* QGridLayout_MinimumSize(const QGridLayout* self) {
-	QSize ret = self->minimumSize();
+	QSize _ret = self->minimumSize();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(ret));
+	return static_cast<QSize*>(new QSize(_ret));
 }
 
 QSize* QGridLayout_MaximumSize(const QGridLayout* self) {
-	QSize ret = self->maximumSize();
+	QSize _ret = self->maximumSize();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(ret));
+	return static_cast<QSize*>(new QSize(_ret));
 }
 
 void QGridLayout_SetHorizontalSpacing(QGridLayout* self, int spacing) {
@@ -129,9 +121,9 @@ int QGridLayout_RowCount(const QGridLayout* self) {
 }
 
 QRect* QGridLayout_CellRect(const QGridLayout* self, int row, int column) {
-	QRect ret = self->cellRect(static_cast<int>(row), static_cast<int>(column));
+	QRect _ret = self->cellRect(static_cast<int>(row), static_cast<int>(column));
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(ret));
+	return static_cast<QRect*>(new QRect(_ret));
 }
 
 bool QGridLayout_HasHeightForWidth(const QGridLayout* self) {
@@ -147,8 +139,8 @@ int QGridLayout_MinimumHeightForWidth(const QGridLayout* self, int param1) {
 }
 
 int QGridLayout_ExpandingDirections(const QGridLayout* self) {
-	Qt::Orientations ret = self->expandingDirections();
-	return static_cast<int>(ret);
+	Qt::Orientations _ret = self->expandingDirections();
+	return static_cast<int>(_ret);
 }
 
 void QGridLayout_Invalidate(QGridLayout* self) {
@@ -180,8 +172,8 @@ void QGridLayout_SetOriginCorner(QGridLayout* self, uintptr_t originCorner) {
 }
 
 uintptr_t QGridLayout_OriginCorner(const QGridLayout* self) {
-	Qt::Corner ret = self->originCorner();
-	return static_cast<uintptr_t>(ret);
+	Qt::Corner _ret = self->originCorner();
+	return static_cast<uintptr_t>(_ret);
 }
 
 QLayoutItem* QGridLayout_ItemAt(const QGridLayout* self, int index) {
@@ -216,40 +208,32 @@ void QGridLayout_GetItemPosition(const QGridLayout* self, int idx, int* row, int
 	self->getItemPosition(static_cast<int>(idx), static_cast<int*>(row), static_cast<int*>(column), static_cast<int*>(rowSpan), static_cast<int*>(columnSpan));
 }
 
-void QGridLayout_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QGridLayout::tr(s, c);
+struct miqt_string* QGridLayout_Tr2(const char* s, const char* c) {
+	QString _ret = QGridLayout::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QGridLayout_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QGridLayout::tr(s, c, static_cast<int>(n));
+struct miqt_string* QGridLayout_Tr3(const char* s, const char* c, int n) {
+	QString _ret = QGridLayout::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QGridLayout_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QGridLayout::trUtf8(s, c);
+struct miqt_string* QGridLayout_TrUtf82(const char* s, const char* c) {
+	QString _ret = QGridLayout::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QGridLayout_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QGridLayout::trUtf8(s, c, static_cast<int>(n));
+struct miqt_string* QGridLayout_TrUtf83(const char* s, const char* c, int n) {
+	QString _ret = QGridLayout::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QGridLayout_AddWidget4(QGridLayout* self, QWidget* param1, int row, int column, int param4) {

@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -18,14 +20,14 @@ typedef struct QTemporaryDir QTemporaryDir;
 #endif
 
 QTemporaryDir* QTemporaryDir_new();
-QTemporaryDir* QTemporaryDir_new2(const char* templateName, size_t templateName_Strlen);
+QTemporaryDir* QTemporaryDir_new2(struct miqt_string* templateName);
 bool QTemporaryDir_IsValid(const QTemporaryDir* self);
-void QTemporaryDir_ErrorString(const QTemporaryDir* self, char** _out, int* _out_Strlen);
+struct miqt_string* QTemporaryDir_ErrorString(const QTemporaryDir* self);
 bool QTemporaryDir_AutoRemove(const QTemporaryDir* self);
 void QTemporaryDir_SetAutoRemove(QTemporaryDir* self, bool b);
 bool QTemporaryDir_Remove(QTemporaryDir* self);
-void QTemporaryDir_Path(const QTemporaryDir* self, char** _out, int* _out_Strlen);
-void QTemporaryDir_FilePath(const QTemporaryDir* self, const char* fileName, size_t fileName_Strlen, char** _out, int* _out_Strlen);
+struct miqt_string* QTemporaryDir_Path(const QTemporaryDir* self);
+struct miqt_string* QTemporaryDir_FilePath(const QTemporaryDir* self, struct miqt_string* fileName);
 void QTemporaryDir_Delete(QTemporaryDir* self);
 
 #ifdef __cplusplus

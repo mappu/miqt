@@ -1,12 +1,8 @@
 #define WORKAROUND_INNER_CLASS_DEFINITION_QtPrivate__ExceptionHolder
 #define WORKAROUND_INNER_CLASS_DEFINITION_QtPrivate__ExceptionStore
 #include "qexception.h"
-
 #include "gen_qexception.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QtPrivate__ExceptionHolder* QtPrivate__ExceptionHolder_new() {
 	return new QtPrivate::ExceptionHolder();
@@ -33,9 +29,9 @@ bool QtPrivate__ExceptionStore_HasException(const QtPrivate__ExceptionStore* sel
 }
 
 QtPrivate__ExceptionHolder* QtPrivate__ExceptionStore_Exception(QtPrivate__ExceptionStore* self) {
-	QtPrivate::ExceptionHolder ret = self->exception();
+	QtPrivate::ExceptionHolder _ret = self->exception();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QtPrivate::ExceptionHolder*>(new QtPrivate::ExceptionHolder(ret));
+	return static_cast<QtPrivate::ExceptionHolder*>(new QtPrivate::ExceptionHolder(_ret));
 }
 
 void QtPrivate__ExceptionStore_ThrowPossibleException(QtPrivate__ExceptionStore* self) {

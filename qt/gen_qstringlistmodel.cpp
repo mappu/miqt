@@ -8,22 +8,19 @@
 #include <QStringListModel>
 #include <QVariant>
 #include "qstringlistmodel.h"
-
 #include "gen_qstringlistmodel.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QStringListModel* QStringListModel_new() {
 	return new QStringListModel();
 }
 
-QStringListModel* QStringListModel_new2(char** strings, uint64_t* strings_Lengths, size_t strings_len) {
+QStringListModel* QStringListModel_new2(struct miqt_array* /* of QString */ strings) {
 	QList<QString> strings_QList;
-	strings_QList.reserve(strings_len);
-	for(size_t i = 0; i < strings_len; ++i) {
-		strings_QList.push_back(QString::fromUtf8(strings[i], strings_Lengths[i]));
+	strings_QList.reserve(strings->len);
+	miqt_string** strings_arr = static_cast<miqt_string**>(strings->data);
+	for(size_t i = 0; i < strings->len; ++i) {
+		strings_QList.push_back(QString::fromUtf8(& strings_arr[i]->data, strings_arr[i]->len));
 	}
 	return new QStringListModel(strings_QList);
 }
@@ -32,11 +29,12 @@ QStringListModel* QStringListModel_new3(QObject* parent) {
 	return new QStringListModel(parent);
 }
 
-QStringListModel* QStringListModel_new4(char** strings, uint64_t* strings_Lengths, size_t strings_len, QObject* parent) {
+QStringListModel* QStringListModel_new4(struct miqt_array* /* of QString */ strings, QObject* parent) {
 	QList<QString> strings_QList;
-	strings_QList.reserve(strings_len);
-	for(size_t i = 0; i < strings_len; ++i) {
-		strings_QList.push_back(QString::fromUtf8(strings[i], strings_Lengths[i]));
+	strings_QList.reserve(strings->len);
+	miqt_string** strings_arr = static_cast<miqt_string**>(strings->data);
+	for(size_t i = 0; i < strings->len; ++i) {
+		strings_QList.push_back(QString::fromUtf8(& strings_arr[i]->data, strings_arr[i]->len));
 	}
 	return new QStringListModel(strings_QList, parent);
 }
@@ -45,22 +43,18 @@ QMetaObject* QStringListModel_MetaObject(const QStringListModel* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void QStringListModel_Tr(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QStringListModel::tr(s);
+struct miqt_string* QStringListModel_Tr(const char* s) {
+	QString _ret = QStringListModel::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QStringListModel_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QStringListModel::trUtf8(s);
+struct miqt_string* QStringListModel_TrUtf8(const char* s) {
+	QString _ret = QStringListModel::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 int QStringListModel_RowCount(const QStringListModel* self) {
@@ -68,15 +62,15 @@ int QStringListModel_RowCount(const QStringListModel* self) {
 }
 
 QModelIndex* QStringListModel_Sibling(const QStringListModel* self, int row, int column, QModelIndex* idx) {
-	QModelIndex ret = self->sibling(static_cast<int>(row), static_cast<int>(column), *idx);
+	QModelIndex _ret = self->sibling(static_cast<int>(row), static_cast<int>(column), *idx);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QModelIndex*>(new QModelIndex(ret));
+	return static_cast<QModelIndex*>(new QModelIndex(_ret));
 }
 
 QVariant* QStringListModel_Data(const QStringListModel* self, QModelIndex* index) {
-	QVariant ret = self->data(*index);
+	QVariant _ret = self->data(*index);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(ret));
+	return static_cast<QVariant*>(new QVariant(_ret));
 }
 
 bool QStringListModel_SetData(QStringListModel* self, QModelIndex* index, QVariant* value) {
@@ -84,8 +78,8 @@ bool QStringListModel_SetData(QStringListModel* self, QModelIndex* index, QVaria
 }
 
 int QStringListModel_Flags(const QStringListModel* self, QModelIndex* index) {
-	Qt::ItemFlags ret = self->flags(*index);
-	return static_cast<int>(ret);
+	Qt::ItemFlags _ret = self->flags(*index);
+	return static_cast<int>(_ret);
 }
 
 bool QStringListModel_InsertRows(QStringListModel* self, int row, int count) {
@@ -104,71 +98,63 @@ void QStringListModel_Sort(QStringListModel* self, int column) {
 	self->sort(static_cast<int>(column));
 }
 
-void QStringListModel_StringList(const QStringListModel* self, char*** _out, int** _out_Lengths, size_t* _out_len) {
-	QStringList ret = self->stringList();
+struct miqt_array* QStringListModel_StringList(const QStringListModel* self) {
+	QStringList _ret = self->stringList();
 	// Convert QStringList from C++ memory to manually-managed C memory
-	char** __out = static_cast<char**>(malloc(sizeof(char*) * ret.length()));
-	int* __out_Lengths = static_cast<int*>(malloc(sizeof(int) * ret.length()));
-	for (size_t i = 0, e = ret.length(); i < e; ++i) {
+	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-		QByteArray b = ret[i].toUtf8();
-		__out[i] = static_cast<char*>(malloc(b.length()));
-		memcpy(__out[i], b.data(), b.length());
-		__out_Lengths[i] = b.length();
+		QByteArray _lv_b = _lv_ret.toUtf8();
+		_arr[i] = miqt_strdup(_lv_b.data(), _lv_b.length());
 	}
-	*_out = __out;
-	*_out_Lengths = __out_Lengths;
-	*_out_len = ret.length();
+	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
+	_out->len = _ret.length();
+	_out->data = static_cast<void*>(_arr);
+	return _out;
 }
 
-void QStringListModel_SetStringList(QStringListModel* self, char** strings, uint64_t* strings_Lengths, size_t strings_len) {
+void QStringListModel_SetStringList(QStringListModel* self, struct miqt_array* /* of QString */ strings) {
 	QList<QString> strings_QList;
-	strings_QList.reserve(strings_len);
-	for(size_t i = 0; i < strings_len; ++i) {
-		strings_QList.push_back(QString::fromUtf8(strings[i], strings_Lengths[i]));
+	strings_QList.reserve(strings->len);
+	miqt_string** strings_arr = static_cast<miqt_string**>(strings->data);
+	for(size_t i = 0; i < strings->len; ++i) {
+		strings_QList.push_back(QString::fromUtf8(& strings_arr[i]->data, strings_arr[i]->len));
 	}
 	self->setStringList(strings_QList);
 }
 
 int QStringListModel_SupportedDropActions(const QStringListModel* self) {
-	Qt::DropActions ret = self->supportedDropActions();
-	return static_cast<int>(ret);
+	Qt::DropActions _ret = self->supportedDropActions();
+	return static_cast<int>(_ret);
 }
 
-void QStringListModel_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QStringListModel::tr(s, c);
+struct miqt_string* QStringListModel_Tr2(const char* s, const char* c) {
+	QString _ret = QStringListModel::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QStringListModel_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QStringListModel::tr(s, c, static_cast<int>(n));
+struct miqt_string* QStringListModel_Tr3(const char* s, const char* c, int n) {
+	QString _ret = QStringListModel::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QStringListModel_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QStringListModel::trUtf8(s, c);
+struct miqt_string* QStringListModel_TrUtf82(const char* s, const char* c) {
+	QString _ret = QStringListModel::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QStringListModel_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QStringListModel::trUtf8(s, c, static_cast<int>(n));
+struct miqt_string* QStringListModel_TrUtf83(const char* s, const char* c, int n) {
+	QString _ret = QStringListModel::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 int QStringListModel_RowCount1(const QStringListModel* self, QModelIndex* parent) {
@@ -176,9 +162,9 @@ int QStringListModel_RowCount1(const QStringListModel* self, QModelIndex* parent
 }
 
 QVariant* QStringListModel_Data2(const QStringListModel* self, QModelIndex* index, int role) {
-	QVariant ret = self->data(*index, static_cast<int>(role));
+	QVariant _ret = self->data(*index, static_cast<int>(role));
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(ret));
+	return static_cast<QVariant*>(new QVariant(_ret));
 }
 
 bool QStringListModel_SetData3(QStringListModel* self, QModelIndex* index, QVariant* value, int role) {

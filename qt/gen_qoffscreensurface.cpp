@@ -8,12 +8,8 @@
 #include <cstring>
 #include <QSurfaceFormat>
 #include "qoffscreensurface.h"
-
 #include "gen_qoffscreensurface.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QOffscreenSurface* QOffscreenSurface_new(QScreen* screen, QObject* parent) {
 	return new QOffscreenSurface(screen, parent);
@@ -31,27 +27,23 @@ QMetaObject* QOffscreenSurface_MetaObject(const QOffscreenSurface* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void QOffscreenSurface_Tr(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QOffscreenSurface::tr(s);
+struct miqt_string* QOffscreenSurface_Tr(const char* s) {
+	QString _ret = QOffscreenSurface::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QOffscreenSurface_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QOffscreenSurface::trUtf8(s);
+struct miqt_string* QOffscreenSurface_TrUtf8(const char* s) {
+	QString _ret = QOffscreenSurface::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 uintptr_t QOffscreenSurface_SurfaceType(const QOffscreenSurface* self) {
-	QSurface::SurfaceType ret = self->surfaceType();
-	return static_cast<uintptr_t>(ret);
+	QSurface::SurfaceType _ret = self->surfaceType();
+	return static_cast<uintptr_t>(_ret);
 }
 
 void QOffscreenSurface_Create(QOffscreenSurface* self) {
@@ -71,21 +63,21 @@ void QOffscreenSurface_SetFormat(QOffscreenSurface* self, QSurfaceFormat* format
 }
 
 QSurfaceFormat* QOffscreenSurface_Format(const QOffscreenSurface* self) {
-	QSurfaceFormat ret = self->format();
+	QSurfaceFormat _ret = self->format();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSurfaceFormat*>(new QSurfaceFormat(ret));
+	return static_cast<QSurfaceFormat*>(new QSurfaceFormat(_ret));
 }
 
 QSurfaceFormat* QOffscreenSurface_RequestedFormat(const QOffscreenSurface* self) {
-	QSurfaceFormat ret = self->requestedFormat();
+	QSurfaceFormat _ret = self->requestedFormat();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSurfaceFormat*>(new QSurfaceFormat(ret));
+	return static_cast<QSurfaceFormat*>(new QSurfaceFormat(_ret));
 }
 
 QSize* QOffscreenSurface_Size(const QOffscreenSurface* self) {
-	QSize ret = self->size();
+	QSize _ret = self->size();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(ret));
+	return static_cast<QSize*>(new QSize(_ret));
 }
 
 QScreen* QOffscreenSurface_Screen(const QOffscreenSurface* self) {
@@ -102,44 +94,37 @@ void QOffscreenSurface_ScreenChanged(QOffscreenSurface* self, QScreen* screen) {
 
 void QOffscreenSurface_connect_ScreenChanged(QOffscreenSurface* self, void* slot) {
 	QOffscreenSurface::connect(self, static_cast<void (QOffscreenSurface::*)(QScreen*)>(&QOffscreenSurface::screenChanged), self, [=](QScreen* screen) {
-		miqt_exec_callback(slot, 0, nullptr);
+		QScreen* sigval1 = screen;
+		miqt_exec_callback_QOffscreenSurface_ScreenChanged(slot, sigval1);
 	});
 }
 
-void QOffscreenSurface_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QOffscreenSurface::tr(s, c);
+struct miqt_string* QOffscreenSurface_Tr2(const char* s, const char* c) {
+	QString _ret = QOffscreenSurface::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QOffscreenSurface_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QOffscreenSurface::tr(s, c, static_cast<int>(n));
+struct miqt_string* QOffscreenSurface_Tr3(const char* s, const char* c, int n) {
+	QString _ret = QOffscreenSurface::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QOffscreenSurface_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QOffscreenSurface::trUtf8(s, c);
+struct miqt_string* QOffscreenSurface_TrUtf82(const char* s, const char* c) {
+	QString _ret = QOffscreenSurface::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QOffscreenSurface_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QOffscreenSurface::trUtf8(s, c, static_cast<int>(n));
+struct miqt_string* QOffscreenSurface_TrUtf83(const char* s, const char* c, int n) {
+	QString _ret = QOffscreenSurface::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QOffscreenSurface_Delete(QOffscreenSurface* self) {

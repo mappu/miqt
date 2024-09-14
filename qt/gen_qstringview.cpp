@@ -6,24 +6,18 @@
 #include <cstring>
 #include <QStringView>
 #include "qstringview.h"
-
 #include "gen_qstringview.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QStringView* QStringView_new() {
 	return new QStringView();
 }
 
-void QStringView_ToString(const QStringView* self, char** _out, int* _out_Strlen) {
-	QString ret = self->toString();
+struct miqt_string* QStringView_ToString(const QStringView* self) {
+	QString _ret = self->toString();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 size_t QStringView_Size(const QStringView* self) {
@@ -31,44 +25,46 @@ size_t QStringView_Size(const QStringView* self) {
 }
 
 QChar* QStringView_OperatorSubscript(const QStringView* self, size_t n) {
-	QChar ret = self->operator[](static_cast<qsizetype>(n));
+	QChar _ret = self->operator[](static_cast<qsizetype>(n));
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QChar*>(new QChar(ret));
+	return static_cast<QChar*>(new QChar(_ret));
 }
 
 QByteArray* QStringView_ToLatin1(const QStringView* self) {
-	QByteArray ret = self->toLatin1();
+	QByteArray _ret = self->toLatin1();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(ret));
+	return static_cast<QByteArray*>(new QByteArray(_ret));
 }
 
 QByteArray* QStringView_ToUtf8(const QStringView* self) {
-	QByteArray ret = self->toUtf8();
+	QByteArray _ret = self->toUtf8();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(ret));
+	return static_cast<QByteArray*>(new QByteArray(_ret));
 }
 
 QByteArray* QStringView_ToLocal8Bit(const QStringView* self) {
-	QByteArray ret = self->toLocal8Bit();
+	QByteArray _ret = self->toLocal8Bit();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(ret));
+	return static_cast<QByteArray*>(new QByteArray(_ret));
 }
 
-void QStringView_ToUcs4(const QStringView* self, unsigned int** _out, size_t* _out_len) {
-	QVector<unsigned int> ret = self->toUcs4();
+struct miqt_array* QStringView_ToUcs4(const QStringView* self) {
+	QVector<unsigned int> _ret = self->toUcs4();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	unsigned int* __out = static_cast<unsigned int*>(malloc(sizeof(unsigned int) * ret.length()));
-	for (size_t i = 0, e = ret.length(); i < e; ++i) {
-		__out[i] = ret[i];
+	unsigned int* _arr = static_cast<unsigned int*>(malloc(sizeof(unsigned int) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		_arr[i] = _ret[i];
 	}
-	*_out = __out;
-	*_out_len = ret.length();
+	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
+	_out->len = _ret.length();
+	_out->data = static_cast<void*>(_arr);
+	return _out;
 }
 
 QChar* QStringView_At(const QStringView* self, size_t n) {
-	QChar ret = self->at(static_cast<qsizetype>(n));
+	QChar _ret = self->at(static_cast<qsizetype>(n));
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QChar*>(new QChar(ret));
+	return static_cast<QChar*>(new QChar(_ret));
 }
 
 void QStringView_Truncate(QStringView* self, size_t n) {
@@ -172,15 +168,15 @@ bool QStringView_Empty(const QStringView* self) {
 }
 
 QChar* QStringView_Front(const QStringView* self) {
-	QChar ret = self->front();
+	QChar _ret = self->front();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QChar*>(new QChar(ret));
+	return static_cast<QChar*>(new QChar(_ret));
 }
 
 QChar* QStringView_Back(const QStringView* self) {
-	QChar ret = self->back();
+	QChar _ret = self->back();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QChar*>(new QChar(ret));
+	return static_cast<QChar*>(new QChar(_ret));
 }
 
 bool QStringView_IsNull(const QStringView* self) {
@@ -196,15 +192,15 @@ int QStringView_Length(const QStringView* self) {
 }
 
 QChar* QStringView_First(const QStringView* self) {
-	QChar ret = self->first();
+	QChar _ret = self->first();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QChar*>(new QChar(ret));
+	return static_cast<QChar*>(new QChar(_ret));
 }
 
 QChar* QStringView_Last(const QStringView* self) {
-	QChar ret = self->last();
+	QChar _ret = self->last();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QChar*>(new QChar(ret));
+	return static_cast<QChar*>(new QChar(_ret));
 }
 
 size_t QStringView_IndexOf2(const QStringView* self, QChar* c, size_t from) {

@@ -3,12 +3,8 @@
 #include <QIODevice>
 #define WORKAROUND_INNER_CLASS_DEFINITION_QtPrivate__StreamStateSaver
 #include "qdatastream.h"
-
 #include "gen_qdatastream.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QDataStream* QDataStream_new() {
 	return new QDataStream();
@@ -43,8 +39,8 @@ bool QDataStream_AtEnd(const QDataStream* self) {
 }
 
 uintptr_t QDataStream_Status(const QDataStream* self) {
-	QDataStream::Status ret = self->status();
-	return static_cast<uintptr_t>(ret);
+	QDataStream::Status _ret = self->status();
+	return static_cast<uintptr_t>(_ret);
 }
 
 void QDataStream_SetStatus(QDataStream* self, uintptr_t status) {
@@ -56,8 +52,8 @@ void QDataStream_ResetStatus(QDataStream* self) {
 }
 
 uintptr_t QDataStream_FloatingPointPrecision(const QDataStream* self) {
-	QDataStream::FloatingPointPrecision ret = self->floatingPointPrecision();
-	return static_cast<uintptr_t>(ret);
+	QDataStream::FloatingPointPrecision _ret = self->floatingPointPrecision();
+	return static_cast<uintptr_t>(_ret);
 }
 
 void QDataStream_SetFloatingPointPrecision(QDataStream* self, uintptr_t precision) {
@@ -65,8 +61,8 @@ void QDataStream_SetFloatingPointPrecision(QDataStream* self, uintptr_t precisio
 }
 
 uintptr_t QDataStream_ByteOrder(const QDataStream* self) {
-	QDataStream::ByteOrder ret = self->byteOrder();
-	return static_cast<uintptr_t>(ret);
+	QDataStream::ByteOrder _ret = self->byteOrder();
+	return static_cast<uintptr_t>(_ret);
 }
 
 void QDataStream_SetByteOrder(QDataStream* self, uintptr_t byteOrder) {
@@ -178,9 +174,9 @@ void QDataStream_OperatorShiftLeftWithStr(QDataStream* self, const char* str) {
 }
 
 QDataStream* QDataStream_ReadBytes(QDataStream* self, char* param1, unsigned int* lenVal) {
-	QDataStream& ret = self->readBytes(param1, static_cast<uint&>(*lenVal));
+	QDataStream& _ret = self->readBytes(param1, static_cast<uint&>(*lenVal));
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 int QDataStream_ReadRawData(QDataStream* self, char* param1, int lenVal) {

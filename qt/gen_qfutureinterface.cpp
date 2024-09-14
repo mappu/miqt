@@ -7,12 +7,8 @@
 #include <QThreadPool>
 #define WORKAROUND_INNER_CLASS_DEFINITION_QtPrivate__ExceptionStore
 #include "qfutureinterface.h"
-
 #include "gen_qfutureinterface.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QFutureInterfaceBase* QFutureInterfaceBase_new() {
 	return new QFutureInterfaceBase();
@@ -78,18 +74,16 @@ int QFutureInterfaceBase_ProgressValue(const QFutureInterfaceBase* self) {
 	return self->progressValue();
 }
 
-void QFutureInterfaceBase_SetProgressValueAndText(QFutureInterfaceBase* self, int progressValue, const char* progressText, size_t progressText_Strlen) {
-	QString progressText_QString = QString::fromUtf8(progressText, progressText_Strlen);
+void QFutureInterfaceBase_SetProgressValueAndText(QFutureInterfaceBase* self, int progressValue, struct miqt_string* progressText) {
+	QString progressText_QString = QString::fromUtf8(&progressText->data, progressText->len);
 	self->setProgressValueAndText(static_cast<int>(progressValue), progressText_QString);
 }
 
-void QFutureInterfaceBase_ProgressText(const QFutureInterfaceBase* self, char** _out, int* _out_Strlen) {
-	QString ret = self->progressText();
+struct miqt_string* QFutureInterfaceBase_ProgressText(const QFutureInterfaceBase* self) {
+	QString _ret = self->progressText();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QFutureInterfaceBase_SetExpectedResultCount(QFutureInterfaceBase* self, int resultCount) {
@@ -173,15 +167,15 @@ QMutex* QFutureInterfaceBase_Mutex(const QFutureInterfaceBase* self) {
 }
 
 QMutex* QFutureInterfaceBase_MutexWithInt(const QFutureInterfaceBase* self, int param1) {
-	QMutex& ret = self->mutex(static_cast<int>(param1));
+	QMutex& _ret = self->mutex(static_cast<int>(param1));
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QtPrivate__ExceptionStore* QFutureInterfaceBase_ExceptionStore(QFutureInterfaceBase* self) {
-	QtPrivate::ExceptionStore& ret = self->exceptionStore();
+	QtPrivate::ExceptionStore& _ret = self->exceptionStore();
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 bool QFutureInterfaceBase_OperatorEqual(const QFutureInterfaceBase* self, QFutureInterfaceBase* other) {

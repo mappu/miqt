@@ -57,35 +57,31 @@ func NewQOffscreenSurface3(screen *QScreen) *QOffscreenSurface {
 }
 
 func (this *QOffscreenSurface) MetaObject() *QMetaObject {
-	ret := C.QOffscreenSurface_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QOffscreenSurface_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QOffscreenSurface_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QOffscreenSurface_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QOffscreenSurface_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QOffscreenSurface_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QOffscreenSurface_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QOffscreenSurface_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QOffscreenSurface) SurfaceType() QSurface__SurfaceType {
-	ret := C.QOffscreenSurface_SurfaceType(this.h)
-	return (QSurface__SurfaceType)(ret)
+	_ret := C.QOffscreenSurface_SurfaceType(this.h)
+	return (QSurface__SurfaceType)(_ret)
 }
 
 func (this *QOffscreenSurface) Create() {
@@ -97,8 +93,8 @@ func (this *QOffscreenSurface) Destroy() {
 }
 
 func (this *QOffscreenSurface) IsValid() bool {
-	ret := C.QOffscreenSurface_IsValid(this.h)
-	return (bool)(ret)
+	_ret := C.QOffscreenSurface_IsValid(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QOffscreenSurface) SetFormat(format *QSurfaceFormat) {
@@ -106,41 +102,29 @@ func (this *QOffscreenSurface) SetFormat(format *QSurfaceFormat) {
 }
 
 func (this *QOffscreenSurface) Format() *QSurfaceFormat {
-	ret := C.QOffscreenSurface_Format(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSurfaceFormat(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSurfaceFormat) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QOffscreenSurface_Format(this.h)
+	_goptr := newQSurfaceFormat(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QOffscreenSurface) RequestedFormat() *QSurfaceFormat {
-	ret := C.QOffscreenSurface_RequestedFormat(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSurfaceFormat(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSurfaceFormat) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QOffscreenSurface_RequestedFormat(this.h)
+	_goptr := newQSurfaceFormat(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QOffscreenSurface) Size() *QSize {
-	ret := C.QOffscreenSurface_Size(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSize(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QOffscreenSurface_Size(this.h)
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QOffscreenSurface) Screen() *QScreen {
-	ret := C.QOffscreenSurface_Screen(this.h)
-	return newQScreen_U(unsafe.Pointer(ret))
+	_ret := C.QOffscreenSurface_Screen(this.h)
+	return newQScreen_U(unsafe.Pointer(_ret))
 }
 
 func (this *QOffscreenSurface) SetScreen(screen *QScreen) {
@@ -150,13 +134,22 @@ func (this *QOffscreenSurface) SetScreen(screen *QScreen) {
 func (this *QOffscreenSurface) ScreenChanged(screen *QScreen) {
 	C.QOffscreenSurface_ScreenChanged(this.h, screen.cPointer())
 }
+func (this *QOffscreenSurface) OnScreenChanged(slot func(screen *QScreen)) {
+	C.QOffscreenSurface_connect_ScreenChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QOffscreenSurface) OnScreenChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QOffscreenSurface_ScreenChanged
+func miqt_exec_callback_QOffscreenSurface_ScreenChanged(cb *C.void, screen *C.QScreen) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(screen *QScreen))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QOffscreenSurface_connect_ScreenChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	screen_ret := screen
+	slotval1 := newQScreen_U(unsafe.Pointer(screen_ret))
+
+	gofunc(slotval1)
 }
 
 func QOffscreenSurface_Tr2(s string, c string) string {
@@ -164,12 +157,10 @@ func QOffscreenSurface_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QOffscreenSurface_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QOffscreenSurface_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QOffscreenSurface_Tr3(s string, c string, n int) string {
@@ -177,12 +168,10 @@ func QOffscreenSurface_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QOffscreenSurface_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QOffscreenSurface_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QOffscreenSurface_TrUtf82(s string, c string) string {
@@ -190,12 +179,10 @@ func QOffscreenSurface_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QOffscreenSurface_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QOffscreenSurface_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QOffscreenSurface_TrUtf83(s string, c string, n int) string {
@@ -203,14 +190,22 @@ func QOffscreenSurface_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QOffscreenSurface_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QOffscreenSurface_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
+// Delete this object from C++ memory.
 func (this *QOffscreenSurface) Delete() {
 	C.QOffscreenSurface_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QOffscreenSurface) GoGC() {
+	runtime.SetFinalizer(this, func(this *QOffscreenSurface) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -34,8 +36,8 @@ typedef struct QTransform QTransform;
 QGraphicsItemAnimation* QGraphicsItemAnimation_new();
 QGraphicsItemAnimation* QGraphicsItemAnimation_new2(QObject* parent);
 QMetaObject* QGraphicsItemAnimation_MetaObject(const QGraphicsItemAnimation* self);
-void QGraphicsItemAnimation_Tr(const char* s, char** _out, int* _out_Strlen);
-void QGraphicsItemAnimation_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QGraphicsItemAnimation_Tr(const char* s);
+struct miqt_string* QGraphicsItemAnimation_TrUtf8(const char* s);
 QGraphicsItem* QGraphicsItemAnimation_Item(const QGraphicsItemAnimation* self);
 void QGraphicsItemAnimation_SetItem(QGraphicsItemAnimation* self, QGraphicsItem* item);
 QTimeLine* QGraphicsItemAnimation_TimeLine(const QGraphicsItemAnimation* self);
@@ -58,10 +60,10 @@ void QGraphicsItemAnimation_SetShearAt(QGraphicsItemAnimation* self, double step
 void QGraphicsItemAnimation_Clear(QGraphicsItemAnimation* self);
 void QGraphicsItemAnimation_SetStep(QGraphicsItemAnimation* self, double x);
 void QGraphicsItemAnimation_Reset(QGraphicsItemAnimation* self);
-void QGraphicsItemAnimation_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QGraphicsItemAnimation_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QGraphicsItemAnimation_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QGraphicsItemAnimation_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QGraphicsItemAnimation_Tr2(const char* s, const char* c);
+struct miqt_string* QGraphicsItemAnimation_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QGraphicsItemAnimation_TrUtf82(const char* s, const char* c);
+struct miqt_string* QGraphicsItemAnimation_TrUtf83(const char* s, const char* c, int n);
 void QGraphicsItemAnimation_Delete(QGraphicsItemAnimation* self);
 
 #ifdef __cplusplus

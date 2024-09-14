@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -30,15 +32,15 @@ typedef struct QWidget QWidget;
 #endif
 
 QLabel* QLabel_new();
-QLabel* QLabel_new2(const char* text, size_t text_Strlen);
+QLabel* QLabel_new2(struct miqt_string* text);
 QLabel* QLabel_new3(QWidget* parent);
 QLabel* QLabel_new4(QWidget* parent, int f);
-QLabel* QLabel_new5(const char* text, size_t text_Strlen, QWidget* parent);
-QLabel* QLabel_new6(const char* text, size_t text_Strlen, QWidget* parent, int f);
+QLabel* QLabel_new5(struct miqt_string* text, QWidget* parent);
+QLabel* QLabel_new6(struct miqt_string* text, QWidget* parent, int f);
 QMetaObject* QLabel_MetaObject(const QLabel* self);
-void QLabel_Tr(const char* s, char** _out, int* _out_Strlen);
-void QLabel_TrUtf8(const char* s, char** _out, int* _out_Strlen);
-void QLabel_Text(const QLabel* self, char** _out, int* _out_Strlen);
+struct miqt_string* QLabel_Tr(const char* s);
+struct miqt_string* QLabel_TrUtf8(const char* s);
+struct miqt_string* QLabel_Text(const QLabel* self);
 QPixmap* QLabel_Pixmap(const QLabel* self);
 QPixmap* QLabel_PixmapWithQtReturnByValueConstant(const QLabel* self, uintptr_t param1);
 QPicture* QLabel_Picture(const QLabel* self);
@@ -67,23 +69,23 @@ void QLabel_SetTextInteractionFlags(QLabel* self, int flags);
 int QLabel_TextInteractionFlags(const QLabel* self);
 void QLabel_SetSelection(QLabel* self, int param1, int param2);
 bool QLabel_HasSelectedText(const QLabel* self);
-void QLabel_SelectedText(const QLabel* self, char** _out, int* _out_Strlen);
+struct miqt_string* QLabel_SelectedText(const QLabel* self);
 int QLabel_SelectionStart(const QLabel* self);
-void QLabel_SetText(QLabel* self, const char* text, size_t text_Strlen);
+void QLabel_SetText(QLabel* self, struct miqt_string* text);
 void QLabel_SetPixmap(QLabel* self, QPixmap* pixmap);
 void QLabel_SetPicture(QLabel* self, QPicture* picture);
 void QLabel_SetMovie(QLabel* self, QMovie* movie);
 void QLabel_SetNum(QLabel* self, int num);
 void QLabel_SetNumWithNum(QLabel* self, double num);
 void QLabel_Clear(QLabel* self);
-void QLabel_LinkActivated(QLabel* self, const char* link, size_t link_Strlen);
+void QLabel_LinkActivated(QLabel* self, struct miqt_string* link);
 void QLabel_connect_LinkActivated(QLabel* self, void* slot);
-void QLabel_LinkHovered(QLabel* self, const char* link, size_t link_Strlen);
+void QLabel_LinkHovered(QLabel* self, struct miqt_string* link);
 void QLabel_connect_LinkHovered(QLabel* self, void* slot);
-void QLabel_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QLabel_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QLabel_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QLabel_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QLabel_Tr2(const char* s, const char* c);
+struct miqt_string* QLabel_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QLabel_TrUtf82(const char* s, const char* c);
+struct miqt_string* QLabel_TrUtf83(const char* s, const char* c, int n);
 void QLabel_Delete(QLabel* self);
 
 #ifdef __cplusplus

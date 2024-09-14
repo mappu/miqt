@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -28,16 +30,16 @@ QKeyEventTransition* QKeyEventTransition_new2(QObject* object, uintptr_t typeVal
 QKeyEventTransition* QKeyEventTransition_new3(QState* sourceState);
 QKeyEventTransition* QKeyEventTransition_new4(QObject* object, uintptr_t typeVal, int key, QState* sourceState);
 QMetaObject* QKeyEventTransition_MetaObject(const QKeyEventTransition* self);
-void QKeyEventTransition_Tr(const char* s, char** _out, int* _out_Strlen);
-void QKeyEventTransition_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QKeyEventTransition_Tr(const char* s);
+struct miqt_string* QKeyEventTransition_TrUtf8(const char* s);
 int QKeyEventTransition_Key(const QKeyEventTransition* self);
 void QKeyEventTransition_SetKey(QKeyEventTransition* self, int key);
 int QKeyEventTransition_ModifierMask(const QKeyEventTransition* self);
 void QKeyEventTransition_SetModifierMask(QKeyEventTransition* self, int modifiers);
-void QKeyEventTransition_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QKeyEventTransition_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QKeyEventTransition_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QKeyEventTransition_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QKeyEventTransition_Tr2(const char* s, const char* c);
+struct miqt_string* QKeyEventTransition_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QKeyEventTransition_TrUtf82(const char* s, const char* c);
+struct miqt_string* QKeyEventTransition_TrUtf83(const char* s, const char* c, int n);
 void QKeyEventTransition_Delete(QKeyEventTransition* self);
 
 #ifdef __cplusplus

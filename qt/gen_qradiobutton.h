@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -24,18 +26,18 @@ typedef struct QWidget QWidget;
 #endif
 
 QRadioButton* QRadioButton_new();
-QRadioButton* QRadioButton_new2(const char* text, size_t text_Strlen);
+QRadioButton* QRadioButton_new2(struct miqt_string* text);
 QRadioButton* QRadioButton_new3(QWidget* parent);
-QRadioButton* QRadioButton_new4(const char* text, size_t text_Strlen, QWidget* parent);
+QRadioButton* QRadioButton_new4(struct miqt_string* text, QWidget* parent);
 QMetaObject* QRadioButton_MetaObject(const QRadioButton* self);
-void QRadioButton_Tr(const char* s, char** _out, int* _out_Strlen);
-void QRadioButton_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QRadioButton_Tr(const char* s);
+struct miqt_string* QRadioButton_TrUtf8(const char* s);
 QSize* QRadioButton_SizeHint(const QRadioButton* self);
 QSize* QRadioButton_MinimumSizeHint(const QRadioButton* self);
-void QRadioButton_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QRadioButton_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QRadioButton_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QRadioButton_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QRadioButton_Tr2(const char* s, const char* c);
+struct miqt_string* QRadioButton_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QRadioButton_TrUtf82(const char* s, const char* c);
+struct miqt_string* QRadioButton_TrUtf83(const char* s, const char* c, int n);
 void QRadioButton_Delete(QRadioButton* self);
 
 #ifdef __cplusplus

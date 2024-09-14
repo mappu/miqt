@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -21,14 +23,14 @@ typedef struct QTextBoundaryFinder QTextBoundaryFinder;
 
 QTextBoundaryFinder* QTextBoundaryFinder_new();
 QTextBoundaryFinder* QTextBoundaryFinder_new2(QTextBoundaryFinder* other);
-QTextBoundaryFinder* QTextBoundaryFinder_new3(uintptr_t typeVal, const char* stringVal, size_t stringVal_Strlen);
+QTextBoundaryFinder* QTextBoundaryFinder_new3(uintptr_t typeVal, struct miqt_string* stringVal);
 QTextBoundaryFinder* QTextBoundaryFinder_new4(uintptr_t typeVal, QChar* chars, int length);
 QTextBoundaryFinder* QTextBoundaryFinder_new5(uintptr_t typeVal, QChar* chars, int length, unsigned char* buffer);
 QTextBoundaryFinder* QTextBoundaryFinder_new6(uintptr_t typeVal, QChar* chars, int length, unsigned char* buffer, int bufferSize);
 void QTextBoundaryFinder_OperatorAssign(QTextBoundaryFinder* self, QTextBoundaryFinder* other);
 bool QTextBoundaryFinder_IsValid(const QTextBoundaryFinder* self);
 uintptr_t QTextBoundaryFinder_Type(const QTextBoundaryFinder* self);
-void QTextBoundaryFinder_String(const QTextBoundaryFinder* self, char** _out, int* _out_Strlen);
+struct miqt_string* QTextBoundaryFinder_String(const QTextBoundaryFinder* self);
 void QTextBoundaryFinder_ToStart(QTextBoundaryFinder* self);
 void QTextBoundaryFinder_ToEnd(QTextBoundaryFinder* self);
 int QTextBoundaryFinder_Position(const QTextBoundaryFinder* self);

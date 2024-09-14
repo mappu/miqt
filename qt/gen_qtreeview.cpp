@@ -12,12 +12,8 @@
 #include <QTreeView>
 #include <QWidget>
 #include "qtreeview.h"
-
 #include "gen_qtreeview.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QTreeView* QTreeView_new() {
 	return new QTreeView();
@@ -31,22 +27,18 @@ QMetaObject* QTreeView_MetaObject(const QTreeView* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void QTreeView_Tr(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QTreeView::tr(s);
+struct miqt_string* QTreeView_Tr(const char* s) {
+	QString _ret = QTreeView::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QTreeView_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QTreeView::trUtf8(s);
+struct miqt_string* QTreeView_TrUtf8(const char* s) {
+	QString _ret = QTreeView::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QTreeView_SetModel(QTreeView* self, QAbstractItemModel* model) {
@@ -217,15 +209,15 @@ int QTreeView_TreePosition(const QTreeView* self) {
 	return self->treePosition();
 }
 
-void QTreeView_KeyboardSearch(QTreeView* self, const char* search, size_t search_Strlen) {
-	QString search_QString = QString::fromUtf8(search, search_Strlen);
+void QTreeView_KeyboardSearch(QTreeView* self, struct miqt_string* search) {
+	QString search_QString = QString::fromUtf8(&search->data, search->len);
 	self->keyboardSearch(search_QString);
 }
 
 QRect* QTreeView_VisualRect(const QTreeView* self, QModelIndex* index) {
-	QRect ret = self->visualRect(*index);
+	QRect _ret = self->visualRect(*index);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(ret));
+	return static_cast<QRect*>(new QRect(_ret));
 }
 
 void QTreeView_ScrollTo(QTreeView* self, QModelIndex* index) {
@@ -233,21 +225,21 @@ void QTreeView_ScrollTo(QTreeView* self, QModelIndex* index) {
 }
 
 QModelIndex* QTreeView_IndexAt(const QTreeView* self, QPoint* p) {
-	QModelIndex ret = self->indexAt(*p);
+	QModelIndex _ret = self->indexAt(*p);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QModelIndex*>(new QModelIndex(ret));
+	return static_cast<QModelIndex*>(new QModelIndex(_ret));
 }
 
 QModelIndex* QTreeView_IndexAbove(const QTreeView* self, QModelIndex* index) {
-	QModelIndex ret = self->indexAbove(*index);
+	QModelIndex _ret = self->indexAbove(*index);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QModelIndex*>(new QModelIndex(ret));
+	return static_cast<QModelIndex*>(new QModelIndex(_ret));
 }
 
 QModelIndex* QTreeView_IndexBelow(const QTreeView* self, QModelIndex* index) {
-	QModelIndex ret = self->indexBelow(*index);
+	QModelIndex _ret = self->indexBelow(*index);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QModelIndex*>(new QModelIndex(ret));
+	return static_cast<QModelIndex*>(new QModelIndex(_ret));
 }
 
 void QTreeView_DoItemsLayout(QTreeView* self) {
@@ -272,7 +264,10 @@ void QTreeView_Expanded(QTreeView* self, QModelIndex* index) {
 
 void QTreeView_connect_Expanded(QTreeView* self, void* slot) {
 	QTreeView::connect(self, static_cast<void (QTreeView::*)(const QModelIndex&)>(&QTreeView::expanded), self, [=](const QModelIndex& index) {
-		miqt_exec_callback(slot, 0, nullptr);
+		const QModelIndex& index_ret = index;
+		// Cast returned reference into pointer
+		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
+		miqt_exec_callback_QTreeView_Expanded(slot, sigval1);
 	});
 }
 
@@ -282,7 +277,10 @@ void QTreeView_Collapsed(QTreeView* self, QModelIndex* index) {
 
 void QTreeView_connect_Collapsed(QTreeView* self, void* slot) {
 	QTreeView::connect(self, static_cast<void (QTreeView::*)(const QModelIndex&)>(&QTreeView::collapsed), self, [=](const QModelIndex& index) {
-		miqt_exec_callback(slot, 0, nullptr);
+		const QModelIndex& index_ret = index;
+		// Cast returned reference into pointer
+		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
+		miqt_exec_callback_QTreeView_Collapsed(slot, sigval1);
 	});
 }
 
@@ -330,51 +328,44 @@ void QTreeView_ExpandToDepth(QTreeView* self, int depth) {
 	self->expandToDepth(static_cast<int>(depth));
 }
 
-void QTreeView_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QTreeView::tr(s, c);
+struct miqt_string* QTreeView_Tr2(const char* s, const char* c) {
+	QString _ret = QTreeView::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QTreeView_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QTreeView::tr(s, c, static_cast<int>(n));
+struct miqt_string* QTreeView_Tr3(const char* s, const char* c, int n) {
+	QString _ret = QTreeView::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QTreeView_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QTreeView::trUtf8(s, c);
+struct miqt_string* QTreeView_TrUtf82(const char* s, const char* c) {
+	QString _ret = QTreeView::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QTreeView_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QTreeView::trUtf8(s, c, static_cast<int>(n));
+struct miqt_string* QTreeView_TrUtf83(const char* s, const char* c, int n) {
+	QString _ret = QTreeView::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QTreeView_ScrollTo2(QTreeView* self, QModelIndex* index, uintptr_t hint) {
 	self->scrollTo(*index, static_cast<QAbstractItemView::ScrollHint>(hint));
 }
 
-void QTreeView_DataChanged3(QTreeView* self, QModelIndex* topLeft, QModelIndex* bottomRight, int* roles, size_t roles_len) {
+void QTreeView_DataChanged3(QTreeView* self, QModelIndex* topLeft, QModelIndex* bottomRight, struct miqt_array* /* of int */ roles) {
 	QVector<int> roles_QList;
-	roles_QList.reserve(roles_len);
-	for(size_t i = 0; i < roles_len; ++i) {
-		roles_QList.push_back(roles[i]);
+	roles_QList.reserve(roles->len);
+	int* roles_arr = static_cast<int*>(roles->data);
+	for(size_t i = 0; i < roles->len; ++i) {
+		roles_QList.push_back(roles_arr[i]);
 	}
 	self->dataChanged(*topLeft, *bottomRight, roles_QList);
 }

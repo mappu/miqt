@@ -15,12 +15,8 @@
 #include <QSurfaceFormat>
 #include <QWindow>
 #include "qwindow.h"
-
 #include "gen_qwindow.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QWindow* QWindow_new() {
 	return new QWindow();
@@ -38,22 +34,18 @@ QMetaObject* QWindow_MetaObject(const QWindow* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void QWindow_Tr(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QWindow::tr(s);
+struct miqt_string* QWindow_Tr(const char* s) {
+	QString _ret = QWindow::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QWindow_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QWindow::trUtf8(s);
+struct miqt_string* QWindow_TrUtf8(const char* s) {
+	QString _ret = QWindow::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QWindow_SetSurfaceType(QWindow* self, uintptr_t surfaceType) {
@@ -61,8 +53,8 @@ void QWindow_SetSurfaceType(QWindow* self, uintptr_t surfaceType) {
 }
 
 uintptr_t QWindow_SurfaceType(const QWindow* self) {
-	QSurface::SurfaceType ret = self->surfaceType();
-	return static_cast<uintptr_t>(ret);
+	QSurface::SurfaceType _ret = self->surfaceType();
+	return static_cast<uintptr_t>(_ret);
 }
 
 bool QWindow_IsVisible(const QWindow* self) {
@@ -70,8 +62,8 @@ bool QWindow_IsVisible(const QWindow* self) {
 }
 
 uintptr_t QWindow_Visibility(const QWindow* self) {
-	QWindow::Visibility ret = self->visibility();
-	return static_cast<uintptr_t>(ret);
+	QWindow::Visibility _ret = self->visibility();
+	return static_cast<uintptr_t>(_ret);
 }
 
 void QWindow_SetVisibility(QWindow* self, uintptr_t v) {
@@ -107,8 +99,8 @@ bool QWindow_IsModal(const QWindow* self) {
 }
 
 uintptr_t QWindow_Modality(const QWindow* self) {
-	Qt::WindowModality ret = self->modality();
-	return static_cast<uintptr_t>(ret);
+	Qt::WindowModality _ret = self->modality();
+	return static_cast<uintptr_t>(_ret);
 }
 
 void QWindow_SetModality(QWindow* self, uintptr_t modality) {
@@ -120,15 +112,15 @@ void QWindow_SetFormat(QWindow* self, QSurfaceFormat* format) {
 }
 
 QSurfaceFormat* QWindow_Format(const QWindow* self) {
-	QSurfaceFormat ret = self->format();
+	QSurfaceFormat _ret = self->format();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSurfaceFormat*>(new QSurfaceFormat(ret));
+	return static_cast<QSurfaceFormat*>(new QSurfaceFormat(_ret));
 }
 
 QSurfaceFormat* QWindow_RequestedFormat(const QWindow* self) {
-	QSurfaceFormat ret = self->requestedFormat();
+	QSurfaceFormat _ret = self->requestedFormat();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSurfaceFormat*>(new QSurfaceFormat(ret));
+	return static_cast<QSurfaceFormat*>(new QSurfaceFormat(_ret));
 }
 
 void QWindow_SetFlags(QWindow* self, int flags) {
@@ -136,8 +128,8 @@ void QWindow_SetFlags(QWindow* self, int flags) {
 }
 
 int QWindow_Flags(const QWindow* self) {
-	Qt::WindowFlags ret = self->flags();
-	return static_cast<int>(ret);
+	Qt::WindowFlags _ret = self->flags();
+	return static_cast<int>(_ret);
 }
 
 void QWindow_SetFlag(QWindow* self, uintptr_t param1) {
@@ -145,17 +137,15 @@ void QWindow_SetFlag(QWindow* self, uintptr_t param1) {
 }
 
 uintptr_t QWindow_Type(const QWindow* self) {
-	Qt::WindowType ret = self->type();
-	return static_cast<uintptr_t>(ret);
+	Qt::WindowType _ret = self->type();
+	return static_cast<uintptr_t>(_ret);
 }
 
-void QWindow_Title(const QWindow* self, char** _out, int* _out_Strlen) {
-	QString ret = self->title();
+struct miqt_string* QWindow_Title(const QWindow* self) {
+	QString _ret = self->title();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QWindow_SetOpacity(QWindow* self, double level) {
@@ -171,9 +161,9 @@ void QWindow_SetMask(QWindow* self, QRegion* region) {
 }
 
 QRegion* QWindow_Mask(const QWindow* self) {
-	QRegion ret = self->mask();
+	QRegion _ret = self->mask();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRegion*>(new QRegion(ret));
+	return static_cast<QRegion*>(new QRegion(_ret));
 }
 
 bool QWindow_IsActive(const QWindow* self) {
@@ -185,8 +175,8 @@ void QWindow_ReportContentOrientationChange(QWindow* self, uintptr_t orientation
 }
 
 uintptr_t QWindow_ContentOrientation(const QWindow* self) {
-	Qt::ScreenOrientation ret = self->contentOrientation();
-	return static_cast<uintptr_t>(ret);
+	Qt::ScreenOrientation _ret = self->contentOrientation();
+	return static_cast<uintptr_t>(_ret);
 }
 
 double QWindow_DevicePixelRatio(const QWindow* self) {
@@ -194,13 +184,13 @@ double QWindow_DevicePixelRatio(const QWindow* self) {
 }
 
 uintptr_t QWindow_WindowState(const QWindow* self) {
-	Qt::WindowState ret = self->windowState();
-	return static_cast<uintptr_t>(ret);
+	Qt::WindowState _ret = self->windowState();
+	return static_cast<uintptr_t>(_ret);
 }
 
 int QWindow_WindowStates(const QWindow* self) {
-	Qt::WindowStates ret = self->windowStates();
-	return static_cast<int>(ret);
+	Qt::WindowStates _ret = self->windowStates();
+	return static_cast<int>(_ret);
 }
 
 void QWindow_SetWindowState(QWindow* self, uintptr_t state) {
@@ -244,27 +234,27 @@ int QWindow_MaximumHeight(const QWindow* self) {
 }
 
 QSize* QWindow_MinimumSize(const QWindow* self) {
-	QSize ret = self->minimumSize();
+	QSize _ret = self->minimumSize();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(ret));
+	return static_cast<QSize*>(new QSize(_ret));
 }
 
 QSize* QWindow_MaximumSize(const QWindow* self) {
-	QSize ret = self->maximumSize();
+	QSize _ret = self->maximumSize();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(ret));
+	return static_cast<QSize*>(new QSize(_ret));
 }
 
 QSize* QWindow_BaseSize(const QWindow* self) {
-	QSize ret = self->baseSize();
+	QSize _ret = self->baseSize();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(ret));
+	return static_cast<QSize*>(new QSize(_ret));
 }
 
 QSize* QWindow_SizeIncrement(const QWindow* self) {
-	QSize ret = self->sizeIncrement();
+	QSize _ret = self->sizeIncrement();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(ret));
+	return static_cast<QSize*>(new QSize(_ret));
 }
 
 void QWindow_SetMinimumSize(QWindow* self, QSize* size) {
@@ -284,27 +274,27 @@ void QWindow_SetSizeIncrement(QWindow* self, QSize* size) {
 }
 
 QRect* QWindow_Geometry(const QWindow* self) {
-	QRect ret = self->geometry();
+	QRect _ret = self->geometry();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(ret));
+	return static_cast<QRect*>(new QRect(_ret));
 }
 
 QMargins* QWindow_FrameMargins(const QWindow* self) {
-	QMargins ret = self->frameMargins();
+	QMargins _ret = self->frameMargins();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QMargins*>(new QMargins(ret));
+	return static_cast<QMargins*>(new QMargins(_ret));
 }
 
 QRect* QWindow_FrameGeometry(const QWindow* self) {
-	QRect ret = self->frameGeometry();
+	QRect _ret = self->frameGeometry();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(ret));
+	return static_cast<QRect*>(new QRect(_ret));
 }
 
 QPoint* QWindow_FramePosition(const QWindow* self) {
-	QPoint ret = self->framePosition();
+	QPoint _ret = self->framePosition();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPoint*>(new QPoint(ret));
+	return static_cast<QPoint*>(new QPoint(_ret));
 }
 
 void QWindow_SetFramePosition(QWindow* self, QPoint* point) {
@@ -328,15 +318,15 @@ int QWindow_Y(const QWindow* self) {
 }
 
 QSize* QWindow_Size(const QWindow* self) {
-	QSize ret = self->size();
+	QSize _ret = self->size();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(ret));
+	return static_cast<QSize*>(new QSize(_ret));
 }
 
 QPoint* QWindow_Position(const QWindow* self) {
-	QPoint ret = self->position();
+	QPoint _ret = self->position();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPoint*>(new QPoint(ret));
+	return static_cast<QPoint*>(new QPoint(_ret));
 }
 
 void QWindow_SetPosition(QWindow* self, QPoint* pt) {
@@ -355,18 +345,16 @@ void QWindow_Resize2(QWindow* self, int w, int h) {
 	self->resize(static_cast<int>(w), static_cast<int>(h));
 }
 
-void QWindow_SetFilePath(QWindow* self, const char* filePath, size_t filePath_Strlen) {
-	QString filePath_QString = QString::fromUtf8(filePath, filePath_Strlen);
+void QWindow_SetFilePath(QWindow* self, struct miqt_string* filePath) {
+	QString filePath_QString = QString::fromUtf8(&filePath->data, filePath->len);
 	self->setFilePath(filePath_QString);
 }
 
-void QWindow_FilePath(const QWindow* self, char** _out, int* _out_Strlen) {
-	QString ret = self->filePath();
+struct miqt_string* QWindow_FilePath(const QWindow* self) {
+	QString _ret = self->filePath();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QWindow_SetIcon(QWindow* self, QIcon* icon) {
@@ -374,9 +362,9 @@ void QWindow_SetIcon(QWindow* self, QIcon* icon) {
 }
 
 QIcon* QWindow_Icon(const QWindow* self) {
-	QIcon ret = self->icon();
+	QIcon _ret = self->icon();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QIcon*>(new QIcon(ret));
+	return static_cast<QIcon*>(new QIcon(_ret));
 }
 
 void QWindow_Destroy(QWindow* self) {
@@ -408,21 +396,21 @@ QObject* QWindow_FocusObject(const QWindow* self) {
 }
 
 QPoint* QWindow_MapToGlobal(const QWindow* self, QPoint* pos) {
-	QPoint ret = self->mapToGlobal(*pos);
+	QPoint _ret = self->mapToGlobal(*pos);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPoint*>(new QPoint(ret));
+	return static_cast<QPoint*>(new QPoint(_ret));
 }
 
 QPoint* QWindow_MapFromGlobal(const QWindow* self, QPoint* pos) {
-	QPoint ret = self->mapFromGlobal(*pos);
+	QPoint _ret = self->mapFromGlobal(*pos);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPoint*>(new QPoint(ret));
+	return static_cast<QPoint*>(new QPoint(_ret));
 }
 
 QCursor* QWindow_Cursor(const QWindow* self) {
-	QCursor ret = self->cursor();
+	QCursor _ret = self->cursor();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCursor*>(new QCursor(ret));
+	return static_cast<QCursor*>(new QCursor(_ret));
 }
 
 void QWindow_SetCursor(QWindow* self, QCursor* cursor) {
@@ -489,8 +477,8 @@ bool QWindow_StartSystemMove(QWindow* self) {
 	return self->startSystemMove();
 }
 
-void QWindow_SetTitle(QWindow* self, const char* title, size_t title_Strlen) {
-	QString title_QString = QString::fromUtf8(title, title_Strlen);
+void QWindow_SetTitle(QWindow* self, struct miqt_string* title) {
+	QString title_QString = QString::fromUtf8(&title->data, title->len);
 	self->setTitle(title_QString);
 }
 
@@ -548,7 +536,8 @@ void QWindow_ScreenChanged(QWindow* self, QScreen* screen) {
 
 void QWindow_connect_ScreenChanged(QWindow* self, void* slot) {
 	QWindow::connect(self, static_cast<void (QWindow::*)(QScreen*)>(&QWindow::screenChanged), self, [=](QScreen* screen) {
-		miqt_exec_callback(slot, 0, nullptr);
+		QScreen* sigval1 = screen;
+		miqt_exec_callback_QWindow_ScreenChanged(slot, sigval1);
 	});
 }
 
@@ -558,7 +547,9 @@ void QWindow_ModalityChanged(QWindow* self, uintptr_t modality) {
 
 void QWindow_connect_ModalityChanged(QWindow* self, void* slot) {
 	QWindow::connect(self, static_cast<void (QWindow::*)(Qt::WindowModality)>(&QWindow::modalityChanged), self, [=](Qt::WindowModality modality) {
-		miqt_exec_callback(slot, 0, nullptr);
+		Qt::WindowModality modality_ret = modality;
+		uintptr_t sigval1 = static_cast<uintptr_t>(modality_ret);
+		miqt_exec_callback_QWindow_ModalityChanged(slot, sigval1);
 	});
 }
 
@@ -568,18 +559,24 @@ void QWindow_WindowStateChanged(QWindow* self, uintptr_t windowState) {
 
 void QWindow_connect_WindowStateChanged(QWindow* self, void* slot) {
 	QWindow::connect(self, static_cast<void (QWindow::*)(Qt::WindowState)>(&QWindow::windowStateChanged), self, [=](Qt::WindowState windowState) {
-		miqt_exec_callback(slot, 0, nullptr);
+		Qt::WindowState windowState_ret = windowState;
+		uintptr_t sigval1 = static_cast<uintptr_t>(windowState_ret);
+		miqt_exec_callback_QWindow_WindowStateChanged(slot, sigval1);
 	});
 }
 
-void QWindow_WindowTitleChanged(QWindow* self, const char* title, size_t title_Strlen) {
-	QString title_QString = QString::fromUtf8(title, title_Strlen);
+void QWindow_WindowTitleChanged(QWindow* self, struct miqt_string* title) {
+	QString title_QString = QString::fromUtf8(&title->data, title->len);
 	self->windowTitleChanged(title_QString);
 }
 
 void QWindow_connect_WindowTitleChanged(QWindow* self, void* slot) {
 	QWindow::connect(self, static_cast<void (QWindow::*)(const QString&)>(&QWindow::windowTitleChanged), self, [=](const QString& title) {
-		miqt_exec_callback(slot, 0, nullptr);
+		const QString title_ret = title;
+		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+		QByteArray title_b = title_ret.toUtf8();
+		struct miqt_string* sigval1 = miqt_strdup(title_b.data(), title_b.length());
+		miqt_exec_callback_QWindow_WindowTitleChanged(slot, sigval1);
 	});
 }
 
@@ -589,7 +586,8 @@ void QWindow_XChanged(QWindow* self, int arg) {
 
 void QWindow_connect_XChanged(QWindow* self, void* slot) {
 	QWindow::connect(self, static_cast<void (QWindow::*)(int)>(&QWindow::xChanged), self, [=](int arg) {
-		miqt_exec_callback(slot, 0, nullptr);
+		int sigval1 = arg;
+		miqt_exec_callback_QWindow_XChanged(slot, sigval1);
 	});
 }
 
@@ -599,7 +597,8 @@ void QWindow_YChanged(QWindow* self, int arg) {
 
 void QWindow_connect_YChanged(QWindow* self, void* slot) {
 	QWindow::connect(self, static_cast<void (QWindow::*)(int)>(&QWindow::yChanged), self, [=](int arg) {
-		miqt_exec_callback(slot, 0, nullptr);
+		int sigval1 = arg;
+		miqt_exec_callback_QWindow_YChanged(slot, sigval1);
 	});
 }
 
@@ -609,7 +608,8 @@ void QWindow_WidthChanged(QWindow* self, int arg) {
 
 void QWindow_connect_WidthChanged(QWindow* self, void* slot) {
 	QWindow::connect(self, static_cast<void (QWindow::*)(int)>(&QWindow::widthChanged), self, [=](int arg) {
-		miqt_exec_callback(slot, 0, nullptr);
+		int sigval1 = arg;
+		miqt_exec_callback_QWindow_WidthChanged(slot, sigval1);
 	});
 }
 
@@ -619,7 +619,8 @@ void QWindow_HeightChanged(QWindow* self, int arg) {
 
 void QWindow_connect_HeightChanged(QWindow* self, void* slot) {
 	QWindow::connect(self, static_cast<void (QWindow::*)(int)>(&QWindow::heightChanged), self, [=](int arg) {
-		miqt_exec_callback(slot, 0, nullptr);
+		int sigval1 = arg;
+		miqt_exec_callback_QWindow_HeightChanged(slot, sigval1);
 	});
 }
 
@@ -629,7 +630,8 @@ void QWindow_MinimumWidthChanged(QWindow* self, int arg) {
 
 void QWindow_connect_MinimumWidthChanged(QWindow* self, void* slot) {
 	QWindow::connect(self, static_cast<void (QWindow::*)(int)>(&QWindow::minimumWidthChanged), self, [=](int arg) {
-		miqt_exec_callback(slot, 0, nullptr);
+		int sigval1 = arg;
+		miqt_exec_callback_QWindow_MinimumWidthChanged(slot, sigval1);
 	});
 }
 
@@ -639,7 +641,8 @@ void QWindow_MinimumHeightChanged(QWindow* self, int arg) {
 
 void QWindow_connect_MinimumHeightChanged(QWindow* self, void* slot) {
 	QWindow::connect(self, static_cast<void (QWindow::*)(int)>(&QWindow::minimumHeightChanged), self, [=](int arg) {
-		miqt_exec_callback(slot, 0, nullptr);
+		int sigval1 = arg;
+		miqt_exec_callback_QWindow_MinimumHeightChanged(slot, sigval1);
 	});
 }
 
@@ -649,7 +652,8 @@ void QWindow_MaximumWidthChanged(QWindow* self, int arg) {
 
 void QWindow_connect_MaximumWidthChanged(QWindow* self, void* slot) {
 	QWindow::connect(self, static_cast<void (QWindow::*)(int)>(&QWindow::maximumWidthChanged), self, [=](int arg) {
-		miqt_exec_callback(slot, 0, nullptr);
+		int sigval1 = arg;
+		miqt_exec_callback_QWindow_MaximumWidthChanged(slot, sigval1);
 	});
 }
 
@@ -659,7 +663,8 @@ void QWindow_MaximumHeightChanged(QWindow* self, int arg) {
 
 void QWindow_connect_MaximumHeightChanged(QWindow* self, void* slot) {
 	QWindow::connect(self, static_cast<void (QWindow::*)(int)>(&QWindow::maximumHeightChanged), self, [=](int arg) {
-		miqt_exec_callback(slot, 0, nullptr);
+		int sigval1 = arg;
+		miqt_exec_callback_QWindow_MaximumHeightChanged(slot, sigval1);
 	});
 }
 
@@ -669,7 +674,8 @@ void QWindow_VisibleChanged(QWindow* self, bool arg) {
 
 void QWindow_connect_VisibleChanged(QWindow* self, void* slot) {
 	QWindow::connect(self, static_cast<void (QWindow::*)(bool)>(&QWindow::visibleChanged), self, [=](bool arg) {
-		miqt_exec_callback(slot, 0, nullptr);
+		bool sigval1 = arg;
+		miqt_exec_callback_QWindow_VisibleChanged(slot, sigval1);
 	});
 }
 
@@ -679,7 +685,9 @@ void QWindow_VisibilityChanged(QWindow* self, uintptr_t visibility) {
 
 void QWindow_connect_VisibilityChanged(QWindow* self, void* slot) {
 	QWindow::connect(self, static_cast<void (QWindow::*)(QWindow::Visibility)>(&QWindow::visibilityChanged), self, [=](QWindow::Visibility visibility) {
-		miqt_exec_callback(slot, 0, nullptr);
+		QWindow::Visibility visibility_ret = visibility;
+		uintptr_t sigval1 = static_cast<uintptr_t>(visibility_ret);
+		miqt_exec_callback_QWindow_VisibilityChanged(slot, sigval1);
 	});
 }
 
@@ -689,7 +697,7 @@ void QWindow_ActiveChanged(QWindow* self) {
 
 void QWindow_connect_ActiveChanged(QWindow* self, void* slot) {
 	QWindow::connect(self, static_cast<void (QWindow::*)()>(&QWindow::activeChanged), self, [=]() {
-		miqt_exec_callback(slot, 0, nullptr);
+		miqt_exec_callback_QWindow_ActiveChanged(slot);
 	});
 }
 
@@ -699,7 +707,9 @@ void QWindow_ContentOrientationChanged(QWindow* self, uintptr_t orientation) {
 
 void QWindow_connect_ContentOrientationChanged(QWindow* self, void* slot) {
 	QWindow::connect(self, static_cast<void (QWindow::*)(Qt::ScreenOrientation)>(&QWindow::contentOrientationChanged), self, [=](Qt::ScreenOrientation orientation) {
-		miqt_exec_callback(slot, 0, nullptr);
+		Qt::ScreenOrientation orientation_ret = orientation;
+		uintptr_t sigval1 = static_cast<uintptr_t>(orientation_ret);
+		miqt_exec_callback_QWindow_ContentOrientationChanged(slot, sigval1);
 	});
 }
 
@@ -709,7 +719,8 @@ void QWindow_FocusObjectChanged(QWindow* self, QObject* object) {
 
 void QWindow_connect_FocusObjectChanged(QWindow* self, void* slot) {
 	QWindow::connect(self, static_cast<void (QWindow::*)(QObject*)>(&QWindow::focusObjectChanged), self, [=](QObject* object) {
-		miqt_exec_callback(slot, 0, nullptr);
+		QObject* sigval1 = object;
+		miqt_exec_callback_QWindow_FocusObjectChanged(slot, sigval1);
 	});
 }
 
@@ -719,7 +730,8 @@ void QWindow_OpacityChanged(QWindow* self, double opacity) {
 
 void QWindow_connect_OpacityChanged(QWindow* self, void* slot) {
 	QWindow::connect(self, static_cast<void (QWindow::*)(qreal)>(&QWindow::opacityChanged), self, [=](qreal opacity) {
-		miqt_exec_callback(slot, 0, nullptr);
+		double sigval1 = opacity;
+		miqt_exec_callback_QWindow_OpacityChanged(slot, sigval1);
 	});
 }
 
@@ -729,44 +741,37 @@ void QWindow_TransientParentChanged(QWindow* self, QWindow* transientParent) {
 
 void QWindow_connect_TransientParentChanged(QWindow* self, void* slot) {
 	QWindow::connect(self, static_cast<void (QWindow::*)(QWindow*)>(&QWindow::transientParentChanged), self, [=](QWindow* transientParent) {
-		miqt_exec_callback(slot, 0, nullptr);
+		QWindow* sigval1 = transientParent;
+		miqt_exec_callback_QWindow_TransientParentChanged(slot, sigval1);
 	});
 }
 
-void QWindow_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QWindow::tr(s, c);
+struct miqt_string* QWindow_Tr2(const char* s, const char* c) {
+	QString _ret = QWindow::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QWindow_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QWindow::tr(s, c, static_cast<int>(n));
+struct miqt_string* QWindow_Tr3(const char* s, const char* c, int n) {
+	QString _ret = QWindow::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QWindow_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QWindow::trUtf8(s, c);
+struct miqt_string* QWindow_TrUtf82(const char* s, const char* c) {
+	QString _ret = QWindow::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QWindow_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QWindow::trUtf8(s, c, static_cast<int>(n));
+struct miqt_string* QWindow_TrUtf83(const char* s, const char* c, int n) {
+	QString _ret = QWindow::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QWindow_SetFlag2(QWindow* self, uintptr_t param1, bool on) {

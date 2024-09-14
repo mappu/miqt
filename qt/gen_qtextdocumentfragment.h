@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -29,12 +31,12 @@ QTextDocumentFragment* QTextDocumentFragment_new3(QTextCursor* rangeVal);
 QTextDocumentFragment* QTextDocumentFragment_new4(QTextDocumentFragment* rhs);
 void QTextDocumentFragment_OperatorAssign(QTextDocumentFragment* self, QTextDocumentFragment* rhs);
 bool QTextDocumentFragment_IsEmpty(const QTextDocumentFragment* self);
-void QTextDocumentFragment_ToPlainText(const QTextDocumentFragment* self, char** _out, int* _out_Strlen);
-void QTextDocumentFragment_ToHtml(const QTextDocumentFragment* self, char** _out, int* _out_Strlen);
-QTextDocumentFragment* QTextDocumentFragment_FromPlainText(const char* plainText, size_t plainText_Strlen);
-QTextDocumentFragment* QTextDocumentFragment_FromHtml(const char* html, size_t html_Strlen);
-QTextDocumentFragment* QTextDocumentFragment_FromHtml2(const char* html, size_t html_Strlen, QTextDocument* resourceProvider);
-void QTextDocumentFragment_ToHtml1(const QTextDocumentFragment* self, QByteArray* encoding, char** _out, int* _out_Strlen);
+struct miqt_string* QTextDocumentFragment_ToPlainText(const QTextDocumentFragment* self);
+struct miqt_string* QTextDocumentFragment_ToHtml(const QTextDocumentFragment* self);
+QTextDocumentFragment* QTextDocumentFragment_FromPlainText(struct miqt_string* plainText);
+QTextDocumentFragment* QTextDocumentFragment_FromHtml(struct miqt_string* html);
+QTextDocumentFragment* QTextDocumentFragment_FromHtml2(struct miqt_string* html, QTextDocument* resourceProvider);
+struct miqt_string* QTextDocumentFragment_ToHtml1(const QTextDocumentFragment* self, QByteArray* encoding);
 void QTextDocumentFragment_Delete(QTextDocumentFragment* self);
 
 #ifdef __cplusplus

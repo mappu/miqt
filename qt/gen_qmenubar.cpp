@@ -11,12 +11,8 @@
 #include <cstring>
 #include <QWidget>
 #include "qmenubar.h"
-
 #include "gen_qmenubar.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QMenuBar* QMenuBar_new() {
 	return new QMenuBar();
@@ -30,26 +26,22 @@ QMetaObject* QMenuBar_MetaObject(const QMenuBar* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void QMenuBar_Tr(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QMenuBar::tr(s);
+struct miqt_string* QMenuBar_Tr(const char* s) {
+	QString _ret = QMenuBar::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QMenuBar_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QMenuBar::trUtf8(s);
+struct miqt_string* QMenuBar_TrUtf8(const char* s) {
+	QString _ret = QMenuBar::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-QAction* QMenuBar_AddAction(QMenuBar* self, const char* text, size_t text_Strlen) {
-	QString text_QString = QString::fromUtf8(text, text_Strlen);
+QAction* QMenuBar_AddAction(QMenuBar* self, struct miqt_string* text) {
+	QString text_QString = QString::fromUtf8(&text->data, text->len);
 	return self->addAction(text_QString);
 }
 
@@ -57,13 +49,13 @@ QAction* QMenuBar_AddMenu(QMenuBar* self, QMenu* menu) {
 	return self->addMenu(menu);
 }
 
-QMenu* QMenuBar_AddMenuWithTitle(QMenuBar* self, const char* title, size_t title_Strlen) {
-	QString title_QString = QString::fromUtf8(title, title_Strlen);
+QMenu* QMenuBar_AddMenuWithTitle(QMenuBar* self, struct miqt_string* title) {
+	QString title_QString = QString::fromUtf8(&title->data, title->len);
 	return self->addMenu(title_QString);
 }
 
-QMenu* QMenuBar_AddMenu2(QMenuBar* self, QIcon* icon, const char* title, size_t title_Strlen) {
-	QString title_QString = QString::fromUtf8(title, title_Strlen);
+QMenu* QMenuBar_AddMenu2(QMenuBar* self, QIcon* icon, struct miqt_string* title) {
+	QString title_QString = QString::fromUtf8(&title->data, title->len);
 	return self->addMenu(*icon, title_QString);
 }
 
@@ -100,15 +92,15 @@ bool QMenuBar_IsDefaultUp(const QMenuBar* self) {
 }
 
 QSize* QMenuBar_SizeHint(const QMenuBar* self) {
-	QSize ret = self->sizeHint();
+	QSize _ret = self->sizeHint();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(ret));
+	return static_cast<QSize*>(new QSize(_ret));
 }
 
 QSize* QMenuBar_MinimumSizeHint(const QMenuBar* self) {
-	QSize ret = self->minimumSizeHint();
+	QSize _ret = self->minimumSizeHint();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(ret));
+	return static_cast<QSize*>(new QSize(_ret));
 }
 
 int QMenuBar_HeightForWidth(const QMenuBar* self, int param1) {
@@ -116,9 +108,9 @@ int QMenuBar_HeightForWidth(const QMenuBar* self, int param1) {
 }
 
 QRect* QMenuBar_ActionGeometry(const QMenuBar* self, QAction* param1) {
-	QRect ret = self->actionGeometry(param1);
+	QRect _ret = self->actionGeometry(param1);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(ret));
+	return static_cast<QRect*>(new QRect(_ret));
 }
 
 QAction* QMenuBar_ActionAt(const QMenuBar* self, QPoint* param1) {
@@ -151,7 +143,8 @@ void QMenuBar_Triggered(QMenuBar* self, QAction* action) {
 
 void QMenuBar_connect_Triggered(QMenuBar* self, void* slot) {
 	QMenuBar::connect(self, static_cast<void (QMenuBar::*)(QAction*)>(&QMenuBar::triggered), self, [=](QAction* action) {
-		miqt_exec_callback(slot, 0, nullptr);
+		QAction* sigval1 = action;
+		miqt_exec_callback_QMenuBar_Triggered(slot, sigval1);
 	});
 }
 
@@ -161,44 +154,37 @@ void QMenuBar_Hovered(QMenuBar* self, QAction* action) {
 
 void QMenuBar_connect_Hovered(QMenuBar* self, void* slot) {
 	QMenuBar::connect(self, static_cast<void (QMenuBar::*)(QAction*)>(&QMenuBar::hovered), self, [=](QAction* action) {
-		miqt_exec_callback(slot, 0, nullptr);
+		QAction* sigval1 = action;
+		miqt_exec_callback_QMenuBar_Hovered(slot, sigval1);
 	});
 }
 
-void QMenuBar_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QMenuBar::tr(s, c);
+struct miqt_string* QMenuBar_Tr2(const char* s, const char* c) {
+	QString _ret = QMenuBar::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QMenuBar_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QMenuBar::tr(s, c, static_cast<int>(n));
+struct miqt_string* QMenuBar_Tr3(const char* s, const char* c, int n) {
+	QString _ret = QMenuBar::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QMenuBar_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QMenuBar::trUtf8(s, c);
+struct miqt_string* QMenuBar_TrUtf82(const char* s, const char* c) {
+	QString _ret = QMenuBar::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QMenuBar_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QMenuBar::trUtf8(s, c, static_cast<int>(n));
+struct miqt_string* QMenuBar_TrUtf83(const char* s, const char* c, int n) {
+	QString _ret = QMenuBar::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QMenuBar_SetCornerWidget2(QMenuBar* self, QWidget* w, uintptr_t corner) {

@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"runtime"
 	"unsafe"
 )
 
@@ -48,30 +49,26 @@ func NewQTranslator2(parent *QObject) *QTranslator {
 }
 
 func (this *QTranslator) MetaObject() *QMetaObject {
-	ret := C.QTranslator_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QTranslator_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QTranslator_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTranslator_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTranslator_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QTranslator_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTranslator_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTranslator_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QTranslator) Translate(context string, sourceText string) string {
@@ -79,54 +76,48 @@ func (this *QTranslator) Translate(context string, sourceText string) string {
 	defer C.free(unsafe.Pointer(context_Cstring))
 	sourceText_Cstring := C.CString(sourceText)
 	defer C.free(unsafe.Pointer(sourceText_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTranslator_Translate(this.h, context_Cstring, sourceText_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTranslator_Translate(this.h, context_Cstring, sourceText_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QTranslator) IsEmpty() bool {
-	ret := C.QTranslator_IsEmpty(this.h)
-	return (bool)(ret)
+	_ret := C.QTranslator_IsEmpty(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QTranslator) Language() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTranslator_Language(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTranslator_Language(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QTranslator) FilePath() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTranslator_FilePath(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTranslator_FilePath(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QTranslator) Load(filename string) bool {
-	filename_Cstring := C.CString(filename)
-	defer C.free(unsafe.Pointer(filename_Cstring))
-	ret := C.QTranslator_Load(this.h, filename_Cstring, C.size_t(len(filename)))
-	return (bool)(ret)
+	filename_ms := miqt_strdupg(filename)
+	defer C.free(filename_ms)
+	_ret := C.QTranslator_Load(this.h, (*C.struct_miqt_string)(filename_ms))
+	return (bool)(_ret)
 }
 
 func (this *QTranslator) Load2(locale *QLocale, filename string) bool {
-	filename_Cstring := C.CString(filename)
-	defer C.free(unsafe.Pointer(filename_Cstring))
-	ret := C.QTranslator_Load2(this.h, locale.cPointer(), filename_Cstring, C.size_t(len(filename)))
-	return (bool)(ret)
+	filename_ms := miqt_strdupg(filename)
+	defer C.free(filename_ms)
+	_ret := C.QTranslator_Load2(this.h, locale.cPointer(), (*C.struct_miqt_string)(filename_ms))
+	return (bool)(_ret)
 }
 
 func (this *QTranslator) Load3(data *byte, lenVal int) bool {
-	ret := C.QTranslator_Load3(this.h, (*C.uchar)(unsafe.Pointer(data)), (C.int)(lenVal))
-	return (bool)(ret)
+	_ret := C.QTranslator_Load3(this.h, (*C.uchar)(unsafe.Pointer(data)), (C.int)(lenVal))
+	return (bool)(_ret)
 }
 
 func QTranslator_Tr2(s string, c string) string {
@@ -134,12 +125,10 @@ func QTranslator_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTranslator_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTranslator_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QTranslator_Tr3(s string, c string, n int) string {
@@ -147,12 +136,10 @@ func QTranslator_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTranslator_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTranslator_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QTranslator_TrUtf82(s string, c string) string {
@@ -160,12 +147,10 @@ func QTranslator_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTranslator_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTranslator_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QTranslator_TrUtf83(s string, c string, n int) string {
@@ -173,12 +158,10 @@ func QTranslator_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTranslator_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTranslator_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QTranslator) Translate3(context string, sourceText string, disambiguation string) string {
@@ -188,12 +171,10 @@ func (this *QTranslator) Translate3(context string, sourceText string, disambigu
 	defer C.free(unsafe.Pointer(sourceText_Cstring))
 	disambiguation_Cstring := C.CString(disambiguation)
 	defer C.free(unsafe.Pointer(disambiguation_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTranslator_Translate3(this.h, context_Cstring, sourceText_Cstring, disambiguation_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTranslator_Translate3(this.h, context_Cstring, sourceText_Cstring, disambiguation_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QTranslator) Translate4(context string, sourceText string, disambiguation string, n int) string {
@@ -203,87 +184,95 @@ func (this *QTranslator) Translate4(context string, sourceText string, disambigu
 	defer C.free(unsafe.Pointer(sourceText_Cstring))
 	disambiguation_Cstring := C.CString(disambiguation)
 	defer C.free(unsafe.Pointer(disambiguation_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTranslator_Translate4(this.h, context_Cstring, sourceText_Cstring, disambiguation_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTranslator_Translate4(this.h, context_Cstring, sourceText_Cstring, disambiguation_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QTranslator) Load22(filename string, directory string) bool {
-	filename_Cstring := C.CString(filename)
-	defer C.free(unsafe.Pointer(filename_Cstring))
-	directory_Cstring := C.CString(directory)
-	defer C.free(unsafe.Pointer(directory_Cstring))
-	ret := C.QTranslator_Load22(this.h, filename_Cstring, C.size_t(len(filename)), directory_Cstring, C.size_t(len(directory)))
-	return (bool)(ret)
+	filename_ms := miqt_strdupg(filename)
+	defer C.free(filename_ms)
+	directory_ms := miqt_strdupg(directory)
+	defer C.free(directory_ms)
+	_ret := C.QTranslator_Load22(this.h, (*C.struct_miqt_string)(filename_ms), (*C.struct_miqt_string)(directory_ms))
+	return (bool)(_ret)
 }
 
 func (this *QTranslator) Load32(filename string, directory string, search_delimiters string) bool {
-	filename_Cstring := C.CString(filename)
-	defer C.free(unsafe.Pointer(filename_Cstring))
-	directory_Cstring := C.CString(directory)
-	defer C.free(unsafe.Pointer(directory_Cstring))
-	search_delimiters_Cstring := C.CString(search_delimiters)
-	defer C.free(unsafe.Pointer(search_delimiters_Cstring))
-	ret := C.QTranslator_Load32(this.h, filename_Cstring, C.size_t(len(filename)), directory_Cstring, C.size_t(len(directory)), search_delimiters_Cstring, C.size_t(len(search_delimiters)))
-	return (bool)(ret)
+	filename_ms := miqt_strdupg(filename)
+	defer C.free(filename_ms)
+	directory_ms := miqt_strdupg(directory)
+	defer C.free(directory_ms)
+	search_delimiters_ms := miqt_strdupg(search_delimiters)
+	defer C.free(search_delimiters_ms)
+	_ret := C.QTranslator_Load32(this.h, (*C.struct_miqt_string)(filename_ms), (*C.struct_miqt_string)(directory_ms), (*C.struct_miqt_string)(search_delimiters_ms))
+	return (bool)(_ret)
 }
 
 func (this *QTranslator) Load4(filename string, directory string, search_delimiters string, suffix string) bool {
-	filename_Cstring := C.CString(filename)
-	defer C.free(unsafe.Pointer(filename_Cstring))
-	directory_Cstring := C.CString(directory)
-	defer C.free(unsafe.Pointer(directory_Cstring))
-	search_delimiters_Cstring := C.CString(search_delimiters)
-	defer C.free(unsafe.Pointer(search_delimiters_Cstring))
-	suffix_Cstring := C.CString(suffix)
-	defer C.free(unsafe.Pointer(suffix_Cstring))
-	ret := C.QTranslator_Load4(this.h, filename_Cstring, C.size_t(len(filename)), directory_Cstring, C.size_t(len(directory)), search_delimiters_Cstring, C.size_t(len(search_delimiters)), suffix_Cstring, C.size_t(len(suffix)))
-	return (bool)(ret)
+	filename_ms := miqt_strdupg(filename)
+	defer C.free(filename_ms)
+	directory_ms := miqt_strdupg(directory)
+	defer C.free(directory_ms)
+	search_delimiters_ms := miqt_strdupg(search_delimiters)
+	defer C.free(search_delimiters_ms)
+	suffix_ms := miqt_strdupg(suffix)
+	defer C.free(suffix_ms)
+	_ret := C.QTranslator_Load4(this.h, (*C.struct_miqt_string)(filename_ms), (*C.struct_miqt_string)(directory_ms), (*C.struct_miqt_string)(search_delimiters_ms), (*C.struct_miqt_string)(suffix_ms))
+	return (bool)(_ret)
 }
 
 func (this *QTranslator) Load33(locale *QLocale, filename string, prefix string) bool {
-	filename_Cstring := C.CString(filename)
-	defer C.free(unsafe.Pointer(filename_Cstring))
-	prefix_Cstring := C.CString(prefix)
-	defer C.free(unsafe.Pointer(prefix_Cstring))
-	ret := C.QTranslator_Load33(this.h, locale.cPointer(), filename_Cstring, C.size_t(len(filename)), prefix_Cstring, C.size_t(len(prefix)))
-	return (bool)(ret)
+	filename_ms := miqt_strdupg(filename)
+	defer C.free(filename_ms)
+	prefix_ms := miqt_strdupg(prefix)
+	defer C.free(prefix_ms)
+	_ret := C.QTranslator_Load33(this.h, locale.cPointer(), (*C.struct_miqt_string)(filename_ms), (*C.struct_miqt_string)(prefix_ms))
+	return (bool)(_ret)
 }
 
 func (this *QTranslator) Load42(locale *QLocale, filename string, prefix string, directory string) bool {
-	filename_Cstring := C.CString(filename)
-	defer C.free(unsafe.Pointer(filename_Cstring))
-	prefix_Cstring := C.CString(prefix)
-	defer C.free(unsafe.Pointer(prefix_Cstring))
-	directory_Cstring := C.CString(directory)
-	defer C.free(unsafe.Pointer(directory_Cstring))
-	ret := C.QTranslator_Load42(this.h, locale.cPointer(), filename_Cstring, C.size_t(len(filename)), prefix_Cstring, C.size_t(len(prefix)), directory_Cstring, C.size_t(len(directory)))
-	return (bool)(ret)
+	filename_ms := miqt_strdupg(filename)
+	defer C.free(filename_ms)
+	prefix_ms := miqt_strdupg(prefix)
+	defer C.free(prefix_ms)
+	directory_ms := miqt_strdupg(directory)
+	defer C.free(directory_ms)
+	_ret := C.QTranslator_Load42(this.h, locale.cPointer(), (*C.struct_miqt_string)(filename_ms), (*C.struct_miqt_string)(prefix_ms), (*C.struct_miqt_string)(directory_ms))
+	return (bool)(_ret)
 }
 
 func (this *QTranslator) Load5(locale *QLocale, filename string, prefix string, directory string, suffix string) bool {
-	filename_Cstring := C.CString(filename)
-	defer C.free(unsafe.Pointer(filename_Cstring))
-	prefix_Cstring := C.CString(prefix)
-	defer C.free(unsafe.Pointer(prefix_Cstring))
-	directory_Cstring := C.CString(directory)
-	defer C.free(unsafe.Pointer(directory_Cstring))
-	suffix_Cstring := C.CString(suffix)
-	defer C.free(unsafe.Pointer(suffix_Cstring))
-	ret := C.QTranslator_Load5(this.h, locale.cPointer(), filename_Cstring, C.size_t(len(filename)), prefix_Cstring, C.size_t(len(prefix)), directory_Cstring, C.size_t(len(directory)), suffix_Cstring, C.size_t(len(suffix)))
-	return (bool)(ret)
+	filename_ms := miqt_strdupg(filename)
+	defer C.free(filename_ms)
+	prefix_ms := miqt_strdupg(prefix)
+	defer C.free(prefix_ms)
+	directory_ms := miqt_strdupg(directory)
+	defer C.free(directory_ms)
+	suffix_ms := miqt_strdupg(suffix)
+	defer C.free(suffix_ms)
+	_ret := C.QTranslator_Load5(this.h, locale.cPointer(), (*C.struct_miqt_string)(filename_ms), (*C.struct_miqt_string)(prefix_ms), (*C.struct_miqt_string)(directory_ms), (*C.struct_miqt_string)(suffix_ms))
+	return (bool)(_ret)
 }
 
 func (this *QTranslator) Load34(data *byte, lenVal int, directory string) bool {
-	directory_Cstring := C.CString(directory)
-	defer C.free(unsafe.Pointer(directory_Cstring))
-	ret := C.QTranslator_Load34(this.h, (*C.uchar)(unsafe.Pointer(data)), (C.int)(lenVal), directory_Cstring, C.size_t(len(directory)))
-	return (bool)(ret)
+	directory_ms := miqt_strdupg(directory)
+	defer C.free(directory_ms)
+	_ret := C.QTranslator_Load34(this.h, (*C.uchar)(unsafe.Pointer(data)), (C.int)(lenVal), (*C.struct_miqt_string)(directory_ms))
+	return (bool)(_ret)
 }
 
+// Delete this object from C++ memory.
 func (this *QTranslator) Delete() {
 	C.QTranslator_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QTranslator) GoGC() {
+	runtime.SetFinalizer(this, func(this *QTranslator) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

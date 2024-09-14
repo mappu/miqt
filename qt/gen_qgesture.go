@@ -74,51 +74,43 @@ func NewQGesture2(parent *QObject) *QGesture {
 }
 
 func (this *QGesture) MetaObject() *QMetaObject {
-	ret := C.QGesture_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QGesture_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QGesture_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGesture_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGesture_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QGesture_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGesture_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGesture_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QGesture) GestureType() GestureType {
-	ret := C.QGesture_GestureType(this.h)
-	return (GestureType)(ret)
+	_ret := C.QGesture_GestureType(this.h)
+	return (GestureType)(_ret)
 }
 
 func (this *QGesture) State() GestureState {
-	ret := C.QGesture_State(this.h)
-	return (GestureState)(ret)
+	_ret := C.QGesture_State(this.h)
+	return (GestureState)(_ret)
 }
 
 func (this *QGesture) HotSpot() *QPointF {
-	ret := C.QGesture_HotSpot(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPointF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPointF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QGesture_HotSpot(this.h)
+	_goptr := newQPointF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QGesture) SetHotSpot(value *QPointF) {
@@ -126,8 +118,8 @@ func (this *QGesture) SetHotSpot(value *QPointF) {
 }
 
 func (this *QGesture) HasHotSpot() bool {
-	ret := C.QGesture_HasHotSpot(this.h)
-	return (bool)(ret)
+	_ret := C.QGesture_HasHotSpot(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QGesture) UnsetHotSpot() {
@@ -139,8 +131,8 @@ func (this *QGesture) SetGestureCancelPolicy(policy QGesture__GestureCancelPolic
 }
 
 func (this *QGesture) GestureCancelPolicy() QGesture__GestureCancelPolicy {
-	ret := C.QGesture_GestureCancelPolicy(this.h)
-	return (QGesture__GestureCancelPolicy)(ret)
+	_ret := C.QGesture_GestureCancelPolicy(this.h)
+	return (QGesture__GestureCancelPolicy)(_ret)
 }
 
 func QGesture_Tr2(s string, c string) string {
@@ -148,12 +140,10 @@ func QGesture_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGesture_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGesture_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QGesture_Tr3(s string, c string, n int) string {
@@ -161,12 +151,10 @@ func QGesture_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGesture_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGesture_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QGesture_TrUtf82(s string, c string) string {
@@ -174,12 +162,10 @@ func QGesture_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGesture_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGesture_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QGesture_TrUtf83(s string, c string, n int) string {
@@ -187,16 +173,24 @@ func QGesture_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGesture_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGesture_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
+// Delete this object from C++ memory.
 func (this *QGesture) Delete() {
 	C.QGesture_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QGesture) GoGC() {
+	runtime.SetFinalizer(this, func(this *QGesture) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
 
 type QPanGesture struct {
@@ -235,68 +229,52 @@ func NewQPanGesture2(parent *QObject) *QPanGesture {
 }
 
 func (this *QPanGesture) MetaObject() *QMetaObject {
-	ret := C.QPanGesture_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QPanGesture_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QPanGesture_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QPanGesture_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QPanGesture_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QPanGesture_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QPanGesture_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QPanGesture_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QPanGesture) LastOffset() *QPointF {
-	ret := C.QPanGesture_LastOffset(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPointF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPointF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QPanGesture_LastOffset(this.h)
+	_goptr := newQPointF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QPanGesture) Offset() *QPointF {
-	ret := C.QPanGesture_Offset(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPointF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPointF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QPanGesture_Offset(this.h)
+	_goptr := newQPointF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QPanGesture) Delta() *QPointF {
-	ret := C.QPanGesture_Delta(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPointF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPointF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QPanGesture_Delta(this.h)
+	_goptr := newQPointF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QPanGesture) Acceleration() float64 {
-	ret := C.QPanGesture_Acceleration(this.h)
-	return (float64)(ret)
+	_ret := C.QPanGesture_Acceleration(this.h)
+	return (float64)(_ret)
 }
 
 func (this *QPanGesture) SetLastOffset(value *QPointF) {
@@ -316,12 +294,10 @@ func QPanGesture_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QPanGesture_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QPanGesture_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QPanGesture_Tr3(s string, c string, n int) string {
@@ -329,12 +305,10 @@ func QPanGesture_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QPanGesture_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QPanGesture_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QPanGesture_TrUtf82(s string, c string) string {
@@ -342,12 +316,10 @@ func QPanGesture_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QPanGesture_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QPanGesture_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QPanGesture_TrUtf83(s string, c string, n int) string {
@@ -355,16 +327,24 @@ func QPanGesture_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QPanGesture_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QPanGesture_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
+// Delete this object from C++ memory.
 func (this *QPanGesture) Delete() {
 	C.QPanGesture_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QPanGesture) GoGC() {
+	runtime.SetFinalizer(this, func(this *QPanGesture) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
 
 type QPinchGesture struct {
@@ -403,35 +383,31 @@ func NewQPinchGesture2(parent *QObject) *QPinchGesture {
 }
 
 func (this *QPinchGesture) MetaObject() *QMetaObject {
-	ret := C.QPinchGesture_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QPinchGesture_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QPinchGesture_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QPinchGesture_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QPinchGesture_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QPinchGesture_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QPinchGesture_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QPinchGesture_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QPinchGesture) TotalChangeFlags() int {
-	ret := C.QPinchGesture_TotalChangeFlags(this.h)
-	return (int)(ret)
+	_ret := C.QPinchGesture_TotalChangeFlags(this.h)
+	return (int)(_ret)
 }
 
 func (this *QPinchGesture) SetTotalChangeFlags(value int) {
@@ -439,8 +415,8 @@ func (this *QPinchGesture) SetTotalChangeFlags(value int) {
 }
 
 func (this *QPinchGesture) ChangeFlags() int {
-	ret := C.QPinchGesture_ChangeFlags(this.h)
-	return (int)(ret)
+	_ret := C.QPinchGesture_ChangeFlags(this.h)
+	return (int)(_ret)
 }
 
 func (this *QPinchGesture) SetChangeFlags(value int) {
@@ -448,36 +424,24 @@ func (this *QPinchGesture) SetChangeFlags(value int) {
 }
 
 func (this *QPinchGesture) StartCenterPoint() *QPointF {
-	ret := C.QPinchGesture_StartCenterPoint(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPointF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPointF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QPinchGesture_StartCenterPoint(this.h)
+	_goptr := newQPointF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QPinchGesture) LastCenterPoint() *QPointF {
-	ret := C.QPinchGesture_LastCenterPoint(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPointF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPointF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QPinchGesture_LastCenterPoint(this.h)
+	_goptr := newQPointF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QPinchGesture) CenterPoint() *QPointF {
-	ret := C.QPinchGesture_CenterPoint(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPointF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPointF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QPinchGesture_CenterPoint(this.h)
+	_goptr := newQPointF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QPinchGesture) SetStartCenterPoint(value *QPointF) {
@@ -493,18 +457,18 @@ func (this *QPinchGesture) SetCenterPoint(value *QPointF) {
 }
 
 func (this *QPinchGesture) TotalScaleFactor() float64 {
-	ret := C.QPinchGesture_TotalScaleFactor(this.h)
-	return (float64)(ret)
+	_ret := C.QPinchGesture_TotalScaleFactor(this.h)
+	return (float64)(_ret)
 }
 
 func (this *QPinchGesture) LastScaleFactor() float64 {
-	ret := C.QPinchGesture_LastScaleFactor(this.h)
-	return (float64)(ret)
+	_ret := C.QPinchGesture_LastScaleFactor(this.h)
+	return (float64)(_ret)
 }
 
 func (this *QPinchGesture) ScaleFactor() float64 {
-	ret := C.QPinchGesture_ScaleFactor(this.h)
-	return (float64)(ret)
+	_ret := C.QPinchGesture_ScaleFactor(this.h)
+	return (float64)(_ret)
 }
 
 func (this *QPinchGesture) SetTotalScaleFactor(value float64) {
@@ -520,18 +484,18 @@ func (this *QPinchGesture) SetScaleFactor(value float64) {
 }
 
 func (this *QPinchGesture) TotalRotationAngle() float64 {
-	ret := C.QPinchGesture_TotalRotationAngle(this.h)
-	return (float64)(ret)
+	_ret := C.QPinchGesture_TotalRotationAngle(this.h)
+	return (float64)(_ret)
 }
 
 func (this *QPinchGesture) LastRotationAngle() float64 {
-	ret := C.QPinchGesture_LastRotationAngle(this.h)
-	return (float64)(ret)
+	_ret := C.QPinchGesture_LastRotationAngle(this.h)
+	return (float64)(_ret)
 }
 
 func (this *QPinchGesture) RotationAngle() float64 {
-	ret := C.QPinchGesture_RotationAngle(this.h)
-	return (float64)(ret)
+	_ret := C.QPinchGesture_RotationAngle(this.h)
+	return (float64)(_ret)
 }
 
 func (this *QPinchGesture) SetTotalRotationAngle(value float64) {
@@ -551,12 +515,10 @@ func QPinchGesture_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QPinchGesture_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QPinchGesture_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QPinchGesture_Tr3(s string, c string, n int) string {
@@ -564,12 +526,10 @@ func QPinchGesture_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QPinchGesture_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QPinchGesture_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QPinchGesture_TrUtf82(s string, c string) string {
@@ -577,12 +537,10 @@ func QPinchGesture_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QPinchGesture_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QPinchGesture_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QPinchGesture_TrUtf83(s string, c string, n int) string {
@@ -590,16 +548,24 @@ func QPinchGesture_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QPinchGesture_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QPinchGesture_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
+// Delete this object from C++ memory.
 func (this *QPinchGesture) Delete() {
 	C.QPinchGesture_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QPinchGesture) GoGC() {
+	runtime.SetFinalizer(this, func(this *QPinchGesture) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
 
 type QSwipeGesture struct {
@@ -638,45 +604,41 @@ func NewQSwipeGesture2(parent *QObject) *QSwipeGesture {
 }
 
 func (this *QSwipeGesture) MetaObject() *QMetaObject {
-	ret := C.QSwipeGesture_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QSwipeGesture_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QSwipeGesture_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QSwipeGesture_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QSwipeGesture_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QSwipeGesture_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QSwipeGesture_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QSwipeGesture_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QSwipeGesture) HorizontalDirection() QSwipeGesture__SwipeDirection {
-	ret := C.QSwipeGesture_HorizontalDirection(this.h)
-	return (QSwipeGesture__SwipeDirection)(ret)
+	_ret := C.QSwipeGesture_HorizontalDirection(this.h)
+	return (QSwipeGesture__SwipeDirection)(_ret)
 }
 
 func (this *QSwipeGesture) VerticalDirection() QSwipeGesture__SwipeDirection {
-	ret := C.QSwipeGesture_VerticalDirection(this.h)
-	return (QSwipeGesture__SwipeDirection)(ret)
+	_ret := C.QSwipeGesture_VerticalDirection(this.h)
+	return (QSwipeGesture__SwipeDirection)(_ret)
 }
 
 func (this *QSwipeGesture) SwipeAngle() float64 {
-	ret := C.QSwipeGesture_SwipeAngle(this.h)
-	return (float64)(ret)
+	_ret := C.QSwipeGesture_SwipeAngle(this.h)
+	return (float64)(_ret)
 }
 
 func (this *QSwipeGesture) SetSwipeAngle(value float64) {
@@ -688,12 +650,10 @@ func QSwipeGesture_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QSwipeGesture_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QSwipeGesture_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QSwipeGesture_Tr3(s string, c string, n int) string {
@@ -701,12 +661,10 @@ func QSwipeGesture_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QSwipeGesture_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QSwipeGesture_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QSwipeGesture_TrUtf82(s string, c string) string {
@@ -714,12 +672,10 @@ func QSwipeGesture_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QSwipeGesture_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QSwipeGesture_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QSwipeGesture_TrUtf83(s string, c string, n int) string {
@@ -727,16 +683,24 @@ func QSwipeGesture_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QSwipeGesture_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QSwipeGesture_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
+// Delete this object from C++ memory.
 func (this *QSwipeGesture) Delete() {
 	C.QSwipeGesture_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QSwipeGesture) GoGC() {
+	runtime.SetFinalizer(this, func(this *QSwipeGesture) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
 
 type QTapGesture struct {
@@ -775,41 +739,33 @@ func NewQTapGesture2(parent *QObject) *QTapGesture {
 }
 
 func (this *QTapGesture) MetaObject() *QMetaObject {
-	ret := C.QTapGesture_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QTapGesture_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QTapGesture_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTapGesture_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTapGesture_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QTapGesture_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTapGesture_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTapGesture_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QTapGesture) Position() *QPointF {
-	ret := C.QTapGesture_Position(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPointF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPointF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QTapGesture_Position(this.h)
+	_goptr := newQPointF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QTapGesture) SetPosition(pos *QPointF) {
@@ -821,12 +777,10 @@ func QTapGesture_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTapGesture_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTapGesture_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QTapGesture_Tr3(s string, c string, n int) string {
@@ -834,12 +788,10 @@ func QTapGesture_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTapGesture_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTapGesture_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QTapGesture_TrUtf82(s string, c string) string {
@@ -847,12 +799,10 @@ func QTapGesture_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTapGesture_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTapGesture_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QTapGesture_TrUtf83(s string, c string, n int) string {
@@ -860,16 +810,24 @@ func QTapGesture_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTapGesture_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTapGesture_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
+// Delete this object from C++ memory.
 func (this *QTapGesture) Delete() {
 	C.QTapGesture_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QTapGesture) GoGC() {
+	runtime.SetFinalizer(this, func(this *QTapGesture) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
 
 type QTapAndHoldGesture struct {
@@ -908,41 +866,33 @@ func NewQTapAndHoldGesture2(parent *QObject) *QTapAndHoldGesture {
 }
 
 func (this *QTapAndHoldGesture) MetaObject() *QMetaObject {
-	ret := C.QTapAndHoldGesture_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QTapAndHoldGesture_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QTapAndHoldGesture_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTapAndHoldGesture_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTapAndHoldGesture_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QTapAndHoldGesture_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTapAndHoldGesture_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTapAndHoldGesture_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QTapAndHoldGesture) Position() *QPointF {
-	ret := C.QTapAndHoldGesture_Position(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPointF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPointF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QTapAndHoldGesture_Position(this.h)
+	_goptr := newQPointF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QTapAndHoldGesture) SetPosition(pos *QPointF) {
@@ -954,8 +904,8 @@ func QTapAndHoldGesture_SetTimeout(msecs int) {
 }
 
 func QTapAndHoldGesture_Timeout() int {
-	ret := C.QTapAndHoldGesture_Timeout()
-	return (int)(ret)
+	_ret := C.QTapAndHoldGesture_Timeout()
+	return (int)(_ret)
 }
 
 func QTapAndHoldGesture_Tr2(s string, c string) string {
@@ -963,12 +913,10 @@ func QTapAndHoldGesture_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTapAndHoldGesture_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTapAndHoldGesture_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QTapAndHoldGesture_Tr3(s string, c string, n int) string {
@@ -976,12 +924,10 @@ func QTapAndHoldGesture_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTapAndHoldGesture_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTapAndHoldGesture_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QTapAndHoldGesture_TrUtf82(s string, c string) string {
@@ -989,12 +935,10 @@ func QTapAndHoldGesture_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTapAndHoldGesture_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTapAndHoldGesture_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QTapAndHoldGesture_TrUtf83(s string, c string, n int) string {
@@ -1002,16 +946,24 @@ func QTapAndHoldGesture_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTapAndHoldGesture_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTapAndHoldGesture_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
+// Delete this object from C++ memory.
 func (this *QTapAndHoldGesture) Delete() {
 	C.QTapAndHoldGesture_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QTapAndHoldGesture) GoGC() {
+	runtime.SetFinalizer(this, func(this *QTapAndHoldGesture) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
 
 type QGestureEvent struct {
@@ -1045,7 +997,9 @@ func NewQGestureEvent(gestures []*QGesture) *QGestureEvent {
 	for i := range gestures {
 		gestures_CArray[i] = gestures[i].cPointer()
 	}
-	ret := C.QGestureEvent_new(&gestures_CArray[0], C.size_t(len(gestures)))
+	gestures_ma := &C.struct_miqt_array{len: C.size_t(len(gestures)), data: unsafe.Pointer(gestures_CArray)}
+	defer runtime.KeepAlive(unsafe.Pointer(gestures_ma))
+	ret := C.QGestureEvent_new(gestures_ma)
 	return newQGestureEvent(ret)
 }
 
@@ -1056,47 +1010,41 @@ func NewQGestureEvent2(param1 *QGestureEvent) *QGestureEvent {
 }
 
 func (this *QGestureEvent) Gestures() []*QGesture {
-	var _out **C.QGesture = nil
-	var _out_len C.size_t = 0
-	C.QGestureEvent_Gestures(this.h, &_out, &_out_len)
-	ret := make([]*QGesture, int(_out_len))
-	_outCast := (*[0xffff]*C.QGesture)(unsafe.Pointer(_out)) // so fresh so clean
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = newQGesture(_outCast[i])
+	var _ma *C.struct_miqt_array = C.QGestureEvent_Gestures(this.h)
+	_ret := make([]*QGesture, int(_ma.len))
+	_outCast := (*[0xffff]*C.QGesture)(unsafe.Pointer(_ma.data)) // mrs jackson
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = newQGesture(_outCast[i])
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
 func (this *QGestureEvent) Gesture(typeVal GestureType) *QGesture {
-	ret := C.QGestureEvent_Gesture(this.h, (C.uintptr_t)(typeVal))
-	return newQGesture_U(unsafe.Pointer(ret))
+	_ret := C.QGestureEvent_Gesture(this.h, (C.uintptr_t)(typeVal))
+	return newQGesture_U(unsafe.Pointer(_ret))
 }
 
 func (this *QGestureEvent) ActiveGestures() []*QGesture {
-	var _out **C.QGesture = nil
-	var _out_len C.size_t = 0
-	C.QGestureEvent_ActiveGestures(this.h, &_out, &_out_len)
-	ret := make([]*QGesture, int(_out_len))
-	_outCast := (*[0xffff]*C.QGesture)(unsafe.Pointer(_out)) // so fresh so clean
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = newQGesture(_outCast[i])
+	var _ma *C.struct_miqt_array = C.QGestureEvent_ActiveGestures(this.h)
+	_ret := make([]*QGesture, int(_ma.len))
+	_outCast := (*[0xffff]*C.QGesture)(unsafe.Pointer(_ma.data)) // mrs jackson
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = newQGesture(_outCast[i])
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
 func (this *QGestureEvent) CanceledGestures() []*QGesture {
-	var _out **C.QGesture = nil
-	var _out_len C.size_t = 0
-	C.QGestureEvent_CanceledGestures(this.h, &_out, &_out_len)
-	ret := make([]*QGesture, int(_out_len))
-	_outCast := (*[0xffff]*C.QGesture)(unsafe.Pointer(_out)) // so fresh so clean
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = newQGesture(_outCast[i])
+	var _ma *C.struct_miqt_array = C.QGestureEvent_CanceledGestures(this.h)
+	_ret := make([]*QGesture, int(_ma.len))
+	_outCast := (*[0xffff]*C.QGesture)(unsafe.Pointer(_ma.data)) // mrs jackson
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = newQGesture(_outCast[i])
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
 func (this *QGestureEvent) SetAccepted(param1 *QGesture, param2 bool) {
@@ -1112,8 +1060,8 @@ func (this *QGestureEvent) Ignore(param1 *QGesture) {
 }
 
 func (this *QGestureEvent) IsAccepted(param1 *QGesture) bool {
-	ret := C.QGestureEvent_IsAccepted(this.h, param1.cPointer())
-	return (bool)(ret)
+	_ret := C.QGestureEvent_IsAccepted(this.h, param1.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QGestureEvent) SetAccepted2(param1 GestureType, param2 bool) {
@@ -1129,8 +1077,8 @@ func (this *QGestureEvent) IgnoreWithQtGestureType(param1 GestureType) {
 }
 
 func (this *QGestureEvent) IsAcceptedWithQtGestureType(param1 GestureType) bool {
-	ret := C.QGestureEvent_IsAcceptedWithQtGestureType(this.h, (C.uintptr_t)(param1))
-	return (bool)(ret)
+	_ret := C.QGestureEvent_IsAcceptedWithQtGestureType(this.h, (C.uintptr_t)(param1))
+	return (bool)(_ret)
 }
 
 func (this *QGestureEvent) SetWidget(widget *QWidget) {
@@ -1138,21 +1086,27 @@ func (this *QGestureEvent) SetWidget(widget *QWidget) {
 }
 
 func (this *QGestureEvent) Widget() *QWidget {
-	ret := C.QGestureEvent_Widget(this.h)
-	return newQWidget_U(unsafe.Pointer(ret))
+	_ret := C.QGestureEvent_Widget(this.h)
+	return newQWidget_U(unsafe.Pointer(_ret))
 }
 
 func (this *QGestureEvent) MapToGraphicsScene(gesturePoint *QPointF) *QPointF {
-	ret := C.QGestureEvent_MapToGraphicsScene(this.h, gesturePoint.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPointF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPointF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QGestureEvent_MapToGraphicsScene(this.h, gesturePoint.cPointer())
+	_goptr := newQPointF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
+// Delete this object from C++ memory.
 func (this *QGestureEvent) Delete() {
 	C.QGestureEvent_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QGestureEvent) GoGC() {
+	runtime.SetFinalizer(this, func(this *QGestureEvent) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

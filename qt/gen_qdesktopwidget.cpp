@@ -7,12 +7,8 @@
 #include <cstring>
 #include <QWidget>
 #include "qdesktopwidget.h"
-
 #include "gen_qdesktopwidget.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QDesktopWidget* QDesktopWidget_new() {
 	return new QDesktopWidget();
@@ -22,22 +18,18 @@ QMetaObject* QDesktopWidget_MetaObject(const QDesktopWidget* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void QDesktopWidget_Tr(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QDesktopWidget::tr(s);
+struct miqt_string* QDesktopWidget_Tr(const char* s) {
+	QString _ret = QDesktopWidget::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QDesktopWidget_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QDesktopWidget::trUtf8(s);
+struct miqt_string* QDesktopWidget_TrUtf8(const char* s) {
+	QString _ret = QDesktopWidget::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 int QDesktopWidget_ScreenNumber(const QDesktopWidget* self) {
@@ -45,15 +37,15 @@ int QDesktopWidget_ScreenNumber(const QDesktopWidget* self) {
 }
 
 QRect* QDesktopWidget_ScreenGeometry(const QDesktopWidget* self, QWidget* widget) {
-	QRect ret = self->screenGeometry(widget);
+	QRect _ret = self->screenGeometry(widget);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(ret));
+	return static_cast<QRect*>(new QRect(_ret));
 }
 
 QRect* QDesktopWidget_AvailableGeometry(const QDesktopWidget* self, QWidget* widget) {
-	QRect ret = self->availableGeometry(widget);
+	QRect _ret = self->availableGeometry(widget);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(ret));
+	return static_cast<QRect*>(new QRect(_ret));
 }
 
 bool QDesktopWidget_IsVirtualDesktop(const QDesktopWidget* self) {
@@ -81,27 +73,27 @@ QWidget* QDesktopWidget_Screen(QDesktopWidget* self) {
 }
 
 QRect* QDesktopWidget_ScreenGeometry2(const QDesktopWidget* self) {
-	QRect ret = self->screenGeometry();
+	QRect _ret = self->screenGeometry();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(ret));
+	return static_cast<QRect*>(new QRect(_ret));
 }
 
 QRect* QDesktopWidget_ScreenGeometryWithPoint(const QDesktopWidget* self, QPoint* point) {
-	QRect ret = self->screenGeometry(*point);
+	QRect _ret = self->screenGeometry(*point);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(ret));
+	return static_cast<QRect*>(new QRect(_ret));
 }
 
 QRect* QDesktopWidget_AvailableGeometry2(const QDesktopWidget* self) {
-	QRect ret = self->availableGeometry();
+	QRect _ret = self->availableGeometry();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(ret));
+	return static_cast<QRect*>(new QRect(_ret));
 }
 
 QRect* QDesktopWidget_AvailableGeometryWithPoint(const QDesktopWidget* self, QPoint* point) {
-	QRect ret = self->availableGeometry(*point);
+	QRect _ret = self->availableGeometry(*point);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(ret));
+	return static_cast<QRect*>(new QRect(_ret));
 }
 
 void QDesktopWidget_Resized(QDesktopWidget* self, int param1) {
@@ -110,7 +102,8 @@ void QDesktopWidget_Resized(QDesktopWidget* self, int param1) {
 
 void QDesktopWidget_connect_Resized(QDesktopWidget* self, void* slot) {
 	QDesktopWidget::connect(self, static_cast<void (QDesktopWidget::*)(int)>(&QDesktopWidget::resized), self, [=](int param1) {
-		miqt_exec_callback(slot, 0, nullptr);
+		int sigval1 = param1;
+		miqt_exec_callback_QDesktopWidget_Resized(slot, sigval1);
 	});
 }
 
@@ -120,7 +113,8 @@ void QDesktopWidget_WorkAreaResized(QDesktopWidget* self, int param1) {
 
 void QDesktopWidget_connect_WorkAreaResized(QDesktopWidget* self, void* slot) {
 	QDesktopWidget::connect(self, static_cast<void (QDesktopWidget::*)(int)>(&QDesktopWidget::workAreaResized), self, [=](int param1) {
-		miqt_exec_callback(slot, 0, nullptr);
+		int sigval1 = param1;
+		miqt_exec_callback_QDesktopWidget_WorkAreaResized(slot, sigval1);
 	});
 }
 
@@ -130,7 +124,8 @@ void QDesktopWidget_ScreenCountChanged(QDesktopWidget* self, int param1) {
 
 void QDesktopWidget_connect_ScreenCountChanged(QDesktopWidget* self, void* slot) {
 	QDesktopWidget::connect(self, static_cast<void (QDesktopWidget::*)(int)>(&QDesktopWidget::screenCountChanged), self, [=](int param1) {
-		miqt_exec_callback(slot, 0, nullptr);
+		int sigval1 = param1;
+		miqt_exec_callback_QDesktopWidget_ScreenCountChanged(slot, sigval1);
 	});
 }
 
@@ -140,44 +135,36 @@ void QDesktopWidget_PrimaryScreenChanged(QDesktopWidget* self) {
 
 void QDesktopWidget_connect_PrimaryScreenChanged(QDesktopWidget* self, void* slot) {
 	QDesktopWidget::connect(self, static_cast<void (QDesktopWidget::*)()>(&QDesktopWidget::primaryScreenChanged), self, [=]() {
-		miqt_exec_callback(slot, 0, nullptr);
+		miqt_exec_callback_QDesktopWidget_PrimaryScreenChanged(slot);
 	});
 }
 
-void QDesktopWidget_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QDesktopWidget::tr(s, c);
+struct miqt_string* QDesktopWidget_Tr2(const char* s, const char* c) {
+	QString _ret = QDesktopWidget::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QDesktopWidget_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QDesktopWidget::tr(s, c, static_cast<int>(n));
+struct miqt_string* QDesktopWidget_Tr3(const char* s, const char* c, int n) {
+	QString _ret = QDesktopWidget::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QDesktopWidget_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QDesktopWidget::trUtf8(s, c);
+struct miqt_string* QDesktopWidget_TrUtf82(const char* s, const char* c) {
+	QString _ret = QDesktopWidget::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QDesktopWidget_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QDesktopWidget::trUtf8(s, c, static_cast<int>(n));
+struct miqt_string* QDesktopWidget_TrUtf83(const char* s, const char* c, int n) {
+	QString _ret = QDesktopWidget::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 int QDesktopWidget_ScreenNumber1(const QDesktopWidget* self, QWidget* widget) {
@@ -189,15 +176,15 @@ QWidget* QDesktopWidget_Screen1(QDesktopWidget* self, int screen) {
 }
 
 QRect* QDesktopWidget_ScreenGeometry1(const QDesktopWidget* self, int screen) {
-	QRect ret = self->screenGeometry(static_cast<int>(screen));
+	QRect _ret = self->screenGeometry(static_cast<int>(screen));
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(ret));
+	return static_cast<QRect*>(new QRect(_ret));
 }
 
 QRect* QDesktopWidget_AvailableGeometry1(const QDesktopWidget* self, int screen) {
-	QRect ret = self->availableGeometry(static_cast<int>(screen));
+	QRect _ret = self->availableGeometry(static_cast<int>(screen));
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(ret));
+	return static_cast<QRect*>(new QRect(_ret));
 }
 
 void QDesktopWidget_Delete(QDesktopWidget* self) {

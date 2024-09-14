@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -70,16 +72,16 @@ typedef struct QWidget QWidget;
 #endif
 
 QPlainTextEdit* QPlainTextEdit_new();
-QPlainTextEdit* QPlainTextEdit_new2(const char* text, size_t text_Strlen);
+QPlainTextEdit* QPlainTextEdit_new2(struct miqt_string* text);
 QPlainTextEdit* QPlainTextEdit_new3(QWidget* parent);
-QPlainTextEdit* QPlainTextEdit_new4(const char* text, size_t text_Strlen, QWidget* parent);
+QPlainTextEdit* QPlainTextEdit_new4(struct miqt_string* text, QWidget* parent);
 QMetaObject* QPlainTextEdit_MetaObject(const QPlainTextEdit* self);
-void QPlainTextEdit_Tr(const char* s, char** _out, int* _out_Strlen);
-void QPlainTextEdit_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QPlainTextEdit_Tr(const char* s);
+struct miqt_string* QPlainTextEdit_TrUtf8(const char* s);
 void QPlainTextEdit_SetDocument(QPlainTextEdit* self, QTextDocument* document);
 QTextDocument* QPlainTextEdit_Document(const QPlainTextEdit* self);
-void QPlainTextEdit_SetPlaceholderText(QPlainTextEdit* self, const char* placeholderText, size_t placeholderText_Strlen);
-void QPlainTextEdit_PlaceholderText(const QPlainTextEdit* self, char** _out, int* _out_Strlen);
+void QPlainTextEdit_SetPlaceholderText(QPlainTextEdit* self, struct miqt_string* placeholderText);
+struct miqt_string* QPlainTextEdit_PlaceholderText(const QPlainTextEdit* self);
 void QPlainTextEdit_SetTextCursor(QPlainTextEdit* self, QTextCursor* cursor);
 QTextCursor* QPlainTextEdit_TextCursor(const QPlainTextEdit* self);
 bool QPlainTextEdit_IsReadOnly(const QPlainTextEdit* self);
@@ -91,8 +93,8 @@ void QPlainTextEdit_SetCurrentCharFormat(QPlainTextEdit* self, QTextCharFormat* 
 QTextCharFormat* QPlainTextEdit_CurrentCharFormat(const QPlainTextEdit* self);
 bool QPlainTextEdit_TabChangesFocus(const QPlainTextEdit* self);
 void QPlainTextEdit_SetTabChangesFocus(QPlainTextEdit* self, bool b);
-void QPlainTextEdit_SetDocumentTitle(QPlainTextEdit* self, const char* title, size_t title_Strlen);
-void QPlainTextEdit_DocumentTitle(const QPlainTextEdit* self, char** _out, int* _out_Strlen);
+void QPlainTextEdit_SetDocumentTitle(QPlainTextEdit* self, struct miqt_string* title);
+struct miqt_string* QPlainTextEdit_DocumentTitle(const QPlainTextEdit* self);
 bool QPlainTextEdit_IsUndoRedoEnabled(const QPlainTextEdit* self);
 void QPlainTextEdit_SetUndoRedoEnabled(QPlainTextEdit* self, bool enable);
 void QPlainTextEdit_SetMaximumBlockCount(QPlainTextEdit* self, int maximum);
@@ -105,10 +107,10 @@ void QPlainTextEdit_SetBackgroundVisible(QPlainTextEdit* self, bool visible);
 bool QPlainTextEdit_BackgroundVisible(const QPlainTextEdit* self);
 void QPlainTextEdit_SetCenterOnScroll(QPlainTextEdit* self, bool enabled);
 bool QPlainTextEdit_CenterOnScroll(const QPlainTextEdit* self);
-bool QPlainTextEdit_Find(QPlainTextEdit* self, const char* exp, size_t exp_Strlen);
+bool QPlainTextEdit_Find(QPlainTextEdit* self, struct miqt_string* exp);
 bool QPlainTextEdit_FindWithExp(QPlainTextEdit* self, QRegExp* exp);
 bool QPlainTextEdit_Find2(QPlainTextEdit* self, QRegularExpression* exp);
-void QPlainTextEdit_ToPlainText(const QPlainTextEdit* self, char** _out, int* _out_Strlen);
+struct miqt_string* QPlainTextEdit_ToPlainText(const QPlainTextEdit* self);
 void QPlainTextEdit_EnsureCursorVisible(QPlainTextEdit* self);
 QVariant* QPlainTextEdit_LoadResource(QPlainTextEdit* self, int typeVal, QUrl* name);
 QMenu* QPlainTextEdit_CreateStandardContextMenu(QPlainTextEdit* self);
@@ -116,7 +118,7 @@ QMenu* QPlainTextEdit_CreateStandardContextMenuWithPosition(QPlainTextEdit* self
 QTextCursor* QPlainTextEdit_CursorForPosition(const QPlainTextEdit* self, QPoint* pos);
 QRect* QPlainTextEdit_CursorRect(const QPlainTextEdit* self, QTextCursor* cursor);
 QRect* QPlainTextEdit_CursorRect2(const QPlainTextEdit* self);
-void QPlainTextEdit_AnchorAt(const QPlainTextEdit* self, QPoint* pos, char** _out, int* _out_Strlen);
+struct miqt_string* QPlainTextEdit_AnchorAt(const QPlainTextEdit* self, QPoint* pos);
 bool QPlainTextEdit_OverwriteMode(const QPlainTextEdit* self);
 void QPlainTextEdit_SetOverwriteMode(QPlainTextEdit* self, bool overwrite);
 int QPlainTextEdit_TabStopWidth(const QPlainTextEdit* self);
@@ -125,15 +127,15 @@ double QPlainTextEdit_TabStopDistance(const QPlainTextEdit* self);
 void QPlainTextEdit_SetTabStopDistance(QPlainTextEdit* self, double distance);
 int QPlainTextEdit_CursorWidth(const QPlainTextEdit* self);
 void QPlainTextEdit_SetCursorWidth(QPlainTextEdit* self, int width);
-void QPlainTextEdit_SetExtraSelections(QPlainTextEdit* self, QTextEdit__ExtraSelection** selections, size_t selections_len);
-void QPlainTextEdit_ExtraSelections(const QPlainTextEdit* self, QTextEdit__ExtraSelection*** _out, size_t* _out_len);
+void QPlainTextEdit_SetExtraSelections(QPlainTextEdit* self, struct miqt_array* /* of QTextEdit__ExtraSelection */ selections);
+struct miqt_array* QPlainTextEdit_ExtraSelections(const QPlainTextEdit* self);
 void QPlainTextEdit_MoveCursor(QPlainTextEdit* self, uintptr_t operation);
 bool QPlainTextEdit_CanPaste(const QPlainTextEdit* self);
 void QPlainTextEdit_Print(const QPlainTextEdit* self, QPagedPaintDevice* printer);
 int QPlainTextEdit_BlockCount(const QPlainTextEdit* self);
 QVariant* QPlainTextEdit_InputMethodQuery(const QPlainTextEdit* self, uintptr_t property);
 QVariant* QPlainTextEdit_InputMethodQuery2(const QPlainTextEdit* self, uintptr_t query, QVariant* argument);
-void QPlainTextEdit_SetPlainText(QPlainTextEdit* self, const char* text, size_t text_Strlen);
+void QPlainTextEdit_SetPlainText(QPlainTextEdit* self, struct miqt_string* text);
 void QPlainTextEdit_Cut(QPlainTextEdit* self);
 void QPlainTextEdit_Copy(QPlainTextEdit* self);
 void QPlainTextEdit_Paste(QPlainTextEdit* self);
@@ -141,9 +143,9 @@ void QPlainTextEdit_Undo(QPlainTextEdit* self);
 void QPlainTextEdit_Redo(QPlainTextEdit* self);
 void QPlainTextEdit_Clear(QPlainTextEdit* self);
 void QPlainTextEdit_SelectAll(QPlainTextEdit* self);
-void QPlainTextEdit_InsertPlainText(QPlainTextEdit* self, const char* text, size_t text_Strlen);
-void QPlainTextEdit_AppendPlainText(QPlainTextEdit* self, const char* text, size_t text_Strlen);
-void QPlainTextEdit_AppendHtml(QPlainTextEdit* self, const char* html, size_t html_Strlen);
+void QPlainTextEdit_InsertPlainText(QPlainTextEdit* self, struct miqt_string* text);
+void QPlainTextEdit_AppendPlainText(QPlainTextEdit* self, struct miqt_string* text);
+void QPlainTextEdit_AppendHtml(QPlainTextEdit* self, struct miqt_string* html);
 void QPlainTextEdit_CenterCursor(QPlainTextEdit* self);
 void QPlainTextEdit_ZoomIn(QPlainTextEdit* self);
 void QPlainTextEdit_ZoomOut(QPlainTextEdit* self);
@@ -165,11 +167,11 @@ void QPlainTextEdit_BlockCountChanged(QPlainTextEdit* self, int newBlockCount);
 void QPlainTextEdit_connect_BlockCountChanged(QPlainTextEdit* self, void* slot);
 void QPlainTextEdit_ModificationChanged(QPlainTextEdit* self, bool param1);
 void QPlainTextEdit_connect_ModificationChanged(QPlainTextEdit* self, void* slot);
-void QPlainTextEdit_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QPlainTextEdit_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QPlainTextEdit_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QPlainTextEdit_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-bool QPlainTextEdit_Find22(QPlainTextEdit* self, const char* exp, size_t exp_Strlen, int options);
+struct miqt_string* QPlainTextEdit_Tr2(const char* s, const char* c);
+struct miqt_string* QPlainTextEdit_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QPlainTextEdit_TrUtf82(const char* s, const char* c);
+struct miqt_string* QPlainTextEdit_TrUtf83(const char* s, const char* c, int n);
+bool QPlainTextEdit_Find22(QPlainTextEdit* self, struct miqt_string* exp, int options);
 bool QPlainTextEdit_Find23(QPlainTextEdit* self, QRegExp* exp, int options);
 bool QPlainTextEdit_Find24(QPlainTextEdit* self, QRegularExpression* exp, int options);
 void QPlainTextEdit_MoveCursor2(QPlainTextEdit* self, uintptr_t operation, uintptr_t mode);
@@ -179,8 +181,8 @@ void QPlainTextEdit_Delete(QPlainTextEdit* self);
 
 QPlainTextDocumentLayout* QPlainTextDocumentLayout_new(QTextDocument* document);
 QMetaObject* QPlainTextDocumentLayout_MetaObject(const QPlainTextDocumentLayout* self);
-void QPlainTextDocumentLayout_Tr(const char* s, char** _out, int* _out_Strlen);
-void QPlainTextDocumentLayout_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QPlainTextDocumentLayout_Tr(const char* s);
+struct miqt_string* QPlainTextDocumentLayout_TrUtf8(const char* s);
 void QPlainTextDocumentLayout_Draw(QPlainTextDocumentLayout* self, QPainter* param1, QAbstractTextDocumentLayout__PaintContext* param2);
 int QPlainTextDocumentLayout_HitTest(const QPlainTextDocumentLayout* self, QPointF* param1, uintptr_t param2);
 int QPlainTextDocumentLayout_PageCount(const QPlainTextDocumentLayout* self);
@@ -191,10 +193,10 @@ void QPlainTextDocumentLayout_EnsureBlockLayout(const QPlainTextDocumentLayout* 
 void QPlainTextDocumentLayout_SetCursorWidth(QPlainTextDocumentLayout* self, int width);
 int QPlainTextDocumentLayout_CursorWidth(const QPlainTextDocumentLayout* self);
 void QPlainTextDocumentLayout_RequestUpdate(QPlainTextDocumentLayout* self);
-void QPlainTextDocumentLayout_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QPlainTextDocumentLayout_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QPlainTextDocumentLayout_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QPlainTextDocumentLayout_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QPlainTextDocumentLayout_Tr2(const char* s, const char* c);
+struct miqt_string* QPlainTextDocumentLayout_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QPlainTextDocumentLayout_TrUtf82(const char* s, const char* c);
+struct miqt_string* QPlainTextDocumentLayout_TrUtf83(const char* s, const char* c, int n);
 void QPlainTextDocumentLayout_Delete(QPlainTextDocumentLayout* self);
 
 #ifdef __cplusplus

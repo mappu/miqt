@@ -45,9 +45,9 @@ func NewQCheckBox() *QCheckBox {
 
 // NewQCheckBox2 constructs a new QCheckBox object.
 func NewQCheckBox2(text string) *QCheckBox {
-	text_Cstring := C.CString(text)
-	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QCheckBox_new2(text_Cstring, C.size_t(len(text)))
+	text_ms := miqt_strdupg(text)
+	defer C.free(text_ms)
+	ret := C.QCheckBox_new2((*C.struct_miqt_string)(text_ms))
 	return newQCheckBox(ret)
 }
 
@@ -59,59 +59,47 @@ func NewQCheckBox3(parent *QWidget) *QCheckBox {
 
 // NewQCheckBox4 constructs a new QCheckBox object.
 func NewQCheckBox4(text string, parent *QWidget) *QCheckBox {
-	text_Cstring := C.CString(text)
-	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QCheckBox_new4(text_Cstring, C.size_t(len(text)), parent.cPointer())
+	text_ms := miqt_strdupg(text)
+	defer C.free(text_ms)
+	ret := C.QCheckBox_new4((*C.struct_miqt_string)(text_ms), parent.cPointer())
 	return newQCheckBox(ret)
 }
 
 func (this *QCheckBox) MetaObject() *QMetaObject {
-	ret := C.QCheckBox_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QCheckBox_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QCheckBox_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QCheckBox_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QCheckBox_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QCheckBox_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QCheckBox_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QCheckBox_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QCheckBox) SizeHint() *QSize {
-	ret := C.QCheckBox_SizeHint(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSize(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QCheckBox_SizeHint(this.h)
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QCheckBox) MinimumSizeHint() *QSize {
-	ret := C.QCheckBox_MinimumSizeHint(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSize(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QCheckBox_MinimumSizeHint(this.h)
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QCheckBox) SetTristate() {
@@ -119,13 +107,13 @@ func (this *QCheckBox) SetTristate() {
 }
 
 func (this *QCheckBox) IsTristate() bool {
-	ret := C.QCheckBox_IsTristate(this.h)
-	return (bool)(ret)
+	_ret := C.QCheckBox_IsTristate(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QCheckBox) CheckState() CheckState {
-	ret := C.QCheckBox_CheckState(this.h)
-	return (CheckState)(ret)
+	_ret := C.QCheckBox_CheckState(this.h)
+	return (CheckState)(_ret)
 }
 
 func (this *QCheckBox) SetCheckState(state CheckState) {
@@ -135,13 +123,22 @@ func (this *QCheckBox) SetCheckState(state CheckState) {
 func (this *QCheckBox) StateChanged(param1 int) {
 	C.QCheckBox_StateChanged(this.h, (C.int)(param1))
 }
+func (this *QCheckBox) OnStateChanged(slot func(param1 int)) {
+	C.QCheckBox_connect_StateChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QCheckBox) OnStateChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QCheckBox_StateChanged
+func miqt_exec_callback_QCheckBox_StateChanged(cb *C.void, param1 C.int) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(param1 int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QCheckBox_connect_StateChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	param1_ret := param1
+	slotval1 := (int)(param1_ret)
+
+	gofunc(slotval1)
 }
 
 func QCheckBox_Tr2(s string, c string) string {
@@ -149,12 +146,10 @@ func QCheckBox_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QCheckBox_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QCheckBox_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QCheckBox_Tr3(s string, c string, n int) string {
@@ -162,12 +157,10 @@ func QCheckBox_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QCheckBox_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QCheckBox_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QCheckBox_TrUtf82(s string, c string) string {
@@ -175,12 +168,10 @@ func QCheckBox_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QCheckBox_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QCheckBox_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QCheckBox_TrUtf83(s string, c string, n int) string {
@@ -188,18 +179,26 @@ func QCheckBox_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QCheckBox_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QCheckBox_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QCheckBox) SetTristate1(y bool) {
 	C.QCheckBox_SetTristate1(this.h, (C.bool)(y))
 }
 
+// Delete this object from C++ memory.
 func (this *QCheckBox) Delete() {
 	C.QCheckBox_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QCheckBox) GoGC() {
+	runtime.SetFinalizer(this, func(this *QCheckBox) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

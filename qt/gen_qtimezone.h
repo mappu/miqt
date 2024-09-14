@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -32,10 +34,10 @@ typedef struct QTimeZone__OffsetData QTimeZone__OffsetData;
 QTimeZone* QTimeZone_new();
 QTimeZone* QTimeZone_new2(QByteArray* ianaId);
 QTimeZone* QTimeZone_new3(int offsetSeconds);
-QTimeZone* QTimeZone_new4(QByteArray* zoneId, int offsetSeconds, const char* name, size_t name_Strlen, const char* abbreviation, size_t abbreviation_Strlen);
+QTimeZone* QTimeZone_new4(QByteArray* zoneId, int offsetSeconds, struct miqt_string* name, struct miqt_string* abbreviation);
 QTimeZone* QTimeZone_new5(QTimeZone* other);
-QTimeZone* QTimeZone_new6(QByteArray* zoneId, int offsetSeconds, const char* name, size_t name_Strlen, const char* abbreviation, size_t abbreviation_Strlen, uintptr_t country);
-QTimeZone* QTimeZone_new7(QByteArray* zoneId, int offsetSeconds, const char* name, size_t name_Strlen, const char* abbreviation, size_t abbreviation_Strlen, uintptr_t country, const char* comment, size_t comment_Strlen);
+QTimeZone* QTimeZone_new6(QByteArray* zoneId, int offsetSeconds, struct miqt_string* name, struct miqt_string* abbreviation, uintptr_t country);
+QTimeZone* QTimeZone_new7(QByteArray* zoneId, int offsetSeconds, struct miqt_string* name, struct miqt_string* abbreviation, uintptr_t country, struct miqt_string* comment);
 void QTimeZone_OperatorAssign(QTimeZone* self, QTimeZone* other);
 void QTimeZone_Swap(QTimeZone* self, QTimeZone* other);
 bool QTimeZone_OperatorEqual(const QTimeZone* self, QTimeZone* other);
@@ -43,10 +45,10 @@ bool QTimeZone_OperatorNotEqual(const QTimeZone* self, QTimeZone* other);
 bool QTimeZone_IsValid(const QTimeZone* self);
 QByteArray* QTimeZone_Id(const QTimeZone* self);
 uintptr_t QTimeZone_Country(const QTimeZone* self);
-void QTimeZone_Comment(const QTimeZone* self, char** _out, int* _out_Strlen);
-void QTimeZone_DisplayName(const QTimeZone* self, QDateTime* atDateTime, char** _out, int* _out_Strlen);
-void QTimeZone_DisplayNameWithTimeType(const QTimeZone* self, uintptr_t timeType, char** _out, int* _out_Strlen);
-void QTimeZone_Abbreviation(const QTimeZone* self, QDateTime* atDateTime, char** _out, int* _out_Strlen);
+struct miqt_string* QTimeZone_Comment(const QTimeZone* self);
+struct miqt_string* QTimeZone_DisplayName(const QTimeZone* self, QDateTime* atDateTime);
+struct miqt_string* QTimeZone_DisplayNameWithTimeType(const QTimeZone* self, uintptr_t timeType);
+struct miqt_string* QTimeZone_Abbreviation(const QTimeZone* self, QDateTime* atDateTime);
 int QTimeZone_OffsetFromUtc(const QTimeZone* self, QDateTime* atDateTime);
 int QTimeZone_StandardTimeOffset(const QTimeZone* self, QDateTime* atDateTime);
 int QTimeZone_DaylightTimeOffset(const QTimeZone* self, QDateTime* atDateTime);
@@ -56,23 +58,23 @@ QTimeZone__OffsetData* QTimeZone_OffsetData(const QTimeZone* self, QDateTime* fo
 bool QTimeZone_HasTransitions(const QTimeZone* self);
 QTimeZone__OffsetData* QTimeZone_NextTransition(const QTimeZone* self, QDateTime* afterDateTime);
 QTimeZone__OffsetData* QTimeZone_PreviousTransition(const QTimeZone* self, QDateTime* beforeDateTime);
-void QTimeZone_Transitions(const QTimeZone* self, QDateTime* fromDateTime, QDateTime* toDateTime, QTimeZone__OffsetData*** _out, size_t* _out_len);
+struct miqt_array* QTimeZone_Transitions(const QTimeZone* self, QDateTime* fromDateTime, QDateTime* toDateTime);
 QByteArray* QTimeZone_SystemTimeZoneId();
 QTimeZone* QTimeZone_SystemTimeZone();
 QTimeZone* QTimeZone_Utc();
 bool QTimeZone_IsTimeZoneIdAvailable(QByteArray* ianaId);
-void QTimeZone_AvailableTimeZoneIds(QByteArray*** _out, size_t* _out_len);
-void QTimeZone_AvailableTimeZoneIdsWithCountry(uintptr_t country, QByteArray*** _out, size_t* _out_len);
-void QTimeZone_AvailableTimeZoneIdsWithOffsetSeconds(int offsetSeconds, QByteArray*** _out, size_t* _out_len);
+struct miqt_array* QTimeZone_AvailableTimeZoneIds();
+struct miqt_array* QTimeZone_AvailableTimeZoneIdsWithCountry(uintptr_t country);
+struct miqt_array* QTimeZone_AvailableTimeZoneIdsWithOffsetSeconds(int offsetSeconds);
 QByteArray* QTimeZone_IanaIdToWindowsId(QByteArray* ianaId);
 QByteArray* QTimeZone_WindowsIdToDefaultIanaId(QByteArray* windowsId);
 QByteArray* QTimeZone_WindowsIdToDefaultIanaId2(QByteArray* windowsId, uintptr_t country);
-void QTimeZone_WindowsIdToIanaIds(QByteArray* windowsId, QByteArray*** _out, size_t* _out_len);
-void QTimeZone_WindowsIdToIanaIds2(QByteArray* windowsId, uintptr_t country, QByteArray*** _out, size_t* _out_len);
-void QTimeZone_DisplayName2(const QTimeZone* self, QDateTime* atDateTime, uintptr_t nameType, char** _out, int* _out_Strlen);
-void QTimeZone_DisplayName3(const QTimeZone* self, QDateTime* atDateTime, uintptr_t nameType, QLocale* locale, char** _out, int* _out_Strlen);
-void QTimeZone_DisplayName22(const QTimeZone* self, uintptr_t timeType, uintptr_t nameType, char** _out, int* _out_Strlen);
-void QTimeZone_DisplayName32(const QTimeZone* self, uintptr_t timeType, uintptr_t nameType, QLocale* locale, char** _out, int* _out_Strlen);
+struct miqt_array* QTimeZone_WindowsIdToIanaIds(QByteArray* windowsId);
+struct miqt_array* QTimeZone_WindowsIdToIanaIds2(QByteArray* windowsId, uintptr_t country);
+struct miqt_string* QTimeZone_DisplayName2(const QTimeZone* self, QDateTime* atDateTime, uintptr_t nameType);
+struct miqt_string* QTimeZone_DisplayName3(const QTimeZone* self, QDateTime* atDateTime, uintptr_t nameType, QLocale* locale);
+struct miqt_string* QTimeZone_DisplayName22(const QTimeZone* self, uintptr_t timeType, uintptr_t nameType);
+struct miqt_string* QTimeZone_DisplayName32(const QTimeZone* self, uintptr_t timeType, uintptr_t nameType, QLocale* locale);
 void QTimeZone_Delete(QTimeZone* self);
 
 QTimeZone__OffsetData* QTimeZone__OffsetData_new(QTimeZone__OffsetData* param1);

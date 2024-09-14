@@ -66,37 +66,47 @@ func (this *QTableWidgetSelectionRange) OperatorAssign(other *QTableWidgetSelect
 }
 
 func (this *QTableWidgetSelectionRange) TopRow() int {
-	ret := C.QTableWidgetSelectionRange_TopRow(this.h)
-	return (int)(ret)
+	_ret := C.QTableWidgetSelectionRange_TopRow(this.h)
+	return (int)(_ret)
 }
 
 func (this *QTableWidgetSelectionRange) BottomRow() int {
-	ret := C.QTableWidgetSelectionRange_BottomRow(this.h)
-	return (int)(ret)
+	_ret := C.QTableWidgetSelectionRange_BottomRow(this.h)
+	return (int)(_ret)
 }
 
 func (this *QTableWidgetSelectionRange) LeftColumn() int {
-	ret := C.QTableWidgetSelectionRange_LeftColumn(this.h)
-	return (int)(ret)
+	_ret := C.QTableWidgetSelectionRange_LeftColumn(this.h)
+	return (int)(_ret)
 }
 
 func (this *QTableWidgetSelectionRange) RightColumn() int {
-	ret := C.QTableWidgetSelectionRange_RightColumn(this.h)
-	return (int)(ret)
+	_ret := C.QTableWidgetSelectionRange_RightColumn(this.h)
+	return (int)(_ret)
 }
 
 func (this *QTableWidgetSelectionRange) RowCount() int {
-	ret := C.QTableWidgetSelectionRange_RowCount(this.h)
-	return (int)(ret)
+	_ret := C.QTableWidgetSelectionRange_RowCount(this.h)
+	return (int)(_ret)
 }
 
 func (this *QTableWidgetSelectionRange) ColumnCount() int {
-	ret := C.QTableWidgetSelectionRange_ColumnCount(this.h)
-	return (int)(ret)
+	_ret := C.QTableWidgetSelectionRange_ColumnCount(this.h)
+	return (int)(_ret)
 }
 
+// Delete this object from C++ memory.
 func (this *QTableWidgetSelectionRange) Delete() {
 	C.QTableWidgetSelectionRange_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QTableWidgetSelectionRange) GoGC() {
+	runtime.SetFinalizer(this, func(this *QTableWidgetSelectionRange) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
 
 type QTableWidgetItem struct {
@@ -129,17 +139,17 @@ func NewQTableWidgetItem() *QTableWidgetItem {
 
 // NewQTableWidgetItem2 constructs a new QTableWidgetItem object.
 func NewQTableWidgetItem2(text string) *QTableWidgetItem {
-	text_Cstring := C.CString(text)
-	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QTableWidgetItem_new2(text_Cstring, C.size_t(len(text)))
+	text_ms := miqt_strdupg(text)
+	defer C.free(text_ms)
+	ret := C.QTableWidgetItem_new2((*C.struct_miqt_string)(text_ms))
 	return newQTableWidgetItem(ret)
 }
 
 // NewQTableWidgetItem3 constructs a new QTableWidgetItem object.
 func NewQTableWidgetItem3(icon *QIcon, text string) *QTableWidgetItem {
-	text_Cstring := C.CString(text)
-	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QTableWidgetItem_new3(icon.cPointer(), text_Cstring, C.size_t(len(text)))
+	text_ms := miqt_strdupg(text)
+	defer C.free(text_ms)
+	ret := C.QTableWidgetItem_new3(icon.cPointer(), (*C.struct_miqt_string)(text_ms))
 	return newQTableWidgetItem(ret)
 }
 
@@ -157,38 +167,38 @@ func NewQTableWidgetItem5(typeVal int) *QTableWidgetItem {
 
 // NewQTableWidgetItem6 constructs a new QTableWidgetItem object.
 func NewQTableWidgetItem6(text string, typeVal int) *QTableWidgetItem {
-	text_Cstring := C.CString(text)
-	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QTableWidgetItem_new6(text_Cstring, C.size_t(len(text)), (C.int)(typeVal))
+	text_ms := miqt_strdupg(text)
+	defer C.free(text_ms)
+	ret := C.QTableWidgetItem_new6((*C.struct_miqt_string)(text_ms), (C.int)(typeVal))
 	return newQTableWidgetItem(ret)
 }
 
 // NewQTableWidgetItem7 constructs a new QTableWidgetItem object.
 func NewQTableWidgetItem7(icon *QIcon, text string, typeVal int) *QTableWidgetItem {
-	text_Cstring := C.CString(text)
-	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QTableWidgetItem_new7(icon.cPointer(), text_Cstring, C.size_t(len(text)), (C.int)(typeVal))
+	text_ms := miqt_strdupg(text)
+	defer C.free(text_ms)
+	ret := C.QTableWidgetItem_new7(icon.cPointer(), (*C.struct_miqt_string)(text_ms), (C.int)(typeVal))
 	return newQTableWidgetItem(ret)
 }
 
 func (this *QTableWidgetItem) Clone() *QTableWidgetItem {
-	ret := C.QTableWidgetItem_Clone(this.h)
-	return newQTableWidgetItem_U(unsafe.Pointer(ret))
+	_ret := C.QTableWidgetItem_Clone(this.h)
+	return newQTableWidgetItem_U(unsafe.Pointer(_ret))
 }
 
 func (this *QTableWidgetItem) TableWidget() *QTableWidget {
-	ret := C.QTableWidgetItem_TableWidget(this.h)
-	return newQTableWidget_U(unsafe.Pointer(ret))
+	_ret := C.QTableWidgetItem_TableWidget(this.h)
+	return newQTableWidget_U(unsafe.Pointer(_ret))
 }
 
 func (this *QTableWidgetItem) Row() int {
-	ret := C.QTableWidgetItem_Row(this.h)
-	return (int)(ret)
+	_ret := C.QTableWidgetItem_Row(this.h)
+	return (int)(_ret)
 }
 
 func (this *QTableWidgetItem) Column() int {
-	ret := C.QTableWidgetItem_Column(this.h)
-	return (int)(ret)
+	_ret := C.QTableWidgetItem_Column(this.h)
+	return (int)(_ret)
 }
 
 func (this *QTableWidgetItem) SetSelected(selectVal bool) {
@@ -196,13 +206,13 @@ func (this *QTableWidgetItem) SetSelected(selectVal bool) {
 }
 
 func (this *QTableWidgetItem) IsSelected() bool {
-	ret := C.QTableWidgetItem_IsSelected(this.h)
-	return (bool)(ret)
+	_ret := C.QTableWidgetItem_IsSelected(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QTableWidgetItem) Flags() int {
-	ret := C.QTableWidgetItem_Flags(this.h)
-	return (int)(ret)
+	_ret := C.QTableWidgetItem_Flags(this.h)
+	return (int)(_ret)
 }
 
 func (this *QTableWidgetItem) SetFlags(flags int) {
@@ -210,29 +220,23 @@ func (this *QTableWidgetItem) SetFlags(flags int) {
 }
 
 func (this *QTableWidgetItem) Text() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTableWidgetItem_Text(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTableWidgetItem_Text(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QTableWidgetItem) SetText(text string) {
-	text_Cstring := C.CString(text)
-	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QTableWidgetItem_SetText(this.h, text_Cstring, C.size_t(len(text)))
+	text_ms := miqt_strdupg(text)
+	defer C.free(text_ms)
+	C.QTableWidgetItem_SetText(this.h, (*C.struct_miqt_string)(text_ms))
 }
 
 func (this *QTableWidgetItem) Icon() *QIcon {
-	ret := C.QTableWidgetItem_Icon(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQIcon(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QIcon) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QTableWidgetItem_Icon(this.h)
+	_goptr := newQIcon(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QTableWidgetItem) SetIcon(icon *QIcon) {
@@ -240,59 +244,49 @@ func (this *QTableWidgetItem) SetIcon(icon *QIcon) {
 }
 
 func (this *QTableWidgetItem) StatusTip() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTableWidgetItem_StatusTip(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTableWidgetItem_StatusTip(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QTableWidgetItem) SetStatusTip(statusTip string) {
-	statusTip_Cstring := C.CString(statusTip)
-	defer C.free(unsafe.Pointer(statusTip_Cstring))
-	C.QTableWidgetItem_SetStatusTip(this.h, statusTip_Cstring, C.size_t(len(statusTip)))
+	statusTip_ms := miqt_strdupg(statusTip)
+	defer C.free(statusTip_ms)
+	C.QTableWidgetItem_SetStatusTip(this.h, (*C.struct_miqt_string)(statusTip_ms))
 }
 
 func (this *QTableWidgetItem) ToolTip() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTableWidgetItem_ToolTip(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTableWidgetItem_ToolTip(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QTableWidgetItem) SetToolTip(toolTip string) {
-	toolTip_Cstring := C.CString(toolTip)
-	defer C.free(unsafe.Pointer(toolTip_Cstring))
-	C.QTableWidgetItem_SetToolTip(this.h, toolTip_Cstring, C.size_t(len(toolTip)))
+	toolTip_ms := miqt_strdupg(toolTip)
+	defer C.free(toolTip_ms)
+	C.QTableWidgetItem_SetToolTip(this.h, (*C.struct_miqt_string)(toolTip_ms))
 }
 
 func (this *QTableWidgetItem) WhatsThis() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTableWidgetItem_WhatsThis(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTableWidgetItem_WhatsThis(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QTableWidgetItem) SetWhatsThis(whatsThis string) {
-	whatsThis_Cstring := C.CString(whatsThis)
-	defer C.free(unsafe.Pointer(whatsThis_Cstring))
-	C.QTableWidgetItem_SetWhatsThis(this.h, whatsThis_Cstring, C.size_t(len(whatsThis)))
+	whatsThis_ms := miqt_strdupg(whatsThis)
+	defer C.free(whatsThis_ms)
+	C.QTableWidgetItem_SetWhatsThis(this.h, (*C.struct_miqt_string)(whatsThis_ms))
 }
 
 func (this *QTableWidgetItem) Font() *QFont {
-	ret := C.QTableWidgetItem_Font(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQFont(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QFont) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QTableWidgetItem_Font(this.h)
+	_goptr := newQFont(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QTableWidgetItem) SetFont(font *QFont) {
@@ -300,8 +294,8 @@ func (this *QTableWidgetItem) SetFont(font *QFont) {
 }
 
 func (this *QTableWidgetItem) TextAlignment() int {
-	ret := C.QTableWidgetItem_TextAlignment(this.h)
-	return (int)(ret)
+	_ret := C.QTableWidgetItem_TextAlignment(this.h)
+	return (int)(_ret)
 }
 
 func (this *QTableWidgetItem) SetTextAlignment(alignment int) {
@@ -309,14 +303,10 @@ func (this *QTableWidgetItem) SetTextAlignment(alignment int) {
 }
 
 func (this *QTableWidgetItem) BackgroundColor() *QColor {
-	ret := C.QTableWidgetItem_BackgroundColor(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQColor(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QColor) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QTableWidgetItem_BackgroundColor(this.h)
+	_goptr := newQColor(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QTableWidgetItem) SetBackgroundColor(color *QColor) {
@@ -324,14 +314,10 @@ func (this *QTableWidgetItem) SetBackgroundColor(color *QColor) {
 }
 
 func (this *QTableWidgetItem) Background() *QBrush {
-	ret := C.QTableWidgetItem_Background(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQBrush(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QBrush) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QTableWidgetItem_Background(this.h)
+	_goptr := newQBrush(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QTableWidgetItem) SetBackground(brush *QBrush) {
@@ -339,14 +325,10 @@ func (this *QTableWidgetItem) SetBackground(brush *QBrush) {
 }
 
 func (this *QTableWidgetItem) TextColor() *QColor {
-	ret := C.QTableWidgetItem_TextColor(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQColor(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QColor) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QTableWidgetItem_TextColor(this.h)
+	_goptr := newQColor(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QTableWidgetItem) SetTextColor(color *QColor) {
@@ -354,14 +336,10 @@ func (this *QTableWidgetItem) SetTextColor(color *QColor) {
 }
 
 func (this *QTableWidgetItem) Foreground() *QBrush {
-	ret := C.QTableWidgetItem_Foreground(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQBrush(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QBrush) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QTableWidgetItem_Foreground(this.h)
+	_goptr := newQBrush(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QTableWidgetItem) SetForeground(brush *QBrush) {
@@ -369,8 +347,8 @@ func (this *QTableWidgetItem) SetForeground(brush *QBrush) {
 }
 
 func (this *QTableWidgetItem) CheckState() CheckState {
-	ret := C.QTableWidgetItem_CheckState(this.h)
-	return (CheckState)(ret)
+	_ret := C.QTableWidgetItem_CheckState(this.h)
+	return (CheckState)(_ret)
 }
 
 func (this *QTableWidgetItem) SetCheckState(state CheckState) {
@@ -378,14 +356,10 @@ func (this *QTableWidgetItem) SetCheckState(state CheckState) {
 }
 
 func (this *QTableWidgetItem) SizeHint() *QSize {
-	ret := C.QTableWidgetItem_SizeHint(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSize(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QTableWidgetItem_SizeHint(this.h)
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QTableWidgetItem) SetSizeHint(size *QSize) {
@@ -393,14 +367,10 @@ func (this *QTableWidgetItem) SetSizeHint(size *QSize) {
 }
 
 func (this *QTableWidgetItem) Data(role int) *QVariant {
-	ret := C.QTableWidgetItem_Data(this.h, (C.int)(role))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQVariant(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QVariant) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QTableWidgetItem_Data(this.h, (C.int)(role))
+	_goptr := newQVariant(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QTableWidgetItem) SetData(role int, value *QVariant) {
@@ -408,8 +378,8 @@ func (this *QTableWidgetItem) SetData(role int, value *QVariant) {
 }
 
 func (this *QTableWidgetItem) OperatorLesser(other *QTableWidgetItem) bool {
-	ret := C.QTableWidgetItem_OperatorLesser(this.h, other.cPointer())
-	return (bool)(ret)
+	_ret := C.QTableWidgetItem_OperatorLesser(this.h, other.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QTableWidgetItem) Read(in *QDataStream) {
@@ -425,12 +395,22 @@ func (this *QTableWidgetItem) OperatorAssign(other *QTableWidgetItem) {
 }
 
 func (this *QTableWidgetItem) Type() int {
-	ret := C.QTableWidgetItem_Type(this.h)
-	return (int)(ret)
+	_ret := C.QTableWidgetItem_Type(this.h)
+	return (int)(_ret)
 }
 
+// Delete this object from C++ memory.
 func (this *QTableWidgetItem) Delete() {
 	C.QTableWidgetItem_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QTableWidgetItem) GoGC() {
+	runtime.SetFinalizer(this, func(this *QTableWidgetItem) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
 
 type QTableWidget struct {
@@ -481,30 +461,26 @@ func NewQTableWidget4(rows int, columns int, parent *QWidget) *QTableWidget {
 }
 
 func (this *QTableWidget) MetaObject() *QMetaObject {
-	ret := C.QTableWidget_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QTableWidget_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QTableWidget_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTableWidget_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTableWidget_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QTableWidget_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTableWidget_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTableWidget_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QTableWidget) SetRowCount(rows int) {
@@ -512,8 +488,8 @@ func (this *QTableWidget) SetRowCount(rows int) {
 }
 
 func (this *QTableWidget) RowCount() int {
-	ret := C.QTableWidget_RowCount(this.h)
-	return (int)(ret)
+	_ret := C.QTableWidget_RowCount(this.h)
+	return (int)(_ret)
 }
 
 func (this *QTableWidget) SetColumnCount(columns int) {
@@ -521,23 +497,23 @@ func (this *QTableWidget) SetColumnCount(columns int) {
 }
 
 func (this *QTableWidget) ColumnCount() int {
-	ret := C.QTableWidget_ColumnCount(this.h)
-	return (int)(ret)
+	_ret := C.QTableWidget_ColumnCount(this.h)
+	return (int)(_ret)
 }
 
 func (this *QTableWidget) Row(item *QTableWidgetItem) int {
-	ret := C.QTableWidget_Row(this.h, item.cPointer())
-	return (int)(ret)
+	_ret := C.QTableWidget_Row(this.h, item.cPointer())
+	return (int)(_ret)
 }
 
 func (this *QTableWidget) Column(item *QTableWidgetItem) int {
-	ret := C.QTableWidget_Column(this.h, item.cPointer())
-	return (int)(ret)
+	_ret := C.QTableWidget_Column(this.h, item.cPointer())
+	return (int)(_ret)
 }
 
 func (this *QTableWidget) Item(row int, column int) *QTableWidgetItem {
-	ret := C.QTableWidget_Item(this.h, (C.int)(row), (C.int)(column))
-	return newQTableWidgetItem_U(unsafe.Pointer(ret))
+	_ret := C.QTableWidget_Item(this.h, (C.int)(row), (C.int)(column))
+	return newQTableWidgetItem_U(unsafe.Pointer(_ret))
 }
 
 func (this *QTableWidget) SetItem(row int, column int, item *QTableWidgetItem) {
@@ -545,13 +521,13 @@ func (this *QTableWidget) SetItem(row int, column int, item *QTableWidgetItem) {
 }
 
 func (this *QTableWidget) TakeItem(row int, column int) *QTableWidgetItem {
-	ret := C.QTableWidget_TakeItem(this.h, (C.int)(row), (C.int)(column))
-	return newQTableWidgetItem_U(unsafe.Pointer(ret))
+	_ret := C.QTableWidget_TakeItem(this.h, (C.int)(row), (C.int)(column))
+	return newQTableWidgetItem_U(unsafe.Pointer(_ret))
 }
 
 func (this *QTableWidget) VerticalHeaderItem(row int) *QTableWidgetItem {
-	ret := C.QTableWidget_VerticalHeaderItem(this.h, (C.int)(row))
-	return newQTableWidgetItem_U(unsafe.Pointer(ret))
+	_ret := C.QTableWidget_VerticalHeaderItem(this.h, (C.int)(row))
+	return newQTableWidgetItem_U(unsafe.Pointer(_ret))
 }
 
 func (this *QTableWidget) SetVerticalHeaderItem(row int, item *QTableWidgetItem) {
@@ -559,13 +535,13 @@ func (this *QTableWidget) SetVerticalHeaderItem(row int, item *QTableWidgetItem)
 }
 
 func (this *QTableWidget) TakeVerticalHeaderItem(row int) *QTableWidgetItem {
-	ret := C.QTableWidget_TakeVerticalHeaderItem(this.h, (C.int)(row))
-	return newQTableWidgetItem_U(unsafe.Pointer(ret))
+	_ret := C.QTableWidget_TakeVerticalHeaderItem(this.h, (C.int)(row))
+	return newQTableWidgetItem_U(unsafe.Pointer(_ret))
 }
 
 func (this *QTableWidget) HorizontalHeaderItem(column int) *QTableWidgetItem {
-	ret := C.QTableWidget_HorizontalHeaderItem(this.h, (C.int)(column))
-	return newQTableWidgetItem_U(unsafe.Pointer(ret))
+	_ret := C.QTableWidget_HorizontalHeaderItem(this.h, (C.int)(column))
+	return newQTableWidgetItem_U(unsafe.Pointer(_ret))
 }
 
 func (this *QTableWidget) SetHorizontalHeaderItem(column int, item *QTableWidgetItem) {
@@ -573,53 +549,51 @@ func (this *QTableWidget) SetHorizontalHeaderItem(column int, item *QTableWidget
 }
 
 func (this *QTableWidget) TakeHorizontalHeaderItem(column int) *QTableWidgetItem {
-	ret := C.QTableWidget_TakeHorizontalHeaderItem(this.h, (C.int)(column))
-	return newQTableWidgetItem_U(unsafe.Pointer(ret))
+	_ret := C.QTableWidget_TakeHorizontalHeaderItem(this.h, (C.int)(column))
+	return newQTableWidgetItem_U(unsafe.Pointer(_ret))
 }
 
 func (this *QTableWidget) SetVerticalHeaderLabels(labels []string) {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
-	labels_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(labels))))
-	labels_Lengths := (*[0xffff]C.uint64_t)(C.malloc(C.size_t(8 * len(labels))))
+	labels_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(labels))))
 	defer C.free(unsafe.Pointer(labels_CArray))
-	defer C.free(unsafe.Pointer(labels_Lengths))
 	for i := range labels {
-		single_cstring := C.CString(labels[i])
-		defer C.free(unsafe.Pointer(single_cstring))
-		labels_CArray[i] = single_cstring
-		labels_Lengths[i] = (C.uint64_t)(len(labels[i]))
+		single_ms := miqt_strdupg(labels[i])
+		defer C.free(single_ms)
+		labels_CArray[i] = (*C.struct_miqt_string)(single_ms)
 	}
-	C.QTableWidget_SetVerticalHeaderLabels(this.h, &labels_CArray[0], &labels_Lengths[0], C.size_t(len(labels)))
+	labels_ma := &C.struct_miqt_array{len: C.size_t(len(labels)), data: unsafe.Pointer(labels_CArray)}
+	defer runtime.KeepAlive(unsafe.Pointer(labels_ma))
+	C.QTableWidget_SetVerticalHeaderLabels(this.h, labels_ma)
 }
 
 func (this *QTableWidget) SetHorizontalHeaderLabels(labels []string) {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
-	labels_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(labels))))
-	labels_Lengths := (*[0xffff]C.uint64_t)(C.malloc(C.size_t(8 * len(labels))))
+	labels_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(labels))))
 	defer C.free(unsafe.Pointer(labels_CArray))
-	defer C.free(unsafe.Pointer(labels_Lengths))
 	for i := range labels {
-		single_cstring := C.CString(labels[i])
-		defer C.free(unsafe.Pointer(single_cstring))
-		labels_CArray[i] = single_cstring
-		labels_Lengths[i] = (C.uint64_t)(len(labels[i]))
+		single_ms := miqt_strdupg(labels[i])
+		defer C.free(single_ms)
+		labels_CArray[i] = (*C.struct_miqt_string)(single_ms)
 	}
-	C.QTableWidget_SetHorizontalHeaderLabels(this.h, &labels_CArray[0], &labels_Lengths[0], C.size_t(len(labels)))
+	labels_ma := &C.struct_miqt_array{len: C.size_t(len(labels)), data: unsafe.Pointer(labels_CArray)}
+	defer runtime.KeepAlive(unsafe.Pointer(labels_ma))
+	C.QTableWidget_SetHorizontalHeaderLabels(this.h, labels_ma)
 }
 
 func (this *QTableWidget) CurrentRow() int {
-	ret := C.QTableWidget_CurrentRow(this.h)
-	return (int)(ret)
+	_ret := C.QTableWidget_CurrentRow(this.h)
+	return (int)(_ret)
 }
 
 func (this *QTableWidget) CurrentColumn() int {
-	ret := C.QTableWidget_CurrentColumn(this.h)
-	return (int)(ret)
+	_ret := C.QTableWidget_CurrentColumn(this.h)
+	return (int)(_ret)
 }
 
 func (this *QTableWidget) CurrentItem() *QTableWidgetItem {
-	ret := C.QTableWidget_CurrentItem(this.h)
-	return newQTableWidgetItem_U(unsafe.Pointer(ret))
+	_ret := C.QTableWidget_CurrentItem(this.h)
+	return newQTableWidgetItem_U(unsafe.Pointer(_ret))
 }
 
 func (this *QTableWidget) SetCurrentItem(item *QTableWidgetItem) {
@@ -647,8 +621,8 @@ func (this *QTableWidget) SetSortingEnabled(enable bool) {
 }
 
 func (this *QTableWidget) IsSortingEnabled() bool {
-	ret := C.QTableWidget_IsSortingEnabled(this.h)
-	return (bool)(ret)
+	_ret := C.QTableWidget_IsSortingEnabled(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QTableWidget) EditItem(item *QTableWidgetItem) {
@@ -664,13 +638,13 @@ func (this *QTableWidget) ClosePersistentEditor(item *QTableWidgetItem) {
 }
 
 func (this *QTableWidget) IsPersistentEditorOpen(item *QTableWidgetItem) bool {
-	ret := C.QTableWidget_IsPersistentEditorOpen(this.h, item.cPointer())
-	return (bool)(ret)
+	_ret := C.QTableWidget_IsPersistentEditorOpen(this.h, item.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QTableWidget) CellWidget(row int, column int) *QWidget {
-	ret := C.QTableWidget_CellWidget(this.h, (C.int)(row), (C.int)(column))
-	return newQWidget_U(unsafe.Pointer(ret))
+	_ret := C.QTableWidget_CellWidget(this.h, (C.int)(row), (C.int)(column))
+	return newQWidget_U(unsafe.Pointer(_ret))
 }
 
 func (this *QTableWidget) SetCellWidget(row int, column int, widget *QWidget) {
@@ -682,8 +656,8 @@ func (this *QTableWidget) RemoveCellWidget(row int, column int) {
 }
 
 func (this *QTableWidget) IsItemSelected(item *QTableWidgetItem) bool {
-	ret := C.QTableWidget_IsItemSelected(this.h, item.cPointer())
-	return (bool)(ret)
+	_ret := C.QTableWidget_IsItemSelected(this.h, item.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QTableWidget) SetItemSelected(item *QTableWidgetItem, selectVal bool) {
@@ -695,80 +669,70 @@ func (this *QTableWidget) SetRangeSelected(rangeVal *QTableWidgetSelectionRange,
 }
 
 func (this *QTableWidget) SelectedRanges() []QTableWidgetSelectionRange {
-	var _out **C.QTableWidgetSelectionRange = nil
-	var _out_len C.size_t = 0
-	C.QTableWidget_SelectedRanges(this.h, &_out, &_out_len)
-	ret := make([]QTableWidgetSelectionRange, int(_out_len))
-	_outCast := (*[0xffff]*C.QTableWidgetSelectionRange)(unsafe.Pointer(_out)) // so fresh so clean
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = *newQTableWidgetSelectionRange(_outCast[i])
+	var _ma *C.struct_miqt_array = C.QTableWidget_SelectedRanges(this.h)
+	_ret := make([]QTableWidgetSelectionRange, int(_ma.len))
+	_outCast := (*[0xffff]*C.QTableWidgetSelectionRange)(unsafe.Pointer(_ma.data)) // mrs jackson
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = *newQTableWidgetSelectionRange(_outCast[i])
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
 func (this *QTableWidget) SelectedItems() []*QTableWidgetItem {
-	var _out **C.QTableWidgetItem = nil
-	var _out_len C.size_t = 0
-	C.QTableWidget_SelectedItems(this.h, &_out, &_out_len)
-	ret := make([]*QTableWidgetItem, int(_out_len))
-	_outCast := (*[0xffff]*C.QTableWidgetItem)(unsafe.Pointer(_out)) // so fresh so clean
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = newQTableWidgetItem(_outCast[i])
+	var _ma *C.struct_miqt_array = C.QTableWidget_SelectedItems(this.h)
+	_ret := make([]*QTableWidgetItem, int(_ma.len))
+	_outCast := (*[0xffff]*C.QTableWidgetItem)(unsafe.Pointer(_ma.data)) // mrs jackson
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = newQTableWidgetItem(_outCast[i])
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
 func (this *QTableWidget) FindItems(text string, flags int) []*QTableWidgetItem {
-	text_Cstring := C.CString(text)
-	defer C.free(unsafe.Pointer(text_Cstring))
-	var _out **C.QTableWidgetItem = nil
-	var _out_len C.size_t = 0
-	C.QTableWidget_FindItems(this.h, text_Cstring, C.size_t(len(text)), (C.int)(flags), &_out, &_out_len)
-	ret := make([]*QTableWidgetItem, int(_out_len))
-	_outCast := (*[0xffff]*C.QTableWidgetItem)(unsafe.Pointer(_out)) // so fresh so clean
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = newQTableWidgetItem(_outCast[i])
+	text_ms := miqt_strdupg(text)
+	defer C.free(text_ms)
+	var _ma *C.struct_miqt_array = C.QTableWidget_FindItems(this.h, (*C.struct_miqt_string)(text_ms), (C.int)(flags))
+	_ret := make([]*QTableWidgetItem, int(_ma.len))
+	_outCast := (*[0xffff]*C.QTableWidgetItem)(unsafe.Pointer(_ma.data)) // mrs jackson
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = newQTableWidgetItem(_outCast[i])
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
 func (this *QTableWidget) VisualRow(logicalRow int) int {
-	ret := C.QTableWidget_VisualRow(this.h, (C.int)(logicalRow))
-	return (int)(ret)
+	_ret := C.QTableWidget_VisualRow(this.h, (C.int)(logicalRow))
+	return (int)(_ret)
 }
 
 func (this *QTableWidget) VisualColumn(logicalColumn int) int {
-	ret := C.QTableWidget_VisualColumn(this.h, (C.int)(logicalColumn))
-	return (int)(ret)
+	_ret := C.QTableWidget_VisualColumn(this.h, (C.int)(logicalColumn))
+	return (int)(_ret)
 }
 
 func (this *QTableWidget) ItemAt(p *QPoint) *QTableWidgetItem {
-	ret := C.QTableWidget_ItemAt(this.h, p.cPointer())
-	return newQTableWidgetItem_U(unsafe.Pointer(ret))
+	_ret := C.QTableWidget_ItemAt(this.h, p.cPointer())
+	return newQTableWidgetItem_U(unsafe.Pointer(_ret))
 }
 
 func (this *QTableWidget) ItemAt2(x int, y int) *QTableWidgetItem {
-	ret := C.QTableWidget_ItemAt2(this.h, (C.int)(x), (C.int)(y))
-	return newQTableWidgetItem_U(unsafe.Pointer(ret))
+	_ret := C.QTableWidget_ItemAt2(this.h, (C.int)(x), (C.int)(y))
+	return newQTableWidgetItem_U(unsafe.Pointer(_ret))
 }
 
 func (this *QTableWidget) VisualItemRect(item *QTableWidgetItem) *QRect {
-	ret := C.QTableWidget_VisualItemRect(this.h, item.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRect(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRect) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QTableWidget_VisualItemRect(this.h, item.cPointer())
+	_goptr := newQRect(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QTableWidget) ItemPrototype() *QTableWidgetItem {
-	ret := C.QTableWidget_ItemPrototype(this.h)
-	return newQTableWidgetItem_U(unsafe.Pointer(ret))
+	_ret := C.QTableWidget_ItemPrototype(this.h)
+	return newQTableWidgetItem_U(unsafe.Pointer(_ret))
 }
 
 func (this *QTableWidget) SetItemPrototype(item *QTableWidgetItem) {
@@ -806,181 +770,341 @@ func (this *QTableWidget) ClearContents() {
 func (this *QTableWidget) ItemPressed(item *QTableWidgetItem) {
 	C.QTableWidget_ItemPressed(this.h, item.cPointer())
 }
+func (this *QTableWidget) OnItemPressed(slot func(item *QTableWidgetItem)) {
+	C.QTableWidget_connect_ItemPressed(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QTableWidget) OnItemPressed(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QTableWidget_ItemPressed
+func miqt_exec_callback_QTableWidget_ItemPressed(cb *C.void, item *C.QTableWidgetItem) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(item *QTableWidgetItem))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QTableWidget_connect_ItemPressed(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	item_ret := item
+	slotval1 := newQTableWidgetItem_U(unsafe.Pointer(item_ret))
+
+	gofunc(slotval1)
 }
 
 func (this *QTableWidget) ItemClicked(item *QTableWidgetItem) {
 	C.QTableWidget_ItemClicked(this.h, item.cPointer())
 }
+func (this *QTableWidget) OnItemClicked(slot func(item *QTableWidgetItem)) {
+	C.QTableWidget_connect_ItemClicked(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QTableWidget) OnItemClicked(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QTableWidget_ItemClicked
+func miqt_exec_callback_QTableWidget_ItemClicked(cb *C.void, item *C.QTableWidgetItem) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(item *QTableWidgetItem))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QTableWidget_connect_ItemClicked(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	item_ret := item
+	slotval1 := newQTableWidgetItem_U(unsafe.Pointer(item_ret))
+
+	gofunc(slotval1)
 }
 
 func (this *QTableWidget) ItemDoubleClicked(item *QTableWidgetItem) {
 	C.QTableWidget_ItemDoubleClicked(this.h, item.cPointer())
 }
+func (this *QTableWidget) OnItemDoubleClicked(slot func(item *QTableWidgetItem)) {
+	C.QTableWidget_connect_ItemDoubleClicked(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QTableWidget) OnItemDoubleClicked(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QTableWidget_ItemDoubleClicked
+func miqt_exec_callback_QTableWidget_ItemDoubleClicked(cb *C.void, item *C.QTableWidgetItem) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(item *QTableWidgetItem))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QTableWidget_connect_ItemDoubleClicked(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	item_ret := item
+	slotval1 := newQTableWidgetItem_U(unsafe.Pointer(item_ret))
+
+	gofunc(slotval1)
 }
 
 func (this *QTableWidget) ItemActivated(item *QTableWidgetItem) {
 	C.QTableWidget_ItemActivated(this.h, item.cPointer())
 }
+func (this *QTableWidget) OnItemActivated(slot func(item *QTableWidgetItem)) {
+	C.QTableWidget_connect_ItemActivated(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QTableWidget) OnItemActivated(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QTableWidget_ItemActivated
+func miqt_exec_callback_QTableWidget_ItemActivated(cb *C.void, item *C.QTableWidgetItem) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(item *QTableWidgetItem))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QTableWidget_connect_ItemActivated(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	item_ret := item
+	slotval1 := newQTableWidgetItem_U(unsafe.Pointer(item_ret))
+
+	gofunc(slotval1)
 }
 
 func (this *QTableWidget) ItemEntered(item *QTableWidgetItem) {
 	C.QTableWidget_ItemEntered(this.h, item.cPointer())
 }
+func (this *QTableWidget) OnItemEntered(slot func(item *QTableWidgetItem)) {
+	C.QTableWidget_connect_ItemEntered(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QTableWidget) OnItemEntered(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QTableWidget_ItemEntered
+func miqt_exec_callback_QTableWidget_ItemEntered(cb *C.void, item *C.QTableWidgetItem) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(item *QTableWidgetItem))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QTableWidget_connect_ItemEntered(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	item_ret := item
+	slotval1 := newQTableWidgetItem_U(unsafe.Pointer(item_ret))
+
+	gofunc(slotval1)
 }
 
 func (this *QTableWidget) ItemChanged(item *QTableWidgetItem) {
 	C.QTableWidget_ItemChanged(this.h, item.cPointer())
 }
+func (this *QTableWidget) OnItemChanged(slot func(item *QTableWidgetItem)) {
+	C.QTableWidget_connect_ItemChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QTableWidget) OnItemChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QTableWidget_ItemChanged
+func miqt_exec_callback_QTableWidget_ItemChanged(cb *C.void, item *C.QTableWidgetItem) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(item *QTableWidgetItem))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QTableWidget_connect_ItemChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	item_ret := item
+	slotval1 := newQTableWidgetItem_U(unsafe.Pointer(item_ret))
+
+	gofunc(slotval1)
 }
 
 func (this *QTableWidget) CurrentItemChanged(current *QTableWidgetItem, previous *QTableWidgetItem) {
 	C.QTableWidget_CurrentItemChanged(this.h, current.cPointer(), previous.cPointer())
 }
+func (this *QTableWidget) OnCurrentItemChanged(slot func(current *QTableWidgetItem, previous *QTableWidgetItem)) {
+	C.QTableWidget_connect_CurrentItemChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QTableWidget) OnCurrentItemChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QTableWidget_CurrentItemChanged
+func miqt_exec_callback_QTableWidget_CurrentItemChanged(cb *C.void, current *C.QTableWidgetItem, previous *C.QTableWidgetItem) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(current *QTableWidgetItem, previous *QTableWidgetItem))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QTableWidget_connect_CurrentItemChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	current_ret := current
+	slotval1 := newQTableWidgetItem_U(unsafe.Pointer(current_ret))
+	previous_ret := previous
+	slotval2 := newQTableWidgetItem_U(unsafe.Pointer(previous_ret))
+
+	gofunc(slotval1, slotval2)
 }
 
 func (this *QTableWidget) ItemSelectionChanged() {
 	C.QTableWidget_ItemSelectionChanged(this.h)
 }
-
 func (this *QTableWidget) OnItemSelectionChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+	C.QTableWidget_connect_ItemSelectionChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
+
+//export miqt_exec_callback_QTableWidget_ItemSelectionChanged
+func miqt_exec_callback_QTableWidget_ItemSelectionChanged(cb *C.void) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QTableWidget_connect_ItemSelectionChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	gofunc()
 }
 
 func (this *QTableWidget) CellPressed(row int, column int) {
 	C.QTableWidget_CellPressed(this.h, (C.int)(row), (C.int)(column))
 }
+func (this *QTableWidget) OnCellPressed(slot func(row int, column int)) {
+	C.QTableWidget_connect_CellPressed(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QTableWidget) OnCellPressed(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QTableWidget_CellPressed
+func miqt_exec_callback_QTableWidget_CellPressed(cb *C.void, row C.int, column C.int) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(row int, column int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QTableWidget_connect_CellPressed(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	row_ret := row
+	slotval1 := (int)(row_ret)
+
+	column_ret := column
+	slotval2 := (int)(column_ret)
+
+	gofunc(slotval1, slotval2)
 }
 
 func (this *QTableWidget) CellClicked(row int, column int) {
 	C.QTableWidget_CellClicked(this.h, (C.int)(row), (C.int)(column))
 }
+func (this *QTableWidget) OnCellClicked(slot func(row int, column int)) {
+	C.QTableWidget_connect_CellClicked(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QTableWidget) OnCellClicked(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QTableWidget_CellClicked
+func miqt_exec_callback_QTableWidget_CellClicked(cb *C.void, row C.int, column C.int) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(row int, column int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QTableWidget_connect_CellClicked(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	row_ret := row
+	slotval1 := (int)(row_ret)
+
+	column_ret := column
+	slotval2 := (int)(column_ret)
+
+	gofunc(slotval1, slotval2)
 }
 
 func (this *QTableWidget) CellDoubleClicked(row int, column int) {
 	C.QTableWidget_CellDoubleClicked(this.h, (C.int)(row), (C.int)(column))
 }
+func (this *QTableWidget) OnCellDoubleClicked(slot func(row int, column int)) {
+	C.QTableWidget_connect_CellDoubleClicked(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QTableWidget) OnCellDoubleClicked(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QTableWidget_CellDoubleClicked
+func miqt_exec_callback_QTableWidget_CellDoubleClicked(cb *C.void, row C.int, column C.int) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(row int, column int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QTableWidget_connect_CellDoubleClicked(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	row_ret := row
+	slotval1 := (int)(row_ret)
+
+	column_ret := column
+	slotval2 := (int)(column_ret)
+
+	gofunc(slotval1, slotval2)
 }
 
 func (this *QTableWidget) CellActivated(row int, column int) {
 	C.QTableWidget_CellActivated(this.h, (C.int)(row), (C.int)(column))
 }
+func (this *QTableWidget) OnCellActivated(slot func(row int, column int)) {
+	C.QTableWidget_connect_CellActivated(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QTableWidget) OnCellActivated(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QTableWidget_CellActivated
+func miqt_exec_callback_QTableWidget_CellActivated(cb *C.void, row C.int, column C.int) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(row int, column int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QTableWidget_connect_CellActivated(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	row_ret := row
+	slotval1 := (int)(row_ret)
+
+	column_ret := column
+	slotval2 := (int)(column_ret)
+
+	gofunc(slotval1, slotval2)
 }
 
 func (this *QTableWidget) CellEntered(row int, column int) {
 	C.QTableWidget_CellEntered(this.h, (C.int)(row), (C.int)(column))
 }
+func (this *QTableWidget) OnCellEntered(slot func(row int, column int)) {
+	C.QTableWidget_connect_CellEntered(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QTableWidget) OnCellEntered(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QTableWidget_CellEntered
+func miqt_exec_callback_QTableWidget_CellEntered(cb *C.void, row C.int, column C.int) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(row int, column int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QTableWidget_connect_CellEntered(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	row_ret := row
+	slotval1 := (int)(row_ret)
+
+	column_ret := column
+	slotval2 := (int)(column_ret)
+
+	gofunc(slotval1, slotval2)
 }
 
 func (this *QTableWidget) CellChanged(row int, column int) {
 	C.QTableWidget_CellChanged(this.h, (C.int)(row), (C.int)(column))
 }
+func (this *QTableWidget) OnCellChanged(slot func(row int, column int)) {
+	C.QTableWidget_connect_CellChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QTableWidget) OnCellChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QTableWidget_CellChanged
+func miqt_exec_callback_QTableWidget_CellChanged(cb *C.void, row C.int, column C.int) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(row int, column int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QTableWidget_connect_CellChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	row_ret := row
+	slotval1 := (int)(row_ret)
+
+	column_ret := column
+	slotval2 := (int)(column_ret)
+
+	gofunc(slotval1, slotval2)
 }
 
 func (this *QTableWidget) CurrentCellChanged(currentRow int, currentColumn int, previousRow int, previousColumn int) {
 	C.QTableWidget_CurrentCellChanged(this.h, (C.int)(currentRow), (C.int)(currentColumn), (C.int)(previousRow), (C.int)(previousColumn))
 }
+func (this *QTableWidget) OnCurrentCellChanged(slot func(currentRow int, currentColumn int, previousRow int, previousColumn int)) {
+	C.QTableWidget_connect_CurrentCellChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QTableWidget) OnCurrentCellChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QTableWidget_CurrentCellChanged
+func miqt_exec_callback_QTableWidget_CurrentCellChanged(cb *C.void, currentRow C.int, currentColumn C.int, previousRow C.int, previousColumn C.int) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(currentRow int, currentColumn int, previousRow int, previousColumn int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QTableWidget_connect_CurrentCellChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	currentRow_ret := currentRow
+	slotval1 := (int)(currentRow_ret)
+
+	currentColumn_ret := currentColumn
+	slotval2 := (int)(currentColumn_ret)
+
+	previousRow_ret := previousRow
+	slotval3 := (int)(previousRow_ret)
+
+	previousColumn_ret := previousColumn
+	slotval4 := (int)(previousColumn_ret)
+
+	gofunc(slotval1, slotval2, slotval3, slotval4)
 }
 
 func QTableWidget_Tr2(s string, c string) string {
@@ -988,12 +1112,10 @@ func QTableWidget_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTableWidget_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTableWidget_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QTableWidget_Tr3(s string, c string, n int) string {
@@ -1001,12 +1123,10 @@ func QTableWidget_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTableWidget_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTableWidget_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QTableWidget_TrUtf82(s string, c string) string {
@@ -1014,12 +1134,10 @@ func QTableWidget_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTableWidget_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTableWidget_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QTableWidget_TrUtf83(s string, c string, n int) string {
@@ -1027,12 +1145,10 @@ func QTableWidget_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTableWidget_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTableWidget_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QTableWidget) SortItems2(column int, order SortOrder) {
@@ -1043,6 +1159,16 @@ func (this *QTableWidget) ScrollToItem2(item *QTableWidgetItem, hint QAbstractIt
 	C.QTableWidget_ScrollToItem2(this.h, item.cPointer(), (C.uintptr_t)(hint))
 }
 
+// Delete this object from C++ memory.
 func (this *QTableWidget) Delete() {
 	C.QTableWidget_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QTableWidget) GoGC() {
+	runtime.SetFinalizer(this, func(this *QTableWidget) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

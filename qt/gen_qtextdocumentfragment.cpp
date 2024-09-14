@@ -6,12 +6,8 @@
 #include <QTextDocument>
 #include <QTextDocumentFragment>
 #include "qtextdocumentfragment.h"
-
 #include "gen_qtextdocumentfragment.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QTextDocumentFragment* QTextDocumentFragment_new() {
 	return new QTextDocumentFragment();
@@ -37,52 +33,46 @@ bool QTextDocumentFragment_IsEmpty(const QTextDocumentFragment* self) {
 	return self->isEmpty();
 }
 
-void QTextDocumentFragment_ToPlainText(const QTextDocumentFragment* self, char** _out, int* _out_Strlen) {
-	QString ret = self->toPlainText();
+struct miqt_string* QTextDocumentFragment_ToPlainText(const QTextDocumentFragment* self) {
+	QString _ret = self->toPlainText();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QTextDocumentFragment_ToHtml(const QTextDocumentFragment* self, char** _out, int* _out_Strlen) {
-	QString ret = self->toHtml();
+struct miqt_string* QTextDocumentFragment_ToHtml(const QTextDocumentFragment* self) {
+	QString _ret = self->toHtml();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-QTextDocumentFragment* QTextDocumentFragment_FromPlainText(const char* plainText, size_t plainText_Strlen) {
-	QString plainText_QString = QString::fromUtf8(plainText, plainText_Strlen);
-	QTextDocumentFragment ret = QTextDocumentFragment::fromPlainText(plainText_QString);
+QTextDocumentFragment* QTextDocumentFragment_FromPlainText(struct miqt_string* plainText) {
+	QString plainText_QString = QString::fromUtf8(&plainText->data, plainText->len);
+	QTextDocumentFragment _ret = QTextDocumentFragment::fromPlainText(plainText_QString);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextDocumentFragment*>(new QTextDocumentFragment(ret));
+	return static_cast<QTextDocumentFragment*>(new QTextDocumentFragment(_ret));
 }
 
-QTextDocumentFragment* QTextDocumentFragment_FromHtml(const char* html, size_t html_Strlen) {
-	QString html_QString = QString::fromUtf8(html, html_Strlen);
-	QTextDocumentFragment ret = QTextDocumentFragment::fromHtml(html_QString);
+QTextDocumentFragment* QTextDocumentFragment_FromHtml(struct miqt_string* html) {
+	QString html_QString = QString::fromUtf8(&html->data, html->len);
+	QTextDocumentFragment _ret = QTextDocumentFragment::fromHtml(html_QString);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextDocumentFragment*>(new QTextDocumentFragment(ret));
+	return static_cast<QTextDocumentFragment*>(new QTextDocumentFragment(_ret));
 }
 
-QTextDocumentFragment* QTextDocumentFragment_FromHtml2(const char* html, size_t html_Strlen, QTextDocument* resourceProvider) {
-	QString html_QString = QString::fromUtf8(html, html_Strlen);
-	QTextDocumentFragment ret = QTextDocumentFragment::fromHtml(html_QString, resourceProvider);
+QTextDocumentFragment* QTextDocumentFragment_FromHtml2(struct miqt_string* html, QTextDocument* resourceProvider) {
+	QString html_QString = QString::fromUtf8(&html->data, html->len);
+	QTextDocumentFragment _ret = QTextDocumentFragment::fromHtml(html_QString, resourceProvider);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextDocumentFragment*>(new QTextDocumentFragment(ret));
+	return static_cast<QTextDocumentFragment*>(new QTextDocumentFragment(_ret));
 }
 
-void QTextDocumentFragment_ToHtml1(const QTextDocumentFragment* self, QByteArray* encoding, char** _out, int* _out_Strlen) {
-	QString ret = self->toHtml(*encoding);
+struct miqt_string* QTextDocumentFragment_ToHtml1(const QTextDocumentFragment* self, QByteArray* encoding) {
+	QString _ret = self->toHtml(*encoding);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QTextDocumentFragment_Delete(QTextDocumentFragment* self) {

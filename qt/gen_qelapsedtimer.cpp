@@ -1,19 +1,15 @@
 #include <QElapsedTimer>
 #include "qelapsedtimer.h"
-
 #include "gen_qelapsedtimer.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QElapsedTimer* QElapsedTimer_new() {
 	return new QElapsedTimer();
 }
 
 uintptr_t QElapsedTimer_ClockType() {
-	QElapsedTimer::ClockType ret = QElapsedTimer::clockType();
-	return static_cast<uintptr_t>(ret);
+	QElapsedTimer::ClockType _ret = QElapsedTimer::clockType();
+	return static_cast<uintptr_t>(_ret);
 }
 
 bool QElapsedTimer_IsMonotonic() {

@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -53,14 +55,14 @@ QRect* QImageIOHandler_CurrentImageRect(const QImageIOHandler* self);
 void QImageIOHandler_Delete(QImageIOHandler* self);
 
 QMetaObject* QImageIOPlugin_MetaObject(const QImageIOPlugin* self);
-void QImageIOPlugin_Tr(const char* s, char** _out, int* _out_Strlen);
-void QImageIOPlugin_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QImageIOPlugin_Tr(const char* s);
+struct miqt_string* QImageIOPlugin_TrUtf8(const char* s);
 int QImageIOPlugin_Capabilities(const QImageIOPlugin* self, QIODevice* device, QByteArray* format);
 QImageIOHandler* QImageIOPlugin_Create(const QImageIOPlugin* self, QIODevice* device);
-void QImageIOPlugin_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QImageIOPlugin_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QImageIOPlugin_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QImageIOPlugin_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QImageIOPlugin_Tr2(const char* s, const char* c);
+struct miqt_string* QImageIOPlugin_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QImageIOPlugin_TrUtf82(const char* s, const char* c);
+struct miqt_string* QImageIOPlugin_TrUtf83(const char* s, const char* c, int n);
 QImageIOHandler* QImageIOPlugin_Create2(const QImageIOPlugin* self, QIODevice* device, QByteArray* format);
 void QImageIOPlugin_Delete(QImageIOPlugin* self);
 

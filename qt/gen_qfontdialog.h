@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -28,8 +30,8 @@ QFontDialog* QFontDialog_new2(QFont* initial);
 QFontDialog* QFontDialog_new3(QWidget* parent);
 QFontDialog* QFontDialog_new4(QFont* initial, QWidget* parent);
 QMetaObject* QFontDialog_MetaObject(const QFontDialog* self);
-void QFontDialog_Tr(const char* s, char** _out, int* _out_Strlen);
-void QFontDialog_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QFontDialog_Tr(const char* s);
+struct miqt_string* QFontDialog_TrUtf8(const char* s);
 void QFontDialog_SetCurrentFont(QFontDialog* self, QFont* font);
 QFont* QFontDialog_CurrentFont(const QFontDialog* self);
 QFont* QFontDialog_SelectedFont(const QFontDialog* self);
@@ -44,15 +46,15 @@ void QFontDialog_CurrentFontChanged(QFontDialog* self, QFont* font);
 void QFontDialog_connect_CurrentFontChanged(QFontDialog* self, void* slot);
 void QFontDialog_FontSelected(QFontDialog* self, QFont* font);
 void QFontDialog_connect_FontSelected(QFontDialog* self, void* slot);
-void QFontDialog_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QFontDialog_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QFontDialog_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QFontDialog_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QFontDialog_Tr2(const char* s, const char* c);
+struct miqt_string* QFontDialog_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QFontDialog_TrUtf82(const char* s, const char* c);
+struct miqt_string* QFontDialog_TrUtf83(const char* s, const char* c, int n);
 void QFontDialog_SetOption2(QFontDialog* self, uintptr_t option, bool on);
 QFont* QFontDialog_GetFont22(bool* ok, QWidget* parent);
 QFont* QFontDialog_GetFont3(bool* ok, QFont* initial, QWidget* parent);
-QFont* QFontDialog_GetFont4(bool* ok, QFont* initial, QWidget* parent, const char* title, size_t title_Strlen);
-QFont* QFontDialog_GetFont5(bool* ok, QFont* initial, QWidget* parent, const char* title, size_t title_Strlen, int options);
+QFont* QFontDialog_GetFont4(bool* ok, QFont* initial, QWidget* parent, struct miqt_string* title);
+QFont* QFontDialog_GetFont5(bool* ok, QFont* initial, QWidget* parent, struct miqt_string* title, int options);
 void QFontDialog_Delete(QFontDialog* self);
 
 #ifdef __cplusplus

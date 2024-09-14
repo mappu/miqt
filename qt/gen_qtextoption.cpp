@@ -3,12 +3,8 @@
 #include <QTextOption>
 #define WORKAROUND_INNER_CLASS_DEFINITION_QTextOption__Tab
 #include "qtextoption.h"
-
 #include "gen_qtextoption.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QTextOption* QTextOption_new() {
 	return new QTextOption();
@@ -31,8 +27,8 @@ void QTextOption_SetAlignment(QTextOption* self, int alignment) {
 }
 
 int QTextOption_Alignment(const QTextOption* self) {
-	Qt::Alignment ret = self->alignment();
-	return static_cast<int>(ret);
+	Qt::Alignment _ret = self->alignment();
+	return static_cast<int>(_ret);
 }
 
 void QTextOption_SetTextDirection(QTextOption* self, uintptr_t aDirection) {
@@ -40,8 +36,8 @@ void QTextOption_SetTextDirection(QTextOption* self, uintptr_t aDirection) {
 }
 
 uintptr_t QTextOption_TextDirection(const QTextOption* self) {
-	Qt::LayoutDirection ret = self->textDirection();
-	return static_cast<uintptr_t>(ret);
+	Qt::LayoutDirection _ret = self->textDirection();
+	return static_cast<uintptr_t>(_ret);
 }
 
 void QTextOption_SetWrapMode(QTextOption* self, uintptr_t wrap) {
@@ -49,8 +45,8 @@ void QTextOption_SetWrapMode(QTextOption* self, uintptr_t wrap) {
 }
 
 uintptr_t QTextOption_WrapMode(const QTextOption* self) {
-	QTextOption::WrapMode ret = self->wrapMode();
-	return static_cast<uintptr_t>(ret);
+	QTextOption::WrapMode _ret = self->wrapMode();
+	return static_cast<uintptr_t>(_ret);
 }
 
 void QTextOption_SetFlags(QTextOption* self, int flags) {
@@ -58,8 +54,8 @@ void QTextOption_SetFlags(QTextOption* self, int flags) {
 }
 
 int QTextOption_Flags(const QTextOption* self) {
-	QTextOption::Flags ret = self->flags();
-	return static_cast<int>(ret);
+	QTextOption::Flags _ret = self->flags();
+	return static_cast<int>(_ret);
 }
 
 void QTextOption_SetTabStop(QTextOption* self, double tabStop) {
@@ -78,44 +74,50 @@ double QTextOption_TabStopDistance(const QTextOption* self) {
 	return self->tabStopDistance();
 }
 
-void QTextOption_SetTabArray(QTextOption* self, double* tabStops, size_t tabStops_len) {
+void QTextOption_SetTabArray(QTextOption* self, struct miqt_array* /* of double */ tabStops) {
 	QList<double> tabStops_QList;
-	tabStops_QList.reserve(tabStops_len);
-	for(size_t i = 0; i < tabStops_len; ++i) {
-		tabStops_QList.push_back(tabStops[i]);
+	tabStops_QList.reserve(tabStops->len);
+	double* tabStops_arr = static_cast<double*>(tabStops->data);
+	for(size_t i = 0; i < tabStops->len; ++i) {
+		tabStops_QList.push_back(tabStops_arr[i]);
 	}
 	self->setTabArray(tabStops_QList);
 }
 
-void QTextOption_TabArray(const QTextOption* self, double** _out, size_t* _out_len) {
-	QList<double> ret = self->tabArray();
+struct miqt_array* QTextOption_TabArray(const QTextOption* self) {
+	QList<double> _ret = self->tabArray();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	double* __out = static_cast<double*>(malloc(sizeof(double) * ret.length()));
-	for (size_t i = 0, e = ret.length(); i < e; ++i) {
-		__out[i] = ret[i];
+	double* _arr = static_cast<double*>(malloc(sizeof(double) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		_arr[i] = _ret[i];
 	}
-	*_out = __out;
-	*_out_len = ret.length();
+	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
+	_out->len = _ret.length();
+	_out->data = static_cast<void*>(_arr);
+	return _out;
 }
 
-void QTextOption_SetTabs(QTextOption* self, QTextOption__Tab** tabStops, size_t tabStops_len) {
+void QTextOption_SetTabs(QTextOption* self, struct miqt_array* /* of QTextOption__Tab */ tabStops) {
 	QList<QTextOption::Tab> tabStops_QList;
-	tabStops_QList.reserve(tabStops_len);
-	for(size_t i = 0; i < tabStops_len; ++i) {
-		tabStops_QList.push_back(*(tabStops[i]));
+	tabStops_QList.reserve(tabStops->len);
+	QTextOption__Tab** tabStops_arr = static_cast<QTextOption__Tab**>(tabStops->data);
+	for(size_t i = 0; i < tabStops->len; ++i) {
+		tabStops_QList.push_back(*(tabStops_arr[i]));
 	}
 	self->setTabs(tabStops_QList);
 }
 
-void QTextOption_Tabs(const QTextOption* self, QTextOption__Tab*** _out, size_t* _out_len) {
-	QList<QTextOption::Tab> ret = self->tabs();
+struct miqt_array* QTextOption_Tabs(const QTextOption* self) {
+	QList<QTextOption::Tab> _ret = self->tabs();
 	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
-	QTextOption__Tab** __out = static_cast<QTextOption__Tab**>(malloc(sizeof(QTextOption__Tab**) * ret.length()));
-	for (size_t i = 0, e = ret.length(); i < e; ++i) {
-		__out[i] = new QTextOption::Tab(ret[i]);
+	QTextOption__Tab** _arr = static_cast<QTextOption__Tab**>(malloc(sizeof(QTextOption__Tab**) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		_arr[i] = new QTextOption::Tab(_ret[i]);
 	}
-	*_out = __out;
-	*_out_len = ret.length();
+	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
+	_out->len = _ret.length();
+	_out->data = static_cast<void*>(_arr);
+	return _out;
 }
 
 void QTextOption_SetUseDesignMetrics(QTextOption* self, bool b) {

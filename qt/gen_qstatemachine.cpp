@@ -11,12 +11,8 @@
 #include <QByteArray>
 #include <cstring>
 #include "qstatemachine.h"
-
 #include "gen_qstatemachine.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QStateMachine* QStateMachine_new() {
 	return new QStateMachine();
@@ -38,22 +34,18 @@ QMetaObject* QStateMachine_MetaObject(const QStateMachine* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void QStateMachine_Tr(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QStateMachine::tr(s);
+struct miqt_string* QStateMachine_Tr(const char* s) {
+	QString _ret = QStateMachine::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QStateMachine_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QStateMachine::trUtf8(s);
+struct miqt_string* QStateMachine_TrUtf8(const char* s) {
+	QString _ret = QStateMachine::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QStateMachine_AddState(QStateMachine* self, QAbstractState* state) {
@@ -65,17 +57,15 @@ void QStateMachine_RemoveState(QStateMachine* self, QAbstractState* state) {
 }
 
 uintptr_t QStateMachine_Error(const QStateMachine* self) {
-	QStateMachine::Error ret = self->error();
-	return static_cast<uintptr_t>(ret);
+	QStateMachine::Error _ret = self->error();
+	return static_cast<uintptr_t>(_ret);
 }
 
-void QStateMachine_ErrorString(const QStateMachine* self, char** _out, int* _out_Strlen) {
-	QString ret = self->errorString();
+struct miqt_string* QStateMachine_ErrorString(const QStateMachine* self) {
+	QString _ret = self->errorString();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QStateMachine_ClearError(QStateMachine* self) {
@@ -98,15 +88,17 @@ void QStateMachine_AddDefaultAnimation(QStateMachine* self, QAbstractAnimation* 
 	self->addDefaultAnimation(animation);
 }
 
-void QStateMachine_DefaultAnimations(const QStateMachine* self, QAbstractAnimation*** _out, size_t* _out_len) {
-	QList<QAbstractAnimation*> ret = self->defaultAnimations();
+struct miqt_array* QStateMachine_DefaultAnimations(const QStateMachine* self) {
+	QList<QAbstractAnimation*> _ret = self->defaultAnimations();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QAbstractAnimation** __out = static_cast<QAbstractAnimation**>(malloc(sizeof(QAbstractAnimation*) * ret.length()));
-	for (size_t i = 0, e = ret.length(); i < e; ++i) {
-		__out[i] = ret[i];
+	QAbstractAnimation** _arr = static_cast<QAbstractAnimation**>(malloc(sizeof(QAbstractAnimation*) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		_arr[i] = _ret[i];
 	}
-	*_out = __out;
-	*_out_len = ret.length();
+	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
+	_out->len = _ret.length();
+	_out->data = static_cast<void*>(_arr);
+	return _out;
 }
 
 void QStateMachine_RemoveDefaultAnimation(QStateMachine* self, QAbstractAnimation* animation) {
@@ -114,8 +106,8 @@ void QStateMachine_RemoveDefaultAnimation(QStateMachine* self, QAbstractAnimatio
 }
 
 uintptr_t QStateMachine_GlobalRestorePolicy(const QStateMachine* self) {
-	QState::RestorePolicy ret = self->globalRestorePolicy();
-	return static_cast<uintptr_t>(ret);
+	QState::RestorePolicy _ret = self->globalRestorePolicy();
+	return static_cast<uintptr_t>(_ret);
 }
 
 void QStateMachine_SetGlobalRestorePolicy(QStateMachine* self, uintptr_t restorePolicy) {
@@ -156,44 +148,37 @@ void QStateMachine_RunningChanged(QStateMachine* self, bool running) {
 
 void QStateMachine_connect_RunningChanged(QStateMachine* self, void* slot) {
 	QStateMachine::connect(self, static_cast<void (QStateMachine::*)(bool)>(&QStateMachine::runningChanged), self, [=](bool running) {
-		miqt_exec_callback(slot, 0, nullptr);
+		bool sigval1 = running;
+		miqt_exec_callback_QStateMachine_RunningChanged(slot, sigval1);
 	});
 }
 
-void QStateMachine_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QStateMachine::tr(s, c);
+struct miqt_string* QStateMachine_Tr2(const char* s, const char* c) {
+	QString _ret = QStateMachine::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QStateMachine_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QStateMachine::tr(s, c, static_cast<int>(n));
+struct miqt_string* QStateMachine_Tr3(const char* s, const char* c, int n) {
+	QString _ret = QStateMachine::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QStateMachine_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QStateMachine::trUtf8(s, c);
+struct miqt_string* QStateMachine_TrUtf82(const char* s, const char* c) {
+	QString _ret = QStateMachine::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QStateMachine_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QStateMachine::trUtf8(s, c, static_cast<int>(n));
+struct miqt_string* QStateMachine_TrUtf83(const char* s, const char* c, int n) {
+	QString _ret = QStateMachine::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QStateMachine_PostEvent2(QStateMachine* self, QEvent* event, uintptr_t priority) {

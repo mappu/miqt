@@ -57,54 +57,48 @@ func NewQProgressBar2(parent *QWidget) *QProgressBar {
 }
 
 func (this *QProgressBar) MetaObject() *QMetaObject {
-	ret := C.QProgressBar_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QProgressBar_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QProgressBar_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QProgressBar_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QProgressBar_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QProgressBar_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QProgressBar_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QProgressBar_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QProgressBar) Minimum() int {
-	ret := C.QProgressBar_Minimum(this.h)
-	return (int)(ret)
+	_ret := C.QProgressBar_Minimum(this.h)
+	return (int)(_ret)
 }
 
 func (this *QProgressBar) Maximum() int {
-	ret := C.QProgressBar_Maximum(this.h)
-	return (int)(ret)
+	_ret := C.QProgressBar_Maximum(this.h)
+	return (int)(_ret)
 }
 
 func (this *QProgressBar) Value() int {
-	ret := C.QProgressBar_Value(this.h)
-	return (int)(ret)
+	_ret := C.QProgressBar_Value(this.h)
+	return (int)(_ret)
 }
 
 func (this *QProgressBar) Text() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QProgressBar_Text(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QProgressBar_Text(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QProgressBar) SetTextVisible(visible bool) {
@@ -112,13 +106,13 @@ func (this *QProgressBar) SetTextVisible(visible bool) {
 }
 
 func (this *QProgressBar) IsTextVisible() bool {
-	ret := C.QProgressBar_IsTextVisible(this.h)
-	return (bool)(ret)
+	_ret := C.QProgressBar_IsTextVisible(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QProgressBar) Alignment() int {
-	ret := C.QProgressBar_Alignment(this.h)
-	return (int)(ret)
+	_ret := C.QProgressBar_Alignment(this.h)
+	return (int)(_ret)
 }
 
 func (this *QProgressBar) SetAlignment(alignment int) {
@@ -126,30 +120,22 @@ func (this *QProgressBar) SetAlignment(alignment int) {
 }
 
 func (this *QProgressBar) SizeHint() *QSize {
-	ret := C.QProgressBar_SizeHint(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSize(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QProgressBar_SizeHint(this.h)
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QProgressBar) MinimumSizeHint() *QSize {
-	ret := C.QProgressBar_MinimumSizeHint(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSize(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QProgressBar_MinimumSizeHint(this.h)
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QProgressBar) Orientation() Orientation {
-	ret := C.QProgressBar_Orientation(this.h)
-	return (Orientation)(ret)
+	_ret := C.QProgressBar_Orientation(this.h)
+	return (Orientation)(_ret)
 }
 
 func (this *QProgressBar) SetInvertedAppearance(invert bool) {
@@ -157,8 +143,8 @@ func (this *QProgressBar) SetInvertedAppearance(invert bool) {
 }
 
 func (this *QProgressBar) InvertedAppearance() bool {
-	ret := C.QProgressBar_InvertedAppearance(this.h)
-	return (bool)(ret)
+	_ret := C.QProgressBar_InvertedAppearance(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QProgressBar) SetTextDirection(textDirection QProgressBar__Direction) {
@@ -166,14 +152,14 @@ func (this *QProgressBar) SetTextDirection(textDirection QProgressBar__Direction
 }
 
 func (this *QProgressBar) TextDirection() QProgressBar__Direction {
-	ret := C.QProgressBar_TextDirection(this.h)
-	return (QProgressBar__Direction)(ret)
+	_ret := C.QProgressBar_TextDirection(this.h)
+	return (QProgressBar__Direction)(_ret)
 }
 
 func (this *QProgressBar) SetFormat(format string) {
-	format_Cstring := C.CString(format)
-	defer C.free(unsafe.Pointer(format_Cstring))
-	C.QProgressBar_SetFormat(this.h, format_Cstring, C.size_t(len(format)))
+	format_ms := miqt_strdupg(format)
+	defer C.free(format_ms)
+	C.QProgressBar_SetFormat(this.h, (*C.struct_miqt_string)(format_ms))
 }
 
 func (this *QProgressBar) ResetFormat() {
@@ -181,12 +167,10 @@ func (this *QProgressBar) ResetFormat() {
 }
 
 func (this *QProgressBar) Format() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QProgressBar_Format(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QProgressBar_Format(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QProgressBar) Reset() {
@@ -216,13 +200,22 @@ func (this *QProgressBar) SetOrientation(orientation Orientation) {
 func (this *QProgressBar) ValueChanged(value int) {
 	C.QProgressBar_ValueChanged(this.h, (C.int)(value))
 }
+func (this *QProgressBar) OnValueChanged(slot func(value int)) {
+	C.QProgressBar_connect_ValueChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QProgressBar) OnValueChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QProgressBar_ValueChanged
+func miqt_exec_callback_QProgressBar_ValueChanged(cb *C.void, value C.int) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(value int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QProgressBar_connect_ValueChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	value_ret := value
+	slotval1 := (int)(value_ret)
+
+	gofunc(slotval1)
 }
 
 func QProgressBar_Tr2(s string, c string) string {
@@ -230,12 +223,10 @@ func QProgressBar_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QProgressBar_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QProgressBar_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QProgressBar_Tr3(s string, c string, n int) string {
@@ -243,12 +234,10 @@ func QProgressBar_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QProgressBar_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QProgressBar_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QProgressBar_TrUtf82(s string, c string) string {
@@ -256,12 +245,10 @@ func QProgressBar_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QProgressBar_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QProgressBar_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QProgressBar_TrUtf83(s string, c string, n int) string {
@@ -269,14 +256,22 @@ func QProgressBar_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QProgressBar_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QProgressBar_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
+// Delete this object from C++ memory.
 func (this *QProgressBar) Delete() {
 	C.QProgressBar_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QProgressBar) GoGC() {
+	runtime.SetFinalizer(this, func(this *QProgressBar) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

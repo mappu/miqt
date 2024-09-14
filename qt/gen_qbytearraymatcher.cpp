@@ -2,12 +2,8 @@
 #include <QByteArrayMatcher>
 #include <QStaticByteArrayMatcherBase>
 #include "qbytearraymatcher.h"
-
 #include "gen_qbytearraymatcher.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QByteArrayMatcher* QByteArrayMatcher_new() {
 	return new QByteArrayMatcher();
@@ -42,9 +38,9 @@ int QByteArrayMatcher_IndexIn2(const QByteArrayMatcher* self, const char* str, i
 }
 
 QByteArray* QByteArrayMatcher_Pattern(const QByteArrayMatcher* self) {
-	QByteArray ret = self->pattern();
+	QByteArray _ret = self->pattern();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(ret));
+	return static_cast<QByteArray*>(new QByteArray(_ret));
 }
 
 int QByteArrayMatcher_IndexIn22(const QByteArrayMatcher* self, QByteArray* ba, int from) {

@@ -13,12 +13,8 @@
 #include <cstring>
 #include <QVariant>
 #include "qsortfilterproxymodel.h"
-
 #include "gen_qsortfilterproxymodel.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QSortFilterProxyModel* QSortFilterProxyModel_new() {
 	return new QSortFilterProxyModel();
@@ -32,22 +28,18 @@ QMetaObject* QSortFilterProxyModel_MetaObject(const QSortFilterProxyModel* self)
 	return (QMetaObject*) self->metaObject();
 }
 
-void QSortFilterProxyModel_Tr(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QSortFilterProxyModel::tr(s);
+struct miqt_string* QSortFilterProxyModel_Tr(const char* s) {
+	QString _ret = QSortFilterProxyModel::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QSortFilterProxyModel_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QSortFilterProxyModel::trUtf8(s);
+struct miqt_string* QSortFilterProxyModel_TrUtf8(const char* s) {
+	QString _ret = QSortFilterProxyModel::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QSortFilterProxyModel_SetSourceModel(QSortFilterProxyModel* self, QAbstractItemModel* sourceModel) {
@@ -55,27 +47,27 @@ void QSortFilterProxyModel_SetSourceModel(QSortFilterProxyModel* self, QAbstract
 }
 
 QModelIndex* QSortFilterProxyModel_MapToSource(const QSortFilterProxyModel* self, QModelIndex* proxyIndex) {
-	QModelIndex ret = self->mapToSource(*proxyIndex);
+	QModelIndex _ret = self->mapToSource(*proxyIndex);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QModelIndex*>(new QModelIndex(ret));
+	return static_cast<QModelIndex*>(new QModelIndex(_ret));
 }
 
 QModelIndex* QSortFilterProxyModel_MapFromSource(const QSortFilterProxyModel* self, QModelIndex* sourceIndex) {
-	QModelIndex ret = self->mapFromSource(*sourceIndex);
+	QModelIndex _ret = self->mapFromSource(*sourceIndex);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QModelIndex*>(new QModelIndex(ret));
+	return static_cast<QModelIndex*>(new QModelIndex(_ret));
 }
 
 QRegExp* QSortFilterProxyModel_FilterRegExp(const QSortFilterProxyModel* self) {
-	QRegExp ret = self->filterRegExp();
+	QRegExp _ret = self->filterRegExp();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRegExp*>(new QRegExp(ret));
+	return static_cast<QRegExp*>(new QRegExp(_ret));
 }
 
 QRegularExpression* QSortFilterProxyModel_FilterRegularExpression(const QSortFilterProxyModel* self) {
-	QRegularExpression ret = self->filterRegularExpression();
+	QRegularExpression _ret = self->filterRegularExpression();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRegularExpression*>(new QRegularExpression(ret));
+	return static_cast<QRegularExpression*>(new QRegularExpression(_ret));
 }
 
 int QSortFilterProxyModel_FilterKeyColumn(const QSortFilterProxyModel* self) {
@@ -87,8 +79,8 @@ void QSortFilterProxyModel_SetFilterKeyColumn(QSortFilterProxyModel* self, int c
 }
 
 uintptr_t QSortFilterProxyModel_FilterCaseSensitivity(const QSortFilterProxyModel* self) {
-	Qt::CaseSensitivity ret = self->filterCaseSensitivity();
-	return static_cast<uintptr_t>(ret);
+	Qt::CaseSensitivity _ret = self->filterCaseSensitivity();
+	return static_cast<uintptr_t>(_ret);
 }
 
 void QSortFilterProxyModel_SetFilterCaseSensitivity(QSortFilterProxyModel* self, uintptr_t cs) {
@@ -96,8 +88,8 @@ void QSortFilterProxyModel_SetFilterCaseSensitivity(QSortFilterProxyModel* self,
 }
 
 uintptr_t QSortFilterProxyModel_SortCaseSensitivity(const QSortFilterProxyModel* self) {
-	Qt::CaseSensitivity ret = self->sortCaseSensitivity();
-	return static_cast<uintptr_t>(ret);
+	Qt::CaseSensitivity _ret = self->sortCaseSensitivity();
+	return static_cast<uintptr_t>(_ret);
 }
 
 void QSortFilterProxyModel_SetSortCaseSensitivity(QSortFilterProxyModel* self, uintptr_t cs) {
@@ -117,8 +109,8 @@ int QSortFilterProxyModel_SortColumn(const QSortFilterProxyModel* self) {
 }
 
 uintptr_t QSortFilterProxyModel_SortOrder(const QSortFilterProxyModel* self) {
-	Qt::SortOrder ret = self->sortOrder();
-	return static_cast<uintptr_t>(ret);
+	Qt::SortOrder _ret = self->sortOrder();
+	return static_cast<uintptr_t>(_ret);
 }
 
 bool QSortFilterProxyModel_DynamicSortFilter(const QSortFilterProxyModel* self) {
@@ -153,8 +145,8 @@ void QSortFilterProxyModel_SetRecursiveFilteringEnabled(QSortFilterProxyModel* s
 	self->setRecursiveFilteringEnabled(recursive);
 }
 
-void QSortFilterProxyModel_SetFilterRegExp(QSortFilterProxyModel* self, const char* pattern, size_t pattern_Strlen) {
-	QString pattern_QString = QString::fromUtf8(pattern, pattern_Strlen);
+void QSortFilterProxyModel_SetFilterRegExp(QSortFilterProxyModel* self, struct miqt_string* pattern) {
+	QString pattern_QString = QString::fromUtf8(&pattern->data, pattern->len);
 	self->setFilterRegExp(pattern_QString);
 }
 
@@ -162,8 +154,8 @@ void QSortFilterProxyModel_SetFilterRegExpWithRegExp(QSortFilterProxyModel* self
 	self->setFilterRegExp(*regExp);
 }
 
-void QSortFilterProxyModel_SetFilterRegularExpression(QSortFilterProxyModel* self, const char* pattern, size_t pattern_Strlen) {
-	QString pattern_QString = QString::fromUtf8(pattern, pattern_Strlen);
+void QSortFilterProxyModel_SetFilterRegularExpression(QSortFilterProxyModel* self, struct miqt_string* pattern) {
+	QString pattern_QString = QString::fromUtf8(&pattern->data, pattern->len);
 	self->setFilterRegularExpression(pattern_QString);
 }
 
@@ -171,13 +163,13 @@ void QSortFilterProxyModel_SetFilterRegularExpressionWithRegularExpression(QSort
 	self->setFilterRegularExpression(*regularExpression);
 }
 
-void QSortFilterProxyModel_SetFilterWildcard(QSortFilterProxyModel* self, const char* pattern, size_t pattern_Strlen) {
-	QString pattern_QString = QString::fromUtf8(pattern, pattern_Strlen);
+void QSortFilterProxyModel_SetFilterWildcard(QSortFilterProxyModel* self, struct miqt_string* pattern) {
+	QString pattern_QString = QString::fromUtf8(&pattern->data, pattern->len);
 	self->setFilterWildcard(pattern_QString);
 }
 
-void QSortFilterProxyModel_SetFilterFixedString(QSortFilterProxyModel* self, const char* pattern, size_t pattern_Strlen) {
-	QString pattern_QString = QString::fromUtf8(pattern, pattern_Strlen);
+void QSortFilterProxyModel_SetFilterFixedString(QSortFilterProxyModel* self, struct miqt_string* pattern) {
+	QString pattern_QString = QString::fromUtf8(&pattern->data, pattern->len);
 	self->setFilterFixedString(pattern_QString);
 }
 
@@ -190,21 +182,21 @@ void QSortFilterProxyModel_Invalidate(QSortFilterProxyModel* self) {
 }
 
 QModelIndex* QSortFilterProxyModel_Index(const QSortFilterProxyModel* self, int row, int column) {
-	QModelIndex ret = self->index(static_cast<int>(row), static_cast<int>(column));
+	QModelIndex _ret = self->index(static_cast<int>(row), static_cast<int>(column));
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QModelIndex*>(new QModelIndex(ret));
+	return static_cast<QModelIndex*>(new QModelIndex(_ret));
 }
 
 QModelIndex* QSortFilterProxyModel_Parent(const QSortFilterProxyModel* self, QModelIndex* child) {
-	QModelIndex ret = self->parent(*child);
+	QModelIndex _ret = self->parent(*child);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QModelIndex*>(new QModelIndex(ret));
+	return static_cast<QModelIndex*>(new QModelIndex(_ret));
 }
 
 QModelIndex* QSortFilterProxyModel_Sibling(const QSortFilterProxyModel* self, int row, int column, QModelIndex* idx) {
-	QModelIndex ret = self->sibling(static_cast<int>(row), static_cast<int>(column), *idx);
+	QModelIndex _ret = self->sibling(static_cast<int>(row), static_cast<int>(column), *idx);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QModelIndex*>(new QModelIndex(ret));
+	return static_cast<QModelIndex*>(new QModelIndex(_ret));
 }
 
 int QSortFilterProxyModel_RowCount(const QSortFilterProxyModel* self) {
@@ -220,9 +212,9 @@ bool QSortFilterProxyModel_HasChildren(const QSortFilterProxyModel* self) {
 }
 
 QVariant* QSortFilterProxyModel_Data(const QSortFilterProxyModel* self, QModelIndex* index) {
-	QVariant ret = self->data(*index);
+	QVariant _ret = self->data(*index);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(ret));
+	return static_cast<QVariant*>(new QVariant(_ret));
 }
 
 bool QSortFilterProxyModel_SetData(QSortFilterProxyModel* self, QModelIndex* index, QVariant* value) {
@@ -230,20 +222,21 @@ bool QSortFilterProxyModel_SetData(QSortFilterProxyModel* self, QModelIndex* ind
 }
 
 QVariant* QSortFilterProxyModel_HeaderData(const QSortFilterProxyModel* self, int section, uintptr_t orientation) {
-	QVariant ret = self->headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation));
+	QVariant _ret = self->headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation));
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(ret));
+	return static_cast<QVariant*>(new QVariant(_ret));
 }
 
 bool QSortFilterProxyModel_SetHeaderData(QSortFilterProxyModel* self, int section, uintptr_t orientation, QVariant* value) {
 	return self->setHeaderData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), *value);
 }
 
-QMimeData* QSortFilterProxyModel_MimeData(const QSortFilterProxyModel* self, QModelIndex** indexes, size_t indexes_len) {
+QMimeData* QSortFilterProxyModel_MimeData(const QSortFilterProxyModel* self, struct miqt_array* /* of QModelIndex */ indexes) {
 	QList<QModelIndex> indexes_QList;
-	indexes_QList.reserve(indexes_len);
-	for(size_t i = 0; i < indexes_len; ++i) {
-		indexes_QList.push_back(*(indexes[i]));
+	indexes_QList.reserve(indexes->len);
+	QModelIndex** indexes_arr = static_cast<QModelIndex**>(indexes->data);
+	for(size_t i = 0; i < indexes->len; ++i) {
+		indexes_QList.push_back(*(indexes_arr[i]));
 	}
 	return self->mimeData(indexes_QList);
 }
@@ -277,57 +270,58 @@ bool QSortFilterProxyModel_CanFetchMore(const QSortFilterProxyModel* self, QMode
 }
 
 int QSortFilterProxyModel_Flags(const QSortFilterProxyModel* self, QModelIndex* index) {
-	Qt::ItemFlags ret = self->flags(*index);
-	return static_cast<int>(ret);
+	Qt::ItemFlags _ret = self->flags(*index);
+	return static_cast<int>(_ret);
 }
 
 QModelIndex* QSortFilterProxyModel_Buddy(const QSortFilterProxyModel* self, QModelIndex* index) {
-	QModelIndex ret = self->buddy(*index);
+	QModelIndex _ret = self->buddy(*index);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QModelIndex*>(new QModelIndex(ret));
+	return static_cast<QModelIndex*>(new QModelIndex(_ret));
 }
 
-void QSortFilterProxyModel_Match(const QSortFilterProxyModel* self, QModelIndex* start, int role, QVariant* value, QModelIndex*** _out, size_t* _out_len) {
-	QModelIndexList ret = self->match(*start, static_cast<int>(role), *value);
+struct miqt_array* QSortFilterProxyModel_Match(const QSortFilterProxyModel* self, QModelIndex* start, int role, QVariant* value) {
+	QModelIndexList _ret = self->match(*start, static_cast<int>(role), *value);
 	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
-	QModelIndex** __out = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex**) * ret.length()));
-	for (size_t i = 0, e = ret.length(); i < e; ++i) {
-		__out[i] = new QModelIndex(ret[i]);
+	QModelIndex** _arr = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex**) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		_arr[i] = new QModelIndex(_ret[i]);
 	}
-	*_out = __out;
-	*_out_len = ret.length();
+	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
+	_out->len = _ret.length();
+	_out->data = static_cast<void*>(_arr);
+	return _out;
 }
 
 QSize* QSortFilterProxyModel_Span(const QSortFilterProxyModel* self, QModelIndex* index) {
-	QSize ret = self->span(*index);
+	QSize _ret = self->span(*index);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(ret));
+	return static_cast<QSize*>(new QSize(_ret));
 }
 
 void QSortFilterProxyModel_Sort(QSortFilterProxyModel* self, int column) {
 	self->sort(static_cast<int>(column));
 }
 
-void QSortFilterProxyModel_MimeTypes(const QSortFilterProxyModel* self, char*** _out, int** _out_Lengths, size_t* _out_len) {
-	QStringList ret = self->mimeTypes();
+struct miqt_array* QSortFilterProxyModel_MimeTypes(const QSortFilterProxyModel* self) {
+	QStringList _ret = self->mimeTypes();
 	// Convert QStringList from C++ memory to manually-managed C memory
-	char** __out = static_cast<char**>(malloc(sizeof(char*) * ret.length()));
-	int* __out_Lengths = static_cast<int*>(malloc(sizeof(int) * ret.length()));
-	for (size_t i = 0, e = ret.length(); i < e; ++i) {
+	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-		QByteArray b = ret[i].toUtf8();
-		__out[i] = static_cast<char*>(malloc(b.length()));
-		memcpy(__out[i], b.data(), b.length());
-		__out_Lengths[i] = b.length();
+		QByteArray _lv_b = _lv_ret.toUtf8();
+		_arr[i] = miqt_strdup(_lv_b.data(), _lv_b.length());
 	}
-	*_out = __out;
-	*_out_Lengths = __out_Lengths;
-	*_out_len = ret.length();
+	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
+	_out->len = _ret.length();
+	_out->data = static_cast<void*>(_arr);
+	return _out;
 }
 
 int QSortFilterProxyModel_SupportedDropActions(const QSortFilterProxyModel* self) {
-	Qt::DropActions ret = self->supportedDropActions();
-	return static_cast<int>(ret);
+	Qt::DropActions _ret = self->supportedDropActions();
+	return static_cast<int>(_ret);
 }
 
 void QSortFilterProxyModel_DynamicSortFilterChanged(QSortFilterProxyModel* self, bool dynamicSortFilter) {
@@ -336,7 +330,8 @@ void QSortFilterProxyModel_DynamicSortFilterChanged(QSortFilterProxyModel* self,
 
 void QSortFilterProxyModel_connect_DynamicSortFilterChanged(QSortFilterProxyModel* self, void* slot) {
 	QSortFilterProxyModel::connect(self, static_cast<void (QSortFilterProxyModel::*)(bool)>(&QSortFilterProxyModel::dynamicSortFilterChanged), self, [=](bool dynamicSortFilter) {
-		miqt_exec_callback(slot, 0, nullptr);
+		bool sigval1 = dynamicSortFilter;
+		miqt_exec_callback_QSortFilterProxyModel_DynamicSortFilterChanged(slot, sigval1);
 	});
 }
 
@@ -346,7 +341,9 @@ void QSortFilterProxyModel_FilterCaseSensitivityChanged(QSortFilterProxyModel* s
 
 void QSortFilterProxyModel_connect_FilterCaseSensitivityChanged(QSortFilterProxyModel* self, void* slot) {
 	QSortFilterProxyModel::connect(self, static_cast<void (QSortFilterProxyModel::*)(Qt::CaseSensitivity)>(&QSortFilterProxyModel::filterCaseSensitivityChanged), self, [=](Qt::CaseSensitivity filterCaseSensitivity) {
-		miqt_exec_callback(slot, 0, nullptr);
+		Qt::CaseSensitivity filterCaseSensitivity_ret = filterCaseSensitivity;
+		uintptr_t sigval1 = static_cast<uintptr_t>(filterCaseSensitivity_ret);
+		miqt_exec_callback_QSortFilterProxyModel_FilterCaseSensitivityChanged(slot, sigval1);
 	});
 }
 
@@ -356,7 +353,9 @@ void QSortFilterProxyModel_SortCaseSensitivityChanged(QSortFilterProxyModel* sel
 
 void QSortFilterProxyModel_connect_SortCaseSensitivityChanged(QSortFilterProxyModel* self, void* slot) {
 	QSortFilterProxyModel::connect(self, static_cast<void (QSortFilterProxyModel::*)(Qt::CaseSensitivity)>(&QSortFilterProxyModel::sortCaseSensitivityChanged), self, [=](Qt::CaseSensitivity sortCaseSensitivity) {
-		miqt_exec_callback(slot, 0, nullptr);
+		Qt::CaseSensitivity sortCaseSensitivity_ret = sortCaseSensitivity;
+		uintptr_t sigval1 = static_cast<uintptr_t>(sortCaseSensitivity_ret);
+		miqt_exec_callback_QSortFilterProxyModel_SortCaseSensitivityChanged(slot, sigval1);
 	});
 }
 
@@ -366,7 +365,8 @@ void QSortFilterProxyModel_SortLocaleAwareChanged(QSortFilterProxyModel* self, b
 
 void QSortFilterProxyModel_connect_SortLocaleAwareChanged(QSortFilterProxyModel* self, void* slot) {
 	QSortFilterProxyModel::connect(self, static_cast<void (QSortFilterProxyModel::*)(bool)>(&QSortFilterProxyModel::sortLocaleAwareChanged), self, [=](bool sortLocaleAware) {
-		miqt_exec_callback(slot, 0, nullptr);
+		bool sigval1 = sortLocaleAware;
+		miqt_exec_callback_QSortFilterProxyModel_SortLocaleAwareChanged(slot, sigval1);
 	});
 }
 
@@ -376,7 +376,8 @@ void QSortFilterProxyModel_SortRoleChanged(QSortFilterProxyModel* self, int sort
 
 void QSortFilterProxyModel_connect_SortRoleChanged(QSortFilterProxyModel* self, void* slot) {
 	QSortFilterProxyModel::connect(self, static_cast<void (QSortFilterProxyModel::*)(int)>(&QSortFilterProxyModel::sortRoleChanged), self, [=](int sortRole) {
-		miqt_exec_callback(slot, 0, nullptr);
+		int sigval1 = sortRole;
+		miqt_exec_callback_QSortFilterProxyModel_SortRoleChanged(slot, sigval1);
 	});
 }
 
@@ -386,7 +387,8 @@ void QSortFilterProxyModel_FilterRoleChanged(QSortFilterProxyModel* self, int fi
 
 void QSortFilterProxyModel_connect_FilterRoleChanged(QSortFilterProxyModel* self, void* slot) {
 	QSortFilterProxyModel::connect(self, static_cast<void (QSortFilterProxyModel::*)(int)>(&QSortFilterProxyModel::filterRoleChanged), self, [=](int filterRole) {
-		miqt_exec_callback(slot, 0, nullptr);
+		int sigval1 = filterRole;
+		miqt_exec_callback_QSortFilterProxyModel_FilterRoleChanged(slot, sigval1);
 	});
 }
 
@@ -396,50 +398,43 @@ void QSortFilterProxyModel_RecursiveFilteringEnabledChanged(QSortFilterProxyMode
 
 void QSortFilterProxyModel_connect_RecursiveFilteringEnabledChanged(QSortFilterProxyModel* self, void* slot) {
 	QSortFilterProxyModel::connect(self, static_cast<void (QSortFilterProxyModel::*)(bool)>(&QSortFilterProxyModel::recursiveFilteringEnabledChanged), self, [=](bool recursiveFilteringEnabled) {
-		miqt_exec_callback(slot, 0, nullptr);
+		bool sigval1 = recursiveFilteringEnabled;
+		miqt_exec_callback_QSortFilterProxyModel_RecursiveFilteringEnabledChanged(slot, sigval1);
 	});
 }
 
-void QSortFilterProxyModel_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QSortFilterProxyModel::tr(s, c);
+struct miqt_string* QSortFilterProxyModel_Tr2(const char* s, const char* c) {
+	QString _ret = QSortFilterProxyModel::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QSortFilterProxyModel_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QSortFilterProxyModel::tr(s, c, static_cast<int>(n));
+struct miqt_string* QSortFilterProxyModel_Tr3(const char* s, const char* c, int n) {
+	QString _ret = QSortFilterProxyModel::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QSortFilterProxyModel_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QSortFilterProxyModel::trUtf8(s, c);
+struct miqt_string* QSortFilterProxyModel_TrUtf82(const char* s, const char* c) {
+	QString _ret = QSortFilterProxyModel::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QSortFilterProxyModel_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QSortFilterProxyModel::trUtf8(s, c, static_cast<int>(n));
+struct miqt_string* QSortFilterProxyModel_TrUtf83(const char* s, const char* c, int n) {
+	QString _ret = QSortFilterProxyModel::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 QModelIndex* QSortFilterProxyModel_Index3(const QSortFilterProxyModel* self, int row, int column, QModelIndex* parent) {
-	QModelIndex ret = self->index(static_cast<int>(row), static_cast<int>(column), *parent);
+	QModelIndex _ret = self->index(static_cast<int>(row), static_cast<int>(column), *parent);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QModelIndex*>(new QModelIndex(ret));
+	return static_cast<QModelIndex*>(new QModelIndex(_ret));
 }
 
 int QSortFilterProxyModel_RowCount1(const QSortFilterProxyModel* self, QModelIndex* parent) {
@@ -455,9 +450,9 @@ bool QSortFilterProxyModel_HasChildren1(const QSortFilterProxyModel* self, QMode
 }
 
 QVariant* QSortFilterProxyModel_Data2(const QSortFilterProxyModel* self, QModelIndex* index, int role) {
-	QVariant ret = self->data(*index, static_cast<int>(role));
+	QVariant _ret = self->data(*index, static_cast<int>(role));
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(ret));
+	return static_cast<QVariant*>(new QVariant(_ret));
 }
 
 bool QSortFilterProxyModel_SetData3(QSortFilterProxyModel* self, QModelIndex* index, QVariant* value, int role) {
@@ -465,9 +460,9 @@ bool QSortFilterProxyModel_SetData3(QSortFilterProxyModel* self, QModelIndex* in
 }
 
 QVariant* QSortFilterProxyModel_HeaderData3(const QSortFilterProxyModel* self, int section, uintptr_t orientation, int role) {
-	QVariant ret = self->headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), static_cast<int>(role));
+	QVariant _ret = self->headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), static_cast<int>(role));
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(ret));
+	return static_cast<QVariant*>(new QVariant(_ret));
 }
 
 bool QSortFilterProxyModel_SetHeaderData4(QSortFilterProxyModel* self, int section, uintptr_t orientation, QVariant* value, int role) {
@@ -490,26 +485,30 @@ bool QSortFilterProxyModel_RemoveColumns3(QSortFilterProxyModel* self, int colum
 	return self->removeColumns(static_cast<int>(column), static_cast<int>(count), *parent);
 }
 
-void QSortFilterProxyModel_Match4(const QSortFilterProxyModel* self, QModelIndex* start, int role, QVariant* value, int hits, QModelIndex*** _out, size_t* _out_len) {
-	QModelIndexList ret = self->match(*start, static_cast<int>(role), *value, static_cast<int>(hits));
+struct miqt_array* QSortFilterProxyModel_Match4(const QSortFilterProxyModel* self, QModelIndex* start, int role, QVariant* value, int hits) {
+	QModelIndexList _ret = self->match(*start, static_cast<int>(role), *value, static_cast<int>(hits));
 	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
-	QModelIndex** __out = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex**) * ret.length()));
-	for (size_t i = 0, e = ret.length(); i < e; ++i) {
-		__out[i] = new QModelIndex(ret[i]);
+	QModelIndex** _arr = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex**) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		_arr[i] = new QModelIndex(_ret[i]);
 	}
-	*_out = __out;
-	*_out_len = ret.length();
+	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
+	_out->len = _ret.length();
+	_out->data = static_cast<void*>(_arr);
+	return _out;
 }
 
-void QSortFilterProxyModel_Match5(const QSortFilterProxyModel* self, QModelIndex* start, int role, QVariant* value, int hits, int flags, QModelIndex*** _out, size_t* _out_len) {
-	QModelIndexList ret = self->match(*start, static_cast<int>(role), *value, static_cast<int>(hits), static_cast<Qt::MatchFlags>(flags));
+struct miqt_array* QSortFilterProxyModel_Match5(const QSortFilterProxyModel* self, QModelIndex* start, int role, QVariant* value, int hits, int flags) {
+	QModelIndexList _ret = self->match(*start, static_cast<int>(role), *value, static_cast<int>(hits), static_cast<Qt::MatchFlags>(flags));
 	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
-	QModelIndex** __out = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex**) * ret.length()));
-	for (size_t i = 0, e = ret.length(); i < e; ++i) {
-		__out[i] = new QModelIndex(ret[i]);
+	QModelIndex** _arr = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex**) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		_arr[i] = new QModelIndex(_ret[i]);
 	}
-	*_out = __out;
-	*_out_len = ret.length();
+	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
+	_out->len = _ret.length();
+	_out->data = static_cast<void*>(_arr);
+	return _out;
 }
 
 void QSortFilterProxyModel_Sort2(QSortFilterProxyModel* self, int column, uintptr_t order) {

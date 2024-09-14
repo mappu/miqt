@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -31,8 +33,8 @@ QMdiSubWindow* QMdiSubWindow_new();
 QMdiSubWindow* QMdiSubWindow_new2(QWidget* parent);
 QMdiSubWindow* QMdiSubWindow_new3(QWidget* parent, int flags);
 QMetaObject* QMdiSubWindow_MetaObject(const QMdiSubWindow* self);
-void QMdiSubWindow_Tr(const char* s, char** _out, int* _out_Strlen);
-void QMdiSubWindow_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QMdiSubWindow_Tr(const char* s);
+struct miqt_string* QMdiSubWindow_TrUtf8(const char* s);
 QSize* QMdiSubWindow_SizeHint(const QMdiSubWindow* self);
 QSize* QMdiSubWindow_MinimumSizeHint(const QMdiSubWindow* self);
 void QMdiSubWindow_SetWidget(QMdiSubWindow* self, QWidget* widget);
@@ -55,10 +57,10 @@ void QMdiSubWindow_AboutToActivate(QMdiSubWindow* self);
 void QMdiSubWindow_connect_AboutToActivate(QMdiSubWindow* self, void* slot);
 void QMdiSubWindow_ShowSystemMenu(QMdiSubWindow* self);
 void QMdiSubWindow_ShowShaded(QMdiSubWindow* self);
-void QMdiSubWindow_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QMdiSubWindow_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QMdiSubWindow_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QMdiSubWindow_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QMdiSubWindow_Tr2(const char* s, const char* c);
+struct miqt_string* QMdiSubWindow_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QMdiSubWindow_TrUtf82(const char* s, const char* c);
+struct miqt_string* QMdiSubWindow_TrUtf83(const char* s, const char* c, int n);
 void QMdiSubWindow_SetOption2(QMdiSubWindow* self, uintptr_t option, bool on);
 void QMdiSubWindow_Delete(QMdiSubWindow* self);
 

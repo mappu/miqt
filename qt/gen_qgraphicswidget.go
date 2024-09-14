@@ -63,35 +63,31 @@ func NewQGraphicsWidget3(parent *QGraphicsItem, wFlags int) *QGraphicsWidget {
 }
 
 func (this *QGraphicsWidget) MetaObject() *QMetaObject {
-	ret := C.QGraphicsWidget_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QGraphicsWidget_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QGraphicsWidget_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGraphicsWidget_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGraphicsWidget_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QGraphicsWidget_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGraphicsWidget_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGraphicsWidget_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QGraphicsWidget) Layout() *QGraphicsLayout {
-	ret := C.QGraphicsWidget_Layout(this.h)
-	return newQGraphicsLayout_U(unsafe.Pointer(ret))
+	_ret := C.QGraphicsWidget_Layout(this.h)
+	return newQGraphicsLayout_U(unsafe.Pointer(_ret))
 }
 
 func (this *QGraphicsWidget) SetLayout(layout *QGraphicsLayout) {
@@ -103,8 +99,8 @@ func (this *QGraphicsWidget) AdjustSize() {
 }
 
 func (this *QGraphicsWidget) LayoutDirection() LayoutDirection {
-	ret := C.QGraphicsWidget_LayoutDirection(this.h)
-	return (LayoutDirection)(ret)
+	_ret := C.QGraphicsWidget_LayoutDirection(this.h)
+	return (LayoutDirection)(_ret)
 }
 
 func (this *QGraphicsWidget) SetLayoutDirection(direction LayoutDirection) {
@@ -116,8 +112,8 @@ func (this *QGraphicsWidget) UnsetLayoutDirection() {
 }
 
 func (this *QGraphicsWidget) Style() *QStyle {
-	ret := C.QGraphicsWidget_Style(this.h)
-	return newQStyle_U(unsafe.Pointer(ret))
+	_ret := C.QGraphicsWidget_Style(this.h)
+	return newQStyle_U(unsafe.Pointer(_ret))
 }
 
 func (this *QGraphicsWidget) SetStyle(style *QStyle) {
@@ -125,14 +121,10 @@ func (this *QGraphicsWidget) SetStyle(style *QStyle) {
 }
 
 func (this *QGraphicsWidget) Font() *QFont {
-	ret := C.QGraphicsWidget_Font(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQFont(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QFont) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QGraphicsWidget_Font(this.h)
+	_goptr := newQFont(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QGraphicsWidget) SetFont(font *QFont) {
@@ -140,14 +132,10 @@ func (this *QGraphicsWidget) SetFont(font *QFont) {
 }
 
 func (this *QGraphicsWidget) Palette() *QPalette {
-	ret := C.QGraphicsWidget_Palette(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPalette(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPalette) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QGraphicsWidget_Palette(this.h)
+	_goptr := newQPalette(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QGraphicsWidget) SetPalette(palette *QPalette) {
@@ -155,8 +143,8 @@ func (this *QGraphicsWidget) SetPalette(palette *QPalette) {
 }
 
 func (this *QGraphicsWidget) AutoFillBackground() bool {
-	ret := C.QGraphicsWidget_AutoFillBackground(this.h)
-	return (bool)(ret)
+	_ret := C.QGraphicsWidget_AutoFillBackground(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QGraphicsWidget) SetAutoFillBackground(enabled bool) {
@@ -172,14 +160,10 @@ func (this *QGraphicsWidget) Resize2(w float64, h float64) {
 }
 
 func (this *QGraphicsWidget) Size() *QSizeF {
-	ret := C.QGraphicsWidget_Size(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSizeF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSizeF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QGraphicsWidget_Size(this.h)
+	_goptr := newQSizeF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QGraphicsWidget) SetGeometry(rect *QRectF) {
@@ -191,14 +175,10 @@ func (this *QGraphicsWidget) SetGeometry2(x float64, y float64, w float64, h flo
 }
 
 func (this *QGraphicsWidget) Rect() *QRectF {
-	ret := C.QGraphicsWidget_Rect(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRectF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRectF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QGraphicsWidget_Rect(this.h)
+	_goptr := newQRectF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QGraphicsWidget) SetContentsMargins(left float64, top float64, right float64, bottom float64) {
@@ -230,35 +210,27 @@ func (this *QGraphicsWidget) UnsetWindowFrameMargins() {
 }
 
 func (this *QGraphicsWidget) WindowFrameGeometry() *QRectF {
-	ret := C.QGraphicsWidget_WindowFrameGeometry(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRectF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRectF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QGraphicsWidget_WindowFrameGeometry(this.h)
+	_goptr := newQRectF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QGraphicsWidget) WindowFrameRect() *QRectF {
-	ret := C.QGraphicsWidget_WindowFrameRect(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRectF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRectF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QGraphicsWidget_WindowFrameRect(this.h)
+	_goptr := newQRectF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QGraphicsWidget) WindowFlags() int {
-	ret := C.QGraphicsWidget_WindowFlags(this.h)
-	return (int)(ret)
+	_ret := C.QGraphicsWidget_WindowFlags(this.h)
+	return (int)(_ret)
 }
 
 func (this *QGraphicsWidget) WindowType() WindowType {
-	ret := C.QGraphicsWidget_WindowType(this.h)
-	return (WindowType)(ret)
+	_ret := C.QGraphicsWidget_WindowType(this.h)
+	return (WindowType)(_ret)
 }
 
 func (this *QGraphicsWidget) SetWindowFlags(wFlags int) {
@@ -266,28 +238,26 @@ func (this *QGraphicsWidget) SetWindowFlags(wFlags int) {
 }
 
 func (this *QGraphicsWidget) IsActiveWindow() bool {
-	ret := C.QGraphicsWidget_IsActiveWindow(this.h)
-	return (bool)(ret)
+	_ret := C.QGraphicsWidget_IsActiveWindow(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QGraphicsWidget) SetWindowTitle(title string) {
-	title_Cstring := C.CString(title)
-	defer C.free(unsafe.Pointer(title_Cstring))
-	C.QGraphicsWidget_SetWindowTitle(this.h, title_Cstring, C.size_t(len(title)))
+	title_ms := miqt_strdupg(title)
+	defer C.free(title_ms)
+	C.QGraphicsWidget_SetWindowTitle(this.h, (*C.struct_miqt_string)(title_ms))
 }
 
 func (this *QGraphicsWidget) WindowTitle() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGraphicsWidget_WindowTitle(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGraphicsWidget_WindowTitle(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QGraphicsWidget) FocusPolicy() FocusPolicy {
-	ret := C.QGraphicsWidget_FocusPolicy(this.h)
-	return (FocusPolicy)(ret)
+	_ret := C.QGraphicsWidget_FocusPolicy(this.h)
+	return (FocusPolicy)(_ret)
 }
 
 func (this *QGraphicsWidget) SetFocusPolicy(policy FocusPolicy) {
@@ -299,13 +269,13 @@ func QGraphicsWidget_SetTabOrder(first *QGraphicsWidget, second *QGraphicsWidget
 }
 
 func (this *QGraphicsWidget) FocusWidget() *QGraphicsWidget {
-	ret := C.QGraphicsWidget_FocusWidget(this.h)
-	return newQGraphicsWidget_U(unsafe.Pointer(ret))
+	_ret := C.QGraphicsWidget_FocusWidget(this.h)
+	return newQGraphicsWidget_U(unsafe.Pointer(_ret))
 }
 
 func (this *QGraphicsWidget) GrabShortcut(sequence *QKeySequence) int {
-	ret := C.QGraphicsWidget_GrabShortcut(this.h, sequence.cPointer())
-	return (int)(ret)
+	_ret := C.QGraphicsWidget_GrabShortcut(this.h, sequence.cPointer())
+	return (int)(_ret)
 }
 
 func (this *QGraphicsWidget) ReleaseShortcut(id int) {
@@ -331,7 +301,9 @@ func (this *QGraphicsWidget) AddActions(actions []*QAction) {
 	for i := range actions {
 		actions_CArray[i] = actions[i].cPointer()
 	}
-	C.QGraphicsWidget_AddActions(this.h, &actions_CArray[0], C.size_t(len(actions)))
+	actions_ma := &C.struct_miqt_array{len: C.size_t(len(actions)), data: unsafe.Pointer(actions_CArray)}
+	defer runtime.KeepAlive(unsafe.Pointer(actions_ma))
+	C.QGraphicsWidget_AddActions(this.h, actions_ma)
 }
 
 func (this *QGraphicsWidget) InsertActions(before *QAction, actions []*QAction) {
@@ -341,7 +313,9 @@ func (this *QGraphicsWidget) InsertActions(before *QAction, actions []*QAction) 
 	for i := range actions {
 		actions_CArray[i] = actions[i].cPointer()
 	}
-	C.QGraphicsWidget_InsertActions(this.h, before.cPointer(), &actions_CArray[0], C.size_t(len(actions)))
+	actions_ma := &C.struct_miqt_array{len: C.size_t(len(actions)), data: unsafe.Pointer(actions_CArray)}
+	defer runtime.KeepAlive(unsafe.Pointer(actions_ma))
+	C.QGraphicsWidget_InsertActions(this.h, before.cPointer(), actions_ma)
 }
 
 func (this *QGraphicsWidget) InsertAction(before *QAction, action *QAction) {
@@ -353,16 +327,14 @@ func (this *QGraphicsWidget) RemoveAction(action *QAction) {
 }
 
 func (this *QGraphicsWidget) Actions() []*QAction {
-	var _out **C.QAction = nil
-	var _out_len C.size_t = 0
-	C.QGraphicsWidget_Actions(this.h, &_out, &_out_len)
-	ret := make([]*QAction, int(_out_len))
-	_outCast := (*[0xffff]*C.QAction)(unsafe.Pointer(_out)) // so fresh so clean
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = newQAction(_outCast[i])
+	var _ma *C.struct_miqt_array = C.QGraphicsWidget_Actions(this.h)
+	_ret := make([]*QAction, int(_ma.len))
+	_outCast := (*[0xffff]*C.QAction)(unsafe.Pointer(_ma.data)) // mrs jackson
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = newQAction(_outCast[i])
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
 func (this *QGraphicsWidget) SetAttribute(attribute WidgetAttribute) {
@@ -370,13 +342,13 @@ func (this *QGraphicsWidget) SetAttribute(attribute WidgetAttribute) {
 }
 
 func (this *QGraphicsWidget) TestAttribute(attribute WidgetAttribute) bool {
-	ret := C.QGraphicsWidget_TestAttribute(this.h, (C.uintptr_t)(attribute))
-	return (bool)(ret)
+	_ret := C.QGraphicsWidget_TestAttribute(this.h, (C.uintptr_t)(attribute))
+	return (bool)(_ret)
 }
 
 func (this *QGraphicsWidget) Type() int {
-	ret := C.QGraphicsWidget_Type(this.h)
-	return (int)(ret)
+	_ret := C.QGraphicsWidget_Type(this.h)
+	return (int)(_ret)
 }
 
 func (this *QGraphicsWidget) Paint(painter *QPainter, option *QStyleOptionGraphicsItem) {
@@ -388,54 +360,56 @@ func (this *QGraphicsWidget) PaintWindowFrame(painter *QPainter, option *QStyleO
 }
 
 func (this *QGraphicsWidget) BoundingRect() *QRectF {
-	ret := C.QGraphicsWidget_BoundingRect(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRectF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRectF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QGraphicsWidget_BoundingRect(this.h)
+	_goptr := newQRectF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QGraphicsWidget) Shape() *QPainterPath {
-	ret := C.QGraphicsWidget_Shape(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPainterPath(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPainterPath) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QGraphicsWidget_Shape(this.h)
+	_goptr := newQPainterPath(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QGraphicsWidget) GeometryChanged() {
 	C.QGraphicsWidget_GeometryChanged(this.h)
 }
-
 func (this *QGraphicsWidget) OnGeometryChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+	C.QGraphicsWidget_connect_GeometryChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
+
+//export miqt_exec_callback_QGraphicsWidget_GeometryChanged
+func miqt_exec_callback_QGraphicsWidget_GeometryChanged(cb *C.void) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QGraphicsWidget_connect_GeometryChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	gofunc()
 }
 
 func (this *QGraphicsWidget) LayoutChanged() {
 	C.QGraphicsWidget_LayoutChanged(this.h)
 }
-
 func (this *QGraphicsWidget) OnLayoutChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+	C.QGraphicsWidget_connect_LayoutChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
+
+//export miqt_exec_callback_QGraphicsWidget_LayoutChanged
+func miqt_exec_callback_QGraphicsWidget_LayoutChanged(cb *C.void) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QGraphicsWidget_connect_LayoutChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	gofunc()
 }
 
 func (this *QGraphicsWidget) Close() bool {
-	ret := C.QGraphicsWidget_Close(this.h)
-	return (bool)(ret)
+	_ret := C.QGraphicsWidget_Close(this.h)
+	return (bool)(_ret)
 }
 
 func QGraphicsWidget_Tr2(s string, c string) string {
@@ -443,12 +417,10 @@ func QGraphicsWidget_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGraphicsWidget_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGraphicsWidget_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QGraphicsWidget_Tr3(s string, c string, n int) string {
@@ -456,12 +428,10 @@ func QGraphicsWidget_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGraphicsWidget_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGraphicsWidget_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QGraphicsWidget_TrUtf82(s string, c string) string {
@@ -469,12 +439,10 @@ func QGraphicsWidget_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGraphicsWidget_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGraphicsWidget_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QGraphicsWidget_TrUtf83(s string, c string, n int) string {
@@ -482,17 +450,15 @@ func QGraphicsWidget_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGraphicsWidget_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGraphicsWidget_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QGraphicsWidget) GrabShortcut2(sequence *QKeySequence, context ShortcutContext) int {
-	ret := C.QGraphicsWidget_GrabShortcut2(this.h, sequence.cPointer(), (C.uintptr_t)(context))
-	return (int)(ret)
+	_ret := C.QGraphicsWidget_GrabShortcut2(this.h, sequence.cPointer(), (C.uintptr_t)(context))
+	return (int)(_ret)
 }
 
 func (this *QGraphicsWidget) SetShortcutEnabled2(id int, enabled bool) {
@@ -515,6 +481,16 @@ func (this *QGraphicsWidget) PaintWindowFrame3(painter *QPainter, option *QStyle
 	C.QGraphicsWidget_PaintWindowFrame3(this.h, painter.cPointer(), option.cPointer(), widget.cPointer())
 }
 
+// Delete this object from C++ memory.
 func (this *QGraphicsWidget) Delete() {
 	C.QGraphicsWidget_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QGraphicsWidget) GoGC() {
+	runtime.SetFinalizer(this, func(this *QGraphicsWidget) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -63,7 +65,7 @@ QMetaObject* QMetaObject_SuperClass(const QMetaObject* self);
 bool QMetaObject_Inherits(const QMetaObject* self, QMetaObject* metaObject);
 QObject* QMetaObject_Cast(const QMetaObject* self, QObject* obj);
 QObject* QMetaObject_CastWithObj(const QMetaObject* self, QObject* obj);
-void QMetaObject_Tr(const QMetaObject* self, const char* s, const char* c, char** _out, int* _out_Strlen);
+struct miqt_string* QMetaObject_Tr(const QMetaObject* self, const char* s, const char* c);
 int QMetaObject_MethodOffset(const QMetaObject* self);
 int QMetaObject_EnumeratorOffset(const QMetaObject* self);
 int QMetaObject_PropertyOffset(const QMetaObject* self);
@@ -99,7 +101,7 @@ bool QMetaObject_InvokeMethod2(QObject* obj, const char* member, QGenericReturnA
 bool QMetaObject_InvokeMethod3(QObject* obj, const char* member, uintptr_t typeVal);
 bool QMetaObject_InvokeMethod4(QObject* obj, const char* member);
 QObject* QMetaObject_NewInstance(const QMetaObject* self);
-void QMetaObject_Tr3(const QMetaObject* self, const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QMetaObject_Tr3(const QMetaObject* self, const char* s, const char* c, int n);
 QMetaObject__Connection* QMetaObject_Connect5(QObject* sender, int signal_index, QObject* receiver, int method_index, int typeVal);
 QMetaObject__Connection* QMetaObject_Connect6(QObject* sender, int signal_index, QObject* receiver, int method_index, int typeVal, int* types);
 bool QMetaObject_InvokeMethod5(QObject* obj, const char* member, uintptr_t param3, QGenericReturnArgument* retVal, QGenericArgument* val0);

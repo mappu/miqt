@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -29,8 +31,8 @@ QFrame* QFrame_new();
 QFrame* QFrame_new2(QWidget* parent);
 QFrame* QFrame_new3(QWidget* parent, int f);
 QMetaObject* QFrame_MetaObject(const QFrame* self);
-void QFrame_Tr(const char* s, char** _out, int* _out_Strlen);
-void QFrame_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QFrame_Tr(const char* s);
+struct miqt_string* QFrame_TrUtf8(const char* s);
 int QFrame_FrameStyle(const QFrame* self);
 void QFrame_SetFrameStyle(QFrame* self, int frameStyle);
 int QFrame_FrameWidth(const QFrame* self);
@@ -45,10 +47,10 @@ int QFrame_MidLineWidth(const QFrame* self);
 void QFrame_SetMidLineWidth(QFrame* self, int midLineWidth);
 QRect* QFrame_FrameRect(const QFrame* self);
 void QFrame_SetFrameRect(QFrame* self, QRect* frameRect);
-void QFrame_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QFrame_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QFrame_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QFrame_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QFrame_Tr2(const char* s, const char* c);
+struct miqt_string* QFrame_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QFrame_TrUtf82(const char* s, const char* c);
+struct miqt_string* QFrame_TrUtf83(const char* s, const char* c, int n);
 void QFrame_Delete(QFrame* self);
 
 #ifdef __cplusplus

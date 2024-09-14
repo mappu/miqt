@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -35,7 +37,7 @@ typedef struct QWindow QWindow;
 
 QAccessibleWidget* QAccessibleWidget_new(QWidget* o);
 QAccessibleWidget* QAccessibleWidget_new2(QWidget* o, uintptr_t r);
-QAccessibleWidget* QAccessibleWidget_new3(QWidget* o, uintptr_t r, const char* name, size_t name_Strlen);
+QAccessibleWidget* QAccessibleWidget_new3(QWidget* o, uintptr_t r, struct miqt_string* name);
 bool QAccessibleWidget_IsValid(const QAccessibleWidget* self);
 QWindow* QAccessibleWidget_Window(const QAccessibleWidget* self);
 int QAccessibleWidget_ChildCount(const QAccessibleWidget* self);
@@ -44,14 +46,14 @@ QAccessibleInterface* QAccessibleWidget_FocusChild(const QAccessibleWidget* self
 QRect* QAccessibleWidget_Rect(const QAccessibleWidget* self);
 QAccessibleInterface* QAccessibleWidget_Parent(const QAccessibleWidget* self);
 QAccessibleInterface* QAccessibleWidget_Child(const QAccessibleWidget* self, int index);
-void QAccessibleWidget_Text(const QAccessibleWidget* self, uintptr_t t, char** _out, int* _out_Strlen);
+struct miqt_string* QAccessibleWidget_Text(const QAccessibleWidget* self, uintptr_t t);
 uintptr_t QAccessibleWidget_Role(const QAccessibleWidget* self);
 QAccessible__State* QAccessibleWidget_State(const QAccessibleWidget* self);
 QColor* QAccessibleWidget_ForegroundColor(const QAccessibleWidget* self);
 QColor* QAccessibleWidget_BackgroundColor(const QAccessibleWidget* self);
-void QAccessibleWidget_ActionNames(const QAccessibleWidget* self, char*** _out, int** _out_Lengths, size_t* _out_len);
-void QAccessibleWidget_DoAction(QAccessibleWidget* self, const char* actionName, size_t actionName_Strlen);
-void QAccessibleWidget_KeyBindingsForAction(const QAccessibleWidget* self, const char* actionName, size_t actionName_Strlen, char*** _out, int** _out_Lengths, size_t* _out_len);
+struct miqt_array* QAccessibleWidget_ActionNames(const QAccessibleWidget* self);
+void QAccessibleWidget_DoAction(QAccessibleWidget* self, struct miqt_string* actionName);
+struct miqt_array* QAccessibleWidget_KeyBindingsForAction(const QAccessibleWidget* self, struct miqt_string* actionName);
 
 #ifdef __cplusplus
 } /* extern C */

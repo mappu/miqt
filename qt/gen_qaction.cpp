@@ -14,24 +14,20 @@
 #include <QVariant>
 #include <QWidget>
 #include "qaction.h"
-
 #include "gen_qaction.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QAction* QAction_new() {
 	return new QAction();
 }
 
-QAction* QAction_new2(const char* text, size_t text_Strlen) {
-	QString text_QString = QString::fromUtf8(text, text_Strlen);
+QAction* QAction_new2(struct miqt_string* text) {
+	QString text_QString = QString::fromUtf8(&text->data, text->len);
 	return new QAction(text_QString);
 }
 
-QAction* QAction_new3(QIcon* icon, const char* text, size_t text_Strlen) {
-	QString text_QString = QString::fromUtf8(text, text_Strlen);
+QAction* QAction_new3(QIcon* icon, struct miqt_string* text) {
+	QString text_QString = QString::fromUtf8(&text->data, text->len);
 	return new QAction(*icon, text_QString);
 }
 
@@ -39,13 +35,13 @@ QAction* QAction_new4(QObject* parent) {
 	return new QAction(parent);
 }
 
-QAction* QAction_new5(const char* text, size_t text_Strlen, QObject* parent) {
-	QString text_QString = QString::fromUtf8(text, text_Strlen);
+QAction* QAction_new5(struct miqt_string* text, QObject* parent) {
+	QString text_QString = QString::fromUtf8(&text->data, text->len);
 	return new QAction(text_QString, parent);
 }
 
-QAction* QAction_new6(QIcon* icon, const char* text, size_t text_Strlen, QObject* parent) {
-	QString text_QString = QString::fromUtf8(text, text_Strlen);
+QAction* QAction_new6(QIcon* icon, struct miqt_string* text, QObject* parent) {
+	QString text_QString = QString::fromUtf8(&text->data, text->len);
 	return new QAction(*icon, text_QString, parent);
 }
 
@@ -53,22 +49,18 @@ QMetaObject* QAction_MetaObject(const QAction* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void QAction_Tr(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QAction::tr(s);
+struct miqt_string* QAction_Tr(const char* s) {
+	QString _ret = QAction::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QAction_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QAction::trUtf8(s);
+struct miqt_string* QAction_TrUtf8(const char* s) {
+	QString _ret = QAction::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QAction_SetActionGroup(QAction* self, QActionGroup* group) {
@@ -84,79 +76,69 @@ void QAction_SetIcon(QAction* self, QIcon* icon) {
 }
 
 QIcon* QAction_Icon(const QAction* self) {
-	QIcon ret = self->icon();
+	QIcon _ret = self->icon();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QIcon*>(new QIcon(ret));
+	return static_cast<QIcon*>(new QIcon(_ret));
 }
 
-void QAction_SetText(QAction* self, const char* text, size_t text_Strlen) {
-	QString text_QString = QString::fromUtf8(text, text_Strlen);
+void QAction_SetText(QAction* self, struct miqt_string* text) {
+	QString text_QString = QString::fromUtf8(&text->data, text->len);
 	self->setText(text_QString);
 }
 
-void QAction_Text(const QAction* self, char** _out, int* _out_Strlen) {
-	QString ret = self->text();
+struct miqt_string* QAction_Text(const QAction* self) {
+	QString _ret = self->text();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QAction_SetIconText(QAction* self, const char* text, size_t text_Strlen) {
-	QString text_QString = QString::fromUtf8(text, text_Strlen);
+void QAction_SetIconText(QAction* self, struct miqt_string* text) {
+	QString text_QString = QString::fromUtf8(&text->data, text->len);
 	self->setIconText(text_QString);
 }
 
-void QAction_IconText(const QAction* self, char** _out, int* _out_Strlen) {
-	QString ret = self->iconText();
+struct miqt_string* QAction_IconText(const QAction* self) {
+	QString _ret = self->iconText();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QAction_SetToolTip(QAction* self, const char* tip, size_t tip_Strlen) {
-	QString tip_QString = QString::fromUtf8(tip, tip_Strlen);
+void QAction_SetToolTip(QAction* self, struct miqt_string* tip) {
+	QString tip_QString = QString::fromUtf8(&tip->data, tip->len);
 	self->setToolTip(tip_QString);
 }
 
-void QAction_ToolTip(const QAction* self, char** _out, int* _out_Strlen) {
-	QString ret = self->toolTip();
+struct miqt_string* QAction_ToolTip(const QAction* self) {
+	QString _ret = self->toolTip();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QAction_SetStatusTip(QAction* self, const char* statusTip, size_t statusTip_Strlen) {
-	QString statusTip_QString = QString::fromUtf8(statusTip, statusTip_Strlen);
+void QAction_SetStatusTip(QAction* self, struct miqt_string* statusTip) {
+	QString statusTip_QString = QString::fromUtf8(&statusTip->data, statusTip->len);
 	self->setStatusTip(statusTip_QString);
 }
 
-void QAction_StatusTip(const QAction* self, char** _out, int* _out_Strlen) {
-	QString ret = self->statusTip();
+struct miqt_string* QAction_StatusTip(const QAction* self) {
+	QString _ret = self->statusTip();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QAction_SetWhatsThis(QAction* self, const char* what, size_t what_Strlen) {
-	QString what_QString = QString::fromUtf8(what, what_Strlen);
+void QAction_SetWhatsThis(QAction* self, struct miqt_string* what) {
+	QString what_QString = QString::fromUtf8(&what->data, what->len);
 	self->setWhatsThis(what_QString);
 }
 
-void QAction_WhatsThis(const QAction* self, char** _out, int* _out_Strlen) {
-	QString ret = self->whatsThis();
+struct miqt_string* QAction_WhatsThis(const QAction* self) {
+	QString _ret = self->whatsThis();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QAction_SetPriority(QAction* self, uintptr_t priority) {
@@ -164,8 +146,8 @@ void QAction_SetPriority(QAction* self, uintptr_t priority) {
 }
 
 uintptr_t QAction_Priority(const QAction* self) {
-	QAction::Priority ret = self->priority();
-	return static_cast<uintptr_t>(ret);
+	QAction::Priority _ret = self->priority();
+	return static_cast<uintptr_t>(_ret);
 }
 
 QMenu* QAction_Menu(const QAction* self) {
@@ -189,16 +171,17 @@ void QAction_SetShortcut(QAction* self, QKeySequence* shortcut) {
 }
 
 QKeySequence* QAction_Shortcut(const QAction* self) {
-	QKeySequence ret = self->shortcut();
+	QKeySequence _ret = self->shortcut();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QKeySequence*>(new QKeySequence(ret));
+	return static_cast<QKeySequence*>(new QKeySequence(_ret));
 }
 
-void QAction_SetShortcuts(QAction* self, QKeySequence** shortcuts, size_t shortcuts_len) {
+void QAction_SetShortcuts(QAction* self, struct miqt_array* /* of QKeySequence */ shortcuts) {
 	QList<QKeySequence> shortcuts_QList;
-	shortcuts_QList.reserve(shortcuts_len);
-	for(size_t i = 0; i < shortcuts_len; ++i) {
-		shortcuts_QList.push_back(*(shortcuts[i]));
+	shortcuts_QList.reserve(shortcuts->len);
+	QKeySequence** shortcuts_arr = static_cast<QKeySequence**>(shortcuts->data);
+	for(size_t i = 0; i < shortcuts->len; ++i) {
+		shortcuts_QList.push_back(*(shortcuts_arr[i]));
 	}
 	self->setShortcuts(shortcuts_QList);
 }
@@ -207,15 +190,17 @@ void QAction_SetShortcutsWithShortcuts(QAction* self, uintptr_t shortcuts) {
 	self->setShortcuts(static_cast<QKeySequence::StandardKey>(shortcuts));
 }
 
-void QAction_Shortcuts(const QAction* self, QKeySequence*** _out, size_t* _out_len) {
-	QList<QKeySequence> ret = self->shortcuts();
+struct miqt_array* QAction_Shortcuts(const QAction* self) {
+	QList<QKeySequence> _ret = self->shortcuts();
 	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
-	QKeySequence** __out = static_cast<QKeySequence**>(malloc(sizeof(QKeySequence**) * ret.length()));
-	for (size_t i = 0, e = ret.length(); i < e; ++i) {
-		__out[i] = new QKeySequence(ret[i]);
+	QKeySequence** _arr = static_cast<QKeySequence**>(malloc(sizeof(QKeySequence**) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		_arr[i] = new QKeySequence(_ret[i]);
 	}
-	*_out = __out;
-	*_out_len = ret.length();
+	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
+	_out->len = _ret.length();
+	_out->data = static_cast<void*>(_arr);
+	return _out;
 }
 
 void QAction_SetShortcutContext(QAction* self, uintptr_t context) {
@@ -223,8 +208,8 @@ void QAction_SetShortcutContext(QAction* self, uintptr_t context) {
 }
 
 uintptr_t QAction_ShortcutContext(const QAction* self) {
-	Qt::ShortcutContext ret = self->shortcutContext();
-	return static_cast<uintptr_t>(ret);
+	Qt::ShortcutContext _ret = self->shortcutContext();
+	return static_cast<uintptr_t>(_ret);
 }
 
 void QAction_SetAutoRepeat(QAction* self, bool autoRepeat) {
@@ -240,9 +225,9 @@ void QAction_SetFont(QAction* self, QFont* font) {
 }
 
 QFont* QAction_Font(const QAction* self) {
-	QFont ret = self->font();
+	QFont _ret = self->font();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QFont*>(new QFont(ret));
+	return static_cast<QFont*>(new QFont(_ret));
 }
 
 void QAction_SetCheckable(QAction* self, bool checkable) {
@@ -254,9 +239,9 @@ bool QAction_IsCheckable(const QAction* self) {
 }
 
 QVariant* QAction_Data(const QAction* self) {
-	QVariant ret = self->data();
+	QVariant _ret = self->data();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(ret));
+	return static_cast<QVariant*>(new QVariant(_ret));
 }
 
 void QAction_SetData(QAction* self, QVariant* varVal) {
@@ -288,8 +273,8 @@ void QAction_SetMenuRole(QAction* self, uintptr_t menuRole) {
 }
 
 uintptr_t QAction_MenuRole(const QAction* self) {
-	QAction::MenuRole ret = self->menuRole();
-	return static_cast<uintptr_t>(ret);
+	QAction::MenuRole _ret = self->menuRole();
+	return static_cast<uintptr_t>(_ret);
 }
 
 void QAction_SetIconVisibleInMenu(QAction* self, bool visible) {
@@ -312,26 +297,30 @@ QWidget* QAction_ParentWidget(const QAction* self) {
 	return self->parentWidget();
 }
 
-void QAction_AssociatedWidgets(const QAction* self, QWidget*** _out, size_t* _out_len) {
-	QList<QWidget*> ret = self->associatedWidgets();
+struct miqt_array* QAction_AssociatedWidgets(const QAction* self) {
+	QList<QWidget*> _ret = self->associatedWidgets();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QWidget** __out = static_cast<QWidget**>(malloc(sizeof(QWidget*) * ret.length()));
-	for (size_t i = 0, e = ret.length(); i < e; ++i) {
-		__out[i] = ret[i];
+	QWidget** _arr = static_cast<QWidget**>(malloc(sizeof(QWidget*) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		_arr[i] = _ret[i];
 	}
-	*_out = __out;
-	*_out_len = ret.length();
+	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
+	_out->len = _ret.length();
+	_out->data = static_cast<void*>(_arr);
+	return _out;
 }
 
-void QAction_AssociatedGraphicsWidgets(const QAction* self, QGraphicsWidget*** _out, size_t* _out_len) {
-	QList<QGraphicsWidget*> ret = self->associatedGraphicsWidgets();
+struct miqt_array* QAction_AssociatedGraphicsWidgets(const QAction* self) {
+	QList<QGraphicsWidget*> _ret = self->associatedGraphicsWidgets();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QGraphicsWidget** __out = static_cast<QGraphicsWidget**>(malloc(sizeof(QGraphicsWidget*) * ret.length()));
-	for (size_t i = 0, e = ret.length(); i < e; ++i) {
-		__out[i] = ret[i];
+	QGraphicsWidget** _arr = static_cast<QGraphicsWidget**>(malloc(sizeof(QGraphicsWidget*) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		_arr[i] = _ret[i];
 	}
-	*_out = __out;
-	*_out_len = ret.length();
+	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
+	_out->len = _ret.length();
+	_out->data = static_cast<void*>(_arr);
+	return _out;
 }
 
 void QAction_Trigger(QAction* self) {
@@ -368,7 +357,7 @@ void QAction_Changed(QAction* self) {
 
 void QAction_connect_Changed(QAction* self, void* slot) {
 	QAction::connect(self, static_cast<void (QAction::*)()>(&QAction::changed), self, [=]() {
-		miqt_exec_callback(slot, 0, nullptr);
+		miqt_exec_callback_QAction_Changed(slot);
 	});
 }
 
@@ -378,7 +367,7 @@ void QAction_Triggered(QAction* self) {
 
 void QAction_connect_Triggered(QAction* self, void* slot) {
 	QAction::connect(self, static_cast<void (QAction::*)(bool)>(&QAction::triggered), self, [=]() {
-		miqt_exec_callback(slot, 0, nullptr);
+		miqt_exec_callback_QAction_Triggered(slot);
 	});
 }
 
@@ -388,7 +377,7 @@ void QAction_Hovered(QAction* self) {
 
 void QAction_connect_Hovered(QAction* self, void* slot) {
 	QAction::connect(self, static_cast<void (QAction::*)()>(&QAction::hovered), self, [=]() {
-		miqt_exec_callback(slot, 0, nullptr);
+		miqt_exec_callback_QAction_Hovered(slot);
 	});
 }
 
@@ -398,44 +387,37 @@ void QAction_Toggled(QAction* self, bool param1) {
 
 void QAction_connect_Toggled(QAction* self, void* slot) {
 	QAction::connect(self, static_cast<void (QAction::*)(bool)>(&QAction::toggled), self, [=](bool param1) {
-		miqt_exec_callback(slot, 0, nullptr);
+		bool sigval1 = param1;
+		miqt_exec_callback_QAction_Toggled(slot, sigval1);
 	});
 }
 
-void QAction_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QAction::tr(s, c);
+struct miqt_string* QAction_Tr2(const char* s, const char* c) {
+	QString _ret = QAction::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QAction_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QAction::tr(s, c, static_cast<int>(n));
+struct miqt_string* QAction_Tr3(const char* s, const char* c, int n) {
+	QString _ret = QAction::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QAction_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QAction::trUtf8(s, c);
+struct miqt_string* QAction_TrUtf82(const char* s, const char* c) {
+	QString _ret = QAction::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QAction_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QAction::trUtf8(s, c, static_cast<int>(n));
+struct miqt_string* QAction_TrUtf83(const char* s, const char* c, int n) {
+	QString _ret = QAction::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 bool QAction_ShowStatusText1(QAction* self, QWidget* widget) {
@@ -448,7 +430,8 @@ void QAction_Triggered1(QAction* self, bool checked) {
 
 void QAction_connect_Triggered1(QAction* self, void* slot) {
 	QAction::connect(self, static_cast<void (QAction::*)(bool)>(&QAction::triggered), self, [=](bool checked) {
-		miqt_exec_callback(slot, 0, nullptr);
+		bool sigval1 = checked;
+		miqt_exec_callback_QAction_Triggered1(slot, sigval1);
 	});
 }
 

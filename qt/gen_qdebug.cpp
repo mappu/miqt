@@ -8,12 +8,8 @@
 #include <QByteArray>
 #include <cstring>
 #include "qdebug.h"
-
 #include "gen_qdebug.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QDebug* QDebug_new(QIODevice* device) {
 	return new QDebug(device);
@@ -32,33 +28,33 @@ void QDebug_Swap(QDebug* self, QDebug* other) {
 }
 
 QDebug* QDebug_ResetFormat(QDebug* self) {
-	QDebug& ret = self->resetFormat();
+	QDebug& _ret = self->resetFormat();
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QDebug* QDebug_Space(QDebug* self) {
-	QDebug& ret = self->space();
+	QDebug& _ret = self->space();
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QDebug* QDebug_Nospace(QDebug* self) {
-	QDebug& ret = self->nospace();
+	QDebug& _ret = self->nospace();
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QDebug* QDebug_MaybeSpace(QDebug* self) {
-	QDebug& ret = self->maybeSpace();
+	QDebug& _ret = self->maybeSpace();
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QDebug* QDebug_Verbosity(QDebug* self, int verbosityLevel) {
-	QDebug& ret = self->verbosity(static_cast<int>(verbosityLevel));
+	QDebug& _ret = self->verbosity(static_cast<int>(verbosityLevel));
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 int QDebug_Verbosity2(const QDebug* self) {
@@ -78,124 +74,124 @@ void QDebug_SetAutoInsertSpaces(QDebug* self, bool b) {
 }
 
 QDebug* QDebug_Quote(QDebug* self) {
-	QDebug& ret = self->quote();
+	QDebug& _ret = self->quote();
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QDebug* QDebug_Noquote(QDebug* self) {
-	QDebug& ret = self->noquote();
+	QDebug& _ret = self->noquote();
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QDebug* QDebug_MaybeQuote(QDebug* self) {
-	QDebug& ret = self->maybeQuote();
+	QDebug& _ret = self->maybeQuote();
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QDebug* QDebug_OperatorShiftLeft(QDebug* self, QChar* t) {
-	QDebug& ret = self->operator<<(*t);
+	QDebug& _ret = self->operator<<(*t);
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QDebug* QDebug_OperatorShiftLeftWithBool(QDebug* self, bool t) {
-	QDebug& ret = self->operator<<(t);
+	QDebug& _ret = self->operator<<(t);
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QDebug* QDebug_OperatorShiftLeftWithChar(QDebug* self, char t) {
-	QDebug& ret = self->operator<<(static_cast<char>(t));
+	QDebug& _ret = self->operator<<(static_cast<char>(t));
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QDebug* QDebug_OperatorShiftLeftWithShort(QDebug* self, int16_t t) {
-	QDebug& ret = self->operator<<(static_cast<short>(t));
+	QDebug& _ret = self->operator<<(static_cast<short>(t));
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QDebug* QDebug_OperatorShiftLeftWithUnsignedshort(QDebug* self, uint16_t t) {
-	QDebug& ret = self->operator<<(static_cast<unsigned short>(t));
+	QDebug& _ret = self->operator<<(static_cast<unsigned short>(t));
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QDebug* QDebug_OperatorShiftLeftWithInt(QDebug* self, int t) {
-	QDebug& ret = self->operator<<(static_cast<int>(t));
+	QDebug& _ret = self->operator<<(static_cast<int>(t));
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QDebug* QDebug_OperatorShiftLeftWithUnsignedint(QDebug* self, unsigned int t) {
-	QDebug& ret = self->operator<<(static_cast<unsigned int>(t));
+	QDebug& _ret = self->operator<<(static_cast<unsigned int>(t));
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QDebug* QDebug_OperatorShiftLeftWithLong(QDebug* self, long t) {
-	QDebug& ret = self->operator<<(static_cast<long>(t));
+	QDebug& _ret = self->operator<<(static_cast<long>(t));
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QDebug* QDebug_OperatorShiftLeftWithUnsignedlong(QDebug* self, unsigned long t) {
-	QDebug& ret = self->operator<<(static_cast<unsigned long>(t));
+	QDebug& _ret = self->operator<<(static_cast<unsigned long>(t));
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QDebug* QDebug_OperatorShiftLeftWithQint64(QDebug* self, long long t) {
-	QDebug& ret = self->operator<<(static_cast<qint64>(t));
+	QDebug& _ret = self->operator<<(static_cast<qint64>(t));
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QDebug* QDebug_OperatorShiftLeftWithQuint64(QDebug* self, unsigned long long t) {
-	QDebug& ret = self->operator<<(static_cast<quint64>(t));
+	QDebug& _ret = self->operator<<(static_cast<quint64>(t));
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QDebug* QDebug_OperatorShiftLeftWithFloat(QDebug* self, float t) {
-	QDebug& ret = self->operator<<(static_cast<float>(t));
+	QDebug& _ret = self->operator<<(static_cast<float>(t));
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QDebug* QDebug_OperatorShiftLeftWithDouble(QDebug* self, double t) {
-	QDebug& ret = self->operator<<(static_cast<double>(t));
+	QDebug& _ret = self->operator<<(static_cast<double>(t));
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QDebug* QDebug_OperatorShiftLeft2(QDebug* self, const char* t) {
-	QDebug& ret = self->operator<<(t);
+	QDebug& _ret = self->operator<<(t);
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
-QDebug* QDebug_OperatorShiftLeftWithQString(QDebug* self, const char* t, size_t t_Strlen) {
-	QString t_QString = QString::fromUtf8(t, t_Strlen);
-	QDebug& ret = self->operator<<(t_QString);
+QDebug* QDebug_OperatorShiftLeftWithQString(QDebug* self, struct miqt_string* t) {
+	QString t_QString = QString::fromUtf8(&t->data, t->len);
+	QDebug& _ret = self->operator<<(t_QString);
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QDebug* QDebug_OperatorShiftLeftWithQByteArray(QDebug* self, QByteArray* t) {
-	QDebug& ret = self->operator<<(*t);
+	QDebug& _ret = self->operator<<(*t);
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QDebug* QDebug_MaybeQuote1(QDebug* self, char c) {
-	QDebug& ret = self->maybeQuote(static_cast<char>(c));
+	QDebug& _ret = self->maybeQuote(static_cast<char>(c));
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 void QDebug_Delete(QDebug* self) {
@@ -211,51 +207,51 @@ void QDebugStateSaver_Delete(QDebugStateSaver* self) {
 }
 
 QNoDebug* QNoDebug_Space(QNoDebug* self) {
-	QNoDebug& ret = self->space();
+	QNoDebug& _ret = self->space();
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QNoDebug* QNoDebug_Nospace(QNoDebug* self) {
-	QNoDebug& ret = self->nospace();
+	QNoDebug& _ret = self->nospace();
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QNoDebug* QNoDebug_MaybeSpace(QNoDebug* self) {
-	QNoDebug& ret = self->maybeSpace();
+	QNoDebug& _ret = self->maybeSpace();
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QNoDebug* QNoDebug_Quote(QNoDebug* self) {
-	QNoDebug& ret = self->quote();
+	QNoDebug& _ret = self->quote();
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QNoDebug* QNoDebug_Noquote(QNoDebug* self) {
-	QNoDebug& ret = self->noquote();
+	QNoDebug& _ret = self->noquote();
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QNoDebug* QNoDebug_MaybeQuote(QNoDebug* self) {
-	QNoDebug& ret = self->maybeQuote();
+	QNoDebug& _ret = self->maybeQuote();
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QNoDebug* QNoDebug_Verbosity(QNoDebug* self, int param1) {
-	QNoDebug& ret = self->verbosity(static_cast<int>(param1));
+	QNoDebug& _ret = self->verbosity(static_cast<int>(param1));
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QNoDebug* QNoDebug_MaybeQuote1(QNoDebug* self, const char param1) {
-	QNoDebug& ret = self->maybeQuote(static_cast<const char>(param1));
+	QNoDebug& _ret = self->maybeQuote(static_cast<const char>(param1));
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 void QNoDebug_Delete(QNoDebug* self) {

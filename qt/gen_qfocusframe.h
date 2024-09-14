@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -24,14 +26,14 @@ typedef struct QWidget QWidget;
 QFocusFrame* QFocusFrame_new();
 QFocusFrame* QFocusFrame_new2(QWidget* parent);
 QMetaObject* QFocusFrame_MetaObject(const QFocusFrame* self);
-void QFocusFrame_Tr(const char* s, char** _out, int* _out_Strlen);
-void QFocusFrame_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QFocusFrame_Tr(const char* s);
+struct miqt_string* QFocusFrame_TrUtf8(const char* s);
 void QFocusFrame_SetWidget(QFocusFrame* self, QWidget* widget);
 QWidget* QFocusFrame_Widget(const QFocusFrame* self);
-void QFocusFrame_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QFocusFrame_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QFocusFrame_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QFocusFrame_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QFocusFrame_Tr2(const char* s, const char* c);
+struct miqt_string* QFocusFrame_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QFocusFrame_TrUtf82(const char* s, const char* c);
+struct miqt_string* QFocusFrame_TrUtf83(const char* s, const char* c, int n);
 void QFocusFrame_Delete(QFocusFrame* self);
 
 #ifdef __cplusplus

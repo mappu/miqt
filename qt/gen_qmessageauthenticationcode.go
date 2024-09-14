@@ -66,32 +66,34 @@ func (this *QMessageAuthenticationCode) AddDataWithData(data *QByteArray) {
 }
 
 func (this *QMessageAuthenticationCode) AddDataWithDevice(device *QIODevice) bool {
-	ret := C.QMessageAuthenticationCode_AddDataWithDevice(this.h, device.cPointer())
-	return (bool)(ret)
+	_ret := C.QMessageAuthenticationCode_AddDataWithDevice(this.h, device.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QMessageAuthenticationCode) Result() *QByteArray {
-	ret := C.QMessageAuthenticationCode_Result(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQByteArray(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QByteArray) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QMessageAuthenticationCode_Result(this.h)
+	_goptr := newQByteArray(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func QMessageAuthenticationCode_Hash(message *QByteArray, key *QByteArray, method QCryptographicHash__Algorithm) *QByteArray {
-	ret := C.QMessageAuthenticationCode_Hash(message.cPointer(), key.cPointer(), (C.uintptr_t)(method))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQByteArray(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QByteArray) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QMessageAuthenticationCode_Hash(message.cPointer(), key.cPointer(), (C.uintptr_t)(method))
+	_goptr := newQByteArray(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
+// Delete this object from C++ memory.
 func (this *QMessageAuthenticationCode) Delete() {
 	C.QMessageAuthenticationCode_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QMessageAuthenticationCode) GoGC() {
+	runtime.SetFinalizer(this, func(this *QMessageAuthenticationCode) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

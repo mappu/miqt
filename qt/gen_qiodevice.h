@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -22,8 +24,8 @@ typedef struct QMetaObject QMetaObject;
 #endif
 
 QMetaObject* QIODevice_MetaObject(const QIODevice* self);
-void QIODevice_Tr(const char* s, char** _out, int* _out_Strlen);
-void QIODevice_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QIODevice_Tr(const char* s);
+struct miqt_string* QIODevice_TrUtf8(const char* s);
 int QIODevice_OpenMode(const QIODevice* self);
 void QIODevice_SetTextModeEnabled(QIODevice* self, bool enabled);
 bool QIODevice_IsTextModeEnabled(const QIODevice* self);
@@ -67,7 +69,7 @@ bool QIODevice_WaitForBytesWritten(QIODevice* self, int msecs);
 void QIODevice_UngetChar(QIODevice* self, char c);
 bool QIODevice_PutChar(QIODevice* self, char c);
 bool QIODevice_GetChar(QIODevice* self, char* c);
-void QIODevice_ErrorString(const QIODevice* self, char** _out, int* _out_Strlen);
+struct miqt_string* QIODevice_ErrorString(const QIODevice* self);
 void QIODevice_ReadyRead(QIODevice* self);
 void QIODevice_connect_ReadyRead(QIODevice* self, void* slot);
 void QIODevice_ChannelReadyRead(QIODevice* self, int channel);
@@ -80,10 +82,10 @@ void QIODevice_AboutToClose(QIODevice* self);
 void QIODevice_connect_AboutToClose(QIODevice* self, void* slot);
 void QIODevice_ReadChannelFinished(QIODevice* self);
 void QIODevice_connect_ReadChannelFinished(QIODevice* self, void* slot);
-void QIODevice_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QIODevice_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QIODevice_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QIODevice_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QIODevice_Tr2(const char* s, const char* c);
+struct miqt_string* QIODevice_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QIODevice_TrUtf82(const char* s, const char* c);
+struct miqt_string* QIODevice_TrUtf83(const char* s, const char* c, int n);
 QByteArray* QIODevice_ReadLine1(QIODevice* self, long long maxlen);
 void QIODevice_Delete(QIODevice* self);
 

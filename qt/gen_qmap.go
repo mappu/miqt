@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"runtime"
 	"unsafe"
 )
 
@@ -54,28 +55,28 @@ func NewQMapNodeBase(param1 *QMapNodeBase) *QMapNodeBase {
 }
 
 func (this *QMapNodeBase) NextNode() *QMapNodeBase {
-	ret := C.QMapNodeBase_NextNode(this.h)
-	return newQMapNodeBase_U(unsafe.Pointer(ret))
+	_ret := C.QMapNodeBase_NextNode(this.h)
+	return newQMapNodeBase_U(unsafe.Pointer(_ret))
 }
 
 func (this *QMapNodeBase) NextNode2() *QMapNodeBase {
-	ret := C.QMapNodeBase_NextNode2(this.h)
-	return newQMapNodeBase_U(unsafe.Pointer(ret))
+	_ret := C.QMapNodeBase_NextNode2(this.h)
+	return newQMapNodeBase_U(unsafe.Pointer(_ret))
 }
 
 func (this *QMapNodeBase) PreviousNode() *QMapNodeBase {
-	ret := C.QMapNodeBase_PreviousNode(this.h)
-	return newQMapNodeBase_U(unsafe.Pointer(ret))
+	_ret := C.QMapNodeBase_PreviousNode(this.h)
+	return newQMapNodeBase_U(unsafe.Pointer(_ret))
 }
 
 func (this *QMapNodeBase) PreviousNode2() *QMapNodeBase {
-	ret := C.QMapNodeBase_PreviousNode2(this.h)
-	return newQMapNodeBase_U(unsafe.Pointer(ret))
+	_ret := C.QMapNodeBase_PreviousNode2(this.h)
+	return newQMapNodeBase_U(unsafe.Pointer(_ret))
 }
 
 func (this *QMapNodeBase) Color() QMapNodeBase__Color {
-	ret := C.QMapNodeBase_Color(this.h)
-	return (QMapNodeBase__Color)(ret)
+	_ret := C.QMapNodeBase_Color(this.h)
+	return (QMapNodeBase__Color)(_ret)
 }
 
 func (this *QMapNodeBase) SetColor(c QMapNodeBase__Color) {
@@ -83,8 +84,8 @@ func (this *QMapNodeBase) SetColor(c QMapNodeBase__Color) {
 }
 
 func (this *QMapNodeBase) Parent() *QMapNodeBase {
-	ret := C.QMapNodeBase_Parent(this.h)
-	return newQMapNodeBase_U(unsafe.Pointer(ret))
+	_ret := C.QMapNodeBase_Parent(this.h)
+	return newQMapNodeBase_U(unsafe.Pointer(_ret))
 }
 
 func (this *QMapNodeBase) SetParent(pp *QMapNodeBase) {
@@ -95,8 +96,18 @@ func (this *QMapNodeBase) OperatorAssign(param1 *QMapNodeBase) {
 	C.QMapNodeBase_OperatorAssign(this.h, param1.cPointer())
 }
 
+// Delete this object from C++ memory.
 func (this *QMapNodeBase) Delete() {
 	C.QMapNodeBase_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QMapNodeBase) GoGC() {
+	runtime.SetFinalizer(this, func(this *QMapNodeBase) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
 
 type QMapDataBase struct {
@@ -142,8 +153,8 @@ func (this *QMapDataBase) RecalcMostLeftNode() {
 }
 
 func (this *QMapDataBase) CreateNode(size int, alignment int, parent *QMapNodeBase, left bool) *QMapNodeBase {
-	ret := C.QMapDataBase_CreateNode(this.h, (C.int)(size), (C.int)(alignment), parent.cPointer(), (C.bool)(left))
-	return newQMapNodeBase_U(unsafe.Pointer(ret))
+	_ret := C.QMapDataBase_CreateNode(this.h, (C.int)(size), (C.int)(alignment), parent.cPointer(), (C.bool)(left))
+	return newQMapNodeBase_U(unsafe.Pointer(_ret))
 }
 
 func (this *QMapDataBase) FreeTree(root *QMapNodeBase, alignment int) {
@@ -151,14 +162,24 @@ func (this *QMapDataBase) FreeTree(root *QMapNodeBase, alignment int) {
 }
 
 func QMapDataBase_CreateData() *QMapDataBase {
-	ret := C.QMapDataBase_CreateData()
-	return newQMapDataBase_U(unsafe.Pointer(ret))
+	_ret := C.QMapDataBase_CreateData()
+	return newQMapDataBase_U(unsafe.Pointer(_ret))
 }
 
 func QMapDataBase_FreeData(d *QMapDataBase) {
 	C.QMapDataBase_FreeData(d.cPointer())
 }
 
+// Delete this object from C++ memory.
 func (this *QMapDataBase) Delete() {
 	C.QMapDataBase_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QMapDataBase) GoGC() {
+	runtime.SetFinalizer(this, func(this *QMapDataBase) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

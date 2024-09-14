@@ -9,12 +9,8 @@
 #include <cstring>
 #include <QWindow>
 #include "qaccessibleobject.h"
-
 #include "gen_qaccessibleobject.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 bool QAccessibleObject_IsValid(const QAccessibleObject* self) {
 	return self->isValid();
@@ -25,13 +21,13 @@ QObject* QAccessibleObject_Object(const QAccessibleObject* self) {
 }
 
 QRect* QAccessibleObject_Rect(const QAccessibleObject* self) {
-	QRect ret = self->rect();
+	QRect _ret = self->rect();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(ret));
+	return static_cast<QRect*>(new QRect(_ret));
 }
 
-void QAccessibleObject_SetText(QAccessibleObject* self, uintptr_t t, const char* text, size_t text_Strlen) {
-	QString text_QString = QString::fromUtf8(text, text_Strlen);
+void QAccessibleObject_SetText(QAccessibleObject* self, uintptr_t t, struct miqt_string* text) {
+	QString text_QString = QString::fromUtf8(&text->data, text->len);
 	self->setText(static_cast<QAccessible::Text>(t), text_QString);
 }
 
@@ -67,24 +63,22 @@ QAccessibleInterface* QAccessibleApplication_Child(const QAccessibleApplication*
 	return self->child(static_cast<int>(index));
 }
 
-void QAccessibleApplication_Text(const QAccessibleApplication* self, uintptr_t t, char** _out, int* _out_Strlen) {
-	QString ret = self->text(static_cast<QAccessible::Text>(t));
+struct miqt_string* QAccessibleApplication_Text(const QAccessibleApplication* self, uintptr_t t) {
+	QString _ret = self->text(static_cast<QAccessible::Text>(t));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 uintptr_t QAccessibleApplication_Role(const QAccessibleApplication* self) {
-	QAccessible::Role ret = self->role();
-	return static_cast<uintptr_t>(ret);
+	QAccessible::Role _ret = self->role();
+	return static_cast<uintptr_t>(_ret);
 }
 
 QAccessible__State* QAccessibleApplication_State(const QAccessibleApplication* self) {
-	QAccessible::State ret = self->state();
+	QAccessible::State _ret = self->state();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QAccessible::State*>(new QAccessible::State(ret));
+	return static_cast<QAccessible::State*>(new QAccessible::State(_ret));
 }
 
 void QAccessibleApplication_Delete(QAccessibleApplication* self) {

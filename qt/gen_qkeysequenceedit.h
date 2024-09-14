@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -28,8 +30,8 @@ QKeySequenceEdit* QKeySequenceEdit_new2(QKeySequence* keySequence);
 QKeySequenceEdit* QKeySequenceEdit_new3(QWidget* parent);
 QKeySequenceEdit* QKeySequenceEdit_new4(QKeySequence* keySequence, QWidget* parent);
 QMetaObject* QKeySequenceEdit_MetaObject(const QKeySequenceEdit* self);
-void QKeySequenceEdit_Tr(const char* s, char** _out, int* _out_Strlen);
-void QKeySequenceEdit_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QKeySequenceEdit_Tr(const char* s);
+struct miqt_string* QKeySequenceEdit_TrUtf8(const char* s);
 QKeySequence* QKeySequenceEdit_KeySequence(const QKeySequenceEdit* self);
 void QKeySequenceEdit_SetKeySequence(QKeySequenceEdit* self, QKeySequence* keySequence);
 void QKeySequenceEdit_Clear(QKeySequenceEdit* self);
@@ -37,10 +39,10 @@ void QKeySequenceEdit_EditingFinished(QKeySequenceEdit* self);
 void QKeySequenceEdit_connect_EditingFinished(QKeySequenceEdit* self, void* slot);
 void QKeySequenceEdit_KeySequenceChanged(QKeySequenceEdit* self, QKeySequence* keySequence);
 void QKeySequenceEdit_connect_KeySequenceChanged(QKeySequenceEdit* self, void* slot);
-void QKeySequenceEdit_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QKeySequenceEdit_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QKeySequenceEdit_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QKeySequenceEdit_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QKeySequenceEdit_Tr2(const char* s, const char* c);
+struct miqt_string* QKeySequenceEdit_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QKeySequenceEdit_TrUtf82(const char* s, const char* c);
+struct miqt_string* QKeySequenceEdit_TrUtf83(const char* s, const char* c, int n);
 void QKeySequenceEdit_Delete(QKeySequenceEdit* self);
 
 #ifdef __cplusplus

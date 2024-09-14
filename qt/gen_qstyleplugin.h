@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -22,13 +24,13 @@ typedef struct QStylePlugin QStylePlugin;
 #endif
 
 QMetaObject* QStylePlugin_MetaObject(const QStylePlugin* self);
-void QStylePlugin_Tr(const char* s, char** _out, int* _out_Strlen);
-void QStylePlugin_TrUtf8(const char* s, char** _out, int* _out_Strlen);
-QStyle* QStylePlugin_Create(QStylePlugin* self, const char* key, size_t key_Strlen);
-void QStylePlugin_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QStylePlugin_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QStylePlugin_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QStylePlugin_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QStylePlugin_Tr(const char* s);
+struct miqt_string* QStylePlugin_TrUtf8(const char* s);
+QStyle* QStylePlugin_Create(QStylePlugin* self, struct miqt_string* key);
+struct miqt_string* QStylePlugin_Tr2(const char* s, const char* c);
+struct miqt_string* QStylePlugin_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QStylePlugin_TrUtf82(const char* s, const char* c);
+struct miqt_string* QStylePlugin_TrUtf83(const char* s, const char* c, int n);
 void QStylePlugin_Delete(QStylePlugin* self);
 
 #ifdef __cplusplus

@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -28,23 +30,23 @@ typedef struct QStateMachine QStateMachine;
 #endif
 
 QMetaObject* QAbstractTransition_MetaObject(const QAbstractTransition* self);
-void QAbstractTransition_Tr(const char* s, char** _out, int* _out_Strlen);
-void QAbstractTransition_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QAbstractTransition_Tr(const char* s);
+struct miqt_string* QAbstractTransition_TrUtf8(const char* s);
 QState* QAbstractTransition_SourceState(const QAbstractTransition* self);
 QAbstractState* QAbstractTransition_TargetState(const QAbstractTransition* self);
 void QAbstractTransition_SetTargetState(QAbstractTransition* self, QAbstractState* target);
-void QAbstractTransition_TargetStates(const QAbstractTransition* self, QAbstractState*** _out, size_t* _out_len);
-void QAbstractTransition_SetTargetStates(QAbstractTransition* self, QAbstractState** targets, size_t targets_len);
+struct miqt_array* QAbstractTransition_TargetStates(const QAbstractTransition* self);
+void QAbstractTransition_SetTargetStates(QAbstractTransition* self, struct miqt_array* /* of QAbstractState* */ targets);
 uintptr_t QAbstractTransition_TransitionType(const QAbstractTransition* self);
 void QAbstractTransition_SetTransitionType(QAbstractTransition* self, uintptr_t typeVal);
 QStateMachine* QAbstractTransition_Machine(const QAbstractTransition* self);
 void QAbstractTransition_AddAnimation(QAbstractTransition* self, QAbstractAnimation* animation);
 void QAbstractTransition_RemoveAnimation(QAbstractTransition* self, QAbstractAnimation* animation);
-void QAbstractTransition_Animations(const QAbstractTransition* self, QAbstractAnimation*** _out, size_t* _out_len);
-void QAbstractTransition_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QAbstractTransition_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QAbstractTransition_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QAbstractTransition_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_array* QAbstractTransition_Animations(const QAbstractTransition* self);
+struct miqt_string* QAbstractTransition_Tr2(const char* s, const char* c);
+struct miqt_string* QAbstractTransition_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QAbstractTransition_TrUtf82(const char* s, const char* c);
+struct miqt_string* QAbstractTransition_TrUtf83(const char* s, const char* c, int n);
 void QAbstractTransition_Delete(QAbstractTransition* self);
 
 #ifdef __cplusplus

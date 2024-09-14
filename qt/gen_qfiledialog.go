@@ -104,65 +104,61 @@ func NewQFileDialog3(parent *QWidget) *QFileDialog {
 
 // NewQFileDialog4 constructs a new QFileDialog object.
 func NewQFileDialog4(parent *QWidget, caption string) *QFileDialog {
-	caption_Cstring := C.CString(caption)
-	defer C.free(unsafe.Pointer(caption_Cstring))
-	ret := C.QFileDialog_new4(parent.cPointer(), caption_Cstring, C.size_t(len(caption)))
+	caption_ms := miqt_strdupg(caption)
+	defer C.free(caption_ms)
+	ret := C.QFileDialog_new4(parent.cPointer(), (*C.struct_miqt_string)(caption_ms))
 	return newQFileDialog(ret)
 }
 
 // NewQFileDialog5 constructs a new QFileDialog object.
 func NewQFileDialog5(parent *QWidget, caption string, directory string) *QFileDialog {
-	caption_Cstring := C.CString(caption)
-	defer C.free(unsafe.Pointer(caption_Cstring))
-	directory_Cstring := C.CString(directory)
-	defer C.free(unsafe.Pointer(directory_Cstring))
-	ret := C.QFileDialog_new5(parent.cPointer(), caption_Cstring, C.size_t(len(caption)), directory_Cstring, C.size_t(len(directory)))
+	caption_ms := miqt_strdupg(caption)
+	defer C.free(caption_ms)
+	directory_ms := miqt_strdupg(directory)
+	defer C.free(directory_ms)
+	ret := C.QFileDialog_new5(parent.cPointer(), (*C.struct_miqt_string)(caption_ms), (*C.struct_miqt_string)(directory_ms))
 	return newQFileDialog(ret)
 }
 
 // NewQFileDialog6 constructs a new QFileDialog object.
 func NewQFileDialog6(parent *QWidget, caption string, directory string, filter string) *QFileDialog {
-	caption_Cstring := C.CString(caption)
-	defer C.free(unsafe.Pointer(caption_Cstring))
-	directory_Cstring := C.CString(directory)
-	defer C.free(unsafe.Pointer(directory_Cstring))
-	filter_Cstring := C.CString(filter)
-	defer C.free(unsafe.Pointer(filter_Cstring))
-	ret := C.QFileDialog_new6(parent.cPointer(), caption_Cstring, C.size_t(len(caption)), directory_Cstring, C.size_t(len(directory)), filter_Cstring, C.size_t(len(filter)))
+	caption_ms := miqt_strdupg(caption)
+	defer C.free(caption_ms)
+	directory_ms := miqt_strdupg(directory)
+	defer C.free(directory_ms)
+	filter_ms := miqt_strdupg(filter)
+	defer C.free(filter_ms)
+	ret := C.QFileDialog_new6(parent.cPointer(), (*C.struct_miqt_string)(caption_ms), (*C.struct_miqt_string)(directory_ms), (*C.struct_miqt_string)(filter_ms))
 	return newQFileDialog(ret)
 }
 
 func (this *QFileDialog) MetaObject() *QMetaObject {
-	ret := C.QFileDialog_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QFileDialog_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QFileDialog_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QFileDialog_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QFileDialog_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QFileDialog_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QFileDialog_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QFileDialog_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QFileDialog) SetDirectory(directory string) {
-	directory_Cstring := C.CString(directory)
-	defer C.free(unsafe.Pointer(directory_Cstring))
-	C.QFileDialog_SetDirectory(this.h, directory_Cstring, C.size_t(len(directory)))
+	directory_ms := miqt_strdupg(directory)
+	defer C.free(directory_ms)
+	C.QFileDialog_SetDirectory(this.h, (*C.struct_miqt_string)(directory_ms))
 }
 
 func (this *QFileDialog) SetDirectoryWithDirectory(directory *QDir) {
@@ -170,14 +166,10 @@ func (this *QFileDialog) SetDirectoryWithDirectory(directory *QDir) {
 }
 
 func (this *QFileDialog) Directory() *QDir {
-	ret := C.QFileDialog_Directory(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQDir(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QDir) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QFileDialog_Directory(this.h)
+	_goptr := newQDir(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QFileDialog) SetDirectoryUrl(directory *QUrl) {
@@ -185,35 +177,28 @@ func (this *QFileDialog) SetDirectoryUrl(directory *QUrl) {
 }
 
 func (this *QFileDialog) DirectoryUrl() *QUrl {
-	ret := C.QFileDialog_DirectoryUrl(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQUrl(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QUrl) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QFileDialog_DirectoryUrl(this.h)
+	_goptr := newQUrl(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QFileDialog) SelectFile(filename string) {
-	filename_Cstring := C.CString(filename)
-	defer C.free(unsafe.Pointer(filename_Cstring))
-	C.QFileDialog_SelectFile(this.h, filename_Cstring, C.size_t(len(filename)))
+	filename_ms := miqt_strdupg(filename)
+	defer C.free(filename_ms)
+	C.QFileDialog_SelectFile(this.h, (*C.struct_miqt_string)(filename_ms))
 }
 
 func (this *QFileDialog) SelectedFiles() []string {
-	var _out **C.char = nil
-	var _out_Lengths *C.int = nil
-	var _out_len C.size_t = 0
-	C.QFileDialog_SelectedFiles(this.h, &_out, &_out_Lengths, &_out_len)
-	ret := make([]string, int(_out_len))
-	_outCast := (*[0xffff]*C.char)(unsafe.Pointer(_out)) // hey ya
-	_out_LengthsCast := (*[0xffff]C.int)(unsafe.Pointer(_out_Lengths))
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = C.GoStringN(_outCast[i], _out_LengthsCast[i])
+	var _ma *C.struct_miqt_array = C.QFileDialog_SelectedFiles(this.h)
+	_ret := make([]string, int(_ma.len))
+	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = C.GoStringN(&_outCast[i].data, C.int(int64(_outCast[i].len)))
+		C.free(unsafe.Pointer(_outCast[i])) // free the inner miqt_string*
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
 func (this *QFileDialog) SelectUrl(url *QUrl) {
@@ -221,16 +206,14 @@ func (this *QFileDialog) SelectUrl(url *QUrl) {
 }
 
 func (this *QFileDialog) SelectedUrls() []QUrl {
-	var _out **C.QUrl = nil
-	var _out_len C.size_t = 0
-	C.QFileDialog_SelectedUrls(this.h, &_out, &_out_len)
-	ret := make([]QUrl, int(_out_len))
-	_outCast := (*[0xffff]*C.QUrl)(unsafe.Pointer(_out)) // so fresh so clean
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = *newQUrl(_outCast[i])
+	var _ma *C.struct_miqt_array = C.QFileDialog_SelectedUrls(this.h)
+	_ret := make([]QUrl, int(_ma.len))
+	_outCast := (*[0xffff]*C.QUrl)(unsafe.Pointer(_ma.data)) // mrs jackson
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = *newQUrl(_outCast[i])
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
 func (this *QFileDialog) SetNameFilterDetailsVisible(enabled bool) {
@@ -238,109 +221,97 @@ func (this *QFileDialog) SetNameFilterDetailsVisible(enabled bool) {
 }
 
 func (this *QFileDialog) IsNameFilterDetailsVisible() bool {
-	ret := C.QFileDialog_IsNameFilterDetailsVisible(this.h)
-	return (bool)(ret)
+	_ret := C.QFileDialog_IsNameFilterDetailsVisible(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QFileDialog) SetNameFilter(filter string) {
-	filter_Cstring := C.CString(filter)
-	defer C.free(unsafe.Pointer(filter_Cstring))
-	C.QFileDialog_SetNameFilter(this.h, filter_Cstring, C.size_t(len(filter)))
+	filter_ms := miqt_strdupg(filter)
+	defer C.free(filter_ms)
+	C.QFileDialog_SetNameFilter(this.h, (*C.struct_miqt_string)(filter_ms))
 }
 
 func (this *QFileDialog) SetNameFilters(filters []string) {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
-	filters_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(filters))))
-	filters_Lengths := (*[0xffff]C.uint64_t)(C.malloc(C.size_t(8 * len(filters))))
+	filters_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(filters))))
 	defer C.free(unsafe.Pointer(filters_CArray))
-	defer C.free(unsafe.Pointer(filters_Lengths))
 	for i := range filters {
-		single_cstring := C.CString(filters[i])
-		defer C.free(unsafe.Pointer(single_cstring))
-		filters_CArray[i] = single_cstring
-		filters_Lengths[i] = (C.uint64_t)(len(filters[i]))
+		single_ms := miqt_strdupg(filters[i])
+		defer C.free(single_ms)
+		filters_CArray[i] = (*C.struct_miqt_string)(single_ms)
 	}
-	C.QFileDialog_SetNameFilters(this.h, &filters_CArray[0], &filters_Lengths[0], C.size_t(len(filters)))
+	filters_ma := &C.struct_miqt_array{len: C.size_t(len(filters)), data: unsafe.Pointer(filters_CArray)}
+	defer runtime.KeepAlive(unsafe.Pointer(filters_ma))
+	C.QFileDialog_SetNameFilters(this.h, filters_ma)
 }
 
 func (this *QFileDialog) NameFilters() []string {
-	var _out **C.char = nil
-	var _out_Lengths *C.int = nil
-	var _out_len C.size_t = 0
-	C.QFileDialog_NameFilters(this.h, &_out, &_out_Lengths, &_out_len)
-	ret := make([]string, int(_out_len))
-	_outCast := (*[0xffff]*C.char)(unsafe.Pointer(_out)) // hey ya
-	_out_LengthsCast := (*[0xffff]C.int)(unsafe.Pointer(_out_Lengths))
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = C.GoStringN(_outCast[i], _out_LengthsCast[i])
+	var _ma *C.struct_miqt_array = C.QFileDialog_NameFilters(this.h)
+	_ret := make([]string, int(_ma.len))
+	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = C.GoStringN(&_outCast[i].data, C.int(int64(_outCast[i].len)))
+		C.free(unsafe.Pointer(_outCast[i])) // free the inner miqt_string*
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
 func (this *QFileDialog) SelectNameFilter(filter string) {
-	filter_Cstring := C.CString(filter)
-	defer C.free(unsafe.Pointer(filter_Cstring))
-	C.QFileDialog_SelectNameFilter(this.h, filter_Cstring, C.size_t(len(filter)))
+	filter_ms := miqt_strdupg(filter)
+	defer C.free(filter_ms)
+	C.QFileDialog_SelectNameFilter(this.h, (*C.struct_miqt_string)(filter_ms))
 }
 
 func (this *QFileDialog) SelectedMimeTypeFilter() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QFileDialog_SelectedMimeTypeFilter(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QFileDialog_SelectedMimeTypeFilter(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QFileDialog) SelectedNameFilter() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QFileDialog_SelectedNameFilter(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QFileDialog_SelectedNameFilter(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QFileDialog) SetMimeTypeFilters(filters []string) {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
-	filters_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(filters))))
-	filters_Lengths := (*[0xffff]C.uint64_t)(C.malloc(C.size_t(8 * len(filters))))
+	filters_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(filters))))
 	defer C.free(unsafe.Pointer(filters_CArray))
-	defer C.free(unsafe.Pointer(filters_Lengths))
 	for i := range filters {
-		single_cstring := C.CString(filters[i])
-		defer C.free(unsafe.Pointer(single_cstring))
-		filters_CArray[i] = single_cstring
-		filters_Lengths[i] = (C.uint64_t)(len(filters[i]))
+		single_ms := miqt_strdupg(filters[i])
+		defer C.free(single_ms)
+		filters_CArray[i] = (*C.struct_miqt_string)(single_ms)
 	}
-	C.QFileDialog_SetMimeTypeFilters(this.h, &filters_CArray[0], &filters_Lengths[0], C.size_t(len(filters)))
+	filters_ma := &C.struct_miqt_array{len: C.size_t(len(filters)), data: unsafe.Pointer(filters_CArray)}
+	defer runtime.KeepAlive(unsafe.Pointer(filters_ma))
+	C.QFileDialog_SetMimeTypeFilters(this.h, filters_ma)
 }
 
 func (this *QFileDialog) MimeTypeFilters() []string {
-	var _out **C.char = nil
-	var _out_Lengths *C.int = nil
-	var _out_len C.size_t = 0
-	C.QFileDialog_MimeTypeFilters(this.h, &_out, &_out_Lengths, &_out_len)
-	ret := make([]string, int(_out_len))
-	_outCast := (*[0xffff]*C.char)(unsafe.Pointer(_out)) // hey ya
-	_out_LengthsCast := (*[0xffff]C.int)(unsafe.Pointer(_out_Lengths))
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = C.GoStringN(_outCast[i], _out_LengthsCast[i])
+	var _ma *C.struct_miqt_array = C.QFileDialog_MimeTypeFilters(this.h)
+	_ret := make([]string, int(_ma.len))
+	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = C.GoStringN(&_outCast[i].data, C.int(int64(_outCast[i].len)))
+		C.free(unsafe.Pointer(_outCast[i])) // free the inner miqt_string*
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
 func (this *QFileDialog) SelectMimeTypeFilter(filter string) {
-	filter_Cstring := C.CString(filter)
-	defer C.free(unsafe.Pointer(filter_Cstring))
-	C.QFileDialog_SelectMimeTypeFilter(this.h, filter_Cstring, C.size_t(len(filter)))
+	filter_ms := miqt_strdupg(filter)
+	defer C.free(filter_ms)
+	C.QFileDialog_SelectMimeTypeFilter(this.h, (*C.struct_miqt_string)(filter_ms))
 }
 
 func (this *QFileDialog) Filter() int {
-	ret := C.QFileDialog_Filter(this.h)
-	return (int)(ret)
+	_ret := C.QFileDialog_Filter(this.h)
+	return (int)(_ret)
 }
 
 func (this *QFileDialog) SetFilter(filters int) {
@@ -352,8 +323,8 @@ func (this *QFileDialog) SetViewMode(mode QFileDialog__ViewMode) {
 }
 
 func (this *QFileDialog) ViewMode() QFileDialog__ViewMode {
-	ret := C.QFileDialog_ViewMode(this.h)
-	return (QFileDialog__ViewMode)(ret)
+	_ret := C.QFileDialog_ViewMode(this.h)
+	return (QFileDialog__ViewMode)(_ret)
 }
 
 func (this *QFileDialog) SetFileMode(mode QFileDialog__FileMode) {
@@ -361,8 +332,8 @@ func (this *QFileDialog) SetFileMode(mode QFileDialog__FileMode) {
 }
 
 func (this *QFileDialog) FileMode() QFileDialog__FileMode {
-	ret := C.QFileDialog_FileMode(this.h)
-	return (QFileDialog__FileMode)(ret)
+	_ret := C.QFileDialog_FileMode(this.h)
+	return (QFileDialog__FileMode)(_ret)
 }
 
 func (this *QFileDialog) SetAcceptMode(mode QFileDialog__AcceptMode) {
@@ -370,8 +341,8 @@ func (this *QFileDialog) SetAcceptMode(mode QFileDialog__AcceptMode) {
 }
 
 func (this *QFileDialog) AcceptMode() QFileDialog__AcceptMode {
-	ret := C.QFileDialog_AcceptMode(this.h)
-	return (QFileDialog__AcceptMode)(ret)
+	_ret := C.QFileDialog_AcceptMode(this.h)
+	return (QFileDialog__AcceptMode)(_ret)
 }
 
 func (this *QFileDialog) SetReadOnly(enabled bool) {
@@ -379,8 +350,8 @@ func (this *QFileDialog) SetReadOnly(enabled bool) {
 }
 
 func (this *QFileDialog) IsReadOnly() bool {
-	ret := C.QFileDialog_IsReadOnly(this.h)
-	return (bool)(ret)
+	_ret := C.QFileDialog_IsReadOnly(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QFileDialog) SetResolveSymlinks(enabled bool) {
@@ -388,8 +359,8 @@ func (this *QFileDialog) SetResolveSymlinks(enabled bool) {
 }
 
 func (this *QFileDialog) ResolveSymlinks() bool {
-	ret := C.QFileDialog_ResolveSymlinks(this.h)
-	return (bool)(ret)
+	_ret := C.QFileDialog_ResolveSymlinks(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QFileDialog) SetSidebarUrls(urls []QUrl) {
@@ -399,36 +370,32 @@ func (this *QFileDialog) SetSidebarUrls(urls []QUrl) {
 	for i := range urls {
 		urls_CArray[i] = urls[i].cPointer()
 	}
-	C.QFileDialog_SetSidebarUrls(this.h, &urls_CArray[0], C.size_t(len(urls)))
+	urls_ma := &C.struct_miqt_array{len: C.size_t(len(urls)), data: unsafe.Pointer(urls_CArray)}
+	defer runtime.KeepAlive(unsafe.Pointer(urls_ma))
+	C.QFileDialog_SetSidebarUrls(this.h, urls_ma)
 }
 
 func (this *QFileDialog) SidebarUrls() []QUrl {
-	var _out **C.QUrl = nil
-	var _out_len C.size_t = 0
-	C.QFileDialog_SidebarUrls(this.h, &_out, &_out_len)
-	ret := make([]QUrl, int(_out_len))
-	_outCast := (*[0xffff]*C.QUrl)(unsafe.Pointer(_out)) // so fresh so clean
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = *newQUrl(_outCast[i])
+	var _ma *C.struct_miqt_array = C.QFileDialog_SidebarUrls(this.h)
+	_ret := make([]QUrl, int(_ma.len))
+	_outCast := (*[0xffff]*C.QUrl)(unsafe.Pointer(_ma.data)) // mrs jackson
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = *newQUrl(_outCast[i])
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
 func (this *QFileDialog) SaveState() *QByteArray {
-	ret := C.QFileDialog_SaveState(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQByteArray(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QByteArray) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QFileDialog_SaveState(this.h)
+	_goptr := newQByteArray(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QFileDialog) RestoreState(state *QByteArray) bool {
-	ret := C.QFileDialog_RestoreState(this.h, state.cPointer())
-	return (bool)(ret)
+	_ret := C.QFileDialog_RestoreState(this.h, state.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QFileDialog) SetConfirmOverwrite(enabled bool) {
@@ -436,53 +403,47 @@ func (this *QFileDialog) SetConfirmOverwrite(enabled bool) {
 }
 
 func (this *QFileDialog) ConfirmOverwrite() bool {
-	ret := C.QFileDialog_ConfirmOverwrite(this.h)
-	return (bool)(ret)
+	_ret := C.QFileDialog_ConfirmOverwrite(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QFileDialog) SetDefaultSuffix(suffix string) {
-	suffix_Cstring := C.CString(suffix)
-	defer C.free(unsafe.Pointer(suffix_Cstring))
-	C.QFileDialog_SetDefaultSuffix(this.h, suffix_Cstring, C.size_t(len(suffix)))
+	suffix_ms := miqt_strdupg(suffix)
+	defer C.free(suffix_ms)
+	C.QFileDialog_SetDefaultSuffix(this.h, (*C.struct_miqt_string)(suffix_ms))
 }
 
 func (this *QFileDialog) DefaultSuffix() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QFileDialog_DefaultSuffix(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QFileDialog_DefaultSuffix(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QFileDialog) SetHistory(paths []string) {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
-	paths_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(paths))))
-	paths_Lengths := (*[0xffff]C.uint64_t)(C.malloc(C.size_t(8 * len(paths))))
+	paths_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(paths))))
 	defer C.free(unsafe.Pointer(paths_CArray))
-	defer C.free(unsafe.Pointer(paths_Lengths))
 	for i := range paths {
-		single_cstring := C.CString(paths[i])
-		defer C.free(unsafe.Pointer(single_cstring))
-		paths_CArray[i] = single_cstring
-		paths_Lengths[i] = (C.uint64_t)(len(paths[i]))
+		single_ms := miqt_strdupg(paths[i])
+		defer C.free(single_ms)
+		paths_CArray[i] = (*C.struct_miqt_string)(single_ms)
 	}
-	C.QFileDialog_SetHistory(this.h, &paths_CArray[0], &paths_Lengths[0], C.size_t(len(paths)))
+	paths_ma := &C.struct_miqt_array{len: C.size_t(len(paths)), data: unsafe.Pointer(paths_CArray)}
+	defer runtime.KeepAlive(unsafe.Pointer(paths_ma))
+	C.QFileDialog_SetHistory(this.h, paths_ma)
 }
 
 func (this *QFileDialog) History() []string {
-	var _out **C.char = nil
-	var _out_Lengths *C.int = nil
-	var _out_len C.size_t = 0
-	C.QFileDialog_History(this.h, &_out, &_out_Lengths, &_out_len)
-	ret := make([]string, int(_out_len))
-	_outCast := (*[0xffff]*C.char)(unsafe.Pointer(_out)) // hey ya
-	_out_LengthsCast := (*[0xffff]C.int)(unsafe.Pointer(_out_Lengths))
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = C.GoStringN(_outCast[i], _out_LengthsCast[i])
+	var _ma *C.struct_miqt_array = C.QFileDialog_History(this.h)
+	_ret := make([]string, int(_ma.len))
+	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = C.GoStringN(&_outCast[i].data, C.int(int64(_outCast[i].len)))
+		C.free(unsafe.Pointer(_outCast[i])) // free the inner miqt_string*
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
 func (this *QFileDialog) SetItemDelegate(delegate *QAbstractItemDelegate) {
@@ -490,8 +451,8 @@ func (this *QFileDialog) SetItemDelegate(delegate *QAbstractItemDelegate) {
 }
 
 func (this *QFileDialog) ItemDelegate() *QAbstractItemDelegate {
-	ret := C.QFileDialog_ItemDelegate(this.h)
-	return newQAbstractItemDelegate_U(unsafe.Pointer(ret))
+	_ret := C.QFileDialog_ItemDelegate(this.h)
+	return newQAbstractItemDelegate_U(unsafe.Pointer(_ret))
 }
 
 func (this *QFileDialog) SetIconProvider(provider *QFileIconProvider) {
@@ -499,53 +460,47 @@ func (this *QFileDialog) SetIconProvider(provider *QFileIconProvider) {
 }
 
 func (this *QFileDialog) IconProvider() *QFileIconProvider {
-	ret := C.QFileDialog_IconProvider(this.h)
-	return newQFileIconProvider_U(unsafe.Pointer(ret))
+	_ret := C.QFileDialog_IconProvider(this.h)
+	return newQFileIconProvider_U(unsafe.Pointer(_ret))
 }
 
 func (this *QFileDialog) SetLabelText(label QFileDialog__DialogLabel, text string) {
-	text_Cstring := C.CString(text)
-	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QFileDialog_SetLabelText(this.h, (C.uintptr_t)(label), text_Cstring, C.size_t(len(text)))
+	text_ms := miqt_strdupg(text)
+	defer C.free(text_ms)
+	C.QFileDialog_SetLabelText(this.h, (C.uintptr_t)(label), (*C.struct_miqt_string)(text_ms))
 }
 
 func (this *QFileDialog) LabelText(label QFileDialog__DialogLabel) string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QFileDialog_LabelText(this.h, (C.uintptr_t)(label), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QFileDialog_LabelText(this.h, (C.uintptr_t)(label))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QFileDialog) SetSupportedSchemes(schemes []string) {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
-	schemes_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(schemes))))
-	schemes_Lengths := (*[0xffff]C.uint64_t)(C.malloc(C.size_t(8 * len(schemes))))
+	schemes_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(schemes))))
 	defer C.free(unsafe.Pointer(schemes_CArray))
-	defer C.free(unsafe.Pointer(schemes_Lengths))
 	for i := range schemes {
-		single_cstring := C.CString(schemes[i])
-		defer C.free(unsafe.Pointer(single_cstring))
-		schemes_CArray[i] = single_cstring
-		schemes_Lengths[i] = (C.uint64_t)(len(schemes[i]))
+		single_ms := miqt_strdupg(schemes[i])
+		defer C.free(single_ms)
+		schemes_CArray[i] = (*C.struct_miqt_string)(single_ms)
 	}
-	C.QFileDialog_SetSupportedSchemes(this.h, &schemes_CArray[0], &schemes_Lengths[0], C.size_t(len(schemes)))
+	schemes_ma := &C.struct_miqt_array{len: C.size_t(len(schemes)), data: unsafe.Pointer(schemes_CArray)}
+	defer runtime.KeepAlive(unsafe.Pointer(schemes_ma))
+	C.QFileDialog_SetSupportedSchemes(this.h, schemes_ma)
 }
 
 func (this *QFileDialog) SupportedSchemes() []string {
-	var _out **C.char = nil
-	var _out_Lengths *C.int = nil
-	var _out_len C.size_t = 0
-	C.QFileDialog_SupportedSchemes(this.h, &_out, &_out_Lengths, &_out_len)
-	ret := make([]string, int(_out_len))
-	_outCast := (*[0xffff]*C.char)(unsafe.Pointer(_out)) // hey ya
-	_out_LengthsCast := (*[0xffff]C.int)(unsafe.Pointer(_out_Lengths))
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = C.GoStringN(_outCast[i], _out_LengthsCast[i])
+	var _ma *C.struct_miqt_array = C.QFileDialog_SupportedSchemes(this.h)
+	_ret := make([]string, int(_ma.len))
+	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = C.GoStringN(&_outCast[i].data, C.int(int64(_outCast[i].len)))
+		C.free(unsafe.Pointer(_outCast[i])) // free the inner miqt_string*
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
 func (this *QFileDialog) SetProxyModel(model *QAbstractProxyModel) {
@@ -553,8 +508,8 @@ func (this *QFileDialog) SetProxyModel(model *QAbstractProxyModel) {
 }
 
 func (this *QFileDialog) ProxyModel() *QAbstractProxyModel {
-	ret := C.QFileDialog_ProxyModel(this.h)
-	return newQAbstractProxyModel_U(unsafe.Pointer(ret))
+	_ret := C.QFileDialog_ProxyModel(this.h)
+	return newQAbstractProxyModel_U(unsafe.Pointer(_ret))
 }
 
 func (this *QFileDialog) SetOption(option QFileDialog__Option) {
@@ -562,8 +517,8 @@ func (this *QFileDialog) SetOption(option QFileDialog__Option) {
 }
 
 func (this *QFileDialog) TestOption(option QFileDialog__Option) bool {
-	ret := C.QFileDialog_TestOption(this.h, (C.uintptr_t)(option))
-	return (bool)(ret)
+	_ret := C.QFileDialog_TestOption(this.h, (C.uintptr_t)(option))
+	return (bool)(_ret)
 }
 
 func (this *QFileDialog) SetOptions(options int) {
@@ -571,8 +526,8 @@ func (this *QFileDialog) SetOptions(options int) {
 }
 
 func (this *QFileDialog) Options() int {
-	ret := C.QFileDialog_Options(this.h)
-	return (int)(ret)
+	_ret := C.QFileDialog_Options(this.h)
+	return (int)(_ret)
 }
 
 func (this *QFileDialog) SetVisible(visible bool) {
@@ -580,80 +535,137 @@ func (this *QFileDialog) SetVisible(visible bool) {
 }
 
 func (this *QFileDialog) FileSelected(file string) {
-	file_Cstring := C.CString(file)
-	defer C.free(unsafe.Pointer(file_Cstring))
-	C.QFileDialog_FileSelected(this.h, file_Cstring, C.size_t(len(file)))
+	file_ms := miqt_strdupg(file)
+	defer C.free(file_ms)
+	C.QFileDialog_FileSelected(this.h, (*C.struct_miqt_string)(file_ms))
+}
+func (this *QFileDialog) OnFileSelected(slot func(file string)) {
+	C.QFileDialog_connect_FileSelected(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
 }
 
-func (this *QFileDialog) OnFileSelected(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QFileDialog_FileSelected
+func miqt_exec_callback_QFileDialog_FileSelected(cb *C.void, file *C.struct_miqt_string) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(file string))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QFileDialog_connect_FileSelected(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	var file_ms *C.struct_miqt_string = file
+	file_ret := C.GoStringN(&file_ms.data, C.int(int64(file_ms.len)))
+	C.free(unsafe.Pointer(file_ms))
+	slotval1 := file_ret
+
+	gofunc(slotval1)
 }
 
 func (this *QFileDialog) FilesSelected(files []string) {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
-	files_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(files))))
-	files_Lengths := (*[0xffff]C.uint64_t)(C.malloc(C.size_t(8 * len(files))))
+	files_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(files))))
 	defer C.free(unsafe.Pointer(files_CArray))
-	defer C.free(unsafe.Pointer(files_Lengths))
 	for i := range files {
-		single_cstring := C.CString(files[i])
-		defer C.free(unsafe.Pointer(single_cstring))
-		files_CArray[i] = single_cstring
-		files_Lengths[i] = (C.uint64_t)(len(files[i]))
+		single_ms := miqt_strdupg(files[i])
+		defer C.free(single_ms)
+		files_CArray[i] = (*C.struct_miqt_string)(single_ms)
 	}
-	C.QFileDialog_FilesSelected(this.h, &files_CArray[0], &files_Lengths[0], C.size_t(len(files)))
+	files_ma := &C.struct_miqt_array{len: C.size_t(len(files)), data: unsafe.Pointer(files_CArray)}
+	defer runtime.KeepAlive(unsafe.Pointer(files_ma))
+	C.QFileDialog_FilesSelected(this.h, files_ma)
+}
+func (this *QFileDialog) OnFilesSelected(slot func(files []string)) {
+	C.QFileDialog_connect_FilesSelected(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
 }
 
-func (this *QFileDialog) OnFilesSelected(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QFileDialog_FilesSelected
+func miqt_exec_callback_QFileDialog_FilesSelected(cb *C.void, files *C.struct_miqt_array) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(files []string))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QFileDialog_connect_FilesSelected(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	var files_ma *C.struct_miqt_array = files
+	files_ret := make([]string, int(files_ma.len))
+	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(files_ma.data)) // hey ya
+	for i := 0; i < int(files_ma.len); i++ {
+		files_ret[i] = C.GoStringN(&_outCast[i].data, C.int(int64(_outCast[i].len)))
+		C.free(unsafe.Pointer(_outCast[i])) // free the inner miqt_string*
+	}
+	C.free(unsafe.Pointer(files_ma))
+	slotval1 := files_ret
+
+	gofunc(slotval1)
 }
 
 func (this *QFileDialog) CurrentChanged(path string) {
-	path_Cstring := C.CString(path)
-	defer C.free(unsafe.Pointer(path_Cstring))
-	C.QFileDialog_CurrentChanged(this.h, path_Cstring, C.size_t(len(path)))
+	path_ms := miqt_strdupg(path)
+	defer C.free(path_ms)
+	C.QFileDialog_CurrentChanged(this.h, (*C.struct_miqt_string)(path_ms))
+}
+func (this *QFileDialog) OnCurrentChanged(slot func(path string)) {
+	C.QFileDialog_connect_CurrentChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
 }
 
-func (this *QFileDialog) OnCurrentChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QFileDialog_CurrentChanged
+func miqt_exec_callback_QFileDialog_CurrentChanged(cb *C.void, path *C.struct_miqt_string) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(path string))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QFileDialog_connect_CurrentChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	var path_ms *C.struct_miqt_string = path
+	path_ret := C.GoStringN(&path_ms.data, C.int(int64(path_ms.len)))
+	C.free(unsafe.Pointer(path_ms))
+	slotval1 := path_ret
+
+	gofunc(slotval1)
 }
 
 func (this *QFileDialog) DirectoryEntered(directory string) {
-	directory_Cstring := C.CString(directory)
-	defer C.free(unsafe.Pointer(directory_Cstring))
-	C.QFileDialog_DirectoryEntered(this.h, directory_Cstring, C.size_t(len(directory)))
+	directory_ms := miqt_strdupg(directory)
+	defer C.free(directory_ms)
+	C.QFileDialog_DirectoryEntered(this.h, (*C.struct_miqt_string)(directory_ms))
+}
+func (this *QFileDialog) OnDirectoryEntered(slot func(directory string)) {
+	C.QFileDialog_connect_DirectoryEntered(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
 }
 
-func (this *QFileDialog) OnDirectoryEntered(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QFileDialog_DirectoryEntered
+func miqt_exec_callback_QFileDialog_DirectoryEntered(cb *C.void, directory *C.struct_miqt_string) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(directory string))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QFileDialog_connect_DirectoryEntered(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	var directory_ms *C.struct_miqt_string = directory
+	directory_ret := C.GoStringN(&directory_ms.data, C.int(int64(directory_ms.len)))
+	C.free(unsafe.Pointer(directory_ms))
+	slotval1 := directory_ret
+
+	gofunc(slotval1)
 }
 
 func (this *QFileDialog) UrlSelected(url *QUrl) {
 	C.QFileDialog_UrlSelected(this.h, url.cPointer())
 }
+func (this *QFileDialog) OnUrlSelected(slot func(url *QUrl)) {
+	C.QFileDialog_connect_UrlSelected(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QFileDialog) OnUrlSelected(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QFileDialog_UrlSelected
+func miqt_exec_callback_QFileDialog_UrlSelected(cb *C.void, url *C.QUrl) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(url *QUrl))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QFileDialog_connect_UrlSelected(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	url_ret := url
+	slotval1 := newQUrl_U(unsafe.Pointer(url_ret))
+
+	gofunc(slotval1)
 }
 
 func (this *QFileDialog) UrlsSelected(urls []QUrl) {
@@ -663,141 +675,164 @@ func (this *QFileDialog) UrlsSelected(urls []QUrl) {
 	for i := range urls {
 		urls_CArray[i] = urls[i].cPointer()
 	}
-	C.QFileDialog_UrlsSelected(this.h, &urls_CArray[0], C.size_t(len(urls)))
+	urls_ma := &C.struct_miqt_array{len: C.size_t(len(urls)), data: unsafe.Pointer(urls_CArray)}
+	defer runtime.KeepAlive(unsafe.Pointer(urls_ma))
+	C.QFileDialog_UrlsSelected(this.h, urls_ma)
+}
+func (this *QFileDialog) OnUrlsSelected(slot func(urls []QUrl)) {
+	C.QFileDialog_connect_UrlsSelected(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
 }
 
-func (this *QFileDialog) OnUrlsSelected(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QFileDialog_UrlsSelected
+func miqt_exec_callback_QFileDialog_UrlsSelected(cb *C.void, urls *C.struct_miqt_array) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(urls []QUrl))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QFileDialog_connect_UrlsSelected(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	var urls_ma *C.struct_miqt_array = urls
+	urls_ret := make([]QUrl, int(urls_ma.len))
+	_outCast := (*[0xffff]*C.QUrl)(unsafe.Pointer(urls_ma.data)) // mrs jackson
+	for i := 0; i < int(urls_ma.len); i++ {
+		urls_ret[i] = *newQUrl(_outCast[i])
+	}
+	C.free(unsafe.Pointer(urls_ma))
+	slotval1 := urls_ret
+
+	gofunc(slotval1)
 }
 
 func (this *QFileDialog) CurrentUrlChanged(url *QUrl) {
 	C.QFileDialog_CurrentUrlChanged(this.h, url.cPointer())
 }
+func (this *QFileDialog) OnCurrentUrlChanged(slot func(url *QUrl)) {
+	C.QFileDialog_connect_CurrentUrlChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QFileDialog) OnCurrentUrlChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QFileDialog_CurrentUrlChanged
+func miqt_exec_callback_QFileDialog_CurrentUrlChanged(cb *C.void, url *C.QUrl) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(url *QUrl))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QFileDialog_connect_CurrentUrlChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	url_ret := url
+	slotval1 := newQUrl_U(unsafe.Pointer(url_ret))
+
+	gofunc(slotval1)
 }
 
 func (this *QFileDialog) DirectoryUrlEntered(directory *QUrl) {
 	C.QFileDialog_DirectoryUrlEntered(this.h, directory.cPointer())
 }
+func (this *QFileDialog) OnDirectoryUrlEntered(slot func(directory *QUrl)) {
+	C.QFileDialog_connect_DirectoryUrlEntered(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QFileDialog) OnDirectoryUrlEntered(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QFileDialog_DirectoryUrlEntered
+func miqt_exec_callback_QFileDialog_DirectoryUrlEntered(cb *C.void, directory *C.QUrl) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(directory *QUrl))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QFileDialog_connect_DirectoryUrlEntered(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	directory_ret := directory
+	slotval1 := newQUrl_U(unsafe.Pointer(directory_ret))
+
+	gofunc(slotval1)
 }
 
 func (this *QFileDialog) FilterSelected(filter string) {
-	filter_Cstring := C.CString(filter)
-	defer C.free(unsafe.Pointer(filter_Cstring))
-	C.QFileDialog_FilterSelected(this.h, filter_Cstring, C.size_t(len(filter)))
+	filter_ms := miqt_strdupg(filter)
+	defer C.free(filter_ms)
+	C.QFileDialog_FilterSelected(this.h, (*C.struct_miqt_string)(filter_ms))
+}
+func (this *QFileDialog) OnFilterSelected(slot func(filter string)) {
+	C.QFileDialog_connect_FilterSelected(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
 }
 
-func (this *QFileDialog) OnFilterSelected(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QFileDialog_FilterSelected
+func miqt_exec_callback_QFileDialog_FilterSelected(cb *C.void, filter *C.struct_miqt_string) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(filter string))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QFileDialog_connect_FilterSelected(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	var filter_ms *C.struct_miqt_string = filter
+	filter_ret := C.GoStringN(&filter_ms.data, C.int(int64(filter_ms.len)))
+	C.free(unsafe.Pointer(filter_ms))
+	slotval1 := filter_ret
+
+	gofunc(slotval1)
 }
 
 func QFileDialog_GetOpenFileName() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QFileDialog_GetOpenFileName(&_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QFileDialog_GetOpenFileName()
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QFileDialog_GetOpenFileUrl() *QUrl {
-	ret := C.QFileDialog_GetOpenFileUrl()
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQUrl(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QUrl) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QFileDialog_GetOpenFileUrl()
+	_goptr := newQUrl(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func QFileDialog_GetSaveFileName() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QFileDialog_GetSaveFileName(&_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QFileDialog_GetSaveFileName()
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QFileDialog_GetSaveFileUrl() *QUrl {
-	ret := C.QFileDialog_GetSaveFileUrl()
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQUrl(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QUrl) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QFileDialog_GetSaveFileUrl()
+	_goptr := newQUrl(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func QFileDialog_GetExistingDirectory() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QFileDialog_GetExistingDirectory(&_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QFileDialog_GetExistingDirectory()
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QFileDialog_GetExistingDirectoryUrl() *QUrl {
-	ret := C.QFileDialog_GetExistingDirectoryUrl()
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQUrl(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QUrl) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QFileDialog_GetExistingDirectoryUrl()
+	_goptr := newQUrl(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func QFileDialog_GetOpenFileNames() []string {
-	var _out **C.char = nil
-	var _out_Lengths *C.int = nil
-	var _out_len C.size_t = 0
-	C.QFileDialog_GetOpenFileNames(&_out, &_out_Lengths, &_out_len)
-	ret := make([]string, int(_out_len))
-	_outCast := (*[0xffff]*C.char)(unsafe.Pointer(_out)) // hey ya
-	_out_LengthsCast := (*[0xffff]C.int)(unsafe.Pointer(_out_Lengths))
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = C.GoStringN(_outCast[i], _out_LengthsCast[i])
+	var _ma *C.struct_miqt_array = C.QFileDialog_GetOpenFileNames()
+	_ret := make([]string, int(_ma.len))
+	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = C.GoStringN(&_outCast[i].data, C.int(int64(_outCast[i].len)))
+		C.free(unsafe.Pointer(_outCast[i])) // free the inner miqt_string*
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
 func QFileDialog_GetOpenFileUrls() []QUrl {
-	var _out **C.QUrl = nil
-	var _out_len C.size_t = 0
-	C.QFileDialog_GetOpenFileUrls(&_out, &_out_len)
-	ret := make([]QUrl, int(_out_len))
-	_outCast := (*[0xffff]*C.QUrl)(unsafe.Pointer(_out)) // so fresh so clean
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = *newQUrl(_outCast[i])
+	var _ma *C.struct_miqt_array = C.QFileDialog_GetOpenFileUrls()
+	_ret := make([]QUrl, int(_ma.len))
+	_outCast := (*[0xffff]*C.QUrl)(unsafe.Pointer(_ma.data)) // mrs jackson
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = *newQUrl(_outCast[i])
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
 func QFileDialog_SaveFileContent(fileContent *QByteArray) {
@@ -809,12 +844,10 @@ func QFileDialog_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QFileDialog_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QFileDialog_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QFileDialog_Tr3(s string, c string, n int) string {
@@ -822,12 +855,10 @@ func QFileDialog_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QFileDialog_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QFileDialog_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QFileDialog_TrUtf82(s string, c string) string {
@@ -835,12 +866,10 @@ func QFileDialog_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QFileDialog_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QFileDialog_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QFileDialog_TrUtf83(s string, c string, n int) string {
@@ -848,12 +877,10 @@ func QFileDialog_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QFileDialog_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QFileDialog_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QFileDialog) SetOption2(option QFileDialog__Option, on bool) {
@@ -861,463 +888,376 @@ func (this *QFileDialog) SetOption2(option QFileDialog__Option, on bool) {
 }
 
 func QFileDialog_GetOpenFileName1(parent *QWidget) string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QFileDialog_GetOpenFileName1(parent.cPointer(), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QFileDialog_GetOpenFileName1(parent.cPointer())
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QFileDialog_GetOpenFileName2(parent *QWidget, caption string) string {
-	caption_Cstring := C.CString(caption)
-	defer C.free(unsafe.Pointer(caption_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QFileDialog_GetOpenFileName2(parent.cPointer(), caption_Cstring, C.size_t(len(caption)), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	caption_ms := miqt_strdupg(caption)
+	defer C.free(caption_ms)
+	var _ms *C.struct_miqt_string = C.QFileDialog_GetOpenFileName2(parent.cPointer(), (*C.struct_miqt_string)(caption_ms))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QFileDialog_GetOpenFileName3(parent *QWidget, caption string, dir string) string {
-	caption_Cstring := C.CString(caption)
-	defer C.free(unsafe.Pointer(caption_Cstring))
-	dir_Cstring := C.CString(dir)
-	defer C.free(unsafe.Pointer(dir_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QFileDialog_GetOpenFileName3(parent.cPointer(), caption_Cstring, C.size_t(len(caption)), dir_Cstring, C.size_t(len(dir)), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	caption_ms := miqt_strdupg(caption)
+	defer C.free(caption_ms)
+	dir_ms := miqt_strdupg(dir)
+	defer C.free(dir_ms)
+	var _ms *C.struct_miqt_string = C.QFileDialog_GetOpenFileName3(parent.cPointer(), (*C.struct_miqt_string)(caption_ms), (*C.struct_miqt_string)(dir_ms))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QFileDialog_GetOpenFileName4(parent *QWidget, caption string, dir string, filter string) string {
-	caption_Cstring := C.CString(caption)
-	defer C.free(unsafe.Pointer(caption_Cstring))
-	dir_Cstring := C.CString(dir)
-	defer C.free(unsafe.Pointer(dir_Cstring))
-	filter_Cstring := C.CString(filter)
-	defer C.free(unsafe.Pointer(filter_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QFileDialog_GetOpenFileName4(parent.cPointer(), caption_Cstring, C.size_t(len(caption)), dir_Cstring, C.size_t(len(dir)), filter_Cstring, C.size_t(len(filter)), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	caption_ms := miqt_strdupg(caption)
+	defer C.free(caption_ms)
+	dir_ms := miqt_strdupg(dir)
+	defer C.free(dir_ms)
+	filter_ms := miqt_strdupg(filter)
+	defer C.free(filter_ms)
+	var _ms *C.struct_miqt_string = C.QFileDialog_GetOpenFileName4(parent.cPointer(), (*C.struct_miqt_string)(caption_ms), (*C.struct_miqt_string)(dir_ms), (*C.struct_miqt_string)(filter_ms))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QFileDialog_GetOpenFileUrl1(parent *QWidget) *QUrl {
-	ret := C.QFileDialog_GetOpenFileUrl1(parent.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQUrl(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QUrl) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QFileDialog_GetOpenFileUrl1(parent.cPointer())
+	_goptr := newQUrl(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func QFileDialog_GetOpenFileUrl2(parent *QWidget, caption string) *QUrl {
-	caption_Cstring := C.CString(caption)
-	defer C.free(unsafe.Pointer(caption_Cstring))
-	ret := C.QFileDialog_GetOpenFileUrl2(parent.cPointer(), caption_Cstring, C.size_t(len(caption)))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQUrl(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QUrl) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	caption_ms := miqt_strdupg(caption)
+	defer C.free(caption_ms)
+	_ret := C.QFileDialog_GetOpenFileUrl2(parent.cPointer(), (*C.struct_miqt_string)(caption_ms))
+	_goptr := newQUrl(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func QFileDialog_GetOpenFileUrl3(parent *QWidget, caption string, dir *QUrl) *QUrl {
-	caption_Cstring := C.CString(caption)
-	defer C.free(unsafe.Pointer(caption_Cstring))
-	ret := C.QFileDialog_GetOpenFileUrl3(parent.cPointer(), caption_Cstring, C.size_t(len(caption)), dir.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQUrl(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QUrl) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	caption_ms := miqt_strdupg(caption)
+	defer C.free(caption_ms)
+	_ret := C.QFileDialog_GetOpenFileUrl3(parent.cPointer(), (*C.struct_miqt_string)(caption_ms), dir.cPointer())
+	_goptr := newQUrl(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func QFileDialog_GetOpenFileUrl4(parent *QWidget, caption string, dir *QUrl, filter string) *QUrl {
-	caption_Cstring := C.CString(caption)
-	defer C.free(unsafe.Pointer(caption_Cstring))
-	filter_Cstring := C.CString(filter)
-	defer C.free(unsafe.Pointer(filter_Cstring))
-	ret := C.QFileDialog_GetOpenFileUrl4(parent.cPointer(), caption_Cstring, C.size_t(len(caption)), dir.cPointer(), filter_Cstring, C.size_t(len(filter)))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQUrl(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QUrl) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	caption_ms := miqt_strdupg(caption)
+	defer C.free(caption_ms)
+	filter_ms := miqt_strdupg(filter)
+	defer C.free(filter_ms)
+	_ret := C.QFileDialog_GetOpenFileUrl4(parent.cPointer(), (*C.struct_miqt_string)(caption_ms), dir.cPointer(), (*C.struct_miqt_string)(filter_ms))
+	_goptr := newQUrl(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func QFileDialog_GetSaveFileName1(parent *QWidget) string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QFileDialog_GetSaveFileName1(parent.cPointer(), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QFileDialog_GetSaveFileName1(parent.cPointer())
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QFileDialog_GetSaveFileName2(parent *QWidget, caption string) string {
-	caption_Cstring := C.CString(caption)
-	defer C.free(unsafe.Pointer(caption_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QFileDialog_GetSaveFileName2(parent.cPointer(), caption_Cstring, C.size_t(len(caption)), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	caption_ms := miqt_strdupg(caption)
+	defer C.free(caption_ms)
+	var _ms *C.struct_miqt_string = C.QFileDialog_GetSaveFileName2(parent.cPointer(), (*C.struct_miqt_string)(caption_ms))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QFileDialog_GetSaveFileName3(parent *QWidget, caption string, dir string) string {
-	caption_Cstring := C.CString(caption)
-	defer C.free(unsafe.Pointer(caption_Cstring))
-	dir_Cstring := C.CString(dir)
-	defer C.free(unsafe.Pointer(dir_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QFileDialog_GetSaveFileName3(parent.cPointer(), caption_Cstring, C.size_t(len(caption)), dir_Cstring, C.size_t(len(dir)), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	caption_ms := miqt_strdupg(caption)
+	defer C.free(caption_ms)
+	dir_ms := miqt_strdupg(dir)
+	defer C.free(dir_ms)
+	var _ms *C.struct_miqt_string = C.QFileDialog_GetSaveFileName3(parent.cPointer(), (*C.struct_miqt_string)(caption_ms), (*C.struct_miqt_string)(dir_ms))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QFileDialog_GetSaveFileName4(parent *QWidget, caption string, dir string, filter string) string {
-	caption_Cstring := C.CString(caption)
-	defer C.free(unsafe.Pointer(caption_Cstring))
-	dir_Cstring := C.CString(dir)
-	defer C.free(unsafe.Pointer(dir_Cstring))
-	filter_Cstring := C.CString(filter)
-	defer C.free(unsafe.Pointer(filter_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QFileDialog_GetSaveFileName4(parent.cPointer(), caption_Cstring, C.size_t(len(caption)), dir_Cstring, C.size_t(len(dir)), filter_Cstring, C.size_t(len(filter)), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	caption_ms := miqt_strdupg(caption)
+	defer C.free(caption_ms)
+	dir_ms := miqt_strdupg(dir)
+	defer C.free(dir_ms)
+	filter_ms := miqt_strdupg(filter)
+	defer C.free(filter_ms)
+	var _ms *C.struct_miqt_string = C.QFileDialog_GetSaveFileName4(parent.cPointer(), (*C.struct_miqt_string)(caption_ms), (*C.struct_miqt_string)(dir_ms), (*C.struct_miqt_string)(filter_ms))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QFileDialog_GetSaveFileUrl1(parent *QWidget) *QUrl {
-	ret := C.QFileDialog_GetSaveFileUrl1(parent.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQUrl(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QUrl) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QFileDialog_GetSaveFileUrl1(parent.cPointer())
+	_goptr := newQUrl(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func QFileDialog_GetSaveFileUrl2(parent *QWidget, caption string) *QUrl {
-	caption_Cstring := C.CString(caption)
-	defer C.free(unsafe.Pointer(caption_Cstring))
-	ret := C.QFileDialog_GetSaveFileUrl2(parent.cPointer(), caption_Cstring, C.size_t(len(caption)))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQUrl(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QUrl) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	caption_ms := miqt_strdupg(caption)
+	defer C.free(caption_ms)
+	_ret := C.QFileDialog_GetSaveFileUrl2(parent.cPointer(), (*C.struct_miqt_string)(caption_ms))
+	_goptr := newQUrl(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func QFileDialog_GetSaveFileUrl3(parent *QWidget, caption string, dir *QUrl) *QUrl {
-	caption_Cstring := C.CString(caption)
-	defer C.free(unsafe.Pointer(caption_Cstring))
-	ret := C.QFileDialog_GetSaveFileUrl3(parent.cPointer(), caption_Cstring, C.size_t(len(caption)), dir.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQUrl(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QUrl) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	caption_ms := miqt_strdupg(caption)
+	defer C.free(caption_ms)
+	_ret := C.QFileDialog_GetSaveFileUrl3(parent.cPointer(), (*C.struct_miqt_string)(caption_ms), dir.cPointer())
+	_goptr := newQUrl(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func QFileDialog_GetSaveFileUrl4(parent *QWidget, caption string, dir *QUrl, filter string) *QUrl {
-	caption_Cstring := C.CString(caption)
-	defer C.free(unsafe.Pointer(caption_Cstring))
-	filter_Cstring := C.CString(filter)
-	defer C.free(unsafe.Pointer(filter_Cstring))
-	ret := C.QFileDialog_GetSaveFileUrl4(parent.cPointer(), caption_Cstring, C.size_t(len(caption)), dir.cPointer(), filter_Cstring, C.size_t(len(filter)))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQUrl(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QUrl) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	caption_ms := miqt_strdupg(caption)
+	defer C.free(caption_ms)
+	filter_ms := miqt_strdupg(filter)
+	defer C.free(filter_ms)
+	_ret := C.QFileDialog_GetSaveFileUrl4(parent.cPointer(), (*C.struct_miqt_string)(caption_ms), dir.cPointer(), (*C.struct_miqt_string)(filter_ms))
+	_goptr := newQUrl(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func QFileDialog_GetExistingDirectory1(parent *QWidget) string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QFileDialog_GetExistingDirectory1(parent.cPointer(), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QFileDialog_GetExistingDirectory1(parent.cPointer())
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QFileDialog_GetExistingDirectory2(parent *QWidget, caption string) string {
-	caption_Cstring := C.CString(caption)
-	defer C.free(unsafe.Pointer(caption_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QFileDialog_GetExistingDirectory2(parent.cPointer(), caption_Cstring, C.size_t(len(caption)), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	caption_ms := miqt_strdupg(caption)
+	defer C.free(caption_ms)
+	var _ms *C.struct_miqt_string = C.QFileDialog_GetExistingDirectory2(parent.cPointer(), (*C.struct_miqt_string)(caption_ms))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QFileDialog_GetExistingDirectory3(parent *QWidget, caption string, dir string) string {
-	caption_Cstring := C.CString(caption)
-	defer C.free(unsafe.Pointer(caption_Cstring))
-	dir_Cstring := C.CString(dir)
-	defer C.free(unsafe.Pointer(dir_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QFileDialog_GetExistingDirectory3(parent.cPointer(), caption_Cstring, C.size_t(len(caption)), dir_Cstring, C.size_t(len(dir)), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	caption_ms := miqt_strdupg(caption)
+	defer C.free(caption_ms)
+	dir_ms := miqt_strdupg(dir)
+	defer C.free(dir_ms)
+	var _ms *C.struct_miqt_string = C.QFileDialog_GetExistingDirectory3(parent.cPointer(), (*C.struct_miqt_string)(caption_ms), (*C.struct_miqt_string)(dir_ms))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QFileDialog_GetExistingDirectory4(parent *QWidget, caption string, dir string, options int) string {
-	caption_Cstring := C.CString(caption)
-	defer C.free(unsafe.Pointer(caption_Cstring))
-	dir_Cstring := C.CString(dir)
-	defer C.free(unsafe.Pointer(dir_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QFileDialog_GetExistingDirectory4(parent.cPointer(), caption_Cstring, C.size_t(len(caption)), dir_Cstring, C.size_t(len(dir)), (C.int)(options), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	caption_ms := miqt_strdupg(caption)
+	defer C.free(caption_ms)
+	dir_ms := miqt_strdupg(dir)
+	defer C.free(dir_ms)
+	var _ms *C.struct_miqt_string = C.QFileDialog_GetExistingDirectory4(parent.cPointer(), (*C.struct_miqt_string)(caption_ms), (*C.struct_miqt_string)(dir_ms), (C.int)(options))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QFileDialog_GetExistingDirectoryUrl1(parent *QWidget) *QUrl {
-	ret := C.QFileDialog_GetExistingDirectoryUrl1(parent.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQUrl(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QUrl) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QFileDialog_GetExistingDirectoryUrl1(parent.cPointer())
+	_goptr := newQUrl(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func QFileDialog_GetExistingDirectoryUrl2(parent *QWidget, caption string) *QUrl {
-	caption_Cstring := C.CString(caption)
-	defer C.free(unsafe.Pointer(caption_Cstring))
-	ret := C.QFileDialog_GetExistingDirectoryUrl2(parent.cPointer(), caption_Cstring, C.size_t(len(caption)))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQUrl(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QUrl) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	caption_ms := miqt_strdupg(caption)
+	defer C.free(caption_ms)
+	_ret := C.QFileDialog_GetExistingDirectoryUrl2(parent.cPointer(), (*C.struct_miqt_string)(caption_ms))
+	_goptr := newQUrl(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func QFileDialog_GetExistingDirectoryUrl3(parent *QWidget, caption string, dir *QUrl) *QUrl {
-	caption_Cstring := C.CString(caption)
-	defer C.free(unsafe.Pointer(caption_Cstring))
-	ret := C.QFileDialog_GetExistingDirectoryUrl3(parent.cPointer(), caption_Cstring, C.size_t(len(caption)), dir.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQUrl(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QUrl) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	caption_ms := miqt_strdupg(caption)
+	defer C.free(caption_ms)
+	_ret := C.QFileDialog_GetExistingDirectoryUrl3(parent.cPointer(), (*C.struct_miqt_string)(caption_ms), dir.cPointer())
+	_goptr := newQUrl(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func QFileDialog_GetExistingDirectoryUrl4(parent *QWidget, caption string, dir *QUrl, options int) *QUrl {
-	caption_Cstring := C.CString(caption)
-	defer C.free(unsafe.Pointer(caption_Cstring))
-	ret := C.QFileDialog_GetExistingDirectoryUrl4(parent.cPointer(), caption_Cstring, C.size_t(len(caption)), dir.cPointer(), (C.int)(options))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQUrl(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QUrl) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	caption_ms := miqt_strdupg(caption)
+	defer C.free(caption_ms)
+	_ret := C.QFileDialog_GetExistingDirectoryUrl4(parent.cPointer(), (*C.struct_miqt_string)(caption_ms), dir.cPointer(), (C.int)(options))
+	_goptr := newQUrl(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func QFileDialog_GetExistingDirectoryUrl5(parent *QWidget, caption string, dir *QUrl, options int, supportedSchemes []string) *QUrl {
-	caption_Cstring := C.CString(caption)
-	defer C.free(unsafe.Pointer(caption_Cstring))
+	caption_ms := miqt_strdupg(caption)
+	defer C.free(caption_ms)
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
-	supportedSchemes_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(supportedSchemes))))
-	supportedSchemes_Lengths := (*[0xffff]C.uint64_t)(C.malloc(C.size_t(8 * len(supportedSchemes))))
+	supportedSchemes_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(supportedSchemes))))
 	defer C.free(unsafe.Pointer(supportedSchemes_CArray))
-	defer C.free(unsafe.Pointer(supportedSchemes_Lengths))
 	for i := range supportedSchemes {
-		single_cstring := C.CString(supportedSchemes[i])
-		defer C.free(unsafe.Pointer(single_cstring))
-		supportedSchemes_CArray[i] = single_cstring
-		supportedSchemes_Lengths[i] = (C.uint64_t)(len(supportedSchemes[i]))
+		single_ms := miqt_strdupg(supportedSchemes[i])
+		defer C.free(single_ms)
+		supportedSchemes_CArray[i] = (*C.struct_miqt_string)(single_ms)
 	}
-	ret := C.QFileDialog_GetExistingDirectoryUrl5(parent.cPointer(), caption_Cstring, C.size_t(len(caption)), dir.cPointer(), (C.int)(options), &supportedSchemes_CArray[0], &supportedSchemes_Lengths[0], C.size_t(len(supportedSchemes)))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQUrl(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QUrl) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	supportedSchemes_ma := &C.struct_miqt_array{len: C.size_t(len(supportedSchemes)), data: unsafe.Pointer(supportedSchemes_CArray)}
+	defer runtime.KeepAlive(unsafe.Pointer(supportedSchemes_ma))
+	_ret := C.QFileDialog_GetExistingDirectoryUrl5(parent.cPointer(), (*C.struct_miqt_string)(caption_ms), dir.cPointer(), (C.int)(options), supportedSchemes_ma)
+	_goptr := newQUrl(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func QFileDialog_GetOpenFileNames1(parent *QWidget) []string {
-	var _out **C.char = nil
-	var _out_Lengths *C.int = nil
-	var _out_len C.size_t = 0
-	C.QFileDialog_GetOpenFileNames1(parent.cPointer(), &_out, &_out_Lengths, &_out_len)
-	ret := make([]string, int(_out_len))
-	_outCast := (*[0xffff]*C.char)(unsafe.Pointer(_out)) // hey ya
-	_out_LengthsCast := (*[0xffff]C.int)(unsafe.Pointer(_out_Lengths))
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = C.GoStringN(_outCast[i], _out_LengthsCast[i])
+	var _ma *C.struct_miqt_array = C.QFileDialog_GetOpenFileNames1(parent.cPointer())
+	_ret := make([]string, int(_ma.len))
+	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = C.GoStringN(&_outCast[i].data, C.int(int64(_outCast[i].len)))
+		C.free(unsafe.Pointer(_outCast[i])) // free the inner miqt_string*
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
 func QFileDialog_GetOpenFileNames2(parent *QWidget, caption string) []string {
-	caption_Cstring := C.CString(caption)
-	defer C.free(unsafe.Pointer(caption_Cstring))
-	var _out **C.char = nil
-	var _out_Lengths *C.int = nil
-	var _out_len C.size_t = 0
-	C.QFileDialog_GetOpenFileNames2(parent.cPointer(), caption_Cstring, C.size_t(len(caption)), &_out, &_out_Lengths, &_out_len)
-	ret := make([]string, int(_out_len))
-	_outCast := (*[0xffff]*C.char)(unsafe.Pointer(_out)) // hey ya
-	_out_LengthsCast := (*[0xffff]C.int)(unsafe.Pointer(_out_Lengths))
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = C.GoStringN(_outCast[i], _out_LengthsCast[i])
+	caption_ms := miqt_strdupg(caption)
+	defer C.free(caption_ms)
+	var _ma *C.struct_miqt_array = C.QFileDialog_GetOpenFileNames2(parent.cPointer(), (*C.struct_miqt_string)(caption_ms))
+	_ret := make([]string, int(_ma.len))
+	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = C.GoStringN(&_outCast[i].data, C.int(int64(_outCast[i].len)))
+		C.free(unsafe.Pointer(_outCast[i])) // free the inner miqt_string*
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
 func QFileDialog_GetOpenFileNames3(parent *QWidget, caption string, dir string) []string {
-	caption_Cstring := C.CString(caption)
-	defer C.free(unsafe.Pointer(caption_Cstring))
-	dir_Cstring := C.CString(dir)
-	defer C.free(unsafe.Pointer(dir_Cstring))
-	var _out **C.char = nil
-	var _out_Lengths *C.int = nil
-	var _out_len C.size_t = 0
-	C.QFileDialog_GetOpenFileNames3(parent.cPointer(), caption_Cstring, C.size_t(len(caption)), dir_Cstring, C.size_t(len(dir)), &_out, &_out_Lengths, &_out_len)
-	ret := make([]string, int(_out_len))
-	_outCast := (*[0xffff]*C.char)(unsafe.Pointer(_out)) // hey ya
-	_out_LengthsCast := (*[0xffff]C.int)(unsafe.Pointer(_out_Lengths))
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = C.GoStringN(_outCast[i], _out_LengthsCast[i])
+	caption_ms := miqt_strdupg(caption)
+	defer C.free(caption_ms)
+	dir_ms := miqt_strdupg(dir)
+	defer C.free(dir_ms)
+	var _ma *C.struct_miqt_array = C.QFileDialog_GetOpenFileNames3(parent.cPointer(), (*C.struct_miqt_string)(caption_ms), (*C.struct_miqt_string)(dir_ms))
+	_ret := make([]string, int(_ma.len))
+	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = C.GoStringN(&_outCast[i].data, C.int(int64(_outCast[i].len)))
+		C.free(unsafe.Pointer(_outCast[i])) // free the inner miqt_string*
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
 func QFileDialog_GetOpenFileNames4(parent *QWidget, caption string, dir string, filter string) []string {
-	caption_Cstring := C.CString(caption)
-	defer C.free(unsafe.Pointer(caption_Cstring))
-	dir_Cstring := C.CString(dir)
-	defer C.free(unsafe.Pointer(dir_Cstring))
-	filter_Cstring := C.CString(filter)
-	defer C.free(unsafe.Pointer(filter_Cstring))
-	var _out **C.char = nil
-	var _out_Lengths *C.int = nil
-	var _out_len C.size_t = 0
-	C.QFileDialog_GetOpenFileNames4(parent.cPointer(), caption_Cstring, C.size_t(len(caption)), dir_Cstring, C.size_t(len(dir)), filter_Cstring, C.size_t(len(filter)), &_out, &_out_Lengths, &_out_len)
-	ret := make([]string, int(_out_len))
-	_outCast := (*[0xffff]*C.char)(unsafe.Pointer(_out)) // hey ya
-	_out_LengthsCast := (*[0xffff]C.int)(unsafe.Pointer(_out_Lengths))
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = C.GoStringN(_outCast[i], _out_LengthsCast[i])
+	caption_ms := miqt_strdupg(caption)
+	defer C.free(caption_ms)
+	dir_ms := miqt_strdupg(dir)
+	defer C.free(dir_ms)
+	filter_ms := miqt_strdupg(filter)
+	defer C.free(filter_ms)
+	var _ma *C.struct_miqt_array = C.QFileDialog_GetOpenFileNames4(parent.cPointer(), (*C.struct_miqt_string)(caption_ms), (*C.struct_miqt_string)(dir_ms), (*C.struct_miqt_string)(filter_ms))
+	_ret := make([]string, int(_ma.len))
+	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = C.GoStringN(&_outCast[i].data, C.int(int64(_outCast[i].len)))
+		C.free(unsafe.Pointer(_outCast[i])) // free the inner miqt_string*
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
 func QFileDialog_GetOpenFileUrls1(parent *QWidget) []QUrl {
-	var _out **C.QUrl = nil
-	var _out_len C.size_t = 0
-	C.QFileDialog_GetOpenFileUrls1(parent.cPointer(), &_out, &_out_len)
-	ret := make([]QUrl, int(_out_len))
-	_outCast := (*[0xffff]*C.QUrl)(unsafe.Pointer(_out)) // so fresh so clean
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = *newQUrl(_outCast[i])
+	var _ma *C.struct_miqt_array = C.QFileDialog_GetOpenFileUrls1(parent.cPointer())
+	_ret := make([]QUrl, int(_ma.len))
+	_outCast := (*[0xffff]*C.QUrl)(unsafe.Pointer(_ma.data)) // mrs jackson
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = *newQUrl(_outCast[i])
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
 func QFileDialog_GetOpenFileUrls2(parent *QWidget, caption string) []QUrl {
-	caption_Cstring := C.CString(caption)
-	defer C.free(unsafe.Pointer(caption_Cstring))
-	var _out **C.QUrl = nil
-	var _out_len C.size_t = 0
-	C.QFileDialog_GetOpenFileUrls2(parent.cPointer(), caption_Cstring, C.size_t(len(caption)), &_out, &_out_len)
-	ret := make([]QUrl, int(_out_len))
-	_outCast := (*[0xffff]*C.QUrl)(unsafe.Pointer(_out)) // so fresh so clean
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = *newQUrl(_outCast[i])
+	caption_ms := miqt_strdupg(caption)
+	defer C.free(caption_ms)
+	var _ma *C.struct_miqt_array = C.QFileDialog_GetOpenFileUrls2(parent.cPointer(), (*C.struct_miqt_string)(caption_ms))
+	_ret := make([]QUrl, int(_ma.len))
+	_outCast := (*[0xffff]*C.QUrl)(unsafe.Pointer(_ma.data)) // mrs jackson
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = *newQUrl(_outCast[i])
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
 func QFileDialog_GetOpenFileUrls3(parent *QWidget, caption string, dir *QUrl) []QUrl {
-	caption_Cstring := C.CString(caption)
-	defer C.free(unsafe.Pointer(caption_Cstring))
-	var _out **C.QUrl = nil
-	var _out_len C.size_t = 0
-	C.QFileDialog_GetOpenFileUrls3(parent.cPointer(), caption_Cstring, C.size_t(len(caption)), dir.cPointer(), &_out, &_out_len)
-	ret := make([]QUrl, int(_out_len))
-	_outCast := (*[0xffff]*C.QUrl)(unsafe.Pointer(_out)) // so fresh so clean
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = *newQUrl(_outCast[i])
+	caption_ms := miqt_strdupg(caption)
+	defer C.free(caption_ms)
+	var _ma *C.struct_miqt_array = C.QFileDialog_GetOpenFileUrls3(parent.cPointer(), (*C.struct_miqt_string)(caption_ms), dir.cPointer())
+	_ret := make([]QUrl, int(_ma.len))
+	_outCast := (*[0xffff]*C.QUrl)(unsafe.Pointer(_ma.data)) // mrs jackson
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = *newQUrl(_outCast[i])
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
 func QFileDialog_GetOpenFileUrls4(parent *QWidget, caption string, dir *QUrl, filter string) []QUrl {
-	caption_Cstring := C.CString(caption)
-	defer C.free(unsafe.Pointer(caption_Cstring))
-	filter_Cstring := C.CString(filter)
-	defer C.free(unsafe.Pointer(filter_Cstring))
-	var _out **C.QUrl = nil
-	var _out_len C.size_t = 0
-	C.QFileDialog_GetOpenFileUrls4(parent.cPointer(), caption_Cstring, C.size_t(len(caption)), dir.cPointer(), filter_Cstring, C.size_t(len(filter)), &_out, &_out_len)
-	ret := make([]QUrl, int(_out_len))
-	_outCast := (*[0xffff]*C.QUrl)(unsafe.Pointer(_out)) // so fresh so clean
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = *newQUrl(_outCast[i])
+	caption_ms := miqt_strdupg(caption)
+	defer C.free(caption_ms)
+	filter_ms := miqt_strdupg(filter)
+	defer C.free(filter_ms)
+	var _ma *C.struct_miqt_array = C.QFileDialog_GetOpenFileUrls4(parent.cPointer(), (*C.struct_miqt_string)(caption_ms), dir.cPointer(), (*C.struct_miqt_string)(filter_ms))
+	_ret := make([]QUrl, int(_ma.len))
+	_outCast := (*[0xffff]*C.QUrl)(unsafe.Pointer(_ma.data)) // mrs jackson
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = *newQUrl(_outCast[i])
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
 func QFileDialog_SaveFileContent2(fileContent *QByteArray, fileNameHint string) {
-	fileNameHint_Cstring := C.CString(fileNameHint)
-	defer C.free(unsafe.Pointer(fileNameHint_Cstring))
-	C.QFileDialog_SaveFileContent2(fileContent.cPointer(), fileNameHint_Cstring, C.size_t(len(fileNameHint)))
+	fileNameHint_ms := miqt_strdupg(fileNameHint)
+	defer C.free(fileNameHint_ms)
+	C.QFileDialog_SaveFileContent2(fileContent.cPointer(), (*C.struct_miqt_string)(fileNameHint_ms))
 }
 
+// Delete this object from C++ memory.
 func (this *QFileDialog) Delete() {
 	C.QFileDialog_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QFileDialog) GoGC() {
+	runtime.SetFinalizer(this, func(this *QFileDialog) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

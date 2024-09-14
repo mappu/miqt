@@ -10,12 +10,8 @@
 #include <cstring>
 #include <QVariant>
 #include "qimageiohandler.h"
-
 #include "gen_qimageiohandler.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 void QImageIOHandler_SetDevice(QImageIOHandler* self, QIODevice* device) {
 	self->setDevice(device);
@@ -34,15 +30,15 @@ void QImageIOHandler_SetFormatWithFormat(const QImageIOHandler* self, QByteArray
 }
 
 QByteArray* QImageIOHandler_Format(const QImageIOHandler* self) {
-	QByteArray ret = self->format();
+	QByteArray _ret = self->format();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(ret));
+	return static_cast<QByteArray*>(new QByteArray(_ret));
 }
 
 QByteArray* QImageIOHandler_Name(const QImageIOHandler* self) {
-	QByteArray ret = self->name();
+	QByteArray _ret = self->name();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(ret));
+	return static_cast<QByteArray*>(new QByteArray(_ret));
 }
 
 bool QImageIOHandler_CanRead(const QImageIOHandler* self) {
@@ -58,9 +54,9 @@ bool QImageIOHandler_Write(QImageIOHandler* self, QImage* image) {
 }
 
 QVariant* QImageIOHandler_Option(const QImageIOHandler* self, uintptr_t option) {
-	QVariant ret = self->option(static_cast<QImageIOHandler::ImageOption>(option));
+	QVariant _ret = self->option(static_cast<QImageIOHandler::ImageOption>(option));
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(ret));
+	return static_cast<QVariant*>(new QVariant(_ret));
 }
 
 void QImageIOHandler_SetOption(QImageIOHandler* self, uintptr_t option, QVariant* value) {
@@ -96,9 +92,9 @@ int QImageIOHandler_CurrentImageNumber(const QImageIOHandler* self) {
 }
 
 QRect* QImageIOHandler_CurrentImageRect(const QImageIOHandler* self) {
-	QRect ret = self->currentImageRect();
+	QRect _ret = self->currentImageRect();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(ret));
+	return static_cast<QRect*>(new QRect(_ret));
 }
 
 void QImageIOHandler_Delete(QImageIOHandler* self) {
@@ -109,67 +105,55 @@ QMetaObject* QImageIOPlugin_MetaObject(const QImageIOPlugin* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void QImageIOPlugin_Tr(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QImageIOPlugin::tr(s);
+struct miqt_string* QImageIOPlugin_Tr(const char* s) {
+	QString _ret = QImageIOPlugin::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QImageIOPlugin_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QImageIOPlugin::trUtf8(s);
+struct miqt_string* QImageIOPlugin_TrUtf8(const char* s) {
+	QString _ret = QImageIOPlugin::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 int QImageIOPlugin_Capabilities(const QImageIOPlugin* self, QIODevice* device, QByteArray* format) {
-	QImageIOPlugin::Capabilities ret = self->capabilities(device, *format);
-	return static_cast<int>(ret);
+	QImageIOPlugin::Capabilities _ret = self->capabilities(device, *format);
+	return static_cast<int>(_ret);
 }
 
 QImageIOHandler* QImageIOPlugin_Create(const QImageIOPlugin* self, QIODevice* device) {
 	return self->create(device);
 }
 
-void QImageIOPlugin_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QImageIOPlugin::tr(s, c);
+struct miqt_string* QImageIOPlugin_Tr2(const char* s, const char* c) {
+	QString _ret = QImageIOPlugin::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QImageIOPlugin_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QImageIOPlugin::tr(s, c, static_cast<int>(n));
+struct miqt_string* QImageIOPlugin_Tr3(const char* s, const char* c, int n) {
+	QString _ret = QImageIOPlugin::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QImageIOPlugin_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QImageIOPlugin::trUtf8(s, c);
+struct miqt_string* QImageIOPlugin_TrUtf82(const char* s, const char* c) {
+	QString _ret = QImageIOPlugin::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QImageIOPlugin_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QImageIOPlugin::trUtf8(s, c, static_cast<int>(n));
+struct miqt_string* QImageIOPlugin_TrUtf83(const char* s, const char* c, int n) {
+	QString _ret = QImageIOPlugin::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 QImageIOHandler* QImageIOPlugin_Create2(const QImageIOPlugin* self, QIODevice* device, QByteArray* format) {

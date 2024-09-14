@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -18,12 +20,12 @@ typedef struct QTouchDevice QTouchDevice;
 #endif
 
 QTouchDevice* QTouchDevice_new();
-void QTouchDevice_Devices(const QTouchDevice*** _out, size_t* _out_len);
-void QTouchDevice_Name(const QTouchDevice* self, char** _out, int* _out_Strlen);
+struct miqt_array* QTouchDevice_Devices();
+struct miqt_string* QTouchDevice_Name(const QTouchDevice* self);
 uintptr_t QTouchDevice_Type(const QTouchDevice* self);
 int QTouchDevice_Capabilities(const QTouchDevice* self);
 int QTouchDevice_MaximumTouchPoints(const QTouchDevice* self);
-void QTouchDevice_SetName(QTouchDevice* self, const char* name, size_t name_Strlen);
+void QTouchDevice_SetName(QTouchDevice* self, struct miqt_string* name);
 void QTouchDevice_SetType(QTouchDevice* self, uintptr_t devType);
 void QTouchDevice_SetCapabilities(QTouchDevice* self, int caps);
 void QTouchDevice_SetMaximumTouchPoints(QTouchDevice* self, int max);

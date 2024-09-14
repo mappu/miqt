@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -32,8 +34,8 @@ typedef struct QWidget QWidget;
 QHeaderView* QHeaderView_new(uintptr_t orientation);
 QHeaderView* QHeaderView_new2(uintptr_t orientation, QWidget* parent);
 QMetaObject* QHeaderView_MetaObject(const QHeaderView* self);
-void QHeaderView_Tr(const char* s, char** _out, int* _out_Strlen);
-void QHeaderView_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QHeaderView_Tr(const char* s);
+struct miqt_string* QHeaderView_TrUtf8(const char* s);
 void QHeaderView_SetModel(QHeaderView* self, QAbstractItemModel* model);
 uintptr_t QHeaderView_Orientation(const QHeaderView* self);
 int QHeaderView_Offset(const QHeaderView* self);
@@ -122,10 +124,10 @@ void QHeaderView_GeometriesChanged(QHeaderView* self);
 void QHeaderView_connect_GeometriesChanged(QHeaderView* self, void* slot);
 void QHeaderView_SortIndicatorChanged(QHeaderView* self, int logicalIndex, uintptr_t order);
 void QHeaderView_connect_SortIndicatorChanged(QHeaderView* self, void* slot);
-void QHeaderView_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QHeaderView_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QHeaderView_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QHeaderView_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QHeaderView_Tr2(const char* s, const char* c);
+struct miqt_string* QHeaderView_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QHeaderView_TrUtf82(const char* s, const char* c);
+struct miqt_string* QHeaderView_TrUtf83(const char* s, const char* c, int n);
 void QHeaderView_Delete(QHeaderView* self);
 
 #ifdef __cplusplus

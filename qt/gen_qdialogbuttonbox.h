@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -34,16 +36,16 @@ QDialogButtonBox* QDialogButtonBox_new6(uintptr_t orientation, QWidget* parent);
 QDialogButtonBox* QDialogButtonBox_new7(int buttons, QWidget* parent);
 QDialogButtonBox* QDialogButtonBox_new8(int buttons, uintptr_t orientation, QWidget* parent);
 QMetaObject* QDialogButtonBox_MetaObject(const QDialogButtonBox* self);
-void QDialogButtonBox_Tr(const char* s, char** _out, int* _out_Strlen);
-void QDialogButtonBox_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QDialogButtonBox_Tr(const char* s);
+struct miqt_string* QDialogButtonBox_TrUtf8(const char* s);
 void QDialogButtonBox_SetOrientation(QDialogButtonBox* self, uintptr_t orientation);
 uintptr_t QDialogButtonBox_Orientation(const QDialogButtonBox* self);
 void QDialogButtonBox_AddButton(QDialogButtonBox* self, QAbstractButton* button, uintptr_t role);
-QPushButton* QDialogButtonBox_AddButton2(QDialogButtonBox* self, const char* text, size_t text_Strlen, uintptr_t role);
+QPushButton* QDialogButtonBox_AddButton2(QDialogButtonBox* self, struct miqt_string* text, uintptr_t role);
 QPushButton* QDialogButtonBox_AddButtonWithButton(QDialogButtonBox* self, uintptr_t button);
 void QDialogButtonBox_RemoveButton(QDialogButtonBox* self, QAbstractButton* button);
 void QDialogButtonBox_Clear(QDialogButtonBox* self);
-void QDialogButtonBox_Buttons(const QDialogButtonBox* self, QAbstractButton*** _out, size_t* _out_len);
+struct miqt_array* QDialogButtonBox_Buttons(const QDialogButtonBox* self);
 uintptr_t QDialogButtonBox_ButtonRole(const QDialogButtonBox* self, QAbstractButton* button);
 void QDialogButtonBox_SetStandardButtons(QDialogButtonBox* self, int buttons);
 int QDialogButtonBox_StandardButtons(const QDialogButtonBox* self);
@@ -59,10 +61,10 @@ void QDialogButtonBox_HelpRequested(QDialogButtonBox* self);
 void QDialogButtonBox_connect_HelpRequested(QDialogButtonBox* self, void* slot);
 void QDialogButtonBox_Rejected(QDialogButtonBox* self);
 void QDialogButtonBox_connect_Rejected(QDialogButtonBox* self, void* slot);
-void QDialogButtonBox_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QDialogButtonBox_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QDialogButtonBox_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QDialogButtonBox_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QDialogButtonBox_Tr2(const char* s, const char* c);
+struct miqt_string* QDialogButtonBox_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QDialogButtonBox_TrUtf82(const char* s, const char* c);
+struct miqt_string* QDialogButtonBox_TrUtf83(const char* s, const char* c, int n);
 void QDialogButtonBox_Delete(QDialogButtonBox* self);
 
 #ifdef __cplusplus

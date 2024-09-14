@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -44,8 +46,8 @@ int QMetaMethod_ReturnType(const QMetaMethod* self);
 int QMetaMethod_ParameterCount(const QMetaMethod* self);
 int QMetaMethod_ParameterType(const QMetaMethod* self, int index);
 void QMetaMethod_GetParameterTypes(const QMetaMethod* self, int* types);
-void QMetaMethod_ParameterTypes(const QMetaMethod* self, QByteArray*** _out, size_t* _out_len);
-void QMetaMethod_ParameterNames(const QMetaMethod* self, QByteArray*** _out, size_t* _out_len);
+struct miqt_array* QMetaMethod_ParameterTypes(const QMetaMethod* self);
+struct miqt_array* QMetaMethod_ParameterNames(const QMetaMethod* self);
 const char* QMetaMethod_Tag(const QMetaMethod* self);
 uintptr_t QMetaMethod_Access(const QMetaMethod* self);
 uintptr_t QMetaMethod_MethodType(const QMetaMethod* self);

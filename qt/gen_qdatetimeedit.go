@@ -102,74 +102,54 @@ func NewQDateTimeEdit8(t *QTime, parent *QWidget) *QDateTimeEdit {
 }
 
 func (this *QDateTimeEdit) MetaObject() *QMetaObject {
-	ret := C.QDateTimeEdit_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QDateTimeEdit_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QDateTimeEdit_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QDateTimeEdit_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QDateTimeEdit_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QDateTimeEdit_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QDateTimeEdit_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QDateTimeEdit_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QDateTimeEdit) DateTime() *QDateTime {
-	ret := C.QDateTimeEdit_DateTime(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQDateTime(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QDateTime) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QDateTimeEdit_DateTime(this.h)
+	_goptr := newQDateTime(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QDateTimeEdit) Date() *QDate {
-	ret := C.QDateTimeEdit_Date(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQDate(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QDate) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QDateTimeEdit_Date(this.h)
+	_goptr := newQDate(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QDateTimeEdit) Time() *QTime {
-	ret := C.QDateTimeEdit_Time(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQTime(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QTime) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QDateTimeEdit_Time(this.h)
+	_goptr := newQTime(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QDateTimeEdit) Calendar() *QCalendar {
-	ret := C.QDateTimeEdit_Calendar(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQCalendar(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QCalendar) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QDateTimeEdit_Calendar(this.h)
+	_goptr := newQCalendar(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QDateTimeEdit) SetCalendar(calendar QCalendar) {
@@ -177,14 +157,10 @@ func (this *QDateTimeEdit) SetCalendar(calendar QCalendar) {
 }
 
 func (this *QDateTimeEdit) MinimumDateTime() *QDateTime {
-	ret := C.QDateTimeEdit_MinimumDateTime(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQDateTime(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QDateTime) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QDateTimeEdit_MinimumDateTime(this.h)
+	_goptr := newQDateTime(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QDateTimeEdit) ClearMinimumDateTime() {
@@ -196,14 +172,10 @@ func (this *QDateTimeEdit) SetMinimumDateTime(dt *QDateTime) {
 }
 
 func (this *QDateTimeEdit) MaximumDateTime() *QDateTime {
-	ret := C.QDateTimeEdit_MaximumDateTime(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQDateTime(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QDateTime) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QDateTimeEdit_MaximumDateTime(this.h)
+	_goptr := newQDateTime(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QDateTimeEdit) ClearMaximumDateTime() {
@@ -219,14 +191,10 @@ func (this *QDateTimeEdit) SetDateTimeRange(min *QDateTime, max *QDateTime) {
 }
 
 func (this *QDateTimeEdit) MinimumDate() *QDate {
-	ret := C.QDateTimeEdit_MinimumDate(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQDate(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QDate) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QDateTimeEdit_MinimumDate(this.h)
+	_goptr := newQDate(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QDateTimeEdit) SetMinimumDate(min *QDate) {
@@ -238,14 +206,10 @@ func (this *QDateTimeEdit) ClearMinimumDate() {
 }
 
 func (this *QDateTimeEdit) MaximumDate() *QDate {
-	ret := C.QDateTimeEdit_MaximumDate(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQDate(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QDate) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QDateTimeEdit_MaximumDate(this.h)
+	_goptr := newQDate(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QDateTimeEdit) SetMaximumDate(max *QDate) {
@@ -261,14 +225,10 @@ func (this *QDateTimeEdit) SetDateRange(min *QDate, max *QDate) {
 }
 
 func (this *QDateTimeEdit) MinimumTime() *QTime {
-	ret := C.QDateTimeEdit_MinimumTime(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQTime(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QTime) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QDateTimeEdit_MinimumTime(this.h)
+	_goptr := newQTime(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QDateTimeEdit) SetMinimumTime(min *QTime) {
@@ -280,14 +240,10 @@ func (this *QDateTimeEdit) ClearMinimumTime() {
 }
 
 func (this *QDateTimeEdit) MaximumTime() *QTime {
-	ret := C.QDateTimeEdit_MaximumTime(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQTime(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QTime) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QDateTimeEdit_MaximumTime(this.h)
+	_goptr := newQTime(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QDateTimeEdit) SetMaximumTime(max *QTime) {
@@ -303,18 +259,18 @@ func (this *QDateTimeEdit) SetTimeRange(min *QTime, max *QTime) {
 }
 
 func (this *QDateTimeEdit) DisplayedSections() int {
-	ret := C.QDateTimeEdit_DisplayedSections(this.h)
-	return (int)(ret)
+	_ret := C.QDateTimeEdit_DisplayedSections(this.h)
+	return (int)(_ret)
 }
 
 func (this *QDateTimeEdit) CurrentSection() QDateTimeEdit__Section {
-	ret := C.QDateTimeEdit_CurrentSection(this.h)
-	return (QDateTimeEdit__Section)(ret)
+	_ret := C.QDateTimeEdit_CurrentSection(this.h)
+	return (QDateTimeEdit__Section)(_ret)
 }
 
 func (this *QDateTimeEdit) SectionAt(index int) QDateTimeEdit__Section {
-	ret := C.QDateTimeEdit_SectionAt(this.h, (C.int)(index))
-	return (QDateTimeEdit__Section)(ret)
+	_ret := C.QDateTimeEdit_SectionAt(this.h, (C.int)(index))
+	return (QDateTimeEdit__Section)(_ret)
 }
 
 func (this *QDateTimeEdit) SetCurrentSection(section QDateTimeEdit__Section) {
@@ -322,8 +278,8 @@ func (this *QDateTimeEdit) SetCurrentSection(section QDateTimeEdit__Section) {
 }
 
 func (this *QDateTimeEdit) CurrentSectionIndex() int {
-	ret := C.QDateTimeEdit_CurrentSectionIndex(this.h)
-	return (int)(ret)
+	_ret := C.QDateTimeEdit_CurrentSectionIndex(this.h)
+	return (int)(_ret)
 }
 
 func (this *QDateTimeEdit) SetCurrentSectionIndex(index int) {
@@ -331,8 +287,8 @@ func (this *QDateTimeEdit) SetCurrentSectionIndex(index int) {
 }
 
 func (this *QDateTimeEdit) CalendarWidget() *QCalendarWidget {
-	ret := C.QDateTimeEdit_CalendarWidget(this.h)
-	return newQCalendarWidget_U(unsafe.Pointer(ret))
+	_ret := C.QDateTimeEdit_CalendarWidget(this.h)
+	return newQCalendarWidget_U(unsafe.Pointer(_ret))
 }
 
 func (this *QDateTimeEdit) SetCalendarWidget(calendarWidget *QCalendarWidget) {
@@ -340,8 +296,8 @@ func (this *QDateTimeEdit) SetCalendarWidget(calendarWidget *QCalendarWidget) {
 }
 
 func (this *QDateTimeEdit) SectionCount() int {
-	ret := C.QDateTimeEdit_SectionCount(this.h)
-	return (int)(ret)
+	_ret := C.QDateTimeEdit_SectionCount(this.h)
+	return (int)(_ret)
 }
 
 func (this *QDateTimeEdit) SetSelectedSection(section QDateTimeEdit__Section) {
@@ -349,32 +305,28 @@ func (this *QDateTimeEdit) SetSelectedSection(section QDateTimeEdit__Section) {
 }
 
 func (this *QDateTimeEdit) SectionText(section QDateTimeEdit__Section) string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QDateTimeEdit_SectionText(this.h, (C.uintptr_t)(section), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QDateTimeEdit_SectionText(this.h, (C.uintptr_t)(section))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QDateTimeEdit) DisplayFormat() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QDateTimeEdit_DisplayFormat(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QDateTimeEdit_DisplayFormat(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QDateTimeEdit) SetDisplayFormat(format string) {
-	format_Cstring := C.CString(format)
-	defer C.free(unsafe.Pointer(format_Cstring))
-	C.QDateTimeEdit_SetDisplayFormat(this.h, format_Cstring, C.size_t(len(format)))
+	format_ms := miqt_strdupg(format)
+	defer C.free(format_ms)
+	C.QDateTimeEdit_SetDisplayFormat(this.h, (*C.struct_miqt_string)(format_ms))
 }
 
 func (this *QDateTimeEdit) CalendarPopup() bool {
-	ret := C.QDateTimeEdit_CalendarPopup(this.h)
-	return (bool)(ret)
+	_ret := C.QDateTimeEdit_CalendarPopup(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QDateTimeEdit) SetCalendarPopup(enable bool) {
@@ -382,8 +334,8 @@ func (this *QDateTimeEdit) SetCalendarPopup(enable bool) {
 }
 
 func (this *QDateTimeEdit) TimeSpec() TimeSpec {
-	ret := C.QDateTimeEdit_TimeSpec(this.h)
-	return (TimeSpec)(ret)
+	_ret := C.QDateTimeEdit_TimeSpec(this.h)
+	return (TimeSpec)(_ret)
 }
 
 func (this *QDateTimeEdit) SetTimeSpec(spec TimeSpec) {
@@ -391,14 +343,10 @@ func (this *QDateTimeEdit) SetTimeSpec(spec TimeSpec) {
 }
 
 func (this *QDateTimeEdit) SizeHint() *QSize {
-	ret := C.QDateTimeEdit_SizeHint(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSize(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QDateTimeEdit_SizeHint(this.h)
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QDateTimeEdit) Clear() {
@@ -410,44 +358,71 @@ func (this *QDateTimeEdit) StepBy(steps int) {
 }
 
 func (this *QDateTimeEdit) Event(event *QEvent) bool {
-	ret := C.QDateTimeEdit_Event(this.h, event.cPointer())
-	return (bool)(ret)
+	_ret := C.QDateTimeEdit_Event(this.h, event.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QDateTimeEdit) DateTimeChanged(dateTime *QDateTime) {
 	C.QDateTimeEdit_DateTimeChanged(this.h, dateTime.cPointer())
 }
+func (this *QDateTimeEdit) OnDateTimeChanged(slot func(dateTime *QDateTime)) {
+	C.QDateTimeEdit_connect_DateTimeChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QDateTimeEdit) OnDateTimeChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QDateTimeEdit_DateTimeChanged
+func miqt_exec_callback_QDateTimeEdit_DateTimeChanged(cb *C.void, dateTime *C.QDateTime) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(dateTime *QDateTime))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QDateTimeEdit_connect_DateTimeChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	dateTime_ret := dateTime
+	slotval1 := newQDateTime_U(unsafe.Pointer(dateTime_ret))
+
+	gofunc(slotval1)
 }
 
 func (this *QDateTimeEdit) TimeChanged(time *QTime) {
 	C.QDateTimeEdit_TimeChanged(this.h, time.cPointer())
 }
+func (this *QDateTimeEdit) OnTimeChanged(slot func(time *QTime)) {
+	C.QDateTimeEdit_connect_TimeChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QDateTimeEdit) OnTimeChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QDateTimeEdit_TimeChanged
+func miqt_exec_callback_QDateTimeEdit_TimeChanged(cb *C.void, time *C.QTime) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(time *QTime))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QDateTimeEdit_connect_TimeChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	time_ret := time
+	slotval1 := newQTime_U(unsafe.Pointer(time_ret))
+
+	gofunc(slotval1)
 }
 
 func (this *QDateTimeEdit) DateChanged(date *QDate) {
 	C.QDateTimeEdit_DateChanged(this.h, date.cPointer())
 }
+func (this *QDateTimeEdit) OnDateChanged(slot func(date *QDate)) {
+	C.QDateTimeEdit_connect_DateChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QDateTimeEdit) OnDateChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QDateTimeEdit_DateChanged
+func miqt_exec_callback_QDateTimeEdit_DateChanged(cb *C.void, date *C.QDate) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(date *QDate))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QDateTimeEdit_connect_DateChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	date_ret := date
+	slotval1 := newQDate_U(unsafe.Pointer(date_ret))
+
+	gofunc(slotval1)
 }
 
 func (this *QDateTimeEdit) SetDateTime(dateTime *QDateTime) {
@@ -467,12 +442,10 @@ func QDateTimeEdit_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QDateTimeEdit_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QDateTimeEdit_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QDateTimeEdit_Tr3(s string, c string, n int) string {
@@ -480,12 +453,10 @@ func QDateTimeEdit_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QDateTimeEdit_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QDateTimeEdit_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QDateTimeEdit_TrUtf82(s string, c string) string {
@@ -493,12 +464,10 @@ func QDateTimeEdit_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QDateTimeEdit_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QDateTimeEdit_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QDateTimeEdit_TrUtf83(s string, c string, n int) string {
@@ -506,16 +475,24 @@ func QDateTimeEdit_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QDateTimeEdit_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QDateTimeEdit_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
+// Delete this object from C++ memory.
 func (this *QDateTimeEdit) Delete() {
 	C.QDateTimeEdit_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QDateTimeEdit) GoGC() {
+	runtime.SetFinalizer(this, func(this *QDateTimeEdit) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
 
 type QTimeEdit struct {
@@ -566,42 +543,47 @@ func NewQTimeEdit4(time *QTime, parent *QWidget) *QTimeEdit {
 }
 
 func (this *QTimeEdit) MetaObject() *QMetaObject {
-	ret := C.QTimeEdit_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QTimeEdit_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QTimeEdit_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTimeEdit_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTimeEdit_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QTimeEdit_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTimeEdit_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTimeEdit_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QTimeEdit) UserTimeChanged(time *QTime) {
 	C.QTimeEdit_UserTimeChanged(this.h, time.cPointer())
 }
+func (this *QTimeEdit) OnUserTimeChanged(slot func(time *QTime)) {
+	C.QTimeEdit_connect_UserTimeChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QTimeEdit) OnUserTimeChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QTimeEdit_UserTimeChanged
+func miqt_exec_callback_QTimeEdit_UserTimeChanged(cb *C.void, time *C.QTime) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(time *QTime))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QTimeEdit_connect_UserTimeChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	time_ret := time
+	slotval1 := newQTime_U(unsafe.Pointer(time_ret))
+
+	gofunc(slotval1)
 }
 
 func QTimeEdit_Tr2(s string, c string) string {
@@ -609,12 +591,10 @@ func QTimeEdit_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTimeEdit_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTimeEdit_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QTimeEdit_Tr3(s string, c string, n int) string {
@@ -622,12 +602,10 @@ func QTimeEdit_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTimeEdit_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTimeEdit_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QTimeEdit_TrUtf82(s string, c string) string {
@@ -635,12 +613,10 @@ func QTimeEdit_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTimeEdit_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTimeEdit_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QTimeEdit_TrUtf83(s string, c string, n int) string {
@@ -648,16 +624,24 @@ func QTimeEdit_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTimeEdit_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTimeEdit_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
+// Delete this object from C++ memory.
 func (this *QTimeEdit) Delete() {
 	C.QTimeEdit_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QTimeEdit) GoGC() {
+	runtime.SetFinalizer(this, func(this *QTimeEdit) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
 
 type QDateEdit struct {
@@ -708,42 +692,47 @@ func NewQDateEdit4(date *QDate, parent *QWidget) *QDateEdit {
 }
 
 func (this *QDateEdit) MetaObject() *QMetaObject {
-	ret := C.QDateEdit_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QDateEdit_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QDateEdit_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QDateEdit_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QDateEdit_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QDateEdit_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QDateEdit_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QDateEdit_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QDateEdit) UserDateChanged(date *QDate) {
 	C.QDateEdit_UserDateChanged(this.h, date.cPointer())
 }
+func (this *QDateEdit) OnUserDateChanged(slot func(date *QDate)) {
+	C.QDateEdit_connect_UserDateChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QDateEdit) OnUserDateChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QDateEdit_UserDateChanged
+func miqt_exec_callback_QDateEdit_UserDateChanged(cb *C.void, date *C.QDate) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(date *QDate))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QDateEdit_connect_UserDateChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	date_ret := date
+	slotval1 := newQDate_U(unsafe.Pointer(date_ret))
+
+	gofunc(slotval1)
 }
 
 func QDateEdit_Tr2(s string, c string) string {
@@ -751,12 +740,10 @@ func QDateEdit_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QDateEdit_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QDateEdit_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QDateEdit_Tr3(s string, c string, n int) string {
@@ -764,12 +751,10 @@ func QDateEdit_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QDateEdit_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QDateEdit_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QDateEdit_TrUtf82(s string, c string) string {
@@ -777,12 +762,10 @@ func QDateEdit_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QDateEdit_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QDateEdit_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QDateEdit_TrUtf83(s string, c string, n int) string {
@@ -790,14 +773,22 @@ func QDateEdit_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QDateEdit_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QDateEdit_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
+// Delete this object from C++ memory.
 func (this *QDateEdit) Delete() {
 	C.QDateEdit_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QDateEdit) GoGC() {
+	runtime.SetFinalizer(this, func(this *QDateEdit) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

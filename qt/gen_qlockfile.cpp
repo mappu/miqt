@@ -3,15 +3,11 @@
 #include <QByteArray>
 #include <cstring>
 #include "qlockfile.h"
-
 #include "gen_qlockfile.h"
+#include "_cgo_export.h"
 
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
-
-QLockFile* QLockFile_new(const char* fileName, size_t fileName_Strlen) {
-	QString fileName_QString = QString::fromUtf8(fileName, fileName_Strlen);
+QLockFile* QLockFile_new(struct miqt_string* fileName) {
+	QString fileName_QString = QString::fromUtf8(&fileName->data, fileName->len);
 	return new QLockFile(fileName_QString);
 }
 
@@ -44,8 +40,8 @@ bool QLockFile_RemoveStaleLockFile(QLockFile* self) {
 }
 
 uintptr_t QLockFile_Error(const QLockFile* self) {
-	QLockFile::LockError ret = self->error();
-	return static_cast<uintptr_t>(ret);
+	QLockFile::LockError _ret = self->error();
+	return static_cast<uintptr_t>(_ret);
 }
 
 bool QLockFile_TryLock1(QLockFile* self, int timeout) {

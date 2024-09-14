@@ -8,12 +8,8 @@
 #include <QVariant>
 #include <QWidget>
 #include "qabstractspinbox.h"
-
 #include "gen_qabstractspinbox.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QAbstractSpinBox* QAbstractSpinBox_new() {
 	return new QAbstractSpinBox();
@@ -27,27 +23,23 @@ QMetaObject* QAbstractSpinBox_MetaObject(const QAbstractSpinBox* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void QAbstractSpinBox_Tr(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QAbstractSpinBox::tr(s);
+struct miqt_string* QAbstractSpinBox_Tr(const char* s) {
+	QString _ret = QAbstractSpinBox::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QAbstractSpinBox_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QAbstractSpinBox::trUtf8(s);
+struct miqt_string* QAbstractSpinBox_TrUtf8(const char* s) {
+	QString _ret = QAbstractSpinBox::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 uintptr_t QAbstractSpinBox_ButtonSymbols(const QAbstractSpinBox* self) {
-	QAbstractSpinBox::ButtonSymbols ret = self->buttonSymbols();
-	return static_cast<uintptr_t>(ret);
+	QAbstractSpinBox::ButtonSymbols _ret = self->buttonSymbols();
+	return static_cast<uintptr_t>(_ret);
 }
 
 void QAbstractSpinBox_SetButtonSymbols(QAbstractSpinBox* self, uintptr_t bs) {
@@ -59,34 +51,30 @@ void QAbstractSpinBox_SetCorrectionMode(QAbstractSpinBox* self, uintptr_t cm) {
 }
 
 uintptr_t QAbstractSpinBox_CorrectionMode(const QAbstractSpinBox* self) {
-	QAbstractSpinBox::CorrectionMode ret = self->correctionMode();
-	return static_cast<uintptr_t>(ret);
+	QAbstractSpinBox::CorrectionMode _ret = self->correctionMode();
+	return static_cast<uintptr_t>(_ret);
 }
 
 bool QAbstractSpinBox_HasAcceptableInput(const QAbstractSpinBox* self) {
 	return self->hasAcceptableInput();
 }
 
-void QAbstractSpinBox_Text(const QAbstractSpinBox* self, char** _out, int* _out_Strlen) {
-	QString ret = self->text();
+struct miqt_string* QAbstractSpinBox_Text(const QAbstractSpinBox* self) {
+	QString _ret = self->text();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QAbstractSpinBox_SpecialValueText(const QAbstractSpinBox* self, char** _out, int* _out_Strlen) {
-	QString ret = self->specialValueText();
+struct miqt_string* QAbstractSpinBox_SpecialValueText(const QAbstractSpinBox* self) {
+	QString _ret = self->specialValueText();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QAbstractSpinBox_SetSpecialValueText(QAbstractSpinBox* self, const char* txt, size_t txt_Strlen) {
-	QString txt_QString = QString::fromUtf8(txt, txt_Strlen);
+void QAbstractSpinBox_SetSpecialValueText(QAbstractSpinBox* self, struct miqt_string* txt) {
+	QString txt_QString = QString::fromUtf8(&txt->data, txt->len);
 	self->setSpecialValueText(txt_QString);
 }
 
@@ -119,8 +107,8 @@ void QAbstractSpinBox_SetAlignment(QAbstractSpinBox* self, int flag) {
 }
 
 int QAbstractSpinBox_Alignment(const QAbstractSpinBox* self) {
-	Qt::Alignment ret = self->alignment();
-	return static_cast<int>(ret);
+	Qt::Alignment _ret = self->alignment();
+	return static_cast<int>(_ret);
 }
 
 void QAbstractSpinBox_SetFrame(QAbstractSpinBox* self, bool frame) {
@@ -148,15 +136,15 @@ bool QAbstractSpinBox_IsGroupSeparatorShown(const QAbstractSpinBox* self) {
 }
 
 QSize* QAbstractSpinBox_SizeHint(const QAbstractSpinBox* self) {
-	QSize ret = self->sizeHint();
+	QSize _ret = self->sizeHint();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(ret));
+	return static_cast<QSize*>(new QSize(_ret));
 }
 
 QSize* QAbstractSpinBox_MinimumSizeHint(const QAbstractSpinBox* self) {
-	QSize ret = self->minimumSizeHint();
+	QSize _ret = self->minimumSizeHint();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(ret));
+	return static_cast<QSize*>(new QSize(_ret));
 }
 
 void QAbstractSpinBox_InterpretText(QAbstractSpinBox* self) {
@@ -168,19 +156,19 @@ bool QAbstractSpinBox_Event(QAbstractSpinBox* self, QEvent* event) {
 }
 
 QVariant* QAbstractSpinBox_InputMethodQuery(const QAbstractSpinBox* self, uintptr_t param1) {
-	QVariant ret = self->inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1));
+	QVariant _ret = self->inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1));
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(ret));
+	return static_cast<QVariant*>(new QVariant(_ret));
 }
 
-uintptr_t QAbstractSpinBox_Validate(const QAbstractSpinBox* self, const char* input, size_t input_Strlen, int* pos) {
-	QString input_QString = QString::fromUtf8(input, input_Strlen);
-	QValidator::State ret = self->validate(input_QString, static_cast<int&>(*pos));
-	return static_cast<uintptr_t>(ret);
+uintptr_t QAbstractSpinBox_Validate(const QAbstractSpinBox* self, struct miqt_string* input, int* pos) {
+	QString input_QString = QString::fromUtf8(&input->data, input->len);
+	QValidator::State _ret = self->validate(input_QString, static_cast<int&>(*pos));
+	return static_cast<uintptr_t>(_ret);
 }
 
-void QAbstractSpinBox_Fixup(const QAbstractSpinBox* self, const char* input, size_t input_Strlen) {
-	QString input_QString = QString::fromUtf8(input, input_Strlen);
+void QAbstractSpinBox_Fixup(const QAbstractSpinBox* self, struct miqt_string* input) {
+	QString input_QString = QString::fromUtf8(&input->data, input->len);
 	self->fixup(input_QString);
 }
 
@@ -210,44 +198,36 @@ void QAbstractSpinBox_EditingFinished(QAbstractSpinBox* self) {
 
 void QAbstractSpinBox_connect_EditingFinished(QAbstractSpinBox* self, void* slot) {
 	QAbstractSpinBox::connect(self, static_cast<void (QAbstractSpinBox::*)()>(&QAbstractSpinBox::editingFinished), self, [=]() {
-		miqt_exec_callback(slot, 0, nullptr);
+		miqt_exec_callback_QAbstractSpinBox_EditingFinished(slot);
 	});
 }
 
-void QAbstractSpinBox_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QAbstractSpinBox::tr(s, c);
+struct miqt_string* QAbstractSpinBox_Tr2(const char* s, const char* c) {
+	QString _ret = QAbstractSpinBox::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QAbstractSpinBox_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QAbstractSpinBox::tr(s, c, static_cast<int>(n));
+struct miqt_string* QAbstractSpinBox_Tr3(const char* s, const char* c, int n) {
+	QString _ret = QAbstractSpinBox::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QAbstractSpinBox_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QAbstractSpinBox::trUtf8(s, c);
+struct miqt_string* QAbstractSpinBox_TrUtf82(const char* s, const char* c) {
+	QString _ret = QAbstractSpinBox::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QAbstractSpinBox_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QAbstractSpinBox::trUtf8(s, c, static_cast<int>(n));
+struct miqt_string* QAbstractSpinBox_TrUtf83(const char* s, const char* c, int n) {
+	QString _ret = QAbstractSpinBox::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QAbstractSpinBox_Delete(QAbstractSpinBox* self) {

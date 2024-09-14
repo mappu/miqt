@@ -1,12 +1,8 @@
 #include <QPoint>
 #include <QPointF>
 #include "qpoint.h"
-
 #include "gen_qpoint.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QPoint* QPoint_new() {
 	return new QPoint();
@@ -45,45 +41,45 @@ int QPoint_ManhattanLength(const QPoint* self) {
 }
 
 QPoint* QPoint_Transposed(const QPoint* self) {
-	QPoint ret = self->transposed();
+	QPoint _ret = self->transposed();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPoint*>(new QPoint(ret));
+	return static_cast<QPoint*>(new QPoint(_ret));
 }
 
 QPoint* QPoint_OperatorPlusAssign(QPoint* self, QPoint* p) {
-	QPoint& ret = self->operator+=(*p);
+	QPoint& _ret = self->operator+=(*p);
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QPoint* QPoint_OperatorMinusAssign(QPoint* self, QPoint* p) {
-	QPoint& ret = self->operator-=(*p);
+	QPoint& _ret = self->operator-=(*p);
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QPoint* QPoint_OperatorMultiplyAssign(QPoint* self, float factor) {
-	QPoint& ret = self->operator*=(static_cast<float>(factor));
+	QPoint& _ret = self->operator*=(static_cast<float>(factor));
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QPoint* QPoint_OperatorMultiplyAssignWithFactor(QPoint* self, double factor) {
-	QPoint& ret = self->operator*=(static_cast<double>(factor));
+	QPoint& _ret = self->operator*=(static_cast<double>(factor));
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QPoint* QPoint_OperatorMultiplyAssign2(QPoint* self, int factor) {
-	QPoint& ret = self->operator*=(static_cast<int>(factor));
+	QPoint& _ret = self->operator*=(static_cast<int>(factor));
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QPoint* QPoint_OperatorDivideAssign(QPoint* self, double divisor) {
-	QPoint& ret = self->operator/=(static_cast<qreal>(divisor));
+	QPoint& _ret = self->operator/=(static_cast<qreal>(divisor));
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 int QPoint_DotProduct(QPoint* p1, QPoint* p2) {
@@ -135,33 +131,33 @@ void QPointF_SetY(QPointF* self, double y) {
 }
 
 QPointF* QPointF_Transposed(const QPointF* self) {
-	QPointF ret = self->transposed();
+	QPointF _ret = self->transposed();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPointF*>(new QPointF(ret));
+	return static_cast<QPointF*>(new QPointF(_ret));
 }
 
 QPointF* QPointF_OperatorPlusAssign(QPointF* self, QPointF* p) {
-	QPointF& ret = self->operator+=(*p);
+	QPointF& _ret = self->operator+=(*p);
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QPointF* QPointF_OperatorMinusAssign(QPointF* self, QPointF* p) {
-	QPointF& ret = self->operator-=(*p);
+	QPointF& _ret = self->operator-=(*p);
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QPointF* QPointF_OperatorMultiplyAssign(QPointF* self, double c) {
-	QPointF& ret = self->operator*=(static_cast<qreal>(c));
+	QPointF& _ret = self->operator*=(static_cast<qreal>(c));
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QPointF* QPointF_OperatorDivideAssign(QPointF* self, double c) {
-	QPointF& ret = self->operator/=(static_cast<qreal>(c));
+	QPointF& _ret = self->operator/=(static_cast<qreal>(c));
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 double QPointF_DotProduct(QPointF* p1, QPointF* p2) {
@@ -169,9 +165,9 @@ double QPointF_DotProduct(QPointF* p1, QPointF* p2) {
 }
 
 QPoint* QPointF_ToPoint(const QPointF* self) {
-	QPoint ret = self->toPoint();
+	QPoint _ret = self->toPoint();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPoint*>(new QPoint(ret));
+	return static_cast<QPoint*>(new QPoint(_ret));
 }
 
 void QPointF_Delete(QPointF* self) {

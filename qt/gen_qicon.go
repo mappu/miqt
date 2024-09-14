@@ -71,9 +71,9 @@ func NewQIcon3(other *QIcon) *QIcon {
 
 // NewQIcon4 constructs a new QIcon object.
 func NewQIcon4(fileName string) *QIcon {
-	fileName_Cstring := C.CString(fileName)
-	defer C.free(unsafe.Pointer(fileName_Cstring))
-	ret := C.QIcon_new4(fileName_Cstring, C.size_t(len(fileName)))
+	fileName_ms := miqt_strdupg(fileName)
+	defer C.free(fileName_ms)
+	ret := C.QIcon_new4((*C.struct_miqt_string)(fileName_ms))
 	return newQIcon(ret)
 }
 
@@ -92,78 +92,52 @@ func (this *QIcon) Swap(other *QIcon) {
 }
 
 func (this *QIcon) Pixmap(size *QSize) *QPixmap {
-	ret := C.QIcon_Pixmap(this.h, size.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPixmap(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPixmap) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QIcon_Pixmap(this.h, size.cPointer())
+	_goptr := newQPixmap(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QIcon) Pixmap2(w int, h int) *QPixmap {
-	ret := C.QIcon_Pixmap2(this.h, (C.int)(w), (C.int)(h))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPixmap(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPixmap) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QIcon_Pixmap2(this.h, (C.int)(w), (C.int)(h))
+	_goptr := newQPixmap(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QIcon) PixmapWithExtent(extent int) *QPixmap {
-	ret := C.QIcon_PixmapWithExtent(this.h, (C.int)(extent))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPixmap(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPixmap) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QIcon_PixmapWithExtent(this.h, (C.int)(extent))
+	_goptr := newQPixmap(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QIcon) Pixmap3(window *QWindow, size *QSize) *QPixmap {
-	ret := C.QIcon_Pixmap3(this.h, window.cPointer(), size.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPixmap(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPixmap) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QIcon_Pixmap3(this.h, window.cPointer(), size.cPointer())
+	_goptr := newQPixmap(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QIcon) ActualSize(size *QSize) *QSize {
-	ret := C.QIcon_ActualSize(this.h, size.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSize(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QIcon_ActualSize(this.h, size.cPointer())
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QIcon) ActualSize2(window *QWindow, size *QSize) *QSize {
-	ret := C.QIcon_ActualSize2(this.h, window.cPointer(), size.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSize(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QIcon_ActualSize2(this.h, window.cPointer(), size.cPointer())
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QIcon) Name() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QIcon_Name(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QIcon_Name(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QIcon) Paint(painter *QPainter, rect *QRect) {
@@ -175,13 +149,13 @@ func (this *QIcon) Paint2(painter *QPainter, x int, y int, w int, h int) {
 }
 
 func (this *QIcon) IsNull() bool {
-	ret := C.QIcon_IsNull(this.h)
-	return (bool)(ret)
+	_ret := C.QIcon_IsNull(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QIcon) IsDetached() bool {
-	ret := C.QIcon_IsDetached(this.h)
-	return (bool)(ret)
+	_ret := C.QIcon_IsDetached(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QIcon) Detach() {
@@ -189,8 +163,8 @@ func (this *QIcon) Detach() {
 }
 
 func (this *QIcon) CacheKey() int64 {
-	ret := C.QIcon_CacheKey(this.h)
-	return (int64)(ret)
+	_ret := C.QIcon_CacheKey(this.h)
+	return (int64)(_ret)
 }
 
 func (this *QIcon) AddPixmap(pixmap *QPixmap) {
@@ -198,22 +172,20 @@ func (this *QIcon) AddPixmap(pixmap *QPixmap) {
 }
 
 func (this *QIcon) AddFile(fileName string) {
-	fileName_Cstring := C.CString(fileName)
-	defer C.free(unsafe.Pointer(fileName_Cstring))
-	C.QIcon_AddFile(this.h, fileName_Cstring, C.size_t(len(fileName)))
+	fileName_ms := miqt_strdupg(fileName)
+	defer C.free(fileName_ms)
+	C.QIcon_AddFile(this.h, (*C.struct_miqt_string)(fileName_ms))
 }
 
 func (this *QIcon) AvailableSizes() []QSize {
-	var _out **C.QSize = nil
-	var _out_len C.size_t = 0
-	C.QIcon_AvailableSizes(this.h, &_out, &_out_len)
-	ret := make([]QSize, int(_out_len))
-	_outCast := (*[0xffff]*C.QSize)(unsafe.Pointer(_out)) // so fresh so clean
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = *newQSize(_outCast[i])
+	var _ma *C.struct_miqt_array = C.QIcon_AvailableSizes(this.h)
+	_ret := make([]QSize, int(_ma.len))
+	_outCast := (*[0xffff]*C.QSize)(unsafe.Pointer(_ma.data)) // mrs jackson
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = *newQSize(_outCast[i])
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
 func (this *QIcon) SetIsMask(isMask bool) {
@@ -221,263 +193,195 @@ func (this *QIcon) SetIsMask(isMask bool) {
 }
 
 func (this *QIcon) IsMask() bool {
-	ret := C.QIcon_IsMask(this.h)
-	return (bool)(ret)
+	_ret := C.QIcon_IsMask(this.h)
+	return (bool)(_ret)
 }
 
 func QIcon_FromTheme(name string) *QIcon {
-	name_Cstring := C.CString(name)
-	defer C.free(unsafe.Pointer(name_Cstring))
-	ret := C.QIcon_FromTheme(name_Cstring, C.size_t(len(name)))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQIcon(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QIcon) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	name_ms := miqt_strdupg(name)
+	defer C.free(name_ms)
+	_ret := C.QIcon_FromTheme((*C.struct_miqt_string)(name_ms))
+	_goptr := newQIcon(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func QIcon_FromTheme2(name string, fallback *QIcon) *QIcon {
-	name_Cstring := C.CString(name)
-	defer C.free(unsafe.Pointer(name_Cstring))
-	ret := C.QIcon_FromTheme2(name_Cstring, C.size_t(len(name)), fallback.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQIcon(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QIcon) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	name_ms := miqt_strdupg(name)
+	defer C.free(name_ms)
+	_ret := C.QIcon_FromTheme2((*C.struct_miqt_string)(name_ms), fallback.cPointer())
+	_goptr := newQIcon(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func QIcon_HasThemeIcon(name string) bool {
-	name_Cstring := C.CString(name)
-	defer C.free(unsafe.Pointer(name_Cstring))
-	ret := C.QIcon_HasThemeIcon(name_Cstring, C.size_t(len(name)))
-	return (bool)(ret)
+	name_ms := miqt_strdupg(name)
+	defer C.free(name_ms)
+	_ret := C.QIcon_HasThemeIcon((*C.struct_miqt_string)(name_ms))
+	return (bool)(_ret)
 }
 
 func QIcon_ThemeSearchPaths() []string {
-	var _out **C.char = nil
-	var _out_Lengths *C.int = nil
-	var _out_len C.size_t = 0
-	C.QIcon_ThemeSearchPaths(&_out, &_out_Lengths, &_out_len)
-	ret := make([]string, int(_out_len))
-	_outCast := (*[0xffff]*C.char)(unsafe.Pointer(_out)) // hey ya
-	_out_LengthsCast := (*[0xffff]C.int)(unsafe.Pointer(_out_Lengths))
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = C.GoStringN(_outCast[i], _out_LengthsCast[i])
+	var _ma *C.struct_miqt_array = C.QIcon_ThemeSearchPaths()
+	_ret := make([]string, int(_ma.len))
+	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = C.GoStringN(&_outCast[i].data, C.int(int64(_outCast[i].len)))
+		C.free(unsafe.Pointer(_outCast[i])) // free the inner miqt_string*
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
 func QIcon_SetThemeSearchPaths(searchpath []string) {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
-	searchpath_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(searchpath))))
-	searchpath_Lengths := (*[0xffff]C.uint64_t)(C.malloc(C.size_t(8 * len(searchpath))))
+	searchpath_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(searchpath))))
 	defer C.free(unsafe.Pointer(searchpath_CArray))
-	defer C.free(unsafe.Pointer(searchpath_Lengths))
 	for i := range searchpath {
-		single_cstring := C.CString(searchpath[i])
-		defer C.free(unsafe.Pointer(single_cstring))
-		searchpath_CArray[i] = single_cstring
-		searchpath_Lengths[i] = (C.uint64_t)(len(searchpath[i]))
+		single_ms := miqt_strdupg(searchpath[i])
+		defer C.free(single_ms)
+		searchpath_CArray[i] = (*C.struct_miqt_string)(single_ms)
 	}
-	C.QIcon_SetThemeSearchPaths(&searchpath_CArray[0], &searchpath_Lengths[0], C.size_t(len(searchpath)))
+	searchpath_ma := &C.struct_miqt_array{len: C.size_t(len(searchpath)), data: unsafe.Pointer(searchpath_CArray)}
+	defer runtime.KeepAlive(unsafe.Pointer(searchpath_ma))
+	C.QIcon_SetThemeSearchPaths(searchpath_ma)
 }
 
 func QIcon_FallbackSearchPaths() []string {
-	var _out **C.char = nil
-	var _out_Lengths *C.int = nil
-	var _out_len C.size_t = 0
-	C.QIcon_FallbackSearchPaths(&_out, &_out_Lengths, &_out_len)
-	ret := make([]string, int(_out_len))
-	_outCast := (*[0xffff]*C.char)(unsafe.Pointer(_out)) // hey ya
-	_out_LengthsCast := (*[0xffff]C.int)(unsafe.Pointer(_out_Lengths))
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = C.GoStringN(_outCast[i], _out_LengthsCast[i])
+	var _ma *C.struct_miqt_array = C.QIcon_FallbackSearchPaths()
+	_ret := make([]string, int(_ma.len))
+	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = C.GoStringN(&_outCast[i].data, C.int(int64(_outCast[i].len)))
+		C.free(unsafe.Pointer(_outCast[i])) // free the inner miqt_string*
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
 func QIcon_SetFallbackSearchPaths(paths []string) {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
-	paths_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(paths))))
-	paths_Lengths := (*[0xffff]C.uint64_t)(C.malloc(C.size_t(8 * len(paths))))
+	paths_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(paths))))
 	defer C.free(unsafe.Pointer(paths_CArray))
-	defer C.free(unsafe.Pointer(paths_Lengths))
 	for i := range paths {
-		single_cstring := C.CString(paths[i])
-		defer C.free(unsafe.Pointer(single_cstring))
-		paths_CArray[i] = single_cstring
-		paths_Lengths[i] = (C.uint64_t)(len(paths[i]))
+		single_ms := miqt_strdupg(paths[i])
+		defer C.free(single_ms)
+		paths_CArray[i] = (*C.struct_miqt_string)(single_ms)
 	}
-	C.QIcon_SetFallbackSearchPaths(&paths_CArray[0], &paths_Lengths[0], C.size_t(len(paths)))
+	paths_ma := &C.struct_miqt_array{len: C.size_t(len(paths)), data: unsafe.Pointer(paths_CArray)}
+	defer runtime.KeepAlive(unsafe.Pointer(paths_ma))
+	C.QIcon_SetFallbackSearchPaths(paths_ma)
 }
 
 func QIcon_ThemeName() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QIcon_ThemeName(&_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QIcon_ThemeName()
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QIcon_SetThemeName(path string) {
-	path_Cstring := C.CString(path)
-	defer C.free(unsafe.Pointer(path_Cstring))
-	C.QIcon_SetThemeName(path_Cstring, C.size_t(len(path)))
+	path_ms := miqt_strdupg(path)
+	defer C.free(path_ms)
+	C.QIcon_SetThemeName((*C.struct_miqt_string)(path_ms))
 }
 
 func QIcon_FallbackThemeName() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QIcon_FallbackThemeName(&_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QIcon_FallbackThemeName()
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QIcon_SetFallbackThemeName(name string) {
-	name_Cstring := C.CString(name)
-	defer C.free(unsafe.Pointer(name_Cstring))
-	C.QIcon_SetFallbackThemeName(name_Cstring, C.size_t(len(name)))
+	name_ms := miqt_strdupg(name)
+	defer C.free(name_ms)
+	C.QIcon_SetFallbackThemeName((*C.struct_miqt_string)(name_ms))
 }
 
 func (this *QIcon) Pixmap22(size *QSize, mode QIcon__Mode) *QPixmap {
-	ret := C.QIcon_Pixmap22(this.h, size.cPointer(), (C.uintptr_t)(mode))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPixmap(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPixmap) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QIcon_Pixmap22(this.h, size.cPointer(), (C.uintptr_t)(mode))
+	_goptr := newQPixmap(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QIcon) Pixmap32(size *QSize, mode QIcon__Mode, state QIcon__State) *QPixmap {
-	ret := C.QIcon_Pixmap32(this.h, size.cPointer(), (C.uintptr_t)(mode), (C.uintptr_t)(state))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPixmap(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPixmap) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QIcon_Pixmap32(this.h, size.cPointer(), (C.uintptr_t)(mode), (C.uintptr_t)(state))
+	_goptr := newQPixmap(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QIcon) Pixmap33(w int, h int, mode QIcon__Mode) *QPixmap {
-	ret := C.QIcon_Pixmap33(this.h, (C.int)(w), (C.int)(h), (C.uintptr_t)(mode))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPixmap(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPixmap) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QIcon_Pixmap33(this.h, (C.int)(w), (C.int)(h), (C.uintptr_t)(mode))
+	_goptr := newQPixmap(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QIcon) Pixmap4(w int, h int, mode QIcon__Mode, state QIcon__State) *QPixmap {
-	ret := C.QIcon_Pixmap4(this.h, (C.int)(w), (C.int)(h), (C.uintptr_t)(mode), (C.uintptr_t)(state))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPixmap(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPixmap) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QIcon_Pixmap4(this.h, (C.int)(w), (C.int)(h), (C.uintptr_t)(mode), (C.uintptr_t)(state))
+	_goptr := newQPixmap(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QIcon) Pixmap23(extent int, mode QIcon__Mode) *QPixmap {
-	ret := C.QIcon_Pixmap23(this.h, (C.int)(extent), (C.uintptr_t)(mode))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPixmap(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPixmap) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QIcon_Pixmap23(this.h, (C.int)(extent), (C.uintptr_t)(mode))
+	_goptr := newQPixmap(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QIcon) Pixmap34(extent int, mode QIcon__Mode, state QIcon__State) *QPixmap {
-	ret := C.QIcon_Pixmap34(this.h, (C.int)(extent), (C.uintptr_t)(mode), (C.uintptr_t)(state))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPixmap(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPixmap) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QIcon_Pixmap34(this.h, (C.int)(extent), (C.uintptr_t)(mode), (C.uintptr_t)(state))
+	_goptr := newQPixmap(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QIcon) Pixmap35(window *QWindow, size *QSize, mode QIcon__Mode) *QPixmap {
-	ret := C.QIcon_Pixmap35(this.h, window.cPointer(), size.cPointer(), (C.uintptr_t)(mode))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPixmap(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPixmap) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QIcon_Pixmap35(this.h, window.cPointer(), size.cPointer(), (C.uintptr_t)(mode))
+	_goptr := newQPixmap(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QIcon) Pixmap42(window *QWindow, size *QSize, mode QIcon__Mode, state QIcon__State) *QPixmap {
-	ret := C.QIcon_Pixmap42(this.h, window.cPointer(), size.cPointer(), (C.uintptr_t)(mode), (C.uintptr_t)(state))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPixmap(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPixmap) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QIcon_Pixmap42(this.h, window.cPointer(), size.cPointer(), (C.uintptr_t)(mode), (C.uintptr_t)(state))
+	_goptr := newQPixmap(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QIcon) ActualSize22(size *QSize, mode QIcon__Mode) *QSize {
-	ret := C.QIcon_ActualSize22(this.h, size.cPointer(), (C.uintptr_t)(mode))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSize(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QIcon_ActualSize22(this.h, size.cPointer(), (C.uintptr_t)(mode))
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QIcon) ActualSize3(size *QSize, mode QIcon__Mode, state QIcon__State) *QSize {
-	ret := C.QIcon_ActualSize3(this.h, size.cPointer(), (C.uintptr_t)(mode), (C.uintptr_t)(state))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSize(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QIcon_ActualSize3(this.h, size.cPointer(), (C.uintptr_t)(mode), (C.uintptr_t)(state))
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QIcon) ActualSize32(window *QWindow, size *QSize, mode QIcon__Mode) *QSize {
-	ret := C.QIcon_ActualSize32(this.h, window.cPointer(), size.cPointer(), (C.uintptr_t)(mode))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSize(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QIcon_ActualSize32(this.h, window.cPointer(), size.cPointer(), (C.uintptr_t)(mode))
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QIcon) ActualSize4(window *QWindow, size *QSize, mode QIcon__Mode, state QIcon__State) *QSize {
-	ret := C.QIcon_ActualSize4(this.h, window.cPointer(), size.cPointer(), (C.uintptr_t)(mode), (C.uintptr_t)(state))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSize(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QIcon_ActualSize4(this.h, window.cPointer(), size.cPointer(), (C.uintptr_t)(mode), (C.uintptr_t)(state))
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QIcon) Paint3(painter *QPainter, rect *QRect, alignment int) {
@@ -513,49 +417,55 @@ func (this *QIcon) AddPixmap3(pixmap *QPixmap, mode QIcon__Mode, state QIcon__St
 }
 
 func (this *QIcon) AddFile2(fileName string, size *QSize) {
-	fileName_Cstring := C.CString(fileName)
-	defer C.free(unsafe.Pointer(fileName_Cstring))
-	C.QIcon_AddFile2(this.h, fileName_Cstring, C.size_t(len(fileName)), size.cPointer())
+	fileName_ms := miqt_strdupg(fileName)
+	defer C.free(fileName_ms)
+	C.QIcon_AddFile2(this.h, (*C.struct_miqt_string)(fileName_ms), size.cPointer())
 }
 
 func (this *QIcon) AddFile3(fileName string, size *QSize, mode QIcon__Mode) {
-	fileName_Cstring := C.CString(fileName)
-	defer C.free(unsafe.Pointer(fileName_Cstring))
-	C.QIcon_AddFile3(this.h, fileName_Cstring, C.size_t(len(fileName)), size.cPointer(), (C.uintptr_t)(mode))
+	fileName_ms := miqt_strdupg(fileName)
+	defer C.free(fileName_ms)
+	C.QIcon_AddFile3(this.h, (*C.struct_miqt_string)(fileName_ms), size.cPointer(), (C.uintptr_t)(mode))
 }
 
 func (this *QIcon) AddFile4(fileName string, size *QSize, mode QIcon__Mode, state QIcon__State) {
-	fileName_Cstring := C.CString(fileName)
-	defer C.free(unsafe.Pointer(fileName_Cstring))
-	C.QIcon_AddFile4(this.h, fileName_Cstring, C.size_t(len(fileName)), size.cPointer(), (C.uintptr_t)(mode), (C.uintptr_t)(state))
+	fileName_ms := miqt_strdupg(fileName)
+	defer C.free(fileName_ms)
+	C.QIcon_AddFile4(this.h, (*C.struct_miqt_string)(fileName_ms), size.cPointer(), (C.uintptr_t)(mode), (C.uintptr_t)(state))
 }
 
 func (this *QIcon) AvailableSizes1(mode QIcon__Mode) []QSize {
-	var _out **C.QSize = nil
-	var _out_len C.size_t = 0
-	C.QIcon_AvailableSizes1(this.h, (C.uintptr_t)(mode), &_out, &_out_len)
-	ret := make([]QSize, int(_out_len))
-	_outCast := (*[0xffff]*C.QSize)(unsafe.Pointer(_out)) // so fresh so clean
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = *newQSize(_outCast[i])
+	var _ma *C.struct_miqt_array = C.QIcon_AvailableSizes1(this.h, (C.uintptr_t)(mode))
+	_ret := make([]QSize, int(_ma.len))
+	_outCast := (*[0xffff]*C.QSize)(unsafe.Pointer(_ma.data)) // mrs jackson
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = *newQSize(_outCast[i])
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
 func (this *QIcon) AvailableSizes2(mode QIcon__Mode, state QIcon__State) []QSize {
-	var _out **C.QSize = nil
-	var _out_len C.size_t = 0
-	C.QIcon_AvailableSizes2(this.h, (C.uintptr_t)(mode), (C.uintptr_t)(state), &_out, &_out_len)
-	ret := make([]QSize, int(_out_len))
-	_outCast := (*[0xffff]*C.QSize)(unsafe.Pointer(_out)) // so fresh so clean
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = *newQSize(_outCast[i])
+	var _ma *C.struct_miqt_array = C.QIcon_AvailableSizes2(this.h, (C.uintptr_t)(mode), (C.uintptr_t)(state))
+	_ret := make([]QSize, int(_ma.len))
+	_outCast := (*[0xffff]*C.QSize)(unsafe.Pointer(_ma.data)) // mrs jackson
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = *newQSize(_outCast[i])
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
+// Delete this object from C++ memory.
 func (this *QIcon) Delete() {
 	C.QIcon_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QIcon) GoGC() {
+	runtime.SetFinalizer(this, func(this *QIcon) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

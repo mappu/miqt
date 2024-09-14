@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -98,7 +100,7 @@ QGraphicsWidget* QGraphicsItem_TopLevelWidget(const QGraphicsItem* self);
 QGraphicsWidget* QGraphicsItem_Window(const QGraphicsItem* self);
 QGraphicsItem* QGraphicsItem_Panel(const QGraphicsItem* self);
 void QGraphicsItem_SetParentItem(QGraphicsItem* self, QGraphicsItem* parent);
-void QGraphicsItem_ChildItems(const QGraphicsItem* self, QGraphicsItem*** _out, size_t* _out_len);
+struct miqt_array* QGraphicsItem_ChildItems(const QGraphicsItem* self);
 bool QGraphicsItem_IsWidget(const QGraphicsItem* self);
 bool QGraphicsItem_IsWindow(const QGraphicsItem* self);
 bool QGraphicsItem_IsPanel(const QGraphicsItem* self);
@@ -114,8 +116,8 @@ void QGraphicsItem_SetCacheMode(QGraphicsItem* self, uintptr_t mode);
 uintptr_t QGraphicsItem_PanelModality(const QGraphicsItem* self);
 void QGraphicsItem_SetPanelModality(QGraphicsItem* self, uintptr_t panelModality);
 bool QGraphicsItem_IsBlockedByModalPanel(const QGraphicsItem* self);
-void QGraphicsItem_ToolTip(const QGraphicsItem* self, char** _out, int* _out_Strlen);
-void QGraphicsItem_SetToolTip(QGraphicsItem* self, const char* toolTip, size_t toolTip_Strlen);
+struct miqt_string* QGraphicsItem_ToolTip(const QGraphicsItem* self);
+void QGraphicsItem_SetToolTip(QGraphicsItem* self, struct miqt_string* toolTip);
 QCursor* QGraphicsItem_Cursor(const QGraphicsItem* self);
 void QGraphicsItem_SetCursor(QGraphicsItem* self, QCursor* cursor);
 bool QGraphicsItem_HasCursor(const QGraphicsItem* self);
@@ -184,8 +186,8 @@ void QGraphicsItem_SetRotation(QGraphicsItem* self, double angle);
 double QGraphicsItem_Rotation(const QGraphicsItem* self);
 void QGraphicsItem_SetScale(QGraphicsItem* self, double scale);
 double QGraphicsItem_Scale(const QGraphicsItem* self);
-void QGraphicsItem_Transformations(const QGraphicsItem* self, QGraphicsTransform*** _out, size_t* _out_len);
-void QGraphicsItem_SetTransformations(QGraphicsItem* self, QGraphicsTransform** transformations, size_t transformations_len);
+struct miqt_array* QGraphicsItem_Transformations(const QGraphicsItem* self);
+void QGraphicsItem_SetTransformations(QGraphicsItem* self, struct miqt_array* /* of QGraphicsTransform* */ transformations);
 QPointF* QGraphicsItem_TransformOriginPoint(const QGraphicsItem* self);
 void QGraphicsItem_SetTransformOriginPoint(QGraphicsItem* self, QPointF* origin);
 void QGraphicsItem_SetTransformOriginPoint2(QGraphicsItem* self, double ax, double ay);
@@ -202,7 +204,7 @@ QPainterPath* QGraphicsItem_ClipPath(const QGraphicsItem* self);
 bool QGraphicsItem_Contains(const QGraphicsItem* self, QPointF* point);
 bool QGraphicsItem_CollidesWithItem(const QGraphicsItem* self, QGraphicsItem* other);
 bool QGraphicsItem_CollidesWithPath(const QGraphicsItem* self, QPainterPath* path);
-void QGraphicsItem_CollidingItems(const QGraphicsItem* self, QGraphicsItem*** _out, size_t* _out_len);
+struct miqt_array* QGraphicsItem_CollidingItems(const QGraphicsItem* self);
 bool QGraphicsItem_IsObscured(const QGraphicsItem* self);
 bool QGraphicsItem_IsObscured2(const QGraphicsItem* self, double x, double y, double w, double h);
 bool QGraphicsItem_IsObscuredBy(const QGraphicsItem* self, QGraphicsItem* item);
@@ -267,7 +269,7 @@ QTransform* QGraphicsItem_ItemTransform2(const QGraphicsItem* self, QGraphicsIte
 void QGraphicsItem_SetTransform2(QGraphicsItem* self, QTransform* matrix, bool combine);
 bool QGraphicsItem_CollidesWithItem2(const QGraphicsItem* self, QGraphicsItem* other, uintptr_t mode);
 bool QGraphicsItem_CollidesWithPath2(const QGraphicsItem* self, QPainterPath* path, uintptr_t mode);
-void QGraphicsItem_CollidingItems1(const QGraphicsItem* self, uintptr_t mode, QGraphicsItem*** _out, size_t* _out_len);
+struct miqt_array* QGraphicsItem_CollidingItems1(const QGraphicsItem* self, uintptr_t mode);
 bool QGraphicsItem_IsObscured1(const QGraphicsItem* self, QRectF* rect);
 void QGraphicsItem_Paint3(QGraphicsItem* self, QPainter* painter, QStyleOptionGraphicsItem* option, QWidget* widget);
 void QGraphicsItem_Update1(QGraphicsItem* self, QRectF* rect);
@@ -275,8 +277,8 @@ void QGraphicsItem_Scroll3(QGraphicsItem* self, double dx, double dy, QRectF* re
 void QGraphicsItem_Delete(QGraphicsItem* self);
 
 QMetaObject* QGraphicsObject_MetaObject(const QGraphicsObject* self);
-void QGraphicsObject_Tr(const char* s, char** _out, int* _out_Strlen);
-void QGraphicsObject_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QGraphicsObject_Tr(const char* s);
+struct miqt_string* QGraphicsObject_TrUtf8(const char* s);
 void QGraphicsObject_GrabGesture(QGraphicsObject* self, uintptr_t typeVal);
 void QGraphicsObject_UngrabGesture(QGraphicsObject* self, uintptr_t typeVal);
 void QGraphicsObject_ParentChanged(QGraphicsObject* self);
@@ -303,10 +305,10 @@ void QGraphicsObject_WidthChanged(QGraphicsObject* self);
 void QGraphicsObject_connect_WidthChanged(QGraphicsObject* self, void* slot);
 void QGraphicsObject_HeightChanged(QGraphicsObject* self);
 void QGraphicsObject_connect_HeightChanged(QGraphicsObject* self, void* slot);
-void QGraphicsObject_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QGraphicsObject_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QGraphicsObject_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QGraphicsObject_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QGraphicsObject_Tr2(const char* s, const char* c);
+struct miqt_string* QGraphicsObject_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QGraphicsObject_TrUtf82(const char* s, const char* c);
+struct miqt_string* QGraphicsObject_TrUtf83(const char* s, const char* c, int n);
 void QGraphicsObject_GrabGesture2(QGraphicsObject* self, uintptr_t typeVal, int flags);
 void QGraphicsObject_Delete(QGraphicsObject* self);
 
@@ -434,16 +436,16 @@ void QGraphicsPixmapItem_SetShapeMode(QGraphicsPixmapItem* self, uintptr_t mode)
 void QGraphicsPixmapItem_Delete(QGraphicsPixmapItem* self);
 
 QGraphicsTextItem* QGraphicsTextItem_new();
-QGraphicsTextItem* QGraphicsTextItem_new2(const char* text, size_t text_Strlen);
+QGraphicsTextItem* QGraphicsTextItem_new2(struct miqt_string* text);
 QGraphicsTextItem* QGraphicsTextItem_new3(QGraphicsItem* parent);
-QGraphicsTextItem* QGraphicsTextItem_new4(const char* text, size_t text_Strlen, QGraphicsItem* parent);
+QGraphicsTextItem* QGraphicsTextItem_new4(struct miqt_string* text, QGraphicsItem* parent);
 QMetaObject* QGraphicsTextItem_MetaObject(const QGraphicsTextItem* self);
-void QGraphicsTextItem_Tr(const char* s, char** _out, int* _out_Strlen);
-void QGraphicsTextItem_TrUtf8(const char* s, char** _out, int* _out_Strlen);
-void QGraphicsTextItem_ToHtml(const QGraphicsTextItem* self, char** _out, int* _out_Strlen);
-void QGraphicsTextItem_SetHtml(QGraphicsTextItem* self, const char* html, size_t html_Strlen);
-void QGraphicsTextItem_ToPlainText(const QGraphicsTextItem* self, char** _out, int* _out_Strlen);
-void QGraphicsTextItem_SetPlainText(QGraphicsTextItem* self, const char* text, size_t text_Strlen);
+struct miqt_string* QGraphicsTextItem_Tr(const char* s);
+struct miqt_string* QGraphicsTextItem_TrUtf8(const char* s);
+struct miqt_string* QGraphicsTextItem_ToHtml(const QGraphicsTextItem* self);
+void QGraphicsTextItem_SetHtml(QGraphicsTextItem* self, struct miqt_string* html);
+struct miqt_string* QGraphicsTextItem_ToPlainText(const QGraphicsTextItem* self);
+void QGraphicsTextItem_SetPlainText(QGraphicsTextItem* self, struct miqt_string* text);
 QFont* QGraphicsTextItem_Font(const QGraphicsTextItem* self);
 void QGraphicsTextItem_SetFont(QGraphicsTextItem* self, QFont* font);
 void QGraphicsTextItem_SetDefaultTextColor(QGraphicsTextItem* self, QColor* c);
@@ -468,22 +470,22 @@ void QGraphicsTextItem_SetOpenExternalLinks(QGraphicsTextItem* self, bool open);
 bool QGraphicsTextItem_OpenExternalLinks(const QGraphicsTextItem* self);
 void QGraphicsTextItem_SetTextCursor(QGraphicsTextItem* self, QTextCursor* cursor);
 QTextCursor* QGraphicsTextItem_TextCursor(const QGraphicsTextItem* self);
-void QGraphicsTextItem_LinkActivated(QGraphicsTextItem* self, const char* param1, size_t param1_Strlen);
+void QGraphicsTextItem_LinkActivated(QGraphicsTextItem* self, struct miqt_string* param1);
 void QGraphicsTextItem_connect_LinkActivated(QGraphicsTextItem* self, void* slot);
-void QGraphicsTextItem_LinkHovered(QGraphicsTextItem* self, const char* param1, size_t param1_Strlen);
+void QGraphicsTextItem_LinkHovered(QGraphicsTextItem* self, struct miqt_string* param1);
 void QGraphicsTextItem_connect_LinkHovered(QGraphicsTextItem* self, void* slot);
-void QGraphicsTextItem_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QGraphicsTextItem_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QGraphicsTextItem_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QGraphicsTextItem_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QGraphicsTextItem_Tr2(const char* s, const char* c);
+struct miqt_string* QGraphicsTextItem_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QGraphicsTextItem_TrUtf82(const char* s, const char* c);
+struct miqt_string* QGraphicsTextItem_TrUtf83(const char* s, const char* c, int n);
 void QGraphicsTextItem_Delete(QGraphicsTextItem* self);
 
 QGraphicsSimpleTextItem* QGraphicsSimpleTextItem_new();
-QGraphicsSimpleTextItem* QGraphicsSimpleTextItem_new2(const char* text, size_t text_Strlen);
+QGraphicsSimpleTextItem* QGraphicsSimpleTextItem_new2(struct miqt_string* text);
 QGraphicsSimpleTextItem* QGraphicsSimpleTextItem_new3(QGraphicsItem* parent);
-QGraphicsSimpleTextItem* QGraphicsSimpleTextItem_new4(const char* text, size_t text_Strlen, QGraphicsItem* parent);
-void QGraphicsSimpleTextItem_SetText(QGraphicsSimpleTextItem* self, const char* text, size_t text_Strlen);
-void QGraphicsSimpleTextItem_Text(const QGraphicsSimpleTextItem* self, char** _out, int* _out_Strlen);
+QGraphicsSimpleTextItem* QGraphicsSimpleTextItem_new4(struct miqt_string* text, QGraphicsItem* parent);
+void QGraphicsSimpleTextItem_SetText(QGraphicsSimpleTextItem* self, struct miqt_string* text);
+struct miqt_string* QGraphicsSimpleTextItem_Text(const QGraphicsSimpleTextItem* self);
 void QGraphicsSimpleTextItem_SetFont(QGraphicsSimpleTextItem* self, QFont* font);
 QFont* QGraphicsSimpleTextItem_Font(const QGraphicsSimpleTextItem* self);
 QRectF* QGraphicsSimpleTextItem_BoundingRect(const QGraphicsSimpleTextItem* self);

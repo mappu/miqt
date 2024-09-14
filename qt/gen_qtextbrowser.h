@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -28,17 +30,17 @@ typedef struct QWidget QWidget;
 QTextBrowser* QTextBrowser_new();
 QTextBrowser* QTextBrowser_new2(QWidget* parent);
 QMetaObject* QTextBrowser_MetaObject(const QTextBrowser* self);
-void QTextBrowser_Tr(const char* s, char** _out, int* _out_Strlen);
-void QTextBrowser_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QTextBrowser_Tr(const char* s);
+struct miqt_string* QTextBrowser_TrUtf8(const char* s);
 QUrl* QTextBrowser_Source(const QTextBrowser* self);
 uintptr_t QTextBrowser_SourceType(const QTextBrowser* self);
-void QTextBrowser_SearchPaths(const QTextBrowser* self, char*** _out, int** _out_Lengths, size_t* _out_len);
-void QTextBrowser_SetSearchPaths(QTextBrowser* self, char** paths, uint64_t* paths_Lengths, size_t paths_len);
+struct miqt_array* QTextBrowser_SearchPaths(const QTextBrowser* self);
+void QTextBrowser_SetSearchPaths(QTextBrowser* self, struct miqt_array* /* of QString */ paths);
 QVariant* QTextBrowser_LoadResource(QTextBrowser* self, int typeVal, QUrl* name);
 bool QTextBrowser_IsBackwardAvailable(const QTextBrowser* self);
 bool QTextBrowser_IsForwardAvailable(const QTextBrowser* self);
 void QTextBrowser_ClearHistory(QTextBrowser* self);
-void QTextBrowser_HistoryTitle(const QTextBrowser* self, int param1, char** _out, int* _out_Strlen);
+struct miqt_string* QTextBrowser_HistoryTitle(const QTextBrowser* self, int param1);
 QUrl* QTextBrowser_HistoryUrl(const QTextBrowser* self, int param1);
 int QTextBrowser_BackwardHistoryCount(const QTextBrowser* self);
 int QTextBrowser_ForwardHistoryCount(const QTextBrowser* self);
@@ -62,14 +64,14 @@ void QTextBrowser_SourceChanged(QTextBrowser* self, QUrl* param1);
 void QTextBrowser_connect_SourceChanged(QTextBrowser* self, void* slot);
 void QTextBrowser_Highlighted(QTextBrowser* self, QUrl* param1);
 void QTextBrowser_connect_Highlighted(QTextBrowser* self, void* slot);
-void QTextBrowser_HighlightedWithQString(QTextBrowser* self, const char* param1, size_t param1_Strlen);
+void QTextBrowser_HighlightedWithQString(QTextBrowser* self, struct miqt_string* param1);
 void QTextBrowser_connect_HighlightedWithQString(QTextBrowser* self, void* slot);
 void QTextBrowser_AnchorClicked(QTextBrowser* self, QUrl* param1);
 void QTextBrowser_connect_AnchorClicked(QTextBrowser* self, void* slot);
-void QTextBrowser_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QTextBrowser_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QTextBrowser_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QTextBrowser_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QTextBrowser_Tr2(const char* s, const char* c);
+struct miqt_string* QTextBrowser_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QTextBrowser_TrUtf82(const char* s, const char* c);
+struct miqt_string* QTextBrowser_TrUtf83(const char* s, const char* c, int n);
 void QTextBrowser_Delete(QTextBrowser* self);
 
 #ifdef __cplusplus

@@ -66,58 +66,54 @@ func NewQTabWidget2(parent *QWidget) *QTabWidget {
 }
 
 func (this *QTabWidget) MetaObject() *QMetaObject {
-	ret := C.QTabWidget_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QTabWidget_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QTabWidget_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTabWidget_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTabWidget_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QTabWidget_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTabWidget_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTabWidget_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QTabWidget) AddTab(widget *QWidget, param2 string) int {
-	param2_Cstring := C.CString(param2)
-	defer C.free(unsafe.Pointer(param2_Cstring))
-	ret := C.QTabWidget_AddTab(this.h, widget.cPointer(), param2_Cstring, C.size_t(len(param2)))
-	return (int)(ret)
+	param2_ms := miqt_strdupg(param2)
+	defer C.free(param2_ms)
+	_ret := C.QTabWidget_AddTab(this.h, widget.cPointer(), (*C.struct_miqt_string)(param2_ms))
+	return (int)(_ret)
 }
 
 func (this *QTabWidget) AddTab2(widget *QWidget, icon *QIcon, label string) int {
-	label_Cstring := C.CString(label)
-	defer C.free(unsafe.Pointer(label_Cstring))
-	ret := C.QTabWidget_AddTab2(this.h, widget.cPointer(), icon.cPointer(), label_Cstring, C.size_t(len(label)))
-	return (int)(ret)
+	label_ms := miqt_strdupg(label)
+	defer C.free(label_ms)
+	_ret := C.QTabWidget_AddTab2(this.h, widget.cPointer(), icon.cPointer(), (*C.struct_miqt_string)(label_ms))
+	return (int)(_ret)
 }
 
 func (this *QTabWidget) InsertTab(index int, widget *QWidget, param3 string) int {
-	param3_Cstring := C.CString(param3)
-	defer C.free(unsafe.Pointer(param3_Cstring))
-	ret := C.QTabWidget_InsertTab(this.h, (C.int)(index), widget.cPointer(), param3_Cstring, C.size_t(len(param3)))
-	return (int)(ret)
+	param3_ms := miqt_strdupg(param3)
+	defer C.free(param3_ms)
+	_ret := C.QTabWidget_InsertTab(this.h, (C.int)(index), widget.cPointer(), (*C.struct_miqt_string)(param3_ms))
+	return (int)(_ret)
 }
 
 func (this *QTabWidget) InsertTab2(index int, widget *QWidget, icon *QIcon, label string) int {
-	label_Cstring := C.CString(label)
-	defer C.free(unsafe.Pointer(label_Cstring))
-	ret := C.QTabWidget_InsertTab2(this.h, (C.int)(index), widget.cPointer(), icon.cPointer(), label_Cstring, C.size_t(len(label)))
-	return (int)(ret)
+	label_ms := miqt_strdupg(label)
+	defer C.free(label_ms)
+	_ret := C.QTabWidget_InsertTab2(this.h, (C.int)(index), widget.cPointer(), icon.cPointer(), (*C.struct_miqt_string)(label_ms))
+	return (int)(_ret)
 }
 
 func (this *QTabWidget) RemoveTab(index int) {
@@ -125,8 +121,8 @@ func (this *QTabWidget) RemoveTab(index int) {
 }
 
 func (this *QTabWidget) IsTabEnabled(index int) bool {
-	ret := C.QTabWidget_IsTabEnabled(this.h, (C.int)(index))
-	return (bool)(ret)
+	_ret := C.QTabWidget_IsTabEnabled(this.h, (C.int)(index))
+	return (bool)(_ret)
 }
 
 func (this *QTabWidget) SetTabEnabled(index int, enabled bool) {
@@ -134,8 +130,8 @@ func (this *QTabWidget) SetTabEnabled(index int, enabled bool) {
 }
 
 func (this *QTabWidget) IsTabVisible(index int) bool {
-	ret := C.QTabWidget_IsTabVisible(this.h, (C.int)(index))
-	return (bool)(ret)
+	_ret := C.QTabWidget_IsTabVisible(this.h, (C.int)(index))
+	return (bool)(_ret)
 }
 
 func (this *QTabWidget) SetTabVisible(index int, visible bool) {
@@ -143,29 +139,23 @@ func (this *QTabWidget) SetTabVisible(index int, visible bool) {
 }
 
 func (this *QTabWidget) TabText(index int) string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTabWidget_TabText(this.h, (C.int)(index), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTabWidget_TabText(this.h, (C.int)(index))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QTabWidget) SetTabText(index int, text string) {
-	text_Cstring := C.CString(text)
-	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QTabWidget_SetTabText(this.h, (C.int)(index), text_Cstring, C.size_t(len(text)))
+	text_ms := miqt_strdupg(text)
+	defer C.free(text_ms)
+	C.QTabWidget_SetTabText(this.h, (C.int)(index), (*C.struct_miqt_string)(text_ms))
 }
 
 func (this *QTabWidget) TabIcon(index int) *QIcon {
-	ret := C.QTabWidget_TabIcon(this.h, (C.int)(index))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQIcon(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QIcon) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QTabWidget_TabIcon(this.h, (C.int)(index))
+	_goptr := newQIcon(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QTabWidget) SetTabIcon(index int, icon *QIcon) {
@@ -173,63 +163,59 @@ func (this *QTabWidget) SetTabIcon(index int, icon *QIcon) {
 }
 
 func (this *QTabWidget) SetTabToolTip(index int, tip string) {
-	tip_Cstring := C.CString(tip)
-	defer C.free(unsafe.Pointer(tip_Cstring))
-	C.QTabWidget_SetTabToolTip(this.h, (C.int)(index), tip_Cstring, C.size_t(len(tip)))
+	tip_ms := miqt_strdupg(tip)
+	defer C.free(tip_ms)
+	C.QTabWidget_SetTabToolTip(this.h, (C.int)(index), (*C.struct_miqt_string)(tip_ms))
 }
 
 func (this *QTabWidget) TabToolTip(index int) string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTabWidget_TabToolTip(this.h, (C.int)(index), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTabWidget_TabToolTip(this.h, (C.int)(index))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QTabWidget) SetTabWhatsThis(index int, text string) {
-	text_Cstring := C.CString(text)
-	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QTabWidget_SetTabWhatsThis(this.h, (C.int)(index), text_Cstring, C.size_t(len(text)))
+	text_ms := miqt_strdupg(text)
+	defer C.free(text_ms)
+	C.QTabWidget_SetTabWhatsThis(this.h, (C.int)(index), (*C.struct_miqt_string)(text_ms))
 }
 
 func (this *QTabWidget) TabWhatsThis(index int) string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTabWidget_TabWhatsThis(this.h, (C.int)(index), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTabWidget_TabWhatsThis(this.h, (C.int)(index))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QTabWidget) CurrentIndex() int {
-	ret := C.QTabWidget_CurrentIndex(this.h)
-	return (int)(ret)
+	_ret := C.QTabWidget_CurrentIndex(this.h)
+	return (int)(_ret)
 }
 
 func (this *QTabWidget) CurrentWidget() *QWidget {
-	ret := C.QTabWidget_CurrentWidget(this.h)
-	return newQWidget_U(unsafe.Pointer(ret))
+	_ret := C.QTabWidget_CurrentWidget(this.h)
+	return newQWidget_U(unsafe.Pointer(_ret))
 }
 
 func (this *QTabWidget) Widget(index int) *QWidget {
-	ret := C.QTabWidget_Widget(this.h, (C.int)(index))
-	return newQWidget_U(unsafe.Pointer(ret))
+	_ret := C.QTabWidget_Widget(this.h, (C.int)(index))
+	return newQWidget_U(unsafe.Pointer(_ret))
 }
 
 func (this *QTabWidget) IndexOf(widget *QWidget) int {
-	ret := C.QTabWidget_IndexOf(this.h, widget.cPointer())
-	return (int)(ret)
+	_ret := C.QTabWidget_IndexOf(this.h, widget.cPointer())
+	return (int)(_ret)
 }
 
 func (this *QTabWidget) Count() int {
-	ret := C.QTabWidget_Count(this.h)
-	return (int)(ret)
+	_ret := C.QTabWidget_Count(this.h)
+	return (int)(_ret)
 }
 
 func (this *QTabWidget) TabPosition() QTabWidget__TabPosition {
-	ret := C.QTabWidget_TabPosition(this.h)
-	return (QTabWidget__TabPosition)(ret)
+	_ret := C.QTabWidget_TabPosition(this.h)
+	return (QTabWidget__TabPosition)(_ret)
 }
 
 func (this *QTabWidget) SetTabPosition(position QTabWidget__TabPosition) {
@@ -237,8 +223,8 @@ func (this *QTabWidget) SetTabPosition(position QTabWidget__TabPosition) {
 }
 
 func (this *QTabWidget) TabsClosable() bool {
-	ret := C.QTabWidget_TabsClosable(this.h)
-	return (bool)(ret)
+	_ret := C.QTabWidget_TabsClosable(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QTabWidget) SetTabsClosable(closeable bool) {
@@ -246,8 +232,8 @@ func (this *QTabWidget) SetTabsClosable(closeable bool) {
 }
 
 func (this *QTabWidget) IsMovable() bool {
-	ret := C.QTabWidget_IsMovable(this.h)
-	return (bool)(ret)
+	_ret := C.QTabWidget_IsMovable(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QTabWidget) SetMovable(movable bool) {
@@ -255,8 +241,8 @@ func (this *QTabWidget) SetMovable(movable bool) {
 }
 
 func (this *QTabWidget) TabShape() QTabWidget__TabShape {
-	ret := C.QTabWidget_TabShape(this.h)
-	return (QTabWidget__TabShape)(ret)
+	_ret := C.QTabWidget_TabShape(this.h)
+	return (QTabWidget__TabShape)(_ret)
 }
 
 func (this *QTabWidget) SetTabShape(s QTabWidget__TabShape) {
@@ -264,35 +250,27 @@ func (this *QTabWidget) SetTabShape(s QTabWidget__TabShape) {
 }
 
 func (this *QTabWidget) SizeHint() *QSize {
-	ret := C.QTabWidget_SizeHint(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSize(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QTabWidget_SizeHint(this.h)
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QTabWidget) MinimumSizeHint() *QSize {
-	ret := C.QTabWidget_MinimumSizeHint(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSize(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QTabWidget_MinimumSizeHint(this.h)
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QTabWidget) HeightForWidth(width int) int {
-	ret := C.QTabWidget_HeightForWidth(this.h, (C.int)(width))
-	return (int)(ret)
+	_ret := C.QTabWidget_HeightForWidth(this.h, (C.int)(width))
+	return (int)(_ret)
 }
 
 func (this *QTabWidget) HasHeightForWidth() bool {
-	ret := C.QTabWidget_HasHeightForWidth(this.h)
-	return (bool)(ret)
+	_ret := C.QTabWidget_HasHeightForWidth(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QTabWidget) SetCornerWidget(w *QWidget) {
@@ -300,13 +278,13 @@ func (this *QTabWidget) SetCornerWidget(w *QWidget) {
 }
 
 func (this *QTabWidget) CornerWidget() *QWidget {
-	ret := C.QTabWidget_CornerWidget(this.h)
-	return newQWidget_U(unsafe.Pointer(ret))
+	_ret := C.QTabWidget_CornerWidget(this.h)
+	return newQWidget_U(unsafe.Pointer(_ret))
 }
 
 func (this *QTabWidget) ElideMode() TextElideMode {
-	ret := C.QTabWidget_ElideMode(this.h)
-	return (TextElideMode)(ret)
+	_ret := C.QTabWidget_ElideMode(this.h)
+	return (TextElideMode)(_ret)
 }
 
 func (this *QTabWidget) SetElideMode(mode TextElideMode) {
@@ -314,14 +292,10 @@ func (this *QTabWidget) SetElideMode(mode TextElideMode) {
 }
 
 func (this *QTabWidget) IconSize() *QSize {
-	ret := C.QTabWidget_IconSize(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSize(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QTabWidget_IconSize(this.h)
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QTabWidget) SetIconSize(size *QSize) {
@@ -329,8 +303,8 @@ func (this *QTabWidget) SetIconSize(size *QSize) {
 }
 
 func (this *QTabWidget) UsesScrollButtons() bool {
-	ret := C.QTabWidget_UsesScrollButtons(this.h)
-	return (bool)(ret)
+	_ret := C.QTabWidget_UsesScrollButtons(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QTabWidget) SetUsesScrollButtons(useButtons bool) {
@@ -338,8 +312,8 @@ func (this *QTabWidget) SetUsesScrollButtons(useButtons bool) {
 }
 
 func (this *QTabWidget) DocumentMode() bool {
-	ret := C.QTabWidget_DocumentMode(this.h)
-	return (bool)(ret)
+	_ret := C.QTabWidget_DocumentMode(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QTabWidget) SetDocumentMode(set bool) {
@@ -347,8 +321,8 @@ func (this *QTabWidget) SetDocumentMode(set bool) {
 }
 
 func (this *QTabWidget) TabBarAutoHide() bool {
-	ret := C.QTabWidget_TabBarAutoHide(this.h)
-	return (bool)(ret)
+	_ret := C.QTabWidget_TabBarAutoHide(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QTabWidget) SetTabBarAutoHide(enabled bool) {
@@ -360,8 +334,8 @@ func (this *QTabWidget) Clear() {
 }
 
 func (this *QTabWidget) TabBar() *QTabBar {
-	ret := C.QTabWidget_TabBar(this.h)
-	return newQTabBar_U(unsafe.Pointer(ret))
+	_ret := C.QTabWidget_TabBar(this.h)
+	return newQTabBar_U(unsafe.Pointer(_ret))
 }
 
 func (this *QTabWidget) SetCurrentIndex(index int) {
@@ -375,49 +349,85 @@ func (this *QTabWidget) SetCurrentWidget(widget *QWidget) {
 func (this *QTabWidget) CurrentChanged(index int) {
 	C.QTabWidget_CurrentChanged(this.h, (C.int)(index))
 }
+func (this *QTabWidget) OnCurrentChanged(slot func(index int)) {
+	C.QTabWidget_connect_CurrentChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QTabWidget) OnCurrentChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QTabWidget_CurrentChanged
+func miqt_exec_callback_QTabWidget_CurrentChanged(cb *C.void, index C.int) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(index int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QTabWidget_connect_CurrentChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	index_ret := index
+	slotval1 := (int)(index_ret)
+
+	gofunc(slotval1)
 }
 
 func (this *QTabWidget) TabCloseRequested(index int) {
 	C.QTabWidget_TabCloseRequested(this.h, (C.int)(index))
 }
+func (this *QTabWidget) OnTabCloseRequested(slot func(index int)) {
+	C.QTabWidget_connect_TabCloseRequested(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QTabWidget) OnTabCloseRequested(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QTabWidget_TabCloseRequested
+func miqt_exec_callback_QTabWidget_TabCloseRequested(cb *C.void, index C.int) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(index int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QTabWidget_connect_TabCloseRequested(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	index_ret := index
+	slotval1 := (int)(index_ret)
+
+	gofunc(slotval1)
 }
 
 func (this *QTabWidget) TabBarClicked(index int) {
 	C.QTabWidget_TabBarClicked(this.h, (C.int)(index))
 }
+func (this *QTabWidget) OnTabBarClicked(slot func(index int)) {
+	C.QTabWidget_connect_TabBarClicked(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QTabWidget) OnTabBarClicked(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QTabWidget_TabBarClicked
+func miqt_exec_callback_QTabWidget_TabBarClicked(cb *C.void, index C.int) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(index int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QTabWidget_connect_TabBarClicked(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	index_ret := index
+	slotval1 := (int)(index_ret)
+
+	gofunc(slotval1)
 }
 
 func (this *QTabWidget) TabBarDoubleClicked(index int) {
 	C.QTabWidget_TabBarDoubleClicked(this.h, (C.int)(index))
 }
+func (this *QTabWidget) OnTabBarDoubleClicked(slot func(index int)) {
+	C.QTabWidget_connect_TabBarDoubleClicked(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QTabWidget) OnTabBarDoubleClicked(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QTabWidget_TabBarDoubleClicked
+func miqt_exec_callback_QTabWidget_TabBarDoubleClicked(cb *C.void, index C.int) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(index int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QTabWidget_connect_TabBarDoubleClicked(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	index_ret := index
+	slotval1 := (int)(index_ret)
+
+	gofunc(slotval1)
 }
 
 func QTabWidget_Tr2(s string, c string) string {
@@ -425,12 +435,10 @@ func QTabWidget_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTabWidget_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTabWidget_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QTabWidget_Tr3(s string, c string, n int) string {
@@ -438,12 +446,10 @@ func QTabWidget_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTabWidget_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTabWidget_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QTabWidget_TrUtf82(s string, c string) string {
@@ -451,12 +457,10 @@ func QTabWidget_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTabWidget_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTabWidget_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QTabWidget_TrUtf83(s string, c string, n int) string {
@@ -464,12 +468,10 @@ func QTabWidget_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTabWidget_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTabWidget_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QTabWidget) SetCornerWidget2(w *QWidget, corner Corner) {
@@ -477,10 +479,20 @@ func (this *QTabWidget) SetCornerWidget2(w *QWidget, corner Corner) {
 }
 
 func (this *QTabWidget) CornerWidget1(corner Corner) *QWidget {
-	ret := C.QTabWidget_CornerWidget1(this.h, (C.uintptr_t)(corner))
-	return newQWidget_U(unsafe.Pointer(ret))
+	_ret := C.QTabWidget_CornerWidget1(this.h, (C.uintptr_t)(corner))
+	return newQWidget_U(unsafe.Pointer(_ret))
 }
 
+// Delete this object from C++ memory.
 func (this *QTabWidget) Delete() {
 	C.QTabWidget_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QTabWidget) GoGC() {
+	runtime.SetFinalizer(this, func(this *QTabWidget) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

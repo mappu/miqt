@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -78,8 +80,8 @@ QVariant* QPersistentModelIndex_Data1(const QPersistentModelIndex* self, int rol
 void QPersistentModelIndex_Delete(QPersistentModelIndex* self);
 
 QMetaObject* QAbstractItemModel_MetaObject(const QAbstractItemModel* self);
-void QAbstractItemModel_Tr(const char* s, char** _out, int* _out_Strlen);
-void QAbstractItemModel_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QAbstractItemModel_Tr(const char* s);
+struct miqt_string* QAbstractItemModel_TrUtf8(const char* s);
 bool QAbstractItemModel_HasIndex(const QAbstractItemModel* self, int row, int column);
 QModelIndex* QAbstractItemModel_Index(const QAbstractItemModel* self, int row, int column);
 QModelIndex* QAbstractItemModel_Parent(const QAbstractItemModel* self, QModelIndex* child);
@@ -91,8 +93,8 @@ QVariant* QAbstractItemModel_Data(const QAbstractItemModel* self, QModelIndex* i
 bool QAbstractItemModel_SetData(QAbstractItemModel* self, QModelIndex* index, QVariant* value);
 QVariant* QAbstractItemModel_HeaderData(const QAbstractItemModel* self, int section, uintptr_t orientation);
 bool QAbstractItemModel_SetHeaderData(QAbstractItemModel* self, int section, uintptr_t orientation, QVariant* value);
-void QAbstractItemModel_MimeTypes(const QAbstractItemModel* self, char*** _out, int** _out_Lengths, size_t* _out_len);
-QMimeData* QAbstractItemModel_MimeData(const QAbstractItemModel* self, QModelIndex** indexes, size_t indexes_len);
+struct miqt_array* QAbstractItemModel_MimeTypes(const QAbstractItemModel* self);
+QMimeData* QAbstractItemModel_MimeData(const QAbstractItemModel* self, struct miqt_array* /* of QModelIndex */ indexes);
 bool QAbstractItemModel_CanDropMimeData(const QAbstractItemModel* self, QMimeData* data, uintptr_t action, int row, int column, QModelIndex* parent);
 bool QAbstractItemModel_DropMimeData(QAbstractItemModel* self, QMimeData* data, uintptr_t action, int row, int column, QModelIndex* parent);
 int QAbstractItemModel_SupportedDropActions(const QAbstractItemModel* self);
@@ -114,7 +116,7 @@ bool QAbstractItemModel_CanFetchMore(const QAbstractItemModel* self, QModelIndex
 int QAbstractItemModel_Flags(const QAbstractItemModel* self, QModelIndex* index);
 void QAbstractItemModel_Sort(QAbstractItemModel* self, int column);
 QModelIndex* QAbstractItemModel_Buddy(const QAbstractItemModel* self, QModelIndex* index);
-void QAbstractItemModel_Match(const QAbstractItemModel* self, QModelIndex* start, int role, QVariant* value, QModelIndex*** _out, size_t* _out_len);
+struct miqt_array* QAbstractItemModel_Match(const QAbstractItemModel* self, QModelIndex* start, int role, QVariant* value);
 QSize* QAbstractItemModel_Span(const QAbstractItemModel* self, QModelIndex* index);
 bool QAbstractItemModel_CheckIndex(const QAbstractItemModel* self, QModelIndex* index);
 void QAbstractItemModel_DataChanged(QAbstractItemModel* self, QModelIndex* topLeft, QModelIndex* bottomRight);
@@ -127,10 +129,10 @@ void QAbstractItemModel_LayoutAboutToBeChanged(QAbstractItemModel* self);
 void QAbstractItemModel_connect_LayoutAboutToBeChanged(QAbstractItemModel* self, void* slot);
 bool QAbstractItemModel_Submit(QAbstractItemModel* self);
 void QAbstractItemModel_Revert(QAbstractItemModel* self);
-void QAbstractItemModel_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QAbstractItemModel_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QAbstractItemModel_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QAbstractItemModel_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QAbstractItemModel_Tr2(const char* s, const char* c);
+struct miqt_string* QAbstractItemModel_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QAbstractItemModel_TrUtf82(const char* s, const char* c);
+struct miqt_string* QAbstractItemModel_TrUtf83(const char* s, const char* c, int n);
 bool QAbstractItemModel_HasIndex3(const QAbstractItemModel* self, int row, int column, QModelIndex* parent);
 QModelIndex* QAbstractItemModel_Index3(const QAbstractItemModel* self, int row, int column, QModelIndex* parent);
 int QAbstractItemModel_RowCount1(const QAbstractItemModel* self, QModelIndex* parent);
@@ -149,46 +151,46 @@ bool QAbstractItemModel_InsertColumn2(QAbstractItemModel* self, int column, QMod
 bool QAbstractItemModel_RemoveRow2(QAbstractItemModel* self, int row, QModelIndex* parent);
 bool QAbstractItemModel_RemoveColumn2(QAbstractItemModel* self, int column, QModelIndex* parent);
 void QAbstractItemModel_Sort2(QAbstractItemModel* self, int column, uintptr_t order);
-void QAbstractItemModel_Match4(const QAbstractItemModel* self, QModelIndex* start, int role, QVariant* value, int hits, QModelIndex*** _out, size_t* _out_len);
-void QAbstractItemModel_Match5(const QAbstractItemModel* self, QModelIndex* start, int role, QVariant* value, int hits, int flags, QModelIndex*** _out, size_t* _out_len);
+struct miqt_array* QAbstractItemModel_Match4(const QAbstractItemModel* self, QModelIndex* start, int role, QVariant* value, int hits);
+struct miqt_array* QAbstractItemModel_Match5(const QAbstractItemModel* self, QModelIndex* start, int role, QVariant* value, int hits, int flags);
 bool QAbstractItemModel_CheckIndex2(const QAbstractItemModel* self, QModelIndex* index, int options);
-void QAbstractItemModel_DataChanged3(QAbstractItemModel* self, QModelIndex* topLeft, QModelIndex* bottomRight, int* roles, size_t roles_len);
+void QAbstractItemModel_DataChanged3(QAbstractItemModel* self, QModelIndex* topLeft, QModelIndex* bottomRight, struct miqt_array* /* of int */ roles);
 void QAbstractItemModel_connect_DataChanged3(QAbstractItemModel* self, void* slot);
-void QAbstractItemModel_LayoutChanged1(QAbstractItemModel* self, QPersistentModelIndex** parents, size_t parents_len);
+void QAbstractItemModel_LayoutChanged1(QAbstractItemModel* self, struct miqt_array* /* of QPersistentModelIndex */ parents);
 void QAbstractItemModel_connect_LayoutChanged1(QAbstractItemModel* self, void* slot);
-void QAbstractItemModel_LayoutChanged2(QAbstractItemModel* self, QPersistentModelIndex** parents, size_t parents_len, uintptr_t hint);
+void QAbstractItemModel_LayoutChanged2(QAbstractItemModel* self, struct miqt_array* /* of QPersistentModelIndex */ parents, uintptr_t hint);
 void QAbstractItemModel_connect_LayoutChanged2(QAbstractItemModel* self, void* slot);
-void QAbstractItemModel_LayoutAboutToBeChanged1(QAbstractItemModel* self, QPersistentModelIndex** parents, size_t parents_len);
+void QAbstractItemModel_LayoutAboutToBeChanged1(QAbstractItemModel* self, struct miqt_array* /* of QPersistentModelIndex */ parents);
 void QAbstractItemModel_connect_LayoutAboutToBeChanged1(QAbstractItemModel* self, void* slot);
-void QAbstractItemModel_LayoutAboutToBeChanged2(QAbstractItemModel* self, QPersistentModelIndex** parents, size_t parents_len, uintptr_t hint);
+void QAbstractItemModel_LayoutAboutToBeChanged2(QAbstractItemModel* self, struct miqt_array* /* of QPersistentModelIndex */ parents, uintptr_t hint);
 void QAbstractItemModel_connect_LayoutAboutToBeChanged2(QAbstractItemModel* self, void* slot);
 void QAbstractItemModel_Delete(QAbstractItemModel* self);
 
 QMetaObject* QAbstractTableModel_MetaObject(const QAbstractTableModel* self);
-void QAbstractTableModel_Tr(const char* s, char** _out, int* _out_Strlen);
-void QAbstractTableModel_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QAbstractTableModel_Tr(const char* s);
+struct miqt_string* QAbstractTableModel_TrUtf8(const char* s);
 QModelIndex* QAbstractTableModel_Index(const QAbstractTableModel* self, int row, int column);
 QModelIndex* QAbstractTableModel_Sibling(const QAbstractTableModel* self, int row, int column, QModelIndex* idx);
 bool QAbstractTableModel_DropMimeData(QAbstractTableModel* self, QMimeData* data, uintptr_t action, int row, int column, QModelIndex* parent);
 int QAbstractTableModel_Flags(const QAbstractTableModel* self, QModelIndex* index);
-void QAbstractTableModel_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QAbstractTableModel_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QAbstractTableModel_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QAbstractTableModel_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QAbstractTableModel_Tr2(const char* s, const char* c);
+struct miqt_string* QAbstractTableModel_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QAbstractTableModel_TrUtf82(const char* s, const char* c);
+struct miqt_string* QAbstractTableModel_TrUtf83(const char* s, const char* c, int n);
 QModelIndex* QAbstractTableModel_Index3(const QAbstractTableModel* self, int row, int column, QModelIndex* parent);
 void QAbstractTableModel_Delete(QAbstractTableModel* self);
 
 QMetaObject* QAbstractListModel_MetaObject(const QAbstractListModel* self);
-void QAbstractListModel_Tr(const char* s, char** _out, int* _out_Strlen);
-void QAbstractListModel_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QAbstractListModel_Tr(const char* s);
+struct miqt_string* QAbstractListModel_TrUtf8(const char* s);
 QModelIndex* QAbstractListModel_Index(const QAbstractListModel* self, int row);
 QModelIndex* QAbstractListModel_Sibling(const QAbstractListModel* self, int row, int column, QModelIndex* idx);
 bool QAbstractListModel_DropMimeData(QAbstractListModel* self, QMimeData* data, uintptr_t action, int row, int column, QModelIndex* parent);
 int QAbstractListModel_Flags(const QAbstractListModel* self, QModelIndex* index);
-void QAbstractListModel_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QAbstractListModel_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QAbstractListModel_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QAbstractListModel_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QAbstractListModel_Tr2(const char* s, const char* c);
+struct miqt_string* QAbstractListModel_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QAbstractListModel_TrUtf82(const char* s, const char* c);
+struct miqt_string* QAbstractListModel_TrUtf83(const char* s, const char* c, int n);
 QModelIndex* QAbstractListModel_Index2(const QAbstractListModel* self, int row, int column);
 QModelIndex* QAbstractListModel_Index3(const QAbstractListModel* self, int row, int column, QModelIndex* parent);
 void QAbstractListModel_Delete(QAbstractListModel* self);

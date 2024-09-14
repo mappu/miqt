@@ -5,12 +5,8 @@
 #include <cstring>
 #include <QWidget>
 #include "qabstractslider.h"
-
 #include "gen_qabstractslider.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QAbstractSlider* QAbstractSlider_new() {
 	return new QAbstractSlider();
@@ -24,27 +20,23 @@ QMetaObject* QAbstractSlider_MetaObject(const QAbstractSlider* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void QAbstractSlider_Tr(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QAbstractSlider::tr(s);
+struct miqt_string* QAbstractSlider_Tr(const char* s) {
+	QString _ret = QAbstractSlider::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QAbstractSlider_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QAbstractSlider::trUtf8(s);
+struct miqt_string* QAbstractSlider_TrUtf8(const char* s) {
+	QString _ret = QAbstractSlider::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 uintptr_t QAbstractSlider_Orientation(const QAbstractSlider* self) {
-	Qt::Orientation ret = self->orientation();
-	return static_cast<uintptr_t>(ret);
+	Qt::Orientation _ret = self->orientation();
+	return static_cast<uintptr_t>(_ret);
 }
 
 void QAbstractSlider_SetMinimum(QAbstractSlider* self, int minimum) {
@@ -145,7 +137,8 @@ void QAbstractSlider_ValueChanged(QAbstractSlider* self, int value) {
 
 void QAbstractSlider_connect_ValueChanged(QAbstractSlider* self, void* slot) {
 	QAbstractSlider::connect(self, static_cast<void (QAbstractSlider::*)(int)>(&QAbstractSlider::valueChanged), self, [=](int value) {
-		miqt_exec_callback(slot, 0, nullptr);
+		int sigval1 = value;
+		miqt_exec_callback_QAbstractSlider_ValueChanged(slot, sigval1);
 	});
 }
 
@@ -155,7 +148,7 @@ void QAbstractSlider_SliderPressed(QAbstractSlider* self) {
 
 void QAbstractSlider_connect_SliderPressed(QAbstractSlider* self, void* slot) {
 	QAbstractSlider::connect(self, static_cast<void (QAbstractSlider::*)()>(&QAbstractSlider::sliderPressed), self, [=]() {
-		miqt_exec_callback(slot, 0, nullptr);
+		miqt_exec_callback_QAbstractSlider_SliderPressed(slot);
 	});
 }
 
@@ -165,7 +158,8 @@ void QAbstractSlider_SliderMoved(QAbstractSlider* self, int position) {
 
 void QAbstractSlider_connect_SliderMoved(QAbstractSlider* self, void* slot) {
 	QAbstractSlider::connect(self, static_cast<void (QAbstractSlider::*)(int)>(&QAbstractSlider::sliderMoved), self, [=](int position) {
-		miqt_exec_callback(slot, 0, nullptr);
+		int sigval1 = position;
+		miqt_exec_callback_QAbstractSlider_SliderMoved(slot, sigval1);
 	});
 }
 
@@ -175,7 +169,7 @@ void QAbstractSlider_SliderReleased(QAbstractSlider* self) {
 
 void QAbstractSlider_connect_SliderReleased(QAbstractSlider* self, void* slot) {
 	QAbstractSlider::connect(self, static_cast<void (QAbstractSlider::*)()>(&QAbstractSlider::sliderReleased), self, [=]() {
-		miqt_exec_callback(slot, 0, nullptr);
+		miqt_exec_callback_QAbstractSlider_SliderReleased(slot);
 	});
 }
 
@@ -185,7 +179,9 @@ void QAbstractSlider_RangeChanged(QAbstractSlider* self, int min, int max) {
 
 void QAbstractSlider_connect_RangeChanged(QAbstractSlider* self, void* slot) {
 	QAbstractSlider::connect(self, static_cast<void (QAbstractSlider::*)(int, int)>(&QAbstractSlider::rangeChanged), self, [=](int min, int max) {
-		miqt_exec_callback(slot, 0, nullptr);
+		int sigval1 = min;
+		int sigval2 = max;
+		miqt_exec_callback_QAbstractSlider_RangeChanged(slot, sigval1, sigval2);
 	});
 }
 
@@ -195,44 +191,37 @@ void QAbstractSlider_ActionTriggered(QAbstractSlider* self, int action) {
 
 void QAbstractSlider_connect_ActionTriggered(QAbstractSlider* self, void* slot) {
 	QAbstractSlider::connect(self, static_cast<void (QAbstractSlider::*)(int)>(&QAbstractSlider::actionTriggered), self, [=](int action) {
-		miqt_exec_callback(slot, 0, nullptr);
+		int sigval1 = action;
+		miqt_exec_callback_QAbstractSlider_ActionTriggered(slot, sigval1);
 	});
 }
 
-void QAbstractSlider_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QAbstractSlider::tr(s, c);
+struct miqt_string* QAbstractSlider_Tr2(const char* s, const char* c) {
+	QString _ret = QAbstractSlider::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QAbstractSlider_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QAbstractSlider::tr(s, c, static_cast<int>(n));
+struct miqt_string* QAbstractSlider_Tr3(const char* s, const char* c, int n) {
+	QString _ret = QAbstractSlider::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QAbstractSlider_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QAbstractSlider::trUtf8(s, c);
+struct miqt_string* QAbstractSlider_TrUtf82(const char* s, const char* c) {
+	QString _ret = QAbstractSlider::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QAbstractSlider_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QAbstractSlider::trUtf8(s, c, static_cast<int>(n));
+struct miqt_string* QAbstractSlider_TrUtf83(const char* s, const char* c, int n) {
+	QString _ret = QAbstractSlider::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QAbstractSlider_Delete(QAbstractSlider* self) {

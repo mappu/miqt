@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -267,16 +269,16 @@ void QNativeGestureEvent_Delete(QNativeGestureEvent* self);
 QKeyEvent* QKeyEvent_new(uintptr_t typeVal, int key, int modifiers);
 QKeyEvent* QKeyEvent_new2(uintptr_t typeVal, int key, int modifiers, unsigned int nativeScanCode, unsigned int nativeVirtualKey, unsigned int nativeModifiers);
 QKeyEvent* QKeyEvent_new3(QKeyEvent* param1);
-QKeyEvent* QKeyEvent_new4(uintptr_t typeVal, int key, int modifiers, const char* text, size_t text_Strlen);
-QKeyEvent* QKeyEvent_new5(uintptr_t typeVal, int key, int modifiers, const char* text, size_t text_Strlen, bool autorep);
-QKeyEvent* QKeyEvent_new6(uintptr_t typeVal, int key, int modifiers, const char* text, size_t text_Strlen, bool autorep, uint16_t count);
-QKeyEvent* QKeyEvent_new7(uintptr_t typeVal, int key, int modifiers, unsigned int nativeScanCode, unsigned int nativeVirtualKey, unsigned int nativeModifiers, const char* text, size_t text_Strlen);
-QKeyEvent* QKeyEvent_new8(uintptr_t typeVal, int key, int modifiers, unsigned int nativeScanCode, unsigned int nativeVirtualKey, unsigned int nativeModifiers, const char* text, size_t text_Strlen, bool autorep);
-QKeyEvent* QKeyEvent_new9(uintptr_t typeVal, int key, int modifiers, unsigned int nativeScanCode, unsigned int nativeVirtualKey, unsigned int nativeModifiers, const char* text, size_t text_Strlen, bool autorep, uint16_t count);
+QKeyEvent* QKeyEvent_new4(uintptr_t typeVal, int key, int modifiers, struct miqt_string* text);
+QKeyEvent* QKeyEvent_new5(uintptr_t typeVal, int key, int modifiers, struct miqt_string* text, bool autorep);
+QKeyEvent* QKeyEvent_new6(uintptr_t typeVal, int key, int modifiers, struct miqt_string* text, bool autorep, uint16_t count);
+QKeyEvent* QKeyEvent_new7(uintptr_t typeVal, int key, int modifiers, unsigned int nativeScanCode, unsigned int nativeVirtualKey, unsigned int nativeModifiers, struct miqt_string* text);
+QKeyEvent* QKeyEvent_new8(uintptr_t typeVal, int key, int modifiers, unsigned int nativeScanCode, unsigned int nativeVirtualKey, unsigned int nativeModifiers, struct miqt_string* text, bool autorep);
+QKeyEvent* QKeyEvent_new9(uintptr_t typeVal, int key, int modifiers, unsigned int nativeScanCode, unsigned int nativeVirtualKey, unsigned int nativeModifiers, struct miqt_string* text, bool autorep, uint16_t count);
 int QKeyEvent_Key(const QKeyEvent* self);
 bool QKeyEvent_Matches(const QKeyEvent* self, uintptr_t key);
 int QKeyEvent_Modifiers(const QKeyEvent* self);
-void QKeyEvent_Text(const QKeyEvent* self, char** _out, int* _out_Strlen);
+struct miqt_string* QKeyEvent_Text(const QKeyEvent* self);
 bool QKeyEvent_IsAutoRepeat(const QKeyEvent* self);
 int QKeyEvent_Count(const QKeyEvent* self);
 unsigned int QKeyEvent_NativeScanCode(const QKeyEvent* self);
@@ -355,15 +357,15 @@ uintptr_t QContextMenuEvent_Reason(const QContextMenuEvent* self);
 void QContextMenuEvent_Delete(QContextMenuEvent* self);
 
 QInputMethodEvent* QInputMethodEvent_new();
-QInputMethodEvent* QInputMethodEvent_new2(const char* preeditText, size_t preeditText_Strlen, QInputMethodEvent__Attribute** attributes, size_t attributes_len);
+QInputMethodEvent* QInputMethodEvent_new2(struct miqt_string* preeditText, struct miqt_array* /* of QInputMethodEvent__Attribute */ attributes);
 QInputMethodEvent* QInputMethodEvent_new3(QInputMethodEvent* other);
-void QInputMethodEvent_SetCommitString(QInputMethodEvent* self, const char* commitString, size_t commitString_Strlen);
-void QInputMethodEvent_PreeditString(const QInputMethodEvent* self, char** _out, int* _out_Strlen);
-void QInputMethodEvent_CommitString(const QInputMethodEvent* self, char** _out, int* _out_Strlen);
+void QInputMethodEvent_SetCommitString(QInputMethodEvent* self, struct miqt_string* commitString);
+struct miqt_string* QInputMethodEvent_PreeditString(const QInputMethodEvent* self);
+struct miqt_string* QInputMethodEvent_CommitString(const QInputMethodEvent* self);
 int QInputMethodEvent_ReplacementStart(const QInputMethodEvent* self);
 int QInputMethodEvent_ReplacementLength(const QInputMethodEvent* self);
-void QInputMethodEvent_SetCommitString2(QInputMethodEvent* self, const char* commitString, size_t commitString_Strlen, int replaceFrom);
-void QInputMethodEvent_SetCommitString3(QInputMethodEvent* self, const char* commitString, size_t commitString_Strlen, int replaceFrom, int replaceLength);
+void QInputMethodEvent_SetCommitString2(QInputMethodEvent* self, struct miqt_string* commitString, int replaceFrom);
+void QInputMethodEvent_SetCommitString3(QInputMethodEvent* self, struct miqt_string* commitString, int replaceFrom, int replaceLength);
 void QInputMethodEvent_Delete(QInputMethodEvent* self);
 
 QInputMethodQueryEvent* QInputMethodQueryEvent_new(int queries);
@@ -419,14 +421,14 @@ QPoint* QHelpEvent_Pos(const QHelpEvent* self);
 QPoint* QHelpEvent_GlobalPos(const QHelpEvent* self);
 void QHelpEvent_Delete(QHelpEvent* self);
 
-QStatusTipEvent* QStatusTipEvent_new(const char* tip, size_t tip_Strlen);
+QStatusTipEvent* QStatusTipEvent_new(struct miqt_string* tip);
 QStatusTipEvent* QStatusTipEvent_new2(QStatusTipEvent* param1);
-void QStatusTipEvent_Tip(const QStatusTipEvent* self, char** _out, int* _out_Strlen);
+struct miqt_string* QStatusTipEvent_Tip(const QStatusTipEvent* self);
 void QStatusTipEvent_Delete(QStatusTipEvent* self);
 
-QWhatsThisClickedEvent* QWhatsThisClickedEvent_new(const char* href, size_t href_Strlen);
+QWhatsThisClickedEvent* QWhatsThisClickedEvent_new(struct miqt_string* href);
 QWhatsThisClickedEvent* QWhatsThisClickedEvent_new2(QWhatsThisClickedEvent* param1);
-void QWhatsThisClickedEvent_Href(const QWhatsThisClickedEvent* self, char** _out, int* _out_Strlen);
+struct miqt_string* QWhatsThisClickedEvent_Href(const QWhatsThisClickedEvent* self);
 void QWhatsThisClickedEvent_Delete(QWhatsThisClickedEvent* self);
 
 QActionEvent* QActionEvent_new(int typeVal, QAction* action);
@@ -437,10 +439,10 @@ QAction* QActionEvent_Before(const QActionEvent* self);
 void QActionEvent_OperatorAssign(QActionEvent* self, QActionEvent* param1);
 void QActionEvent_Delete(QActionEvent* self);
 
-QFileOpenEvent* QFileOpenEvent_new(const char* file, size_t file_Strlen);
+QFileOpenEvent* QFileOpenEvent_new(struct miqt_string* file);
 QFileOpenEvent* QFileOpenEvent_new2(QUrl* url);
 QFileOpenEvent* QFileOpenEvent_new3(QFileOpenEvent* param1);
-void QFileOpenEvent_File(const QFileOpenEvent* self, char** _out, int* _out_Strlen);
+struct miqt_string* QFileOpenEvent_File(const QFileOpenEvent* self);
 QUrl* QFileOpenEvent_Url(const QFileOpenEvent* self);
 bool QFileOpenEvent_OpenFile(const QFileOpenEvent* self, QFile* file, int flags);
 void QFileOpenEvent_Delete(QFileOpenEvent* self);
@@ -477,7 +479,7 @@ QTouchEvent* QTouchEvent_new2(QTouchEvent* param1);
 QTouchEvent* QTouchEvent_new3(uintptr_t eventType, QTouchDevice* device);
 QTouchEvent* QTouchEvent_new4(uintptr_t eventType, QTouchDevice* device, int modifiers);
 QTouchEvent* QTouchEvent_new5(uintptr_t eventType, QTouchDevice* device, int modifiers, int touchPointStates);
-QTouchEvent* QTouchEvent_new6(uintptr_t eventType, QTouchDevice* device, int modifiers, int touchPointStates, QTouchEvent__TouchPoint** touchPoints, size_t touchPoints_len);
+QTouchEvent* QTouchEvent_new6(uintptr_t eventType, QTouchDevice* device, int modifiers, int touchPointStates, struct miqt_array* /* of QTouchEvent__TouchPoint */ touchPoints);
 QWindow* QTouchEvent_Window(const QTouchEvent* self);
 QObject* QTouchEvent_Target(const QTouchEvent* self);
 int QTouchEvent_TouchPointStates(const QTouchEvent* self);
@@ -485,7 +487,7 @@ QTouchDevice* QTouchEvent_Device(const QTouchEvent* self);
 void QTouchEvent_SetWindow(QTouchEvent* self, QWindow* awindow);
 void QTouchEvent_SetTarget(QTouchEvent* self, QObject* atarget);
 void QTouchEvent_SetTouchPointStates(QTouchEvent* self, int aTouchPointStates);
-void QTouchEvent_SetTouchPoints(QTouchEvent* self, QTouchEvent__TouchPoint** atouchPoints, size_t atouchPoints_len);
+void QTouchEvent_SetTouchPoints(QTouchEvent* self, struct miqt_array* /* of QTouchEvent__TouchPoint */ atouchPoints);
 void QTouchEvent_SetDevice(QTouchEvent* self, QTouchDevice* adevice);
 void QTouchEvent_Delete(QTouchEvent* self);
 
@@ -553,7 +555,7 @@ double QTouchEvent__TouchPoint_Rotation(const QTouchEvent__TouchPoint* self);
 QSizeF* QTouchEvent__TouchPoint_EllipseDiameters(const QTouchEvent__TouchPoint* self);
 QVector2D* QTouchEvent__TouchPoint_Velocity(const QTouchEvent__TouchPoint* self);
 int QTouchEvent__TouchPoint_Flags(const QTouchEvent__TouchPoint* self);
-void QTouchEvent__TouchPoint_RawScreenPositions(const QTouchEvent__TouchPoint* self, QPointF*** _out, size_t* _out_len);
+struct miqt_array* QTouchEvent__TouchPoint_RawScreenPositions(const QTouchEvent__TouchPoint* self);
 void QTouchEvent__TouchPoint_SetId(QTouchEvent__TouchPoint* self, int id);
 void QTouchEvent__TouchPoint_SetUniqueId(QTouchEvent__TouchPoint* self, long long uid);
 void QTouchEvent__TouchPoint_SetState(QTouchEvent__TouchPoint* self, int state);
@@ -574,7 +576,7 @@ void QTouchEvent__TouchPoint_SetRotation(QTouchEvent__TouchPoint* self, double a
 void QTouchEvent__TouchPoint_SetEllipseDiameters(QTouchEvent__TouchPoint* self, QSizeF* dia);
 void QTouchEvent__TouchPoint_SetVelocity(QTouchEvent__TouchPoint* self, QVector2D* v);
 void QTouchEvent__TouchPoint_SetFlags(QTouchEvent__TouchPoint* self, int flags);
-void QTouchEvent__TouchPoint_SetRawScreenPositions(QTouchEvent__TouchPoint* self, QPointF** positions, size_t positions_len);
+void QTouchEvent__TouchPoint_SetRawScreenPositions(QTouchEvent__TouchPoint* self, struct miqt_array* /* of QPointF */ positions);
 void QTouchEvent__TouchPoint_Delete(QTouchEvent__TouchPoint* self);
 
 #ifdef __cplusplus

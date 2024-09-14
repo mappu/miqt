@@ -49,35 +49,31 @@ func NewQGraphicsItemAnimation2(parent *QObject) *QGraphicsItemAnimation {
 }
 
 func (this *QGraphicsItemAnimation) MetaObject() *QMetaObject {
-	ret := C.QGraphicsItemAnimation_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QGraphicsItemAnimation_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QGraphicsItemAnimation_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGraphicsItemAnimation_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGraphicsItemAnimation_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QGraphicsItemAnimation_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGraphicsItemAnimation_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGraphicsItemAnimation_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QGraphicsItemAnimation) Item() *QGraphicsItem {
-	ret := C.QGraphicsItemAnimation_Item(this.h)
-	return newQGraphicsItem_U(unsafe.Pointer(ret))
+	_ret := C.QGraphicsItemAnimation_Item(this.h)
+	return newQGraphicsItem_U(unsafe.Pointer(_ret))
 }
 
 func (this *QGraphicsItemAnimation) SetItem(item *QGraphicsItem) {
@@ -85,8 +81,8 @@ func (this *QGraphicsItemAnimation) SetItem(item *QGraphicsItem) {
 }
 
 func (this *QGraphicsItemAnimation) TimeLine() *QTimeLine {
-	ret := C.QGraphicsItemAnimation_TimeLine(this.h)
-	return newQTimeLine_U(unsafe.Pointer(ret))
+	_ret := C.QGraphicsItemAnimation_TimeLine(this.h)
+	return newQTimeLine_U(unsafe.Pointer(_ret))
 }
 
 func (this *QGraphicsItemAnimation) SetTimeLine(timeLine *QTimeLine) {
@@ -94,14 +90,10 @@ func (this *QGraphicsItemAnimation) SetTimeLine(timeLine *QTimeLine) {
 }
 
 func (this *QGraphicsItemAnimation) PosAt(step float64) *QPointF {
-	ret := C.QGraphicsItemAnimation_PosAt(this.h, (C.double)(step))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPointF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPointF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QGraphicsItemAnimation_PosAt(this.h, (C.double)(step))
+	_goptr := newQPointF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QGraphicsItemAnimation) SetPosAt(step float64, pos *QPointF) {
@@ -109,30 +101,22 @@ func (this *QGraphicsItemAnimation) SetPosAt(step float64, pos *QPointF) {
 }
 
 func (this *QGraphicsItemAnimation) MatrixAt(step float64) *QMatrix {
-	ret := C.QGraphicsItemAnimation_MatrixAt(this.h, (C.double)(step))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQMatrix(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QMatrix) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QGraphicsItemAnimation_MatrixAt(this.h, (C.double)(step))
+	_goptr := newQMatrix(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QGraphicsItemAnimation) TransformAt(step float64) *QTransform {
-	ret := C.QGraphicsItemAnimation_TransformAt(this.h, (C.double)(step))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQTransform(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QTransform) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QGraphicsItemAnimation_TransformAt(this.h, (C.double)(step))
+	_goptr := newQTransform(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QGraphicsItemAnimation) RotationAt(step float64) float64 {
-	ret := C.QGraphicsItemAnimation_RotationAt(this.h, (C.double)(step))
-	return (float64)(ret)
+	_ret := C.QGraphicsItemAnimation_RotationAt(this.h, (C.double)(step))
+	return (float64)(_ret)
 }
 
 func (this *QGraphicsItemAnimation) SetRotationAt(step float64, angle float64) {
@@ -140,13 +124,13 @@ func (this *QGraphicsItemAnimation) SetRotationAt(step float64, angle float64) {
 }
 
 func (this *QGraphicsItemAnimation) XTranslationAt(step float64) float64 {
-	ret := C.QGraphicsItemAnimation_XTranslationAt(this.h, (C.double)(step))
-	return (float64)(ret)
+	_ret := C.QGraphicsItemAnimation_XTranslationAt(this.h, (C.double)(step))
+	return (float64)(_ret)
 }
 
 func (this *QGraphicsItemAnimation) YTranslationAt(step float64) float64 {
-	ret := C.QGraphicsItemAnimation_YTranslationAt(this.h, (C.double)(step))
-	return (float64)(ret)
+	_ret := C.QGraphicsItemAnimation_YTranslationAt(this.h, (C.double)(step))
+	return (float64)(_ret)
 }
 
 func (this *QGraphicsItemAnimation) SetTranslationAt(step float64, dx float64, dy float64) {
@@ -154,13 +138,13 @@ func (this *QGraphicsItemAnimation) SetTranslationAt(step float64, dx float64, d
 }
 
 func (this *QGraphicsItemAnimation) VerticalScaleAt(step float64) float64 {
-	ret := C.QGraphicsItemAnimation_VerticalScaleAt(this.h, (C.double)(step))
-	return (float64)(ret)
+	_ret := C.QGraphicsItemAnimation_VerticalScaleAt(this.h, (C.double)(step))
+	return (float64)(_ret)
 }
 
 func (this *QGraphicsItemAnimation) HorizontalScaleAt(step float64) float64 {
-	ret := C.QGraphicsItemAnimation_HorizontalScaleAt(this.h, (C.double)(step))
-	return (float64)(ret)
+	_ret := C.QGraphicsItemAnimation_HorizontalScaleAt(this.h, (C.double)(step))
+	return (float64)(_ret)
 }
 
 func (this *QGraphicsItemAnimation) SetScaleAt(step float64, sx float64, sy float64) {
@@ -168,13 +152,13 @@ func (this *QGraphicsItemAnimation) SetScaleAt(step float64, sx float64, sy floa
 }
 
 func (this *QGraphicsItemAnimation) VerticalShearAt(step float64) float64 {
-	ret := C.QGraphicsItemAnimation_VerticalShearAt(this.h, (C.double)(step))
-	return (float64)(ret)
+	_ret := C.QGraphicsItemAnimation_VerticalShearAt(this.h, (C.double)(step))
+	return (float64)(_ret)
 }
 
 func (this *QGraphicsItemAnimation) HorizontalShearAt(step float64) float64 {
-	ret := C.QGraphicsItemAnimation_HorizontalShearAt(this.h, (C.double)(step))
-	return (float64)(ret)
+	_ret := C.QGraphicsItemAnimation_HorizontalShearAt(this.h, (C.double)(step))
+	return (float64)(_ret)
 }
 
 func (this *QGraphicsItemAnimation) SetShearAt(step float64, sh float64, sv float64) {
@@ -198,12 +182,10 @@ func QGraphicsItemAnimation_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGraphicsItemAnimation_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGraphicsItemAnimation_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QGraphicsItemAnimation_Tr3(s string, c string, n int) string {
@@ -211,12 +193,10 @@ func QGraphicsItemAnimation_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGraphicsItemAnimation_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGraphicsItemAnimation_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QGraphicsItemAnimation_TrUtf82(s string, c string) string {
@@ -224,12 +204,10 @@ func QGraphicsItemAnimation_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGraphicsItemAnimation_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGraphicsItemAnimation_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QGraphicsItemAnimation_TrUtf83(s string, c string, n int) string {
@@ -237,14 +215,22 @@ func QGraphicsItemAnimation_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGraphicsItemAnimation_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGraphicsItemAnimation_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
+// Delete this object from C++ memory.
 func (this *QGraphicsItemAnimation) Delete() {
 	C.QGraphicsItemAnimation_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QGraphicsItemAnimation) GoGC() {
+	runtime.SetFinalizer(this, func(this *QGraphicsItemAnimation) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

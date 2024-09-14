@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"runtime"
 	"unsafe"
 )
 
@@ -1722,6 +1723,16 @@ func newQInternal_U(h unsafe.Pointer) *QInternal {
 	return newQInternal((*C.QInternal)(h))
 }
 
+// Delete this object from C++ memory.
 func (this *QInternal) Delete() {
 	C.QInternal_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QInternal) GoGC() {
+	runtime.SetFinalizer(this, func(this *QInternal) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

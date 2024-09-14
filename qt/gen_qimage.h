@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -48,9 +50,9 @@ QImage* QImage_new4(unsigned char* data, int width, int height, uintptr_t format
 QImage* QImage_new5(const unsigned char* data, int width, int height, uintptr_t format);
 QImage* QImage_new6(unsigned char* data, int width, int height, int bytesPerLine, uintptr_t format);
 QImage* QImage_new7(const unsigned char* data, int width, int height, int bytesPerLine, uintptr_t format);
-QImage* QImage_new8(const char* fileName, size_t fileName_Strlen);
+QImage* QImage_new8(struct miqt_string* fileName);
 QImage* QImage_new9(QImage* param1);
-QImage* QImage_new10(const char* fileName, size_t fileName_Strlen, const char* format);
+QImage* QImage_new10(struct miqt_string* fileName, const char* format);
 void QImage_OperatorAssign(QImage* self, QImage* param1);
 void QImage_Swap(QImage* self, QImage* other);
 bool QImage_IsNull(const QImage* self);
@@ -63,7 +65,7 @@ QImage* QImage_Copy(const QImage* self);
 QImage* QImage_Copy2(const QImage* self, int x, int y, int w, int h);
 uintptr_t QImage_Format(const QImage* self);
 QImage* QImage_ConvertToFormat(const QImage* self, uintptr_t f);
-QImage* QImage_ConvertToFormat2(const QImage* self, uintptr_t f, unsigned int* colorTable, size_t colorTable_len);
+QImage* QImage_ConvertToFormat2(const QImage* self, uintptr_t f, struct miqt_array* /* of unsigned int */ colorTable);
 bool QImage_ReinterpretAsFormat(QImage* self, uintptr_t f);
 void QImage_ConvertTo(QImage* self, uintptr_t f);
 int QImage_Width(const QImage* self);
@@ -99,8 +101,8 @@ QColor* QImage_PixelColor(const QImage* self, int x, int y);
 QColor* QImage_PixelColorWithPt(const QImage* self, QPoint* pt);
 void QImage_SetPixelColor(QImage* self, int x, int y, QColor* c);
 void QImage_SetPixelColor2(QImage* self, QPoint* pt, QColor* c);
-void QImage_ColorTable(const QImage* self, unsigned int** _out, size_t* _out_len);
-void QImage_SetColorTable(QImage* self, unsigned int* colors, size_t colors_len);
+struct miqt_array* QImage_ColorTable(const QImage* self);
+void QImage_SetColorTable(QImage* self, struct miqt_array* /* of unsigned int */ colors);
 double QImage_DevicePixelRatio(const QImage* self);
 void QImage_SetDevicePixelRatio(QImage* self, double scaleFactor);
 void QImage_Fill(QImage* self, unsigned int pixel);
@@ -129,10 +131,10 @@ void QImage_ConvertToColorSpace(QImage* self, QColorSpace* param1);
 void QImage_SetColorSpace(QImage* self, QColorSpace* colorSpace);
 void QImage_ApplyColorTransform(QImage* self, QColorTransform* transform);
 bool QImage_Load(QImage* self, QIODevice* device, const char* format);
-bool QImage_LoadWithFileName(QImage* self, const char* fileName, size_t fileName_Strlen);
+bool QImage_LoadWithFileName(QImage* self, struct miqt_string* fileName);
 bool QImage_LoadFromData(QImage* self, const unsigned char* buf, int lenVal);
 bool QImage_LoadFromDataWithData(QImage* self, QByteArray* data);
-bool QImage_Save(const QImage* self, const char* fileName, size_t fileName_Strlen);
+bool QImage_Save(const QImage* self, struct miqt_string* fileName);
 bool QImage_SaveWithDevice(const QImage* self, QIODevice* device);
 QImage* QImage_FromData(const unsigned char* data, int size);
 QImage* QImage_FromDataWithData(QByteArray* data);
@@ -144,15 +146,15 @@ void QImage_SetDotsPerMeterX(QImage* self, int dotsPerMeterX);
 void QImage_SetDotsPerMeterY(QImage* self, int dotsPerMeterY);
 QPoint* QImage_Offset(const QImage* self);
 void QImage_SetOffset(QImage* self, QPoint* offset);
-void QImage_TextKeys(const QImage* self, char*** _out, int** _out_Lengths, size_t* _out_len);
-void QImage_Text(const QImage* self, char** _out, int* _out_Strlen);
-void QImage_SetText(QImage* self, const char* key, size_t key_Strlen, const char* value, size_t value_Strlen);
+struct miqt_array* QImage_TextKeys(const QImage* self);
+struct miqt_string* QImage_Text(const QImage* self);
+void QImage_SetText(QImage* self, struct miqt_string* key, struct miqt_string* value);
 QPixelFormat* QImage_PixelFormat(const QImage* self);
 QPixelFormat* QImage_ToPixelFormat(uintptr_t format);
 uintptr_t QImage_ToImageFormat(QPixelFormat* format);
 QImage* QImage_Copy1(const QImage* self, QRect* rect);
 QImage* QImage_ConvertToFormat22(const QImage* self, uintptr_t f, int flags);
-QImage* QImage_ConvertToFormat3(const QImage* self, uintptr_t f, unsigned int* colorTable, size_t colorTable_len, int flags);
+QImage* QImage_ConvertToFormat3(const QImage* self, uintptr_t f, struct miqt_array* /* of unsigned int */ colorTable, int flags);
 void QImage_ConvertTo2(QImage* self, uintptr_t f, int flags);
 QImage* QImage_CreateAlphaMask1(const QImage* self, int flags);
 QImage* QImage_CreateHeuristicMask1(const QImage* self, bool clipTight);
@@ -168,16 +170,16 @@ QImage* QImage_Transformed22(const QImage* self, QTransform* matrix, uintptr_t m
 QImage* QImage_Mirrored1(const QImage* self, bool horizontally);
 QImage* QImage_Mirrored2(const QImage* self, bool horizontally, bool vertically);
 void QImage_InvertPixels1(QImage* self, uintptr_t param1);
-bool QImage_Load2(QImage* self, const char* fileName, size_t fileName_Strlen, const char* format);
+bool QImage_Load2(QImage* self, struct miqt_string* fileName, const char* format);
 bool QImage_LoadFromData3(QImage* self, const unsigned char* buf, int lenVal, const char* format);
 bool QImage_LoadFromData2(QImage* self, QByteArray* data, const char* aformat);
-bool QImage_Save2(const QImage* self, const char* fileName, size_t fileName_Strlen, const char* format);
-bool QImage_Save3(const QImage* self, const char* fileName, size_t fileName_Strlen, const char* format, int quality);
+bool QImage_Save2(const QImage* self, struct miqt_string* fileName, const char* format);
+bool QImage_Save3(const QImage* self, struct miqt_string* fileName, const char* format, int quality);
 bool QImage_Save22(const QImage* self, QIODevice* device, const char* format);
 bool QImage_Save32(const QImage* self, QIODevice* device, const char* format, int quality);
 QImage* QImage_FromData3(const unsigned char* data, int size, const char* format);
 QImage* QImage_FromData2(QByteArray* data, const char* format);
-void QImage_Text1(const QImage* self, const char* key, size_t key_Strlen, char** _out, int* _out_Strlen);
+struct miqt_string* QImage_Text1(const QImage* self, struct miqt_string* key);
 void QImage_Delete(QImage* self);
 
 #ifdef __cplusplus

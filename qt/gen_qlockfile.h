@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -17,7 +19,7 @@ class QLockFile;
 typedef struct QLockFile QLockFile;
 #endif
 
-QLockFile* QLockFile_new(const char* fileName, size_t fileName_Strlen);
+QLockFile* QLockFile_new(struct miqt_string* fileName);
 bool QLockFile_Lock(QLockFile* self);
 bool QLockFile_TryLock(QLockFile* self);
 void QLockFile_Unlock(QLockFile* self);

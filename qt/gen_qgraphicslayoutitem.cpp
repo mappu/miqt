@@ -4,12 +4,8 @@
 #include <QSizeF>
 #include <QSizePolicy>
 #include "qgraphicslayoutitem.h"
-
 #include "gen_qgraphicslayoutitem.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 void QGraphicsLayoutItem_SetSizePolicy(QGraphicsLayoutItem* self, QSizePolicy* policy) {
 	self->setSizePolicy(*policy);
@@ -20,9 +16,9 @@ void QGraphicsLayoutItem_SetSizePolicy2(QGraphicsLayoutItem* self, uintptr_t hPo
 }
 
 QSizePolicy* QGraphicsLayoutItem_SizePolicy(const QGraphicsLayoutItem* self) {
-	QSizePolicy ret = self->sizePolicy();
+	QSizePolicy _ret = self->sizePolicy();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSizePolicy*>(new QSizePolicy(ret));
+	return static_cast<QSizePolicy*>(new QSizePolicy(_ret));
 }
 
 void QGraphicsLayoutItem_SetMinimumSize(QGraphicsLayoutItem* self, QSizeF* size) {
@@ -34,9 +30,9 @@ void QGraphicsLayoutItem_SetMinimumSize2(QGraphicsLayoutItem* self, double w, do
 }
 
 QSizeF* QGraphicsLayoutItem_MinimumSize(const QGraphicsLayoutItem* self) {
-	QSizeF ret = self->minimumSize();
+	QSizeF _ret = self->minimumSize();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSizeF*>(new QSizeF(ret));
+	return static_cast<QSizeF*>(new QSizeF(_ret));
 }
 
 void QGraphicsLayoutItem_SetMinimumWidth(QGraphicsLayoutItem* self, double width) {
@@ -64,9 +60,9 @@ void QGraphicsLayoutItem_SetPreferredSize2(QGraphicsLayoutItem* self, double w, 
 }
 
 QSizeF* QGraphicsLayoutItem_PreferredSize(const QGraphicsLayoutItem* self) {
-	QSizeF ret = self->preferredSize();
+	QSizeF _ret = self->preferredSize();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSizeF*>(new QSizeF(ret));
+	return static_cast<QSizeF*>(new QSizeF(_ret));
 }
 
 void QGraphicsLayoutItem_SetPreferredWidth(QGraphicsLayoutItem* self, double width) {
@@ -94,9 +90,9 @@ void QGraphicsLayoutItem_SetMaximumSize2(QGraphicsLayoutItem* self, double w, do
 }
 
 QSizeF* QGraphicsLayoutItem_MaximumSize(const QGraphicsLayoutItem* self) {
-	QSizeF ret = self->maximumSize();
+	QSizeF _ret = self->maximumSize();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSizeF*>(new QSizeF(ret));
+	return static_cast<QSizeF*>(new QSizeF(_ret));
 }
 
 void QGraphicsLayoutItem_SetMaximumWidth(QGraphicsLayoutItem* self, double width) {
@@ -120,9 +116,9 @@ void QGraphicsLayoutItem_SetGeometry(QGraphicsLayoutItem* self, QRectF* rect) {
 }
 
 QRectF* QGraphicsLayoutItem_Geometry(const QGraphicsLayoutItem* self) {
-	QRectF ret = self->geometry();
+	QRectF _ret = self->geometry();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(ret));
+	return static_cast<QRectF*>(new QRectF(_ret));
 }
 
 void QGraphicsLayoutItem_GetContentsMargins(const QGraphicsLayoutItem* self, double* left, double* top, double* right, double* bottom) {
@@ -130,15 +126,15 @@ void QGraphicsLayoutItem_GetContentsMargins(const QGraphicsLayoutItem* self, dou
 }
 
 QRectF* QGraphicsLayoutItem_ContentsRect(const QGraphicsLayoutItem* self) {
-	QRectF ret = self->contentsRect();
+	QRectF _ret = self->contentsRect();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(ret));
+	return static_cast<QRectF*>(new QRectF(_ret));
 }
 
 QSizeF* QGraphicsLayoutItem_EffectiveSizeHint(const QGraphicsLayoutItem* self, uintptr_t which) {
-	QSizeF ret = self->effectiveSizeHint(static_cast<Qt::SizeHint>(which));
+	QSizeF _ret = self->effectiveSizeHint(static_cast<Qt::SizeHint>(which));
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSizeF*>(new QSizeF(ret));
+	return static_cast<QSizeF*>(new QSizeF(_ret));
 }
 
 void QGraphicsLayoutItem_UpdateGeometry(QGraphicsLayoutItem* self) {
@@ -170,9 +166,9 @@ void QGraphicsLayoutItem_SetSizePolicy3(QGraphicsLayoutItem* self, uintptr_t hPo
 }
 
 QSizeF* QGraphicsLayoutItem_EffectiveSizeHint2(const QGraphicsLayoutItem* self, uintptr_t which, QSizeF* constraint) {
-	QSizeF ret = self->effectiveSizeHint(static_cast<Qt::SizeHint>(which), *constraint);
+	QSizeF _ret = self->effectiveSizeHint(static_cast<Qt::SizeHint>(which), *constraint);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSizeF*>(new QSizeF(ret));
+	return static_cast<QSizeF*>(new QSizeF(_ret));
 }
 
 void QGraphicsLayoutItem_Delete(QGraphicsLayoutItem* self) {

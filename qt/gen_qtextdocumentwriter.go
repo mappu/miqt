@@ -49,17 +49,17 @@ func NewQTextDocumentWriter2(device *QIODevice, format *QByteArray) *QTextDocume
 
 // NewQTextDocumentWriter3 constructs a new QTextDocumentWriter object.
 func NewQTextDocumentWriter3(fileName string) *QTextDocumentWriter {
-	fileName_Cstring := C.CString(fileName)
-	defer C.free(unsafe.Pointer(fileName_Cstring))
-	ret := C.QTextDocumentWriter_new3(fileName_Cstring, C.size_t(len(fileName)))
+	fileName_ms := miqt_strdupg(fileName)
+	defer C.free(fileName_ms)
+	ret := C.QTextDocumentWriter_new3((*C.struct_miqt_string)(fileName_ms))
 	return newQTextDocumentWriter(ret)
 }
 
 // NewQTextDocumentWriter4 constructs a new QTextDocumentWriter object.
 func NewQTextDocumentWriter4(fileName string, format *QByteArray) *QTextDocumentWriter {
-	fileName_Cstring := C.CString(fileName)
-	defer C.free(unsafe.Pointer(fileName_Cstring))
-	ret := C.QTextDocumentWriter_new4(fileName_Cstring, C.size_t(len(fileName)), format.cPointer())
+	fileName_ms := miqt_strdupg(fileName)
+	defer C.free(fileName_ms)
+	ret := C.QTextDocumentWriter_new4((*C.struct_miqt_string)(fileName_ms), format.cPointer())
 	return newQTextDocumentWriter(ret)
 }
 
@@ -68,14 +68,10 @@ func (this *QTextDocumentWriter) SetFormat(format *QByteArray) {
 }
 
 func (this *QTextDocumentWriter) Format() *QByteArray {
-	ret := C.QTextDocumentWriter_Format(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQByteArray(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QByteArray) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QTextDocumentWriter_Format(this.h)
+	_goptr := newQByteArray(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QTextDocumentWriter) SetDevice(device *QIODevice) {
@@ -83,33 +79,31 @@ func (this *QTextDocumentWriter) SetDevice(device *QIODevice) {
 }
 
 func (this *QTextDocumentWriter) Device() *QIODevice {
-	ret := C.QTextDocumentWriter_Device(this.h)
-	return newQIODevice_U(unsafe.Pointer(ret))
+	_ret := C.QTextDocumentWriter_Device(this.h)
+	return newQIODevice_U(unsafe.Pointer(_ret))
 }
 
 func (this *QTextDocumentWriter) SetFileName(fileName string) {
-	fileName_Cstring := C.CString(fileName)
-	defer C.free(unsafe.Pointer(fileName_Cstring))
-	C.QTextDocumentWriter_SetFileName(this.h, fileName_Cstring, C.size_t(len(fileName)))
+	fileName_ms := miqt_strdupg(fileName)
+	defer C.free(fileName_ms)
+	C.QTextDocumentWriter_SetFileName(this.h, (*C.struct_miqt_string)(fileName_ms))
 }
 
 func (this *QTextDocumentWriter) FileName() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTextDocumentWriter_FileName(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTextDocumentWriter_FileName(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QTextDocumentWriter) Write(document *QTextDocument) bool {
-	ret := C.QTextDocumentWriter_Write(this.h, document.cPointer())
-	return (bool)(ret)
+	_ret := C.QTextDocumentWriter_Write(this.h, document.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QTextDocumentWriter) WriteWithFragment(fragment *QTextDocumentFragment) bool {
-	ret := C.QTextDocumentWriter_WriteWithFragment(this.h, fragment.cPointer())
-	return (bool)(ret)
+	_ret := C.QTextDocumentWriter_WriteWithFragment(this.h, fragment.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QTextDocumentWriter) SetCodec(codec *QTextCodec) {
@@ -117,23 +111,31 @@ func (this *QTextDocumentWriter) SetCodec(codec *QTextCodec) {
 }
 
 func (this *QTextDocumentWriter) Codec() *QTextCodec {
-	ret := C.QTextDocumentWriter_Codec(this.h)
-	return newQTextCodec_U(unsafe.Pointer(ret))
+	_ret := C.QTextDocumentWriter_Codec(this.h)
+	return newQTextCodec_U(unsafe.Pointer(_ret))
 }
 
 func QTextDocumentWriter_SupportedDocumentFormats() []QByteArray {
-	var _out **C.QByteArray = nil
-	var _out_len C.size_t = 0
-	C.QTextDocumentWriter_SupportedDocumentFormats(&_out, &_out_len)
-	ret := make([]QByteArray, int(_out_len))
-	_outCast := (*[0xffff]*C.QByteArray)(unsafe.Pointer(_out)) // so fresh so clean
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = *newQByteArray(_outCast[i])
+	var _ma *C.struct_miqt_array = C.QTextDocumentWriter_SupportedDocumentFormats()
+	_ret := make([]QByteArray, int(_ma.len))
+	_outCast := (*[0xffff]*C.QByteArray)(unsafe.Pointer(_ma.data)) // mrs jackson
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = *newQByteArray(_outCast[i])
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
+// Delete this object from C++ memory.
 func (this *QTextDocumentWriter) Delete() {
 	C.QTextDocumentWriter_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QTextDocumentWriter) GoGC() {
+	runtime.SetFinalizer(this, func(this *QTextDocumentWriter) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

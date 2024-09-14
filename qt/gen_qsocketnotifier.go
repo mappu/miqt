@@ -57,45 +57,41 @@ func NewQSocketNotifier2(socket uintptr, param2 QSocketNotifier__Type, parent *Q
 }
 
 func (this *QSocketNotifier) MetaObject() *QMetaObject {
-	ret := C.QSocketNotifier_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QSocketNotifier_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QSocketNotifier_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QSocketNotifier_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QSocketNotifier_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QSocketNotifier_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QSocketNotifier_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QSocketNotifier_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QSocketNotifier) Socket() uint64 {
-	ret := C.QSocketNotifier_Socket(this.h)
-	return (uint64)(ret)
+	_ret := C.QSocketNotifier_Socket(this.h)
+	return (uint64)(_ret)
 }
 
 func (this *QSocketNotifier) Type() QSocketNotifier__Type {
-	ret := C.QSocketNotifier_Type(this.h)
-	return (QSocketNotifier__Type)(ret)
+	_ret := C.QSocketNotifier_Type(this.h)
+	return (QSocketNotifier__Type)(_ret)
 }
 
 func (this *QSocketNotifier) IsEnabled() bool {
-	ret := C.QSocketNotifier_IsEnabled(this.h)
-	return (bool)(ret)
+	_ret := C.QSocketNotifier_IsEnabled(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QSocketNotifier) SetEnabled(enabled bool) {
@@ -107,12 +103,10 @@ func QSocketNotifier_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QSocketNotifier_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QSocketNotifier_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QSocketNotifier_Tr3(s string, c string, n int) string {
@@ -120,12 +114,10 @@ func QSocketNotifier_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QSocketNotifier_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QSocketNotifier_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QSocketNotifier_TrUtf82(s string, c string) string {
@@ -133,12 +125,10 @@ func QSocketNotifier_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QSocketNotifier_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QSocketNotifier_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QSocketNotifier_TrUtf83(s string, c string, n int) string {
@@ -146,16 +136,24 @@ func QSocketNotifier_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QSocketNotifier_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QSocketNotifier_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
+// Delete this object from C++ memory.
 func (this *QSocketNotifier) Delete() {
 	C.QSocketNotifier_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QSocketNotifier) GoGC() {
+	runtime.SetFinalizer(this, func(this *QSocketNotifier) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
 
 type QSocketDescriptor struct {
@@ -203,10 +201,20 @@ func NewQSocketDescriptor3(descriptor uintptr) *QSocketDescriptor {
 }
 
 func (this *QSocketDescriptor) IsValid() bool {
-	ret := C.QSocketDescriptor_IsValid(this.h)
-	return (bool)(ret)
+	_ret := C.QSocketDescriptor_IsValid(this.h)
+	return (bool)(_ret)
 }
 
+// Delete this object from C++ memory.
 func (this *QSocketDescriptor) Delete() {
 	C.QSocketDescriptor_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QSocketDescriptor) GoGC() {
+	runtime.SetFinalizer(this, func(this *QSocketDescriptor) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

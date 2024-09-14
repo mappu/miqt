@@ -50,41 +50,33 @@ func NewQVariantAnimation2(parent *QObject) *QVariantAnimation {
 }
 
 func (this *QVariantAnimation) MetaObject() *QMetaObject {
-	ret := C.QVariantAnimation_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QVariantAnimation_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QVariantAnimation_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QVariantAnimation_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QVariantAnimation_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QVariantAnimation_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QVariantAnimation_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QVariantAnimation_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QVariantAnimation) StartValue() *QVariant {
-	ret := C.QVariantAnimation_StartValue(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQVariant(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QVariant) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QVariantAnimation_StartValue(this.h)
+	_goptr := newQVariant(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QVariantAnimation) SetStartValue(value *QVariant) {
@@ -92,14 +84,10 @@ func (this *QVariantAnimation) SetStartValue(value *QVariant) {
 }
 
 func (this *QVariantAnimation) EndValue() *QVariant {
-	ret := C.QVariantAnimation_EndValue(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQVariant(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QVariant) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QVariantAnimation_EndValue(this.h)
+	_goptr := newQVariant(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QVariantAnimation) SetEndValue(value *QVariant) {
@@ -107,14 +95,10 @@ func (this *QVariantAnimation) SetEndValue(value *QVariant) {
 }
 
 func (this *QVariantAnimation) KeyValueAt(step float64) *QVariant {
-	ret := C.QVariantAnimation_KeyValueAt(this.h, (C.double)(step))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQVariant(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QVariant) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QVariantAnimation_KeyValueAt(this.h, (C.double)(step))
+	_goptr := newQVariant(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QVariantAnimation) SetKeyValueAt(step float64, value *QVariant) {
@@ -122,19 +106,15 @@ func (this *QVariantAnimation) SetKeyValueAt(step float64, value *QVariant) {
 }
 
 func (this *QVariantAnimation) CurrentValue() *QVariant {
-	ret := C.QVariantAnimation_CurrentValue(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQVariant(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QVariant) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QVariantAnimation_CurrentValue(this.h)
+	_goptr := newQVariant(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QVariantAnimation) Duration() int {
-	ret := C.QVariantAnimation_Duration(this.h)
-	return (int)(ret)
+	_ret := C.QVariantAnimation_Duration(this.h)
+	return (int)(_ret)
 }
 
 func (this *QVariantAnimation) SetDuration(msecs int) {
@@ -142,14 +122,10 @@ func (this *QVariantAnimation) SetDuration(msecs int) {
 }
 
 func (this *QVariantAnimation) EasingCurve() *QEasingCurve {
-	ret := C.QVariantAnimation_EasingCurve(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQEasingCurve(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QEasingCurve) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QVariantAnimation_EasingCurve(this.h)
+	_goptr := newQEasingCurve(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QVariantAnimation) SetEasingCurve(easing *QEasingCurve) {
@@ -159,13 +135,22 @@ func (this *QVariantAnimation) SetEasingCurve(easing *QEasingCurve) {
 func (this *QVariantAnimation) ValueChanged(value *QVariant) {
 	C.QVariantAnimation_ValueChanged(this.h, value.cPointer())
 }
+func (this *QVariantAnimation) OnValueChanged(slot func(value *QVariant)) {
+	C.QVariantAnimation_connect_ValueChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QVariantAnimation) OnValueChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QVariantAnimation_ValueChanged
+func miqt_exec_callback_QVariantAnimation_ValueChanged(cb *C.void, value *C.QVariant) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(value *QVariant))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QVariantAnimation_connect_ValueChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	value_ret := value
+	slotval1 := newQVariant_U(unsafe.Pointer(value_ret))
+
+	gofunc(slotval1)
 }
 
 func QVariantAnimation_Tr2(s string, c string) string {
@@ -173,12 +158,10 @@ func QVariantAnimation_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QVariantAnimation_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QVariantAnimation_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QVariantAnimation_Tr3(s string, c string, n int) string {
@@ -186,12 +169,10 @@ func QVariantAnimation_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QVariantAnimation_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QVariantAnimation_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QVariantAnimation_TrUtf82(s string, c string) string {
@@ -199,12 +180,10 @@ func QVariantAnimation_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QVariantAnimation_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QVariantAnimation_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QVariantAnimation_TrUtf83(s string, c string, n int) string {
@@ -212,14 +191,22 @@ func QVariantAnimation_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QVariantAnimation_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QVariantAnimation_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
+// Delete this object from C++ memory.
 func (this *QVariantAnimation) Delete() {
 	C.QVariantAnimation_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QVariantAnimation) GoGC() {
+	runtime.SetFinalizer(this, func(this *QVariantAnimation) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -41,10 +43,10 @@ void QTextOption_SetTabStop(QTextOption* self, double tabStop);
 double QTextOption_TabStop(const QTextOption* self);
 void QTextOption_SetTabStopDistance(QTextOption* self, double tabStopDistance);
 double QTextOption_TabStopDistance(const QTextOption* self);
-void QTextOption_SetTabArray(QTextOption* self, double* tabStops, size_t tabStops_len);
-void QTextOption_TabArray(const QTextOption* self, double** _out, size_t* _out_len);
-void QTextOption_SetTabs(QTextOption* self, QTextOption__Tab** tabStops, size_t tabStops_len);
-void QTextOption_Tabs(const QTextOption* self, QTextOption__Tab*** _out, size_t* _out_len);
+void QTextOption_SetTabArray(QTextOption* self, struct miqt_array* /* of double */ tabStops);
+struct miqt_array* QTextOption_TabArray(const QTextOption* self);
+void QTextOption_SetTabs(QTextOption* self, struct miqt_array* /* of QTextOption__Tab */ tabStops);
+struct miqt_array* QTextOption_Tabs(const QTextOption* self);
 void QTextOption_SetUseDesignMetrics(QTextOption* self, bool b);
 bool QTextOption_UseDesignMetrics(const QTextOption* self);
 void QTextOption_Delete(QTextOption* self);

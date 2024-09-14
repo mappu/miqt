@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -40,7 +42,7 @@ typedef struct QJsonValueRefPtr QJsonValueRefPtr;
 QJsonArray* QJsonArray_new();
 QJsonArray* QJsonArray_new2(QJsonArray* other);
 void QJsonArray_OperatorAssign(QJsonArray* self, QJsonArray* other);
-QJsonArray* QJsonArray_FromStringList(char** list, uint64_t* list_Lengths, size_t list_len);
+QJsonArray* QJsonArray_FromStringList(struct miqt_array* /* of QString */ list);
 int QJsonArray_Size(const QJsonArray* self);
 int QJsonArray_Count(const QJsonArray* self);
 bool QJsonArray_IsEmpty(const QJsonArray* self);

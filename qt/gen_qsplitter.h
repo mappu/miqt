@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -32,8 +34,8 @@ QSplitter* QSplitter_new2(uintptr_t param1);
 QSplitter* QSplitter_new3(QWidget* parent);
 QSplitter* QSplitter_new4(uintptr_t param1, QWidget* parent);
 QMetaObject* QSplitter_MetaObject(const QSplitter* self);
-void QSplitter_Tr(const char* s, char** _out, int* _out_Strlen);
-void QSplitter_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QSplitter_Tr(const char* s);
+struct miqt_string* QSplitter_TrUtf8(const char* s);
 void QSplitter_AddWidget(QSplitter* self, QWidget* widget);
 void QSplitter_InsertWidget(QSplitter* self, int index, QWidget* widget);
 QWidget* QSplitter_ReplaceWidget(QSplitter* self, int index, QWidget* widget);
@@ -48,8 +50,8 @@ bool QSplitter_OpaqueResize(const QSplitter* self);
 void QSplitter_Refresh(QSplitter* self);
 QSize* QSplitter_SizeHint(const QSplitter* self);
 QSize* QSplitter_MinimumSizeHint(const QSplitter* self);
-void QSplitter_Sizes(const QSplitter* self, int** _out, size_t* _out_len);
-void QSplitter_SetSizes(QSplitter* self, int* list, size_t list_len);
+struct miqt_array* QSplitter_Sizes(const QSplitter* self);
+void QSplitter_SetSizes(QSplitter* self, struct miqt_array* /* of int */ list);
 QByteArray* QSplitter_SaveState(const QSplitter* self);
 bool QSplitter_RestoreState(QSplitter* self, QByteArray* state);
 int QSplitter_HandleWidth(const QSplitter* self);
@@ -62,26 +64,26 @@ QSplitterHandle* QSplitter_Handle(const QSplitter* self, int index);
 void QSplitter_SetStretchFactor(QSplitter* self, int index, int stretch);
 void QSplitter_SplitterMoved(QSplitter* self, int pos, int index);
 void QSplitter_connect_SplitterMoved(QSplitter* self, void* slot);
-void QSplitter_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QSplitter_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QSplitter_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QSplitter_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QSplitter_Tr2(const char* s, const char* c);
+struct miqt_string* QSplitter_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QSplitter_TrUtf82(const char* s, const char* c);
+struct miqt_string* QSplitter_TrUtf83(const char* s, const char* c, int n);
 void QSplitter_SetOpaqueResize1(QSplitter* self, bool opaque);
 void QSplitter_Delete(QSplitter* self);
 
 QSplitterHandle* QSplitterHandle_new(uintptr_t o, QSplitter* parent);
 QMetaObject* QSplitterHandle_MetaObject(const QSplitterHandle* self);
-void QSplitterHandle_Tr(const char* s, char** _out, int* _out_Strlen);
-void QSplitterHandle_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QSplitterHandle_Tr(const char* s);
+struct miqt_string* QSplitterHandle_TrUtf8(const char* s);
 void QSplitterHandle_SetOrientation(QSplitterHandle* self, uintptr_t o);
 uintptr_t QSplitterHandle_Orientation(const QSplitterHandle* self);
 bool QSplitterHandle_OpaqueResize(const QSplitterHandle* self);
 QSplitter* QSplitterHandle_Splitter(const QSplitterHandle* self);
 QSize* QSplitterHandle_SizeHint(const QSplitterHandle* self);
-void QSplitterHandle_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QSplitterHandle_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QSplitterHandle_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QSplitterHandle_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QSplitterHandle_Tr2(const char* s, const char* c);
+struct miqt_string* QSplitterHandle_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QSplitterHandle_TrUtf82(const char* s, const char* c);
+struct miqt_string* QSplitterHandle_TrUtf83(const char* s, const char* c, int n);
 void QSplitterHandle_Delete(QSplitterHandle* self);
 
 #ifdef __cplusplus

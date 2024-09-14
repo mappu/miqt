@@ -18,12 +18,8 @@
 #include <QStyleHints>
 #include <QWindow>
 #include "qguiapplication.h"
-
 #include "gen_qguiapplication.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QGuiApplication* QGuiApplication_new(int* argc, char** argv) {
 	return new QGuiApplication(static_cast<int&>(*argc), argv);
@@ -37,72 +33,68 @@ QMetaObject* QGuiApplication_MetaObject(const QGuiApplication* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void QGuiApplication_Tr(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QGuiApplication::tr(s);
+struct miqt_string* QGuiApplication_Tr(const char* s) {
+	QString _ret = QGuiApplication::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QGuiApplication_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QGuiApplication::trUtf8(s);
+struct miqt_string* QGuiApplication_TrUtf8(const char* s) {
+	QString _ret = QGuiApplication::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QGuiApplication_SetApplicationDisplayName(const char* name, size_t name_Strlen) {
-	QString name_QString = QString::fromUtf8(name, name_Strlen);
+void QGuiApplication_SetApplicationDisplayName(struct miqt_string* name) {
+	QString name_QString = QString::fromUtf8(&name->data, name->len);
 	QGuiApplication::setApplicationDisplayName(name_QString);
 }
 
-void QGuiApplication_ApplicationDisplayName(char** _out, int* _out_Strlen) {
-	QString ret = QGuiApplication::applicationDisplayName();
+struct miqt_string* QGuiApplication_ApplicationDisplayName() {
+	QString _ret = QGuiApplication::applicationDisplayName();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QGuiApplication_SetDesktopFileName(const char* name, size_t name_Strlen) {
-	QString name_QString = QString::fromUtf8(name, name_Strlen);
+void QGuiApplication_SetDesktopFileName(struct miqt_string* name) {
+	QString name_QString = QString::fromUtf8(&name->data, name->len);
 	QGuiApplication::setDesktopFileName(name_QString);
 }
 
-void QGuiApplication_DesktopFileName(char** _out, int* _out_Strlen) {
-	QString ret = QGuiApplication::desktopFileName();
+struct miqt_string* QGuiApplication_DesktopFileName() {
+	QString _ret = QGuiApplication::desktopFileName();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QGuiApplication_AllWindows(QWindow*** _out, size_t* _out_len) {
-	QWindowList ret = QGuiApplication::allWindows();
+struct miqt_array* QGuiApplication_AllWindows() {
+	QWindowList _ret = QGuiApplication::allWindows();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QWindow** __out = static_cast<QWindow**>(malloc(sizeof(QWindow*) * ret.length()));
-	for (size_t i = 0, e = ret.length(); i < e; ++i) {
-		__out[i] = ret[i];
+	QWindow** _arr = static_cast<QWindow**>(malloc(sizeof(QWindow*) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		_arr[i] = _ret[i];
 	}
-	*_out = __out;
-	*_out_len = ret.length();
+	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
+	_out->len = _ret.length();
+	_out->data = static_cast<void*>(_arr);
+	return _out;
 }
 
-void QGuiApplication_TopLevelWindows(QWindow*** _out, size_t* _out_len) {
-	QWindowList ret = QGuiApplication::topLevelWindows();
+struct miqt_array* QGuiApplication_TopLevelWindows() {
+	QWindowList _ret = QGuiApplication::topLevelWindows();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QWindow** __out = static_cast<QWindow**>(malloc(sizeof(QWindow*) * ret.length()));
-	for (size_t i = 0, e = ret.length(); i < e; ++i) {
-		__out[i] = ret[i];
+	QWindow** _arr = static_cast<QWindow**>(malloc(sizeof(QWindow*) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		_arr[i] = _ret[i];
 	}
-	*_out = __out;
-	*_out_len = ret.length();
+	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
+	_out->len = _ret.length();
+	_out->data = static_cast<void*>(_arr);
+	return _out;
 }
 
 QWindow* QGuiApplication_TopLevelAt(QPoint* pos) {
@@ -114,18 +106,16 @@ void QGuiApplication_SetWindowIcon(QIcon* icon) {
 }
 
 QIcon* QGuiApplication_WindowIcon() {
-	QIcon ret = QGuiApplication::windowIcon();
+	QIcon _ret = QGuiApplication::windowIcon();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QIcon*>(new QIcon(ret));
+	return static_cast<QIcon*>(new QIcon(_ret));
 }
 
-void QGuiApplication_PlatformName(char** _out, int* _out_Strlen) {
-	QString ret = QGuiApplication::platformName();
+struct miqt_string* QGuiApplication_PlatformName() {
+	QString _ret = QGuiApplication::platformName();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 QWindow* QGuiApplication_ModalWindow() {
@@ -144,15 +134,17 @@ QScreen* QGuiApplication_PrimaryScreen() {
 	return QGuiApplication::primaryScreen();
 }
 
-void QGuiApplication_Screens(QScreen*** _out, size_t* _out_len) {
-	QList<QScreen*> ret = QGuiApplication::screens();
+struct miqt_array* QGuiApplication_Screens() {
+	QList<QScreen*> _ret = QGuiApplication::screens();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QScreen** __out = static_cast<QScreen**>(malloc(sizeof(QScreen*) * ret.length()));
-	for (size_t i = 0, e = ret.length(); i < e; ++i) {
-		__out[i] = ret[i];
+	QScreen** _arr = static_cast<QScreen**>(malloc(sizeof(QScreen*) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		_arr[i] = _ret[i];
 	}
-	*_out = __out;
-	*_out_len = ret.length();
+	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
+	_out->len = _ret.length();
+	_out->data = static_cast<void*>(_arr);
+	return _out;
 }
 
 QScreen* QGuiApplication_ScreenAt(QPoint* point) {
@@ -180,9 +172,9 @@ void QGuiApplication_RestoreOverrideCursor() {
 }
 
 QFont* QGuiApplication_Font() {
-	QFont ret = QGuiApplication::font();
+	QFont _ret = QGuiApplication::font();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QFont*>(new QFont(ret));
+	return static_cast<QFont*>(new QFont(_ret));
 }
 
 void QGuiApplication_SetFont(QFont* font) {
@@ -194,9 +186,9 @@ QClipboard* QGuiApplication_Clipboard() {
 }
 
 QPalette* QGuiApplication_Palette() {
-	QPalette ret = QGuiApplication::palette();
+	QPalette _ret = QGuiApplication::palette();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPalette*>(new QPalette(ret));
+	return static_cast<QPalette*>(new QPalette(_ret));
 }
 
 void QGuiApplication_SetPalette(QPalette* pal) {
@@ -204,18 +196,18 @@ void QGuiApplication_SetPalette(QPalette* pal) {
 }
 
 int QGuiApplication_KeyboardModifiers() {
-	Qt::KeyboardModifiers ret = QGuiApplication::keyboardModifiers();
-	return static_cast<int>(ret);
+	Qt::KeyboardModifiers _ret = QGuiApplication::keyboardModifiers();
+	return static_cast<int>(_ret);
 }
 
 int QGuiApplication_QueryKeyboardModifiers() {
-	Qt::KeyboardModifiers ret = QGuiApplication::queryKeyboardModifiers();
-	return static_cast<int>(ret);
+	Qt::KeyboardModifiers _ret = QGuiApplication::queryKeyboardModifiers();
+	return static_cast<int>(_ret);
 }
 
 int QGuiApplication_MouseButtons() {
-	Qt::MouseButtons ret = QGuiApplication::mouseButtons();
-	return static_cast<int>(ret);
+	Qt::MouseButtons _ret = QGuiApplication::mouseButtons();
+	return static_cast<int>(_ret);
 }
 
 void QGuiApplication_SetLayoutDirection(uintptr_t direction) {
@@ -223,8 +215,8 @@ void QGuiApplication_SetLayoutDirection(uintptr_t direction) {
 }
 
 uintptr_t QGuiApplication_LayoutDirection() {
-	Qt::LayoutDirection ret = QGuiApplication::layoutDirection();
-	return static_cast<uintptr_t>(ret);
+	Qt::LayoutDirection _ret = QGuiApplication::layoutDirection();
+	return static_cast<uintptr_t>(_ret);
 }
 
 bool QGuiApplication_IsRightToLeft() {
@@ -260,8 +252,8 @@ bool QGuiApplication_QuitOnLastWindowClosed() {
 }
 
 uintptr_t QGuiApplication_ApplicationState() {
-	Qt::ApplicationState ret = QGuiApplication::applicationState();
-	return static_cast<uintptr_t>(ret);
+	Qt::ApplicationState _ret = QGuiApplication::applicationState();
+	return static_cast<uintptr_t>(_ret);
 }
 
 void QGuiApplication_SetHighDpiScaleFactorRoundingPolicy(uintptr_t policy) {
@@ -269,8 +261,8 @@ void QGuiApplication_SetHighDpiScaleFactorRoundingPolicy(uintptr_t policy) {
 }
 
 uintptr_t QGuiApplication_HighDpiScaleFactorRoundingPolicy() {
-	Qt::HighDpiScaleFactorRoundingPolicy ret = QGuiApplication::highDpiScaleFactorRoundingPolicy();
-	return static_cast<uintptr_t>(ret);
+	Qt::HighDpiScaleFactorRoundingPolicy _ret = QGuiApplication::highDpiScaleFactorRoundingPolicy();
+	return static_cast<uintptr_t>(_ret);
 }
 
 int QGuiApplication_Exec() {
@@ -285,22 +277,18 @@ bool QGuiApplication_IsSessionRestored(const QGuiApplication* self) {
 	return self->isSessionRestored();
 }
 
-void QGuiApplication_SessionId(const QGuiApplication* self, char** _out, int* _out_Strlen) {
-	QString ret = self->sessionId();
+struct miqt_string* QGuiApplication_SessionId(const QGuiApplication* self) {
+	QString _ret = self->sessionId();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QGuiApplication_SessionKey(const QGuiApplication* self, char** _out, int* _out_Strlen) {
-	QString ret = self->sessionKey();
+struct miqt_string* QGuiApplication_SessionKey(const QGuiApplication* self) {
+	QString _ret = self->sessionKey();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 bool QGuiApplication_IsSavingSession(const QGuiApplication* self) {
@@ -325,7 +313,7 @@ void QGuiApplication_FontDatabaseChanged(QGuiApplication* self) {
 
 void QGuiApplication_connect_FontDatabaseChanged(QGuiApplication* self, void* slot) {
 	QGuiApplication::connect(self, static_cast<void (QGuiApplication::*)()>(&QGuiApplication::fontDatabaseChanged), self, [=]() {
-		miqt_exec_callback(slot, 0, nullptr);
+		miqt_exec_callback_QGuiApplication_FontDatabaseChanged(slot);
 	});
 }
 
@@ -335,7 +323,8 @@ void QGuiApplication_ScreenAdded(QGuiApplication* self, QScreen* screen) {
 
 void QGuiApplication_connect_ScreenAdded(QGuiApplication* self, void* slot) {
 	QGuiApplication::connect(self, static_cast<void (QGuiApplication::*)(QScreen*)>(&QGuiApplication::screenAdded), self, [=](QScreen* screen) {
-		miqt_exec_callback(slot, 0, nullptr);
+		QScreen* sigval1 = screen;
+		miqt_exec_callback_QGuiApplication_ScreenAdded(slot, sigval1);
 	});
 }
 
@@ -345,7 +334,8 @@ void QGuiApplication_ScreenRemoved(QGuiApplication* self, QScreen* screen) {
 
 void QGuiApplication_connect_ScreenRemoved(QGuiApplication* self, void* slot) {
 	QGuiApplication::connect(self, static_cast<void (QGuiApplication::*)(QScreen*)>(&QGuiApplication::screenRemoved), self, [=](QScreen* screen) {
-		miqt_exec_callback(slot, 0, nullptr);
+		QScreen* sigval1 = screen;
+		miqt_exec_callback_QGuiApplication_ScreenRemoved(slot, sigval1);
 	});
 }
 
@@ -355,7 +345,8 @@ void QGuiApplication_PrimaryScreenChanged(QGuiApplication* self, QScreen* screen
 
 void QGuiApplication_connect_PrimaryScreenChanged(QGuiApplication* self, void* slot) {
 	QGuiApplication::connect(self, static_cast<void (QGuiApplication::*)(QScreen*)>(&QGuiApplication::primaryScreenChanged), self, [=](QScreen* screen) {
-		miqt_exec_callback(slot, 0, nullptr);
+		QScreen* sigval1 = screen;
+		miqt_exec_callback_QGuiApplication_PrimaryScreenChanged(slot, sigval1);
 	});
 }
 
@@ -365,7 +356,7 @@ void QGuiApplication_LastWindowClosed(QGuiApplication* self) {
 
 void QGuiApplication_connect_LastWindowClosed(QGuiApplication* self, void* slot) {
 	QGuiApplication::connect(self, static_cast<void (QGuiApplication::*)()>(&QGuiApplication::lastWindowClosed), self, [=]() {
-		miqt_exec_callback(slot, 0, nullptr);
+		miqt_exec_callback_QGuiApplication_LastWindowClosed(slot);
 	});
 }
 
@@ -375,7 +366,8 @@ void QGuiApplication_FocusObjectChanged(QGuiApplication* self, QObject* focusObj
 
 void QGuiApplication_connect_FocusObjectChanged(QGuiApplication* self, void* slot) {
 	QGuiApplication::connect(self, static_cast<void (QGuiApplication::*)(QObject*)>(&QGuiApplication::focusObjectChanged), self, [=](QObject* focusObject) {
-		miqt_exec_callback(slot, 0, nullptr);
+		QObject* sigval1 = focusObject;
+		miqt_exec_callback_QGuiApplication_FocusObjectChanged(slot, sigval1);
 	});
 }
 
@@ -385,7 +377,8 @@ void QGuiApplication_FocusWindowChanged(QGuiApplication* self, QWindow* focusWin
 
 void QGuiApplication_connect_FocusWindowChanged(QGuiApplication* self, void* slot) {
 	QGuiApplication::connect(self, static_cast<void (QGuiApplication::*)(QWindow*)>(&QGuiApplication::focusWindowChanged), self, [=](QWindow* focusWindow) {
-		miqt_exec_callback(slot, 0, nullptr);
+		QWindow* sigval1 = focusWindow;
+		miqt_exec_callback_QGuiApplication_FocusWindowChanged(slot, sigval1);
 	});
 }
 
@@ -395,7 +388,9 @@ void QGuiApplication_ApplicationStateChanged(QGuiApplication* self, uintptr_t st
 
 void QGuiApplication_connect_ApplicationStateChanged(QGuiApplication* self, void* slot) {
 	QGuiApplication::connect(self, static_cast<void (QGuiApplication::*)(Qt::ApplicationState)>(&QGuiApplication::applicationStateChanged), self, [=](Qt::ApplicationState state) {
-		miqt_exec_callback(slot, 0, nullptr);
+		Qt::ApplicationState state_ret = state;
+		uintptr_t sigval1 = static_cast<uintptr_t>(state_ret);
+		miqt_exec_callback_QGuiApplication_ApplicationStateChanged(slot, sigval1);
 	});
 }
 
@@ -405,7 +400,9 @@ void QGuiApplication_LayoutDirectionChanged(QGuiApplication* self, uintptr_t dir
 
 void QGuiApplication_connect_LayoutDirectionChanged(QGuiApplication* self, void* slot) {
 	QGuiApplication::connect(self, static_cast<void (QGuiApplication::*)(Qt::LayoutDirection)>(&QGuiApplication::layoutDirectionChanged), self, [=](Qt::LayoutDirection direction) {
-		miqt_exec_callback(slot, 0, nullptr);
+		Qt::LayoutDirection direction_ret = direction;
+		uintptr_t sigval1 = static_cast<uintptr_t>(direction_ret);
+		miqt_exec_callback_QGuiApplication_LayoutDirectionChanged(slot, sigval1);
 	});
 }
 
@@ -415,7 +412,10 @@ void QGuiApplication_CommitDataRequest(QGuiApplication* self, QSessionManager* s
 
 void QGuiApplication_connect_CommitDataRequest(QGuiApplication* self, void* slot) {
 	QGuiApplication::connect(self, static_cast<void (QGuiApplication::*)(QSessionManager&)>(&QGuiApplication::commitDataRequest), self, [=](QSessionManager& sessionManager) {
-		miqt_exec_callback(slot, 0, nullptr);
+		QSessionManager& sessionManager_ret = sessionManager;
+		// Cast returned reference into pointer
+		QSessionManager* sigval1 = &sessionManager_ret;
+		miqt_exec_callback_QGuiApplication_CommitDataRequest(slot, sigval1);
 	});
 }
 
@@ -425,7 +425,10 @@ void QGuiApplication_SaveStateRequest(QGuiApplication* self, QSessionManager* se
 
 void QGuiApplication_connect_SaveStateRequest(QGuiApplication* self, void* slot) {
 	QGuiApplication::connect(self, static_cast<void (QGuiApplication::*)(QSessionManager&)>(&QGuiApplication::saveStateRequest), self, [=](QSessionManager& sessionManager) {
-		miqt_exec_callback(slot, 0, nullptr);
+		QSessionManager& sessionManager_ret = sessionManager;
+		// Cast returned reference into pointer
+		QSessionManager* sigval1 = &sessionManager_ret;
+		miqt_exec_callback_QGuiApplication_SaveStateRequest(slot, sigval1);
 	});
 }
 
@@ -435,7 +438,10 @@ void QGuiApplication_PaletteChanged(QGuiApplication* self, QPalette* pal) {
 
 void QGuiApplication_connect_PaletteChanged(QGuiApplication* self, void* slot) {
 	QGuiApplication::connect(self, static_cast<void (QGuiApplication::*)(const QPalette&)>(&QGuiApplication::paletteChanged), self, [=](const QPalette& pal) {
-		miqt_exec_callback(slot, 0, nullptr);
+		const QPalette& pal_ret = pal;
+		// Cast returned reference into pointer
+		QPalette* sigval1 = const_cast<QPalette*>(&pal_ret);
+		miqt_exec_callback_QGuiApplication_PaletteChanged(slot, sigval1);
 	});
 }
 
@@ -445,7 +451,7 @@ void QGuiApplication_ApplicationDisplayNameChanged(QGuiApplication* self) {
 
 void QGuiApplication_connect_ApplicationDisplayNameChanged(QGuiApplication* self, void* slot) {
 	QGuiApplication::connect(self, static_cast<void (QGuiApplication::*)()>(&QGuiApplication::applicationDisplayNameChanged), self, [=]() {
-		miqt_exec_callback(slot, 0, nullptr);
+		miqt_exec_callback_QGuiApplication_ApplicationDisplayNameChanged(slot);
 	});
 }
 
@@ -455,44 +461,39 @@ void QGuiApplication_FontChanged(QGuiApplication* self, QFont* font) {
 
 void QGuiApplication_connect_FontChanged(QGuiApplication* self, void* slot) {
 	QGuiApplication::connect(self, static_cast<void (QGuiApplication::*)(const QFont&)>(&QGuiApplication::fontChanged), self, [=](const QFont& font) {
-		miqt_exec_callback(slot, 0, nullptr);
+		const QFont& font_ret = font;
+		// Cast returned reference into pointer
+		QFont* sigval1 = const_cast<QFont*>(&font_ret);
+		miqt_exec_callback_QGuiApplication_FontChanged(slot, sigval1);
 	});
 }
 
-void QGuiApplication_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QGuiApplication::tr(s, c);
+struct miqt_string* QGuiApplication_Tr2(const char* s, const char* c) {
+	QString _ret = QGuiApplication::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QGuiApplication_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QGuiApplication::tr(s, c, static_cast<int>(n));
+struct miqt_string* QGuiApplication_Tr3(const char* s, const char* c, int n) {
+	QString _ret = QGuiApplication::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QGuiApplication_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QGuiApplication::trUtf8(s, c);
+struct miqt_string* QGuiApplication_TrUtf82(const char* s, const char* c) {
+	QString _ret = QGuiApplication::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QGuiApplication_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QGuiApplication::trUtf8(s, c, static_cast<int>(n));
+struct miqt_string* QGuiApplication_TrUtf83(const char* s, const char* c, int n) {
+	QString _ret = QGuiApplication::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QGuiApplication_Delete(QGuiApplication* self) {

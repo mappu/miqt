@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -27,16 +29,16 @@ typedef struct QVariant QVariant;
 
 QMimeData* QMimeData_new();
 QMetaObject* QMimeData_MetaObject(const QMimeData* self);
-void QMimeData_Tr(const char* s, char** _out, int* _out_Strlen);
-void QMimeData_TrUtf8(const char* s, char** _out, int* _out_Strlen);
-void QMimeData_Urls(const QMimeData* self, QUrl*** _out, size_t* _out_len);
-void QMimeData_SetUrls(QMimeData* self, QUrl** urls, size_t urls_len);
+struct miqt_string* QMimeData_Tr(const char* s);
+struct miqt_string* QMimeData_TrUtf8(const char* s);
+struct miqt_array* QMimeData_Urls(const QMimeData* self);
+void QMimeData_SetUrls(QMimeData* self, struct miqt_array* /* of QUrl */ urls);
 bool QMimeData_HasUrls(const QMimeData* self);
-void QMimeData_Text(const QMimeData* self, char** _out, int* _out_Strlen);
-void QMimeData_SetText(QMimeData* self, const char* text, size_t text_Strlen);
+struct miqt_string* QMimeData_Text(const QMimeData* self);
+void QMimeData_SetText(QMimeData* self, struct miqt_string* text);
 bool QMimeData_HasText(const QMimeData* self);
-void QMimeData_Html(const QMimeData* self, char** _out, int* _out_Strlen);
-void QMimeData_SetHtml(QMimeData* self, const char* html, size_t html_Strlen);
+struct miqt_string* QMimeData_Html(const QMimeData* self);
+void QMimeData_SetHtml(QMimeData* self, struct miqt_string* html);
 bool QMimeData_HasHtml(const QMimeData* self);
 QVariant* QMimeData_ImageData(const QMimeData* self);
 void QMimeData_SetImageData(QMimeData* self, QVariant* image);
@@ -44,16 +46,16 @@ bool QMimeData_HasImage(const QMimeData* self);
 QVariant* QMimeData_ColorData(const QMimeData* self);
 void QMimeData_SetColorData(QMimeData* self, QVariant* color);
 bool QMimeData_HasColor(const QMimeData* self);
-QByteArray* QMimeData_Data(const QMimeData* self, const char* mimetype, size_t mimetype_Strlen);
-void QMimeData_SetData(QMimeData* self, const char* mimetype, size_t mimetype_Strlen, QByteArray* data);
-void QMimeData_RemoveFormat(QMimeData* self, const char* mimetype, size_t mimetype_Strlen);
-bool QMimeData_HasFormat(const QMimeData* self, const char* mimetype, size_t mimetype_Strlen);
-void QMimeData_Formats(const QMimeData* self, char*** _out, int** _out_Lengths, size_t* _out_len);
+QByteArray* QMimeData_Data(const QMimeData* self, struct miqt_string* mimetype);
+void QMimeData_SetData(QMimeData* self, struct miqt_string* mimetype, QByteArray* data);
+void QMimeData_RemoveFormat(QMimeData* self, struct miqt_string* mimetype);
+bool QMimeData_HasFormat(const QMimeData* self, struct miqt_string* mimetype);
+struct miqt_array* QMimeData_Formats(const QMimeData* self);
 void QMimeData_Clear(QMimeData* self);
-void QMimeData_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QMimeData_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QMimeData_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QMimeData_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QMimeData_Tr2(const char* s, const char* c);
+struct miqt_string* QMimeData_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QMimeData_TrUtf82(const char* s, const char* c);
+struct miqt_string* QMimeData_TrUtf83(const char* s, const char* c, int n);
 void QMimeData_Delete(QMimeData* self);
 
 #ifdef __cplusplus

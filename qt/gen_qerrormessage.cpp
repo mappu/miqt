@@ -5,12 +5,8 @@
 #include <cstring>
 #include <QWidget>
 #include "qerrormessage.h"
-
 #include "gen_qerrormessage.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QErrorMessage* QErrorMessage_new() {
 	return new QErrorMessage();
@@ -24,73 +20,61 @@ QMetaObject* QErrorMessage_MetaObject(const QErrorMessage* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void QErrorMessage_Tr(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QErrorMessage::tr(s);
+struct miqt_string* QErrorMessage_Tr(const char* s) {
+	QString _ret = QErrorMessage::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QErrorMessage_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QErrorMessage::trUtf8(s);
+struct miqt_string* QErrorMessage_TrUtf8(const char* s) {
+	QString _ret = QErrorMessage::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 QErrorMessage* QErrorMessage_QtHandler() {
 	return QErrorMessage::qtHandler();
 }
 
-void QErrorMessage_ShowMessage(QErrorMessage* self, const char* message, size_t message_Strlen) {
-	QString message_QString = QString::fromUtf8(message, message_Strlen);
+void QErrorMessage_ShowMessage(QErrorMessage* self, struct miqt_string* message) {
+	QString message_QString = QString::fromUtf8(&message->data, message->len);
 	self->showMessage(message_QString);
 }
 
-void QErrorMessage_ShowMessage2(QErrorMessage* self, const char* message, size_t message_Strlen, const char* typeVal, size_t typeVal_Strlen) {
-	QString message_QString = QString::fromUtf8(message, message_Strlen);
-	QString typeVal_QString = QString::fromUtf8(typeVal, typeVal_Strlen);
+void QErrorMessage_ShowMessage2(QErrorMessage* self, struct miqt_string* message, struct miqt_string* typeVal) {
+	QString message_QString = QString::fromUtf8(&message->data, message->len);
+	QString typeVal_QString = QString::fromUtf8(&typeVal->data, typeVal->len);
 	self->showMessage(message_QString, typeVal_QString);
 }
 
-void QErrorMessage_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QErrorMessage::tr(s, c);
+struct miqt_string* QErrorMessage_Tr2(const char* s, const char* c) {
+	QString _ret = QErrorMessage::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QErrorMessage_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QErrorMessage::tr(s, c, static_cast<int>(n));
+struct miqt_string* QErrorMessage_Tr3(const char* s, const char* c, int n) {
+	QString _ret = QErrorMessage::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QErrorMessage_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QErrorMessage::trUtf8(s, c);
+struct miqt_string* QErrorMessage_TrUtf82(const char* s, const char* c) {
+	QString _ret = QErrorMessage::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QErrorMessage_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QErrorMessage::trUtf8(s, c, static_cast<int>(n));
+struct miqt_string* QErrorMessage_TrUtf83(const char* s, const char* c, int n) {
+	QString _ret = QErrorMessage::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QErrorMessage_Delete(QErrorMessage* self) {

@@ -8,12 +8,8 @@
 #include <QByteArray>
 #include <cstring>
 #include "qdrag.h"
-
 #include "gen_qdrag.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QDrag* QDrag_new(QObject* dragSource) {
 	return new QDrag(dragSource);
@@ -23,22 +19,18 @@ QMetaObject* QDrag_MetaObject(const QDrag* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void QDrag_Tr(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QDrag::tr(s);
+struct miqt_string* QDrag_Tr(const char* s) {
+	QString _ret = QDrag::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QDrag_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QDrag::trUtf8(s);
+struct miqt_string* QDrag_TrUtf8(const char* s) {
+	QString _ret = QDrag::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QDrag_SetMimeData(QDrag* self, QMimeData* data) {
@@ -54,9 +46,9 @@ void QDrag_SetPixmap(QDrag* self, QPixmap* pixmap) {
 }
 
 QPixmap* QDrag_Pixmap(const QDrag* self) {
-	QPixmap ret = self->pixmap();
+	QPixmap _ret = self->pixmap();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPixmap*>(new QPixmap(ret));
+	return static_cast<QPixmap*>(new QPixmap(_ret));
 }
 
 void QDrag_SetHotSpot(QDrag* self, QPoint* hotspot) {
@@ -64,9 +56,9 @@ void QDrag_SetHotSpot(QDrag* self, QPoint* hotspot) {
 }
 
 QPoint* QDrag_HotSpot(const QDrag* self) {
-	QPoint ret = self->hotSpot();
+	QPoint _ret = self->hotSpot();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPoint*>(new QPoint(ret));
+	return static_cast<QPoint*>(new QPoint(_ret));
 }
 
 QObject* QDrag_Source(const QDrag* self) {
@@ -78,18 +70,18 @@ QObject* QDrag_Target(const QDrag* self) {
 }
 
 uintptr_t QDrag_Start(QDrag* self) {
-	Qt::DropAction ret = self->start();
-	return static_cast<uintptr_t>(ret);
+	Qt::DropAction _ret = self->start();
+	return static_cast<uintptr_t>(_ret);
 }
 
 uintptr_t QDrag_Exec(QDrag* self) {
-	Qt::DropAction ret = self->exec();
-	return static_cast<uintptr_t>(ret);
+	Qt::DropAction _ret = self->exec();
+	return static_cast<uintptr_t>(_ret);
 }
 
 uintptr_t QDrag_Exec2(QDrag* self, int supportedActions, uintptr_t defaultAction) {
-	Qt::DropAction ret = self->exec(static_cast<Qt::DropActions>(supportedActions), static_cast<Qt::DropAction>(defaultAction));
-	return static_cast<uintptr_t>(ret);
+	Qt::DropAction _ret = self->exec(static_cast<Qt::DropActions>(supportedActions), static_cast<Qt::DropAction>(defaultAction));
+	return static_cast<uintptr_t>(_ret);
 }
 
 void QDrag_SetDragCursor(QDrag* self, QPixmap* cursor, uintptr_t action) {
@@ -97,19 +89,19 @@ void QDrag_SetDragCursor(QDrag* self, QPixmap* cursor, uintptr_t action) {
 }
 
 QPixmap* QDrag_DragCursor(const QDrag* self, uintptr_t action) {
-	QPixmap ret = self->dragCursor(static_cast<Qt::DropAction>(action));
+	QPixmap _ret = self->dragCursor(static_cast<Qt::DropAction>(action));
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPixmap*>(new QPixmap(ret));
+	return static_cast<QPixmap*>(new QPixmap(_ret));
 }
 
 int QDrag_SupportedActions(const QDrag* self) {
-	Qt::DropActions ret = self->supportedActions();
-	return static_cast<int>(ret);
+	Qt::DropActions _ret = self->supportedActions();
+	return static_cast<int>(_ret);
 }
 
 uintptr_t QDrag_DefaultAction(const QDrag* self) {
-	Qt::DropAction ret = self->defaultAction();
-	return static_cast<uintptr_t>(ret);
+	Qt::DropAction _ret = self->defaultAction();
+	return static_cast<uintptr_t>(_ret);
 }
 
 void QDrag_Cancel() {
@@ -122,7 +114,9 @@ void QDrag_ActionChanged(QDrag* self, uintptr_t action) {
 
 void QDrag_connect_ActionChanged(QDrag* self, void* slot) {
 	QDrag::connect(self, static_cast<void (QDrag::*)(Qt::DropAction)>(&QDrag::actionChanged), self, [=](Qt::DropAction action) {
-		miqt_exec_callback(slot, 0, nullptr);
+		Qt::DropAction action_ret = action;
+		uintptr_t sigval1 = static_cast<uintptr_t>(action_ret);
+		miqt_exec_callback_QDrag_ActionChanged(slot, sigval1);
 	});
 }
 
@@ -132,54 +126,47 @@ void QDrag_TargetChanged(QDrag* self, QObject* newTarget) {
 
 void QDrag_connect_TargetChanged(QDrag* self, void* slot) {
 	QDrag::connect(self, static_cast<void (QDrag::*)(QObject*)>(&QDrag::targetChanged), self, [=](QObject* newTarget) {
-		miqt_exec_callback(slot, 0, nullptr);
+		QObject* sigval1 = newTarget;
+		miqt_exec_callback_QDrag_TargetChanged(slot, sigval1);
 	});
 }
 
-void QDrag_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QDrag::tr(s, c);
+struct miqt_string* QDrag_Tr2(const char* s, const char* c) {
+	QString _ret = QDrag::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QDrag_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QDrag::tr(s, c, static_cast<int>(n));
+struct miqt_string* QDrag_Tr3(const char* s, const char* c, int n) {
+	QString _ret = QDrag::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QDrag_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QDrag::trUtf8(s, c);
+struct miqt_string* QDrag_TrUtf82(const char* s, const char* c) {
+	QString _ret = QDrag::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QDrag_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QDrag::trUtf8(s, c, static_cast<int>(n));
+struct miqt_string* QDrag_TrUtf83(const char* s, const char* c, int n) {
+	QString _ret = QDrag::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 uintptr_t QDrag_Start1(QDrag* self, int supportedActions) {
-	Qt::DropAction ret = self->start(static_cast<Qt::DropActions>(supportedActions));
-	return static_cast<uintptr_t>(ret);
+	Qt::DropAction _ret = self->start(static_cast<Qt::DropActions>(supportedActions));
+	return static_cast<uintptr_t>(_ret);
 }
 
 uintptr_t QDrag_Exec1(QDrag* self, int supportedActions) {
-	Qt::DropAction ret = self->exec(static_cast<Qt::DropActions>(supportedActions));
-	return static_cast<uintptr_t>(ret);
+	Qt::DropAction _ret = self->exec(static_cast<Qt::DropActions>(supportedActions));
+	return static_cast<uintptr_t>(_ret);
 }
 
 void QDrag_Delete(QDrag* self) {

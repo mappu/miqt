@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"runtime"
 	"unsafe"
 )
 
@@ -35,29 +36,36 @@ func newQGenericPluginFactory_U(h unsafe.Pointer) *QGenericPluginFactory {
 }
 
 func QGenericPluginFactory_Keys() []string {
-	var _out **C.char = nil
-	var _out_Lengths *C.int = nil
-	var _out_len C.size_t = 0
-	C.QGenericPluginFactory_Keys(&_out, &_out_Lengths, &_out_len)
-	ret := make([]string, int(_out_len))
-	_outCast := (*[0xffff]*C.char)(unsafe.Pointer(_out)) // hey ya
-	_out_LengthsCast := (*[0xffff]C.int)(unsafe.Pointer(_out_Lengths))
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = C.GoStringN(_outCast[i], _out_LengthsCast[i])
+	var _ma *C.struct_miqt_array = C.QGenericPluginFactory_Keys()
+	_ret := make([]string, int(_ma.len))
+	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = C.GoStringN(&_outCast[i].data, C.int(int64(_outCast[i].len)))
+		C.free(unsafe.Pointer(_outCast[i])) // free the inner miqt_string*
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
 func QGenericPluginFactory_Create(param1 string, param2 string) *QObject {
-	param1_Cstring := C.CString(param1)
-	defer C.free(unsafe.Pointer(param1_Cstring))
-	param2_Cstring := C.CString(param2)
-	defer C.free(unsafe.Pointer(param2_Cstring))
-	ret := C.QGenericPluginFactory_Create(param1_Cstring, C.size_t(len(param1)), param2_Cstring, C.size_t(len(param2)))
-	return newQObject_U(unsafe.Pointer(ret))
+	param1_ms := miqt_strdupg(param1)
+	defer C.free(param1_ms)
+	param2_ms := miqt_strdupg(param2)
+	defer C.free(param2_ms)
+	_ret := C.QGenericPluginFactory_Create((*C.struct_miqt_string)(param1_ms), (*C.struct_miqt_string)(param2_ms))
+	return newQObject_U(unsafe.Pointer(_ret))
 }
 
+// Delete this object from C++ memory.
 func (this *QGenericPluginFactory) Delete() {
 	C.QGenericPluginFactory_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QGenericPluginFactory) GoGC() {
+	runtime.SetFinalizer(this, func(this *QGenericPluginFactory) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

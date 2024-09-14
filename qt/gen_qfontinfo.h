@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -23,8 +25,8 @@ QFontInfo* QFontInfo_new(QFont* param1);
 QFontInfo* QFontInfo_new2(QFontInfo* param1);
 void QFontInfo_OperatorAssign(QFontInfo* self, QFontInfo* param1);
 void QFontInfo_Swap(QFontInfo* self, QFontInfo* other);
-void QFontInfo_Family(const QFontInfo* self, char** _out, int* _out_Strlen);
-void QFontInfo_StyleName(const QFontInfo* self, char** _out, int* _out_Strlen);
+struct miqt_string* QFontInfo_Family(const QFontInfo* self);
+struct miqt_string* QFontInfo_StyleName(const QFontInfo* self);
 int QFontInfo_PixelSize(const QFontInfo* self);
 int QFontInfo_PointSize(const QFontInfo* self);
 double QFontInfo_PointSizeF(const QFontInfo* self);

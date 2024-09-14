@@ -19,12 +19,8 @@
 #include <QStyleOptionGraphicsItem>
 #include <QWidget>
 #include "qgraphicswidget.h"
-
 #include "gen_qgraphicswidget.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QGraphicsWidget* QGraphicsWidget_new() {
 	return new QGraphicsWidget();
@@ -42,22 +38,18 @@ QMetaObject* QGraphicsWidget_MetaObject(const QGraphicsWidget* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void QGraphicsWidget_Tr(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QGraphicsWidget::tr(s);
+struct miqt_string* QGraphicsWidget_Tr(const char* s) {
+	QString _ret = QGraphicsWidget::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QGraphicsWidget_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QGraphicsWidget::trUtf8(s);
+struct miqt_string* QGraphicsWidget_TrUtf8(const char* s) {
+	QString _ret = QGraphicsWidget::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 QGraphicsLayout* QGraphicsWidget_Layout(const QGraphicsWidget* self) {
@@ -73,8 +65,8 @@ void QGraphicsWidget_AdjustSize(QGraphicsWidget* self) {
 }
 
 uintptr_t QGraphicsWidget_LayoutDirection(const QGraphicsWidget* self) {
-	Qt::LayoutDirection ret = self->layoutDirection();
-	return static_cast<uintptr_t>(ret);
+	Qt::LayoutDirection _ret = self->layoutDirection();
+	return static_cast<uintptr_t>(_ret);
 }
 
 void QGraphicsWidget_SetLayoutDirection(QGraphicsWidget* self, uintptr_t direction) {
@@ -94,9 +86,9 @@ void QGraphicsWidget_SetStyle(QGraphicsWidget* self, QStyle* style) {
 }
 
 QFont* QGraphicsWidget_Font(const QGraphicsWidget* self) {
-	QFont ret = self->font();
+	QFont _ret = self->font();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QFont*>(new QFont(ret));
+	return static_cast<QFont*>(new QFont(_ret));
 }
 
 void QGraphicsWidget_SetFont(QGraphicsWidget* self, QFont* font) {
@@ -104,9 +96,9 @@ void QGraphicsWidget_SetFont(QGraphicsWidget* self, QFont* font) {
 }
 
 QPalette* QGraphicsWidget_Palette(const QGraphicsWidget* self) {
-	QPalette ret = self->palette();
+	QPalette _ret = self->palette();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPalette*>(new QPalette(ret));
+	return static_cast<QPalette*>(new QPalette(_ret));
 }
 
 void QGraphicsWidget_SetPalette(QGraphicsWidget* self, QPalette* palette) {
@@ -130,9 +122,9 @@ void QGraphicsWidget_Resize2(QGraphicsWidget* self, double w, double h) {
 }
 
 QSizeF* QGraphicsWidget_Size(const QGraphicsWidget* self) {
-	QSizeF ret = self->size();
+	QSizeF _ret = self->size();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSizeF*>(new QSizeF(ret));
+	return static_cast<QSizeF*>(new QSizeF(_ret));
 }
 
 void QGraphicsWidget_SetGeometry(QGraphicsWidget* self, QRectF* rect) {
@@ -144,9 +136,9 @@ void QGraphicsWidget_SetGeometry2(QGraphicsWidget* self, double x, double y, dou
 }
 
 QRectF* QGraphicsWidget_Rect(const QGraphicsWidget* self) {
-	QRectF ret = self->rect();
+	QRectF _ret = self->rect();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(ret));
+	return static_cast<QRectF*>(new QRectF(_ret));
 }
 
 void QGraphicsWidget_SetContentsMargins(QGraphicsWidget* self, double left, double top, double right, double bottom) {
@@ -178,25 +170,25 @@ void QGraphicsWidget_UnsetWindowFrameMargins(QGraphicsWidget* self) {
 }
 
 QRectF* QGraphicsWidget_WindowFrameGeometry(const QGraphicsWidget* self) {
-	QRectF ret = self->windowFrameGeometry();
+	QRectF _ret = self->windowFrameGeometry();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(ret));
+	return static_cast<QRectF*>(new QRectF(_ret));
 }
 
 QRectF* QGraphicsWidget_WindowFrameRect(const QGraphicsWidget* self) {
-	QRectF ret = self->windowFrameRect();
+	QRectF _ret = self->windowFrameRect();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(ret));
+	return static_cast<QRectF*>(new QRectF(_ret));
 }
 
 int QGraphicsWidget_WindowFlags(const QGraphicsWidget* self) {
-	Qt::WindowFlags ret = self->windowFlags();
-	return static_cast<int>(ret);
+	Qt::WindowFlags _ret = self->windowFlags();
+	return static_cast<int>(_ret);
 }
 
 uintptr_t QGraphicsWidget_WindowType(const QGraphicsWidget* self) {
-	Qt::WindowType ret = self->windowType();
-	return static_cast<uintptr_t>(ret);
+	Qt::WindowType _ret = self->windowType();
+	return static_cast<uintptr_t>(_ret);
 }
 
 void QGraphicsWidget_SetWindowFlags(QGraphicsWidget* self, int wFlags) {
@@ -207,23 +199,21 @@ bool QGraphicsWidget_IsActiveWindow(const QGraphicsWidget* self) {
 	return self->isActiveWindow();
 }
 
-void QGraphicsWidget_SetWindowTitle(QGraphicsWidget* self, const char* title, size_t title_Strlen) {
-	QString title_QString = QString::fromUtf8(title, title_Strlen);
+void QGraphicsWidget_SetWindowTitle(QGraphicsWidget* self, struct miqt_string* title) {
+	QString title_QString = QString::fromUtf8(&title->data, title->len);
 	self->setWindowTitle(title_QString);
 }
 
-void QGraphicsWidget_WindowTitle(const QGraphicsWidget* self, char** _out, int* _out_Strlen) {
-	QString ret = self->windowTitle();
+struct miqt_string* QGraphicsWidget_WindowTitle(const QGraphicsWidget* self) {
+	QString _ret = self->windowTitle();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 uintptr_t QGraphicsWidget_FocusPolicy(const QGraphicsWidget* self) {
-	Qt::FocusPolicy ret = self->focusPolicy();
-	return static_cast<uintptr_t>(ret);
+	Qt::FocusPolicy _ret = self->focusPolicy();
+	return static_cast<uintptr_t>(_ret);
 }
 
 void QGraphicsWidget_SetFocusPolicy(QGraphicsWidget* self, uintptr_t policy) {
@@ -258,20 +248,22 @@ void QGraphicsWidget_AddAction(QGraphicsWidget* self, QAction* action) {
 	self->addAction(action);
 }
 
-void QGraphicsWidget_AddActions(QGraphicsWidget* self, QAction** actions, size_t actions_len) {
+void QGraphicsWidget_AddActions(QGraphicsWidget* self, struct miqt_array* /* of QAction* */ actions) {
 	QList<QAction*> actions_QList;
-	actions_QList.reserve(actions_len);
-	for(size_t i = 0; i < actions_len; ++i) {
-		actions_QList.push_back(actions[i]);
+	actions_QList.reserve(actions->len);
+	QAction** actions_arr = static_cast<QAction**>(actions->data);
+	for(size_t i = 0; i < actions->len; ++i) {
+		actions_QList.push_back(actions_arr[i]);
 	}
 	self->addActions(actions_QList);
 }
 
-void QGraphicsWidget_InsertActions(QGraphicsWidget* self, QAction* before, QAction** actions, size_t actions_len) {
+void QGraphicsWidget_InsertActions(QGraphicsWidget* self, QAction* before, struct miqt_array* /* of QAction* */ actions) {
 	QList<QAction*> actions_QList;
-	actions_QList.reserve(actions_len);
-	for(size_t i = 0; i < actions_len; ++i) {
-		actions_QList.push_back(actions[i]);
+	actions_QList.reserve(actions->len);
+	QAction** actions_arr = static_cast<QAction**>(actions->data);
+	for(size_t i = 0; i < actions->len; ++i) {
+		actions_QList.push_back(actions_arr[i]);
 	}
 	self->insertActions(before, actions_QList);
 }
@@ -284,15 +276,17 @@ void QGraphicsWidget_RemoveAction(QGraphicsWidget* self, QAction* action) {
 	self->removeAction(action);
 }
 
-void QGraphicsWidget_Actions(const QGraphicsWidget* self, QAction*** _out, size_t* _out_len) {
-	QList<QAction*> ret = self->actions();
+struct miqt_array* QGraphicsWidget_Actions(const QGraphicsWidget* self) {
+	QList<QAction*> _ret = self->actions();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QAction** __out = static_cast<QAction**>(malloc(sizeof(QAction*) * ret.length()));
-	for (size_t i = 0, e = ret.length(); i < e; ++i) {
-		__out[i] = ret[i];
+	QAction** _arr = static_cast<QAction**>(malloc(sizeof(QAction*) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		_arr[i] = _ret[i];
 	}
-	*_out = __out;
-	*_out_len = ret.length();
+	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
+	_out->len = _ret.length();
+	_out->data = static_cast<void*>(_arr);
+	return _out;
 }
 
 void QGraphicsWidget_SetAttribute(QGraphicsWidget* self, uintptr_t attribute) {
@@ -316,15 +310,15 @@ void QGraphicsWidget_PaintWindowFrame(QGraphicsWidget* self, QPainter* painter, 
 }
 
 QRectF* QGraphicsWidget_BoundingRect(const QGraphicsWidget* self) {
-	QRectF ret = self->boundingRect();
+	QRectF _ret = self->boundingRect();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(ret));
+	return static_cast<QRectF*>(new QRectF(_ret));
 }
 
 QPainterPath* QGraphicsWidget_Shape(const QGraphicsWidget* self) {
-	QPainterPath ret = self->shape();
+	QPainterPath _ret = self->shape();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPainterPath*>(new QPainterPath(ret));
+	return static_cast<QPainterPath*>(new QPainterPath(_ret));
 }
 
 void QGraphicsWidget_GeometryChanged(QGraphicsWidget* self) {
@@ -333,7 +327,7 @@ void QGraphicsWidget_GeometryChanged(QGraphicsWidget* self) {
 
 void QGraphicsWidget_connect_GeometryChanged(QGraphicsWidget* self, void* slot) {
 	QGraphicsWidget::connect(self, static_cast<void (QGraphicsWidget::*)()>(&QGraphicsWidget::geometryChanged), self, [=]() {
-		miqt_exec_callback(slot, 0, nullptr);
+		miqt_exec_callback_QGraphicsWidget_GeometryChanged(slot);
 	});
 }
 
@@ -343,7 +337,7 @@ void QGraphicsWidget_LayoutChanged(QGraphicsWidget* self) {
 
 void QGraphicsWidget_connect_LayoutChanged(QGraphicsWidget* self, void* slot) {
 	QGraphicsWidget::connect(self, static_cast<void (QGraphicsWidget::*)()>(&QGraphicsWidget::layoutChanged), self, [=]() {
-		miqt_exec_callback(slot, 0, nullptr);
+		miqt_exec_callback_QGraphicsWidget_LayoutChanged(slot);
 	});
 }
 
@@ -351,40 +345,32 @@ bool QGraphicsWidget_Close(QGraphicsWidget* self) {
 	return self->close();
 }
 
-void QGraphicsWidget_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QGraphicsWidget::tr(s, c);
+struct miqt_string* QGraphicsWidget_Tr2(const char* s, const char* c) {
+	QString _ret = QGraphicsWidget::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QGraphicsWidget_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QGraphicsWidget::tr(s, c, static_cast<int>(n));
+struct miqt_string* QGraphicsWidget_Tr3(const char* s, const char* c, int n) {
+	QString _ret = QGraphicsWidget::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QGraphicsWidget_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QGraphicsWidget::trUtf8(s, c);
+struct miqt_string* QGraphicsWidget_TrUtf82(const char* s, const char* c) {
+	QString _ret = QGraphicsWidget::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QGraphicsWidget_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QGraphicsWidget::trUtf8(s, c, static_cast<int>(n));
+struct miqt_string* QGraphicsWidget_TrUtf83(const char* s, const char* c, int n) {
+	QString _ret = QGraphicsWidget::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 int QGraphicsWidget_GrabShortcut2(QGraphicsWidget* self, QKeySequence* sequence, uintptr_t context) {

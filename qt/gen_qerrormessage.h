@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -24,15 +26,15 @@ typedef struct QWidget QWidget;
 QErrorMessage* QErrorMessage_new();
 QErrorMessage* QErrorMessage_new2(QWidget* parent);
 QMetaObject* QErrorMessage_MetaObject(const QErrorMessage* self);
-void QErrorMessage_Tr(const char* s, char** _out, int* _out_Strlen);
-void QErrorMessage_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QErrorMessage_Tr(const char* s);
+struct miqt_string* QErrorMessage_TrUtf8(const char* s);
 QErrorMessage* QErrorMessage_QtHandler();
-void QErrorMessage_ShowMessage(QErrorMessage* self, const char* message, size_t message_Strlen);
-void QErrorMessage_ShowMessage2(QErrorMessage* self, const char* message, size_t message_Strlen, const char* typeVal, size_t typeVal_Strlen);
-void QErrorMessage_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QErrorMessage_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QErrorMessage_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QErrorMessage_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+void QErrorMessage_ShowMessage(QErrorMessage* self, struct miqt_string* message);
+void QErrorMessage_ShowMessage2(QErrorMessage* self, struct miqt_string* message, struct miqt_string* typeVal);
+struct miqt_string* QErrorMessage_Tr2(const char* s, const char* c);
+struct miqt_string* QErrorMessage_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QErrorMessage_TrUtf82(const char* s, const char* c);
+struct miqt_string* QErrorMessage_TrUtf83(const char* s, const char* c, int n);
 void QErrorMessage_Delete(QErrorMessage* self);
 
 #ifdef __cplusplus

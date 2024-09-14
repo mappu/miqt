@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -38,8 +40,8 @@ typedef struct QRectF QRectF;
 #endif
 
 QMetaObject* QGraphicsEffect_MetaObject(const QGraphicsEffect* self);
-void QGraphicsEffect_Tr(const char* s, char** _out, int* _out_Strlen);
-void QGraphicsEffect_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QGraphicsEffect_Tr(const char* s);
+struct miqt_string* QGraphicsEffect_TrUtf8(const char* s);
 QRectF* QGraphicsEffect_BoundingRectFor(const QGraphicsEffect* self, QRectF* sourceRect);
 QRectF* QGraphicsEffect_BoundingRect(const QGraphicsEffect* self);
 bool QGraphicsEffect_IsEnabled(const QGraphicsEffect* self);
@@ -47,17 +49,17 @@ void QGraphicsEffect_SetEnabled(QGraphicsEffect* self, bool enable);
 void QGraphicsEffect_Update(QGraphicsEffect* self);
 void QGraphicsEffect_EnabledChanged(QGraphicsEffect* self, bool enabled);
 void QGraphicsEffect_connect_EnabledChanged(QGraphicsEffect* self, void* slot);
-void QGraphicsEffect_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QGraphicsEffect_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QGraphicsEffect_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QGraphicsEffect_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QGraphicsEffect_Tr2(const char* s, const char* c);
+struct miqt_string* QGraphicsEffect_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QGraphicsEffect_TrUtf82(const char* s, const char* c);
+struct miqt_string* QGraphicsEffect_TrUtf83(const char* s, const char* c, int n);
 void QGraphicsEffect_Delete(QGraphicsEffect* self);
 
 QGraphicsColorizeEffect* QGraphicsColorizeEffect_new();
 QGraphicsColorizeEffect* QGraphicsColorizeEffect_new2(QObject* parent);
 QMetaObject* QGraphicsColorizeEffect_MetaObject(const QGraphicsColorizeEffect* self);
-void QGraphicsColorizeEffect_Tr(const char* s, char** _out, int* _out_Strlen);
-void QGraphicsColorizeEffect_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QGraphicsColorizeEffect_Tr(const char* s);
+struct miqt_string* QGraphicsColorizeEffect_TrUtf8(const char* s);
 QColor* QGraphicsColorizeEffect_Color(const QGraphicsColorizeEffect* self);
 double QGraphicsColorizeEffect_Strength(const QGraphicsColorizeEffect* self);
 void QGraphicsColorizeEffect_SetColor(QGraphicsColorizeEffect* self, QColor* c);
@@ -66,17 +68,17 @@ void QGraphicsColorizeEffect_ColorChanged(QGraphicsColorizeEffect* self, QColor*
 void QGraphicsColorizeEffect_connect_ColorChanged(QGraphicsColorizeEffect* self, void* slot);
 void QGraphicsColorizeEffect_StrengthChanged(QGraphicsColorizeEffect* self, double strength);
 void QGraphicsColorizeEffect_connect_StrengthChanged(QGraphicsColorizeEffect* self, void* slot);
-void QGraphicsColorizeEffect_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QGraphicsColorizeEffect_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QGraphicsColorizeEffect_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QGraphicsColorizeEffect_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QGraphicsColorizeEffect_Tr2(const char* s, const char* c);
+struct miqt_string* QGraphicsColorizeEffect_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QGraphicsColorizeEffect_TrUtf82(const char* s, const char* c);
+struct miqt_string* QGraphicsColorizeEffect_TrUtf83(const char* s, const char* c, int n);
 void QGraphicsColorizeEffect_Delete(QGraphicsColorizeEffect* self);
 
 QGraphicsBlurEffect* QGraphicsBlurEffect_new();
 QGraphicsBlurEffect* QGraphicsBlurEffect_new2(QObject* parent);
 QMetaObject* QGraphicsBlurEffect_MetaObject(const QGraphicsBlurEffect* self);
-void QGraphicsBlurEffect_Tr(const char* s, char** _out, int* _out_Strlen);
-void QGraphicsBlurEffect_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QGraphicsBlurEffect_Tr(const char* s);
+struct miqt_string* QGraphicsBlurEffect_TrUtf8(const char* s);
 QRectF* QGraphicsBlurEffect_BoundingRectFor(const QGraphicsBlurEffect* self, QRectF* rect);
 double QGraphicsBlurEffect_BlurRadius(const QGraphicsBlurEffect* self);
 int QGraphicsBlurEffect_BlurHints(const QGraphicsBlurEffect* self);
@@ -86,17 +88,17 @@ void QGraphicsBlurEffect_BlurRadiusChanged(QGraphicsBlurEffect* self, double blu
 void QGraphicsBlurEffect_connect_BlurRadiusChanged(QGraphicsBlurEffect* self, void* slot);
 void QGraphicsBlurEffect_BlurHintsChanged(QGraphicsBlurEffect* self, int hints);
 void QGraphicsBlurEffect_connect_BlurHintsChanged(QGraphicsBlurEffect* self, void* slot);
-void QGraphicsBlurEffect_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QGraphicsBlurEffect_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QGraphicsBlurEffect_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QGraphicsBlurEffect_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QGraphicsBlurEffect_Tr2(const char* s, const char* c);
+struct miqt_string* QGraphicsBlurEffect_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QGraphicsBlurEffect_TrUtf82(const char* s, const char* c);
+struct miqt_string* QGraphicsBlurEffect_TrUtf83(const char* s, const char* c, int n);
 void QGraphicsBlurEffect_Delete(QGraphicsBlurEffect* self);
 
 QGraphicsDropShadowEffect* QGraphicsDropShadowEffect_new();
 QGraphicsDropShadowEffect* QGraphicsDropShadowEffect_new2(QObject* parent);
 QMetaObject* QGraphicsDropShadowEffect_MetaObject(const QGraphicsDropShadowEffect* self);
-void QGraphicsDropShadowEffect_Tr(const char* s, char** _out, int* _out_Strlen);
-void QGraphicsDropShadowEffect_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QGraphicsDropShadowEffect_Tr(const char* s);
+struct miqt_string* QGraphicsDropShadowEffect_TrUtf8(const char* s);
 QRectF* QGraphicsDropShadowEffect_BoundingRectFor(const QGraphicsDropShadowEffect* self, QRectF* rect);
 QPointF* QGraphicsDropShadowEffect_Offset(const QGraphicsDropShadowEffect* self);
 double QGraphicsDropShadowEffect_XOffset(const QGraphicsDropShadowEffect* self);
@@ -116,17 +118,17 @@ void QGraphicsDropShadowEffect_BlurRadiusChanged(QGraphicsDropShadowEffect* self
 void QGraphicsDropShadowEffect_connect_BlurRadiusChanged(QGraphicsDropShadowEffect* self, void* slot);
 void QGraphicsDropShadowEffect_ColorChanged(QGraphicsDropShadowEffect* self, QColor* color);
 void QGraphicsDropShadowEffect_connect_ColorChanged(QGraphicsDropShadowEffect* self, void* slot);
-void QGraphicsDropShadowEffect_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QGraphicsDropShadowEffect_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QGraphicsDropShadowEffect_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QGraphicsDropShadowEffect_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QGraphicsDropShadowEffect_Tr2(const char* s, const char* c);
+struct miqt_string* QGraphicsDropShadowEffect_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QGraphicsDropShadowEffect_TrUtf82(const char* s, const char* c);
+struct miqt_string* QGraphicsDropShadowEffect_TrUtf83(const char* s, const char* c, int n);
 void QGraphicsDropShadowEffect_Delete(QGraphicsDropShadowEffect* self);
 
 QGraphicsOpacityEffect* QGraphicsOpacityEffect_new();
 QGraphicsOpacityEffect* QGraphicsOpacityEffect_new2(QObject* parent);
 QMetaObject* QGraphicsOpacityEffect_MetaObject(const QGraphicsOpacityEffect* self);
-void QGraphicsOpacityEffect_Tr(const char* s, char** _out, int* _out_Strlen);
-void QGraphicsOpacityEffect_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QGraphicsOpacityEffect_Tr(const char* s);
+struct miqt_string* QGraphicsOpacityEffect_TrUtf8(const char* s);
 double QGraphicsOpacityEffect_Opacity(const QGraphicsOpacityEffect* self);
 QBrush* QGraphicsOpacityEffect_OpacityMask(const QGraphicsOpacityEffect* self);
 void QGraphicsOpacityEffect_SetOpacity(QGraphicsOpacityEffect* self, double opacity);
@@ -135,10 +137,10 @@ void QGraphicsOpacityEffect_OpacityChanged(QGraphicsOpacityEffect* self, double 
 void QGraphicsOpacityEffect_connect_OpacityChanged(QGraphicsOpacityEffect* self, void* slot);
 void QGraphicsOpacityEffect_OpacityMaskChanged(QGraphicsOpacityEffect* self, QBrush* mask);
 void QGraphicsOpacityEffect_connect_OpacityMaskChanged(QGraphicsOpacityEffect* self, void* slot);
-void QGraphicsOpacityEffect_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QGraphicsOpacityEffect_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QGraphicsOpacityEffect_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QGraphicsOpacityEffect_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QGraphicsOpacityEffect_Tr2(const char* s, const char* c);
+struct miqt_string* QGraphicsOpacityEffect_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QGraphicsOpacityEffect_TrUtf82(const char* s, const char* c);
+struct miqt_string* QGraphicsOpacityEffect_TrUtf83(const char* s, const char* c, int n);
 void QGraphicsOpacityEffect_Delete(QGraphicsOpacityEffect* self);
 
 #ifdef __cplusplus

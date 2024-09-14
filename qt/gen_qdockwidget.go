@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"runtime"
 	"runtime/cgo"
 	"unsafe"
 )
@@ -51,9 +52,9 @@ func newQDockWidget_U(h unsafe.Pointer) *QDockWidget {
 
 // NewQDockWidget constructs a new QDockWidget object.
 func NewQDockWidget(title string) *QDockWidget {
-	title_Cstring := C.CString(title)
-	defer C.free(unsafe.Pointer(title_Cstring))
-	ret := C.QDockWidget_new(title_Cstring, C.size_t(len(title)))
+	title_ms := miqt_strdupg(title)
+	defer C.free(title_ms)
+	ret := C.QDockWidget_new((*C.struct_miqt_string)(title_ms))
 	return newQDockWidget(ret)
 }
 
@@ -65,17 +66,17 @@ func NewQDockWidget2() *QDockWidget {
 
 // NewQDockWidget3 constructs a new QDockWidget object.
 func NewQDockWidget3(title string, parent *QWidget) *QDockWidget {
-	title_Cstring := C.CString(title)
-	defer C.free(unsafe.Pointer(title_Cstring))
-	ret := C.QDockWidget_new3(title_Cstring, C.size_t(len(title)), parent.cPointer())
+	title_ms := miqt_strdupg(title)
+	defer C.free(title_ms)
+	ret := C.QDockWidget_new3((*C.struct_miqt_string)(title_ms), parent.cPointer())
 	return newQDockWidget(ret)
 }
 
 // NewQDockWidget4 constructs a new QDockWidget object.
 func NewQDockWidget4(title string, parent *QWidget, flags int) *QDockWidget {
-	title_Cstring := C.CString(title)
-	defer C.free(unsafe.Pointer(title_Cstring))
-	ret := C.QDockWidget_new4(title_Cstring, C.size_t(len(title)), parent.cPointer(), (C.int)(flags))
+	title_ms := miqt_strdupg(title)
+	defer C.free(title_ms)
+	ret := C.QDockWidget_new4((*C.struct_miqt_string)(title_ms), parent.cPointer(), (C.int)(flags))
 	return newQDockWidget(ret)
 }
 
@@ -92,35 +93,31 @@ func NewQDockWidget6(parent *QWidget, flags int) *QDockWidget {
 }
 
 func (this *QDockWidget) MetaObject() *QMetaObject {
-	ret := C.QDockWidget_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QDockWidget_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QDockWidget_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QDockWidget_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QDockWidget_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QDockWidget_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QDockWidget_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QDockWidget_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QDockWidget) Widget() *QWidget {
-	ret := C.QDockWidget_Widget(this.h)
-	return newQWidget_U(unsafe.Pointer(ret))
+	_ret := C.QDockWidget_Widget(this.h)
+	return newQWidget_U(unsafe.Pointer(_ret))
 }
 
 func (this *QDockWidget) SetWidget(widget *QWidget) {
@@ -132,8 +129,8 @@ func (this *QDockWidget) SetFeatures(features int) {
 }
 
 func (this *QDockWidget) Features() int {
-	ret := C.QDockWidget_Features(this.h)
-	return (int)(ret)
+	_ret := C.QDockWidget_Features(this.h)
+	return (int)(_ret)
 }
 
 func (this *QDockWidget) SetFloating(floating bool) {
@@ -141,8 +138,8 @@ func (this *QDockWidget) SetFloating(floating bool) {
 }
 
 func (this *QDockWidget) IsFloating() bool {
-	ret := C.QDockWidget_IsFloating(this.h)
-	return (bool)(ret)
+	_ret := C.QDockWidget_IsFloating(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QDockWidget) SetAllowedAreas(areas int) {
@@ -150,8 +147,8 @@ func (this *QDockWidget) SetAllowedAreas(areas int) {
 }
 
 func (this *QDockWidget) AllowedAreas() int {
-	ret := C.QDockWidget_AllowedAreas(this.h)
-	return (int)(ret)
+	_ret := C.QDockWidget_AllowedAreas(this.h)
+	return (int)(_ret)
 }
 
 func (this *QDockWidget) SetTitleBarWidget(widget *QWidget) {
@@ -159,78 +156,123 @@ func (this *QDockWidget) SetTitleBarWidget(widget *QWidget) {
 }
 
 func (this *QDockWidget) TitleBarWidget() *QWidget {
-	ret := C.QDockWidget_TitleBarWidget(this.h)
-	return newQWidget_U(unsafe.Pointer(ret))
+	_ret := C.QDockWidget_TitleBarWidget(this.h)
+	return newQWidget_U(unsafe.Pointer(_ret))
 }
 
 func (this *QDockWidget) IsAreaAllowed(area DockWidgetArea) bool {
-	ret := C.QDockWidget_IsAreaAllowed(this.h, (C.uintptr_t)(area))
-	return (bool)(ret)
+	_ret := C.QDockWidget_IsAreaAllowed(this.h, (C.uintptr_t)(area))
+	return (bool)(_ret)
 }
 
 func (this *QDockWidget) ToggleViewAction() *QAction {
-	ret := C.QDockWidget_ToggleViewAction(this.h)
-	return newQAction_U(unsafe.Pointer(ret))
+	_ret := C.QDockWidget_ToggleViewAction(this.h)
+	return newQAction_U(unsafe.Pointer(_ret))
 }
 
 func (this *QDockWidget) FeaturesChanged(features int) {
 	C.QDockWidget_FeaturesChanged(this.h, (C.int)(features))
 }
+func (this *QDockWidget) OnFeaturesChanged(slot func(features int)) {
+	C.QDockWidget_connect_FeaturesChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QDockWidget) OnFeaturesChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QDockWidget_FeaturesChanged
+func miqt_exec_callback_QDockWidget_FeaturesChanged(cb *C.void, features C.int) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(features int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QDockWidget_connect_FeaturesChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	features_ret := features
+	slotval1 := (int)(features_ret)
+
+	gofunc(slotval1)
 }
 
 func (this *QDockWidget) TopLevelChanged(topLevel bool) {
 	C.QDockWidget_TopLevelChanged(this.h, (C.bool)(topLevel))
 }
+func (this *QDockWidget) OnTopLevelChanged(slot func(topLevel bool)) {
+	C.QDockWidget_connect_TopLevelChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QDockWidget) OnTopLevelChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QDockWidget_TopLevelChanged
+func miqt_exec_callback_QDockWidget_TopLevelChanged(cb *C.void, topLevel C.bool) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(topLevel bool))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QDockWidget_connect_TopLevelChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	topLevel_ret := topLevel
+	slotval1 := (bool)(topLevel_ret)
+
+	gofunc(slotval1)
 }
 
 func (this *QDockWidget) AllowedAreasChanged(allowedAreas int) {
 	C.QDockWidget_AllowedAreasChanged(this.h, (C.int)(allowedAreas))
 }
+func (this *QDockWidget) OnAllowedAreasChanged(slot func(allowedAreas int)) {
+	C.QDockWidget_connect_AllowedAreasChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QDockWidget) OnAllowedAreasChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QDockWidget_AllowedAreasChanged
+func miqt_exec_callback_QDockWidget_AllowedAreasChanged(cb *C.void, allowedAreas C.int) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(allowedAreas int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QDockWidget_connect_AllowedAreasChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	allowedAreas_ret := allowedAreas
+	slotval1 := (int)(allowedAreas_ret)
+
+	gofunc(slotval1)
 }
 
 func (this *QDockWidget) VisibilityChanged(visible bool) {
 	C.QDockWidget_VisibilityChanged(this.h, (C.bool)(visible))
 }
+func (this *QDockWidget) OnVisibilityChanged(slot func(visible bool)) {
+	C.QDockWidget_connect_VisibilityChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QDockWidget) OnVisibilityChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QDockWidget_VisibilityChanged
+func miqt_exec_callback_QDockWidget_VisibilityChanged(cb *C.void, visible C.bool) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(visible bool))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QDockWidget_connect_VisibilityChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	visible_ret := visible
+	slotval1 := (bool)(visible_ret)
+
+	gofunc(slotval1)
 }
 
 func (this *QDockWidget) DockLocationChanged(area DockWidgetArea) {
 	C.QDockWidget_DockLocationChanged(this.h, (C.uintptr_t)(area))
 }
+func (this *QDockWidget) OnDockLocationChanged(slot func(area DockWidgetArea)) {
+	C.QDockWidget_connect_DockLocationChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QDockWidget) OnDockLocationChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QDockWidget_DockLocationChanged
+func miqt_exec_callback_QDockWidget_DockLocationChanged(cb *C.void, area C.uintptr_t) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(area DockWidgetArea))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QDockWidget_connect_DockLocationChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	area_ret := area
+	slotval1 := (DockWidgetArea)(area_ret)
+
+	gofunc(slotval1)
 }
 
 func QDockWidget_Tr2(s string, c string) string {
@@ -238,12 +280,10 @@ func QDockWidget_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QDockWidget_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QDockWidget_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QDockWidget_Tr3(s string, c string, n int) string {
@@ -251,12 +291,10 @@ func QDockWidget_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QDockWidget_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QDockWidget_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QDockWidget_TrUtf82(s string, c string) string {
@@ -264,12 +302,10 @@ func QDockWidget_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QDockWidget_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QDockWidget_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QDockWidget_TrUtf83(s string, c string, n int) string {
@@ -277,14 +313,22 @@ func QDockWidget_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QDockWidget_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QDockWidget_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
+// Delete this object from C++ memory.
 func (this *QDockWidget) Delete() {
 	C.QDockWidget_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QDockWidget) GoGC() {
+	runtime.SetFinalizer(this, func(this *QDockWidget) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

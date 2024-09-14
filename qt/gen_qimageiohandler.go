@@ -86,8 +86,8 @@ func (this *QImageIOHandler) SetDevice(device *QIODevice) {
 }
 
 func (this *QImageIOHandler) Device() *QIODevice {
-	ret := C.QImageIOHandler_Device(this.h)
-	return newQIODevice_U(unsafe.Pointer(ret))
+	_ret := C.QImageIOHandler_Device(this.h)
+	return newQIODevice_U(unsafe.Pointer(_ret))
 }
 
 func (this *QImageIOHandler) SetFormat(format *QByteArray) {
@@ -99,51 +99,39 @@ func (this *QImageIOHandler) SetFormatWithFormat(format *QByteArray) {
 }
 
 func (this *QImageIOHandler) Format() *QByteArray {
-	ret := C.QImageIOHandler_Format(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQByteArray(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QByteArray) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QImageIOHandler_Format(this.h)
+	_goptr := newQByteArray(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QImageIOHandler) Name() *QByteArray {
-	ret := C.QImageIOHandler_Name(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQByteArray(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QByteArray) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QImageIOHandler_Name(this.h)
+	_goptr := newQByteArray(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QImageIOHandler) CanRead() bool {
-	ret := C.QImageIOHandler_CanRead(this.h)
-	return (bool)(ret)
+	_ret := C.QImageIOHandler_CanRead(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QImageIOHandler) Read(image *QImage) bool {
-	ret := C.QImageIOHandler_Read(this.h, image.cPointer())
-	return (bool)(ret)
+	_ret := C.QImageIOHandler_Read(this.h, image.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QImageIOHandler) Write(image *QImage) bool {
-	ret := C.QImageIOHandler_Write(this.h, image.cPointer())
-	return (bool)(ret)
+	_ret := C.QImageIOHandler_Write(this.h, image.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QImageIOHandler) Option(option QImageIOHandler__ImageOption) *QVariant {
-	ret := C.QImageIOHandler_Option(this.h, (C.uintptr_t)(option))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQVariant(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QVariant) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QImageIOHandler_Option(this.h, (C.uintptr_t)(option))
+	_goptr := newQVariant(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QImageIOHandler) SetOption(option QImageIOHandler__ImageOption, value *QVariant) {
@@ -151,53 +139,59 @@ func (this *QImageIOHandler) SetOption(option QImageIOHandler__ImageOption, valu
 }
 
 func (this *QImageIOHandler) SupportsOption(option QImageIOHandler__ImageOption) bool {
-	ret := C.QImageIOHandler_SupportsOption(this.h, (C.uintptr_t)(option))
-	return (bool)(ret)
+	_ret := C.QImageIOHandler_SupportsOption(this.h, (C.uintptr_t)(option))
+	return (bool)(_ret)
 }
 
 func (this *QImageIOHandler) JumpToNextImage() bool {
-	ret := C.QImageIOHandler_JumpToNextImage(this.h)
-	return (bool)(ret)
+	_ret := C.QImageIOHandler_JumpToNextImage(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QImageIOHandler) JumpToImage(imageNumber int) bool {
-	ret := C.QImageIOHandler_JumpToImage(this.h, (C.int)(imageNumber))
-	return (bool)(ret)
+	_ret := C.QImageIOHandler_JumpToImage(this.h, (C.int)(imageNumber))
+	return (bool)(_ret)
 }
 
 func (this *QImageIOHandler) LoopCount() int {
-	ret := C.QImageIOHandler_LoopCount(this.h)
-	return (int)(ret)
+	_ret := C.QImageIOHandler_LoopCount(this.h)
+	return (int)(_ret)
 }
 
 func (this *QImageIOHandler) ImageCount() int {
-	ret := C.QImageIOHandler_ImageCount(this.h)
-	return (int)(ret)
+	_ret := C.QImageIOHandler_ImageCount(this.h)
+	return (int)(_ret)
 }
 
 func (this *QImageIOHandler) NextImageDelay() int {
-	ret := C.QImageIOHandler_NextImageDelay(this.h)
-	return (int)(ret)
+	_ret := C.QImageIOHandler_NextImageDelay(this.h)
+	return (int)(_ret)
 }
 
 func (this *QImageIOHandler) CurrentImageNumber() int {
-	ret := C.QImageIOHandler_CurrentImageNumber(this.h)
-	return (int)(ret)
+	_ret := C.QImageIOHandler_CurrentImageNumber(this.h)
+	return (int)(_ret)
 }
 
 func (this *QImageIOHandler) CurrentImageRect() *QRect {
-	ret := C.QImageIOHandler_CurrentImageRect(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRect(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRect) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QImageIOHandler_CurrentImageRect(this.h)
+	_goptr := newQRect(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
+// Delete this object from C++ memory.
 func (this *QImageIOHandler) Delete() {
 	C.QImageIOHandler_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QImageIOHandler) GoGC() {
+	runtime.SetFinalizer(this, func(this *QImageIOHandler) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
 
 type QImageIOPlugin struct {
@@ -224,40 +218,36 @@ func newQImageIOPlugin_U(h unsafe.Pointer) *QImageIOPlugin {
 }
 
 func (this *QImageIOPlugin) MetaObject() *QMetaObject {
-	ret := C.QImageIOPlugin_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QImageIOPlugin_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QImageIOPlugin_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QImageIOPlugin_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QImageIOPlugin_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QImageIOPlugin_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QImageIOPlugin_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QImageIOPlugin_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QImageIOPlugin) Capabilities(device *QIODevice, format *QByteArray) int {
-	ret := C.QImageIOPlugin_Capabilities(this.h, device.cPointer(), format.cPointer())
-	return (int)(ret)
+	_ret := C.QImageIOPlugin_Capabilities(this.h, device.cPointer(), format.cPointer())
+	return (int)(_ret)
 }
 
 func (this *QImageIOPlugin) Create(device *QIODevice) *QImageIOHandler {
-	ret := C.QImageIOPlugin_Create(this.h, device.cPointer())
-	return newQImageIOHandler_U(unsafe.Pointer(ret))
+	_ret := C.QImageIOPlugin_Create(this.h, device.cPointer())
+	return newQImageIOHandler_U(unsafe.Pointer(_ret))
 }
 
 func QImageIOPlugin_Tr2(s string, c string) string {
@@ -265,12 +255,10 @@ func QImageIOPlugin_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QImageIOPlugin_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QImageIOPlugin_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QImageIOPlugin_Tr3(s string, c string, n int) string {
@@ -278,12 +266,10 @@ func QImageIOPlugin_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QImageIOPlugin_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QImageIOPlugin_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QImageIOPlugin_TrUtf82(s string, c string) string {
@@ -291,12 +277,10 @@ func QImageIOPlugin_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QImageIOPlugin_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QImageIOPlugin_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QImageIOPlugin_TrUtf83(s string, c string, n int) string {
@@ -304,19 +288,27 @@ func QImageIOPlugin_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QImageIOPlugin_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QImageIOPlugin_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QImageIOPlugin) Create2(device *QIODevice, format *QByteArray) *QImageIOHandler {
-	ret := C.QImageIOPlugin_Create2(this.h, device.cPointer(), format.cPointer())
-	return newQImageIOHandler_U(unsafe.Pointer(ret))
+	_ret := C.QImageIOPlugin_Create2(this.h, device.cPointer(), format.cPointer())
+	return newQImageIOHandler_U(unsafe.Pointer(_ret))
 }
 
+// Delete this object from C++ memory.
 func (this *QImageIOPlugin) Delete() {
 	C.QImageIOPlugin_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QImageIOPlugin) GoGC() {
+	runtime.SetFinalizer(this, func(this *QImageIOPlugin) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

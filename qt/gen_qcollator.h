@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -42,10 +44,10 @@ void QCollator_SetNumericMode(QCollator* self, bool on);
 bool QCollator_NumericMode(const QCollator* self);
 void QCollator_SetIgnorePunctuation(QCollator* self, bool on);
 bool QCollator_IgnorePunctuation(const QCollator* self);
-int QCollator_Compare(const QCollator* self, const char* s1, size_t s1_Strlen, const char* s2, size_t s2_Strlen);
+int QCollator_Compare(const QCollator* self, struct miqt_string* s1, struct miqt_string* s2);
 int QCollator_Compare3(const QCollator* self, QChar* s1, int len1, QChar* s2, int len2);
-bool QCollator_OperatorCall(const QCollator* self, const char* s1, size_t s1_Strlen, const char* s2, size_t s2_Strlen);
-QCollatorSortKey* QCollator_SortKey(const QCollator* self, const char* stringVal, size_t stringVal_Strlen);
+bool QCollator_OperatorCall(const QCollator* self, struct miqt_string* s1, struct miqt_string* s2);
+QCollatorSortKey* QCollator_SortKey(const QCollator* self, struct miqt_string* stringVal);
 void QCollator_Delete(QCollator* self);
 
 #ifdef __cplusplus

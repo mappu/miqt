@@ -56,32 +56,34 @@ func (this *QColorTransform) Swap(other *QColorTransform) {
 }
 
 func (this *QColorTransform) Map(argb uint) uint {
-	ret := C.QColorTransform_Map(this.h, (C.uint)(argb))
-	return (uint)(ret)
+	_ret := C.QColorTransform_Map(this.h, (C.uint)(argb))
+	return (uint)(_ret)
 }
 
 func (this *QColorTransform) MapWithRgba64(rgba64 QRgba64) *QRgba64 {
-	ret := C.QColorTransform_MapWithRgba64(this.h, rgba64.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRgba64(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRgba64) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QColorTransform_MapWithRgba64(this.h, rgba64.cPointer())
+	_goptr := newQRgba64(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QColorTransform) MapWithColor(color *QColor) *QColor {
-	ret := C.QColorTransform_MapWithColor(this.h, color.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQColor(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QColor) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QColorTransform_MapWithColor(this.h, color.cPointer())
+	_goptr := newQColor(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
+// Delete this object from C++ memory.
 func (this *QColorTransform) Delete() {
 	C.QColorTransform_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QColorTransform) GoGC() {
+	runtime.SetFinalizer(this, func(this *QColorTransform) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

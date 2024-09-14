@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -47,12 +49,12 @@ void QObjectData_Delete(QObjectData* self);
 QObject* QObject_new();
 QObject* QObject_new2(QObject* parent);
 QMetaObject* QObject_MetaObject(const QObject* self);
-void QObject_Tr(const char* s, char** _out, int* _out_Strlen);
-void QObject_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QObject_Tr(const char* s);
+struct miqt_string* QObject_TrUtf8(const char* s);
 bool QObject_Event(QObject* self, QEvent* event);
 bool QObject_EventFilter(QObject* self, QObject* watched, QEvent* event);
-void QObject_ObjectName(const QObject* self, char** _out, int* _out_Strlen);
-void QObject_SetObjectName(QObject* self, const char* name, size_t name_Strlen);
+struct miqt_string* QObject_ObjectName(const QObject* self);
+void QObject_SetObjectName(QObject* self, struct miqt_string* name);
 bool QObject_IsWidgetType(const QObject* self);
 bool QObject_IsWindowType(const QObject* self);
 bool QObject_SignalsBlocked(const QObject* self);
@@ -61,7 +63,7 @@ QThread* QObject_Thread(const QObject* self);
 void QObject_MoveToThread(QObject* self, QThread* thread);
 int QObject_StartTimer(QObject* self, int interval);
 void QObject_KillTimer(QObject* self, int id);
-void QObject_Children(const QObject* self, QObject*** _out, size_t* _out_len);
+struct miqt_array* QObject_Children(const QObject* self);
 void QObject_SetParent(QObject* self, QObject* parent);
 void QObject_InstallEventFilter(QObject* self, QObject* filterObj);
 void QObject_RemoveEventFilter(QObject* self, QObject* obj);
@@ -75,7 +77,7 @@ void QObject_DumpObjectTree2(const QObject* self);
 void QObject_DumpObjectInfo2(const QObject* self);
 bool QObject_SetProperty(QObject* self, const char* name, QVariant* value);
 QVariant* QObject_Property(const QObject* self, const char* name);
-void QObject_DynamicPropertyNames(const QObject* self, QByteArray*** _out, size_t* _out_len);
+struct miqt_array* QObject_DynamicPropertyNames(const QObject* self);
 unsigned int QObject_RegisterUserData();
 void QObject_SetUserData(QObject* self, unsigned int id, QObjectUserData* data);
 QObjectUserData* QObject_UserData(const QObject* self, unsigned int id);
@@ -84,10 +86,10 @@ void QObject_connect_Destroyed(QObject* self, void* slot);
 QObject* QObject_Parent(const QObject* self);
 bool QObject_Inherits(const QObject* self, const char* classname);
 void QObject_DeleteLater(QObject* self);
-void QObject_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QObject_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QObject_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QObject_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QObject_Tr2(const char* s, const char* c);
+struct miqt_string* QObject_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QObject_TrUtf82(const char* s, const char* c);
+struct miqt_string* QObject_TrUtf83(const char* s, const char* c, int n);
 int QObject_StartTimer2(QObject* self, int interval, uintptr_t timerType);
 QMetaObject__Connection* QObject_Connect5(QObject* sender, QMetaMethod* signal, QObject* receiver, QMetaMethod* method, uintptr_t typeVal);
 QMetaObject__Connection* QObject_Connect4(const QObject* self, QObject* sender, const char* signal, const char* member, uintptr_t typeVal);

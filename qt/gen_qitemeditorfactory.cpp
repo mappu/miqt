@@ -3,21 +3,17 @@
 #include <QItemEditorFactory>
 #include <QWidget>
 #include "qitemeditorfactory.h"
-
 #include "gen_qitemeditorfactory.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QWidget* QItemEditorCreatorBase_CreateWidget(const QItemEditorCreatorBase* self, QWidget* parent) {
 	return self->createWidget(parent);
 }
 
 QByteArray* QItemEditorCreatorBase_ValuePropertyName(const QItemEditorCreatorBase* self) {
-	QByteArray ret = self->valuePropertyName();
+	QByteArray _ret = self->valuePropertyName();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(ret));
+	return static_cast<QByteArray*>(new QByteArray(_ret));
 }
 
 void QItemEditorCreatorBase_OperatorAssign(QItemEditorCreatorBase* self, QItemEditorCreatorBase* param1) {
@@ -41,9 +37,9 @@ QWidget* QItemEditorFactory_CreateEditor(const QItemEditorFactory* self, int use
 }
 
 QByteArray* QItemEditorFactory_ValuePropertyName(const QItemEditorFactory* self, int userType) {
-	QByteArray ret = self->valuePropertyName(static_cast<int>(userType));
+	QByteArray _ret = self->valuePropertyName(static_cast<int>(userType));
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(ret));
+	return static_cast<QByteArray*>(new QByteArray(_ret));
 }
 
 void QItemEditorFactory_RegisterEditor(QItemEditorFactory* self, int userType, QItemEditorCreatorBase* creator) {

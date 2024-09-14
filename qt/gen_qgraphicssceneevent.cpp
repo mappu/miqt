@@ -13,12 +13,8 @@
 #include <QSizeF>
 #include <QWidget>
 #include "qgraphicssceneevent.h"
-
 #include "gen_qgraphicssceneevent.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QGraphicsSceneEvent* QGraphicsSceneEvent_new(uintptr_t typeVal) {
 	return new QGraphicsSceneEvent(static_cast<QEvent::Type>(typeVal));
@@ -45,9 +41,9 @@ QGraphicsSceneMouseEvent* QGraphicsSceneMouseEvent_new2(uintptr_t typeVal) {
 }
 
 QPointF* QGraphicsSceneMouseEvent_Pos(const QGraphicsSceneMouseEvent* self) {
-	QPointF ret = self->pos();
+	QPointF _ret = self->pos();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPointF*>(new QPointF(ret));
+	return static_cast<QPointF*>(new QPointF(_ret));
 }
 
 void QGraphicsSceneMouseEvent_SetPos(QGraphicsSceneMouseEvent* self, QPointF* pos) {
@@ -55,9 +51,9 @@ void QGraphicsSceneMouseEvent_SetPos(QGraphicsSceneMouseEvent* self, QPointF* po
 }
 
 QPointF* QGraphicsSceneMouseEvent_ScenePos(const QGraphicsSceneMouseEvent* self) {
-	QPointF ret = self->scenePos();
+	QPointF _ret = self->scenePos();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPointF*>(new QPointF(ret));
+	return static_cast<QPointF*>(new QPointF(_ret));
 }
 
 void QGraphicsSceneMouseEvent_SetScenePos(QGraphicsSceneMouseEvent* self, QPointF* pos) {
@@ -65,9 +61,9 @@ void QGraphicsSceneMouseEvent_SetScenePos(QGraphicsSceneMouseEvent* self, QPoint
 }
 
 QPoint* QGraphicsSceneMouseEvent_ScreenPos(const QGraphicsSceneMouseEvent* self) {
-	QPoint ret = self->screenPos();
+	QPoint _ret = self->screenPos();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPoint*>(new QPoint(ret));
+	return static_cast<QPoint*>(new QPoint(_ret));
 }
 
 void QGraphicsSceneMouseEvent_SetScreenPos(QGraphicsSceneMouseEvent* self, QPoint* pos) {
@@ -75,9 +71,9 @@ void QGraphicsSceneMouseEvent_SetScreenPos(QGraphicsSceneMouseEvent* self, QPoin
 }
 
 QPointF* QGraphicsSceneMouseEvent_ButtonDownPos(const QGraphicsSceneMouseEvent* self, uintptr_t button) {
-	QPointF ret = self->buttonDownPos(static_cast<Qt::MouseButton>(button));
+	QPointF _ret = self->buttonDownPos(static_cast<Qt::MouseButton>(button));
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPointF*>(new QPointF(ret));
+	return static_cast<QPointF*>(new QPointF(_ret));
 }
 
 void QGraphicsSceneMouseEvent_SetButtonDownPos(QGraphicsSceneMouseEvent* self, uintptr_t button, QPointF* pos) {
@@ -85,9 +81,9 @@ void QGraphicsSceneMouseEvent_SetButtonDownPos(QGraphicsSceneMouseEvent* self, u
 }
 
 QPointF* QGraphicsSceneMouseEvent_ButtonDownScenePos(const QGraphicsSceneMouseEvent* self, uintptr_t button) {
-	QPointF ret = self->buttonDownScenePos(static_cast<Qt::MouseButton>(button));
+	QPointF _ret = self->buttonDownScenePos(static_cast<Qt::MouseButton>(button));
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPointF*>(new QPointF(ret));
+	return static_cast<QPointF*>(new QPointF(_ret));
 }
 
 void QGraphicsSceneMouseEvent_SetButtonDownScenePos(QGraphicsSceneMouseEvent* self, uintptr_t button, QPointF* pos) {
@@ -95,9 +91,9 @@ void QGraphicsSceneMouseEvent_SetButtonDownScenePos(QGraphicsSceneMouseEvent* se
 }
 
 QPoint* QGraphicsSceneMouseEvent_ButtonDownScreenPos(const QGraphicsSceneMouseEvent* self, uintptr_t button) {
-	QPoint ret = self->buttonDownScreenPos(static_cast<Qt::MouseButton>(button));
+	QPoint _ret = self->buttonDownScreenPos(static_cast<Qt::MouseButton>(button));
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPoint*>(new QPoint(ret));
+	return static_cast<QPoint*>(new QPoint(_ret));
 }
 
 void QGraphicsSceneMouseEvent_SetButtonDownScreenPos(QGraphicsSceneMouseEvent* self, uintptr_t button, QPoint* pos) {
@@ -105,9 +101,9 @@ void QGraphicsSceneMouseEvent_SetButtonDownScreenPos(QGraphicsSceneMouseEvent* s
 }
 
 QPointF* QGraphicsSceneMouseEvent_LastPos(const QGraphicsSceneMouseEvent* self) {
-	QPointF ret = self->lastPos();
+	QPointF _ret = self->lastPos();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPointF*>(new QPointF(ret));
+	return static_cast<QPointF*>(new QPointF(_ret));
 }
 
 void QGraphicsSceneMouseEvent_SetLastPos(QGraphicsSceneMouseEvent* self, QPointF* pos) {
@@ -115,9 +111,9 @@ void QGraphicsSceneMouseEvent_SetLastPos(QGraphicsSceneMouseEvent* self, QPointF
 }
 
 QPointF* QGraphicsSceneMouseEvent_LastScenePos(const QGraphicsSceneMouseEvent* self) {
-	QPointF ret = self->lastScenePos();
+	QPointF _ret = self->lastScenePos();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPointF*>(new QPointF(ret));
+	return static_cast<QPointF*>(new QPointF(_ret));
 }
 
 void QGraphicsSceneMouseEvent_SetLastScenePos(QGraphicsSceneMouseEvent* self, QPointF* pos) {
@@ -125,9 +121,9 @@ void QGraphicsSceneMouseEvent_SetLastScenePos(QGraphicsSceneMouseEvent* self, QP
 }
 
 QPoint* QGraphicsSceneMouseEvent_LastScreenPos(const QGraphicsSceneMouseEvent* self) {
-	QPoint ret = self->lastScreenPos();
+	QPoint _ret = self->lastScreenPos();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPoint*>(new QPoint(ret));
+	return static_cast<QPoint*>(new QPoint(_ret));
 }
 
 void QGraphicsSceneMouseEvent_SetLastScreenPos(QGraphicsSceneMouseEvent* self, QPoint* pos) {
@@ -135,8 +131,8 @@ void QGraphicsSceneMouseEvent_SetLastScreenPos(QGraphicsSceneMouseEvent* self, Q
 }
 
 int QGraphicsSceneMouseEvent_Buttons(const QGraphicsSceneMouseEvent* self) {
-	Qt::MouseButtons ret = self->buttons();
-	return static_cast<int>(ret);
+	Qt::MouseButtons _ret = self->buttons();
+	return static_cast<int>(_ret);
 }
 
 void QGraphicsSceneMouseEvent_SetButtons(QGraphicsSceneMouseEvent* self, int buttons) {
@@ -144,8 +140,8 @@ void QGraphicsSceneMouseEvent_SetButtons(QGraphicsSceneMouseEvent* self, int but
 }
 
 uintptr_t QGraphicsSceneMouseEvent_Button(const QGraphicsSceneMouseEvent* self) {
-	Qt::MouseButton ret = self->button();
-	return static_cast<uintptr_t>(ret);
+	Qt::MouseButton _ret = self->button();
+	return static_cast<uintptr_t>(_ret);
 }
 
 void QGraphicsSceneMouseEvent_SetButton(QGraphicsSceneMouseEvent* self, uintptr_t button) {
@@ -153,8 +149,8 @@ void QGraphicsSceneMouseEvent_SetButton(QGraphicsSceneMouseEvent* self, uintptr_
 }
 
 int QGraphicsSceneMouseEvent_Modifiers(const QGraphicsSceneMouseEvent* self) {
-	Qt::KeyboardModifiers ret = self->modifiers();
-	return static_cast<int>(ret);
+	Qt::KeyboardModifiers _ret = self->modifiers();
+	return static_cast<int>(_ret);
 }
 
 void QGraphicsSceneMouseEvent_SetModifiers(QGraphicsSceneMouseEvent* self, int modifiers) {
@@ -162,8 +158,8 @@ void QGraphicsSceneMouseEvent_SetModifiers(QGraphicsSceneMouseEvent* self, int m
 }
 
 uintptr_t QGraphicsSceneMouseEvent_Source(const QGraphicsSceneMouseEvent* self) {
-	Qt::MouseEventSource ret = self->source();
-	return static_cast<uintptr_t>(ret);
+	Qt::MouseEventSource _ret = self->source();
+	return static_cast<uintptr_t>(_ret);
 }
 
 void QGraphicsSceneMouseEvent_SetSource(QGraphicsSceneMouseEvent* self, uintptr_t source) {
@@ -171,8 +167,8 @@ void QGraphicsSceneMouseEvent_SetSource(QGraphicsSceneMouseEvent* self, uintptr_
 }
 
 int QGraphicsSceneMouseEvent_Flags(const QGraphicsSceneMouseEvent* self) {
-	Qt::MouseEventFlags ret = self->flags();
-	return static_cast<int>(ret);
+	Qt::MouseEventFlags _ret = self->flags();
+	return static_cast<int>(_ret);
 }
 
 void QGraphicsSceneMouseEvent_SetFlags(QGraphicsSceneMouseEvent* self, int flags) {
@@ -192,9 +188,9 @@ QGraphicsSceneWheelEvent* QGraphicsSceneWheelEvent_new2(uintptr_t typeVal) {
 }
 
 QPointF* QGraphicsSceneWheelEvent_Pos(const QGraphicsSceneWheelEvent* self) {
-	QPointF ret = self->pos();
+	QPointF _ret = self->pos();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPointF*>(new QPointF(ret));
+	return static_cast<QPointF*>(new QPointF(_ret));
 }
 
 void QGraphicsSceneWheelEvent_SetPos(QGraphicsSceneWheelEvent* self, QPointF* pos) {
@@ -202,9 +198,9 @@ void QGraphicsSceneWheelEvent_SetPos(QGraphicsSceneWheelEvent* self, QPointF* po
 }
 
 QPointF* QGraphicsSceneWheelEvent_ScenePos(const QGraphicsSceneWheelEvent* self) {
-	QPointF ret = self->scenePos();
+	QPointF _ret = self->scenePos();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPointF*>(new QPointF(ret));
+	return static_cast<QPointF*>(new QPointF(_ret));
 }
 
 void QGraphicsSceneWheelEvent_SetScenePos(QGraphicsSceneWheelEvent* self, QPointF* pos) {
@@ -212,9 +208,9 @@ void QGraphicsSceneWheelEvent_SetScenePos(QGraphicsSceneWheelEvent* self, QPoint
 }
 
 QPoint* QGraphicsSceneWheelEvent_ScreenPos(const QGraphicsSceneWheelEvent* self) {
-	QPoint ret = self->screenPos();
+	QPoint _ret = self->screenPos();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPoint*>(new QPoint(ret));
+	return static_cast<QPoint*>(new QPoint(_ret));
 }
 
 void QGraphicsSceneWheelEvent_SetScreenPos(QGraphicsSceneWheelEvent* self, QPoint* pos) {
@@ -222,8 +218,8 @@ void QGraphicsSceneWheelEvent_SetScreenPos(QGraphicsSceneWheelEvent* self, QPoin
 }
 
 int QGraphicsSceneWheelEvent_Buttons(const QGraphicsSceneWheelEvent* self) {
-	Qt::MouseButtons ret = self->buttons();
-	return static_cast<int>(ret);
+	Qt::MouseButtons _ret = self->buttons();
+	return static_cast<int>(_ret);
 }
 
 void QGraphicsSceneWheelEvent_SetButtons(QGraphicsSceneWheelEvent* self, int buttons) {
@@ -231,8 +227,8 @@ void QGraphicsSceneWheelEvent_SetButtons(QGraphicsSceneWheelEvent* self, int but
 }
 
 int QGraphicsSceneWheelEvent_Modifiers(const QGraphicsSceneWheelEvent* self) {
-	Qt::KeyboardModifiers ret = self->modifiers();
-	return static_cast<int>(ret);
+	Qt::KeyboardModifiers _ret = self->modifiers();
+	return static_cast<int>(_ret);
 }
 
 void QGraphicsSceneWheelEvent_SetModifiers(QGraphicsSceneWheelEvent* self, int modifiers) {
@@ -248,8 +244,8 @@ void QGraphicsSceneWheelEvent_SetDelta(QGraphicsSceneWheelEvent* self, int delta
 }
 
 uintptr_t QGraphicsSceneWheelEvent_Orientation(const QGraphicsSceneWheelEvent* self) {
-	Qt::Orientation ret = self->orientation();
-	return static_cast<uintptr_t>(ret);
+	Qt::Orientation _ret = self->orientation();
+	return static_cast<uintptr_t>(_ret);
 }
 
 void QGraphicsSceneWheelEvent_SetOrientation(QGraphicsSceneWheelEvent* self, uintptr_t orientation) {
@@ -269,9 +265,9 @@ QGraphicsSceneContextMenuEvent* QGraphicsSceneContextMenuEvent_new2(uintptr_t ty
 }
 
 QPointF* QGraphicsSceneContextMenuEvent_Pos(const QGraphicsSceneContextMenuEvent* self) {
-	QPointF ret = self->pos();
+	QPointF _ret = self->pos();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPointF*>(new QPointF(ret));
+	return static_cast<QPointF*>(new QPointF(_ret));
 }
 
 void QGraphicsSceneContextMenuEvent_SetPos(QGraphicsSceneContextMenuEvent* self, QPointF* pos) {
@@ -279,9 +275,9 @@ void QGraphicsSceneContextMenuEvent_SetPos(QGraphicsSceneContextMenuEvent* self,
 }
 
 QPointF* QGraphicsSceneContextMenuEvent_ScenePos(const QGraphicsSceneContextMenuEvent* self) {
-	QPointF ret = self->scenePos();
+	QPointF _ret = self->scenePos();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPointF*>(new QPointF(ret));
+	return static_cast<QPointF*>(new QPointF(_ret));
 }
 
 void QGraphicsSceneContextMenuEvent_SetScenePos(QGraphicsSceneContextMenuEvent* self, QPointF* pos) {
@@ -289,9 +285,9 @@ void QGraphicsSceneContextMenuEvent_SetScenePos(QGraphicsSceneContextMenuEvent* 
 }
 
 QPoint* QGraphicsSceneContextMenuEvent_ScreenPos(const QGraphicsSceneContextMenuEvent* self) {
-	QPoint ret = self->screenPos();
+	QPoint _ret = self->screenPos();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPoint*>(new QPoint(ret));
+	return static_cast<QPoint*>(new QPoint(_ret));
 }
 
 void QGraphicsSceneContextMenuEvent_SetScreenPos(QGraphicsSceneContextMenuEvent* self, QPoint* pos) {
@@ -299,8 +295,8 @@ void QGraphicsSceneContextMenuEvent_SetScreenPos(QGraphicsSceneContextMenuEvent*
 }
 
 int QGraphicsSceneContextMenuEvent_Modifiers(const QGraphicsSceneContextMenuEvent* self) {
-	Qt::KeyboardModifiers ret = self->modifiers();
-	return static_cast<int>(ret);
+	Qt::KeyboardModifiers _ret = self->modifiers();
+	return static_cast<int>(_ret);
 }
 
 void QGraphicsSceneContextMenuEvent_SetModifiers(QGraphicsSceneContextMenuEvent* self, int modifiers) {
@@ -308,8 +304,8 @@ void QGraphicsSceneContextMenuEvent_SetModifiers(QGraphicsSceneContextMenuEvent*
 }
 
 uintptr_t QGraphicsSceneContextMenuEvent_Reason(const QGraphicsSceneContextMenuEvent* self) {
-	QGraphicsSceneContextMenuEvent::Reason ret = self->reason();
-	return static_cast<uintptr_t>(ret);
+	QGraphicsSceneContextMenuEvent::Reason _ret = self->reason();
+	return static_cast<uintptr_t>(_ret);
 }
 
 void QGraphicsSceneContextMenuEvent_SetReason(QGraphicsSceneContextMenuEvent* self, uintptr_t reason) {
@@ -329,9 +325,9 @@ QGraphicsSceneHoverEvent* QGraphicsSceneHoverEvent_new2(uintptr_t typeVal) {
 }
 
 QPointF* QGraphicsSceneHoverEvent_Pos(const QGraphicsSceneHoverEvent* self) {
-	QPointF ret = self->pos();
+	QPointF _ret = self->pos();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPointF*>(new QPointF(ret));
+	return static_cast<QPointF*>(new QPointF(_ret));
 }
 
 void QGraphicsSceneHoverEvent_SetPos(QGraphicsSceneHoverEvent* self, QPointF* pos) {
@@ -339,9 +335,9 @@ void QGraphicsSceneHoverEvent_SetPos(QGraphicsSceneHoverEvent* self, QPointF* po
 }
 
 QPointF* QGraphicsSceneHoverEvent_ScenePos(const QGraphicsSceneHoverEvent* self) {
-	QPointF ret = self->scenePos();
+	QPointF _ret = self->scenePos();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPointF*>(new QPointF(ret));
+	return static_cast<QPointF*>(new QPointF(_ret));
 }
 
 void QGraphicsSceneHoverEvent_SetScenePos(QGraphicsSceneHoverEvent* self, QPointF* pos) {
@@ -349,9 +345,9 @@ void QGraphicsSceneHoverEvent_SetScenePos(QGraphicsSceneHoverEvent* self, QPoint
 }
 
 QPoint* QGraphicsSceneHoverEvent_ScreenPos(const QGraphicsSceneHoverEvent* self) {
-	QPoint ret = self->screenPos();
+	QPoint _ret = self->screenPos();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPoint*>(new QPoint(ret));
+	return static_cast<QPoint*>(new QPoint(_ret));
 }
 
 void QGraphicsSceneHoverEvent_SetScreenPos(QGraphicsSceneHoverEvent* self, QPoint* pos) {
@@ -359,9 +355,9 @@ void QGraphicsSceneHoverEvent_SetScreenPos(QGraphicsSceneHoverEvent* self, QPoin
 }
 
 QPointF* QGraphicsSceneHoverEvent_LastPos(const QGraphicsSceneHoverEvent* self) {
-	QPointF ret = self->lastPos();
+	QPointF _ret = self->lastPos();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPointF*>(new QPointF(ret));
+	return static_cast<QPointF*>(new QPointF(_ret));
 }
 
 void QGraphicsSceneHoverEvent_SetLastPos(QGraphicsSceneHoverEvent* self, QPointF* pos) {
@@ -369,9 +365,9 @@ void QGraphicsSceneHoverEvent_SetLastPos(QGraphicsSceneHoverEvent* self, QPointF
 }
 
 QPointF* QGraphicsSceneHoverEvent_LastScenePos(const QGraphicsSceneHoverEvent* self) {
-	QPointF ret = self->lastScenePos();
+	QPointF _ret = self->lastScenePos();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPointF*>(new QPointF(ret));
+	return static_cast<QPointF*>(new QPointF(_ret));
 }
 
 void QGraphicsSceneHoverEvent_SetLastScenePos(QGraphicsSceneHoverEvent* self, QPointF* pos) {
@@ -379,9 +375,9 @@ void QGraphicsSceneHoverEvent_SetLastScenePos(QGraphicsSceneHoverEvent* self, QP
 }
 
 QPoint* QGraphicsSceneHoverEvent_LastScreenPos(const QGraphicsSceneHoverEvent* self) {
-	QPoint ret = self->lastScreenPos();
+	QPoint _ret = self->lastScreenPos();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPoint*>(new QPoint(ret));
+	return static_cast<QPoint*>(new QPoint(_ret));
 }
 
 void QGraphicsSceneHoverEvent_SetLastScreenPos(QGraphicsSceneHoverEvent* self, QPoint* pos) {
@@ -389,8 +385,8 @@ void QGraphicsSceneHoverEvent_SetLastScreenPos(QGraphicsSceneHoverEvent* self, Q
 }
 
 int QGraphicsSceneHoverEvent_Modifiers(const QGraphicsSceneHoverEvent* self) {
-	Qt::KeyboardModifiers ret = self->modifiers();
-	return static_cast<int>(ret);
+	Qt::KeyboardModifiers _ret = self->modifiers();
+	return static_cast<int>(_ret);
 }
 
 void QGraphicsSceneHoverEvent_SetModifiers(QGraphicsSceneHoverEvent* self, int modifiers) {
@@ -410,9 +406,9 @@ QGraphicsSceneHelpEvent* QGraphicsSceneHelpEvent_new2(uintptr_t typeVal) {
 }
 
 QPointF* QGraphicsSceneHelpEvent_ScenePos(const QGraphicsSceneHelpEvent* self) {
-	QPointF ret = self->scenePos();
+	QPointF _ret = self->scenePos();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPointF*>(new QPointF(ret));
+	return static_cast<QPointF*>(new QPointF(_ret));
 }
 
 void QGraphicsSceneHelpEvent_SetScenePos(QGraphicsSceneHelpEvent* self, QPointF* pos) {
@@ -420,9 +416,9 @@ void QGraphicsSceneHelpEvent_SetScenePos(QGraphicsSceneHelpEvent* self, QPointF*
 }
 
 QPoint* QGraphicsSceneHelpEvent_ScreenPos(const QGraphicsSceneHelpEvent* self) {
-	QPoint ret = self->screenPos();
+	QPoint _ret = self->screenPos();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPoint*>(new QPoint(ret));
+	return static_cast<QPoint*>(new QPoint(_ret));
 }
 
 void QGraphicsSceneHelpEvent_SetScreenPos(QGraphicsSceneHelpEvent* self, QPoint* pos) {
@@ -442,9 +438,9 @@ QGraphicsSceneDragDropEvent* QGraphicsSceneDragDropEvent_new2(uintptr_t typeVal)
 }
 
 QPointF* QGraphicsSceneDragDropEvent_Pos(const QGraphicsSceneDragDropEvent* self) {
-	QPointF ret = self->pos();
+	QPointF _ret = self->pos();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPointF*>(new QPointF(ret));
+	return static_cast<QPointF*>(new QPointF(_ret));
 }
 
 void QGraphicsSceneDragDropEvent_SetPos(QGraphicsSceneDragDropEvent* self, QPointF* pos) {
@@ -452,9 +448,9 @@ void QGraphicsSceneDragDropEvent_SetPos(QGraphicsSceneDragDropEvent* self, QPoin
 }
 
 QPointF* QGraphicsSceneDragDropEvent_ScenePos(const QGraphicsSceneDragDropEvent* self) {
-	QPointF ret = self->scenePos();
+	QPointF _ret = self->scenePos();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPointF*>(new QPointF(ret));
+	return static_cast<QPointF*>(new QPointF(_ret));
 }
 
 void QGraphicsSceneDragDropEvent_SetScenePos(QGraphicsSceneDragDropEvent* self, QPointF* pos) {
@@ -462,9 +458,9 @@ void QGraphicsSceneDragDropEvent_SetScenePos(QGraphicsSceneDragDropEvent* self, 
 }
 
 QPoint* QGraphicsSceneDragDropEvent_ScreenPos(const QGraphicsSceneDragDropEvent* self) {
-	QPoint ret = self->screenPos();
+	QPoint _ret = self->screenPos();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPoint*>(new QPoint(ret));
+	return static_cast<QPoint*>(new QPoint(_ret));
 }
 
 void QGraphicsSceneDragDropEvent_SetScreenPos(QGraphicsSceneDragDropEvent* self, QPoint* pos) {
@@ -472,8 +468,8 @@ void QGraphicsSceneDragDropEvent_SetScreenPos(QGraphicsSceneDragDropEvent* self,
 }
 
 int QGraphicsSceneDragDropEvent_Buttons(const QGraphicsSceneDragDropEvent* self) {
-	Qt::MouseButtons ret = self->buttons();
-	return static_cast<int>(ret);
+	Qt::MouseButtons _ret = self->buttons();
+	return static_cast<int>(_ret);
 }
 
 void QGraphicsSceneDragDropEvent_SetButtons(QGraphicsSceneDragDropEvent* self, int buttons) {
@@ -481,8 +477,8 @@ void QGraphicsSceneDragDropEvent_SetButtons(QGraphicsSceneDragDropEvent* self, i
 }
 
 int QGraphicsSceneDragDropEvent_Modifiers(const QGraphicsSceneDragDropEvent* self) {
-	Qt::KeyboardModifiers ret = self->modifiers();
-	return static_cast<int>(ret);
+	Qt::KeyboardModifiers _ret = self->modifiers();
+	return static_cast<int>(_ret);
 }
 
 void QGraphicsSceneDragDropEvent_SetModifiers(QGraphicsSceneDragDropEvent* self, int modifiers) {
@@ -490,8 +486,8 @@ void QGraphicsSceneDragDropEvent_SetModifiers(QGraphicsSceneDragDropEvent* self,
 }
 
 int QGraphicsSceneDragDropEvent_PossibleActions(const QGraphicsSceneDragDropEvent* self) {
-	Qt::DropActions ret = self->possibleActions();
-	return static_cast<int>(ret);
+	Qt::DropActions _ret = self->possibleActions();
+	return static_cast<int>(_ret);
 }
 
 void QGraphicsSceneDragDropEvent_SetPossibleActions(QGraphicsSceneDragDropEvent* self, int actions) {
@@ -499,8 +495,8 @@ void QGraphicsSceneDragDropEvent_SetPossibleActions(QGraphicsSceneDragDropEvent*
 }
 
 uintptr_t QGraphicsSceneDragDropEvent_ProposedAction(const QGraphicsSceneDragDropEvent* self) {
-	Qt::DropAction ret = self->proposedAction();
-	return static_cast<uintptr_t>(ret);
+	Qt::DropAction _ret = self->proposedAction();
+	return static_cast<uintptr_t>(_ret);
 }
 
 void QGraphicsSceneDragDropEvent_SetProposedAction(QGraphicsSceneDragDropEvent* self, uintptr_t action) {
@@ -512,8 +508,8 @@ void QGraphicsSceneDragDropEvent_AcceptProposedAction(QGraphicsSceneDragDropEven
 }
 
 uintptr_t QGraphicsSceneDragDropEvent_DropAction(const QGraphicsSceneDragDropEvent* self) {
-	Qt::DropAction ret = self->dropAction();
-	return static_cast<uintptr_t>(ret);
+	Qt::DropAction _ret = self->dropAction();
+	return static_cast<uintptr_t>(_ret);
 }
 
 void QGraphicsSceneDragDropEvent_SetDropAction(QGraphicsSceneDragDropEvent* self, uintptr_t action) {
@@ -545,9 +541,9 @@ QGraphicsSceneResizeEvent* QGraphicsSceneResizeEvent_new() {
 }
 
 QSizeF* QGraphicsSceneResizeEvent_OldSize(const QGraphicsSceneResizeEvent* self) {
-	QSizeF ret = self->oldSize();
+	QSizeF _ret = self->oldSize();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSizeF*>(new QSizeF(ret));
+	return static_cast<QSizeF*>(new QSizeF(_ret));
 }
 
 void QGraphicsSceneResizeEvent_SetOldSize(QGraphicsSceneResizeEvent* self, QSizeF* size) {
@@ -555,9 +551,9 @@ void QGraphicsSceneResizeEvent_SetOldSize(QGraphicsSceneResizeEvent* self, QSize
 }
 
 QSizeF* QGraphicsSceneResizeEvent_NewSize(const QGraphicsSceneResizeEvent* self) {
-	QSizeF ret = self->newSize();
+	QSizeF _ret = self->newSize();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSizeF*>(new QSizeF(ret));
+	return static_cast<QSizeF*>(new QSizeF(_ret));
 }
 
 void QGraphicsSceneResizeEvent_SetNewSize(QGraphicsSceneResizeEvent* self, QSizeF* size) {
@@ -573,9 +569,9 @@ QGraphicsSceneMoveEvent* QGraphicsSceneMoveEvent_new() {
 }
 
 QPointF* QGraphicsSceneMoveEvent_OldPos(const QGraphicsSceneMoveEvent* self) {
-	QPointF ret = self->oldPos();
+	QPointF _ret = self->oldPos();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPointF*>(new QPointF(ret));
+	return static_cast<QPointF*>(new QPointF(_ret));
 }
 
 void QGraphicsSceneMoveEvent_SetOldPos(QGraphicsSceneMoveEvent* self, QPointF* pos) {
@@ -583,9 +579,9 @@ void QGraphicsSceneMoveEvent_SetOldPos(QGraphicsSceneMoveEvent* self, QPointF* p
 }
 
 QPointF* QGraphicsSceneMoveEvent_NewPos(const QGraphicsSceneMoveEvent* self) {
-	QPointF ret = self->newPos();
+	QPointF _ret = self->newPos();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPointF*>(new QPointF(ret));
+	return static_cast<QPointF*>(new QPointF(_ret));
 }
 
 void QGraphicsSceneMoveEvent_SetNewPos(QGraphicsSceneMoveEvent* self, QPointF* pos) {

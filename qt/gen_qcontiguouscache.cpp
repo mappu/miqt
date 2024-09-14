@@ -1,11 +1,7 @@
 #include <QContiguousCacheData>
 #include "qcontiguouscache.h"
-
 #include "gen_qcontiguouscache.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QContiguousCacheData* QContiguousCacheData_AllocateData(int size, int alignment) {
 	return QContiguousCacheData::allocateData(static_cast<int>(size), static_cast<int>(alignment));

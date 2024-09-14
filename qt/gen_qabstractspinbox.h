@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -30,16 +32,16 @@ typedef struct QWidget QWidget;
 QAbstractSpinBox* QAbstractSpinBox_new();
 QAbstractSpinBox* QAbstractSpinBox_new2(QWidget* parent);
 QMetaObject* QAbstractSpinBox_MetaObject(const QAbstractSpinBox* self);
-void QAbstractSpinBox_Tr(const char* s, char** _out, int* _out_Strlen);
-void QAbstractSpinBox_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QAbstractSpinBox_Tr(const char* s);
+struct miqt_string* QAbstractSpinBox_TrUtf8(const char* s);
 uintptr_t QAbstractSpinBox_ButtonSymbols(const QAbstractSpinBox* self);
 void QAbstractSpinBox_SetButtonSymbols(QAbstractSpinBox* self, uintptr_t bs);
 void QAbstractSpinBox_SetCorrectionMode(QAbstractSpinBox* self, uintptr_t cm);
 uintptr_t QAbstractSpinBox_CorrectionMode(const QAbstractSpinBox* self);
 bool QAbstractSpinBox_HasAcceptableInput(const QAbstractSpinBox* self);
-void QAbstractSpinBox_Text(const QAbstractSpinBox* self, char** _out, int* _out_Strlen);
-void QAbstractSpinBox_SpecialValueText(const QAbstractSpinBox* self, char** _out, int* _out_Strlen);
-void QAbstractSpinBox_SetSpecialValueText(QAbstractSpinBox* self, const char* txt, size_t txt_Strlen);
+struct miqt_string* QAbstractSpinBox_Text(const QAbstractSpinBox* self);
+struct miqt_string* QAbstractSpinBox_SpecialValueText(const QAbstractSpinBox* self);
+void QAbstractSpinBox_SetSpecialValueText(QAbstractSpinBox* self, struct miqt_string* txt);
 bool QAbstractSpinBox_Wrapping(const QAbstractSpinBox* self);
 void QAbstractSpinBox_SetWrapping(QAbstractSpinBox* self, bool w);
 void QAbstractSpinBox_SetReadOnly(QAbstractSpinBox* self, bool r);
@@ -59,8 +61,8 @@ QSize* QAbstractSpinBox_MinimumSizeHint(const QAbstractSpinBox* self);
 void QAbstractSpinBox_InterpretText(QAbstractSpinBox* self);
 bool QAbstractSpinBox_Event(QAbstractSpinBox* self, QEvent* event);
 QVariant* QAbstractSpinBox_InputMethodQuery(const QAbstractSpinBox* self, uintptr_t param1);
-uintptr_t QAbstractSpinBox_Validate(const QAbstractSpinBox* self, const char* input, size_t input_Strlen, int* pos);
-void QAbstractSpinBox_Fixup(const QAbstractSpinBox* self, const char* input, size_t input_Strlen);
+uintptr_t QAbstractSpinBox_Validate(const QAbstractSpinBox* self, struct miqt_string* input, int* pos);
+void QAbstractSpinBox_Fixup(const QAbstractSpinBox* self, struct miqt_string* input);
 void QAbstractSpinBox_StepBy(QAbstractSpinBox* self, int steps);
 void QAbstractSpinBox_StepUp(QAbstractSpinBox* self);
 void QAbstractSpinBox_StepDown(QAbstractSpinBox* self);
@@ -68,10 +70,10 @@ void QAbstractSpinBox_SelectAll(QAbstractSpinBox* self);
 void QAbstractSpinBox_Clear(QAbstractSpinBox* self);
 void QAbstractSpinBox_EditingFinished(QAbstractSpinBox* self);
 void QAbstractSpinBox_connect_EditingFinished(QAbstractSpinBox* self, void* slot);
-void QAbstractSpinBox_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QAbstractSpinBox_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QAbstractSpinBox_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QAbstractSpinBox_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QAbstractSpinBox_Tr2(const char* s, const char* c);
+struct miqt_string* QAbstractSpinBox_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QAbstractSpinBox_TrUtf82(const char* s, const char* c);
+struct miqt_string* QAbstractSpinBox_TrUtf83(const char* s, const char* c, int n);
 void QAbstractSpinBox_Delete(QAbstractSpinBox* self);
 
 #ifdef __cplusplus

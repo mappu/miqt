@@ -9,12 +9,8 @@
 #include <QTextDocumentFragment>
 #include <QTextDocumentWriter>
 #include "qtextdocumentwriter.h"
-
 #include "gen_qtextdocumentwriter.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QTextDocumentWriter* QTextDocumentWriter_new() {
 	return new QTextDocumentWriter();
@@ -24,13 +20,13 @@ QTextDocumentWriter* QTextDocumentWriter_new2(QIODevice* device, QByteArray* for
 	return new QTextDocumentWriter(device, *format);
 }
 
-QTextDocumentWriter* QTextDocumentWriter_new3(const char* fileName, size_t fileName_Strlen) {
-	QString fileName_QString = QString::fromUtf8(fileName, fileName_Strlen);
+QTextDocumentWriter* QTextDocumentWriter_new3(struct miqt_string* fileName) {
+	QString fileName_QString = QString::fromUtf8(&fileName->data, fileName->len);
 	return new QTextDocumentWriter(fileName_QString);
 }
 
-QTextDocumentWriter* QTextDocumentWriter_new4(const char* fileName, size_t fileName_Strlen, QByteArray* format) {
-	QString fileName_QString = QString::fromUtf8(fileName, fileName_Strlen);
+QTextDocumentWriter* QTextDocumentWriter_new4(struct miqt_string* fileName, QByteArray* format) {
+	QString fileName_QString = QString::fromUtf8(&fileName->data, fileName->len);
 	return new QTextDocumentWriter(fileName_QString, *format);
 }
 
@@ -39,9 +35,9 @@ void QTextDocumentWriter_SetFormat(QTextDocumentWriter* self, QByteArray* format
 }
 
 QByteArray* QTextDocumentWriter_Format(const QTextDocumentWriter* self) {
-	QByteArray ret = self->format();
+	QByteArray _ret = self->format();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(ret));
+	return static_cast<QByteArray*>(new QByteArray(_ret));
 }
 
 void QTextDocumentWriter_SetDevice(QTextDocumentWriter* self, QIODevice* device) {
@@ -52,18 +48,16 @@ QIODevice* QTextDocumentWriter_Device(const QTextDocumentWriter* self) {
 	return self->device();
 }
 
-void QTextDocumentWriter_SetFileName(QTextDocumentWriter* self, const char* fileName, size_t fileName_Strlen) {
-	QString fileName_QString = QString::fromUtf8(fileName, fileName_Strlen);
+void QTextDocumentWriter_SetFileName(QTextDocumentWriter* self, struct miqt_string* fileName) {
+	QString fileName_QString = QString::fromUtf8(&fileName->data, fileName->len);
 	self->setFileName(fileName_QString);
 }
 
-void QTextDocumentWriter_FileName(const QTextDocumentWriter* self, char** _out, int* _out_Strlen) {
-	QString ret = self->fileName();
+struct miqt_string* QTextDocumentWriter_FileName(const QTextDocumentWriter* self) {
+	QString _ret = self->fileName();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 bool QTextDocumentWriter_Write(QTextDocumentWriter* self, QTextDocument* document) {
@@ -82,15 +76,17 @@ QTextCodec* QTextDocumentWriter_Codec(const QTextDocumentWriter* self) {
 	return self->codec();
 }
 
-void QTextDocumentWriter_SupportedDocumentFormats(QByteArray*** _out, size_t* _out_len) {
-	QList<QByteArray> ret = QTextDocumentWriter::supportedDocumentFormats();
+struct miqt_array* QTextDocumentWriter_SupportedDocumentFormats() {
+	QList<QByteArray> _ret = QTextDocumentWriter::supportedDocumentFormats();
 	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
-	QByteArray** __out = static_cast<QByteArray**>(malloc(sizeof(QByteArray**) * ret.length()));
-	for (size_t i = 0, e = ret.length(); i < e; ++i) {
-		__out[i] = new QByteArray(ret[i]);
+	QByteArray** _arr = static_cast<QByteArray**>(malloc(sizeof(QByteArray**) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		_arr[i] = new QByteArray(_ret[i]);
 	}
-	*_out = __out;
-	*_out_len = ret.length();
+	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
+	_out->len = _ret.length();
+	_out->data = static_cast<void*>(_arr);
+	return _out;
 }
 
 void QTextDocumentWriter_Delete(QTextDocumentWriter* self) {

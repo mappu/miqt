@@ -54,18 +54,18 @@ func NewQPoint3(param1 *QPoint) *QPoint {
 }
 
 func (this *QPoint) IsNull() bool {
-	ret := C.QPoint_IsNull(this.h)
-	return (bool)(ret)
+	_ret := C.QPoint_IsNull(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QPoint) X() int {
-	ret := C.QPoint_X(this.h)
-	return (int)(ret)
+	_ret := C.QPoint_X(this.h)
+	return (int)(_ret)
 }
 
 func (this *QPoint) Y() int {
-	ret := C.QPoint_Y(this.h)
-	return (int)(ret)
+	_ret := C.QPoint_Y(this.h)
+	return (int)(_ret)
 }
 
 func (this *QPoint) SetX(x int) {
@@ -77,58 +77,64 @@ func (this *QPoint) SetY(y int) {
 }
 
 func (this *QPoint) ManhattanLength() int {
-	ret := C.QPoint_ManhattanLength(this.h)
-	return (int)(ret)
+	_ret := C.QPoint_ManhattanLength(this.h)
+	return (int)(_ret)
 }
 
 func (this *QPoint) Transposed() *QPoint {
-	ret := C.QPoint_Transposed(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPoint(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPoint) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QPoint_Transposed(this.h)
+	_goptr := newQPoint(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QPoint) OperatorPlusAssign(p *QPoint) *QPoint {
-	ret := C.QPoint_OperatorPlusAssign(this.h, p.cPointer())
-	return newQPoint_U(unsafe.Pointer(ret))
+	_ret := C.QPoint_OperatorPlusAssign(this.h, p.cPointer())
+	return newQPoint_U(unsafe.Pointer(_ret))
 }
 
 func (this *QPoint) OperatorMinusAssign(p *QPoint) *QPoint {
-	ret := C.QPoint_OperatorMinusAssign(this.h, p.cPointer())
-	return newQPoint_U(unsafe.Pointer(ret))
+	_ret := C.QPoint_OperatorMinusAssign(this.h, p.cPointer())
+	return newQPoint_U(unsafe.Pointer(_ret))
 }
 
 func (this *QPoint) OperatorMultiplyAssign(factor float32) *QPoint {
-	ret := C.QPoint_OperatorMultiplyAssign(this.h, (C.float)(factor))
-	return newQPoint_U(unsafe.Pointer(ret))
+	_ret := C.QPoint_OperatorMultiplyAssign(this.h, (C.float)(factor))
+	return newQPoint_U(unsafe.Pointer(_ret))
 }
 
 func (this *QPoint) OperatorMultiplyAssignWithFactor(factor float64) *QPoint {
-	ret := C.QPoint_OperatorMultiplyAssignWithFactor(this.h, (C.double)(factor))
-	return newQPoint_U(unsafe.Pointer(ret))
+	_ret := C.QPoint_OperatorMultiplyAssignWithFactor(this.h, (C.double)(factor))
+	return newQPoint_U(unsafe.Pointer(_ret))
 }
 
 func (this *QPoint) OperatorMultiplyAssign2(factor int) *QPoint {
-	ret := C.QPoint_OperatorMultiplyAssign2(this.h, (C.int)(factor))
-	return newQPoint_U(unsafe.Pointer(ret))
+	_ret := C.QPoint_OperatorMultiplyAssign2(this.h, (C.int)(factor))
+	return newQPoint_U(unsafe.Pointer(_ret))
 }
 
 func (this *QPoint) OperatorDivideAssign(divisor float64) *QPoint {
-	ret := C.QPoint_OperatorDivideAssign(this.h, (C.double)(divisor))
-	return newQPoint_U(unsafe.Pointer(ret))
+	_ret := C.QPoint_OperatorDivideAssign(this.h, (C.double)(divisor))
+	return newQPoint_U(unsafe.Pointer(_ret))
 }
 
 func QPoint_DotProduct(p1 *QPoint, p2 *QPoint) int {
-	ret := C.QPoint_DotProduct(p1.cPointer(), p2.cPointer())
-	return (int)(ret)
+	_ret := C.QPoint_DotProduct(p1.cPointer(), p2.cPointer())
+	return (int)(_ret)
 }
 
+// Delete this object from C++ memory.
 func (this *QPoint) Delete() {
 	C.QPoint_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QPoint) GoGC() {
+	runtime.SetFinalizer(this, func(this *QPoint) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
 
 type QPointF struct {
@@ -178,23 +184,23 @@ func NewQPointF4(param1 *QPointF) *QPointF {
 }
 
 func (this *QPointF) ManhattanLength() float64 {
-	ret := C.QPointF_ManhattanLength(this.h)
-	return (float64)(ret)
+	_ret := C.QPointF_ManhattanLength(this.h)
+	return (float64)(_ret)
 }
 
 func (this *QPointF) IsNull() bool {
-	ret := C.QPointF_IsNull(this.h)
-	return (bool)(ret)
+	_ret := C.QPointF_IsNull(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QPointF) X() float64 {
-	ret := C.QPointF_X(this.h)
-	return (float64)(ret)
+	_ret := C.QPointF_X(this.h)
+	return (float64)(_ret)
 }
 
 func (this *QPointF) Y() float64 {
-	ret := C.QPointF_Y(this.h)
-	return (float64)(ret)
+	_ret := C.QPointF_Y(this.h)
+	return (float64)(_ret)
 }
 
 func (this *QPointF) SetX(x float64) {
@@ -206,52 +212,54 @@ func (this *QPointF) SetY(y float64) {
 }
 
 func (this *QPointF) Transposed() *QPointF {
-	ret := C.QPointF_Transposed(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPointF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPointF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QPointF_Transposed(this.h)
+	_goptr := newQPointF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QPointF) OperatorPlusAssign(p *QPointF) *QPointF {
-	ret := C.QPointF_OperatorPlusAssign(this.h, p.cPointer())
-	return newQPointF_U(unsafe.Pointer(ret))
+	_ret := C.QPointF_OperatorPlusAssign(this.h, p.cPointer())
+	return newQPointF_U(unsafe.Pointer(_ret))
 }
 
 func (this *QPointF) OperatorMinusAssign(p *QPointF) *QPointF {
-	ret := C.QPointF_OperatorMinusAssign(this.h, p.cPointer())
-	return newQPointF_U(unsafe.Pointer(ret))
+	_ret := C.QPointF_OperatorMinusAssign(this.h, p.cPointer())
+	return newQPointF_U(unsafe.Pointer(_ret))
 }
 
 func (this *QPointF) OperatorMultiplyAssign(c float64) *QPointF {
-	ret := C.QPointF_OperatorMultiplyAssign(this.h, (C.double)(c))
-	return newQPointF_U(unsafe.Pointer(ret))
+	_ret := C.QPointF_OperatorMultiplyAssign(this.h, (C.double)(c))
+	return newQPointF_U(unsafe.Pointer(_ret))
 }
 
 func (this *QPointF) OperatorDivideAssign(c float64) *QPointF {
-	ret := C.QPointF_OperatorDivideAssign(this.h, (C.double)(c))
-	return newQPointF_U(unsafe.Pointer(ret))
+	_ret := C.QPointF_OperatorDivideAssign(this.h, (C.double)(c))
+	return newQPointF_U(unsafe.Pointer(_ret))
 }
 
 func QPointF_DotProduct(p1 *QPointF, p2 *QPointF) float64 {
-	ret := C.QPointF_DotProduct(p1.cPointer(), p2.cPointer())
-	return (float64)(ret)
+	_ret := C.QPointF_DotProduct(p1.cPointer(), p2.cPointer())
+	return (float64)(_ret)
 }
 
 func (this *QPointF) ToPoint() *QPoint {
-	ret := C.QPointF_ToPoint(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPoint(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPoint) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QPointF_ToPoint(this.h)
+	_goptr := newQPoint(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
+// Delete this object from C++ memory.
 func (this *QPointF) Delete() {
 	C.QPointF_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QPointF) GoGC() {
+	runtime.SetFinalizer(this, func(this *QPointF) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

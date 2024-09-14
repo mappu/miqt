@@ -7,12 +7,8 @@
 #include <QThread>
 #include <QThreadPool>
 #include "qthreadpool.h"
-
 #include "gen_qthreadpool.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QThreadPool* QThreadPool_new() {
 	return new QThreadPool();
@@ -26,22 +22,18 @@ QMetaObject* QThreadPool_MetaObject(const QThreadPool* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void QThreadPool_Tr(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QThreadPool::tr(s);
+struct miqt_string* QThreadPool_Tr(const char* s) {
+	QString _ret = QThreadPool::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QThreadPool_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QThreadPool::trUtf8(s);
+struct miqt_string* QThreadPool_TrUtf8(const char* s) {
+	QString _ret = QThreadPool::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 QThreadPool* QThreadPool_GlobalInstance() {
@@ -112,40 +104,32 @@ bool QThreadPool_TryTake(QThreadPool* self, QRunnable* runnable) {
 	return self->tryTake(runnable);
 }
 
-void QThreadPool_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QThreadPool::tr(s, c);
+struct miqt_string* QThreadPool_Tr2(const char* s, const char* c) {
+	QString _ret = QThreadPool::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QThreadPool_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QThreadPool::tr(s, c, static_cast<int>(n));
+struct miqt_string* QThreadPool_Tr3(const char* s, const char* c, int n) {
+	QString _ret = QThreadPool::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QThreadPool_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QThreadPool::trUtf8(s, c);
+struct miqt_string* QThreadPool_TrUtf82(const char* s, const char* c) {
+	QString _ret = QThreadPool::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QThreadPool_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QThreadPool::trUtf8(s, c, static_cast<int>(n));
+struct miqt_string* QThreadPool_TrUtf83(const char* s, const char* c, int n) {
+	QString _ret = QThreadPool::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QThreadPool_Start2(QThreadPool* self, QRunnable* runnable, int priority) {

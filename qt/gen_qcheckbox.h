@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -24,12 +26,12 @@ typedef struct QWidget QWidget;
 #endif
 
 QCheckBox* QCheckBox_new();
-QCheckBox* QCheckBox_new2(const char* text, size_t text_Strlen);
+QCheckBox* QCheckBox_new2(struct miqt_string* text);
 QCheckBox* QCheckBox_new3(QWidget* parent);
-QCheckBox* QCheckBox_new4(const char* text, size_t text_Strlen, QWidget* parent);
+QCheckBox* QCheckBox_new4(struct miqt_string* text, QWidget* parent);
 QMetaObject* QCheckBox_MetaObject(const QCheckBox* self);
-void QCheckBox_Tr(const char* s, char** _out, int* _out_Strlen);
-void QCheckBox_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QCheckBox_Tr(const char* s);
+struct miqt_string* QCheckBox_TrUtf8(const char* s);
 QSize* QCheckBox_SizeHint(const QCheckBox* self);
 QSize* QCheckBox_MinimumSizeHint(const QCheckBox* self);
 void QCheckBox_SetTristate(QCheckBox* self);
@@ -38,10 +40,10 @@ uintptr_t QCheckBox_CheckState(const QCheckBox* self);
 void QCheckBox_SetCheckState(QCheckBox* self, uintptr_t state);
 void QCheckBox_StateChanged(QCheckBox* self, int param1);
 void QCheckBox_connect_StateChanged(QCheckBox* self, void* slot);
-void QCheckBox_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QCheckBox_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QCheckBox_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QCheckBox_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QCheckBox_Tr2(const char* s, const char* c);
+struct miqt_string* QCheckBox_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QCheckBox_TrUtf82(const char* s, const char* c);
+struct miqt_string* QCheckBox_TrUtf83(const char* s, const char* c, int n);
 void QCheckBox_SetTristate1(QCheckBox* self, bool y);
 void QCheckBox_Delete(QCheckBox* self);
 

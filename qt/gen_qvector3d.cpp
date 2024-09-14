@@ -6,12 +6,8 @@
 #include <QVector3D>
 #include <QVector4D>
 #include "qvector3d.h"
-
 #include "gen_qvector3d.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QVector3D* QVector3D_new() {
 	return new QVector3D();
@@ -90,9 +86,9 @@ float QVector3D_LengthSquared(const QVector3D* self) {
 }
 
 QVector3D* QVector3D_Normalized(const QVector3D* self) {
-	QVector3D ret = self->normalized();
+	QVector3D _ret = self->normalized();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVector3D*>(new QVector3D(ret));
+	return static_cast<QVector3D*>(new QVector3D(_ret));
 }
 
 void QVector3D_Normalize(QVector3D* self) {
@@ -100,39 +96,39 @@ void QVector3D_Normalize(QVector3D* self) {
 }
 
 QVector3D* QVector3D_OperatorPlusAssign(QVector3D* self, QVector3D* vector) {
-	QVector3D& ret = self->operator+=(*vector);
+	QVector3D& _ret = self->operator+=(*vector);
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QVector3D* QVector3D_OperatorMinusAssign(QVector3D* self, QVector3D* vector) {
-	QVector3D& ret = self->operator-=(*vector);
+	QVector3D& _ret = self->operator-=(*vector);
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QVector3D* QVector3D_OperatorMultiplyAssign(QVector3D* self, float factor) {
-	QVector3D& ret = self->operator*=(static_cast<float>(factor));
+	QVector3D& _ret = self->operator*=(static_cast<float>(factor));
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QVector3D* QVector3D_OperatorMultiplyAssignWithVector(QVector3D* self, QVector3D* vector) {
-	QVector3D& ret = self->operator*=(*vector);
+	QVector3D& _ret = self->operator*=(*vector);
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QVector3D* QVector3D_OperatorDivideAssign(QVector3D* self, float divisor) {
-	QVector3D& ret = self->operator/=(static_cast<float>(divisor));
+	QVector3D& _ret = self->operator/=(static_cast<float>(divisor));
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QVector3D* QVector3D_OperatorDivideAssignWithVector(QVector3D* self, QVector3D* vector) {
-	QVector3D& ret = self->operator/=(*vector);
+	QVector3D& _ret = self->operator/=(*vector);
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 float QVector3D_DotProduct(QVector3D* v1, QVector3D* v2) {
@@ -140,33 +136,33 @@ float QVector3D_DotProduct(QVector3D* v1, QVector3D* v2) {
 }
 
 QVector3D* QVector3D_CrossProduct(QVector3D* v1, QVector3D* v2) {
-	QVector3D ret = QVector3D::crossProduct(*v1, *v2);
+	QVector3D _ret = QVector3D::crossProduct(*v1, *v2);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVector3D*>(new QVector3D(ret));
+	return static_cast<QVector3D*>(new QVector3D(_ret));
 }
 
 QVector3D* QVector3D_Normal(QVector3D* v1, QVector3D* v2) {
-	QVector3D ret = QVector3D::normal(*v1, *v2);
+	QVector3D _ret = QVector3D::normal(*v1, *v2);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVector3D*>(new QVector3D(ret));
+	return static_cast<QVector3D*>(new QVector3D(_ret));
 }
 
 QVector3D* QVector3D_Normal2(QVector3D* v1, QVector3D* v2, QVector3D* v3) {
-	QVector3D ret = QVector3D::normal(*v1, *v2, *v3);
+	QVector3D _ret = QVector3D::normal(*v1, *v2, *v3);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVector3D*>(new QVector3D(ret));
+	return static_cast<QVector3D*>(new QVector3D(_ret));
 }
 
 QVector3D* QVector3D_Project(const QVector3D* self, QMatrix4x4* modelView, QMatrix4x4* projection, QRect* viewport) {
-	QVector3D ret = self->project(*modelView, *projection, *viewport);
+	QVector3D _ret = self->project(*modelView, *projection, *viewport);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVector3D*>(new QVector3D(ret));
+	return static_cast<QVector3D*>(new QVector3D(_ret));
 }
 
 QVector3D* QVector3D_Unproject(const QVector3D* self, QMatrix4x4* modelView, QMatrix4x4* projection, QRect* viewport) {
-	QVector3D ret = self->unproject(*modelView, *projection, *viewport);
+	QVector3D _ret = self->unproject(*modelView, *projection, *viewport);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVector3D*>(new QVector3D(ret));
+	return static_cast<QVector3D*>(new QVector3D(_ret));
 }
 
 float QVector3D_DistanceToPoint(const QVector3D* self, QVector3D* point) {
@@ -186,27 +182,27 @@ float QVector3D_DistanceToLine(const QVector3D* self, QVector3D* point, QVector3
 }
 
 QVector2D* QVector3D_ToVector2D(const QVector3D* self) {
-	QVector2D ret = self->toVector2D();
+	QVector2D _ret = self->toVector2D();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVector2D*>(new QVector2D(ret));
+	return static_cast<QVector2D*>(new QVector2D(_ret));
 }
 
 QVector4D* QVector3D_ToVector4D(const QVector3D* self) {
-	QVector4D ret = self->toVector4D();
+	QVector4D _ret = self->toVector4D();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVector4D*>(new QVector4D(ret));
+	return static_cast<QVector4D*>(new QVector4D(_ret));
 }
 
 QPoint* QVector3D_ToPoint(const QVector3D* self) {
-	QPoint ret = self->toPoint();
+	QPoint _ret = self->toPoint();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPoint*>(new QPoint(ret));
+	return static_cast<QPoint*>(new QPoint(_ret));
 }
 
 QPointF* QVector3D_ToPointF(const QVector3D* self) {
-	QPointF ret = self->toPointF();
+	QPointF _ret = self->toPointF();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPointF*>(new QPointF(ret));
+	return static_cast<QPointF*>(new QPointF(_ret));
 }
 
 void QVector3D_Delete(QVector3D* self) {

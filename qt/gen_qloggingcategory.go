@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"runtime"
 	"unsafe"
 )
 
@@ -43,51 +44,61 @@ func NewQLoggingCategory(category string) *QLoggingCategory {
 }
 
 func (this *QLoggingCategory) IsDebugEnabled() bool {
-	ret := C.QLoggingCategory_IsDebugEnabled(this.h)
-	return (bool)(ret)
+	_ret := C.QLoggingCategory_IsDebugEnabled(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QLoggingCategory) IsInfoEnabled() bool {
-	ret := C.QLoggingCategory_IsInfoEnabled(this.h)
-	return (bool)(ret)
+	_ret := C.QLoggingCategory_IsInfoEnabled(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QLoggingCategory) IsWarningEnabled() bool {
-	ret := C.QLoggingCategory_IsWarningEnabled(this.h)
-	return (bool)(ret)
+	_ret := C.QLoggingCategory_IsWarningEnabled(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QLoggingCategory) IsCriticalEnabled() bool {
-	ret := C.QLoggingCategory_IsCriticalEnabled(this.h)
-	return (bool)(ret)
+	_ret := C.QLoggingCategory_IsCriticalEnabled(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QLoggingCategory) CategoryName() unsafe.Pointer {
-	ret := C.QLoggingCategory_CategoryName(this.h)
-	return (unsafe.Pointer)(ret)
+	_ret := C.QLoggingCategory_CategoryName(this.h)
+	return (unsafe.Pointer)(_ret)
 }
 
 func (this *QLoggingCategory) OperatorCall() *QLoggingCategory {
-	ret := C.QLoggingCategory_OperatorCall(this.h)
-	return newQLoggingCategory_U(unsafe.Pointer(ret))
+	_ret := C.QLoggingCategory_OperatorCall(this.h)
+	return newQLoggingCategory_U(unsafe.Pointer(_ret))
 }
 
 func (this *QLoggingCategory) OperatorCall2() *QLoggingCategory {
-	ret := C.QLoggingCategory_OperatorCall2(this.h)
-	return newQLoggingCategory_U(unsafe.Pointer(ret))
+	_ret := C.QLoggingCategory_OperatorCall2(this.h)
+	return newQLoggingCategory_U(unsafe.Pointer(_ret))
 }
 
 func QLoggingCategory_DefaultCategory() *QLoggingCategory {
-	ret := C.QLoggingCategory_DefaultCategory()
-	return newQLoggingCategory_U(unsafe.Pointer(ret))
+	_ret := C.QLoggingCategory_DefaultCategory()
+	return newQLoggingCategory_U(unsafe.Pointer(_ret))
 }
 
 func QLoggingCategory_SetFilterRules(rules string) {
-	rules_Cstring := C.CString(rules)
-	defer C.free(unsafe.Pointer(rules_Cstring))
-	C.QLoggingCategory_SetFilterRules(rules_Cstring, C.size_t(len(rules)))
+	rules_ms := miqt_strdupg(rules)
+	defer C.free(rules_ms)
+	C.QLoggingCategory_SetFilterRules((*C.struct_miqt_string)(rules_ms))
 }
 
+// Delete this object from C++ memory.
 func (this *QLoggingCategory) Delete() {
 	C.QLoggingCategory_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QLoggingCategory) GoGC() {
+	runtime.SetFinalizer(this, func(this *QLoggingCategory) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

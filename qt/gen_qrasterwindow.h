@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -24,12 +26,12 @@ typedef struct QWindow QWindow;
 QRasterWindow* QRasterWindow_new();
 QRasterWindow* QRasterWindow_new2(QWindow* parent);
 QMetaObject* QRasterWindow_MetaObject(const QRasterWindow* self);
-void QRasterWindow_Tr(const char* s, char** _out, int* _out_Strlen);
-void QRasterWindow_TrUtf8(const char* s, char** _out, int* _out_Strlen);
-void QRasterWindow_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QRasterWindow_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QRasterWindow_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QRasterWindow_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QRasterWindow_Tr(const char* s);
+struct miqt_string* QRasterWindow_TrUtf8(const char* s);
+struct miqt_string* QRasterWindow_Tr2(const char* s, const char* c);
+struct miqt_string* QRasterWindow_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QRasterWindow_TrUtf82(const char* s, const char* c);
+struct miqt_string* QRasterWindow_TrUtf83(const char* s, const char* c, int n);
 void QRasterWindow_Delete(QRasterWindow* self);
 
 #ifdef __cplusplus

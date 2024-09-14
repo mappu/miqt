@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"runtime"
 	"unsafe"
 )
 
@@ -34,6 +35,16 @@ func newQStringDataPtr_U(h unsafe.Pointer) *QStringDataPtr {
 	return newQStringDataPtr((*C.QStringDataPtr)(h))
 }
 
+// Delete this object from C++ memory.
 func (this *QStringDataPtr) Delete() {
 	C.QStringDataPtr_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QStringDataPtr) GoGC() {
+	runtime.SetFinalizer(this, func(this *QStringDataPtr) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

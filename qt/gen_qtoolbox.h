@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -27,21 +29,21 @@ QToolBox* QToolBox_new();
 QToolBox* QToolBox_new2(QWidget* parent);
 QToolBox* QToolBox_new3(QWidget* parent, int f);
 QMetaObject* QToolBox_MetaObject(const QToolBox* self);
-void QToolBox_Tr(const char* s, char** _out, int* _out_Strlen);
-void QToolBox_TrUtf8(const char* s, char** _out, int* _out_Strlen);
-int QToolBox_AddItem(QToolBox* self, QWidget* widget, const char* text, size_t text_Strlen);
-int QToolBox_AddItem2(QToolBox* self, QWidget* widget, QIcon* icon, const char* text, size_t text_Strlen);
-int QToolBox_InsertItem(QToolBox* self, int index, QWidget* widget, const char* text, size_t text_Strlen);
-int QToolBox_InsertItem2(QToolBox* self, int index, QWidget* widget, QIcon* icon, const char* text, size_t text_Strlen);
+struct miqt_string* QToolBox_Tr(const char* s);
+struct miqt_string* QToolBox_TrUtf8(const char* s);
+int QToolBox_AddItem(QToolBox* self, QWidget* widget, struct miqt_string* text);
+int QToolBox_AddItem2(QToolBox* self, QWidget* widget, QIcon* icon, struct miqt_string* text);
+int QToolBox_InsertItem(QToolBox* self, int index, QWidget* widget, struct miqt_string* text);
+int QToolBox_InsertItem2(QToolBox* self, int index, QWidget* widget, QIcon* icon, struct miqt_string* text);
 void QToolBox_RemoveItem(QToolBox* self, int index);
 void QToolBox_SetItemEnabled(QToolBox* self, int index, bool enabled);
 bool QToolBox_IsItemEnabled(const QToolBox* self, int index);
-void QToolBox_SetItemText(QToolBox* self, int index, const char* text, size_t text_Strlen);
-void QToolBox_ItemText(const QToolBox* self, int index, char** _out, int* _out_Strlen);
+void QToolBox_SetItemText(QToolBox* self, int index, struct miqt_string* text);
+struct miqt_string* QToolBox_ItemText(const QToolBox* self, int index);
 void QToolBox_SetItemIcon(QToolBox* self, int index, QIcon* icon);
 QIcon* QToolBox_ItemIcon(const QToolBox* self, int index);
-void QToolBox_SetItemToolTip(QToolBox* self, int index, const char* toolTip, size_t toolTip_Strlen);
-void QToolBox_ItemToolTip(const QToolBox* self, int index, char** _out, int* _out_Strlen);
+void QToolBox_SetItemToolTip(QToolBox* self, int index, struct miqt_string* toolTip);
+struct miqt_string* QToolBox_ItemToolTip(const QToolBox* self, int index);
 int QToolBox_CurrentIndex(const QToolBox* self);
 QWidget* QToolBox_CurrentWidget(const QToolBox* self);
 QWidget* QToolBox_Widget(const QToolBox* self, int index);
@@ -51,10 +53,10 @@ void QToolBox_SetCurrentIndex(QToolBox* self, int index);
 void QToolBox_SetCurrentWidget(QToolBox* self, QWidget* widget);
 void QToolBox_CurrentChanged(QToolBox* self, int index);
 void QToolBox_connect_CurrentChanged(QToolBox* self, void* slot);
-void QToolBox_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QToolBox_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QToolBox_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QToolBox_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QToolBox_Tr2(const char* s, const char* c);
+struct miqt_string* QToolBox_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QToolBox_TrUtf82(const char* s, const char* c);
+struct miqt_string* QToolBox_TrUtf83(const char* s, const char* c, int n);
 void QToolBox_Delete(QToolBox* self);
 
 #ifdef __cplusplus

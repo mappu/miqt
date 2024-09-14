@@ -17,33 +17,25 @@
 #include <QTextFrame>
 #include <QTextObjectInterface>
 #include "qabstracttextdocumentlayout.h"
-
 #include "gen_qabstracttextdocumentlayout.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QMetaObject* QAbstractTextDocumentLayout_MetaObject(const QAbstractTextDocumentLayout* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void QAbstractTextDocumentLayout_Tr(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QAbstractTextDocumentLayout::tr(s);
+struct miqt_string* QAbstractTextDocumentLayout_Tr(const char* s) {
+	QString _ret = QAbstractTextDocumentLayout::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QAbstractTextDocumentLayout_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QAbstractTextDocumentLayout::trUtf8(s);
+struct miqt_string* QAbstractTextDocumentLayout_TrUtf8(const char* s) {
+	QString _ret = QAbstractTextDocumentLayout::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QAbstractTextDocumentLayout_Draw(QAbstractTextDocumentLayout* self, QPainter* painter, QAbstractTextDocumentLayout__PaintContext* context) {
@@ -54,34 +46,30 @@ int QAbstractTextDocumentLayout_HitTest(const QAbstractTextDocumentLayout* self,
 	return self->hitTest(*point, static_cast<Qt::HitTestAccuracy>(accuracy));
 }
 
-void QAbstractTextDocumentLayout_AnchorAt(const QAbstractTextDocumentLayout* self, QPointF* pos, char** _out, int* _out_Strlen) {
-	QString ret = self->anchorAt(*pos);
+struct miqt_string* QAbstractTextDocumentLayout_AnchorAt(const QAbstractTextDocumentLayout* self, QPointF* pos) {
+	QString _ret = self->anchorAt(*pos);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QAbstractTextDocumentLayout_ImageAt(const QAbstractTextDocumentLayout* self, QPointF* pos, char** _out, int* _out_Strlen) {
-	QString ret = self->imageAt(*pos);
+struct miqt_string* QAbstractTextDocumentLayout_ImageAt(const QAbstractTextDocumentLayout* self, QPointF* pos) {
+	QString _ret = self->imageAt(*pos);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 QTextFormat* QAbstractTextDocumentLayout_FormatAt(const QAbstractTextDocumentLayout* self, QPointF* pos) {
-	QTextFormat ret = self->formatAt(*pos);
+	QTextFormat _ret = self->formatAt(*pos);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextFormat*>(new QTextFormat(ret));
+	return static_cast<QTextFormat*>(new QTextFormat(_ret));
 }
 
 QTextBlock* QAbstractTextDocumentLayout_BlockWithMarkerAt(const QAbstractTextDocumentLayout* self, QPointF* pos) {
-	QTextBlock ret = self->blockWithMarkerAt(*pos);
+	QTextBlock _ret = self->blockWithMarkerAt(*pos);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextBlock*>(new QTextBlock(ret));
+	return static_cast<QTextBlock*>(new QTextBlock(_ret));
 }
 
 int QAbstractTextDocumentLayout_PageCount(const QAbstractTextDocumentLayout* self) {
@@ -89,21 +77,21 @@ int QAbstractTextDocumentLayout_PageCount(const QAbstractTextDocumentLayout* sel
 }
 
 QSizeF* QAbstractTextDocumentLayout_DocumentSize(const QAbstractTextDocumentLayout* self) {
-	QSizeF ret = self->documentSize();
+	QSizeF _ret = self->documentSize();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSizeF*>(new QSizeF(ret));
+	return static_cast<QSizeF*>(new QSizeF(_ret));
 }
 
 QRectF* QAbstractTextDocumentLayout_FrameBoundingRect(const QAbstractTextDocumentLayout* self, QTextFrame* frame) {
-	QRectF ret = self->frameBoundingRect(frame);
+	QRectF _ret = self->frameBoundingRect(frame);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(ret));
+	return static_cast<QRectF*>(new QRectF(_ret));
 }
 
 QRectF* QAbstractTextDocumentLayout_BlockBoundingRect(const QAbstractTextDocumentLayout* self, QTextBlock* block) {
-	QRectF ret = self->blockBoundingRect(*block);
+	QRectF _ret = self->blockBoundingRect(*block);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(ret));
+	return static_cast<QRectF*>(new QRectF(_ret));
 }
 
 void QAbstractTextDocumentLayout_SetPaintDevice(QAbstractTextDocumentLayout* self, QPaintDevice* device) {
@@ -132,7 +120,7 @@ void QAbstractTextDocumentLayout_Update(QAbstractTextDocumentLayout* self) {
 
 void QAbstractTextDocumentLayout_connect_Update(QAbstractTextDocumentLayout* self, void* slot) {
 	QAbstractTextDocumentLayout::connect(self, static_cast<void (QAbstractTextDocumentLayout::*)(const QRectF&)>(&QAbstractTextDocumentLayout::update), self, [=]() {
-		miqt_exec_callback(slot, 0, nullptr);
+		miqt_exec_callback_QAbstractTextDocumentLayout_Update(slot);
 	});
 }
 
@@ -142,7 +130,10 @@ void QAbstractTextDocumentLayout_UpdateBlock(QAbstractTextDocumentLayout* self, 
 
 void QAbstractTextDocumentLayout_connect_UpdateBlock(QAbstractTextDocumentLayout* self, void* slot) {
 	QAbstractTextDocumentLayout::connect(self, static_cast<void (QAbstractTextDocumentLayout::*)(const QTextBlock&)>(&QAbstractTextDocumentLayout::updateBlock), self, [=](const QTextBlock& block) {
-		miqt_exec_callback(slot, 0, nullptr);
+		const QTextBlock& block_ret = block;
+		// Cast returned reference into pointer
+		QTextBlock* sigval1 = const_cast<QTextBlock*>(&block_ret);
+		miqt_exec_callback_QAbstractTextDocumentLayout_UpdateBlock(slot, sigval1);
 	});
 }
 
@@ -152,7 +143,10 @@ void QAbstractTextDocumentLayout_DocumentSizeChanged(QAbstractTextDocumentLayout
 
 void QAbstractTextDocumentLayout_connect_DocumentSizeChanged(QAbstractTextDocumentLayout* self, void* slot) {
 	QAbstractTextDocumentLayout::connect(self, static_cast<void (QAbstractTextDocumentLayout::*)(const QSizeF&)>(&QAbstractTextDocumentLayout::documentSizeChanged), self, [=](const QSizeF& newSize) {
-		miqt_exec_callback(slot, 0, nullptr);
+		const QSizeF& newSize_ret = newSize;
+		// Cast returned reference into pointer
+		QSizeF* sigval1 = const_cast<QSizeF*>(&newSize_ret);
+		miqt_exec_callback_QAbstractTextDocumentLayout_DocumentSizeChanged(slot, sigval1);
 	});
 }
 
@@ -162,44 +156,37 @@ void QAbstractTextDocumentLayout_PageCountChanged(QAbstractTextDocumentLayout* s
 
 void QAbstractTextDocumentLayout_connect_PageCountChanged(QAbstractTextDocumentLayout* self, void* slot) {
 	QAbstractTextDocumentLayout::connect(self, static_cast<void (QAbstractTextDocumentLayout::*)(int)>(&QAbstractTextDocumentLayout::pageCountChanged), self, [=](int newPages) {
-		miqt_exec_callback(slot, 0, nullptr);
+		int sigval1 = newPages;
+		miqt_exec_callback_QAbstractTextDocumentLayout_PageCountChanged(slot, sigval1);
 	});
 }
 
-void QAbstractTextDocumentLayout_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QAbstractTextDocumentLayout::tr(s, c);
+struct miqt_string* QAbstractTextDocumentLayout_Tr2(const char* s, const char* c) {
+	QString _ret = QAbstractTextDocumentLayout::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QAbstractTextDocumentLayout_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QAbstractTextDocumentLayout::tr(s, c, static_cast<int>(n));
+struct miqt_string* QAbstractTextDocumentLayout_Tr3(const char* s, const char* c, int n) {
+	QString _ret = QAbstractTextDocumentLayout::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QAbstractTextDocumentLayout_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QAbstractTextDocumentLayout::trUtf8(s, c);
+struct miqt_string* QAbstractTextDocumentLayout_TrUtf82(const char* s, const char* c) {
+	QString _ret = QAbstractTextDocumentLayout::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QAbstractTextDocumentLayout_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QAbstractTextDocumentLayout::trUtf8(s, c, static_cast<int>(n));
+struct miqt_string* QAbstractTextDocumentLayout_TrUtf83(const char* s, const char* c, int n) {
+	QString _ret = QAbstractTextDocumentLayout::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QAbstractTextDocumentLayout_UnregisterHandler2(QAbstractTextDocumentLayout* self, int objectType, QObject* component) {
@@ -212,7 +199,10 @@ void QAbstractTextDocumentLayout_Update1(QAbstractTextDocumentLayout* self, QRec
 
 void QAbstractTextDocumentLayout_connect_Update1(QAbstractTextDocumentLayout* self, void* slot) {
 	QAbstractTextDocumentLayout::connect(self, static_cast<void (QAbstractTextDocumentLayout::*)(const QRectF&)>(&QAbstractTextDocumentLayout::update), self, [=](const QRectF& param1) {
-		miqt_exec_callback(slot, 0, nullptr);
+		const QRectF& param1_ret = param1;
+		// Cast returned reference into pointer
+		QRectF* sigval1 = const_cast<QRectF*>(&param1_ret);
+		miqt_exec_callback_QAbstractTextDocumentLayout_Update1(slot, sigval1);
 	});
 }
 
@@ -221,9 +211,9 @@ void QAbstractTextDocumentLayout_Delete(QAbstractTextDocumentLayout* self) {
 }
 
 QSizeF* QTextObjectInterface_IntrinsicSize(QTextObjectInterface* self, QTextDocument* doc, int posInDocument, QTextFormat* format) {
-	QSizeF ret = self->intrinsicSize(doc, static_cast<int>(posInDocument), *format);
+	QSizeF _ret = self->intrinsicSize(doc, static_cast<int>(posInDocument), *format);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSizeF*>(new QSizeF(ret));
+	return static_cast<QSizeF*>(new QSizeF(_ret));
 }
 
 void QTextObjectInterface_DrawObject(QTextObjectInterface* self, QPainter* painter, QRectF* rect, QTextDocument* doc, int posInDocument, QTextFormat* format) {

@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -54,12 +56,12 @@ typedef struct QTextObjectInterface QTextObjectInterface;
 #endif
 
 QMetaObject* QAbstractTextDocumentLayout_MetaObject(const QAbstractTextDocumentLayout* self);
-void QAbstractTextDocumentLayout_Tr(const char* s, char** _out, int* _out_Strlen);
-void QAbstractTextDocumentLayout_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QAbstractTextDocumentLayout_Tr(const char* s);
+struct miqt_string* QAbstractTextDocumentLayout_TrUtf8(const char* s);
 void QAbstractTextDocumentLayout_Draw(QAbstractTextDocumentLayout* self, QPainter* painter, QAbstractTextDocumentLayout__PaintContext* context);
 int QAbstractTextDocumentLayout_HitTest(const QAbstractTextDocumentLayout* self, QPointF* point, uintptr_t accuracy);
-void QAbstractTextDocumentLayout_AnchorAt(const QAbstractTextDocumentLayout* self, QPointF* pos, char** _out, int* _out_Strlen);
-void QAbstractTextDocumentLayout_ImageAt(const QAbstractTextDocumentLayout* self, QPointF* pos, char** _out, int* _out_Strlen);
+struct miqt_string* QAbstractTextDocumentLayout_AnchorAt(const QAbstractTextDocumentLayout* self, QPointF* pos);
+struct miqt_string* QAbstractTextDocumentLayout_ImageAt(const QAbstractTextDocumentLayout* self, QPointF* pos);
 QTextFormat* QAbstractTextDocumentLayout_FormatAt(const QAbstractTextDocumentLayout* self, QPointF* pos);
 QTextBlock* QAbstractTextDocumentLayout_BlockWithMarkerAt(const QAbstractTextDocumentLayout* self, QPointF* pos);
 int QAbstractTextDocumentLayout_PageCount(const QAbstractTextDocumentLayout* self);
@@ -79,10 +81,10 @@ void QAbstractTextDocumentLayout_DocumentSizeChanged(QAbstractTextDocumentLayout
 void QAbstractTextDocumentLayout_connect_DocumentSizeChanged(QAbstractTextDocumentLayout* self, void* slot);
 void QAbstractTextDocumentLayout_PageCountChanged(QAbstractTextDocumentLayout* self, int newPages);
 void QAbstractTextDocumentLayout_connect_PageCountChanged(QAbstractTextDocumentLayout* self, void* slot);
-void QAbstractTextDocumentLayout_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QAbstractTextDocumentLayout_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QAbstractTextDocumentLayout_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QAbstractTextDocumentLayout_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QAbstractTextDocumentLayout_Tr2(const char* s, const char* c);
+struct miqt_string* QAbstractTextDocumentLayout_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QAbstractTextDocumentLayout_TrUtf82(const char* s, const char* c);
+struct miqt_string* QAbstractTextDocumentLayout_TrUtf83(const char* s, const char* c, int n);
 void QAbstractTextDocumentLayout_UnregisterHandler2(QAbstractTextDocumentLayout* self, int objectType, QObject* component);
 void QAbstractTextDocumentLayout_Update1(QAbstractTextDocumentLayout* self, QRectF* param1);
 void QAbstractTextDocumentLayout_connect_Update1(QAbstractTextDocumentLayout* self, void* slot);

@@ -38,30 +38,26 @@ func newQAbstractTextDocumentLayout_U(h unsafe.Pointer) *QAbstractTextDocumentLa
 }
 
 func (this *QAbstractTextDocumentLayout) MetaObject() *QMetaObject {
-	ret := C.QAbstractTextDocumentLayout_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QAbstractTextDocumentLayout_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QAbstractTextDocumentLayout_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QAbstractTextDocumentLayout_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QAbstractTextDocumentLayout_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QAbstractTextDocumentLayout_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QAbstractTextDocumentLayout_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QAbstractTextDocumentLayout_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QAbstractTextDocumentLayout) Draw(painter *QPainter, context *QAbstractTextDocumentLayout__PaintContext) {
@@ -69,86 +65,62 @@ func (this *QAbstractTextDocumentLayout) Draw(painter *QPainter, context *QAbstr
 }
 
 func (this *QAbstractTextDocumentLayout) HitTest(point *QPointF, accuracy HitTestAccuracy) int {
-	ret := C.QAbstractTextDocumentLayout_HitTest(this.h, point.cPointer(), (C.uintptr_t)(accuracy))
-	return (int)(ret)
+	_ret := C.QAbstractTextDocumentLayout_HitTest(this.h, point.cPointer(), (C.uintptr_t)(accuracy))
+	return (int)(_ret)
 }
 
 func (this *QAbstractTextDocumentLayout) AnchorAt(pos *QPointF) string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QAbstractTextDocumentLayout_AnchorAt(this.h, pos.cPointer(), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QAbstractTextDocumentLayout_AnchorAt(this.h, pos.cPointer())
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QAbstractTextDocumentLayout) ImageAt(pos *QPointF) string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QAbstractTextDocumentLayout_ImageAt(this.h, pos.cPointer(), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QAbstractTextDocumentLayout_ImageAt(this.h, pos.cPointer())
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QAbstractTextDocumentLayout) FormatAt(pos *QPointF) *QTextFormat {
-	ret := C.QAbstractTextDocumentLayout_FormatAt(this.h, pos.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQTextFormat(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QTextFormat) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QAbstractTextDocumentLayout_FormatAt(this.h, pos.cPointer())
+	_goptr := newQTextFormat(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QAbstractTextDocumentLayout) BlockWithMarkerAt(pos *QPointF) *QTextBlock {
-	ret := C.QAbstractTextDocumentLayout_BlockWithMarkerAt(this.h, pos.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQTextBlock(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QTextBlock) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QAbstractTextDocumentLayout_BlockWithMarkerAt(this.h, pos.cPointer())
+	_goptr := newQTextBlock(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QAbstractTextDocumentLayout) PageCount() int {
-	ret := C.QAbstractTextDocumentLayout_PageCount(this.h)
-	return (int)(ret)
+	_ret := C.QAbstractTextDocumentLayout_PageCount(this.h)
+	return (int)(_ret)
 }
 
 func (this *QAbstractTextDocumentLayout) DocumentSize() *QSizeF {
-	ret := C.QAbstractTextDocumentLayout_DocumentSize(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSizeF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSizeF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QAbstractTextDocumentLayout_DocumentSize(this.h)
+	_goptr := newQSizeF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QAbstractTextDocumentLayout) FrameBoundingRect(frame *QTextFrame) *QRectF {
-	ret := C.QAbstractTextDocumentLayout_FrameBoundingRect(this.h, frame.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRectF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRectF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QAbstractTextDocumentLayout_FrameBoundingRect(this.h, frame.cPointer())
+	_goptr := newQRectF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QAbstractTextDocumentLayout) BlockBoundingRect(block *QTextBlock) *QRectF {
-	ret := C.QAbstractTextDocumentLayout_BlockBoundingRect(this.h, block.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRectF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRectF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QAbstractTextDocumentLayout_BlockBoundingRect(this.h, block.cPointer())
+	_goptr := newQRectF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QAbstractTextDocumentLayout) SetPaintDevice(device *QPaintDevice) {
@@ -156,13 +128,13 @@ func (this *QAbstractTextDocumentLayout) SetPaintDevice(device *QPaintDevice) {
 }
 
 func (this *QAbstractTextDocumentLayout) PaintDevice() *QPaintDevice {
-	ret := C.QAbstractTextDocumentLayout_PaintDevice(this.h)
-	return newQPaintDevice_U(unsafe.Pointer(ret))
+	_ret := C.QAbstractTextDocumentLayout_PaintDevice(this.h)
+	return newQPaintDevice_U(unsafe.Pointer(_ret))
 }
 
 func (this *QAbstractTextDocumentLayout) Document() *QTextDocument {
-	ret := C.QAbstractTextDocumentLayout_Document(this.h)
-	return newQTextDocument_U(unsafe.Pointer(ret))
+	_ret := C.QAbstractTextDocumentLayout_Document(this.h)
+	return newQTextDocument_U(unsafe.Pointer(_ret))
 }
 
 func (this *QAbstractTextDocumentLayout) RegisterHandler(objectType int, component *QObject) {
@@ -176,49 +148,81 @@ func (this *QAbstractTextDocumentLayout) UnregisterHandler(objectType int) {
 func (this *QAbstractTextDocumentLayout) Update() {
 	C.QAbstractTextDocumentLayout_Update(this.h)
 }
-
 func (this *QAbstractTextDocumentLayout) OnUpdate(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+	C.QAbstractTextDocumentLayout_connect_Update(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
+
+//export miqt_exec_callback_QAbstractTextDocumentLayout_Update
+func miqt_exec_callback_QAbstractTextDocumentLayout_Update(cb *C.void) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QAbstractTextDocumentLayout_connect_Update(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	gofunc()
 }
 
 func (this *QAbstractTextDocumentLayout) UpdateBlock(block *QTextBlock) {
 	C.QAbstractTextDocumentLayout_UpdateBlock(this.h, block.cPointer())
 }
+func (this *QAbstractTextDocumentLayout) OnUpdateBlock(slot func(block *QTextBlock)) {
+	C.QAbstractTextDocumentLayout_connect_UpdateBlock(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QAbstractTextDocumentLayout) OnUpdateBlock(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QAbstractTextDocumentLayout_UpdateBlock
+func miqt_exec_callback_QAbstractTextDocumentLayout_UpdateBlock(cb *C.void, block *C.QTextBlock) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(block *QTextBlock))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QAbstractTextDocumentLayout_connect_UpdateBlock(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	block_ret := block
+	slotval1 := newQTextBlock_U(unsafe.Pointer(block_ret))
+
+	gofunc(slotval1)
 }
 
 func (this *QAbstractTextDocumentLayout) DocumentSizeChanged(newSize *QSizeF) {
 	C.QAbstractTextDocumentLayout_DocumentSizeChanged(this.h, newSize.cPointer())
 }
+func (this *QAbstractTextDocumentLayout) OnDocumentSizeChanged(slot func(newSize *QSizeF)) {
+	C.QAbstractTextDocumentLayout_connect_DocumentSizeChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QAbstractTextDocumentLayout) OnDocumentSizeChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QAbstractTextDocumentLayout_DocumentSizeChanged
+func miqt_exec_callback_QAbstractTextDocumentLayout_DocumentSizeChanged(cb *C.void, newSize *C.QSizeF) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(newSize *QSizeF))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QAbstractTextDocumentLayout_connect_DocumentSizeChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	newSize_ret := newSize
+	slotval1 := newQSizeF_U(unsafe.Pointer(newSize_ret))
+
+	gofunc(slotval1)
 }
 
 func (this *QAbstractTextDocumentLayout) PageCountChanged(newPages int) {
 	C.QAbstractTextDocumentLayout_PageCountChanged(this.h, (C.int)(newPages))
 }
+func (this *QAbstractTextDocumentLayout) OnPageCountChanged(slot func(newPages int)) {
+	C.QAbstractTextDocumentLayout_connect_PageCountChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QAbstractTextDocumentLayout) OnPageCountChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QAbstractTextDocumentLayout_PageCountChanged
+func miqt_exec_callback_QAbstractTextDocumentLayout_PageCountChanged(cb *C.void, newPages C.int) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(newPages int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QAbstractTextDocumentLayout_connect_PageCountChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	newPages_ret := newPages
+	slotval1 := (int)(newPages_ret)
+
+	gofunc(slotval1)
 }
 
 func QAbstractTextDocumentLayout_Tr2(s string, c string) string {
@@ -226,12 +230,10 @@ func QAbstractTextDocumentLayout_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QAbstractTextDocumentLayout_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QAbstractTextDocumentLayout_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QAbstractTextDocumentLayout_Tr3(s string, c string, n int) string {
@@ -239,12 +241,10 @@ func QAbstractTextDocumentLayout_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QAbstractTextDocumentLayout_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QAbstractTextDocumentLayout_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QAbstractTextDocumentLayout_TrUtf82(s string, c string) string {
@@ -252,12 +252,10 @@ func QAbstractTextDocumentLayout_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QAbstractTextDocumentLayout_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QAbstractTextDocumentLayout_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QAbstractTextDocumentLayout_TrUtf83(s string, c string, n int) string {
@@ -265,12 +263,10 @@ func QAbstractTextDocumentLayout_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QAbstractTextDocumentLayout_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QAbstractTextDocumentLayout_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QAbstractTextDocumentLayout) UnregisterHandler2(objectType int, component *QObject) {
@@ -280,17 +276,36 @@ func (this *QAbstractTextDocumentLayout) UnregisterHandler2(objectType int, comp
 func (this *QAbstractTextDocumentLayout) Update1(param1 *QRectF) {
 	C.QAbstractTextDocumentLayout_Update1(this.h, param1.cPointer())
 }
-
-func (this *QAbstractTextDocumentLayout) OnUpdate1(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
-	}
-
-	C.QAbstractTextDocumentLayout_connect_Update1(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+func (this *QAbstractTextDocumentLayout) OnUpdate1(slot func(param1 *QRectF)) {
+	C.QAbstractTextDocumentLayout_connect_Update1(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
 }
 
+//export miqt_exec_callback_QAbstractTextDocumentLayout_Update1
+func miqt_exec_callback_QAbstractTextDocumentLayout_Update1(cb *C.void, param1 *C.QRectF) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(param1 *QRectF))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	param1_ret := param1
+	slotval1 := newQRectF_U(unsafe.Pointer(param1_ret))
+
+	gofunc(slotval1)
+}
+
+// Delete this object from C++ memory.
 func (this *QAbstractTextDocumentLayout) Delete() {
 	C.QAbstractTextDocumentLayout_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QAbstractTextDocumentLayout) GoGC() {
+	runtime.SetFinalizer(this, func(this *QAbstractTextDocumentLayout) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
 
 type QTextObjectInterface struct {
@@ -316,22 +331,28 @@ func newQTextObjectInterface_U(h unsafe.Pointer) *QTextObjectInterface {
 }
 
 func (this *QTextObjectInterface) IntrinsicSize(doc *QTextDocument, posInDocument int, format *QTextFormat) *QSizeF {
-	ret := C.QTextObjectInterface_IntrinsicSize(this.h, doc.cPointer(), (C.int)(posInDocument), format.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSizeF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSizeF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QTextObjectInterface_IntrinsicSize(this.h, doc.cPointer(), (C.int)(posInDocument), format.cPointer())
+	_goptr := newQSizeF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QTextObjectInterface) DrawObject(painter *QPainter, rect *QRectF, doc *QTextDocument, posInDocument int, format *QTextFormat) {
 	C.QTextObjectInterface_DrawObject(this.h, painter.cPointer(), rect.cPointer(), doc.cPointer(), (C.int)(posInDocument), format.cPointer())
 }
 
+// Delete this object from C++ memory.
 func (this *QTextObjectInterface) Delete() {
 	C.QTextObjectInterface_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QTextObjectInterface) GoGC() {
+	runtime.SetFinalizer(this, func(this *QTextObjectInterface) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
 
 type QAbstractTextDocumentLayout__Selection struct {
@@ -362,8 +383,18 @@ func NewQAbstractTextDocumentLayout__Selection(param1 *QAbstractTextDocumentLayo
 	return newQAbstractTextDocumentLayout__Selection(ret)
 }
 
+// Delete this object from C++ memory.
 func (this *QAbstractTextDocumentLayout__Selection) Delete() {
 	C.QAbstractTextDocumentLayout__Selection_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QAbstractTextDocumentLayout__Selection) GoGC() {
+	runtime.SetFinalizer(this, func(this *QAbstractTextDocumentLayout__Selection) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
 
 type QAbstractTextDocumentLayout__PaintContext struct {
@@ -400,6 +431,16 @@ func NewQAbstractTextDocumentLayout__PaintContext2(param1 *QAbstractTextDocument
 	return newQAbstractTextDocumentLayout__PaintContext(ret)
 }
 
+// Delete this object from C++ memory.
 func (this *QAbstractTextDocumentLayout__PaintContext) Delete() {
 	C.QAbstractTextDocumentLayout__PaintContext_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QAbstractTextDocumentLayout__PaintContext) GoGC() {
+	runtime.SetFinalizer(this, func(this *QAbstractTextDocumentLayout__PaintContext) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

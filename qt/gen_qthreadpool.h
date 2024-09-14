@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -28,8 +30,8 @@ typedef struct QThreadPool QThreadPool;
 QThreadPool* QThreadPool_new();
 QThreadPool* QThreadPool_new2(QObject* parent);
 QMetaObject* QThreadPool_MetaObject(const QThreadPool* self);
-void QThreadPool_Tr(const char* s, char** _out, int* _out_Strlen);
-void QThreadPool_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QThreadPool_Tr(const char* s);
+struct miqt_string* QThreadPool_TrUtf8(const char* s);
 QThreadPool* QThreadPool_GlobalInstance();
 void QThreadPool_Start(QThreadPool* self, QRunnable* runnable);
 bool QThreadPool_TryStart(QThreadPool* self, QRunnable* runnable);
@@ -47,10 +49,10 @@ void QThreadPool_Clear(QThreadPool* self);
 bool QThreadPool_Contains(const QThreadPool* self, QThread* thread);
 void QThreadPool_Cancel(QThreadPool* self, QRunnable* runnable);
 bool QThreadPool_TryTake(QThreadPool* self, QRunnable* runnable);
-void QThreadPool_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QThreadPool_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QThreadPool_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QThreadPool_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QThreadPool_Tr2(const char* s, const char* c);
+struct miqt_string* QThreadPool_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QThreadPool_TrUtf82(const char* s, const char* c);
+struct miqt_string* QThreadPool_TrUtf83(const char* s, const char* c, int n);
 void QThreadPool_Start2(QThreadPool* self, QRunnable* runnable, int priority);
 bool QThreadPool_WaitForDone1(QThreadPool* self, int msecs);
 void QThreadPool_Delete(QThreadPool* self);

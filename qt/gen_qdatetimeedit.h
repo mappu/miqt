@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -48,8 +50,8 @@ QDateTimeEdit* QDateTimeEdit_new6(QDateTime* dt, QWidget* parent);
 QDateTimeEdit* QDateTimeEdit_new7(QDate* d, QWidget* parent);
 QDateTimeEdit* QDateTimeEdit_new8(QTime* t, QWidget* parent);
 QMetaObject* QDateTimeEdit_MetaObject(const QDateTimeEdit* self);
-void QDateTimeEdit_Tr(const char* s, char** _out, int* _out_Strlen);
-void QDateTimeEdit_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QDateTimeEdit_Tr(const char* s);
+struct miqt_string* QDateTimeEdit_TrUtf8(const char* s);
 QDateTime* QDateTimeEdit_DateTime(const QDateTimeEdit* self);
 QDate* QDateTimeEdit_Date(const QDateTimeEdit* self);
 QTime* QDateTimeEdit_Time(const QDateTimeEdit* self);
@@ -86,9 +88,9 @@ QCalendarWidget* QDateTimeEdit_CalendarWidget(const QDateTimeEdit* self);
 void QDateTimeEdit_SetCalendarWidget(QDateTimeEdit* self, QCalendarWidget* calendarWidget);
 int QDateTimeEdit_SectionCount(const QDateTimeEdit* self);
 void QDateTimeEdit_SetSelectedSection(QDateTimeEdit* self, uintptr_t section);
-void QDateTimeEdit_SectionText(const QDateTimeEdit* self, uintptr_t section, char** _out, int* _out_Strlen);
-void QDateTimeEdit_DisplayFormat(const QDateTimeEdit* self, char** _out, int* _out_Strlen);
-void QDateTimeEdit_SetDisplayFormat(QDateTimeEdit* self, const char* format, size_t format_Strlen);
+struct miqt_string* QDateTimeEdit_SectionText(const QDateTimeEdit* self, uintptr_t section);
+struct miqt_string* QDateTimeEdit_DisplayFormat(const QDateTimeEdit* self);
+void QDateTimeEdit_SetDisplayFormat(QDateTimeEdit* self, struct miqt_string* format);
 bool QDateTimeEdit_CalendarPopup(const QDateTimeEdit* self);
 void QDateTimeEdit_SetCalendarPopup(QDateTimeEdit* self, bool enable);
 uintptr_t QDateTimeEdit_TimeSpec(const QDateTimeEdit* self);
@@ -106,10 +108,10 @@ void QDateTimeEdit_connect_DateChanged(QDateTimeEdit* self, void* slot);
 void QDateTimeEdit_SetDateTime(QDateTimeEdit* self, QDateTime* dateTime);
 void QDateTimeEdit_SetDate(QDateTimeEdit* self, QDate* date);
 void QDateTimeEdit_SetTime(QDateTimeEdit* self, QTime* time);
-void QDateTimeEdit_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QDateTimeEdit_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QDateTimeEdit_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QDateTimeEdit_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QDateTimeEdit_Tr2(const char* s, const char* c);
+struct miqt_string* QDateTimeEdit_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QDateTimeEdit_TrUtf82(const char* s, const char* c);
+struct miqt_string* QDateTimeEdit_TrUtf83(const char* s, const char* c, int n);
 void QDateTimeEdit_Delete(QDateTimeEdit* self);
 
 QTimeEdit* QTimeEdit_new();
@@ -117,14 +119,14 @@ QTimeEdit* QTimeEdit_new2(QTime* time);
 QTimeEdit* QTimeEdit_new3(QWidget* parent);
 QTimeEdit* QTimeEdit_new4(QTime* time, QWidget* parent);
 QMetaObject* QTimeEdit_MetaObject(const QTimeEdit* self);
-void QTimeEdit_Tr(const char* s, char** _out, int* _out_Strlen);
-void QTimeEdit_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QTimeEdit_Tr(const char* s);
+struct miqt_string* QTimeEdit_TrUtf8(const char* s);
 void QTimeEdit_UserTimeChanged(QTimeEdit* self, QTime* time);
 void QTimeEdit_connect_UserTimeChanged(QTimeEdit* self, void* slot);
-void QTimeEdit_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QTimeEdit_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QTimeEdit_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QTimeEdit_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QTimeEdit_Tr2(const char* s, const char* c);
+struct miqt_string* QTimeEdit_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QTimeEdit_TrUtf82(const char* s, const char* c);
+struct miqt_string* QTimeEdit_TrUtf83(const char* s, const char* c, int n);
 void QTimeEdit_Delete(QTimeEdit* self);
 
 QDateEdit* QDateEdit_new();
@@ -132,14 +134,14 @@ QDateEdit* QDateEdit_new2(QDate* date);
 QDateEdit* QDateEdit_new3(QWidget* parent);
 QDateEdit* QDateEdit_new4(QDate* date, QWidget* parent);
 QMetaObject* QDateEdit_MetaObject(const QDateEdit* self);
-void QDateEdit_Tr(const char* s, char** _out, int* _out_Strlen);
-void QDateEdit_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QDateEdit_Tr(const char* s);
+struct miqt_string* QDateEdit_TrUtf8(const char* s);
 void QDateEdit_UserDateChanged(QDateEdit* self, QDate* date);
 void QDateEdit_connect_UserDateChanged(QDateEdit* self, void* slot);
-void QDateEdit_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QDateEdit_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QDateEdit_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QDateEdit_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QDateEdit_Tr2(const char* s, const char* c);
+struct miqt_string* QDateEdit_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QDateEdit_TrUtf82(const char* s, const char* c);
+struct miqt_string* QDateEdit_TrUtf83(const char* s, const char* c, int n);
 void QDateEdit_Delete(QDateEdit* self);
 
 #ifdef __cplusplus

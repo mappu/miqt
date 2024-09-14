@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"runtime"
 	"runtime/cgo"
 	"unsafe"
 )
@@ -137,30 +138,26 @@ func NewQDialogButtonBox8(buttons int, orientation Orientation, parent *QWidget)
 }
 
 func (this *QDialogButtonBox) MetaObject() *QMetaObject {
-	ret := C.QDialogButtonBox_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QDialogButtonBox_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QDialogButtonBox_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QDialogButtonBox_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QDialogButtonBox_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QDialogButtonBox_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QDialogButtonBox_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QDialogButtonBox_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QDialogButtonBox) SetOrientation(orientation Orientation) {
@@ -168,8 +165,8 @@ func (this *QDialogButtonBox) SetOrientation(orientation Orientation) {
 }
 
 func (this *QDialogButtonBox) Orientation() Orientation {
-	ret := C.QDialogButtonBox_Orientation(this.h)
-	return (Orientation)(ret)
+	_ret := C.QDialogButtonBox_Orientation(this.h)
+	return (Orientation)(_ret)
 }
 
 func (this *QDialogButtonBox) AddButton(button *QAbstractButton, role QDialogButtonBox__ButtonRole) {
@@ -177,15 +174,15 @@ func (this *QDialogButtonBox) AddButton(button *QAbstractButton, role QDialogBut
 }
 
 func (this *QDialogButtonBox) AddButton2(text string, role QDialogButtonBox__ButtonRole) *QPushButton {
-	text_Cstring := C.CString(text)
-	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QDialogButtonBox_AddButton2(this.h, text_Cstring, C.size_t(len(text)), (C.uintptr_t)(role))
-	return newQPushButton_U(unsafe.Pointer(ret))
+	text_ms := miqt_strdupg(text)
+	defer C.free(text_ms)
+	_ret := C.QDialogButtonBox_AddButton2(this.h, (*C.struct_miqt_string)(text_ms), (C.uintptr_t)(role))
+	return newQPushButton_U(unsafe.Pointer(_ret))
 }
 
 func (this *QDialogButtonBox) AddButtonWithButton(button QDialogButtonBox__StandardButton) *QPushButton {
-	ret := C.QDialogButtonBox_AddButtonWithButton(this.h, (C.uintptr_t)(button))
-	return newQPushButton_U(unsafe.Pointer(ret))
+	_ret := C.QDialogButtonBox_AddButtonWithButton(this.h, (C.uintptr_t)(button))
+	return newQPushButton_U(unsafe.Pointer(_ret))
 }
 
 func (this *QDialogButtonBox) RemoveButton(button *QAbstractButton) {
@@ -197,21 +194,19 @@ func (this *QDialogButtonBox) Clear() {
 }
 
 func (this *QDialogButtonBox) Buttons() []*QAbstractButton {
-	var _out **C.QAbstractButton = nil
-	var _out_len C.size_t = 0
-	C.QDialogButtonBox_Buttons(this.h, &_out, &_out_len)
-	ret := make([]*QAbstractButton, int(_out_len))
-	_outCast := (*[0xffff]*C.QAbstractButton)(unsafe.Pointer(_out)) // so fresh so clean
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = newQAbstractButton(_outCast[i])
+	var _ma *C.struct_miqt_array = C.QDialogButtonBox_Buttons(this.h)
+	_ret := make([]*QAbstractButton, int(_ma.len))
+	_outCast := (*[0xffff]*C.QAbstractButton)(unsafe.Pointer(_ma.data)) // mrs jackson
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = newQAbstractButton(_outCast[i])
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
 func (this *QDialogButtonBox) ButtonRole(button *QAbstractButton) QDialogButtonBox__ButtonRole {
-	ret := C.QDialogButtonBox_ButtonRole(this.h, button.cPointer())
-	return (QDialogButtonBox__ButtonRole)(ret)
+	_ret := C.QDialogButtonBox_ButtonRole(this.h, button.cPointer())
+	return (QDialogButtonBox__ButtonRole)(_ret)
 }
 
 func (this *QDialogButtonBox) SetStandardButtons(buttons int) {
@@ -219,18 +214,18 @@ func (this *QDialogButtonBox) SetStandardButtons(buttons int) {
 }
 
 func (this *QDialogButtonBox) StandardButtons() int {
-	ret := C.QDialogButtonBox_StandardButtons(this.h)
-	return (int)(ret)
+	_ret := C.QDialogButtonBox_StandardButtons(this.h)
+	return (int)(_ret)
 }
 
 func (this *QDialogButtonBox) StandardButton(button *QAbstractButton) QDialogButtonBox__StandardButton {
-	ret := C.QDialogButtonBox_StandardButton(this.h, button.cPointer())
-	return (QDialogButtonBox__StandardButton)(ret)
+	_ret := C.QDialogButtonBox_StandardButton(this.h, button.cPointer())
+	return (QDialogButtonBox__StandardButton)(_ret)
 }
 
 func (this *QDialogButtonBox) Button(which QDialogButtonBox__StandardButton) *QPushButton {
-	ret := C.QDialogButtonBox_Button(this.h, (C.uintptr_t)(which))
-	return newQPushButton_U(unsafe.Pointer(ret))
+	_ret := C.QDialogButtonBox_Button(this.h, (C.uintptr_t)(which))
+	return newQPushButton_U(unsafe.Pointer(_ret))
 }
 
 func (this *QDialogButtonBox) SetCenterButtons(center bool) {
@@ -238,56 +233,80 @@ func (this *QDialogButtonBox) SetCenterButtons(center bool) {
 }
 
 func (this *QDialogButtonBox) CenterButtons() bool {
-	ret := C.QDialogButtonBox_CenterButtons(this.h)
-	return (bool)(ret)
+	_ret := C.QDialogButtonBox_CenterButtons(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QDialogButtonBox) Clicked(button *QAbstractButton) {
 	C.QDialogButtonBox_Clicked(this.h, button.cPointer())
 }
+func (this *QDialogButtonBox) OnClicked(slot func(button *QAbstractButton)) {
+	C.QDialogButtonBox_connect_Clicked(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QDialogButtonBox) OnClicked(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QDialogButtonBox_Clicked
+func miqt_exec_callback_QDialogButtonBox_Clicked(cb *C.void, button *C.QAbstractButton) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(button *QAbstractButton))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QDialogButtonBox_connect_Clicked(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	button_ret := button
+	slotval1 := newQAbstractButton_U(unsafe.Pointer(button_ret))
+
+	gofunc(slotval1)
 }
 
 func (this *QDialogButtonBox) Accepted() {
 	C.QDialogButtonBox_Accepted(this.h)
 }
-
 func (this *QDialogButtonBox) OnAccepted(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+	C.QDialogButtonBox_connect_Accepted(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
+
+//export miqt_exec_callback_QDialogButtonBox_Accepted
+func miqt_exec_callback_QDialogButtonBox_Accepted(cb *C.void) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QDialogButtonBox_connect_Accepted(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	gofunc()
 }
 
 func (this *QDialogButtonBox) HelpRequested() {
 	C.QDialogButtonBox_HelpRequested(this.h)
 }
-
 func (this *QDialogButtonBox) OnHelpRequested(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+	C.QDialogButtonBox_connect_HelpRequested(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
+
+//export miqt_exec_callback_QDialogButtonBox_HelpRequested
+func miqt_exec_callback_QDialogButtonBox_HelpRequested(cb *C.void) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QDialogButtonBox_connect_HelpRequested(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	gofunc()
 }
 
 func (this *QDialogButtonBox) Rejected() {
 	C.QDialogButtonBox_Rejected(this.h)
 }
-
 func (this *QDialogButtonBox) OnRejected(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+	C.QDialogButtonBox_connect_Rejected(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
+
+//export miqt_exec_callback_QDialogButtonBox_Rejected
+func miqt_exec_callback_QDialogButtonBox_Rejected(cb *C.void) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QDialogButtonBox_connect_Rejected(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	gofunc()
 }
 
 func QDialogButtonBox_Tr2(s string, c string) string {
@@ -295,12 +314,10 @@ func QDialogButtonBox_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QDialogButtonBox_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QDialogButtonBox_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QDialogButtonBox_Tr3(s string, c string, n int) string {
@@ -308,12 +325,10 @@ func QDialogButtonBox_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QDialogButtonBox_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QDialogButtonBox_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QDialogButtonBox_TrUtf82(s string, c string) string {
@@ -321,12 +336,10 @@ func QDialogButtonBox_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QDialogButtonBox_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QDialogButtonBox_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QDialogButtonBox_TrUtf83(s string, c string, n int) string {
@@ -334,14 +347,22 @@ func QDialogButtonBox_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QDialogButtonBox_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QDialogButtonBox_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
+// Delete this object from C++ memory.
 func (this *QDialogButtonBox) Delete() {
 	C.QDialogButtonBox_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QDialogButtonBox) GoGC() {
+	runtime.SetFinalizer(this, func(this *QDialogButtonBox) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

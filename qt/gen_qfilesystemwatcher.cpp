@@ -6,22 +6,19 @@
 #include <QByteArray>
 #include <cstring>
 #include "qfilesystemwatcher.h"
-
 #include "gen_qfilesystemwatcher.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QFileSystemWatcher* QFileSystemWatcher_new() {
 	return new QFileSystemWatcher();
 }
 
-QFileSystemWatcher* QFileSystemWatcher_new2(char** paths, uint64_t* paths_Lengths, size_t paths_len) {
+QFileSystemWatcher* QFileSystemWatcher_new2(struct miqt_array* /* of QString */ paths) {
 	QList<QString> paths_QList;
-	paths_QList.reserve(paths_len);
-	for(size_t i = 0; i < paths_len; ++i) {
-		paths_QList.push_back(QString::fromUtf8(paths[i], paths_Lengths[i]));
+	paths_QList.reserve(paths->len);
+	miqt_string** paths_arr = static_cast<miqt_string**>(paths->data);
+	for(size_t i = 0; i < paths->len; ++i) {
+		paths_QList.push_back(QString::fromUtf8(& paths_arr[i]->data, paths_arr[i]->len));
 	}
 	return new QFileSystemWatcher(paths_QList);
 }
@@ -30,11 +27,12 @@ QFileSystemWatcher* QFileSystemWatcher_new3(QObject* parent) {
 	return new QFileSystemWatcher(parent);
 }
 
-QFileSystemWatcher* QFileSystemWatcher_new4(char** paths, uint64_t* paths_Lengths, size_t paths_len, QObject* parent) {
+QFileSystemWatcher* QFileSystemWatcher_new4(struct miqt_array* /* of QString */ paths, QObject* parent) {
 	QList<QString> paths_QList;
-	paths_QList.reserve(paths_len);
-	for(size_t i = 0; i < paths_len; ++i) {
-		paths_QList.push_back(QString::fromUtf8(paths[i], paths_Lengths[i]));
+	paths_QList.reserve(paths->len);
+	miqt_string** paths_arr = static_cast<miqt_string**>(paths->data);
+	for(size_t i = 0; i < paths->len; ++i) {
+		paths_QList.push_back(QString::fromUtf8(& paths_arr[i]->data, paths_arr[i]->len));
 	}
 	return new QFileSystemWatcher(paths_QList, parent);
 }
@@ -43,146 +41,132 @@ QMetaObject* QFileSystemWatcher_MetaObject(const QFileSystemWatcher* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void QFileSystemWatcher_Tr(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QFileSystemWatcher::tr(s);
+struct miqt_string* QFileSystemWatcher_Tr(const char* s) {
+	QString _ret = QFileSystemWatcher::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QFileSystemWatcher_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QFileSystemWatcher::trUtf8(s);
+struct miqt_string* QFileSystemWatcher_TrUtf8(const char* s) {
+	QString _ret = QFileSystemWatcher::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-bool QFileSystemWatcher_AddPath(QFileSystemWatcher* self, const char* file, size_t file_Strlen) {
-	QString file_QString = QString::fromUtf8(file, file_Strlen);
+bool QFileSystemWatcher_AddPath(QFileSystemWatcher* self, struct miqt_string* file) {
+	QString file_QString = QString::fromUtf8(&file->data, file->len);
 	return self->addPath(file_QString);
 }
 
-void QFileSystemWatcher_AddPaths(QFileSystemWatcher* self, char** files, uint64_t* files_Lengths, size_t files_len, char*** _out, int** _out_Lengths, size_t* _out_len) {
+struct miqt_array* QFileSystemWatcher_AddPaths(QFileSystemWatcher* self, struct miqt_array* /* of QString */ files) {
 	QList<QString> files_QList;
-	files_QList.reserve(files_len);
-	for(size_t i = 0; i < files_len; ++i) {
-		files_QList.push_back(QString::fromUtf8(files[i], files_Lengths[i]));
+	files_QList.reserve(files->len);
+	miqt_string** files_arr = static_cast<miqt_string**>(files->data);
+	for(size_t i = 0; i < files->len; ++i) {
+		files_QList.push_back(QString::fromUtf8(& files_arr[i]->data, files_arr[i]->len));
 	}
-	QStringList ret = self->addPaths(files_QList);
+	QStringList _ret = self->addPaths(files_QList);
 	// Convert QStringList from C++ memory to manually-managed C memory
-	char** __out = static_cast<char**>(malloc(sizeof(char*) * ret.length()));
-	int* __out_Lengths = static_cast<int*>(malloc(sizeof(int) * ret.length()));
-	for (size_t i = 0, e = ret.length(); i < e; ++i) {
+	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-		QByteArray b = ret[i].toUtf8();
-		__out[i] = static_cast<char*>(malloc(b.length()));
-		memcpy(__out[i], b.data(), b.length());
-		__out_Lengths[i] = b.length();
+		QByteArray _lv_b = _lv_ret.toUtf8();
+		_arr[i] = miqt_strdup(_lv_b.data(), _lv_b.length());
 	}
-	*_out = __out;
-	*_out_Lengths = __out_Lengths;
-	*_out_len = ret.length();
+	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
+	_out->len = _ret.length();
+	_out->data = static_cast<void*>(_arr);
+	return _out;
 }
 
-bool QFileSystemWatcher_RemovePath(QFileSystemWatcher* self, const char* file, size_t file_Strlen) {
-	QString file_QString = QString::fromUtf8(file, file_Strlen);
+bool QFileSystemWatcher_RemovePath(QFileSystemWatcher* self, struct miqt_string* file) {
+	QString file_QString = QString::fromUtf8(&file->data, file->len);
 	return self->removePath(file_QString);
 }
 
-void QFileSystemWatcher_RemovePaths(QFileSystemWatcher* self, char** files, uint64_t* files_Lengths, size_t files_len, char*** _out, int** _out_Lengths, size_t* _out_len) {
+struct miqt_array* QFileSystemWatcher_RemovePaths(QFileSystemWatcher* self, struct miqt_array* /* of QString */ files) {
 	QList<QString> files_QList;
-	files_QList.reserve(files_len);
-	for(size_t i = 0; i < files_len; ++i) {
-		files_QList.push_back(QString::fromUtf8(files[i], files_Lengths[i]));
+	files_QList.reserve(files->len);
+	miqt_string** files_arr = static_cast<miqt_string**>(files->data);
+	for(size_t i = 0; i < files->len; ++i) {
+		files_QList.push_back(QString::fromUtf8(& files_arr[i]->data, files_arr[i]->len));
 	}
-	QStringList ret = self->removePaths(files_QList);
+	QStringList _ret = self->removePaths(files_QList);
 	// Convert QStringList from C++ memory to manually-managed C memory
-	char** __out = static_cast<char**>(malloc(sizeof(char*) * ret.length()));
-	int* __out_Lengths = static_cast<int*>(malloc(sizeof(int) * ret.length()));
-	for (size_t i = 0, e = ret.length(); i < e; ++i) {
+	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-		QByteArray b = ret[i].toUtf8();
-		__out[i] = static_cast<char*>(malloc(b.length()));
-		memcpy(__out[i], b.data(), b.length());
-		__out_Lengths[i] = b.length();
+		QByteArray _lv_b = _lv_ret.toUtf8();
+		_arr[i] = miqt_strdup(_lv_b.data(), _lv_b.length());
 	}
-	*_out = __out;
-	*_out_Lengths = __out_Lengths;
-	*_out_len = ret.length();
+	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
+	_out->len = _ret.length();
+	_out->data = static_cast<void*>(_arr);
+	return _out;
 }
 
-void QFileSystemWatcher_Files(const QFileSystemWatcher* self, char*** _out, int** _out_Lengths, size_t* _out_len) {
-	QStringList ret = self->files();
+struct miqt_array* QFileSystemWatcher_Files(const QFileSystemWatcher* self) {
+	QStringList _ret = self->files();
 	// Convert QStringList from C++ memory to manually-managed C memory
-	char** __out = static_cast<char**>(malloc(sizeof(char*) * ret.length()));
-	int* __out_Lengths = static_cast<int*>(malloc(sizeof(int) * ret.length()));
-	for (size_t i = 0, e = ret.length(); i < e; ++i) {
+	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-		QByteArray b = ret[i].toUtf8();
-		__out[i] = static_cast<char*>(malloc(b.length()));
-		memcpy(__out[i], b.data(), b.length());
-		__out_Lengths[i] = b.length();
+		QByteArray _lv_b = _lv_ret.toUtf8();
+		_arr[i] = miqt_strdup(_lv_b.data(), _lv_b.length());
 	}
-	*_out = __out;
-	*_out_Lengths = __out_Lengths;
-	*_out_len = ret.length();
+	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
+	_out->len = _ret.length();
+	_out->data = static_cast<void*>(_arr);
+	return _out;
 }
 
-void QFileSystemWatcher_Directories(const QFileSystemWatcher* self, char*** _out, int** _out_Lengths, size_t* _out_len) {
-	QStringList ret = self->directories();
+struct miqt_array* QFileSystemWatcher_Directories(const QFileSystemWatcher* self) {
+	QStringList _ret = self->directories();
 	// Convert QStringList from C++ memory to manually-managed C memory
-	char** __out = static_cast<char**>(malloc(sizeof(char*) * ret.length()));
-	int* __out_Lengths = static_cast<int*>(malloc(sizeof(int) * ret.length()));
-	for (size_t i = 0, e = ret.length(); i < e; ++i) {
+	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-		QByteArray b = ret[i].toUtf8();
-		__out[i] = static_cast<char*>(malloc(b.length()));
-		memcpy(__out[i], b.data(), b.length());
-		__out_Lengths[i] = b.length();
+		QByteArray _lv_b = _lv_ret.toUtf8();
+		_arr[i] = miqt_strdup(_lv_b.data(), _lv_b.length());
 	}
-	*_out = __out;
-	*_out_Lengths = __out_Lengths;
-	*_out_len = ret.length();
+	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
+	_out->len = _ret.length();
+	_out->data = static_cast<void*>(_arr);
+	return _out;
 }
 
-void QFileSystemWatcher_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QFileSystemWatcher::tr(s, c);
+struct miqt_string* QFileSystemWatcher_Tr2(const char* s, const char* c) {
+	QString _ret = QFileSystemWatcher::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QFileSystemWatcher_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QFileSystemWatcher::tr(s, c, static_cast<int>(n));
+struct miqt_string* QFileSystemWatcher_Tr3(const char* s, const char* c, int n) {
+	QString _ret = QFileSystemWatcher::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QFileSystemWatcher_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QFileSystemWatcher::trUtf8(s, c);
+struct miqt_string* QFileSystemWatcher_TrUtf82(const char* s, const char* c) {
+	QString _ret = QFileSystemWatcher::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QFileSystemWatcher_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QFileSystemWatcher::trUtf8(s, c, static_cast<int>(n));
+struct miqt_string* QFileSystemWatcher_TrUtf83(const char* s, const char* c, int n) {
+	QString _ret = QFileSystemWatcher::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QFileSystemWatcher_Delete(QFileSystemWatcher* self) {

@@ -54,28 +54,28 @@ func NewQMargins3(param1 *QMargins) *QMargins {
 }
 
 func (this *QMargins) IsNull() bool {
-	ret := C.QMargins_IsNull(this.h)
-	return (bool)(ret)
+	_ret := C.QMargins_IsNull(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QMargins) Left() int {
-	ret := C.QMargins_Left(this.h)
-	return (int)(ret)
+	_ret := C.QMargins_Left(this.h)
+	return (int)(_ret)
 }
 
 func (this *QMargins) Top() int {
-	ret := C.QMargins_Top(this.h)
-	return (int)(ret)
+	_ret := C.QMargins_Top(this.h)
+	return (int)(_ret)
 }
 
 func (this *QMargins) Right() int {
-	ret := C.QMargins_Right(this.h)
-	return (int)(ret)
+	_ret := C.QMargins_Right(this.h)
+	return (int)(_ret)
 }
 
 func (this *QMargins) Bottom() int {
-	ret := C.QMargins_Bottom(this.h)
-	return (int)(ret)
+	_ret := C.QMargins_Bottom(this.h)
+	return (int)(_ret)
 }
 
 func (this *QMargins) SetLeft(left int) {
@@ -95,47 +95,57 @@ func (this *QMargins) SetBottom(bottom int) {
 }
 
 func (this *QMargins) OperatorPlusAssign(margins *QMargins) *QMargins {
-	ret := C.QMargins_OperatorPlusAssign(this.h, margins.cPointer())
-	return newQMargins_U(unsafe.Pointer(ret))
+	_ret := C.QMargins_OperatorPlusAssign(this.h, margins.cPointer())
+	return newQMargins_U(unsafe.Pointer(_ret))
 }
 
 func (this *QMargins) OperatorMinusAssign(margins *QMargins) *QMargins {
-	ret := C.QMargins_OperatorMinusAssign(this.h, margins.cPointer())
-	return newQMargins_U(unsafe.Pointer(ret))
+	_ret := C.QMargins_OperatorMinusAssign(this.h, margins.cPointer())
+	return newQMargins_U(unsafe.Pointer(_ret))
 }
 
 func (this *QMargins) OperatorPlusAssignWithInt(param1 int) *QMargins {
-	ret := C.QMargins_OperatorPlusAssignWithInt(this.h, (C.int)(param1))
-	return newQMargins_U(unsafe.Pointer(ret))
+	_ret := C.QMargins_OperatorPlusAssignWithInt(this.h, (C.int)(param1))
+	return newQMargins_U(unsafe.Pointer(_ret))
 }
 
 func (this *QMargins) OperatorMinusAssignWithInt(param1 int) *QMargins {
-	ret := C.QMargins_OperatorMinusAssignWithInt(this.h, (C.int)(param1))
-	return newQMargins_U(unsafe.Pointer(ret))
+	_ret := C.QMargins_OperatorMinusAssignWithInt(this.h, (C.int)(param1))
+	return newQMargins_U(unsafe.Pointer(_ret))
 }
 
 func (this *QMargins) OperatorMultiplyAssign(param1 int) *QMargins {
-	ret := C.QMargins_OperatorMultiplyAssign(this.h, (C.int)(param1))
-	return newQMargins_U(unsafe.Pointer(ret))
+	_ret := C.QMargins_OperatorMultiplyAssign(this.h, (C.int)(param1))
+	return newQMargins_U(unsafe.Pointer(_ret))
 }
 
 func (this *QMargins) OperatorDivideAssign(param1 int) *QMargins {
-	ret := C.QMargins_OperatorDivideAssign(this.h, (C.int)(param1))
-	return newQMargins_U(unsafe.Pointer(ret))
+	_ret := C.QMargins_OperatorDivideAssign(this.h, (C.int)(param1))
+	return newQMargins_U(unsafe.Pointer(_ret))
 }
 
 func (this *QMargins) OperatorMultiplyAssignWithQreal(param1 float64) *QMargins {
-	ret := C.QMargins_OperatorMultiplyAssignWithQreal(this.h, (C.double)(param1))
-	return newQMargins_U(unsafe.Pointer(ret))
+	_ret := C.QMargins_OperatorMultiplyAssignWithQreal(this.h, (C.double)(param1))
+	return newQMargins_U(unsafe.Pointer(_ret))
 }
 
 func (this *QMargins) OperatorDivideAssignWithQreal(param1 float64) *QMargins {
-	ret := C.QMargins_OperatorDivideAssignWithQreal(this.h, (C.double)(param1))
-	return newQMargins_U(unsafe.Pointer(ret))
+	_ret := C.QMargins_OperatorDivideAssignWithQreal(this.h, (C.double)(param1))
+	return newQMargins_U(unsafe.Pointer(_ret))
 }
 
+// Delete this object from C++ memory.
 func (this *QMargins) Delete() {
 	C.QMargins_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QMargins) GoGC() {
+	runtime.SetFinalizer(this, func(this *QMargins) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
 
 type QMarginsF struct {
@@ -185,28 +195,28 @@ func NewQMarginsF4(param1 *QMarginsF) *QMarginsF {
 }
 
 func (this *QMarginsF) IsNull() bool {
-	ret := C.QMarginsF_IsNull(this.h)
-	return (bool)(ret)
+	_ret := C.QMarginsF_IsNull(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QMarginsF) Left() float64 {
-	ret := C.QMarginsF_Left(this.h)
-	return (float64)(ret)
+	_ret := C.QMarginsF_Left(this.h)
+	return (float64)(_ret)
 }
 
 func (this *QMarginsF) Top() float64 {
-	ret := C.QMarginsF_Top(this.h)
-	return (float64)(ret)
+	_ret := C.QMarginsF_Top(this.h)
+	return (float64)(_ret)
 }
 
 func (this *QMarginsF) Right() float64 {
-	ret := C.QMarginsF_Right(this.h)
-	return (float64)(ret)
+	_ret := C.QMarginsF_Right(this.h)
+	return (float64)(_ret)
 }
 
 func (this *QMarginsF) Bottom() float64 {
-	ret := C.QMarginsF_Bottom(this.h)
-	return (float64)(ret)
+	_ret := C.QMarginsF_Bottom(this.h)
+	return (float64)(_ret)
 }
 
 func (this *QMarginsF) SetLeft(left float64) {
@@ -226,46 +236,52 @@ func (this *QMarginsF) SetBottom(bottom float64) {
 }
 
 func (this *QMarginsF) OperatorPlusAssign(margins *QMarginsF) *QMarginsF {
-	ret := C.QMarginsF_OperatorPlusAssign(this.h, margins.cPointer())
-	return newQMarginsF_U(unsafe.Pointer(ret))
+	_ret := C.QMarginsF_OperatorPlusAssign(this.h, margins.cPointer())
+	return newQMarginsF_U(unsafe.Pointer(_ret))
 }
 
 func (this *QMarginsF) OperatorMinusAssign(margins *QMarginsF) *QMarginsF {
-	ret := C.QMarginsF_OperatorMinusAssign(this.h, margins.cPointer())
-	return newQMarginsF_U(unsafe.Pointer(ret))
+	_ret := C.QMarginsF_OperatorMinusAssign(this.h, margins.cPointer())
+	return newQMarginsF_U(unsafe.Pointer(_ret))
 }
 
 func (this *QMarginsF) OperatorPlusAssignWithAddend(addend float64) *QMarginsF {
-	ret := C.QMarginsF_OperatorPlusAssignWithAddend(this.h, (C.double)(addend))
-	return newQMarginsF_U(unsafe.Pointer(ret))
+	_ret := C.QMarginsF_OperatorPlusAssignWithAddend(this.h, (C.double)(addend))
+	return newQMarginsF_U(unsafe.Pointer(_ret))
 }
 
 func (this *QMarginsF) OperatorMinusAssignWithSubtrahend(subtrahend float64) *QMarginsF {
-	ret := C.QMarginsF_OperatorMinusAssignWithSubtrahend(this.h, (C.double)(subtrahend))
-	return newQMarginsF_U(unsafe.Pointer(ret))
+	_ret := C.QMarginsF_OperatorMinusAssignWithSubtrahend(this.h, (C.double)(subtrahend))
+	return newQMarginsF_U(unsafe.Pointer(_ret))
 }
 
 func (this *QMarginsF) OperatorMultiplyAssign(factor float64) *QMarginsF {
-	ret := C.QMarginsF_OperatorMultiplyAssign(this.h, (C.double)(factor))
-	return newQMarginsF_U(unsafe.Pointer(ret))
+	_ret := C.QMarginsF_OperatorMultiplyAssign(this.h, (C.double)(factor))
+	return newQMarginsF_U(unsafe.Pointer(_ret))
 }
 
 func (this *QMarginsF) OperatorDivideAssign(divisor float64) *QMarginsF {
-	ret := C.QMarginsF_OperatorDivideAssign(this.h, (C.double)(divisor))
-	return newQMarginsF_U(unsafe.Pointer(ret))
+	_ret := C.QMarginsF_OperatorDivideAssign(this.h, (C.double)(divisor))
+	return newQMarginsF_U(unsafe.Pointer(_ret))
 }
 
 func (this *QMarginsF) ToMargins() *QMargins {
-	ret := C.QMarginsF_ToMargins(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQMargins(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QMargins) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QMarginsF_ToMargins(this.h)
+	_goptr := newQMargins(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
+// Delete this object from C++ memory.
 func (this *QMarginsF) Delete() {
 	C.QMarginsF_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QMarginsF) GoGC() {
+	runtime.SetFinalizer(this, func(this *QMarginsF) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

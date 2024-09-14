@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -22,13 +24,13 @@ typedef struct QStringView QStringView;
 #endif
 
 QStringView* QStringView_new();
-void QStringView_ToString(const QStringView* self, char** _out, int* _out_Strlen);
+struct miqt_string* QStringView_ToString(const QStringView* self);
 size_t QStringView_Size(const QStringView* self);
 QChar* QStringView_OperatorSubscript(const QStringView* self, size_t n);
 QByteArray* QStringView_ToLatin1(const QStringView* self);
 QByteArray* QStringView_ToUtf8(const QStringView* self);
 QByteArray* QStringView_ToLocal8Bit(const QStringView* self);
-void QStringView_ToUcs4(const QStringView* self, unsigned int** _out, size_t* _out_len);
+struct miqt_array* QStringView_ToUcs4(const QStringView* self);
 QChar* QStringView_At(const QStringView* self, size_t n);
 void QStringView_Truncate(QStringView* self, size_t n);
 void QStringView_Chop(QStringView* self, size_t n);

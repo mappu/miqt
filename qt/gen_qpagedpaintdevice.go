@@ -177,44 +177,40 @@ func newQPagedPaintDevice_U(h unsafe.Pointer) *QPagedPaintDevice {
 }
 
 func (this *QPagedPaintDevice) NewPage() bool {
-	ret := C.QPagedPaintDevice_NewPage(this.h)
-	return (bool)(ret)
+	_ret := C.QPagedPaintDevice_NewPage(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QPagedPaintDevice) SetPageLayout(pageLayout *QPageLayout) bool {
-	ret := C.QPagedPaintDevice_SetPageLayout(this.h, pageLayout.cPointer())
-	return (bool)(ret)
+	_ret := C.QPagedPaintDevice_SetPageLayout(this.h, pageLayout.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QPagedPaintDevice) SetPageSize(pageSize *QPageSize) bool {
-	ret := C.QPagedPaintDevice_SetPageSize(this.h, pageSize.cPointer())
-	return (bool)(ret)
+	_ret := C.QPagedPaintDevice_SetPageSize(this.h, pageSize.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QPagedPaintDevice) SetPageOrientation(orientation QPageLayout__Orientation) bool {
-	ret := C.QPagedPaintDevice_SetPageOrientation(this.h, (C.uintptr_t)(orientation))
-	return (bool)(ret)
+	_ret := C.QPagedPaintDevice_SetPageOrientation(this.h, (C.uintptr_t)(orientation))
+	return (bool)(_ret)
 }
 
 func (this *QPagedPaintDevice) SetPageMargins(margins *QMarginsF) bool {
-	ret := C.QPagedPaintDevice_SetPageMargins(this.h, margins.cPointer())
-	return (bool)(ret)
+	_ret := C.QPagedPaintDevice_SetPageMargins(this.h, margins.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QPagedPaintDevice) SetPageMargins2(margins *QMarginsF, units QPageLayout__Unit) bool {
-	ret := C.QPagedPaintDevice_SetPageMargins2(this.h, margins.cPointer(), (C.uintptr_t)(units))
-	return (bool)(ret)
+	_ret := C.QPagedPaintDevice_SetPageMargins2(this.h, margins.cPointer(), (C.uintptr_t)(units))
+	return (bool)(_ret)
 }
 
 func (this *QPagedPaintDevice) PageLayout() *QPageLayout {
-	ret := C.QPagedPaintDevice_PageLayout(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPageLayout(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPageLayout) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QPagedPaintDevice_PageLayout(this.h)
+	_goptr := newQPageLayout(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QPagedPaintDevice) SetPageSizeWithSize(size QPagedPaintDevice__PageSize) {
@@ -222,8 +218,8 @@ func (this *QPagedPaintDevice) SetPageSizeWithSize(size QPagedPaintDevice__PageS
 }
 
 func (this *QPagedPaintDevice) PageSize() QPagedPaintDevice__PageSize {
-	ret := C.QPagedPaintDevice_PageSize(this.h)
-	return (QPagedPaintDevice__PageSize)(ret)
+	_ret := C.QPagedPaintDevice_PageSize(this.h)
+	return (QPagedPaintDevice__PageSize)(_ret)
 }
 
 func (this *QPagedPaintDevice) SetPageSizeMM(size *QSizeF) {
@@ -231,14 +227,10 @@ func (this *QPagedPaintDevice) SetPageSizeMM(size *QSizeF) {
 }
 
 func (this *QPagedPaintDevice) PageSizeMM() *QSizeF {
-	ret := C.QPagedPaintDevice_PageSizeMM(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSizeF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSizeF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QPagedPaintDevice_PageSizeMM(this.h)
+	_goptr := newQSizeF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QPagedPaintDevice) SetMargins(margins *QPagedPaintDevice__Margins) {
@@ -246,18 +238,24 @@ func (this *QPagedPaintDevice) SetMargins(margins *QPagedPaintDevice__Margins) {
 }
 
 func (this *QPagedPaintDevice) Margins() *QPagedPaintDevice__Margins {
-	ret := C.QPagedPaintDevice_Margins(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPagedPaintDevice__Margins(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPagedPaintDevice__Margins) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QPagedPaintDevice_Margins(this.h)
+	_goptr := newQPagedPaintDevice__Margins(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
+// Delete this object from C++ memory.
 func (this *QPagedPaintDevice) Delete() {
 	C.QPagedPaintDevice_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QPagedPaintDevice) GoGC() {
+	runtime.SetFinalizer(this, func(this *QPagedPaintDevice) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
 
 type QPagedPaintDevice__Margins struct {
@@ -282,6 +280,16 @@ func newQPagedPaintDevice__Margins_U(h unsafe.Pointer) *QPagedPaintDevice__Margi
 	return newQPagedPaintDevice__Margins((*C.QPagedPaintDevice__Margins)(h))
 }
 
+// Delete this object from C++ memory.
 func (this *QPagedPaintDevice__Margins) Delete() {
 	C.QPagedPaintDevice__Margins_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QPagedPaintDevice__Margins) GoGC() {
+	runtime.SetFinalizer(this, func(this *QPagedPaintDevice__Margins) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

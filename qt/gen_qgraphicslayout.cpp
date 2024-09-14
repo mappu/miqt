@@ -2,12 +2,8 @@
 #include <QGraphicsLayout>
 #include <QGraphicsLayoutItem>
 #include "qgraphicslayout.h"
-
 #include "gen_qgraphicslayout.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 void QGraphicsLayout_SetContentsMargins(QGraphicsLayout* self, double left, double top, double right, double bottom) {
 	self->setContentsMargins(static_cast<qreal>(left), static_cast<qreal>(top), static_cast<qreal>(right), static_cast<qreal>(bottom));

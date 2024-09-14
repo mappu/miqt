@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -26,12 +28,12 @@ typedef struct QTransform QTransform;
 #endif
 
 QStaticText* QStaticText_new();
-QStaticText* QStaticText_new2(const char* text, size_t text_Strlen);
+QStaticText* QStaticText_new2(struct miqt_string* text);
 QStaticText* QStaticText_new3(QStaticText* other);
 void QStaticText_OperatorAssign(QStaticText* self, QStaticText* param1);
 void QStaticText_Swap(QStaticText* self, QStaticText* other);
-void QStaticText_SetText(QStaticText* self, const char* text, size_t text_Strlen);
-void QStaticText_Text(const QStaticText* self, char** _out, int* _out_Strlen);
+void QStaticText_SetText(QStaticText* self, struct miqt_string* text);
+struct miqt_string* QStaticText_Text(const QStaticText* self);
 void QStaticText_SetTextFormat(QStaticText* self, uintptr_t textFormat);
 uintptr_t QStaticText_TextFormat(const QStaticText* self);
 void QStaticText_SetTextWidth(QStaticText* self, double textWidth);

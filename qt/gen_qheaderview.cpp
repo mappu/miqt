@@ -9,12 +9,8 @@
 #include <cstring>
 #include <QWidget>
 #include "qheaderview.h"
-
 #include "gen_qheaderview.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QHeaderView* QHeaderView_new(uintptr_t orientation) {
 	return new QHeaderView(static_cast<Qt::Orientation>(orientation));
@@ -28,22 +24,18 @@ QMetaObject* QHeaderView_MetaObject(const QHeaderView* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void QHeaderView_Tr(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QHeaderView::tr(s);
+struct miqt_string* QHeaderView_Tr(const char* s) {
+	QString _ret = QHeaderView::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QHeaderView_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QHeaderView::trUtf8(s);
+struct miqt_string* QHeaderView_TrUtf8(const char* s) {
+	QString _ret = QHeaderView::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QHeaderView_SetModel(QHeaderView* self, QAbstractItemModel* model) {
@@ -51,8 +43,8 @@ void QHeaderView_SetModel(QHeaderView* self, QAbstractItemModel* model) {
 }
 
 uintptr_t QHeaderView_Orientation(const QHeaderView* self) {
-	Qt::Orientation ret = self->orientation();
-	return static_cast<uintptr_t>(ret);
+	Qt::Orientation _ret = self->orientation();
+	return static_cast<uintptr_t>(_ret);
 }
 
 int QHeaderView_Offset(const QHeaderView* self) {
@@ -64,9 +56,9 @@ int QHeaderView_Length(const QHeaderView* self) {
 }
 
 QSize* QHeaderView_SizeHint(const QHeaderView* self) {
-	QSize ret = self->sizeHint();
+	QSize _ret = self->sizeHint();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(ret));
+	return static_cast<QSize*>(new QSize(_ret));
 }
 
 void QHeaderView_SetVisible(QHeaderView* self, bool v) {
@@ -186,8 +178,8 @@ bool QHeaderView_HighlightSections(const QHeaderView* self) {
 }
 
 uintptr_t QHeaderView_SectionResizeMode(const QHeaderView* self, int logicalIndex) {
-	QHeaderView::ResizeMode ret = self->sectionResizeMode(static_cast<int>(logicalIndex));
-	return static_cast<uintptr_t>(ret);
+	QHeaderView::ResizeMode _ret = self->sectionResizeMode(static_cast<int>(logicalIndex));
+	return static_cast<uintptr_t>(_ret);
 }
 
 void QHeaderView_SetSectionResizeMode(QHeaderView* self, uintptr_t mode) {
@@ -227,8 +219,8 @@ int QHeaderView_SortIndicatorSection(const QHeaderView* self) {
 }
 
 uintptr_t QHeaderView_SortIndicatorOrder(const QHeaderView* self) {
-	Qt::SortOrder ret = self->sortIndicatorOrder();
-	return static_cast<uintptr_t>(ret);
+	Qt::SortOrder _ret = self->sortIndicatorOrder();
+	return static_cast<uintptr_t>(_ret);
 }
 
 bool QHeaderView_StretchLastSection(const QHeaderView* self) {
@@ -276,8 +268,8 @@ void QHeaderView_SetMaximumSectionSize(QHeaderView* self, int size) {
 }
 
 int QHeaderView_DefaultAlignment(const QHeaderView* self) {
-	Qt::Alignment ret = self->defaultAlignment();
-	return static_cast<int>(ret);
+	Qt::Alignment _ret = self->defaultAlignment();
+	return static_cast<int>(_ret);
 }
 
 void QHeaderView_SetDefaultAlignment(QHeaderView* self, int alignment) {
@@ -297,9 +289,9 @@ bool QHeaderView_SectionsHidden(const QHeaderView* self) {
 }
 
 QByteArray* QHeaderView_SaveState(const QHeaderView* self) {
-	QByteArray ret = self->saveState();
+	QByteArray _ret = self->saveState();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(ret));
+	return static_cast<QByteArray*>(new QByteArray(_ret));
 }
 
 bool QHeaderView_RestoreState(QHeaderView* self, QByteArray* state) {
@@ -332,7 +324,10 @@ void QHeaderView_SectionMoved(QHeaderView* self, int logicalIndex, int oldVisual
 
 void QHeaderView_connect_SectionMoved(QHeaderView* self, void* slot) {
 	QHeaderView::connect(self, static_cast<void (QHeaderView::*)(int, int, int)>(&QHeaderView::sectionMoved), self, [=](int logicalIndex, int oldVisualIndex, int newVisualIndex) {
-		miqt_exec_callback(slot, 0, nullptr);
+		int sigval1 = logicalIndex;
+		int sigval2 = oldVisualIndex;
+		int sigval3 = newVisualIndex;
+		miqt_exec_callback_QHeaderView_SectionMoved(slot, sigval1, sigval2, sigval3);
 	});
 }
 
@@ -342,7 +337,10 @@ void QHeaderView_SectionResized(QHeaderView* self, int logicalIndex, int oldSize
 
 void QHeaderView_connect_SectionResized(QHeaderView* self, void* slot) {
 	QHeaderView::connect(self, static_cast<void (QHeaderView::*)(int, int, int)>(&QHeaderView::sectionResized), self, [=](int logicalIndex, int oldSize, int newSize) {
-		miqt_exec_callback(slot, 0, nullptr);
+		int sigval1 = logicalIndex;
+		int sigval2 = oldSize;
+		int sigval3 = newSize;
+		miqt_exec_callback_QHeaderView_SectionResized(slot, sigval1, sigval2, sigval3);
 	});
 }
 
@@ -352,7 +350,8 @@ void QHeaderView_SectionPressed(QHeaderView* self, int logicalIndex) {
 
 void QHeaderView_connect_SectionPressed(QHeaderView* self, void* slot) {
 	QHeaderView::connect(self, static_cast<void (QHeaderView::*)(int)>(&QHeaderView::sectionPressed), self, [=](int logicalIndex) {
-		miqt_exec_callback(slot, 0, nullptr);
+		int sigval1 = logicalIndex;
+		miqt_exec_callback_QHeaderView_SectionPressed(slot, sigval1);
 	});
 }
 
@@ -362,7 +361,8 @@ void QHeaderView_SectionClicked(QHeaderView* self, int logicalIndex) {
 
 void QHeaderView_connect_SectionClicked(QHeaderView* self, void* slot) {
 	QHeaderView::connect(self, static_cast<void (QHeaderView::*)(int)>(&QHeaderView::sectionClicked), self, [=](int logicalIndex) {
-		miqt_exec_callback(slot, 0, nullptr);
+		int sigval1 = logicalIndex;
+		miqt_exec_callback_QHeaderView_SectionClicked(slot, sigval1);
 	});
 }
 
@@ -372,7 +372,8 @@ void QHeaderView_SectionEntered(QHeaderView* self, int logicalIndex) {
 
 void QHeaderView_connect_SectionEntered(QHeaderView* self, void* slot) {
 	QHeaderView::connect(self, static_cast<void (QHeaderView::*)(int)>(&QHeaderView::sectionEntered), self, [=](int logicalIndex) {
-		miqt_exec_callback(slot, 0, nullptr);
+		int sigval1 = logicalIndex;
+		miqt_exec_callback_QHeaderView_SectionEntered(slot, sigval1);
 	});
 }
 
@@ -382,7 +383,8 @@ void QHeaderView_SectionDoubleClicked(QHeaderView* self, int logicalIndex) {
 
 void QHeaderView_connect_SectionDoubleClicked(QHeaderView* self, void* slot) {
 	QHeaderView::connect(self, static_cast<void (QHeaderView::*)(int)>(&QHeaderView::sectionDoubleClicked), self, [=](int logicalIndex) {
-		miqt_exec_callback(slot, 0, nullptr);
+		int sigval1 = logicalIndex;
+		miqt_exec_callback_QHeaderView_SectionDoubleClicked(slot, sigval1);
 	});
 }
 
@@ -392,7 +394,9 @@ void QHeaderView_SectionCountChanged(QHeaderView* self, int oldCount, int newCou
 
 void QHeaderView_connect_SectionCountChanged(QHeaderView* self, void* slot) {
 	QHeaderView::connect(self, static_cast<void (QHeaderView::*)(int, int)>(&QHeaderView::sectionCountChanged), self, [=](int oldCount, int newCount) {
-		miqt_exec_callback(slot, 0, nullptr);
+		int sigval1 = oldCount;
+		int sigval2 = newCount;
+		miqt_exec_callback_QHeaderView_SectionCountChanged(slot, sigval1, sigval2);
 	});
 }
 
@@ -402,7 +406,8 @@ void QHeaderView_SectionHandleDoubleClicked(QHeaderView* self, int logicalIndex)
 
 void QHeaderView_connect_SectionHandleDoubleClicked(QHeaderView* self, void* slot) {
 	QHeaderView::connect(self, static_cast<void (QHeaderView::*)(int)>(&QHeaderView::sectionHandleDoubleClicked), self, [=](int logicalIndex) {
-		miqt_exec_callback(slot, 0, nullptr);
+		int sigval1 = logicalIndex;
+		miqt_exec_callback_QHeaderView_SectionHandleDoubleClicked(slot, sigval1);
 	});
 }
 
@@ -412,7 +417,7 @@ void QHeaderView_GeometriesChanged(QHeaderView* self) {
 
 void QHeaderView_connect_GeometriesChanged(QHeaderView* self, void* slot) {
 	QHeaderView::connect(self, static_cast<void (QHeaderView::*)()>(&QHeaderView::geometriesChanged), self, [=]() {
-		miqt_exec_callback(slot, 0, nullptr);
+		miqt_exec_callback_QHeaderView_GeometriesChanged(slot);
 	});
 }
 
@@ -422,44 +427,39 @@ void QHeaderView_SortIndicatorChanged(QHeaderView* self, int logicalIndex, uintp
 
 void QHeaderView_connect_SortIndicatorChanged(QHeaderView* self, void* slot) {
 	QHeaderView::connect(self, static_cast<void (QHeaderView::*)(int, Qt::SortOrder)>(&QHeaderView::sortIndicatorChanged), self, [=](int logicalIndex, Qt::SortOrder order) {
-		miqt_exec_callback(slot, 0, nullptr);
+		int sigval1 = logicalIndex;
+		Qt::SortOrder order_ret = order;
+		uintptr_t sigval2 = static_cast<uintptr_t>(order_ret);
+		miqt_exec_callback_QHeaderView_SortIndicatorChanged(slot, sigval1, sigval2);
 	});
 }
 
-void QHeaderView_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QHeaderView::tr(s, c);
+struct miqt_string* QHeaderView_Tr2(const char* s, const char* c) {
+	QString _ret = QHeaderView::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QHeaderView_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QHeaderView::tr(s, c, static_cast<int>(n));
+struct miqt_string* QHeaderView_Tr3(const char* s, const char* c, int n) {
+	QString _ret = QHeaderView::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QHeaderView_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QHeaderView::trUtf8(s, c);
+struct miqt_string* QHeaderView_TrUtf82(const char* s, const char* c) {
+	QString _ret = QHeaderView::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QHeaderView_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QHeaderView::trUtf8(s, c, static_cast<int>(n));
+struct miqt_string* QHeaderView_TrUtf83(const char* s, const char* c, int n) {
+	QString _ret = QHeaderView::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QHeaderView_Delete(QHeaderView* self) {

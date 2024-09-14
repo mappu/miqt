@@ -29,12 +29,8 @@
 #include <QTransform>
 #include <QWidget>
 #include "qstyleoption.h"
-
 #include "gen_qstyleoption.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QStyleOption* QStyleOption_new() {
 	return new QStyleOption();

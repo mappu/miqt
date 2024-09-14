@@ -71,80 +71,66 @@ func NewQMdiArea2(parent *QWidget) *QMdiArea {
 }
 
 func (this *QMdiArea) MetaObject() *QMetaObject {
-	ret := C.QMdiArea_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QMdiArea_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QMdiArea_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QMdiArea_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QMdiArea_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QMdiArea_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QMdiArea_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QMdiArea_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QMdiArea) SizeHint() *QSize {
-	ret := C.QMdiArea_SizeHint(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSize(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QMdiArea_SizeHint(this.h)
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QMdiArea) MinimumSizeHint() *QSize {
-	ret := C.QMdiArea_MinimumSizeHint(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSize(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QMdiArea_MinimumSizeHint(this.h)
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QMdiArea) CurrentSubWindow() *QMdiSubWindow {
-	ret := C.QMdiArea_CurrentSubWindow(this.h)
-	return newQMdiSubWindow_U(unsafe.Pointer(ret))
+	_ret := C.QMdiArea_CurrentSubWindow(this.h)
+	return newQMdiSubWindow_U(unsafe.Pointer(_ret))
 }
 
 func (this *QMdiArea) ActiveSubWindow() *QMdiSubWindow {
-	ret := C.QMdiArea_ActiveSubWindow(this.h)
-	return newQMdiSubWindow_U(unsafe.Pointer(ret))
+	_ret := C.QMdiArea_ActiveSubWindow(this.h)
+	return newQMdiSubWindow_U(unsafe.Pointer(_ret))
 }
 
 func (this *QMdiArea) SubWindowList() []*QMdiSubWindow {
-	var _out **C.QMdiSubWindow = nil
-	var _out_len C.size_t = 0
-	C.QMdiArea_SubWindowList(this.h, &_out, &_out_len)
-	ret := make([]*QMdiSubWindow, int(_out_len))
-	_outCast := (*[0xffff]*C.QMdiSubWindow)(unsafe.Pointer(_out)) // so fresh so clean
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = newQMdiSubWindow(_outCast[i])
+	var _ma *C.struct_miqt_array = C.QMdiArea_SubWindowList(this.h)
+	_ret := make([]*QMdiSubWindow, int(_ma.len))
+	_outCast := (*[0xffff]*C.QMdiSubWindow)(unsafe.Pointer(_ma.data)) // mrs jackson
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = newQMdiSubWindow(_outCast[i])
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
 func (this *QMdiArea) AddSubWindow(widget *QWidget) *QMdiSubWindow {
-	ret := C.QMdiArea_AddSubWindow(this.h, widget.cPointer())
-	return newQMdiSubWindow_U(unsafe.Pointer(ret))
+	_ret := C.QMdiArea_AddSubWindow(this.h, widget.cPointer())
+	return newQMdiSubWindow_U(unsafe.Pointer(_ret))
 }
 
 func (this *QMdiArea) RemoveSubWindow(widget *QWidget) {
@@ -152,14 +138,10 @@ func (this *QMdiArea) RemoveSubWindow(widget *QWidget) {
 }
 
 func (this *QMdiArea) Background() *QBrush {
-	ret := C.QMdiArea_Background(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQBrush(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QBrush) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QMdiArea_Background(this.h)
+	_goptr := newQBrush(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QMdiArea) SetBackground(background *QBrush) {
@@ -167,8 +149,8 @@ func (this *QMdiArea) SetBackground(background *QBrush) {
 }
 
 func (this *QMdiArea) ActivationOrder() QMdiArea__WindowOrder {
-	ret := C.QMdiArea_ActivationOrder(this.h)
-	return (QMdiArea__WindowOrder)(ret)
+	_ret := C.QMdiArea_ActivationOrder(this.h)
+	return (QMdiArea__WindowOrder)(_ret)
 }
 
 func (this *QMdiArea) SetActivationOrder(order QMdiArea__WindowOrder) {
@@ -180,8 +162,8 @@ func (this *QMdiArea) SetOption(option QMdiArea__AreaOption) {
 }
 
 func (this *QMdiArea) TestOption(opton QMdiArea__AreaOption) bool {
-	ret := C.QMdiArea_TestOption(this.h, (C.uintptr_t)(opton))
-	return (bool)(ret)
+	_ret := C.QMdiArea_TestOption(this.h, (C.uintptr_t)(opton))
+	return (bool)(_ret)
 }
 
 func (this *QMdiArea) SetViewMode(mode QMdiArea__ViewMode) {
@@ -189,13 +171,13 @@ func (this *QMdiArea) SetViewMode(mode QMdiArea__ViewMode) {
 }
 
 func (this *QMdiArea) ViewMode() QMdiArea__ViewMode {
-	ret := C.QMdiArea_ViewMode(this.h)
-	return (QMdiArea__ViewMode)(ret)
+	_ret := C.QMdiArea_ViewMode(this.h)
+	return (QMdiArea__ViewMode)(_ret)
 }
 
 func (this *QMdiArea) DocumentMode() bool {
-	ret := C.QMdiArea_DocumentMode(this.h)
-	return (bool)(ret)
+	_ret := C.QMdiArea_DocumentMode(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QMdiArea) SetDocumentMode(enabled bool) {
@@ -207,8 +189,8 @@ func (this *QMdiArea) SetTabsClosable(closable bool) {
 }
 
 func (this *QMdiArea) TabsClosable() bool {
-	ret := C.QMdiArea_TabsClosable(this.h)
-	return (bool)(ret)
+	_ret := C.QMdiArea_TabsClosable(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QMdiArea) SetTabsMovable(movable bool) {
@@ -216,8 +198,8 @@ func (this *QMdiArea) SetTabsMovable(movable bool) {
 }
 
 func (this *QMdiArea) TabsMovable() bool {
-	ret := C.QMdiArea_TabsMovable(this.h)
-	return (bool)(ret)
+	_ret := C.QMdiArea_TabsMovable(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QMdiArea) SetTabShape(shape QTabWidget__TabShape) {
@@ -225,8 +207,8 @@ func (this *QMdiArea) SetTabShape(shape QTabWidget__TabShape) {
 }
 
 func (this *QMdiArea) TabShape() QTabWidget__TabShape {
-	ret := C.QMdiArea_TabShape(this.h)
-	return (QTabWidget__TabShape)(ret)
+	_ret := C.QMdiArea_TabShape(this.h)
+	return (QTabWidget__TabShape)(_ret)
 }
 
 func (this *QMdiArea) SetTabPosition(position QTabWidget__TabPosition) {
@@ -234,20 +216,29 @@ func (this *QMdiArea) SetTabPosition(position QTabWidget__TabPosition) {
 }
 
 func (this *QMdiArea) TabPosition() QTabWidget__TabPosition {
-	ret := C.QMdiArea_TabPosition(this.h)
-	return (QTabWidget__TabPosition)(ret)
+	_ret := C.QMdiArea_TabPosition(this.h)
+	return (QTabWidget__TabPosition)(_ret)
 }
 
 func (this *QMdiArea) SubWindowActivated(param1 *QMdiSubWindow) {
 	C.QMdiArea_SubWindowActivated(this.h, param1.cPointer())
 }
+func (this *QMdiArea) OnSubWindowActivated(slot func(param1 *QMdiSubWindow)) {
+	C.QMdiArea_connect_SubWindowActivated(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QMdiArea) OnSubWindowActivated(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QMdiArea_SubWindowActivated
+func miqt_exec_callback_QMdiArea_SubWindowActivated(cb *C.void, param1 *C.QMdiSubWindow) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(param1 *QMdiSubWindow))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QMdiArea_connect_SubWindowActivated(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	param1_ret := param1
+	slotval1 := newQMdiSubWindow_U(unsafe.Pointer(param1_ret))
+
+	gofunc(slotval1)
 }
 
 func (this *QMdiArea) SetActiveSubWindow(window *QMdiSubWindow) {
@@ -283,12 +274,10 @@ func QMdiArea_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QMdiArea_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QMdiArea_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QMdiArea_Tr3(s string, c string, n int) string {
@@ -296,12 +285,10 @@ func QMdiArea_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QMdiArea_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QMdiArea_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QMdiArea_TrUtf82(s string, c string) string {
@@ -309,12 +296,10 @@ func QMdiArea_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QMdiArea_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QMdiArea_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QMdiArea_TrUtf83(s string, c string, n int) string {
@@ -322,36 +307,42 @@ func QMdiArea_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QMdiArea_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QMdiArea_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QMdiArea) SubWindowList1(order QMdiArea__WindowOrder) []*QMdiSubWindow {
-	var _out **C.QMdiSubWindow = nil
-	var _out_len C.size_t = 0
-	C.QMdiArea_SubWindowList1(this.h, (C.uintptr_t)(order), &_out, &_out_len)
-	ret := make([]*QMdiSubWindow, int(_out_len))
-	_outCast := (*[0xffff]*C.QMdiSubWindow)(unsafe.Pointer(_out)) // so fresh so clean
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = newQMdiSubWindow(_outCast[i])
+	var _ma *C.struct_miqt_array = C.QMdiArea_SubWindowList1(this.h, (C.uintptr_t)(order))
+	_ret := make([]*QMdiSubWindow, int(_ma.len))
+	_outCast := (*[0xffff]*C.QMdiSubWindow)(unsafe.Pointer(_ma.data)) // mrs jackson
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = newQMdiSubWindow(_outCast[i])
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
 func (this *QMdiArea) AddSubWindow2(widget *QWidget, flags int) *QMdiSubWindow {
-	ret := C.QMdiArea_AddSubWindow2(this.h, widget.cPointer(), (C.int)(flags))
-	return newQMdiSubWindow_U(unsafe.Pointer(ret))
+	_ret := C.QMdiArea_AddSubWindow2(this.h, widget.cPointer(), (C.int)(flags))
+	return newQMdiSubWindow_U(unsafe.Pointer(_ret))
 }
 
 func (this *QMdiArea) SetOption2(option QMdiArea__AreaOption, on bool) {
 	C.QMdiArea_SetOption2(this.h, (C.uintptr_t)(option), (C.bool)(on))
 }
 
+// Delete this object from C++ memory.
 func (this *QMdiArea) Delete() {
 	C.QMdiArea_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QMdiArea) GoGC() {
+	runtime.SetFinalizer(this, func(this *QMdiArea) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

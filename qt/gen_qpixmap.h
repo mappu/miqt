@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -50,10 +52,10 @@ typedef struct QTransform QTransform;
 QPixmap* QPixmap_new();
 QPixmap* QPixmap_new2(int w, int h);
 QPixmap* QPixmap_new3(QSize* param1);
-QPixmap* QPixmap_new4(const char* fileName, size_t fileName_Strlen);
+QPixmap* QPixmap_new4(struct miqt_string* fileName);
 QPixmap* QPixmap_new5(QPixmap* param1);
-QPixmap* QPixmap_new6(const char* fileName, size_t fileName_Strlen, const char* format);
-QPixmap* QPixmap_new7(const char* fileName, size_t fileName_Strlen, const char* format, int flags);
+QPixmap* QPixmap_new6(struct miqt_string* fileName, const char* format);
+QPixmap* QPixmap_new7(struct miqt_string* fileName, const char* format, int flags);
 void QPixmap_OperatorAssign(QPixmap* self, QPixmap* param1);
 void QPixmap_Swap(QPixmap* self, QPixmap* other);
 bool QPixmap_IsNull(const QPixmap* self);
@@ -89,10 +91,10 @@ QTransform* QPixmap_TrueMatrix2(QTransform* m, int w, int h);
 QImage* QPixmap_ToImage(const QPixmap* self);
 QPixmap* QPixmap_FromImage(QImage* image);
 QPixmap* QPixmap_FromImageReader(QImageReader* imageReader);
-bool QPixmap_Load(QPixmap* self, const char* fileName, size_t fileName_Strlen);
+bool QPixmap_Load(QPixmap* self, struct miqt_string* fileName);
 bool QPixmap_LoadFromData(QPixmap* self, const unsigned char* buf, unsigned int lenVal);
 bool QPixmap_LoadFromDataWithData(QPixmap* self, QByteArray* data);
-bool QPixmap_Save(const QPixmap* self, const char* fileName, size_t fileName_Strlen);
+bool QPixmap_Save(const QPixmap* self, struct miqt_string* fileName);
 bool QPixmap_SaveWithDevice(const QPixmap* self, QIODevice* device);
 bool QPixmap_ConvertFromImage(QPixmap* self, QImage* img);
 QPixmap* QPixmap_Copy(const QPixmap* self, int x, int y, int width, int height);
@@ -126,14 +128,14 @@ QPixmap* QPixmap_Transformed2(const QPixmap* self, QMatrix* param1, uintptr_t mo
 QPixmap* QPixmap_Transformed22(const QPixmap* self, QTransform* param1, uintptr_t mode);
 QPixmap* QPixmap_FromImage2(QImage* image, int flags);
 QPixmap* QPixmap_FromImageReader2(QImageReader* imageReader, int flags);
-bool QPixmap_Load2(QPixmap* self, const char* fileName, size_t fileName_Strlen, const char* format);
-bool QPixmap_Load3(QPixmap* self, const char* fileName, size_t fileName_Strlen, const char* format, int flags);
+bool QPixmap_Load2(QPixmap* self, struct miqt_string* fileName, const char* format);
+bool QPixmap_Load3(QPixmap* self, struct miqt_string* fileName, const char* format, int flags);
 bool QPixmap_LoadFromData3(QPixmap* self, const unsigned char* buf, unsigned int lenVal, const char* format);
 bool QPixmap_LoadFromData4(QPixmap* self, const unsigned char* buf, unsigned int lenVal, const char* format, int flags);
 bool QPixmap_LoadFromData2(QPixmap* self, QByteArray* data, const char* format);
 bool QPixmap_LoadFromData32(QPixmap* self, QByteArray* data, const char* format, int flags);
-bool QPixmap_Save2(const QPixmap* self, const char* fileName, size_t fileName_Strlen, const char* format);
-bool QPixmap_Save3(const QPixmap* self, const char* fileName, size_t fileName_Strlen, const char* format, int quality);
+bool QPixmap_Save2(const QPixmap* self, struct miqt_string* fileName, const char* format);
+bool QPixmap_Save3(const QPixmap* self, struct miqt_string* fileName, const char* format, int quality);
 bool QPixmap_Save22(const QPixmap* self, QIODevice* device, const char* format);
 bool QPixmap_Save32(const QPixmap* self, QIODevice* device, const char* format, int quality);
 bool QPixmap_ConvertFromImage2(QPixmap* self, QImage* img, int flags);

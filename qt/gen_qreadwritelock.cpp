@@ -2,12 +2,8 @@
 #include <QReadWriteLock>
 #include <QWriteLocker>
 #include "qreadwritelock.h"
-
 #include "gen_qreadwritelock.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QReadWriteLock* QReadWriteLock_new() {
 	return new QReadWriteLock();

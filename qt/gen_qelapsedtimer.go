@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"runtime"
 	"unsafe"
 )
 
@@ -51,13 +52,13 @@ func NewQElapsedTimer() *QElapsedTimer {
 }
 
 func QElapsedTimer_ClockType() QElapsedTimer__ClockType {
-	ret := C.QElapsedTimer_ClockType()
-	return (QElapsedTimer__ClockType)(ret)
+	_ret := C.QElapsedTimer_ClockType()
+	return (QElapsedTimer__ClockType)(_ret)
 }
 
 func QElapsedTimer_IsMonotonic() bool {
-	ret := C.QElapsedTimer_IsMonotonic()
-	return (bool)(ret)
+	_ret := C.QElapsedTimer_IsMonotonic()
+	return (bool)(_ret)
 }
 
 func (this *QElapsedTimer) Start() {
@@ -65,8 +66,8 @@ func (this *QElapsedTimer) Start() {
 }
 
 func (this *QElapsedTimer) Restart() int64 {
-	ret := C.QElapsedTimer_Restart(this.h)
-	return (int64)(ret)
+	_ret := C.QElapsedTimer_Restart(this.h)
+	return (int64)(_ret)
 }
 
 func (this *QElapsedTimer) Invalidate() {
@@ -74,50 +75,60 @@ func (this *QElapsedTimer) Invalidate() {
 }
 
 func (this *QElapsedTimer) IsValid() bool {
-	ret := C.QElapsedTimer_IsValid(this.h)
-	return (bool)(ret)
+	_ret := C.QElapsedTimer_IsValid(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QElapsedTimer) NsecsElapsed() int64 {
-	ret := C.QElapsedTimer_NsecsElapsed(this.h)
-	return (int64)(ret)
+	_ret := C.QElapsedTimer_NsecsElapsed(this.h)
+	return (int64)(_ret)
 }
 
 func (this *QElapsedTimer) Elapsed() int64 {
-	ret := C.QElapsedTimer_Elapsed(this.h)
-	return (int64)(ret)
+	_ret := C.QElapsedTimer_Elapsed(this.h)
+	return (int64)(_ret)
 }
 
 func (this *QElapsedTimer) HasExpired(timeout int64) bool {
-	ret := C.QElapsedTimer_HasExpired(this.h, (C.longlong)(timeout))
-	return (bool)(ret)
+	_ret := C.QElapsedTimer_HasExpired(this.h, (C.longlong)(timeout))
+	return (bool)(_ret)
 }
 
 func (this *QElapsedTimer) MsecsSinceReference() int64 {
-	ret := C.QElapsedTimer_MsecsSinceReference(this.h)
-	return (int64)(ret)
+	_ret := C.QElapsedTimer_MsecsSinceReference(this.h)
+	return (int64)(_ret)
 }
 
 func (this *QElapsedTimer) MsecsTo(other *QElapsedTimer) int64 {
-	ret := C.QElapsedTimer_MsecsTo(this.h, other.cPointer())
-	return (int64)(ret)
+	_ret := C.QElapsedTimer_MsecsTo(this.h, other.cPointer())
+	return (int64)(_ret)
 }
 
 func (this *QElapsedTimer) SecsTo(other *QElapsedTimer) int64 {
-	ret := C.QElapsedTimer_SecsTo(this.h, other.cPointer())
-	return (int64)(ret)
+	_ret := C.QElapsedTimer_SecsTo(this.h, other.cPointer())
+	return (int64)(_ret)
 }
 
 func (this *QElapsedTimer) OperatorEqual(other *QElapsedTimer) bool {
-	ret := C.QElapsedTimer_OperatorEqual(this.h, other.cPointer())
-	return (bool)(ret)
+	_ret := C.QElapsedTimer_OperatorEqual(this.h, other.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QElapsedTimer) OperatorNotEqual(other *QElapsedTimer) bool {
-	ret := C.QElapsedTimer_OperatorNotEqual(this.h, other.cPointer())
-	return (bool)(ret)
+	_ret := C.QElapsedTimer_OperatorNotEqual(this.h, other.cPointer())
+	return (bool)(_ret)
 }
 
+// Delete this object from C++ memory.
 func (this *QElapsedTimer) Delete() {
 	C.QElapsedTimer_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QElapsedTimer) GoGC() {
+	runtime.SetFinalizer(this, func(this *QElapsedTimer) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
