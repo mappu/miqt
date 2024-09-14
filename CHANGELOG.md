@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 2024-09-15 v0.4.0
+
+- **BREAKING:** Expand binding to cover signal argument types
+- Add Github Actions CI
+- Update `mdoutliner` example
+
 ## 2024-09-04 v0.3.0
 
 - Expand binding to cover enum types
