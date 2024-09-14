@@ -13,9 +13,13 @@ struct miqt_string* miqt_strdupg(_GoString_ gs) {
 */
 import "C"
 
+import (
+	"unsafe"
+)
+
 // miqt_strdupg will strdup a Go string into a miqt_string*.
 // It is typed as returning an unsafe.Pointer because Cgo types cannot be shared
 // across Go file boundaries.
 func miqt_strdupg(s string) unsafe.Pointer {
-	return C.miqt_strdupg(s)
+	return unsafe.Pointer(C.miqt_strdupg(s))
 }
