@@ -7,6 +7,28 @@ on:
     branches: [ "**" ]
 
 jobs:
+  miqt_genbindings:
+    runs-on: ubuntu-22.04
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+    
+    - name: Linux64 docker build
+      run: cd docker && docker build -t miqt/linux64:latest -f genbindings.Dockerfile .
+    
+    - name: Cache clang ASTs
+      uses: actions/cache@v4
+      with:
+        path: cmd/genbindings/cachedir
+        key: linux64-clang-cache
+        
+    - name: Rebuild binding source
+      run: docker run -v ~/.cache/go-build:/root/.cache/go-build -v $PWD:/src -w /src miqt/linux64:latest /bin/bash -c 'cd cmd/genbindings && go build && ./genbindings'
+    
+    - name: Assert no changes
+      run: git update-index --really-refresh && git diff-index HEAD
+    
   miqt_linux64:
     runs-on: ubuntu-22.04
     
@@ -17,23 +39,11 @@ jobs:
     - name: Linux64 docker build
       run: cd docker && docker build -t miqt/linux64:latest -f linux64-go1.19-qt5.15-dynamic.Dockerfile .
     
-    - name: Cache clang ASTs
-      uses: actions/cache@v4
-      with:
-        path: cmd/genbindings/cachedir
-        key: linux64-clang-cache
-        
     - name: Cache GOCACHE
       uses: actions/cache@v4
       with:
         path: ~/.cache/go-build
         key: linux64-gocache
-        
-    - name: Rebuild binding source
-      run: docker run -v ~/.cache/go-build:/root/.cache/go-build -v $PWD:/src -w /src miqt/linux64:latest /bin/bash -c 'cd cmd/genbindings && go build && ./genbindings'
-    
-    - name: Assert no changes
-      run: git update-index --really-refresh && git diff-index HEAD
     
     - name: Linux64 bindings compile
       run: docker run -v ~/.cache/go-build:/root/.cache/go-build -v $PWD:/src -w /src miqt/linux64:latest /bin/bash -c 'cd qt && go build'
