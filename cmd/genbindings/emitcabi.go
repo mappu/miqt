@@ -7,6 +7,7 @@ import (
 )
 
 func (p CppParameter) RenderTypeCabi() string {
+
 	ret := p.ParameterType
 	switch p.ParameterType {
 	case "uchar":
@@ -333,6 +334,12 @@ func emitAssignCppToCabi(assignExpression string, p CppParameter, rvalue string)
 			afterCall += indent + assignExpression + "" + namePrefix + "_out;\n"
 
 		} else if !t.QtClassType() || (t.QtClassType() && t.Pointer) { // QList<int>, QList<QFoo*>
+
+			// In some cases rvalue is a function call and the temporary
+			// is necessary; in some cases it's a literal and the temporary is
+			// elided; but in some cases it's a Qt class and the temporary goes
+			// through a copy constructor
+			// TODO Detect safe cases where this can be optimized
 
 			shouldReturn = p.RenderTypeQtCpp() + " " + namePrefix + "_ret = "
 
@@ -695,14 +702,32 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 			}
 
 			if m.IsSignal {
+
+				bindingFunc := "miqt_exec_callback_" + cabiClassName(c.ClassName) + "_" + m.SafeMethodName()
+
 				// If there are hidden parameters, the type of the signal itself
 				// needs to include them
 				exactSignal := `static_cast<void (` + c.ClassName + `::*)(` + emitParameterTypesCpp(m, true) + `)>(&` + c.ClassName + `::` + m.CppCallTarget() + `)`
 
+				paramArgs := []string{"slot"}
+				paramArgDefs := []string{"void* cb"}
+
+				var signalCode string
+
+				for i, p := range m.Parameters {
+					signalCode += emitAssignCppToCabi(fmt.Sprintf("\t\t%s sigval%d = ", emitReturnTypeCabi(p), i+1), p, p.ParameterName)
+					paramArgs = append(paramArgs, fmt.Sprintf("sigval%d", i+1))
+					paramArgDefs = append(paramArgDefs, emitReturnTypeCabi(p)+" "+p.ParameterName)
+				}
+
+				signalCode += "\t\t" + bindingFunc + "(" + strings.Join(paramArgs, `, `) + ");\n"
+
 				ret.WriteString(
-					`void ` + cClassName + `_connect_` + m.SafeMethodName() + `(` + cClassName + `* self, void* slot) {` + "\n" +
+					"void " + bindingFunc + "(" + strings.Join(paramArgDefs, `, `) + ");\n" +
+						"\n" +
+						`void ` + cClassName + `_connect_` + m.SafeMethodName() + `(` + cClassName + `* self, void* slot) {` + "\n" +
 						"\t" + c.ClassName + `::connect(self, ` + exactSignal + `, self, [=](` + emitParametersCpp(m) + `) {` + "\n" +
-						"\t\t" + `miqt_exec_callback(slot, 0, nullptr);` + "\n" +
+						signalCode +
 						"\t});\n" +
 						"}\n" +
 						"\n",

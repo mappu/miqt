@@ -106,8 +106,13 @@ func (p CppParameter) RenderTypeGo() string {
 
 func (p CppParameter) parameterTypeCgo() string {
 	if p.ParameterType == "QString" {
-		return "C.char"
+		return "*C.struct_miqt_string"
 	}
+
+	if _, ok := p.QListOf(); ok {
+		return "*C.struct_miqt_array"
+	}
+
 	tmp := strings.Replace(p.RenderTypeCabi(), `*`, "", -1)
 	if strings.HasPrefix(tmp, "const ") {
 		tmp = tmp[6:] // Constness doesn't survive the CABI boundary
@@ -119,7 +124,13 @@ func (p CppParameter) parameterTypeCgo() string {
 		tmp = "s" + tmp[7:] // Cgo uses schar
 	}
 	tmp = strings.Replace(tmp, `long long`, `longlong`, -1)
-	return "C." + strings.Replace(tmp, " ", "_", -1)
+	tmp = "C." + strings.Replace(tmp, " ", "_", -1)
+
+	if p.QtClassType() || p.Pointer || p.ByRef {
+		return "*" + tmp
+	} else {
+		return tmp
+	}
 }
 
 func emitParametersGo(params []CppParameter) string {
@@ -194,12 +205,14 @@ func (gfs *goFileState) emitParametersGo2CABIForwarding(m CppMethod) (preamble s
 			// Go: convert T[] -> t* and len
 			// CABI: create a real QList<>
 
+			gfs.imports["runtime"] = struct{}{}
+			gfs.imports["unsafe"] = struct{}{}
+
 			if listType.ParameterType == "QString" {
 				// Combo
-				gfs.imports["unsafe"] = struct{}{}
 
 				preamble += "// For the C ABI, malloc two C arrays; raw char* pointers and their lengths\n"
-				preamble += p.ParameterName + "_CArray := (*[0xffff]*" + listType.parameterTypeCgo() + ")(C.malloc(C.size_t(8 * len(" + p.ParameterName + "))))\n"
+				preamble += p.ParameterName + "_CArray := (*[0xffff]" + listType.parameterTypeCgo() + ")(C.malloc(C.size_t(8 * len(" + p.ParameterName + "))))\n"
 				preamble += "defer C.free(unsafe.Pointer(" + p.ParameterName + "_CArray))\n"
 
 				preamble += "for i := range " + p.ParameterName + "{\n"
@@ -211,16 +224,12 @@ func (gfs *goFileState) emitParametersGo2CABIForwarding(m CppMethod) (preamble s
 				preamble += p.ParameterName + "_ma := &C.struct_miqt_array{len: C.size_t(len(" + p.ParameterName + ")), data: unsafe.Pointer(" + p.ParameterName + "_CArray)}\n"
 				preamble += "defer runtime.KeepAlive(unsafe.Pointer(" + p.ParameterName + "_ma))\n"
 
-				tmp = append(tmp, p.ParameterName)
+				tmp = append(tmp, p.ParameterName+"_ma")
 
 			} else {
 
 				preamble += "// For the C ABI, malloc a C array of raw pointers\n"
-				if listType.QtClassType() {
-					preamble += p.ParameterName + "_CArray := (*[0xffff]*" + listType.parameterTypeCgo() + ")(C.malloc(C.size_t(8 * len(" + p.ParameterName + "))))\n"
-				} else {
-					preamble += p.ParameterName + "_CArray := (*[0xffff]" + listType.parameterTypeCgo() + ")(C.malloc(C.size_t(8 * len(" + p.ParameterName + "))))\n"
-				}
+				preamble += p.ParameterName + "_CArray := (*[0xffff]" + listType.parameterTypeCgo() + ")(C.malloc(C.size_t(8 * len(" + p.ParameterName + "))))\n"
 				preamble += "defer C.free(unsafe.Pointer(" + p.ParameterName + "_CArray))\n"
 
 				preamble += "for i := range " + p.ParameterName + "{\n"
@@ -234,7 +243,7 @@ func (gfs *goFileState) emitParametersGo2CABIForwarding(m CppMethod) (preamble s
 				preamble += p.ParameterName + "_ma := &C.struct_miqt_array{len: C.size_t(len(" + p.ParameterName + ")), data: unsafe.Pointer(" + p.ParameterName + "_CArray)}\n"
 				preamble += "defer runtime.KeepAlive(unsafe.Pointer(" + p.ParameterName + "_ma))\n"
 
-				tmp = append(tmp, p.ParameterName)
+				tmp = append(tmp, p.ParameterName+"_ma")
 			}
 
 		} else if p.Pointer && p.ParameterType == "char" {
@@ -252,7 +261,7 @@ func (gfs *goFileState) emitParametersGo2CABIForwarding(m CppMethod) (preamble s
 		} else if p.IntType() || p.ParameterType == "bool" {
 			if p.Pointer || p.ByRef {
 				gfs.imports["unsafe"] = struct{}{}
-				tmp = append(tmp, "(*"+p.parameterTypeCgo()+")(unsafe.Pointer("+p.ParameterName+"))") // n.b. This may not work if the integer type conversion was wrong
+				tmp = append(tmp, "("+p.parameterTypeCgo()+")(unsafe.Pointer("+p.ParameterName+"))") // n.b. This may not work if the integer type conversion was wrong
 			} else {
 				tmp = append(tmp, "("+p.parameterTypeCgo()+")("+p.ParameterName+")")
 			}
@@ -526,13 +535,34 @@ import "C"
 			if m.IsSignal {
 				gfs.imports["unsafe"] = struct{}{}
 				gfs.imports["runtime/cgo"] = struct{}{}
-				ret.WriteString(`func (this *` + goClassName + `) On` + m.SafeMethodName() + `(slot func()) {
-					var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
+
+				var cgoNamedParams []string
+				var paramNames []string
+				for _, pp := range m.Parameters {
+					cgoNamedParams = append(cgoNamedParams, pp.ParameterName+" "+pp.parameterTypeCgo())
+					paramNames = append(paramNames, pp.ParameterName)
+				}
+
+				ret.WriteString(`func (this *` + goClassName + `) On` + m.SafeMethodName() + `(slot func(` + emitParametersGo(m.Parameters) + `)) {
+					slotWrapper := func(` + strings.Join(cgoNamedParams, `, `) + `) {
+						// TODO convert CABI parameters to Go parameters here
 						slot()
 					}
 				
 					C.` + goClassName + `_connect_` + m.SafeMethodName() + `(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
 				}
+				
+				//export miqt_exec_callback_` + goClassName + `_` + m.SafeMethodName() + `
+				func miqt_exec_callback_` + goClassName + `_` + m.SafeMethodName() + `(cb *C.void` + ifv(len(m.Parameters) > 0, ", ", "") + strings.Join(cgoNamedParams, `, `) + `) {
+					cfunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(` + strings.Join(cgoNamedParams, `, `) + `))
+					if !ok {
+						panic("miqt: callback of non-callback type (heap corruption?)")
+					}
+				
+					cfunc(` + strings.Join(paramNames, `, `) + ` )
+				}
+
+				
 				`)
 			}
 		}

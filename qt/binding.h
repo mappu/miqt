@@ -5,10 +5,6 @@
 extern "C" {
 #endif
 
-// miqt_exec_callback calls a Go function pointer for a connect() slot.
-// The function is defined in Go.
-void miqt_exec_callback(void* cb, int argc, void* argv);
-
 struct miqt_string {
     size_t len;
     char data; // Data continues after this element, all in the same allocation
