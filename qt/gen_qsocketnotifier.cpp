@@ -6,12 +6,8 @@
 #include <QByteArray>
 #include <cstring>
 #include "qsocketnotifier.h"
-
 #include "gen_qsocketnotifier.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QSocketNotifier* QSocketNotifier_new(uintptr_t socket, uintptr_t param2) {
 	return new QSocketNotifier(static_cast<qptrdiff>(socket), static_cast<QSocketNotifier::Type>(param2));
@@ -25,22 +21,18 @@ QMetaObject* QSocketNotifier_MetaObject(const QSocketNotifier* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void QSocketNotifier_Tr(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QSocketNotifier::tr(s);
+struct miqt_string* QSocketNotifier_Tr(const char* s) {
+	QString _ret = QSocketNotifier::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QSocketNotifier_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QSocketNotifier::trUtf8(s);
+struct miqt_string* QSocketNotifier_TrUtf8(const char* s) {
+	QString _ret = QSocketNotifier::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 ptrdiff_t QSocketNotifier_Socket(const QSocketNotifier* self) {
@@ -48,8 +40,8 @@ ptrdiff_t QSocketNotifier_Socket(const QSocketNotifier* self) {
 }
 
 uintptr_t QSocketNotifier_Type(const QSocketNotifier* self) {
-	QSocketNotifier::Type ret = self->type();
-	return static_cast<uintptr_t>(ret);
+	QSocketNotifier::Type _ret = self->type();
+	return static_cast<uintptr_t>(_ret);
 }
 
 bool QSocketNotifier_IsEnabled(const QSocketNotifier* self) {
@@ -60,40 +52,32 @@ void QSocketNotifier_SetEnabled(QSocketNotifier* self, bool enabled) {
 	self->setEnabled(enabled);
 }
 
-void QSocketNotifier_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QSocketNotifier::tr(s, c);
+struct miqt_string* QSocketNotifier_Tr2(const char* s, const char* c) {
+	QString _ret = QSocketNotifier::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QSocketNotifier_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QSocketNotifier::tr(s, c, static_cast<int>(n));
+struct miqt_string* QSocketNotifier_Tr3(const char* s, const char* c, int n) {
+	QString _ret = QSocketNotifier::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QSocketNotifier_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QSocketNotifier::trUtf8(s, c);
+struct miqt_string* QSocketNotifier_TrUtf82(const char* s, const char* c) {
+	QString _ret = QSocketNotifier::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QSocketNotifier_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QSocketNotifier::trUtf8(s, c, static_cast<int>(n));
+struct miqt_string* QSocketNotifier_TrUtf83(const char* s, const char* c, int n) {
+	QString _ret = QSocketNotifier::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QSocketNotifier_Delete(QSocketNotifier* self) {

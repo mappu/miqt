@@ -53,35 +53,31 @@ func newQIODevice_U(h unsafe.Pointer) *QIODevice {
 }
 
 func (this *QIODevice) MetaObject() *QMetaObject {
-	ret := C.QIODevice_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QIODevice_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QIODevice_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QIODevice_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QIODevice_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QIODevice_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QIODevice_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QIODevice_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QIODevice) OpenMode() int {
-	ret := C.QIODevice_OpenMode(this.h)
-	return (int)(ret)
+	_ret := C.QIODevice_OpenMode(this.h)
+	return (int)(_ret)
 }
 
 func (this *QIODevice) SetTextModeEnabled(enabled bool) {
@@ -89,43 +85,43 @@ func (this *QIODevice) SetTextModeEnabled(enabled bool) {
 }
 
 func (this *QIODevice) IsTextModeEnabled() bool {
-	ret := C.QIODevice_IsTextModeEnabled(this.h)
-	return (bool)(ret)
+	_ret := C.QIODevice_IsTextModeEnabled(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QIODevice) IsOpen() bool {
-	ret := C.QIODevice_IsOpen(this.h)
-	return (bool)(ret)
+	_ret := C.QIODevice_IsOpen(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QIODevice) IsReadable() bool {
-	ret := C.QIODevice_IsReadable(this.h)
-	return (bool)(ret)
+	_ret := C.QIODevice_IsReadable(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QIODevice) IsWritable() bool {
-	ret := C.QIODevice_IsWritable(this.h)
-	return (bool)(ret)
+	_ret := C.QIODevice_IsWritable(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QIODevice) IsSequential() bool {
-	ret := C.QIODevice_IsSequential(this.h)
-	return (bool)(ret)
+	_ret := C.QIODevice_IsSequential(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QIODevice) ReadChannelCount() int {
-	ret := C.QIODevice_ReadChannelCount(this.h)
-	return (int)(ret)
+	_ret := C.QIODevice_ReadChannelCount(this.h)
+	return (int)(_ret)
 }
 
 func (this *QIODevice) WriteChannelCount() int {
-	ret := C.QIODevice_WriteChannelCount(this.h)
-	return (int)(ret)
+	_ret := C.QIODevice_WriteChannelCount(this.h)
+	return (int)(_ret)
 }
 
 func (this *QIODevice) CurrentReadChannel() int {
-	ret := C.QIODevice_CurrentReadChannel(this.h)
-	return (int)(ret)
+	_ret := C.QIODevice_CurrentReadChannel(this.h)
+	return (int)(_ret)
 }
 
 func (this *QIODevice) SetCurrentReadChannel(channel int) {
@@ -133,8 +129,8 @@ func (this *QIODevice) SetCurrentReadChannel(channel int) {
 }
 
 func (this *QIODevice) CurrentWriteChannel() int {
-	ret := C.QIODevice_CurrentWriteChannel(this.h)
-	return (int)(ret)
+	_ret := C.QIODevice_CurrentWriteChannel(this.h)
+	return (int)(_ret)
 }
 
 func (this *QIODevice) SetCurrentWriteChannel(channel int) {
@@ -142,8 +138,8 @@ func (this *QIODevice) SetCurrentWriteChannel(channel int) {
 }
 
 func (this *QIODevice) Open(mode int) bool {
-	ret := C.QIODevice_Open(this.h, (C.int)(mode))
-	return (bool)(ret)
+	_ret := C.QIODevice_Open(this.h, (C.int)(mode))
+	return (bool)(_ret)
 }
 
 func (this *QIODevice) Close() {
@@ -151,90 +147,78 @@ func (this *QIODevice) Close() {
 }
 
 func (this *QIODevice) Pos() int64 {
-	ret := C.QIODevice_Pos(this.h)
-	return (int64)(ret)
+	_ret := C.QIODevice_Pos(this.h)
+	return (int64)(_ret)
 }
 
 func (this *QIODevice) Size() int64 {
-	ret := C.QIODevice_Size(this.h)
-	return (int64)(ret)
+	_ret := C.QIODevice_Size(this.h)
+	return (int64)(_ret)
 }
 
 func (this *QIODevice) Seek(pos int64) bool {
-	ret := C.QIODevice_Seek(this.h, (C.longlong)(pos))
-	return (bool)(ret)
+	_ret := C.QIODevice_Seek(this.h, (C.longlong)(pos))
+	return (bool)(_ret)
 }
 
 func (this *QIODevice) AtEnd() bool {
-	ret := C.QIODevice_AtEnd(this.h)
-	return (bool)(ret)
+	_ret := C.QIODevice_AtEnd(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QIODevice) Reset() bool {
-	ret := C.QIODevice_Reset(this.h)
-	return (bool)(ret)
+	_ret := C.QIODevice_Reset(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QIODevice) BytesAvailable() int64 {
-	ret := C.QIODevice_BytesAvailable(this.h)
-	return (int64)(ret)
+	_ret := C.QIODevice_BytesAvailable(this.h)
+	return (int64)(_ret)
 }
 
 func (this *QIODevice) BytesToWrite() int64 {
-	ret := C.QIODevice_BytesToWrite(this.h)
-	return (int64)(ret)
+	_ret := C.QIODevice_BytesToWrite(this.h)
+	return (int64)(_ret)
 }
 
 func (this *QIODevice) Read(data string, maxlen int64) int64 {
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
-	ret := C.QIODevice_Read(this.h, data_Cstring, (C.longlong)(maxlen))
-	return (int64)(ret)
+	_ret := C.QIODevice_Read(this.h, data_Cstring, (C.longlong)(maxlen))
+	return (int64)(_ret)
 }
 
 func (this *QIODevice) ReadWithMaxlen(maxlen int64) *QByteArray {
-	ret := C.QIODevice_ReadWithMaxlen(this.h, (C.longlong)(maxlen))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQByteArray(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QByteArray) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QIODevice_ReadWithMaxlen(this.h, (C.longlong)(maxlen))
+	_goptr := newQByteArray(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QIODevice) ReadAll() *QByteArray {
-	ret := C.QIODevice_ReadAll(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQByteArray(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QByteArray) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QIODevice_ReadAll(this.h)
+	_goptr := newQByteArray(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QIODevice) ReadLine(data string, maxlen int64) int64 {
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
-	ret := C.QIODevice_ReadLine(this.h, data_Cstring, (C.longlong)(maxlen))
-	return (int64)(ret)
+	_ret := C.QIODevice_ReadLine(this.h, data_Cstring, (C.longlong)(maxlen))
+	return (int64)(_ret)
 }
 
 func (this *QIODevice) ReadLine2() *QByteArray {
-	ret := C.QIODevice_ReadLine2(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQByteArray(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QByteArray) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QIODevice_ReadLine2(this.h)
+	_goptr := newQByteArray(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QIODevice) CanReadLine() bool {
-	ret := C.QIODevice_CanReadLine(this.h)
-	return (bool)(ret)
+	_ret := C.QIODevice_CanReadLine(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QIODevice) StartTransaction() {
@@ -250,60 +234,56 @@ func (this *QIODevice) RollbackTransaction() {
 }
 
 func (this *QIODevice) IsTransactionStarted() bool {
-	ret := C.QIODevice_IsTransactionStarted(this.h)
-	return (bool)(ret)
+	_ret := C.QIODevice_IsTransactionStarted(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QIODevice) Write(data string, lenVal int64) int64 {
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
-	ret := C.QIODevice_Write(this.h, data_Cstring, (C.longlong)(lenVal))
-	return (int64)(ret)
+	_ret := C.QIODevice_Write(this.h, data_Cstring, (C.longlong)(lenVal))
+	return (int64)(_ret)
 }
 
 func (this *QIODevice) WriteWithData(data string) int64 {
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
-	ret := C.QIODevice_WriteWithData(this.h, data_Cstring)
-	return (int64)(ret)
+	_ret := C.QIODevice_WriteWithData(this.h, data_Cstring)
+	return (int64)(_ret)
 }
 
 func (this *QIODevice) Write2(data *QByteArray) int64 {
-	ret := C.QIODevice_Write2(this.h, data.cPointer())
-	return (int64)(ret)
+	_ret := C.QIODevice_Write2(this.h, data.cPointer())
+	return (int64)(_ret)
 }
 
 func (this *QIODevice) Peek(data string, maxlen int64) int64 {
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
-	ret := C.QIODevice_Peek(this.h, data_Cstring, (C.longlong)(maxlen))
-	return (int64)(ret)
+	_ret := C.QIODevice_Peek(this.h, data_Cstring, (C.longlong)(maxlen))
+	return (int64)(_ret)
 }
 
 func (this *QIODevice) PeekWithMaxlen(maxlen int64) *QByteArray {
-	ret := C.QIODevice_PeekWithMaxlen(this.h, (C.longlong)(maxlen))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQByteArray(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QByteArray) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QIODevice_PeekWithMaxlen(this.h, (C.longlong)(maxlen))
+	_goptr := newQByteArray(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QIODevice) Skip(maxSize int64) int64 {
-	ret := C.QIODevice_Skip(this.h, (C.longlong)(maxSize))
-	return (int64)(ret)
+	_ret := C.QIODevice_Skip(this.h, (C.longlong)(maxSize))
+	return (int64)(_ret)
 }
 
 func (this *QIODevice) WaitForReadyRead(msecs int) bool {
-	ret := C.QIODevice_WaitForReadyRead(this.h, (C.int)(msecs))
-	return (bool)(ret)
+	_ret := C.QIODevice_WaitForReadyRead(this.h, (C.int)(msecs))
+	return (bool)(_ret)
 }
 
 func (this *QIODevice) WaitForBytesWritten(msecs int) bool {
-	ret := C.QIODevice_WaitForBytesWritten(this.h, (C.int)(msecs))
-	return (bool)(ret)
+	_ret := C.QIODevice_WaitForBytesWritten(this.h, (C.int)(msecs))
+	return (bool)(_ret)
 }
 
 func (this *QIODevice) UngetChar(c byte) {
@@ -311,96 +291,139 @@ func (this *QIODevice) UngetChar(c byte) {
 }
 
 func (this *QIODevice) PutChar(c byte) bool {
-	ret := C.QIODevice_PutChar(this.h, (C.char)(c))
-	return (bool)(ret)
+	_ret := C.QIODevice_PutChar(this.h, (C.char)(c))
+	return (bool)(_ret)
 }
 
 func (this *QIODevice) GetChar(c string) bool {
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	ret := C.QIODevice_GetChar(this.h, c_Cstring)
-	return (bool)(ret)
+	_ret := C.QIODevice_GetChar(this.h, c_Cstring)
+	return (bool)(_ret)
 }
 
 func (this *QIODevice) ErrorString() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QIODevice_ErrorString(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QIODevice_ErrorString(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QIODevice) ReadyRead() {
 	C.QIODevice_ReadyRead(this.h)
 }
-
 func (this *QIODevice) OnReadyRead(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+	C.QIODevice_connect_ReadyRead(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
+
+//export miqt_exec_callback_QIODevice_ReadyRead
+func miqt_exec_callback_QIODevice_ReadyRead(cb *C.void) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QIODevice_connect_ReadyRead(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	gofunc()
 }
 
 func (this *QIODevice) ChannelReadyRead(channel int) {
 	C.QIODevice_ChannelReadyRead(this.h, (C.int)(channel))
 }
+func (this *QIODevice) OnChannelReadyRead(slot func(channel int)) {
+	C.QIODevice_connect_ChannelReadyRead(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QIODevice) OnChannelReadyRead(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QIODevice_ChannelReadyRead
+func miqt_exec_callback_QIODevice_ChannelReadyRead(cb *C.void, channel C.int) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(channel int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QIODevice_connect_ChannelReadyRead(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	channel_ret := channel
+	slotval1 := (int)(channel_ret)
+
+	gofunc(slotval1)
 }
 
 func (this *QIODevice) BytesWritten(bytes int64) {
 	C.QIODevice_BytesWritten(this.h, (C.longlong)(bytes))
 }
+func (this *QIODevice) OnBytesWritten(slot func(bytes int64)) {
+	C.QIODevice_connect_BytesWritten(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QIODevice) OnBytesWritten(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QIODevice_BytesWritten
+func miqt_exec_callback_QIODevice_BytesWritten(cb *C.void, bytes C.longlong) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(bytes int64))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QIODevice_connect_BytesWritten(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	bytes_ret := bytes
+	slotval1 := (int64)(bytes_ret)
+
+	gofunc(slotval1)
 }
 
 func (this *QIODevice) ChannelBytesWritten(channel int, bytes int64) {
 	C.QIODevice_ChannelBytesWritten(this.h, (C.int)(channel), (C.longlong)(bytes))
 }
+func (this *QIODevice) OnChannelBytesWritten(slot func(channel int, bytes int64)) {
+	C.QIODevice_connect_ChannelBytesWritten(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QIODevice) OnChannelBytesWritten(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QIODevice_ChannelBytesWritten
+func miqt_exec_callback_QIODevice_ChannelBytesWritten(cb *C.void, channel C.int, bytes C.longlong) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(channel int, bytes int64))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QIODevice_connect_ChannelBytesWritten(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	channel_ret := channel
+	slotval1 := (int)(channel_ret)
+
+	bytes_ret := bytes
+	slotval2 := (int64)(bytes_ret)
+
+	gofunc(slotval1, slotval2)
 }
 
 func (this *QIODevice) AboutToClose() {
 	C.QIODevice_AboutToClose(this.h)
 }
-
 func (this *QIODevice) OnAboutToClose(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+	C.QIODevice_connect_AboutToClose(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
+
+//export miqt_exec_callback_QIODevice_AboutToClose
+func miqt_exec_callback_QIODevice_AboutToClose(cb *C.void) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QIODevice_connect_AboutToClose(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	gofunc()
 }
 
 func (this *QIODevice) ReadChannelFinished() {
 	C.QIODevice_ReadChannelFinished(this.h)
 }
-
 func (this *QIODevice) OnReadChannelFinished(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+	C.QIODevice_connect_ReadChannelFinished(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
+
+//export miqt_exec_callback_QIODevice_ReadChannelFinished
+func miqt_exec_callback_QIODevice_ReadChannelFinished(cb *C.void) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QIODevice_connect_ReadChannelFinished(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	gofunc()
 }
 
 func QIODevice_Tr2(s string, c string) string {
@@ -408,12 +431,10 @@ func QIODevice_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QIODevice_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QIODevice_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QIODevice_Tr3(s string, c string, n int) string {
@@ -421,12 +442,10 @@ func QIODevice_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QIODevice_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QIODevice_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QIODevice_TrUtf82(s string, c string) string {
@@ -434,12 +453,10 @@ func QIODevice_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QIODevice_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QIODevice_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QIODevice_TrUtf83(s string, c string, n int) string {
@@ -447,25 +464,29 @@ func QIODevice_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QIODevice_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QIODevice_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QIODevice) ReadLine1(maxlen int64) *QByteArray {
-	ret := C.QIODevice_ReadLine1(this.h, (C.longlong)(maxlen))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQByteArray(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QByteArray) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QIODevice_ReadLine1(this.h, (C.longlong)(maxlen))
+	_goptr := newQByteArray(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
+// Delete this object from C++ memory.
 func (this *QIODevice) Delete() {
 	C.QIODevice_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QIODevice) GoGC() {
+	runtime.SetFinalizer(this, func(this *QIODevice) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

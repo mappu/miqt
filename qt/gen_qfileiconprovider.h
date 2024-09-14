@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -24,7 +26,7 @@ typedef struct QIcon QIcon;
 QFileIconProvider* QFileIconProvider_new();
 QIcon* QFileIconProvider_Icon(const QFileIconProvider* self, uintptr_t typeVal);
 QIcon* QFileIconProvider_IconWithInfo(const QFileIconProvider* self, QFileInfo* info);
-void QFileIconProvider_Type(const QFileIconProvider* self, QFileInfo* info, char** _out, int* _out_Strlen);
+struct miqt_string* QFileIconProvider_Type(const QFileIconProvider* self, QFileInfo* info);
 void QFileIconProvider_SetOptions(QFileIconProvider* self, int options);
 int QFileIconProvider_Options(const QFileIconProvider* self);
 void QFileIconProvider_Delete(QFileIconProvider* self);

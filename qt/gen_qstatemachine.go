@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"runtime"
 	"runtime/cgo"
 	"unsafe"
 )
@@ -78,30 +79,26 @@ func NewQStateMachine4(childMode QState__ChildMode, parent *QObject) *QStateMach
 }
 
 func (this *QStateMachine) MetaObject() *QMetaObject {
-	ret := C.QStateMachine_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QStateMachine_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QStateMachine_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QStateMachine_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QStateMachine_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QStateMachine_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QStateMachine_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QStateMachine_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QStateMachine) AddState(state *QAbstractState) {
@@ -113,17 +110,15 @@ func (this *QStateMachine) RemoveState(state *QAbstractState) {
 }
 
 func (this *QStateMachine) Error() QStateMachine__Error {
-	ret := C.QStateMachine_Error(this.h)
-	return (QStateMachine__Error)(ret)
+	_ret := C.QStateMachine_Error(this.h)
+	return (QStateMachine__Error)(_ret)
 }
 
 func (this *QStateMachine) ErrorString() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QStateMachine_ErrorString(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QStateMachine_ErrorString(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QStateMachine) ClearError() {
@@ -131,13 +126,13 @@ func (this *QStateMachine) ClearError() {
 }
 
 func (this *QStateMachine) IsRunning() bool {
-	ret := C.QStateMachine_IsRunning(this.h)
-	return (bool)(ret)
+	_ret := C.QStateMachine_IsRunning(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QStateMachine) IsAnimated() bool {
-	ret := C.QStateMachine_IsAnimated(this.h)
-	return (bool)(ret)
+	_ret := C.QStateMachine_IsAnimated(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QStateMachine) SetAnimated(enabled bool) {
@@ -149,16 +144,14 @@ func (this *QStateMachine) AddDefaultAnimation(animation *QAbstractAnimation) {
 }
 
 func (this *QStateMachine) DefaultAnimations() []*QAbstractAnimation {
-	var _out **C.QAbstractAnimation = nil
-	var _out_len C.size_t = 0
-	C.QStateMachine_DefaultAnimations(this.h, &_out, &_out_len)
-	ret := make([]*QAbstractAnimation, int(_out_len))
-	_outCast := (*[0xffff]*C.QAbstractAnimation)(unsafe.Pointer(_out)) // so fresh so clean
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = newQAbstractAnimation(_outCast[i])
+	var _ma *C.struct_miqt_array = C.QStateMachine_DefaultAnimations(this.h)
+	_ret := make([]*QAbstractAnimation, int(_ma.len))
+	_outCast := (*[0xffff]*C.QAbstractAnimation)(unsafe.Pointer(_ma.data)) // mrs jackson
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = newQAbstractAnimation(_outCast[i])
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
 func (this *QStateMachine) RemoveDefaultAnimation(animation *QAbstractAnimation) {
@@ -166,8 +159,8 @@ func (this *QStateMachine) RemoveDefaultAnimation(animation *QAbstractAnimation)
 }
 
 func (this *QStateMachine) GlobalRestorePolicy() QState__RestorePolicy {
-	ret := C.QStateMachine_GlobalRestorePolicy(this.h)
-	return (QState__RestorePolicy)(ret)
+	_ret := C.QStateMachine_GlobalRestorePolicy(this.h)
+	return (QState__RestorePolicy)(_ret)
 }
 
 func (this *QStateMachine) SetGlobalRestorePolicy(restorePolicy QState__RestorePolicy) {
@@ -179,18 +172,18 @@ func (this *QStateMachine) PostEvent(event *QEvent) {
 }
 
 func (this *QStateMachine) PostDelayedEvent(event *QEvent, delay int) int {
-	ret := C.QStateMachine_PostDelayedEvent(this.h, event.cPointer(), (C.int)(delay))
-	return (int)(ret)
+	_ret := C.QStateMachine_PostDelayedEvent(this.h, event.cPointer(), (C.int)(delay))
+	return (int)(_ret)
 }
 
 func (this *QStateMachine) CancelDelayedEvent(id int) bool {
-	ret := C.QStateMachine_CancelDelayedEvent(this.h, (C.int)(id))
-	return (bool)(ret)
+	_ret := C.QStateMachine_CancelDelayedEvent(this.h, (C.int)(id))
+	return (bool)(_ret)
 }
 
 func (this *QStateMachine) EventFilter(watched *QObject, event *QEvent) bool {
-	ret := C.QStateMachine_EventFilter(this.h, watched.cPointer(), event.cPointer())
-	return (bool)(ret)
+	_ret := C.QStateMachine_EventFilter(this.h, watched.cPointer(), event.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QStateMachine) Start() {
@@ -208,13 +201,22 @@ func (this *QStateMachine) SetRunning(running bool) {
 func (this *QStateMachine) RunningChanged(running bool) {
 	C.QStateMachine_RunningChanged(this.h, (C.bool)(running))
 }
+func (this *QStateMachine) OnRunningChanged(slot func(running bool)) {
+	C.QStateMachine_connect_RunningChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QStateMachine) OnRunningChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QStateMachine_RunningChanged
+func miqt_exec_callback_QStateMachine_RunningChanged(cb *C.void, running C.bool) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(running bool))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QStateMachine_connect_RunningChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	running_ret := running
+	slotval1 := (bool)(running_ret)
+
+	gofunc(slotval1)
 }
 
 func QStateMachine_Tr2(s string, c string) string {
@@ -222,12 +224,10 @@ func QStateMachine_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QStateMachine_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QStateMachine_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QStateMachine_Tr3(s string, c string, n int) string {
@@ -235,12 +235,10 @@ func QStateMachine_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QStateMachine_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QStateMachine_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QStateMachine_TrUtf82(s string, c string) string {
@@ -248,12 +246,10 @@ func QStateMachine_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QStateMachine_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QStateMachine_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QStateMachine_TrUtf83(s string, c string, n int) string {
@@ -261,20 +257,28 @@ func QStateMachine_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QStateMachine_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QStateMachine_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QStateMachine) PostEvent2(event *QEvent, priority QStateMachine__EventPriority) {
 	C.QStateMachine_PostEvent2(this.h, event.cPointer(), (C.uintptr_t)(priority))
 }
 
+// Delete this object from C++ memory.
 func (this *QStateMachine) Delete() {
 	C.QStateMachine_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QStateMachine) GoGC() {
+	runtime.SetFinalizer(this, func(this *QStateMachine) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
 
 type QStateMachine__SignalEvent struct {
@@ -307,17 +311,27 @@ func NewQStateMachine__SignalEvent(param1 *QStateMachine__SignalEvent) *QStateMa
 }
 
 func (this *QStateMachine__SignalEvent) Sender() *QObject {
-	ret := C.QStateMachine__SignalEvent_Sender(this.h)
-	return newQObject_U(unsafe.Pointer(ret))
+	_ret := C.QStateMachine__SignalEvent_Sender(this.h)
+	return newQObject_U(unsafe.Pointer(_ret))
 }
 
 func (this *QStateMachine__SignalEvent) SignalIndex() int {
-	ret := C.QStateMachine__SignalEvent_SignalIndex(this.h)
-	return (int)(ret)
+	_ret := C.QStateMachine__SignalEvent_SignalIndex(this.h)
+	return (int)(_ret)
 }
 
+// Delete this object from C++ memory.
 func (this *QStateMachine__SignalEvent) Delete() {
 	C.QStateMachine__SignalEvent_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QStateMachine__SignalEvent) GoGC() {
+	runtime.SetFinalizer(this, func(this *QStateMachine__SignalEvent) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
 
 type QStateMachine__WrappedEvent struct {
@@ -356,15 +370,25 @@ func NewQStateMachine__WrappedEvent2(param1 *QStateMachine__WrappedEvent) *QStat
 }
 
 func (this *QStateMachine__WrappedEvent) Object() *QObject {
-	ret := C.QStateMachine__WrappedEvent_Object(this.h)
-	return newQObject_U(unsafe.Pointer(ret))
+	_ret := C.QStateMachine__WrappedEvent_Object(this.h)
+	return newQObject_U(unsafe.Pointer(_ret))
 }
 
 func (this *QStateMachine__WrappedEvent) Event() *QEvent {
-	ret := C.QStateMachine__WrappedEvent_Event(this.h)
-	return newQEvent_U(unsafe.Pointer(ret))
+	_ret := C.QStateMachine__WrappedEvent_Event(this.h)
+	return newQEvent_U(unsafe.Pointer(_ret))
 }
 
+// Delete this object from C++ memory.
 func (this *QStateMachine__WrappedEvent) Delete() {
 	C.QStateMachine__WrappedEvent_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QStateMachine__WrappedEvent) GoGC() {
+	runtime.SetFinalizer(this, func(this *QStateMachine__WrappedEvent) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -32,8 +34,8 @@ typedef struct QWidget QWidget;
 QListView* QListView_new();
 QListView* QListView_new2(QWidget* parent);
 QMetaObject* QListView_MetaObject(const QListView* self);
-void QListView_Tr(const char* s, char** _out, int* _out_Strlen);
-void QListView_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QListView_Tr(const char* s);
+struct miqt_string* QListView_TrUtf8(const char* s);
 void QListView_SetMovement(QListView* self, uintptr_t movement);
 uintptr_t QListView_Movement(const QListView* self);
 void QListView_SetFlow(QListView* self, uintptr_t flow);
@@ -71,12 +73,12 @@ QModelIndex* QListView_IndexAt(const QListView* self, QPoint* p);
 void QListView_DoItemsLayout(QListView* self);
 void QListView_Reset(QListView* self);
 void QListView_SetRootIndex(QListView* self, QModelIndex* index);
-void QListView_IndexesMoved(QListView* self, QModelIndex** indexes, size_t indexes_len);
+void QListView_IndexesMoved(QListView* self, struct miqt_array* /* of QModelIndex */ indexes);
 void QListView_connect_IndexesMoved(QListView* self, void* slot);
-void QListView_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QListView_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QListView_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QListView_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QListView_Tr2(const char* s, const char* c);
+struct miqt_string* QListView_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QListView_TrUtf82(const char* s, const char* c);
+struct miqt_string* QListView_TrUtf83(const char* s, const char* c, int n);
 void QListView_ScrollTo2(QListView* self, QModelIndex* index, uintptr_t hint);
 void QListView_Delete(QListView* self);
 

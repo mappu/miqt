@@ -49,30 +49,26 @@ func NewQTableView2(parent *QWidget) *QTableView {
 }
 
 func (this *QTableView) MetaObject() *QMetaObject {
-	ret := C.QTableView_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QTableView_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QTableView_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTableView_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTableView_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QTableView_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTableView_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTableView_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QTableView) SetModel(model *QAbstractItemModel) {
@@ -92,13 +88,13 @@ func (this *QTableView) DoItemsLayout() {
 }
 
 func (this *QTableView) HorizontalHeader() *QHeaderView {
-	ret := C.QTableView_HorizontalHeader(this.h)
-	return newQHeaderView_U(unsafe.Pointer(ret))
+	_ret := C.QTableView_HorizontalHeader(this.h)
+	return newQHeaderView_U(unsafe.Pointer(_ret))
 }
 
 func (this *QTableView) VerticalHeader() *QHeaderView {
-	ret := C.QTableView_VerticalHeader(this.h)
-	return newQHeaderView_U(unsafe.Pointer(ret))
+	_ret := C.QTableView_VerticalHeader(this.h)
+	return newQHeaderView_U(unsafe.Pointer(_ret))
 }
 
 func (this *QTableView) SetHorizontalHeader(header *QHeaderView) {
@@ -110,13 +106,13 @@ func (this *QTableView) SetVerticalHeader(header *QHeaderView) {
 }
 
 func (this *QTableView) RowViewportPosition(row int) int {
-	ret := C.QTableView_RowViewportPosition(this.h, (C.int)(row))
-	return (int)(ret)
+	_ret := C.QTableView_RowViewportPosition(this.h, (C.int)(row))
+	return (int)(_ret)
 }
 
 func (this *QTableView) RowAt(y int) int {
-	ret := C.QTableView_RowAt(this.h, (C.int)(y))
-	return (int)(ret)
+	_ret := C.QTableView_RowAt(this.h, (C.int)(y))
+	return (int)(_ret)
 }
 
 func (this *QTableView) SetRowHeight(row int, height int) {
@@ -124,18 +120,18 @@ func (this *QTableView) SetRowHeight(row int, height int) {
 }
 
 func (this *QTableView) RowHeight(row int) int {
-	ret := C.QTableView_RowHeight(this.h, (C.int)(row))
-	return (int)(ret)
+	_ret := C.QTableView_RowHeight(this.h, (C.int)(row))
+	return (int)(_ret)
 }
 
 func (this *QTableView) ColumnViewportPosition(column int) int {
-	ret := C.QTableView_ColumnViewportPosition(this.h, (C.int)(column))
-	return (int)(ret)
+	_ret := C.QTableView_ColumnViewportPosition(this.h, (C.int)(column))
+	return (int)(_ret)
 }
 
 func (this *QTableView) ColumnAt(x int) int {
-	ret := C.QTableView_ColumnAt(this.h, (C.int)(x))
-	return (int)(ret)
+	_ret := C.QTableView_ColumnAt(this.h, (C.int)(x))
+	return (int)(_ret)
 }
 
 func (this *QTableView) SetColumnWidth(column int, width int) {
@@ -143,13 +139,13 @@ func (this *QTableView) SetColumnWidth(column int, width int) {
 }
 
 func (this *QTableView) ColumnWidth(column int) int {
-	ret := C.QTableView_ColumnWidth(this.h, (C.int)(column))
-	return (int)(ret)
+	_ret := C.QTableView_ColumnWidth(this.h, (C.int)(column))
+	return (int)(_ret)
 }
 
 func (this *QTableView) IsRowHidden(row int) bool {
-	ret := C.QTableView_IsRowHidden(this.h, (C.int)(row))
-	return (bool)(ret)
+	_ret := C.QTableView_IsRowHidden(this.h, (C.int)(row))
+	return (bool)(_ret)
 }
 
 func (this *QTableView) SetRowHidden(row int, hide bool) {
@@ -157,8 +153,8 @@ func (this *QTableView) SetRowHidden(row int, hide bool) {
 }
 
 func (this *QTableView) IsColumnHidden(column int) bool {
-	ret := C.QTableView_IsColumnHidden(this.h, (C.int)(column))
-	return (bool)(ret)
+	_ret := C.QTableView_IsColumnHidden(this.h, (C.int)(column))
+	return (bool)(_ret)
 }
 
 func (this *QTableView) SetColumnHidden(column int, hide bool) {
@@ -170,18 +166,18 @@ func (this *QTableView) SetSortingEnabled(enable bool) {
 }
 
 func (this *QTableView) IsSortingEnabled() bool {
-	ret := C.QTableView_IsSortingEnabled(this.h)
-	return (bool)(ret)
+	_ret := C.QTableView_IsSortingEnabled(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QTableView) ShowGrid() bool {
-	ret := C.QTableView_ShowGrid(this.h)
-	return (bool)(ret)
+	_ret := C.QTableView_ShowGrid(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QTableView) GridStyle() PenStyle {
-	ret := C.QTableView_GridStyle(this.h)
-	return (PenStyle)(ret)
+	_ret := C.QTableView_GridStyle(this.h)
+	return (PenStyle)(_ret)
 }
 
 func (this *QTableView) SetGridStyle(style PenStyle) {
@@ -193,8 +189,8 @@ func (this *QTableView) SetWordWrap(on bool) {
 }
 
 func (this *QTableView) WordWrap() bool {
-	ret := C.QTableView_WordWrap(this.h)
-	return (bool)(ret)
+	_ret := C.QTableView_WordWrap(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QTableView) SetCornerButtonEnabled(enable bool) {
@@ -202,19 +198,15 @@ func (this *QTableView) SetCornerButtonEnabled(enable bool) {
 }
 
 func (this *QTableView) IsCornerButtonEnabled() bool {
-	ret := C.QTableView_IsCornerButtonEnabled(this.h)
-	return (bool)(ret)
+	_ret := C.QTableView_IsCornerButtonEnabled(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QTableView) VisualRect(index *QModelIndex) *QRect {
-	ret := C.QTableView_VisualRect(this.h, index.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRect(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRect) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QTableView_VisualRect(this.h, index.cPointer())
+	_goptr := newQRect(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QTableView) ScrollTo(index *QModelIndex) {
@@ -222,14 +214,10 @@ func (this *QTableView) ScrollTo(index *QModelIndex) {
 }
 
 func (this *QTableView) IndexAt(p *QPoint) *QModelIndex {
-	ret := C.QTableView_IndexAt(this.h, p.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQModelIndex(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QModelIndex) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QTableView_IndexAt(this.h, p.cPointer())
+	_goptr := newQModelIndex(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QTableView) SetSpan(row int, column int, rowSpan int, columnSpan int) {
@@ -237,13 +225,13 @@ func (this *QTableView) SetSpan(row int, column int, rowSpan int, columnSpan int
 }
 
 func (this *QTableView) RowSpan(row int, column int) int {
-	ret := C.QTableView_RowSpan(this.h, (C.int)(row), (C.int)(column))
-	return (int)(ret)
+	_ret := C.QTableView_RowSpan(this.h, (C.int)(row), (C.int)(column))
+	return (int)(_ret)
 }
 
 func (this *QTableView) ColumnSpan(row int, column int) int {
-	ret := C.QTableView_ColumnSpan(this.h, (C.int)(row), (C.int)(column))
-	return (int)(ret)
+	_ret := C.QTableView_ColumnSpan(this.h, (C.int)(row), (C.int)(column))
+	return (int)(_ret)
 }
 
 func (this *QTableView) ClearSpans() {
@@ -307,12 +295,10 @@ func QTableView_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTableView_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTableView_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QTableView_Tr3(s string, c string, n int) string {
@@ -320,12 +306,10 @@ func QTableView_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTableView_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTableView_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QTableView_TrUtf82(s string, c string) string {
@@ -333,12 +317,10 @@ func QTableView_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTableView_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTableView_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QTableView_TrUtf83(s string, c string, n int) string {
@@ -346,18 +328,26 @@ func QTableView_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTableView_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTableView_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QTableView) ScrollTo2(index *QModelIndex, hint QAbstractItemView__ScrollHint) {
 	C.QTableView_ScrollTo2(this.h, index.cPointer(), (C.uintptr_t)(hint))
 }
 
+// Delete this object from C++ memory.
 func (this *QTableView) Delete() {
 	C.QTableView_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QTableView) GoGC() {
+	runtime.SetFinalizer(this, func(this *QTableView) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

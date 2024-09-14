@@ -45,9 +45,9 @@ func NewQGroupBox() *QGroupBox {
 
 // NewQGroupBox2 constructs a new QGroupBox object.
 func NewQGroupBox2(title string) *QGroupBox {
-	title_Cstring := C.CString(title)
-	defer C.free(unsafe.Pointer(title_Cstring))
-	ret := C.QGroupBox_new2(title_Cstring, C.size_t(len(title)))
+	title_ms := miqt_strdupg(title)
+	defer C.free(title_ms)
+	ret := C.QGroupBox_new2((*C.struct_miqt_string)(title_ms))
 	return newQGroupBox(ret)
 }
 
@@ -59,57 +59,51 @@ func NewQGroupBox3(parent *QWidget) *QGroupBox {
 
 // NewQGroupBox4 constructs a new QGroupBox object.
 func NewQGroupBox4(title string, parent *QWidget) *QGroupBox {
-	title_Cstring := C.CString(title)
-	defer C.free(unsafe.Pointer(title_Cstring))
-	ret := C.QGroupBox_new4(title_Cstring, C.size_t(len(title)), parent.cPointer())
+	title_ms := miqt_strdupg(title)
+	defer C.free(title_ms)
+	ret := C.QGroupBox_new4((*C.struct_miqt_string)(title_ms), parent.cPointer())
 	return newQGroupBox(ret)
 }
 
 func (this *QGroupBox) MetaObject() *QMetaObject {
-	ret := C.QGroupBox_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QGroupBox_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QGroupBox_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGroupBox_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGroupBox_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QGroupBox_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGroupBox_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGroupBox_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QGroupBox) Title() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGroupBox_Title(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGroupBox_Title(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QGroupBox) SetTitle(title string) {
-	title_Cstring := C.CString(title)
-	defer C.free(unsafe.Pointer(title_Cstring))
-	C.QGroupBox_SetTitle(this.h, title_Cstring, C.size_t(len(title)))
+	title_ms := miqt_strdupg(title)
+	defer C.free(title_ms)
+	C.QGroupBox_SetTitle(this.h, (*C.struct_miqt_string)(title_ms))
 }
 
 func (this *QGroupBox) Alignment() int {
-	ret := C.QGroupBox_Alignment(this.h)
-	return (int)(ret)
+	_ret := C.QGroupBox_Alignment(this.h)
+	return (int)(_ret)
 }
 
 func (this *QGroupBox) SetAlignment(alignment int) {
@@ -117,19 +111,15 @@ func (this *QGroupBox) SetAlignment(alignment int) {
 }
 
 func (this *QGroupBox) MinimumSizeHint() *QSize {
-	ret := C.QGroupBox_MinimumSizeHint(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSize(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QGroupBox_MinimumSizeHint(this.h)
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QGroupBox) IsFlat() bool {
-	ret := C.QGroupBox_IsFlat(this.h)
-	return (bool)(ret)
+	_ret := C.QGroupBox_IsFlat(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QGroupBox) SetFlat(flat bool) {
@@ -137,8 +127,8 @@ func (this *QGroupBox) SetFlat(flat bool) {
 }
 
 func (this *QGroupBox) IsCheckable() bool {
-	ret := C.QGroupBox_IsCheckable(this.h)
-	return (bool)(ret)
+	_ret := C.QGroupBox_IsCheckable(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QGroupBox) SetCheckable(checkable bool) {
@@ -146,8 +136,8 @@ func (this *QGroupBox) SetCheckable(checkable bool) {
 }
 
 func (this *QGroupBox) IsChecked() bool {
-	ret := C.QGroupBox_IsChecked(this.h)
-	return (bool)(ret)
+	_ret := C.QGroupBox_IsChecked(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QGroupBox) SetChecked(checked bool) {
@@ -157,25 +147,39 @@ func (this *QGroupBox) SetChecked(checked bool) {
 func (this *QGroupBox) Clicked() {
 	C.QGroupBox_Clicked(this.h)
 }
-
 func (this *QGroupBox) OnClicked(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+	C.QGroupBox_connect_Clicked(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
+
+//export miqt_exec_callback_QGroupBox_Clicked
+func miqt_exec_callback_QGroupBox_Clicked(cb *C.void) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QGroupBox_connect_Clicked(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	gofunc()
 }
 
 func (this *QGroupBox) Toggled(param1 bool) {
 	C.QGroupBox_Toggled(this.h, (C.bool)(param1))
 }
+func (this *QGroupBox) OnToggled(slot func(param1 bool)) {
+	C.QGroupBox_connect_Toggled(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QGroupBox) OnToggled(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QGroupBox_Toggled
+func miqt_exec_callback_QGroupBox_Toggled(cb *C.void, param1 C.bool) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(param1 bool))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QGroupBox_connect_Toggled(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	param1_ret := param1
+	slotval1 := (bool)(param1_ret)
+
+	gofunc(slotval1)
 }
 
 func QGroupBox_Tr2(s string, c string) string {
@@ -183,12 +187,10 @@ func QGroupBox_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGroupBox_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGroupBox_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QGroupBox_Tr3(s string, c string, n int) string {
@@ -196,12 +198,10 @@ func QGroupBox_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGroupBox_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGroupBox_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QGroupBox_TrUtf82(s string, c string) string {
@@ -209,12 +209,10 @@ func QGroupBox_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGroupBox_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGroupBox_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QGroupBox_TrUtf83(s string, c string, n int) string {
@@ -222,26 +220,43 @@ func QGroupBox_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGroupBox_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGroupBox_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QGroupBox) Clicked1(checked bool) {
 	C.QGroupBox_Clicked1(this.h, (C.bool)(checked))
 }
-
-func (this *QGroupBox) OnClicked1(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
-	}
-
-	C.QGroupBox_connect_Clicked1(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+func (this *QGroupBox) OnClicked1(slot func(checked bool)) {
+	C.QGroupBox_connect_Clicked1(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
 }
 
+//export miqt_exec_callback_QGroupBox_Clicked1
+func miqt_exec_callback_QGroupBox_Clicked1(cb *C.void, checked C.bool) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(checked bool))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	checked_ret := checked
+	slotval1 := (bool)(checked_ret)
+
+	gofunc(slotval1)
+}
+
+// Delete this object from C++ memory.
 func (this *QGroupBox) Delete() {
 	C.QGroupBox_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QGroupBox) GoGC() {
+	runtime.SetFinalizer(this, func(this *QGroupBox) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -28,8 +30,8 @@ typedef struct QVariant QVariant;
 #endif
 
 QMetaObject* QInputMethod_MetaObject(const QInputMethod* self);
-void QInputMethod_Tr(const char* s, char** _out, int* _out_Strlen);
-void QInputMethod_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QInputMethod_Tr(const char* s);
+struct miqt_string* QInputMethod_TrUtf8(const char* s);
 QTransform* QInputMethod_InputItemTransform(const QInputMethod* self);
 void QInputMethod_SetInputItemTransform(QInputMethod* self, QTransform* transform);
 QRectF* QInputMethod_InputItemRectangle(const QInputMethod* self);
@@ -66,10 +68,10 @@ void QInputMethod_LocaleChanged(QInputMethod* self);
 void QInputMethod_connect_LocaleChanged(QInputMethod* self, void* slot);
 void QInputMethod_InputDirectionChanged(QInputMethod* self, uintptr_t newDirection);
 void QInputMethod_connect_InputDirectionChanged(QInputMethod* self, void* slot);
-void QInputMethod_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QInputMethod_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QInputMethod_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QInputMethod_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QInputMethod_Tr2(const char* s, const char* c);
+struct miqt_string* QInputMethod_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QInputMethod_TrUtf82(const char* s, const char* c);
+struct miqt_string* QInputMethod_TrUtf83(const char* s, const char* c, int n);
 
 #ifdef __cplusplus
 } /* extern C */

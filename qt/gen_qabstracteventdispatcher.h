@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -34,8 +36,8 @@ typedef struct QThread QThread;
 #endif
 
 QMetaObject* QAbstractEventDispatcher_MetaObject(const QAbstractEventDispatcher* self);
-void QAbstractEventDispatcher_Tr(const char* s, char** _out, int* _out_Strlen);
-void QAbstractEventDispatcher_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QAbstractEventDispatcher_Tr(const char* s);
+struct miqt_string* QAbstractEventDispatcher_TrUtf8(const char* s);
 QAbstractEventDispatcher* QAbstractEventDispatcher_Instance();
 bool QAbstractEventDispatcher_ProcessEvents(QAbstractEventDispatcher* self, int flags);
 bool QAbstractEventDispatcher_HasPendingEvents(QAbstractEventDispatcher* self);
@@ -45,7 +47,7 @@ int QAbstractEventDispatcher_RegisterTimer(QAbstractEventDispatcher* self, int i
 void QAbstractEventDispatcher_RegisterTimer2(QAbstractEventDispatcher* self, int timerId, int interval, uintptr_t timerType, QObject* object);
 bool QAbstractEventDispatcher_UnregisterTimer(QAbstractEventDispatcher* self, int timerId);
 bool QAbstractEventDispatcher_UnregisterTimers(QAbstractEventDispatcher* self, QObject* object);
-void QAbstractEventDispatcher_RegisteredTimers(const QAbstractEventDispatcher* self, QObject* object, QAbstractEventDispatcher__TimerInfo*** _out, size_t* _out_len);
+struct miqt_array* QAbstractEventDispatcher_RegisteredTimers(const QAbstractEventDispatcher* self, QObject* object);
 int QAbstractEventDispatcher_RemainingTime(QAbstractEventDispatcher* self, int timerId);
 void QAbstractEventDispatcher_WakeUp(QAbstractEventDispatcher* self);
 void QAbstractEventDispatcher_Interrupt(QAbstractEventDispatcher* self);
@@ -58,10 +60,10 @@ void QAbstractEventDispatcher_AboutToBlock(QAbstractEventDispatcher* self);
 void QAbstractEventDispatcher_connect_AboutToBlock(QAbstractEventDispatcher* self, void* slot);
 void QAbstractEventDispatcher_Awake(QAbstractEventDispatcher* self);
 void QAbstractEventDispatcher_connect_Awake(QAbstractEventDispatcher* self, void* slot);
-void QAbstractEventDispatcher_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QAbstractEventDispatcher_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QAbstractEventDispatcher_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QAbstractEventDispatcher_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QAbstractEventDispatcher_Tr2(const char* s, const char* c);
+struct miqt_string* QAbstractEventDispatcher_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QAbstractEventDispatcher_TrUtf82(const char* s, const char* c);
+struct miqt_string* QAbstractEventDispatcher_TrUtf83(const char* s, const char* c, int n);
 QAbstractEventDispatcher* QAbstractEventDispatcher_Instance1(QThread* thread);
 void QAbstractEventDispatcher_Delete(QAbstractEventDispatcher* self);
 

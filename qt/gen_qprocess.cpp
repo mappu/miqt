@@ -8,12 +8,8 @@
 #include <QByteArray>
 #include <cstring>
 #include "qprocess.h"
-
 #include "gen_qprocess.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QProcessEnvironment* QProcessEnvironment_new() {
 	return new QProcessEnvironment();
@@ -47,64 +43,60 @@ void QProcessEnvironment_Clear(QProcessEnvironment* self) {
 	self->clear();
 }
 
-bool QProcessEnvironment_Contains(const QProcessEnvironment* self, const char* name, size_t name_Strlen) {
-	QString name_QString = QString::fromUtf8(name, name_Strlen);
+bool QProcessEnvironment_Contains(const QProcessEnvironment* self, struct miqt_string* name) {
+	QString name_QString = QString::fromUtf8(&name->data, name->len);
 	return self->contains(name_QString);
 }
 
-void QProcessEnvironment_Insert(QProcessEnvironment* self, const char* name, size_t name_Strlen, const char* value, size_t value_Strlen) {
-	QString name_QString = QString::fromUtf8(name, name_Strlen);
-	QString value_QString = QString::fromUtf8(value, value_Strlen);
+void QProcessEnvironment_Insert(QProcessEnvironment* self, struct miqt_string* name, struct miqt_string* value) {
+	QString name_QString = QString::fromUtf8(&name->data, name->len);
+	QString value_QString = QString::fromUtf8(&value->data, value->len);
 	self->insert(name_QString, value_QString);
 }
 
-void QProcessEnvironment_Remove(QProcessEnvironment* self, const char* name, size_t name_Strlen) {
-	QString name_QString = QString::fromUtf8(name, name_Strlen);
+void QProcessEnvironment_Remove(QProcessEnvironment* self, struct miqt_string* name) {
+	QString name_QString = QString::fromUtf8(&name->data, name->len);
 	self->remove(name_QString);
 }
 
-void QProcessEnvironment_Value(const QProcessEnvironment* self, const char* name, size_t name_Strlen, char** _out, int* _out_Strlen) {
-	QString name_QString = QString::fromUtf8(name, name_Strlen);
-	QString ret = self->value(name_QString);
+struct miqt_string* QProcessEnvironment_Value(const QProcessEnvironment* self, struct miqt_string* name) {
+	QString name_QString = QString::fromUtf8(&name->data, name->len);
+	QString _ret = self->value(name_QString);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QProcessEnvironment_ToStringList(const QProcessEnvironment* self, char*** _out, int** _out_Lengths, size_t* _out_len) {
-	QStringList ret = self->toStringList();
+struct miqt_array* QProcessEnvironment_ToStringList(const QProcessEnvironment* self) {
+	QStringList _ret = self->toStringList();
 	// Convert QStringList from C++ memory to manually-managed C memory
-	char** __out = static_cast<char**>(malloc(sizeof(char*) * ret.length()));
-	int* __out_Lengths = static_cast<int*>(malloc(sizeof(int) * ret.length()));
-	for (size_t i = 0, e = ret.length(); i < e; ++i) {
+	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-		QByteArray b = ret[i].toUtf8();
-		__out[i] = static_cast<char*>(malloc(b.length()));
-		memcpy(__out[i], b.data(), b.length());
-		__out_Lengths[i] = b.length();
+		QByteArray _lv_b = _lv_ret.toUtf8();
+		_arr[i] = miqt_strdup(_lv_b.data(), _lv_b.length());
 	}
-	*_out = __out;
-	*_out_Lengths = __out_Lengths;
-	*_out_len = ret.length();
+	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
+	_out->len = _ret.length();
+	_out->data = static_cast<void*>(_arr);
+	return _out;
 }
 
-void QProcessEnvironment_Keys(const QProcessEnvironment* self, char*** _out, int** _out_Lengths, size_t* _out_len) {
-	QStringList ret = self->keys();
+struct miqt_array* QProcessEnvironment_Keys(const QProcessEnvironment* self) {
+	QStringList _ret = self->keys();
 	// Convert QStringList from C++ memory to manually-managed C memory
-	char** __out = static_cast<char**>(malloc(sizeof(char*) * ret.length()));
-	int* __out_Lengths = static_cast<int*>(malloc(sizeof(int) * ret.length()));
-	for (size_t i = 0, e = ret.length(); i < e; ++i) {
+	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-		QByteArray b = ret[i].toUtf8();
-		__out[i] = static_cast<char*>(malloc(b.length()));
-		memcpy(__out[i], b.data(), b.length());
-		__out_Lengths[i] = b.length();
+		QByteArray _lv_b = _lv_ret.toUtf8();
+		_arr[i] = miqt_strdup(_lv_b.data(), _lv_b.length());
 	}
-	*_out = __out;
-	*_out_Lengths = __out_Lengths;
-	*_out_len = ret.length();
+	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
+	_out->len = _ret.length();
+	_out->data = static_cast<void*>(_arr);
+	return _out;
 }
 
 void QProcessEnvironment_InsertWithQProcessEnvironment(QProcessEnvironment* self, QProcessEnvironment* e) {
@@ -112,20 +104,18 @@ void QProcessEnvironment_InsertWithQProcessEnvironment(QProcessEnvironment* self
 }
 
 QProcessEnvironment* QProcessEnvironment_SystemEnvironment() {
-	QProcessEnvironment ret = QProcessEnvironment::systemEnvironment();
+	QProcessEnvironment _ret = QProcessEnvironment::systemEnvironment();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QProcessEnvironment*>(new QProcessEnvironment(ret));
+	return static_cast<QProcessEnvironment*>(new QProcessEnvironment(_ret));
 }
 
-void QProcessEnvironment_Value2(const QProcessEnvironment* self, const char* name, size_t name_Strlen, const char* defaultValue, size_t defaultValue_Strlen, char** _out, int* _out_Strlen) {
-	QString name_QString = QString::fromUtf8(name, name_Strlen);
-	QString defaultValue_QString = QString::fromUtf8(defaultValue, defaultValue_Strlen);
-	QString ret = self->value(name_QString, defaultValue_QString);
+struct miqt_string* QProcessEnvironment_Value2(const QProcessEnvironment* self, struct miqt_string* name, struct miqt_string* defaultValue) {
+	QString name_QString = QString::fromUtf8(&name->data, name->len);
+	QString defaultValue_QString = QString::fromUtf8(&defaultValue->data, defaultValue->len);
+	QString _ret = self->value(name_QString, defaultValue_QString);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QProcessEnvironment_Delete(QProcessEnvironment* self) {
@@ -144,36 +134,33 @@ QMetaObject* QProcess_MetaObject(const QProcess* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void QProcess_Tr(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QProcess::tr(s);
+struct miqt_string* QProcess_Tr(const char* s) {
+	QString _ret = QProcess::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QProcess_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QProcess::trUtf8(s);
+struct miqt_string* QProcess_TrUtf8(const char* s) {
+	QString _ret = QProcess::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QProcess_Start(QProcess* self, const char* program, size_t program_Strlen, char** arguments, uint64_t* arguments_Lengths, size_t arguments_len) {
-	QString program_QString = QString::fromUtf8(program, program_Strlen);
+void QProcess_Start(QProcess* self, struct miqt_string* program, struct miqt_array* /* of QString */ arguments) {
+	QString program_QString = QString::fromUtf8(&program->data, program->len);
 	QList<QString> arguments_QList;
-	arguments_QList.reserve(arguments_len);
-	for(size_t i = 0; i < arguments_len; ++i) {
-		arguments_QList.push_back(QString::fromUtf8(arguments[i], arguments_Lengths[i]));
+	arguments_QList.reserve(arguments->len);
+	miqt_string** arguments_arr = static_cast<miqt_string**>(arguments->data);
+	for(size_t i = 0; i < arguments->len; ++i) {
+		arguments_QList.push_back(QString::fromUtf8(& arguments_arr[i]->data, arguments_arr[i]->len));
 	}
 	self->start(program_QString, arguments_QList);
 }
 
-void QProcess_StartWithCommand(QProcess* self, const char* command, size_t command_Strlen) {
-	QString command_QString = QString::fromUtf8(command, command_Strlen);
+void QProcess_StartWithCommand(QProcess* self, struct miqt_string* command) {
+	QString command_QString = QString::fromUtf8(&command->data, command->len);
 	self->start(command_QString);
 }
 
@@ -189,49 +176,47 @@ bool QProcess_Open(QProcess* self) {
 	return self->open();
 }
 
-void QProcess_Program(const QProcess* self, char** _out, int* _out_Strlen) {
-	QString ret = self->program();
+struct miqt_string* QProcess_Program(const QProcess* self) {
+	QString _ret = self->program();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QProcess_SetProgram(QProcess* self, const char* program, size_t program_Strlen) {
-	QString program_QString = QString::fromUtf8(program, program_Strlen);
+void QProcess_SetProgram(QProcess* self, struct miqt_string* program) {
+	QString program_QString = QString::fromUtf8(&program->data, program->len);
 	self->setProgram(program_QString);
 }
 
-void QProcess_Arguments(const QProcess* self, char*** _out, int** _out_Lengths, size_t* _out_len) {
-	QStringList ret = self->arguments();
+struct miqt_array* QProcess_Arguments(const QProcess* self) {
+	QStringList _ret = self->arguments();
 	// Convert QStringList from C++ memory to manually-managed C memory
-	char** __out = static_cast<char**>(malloc(sizeof(char*) * ret.length()));
-	int* __out_Lengths = static_cast<int*>(malloc(sizeof(int) * ret.length()));
-	for (size_t i = 0, e = ret.length(); i < e; ++i) {
+	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-		QByteArray b = ret[i].toUtf8();
-		__out[i] = static_cast<char*>(malloc(b.length()));
-		memcpy(__out[i], b.data(), b.length());
-		__out_Lengths[i] = b.length();
+		QByteArray _lv_b = _lv_ret.toUtf8();
+		_arr[i] = miqt_strdup(_lv_b.data(), _lv_b.length());
 	}
-	*_out = __out;
-	*_out_Lengths = __out_Lengths;
-	*_out_len = ret.length();
+	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
+	_out->len = _ret.length();
+	_out->data = static_cast<void*>(_arr);
+	return _out;
 }
 
-void QProcess_SetArguments(QProcess* self, char** arguments, uint64_t* arguments_Lengths, size_t arguments_len) {
+void QProcess_SetArguments(QProcess* self, struct miqt_array* /* of QString */ arguments) {
 	QList<QString> arguments_QList;
-	arguments_QList.reserve(arguments_len);
-	for(size_t i = 0; i < arguments_len; ++i) {
-		arguments_QList.push_back(QString::fromUtf8(arguments[i], arguments_Lengths[i]));
+	arguments_QList.reserve(arguments->len);
+	miqt_string** arguments_arr = static_cast<miqt_string**>(arguments->data);
+	for(size_t i = 0; i < arguments->len; ++i) {
+		arguments_QList.push_back(QString::fromUtf8(& arguments_arr[i]->data, arguments_arr[i]->len));
 	}
 	self->setArguments(arguments_QList);
 }
 
 uintptr_t QProcess_ReadChannelMode(const QProcess* self) {
-	QProcess::ProcessChannelMode ret = self->readChannelMode();
-	return static_cast<uintptr_t>(ret);
+	QProcess::ProcessChannelMode _ret = self->readChannelMode();
+	return static_cast<uintptr_t>(_ret);
 }
 
 void QProcess_SetReadChannelMode(QProcess* self, uintptr_t mode) {
@@ -239,8 +224,8 @@ void QProcess_SetReadChannelMode(QProcess* self, uintptr_t mode) {
 }
 
 uintptr_t QProcess_ProcessChannelMode(const QProcess* self) {
-	QProcess::ProcessChannelMode ret = self->processChannelMode();
-	return static_cast<uintptr_t>(ret);
+	QProcess::ProcessChannelMode _ret = self->processChannelMode();
+	return static_cast<uintptr_t>(_ret);
 }
 
 void QProcess_SetProcessChannelMode(QProcess* self, uintptr_t mode) {
@@ -248,8 +233,8 @@ void QProcess_SetProcessChannelMode(QProcess* self, uintptr_t mode) {
 }
 
 uintptr_t QProcess_InputChannelMode(const QProcess* self) {
-	QProcess::InputChannelMode ret = self->inputChannelMode();
-	return static_cast<uintptr_t>(ret);
+	QProcess::InputChannelMode _ret = self->inputChannelMode();
+	return static_cast<uintptr_t>(_ret);
 }
 
 void QProcess_SetInputChannelMode(QProcess* self, uintptr_t mode) {
@@ -257,8 +242,8 @@ void QProcess_SetInputChannelMode(QProcess* self, uintptr_t mode) {
 }
 
 uintptr_t QProcess_ReadChannel(const QProcess* self) {
-	QProcess::ProcessChannel ret = self->readChannel();
-	return static_cast<uintptr_t>(ret);
+	QProcess::ProcessChannel _ret = self->readChannel();
+	return static_cast<uintptr_t>(_ret);
 }
 
 void QProcess_SetReadChannel(QProcess* self, uintptr_t channel) {
@@ -273,18 +258,18 @@ void QProcess_CloseWriteChannel(QProcess* self) {
 	self->closeWriteChannel();
 }
 
-void QProcess_SetStandardInputFile(QProcess* self, const char* fileName, size_t fileName_Strlen) {
-	QString fileName_QString = QString::fromUtf8(fileName, fileName_Strlen);
+void QProcess_SetStandardInputFile(QProcess* self, struct miqt_string* fileName) {
+	QString fileName_QString = QString::fromUtf8(&fileName->data, fileName->len);
 	self->setStandardInputFile(fileName_QString);
 }
 
-void QProcess_SetStandardOutputFile(QProcess* self, const char* fileName, size_t fileName_Strlen) {
-	QString fileName_QString = QString::fromUtf8(fileName, fileName_Strlen);
+void QProcess_SetStandardOutputFile(QProcess* self, struct miqt_string* fileName) {
+	QString fileName_QString = QString::fromUtf8(&fileName->data, fileName->len);
 	self->setStandardOutputFile(fileName_QString);
 }
 
-void QProcess_SetStandardErrorFile(QProcess* self, const char* fileName, size_t fileName_Strlen) {
-	QString fileName_QString = QString::fromUtf8(fileName, fileName_Strlen);
+void QProcess_SetStandardErrorFile(QProcess* self, struct miqt_string* fileName) {
+	QString fileName_QString = QString::fromUtf8(&fileName->data, fileName->len);
 	self->setStandardErrorFile(fileName_QString);
 }
 
@@ -292,44 +277,42 @@ void QProcess_SetStandardOutputProcess(QProcess* self, QProcess* destination) {
 	self->setStandardOutputProcess(destination);
 }
 
-void QProcess_WorkingDirectory(const QProcess* self, char** _out, int* _out_Strlen) {
-	QString ret = self->workingDirectory();
+struct miqt_string* QProcess_WorkingDirectory(const QProcess* self) {
+	QString _ret = self->workingDirectory();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QProcess_SetWorkingDirectory(QProcess* self, const char* dir, size_t dir_Strlen) {
-	QString dir_QString = QString::fromUtf8(dir, dir_Strlen);
+void QProcess_SetWorkingDirectory(QProcess* self, struct miqt_string* dir) {
+	QString dir_QString = QString::fromUtf8(&dir->data, dir->len);
 	self->setWorkingDirectory(dir_QString);
 }
 
-void QProcess_SetEnvironment(QProcess* self, char** environment, uint64_t* environment_Lengths, size_t environment_len) {
+void QProcess_SetEnvironment(QProcess* self, struct miqt_array* /* of QString */ environment) {
 	QList<QString> environment_QList;
-	environment_QList.reserve(environment_len);
-	for(size_t i = 0; i < environment_len; ++i) {
-		environment_QList.push_back(QString::fromUtf8(environment[i], environment_Lengths[i]));
+	environment_QList.reserve(environment->len);
+	miqt_string** environment_arr = static_cast<miqt_string**>(environment->data);
+	for(size_t i = 0; i < environment->len; ++i) {
+		environment_QList.push_back(QString::fromUtf8(& environment_arr[i]->data, environment_arr[i]->len));
 	}
 	self->setEnvironment(environment_QList);
 }
 
-void QProcess_Environment(const QProcess* self, char*** _out, int** _out_Lengths, size_t* _out_len) {
-	QStringList ret = self->environment();
+struct miqt_array* QProcess_Environment(const QProcess* self) {
+	QStringList _ret = self->environment();
 	// Convert QStringList from C++ memory to manually-managed C memory
-	char** __out = static_cast<char**>(malloc(sizeof(char*) * ret.length()));
-	int* __out_Lengths = static_cast<int*>(malloc(sizeof(int) * ret.length()));
-	for (size_t i = 0, e = ret.length(); i < e; ++i) {
+	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-		QByteArray b = ret[i].toUtf8();
-		__out[i] = static_cast<char*>(malloc(b.length()));
-		memcpy(__out[i], b.data(), b.length());
-		__out_Lengths[i] = b.length();
+		QByteArray _lv_b = _lv_ret.toUtf8();
+		_arr[i] = miqt_strdup(_lv_b.data(), _lv_b.length());
 	}
-	*_out = __out;
-	*_out_Lengths = __out_Lengths;
-	*_out_len = ret.length();
+	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
+	_out->len = _ret.length();
+	_out->data = static_cast<void*>(_arr);
+	return _out;
 }
 
 void QProcess_SetProcessEnvironment(QProcess* self, QProcessEnvironment* environment) {
@@ -337,19 +320,19 @@ void QProcess_SetProcessEnvironment(QProcess* self, QProcessEnvironment* environ
 }
 
 QProcessEnvironment* QProcess_ProcessEnvironment(const QProcess* self) {
-	QProcessEnvironment ret = self->processEnvironment();
+	QProcessEnvironment _ret = self->processEnvironment();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QProcessEnvironment*>(new QProcessEnvironment(ret));
+	return static_cast<QProcessEnvironment*>(new QProcessEnvironment(_ret));
 }
 
 uintptr_t QProcess_Error(const QProcess* self) {
-	QProcess::ProcessError ret = self->error();
-	return static_cast<uintptr_t>(ret);
+	QProcess::ProcessError _ret = self->error();
+	return static_cast<uintptr_t>(_ret);
 }
 
 uintptr_t QProcess_State(const QProcess* self) {
-	QProcess::ProcessState ret = self->state();
-	return static_cast<uintptr_t>(ret);
+	QProcess::ProcessState _ret = self->state();
+	return static_cast<uintptr_t>(_ret);
 }
 
 int64_t QProcess_Pid(const QProcess* self) {
@@ -382,15 +365,15 @@ bool QProcess_WaitForFinished(QProcess* self) {
 }
 
 QByteArray* QProcess_ReadAllStandardOutput(QProcess* self) {
-	QByteArray ret = self->readAllStandardOutput();
+	QByteArray _ret = self->readAllStandardOutput();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(ret));
+	return static_cast<QByteArray*>(new QByteArray(_ret));
 }
 
 QByteArray* QProcess_ReadAllStandardError(QProcess* self) {
-	QByteArray ret = self->readAllStandardError();
+	QByteArray _ret = self->readAllStandardError();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(ret));
+	return static_cast<QByteArray*>(new QByteArray(_ret));
 }
 
 int QProcess_ExitCode(const QProcess* self) {
@@ -398,8 +381,8 @@ int QProcess_ExitCode(const QProcess* self) {
 }
 
 uintptr_t QProcess_ExitStatus(const QProcess* self) {
-	QProcess::ExitStatus ret = self->exitStatus();
-	return static_cast<uintptr_t>(ret);
+	QProcess::ExitStatus _ret = self->exitStatus();
+	return static_cast<uintptr_t>(_ret);
 }
 
 long long QProcess_BytesAvailable(const QProcess* self) {
@@ -426,71 +409,71 @@ bool QProcess_AtEnd(const QProcess* self) {
 	return self->atEnd();
 }
 
-int QProcess_Execute(const char* program, size_t program_Strlen, char** arguments, uint64_t* arguments_Lengths, size_t arguments_len) {
-	QString program_QString = QString::fromUtf8(program, program_Strlen);
+int QProcess_Execute(struct miqt_string* program, struct miqt_array* /* of QString */ arguments) {
+	QString program_QString = QString::fromUtf8(&program->data, program->len);
 	QList<QString> arguments_QList;
-	arguments_QList.reserve(arguments_len);
-	for(size_t i = 0; i < arguments_len; ++i) {
-		arguments_QList.push_back(QString::fromUtf8(arguments[i], arguments_Lengths[i]));
+	arguments_QList.reserve(arguments->len);
+	miqt_string** arguments_arr = static_cast<miqt_string**>(arguments->data);
+	for(size_t i = 0; i < arguments->len; ++i) {
+		arguments_QList.push_back(QString::fromUtf8(& arguments_arr[i]->data, arguments_arr[i]->len));
 	}
 	return QProcess::execute(program_QString, arguments_QList);
 }
 
-int QProcess_ExecuteWithCommand(const char* command, size_t command_Strlen) {
-	QString command_QString = QString::fromUtf8(command, command_Strlen);
+int QProcess_ExecuteWithCommand(struct miqt_string* command) {
+	QString command_QString = QString::fromUtf8(&command->data, command->len);
 	return QProcess::execute(command_QString);
 }
 
-bool QProcess_StartDetached2(const char* program, size_t program_Strlen, char** arguments, uint64_t* arguments_Lengths, size_t arguments_len, const char* workingDirectory, size_t workingDirectory_Strlen) {
-	QString program_QString = QString::fromUtf8(program, program_Strlen);
+bool QProcess_StartDetached2(struct miqt_string* program, struct miqt_array* /* of QString */ arguments, struct miqt_string* workingDirectory) {
+	QString program_QString = QString::fromUtf8(&program->data, program->len);
 	QList<QString> arguments_QList;
-	arguments_QList.reserve(arguments_len);
-	for(size_t i = 0; i < arguments_len; ++i) {
-		arguments_QList.push_back(QString::fromUtf8(arguments[i], arguments_Lengths[i]));
+	arguments_QList.reserve(arguments->len);
+	miqt_string** arguments_arr = static_cast<miqt_string**>(arguments->data);
+	for(size_t i = 0; i < arguments->len; ++i) {
+		arguments_QList.push_back(QString::fromUtf8(& arguments_arr[i]->data, arguments_arr[i]->len));
 	}
-	QString workingDirectory_QString = QString::fromUtf8(workingDirectory, workingDirectory_Strlen);
+	QString workingDirectory_QString = QString::fromUtf8(&workingDirectory->data, workingDirectory->len);
 	return QProcess::startDetached(program_QString, arguments_QList, workingDirectory_QString);
 }
 
-bool QProcess_StartDetached3(const char* program, size_t program_Strlen, char** arguments, uint64_t* arguments_Lengths, size_t arguments_len) {
-	QString program_QString = QString::fromUtf8(program, program_Strlen);
+bool QProcess_StartDetached3(struct miqt_string* program, struct miqt_array* /* of QString */ arguments) {
+	QString program_QString = QString::fromUtf8(&program->data, program->len);
 	QList<QString> arguments_QList;
-	arguments_QList.reserve(arguments_len);
-	for(size_t i = 0; i < arguments_len; ++i) {
-		arguments_QList.push_back(QString::fromUtf8(arguments[i], arguments_Lengths[i]));
+	arguments_QList.reserve(arguments->len);
+	miqt_string** arguments_arr = static_cast<miqt_string**>(arguments->data);
+	for(size_t i = 0; i < arguments->len; ++i) {
+		arguments_QList.push_back(QString::fromUtf8(& arguments_arr[i]->data, arguments_arr[i]->len));
 	}
 	return QProcess::startDetached(program_QString, arguments_QList);
 }
 
-bool QProcess_StartDetachedWithCommand(const char* command, size_t command_Strlen) {
-	QString command_QString = QString::fromUtf8(command, command_Strlen);
+bool QProcess_StartDetachedWithCommand(struct miqt_string* command) {
+	QString command_QString = QString::fromUtf8(&command->data, command->len);
 	return QProcess::startDetached(command_QString);
 }
 
-void QProcess_SystemEnvironment(char*** _out, int** _out_Lengths, size_t* _out_len) {
-	QStringList ret = QProcess::systemEnvironment();
+struct miqt_array* QProcess_SystemEnvironment() {
+	QStringList _ret = QProcess::systemEnvironment();
 	// Convert QStringList from C++ memory to manually-managed C memory
-	char** __out = static_cast<char**>(malloc(sizeof(char*) * ret.length()));
-	int* __out_Lengths = static_cast<int*>(malloc(sizeof(int) * ret.length()));
-	for (size_t i = 0, e = ret.length(); i < e; ++i) {
+	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-		QByteArray b = ret[i].toUtf8();
-		__out[i] = static_cast<char*>(malloc(b.length()));
-		memcpy(__out[i], b.data(), b.length());
-		__out_Lengths[i] = b.length();
+		QByteArray _lv_b = _lv_ret.toUtf8();
+		_arr[i] = miqt_strdup(_lv_b.data(), _lv_b.length());
 	}
-	*_out = __out;
-	*_out_Lengths = __out_Lengths;
-	*_out_len = ret.length();
+	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
+	_out->len = _ret.length();
+	_out->data = static_cast<void*>(_arr);
+	return _out;
 }
 
-void QProcess_NullDevice(char** _out, int* _out_Strlen) {
-	QString ret = QProcess::nullDevice();
+struct miqt_string* QProcess_NullDevice() {
+	QString _ret = QProcess::nullDevice();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QProcess_Terminate(QProcess* self) {
@@ -507,7 +490,8 @@ void QProcess_Finished(QProcess* self, int exitCode) {
 
 void QProcess_connect_Finished(QProcess* self, void* slot) {
 	QProcess::connect(self, static_cast<void (QProcess::*)(int)>(&QProcess::finished), self, [=](int exitCode) {
-		miqt_exec_callback(slot, 0, nullptr);
+		int sigval1 = exitCode;
+		miqt_exec_callback_QProcess_Finished(slot, sigval1);
 	});
 }
 
@@ -517,7 +501,10 @@ void QProcess_Finished2(QProcess* self, int exitCode, uintptr_t exitStatus) {
 
 void QProcess_connect_Finished2(QProcess* self, void* slot) {
 	QProcess::connect(self, static_cast<void (QProcess::*)(int, QProcess::ExitStatus)>(&QProcess::finished), self, [=](int exitCode, QProcess::ExitStatus exitStatus) {
-		miqt_exec_callback(slot, 0, nullptr);
+		int sigval1 = exitCode;
+		QProcess::ExitStatus exitStatus_ret = exitStatus;
+		uintptr_t sigval2 = static_cast<uintptr_t>(exitStatus_ret);
+		miqt_exec_callback_QProcess_Finished2(slot, sigval1, sigval2);
 	});
 }
 
@@ -527,7 +514,9 @@ void QProcess_ErrorWithError(QProcess* self, uintptr_t error) {
 
 void QProcess_connect_ErrorWithError(QProcess* self, void* slot) {
 	QProcess::connect(self, static_cast<void (QProcess::*)(QProcess::ProcessError)>(&QProcess::error), self, [=](QProcess::ProcessError error) {
-		miqt_exec_callback(slot, 0, nullptr);
+		QProcess::ProcessError error_ret = error;
+		uintptr_t sigval1 = static_cast<uintptr_t>(error_ret);
+		miqt_exec_callback_QProcess_ErrorWithError(slot, sigval1);
 	});
 }
 
@@ -537,58 +526,53 @@ void QProcess_ErrorOccurred(QProcess* self, uintptr_t error) {
 
 void QProcess_connect_ErrorOccurred(QProcess* self, void* slot) {
 	QProcess::connect(self, static_cast<void (QProcess::*)(QProcess::ProcessError)>(&QProcess::errorOccurred), self, [=](QProcess::ProcessError error) {
-		miqt_exec_callback(slot, 0, nullptr);
+		QProcess::ProcessError error_ret = error;
+		uintptr_t sigval1 = static_cast<uintptr_t>(error_ret);
+		miqt_exec_callback_QProcess_ErrorOccurred(slot, sigval1);
 	});
 }
 
-void QProcess_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QProcess::tr(s, c);
+struct miqt_string* QProcess_Tr2(const char* s, const char* c) {
+	QString _ret = QProcess::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QProcess_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QProcess::tr(s, c, static_cast<int>(n));
+struct miqt_string* QProcess_Tr3(const char* s, const char* c, int n) {
+	QString _ret = QProcess::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QProcess_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QProcess::trUtf8(s, c);
+struct miqt_string* QProcess_TrUtf82(const char* s, const char* c) {
+	QString _ret = QProcess::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QProcess_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QProcess::trUtf8(s, c, static_cast<int>(n));
+struct miqt_string* QProcess_TrUtf83(const char* s, const char* c, int n) {
+	QString _ret = QProcess::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QProcess_Start3(QProcess* self, const char* program, size_t program_Strlen, char** arguments, uint64_t* arguments_Lengths, size_t arguments_len, int mode) {
-	QString program_QString = QString::fromUtf8(program, program_Strlen);
+void QProcess_Start3(QProcess* self, struct miqt_string* program, struct miqt_array* /* of QString */ arguments, int mode) {
+	QString program_QString = QString::fromUtf8(&program->data, program->len);
 	QList<QString> arguments_QList;
-	arguments_QList.reserve(arguments_len);
-	for(size_t i = 0; i < arguments_len; ++i) {
-		arguments_QList.push_back(QString::fromUtf8(arguments[i], arguments_Lengths[i]));
+	arguments_QList.reserve(arguments->len);
+	miqt_string** arguments_arr = static_cast<miqt_string**>(arguments->data);
+	for(size_t i = 0; i < arguments->len; ++i) {
+		arguments_QList.push_back(QString::fromUtf8(& arguments_arr[i]->data, arguments_arr[i]->len));
 	}
 	self->start(program_QString, arguments_QList, static_cast<QIODevice::OpenMode>(mode));
 }
 
-void QProcess_Start22(QProcess* self, const char* command, size_t command_Strlen, int mode) {
-	QString command_QString = QString::fromUtf8(command, command_Strlen);
+void QProcess_Start22(QProcess* self, struct miqt_string* command, int mode) {
+	QString command_QString = QString::fromUtf8(&command->data, command->len);
 	self->start(command_QString, static_cast<QIODevice::OpenMode>(mode));
 }
 
@@ -604,13 +588,13 @@ bool QProcess_Open1(QProcess* self, int mode) {
 	return self->open(static_cast<QIODevice::OpenMode>(mode));
 }
 
-void QProcess_SetStandardOutputFile2(QProcess* self, const char* fileName, size_t fileName_Strlen, int mode) {
-	QString fileName_QString = QString::fromUtf8(fileName, fileName_Strlen);
+void QProcess_SetStandardOutputFile2(QProcess* self, struct miqt_string* fileName, int mode) {
+	QString fileName_QString = QString::fromUtf8(&fileName->data, fileName->len);
 	self->setStandardOutputFile(fileName_QString, static_cast<QIODevice::OpenMode>(mode));
 }
 
-void QProcess_SetStandardErrorFile2(QProcess* self, const char* fileName, size_t fileName_Strlen, int mode) {
-	QString fileName_QString = QString::fromUtf8(fileName, fileName_Strlen);
+void QProcess_SetStandardErrorFile2(QProcess* self, struct miqt_string* fileName, int mode) {
+	QString fileName_QString = QString::fromUtf8(&fileName->data, fileName->len);
 	self->setStandardErrorFile(fileName_QString, static_cast<QIODevice::OpenMode>(mode));
 }
 
@@ -630,14 +614,15 @@ bool QProcess_WaitForFinished1(QProcess* self, int msecs) {
 	return self->waitForFinished(static_cast<int>(msecs));
 }
 
-bool QProcess_StartDetached4(const char* program, size_t program_Strlen, char** arguments, uint64_t* arguments_Lengths, size_t arguments_len, const char* workingDirectory, size_t workingDirectory_Strlen, long long* pid) {
-	QString program_QString = QString::fromUtf8(program, program_Strlen);
+bool QProcess_StartDetached4(struct miqt_string* program, struct miqt_array* /* of QString */ arguments, struct miqt_string* workingDirectory, long long* pid) {
+	QString program_QString = QString::fromUtf8(&program->data, program->len);
 	QList<QString> arguments_QList;
-	arguments_QList.reserve(arguments_len);
-	for(size_t i = 0; i < arguments_len; ++i) {
-		arguments_QList.push_back(QString::fromUtf8(arguments[i], arguments_Lengths[i]));
+	arguments_QList.reserve(arguments->len);
+	miqt_string** arguments_arr = static_cast<miqt_string**>(arguments->data);
+	for(size_t i = 0; i < arguments->len; ++i) {
+		arguments_QList.push_back(QString::fromUtf8(& arguments_arr[i]->data, arguments_arr[i]->len));
 	}
-	QString workingDirectory_QString = QString::fromUtf8(workingDirectory, workingDirectory_Strlen);
+	QString workingDirectory_QString = QString::fromUtf8(&workingDirectory->data, workingDirectory->len);
 	return QProcess::startDetached(program_QString, arguments_QList, workingDirectory_QString, static_cast<qint64*>(pid));
 }
 

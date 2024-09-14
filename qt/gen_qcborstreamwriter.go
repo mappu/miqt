@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"runtime"
 	"unsafe"
 )
 
@@ -51,8 +52,8 @@ func (this *QCborStreamWriter) SetDevice(device *QIODevice) {
 }
 
 func (this *QCborStreamWriter) Device() *QIODevice {
-	ret := C.QCborStreamWriter_Device(this.h)
-	return newQIODevice_U(unsafe.Pointer(ret))
+	_ret := C.QCborStreamWriter_Device(this.h)
+	return newQIODevice_U(unsafe.Pointer(_ret))
 }
 
 func (this *QCborStreamWriter) Append(u uint64) {
@@ -122,8 +123,8 @@ func (this *QCborStreamWriter) StartArrayWithCount(count uint64) {
 }
 
 func (this *QCborStreamWriter) EndArray() bool {
-	ret := C.QCborStreamWriter_EndArray(this.h)
-	return (bool)(ret)
+	_ret := C.QCborStreamWriter_EndArray(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QCborStreamWriter) StartMap() {
@@ -135,8 +136,8 @@ func (this *QCborStreamWriter) StartMapWithCount(count uint64) {
 }
 
 func (this *QCborStreamWriter) EndMap() bool {
-	ret := C.QCborStreamWriter_EndMap(this.h)
-	return (bool)(ret)
+	_ret := C.QCborStreamWriter_EndMap(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QCborStreamWriter) Append22(str string, size uint64) {
@@ -145,6 +146,16 @@ func (this *QCborStreamWriter) Append22(str string, size uint64) {
 	C.QCborStreamWriter_Append22(this.h, str_Cstring, (C.size_t)(size))
 }
 
+// Delete this object from C++ memory.
 func (this *QCborStreamWriter) Delete() {
 	C.QCborStreamWriter_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QCborStreamWriter) GoGC() {
+	runtime.SetFinalizer(this, func(this *QCborStreamWriter) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

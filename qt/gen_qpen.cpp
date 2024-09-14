@@ -3,12 +3,8 @@
 #include <QList>
 #include <QPen>
 #include "qpen.h"
-
 #include "gen_qpen.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QPen* QPen_new() {
 	return new QPen();
@@ -51,30 +47,33 @@ void QPen_Swap(QPen* self, QPen* other) {
 }
 
 uintptr_t QPen_Style(const QPen* self) {
-	Qt::PenStyle ret = self->style();
-	return static_cast<uintptr_t>(ret);
+	Qt::PenStyle _ret = self->style();
+	return static_cast<uintptr_t>(_ret);
 }
 
 void QPen_SetStyle(QPen* self, uintptr_t style) {
 	self->setStyle(static_cast<Qt::PenStyle>(style));
 }
 
-void QPen_DashPattern(const QPen* self, double** _out, size_t* _out_len) {
-	QVector<double> ret = self->dashPattern();
+struct miqt_array* QPen_DashPattern(const QPen* self) {
+	QVector<double> _ret = self->dashPattern();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	double* __out = static_cast<double*>(malloc(sizeof(double) * ret.length()));
-	for (size_t i = 0, e = ret.length(); i < e; ++i) {
-		__out[i] = ret[i];
+	double* _arr = static_cast<double*>(malloc(sizeof(double) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		_arr[i] = _ret[i];
 	}
-	*_out = __out;
-	*_out_len = ret.length();
+	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
+	_out->len = _ret.length();
+	_out->data = static_cast<void*>(_arr);
+	return _out;
 }
 
-void QPen_SetDashPattern(QPen* self, double* pattern, size_t pattern_len) {
+void QPen_SetDashPattern(QPen* self, struct miqt_array* /* of double */ pattern) {
 	QVector<double> pattern_QList;
-	pattern_QList.reserve(pattern_len);
-	for(size_t i = 0; i < pattern_len; ++i) {
-		pattern_QList.push_back(pattern[i]);
+	pattern_QList.reserve(pattern->len);
+	double* pattern_arr = static_cast<double*>(pattern->data);
+	for(size_t i = 0; i < pattern->len; ++i) {
+		pattern_QList.push_back(pattern_arr[i]);
 	}
 	self->setDashPattern(pattern_QList);
 }
@@ -112,9 +111,9 @@ void QPen_SetWidth(QPen* self, int width) {
 }
 
 QColor* QPen_Color(const QPen* self) {
-	QColor ret = self->color();
+	QColor _ret = self->color();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QColor*>(new QColor(ret));
+	return static_cast<QColor*>(new QColor(_ret));
 }
 
 void QPen_SetColor(QPen* self, QColor* color) {
@@ -122,9 +121,9 @@ void QPen_SetColor(QPen* self, QColor* color) {
 }
 
 QBrush* QPen_Brush(const QPen* self) {
-	QBrush ret = self->brush();
+	QBrush _ret = self->brush();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QBrush*>(new QBrush(ret));
+	return static_cast<QBrush*>(new QBrush(_ret));
 }
 
 void QPen_SetBrush(QPen* self, QBrush* brush) {
@@ -136,8 +135,8 @@ bool QPen_IsSolid(const QPen* self) {
 }
 
 uintptr_t QPen_CapStyle(const QPen* self) {
-	Qt::PenCapStyle ret = self->capStyle();
-	return static_cast<uintptr_t>(ret);
+	Qt::PenCapStyle _ret = self->capStyle();
+	return static_cast<uintptr_t>(_ret);
 }
 
 void QPen_SetCapStyle(QPen* self, uintptr_t pcs) {
@@ -145,8 +144,8 @@ void QPen_SetCapStyle(QPen* self, uintptr_t pcs) {
 }
 
 uintptr_t QPen_JoinStyle(const QPen* self) {
-	Qt::PenJoinStyle ret = self->joinStyle();
-	return static_cast<uintptr_t>(ret);
+	Qt::PenJoinStyle _ret = self->joinStyle();
+	return static_cast<uintptr_t>(_ret);
 }
 
 void QPen_SetJoinStyle(QPen* self, uintptr_t pcs) {

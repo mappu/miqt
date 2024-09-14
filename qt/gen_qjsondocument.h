@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -29,7 +31,7 @@ typedef struct QJsonValue QJsonValue;
 typedef struct QVariant QVariant;
 #endif
 
-void QJsonParseError_ErrorString(const QJsonParseError* self, char** _out, int* _out_Strlen);
+struct miqt_string* QJsonParseError_ErrorString(const QJsonParseError* self);
 void QJsonParseError_Delete(QJsonParseError* self);
 
 QJsonDocument* QJsonDocument_new();
@@ -54,7 +56,7 @@ QJsonObject* QJsonDocument_Object(const QJsonDocument* self);
 QJsonArray* QJsonDocument_Array(const QJsonDocument* self);
 void QJsonDocument_SetObject(QJsonDocument* self, QJsonObject* object);
 void QJsonDocument_SetArray(QJsonDocument* self, QJsonArray* array);
-QJsonValue* QJsonDocument_OperatorSubscript(const QJsonDocument* self, const char* key, size_t key_Strlen);
+QJsonValue* QJsonDocument_OperatorSubscript(const QJsonDocument* self, struct miqt_string* key);
 QJsonValue* QJsonDocument_OperatorSubscriptWithInt(const QJsonDocument* self, int i);
 bool QJsonDocument_OperatorEqual(const QJsonDocument* self, QJsonDocument* other);
 bool QJsonDocument_OperatorNotEqual(const QJsonDocument* self, QJsonDocument* other);

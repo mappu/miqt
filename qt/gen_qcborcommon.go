@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"runtime"
 	"unsafe"
 )
 
@@ -92,14 +93,22 @@ func newQCborError_U(h unsafe.Pointer) *QCborError {
 }
 
 func (this *QCborError) ToString() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QCborError_ToString(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QCborError_ToString(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
+// Delete this object from C++ memory.
 func (this *QCborError) Delete() {
 	C.QCborError_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QCborError) GoGC() {
+	runtime.SetFinalizer(this, func(this *QCborError) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

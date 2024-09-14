@@ -79,9 +79,9 @@ func NewQJsonValue5(v int64) *QJsonValue {
 
 // NewQJsonValue6 constructs a new QJsonValue object.
 func NewQJsonValue6(s string) *QJsonValue {
-	s_Cstring := C.CString(s)
-	defer C.free(unsafe.Pointer(s_Cstring))
-	ret := C.QJsonValue_new6(s_Cstring, C.size_t(len(s)))
+	s_ms := miqt_strdupg(s)
+	defer C.free(s_ms)
+	ret := C.QJsonValue_new6((*C.struct_miqt_string)(s_ms))
 	return newQJsonValue(ret)
 }
 
@@ -126,197 +126,171 @@ func (this *QJsonValue) Swap(other *QJsonValue) {
 }
 
 func QJsonValue_FromVariant(variant *QVariant) *QJsonValue {
-	ret := C.QJsonValue_FromVariant(variant.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQJsonValue(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QJsonValue) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QJsonValue_FromVariant(variant.cPointer())
+	_goptr := newQJsonValue(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QJsonValue) ToVariant() *QVariant {
-	ret := C.QJsonValue_ToVariant(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQVariant(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QVariant) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QJsonValue_ToVariant(this.h)
+	_goptr := newQVariant(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QJsonValue) Type() QJsonValue__Type {
-	ret := C.QJsonValue_Type(this.h)
-	return (QJsonValue__Type)(ret)
+	_ret := C.QJsonValue_Type(this.h)
+	return (QJsonValue__Type)(_ret)
 }
 
 func (this *QJsonValue) IsNull() bool {
-	ret := C.QJsonValue_IsNull(this.h)
-	return (bool)(ret)
+	_ret := C.QJsonValue_IsNull(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QJsonValue) IsBool() bool {
-	ret := C.QJsonValue_IsBool(this.h)
-	return (bool)(ret)
+	_ret := C.QJsonValue_IsBool(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QJsonValue) IsDouble() bool {
-	ret := C.QJsonValue_IsDouble(this.h)
-	return (bool)(ret)
+	_ret := C.QJsonValue_IsDouble(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QJsonValue) IsString() bool {
-	ret := C.QJsonValue_IsString(this.h)
-	return (bool)(ret)
+	_ret := C.QJsonValue_IsString(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QJsonValue) IsArray() bool {
-	ret := C.QJsonValue_IsArray(this.h)
-	return (bool)(ret)
+	_ret := C.QJsonValue_IsArray(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QJsonValue) IsObject() bool {
-	ret := C.QJsonValue_IsObject(this.h)
-	return (bool)(ret)
+	_ret := C.QJsonValue_IsObject(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QJsonValue) IsUndefined() bool {
-	ret := C.QJsonValue_IsUndefined(this.h)
-	return (bool)(ret)
+	_ret := C.QJsonValue_IsUndefined(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QJsonValue) ToBool() bool {
-	ret := C.QJsonValue_ToBool(this.h)
-	return (bool)(ret)
+	_ret := C.QJsonValue_ToBool(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QJsonValue) ToInt() int {
-	ret := C.QJsonValue_ToInt(this.h)
-	return (int)(ret)
+	_ret := C.QJsonValue_ToInt(this.h)
+	return (int)(_ret)
 }
 
 func (this *QJsonValue) ToDouble() float64 {
-	ret := C.QJsonValue_ToDouble(this.h)
-	return (float64)(ret)
+	_ret := C.QJsonValue_ToDouble(this.h)
+	return (float64)(_ret)
 }
 
 func (this *QJsonValue) ToString() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QJsonValue_ToString(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QJsonValue_ToString(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QJsonValue) ToStringWithDefaultValue(defaultValue string) string {
-	defaultValue_Cstring := C.CString(defaultValue)
-	defer C.free(unsafe.Pointer(defaultValue_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QJsonValue_ToStringWithDefaultValue(this.h, defaultValue_Cstring, C.size_t(len(defaultValue)), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	defaultValue_ms := miqt_strdupg(defaultValue)
+	defer C.free(defaultValue_ms)
+	var _ms *C.struct_miqt_string = C.QJsonValue_ToStringWithDefaultValue(this.h, (*C.struct_miqt_string)(defaultValue_ms))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QJsonValue) ToArray() *QJsonArray {
-	ret := C.QJsonValue_ToArray(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQJsonArray(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QJsonArray) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QJsonValue_ToArray(this.h)
+	_goptr := newQJsonArray(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QJsonValue) ToArrayWithDefaultValue(defaultValue *QJsonArray) *QJsonArray {
-	ret := C.QJsonValue_ToArrayWithDefaultValue(this.h, defaultValue.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQJsonArray(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QJsonArray) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QJsonValue_ToArrayWithDefaultValue(this.h, defaultValue.cPointer())
+	_goptr := newQJsonArray(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QJsonValue) ToObject() *QJsonObject {
-	ret := C.QJsonValue_ToObject(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQJsonObject(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QJsonObject) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QJsonValue_ToObject(this.h)
+	_goptr := newQJsonObject(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QJsonValue) ToObjectWithDefaultValue(defaultValue *QJsonObject) *QJsonObject {
-	ret := C.QJsonValue_ToObjectWithDefaultValue(this.h, defaultValue.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQJsonObject(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QJsonObject) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QJsonValue_ToObjectWithDefaultValue(this.h, defaultValue.cPointer())
+	_goptr := newQJsonObject(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QJsonValue) OperatorSubscript(key string) *QJsonValue {
-	key_Cstring := C.CString(key)
-	defer C.free(unsafe.Pointer(key_Cstring))
-	ret := C.QJsonValue_OperatorSubscript(this.h, key_Cstring, C.size_t(len(key)))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQJsonValue(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QJsonValue) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	key_ms := miqt_strdupg(key)
+	defer C.free(key_ms)
+	_ret := C.QJsonValue_OperatorSubscript(this.h, (*C.struct_miqt_string)(key_ms))
+	_goptr := newQJsonValue(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QJsonValue) OperatorSubscriptWithInt(i int) *QJsonValue {
-	ret := C.QJsonValue_OperatorSubscriptWithInt(this.h, (C.int)(i))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQJsonValue(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QJsonValue) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QJsonValue_OperatorSubscriptWithInt(this.h, (C.int)(i))
+	_goptr := newQJsonValue(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QJsonValue) OperatorEqual(other *QJsonValue) bool {
-	ret := C.QJsonValue_OperatorEqual(this.h, other.cPointer())
-	return (bool)(ret)
+	_ret := C.QJsonValue_OperatorEqual(this.h, other.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QJsonValue) OperatorNotEqual(other *QJsonValue) bool {
-	ret := C.QJsonValue_OperatorNotEqual(this.h, other.cPointer())
-	return (bool)(ret)
+	_ret := C.QJsonValue_OperatorNotEqual(this.h, other.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QJsonValue) ToBool1(defaultValue bool) bool {
-	ret := C.QJsonValue_ToBool1(this.h, (C.bool)(defaultValue))
-	return (bool)(ret)
+	_ret := C.QJsonValue_ToBool1(this.h, (C.bool)(defaultValue))
+	return (bool)(_ret)
 }
 
 func (this *QJsonValue) ToInt1(defaultValue int) int {
-	ret := C.QJsonValue_ToInt1(this.h, (C.int)(defaultValue))
-	return (int)(ret)
+	_ret := C.QJsonValue_ToInt1(this.h, (C.int)(defaultValue))
+	return (int)(_ret)
 }
 
 func (this *QJsonValue) ToDouble1(defaultValue float64) float64 {
-	ret := C.QJsonValue_ToDouble1(this.h, (C.double)(defaultValue))
-	return (float64)(ret)
+	_ret := C.QJsonValue_ToDouble1(this.h, (C.double)(defaultValue))
+	return (float64)(_ret)
 }
 
+// Delete this object from C++ memory.
 func (this *QJsonValue) Delete() {
 	C.QJsonValue_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QJsonValue) GoGC() {
+	runtime.SetFinalizer(this, func(this *QJsonValue) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
 
 type QJsonValueRef struct {
@@ -368,140 +342,134 @@ func (this *QJsonValueRef) OperatorAssignWithVal(val *QJsonValueRef) {
 }
 
 func (this *QJsonValueRef) ToVariant() *QVariant {
-	ret := C.QJsonValueRef_ToVariant(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQVariant(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QVariant) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QJsonValueRef_ToVariant(this.h)
+	_goptr := newQVariant(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QJsonValueRef) Type() QJsonValue__Type {
-	ret := C.QJsonValueRef_Type(this.h)
-	return (QJsonValue__Type)(ret)
+	_ret := C.QJsonValueRef_Type(this.h)
+	return (QJsonValue__Type)(_ret)
 }
 
 func (this *QJsonValueRef) IsNull() bool {
-	ret := C.QJsonValueRef_IsNull(this.h)
-	return (bool)(ret)
+	_ret := C.QJsonValueRef_IsNull(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QJsonValueRef) IsBool() bool {
-	ret := C.QJsonValueRef_IsBool(this.h)
-	return (bool)(ret)
+	_ret := C.QJsonValueRef_IsBool(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QJsonValueRef) IsDouble() bool {
-	ret := C.QJsonValueRef_IsDouble(this.h)
-	return (bool)(ret)
+	_ret := C.QJsonValueRef_IsDouble(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QJsonValueRef) IsString() bool {
-	ret := C.QJsonValueRef_IsString(this.h)
-	return (bool)(ret)
+	_ret := C.QJsonValueRef_IsString(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QJsonValueRef) IsArray() bool {
-	ret := C.QJsonValueRef_IsArray(this.h)
-	return (bool)(ret)
+	_ret := C.QJsonValueRef_IsArray(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QJsonValueRef) IsObject() bool {
-	ret := C.QJsonValueRef_IsObject(this.h)
-	return (bool)(ret)
+	_ret := C.QJsonValueRef_IsObject(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QJsonValueRef) IsUndefined() bool {
-	ret := C.QJsonValueRef_IsUndefined(this.h)
-	return (bool)(ret)
+	_ret := C.QJsonValueRef_IsUndefined(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QJsonValueRef) ToBool() bool {
-	ret := C.QJsonValueRef_ToBool(this.h)
-	return (bool)(ret)
+	_ret := C.QJsonValueRef_ToBool(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QJsonValueRef) ToInt() int {
-	ret := C.QJsonValueRef_ToInt(this.h)
-	return (int)(ret)
+	_ret := C.QJsonValueRef_ToInt(this.h)
+	return (int)(_ret)
 }
 
 func (this *QJsonValueRef) ToDouble() float64 {
-	ret := C.QJsonValueRef_ToDouble(this.h)
-	return (float64)(ret)
+	_ret := C.QJsonValueRef_ToDouble(this.h)
+	return (float64)(_ret)
 }
 
 func (this *QJsonValueRef) ToString() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QJsonValueRef_ToString(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QJsonValueRef_ToString(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QJsonValueRef) ToArray() *QJsonArray {
-	ret := C.QJsonValueRef_ToArray(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQJsonArray(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QJsonArray) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QJsonValueRef_ToArray(this.h)
+	_goptr := newQJsonArray(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QJsonValueRef) ToObject() *QJsonObject {
-	ret := C.QJsonValueRef_ToObject(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQJsonObject(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QJsonObject) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QJsonValueRef_ToObject(this.h)
+	_goptr := newQJsonObject(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QJsonValueRef) ToBoolWithDefaultValue(defaultValue bool) bool {
-	ret := C.QJsonValueRef_ToBoolWithDefaultValue(this.h, (C.bool)(defaultValue))
-	return (bool)(ret)
+	_ret := C.QJsonValueRef_ToBoolWithDefaultValue(this.h, (C.bool)(defaultValue))
+	return (bool)(_ret)
 }
 
 func (this *QJsonValueRef) ToIntWithDefaultValue(defaultValue int) int {
-	ret := C.QJsonValueRef_ToIntWithDefaultValue(this.h, (C.int)(defaultValue))
-	return (int)(ret)
+	_ret := C.QJsonValueRef_ToIntWithDefaultValue(this.h, (C.int)(defaultValue))
+	return (int)(_ret)
 }
 
 func (this *QJsonValueRef) ToDoubleWithDefaultValue(defaultValue float64) float64 {
-	ret := C.QJsonValueRef_ToDoubleWithDefaultValue(this.h, (C.double)(defaultValue))
-	return (float64)(ret)
+	_ret := C.QJsonValueRef_ToDoubleWithDefaultValue(this.h, (C.double)(defaultValue))
+	return (float64)(_ret)
 }
 
 func (this *QJsonValueRef) ToStringWithDefaultValue(defaultValue string) string {
-	defaultValue_Cstring := C.CString(defaultValue)
-	defer C.free(unsafe.Pointer(defaultValue_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QJsonValueRef_ToStringWithDefaultValue(this.h, defaultValue_Cstring, C.size_t(len(defaultValue)), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	defaultValue_ms := miqt_strdupg(defaultValue)
+	defer C.free(defaultValue_ms)
+	var _ms *C.struct_miqt_string = C.QJsonValueRef_ToStringWithDefaultValue(this.h, (*C.struct_miqt_string)(defaultValue_ms))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QJsonValueRef) OperatorEqual(other *QJsonValue) bool {
-	ret := C.QJsonValueRef_OperatorEqual(this.h, other.cPointer())
-	return (bool)(ret)
+	_ret := C.QJsonValueRef_OperatorEqual(this.h, other.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QJsonValueRef) OperatorNotEqual(other *QJsonValue) bool {
-	ret := C.QJsonValueRef_OperatorNotEqual(this.h, other.cPointer())
-	return (bool)(ret)
+	_ret := C.QJsonValueRef_OperatorNotEqual(this.h, other.cPointer())
+	return (bool)(_ret)
 }
 
+// Delete this object from C++ memory.
 func (this *QJsonValueRef) Delete() {
 	C.QJsonValueRef_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QJsonValueRef) GoGC() {
+	runtime.SetFinalizer(this, func(this *QJsonValueRef) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
 
 type QJsonValuePtr struct {
@@ -539,21 +507,31 @@ func NewQJsonValuePtr2(param1 *QJsonValuePtr) *QJsonValuePtr {
 }
 
 func (this *QJsonValuePtr) OperatorMultiply() *QJsonValue {
-	ret := C.QJsonValuePtr_OperatorMultiply(this.h)
-	return newQJsonValue_U(unsafe.Pointer(ret))
+	_ret := C.QJsonValuePtr_OperatorMultiply(this.h)
+	return newQJsonValue_U(unsafe.Pointer(_ret))
 }
 
 func (this *QJsonValuePtr) OperatorMinusGreater() *QJsonValue {
-	ret := C.QJsonValuePtr_OperatorMinusGreater(this.h)
-	return newQJsonValue_U(unsafe.Pointer(ret))
+	_ret := C.QJsonValuePtr_OperatorMinusGreater(this.h)
+	return newQJsonValue_U(unsafe.Pointer(_ret))
 }
 
 func (this *QJsonValuePtr) OperatorAssign(param1 *QJsonValuePtr) {
 	C.QJsonValuePtr_OperatorAssign(this.h, param1.cPointer())
 }
 
+// Delete this object from C++ memory.
 func (this *QJsonValuePtr) Delete() {
 	C.QJsonValuePtr_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QJsonValuePtr) GoGC() {
+	runtime.SetFinalizer(this, func(this *QJsonValuePtr) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
 
 type QJsonValueRefPtr struct {
@@ -597,19 +575,29 @@ func NewQJsonValueRefPtr3(param1 *QJsonValueRefPtr) *QJsonValueRefPtr {
 }
 
 func (this *QJsonValueRefPtr) OperatorMultiply() *QJsonValueRef {
-	ret := C.QJsonValueRefPtr_OperatorMultiply(this.h)
-	return newQJsonValueRef_U(unsafe.Pointer(ret))
+	_ret := C.QJsonValueRefPtr_OperatorMultiply(this.h)
+	return newQJsonValueRef_U(unsafe.Pointer(_ret))
 }
 
 func (this *QJsonValueRefPtr) OperatorMinusGreater() *QJsonValueRef {
-	ret := C.QJsonValueRefPtr_OperatorMinusGreater(this.h)
-	return newQJsonValueRef_U(unsafe.Pointer(ret))
+	_ret := C.QJsonValueRefPtr_OperatorMinusGreater(this.h)
+	return newQJsonValueRef_U(unsafe.Pointer(_ret))
 }
 
 func (this *QJsonValueRefPtr) OperatorAssign(param1 *QJsonValueRefPtr) {
 	C.QJsonValueRefPtr_OperatorAssign(this.h, param1.cPointer())
 }
 
+// Delete this object from C++ memory.
 func (this *QJsonValueRefPtr) Delete() {
 	C.QJsonValueRefPtr_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QJsonValueRefPtr) GoGC() {
+	runtime.SetFinalizer(this, func(this *QJsonValueRefPtr) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

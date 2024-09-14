@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -48,22 +50,22 @@ typedef struct QWidget QWidget;
 #endif
 
 QProxyStyle* QProxyStyle_new();
-QProxyStyle* QProxyStyle_new2(const char* key, size_t key_Strlen);
+QProxyStyle* QProxyStyle_new2(struct miqt_string* key);
 QProxyStyle* QProxyStyle_new3(QStyle* style);
 QMetaObject* QProxyStyle_MetaObject(const QProxyStyle* self);
-void QProxyStyle_Tr(const char* s, char** _out, int* _out_Strlen);
-void QProxyStyle_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QProxyStyle_Tr(const char* s);
+struct miqt_string* QProxyStyle_TrUtf8(const char* s);
 QStyle* QProxyStyle_BaseStyle(const QProxyStyle* self);
 void QProxyStyle_SetBaseStyle(QProxyStyle* self, QStyle* style);
 void QProxyStyle_DrawPrimitive(const QProxyStyle* self, uintptr_t element, QStyleOption* option, QPainter* painter);
 void QProxyStyle_DrawControl(const QProxyStyle* self, uintptr_t element, QStyleOption* option, QPainter* painter);
 void QProxyStyle_DrawComplexControl(const QProxyStyle* self, uintptr_t control, QStyleOptionComplex* option, QPainter* painter);
-void QProxyStyle_DrawItemText(const QProxyStyle* self, QPainter* painter, QRect* rect, int flags, QPalette* pal, bool enabled, const char* text, size_t text_Strlen);
+void QProxyStyle_DrawItemText(const QProxyStyle* self, QPainter* painter, QRect* rect, int flags, QPalette* pal, bool enabled, struct miqt_string* text);
 void QProxyStyle_DrawItemPixmap(const QProxyStyle* self, QPainter* painter, QRect* rect, int alignment, QPixmap* pixmap);
 QSize* QProxyStyle_SizeFromContents(const QProxyStyle* self, uintptr_t typeVal, QStyleOption* option, QSize* size, QWidget* widget);
 QRect* QProxyStyle_SubElementRect(const QProxyStyle* self, uintptr_t element, QStyleOption* option, QWidget* widget);
 QRect* QProxyStyle_SubControlRect(const QProxyStyle* self, uintptr_t cc, QStyleOptionComplex* opt, uintptr_t sc, QWidget* widget);
-QRect* QProxyStyle_ItemTextRect(const QProxyStyle* self, QFontMetrics* fm, QRect* r, int flags, bool enabled, const char* text, size_t text_Strlen);
+QRect* QProxyStyle_ItemTextRect(const QProxyStyle* self, QFontMetrics* fm, QRect* r, int flags, bool enabled, struct miqt_string* text);
 QRect* QProxyStyle_ItemPixmapRect(const QProxyStyle* self, QRect* r, int flags, QPixmap* pixmap);
 uintptr_t QProxyStyle_HitTestComplexControl(const QProxyStyle* self, uintptr_t control, QStyleOptionComplex* option, QPoint* pos);
 int QProxyStyle_StyleHint(const QProxyStyle* self, uintptr_t hint);
@@ -78,14 +80,14 @@ void QProxyStyle_PolishWithPal(QProxyStyle* self, QPalette* pal);
 void QProxyStyle_PolishWithApp(QProxyStyle* self, QApplication* app);
 void QProxyStyle_Unpolish(QProxyStyle* self, QWidget* widget);
 void QProxyStyle_UnpolishWithApp(QProxyStyle* self, QApplication* app);
-void QProxyStyle_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QProxyStyle_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QProxyStyle_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QProxyStyle_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QProxyStyle_Tr2(const char* s, const char* c);
+struct miqt_string* QProxyStyle_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QProxyStyle_TrUtf82(const char* s, const char* c);
+struct miqt_string* QProxyStyle_TrUtf83(const char* s, const char* c, int n);
 void QProxyStyle_DrawPrimitive4(const QProxyStyle* self, uintptr_t element, QStyleOption* option, QPainter* painter, QWidget* widget);
 void QProxyStyle_DrawControl4(const QProxyStyle* self, uintptr_t element, QStyleOption* option, QPainter* painter, QWidget* widget);
 void QProxyStyle_DrawComplexControl4(const QProxyStyle* self, uintptr_t control, QStyleOptionComplex* option, QPainter* painter, QWidget* widget);
-void QProxyStyle_DrawItemText7(const QProxyStyle* self, QPainter* painter, QRect* rect, int flags, QPalette* pal, bool enabled, const char* text, size_t text_Strlen, uintptr_t textRole);
+void QProxyStyle_DrawItemText7(const QProxyStyle* self, QPainter* painter, QRect* rect, int flags, QPalette* pal, bool enabled, struct miqt_string* text, uintptr_t textRole);
 uintptr_t QProxyStyle_HitTestComplexControl4(const QProxyStyle* self, uintptr_t control, QStyleOptionComplex* option, QPoint* pos, QWidget* widget);
 int QProxyStyle_StyleHint2(const QProxyStyle* self, uintptr_t hint, QStyleOption* option);
 int QProxyStyle_StyleHint3(const QProxyStyle* self, uintptr_t hint, QStyleOption* option, QWidget* widget);

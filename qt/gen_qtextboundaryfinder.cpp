@@ -4,12 +4,8 @@
 #include <cstring>
 #include <QTextBoundaryFinder>
 #include "qtextboundaryfinder.h"
-
 #include "gen_qtextboundaryfinder.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QTextBoundaryFinder* QTextBoundaryFinder_new() {
 	return new QTextBoundaryFinder();
@@ -19,8 +15,8 @@ QTextBoundaryFinder* QTextBoundaryFinder_new2(QTextBoundaryFinder* other) {
 	return new QTextBoundaryFinder(*other);
 }
 
-QTextBoundaryFinder* QTextBoundaryFinder_new3(uintptr_t typeVal, const char* stringVal, size_t stringVal_Strlen) {
-	QString stringVal_QString = QString::fromUtf8(stringVal, stringVal_Strlen);
+QTextBoundaryFinder* QTextBoundaryFinder_new3(uintptr_t typeVal, struct miqt_string* stringVal) {
+	QString stringVal_QString = QString::fromUtf8(&stringVal->data, stringVal->len);
 	return new QTextBoundaryFinder(static_cast<QTextBoundaryFinder::BoundaryType>(typeVal), stringVal_QString);
 }
 
@@ -45,17 +41,15 @@ bool QTextBoundaryFinder_IsValid(const QTextBoundaryFinder* self) {
 }
 
 uintptr_t QTextBoundaryFinder_Type(const QTextBoundaryFinder* self) {
-	QTextBoundaryFinder::BoundaryType ret = self->type();
-	return static_cast<uintptr_t>(ret);
+	QTextBoundaryFinder::BoundaryType _ret = self->type();
+	return static_cast<uintptr_t>(_ret);
 }
 
-void QTextBoundaryFinder_String(const QTextBoundaryFinder* self, char** _out, int* _out_Strlen) {
-	QString ret = self->string();
+struct miqt_string* QTextBoundaryFinder_String(const QTextBoundaryFinder* self) {
+	QString _ret = self->string();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QTextBoundaryFinder_ToStart(QTextBoundaryFinder* self) {
@@ -87,8 +81,8 @@ bool QTextBoundaryFinder_IsAtBoundary(const QTextBoundaryFinder* self) {
 }
 
 int QTextBoundaryFinder_BoundaryReasons(const QTextBoundaryFinder* self) {
-	QTextBoundaryFinder::BoundaryReasons ret = self->boundaryReasons();
-	return static_cast<int>(ret);
+	QTextBoundaryFinder::BoundaryReasons _ret = self->boundaryReasons();
+	return static_cast<int>(_ret);
 }
 
 void QTextBoundaryFinder_Delete(QTextBoundaryFinder* self) {

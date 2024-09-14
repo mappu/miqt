@@ -15,33 +15,25 @@
 #include <QStyleOptionViewItem>
 #include <QWidget>
 #include "qabstractitemdelegate.h"
-
 #include "gen_qabstractitemdelegate.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QMetaObject* QAbstractItemDelegate_MetaObject(const QAbstractItemDelegate* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void QAbstractItemDelegate_Tr(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QAbstractItemDelegate::tr(s);
+struct miqt_string* QAbstractItemDelegate_Tr(const char* s) {
+	QString _ret = QAbstractItemDelegate::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QAbstractItemDelegate_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QAbstractItemDelegate::trUtf8(s);
+struct miqt_string* QAbstractItemDelegate_TrUtf8(const char* s) {
+	QString _ret = QAbstractItemDelegate::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QAbstractItemDelegate_Paint(const QAbstractItemDelegate* self, QPainter* painter, QStyleOptionViewItem* option, QModelIndex* index) {
@@ -49,9 +41,9 @@ void QAbstractItemDelegate_Paint(const QAbstractItemDelegate* self, QPainter* pa
 }
 
 QSize* QAbstractItemDelegate_SizeHint(const QAbstractItemDelegate* self, QStyleOptionViewItem* option, QModelIndex* index) {
-	QSize ret = self->sizeHint(*option, *index);
+	QSize _ret = self->sizeHint(*option, *index);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(ret));
+	return static_cast<QSize*>(new QSize(_ret));
 }
 
 QWidget* QAbstractItemDelegate_CreateEditor(const QAbstractItemDelegate* self, QWidget* parent, QStyleOptionViewItem* option, QModelIndex* index) {
@@ -78,29 +70,29 @@ bool QAbstractItemDelegate_EditorEvent(QAbstractItemDelegate* self, QEvent* even
 	return self->editorEvent(event, model, *option, *index);
 }
 
-void QAbstractItemDelegate_ElidedText(QFontMetrics* fontMetrics, int width, uintptr_t mode, const char* text, size_t text_Strlen, char** _out, int* _out_Strlen) {
-	QString text_QString = QString::fromUtf8(text, text_Strlen);
-	QString ret = QAbstractItemDelegate::elidedText(*fontMetrics, static_cast<int>(width), static_cast<Qt::TextElideMode>(mode), text_QString);
+struct miqt_string* QAbstractItemDelegate_ElidedText(QFontMetrics* fontMetrics, int width, uintptr_t mode, struct miqt_string* text) {
+	QString text_QString = QString::fromUtf8(&text->data, text->len);
+	QString _ret = QAbstractItemDelegate::elidedText(*fontMetrics, static_cast<int>(width), static_cast<Qt::TextElideMode>(mode), text_QString);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 bool QAbstractItemDelegate_HelpEvent(QAbstractItemDelegate* self, QHelpEvent* event, QAbstractItemView* view, QStyleOptionViewItem* option, QModelIndex* index) {
 	return self->helpEvent(event, view, *option, *index);
 }
 
-void QAbstractItemDelegate_PaintingRoles(const QAbstractItemDelegate* self, int** _out, size_t* _out_len) {
-	QVector<int> ret = self->paintingRoles();
+struct miqt_array* QAbstractItemDelegate_PaintingRoles(const QAbstractItemDelegate* self) {
+	QVector<int> _ret = self->paintingRoles();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	int* __out = static_cast<int*>(malloc(sizeof(int) * ret.length()));
-	for (size_t i = 0, e = ret.length(); i < e; ++i) {
-		__out[i] = ret[i];
+	int* _arr = static_cast<int*>(malloc(sizeof(int) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		_arr[i] = _ret[i];
 	}
-	*_out = __out;
-	*_out_len = ret.length();
+	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
+	_out->len = _ret.length();
+	_out->data = static_cast<void*>(_arr);
+	return _out;
 }
 
 void QAbstractItemDelegate_CommitData(QAbstractItemDelegate* self, QWidget* editor) {
@@ -109,7 +101,8 @@ void QAbstractItemDelegate_CommitData(QAbstractItemDelegate* self, QWidget* edit
 
 void QAbstractItemDelegate_connect_CommitData(QAbstractItemDelegate* self, void* slot) {
 	QAbstractItemDelegate::connect(self, static_cast<void (QAbstractItemDelegate::*)(QWidget*)>(&QAbstractItemDelegate::commitData), self, [=](QWidget* editor) {
-		miqt_exec_callback(slot, 0, nullptr);
+		QWidget* sigval1 = editor;
+		miqt_exec_callback_QAbstractItemDelegate_CommitData(slot, sigval1);
 	});
 }
 
@@ -119,7 +112,8 @@ void QAbstractItemDelegate_CloseEditor(QAbstractItemDelegate* self, QWidget* edi
 
 void QAbstractItemDelegate_connect_CloseEditor(QAbstractItemDelegate* self, void* slot) {
 	QAbstractItemDelegate::connect(self, static_cast<void (QAbstractItemDelegate::*)(QWidget*, QAbstractItemDelegate::EndEditHint)>(&QAbstractItemDelegate::closeEditor), self, [=](QWidget* editor) {
-		miqt_exec_callback(slot, 0, nullptr);
+		QWidget* sigval1 = editor;
+		miqt_exec_callback_QAbstractItemDelegate_CloseEditor(slot, sigval1);
 	});
 }
 
@@ -129,44 +123,39 @@ void QAbstractItemDelegate_SizeHintChanged(QAbstractItemDelegate* self, QModelIn
 
 void QAbstractItemDelegate_connect_SizeHintChanged(QAbstractItemDelegate* self, void* slot) {
 	QAbstractItemDelegate::connect(self, static_cast<void (QAbstractItemDelegate::*)(const QModelIndex&)>(&QAbstractItemDelegate::sizeHintChanged), self, [=](const QModelIndex& param1) {
-		miqt_exec_callback(slot, 0, nullptr);
+		const QModelIndex& param1_ret = param1;
+		// Cast returned reference into pointer
+		QModelIndex* sigval1 = const_cast<QModelIndex*>(&param1_ret);
+		miqt_exec_callback_QAbstractItemDelegate_SizeHintChanged(slot, sigval1);
 	});
 }
 
-void QAbstractItemDelegate_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QAbstractItemDelegate::tr(s, c);
+struct miqt_string* QAbstractItemDelegate_Tr2(const char* s, const char* c) {
+	QString _ret = QAbstractItemDelegate::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QAbstractItemDelegate_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QAbstractItemDelegate::tr(s, c, static_cast<int>(n));
+struct miqt_string* QAbstractItemDelegate_Tr3(const char* s, const char* c, int n) {
+	QString _ret = QAbstractItemDelegate::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QAbstractItemDelegate_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QAbstractItemDelegate::trUtf8(s, c);
+struct miqt_string* QAbstractItemDelegate_TrUtf82(const char* s, const char* c) {
+	QString _ret = QAbstractItemDelegate::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QAbstractItemDelegate_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QAbstractItemDelegate::trUtf8(s, c, static_cast<int>(n));
+struct miqt_string* QAbstractItemDelegate_TrUtf83(const char* s, const char* c, int n) {
+	QString _ret = QAbstractItemDelegate::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QAbstractItemDelegate_CloseEditor2(QAbstractItemDelegate* self, QWidget* editor, uintptr_t hint) {
@@ -175,7 +164,10 @@ void QAbstractItemDelegate_CloseEditor2(QAbstractItemDelegate* self, QWidget* ed
 
 void QAbstractItemDelegate_connect_CloseEditor2(QAbstractItemDelegate* self, void* slot) {
 	QAbstractItemDelegate::connect(self, static_cast<void (QAbstractItemDelegate::*)(QWidget*, QAbstractItemDelegate::EndEditHint)>(&QAbstractItemDelegate::closeEditor), self, [=](QWidget* editor, QAbstractItemDelegate::EndEditHint hint) {
-		miqt_exec_callback(slot, 0, nullptr);
+		QWidget* sigval1 = editor;
+		QAbstractItemDelegate::EndEditHint hint_ret = hint;
+		uintptr_t sigval2 = static_cast<uintptr_t>(hint_ret);
+		miqt_exec_callback_QAbstractItemDelegate_CloseEditor2(slot, sigval1, sigval2);
 	});
 }
 

@@ -37,30 +37,26 @@ func newQAbstractProxyModel_U(h unsafe.Pointer) *QAbstractProxyModel {
 }
 
 func (this *QAbstractProxyModel) MetaObject() *QMetaObject {
-	ret := C.QAbstractProxyModel_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QAbstractProxyModel_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QAbstractProxyModel_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QAbstractProxyModel_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QAbstractProxyModel_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QAbstractProxyModel_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QAbstractProxyModel_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QAbstractProxyModel_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QAbstractProxyModel) SetSourceModel(sourceModel *QAbstractItemModel) {
@@ -68,35 +64,27 @@ func (this *QAbstractProxyModel) SetSourceModel(sourceModel *QAbstractItemModel)
 }
 
 func (this *QAbstractProxyModel) SourceModel() *QAbstractItemModel {
-	ret := C.QAbstractProxyModel_SourceModel(this.h)
-	return newQAbstractItemModel_U(unsafe.Pointer(ret))
+	_ret := C.QAbstractProxyModel_SourceModel(this.h)
+	return newQAbstractItemModel_U(unsafe.Pointer(_ret))
 }
 
 func (this *QAbstractProxyModel) MapToSource(proxyIndex *QModelIndex) *QModelIndex {
-	ret := C.QAbstractProxyModel_MapToSource(this.h, proxyIndex.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQModelIndex(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QModelIndex) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QAbstractProxyModel_MapToSource(this.h, proxyIndex.cPointer())
+	_goptr := newQModelIndex(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QAbstractProxyModel) MapFromSource(sourceIndex *QModelIndex) *QModelIndex {
-	ret := C.QAbstractProxyModel_MapFromSource(this.h, sourceIndex.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQModelIndex(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QModelIndex) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QAbstractProxyModel_MapFromSource(this.h, sourceIndex.cPointer())
+	_goptr := newQModelIndex(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QAbstractProxyModel) Submit() bool {
-	ret := C.QAbstractProxyModel_Submit(this.h)
-	return (bool)(ret)
+	_ret := C.QAbstractProxyModel_Submit(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QAbstractProxyModel) Revert() {
@@ -104,56 +92,44 @@ func (this *QAbstractProxyModel) Revert() {
 }
 
 func (this *QAbstractProxyModel) Data(proxyIndex *QModelIndex) *QVariant {
-	ret := C.QAbstractProxyModel_Data(this.h, proxyIndex.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQVariant(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QVariant) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QAbstractProxyModel_Data(this.h, proxyIndex.cPointer())
+	_goptr := newQVariant(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QAbstractProxyModel) HeaderData(section int, orientation Orientation) *QVariant {
-	ret := C.QAbstractProxyModel_HeaderData(this.h, (C.int)(section), (C.uintptr_t)(orientation))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQVariant(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QVariant) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QAbstractProxyModel_HeaderData(this.h, (C.int)(section), (C.uintptr_t)(orientation))
+	_goptr := newQVariant(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QAbstractProxyModel) Flags(index *QModelIndex) int {
-	ret := C.QAbstractProxyModel_Flags(this.h, index.cPointer())
-	return (int)(ret)
+	_ret := C.QAbstractProxyModel_Flags(this.h, index.cPointer())
+	return (int)(_ret)
 }
 
 func (this *QAbstractProxyModel) SetData(index *QModelIndex, value *QVariant) bool {
-	ret := C.QAbstractProxyModel_SetData(this.h, index.cPointer(), value.cPointer())
-	return (bool)(ret)
+	_ret := C.QAbstractProxyModel_SetData(this.h, index.cPointer(), value.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QAbstractProxyModel) SetHeaderData(section int, orientation Orientation, value *QVariant) bool {
-	ret := C.QAbstractProxyModel_SetHeaderData(this.h, (C.int)(section), (C.uintptr_t)(orientation), value.cPointer())
-	return (bool)(ret)
+	_ret := C.QAbstractProxyModel_SetHeaderData(this.h, (C.int)(section), (C.uintptr_t)(orientation), value.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QAbstractProxyModel) Buddy(index *QModelIndex) *QModelIndex {
-	ret := C.QAbstractProxyModel_Buddy(this.h, index.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQModelIndex(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QModelIndex) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QAbstractProxyModel_Buddy(this.h, index.cPointer())
+	_goptr := newQModelIndex(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QAbstractProxyModel) CanFetchMore(parent *QModelIndex) bool {
-	ret := C.QAbstractProxyModel_CanFetchMore(this.h, parent.cPointer())
-	return (bool)(ret)
+	_ret := C.QAbstractProxyModel_CanFetchMore(this.h, parent.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QAbstractProxyModel) FetchMore(parent *QModelIndex) {
@@ -165,30 +141,22 @@ func (this *QAbstractProxyModel) Sort(column int) {
 }
 
 func (this *QAbstractProxyModel) Span(index *QModelIndex) *QSize {
-	ret := C.QAbstractProxyModel_Span(this.h, index.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSize(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QAbstractProxyModel_Span(this.h, index.cPointer())
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QAbstractProxyModel) HasChildren() bool {
-	ret := C.QAbstractProxyModel_HasChildren(this.h)
-	return (bool)(ret)
+	_ret := C.QAbstractProxyModel_HasChildren(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QAbstractProxyModel) Sibling(row int, column int, idx *QModelIndex) *QModelIndex {
-	ret := C.QAbstractProxyModel_Sibling(this.h, (C.int)(row), (C.int)(column), idx.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQModelIndex(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QModelIndex) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QAbstractProxyModel_Sibling(this.h, (C.int)(row), (C.int)(column), idx.cPointer())
+	_goptr := newQModelIndex(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QAbstractProxyModel) MimeData(indexes []QModelIndex) *QMimeData {
@@ -198,43 +166,42 @@ func (this *QAbstractProxyModel) MimeData(indexes []QModelIndex) *QMimeData {
 	for i := range indexes {
 		indexes_CArray[i] = indexes[i].cPointer()
 	}
-	ret := C.QAbstractProxyModel_MimeData(this.h, &indexes_CArray[0], C.size_t(len(indexes)))
-	return newQMimeData_U(unsafe.Pointer(ret))
+	indexes_ma := &C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray)}
+	defer runtime.KeepAlive(unsafe.Pointer(indexes_ma))
+	_ret := C.QAbstractProxyModel_MimeData(this.h, indexes_ma)
+	return newQMimeData_U(unsafe.Pointer(_ret))
 }
 
 func (this *QAbstractProxyModel) CanDropMimeData(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool {
-	ret := C.QAbstractProxyModel_CanDropMimeData(this.h, data.cPointer(), (C.uintptr_t)(action), (C.int)(row), (C.int)(column), parent.cPointer())
-	return (bool)(ret)
+	_ret := C.QAbstractProxyModel_CanDropMimeData(this.h, data.cPointer(), (C.uintptr_t)(action), (C.int)(row), (C.int)(column), parent.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QAbstractProxyModel) DropMimeData(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool {
-	ret := C.QAbstractProxyModel_DropMimeData(this.h, data.cPointer(), (C.uintptr_t)(action), (C.int)(row), (C.int)(column), parent.cPointer())
-	return (bool)(ret)
+	_ret := C.QAbstractProxyModel_DropMimeData(this.h, data.cPointer(), (C.uintptr_t)(action), (C.int)(row), (C.int)(column), parent.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QAbstractProxyModel) MimeTypes() []string {
-	var _out **C.char = nil
-	var _out_Lengths *C.int = nil
-	var _out_len C.size_t = 0
-	C.QAbstractProxyModel_MimeTypes(this.h, &_out, &_out_Lengths, &_out_len)
-	ret := make([]string, int(_out_len))
-	_outCast := (*[0xffff]*C.char)(unsafe.Pointer(_out)) // hey ya
-	_out_LengthsCast := (*[0xffff]C.int)(unsafe.Pointer(_out_Lengths))
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = C.GoStringN(_outCast[i], _out_LengthsCast[i])
+	var _ma *C.struct_miqt_array = C.QAbstractProxyModel_MimeTypes(this.h)
+	_ret := make([]string, int(_ma.len))
+	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = C.GoStringN(&_outCast[i].data, C.int(int64(_outCast[i].len)))
+		C.free(unsafe.Pointer(_outCast[i])) // free the inner miqt_string*
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
 func (this *QAbstractProxyModel) SupportedDragActions() int {
-	ret := C.QAbstractProxyModel_SupportedDragActions(this.h)
-	return (int)(ret)
+	_ret := C.QAbstractProxyModel_SupportedDragActions(this.h)
+	return (int)(_ret)
 }
 
 func (this *QAbstractProxyModel) SupportedDropActions() int {
-	ret := C.QAbstractProxyModel_SupportedDropActions(this.h)
-	return (int)(ret)
+	_ret := C.QAbstractProxyModel_SupportedDropActions(this.h)
+	return (int)(_ret)
 }
 
 func QAbstractProxyModel_Tr2(s string, c string) string {
@@ -242,12 +209,10 @@ func QAbstractProxyModel_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QAbstractProxyModel_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QAbstractProxyModel_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QAbstractProxyModel_Tr3(s string, c string, n int) string {
@@ -255,12 +220,10 @@ func QAbstractProxyModel_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QAbstractProxyModel_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QAbstractProxyModel_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QAbstractProxyModel_TrUtf82(s string, c string) string {
@@ -268,12 +231,10 @@ func QAbstractProxyModel_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QAbstractProxyModel_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QAbstractProxyModel_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QAbstractProxyModel_TrUtf83(s string, c string, n int) string {
@@ -281,44 +242,34 @@ func QAbstractProxyModel_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QAbstractProxyModel_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QAbstractProxyModel_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QAbstractProxyModel) Data2(proxyIndex *QModelIndex, role int) *QVariant {
-	ret := C.QAbstractProxyModel_Data2(this.h, proxyIndex.cPointer(), (C.int)(role))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQVariant(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QVariant) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QAbstractProxyModel_Data2(this.h, proxyIndex.cPointer(), (C.int)(role))
+	_goptr := newQVariant(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QAbstractProxyModel) HeaderData3(section int, orientation Orientation, role int) *QVariant {
-	ret := C.QAbstractProxyModel_HeaderData3(this.h, (C.int)(section), (C.uintptr_t)(orientation), (C.int)(role))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQVariant(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QVariant) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QAbstractProxyModel_HeaderData3(this.h, (C.int)(section), (C.uintptr_t)(orientation), (C.int)(role))
+	_goptr := newQVariant(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QAbstractProxyModel) SetData3(index *QModelIndex, value *QVariant, role int) bool {
-	ret := C.QAbstractProxyModel_SetData3(this.h, index.cPointer(), value.cPointer(), (C.int)(role))
-	return (bool)(ret)
+	_ret := C.QAbstractProxyModel_SetData3(this.h, index.cPointer(), value.cPointer(), (C.int)(role))
+	return (bool)(_ret)
 }
 
 func (this *QAbstractProxyModel) SetHeaderData4(section int, orientation Orientation, value *QVariant, role int) bool {
-	ret := C.QAbstractProxyModel_SetHeaderData4(this.h, (C.int)(section), (C.uintptr_t)(orientation), value.cPointer(), (C.int)(role))
-	return (bool)(ret)
+	_ret := C.QAbstractProxyModel_SetHeaderData4(this.h, (C.int)(section), (C.uintptr_t)(orientation), value.cPointer(), (C.int)(role))
+	return (bool)(_ret)
 }
 
 func (this *QAbstractProxyModel) Sort2(column int, order SortOrder) {
@@ -326,10 +277,20 @@ func (this *QAbstractProxyModel) Sort2(column int, order SortOrder) {
 }
 
 func (this *QAbstractProxyModel) HasChildren1(parent *QModelIndex) bool {
-	ret := C.QAbstractProxyModel_HasChildren1(this.h, parent.cPointer())
-	return (bool)(ret)
+	_ret := C.QAbstractProxyModel_HasChildren1(this.h, parent.cPointer())
+	return (bool)(_ret)
 }
 
+// Delete this object from C++ memory.
 func (this *QAbstractProxyModel) Delete() {
 	C.QAbstractProxyModel_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QAbstractProxyModel) GoGC() {
+	runtime.SetFinalizer(this, func(this *QAbstractProxyModel) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

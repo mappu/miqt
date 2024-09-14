@@ -7,12 +7,8 @@
 #include <QByteArray>
 #include <cstring>
 #include "qhistorystate.h"
-
 #include "gen_qhistorystate.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QHistoryState* QHistoryState_new() {
 	return new QHistoryState();
@@ -34,22 +30,18 @@ QMetaObject* QHistoryState_MetaObject(const QHistoryState* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void QHistoryState_Tr(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QHistoryState::tr(s);
+struct miqt_string* QHistoryState_Tr(const char* s) {
+	QString _ret = QHistoryState::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QHistoryState_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QHistoryState::trUtf8(s);
+struct miqt_string* QHistoryState_TrUtf8(const char* s) {
+	QString _ret = QHistoryState::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 QAbstractTransition* QHistoryState_DefaultTransition(const QHistoryState* self) {
@@ -69,48 +61,40 @@ void QHistoryState_SetDefaultState(QHistoryState* self, QAbstractState* state) {
 }
 
 uintptr_t QHistoryState_HistoryType(const QHistoryState* self) {
-	QHistoryState::HistoryType ret = self->historyType();
-	return static_cast<uintptr_t>(ret);
+	QHistoryState::HistoryType _ret = self->historyType();
+	return static_cast<uintptr_t>(_ret);
 }
 
 void QHistoryState_SetHistoryType(QHistoryState* self, uintptr_t typeVal) {
 	self->setHistoryType(static_cast<QHistoryState::HistoryType>(typeVal));
 }
 
-void QHistoryState_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QHistoryState::tr(s, c);
+struct miqt_string* QHistoryState_Tr2(const char* s, const char* c) {
+	QString _ret = QHistoryState::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QHistoryState_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QHistoryState::tr(s, c, static_cast<int>(n));
+struct miqt_string* QHistoryState_Tr3(const char* s, const char* c, int n) {
+	QString _ret = QHistoryState::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QHistoryState_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QHistoryState::trUtf8(s, c);
+struct miqt_string* QHistoryState_TrUtf82(const char* s, const char* c) {
+	QString _ret = QHistoryState::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QHistoryState_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QHistoryState::trUtf8(s, c, static_cast<int>(n));
+struct miqt_string* QHistoryState_TrUtf83(const char* s, const char* c, int n) {
+	QString _ret = QHistoryState::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QHistoryState_Delete(QHistoryState* self) {

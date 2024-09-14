@@ -4,12 +4,8 @@
 #include <QPoint>
 #include <QScreen>
 #include "qcursor.h"
-
 #include "gen_qcursor.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QCursor* QCursor_new() {
 	return new QCursor();
@@ -56,8 +52,8 @@ void QCursor_Swap(QCursor* self, QCursor* other) {
 }
 
 uintptr_t QCursor_Shape(const QCursor* self) {
-	Qt::CursorShape ret = self->shape();
-	return static_cast<uintptr_t>(ret);
+	Qt::CursorShape _ret = self->shape();
+	return static_cast<uintptr_t>(_ret);
 }
 
 void QCursor_SetShape(QCursor* self, uintptr_t newShape) {
@@ -73,39 +69,39 @@ QBitmap* QCursor_Mask(const QCursor* self) {
 }
 
 QBitmap* QCursor_BitmapWithQtReturnByValueConstant(const QCursor* self, uintptr_t param1) {
-	QBitmap ret = self->bitmap(static_cast<Qt::ReturnByValueConstant>(param1));
+	QBitmap _ret = self->bitmap(static_cast<Qt::ReturnByValueConstant>(param1));
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QBitmap*>(new QBitmap(ret));
+	return static_cast<QBitmap*>(new QBitmap(_ret));
 }
 
 QBitmap* QCursor_MaskWithQtReturnByValueConstant(const QCursor* self, uintptr_t param1) {
-	QBitmap ret = self->mask(static_cast<Qt::ReturnByValueConstant>(param1));
+	QBitmap _ret = self->mask(static_cast<Qt::ReturnByValueConstant>(param1));
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QBitmap*>(new QBitmap(ret));
+	return static_cast<QBitmap*>(new QBitmap(_ret));
 }
 
 QPixmap* QCursor_Pixmap(const QCursor* self) {
-	QPixmap ret = self->pixmap();
+	QPixmap _ret = self->pixmap();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPixmap*>(new QPixmap(ret));
+	return static_cast<QPixmap*>(new QPixmap(_ret));
 }
 
 QPoint* QCursor_HotSpot(const QCursor* self) {
-	QPoint ret = self->hotSpot();
+	QPoint _ret = self->hotSpot();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPoint*>(new QPoint(ret));
+	return static_cast<QPoint*>(new QPoint(_ret));
 }
 
 QPoint* QCursor_Pos() {
-	QPoint ret = QCursor::pos();
+	QPoint _ret = QCursor::pos();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPoint*>(new QPoint(ret));
+	return static_cast<QPoint*>(new QPoint(_ret));
 }
 
 QPoint* QCursor_PosWithScreen(QScreen* screen) {
-	QPoint ret = QCursor::pos(screen);
+	QPoint _ret = QCursor::pos(screen);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPoint*>(new QPoint(ret));
+	return static_cast<QPoint*>(new QPoint(_ret));
 }
 
 void QCursor_SetPos(int x, int y) {

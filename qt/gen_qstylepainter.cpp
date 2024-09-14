@@ -11,12 +11,8 @@
 #include <QStylePainter>
 #include <QWidget>
 #include "qstylepainter.h"
-
 #include "gen_qstylepainter.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QStylePainter* QStylePainter_new() {
 	return new QStylePainter();
@@ -50,8 +46,8 @@ void QStylePainter_DrawComplexControl(QStylePainter* self, uintptr_t cc, QStyleO
 	self->drawComplexControl(static_cast<QStyle::ComplexControl>(cc), *opt);
 }
 
-void QStylePainter_DrawItemText(QStylePainter* self, QRect* r, int flags, QPalette* pal, bool enabled, const char* text, size_t text_Strlen) {
-	QString text_QString = QString::fromUtf8(text, text_Strlen);
+void QStylePainter_DrawItemText(QStylePainter* self, QRect* r, int flags, QPalette* pal, bool enabled, struct miqt_string* text) {
+	QString text_QString = QString::fromUtf8(&text->data, text->len);
 	self->drawItemText(*r, static_cast<int>(flags), *pal, enabled, text_QString);
 }
 
@@ -63,8 +59,8 @@ QStyle* QStylePainter_Style(const QStylePainter* self) {
 	return self->style();
 }
 
-void QStylePainter_DrawItemText6(QStylePainter* self, QRect* r, int flags, QPalette* pal, bool enabled, const char* text, size_t text_Strlen, uintptr_t textRole) {
-	QString text_QString = QString::fromUtf8(text, text_Strlen);
+void QStylePainter_DrawItemText6(QStylePainter* self, QRect* r, int flags, QPalette* pal, bool enabled, struct miqt_string* text, uintptr_t textRole) {
+	QString text_QString = QString::fromUtf8(&text->data, text->len);
 	self->drawItemText(*r, static_cast<int>(flags), *pal, enabled, text_QString, static_cast<QPalette::ColorRole>(textRole));
 }
 

@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -127,8 +129,8 @@ QVariant* QVariant_new11(float f);
 QVariant* QVariant_new12(const char* str);
 QVariant* QVariant_new13(QByteArray* bytearray);
 QVariant* QVariant_new14(QBitArray* bitarray);
-QVariant* QVariant_new15(const char* stringVal, size_t stringVal_Strlen);
-QVariant* QVariant_new16(char** stringlist, uint64_t* stringlist_Lengths, size_t stringlist_len);
+QVariant* QVariant_new15(struct miqt_string* stringVal);
+QVariant* QVariant_new16(struct miqt_array* /* of QString */ stringlist);
 QVariant* QVariant_new17(QChar* qchar);
 QVariant* QVariant_new18(QDate* date);
 QVariant* QVariant_new19(QTime* time);
@@ -175,8 +177,8 @@ float QVariant_ToFloat(const QVariant* self);
 double QVariant_ToReal(const QVariant* self);
 QByteArray* QVariant_ToByteArray(const QVariant* self);
 QBitArray* QVariant_ToBitArray(const QVariant* self);
-void QVariant_ToString(const QVariant* self, char** _out, int* _out_Strlen);
-void QVariant_ToStringList(const QVariant* self, char*** _out, int** _out_Lengths, size_t* _out_len);
+struct miqt_string* QVariant_ToString(const QVariant* self);
+struct miqt_array* QVariant_ToStringList(const QVariant* self);
 QChar* QVariant_ToChar(const QVariant* self);
 QDate* QVariant_ToDate(const QVariant* self);
 QTime* QVariant_ToTime(const QVariant* self);

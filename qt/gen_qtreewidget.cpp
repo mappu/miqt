@@ -17,22 +17,19 @@
 #include <QVariant>
 #include <QWidget>
 #include "qtreewidget.h"
-
 #include "gen_qtreewidget.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QTreeWidgetItem* QTreeWidgetItem_new() {
 	return new QTreeWidgetItem();
 }
 
-QTreeWidgetItem* QTreeWidgetItem_new2(char** strings, uint64_t* strings_Lengths, size_t strings_len) {
+QTreeWidgetItem* QTreeWidgetItem_new2(struct miqt_array* /* of QString */ strings) {
 	QList<QString> strings_QList;
-	strings_QList.reserve(strings_len);
-	for(size_t i = 0; i < strings_len; ++i) {
-		strings_QList.push_back(QString::fromUtf8(strings[i], strings_Lengths[i]));
+	strings_QList.reserve(strings->len);
+	miqt_string** strings_arr = static_cast<miqt_string**>(strings->data);
+	for(size_t i = 0; i < strings->len; ++i) {
+		strings_QList.push_back(QString::fromUtf8(& strings_arr[i]->data, strings_arr[i]->len));
 	}
 	return new QTreeWidgetItem(strings_QList);
 }
@@ -41,11 +38,12 @@ QTreeWidgetItem* QTreeWidgetItem_new3(QTreeWidget* treeview) {
 	return new QTreeWidgetItem(treeview);
 }
 
-QTreeWidgetItem* QTreeWidgetItem_new4(QTreeWidget* treeview, char** strings, uint64_t* strings_Lengths, size_t strings_len) {
+QTreeWidgetItem* QTreeWidgetItem_new4(QTreeWidget* treeview, struct miqt_array* /* of QString */ strings) {
 	QList<QString> strings_QList;
-	strings_QList.reserve(strings_len);
-	for(size_t i = 0; i < strings_len; ++i) {
-		strings_QList.push_back(QString::fromUtf8(strings[i], strings_Lengths[i]));
+	strings_QList.reserve(strings->len);
+	miqt_string** strings_arr = static_cast<miqt_string**>(strings->data);
+	for(size_t i = 0; i < strings->len; ++i) {
+		strings_QList.push_back(QString::fromUtf8(& strings_arr[i]->data, strings_arr[i]->len));
 	}
 	return new QTreeWidgetItem(treeview, strings_QList);
 }
@@ -58,11 +56,12 @@ QTreeWidgetItem* QTreeWidgetItem_new6(QTreeWidgetItem* parent) {
 	return new QTreeWidgetItem(parent);
 }
 
-QTreeWidgetItem* QTreeWidgetItem_new7(QTreeWidgetItem* parent, char** strings, uint64_t* strings_Lengths, size_t strings_len) {
+QTreeWidgetItem* QTreeWidgetItem_new7(QTreeWidgetItem* parent, struct miqt_array* /* of QString */ strings) {
 	QList<QString> strings_QList;
-	strings_QList.reserve(strings_len);
-	for(size_t i = 0; i < strings_len; ++i) {
-		strings_QList.push_back(QString::fromUtf8(strings[i], strings_Lengths[i]));
+	strings_QList.reserve(strings->len);
+	miqt_string** strings_arr = static_cast<miqt_string**>(strings->data);
+	for(size_t i = 0; i < strings->len; ++i) {
+		strings_QList.push_back(QString::fromUtf8(& strings_arr[i]->data, strings_arr[i]->len));
 	}
 	return new QTreeWidgetItem(parent, strings_QList);
 }
@@ -79,11 +78,12 @@ QTreeWidgetItem* QTreeWidgetItem_new10(int typeVal) {
 	return new QTreeWidgetItem(static_cast<int>(typeVal));
 }
 
-QTreeWidgetItem* QTreeWidgetItem_new11(char** strings, uint64_t* strings_Lengths, size_t strings_len, int typeVal) {
+QTreeWidgetItem* QTreeWidgetItem_new11(struct miqt_array* /* of QString */ strings, int typeVal) {
 	QList<QString> strings_QList;
-	strings_QList.reserve(strings_len);
-	for(size_t i = 0; i < strings_len; ++i) {
-		strings_QList.push_back(QString::fromUtf8(strings[i], strings_Lengths[i]));
+	strings_QList.reserve(strings->len);
+	miqt_string** strings_arr = static_cast<miqt_string**>(strings->data);
+	for(size_t i = 0; i < strings->len; ++i) {
+		strings_QList.push_back(QString::fromUtf8(& strings_arr[i]->data, strings_arr[i]->len));
 	}
 	return new QTreeWidgetItem(strings_QList, static_cast<int>(typeVal));
 }
@@ -92,11 +92,12 @@ QTreeWidgetItem* QTreeWidgetItem_new12(QTreeWidget* treeview, int typeVal) {
 	return new QTreeWidgetItem(treeview, static_cast<int>(typeVal));
 }
 
-QTreeWidgetItem* QTreeWidgetItem_new13(QTreeWidget* treeview, char** strings, uint64_t* strings_Lengths, size_t strings_len, int typeVal) {
+QTreeWidgetItem* QTreeWidgetItem_new13(QTreeWidget* treeview, struct miqt_array* /* of QString */ strings, int typeVal) {
 	QList<QString> strings_QList;
-	strings_QList.reserve(strings_len);
-	for(size_t i = 0; i < strings_len; ++i) {
-		strings_QList.push_back(QString::fromUtf8(strings[i], strings_Lengths[i]));
+	strings_QList.reserve(strings->len);
+	miqt_string** strings_arr = static_cast<miqt_string**>(strings->data);
+	for(size_t i = 0; i < strings->len; ++i) {
+		strings_QList.push_back(QString::fromUtf8(& strings_arr[i]->data, strings_arr[i]->len));
 	}
 	return new QTreeWidgetItem(treeview, strings_QList, static_cast<int>(typeVal));
 }
@@ -109,11 +110,12 @@ QTreeWidgetItem* QTreeWidgetItem_new15(QTreeWidgetItem* parent, int typeVal) {
 	return new QTreeWidgetItem(parent, static_cast<int>(typeVal));
 }
 
-QTreeWidgetItem* QTreeWidgetItem_new16(QTreeWidgetItem* parent, char** strings, uint64_t* strings_Lengths, size_t strings_len, int typeVal) {
+QTreeWidgetItem* QTreeWidgetItem_new16(QTreeWidgetItem* parent, struct miqt_array* /* of QString */ strings, int typeVal) {
 	QList<QString> strings_QList;
-	strings_QList.reserve(strings_len);
-	for(size_t i = 0; i < strings_len; ++i) {
-		strings_QList.push_back(QString::fromUtf8(strings[i], strings_Lengths[i]));
+	strings_QList.reserve(strings->len);
+	miqt_string** strings_arr = static_cast<miqt_string**>(strings->data);
+	for(size_t i = 0; i < strings->len; ++i) {
+		strings_QList.push_back(QString::fromUtf8(& strings_arr[i]->data, strings_arr[i]->len));
 	}
 	return new QTreeWidgetItem(parent, strings_QList, static_cast<int>(typeVal));
 }
@@ -175,89 +177,81 @@ void QTreeWidgetItem_SetChildIndicatorPolicy(QTreeWidgetItem* self, uintptr_t po
 }
 
 uintptr_t QTreeWidgetItem_ChildIndicatorPolicy(const QTreeWidgetItem* self) {
-	QTreeWidgetItem::ChildIndicatorPolicy ret = self->childIndicatorPolicy();
-	return static_cast<uintptr_t>(ret);
+	QTreeWidgetItem::ChildIndicatorPolicy _ret = self->childIndicatorPolicy();
+	return static_cast<uintptr_t>(_ret);
 }
 
 int QTreeWidgetItem_Flags(const QTreeWidgetItem* self) {
-	Qt::ItemFlags ret = self->flags();
-	return static_cast<int>(ret);
+	Qt::ItemFlags _ret = self->flags();
+	return static_cast<int>(_ret);
 }
 
 void QTreeWidgetItem_SetFlags(QTreeWidgetItem* self, int flags) {
 	self->setFlags(static_cast<Qt::ItemFlags>(flags));
 }
 
-void QTreeWidgetItem_Text(const QTreeWidgetItem* self, int column, char** _out, int* _out_Strlen) {
-	QString ret = self->text(static_cast<int>(column));
+struct miqt_string* QTreeWidgetItem_Text(const QTreeWidgetItem* self, int column) {
+	QString _ret = self->text(static_cast<int>(column));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QTreeWidgetItem_SetText(QTreeWidgetItem* self, int column, const char* text, size_t text_Strlen) {
-	QString text_QString = QString::fromUtf8(text, text_Strlen);
+void QTreeWidgetItem_SetText(QTreeWidgetItem* self, int column, struct miqt_string* text) {
+	QString text_QString = QString::fromUtf8(&text->data, text->len);
 	self->setText(static_cast<int>(column), text_QString);
 }
 
 QIcon* QTreeWidgetItem_Icon(const QTreeWidgetItem* self, int column) {
-	QIcon ret = self->icon(static_cast<int>(column));
+	QIcon _ret = self->icon(static_cast<int>(column));
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QIcon*>(new QIcon(ret));
+	return static_cast<QIcon*>(new QIcon(_ret));
 }
 
 void QTreeWidgetItem_SetIcon(QTreeWidgetItem* self, int column, QIcon* icon) {
 	self->setIcon(static_cast<int>(column), *icon);
 }
 
-void QTreeWidgetItem_StatusTip(const QTreeWidgetItem* self, int column, char** _out, int* _out_Strlen) {
-	QString ret = self->statusTip(static_cast<int>(column));
+struct miqt_string* QTreeWidgetItem_StatusTip(const QTreeWidgetItem* self, int column) {
+	QString _ret = self->statusTip(static_cast<int>(column));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QTreeWidgetItem_SetStatusTip(QTreeWidgetItem* self, int column, const char* statusTip, size_t statusTip_Strlen) {
-	QString statusTip_QString = QString::fromUtf8(statusTip, statusTip_Strlen);
+void QTreeWidgetItem_SetStatusTip(QTreeWidgetItem* self, int column, struct miqt_string* statusTip) {
+	QString statusTip_QString = QString::fromUtf8(&statusTip->data, statusTip->len);
 	self->setStatusTip(static_cast<int>(column), statusTip_QString);
 }
 
-void QTreeWidgetItem_ToolTip(const QTreeWidgetItem* self, int column, char** _out, int* _out_Strlen) {
-	QString ret = self->toolTip(static_cast<int>(column));
+struct miqt_string* QTreeWidgetItem_ToolTip(const QTreeWidgetItem* self, int column) {
+	QString _ret = self->toolTip(static_cast<int>(column));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QTreeWidgetItem_SetToolTip(QTreeWidgetItem* self, int column, const char* toolTip, size_t toolTip_Strlen) {
-	QString toolTip_QString = QString::fromUtf8(toolTip, toolTip_Strlen);
+void QTreeWidgetItem_SetToolTip(QTreeWidgetItem* self, int column, struct miqt_string* toolTip) {
+	QString toolTip_QString = QString::fromUtf8(&toolTip->data, toolTip->len);
 	self->setToolTip(static_cast<int>(column), toolTip_QString);
 }
 
-void QTreeWidgetItem_WhatsThis(const QTreeWidgetItem* self, int column, char** _out, int* _out_Strlen) {
-	QString ret = self->whatsThis(static_cast<int>(column));
+struct miqt_string* QTreeWidgetItem_WhatsThis(const QTreeWidgetItem* self, int column) {
+	QString _ret = self->whatsThis(static_cast<int>(column));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QTreeWidgetItem_SetWhatsThis(QTreeWidgetItem* self, int column, const char* whatsThis, size_t whatsThis_Strlen) {
-	QString whatsThis_QString = QString::fromUtf8(whatsThis, whatsThis_Strlen);
+void QTreeWidgetItem_SetWhatsThis(QTreeWidgetItem* self, int column, struct miqt_string* whatsThis) {
+	QString whatsThis_QString = QString::fromUtf8(&whatsThis->data, whatsThis->len);
 	self->setWhatsThis(static_cast<int>(column), whatsThis_QString);
 }
 
 QFont* QTreeWidgetItem_Font(const QTreeWidgetItem* self, int column) {
-	QFont ret = self->font(static_cast<int>(column));
+	QFont _ret = self->font(static_cast<int>(column));
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QFont*>(new QFont(ret));
+	return static_cast<QFont*>(new QFont(_ret));
 }
 
 void QTreeWidgetItem_SetFont(QTreeWidgetItem* self, int column, QFont* font) {
@@ -273,9 +267,9 @@ void QTreeWidgetItem_SetTextAlignment(QTreeWidgetItem* self, int column, int ali
 }
 
 QColor* QTreeWidgetItem_BackgroundColor(const QTreeWidgetItem* self, int column) {
-	QColor ret = self->backgroundColor(static_cast<int>(column));
+	QColor _ret = self->backgroundColor(static_cast<int>(column));
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QColor*>(new QColor(ret));
+	return static_cast<QColor*>(new QColor(_ret));
 }
 
 void QTreeWidgetItem_SetBackgroundColor(QTreeWidgetItem* self, int column, QColor* color) {
@@ -283,9 +277,9 @@ void QTreeWidgetItem_SetBackgroundColor(QTreeWidgetItem* self, int column, QColo
 }
 
 QBrush* QTreeWidgetItem_Background(const QTreeWidgetItem* self, int column) {
-	QBrush ret = self->background(static_cast<int>(column));
+	QBrush _ret = self->background(static_cast<int>(column));
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QBrush*>(new QBrush(ret));
+	return static_cast<QBrush*>(new QBrush(_ret));
 }
 
 void QTreeWidgetItem_SetBackground(QTreeWidgetItem* self, int column, QBrush* brush) {
@@ -293,9 +287,9 @@ void QTreeWidgetItem_SetBackground(QTreeWidgetItem* self, int column, QBrush* br
 }
 
 QColor* QTreeWidgetItem_TextColor(const QTreeWidgetItem* self, int column) {
-	QColor ret = self->textColor(static_cast<int>(column));
+	QColor _ret = self->textColor(static_cast<int>(column));
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QColor*>(new QColor(ret));
+	return static_cast<QColor*>(new QColor(_ret));
 }
 
 void QTreeWidgetItem_SetTextColor(QTreeWidgetItem* self, int column, QColor* color) {
@@ -303,9 +297,9 @@ void QTreeWidgetItem_SetTextColor(QTreeWidgetItem* self, int column, QColor* col
 }
 
 QBrush* QTreeWidgetItem_Foreground(const QTreeWidgetItem* self, int column) {
-	QBrush ret = self->foreground(static_cast<int>(column));
+	QBrush _ret = self->foreground(static_cast<int>(column));
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QBrush*>(new QBrush(ret));
+	return static_cast<QBrush*>(new QBrush(_ret));
 }
 
 void QTreeWidgetItem_SetForeground(QTreeWidgetItem* self, int column, QBrush* brush) {
@@ -313,8 +307,8 @@ void QTreeWidgetItem_SetForeground(QTreeWidgetItem* self, int column, QBrush* br
 }
 
 uintptr_t QTreeWidgetItem_CheckState(const QTreeWidgetItem* self, int column) {
-	Qt::CheckState ret = self->checkState(static_cast<int>(column));
-	return static_cast<uintptr_t>(ret);
+	Qt::CheckState _ret = self->checkState(static_cast<int>(column));
+	return static_cast<uintptr_t>(_ret);
 }
 
 void QTreeWidgetItem_SetCheckState(QTreeWidgetItem* self, int column, uintptr_t state) {
@@ -322,9 +316,9 @@ void QTreeWidgetItem_SetCheckState(QTreeWidgetItem* self, int column, uintptr_t 
 }
 
 QSize* QTreeWidgetItem_SizeHint(const QTreeWidgetItem* self, int column) {
-	QSize ret = self->sizeHint(static_cast<int>(column));
+	QSize _ret = self->sizeHint(static_cast<int>(column));
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(ret));
+	return static_cast<QSize*>(new QSize(_ret));
 }
 
 void QTreeWidgetItem_SetSizeHint(QTreeWidgetItem* self, int column, QSize* size) {
@@ -332,9 +326,9 @@ void QTreeWidgetItem_SetSizeHint(QTreeWidgetItem* self, int column, QSize* size)
 }
 
 QVariant* QTreeWidgetItem_Data(const QTreeWidgetItem* self, int column, int role) {
-	QVariant ret = self->data(static_cast<int>(column), static_cast<int>(role));
+	QVariant _ret = self->data(static_cast<int>(column), static_cast<int>(role));
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(ret));
+	return static_cast<QVariant*>(new QVariant(_ret));
 }
 
 void QTreeWidgetItem_SetData(QTreeWidgetItem* self, int column, int role, QVariant* value) {
@@ -393,33 +387,37 @@ QTreeWidgetItem* QTreeWidgetItem_TakeChild(QTreeWidgetItem* self, int index) {
 	return self->takeChild(static_cast<int>(index));
 }
 
-void QTreeWidgetItem_AddChildren(QTreeWidgetItem* self, QTreeWidgetItem** children, size_t children_len) {
+void QTreeWidgetItem_AddChildren(QTreeWidgetItem* self, struct miqt_array* /* of QTreeWidgetItem* */ children) {
 	QList<QTreeWidgetItem*> children_QList;
-	children_QList.reserve(children_len);
-	for(size_t i = 0; i < children_len; ++i) {
-		children_QList.push_back(children[i]);
+	children_QList.reserve(children->len);
+	QTreeWidgetItem** children_arr = static_cast<QTreeWidgetItem**>(children->data);
+	for(size_t i = 0; i < children->len; ++i) {
+		children_QList.push_back(children_arr[i]);
 	}
 	self->addChildren(children_QList);
 }
 
-void QTreeWidgetItem_InsertChildren(QTreeWidgetItem* self, int index, QTreeWidgetItem** children, size_t children_len) {
+void QTreeWidgetItem_InsertChildren(QTreeWidgetItem* self, int index, struct miqt_array* /* of QTreeWidgetItem* */ children) {
 	QList<QTreeWidgetItem*> children_QList;
-	children_QList.reserve(children_len);
-	for(size_t i = 0; i < children_len; ++i) {
-		children_QList.push_back(children[i]);
+	children_QList.reserve(children->len);
+	QTreeWidgetItem** children_arr = static_cast<QTreeWidgetItem**>(children->data);
+	for(size_t i = 0; i < children->len; ++i) {
+		children_QList.push_back(children_arr[i]);
 	}
 	self->insertChildren(static_cast<int>(index), children_QList);
 }
 
-void QTreeWidgetItem_TakeChildren(QTreeWidgetItem* self, QTreeWidgetItem*** _out, size_t* _out_len) {
-	QList<QTreeWidgetItem*> ret = self->takeChildren();
+struct miqt_array* QTreeWidgetItem_TakeChildren(QTreeWidgetItem* self) {
+	QList<QTreeWidgetItem*> _ret = self->takeChildren();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QTreeWidgetItem** __out = static_cast<QTreeWidgetItem**>(malloc(sizeof(QTreeWidgetItem*) * ret.length()));
-	for (size_t i = 0, e = ret.length(); i < e; ++i) {
-		__out[i] = ret[i];
+	QTreeWidgetItem** _arr = static_cast<QTreeWidgetItem**>(malloc(sizeof(QTreeWidgetItem*) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		_arr[i] = _ret[i];
 	}
-	*_out = __out;
-	*_out_len = ret.length();
+	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
+	_out->len = _ret.length();
+	_out->data = static_cast<void*>(_arr);
+	return _out;
 }
 
 int QTreeWidgetItem_Type(const QTreeWidgetItem* self) {
@@ -446,22 +444,18 @@ QMetaObject* QTreeWidget_MetaObject(const QTreeWidget* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void QTreeWidget_Tr(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QTreeWidget::tr(s);
+struct miqt_string* QTreeWidget_Tr(const char* s) {
+	QString _ret = QTreeWidget::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QTreeWidget_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QTreeWidget::trUtf8(s);
+struct miqt_string* QTreeWidget_TrUtf8(const char* s) {
+	QString _ret = QTreeWidget::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 int QTreeWidget_ColumnCount(const QTreeWidget* self) {
@@ -500,20 +494,22 @@ int QTreeWidget_IndexOfTopLevelItem(const QTreeWidget* self, QTreeWidgetItem* it
 	return self->indexOfTopLevelItem(item);
 }
 
-void QTreeWidget_InsertTopLevelItems(QTreeWidget* self, int index, QTreeWidgetItem** items, size_t items_len) {
+void QTreeWidget_InsertTopLevelItems(QTreeWidget* self, int index, struct miqt_array* /* of QTreeWidgetItem* */ items) {
 	QList<QTreeWidgetItem*> items_QList;
-	items_QList.reserve(items_len);
-	for(size_t i = 0; i < items_len; ++i) {
-		items_QList.push_back(items[i]);
+	items_QList.reserve(items->len);
+	QTreeWidgetItem** items_arr = static_cast<QTreeWidgetItem**>(items->data);
+	for(size_t i = 0; i < items->len; ++i) {
+		items_QList.push_back(items_arr[i]);
 	}
 	self->insertTopLevelItems(static_cast<int>(index), items_QList);
 }
 
-void QTreeWidget_AddTopLevelItems(QTreeWidget* self, QTreeWidgetItem** items, size_t items_len) {
+void QTreeWidget_AddTopLevelItems(QTreeWidget* self, struct miqt_array* /* of QTreeWidgetItem* */ items) {
 	QList<QTreeWidgetItem*> items_QList;
-	items_QList.reserve(items_len);
-	for(size_t i = 0; i < items_len; ++i) {
-		items_QList.push_back(items[i]);
+	items_QList.reserve(items->len);
+	QTreeWidgetItem** items_arr = static_cast<QTreeWidgetItem**>(items->data);
+	for(size_t i = 0; i < items->len; ++i) {
+		items_QList.push_back(items_arr[i]);
 	}
 	self->addTopLevelItems(items_QList);
 }
@@ -526,17 +522,18 @@ void QTreeWidget_SetHeaderItem(QTreeWidget* self, QTreeWidgetItem* item) {
 	self->setHeaderItem(item);
 }
 
-void QTreeWidget_SetHeaderLabels(QTreeWidget* self, char** labels, uint64_t* labels_Lengths, size_t labels_len) {
+void QTreeWidget_SetHeaderLabels(QTreeWidget* self, struct miqt_array* /* of QString */ labels) {
 	QList<QString> labels_QList;
-	labels_QList.reserve(labels_len);
-	for(size_t i = 0; i < labels_len; ++i) {
-		labels_QList.push_back(QString::fromUtf8(labels[i], labels_Lengths[i]));
+	labels_QList.reserve(labels->len);
+	miqt_string** labels_arr = static_cast<miqt_string**>(labels->data);
+	for(size_t i = 0; i < labels->len; ++i) {
+		labels_QList.push_back(QString::fromUtf8(& labels_arr[i]->data, labels_arr[i]->len));
 	}
 	self->setHeaderLabels(labels_QList);
 }
 
-void QTreeWidget_SetHeaderLabel(QTreeWidget* self, const char* label, size_t label_Strlen) {
-	QString label_QString = QString::fromUtf8(label, label_Strlen);
+void QTreeWidget_SetHeaderLabel(QTreeWidget* self, struct miqt_string* label) {
+	QString label_QString = QString::fromUtf8(&label->data, label->len);
 	self->setHeaderLabel(label_QString);
 }
 
@@ -569,9 +566,9 @@ QTreeWidgetItem* QTreeWidget_ItemAt2(const QTreeWidget* self, int x, int y) {
 }
 
 QRect* QTreeWidget_VisualItemRect(const QTreeWidget* self, QTreeWidgetItem* item) {
-	QRect ret = self->visualItemRect(item);
+	QRect _ret = self->visualItemRect(item);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(ret));
+	return static_cast<QRect*>(new QRect(_ret));
 }
 
 int QTreeWidget_SortColumn(const QTreeWidget* self) {
@@ -618,27 +615,31 @@ void QTreeWidget_SetItemSelected(QTreeWidget* self, QTreeWidgetItem* item, bool 
 	self->setItemSelected(item, selectVal);
 }
 
-void QTreeWidget_SelectedItems(const QTreeWidget* self, QTreeWidgetItem*** _out, size_t* _out_len) {
-	QList<QTreeWidgetItem*> ret = self->selectedItems();
+struct miqt_array* QTreeWidget_SelectedItems(const QTreeWidget* self) {
+	QList<QTreeWidgetItem*> _ret = self->selectedItems();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QTreeWidgetItem** __out = static_cast<QTreeWidgetItem**>(malloc(sizeof(QTreeWidgetItem*) * ret.length()));
-	for (size_t i = 0, e = ret.length(); i < e; ++i) {
-		__out[i] = ret[i];
+	QTreeWidgetItem** _arr = static_cast<QTreeWidgetItem**>(malloc(sizeof(QTreeWidgetItem*) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		_arr[i] = _ret[i];
 	}
-	*_out = __out;
-	*_out_len = ret.length();
+	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
+	_out->len = _ret.length();
+	_out->data = static_cast<void*>(_arr);
+	return _out;
 }
 
-void QTreeWidget_FindItems(const QTreeWidget* self, const char* text, size_t text_Strlen, int flags, QTreeWidgetItem*** _out, size_t* _out_len) {
-	QString text_QString = QString::fromUtf8(text, text_Strlen);
-	QList<QTreeWidgetItem*> ret = self->findItems(text_QString, static_cast<Qt::MatchFlags>(flags));
+struct miqt_array* QTreeWidget_FindItems(const QTreeWidget* self, struct miqt_string* text, int flags) {
+	QString text_QString = QString::fromUtf8(&text->data, text->len);
+	QList<QTreeWidgetItem*> _ret = self->findItems(text_QString, static_cast<Qt::MatchFlags>(flags));
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QTreeWidgetItem** __out = static_cast<QTreeWidgetItem**>(malloc(sizeof(QTreeWidgetItem*) * ret.length()));
-	for (size_t i = 0, e = ret.length(); i < e; ++i) {
-		__out[i] = ret[i];
+	QTreeWidgetItem** _arr = static_cast<QTreeWidgetItem**>(malloc(sizeof(QTreeWidgetItem*) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		_arr[i] = _ret[i];
 	}
-	*_out = __out;
-	*_out_len = ret.length();
+	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
+	_out->len = _ret.length();
+	_out->data = static_cast<void*>(_arr);
+	return _out;
 }
 
 bool QTreeWidget_IsItemHidden(const QTreeWidget* self, QTreeWidgetItem* item) {
@@ -699,7 +700,9 @@ void QTreeWidget_ItemPressed(QTreeWidget* self, QTreeWidgetItem* item, int colum
 
 void QTreeWidget_connect_ItemPressed(QTreeWidget* self, void* slot) {
 	QTreeWidget::connect(self, static_cast<void (QTreeWidget::*)(QTreeWidgetItem*, int)>(&QTreeWidget::itemPressed), self, [=](QTreeWidgetItem* item, int column) {
-		miqt_exec_callback(slot, 0, nullptr);
+		QTreeWidgetItem* sigval1 = item;
+		int sigval2 = column;
+		miqt_exec_callback_QTreeWidget_ItemPressed(slot, sigval1, sigval2);
 	});
 }
 
@@ -709,7 +712,9 @@ void QTreeWidget_ItemClicked(QTreeWidget* self, QTreeWidgetItem* item, int colum
 
 void QTreeWidget_connect_ItemClicked(QTreeWidget* self, void* slot) {
 	QTreeWidget::connect(self, static_cast<void (QTreeWidget::*)(QTreeWidgetItem*, int)>(&QTreeWidget::itemClicked), self, [=](QTreeWidgetItem* item, int column) {
-		miqt_exec_callback(slot, 0, nullptr);
+		QTreeWidgetItem* sigval1 = item;
+		int sigval2 = column;
+		miqt_exec_callback_QTreeWidget_ItemClicked(slot, sigval1, sigval2);
 	});
 }
 
@@ -719,7 +724,9 @@ void QTreeWidget_ItemDoubleClicked(QTreeWidget* self, QTreeWidgetItem* item, int
 
 void QTreeWidget_connect_ItemDoubleClicked(QTreeWidget* self, void* slot) {
 	QTreeWidget::connect(self, static_cast<void (QTreeWidget::*)(QTreeWidgetItem*, int)>(&QTreeWidget::itemDoubleClicked), self, [=](QTreeWidgetItem* item, int column) {
-		miqt_exec_callback(slot, 0, nullptr);
+		QTreeWidgetItem* sigval1 = item;
+		int sigval2 = column;
+		miqt_exec_callback_QTreeWidget_ItemDoubleClicked(slot, sigval1, sigval2);
 	});
 }
 
@@ -729,7 +736,9 @@ void QTreeWidget_ItemActivated(QTreeWidget* self, QTreeWidgetItem* item, int col
 
 void QTreeWidget_connect_ItemActivated(QTreeWidget* self, void* slot) {
 	QTreeWidget::connect(self, static_cast<void (QTreeWidget::*)(QTreeWidgetItem*, int)>(&QTreeWidget::itemActivated), self, [=](QTreeWidgetItem* item, int column) {
-		miqt_exec_callback(slot, 0, nullptr);
+		QTreeWidgetItem* sigval1 = item;
+		int sigval2 = column;
+		miqt_exec_callback_QTreeWidget_ItemActivated(slot, sigval1, sigval2);
 	});
 }
 
@@ -739,7 +748,9 @@ void QTreeWidget_ItemEntered(QTreeWidget* self, QTreeWidgetItem* item, int colum
 
 void QTreeWidget_connect_ItemEntered(QTreeWidget* self, void* slot) {
 	QTreeWidget::connect(self, static_cast<void (QTreeWidget::*)(QTreeWidgetItem*, int)>(&QTreeWidget::itemEntered), self, [=](QTreeWidgetItem* item, int column) {
-		miqt_exec_callback(slot, 0, nullptr);
+		QTreeWidgetItem* sigval1 = item;
+		int sigval2 = column;
+		miqt_exec_callback_QTreeWidget_ItemEntered(slot, sigval1, sigval2);
 	});
 }
 
@@ -749,7 +760,9 @@ void QTreeWidget_ItemChanged(QTreeWidget* self, QTreeWidgetItem* item, int colum
 
 void QTreeWidget_connect_ItemChanged(QTreeWidget* self, void* slot) {
 	QTreeWidget::connect(self, static_cast<void (QTreeWidget::*)(QTreeWidgetItem*, int)>(&QTreeWidget::itemChanged), self, [=](QTreeWidgetItem* item, int column) {
-		miqt_exec_callback(slot, 0, nullptr);
+		QTreeWidgetItem* sigval1 = item;
+		int sigval2 = column;
+		miqt_exec_callback_QTreeWidget_ItemChanged(slot, sigval1, sigval2);
 	});
 }
 
@@ -759,7 +772,8 @@ void QTreeWidget_ItemExpanded(QTreeWidget* self, QTreeWidgetItem* item) {
 
 void QTreeWidget_connect_ItemExpanded(QTreeWidget* self, void* slot) {
 	QTreeWidget::connect(self, static_cast<void (QTreeWidget::*)(QTreeWidgetItem*)>(&QTreeWidget::itemExpanded), self, [=](QTreeWidgetItem* item) {
-		miqt_exec_callback(slot, 0, nullptr);
+		QTreeWidgetItem* sigval1 = item;
+		miqt_exec_callback_QTreeWidget_ItemExpanded(slot, sigval1);
 	});
 }
 
@@ -769,7 +783,8 @@ void QTreeWidget_ItemCollapsed(QTreeWidget* self, QTreeWidgetItem* item) {
 
 void QTreeWidget_connect_ItemCollapsed(QTreeWidget* self, void* slot) {
 	QTreeWidget::connect(self, static_cast<void (QTreeWidget::*)(QTreeWidgetItem*)>(&QTreeWidget::itemCollapsed), self, [=](QTreeWidgetItem* item) {
-		miqt_exec_callback(slot, 0, nullptr);
+		QTreeWidgetItem* sigval1 = item;
+		miqt_exec_callback_QTreeWidget_ItemCollapsed(slot, sigval1);
 	});
 }
 
@@ -779,7 +794,9 @@ void QTreeWidget_CurrentItemChanged(QTreeWidget* self, QTreeWidgetItem* current,
 
 void QTreeWidget_connect_CurrentItemChanged(QTreeWidget* self, void* slot) {
 	QTreeWidget::connect(self, static_cast<void (QTreeWidget::*)(QTreeWidgetItem*, QTreeWidgetItem*)>(&QTreeWidget::currentItemChanged), self, [=](QTreeWidgetItem* current, QTreeWidgetItem* previous) {
-		miqt_exec_callback(slot, 0, nullptr);
+		QTreeWidgetItem* sigval1 = current;
+		QTreeWidgetItem* sigval2 = previous;
+		miqt_exec_callback_QTreeWidget_CurrentItemChanged(slot, sigval1, sigval2);
 	});
 }
 
@@ -789,44 +806,36 @@ void QTreeWidget_ItemSelectionChanged(QTreeWidget* self) {
 
 void QTreeWidget_connect_ItemSelectionChanged(QTreeWidget* self, void* slot) {
 	QTreeWidget::connect(self, static_cast<void (QTreeWidget::*)()>(&QTreeWidget::itemSelectionChanged), self, [=]() {
-		miqt_exec_callback(slot, 0, nullptr);
+		miqt_exec_callback_QTreeWidget_ItemSelectionChanged(slot);
 	});
 }
 
-void QTreeWidget_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QTreeWidget::tr(s, c);
+struct miqt_string* QTreeWidget_Tr2(const char* s, const char* c) {
+	QString _ret = QTreeWidget::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QTreeWidget_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QTreeWidget::tr(s, c, static_cast<int>(n));
+struct miqt_string* QTreeWidget_Tr3(const char* s, const char* c, int n) {
+	QString _ret = QTreeWidget::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QTreeWidget_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QTreeWidget::trUtf8(s, c);
+struct miqt_string* QTreeWidget_TrUtf82(const char* s, const char* c) {
+	QString _ret = QTreeWidget::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QTreeWidget_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QTreeWidget::trUtf8(s, c, static_cast<int>(n));
+struct miqt_string* QTreeWidget_TrUtf83(const char* s, const char* c, int n) {
+	QString _ret = QTreeWidget::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QTreeWidget_EditItem2(QTreeWidget* self, QTreeWidgetItem* item, int column) {
@@ -845,16 +854,18 @@ bool QTreeWidget_IsPersistentEditorOpen2(const QTreeWidget* self, QTreeWidgetIte
 	return self->isPersistentEditorOpen(item, static_cast<int>(column));
 }
 
-void QTreeWidget_FindItems3(const QTreeWidget* self, const char* text, size_t text_Strlen, int flags, int column, QTreeWidgetItem*** _out, size_t* _out_len) {
-	QString text_QString = QString::fromUtf8(text, text_Strlen);
-	QList<QTreeWidgetItem*> ret = self->findItems(text_QString, static_cast<Qt::MatchFlags>(flags), static_cast<int>(column));
+struct miqt_array* QTreeWidget_FindItems3(const QTreeWidget* self, struct miqt_string* text, int flags, int column) {
+	QString text_QString = QString::fromUtf8(&text->data, text->len);
+	QList<QTreeWidgetItem*> _ret = self->findItems(text_QString, static_cast<Qt::MatchFlags>(flags), static_cast<int>(column));
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QTreeWidgetItem** __out = static_cast<QTreeWidgetItem**>(malloc(sizeof(QTreeWidgetItem*) * ret.length()));
-	for (size_t i = 0, e = ret.length(); i < e; ++i) {
-		__out[i] = ret[i];
+	QTreeWidgetItem** _arr = static_cast<QTreeWidgetItem**>(malloc(sizeof(QTreeWidgetItem*) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		_arr[i] = _ret[i];
 	}
-	*_out = __out;
-	*_out_len = ret.length();
+	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
+	_out->len = _ret.length();
+	_out->data = static_cast<void*>(_arr);
+	return _out;
 }
 
 void QTreeWidget_ScrollToItem2(QTreeWidget* self, QTreeWidgetItem* item, uintptr_t hint) {

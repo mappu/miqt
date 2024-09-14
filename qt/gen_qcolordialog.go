@@ -70,30 +70,26 @@ func NewQColorDialog4(initial *QColor, parent *QWidget) *QColorDialog {
 }
 
 func (this *QColorDialog) MetaObject() *QMetaObject {
-	ret := C.QColorDialog_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QColorDialog_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QColorDialog_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QColorDialog_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QColorDialog_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QColorDialog_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QColorDialog_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QColorDialog_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QColorDialog) SetCurrentColor(color *QColor) {
@@ -101,25 +97,17 @@ func (this *QColorDialog) SetCurrentColor(color *QColor) {
 }
 
 func (this *QColorDialog) CurrentColor() *QColor {
-	ret := C.QColorDialog_CurrentColor(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQColor(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QColor) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QColorDialog_CurrentColor(this.h)
+	_goptr := newQColor(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QColorDialog) SelectedColor() *QColor {
-	ret := C.QColorDialog_SelectedColor(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQColor(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QColor) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QColorDialog_SelectedColor(this.h)
+	_goptr := newQColor(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QColorDialog) SetOption(option QColorDialog__ColorDialogOption) {
@@ -127,8 +115,8 @@ func (this *QColorDialog) SetOption(option QColorDialog__ColorDialogOption) {
 }
 
 func (this *QColorDialog) TestOption(option QColorDialog__ColorDialogOption) bool {
-	ret := C.QColorDialog_TestOption(this.h, (C.uintptr_t)(option))
-	return (bool)(ret)
+	_ret := C.QColorDialog_TestOption(this.h, (C.uintptr_t)(option))
+	return (bool)(_ret)
 }
 
 func (this *QColorDialog) SetOptions(options int) {
@@ -136,8 +124,8 @@ func (this *QColorDialog) SetOptions(options int) {
 }
 
 func (this *QColorDialog) Options() int {
-	ret := C.QColorDialog_Options(this.h)
-	return (int)(ret)
+	_ret := C.QColorDialog_Options(this.h)
+	return (int)(_ret)
 }
 
 func (this *QColorDialog) SetVisible(visible bool) {
@@ -145,35 +133,27 @@ func (this *QColorDialog) SetVisible(visible bool) {
 }
 
 func QColorDialog_GetColor() *QColor {
-	ret := C.QColorDialog_GetColor()
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQColor(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QColor) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QColorDialog_GetColor()
+	_goptr := newQColor(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func QColorDialog_GetRgba() uint {
-	ret := C.QColorDialog_GetRgba()
-	return (uint)(ret)
+	_ret := C.QColorDialog_GetRgba()
+	return (uint)(_ret)
 }
 
 func QColorDialog_CustomCount() int {
-	ret := C.QColorDialog_CustomCount()
-	return (int)(ret)
+	_ret := C.QColorDialog_CustomCount()
+	return (int)(_ret)
 }
 
 func QColorDialog_CustomColor(index int) *QColor {
-	ret := C.QColorDialog_CustomColor((C.int)(index))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQColor(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QColor) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QColorDialog_CustomColor((C.int)(index))
+	_goptr := newQColor(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func QColorDialog_SetCustomColor(index int, color QColor) {
@@ -181,14 +161,10 @@ func QColorDialog_SetCustomColor(index int, color QColor) {
 }
 
 func QColorDialog_StandardColor(index int) *QColor {
-	ret := C.QColorDialog_StandardColor((C.int)(index))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQColor(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QColor) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QColorDialog_StandardColor((C.int)(index))
+	_goptr := newQColor(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func QColorDialog_SetStandardColor(index int, color QColor) {
@@ -198,25 +174,43 @@ func QColorDialog_SetStandardColor(index int, color QColor) {
 func (this *QColorDialog) CurrentColorChanged(color *QColor) {
 	C.QColorDialog_CurrentColorChanged(this.h, color.cPointer())
 }
+func (this *QColorDialog) OnCurrentColorChanged(slot func(color *QColor)) {
+	C.QColorDialog_connect_CurrentColorChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QColorDialog) OnCurrentColorChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QColorDialog_CurrentColorChanged
+func miqt_exec_callback_QColorDialog_CurrentColorChanged(cb *C.void, color *C.QColor) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(color *QColor))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QColorDialog_connect_CurrentColorChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	color_ret := color
+	slotval1 := newQColor_U(unsafe.Pointer(color_ret))
+
+	gofunc(slotval1)
 }
 
 func (this *QColorDialog) ColorSelected(color *QColor) {
 	C.QColorDialog_ColorSelected(this.h, color.cPointer())
 }
+func (this *QColorDialog) OnColorSelected(slot func(color *QColor)) {
+	C.QColorDialog_connect_ColorSelected(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QColorDialog) OnColorSelected(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QColorDialog_ColorSelected
+func miqt_exec_callback_QColorDialog_ColorSelected(cb *C.void, color *C.QColor) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(color *QColor))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QColorDialog_connect_ColorSelected(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	color_ret := color
+	slotval1 := newQColor_U(unsafe.Pointer(color_ret))
+
+	gofunc(slotval1)
 }
 
 func QColorDialog_Tr2(s string, c string) string {
@@ -224,12 +218,10 @@ func QColorDialog_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QColorDialog_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QColorDialog_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QColorDialog_Tr3(s string, c string, n int) string {
@@ -237,12 +229,10 @@ func QColorDialog_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QColorDialog_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QColorDialog_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QColorDialog_TrUtf82(s string, c string) string {
@@ -250,12 +240,10 @@ func QColorDialog_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QColorDialog_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QColorDialog_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QColorDialog_TrUtf83(s string, c string, n int) string {
@@ -263,12 +251,10 @@ func QColorDialog_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QColorDialog_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QColorDialog_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QColorDialog) SetOption2(option QColorDialog__ColorDialogOption, on bool) {
@@ -276,68 +262,62 @@ func (this *QColorDialog) SetOption2(option QColorDialog__ColorDialogOption, on 
 }
 
 func QColorDialog_GetColor1(initial *QColor) *QColor {
-	ret := C.QColorDialog_GetColor1(initial.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQColor(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QColor) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QColorDialog_GetColor1(initial.cPointer())
+	_goptr := newQColor(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func QColorDialog_GetColor2(initial *QColor, parent *QWidget) *QColor {
-	ret := C.QColorDialog_GetColor2(initial.cPointer(), parent.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQColor(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QColor) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QColorDialog_GetColor2(initial.cPointer(), parent.cPointer())
+	_goptr := newQColor(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func QColorDialog_GetColor3(initial *QColor, parent *QWidget, title string) *QColor {
-	title_Cstring := C.CString(title)
-	defer C.free(unsafe.Pointer(title_Cstring))
-	ret := C.QColorDialog_GetColor3(initial.cPointer(), parent.cPointer(), title_Cstring, C.size_t(len(title)))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQColor(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QColor) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	title_ms := miqt_strdupg(title)
+	defer C.free(title_ms)
+	_ret := C.QColorDialog_GetColor3(initial.cPointer(), parent.cPointer(), (*C.struct_miqt_string)(title_ms))
+	_goptr := newQColor(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func QColorDialog_GetColor4(initial *QColor, parent *QWidget, title string, options int) *QColor {
-	title_Cstring := C.CString(title)
-	defer C.free(unsafe.Pointer(title_Cstring))
-	ret := C.QColorDialog_GetColor4(initial.cPointer(), parent.cPointer(), title_Cstring, C.size_t(len(title)), (C.int)(options))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQColor(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QColor) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	title_ms := miqt_strdupg(title)
+	defer C.free(title_ms)
+	_ret := C.QColorDialog_GetColor4(initial.cPointer(), parent.cPointer(), (*C.struct_miqt_string)(title_ms), (C.int)(options))
+	_goptr := newQColor(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func QColorDialog_GetRgba1(rgba uint) uint {
-	ret := C.QColorDialog_GetRgba1((C.uint)(rgba))
-	return (uint)(ret)
+	_ret := C.QColorDialog_GetRgba1((C.uint)(rgba))
+	return (uint)(_ret)
 }
 
 func QColorDialog_GetRgba2(rgba uint, ok *bool) uint {
-	ret := C.QColorDialog_GetRgba2((C.uint)(rgba), (*C.bool)(unsafe.Pointer(ok)))
-	return (uint)(ret)
+	_ret := C.QColorDialog_GetRgba2((C.uint)(rgba), (*C.bool)(unsafe.Pointer(ok)))
+	return (uint)(_ret)
 }
 
 func QColorDialog_GetRgba3(rgba uint, ok *bool, parent *QWidget) uint {
-	ret := C.QColorDialog_GetRgba3((C.uint)(rgba), (*C.bool)(unsafe.Pointer(ok)), parent.cPointer())
-	return (uint)(ret)
+	_ret := C.QColorDialog_GetRgba3((C.uint)(rgba), (*C.bool)(unsafe.Pointer(ok)), parent.cPointer())
+	return (uint)(_ret)
 }
 
+// Delete this object from C++ memory.
 func (this *QColorDialog) Delete() {
 	C.QColorDialog_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QColorDialog) GoGC() {
+	runtime.SetFinalizer(this, func(this *QColorDialog) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

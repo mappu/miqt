@@ -6,12 +6,8 @@
 #include <QByteArray>
 #include <cstring>
 #include "qcollator.h"
-
 #include "gen_qcollator.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QCollatorSortKey* QCollatorSortKey_new(QCollatorSortKey* other) {
 	return new QCollatorSortKey(*other);
@@ -58,14 +54,14 @@ void QCollator_SetLocale(QCollator* self, QLocale* locale) {
 }
 
 QLocale* QCollator_Locale(const QCollator* self) {
-	QLocale ret = self->locale();
+	QLocale _ret = self->locale();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QLocale*>(new QLocale(ret));
+	return static_cast<QLocale*>(new QLocale(_ret));
 }
 
 uintptr_t QCollator_CaseSensitivity(const QCollator* self) {
-	Qt::CaseSensitivity ret = self->caseSensitivity();
-	return static_cast<uintptr_t>(ret);
+	Qt::CaseSensitivity _ret = self->caseSensitivity();
+	return static_cast<uintptr_t>(_ret);
 }
 
 void QCollator_SetCaseSensitivity(QCollator* self, uintptr_t cs) {
@@ -88,9 +84,9 @@ bool QCollator_IgnorePunctuation(const QCollator* self) {
 	return self->ignorePunctuation();
 }
 
-int QCollator_Compare(const QCollator* self, const char* s1, size_t s1_Strlen, const char* s2, size_t s2_Strlen) {
-	QString s1_QString = QString::fromUtf8(s1, s1_Strlen);
-	QString s2_QString = QString::fromUtf8(s2, s2_Strlen);
+int QCollator_Compare(const QCollator* self, struct miqt_string* s1, struct miqt_string* s2) {
+	QString s1_QString = QString::fromUtf8(&s1->data, s1->len);
+	QString s2_QString = QString::fromUtf8(&s2->data, s2->len);
 	return self->compare(s1_QString, s2_QString);
 }
 
@@ -98,17 +94,17 @@ int QCollator_Compare3(const QCollator* self, QChar* s1, int len1, QChar* s2, in
 	return self->compare(s1, static_cast<int>(len1), s2, static_cast<int>(len2));
 }
 
-bool QCollator_OperatorCall(const QCollator* self, const char* s1, size_t s1_Strlen, const char* s2, size_t s2_Strlen) {
-	QString s1_QString = QString::fromUtf8(s1, s1_Strlen);
-	QString s2_QString = QString::fromUtf8(s2, s2_Strlen);
+bool QCollator_OperatorCall(const QCollator* self, struct miqt_string* s1, struct miqt_string* s2) {
+	QString s1_QString = QString::fromUtf8(&s1->data, s1->len);
+	QString s2_QString = QString::fromUtf8(&s2->data, s2->len);
 	return self->operator()(s1_QString, s2_QString);
 }
 
-QCollatorSortKey* QCollator_SortKey(const QCollator* self, const char* stringVal, size_t stringVal_Strlen) {
-	QString stringVal_QString = QString::fromUtf8(stringVal, stringVal_Strlen);
-	QCollatorSortKey ret = self->sortKey(stringVal_QString);
+QCollatorSortKey* QCollator_SortKey(const QCollator* self, struct miqt_string* stringVal) {
+	QString stringVal_QString = QString::fromUtf8(&stringVal->data, stringVal->len);
+	QCollatorSortKey _ret = self->sortKey(stringVal_QString);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCollatorSortKey*>(new QCollatorSortKey(ret));
+	return static_cast<QCollatorSortKey*>(new QCollatorSortKey(_ret));
 }
 
 void QCollator_Delete(QCollator* self) {

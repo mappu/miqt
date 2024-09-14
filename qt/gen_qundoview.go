@@ -73,55 +73,49 @@ func NewQUndoView6(group *QUndoGroup, parent *QWidget) *QUndoView {
 }
 
 func (this *QUndoView) MetaObject() *QMetaObject {
-	ret := C.QUndoView_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QUndoView_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QUndoView_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QUndoView_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QUndoView_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QUndoView_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QUndoView_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QUndoView_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QUndoView) Stack() *QUndoStack {
-	ret := C.QUndoView_Stack(this.h)
-	return newQUndoStack_U(unsafe.Pointer(ret))
+	_ret := C.QUndoView_Stack(this.h)
+	return newQUndoStack_U(unsafe.Pointer(_ret))
 }
 
 func (this *QUndoView) Group() *QUndoGroup {
-	ret := C.QUndoView_Group(this.h)
-	return newQUndoGroup_U(unsafe.Pointer(ret))
+	_ret := C.QUndoView_Group(this.h)
+	return newQUndoGroup_U(unsafe.Pointer(_ret))
 }
 
 func (this *QUndoView) SetEmptyLabel(label string) {
-	label_Cstring := C.CString(label)
-	defer C.free(unsafe.Pointer(label_Cstring))
-	C.QUndoView_SetEmptyLabel(this.h, label_Cstring, C.size_t(len(label)))
+	label_ms := miqt_strdupg(label)
+	defer C.free(label_ms)
+	C.QUndoView_SetEmptyLabel(this.h, (*C.struct_miqt_string)(label_ms))
 }
 
 func (this *QUndoView) EmptyLabel() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QUndoView_EmptyLabel(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QUndoView_EmptyLabel(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QUndoView) SetCleanIcon(icon *QIcon) {
@@ -129,14 +123,10 @@ func (this *QUndoView) SetCleanIcon(icon *QIcon) {
 }
 
 func (this *QUndoView) CleanIcon() *QIcon {
-	ret := C.QUndoView_CleanIcon(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQIcon(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QIcon) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QUndoView_CleanIcon(this.h)
+	_goptr := newQIcon(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QUndoView) SetStack(stack *QUndoStack) {
@@ -152,12 +142,10 @@ func QUndoView_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QUndoView_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QUndoView_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QUndoView_Tr3(s string, c string, n int) string {
@@ -165,12 +153,10 @@ func QUndoView_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QUndoView_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QUndoView_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QUndoView_TrUtf82(s string, c string) string {
@@ -178,12 +164,10 @@ func QUndoView_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QUndoView_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QUndoView_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QUndoView_TrUtf83(s string, c string, n int) string {
@@ -191,14 +175,22 @@ func QUndoView_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QUndoView_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QUndoView_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
+// Delete this object from C++ memory.
 func (this *QUndoView) Delete() {
 	C.QUndoView_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QUndoView) GoGC() {
+	runtime.SetFinalizer(this, func(this *QUndoView) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

@@ -5,33 +5,25 @@
 #include <cstring>
 #include <QStyleHints>
 #include "qstylehints.h"
-
 #include "gen_qstylehints.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QMetaObject* QStyleHints_MetaObject(const QStyleHints* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void QStyleHints_Tr(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QStyleHints::tr(s);
+struct miqt_string* QStyleHints_Tr(const char* s) {
+	QString _ret = QStyleHints::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QStyleHints_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QStyleHints::trUtf8(s);
+struct miqt_string* QStyleHints_TrUtf8(const char* s) {
+	QString _ret = QStyleHints::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QStyleHints_SetMouseDoubleClickInterval(QStyleHints* self, int mouseDoubleClickInterval) {
@@ -119,9 +111,9 @@ int QStyleHints_PasswordMaskDelay(const QStyleHints* self) {
 }
 
 QChar* QStyleHints_PasswordMaskCharacter(const QStyleHints* self) {
-	QChar ret = self->passwordMaskCharacter();
+	QChar _ret = self->passwordMaskCharacter();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QChar*>(new QChar(ret));
+	return static_cast<QChar*>(new QChar(_ret));
 }
 
 double QStyleHints_FontSmoothingGamma(const QStyleHints* self) {
@@ -137,8 +129,8 @@ bool QStyleHints_SetFocusOnTouchRelease(const QStyleHints* self) {
 }
 
 uintptr_t QStyleHints_TabFocusBehavior(const QStyleHints* self) {
-	Qt::TabFocusBehavior ret = self->tabFocusBehavior();
-	return static_cast<uintptr_t>(ret);
+	Qt::TabFocusBehavior _ret = self->tabFocusBehavior();
+	return static_cast<uintptr_t>(_ret);
 }
 
 void QStyleHints_SetTabFocusBehavior(QStyleHints* self, uintptr_t tabFocusBehavior) {
@@ -179,7 +171,8 @@ void QStyleHints_CursorFlashTimeChanged(QStyleHints* self, int cursorFlashTime) 
 
 void QStyleHints_connect_CursorFlashTimeChanged(QStyleHints* self, void* slot) {
 	QStyleHints::connect(self, static_cast<void (QStyleHints::*)(int)>(&QStyleHints::cursorFlashTimeChanged), self, [=](int cursorFlashTime) {
-		miqt_exec_callback(slot, 0, nullptr);
+		int sigval1 = cursorFlashTime;
+		miqt_exec_callback_QStyleHints_CursorFlashTimeChanged(slot, sigval1);
 	});
 }
 
@@ -189,7 +182,8 @@ void QStyleHints_KeyboardInputIntervalChanged(QStyleHints* self, int keyboardInp
 
 void QStyleHints_connect_KeyboardInputIntervalChanged(QStyleHints* self, void* slot) {
 	QStyleHints::connect(self, static_cast<void (QStyleHints::*)(int)>(&QStyleHints::keyboardInputIntervalChanged), self, [=](int keyboardInputInterval) {
-		miqt_exec_callback(slot, 0, nullptr);
+		int sigval1 = keyboardInputInterval;
+		miqt_exec_callback_QStyleHints_KeyboardInputIntervalChanged(slot, sigval1);
 	});
 }
 
@@ -199,7 +193,8 @@ void QStyleHints_MouseDoubleClickIntervalChanged(QStyleHints* self, int mouseDou
 
 void QStyleHints_connect_MouseDoubleClickIntervalChanged(QStyleHints* self, void* slot) {
 	QStyleHints::connect(self, static_cast<void (QStyleHints::*)(int)>(&QStyleHints::mouseDoubleClickIntervalChanged), self, [=](int mouseDoubleClickInterval) {
-		miqt_exec_callback(slot, 0, nullptr);
+		int sigval1 = mouseDoubleClickInterval;
+		miqt_exec_callback_QStyleHints_MouseDoubleClickIntervalChanged(slot, sigval1);
 	});
 }
 
@@ -209,7 +204,8 @@ void QStyleHints_MousePressAndHoldIntervalChanged(QStyleHints* self, int mousePr
 
 void QStyleHints_connect_MousePressAndHoldIntervalChanged(QStyleHints* self, void* slot) {
 	QStyleHints::connect(self, static_cast<void (QStyleHints::*)(int)>(&QStyleHints::mousePressAndHoldIntervalChanged), self, [=](int mousePressAndHoldInterval) {
-		miqt_exec_callback(slot, 0, nullptr);
+		int sigval1 = mousePressAndHoldInterval;
+		miqt_exec_callback_QStyleHints_MousePressAndHoldIntervalChanged(slot, sigval1);
 	});
 }
 
@@ -219,7 +215,8 @@ void QStyleHints_StartDragDistanceChanged(QStyleHints* self, int startDragDistan
 
 void QStyleHints_connect_StartDragDistanceChanged(QStyleHints* self, void* slot) {
 	QStyleHints::connect(self, static_cast<void (QStyleHints::*)(int)>(&QStyleHints::startDragDistanceChanged), self, [=](int startDragDistance) {
-		miqt_exec_callback(slot, 0, nullptr);
+		int sigval1 = startDragDistance;
+		miqt_exec_callback_QStyleHints_StartDragDistanceChanged(slot, sigval1);
 	});
 }
 
@@ -229,7 +226,8 @@ void QStyleHints_StartDragTimeChanged(QStyleHints* self, int startDragTime) {
 
 void QStyleHints_connect_StartDragTimeChanged(QStyleHints* self, void* slot) {
 	QStyleHints::connect(self, static_cast<void (QStyleHints::*)(int)>(&QStyleHints::startDragTimeChanged), self, [=](int startDragTime) {
-		miqt_exec_callback(slot, 0, nullptr);
+		int sigval1 = startDragTime;
+		miqt_exec_callback_QStyleHints_StartDragTimeChanged(slot, sigval1);
 	});
 }
 
@@ -239,7 +237,9 @@ void QStyleHints_TabFocusBehaviorChanged(QStyleHints* self, uintptr_t tabFocusBe
 
 void QStyleHints_connect_TabFocusBehaviorChanged(QStyleHints* self, void* slot) {
 	QStyleHints::connect(self, static_cast<void (QStyleHints::*)(Qt::TabFocusBehavior)>(&QStyleHints::tabFocusBehaviorChanged), self, [=](Qt::TabFocusBehavior tabFocusBehavior) {
-		miqt_exec_callback(slot, 0, nullptr);
+		Qt::TabFocusBehavior tabFocusBehavior_ret = tabFocusBehavior;
+		uintptr_t sigval1 = static_cast<uintptr_t>(tabFocusBehavior_ret);
+		miqt_exec_callback_QStyleHints_TabFocusBehaviorChanged(slot, sigval1);
 	});
 }
 
@@ -249,7 +249,8 @@ void QStyleHints_UseHoverEffectsChanged(QStyleHints* self, bool useHoverEffects)
 
 void QStyleHints_connect_UseHoverEffectsChanged(QStyleHints* self, void* slot) {
 	QStyleHints::connect(self, static_cast<void (QStyleHints::*)(bool)>(&QStyleHints::useHoverEffectsChanged), self, [=](bool useHoverEffects) {
-		miqt_exec_callback(slot, 0, nullptr);
+		bool sigval1 = useHoverEffects;
+		miqt_exec_callback_QStyleHints_UseHoverEffectsChanged(slot, sigval1);
 	});
 }
 
@@ -259,7 +260,8 @@ void QStyleHints_ShowShortcutsInContextMenusChanged(QStyleHints* self, bool para
 
 void QStyleHints_connect_ShowShortcutsInContextMenusChanged(QStyleHints* self, void* slot) {
 	QStyleHints::connect(self, static_cast<void (QStyleHints::*)(bool)>(&QStyleHints::showShortcutsInContextMenusChanged), self, [=](bool param1) {
-		miqt_exec_callback(slot, 0, nullptr);
+		bool sigval1 = param1;
+		miqt_exec_callback_QStyleHints_ShowShortcutsInContextMenusChanged(slot, sigval1);
 	});
 }
 
@@ -269,7 +271,8 @@ void QStyleHints_WheelScrollLinesChanged(QStyleHints* self, int scrollLines) {
 
 void QStyleHints_connect_WheelScrollLinesChanged(QStyleHints* self, void* slot) {
 	QStyleHints::connect(self, static_cast<void (QStyleHints::*)(int)>(&QStyleHints::wheelScrollLinesChanged), self, [=](int scrollLines) {
-		miqt_exec_callback(slot, 0, nullptr);
+		int sigval1 = scrollLines;
+		miqt_exec_callback_QStyleHints_WheelScrollLinesChanged(slot, sigval1);
 	});
 }
 
@@ -279,44 +282,37 @@ void QStyleHints_MouseQuickSelectionThresholdChanged(QStyleHints* self, int thre
 
 void QStyleHints_connect_MouseQuickSelectionThresholdChanged(QStyleHints* self, void* slot) {
 	QStyleHints::connect(self, static_cast<void (QStyleHints::*)(int)>(&QStyleHints::mouseQuickSelectionThresholdChanged), self, [=](int threshold) {
-		miqt_exec_callback(slot, 0, nullptr);
+		int sigval1 = threshold;
+		miqt_exec_callback_QStyleHints_MouseQuickSelectionThresholdChanged(slot, sigval1);
 	});
 }
 
-void QStyleHints_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QStyleHints::tr(s, c);
+struct miqt_string* QStyleHints_Tr2(const char* s, const char* c) {
+	QString _ret = QStyleHints::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QStyleHints_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QStyleHints::tr(s, c, static_cast<int>(n));
+struct miqt_string* QStyleHints_Tr3(const char* s, const char* c, int n) {
+	QString _ret = QStyleHints::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QStyleHints_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QStyleHints::trUtf8(s, c);
+struct miqt_string* QStyleHints_TrUtf82(const char* s, const char* c) {
+	QString _ret = QStyleHints::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QStyleHints_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QStyleHints::trUtf8(s, c, static_cast<int>(n));
+struct miqt_string* QStyleHints_TrUtf83(const char* s, const char* c, int n) {
+	QString _ret = QStyleHints::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QStyleHints_Delete(QStyleHints* self) {

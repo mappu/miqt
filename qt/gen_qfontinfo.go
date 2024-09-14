@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"runtime"
 	"unsafe"
 )
 
@@ -55,93 +56,99 @@ func (this *QFontInfo) Swap(other *QFontInfo) {
 }
 
 func (this *QFontInfo) Family() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QFontInfo_Family(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QFontInfo_Family(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QFontInfo) StyleName() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QFontInfo_StyleName(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QFontInfo_StyleName(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QFontInfo) PixelSize() int {
-	ret := C.QFontInfo_PixelSize(this.h)
-	return (int)(ret)
+	_ret := C.QFontInfo_PixelSize(this.h)
+	return (int)(_ret)
 }
 
 func (this *QFontInfo) PointSize() int {
-	ret := C.QFontInfo_PointSize(this.h)
-	return (int)(ret)
+	_ret := C.QFontInfo_PointSize(this.h)
+	return (int)(_ret)
 }
 
 func (this *QFontInfo) PointSizeF() float64 {
-	ret := C.QFontInfo_PointSizeF(this.h)
-	return (float64)(ret)
+	_ret := C.QFontInfo_PointSizeF(this.h)
+	return (float64)(_ret)
 }
 
 func (this *QFontInfo) Italic() bool {
-	ret := C.QFontInfo_Italic(this.h)
-	return (bool)(ret)
+	_ret := C.QFontInfo_Italic(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QFontInfo) Style() QFont__Style {
-	ret := C.QFontInfo_Style(this.h)
-	return (QFont__Style)(ret)
+	_ret := C.QFontInfo_Style(this.h)
+	return (QFont__Style)(_ret)
 }
 
 func (this *QFontInfo) Weight() int {
-	ret := C.QFontInfo_Weight(this.h)
-	return (int)(ret)
+	_ret := C.QFontInfo_Weight(this.h)
+	return (int)(_ret)
 }
 
 func (this *QFontInfo) Bold() bool {
-	ret := C.QFontInfo_Bold(this.h)
-	return (bool)(ret)
+	_ret := C.QFontInfo_Bold(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QFontInfo) Underline() bool {
-	ret := C.QFontInfo_Underline(this.h)
-	return (bool)(ret)
+	_ret := C.QFontInfo_Underline(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QFontInfo) Overline() bool {
-	ret := C.QFontInfo_Overline(this.h)
-	return (bool)(ret)
+	_ret := C.QFontInfo_Overline(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QFontInfo) StrikeOut() bool {
-	ret := C.QFontInfo_StrikeOut(this.h)
-	return (bool)(ret)
+	_ret := C.QFontInfo_StrikeOut(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QFontInfo) FixedPitch() bool {
-	ret := C.QFontInfo_FixedPitch(this.h)
-	return (bool)(ret)
+	_ret := C.QFontInfo_FixedPitch(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QFontInfo) StyleHint() QFont__StyleHint {
-	ret := C.QFontInfo_StyleHint(this.h)
-	return (QFont__StyleHint)(ret)
+	_ret := C.QFontInfo_StyleHint(this.h)
+	return (QFont__StyleHint)(_ret)
 }
 
 func (this *QFontInfo) RawMode() bool {
-	ret := C.QFontInfo_RawMode(this.h)
-	return (bool)(ret)
+	_ret := C.QFontInfo_RawMode(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QFontInfo) ExactMatch() bool {
-	ret := C.QFontInfo_ExactMatch(this.h)
-	return (bool)(ret)
+	_ret := C.QFontInfo_ExactMatch(this.h)
+	return (bool)(_ret)
 }
 
+// Delete this object from C++ memory.
 func (this *QFontInfo) Delete() {
 	C.QFontInfo_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QFontInfo) GoGC() {
+	runtime.SetFinalizer(this, func(this *QFontInfo) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

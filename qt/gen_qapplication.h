@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -44,11 +46,11 @@ typedef struct QWidget QWidget;
 QApplication* QApplication_new(int* argc, char** argv);
 QApplication* QApplication_new2(int* argc, char** argv, int param3);
 QMetaObject* QApplication_MetaObject(const QApplication* self);
-void QApplication_Tr(const char* s, char** _out, int* _out_Strlen);
-void QApplication_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QApplication_Tr(const char* s);
+struct miqt_string* QApplication_TrUtf8(const char* s);
 QStyle* QApplication_Style();
 void QApplication_SetStyle(QStyle* style);
-QStyle* QApplication_SetStyleWithStyle(const char* style, size_t style_Strlen);
+QStyle* QApplication_SetStyleWithStyle(struct miqt_string* style);
 int QApplication_ColorSpec();
 void QApplication_SetColorSpec(int colorSpec);
 QPalette* QApplication_Palette(QWidget* param1);
@@ -61,8 +63,8 @@ void QApplication_SetFont(QFont* param1);
 QFontMetrics* QApplication_FontMetrics();
 void QApplication_SetWindowIcon(QIcon* icon);
 QIcon* QApplication_WindowIcon();
-void QApplication_AllWidgets(QWidget*** _out, size_t* _out_len);
-void QApplication_TopLevelWidgets(QWidget*** _out, size_t* _out_len);
+struct miqt_array* QApplication_AllWidgets();
+struct miqt_array* QApplication_TopLevelWidgets();
 QDesktopWidget* QApplication_Desktop();
 QWidget* QApplication_ActivePopupWidget();
 QWidget* QApplication_ActiveModalWidget();
@@ -95,16 +97,16 @@ int QApplication_Exec();
 bool QApplication_Notify(QApplication* self, QObject* param1, QEvent* param2);
 void QApplication_FocusChanged(QApplication* self, QWidget* old, QWidget* now);
 void QApplication_connect_FocusChanged(QApplication* self, void* slot);
-void QApplication_StyleSheet(const QApplication* self, char** _out, int* _out_Strlen);
-void QApplication_SetStyleSheet(QApplication* self, const char* sheet, size_t sheet_Strlen);
+struct miqt_string* QApplication_StyleSheet(const QApplication* self);
+void QApplication_SetStyleSheet(QApplication* self, struct miqt_string* sheet);
 void QApplication_SetAutoSipEnabled(QApplication* self, const bool enabled);
 bool QApplication_AutoSipEnabled(const QApplication* self);
 void QApplication_CloseAllWindows();
 void QApplication_AboutQt();
-void QApplication_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QApplication_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QApplication_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QApplication_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QApplication_Tr2(const char* s, const char* c);
+struct miqt_string* QApplication_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QApplication_TrUtf82(const char* s, const char* c);
+struct miqt_string* QApplication_TrUtf83(const char* s, const char* c, int n);
 void QApplication_SetPalette2(QPalette* param1, const char* className);
 void QApplication_SetFont2(QFont* param1, const char* className);
 void QApplication_Alert2(QWidget* widget, int duration);

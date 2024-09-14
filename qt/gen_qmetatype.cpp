@@ -10,12 +10,8 @@
 #define WORKAROUND_INNER_CLASS_DEFINITION_QtPrivate__AbstractConverterFunction
 #define WORKAROUND_INNER_CLASS_DEFINITION_QtPrivate__AbstractDebugStreamFunction
 #include "qmetatype.h"
-
 #include "gen_qmetatype.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QtPrivate__AbstractDebugStreamFunction* QtPrivate__AbstractDebugStreamFunction_new() {
 	return new QtPrivate::AbstractDebugStreamFunction();
@@ -78,8 +74,8 @@ int QMetaType_SizeOf(int typeVal) {
 }
 
 int QMetaType_TypeFlags(int typeVal) {
-	QMetaType::TypeFlags ret = QMetaType::typeFlags(static_cast<int>(typeVal));
-	return static_cast<int>(ret);
+	QMetaType::TypeFlags _ret = QMetaType::typeFlags(static_cast<int>(typeVal));
+	return static_cast<int>(_ret);
 }
 
 QMetaObject* QMetaType_MetaObjectForType(int typeVal) {
@@ -107,8 +103,8 @@ int QMetaType_SizeOf2(const QMetaType* self) {
 }
 
 int QMetaType_Flags(const QMetaType* self) {
-	QMetaType::TypeFlags ret = self->flags();
-	return static_cast<int>(ret);
+	QMetaType::TypeFlags _ret = self->flags();
+	return static_cast<int>(_ret);
 }
 
 QMetaObject* QMetaType_MetaObject(const QMetaType* self) {
@@ -116,9 +112,9 @@ QMetaObject* QMetaType_MetaObject(const QMetaType* self) {
 }
 
 QByteArray* QMetaType_Name(const QMetaType* self) {
-	QByteArray ret = self->name();
+	QByteArray _ret = self->name();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(ret));
+	return static_cast<QByteArray*>(new QByteArray(_ret));
 }
 
 bool QMetaType_HasRegisteredComparators(int typeId) {
@@ -158,8 +154,8 @@ QtMetaTypePrivate__QSequentialIterableImpl* QtMetaTypePrivate__QSequentialIterab
 }
 
 uintptr_t QtMetaTypePrivate__QSequentialIterableImpl_IteratorCapabilities(QtMetaTypePrivate__QSequentialIterableImpl* self) {
-	QtMetaTypePrivate::IteratorCapability ret = self->iteratorCapabilities();
-	return static_cast<uintptr_t>(ret);
+	QtMetaTypePrivate::IteratorCapability _ret = self->iteratorCapabilities();
+	return static_cast<uintptr_t>(_ret);
 }
 
 unsigned int QtMetaTypePrivate__QSequentialIterableImpl_Revision(QtMetaTypePrivate__QSequentialIterableImpl* self) {
@@ -183,15 +179,15 @@ bool QtMetaTypePrivate__QSequentialIterableImpl_Equal(const QtMetaTypePrivate__Q
 }
 
 QtMetaTypePrivate__VariantData* QtMetaTypePrivate__QSequentialIterableImpl_GetCurrent(const QtMetaTypePrivate__QSequentialIterableImpl* self) {
-	QtMetaTypePrivate::VariantData ret = self->getCurrent();
+	QtMetaTypePrivate::VariantData _ret = self->getCurrent();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QtMetaTypePrivate::VariantData*>(new QtMetaTypePrivate::VariantData(ret));
+	return static_cast<QtMetaTypePrivate::VariantData*>(new QtMetaTypePrivate::VariantData(_ret));
 }
 
 QtMetaTypePrivate__VariantData* QtMetaTypePrivate__QSequentialIterableImpl_At(const QtMetaTypePrivate__QSequentialIterableImpl* self, int idx) {
-	QtMetaTypePrivate::VariantData ret = self->at(static_cast<int>(idx));
+	QtMetaTypePrivate::VariantData _ret = self->at(static_cast<int>(idx));
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QtMetaTypePrivate::VariantData*>(new QtMetaTypePrivate::VariantData(ret));
+	return static_cast<QtMetaTypePrivate::VariantData*>(new QtMetaTypePrivate::VariantData(_ret));
 }
 
 int QtMetaTypePrivate__QSequentialIterableImpl_Size(const QtMetaTypePrivate__QSequentialIterableImpl* self) {
@@ -235,15 +231,15 @@ void QtMetaTypePrivate__QAssociativeIterableImpl_DestroyIter(QtMetaTypePrivate__
 }
 
 QtMetaTypePrivate__VariantData* QtMetaTypePrivate__QAssociativeIterableImpl_GetCurrentKey(const QtMetaTypePrivate__QAssociativeIterableImpl* self) {
-	QtMetaTypePrivate::VariantData ret = self->getCurrentKey();
+	QtMetaTypePrivate::VariantData _ret = self->getCurrentKey();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QtMetaTypePrivate::VariantData*>(new QtMetaTypePrivate::VariantData(ret));
+	return static_cast<QtMetaTypePrivate::VariantData*>(new QtMetaTypePrivate::VariantData(_ret));
 }
 
 QtMetaTypePrivate__VariantData* QtMetaTypePrivate__QAssociativeIterableImpl_GetCurrentValue(const QtMetaTypePrivate__QAssociativeIterableImpl* self) {
-	QtMetaTypePrivate::VariantData ret = self->getCurrentValue();
+	QtMetaTypePrivate::VariantData _ret = self->getCurrentValue();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QtMetaTypePrivate::VariantData*>(new QtMetaTypePrivate::VariantData(ret));
+	return static_cast<QtMetaTypePrivate::VariantData*>(new QtMetaTypePrivate::VariantData(_ret));
 }
 
 void QtMetaTypePrivate__QAssociativeIterableImpl_Find(QtMetaTypePrivate__QAssociativeIterableImpl* self, QtMetaTypePrivate__VariantData* key) {
@@ -271,15 +267,15 @@ QtMetaTypePrivate__QPairVariantInterfaceImpl* QtMetaTypePrivate__QPairVariantInt
 }
 
 QtMetaTypePrivate__VariantData* QtMetaTypePrivate__QPairVariantInterfaceImpl_First(const QtMetaTypePrivate__QPairVariantInterfaceImpl* self) {
-	QtMetaTypePrivate::VariantData ret = self->first();
+	QtMetaTypePrivate::VariantData _ret = self->first();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QtMetaTypePrivate::VariantData*>(new QtMetaTypePrivate::VariantData(ret));
+	return static_cast<QtMetaTypePrivate::VariantData*>(new QtMetaTypePrivate::VariantData(_ret));
 }
 
 QtMetaTypePrivate__VariantData* QtMetaTypePrivate__QPairVariantInterfaceImpl_Second(const QtMetaTypePrivate__QPairVariantInterfaceImpl* self) {
-	QtMetaTypePrivate::VariantData ret = self->second();
+	QtMetaTypePrivate::VariantData _ret = self->second();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QtMetaTypePrivate::VariantData*>(new QtMetaTypePrivate::VariantData(ret));
+	return static_cast<QtMetaTypePrivate::VariantData*>(new QtMetaTypePrivate::VariantData(_ret));
 }
 
 void QtMetaTypePrivate__QPairVariantInterfaceImpl_Delete(QtMetaTypePrivate__QPairVariantInterfaceImpl* self) {

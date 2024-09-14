@@ -5,77 +5,61 @@
 #include <QByteArray>
 #include <cstring>
 #include "qiconengineplugin.h"
-
 #include "gen_qiconengineplugin.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QMetaObject* QIconEnginePlugin_MetaObject(const QIconEnginePlugin* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void QIconEnginePlugin_Tr(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QIconEnginePlugin::tr(s);
+struct miqt_string* QIconEnginePlugin_Tr(const char* s) {
+	QString _ret = QIconEnginePlugin::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QIconEnginePlugin_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QIconEnginePlugin::trUtf8(s);
+struct miqt_string* QIconEnginePlugin_TrUtf8(const char* s) {
+	QString _ret = QIconEnginePlugin::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 QIconEngine* QIconEnginePlugin_Create(QIconEnginePlugin* self) {
 	return self->create();
 }
 
-void QIconEnginePlugin_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QIconEnginePlugin::tr(s, c);
+struct miqt_string* QIconEnginePlugin_Tr2(const char* s, const char* c) {
+	QString _ret = QIconEnginePlugin::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QIconEnginePlugin_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QIconEnginePlugin::tr(s, c, static_cast<int>(n));
+struct miqt_string* QIconEnginePlugin_Tr3(const char* s, const char* c, int n) {
+	QString _ret = QIconEnginePlugin::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QIconEnginePlugin_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QIconEnginePlugin::trUtf8(s, c);
+struct miqt_string* QIconEnginePlugin_TrUtf82(const char* s, const char* c) {
+	QString _ret = QIconEnginePlugin::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QIconEnginePlugin_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QIconEnginePlugin::trUtf8(s, c, static_cast<int>(n));
+struct miqt_string* QIconEnginePlugin_TrUtf83(const char* s, const char* c, int n) {
+	QString _ret = QIconEnginePlugin::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-QIconEngine* QIconEnginePlugin_Create1(QIconEnginePlugin* self, const char* filename, size_t filename_Strlen) {
-	QString filename_QString = QString::fromUtf8(filename, filename_Strlen);
+QIconEngine* QIconEnginePlugin_Create1(QIconEnginePlugin* self, struct miqt_string* filename) {
+	QString filename_QString = QString::fromUtf8(&filename->data, filename->len);
 	return self->create(filename_QString);
 }
 

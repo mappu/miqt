@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -26,12 +28,12 @@ typedef struct QWidget QWidget;
 QProgressBar* QProgressBar_new();
 QProgressBar* QProgressBar_new2(QWidget* parent);
 QMetaObject* QProgressBar_MetaObject(const QProgressBar* self);
-void QProgressBar_Tr(const char* s, char** _out, int* _out_Strlen);
-void QProgressBar_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QProgressBar_Tr(const char* s);
+struct miqt_string* QProgressBar_TrUtf8(const char* s);
 int QProgressBar_Minimum(const QProgressBar* self);
 int QProgressBar_Maximum(const QProgressBar* self);
 int QProgressBar_Value(const QProgressBar* self);
-void QProgressBar_Text(const QProgressBar* self, char** _out, int* _out_Strlen);
+struct miqt_string* QProgressBar_Text(const QProgressBar* self);
 void QProgressBar_SetTextVisible(QProgressBar* self, bool visible);
 bool QProgressBar_IsTextVisible(const QProgressBar* self);
 int QProgressBar_Alignment(const QProgressBar* self);
@@ -43,9 +45,9 @@ void QProgressBar_SetInvertedAppearance(QProgressBar* self, bool invert);
 bool QProgressBar_InvertedAppearance(const QProgressBar* self);
 void QProgressBar_SetTextDirection(QProgressBar* self, uintptr_t textDirection);
 uintptr_t QProgressBar_TextDirection(const QProgressBar* self);
-void QProgressBar_SetFormat(QProgressBar* self, const char* format, size_t format_Strlen);
+void QProgressBar_SetFormat(QProgressBar* self, struct miqt_string* format);
 void QProgressBar_ResetFormat(QProgressBar* self);
-void QProgressBar_Format(const QProgressBar* self, char** _out, int* _out_Strlen);
+struct miqt_string* QProgressBar_Format(const QProgressBar* self);
 void QProgressBar_Reset(QProgressBar* self);
 void QProgressBar_SetRange(QProgressBar* self, int minimum, int maximum);
 void QProgressBar_SetMinimum(QProgressBar* self, int minimum);
@@ -54,10 +56,10 @@ void QProgressBar_SetValue(QProgressBar* self, int value);
 void QProgressBar_SetOrientation(QProgressBar* self, uintptr_t orientation);
 void QProgressBar_ValueChanged(QProgressBar* self, int value);
 void QProgressBar_connect_ValueChanged(QProgressBar* self, void* slot);
-void QProgressBar_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QProgressBar_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QProgressBar_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QProgressBar_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QProgressBar_Tr2(const char* s, const char* c);
+struct miqt_string* QProgressBar_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QProgressBar_TrUtf82(const char* s, const char* c);
+struct miqt_string* QProgressBar_TrUtf83(const char* s, const char* c, int n);
 void QProgressBar_Delete(QProgressBar* self);
 
 #ifdef __cplusplus

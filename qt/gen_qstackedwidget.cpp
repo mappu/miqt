@@ -5,12 +5,8 @@
 #include <cstring>
 #include <QWidget>
 #include "qstackedwidget.h"
-
 #include "gen_qstackedwidget.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QStackedWidget* QStackedWidget_new() {
 	return new QStackedWidget();
@@ -24,22 +20,18 @@ QMetaObject* QStackedWidget_MetaObject(const QStackedWidget* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void QStackedWidget_Tr(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QStackedWidget::tr(s);
+struct miqt_string* QStackedWidget_Tr(const char* s) {
+	QString _ret = QStackedWidget::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QStackedWidget_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QStackedWidget::trUtf8(s);
+struct miqt_string* QStackedWidget_TrUtf8(const char* s) {
+	QString _ret = QStackedWidget::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 int QStackedWidget_AddWidget(QStackedWidget* self, QWidget* w) {
@@ -88,7 +80,8 @@ void QStackedWidget_CurrentChanged(QStackedWidget* self, int param1) {
 
 void QStackedWidget_connect_CurrentChanged(QStackedWidget* self, void* slot) {
 	QStackedWidget::connect(self, static_cast<void (QStackedWidget::*)(int)>(&QStackedWidget::currentChanged), self, [=](int param1) {
-		miqt_exec_callback(slot, 0, nullptr);
+		int sigval1 = param1;
+		miqt_exec_callback_QStackedWidget_CurrentChanged(slot, sigval1);
 	});
 }
 
@@ -98,44 +91,37 @@ void QStackedWidget_WidgetRemoved(QStackedWidget* self, int index) {
 
 void QStackedWidget_connect_WidgetRemoved(QStackedWidget* self, void* slot) {
 	QStackedWidget::connect(self, static_cast<void (QStackedWidget::*)(int)>(&QStackedWidget::widgetRemoved), self, [=](int index) {
-		miqt_exec_callback(slot, 0, nullptr);
+		int sigval1 = index;
+		miqt_exec_callback_QStackedWidget_WidgetRemoved(slot, sigval1);
 	});
 }
 
-void QStackedWidget_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QStackedWidget::tr(s, c);
+struct miqt_string* QStackedWidget_Tr2(const char* s, const char* c) {
+	QString _ret = QStackedWidget::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QStackedWidget_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QStackedWidget::tr(s, c, static_cast<int>(n));
+struct miqt_string* QStackedWidget_Tr3(const char* s, const char* c, int n) {
+	QString _ret = QStackedWidget::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QStackedWidget_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QStackedWidget::trUtf8(s, c);
+struct miqt_string* QStackedWidget_TrUtf82(const char* s, const char* c) {
+	QString _ret = QStackedWidget::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QStackedWidget_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QStackedWidget::trUtf8(s, c, static_cast<int>(n));
+struct miqt_string* QStackedWidget_TrUtf83(const char* s, const char* c, int n) {
+	QString _ret = QStackedWidget::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QStackedWidget_Delete(QStackedWidget* self) {

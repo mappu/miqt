@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"runtime"
 	"unsafe"
 )
 
@@ -64,9 +65,9 @@ func NewQSharedMemory() *QSharedMemory {
 
 // NewQSharedMemory2 constructs a new QSharedMemory object.
 func NewQSharedMemory2(key string) *QSharedMemory {
-	key_Cstring := C.CString(key)
-	defer C.free(unsafe.Pointer(key_Cstring))
-	ret := C.QSharedMemory_new2(key_Cstring, C.size_t(len(key)))
+	key_ms := miqt_strdupg(key)
+	defer C.free(key_ms)
+	ret := C.QSharedMemory_new2((*C.struct_miqt_string)(key_ms))
 	return newQSharedMemory(ret)
 }
 
@@ -78,116 +79,106 @@ func NewQSharedMemory3(parent *QObject) *QSharedMemory {
 
 // NewQSharedMemory4 constructs a new QSharedMemory object.
 func NewQSharedMemory4(key string, parent *QObject) *QSharedMemory {
-	key_Cstring := C.CString(key)
-	defer C.free(unsafe.Pointer(key_Cstring))
-	ret := C.QSharedMemory_new4(key_Cstring, C.size_t(len(key)), parent.cPointer())
+	key_ms := miqt_strdupg(key)
+	defer C.free(key_ms)
+	ret := C.QSharedMemory_new4((*C.struct_miqt_string)(key_ms), parent.cPointer())
 	return newQSharedMemory(ret)
 }
 
 func (this *QSharedMemory) MetaObject() *QMetaObject {
-	ret := C.QSharedMemory_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QSharedMemory_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QSharedMemory_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QSharedMemory_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QSharedMemory_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QSharedMemory_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QSharedMemory_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QSharedMemory_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QSharedMemory) SetKey(key string) {
-	key_Cstring := C.CString(key)
-	defer C.free(unsafe.Pointer(key_Cstring))
-	C.QSharedMemory_SetKey(this.h, key_Cstring, C.size_t(len(key)))
+	key_ms := miqt_strdupg(key)
+	defer C.free(key_ms)
+	C.QSharedMemory_SetKey(this.h, (*C.struct_miqt_string)(key_ms))
 }
 
 func (this *QSharedMemory) Key() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QSharedMemory_Key(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QSharedMemory_Key(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QSharedMemory) SetNativeKey(key string) {
-	key_Cstring := C.CString(key)
-	defer C.free(unsafe.Pointer(key_Cstring))
-	C.QSharedMemory_SetNativeKey(this.h, key_Cstring, C.size_t(len(key)))
+	key_ms := miqt_strdupg(key)
+	defer C.free(key_ms)
+	C.QSharedMemory_SetNativeKey(this.h, (*C.struct_miqt_string)(key_ms))
 }
 
 func (this *QSharedMemory) NativeKey() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QSharedMemory_NativeKey(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QSharedMemory_NativeKey(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QSharedMemory) Create(size int) bool {
-	ret := C.QSharedMemory_Create(this.h, (C.int)(size))
-	return (bool)(ret)
+	_ret := C.QSharedMemory_Create(this.h, (C.int)(size))
+	return (bool)(_ret)
 }
 
 func (this *QSharedMemory) Size() int {
-	ret := C.QSharedMemory_Size(this.h)
-	return (int)(ret)
+	_ret := C.QSharedMemory_Size(this.h)
+	return (int)(_ret)
 }
 
 func (this *QSharedMemory) Attach() bool {
-	ret := C.QSharedMemory_Attach(this.h)
-	return (bool)(ret)
+	_ret := C.QSharedMemory_Attach(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QSharedMemory) IsAttached() bool {
-	ret := C.QSharedMemory_IsAttached(this.h)
-	return (bool)(ret)
+	_ret := C.QSharedMemory_IsAttached(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QSharedMemory) Detach() bool {
-	ret := C.QSharedMemory_Detach(this.h)
-	return (bool)(ret)
+	_ret := C.QSharedMemory_Detach(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QSharedMemory) Lock() bool {
-	ret := C.QSharedMemory_Lock(this.h)
-	return (bool)(ret)
+	_ret := C.QSharedMemory_Lock(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QSharedMemory) Unlock() bool {
-	ret := C.QSharedMemory_Unlock(this.h)
-	return (bool)(ret)
+	_ret := C.QSharedMemory_Unlock(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QSharedMemory) Error() QSharedMemory__SharedMemoryError {
-	ret := C.QSharedMemory_Error(this.h)
-	return (QSharedMemory__SharedMemoryError)(ret)
+	_ret := C.QSharedMemory_Error(this.h)
+	return (QSharedMemory__SharedMemoryError)(_ret)
 }
 
 func (this *QSharedMemory) ErrorString() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QSharedMemory_ErrorString(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QSharedMemory_ErrorString(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QSharedMemory_Tr2(s string, c string) string {
@@ -195,12 +186,10 @@ func QSharedMemory_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QSharedMemory_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QSharedMemory_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QSharedMemory_Tr3(s string, c string, n int) string {
@@ -208,12 +197,10 @@ func QSharedMemory_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QSharedMemory_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QSharedMemory_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QSharedMemory_TrUtf82(s string, c string) string {
@@ -221,12 +208,10 @@ func QSharedMemory_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QSharedMemory_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QSharedMemory_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QSharedMemory_TrUtf83(s string, c string, n int) string {
@@ -234,24 +219,32 @@ func QSharedMemory_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QSharedMemory_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QSharedMemory_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QSharedMemory) Create2(size int, mode QSharedMemory__AccessMode) bool {
-	ret := C.QSharedMemory_Create2(this.h, (C.int)(size), (C.uintptr_t)(mode))
-	return (bool)(ret)
+	_ret := C.QSharedMemory_Create2(this.h, (C.int)(size), (C.uintptr_t)(mode))
+	return (bool)(_ret)
 }
 
 func (this *QSharedMemory) Attach1(mode QSharedMemory__AccessMode) bool {
-	ret := C.QSharedMemory_Attach1(this.h, (C.uintptr_t)(mode))
-	return (bool)(ret)
+	_ret := C.QSharedMemory_Attach1(this.h, (C.uintptr_t)(mode))
+	return (bool)(_ret)
 }
 
+// Delete this object from C++ memory.
 func (this *QSharedMemory) Delete() {
 	C.QSharedMemory_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QSharedMemory) GoGC() {
+	runtime.SetFinalizer(this, func(this *QSharedMemory) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

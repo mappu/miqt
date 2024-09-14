@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -22,15 +24,15 @@ typedef struct QPictureFormatPlugin QPictureFormatPlugin;
 #endif
 
 QMetaObject* QPictureFormatPlugin_MetaObject(const QPictureFormatPlugin* self);
-void QPictureFormatPlugin_Tr(const char* s, char** _out, int* _out_Strlen);
-void QPictureFormatPlugin_TrUtf8(const char* s, char** _out, int* _out_Strlen);
-bool QPictureFormatPlugin_LoadPicture(QPictureFormatPlugin* self, const char* format, size_t format_Strlen, const char* filename, size_t filename_Strlen, QPicture* pic);
-bool QPictureFormatPlugin_SavePicture(QPictureFormatPlugin* self, const char* format, size_t format_Strlen, const char* filename, size_t filename_Strlen, QPicture* pic);
-bool QPictureFormatPlugin_InstallIOHandler(QPictureFormatPlugin* self, const char* format, size_t format_Strlen);
-void QPictureFormatPlugin_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QPictureFormatPlugin_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QPictureFormatPlugin_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QPictureFormatPlugin_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QPictureFormatPlugin_Tr(const char* s);
+struct miqt_string* QPictureFormatPlugin_TrUtf8(const char* s);
+bool QPictureFormatPlugin_LoadPicture(QPictureFormatPlugin* self, struct miqt_string* format, struct miqt_string* filename, QPicture* pic);
+bool QPictureFormatPlugin_SavePicture(QPictureFormatPlugin* self, struct miqt_string* format, struct miqt_string* filename, QPicture* pic);
+bool QPictureFormatPlugin_InstallIOHandler(QPictureFormatPlugin* self, struct miqt_string* format);
+struct miqt_string* QPictureFormatPlugin_Tr2(const char* s, const char* c);
+struct miqt_string* QPictureFormatPlugin_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QPictureFormatPlugin_TrUtf82(const char* s, const char* c);
+struct miqt_string* QPictureFormatPlugin_TrUtf83(const char* s, const char* c, int n);
 void QPictureFormatPlugin_Delete(QPictureFormatPlugin* self);
 
 #ifdef __cplusplus

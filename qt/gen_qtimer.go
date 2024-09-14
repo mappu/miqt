@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"runtime"
 	"unsafe"
 )
 
@@ -48,40 +49,36 @@ func NewQTimer2(parent *QObject) *QTimer {
 }
 
 func (this *QTimer) MetaObject() *QMetaObject {
-	ret := C.QTimer_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QTimer_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QTimer_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTimer_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTimer_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QTimer_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTimer_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTimer_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QTimer) IsActive() bool {
-	ret := C.QTimer_IsActive(this.h)
-	return (bool)(ret)
+	_ret := C.QTimer_IsActive(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QTimer) TimerId() int {
-	ret := C.QTimer_TimerId(this.h)
-	return (int)(ret)
+	_ret := C.QTimer_TimerId(this.h)
+	return (int)(_ret)
 }
 
 func (this *QTimer) SetInterval(msec int) {
@@ -89,13 +86,13 @@ func (this *QTimer) SetInterval(msec int) {
 }
 
 func (this *QTimer) Interval() int {
-	ret := C.QTimer_Interval(this.h)
-	return (int)(ret)
+	_ret := C.QTimer_Interval(this.h)
+	return (int)(_ret)
 }
 
 func (this *QTimer) RemainingTime() int {
-	ret := C.QTimer_RemainingTime(this.h)
-	return (int)(ret)
+	_ret := C.QTimer_RemainingTime(this.h)
+	return (int)(_ret)
 }
 
 func (this *QTimer) SetTimerType(atype TimerType) {
@@ -103,8 +100,8 @@ func (this *QTimer) SetTimerType(atype TimerType) {
 }
 
 func (this *QTimer) TimerType() TimerType {
-	ret := C.QTimer_TimerType(this.h)
-	return (TimerType)(ret)
+	_ret := C.QTimer_TimerType(this.h)
+	return (TimerType)(_ret)
 }
 
 func (this *QTimer) SetSingleShot(singleShot bool) {
@@ -112,8 +109,8 @@ func (this *QTimer) SetSingleShot(singleShot bool) {
 }
 
 func (this *QTimer) IsSingleShot() bool {
-	ret := C.QTimer_IsSingleShot(this.h)
-	return (bool)(ret)
+	_ret := C.QTimer_IsSingleShot(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QTimer) Start(msec int) {
@@ -133,12 +130,10 @@ func QTimer_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTimer_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTimer_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QTimer_Tr3(s string, c string, n int) string {
@@ -146,12 +141,10 @@ func QTimer_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTimer_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTimer_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QTimer_TrUtf82(s string, c string) string {
@@ -159,12 +152,10 @@ func QTimer_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTimer_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTimer_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QTimer_TrUtf83(s string, c string, n int) string {
@@ -172,14 +163,22 @@ func QTimer_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTimer_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTimer_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
+// Delete this object from C++ memory.
 func (this *QTimer) Delete() {
 	C.QTimer_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QTimer) GoGC() {
+	runtime.SetFinalizer(this, func(this *QTimer) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

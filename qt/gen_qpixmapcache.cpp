@@ -5,12 +5,8 @@
 #include <QByteArray>
 #include <cstring>
 #include "qpixmapcache.h"
-
 #include "gen_qpixmapcache.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 int QPixmapCache_CacheLimit() {
 	return QPixmapCache::cacheLimit();
@@ -20,18 +16,18 @@ void QPixmapCache_SetCacheLimit(int cacheLimit) {
 	QPixmapCache::setCacheLimit(static_cast<int>(cacheLimit));
 }
 
-QPixmap* QPixmapCache_Find(const char* key, size_t key_Strlen) {
-	QString key_QString = QString::fromUtf8(key, key_Strlen);
+QPixmap* QPixmapCache_Find(struct miqt_string* key) {
+	QString key_QString = QString::fromUtf8(&key->data, key->len);
 	return QPixmapCache::find(key_QString);
 }
 
-bool QPixmapCache_Find2(const char* key, size_t key_Strlen, QPixmap* pixmap) {
-	QString key_QString = QString::fromUtf8(key, key_Strlen);
+bool QPixmapCache_Find2(struct miqt_string* key, QPixmap* pixmap) {
+	QString key_QString = QString::fromUtf8(&key->data, key->len);
 	return QPixmapCache::find(key_QString, *pixmap);
 }
 
-bool QPixmapCache_Find3(const char* key, size_t key_Strlen, QPixmap* pixmap) {
-	QString key_QString = QString::fromUtf8(key, key_Strlen);
+bool QPixmapCache_Find3(struct miqt_string* key, QPixmap* pixmap) {
+	QString key_QString = QString::fromUtf8(&key->data, key->len);
 	return QPixmapCache::find(key_QString, pixmap);
 }
 
@@ -39,23 +35,23 @@ bool QPixmapCache_Find4(QPixmapCache__Key* key, QPixmap* pixmap) {
 	return QPixmapCache::find(*key, pixmap);
 }
 
-bool QPixmapCache_Insert(const char* key, size_t key_Strlen, QPixmap* pixmap) {
-	QString key_QString = QString::fromUtf8(key, key_Strlen);
+bool QPixmapCache_Insert(struct miqt_string* key, QPixmap* pixmap) {
+	QString key_QString = QString::fromUtf8(&key->data, key->len);
 	return QPixmapCache::insert(key_QString, *pixmap);
 }
 
 QPixmapCache__Key* QPixmapCache_InsertWithPixmap(QPixmap* pixmap) {
-	QPixmapCache::Key ret = QPixmapCache::insert(*pixmap);
+	QPixmapCache::Key _ret = QPixmapCache::insert(*pixmap);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPixmapCache::Key*>(new QPixmapCache::Key(ret));
+	return static_cast<QPixmapCache::Key*>(new QPixmapCache::Key(_ret));
 }
 
 bool QPixmapCache_Replace(QPixmapCache__Key* key, QPixmap* pixmap) {
 	return QPixmapCache::replace(*key, *pixmap);
 }
 
-void QPixmapCache_Remove(const char* key, size_t key_Strlen) {
-	QString key_QString = QString::fromUtf8(key, key_Strlen);
+void QPixmapCache_Remove(struct miqt_string* key) {
+	QString key_QString = QString::fromUtf8(&key->data, key->len);
 	QPixmapCache::remove(key_QString);
 }
 

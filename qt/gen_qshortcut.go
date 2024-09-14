@@ -78,30 +78,26 @@ func NewQShortcut5(key *QKeySequence, parent *QWidget, member string, ambiguousM
 }
 
 func (this *QShortcut) MetaObject() *QMetaObject {
-	ret := C.QShortcut_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QShortcut_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QShortcut_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QShortcut_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QShortcut_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QShortcut_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QShortcut_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QShortcut_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QShortcut) SetKey(key *QKeySequence) {
@@ -109,14 +105,10 @@ func (this *QShortcut) SetKey(key *QKeySequence) {
 }
 
 func (this *QShortcut) Key() *QKeySequence {
-	ret := C.QShortcut_Key(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQKeySequence(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QKeySequence) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QShortcut_Key(this.h)
+	_goptr := newQKeySequence(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QShortcut) SetEnabled(enable bool) {
@@ -124,8 +116,8 @@ func (this *QShortcut) SetEnabled(enable bool) {
 }
 
 func (this *QShortcut) IsEnabled() bool {
-	ret := C.QShortcut_IsEnabled(this.h)
-	return (bool)(ret)
+	_ret := C.QShortcut_IsEnabled(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QShortcut) SetContext(context ShortcutContext) {
@@ -133,23 +125,21 @@ func (this *QShortcut) SetContext(context ShortcutContext) {
 }
 
 func (this *QShortcut) Context() ShortcutContext {
-	ret := C.QShortcut_Context(this.h)
-	return (ShortcutContext)(ret)
+	_ret := C.QShortcut_Context(this.h)
+	return (ShortcutContext)(_ret)
 }
 
 func (this *QShortcut) SetWhatsThis(text string) {
-	text_Cstring := C.CString(text)
-	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QShortcut_SetWhatsThis(this.h, text_Cstring, C.size_t(len(text)))
+	text_ms := miqt_strdupg(text)
+	defer C.free(text_ms)
+	C.QShortcut_SetWhatsThis(this.h, (*C.struct_miqt_string)(text_ms))
 }
 
 func (this *QShortcut) WhatsThis() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QShortcut_WhatsThis(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QShortcut_WhatsThis(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QShortcut) SetAutoRepeat(on bool) {
@@ -157,42 +147,52 @@ func (this *QShortcut) SetAutoRepeat(on bool) {
 }
 
 func (this *QShortcut) AutoRepeat() bool {
-	ret := C.QShortcut_AutoRepeat(this.h)
-	return (bool)(ret)
+	_ret := C.QShortcut_AutoRepeat(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QShortcut) Id() int {
-	ret := C.QShortcut_Id(this.h)
-	return (int)(ret)
+	_ret := C.QShortcut_Id(this.h)
+	return (int)(_ret)
 }
 
 func (this *QShortcut) ParentWidget() *QWidget {
-	ret := C.QShortcut_ParentWidget(this.h)
-	return newQWidget_U(unsafe.Pointer(ret))
+	_ret := C.QShortcut_ParentWidget(this.h)
+	return newQWidget_U(unsafe.Pointer(_ret))
 }
 
 func (this *QShortcut) Activated() {
 	C.QShortcut_Activated(this.h)
 }
-
 func (this *QShortcut) OnActivated(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+	C.QShortcut_connect_Activated(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
+
+//export miqt_exec_callback_QShortcut_Activated
+func miqt_exec_callback_QShortcut_Activated(cb *C.void) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QShortcut_connect_Activated(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	gofunc()
 }
 
 func (this *QShortcut) ActivatedAmbiguously() {
 	C.QShortcut_ActivatedAmbiguously(this.h)
 }
-
 func (this *QShortcut) OnActivatedAmbiguously(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+	C.QShortcut_connect_ActivatedAmbiguously(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
+
+//export miqt_exec_callback_QShortcut_ActivatedAmbiguously
+func miqt_exec_callback_QShortcut_ActivatedAmbiguously(cb *C.void) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QShortcut_connect_ActivatedAmbiguously(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	gofunc()
 }
 
 func QShortcut_Tr2(s string, c string) string {
@@ -200,12 +200,10 @@ func QShortcut_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QShortcut_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QShortcut_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QShortcut_Tr3(s string, c string, n int) string {
@@ -213,12 +211,10 @@ func QShortcut_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QShortcut_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QShortcut_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QShortcut_TrUtf82(s string, c string) string {
@@ -226,12 +222,10 @@ func QShortcut_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QShortcut_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QShortcut_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QShortcut_TrUtf83(s string, c string, n int) string {
@@ -239,14 +233,22 @@ func QShortcut_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QShortcut_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QShortcut_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
+// Delete this object from C++ memory.
 func (this *QShortcut) Delete() {
 	C.QShortcut_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QShortcut) GoGC() {
+	runtime.SetFinalizer(this, func(this *QShortcut) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

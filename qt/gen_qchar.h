@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -43,7 +45,7 @@ uintptr_t QChar_Joining(const QChar* self);
 unsigned char QChar_CombiningClass(const QChar* self);
 QChar* QChar_MirroredChar(const QChar* self);
 bool QChar_HasMirrored(const QChar* self);
-void QChar_Decomposition(const QChar* self, char** _out, int* _out_Strlen);
+struct miqt_string* QChar_Decomposition(const QChar* self);
 uintptr_t QChar_DecompositionTag(const QChar* self);
 int QChar_DigitValue(const QChar* self);
 QChar* QChar_ToLower(const QChar* self);
@@ -92,7 +94,7 @@ uintptr_t QChar_JoiningWithUcs4(unsigned int ucs4);
 unsigned char QChar_CombiningClassWithUcs4(unsigned int ucs4);
 unsigned int QChar_MirroredCharWithUcs4(unsigned int ucs4);
 bool QChar_HasMirroredWithUcs4(unsigned int ucs4);
-void QChar_DecompositionWithUcs4(unsigned int ucs4, char** _out, int* _out_Strlen);
+struct miqt_string* QChar_DecompositionWithUcs4(unsigned int ucs4);
 uintptr_t QChar_DecompositionTagWithUcs4(unsigned int ucs4);
 int QChar_DigitValueWithUcs4(unsigned int ucs4);
 unsigned int QChar_ToLowerWithUcs4(unsigned int ucs4);

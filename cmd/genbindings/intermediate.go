@@ -59,6 +59,19 @@ func (p *CppParameter) CopyWithAlias(alias CppParameter) CppParameter {
 	return ret
 }
 
+func (p *CppParameter) PointerTo() CppParameter {
+	ret := *p // Copy
+	ret.Pointer = true
+	ret.PointerCount++
+	return ret
+}
+
+func (p *CppParameter) ConstCast(isConst bool) CppParameter {
+	ret := *p // Copy
+	ret.Const = isConst
+	return ret
+}
+
 func (p *CppParameter) UnderlyingType() string {
 	if p.TypeAlias != "" {
 		return p.TypeAlias
@@ -120,11 +133,15 @@ func (p CppParameter) IsEnum() bool {
 
 func (p CppParameter) QListOf() (CppParameter, bool) {
 	if strings.HasPrefix(p.ParameterType, "QList<") && strings.HasSuffix(p.ParameterType, `>`) {
-		return parseSingleTypeString(p.ParameterType[6 : len(p.ParameterType)-1]), true
+		ret := parseSingleTypeString(p.ParameterType[6 : len(p.ParameterType)-1])
+		ret.ParameterName = p.ParameterName + "_lv"
+		return ret, true
 	}
 
 	if strings.HasPrefix(p.ParameterType, "QVector<") && strings.HasSuffix(p.ParameterType, `>`) {
-		return parseSingleTypeString(p.ParameterType[8 : len(p.ParameterType)-1]), true
+		ret := parseSingleTypeString(p.ParameterType[8 : len(p.ParameterType)-1])
+		ret.ParameterName = p.ParameterName + "_vv"
+		return ret, true
 	}
 
 	return CppParameter{}, false

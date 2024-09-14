@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -30,20 +32,20 @@ typedef struct QVector3D QVector3D;
 #endif
 
 QMetaObject* QGraphicsTransform_MetaObject(const QGraphicsTransform* self);
-void QGraphicsTransform_Tr(const char* s, char** _out, int* _out_Strlen);
-void QGraphicsTransform_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QGraphicsTransform_Tr(const char* s);
+struct miqt_string* QGraphicsTransform_TrUtf8(const char* s);
 void QGraphicsTransform_ApplyTo(const QGraphicsTransform* self, QMatrix4x4* matrix);
-void QGraphicsTransform_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QGraphicsTransform_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QGraphicsTransform_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QGraphicsTransform_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QGraphicsTransform_Tr2(const char* s, const char* c);
+struct miqt_string* QGraphicsTransform_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QGraphicsTransform_TrUtf82(const char* s, const char* c);
+struct miqt_string* QGraphicsTransform_TrUtf83(const char* s, const char* c, int n);
 void QGraphicsTransform_Delete(QGraphicsTransform* self);
 
 QGraphicsScale* QGraphicsScale_new();
 QGraphicsScale* QGraphicsScale_new2(QObject* parent);
 QMetaObject* QGraphicsScale_MetaObject(const QGraphicsScale* self);
-void QGraphicsScale_Tr(const char* s, char** _out, int* _out_Strlen);
-void QGraphicsScale_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QGraphicsScale_Tr(const char* s);
+struct miqt_string* QGraphicsScale_TrUtf8(const char* s);
 QVector3D* QGraphicsScale_Origin(const QGraphicsScale* self);
 void QGraphicsScale_SetOrigin(QGraphicsScale* self, QVector3D* point);
 double QGraphicsScale_XScale(const QGraphicsScale* self);
@@ -63,17 +65,17 @@ void QGraphicsScale_ZScaleChanged(QGraphicsScale* self);
 void QGraphicsScale_connect_ZScaleChanged(QGraphicsScale* self, void* slot);
 void QGraphicsScale_ScaleChanged(QGraphicsScale* self);
 void QGraphicsScale_connect_ScaleChanged(QGraphicsScale* self, void* slot);
-void QGraphicsScale_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QGraphicsScale_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QGraphicsScale_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QGraphicsScale_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QGraphicsScale_Tr2(const char* s, const char* c);
+struct miqt_string* QGraphicsScale_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QGraphicsScale_TrUtf82(const char* s, const char* c);
+struct miqt_string* QGraphicsScale_TrUtf83(const char* s, const char* c, int n);
 void QGraphicsScale_Delete(QGraphicsScale* self);
 
 QGraphicsRotation* QGraphicsRotation_new();
 QGraphicsRotation* QGraphicsRotation_new2(QObject* parent);
 QMetaObject* QGraphicsRotation_MetaObject(const QGraphicsRotation* self);
-void QGraphicsRotation_Tr(const char* s, char** _out, int* _out_Strlen);
-void QGraphicsRotation_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QGraphicsRotation_Tr(const char* s);
+struct miqt_string* QGraphicsRotation_TrUtf8(const char* s);
 QVector3D* QGraphicsRotation_Origin(const QGraphicsRotation* self);
 void QGraphicsRotation_SetOrigin(QGraphicsRotation* self, QVector3D* point);
 double QGraphicsRotation_Angle(const QGraphicsRotation* self);
@@ -88,10 +90,10 @@ void QGraphicsRotation_AngleChanged(QGraphicsRotation* self);
 void QGraphicsRotation_connect_AngleChanged(QGraphicsRotation* self, void* slot);
 void QGraphicsRotation_AxisChanged(QGraphicsRotation* self);
 void QGraphicsRotation_connect_AxisChanged(QGraphicsRotation* self, void* slot);
-void QGraphicsRotation_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QGraphicsRotation_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QGraphicsRotation_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QGraphicsRotation_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QGraphicsRotation_Tr2(const char* s, const char* c);
+struct miqt_string* QGraphicsRotation_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QGraphicsRotation_TrUtf82(const char* s, const char* c);
+struct miqt_string* QGraphicsRotation_TrUtf83(const char* s, const char* c, int n);
 void QGraphicsRotation_Delete(QGraphicsRotation* self);
 
 #ifdef __cplusplus

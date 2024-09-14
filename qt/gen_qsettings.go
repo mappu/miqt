@@ -77,33 +77,33 @@ func newQSettings_U(h unsafe.Pointer) *QSettings {
 
 // NewQSettings constructs a new QSettings object.
 func NewQSettings(organization string) *QSettings {
-	organization_Cstring := C.CString(organization)
-	defer C.free(unsafe.Pointer(organization_Cstring))
-	ret := C.QSettings_new(organization_Cstring, C.size_t(len(organization)))
+	organization_ms := miqt_strdupg(organization)
+	defer C.free(organization_ms)
+	ret := C.QSettings_new((*C.struct_miqt_string)(organization_ms))
 	return newQSettings(ret)
 }
 
 // NewQSettings2 constructs a new QSettings object.
 func NewQSettings2(scope QSettings__Scope, organization string) *QSettings {
-	organization_Cstring := C.CString(organization)
-	defer C.free(unsafe.Pointer(organization_Cstring))
-	ret := C.QSettings_new2((C.uintptr_t)(scope), organization_Cstring, C.size_t(len(organization)))
+	organization_ms := miqt_strdupg(organization)
+	defer C.free(organization_ms)
+	ret := C.QSettings_new2((C.uintptr_t)(scope), (*C.struct_miqt_string)(organization_ms))
 	return newQSettings(ret)
 }
 
 // NewQSettings3 constructs a new QSettings object.
 func NewQSettings3(format QSettings__Format, scope QSettings__Scope, organization string) *QSettings {
-	organization_Cstring := C.CString(organization)
-	defer C.free(unsafe.Pointer(organization_Cstring))
-	ret := C.QSettings_new3((C.uintptr_t)(format), (C.uintptr_t)(scope), organization_Cstring, C.size_t(len(organization)))
+	organization_ms := miqt_strdupg(organization)
+	defer C.free(organization_ms)
+	ret := C.QSettings_new3((C.uintptr_t)(format), (C.uintptr_t)(scope), (*C.struct_miqt_string)(organization_ms))
 	return newQSettings(ret)
 }
 
 // NewQSettings4 constructs a new QSettings object.
 func NewQSettings4(fileName string, format QSettings__Format) *QSettings {
-	fileName_Cstring := C.CString(fileName)
-	defer C.free(unsafe.Pointer(fileName_Cstring))
-	ret := C.QSettings_new4(fileName_Cstring, C.size_t(len(fileName)), (C.uintptr_t)(format))
+	fileName_ms := miqt_strdupg(fileName)
+	defer C.free(fileName_ms)
+	ret := C.QSettings_new4((*C.struct_miqt_string)(fileName_ms), (C.uintptr_t)(format))
 	return newQSettings(ret)
 }
 
@@ -121,69 +121,69 @@ func NewQSettings6(scope QSettings__Scope) *QSettings {
 
 // NewQSettings7 constructs a new QSettings object.
 func NewQSettings7(organization string, application string) *QSettings {
-	organization_Cstring := C.CString(organization)
-	defer C.free(unsafe.Pointer(organization_Cstring))
-	application_Cstring := C.CString(application)
-	defer C.free(unsafe.Pointer(application_Cstring))
-	ret := C.QSettings_new7(organization_Cstring, C.size_t(len(organization)), application_Cstring, C.size_t(len(application)))
+	organization_ms := miqt_strdupg(organization)
+	defer C.free(organization_ms)
+	application_ms := miqt_strdupg(application)
+	defer C.free(application_ms)
+	ret := C.QSettings_new7((*C.struct_miqt_string)(organization_ms), (*C.struct_miqt_string)(application_ms))
 	return newQSettings(ret)
 }
 
 // NewQSettings8 constructs a new QSettings object.
 func NewQSettings8(organization string, application string, parent *QObject) *QSettings {
-	organization_Cstring := C.CString(organization)
-	defer C.free(unsafe.Pointer(organization_Cstring))
-	application_Cstring := C.CString(application)
-	defer C.free(unsafe.Pointer(application_Cstring))
-	ret := C.QSettings_new8(organization_Cstring, C.size_t(len(organization)), application_Cstring, C.size_t(len(application)), parent.cPointer())
+	organization_ms := miqt_strdupg(organization)
+	defer C.free(organization_ms)
+	application_ms := miqt_strdupg(application)
+	defer C.free(application_ms)
+	ret := C.QSettings_new8((*C.struct_miqt_string)(organization_ms), (*C.struct_miqt_string)(application_ms), parent.cPointer())
 	return newQSettings(ret)
 }
 
 // NewQSettings9 constructs a new QSettings object.
 func NewQSettings9(scope QSettings__Scope, organization string, application string) *QSettings {
-	organization_Cstring := C.CString(organization)
-	defer C.free(unsafe.Pointer(organization_Cstring))
-	application_Cstring := C.CString(application)
-	defer C.free(unsafe.Pointer(application_Cstring))
-	ret := C.QSettings_new9((C.uintptr_t)(scope), organization_Cstring, C.size_t(len(organization)), application_Cstring, C.size_t(len(application)))
+	organization_ms := miqt_strdupg(organization)
+	defer C.free(organization_ms)
+	application_ms := miqt_strdupg(application)
+	defer C.free(application_ms)
+	ret := C.QSettings_new9((C.uintptr_t)(scope), (*C.struct_miqt_string)(organization_ms), (*C.struct_miqt_string)(application_ms))
 	return newQSettings(ret)
 }
 
 // NewQSettings10 constructs a new QSettings object.
 func NewQSettings10(scope QSettings__Scope, organization string, application string, parent *QObject) *QSettings {
-	organization_Cstring := C.CString(organization)
-	defer C.free(unsafe.Pointer(organization_Cstring))
-	application_Cstring := C.CString(application)
-	defer C.free(unsafe.Pointer(application_Cstring))
-	ret := C.QSettings_new10((C.uintptr_t)(scope), organization_Cstring, C.size_t(len(organization)), application_Cstring, C.size_t(len(application)), parent.cPointer())
+	organization_ms := miqt_strdupg(organization)
+	defer C.free(organization_ms)
+	application_ms := miqt_strdupg(application)
+	defer C.free(application_ms)
+	ret := C.QSettings_new10((C.uintptr_t)(scope), (*C.struct_miqt_string)(organization_ms), (*C.struct_miqt_string)(application_ms), parent.cPointer())
 	return newQSettings(ret)
 }
 
 // NewQSettings11 constructs a new QSettings object.
 func NewQSettings11(format QSettings__Format, scope QSettings__Scope, organization string, application string) *QSettings {
-	organization_Cstring := C.CString(organization)
-	defer C.free(unsafe.Pointer(organization_Cstring))
-	application_Cstring := C.CString(application)
-	defer C.free(unsafe.Pointer(application_Cstring))
-	ret := C.QSettings_new11((C.uintptr_t)(format), (C.uintptr_t)(scope), organization_Cstring, C.size_t(len(organization)), application_Cstring, C.size_t(len(application)))
+	organization_ms := miqt_strdupg(organization)
+	defer C.free(organization_ms)
+	application_ms := miqt_strdupg(application)
+	defer C.free(application_ms)
+	ret := C.QSettings_new11((C.uintptr_t)(format), (C.uintptr_t)(scope), (*C.struct_miqt_string)(organization_ms), (*C.struct_miqt_string)(application_ms))
 	return newQSettings(ret)
 }
 
 // NewQSettings12 constructs a new QSettings object.
 func NewQSettings12(format QSettings__Format, scope QSettings__Scope, organization string, application string, parent *QObject) *QSettings {
-	organization_Cstring := C.CString(organization)
-	defer C.free(unsafe.Pointer(organization_Cstring))
-	application_Cstring := C.CString(application)
-	defer C.free(unsafe.Pointer(application_Cstring))
-	ret := C.QSettings_new12((C.uintptr_t)(format), (C.uintptr_t)(scope), organization_Cstring, C.size_t(len(organization)), application_Cstring, C.size_t(len(application)), parent.cPointer())
+	organization_ms := miqt_strdupg(organization)
+	defer C.free(organization_ms)
+	application_ms := miqt_strdupg(application)
+	defer C.free(application_ms)
+	ret := C.QSettings_new12((C.uintptr_t)(format), (C.uintptr_t)(scope), (*C.struct_miqt_string)(organization_ms), (*C.struct_miqt_string)(application_ms), parent.cPointer())
 	return newQSettings(ret)
 }
 
 // NewQSettings13 constructs a new QSettings object.
 func NewQSettings13(fileName string, format QSettings__Format, parent *QObject) *QSettings {
-	fileName_Cstring := C.CString(fileName)
-	defer C.free(unsafe.Pointer(fileName_Cstring))
-	ret := C.QSettings_new13(fileName_Cstring, C.size_t(len(fileName)), (C.uintptr_t)(format), parent.cPointer())
+	fileName_ms := miqt_strdupg(fileName)
+	defer C.free(fileName_ms)
+	ret := C.QSettings_new13((*C.struct_miqt_string)(fileName_ms), (C.uintptr_t)(format), parent.cPointer())
 	return newQSettings(ret)
 }
 
@@ -200,30 +200,26 @@ func NewQSettings15(scope QSettings__Scope, parent *QObject) *QSettings {
 }
 
 func (this *QSettings) MetaObject() *QMetaObject {
-	ret := C.QSettings_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QSettings_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QSettings_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QSettings_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QSettings_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QSettings_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QSettings_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QSettings_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QSettings) Clear() {
@@ -235,13 +231,13 @@ func (this *QSettings) Sync() {
 }
 
 func (this *QSettings) Status() QSettings__Status {
-	ret := C.QSettings_Status(this.h)
-	return (QSettings__Status)(ret)
+	_ret := C.QSettings_Status(this.h)
+	return (QSettings__Status)(_ret)
 }
 
 func (this *QSettings) IsAtomicSyncRequired() bool {
-	ret := C.QSettings_IsAtomicSyncRequired(this.h)
-	return (bool)(ret)
+	_ret := C.QSettings_IsAtomicSyncRequired(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QSettings) SetAtomicSyncRequired(enable bool) {
@@ -249,9 +245,9 @@ func (this *QSettings) SetAtomicSyncRequired(enable bool) {
 }
 
 func (this *QSettings) BeginGroup(prefix string) {
-	prefix_Cstring := C.CString(prefix)
-	defer C.free(unsafe.Pointer(prefix_Cstring))
-	C.QSettings_BeginGroup(this.h, prefix_Cstring, C.size_t(len(prefix)))
+	prefix_ms := miqt_strdupg(prefix)
+	defer C.free(prefix_ms)
+	C.QSettings_BeginGroup(this.h, (*C.struct_miqt_string)(prefix_ms))
 }
 
 func (this *QSettings) EndGroup() {
@@ -259,25 +255,23 @@ func (this *QSettings) EndGroup() {
 }
 
 func (this *QSettings) Group() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QSettings_Group(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QSettings_Group(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QSettings) BeginReadArray(prefix string) int {
-	prefix_Cstring := C.CString(prefix)
-	defer C.free(unsafe.Pointer(prefix_Cstring))
-	ret := C.QSettings_BeginReadArray(this.h, prefix_Cstring, C.size_t(len(prefix)))
-	return (int)(ret)
+	prefix_ms := miqt_strdupg(prefix)
+	defer C.free(prefix_ms)
+	_ret := C.QSettings_BeginReadArray(this.h, (*C.struct_miqt_string)(prefix_ms))
+	return (int)(_ret)
 }
 
 func (this *QSettings) BeginWriteArray(prefix string) {
-	prefix_Cstring := C.CString(prefix)
-	defer C.free(unsafe.Pointer(prefix_Cstring))
-	C.QSettings_BeginWriteArray(this.h, prefix_Cstring, C.size_t(len(prefix)))
+	prefix_ms := miqt_strdupg(prefix)
+	defer C.free(prefix_ms)
+	C.QSettings_BeginWriteArray(this.h, (*C.struct_miqt_string)(prefix_ms))
 }
 
 func (this *QSettings) EndArray() {
@@ -289,85 +283,72 @@ func (this *QSettings) SetArrayIndex(i int) {
 }
 
 func (this *QSettings) AllKeys() []string {
-	var _out **C.char = nil
-	var _out_Lengths *C.int = nil
-	var _out_len C.size_t = 0
-	C.QSettings_AllKeys(this.h, &_out, &_out_Lengths, &_out_len)
-	ret := make([]string, int(_out_len))
-	_outCast := (*[0xffff]*C.char)(unsafe.Pointer(_out)) // hey ya
-	_out_LengthsCast := (*[0xffff]C.int)(unsafe.Pointer(_out_Lengths))
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = C.GoStringN(_outCast[i], _out_LengthsCast[i])
+	var _ma *C.struct_miqt_array = C.QSettings_AllKeys(this.h)
+	_ret := make([]string, int(_ma.len))
+	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = C.GoStringN(&_outCast[i].data, C.int(int64(_outCast[i].len)))
+		C.free(unsafe.Pointer(_outCast[i])) // free the inner miqt_string*
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
 func (this *QSettings) ChildKeys() []string {
-	var _out **C.char = nil
-	var _out_Lengths *C.int = nil
-	var _out_len C.size_t = 0
-	C.QSettings_ChildKeys(this.h, &_out, &_out_Lengths, &_out_len)
-	ret := make([]string, int(_out_len))
-	_outCast := (*[0xffff]*C.char)(unsafe.Pointer(_out)) // hey ya
-	_out_LengthsCast := (*[0xffff]C.int)(unsafe.Pointer(_out_Lengths))
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = C.GoStringN(_outCast[i], _out_LengthsCast[i])
+	var _ma *C.struct_miqt_array = C.QSettings_ChildKeys(this.h)
+	_ret := make([]string, int(_ma.len))
+	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = C.GoStringN(&_outCast[i].data, C.int(int64(_outCast[i].len)))
+		C.free(unsafe.Pointer(_outCast[i])) // free the inner miqt_string*
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
 func (this *QSettings) ChildGroups() []string {
-	var _out **C.char = nil
-	var _out_Lengths *C.int = nil
-	var _out_len C.size_t = 0
-	C.QSettings_ChildGroups(this.h, &_out, &_out_Lengths, &_out_len)
-	ret := make([]string, int(_out_len))
-	_outCast := (*[0xffff]*C.char)(unsafe.Pointer(_out)) // hey ya
-	_out_LengthsCast := (*[0xffff]C.int)(unsafe.Pointer(_out_Lengths))
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = C.GoStringN(_outCast[i], _out_LengthsCast[i])
+	var _ma *C.struct_miqt_array = C.QSettings_ChildGroups(this.h)
+	_ret := make([]string, int(_ma.len))
+	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = C.GoStringN(&_outCast[i].data, C.int(int64(_outCast[i].len)))
+		C.free(unsafe.Pointer(_outCast[i])) // free the inner miqt_string*
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
 func (this *QSettings) IsWritable() bool {
-	ret := C.QSettings_IsWritable(this.h)
-	return (bool)(ret)
+	_ret := C.QSettings_IsWritable(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QSettings) SetValue(key string, value *QVariant) {
-	key_Cstring := C.CString(key)
-	defer C.free(unsafe.Pointer(key_Cstring))
-	C.QSettings_SetValue(this.h, key_Cstring, C.size_t(len(key)), value.cPointer())
+	key_ms := miqt_strdupg(key)
+	defer C.free(key_ms)
+	C.QSettings_SetValue(this.h, (*C.struct_miqt_string)(key_ms), value.cPointer())
 }
 
 func (this *QSettings) Value(key string) *QVariant {
-	key_Cstring := C.CString(key)
-	defer C.free(unsafe.Pointer(key_Cstring))
-	ret := C.QSettings_Value(this.h, key_Cstring, C.size_t(len(key)))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQVariant(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QVariant) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	key_ms := miqt_strdupg(key)
+	defer C.free(key_ms)
+	_ret := C.QSettings_Value(this.h, (*C.struct_miqt_string)(key_ms))
+	_goptr := newQVariant(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QSettings) Remove(key string) {
-	key_Cstring := C.CString(key)
-	defer C.free(unsafe.Pointer(key_Cstring))
-	C.QSettings_Remove(this.h, key_Cstring, C.size_t(len(key)))
+	key_ms := miqt_strdupg(key)
+	defer C.free(key_ms)
+	C.QSettings_Remove(this.h, (*C.struct_miqt_string)(key_ms))
 }
 
 func (this *QSettings) Contains(key string) bool {
-	key_Cstring := C.CString(key)
-	defer C.free(unsafe.Pointer(key_Cstring))
-	ret := C.QSettings_Contains(this.h, key_Cstring, C.size_t(len(key)))
-	return (bool)(ret)
+	key_ms := miqt_strdupg(key)
+	defer C.free(key_ms)
+	_ret := C.QSettings_Contains(this.h, (*C.struct_miqt_string)(key_ms))
+	return (bool)(_ret)
 }
 
 func (this *QSettings) SetFallbacksEnabled(b bool) {
@@ -375,45 +356,39 @@ func (this *QSettings) SetFallbacksEnabled(b bool) {
 }
 
 func (this *QSettings) FallbacksEnabled() bool {
-	ret := C.QSettings_FallbacksEnabled(this.h)
-	return (bool)(ret)
+	_ret := C.QSettings_FallbacksEnabled(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QSettings) FileName() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QSettings_FileName(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QSettings_FileName(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QSettings) Format() QSettings__Format {
-	ret := C.QSettings_Format(this.h)
-	return (QSettings__Format)(ret)
+	_ret := C.QSettings_Format(this.h)
+	return (QSettings__Format)(_ret)
 }
 
 func (this *QSettings) Scope() QSettings__Scope {
-	ret := C.QSettings_Scope(this.h)
-	return (QSettings__Scope)(ret)
+	_ret := C.QSettings_Scope(this.h)
+	return (QSettings__Scope)(_ret)
 }
 
 func (this *QSettings) OrganizationName() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QSettings_OrganizationName(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QSettings_OrganizationName(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QSettings) ApplicationName() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QSettings_ApplicationName(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QSettings_ApplicationName(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QSettings) SetIniCodec(codec *QTextCodec) {
@@ -427,8 +402,8 @@ func (this *QSettings) SetIniCodecWithCodecName(codecName string) {
 }
 
 func (this *QSettings) IniCodec() *QTextCodec {
-	ret := C.QSettings_IniCodec(this.h)
-	return newQTextCodec_U(unsafe.Pointer(ret))
+	_ret := C.QSettings_IniCodec(this.h)
+	return newQTextCodec_U(unsafe.Pointer(_ret))
 }
 
 func QSettings_SetDefaultFormat(format QSettings__Format) {
@@ -436,26 +411,26 @@ func QSettings_SetDefaultFormat(format QSettings__Format) {
 }
 
 func QSettings_DefaultFormat() QSettings__Format {
-	ret := C.QSettings_DefaultFormat()
-	return (QSettings__Format)(ret)
+	_ret := C.QSettings_DefaultFormat()
+	return (QSettings__Format)(_ret)
 }
 
 func QSettings_SetSystemIniPath(dir string) {
-	dir_Cstring := C.CString(dir)
-	defer C.free(unsafe.Pointer(dir_Cstring))
-	C.QSettings_SetSystemIniPath(dir_Cstring, C.size_t(len(dir)))
+	dir_ms := miqt_strdupg(dir)
+	defer C.free(dir_ms)
+	C.QSettings_SetSystemIniPath((*C.struct_miqt_string)(dir_ms))
 }
 
 func QSettings_SetUserIniPath(dir string) {
-	dir_Cstring := C.CString(dir)
-	defer C.free(unsafe.Pointer(dir_Cstring))
-	C.QSettings_SetUserIniPath(dir_Cstring, C.size_t(len(dir)))
+	dir_ms := miqt_strdupg(dir)
+	defer C.free(dir_ms)
+	C.QSettings_SetUserIniPath((*C.struct_miqt_string)(dir_ms))
 }
 
 func QSettings_SetPath(format QSettings__Format, scope QSettings__Scope, path string) {
-	path_Cstring := C.CString(path)
-	defer C.free(unsafe.Pointer(path_Cstring))
-	C.QSettings_SetPath((C.uintptr_t)(format), (C.uintptr_t)(scope), path_Cstring, C.size_t(len(path)))
+	path_ms := miqt_strdupg(path)
+	defer C.free(path_ms)
+	C.QSettings_SetPath((C.uintptr_t)(format), (C.uintptr_t)(scope), (*C.struct_miqt_string)(path_ms))
 }
 
 func QSettings_Tr2(s string, c string) string {
@@ -463,12 +438,10 @@ func QSettings_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QSettings_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QSettings_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QSettings_Tr3(s string, c string, n int) string {
@@ -476,12 +449,10 @@ func QSettings_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QSettings_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QSettings_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QSettings_TrUtf82(s string, c string) string {
@@ -489,12 +460,10 @@ func QSettings_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QSettings_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QSettings_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QSettings_TrUtf83(s string, c string, n int) string {
@@ -502,33 +471,37 @@ func QSettings_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QSettings_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QSettings_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QSettings) BeginWriteArray2(prefix string, size int) {
-	prefix_Cstring := C.CString(prefix)
-	defer C.free(unsafe.Pointer(prefix_Cstring))
-	C.QSettings_BeginWriteArray2(this.h, prefix_Cstring, C.size_t(len(prefix)), (C.int)(size))
+	prefix_ms := miqt_strdupg(prefix)
+	defer C.free(prefix_ms)
+	C.QSettings_BeginWriteArray2(this.h, (*C.struct_miqt_string)(prefix_ms), (C.int)(size))
 }
 
 func (this *QSettings) Value2(key string, defaultValue *QVariant) *QVariant {
-	key_Cstring := C.CString(key)
-	defer C.free(unsafe.Pointer(key_Cstring))
-	ret := C.QSettings_Value2(this.h, key_Cstring, C.size_t(len(key)), defaultValue.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQVariant(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QVariant) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	key_ms := miqt_strdupg(key)
+	defer C.free(key_ms)
+	_ret := C.QSettings_Value2(this.h, (*C.struct_miqt_string)(key_ms), defaultValue.cPointer())
+	_goptr := newQVariant(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
+// Delete this object from C++ memory.
 func (this *QSettings) Delete() {
 	C.QSettings_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QSettings) GoGC() {
+	runtime.SetFinalizer(this, func(this *QSettings) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

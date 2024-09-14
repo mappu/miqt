@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"runtime"
 	"unsafe"
 )
 
@@ -39,8 +40,8 @@ func QWhatsThis_EnterWhatsThisMode() {
 }
 
 func QWhatsThis_InWhatsThisMode() bool {
-	ret := C.QWhatsThis_InWhatsThisMode()
-	return (bool)(ret)
+	_ret := C.QWhatsThis_InWhatsThisMode()
+	return (bool)(_ret)
 }
 
 func QWhatsThis_LeaveWhatsThisMode() {
@@ -48,9 +49,9 @@ func QWhatsThis_LeaveWhatsThisMode() {
 }
 
 func QWhatsThis_ShowText(pos *QPoint, text string) {
-	text_Cstring := C.CString(text)
-	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QWhatsThis_ShowText(pos.cPointer(), text_Cstring, C.size_t(len(text)))
+	text_ms := miqt_strdupg(text)
+	defer C.free(text_ms)
+	C.QWhatsThis_ShowText(pos.cPointer(), (*C.struct_miqt_string)(text_ms))
 }
 
 func QWhatsThis_HideText() {
@@ -58,21 +59,31 @@ func QWhatsThis_HideText() {
 }
 
 func QWhatsThis_CreateAction() *QAction {
-	ret := C.QWhatsThis_CreateAction()
-	return newQAction_U(unsafe.Pointer(ret))
+	_ret := C.QWhatsThis_CreateAction()
+	return newQAction_U(unsafe.Pointer(_ret))
 }
 
 func QWhatsThis_ShowText3(pos *QPoint, text string, w *QWidget) {
-	text_Cstring := C.CString(text)
-	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QWhatsThis_ShowText3(pos.cPointer(), text_Cstring, C.size_t(len(text)), w.cPointer())
+	text_ms := miqt_strdupg(text)
+	defer C.free(text_ms)
+	C.QWhatsThis_ShowText3(pos.cPointer(), (*C.struct_miqt_string)(text_ms), w.cPointer())
 }
 
 func QWhatsThis_CreateAction1(parent *QObject) *QAction {
-	ret := C.QWhatsThis_CreateAction1(parent.cPointer())
-	return newQAction_U(unsafe.Pointer(ret))
+	_ret := C.QWhatsThis_CreateAction1(parent.cPointer())
+	return newQAction_U(unsafe.Pointer(_ret))
 }
 
+// Delete this object from C++ memory.
 func (this *QWhatsThis) Delete() {
 	C.QWhatsThis_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QWhatsThis) GoGC() {
+	runtime.SetFinalizer(this, func(this *QWhatsThis) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

@@ -6,12 +6,8 @@
 #include <QObject>
 #include <QTimerEvent>
 #include "qcoreevent.h"
-
 #include "gen_qcoreevent.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QEvent* QEvent_new(uintptr_t typeVal) {
 	return new QEvent(static_cast<QEvent::Type>(typeVal));
@@ -26,8 +22,8 @@ void QEvent_OperatorAssign(QEvent* self, QEvent* other) {
 }
 
 uintptr_t QEvent_Type(const QEvent* self) {
-	QEvent::Type ret = self->type();
-	return static_cast<uintptr_t>(ret);
+	QEvent::Type _ret = self->type();
+	return static_cast<uintptr_t>(_ret);
 }
 
 bool QEvent_Spontaneous(const QEvent* self) {
@@ -115,9 +111,9 @@ QDynamicPropertyChangeEvent* QDynamicPropertyChangeEvent_new2(QDynamicPropertyCh
 }
 
 QByteArray* QDynamicPropertyChangeEvent_PropertyName(const QDynamicPropertyChangeEvent* self) {
-	QByteArray ret = self->propertyName();
+	QByteArray _ret = self->propertyName();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(ret));
+	return static_cast<QByteArray*>(new QByteArray(_ret));
 }
 
 void QDynamicPropertyChangeEvent_Delete(QDynamicPropertyChangeEvent* self) {

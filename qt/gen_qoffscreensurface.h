@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -31,8 +33,8 @@ QOffscreenSurface* QOffscreenSurface_new(QScreen* screen, QObject* parent);
 QOffscreenSurface* QOffscreenSurface_new2();
 QOffscreenSurface* QOffscreenSurface_new3(QScreen* screen);
 QMetaObject* QOffscreenSurface_MetaObject(const QOffscreenSurface* self);
-void QOffscreenSurface_Tr(const char* s, char** _out, int* _out_Strlen);
-void QOffscreenSurface_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QOffscreenSurface_Tr(const char* s);
+struct miqt_string* QOffscreenSurface_TrUtf8(const char* s);
 uintptr_t QOffscreenSurface_SurfaceType(const QOffscreenSurface* self);
 void QOffscreenSurface_Create(QOffscreenSurface* self);
 void QOffscreenSurface_Destroy(QOffscreenSurface* self);
@@ -45,10 +47,10 @@ QScreen* QOffscreenSurface_Screen(const QOffscreenSurface* self);
 void QOffscreenSurface_SetScreen(QOffscreenSurface* self, QScreen* screen);
 void QOffscreenSurface_ScreenChanged(QOffscreenSurface* self, QScreen* screen);
 void QOffscreenSurface_connect_ScreenChanged(QOffscreenSurface* self, void* slot);
-void QOffscreenSurface_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QOffscreenSurface_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QOffscreenSurface_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QOffscreenSurface_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QOffscreenSurface_Tr2(const char* s, const char* c);
+struct miqt_string* QOffscreenSurface_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QOffscreenSurface_TrUtf82(const char* s, const char* c);
+struct miqt_string* QOffscreenSurface_TrUtf83(const char* s, const char* c, int n);
 void QOffscreenSurface_Delete(QOffscreenSurface* self);
 
 #ifdef __cplusplus

@@ -1,12 +1,8 @@
 #include <QMapDataBase>
 #include <QMapNodeBase>
 #include "qmap.h"
-
 #include "gen_qmap.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QMapNodeBase* QMapNodeBase_new(QMapNodeBase* param1) {
 	return new QMapNodeBase(*param1);
@@ -29,8 +25,8 @@ QMapNodeBase* QMapNodeBase_PreviousNode2(QMapNodeBase* self) {
 }
 
 uintptr_t QMapNodeBase_Color(const QMapNodeBase* self) {
-	QMapNodeBase::Color ret = self->color();
-	return static_cast<uintptr_t>(ret);
+	QMapNodeBase::Color _ret = self->color();
+	return static_cast<uintptr_t>(_ret);
 }
 
 void QMapNodeBase_SetColor(QMapNodeBase* self, uintptr_t c) {

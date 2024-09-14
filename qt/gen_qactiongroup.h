@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -27,13 +29,13 @@ typedef struct QObject QObject;
 
 QActionGroup* QActionGroup_new(QObject* parent);
 QMetaObject* QActionGroup_MetaObject(const QActionGroup* self);
-void QActionGroup_Tr(const char* s, char** _out, int* _out_Strlen);
-void QActionGroup_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QActionGroup_Tr(const char* s);
+struct miqt_string* QActionGroup_TrUtf8(const char* s);
 QAction* QActionGroup_AddAction(QActionGroup* self, QAction* a);
-QAction* QActionGroup_AddActionWithText(QActionGroup* self, const char* text, size_t text_Strlen);
-QAction* QActionGroup_AddAction2(QActionGroup* self, QIcon* icon, const char* text, size_t text_Strlen);
+QAction* QActionGroup_AddActionWithText(QActionGroup* self, struct miqt_string* text);
+QAction* QActionGroup_AddAction2(QActionGroup* self, QIcon* icon, struct miqt_string* text);
 void QActionGroup_RemoveAction(QActionGroup* self, QAction* a);
-void QActionGroup_Actions(const QActionGroup* self, QAction*** _out, size_t* _out_len);
+struct miqt_array* QActionGroup_Actions(const QActionGroup* self);
 QAction* QActionGroup_CheckedAction(const QActionGroup* self);
 bool QActionGroup_IsExclusive(const QActionGroup* self);
 bool QActionGroup_IsEnabled(const QActionGroup* self);
@@ -48,10 +50,10 @@ void QActionGroup_Triggered(QActionGroup* self, QAction* param1);
 void QActionGroup_connect_Triggered(QActionGroup* self, void* slot);
 void QActionGroup_Hovered(QActionGroup* self, QAction* param1);
 void QActionGroup_connect_Hovered(QActionGroup* self, void* slot);
-void QActionGroup_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QActionGroup_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QActionGroup_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QActionGroup_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QActionGroup_Tr2(const char* s, const char* c);
+struct miqt_string* QActionGroup_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QActionGroup_TrUtf82(const char* s, const char* c);
+struct miqt_string* QActionGroup_TrUtf83(const char* s, const char* c, int n);
 void QActionGroup_Delete(QActionGroup* self);
 
 #ifdef __cplusplus

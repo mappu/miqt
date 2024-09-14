@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -44,23 +46,23 @@ bool QCalendar_HasYearZero(const QCalendar* self);
 int QCalendar_MaximumDaysInMonth(const QCalendar* self);
 int QCalendar_MinimumDaysInMonth(const QCalendar* self);
 int QCalendar_MaximumMonthsInYear(const QCalendar* self);
-void QCalendar_Name(const QCalendar* self, char** _out, int* _out_Strlen);
+struct miqt_string* QCalendar_Name(const QCalendar* self);
 QDate* QCalendar_DateFromParts(const QCalendar* self, int year, int month, int day);
 QDate* QCalendar_DateFromPartsWithParts(const QCalendar* self, QCalendar__YearMonthDay* parts);
 QCalendar__YearMonthDay* QCalendar_PartsFromDate(const QCalendar* self, QDate* date);
 int QCalendar_DayOfWeek(const QCalendar* self, QDate* date);
-void QCalendar_MonthName(const QCalendar* self, QLocale* locale, int month, char** _out, int* _out_Strlen);
-void QCalendar_StandaloneMonthName(const QCalendar* self, QLocale* locale, int month, char** _out, int* _out_Strlen);
-void QCalendar_WeekDayName(const QCalendar* self, QLocale* locale, int day, char** _out, int* _out_Strlen);
-void QCalendar_StandaloneWeekDayName(const QCalendar* self, QLocale* locale, int day, char** _out, int* _out_Strlen);
-void QCalendar_AvailableCalendars(char*** _out, int** _out_Lengths, size_t* _out_len);
+struct miqt_string* QCalendar_MonthName(const QCalendar* self, QLocale* locale, int month);
+struct miqt_string* QCalendar_StandaloneMonthName(const QCalendar* self, QLocale* locale, int month);
+struct miqt_string* QCalendar_WeekDayName(const QCalendar* self, QLocale* locale, int day);
+struct miqt_string* QCalendar_StandaloneWeekDayName(const QCalendar* self, QLocale* locale, int day);
+struct miqt_array* QCalendar_AvailableCalendars();
 int QCalendar_DaysInMonth2(const QCalendar* self, int month, int year);
-void QCalendar_MonthName3(const QCalendar* self, QLocale* locale, int month, int year, char** _out, int* _out_Strlen);
-void QCalendar_MonthName4(const QCalendar* self, QLocale* locale, int month, int year, uintptr_t format, char** _out, int* _out_Strlen);
-void QCalendar_StandaloneMonthName3(const QCalendar* self, QLocale* locale, int month, int year, char** _out, int* _out_Strlen);
-void QCalendar_StandaloneMonthName4(const QCalendar* self, QLocale* locale, int month, int year, uintptr_t format, char** _out, int* _out_Strlen);
-void QCalendar_WeekDayName3(const QCalendar* self, QLocale* locale, int day, uintptr_t format, char** _out, int* _out_Strlen);
-void QCalendar_StandaloneWeekDayName3(const QCalendar* self, QLocale* locale, int day, uintptr_t format, char** _out, int* _out_Strlen);
+struct miqt_string* QCalendar_MonthName3(const QCalendar* self, QLocale* locale, int month, int year);
+struct miqt_string* QCalendar_MonthName4(const QCalendar* self, QLocale* locale, int month, int year, uintptr_t format);
+struct miqt_string* QCalendar_StandaloneMonthName3(const QCalendar* self, QLocale* locale, int month, int year);
+struct miqt_string* QCalendar_StandaloneMonthName4(const QCalendar* self, QLocale* locale, int month, int year, uintptr_t format);
+struct miqt_string* QCalendar_WeekDayName3(const QCalendar* self, QLocale* locale, int day, uintptr_t format);
+struct miqt_string* QCalendar_StandaloneWeekDayName3(const QCalendar* self, QLocale* locale, int day, uintptr_t format);
 void QCalendar_Delete(QCalendar* self);
 
 QCalendar__YearMonthDay* QCalendar__YearMonthDay_new();

@@ -95,13 +95,13 @@ func (this *QScrollerProperties) OperatorAssign(sp *QScrollerProperties) {
 }
 
 func (this *QScrollerProperties) OperatorEqual(sp *QScrollerProperties) bool {
-	ret := C.QScrollerProperties_OperatorEqual(this.h, sp.cPointer())
-	return (bool)(ret)
+	_ret := C.QScrollerProperties_OperatorEqual(this.h, sp.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QScrollerProperties) OperatorNotEqual(sp *QScrollerProperties) bool {
-	ret := C.QScrollerProperties_OperatorNotEqual(this.h, sp.cPointer())
-	return (bool)(ret)
+	_ret := C.QScrollerProperties_OperatorNotEqual(this.h, sp.cPointer())
+	return (bool)(_ret)
 }
 
 func QScrollerProperties_SetDefaultScrollerProperties(sp *QScrollerProperties) {
@@ -113,20 +113,26 @@ func QScrollerProperties_UnsetDefaultScrollerProperties() {
 }
 
 func (this *QScrollerProperties) ScrollMetric(metric QScrollerProperties__ScrollMetric) *QVariant {
-	ret := C.QScrollerProperties_ScrollMetric(this.h, (C.uintptr_t)(metric))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQVariant(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QVariant) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QScrollerProperties_ScrollMetric(this.h, (C.uintptr_t)(metric))
+	_goptr := newQVariant(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QScrollerProperties) SetScrollMetric(metric QScrollerProperties__ScrollMetric, value *QVariant) {
 	C.QScrollerProperties_SetScrollMetric(this.h, (C.uintptr_t)(metric), value.cPointer())
 }
 
+// Delete this object from C++ memory.
 func (this *QScrollerProperties) Delete() {
 	C.QScrollerProperties_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QScrollerProperties) GoGC() {
+	runtime.SetFinalizer(this, func(this *QScrollerProperties) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

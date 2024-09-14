@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -33,13 +35,13 @@ typedef struct QWidget QWidget;
 
 QCompleter* QCompleter_new();
 QCompleter* QCompleter_new2(QAbstractItemModel* model);
-QCompleter* QCompleter_new3(char** completions, uint64_t* completions_Lengths, size_t completions_len);
+QCompleter* QCompleter_new3(struct miqt_array* /* of QString */ completions);
 QCompleter* QCompleter_new4(QObject* parent);
 QCompleter* QCompleter_new5(QAbstractItemModel* model, QObject* parent);
-QCompleter* QCompleter_new6(char** completions, uint64_t* completions_Lengths, size_t completions_len, QObject* parent);
+QCompleter* QCompleter_new6(struct miqt_array* /* of QString */ completions, QObject* parent);
 QMetaObject* QCompleter_MetaObject(const QCompleter* self);
-void QCompleter_Tr(const char* s, char** _out, int* _out_Strlen);
-void QCompleter_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QCompleter_Tr(const char* s);
+struct miqt_string* QCompleter_TrUtf8(const char* s);
 void QCompleter_SetWidget(QCompleter* self, QWidget* widget);
 QWidget* QCompleter_Widget(const QCompleter* self);
 void QCompleter_SetModel(QCompleter* self, QAbstractItemModel* c);
@@ -65,26 +67,26 @@ int QCompleter_CompletionCount(const QCompleter* self);
 bool QCompleter_SetCurrentRow(QCompleter* self, int row);
 int QCompleter_CurrentRow(const QCompleter* self);
 QModelIndex* QCompleter_CurrentIndex(const QCompleter* self);
-void QCompleter_CurrentCompletion(const QCompleter* self, char** _out, int* _out_Strlen);
+struct miqt_string* QCompleter_CurrentCompletion(const QCompleter* self);
 QAbstractItemModel* QCompleter_CompletionModel(const QCompleter* self);
-void QCompleter_CompletionPrefix(const QCompleter* self, char** _out, int* _out_Strlen);
-void QCompleter_SetCompletionPrefix(QCompleter* self, const char* prefix, size_t prefix_Strlen);
+struct miqt_string* QCompleter_CompletionPrefix(const QCompleter* self);
+void QCompleter_SetCompletionPrefix(QCompleter* self, struct miqt_string* prefix);
 void QCompleter_Complete(QCompleter* self);
 void QCompleter_SetWrapAround(QCompleter* self, bool wrap);
-void QCompleter_PathFromIndex(const QCompleter* self, QModelIndex* index, char** _out, int* _out_Strlen);
-void QCompleter_SplitPath(const QCompleter* self, const char* path, size_t path_Strlen, char*** _out, int** _out_Lengths, size_t* _out_len);
-void QCompleter_Activated(QCompleter* self, const char* text, size_t text_Strlen);
+struct miqt_string* QCompleter_PathFromIndex(const QCompleter* self, QModelIndex* index);
+struct miqt_array* QCompleter_SplitPath(const QCompleter* self, struct miqt_string* path);
+void QCompleter_Activated(QCompleter* self, struct miqt_string* text);
 void QCompleter_connect_Activated(QCompleter* self, void* slot);
 void QCompleter_ActivatedWithIndex(QCompleter* self, QModelIndex* index);
 void QCompleter_connect_ActivatedWithIndex(QCompleter* self, void* slot);
-void QCompleter_Highlighted(QCompleter* self, const char* text, size_t text_Strlen);
+void QCompleter_Highlighted(QCompleter* self, struct miqt_string* text);
 void QCompleter_connect_Highlighted(QCompleter* self, void* slot);
 void QCompleter_HighlightedWithIndex(QCompleter* self, QModelIndex* index);
 void QCompleter_connect_HighlightedWithIndex(QCompleter* self, void* slot);
-void QCompleter_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QCompleter_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QCompleter_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QCompleter_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QCompleter_Tr2(const char* s, const char* c);
+struct miqt_string* QCompleter_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QCompleter_TrUtf82(const char* s, const char* c);
+struct miqt_string* QCompleter_TrUtf83(const char* s, const char* c, int n);
 void QCompleter_Complete1(QCompleter* self, QRect* rect);
 void QCompleter_Delete(QCompleter* self);
 

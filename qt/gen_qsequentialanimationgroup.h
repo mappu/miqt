@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -28,18 +30,18 @@ typedef struct QSequentialAnimationGroup QSequentialAnimationGroup;
 QSequentialAnimationGroup* QSequentialAnimationGroup_new();
 QSequentialAnimationGroup* QSequentialAnimationGroup_new2(QObject* parent);
 QMetaObject* QSequentialAnimationGroup_MetaObject(const QSequentialAnimationGroup* self);
-void QSequentialAnimationGroup_Tr(const char* s, char** _out, int* _out_Strlen);
-void QSequentialAnimationGroup_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QSequentialAnimationGroup_Tr(const char* s);
+struct miqt_string* QSequentialAnimationGroup_TrUtf8(const char* s);
 QPauseAnimation* QSequentialAnimationGroup_AddPause(QSequentialAnimationGroup* self, int msecs);
 QPauseAnimation* QSequentialAnimationGroup_InsertPause(QSequentialAnimationGroup* self, int index, int msecs);
 QAbstractAnimation* QSequentialAnimationGroup_CurrentAnimation(const QSequentialAnimationGroup* self);
 int QSequentialAnimationGroup_Duration(const QSequentialAnimationGroup* self);
 void QSequentialAnimationGroup_CurrentAnimationChanged(QSequentialAnimationGroup* self, QAbstractAnimation* current);
 void QSequentialAnimationGroup_connect_CurrentAnimationChanged(QSequentialAnimationGroup* self, void* slot);
-void QSequentialAnimationGroup_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QSequentialAnimationGroup_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QSequentialAnimationGroup_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QSequentialAnimationGroup_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QSequentialAnimationGroup_Tr2(const char* s, const char* c);
+struct miqt_string* QSequentialAnimationGroup_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QSequentialAnimationGroup_TrUtf82(const char* s, const char* c);
+struct miqt_string* QSequentialAnimationGroup_TrUtf83(const char* s, const char* c, int n);
 void QSequentialAnimationGroup_Delete(QSequentialAnimationGroup* self);
 
 #ifdef __cplusplus

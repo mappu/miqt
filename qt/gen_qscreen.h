@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -32,12 +34,12 @@ typedef struct QTransform QTransform;
 #endif
 
 QMetaObject* QScreen_MetaObject(const QScreen* self);
-void QScreen_Tr(const char* s, char** _out, int* _out_Strlen);
-void QScreen_TrUtf8(const char* s, char** _out, int* _out_Strlen);
-void QScreen_Name(const QScreen* self, char** _out, int* _out_Strlen);
-void QScreen_Manufacturer(const QScreen* self, char** _out, int* _out_Strlen);
-void QScreen_Model(const QScreen* self, char** _out, int* _out_Strlen);
-void QScreen_SerialNumber(const QScreen* self, char** _out, int* _out_Strlen);
+struct miqt_string* QScreen_Tr(const char* s);
+struct miqt_string* QScreen_TrUtf8(const char* s);
+struct miqt_string* QScreen_Name(const QScreen* self);
+struct miqt_string* QScreen_Manufacturer(const QScreen* self);
+struct miqt_string* QScreen_Model(const QScreen* self);
+struct miqt_string* QScreen_SerialNumber(const QScreen* self);
 int QScreen_Depth(const QScreen* self);
 QSize* QScreen_Size(const QScreen* self);
 QRect* QScreen_Geometry(const QScreen* self);
@@ -51,7 +53,7 @@ double QScreen_LogicalDotsPerInch(const QScreen* self);
 double QScreen_DevicePixelRatio(const QScreen* self);
 QSize* QScreen_AvailableSize(const QScreen* self);
 QRect* QScreen_AvailableGeometry(const QScreen* self);
-void QScreen_VirtualSiblings(const QScreen* self, QScreen*** _out, size_t* _out_len);
+struct miqt_array* QScreen_VirtualSiblings(const QScreen* self);
 QScreen* QScreen_VirtualSiblingAt(QScreen* self, QPoint* point);
 QSize* QScreen_VirtualSize(const QScreen* self);
 QRect* QScreen_VirtualGeometry(const QScreen* self);
@@ -87,10 +89,10 @@ void QScreen_OrientationChanged(QScreen* self, uintptr_t orientation);
 void QScreen_connect_OrientationChanged(QScreen* self, void* slot);
 void QScreen_RefreshRateChanged(QScreen* self, double refreshRate);
 void QScreen_connect_RefreshRateChanged(QScreen* self, void* slot);
-void QScreen_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QScreen_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QScreen_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QScreen_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QScreen_Tr2(const char* s, const char* c);
+struct miqt_string* QScreen_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QScreen_TrUtf82(const char* s, const char* c);
+struct miqt_string* QScreen_TrUtf83(const char* s, const char* c, int n);
 QPixmap* QScreen_GrabWindow2(QScreen* self, uintptr_t window, int x);
 QPixmap* QScreen_GrabWindow3(QScreen* self, uintptr_t window, int x, int y);
 QPixmap* QScreen_GrabWindow4(QScreen* self, uintptr_t window, int x, int y, int w);

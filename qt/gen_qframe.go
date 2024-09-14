@@ -82,35 +82,31 @@ func NewQFrame3(parent *QWidget, f int) *QFrame {
 }
 
 func (this *QFrame) MetaObject() *QMetaObject {
-	ret := C.QFrame_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QFrame_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QFrame_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QFrame_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QFrame_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QFrame_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QFrame_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QFrame_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QFrame) FrameStyle() int {
-	ret := C.QFrame_FrameStyle(this.h)
-	return (int)(ret)
+	_ret := C.QFrame_FrameStyle(this.h)
+	return (int)(_ret)
 }
 
 func (this *QFrame) SetFrameStyle(frameStyle int) {
@@ -118,24 +114,20 @@ func (this *QFrame) SetFrameStyle(frameStyle int) {
 }
 
 func (this *QFrame) FrameWidth() int {
-	ret := C.QFrame_FrameWidth(this.h)
-	return (int)(ret)
+	_ret := C.QFrame_FrameWidth(this.h)
+	return (int)(_ret)
 }
 
 func (this *QFrame) SizeHint() *QSize {
-	ret := C.QFrame_SizeHint(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSize(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QFrame_SizeHint(this.h)
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QFrame) FrameShape() QFrame__Shape {
-	ret := C.QFrame_FrameShape(this.h)
-	return (QFrame__Shape)(ret)
+	_ret := C.QFrame_FrameShape(this.h)
+	return (QFrame__Shape)(_ret)
 }
 
 func (this *QFrame) SetFrameShape(frameShape QFrame__Shape) {
@@ -143,8 +135,8 @@ func (this *QFrame) SetFrameShape(frameShape QFrame__Shape) {
 }
 
 func (this *QFrame) FrameShadow() QFrame__Shadow {
-	ret := C.QFrame_FrameShadow(this.h)
-	return (QFrame__Shadow)(ret)
+	_ret := C.QFrame_FrameShadow(this.h)
+	return (QFrame__Shadow)(_ret)
 }
 
 func (this *QFrame) SetFrameShadow(frameShadow QFrame__Shadow) {
@@ -152,8 +144,8 @@ func (this *QFrame) SetFrameShadow(frameShadow QFrame__Shadow) {
 }
 
 func (this *QFrame) LineWidth() int {
-	ret := C.QFrame_LineWidth(this.h)
-	return (int)(ret)
+	_ret := C.QFrame_LineWidth(this.h)
+	return (int)(_ret)
 }
 
 func (this *QFrame) SetLineWidth(lineWidth int) {
@@ -161,8 +153,8 @@ func (this *QFrame) SetLineWidth(lineWidth int) {
 }
 
 func (this *QFrame) MidLineWidth() int {
-	ret := C.QFrame_MidLineWidth(this.h)
-	return (int)(ret)
+	_ret := C.QFrame_MidLineWidth(this.h)
+	return (int)(_ret)
 }
 
 func (this *QFrame) SetMidLineWidth(midLineWidth int) {
@@ -170,14 +162,10 @@ func (this *QFrame) SetMidLineWidth(midLineWidth int) {
 }
 
 func (this *QFrame) FrameRect() *QRect {
-	ret := C.QFrame_FrameRect(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRect(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRect) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QFrame_FrameRect(this.h)
+	_goptr := newQRect(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QFrame) SetFrameRect(frameRect *QRect) {
@@ -189,12 +177,10 @@ func QFrame_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QFrame_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QFrame_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QFrame_Tr3(s string, c string, n int) string {
@@ -202,12 +188,10 @@ func QFrame_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QFrame_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QFrame_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QFrame_TrUtf82(s string, c string) string {
@@ -215,12 +199,10 @@ func QFrame_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QFrame_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QFrame_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QFrame_TrUtf83(s string, c string, n int) string {
@@ -228,14 +210,22 @@ func QFrame_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QFrame_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QFrame_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
+// Delete this object from C++ memory.
 func (this *QFrame) Delete() {
 	C.QFrame_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QFrame) GoGC() {
+	runtime.SetFinalizer(this, func(this *QFrame) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

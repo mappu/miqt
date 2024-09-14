@@ -38,45 +38,39 @@ func newQAbstractButton_U(h unsafe.Pointer) *QAbstractButton {
 }
 
 func (this *QAbstractButton) MetaObject() *QMetaObject {
-	ret := C.QAbstractButton_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QAbstractButton_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QAbstractButton_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QAbstractButton_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QAbstractButton_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QAbstractButton_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QAbstractButton_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QAbstractButton_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QAbstractButton) SetText(text string) {
-	text_Cstring := C.CString(text)
-	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QAbstractButton_SetText(this.h, text_Cstring, C.size_t(len(text)))
+	text_ms := miqt_strdupg(text)
+	defer C.free(text_ms)
+	C.QAbstractButton_SetText(this.h, (*C.struct_miqt_string)(text_ms))
 }
 
 func (this *QAbstractButton) Text() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QAbstractButton_Text(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QAbstractButton_Text(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QAbstractButton) SetIcon(icon *QIcon) {
@@ -84,25 +78,17 @@ func (this *QAbstractButton) SetIcon(icon *QIcon) {
 }
 
 func (this *QAbstractButton) Icon() *QIcon {
-	ret := C.QAbstractButton_Icon(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQIcon(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QIcon) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QAbstractButton_Icon(this.h)
+	_goptr := newQIcon(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QAbstractButton) IconSize() *QSize {
-	ret := C.QAbstractButton_IconSize(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSize(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QAbstractButton_IconSize(this.h)
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QAbstractButton) SetShortcut(key *QKeySequence) {
@@ -110,14 +96,10 @@ func (this *QAbstractButton) SetShortcut(key *QKeySequence) {
 }
 
 func (this *QAbstractButton) Shortcut() *QKeySequence {
-	ret := C.QAbstractButton_Shortcut(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQKeySequence(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QKeySequence) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QAbstractButton_Shortcut(this.h)
+	_goptr := newQKeySequence(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QAbstractButton) SetCheckable(checkable bool) {
@@ -125,13 +107,13 @@ func (this *QAbstractButton) SetCheckable(checkable bool) {
 }
 
 func (this *QAbstractButton) IsCheckable() bool {
-	ret := C.QAbstractButton_IsCheckable(this.h)
-	return (bool)(ret)
+	_ret := C.QAbstractButton_IsCheckable(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QAbstractButton) IsChecked() bool {
-	ret := C.QAbstractButton_IsChecked(this.h)
-	return (bool)(ret)
+	_ret := C.QAbstractButton_IsChecked(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QAbstractButton) SetDown(down bool) {
@@ -139,8 +121,8 @@ func (this *QAbstractButton) SetDown(down bool) {
 }
 
 func (this *QAbstractButton) IsDown() bool {
-	ret := C.QAbstractButton_IsDown(this.h)
-	return (bool)(ret)
+	_ret := C.QAbstractButton_IsDown(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QAbstractButton) SetAutoRepeat(autoRepeat bool) {
@@ -148,8 +130,8 @@ func (this *QAbstractButton) SetAutoRepeat(autoRepeat bool) {
 }
 
 func (this *QAbstractButton) AutoRepeat() bool {
-	ret := C.QAbstractButton_AutoRepeat(this.h)
-	return (bool)(ret)
+	_ret := C.QAbstractButton_AutoRepeat(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QAbstractButton) SetAutoRepeatDelay(autoRepeatDelay int) {
@@ -157,8 +139,8 @@ func (this *QAbstractButton) SetAutoRepeatDelay(autoRepeatDelay int) {
 }
 
 func (this *QAbstractButton) AutoRepeatDelay() int {
-	ret := C.QAbstractButton_AutoRepeatDelay(this.h)
-	return (int)(ret)
+	_ret := C.QAbstractButton_AutoRepeatDelay(this.h)
+	return (int)(_ret)
 }
 
 func (this *QAbstractButton) SetAutoRepeatInterval(autoRepeatInterval int) {
@@ -166,8 +148,8 @@ func (this *QAbstractButton) SetAutoRepeatInterval(autoRepeatInterval int) {
 }
 
 func (this *QAbstractButton) AutoRepeatInterval() int {
-	ret := C.QAbstractButton_AutoRepeatInterval(this.h)
-	return (int)(ret)
+	_ret := C.QAbstractButton_AutoRepeatInterval(this.h)
+	return (int)(_ret)
 }
 
 func (this *QAbstractButton) SetAutoExclusive(autoExclusive bool) {
@@ -175,13 +157,13 @@ func (this *QAbstractButton) SetAutoExclusive(autoExclusive bool) {
 }
 
 func (this *QAbstractButton) AutoExclusive() bool {
-	ret := C.QAbstractButton_AutoExclusive(this.h)
-	return (bool)(ret)
+	_ret := C.QAbstractButton_AutoExclusive(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QAbstractButton) Group() *QButtonGroup {
-	ret := C.QAbstractButton_Group(this.h)
-	return newQButtonGroup_U(unsafe.Pointer(ret))
+	_ret := C.QAbstractButton_Group(this.h)
+	return newQButtonGroup_U(unsafe.Pointer(_ret))
 }
 
 func (this *QAbstractButton) SetIconSize(size *QSize) {
@@ -207,49 +189,73 @@ func (this *QAbstractButton) SetChecked(checked bool) {
 func (this *QAbstractButton) Pressed() {
 	C.QAbstractButton_Pressed(this.h)
 }
-
 func (this *QAbstractButton) OnPressed(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+	C.QAbstractButton_connect_Pressed(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
+
+//export miqt_exec_callback_QAbstractButton_Pressed
+func miqt_exec_callback_QAbstractButton_Pressed(cb *C.void) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QAbstractButton_connect_Pressed(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	gofunc()
 }
 
 func (this *QAbstractButton) Released() {
 	C.QAbstractButton_Released(this.h)
 }
-
 func (this *QAbstractButton) OnReleased(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+	C.QAbstractButton_connect_Released(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
+
+//export miqt_exec_callback_QAbstractButton_Released
+func miqt_exec_callback_QAbstractButton_Released(cb *C.void) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QAbstractButton_connect_Released(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	gofunc()
 }
 
 func (this *QAbstractButton) Clicked() {
 	C.QAbstractButton_Clicked(this.h)
 }
-
 func (this *QAbstractButton) OnClicked(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+	C.QAbstractButton_connect_Clicked(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
+
+//export miqt_exec_callback_QAbstractButton_Clicked
+func miqt_exec_callback_QAbstractButton_Clicked(cb *C.void) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QAbstractButton_connect_Clicked(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	gofunc()
 }
 
 func (this *QAbstractButton) Toggled(checked bool) {
 	C.QAbstractButton_Toggled(this.h, (C.bool)(checked))
 }
+func (this *QAbstractButton) OnToggled(slot func(checked bool)) {
+	C.QAbstractButton_connect_Toggled(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QAbstractButton) OnToggled(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QAbstractButton_Toggled
+func miqt_exec_callback_QAbstractButton_Toggled(cb *C.void, checked C.bool) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(checked bool))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QAbstractButton_connect_Toggled(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	checked_ret := checked
+	slotval1 := (bool)(checked_ret)
+
+	gofunc(slotval1)
 }
 
 func QAbstractButton_Tr2(s string, c string) string {
@@ -257,12 +263,10 @@ func QAbstractButton_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QAbstractButton_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QAbstractButton_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QAbstractButton_Tr3(s string, c string, n int) string {
@@ -270,12 +274,10 @@ func QAbstractButton_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QAbstractButton_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QAbstractButton_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QAbstractButton_TrUtf82(s string, c string) string {
@@ -283,12 +285,10 @@ func QAbstractButton_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QAbstractButton_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QAbstractButton_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QAbstractButton_TrUtf83(s string, c string, n int) string {
@@ -296,12 +296,10 @@ func QAbstractButton_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QAbstractButton_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QAbstractButton_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QAbstractButton) AnimateClick1(msec int) {
@@ -311,15 +309,34 @@ func (this *QAbstractButton) AnimateClick1(msec int) {
 func (this *QAbstractButton) Clicked1(checked bool) {
 	C.QAbstractButton_Clicked1(this.h, (C.bool)(checked))
 }
-
-func (this *QAbstractButton) OnClicked1(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
-	}
-
-	C.QAbstractButton_connect_Clicked1(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+func (this *QAbstractButton) OnClicked1(slot func(checked bool)) {
+	C.QAbstractButton_connect_Clicked1(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
 }
 
+//export miqt_exec_callback_QAbstractButton_Clicked1
+func miqt_exec_callback_QAbstractButton_Clicked1(cb *C.void, checked C.bool) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(checked bool))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	checked_ret := checked
+	slotval1 := (bool)(checked_ret)
+
+	gofunc(slotval1)
+}
+
+// Delete this object from C++ memory.
 func (this *QAbstractButton) Delete() {
 	C.QAbstractButton_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QAbstractButton) GoGC() {
+	runtime.SetFinalizer(this, func(this *QAbstractButton) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

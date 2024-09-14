@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -55,8 +57,8 @@ void QTextCursor_SetPosition(QTextCursor* self, int pos);
 int QTextCursor_Position(const QTextCursor* self);
 int QTextCursor_PositionInBlock(const QTextCursor* self);
 int QTextCursor_Anchor(const QTextCursor* self);
-void QTextCursor_InsertText(QTextCursor* self, const char* text, size_t text_Strlen);
-void QTextCursor_InsertText2(QTextCursor* self, const char* text, size_t text_Strlen, QTextCharFormat* format);
+void QTextCursor_InsertText(QTextCursor* self, struct miqt_string* text);
+void QTextCursor_InsertText2(QTextCursor* self, struct miqt_string* text, QTextCharFormat* format);
 bool QTextCursor_MovePosition(QTextCursor* self, uintptr_t op);
 bool QTextCursor_VisualNavigation(const QTextCursor* self);
 void QTextCursor_SetVisualNavigation(QTextCursor* self, bool b);
@@ -73,7 +75,7 @@ void QTextCursor_RemoveSelectedText(QTextCursor* self);
 void QTextCursor_ClearSelection(QTextCursor* self);
 int QTextCursor_SelectionStart(const QTextCursor* self);
 int QTextCursor_SelectionEnd(const QTextCursor* self);
-void QTextCursor_SelectedText(const QTextCursor* self, char** _out, int* _out_Strlen);
+struct miqt_string* QTextCursor_SelectedText(const QTextCursor* self);
 QTextDocumentFragment* QTextCursor_Selection(const QTextCursor* self);
 void QTextCursor_SelectedTableCells(const QTextCursor* self, int* firstRow, int* numRows, int* firstColumn, int* numColumns);
 QTextBlock* QTextCursor_Block(const QTextCursor* self);
@@ -104,10 +106,10 @@ QTextTable* QTextCursor_CurrentTable(const QTextCursor* self);
 QTextFrame* QTextCursor_InsertFrame(QTextCursor* self, QTextFrameFormat* format);
 QTextFrame* QTextCursor_CurrentFrame(const QTextCursor* self);
 void QTextCursor_InsertFragment(QTextCursor* self, QTextDocumentFragment* fragment);
-void QTextCursor_InsertHtml(QTextCursor* self, const char* html, size_t html_Strlen);
+void QTextCursor_InsertHtml(QTextCursor* self, struct miqt_string* html);
 void QTextCursor_InsertImage(QTextCursor* self, QTextImageFormat* format, uintptr_t alignment);
 void QTextCursor_InsertImageWithFormat(QTextCursor* self, QTextImageFormat* format);
-void QTextCursor_InsertImageWithName(QTextCursor* self, const char* name, size_t name_Strlen);
+void QTextCursor_InsertImageWithName(QTextCursor* self, struct miqt_string* name);
 void QTextCursor_InsertImageWithImage(QTextCursor* self, QImage* image);
 void QTextCursor_BeginEditBlock(QTextCursor* self);
 void QTextCursor_JoinPreviousEditBlock(QTextCursor* self);
@@ -125,7 +127,7 @@ QTextDocument* QTextCursor_Document(const QTextCursor* self);
 void QTextCursor_SetPosition2(QTextCursor* self, int pos, uintptr_t mode);
 bool QTextCursor_MovePosition2(QTextCursor* self, uintptr_t op, uintptr_t param2);
 bool QTextCursor_MovePosition3(QTextCursor* self, uintptr_t op, uintptr_t param2, int n);
-void QTextCursor_InsertImage2(QTextCursor* self, QImage* image, const char* name, size_t name_Strlen);
+void QTextCursor_InsertImage2(QTextCursor* self, QImage* image, struct miqt_string* name);
 void QTextCursor_Delete(QTextCursor* self);
 
 #ifdef __cplusplus

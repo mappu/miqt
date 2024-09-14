@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -22,8 +24,8 @@ typedef struct QUrl QUrl;
 #endif
 
 bool QDesktopServices_OpenUrl(QUrl* url);
-void QDesktopServices_SetUrlHandler(const char* scheme, size_t scheme_Strlen, QObject* receiver, const char* method);
-void QDesktopServices_UnsetUrlHandler(const char* scheme, size_t scheme_Strlen);
+void QDesktopServices_SetUrlHandler(struct miqt_string* scheme, QObject* receiver, const char* method);
+void QDesktopServices_UnsetUrlHandler(struct miqt_string* scheme);
 void QDesktopServices_Delete(QDesktopServices* self);
 
 #ifdef __cplusplus

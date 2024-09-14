@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"runtime"
 	"unsafe"
 )
 
@@ -35,33 +36,33 @@ func newQtPrivate__RefCount_U(h unsafe.Pointer) *QtPrivate__RefCount {
 }
 
 func (this *QtPrivate__RefCount) Ref() bool {
-	ret := C.QtPrivate__RefCount_Ref(this.h)
-	return (bool)(ret)
+	_ret := C.QtPrivate__RefCount_Ref(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QtPrivate__RefCount) Deref() bool {
-	ret := C.QtPrivate__RefCount_Deref(this.h)
-	return (bool)(ret)
+	_ret := C.QtPrivate__RefCount_Deref(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QtPrivate__RefCount) SetSharable(sharable bool) bool {
-	ret := C.QtPrivate__RefCount_SetSharable(this.h, (C.bool)(sharable))
-	return (bool)(ret)
+	_ret := C.QtPrivate__RefCount_SetSharable(this.h, (C.bool)(sharable))
+	return (bool)(_ret)
 }
 
 func (this *QtPrivate__RefCount) IsSharable() bool {
-	ret := C.QtPrivate__RefCount_IsSharable(this.h)
-	return (bool)(ret)
+	_ret := C.QtPrivate__RefCount_IsSharable(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QtPrivate__RefCount) IsStatic() bool {
-	ret := C.QtPrivate__RefCount_IsStatic(this.h)
-	return (bool)(ret)
+	_ret := C.QtPrivate__RefCount_IsStatic(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QtPrivate__RefCount) IsShared() bool {
-	ret := C.QtPrivate__RefCount_IsShared(this.h)
-	return (bool)(ret)
+	_ret := C.QtPrivate__RefCount_IsShared(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QtPrivate__RefCount) InitializeOwned() {
@@ -72,6 +73,16 @@ func (this *QtPrivate__RefCount) InitializeUnsharable() {
 	C.QtPrivate__RefCount_InitializeUnsharable(this.h)
 }
 
+// Delete this object from C++ memory.
 func (this *QtPrivate__RefCount) Delete() {
 	C.QtPrivate__RefCount_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QtPrivate__RefCount) GoGC() {
+	runtime.SetFinalizer(this, func(this *QtPrivate__RefCount) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

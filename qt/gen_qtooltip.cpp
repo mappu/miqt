@@ -8,25 +8,21 @@
 #include <QToolTip>
 #include <QWidget>
 #include "qtooltip.h"
-
 #include "gen_qtooltip.h"
+#include "_cgo_export.h"
 
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
-
-void QToolTip_ShowText(QPoint* pos, const char* text, size_t text_Strlen) {
-	QString text_QString = QString::fromUtf8(text, text_Strlen);
+void QToolTip_ShowText(QPoint* pos, struct miqt_string* text) {
+	QString text_QString = QString::fromUtf8(&text->data, text->len);
 	QToolTip::showText(*pos, text_QString);
 }
 
-void QToolTip_ShowText2(QPoint* pos, const char* text, size_t text_Strlen, QWidget* w, QRect* rect) {
-	QString text_QString = QString::fromUtf8(text, text_Strlen);
+void QToolTip_ShowText2(QPoint* pos, struct miqt_string* text, QWidget* w, QRect* rect) {
+	QString text_QString = QString::fromUtf8(&text->data, text->len);
 	QToolTip::showText(*pos, text_QString, w, *rect);
 }
 
-void QToolTip_ShowText3(QPoint* pos, const char* text, size_t text_Strlen, QWidget* w, QRect* rect, int msecShowTime) {
-	QString text_QString = QString::fromUtf8(text, text_Strlen);
+void QToolTip_ShowText3(QPoint* pos, struct miqt_string* text, QWidget* w, QRect* rect, int msecShowTime) {
+	QString text_QString = QString::fromUtf8(&text->data, text->len);
 	QToolTip::showText(*pos, text_QString, w, *rect, static_cast<int>(msecShowTime));
 }
 
@@ -38,19 +34,17 @@ bool QToolTip_IsVisible() {
 	return QToolTip::isVisible();
 }
 
-void QToolTip_Text(char** _out, int* _out_Strlen) {
-	QString ret = QToolTip::text();
+struct miqt_string* QToolTip_Text() {
+	QString _ret = QToolTip::text();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 QPalette* QToolTip_Palette() {
-	QPalette ret = QToolTip::palette();
+	QPalette _ret = QToolTip::palette();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPalette*>(new QPalette(ret));
+	return static_cast<QPalette*>(new QPalette(_ret));
 }
 
 void QToolTip_SetPalette(QPalette* palette) {
@@ -58,17 +52,17 @@ void QToolTip_SetPalette(QPalette* palette) {
 }
 
 QFont* QToolTip_Font() {
-	QFont ret = QToolTip::font();
+	QFont _ret = QToolTip::font();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QFont*>(new QFont(ret));
+	return static_cast<QFont*>(new QFont(_ret));
 }
 
 void QToolTip_SetFont(QFont* font) {
 	QToolTip::setFont(*font);
 }
 
-void QToolTip_ShowText32(QPoint* pos, const char* text, size_t text_Strlen, QWidget* w) {
-	QString text_QString = QString::fromUtf8(text, text_Strlen);
+void QToolTip_ShowText32(QPoint* pos, struct miqt_string* text, QWidget* w) {
+	QString text_QString = QString::fromUtf8(&text->data, text->len);
 	QToolTip::showText(*pos, text_QString, w);
 }
 

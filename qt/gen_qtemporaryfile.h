@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -24,27 +26,27 @@ typedef struct QTemporaryFile QTemporaryFile;
 #endif
 
 QTemporaryFile* QTemporaryFile_new();
-QTemporaryFile* QTemporaryFile_new2(const char* templateName, size_t templateName_Strlen);
+QTemporaryFile* QTemporaryFile_new2(struct miqt_string* templateName);
 QTemporaryFile* QTemporaryFile_new3(QObject* parent);
-QTemporaryFile* QTemporaryFile_new4(const char* templateName, size_t templateName_Strlen, QObject* parent);
+QTemporaryFile* QTemporaryFile_new4(struct miqt_string* templateName, QObject* parent);
 QMetaObject* QTemporaryFile_MetaObject(const QTemporaryFile* self);
-void QTemporaryFile_Tr(const char* s, char** _out, int* _out_Strlen);
-void QTemporaryFile_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QTemporaryFile_Tr(const char* s);
+struct miqt_string* QTemporaryFile_TrUtf8(const char* s);
 bool QTemporaryFile_AutoRemove(const QTemporaryFile* self);
 void QTemporaryFile_SetAutoRemove(QTemporaryFile* self, bool b);
 bool QTemporaryFile_Open(QTemporaryFile* self);
-void QTemporaryFile_FileName(const QTemporaryFile* self, char** _out, int* _out_Strlen);
-void QTemporaryFile_FileTemplate(const QTemporaryFile* self, char** _out, int* _out_Strlen);
-void QTemporaryFile_SetFileTemplate(QTemporaryFile* self, const char* name, size_t name_Strlen);
-bool QTemporaryFile_Rename(QTemporaryFile* self, const char* newName, size_t newName_Strlen);
-QTemporaryFile* QTemporaryFile_CreateLocalFile(const char* fileName, size_t fileName_Strlen);
+struct miqt_string* QTemporaryFile_FileName(const QTemporaryFile* self);
+struct miqt_string* QTemporaryFile_FileTemplate(const QTemporaryFile* self);
+void QTemporaryFile_SetFileTemplate(QTemporaryFile* self, struct miqt_string* name);
+bool QTemporaryFile_Rename(QTemporaryFile* self, struct miqt_string* newName);
+QTemporaryFile* QTemporaryFile_CreateLocalFile(struct miqt_string* fileName);
 QTemporaryFile* QTemporaryFile_CreateLocalFileWithFile(QFile* file);
-QTemporaryFile* QTemporaryFile_CreateNativeFile(const char* fileName, size_t fileName_Strlen);
+QTemporaryFile* QTemporaryFile_CreateNativeFile(struct miqt_string* fileName);
 QTemporaryFile* QTemporaryFile_CreateNativeFileWithFile(QFile* file);
-void QTemporaryFile_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QTemporaryFile_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QTemporaryFile_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QTemporaryFile_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QTemporaryFile_Tr2(const char* s, const char* c);
+struct miqt_string* QTemporaryFile_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QTemporaryFile_TrUtf82(const char* s, const char* c);
+struct miqt_string* QTemporaryFile_TrUtf83(const char* s, const char* c, int n);
 void QTemporaryFile_Delete(QTemporaryFile* self);
 
 #ifdef __cplusplus

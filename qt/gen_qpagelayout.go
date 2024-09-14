@@ -99,13 +99,13 @@ func (this *QPageLayout) Swap(other *QPageLayout) {
 }
 
 func (this *QPageLayout) IsEquivalentTo(other *QPageLayout) bool {
-	ret := C.QPageLayout_IsEquivalentTo(this.h, other.cPointer())
-	return (bool)(ret)
+	_ret := C.QPageLayout_IsEquivalentTo(this.h, other.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QPageLayout) IsValid() bool {
-	ret := C.QPageLayout_IsValid(this.h)
-	return (bool)(ret)
+	_ret := C.QPageLayout_IsValid(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QPageLayout) SetMode(mode QPageLayout__Mode) {
@@ -113,8 +113,8 @@ func (this *QPageLayout) SetMode(mode QPageLayout__Mode) {
 }
 
 func (this *QPageLayout) Mode() QPageLayout__Mode {
-	ret := C.QPageLayout_Mode(this.h)
-	return (QPageLayout__Mode)(ret)
+	_ret := C.QPageLayout_Mode(this.h)
+	return (QPageLayout__Mode)(_ret)
 }
 
 func (this *QPageLayout) SetPageSize(pageSize *QPageSize) {
@@ -122,14 +122,10 @@ func (this *QPageLayout) SetPageSize(pageSize *QPageSize) {
 }
 
 func (this *QPageLayout) PageSize() *QPageSize {
-	ret := C.QPageLayout_PageSize(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPageSize(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPageSize) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QPageLayout_PageSize(this.h)
+	_goptr := newQPageSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QPageLayout) SetOrientation(orientation QPageLayout__Orientation) {
@@ -137,8 +133,8 @@ func (this *QPageLayout) SetOrientation(orientation QPageLayout__Orientation) {
 }
 
 func (this *QPageLayout) Orientation() QPageLayout__Orientation {
-	ret := C.QPageLayout_Orientation(this.h)
-	return (QPageLayout__Orientation)(ret)
+	_ret := C.QPageLayout_Orientation(this.h)
+	return (QPageLayout__Orientation)(_ret)
 }
 
 func (this *QPageLayout) SetUnits(units QPageLayout__Unit) {
@@ -146,77 +142,61 @@ func (this *QPageLayout) SetUnits(units QPageLayout__Unit) {
 }
 
 func (this *QPageLayout) Units() QPageLayout__Unit {
-	ret := C.QPageLayout_Units(this.h)
-	return (QPageLayout__Unit)(ret)
+	_ret := C.QPageLayout_Units(this.h)
+	return (QPageLayout__Unit)(_ret)
 }
 
 func (this *QPageLayout) SetMargins(margins *QMarginsF) bool {
-	ret := C.QPageLayout_SetMargins(this.h, margins.cPointer())
-	return (bool)(ret)
+	_ret := C.QPageLayout_SetMargins(this.h, margins.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QPageLayout) SetLeftMargin(leftMargin float64) bool {
-	ret := C.QPageLayout_SetLeftMargin(this.h, (C.double)(leftMargin))
-	return (bool)(ret)
+	_ret := C.QPageLayout_SetLeftMargin(this.h, (C.double)(leftMargin))
+	return (bool)(_ret)
 }
 
 func (this *QPageLayout) SetRightMargin(rightMargin float64) bool {
-	ret := C.QPageLayout_SetRightMargin(this.h, (C.double)(rightMargin))
-	return (bool)(ret)
+	_ret := C.QPageLayout_SetRightMargin(this.h, (C.double)(rightMargin))
+	return (bool)(_ret)
 }
 
 func (this *QPageLayout) SetTopMargin(topMargin float64) bool {
-	ret := C.QPageLayout_SetTopMargin(this.h, (C.double)(topMargin))
-	return (bool)(ret)
+	_ret := C.QPageLayout_SetTopMargin(this.h, (C.double)(topMargin))
+	return (bool)(_ret)
 }
 
 func (this *QPageLayout) SetBottomMargin(bottomMargin float64) bool {
-	ret := C.QPageLayout_SetBottomMargin(this.h, (C.double)(bottomMargin))
-	return (bool)(ret)
+	_ret := C.QPageLayout_SetBottomMargin(this.h, (C.double)(bottomMargin))
+	return (bool)(_ret)
 }
 
 func (this *QPageLayout) Margins() *QMarginsF {
-	ret := C.QPageLayout_Margins(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQMarginsF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QMarginsF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QPageLayout_Margins(this.h)
+	_goptr := newQMarginsF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QPageLayout) MarginsWithUnits(units QPageLayout__Unit) *QMarginsF {
-	ret := C.QPageLayout_MarginsWithUnits(this.h, (C.uintptr_t)(units))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQMarginsF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QMarginsF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QPageLayout_MarginsWithUnits(this.h, (C.uintptr_t)(units))
+	_goptr := newQMarginsF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QPageLayout) MarginsPoints() *QMargins {
-	ret := C.QPageLayout_MarginsPoints(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQMargins(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QMargins) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QPageLayout_MarginsPoints(this.h)
+	_goptr := newQMargins(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QPageLayout) MarginsPixels(resolution int) *QMargins {
-	ret := C.QPageLayout_MarginsPixels(this.h, (C.int)(resolution))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQMargins(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QMargins) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QPageLayout_MarginsPixels(this.h, (C.int)(resolution))
+	_goptr := newQMargins(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QPageLayout) SetMinimumMargins(minMargins *QMarginsF) {
@@ -224,119 +204,89 @@ func (this *QPageLayout) SetMinimumMargins(minMargins *QMarginsF) {
 }
 
 func (this *QPageLayout) MinimumMargins() *QMarginsF {
-	ret := C.QPageLayout_MinimumMargins(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQMarginsF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QMarginsF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QPageLayout_MinimumMargins(this.h)
+	_goptr := newQMarginsF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QPageLayout) MaximumMargins() *QMarginsF {
-	ret := C.QPageLayout_MaximumMargins(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQMarginsF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QMarginsF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QPageLayout_MaximumMargins(this.h)
+	_goptr := newQMarginsF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QPageLayout) FullRect() *QRectF {
-	ret := C.QPageLayout_FullRect(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRectF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRectF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QPageLayout_FullRect(this.h)
+	_goptr := newQRectF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QPageLayout) FullRectWithUnits(units QPageLayout__Unit) *QRectF {
-	ret := C.QPageLayout_FullRectWithUnits(this.h, (C.uintptr_t)(units))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRectF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRectF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QPageLayout_FullRectWithUnits(this.h, (C.uintptr_t)(units))
+	_goptr := newQRectF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QPageLayout) FullRectPoints() *QRect {
-	ret := C.QPageLayout_FullRectPoints(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRect(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRect) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QPageLayout_FullRectPoints(this.h)
+	_goptr := newQRect(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QPageLayout) FullRectPixels(resolution int) *QRect {
-	ret := C.QPageLayout_FullRectPixels(this.h, (C.int)(resolution))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRect(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRect) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QPageLayout_FullRectPixels(this.h, (C.int)(resolution))
+	_goptr := newQRect(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QPageLayout) PaintRect() *QRectF {
-	ret := C.QPageLayout_PaintRect(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRectF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRectF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QPageLayout_PaintRect(this.h)
+	_goptr := newQRectF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QPageLayout) PaintRectWithUnits(units QPageLayout__Unit) *QRectF {
-	ret := C.QPageLayout_PaintRectWithUnits(this.h, (C.uintptr_t)(units))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRectF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRectF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QPageLayout_PaintRectWithUnits(this.h, (C.uintptr_t)(units))
+	_goptr := newQRectF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QPageLayout) PaintRectPoints() *QRect {
-	ret := C.QPageLayout_PaintRectPoints(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRect(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRect) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QPageLayout_PaintRectPoints(this.h)
+	_goptr := newQRect(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QPageLayout) PaintRectPixels(resolution int) *QRect {
-	ret := C.QPageLayout_PaintRectPixels(this.h, (C.int)(resolution))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRect(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRect) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QPageLayout_PaintRectPixels(this.h, (C.int)(resolution))
+	_goptr := newQRect(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QPageLayout) SetPageSize2(pageSize *QPageSize, minMargins *QMarginsF) {
 	C.QPageLayout_SetPageSize2(this.h, pageSize.cPointer(), minMargins.cPointer())
 }
 
+// Delete this object from C++ memory.
 func (this *QPageLayout) Delete() {
 	C.QPageLayout_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QPageLayout) GoGC() {
+	runtime.SetFinalizer(this, func(this *QPageLayout) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

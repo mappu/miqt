@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"runtime"
 	"unsafe"
 )
 
@@ -40,6 +41,16 @@ func NewQThreadStorageData(param1 *QThreadStorageData) *QThreadStorageData {
 	return newQThreadStorageData(ret)
 }
 
+// Delete this object from C++ memory.
 func (this *QThreadStorageData) Delete() {
 	C.QThreadStorageData_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QThreadStorageData) GoGC() {
+	runtime.SetFinalizer(this, func(this *QThreadStorageData) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

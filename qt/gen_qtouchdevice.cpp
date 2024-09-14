@@ -4,53 +4,49 @@
 #include <cstring>
 #include <QTouchDevice>
 #include "qtouchdevice.h"
-
 #include "gen_qtouchdevice.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QTouchDevice* QTouchDevice_new() {
 	return new QTouchDevice();
 }
 
-void QTouchDevice_Devices(const QTouchDevice*** _out, size_t* _out_len) {
-	QList<const QTouchDevice*> ret = QTouchDevice::devices();
+struct miqt_array* QTouchDevice_Devices() {
+	QList<const QTouchDevice*> _ret = QTouchDevice::devices();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	const QTouchDevice** __out = static_cast<const QTouchDevice**>(malloc(sizeof(const QTouchDevice*) * ret.length()));
-	for (size_t i = 0, e = ret.length(); i < e; ++i) {
-		__out[i] = const_cast<const QTouchDevice*>(ret[i]);
+	const QTouchDevice** _arr = static_cast<const QTouchDevice**>(malloc(sizeof(const QTouchDevice*) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		_arr[i] = const_cast<QTouchDevice*>(_ret[i]);
 	}
-	*_out = __out;
-	*_out_len = ret.length();
+	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
+	_out->len = _ret.length();
+	_out->data = static_cast<void*>(_arr);
+	return _out;
 }
 
-void QTouchDevice_Name(const QTouchDevice* self, char** _out, int* _out_Strlen) {
-	QString ret = self->name();
+struct miqt_string* QTouchDevice_Name(const QTouchDevice* self) {
+	QString _ret = self->name();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 uintptr_t QTouchDevice_Type(const QTouchDevice* self) {
-	QTouchDevice::DeviceType ret = self->type();
-	return static_cast<uintptr_t>(ret);
+	QTouchDevice::DeviceType _ret = self->type();
+	return static_cast<uintptr_t>(_ret);
 }
 
 int QTouchDevice_Capabilities(const QTouchDevice* self) {
-	QTouchDevice::Capabilities ret = self->capabilities();
-	return static_cast<int>(ret);
+	QTouchDevice::Capabilities _ret = self->capabilities();
+	return static_cast<int>(_ret);
 }
 
 int QTouchDevice_MaximumTouchPoints(const QTouchDevice* self) {
 	return self->maximumTouchPoints();
 }
 
-void QTouchDevice_SetName(QTouchDevice* self, const char* name, size_t name_Strlen) {
-	QString name_QString = QString::fromUtf8(name, name_Strlen);
+void QTouchDevice_SetName(QTouchDevice* self, struct miqt_string* name) {
+	QString name_QString = QString::fromUtf8(&name->data, name->len);
 	self->setName(name_QString);
 }
 

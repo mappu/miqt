@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"runtime"
 	"runtime/cgo"
 	"unsafe"
 )
@@ -51,49 +52,45 @@ func NewQActionGroup(parent *QObject) *QActionGroup {
 }
 
 func (this *QActionGroup) MetaObject() *QMetaObject {
-	ret := C.QActionGroup_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QActionGroup_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QActionGroup_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QActionGroup_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QActionGroup_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QActionGroup_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QActionGroup_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QActionGroup_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QActionGroup) AddAction(a *QAction) *QAction {
-	ret := C.QActionGroup_AddAction(this.h, a.cPointer())
-	return newQAction_U(unsafe.Pointer(ret))
+	_ret := C.QActionGroup_AddAction(this.h, a.cPointer())
+	return newQAction_U(unsafe.Pointer(_ret))
 }
 
 func (this *QActionGroup) AddActionWithText(text string) *QAction {
-	text_Cstring := C.CString(text)
-	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QActionGroup_AddActionWithText(this.h, text_Cstring, C.size_t(len(text)))
-	return newQAction_U(unsafe.Pointer(ret))
+	text_ms := miqt_strdupg(text)
+	defer C.free(text_ms)
+	_ret := C.QActionGroup_AddActionWithText(this.h, (*C.struct_miqt_string)(text_ms))
+	return newQAction_U(unsafe.Pointer(_ret))
 }
 
 func (this *QActionGroup) AddAction2(icon *QIcon, text string) *QAction {
-	text_Cstring := C.CString(text)
-	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QActionGroup_AddAction2(this.h, icon.cPointer(), text_Cstring, C.size_t(len(text)))
-	return newQAction_U(unsafe.Pointer(ret))
+	text_ms := miqt_strdupg(text)
+	defer C.free(text_ms)
+	_ret := C.QActionGroup_AddAction2(this.h, icon.cPointer(), (*C.struct_miqt_string)(text_ms))
+	return newQAction_U(unsafe.Pointer(_ret))
 }
 
 func (this *QActionGroup) RemoveAction(a *QAction) {
@@ -101,41 +98,39 @@ func (this *QActionGroup) RemoveAction(a *QAction) {
 }
 
 func (this *QActionGroup) Actions() []*QAction {
-	var _out **C.QAction = nil
-	var _out_len C.size_t = 0
-	C.QActionGroup_Actions(this.h, &_out, &_out_len)
-	ret := make([]*QAction, int(_out_len))
-	_outCast := (*[0xffff]*C.QAction)(unsafe.Pointer(_out)) // so fresh so clean
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = newQAction(_outCast[i])
+	var _ma *C.struct_miqt_array = C.QActionGroup_Actions(this.h)
+	_ret := make([]*QAction, int(_ma.len))
+	_outCast := (*[0xffff]*C.QAction)(unsafe.Pointer(_ma.data)) // mrs jackson
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = newQAction(_outCast[i])
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
 func (this *QActionGroup) CheckedAction() *QAction {
-	ret := C.QActionGroup_CheckedAction(this.h)
-	return newQAction_U(unsafe.Pointer(ret))
+	_ret := C.QActionGroup_CheckedAction(this.h)
+	return newQAction_U(unsafe.Pointer(_ret))
 }
 
 func (this *QActionGroup) IsExclusive() bool {
-	ret := C.QActionGroup_IsExclusive(this.h)
-	return (bool)(ret)
+	_ret := C.QActionGroup_IsExclusive(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QActionGroup) IsEnabled() bool {
-	ret := C.QActionGroup_IsEnabled(this.h)
-	return (bool)(ret)
+	_ret := C.QActionGroup_IsEnabled(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QActionGroup) IsVisible() bool {
-	ret := C.QActionGroup_IsVisible(this.h)
-	return (bool)(ret)
+	_ret := C.QActionGroup_IsVisible(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QActionGroup) ExclusionPolicy() QActionGroup__ExclusionPolicy {
-	ret := C.QActionGroup_ExclusionPolicy(this.h)
-	return (QActionGroup__ExclusionPolicy)(ret)
+	_ret := C.QActionGroup_ExclusionPolicy(this.h)
+	return (QActionGroup__ExclusionPolicy)(_ret)
 }
 
 func (this *QActionGroup) SetEnabled(enabled bool) {
@@ -161,25 +156,43 @@ func (this *QActionGroup) SetExclusionPolicy(policy QActionGroup__ExclusionPolic
 func (this *QActionGroup) Triggered(param1 *QAction) {
 	C.QActionGroup_Triggered(this.h, param1.cPointer())
 }
+func (this *QActionGroup) OnTriggered(slot func(param1 *QAction)) {
+	C.QActionGroup_connect_Triggered(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QActionGroup) OnTriggered(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QActionGroup_Triggered
+func miqt_exec_callback_QActionGroup_Triggered(cb *C.void, param1 *C.QAction) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(param1 *QAction))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QActionGroup_connect_Triggered(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	param1_ret := param1
+	slotval1 := newQAction_U(unsafe.Pointer(param1_ret))
+
+	gofunc(slotval1)
 }
 
 func (this *QActionGroup) Hovered(param1 *QAction) {
 	C.QActionGroup_Hovered(this.h, param1.cPointer())
 }
+func (this *QActionGroup) OnHovered(slot func(param1 *QAction)) {
+	C.QActionGroup_connect_Hovered(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QActionGroup) OnHovered(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QActionGroup_Hovered
+func miqt_exec_callback_QActionGroup_Hovered(cb *C.void, param1 *C.QAction) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(param1 *QAction))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QActionGroup_connect_Hovered(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	param1_ret := param1
+	slotval1 := newQAction_U(unsafe.Pointer(param1_ret))
+
+	gofunc(slotval1)
 }
 
 func QActionGroup_Tr2(s string, c string) string {
@@ -187,12 +200,10 @@ func QActionGroup_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QActionGroup_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QActionGroup_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QActionGroup_Tr3(s string, c string, n int) string {
@@ -200,12 +211,10 @@ func QActionGroup_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QActionGroup_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QActionGroup_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QActionGroup_TrUtf82(s string, c string) string {
@@ -213,12 +222,10 @@ func QActionGroup_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QActionGroup_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QActionGroup_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QActionGroup_TrUtf83(s string, c string, n int) string {
@@ -226,14 +233,22 @@ func QActionGroup_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QActionGroup_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QActionGroup_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
+// Delete this object from C++ memory.
 func (this *QActionGroup) Delete() {
 	C.QActionGroup_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QActionGroup) GoGC() {
+	runtime.SetFinalizer(this, func(this *QActionGroup) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

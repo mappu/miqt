@@ -7,12 +7,8 @@
 #include <cstring>
 #include <QWidget>
 #include "qfontcombobox.h"
-
 #include "gen_qfontcombobox.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QFontComboBox* QFontComboBox_new() {
 	return new QFontComboBox();
@@ -26,22 +22,18 @@ QMetaObject* QFontComboBox_MetaObject(const QFontComboBox* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void QFontComboBox_Tr(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QFontComboBox::tr(s);
+struct miqt_string* QFontComboBox_Tr(const char* s) {
+	QString _ret = QFontComboBox::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QFontComboBox_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QFontComboBox::trUtf8(s);
+struct miqt_string* QFontComboBox_TrUtf8(const char* s) {
+	QString _ret = QFontComboBox::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QFontComboBox_SetWritingSystem(QFontComboBox* self, uintptr_t writingSystem) {
@@ -49,8 +41,8 @@ void QFontComboBox_SetWritingSystem(QFontComboBox* self, uintptr_t writingSystem
 }
 
 uintptr_t QFontComboBox_WritingSystem(const QFontComboBox* self) {
-	QFontDatabase::WritingSystem ret = self->writingSystem();
-	return static_cast<uintptr_t>(ret);
+	QFontDatabase::WritingSystem _ret = self->writingSystem();
+	return static_cast<uintptr_t>(_ret);
 }
 
 void QFontComboBox_SetFontFilters(QFontComboBox* self, int filters) {
@@ -58,20 +50,20 @@ void QFontComboBox_SetFontFilters(QFontComboBox* self, int filters) {
 }
 
 int QFontComboBox_FontFilters(const QFontComboBox* self) {
-	QFontComboBox::FontFilters ret = self->fontFilters();
-	return static_cast<int>(ret);
+	QFontComboBox::FontFilters _ret = self->fontFilters();
+	return static_cast<int>(_ret);
 }
 
 QFont* QFontComboBox_CurrentFont(const QFontComboBox* self) {
-	QFont ret = self->currentFont();
+	QFont _ret = self->currentFont();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QFont*>(new QFont(ret));
+	return static_cast<QFont*>(new QFont(_ret));
 }
 
 QSize* QFontComboBox_SizeHint(const QFontComboBox* self) {
-	QSize ret = self->sizeHint();
+	QSize _ret = self->sizeHint();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(ret));
+	return static_cast<QSize*>(new QSize(_ret));
 }
 
 void QFontComboBox_SetCurrentFont(QFontComboBox* self, QFont* f) {
@@ -84,44 +76,39 @@ void QFontComboBox_CurrentFontChanged(QFontComboBox* self, QFont* f) {
 
 void QFontComboBox_connect_CurrentFontChanged(QFontComboBox* self, void* slot) {
 	QFontComboBox::connect(self, static_cast<void (QFontComboBox::*)(const QFont&)>(&QFontComboBox::currentFontChanged), self, [=](const QFont& f) {
-		miqt_exec_callback(slot, 0, nullptr);
+		const QFont& f_ret = f;
+		// Cast returned reference into pointer
+		QFont* sigval1 = const_cast<QFont*>(&f_ret);
+		miqt_exec_callback_QFontComboBox_CurrentFontChanged(slot, sigval1);
 	});
 }
 
-void QFontComboBox_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QFontComboBox::tr(s, c);
+struct miqt_string* QFontComboBox_Tr2(const char* s, const char* c) {
+	QString _ret = QFontComboBox::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QFontComboBox_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QFontComboBox::tr(s, c, static_cast<int>(n));
+struct miqt_string* QFontComboBox_Tr3(const char* s, const char* c, int n) {
+	QString _ret = QFontComboBox::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QFontComboBox_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QFontComboBox::trUtf8(s, c);
+struct miqt_string* QFontComboBox_TrUtf82(const char* s, const char* c) {
+	QString _ret = QFontComboBox::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QFontComboBox_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QFontComboBox::trUtf8(s, c, static_cast<int>(n));
+struct miqt_string* QFontComboBox_TrUtf83(const char* s, const char* c, int n) {
+	QString _ret = QFontComboBox::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QFontComboBox_Delete(QFontComboBox* self) {

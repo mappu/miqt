@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -17,25 +19,25 @@ class QCommandLineOption;
 typedef struct QCommandLineOption QCommandLineOption;
 #endif
 
-QCommandLineOption* QCommandLineOption_new(const char* name, size_t name_Strlen);
-QCommandLineOption* QCommandLineOption_new2(char** names, uint64_t* names_Lengths, size_t names_len);
-QCommandLineOption* QCommandLineOption_new3(const char* name, size_t name_Strlen, const char* description, size_t description_Strlen);
-QCommandLineOption* QCommandLineOption_new4(char** names, uint64_t* names_Lengths, size_t names_len, const char* description, size_t description_Strlen);
+QCommandLineOption* QCommandLineOption_new(struct miqt_string* name);
+QCommandLineOption* QCommandLineOption_new2(struct miqt_array* /* of QString */ names);
+QCommandLineOption* QCommandLineOption_new3(struct miqt_string* name, struct miqt_string* description);
+QCommandLineOption* QCommandLineOption_new4(struct miqt_array* /* of QString */ names, struct miqt_string* description);
 QCommandLineOption* QCommandLineOption_new5(QCommandLineOption* other);
-QCommandLineOption* QCommandLineOption_new6(const char* name, size_t name_Strlen, const char* description, size_t description_Strlen, const char* valueName, size_t valueName_Strlen);
-QCommandLineOption* QCommandLineOption_new7(const char* name, size_t name_Strlen, const char* description, size_t description_Strlen, const char* valueName, size_t valueName_Strlen, const char* defaultValue, size_t defaultValue_Strlen);
-QCommandLineOption* QCommandLineOption_new8(char** names, uint64_t* names_Lengths, size_t names_len, const char* description, size_t description_Strlen, const char* valueName, size_t valueName_Strlen);
-QCommandLineOption* QCommandLineOption_new9(char** names, uint64_t* names_Lengths, size_t names_len, const char* description, size_t description_Strlen, const char* valueName, size_t valueName_Strlen, const char* defaultValue, size_t defaultValue_Strlen);
+QCommandLineOption* QCommandLineOption_new6(struct miqt_string* name, struct miqt_string* description, struct miqt_string* valueName);
+QCommandLineOption* QCommandLineOption_new7(struct miqt_string* name, struct miqt_string* description, struct miqt_string* valueName, struct miqt_string* defaultValue);
+QCommandLineOption* QCommandLineOption_new8(struct miqt_array* /* of QString */ names, struct miqt_string* description, struct miqt_string* valueName);
+QCommandLineOption* QCommandLineOption_new9(struct miqt_array* /* of QString */ names, struct miqt_string* description, struct miqt_string* valueName, struct miqt_string* defaultValue);
 void QCommandLineOption_OperatorAssign(QCommandLineOption* self, QCommandLineOption* other);
 void QCommandLineOption_Swap(QCommandLineOption* self, QCommandLineOption* other);
-void QCommandLineOption_Names(const QCommandLineOption* self, char*** _out, int** _out_Lengths, size_t* _out_len);
-void QCommandLineOption_SetValueName(QCommandLineOption* self, const char* name, size_t name_Strlen);
-void QCommandLineOption_ValueName(const QCommandLineOption* self, char** _out, int* _out_Strlen);
-void QCommandLineOption_SetDescription(QCommandLineOption* self, const char* description, size_t description_Strlen);
-void QCommandLineOption_Description(const QCommandLineOption* self, char** _out, int* _out_Strlen);
-void QCommandLineOption_SetDefaultValue(QCommandLineOption* self, const char* defaultValue, size_t defaultValue_Strlen);
-void QCommandLineOption_SetDefaultValues(QCommandLineOption* self, char** defaultValues, uint64_t* defaultValues_Lengths, size_t defaultValues_len);
-void QCommandLineOption_DefaultValues(const QCommandLineOption* self, char*** _out, int** _out_Lengths, size_t* _out_len);
+struct miqt_array* QCommandLineOption_Names(const QCommandLineOption* self);
+void QCommandLineOption_SetValueName(QCommandLineOption* self, struct miqt_string* name);
+struct miqt_string* QCommandLineOption_ValueName(const QCommandLineOption* self);
+void QCommandLineOption_SetDescription(QCommandLineOption* self, struct miqt_string* description);
+struct miqt_string* QCommandLineOption_Description(const QCommandLineOption* self);
+void QCommandLineOption_SetDefaultValue(QCommandLineOption* self, struct miqt_string* defaultValue);
+void QCommandLineOption_SetDefaultValues(QCommandLineOption* self, struct miqt_array* /* of QString */ defaultValues);
+struct miqt_array* QCommandLineOption_DefaultValues(const QCommandLineOption* self);
 int QCommandLineOption_Flags(const QCommandLineOption* self);
 void QCommandLineOption_SetFlags(QCommandLineOption* self, int aflags);
 void QCommandLineOption_SetHidden(QCommandLineOption* self, bool hidden);

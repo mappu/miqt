@@ -100,8 +100,8 @@ func NewAppWindow() *AppWindow {
 
 	ret.tabs = qt.NewQTabWidget2(ret.w.QWidget)
 	ret.tabs.SetTabsClosable(true)
-	ret.tabs.OnTabCloseRequested(func() {
-		ret.handleTabClose(ret.tabs.CurrentIndex()) // FIXME need to get this from the signal
+	ret.tabs.OnTabCloseRequested(func(index int) {
+		ret.handleTabClose(index)
 	})
 
 	ret.w.SetCentralWidget(ret.tabs.QWidget)
@@ -165,7 +165,7 @@ func (t *AppTab) updateOutlineForContent(content string) {
 	}
 }
 
-func (t *AppTab) handleJumpToBookmark() {
+func (t *AppTab) handleJumpToBookmark(current *qt.QListWidgetItem, previous *qt.QListWidgetItem) {
 	itm := t.outline.CurrentItem()
 	if itm == nil {
 		return

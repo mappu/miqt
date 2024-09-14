@@ -5,33 +5,25 @@
 #include <QByteArray>
 #include <cstring>
 #include "qfuturewatcher.h"
-
 #include "gen_qfuturewatcher.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QMetaObject* QFutureWatcherBase_MetaObject(const QFutureWatcherBase* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void QFutureWatcherBase_Tr(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QFutureWatcherBase::tr(s);
+struct miqt_string* QFutureWatcherBase_Tr(const char* s) {
+	QString _ret = QFutureWatcherBase::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QFutureWatcherBase_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QFutureWatcherBase::trUtf8(s);
+struct miqt_string* QFutureWatcherBase_TrUtf8(const char* s) {
+	QString _ret = QFutureWatcherBase::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 int QFutureWatcherBase_ProgressValue(const QFutureWatcherBase* self) {
@@ -46,13 +38,11 @@ int QFutureWatcherBase_ProgressMaximum(const QFutureWatcherBase* self) {
 	return self->progressMaximum();
 }
 
-void QFutureWatcherBase_ProgressText(const QFutureWatcherBase* self, char** _out, int* _out_Strlen) {
-	QString ret = self->progressText();
+struct miqt_string* QFutureWatcherBase_ProgressText(const QFutureWatcherBase* self) {
+	QString _ret = self->progressText();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 bool QFutureWatcherBase_IsStarted(const QFutureWatcherBase* self) {
@@ -93,7 +83,7 @@ void QFutureWatcherBase_Started(QFutureWatcherBase* self) {
 
 void QFutureWatcherBase_connect_Started(QFutureWatcherBase* self, void* slot) {
 	QFutureWatcherBase::connect(self, static_cast<void (QFutureWatcherBase::*)()>(&QFutureWatcherBase::started), self, [=]() {
-		miqt_exec_callback(slot, 0, nullptr);
+		miqt_exec_callback_QFutureWatcherBase_Started(slot);
 	});
 }
 
@@ -103,7 +93,7 @@ void QFutureWatcherBase_Finished(QFutureWatcherBase* self) {
 
 void QFutureWatcherBase_connect_Finished(QFutureWatcherBase* self, void* slot) {
 	QFutureWatcherBase::connect(self, static_cast<void (QFutureWatcherBase::*)()>(&QFutureWatcherBase::finished), self, [=]() {
-		miqt_exec_callback(slot, 0, nullptr);
+		miqt_exec_callback_QFutureWatcherBase_Finished(slot);
 	});
 }
 
@@ -113,7 +103,7 @@ void QFutureWatcherBase_Canceled(QFutureWatcherBase* self) {
 
 void QFutureWatcherBase_connect_Canceled(QFutureWatcherBase* self, void* slot) {
 	QFutureWatcherBase::connect(self, static_cast<void (QFutureWatcherBase::*)()>(&QFutureWatcherBase::canceled), self, [=]() {
-		miqt_exec_callback(slot, 0, nullptr);
+		miqt_exec_callback_QFutureWatcherBase_Canceled(slot);
 	});
 }
 
@@ -123,7 +113,7 @@ void QFutureWatcherBase_Paused(QFutureWatcherBase* self) {
 
 void QFutureWatcherBase_connect_Paused(QFutureWatcherBase* self, void* slot) {
 	QFutureWatcherBase::connect(self, static_cast<void (QFutureWatcherBase::*)()>(&QFutureWatcherBase::paused), self, [=]() {
-		miqt_exec_callback(slot, 0, nullptr);
+		miqt_exec_callback_QFutureWatcherBase_Paused(slot);
 	});
 }
 
@@ -133,7 +123,7 @@ void QFutureWatcherBase_Resumed(QFutureWatcherBase* self) {
 
 void QFutureWatcherBase_connect_Resumed(QFutureWatcherBase* self, void* slot) {
 	QFutureWatcherBase::connect(self, static_cast<void (QFutureWatcherBase::*)()>(&QFutureWatcherBase::resumed), self, [=]() {
-		miqt_exec_callback(slot, 0, nullptr);
+		miqt_exec_callback_QFutureWatcherBase_Resumed(slot);
 	});
 }
 
@@ -143,7 +133,8 @@ void QFutureWatcherBase_ResultReadyAt(QFutureWatcherBase* self, int resultIndex)
 
 void QFutureWatcherBase_connect_ResultReadyAt(QFutureWatcherBase* self, void* slot) {
 	QFutureWatcherBase::connect(self, static_cast<void (QFutureWatcherBase::*)(int)>(&QFutureWatcherBase::resultReadyAt), self, [=](int resultIndex) {
-		miqt_exec_callback(slot, 0, nullptr);
+		int sigval1 = resultIndex;
+		miqt_exec_callback_QFutureWatcherBase_ResultReadyAt(slot, sigval1);
 	});
 }
 
@@ -153,7 +144,9 @@ void QFutureWatcherBase_ResultsReadyAt(QFutureWatcherBase* self, int beginIndex,
 
 void QFutureWatcherBase_connect_ResultsReadyAt(QFutureWatcherBase* self, void* slot) {
 	QFutureWatcherBase::connect(self, static_cast<void (QFutureWatcherBase::*)(int, int)>(&QFutureWatcherBase::resultsReadyAt), self, [=](int beginIndex, int endIndex) {
-		miqt_exec_callback(slot, 0, nullptr);
+		int sigval1 = beginIndex;
+		int sigval2 = endIndex;
+		miqt_exec_callback_QFutureWatcherBase_ResultsReadyAt(slot, sigval1, sigval2);
 	});
 }
 
@@ -163,7 +156,9 @@ void QFutureWatcherBase_ProgressRangeChanged(QFutureWatcherBase* self, int minim
 
 void QFutureWatcherBase_connect_ProgressRangeChanged(QFutureWatcherBase* self, void* slot) {
 	QFutureWatcherBase::connect(self, static_cast<void (QFutureWatcherBase::*)(int, int)>(&QFutureWatcherBase::progressRangeChanged), self, [=](int minimum, int maximum) {
-		miqt_exec_callback(slot, 0, nullptr);
+		int sigval1 = minimum;
+		int sigval2 = maximum;
+		miqt_exec_callback_QFutureWatcherBase_ProgressRangeChanged(slot, sigval1, sigval2);
 	});
 }
 
@@ -173,18 +168,23 @@ void QFutureWatcherBase_ProgressValueChanged(QFutureWatcherBase* self, int progr
 
 void QFutureWatcherBase_connect_ProgressValueChanged(QFutureWatcherBase* self, void* slot) {
 	QFutureWatcherBase::connect(self, static_cast<void (QFutureWatcherBase::*)(int)>(&QFutureWatcherBase::progressValueChanged), self, [=](int progressValue) {
-		miqt_exec_callback(slot, 0, nullptr);
+		int sigval1 = progressValue;
+		miqt_exec_callback_QFutureWatcherBase_ProgressValueChanged(slot, sigval1);
 	});
 }
 
-void QFutureWatcherBase_ProgressTextChanged(QFutureWatcherBase* self, const char* progressText, size_t progressText_Strlen) {
-	QString progressText_QString = QString::fromUtf8(progressText, progressText_Strlen);
+void QFutureWatcherBase_ProgressTextChanged(QFutureWatcherBase* self, struct miqt_string* progressText) {
+	QString progressText_QString = QString::fromUtf8(&progressText->data, progressText->len);
 	self->progressTextChanged(progressText_QString);
 }
 
 void QFutureWatcherBase_connect_ProgressTextChanged(QFutureWatcherBase* self, void* slot) {
 	QFutureWatcherBase::connect(self, static_cast<void (QFutureWatcherBase::*)(const QString&)>(&QFutureWatcherBase::progressTextChanged), self, [=](const QString& progressText) {
-		miqt_exec_callback(slot, 0, nullptr);
+		const QString progressText_ret = progressText;
+		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+		QByteArray progressText_b = progressText_ret.toUtf8();
+		struct miqt_string* sigval1 = miqt_strdup(progressText_b.data(), progressText_b.length());
+		miqt_exec_callback_QFutureWatcherBase_ProgressTextChanged(slot, sigval1);
 	});
 }
 
@@ -208,40 +208,32 @@ void QFutureWatcherBase_TogglePaused(QFutureWatcherBase* self) {
 	self->togglePaused();
 }
 
-void QFutureWatcherBase_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QFutureWatcherBase::tr(s, c);
+struct miqt_string* QFutureWatcherBase_Tr2(const char* s, const char* c) {
+	QString _ret = QFutureWatcherBase::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QFutureWatcherBase_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QFutureWatcherBase::tr(s, c, static_cast<int>(n));
+struct miqt_string* QFutureWatcherBase_Tr3(const char* s, const char* c, int n) {
+	QString _ret = QFutureWatcherBase::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QFutureWatcherBase_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QFutureWatcherBase::trUtf8(s, c);
+struct miqt_string* QFutureWatcherBase_TrUtf82(const char* s, const char* c) {
+	QString _ret = QFutureWatcherBase::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QFutureWatcherBase_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QFutureWatcherBase::trUtf8(s, c, static_cast<int>(n));
+struct miqt_string* QFutureWatcherBase_TrUtf83(const char* s, const char* c, int n) {
+	QString _ret = QFutureWatcherBase::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QFutureWatcherBase_Delete(QFutureWatcherBase* self) {

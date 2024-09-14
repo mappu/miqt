@@ -109,23 +109,23 @@ func NewQPainter2(param1 *QPaintDevice) *QPainter {
 }
 
 func (this *QPainter) Device() *QPaintDevice {
-	ret := C.QPainter_Device(this.h)
-	return newQPaintDevice_U(unsafe.Pointer(ret))
+	_ret := C.QPainter_Device(this.h)
+	return newQPaintDevice_U(unsafe.Pointer(_ret))
 }
 
 func (this *QPainter) Begin(param1 *QPaintDevice) bool {
-	ret := C.QPainter_Begin(this.h, param1.cPointer())
-	return (bool)(ret)
+	_ret := C.QPainter_Begin(this.h, param1.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QPainter) End() bool {
-	ret := C.QPainter_End(this.h)
-	return (bool)(ret)
+	_ret := C.QPainter_End(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QPainter) IsActive() bool {
-	ret := C.QPainter_IsActive(this.h)
-	return (bool)(ret)
+	_ret := C.QPainter_IsActive(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QPainter) InitFrom(device *QPaintDevice) {
@@ -137,13 +137,13 @@ func (this *QPainter) SetCompositionMode(mode QPainter__CompositionMode) {
 }
 
 func (this *QPainter) CompositionMode() QPainter__CompositionMode {
-	ret := C.QPainter_CompositionMode(this.h)
-	return (QPainter__CompositionMode)(ret)
+	_ret := C.QPainter_CompositionMode(this.h)
+	return (QPainter__CompositionMode)(_ret)
 }
 
 func (this *QPainter) Font() *QFont {
-	ret := C.QPainter_Font(this.h)
-	return newQFont_U(unsafe.Pointer(ret))
+	_ret := C.QPainter_Font(this.h)
+	return newQFont_U(unsafe.Pointer(_ret))
 }
 
 func (this *QPainter) SetFont(f *QFont) {
@@ -151,25 +151,17 @@ func (this *QPainter) SetFont(f *QFont) {
 }
 
 func (this *QPainter) FontMetrics() *QFontMetrics {
-	ret := C.QPainter_FontMetrics(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQFontMetrics(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QFontMetrics) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QPainter_FontMetrics(this.h)
+	_goptr := newQFontMetrics(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QPainter) FontInfo() *QFontInfo {
-	ret := C.QPainter_FontInfo(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQFontInfo(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QFontInfo) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QPainter_FontInfo(this.h)
+	_goptr := newQFontInfo(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QPainter) SetPen(color *QColor) {
@@ -185,8 +177,8 @@ func (this *QPainter) SetPenWithStyle(style PenStyle) {
 }
 
 func (this *QPainter) Pen() *QPen {
-	ret := C.QPainter_Pen(this.h)
-	return newQPen_U(unsafe.Pointer(ret))
+	_ret := C.QPainter_Pen(this.h)
+	return newQPen_U(unsafe.Pointer(_ret))
 }
 
 func (this *QPainter) SetBrush(brush *QBrush) {
@@ -198,8 +190,8 @@ func (this *QPainter) SetBrushWithStyle(style BrushStyle) {
 }
 
 func (this *QPainter) Brush() *QBrush {
-	ret := C.QPainter_Brush(this.h)
-	return newQBrush_U(unsafe.Pointer(ret))
+	_ret := C.QPainter_Brush(this.h)
+	return newQBrush_U(unsafe.Pointer(_ret))
 }
 
 func (this *QPainter) SetBackgroundMode(mode BGMode) {
@@ -207,19 +199,15 @@ func (this *QPainter) SetBackgroundMode(mode BGMode) {
 }
 
 func (this *QPainter) BackgroundMode() BGMode {
-	ret := C.QPainter_BackgroundMode(this.h)
-	return (BGMode)(ret)
+	_ret := C.QPainter_BackgroundMode(this.h)
+	return (BGMode)(_ret)
 }
 
 func (this *QPainter) BrushOrigin() *QPoint {
-	ret := C.QPainter_BrushOrigin(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPoint(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPoint) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QPainter_BrushOrigin(this.h)
+	_goptr := newQPoint(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QPainter) SetBrushOrigin(x int, y int) {
@@ -239,13 +227,13 @@ func (this *QPainter) SetBackground(bg *QBrush) {
 }
 
 func (this *QPainter) Background() *QBrush {
-	ret := C.QPainter_Background(this.h)
-	return newQBrush_U(unsafe.Pointer(ret))
+	_ret := C.QPainter_Background(this.h)
+	return newQBrush_U(unsafe.Pointer(_ret))
 }
 
 func (this *QPainter) Opacity() float64 {
-	ret := C.QPainter_Opacity(this.h)
-	return (float64)(ret)
+	_ret := C.QPainter_Opacity(this.h)
+	return (float64)(_ret)
 }
 
 func (this *QPainter) SetOpacity(opacity float64) {
@@ -253,25 +241,17 @@ func (this *QPainter) SetOpacity(opacity float64) {
 }
 
 func (this *QPainter) ClipRegion() *QRegion {
-	ret := C.QPainter_ClipRegion(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRegion(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRegion) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QPainter_ClipRegion(this.h)
+	_goptr := newQRegion(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QPainter) ClipPath() *QPainterPath {
-	ret := C.QPainter_ClipPath(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPainterPath(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPainterPath) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QPainter_ClipPath(this.h)
+	_goptr := newQPainterPath(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QPainter) SetClipRect(param1 *QRectF) {
@@ -299,19 +279,15 @@ func (this *QPainter) SetClipping(enable bool) {
 }
 
 func (this *QPainter) HasClipping() bool {
-	ret := C.QPainter_HasClipping(this.h)
-	return (bool)(ret)
+	_ret := C.QPainter_HasClipping(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QPainter) ClipBoundingRect() *QRectF {
-	ret := C.QPainter_ClipBoundingRect(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRectF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRectF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QPainter_ClipBoundingRect(this.h)
+	_goptr := newQRectF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QPainter) Save() {
@@ -327,13 +303,13 @@ func (this *QPainter) SetMatrix(matrix *QMatrix) {
 }
 
 func (this *QPainter) Matrix() *QMatrix {
-	ret := C.QPainter_Matrix(this.h)
-	return newQMatrix_U(unsafe.Pointer(ret))
+	_ret := C.QPainter_Matrix(this.h)
+	return newQMatrix_U(unsafe.Pointer(_ret))
 }
 
 func (this *QPainter) DeviceMatrix() *QMatrix {
-	ret := C.QPainter_DeviceMatrix(this.h)
-	return newQMatrix_U(unsafe.Pointer(ret))
+	_ret := C.QPainter_DeviceMatrix(this.h)
+	return newQMatrix_U(unsafe.Pointer(_ret))
 }
 
 func (this *QPainter) ResetMatrix() {
@@ -345,13 +321,13 @@ func (this *QPainter) SetTransform(transform *QTransform) {
 }
 
 func (this *QPainter) Transform() *QTransform {
-	ret := C.QPainter_Transform(this.h)
-	return newQTransform_U(unsafe.Pointer(ret))
+	_ret := C.QPainter_Transform(this.h)
+	return newQTransform_U(unsafe.Pointer(_ret))
 }
 
 func (this *QPainter) DeviceTransform() *QTransform {
-	ret := C.QPainter_DeviceTransform(this.h)
-	return newQTransform_U(unsafe.Pointer(ret))
+	_ret := C.QPainter_DeviceTransform(this.h)
+	return newQTransform_U(unsafe.Pointer(_ret))
 }
 
 func (this *QPainter) ResetTransform() {
@@ -363,19 +339,15 @@ func (this *QPainter) SetWorldMatrix(matrix *QMatrix) {
 }
 
 func (this *QPainter) WorldMatrix() *QMatrix {
-	ret := C.QPainter_WorldMatrix(this.h)
-	return newQMatrix_U(unsafe.Pointer(ret))
+	_ret := C.QPainter_WorldMatrix(this.h)
+	return newQMatrix_U(unsafe.Pointer(_ret))
 }
 
 func (this *QPainter) CombinedMatrix() *QMatrix {
-	ret := C.QPainter_CombinedMatrix(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQMatrix(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QMatrix) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QPainter_CombinedMatrix(this.h)
+	_goptr := newQMatrix(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QPainter) SetMatrixEnabled(enabled bool) {
@@ -383,8 +355,8 @@ func (this *QPainter) SetMatrixEnabled(enabled bool) {
 }
 
 func (this *QPainter) MatrixEnabled() bool {
-	ret := C.QPainter_MatrixEnabled(this.h)
-	return (bool)(ret)
+	_ret := C.QPainter_MatrixEnabled(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QPainter) SetWorldTransform(matrix *QTransform) {
@@ -392,19 +364,15 @@ func (this *QPainter) SetWorldTransform(matrix *QTransform) {
 }
 
 func (this *QPainter) WorldTransform() *QTransform {
-	ret := C.QPainter_WorldTransform(this.h)
-	return newQTransform_U(unsafe.Pointer(ret))
+	_ret := C.QPainter_WorldTransform(this.h)
+	return newQTransform_U(unsafe.Pointer(_ret))
 }
 
 func (this *QPainter) CombinedTransform() *QTransform {
-	ret := C.QPainter_CombinedTransform(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQTransform(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QTransform) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QPainter_CombinedTransform(this.h)
+	_goptr := newQTransform(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QPainter) SetWorldMatrixEnabled(enabled bool) {
@@ -412,8 +380,8 @@ func (this *QPainter) SetWorldMatrixEnabled(enabled bool) {
 }
 
 func (this *QPainter) WorldMatrixEnabled() bool {
-	ret := C.QPainter_WorldMatrixEnabled(this.h)
-	return (bool)(ret)
+	_ret := C.QPainter_WorldMatrixEnabled(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QPainter) Scale(sx float64, sy float64) {
@@ -441,14 +409,10 @@ func (this *QPainter) Translate2(dx float64, dy float64) {
 }
 
 func (this *QPainter) Window() *QRect {
-	ret := C.QPainter_Window(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRect(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRect) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QPainter_Window(this.h)
+	_goptr := newQRect(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QPainter) SetWindow(window *QRect) {
@@ -460,14 +424,10 @@ func (this *QPainter) SetWindow2(x int, y int, w int, h int) {
 }
 
 func (this *QPainter) Viewport() *QRect {
-	ret := C.QPainter_Viewport(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRect(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRect) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QPainter_Viewport(this.h)
+	_goptr := newQRect(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QPainter) SetViewport(viewport *QRect) {
@@ -483,8 +443,8 @@ func (this *QPainter) SetViewTransformEnabled(enable bool) {
 }
 
 func (this *QPainter) ViewTransformEnabled() bool {
-	ret := C.QPainter_ViewTransformEnabled(this.h)
-	return (bool)(ret)
+	_ret := C.QPainter_ViewTransformEnabled(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QPainter) StrokePath(path *QPainterPath, pen *QPen) {
@@ -550,7 +510,9 @@ func (this *QPainter) DrawLinesWithLines(lines []QLineF) {
 	for i := range lines {
 		lines_CArray[i] = lines[i].cPointer()
 	}
-	C.QPainter_DrawLinesWithLines(this.h, &lines_CArray[0], C.size_t(len(lines)))
+	lines_ma := &C.struct_miqt_array{len: C.size_t(len(lines)), data: unsafe.Pointer(lines_CArray)}
+	defer runtime.KeepAlive(unsafe.Pointer(lines_ma))
+	C.QPainter_DrawLinesWithLines(this.h, lines_ma)
 }
 
 func (this *QPainter) DrawLines2(pointPairs *QPointF, lineCount int) {
@@ -564,7 +526,9 @@ func (this *QPainter) DrawLinesWithPointPairs(pointPairs []QPointF) {
 	for i := range pointPairs {
 		pointPairs_CArray[i] = pointPairs[i].cPointer()
 	}
-	C.QPainter_DrawLinesWithPointPairs(this.h, &pointPairs_CArray[0], C.size_t(len(pointPairs)))
+	pointPairs_ma := &C.struct_miqt_array{len: C.size_t(len(pointPairs)), data: unsafe.Pointer(pointPairs_CArray)}
+	defer runtime.KeepAlive(unsafe.Pointer(pointPairs_ma))
+	C.QPainter_DrawLinesWithPointPairs(this.h, pointPairs_ma)
 }
 
 func (this *QPainter) DrawLines3(lines *QLine, lineCount int) {
@@ -578,7 +542,9 @@ func (this *QPainter) DrawLines4(lines []QLine) {
 	for i := range lines {
 		lines_CArray[i] = lines[i].cPointer()
 	}
-	C.QPainter_DrawLines4(this.h, &lines_CArray[0], C.size_t(len(lines)))
+	lines_ma := &C.struct_miqt_array{len: C.size_t(len(lines)), data: unsafe.Pointer(lines_CArray)}
+	defer runtime.KeepAlive(unsafe.Pointer(lines_ma))
+	C.QPainter_DrawLines4(this.h, lines_ma)
 }
 
 func (this *QPainter) DrawLines5(pointPairs *QPoint, lineCount int) {
@@ -592,7 +558,9 @@ func (this *QPainter) DrawLines6(pointPairs []QPoint) {
 	for i := range pointPairs {
 		pointPairs_CArray[i] = pointPairs[i].cPointer()
 	}
-	C.QPainter_DrawLines6(this.h, &pointPairs_CArray[0], C.size_t(len(pointPairs)))
+	pointPairs_ma := &C.struct_miqt_array{len: C.size_t(len(pointPairs)), data: unsafe.Pointer(pointPairs_CArray)}
+	defer runtime.KeepAlive(unsafe.Pointer(pointPairs_ma))
+	C.QPainter_DrawLines6(this.h, pointPairs_ma)
 }
 
 func (this *QPainter) DrawRect(rect *QRectF) {
@@ -618,7 +586,9 @@ func (this *QPainter) DrawRectsWithRectangles(rectangles []QRectF) {
 	for i := range rectangles {
 		rectangles_CArray[i] = rectangles[i].cPointer()
 	}
-	C.QPainter_DrawRectsWithRectangles(this.h, &rectangles_CArray[0], C.size_t(len(rectangles)))
+	rectangles_ma := &C.struct_miqt_array{len: C.size_t(len(rectangles)), data: unsafe.Pointer(rectangles_CArray)}
+	defer runtime.KeepAlive(unsafe.Pointer(rectangles_ma))
+	C.QPainter_DrawRectsWithRectangles(this.h, rectangles_ma)
 }
 
 func (this *QPainter) DrawRects2(rects *QRect, rectCount int) {
@@ -632,7 +602,9 @@ func (this *QPainter) DrawRects3(rectangles []QRect) {
 	for i := range rectangles {
 		rectangles_CArray[i] = rectangles[i].cPointer()
 	}
-	C.QPainter_DrawRects3(this.h, &rectangles_CArray[0], C.size_t(len(rectangles)))
+	rectangles_ma := &C.struct_miqt_array{len: C.size_t(len(rectangles)), data: unsafe.Pointer(rectangles_CArray)}
+	defer runtime.KeepAlive(unsafe.Pointer(rectangles_ma))
+	C.QPainter_DrawRects3(this.h, rectangles_ma)
 }
 
 func (this *QPainter) DrawEllipse(r *QRectF) {
@@ -852,8 +824,8 @@ func (this *QPainter) SetLayoutDirection(direction LayoutDirection) {
 }
 
 func (this *QPainter) LayoutDirection() LayoutDirection {
-	ret := C.QPainter_LayoutDirection(this.h)
-	return (LayoutDirection)(ret)
+	_ret := C.QPainter_LayoutDirection(this.h)
+	return (LayoutDirection)(_ret)
 }
 
 func (this *QPainter) DrawGlyphRun(position *QPointF, glyphRun *QGlyphRun) {
@@ -873,103 +845,87 @@ func (this *QPainter) DrawStaticText3(left int, top int, staticText *QStaticText
 }
 
 func (this *QPainter) DrawText(p *QPointF, s string) {
-	s_Cstring := C.CString(s)
-	defer C.free(unsafe.Pointer(s_Cstring))
-	C.QPainter_DrawText(this.h, p.cPointer(), s_Cstring, C.size_t(len(s)))
+	s_ms := miqt_strdupg(s)
+	defer C.free(s_ms)
+	C.QPainter_DrawText(this.h, p.cPointer(), (*C.struct_miqt_string)(s_ms))
 }
 
 func (this *QPainter) DrawText2(p *QPoint, s string) {
-	s_Cstring := C.CString(s)
-	defer C.free(unsafe.Pointer(s_Cstring))
-	C.QPainter_DrawText2(this.h, p.cPointer(), s_Cstring, C.size_t(len(s)))
+	s_ms := miqt_strdupg(s)
+	defer C.free(s_ms)
+	C.QPainter_DrawText2(this.h, p.cPointer(), (*C.struct_miqt_string)(s_ms))
 }
 
 func (this *QPainter) DrawText3(x int, y int, s string) {
-	s_Cstring := C.CString(s)
-	defer C.free(unsafe.Pointer(s_Cstring))
-	C.QPainter_DrawText3(this.h, (C.int)(x), (C.int)(y), s_Cstring, C.size_t(len(s)))
+	s_ms := miqt_strdupg(s)
+	defer C.free(s_ms)
+	C.QPainter_DrawText3(this.h, (C.int)(x), (C.int)(y), (*C.struct_miqt_string)(s_ms))
 }
 
 func (this *QPainter) DrawText4(p *QPointF, str string, tf int, justificationPadding int) {
-	str_Cstring := C.CString(str)
-	defer C.free(unsafe.Pointer(str_Cstring))
-	C.QPainter_DrawText4(this.h, p.cPointer(), str_Cstring, C.size_t(len(str)), (C.int)(tf), (C.int)(justificationPadding))
+	str_ms := miqt_strdupg(str)
+	defer C.free(str_ms)
+	C.QPainter_DrawText4(this.h, p.cPointer(), (*C.struct_miqt_string)(str_ms), (C.int)(tf), (C.int)(justificationPadding))
 }
 
 func (this *QPainter) DrawText5(r *QRectF, flags int, text string) {
-	text_Cstring := C.CString(text)
-	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QPainter_DrawText5(this.h, r.cPointer(), (C.int)(flags), text_Cstring, C.size_t(len(text)))
+	text_ms := miqt_strdupg(text)
+	defer C.free(text_ms)
+	C.QPainter_DrawText5(this.h, r.cPointer(), (C.int)(flags), (*C.struct_miqt_string)(text_ms))
 }
 
 func (this *QPainter) DrawText6(r *QRect, flags int, text string) {
-	text_Cstring := C.CString(text)
-	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QPainter_DrawText6(this.h, r.cPointer(), (C.int)(flags), text_Cstring, C.size_t(len(text)))
+	text_ms := miqt_strdupg(text)
+	defer C.free(text_ms)
+	C.QPainter_DrawText6(this.h, r.cPointer(), (C.int)(flags), (*C.struct_miqt_string)(text_ms))
 }
 
 func (this *QPainter) DrawText7(x int, y int, w int, h int, flags int, text string) {
-	text_Cstring := C.CString(text)
-	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QPainter_DrawText7(this.h, (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), (C.int)(flags), text_Cstring, C.size_t(len(text)))
+	text_ms := miqt_strdupg(text)
+	defer C.free(text_ms)
+	C.QPainter_DrawText7(this.h, (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), (C.int)(flags), (*C.struct_miqt_string)(text_ms))
 }
 
 func (this *QPainter) DrawText8(r *QRectF, text string) {
-	text_Cstring := C.CString(text)
-	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QPainter_DrawText8(this.h, r.cPointer(), text_Cstring, C.size_t(len(text)))
+	text_ms := miqt_strdupg(text)
+	defer C.free(text_ms)
+	C.QPainter_DrawText8(this.h, r.cPointer(), (*C.struct_miqt_string)(text_ms))
 }
 
 func (this *QPainter) BoundingRect(rect *QRectF, flags int, text string) *QRectF {
-	text_Cstring := C.CString(text)
-	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QPainter_BoundingRect(this.h, rect.cPointer(), (C.int)(flags), text_Cstring, C.size_t(len(text)))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRectF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRectF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	text_ms := miqt_strdupg(text)
+	defer C.free(text_ms)
+	_ret := C.QPainter_BoundingRect(this.h, rect.cPointer(), (C.int)(flags), (*C.struct_miqt_string)(text_ms))
+	_goptr := newQRectF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QPainter) BoundingRect2(rect *QRect, flags int, text string) *QRect {
-	text_Cstring := C.CString(text)
-	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QPainter_BoundingRect2(this.h, rect.cPointer(), (C.int)(flags), text_Cstring, C.size_t(len(text)))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRect(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRect) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	text_ms := miqt_strdupg(text)
+	defer C.free(text_ms)
+	_ret := C.QPainter_BoundingRect2(this.h, rect.cPointer(), (C.int)(flags), (*C.struct_miqt_string)(text_ms))
+	_goptr := newQRect(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QPainter) BoundingRect3(x int, y int, w int, h int, flags int, text string) *QRect {
-	text_Cstring := C.CString(text)
-	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QPainter_BoundingRect3(this.h, (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), (C.int)(flags), text_Cstring, C.size_t(len(text)))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRect(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRect) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	text_ms := miqt_strdupg(text)
+	defer C.free(text_ms)
+	_ret := C.QPainter_BoundingRect3(this.h, (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), (C.int)(flags), (*C.struct_miqt_string)(text_ms))
+	_goptr := newQRect(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QPainter) BoundingRect4(rect *QRectF, text string) *QRectF {
-	text_Cstring := C.CString(text)
-	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QPainter_BoundingRect4(this.h, rect.cPointer(), text_Cstring, C.size_t(len(text)))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRectF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRectF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	text_ms := miqt_strdupg(text)
+	defer C.free(text_ms)
+	_ret := C.QPainter_BoundingRect4(this.h, rect.cPointer(), (*C.struct_miqt_string)(text_ms))
+	_goptr := newQRectF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QPainter) DrawTextItem(p *QPointF, ti *QTextItem) {
@@ -1065,18 +1021,18 @@ func (this *QPainter) SetRenderHints(hints int) {
 }
 
 func (this *QPainter) RenderHints() int {
-	ret := C.QPainter_RenderHints(this.h)
-	return (int)(ret)
+	_ret := C.QPainter_RenderHints(this.h)
+	return (int)(_ret)
 }
 
 func (this *QPainter) TestRenderHint(hint QPainter__RenderHint) bool {
-	ret := C.QPainter_TestRenderHint(this.h, (C.uintptr_t)(hint))
-	return (bool)(ret)
+	_ret := C.QPainter_TestRenderHint(this.h, (C.uintptr_t)(hint))
+	return (bool)(_ret)
 }
 
 func (this *QPainter) PaintEngine() *QPaintEngine {
-	ret := C.QPainter_PaintEngine(this.h)
-	return newQPaintEngine_U(unsafe.Pointer(ret))
+	_ret := C.QPainter_PaintEngine(this.h)
+	return newQPaintEngine_U(unsafe.Pointer(_ret))
 }
 
 func QPainter_SetRedirected(device *QPaintDevice, replacement *QPaintDevice) {
@@ -1084,8 +1040,8 @@ func QPainter_SetRedirected(device *QPaintDevice, replacement *QPaintDevice) {
 }
 
 func QPainter_Redirected(device *QPaintDevice) *QPaintDevice {
-	ret := C.QPainter_Redirected(device.cPointer())
-	return newQPaintDevice_U(unsafe.Pointer(ret))
+	_ret := C.QPainter_Redirected(device.cPointer())
+	return newQPaintDevice_U(unsafe.Pointer(_ret))
 }
 
 func QPainter_RestoreRedirected(device *QPaintDevice) {
@@ -1237,40 +1193,36 @@ func (this *QPainter) DrawImage82(x int, y int, image *QImage, sx int, sy int, s
 }
 
 func (this *QPainter) DrawText42(r *QRectF, flags int, text string, br *QRectF) {
-	text_Cstring := C.CString(text)
-	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QPainter_DrawText42(this.h, r.cPointer(), (C.int)(flags), text_Cstring, C.size_t(len(text)), br.cPointer())
+	text_ms := miqt_strdupg(text)
+	defer C.free(text_ms)
+	C.QPainter_DrawText42(this.h, r.cPointer(), (C.int)(flags), (*C.struct_miqt_string)(text_ms), br.cPointer())
 }
 
 func (this *QPainter) DrawText43(r *QRect, flags int, text string, br *QRect) {
-	text_Cstring := C.CString(text)
-	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QPainter_DrawText43(this.h, r.cPointer(), (C.int)(flags), text_Cstring, C.size_t(len(text)), br.cPointer())
+	text_ms := miqt_strdupg(text)
+	defer C.free(text_ms)
+	C.QPainter_DrawText43(this.h, r.cPointer(), (C.int)(flags), (*C.struct_miqt_string)(text_ms), br.cPointer())
 }
 
 func (this *QPainter) DrawText72(x int, y int, w int, h int, flags int, text string, br *QRect) {
-	text_Cstring := C.CString(text)
-	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QPainter_DrawText72(this.h, (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), (C.int)(flags), text_Cstring, C.size_t(len(text)), br.cPointer())
+	text_ms := miqt_strdupg(text)
+	defer C.free(text_ms)
+	C.QPainter_DrawText72(this.h, (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), (C.int)(flags), (*C.struct_miqt_string)(text_ms), br.cPointer())
 }
 
 func (this *QPainter) DrawText32(r *QRectF, text string, o *QTextOption) {
-	text_Cstring := C.CString(text)
-	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QPainter_DrawText32(this.h, r.cPointer(), text_Cstring, C.size_t(len(text)), o.cPointer())
+	text_ms := miqt_strdupg(text)
+	defer C.free(text_ms)
+	C.QPainter_DrawText32(this.h, r.cPointer(), (*C.struct_miqt_string)(text_ms), o.cPointer())
 }
 
 func (this *QPainter) BoundingRect32(rect *QRectF, text string, o *QTextOption) *QRectF {
-	text_Cstring := C.CString(text)
-	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QPainter_BoundingRect32(this.h, rect.cPointer(), text_Cstring, C.size_t(len(text)), o.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRectF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRectF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	text_ms := miqt_strdupg(text)
+	defer C.free(text_ms)
+	_ret := C.QPainter_BoundingRect32(this.h, rect.cPointer(), (*C.struct_miqt_string)(text_ms), o.cPointer())
+	_goptr := newQRectF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QPainter) SetRenderHint2(hint QPainter__RenderHint, on bool) {
@@ -1286,12 +1238,22 @@ func QPainter_SetRedirected3(device *QPaintDevice, replacement *QPaintDevice, of
 }
 
 func QPainter_Redirected2(device *QPaintDevice, offset *QPoint) *QPaintDevice {
-	ret := C.QPainter_Redirected2(device.cPointer(), offset.cPointer())
-	return newQPaintDevice_U(unsafe.Pointer(ret))
+	_ret := C.QPainter_Redirected2(device.cPointer(), offset.cPointer())
+	return newQPaintDevice_U(unsafe.Pointer(_ret))
 }
 
+// Delete this object from C++ memory.
 func (this *QPainter) Delete() {
 	C.QPainter_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QPainter) GoGC() {
+	runtime.SetFinalizer(this, func(this *QPainter) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
 
 type QPainter__PixmapFragment struct {
@@ -1317,60 +1279,50 @@ func newQPainter__PixmapFragment_U(h unsafe.Pointer) *QPainter__PixmapFragment {
 }
 
 func QPainter__PixmapFragment_Create(pos *QPointF, sourceRect *QRectF) *QPainter__PixmapFragment {
-	ret := C.QPainter__PixmapFragment_Create(pos.cPointer(), sourceRect.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPainter__PixmapFragment(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPainter__PixmapFragment) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QPainter__PixmapFragment_Create(pos.cPointer(), sourceRect.cPointer())
+	_goptr := newQPainter__PixmapFragment(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func QPainter__PixmapFragment_Create3(pos *QPointF, sourceRect *QRectF, scaleX float64) *QPainter__PixmapFragment {
-	ret := C.QPainter__PixmapFragment_Create3(pos.cPointer(), sourceRect.cPointer(), (C.double)(scaleX))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPainter__PixmapFragment(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPainter__PixmapFragment) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QPainter__PixmapFragment_Create3(pos.cPointer(), sourceRect.cPointer(), (C.double)(scaleX))
+	_goptr := newQPainter__PixmapFragment(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func QPainter__PixmapFragment_Create4(pos *QPointF, sourceRect *QRectF, scaleX float64, scaleY float64) *QPainter__PixmapFragment {
-	ret := C.QPainter__PixmapFragment_Create4(pos.cPointer(), sourceRect.cPointer(), (C.double)(scaleX), (C.double)(scaleY))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPainter__PixmapFragment(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPainter__PixmapFragment) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QPainter__PixmapFragment_Create4(pos.cPointer(), sourceRect.cPointer(), (C.double)(scaleX), (C.double)(scaleY))
+	_goptr := newQPainter__PixmapFragment(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func QPainter__PixmapFragment_Create5(pos *QPointF, sourceRect *QRectF, scaleX float64, scaleY float64, rotation float64) *QPainter__PixmapFragment {
-	ret := C.QPainter__PixmapFragment_Create5(pos.cPointer(), sourceRect.cPointer(), (C.double)(scaleX), (C.double)(scaleY), (C.double)(rotation))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPainter__PixmapFragment(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPainter__PixmapFragment) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QPainter__PixmapFragment_Create5(pos.cPointer(), sourceRect.cPointer(), (C.double)(scaleX), (C.double)(scaleY), (C.double)(rotation))
+	_goptr := newQPainter__PixmapFragment(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func QPainter__PixmapFragment_Create6(pos *QPointF, sourceRect *QRectF, scaleX float64, scaleY float64, rotation float64, opacity float64) *QPainter__PixmapFragment {
-	ret := C.QPainter__PixmapFragment_Create6(pos.cPointer(), sourceRect.cPointer(), (C.double)(scaleX), (C.double)(scaleY), (C.double)(rotation), (C.double)(opacity))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPainter__PixmapFragment(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPainter__PixmapFragment) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QPainter__PixmapFragment_Create6(pos.cPointer(), sourceRect.cPointer(), (C.double)(scaleX), (C.double)(scaleY), (C.double)(rotation), (C.double)(opacity))
+	_goptr := newQPainter__PixmapFragment(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
+// Delete this object from C++ memory.
 func (this *QPainter__PixmapFragment) Delete() {
 	C.QPainter__PixmapFragment_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QPainter__PixmapFragment) GoGC() {
+	runtime.SetFinalizer(this, func(this *QPainter__PixmapFragment) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

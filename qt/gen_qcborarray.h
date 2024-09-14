@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -86,7 +88,7 @@ bool QCborArray_Empty(const QCborArray* self);
 QCborArray* QCborArray_OperatorPlus(const QCborArray* self, QCborValue* v);
 QCborArray* QCborArray_OperatorPlusAssign(QCborArray* self, QCborValue* v);
 QCborArray* QCborArray_OperatorShiftLeft(QCborArray* self, QCborValue* v);
-QCborArray* QCborArray_FromStringList(char** list, uint64_t* list_Lengths, size_t list_len);
+QCborArray* QCborArray_FromStringList(struct miqt_array* /* of QString */ list);
 QCborArray* QCborArray_FromJsonArray(QJsonArray* array);
 QJsonArray* QCborArray_ToJsonArray(const QCborArray* self);
 void QCborArray_Delete(QCborArray* self);

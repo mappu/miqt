@@ -10,12 +10,8 @@
 #include <QByteArray>
 #include <cstring>
 #include "qpicture.h"
-
 #include "gen_qpicture.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QPicture* QPicture_new() {
 	return new QPicture();
@@ -57,8 +53,8 @@ bool QPicture_Load(QPicture* self, QIODevice* dev) {
 	return self->load(dev);
 }
 
-bool QPicture_LoadWithFileName(QPicture* self, const char* fileName, size_t fileName_Strlen) {
-	QString fileName_QString = QString::fromUtf8(fileName, fileName_Strlen);
+bool QPicture_LoadWithFileName(QPicture* self, struct miqt_string* fileName) {
+	QString fileName_QString = QString::fromUtf8(&fileName->data, fileName->len);
 	return self->load(fileName_QString);
 }
 
@@ -66,15 +62,15 @@ bool QPicture_Save(QPicture* self, QIODevice* dev) {
 	return self->save(dev);
 }
 
-bool QPicture_SaveWithFileName(QPicture* self, const char* fileName, size_t fileName_Strlen) {
-	QString fileName_QString = QString::fromUtf8(fileName, fileName_Strlen);
+bool QPicture_SaveWithFileName(QPicture* self, struct miqt_string* fileName) {
+	QString fileName_QString = QString::fromUtf8(&fileName->data, fileName->len);
 	return self->save(fileName_QString);
 }
 
 QRect* QPicture_BoundingRect(const QPicture* self) {
-	QRect ret = self->boundingRect();
+	QRect _ret = self->boundingRect();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(ret));
+	return static_cast<QRect*>(new QRect(_ret));
 }
 
 void QPicture_SetBoundingRect(QPicture* self, QRect* r) {
@@ -97,65 +93,67 @@ bool QPicture_IsDetached(const QPicture* self) {
 	return self->isDetached();
 }
 
-const char* QPicture_PictureFormat(const char* fileName, size_t fileName_Strlen) {
-	QString fileName_QString = QString::fromUtf8(fileName, fileName_Strlen);
+const char* QPicture_PictureFormat(struct miqt_string* fileName) {
+	QString fileName_QString = QString::fromUtf8(&fileName->data, fileName->len);
 	return (const char*) QPicture::pictureFormat(fileName_QString);
 }
 
-void QPicture_InputFormats(QByteArray*** _out, size_t* _out_len) {
-	QList<QByteArray> ret = QPicture::inputFormats();
+struct miqt_array* QPicture_InputFormats() {
+	QList<QByteArray> _ret = QPicture::inputFormats();
 	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
-	QByteArray** __out = static_cast<QByteArray**>(malloc(sizeof(QByteArray**) * ret.length()));
-	for (size_t i = 0, e = ret.length(); i < e; ++i) {
-		__out[i] = new QByteArray(ret[i]);
+	QByteArray** _arr = static_cast<QByteArray**>(malloc(sizeof(QByteArray**) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		_arr[i] = new QByteArray(_ret[i]);
 	}
-	*_out = __out;
-	*_out_len = ret.length();
+	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
+	_out->len = _ret.length();
+	_out->data = static_cast<void*>(_arr);
+	return _out;
 }
 
-void QPicture_OutputFormats(QByteArray*** _out, size_t* _out_len) {
-	QList<QByteArray> ret = QPicture::outputFormats();
+struct miqt_array* QPicture_OutputFormats() {
+	QList<QByteArray> _ret = QPicture::outputFormats();
 	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
-	QByteArray** __out = static_cast<QByteArray**>(malloc(sizeof(QByteArray**) * ret.length()));
-	for (size_t i = 0, e = ret.length(); i < e; ++i) {
-		__out[i] = new QByteArray(ret[i]);
+	QByteArray** _arr = static_cast<QByteArray**>(malloc(sizeof(QByteArray**) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		_arr[i] = new QByteArray(_ret[i]);
 	}
-	*_out = __out;
-	*_out_len = ret.length();
+	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
+	_out->len = _ret.length();
+	_out->data = static_cast<void*>(_arr);
+	return _out;
 }
 
-void QPicture_InputFormatList(char*** _out, int** _out_Lengths, size_t* _out_len) {
-	QStringList ret = QPicture::inputFormatList();
+struct miqt_array* QPicture_InputFormatList() {
+	QStringList _ret = QPicture::inputFormatList();
 	// Convert QStringList from C++ memory to manually-managed C memory
-	char** __out = static_cast<char**>(malloc(sizeof(char*) * ret.length()));
-	int* __out_Lengths = static_cast<int*>(malloc(sizeof(int) * ret.length()));
-	for (size_t i = 0, e = ret.length(); i < e; ++i) {
+	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-		QByteArray b = ret[i].toUtf8();
-		__out[i] = static_cast<char*>(malloc(b.length()));
-		memcpy(__out[i], b.data(), b.length());
-		__out_Lengths[i] = b.length();
+		QByteArray _lv_b = _lv_ret.toUtf8();
+		_arr[i] = miqt_strdup(_lv_b.data(), _lv_b.length());
 	}
-	*_out = __out;
-	*_out_Lengths = __out_Lengths;
-	*_out_len = ret.length();
+	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
+	_out->len = _ret.length();
+	_out->data = static_cast<void*>(_arr);
+	return _out;
 }
 
-void QPicture_OutputFormatList(char*** _out, int** _out_Lengths, size_t* _out_len) {
-	QStringList ret = QPicture::outputFormatList();
+struct miqt_array* QPicture_OutputFormatList() {
+	QStringList _ret = QPicture::outputFormatList();
 	// Convert QStringList from C++ memory to manually-managed C memory
-	char** __out = static_cast<char**>(malloc(sizeof(char*) * ret.length()));
-	int* __out_Lengths = static_cast<int*>(malloc(sizeof(int) * ret.length()));
-	for (size_t i = 0, e = ret.length(); i < e; ++i) {
+	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-		QByteArray b = ret[i].toUtf8();
-		__out[i] = static_cast<char*>(malloc(b.length()));
-		memcpy(__out[i], b.data(), b.length());
-		__out_Lengths[i] = b.length();
+		QByteArray _lv_b = _lv_ret.toUtf8();
+		_arr[i] = miqt_strdup(_lv_b.data(), _lv_b.length());
 	}
-	*_out = __out;
-	*_out_Lengths = __out_Lengths;
-	*_out_len = ret.length();
+	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
+	_out->len = _ret.length();
+	_out->data = static_cast<void*>(_arr);
+	return _out;
 }
 
 QPaintEngine* QPicture_PaintEngine(const QPicture* self) {
@@ -166,8 +164,8 @@ bool QPicture_Load2(QPicture* self, QIODevice* dev, const char* format) {
 	return self->load(dev, format);
 }
 
-bool QPicture_Load22(QPicture* self, const char* fileName, size_t fileName_Strlen, const char* format) {
-	QString fileName_QString = QString::fromUtf8(fileName, fileName_Strlen);
+bool QPicture_Load22(QPicture* self, struct miqt_string* fileName, const char* format) {
+	QString fileName_QString = QString::fromUtf8(&fileName->data, fileName->len);
 	return self->load(fileName_QString, format);
 }
 
@@ -175,8 +173,8 @@ bool QPicture_Save2(QPicture* self, QIODevice* dev, const char* format) {
 	return self->save(dev, format);
 }
 
-bool QPicture_Save22(QPicture* self, const char* fileName, size_t fileName_Strlen, const char* format) {
-	QString fileName_QString = QString::fromUtf8(fileName, fileName_Strlen);
+bool QPicture_Save22(QPicture* self, struct miqt_string* fileName, const char* format) {
+	QString fileName_QString = QString::fromUtf8(&fileName->data, fileName->len);
 	return self->save(fileName_QString, format);
 }
 
@@ -192,15 +190,15 @@ QPictureIO* QPictureIO_new2(QIODevice* ioDevice, const char* format) {
 	return new QPictureIO(ioDevice, format);
 }
 
-QPictureIO* QPictureIO_new3(const char* fileName, size_t fileName_Strlen, const char* format) {
-	QString fileName_QString = QString::fromUtf8(fileName, fileName_Strlen);
+QPictureIO* QPictureIO_new3(struct miqt_string* fileName, const char* format) {
+	QString fileName_QString = QString::fromUtf8(&fileName->data, fileName->len);
 	return new QPictureIO(fileName_QString, format);
 }
 
 QPicture* QPictureIO_Picture(const QPictureIO* self) {
-	const QPicture& ret = self->picture();
+	const QPicture& _ret = self->picture();
 	// Cast returned reference into pointer
-	return const_cast<QPicture*>(&ret);
+	return const_cast<QPicture*>(&_ret);
 }
 
 int QPictureIO_Status(const QPictureIO* self) {
@@ -215,26 +213,22 @@ QIODevice* QPictureIO_IoDevice(const QPictureIO* self) {
 	return self->ioDevice();
 }
 
-void QPictureIO_FileName(const QPictureIO* self, char** _out, int* _out_Strlen) {
-	QString ret = self->fileName();
+struct miqt_string* QPictureIO_FileName(const QPictureIO* self) {
+	QString _ret = self->fileName();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 int QPictureIO_Quality(const QPictureIO* self) {
 	return self->quality();
 }
 
-void QPictureIO_Description(const QPictureIO* self, char** _out, int* _out_Strlen) {
-	QString ret = self->description();
+struct miqt_string* QPictureIO_Description(const QPictureIO* self) {
+	QString _ret = self->description();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 const char* QPictureIO_Parameters(const QPictureIO* self) {
@@ -261,8 +255,8 @@ void QPictureIO_SetIODevice(QPictureIO* self, QIODevice* iODevice) {
 	self->setIODevice(iODevice);
 }
 
-void QPictureIO_SetFileName(QPictureIO* self, const char* fileName, size_t fileName_Strlen) {
-	QString fileName_QString = QString::fromUtf8(fileName, fileName_Strlen);
+void QPictureIO_SetFileName(QPictureIO* self, struct miqt_string* fileName) {
+	QString fileName_QString = QString::fromUtf8(&fileName->data, fileName->len);
 	self->setFileName(fileName_QString);
 }
 
@@ -270,8 +264,8 @@ void QPictureIO_SetQuality(QPictureIO* self, int quality) {
 	self->setQuality(static_cast<int>(quality));
 }
 
-void QPictureIO_SetDescription(QPictureIO* self, const char* description, size_t description_Strlen) {
-	QString description_QString = QString::fromUtf8(description, description_Strlen);
+void QPictureIO_SetDescription(QPictureIO* self, struct miqt_string* description) {
+	QString description_QString = QString::fromUtf8(&description->data, description->len);
 	self->setDescription(description_QString);
 }
 
@@ -291,39 +285,43 @@ bool QPictureIO_Write(QPictureIO* self) {
 	return self->write();
 }
 
-QByteArray* QPictureIO_PictureFormat(const char* fileName, size_t fileName_Strlen) {
-	QString fileName_QString = QString::fromUtf8(fileName, fileName_Strlen);
-	QByteArray ret = QPictureIO::pictureFormat(fileName_QString);
+QByteArray* QPictureIO_PictureFormat(struct miqt_string* fileName) {
+	QString fileName_QString = QString::fromUtf8(&fileName->data, fileName->len);
+	QByteArray _ret = QPictureIO::pictureFormat(fileName_QString);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(ret));
+	return static_cast<QByteArray*>(new QByteArray(_ret));
 }
 
 QByteArray* QPictureIO_PictureFormatWithQIODevice(QIODevice* param1) {
-	QByteArray ret = QPictureIO::pictureFormat(param1);
+	QByteArray _ret = QPictureIO::pictureFormat(param1);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(ret));
+	return static_cast<QByteArray*>(new QByteArray(_ret));
 }
 
-void QPictureIO_InputFormats(QByteArray*** _out, size_t* _out_len) {
-	QList<QByteArray> ret = QPictureIO::inputFormats();
+struct miqt_array* QPictureIO_InputFormats() {
+	QList<QByteArray> _ret = QPictureIO::inputFormats();
 	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
-	QByteArray** __out = static_cast<QByteArray**>(malloc(sizeof(QByteArray**) * ret.length()));
-	for (size_t i = 0, e = ret.length(); i < e; ++i) {
-		__out[i] = new QByteArray(ret[i]);
+	QByteArray** _arr = static_cast<QByteArray**>(malloc(sizeof(QByteArray**) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		_arr[i] = new QByteArray(_ret[i]);
 	}
-	*_out = __out;
-	*_out_len = ret.length();
+	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
+	_out->len = _ret.length();
+	_out->data = static_cast<void*>(_arr);
+	return _out;
 }
 
-void QPictureIO_OutputFormats(QByteArray*** _out, size_t* _out_len) {
-	QList<QByteArray> ret = QPictureIO::outputFormats();
+struct miqt_array* QPictureIO_OutputFormats() {
+	QList<QByteArray> _ret = QPictureIO::outputFormats();
 	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
-	QByteArray** __out = static_cast<QByteArray**>(malloc(sizeof(QByteArray**) * ret.length()));
-	for (size_t i = 0, e = ret.length(); i < e; ++i) {
-		__out[i] = new QByteArray(ret[i]);
+	QByteArray** _arr = static_cast<QByteArray**>(malloc(sizeof(QByteArray**) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		_arr[i] = new QByteArray(_ret[i]);
 	}
-	*_out = __out;
-	*_out_len = ret.length();
+	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
+	_out->len = _ret.length();
+	_out->data = static_cast<void*>(_arr);
+	return _out;
 }
 
 void QPictureIO_Delete(QPictureIO* self) {

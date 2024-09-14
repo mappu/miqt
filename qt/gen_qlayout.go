@@ -49,35 +49,31 @@ func newQLayout_U(h unsafe.Pointer) *QLayout {
 }
 
 func (this *QLayout) MetaObject() *QMetaObject {
-	ret := C.QLayout_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QLayout_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QLayout_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QLayout_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QLayout_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QLayout_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QLayout_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QLayout_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QLayout) Margin() int {
-	ret := C.QLayout_Margin(this.h)
-	return (int)(ret)
+	_ret := C.QLayout_Margin(this.h)
+	return (int)(_ret)
 }
 
 func (this *QLayout) SetMargin(margin int) {
@@ -85,8 +81,8 @@ func (this *QLayout) SetMargin(margin int) {
 }
 
 func (this *QLayout) Spacing() int {
-	ret := C.QLayout_Spacing(this.h)
-	return (int)(ret)
+	_ret := C.QLayout_Spacing(this.h)
+	return (int)(_ret)
 }
 
 func (this *QLayout) SetSpacing(spacing int) {
@@ -106,35 +102,27 @@ func (this *QLayout) GetContentsMargins(left *int, top *int, right *int, bottom 
 }
 
 func (this *QLayout) ContentsMargins() *QMargins {
-	ret := C.QLayout_ContentsMargins(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQMargins(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QMargins) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QLayout_ContentsMargins(this.h)
+	_goptr := newQMargins(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QLayout) ContentsRect() *QRect {
-	ret := C.QLayout_ContentsRect(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRect(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRect) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QLayout_ContentsRect(this.h)
+	_goptr := newQRect(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QLayout) SetAlignment(w *QWidget, alignment int) bool {
-	ret := C.QLayout_SetAlignment(this.h, w.cPointer(), (C.int)(alignment))
-	return (bool)(ret)
+	_ret := C.QLayout_SetAlignment(this.h, w.cPointer(), (C.int)(alignment))
+	return (bool)(_ret)
 }
 
 func (this *QLayout) SetAlignment2(l *QLayout, alignment int) bool {
-	ret := C.QLayout_SetAlignment2(this.h, l.cPointer(), (C.int)(alignment))
-	return (bool)(ret)
+	_ret := C.QLayout_SetAlignment2(this.h, l.cPointer(), (C.int)(alignment))
+	return (bool)(_ret)
 }
 
 func (this *QLayout) SetSizeConstraint(sizeConstraint QLayout__SizeConstraint) {
@@ -142,8 +130,8 @@ func (this *QLayout) SetSizeConstraint(sizeConstraint QLayout__SizeConstraint) {
 }
 
 func (this *QLayout) SizeConstraint() QLayout__SizeConstraint {
-	ret := C.QLayout_SizeConstraint(this.h)
-	return (QLayout__SizeConstraint)(ret)
+	_ret := C.QLayout_SizeConstraint(this.h)
+	return (QLayout__SizeConstraint)(_ret)
 }
 
 func (this *QLayout) SetMenuBar(w *QWidget) {
@@ -151,13 +139,13 @@ func (this *QLayout) SetMenuBar(w *QWidget) {
 }
 
 func (this *QLayout) MenuBar() *QWidget {
-	ret := C.QLayout_MenuBar(this.h)
-	return newQWidget_U(unsafe.Pointer(ret))
+	_ret := C.QLayout_MenuBar(this.h)
+	return newQWidget_U(unsafe.Pointer(_ret))
 }
 
 func (this *QLayout) ParentWidget() *QWidget {
-	ret := C.QLayout_ParentWidget(this.h)
-	return newQWidget_U(unsafe.Pointer(ret))
+	_ret := C.QLayout_ParentWidget(this.h)
+	return newQWidget_U(unsafe.Pointer(_ret))
 }
 
 func (this *QLayout) Invalidate() {
@@ -165,19 +153,15 @@ func (this *QLayout) Invalidate() {
 }
 
 func (this *QLayout) Geometry() *QRect {
-	ret := C.QLayout_Geometry(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRect(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRect) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QLayout_Geometry(this.h)
+	_goptr := newQRect(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QLayout) Activate() bool {
-	ret := C.QLayout_Activate(this.h)
-	return (bool)(ret)
+	_ret := C.QLayout_Activate(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QLayout) Update() {
@@ -201,30 +185,22 @@ func (this *QLayout) RemoveItem(param1 *QLayoutItem) {
 }
 
 func (this *QLayout) ExpandingDirections() int {
-	ret := C.QLayout_ExpandingDirections(this.h)
-	return (int)(ret)
+	_ret := C.QLayout_ExpandingDirections(this.h)
+	return (int)(_ret)
 }
 
 func (this *QLayout) MinimumSize() *QSize {
-	ret := C.QLayout_MinimumSize(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSize(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QLayout_MinimumSize(this.h)
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QLayout) MaximumSize() *QSize {
-	ret := C.QLayout_MaximumSize(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSize(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QLayout_MaximumSize(this.h)
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QLayout) SetGeometry(geometry *QRect) {
@@ -232,86 +208,74 @@ func (this *QLayout) SetGeometry(geometry *QRect) {
 }
 
 func (this *QLayout) ItemAt(index int) *QLayoutItem {
-	ret := C.QLayout_ItemAt(this.h, (C.int)(index))
-	return newQLayoutItem_U(unsafe.Pointer(ret))
+	_ret := C.QLayout_ItemAt(this.h, (C.int)(index))
+	return newQLayoutItem_U(unsafe.Pointer(_ret))
 }
 
 func (this *QLayout) TakeAt(index int) *QLayoutItem {
-	ret := C.QLayout_TakeAt(this.h, (C.int)(index))
-	return newQLayoutItem_U(unsafe.Pointer(ret))
+	_ret := C.QLayout_TakeAt(this.h, (C.int)(index))
+	return newQLayoutItem_U(unsafe.Pointer(_ret))
 }
 
 func (this *QLayout) IndexOf(param1 *QWidget) int {
-	ret := C.QLayout_IndexOf(this.h, param1.cPointer())
-	return (int)(ret)
+	_ret := C.QLayout_IndexOf(this.h, param1.cPointer())
+	return (int)(_ret)
 }
 
 func (this *QLayout) IndexOfWithQLayoutItem(param1 *QLayoutItem) int {
-	ret := C.QLayout_IndexOfWithQLayoutItem(this.h, param1.cPointer())
-	return (int)(ret)
+	_ret := C.QLayout_IndexOfWithQLayoutItem(this.h, param1.cPointer())
+	return (int)(_ret)
 }
 
 func (this *QLayout) Count() int {
-	ret := C.QLayout_Count(this.h)
-	return (int)(ret)
+	_ret := C.QLayout_Count(this.h)
+	return (int)(_ret)
 }
 
 func (this *QLayout) IsEmpty() bool {
-	ret := C.QLayout_IsEmpty(this.h)
-	return (bool)(ret)
+	_ret := C.QLayout_IsEmpty(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QLayout) ControlTypes() int {
-	ret := C.QLayout_ControlTypes(this.h)
-	return (int)(ret)
+	_ret := C.QLayout_ControlTypes(this.h)
+	return (int)(_ret)
 }
 
 func (this *QLayout) ReplaceWidget(from *QWidget, to *QWidget) *QLayoutItem {
-	ret := C.QLayout_ReplaceWidget(this.h, from.cPointer(), to.cPointer())
-	return newQLayoutItem_U(unsafe.Pointer(ret))
+	_ret := C.QLayout_ReplaceWidget(this.h, from.cPointer(), to.cPointer())
+	return newQLayoutItem_U(unsafe.Pointer(_ret))
 }
 
 func (this *QLayout) TotalHeightForWidth(w int) int {
-	ret := C.QLayout_TotalHeightForWidth(this.h, (C.int)(w))
-	return (int)(ret)
+	_ret := C.QLayout_TotalHeightForWidth(this.h, (C.int)(w))
+	return (int)(_ret)
 }
 
 func (this *QLayout) TotalMinimumSize() *QSize {
-	ret := C.QLayout_TotalMinimumSize(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSize(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QLayout_TotalMinimumSize(this.h)
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QLayout) TotalMaximumSize() *QSize {
-	ret := C.QLayout_TotalMaximumSize(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSize(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QLayout_TotalMaximumSize(this.h)
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QLayout) TotalSizeHint() *QSize {
-	ret := C.QLayout_TotalSizeHint(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSize(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QLayout_TotalSizeHint(this.h)
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QLayout) Layout() *QLayout {
-	ret := C.QLayout_Layout(this.h)
-	return newQLayout_U(unsafe.Pointer(ret))
+	_ret := C.QLayout_Layout(this.h)
+	return newQLayout_U(unsafe.Pointer(_ret))
 }
 
 func (this *QLayout) SetEnabled(enabled bool) {
@@ -319,19 +283,15 @@ func (this *QLayout) SetEnabled(enabled bool) {
 }
 
 func (this *QLayout) IsEnabled() bool {
-	ret := C.QLayout_IsEnabled(this.h)
-	return (bool)(ret)
+	_ret := C.QLayout_IsEnabled(this.h)
+	return (bool)(_ret)
 }
 
 func QLayout_ClosestAcceptableSize(w *QWidget, s *QSize) *QSize {
-	ret := C.QLayout_ClosestAcceptableSize(w.cPointer(), s.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSize(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QLayout_ClosestAcceptableSize(w.cPointer(), s.cPointer())
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func QLayout_Tr2(s string, c string) string {
@@ -339,12 +299,10 @@ func QLayout_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QLayout_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QLayout_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QLayout_Tr3(s string, c string, n int) string {
@@ -352,12 +310,10 @@ func QLayout_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QLayout_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QLayout_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QLayout_TrUtf82(s string, c string) string {
@@ -365,12 +321,10 @@ func QLayout_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QLayout_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QLayout_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QLayout_TrUtf83(s string, c string, n int) string {
@@ -378,19 +332,27 @@ func QLayout_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QLayout_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QLayout_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QLayout) ReplaceWidget3(from *QWidget, to *QWidget, options int) *QLayoutItem {
-	ret := C.QLayout_ReplaceWidget3(this.h, from.cPointer(), to.cPointer(), (C.int)(options))
-	return newQLayoutItem_U(unsafe.Pointer(ret))
+	_ret := C.QLayout_ReplaceWidget3(this.h, from.cPointer(), to.cPointer(), (C.int)(options))
+	return newQLayoutItem_U(unsafe.Pointer(_ret))
 }
 
+// Delete this object from C++ memory.
 func (this *QLayout) Delete() {
 	C.QLayout_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QLayout) GoGC() {
+	runtime.SetFinalizer(this, func(this *QLayout) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -27,8 +29,8 @@ typedef struct QWidget QWidget;
 
 QDesktopWidget* QDesktopWidget_new();
 QMetaObject* QDesktopWidget_MetaObject(const QDesktopWidget* self);
-void QDesktopWidget_Tr(const char* s, char** _out, int* _out_Strlen);
-void QDesktopWidget_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QDesktopWidget_Tr(const char* s);
+struct miqt_string* QDesktopWidget_TrUtf8(const char* s);
 int QDesktopWidget_ScreenNumber(const QDesktopWidget* self);
 QRect* QDesktopWidget_ScreenGeometry(const QDesktopWidget* self, QWidget* widget);
 QRect* QDesktopWidget_AvailableGeometry(const QDesktopWidget* self, QWidget* widget);
@@ -50,10 +52,10 @@ void QDesktopWidget_ScreenCountChanged(QDesktopWidget* self, int param1);
 void QDesktopWidget_connect_ScreenCountChanged(QDesktopWidget* self, void* slot);
 void QDesktopWidget_PrimaryScreenChanged(QDesktopWidget* self);
 void QDesktopWidget_connect_PrimaryScreenChanged(QDesktopWidget* self, void* slot);
-void QDesktopWidget_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QDesktopWidget_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QDesktopWidget_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QDesktopWidget_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QDesktopWidget_Tr2(const char* s, const char* c);
+struct miqt_string* QDesktopWidget_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QDesktopWidget_TrUtf82(const char* s, const char* c);
+struct miqt_string* QDesktopWidget_TrUtf83(const char* s, const char* c, int n);
 int QDesktopWidget_ScreenNumber1(const QDesktopWidget* self, QWidget* widget);
 QWidget* QDesktopWidget_Screen1(QDesktopWidget* self, int screen);
 QRect* QDesktopWidget_ScreenGeometry1(const QDesktopWidget* self, int screen);

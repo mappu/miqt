@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -36,8 +38,8 @@ typedef struct QWidget QWidget;
 QColumnView* QColumnView_new();
 QColumnView* QColumnView_new2(QWidget* parent);
 QMetaObject* QColumnView_MetaObject(const QColumnView* self);
-void QColumnView_Tr(const char* s, char** _out, int* _out_Strlen);
-void QColumnView_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QColumnView_Tr(const char* s);
+struct miqt_string* QColumnView_TrUtf8(const char* s);
 void QColumnView_UpdatePreviewWidget(QColumnView* self, QModelIndex* index);
 void QColumnView_connect_UpdatePreviewWidget(QColumnView* self, void* slot);
 QModelIndex* QColumnView_IndexAt(const QColumnView* self, QPoint* point);
@@ -52,12 +54,12 @@ void QColumnView_SetResizeGripsVisible(QColumnView* self, bool visible);
 bool QColumnView_ResizeGripsVisible(const QColumnView* self);
 QWidget* QColumnView_PreviewWidget(const QColumnView* self);
 void QColumnView_SetPreviewWidget(QColumnView* self, QWidget* widget);
-void QColumnView_SetColumnWidths(QColumnView* self, int* list, size_t list_len);
-void QColumnView_ColumnWidths(const QColumnView* self, int** _out, size_t* _out_len);
-void QColumnView_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QColumnView_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QColumnView_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QColumnView_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+void QColumnView_SetColumnWidths(QColumnView* self, struct miqt_array* /* of int */ list);
+struct miqt_array* QColumnView_ColumnWidths(const QColumnView* self);
+struct miqt_string* QColumnView_Tr2(const char* s, const char* c);
+struct miqt_string* QColumnView_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QColumnView_TrUtf82(const char* s, const char* c);
+struct miqt_string* QColumnView_TrUtf83(const char* s, const char* c, int n);
 void QColumnView_ScrollTo2(QColumnView* self, QModelIndex* index, uintptr_t hint);
 void QColumnView_Delete(QColumnView* self);
 

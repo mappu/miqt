@@ -36,8 +36,8 @@ func newQPixmapCache_U(h unsafe.Pointer) *QPixmapCache {
 }
 
 func QPixmapCache_CacheLimit() int {
-	ret := C.QPixmapCache_CacheLimit()
-	return (int)(ret)
+	_ret := C.QPixmapCache_CacheLimit()
+	return (int)(_ret)
 }
 
 func QPixmapCache_SetCacheLimit(cacheLimit int) {
@@ -45,58 +45,54 @@ func QPixmapCache_SetCacheLimit(cacheLimit int) {
 }
 
 func QPixmapCache_Find(key string) *QPixmap {
-	key_Cstring := C.CString(key)
-	defer C.free(unsafe.Pointer(key_Cstring))
-	ret := C.QPixmapCache_Find(key_Cstring, C.size_t(len(key)))
-	return newQPixmap_U(unsafe.Pointer(ret))
+	key_ms := miqt_strdupg(key)
+	defer C.free(key_ms)
+	_ret := C.QPixmapCache_Find((*C.struct_miqt_string)(key_ms))
+	return newQPixmap_U(unsafe.Pointer(_ret))
 }
 
 func QPixmapCache_Find2(key string, pixmap *QPixmap) bool {
-	key_Cstring := C.CString(key)
-	defer C.free(unsafe.Pointer(key_Cstring))
-	ret := C.QPixmapCache_Find2(key_Cstring, C.size_t(len(key)), pixmap.cPointer())
-	return (bool)(ret)
+	key_ms := miqt_strdupg(key)
+	defer C.free(key_ms)
+	_ret := C.QPixmapCache_Find2((*C.struct_miqt_string)(key_ms), pixmap.cPointer())
+	return (bool)(_ret)
 }
 
 func QPixmapCache_Find3(key string, pixmap *QPixmap) bool {
-	key_Cstring := C.CString(key)
-	defer C.free(unsafe.Pointer(key_Cstring))
-	ret := C.QPixmapCache_Find3(key_Cstring, C.size_t(len(key)), pixmap.cPointer())
-	return (bool)(ret)
+	key_ms := miqt_strdupg(key)
+	defer C.free(key_ms)
+	_ret := C.QPixmapCache_Find3((*C.struct_miqt_string)(key_ms), pixmap.cPointer())
+	return (bool)(_ret)
 }
 
 func QPixmapCache_Find4(key *QPixmapCache__Key, pixmap *QPixmap) bool {
-	ret := C.QPixmapCache_Find4(key.cPointer(), pixmap.cPointer())
-	return (bool)(ret)
+	_ret := C.QPixmapCache_Find4(key.cPointer(), pixmap.cPointer())
+	return (bool)(_ret)
 }
 
 func QPixmapCache_Insert(key string, pixmap *QPixmap) bool {
-	key_Cstring := C.CString(key)
-	defer C.free(unsafe.Pointer(key_Cstring))
-	ret := C.QPixmapCache_Insert(key_Cstring, C.size_t(len(key)), pixmap.cPointer())
-	return (bool)(ret)
+	key_ms := miqt_strdupg(key)
+	defer C.free(key_ms)
+	_ret := C.QPixmapCache_Insert((*C.struct_miqt_string)(key_ms), pixmap.cPointer())
+	return (bool)(_ret)
 }
 
 func QPixmapCache_InsertWithPixmap(pixmap *QPixmap) *QPixmapCache__Key {
-	ret := C.QPixmapCache_InsertWithPixmap(pixmap.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPixmapCache__Key(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPixmapCache__Key) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QPixmapCache_InsertWithPixmap(pixmap.cPointer())
+	_goptr := newQPixmapCache__Key(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func QPixmapCache_Replace(key *QPixmapCache__Key, pixmap *QPixmap) bool {
-	ret := C.QPixmapCache_Replace(key.cPointer(), pixmap.cPointer())
-	return (bool)(ret)
+	_ret := C.QPixmapCache_Replace(key.cPointer(), pixmap.cPointer())
+	return (bool)(_ret)
 }
 
 func QPixmapCache_Remove(key string) {
-	key_Cstring := C.CString(key)
-	defer C.free(unsafe.Pointer(key_Cstring))
-	C.QPixmapCache_Remove(key_Cstring, C.size_t(len(key)))
+	key_ms := miqt_strdupg(key)
+	defer C.free(key_ms)
+	C.QPixmapCache_Remove((*C.struct_miqt_string)(key_ms))
 }
 
 func QPixmapCache_RemoveWithKey(key *QPixmapCache__Key) {
@@ -107,8 +103,18 @@ func QPixmapCache_Clear() {
 	C.QPixmapCache_Clear()
 }
 
+// Delete this object from C++ memory.
 func (this *QPixmapCache) Delete() {
 	C.QPixmapCache_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QPixmapCache) GoGC() {
+	runtime.SetFinalizer(this, func(this *QPixmapCache) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
 
 type QPixmapCache__Key struct {
@@ -146,13 +152,13 @@ func NewQPixmapCache__Key2(other *QPixmapCache__Key) *QPixmapCache__Key {
 }
 
 func (this *QPixmapCache__Key) OperatorEqual(key *QPixmapCache__Key) bool {
-	ret := C.QPixmapCache__Key_OperatorEqual(this.h, key.cPointer())
-	return (bool)(ret)
+	_ret := C.QPixmapCache__Key_OperatorEqual(this.h, key.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QPixmapCache__Key) OperatorNotEqual(key *QPixmapCache__Key) bool {
-	ret := C.QPixmapCache__Key_OperatorNotEqual(this.h, key.cPointer())
-	return (bool)(ret)
+	_ret := C.QPixmapCache__Key_OperatorNotEqual(this.h, key.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QPixmapCache__Key) Swap(other *QPixmapCache__Key) {
@@ -160,10 +166,20 @@ func (this *QPixmapCache__Key) Swap(other *QPixmapCache__Key) {
 }
 
 func (this *QPixmapCache__Key) IsValid() bool {
-	ret := C.QPixmapCache__Key_IsValid(this.h)
-	return (bool)(ret)
+	_ret := C.QPixmapCache__Key_IsValid(this.h)
+	return (bool)(_ret)
 }
 
+// Delete this object from C++ memory.
 func (this *QPixmapCache__Key) Delete() {
 	C.QPixmapCache__Key_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QPixmapCache__Key) GoGC() {
+	runtime.SetFinalizer(this, func(this *QPixmapCache__Key) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

@@ -60,17 +60,16 @@ func NewQTreeWidgetItem() *QTreeWidgetItem {
 // NewQTreeWidgetItem2 constructs a new QTreeWidgetItem object.
 func NewQTreeWidgetItem2(strings []string) *QTreeWidgetItem {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
-	strings_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(strings))))
-	strings_Lengths := (*[0xffff]C.uint64_t)(C.malloc(C.size_t(8 * len(strings))))
+	strings_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(strings))))
 	defer C.free(unsafe.Pointer(strings_CArray))
-	defer C.free(unsafe.Pointer(strings_Lengths))
 	for i := range strings {
-		single_cstring := C.CString(strings[i])
-		defer C.free(unsafe.Pointer(single_cstring))
-		strings_CArray[i] = single_cstring
-		strings_Lengths[i] = (C.uint64_t)(len(strings[i]))
+		single_ms := miqt_strdupg(strings[i])
+		defer C.free(single_ms)
+		strings_CArray[i] = (*C.struct_miqt_string)(single_ms)
 	}
-	ret := C.QTreeWidgetItem_new2(&strings_CArray[0], &strings_Lengths[0], C.size_t(len(strings)))
+	strings_ma := &C.struct_miqt_array{len: C.size_t(len(strings)), data: unsafe.Pointer(strings_CArray)}
+	defer runtime.KeepAlive(unsafe.Pointer(strings_ma))
+	ret := C.QTreeWidgetItem_new2(strings_ma)
 	return newQTreeWidgetItem(ret)
 }
 
@@ -83,17 +82,16 @@ func NewQTreeWidgetItem3(treeview *QTreeWidget) *QTreeWidgetItem {
 // NewQTreeWidgetItem4 constructs a new QTreeWidgetItem object.
 func NewQTreeWidgetItem4(treeview *QTreeWidget, strings []string) *QTreeWidgetItem {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
-	strings_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(strings))))
-	strings_Lengths := (*[0xffff]C.uint64_t)(C.malloc(C.size_t(8 * len(strings))))
+	strings_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(strings))))
 	defer C.free(unsafe.Pointer(strings_CArray))
-	defer C.free(unsafe.Pointer(strings_Lengths))
 	for i := range strings {
-		single_cstring := C.CString(strings[i])
-		defer C.free(unsafe.Pointer(single_cstring))
-		strings_CArray[i] = single_cstring
-		strings_Lengths[i] = (C.uint64_t)(len(strings[i]))
+		single_ms := miqt_strdupg(strings[i])
+		defer C.free(single_ms)
+		strings_CArray[i] = (*C.struct_miqt_string)(single_ms)
 	}
-	ret := C.QTreeWidgetItem_new4(treeview.cPointer(), &strings_CArray[0], &strings_Lengths[0], C.size_t(len(strings)))
+	strings_ma := &C.struct_miqt_array{len: C.size_t(len(strings)), data: unsafe.Pointer(strings_CArray)}
+	defer runtime.KeepAlive(unsafe.Pointer(strings_ma))
+	ret := C.QTreeWidgetItem_new4(treeview.cPointer(), strings_ma)
 	return newQTreeWidgetItem(ret)
 }
 
@@ -112,17 +110,16 @@ func NewQTreeWidgetItem6(parent *QTreeWidgetItem) *QTreeWidgetItem {
 // NewQTreeWidgetItem7 constructs a new QTreeWidgetItem object.
 func NewQTreeWidgetItem7(parent *QTreeWidgetItem, strings []string) *QTreeWidgetItem {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
-	strings_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(strings))))
-	strings_Lengths := (*[0xffff]C.uint64_t)(C.malloc(C.size_t(8 * len(strings))))
+	strings_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(strings))))
 	defer C.free(unsafe.Pointer(strings_CArray))
-	defer C.free(unsafe.Pointer(strings_Lengths))
 	for i := range strings {
-		single_cstring := C.CString(strings[i])
-		defer C.free(unsafe.Pointer(single_cstring))
-		strings_CArray[i] = single_cstring
-		strings_Lengths[i] = (C.uint64_t)(len(strings[i]))
+		single_ms := miqt_strdupg(strings[i])
+		defer C.free(single_ms)
+		strings_CArray[i] = (*C.struct_miqt_string)(single_ms)
 	}
-	ret := C.QTreeWidgetItem_new7(parent.cPointer(), &strings_CArray[0], &strings_Lengths[0], C.size_t(len(strings)))
+	strings_ma := &C.struct_miqt_array{len: C.size_t(len(strings)), data: unsafe.Pointer(strings_CArray)}
+	defer runtime.KeepAlive(unsafe.Pointer(strings_ma))
+	ret := C.QTreeWidgetItem_new7(parent.cPointer(), strings_ma)
 	return newQTreeWidgetItem(ret)
 }
 
@@ -147,17 +144,16 @@ func NewQTreeWidgetItem10(typeVal int) *QTreeWidgetItem {
 // NewQTreeWidgetItem11 constructs a new QTreeWidgetItem object.
 func NewQTreeWidgetItem11(strings []string, typeVal int) *QTreeWidgetItem {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
-	strings_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(strings))))
-	strings_Lengths := (*[0xffff]C.uint64_t)(C.malloc(C.size_t(8 * len(strings))))
+	strings_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(strings))))
 	defer C.free(unsafe.Pointer(strings_CArray))
-	defer C.free(unsafe.Pointer(strings_Lengths))
 	for i := range strings {
-		single_cstring := C.CString(strings[i])
-		defer C.free(unsafe.Pointer(single_cstring))
-		strings_CArray[i] = single_cstring
-		strings_Lengths[i] = (C.uint64_t)(len(strings[i]))
+		single_ms := miqt_strdupg(strings[i])
+		defer C.free(single_ms)
+		strings_CArray[i] = (*C.struct_miqt_string)(single_ms)
 	}
-	ret := C.QTreeWidgetItem_new11(&strings_CArray[0], &strings_Lengths[0], C.size_t(len(strings)), (C.int)(typeVal))
+	strings_ma := &C.struct_miqt_array{len: C.size_t(len(strings)), data: unsafe.Pointer(strings_CArray)}
+	defer runtime.KeepAlive(unsafe.Pointer(strings_ma))
+	ret := C.QTreeWidgetItem_new11(strings_ma, (C.int)(typeVal))
 	return newQTreeWidgetItem(ret)
 }
 
@@ -170,17 +166,16 @@ func NewQTreeWidgetItem12(treeview *QTreeWidget, typeVal int) *QTreeWidgetItem {
 // NewQTreeWidgetItem13 constructs a new QTreeWidgetItem object.
 func NewQTreeWidgetItem13(treeview *QTreeWidget, strings []string, typeVal int) *QTreeWidgetItem {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
-	strings_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(strings))))
-	strings_Lengths := (*[0xffff]C.uint64_t)(C.malloc(C.size_t(8 * len(strings))))
+	strings_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(strings))))
 	defer C.free(unsafe.Pointer(strings_CArray))
-	defer C.free(unsafe.Pointer(strings_Lengths))
 	for i := range strings {
-		single_cstring := C.CString(strings[i])
-		defer C.free(unsafe.Pointer(single_cstring))
-		strings_CArray[i] = single_cstring
-		strings_Lengths[i] = (C.uint64_t)(len(strings[i]))
+		single_ms := miqt_strdupg(strings[i])
+		defer C.free(single_ms)
+		strings_CArray[i] = (*C.struct_miqt_string)(single_ms)
 	}
-	ret := C.QTreeWidgetItem_new13(treeview.cPointer(), &strings_CArray[0], &strings_Lengths[0], C.size_t(len(strings)), (C.int)(typeVal))
+	strings_ma := &C.struct_miqt_array{len: C.size_t(len(strings)), data: unsafe.Pointer(strings_CArray)}
+	defer runtime.KeepAlive(unsafe.Pointer(strings_ma))
+	ret := C.QTreeWidgetItem_new13(treeview.cPointer(), strings_ma, (C.int)(typeVal))
 	return newQTreeWidgetItem(ret)
 }
 
@@ -199,17 +194,16 @@ func NewQTreeWidgetItem15(parent *QTreeWidgetItem, typeVal int) *QTreeWidgetItem
 // NewQTreeWidgetItem16 constructs a new QTreeWidgetItem object.
 func NewQTreeWidgetItem16(parent *QTreeWidgetItem, strings []string, typeVal int) *QTreeWidgetItem {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
-	strings_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(strings))))
-	strings_Lengths := (*[0xffff]C.uint64_t)(C.malloc(C.size_t(8 * len(strings))))
+	strings_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(strings))))
 	defer C.free(unsafe.Pointer(strings_CArray))
-	defer C.free(unsafe.Pointer(strings_Lengths))
 	for i := range strings {
-		single_cstring := C.CString(strings[i])
-		defer C.free(unsafe.Pointer(single_cstring))
-		strings_CArray[i] = single_cstring
-		strings_Lengths[i] = (C.uint64_t)(len(strings[i]))
+		single_ms := miqt_strdupg(strings[i])
+		defer C.free(single_ms)
+		strings_CArray[i] = (*C.struct_miqt_string)(single_ms)
 	}
-	ret := C.QTreeWidgetItem_new16(parent.cPointer(), &strings_CArray[0], &strings_Lengths[0], C.size_t(len(strings)), (C.int)(typeVal))
+	strings_ma := &C.struct_miqt_array{len: C.size_t(len(strings)), data: unsafe.Pointer(strings_CArray)}
+	defer runtime.KeepAlive(unsafe.Pointer(strings_ma))
+	ret := C.QTreeWidgetItem_new16(parent.cPointer(), strings_ma, (C.int)(typeVal))
 	return newQTreeWidgetItem(ret)
 }
 
@@ -220,13 +214,13 @@ func NewQTreeWidgetItem17(parent *QTreeWidgetItem, after *QTreeWidgetItem, typeV
 }
 
 func (this *QTreeWidgetItem) Clone() *QTreeWidgetItem {
-	ret := C.QTreeWidgetItem_Clone(this.h)
-	return newQTreeWidgetItem_U(unsafe.Pointer(ret))
+	_ret := C.QTreeWidgetItem_Clone(this.h)
+	return newQTreeWidgetItem_U(unsafe.Pointer(_ret))
 }
 
 func (this *QTreeWidgetItem) TreeWidget() *QTreeWidget {
-	ret := C.QTreeWidgetItem_TreeWidget(this.h)
-	return newQTreeWidget_U(unsafe.Pointer(ret))
+	_ret := C.QTreeWidgetItem_TreeWidget(this.h)
+	return newQTreeWidget_U(unsafe.Pointer(_ret))
 }
 
 func (this *QTreeWidgetItem) SetSelected(selectVal bool) {
@@ -234,8 +228,8 @@ func (this *QTreeWidgetItem) SetSelected(selectVal bool) {
 }
 
 func (this *QTreeWidgetItem) IsSelected() bool {
-	ret := C.QTreeWidgetItem_IsSelected(this.h)
-	return (bool)(ret)
+	_ret := C.QTreeWidgetItem_IsSelected(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QTreeWidgetItem) SetHidden(hide bool) {
@@ -243,8 +237,8 @@ func (this *QTreeWidgetItem) SetHidden(hide bool) {
 }
 
 func (this *QTreeWidgetItem) IsHidden() bool {
-	ret := C.QTreeWidgetItem_IsHidden(this.h)
-	return (bool)(ret)
+	_ret := C.QTreeWidgetItem_IsHidden(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QTreeWidgetItem) SetExpanded(expand bool) {
@@ -252,8 +246,8 @@ func (this *QTreeWidgetItem) SetExpanded(expand bool) {
 }
 
 func (this *QTreeWidgetItem) IsExpanded() bool {
-	ret := C.QTreeWidgetItem_IsExpanded(this.h)
-	return (bool)(ret)
+	_ret := C.QTreeWidgetItem_IsExpanded(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QTreeWidgetItem) SetFirstColumnSpanned(span bool) {
@@ -261,8 +255,8 @@ func (this *QTreeWidgetItem) SetFirstColumnSpanned(span bool) {
 }
 
 func (this *QTreeWidgetItem) IsFirstColumnSpanned() bool {
-	ret := C.QTreeWidgetItem_IsFirstColumnSpanned(this.h)
-	return (bool)(ret)
+	_ret := C.QTreeWidgetItem_IsFirstColumnSpanned(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QTreeWidgetItem) SetDisabled(disabled bool) {
@@ -270,8 +264,8 @@ func (this *QTreeWidgetItem) SetDisabled(disabled bool) {
 }
 
 func (this *QTreeWidgetItem) IsDisabled() bool {
-	ret := C.QTreeWidgetItem_IsDisabled(this.h)
-	return (bool)(ret)
+	_ret := C.QTreeWidgetItem_IsDisabled(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QTreeWidgetItem) SetChildIndicatorPolicy(policy QTreeWidgetItem__ChildIndicatorPolicy) {
@@ -279,13 +273,13 @@ func (this *QTreeWidgetItem) SetChildIndicatorPolicy(policy QTreeWidgetItem__Chi
 }
 
 func (this *QTreeWidgetItem) ChildIndicatorPolicy() QTreeWidgetItem__ChildIndicatorPolicy {
-	ret := C.QTreeWidgetItem_ChildIndicatorPolicy(this.h)
-	return (QTreeWidgetItem__ChildIndicatorPolicy)(ret)
+	_ret := C.QTreeWidgetItem_ChildIndicatorPolicy(this.h)
+	return (QTreeWidgetItem__ChildIndicatorPolicy)(_ret)
 }
 
 func (this *QTreeWidgetItem) Flags() int {
-	ret := C.QTreeWidgetItem_Flags(this.h)
-	return (int)(ret)
+	_ret := C.QTreeWidgetItem_Flags(this.h)
+	return (int)(_ret)
 }
 
 func (this *QTreeWidgetItem) SetFlags(flags int) {
@@ -293,29 +287,23 @@ func (this *QTreeWidgetItem) SetFlags(flags int) {
 }
 
 func (this *QTreeWidgetItem) Text(column int) string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTreeWidgetItem_Text(this.h, (C.int)(column), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTreeWidgetItem_Text(this.h, (C.int)(column))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QTreeWidgetItem) SetText(column int, text string) {
-	text_Cstring := C.CString(text)
-	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QTreeWidgetItem_SetText(this.h, (C.int)(column), text_Cstring, C.size_t(len(text)))
+	text_ms := miqt_strdupg(text)
+	defer C.free(text_ms)
+	C.QTreeWidgetItem_SetText(this.h, (C.int)(column), (*C.struct_miqt_string)(text_ms))
 }
 
 func (this *QTreeWidgetItem) Icon(column int) *QIcon {
-	ret := C.QTreeWidgetItem_Icon(this.h, (C.int)(column))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQIcon(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QIcon) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QTreeWidgetItem_Icon(this.h, (C.int)(column))
+	_goptr := newQIcon(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QTreeWidgetItem) SetIcon(column int, icon *QIcon) {
@@ -323,59 +311,49 @@ func (this *QTreeWidgetItem) SetIcon(column int, icon *QIcon) {
 }
 
 func (this *QTreeWidgetItem) StatusTip(column int) string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTreeWidgetItem_StatusTip(this.h, (C.int)(column), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTreeWidgetItem_StatusTip(this.h, (C.int)(column))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QTreeWidgetItem) SetStatusTip(column int, statusTip string) {
-	statusTip_Cstring := C.CString(statusTip)
-	defer C.free(unsafe.Pointer(statusTip_Cstring))
-	C.QTreeWidgetItem_SetStatusTip(this.h, (C.int)(column), statusTip_Cstring, C.size_t(len(statusTip)))
+	statusTip_ms := miqt_strdupg(statusTip)
+	defer C.free(statusTip_ms)
+	C.QTreeWidgetItem_SetStatusTip(this.h, (C.int)(column), (*C.struct_miqt_string)(statusTip_ms))
 }
 
 func (this *QTreeWidgetItem) ToolTip(column int) string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTreeWidgetItem_ToolTip(this.h, (C.int)(column), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTreeWidgetItem_ToolTip(this.h, (C.int)(column))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QTreeWidgetItem) SetToolTip(column int, toolTip string) {
-	toolTip_Cstring := C.CString(toolTip)
-	defer C.free(unsafe.Pointer(toolTip_Cstring))
-	C.QTreeWidgetItem_SetToolTip(this.h, (C.int)(column), toolTip_Cstring, C.size_t(len(toolTip)))
+	toolTip_ms := miqt_strdupg(toolTip)
+	defer C.free(toolTip_ms)
+	C.QTreeWidgetItem_SetToolTip(this.h, (C.int)(column), (*C.struct_miqt_string)(toolTip_ms))
 }
 
 func (this *QTreeWidgetItem) WhatsThis(column int) string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTreeWidgetItem_WhatsThis(this.h, (C.int)(column), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTreeWidgetItem_WhatsThis(this.h, (C.int)(column))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QTreeWidgetItem) SetWhatsThis(column int, whatsThis string) {
-	whatsThis_Cstring := C.CString(whatsThis)
-	defer C.free(unsafe.Pointer(whatsThis_Cstring))
-	C.QTreeWidgetItem_SetWhatsThis(this.h, (C.int)(column), whatsThis_Cstring, C.size_t(len(whatsThis)))
+	whatsThis_ms := miqt_strdupg(whatsThis)
+	defer C.free(whatsThis_ms)
+	C.QTreeWidgetItem_SetWhatsThis(this.h, (C.int)(column), (*C.struct_miqt_string)(whatsThis_ms))
 }
 
 func (this *QTreeWidgetItem) Font(column int) *QFont {
-	ret := C.QTreeWidgetItem_Font(this.h, (C.int)(column))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQFont(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QFont) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QTreeWidgetItem_Font(this.h, (C.int)(column))
+	_goptr := newQFont(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QTreeWidgetItem) SetFont(column int, font *QFont) {
@@ -383,8 +361,8 @@ func (this *QTreeWidgetItem) SetFont(column int, font *QFont) {
 }
 
 func (this *QTreeWidgetItem) TextAlignment(column int) int {
-	ret := C.QTreeWidgetItem_TextAlignment(this.h, (C.int)(column))
-	return (int)(ret)
+	_ret := C.QTreeWidgetItem_TextAlignment(this.h, (C.int)(column))
+	return (int)(_ret)
 }
 
 func (this *QTreeWidgetItem) SetTextAlignment(column int, alignment int) {
@@ -392,14 +370,10 @@ func (this *QTreeWidgetItem) SetTextAlignment(column int, alignment int) {
 }
 
 func (this *QTreeWidgetItem) BackgroundColor(column int) *QColor {
-	ret := C.QTreeWidgetItem_BackgroundColor(this.h, (C.int)(column))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQColor(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QColor) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QTreeWidgetItem_BackgroundColor(this.h, (C.int)(column))
+	_goptr := newQColor(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QTreeWidgetItem) SetBackgroundColor(column int, color *QColor) {
@@ -407,14 +381,10 @@ func (this *QTreeWidgetItem) SetBackgroundColor(column int, color *QColor) {
 }
 
 func (this *QTreeWidgetItem) Background(column int) *QBrush {
-	ret := C.QTreeWidgetItem_Background(this.h, (C.int)(column))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQBrush(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QBrush) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QTreeWidgetItem_Background(this.h, (C.int)(column))
+	_goptr := newQBrush(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QTreeWidgetItem) SetBackground(column int, brush *QBrush) {
@@ -422,14 +392,10 @@ func (this *QTreeWidgetItem) SetBackground(column int, brush *QBrush) {
 }
 
 func (this *QTreeWidgetItem) TextColor(column int) *QColor {
-	ret := C.QTreeWidgetItem_TextColor(this.h, (C.int)(column))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQColor(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QColor) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QTreeWidgetItem_TextColor(this.h, (C.int)(column))
+	_goptr := newQColor(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QTreeWidgetItem) SetTextColor(column int, color *QColor) {
@@ -437,14 +403,10 @@ func (this *QTreeWidgetItem) SetTextColor(column int, color *QColor) {
 }
 
 func (this *QTreeWidgetItem) Foreground(column int) *QBrush {
-	ret := C.QTreeWidgetItem_Foreground(this.h, (C.int)(column))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQBrush(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QBrush) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QTreeWidgetItem_Foreground(this.h, (C.int)(column))
+	_goptr := newQBrush(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QTreeWidgetItem) SetForeground(column int, brush *QBrush) {
@@ -452,8 +414,8 @@ func (this *QTreeWidgetItem) SetForeground(column int, brush *QBrush) {
 }
 
 func (this *QTreeWidgetItem) CheckState(column int) CheckState {
-	ret := C.QTreeWidgetItem_CheckState(this.h, (C.int)(column))
-	return (CheckState)(ret)
+	_ret := C.QTreeWidgetItem_CheckState(this.h, (C.int)(column))
+	return (CheckState)(_ret)
 }
 
 func (this *QTreeWidgetItem) SetCheckState(column int, state CheckState) {
@@ -461,14 +423,10 @@ func (this *QTreeWidgetItem) SetCheckState(column int, state CheckState) {
 }
 
 func (this *QTreeWidgetItem) SizeHint(column int) *QSize {
-	ret := C.QTreeWidgetItem_SizeHint(this.h, (C.int)(column))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSize(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QTreeWidgetItem_SizeHint(this.h, (C.int)(column))
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QTreeWidgetItem) SetSizeHint(column int, size *QSize) {
@@ -476,14 +434,10 @@ func (this *QTreeWidgetItem) SetSizeHint(column int, size *QSize) {
 }
 
 func (this *QTreeWidgetItem) Data(column int, role int) *QVariant {
-	ret := C.QTreeWidgetItem_Data(this.h, (C.int)(column), (C.int)(role))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQVariant(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QVariant) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QTreeWidgetItem_Data(this.h, (C.int)(column), (C.int)(role))
+	_goptr := newQVariant(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QTreeWidgetItem) SetData(column int, role int, value *QVariant) {
@@ -491,8 +445,8 @@ func (this *QTreeWidgetItem) SetData(column int, role int, value *QVariant) {
 }
 
 func (this *QTreeWidgetItem) OperatorLesser(other *QTreeWidgetItem) bool {
-	ret := C.QTreeWidgetItem_OperatorLesser(this.h, other.cPointer())
-	return (bool)(ret)
+	_ret := C.QTreeWidgetItem_OperatorLesser(this.h, other.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QTreeWidgetItem) Read(in *QDataStream) {
@@ -508,28 +462,28 @@ func (this *QTreeWidgetItem) OperatorAssign(other *QTreeWidgetItem) {
 }
 
 func (this *QTreeWidgetItem) Parent() *QTreeWidgetItem {
-	ret := C.QTreeWidgetItem_Parent(this.h)
-	return newQTreeWidgetItem_U(unsafe.Pointer(ret))
+	_ret := C.QTreeWidgetItem_Parent(this.h)
+	return newQTreeWidgetItem_U(unsafe.Pointer(_ret))
 }
 
 func (this *QTreeWidgetItem) Child(index int) *QTreeWidgetItem {
-	ret := C.QTreeWidgetItem_Child(this.h, (C.int)(index))
-	return newQTreeWidgetItem_U(unsafe.Pointer(ret))
+	_ret := C.QTreeWidgetItem_Child(this.h, (C.int)(index))
+	return newQTreeWidgetItem_U(unsafe.Pointer(_ret))
 }
 
 func (this *QTreeWidgetItem) ChildCount() int {
-	ret := C.QTreeWidgetItem_ChildCount(this.h)
-	return (int)(ret)
+	_ret := C.QTreeWidgetItem_ChildCount(this.h)
+	return (int)(_ret)
 }
 
 func (this *QTreeWidgetItem) ColumnCount() int {
-	ret := C.QTreeWidgetItem_ColumnCount(this.h)
-	return (int)(ret)
+	_ret := C.QTreeWidgetItem_ColumnCount(this.h)
+	return (int)(_ret)
 }
 
 func (this *QTreeWidgetItem) IndexOfChild(child *QTreeWidgetItem) int {
-	ret := C.QTreeWidgetItem_IndexOfChild(this.h, child.cPointer())
-	return (int)(ret)
+	_ret := C.QTreeWidgetItem_IndexOfChild(this.h, child.cPointer())
+	return (int)(_ret)
 }
 
 func (this *QTreeWidgetItem) AddChild(child *QTreeWidgetItem) {
@@ -545,8 +499,8 @@ func (this *QTreeWidgetItem) RemoveChild(child *QTreeWidgetItem) {
 }
 
 func (this *QTreeWidgetItem) TakeChild(index int) *QTreeWidgetItem {
-	ret := C.QTreeWidgetItem_TakeChild(this.h, (C.int)(index))
-	return newQTreeWidgetItem_U(unsafe.Pointer(ret))
+	_ret := C.QTreeWidgetItem_TakeChild(this.h, (C.int)(index))
+	return newQTreeWidgetItem_U(unsafe.Pointer(_ret))
 }
 
 func (this *QTreeWidgetItem) AddChildren(children []*QTreeWidgetItem) {
@@ -556,7 +510,9 @@ func (this *QTreeWidgetItem) AddChildren(children []*QTreeWidgetItem) {
 	for i := range children {
 		children_CArray[i] = children[i].cPointer()
 	}
-	C.QTreeWidgetItem_AddChildren(this.h, &children_CArray[0], C.size_t(len(children)))
+	children_ma := &C.struct_miqt_array{len: C.size_t(len(children)), data: unsafe.Pointer(children_CArray)}
+	defer runtime.KeepAlive(unsafe.Pointer(children_ma))
+	C.QTreeWidgetItem_AddChildren(this.h, children_ma)
 }
 
 func (this *QTreeWidgetItem) InsertChildren(index int, children []*QTreeWidgetItem) {
@@ -566,33 +522,43 @@ func (this *QTreeWidgetItem) InsertChildren(index int, children []*QTreeWidgetIt
 	for i := range children {
 		children_CArray[i] = children[i].cPointer()
 	}
-	C.QTreeWidgetItem_InsertChildren(this.h, (C.int)(index), &children_CArray[0], C.size_t(len(children)))
+	children_ma := &C.struct_miqt_array{len: C.size_t(len(children)), data: unsafe.Pointer(children_CArray)}
+	defer runtime.KeepAlive(unsafe.Pointer(children_ma))
+	C.QTreeWidgetItem_InsertChildren(this.h, (C.int)(index), children_ma)
 }
 
 func (this *QTreeWidgetItem) TakeChildren() []*QTreeWidgetItem {
-	var _out **C.QTreeWidgetItem = nil
-	var _out_len C.size_t = 0
-	C.QTreeWidgetItem_TakeChildren(this.h, &_out, &_out_len)
-	ret := make([]*QTreeWidgetItem, int(_out_len))
-	_outCast := (*[0xffff]*C.QTreeWidgetItem)(unsafe.Pointer(_out)) // so fresh so clean
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = newQTreeWidgetItem(_outCast[i])
+	var _ma *C.struct_miqt_array = C.QTreeWidgetItem_TakeChildren(this.h)
+	_ret := make([]*QTreeWidgetItem, int(_ma.len))
+	_outCast := (*[0xffff]*C.QTreeWidgetItem)(unsafe.Pointer(_ma.data)) // mrs jackson
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = newQTreeWidgetItem(_outCast[i])
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
 func (this *QTreeWidgetItem) Type() int {
-	ret := C.QTreeWidgetItem_Type(this.h)
-	return (int)(ret)
+	_ret := C.QTreeWidgetItem_Type(this.h)
+	return (int)(_ret)
 }
 
 func (this *QTreeWidgetItem) SortChildren(column int, order SortOrder) {
 	C.QTreeWidgetItem_SortChildren(this.h, (C.int)(column), (C.uintptr_t)(order))
 }
 
+// Delete this object from C++ memory.
 func (this *QTreeWidgetItem) Delete() {
 	C.QTreeWidgetItem_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QTreeWidgetItem) GoGC() {
+	runtime.SetFinalizer(this, func(this *QTreeWidgetItem) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
 
 type QTreeWidget struct {
@@ -631,35 +597,31 @@ func NewQTreeWidget2(parent *QWidget) *QTreeWidget {
 }
 
 func (this *QTreeWidget) MetaObject() *QMetaObject {
-	ret := C.QTreeWidget_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QTreeWidget_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QTreeWidget_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTreeWidget_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTreeWidget_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QTreeWidget_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTreeWidget_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTreeWidget_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QTreeWidget) ColumnCount() int {
-	ret := C.QTreeWidget_ColumnCount(this.h)
-	return (int)(ret)
+	_ret := C.QTreeWidget_ColumnCount(this.h)
+	return (int)(_ret)
 }
 
 func (this *QTreeWidget) SetColumnCount(columns int) {
@@ -667,18 +629,18 @@ func (this *QTreeWidget) SetColumnCount(columns int) {
 }
 
 func (this *QTreeWidget) InvisibleRootItem() *QTreeWidgetItem {
-	ret := C.QTreeWidget_InvisibleRootItem(this.h)
-	return newQTreeWidgetItem_U(unsafe.Pointer(ret))
+	_ret := C.QTreeWidget_InvisibleRootItem(this.h)
+	return newQTreeWidgetItem_U(unsafe.Pointer(_ret))
 }
 
 func (this *QTreeWidget) TopLevelItem(index int) *QTreeWidgetItem {
-	ret := C.QTreeWidget_TopLevelItem(this.h, (C.int)(index))
-	return newQTreeWidgetItem_U(unsafe.Pointer(ret))
+	_ret := C.QTreeWidget_TopLevelItem(this.h, (C.int)(index))
+	return newQTreeWidgetItem_U(unsafe.Pointer(_ret))
 }
 
 func (this *QTreeWidget) TopLevelItemCount() int {
-	ret := C.QTreeWidget_TopLevelItemCount(this.h)
-	return (int)(ret)
+	_ret := C.QTreeWidget_TopLevelItemCount(this.h)
+	return (int)(_ret)
 }
 
 func (this *QTreeWidget) InsertTopLevelItem(index int, item *QTreeWidgetItem) {
@@ -690,13 +652,13 @@ func (this *QTreeWidget) AddTopLevelItem(item *QTreeWidgetItem) {
 }
 
 func (this *QTreeWidget) TakeTopLevelItem(index int) *QTreeWidgetItem {
-	ret := C.QTreeWidget_TakeTopLevelItem(this.h, (C.int)(index))
-	return newQTreeWidgetItem_U(unsafe.Pointer(ret))
+	_ret := C.QTreeWidget_TakeTopLevelItem(this.h, (C.int)(index))
+	return newQTreeWidgetItem_U(unsafe.Pointer(_ret))
 }
 
 func (this *QTreeWidget) IndexOfTopLevelItem(item *QTreeWidgetItem) int {
-	ret := C.QTreeWidget_IndexOfTopLevelItem(this.h, item.cPointer())
-	return (int)(ret)
+	_ret := C.QTreeWidget_IndexOfTopLevelItem(this.h, item.cPointer())
+	return (int)(_ret)
 }
 
 func (this *QTreeWidget) InsertTopLevelItems(index int, items []*QTreeWidgetItem) {
@@ -706,7 +668,9 @@ func (this *QTreeWidget) InsertTopLevelItems(index int, items []*QTreeWidgetItem
 	for i := range items {
 		items_CArray[i] = items[i].cPointer()
 	}
-	C.QTreeWidget_InsertTopLevelItems(this.h, (C.int)(index), &items_CArray[0], C.size_t(len(items)))
+	items_ma := &C.struct_miqt_array{len: C.size_t(len(items)), data: unsafe.Pointer(items_CArray)}
+	defer runtime.KeepAlive(unsafe.Pointer(items_ma))
+	C.QTreeWidget_InsertTopLevelItems(this.h, (C.int)(index), items_ma)
 }
 
 func (this *QTreeWidget) AddTopLevelItems(items []*QTreeWidgetItem) {
@@ -716,12 +680,14 @@ func (this *QTreeWidget) AddTopLevelItems(items []*QTreeWidgetItem) {
 	for i := range items {
 		items_CArray[i] = items[i].cPointer()
 	}
-	C.QTreeWidget_AddTopLevelItems(this.h, &items_CArray[0], C.size_t(len(items)))
+	items_ma := &C.struct_miqt_array{len: C.size_t(len(items)), data: unsafe.Pointer(items_CArray)}
+	defer runtime.KeepAlive(unsafe.Pointer(items_ma))
+	C.QTreeWidget_AddTopLevelItems(this.h, items_ma)
 }
 
 func (this *QTreeWidget) HeaderItem() *QTreeWidgetItem {
-	ret := C.QTreeWidget_HeaderItem(this.h)
-	return newQTreeWidgetItem_U(unsafe.Pointer(ret))
+	_ret := C.QTreeWidget_HeaderItem(this.h)
+	return newQTreeWidgetItem_U(unsafe.Pointer(_ret))
 }
 
 func (this *QTreeWidget) SetHeaderItem(item *QTreeWidgetItem) {
@@ -730,33 +696,32 @@ func (this *QTreeWidget) SetHeaderItem(item *QTreeWidgetItem) {
 
 func (this *QTreeWidget) SetHeaderLabels(labels []string) {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
-	labels_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(labels))))
-	labels_Lengths := (*[0xffff]C.uint64_t)(C.malloc(C.size_t(8 * len(labels))))
+	labels_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(labels))))
 	defer C.free(unsafe.Pointer(labels_CArray))
-	defer C.free(unsafe.Pointer(labels_Lengths))
 	for i := range labels {
-		single_cstring := C.CString(labels[i])
-		defer C.free(unsafe.Pointer(single_cstring))
-		labels_CArray[i] = single_cstring
-		labels_Lengths[i] = (C.uint64_t)(len(labels[i]))
+		single_ms := miqt_strdupg(labels[i])
+		defer C.free(single_ms)
+		labels_CArray[i] = (*C.struct_miqt_string)(single_ms)
 	}
-	C.QTreeWidget_SetHeaderLabels(this.h, &labels_CArray[0], &labels_Lengths[0], C.size_t(len(labels)))
+	labels_ma := &C.struct_miqt_array{len: C.size_t(len(labels)), data: unsafe.Pointer(labels_CArray)}
+	defer runtime.KeepAlive(unsafe.Pointer(labels_ma))
+	C.QTreeWidget_SetHeaderLabels(this.h, labels_ma)
 }
 
 func (this *QTreeWidget) SetHeaderLabel(label string) {
-	label_Cstring := C.CString(label)
-	defer C.free(unsafe.Pointer(label_Cstring))
-	C.QTreeWidget_SetHeaderLabel(this.h, label_Cstring, C.size_t(len(label)))
+	label_ms := miqt_strdupg(label)
+	defer C.free(label_ms)
+	C.QTreeWidget_SetHeaderLabel(this.h, (*C.struct_miqt_string)(label_ms))
 }
 
 func (this *QTreeWidget) CurrentItem() *QTreeWidgetItem {
-	ret := C.QTreeWidget_CurrentItem(this.h)
-	return newQTreeWidgetItem_U(unsafe.Pointer(ret))
+	_ret := C.QTreeWidget_CurrentItem(this.h)
+	return newQTreeWidgetItem_U(unsafe.Pointer(_ret))
 }
 
 func (this *QTreeWidget) CurrentColumn() int {
-	ret := C.QTreeWidget_CurrentColumn(this.h)
-	return (int)(ret)
+	_ret := C.QTreeWidget_CurrentColumn(this.h)
+	return (int)(_ret)
 }
 
 func (this *QTreeWidget) SetCurrentItem(item *QTreeWidgetItem) {
@@ -772,29 +737,25 @@ func (this *QTreeWidget) SetCurrentItem3(item *QTreeWidgetItem, column int, comm
 }
 
 func (this *QTreeWidget) ItemAt(p *QPoint) *QTreeWidgetItem {
-	ret := C.QTreeWidget_ItemAt(this.h, p.cPointer())
-	return newQTreeWidgetItem_U(unsafe.Pointer(ret))
+	_ret := C.QTreeWidget_ItemAt(this.h, p.cPointer())
+	return newQTreeWidgetItem_U(unsafe.Pointer(_ret))
 }
 
 func (this *QTreeWidget) ItemAt2(x int, y int) *QTreeWidgetItem {
-	ret := C.QTreeWidget_ItemAt2(this.h, (C.int)(x), (C.int)(y))
-	return newQTreeWidgetItem_U(unsafe.Pointer(ret))
+	_ret := C.QTreeWidget_ItemAt2(this.h, (C.int)(x), (C.int)(y))
+	return newQTreeWidgetItem_U(unsafe.Pointer(_ret))
 }
 
 func (this *QTreeWidget) VisualItemRect(item *QTreeWidgetItem) *QRect {
-	ret := C.QTreeWidget_VisualItemRect(this.h, item.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRect(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRect) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QTreeWidget_VisualItemRect(this.h, item.cPointer())
+	_goptr := newQRect(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QTreeWidget) SortColumn() int {
-	ret := C.QTreeWidget_SortColumn(this.h)
-	return (int)(ret)
+	_ret := C.QTreeWidget_SortColumn(this.h)
+	return (int)(_ret)
 }
 
 func (this *QTreeWidget) SortItems(column int, order SortOrder) {
@@ -814,13 +775,13 @@ func (this *QTreeWidget) ClosePersistentEditor(item *QTreeWidgetItem) {
 }
 
 func (this *QTreeWidget) IsPersistentEditorOpen(item *QTreeWidgetItem) bool {
-	ret := C.QTreeWidget_IsPersistentEditorOpen(this.h, item.cPointer())
-	return (bool)(ret)
+	_ret := C.QTreeWidget_IsPersistentEditorOpen(this.h, item.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QTreeWidget) ItemWidget(item *QTreeWidgetItem, column int) *QWidget {
-	ret := C.QTreeWidget_ItemWidget(this.h, item.cPointer(), (C.int)(column))
-	return newQWidget_U(unsafe.Pointer(ret))
+	_ret := C.QTreeWidget_ItemWidget(this.h, item.cPointer(), (C.int)(column))
+	return newQWidget_U(unsafe.Pointer(_ret))
 }
 
 func (this *QTreeWidget) SetItemWidget(item *QTreeWidgetItem, column int, widget *QWidget) {
@@ -832,8 +793,8 @@ func (this *QTreeWidget) RemoveItemWidget(item *QTreeWidgetItem, column int) {
 }
 
 func (this *QTreeWidget) IsItemSelected(item *QTreeWidgetItem) bool {
-	ret := C.QTreeWidget_IsItemSelected(this.h, item.cPointer())
-	return (bool)(ret)
+	_ret := C.QTreeWidget_IsItemSelected(this.h, item.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QTreeWidget) SetItemSelected(item *QTreeWidgetItem, selectVal bool) {
@@ -841,36 +802,32 @@ func (this *QTreeWidget) SetItemSelected(item *QTreeWidgetItem, selectVal bool) 
 }
 
 func (this *QTreeWidget) SelectedItems() []*QTreeWidgetItem {
-	var _out **C.QTreeWidgetItem = nil
-	var _out_len C.size_t = 0
-	C.QTreeWidget_SelectedItems(this.h, &_out, &_out_len)
-	ret := make([]*QTreeWidgetItem, int(_out_len))
-	_outCast := (*[0xffff]*C.QTreeWidgetItem)(unsafe.Pointer(_out)) // so fresh so clean
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = newQTreeWidgetItem(_outCast[i])
+	var _ma *C.struct_miqt_array = C.QTreeWidget_SelectedItems(this.h)
+	_ret := make([]*QTreeWidgetItem, int(_ma.len))
+	_outCast := (*[0xffff]*C.QTreeWidgetItem)(unsafe.Pointer(_ma.data)) // mrs jackson
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = newQTreeWidgetItem(_outCast[i])
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
 func (this *QTreeWidget) FindItems(text string, flags int) []*QTreeWidgetItem {
-	text_Cstring := C.CString(text)
-	defer C.free(unsafe.Pointer(text_Cstring))
-	var _out **C.QTreeWidgetItem = nil
-	var _out_len C.size_t = 0
-	C.QTreeWidget_FindItems(this.h, text_Cstring, C.size_t(len(text)), (C.int)(flags), &_out, &_out_len)
-	ret := make([]*QTreeWidgetItem, int(_out_len))
-	_outCast := (*[0xffff]*C.QTreeWidgetItem)(unsafe.Pointer(_out)) // so fresh so clean
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = newQTreeWidgetItem(_outCast[i])
+	text_ms := miqt_strdupg(text)
+	defer C.free(text_ms)
+	var _ma *C.struct_miqt_array = C.QTreeWidget_FindItems(this.h, (*C.struct_miqt_string)(text_ms), (C.int)(flags))
+	_ret := make([]*QTreeWidgetItem, int(_ma.len))
+	_outCast := (*[0xffff]*C.QTreeWidgetItem)(unsafe.Pointer(_ma.data)) // mrs jackson
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = newQTreeWidgetItem(_outCast[i])
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
 func (this *QTreeWidget) IsItemHidden(item *QTreeWidgetItem) bool {
-	ret := C.QTreeWidget_IsItemHidden(this.h, item.cPointer())
-	return (bool)(ret)
+	_ret := C.QTreeWidget_IsItemHidden(this.h, item.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QTreeWidget) SetItemHidden(item *QTreeWidgetItem, hide bool) {
@@ -878,8 +835,8 @@ func (this *QTreeWidget) SetItemHidden(item *QTreeWidgetItem, hide bool) {
 }
 
 func (this *QTreeWidget) IsItemExpanded(item *QTreeWidgetItem) bool {
-	ret := C.QTreeWidget_IsItemExpanded(this.h, item.cPointer())
-	return (bool)(ret)
+	_ret := C.QTreeWidget_IsItemExpanded(this.h, item.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QTreeWidget) SetItemExpanded(item *QTreeWidgetItem, expand bool) {
@@ -887,8 +844,8 @@ func (this *QTreeWidget) SetItemExpanded(item *QTreeWidgetItem, expand bool) {
 }
 
 func (this *QTreeWidget) IsFirstItemColumnSpanned(item *QTreeWidgetItem) bool {
-	ret := C.QTreeWidget_IsFirstItemColumnSpanned(this.h, item.cPointer())
-	return (bool)(ret)
+	_ret := C.QTreeWidget_IsFirstItemColumnSpanned(this.h, item.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QTreeWidget) SetFirstItemColumnSpanned(item *QTreeWidgetItem, span bool) {
@@ -896,13 +853,13 @@ func (this *QTreeWidget) SetFirstItemColumnSpanned(item *QTreeWidgetItem, span b
 }
 
 func (this *QTreeWidget) ItemAbove(item *QTreeWidgetItem) *QTreeWidgetItem {
-	ret := C.QTreeWidget_ItemAbove(this.h, item.cPointer())
-	return newQTreeWidgetItem_U(unsafe.Pointer(ret))
+	_ret := C.QTreeWidget_ItemAbove(this.h, item.cPointer())
+	return newQTreeWidgetItem_U(unsafe.Pointer(_ret))
 }
 
 func (this *QTreeWidget) ItemBelow(item *QTreeWidgetItem) *QTreeWidgetItem {
-	ret := C.QTreeWidget_ItemBelow(this.h, item.cPointer())
-	return newQTreeWidgetItem_U(unsafe.Pointer(ret))
+	_ret := C.QTreeWidget_ItemBelow(this.h, item.cPointer())
+	return newQTreeWidgetItem_U(unsafe.Pointer(_ret))
 }
 
 func (this *QTreeWidget) SetSelectionModel(selectionModel *QItemSelectionModel) {
@@ -928,121 +885,221 @@ func (this *QTreeWidget) Clear() {
 func (this *QTreeWidget) ItemPressed(item *QTreeWidgetItem, column int) {
 	C.QTreeWidget_ItemPressed(this.h, item.cPointer(), (C.int)(column))
 }
+func (this *QTreeWidget) OnItemPressed(slot func(item *QTreeWidgetItem, column int)) {
+	C.QTreeWidget_connect_ItemPressed(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QTreeWidget) OnItemPressed(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QTreeWidget_ItemPressed
+func miqt_exec_callback_QTreeWidget_ItemPressed(cb *C.void, item *C.QTreeWidgetItem, column C.int) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(item *QTreeWidgetItem, column int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QTreeWidget_connect_ItemPressed(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	item_ret := item
+	slotval1 := newQTreeWidgetItem_U(unsafe.Pointer(item_ret))
+	column_ret := column
+	slotval2 := (int)(column_ret)
+
+	gofunc(slotval1, slotval2)
 }
 
 func (this *QTreeWidget) ItemClicked(item *QTreeWidgetItem, column int) {
 	C.QTreeWidget_ItemClicked(this.h, item.cPointer(), (C.int)(column))
 }
+func (this *QTreeWidget) OnItemClicked(slot func(item *QTreeWidgetItem, column int)) {
+	C.QTreeWidget_connect_ItemClicked(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QTreeWidget) OnItemClicked(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QTreeWidget_ItemClicked
+func miqt_exec_callback_QTreeWidget_ItemClicked(cb *C.void, item *C.QTreeWidgetItem, column C.int) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(item *QTreeWidgetItem, column int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QTreeWidget_connect_ItemClicked(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	item_ret := item
+	slotval1 := newQTreeWidgetItem_U(unsafe.Pointer(item_ret))
+	column_ret := column
+	slotval2 := (int)(column_ret)
+
+	gofunc(slotval1, slotval2)
 }
 
 func (this *QTreeWidget) ItemDoubleClicked(item *QTreeWidgetItem, column int) {
 	C.QTreeWidget_ItemDoubleClicked(this.h, item.cPointer(), (C.int)(column))
 }
+func (this *QTreeWidget) OnItemDoubleClicked(slot func(item *QTreeWidgetItem, column int)) {
+	C.QTreeWidget_connect_ItemDoubleClicked(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QTreeWidget) OnItemDoubleClicked(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QTreeWidget_ItemDoubleClicked
+func miqt_exec_callback_QTreeWidget_ItemDoubleClicked(cb *C.void, item *C.QTreeWidgetItem, column C.int) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(item *QTreeWidgetItem, column int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QTreeWidget_connect_ItemDoubleClicked(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	item_ret := item
+	slotval1 := newQTreeWidgetItem_U(unsafe.Pointer(item_ret))
+	column_ret := column
+	slotval2 := (int)(column_ret)
+
+	gofunc(slotval1, slotval2)
 }
 
 func (this *QTreeWidget) ItemActivated(item *QTreeWidgetItem, column int) {
 	C.QTreeWidget_ItemActivated(this.h, item.cPointer(), (C.int)(column))
 }
+func (this *QTreeWidget) OnItemActivated(slot func(item *QTreeWidgetItem, column int)) {
+	C.QTreeWidget_connect_ItemActivated(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QTreeWidget) OnItemActivated(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QTreeWidget_ItemActivated
+func miqt_exec_callback_QTreeWidget_ItemActivated(cb *C.void, item *C.QTreeWidgetItem, column C.int) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(item *QTreeWidgetItem, column int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QTreeWidget_connect_ItemActivated(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	item_ret := item
+	slotval1 := newQTreeWidgetItem_U(unsafe.Pointer(item_ret))
+	column_ret := column
+	slotval2 := (int)(column_ret)
+
+	gofunc(slotval1, slotval2)
 }
 
 func (this *QTreeWidget) ItemEntered(item *QTreeWidgetItem, column int) {
 	C.QTreeWidget_ItemEntered(this.h, item.cPointer(), (C.int)(column))
 }
+func (this *QTreeWidget) OnItemEntered(slot func(item *QTreeWidgetItem, column int)) {
+	C.QTreeWidget_connect_ItemEntered(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QTreeWidget) OnItemEntered(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QTreeWidget_ItemEntered
+func miqt_exec_callback_QTreeWidget_ItemEntered(cb *C.void, item *C.QTreeWidgetItem, column C.int) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(item *QTreeWidgetItem, column int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QTreeWidget_connect_ItemEntered(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	item_ret := item
+	slotval1 := newQTreeWidgetItem_U(unsafe.Pointer(item_ret))
+	column_ret := column
+	slotval2 := (int)(column_ret)
+
+	gofunc(slotval1, slotval2)
 }
 
 func (this *QTreeWidget) ItemChanged(item *QTreeWidgetItem, column int) {
 	C.QTreeWidget_ItemChanged(this.h, item.cPointer(), (C.int)(column))
 }
+func (this *QTreeWidget) OnItemChanged(slot func(item *QTreeWidgetItem, column int)) {
+	C.QTreeWidget_connect_ItemChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QTreeWidget) OnItemChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QTreeWidget_ItemChanged
+func miqt_exec_callback_QTreeWidget_ItemChanged(cb *C.void, item *C.QTreeWidgetItem, column C.int) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(item *QTreeWidgetItem, column int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QTreeWidget_connect_ItemChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	item_ret := item
+	slotval1 := newQTreeWidgetItem_U(unsafe.Pointer(item_ret))
+	column_ret := column
+	slotval2 := (int)(column_ret)
+
+	gofunc(slotval1, slotval2)
 }
 
 func (this *QTreeWidget) ItemExpanded(item *QTreeWidgetItem) {
 	C.QTreeWidget_ItemExpanded(this.h, item.cPointer())
 }
+func (this *QTreeWidget) OnItemExpanded(slot func(item *QTreeWidgetItem)) {
+	C.QTreeWidget_connect_ItemExpanded(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QTreeWidget) OnItemExpanded(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QTreeWidget_ItemExpanded
+func miqt_exec_callback_QTreeWidget_ItemExpanded(cb *C.void, item *C.QTreeWidgetItem) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(item *QTreeWidgetItem))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QTreeWidget_connect_ItemExpanded(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	item_ret := item
+	slotval1 := newQTreeWidgetItem_U(unsafe.Pointer(item_ret))
+
+	gofunc(slotval1)
 }
 
 func (this *QTreeWidget) ItemCollapsed(item *QTreeWidgetItem) {
 	C.QTreeWidget_ItemCollapsed(this.h, item.cPointer())
 }
+func (this *QTreeWidget) OnItemCollapsed(slot func(item *QTreeWidgetItem)) {
+	C.QTreeWidget_connect_ItemCollapsed(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QTreeWidget) OnItemCollapsed(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QTreeWidget_ItemCollapsed
+func miqt_exec_callback_QTreeWidget_ItemCollapsed(cb *C.void, item *C.QTreeWidgetItem) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(item *QTreeWidgetItem))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QTreeWidget_connect_ItemCollapsed(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	item_ret := item
+	slotval1 := newQTreeWidgetItem_U(unsafe.Pointer(item_ret))
+
+	gofunc(slotval1)
 }
 
 func (this *QTreeWidget) CurrentItemChanged(current *QTreeWidgetItem, previous *QTreeWidgetItem) {
 	C.QTreeWidget_CurrentItemChanged(this.h, current.cPointer(), previous.cPointer())
 }
+func (this *QTreeWidget) OnCurrentItemChanged(slot func(current *QTreeWidgetItem, previous *QTreeWidgetItem)) {
+	C.QTreeWidget_connect_CurrentItemChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QTreeWidget) OnCurrentItemChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QTreeWidget_CurrentItemChanged
+func miqt_exec_callback_QTreeWidget_CurrentItemChanged(cb *C.void, current *C.QTreeWidgetItem, previous *C.QTreeWidgetItem) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(current *QTreeWidgetItem, previous *QTreeWidgetItem))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QTreeWidget_connect_CurrentItemChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	current_ret := current
+	slotval1 := newQTreeWidgetItem_U(unsafe.Pointer(current_ret))
+	previous_ret := previous
+	slotval2 := newQTreeWidgetItem_U(unsafe.Pointer(previous_ret))
+
+	gofunc(slotval1, slotval2)
 }
 
 func (this *QTreeWidget) ItemSelectionChanged() {
 	C.QTreeWidget_ItemSelectionChanged(this.h)
 }
-
 func (this *QTreeWidget) OnItemSelectionChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+	C.QTreeWidget_connect_ItemSelectionChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
+
+//export miqt_exec_callback_QTreeWidget_ItemSelectionChanged
+func miqt_exec_callback_QTreeWidget_ItemSelectionChanged(cb *C.void) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QTreeWidget_connect_ItemSelectionChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	gofunc()
 }
 
 func QTreeWidget_Tr2(s string, c string) string {
@@ -1050,12 +1107,10 @@ func QTreeWidget_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTreeWidget_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTreeWidget_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QTreeWidget_Tr3(s string, c string, n int) string {
@@ -1063,12 +1118,10 @@ func QTreeWidget_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTreeWidget_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTreeWidget_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QTreeWidget_TrUtf82(s string, c string) string {
@@ -1076,12 +1129,10 @@ func QTreeWidget_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTreeWidget_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTreeWidget_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QTreeWidget_TrUtf83(s string, c string, n int) string {
@@ -1089,12 +1140,10 @@ func QTreeWidget_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTreeWidget_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTreeWidget_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QTreeWidget) EditItem2(item *QTreeWidgetItem, column int) {
@@ -1110,29 +1159,37 @@ func (this *QTreeWidget) ClosePersistentEditor2(item *QTreeWidgetItem, column in
 }
 
 func (this *QTreeWidget) IsPersistentEditorOpen2(item *QTreeWidgetItem, column int) bool {
-	ret := C.QTreeWidget_IsPersistentEditorOpen2(this.h, item.cPointer(), (C.int)(column))
-	return (bool)(ret)
+	_ret := C.QTreeWidget_IsPersistentEditorOpen2(this.h, item.cPointer(), (C.int)(column))
+	return (bool)(_ret)
 }
 
 func (this *QTreeWidget) FindItems3(text string, flags int, column int) []*QTreeWidgetItem {
-	text_Cstring := C.CString(text)
-	defer C.free(unsafe.Pointer(text_Cstring))
-	var _out **C.QTreeWidgetItem = nil
-	var _out_len C.size_t = 0
-	C.QTreeWidget_FindItems3(this.h, text_Cstring, C.size_t(len(text)), (C.int)(flags), (C.int)(column), &_out, &_out_len)
-	ret := make([]*QTreeWidgetItem, int(_out_len))
-	_outCast := (*[0xffff]*C.QTreeWidgetItem)(unsafe.Pointer(_out)) // so fresh so clean
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = newQTreeWidgetItem(_outCast[i])
+	text_ms := miqt_strdupg(text)
+	defer C.free(text_ms)
+	var _ma *C.struct_miqt_array = C.QTreeWidget_FindItems3(this.h, (*C.struct_miqt_string)(text_ms), (C.int)(flags), (C.int)(column))
+	_ret := make([]*QTreeWidgetItem, int(_ma.len))
+	_outCast := (*[0xffff]*C.QTreeWidgetItem)(unsafe.Pointer(_ma.data)) // mrs jackson
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = newQTreeWidgetItem(_outCast[i])
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
 func (this *QTreeWidget) ScrollToItem2(item *QTreeWidgetItem, hint QAbstractItemView__ScrollHint) {
 	C.QTreeWidget_ScrollToItem2(this.h, item.cPointer(), (C.uintptr_t)(hint))
 }
 
+// Delete this object from C++ memory.
 func (this *QTreeWidget) Delete() {
 	C.QTreeWidget_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QTreeWidget) GoGC() {
+	runtime.SetFinalizer(this, func(this *QTreeWidget) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

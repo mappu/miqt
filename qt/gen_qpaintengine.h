@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -59,7 +61,7 @@ double QTextItem_Descent(const QTextItem* self);
 double QTextItem_Ascent(const QTextItem* self);
 double QTextItem_Width(const QTextItem* self);
 int QTextItem_RenderFlags(const QTextItem* self);
-void QTextItem_Text(const QTextItem* self, char** _out, int* _out_Strlen);
+struct miqt_string* QTextItem_Text(const QTextItem* self);
 QFont* QTextItem_Font(const QTextItem* self);
 void QTextItem_Delete(QTextItem* self);
 

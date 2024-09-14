@@ -8,12 +8,8 @@
 #include <QRectF>
 #include <QRegion>
 #include "qmatrix.h"
-
 #include "gen_qmatrix.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QMatrix* QMatrix_new(uintptr_t param1) {
 	return new QMatrix(static_cast<Qt::Initialization>(param1));
@@ -72,51 +68,51 @@ void QMatrix_Map2(const QMatrix* self, double x, double y, double* tx, double* t
 }
 
 QRect* QMatrix_MapRect(const QMatrix* self, QRect* param1) {
-	QRect ret = self->mapRect(*param1);
+	QRect _ret = self->mapRect(*param1);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(ret));
+	return static_cast<QRect*>(new QRect(_ret));
 }
 
 QRectF* QMatrix_MapRectWithQRectF(const QMatrix* self, QRectF* param1) {
-	QRectF ret = self->mapRect(*param1);
+	QRectF _ret = self->mapRect(*param1);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(ret));
+	return static_cast<QRectF*>(new QRectF(_ret));
 }
 
 QPoint* QMatrix_MapWithQPoint(const QMatrix* self, QPoint* p) {
-	QPoint ret = self->map(*p);
+	QPoint _ret = self->map(*p);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPoint*>(new QPoint(ret));
+	return static_cast<QPoint*>(new QPoint(_ret));
 }
 
 QPointF* QMatrix_MapWithQPointF(const QMatrix* self, QPointF* p) {
-	QPointF ret = self->map(*p);
+	QPointF _ret = self->map(*p);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPointF*>(new QPointF(ret));
+	return static_cast<QPointF*>(new QPointF(_ret));
 }
 
 QLine* QMatrix_MapWithQLine(const QMatrix* self, QLine* l) {
-	QLine ret = self->map(*l);
+	QLine _ret = self->map(*l);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QLine*>(new QLine(ret));
+	return static_cast<QLine*>(new QLine(_ret));
 }
 
 QLineF* QMatrix_MapWithQLineF(const QMatrix* self, QLineF* l) {
-	QLineF ret = self->map(*l);
+	QLineF _ret = self->map(*l);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QLineF*>(new QLineF(ret));
+	return static_cast<QLineF*>(new QLineF(_ret));
 }
 
 QRegion* QMatrix_MapWithQRegion(const QMatrix* self, QRegion* r) {
-	QRegion ret = self->map(*r);
+	QRegion _ret = self->map(*r);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRegion*>(new QRegion(ret));
+	return static_cast<QRegion*>(new QRegion(_ret));
 }
 
 QPainterPath* QMatrix_MapWithQPainterPath(const QMatrix* self, QPainterPath* p) {
-	QPainterPath ret = self->map(*p);
+	QPainterPath _ret = self->map(*p);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPainterPath*>(new QPainterPath(ret));
+	return static_cast<QPainterPath*>(new QPainterPath(_ret));
 }
 
 void QMatrix_Reset(QMatrix* self) {
@@ -128,27 +124,27 @@ bool QMatrix_IsIdentity(const QMatrix* self) {
 }
 
 QMatrix* QMatrix_Translate(QMatrix* self, double dx, double dy) {
-	QMatrix& ret = self->translate(static_cast<qreal>(dx), static_cast<qreal>(dy));
+	QMatrix& _ret = self->translate(static_cast<qreal>(dx), static_cast<qreal>(dy));
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QMatrix* QMatrix_Scale(QMatrix* self, double sx, double sy) {
-	QMatrix& ret = self->scale(static_cast<qreal>(sx), static_cast<qreal>(sy));
+	QMatrix& _ret = self->scale(static_cast<qreal>(sx), static_cast<qreal>(sy));
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QMatrix* QMatrix_Shear(QMatrix* self, double sh, double sv) {
-	QMatrix& ret = self->shear(static_cast<qreal>(sh), static_cast<qreal>(sv));
+	QMatrix& _ret = self->shear(static_cast<qreal>(sh), static_cast<qreal>(sv));
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QMatrix* QMatrix_Rotate(QMatrix* self, double a) {
-	QMatrix& ret = self->rotate(static_cast<qreal>(a));
+	QMatrix& _ret = self->rotate(static_cast<qreal>(a));
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 bool QMatrix_IsInvertible(const QMatrix* self) {
@@ -160,9 +156,9 @@ double QMatrix_Determinant(const QMatrix* self) {
 }
 
 QMatrix* QMatrix_Inverted(const QMatrix* self) {
-	QMatrix ret = self->inverted();
+	QMatrix _ret = self->inverted();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QMatrix*>(new QMatrix(ret));
+	return static_cast<QMatrix*>(new QMatrix(_ret));
 }
 
 bool QMatrix_OperatorEqual(const QMatrix* self, QMatrix* param1) {
@@ -174,21 +170,21 @@ bool QMatrix_OperatorNotEqual(const QMatrix* self, QMatrix* param1) {
 }
 
 QMatrix* QMatrix_OperatorMultiplyAssign(QMatrix* self, QMatrix* param1) {
-	QMatrix& ret = self->operator*=(*param1);
+	QMatrix& _ret = self->operator*=(*param1);
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QMatrix* QMatrix_OperatorMultiply(const QMatrix* self, QMatrix* o) {
-	QMatrix ret = self->operator*(*o);
+	QMatrix _ret = self->operator*(*o);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QMatrix*>(new QMatrix(ret));
+	return static_cast<QMatrix*>(new QMatrix(_ret));
 }
 
 QMatrix* QMatrix_Inverted1(const QMatrix* self, bool* invertible) {
-	QMatrix ret = self->inverted(invertible);
+	QMatrix _ret = self->inverted(invertible);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QMatrix*>(new QMatrix(ret));
+	return static_cast<QMatrix*>(new QMatrix(_ret));
 }
 
 void QMatrix_Delete(QMatrix* self) {

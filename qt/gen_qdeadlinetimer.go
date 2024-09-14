@@ -88,18 +88,18 @@ func (this *QDeadlineTimer) Swap(other *QDeadlineTimer) {
 }
 
 func (this *QDeadlineTimer) IsForever() bool {
-	ret := C.QDeadlineTimer_IsForever(this.h)
-	return (bool)(ret)
+	_ret := C.QDeadlineTimer_IsForever(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QDeadlineTimer) HasExpired() bool {
-	ret := C.QDeadlineTimer_HasExpired(this.h)
-	return (bool)(ret)
+	_ret := C.QDeadlineTimer_HasExpired(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QDeadlineTimer) TimerType() TimerType {
-	ret := C.QDeadlineTimer_TimerType(this.h)
-	return (TimerType)(ret)
+	_ret := C.QDeadlineTimer_TimerType(this.h)
+	return (TimerType)(_ret)
 }
 
 func (this *QDeadlineTimer) SetTimerType(typeVal TimerType) {
@@ -107,13 +107,13 @@ func (this *QDeadlineTimer) SetTimerType(typeVal TimerType) {
 }
 
 func (this *QDeadlineTimer) RemainingTime() int64 {
-	ret := C.QDeadlineTimer_RemainingTime(this.h)
-	return (int64)(ret)
+	_ret := C.QDeadlineTimer_RemainingTime(this.h)
+	return (int64)(_ret)
 }
 
 func (this *QDeadlineTimer) RemainingTimeNSecs() int64 {
-	ret := C.QDeadlineTimer_RemainingTimeNSecs(this.h)
-	return (int64)(ret)
+	_ret := C.QDeadlineTimer_RemainingTimeNSecs(this.h)
+	return (int64)(_ret)
 }
 
 func (this *QDeadlineTimer) SetRemainingTime(msecs int64) {
@@ -125,13 +125,13 @@ func (this *QDeadlineTimer) SetPreciseRemainingTime(secs int64) {
 }
 
 func (this *QDeadlineTimer) Deadline() int64 {
-	ret := C.QDeadlineTimer_Deadline(this.h)
-	return (int64)(ret)
+	_ret := C.QDeadlineTimer_Deadline(this.h)
+	return (int64)(_ret)
 }
 
 func (this *QDeadlineTimer) DeadlineNSecs() int64 {
-	ret := C.QDeadlineTimer_DeadlineNSecs(this.h)
-	return (int64)(ret)
+	_ret := C.QDeadlineTimer_DeadlineNSecs(this.h)
+	return (int64)(_ret)
 }
 
 func (this *QDeadlineTimer) SetDeadline(msecs int64) {
@@ -143,35 +143,27 @@ func (this *QDeadlineTimer) SetPreciseDeadline(secs int64) {
 }
 
 func QDeadlineTimer_AddNSecs(dt QDeadlineTimer, nsecs int64) *QDeadlineTimer {
-	ret := C.QDeadlineTimer_AddNSecs(dt.cPointer(), (C.longlong)(nsecs))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQDeadlineTimer(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QDeadlineTimer) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QDeadlineTimer_AddNSecs(dt.cPointer(), (C.longlong)(nsecs))
+	_goptr := newQDeadlineTimer(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func QDeadlineTimer_Current() *QDeadlineTimer {
-	ret := C.QDeadlineTimer_Current()
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQDeadlineTimer(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QDeadlineTimer) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QDeadlineTimer_Current()
+	_goptr := newQDeadlineTimer(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QDeadlineTimer) OperatorPlusAssign(msecs int64) *QDeadlineTimer {
-	ret := C.QDeadlineTimer_OperatorPlusAssign(this.h, (C.longlong)(msecs))
-	return newQDeadlineTimer_U(unsafe.Pointer(ret))
+	_ret := C.QDeadlineTimer_OperatorPlusAssign(this.h, (C.longlong)(msecs))
+	return newQDeadlineTimer_U(unsafe.Pointer(_ret))
 }
 
 func (this *QDeadlineTimer) OperatorMinusAssign(msecs int64) *QDeadlineTimer {
-	ret := C.QDeadlineTimer_OperatorMinusAssign(this.h, (C.longlong)(msecs))
-	return newQDeadlineTimer_U(unsafe.Pointer(ret))
+	_ret := C.QDeadlineTimer_OperatorMinusAssign(this.h, (C.longlong)(msecs))
+	return newQDeadlineTimer_U(unsafe.Pointer(_ret))
 }
 
 func (this *QDeadlineTimer) OperatorAssign(param1 *QDeadlineTimer) {
@@ -203,16 +195,22 @@ func (this *QDeadlineTimer) SetPreciseDeadline3(secs int64, nsecs int64, typeVal
 }
 
 func QDeadlineTimer_Current1(timerType TimerType) *QDeadlineTimer {
-	ret := C.QDeadlineTimer_Current1((C.uintptr_t)(timerType))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQDeadlineTimer(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QDeadlineTimer) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QDeadlineTimer_Current1((C.uintptr_t)(timerType))
+	_goptr := newQDeadlineTimer(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
+// Delete this object from C++ memory.
 func (this *QDeadlineTimer) Delete() {
 	C.QDeadlineTimer_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QDeadlineTimer) GoGC() {
+	runtime.SetFinalizer(this, func(this *QDeadlineTimer) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

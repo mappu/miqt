@@ -2,12 +2,8 @@
 #define WORKAROUND_INNER_CLASS_DEFINITION_QtPrivate__ResultIteratorBase
 #define WORKAROUND_INNER_CLASS_DEFINITION_QtPrivate__ResultStoreBase
 #include "qresultstore.h"
-
 #include "gen_qresultstore.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QtPrivate__ResultItem* QtPrivate__ResultItem_new() {
 	return new QtPrivate::ResultItem();
@@ -42,9 +38,9 @@ int QtPrivate__ResultIteratorBase_ResultIndex(const QtPrivate__ResultIteratorBas
 }
 
 QtPrivate__ResultIteratorBase* QtPrivate__ResultIteratorBase_OperatorPlusPlus(QtPrivate__ResultIteratorBase* self) {
-	QtPrivate::ResultIteratorBase ret = self->operator++();
+	QtPrivate::ResultIteratorBase _ret = self->operator++();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QtPrivate::ResultIteratorBase*>(new QtPrivate::ResultIteratorBase(ret));
+	return static_cast<QtPrivate::ResultIteratorBase*>(new QtPrivate::ResultIteratorBase(_ret));
 }
 
 int QtPrivate__ResultIteratorBase_BatchSize(const QtPrivate__ResultIteratorBase* self) {
@@ -92,15 +88,15 @@ bool QtPrivate__ResultStoreBase_FilterMode(const QtPrivate__ResultStoreBase* sel
 }
 
 QtPrivate__ResultIteratorBase* QtPrivate__ResultStoreBase_Begin(const QtPrivate__ResultStoreBase* self) {
-	QtPrivate::ResultIteratorBase ret = self->begin();
+	QtPrivate::ResultIteratorBase _ret = self->begin();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QtPrivate::ResultIteratorBase*>(new QtPrivate::ResultIteratorBase(ret));
+	return static_cast<QtPrivate::ResultIteratorBase*>(new QtPrivate::ResultIteratorBase(_ret));
 }
 
 QtPrivate__ResultIteratorBase* QtPrivate__ResultStoreBase_End(const QtPrivate__ResultStoreBase* self) {
-	QtPrivate::ResultIteratorBase ret = self->end();
+	QtPrivate::ResultIteratorBase _ret = self->end();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QtPrivate::ResultIteratorBase*>(new QtPrivate::ResultIteratorBase(ret));
+	return static_cast<QtPrivate::ResultIteratorBase*>(new QtPrivate::ResultIteratorBase(_ret));
 }
 
 bool QtPrivate__ResultStoreBase_HasNextResult(const QtPrivate__ResultStoreBase* self) {
@@ -108,9 +104,9 @@ bool QtPrivate__ResultStoreBase_HasNextResult(const QtPrivate__ResultStoreBase* 
 }
 
 QtPrivate__ResultIteratorBase* QtPrivate__ResultStoreBase_ResultAt(const QtPrivate__ResultStoreBase* self, int index) {
-	QtPrivate::ResultIteratorBase ret = self->resultAt(static_cast<int>(index));
+	QtPrivate::ResultIteratorBase _ret = self->resultAt(static_cast<int>(index));
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QtPrivate::ResultIteratorBase*>(new QtPrivate::ResultIteratorBase(ret));
+	return static_cast<QtPrivate::ResultIteratorBase*>(new QtPrivate::ResultIteratorBase(_ret));
 }
 
 bool QtPrivate__ResultStoreBase_Contains(const QtPrivate__ResultStoreBase* self, int index) {

@@ -56,81 +56,74 @@ func newQLibraryInfo_U(h unsafe.Pointer) *QLibraryInfo {
 }
 
 func QLibraryInfo_Licensee() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QLibraryInfo_Licensee(&_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QLibraryInfo_Licensee()
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QLibraryInfo_LicensedProducts() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QLibraryInfo_LicensedProducts(&_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QLibraryInfo_LicensedProducts()
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QLibraryInfo_BuildDate() *QDate {
-	ret := C.QLibraryInfo_BuildDate()
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQDate(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QDate) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QLibraryInfo_BuildDate()
+	_goptr := newQDate(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func QLibraryInfo_Build() unsafe.Pointer {
-	ret := C.QLibraryInfo_Build()
-	return (unsafe.Pointer)(ret)
+	_ret := C.QLibraryInfo_Build()
+	return (unsafe.Pointer)(_ret)
 }
 
 func QLibraryInfo_IsDebugBuild() bool {
-	ret := C.QLibraryInfo_IsDebugBuild()
-	return (bool)(ret)
+	_ret := C.QLibraryInfo_IsDebugBuild()
+	return (bool)(_ret)
 }
 
 func QLibraryInfo_Version() *QVersionNumber {
-	ret := C.QLibraryInfo_Version()
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQVersionNumber(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QVersionNumber) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QLibraryInfo_Version()
+	_goptr := newQVersionNumber(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func QLibraryInfo_Location(param1 QLibraryInfo__LibraryLocation) string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QLibraryInfo_Location((C.uintptr_t)(param1), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QLibraryInfo_Location((C.uintptr_t)(param1))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QLibraryInfo_PlatformPluginArguments(platformName string) []string {
-	platformName_Cstring := C.CString(platformName)
-	defer C.free(unsafe.Pointer(platformName_Cstring))
-	var _out **C.char = nil
-	var _out_Lengths *C.int = nil
-	var _out_len C.size_t = 0
-	C.QLibraryInfo_PlatformPluginArguments(platformName_Cstring, C.size_t(len(platformName)), &_out, &_out_Lengths, &_out_len)
-	ret := make([]string, int(_out_len))
-	_outCast := (*[0xffff]*C.char)(unsafe.Pointer(_out)) // hey ya
-	_out_LengthsCast := (*[0xffff]C.int)(unsafe.Pointer(_out_Lengths))
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = C.GoStringN(_outCast[i], _out_LengthsCast[i])
+	platformName_ms := miqt_strdupg(platformName)
+	defer C.free(platformName_ms)
+	var _ma *C.struct_miqt_array = C.QLibraryInfo_PlatformPluginArguments((*C.struct_miqt_string)(platformName_ms))
+	_ret := make([]string, int(_ma.len))
+	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = C.GoStringN(&_outCast[i].data, C.int(int64(_outCast[i].len)))
+		C.free(unsafe.Pointer(_outCast[i])) // free the inner miqt_string*
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
+// Delete this object from C++ memory.
 func (this *QLibraryInfo) Delete() {
 	C.QLibraryInfo_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QLibraryInfo) GoGC() {
+	runtime.SetFinalizer(this, func(this *QLibraryInfo) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

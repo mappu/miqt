@@ -51,16 +51,26 @@ func NewQGraphicsSceneEvent(typeVal QEvent__Type) *QGraphicsSceneEvent {
 }
 
 func (this *QGraphicsSceneEvent) Widget() *QWidget {
-	ret := C.QGraphicsSceneEvent_Widget(this.h)
-	return newQWidget_U(unsafe.Pointer(ret))
+	_ret := C.QGraphicsSceneEvent_Widget(this.h)
+	return newQWidget_U(unsafe.Pointer(_ret))
 }
 
 func (this *QGraphicsSceneEvent) SetWidget(widget *QWidget) {
 	C.QGraphicsSceneEvent_SetWidget(this.h, widget.cPointer())
 }
 
+// Delete this object from C++ memory.
 func (this *QGraphicsSceneEvent) Delete() {
 	C.QGraphicsSceneEvent_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QGraphicsSceneEvent) GoGC() {
+	runtime.SetFinalizer(this, func(this *QGraphicsSceneEvent) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
 
 type QGraphicsSceneMouseEvent struct {
@@ -99,14 +109,10 @@ func NewQGraphicsSceneMouseEvent2(typeVal QEvent__Type) *QGraphicsSceneMouseEven
 }
 
 func (this *QGraphicsSceneMouseEvent) Pos() *QPointF {
-	ret := C.QGraphicsSceneMouseEvent_Pos(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPointF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPointF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QGraphicsSceneMouseEvent_Pos(this.h)
+	_goptr := newQPointF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QGraphicsSceneMouseEvent) SetPos(pos *QPointF) {
@@ -114,14 +120,10 @@ func (this *QGraphicsSceneMouseEvent) SetPos(pos *QPointF) {
 }
 
 func (this *QGraphicsSceneMouseEvent) ScenePos() *QPointF {
-	ret := C.QGraphicsSceneMouseEvent_ScenePos(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPointF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPointF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QGraphicsSceneMouseEvent_ScenePos(this.h)
+	_goptr := newQPointF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QGraphicsSceneMouseEvent) SetScenePos(pos *QPointF) {
@@ -129,14 +131,10 @@ func (this *QGraphicsSceneMouseEvent) SetScenePos(pos *QPointF) {
 }
 
 func (this *QGraphicsSceneMouseEvent) ScreenPos() *QPoint {
-	ret := C.QGraphicsSceneMouseEvent_ScreenPos(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPoint(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPoint) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QGraphicsSceneMouseEvent_ScreenPos(this.h)
+	_goptr := newQPoint(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QGraphicsSceneMouseEvent) SetScreenPos(pos *QPoint) {
@@ -144,14 +142,10 @@ func (this *QGraphicsSceneMouseEvent) SetScreenPos(pos *QPoint) {
 }
 
 func (this *QGraphicsSceneMouseEvent) ButtonDownPos(button MouseButton) *QPointF {
-	ret := C.QGraphicsSceneMouseEvent_ButtonDownPos(this.h, (C.uintptr_t)(button))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPointF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPointF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QGraphicsSceneMouseEvent_ButtonDownPos(this.h, (C.uintptr_t)(button))
+	_goptr := newQPointF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QGraphicsSceneMouseEvent) SetButtonDownPos(button MouseButton, pos *QPointF) {
@@ -159,14 +153,10 @@ func (this *QGraphicsSceneMouseEvent) SetButtonDownPos(button MouseButton, pos *
 }
 
 func (this *QGraphicsSceneMouseEvent) ButtonDownScenePos(button MouseButton) *QPointF {
-	ret := C.QGraphicsSceneMouseEvent_ButtonDownScenePos(this.h, (C.uintptr_t)(button))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPointF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPointF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QGraphicsSceneMouseEvent_ButtonDownScenePos(this.h, (C.uintptr_t)(button))
+	_goptr := newQPointF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QGraphicsSceneMouseEvent) SetButtonDownScenePos(button MouseButton, pos *QPointF) {
@@ -174,14 +164,10 @@ func (this *QGraphicsSceneMouseEvent) SetButtonDownScenePos(button MouseButton, 
 }
 
 func (this *QGraphicsSceneMouseEvent) ButtonDownScreenPos(button MouseButton) *QPoint {
-	ret := C.QGraphicsSceneMouseEvent_ButtonDownScreenPos(this.h, (C.uintptr_t)(button))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPoint(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPoint) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QGraphicsSceneMouseEvent_ButtonDownScreenPos(this.h, (C.uintptr_t)(button))
+	_goptr := newQPoint(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QGraphicsSceneMouseEvent) SetButtonDownScreenPos(button MouseButton, pos *QPoint) {
@@ -189,14 +175,10 @@ func (this *QGraphicsSceneMouseEvent) SetButtonDownScreenPos(button MouseButton,
 }
 
 func (this *QGraphicsSceneMouseEvent) LastPos() *QPointF {
-	ret := C.QGraphicsSceneMouseEvent_LastPos(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPointF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPointF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QGraphicsSceneMouseEvent_LastPos(this.h)
+	_goptr := newQPointF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QGraphicsSceneMouseEvent) SetLastPos(pos *QPointF) {
@@ -204,14 +186,10 @@ func (this *QGraphicsSceneMouseEvent) SetLastPos(pos *QPointF) {
 }
 
 func (this *QGraphicsSceneMouseEvent) LastScenePos() *QPointF {
-	ret := C.QGraphicsSceneMouseEvent_LastScenePos(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPointF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPointF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QGraphicsSceneMouseEvent_LastScenePos(this.h)
+	_goptr := newQPointF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QGraphicsSceneMouseEvent) SetLastScenePos(pos *QPointF) {
@@ -219,14 +197,10 @@ func (this *QGraphicsSceneMouseEvent) SetLastScenePos(pos *QPointF) {
 }
 
 func (this *QGraphicsSceneMouseEvent) LastScreenPos() *QPoint {
-	ret := C.QGraphicsSceneMouseEvent_LastScreenPos(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPoint(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPoint) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QGraphicsSceneMouseEvent_LastScreenPos(this.h)
+	_goptr := newQPoint(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QGraphicsSceneMouseEvent) SetLastScreenPos(pos *QPoint) {
@@ -234,8 +208,8 @@ func (this *QGraphicsSceneMouseEvent) SetLastScreenPos(pos *QPoint) {
 }
 
 func (this *QGraphicsSceneMouseEvent) Buttons() int {
-	ret := C.QGraphicsSceneMouseEvent_Buttons(this.h)
-	return (int)(ret)
+	_ret := C.QGraphicsSceneMouseEvent_Buttons(this.h)
+	return (int)(_ret)
 }
 
 func (this *QGraphicsSceneMouseEvent) SetButtons(buttons int) {
@@ -243,8 +217,8 @@ func (this *QGraphicsSceneMouseEvent) SetButtons(buttons int) {
 }
 
 func (this *QGraphicsSceneMouseEvent) Button() MouseButton {
-	ret := C.QGraphicsSceneMouseEvent_Button(this.h)
-	return (MouseButton)(ret)
+	_ret := C.QGraphicsSceneMouseEvent_Button(this.h)
+	return (MouseButton)(_ret)
 }
 
 func (this *QGraphicsSceneMouseEvent) SetButton(button MouseButton) {
@@ -252,8 +226,8 @@ func (this *QGraphicsSceneMouseEvent) SetButton(button MouseButton) {
 }
 
 func (this *QGraphicsSceneMouseEvent) Modifiers() int {
-	ret := C.QGraphicsSceneMouseEvent_Modifiers(this.h)
-	return (int)(ret)
+	_ret := C.QGraphicsSceneMouseEvent_Modifiers(this.h)
+	return (int)(_ret)
 }
 
 func (this *QGraphicsSceneMouseEvent) SetModifiers(modifiers int) {
@@ -261,8 +235,8 @@ func (this *QGraphicsSceneMouseEvent) SetModifiers(modifiers int) {
 }
 
 func (this *QGraphicsSceneMouseEvent) Source() MouseEventSource {
-	ret := C.QGraphicsSceneMouseEvent_Source(this.h)
-	return (MouseEventSource)(ret)
+	_ret := C.QGraphicsSceneMouseEvent_Source(this.h)
+	return (MouseEventSource)(_ret)
 }
 
 func (this *QGraphicsSceneMouseEvent) SetSource(source MouseEventSource) {
@@ -270,16 +244,26 @@ func (this *QGraphicsSceneMouseEvent) SetSource(source MouseEventSource) {
 }
 
 func (this *QGraphicsSceneMouseEvent) Flags() int {
-	ret := C.QGraphicsSceneMouseEvent_Flags(this.h)
-	return (int)(ret)
+	_ret := C.QGraphicsSceneMouseEvent_Flags(this.h)
+	return (int)(_ret)
 }
 
 func (this *QGraphicsSceneMouseEvent) SetFlags(flags int) {
 	C.QGraphicsSceneMouseEvent_SetFlags(this.h, (C.int)(flags))
 }
 
+// Delete this object from C++ memory.
 func (this *QGraphicsSceneMouseEvent) Delete() {
 	C.QGraphicsSceneMouseEvent_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QGraphicsSceneMouseEvent) GoGC() {
+	runtime.SetFinalizer(this, func(this *QGraphicsSceneMouseEvent) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
 
 type QGraphicsSceneWheelEvent struct {
@@ -318,14 +302,10 @@ func NewQGraphicsSceneWheelEvent2(typeVal QEvent__Type) *QGraphicsSceneWheelEven
 }
 
 func (this *QGraphicsSceneWheelEvent) Pos() *QPointF {
-	ret := C.QGraphicsSceneWheelEvent_Pos(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPointF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPointF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QGraphicsSceneWheelEvent_Pos(this.h)
+	_goptr := newQPointF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QGraphicsSceneWheelEvent) SetPos(pos *QPointF) {
@@ -333,14 +313,10 @@ func (this *QGraphicsSceneWheelEvent) SetPos(pos *QPointF) {
 }
 
 func (this *QGraphicsSceneWheelEvent) ScenePos() *QPointF {
-	ret := C.QGraphicsSceneWheelEvent_ScenePos(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPointF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPointF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QGraphicsSceneWheelEvent_ScenePos(this.h)
+	_goptr := newQPointF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QGraphicsSceneWheelEvent) SetScenePos(pos *QPointF) {
@@ -348,14 +324,10 @@ func (this *QGraphicsSceneWheelEvent) SetScenePos(pos *QPointF) {
 }
 
 func (this *QGraphicsSceneWheelEvent) ScreenPos() *QPoint {
-	ret := C.QGraphicsSceneWheelEvent_ScreenPos(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPoint(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPoint) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QGraphicsSceneWheelEvent_ScreenPos(this.h)
+	_goptr := newQPoint(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QGraphicsSceneWheelEvent) SetScreenPos(pos *QPoint) {
@@ -363,8 +335,8 @@ func (this *QGraphicsSceneWheelEvent) SetScreenPos(pos *QPoint) {
 }
 
 func (this *QGraphicsSceneWheelEvent) Buttons() int {
-	ret := C.QGraphicsSceneWheelEvent_Buttons(this.h)
-	return (int)(ret)
+	_ret := C.QGraphicsSceneWheelEvent_Buttons(this.h)
+	return (int)(_ret)
 }
 
 func (this *QGraphicsSceneWheelEvent) SetButtons(buttons int) {
@@ -372,8 +344,8 @@ func (this *QGraphicsSceneWheelEvent) SetButtons(buttons int) {
 }
 
 func (this *QGraphicsSceneWheelEvent) Modifiers() int {
-	ret := C.QGraphicsSceneWheelEvent_Modifiers(this.h)
-	return (int)(ret)
+	_ret := C.QGraphicsSceneWheelEvent_Modifiers(this.h)
+	return (int)(_ret)
 }
 
 func (this *QGraphicsSceneWheelEvent) SetModifiers(modifiers int) {
@@ -381,8 +353,8 @@ func (this *QGraphicsSceneWheelEvent) SetModifiers(modifiers int) {
 }
 
 func (this *QGraphicsSceneWheelEvent) Delta() int {
-	ret := C.QGraphicsSceneWheelEvent_Delta(this.h)
-	return (int)(ret)
+	_ret := C.QGraphicsSceneWheelEvent_Delta(this.h)
+	return (int)(_ret)
 }
 
 func (this *QGraphicsSceneWheelEvent) SetDelta(delta int) {
@@ -390,16 +362,26 @@ func (this *QGraphicsSceneWheelEvent) SetDelta(delta int) {
 }
 
 func (this *QGraphicsSceneWheelEvent) Orientation() Orientation {
-	ret := C.QGraphicsSceneWheelEvent_Orientation(this.h)
-	return (Orientation)(ret)
+	_ret := C.QGraphicsSceneWheelEvent_Orientation(this.h)
+	return (Orientation)(_ret)
 }
 
 func (this *QGraphicsSceneWheelEvent) SetOrientation(orientation Orientation) {
 	C.QGraphicsSceneWheelEvent_SetOrientation(this.h, (C.uintptr_t)(orientation))
 }
 
+// Delete this object from C++ memory.
 func (this *QGraphicsSceneWheelEvent) Delete() {
 	C.QGraphicsSceneWheelEvent_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QGraphicsSceneWheelEvent) GoGC() {
+	runtime.SetFinalizer(this, func(this *QGraphicsSceneWheelEvent) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
 
 type QGraphicsSceneContextMenuEvent struct {
@@ -438,14 +420,10 @@ func NewQGraphicsSceneContextMenuEvent2(typeVal QEvent__Type) *QGraphicsSceneCon
 }
 
 func (this *QGraphicsSceneContextMenuEvent) Pos() *QPointF {
-	ret := C.QGraphicsSceneContextMenuEvent_Pos(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPointF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPointF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QGraphicsSceneContextMenuEvent_Pos(this.h)
+	_goptr := newQPointF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QGraphicsSceneContextMenuEvent) SetPos(pos *QPointF) {
@@ -453,14 +431,10 @@ func (this *QGraphicsSceneContextMenuEvent) SetPos(pos *QPointF) {
 }
 
 func (this *QGraphicsSceneContextMenuEvent) ScenePos() *QPointF {
-	ret := C.QGraphicsSceneContextMenuEvent_ScenePos(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPointF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPointF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QGraphicsSceneContextMenuEvent_ScenePos(this.h)
+	_goptr := newQPointF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QGraphicsSceneContextMenuEvent) SetScenePos(pos *QPointF) {
@@ -468,14 +442,10 @@ func (this *QGraphicsSceneContextMenuEvent) SetScenePos(pos *QPointF) {
 }
 
 func (this *QGraphicsSceneContextMenuEvent) ScreenPos() *QPoint {
-	ret := C.QGraphicsSceneContextMenuEvent_ScreenPos(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPoint(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPoint) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QGraphicsSceneContextMenuEvent_ScreenPos(this.h)
+	_goptr := newQPoint(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QGraphicsSceneContextMenuEvent) SetScreenPos(pos *QPoint) {
@@ -483,8 +453,8 @@ func (this *QGraphicsSceneContextMenuEvent) SetScreenPos(pos *QPoint) {
 }
 
 func (this *QGraphicsSceneContextMenuEvent) Modifiers() int {
-	ret := C.QGraphicsSceneContextMenuEvent_Modifiers(this.h)
-	return (int)(ret)
+	_ret := C.QGraphicsSceneContextMenuEvent_Modifiers(this.h)
+	return (int)(_ret)
 }
 
 func (this *QGraphicsSceneContextMenuEvent) SetModifiers(modifiers int) {
@@ -492,16 +462,26 @@ func (this *QGraphicsSceneContextMenuEvent) SetModifiers(modifiers int) {
 }
 
 func (this *QGraphicsSceneContextMenuEvent) Reason() QGraphicsSceneContextMenuEvent__Reason {
-	ret := C.QGraphicsSceneContextMenuEvent_Reason(this.h)
-	return (QGraphicsSceneContextMenuEvent__Reason)(ret)
+	_ret := C.QGraphicsSceneContextMenuEvent_Reason(this.h)
+	return (QGraphicsSceneContextMenuEvent__Reason)(_ret)
 }
 
 func (this *QGraphicsSceneContextMenuEvent) SetReason(reason QGraphicsSceneContextMenuEvent__Reason) {
 	C.QGraphicsSceneContextMenuEvent_SetReason(this.h, (C.uintptr_t)(reason))
 }
 
+// Delete this object from C++ memory.
 func (this *QGraphicsSceneContextMenuEvent) Delete() {
 	C.QGraphicsSceneContextMenuEvent_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QGraphicsSceneContextMenuEvent) GoGC() {
+	runtime.SetFinalizer(this, func(this *QGraphicsSceneContextMenuEvent) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
 
 type QGraphicsSceneHoverEvent struct {
@@ -540,14 +520,10 @@ func NewQGraphicsSceneHoverEvent2(typeVal QEvent__Type) *QGraphicsSceneHoverEven
 }
 
 func (this *QGraphicsSceneHoverEvent) Pos() *QPointF {
-	ret := C.QGraphicsSceneHoverEvent_Pos(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPointF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPointF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QGraphicsSceneHoverEvent_Pos(this.h)
+	_goptr := newQPointF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QGraphicsSceneHoverEvent) SetPos(pos *QPointF) {
@@ -555,14 +531,10 @@ func (this *QGraphicsSceneHoverEvent) SetPos(pos *QPointF) {
 }
 
 func (this *QGraphicsSceneHoverEvent) ScenePos() *QPointF {
-	ret := C.QGraphicsSceneHoverEvent_ScenePos(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPointF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPointF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QGraphicsSceneHoverEvent_ScenePos(this.h)
+	_goptr := newQPointF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QGraphicsSceneHoverEvent) SetScenePos(pos *QPointF) {
@@ -570,14 +542,10 @@ func (this *QGraphicsSceneHoverEvent) SetScenePos(pos *QPointF) {
 }
 
 func (this *QGraphicsSceneHoverEvent) ScreenPos() *QPoint {
-	ret := C.QGraphicsSceneHoverEvent_ScreenPos(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPoint(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPoint) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QGraphicsSceneHoverEvent_ScreenPos(this.h)
+	_goptr := newQPoint(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QGraphicsSceneHoverEvent) SetScreenPos(pos *QPoint) {
@@ -585,14 +553,10 @@ func (this *QGraphicsSceneHoverEvent) SetScreenPos(pos *QPoint) {
 }
 
 func (this *QGraphicsSceneHoverEvent) LastPos() *QPointF {
-	ret := C.QGraphicsSceneHoverEvent_LastPos(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPointF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPointF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QGraphicsSceneHoverEvent_LastPos(this.h)
+	_goptr := newQPointF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QGraphicsSceneHoverEvent) SetLastPos(pos *QPointF) {
@@ -600,14 +564,10 @@ func (this *QGraphicsSceneHoverEvent) SetLastPos(pos *QPointF) {
 }
 
 func (this *QGraphicsSceneHoverEvent) LastScenePos() *QPointF {
-	ret := C.QGraphicsSceneHoverEvent_LastScenePos(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPointF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPointF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QGraphicsSceneHoverEvent_LastScenePos(this.h)
+	_goptr := newQPointF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QGraphicsSceneHoverEvent) SetLastScenePos(pos *QPointF) {
@@ -615,14 +575,10 @@ func (this *QGraphicsSceneHoverEvent) SetLastScenePos(pos *QPointF) {
 }
 
 func (this *QGraphicsSceneHoverEvent) LastScreenPos() *QPoint {
-	ret := C.QGraphicsSceneHoverEvent_LastScreenPos(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPoint(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPoint) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QGraphicsSceneHoverEvent_LastScreenPos(this.h)
+	_goptr := newQPoint(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QGraphicsSceneHoverEvent) SetLastScreenPos(pos *QPoint) {
@@ -630,16 +586,26 @@ func (this *QGraphicsSceneHoverEvent) SetLastScreenPos(pos *QPoint) {
 }
 
 func (this *QGraphicsSceneHoverEvent) Modifiers() int {
-	ret := C.QGraphicsSceneHoverEvent_Modifiers(this.h)
-	return (int)(ret)
+	_ret := C.QGraphicsSceneHoverEvent_Modifiers(this.h)
+	return (int)(_ret)
 }
 
 func (this *QGraphicsSceneHoverEvent) SetModifiers(modifiers int) {
 	C.QGraphicsSceneHoverEvent_SetModifiers(this.h, (C.int)(modifiers))
 }
 
+// Delete this object from C++ memory.
 func (this *QGraphicsSceneHoverEvent) Delete() {
 	C.QGraphicsSceneHoverEvent_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QGraphicsSceneHoverEvent) GoGC() {
+	runtime.SetFinalizer(this, func(this *QGraphicsSceneHoverEvent) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
 
 type QGraphicsSceneHelpEvent struct {
@@ -678,14 +644,10 @@ func NewQGraphicsSceneHelpEvent2(typeVal QEvent__Type) *QGraphicsSceneHelpEvent 
 }
 
 func (this *QGraphicsSceneHelpEvent) ScenePos() *QPointF {
-	ret := C.QGraphicsSceneHelpEvent_ScenePos(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPointF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPointF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QGraphicsSceneHelpEvent_ScenePos(this.h)
+	_goptr := newQPointF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QGraphicsSceneHelpEvent) SetScenePos(pos *QPointF) {
@@ -693,22 +655,28 @@ func (this *QGraphicsSceneHelpEvent) SetScenePos(pos *QPointF) {
 }
 
 func (this *QGraphicsSceneHelpEvent) ScreenPos() *QPoint {
-	ret := C.QGraphicsSceneHelpEvent_ScreenPos(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPoint(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPoint) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QGraphicsSceneHelpEvent_ScreenPos(this.h)
+	_goptr := newQPoint(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QGraphicsSceneHelpEvent) SetScreenPos(pos *QPoint) {
 	C.QGraphicsSceneHelpEvent_SetScreenPos(this.h, pos.cPointer())
 }
 
+// Delete this object from C++ memory.
 func (this *QGraphicsSceneHelpEvent) Delete() {
 	C.QGraphicsSceneHelpEvent_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QGraphicsSceneHelpEvent) GoGC() {
+	runtime.SetFinalizer(this, func(this *QGraphicsSceneHelpEvent) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
 
 type QGraphicsSceneDragDropEvent struct {
@@ -747,14 +715,10 @@ func NewQGraphicsSceneDragDropEvent2(typeVal QEvent__Type) *QGraphicsSceneDragDr
 }
 
 func (this *QGraphicsSceneDragDropEvent) Pos() *QPointF {
-	ret := C.QGraphicsSceneDragDropEvent_Pos(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPointF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPointF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QGraphicsSceneDragDropEvent_Pos(this.h)
+	_goptr := newQPointF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QGraphicsSceneDragDropEvent) SetPos(pos *QPointF) {
@@ -762,14 +726,10 @@ func (this *QGraphicsSceneDragDropEvent) SetPos(pos *QPointF) {
 }
 
 func (this *QGraphicsSceneDragDropEvent) ScenePos() *QPointF {
-	ret := C.QGraphicsSceneDragDropEvent_ScenePos(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPointF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPointF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QGraphicsSceneDragDropEvent_ScenePos(this.h)
+	_goptr := newQPointF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QGraphicsSceneDragDropEvent) SetScenePos(pos *QPointF) {
@@ -777,14 +737,10 @@ func (this *QGraphicsSceneDragDropEvent) SetScenePos(pos *QPointF) {
 }
 
 func (this *QGraphicsSceneDragDropEvent) ScreenPos() *QPoint {
-	ret := C.QGraphicsSceneDragDropEvent_ScreenPos(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPoint(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPoint) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QGraphicsSceneDragDropEvent_ScreenPos(this.h)
+	_goptr := newQPoint(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QGraphicsSceneDragDropEvent) SetScreenPos(pos *QPoint) {
@@ -792,8 +748,8 @@ func (this *QGraphicsSceneDragDropEvent) SetScreenPos(pos *QPoint) {
 }
 
 func (this *QGraphicsSceneDragDropEvent) Buttons() int {
-	ret := C.QGraphicsSceneDragDropEvent_Buttons(this.h)
-	return (int)(ret)
+	_ret := C.QGraphicsSceneDragDropEvent_Buttons(this.h)
+	return (int)(_ret)
 }
 
 func (this *QGraphicsSceneDragDropEvent) SetButtons(buttons int) {
@@ -801,8 +757,8 @@ func (this *QGraphicsSceneDragDropEvent) SetButtons(buttons int) {
 }
 
 func (this *QGraphicsSceneDragDropEvent) Modifiers() int {
-	ret := C.QGraphicsSceneDragDropEvent_Modifiers(this.h)
-	return (int)(ret)
+	_ret := C.QGraphicsSceneDragDropEvent_Modifiers(this.h)
+	return (int)(_ret)
 }
 
 func (this *QGraphicsSceneDragDropEvent) SetModifiers(modifiers int) {
@@ -810,8 +766,8 @@ func (this *QGraphicsSceneDragDropEvent) SetModifiers(modifiers int) {
 }
 
 func (this *QGraphicsSceneDragDropEvent) PossibleActions() int {
-	ret := C.QGraphicsSceneDragDropEvent_PossibleActions(this.h)
-	return (int)(ret)
+	_ret := C.QGraphicsSceneDragDropEvent_PossibleActions(this.h)
+	return (int)(_ret)
 }
 
 func (this *QGraphicsSceneDragDropEvent) SetPossibleActions(actions int) {
@@ -819,8 +775,8 @@ func (this *QGraphicsSceneDragDropEvent) SetPossibleActions(actions int) {
 }
 
 func (this *QGraphicsSceneDragDropEvent) ProposedAction() DropAction {
-	ret := C.QGraphicsSceneDragDropEvent_ProposedAction(this.h)
-	return (DropAction)(ret)
+	_ret := C.QGraphicsSceneDragDropEvent_ProposedAction(this.h)
+	return (DropAction)(_ret)
 }
 
 func (this *QGraphicsSceneDragDropEvent) SetProposedAction(action DropAction) {
@@ -832,8 +788,8 @@ func (this *QGraphicsSceneDragDropEvent) AcceptProposedAction() {
 }
 
 func (this *QGraphicsSceneDragDropEvent) DropAction() DropAction {
-	ret := C.QGraphicsSceneDragDropEvent_DropAction(this.h)
-	return (DropAction)(ret)
+	_ret := C.QGraphicsSceneDragDropEvent_DropAction(this.h)
+	return (DropAction)(_ret)
 }
 
 func (this *QGraphicsSceneDragDropEvent) SetDropAction(action DropAction) {
@@ -841,8 +797,8 @@ func (this *QGraphicsSceneDragDropEvent) SetDropAction(action DropAction) {
 }
 
 func (this *QGraphicsSceneDragDropEvent) Source() *QWidget {
-	ret := C.QGraphicsSceneDragDropEvent_Source(this.h)
-	return newQWidget_U(unsafe.Pointer(ret))
+	_ret := C.QGraphicsSceneDragDropEvent_Source(this.h)
+	return newQWidget_U(unsafe.Pointer(_ret))
 }
 
 func (this *QGraphicsSceneDragDropEvent) SetSource(source *QWidget) {
@@ -850,16 +806,26 @@ func (this *QGraphicsSceneDragDropEvent) SetSource(source *QWidget) {
 }
 
 func (this *QGraphicsSceneDragDropEvent) MimeData() *QMimeData {
-	ret := C.QGraphicsSceneDragDropEvent_MimeData(this.h)
-	return newQMimeData_U(unsafe.Pointer(ret))
+	_ret := C.QGraphicsSceneDragDropEvent_MimeData(this.h)
+	return newQMimeData_U(unsafe.Pointer(_ret))
 }
 
 func (this *QGraphicsSceneDragDropEvent) SetMimeData(data *QMimeData) {
 	C.QGraphicsSceneDragDropEvent_SetMimeData(this.h, data.cPointer())
 }
 
+// Delete this object from C++ memory.
 func (this *QGraphicsSceneDragDropEvent) Delete() {
 	C.QGraphicsSceneDragDropEvent_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QGraphicsSceneDragDropEvent) GoGC() {
+	runtime.SetFinalizer(this, func(this *QGraphicsSceneDragDropEvent) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
 
 type QGraphicsSceneResizeEvent struct {
@@ -892,14 +858,10 @@ func NewQGraphicsSceneResizeEvent() *QGraphicsSceneResizeEvent {
 }
 
 func (this *QGraphicsSceneResizeEvent) OldSize() *QSizeF {
-	ret := C.QGraphicsSceneResizeEvent_OldSize(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSizeF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSizeF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QGraphicsSceneResizeEvent_OldSize(this.h)
+	_goptr := newQSizeF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QGraphicsSceneResizeEvent) SetOldSize(size *QSizeF) {
@@ -907,22 +869,28 @@ func (this *QGraphicsSceneResizeEvent) SetOldSize(size *QSizeF) {
 }
 
 func (this *QGraphicsSceneResizeEvent) NewSize() *QSizeF {
-	ret := C.QGraphicsSceneResizeEvent_NewSize(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSizeF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSizeF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QGraphicsSceneResizeEvent_NewSize(this.h)
+	_goptr := newQSizeF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QGraphicsSceneResizeEvent) SetNewSize(size *QSizeF) {
 	C.QGraphicsSceneResizeEvent_SetNewSize(this.h, size.cPointer())
 }
 
+// Delete this object from C++ memory.
 func (this *QGraphicsSceneResizeEvent) Delete() {
 	C.QGraphicsSceneResizeEvent_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QGraphicsSceneResizeEvent) GoGC() {
+	runtime.SetFinalizer(this, func(this *QGraphicsSceneResizeEvent) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
 
 type QGraphicsSceneMoveEvent struct {
@@ -955,14 +923,10 @@ func NewQGraphicsSceneMoveEvent() *QGraphicsSceneMoveEvent {
 }
 
 func (this *QGraphicsSceneMoveEvent) OldPos() *QPointF {
-	ret := C.QGraphicsSceneMoveEvent_OldPos(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPointF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPointF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QGraphicsSceneMoveEvent_OldPos(this.h)
+	_goptr := newQPointF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QGraphicsSceneMoveEvent) SetOldPos(pos *QPointF) {
@@ -970,20 +934,26 @@ func (this *QGraphicsSceneMoveEvent) SetOldPos(pos *QPointF) {
 }
 
 func (this *QGraphicsSceneMoveEvent) NewPos() *QPointF {
-	ret := C.QGraphicsSceneMoveEvent_NewPos(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPointF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPointF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QGraphicsSceneMoveEvent_NewPos(this.h)
+	_goptr := newQPointF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QGraphicsSceneMoveEvent) SetNewPos(pos *QPointF) {
 	C.QGraphicsSceneMoveEvent_SetNewPos(this.h, pos.cPointer())
 }
 
+// Delete this object from C++ memory.
 func (this *QGraphicsSceneMoveEvent) Delete() {
 	C.QGraphicsSceneMoveEvent_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QGraphicsSceneMoveEvent) GoGC() {
+	runtime.SetFinalizer(this, func(this *QGraphicsSceneMoveEvent) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

@@ -36,27 +36,33 @@ func newQItemEditorCreatorBase_U(h unsafe.Pointer) *QItemEditorCreatorBase {
 }
 
 func (this *QItemEditorCreatorBase) CreateWidget(parent *QWidget) *QWidget {
-	ret := C.QItemEditorCreatorBase_CreateWidget(this.h, parent.cPointer())
-	return newQWidget_U(unsafe.Pointer(ret))
+	_ret := C.QItemEditorCreatorBase_CreateWidget(this.h, parent.cPointer())
+	return newQWidget_U(unsafe.Pointer(_ret))
 }
 
 func (this *QItemEditorCreatorBase) ValuePropertyName() *QByteArray {
-	ret := C.QItemEditorCreatorBase_ValuePropertyName(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQByteArray(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QByteArray) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QItemEditorCreatorBase_ValuePropertyName(this.h)
+	_goptr := newQByteArray(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QItemEditorCreatorBase) OperatorAssign(param1 *QItemEditorCreatorBase) {
 	C.QItemEditorCreatorBase_OperatorAssign(this.h, param1.cPointer())
 }
 
+// Delete this object from C++ memory.
 func (this *QItemEditorCreatorBase) Delete() {
 	C.QItemEditorCreatorBase_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QItemEditorCreatorBase) GoGC() {
+	runtime.SetFinalizer(this, func(this *QItemEditorCreatorBase) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
 
 type QItemEditorFactory struct {
@@ -94,19 +100,15 @@ func NewQItemEditorFactory2(param1 *QItemEditorFactory) *QItemEditorFactory {
 }
 
 func (this *QItemEditorFactory) CreateEditor(userType int, parent *QWidget) *QWidget {
-	ret := C.QItemEditorFactory_CreateEditor(this.h, (C.int)(userType), parent.cPointer())
-	return newQWidget_U(unsafe.Pointer(ret))
+	_ret := C.QItemEditorFactory_CreateEditor(this.h, (C.int)(userType), parent.cPointer())
+	return newQWidget_U(unsafe.Pointer(_ret))
 }
 
 func (this *QItemEditorFactory) ValuePropertyName(userType int) *QByteArray {
-	ret := C.QItemEditorFactory_ValuePropertyName(this.h, (C.int)(userType))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQByteArray(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QByteArray) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QItemEditorFactory_ValuePropertyName(this.h, (C.int)(userType))
+	_goptr := newQByteArray(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QItemEditorFactory) RegisterEditor(userType int, creator *QItemEditorCreatorBase) {
@@ -114,14 +116,24 @@ func (this *QItemEditorFactory) RegisterEditor(userType int, creator *QItemEdito
 }
 
 func QItemEditorFactory_DefaultFactory() *QItemEditorFactory {
-	ret := C.QItemEditorFactory_DefaultFactory()
-	return newQItemEditorFactory_U(unsafe.Pointer(ret))
+	_ret := C.QItemEditorFactory_DefaultFactory()
+	return newQItemEditorFactory_U(unsafe.Pointer(_ret))
 }
 
 func QItemEditorFactory_SetDefaultFactory(factory *QItemEditorFactory) {
 	C.QItemEditorFactory_SetDefaultFactory(factory.cPointer())
 }
 
+// Delete this object from C++ memory.
 func (this *QItemEditorFactory) Delete() {
 	C.QItemEditorFactory_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QItemEditorFactory) GoGC() {
+	runtime.SetFinalizer(this, func(this *QItemEditorFactory) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

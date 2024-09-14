@@ -60,30 +60,26 @@ func NewQHeaderView2(orientation Orientation, parent *QWidget) *QHeaderView {
 }
 
 func (this *QHeaderView) MetaObject() *QMetaObject {
-	ret := C.QHeaderView_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QHeaderView_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QHeaderView_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QHeaderView_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QHeaderView_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QHeaderView_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QHeaderView_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QHeaderView_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QHeaderView) SetModel(model *QAbstractItemModel) {
@@ -91,29 +87,25 @@ func (this *QHeaderView) SetModel(model *QAbstractItemModel) {
 }
 
 func (this *QHeaderView) Orientation() Orientation {
-	ret := C.QHeaderView_Orientation(this.h)
-	return (Orientation)(ret)
+	_ret := C.QHeaderView_Orientation(this.h)
+	return (Orientation)(_ret)
 }
 
 func (this *QHeaderView) Offset() int {
-	ret := C.QHeaderView_Offset(this.h)
-	return (int)(ret)
+	_ret := C.QHeaderView_Offset(this.h)
+	return (int)(_ret)
 }
 
 func (this *QHeaderView) Length() int {
-	ret := C.QHeaderView_Length(this.h)
-	return (int)(ret)
+	_ret := C.QHeaderView_Length(this.h)
+	return (int)(_ret)
 }
 
 func (this *QHeaderView) SizeHint() *QSize {
-	ret := C.QHeaderView_SizeHint(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSize(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QHeaderView_SizeHint(this.h)
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QHeaderView) SetVisible(v bool) {
@@ -121,43 +113,43 @@ func (this *QHeaderView) SetVisible(v bool) {
 }
 
 func (this *QHeaderView) SectionSizeHint(logicalIndex int) int {
-	ret := C.QHeaderView_SectionSizeHint(this.h, (C.int)(logicalIndex))
-	return (int)(ret)
+	_ret := C.QHeaderView_SectionSizeHint(this.h, (C.int)(logicalIndex))
+	return (int)(_ret)
 }
 
 func (this *QHeaderView) VisualIndexAt(position int) int {
-	ret := C.QHeaderView_VisualIndexAt(this.h, (C.int)(position))
-	return (int)(ret)
+	_ret := C.QHeaderView_VisualIndexAt(this.h, (C.int)(position))
+	return (int)(_ret)
 }
 
 func (this *QHeaderView) LogicalIndexAt(position int) int {
-	ret := C.QHeaderView_LogicalIndexAt(this.h, (C.int)(position))
-	return (int)(ret)
+	_ret := C.QHeaderView_LogicalIndexAt(this.h, (C.int)(position))
+	return (int)(_ret)
 }
 
 func (this *QHeaderView) LogicalIndexAt2(x int, y int) int {
-	ret := C.QHeaderView_LogicalIndexAt2(this.h, (C.int)(x), (C.int)(y))
-	return (int)(ret)
+	_ret := C.QHeaderView_LogicalIndexAt2(this.h, (C.int)(x), (C.int)(y))
+	return (int)(_ret)
 }
 
 func (this *QHeaderView) LogicalIndexAtWithPos(pos *QPoint) int {
-	ret := C.QHeaderView_LogicalIndexAtWithPos(this.h, pos.cPointer())
-	return (int)(ret)
+	_ret := C.QHeaderView_LogicalIndexAtWithPos(this.h, pos.cPointer())
+	return (int)(_ret)
 }
 
 func (this *QHeaderView) SectionSize(logicalIndex int) int {
-	ret := C.QHeaderView_SectionSize(this.h, (C.int)(logicalIndex))
-	return (int)(ret)
+	_ret := C.QHeaderView_SectionSize(this.h, (C.int)(logicalIndex))
+	return (int)(_ret)
 }
 
 func (this *QHeaderView) SectionPosition(logicalIndex int) int {
-	ret := C.QHeaderView_SectionPosition(this.h, (C.int)(logicalIndex))
-	return (int)(ret)
+	_ret := C.QHeaderView_SectionPosition(this.h, (C.int)(logicalIndex))
+	return (int)(_ret)
 }
 
 func (this *QHeaderView) SectionViewportPosition(logicalIndex int) int {
-	ret := C.QHeaderView_SectionViewportPosition(this.h, (C.int)(logicalIndex))
-	return (int)(ret)
+	_ret := C.QHeaderView_SectionViewportPosition(this.h, (C.int)(logicalIndex))
+	return (int)(_ret)
 }
 
 func (this *QHeaderView) MoveSection(from int, to int) {
@@ -177,8 +169,8 @@ func (this *QHeaderView) ResizeSections(mode QHeaderView__ResizeMode) {
 }
 
 func (this *QHeaderView) IsSectionHidden(logicalIndex int) bool {
-	ret := C.QHeaderView_IsSectionHidden(this.h, (C.int)(logicalIndex))
-	return (bool)(ret)
+	_ret := C.QHeaderView_IsSectionHidden(this.h, (C.int)(logicalIndex))
+	return (bool)(_ret)
 }
 
 func (this *QHeaderView) SetSectionHidden(logicalIndex int, hide bool) {
@@ -186,8 +178,8 @@ func (this *QHeaderView) SetSectionHidden(logicalIndex int, hide bool) {
 }
 
 func (this *QHeaderView) HiddenSectionCount() int {
-	ret := C.QHeaderView_HiddenSectionCount(this.h)
-	return (int)(ret)
+	_ret := C.QHeaderView_HiddenSectionCount(this.h)
+	return (int)(_ret)
 }
 
 func (this *QHeaderView) HideSection(logicalIndex int) {
@@ -199,18 +191,18 @@ func (this *QHeaderView) ShowSection(logicalIndex int) {
 }
 
 func (this *QHeaderView) Count() int {
-	ret := C.QHeaderView_Count(this.h)
-	return (int)(ret)
+	_ret := C.QHeaderView_Count(this.h)
+	return (int)(_ret)
 }
 
 func (this *QHeaderView) VisualIndex(logicalIndex int) int {
-	ret := C.QHeaderView_VisualIndex(this.h, (C.int)(logicalIndex))
-	return (int)(ret)
+	_ret := C.QHeaderView_VisualIndex(this.h, (C.int)(logicalIndex))
+	return (int)(_ret)
 }
 
 func (this *QHeaderView) LogicalIndex(visualIndex int) int {
-	ret := C.QHeaderView_LogicalIndex(this.h, (C.int)(visualIndex))
-	return (int)(ret)
+	_ret := C.QHeaderView_LogicalIndex(this.h, (C.int)(visualIndex))
+	return (int)(_ret)
 }
 
 func (this *QHeaderView) SetSectionsMovable(movable bool) {
@@ -218,8 +210,8 @@ func (this *QHeaderView) SetSectionsMovable(movable bool) {
 }
 
 func (this *QHeaderView) SectionsMovable() bool {
-	ret := C.QHeaderView_SectionsMovable(this.h)
-	return (bool)(ret)
+	_ret := C.QHeaderView_SectionsMovable(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QHeaderView) SetFirstSectionMovable(movable bool) {
@@ -227,8 +219,8 @@ func (this *QHeaderView) SetFirstSectionMovable(movable bool) {
 }
 
 func (this *QHeaderView) IsFirstSectionMovable() bool {
-	ret := C.QHeaderView_IsFirstSectionMovable(this.h)
-	return (bool)(ret)
+	_ret := C.QHeaderView_IsFirstSectionMovable(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QHeaderView) SetSectionsClickable(clickable bool) {
@@ -236,8 +228,8 @@ func (this *QHeaderView) SetSectionsClickable(clickable bool) {
 }
 
 func (this *QHeaderView) SectionsClickable() bool {
-	ret := C.QHeaderView_SectionsClickable(this.h)
-	return (bool)(ret)
+	_ret := C.QHeaderView_SectionsClickable(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QHeaderView) SetHighlightSections(highlight bool) {
@@ -245,13 +237,13 @@ func (this *QHeaderView) SetHighlightSections(highlight bool) {
 }
 
 func (this *QHeaderView) HighlightSections() bool {
-	ret := C.QHeaderView_HighlightSections(this.h)
-	return (bool)(ret)
+	_ret := C.QHeaderView_HighlightSections(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QHeaderView) SectionResizeMode(logicalIndex int) QHeaderView__ResizeMode {
-	ret := C.QHeaderView_SectionResizeMode(this.h, (C.int)(logicalIndex))
-	return (QHeaderView__ResizeMode)(ret)
+	_ret := C.QHeaderView_SectionResizeMode(this.h, (C.int)(logicalIndex))
+	return (QHeaderView__ResizeMode)(_ret)
 }
 
 func (this *QHeaderView) SetSectionResizeMode(mode QHeaderView__ResizeMode) {
@@ -267,13 +259,13 @@ func (this *QHeaderView) SetResizeContentsPrecision(precision int) {
 }
 
 func (this *QHeaderView) ResizeContentsPrecision() int {
-	ret := C.QHeaderView_ResizeContentsPrecision(this.h)
-	return (int)(ret)
+	_ret := C.QHeaderView_ResizeContentsPrecision(this.h)
+	return (int)(_ret)
 }
 
 func (this *QHeaderView) StretchSectionCount() int {
-	ret := C.QHeaderView_StretchSectionCount(this.h)
-	return (int)(ret)
+	_ret := C.QHeaderView_StretchSectionCount(this.h)
+	return (int)(_ret)
 }
 
 func (this *QHeaderView) SetSortIndicatorShown(show bool) {
@@ -281,8 +273,8 @@ func (this *QHeaderView) SetSortIndicatorShown(show bool) {
 }
 
 func (this *QHeaderView) IsSortIndicatorShown() bool {
-	ret := C.QHeaderView_IsSortIndicatorShown(this.h)
-	return (bool)(ret)
+	_ret := C.QHeaderView_IsSortIndicatorShown(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QHeaderView) SetSortIndicator(logicalIndex int, order SortOrder) {
@@ -290,18 +282,18 @@ func (this *QHeaderView) SetSortIndicator(logicalIndex int, order SortOrder) {
 }
 
 func (this *QHeaderView) SortIndicatorSection() int {
-	ret := C.QHeaderView_SortIndicatorSection(this.h)
-	return (int)(ret)
+	_ret := C.QHeaderView_SortIndicatorSection(this.h)
+	return (int)(_ret)
 }
 
 func (this *QHeaderView) SortIndicatorOrder() SortOrder {
-	ret := C.QHeaderView_SortIndicatorOrder(this.h)
-	return (SortOrder)(ret)
+	_ret := C.QHeaderView_SortIndicatorOrder(this.h)
+	return (SortOrder)(_ret)
 }
 
 func (this *QHeaderView) StretchLastSection() bool {
-	ret := C.QHeaderView_StretchLastSection(this.h)
-	return (bool)(ret)
+	_ret := C.QHeaderView_StretchLastSection(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QHeaderView) SetStretchLastSection(stretch bool) {
@@ -309,8 +301,8 @@ func (this *QHeaderView) SetStretchLastSection(stretch bool) {
 }
 
 func (this *QHeaderView) CascadingSectionResizes() bool {
-	ret := C.QHeaderView_CascadingSectionResizes(this.h)
-	return (bool)(ret)
+	_ret := C.QHeaderView_CascadingSectionResizes(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QHeaderView) SetCascadingSectionResizes(enable bool) {
@@ -318,8 +310,8 @@ func (this *QHeaderView) SetCascadingSectionResizes(enable bool) {
 }
 
 func (this *QHeaderView) DefaultSectionSize() int {
-	ret := C.QHeaderView_DefaultSectionSize(this.h)
-	return (int)(ret)
+	_ret := C.QHeaderView_DefaultSectionSize(this.h)
+	return (int)(_ret)
 }
 
 func (this *QHeaderView) SetDefaultSectionSize(size int) {
@@ -331,8 +323,8 @@ func (this *QHeaderView) ResetDefaultSectionSize() {
 }
 
 func (this *QHeaderView) MinimumSectionSize() int {
-	ret := C.QHeaderView_MinimumSectionSize(this.h)
-	return (int)(ret)
+	_ret := C.QHeaderView_MinimumSectionSize(this.h)
+	return (int)(_ret)
 }
 
 func (this *QHeaderView) SetMinimumSectionSize(size int) {
@@ -340,8 +332,8 @@ func (this *QHeaderView) SetMinimumSectionSize(size int) {
 }
 
 func (this *QHeaderView) MaximumSectionSize() int {
-	ret := C.QHeaderView_MaximumSectionSize(this.h)
-	return (int)(ret)
+	_ret := C.QHeaderView_MaximumSectionSize(this.h)
+	return (int)(_ret)
 }
 
 func (this *QHeaderView) SetMaximumSectionSize(size int) {
@@ -349,8 +341,8 @@ func (this *QHeaderView) SetMaximumSectionSize(size int) {
 }
 
 func (this *QHeaderView) DefaultAlignment() int {
-	ret := C.QHeaderView_DefaultAlignment(this.h)
-	return (int)(ret)
+	_ret := C.QHeaderView_DefaultAlignment(this.h)
+	return (int)(_ret)
 }
 
 func (this *QHeaderView) SetDefaultAlignment(alignment int) {
@@ -362,29 +354,25 @@ func (this *QHeaderView) DoItemsLayout() {
 }
 
 func (this *QHeaderView) SectionsMoved() bool {
-	ret := C.QHeaderView_SectionsMoved(this.h)
-	return (bool)(ret)
+	_ret := C.QHeaderView_SectionsMoved(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QHeaderView) SectionsHidden() bool {
-	ret := C.QHeaderView_SectionsHidden(this.h)
-	return (bool)(ret)
+	_ret := C.QHeaderView_SectionsHidden(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QHeaderView) SaveState() *QByteArray {
-	ret := C.QHeaderView_SaveState(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQByteArray(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QByteArray) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QHeaderView_SaveState(this.h)
+	_goptr := newQByteArray(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QHeaderView) RestoreState(state *QByteArray) bool {
-	ret := C.QHeaderView_RestoreState(this.h, state.cPointer())
-	return (bool)(ret)
+	_ret := C.QHeaderView_RestoreState(this.h, state.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QHeaderView) Reset() {
@@ -410,121 +398,225 @@ func (this *QHeaderView) HeaderDataChanged(orientation Orientation, logicalFirst
 func (this *QHeaderView) SectionMoved(logicalIndex int, oldVisualIndex int, newVisualIndex int) {
 	C.QHeaderView_SectionMoved(this.h, (C.int)(logicalIndex), (C.int)(oldVisualIndex), (C.int)(newVisualIndex))
 }
+func (this *QHeaderView) OnSectionMoved(slot func(logicalIndex int, oldVisualIndex int, newVisualIndex int)) {
+	C.QHeaderView_connect_SectionMoved(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QHeaderView) OnSectionMoved(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QHeaderView_SectionMoved
+func miqt_exec_callback_QHeaderView_SectionMoved(cb *C.void, logicalIndex C.int, oldVisualIndex C.int, newVisualIndex C.int) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(logicalIndex int, oldVisualIndex int, newVisualIndex int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QHeaderView_connect_SectionMoved(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	logicalIndex_ret := logicalIndex
+	slotval1 := (int)(logicalIndex_ret)
+
+	oldVisualIndex_ret := oldVisualIndex
+	slotval2 := (int)(oldVisualIndex_ret)
+
+	newVisualIndex_ret := newVisualIndex
+	slotval3 := (int)(newVisualIndex_ret)
+
+	gofunc(slotval1, slotval2, slotval3)
 }
 
 func (this *QHeaderView) SectionResized(logicalIndex int, oldSize int, newSize int) {
 	C.QHeaderView_SectionResized(this.h, (C.int)(logicalIndex), (C.int)(oldSize), (C.int)(newSize))
 }
+func (this *QHeaderView) OnSectionResized(slot func(logicalIndex int, oldSize int, newSize int)) {
+	C.QHeaderView_connect_SectionResized(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QHeaderView) OnSectionResized(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QHeaderView_SectionResized
+func miqt_exec_callback_QHeaderView_SectionResized(cb *C.void, logicalIndex C.int, oldSize C.int, newSize C.int) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(logicalIndex int, oldSize int, newSize int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QHeaderView_connect_SectionResized(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	logicalIndex_ret := logicalIndex
+	slotval1 := (int)(logicalIndex_ret)
+
+	oldSize_ret := oldSize
+	slotval2 := (int)(oldSize_ret)
+
+	newSize_ret := newSize
+	slotval3 := (int)(newSize_ret)
+
+	gofunc(slotval1, slotval2, slotval3)
 }
 
 func (this *QHeaderView) SectionPressed(logicalIndex int) {
 	C.QHeaderView_SectionPressed(this.h, (C.int)(logicalIndex))
 }
+func (this *QHeaderView) OnSectionPressed(slot func(logicalIndex int)) {
+	C.QHeaderView_connect_SectionPressed(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QHeaderView) OnSectionPressed(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QHeaderView_SectionPressed
+func miqt_exec_callback_QHeaderView_SectionPressed(cb *C.void, logicalIndex C.int) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(logicalIndex int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QHeaderView_connect_SectionPressed(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	logicalIndex_ret := logicalIndex
+	slotval1 := (int)(logicalIndex_ret)
+
+	gofunc(slotval1)
 }
 
 func (this *QHeaderView) SectionClicked(logicalIndex int) {
 	C.QHeaderView_SectionClicked(this.h, (C.int)(logicalIndex))
 }
+func (this *QHeaderView) OnSectionClicked(slot func(logicalIndex int)) {
+	C.QHeaderView_connect_SectionClicked(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QHeaderView) OnSectionClicked(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QHeaderView_SectionClicked
+func miqt_exec_callback_QHeaderView_SectionClicked(cb *C.void, logicalIndex C.int) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(logicalIndex int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QHeaderView_connect_SectionClicked(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	logicalIndex_ret := logicalIndex
+	slotval1 := (int)(logicalIndex_ret)
+
+	gofunc(slotval1)
 }
 
 func (this *QHeaderView) SectionEntered(logicalIndex int) {
 	C.QHeaderView_SectionEntered(this.h, (C.int)(logicalIndex))
 }
+func (this *QHeaderView) OnSectionEntered(slot func(logicalIndex int)) {
+	C.QHeaderView_connect_SectionEntered(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QHeaderView) OnSectionEntered(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QHeaderView_SectionEntered
+func miqt_exec_callback_QHeaderView_SectionEntered(cb *C.void, logicalIndex C.int) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(logicalIndex int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QHeaderView_connect_SectionEntered(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	logicalIndex_ret := logicalIndex
+	slotval1 := (int)(logicalIndex_ret)
+
+	gofunc(slotval1)
 }
 
 func (this *QHeaderView) SectionDoubleClicked(logicalIndex int) {
 	C.QHeaderView_SectionDoubleClicked(this.h, (C.int)(logicalIndex))
 }
+func (this *QHeaderView) OnSectionDoubleClicked(slot func(logicalIndex int)) {
+	C.QHeaderView_connect_SectionDoubleClicked(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QHeaderView) OnSectionDoubleClicked(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QHeaderView_SectionDoubleClicked
+func miqt_exec_callback_QHeaderView_SectionDoubleClicked(cb *C.void, logicalIndex C.int) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(logicalIndex int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QHeaderView_connect_SectionDoubleClicked(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	logicalIndex_ret := logicalIndex
+	slotval1 := (int)(logicalIndex_ret)
+
+	gofunc(slotval1)
 }
 
 func (this *QHeaderView) SectionCountChanged(oldCount int, newCount int) {
 	C.QHeaderView_SectionCountChanged(this.h, (C.int)(oldCount), (C.int)(newCount))
 }
+func (this *QHeaderView) OnSectionCountChanged(slot func(oldCount int, newCount int)) {
+	C.QHeaderView_connect_SectionCountChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QHeaderView) OnSectionCountChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QHeaderView_SectionCountChanged
+func miqt_exec_callback_QHeaderView_SectionCountChanged(cb *C.void, oldCount C.int, newCount C.int) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(oldCount int, newCount int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QHeaderView_connect_SectionCountChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	oldCount_ret := oldCount
+	slotval1 := (int)(oldCount_ret)
+
+	newCount_ret := newCount
+	slotval2 := (int)(newCount_ret)
+
+	gofunc(slotval1, slotval2)
 }
 
 func (this *QHeaderView) SectionHandleDoubleClicked(logicalIndex int) {
 	C.QHeaderView_SectionHandleDoubleClicked(this.h, (C.int)(logicalIndex))
 }
+func (this *QHeaderView) OnSectionHandleDoubleClicked(slot func(logicalIndex int)) {
+	C.QHeaderView_connect_SectionHandleDoubleClicked(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QHeaderView) OnSectionHandleDoubleClicked(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QHeaderView_SectionHandleDoubleClicked
+func miqt_exec_callback_QHeaderView_SectionHandleDoubleClicked(cb *C.void, logicalIndex C.int) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(logicalIndex int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QHeaderView_connect_SectionHandleDoubleClicked(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	logicalIndex_ret := logicalIndex
+	slotval1 := (int)(logicalIndex_ret)
+
+	gofunc(slotval1)
 }
 
 func (this *QHeaderView) GeometriesChanged() {
 	C.QHeaderView_GeometriesChanged(this.h)
 }
-
 func (this *QHeaderView) OnGeometriesChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+	C.QHeaderView_connect_GeometriesChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
+
+//export miqt_exec_callback_QHeaderView_GeometriesChanged
+func miqt_exec_callback_QHeaderView_GeometriesChanged(cb *C.void) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QHeaderView_connect_GeometriesChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	gofunc()
 }
 
 func (this *QHeaderView) SortIndicatorChanged(logicalIndex int, order SortOrder) {
 	C.QHeaderView_SortIndicatorChanged(this.h, (C.int)(logicalIndex), (C.uintptr_t)(order))
 }
+func (this *QHeaderView) OnSortIndicatorChanged(slot func(logicalIndex int, order SortOrder)) {
+	C.QHeaderView_connect_SortIndicatorChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QHeaderView) OnSortIndicatorChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QHeaderView_SortIndicatorChanged
+func miqt_exec_callback_QHeaderView_SortIndicatorChanged(cb *C.void, logicalIndex C.int, order C.uintptr_t) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(logicalIndex int, order SortOrder))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QHeaderView_connect_SortIndicatorChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	logicalIndex_ret := logicalIndex
+	slotval1 := (int)(logicalIndex_ret)
+
+	order_ret := order
+	slotval2 := (SortOrder)(order_ret)
+
+	gofunc(slotval1, slotval2)
 }
 
 func QHeaderView_Tr2(s string, c string) string {
@@ -532,12 +624,10 @@ func QHeaderView_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QHeaderView_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QHeaderView_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QHeaderView_Tr3(s string, c string, n int) string {
@@ -545,12 +635,10 @@ func QHeaderView_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QHeaderView_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QHeaderView_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QHeaderView_TrUtf82(s string, c string) string {
@@ -558,12 +646,10 @@ func QHeaderView_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QHeaderView_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QHeaderView_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QHeaderView_TrUtf83(s string, c string, n int) string {
@@ -571,14 +657,22 @@ func QHeaderView_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QHeaderView_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QHeaderView_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
+// Delete this object from C++ memory.
 func (this *QHeaderView) Delete() {
 	C.QHeaderView_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QHeaderView) GoGC() {
+	runtime.SetFinalizer(this, func(this *QHeaderView) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

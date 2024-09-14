@@ -8,12 +8,8 @@
 #include <QTextCodec>
 #include <QTextStream>
 #include "qtextstream.h"
-
 #include "gen_qtextstream.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QTextStream* QTextStream_new() {
 	return new QTextStream();
@@ -72,9 +68,9 @@ void QTextStream_SetLocale(QTextStream* self, QLocale* locale) {
 }
 
 QLocale* QTextStream_Locale(const QTextStream* self) {
-	QLocale ret = self->locale();
+	QLocale _ret = self->locale();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QLocale*>(new QLocale(ret));
+	return static_cast<QLocale*>(new QLocale(_ret));
 }
 
 void QTextStream_SetDevice(QTextStream* self, QIODevice* device) {
@@ -85,18 +81,16 @@ QIODevice* QTextStream_Device(const QTextStream* self) {
 	return self->device();
 }
 
-void QTextStream_String(const QTextStream* self, char** _out, int* _out_Strlen) {
-	QString* ret = self->string();
+struct miqt_string* QTextStream_String(const QTextStream* self) {
+	QString* _ret = self->string();
 	// Convert QString pointer from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret->toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret->toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 uintptr_t QTextStream_Status(const QTextStream* self) {
-	QTextStream::Status ret = self->status();
-	return static_cast<uintptr_t>(ret);
+	QTextStream::Status _ret = self->status();
+	return static_cast<uintptr_t>(_ret);
 }
 
 void QTextStream_SetStatus(QTextStream* self, uintptr_t status) {
@@ -131,31 +125,25 @@ void QTextStream_SkipWhiteSpace(QTextStream* self) {
 	self->skipWhiteSpace();
 }
 
-void QTextStream_ReadLine(QTextStream* self, char** _out, int* _out_Strlen) {
-	QString ret = self->readLine();
+struct miqt_string* QTextStream_ReadLine(QTextStream* self) {
+	QString _ret = self->readLine();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QTextStream_ReadAll(QTextStream* self, char** _out, int* _out_Strlen) {
-	QString ret = self->readAll();
+struct miqt_string* QTextStream_ReadAll(QTextStream* self) {
+	QString _ret = self->readAll();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QTextStream_Read(QTextStream* self, long long maxlen, char** _out, int* _out_Strlen) {
-	QString ret = self->read(static_cast<qint64>(maxlen));
+struct miqt_string* QTextStream_Read(QTextStream* self, long long maxlen) {
+	QString _ret = self->read(static_cast<qint64>(maxlen));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QTextStream_SetFieldAlignment(QTextStream* self, uintptr_t alignment) {
@@ -163,8 +151,8 @@ void QTextStream_SetFieldAlignment(QTextStream* self, uintptr_t alignment) {
 }
 
 uintptr_t QTextStream_FieldAlignment(const QTextStream* self) {
-	QTextStream::FieldAlignment ret = self->fieldAlignment();
-	return static_cast<uintptr_t>(ret);
+	QTextStream::FieldAlignment _ret = self->fieldAlignment();
+	return static_cast<uintptr_t>(_ret);
 }
 
 void QTextStream_SetPadChar(QTextStream* self, QChar* ch) {
@@ -172,9 +160,9 @@ void QTextStream_SetPadChar(QTextStream* self, QChar* ch) {
 }
 
 QChar* QTextStream_PadChar(const QTextStream* self) {
-	QChar ret = self->padChar();
+	QChar _ret = self->padChar();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QChar*>(new QChar(ret));
+	return static_cast<QChar*>(new QChar(_ret));
 }
 
 void QTextStream_SetFieldWidth(QTextStream* self, int width) {
@@ -190,8 +178,8 @@ void QTextStream_SetNumberFlags(QTextStream* self, int flags) {
 }
 
 int QTextStream_NumberFlags(const QTextStream* self) {
-	QTextStream::NumberFlags ret = self->numberFlags();
-	return static_cast<int>(ret);
+	QTextStream::NumberFlags _ret = self->numberFlags();
+	return static_cast<int>(_ret);
 }
 
 void QTextStream_SetIntegerBase(QTextStream* self, int base) {
@@ -207,8 +195,8 @@ void QTextStream_SetRealNumberNotation(QTextStream* self, uintptr_t notation) {
 }
 
 uintptr_t QTextStream_RealNumberNotation(const QTextStream* self) {
-	QTextStream::RealNumberNotation ret = self->realNumberNotation();
-	return static_cast<uintptr_t>(ret);
+	QTextStream::RealNumberNotation _ret = self->realNumberNotation();
+	return static_cast<uintptr_t>(_ret);
 }
 
 void QTextStream_SetRealNumberPrecision(QTextStream* self, int precision) {
@@ -220,194 +208,192 @@ int QTextStream_RealNumberPrecision(const QTextStream* self) {
 }
 
 QTextStream* QTextStream_OperatorShiftRight(QTextStream* self, QChar* ch) {
-	QTextStream& ret = self->operator>>(*ch);
+	QTextStream& _ret = self->operator>>(*ch);
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QTextStream* QTextStream_OperatorShiftRightWithCh(QTextStream* self, char* ch) {
-	QTextStream& ret = self->operator>>(static_cast<char&>(*ch));
+	QTextStream& _ret = self->operator>>(static_cast<char&>(*ch));
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QTextStream* QTextStream_OperatorShiftRightWithShort(QTextStream* self, int16_t* i) {
-	QTextStream& ret = self->operator>>(static_cast<short&>(*i));
+	QTextStream& _ret = self->operator>>(static_cast<short&>(*i));
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QTextStream* QTextStream_OperatorShiftRightWithUnsignedshort(QTextStream* self, uint16_t* i) {
-	QTextStream& ret = self->operator>>(static_cast<unsigned short&>(*i));
+	QTextStream& _ret = self->operator>>(static_cast<unsigned short&>(*i));
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QTextStream* QTextStream_OperatorShiftRightWithInt(QTextStream* self, int* i) {
-	QTextStream& ret = self->operator>>(static_cast<int&>(*i));
+	QTextStream& _ret = self->operator>>(static_cast<int&>(*i));
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QTextStream* QTextStream_OperatorShiftRightWithUnsignedint(QTextStream* self, unsigned int* i) {
-	QTextStream& ret = self->operator>>(static_cast<unsigned int&>(*i));
+	QTextStream& _ret = self->operator>>(static_cast<unsigned int&>(*i));
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QTextStream* QTextStream_OperatorShiftRightWithLong(QTextStream* self, long* i) {
-	QTextStream& ret = self->operator>>(static_cast<long&>(*i));
+	QTextStream& _ret = self->operator>>(static_cast<long&>(*i));
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QTextStream* QTextStream_OperatorShiftRightWithUnsignedlong(QTextStream* self, unsigned long* i) {
-	QTextStream& ret = self->operator>>(static_cast<unsigned long&>(*i));
+	QTextStream& _ret = self->operator>>(static_cast<unsigned long&>(*i));
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QTextStream* QTextStream_OperatorShiftRightWithQlonglong(QTextStream* self, int64_t* i) {
-	QTextStream& ret = self->operator>>((qlonglong&)(*i));
+	QTextStream& _ret = self->operator>>((qlonglong&)(*i));
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QTextStream* QTextStream_OperatorShiftRightWithQulonglong(QTextStream* self, uint64_t* i) {
-	QTextStream& ret = self->operator>>((qulonglong&)(*i));
+	QTextStream& _ret = self->operator>>((qulonglong&)(*i));
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QTextStream* QTextStream_OperatorShiftRightWithFloat(QTextStream* self, float* f) {
-	QTextStream& ret = self->operator>>(static_cast<float&>(*f));
+	QTextStream& _ret = self->operator>>(static_cast<float&>(*f));
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QTextStream* QTextStream_OperatorShiftRightWithDouble(QTextStream* self, double* f) {
-	QTextStream& ret = self->operator>>(static_cast<double&>(*f));
+	QTextStream& _ret = self->operator>>(static_cast<double&>(*f));
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
-QTextStream* QTextStream_OperatorShiftRightWithQString(QTextStream* self, const char* s, size_t s_Strlen) {
-	QString s_QString = QString::fromUtf8(s, s_Strlen);
-	QTextStream& ret = self->operator>>(s_QString);
+QTextStream* QTextStream_OperatorShiftRightWithQString(QTextStream* self, struct miqt_string* s) {
+	QString s_QString = QString::fromUtf8(&s->data, s->len);
+	QTextStream& _ret = self->operator>>(s_QString);
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QTextStream* QTextStream_OperatorShiftRightWithArray(QTextStream* self, QByteArray* array) {
-	QTextStream& ret = self->operator>>(*array);
+	QTextStream& _ret = self->operator>>(*array);
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QTextStream* QTextStream_OperatorShiftRightWithChar(QTextStream* self, char* c) {
-	QTextStream& ret = self->operator>>(c);
+	QTextStream& _ret = self->operator>>(c);
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QTextStream* QTextStream_OperatorShiftLeft(QTextStream* self, QChar* ch) {
-	QTextStream& ret = self->operator<<(*ch);
+	QTextStream& _ret = self->operator<<(*ch);
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QTextStream* QTextStream_OperatorShiftLeftWithCh(QTextStream* self, char ch) {
-	QTextStream& ret = self->operator<<(static_cast<char>(ch));
+	QTextStream& _ret = self->operator<<(static_cast<char>(ch));
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QTextStream* QTextStream_OperatorShiftLeftWithShort(QTextStream* self, int16_t i) {
-	QTextStream& ret = self->operator<<(static_cast<short>(i));
+	QTextStream& _ret = self->operator<<(static_cast<short>(i));
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QTextStream* QTextStream_OperatorShiftLeftWithUnsignedshort(QTextStream* self, uint16_t i) {
-	QTextStream& ret = self->operator<<(static_cast<unsigned short>(i));
+	QTextStream& _ret = self->operator<<(static_cast<unsigned short>(i));
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QTextStream* QTextStream_OperatorShiftLeftWithInt(QTextStream* self, int i) {
-	QTextStream& ret = self->operator<<(static_cast<int>(i));
+	QTextStream& _ret = self->operator<<(static_cast<int>(i));
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QTextStream* QTextStream_OperatorShiftLeftWithUnsignedint(QTextStream* self, unsigned int i) {
-	QTextStream& ret = self->operator<<(static_cast<unsigned int>(i));
+	QTextStream& _ret = self->operator<<(static_cast<unsigned int>(i));
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QTextStream* QTextStream_OperatorShiftLeftWithLong(QTextStream* self, long i) {
-	QTextStream& ret = self->operator<<(static_cast<long>(i));
+	QTextStream& _ret = self->operator<<(static_cast<long>(i));
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QTextStream* QTextStream_OperatorShiftLeftWithUnsignedlong(QTextStream* self, unsigned long i) {
-	QTextStream& ret = self->operator<<(static_cast<unsigned long>(i));
+	QTextStream& _ret = self->operator<<(static_cast<unsigned long>(i));
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QTextStream* QTextStream_OperatorShiftLeftWithQlonglong(QTextStream* self, int64_t i) {
-	QTextStream& ret = self->operator<<((qlonglong)(i));
+	QTextStream& _ret = self->operator<<((qlonglong)(i));
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QTextStream* QTextStream_OperatorShiftLeftWithQulonglong(QTextStream* self, uint64_t i) {
-	QTextStream& ret = self->operator<<((qulonglong)(i));
+	QTextStream& _ret = self->operator<<((qulonglong)(i));
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QTextStream* QTextStream_OperatorShiftLeftWithFloat(QTextStream* self, float f) {
-	QTextStream& ret = self->operator<<(static_cast<float>(f));
+	QTextStream& _ret = self->operator<<(static_cast<float>(f));
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QTextStream* QTextStream_OperatorShiftLeftWithDouble(QTextStream* self, double f) {
-	QTextStream& ret = self->operator<<(static_cast<double>(f));
+	QTextStream& _ret = self->operator<<(static_cast<double>(f));
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
-QTextStream* QTextStream_OperatorShiftLeftWithQString(QTextStream* self, const char* s, size_t s_Strlen) {
-	QString s_QString = QString::fromUtf8(s, s_Strlen);
-	QTextStream& ret = self->operator<<(s_QString);
+QTextStream* QTextStream_OperatorShiftLeftWithQString(QTextStream* self, struct miqt_string* s) {
+	QString s_QString = QString::fromUtf8(&s->data, s->len);
+	QTextStream& _ret = self->operator<<(s_QString);
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QTextStream* QTextStream_OperatorShiftLeftWithArray(QTextStream* self, QByteArray* array) {
-	QTextStream& ret = self->operator<<(*array);
+	QTextStream& _ret = self->operator<<(*array);
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QTextStream* QTextStream_OperatorShiftLeftWithChar(QTextStream* self, const char* c) {
-	QTextStream& ret = self->operator<<(c);
+	QTextStream& _ret = self->operator<<(c);
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
-void QTextStream_ReadLine1(QTextStream* self, long long maxlen, char** _out, int* _out_Strlen) {
-	QString ret = self->readLine(static_cast<qint64>(maxlen));
+struct miqt_string* QTextStream_ReadLine1(QTextStream* self, long long maxlen) {
+	QString _ret = self->readLine(static_cast<qint64>(maxlen));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QTextStream_Delete(QTextStream* self) {

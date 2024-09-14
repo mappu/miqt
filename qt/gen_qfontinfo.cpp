@@ -4,12 +4,8 @@
 #include <QByteArray>
 #include <cstring>
 #include "qfontinfo.h"
-
 #include "gen_qfontinfo.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QFontInfo* QFontInfo_new(QFont* param1) {
 	return new QFontInfo(*param1);
@@ -27,22 +23,18 @@ void QFontInfo_Swap(QFontInfo* self, QFontInfo* other) {
 	self->swap(*other);
 }
 
-void QFontInfo_Family(const QFontInfo* self, char** _out, int* _out_Strlen) {
-	QString ret = self->family();
+struct miqt_string* QFontInfo_Family(const QFontInfo* self) {
+	QString _ret = self->family();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QFontInfo_StyleName(const QFontInfo* self, char** _out, int* _out_Strlen) {
-	QString ret = self->styleName();
+struct miqt_string* QFontInfo_StyleName(const QFontInfo* self) {
+	QString _ret = self->styleName();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 int QFontInfo_PixelSize(const QFontInfo* self) {
@@ -62,8 +54,8 @@ bool QFontInfo_Italic(const QFontInfo* self) {
 }
 
 uintptr_t QFontInfo_Style(const QFontInfo* self) {
-	QFont::Style ret = self->style();
-	return static_cast<uintptr_t>(ret);
+	QFont::Style _ret = self->style();
+	return static_cast<uintptr_t>(_ret);
 }
 
 int QFontInfo_Weight(const QFontInfo* self) {
@@ -91,8 +83,8 @@ bool QFontInfo_FixedPitch(const QFontInfo* self) {
 }
 
 uintptr_t QFontInfo_StyleHint(const QFontInfo* self) {
-	QFont::StyleHint ret = self->styleHint();
-	return static_cast<uintptr_t>(ret);
+	QFont::StyleHint _ret = self->styleHint();
+	return static_cast<uintptr_t>(_ret);
 }
 
 bool QFontInfo_RawMode(const QFontInfo* self) {

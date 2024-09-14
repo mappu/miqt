@@ -61,30 +61,26 @@ func NewQGraphicsProxyWidget3(parent *QGraphicsItem, wFlags int) *QGraphicsProxy
 }
 
 func (this *QGraphicsProxyWidget) MetaObject() *QMetaObject {
-	ret := C.QGraphicsProxyWidget_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QGraphicsProxyWidget_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QGraphicsProxyWidget_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGraphicsProxyWidget_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGraphicsProxyWidget_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QGraphicsProxyWidget_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGraphicsProxyWidget_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGraphicsProxyWidget_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QGraphicsProxyWidget) SetWidget(widget *QWidget) {
@@ -92,19 +88,15 @@ func (this *QGraphicsProxyWidget) SetWidget(widget *QWidget) {
 }
 
 func (this *QGraphicsProxyWidget) Widget() *QWidget {
-	ret := C.QGraphicsProxyWidget_Widget(this.h)
-	return newQWidget_U(unsafe.Pointer(ret))
+	_ret := C.QGraphicsProxyWidget_Widget(this.h)
+	return newQWidget_U(unsafe.Pointer(_ret))
 }
 
 func (this *QGraphicsProxyWidget) SubWidgetRect(widget *QWidget) *QRectF {
-	ret := C.QGraphicsProxyWidget_SubWidgetRect(this.h, widget.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRectF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRectF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QGraphicsProxyWidget_SubWidgetRect(this.h, widget.cPointer())
+	_goptr := newQRectF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QGraphicsProxyWidget) SetGeometry(rect *QRectF) {
@@ -116,13 +108,13 @@ func (this *QGraphicsProxyWidget) Paint(painter *QPainter, option *QStyleOptionG
 }
 
 func (this *QGraphicsProxyWidget) Type() int {
-	ret := C.QGraphicsProxyWidget_Type(this.h)
-	return (int)(ret)
+	_ret := C.QGraphicsProxyWidget_Type(this.h)
+	return (int)(_ret)
 }
 
 func (this *QGraphicsProxyWidget) CreateProxyForChildWidget(child *QWidget) *QGraphicsProxyWidget {
-	ret := C.QGraphicsProxyWidget_CreateProxyForChildWidget(this.h, child.cPointer())
-	return newQGraphicsProxyWidget_U(unsafe.Pointer(ret))
+	_ret := C.QGraphicsProxyWidget_CreateProxyForChildWidget(this.h, child.cPointer())
+	return newQGraphicsProxyWidget_U(unsafe.Pointer(_ret))
 }
 
 func QGraphicsProxyWidget_Tr2(s string, c string) string {
@@ -130,12 +122,10 @@ func QGraphicsProxyWidget_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGraphicsProxyWidget_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGraphicsProxyWidget_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QGraphicsProxyWidget_Tr3(s string, c string, n int) string {
@@ -143,12 +133,10 @@ func QGraphicsProxyWidget_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGraphicsProxyWidget_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGraphicsProxyWidget_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QGraphicsProxyWidget_TrUtf82(s string, c string) string {
@@ -156,12 +144,10 @@ func QGraphicsProxyWidget_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGraphicsProxyWidget_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGraphicsProxyWidget_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QGraphicsProxyWidget_TrUtf83(s string, c string, n int) string {
@@ -169,14 +155,22 @@ func QGraphicsProxyWidget_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGraphicsProxyWidget_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGraphicsProxyWidget_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
+// Delete this object from C++ memory.
 func (this *QGraphicsProxyWidget) Delete() {
 	C.QGraphicsProxyWidget_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QGraphicsProxyWidget) GoGC() {
+	runtime.SetFinalizer(this, func(this *QGraphicsProxyWidget) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

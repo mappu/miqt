@@ -38,30 +38,26 @@ func newQGraphicsTransform_U(h unsafe.Pointer) *QGraphicsTransform {
 }
 
 func (this *QGraphicsTransform) MetaObject() *QMetaObject {
-	ret := C.QGraphicsTransform_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QGraphicsTransform_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QGraphicsTransform_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGraphicsTransform_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGraphicsTransform_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QGraphicsTransform_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGraphicsTransform_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGraphicsTransform_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QGraphicsTransform) ApplyTo(matrix *QMatrix4x4) {
@@ -73,12 +69,10 @@ func QGraphicsTransform_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGraphicsTransform_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGraphicsTransform_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QGraphicsTransform_Tr3(s string, c string, n int) string {
@@ -86,12 +80,10 @@ func QGraphicsTransform_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGraphicsTransform_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGraphicsTransform_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QGraphicsTransform_TrUtf82(s string, c string) string {
@@ -99,12 +91,10 @@ func QGraphicsTransform_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGraphicsTransform_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGraphicsTransform_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QGraphicsTransform_TrUtf83(s string, c string, n int) string {
@@ -112,16 +102,24 @@ func QGraphicsTransform_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGraphicsTransform_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGraphicsTransform_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
+// Delete this object from C++ memory.
 func (this *QGraphicsTransform) Delete() {
 	C.QGraphicsTransform_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QGraphicsTransform) GoGC() {
+	runtime.SetFinalizer(this, func(this *QGraphicsTransform) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
 
 type QGraphicsScale struct {
@@ -160,41 +158,33 @@ func NewQGraphicsScale2(parent *QObject) *QGraphicsScale {
 }
 
 func (this *QGraphicsScale) MetaObject() *QMetaObject {
-	ret := C.QGraphicsScale_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QGraphicsScale_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QGraphicsScale_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGraphicsScale_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGraphicsScale_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QGraphicsScale_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGraphicsScale_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGraphicsScale_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QGraphicsScale) Origin() *QVector3D {
-	ret := C.QGraphicsScale_Origin(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQVector3D(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QVector3D) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QGraphicsScale_Origin(this.h)
+	_goptr := newQVector3D(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QGraphicsScale) SetOrigin(point *QVector3D) {
@@ -202,8 +192,8 @@ func (this *QGraphicsScale) SetOrigin(point *QVector3D) {
 }
 
 func (this *QGraphicsScale) XScale() float64 {
-	ret := C.QGraphicsScale_XScale(this.h)
-	return (float64)(ret)
+	_ret := C.QGraphicsScale_XScale(this.h)
+	return (float64)(_ret)
 }
 
 func (this *QGraphicsScale) SetXScale(xScale float64) {
@@ -211,8 +201,8 @@ func (this *QGraphicsScale) SetXScale(xScale float64) {
 }
 
 func (this *QGraphicsScale) YScale() float64 {
-	ret := C.QGraphicsScale_YScale(this.h)
-	return (float64)(ret)
+	_ret := C.QGraphicsScale_YScale(this.h)
+	return (float64)(_ret)
 }
 
 func (this *QGraphicsScale) SetYScale(yScale float64) {
@@ -220,8 +210,8 @@ func (this *QGraphicsScale) SetYScale(yScale float64) {
 }
 
 func (this *QGraphicsScale) ZScale() float64 {
-	ret := C.QGraphicsScale_ZScale(this.h)
-	return (float64)(ret)
+	_ret := C.QGraphicsScale_ZScale(this.h)
+	return (float64)(_ret)
 }
 
 func (this *QGraphicsScale) SetZScale(zScale float64) {
@@ -235,61 +225,86 @@ func (this *QGraphicsScale) ApplyTo(matrix *QMatrix4x4) {
 func (this *QGraphicsScale) OriginChanged() {
 	C.QGraphicsScale_OriginChanged(this.h)
 }
-
 func (this *QGraphicsScale) OnOriginChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+	C.QGraphicsScale_connect_OriginChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
+
+//export miqt_exec_callback_QGraphicsScale_OriginChanged
+func miqt_exec_callback_QGraphicsScale_OriginChanged(cb *C.void) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QGraphicsScale_connect_OriginChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	gofunc()
 }
 
 func (this *QGraphicsScale) XScaleChanged() {
 	C.QGraphicsScale_XScaleChanged(this.h)
 }
-
 func (this *QGraphicsScale) OnXScaleChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+	C.QGraphicsScale_connect_XScaleChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
+
+//export miqt_exec_callback_QGraphicsScale_XScaleChanged
+func miqt_exec_callback_QGraphicsScale_XScaleChanged(cb *C.void) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QGraphicsScale_connect_XScaleChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	gofunc()
 }
 
 func (this *QGraphicsScale) YScaleChanged() {
 	C.QGraphicsScale_YScaleChanged(this.h)
 }
-
 func (this *QGraphicsScale) OnYScaleChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+	C.QGraphicsScale_connect_YScaleChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
+
+//export miqt_exec_callback_QGraphicsScale_YScaleChanged
+func miqt_exec_callback_QGraphicsScale_YScaleChanged(cb *C.void) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QGraphicsScale_connect_YScaleChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	gofunc()
 }
 
 func (this *QGraphicsScale) ZScaleChanged() {
 	C.QGraphicsScale_ZScaleChanged(this.h)
 }
-
 func (this *QGraphicsScale) OnZScaleChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+	C.QGraphicsScale_connect_ZScaleChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
+
+//export miqt_exec_callback_QGraphicsScale_ZScaleChanged
+func miqt_exec_callback_QGraphicsScale_ZScaleChanged(cb *C.void) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QGraphicsScale_connect_ZScaleChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	gofunc()
 }
 
 func (this *QGraphicsScale) ScaleChanged() {
 	C.QGraphicsScale_ScaleChanged(this.h)
 }
-
 func (this *QGraphicsScale) OnScaleChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+	C.QGraphicsScale_connect_ScaleChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
+
+//export miqt_exec_callback_QGraphicsScale_ScaleChanged
+func miqt_exec_callback_QGraphicsScale_ScaleChanged(cb *C.void) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QGraphicsScale_connect_ScaleChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	gofunc()
 }
 
 func QGraphicsScale_Tr2(s string, c string) string {
@@ -297,12 +312,10 @@ func QGraphicsScale_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGraphicsScale_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGraphicsScale_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QGraphicsScale_Tr3(s string, c string, n int) string {
@@ -310,12 +323,10 @@ func QGraphicsScale_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGraphicsScale_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGraphicsScale_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QGraphicsScale_TrUtf82(s string, c string) string {
@@ -323,12 +334,10 @@ func QGraphicsScale_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGraphicsScale_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGraphicsScale_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QGraphicsScale_TrUtf83(s string, c string, n int) string {
@@ -336,16 +345,24 @@ func QGraphicsScale_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGraphicsScale_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGraphicsScale_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
+// Delete this object from C++ memory.
 func (this *QGraphicsScale) Delete() {
 	C.QGraphicsScale_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QGraphicsScale) GoGC() {
+	runtime.SetFinalizer(this, func(this *QGraphicsScale) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
 
 type QGraphicsRotation struct {
@@ -384,41 +401,33 @@ func NewQGraphicsRotation2(parent *QObject) *QGraphicsRotation {
 }
 
 func (this *QGraphicsRotation) MetaObject() *QMetaObject {
-	ret := C.QGraphicsRotation_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QGraphicsRotation_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QGraphicsRotation_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGraphicsRotation_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGraphicsRotation_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QGraphicsRotation_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGraphicsRotation_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGraphicsRotation_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QGraphicsRotation) Origin() *QVector3D {
-	ret := C.QGraphicsRotation_Origin(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQVector3D(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QVector3D) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QGraphicsRotation_Origin(this.h)
+	_goptr := newQVector3D(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QGraphicsRotation) SetOrigin(point *QVector3D) {
@@ -426,8 +435,8 @@ func (this *QGraphicsRotation) SetOrigin(point *QVector3D) {
 }
 
 func (this *QGraphicsRotation) Angle() float64 {
-	ret := C.QGraphicsRotation_Angle(this.h)
-	return (float64)(ret)
+	_ret := C.QGraphicsRotation_Angle(this.h)
+	return (float64)(_ret)
 }
 
 func (this *QGraphicsRotation) SetAngle(angle float64) {
@@ -435,14 +444,10 @@ func (this *QGraphicsRotation) SetAngle(angle float64) {
 }
 
 func (this *QGraphicsRotation) Axis() *QVector3D {
-	ret := C.QGraphicsRotation_Axis(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQVector3D(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QVector3D) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QGraphicsRotation_Axis(this.h)
+	_goptr := newQVector3D(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QGraphicsRotation) SetAxis(axis *QVector3D) {
@@ -460,37 +465,52 @@ func (this *QGraphicsRotation) ApplyTo(matrix *QMatrix4x4) {
 func (this *QGraphicsRotation) OriginChanged() {
 	C.QGraphicsRotation_OriginChanged(this.h)
 }
-
 func (this *QGraphicsRotation) OnOriginChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+	C.QGraphicsRotation_connect_OriginChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
+
+//export miqt_exec_callback_QGraphicsRotation_OriginChanged
+func miqt_exec_callback_QGraphicsRotation_OriginChanged(cb *C.void) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QGraphicsRotation_connect_OriginChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	gofunc()
 }
 
 func (this *QGraphicsRotation) AngleChanged() {
 	C.QGraphicsRotation_AngleChanged(this.h)
 }
-
 func (this *QGraphicsRotation) OnAngleChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+	C.QGraphicsRotation_connect_AngleChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
+
+//export miqt_exec_callback_QGraphicsRotation_AngleChanged
+func miqt_exec_callback_QGraphicsRotation_AngleChanged(cb *C.void) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QGraphicsRotation_connect_AngleChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	gofunc()
 }
 
 func (this *QGraphicsRotation) AxisChanged() {
 	C.QGraphicsRotation_AxisChanged(this.h)
 }
-
 func (this *QGraphicsRotation) OnAxisChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+	C.QGraphicsRotation_connect_AxisChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
+
+//export miqt_exec_callback_QGraphicsRotation_AxisChanged
+func miqt_exec_callback_QGraphicsRotation_AxisChanged(cb *C.void) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QGraphicsRotation_connect_AxisChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	gofunc()
 }
 
 func QGraphicsRotation_Tr2(s string, c string) string {
@@ -498,12 +518,10 @@ func QGraphicsRotation_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGraphicsRotation_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGraphicsRotation_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QGraphicsRotation_Tr3(s string, c string, n int) string {
@@ -511,12 +529,10 @@ func QGraphicsRotation_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGraphicsRotation_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGraphicsRotation_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QGraphicsRotation_TrUtf82(s string, c string) string {
@@ -524,12 +540,10 @@ func QGraphicsRotation_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGraphicsRotation_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGraphicsRotation_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QGraphicsRotation_TrUtf83(s string, c string, n int) string {
@@ -537,14 +551,22 @@ func QGraphicsRotation_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGraphicsRotation_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGraphicsRotation_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
+// Delete this object from C++ memory.
 func (this *QGraphicsRotation) Delete() {
 	C.QGraphicsRotation_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QGraphicsRotation) GoGC() {
+	runtime.SetFinalizer(this, func(this *QGraphicsRotation) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"runtime"
 	"unsafe"
 )
 
@@ -42,29 +43,27 @@ func NewQTemporaryDir() *QTemporaryDir {
 
 // NewQTemporaryDir2 constructs a new QTemporaryDir object.
 func NewQTemporaryDir2(templateName string) *QTemporaryDir {
-	templateName_Cstring := C.CString(templateName)
-	defer C.free(unsafe.Pointer(templateName_Cstring))
-	ret := C.QTemporaryDir_new2(templateName_Cstring, C.size_t(len(templateName)))
+	templateName_ms := miqt_strdupg(templateName)
+	defer C.free(templateName_ms)
+	ret := C.QTemporaryDir_new2((*C.struct_miqt_string)(templateName_ms))
 	return newQTemporaryDir(ret)
 }
 
 func (this *QTemporaryDir) IsValid() bool {
-	ret := C.QTemporaryDir_IsValid(this.h)
-	return (bool)(ret)
+	_ret := C.QTemporaryDir_IsValid(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QTemporaryDir) ErrorString() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTemporaryDir_ErrorString(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTemporaryDir_ErrorString(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QTemporaryDir) AutoRemove() bool {
-	ret := C.QTemporaryDir_AutoRemove(this.h)
-	return (bool)(ret)
+	_ret := C.QTemporaryDir_AutoRemove(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QTemporaryDir) SetAutoRemove(b bool) {
@@ -72,30 +71,36 @@ func (this *QTemporaryDir) SetAutoRemove(b bool) {
 }
 
 func (this *QTemporaryDir) Remove() bool {
-	ret := C.QTemporaryDir_Remove(this.h)
-	return (bool)(ret)
+	_ret := C.QTemporaryDir_Remove(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QTemporaryDir) Path() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTemporaryDir_Path(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTemporaryDir_Path(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QTemporaryDir) FilePath(fileName string) string {
-	fileName_Cstring := C.CString(fileName)
-	defer C.free(unsafe.Pointer(fileName_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTemporaryDir_FilePath(this.h, fileName_Cstring, C.size_t(len(fileName)), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	fileName_ms := miqt_strdupg(fileName)
+	defer C.free(fileName_ms)
+	var _ms *C.struct_miqt_string = C.QTemporaryDir_FilePath(this.h, (*C.struct_miqt_string)(fileName_ms))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
+// Delete this object from C++ memory.
 func (this *QTemporaryDir) Delete() {
 	C.QTemporaryDir_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QTemporaryDir) GoGC() {
+	runtime.SetFinalizer(this, func(this *QTemporaryDir) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

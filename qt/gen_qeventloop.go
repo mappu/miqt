@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"runtime"
 	"unsafe"
 )
 
@@ -60,35 +61,31 @@ func NewQEventLoop2(parent *QObject) *QEventLoop {
 }
 
 func (this *QEventLoop) MetaObject() *QMetaObject {
-	ret := C.QEventLoop_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QEventLoop_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QEventLoop_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QEventLoop_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QEventLoop_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QEventLoop_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QEventLoop_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QEventLoop_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QEventLoop) ProcessEvents() bool {
-	ret := C.QEventLoop_ProcessEvents(this.h)
-	return (bool)(ret)
+	_ret := C.QEventLoop_ProcessEvents(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QEventLoop) ProcessEvents2(flags int, maximumTime int) {
@@ -96,8 +93,8 @@ func (this *QEventLoop) ProcessEvents2(flags int, maximumTime int) {
 }
 
 func (this *QEventLoop) Exec() int {
-	ret := C.QEventLoop_Exec(this.h)
-	return (int)(ret)
+	_ret := C.QEventLoop_Exec(this.h)
+	return (int)(_ret)
 }
 
 func (this *QEventLoop) Exit() {
@@ -105,8 +102,8 @@ func (this *QEventLoop) Exit() {
 }
 
 func (this *QEventLoop) IsRunning() bool {
-	ret := C.QEventLoop_IsRunning(this.h)
-	return (bool)(ret)
+	_ret := C.QEventLoop_IsRunning(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QEventLoop) WakeUp() {
@@ -114,8 +111,8 @@ func (this *QEventLoop) WakeUp() {
 }
 
 func (this *QEventLoop) Event(event *QEvent) bool {
-	ret := C.QEventLoop_Event(this.h, event.cPointer())
-	return (bool)(ret)
+	_ret := C.QEventLoop_Event(this.h, event.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QEventLoop) Quit() {
@@ -127,12 +124,10 @@ func QEventLoop_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QEventLoop_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QEventLoop_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QEventLoop_Tr3(s string, c string, n int) string {
@@ -140,12 +135,10 @@ func QEventLoop_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QEventLoop_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QEventLoop_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QEventLoop_TrUtf82(s string, c string) string {
@@ -153,12 +146,10 @@ func QEventLoop_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QEventLoop_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QEventLoop_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QEventLoop_TrUtf83(s string, c string, n int) string {
@@ -166,30 +157,38 @@ func QEventLoop_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QEventLoop_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QEventLoop_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QEventLoop) ProcessEvents1(flags int) bool {
-	ret := C.QEventLoop_ProcessEvents1(this.h, (C.int)(flags))
-	return (bool)(ret)
+	_ret := C.QEventLoop_ProcessEvents1(this.h, (C.int)(flags))
+	return (bool)(_ret)
 }
 
 func (this *QEventLoop) Exec1(flags int) int {
-	ret := C.QEventLoop_Exec1(this.h, (C.int)(flags))
-	return (int)(ret)
+	_ret := C.QEventLoop_Exec1(this.h, (C.int)(flags))
+	return (int)(_ret)
 }
 
 func (this *QEventLoop) Exit1(returnCode int) {
 	C.QEventLoop_Exit1(this.h, (C.int)(returnCode))
 }
 
+// Delete this object from C++ memory.
 func (this *QEventLoop) Delete() {
 	C.QEventLoop_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QEventLoop) GoGC() {
+	runtime.SetFinalizer(this, func(this *QEventLoop) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
 
 type QEventLoopLocker struct {
@@ -232,6 +231,16 @@ func NewQEventLoopLocker3(thread *QThread) *QEventLoopLocker {
 	return newQEventLoopLocker(ret)
 }
 
+// Delete this object from C++ memory.
 func (this *QEventLoopLocker) Delete() {
 	C.QEventLoopLocker_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QEventLoopLocker) GoGC() {
+	runtime.SetFinalizer(this, func(this *QEventLoopLocker) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

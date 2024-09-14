@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -32,8 +34,8 @@ typedef struct QVariant QVariant;
 QTransposeProxyModel* QTransposeProxyModel_new();
 QTransposeProxyModel* QTransposeProxyModel_new2(QObject* parent);
 QMetaObject* QTransposeProxyModel_MetaObject(const QTransposeProxyModel* self);
-void QTransposeProxyModel_Tr(const char* s, char** _out, int* _out_Strlen);
-void QTransposeProxyModel_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QTransposeProxyModel_Tr(const char* s);
+struct miqt_string* QTransposeProxyModel_TrUtf8(const char* s);
 void QTransposeProxyModel_SetSourceModel(QTransposeProxyModel* self, QAbstractItemModel* newSourceModel);
 int QTransposeProxyModel_RowCount(const QTransposeProxyModel* self);
 int QTransposeProxyModel_ColumnCount(const QTransposeProxyModel* self);
@@ -51,10 +53,10 @@ bool QTransposeProxyModel_InsertColumns(QTransposeProxyModel* self, int column, 
 bool QTransposeProxyModel_RemoveColumns(QTransposeProxyModel* self, int column, int count);
 bool QTransposeProxyModel_MoveColumns(QTransposeProxyModel* self, QModelIndex* sourceParent, int sourceColumn, int count, QModelIndex* destinationParent, int destinationChild);
 void QTransposeProxyModel_Sort(QTransposeProxyModel* self, int column);
-void QTransposeProxyModel_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QTransposeProxyModel_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QTransposeProxyModel_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QTransposeProxyModel_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QTransposeProxyModel_Tr2(const char* s, const char* c);
+struct miqt_string* QTransposeProxyModel_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QTransposeProxyModel_TrUtf82(const char* s, const char* c);
+struct miqt_string* QTransposeProxyModel_TrUtf83(const char* s, const char* c, int n);
 int QTransposeProxyModel_RowCount1(const QTransposeProxyModel* self, QModelIndex* parent);
 int QTransposeProxyModel_ColumnCount1(const QTransposeProxyModel* self, QModelIndex* parent);
 QVariant* QTransposeProxyModel_HeaderData3(const QTransposeProxyModel* self, int section, uintptr_t orientation, int role);

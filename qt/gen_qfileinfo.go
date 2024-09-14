@@ -43,9 +43,9 @@ func NewQFileInfo() *QFileInfo {
 
 // NewQFileInfo2 constructs a new QFileInfo object.
 func NewQFileInfo2(file string) *QFileInfo {
-	file_Cstring := C.CString(file)
-	defer C.free(unsafe.Pointer(file_Cstring))
-	ret := C.QFileInfo_new2(file_Cstring, C.size_t(len(file)))
+	file_ms := miqt_strdupg(file)
+	defer C.free(file_ms)
+	ret := C.QFileInfo_new2((*C.struct_miqt_string)(file_ms))
 	return newQFileInfo(ret)
 }
 
@@ -57,9 +57,9 @@ func NewQFileInfo3(file *QFile) *QFileInfo {
 
 // NewQFileInfo4 constructs a new QFileInfo object.
 func NewQFileInfo4(dir *QDir, file string) *QFileInfo {
-	file_Cstring := C.CString(file)
-	defer C.free(unsafe.Pointer(file_Cstring))
-	ret := C.QFileInfo_new4(dir.cPointer(), file_Cstring, C.size_t(len(file)))
+	file_ms := miqt_strdupg(file)
+	defer C.free(file_ms)
+	ret := C.QFileInfo_new4(dir.cPointer(), (*C.struct_miqt_string)(file_ms))
 	return newQFileInfo(ret)
 }
 
@@ -78,19 +78,19 @@ func (this *QFileInfo) Swap(other *QFileInfo) {
 }
 
 func (this *QFileInfo) OperatorEqual(fileinfo *QFileInfo) bool {
-	ret := C.QFileInfo_OperatorEqual(this.h, fileinfo.cPointer())
-	return (bool)(ret)
+	_ret := C.QFileInfo_OperatorEqual(this.h, fileinfo.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QFileInfo) OperatorNotEqual(fileinfo *QFileInfo) bool {
-	ret := C.QFileInfo_OperatorNotEqual(this.h, fileinfo.cPointer())
-	return (bool)(ret)
+	_ret := C.QFileInfo_OperatorNotEqual(this.h, fileinfo.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QFileInfo) SetFile(file string) {
-	file_Cstring := C.CString(file)
-	defer C.free(unsafe.Pointer(file_Cstring))
-	C.QFileInfo_SetFile(this.h, file_Cstring, C.size_t(len(file)))
+	file_ms := miqt_strdupg(file)
+	defer C.free(file_ms)
+	C.QFileInfo_SetFile(this.h, (*C.struct_miqt_string)(file_ms))
 }
 
 func (this *QFileInfo) SetFileWithFile(file *QFile) {
@@ -98,21 +98,21 @@ func (this *QFileInfo) SetFileWithFile(file *QFile) {
 }
 
 func (this *QFileInfo) SetFile2(dir *QDir, file string) {
-	file_Cstring := C.CString(file)
-	defer C.free(unsafe.Pointer(file_Cstring))
-	C.QFileInfo_SetFile2(this.h, dir.cPointer(), file_Cstring, C.size_t(len(file)))
+	file_ms := miqt_strdupg(file)
+	defer C.free(file_ms)
+	C.QFileInfo_SetFile2(this.h, dir.cPointer(), (*C.struct_miqt_string)(file_ms))
 }
 
 func (this *QFileInfo) Exists() bool {
-	ret := C.QFileInfo_Exists(this.h)
-	return (bool)(ret)
+	_ret := C.QFileInfo_Exists(this.h)
+	return (bool)(_ret)
 }
 
 func QFileInfo_ExistsWithFile(file string) bool {
-	file_Cstring := C.CString(file)
-	defer C.free(unsafe.Pointer(file_Cstring))
-	ret := C.QFileInfo_ExistsWithFile(file_Cstring, C.size_t(len(file)))
-	return (bool)(ret)
+	file_ms := miqt_strdupg(file)
+	defer C.free(file_ms)
+	_ret := C.QFileInfo_ExistsWithFile((*C.struct_miqt_string)(file_ms))
+	return (bool)(_ret)
 }
 
 func (this *QFileInfo) Refresh() {
@@ -120,351 +120,297 @@ func (this *QFileInfo) Refresh() {
 }
 
 func (this *QFileInfo) FilePath() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QFileInfo_FilePath(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QFileInfo_FilePath(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QFileInfo) AbsoluteFilePath() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QFileInfo_AbsoluteFilePath(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QFileInfo_AbsoluteFilePath(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QFileInfo) CanonicalFilePath() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QFileInfo_CanonicalFilePath(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QFileInfo_CanonicalFilePath(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QFileInfo) FileName() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QFileInfo_FileName(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QFileInfo_FileName(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QFileInfo) BaseName() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QFileInfo_BaseName(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QFileInfo_BaseName(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QFileInfo) CompleteBaseName() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QFileInfo_CompleteBaseName(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QFileInfo_CompleteBaseName(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QFileInfo) Suffix() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QFileInfo_Suffix(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QFileInfo_Suffix(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QFileInfo) BundleName() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QFileInfo_BundleName(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QFileInfo_BundleName(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QFileInfo) CompleteSuffix() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QFileInfo_CompleteSuffix(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QFileInfo_CompleteSuffix(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QFileInfo) Path() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QFileInfo_Path(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QFileInfo_Path(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QFileInfo) AbsolutePath() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QFileInfo_AbsolutePath(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QFileInfo_AbsolutePath(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QFileInfo) CanonicalPath() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QFileInfo_CanonicalPath(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QFileInfo_CanonicalPath(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QFileInfo) Dir() *QDir {
-	ret := C.QFileInfo_Dir(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQDir(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QDir) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QFileInfo_Dir(this.h)
+	_goptr := newQDir(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QFileInfo) AbsoluteDir() *QDir {
-	ret := C.QFileInfo_AbsoluteDir(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQDir(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QDir) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QFileInfo_AbsoluteDir(this.h)
+	_goptr := newQDir(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QFileInfo) IsReadable() bool {
-	ret := C.QFileInfo_IsReadable(this.h)
-	return (bool)(ret)
+	_ret := C.QFileInfo_IsReadable(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QFileInfo) IsWritable() bool {
-	ret := C.QFileInfo_IsWritable(this.h)
-	return (bool)(ret)
+	_ret := C.QFileInfo_IsWritable(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QFileInfo) IsExecutable() bool {
-	ret := C.QFileInfo_IsExecutable(this.h)
-	return (bool)(ret)
+	_ret := C.QFileInfo_IsExecutable(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QFileInfo) IsHidden() bool {
-	ret := C.QFileInfo_IsHidden(this.h)
-	return (bool)(ret)
+	_ret := C.QFileInfo_IsHidden(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QFileInfo) IsNativePath() bool {
-	ret := C.QFileInfo_IsNativePath(this.h)
-	return (bool)(ret)
+	_ret := C.QFileInfo_IsNativePath(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QFileInfo) IsRelative() bool {
-	ret := C.QFileInfo_IsRelative(this.h)
-	return (bool)(ret)
+	_ret := C.QFileInfo_IsRelative(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QFileInfo) IsAbsolute() bool {
-	ret := C.QFileInfo_IsAbsolute(this.h)
-	return (bool)(ret)
+	_ret := C.QFileInfo_IsAbsolute(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QFileInfo) MakeAbsolute() bool {
-	ret := C.QFileInfo_MakeAbsolute(this.h)
-	return (bool)(ret)
+	_ret := C.QFileInfo_MakeAbsolute(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QFileInfo) IsFile() bool {
-	ret := C.QFileInfo_IsFile(this.h)
-	return (bool)(ret)
+	_ret := C.QFileInfo_IsFile(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QFileInfo) IsDir() bool {
-	ret := C.QFileInfo_IsDir(this.h)
-	return (bool)(ret)
+	_ret := C.QFileInfo_IsDir(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QFileInfo) IsSymLink() bool {
-	ret := C.QFileInfo_IsSymLink(this.h)
-	return (bool)(ret)
+	_ret := C.QFileInfo_IsSymLink(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QFileInfo) IsSymbolicLink() bool {
-	ret := C.QFileInfo_IsSymbolicLink(this.h)
-	return (bool)(ret)
+	_ret := C.QFileInfo_IsSymbolicLink(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QFileInfo) IsShortcut() bool {
-	ret := C.QFileInfo_IsShortcut(this.h)
-	return (bool)(ret)
+	_ret := C.QFileInfo_IsShortcut(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QFileInfo) IsJunction() bool {
-	ret := C.QFileInfo_IsJunction(this.h)
-	return (bool)(ret)
+	_ret := C.QFileInfo_IsJunction(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QFileInfo) IsRoot() bool {
-	ret := C.QFileInfo_IsRoot(this.h)
-	return (bool)(ret)
+	_ret := C.QFileInfo_IsRoot(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QFileInfo) IsBundle() bool {
-	ret := C.QFileInfo_IsBundle(this.h)
-	return (bool)(ret)
+	_ret := C.QFileInfo_IsBundle(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QFileInfo) ReadLink() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QFileInfo_ReadLink(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QFileInfo_ReadLink(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QFileInfo) SymLinkTarget() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QFileInfo_SymLinkTarget(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QFileInfo_SymLinkTarget(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QFileInfo) Owner() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QFileInfo_Owner(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QFileInfo_Owner(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QFileInfo) OwnerId() uint {
-	ret := C.QFileInfo_OwnerId(this.h)
-	return (uint)(ret)
+	_ret := C.QFileInfo_OwnerId(this.h)
+	return (uint)(_ret)
 }
 
 func (this *QFileInfo) Group() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QFileInfo_Group(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QFileInfo_Group(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QFileInfo) GroupId() uint {
-	ret := C.QFileInfo_GroupId(this.h)
-	return (uint)(ret)
+	_ret := C.QFileInfo_GroupId(this.h)
+	return (uint)(_ret)
 }
 
 func (this *QFileInfo) Permission(permissions int) bool {
-	ret := C.QFileInfo_Permission(this.h, (C.int)(permissions))
-	return (bool)(ret)
+	_ret := C.QFileInfo_Permission(this.h, (C.int)(permissions))
+	return (bool)(_ret)
 }
 
 func (this *QFileInfo) Permissions() int {
-	ret := C.QFileInfo_Permissions(this.h)
-	return (int)(ret)
+	_ret := C.QFileInfo_Permissions(this.h)
+	return (int)(_ret)
 }
 
 func (this *QFileInfo) Size() int64 {
-	ret := C.QFileInfo_Size(this.h)
-	return (int64)(ret)
+	_ret := C.QFileInfo_Size(this.h)
+	return (int64)(_ret)
 }
 
 func (this *QFileInfo) Created() *QDateTime {
-	ret := C.QFileInfo_Created(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQDateTime(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QDateTime) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QFileInfo_Created(this.h)
+	_goptr := newQDateTime(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QFileInfo) BirthTime() *QDateTime {
-	ret := C.QFileInfo_BirthTime(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQDateTime(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QDateTime) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QFileInfo_BirthTime(this.h)
+	_goptr := newQDateTime(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QFileInfo) MetadataChangeTime() *QDateTime {
-	ret := C.QFileInfo_MetadataChangeTime(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQDateTime(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QDateTime) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QFileInfo_MetadataChangeTime(this.h)
+	_goptr := newQDateTime(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QFileInfo) LastModified() *QDateTime {
-	ret := C.QFileInfo_LastModified(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQDateTime(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QDateTime) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QFileInfo_LastModified(this.h)
+	_goptr := newQDateTime(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QFileInfo) LastRead() *QDateTime {
-	ret := C.QFileInfo_LastRead(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQDateTime(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QDateTime) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QFileInfo_LastRead(this.h)
+	_goptr := newQDateTime(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QFileInfo) FileTime(time uintptr) *QDateTime {
-	ret := C.QFileInfo_FileTime(this.h, (C.uintptr_t)(time))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQDateTime(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QDateTime) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QFileInfo_FileTime(this.h, (C.uintptr_t)(time))
+	_goptr := newQDateTime(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QFileInfo) Caching() bool {
-	ret := C.QFileInfo_Caching(this.h)
-	return (bool)(ret)
+	_ret := C.QFileInfo_Caching(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QFileInfo) SetCaching(on bool) {
 	C.QFileInfo_SetCaching(this.h, (C.bool)(on))
 }
 
+// Delete this object from C++ memory.
 func (this *QFileInfo) Delete() {
 	C.QFileInfo_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QFileInfo) GoGC() {
+	runtime.SetFinalizer(this, func(this *QFileInfo) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

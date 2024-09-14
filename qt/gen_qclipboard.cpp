@@ -7,33 +7,25 @@
 #include <QByteArray>
 #include <cstring>
 #include "qclipboard.h"
-
 #include "gen_qclipboard.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QMetaObject* QClipboard_MetaObject(const QClipboard* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void QClipboard_Tr(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QClipboard::tr(s);
+struct miqt_string* QClipboard_Tr(const char* s) {
+	QString _ret = QClipboard::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QClipboard_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QClipboard::trUtf8(s);
+struct miqt_string* QClipboard_TrUtf8(const char* s) {
+	QString _ret = QClipboard::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QClipboard_Clear(QClipboard* self) {
@@ -60,27 +52,23 @@ bool QClipboard_OwnsFindBuffer(const QClipboard* self) {
 	return self->ownsFindBuffer();
 }
 
-void QClipboard_Text(const QClipboard* self, char** _out, int* _out_Strlen) {
-	QString ret = self->text();
+struct miqt_string* QClipboard_Text(const QClipboard* self) {
+	QString _ret = self->text();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QClipboard_TextWithSubtype(const QClipboard* self, const char* subtype, size_t subtype_Strlen, char** _out, int* _out_Strlen) {
-	QString subtype_QString = QString::fromUtf8(subtype, subtype_Strlen);
-	QString ret = self->text(subtype_QString);
+struct miqt_string* QClipboard_TextWithSubtype(const QClipboard* self, struct miqt_string* subtype) {
+	QString subtype_QString = QString::fromUtf8(&subtype->data, subtype->len);
+	QString _ret = self->text(subtype_QString);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QClipboard_SetText(QClipboard* self, const char* param1, size_t param1_Strlen) {
-	QString param1_QString = QString::fromUtf8(param1, param1_Strlen);
+void QClipboard_SetText(QClipboard* self, struct miqt_string* param1) {
+	QString param1_QString = QString::fromUtf8(&param1->data, param1->len);
 	self->setText(param1_QString);
 }
 
@@ -93,15 +81,15 @@ void QClipboard_SetMimeData(QClipboard* self, QMimeData* data) {
 }
 
 QImage* QClipboard_Image(const QClipboard* self) {
-	QImage ret = self->image();
+	QImage _ret = self->image();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QImage*>(new QImage(ret));
+	return static_cast<QImage*>(new QImage(_ret));
 }
 
 QPixmap* QClipboard_Pixmap(const QClipboard* self) {
-	QPixmap ret = self->pixmap();
+	QPixmap _ret = self->pixmap();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPixmap*>(new QPixmap(ret));
+	return static_cast<QPixmap*>(new QPixmap(_ret));
 }
 
 void QClipboard_SetImage(QClipboard* self, QImage* param1) {
@@ -118,7 +106,9 @@ void QClipboard_Changed(QClipboard* self, uintptr_t mode) {
 
 void QClipboard_connect_Changed(QClipboard* self, void* slot) {
 	QClipboard::connect(self, static_cast<void (QClipboard::*)(QClipboard::Mode)>(&QClipboard::changed), self, [=](QClipboard::Mode mode) {
-		miqt_exec_callback(slot, 0, nullptr);
+		QClipboard::Mode mode_ret = mode;
+		uintptr_t sigval1 = static_cast<uintptr_t>(mode_ret);
+		miqt_exec_callback_QClipboard_Changed(slot, sigval1);
 	});
 }
 
@@ -128,7 +118,7 @@ void QClipboard_SelectionChanged(QClipboard* self) {
 
 void QClipboard_connect_SelectionChanged(QClipboard* self, void* slot) {
 	QClipboard::connect(self, static_cast<void (QClipboard::*)()>(&QClipboard::selectionChanged), self, [=]() {
-		miqt_exec_callback(slot, 0, nullptr);
+		miqt_exec_callback_QClipboard_SelectionChanged(slot);
 	});
 }
 
@@ -138,7 +128,7 @@ void QClipboard_FindBufferChanged(QClipboard* self) {
 
 void QClipboard_connect_FindBufferChanged(QClipboard* self, void* slot) {
 	QClipboard::connect(self, static_cast<void (QClipboard::*)()>(&QClipboard::findBufferChanged), self, [=]() {
-		miqt_exec_callback(slot, 0, nullptr);
+		miqt_exec_callback_QClipboard_FindBufferChanged(slot);
 	});
 }
 
@@ -148,71 +138,59 @@ void QClipboard_DataChanged(QClipboard* self) {
 
 void QClipboard_connect_DataChanged(QClipboard* self, void* slot) {
 	QClipboard::connect(self, static_cast<void (QClipboard::*)()>(&QClipboard::dataChanged), self, [=]() {
-		miqt_exec_callback(slot, 0, nullptr);
+		miqt_exec_callback_QClipboard_DataChanged(slot);
 	});
 }
 
-void QClipboard_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QClipboard::tr(s, c);
+struct miqt_string* QClipboard_Tr2(const char* s, const char* c) {
+	QString _ret = QClipboard::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QClipboard_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QClipboard::tr(s, c, static_cast<int>(n));
+struct miqt_string* QClipboard_Tr3(const char* s, const char* c, int n) {
+	QString _ret = QClipboard::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QClipboard_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QClipboard::trUtf8(s, c);
+struct miqt_string* QClipboard_TrUtf82(const char* s, const char* c) {
+	QString _ret = QClipboard::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QClipboard_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QClipboard::trUtf8(s, c, static_cast<int>(n));
+struct miqt_string* QClipboard_TrUtf83(const char* s, const char* c, int n) {
+	QString _ret = QClipboard::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QClipboard_Clear1(QClipboard* self, uintptr_t mode) {
 	self->clear(static_cast<QClipboard::Mode>(mode));
 }
 
-void QClipboard_Text1(const QClipboard* self, uintptr_t mode, char** _out, int* _out_Strlen) {
-	QString ret = self->text(static_cast<QClipboard::Mode>(mode));
+struct miqt_string* QClipboard_Text1(const QClipboard* self, uintptr_t mode) {
+	QString _ret = self->text(static_cast<QClipboard::Mode>(mode));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QClipboard_Text2(const QClipboard* self, const char* subtype, size_t subtype_Strlen, uintptr_t mode, char** _out, int* _out_Strlen) {
-	QString subtype_QString = QString::fromUtf8(subtype, subtype_Strlen);
-	QString ret = self->text(subtype_QString, static_cast<QClipboard::Mode>(mode));
+struct miqt_string* QClipboard_Text2(const QClipboard* self, struct miqt_string* subtype, uintptr_t mode) {
+	QString subtype_QString = QString::fromUtf8(&subtype->data, subtype->len);
+	QString _ret = self->text(subtype_QString, static_cast<QClipboard::Mode>(mode));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QClipboard_SetText2(QClipboard* self, const char* param1, size_t param1_Strlen, uintptr_t mode) {
-	QString param1_QString = QString::fromUtf8(param1, param1_Strlen);
+void QClipboard_SetText2(QClipboard* self, struct miqt_string* param1, uintptr_t mode) {
+	QString param1_QString = QString::fromUtf8(&param1->data, param1->len);
 	self->setText(param1_QString, static_cast<QClipboard::Mode>(mode));
 }
 
@@ -225,15 +203,15 @@ void QClipboard_SetMimeData2(QClipboard* self, QMimeData* data, uintptr_t mode) 
 }
 
 QImage* QClipboard_Image1(const QClipboard* self, uintptr_t mode) {
-	QImage ret = self->image(static_cast<QClipboard::Mode>(mode));
+	QImage _ret = self->image(static_cast<QClipboard::Mode>(mode));
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QImage*>(new QImage(ret));
+	return static_cast<QImage*>(new QImage(_ret));
 }
 
 QPixmap* QClipboard_Pixmap1(const QClipboard* self, uintptr_t mode) {
-	QPixmap ret = self->pixmap(static_cast<QClipboard::Mode>(mode));
+	QPixmap _ret = self->pixmap(static_cast<QClipboard::Mode>(mode));
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPixmap*>(new QPixmap(ret));
+	return static_cast<QPixmap*>(new QPixmap(_ret));
 }
 
 void QClipboard_SetImage2(QClipboard* self, QImage* param1, uintptr_t mode) {

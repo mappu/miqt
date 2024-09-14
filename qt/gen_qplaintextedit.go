@@ -52,9 +52,9 @@ func NewQPlainTextEdit() *QPlainTextEdit {
 
 // NewQPlainTextEdit2 constructs a new QPlainTextEdit object.
 func NewQPlainTextEdit2(text string) *QPlainTextEdit {
-	text_Cstring := C.CString(text)
-	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QPlainTextEdit_new2(text_Cstring, C.size_t(len(text)))
+	text_ms := miqt_strdupg(text)
+	defer C.free(text_ms)
+	ret := C.QPlainTextEdit_new2((*C.struct_miqt_string)(text_ms))
 	return newQPlainTextEdit(ret)
 }
 
@@ -66,37 +66,33 @@ func NewQPlainTextEdit3(parent *QWidget) *QPlainTextEdit {
 
 // NewQPlainTextEdit4 constructs a new QPlainTextEdit object.
 func NewQPlainTextEdit4(text string, parent *QWidget) *QPlainTextEdit {
-	text_Cstring := C.CString(text)
-	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QPlainTextEdit_new4(text_Cstring, C.size_t(len(text)), parent.cPointer())
+	text_ms := miqt_strdupg(text)
+	defer C.free(text_ms)
+	ret := C.QPlainTextEdit_new4((*C.struct_miqt_string)(text_ms), parent.cPointer())
 	return newQPlainTextEdit(ret)
 }
 
 func (this *QPlainTextEdit) MetaObject() *QMetaObject {
-	ret := C.QPlainTextEdit_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QPlainTextEdit_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QPlainTextEdit_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QPlainTextEdit_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QPlainTextEdit_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QPlainTextEdit_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QPlainTextEdit_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QPlainTextEdit_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QPlainTextEdit) SetDocument(document *QTextDocument) {
@@ -104,23 +100,21 @@ func (this *QPlainTextEdit) SetDocument(document *QTextDocument) {
 }
 
 func (this *QPlainTextEdit) Document() *QTextDocument {
-	ret := C.QPlainTextEdit_Document(this.h)
-	return newQTextDocument_U(unsafe.Pointer(ret))
+	_ret := C.QPlainTextEdit_Document(this.h)
+	return newQTextDocument_U(unsafe.Pointer(_ret))
 }
 
 func (this *QPlainTextEdit) SetPlaceholderText(placeholderText string) {
-	placeholderText_Cstring := C.CString(placeholderText)
-	defer C.free(unsafe.Pointer(placeholderText_Cstring))
-	C.QPlainTextEdit_SetPlaceholderText(this.h, placeholderText_Cstring, C.size_t(len(placeholderText)))
+	placeholderText_ms := miqt_strdupg(placeholderText)
+	defer C.free(placeholderText_ms)
+	C.QPlainTextEdit_SetPlaceholderText(this.h, (*C.struct_miqt_string)(placeholderText_ms))
 }
 
 func (this *QPlainTextEdit) PlaceholderText() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QPlainTextEdit_PlaceholderText(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QPlainTextEdit_PlaceholderText(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QPlainTextEdit) SetTextCursor(cursor *QTextCursor) {
@@ -128,19 +122,15 @@ func (this *QPlainTextEdit) SetTextCursor(cursor *QTextCursor) {
 }
 
 func (this *QPlainTextEdit) TextCursor() *QTextCursor {
-	ret := C.QPlainTextEdit_TextCursor(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQTextCursor(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QTextCursor) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QPlainTextEdit_TextCursor(this.h)
+	_goptr := newQTextCursor(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QPlainTextEdit) IsReadOnly() bool {
-	ret := C.QPlainTextEdit_IsReadOnly(this.h)
-	return (bool)(ret)
+	_ret := C.QPlainTextEdit_IsReadOnly(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QPlainTextEdit) SetReadOnly(ro bool) {
@@ -152,8 +142,8 @@ func (this *QPlainTextEdit) SetTextInteractionFlags(flags int) {
 }
 
 func (this *QPlainTextEdit) TextInteractionFlags() int {
-	ret := C.QPlainTextEdit_TextInteractionFlags(this.h)
-	return (int)(ret)
+	_ret := C.QPlainTextEdit_TextInteractionFlags(this.h)
+	return (int)(_ret)
 }
 
 func (this *QPlainTextEdit) MergeCurrentCharFormat(modifier *QTextCharFormat) {
@@ -165,19 +155,15 @@ func (this *QPlainTextEdit) SetCurrentCharFormat(format *QTextCharFormat) {
 }
 
 func (this *QPlainTextEdit) CurrentCharFormat() *QTextCharFormat {
-	ret := C.QPlainTextEdit_CurrentCharFormat(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQTextCharFormat(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QTextCharFormat) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QPlainTextEdit_CurrentCharFormat(this.h)
+	_goptr := newQTextCharFormat(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QPlainTextEdit) TabChangesFocus() bool {
-	ret := C.QPlainTextEdit_TabChangesFocus(this.h)
-	return (bool)(ret)
+	_ret := C.QPlainTextEdit_TabChangesFocus(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QPlainTextEdit) SetTabChangesFocus(b bool) {
@@ -185,23 +171,21 @@ func (this *QPlainTextEdit) SetTabChangesFocus(b bool) {
 }
 
 func (this *QPlainTextEdit) SetDocumentTitle(title string) {
-	title_Cstring := C.CString(title)
-	defer C.free(unsafe.Pointer(title_Cstring))
-	C.QPlainTextEdit_SetDocumentTitle(this.h, title_Cstring, C.size_t(len(title)))
+	title_ms := miqt_strdupg(title)
+	defer C.free(title_ms)
+	C.QPlainTextEdit_SetDocumentTitle(this.h, (*C.struct_miqt_string)(title_ms))
 }
 
 func (this *QPlainTextEdit) DocumentTitle() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QPlainTextEdit_DocumentTitle(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QPlainTextEdit_DocumentTitle(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QPlainTextEdit) IsUndoRedoEnabled() bool {
-	ret := C.QPlainTextEdit_IsUndoRedoEnabled(this.h)
-	return (bool)(ret)
+	_ret := C.QPlainTextEdit_IsUndoRedoEnabled(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QPlainTextEdit) SetUndoRedoEnabled(enable bool) {
@@ -213,13 +197,13 @@ func (this *QPlainTextEdit) SetMaximumBlockCount(maximum int) {
 }
 
 func (this *QPlainTextEdit) MaximumBlockCount() int {
-	ret := C.QPlainTextEdit_MaximumBlockCount(this.h)
-	return (int)(ret)
+	_ret := C.QPlainTextEdit_MaximumBlockCount(this.h)
+	return (int)(_ret)
 }
 
 func (this *QPlainTextEdit) LineWrapMode() QPlainTextEdit__LineWrapMode {
-	ret := C.QPlainTextEdit_LineWrapMode(this.h)
-	return (QPlainTextEdit__LineWrapMode)(ret)
+	_ret := C.QPlainTextEdit_LineWrapMode(this.h)
+	return (QPlainTextEdit__LineWrapMode)(_ret)
 }
 
 func (this *QPlainTextEdit) SetLineWrapMode(mode QPlainTextEdit__LineWrapMode) {
@@ -227,8 +211,8 @@ func (this *QPlainTextEdit) SetLineWrapMode(mode QPlainTextEdit__LineWrapMode) {
 }
 
 func (this *QPlainTextEdit) WordWrapMode() QTextOption__WrapMode {
-	ret := C.QPlainTextEdit_WordWrapMode(this.h)
-	return (QTextOption__WrapMode)(ret)
+	_ret := C.QPlainTextEdit_WordWrapMode(this.h)
+	return (QTextOption__WrapMode)(_ret)
 }
 
 func (this *QPlainTextEdit) SetWordWrapMode(policy QTextOption__WrapMode) {
@@ -240,8 +224,8 @@ func (this *QPlainTextEdit) SetBackgroundVisible(visible bool) {
 }
 
 func (this *QPlainTextEdit) BackgroundVisible() bool {
-	ret := C.QPlainTextEdit_BackgroundVisible(this.h)
-	return (bool)(ret)
+	_ret := C.QPlainTextEdit_BackgroundVisible(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QPlainTextEdit) SetCenterOnScroll(enabled bool) {
@@ -249,34 +233,32 @@ func (this *QPlainTextEdit) SetCenterOnScroll(enabled bool) {
 }
 
 func (this *QPlainTextEdit) CenterOnScroll() bool {
-	ret := C.QPlainTextEdit_CenterOnScroll(this.h)
-	return (bool)(ret)
+	_ret := C.QPlainTextEdit_CenterOnScroll(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QPlainTextEdit) Find(exp string) bool {
-	exp_Cstring := C.CString(exp)
-	defer C.free(unsafe.Pointer(exp_Cstring))
-	ret := C.QPlainTextEdit_Find(this.h, exp_Cstring, C.size_t(len(exp)))
-	return (bool)(ret)
+	exp_ms := miqt_strdupg(exp)
+	defer C.free(exp_ms)
+	_ret := C.QPlainTextEdit_Find(this.h, (*C.struct_miqt_string)(exp_ms))
+	return (bool)(_ret)
 }
 
 func (this *QPlainTextEdit) FindWithExp(exp *QRegExp) bool {
-	ret := C.QPlainTextEdit_FindWithExp(this.h, exp.cPointer())
-	return (bool)(ret)
+	_ret := C.QPlainTextEdit_FindWithExp(this.h, exp.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QPlainTextEdit) Find2(exp *QRegularExpression) bool {
-	ret := C.QPlainTextEdit_Find2(this.h, exp.cPointer())
-	return (bool)(ret)
+	_ret := C.QPlainTextEdit_Find2(this.h, exp.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QPlainTextEdit) ToPlainText() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QPlainTextEdit_ToPlainText(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QPlainTextEdit_ToPlainText(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QPlainTextEdit) EnsureCursorVisible() {
@@ -284,71 +266,53 @@ func (this *QPlainTextEdit) EnsureCursorVisible() {
 }
 
 func (this *QPlainTextEdit) LoadResource(typeVal int, name *QUrl) *QVariant {
-	ret := C.QPlainTextEdit_LoadResource(this.h, (C.int)(typeVal), name.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQVariant(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QVariant) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QPlainTextEdit_LoadResource(this.h, (C.int)(typeVal), name.cPointer())
+	_goptr := newQVariant(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QPlainTextEdit) CreateStandardContextMenu() *QMenu {
-	ret := C.QPlainTextEdit_CreateStandardContextMenu(this.h)
-	return newQMenu_U(unsafe.Pointer(ret))
+	_ret := C.QPlainTextEdit_CreateStandardContextMenu(this.h)
+	return newQMenu_U(unsafe.Pointer(_ret))
 }
 
 func (this *QPlainTextEdit) CreateStandardContextMenuWithPosition(position *QPoint) *QMenu {
-	ret := C.QPlainTextEdit_CreateStandardContextMenuWithPosition(this.h, position.cPointer())
-	return newQMenu_U(unsafe.Pointer(ret))
+	_ret := C.QPlainTextEdit_CreateStandardContextMenuWithPosition(this.h, position.cPointer())
+	return newQMenu_U(unsafe.Pointer(_ret))
 }
 
 func (this *QPlainTextEdit) CursorForPosition(pos *QPoint) *QTextCursor {
-	ret := C.QPlainTextEdit_CursorForPosition(this.h, pos.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQTextCursor(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QTextCursor) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QPlainTextEdit_CursorForPosition(this.h, pos.cPointer())
+	_goptr := newQTextCursor(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QPlainTextEdit) CursorRect(cursor *QTextCursor) *QRect {
-	ret := C.QPlainTextEdit_CursorRect(this.h, cursor.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRect(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRect) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QPlainTextEdit_CursorRect(this.h, cursor.cPointer())
+	_goptr := newQRect(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QPlainTextEdit) CursorRect2() *QRect {
-	ret := C.QPlainTextEdit_CursorRect2(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRect(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRect) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QPlainTextEdit_CursorRect2(this.h)
+	_goptr := newQRect(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QPlainTextEdit) AnchorAt(pos *QPoint) string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QPlainTextEdit_AnchorAt(this.h, pos.cPointer(), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QPlainTextEdit_AnchorAt(this.h, pos.cPointer())
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QPlainTextEdit) OverwriteMode() bool {
-	ret := C.QPlainTextEdit_OverwriteMode(this.h)
-	return (bool)(ret)
+	_ret := C.QPlainTextEdit_OverwriteMode(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QPlainTextEdit) SetOverwriteMode(overwrite bool) {
@@ -356,8 +320,8 @@ func (this *QPlainTextEdit) SetOverwriteMode(overwrite bool) {
 }
 
 func (this *QPlainTextEdit) TabStopWidth() int {
-	ret := C.QPlainTextEdit_TabStopWidth(this.h)
-	return (int)(ret)
+	_ret := C.QPlainTextEdit_TabStopWidth(this.h)
+	return (int)(_ret)
 }
 
 func (this *QPlainTextEdit) SetTabStopWidth(width int) {
@@ -365,8 +329,8 @@ func (this *QPlainTextEdit) SetTabStopWidth(width int) {
 }
 
 func (this *QPlainTextEdit) TabStopDistance() float64 {
-	ret := C.QPlainTextEdit_TabStopDistance(this.h)
-	return (float64)(ret)
+	_ret := C.QPlainTextEdit_TabStopDistance(this.h)
+	return (float64)(_ret)
 }
 
 func (this *QPlainTextEdit) SetTabStopDistance(distance float64) {
@@ -374,8 +338,8 @@ func (this *QPlainTextEdit) SetTabStopDistance(distance float64) {
 }
 
 func (this *QPlainTextEdit) CursorWidth() int {
-	ret := C.QPlainTextEdit_CursorWidth(this.h)
-	return (int)(ret)
+	_ret := C.QPlainTextEdit_CursorWidth(this.h)
+	return (int)(_ret)
 }
 
 func (this *QPlainTextEdit) SetCursorWidth(width int) {
@@ -389,20 +353,20 @@ func (this *QPlainTextEdit) SetExtraSelections(selections []QTextEdit__ExtraSele
 	for i := range selections {
 		selections_CArray[i] = selections[i].cPointer()
 	}
-	C.QPlainTextEdit_SetExtraSelections(this.h, &selections_CArray[0], C.size_t(len(selections)))
+	selections_ma := &C.struct_miqt_array{len: C.size_t(len(selections)), data: unsafe.Pointer(selections_CArray)}
+	defer runtime.KeepAlive(unsafe.Pointer(selections_ma))
+	C.QPlainTextEdit_SetExtraSelections(this.h, selections_ma)
 }
 
 func (this *QPlainTextEdit) ExtraSelections() []QTextEdit__ExtraSelection {
-	var _out **C.QTextEdit__ExtraSelection = nil
-	var _out_len C.size_t = 0
-	C.QPlainTextEdit_ExtraSelections(this.h, &_out, &_out_len)
-	ret := make([]QTextEdit__ExtraSelection, int(_out_len))
-	_outCast := (*[0xffff]*C.QTextEdit__ExtraSelection)(unsafe.Pointer(_out)) // so fresh so clean
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = *newQTextEdit__ExtraSelection(_outCast[i])
+	var _ma *C.struct_miqt_array = C.QPlainTextEdit_ExtraSelections(this.h)
+	_ret := make([]QTextEdit__ExtraSelection, int(_ma.len))
+	_outCast := (*[0xffff]*C.QTextEdit__ExtraSelection)(unsafe.Pointer(_ma.data)) // mrs jackson
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = *newQTextEdit__ExtraSelection(_outCast[i])
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
 func (this *QPlainTextEdit) MoveCursor(operation QTextCursor__MoveOperation) {
@@ -410,8 +374,8 @@ func (this *QPlainTextEdit) MoveCursor(operation QTextCursor__MoveOperation) {
 }
 
 func (this *QPlainTextEdit) CanPaste() bool {
-	ret := C.QPlainTextEdit_CanPaste(this.h)
-	return (bool)(ret)
+	_ret := C.QPlainTextEdit_CanPaste(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QPlainTextEdit) Print(printer *QPagedPaintDevice) {
@@ -419,36 +383,28 @@ func (this *QPlainTextEdit) Print(printer *QPagedPaintDevice) {
 }
 
 func (this *QPlainTextEdit) BlockCount() int {
-	ret := C.QPlainTextEdit_BlockCount(this.h)
-	return (int)(ret)
+	_ret := C.QPlainTextEdit_BlockCount(this.h)
+	return (int)(_ret)
 }
 
 func (this *QPlainTextEdit) InputMethodQuery(property InputMethodQuery) *QVariant {
-	ret := C.QPlainTextEdit_InputMethodQuery(this.h, (C.uintptr_t)(property))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQVariant(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QVariant) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QPlainTextEdit_InputMethodQuery(this.h, (C.uintptr_t)(property))
+	_goptr := newQVariant(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QPlainTextEdit) InputMethodQuery2(query InputMethodQuery, argument QVariant) *QVariant {
-	ret := C.QPlainTextEdit_InputMethodQuery2(this.h, (C.uintptr_t)(query), argument.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQVariant(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QVariant) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QPlainTextEdit_InputMethodQuery2(this.h, (C.uintptr_t)(query), argument.cPointer())
+	_goptr := newQVariant(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QPlainTextEdit) SetPlainText(text string) {
-	text_Cstring := C.CString(text)
-	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QPlainTextEdit_SetPlainText(this.h, text_Cstring, C.size_t(len(text)))
+	text_ms := miqt_strdupg(text)
+	defer C.free(text_ms)
+	C.QPlainTextEdit_SetPlainText(this.h, (*C.struct_miqt_string)(text_ms))
 }
 
 func (this *QPlainTextEdit) Cut() {
@@ -480,21 +436,21 @@ func (this *QPlainTextEdit) SelectAll() {
 }
 
 func (this *QPlainTextEdit) InsertPlainText(text string) {
-	text_Cstring := C.CString(text)
-	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QPlainTextEdit_InsertPlainText(this.h, text_Cstring, C.size_t(len(text)))
+	text_ms := miqt_strdupg(text)
+	defer C.free(text_ms)
+	C.QPlainTextEdit_InsertPlainText(this.h, (*C.struct_miqt_string)(text_ms))
 }
 
 func (this *QPlainTextEdit) AppendPlainText(text string) {
-	text_Cstring := C.CString(text)
-	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QPlainTextEdit_AppendPlainText(this.h, text_Cstring, C.size_t(len(text)))
+	text_ms := miqt_strdupg(text)
+	defer C.free(text_ms)
+	C.QPlainTextEdit_AppendPlainText(this.h, (*C.struct_miqt_string)(text_ms))
 }
 
 func (this *QPlainTextEdit) AppendHtml(html string) {
-	html_Cstring := C.CString(html)
-	defer C.free(unsafe.Pointer(html_Cstring))
-	C.QPlainTextEdit_AppendHtml(this.h, html_Cstring, C.size_t(len(html)))
+	html_ms := miqt_strdupg(html)
+	defer C.free(html_ms)
+	C.QPlainTextEdit_AppendHtml(this.h, (*C.struct_miqt_string)(html_ms))
 }
 
 func (this *QPlainTextEdit) CenterCursor() {
@@ -512,109 +468,180 @@ func (this *QPlainTextEdit) ZoomOut() {
 func (this *QPlainTextEdit) TextChanged() {
 	C.QPlainTextEdit_TextChanged(this.h)
 }
-
 func (this *QPlainTextEdit) OnTextChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+	C.QPlainTextEdit_connect_TextChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
+
+//export miqt_exec_callback_QPlainTextEdit_TextChanged
+func miqt_exec_callback_QPlainTextEdit_TextChanged(cb *C.void) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QPlainTextEdit_connect_TextChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	gofunc()
 }
 
 func (this *QPlainTextEdit) UndoAvailable(b bool) {
 	C.QPlainTextEdit_UndoAvailable(this.h, (C.bool)(b))
 }
+func (this *QPlainTextEdit) OnUndoAvailable(slot func(b bool)) {
+	C.QPlainTextEdit_connect_UndoAvailable(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QPlainTextEdit) OnUndoAvailable(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QPlainTextEdit_UndoAvailable
+func miqt_exec_callback_QPlainTextEdit_UndoAvailable(cb *C.void, b C.bool) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(b bool))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QPlainTextEdit_connect_UndoAvailable(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	b_ret := b
+	slotval1 := (bool)(b_ret)
+
+	gofunc(slotval1)
 }
 
 func (this *QPlainTextEdit) RedoAvailable(b bool) {
 	C.QPlainTextEdit_RedoAvailable(this.h, (C.bool)(b))
 }
+func (this *QPlainTextEdit) OnRedoAvailable(slot func(b bool)) {
+	C.QPlainTextEdit_connect_RedoAvailable(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QPlainTextEdit) OnRedoAvailable(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QPlainTextEdit_RedoAvailable
+func miqt_exec_callback_QPlainTextEdit_RedoAvailable(cb *C.void, b C.bool) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(b bool))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QPlainTextEdit_connect_RedoAvailable(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	b_ret := b
+	slotval1 := (bool)(b_ret)
+
+	gofunc(slotval1)
 }
 
 func (this *QPlainTextEdit) CopyAvailable(b bool) {
 	C.QPlainTextEdit_CopyAvailable(this.h, (C.bool)(b))
 }
+func (this *QPlainTextEdit) OnCopyAvailable(slot func(b bool)) {
+	C.QPlainTextEdit_connect_CopyAvailable(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QPlainTextEdit) OnCopyAvailable(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QPlainTextEdit_CopyAvailable
+func miqt_exec_callback_QPlainTextEdit_CopyAvailable(cb *C.void, b C.bool) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(b bool))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QPlainTextEdit_connect_CopyAvailable(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	b_ret := b
+	slotval1 := (bool)(b_ret)
+
+	gofunc(slotval1)
 }
 
 func (this *QPlainTextEdit) SelectionChanged() {
 	C.QPlainTextEdit_SelectionChanged(this.h)
 }
-
 func (this *QPlainTextEdit) OnSelectionChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+	C.QPlainTextEdit_connect_SelectionChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
+
+//export miqt_exec_callback_QPlainTextEdit_SelectionChanged
+func miqt_exec_callback_QPlainTextEdit_SelectionChanged(cb *C.void) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QPlainTextEdit_connect_SelectionChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	gofunc()
 }
 
 func (this *QPlainTextEdit) CursorPositionChanged() {
 	C.QPlainTextEdit_CursorPositionChanged(this.h)
 }
-
 func (this *QPlainTextEdit) OnCursorPositionChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+	C.QPlainTextEdit_connect_CursorPositionChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
+
+//export miqt_exec_callback_QPlainTextEdit_CursorPositionChanged
+func miqt_exec_callback_QPlainTextEdit_CursorPositionChanged(cb *C.void) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QPlainTextEdit_connect_CursorPositionChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	gofunc()
 }
 
 func (this *QPlainTextEdit) UpdateRequest(rect *QRect, dy int) {
 	C.QPlainTextEdit_UpdateRequest(this.h, rect.cPointer(), (C.int)(dy))
 }
+func (this *QPlainTextEdit) OnUpdateRequest(slot func(rect *QRect, dy int)) {
+	C.QPlainTextEdit_connect_UpdateRequest(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QPlainTextEdit) OnUpdateRequest(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QPlainTextEdit_UpdateRequest
+func miqt_exec_callback_QPlainTextEdit_UpdateRequest(cb *C.void, rect *C.QRect, dy C.int) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(rect *QRect, dy int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QPlainTextEdit_connect_UpdateRequest(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	rect_ret := rect
+	slotval1 := newQRect_U(unsafe.Pointer(rect_ret))
+	dy_ret := dy
+	slotval2 := (int)(dy_ret)
+
+	gofunc(slotval1, slotval2)
 }
 
 func (this *QPlainTextEdit) BlockCountChanged(newBlockCount int) {
 	C.QPlainTextEdit_BlockCountChanged(this.h, (C.int)(newBlockCount))
 }
+func (this *QPlainTextEdit) OnBlockCountChanged(slot func(newBlockCount int)) {
+	C.QPlainTextEdit_connect_BlockCountChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QPlainTextEdit) OnBlockCountChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QPlainTextEdit_BlockCountChanged
+func miqt_exec_callback_QPlainTextEdit_BlockCountChanged(cb *C.void, newBlockCount C.int) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(newBlockCount int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QPlainTextEdit_connect_BlockCountChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	newBlockCount_ret := newBlockCount
+	slotval1 := (int)(newBlockCount_ret)
+
+	gofunc(slotval1)
 }
 
 func (this *QPlainTextEdit) ModificationChanged(param1 bool) {
 	C.QPlainTextEdit_ModificationChanged(this.h, (C.bool)(param1))
 }
+func (this *QPlainTextEdit) OnModificationChanged(slot func(param1 bool)) {
+	C.QPlainTextEdit_connect_ModificationChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QPlainTextEdit) OnModificationChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QPlainTextEdit_ModificationChanged
+func miqt_exec_callback_QPlainTextEdit_ModificationChanged(cb *C.void, param1 C.bool) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(param1 bool))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QPlainTextEdit_connect_ModificationChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	param1_ret := param1
+	slotval1 := (bool)(param1_ret)
+
+	gofunc(slotval1)
 }
 
 func QPlainTextEdit_Tr2(s string, c string) string {
@@ -622,12 +649,10 @@ func QPlainTextEdit_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QPlainTextEdit_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QPlainTextEdit_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QPlainTextEdit_Tr3(s string, c string, n int) string {
@@ -635,12 +660,10 @@ func QPlainTextEdit_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QPlainTextEdit_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QPlainTextEdit_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QPlainTextEdit_TrUtf82(s string, c string) string {
@@ -648,12 +671,10 @@ func QPlainTextEdit_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QPlainTextEdit_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QPlainTextEdit_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QPlainTextEdit_TrUtf83(s string, c string, n int) string {
@@ -661,29 +682,27 @@ func QPlainTextEdit_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QPlainTextEdit_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QPlainTextEdit_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QPlainTextEdit) Find22(exp string, options int) bool {
-	exp_Cstring := C.CString(exp)
-	defer C.free(unsafe.Pointer(exp_Cstring))
-	ret := C.QPlainTextEdit_Find22(this.h, exp_Cstring, C.size_t(len(exp)), (C.int)(options))
-	return (bool)(ret)
+	exp_ms := miqt_strdupg(exp)
+	defer C.free(exp_ms)
+	_ret := C.QPlainTextEdit_Find22(this.h, (*C.struct_miqt_string)(exp_ms), (C.int)(options))
+	return (bool)(_ret)
 }
 
 func (this *QPlainTextEdit) Find23(exp *QRegExp, options int) bool {
-	ret := C.QPlainTextEdit_Find23(this.h, exp.cPointer(), (C.int)(options))
-	return (bool)(ret)
+	_ret := C.QPlainTextEdit_Find23(this.h, exp.cPointer(), (C.int)(options))
+	return (bool)(_ret)
 }
 
 func (this *QPlainTextEdit) Find24(exp *QRegularExpression, options int) bool {
-	ret := C.QPlainTextEdit_Find24(this.h, exp.cPointer(), (C.int)(options))
-	return (bool)(ret)
+	_ret := C.QPlainTextEdit_Find24(this.h, exp.cPointer(), (C.int)(options))
+	return (bool)(_ret)
 }
 
 func (this *QPlainTextEdit) MoveCursor2(operation QTextCursor__MoveOperation, mode QTextCursor__MoveMode) {
@@ -698,8 +717,18 @@ func (this *QPlainTextEdit) ZoomOut1(rangeVal int) {
 	C.QPlainTextEdit_ZoomOut1(this.h, (C.int)(rangeVal))
 }
 
+// Delete this object from C++ memory.
 func (this *QPlainTextEdit) Delete() {
 	C.QPlainTextEdit_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QPlainTextEdit) GoGC() {
+	runtime.SetFinalizer(this, func(this *QPlainTextEdit) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
 
 type QPlainTextDocumentLayout struct {
@@ -732,30 +761,26 @@ func NewQPlainTextDocumentLayout(document *QTextDocument) *QPlainTextDocumentLay
 }
 
 func (this *QPlainTextDocumentLayout) MetaObject() *QMetaObject {
-	ret := C.QPlainTextDocumentLayout_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QPlainTextDocumentLayout_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QPlainTextDocumentLayout_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QPlainTextDocumentLayout_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QPlainTextDocumentLayout_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QPlainTextDocumentLayout_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QPlainTextDocumentLayout_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QPlainTextDocumentLayout_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QPlainTextDocumentLayout) Draw(param1 *QPainter, param2 *QAbstractTextDocumentLayout__PaintContext) {
@@ -763,46 +788,34 @@ func (this *QPlainTextDocumentLayout) Draw(param1 *QPainter, param2 *QAbstractTe
 }
 
 func (this *QPlainTextDocumentLayout) HitTest(param1 *QPointF, param2 HitTestAccuracy) int {
-	ret := C.QPlainTextDocumentLayout_HitTest(this.h, param1.cPointer(), (C.uintptr_t)(param2))
-	return (int)(ret)
+	_ret := C.QPlainTextDocumentLayout_HitTest(this.h, param1.cPointer(), (C.uintptr_t)(param2))
+	return (int)(_ret)
 }
 
 func (this *QPlainTextDocumentLayout) PageCount() int {
-	ret := C.QPlainTextDocumentLayout_PageCount(this.h)
-	return (int)(ret)
+	_ret := C.QPlainTextDocumentLayout_PageCount(this.h)
+	return (int)(_ret)
 }
 
 func (this *QPlainTextDocumentLayout) DocumentSize() *QSizeF {
-	ret := C.QPlainTextDocumentLayout_DocumentSize(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSizeF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSizeF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QPlainTextDocumentLayout_DocumentSize(this.h)
+	_goptr := newQSizeF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QPlainTextDocumentLayout) FrameBoundingRect(param1 *QTextFrame) *QRectF {
-	ret := C.QPlainTextDocumentLayout_FrameBoundingRect(this.h, param1.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRectF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRectF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QPlainTextDocumentLayout_FrameBoundingRect(this.h, param1.cPointer())
+	_goptr := newQRectF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QPlainTextDocumentLayout) BlockBoundingRect(block *QTextBlock) *QRectF {
-	ret := C.QPlainTextDocumentLayout_BlockBoundingRect(this.h, block.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRectF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRectF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QPlainTextDocumentLayout_BlockBoundingRect(this.h, block.cPointer())
+	_goptr := newQRectF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QPlainTextDocumentLayout) EnsureBlockLayout(block *QTextBlock) {
@@ -814,8 +827,8 @@ func (this *QPlainTextDocumentLayout) SetCursorWidth(width int) {
 }
 
 func (this *QPlainTextDocumentLayout) CursorWidth() int {
-	ret := C.QPlainTextDocumentLayout_CursorWidth(this.h)
-	return (int)(ret)
+	_ret := C.QPlainTextDocumentLayout_CursorWidth(this.h)
+	return (int)(_ret)
 }
 
 func (this *QPlainTextDocumentLayout) RequestUpdate() {
@@ -827,12 +840,10 @@ func QPlainTextDocumentLayout_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QPlainTextDocumentLayout_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QPlainTextDocumentLayout_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QPlainTextDocumentLayout_Tr3(s string, c string, n int) string {
@@ -840,12 +851,10 @@ func QPlainTextDocumentLayout_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QPlainTextDocumentLayout_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QPlainTextDocumentLayout_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QPlainTextDocumentLayout_TrUtf82(s string, c string) string {
@@ -853,12 +862,10 @@ func QPlainTextDocumentLayout_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QPlainTextDocumentLayout_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QPlainTextDocumentLayout_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QPlainTextDocumentLayout_TrUtf83(s string, c string, n int) string {
@@ -866,14 +873,22 @@ func QPlainTextDocumentLayout_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QPlainTextDocumentLayout_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QPlainTextDocumentLayout_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
+// Delete this object from C++ memory.
 func (this *QPlainTextDocumentLayout) Delete() {
 	C.QPlainTextDocumentLayout_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QPlainTextDocumentLayout) GoGC() {
+	runtime.SetFinalizer(this, func(this *QPlainTextDocumentLayout) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

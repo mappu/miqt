@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -25,18 +27,18 @@ bool QMimeType_OperatorEqual(const QMimeType* self, QMimeType* other);
 bool QMimeType_OperatorNotEqual(const QMimeType* self, QMimeType* other);
 bool QMimeType_IsValid(const QMimeType* self);
 bool QMimeType_IsDefault(const QMimeType* self);
-void QMimeType_Name(const QMimeType* self, char** _out, int* _out_Strlen);
-void QMimeType_Comment(const QMimeType* self, char** _out, int* _out_Strlen);
-void QMimeType_GenericIconName(const QMimeType* self, char** _out, int* _out_Strlen);
-void QMimeType_IconName(const QMimeType* self, char** _out, int* _out_Strlen);
-void QMimeType_GlobPatterns(const QMimeType* self, char*** _out, int** _out_Lengths, size_t* _out_len);
-void QMimeType_ParentMimeTypes(const QMimeType* self, char*** _out, int** _out_Lengths, size_t* _out_len);
-void QMimeType_AllAncestors(const QMimeType* self, char*** _out, int** _out_Lengths, size_t* _out_len);
-void QMimeType_Aliases(const QMimeType* self, char*** _out, int** _out_Lengths, size_t* _out_len);
-void QMimeType_Suffixes(const QMimeType* self, char*** _out, int** _out_Lengths, size_t* _out_len);
-void QMimeType_PreferredSuffix(const QMimeType* self, char** _out, int* _out_Strlen);
-bool QMimeType_Inherits(const QMimeType* self, const char* mimeTypeName, size_t mimeTypeName_Strlen);
-void QMimeType_FilterString(const QMimeType* self, char** _out, int* _out_Strlen);
+struct miqt_string* QMimeType_Name(const QMimeType* self);
+struct miqt_string* QMimeType_Comment(const QMimeType* self);
+struct miqt_string* QMimeType_GenericIconName(const QMimeType* self);
+struct miqt_string* QMimeType_IconName(const QMimeType* self);
+struct miqt_array* QMimeType_GlobPatterns(const QMimeType* self);
+struct miqt_array* QMimeType_ParentMimeTypes(const QMimeType* self);
+struct miqt_array* QMimeType_AllAncestors(const QMimeType* self);
+struct miqt_array* QMimeType_Aliases(const QMimeType* self);
+struct miqt_array* QMimeType_Suffixes(const QMimeType* self);
+struct miqt_string* QMimeType_PreferredSuffix(const QMimeType* self);
+bool QMimeType_Inherits(const QMimeType* self, struct miqt_string* mimeTypeName);
+struct miqt_string* QMimeType_FilterString(const QMimeType* self);
 void QMimeType_Delete(QMimeType* self);
 
 #ifdef __cplusplus

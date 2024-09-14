@@ -1,12 +1,8 @@
 #include <QArrayData>
 #define WORKAROUND_INNER_CLASS_DEFINITION_QtPrivate__QContainerImplHelper
 #include "qarraydata.h"
-
 #include "gen_qarraydata.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 bool QArrayData_IsMutable(const QArrayData* self) {
 	return self->isMutable();
@@ -17,13 +13,13 @@ size_t QArrayData_DetachCapacity(const QArrayData* self, size_t newSize) {
 }
 
 int QArrayData_DetachFlags(const QArrayData* self) {
-	QArrayData::AllocationOptions ret = self->detachFlags();
-	return static_cast<int>(ret);
+	QArrayData::AllocationOptions _ret = self->detachFlags();
+	return static_cast<int>(_ret);
 }
 
 int QArrayData_CloneFlags(const QArrayData* self) {
-	QArrayData::AllocationOptions ret = self->cloneFlags();
-	return static_cast<int>(ret);
+	QArrayData::AllocationOptions _ret = self->cloneFlags();
+	return static_cast<int>(_ret);
 }
 
 QArrayData* QArrayData_Allocate(size_t objectSize, size_t alignment, size_t capacity) {
@@ -55,8 +51,8 @@ void QArrayData_Delete(QArrayData* self) {
 }
 
 uintptr_t QtPrivate__QContainerImplHelper_Mid(int originalLength, int* position, int* length) {
-	QtPrivate::QContainerImplHelper::CutResult ret = QtPrivate::QContainerImplHelper::mid(static_cast<int>(originalLength), static_cast<int*>(position), static_cast<int*>(length));
-	return static_cast<uintptr_t>(ret);
+	QtPrivate::QContainerImplHelper::CutResult _ret = QtPrivate::QContainerImplHelper::mid(static_cast<int>(originalLength), static_cast<int*>(position), static_cast<int*>(length));
+	return static_cast<uintptr_t>(_ret);
 }
 
 void QtPrivate__QContainerImplHelper_Delete(QtPrivate__QContainerImplHelper* self) {

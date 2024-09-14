@@ -9,33 +9,25 @@
 #include <cstring>
 #include <QWidget>
 #include "qlayout.h"
-
 #include "gen_qlayout.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QMetaObject* QLayout_MetaObject(const QLayout* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void QLayout_Tr(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QLayout::tr(s);
+struct miqt_string* QLayout_Tr(const char* s) {
+	QString _ret = QLayout::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QLayout_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QLayout::trUtf8(s);
+struct miqt_string* QLayout_TrUtf8(const char* s) {
+	QString _ret = QLayout::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 int QLayout_Margin(const QLayout* self) {
@@ -67,15 +59,15 @@ void QLayout_GetContentsMargins(const QLayout* self, int* left, int* top, int* r
 }
 
 QMargins* QLayout_ContentsMargins(const QLayout* self) {
-	QMargins ret = self->contentsMargins();
+	QMargins _ret = self->contentsMargins();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QMargins*>(new QMargins(ret));
+	return static_cast<QMargins*>(new QMargins(_ret));
 }
 
 QRect* QLayout_ContentsRect(const QLayout* self) {
-	QRect ret = self->contentsRect();
+	QRect _ret = self->contentsRect();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(ret));
+	return static_cast<QRect*>(new QRect(_ret));
 }
 
 bool QLayout_SetAlignment(QLayout* self, QWidget* w, int alignment) {
@@ -91,8 +83,8 @@ void QLayout_SetSizeConstraint(QLayout* self, uintptr_t sizeConstraint) {
 }
 
 uintptr_t QLayout_SizeConstraint(const QLayout* self) {
-	QLayout::SizeConstraint ret = self->sizeConstraint();
-	return static_cast<uintptr_t>(ret);
+	QLayout::SizeConstraint _ret = self->sizeConstraint();
+	return static_cast<uintptr_t>(_ret);
 }
 
 void QLayout_SetMenuBar(QLayout* self, QWidget* w) {
@@ -112,9 +104,9 @@ void QLayout_Invalidate(QLayout* self) {
 }
 
 QRect* QLayout_Geometry(const QLayout* self) {
-	QRect ret = self->geometry();
+	QRect _ret = self->geometry();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(ret));
+	return static_cast<QRect*>(new QRect(_ret));
 }
 
 bool QLayout_Activate(QLayout* self) {
@@ -142,20 +134,20 @@ void QLayout_RemoveItem(QLayout* self, QLayoutItem* param1) {
 }
 
 int QLayout_ExpandingDirections(const QLayout* self) {
-	Qt::Orientations ret = self->expandingDirections();
-	return static_cast<int>(ret);
+	Qt::Orientations _ret = self->expandingDirections();
+	return static_cast<int>(_ret);
 }
 
 QSize* QLayout_MinimumSize(const QLayout* self) {
-	QSize ret = self->minimumSize();
+	QSize _ret = self->minimumSize();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(ret));
+	return static_cast<QSize*>(new QSize(_ret));
 }
 
 QSize* QLayout_MaximumSize(const QLayout* self) {
-	QSize ret = self->maximumSize();
+	QSize _ret = self->maximumSize();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(ret));
+	return static_cast<QSize*>(new QSize(_ret));
 }
 
 void QLayout_SetGeometry(QLayout* self, QRect* geometry) {
@@ -187,8 +179,8 @@ bool QLayout_IsEmpty(const QLayout* self) {
 }
 
 int QLayout_ControlTypes(const QLayout* self) {
-	QSizePolicy::ControlTypes ret = self->controlTypes();
-	return static_cast<int>(ret);
+	QSizePolicy::ControlTypes _ret = self->controlTypes();
+	return static_cast<int>(_ret);
 }
 
 QLayoutItem* QLayout_ReplaceWidget(QLayout* self, QWidget* from, QWidget* to) {
@@ -200,21 +192,21 @@ int QLayout_TotalHeightForWidth(const QLayout* self, int w) {
 }
 
 QSize* QLayout_TotalMinimumSize(const QLayout* self) {
-	QSize ret = self->totalMinimumSize();
+	QSize _ret = self->totalMinimumSize();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(ret));
+	return static_cast<QSize*>(new QSize(_ret));
 }
 
 QSize* QLayout_TotalMaximumSize(const QLayout* self) {
-	QSize ret = self->totalMaximumSize();
+	QSize _ret = self->totalMaximumSize();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(ret));
+	return static_cast<QSize*>(new QSize(_ret));
 }
 
 QSize* QLayout_TotalSizeHint(const QLayout* self) {
-	QSize ret = self->totalSizeHint();
+	QSize _ret = self->totalSizeHint();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(ret));
+	return static_cast<QSize*>(new QSize(_ret));
 }
 
 QLayout* QLayout_Layout(QLayout* self) {
@@ -230,45 +222,37 @@ bool QLayout_IsEnabled(const QLayout* self) {
 }
 
 QSize* QLayout_ClosestAcceptableSize(QWidget* w, QSize* s) {
-	QSize ret = QLayout::closestAcceptableSize(w, *s);
+	QSize _ret = QLayout::closestAcceptableSize(w, *s);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(ret));
+	return static_cast<QSize*>(new QSize(_ret));
 }
 
-void QLayout_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QLayout::tr(s, c);
+struct miqt_string* QLayout_Tr2(const char* s, const char* c) {
+	QString _ret = QLayout::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QLayout_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QLayout::tr(s, c, static_cast<int>(n));
+struct miqt_string* QLayout_Tr3(const char* s, const char* c, int n) {
+	QString _ret = QLayout::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QLayout_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QLayout::trUtf8(s, c);
+struct miqt_string* QLayout_TrUtf82(const char* s, const char* c) {
+	QString _ret = QLayout::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QLayout_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QLayout::trUtf8(s, c, static_cast<int>(n));
+struct miqt_string* QLayout_TrUtf83(const char* s, const char* c, int n) {
+	QString _ret = QLayout::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 QLayoutItem* QLayout_ReplaceWidget3(QLayout* self, QWidget* from, QWidget* to, int options) {

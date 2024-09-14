@@ -81,40 +81,36 @@ func NewQTimeLine3(duration int, parent *QObject) *QTimeLine {
 }
 
 func (this *QTimeLine) MetaObject() *QMetaObject {
-	ret := C.QTimeLine_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QTimeLine_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QTimeLine_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTimeLine_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTimeLine_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QTimeLine_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTimeLine_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTimeLine_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QTimeLine) State() QTimeLine__State {
-	ret := C.QTimeLine_State(this.h)
-	return (QTimeLine__State)(ret)
+	_ret := C.QTimeLine_State(this.h)
+	return (QTimeLine__State)(_ret)
 }
 
 func (this *QTimeLine) LoopCount() int {
-	ret := C.QTimeLine_LoopCount(this.h)
-	return (int)(ret)
+	_ret := C.QTimeLine_LoopCount(this.h)
+	return (int)(_ret)
 }
 
 func (this *QTimeLine) SetLoopCount(count int) {
@@ -122,8 +118,8 @@ func (this *QTimeLine) SetLoopCount(count int) {
 }
 
 func (this *QTimeLine) Direction() QTimeLine__Direction {
-	ret := C.QTimeLine_Direction(this.h)
-	return (QTimeLine__Direction)(ret)
+	_ret := C.QTimeLine_Direction(this.h)
+	return (QTimeLine__Direction)(_ret)
 }
 
 func (this *QTimeLine) SetDirection(direction QTimeLine__Direction) {
@@ -131,8 +127,8 @@ func (this *QTimeLine) SetDirection(direction QTimeLine__Direction) {
 }
 
 func (this *QTimeLine) Duration() int {
-	ret := C.QTimeLine_Duration(this.h)
-	return (int)(ret)
+	_ret := C.QTimeLine_Duration(this.h)
+	return (int)(_ret)
 }
 
 func (this *QTimeLine) SetDuration(duration int) {
@@ -140,8 +136,8 @@ func (this *QTimeLine) SetDuration(duration int) {
 }
 
 func (this *QTimeLine) StartFrame() int {
-	ret := C.QTimeLine_StartFrame(this.h)
-	return (int)(ret)
+	_ret := C.QTimeLine_StartFrame(this.h)
+	return (int)(_ret)
 }
 
 func (this *QTimeLine) SetStartFrame(frame int) {
@@ -149,8 +145,8 @@ func (this *QTimeLine) SetStartFrame(frame int) {
 }
 
 func (this *QTimeLine) EndFrame() int {
-	ret := C.QTimeLine_EndFrame(this.h)
-	return (int)(ret)
+	_ret := C.QTimeLine_EndFrame(this.h)
+	return (int)(_ret)
 }
 
 func (this *QTimeLine) SetEndFrame(frame int) {
@@ -162,8 +158,8 @@ func (this *QTimeLine) SetFrameRange(startFrame int, endFrame int) {
 }
 
 func (this *QTimeLine) UpdateInterval() int {
-	ret := C.QTimeLine_UpdateInterval(this.h)
-	return (int)(ret)
+	_ret := C.QTimeLine_UpdateInterval(this.h)
+	return (int)(_ret)
 }
 
 func (this *QTimeLine) SetUpdateInterval(interval int) {
@@ -171,8 +167,8 @@ func (this *QTimeLine) SetUpdateInterval(interval int) {
 }
 
 func (this *QTimeLine) CurveShape() QTimeLine__CurveShape {
-	ret := C.QTimeLine_CurveShape(this.h)
-	return (QTimeLine__CurveShape)(ret)
+	_ret := C.QTimeLine_CurveShape(this.h)
+	return (QTimeLine__CurveShape)(_ret)
 }
 
 func (this *QTimeLine) SetCurveShape(shape QTimeLine__CurveShape) {
@@ -180,14 +176,10 @@ func (this *QTimeLine) SetCurveShape(shape QTimeLine__CurveShape) {
 }
 
 func (this *QTimeLine) EasingCurve() *QEasingCurve {
-	ret := C.QTimeLine_EasingCurve(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQEasingCurve(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QEasingCurve) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QTimeLine_EasingCurve(this.h)
+	_goptr := newQEasingCurve(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QTimeLine) SetEasingCurve(curve *QEasingCurve) {
@@ -195,28 +187,28 @@ func (this *QTimeLine) SetEasingCurve(curve *QEasingCurve) {
 }
 
 func (this *QTimeLine) CurrentTime() int {
-	ret := C.QTimeLine_CurrentTime(this.h)
-	return (int)(ret)
+	_ret := C.QTimeLine_CurrentTime(this.h)
+	return (int)(_ret)
 }
 
 func (this *QTimeLine) CurrentFrame() int {
-	ret := C.QTimeLine_CurrentFrame(this.h)
-	return (int)(ret)
+	_ret := C.QTimeLine_CurrentFrame(this.h)
+	return (int)(_ret)
 }
 
 func (this *QTimeLine) CurrentValue() float64 {
-	ret := C.QTimeLine_CurrentValue(this.h)
-	return (float64)(ret)
+	_ret := C.QTimeLine_CurrentValue(this.h)
+	return (float64)(_ret)
 }
 
 func (this *QTimeLine) FrameForTime(msec int) int {
-	ret := C.QTimeLine_FrameForTime(this.h, (C.int)(msec))
-	return (int)(ret)
+	_ret := C.QTimeLine_FrameForTime(this.h, (C.int)(msec))
+	return (int)(_ret)
 }
 
 func (this *QTimeLine) ValueForTime(msec int) float64 {
-	ret := C.QTimeLine_ValueForTime(this.h, (C.int)(msec))
-	return (float64)(ret)
+	_ret := C.QTimeLine_ValueForTime(this.h, (C.int)(msec))
+	return (float64)(_ret)
 }
 
 func (this *QTimeLine) Start() {
@@ -248,12 +240,10 @@ func QTimeLine_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTimeLine_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTimeLine_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QTimeLine_Tr3(s string, c string, n int) string {
@@ -261,12 +251,10 @@ func QTimeLine_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTimeLine_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTimeLine_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QTimeLine_TrUtf82(s string, c string) string {
@@ -274,12 +262,10 @@ func QTimeLine_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTimeLine_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTimeLine_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QTimeLine_TrUtf83(s string, c string, n int) string {
@@ -287,14 +273,22 @@ func QTimeLine_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTimeLine_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTimeLine_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
+// Delete this object from C++ memory.
 func (this *QTimeLine) Delete() {
 	C.QTimeLine_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QTimeLine) GoGC() {
+	runtime.SetFinalizer(this, func(this *QTimeLine) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

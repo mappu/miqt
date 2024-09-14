@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -19,8 +21,8 @@ typedef struct QGenericPluginFactory QGenericPluginFactory;
 typedef struct QObject QObject;
 #endif
 
-void QGenericPluginFactory_Keys(char*** _out, int** _out_Lengths, size_t* _out_len);
-QObject* QGenericPluginFactory_Create(const char* param1, size_t param1_Strlen, const char* param2, size_t param2_Strlen);
+struct miqt_array* QGenericPluginFactory_Keys();
+QObject* QGenericPluginFactory_Create(struct miqt_string* param1, struct miqt_string* param2);
 void QGenericPluginFactory_Delete(QGenericPluginFactory* self);
 
 #ifdef __cplusplus

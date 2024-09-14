@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"runtime"
 	"unsafe"
 )
 
@@ -42,9 +43,9 @@ func NewQStringMatcher() *QStringMatcher {
 
 // NewQStringMatcher2 constructs a new QStringMatcher object.
 func NewQStringMatcher2(pattern string) *QStringMatcher {
-	pattern_Cstring := C.CString(pattern)
-	defer C.free(unsafe.Pointer(pattern_Cstring))
-	ret := C.QStringMatcher_new2(pattern_Cstring, C.size_t(len(pattern)))
+	pattern_ms := miqt_strdupg(pattern)
+	defer C.free(pattern_ms)
+	ret := C.QStringMatcher_new2((*C.struct_miqt_string)(pattern_ms))
 	return newQStringMatcher(ret)
 }
 
@@ -62,9 +63,9 @@ func NewQStringMatcher4(other *QStringMatcher) *QStringMatcher {
 
 // NewQStringMatcher5 constructs a new QStringMatcher object.
 func NewQStringMatcher5(pattern string, cs CaseSensitivity) *QStringMatcher {
-	pattern_Cstring := C.CString(pattern)
-	defer C.free(unsafe.Pointer(pattern_Cstring))
-	ret := C.QStringMatcher_new5(pattern_Cstring, C.size_t(len(pattern)), (C.uintptr_t)(cs))
+	pattern_ms := miqt_strdupg(pattern)
+	defer C.free(pattern_ms)
+	ret := C.QStringMatcher_new5((*C.struct_miqt_string)(pattern_ms), (C.uintptr_t)(cs))
 	return newQStringMatcher(ret)
 }
 
@@ -79,9 +80,9 @@ func (this *QStringMatcher) OperatorAssign(other *QStringMatcher) {
 }
 
 func (this *QStringMatcher) SetPattern(pattern string) {
-	pattern_Cstring := C.CString(pattern)
-	defer C.free(unsafe.Pointer(pattern_Cstring))
-	C.QStringMatcher_SetPattern(this.h, pattern_Cstring, C.size_t(len(pattern)))
+	pattern_ms := miqt_strdupg(pattern)
+	defer C.free(pattern_ms)
+	C.QStringMatcher_SetPattern(this.h, (*C.struct_miqt_string)(pattern_ms))
 }
 
 func (this *QStringMatcher) SetCaseSensitivity(cs CaseSensitivity) {
@@ -89,43 +90,51 @@ func (this *QStringMatcher) SetCaseSensitivity(cs CaseSensitivity) {
 }
 
 func (this *QStringMatcher) IndexIn(str string) int {
-	str_Cstring := C.CString(str)
-	defer C.free(unsafe.Pointer(str_Cstring))
-	ret := C.QStringMatcher_IndexIn(this.h, str_Cstring, C.size_t(len(str)))
-	return (int)(ret)
+	str_ms := miqt_strdupg(str)
+	defer C.free(str_ms)
+	_ret := C.QStringMatcher_IndexIn(this.h, (*C.struct_miqt_string)(str_ms))
+	return (int)(_ret)
 }
 
 func (this *QStringMatcher) IndexIn2(str *QChar, length int) int {
-	ret := C.QStringMatcher_IndexIn2(this.h, str.cPointer(), (C.int)(length))
-	return (int)(ret)
+	_ret := C.QStringMatcher_IndexIn2(this.h, str.cPointer(), (C.int)(length))
+	return (int)(_ret)
 }
 
 func (this *QStringMatcher) Pattern() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QStringMatcher_Pattern(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QStringMatcher_Pattern(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QStringMatcher) CaseSensitivity() CaseSensitivity {
-	ret := C.QStringMatcher_CaseSensitivity(this.h)
-	return (CaseSensitivity)(ret)
+	_ret := C.QStringMatcher_CaseSensitivity(this.h)
+	return (CaseSensitivity)(_ret)
 }
 
 func (this *QStringMatcher) IndexIn22(str string, from int) int {
-	str_Cstring := C.CString(str)
-	defer C.free(unsafe.Pointer(str_Cstring))
-	ret := C.QStringMatcher_IndexIn22(this.h, str_Cstring, C.size_t(len(str)), (C.int)(from))
-	return (int)(ret)
+	str_ms := miqt_strdupg(str)
+	defer C.free(str_ms)
+	_ret := C.QStringMatcher_IndexIn22(this.h, (*C.struct_miqt_string)(str_ms), (C.int)(from))
+	return (int)(_ret)
 }
 
 func (this *QStringMatcher) IndexIn3(str *QChar, length int, from int) int {
-	ret := C.QStringMatcher_IndexIn3(this.h, str.cPointer(), (C.int)(length), (C.int)(from))
-	return (int)(ret)
+	_ret := C.QStringMatcher_IndexIn3(this.h, str.cPointer(), (C.int)(length), (C.int)(from))
+	return (int)(_ret)
 }
 
+// Delete this object from C++ memory.
 func (this *QStringMatcher) Delete() {
 	C.QStringMatcher_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QStringMatcher) GoGC() {
+	runtime.SetFinalizer(this, func(this *QStringMatcher) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

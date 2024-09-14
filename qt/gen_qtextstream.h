@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -44,7 +46,7 @@ void QTextStream_SetLocale(QTextStream* self, QLocale* locale);
 QLocale* QTextStream_Locale(const QTextStream* self);
 void QTextStream_SetDevice(QTextStream* self, QIODevice* device);
 QIODevice* QTextStream_Device(const QTextStream* self);
-void QTextStream_String(const QTextStream* self, char** _out, int* _out_Strlen);
+struct miqt_string* QTextStream_String(const QTextStream* self);
 uintptr_t QTextStream_Status(const QTextStream* self);
 void QTextStream_SetStatus(QTextStream* self, uintptr_t status);
 void QTextStream_ResetStatus(QTextStream* self);
@@ -54,9 +56,9 @@ void QTextStream_Flush(QTextStream* self);
 bool QTextStream_Seek(QTextStream* self, long long pos);
 long long QTextStream_Pos(const QTextStream* self);
 void QTextStream_SkipWhiteSpace(QTextStream* self);
-void QTextStream_ReadLine(QTextStream* self, char** _out, int* _out_Strlen);
-void QTextStream_ReadAll(QTextStream* self, char** _out, int* _out_Strlen);
-void QTextStream_Read(QTextStream* self, long long maxlen, char** _out, int* _out_Strlen);
+struct miqt_string* QTextStream_ReadLine(QTextStream* self);
+struct miqt_string* QTextStream_ReadAll(QTextStream* self);
+struct miqt_string* QTextStream_Read(QTextStream* self, long long maxlen);
 void QTextStream_SetFieldAlignment(QTextStream* self, uintptr_t alignment);
 uintptr_t QTextStream_FieldAlignment(const QTextStream* self);
 void QTextStream_SetPadChar(QTextStream* self, QChar* ch);
@@ -83,7 +85,7 @@ QTextStream* QTextStream_OperatorShiftRightWithQlonglong(QTextStream* self, int6
 QTextStream* QTextStream_OperatorShiftRightWithQulonglong(QTextStream* self, uint64_t* i);
 QTextStream* QTextStream_OperatorShiftRightWithFloat(QTextStream* self, float* f);
 QTextStream* QTextStream_OperatorShiftRightWithDouble(QTextStream* self, double* f);
-QTextStream* QTextStream_OperatorShiftRightWithQString(QTextStream* self, const char* s, size_t s_Strlen);
+QTextStream* QTextStream_OperatorShiftRightWithQString(QTextStream* self, struct miqt_string* s);
 QTextStream* QTextStream_OperatorShiftRightWithArray(QTextStream* self, QByteArray* array);
 QTextStream* QTextStream_OperatorShiftRightWithChar(QTextStream* self, char* c);
 QTextStream* QTextStream_OperatorShiftLeft(QTextStream* self, QChar* ch);
@@ -98,10 +100,10 @@ QTextStream* QTextStream_OperatorShiftLeftWithQlonglong(QTextStream* self, int64
 QTextStream* QTextStream_OperatorShiftLeftWithQulonglong(QTextStream* self, uint64_t i);
 QTextStream* QTextStream_OperatorShiftLeftWithFloat(QTextStream* self, float f);
 QTextStream* QTextStream_OperatorShiftLeftWithDouble(QTextStream* self, double f);
-QTextStream* QTextStream_OperatorShiftLeftWithQString(QTextStream* self, const char* s, size_t s_Strlen);
+QTextStream* QTextStream_OperatorShiftLeftWithQString(QTextStream* self, struct miqt_string* s);
 QTextStream* QTextStream_OperatorShiftLeftWithArray(QTextStream* self, QByteArray* array);
 QTextStream* QTextStream_OperatorShiftLeftWithChar(QTextStream* self, const char* c);
-void QTextStream_ReadLine1(QTextStream* self, long long maxlen, char** _out, int* _out_Strlen);
+struct miqt_string* QTextStream_ReadLine1(QTextStream* self, long long maxlen);
 void QTextStream_Delete(QTextStream* self);
 
 #ifdef __cplusplus

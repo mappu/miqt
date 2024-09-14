@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -56,12 +58,12 @@ int QTableWidgetSelectionRange_ColumnCount(const QTableWidgetSelectionRange* sel
 void QTableWidgetSelectionRange_Delete(QTableWidgetSelectionRange* self);
 
 QTableWidgetItem* QTableWidgetItem_new();
-QTableWidgetItem* QTableWidgetItem_new2(const char* text, size_t text_Strlen);
-QTableWidgetItem* QTableWidgetItem_new3(QIcon* icon, const char* text, size_t text_Strlen);
+QTableWidgetItem* QTableWidgetItem_new2(struct miqt_string* text);
+QTableWidgetItem* QTableWidgetItem_new3(QIcon* icon, struct miqt_string* text);
 QTableWidgetItem* QTableWidgetItem_new4(QTableWidgetItem* other);
 QTableWidgetItem* QTableWidgetItem_new5(int typeVal);
-QTableWidgetItem* QTableWidgetItem_new6(const char* text, size_t text_Strlen, int typeVal);
-QTableWidgetItem* QTableWidgetItem_new7(QIcon* icon, const char* text, size_t text_Strlen, int typeVal);
+QTableWidgetItem* QTableWidgetItem_new6(struct miqt_string* text, int typeVal);
+QTableWidgetItem* QTableWidgetItem_new7(QIcon* icon, struct miqt_string* text, int typeVal);
 QTableWidgetItem* QTableWidgetItem_Clone(const QTableWidgetItem* self);
 QTableWidget* QTableWidgetItem_TableWidget(const QTableWidgetItem* self);
 int QTableWidgetItem_Row(const QTableWidgetItem* self);
@@ -70,16 +72,16 @@ void QTableWidgetItem_SetSelected(QTableWidgetItem* self, bool selectVal);
 bool QTableWidgetItem_IsSelected(const QTableWidgetItem* self);
 int QTableWidgetItem_Flags(const QTableWidgetItem* self);
 void QTableWidgetItem_SetFlags(QTableWidgetItem* self, int flags);
-void QTableWidgetItem_Text(const QTableWidgetItem* self, char** _out, int* _out_Strlen);
-void QTableWidgetItem_SetText(QTableWidgetItem* self, const char* text, size_t text_Strlen);
+struct miqt_string* QTableWidgetItem_Text(const QTableWidgetItem* self);
+void QTableWidgetItem_SetText(QTableWidgetItem* self, struct miqt_string* text);
 QIcon* QTableWidgetItem_Icon(const QTableWidgetItem* self);
 void QTableWidgetItem_SetIcon(QTableWidgetItem* self, QIcon* icon);
-void QTableWidgetItem_StatusTip(const QTableWidgetItem* self, char** _out, int* _out_Strlen);
-void QTableWidgetItem_SetStatusTip(QTableWidgetItem* self, const char* statusTip, size_t statusTip_Strlen);
-void QTableWidgetItem_ToolTip(const QTableWidgetItem* self, char** _out, int* _out_Strlen);
-void QTableWidgetItem_SetToolTip(QTableWidgetItem* self, const char* toolTip, size_t toolTip_Strlen);
-void QTableWidgetItem_WhatsThis(const QTableWidgetItem* self, char** _out, int* _out_Strlen);
-void QTableWidgetItem_SetWhatsThis(QTableWidgetItem* self, const char* whatsThis, size_t whatsThis_Strlen);
+struct miqt_string* QTableWidgetItem_StatusTip(const QTableWidgetItem* self);
+void QTableWidgetItem_SetStatusTip(QTableWidgetItem* self, struct miqt_string* statusTip);
+struct miqt_string* QTableWidgetItem_ToolTip(const QTableWidgetItem* self);
+void QTableWidgetItem_SetToolTip(QTableWidgetItem* self, struct miqt_string* toolTip);
+struct miqt_string* QTableWidgetItem_WhatsThis(const QTableWidgetItem* self);
+void QTableWidgetItem_SetWhatsThis(QTableWidgetItem* self, struct miqt_string* whatsThis);
 QFont* QTableWidgetItem_Font(const QTableWidgetItem* self);
 void QTableWidgetItem_SetFont(QTableWidgetItem* self, QFont* font);
 int QTableWidgetItem_TextAlignment(const QTableWidgetItem* self);
@@ -110,8 +112,8 @@ QTableWidget* QTableWidget_new2(int rows, int columns);
 QTableWidget* QTableWidget_new3(QWidget* parent);
 QTableWidget* QTableWidget_new4(int rows, int columns, QWidget* parent);
 QMetaObject* QTableWidget_MetaObject(const QTableWidget* self);
-void QTableWidget_Tr(const char* s, char** _out, int* _out_Strlen);
-void QTableWidget_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QTableWidget_Tr(const char* s);
+struct miqt_string* QTableWidget_TrUtf8(const char* s);
 void QTableWidget_SetRowCount(QTableWidget* self, int rows);
 int QTableWidget_RowCount(const QTableWidget* self);
 void QTableWidget_SetColumnCount(QTableWidget* self, int columns);
@@ -127,8 +129,8 @@ QTableWidgetItem* QTableWidget_TakeVerticalHeaderItem(QTableWidget* self, int ro
 QTableWidgetItem* QTableWidget_HorizontalHeaderItem(const QTableWidget* self, int column);
 void QTableWidget_SetHorizontalHeaderItem(QTableWidget* self, int column, QTableWidgetItem* item);
 QTableWidgetItem* QTableWidget_TakeHorizontalHeaderItem(QTableWidget* self, int column);
-void QTableWidget_SetVerticalHeaderLabels(QTableWidget* self, char** labels, uint64_t* labels_Lengths, size_t labels_len);
-void QTableWidget_SetHorizontalHeaderLabels(QTableWidget* self, char** labels, uint64_t* labels_Lengths, size_t labels_len);
+void QTableWidget_SetVerticalHeaderLabels(QTableWidget* self, struct miqt_array* /* of QString */ labels);
+void QTableWidget_SetHorizontalHeaderLabels(QTableWidget* self, struct miqt_array* /* of QString */ labels);
 int QTableWidget_CurrentRow(const QTableWidget* self);
 int QTableWidget_CurrentColumn(const QTableWidget* self);
 QTableWidgetItem* QTableWidget_CurrentItem(const QTableWidget* self);
@@ -149,9 +151,9 @@ void QTableWidget_RemoveCellWidget(QTableWidget* self, int row, int column);
 bool QTableWidget_IsItemSelected(const QTableWidget* self, QTableWidgetItem* item);
 void QTableWidget_SetItemSelected(QTableWidget* self, QTableWidgetItem* item, bool selectVal);
 void QTableWidget_SetRangeSelected(QTableWidget* self, QTableWidgetSelectionRange* rangeVal, bool selectVal);
-void QTableWidget_SelectedRanges(const QTableWidget* self, QTableWidgetSelectionRange*** _out, size_t* _out_len);
-void QTableWidget_SelectedItems(const QTableWidget* self, QTableWidgetItem*** _out, size_t* _out_len);
-void QTableWidget_FindItems(const QTableWidget* self, const char* text, size_t text_Strlen, int flags, QTableWidgetItem*** _out, size_t* _out_len);
+struct miqt_array* QTableWidget_SelectedRanges(const QTableWidget* self);
+struct miqt_array* QTableWidget_SelectedItems(const QTableWidget* self);
+struct miqt_array* QTableWidget_FindItems(const QTableWidget* self, struct miqt_string* text, int flags);
 int QTableWidget_VisualRow(const QTableWidget* self, int logicalRow);
 int QTableWidget_VisualColumn(const QTableWidget* self, int logicalColumn);
 QTableWidgetItem* QTableWidget_ItemAt(const QTableWidget* self, QPoint* p);
@@ -196,10 +198,10 @@ void QTableWidget_CellChanged(QTableWidget* self, int row, int column);
 void QTableWidget_connect_CellChanged(QTableWidget* self, void* slot);
 void QTableWidget_CurrentCellChanged(QTableWidget* self, int currentRow, int currentColumn, int previousRow, int previousColumn);
 void QTableWidget_connect_CurrentCellChanged(QTableWidget* self, void* slot);
-void QTableWidget_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QTableWidget_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QTableWidget_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QTableWidget_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QTableWidget_Tr2(const char* s, const char* c);
+struct miqt_string* QTableWidget_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QTableWidget_TrUtf82(const char* s, const char* c);
+struct miqt_string* QTableWidget_TrUtf83(const char* s, const char* c, int n);
 void QTableWidget_SortItems2(QTableWidget* self, int column, uintptr_t order);
 void QTableWidget_ScrollToItem2(QTableWidget* self, QTableWidgetItem* item, uintptr_t hint);
 void QTableWidget_Delete(QTableWidget* self);

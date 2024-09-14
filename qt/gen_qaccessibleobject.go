@@ -37,35 +37,31 @@ func newQAccessibleObject_U(h unsafe.Pointer) *QAccessibleObject {
 }
 
 func (this *QAccessibleObject) IsValid() bool {
-	ret := C.QAccessibleObject_IsValid(this.h)
-	return (bool)(ret)
+	_ret := C.QAccessibleObject_IsValid(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QAccessibleObject) Object() *QObject {
-	ret := C.QAccessibleObject_Object(this.h)
-	return newQObject_U(unsafe.Pointer(ret))
+	_ret := C.QAccessibleObject_Object(this.h)
+	return newQObject_U(unsafe.Pointer(_ret))
 }
 
 func (this *QAccessibleObject) Rect() *QRect {
-	ret := C.QAccessibleObject_Rect(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRect(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRect) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QAccessibleObject_Rect(this.h)
+	_goptr := newQRect(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QAccessibleObject) SetText(t QAccessible__Text, text string) {
-	text_Cstring := C.CString(text)
-	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QAccessibleObject_SetText(this.h, (C.uintptr_t)(t), text_Cstring, C.size_t(len(text)))
+	text_ms := miqt_strdupg(text)
+	defer C.free(text_ms)
+	C.QAccessibleObject_SetText(this.h, (C.uintptr_t)(t), (*C.struct_miqt_string)(text_ms))
 }
 
 func (this *QAccessibleObject) ChildAt(x int, y int) *QAccessibleInterface {
-	ret := C.QAccessibleObject_ChildAt(this.h, (C.int)(x), (C.int)(y))
-	return newQAccessibleInterface_U(unsafe.Pointer(ret))
+	_ret := C.QAccessibleObject_ChildAt(this.h, (C.int)(x), (C.int)(y))
+	return newQAccessibleInterface_U(unsafe.Pointer(_ret))
 }
 
 type QAccessibleApplication struct {
@@ -98,60 +94,64 @@ func NewQAccessibleApplication() *QAccessibleApplication {
 }
 
 func (this *QAccessibleApplication) Window() *QWindow {
-	ret := C.QAccessibleApplication_Window(this.h)
-	return newQWindow_U(unsafe.Pointer(ret))
+	_ret := C.QAccessibleApplication_Window(this.h)
+	return newQWindow_U(unsafe.Pointer(_ret))
 }
 
 func (this *QAccessibleApplication) ChildCount() int {
-	ret := C.QAccessibleApplication_ChildCount(this.h)
-	return (int)(ret)
+	_ret := C.QAccessibleApplication_ChildCount(this.h)
+	return (int)(_ret)
 }
 
 func (this *QAccessibleApplication) IndexOfChild(param1 *QAccessibleInterface) int {
-	ret := C.QAccessibleApplication_IndexOfChild(this.h, param1.cPointer())
-	return (int)(ret)
+	_ret := C.QAccessibleApplication_IndexOfChild(this.h, param1.cPointer())
+	return (int)(_ret)
 }
 
 func (this *QAccessibleApplication) FocusChild() *QAccessibleInterface {
-	ret := C.QAccessibleApplication_FocusChild(this.h)
-	return newQAccessibleInterface_U(unsafe.Pointer(ret))
+	_ret := C.QAccessibleApplication_FocusChild(this.h)
+	return newQAccessibleInterface_U(unsafe.Pointer(_ret))
 }
 
 func (this *QAccessibleApplication) Parent() *QAccessibleInterface {
-	ret := C.QAccessibleApplication_Parent(this.h)
-	return newQAccessibleInterface_U(unsafe.Pointer(ret))
+	_ret := C.QAccessibleApplication_Parent(this.h)
+	return newQAccessibleInterface_U(unsafe.Pointer(_ret))
 }
 
 func (this *QAccessibleApplication) Child(index int) *QAccessibleInterface {
-	ret := C.QAccessibleApplication_Child(this.h, (C.int)(index))
-	return newQAccessibleInterface_U(unsafe.Pointer(ret))
+	_ret := C.QAccessibleApplication_Child(this.h, (C.int)(index))
+	return newQAccessibleInterface_U(unsafe.Pointer(_ret))
 }
 
 func (this *QAccessibleApplication) Text(t QAccessible__Text) string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QAccessibleApplication_Text(this.h, (C.uintptr_t)(t), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QAccessibleApplication_Text(this.h, (C.uintptr_t)(t))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QAccessibleApplication) Role() QAccessible__Role {
-	ret := C.QAccessibleApplication_Role(this.h)
-	return (QAccessible__Role)(ret)
+	_ret := C.QAccessibleApplication_Role(this.h)
+	return (QAccessible__Role)(_ret)
 }
 
 func (this *QAccessibleApplication) State() *QAccessible__State {
-	ret := C.QAccessibleApplication_State(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQAccessible__State(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QAccessible__State) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QAccessibleApplication_State(this.h)
+	_goptr := newQAccessible__State(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
+// Delete this object from C++ memory.
 func (this *QAccessibleApplication) Delete() {
 	C.QAccessibleApplication_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QAccessibleApplication) GoGC() {
+	runtime.SetFinalizer(this, func(this *QAccessibleApplication) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

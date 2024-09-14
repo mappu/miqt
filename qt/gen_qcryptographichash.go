@@ -80,37 +80,39 @@ func (this *QCryptographicHash) AddDataWithData(data *QByteArray) {
 }
 
 func (this *QCryptographicHash) AddDataWithDevice(device *QIODevice) bool {
-	ret := C.QCryptographicHash_AddDataWithDevice(this.h, device.cPointer())
-	return (bool)(ret)
+	_ret := C.QCryptographicHash_AddDataWithDevice(this.h, device.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QCryptographicHash) Result() *QByteArray {
-	ret := C.QCryptographicHash_Result(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQByteArray(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QByteArray) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QCryptographicHash_Result(this.h)
+	_goptr := newQByteArray(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func QCryptographicHash_Hash(data *QByteArray, method QCryptographicHash__Algorithm) *QByteArray {
-	ret := C.QCryptographicHash_Hash(data.cPointer(), (C.uintptr_t)(method))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQByteArray(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QByteArray) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QCryptographicHash_Hash(data.cPointer(), (C.uintptr_t)(method))
+	_goptr := newQByteArray(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func QCryptographicHash_HashLength(method QCryptographicHash__Algorithm) int {
-	ret := C.QCryptographicHash_HashLength((C.uintptr_t)(method))
-	return (int)(ret)
+	_ret := C.QCryptographicHash_HashLength((C.uintptr_t)(method))
+	return (int)(_ret)
 }
 
+// Delete this object from C++ memory.
 func (this *QCryptographicHash) Delete() {
 	C.QCryptographicHash_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QCryptographicHash) GoGC() {
+	runtime.SetFinalizer(this, func(this *QCryptographicHash) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

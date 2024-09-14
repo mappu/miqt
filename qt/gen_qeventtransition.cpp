@@ -6,12 +6,8 @@
 #include <QByteArray>
 #include <cstring>
 #include "qeventtransition.h"
-
 #include "gen_qeventtransition.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QEventTransition* QEventTransition_new() {
 	return new QEventTransition();
@@ -33,22 +29,18 @@ QMetaObject* QEventTransition_MetaObject(const QEventTransition* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void QEventTransition_Tr(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QEventTransition::tr(s);
+struct miqt_string* QEventTransition_Tr(const char* s) {
+	QString _ret = QEventTransition::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QEventTransition_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QEventTransition::trUtf8(s);
+struct miqt_string* QEventTransition_TrUtf8(const char* s) {
+	QString _ret = QEventTransition::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 QObject* QEventTransition_EventSource(const QEventTransition* self) {
@@ -60,48 +52,40 @@ void QEventTransition_SetEventSource(QEventTransition* self, QObject* object) {
 }
 
 uintptr_t QEventTransition_EventType(const QEventTransition* self) {
-	QEvent::Type ret = self->eventType();
-	return static_cast<uintptr_t>(ret);
+	QEvent::Type _ret = self->eventType();
+	return static_cast<uintptr_t>(_ret);
 }
 
 void QEventTransition_SetEventType(QEventTransition* self, uintptr_t typeVal) {
 	self->setEventType(static_cast<QEvent::Type>(typeVal));
 }
 
-void QEventTransition_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QEventTransition::tr(s, c);
+struct miqt_string* QEventTransition_Tr2(const char* s, const char* c) {
+	QString _ret = QEventTransition::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QEventTransition_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QEventTransition::tr(s, c, static_cast<int>(n));
+struct miqt_string* QEventTransition_Tr3(const char* s, const char* c, int n) {
+	QString _ret = QEventTransition::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QEventTransition_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QEventTransition::trUtf8(s, c);
+struct miqt_string* QEventTransition_TrUtf82(const char* s, const char* c) {
+	QString _ret = QEventTransition::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QEventTransition_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QEventTransition::trUtf8(s, c, static_cast<int>(n));
+struct miqt_string* QEventTransition_TrUtf83(const char* s, const char* c, int n) {
+	QString _ret = QEventTransition::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QEventTransition_Delete(QEventTransition* self) {

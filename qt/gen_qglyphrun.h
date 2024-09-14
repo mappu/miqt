@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -30,10 +32,10 @@ void QGlyphRun_Swap(QGlyphRun* self, QGlyphRun* other);
 QRawFont* QGlyphRun_RawFont(const QGlyphRun* self);
 void QGlyphRun_SetRawFont(QGlyphRun* self, QRawFont* rawFont);
 void QGlyphRun_SetRawData(QGlyphRun* self, const unsigned int* glyphIndexArray, QPointF* glyphPositionArray, int size);
-void QGlyphRun_GlyphIndexes(const QGlyphRun* self, unsigned int** _out, size_t* _out_len);
-void QGlyphRun_SetGlyphIndexes(QGlyphRun* self, unsigned int* glyphIndexes, size_t glyphIndexes_len);
-void QGlyphRun_Positions(const QGlyphRun* self, QPointF*** _out, size_t* _out_len);
-void QGlyphRun_SetPositions(QGlyphRun* self, QPointF** positions, size_t positions_len);
+struct miqt_array* QGlyphRun_GlyphIndexes(const QGlyphRun* self);
+void QGlyphRun_SetGlyphIndexes(QGlyphRun* self, struct miqt_array* /* of unsigned int */ glyphIndexes);
+struct miqt_array* QGlyphRun_Positions(const QGlyphRun* self);
+void QGlyphRun_SetPositions(QGlyphRun* self, struct miqt_array* /* of QPointF */ positions);
 void QGlyphRun_Clear(QGlyphRun* self);
 bool QGlyphRun_OperatorEqual(const QGlyphRun* self, QGlyphRun* other);
 bool QGlyphRun_OperatorNotEqual(const QGlyphRun* self, QGlyphRun* other);

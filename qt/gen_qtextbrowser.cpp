@@ -8,12 +8,8 @@
 #include <QVariant>
 #include <QWidget>
 #include "qtextbrowser.h"
-
 #include "gen_qtextbrowser.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QTextBrowser* QTextBrowser_new() {
 	return new QTextBrowser();
@@ -27,65 +23,61 @@ QMetaObject* QTextBrowser_MetaObject(const QTextBrowser* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void QTextBrowser_Tr(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QTextBrowser::tr(s);
+struct miqt_string* QTextBrowser_Tr(const char* s) {
+	QString _ret = QTextBrowser::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QTextBrowser_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QTextBrowser::trUtf8(s);
+struct miqt_string* QTextBrowser_TrUtf8(const char* s) {
+	QString _ret = QTextBrowser::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 QUrl* QTextBrowser_Source(const QTextBrowser* self) {
-	QUrl ret = self->source();
+	QUrl _ret = self->source();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QUrl*>(new QUrl(ret));
+	return static_cast<QUrl*>(new QUrl(_ret));
 }
 
 uintptr_t QTextBrowser_SourceType(const QTextBrowser* self) {
-	QTextDocument::ResourceType ret = self->sourceType();
-	return static_cast<uintptr_t>(ret);
+	QTextDocument::ResourceType _ret = self->sourceType();
+	return static_cast<uintptr_t>(_ret);
 }
 
-void QTextBrowser_SearchPaths(const QTextBrowser* self, char*** _out, int** _out_Lengths, size_t* _out_len) {
-	QStringList ret = self->searchPaths();
+struct miqt_array* QTextBrowser_SearchPaths(const QTextBrowser* self) {
+	QStringList _ret = self->searchPaths();
 	// Convert QStringList from C++ memory to manually-managed C memory
-	char** __out = static_cast<char**>(malloc(sizeof(char*) * ret.length()));
-	int* __out_Lengths = static_cast<int*>(malloc(sizeof(int) * ret.length()));
-	for (size_t i = 0, e = ret.length(); i < e; ++i) {
+	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-		QByteArray b = ret[i].toUtf8();
-		__out[i] = static_cast<char*>(malloc(b.length()));
-		memcpy(__out[i], b.data(), b.length());
-		__out_Lengths[i] = b.length();
+		QByteArray _lv_b = _lv_ret.toUtf8();
+		_arr[i] = miqt_strdup(_lv_b.data(), _lv_b.length());
 	}
-	*_out = __out;
-	*_out_Lengths = __out_Lengths;
-	*_out_len = ret.length();
+	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
+	_out->len = _ret.length();
+	_out->data = static_cast<void*>(_arr);
+	return _out;
 }
 
-void QTextBrowser_SetSearchPaths(QTextBrowser* self, char** paths, uint64_t* paths_Lengths, size_t paths_len) {
+void QTextBrowser_SetSearchPaths(QTextBrowser* self, struct miqt_array* /* of QString */ paths) {
 	QList<QString> paths_QList;
-	paths_QList.reserve(paths_len);
-	for(size_t i = 0; i < paths_len; ++i) {
-		paths_QList.push_back(QString::fromUtf8(paths[i], paths_Lengths[i]));
+	paths_QList.reserve(paths->len);
+	miqt_string** paths_arr = static_cast<miqt_string**>(paths->data);
+	for(size_t i = 0; i < paths->len; ++i) {
+		paths_QList.push_back(QString::fromUtf8(& paths_arr[i]->data, paths_arr[i]->len));
 	}
 	self->setSearchPaths(paths_QList);
 }
 
 QVariant* QTextBrowser_LoadResource(QTextBrowser* self, int typeVal, QUrl* name) {
-	QVariant ret = self->loadResource(static_cast<int>(typeVal), *name);
+	QVariant _ret = self->loadResource(static_cast<int>(typeVal), *name);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(ret));
+	return static_cast<QVariant*>(new QVariant(_ret));
 }
 
 bool QTextBrowser_IsBackwardAvailable(const QTextBrowser* self) {
@@ -100,19 +92,17 @@ void QTextBrowser_ClearHistory(QTextBrowser* self) {
 	self->clearHistory();
 }
 
-void QTextBrowser_HistoryTitle(const QTextBrowser* self, int param1, char** _out, int* _out_Strlen) {
-	QString ret = self->historyTitle(static_cast<int>(param1));
+struct miqt_string* QTextBrowser_HistoryTitle(const QTextBrowser* self, int param1) {
+	QString _ret = self->historyTitle(static_cast<int>(param1));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 QUrl* QTextBrowser_HistoryUrl(const QTextBrowser* self, int param1) {
-	QUrl ret = self->historyUrl(static_cast<int>(param1));
+	QUrl _ret = self->historyUrl(static_cast<int>(param1));
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QUrl*>(new QUrl(ret));
+	return static_cast<QUrl*>(new QUrl(_ret));
 }
 
 int QTextBrowser_BackwardHistoryCount(const QTextBrowser* self) {
@@ -169,7 +159,8 @@ void QTextBrowser_BackwardAvailable(QTextBrowser* self, bool param1) {
 
 void QTextBrowser_connect_BackwardAvailable(QTextBrowser* self, void* slot) {
 	QTextBrowser::connect(self, static_cast<void (QTextBrowser::*)(bool)>(&QTextBrowser::backwardAvailable), self, [=](bool param1) {
-		miqt_exec_callback(slot, 0, nullptr);
+		bool sigval1 = param1;
+		miqt_exec_callback_QTextBrowser_BackwardAvailable(slot, sigval1);
 	});
 }
 
@@ -179,7 +170,8 @@ void QTextBrowser_ForwardAvailable(QTextBrowser* self, bool param1) {
 
 void QTextBrowser_connect_ForwardAvailable(QTextBrowser* self, void* slot) {
 	QTextBrowser::connect(self, static_cast<void (QTextBrowser::*)(bool)>(&QTextBrowser::forwardAvailable), self, [=](bool param1) {
-		miqt_exec_callback(slot, 0, nullptr);
+		bool sigval1 = param1;
+		miqt_exec_callback_QTextBrowser_ForwardAvailable(slot, sigval1);
 	});
 }
 
@@ -189,7 +181,7 @@ void QTextBrowser_HistoryChanged(QTextBrowser* self) {
 
 void QTextBrowser_connect_HistoryChanged(QTextBrowser* self, void* slot) {
 	QTextBrowser::connect(self, static_cast<void (QTextBrowser::*)()>(&QTextBrowser::historyChanged), self, [=]() {
-		miqt_exec_callback(slot, 0, nullptr);
+		miqt_exec_callback_QTextBrowser_HistoryChanged(slot);
 	});
 }
 
@@ -199,7 +191,10 @@ void QTextBrowser_SourceChanged(QTextBrowser* self, QUrl* param1) {
 
 void QTextBrowser_connect_SourceChanged(QTextBrowser* self, void* slot) {
 	QTextBrowser::connect(self, static_cast<void (QTextBrowser::*)(const QUrl&)>(&QTextBrowser::sourceChanged), self, [=](const QUrl& param1) {
-		miqt_exec_callback(slot, 0, nullptr);
+		const QUrl& param1_ret = param1;
+		// Cast returned reference into pointer
+		QUrl* sigval1 = const_cast<QUrl*>(&param1_ret);
+		miqt_exec_callback_QTextBrowser_SourceChanged(slot, sigval1);
 	});
 }
 
@@ -209,18 +204,25 @@ void QTextBrowser_Highlighted(QTextBrowser* self, QUrl* param1) {
 
 void QTextBrowser_connect_Highlighted(QTextBrowser* self, void* slot) {
 	QTextBrowser::connect(self, static_cast<void (QTextBrowser::*)(const QUrl&)>(&QTextBrowser::highlighted), self, [=](const QUrl& param1) {
-		miqt_exec_callback(slot, 0, nullptr);
+		const QUrl& param1_ret = param1;
+		// Cast returned reference into pointer
+		QUrl* sigval1 = const_cast<QUrl*>(&param1_ret);
+		miqt_exec_callback_QTextBrowser_Highlighted(slot, sigval1);
 	});
 }
 
-void QTextBrowser_HighlightedWithQString(QTextBrowser* self, const char* param1, size_t param1_Strlen) {
-	QString param1_QString = QString::fromUtf8(param1, param1_Strlen);
+void QTextBrowser_HighlightedWithQString(QTextBrowser* self, struct miqt_string* param1) {
+	QString param1_QString = QString::fromUtf8(&param1->data, param1->len);
 	self->highlighted(param1_QString);
 }
 
 void QTextBrowser_connect_HighlightedWithQString(QTextBrowser* self, void* slot) {
 	QTextBrowser::connect(self, static_cast<void (QTextBrowser::*)(const QString&)>(&QTextBrowser::highlighted), self, [=](const QString& param1) {
-		miqt_exec_callback(slot, 0, nullptr);
+		const QString param1_ret = param1;
+		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+		QByteArray param1_b = param1_ret.toUtf8();
+		struct miqt_string* sigval1 = miqt_strdup(param1_b.data(), param1_b.length());
+		miqt_exec_callback_QTextBrowser_HighlightedWithQString(slot, sigval1);
 	});
 }
 
@@ -230,44 +232,39 @@ void QTextBrowser_AnchorClicked(QTextBrowser* self, QUrl* param1) {
 
 void QTextBrowser_connect_AnchorClicked(QTextBrowser* self, void* slot) {
 	QTextBrowser::connect(self, static_cast<void (QTextBrowser::*)(const QUrl&)>(&QTextBrowser::anchorClicked), self, [=](const QUrl& param1) {
-		miqt_exec_callback(slot, 0, nullptr);
+		const QUrl& param1_ret = param1;
+		// Cast returned reference into pointer
+		QUrl* sigval1 = const_cast<QUrl*>(&param1_ret);
+		miqt_exec_callback_QTextBrowser_AnchorClicked(slot, sigval1);
 	});
 }
 
-void QTextBrowser_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QTextBrowser::tr(s, c);
+struct miqt_string* QTextBrowser_Tr2(const char* s, const char* c) {
+	QString _ret = QTextBrowser::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QTextBrowser_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QTextBrowser::tr(s, c, static_cast<int>(n));
+struct miqt_string* QTextBrowser_Tr3(const char* s, const char* c, int n) {
+	QString _ret = QTextBrowser::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QTextBrowser_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QTextBrowser::trUtf8(s, c);
+struct miqt_string* QTextBrowser_TrUtf82(const char* s, const char* c) {
+	QString _ret = QTextBrowser::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QTextBrowser_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QTextBrowser::trUtf8(s, c, static_cast<int>(n));
+struct miqt_string* QTextBrowser_TrUtf83(const char* s, const char* c, int n) {
+	QString _ret = QTextBrowser::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QTextBrowser_Delete(QTextBrowser* self) {

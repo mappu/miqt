@@ -323,8 +323,8 @@ func (this *QBrush) Swap(other *QBrush) {
 }
 
 func (this *QBrush) Style() BrushStyle {
-	ret := C.QBrush_Style(this.h)
-	return (BrushStyle)(ret)
+	_ret := C.QBrush_Style(this.h)
+	return (BrushStyle)(_ret)
 }
 
 func (this *QBrush) SetStyle(style BrushStyle) {
@@ -332,8 +332,8 @@ func (this *QBrush) SetStyle(style BrushStyle) {
 }
 
 func (this *QBrush) Matrix() *QMatrix {
-	ret := C.QBrush_Matrix(this.h)
-	return newQMatrix_U(unsafe.Pointer(ret))
+	_ret := C.QBrush_Matrix(this.h)
+	return newQMatrix_U(unsafe.Pointer(_ret))
 }
 
 func (this *QBrush) SetMatrix(mat *QMatrix) {
@@ -341,14 +341,10 @@ func (this *QBrush) SetMatrix(mat *QMatrix) {
 }
 
 func (this *QBrush) Transform() *QTransform {
-	ret := C.QBrush_Transform(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQTransform(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QTransform) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QBrush_Transform(this.h)
+	_goptr := newQTransform(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QBrush) SetTransform(transform *QTransform) {
@@ -356,14 +352,10 @@ func (this *QBrush) SetTransform(transform *QTransform) {
 }
 
 func (this *QBrush) Texture() *QPixmap {
-	ret := C.QBrush_Texture(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPixmap(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPixmap) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QBrush_Texture(this.h)
+	_goptr := newQPixmap(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QBrush) SetTexture(pixmap *QPixmap) {
@@ -371,14 +363,10 @@ func (this *QBrush) SetTexture(pixmap *QPixmap) {
 }
 
 func (this *QBrush) TextureImage() *QImage {
-	ret := C.QBrush_TextureImage(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQImage(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QImage) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QBrush_TextureImage(this.h)
+	_goptr := newQImage(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QBrush) SetTextureImage(image *QImage) {
@@ -386,8 +374,8 @@ func (this *QBrush) SetTextureImage(image *QImage) {
 }
 
 func (this *QBrush) Color() *QColor {
-	ret := C.QBrush_Color(this.h)
-	return newQColor_U(unsafe.Pointer(ret))
+	_ret := C.QBrush_Color(this.h)
+	return newQColor_U(unsafe.Pointer(_ret))
 }
 
 func (this *QBrush) SetColor(color *QColor) {
@@ -399,32 +387,42 @@ func (this *QBrush) SetColorWithColor(color GlobalColor) {
 }
 
 func (this *QBrush) Gradient() *QGradient {
-	ret := C.QBrush_Gradient(this.h)
-	return newQGradient_U(unsafe.Pointer(ret))
+	_ret := C.QBrush_Gradient(this.h)
+	return newQGradient_U(unsafe.Pointer(_ret))
 }
 
 func (this *QBrush) IsOpaque() bool {
-	ret := C.QBrush_IsOpaque(this.h)
-	return (bool)(ret)
+	_ret := C.QBrush_IsOpaque(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QBrush) OperatorEqual(b *QBrush) bool {
-	ret := C.QBrush_OperatorEqual(this.h, b.cPointer())
-	return (bool)(ret)
+	_ret := C.QBrush_OperatorEqual(this.h, b.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QBrush) OperatorNotEqual(b *QBrush) bool {
-	ret := C.QBrush_OperatorNotEqual(this.h, b.cPointer())
-	return (bool)(ret)
+	_ret := C.QBrush_OperatorNotEqual(this.h, b.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QBrush) IsDetached() bool {
-	ret := C.QBrush_IsDetached(this.h)
-	return (bool)(ret)
+	_ret := C.QBrush_IsDetached(this.h)
+	return (bool)(_ret)
 }
 
+// Delete this object from C++ memory.
 func (this *QBrush) Delete() {
 	C.QBrush_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QBrush) GoGC() {
+	runtime.SetFinalizer(this, func(this *QBrush) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
 
 type QBrushData struct {
@@ -459,8 +457,18 @@ func (this *QBrushData) OperatorAssign(param1 *QBrushData) {
 	C.QBrushData_OperatorAssign(this.h, param1.cPointer())
 }
 
+// Delete this object from C++ memory.
 func (this *QBrushData) Delete() {
 	C.QBrushData_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QBrushData) GoGC() {
+	runtime.SetFinalizer(this, func(this *QBrushData) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
 
 type QGradient struct {
@@ -504,8 +512,8 @@ func NewQGradient3(param1 *QGradient) *QGradient {
 }
 
 func (this *QGradient) Type() QGradient__Type {
-	ret := C.QGradient_Type(this.h)
-	return (QGradient__Type)(ret)
+	_ret := C.QGradient_Type(this.h)
+	return (QGradient__Type)(_ret)
 }
 
 func (this *QGradient) SetSpread(spread QGradient__Spread) {
@@ -513,8 +521,8 @@ func (this *QGradient) SetSpread(spread QGradient__Spread) {
 }
 
 func (this *QGradient) Spread() QGradient__Spread {
-	ret := C.QGradient_Spread(this.h)
-	return (QGradient__Spread)(ret)
+	_ret := C.QGradient_Spread(this.h)
+	return (QGradient__Spread)(_ret)
 }
 
 func (this *QGradient) SetColorAt(pos float64, color *QColor) {
@@ -522,8 +530,8 @@ func (this *QGradient) SetColorAt(pos float64, color *QColor) {
 }
 
 func (this *QGradient) CoordinateMode() QGradient__CoordinateMode {
-	ret := C.QGradient_CoordinateMode(this.h)
-	return (QGradient__CoordinateMode)(ret)
+	_ret := C.QGradient_CoordinateMode(this.h)
+	return (QGradient__CoordinateMode)(_ret)
 }
 
 func (this *QGradient) SetCoordinateMode(mode QGradient__CoordinateMode) {
@@ -531,8 +539,8 @@ func (this *QGradient) SetCoordinateMode(mode QGradient__CoordinateMode) {
 }
 
 func (this *QGradient) InterpolationMode() QGradient__InterpolationMode {
-	ret := C.QGradient_InterpolationMode(this.h)
-	return (QGradient__InterpolationMode)(ret)
+	_ret := C.QGradient_InterpolationMode(this.h)
+	return (QGradient__InterpolationMode)(_ret)
 }
 
 func (this *QGradient) SetInterpolationMode(mode QGradient__InterpolationMode) {
@@ -540,17 +548,27 @@ func (this *QGradient) SetInterpolationMode(mode QGradient__InterpolationMode) {
 }
 
 func (this *QGradient) OperatorEqual(gradient *QGradient) bool {
-	ret := C.QGradient_OperatorEqual(this.h, gradient.cPointer())
-	return (bool)(ret)
+	_ret := C.QGradient_OperatorEqual(this.h, gradient.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QGradient) OperatorNotEqual(other *QGradient) bool {
-	ret := C.QGradient_OperatorNotEqual(this.h, other.cPointer())
-	return (bool)(ret)
+	_ret := C.QGradient_OperatorNotEqual(this.h, other.cPointer())
+	return (bool)(_ret)
 }
 
+// Delete this object from C++ memory.
 func (this *QGradient) Delete() {
 	C.QGradient_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QGradient) GoGC() {
+	runtime.SetFinalizer(this, func(this *QGradient) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
 
 type QLinearGradient struct {
@@ -601,14 +619,10 @@ func NewQLinearGradient4(param1 *QLinearGradient) *QLinearGradient {
 }
 
 func (this *QLinearGradient) Start() *QPointF {
-	ret := C.QLinearGradient_Start(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPointF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPointF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QLinearGradient_Start(this.h)
+	_goptr := newQPointF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QLinearGradient) SetStart(start *QPointF) {
@@ -620,14 +634,10 @@ func (this *QLinearGradient) SetStart2(x float64, y float64) {
 }
 
 func (this *QLinearGradient) FinalStop() *QPointF {
-	ret := C.QLinearGradient_FinalStop(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPointF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPointF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QLinearGradient_FinalStop(this.h)
+	_goptr := newQPointF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QLinearGradient) SetFinalStop(stop *QPointF) {
@@ -638,8 +648,18 @@ func (this *QLinearGradient) SetFinalStop2(x float64, y float64) {
 	C.QLinearGradient_SetFinalStop2(this.h, (C.double)(x), (C.double)(y))
 }
 
+// Delete this object from C++ memory.
 func (this *QLinearGradient) Delete() {
 	C.QLinearGradient_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QLinearGradient) GoGC() {
+	runtime.SetFinalizer(this, func(this *QLinearGradient) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
 
 type QRadialGradient struct {
@@ -714,14 +734,10 @@ func NewQRadialGradient8(param1 *QRadialGradient) *QRadialGradient {
 }
 
 func (this *QRadialGradient) Center() *QPointF {
-	ret := C.QRadialGradient_Center(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPointF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPointF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QRadialGradient_Center(this.h)
+	_goptr := newQPointF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QRadialGradient) SetCenter(center *QPointF) {
@@ -733,14 +749,10 @@ func (this *QRadialGradient) SetCenter2(x float64, y float64) {
 }
 
 func (this *QRadialGradient) FocalPoint() *QPointF {
-	ret := C.QRadialGradient_FocalPoint(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPointF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPointF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QRadialGradient_FocalPoint(this.h)
+	_goptr := newQPointF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QRadialGradient) SetFocalPoint(focalPoint *QPointF) {
@@ -752,8 +764,8 @@ func (this *QRadialGradient) SetFocalPoint2(x float64, y float64) {
 }
 
 func (this *QRadialGradient) Radius() float64 {
-	ret := C.QRadialGradient_Radius(this.h)
-	return (float64)(ret)
+	_ret := C.QRadialGradient_Radius(this.h)
+	return (float64)(_ret)
 }
 
 func (this *QRadialGradient) SetRadius(radius float64) {
@@ -761,8 +773,8 @@ func (this *QRadialGradient) SetRadius(radius float64) {
 }
 
 func (this *QRadialGradient) CenterRadius() float64 {
-	ret := C.QRadialGradient_CenterRadius(this.h)
-	return (float64)(ret)
+	_ret := C.QRadialGradient_CenterRadius(this.h)
+	return (float64)(_ret)
 }
 
 func (this *QRadialGradient) SetCenterRadius(radius float64) {
@@ -770,16 +782,26 @@ func (this *QRadialGradient) SetCenterRadius(radius float64) {
 }
 
 func (this *QRadialGradient) FocalRadius() float64 {
-	ret := C.QRadialGradient_FocalRadius(this.h)
-	return (float64)(ret)
+	_ret := C.QRadialGradient_FocalRadius(this.h)
+	return (float64)(_ret)
 }
 
 func (this *QRadialGradient) SetFocalRadius(radius float64) {
 	C.QRadialGradient_SetFocalRadius(this.h, (C.double)(radius))
 }
 
+// Delete this object from C++ memory.
 func (this *QRadialGradient) Delete() {
 	C.QRadialGradient_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QRadialGradient) GoGC() {
+	runtime.SetFinalizer(this, func(this *QRadialGradient) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
 
 type QConicalGradient struct {
@@ -830,14 +852,10 @@ func NewQConicalGradient4(param1 *QConicalGradient) *QConicalGradient {
 }
 
 func (this *QConicalGradient) Center() *QPointF {
-	ret := C.QConicalGradient_Center(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPointF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPointF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QConicalGradient_Center(this.h)
+	_goptr := newQPointF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QConicalGradient) SetCenter(center *QPointF) {
@@ -849,16 +867,26 @@ func (this *QConicalGradient) SetCenter2(x float64, y float64) {
 }
 
 func (this *QConicalGradient) Angle() float64 {
-	ret := C.QConicalGradient_Angle(this.h)
-	return (float64)(ret)
+	_ret := C.QConicalGradient_Angle(this.h)
+	return (float64)(_ret)
 }
 
 func (this *QConicalGradient) SetAngle(angle float64) {
 	C.QConicalGradient_SetAngle(this.h, (C.double)(angle))
 }
 
+// Delete this object from C++ memory.
 func (this *QConicalGradient) Delete() {
 	C.QConicalGradient_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QConicalGradient) GoGC() {
+	runtime.SetFinalizer(this, func(this *QConicalGradient) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
 
 type QGradient__QGradientData struct {
@@ -889,6 +917,16 @@ func NewQGradient__QGradientData(param1 *QGradient__QGradientData) *QGradient__Q
 	return newQGradient__QGradientData(ret)
 }
 
+// Delete this object from C++ memory.
 func (this *QGradient__QGradientData) Delete() {
 	C.QGradient__QGradientData_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QGradient__QGradientData) GoGC() {
+	runtime.SetFinalizer(this, func(this *QGradient__QGradientData) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

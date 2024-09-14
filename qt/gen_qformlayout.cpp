@@ -10,12 +10,8 @@
 #include <cstring>
 #include <QWidget>
 #include "qformlayout.h"
-
 #include "gen_qformlayout.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QFormLayout* QFormLayout_new() {
 	return new QFormLayout();
@@ -29,22 +25,18 @@ QMetaObject* QFormLayout_MetaObject(const QFormLayout* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void QFormLayout_Tr(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QFormLayout::tr(s);
+struct miqt_string* QFormLayout_Tr(const char* s) {
+	QString _ret = QFormLayout::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QFormLayout_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QFormLayout::trUtf8(s);
+struct miqt_string* QFormLayout_TrUtf8(const char* s) {
+	QString _ret = QFormLayout::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QFormLayout_SetFieldGrowthPolicy(QFormLayout* self, uintptr_t policy) {
@@ -52,8 +44,8 @@ void QFormLayout_SetFieldGrowthPolicy(QFormLayout* self, uintptr_t policy) {
 }
 
 uintptr_t QFormLayout_FieldGrowthPolicy(const QFormLayout* self) {
-	QFormLayout::FieldGrowthPolicy ret = self->fieldGrowthPolicy();
-	return static_cast<uintptr_t>(ret);
+	QFormLayout::FieldGrowthPolicy _ret = self->fieldGrowthPolicy();
+	return static_cast<uintptr_t>(_ret);
 }
 
 void QFormLayout_SetRowWrapPolicy(QFormLayout* self, int policy) {
@@ -61,8 +53,8 @@ void QFormLayout_SetRowWrapPolicy(QFormLayout* self, int policy) {
 }
 
 int QFormLayout_RowWrapPolicy(const QFormLayout* self) {
-	QFormLayout::RowWrapPolicy ret = self->rowWrapPolicy();
-	return static_cast<int>(ret);
+	QFormLayout::RowWrapPolicy _ret = self->rowWrapPolicy();
+	return static_cast<int>(_ret);
 }
 
 void QFormLayout_SetLabelAlignment(QFormLayout* self, int alignment) {
@@ -70,8 +62,8 @@ void QFormLayout_SetLabelAlignment(QFormLayout* self, int alignment) {
 }
 
 int QFormLayout_LabelAlignment(const QFormLayout* self) {
-	Qt::Alignment ret = self->labelAlignment();
-	return static_cast<int>(ret);
+	Qt::Alignment _ret = self->labelAlignment();
+	return static_cast<int>(_ret);
 }
 
 void QFormLayout_SetFormAlignment(QFormLayout* self, int alignment) {
@@ -79,8 +71,8 @@ void QFormLayout_SetFormAlignment(QFormLayout* self, int alignment) {
 }
 
 int QFormLayout_FormAlignment(const QFormLayout* self) {
-	Qt::Alignment ret = self->formAlignment();
-	return static_cast<int>(ret);
+	Qt::Alignment _ret = self->formAlignment();
+	return static_cast<int>(_ret);
 }
 
 void QFormLayout_SetHorizontalSpacing(QFormLayout* self, int spacing) {
@@ -115,13 +107,13 @@ void QFormLayout_AddRow2(QFormLayout* self, QWidget* label, QLayout* field) {
 	self->addRow(label, field);
 }
 
-void QFormLayout_AddRow3(QFormLayout* self, const char* labelText, size_t labelText_Strlen, QWidget* field) {
-	QString labelText_QString = QString::fromUtf8(labelText, labelText_Strlen);
+void QFormLayout_AddRow3(QFormLayout* self, struct miqt_string* labelText, QWidget* field) {
+	QString labelText_QString = QString::fromUtf8(&labelText->data, labelText->len);
 	self->addRow(labelText_QString, field);
 }
 
-void QFormLayout_AddRow4(QFormLayout* self, const char* labelText, size_t labelText_Strlen, QLayout* field) {
-	QString labelText_QString = QString::fromUtf8(labelText, labelText_Strlen);
+void QFormLayout_AddRow4(QFormLayout* self, struct miqt_string* labelText, QLayout* field) {
+	QString labelText_QString = QString::fromUtf8(&labelText->data, labelText->len);
 	self->addRow(labelText_QString, field);
 }
 
@@ -141,13 +133,13 @@ void QFormLayout_InsertRow2(QFormLayout* self, int row, QWidget* label, QLayout*
 	self->insertRow(static_cast<int>(row), label, field);
 }
 
-void QFormLayout_InsertRow3(QFormLayout* self, int row, const char* labelText, size_t labelText_Strlen, QWidget* field) {
-	QString labelText_QString = QString::fromUtf8(labelText, labelText_Strlen);
+void QFormLayout_InsertRow3(QFormLayout* self, int row, struct miqt_string* labelText, QWidget* field) {
+	QString labelText_QString = QString::fromUtf8(&labelText->data, labelText->len);
 	self->insertRow(static_cast<int>(row), labelText_QString, field);
 }
 
-void QFormLayout_InsertRow4(QFormLayout* self, int row, const char* labelText, size_t labelText_Strlen, QLayout* field) {
-	QString labelText_QString = QString::fromUtf8(labelText, labelText_Strlen);
+void QFormLayout_InsertRow4(QFormLayout* self, int row, struct miqt_string* labelText, QLayout* field) {
+	QString labelText_QString = QString::fromUtf8(&labelText->data, labelText->len);
 	self->insertRow(static_cast<int>(row), labelText_QString, field);
 }
 
@@ -172,21 +164,21 @@ void QFormLayout_RemoveRowWithLayout(QFormLayout* self, QLayout* layout) {
 }
 
 QFormLayout__TakeRowResult* QFormLayout_TakeRow(QFormLayout* self, int row) {
-	QFormLayout::TakeRowResult ret = self->takeRow(static_cast<int>(row));
+	QFormLayout::TakeRowResult _ret = self->takeRow(static_cast<int>(row));
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QFormLayout::TakeRowResult*>(new QFormLayout::TakeRowResult(ret));
+	return static_cast<QFormLayout::TakeRowResult*>(new QFormLayout::TakeRowResult(_ret));
 }
 
 QFormLayout__TakeRowResult* QFormLayout_TakeRowWithWidget(QFormLayout* self, QWidget* widget) {
-	QFormLayout::TakeRowResult ret = self->takeRow(widget);
+	QFormLayout::TakeRowResult _ret = self->takeRow(widget);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QFormLayout::TakeRowResult*>(new QFormLayout::TakeRowResult(ret));
+	return static_cast<QFormLayout::TakeRowResult*>(new QFormLayout::TakeRowResult(_ret));
 }
 
 QFormLayout__TakeRowResult* QFormLayout_TakeRowWithLayout(QFormLayout* self, QLayout* layout) {
-	QFormLayout::TakeRowResult ret = self->takeRow(layout);
+	QFormLayout::TakeRowResult _ret = self->takeRow(layout);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QFormLayout::TakeRowResult*>(new QFormLayout::TakeRowResult(ret));
+	return static_cast<QFormLayout::TakeRowResult*>(new QFormLayout::TakeRowResult(_ret));
 }
 
 void QFormLayout_SetItem(QFormLayout* self, int row, int role, QLayoutItem* item) {
@@ -230,15 +222,15 @@ void QFormLayout_SetGeometry(QFormLayout* self, QRect* rect) {
 }
 
 QSize* QFormLayout_MinimumSize(const QFormLayout* self) {
-	QSize ret = self->minimumSize();
+	QSize _ret = self->minimumSize();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(ret));
+	return static_cast<QSize*>(new QSize(_ret));
 }
 
 QSize* QFormLayout_SizeHint(const QFormLayout* self) {
-	QSize ret = self->sizeHint();
+	QSize _ret = self->sizeHint();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(ret));
+	return static_cast<QSize*>(new QSize(_ret));
 }
 
 void QFormLayout_Invalidate(QFormLayout* self) {
@@ -254,8 +246,8 @@ int QFormLayout_HeightForWidth(const QFormLayout* self, int width) {
 }
 
 int QFormLayout_ExpandingDirections(const QFormLayout* self) {
-	Qt::Orientations ret = self->expandingDirections();
-	return static_cast<int>(ret);
+	Qt::Orientations _ret = self->expandingDirections();
+	return static_cast<int>(_ret);
 }
 
 int QFormLayout_Count(const QFormLayout* self) {
@@ -266,40 +258,32 @@ int QFormLayout_RowCount(const QFormLayout* self) {
 	return self->rowCount();
 }
 
-void QFormLayout_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QFormLayout::tr(s, c);
+struct miqt_string* QFormLayout_Tr2(const char* s, const char* c) {
+	QString _ret = QFormLayout::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QFormLayout_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QFormLayout::tr(s, c, static_cast<int>(n));
+struct miqt_string* QFormLayout_Tr3(const char* s, const char* c, int n) {
+	QString _ret = QFormLayout::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QFormLayout_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QFormLayout::trUtf8(s, c);
+struct miqt_string* QFormLayout_TrUtf82(const char* s, const char* c) {
+	QString _ret = QFormLayout::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QFormLayout_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QFormLayout::trUtf8(s, c, static_cast<int>(n));
+struct miqt_string* QFormLayout_TrUtf83(const char* s, const char* c, int n) {
+	QString _ret = QFormLayout::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QFormLayout_Delete(QFormLayout* self) {

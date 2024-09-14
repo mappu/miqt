@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"runtime"
 	"unsafe"
 )
 
@@ -45,20 +46,20 @@ func newQLockFile_U(h unsafe.Pointer) *QLockFile {
 
 // NewQLockFile constructs a new QLockFile object.
 func NewQLockFile(fileName string) *QLockFile {
-	fileName_Cstring := C.CString(fileName)
-	defer C.free(unsafe.Pointer(fileName_Cstring))
-	ret := C.QLockFile_new(fileName_Cstring, C.size_t(len(fileName)))
+	fileName_ms := miqt_strdupg(fileName)
+	defer C.free(fileName_ms)
+	ret := C.QLockFile_new((*C.struct_miqt_string)(fileName_ms))
 	return newQLockFile(ret)
 }
 
 func (this *QLockFile) Lock() bool {
-	ret := C.QLockFile_Lock(this.h)
-	return (bool)(ret)
+	_ret := C.QLockFile_Lock(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QLockFile) TryLock() bool {
-	ret := C.QLockFile_TryLock(this.h)
-	return (bool)(ret)
+	_ret := C.QLockFile_TryLock(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QLockFile) Unlock() {
@@ -70,30 +71,40 @@ func (this *QLockFile) SetStaleLockTime(staleLockTime int) {
 }
 
 func (this *QLockFile) StaleLockTime() int {
-	ret := C.QLockFile_StaleLockTime(this.h)
-	return (int)(ret)
+	_ret := C.QLockFile_StaleLockTime(this.h)
+	return (int)(_ret)
 }
 
 func (this *QLockFile) IsLocked() bool {
-	ret := C.QLockFile_IsLocked(this.h)
-	return (bool)(ret)
+	_ret := C.QLockFile_IsLocked(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QLockFile) RemoveStaleLockFile() bool {
-	ret := C.QLockFile_RemoveStaleLockFile(this.h)
-	return (bool)(ret)
+	_ret := C.QLockFile_RemoveStaleLockFile(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QLockFile) Error() QLockFile__LockError {
-	ret := C.QLockFile_Error(this.h)
-	return (QLockFile__LockError)(ret)
+	_ret := C.QLockFile_Error(this.h)
+	return (QLockFile__LockError)(_ret)
 }
 
 func (this *QLockFile) TryLock1(timeout int) bool {
-	ret := C.QLockFile_TryLock1(this.h, (C.int)(timeout))
-	return (bool)(ret)
+	_ret := C.QLockFile_TryLock1(this.h, (C.int)(timeout))
+	return (bool)(_ret)
 }
 
+// Delete this object from C++ memory.
 func (this *QLockFile) Delete() {
 	C.QLockFile_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QLockFile) GoGC() {
+	runtime.SetFinalizer(this, func(this *QLockFile) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

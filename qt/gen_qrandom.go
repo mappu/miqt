@@ -70,43 +70,43 @@ func (this *QRandomGenerator) OperatorAssign(other *QRandomGenerator) {
 }
 
 func (this *QRandomGenerator) Generate() uint {
-	ret := C.QRandomGenerator_Generate(this.h)
-	return (uint)(ret)
+	_ret := C.QRandomGenerator_Generate(this.h)
+	return (uint)(_ret)
 }
 
 func (this *QRandomGenerator) Generate64() uint64 {
-	ret := C.QRandomGenerator_Generate64(this.h)
-	return (uint64)(ret)
+	_ret := C.QRandomGenerator_Generate64(this.h)
+	return (uint64)(_ret)
 }
 
 func (this *QRandomGenerator) GenerateDouble() float64 {
-	ret := C.QRandomGenerator_GenerateDouble(this.h)
-	return (float64)(ret)
+	_ret := C.QRandomGenerator_GenerateDouble(this.h)
+	return (float64)(_ret)
 }
 
 func (this *QRandomGenerator) Bounded(highest float64) float64 {
-	ret := C.QRandomGenerator_Bounded(this.h, (C.double)(highest))
-	return (float64)(ret)
+	_ret := C.QRandomGenerator_Bounded(this.h, (C.double)(highest))
+	return (float64)(_ret)
 }
 
 func (this *QRandomGenerator) BoundedWithHighest(highest uint) uint {
-	ret := C.QRandomGenerator_BoundedWithHighest(this.h, (C.uint)(highest))
-	return (uint)(ret)
+	_ret := C.QRandomGenerator_BoundedWithHighest(this.h, (C.uint)(highest))
+	return (uint)(_ret)
 }
 
 func (this *QRandomGenerator) Bounded2(lowest uint, highest uint) uint {
-	ret := C.QRandomGenerator_Bounded2(this.h, (C.uint)(lowest), (C.uint)(highest))
-	return (uint)(ret)
+	_ret := C.QRandomGenerator_Bounded2(this.h, (C.uint)(lowest), (C.uint)(highest))
+	return (uint)(_ret)
 }
 
 func (this *QRandomGenerator) Bounded3(highest int) int {
-	ret := C.QRandomGenerator_Bounded3(this.h, (C.int)(highest))
-	return (int)(ret)
+	_ret := C.QRandomGenerator_Bounded3(this.h, (C.int)(highest))
+	return (int)(_ret)
 }
 
 func (this *QRandomGenerator) Bounded4(lowest int, highest int) int {
-	ret := C.QRandomGenerator_Bounded4(this.h, (C.int)(lowest), (C.int)(highest))
-	return (int)(ret)
+	_ret := C.QRandomGenerator_Bounded4(this.h, (C.int)(lowest), (C.int)(highest))
+	return (int)(_ret)
 }
 
 func (this *QRandomGenerator) Generate2(begin *uint, end *uint) {
@@ -114,8 +114,8 @@ func (this *QRandomGenerator) Generate2(begin *uint, end *uint) {
 }
 
 func (this *QRandomGenerator) OperatorCall() uint32 {
-	ret := C.QRandomGenerator_OperatorCall(this.h)
-	return (uint32)(ret)
+	_ret := C.QRandomGenerator_OperatorCall(this.h)
+	return (uint32)(_ret)
 }
 
 func (this *QRandomGenerator) Seed() {
@@ -127,42 +127,48 @@ func (this *QRandomGenerator) Discard(z uint64) {
 }
 
 func QRandomGenerator_Min() uint32 {
-	ret := C.QRandomGenerator_Min()
-	return (uint32)(ret)
+	_ret := C.QRandomGenerator_Min()
+	return (uint32)(_ret)
 }
 
 func QRandomGenerator_Max() uint32 {
-	ret := C.QRandomGenerator_Max()
-	return (uint32)(ret)
+	_ret := C.QRandomGenerator_Max()
+	return (uint32)(_ret)
 }
 
 func QRandomGenerator_System() *QRandomGenerator {
-	ret := C.QRandomGenerator_System()
-	return newQRandomGenerator_U(unsafe.Pointer(ret))
+	_ret := C.QRandomGenerator_System()
+	return newQRandomGenerator_U(unsafe.Pointer(_ret))
 }
 
 func QRandomGenerator_Global() *QRandomGenerator {
-	ret := C.QRandomGenerator_Global()
-	return newQRandomGenerator_U(unsafe.Pointer(ret))
+	_ret := C.QRandomGenerator_Global()
+	return newQRandomGenerator_U(unsafe.Pointer(_ret))
 }
 
 func QRandomGenerator_SecurelySeeded() *QRandomGenerator {
-	ret := C.QRandomGenerator_SecurelySeeded()
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRandomGenerator(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRandomGenerator) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QRandomGenerator_SecurelySeeded()
+	_goptr := newQRandomGenerator(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QRandomGenerator) Seed1(s uint) {
 	C.QRandomGenerator_Seed1(this.h, (C.uint)(s))
 }
 
+// Delete this object from C++ memory.
 func (this *QRandomGenerator) Delete() {
 	C.QRandomGenerator_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QRandomGenerator) GoGC() {
+	runtime.SetFinalizer(this, func(this *QRandomGenerator) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
 
 type QRandomGenerator64 struct {
@@ -225,13 +231,13 @@ func NewQRandomGenerator646(seedValue uint) *QRandomGenerator64 {
 }
 
 func (this *QRandomGenerator64) Generate() uint64 {
-	ret := C.QRandomGenerator64_Generate(this.h)
-	return (uint64)(ret)
+	_ret := C.QRandomGenerator64_Generate(this.h)
+	return (uint64)(_ret)
 }
 
 func (this *QRandomGenerator64) OperatorCall() uint64 {
-	ret := C.QRandomGenerator64_OperatorCall(this.h)
-	return (uint64)(ret)
+	_ret := C.QRandomGenerator64_OperatorCall(this.h)
+	return (uint64)(_ret)
 }
 
 func (this *QRandomGenerator64) Discard(z uint64) {
@@ -239,40 +245,46 @@ func (this *QRandomGenerator64) Discard(z uint64) {
 }
 
 func QRandomGenerator64_Min() uint64 {
-	ret := C.QRandomGenerator64_Min()
-	return (uint64)(ret)
+	_ret := C.QRandomGenerator64_Min()
+	return (uint64)(_ret)
 }
 
 func QRandomGenerator64_Max() uint64 {
-	ret := C.QRandomGenerator64_Max()
-	return (uint64)(ret)
+	_ret := C.QRandomGenerator64_Max()
+	return (uint64)(_ret)
 }
 
 func QRandomGenerator64_System() *QRandomGenerator64 {
-	ret := C.QRandomGenerator64_System()
-	return newQRandomGenerator64_U(unsafe.Pointer(ret))
+	_ret := C.QRandomGenerator64_System()
+	return newQRandomGenerator64_U(unsafe.Pointer(_ret))
 }
 
 func QRandomGenerator64_Global() *QRandomGenerator64 {
-	ret := C.QRandomGenerator64_Global()
-	return newQRandomGenerator64_U(unsafe.Pointer(ret))
+	_ret := C.QRandomGenerator64_Global()
+	return newQRandomGenerator64_U(unsafe.Pointer(_ret))
 }
 
 func QRandomGenerator64_SecurelySeeded() *QRandomGenerator64 {
-	ret := C.QRandomGenerator64_SecurelySeeded()
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRandomGenerator64(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRandomGenerator64) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QRandomGenerator64_SecurelySeeded()
+	_goptr := newQRandomGenerator64(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QRandomGenerator64) OperatorAssign(param1 *QRandomGenerator64) {
 	C.QRandomGenerator64_OperatorAssign(this.h, param1.cPointer())
 }
 
+// Delete this object from C++ memory.
 func (this *QRandomGenerator64) Delete() {
 	C.QRandomGenerator64_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QRandomGenerator64) GoGC() {
+	runtime.SetFinalizer(this, func(this *QRandomGenerator64) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

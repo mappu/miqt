@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -34,9 +36,9 @@ typedef struct QVariant QVariant;
 QConcatenateTablesProxyModel* QConcatenateTablesProxyModel_new();
 QConcatenateTablesProxyModel* QConcatenateTablesProxyModel_new2(QObject* parent);
 QMetaObject* QConcatenateTablesProxyModel_MetaObject(const QConcatenateTablesProxyModel* self);
-void QConcatenateTablesProxyModel_Tr(const char* s, char** _out, int* _out_Strlen);
-void QConcatenateTablesProxyModel_TrUtf8(const char* s, char** _out, int* _out_Strlen);
-void QConcatenateTablesProxyModel_SourceModels(const QConcatenateTablesProxyModel* self, QAbstractItemModel*** _out, size_t* _out_len);
+struct miqt_string* QConcatenateTablesProxyModel_Tr(const char* s);
+struct miqt_string* QConcatenateTablesProxyModel_TrUtf8(const char* s);
+struct miqt_array* QConcatenateTablesProxyModel_SourceModels(const QConcatenateTablesProxyModel* self);
 void QConcatenateTablesProxyModel_AddSourceModel(QConcatenateTablesProxyModel* self, QAbstractItemModel* sourceModel);
 void QConcatenateTablesProxyModel_RemoveSourceModel(QConcatenateTablesProxyModel* self, QAbstractItemModel* sourceModel);
 QModelIndex* QConcatenateTablesProxyModel_MapFromSource(const QConcatenateTablesProxyModel* self, QModelIndex* sourceIndex);
@@ -49,15 +51,15 @@ QModelIndex* QConcatenateTablesProxyModel_Parent(const QConcatenateTablesProxyMo
 int QConcatenateTablesProxyModel_RowCount(const QConcatenateTablesProxyModel* self);
 QVariant* QConcatenateTablesProxyModel_HeaderData(const QConcatenateTablesProxyModel* self, int section, uintptr_t orientation);
 int QConcatenateTablesProxyModel_ColumnCount(const QConcatenateTablesProxyModel* self);
-void QConcatenateTablesProxyModel_MimeTypes(const QConcatenateTablesProxyModel* self, char*** _out, int** _out_Lengths, size_t* _out_len);
-QMimeData* QConcatenateTablesProxyModel_MimeData(const QConcatenateTablesProxyModel* self, QModelIndex** indexes, size_t indexes_len);
+struct miqt_array* QConcatenateTablesProxyModel_MimeTypes(const QConcatenateTablesProxyModel* self);
+QMimeData* QConcatenateTablesProxyModel_MimeData(const QConcatenateTablesProxyModel* self, struct miqt_array* /* of QModelIndex */ indexes);
 bool QConcatenateTablesProxyModel_CanDropMimeData(const QConcatenateTablesProxyModel* self, QMimeData* data, uintptr_t action, int row, int column, QModelIndex* parent);
 bool QConcatenateTablesProxyModel_DropMimeData(QConcatenateTablesProxyModel* self, QMimeData* data, uintptr_t action, int row, int column, QModelIndex* parent);
 QSize* QConcatenateTablesProxyModel_Span(const QConcatenateTablesProxyModel* self, QModelIndex* index);
-void QConcatenateTablesProxyModel_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QConcatenateTablesProxyModel_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QConcatenateTablesProxyModel_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QConcatenateTablesProxyModel_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QConcatenateTablesProxyModel_Tr2(const char* s, const char* c);
+struct miqt_string* QConcatenateTablesProxyModel_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QConcatenateTablesProxyModel_TrUtf82(const char* s, const char* c);
+struct miqt_string* QConcatenateTablesProxyModel_TrUtf83(const char* s, const char* c, int n);
 QVariant* QConcatenateTablesProxyModel_Data2(const QConcatenateTablesProxyModel* self, QModelIndex* index, int role);
 bool QConcatenateTablesProxyModel_SetData3(QConcatenateTablesProxyModel* self, QModelIndex* index, QVariant* value, int role);
 QModelIndex* QConcatenateTablesProxyModel_Index3(const QConcatenateTablesProxyModel* self, int row, int column, QModelIndex* parent);

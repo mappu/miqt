@@ -58,62 +58,50 @@ func NewQToolButton2(parent *QWidget) *QToolButton {
 }
 
 func (this *QToolButton) MetaObject() *QMetaObject {
-	ret := C.QToolButton_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QToolButton_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QToolButton_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QToolButton_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QToolButton_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QToolButton_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QToolButton_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QToolButton_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QToolButton) SizeHint() *QSize {
-	ret := C.QToolButton_SizeHint(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSize(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QToolButton_SizeHint(this.h)
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QToolButton) MinimumSizeHint() *QSize {
-	ret := C.QToolButton_MinimumSizeHint(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSize(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QToolButton_MinimumSizeHint(this.h)
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QToolButton) ToolButtonStyle() ToolButtonStyle {
-	ret := C.QToolButton_ToolButtonStyle(this.h)
-	return (ToolButtonStyle)(ret)
+	_ret := C.QToolButton_ToolButtonStyle(this.h)
+	return (ToolButtonStyle)(_ret)
 }
 
 func (this *QToolButton) ArrowType() ArrowType {
-	ret := C.QToolButton_ArrowType(this.h)
-	return (ArrowType)(ret)
+	_ret := C.QToolButton_ArrowType(this.h)
+	return (ArrowType)(_ret)
 }
 
 func (this *QToolButton) SetArrowType(typeVal ArrowType) {
@@ -125,8 +113,8 @@ func (this *QToolButton) SetMenu(menu *QMenu) {
 }
 
 func (this *QToolButton) Menu() *QMenu {
-	ret := C.QToolButton_Menu(this.h)
-	return newQMenu_U(unsafe.Pointer(ret))
+	_ret := C.QToolButton_Menu(this.h)
+	return newQMenu_U(unsafe.Pointer(_ret))
 }
 
 func (this *QToolButton) SetPopupMode(mode QToolButton__ToolButtonPopupMode) {
@@ -134,13 +122,13 @@ func (this *QToolButton) SetPopupMode(mode QToolButton__ToolButtonPopupMode) {
 }
 
 func (this *QToolButton) PopupMode() QToolButton__ToolButtonPopupMode {
-	ret := C.QToolButton_PopupMode(this.h)
-	return (QToolButton__ToolButtonPopupMode)(ret)
+	_ret := C.QToolButton_PopupMode(this.h)
+	return (QToolButton__ToolButtonPopupMode)(_ret)
 }
 
 func (this *QToolButton) DefaultAction() *QAction {
-	ret := C.QToolButton_DefaultAction(this.h)
-	return newQAction_U(unsafe.Pointer(ret))
+	_ret := C.QToolButton_DefaultAction(this.h)
+	return newQAction_U(unsafe.Pointer(_ret))
 }
 
 func (this *QToolButton) SetAutoRaise(enable bool) {
@@ -148,8 +136,8 @@ func (this *QToolButton) SetAutoRaise(enable bool) {
 }
 
 func (this *QToolButton) AutoRaise() bool {
-	ret := C.QToolButton_AutoRaise(this.h)
-	return (bool)(ret)
+	_ret := C.QToolButton_AutoRaise(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QToolButton) ShowMenu() {
@@ -167,13 +155,22 @@ func (this *QToolButton) SetDefaultAction(defaultAction *QAction) {
 func (this *QToolButton) Triggered(param1 *QAction) {
 	C.QToolButton_Triggered(this.h, param1.cPointer())
 }
+func (this *QToolButton) OnTriggered(slot func(param1 *QAction)) {
+	C.QToolButton_connect_Triggered(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QToolButton) OnTriggered(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QToolButton_Triggered
+func miqt_exec_callback_QToolButton_Triggered(cb *C.void, param1 *C.QAction) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(param1 *QAction))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QToolButton_connect_Triggered(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	param1_ret := param1
+	slotval1 := newQAction_U(unsafe.Pointer(param1_ret))
+
+	gofunc(slotval1)
 }
 
 func QToolButton_Tr2(s string, c string) string {
@@ -181,12 +178,10 @@ func QToolButton_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QToolButton_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QToolButton_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QToolButton_Tr3(s string, c string, n int) string {
@@ -194,12 +189,10 @@ func QToolButton_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QToolButton_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QToolButton_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QToolButton_TrUtf82(s string, c string) string {
@@ -207,12 +200,10 @@ func QToolButton_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QToolButton_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QToolButton_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QToolButton_TrUtf83(s string, c string, n int) string {
@@ -220,14 +211,22 @@ func QToolButton_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QToolButton_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QToolButton_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
+// Delete this object from C++ memory.
 func (this *QToolButton) Delete() {
 	C.QToolButton_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QToolButton) GoGC() {
+	runtime.SetFinalizer(this, func(this *QToolButton) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

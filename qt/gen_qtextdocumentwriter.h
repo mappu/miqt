@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -29,19 +31,19 @@ typedef struct QTextDocumentWriter QTextDocumentWriter;
 
 QTextDocumentWriter* QTextDocumentWriter_new();
 QTextDocumentWriter* QTextDocumentWriter_new2(QIODevice* device, QByteArray* format);
-QTextDocumentWriter* QTextDocumentWriter_new3(const char* fileName, size_t fileName_Strlen);
-QTextDocumentWriter* QTextDocumentWriter_new4(const char* fileName, size_t fileName_Strlen, QByteArray* format);
+QTextDocumentWriter* QTextDocumentWriter_new3(struct miqt_string* fileName);
+QTextDocumentWriter* QTextDocumentWriter_new4(struct miqt_string* fileName, QByteArray* format);
 void QTextDocumentWriter_SetFormat(QTextDocumentWriter* self, QByteArray* format);
 QByteArray* QTextDocumentWriter_Format(const QTextDocumentWriter* self);
 void QTextDocumentWriter_SetDevice(QTextDocumentWriter* self, QIODevice* device);
 QIODevice* QTextDocumentWriter_Device(const QTextDocumentWriter* self);
-void QTextDocumentWriter_SetFileName(QTextDocumentWriter* self, const char* fileName, size_t fileName_Strlen);
-void QTextDocumentWriter_FileName(const QTextDocumentWriter* self, char** _out, int* _out_Strlen);
+void QTextDocumentWriter_SetFileName(QTextDocumentWriter* self, struct miqt_string* fileName);
+struct miqt_string* QTextDocumentWriter_FileName(const QTextDocumentWriter* self);
 bool QTextDocumentWriter_Write(QTextDocumentWriter* self, QTextDocument* document);
 bool QTextDocumentWriter_WriteWithFragment(QTextDocumentWriter* self, QTextDocumentFragment* fragment);
 void QTextDocumentWriter_SetCodec(QTextDocumentWriter* self, QTextCodec* codec);
 QTextCodec* QTextDocumentWriter_Codec(const QTextDocumentWriter* self);
-void QTextDocumentWriter_SupportedDocumentFormats(QByteArray*** _out, size_t* _out_len);
+struct miqt_array* QTextDocumentWriter_SupportedDocumentFormats();
 void QTextDocumentWriter_Delete(QTextDocumentWriter* self);
 
 #ifdef __cplusplus

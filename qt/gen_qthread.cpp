@@ -8,12 +8,8 @@
 #include <cstring>
 #include <QThread>
 #include "qthread.h"
-
 #include "gen_qthread.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QThread* QThread_new() {
 	return new QThread();
@@ -27,22 +23,18 @@ QMetaObject* QThread_MetaObject(const QThread* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void QThread_Tr(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QThread::tr(s);
+struct miqt_string* QThread_Tr(const char* s) {
+	QString _ret = QThread::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QThread_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QThread::trUtf8(s);
+struct miqt_string* QThread_TrUtf8(const char* s) {
+	QString _ret = QThread::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 QThread* QThread_CurrentThread() {
@@ -62,8 +54,8 @@ void QThread_SetPriority(QThread* self, uintptr_t priority) {
 }
 
 uintptr_t QThread_Priority(const QThread* self) {
-	QThread::Priority ret = self->priority();
-	return static_cast<uintptr_t>(ret);
+	QThread::Priority _ret = self->priority();
+	return static_cast<uintptr_t>(_ret);
 }
 
 bool QThread_IsFinished(const QThread* self) {
@@ -142,40 +134,32 @@ void QThread_Usleep(unsigned long param1) {
 	QThread::usleep(static_cast<unsigned long>(param1));
 }
 
-void QThread_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QThread::tr(s, c);
+struct miqt_string* QThread_Tr2(const char* s, const char* c) {
+	QString _ret = QThread::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QThread_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QThread::tr(s, c, static_cast<int>(n));
+struct miqt_string* QThread_Tr3(const char* s, const char* c, int n) {
+	QString _ret = QThread::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QThread_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QThread::trUtf8(s, c);
+struct miqt_string* QThread_TrUtf82(const char* s, const char* c) {
+	QString _ret = QThread::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QThread_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QThread::trUtf8(s, c, static_cast<int>(n));
+struct miqt_string* QThread_TrUtf83(const char* s, const char* c, int n) {
+	QString _ret = QThread::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QThread_Exit1(QThread* self, int retcode) {

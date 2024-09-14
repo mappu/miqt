@@ -84,14 +84,10 @@ func NewQMatrix4x48(param1 *QMatrix4x4) *QMatrix4x4 {
 }
 
 func (this *QMatrix4x4) Column(index int) *QVector4D {
-	ret := C.QMatrix4x4_Column(this.h, (C.int)(index))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQVector4D(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QVector4D) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QMatrix4x4_Column(this.h, (C.int)(index))
+	_goptr := newQVector4D(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QMatrix4x4) SetColumn(index int, value *QVector4D) {
@@ -99,14 +95,10 @@ func (this *QMatrix4x4) SetColumn(index int, value *QVector4D) {
 }
 
 func (this *QMatrix4x4) Row(index int) *QVector4D {
-	ret := C.QMatrix4x4_Row(this.h, (C.int)(index))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQVector4D(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QVector4D) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QMatrix4x4_Row(this.h, (C.int)(index))
+	_goptr := newQVector4D(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QMatrix4x4) SetRow(index int, value *QVector4D) {
@@ -114,13 +106,13 @@ func (this *QMatrix4x4) SetRow(index int, value *QVector4D) {
 }
 
 func (this *QMatrix4x4) IsAffine() bool {
-	ret := C.QMatrix4x4_IsAffine(this.h)
-	return (bool)(ret)
+	_ret := C.QMatrix4x4_IsAffine(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QMatrix4x4) IsIdentity() bool {
-	ret := C.QMatrix4x4_IsIdentity(this.h)
-	return (bool)(ret)
+	_ret := C.QMatrix4x4_IsIdentity(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QMatrix4x4) SetToIdentity() {
@@ -132,65 +124,57 @@ func (this *QMatrix4x4) Fill(value float32) {
 }
 
 func (this *QMatrix4x4) Determinant() float64 {
-	ret := C.QMatrix4x4_Determinant(this.h)
-	return (float64)(ret)
+	_ret := C.QMatrix4x4_Determinant(this.h)
+	return (float64)(_ret)
 }
 
 func (this *QMatrix4x4) Inverted() *QMatrix4x4 {
-	ret := C.QMatrix4x4_Inverted(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQMatrix4x4(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QMatrix4x4) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QMatrix4x4_Inverted(this.h)
+	_goptr := newQMatrix4x4(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QMatrix4x4) Transposed() *QMatrix4x4 {
-	ret := C.QMatrix4x4_Transposed(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQMatrix4x4(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QMatrix4x4) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QMatrix4x4_Transposed(this.h)
+	_goptr := newQMatrix4x4(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QMatrix4x4) OperatorPlusAssign(other *QMatrix4x4) *QMatrix4x4 {
-	ret := C.QMatrix4x4_OperatorPlusAssign(this.h, other.cPointer())
-	return newQMatrix4x4_U(unsafe.Pointer(ret))
+	_ret := C.QMatrix4x4_OperatorPlusAssign(this.h, other.cPointer())
+	return newQMatrix4x4_U(unsafe.Pointer(_ret))
 }
 
 func (this *QMatrix4x4) OperatorMinusAssign(other *QMatrix4x4) *QMatrix4x4 {
-	ret := C.QMatrix4x4_OperatorMinusAssign(this.h, other.cPointer())
-	return newQMatrix4x4_U(unsafe.Pointer(ret))
+	_ret := C.QMatrix4x4_OperatorMinusAssign(this.h, other.cPointer())
+	return newQMatrix4x4_U(unsafe.Pointer(_ret))
 }
 
 func (this *QMatrix4x4) OperatorMultiplyAssign(other *QMatrix4x4) *QMatrix4x4 {
-	ret := C.QMatrix4x4_OperatorMultiplyAssign(this.h, other.cPointer())
-	return newQMatrix4x4_U(unsafe.Pointer(ret))
+	_ret := C.QMatrix4x4_OperatorMultiplyAssign(this.h, other.cPointer())
+	return newQMatrix4x4_U(unsafe.Pointer(_ret))
 }
 
 func (this *QMatrix4x4) OperatorMultiplyAssignWithFactor(factor float32) *QMatrix4x4 {
-	ret := C.QMatrix4x4_OperatorMultiplyAssignWithFactor(this.h, (C.float)(factor))
-	return newQMatrix4x4_U(unsafe.Pointer(ret))
+	_ret := C.QMatrix4x4_OperatorMultiplyAssignWithFactor(this.h, (C.float)(factor))
+	return newQMatrix4x4_U(unsafe.Pointer(_ret))
 }
 
 func (this *QMatrix4x4) OperatorDivideAssign(divisor float32) *QMatrix4x4 {
-	ret := C.QMatrix4x4_OperatorDivideAssign(this.h, (C.float)(divisor))
-	return newQMatrix4x4_U(unsafe.Pointer(ret))
+	_ret := C.QMatrix4x4_OperatorDivideAssign(this.h, (C.float)(divisor))
+	return newQMatrix4x4_U(unsafe.Pointer(_ret))
 }
 
 func (this *QMatrix4x4) OperatorEqual(other *QMatrix4x4) bool {
-	ret := C.QMatrix4x4_OperatorEqual(this.h, other.cPointer())
-	return (bool)(ret)
+	_ret := C.QMatrix4x4_OperatorEqual(this.h, other.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QMatrix4x4) OperatorNotEqual(other *QMatrix4x4) bool {
-	ret := C.QMatrix4x4_OperatorNotEqual(this.h, other.cPointer())
-	return (bool)(ret)
+	_ret := C.QMatrix4x4_OperatorNotEqual(this.h, other.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QMatrix4x4) Scale(vector *QVector3D) {
@@ -274,128 +258,88 @@ func (this *QMatrix4x4) CopyDataTo(values *float32) {
 }
 
 func (this *QMatrix4x4) ToAffine() *QMatrix {
-	ret := C.QMatrix4x4_ToAffine(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQMatrix(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QMatrix) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QMatrix4x4_ToAffine(this.h)
+	_goptr := newQMatrix(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QMatrix4x4) ToTransform() *QTransform {
-	ret := C.QMatrix4x4_ToTransform(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQTransform(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QTransform) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QMatrix4x4_ToTransform(this.h)
+	_goptr := newQTransform(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QMatrix4x4) ToTransformWithDistanceToPlane(distanceToPlane float32) *QTransform {
-	ret := C.QMatrix4x4_ToTransformWithDistanceToPlane(this.h, (C.float)(distanceToPlane))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQTransform(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QTransform) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QMatrix4x4_ToTransformWithDistanceToPlane(this.h, (C.float)(distanceToPlane))
+	_goptr := newQTransform(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QMatrix4x4) Map(point *QPoint) *QPoint {
-	ret := C.QMatrix4x4_Map(this.h, point.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPoint(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPoint) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QMatrix4x4_Map(this.h, point.cPointer())
+	_goptr := newQPoint(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QMatrix4x4) MapWithPoint(point *QPointF) *QPointF {
-	ret := C.QMatrix4x4_MapWithPoint(this.h, point.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPointF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPointF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QMatrix4x4_MapWithPoint(this.h, point.cPointer())
+	_goptr := newQPointF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QMatrix4x4) Map2(point *QVector3D) *QVector3D {
-	ret := C.QMatrix4x4_Map2(this.h, point.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQVector3D(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QVector3D) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QMatrix4x4_Map2(this.h, point.cPointer())
+	_goptr := newQVector3D(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QMatrix4x4) MapVector(vector *QVector3D) *QVector3D {
-	ret := C.QMatrix4x4_MapVector(this.h, vector.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQVector3D(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QVector3D) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QMatrix4x4_MapVector(this.h, vector.cPointer())
+	_goptr := newQVector3D(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QMatrix4x4) Map3(point *QVector4D) *QVector4D {
-	ret := C.QMatrix4x4_Map3(this.h, point.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQVector4D(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QVector4D) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QMatrix4x4_Map3(this.h, point.cPointer())
+	_goptr := newQVector4D(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QMatrix4x4) MapRect(rect *QRect) *QRect {
-	ret := C.QMatrix4x4_MapRect(this.h, rect.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRect(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRect) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QMatrix4x4_MapRect(this.h, rect.cPointer())
+	_goptr := newQRect(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QMatrix4x4) MapRectWithRect(rect *QRectF) *QRectF {
-	ret := C.QMatrix4x4_MapRectWithRect(this.h, rect.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRectF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRectF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QMatrix4x4_MapRectWithRect(this.h, rect.cPointer())
+	_goptr := newQRectF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QMatrix4x4) Data() *float32 {
-	ret := C.QMatrix4x4_Data(this.h)
-	return (*float32)(ret)
+	_ret := C.QMatrix4x4_Data(this.h)
+	return (*float32)(_ret)
 }
 
 func (this *QMatrix4x4) Data2() *float32 {
-	ret := C.QMatrix4x4_Data2(this.h)
-	return (*float32)(ret)
+	_ret := C.QMatrix4x4_Data2(this.h)
+	return (*float32)(_ret)
 }
 
 func (this *QMatrix4x4) ConstData() *float32 {
-	ret := C.QMatrix4x4_ConstData(this.h)
-	return (*float32)(ret)
+	_ret := C.QMatrix4x4_ConstData(this.h)
+	return (*float32)(_ret)
 }
 
 func (this *QMatrix4x4) Optimize() {
@@ -403,14 +347,10 @@ func (this *QMatrix4x4) Optimize() {
 }
 
 func (this *QMatrix4x4) Inverted1(invertible *bool) *QMatrix4x4 {
-	ret := C.QMatrix4x4_Inverted1(this.h, (*C.bool)(unsafe.Pointer(invertible)))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQMatrix4x4(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QMatrix4x4) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QMatrix4x4_Inverted1(this.h, (*C.bool)(unsafe.Pointer(invertible)))
+	_goptr := newQMatrix4x4(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QMatrix4x4) Rotate4(angle float32, x float32, y float32, z float32) {
@@ -425,6 +365,16 @@ func (this *QMatrix4x4) Viewport6(left float32, bottom float32, width float32, h
 	C.QMatrix4x4_Viewport6(this.h, (C.float)(left), (C.float)(bottom), (C.float)(width), (C.float)(height), (C.float)(nearPlane), (C.float)(farPlane))
 }
 
+// Delete this object from C++ memory.
 func (this *QMatrix4x4) Delete() {
 	C.QMatrix4x4_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QMatrix4x4) GoGC() {
+	runtime.SetFinalizer(this, func(this *QMatrix4x4) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

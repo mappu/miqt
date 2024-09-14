@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"runtime"
 	"unsafe"
 )
 
@@ -48,35 +49,31 @@ func NewQThreadPool2(parent *QObject) *QThreadPool {
 }
 
 func (this *QThreadPool) MetaObject() *QMetaObject {
-	ret := C.QThreadPool_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QThreadPool_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QThreadPool_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QThreadPool_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QThreadPool_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QThreadPool_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QThreadPool_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QThreadPool_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QThreadPool_GlobalInstance() *QThreadPool {
-	ret := C.QThreadPool_GlobalInstance()
-	return newQThreadPool_U(unsafe.Pointer(ret))
+	_ret := C.QThreadPool_GlobalInstance()
+	return newQThreadPool_U(unsafe.Pointer(_ret))
 }
 
 func (this *QThreadPool) Start(runnable *QRunnable) {
@@ -84,13 +81,13 @@ func (this *QThreadPool) Start(runnable *QRunnable) {
 }
 
 func (this *QThreadPool) TryStart(runnable *QRunnable) bool {
-	ret := C.QThreadPool_TryStart(this.h, runnable.cPointer())
-	return (bool)(ret)
+	_ret := C.QThreadPool_TryStart(this.h, runnable.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QThreadPool) ExpiryTimeout() int {
-	ret := C.QThreadPool_ExpiryTimeout(this.h)
-	return (int)(ret)
+	_ret := C.QThreadPool_ExpiryTimeout(this.h)
+	return (int)(_ret)
 }
 
 func (this *QThreadPool) SetExpiryTimeout(expiryTimeout int) {
@@ -98,8 +95,8 @@ func (this *QThreadPool) SetExpiryTimeout(expiryTimeout int) {
 }
 
 func (this *QThreadPool) MaxThreadCount() int {
-	ret := C.QThreadPool_MaxThreadCount(this.h)
-	return (int)(ret)
+	_ret := C.QThreadPool_MaxThreadCount(this.h)
+	return (int)(_ret)
 }
 
 func (this *QThreadPool) SetMaxThreadCount(maxThreadCount int) {
@@ -107,8 +104,8 @@ func (this *QThreadPool) SetMaxThreadCount(maxThreadCount int) {
 }
 
 func (this *QThreadPool) ActiveThreadCount() int {
-	ret := C.QThreadPool_ActiveThreadCount(this.h)
-	return (int)(ret)
+	_ret := C.QThreadPool_ActiveThreadCount(this.h)
+	return (int)(_ret)
 }
 
 func (this *QThreadPool) SetStackSize(stackSize uint) {
@@ -116,8 +113,8 @@ func (this *QThreadPool) SetStackSize(stackSize uint) {
 }
 
 func (this *QThreadPool) StackSize() uint {
-	ret := C.QThreadPool_StackSize(this.h)
-	return (uint)(ret)
+	_ret := C.QThreadPool_StackSize(this.h)
+	return (uint)(_ret)
 }
 
 func (this *QThreadPool) ReserveThread() {
@@ -129,8 +126,8 @@ func (this *QThreadPool) ReleaseThread() {
 }
 
 func (this *QThreadPool) WaitForDone() bool {
-	ret := C.QThreadPool_WaitForDone(this.h)
-	return (bool)(ret)
+	_ret := C.QThreadPool_WaitForDone(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QThreadPool) Clear() {
@@ -138,8 +135,8 @@ func (this *QThreadPool) Clear() {
 }
 
 func (this *QThreadPool) Contains(thread *QThread) bool {
-	ret := C.QThreadPool_Contains(this.h, thread.cPointer())
-	return (bool)(ret)
+	_ret := C.QThreadPool_Contains(this.h, thread.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QThreadPool) Cancel(runnable *QRunnable) {
@@ -147,8 +144,8 @@ func (this *QThreadPool) Cancel(runnable *QRunnable) {
 }
 
 func (this *QThreadPool) TryTake(runnable *QRunnable) bool {
-	ret := C.QThreadPool_TryTake(this.h, runnable.cPointer())
-	return (bool)(ret)
+	_ret := C.QThreadPool_TryTake(this.h, runnable.cPointer())
+	return (bool)(_ret)
 }
 
 func QThreadPool_Tr2(s string, c string) string {
@@ -156,12 +153,10 @@ func QThreadPool_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QThreadPool_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QThreadPool_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QThreadPool_Tr3(s string, c string, n int) string {
@@ -169,12 +164,10 @@ func QThreadPool_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QThreadPool_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QThreadPool_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QThreadPool_TrUtf82(s string, c string) string {
@@ -182,12 +175,10 @@ func QThreadPool_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QThreadPool_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QThreadPool_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QThreadPool_TrUtf83(s string, c string, n int) string {
@@ -195,12 +186,10 @@ func QThreadPool_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QThreadPool_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QThreadPool_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QThreadPool) Start2(runnable *QRunnable, priority int) {
@@ -208,10 +197,20 @@ func (this *QThreadPool) Start2(runnable *QRunnable, priority int) {
 }
 
 func (this *QThreadPool) WaitForDone1(msecs int) bool {
-	ret := C.QThreadPool_WaitForDone1(this.h, (C.int)(msecs))
-	return (bool)(ret)
+	_ret := C.QThreadPool_WaitForDone1(this.h, (C.int)(msecs))
+	return (bool)(_ret)
 }
 
+// Delete this object from C++ memory.
 func (this *QThreadPool) Delete() {
 	C.QThreadPool_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QThreadPool) GoGC() {
+	runtime.SetFinalizer(this, func(this *QThreadPool) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

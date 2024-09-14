@@ -6,12 +6,8 @@
 #include <cstring>
 #include <QTimeLine>
 #include "qtimeline.h"
-
 #include "gen_qtimeline.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QTimeLine* QTimeLine_new() {
 	return new QTimeLine();
@@ -29,27 +25,23 @@ QMetaObject* QTimeLine_MetaObject(const QTimeLine* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void QTimeLine_Tr(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QTimeLine::tr(s);
+struct miqt_string* QTimeLine_Tr(const char* s) {
+	QString _ret = QTimeLine::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QTimeLine_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QTimeLine::trUtf8(s);
+struct miqt_string* QTimeLine_TrUtf8(const char* s) {
+	QString _ret = QTimeLine::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 uintptr_t QTimeLine_State(const QTimeLine* self) {
-	QTimeLine::State ret = self->state();
-	return static_cast<uintptr_t>(ret);
+	QTimeLine::State _ret = self->state();
+	return static_cast<uintptr_t>(_ret);
 }
 
 int QTimeLine_LoopCount(const QTimeLine* self) {
@@ -61,8 +53,8 @@ void QTimeLine_SetLoopCount(QTimeLine* self, int count) {
 }
 
 uintptr_t QTimeLine_Direction(const QTimeLine* self) {
-	QTimeLine::Direction ret = self->direction();
-	return static_cast<uintptr_t>(ret);
+	QTimeLine::Direction _ret = self->direction();
+	return static_cast<uintptr_t>(_ret);
 }
 
 void QTimeLine_SetDirection(QTimeLine* self, uintptr_t direction) {
@@ -106,8 +98,8 @@ void QTimeLine_SetUpdateInterval(QTimeLine* self, int interval) {
 }
 
 uintptr_t QTimeLine_CurveShape(const QTimeLine* self) {
-	QTimeLine::CurveShape ret = self->curveShape();
-	return static_cast<uintptr_t>(ret);
+	QTimeLine::CurveShape _ret = self->curveShape();
+	return static_cast<uintptr_t>(_ret);
 }
 
 void QTimeLine_SetCurveShape(QTimeLine* self, uintptr_t shape) {
@@ -115,9 +107,9 @@ void QTimeLine_SetCurveShape(QTimeLine* self, uintptr_t shape) {
 }
 
 QEasingCurve* QTimeLine_EasingCurve(const QTimeLine* self) {
-	QEasingCurve ret = self->easingCurve();
+	QEasingCurve _ret = self->easingCurve();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QEasingCurve*>(new QEasingCurve(ret));
+	return static_cast<QEasingCurve*>(new QEasingCurve(_ret));
 }
 
 void QTimeLine_SetEasingCurve(QTimeLine* self, QEasingCurve* curve) {
@@ -168,40 +160,32 @@ void QTimeLine_ToggleDirection(QTimeLine* self) {
 	self->toggleDirection();
 }
 
-void QTimeLine_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QTimeLine::tr(s, c);
+struct miqt_string* QTimeLine_Tr2(const char* s, const char* c) {
+	QString _ret = QTimeLine::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QTimeLine_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QTimeLine::tr(s, c, static_cast<int>(n));
+struct miqt_string* QTimeLine_Tr3(const char* s, const char* c, int n) {
+	QString _ret = QTimeLine::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QTimeLine_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QTimeLine::trUtf8(s, c);
+struct miqt_string* QTimeLine_TrUtf82(const char* s, const char* c) {
+	QString _ret = QTimeLine::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QTimeLine_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QTimeLine::trUtf8(s, c, static_cast<int>(n));
+struct miqt_string* QTimeLine_TrUtf83(const char* s, const char* c, int n) {
+	QString _ret = QTimeLine::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QTimeLine_Delete(QTimeLine* self) {

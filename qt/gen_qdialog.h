@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -27,8 +29,8 @@ QDialog* QDialog_new();
 QDialog* QDialog_new2(QWidget* parent);
 QDialog* QDialog_new3(QWidget* parent, int f);
 QMetaObject* QDialog_MetaObject(const QDialog* self);
-void QDialog_Tr(const char* s, char** _out, int* _out_Strlen);
-void QDialog_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QDialog_Tr(const char* s);
+struct miqt_string* QDialog_TrUtf8(const char* s);
 int QDialog_Result(const QDialog* self);
 void QDialog_SetVisible(QDialog* self, bool visible);
 void QDialog_SetOrientation(QDialog* self, uintptr_t orientation);
@@ -53,10 +55,10 @@ void QDialog_Done(QDialog* self, int param1);
 void QDialog_Accept(QDialog* self);
 void QDialog_Reject(QDialog* self);
 void QDialog_ShowExtension(QDialog* self, bool param1);
-void QDialog_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QDialog_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QDialog_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QDialog_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QDialog_Tr2(const char* s, const char* c);
+struct miqt_string* QDialog_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QDialog_TrUtf82(const char* s, const char* c);
+struct miqt_string* QDialog_TrUtf83(const char* s, const char* c, int n);
 void QDialog_Delete(QDialog* self);
 
 #ifdef __cplusplus

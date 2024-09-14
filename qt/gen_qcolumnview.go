@@ -50,53 +50,54 @@ func NewQColumnView2(parent *QWidget) *QColumnView {
 }
 
 func (this *QColumnView) MetaObject() *QMetaObject {
-	ret := C.QColumnView_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QColumnView_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QColumnView_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QColumnView_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QColumnView_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QColumnView_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QColumnView_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QColumnView_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QColumnView) UpdatePreviewWidget(index *QModelIndex) {
 	C.QColumnView_UpdatePreviewWidget(this.h, index.cPointer())
 }
+func (this *QColumnView) OnUpdatePreviewWidget(slot func(index *QModelIndex)) {
+	C.QColumnView_connect_UpdatePreviewWidget(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QColumnView) OnUpdatePreviewWidget(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QColumnView_UpdatePreviewWidget
+func miqt_exec_callback_QColumnView_UpdatePreviewWidget(cb *C.void, index *C.QModelIndex) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(index *QModelIndex))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QColumnView_connect_UpdatePreviewWidget(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	index_ret := index
+	slotval1 := newQModelIndex_U(unsafe.Pointer(index_ret))
+
+	gofunc(slotval1)
 }
 
 func (this *QColumnView) IndexAt(point *QPoint) *QModelIndex {
-	ret := C.QColumnView_IndexAt(this.h, point.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQModelIndex(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QModelIndex) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QColumnView_IndexAt(this.h, point.cPointer())
+	_goptr := newQModelIndex(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QColumnView) ScrollTo(index *QModelIndex) {
@@ -104,25 +105,17 @@ func (this *QColumnView) ScrollTo(index *QModelIndex) {
 }
 
 func (this *QColumnView) SizeHint() *QSize {
-	ret := C.QColumnView_SizeHint(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSize(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QColumnView_SizeHint(this.h)
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QColumnView) VisualRect(index *QModelIndex) *QRect {
-	ret := C.QColumnView_VisualRect(this.h, index.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRect(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRect) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QColumnView_VisualRect(this.h, index.cPointer())
+	_goptr := newQRect(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QColumnView) SetModel(model *QAbstractItemModel) {
@@ -146,13 +139,13 @@ func (this *QColumnView) SetResizeGripsVisible(visible bool) {
 }
 
 func (this *QColumnView) ResizeGripsVisible() bool {
-	ret := C.QColumnView_ResizeGripsVisible(this.h)
-	return (bool)(ret)
+	_ret := C.QColumnView_ResizeGripsVisible(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QColumnView) PreviewWidget() *QWidget {
-	ret := C.QColumnView_PreviewWidget(this.h)
-	return newQWidget_U(unsafe.Pointer(ret))
+	_ret := C.QColumnView_PreviewWidget(this.h)
+	return newQWidget_U(unsafe.Pointer(_ret))
 }
 
 func (this *QColumnView) SetPreviewWidget(widget *QWidget) {
@@ -166,20 +159,20 @@ func (this *QColumnView) SetColumnWidths(list []int) {
 	for i := range list {
 		list_CArray[i] = (C.int)(list[i])
 	}
-	C.QColumnView_SetColumnWidths(this.h, &list_CArray[0], C.size_t(len(list)))
+	list_ma := &C.struct_miqt_array{len: C.size_t(len(list)), data: unsafe.Pointer(list_CArray)}
+	defer runtime.KeepAlive(unsafe.Pointer(list_ma))
+	C.QColumnView_SetColumnWidths(this.h, list_ma)
 }
 
 func (this *QColumnView) ColumnWidths() []int {
-	var _out *C.int = nil
-	var _out_len C.size_t = 0
-	C.QColumnView_ColumnWidths(this.h, &_out, &_out_len)
-	ret := make([]int, int(_out_len))
-	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_out)) // mrs jackson
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = (int)(_outCast[i])
+	var _ma *C.struct_miqt_array = C.QColumnView_ColumnWidths(this.h)
+	_ret := make([]int, int(_ma.len))
+	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // mrs jackson
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = (int)(_outCast[i])
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
 func QColumnView_Tr2(s string, c string) string {
@@ -187,12 +180,10 @@ func QColumnView_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QColumnView_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QColumnView_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QColumnView_Tr3(s string, c string, n int) string {
@@ -200,12 +191,10 @@ func QColumnView_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QColumnView_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QColumnView_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QColumnView_TrUtf82(s string, c string) string {
@@ -213,12 +202,10 @@ func QColumnView_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QColumnView_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QColumnView_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QColumnView_TrUtf83(s string, c string, n int) string {
@@ -226,18 +213,26 @@ func QColumnView_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QColumnView_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QColumnView_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QColumnView) ScrollTo2(index *QModelIndex, hint QAbstractItemView__ScrollHint) {
 	C.QColumnView_ScrollTo2(this.h, index.cPointer(), (C.uintptr_t)(hint))
 }
 
+// Delete this object from C++ memory.
 func (this *QColumnView) Delete() {
 	C.QColumnView_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QColumnView) GoGC() {
+	runtime.SetFinalizer(this, func(this *QColumnView) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

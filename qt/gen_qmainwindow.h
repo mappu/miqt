@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -41,8 +43,8 @@ QMainWindow* QMainWindow_new();
 QMainWindow* QMainWindow_new2(QWidget* parent);
 QMainWindow* QMainWindow_new3(QWidget* parent, int flags);
 QMetaObject* QMainWindow_MetaObject(const QMainWindow* self);
-void QMainWindow_Tr(const char* s, char** _out, int* _out_Strlen);
-void QMainWindow_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QMainWindow_Tr(const char* s);
+struct miqt_string* QMainWindow_TrUtf8(const char* s);
 QSize* QMainWindow_IconSize(const QMainWindow* self);
 void QMainWindow_SetIconSize(QMainWindow* self, QSize* iconSize);
 uintptr_t QMainWindow_ToolButtonStyle(const QMainWindow* self);
@@ -73,7 +75,7 @@ void QMainWindow_AddToolBarBreak(QMainWindow* self);
 void QMainWindow_InsertToolBarBreak(QMainWindow* self, QToolBar* before);
 void QMainWindow_AddToolBar(QMainWindow* self, uintptr_t area, QToolBar* toolbar);
 void QMainWindow_AddToolBarWithToolbar(QMainWindow* self, QToolBar* toolbar);
-QToolBar* QMainWindow_AddToolBarWithTitle(QMainWindow* self, const char* title, size_t title_Strlen);
+QToolBar* QMainWindow_AddToolBarWithTitle(QMainWindow* self, struct miqt_string* title);
 void QMainWindow_InsertToolBar(QMainWindow* self, QToolBar* before, QToolBar* toolbar);
 void QMainWindow_RemoveToolBar(QMainWindow* self, QToolBar* toolbar);
 void QMainWindow_RemoveToolBarBreak(QMainWindow* self, QToolBar* before);
@@ -84,11 +86,11 @@ void QMainWindow_AddDockWidget(QMainWindow* self, uintptr_t area, QDockWidget* d
 void QMainWindow_AddDockWidget2(QMainWindow* self, uintptr_t area, QDockWidget* dockwidget, uintptr_t orientation);
 void QMainWindow_SplitDockWidget(QMainWindow* self, QDockWidget* after, QDockWidget* dockwidget, uintptr_t orientation);
 void QMainWindow_TabifyDockWidget(QMainWindow* self, QDockWidget* first, QDockWidget* second);
-void QMainWindow_TabifiedDockWidgets(const QMainWindow* self, QDockWidget* dockwidget, QDockWidget*** _out, size_t* _out_len);
+struct miqt_array* QMainWindow_TabifiedDockWidgets(const QMainWindow* self, QDockWidget* dockwidget);
 void QMainWindow_RemoveDockWidget(QMainWindow* self, QDockWidget* dockwidget);
 bool QMainWindow_RestoreDockWidget(QMainWindow* self, QDockWidget* dockwidget);
 uintptr_t QMainWindow_DockWidgetArea(const QMainWindow* self, QDockWidget* dockwidget);
-void QMainWindow_ResizeDocks(QMainWindow* self, QDockWidget** docks, size_t docks_len, int* sizes, size_t sizes_len, uintptr_t orientation);
+void QMainWindow_ResizeDocks(QMainWindow* self, struct miqt_array* /* of QDockWidget* */ docks, struct miqt_array* /* of int */ sizes, uintptr_t orientation);
 QByteArray* QMainWindow_SaveState(const QMainWindow* self);
 bool QMainWindow_RestoreState(QMainWindow* self, QByteArray* state);
 QMenu* QMainWindow_CreatePopupMenu(QMainWindow* self);
@@ -101,10 +103,10 @@ void QMainWindow_ToolButtonStyleChanged(QMainWindow* self, uintptr_t toolButtonS
 void QMainWindow_connect_ToolButtonStyleChanged(QMainWindow* self, void* slot);
 void QMainWindow_TabifiedDockWidgetActivated(QMainWindow* self, QDockWidget* dockWidget);
 void QMainWindow_connect_TabifiedDockWidgetActivated(QMainWindow* self, void* slot);
-void QMainWindow_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QMainWindow_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QMainWindow_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QMainWindow_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QMainWindow_Tr2(const char* s, const char* c);
+struct miqt_string* QMainWindow_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QMainWindow_TrUtf82(const char* s, const char* c);
+struct miqt_string* QMainWindow_TrUtf83(const char* s, const char* c, int n);
 void QMainWindow_AddToolBarBreak1(QMainWindow* self, uintptr_t area);
 QByteArray* QMainWindow_SaveState1(const QMainWindow* self, int version);
 bool QMainWindow_RestoreState2(QMainWindow* self, QByteArray* state, int version);

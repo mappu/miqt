@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -26,20 +28,20 @@ typedef struct QWidget QWidget;
 QSignalMapper* QSignalMapper_new();
 QSignalMapper* QSignalMapper_new2(QObject* parent);
 QMetaObject* QSignalMapper_MetaObject(const QSignalMapper* self);
-void QSignalMapper_Tr(const char* s, char** _out, int* _out_Strlen);
-void QSignalMapper_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QSignalMapper_Tr(const char* s);
+struct miqt_string* QSignalMapper_TrUtf8(const char* s);
 void QSignalMapper_SetMapping(QSignalMapper* self, QObject* sender, int id);
-void QSignalMapper_SetMapping2(QSignalMapper* self, QObject* sender, const char* text, size_t text_Strlen);
+void QSignalMapper_SetMapping2(QSignalMapper* self, QObject* sender, struct miqt_string* text);
 void QSignalMapper_SetMapping3(QSignalMapper* self, QObject* sender, QWidget* widget);
 void QSignalMapper_SetMapping4(QSignalMapper* self, QObject* sender, QObject* object);
 void QSignalMapper_RemoveMappings(QSignalMapper* self, QObject* sender);
 QObject* QSignalMapper_Mapping(const QSignalMapper* self, int id);
-QObject* QSignalMapper_MappingWithText(const QSignalMapper* self, const char* text, size_t text_Strlen);
+QObject* QSignalMapper_MappingWithText(const QSignalMapper* self, struct miqt_string* text);
 QObject* QSignalMapper_MappingWithWidget(const QSignalMapper* self, QWidget* widget);
 QObject* QSignalMapper_MappingWithObject(const QSignalMapper* self, QObject* object);
 void QSignalMapper_Mapped(QSignalMapper* self, int param1);
 void QSignalMapper_connect_Mapped(QSignalMapper* self, void* slot);
-void QSignalMapper_MappedWithQString(QSignalMapper* self, const char* param1, size_t param1_Strlen);
+void QSignalMapper_MappedWithQString(QSignalMapper* self, struct miqt_string* param1);
 void QSignalMapper_connect_MappedWithQString(QSignalMapper* self, void* slot);
 void QSignalMapper_MappedWithQWidget(QSignalMapper* self, QWidget* param1);
 void QSignalMapper_connect_MappedWithQWidget(QSignalMapper* self, void* slot);
@@ -47,7 +49,7 @@ void QSignalMapper_MappedWithQObject(QSignalMapper* self, QObject* param1);
 void QSignalMapper_connect_MappedWithQObject(QSignalMapper* self, void* slot);
 void QSignalMapper_MappedInt(QSignalMapper* self, int param1);
 void QSignalMapper_connect_MappedInt(QSignalMapper* self, void* slot);
-void QSignalMapper_MappedString(QSignalMapper* self, const char* param1, size_t param1_Strlen);
+void QSignalMapper_MappedString(QSignalMapper* self, struct miqt_string* param1);
 void QSignalMapper_connect_MappedString(QSignalMapper* self, void* slot);
 void QSignalMapper_MappedWidget(QSignalMapper* self, QWidget* param1);
 void QSignalMapper_connect_MappedWidget(QSignalMapper* self, void* slot);
@@ -55,10 +57,10 @@ void QSignalMapper_MappedObject(QSignalMapper* self, QObject* param1);
 void QSignalMapper_connect_MappedObject(QSignalMapper* self, void* slot);
 void QSignalMapper_Map(QSignalMapper* self);
 void QSignalMapper_MapWithSender(QSignalMapper* self, QObject* sender);
-void QSignalMapper_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QSignalMapper_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QSignalMapper_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QSignalMapper_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QSignalMapper_Tr2(const char* s, const char* c);
+struct miqt_string* QSignalMapper_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QSignalMapper_TrUtf82(const char* s, const char* c);
+struct miqt_string* QSignalMapper_TrUtf83(const char* s, const char* c, int n);
 void QSignalMapper_Delete(QSignalMapper* self);
 
 #ifdef __cplusplus

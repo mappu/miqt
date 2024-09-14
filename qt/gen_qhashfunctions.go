@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"runtime"
 	"unsafe"
 )
 
@@ -46,8 +47,18 @@ func NewQtPrivate__QHashCombine2(param1 *QtPrivate__QHashCombine) *QtPrivate__QH
 	return newQtPrivate__QHashCombine(ret)
 }
 
+// Delete this object from C++ memory.
 func (this *QtPrivate__QHashCombine) Delete() {
 	C.QtPrivate__QHashCombine_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QtPrivate__QHashCombine) GoGC() {
+	runtime.SetFinalizer(this, func(this *QtPrivate__QHashCombine) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
 
 type QtPrivate__QHashCombineCommutative struct {
@@ -84,6 +95,16 @@ func NewQtPrivate__QHashCombineCommutative2(param1 *QtPrivate__QHashCombineCommu
 	return newQtPrivate__QHashCombineCommutative(ret)
 }
 
+// Delete this object from C++ memory.
 func (this *QtPrivate__QHashCombineCommutative) Delete() {
 	C.QtPrivate__QHashCombineCommutative_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QtPrivate__QHashCombineCommutative) GoGC() {
+	runtime.SetFinalizer(this, func(this *QtPrivate__QHashCombineCommutative) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

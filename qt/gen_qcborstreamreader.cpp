@@ -3,12 +3,8 @@
 #include <QCborStreamReader>
 #include <QIODevice>
 #include "qcborstreamreader.h"
-
 #include "gen_qcborstreamreader.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QCborStreamReader* QCborStreamReader_new() {
 	return new QCborStreamReader();
@@ -63,9 +59,9 @@ void QCborStreamReader_Reset(QCborStreamReader* self) {
 }
 
 QCborError* QCborStreamReader_LastError(QCborStreamReader* self) {
-	QCborError ret = self->lastError();
+	QCborError _ret = self->lastError();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborError*>(new QCborError(ret));
+	return static_cast<QCborError*>(new QCborError(_ret));
 }
 
 long long QCborStreamReader_CurrentOffset(const QCborStreamReader* self) {
@@ -81,8 +77,8 @@ int QCborStreamReader_ContainerDepth(const QCborStreamReader* self) {
 }
 
 uintptr_t QCborStreamReader_ParentContainerType(const QCborStreamReader* self) {
-	QCborStreamReader::Type ret = self->parentContainerType();
-	return static_cast<uintptr_t>(ret);
+	QCborStreamReader::Type _ret = self->parentContainerType();
+	return static_cast<uintptr_t>(_ret);
 }
 
 bool QCborStreamReader_HasNext(const QCborStreamReader* self) {
@@ -94,8 +90,8 @@ bool QCborStreamReader_Next(QCborStreamReader* self) {
 }
 
 uintptr_t QCborStreamReader_Type(const QCborStreamReader* self) {
-	QCborStreamReader::Type ret = self->type();
-	return static_cast<uintptr_t>(ret);
+	QCborStreamReader::Type _ret = self->type();
+	return static_cast<uintptr_t>(_ret);
 }
 
 bool QCborStreamReader_IsUnsignedInteger(const QCborStreamReader* self) {

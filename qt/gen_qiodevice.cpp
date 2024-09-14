@@ -5,38 +5,30 @@
 #include <QByteArray>
 #include <cstring>
 #include "qiodevice.h"
-
 #include "gen_qiodevice.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QMetaObject* QIODevice_MetaObject(const QIODevice* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void QIODevice_Tr(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QIODevice::tr(s);
+struct miqt_string* QIODevice_Tr(const char* s) {
+	QString _ret = QIODevice::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QIODevice_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QIODevice::trUtf8(s);
+struct miqt_string* QIODevice_TrUtf8(const char* s) {
+	QString _ret = QIODevice::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 int QIODevice_OpenMode(const QIODevice* self) {
-	QIODevice::OpenMode ret = self->openMode();
-	return static_cast<int>(ret);
+	QIODevice::OpenMode _ret = self->openMode();
+	return static_cast<int>(_ret);
 }
 
 void QIODevice_SetTextModeEnabled(QIODevice* self, bool enabled) {
@@ -128,15 +120,15 @@ long long QIODevice_Read(QIODevice* self, char* data, long long maxlen) {
 }
 
 QByteArray* QIODevice_ReadWithMaxlen(QIODevice* self, long long maxlen) {
-	QByteArray ret = self->read(static_cast<qint64>(maxlen));
+	QByteArray _ret = self->read(static_cast<qint64>(maxlen));
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(ret));
+	return static_cast<QByteArray*>(new QByteArray(_ret));
 }
 
 QByteArray* QIODevice_ReadAll(QIODevice* self) {
-	QByteArray ret = self->readAll();
+	QByteArray _ret = self->readAll();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(ret));
+	return static_cast<QByteArray*>(new QByteArray(_ret));
 }
 
 long long QIODevice_ReadLine(QIODevice* self, char* data, long long maxlen) {
@@ -144,9 +136,9 @@ long long QIODevice_ReadLine(QIODevice* self, char* data, long long maxlen) {
 }
 
 QByteArray* QIODevice_ReadLine2(QIODevice* self) {
-	QByteArray ret = self->readLine();
+	QByteArray _ret = self->readLine();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(ret));
+	return static_cast<QByteArray*>(new QByteArray(_ret));
 }
 
 bool QIODevice_CanReadLine(const QIODevice* self) {
@@ -186,9 +178,9 @@ long long QIODevice_Peek(QIODevice* self, char* data, long long maxlen) {
 }
 
 QByteArray* QIODevice_PeekWithMaxlen(QIODevice* self, long long maxlen) {
-	QByteArray ret = self->peek(static_cast<qint64>(maxlen));
+	QByteArray _ret = self->peek(static_cast<qint64>(maxlen));
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(ret));
+	return static_cast<QByteArray*>(new QByteArray(_ret));
 }
 
 long long QIODevice_Skip(QIODevice* self, long long maxSize) {
@@ -215,13 +207,11 @@ bool QIODevice_GetChar(QIODevice* self, char* c) {
 	return self->getChar(c);
 }
 
-void QIODevice_ErrorString(const QIODevice* self, char** _out, int* _out_Strlen) {
-	QString ret = self->errorString();
+struct miqt_string* QIODevice_ErrorString(const QIODevice* self) {
+	QString _ret = self->errorString();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QIODevice_ReadyRead(QIODevice* self) {
@@ -230,7 +220,7 @@ void QIODevice_ReadyRead(QIODevice* self) {
 
 void QIODevice_connect_ReadyRead(QIODevice* self, void* slot) {
 	QIODevice::connect(self, static_cast<void (QIODevice::*)()>(&QIODevice::readyRead), self, [=]() {
-		miqt_exec_callback(slot, 0, nullptr);
+		miqt_exec_callback_QIODevice_ReadyRead(slot);
 	});
 }
 
@@ -240,7 +230,8 @@ void QIODevice_ChannelReadyRead(QIODevice* self, int channel) {
 
 void QIODevice_connect_ChannelReadyRead(QIODevice* self, void* slot) {
 	QIODevice::connect(self, static_cast<void (QIODevice::*)(int)>(&QIODevice::channelReadyRead), self, [=](int channel) {
-		miqt_exec_callback(slot, 0, nullptr);
+		int sigval1 = channel;
+		miqt_exec_callback_QIODevice_ChannelReadyRead(slot, sigval1);
 	});
 }
 
@@ -250,7 +241,8 @@ void QIODevice_BytesWritten(QIODevice* self, long long bytes) {
 
 void QIODevice_connect_BytesWritten(QIODevice* self, void* slot) {
 	QIODevice::connect(self, static_cast<void (QIODevice::*)(qint64)>(&QIODevice::bytesWritten), self, [=](qint64 bytes) {
-		miqt_exec_callback(slot, 0, nullptr);
+		long long sigval1 = bytes;
+		miqt_exec_callback_QIODevice_BytesWritten(slot, sigval1);
 	});
 }
 
@@ -260,7 +252,9 @@ void QIODevice_ChannelBytesWritten(QIODevice* self, int channel, long long bytes
 
 void QIODevice_connect_ChannelBytesWritten(QIODevice* self, void* slot) {
 	QIODevice::connect(self, static_cast<void (QIODevice::*)(int, qint64)>(&QIODevice::channelBytesWritten), self, [=](int channel, qint64 bytes) {
-		miqt_exec_callback(slot, 0, nullptr);
+		int sigval1 = channel;
+		long long sigval2 = bytes;
+		miqt_exec_callback_QIODevice_ChannelBytesWritten(slot, sigval1, sigval2);
 	});
 }
 
@@ -270,7 +264,7 @@ void QIODevice_AboutToClose(QIODevice* self) {
 
 void QIODevice_connect_AboutToClose(QIODevice* self, void* slot) {
 	QIODevice::connect(self, static_cast<void (QIODevice::*)()>(&QIODevice::aboutToClose), self, [=]() {
-		miqt_exec_callback(slot, 0, nullptr);
+		miqt_exec_callback_QIODevice_AboutToClose(slot);
 	});
 }
 
@@ -280,50 +274,42 @@ void QIODevice_ReadChannelFinished(QIODevice* self) {
 
 void QIODevice_connect_ReadChannelFinished(QIODevice* self, void* slot) {
 	QIODevice::connect(self, static_cast<void (QIODevice::*)()>(&QIODevice::readChannelFinished), self, [=]() {
-		miqt_exec_callback(slot, 0, nullptr);
+		miqt_exec_callback_QIODevice_ReadChannelFinished(slot);
 	});
 }
 
-void QIODevice_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QIODevice::tr(s, c);
+struct miqt_string* QIODevice_Tr2(const char* s, const char* c) {
+	QString _ret = QIODevice::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QIODevice_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QIODevice::tr(s, c, static_cast<int>(n));
+struct miqt_string* QIODevice_Tr3(const char* s, const char* c, int n) {
+	QString _ret = QIODevice::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QIODevice_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QIODevice::trUtf8(s, c);
+struct miqt_string* QIODevice_TrUtf82(const char* s, const char* c) {
+	QString _ret = QIODevice::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QIODevice_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QIODevice::trUtf8(s, c, static_cast<int>(n));
+struct miqt_string* QIODevice_TrUtf83(const char* s, const char* c, int n) {
+	QString _ret = QIODevice::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 QByteArray* QIODevice_ReadLine1(QIODevice* self, long long maxlen) {
-	QByteArray ret = self->readLine(static_cast<qint64>(maxlen));
+	QByteArray _ret = self->readLine(static_cast<qint64>(maxlen));
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(ret));
+	return static_cast<QByteArray*>(new QByteArray(_ret));
 }
 
 void QIODevice_Delete(QIODevice* self) {

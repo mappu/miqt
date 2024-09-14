@@ -8,12 +8,8 @@
 #include <QToolButton>
 #include <QWidget>
 #include "qtoolbutton.h"
-
 #include "gen_qtoolbutton.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QToolButton* QToolButton_new() {
 	return new QToolButton();
@@ -27,44 +23,40 @@ QMetaObject* QToolButton_MetaObject(const QToolButton* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void QToolButton_Tr(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QToolButton::tr(s);
+struct miqt_string* QToolButton_Tr(const char* s) {
+	QString _ret = QToolButton::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QToolButton_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QToolButton::trUtf8(s);
+struct miqt_string* QToolButton_TrUtf8(const char* s) {
+	QString _ret = QToolButton::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 QSize* QToolButton_SizeHint(const QToolButton* self) {
-	QSize ret = self->sizeHint();
+	QSize _ret = self->sizeHint();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(ret));
+	return static_cast<QSize*>(new QSize(_ret));
 }
 
 QSize* QToolButton_MinimumSizeHint(const QToolButton* self) {
-	QSize ret = self->minimumSizeHint();
+	QSize _ret = self->minimumSizeHint();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(ret));
+	return static_cast<QSize*>(new QSize(_ret));
 }
 
 uintptr_t QToolButton_ToolButtonStyle(const QToolButton* self) {
-	Qt::ToolButtonStyle ret = self->toolButtonStyle();
-	return static_cast<uintptr_t>(ret);
+	Qt::ToolButtonStyle _ret = self->toolButtonStyle();
+	return static_cast<uintptr_t>(_ret);
 }
 
 uintptr_t QToolButton_ArrowType(const QToolButton* self) {
-	Qt::ArrowType ret = self->arrowType();
-	return static_cast<uintptr_t>(ret);
+	Qt::ArrowType _ret = self->arrowType();
+	return static_cast<uintptr_t>(_ret);
 }
 
 void QToolButton_SetArrowType(QToolButton* self, uintptr_t typeVal) {
@@ -84,8 +76,8 @@ void QToolButton_SetPopupMode(QToolButton* self, uintptr_t mode) {
 }
 
 uintptr_t QToolButton_PopupMode(const QToolButton* self) {
-	QToolButton::ToolButtonPopupMode ret = self->popupMode();
-	return static_cast<uintptr_t>(ret);
+	QToolButton::ToolButtonPopupMode _ret = self->popupMode();
+	return static_cast<uintptr_t>(_ret);
 }
 
 QAction* QToolButton_DefaultAction(const QToolButton* self) {
@@ -118,44 +110,37 @@ void QToolButton_Triggered(QToolButton* self, QAction* param1) {
 
 void QToolButton_connect_Triggered(QToolButton* self, void* slot) {
 	QToolButton::connect(self, static_cast<void (QToolButton::*)(QAction*)>(&QToolButton::triggered), self, [=](QAction* param1) {
-		miqt_exec_callback(slot, 0, nullptr);
+		QAction* sigval1 = param1;
+		miqt_exec_callback_QToolButton_Triggered(slot, sigval1);
 	});
 }
 
-void QToolButton_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QToolButton::tr(s, c);
+struct miqt_string* QToolButton_Tr2(const char* s, const char* c) {
+	QString _ret = QToolButton::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QToolButton_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QToolButton::tr(s, c, static_cast<int>(n));
+struct miqt_string* QToolButton_Tr3(const char* s, const char* c, int n) {
+	QString _ret = QToolButton::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QToolButton_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QToolButton::trUtf8(s, c);
+struct miqt_string* QToolButton_TrUtf82(const char* s, const char* c) {
+	QString _ret = QToolButton::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QToolButton_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QToolButton::trUtf8(s, c, static_cast<int>(n));
+struct miqt_string* QToolButton_TrUtf83(const char* s, const char* c, int n) {
+	QString _ret = QToolButton::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QToolButton_Delete(QToolButton* self) {

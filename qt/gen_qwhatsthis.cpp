@@ -7,12 +7,8 @@
 #include <QWhatsThis>
 #include <QWidget>
 #include "qwhatsthis.h"
-
 #include "gen_qwhatsthis.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 void QWhatsThis_EnterWhatsThisMode() {
 	QWhatsThis::enterWhatsThisMode();
@@ -26,8 +22,8 @@ void QWhatsThis_LeaveWhatsThisMode() {
 	QWhatsThis::leaveWhatsThisMode();
 }
 
-void QWhatsThis_ShowText(QPoint* pos, const char* text, size_t text_Strlen) {
-	QString text_QString = QString::fromUtf8(text, text_Strlen);
+void QWhatsThis_ShowText(QPoint* pos, struct miqt_string* text) {
+	QString text_QString = QString::fromUtf8(&text->data, text->len);
 	QWhatsThis::showText(*pos, text_QString);
 }
 
@@ -39,8 +35,8 @@ QAction* QWhatsThis_CreateAction() {
 	return QWhatsThis::createAction();
 }
 
-void QWhatsThis_ShowText3(QPoint* pos, const char* text, size_t text_Strlen, QWidget* w) {
-	QString text_QString = QString::fromUtf8(text, text_Strlen);
+void QWhatsThis_ShowText3(QPoint* pos, struct miqt_string* text, QWidget* w) {
+	QString text_QString = QString::fromUtf8(&text->data, text->len);
 	QWhatsThis::showText(*pos, text_QString, w);
 }
 

@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -24,7 +26,7 @@ QColor* QColor_new2(uintptr_t color);
 QColor* QColor_new3(int r, int g, int b);
 QColor* QColor_new4(unsigned int rgb);
 QColor* QColor_new5(QRgba64* rgba64);
-QColor* QColor_new6(const char* name, size_t name_Strlen);
+QColor* QColor_new6(struct miqt_string* name);
 QColor* QColor_new7(const char* aname);
 QColor* QColor_new8(uintptr_t spec);
 QColor* QColor_new9(QColor* color);
@@ -34,10 +36,10 @@ QColor* QColor_new12(uintptr_t spec, uint16_t a1, uint16_t a2, uint16_t a3, uint
 void QColor_OperatorAssign(QColor* self, QColor* param1);
 void QColor_OperatorAssignWithColor(QColor* self, uintptr_t color);
 bool QColor_IsValid(const QColor* self);
-void QColor_Name(const QColor* self, char** _out, int* _out_Strlen);
-void QColor_NameWithFormat(const QColor* self, uintptr_t format, char** _out, int* _out_Strlen);
-void QColor_SetNamedColor(QColor* self, const char* name, size_t name_Strlen);
-void QColor_ColorNames(char*** _out, int** _out_Lengths, size_t* _out_len);
+struct miqt_string* QColor_Name(const QColor* self);
+struct miqt_string* QColor_NameWithFormat(const QColor* self, uintptr_t format);
+void QColor_SetNamedColor(QColor* self, struct miqt_string* name);
+struct miqt_array* QColor_ColorNames();
 uintptr_t QColor_Spec(const QColor* self);
 int QColor_Alpha(const QColor* self);
 void QColor_SetAlpha(QColor* self, int alpha);
@@ -127,7 +129,7 @@ QColor* QColor_Lighter(const QColor* self);
 QColor* QColor_Darker(const QColor* self);
 bool QColor_OperatorEqual(const QColor* self, QColor* c);
 bool QColor_OperatorNotEqual(const QColor* self, QColor* c);
-bool QColor_IsValidColor(const char* name, size_t name_Strlen);
+bool QColor_IsValidColor(struct miqt_string* name);
 void QColor_GetRgb4(const QColor* self, int* r, int* g, int* b, int* a);
 void QColor_SetRgb4(QColor* self, int r, int g, int b, int a);
 void QColor_GetRgbF4(const QColor* self, double* r, double* g, double* b, double* a);

@@ -97,35 +97,31 @@ func newQFileDevice_U(h unsafe.Pointer) *QFileDevice {
 }
 
 func (this *QFileDevice) MetaObject() *QMetaObject {
-	ret := C.QFileDevice_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QFileDevice_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QFileDevice_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QFileDevice_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QFileDevice_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QFileDevice_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QFileDevice_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QFileDevice_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QFileDevice) Error() QFileDevice__FileError {
-	ret := C.QFileDevice_Error(this.h)
-	return (QFileDevice__FileError)(ret)
+	_ret := C.QFileDevice_Error(this.h)
+	return (QFileDevice__FileError)(_ret)
 }
 
 func (this *QFileDevice) UnsetError() {
@@ -137,88 +133,82 @@ func (this *QFileDevice) Close() {
 }
 
 func (this *QFileDevice) IsSequential() bool {
-	ret := C.QFileDevice_IsSequential(this.h)
-	return (bool)(ret)
+	_ret := C.QFileDevice_IsSequential(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QFileDevice) Handle() int {
-	ret := C.QFileDevice_Handle(this.h)
-	return (int)(ret)
+	_ret := C.QFileDevice_Handle(this.h)
+	return (int)(_ret)
 }
 
 func (this *QFileDevice) FileName() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QFileDevice_FileName(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QFileDevice_FileName(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QFileDevice) Pos() int64 {
-	ret := C.QFileDevice_Pos(this.h)
-	return (int64)(ret)
+	_ret := C.QFileDevice_Pos(this.h)
+	return (int64)(_ret)
 }
 
 func (this *QFileDevice) Seek(offset int64) bool {
-	ret := C.QFileDevice_Seek(this.h, (C.longlong)(offset))
-	return (bool)(ret)
+	_ret := C.QFileDevice_Seek(this.h, (C.longlong)(offset))
+	return (bool)(_ret)
 }
 
 func (this *QFileDevice) AtEnd() bool {
-	ret := C.QFileDevice_AtEnd(this.h)
-	return (bool)(ret)
+	_ret := C.QFileDevice_AtEnd(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QFileDevice) Flush() bool {
-	ret := C.QFileDevice_Flush(this.h)
-	return (bool)(ret)
+	_ret := C.QFileDevice_Flush(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QFileDevice) Size() int64 {
-	ret := C.QFileDevice_Size(this.h)
-	return (int64)(ret)
+	_ret := C.QFileDevice_Size(this.h)
+	return (int64)(_ret)
 }
 
 func (this *QFileDevice) Resize(sz int64) bool {
-	ret := C.QFileDevice_Resize(this.h, (C.longlong)(sz))
-	return (bool)(ret)
+	_ret := C.QFileDevice_Resize(this.h, (C.longlong)(sz))
+	return (bool)(_ret)
 }
 
 func (this *QFileDevice) Permissions() int {
-	ret := C.QFileDevice_Permissions(this.h)
-	return (int)(ret)
+	_ret := C.QFileDevice_Permissions(this.h)
+	return (int)(_ret)
 }
 
 func (this *QFileDevice) SetPermissions(permissionSpec int) bool {
-	ret := C.QFileDevice_SetPermissions(this.h, (C.int)(permissionSpec))
-	return (bool)(ret)
+	_ret := C.QFileDevice_SetPermissions(this.h, (C.int)(permissionSpec))
+	return (bool)(_ret)
 }
 
 func (this *QFileDevice) Map(offset int64, size int64) *byte {
-	ret := C.QFileDevice_Map(this.h, (C.longlong)(offset), (C.longlong)(size))
-	return (*byte)(ret)
+	_ret := C.QFileDevice_Map(this.h, (C.longlong)(offset), (C.longlong)(size))
+	return (*byte)(_ret)
 }
 
 func (this *QFileDevice) Unmap(address *byte) bool {
-	ret := C.QFileDevice_Unmap(this.h, (*C.uchar)(unsafe.Pointer(address)))
-	return (bool)(ret)
+	_ret := C.QFileDevice_Unmap(this.h, (*C.uchar)(unsafe.Pointer(address)))
+	return (bool)(_ret)
 }
 
 func (this *QFileDevice) FileTime(time QFileDevice__FileTime) *QDateTime {
-	ret := C.QFileDevice_FileTime(this.h, (C.uintptr_t)(time))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQDateTime(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QDateTime) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QFileDevice_FileTime(this.h, (C.uintptr_t)(time))
+	_goptr := newQDateTime(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QFileDevice) SetFileTime(newDate *QDateTime, fileTime QFileDevice__FileTime) bool {
-	ret := C.QFileDevice_SetFileTime(this.h, newDate.cPointer(), (C.uintptr_t)(fileTime))
-	return (bool)(ret)
+	_ret := C.QFileDevice_SetFileTime(this.h, newDate.cPointer(), (C.uintptr_t)(fileTime))
+	return (bool)(_ret)
 }
 
 func QFileDevice_Tr2(s string, c string) string {
@@ -226,12 +216,10 @@ func QFileDevice_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QFileDevice_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QFileDevice_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QFileDevice_Tr3(s string, c string, n int) string {
@@ -239,12 +227,10 @@ func QFileDevice_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QFileDevice_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QFileDevice_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QFileDevice_TrUtf82(s string, c string) string {
@@ -252,12 +238,10 @@ func QFileDevice_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QFileDevice_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QFileDevice_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QFileDevice_TrUtf83(s string, c string, n int) string {
@@ -265,19 +249,27 @@ func QFileDevice_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QFileDevice_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QFileDevice_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QFileDevice) Map3(offset int64, size int64, flags QFileDevice__MemoryMapFlags) *byte {
-	ret := C.QFileDevice_Map3(this.h, (C.longlong)(offset), (C.longlong)(size), (C.uintptr_t)(flags))
-	return (*byte)(ret)
+	_ret := C.QFileDevice_Map3(this.h, (C.longlong)(offset), (C.longlong)(size), (C.uintptr_t)(flags))
+	return (*byte)(_ret)
 }
 
+// Delete this object from C++ memory.
 func (this *QFileDevice) Delete() {
 	C.QFileDevice_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QFileDevice) GoGC() {
+	runtime.SetFinalizer(this, func(this *QFileDevice) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

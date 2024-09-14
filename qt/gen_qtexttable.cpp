@@ -10,12 +10,8 @@
 #include <QTextTableCell>
 #include <QTextTableFormat>
 #include "qtexttable.h"
-
 #include "gen_qtexttable.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QTextTableCell* QTextTableCell_new() {
 	return new QTextTableCell();
@@ -34,9 +30,9 @@ void QTextTableCell_SetFormat(QTextTableCell* self, QTextCharFormat* format) {
 }
 
 QTextCharFormat* QTextTableCell_Format(const QTextTableCell* self) {
-	QTextCharFormat ret = self->format();
+	QTextCharFormat _ret = self->format();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextCharFormat*>(new QTextCharFormat(ret));
+	return static_cast<QTextCharFormat*>(new QTextCharFormat(_ret));
 }
 
 int QTextTableCell_Row(const QTextTableCell* self) {
@@ -60,15 +56,15 @@ bool QTextTableCell_IsValid(const QTextTableCell* self) {
 }
 
 QTextCursor* QTextTableCell_FirstCursorPosition(const QTextTableCell* self) {
-	QTextCursor ret = self->firstCursorPosition();
+	QTextCursor _ret = self->firstCursorPosition();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextCursor*>(new QTextCursor(ret));
+	return static_cast<QTextCursor*>(new QTextCursor(_ret));
 }
 
 QTextCursor* QTextTableCell_LastCursorPosition(const QTextTableCell* self) {
-	QTextCursor ret = self->lastCursorPosition();
+	QTextCursor _ret = self->lastCursorPosition();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextCursor*>(new QTextCursor(ret));
+	return static_cast<QTextCursor*>(new QTextCursor(_ret));
 }
 
 int QTextTableCell_FirstPosition(const QTextTableCell* self) {
@@ -88,15 +84,15 @@ bool QTextTableCell_OperatorNotEqual(const QTextTableCell* self, QTextTableCell*
 }
 
 QTextFrame__iterator* QTextTableCell_Begin(const QTextTableCell* self) {
-	QTextFrame::iterator ret = self->begin();
+	QTextFrame::iterator _ret = self->begin();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextFrame::iterator*>(new QTextFrame::iterator(ret));
+	return static_cast<QTextFrame::iterator*>(new QTextFrame::iterator(_ret));
 }
 
 QTextFrame__iterator* QTextTableCell_End(const QTextTableCell* self) {
-	QTextFrame::iterator ret = self->end();
+	QTextFrame::iterator _ret = self->end();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextFrame::iterator*>(new QTextFrame::iterator(ret));
+	return static_cast<QTextFrame::iterator*>(new QTextFrame::iterator(_ret));
 }
 
 int QTextTableCell_TableCellFormatIndex(const QTextTableCell* self) {
@@ -115,22 +111,18 @@ QMetaObject* QTextTable_MetaObject(const QTextTable* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void QTextTable_Tr(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QTextTable::tr(s);
+struct miqt_string* QTextTable_Tr(const char* s) {
+	QString _ret = QTextTable::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QTextTable_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QTextTable::trUtf8(s);
+struct miqt_string* QTextTable_TrUtf8(const char* s) {
+	QString _ret = QTextTable::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QTextTable_Resize(QTextTable* self, int rows, int cols) {
@@ -182,33 +174,33 @@ int QTextTable_Columns(const QTextTable* self) {
 }
 
 QTextTableCell* QTextTable_CellAt(const QTextTable* self, int row, int col) {
-	QTextTableCell ret = self->cellAt(static_cast<int>(row), static_cast<int>(col));
+	QTextTableCell _ret = self->cellAt(static_cast<int>(row), static_cast<int>(col));
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextTableCell*>(new QTextTableCell(ret));
+	return static_cast<QTextTableCell*>(new QTextTableCell(_ret));
 }
 
 QTextTableCell* QTextTable_CellAtWithPosition(const QTextTable* self, int position) {
-	QTextTableCell ret = self->cellAt(static_cast<int>(position));
+	QTextTableCell _ret = self->cellAt(static_cast<int>(position));
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextTableCell*>(new QTextTableCell(ret));
+	return static_cast<QTextTableCell*>(new QTextTableCell(_ret));
 }
 
 QTextTableCell* QTextTable_CellAtWithQTextCursor(const QTextTable* self, QTextCursor* c) {
-	QTextTableCell ret = self->cellAt(*c);
+	QTextTableCell _ret = self->cellAt(*c);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextTableCell*>(new QTextTableCell(ret));
+	return static_cast<QTextTableCell*>(new QTextTableCell(_ret));
 }
 
 QTextCursor* QTextTable_RowStart(const QTextTable* self, QTextCursor* c) {
-	QTextCursor ret = self->rowStart(*c);
+	QTextCursor _ret = self->rowStart(*c);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextCursor*>(new QTextCursor(ret));
+	return static_cast<QTextCursor*>(new QTextCursor(_ret));
 }
 
 QTextCursor* QTextTable_RowEnd(const QTextTable* self, QTextCursor* c) {
-	QTextCursor ret = self->rowEnd(*c);
+	QTextCursor _ret = self->rowEnd(*c);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextCursor*>(new QTextCursor(ret));
+	return static_cast<QTextCursor*>(new QTextCursor(_ret));
 }
 
 void QTextTable_SetFormat(QTextTable* self, QTextTableFormat* format) {
@@ -216,45 +208,37 @@ void QTextTable_SetFormat(QTextTable* self, QTextTableFormat* format) {
 }
 
 QTextTableFormat* QTextTable_Format(const QTextTable* self) {
-	QTextTableFormat ret = self->format();
+	QTextTableFormat _ret = self->format();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextTableFormat*>(new QTextTableFormat(ret));
+	return static_cast<QTextTableFormat*>(new QTextTableFormat(_ret));
 }
 
-void QTextTable_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QTextTable::tr(s, c);
+struct miqt_string* QTextTable_Tr2(const char* s, const char* c) {
+	QString _ret = QTextTable::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QTextTable_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QTextTable::tr(s, c, static_cast<int>(n));
+struct miqt_string* QTextTable_Tr3(const char* s, const char* c, int n) {
+	QString _ret = QTextTable::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QTextTable_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QTextTable::trUtf8(s, c);
+struct miqt_string* QTextTable_TrUtf82(const char* s, const char* c) {
+	QString _ret = QTextTable::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QTextTable_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QTextTable::trUtf8(s, c, static_cast<int>(n));
+struct miqt_string* QTextTable_TrUtf83(const char* s, const char* c, int n) {
+	QString _ret = QTextTable::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QTextTable_Delete(QTextTable* self) {

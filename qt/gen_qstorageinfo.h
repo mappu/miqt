@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -22,18 +24,18 @@ typedef struct QStorageInfo QStorageInfo;
 #endif
 
 QStorageInfo* QStorageInfo_new();
-QStorageInfo* QStorageInfo_new2(const char* path, size_t path_Strlen);
+QStorageInfo* QStorageInfo_new2(struct miqt_string* path);
 QStorageInfo* QStorageInfo_new3(QDir* dir);
 QStorageInfo* QStorageInfo_new4(QStorageInfo* other);
 void QStorageInfo_OperatorAssign(QStorageInfo* self, QStorageInfo* other);
 void QStorageInfo_Swap(QStorageInfo* self, QStorageInfo* other);
-void QStorageInfo_SetPath(QStorageInfo* self, const char* path, size_t path_Strlen);
-void QStorageInfo_RootPath(const QStorageInfo* self, char** _out, int* _out_Strlen);
+void QStorageInfo_SetPath(QStorageInfo* self, struct miqt_string* path);
+struct miqt_string* QStorageInfo_RootPath(const QStorageInfo* self);
 QByteArray* QStorageInfo_Device(const QStorageInfo* self);
 QByteArray* QStorageInfo_Subvolume(const QStorageInfo* self);
 QByteArray* QStorageInfo_FileSystemType(const QStorageInfo* self);
-void QStorageInfo_Name(const QStorageInfo* self, char** _out, int* _out_Strlen);
-void QStorageInfo_DisplayName(const QStorageInfo* self, char** _out, int* _out_Strlen);
+struct miqt_string* QStorageInfo_Name(const QStorageInfo* self);
+struct miqt_string* QStorageInfo_DisplayName(const QStorageInfo* self);
 long long QStorageInfo_BytesTotal(const QStorageInfo* self);
 long long QStorageInfo_BytesFree(const QStorageInfo* self);
 long long QStorageInfo_BytesAvailable(const QStorageInfo* self);
@@ -43,7 +45,7 @@ bool QStorageInfo_IsReadOnly(const QStorageInfo* self);
 bool QStorageInfo_IsReady(const QStorageInfo* self);
 bool QStorageInfo_IsValid(const QStorageInfo* self);
 void QStorageInfo_Refresh(QStorageInfo* self);
-void QStorageInfo_MountedVolumes(QStorageInfo*** _out, size_t* _out_len);
+struct miqt_array* QStorageInfo_MountedVolumes();
 QStorageInfo* QStorageInfo_Root();
 void QStorageInfo_Delete(QStorageInfo* self);
 

@@ -79,9 +79,9 @@ func NewQUuid2(l uint, w1 uint16, w2 uint16, b1 byte, b2 byte, b3 byte, b4 byte,
 
 // NewQUuid3 constructs a new QUuid object.
 func NewQUuid3(param1 string) *QUuid {
-	param1_Cstring := C.CString(param1)
-	defer C.free(unsafe.Pointer(param1_Cstring))
-	ret := C.QUuid_new3(param1_Cstring, C.size_t(len(param1)))
+	param1_ms := miqt_strdupg(param1)
+	defer C.free(param1_ms)
+	ret := C.QUuid_new3((*C.struct_miqt_string)(param1_ms))
 	return newQUuid(ret)
 }
 
@@ -106,161 +106,131 @@ func NewQUuid6(param1 *QUuid) *QUuid {
 }
 
 func (this *QUuid) ToString() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QUuid_ToString(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QUuid_ToString(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QUuid) ToStringWithMode(mode QUuid__StringFormat) string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QUuid_ToStringWithMode(this.h, (C.uintptr_t)(mode), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QUuid_ToStringWithMode(this.h, (C.uintptr_t)(mode))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QUuid) ToByteArray() *QByteArray {
-	ret := C.QUuid_ToByteArray(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQByteArray(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QByteArray) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QUuid_ToByteArray(this.h)
+	_goptr := newQByteArray(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QUuid) ToByteArrayWithMode(mode QUuid__StringFormat) *QByteArray {
-	ret := C.QUuid_ToByteArrayWithMode(this.h, (C.uintptr_t)(mode))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQByteArray(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QByteArray) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QUuid_ToByteArrayWithMode(this.h, (C.uintptr_t)(mode))
+	_goptr := newQByteArray(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QUuid) ToRfc4122() *QByteArray {
-	ret := C.QUuid_ToRfc4122(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQByteArray(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QByteArray) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QUuid_ToRfc4122(this.h)
+	_goptr := newQByteArray(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func QUuid_FromRfc4122(param1 *QByteArray) *QUuid {
-	ret := C.QUuid_FromRfc4122(param1.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQUuid(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QUuid) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QUuid_FromRfc4122(param1.cPointer())
+	_goptr := newQUuid(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QUuid) IsNull() bool {
-	ret := C.QUuid_IsNull(this.h)
-	return (bool)(ret)
+	_ret := C.QUuid_IsNull(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QUuid) OperatorEqual(orig *QUuid) bool {
-	ret := C.QUuid_OperatorEqual(this.h, orig.cPointer())
-	return (bool)(ret)
+	_ret := C.QUuid_OperatorEqual(this.h, orig.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QUuid) OperatorNotEqual(orig *QUuid) bool {
-	ret := C.QUuid_OperatorNotEqual(this.h, orig.cPointer())
-	return (bool)(ret)
+	_ret := C.QUuid_OperatorNotEqual(this.h, orig.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QUuid) OperatorLesser(other *QUuid) bool {
-	ret := C.QUuid_OperatorLesser(this.h, other.cPointer())
-	return (bool)(ret)
+	_ret := C.QUuid_OperatorLesser(this.h, other.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QUuid) OperatorGreater(other *QUuid) bool {
-	ret := C.QUuid_OperatorGreater(this.h, other.cPointer())
-	return (bool)(ret)
+	_ret := C.QUuid_OperatorGreater(this.h, other.cPointer())
+	return (bool)(_ret)
 }
 
 func QUuid_CreateUuid() *QUuid {
-	ret := C.QUuid_CreateUuid()
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQUuid(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QUuid) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QUuid_CreateUuid()
+	_goptr := newQUuid(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func QUuid_CreateUuidV3(ns *QUuid, baseData *QByteArray) *QUuid {
-	ret := C.QUuid_CreateUuidV3(ns.cPointer(), baseData.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQUuid(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QUuid) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QUuid_CreateUuidV3(ns.cPointer(), baseData.cPointer())
+	_goptr := newQUuid(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func QUuid_CreateUuidV5(ns *QUuid, baseData *QByteArray) *QUuid {
-	ret := C.QUuid_CreateUuidV5(ns.cPointer(), baseData.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQUuid(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QUuid) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QUuid_CreateUuidV5(ns.cPointer(), baseData.cPointer())
+	_goptr := newQUuid(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func QUuid_CreateUuidV32(ns *QUuid, baseData string) *QUuid {
-	baseData_Cstring := C.CString(baseData)
-	defer C.free(unsafe.Pointer(baseData_Cstring))
-	ret := C.QUuid_CreateUuidV32(ns.cPointer(), baseData_Cstring, C.size_t(len(baseData)))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQUuid(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QUuid) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	baseData_ms := miqt_strdupg(baseData)
+	defer C.free(baseData_ms)
+	_ret := C.QUuid_CreateUuidV32(ns.cPointer(), (*C.struct_miqt_string)(baseData_ms))
+	_goptr := newQUuid(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func QUuid_CreateUuidV52(ns *QUuid, baseData string) *QUuid {
-	baseData_Cstring := C.CString(baseData)
-	defer C.free(unsafe.Pointer(baseData_Cstring))
-	ret := C.QUuid_CreateUuidV52(ns.cPointer(), baseData_Cstring, C.size_t(len(baseData)))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQUuid(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QUuid) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	baseData_ms := miqt_strdupg(baseData)
+	defer C.free(baseData_ms)
+	_ret := C.QUuid_CreateUuidV52(ns.cPointer(), (*C.struct_miqt_string)(baseData_ms))
+	_goptr := newQUuid(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QUuid) Variant() QUuid__Variant {
-	ret := C.QUuid_Variant(this.h)
-	return (QUuid__Variant)(ret)
+	_ret := C.QUuid_Variant(this.h)
+	return (QUuid__Variant)(_ret)
 }
 
 func (this *QUuid) Version() QUuid__Version {
-	ret := C.QUuid_Version(this.h)
-	return (QUuid__Version)(ret)
+	_ret := C.QUuid_Version(this.h)
+	return (QUuid__Version)(_ret)
 }
 
+// Delete this object from C++ memory.
 func (this *QUuid) Delete() {
 	C.QUuid_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QUuid) GoGC() {
+	runtime.SetFinalizer(this, func(this *QUuid) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

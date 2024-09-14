@@ -1,12 +1,8 @@
 #include <QPaintDevice>
 #include <QPaintEngine>
 #include "qpaintdevice.h"
-
 #include "gen_qpaintdevice.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 int QPaintDevice_DevType(const QPaintDevice* self) {
 	return self->devType();

@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -34,7 +36,7 @@ double QEasingCurve_Overshoot(const QEasingCurve* self);
 void QEasingCurve_SetOvershoot(QEasingCurve* self, double overshoot);
 void QEasingCurve_AddCubicBezierSegment(QEasingCurve* self, QPointF* c1, QPointF* c2, QPointF* endPoint);
 void QEasingCurve_AddTCBSegment(QEasingCurve* self, QPointF* nextPoint, double t, double c, double b);
-void QEasingCurve_ToCubicSpline(const QEasingCurve* self, QPointF*** _out, size_t* _out_len);
+struct miqt_array* QEasingCurve_ToCubicSpline(const QEasingCurve* self);
 uintptr_t QEasingCurve_Type(const QEasingCurve* self);
 void QEasingCurve_SetType(QEasingCurve* self, uintptr_t typeVal);
 double QEasingCurve_ValueForProgress(const QEasingCurve* self, double progress);

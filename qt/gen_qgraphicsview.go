@@ -104,46 +104,38 @@ func NewQGraphicsView4(scene *QGraphicsScene, parent *QWidget) *QGraphicsView {
 }
 
 func (this *QGraphicsView) MetaObject() *QMetaObject {
-	ret := C.QGraphicsView_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QGraphicsView_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QGraphicsView_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGraphicsView_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGraphicsView_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QGraphicsView_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGraphicsView_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGraphicsView_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QGraphicsView) SizeHint() *QSize {
-	ret := C.QGraphicsView_SizeHint(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSize(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QGraphicsView_SizeHint(this.h)
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QGraphicsView) RenderHints() int {
-	ret := C.QGraphicsView_RenderHints(this.h)
-	return (int)(ret)
+	_ret := C.QGraphicsView_RenderHints(this.h)
+	return (int)(_ret)
 }
 
 func (this *QGraphicsView) SetRenderHint(hint QPainter__RenderHint) {
@@ -155,8 +147,8 @@ func (this *QGraphicsView) SetRenderHints(hints int) {
 }
 
 func (this *QGraphicsView) Alignment() int {
-	ret := C.QGraphicsView_Alignment(this.h)
-	return (int)(ret)
+	_ret := C.QGraphicsView_Alignment(this.h)
+	return (int)(_ret)
 }
 
 func (this *QGraphicsView) SetAlignment(alignment int) {
@@ -164,8 +156,8 @@ func (this *QGraphicsView) SetAlignment(alignment int) {
 }
 
 func (this *QGraphicsView) TransformationAnchor() QGraphicsView__ViewportAnchor {
-	ret := C.QGraphicsView_TransformationAnchor(this.h)
-	return (QGraphicsView__ViewportAnchor)(ret)
+	_ret := C.QGraphicsView_TransformationAnchor(this.h)
+	return (QGraphicsView__ViewportAnchor)(_ret)
 }
 
 func (this *QGraphicsView) SetTransformationAnchor(anchor QGraphicsView__ViewportAnchor) {
@@ -173,8 +165,8 @@ func (this *QGraphicsView) SetTransformationAnchor(anchor QGraphicsView__Viewpor
 }
 
 func (this *QGraphicsView) ResizeAnchor() QGraphicsView__ViewportAnchor {
-	ret := C.QGraphicsView_ResizeAnchor(this.h)
-	return (QGraphicsView__ViewportAnchor)(ret)
+	_ret := C.QGraphicsView_ResizeAnchor(this.h)
+	return (QGraphicsView__ViewportAnchor)(_ret)
 }
 
 func (this *QGraphicsView) SetResizeAnchor(anchor QGraphicsView__ViewportAnchor) {
@@ -182,8 +174,8 @@ func (this *QGraphicsView) SetResizeAnchor(anchor QGraphicsView__ViewportAnchor)
 }
 
 func (this *QGraphicsView) ViewportUpdateMode() QGraphicsView__ViewportUpdateMode {
-	ret := C.QGraphicsView_ViewportUpdateMode(this.h)
-	return (QGraphicsView__ViewportUpdateMode)(ret)
+	_ret := C.QGraphicsView_ViewportUpdateMode(this.h)
+	return (QGraphicsView__ViewportUpdateMode)(_ret)
 }
 
 func (this *QGraphicsView) SetViewportUpdateMode(mode QGraphicsView__ViewportUpdateMode) {
@@ -191,8 +183,8 @@ func (this *QGraphicsView) SetViewportUpdateMode(mode QGraphicsView__ViewportUpd
 }
 
 func (this *QGraphicsView) OptimizationFlags() int {
-	ret := C.QGraphicsView_OptimizationFlags(this.h)
-	return (int)(ret)
+	_ret := C.QGraphicsView_OptimizationFlags(this.h)
+	return (int)(_ret)
 }
 
 func (this *QGraphicsView) SetOptimizationFlag(flag QGraphicsView__OptimizationFlag) {
@@ -204,8 +196,8 @@ func (this *QGraphicsView) SetOptimizationFlags(flags int) {
 }
 
 func (this *QGraphicsView) DragMode() QGraphicsView__DragMode {
-	ret := C.QGraphicsView_DragMode(this.h)
-	return (QGraphicsView__DragMode)(ret)
+	_ret := C.QGraphicsView_DragMode(this.h)
+	return (QGraphicsView__DragMode)(_ret)
 }
 
 func (this *QGraphicsView) SetDragMode(mode QGraphicsView__DragMode) {
@@ -213,8 +205,8 @@ func (this *QGraphicsView) SetDragMode(mode QGraphicsView__DragMode) {
 }
 
 func (this *QGraphicsView) RubberBandSelectionMode() ItemSelectionMode {
-	ret := C.QGraphicsView_RubberBandSelectionMode(this.h)
-	return (ItemSelectionMode)(ret)
+	_ret := C.QGraphicsView_RubberBandSelectionMode(this.h)
+	return (ItemSelectionMode)(_ret)
 }
 
 func (this *QGraphicsView) SetRubberBandSelectionMode(mode ItemSelectionMode) {
@@ -222,19 +214,15 @@ func (this *QGraphicsView) SetRubberBandSelectionMode(mode ItemSelectionMode) {
 }
 
 func (this *QGraphicsView) RubberBandRect() *QRect {
-	ret := C.QGraphicsView_RubberBandRect(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRect(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRect) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QGraphicsView_RubberBandRect(this.h)
+	_goptr := newQRect(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QGraphicsView) CacheMode() int {
-	ret := C.QGraphicsView_CacheMode(this.h)
-	return (int)(ret)
+	_ret := C.QGraphicsView_CacheMode(this.h)
+	return (int)(_ret)
 }
 
 func (this *QGraphicsView) SetCacheMode(mode int) {
@@ -246,8 +234,8 @@ func (this *QGraphicsView) ResetCachedContent() {
 }
 
 func (this *QGraphicsView) IsInteractive() bool {
-	ret := C.QGraphicsView_IsInteractive(this.h)
-	return (bool)(ret)
+	_ret := C.QGraphicsView_IsInteractive(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QGraphicsView) SetInteractive(allowed bool) {
@@ -255,8 +243,8 @@ func (this *QGraphicsView) SetInteractive(allowed bool) {
 }
 
 func (this *QGraphicsView) Scene() *QGraphicsScene {
-	ret := C.QGraphicsView_Scene(this.h)
-	return newQGraphicsScene_U(unsafe.Pointer(ret))
+	_ret := C.QGraphicsView_Scene(this.h)
+	return newQGraphicsScene_U(unsafe.Pointer(_ret))
 }
 
 func (this *QGraphicsView) SetScene(scene *QGraphicsScene) {
@@ -264,14 +252,10 @@ func (this *QGraphicsView) SetScene(scene *QGraphicsScene) {
 }
 
 func (this *QGraphicsView) SceneRect() *QRectF {
-	ret := C.QGraphicsView_SceneRect(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRectF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRectF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QGraphicsView_SceneRect(this.h)
+	_goptr := newQRectF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QGraphicsView) SetSceneRect(rect *QRectF) {
@@ -283,14 +267,10 @@ func (this *QGraphicsView) SetSceneRect2(x float64, y float64, w float64, h floa
 }
 
 func (this *QGraphicsView) Matrix() *QMatrix {
-	ret := C.QGraphicsView_Matrix(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQMatrix(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QMatrix) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QGraphicsView_Matrix(this.h)
+	_goptr := newQMatrix(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QGraphicsView) SetMatrix(matrix *QMatrix) {
@@ -302,30 +282,22 @@ func (this *QGraphicsView) ResetMatrix() {
 }
 
 func (this *QGraphicsView) Transform() *QTransform {
-	ret := C.QGraphicsView_Transform(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQTransform(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QTransform) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QGraphicsView_Transform(this.h)
+	_goptr := newQTransform(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QGraphicsView) ViewportTransform() *QTransform {
-	ret := C.QGraphicsView_ViewportTransform(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQTransform(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QTransform) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QGraphicsView_ViewportTransform(this.h)
+	_goptr := newQTransform(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QGraphicsView) IsTransformed() bool {
-	ret := C.QGraphicsView_IsTransformed(this.h)
-	return (bool)(ret)
+	_ret := C.QGraphicsView_IsTransformed(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QGraphicsView) SetTransform(matrix *QTransform) {
@@ -393,179 +365,135 @@ func (this *QGraphicsView) Render(painter *QPainter) {
 }
 
 func (this *QGraphicsView) Items() []*QGraphicsItem {
-	var _out **C.QGraphicsItem = nil
-	var _out_len C.size_t = 0
-	C.QGraphicsView_Items(this.h, &_out, &_out_len)
-	ret := make([]*QGraphicsItem, int(_out_len))
-	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_out)) // so fresh so clean
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = newQGraphicsItem(_outCast[i])
+	var _ma *C.struct_miqt_array = C.QGraphicsView_Items(this.h)
+	_ret := make([]*QGraphicsItem, int(_ma.len))
+	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // mrs jackson
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = newQGraphicsItem(_outCast[i])
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
 func (this *QGraphicsView) ItemsWithPos(pos *QPoint) []*QGraphicsItem {
-	var _out **C.QGraphicsItem = nil
-	var _out_len C.size_t = 0
-	C.QGraphicsView_ItemsWithPos(this.h, pos.cPointer(), &_out, &_out_len)
-	ret := make([]*QGraphicsItem, int(_out_len))
-	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_out)) // so fresh so clean
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = newQGraphicsItem(_outCast[i])
+	var _ma *C.struct_miqt_array = C.QGraphicsView_ItemsWithPos(this.h, pos.cPointer())
+	_ret := make([]*QGraphicsItem, int(_ma.len))
+	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // mrs jackson
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = newQGraphicsItem(_outCast[i])
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
 func (this *QGraphicsView) Items2(x int, y int) []*QGraphicsItem {
-	var _out **C.QGraphicsItem = nil
-	var _out_len C.size_t = 0
-	C.QGraphicsView_Items2(this.h, (C.int)(x), (C.int)(y), &_out, &_out_len)
-	ret := make([]*QGraphicsItem, int(_out_len))
-	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_out)) // so fresh so clean
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = newQGraphicsItem(_outCast[i])
+	var _ma *C.struct_miqt_array = C.QGraphicsView_Items2(this.h, (C.int)(x), (C.int)(y))
+	_ret := make([]*QGraphicsItem, int(_ma.len))
+	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // mrs jackson
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = newQGraphicsItem(_outCast[i])
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
 func (this *QGraphicsView) ItemsWithRect(rect *QRect) []*QGraphicsItem {
-	var _out **C.QGraphicsItem = nil
-	var _out_len C.size_t = 0
-	C.QGraphicsView_ItemsWithRect(this.h, rect.cPointer(), &_out, &_out_len)
-	ret := make([]*QGraphicsItem, int(_out_len))
-	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_out)) // so fresh so clean
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = newQGraphicsItem(_outCast[i])
+	var _ma *C.struct_miqt_array = C.QGraphicsView_ItemsWithRect(this.h, rect.cPointer())
+	_ret := make([]*QGraphicsItem, int(_ma.len))
+	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // mrs jackson
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = newQGraphicsItem(_outCast[i])
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
 func (this *QGraphicsView) Items3(x int, y int, w int, h int) []*QGraphicsItem {
-	var _out **C.QGraphicsItem = nil
-	var _out_len C.size_t = 0
-	C.QGraphicsView_Items3(this.h, (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), &_out, &_out_len)
-	ret := make([]*QGraphicsItem, int(_out_len))
-	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_out)) // so fresh so clean
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = newQGraphicsItem(_outCast[i])
+	var _ma *C.struct_miqt_array = C.QGraphicsView_Items3(this.h, (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h))
+	_ret := make([]*QGraphicsItem, int(_ma.len))
+	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // mrs jackson
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = newQGraphicsItem(_outCast[i])
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
 func (this *QGraphicsView) ItemsWithPath(path *QPainterPath) []*QGraphicsItem {
-	var _out **C.QGraphicsItem = nil
-	var _out_len C.size_t = 0
-	C.QGraphicsView_ItemsWithPath(this.h, path.cPointer(), &_out, &_out_len)
-	ret := make([]*QGraphicsItem, int(_out_len))
-	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_out)) // so fresh so clean
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = newQGraphicsItem(_outCast[i])
+	var _ma *C.struct_miqt_array = C.QGraphicsView_ItemsWithPath(this.h, path.cPointer())
+	_ret := make([]*QGraphicsItem, int(_ma.len))
+	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // mrs jackson
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = newQGraphicsItem(_outCast[i])
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
 func (this *QGraphicsView) ItemAt(pos *QPoint) *QGraphicsItem {
-	ret := C.QGraphicsView_ItemAt(this.h, pos.cPointer())
-	return newQGraphicsItem_U(unsafe.Pointer(ret))
+	_ret := C.QGraphicsView_ItemAt(this.h, pos.cPointer())
+	return newQGraphicsItem_U(unsafe.Pointer(_ret))
 }
 
 func (this *QGraphicsView) ItemAt2(x int, y int) *QGraphicsItem {
-	ret := C.QGraphicsView_ItemAt2(this.h, (C.int)(x), (C.int)(y))
-	return newQGraphicsItem_U(unsafe.Pointer(ret))
+	_ret := C.QGraphicsView_ItemAt2(this.h, (C.int)(x), (C.int)(y))
+	return newQGraphicsItem_U(unsafe.Pointer(_ret))
 }
 
 func (this *QGraphicsView) MapToScene(point *QPoint) *QPointF {
-	ret := C.QGraphicsView_MapToScene(this.h, point.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPointF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPointF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QGraphicsView_MapToScene(this.h, point.cPointer())
+	_goptr := newQPointF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QGraphicsView) MapToSceneWithPath(path *QPainterPath) *QPainterPath {
-	ret := C.QGraphicsView_MapToSceneWithPath(this.h, path.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPainterPath(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPainterPath) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QGraphicsView_MapToSceneWithPath(this.h, path.cPointer())
+	_goptr := newQPainterPath(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QGraphicsView) MapFromScene(point *QPointF) *QPoint {
-	ret := C.QGraphicsView_MapFromScene(this.h, point.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPoint(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPoint) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QGraphicsView_MapFromScene(this.h, point.cPointer())
+	_goptr := newQPoint(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QGraphicsView) MapFromSceneWithPath(path *QPainterPath) *QPainterPath {
-	ret := C.QGraphicsView_MapFromSceneWithPath(this.h, path.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPainterPath(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPainterPath) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QGraphicsView_MapFromSceneWithPath(this.h, path.cPointer())
+	_goptr := newQPainterPath(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QGraphicsView) MapToScene2(x int, y int) *QPointF {
-	ret := C.QGraphicsView_MapToScene2(this.h, (C.int)(x), (C.int)(y))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPointF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPointF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QGraphicsView_MapToScene2(this.h, (C.int)(x), (C.int)(y))
+	_goptr := newQPointF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QGraphicsView) MapFromScene2(x float64, y float64) *QPoint {
-	ret := C.QGraphicsView_MapFromScene2(this.h, (C.double)(x), (C.double)(y))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPoint(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPoint) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QGraphicsView_MapFromScene2(this.h, (C.double)(x), (C.double)(y))
+	_goptr := newQPoint(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QGraphicsView) InputMethodQuery(query InputMethodQuery) *QVariant {
-	ret := C.QGraphicsView_InputMethodQuery(this.h, (C.uintptr_t)(query))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQVariant(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QVariant) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QGraphicsView_InputMethodQuery(this.h, (C.uintptr_t)(query))
+	_goptr := newQVariant(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QGraphicsView) BackgroundBrush() *QBrush {
-	ret := C.QGraphicsView_BackgroundBrush(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQBrush(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QBrush) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QGraphicsView_BackgroundBrush(this.h)
+	_goptr := newQBrush(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QGraphicsView) SetBackgroundBrush(brush *QBrush) {
@@ -573,14 +501,10 @@ func (this *QGraphicsView) SetBackgroundBrush(brush *QBrush) {
 }
 
 func (this *QGraphicsView) ForegroundBrush() *QBrush {
-	ret := C.QGraphicsView_ForegroundBrush(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQBrush(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QBrush) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QGraphicsView_ForegroundBrush(this.h)
+	_goptr := newQBrush(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QGraphicsView) SetForegroundBrush(brush *QBrush) {
@@ -594,7 +518,9 @@ func (this *QGraphicsView) UpdateScene(rects []QRectF) {
 	for i := range rects {
 		rects_CArray[i] = rects[i].cPointer()
 	}
-	C.QGraphicsView_UpdateScene(this.h, &rects_CArray[0], C.size_t(len(rects)))
+	rects_ma := &C.struct_miqt_array{len: C.size_t(len(rects)), data: unsafe.Pointer(rects_CArray)}
+	defer runtime.KeepAlive(unsafe.Pointer(rects_ma))
+	C.QGraphicsView_UpdateScene(this.h, rects_ma)
 }
 
 func (this *QGraphicsView) InvalidateScene() {
@@ -608,13 +534,34 @@ func (this *QGraphicsView) UpdateSceneRect(rect *QRectF) {
 func (this *QGraphicsView) RubberBandChanged(viewportRect QRect, fromScenePoint QPointF, toScenePoint QPointF) {
 	C.QGraphicsView_RubberBandChanged(this.h, viewportRect.cPointer(), fromScenePoint.cPointer(), toScenePoint.cPointer())
 }
+func (this *QGraphicsView) OnRubberBandChanged(slot func(viewportRect QRect, fromScenePoint QPointF, toScenePoint QPointF)) {
+	C.QGraphicsView_connect_RubberBandChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QGraphicsView) OnRubberBandChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QGraphicsView_RubberBandChanged
+func miqt_exec_callback_QGraphicsView_RubberBandChanged(cb *C.void, viewportRect *C.QRect, fromScenePoint *C.QPointF, toScenePoint *C.QPointF) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(viewportRect QRect, fromScenePoint QPointF, toScenePoint QPointF))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QGraphicsView_connect_RubberBandChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	viewportRect_ret := viewportRect
+	viewportRect_goptr := newQRect(viewportRect_ret)
+	viewportRect_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	slotval1 := *viewportRect_goptr
+
+	fromScenePoint_ret := fromScenePoint
+	fromScenePoint_goptr := newQPointF(fromScenePoint_ret)
+	fromScenePoint_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	slotval2 := *fromScenePoint_goptr
+
+	toScenePoint_ret := toScenePoint
+	toScenePoint_goptr := newQPointF(toScenePoint_ret)
+	toScenePoint_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	slotval3 := *toScenePoint_goptr
+
+	gofunc(slotval1, slotval2, slotval3)
 }
 
 func QGraphicsView_Tr2(s string, c string) string {
@@ -622,12 +569,10 @@ func QGraphicsView_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGraphicsView_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGraphicsView_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QGraphicsView_Tr3(s string, c string, n int) string {
@@ -635,12 +580,10 @@ func QGraphicsView_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGraphicsView_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGraphicsView_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QGraphicsView_TrUtf82(s string, c string) string {
@@ -648,12 +591,10 @@ func QGraphicsView_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGraphicsView_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGraphicsView_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QGraphicsView_TrUtf83(s string, c string, n int) string {
@@ -661,12 +602,10 @@ func QGraphicsView_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGraphicsView_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGraphicsView_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QGraphicsView) SetRenderHint2(hint QPainter__RenderHint, enabled bool) {
@@ -734,42 +673,36 @@ func (this *QGraphicsView) Render4(painter *QPainter, target *QRectF, source *QR
 }
 
 func (this *QGraphicsView) Items22(rect *QRect, mode ItemSelectionMode) []*QGraphicsItem {
-	var _out **C.QGraphicsItem = nil
-	var _out_len C.size_t = 0
-	C.QGraphicsView_Items22(this.h, rect.cPointer(), (C.uintptr_t)(mode), &_out, &_out_len)
-	ret := make([]*QGraphicsItem, int(_out_len))
-	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_out)) // so fresh so clean
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = newQGraphicsItem(_outCast[i])
+	var _ma *C.struct_miqt_array = C.QGraphicsView_Items22(this.h, rect.cPointer(), (C.uintptr_t)(mode))
+	_ret := make([]*QGraphicsItem, int(_ma.len))
+	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // mrs jackson
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = newQGraphicsItem(_outCast[i])
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
 func (this *QGraphicsView) Items5(x int, y int, w int, h int, mode ItemSelectionMode) []*QGraphicsItem {
-	var _out **C.QGraphicsItem = nil
-	var _out_len C.size_t = 0
-	C.QGraphicsView_Items5(this.h, (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), (C.uintptr_t)(mode), &_out, &_out_len)
-	ret := make([]*QGraphicsItem, int(_out_len))
-	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_out)) // so fresh so clean
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = newQGraphicsItem(_outCast[i])
+	var _ma *C.struct_miqt_array = C.QGraphicsView_Items5(this.h, (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), (C.uintptr_t)(mode))
+	_ret := make([]*QGraphicsItem, int(_ma.len))
+	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // mrs jackson
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = newQGraphicsItem(_outCast[i])
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
 func (this *QGraphicsView) Items24(path *QPainterPath, mode ItemSelectionMode) []*QGraphicsItem {
-	var _out **C.QGraphicsItem = nil
-	var _out_len C.size_t = 0
-	C.QGraphicsView_Items24(this.h, path.cPointer(), (C.uintptr_t)(mode), &_out, &_out_len)
-	ret := make([]*QGraphicsItem, int(_out_len))
-	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_out)) // so fresh so clean
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = newQGraphicsItem(_outCast[i])
+	var _ma *C.struct_miqt_array = C.QGraphicsView_Items24(this.h, path.cPointer(), (C.uintptr_t)(mode))
+	_ret := make([]*QGraphicsItem, int(_ma.len))
+	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // mrs jackson
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = newQGraphicsItem(_outCast[i])
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
 func (this *QGraphicsView) InvalidateScene1(rect *QRectF) {
@@ -780,6 +713,16 @@ func (this *QGraphicsView) InvalidateScene2(rect *QRectF, layers int) {
 	C.QGraphicsView_InvalidateScene2(this.h, rect.cPointer(), (C.int)(layers))
 }
 
+// Delete this object from C++ memory.
 func (this *QGraphicsView) Delete() {
 	C.QGraphicsView_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QGraphicsView) GoGC() {
+	runtime.SetFinalizer(this, func(this *QGraphicsView) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

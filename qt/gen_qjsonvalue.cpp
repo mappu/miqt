@@ -9,12 +9,8 @@
 #include <cstring>
 #include <QVariant>
 #include "qjsonvalue.h"
-
 #include "gen_qjsonvalue.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QJsonValue* QJsonValue_new() {
 	return new QJsonValue();
@@ -36,8 +32,8 @@ QJsonValue* QJsonValue_new5(long long v) {
 	return new QJsonValue(static_cast<qint64>(v));
 }
 
-QJsonValue* QJsonValue_new6(const char* s, size_t s_Strlen) {
-	QString s_QString = QString::fromUtf8(s, s_Strlen);
+QJsonValue* QJsonValue_new6(struct miqt_string* s) {
+	QString s_QString = QString::fromUtf8(&s->data, s->len);
 	return new QJsonValue(s_QString);
 }
 
@@ -70,20 +66,20 @@ void QJsonValue_Swap(QJsonValue* self, QJsonValue* other) {
 }
 
 QJsonValue* QJsonValue_FromVariant(QVariant* variant) {
-	QJsonValue ret = QJsonValue::fromVariant(*variant);
+	QJsonValue _ret = QJsonValue::fromVariant(*variant);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QJsonValue*>(new QJsonValue(ret));
+	return static_cast<QJsonValue*>(new QJsonValue(_ret));
 }
 
 QVariant* QJsonValue_ToVariant(const QJsonValue* self) {
-	QVariant ret = self->toVariant();
+	QVariant _ret = self->toVariant();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(ret));
+	return static_cast<QVariant*>(new QVariant(_ret));
 }
 
 uintptr_t QJsonValue_Type(const QJsonValue* self) {
-	QJsonValue::Type ret = self->type();
-	return static_cast<uintptr_t>(ret);
+	QJsonValue::Type _ret = self->type();
+	return static_cast<uintptr_t>(_ret);
 }
 
 bool QJsonValue_IsNull(const QJsonValue* self) {
@@ -126,60 +122,56 @@ double QJsonValue_ToDouble(const QJsonValue* self) {
 	return self->toDouble();
 }
 
-void QJsonValue_ToString(const QJsonValue* self, char** _out, int* _out_Strlen) {
-	QString ret = self->toString();
+struct miqt_string* QJsonValue_ToString(const QJsonValue* self) {
+	QString _ret = self->toString();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QJsonValue_ToStringWithDefaultValue(const QJsonValue* self, const char* defaultValue, size_t defaultValue_Strlen, char** _out, int* _out_Strlen) {
-	QString defaultValue_QString = QString::fromUtf8(defaultValue, defaultValue_Strlen);
-	QString ret = self->toString(defaultValue_QString);
+struct miqt_string* QJsonValue_ToStringWithDefaultValue(const QJsonValue* self, struct miqt_string* defaultValue) {
+	QString defaultValue_QString = QString::fromUtf8(&defaultValue->data, defaultValue->len);
+	QString _ret = self->toString(defaultValue_QString);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 QJsonArray* QJsonValue_ToArray(const QJsonValue* self) {
-	QJsonArray ret = self->toArray();
+	QJsonArray _ret = self->toArray();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QJsonArray*>(new QJsonArray(ret));
+	return static_cast<QJsonArray*>(new QJsonArray(_ret));
 }
 
 QJsonArray* QJsonValue_ToArrayWithDefaultValue(const QJsonValue* self, QJsonArray* defaultValue) {
-	QJsonArray ret = self->toArray(*defaultValue);
+	QJsonArray _ret = self->toArray(*defaultValue);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QJsonArray*>(new QJsonArray(ret));
+	return static_cast<QJsonArray*>(new QJsonArray(_ret));
 }
 
 QJsonObject* QJsonValue_ToObject(const QJsonValue* self) {
-	QJsonObject ret = self->toObject();
+	QJsonObject _ret = self->toObject();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QJsonObject*>(new QJsonObject(ret));
+	return static_cast<QJsonObject*>(new QJsonObject(_ret));
 }
 
 QJsonObject* QJsonValue_ToObjectWithDefaultValue(const QJsonValue* self, QJsonObject* defaultValue) {
-	QJsonObject ret = self->toObject(*defaultValue);
+	QJsonObject _ret = self->toObject(*defaultValue);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QJsonObject*>(new QJsonObject(ret));
+	return static_cast<QJsonObject*>(new QJsonObject(_ret));
 }
 
-QJsonValue* QJsonValue_OperatorSubscript(const QJsonValue* self, const char* key, size_t key_Strlen) {
-	QString key_QString = QString::fromUtf8(key, key_Strlen);
-	QJsonValue ret = self->operator[](key_QString);
+QJsonValue* QJsonValue_OperatorSubscript(const QJsonValue* self, struct miqt_string* key) {
+	QString key_QString = QString::fromUtf8(&key->data, key->len);
+	QJsonValue _ret = self->operator[](key_QString);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QJsonValue*>(new QJsonValue(ret));
+	return static_cast<QJsonValue*>(new QJsonValue(_ret));
 }
 
 QJsonValue* QJsonValue_OperatorSubscriptWithInt(const QJsonValue* self, int i) {
-	QJsonValue ret = self->operator[](static_cast<int>(i));
+	QJsonValue _ret = self->operator[](static_cast<int>(i));
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QJsonValue*>(new QJsonValue(ret));
+	return static_cast<QJsonValue*>(new QJsonValue(_ret));
 }
 
 bool QJsonValue_OperatorEqual(const QJsonValue* self, QJsonValue* other) {
@@ -227,14 +219,14 @@ void QJsonValueRef_OperatorAssignWithVal(QJsonValueRef* self, QJsonValueRef* val
 }
 
 QVariant* QJsonValueRef_ToVariant(const QJsonValueRef* self) {
-	QVariant ret = self->toVariant();
+	QVariant _ret = self->toVariant();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(ret));
+	return static_cast<QVariant*>(new QVariant(_ret));
 }
 
 uintptr_t QJsonValueRef_Type(const QJsonValueRef* self) {
-	QJsonValue::Type ret = self->type();
-	return static_cast<uintptr_t>(ret);
+	QJsonValue::Type _ret = self->type();
+	return static_cast<uintptr_t>(_ret);
 }
 
 bool QJsonValueRef_IsNull(const QJsonValueRef* self) {
@@ -277,25 +269,23 @@ double QJsonValueRef_ToDouble(const QJsonValueRef* self) {
 	return self->toDouble();
 }
 
-void QJsonValueRef_ToString(const QJsonValueRef* self, char** _out, int* _out_Strlen) {
-	QString ret = self->toString();
+struct miqt_string* QJsonValueRef_ToString(const QJsonValueRef* self) {
+	QString _ret = self->toString();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 QJsonArray* QJsonValueRef_ToArray(const QJsonValueRef* self) {
-	QJsonArray ret = self->toArray();
+	QJsonArray _ret = self->toArray();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QJsonArray*>(new QJsonArray(ret));
+	return static_cast<QJsonArray*>(new QJsonArray(_ret));
 }
 
 QJsonObject* QJsonValueRef_ToObject(const QJsonValueRef* self) {
-	QJsonObject ret = self->toObject();
+	QJsonObject _ret = self->toObject();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QJsonObject*>(new QJsonObject(ret));
+	return static_cast<QJsonObject*>(new QJsonObject(_ret));
 }
 
 bool QJsonValueRef_ToBoolWithDefaultValue(const QJsonValueRef* self, bool defaultValue) {
@@ -310,14 +300,12 @@ double QJsonValueRef_ToDoubleWithDefaultValue(const QJsonValueRef* self, double 
 	return self->toDouble(static_cast<double>(defaultValue));
 }
 
-void QJsonValueRef_ToStringWithDefaultValue(const QJsonValueRef* self, const char* defaultValue, size_t defaultValue_Strlen, char** _out, int* _out_Strlen) {
-	QString defaultValue_QString = QString::fromUtf8(defaultValue, defaultValue_Strlen);
-	QString ret = self->toString(defaultValue_QString);
+struct miqt_string* QJsonValueRef_ToStringWithDefaultValue(const QJsonValueRef* self, struct miqt_string* defaultValue) {
+	QString defaultValue_QString = QString::fromUtf8(&defaultValue->data, defaultValue->len);
+	QString _ret = self->toString(defaultValue_QString);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 bool QJsonValueRef_OperatorEqual(const QJsonValueRef* self, QJsonValue* other) {
@@ -341,9 +329,9 @@ QJsonValuePtr* QJsonValuePtr_new2(QJsonValuePtr* param1) {
 }
 
 QJsonValue* QJsonValuePtr_OperatorMultiply(QJsonValuePtr* self) {
-	QJsonValue& ret = self->operator*();
+	QJsonValue& _ret = self->operator*();
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QJsonValue* QJsonValuePtr_OperatorMinusGreater(QJsonValuePtr* self) {
@@ -371,9 +359,9 @@ QJsonValueRefPtr* QJsonValueRefPtr_new3(QJsonValueRefPtr* param1) {
 }
 
 QJsonValueRef* QJsonValueRefPtr_OperatorMultiply(QJsonValueRefPtr* self) {
-	QJsonValueRef& ret = self->operator*();
+	QJsonValueRef& _ret = self->operator*();
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QJsonValueRef* QJsonValueRefPtr_OperatorMinusGreater(QJsonValueRefPtr* self) {

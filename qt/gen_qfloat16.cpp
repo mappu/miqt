@@ -1,10 +1,6 @@
 #include "qfloat16.h"
-
 #include "gen_qfloat16.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 qfloat16* qfloat16_new() {
 	return new qfloat16();

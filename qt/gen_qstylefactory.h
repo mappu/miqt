@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -19,8 +21,8 @@ typedef struct QStyle QStyle;
 typedef struct QStyleFactory QStyleFactory;
 #endif
 
-void QStyleFactory_Keys(char*** _out, int** _out_Lengths, size_t* _out_len);
-QStyle* QStyleFactory_Create(const char* param1, size_t param1_Strlen);
+struct miqt_array* QStyleFactory_Keys();
+QStyle* QStyleFactory_Create(struct miqt_string* param1);
 void QStyleFactory_Delete(QStyleFactory* self);
 
 #ifdef __cplusplus

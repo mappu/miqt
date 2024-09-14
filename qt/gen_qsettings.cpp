@@ -8,30 +8,26 @@
 #include <QTextCodec>
 #include <QVariant>
 #include "qsettings.h"
-
 #include "gen_qsettings.h"
+#include "_cgo_export.h"
 
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
-
-QSettings* QSettings_new(const char* organization, size_t organization_Strlen) {
-	QString organization_QString = QString::fromUtf8(organization, organization_Strlen);
+QSettings* QSettings_new(struct miqt_string* organization) {
+	QString organization_QString = QString::fromUtf8(&organization->data, organization->len);
 	return new QSettings(organization_QString);
 }
 
-QSettings* QSettings_new2(uintptr_t scope, const char* organization, size_t organization_Strlen) {
-	QString organization_QString = QString::fromUtf8(organization, organization_Strlen);
+QSettings* QSettings_new2(uintptr_t scope, struct miqt_string* organization) {
+	QString organization_QString = QString::fromUtf8(&organization->data, organization->len);
 	return new QSettings(static_cast<QSettings::Scope>(scope), organization_QString);
 }
 
-QSettings* QSettings_new3(uintptr_t format, uintptr_t scope, const char* organization, size_t organization_Strlen) {
-	QString organization_QString = QString::fromUtf8(organization, organization_Strlen);
+QSettings* QSettings_new3(uintptr_t format, uintptr_t scope, struct miqt_string* organization) {
+	QString organization_QString = QString::fromUtf8(&organization->data, organization->len);
 	return new QSettings(static_cast<QSettings::Format>(format), static_cast<QSettings::Scope>(scope), organization_QString);
 }
 
-QSettings* QSettings_new4(const char* fileName, size_t fileName_Strlen, uintptr_t format) {
-	QString fileName_QString = QString::fromUtf8(fileName, fileName_Strlen);
+QSettings* QSettings_new4(struct miqt_string* fileName, uintptr_t format) {
+	QString fileName_QString = QString::fromUtf8(&fileName->data, fileName->len);
 	return new QSettings(fileName_QString, static_cast<QSettings::Format>(format));
 }
 
@@ -43,44 +39,44 @@ QSettings* QSettings_new6(uintptr_t scope) {
 	return new QSettings(static_cast<QSettings::Scope>(scope));
 }
 
-QSettings* QSettings_new7(const char* organization, size_t organization_Strlen, const char* application, size_t application_Strlen) {
-	QString organization_QString = QString::fromUtf8(organization, organization_Strlen);
-	QString application_QString = QString::fromUtf8(application, application_Strlen);
+QSettings* QSettings_new7(struct miqt_string* organization, struct miqt_string* application) {
+	QString organization_QString = QString::fromUtf8(&organization->data, organization->len);
+	QString application_QString = QString::fromUtf8(&application->data, application->len);
 	return new QSettings(organization_QString, application_QString);
 }
 
-QSettings* QSettings_new8(const char* organization, size_t organization_Strlen, const char* application, size_t application_Strlen, QObject* parent) {
-	QString organization_QString = QString::fromUtf8(organization, organization_Strlen);
-	QString application_QString = QString::fromUtf8(application, application_Strlen);
+QSettings* QSettings_new8(struct miqt_string* organization, struct miqt_string* application, QObject* parent) {
+	QString organization_QString = QString::fromUtf8(&organization->data, organization->len);
+	QString application_QString = QString::fromUtf8(&application->data, application->len);
 	return new QSettings(organization_QString, application_QString, parent);
 }
 
-QSettings* QSettings_new9(uintptr_t scope, const char* organization, size_t organization_Strlen, const char* application, size_t application_Strlen) {
-	QString organization_QString = QString::fromUtf8(organization, organization_Strlen);
-	QString application_QString = QString::fromUtf8(application, application_Strlen);
+QSettings* QSettings_new9(uintptr_t scope, struct miqt_string* organization, struct miqt_string* application) {
+	QString organization_QString = QString::fromUtf8(&organization->data, organization->len);
+	QString application_QString = QString::fromUtf8(&application->data, application->len);
 	return new QSettings(static_cast<QSettings::Scope>(scope), organization_QString, application_QString);
 }
 
-QSettings* QSettings_new10(uintptr_t scope, const char* organization, size_t organization_Strlen, const char* application, size_t application_Strlen, QObject* parent) {
-	QString organization_QString = QString::fromUtf8(organization, organization_Strlen);
-	QString application_QString = QString::fromUtf8(application, application_Strlen);
+QSettings* QSettings_new10(uintptr_t scope, struct miqt_string* organization, struct miqt_string* application, QObject* parent) {
+	QString organization_QString = QString::fromUtf8(&organization->data, organization->len);
+	QString application_QString = QString::fromUtf8(&application->data, application->len);
 	return new QSettings(static_cast<QSettings::Scope>(scope), organization_QString, application_QString, parent);
 }
 
-QSettings* QSettings_new11(uintptr_t format, uintptr_t scope, const char* organization, size_t organization_Strlen, const char* application, size_t application_Strlen) {
-	QString organization_QString = QString::fromUtf8(organization, organization_Strlen);
-	QString application_QString = QString::fromUtf8(application, application_Strlen);
+QSettings* QSettings_new11(uintptr_t format, uintptr_t scope, struct miqt_string* organization, struct miqt_string* application) {
+	QString organization_QString = QString::fromUtf8(&organization->data, organization->len);
+	QString application_QString = QString::fromUtf8(&application->data, application->len);
 	return new QSettings(static_cast<QSettings::Format>(format), static_cast<QSettings::Scope>(scope), organization_QString, application_QString);
 }
 
-QSettings* QSettings_new12(uintptr_t format, uintptr_t scope, const char* organization, size_t organization_Strlen, const char* application, size_t application_Strlen, QObject* parent) {
-	QString organization_QString = QString::fromUtf8(organization, organization_Strlen);
-	QString application_QString = QString::fromUtf8(application, application_Strlen);
+QSettings* QSettings_new12(uintptr_t format, uintptr_t scope, struct miqt_string* organization, struct miqt_string* application, QObject* parent) {
+	QString organization_QString = QString::fromUtf8(&organization->data, organization->len);
+	QString application_QString = QString::fromUtf8(&application->data, application->len);
 	return new QSettings(static_cast<QSettings::Format>(format), static_cast<QSettings::Scope>(scope), organization_QString, application_QString, parent);
 }
 
-QSettings* QSettings_new13(const char* fileName, size_t fileName_Strlen, uintptr_t format, QObject* parent) {
-	QString fileName_QString = QString::fromUtf8(fileName, fileName_Strlen);
+QSettings* QSettings_new13(struct miqt_string* fileName, uintptr_t format, QObject* parent) {
+	QString fileName_QString = QString::fromUtf8(&fileName->data, fileName->len);
 	return new QSettings(fileName_QString, static_cast<QSettings::Format>(format), parent);
 }
 
@@ -96,22 +92,18 @@ QMetaObject* QSettings_MetaObject(const QSettings* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void QSettings_Tr(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QSettings::tr(s);
+struct miqt_string* QSettings_Tr(const char* s) {
+	QString _ret = QSettings::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QSettings_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QSettings::trUtf8(s);
+struct miqt_string* QSettings_TrUtf8(const char* s) {
+	QString _ret = QSettings::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QSettings_Clear(QSettings* self) {
@@ -123,8 +115,8 @@ void QSettings_Sync(QSettings* self) {
 }
 
 uintptr_t QSettings_Status(const QSettings* self) {
-	QSettings::Status ret = self->status();
-	return static_cast<uintptr_t>(ret);
+	QSettings::Status _ret = self->status();
+	return static_cast<uintptr_t>(_ret);
 }
 
 bool QSettings_IsAtomicSyncRequired(const QSettings* self) {
@@ -135,8 +127,8 @@ void QSettings_SetAtomicSyncRequired(QSettings* self, bool enable) {
 	self->setAtomicSyncRequired(enable);
 }
 
-void QSettings_BeginGroup(QSettings* self, const char* prefix, size_t prefix_Strlen) {
-	QString prefix_QString = QString::fromUtf8(prefix, prefix_Strlen);
+void QSettings_BeginGroup(QSettings* self, struct miqt_string* prefix) {
+	QString prefix_QString = QString::fromUtf8(&prefix->data, prefix->len);
 	self->beginGroup(prefix_QString);
 }
 
@@ -144,22 +136,20 @@ void QSettings_EndGroup(QSettings* self) {
 	self->endGroup();
 }
 
-void QSettings_Group(const QSettings* self, char** _out, int* _out_Strlen) {
-	QString ret = self->group();
+struct miqt_string* QSettings_Group(const QSettings* self) {
+	QString _ret = self->group();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-int QSettings_BeginReadArray(QSettings* self, const char* prefix, size_t prefix_Strlen) {
-	QString prefix_QString = QString::fromUtf8(prefix, prefix_Strlen);
+int QSettings_BeginReadArray(QSettings* self, struct miqt_string* prefix) {
+	QString prefix_QString = QString::fromUtf8(&prefix->data, prefix->len);
 	return self->beginReadArray(prefix_QString);
 }
 
-void QSettings_BeginWriteArray(QSettings* self, const char* prefix, size_t prefix_Strlen) {
-	QString prefix_QString = QString::fromUtf8(prefix, prefix_Strlen);
+void QSettings_BeginWriteArray(QSettings* self, struct miqt_string* prefix) {
+	QString prefix_QString = QString::fromUtf8(&prefix->data, prefix->len);
 	self->beginWriteArray(prefix_QString);
 }
 
@@ -171,80 +161,77 @@ void QSettings_SetArrayIndex(QSettings* self, int i) {
 	self->setArrayIndex(static_cast<int>(i));
 }
 
-void QSettings_AllKeys(const QSettings* self, char*** _out, int** _out_Lengths, size_t* _out_len) {
-	QStringList ret = self->allKeys();
+struct miqt_array* QSettings_AllKeys(const QSettings* self) {
+	QStringList _ret = self->allKeys();
 	// Convert QStringList from C++ memory to manually-managed C memory
-	char** __out = static_cast<char**>(malloc(sizeof(char*) * ret.length()));
-	int* __out_Lengths = static_cast<int*>(malloc(sizeof(int) * ret.length()));
-	for (size_t i = 0, e = ret.length(); i < e; ++i) {
+	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-		QByteArray b = ret[i].toUtf8();
-		__out[i] = static_cast<char*>(malloc(b.length()));
-		memcpy(__out[i], b.data(), b.length());
-		__out_Lengths[i] = b.length();
+		QByteArray _lv_b = _lv_ret.toUtf8();
+		_arr[i] = miqt_strdup(_lv_b.data(), _lv_b.length());
 	}
-	*_out = __out;
-	*_out_Lengths = __out_Lengths;
-	*_out_len = ret.length();
+	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
+	_out->len = _ret.length();
+	_out->data = static_cast<void*>(_arr);
+	return _out;
 }
 
-void QSettings_ChildKeys(const QSettings* self, char*** _out, int** _out_Lengths, size_t* _out_len) {
-	QStringList ret = self->childKeys();
+struct miqt_array* QSettings_ChildKeys(const QSettings* self) {
+	QStringList _ret = self->childKeys();
 	// Convert QStringList from C++ memory to manually-managed C memory
-	char** __out = static_cast<char**>(malloc(sizeof(char*) * ret.length()));
-	int* __out_Lengths = static_cast<int*>(malloc(sizeof(int) * ret.length()));
-	for (size_t i = 0, e = ret.length(); i < e; ++i) {
+	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-		QByteArray b = ret[i].toUtf8();
-		__out[i] = static_cast<char*>(malloc(b.length()));
-		memcpy(__out[i], b.data(), b.length());
-		__out_Lengths[i] = b.length();
+		QByteArray _lv_b = _lv_ret.toUtf8();
+		_arr[i] = miqt_strdup(_lv_b.data(), _lv_b.length());
 	}
-	*_out = __out;
-	*_out_Lengths = __out_Lengths;
-	*_out_len = ret.length();
+	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
+	_out->len = _ret.length();
+	_out->data = static_cast<void*>(_arr);
+	return _out;
 }
 
-void QSettings_ChildGroups(const QSettings* self, char*** _out, int** _out_Lengths, size_t* _out_len) {
-	QStringList ret = self->childGroups();
+struct miqt_array* QSettings_ChildGroups(const QSettings* self) {
+	QStringList _ret = self->childGroups();
 	// Convert QStringList from C++ memory to manually-managed C memory
-	char** __out = static_cast<char**>(malloc(sizeof(char*) * ret.length()));
-	int* __out_Lengths = static_cast<int*>(malloc(sizeof(int) * ret.length()));
-	for (size_t i = 0, e = ret.length(); i < e; ++i) {
+	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-		QByteArray b = ret[i].toUtf8();
-		__out[i] = static_cast<char*>(malloc(b.length()));
-		memcpy(__out[i], b.data(), b.length());
-		__out_Lengths[i] = b.length();
+		QByteArray _lv_b = _lv_ret.toUtf8();
+		_arr[i] = miqt_strdup(_lv_b.data(), _lv_b.length());
 	}
-	*_out = __out;
-	*_out_Lengths = __out_Lengths;
-	*_out_len = ret.length();
+	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
+	_out->len = _ret.length();
+	_out->data = static_cast<void*>(_arr);
+	return _out;
 }
 
 bool QSettings_IsWritable(const QSettings* self) {
 	return self->isWritable();
 }
 
-void QSettings_SetValue(QSettings* self, const char* key, size_t key_Strlen, QVariant* value) {
-	QString key_QString = QString::fromUtf8(key, key_Strlen);
+void QSettings_SetValue(QSettings* self, struct miqt_string* key, QVariant* value) {
+	QString key_QString = QString::fromUtf8(&key->data, key->len);
 	self->setValue(key_QString, *value);
 }
 
-QVariant* QSettings_Value(const QSettings* self, const char* key, size_t key_Strlen) {
-	QString key_QString = QString::fromUtf8(key, key_Strlen);
-	QVariant ret = self->value(key_QString);
+QVariant* QSettings_Value(const QSettings* self, struct miqt_string* key) {
+	QString key_QString = QString::fromUtf8(&key->data, key->len);
+	QVariant _ret = self->value(key_QString);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(ret));
+	return static_cast<QVariant*>(new QVariant(_ret));
 }
 
-void QSettings_Remove(QSettings* self, const char* key, size_t key_Strlen) {
-	QString key_QString = QString::fromUtf8(key, key_Strlen);
+void QSettings_Remove(QSettings* self, struct miqt_string* key) {
+	QString key_QString = QString::fromUtf8(&key->data, key->len);
 	self->remove(key_QString);
 }
 
-bool QSettings_Contains(const QSettings* self, const char* key, size_t key_Strlen) {
-	QString key_QString = QString::fromUtf8(key, key_Strlen);
+bool QSettings_Contains(const QSettings* self, struct miqt_string* key) {
+	QString key_QString = QString::fromUtf8(&key->data, key->len);
 	return self->contains(key_QString);
 }
 
@@ -256,41 +243,35 @@ bool QSettings_FallbacksEnabled(const QSettings* self) {
 	return self->fallbacksEnabled();
 }
 
-void QSettings_FileName(const QSettings* self, char** _out, int* _out_Strlen) {
-	QString ret = self->fileName();
+struct miqt_string* QSettings_FileName(const QSettings* self) {
+	QString _ret = self->fileName();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 uintptr_t QSettings_Format(const QSettings* self) {
-	QSettings::Format ret = self->format();
-	return static_cast<uintptr_t>(ret);
+	QSettings::Format _ret = self->format();
+	return static_cast<uintptr_t>(_ret);
 }
 
 uintptr_t QSettings_Scope(const QSettings* self) {
-	QSettings::Scope ret = self->scope();
-	return static_cast<uintptr_t>(ret);
+	QSettings::Scope _ret = self->scope();
+	return static_cast<uintptr_t>(_ret);
 }
 
-void QSettings_OrganizationName(const QSettings* self, char** _out, int* _out_Strlen) {
-	QString ret = self->organizationName();
+struct miqt_string* QSettings_OrganizationName(const QSettings* self) {
+	QString _ret = self->organizationName();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QSettings_ApplicationName(const QSettings* self, char** _out, int* _out_Strlen) {
-	QString ret = self->applicationName();
+struct miqt_string* QSettings_ApplicationName(const QSettings* self) {
+	QString _ret = self->applicationName();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QSettings_SetIniCodec(QSettings* self, QTextCodec* codec) {
@@ -310,71 +291,63 @@ void QSettings_SetDefaultFormat(uintptr_t format) {
 }
 
 uintptr_t QSettings_DefaultFormat() {
-	QSettings::Format ret = QSettings::defaultFormat();
-	return static_cast<uintptr_t>(ret);
+	QSettings::Format _ret = QSettings::defaultFormat();
+	return static_cast<uintptr_t>(_ret);
 }
 
-void QSettings_SetSystemIniPath(const char* dir, size_t dir_Strlen) {
-	QString dir_QString = QString::fromUtf8(dir, dir_Strlen);
+void QSettings_SetSystemIniPath(struct miqt_string* dir) {
+	QString dir_QString = QString::fromUtf8(&dir->data, dir->len);
 	QSettings::setSystemIniPath(dir_QString);
 }
 
-void QSettings_SetUserIniPath(const char* dir, size_t dir_Strlen) {
-	QString dir_QString = QString::fromUtf8(dir, dir_Strlen);
+void QSettings_SetUserIniPath(struct miqt_string* dir) {
+	QString dir_QString = QString::fromUtf8(&dir->data, dir->len);
 	QSettings::setUserIniPath(dir_QString);
 }
 
-void QSettings_SetPath(uintptr_t format, uintptr_t scope, const char* path, size_t path_Strlen) {
-	QString path_QString = QString::fromUtf8(path, path_Strlen);
+void QSettings_SetPath(uintptr_t format, uintptr_t scope, struct miqt_string* path) {
+	QString path_QString = QString::fromUtf8(&path->data, path->len);
 	QSettings::setPath(static_cast<QSettings::Format>(format), static_cast<QSettings::Scope>(scope), path_QString);
 }
 
-void QSettings_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QSettings::tr(s, c);
+struct miqt_string* QSettings_Tr2(const char* s, const char* c) {
+	QString _ret = QSettings::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QSettings_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QSettings::tr(s, c, static_cast<int>(n));
+struct miqt_string* QSettings_Tr3(const char* s, const char* c, int n) {
+	QString _ret = QSettings::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QSettings_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QSettings::trUtf8(s, c);
+struct miqt_string* QSettings_TrUtf82(const char* s, const char* c) {
+	QString _ret = QSettings::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QSettings_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QSettings::trUtf8(s, c, static_cast<int>(n));
+struct miqt_string* QSettings_TrUtf83(const char* s, const char* c, int n) {
+	QString _ret = QSettings::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QSettings_BeginWriteArray2(QSettings* self, const char* prefix, size_t prefix_Strlen, int size) {
-	QString prefix_QString = QString::fromUtf8(prefix, prefix_Strlen);
+void QSettings_BeginWriteArray2(QSettings* self, struct miqt_string* prefix, int size) {
+	QString prefix_QString = QString::fromUtf8(&prefix->data, prefix->len);
 	self->beginWriteArray(prefix_QString, static_cast<int>(size));
 }
 
-QVariant* QSettings_Value2(const QSettings* self, const char* key, size_t key_Strlen, QVariant* defaultValue) {
-	QString key_QString = QString::fromUtf8(key, key_Strlen);
-	QVariant ret = self->value(key_QString, *defaultValue);
+QVariant* QSettings_Value2(const QSettings* self, struct miqt_string* key, QVariant* defaultValue) {
+	QString key_QString = QString::fromUtf8(&key->data, key->len);
+	QVariant _ret = self->value(key_QString, *defaultValue);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(ret));
+	return static_cast<QVariant*>(new QVariant(_ret));
 }
 
 void QSettings_Delete(QSettings* self) {

@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"runtime"
 	"unsafe"
 )
 
@@ -115,18 +116,18 @@ func (this *QEasingCurve) Swap(other *QEasingCurve) {
 }
 
 func (this *QEasingCurve) OperatorEqual(other *QEasingCurve) bool {
-	ret := C.QEasingCurve_OperatorEqual(this.h, other.cPointer())
-	return (bool)(ret)
+	_ret := C.QEasingCurve_OperatorEqual(this.h, other.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QEasingCurve) OperatorNotEqual(other *QEasingCurve) bool {
-	ret := C.QEasingCurve_OperatorNotEqual(this.h, other.cPointer())
-	return (bool)(ret)
+	_ret := C.QEasingCurve_OperatorNotEqual(this.h, other.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QEasingCurve) Amplitude() float64 {
-	ret := C.QEasingCurve_Amplitude(this.h)
-	return (float64)(ret)
+	_ret := C.QEasingCurve_Amplitude(this.h)
+	return (float64)(_ret)
 }
 
 func (this *QEasingCurve) SetAmplitude(amplitude float64) {
@@ -134,8 +135,8 @@ func (this *QEasingCurve) SetAmplitude(amplitude float64) {
 }
 
 func (this *QEasingCurve) Period() float64 {
-	ret := C.QEasingCurve_Period(this.h)
-	return (float64)(ret)
+	_ret := C.QEasingCurve_Period(this.h)
+	return (float64)(_ret)
 }
 
 func (this *QEasingCurve) SetPeriod(period float64) {
@@ -143,8 +144,8 @@ func (this *QEasingCurve) SetPeriod(period float64) {
 }
 
 func (this *QEasingCurve) Overshoot() float64 {
-	ret := C.QEasingCurve_Overshoot(this.h)
-	return (float64)(ret)
+	_ret := C.QEasingCurve_Overshoot(this.h)
+	return (float64)(_ret)
 }
 
 func (this *QEasingCurve) SetOvershoot(overshoot float64) {
@@ -160,21 +161,19 @@ func (this *QEasingCurve) AddTCBSegment(nextPoint *QPointF, t float64, c float64
 }
 
 func (this *QEasingCurve) ToCubicSpline() []QPointF {
-	var _out **C.QPointF = nil
-	var _out_len C.size_t = 0
-	C.QEasingCurve_ToCubicSpline(this.h, &_out, &_out_len)
-	ret := make([]QPointF, int(_out_len))
-	_outCast := (*[0xffff]*C.QPointF)(unsafe.Pointer(_out)) // so fresh so clean
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = *newQPointF(_outCast[i])
+	var _ma *C.struct_miqt_array = C.QEasingCurve_ToCubicSpline(this.h)
+	_ret := make([]QPointF, int(_ma.len))
+	_outCast := (*[0xffff]*C.QPointF)(unsafe.Pointer(_ma.data)) // mrs jackson
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = *newQPointF(_outCast[i])
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
 func (this *QEasingCurve) Type() QEasingCurve__Type {
-	ret := C.QEasingCurve_Type(this.h)
-	return (QEasingCurve__Type)(ret)
+	_ret := C.QEasingCurve_Type(this.h)
+	return (QEasingCurve__Type)(_ret)
 }
 
 func (this *QEasingCurve) SetType(typeVal QEasingCurve__Type) {
@@ -182,10 +181,20 @@ func (this *QEasingCurve) SetType(typeVal QEasingCurve__Type) {
 }
 
 func (this *QEasingCurve) ValueForProgress(progress float64) float64 {
-	ret := C.QEasingCurve_ValueForProgress(this.h, (C.double)(progress))
-	return (float64)(ret)
+	_ret := C.QEasingCurve_ValueForProgress(this.h, (C.double)(progress))
+	return (float64)(_ret)
 }
 
+// Delete this object from C++ memory.
 func (this *QEasingCurve) Delete() {
 	C.QEasingCurve_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QEasingCurve) GoGC() {
+	runtime.SetFinalizer(this, func(this *QEasingCurve) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

@@ -7,12 +7,8 @@
 #include <QByteArray>
 #include <cstring>
 #include "qsignaltransition.h"
-
 #include "gen_qsignaltransition.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QSignalTransition* QSignalTransition_new() {
 	return new QSignalTransition();
@@ -34,22 +30,18 @@ QMetaObject* QSignalTransition_MetaObject(const QSignalTransition* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void QSignalTransition_Tr(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QSignalTransition::tr(s);
+struct miqt_string* QSignalTransition_Tr(const char* s) {
+	QString _ret = QSignalTransition::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QSignalTransition_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QSignalTransition::trUtf8(s);
+struct miqt_string* QSignalTransition_TrUtf8(const char* s) {
+	QString _ret = QSignalTransition::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 QObject* QSignalTransition_SenderObject(const QSignalTransition* self) {
@@ -61,49 +53,41 @@ void QSignalTransition_SetSenderObject(QSignalTransition* self, QObject* sender)
 }
 
 QByteArray* QSignalTransition_Signal(const QSignalTransition* self) {
-	QByteArray ret = self->signal();
+	QByteArray _ret = self->signal();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(ret));
+	return static_cast<QByteArray*>(new QByteArray(_ret));
 }
 
 void QSignalTransition_SetSignal(QSignalTransition* self, QByteArray* signal) {
 	self->setSignal(*signal);
 }
 
-void QSignalTransition_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QSignalTransition::tr(s, c);
+struct miqt_string* QSignalTransition_Tr2(const char* s, const char* c) {
+	QString _ret = QSignalTransition::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QSignalTransition_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QSignalTransition::tr(s, c, static_cast<int>(n));
+struct miqt_string* QSignalTransition_Tr3(const char* s, const char* c, int n) {
+	QString _ret = QSignalTransition::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QSignalTransition_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QSignalTransition::trUtf8(s, c);
+struct miqt_string* QSignalTransition_TrUtf82(const char* s, const char* c) {
+	QString _ret = QSignalTransition::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QSignalTransition_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QSignalTransition::trUtf8(s, c, static_cast<int>(n));
+struct miqt_string* QSignalTransition_TrUtf83(const char* s, const char* c, int n) {
+	QString _ret = QSignalTransition::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QSignalTransition_Delete(QSignalTransition* self) {

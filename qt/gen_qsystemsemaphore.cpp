@@ -3,40 +3,34 @@
 #include <cstring>
 #include <QSystemSemaphore>
 #include "qsystemsemaphore.h"
-
 #include "gen_qsystemsemaphore.h"
+#include "_cgo_export.h"
 
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
-
-QSystemSemaphore* QSystemSemaphore_new(const char* key, size_t key_Strlen) {
-	QString key_QString = QString::fromUtf8(key, key_Strlen);
+QSystemSemaphore* QSystemSemaphore_new(struct miqt_string* key) {
+	QString key_QString = QString::fromUtf8(&key->data, key->len);
 	return new QSystemSemaphore(key_QString);
 }
 
-QSystemSemaphore* QSystemSemaphore_new2(const char* key, size_t key_Strlen, int initialValue) {
-	QString key_QString = QString::fromUtf8(key, key_Strlen);
+QSystemSemaphore* QSystemSemaphore_new2(struct miqt_string* key, int initialValue) {
+	QString key_QString = QString::fromUtf8(&key->data, key->len);
 	return new QSystemSemaphore(key_QString, static_cast<int>(initialValue));
 }
 
-QSystemSemaphore* QSystemSemaphore_new3(const char* key, size_t key_Strlen, int initialValue, uintptr_t mode) {
-	QString key_QString = QString::fromUtf8(key, key_Strlen);
+QSystemSemaphore* QSystemSemaphore_new3(struct miqt_string* key, int initialValue, uintptr_t mode) {
+	QString key_QString = QString::fromUtf8(&key->data, key->len);
 	return new QSystemSemaphore(key_QString, static_cast<int>(initialValue), static_cast<QSystemSemaphore::AccessMode>(mode));
 }
 
-void QSystemSemaphore_SetKey(QSystemSemaphore* self, const char* key, size_t key_Strlen) {
-	QString key_QString = QString::fromUtf8(key, key_Strlen);
+void QSystemSemaphore_SetKey(QSystemSemaphore* self, struct miqt_string* key) {
+	QString key_QString = QString::fromUtf8(&key->data, key->len);
 	self->setKey(key_QString);
 }
 
-void QSystemSemaphore_Key(const QSystemSemaphore* self, char** _out, int* _out_Strlen) {
-	QString ret = self->key();
+struct miqt_string* QSystemSemaphore_Key(const QSystemSemaphore* self) {
+	QString _ret = self->key();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 bool QSystemSemaphore_Acquire(QSystemSemaphore* self) {
@@ -48,26 +42,24 @@ bool QSystemSemaphore_Release(QSystemSemaphore* self) {
 }
 
 uintptr_t QSystemSemaphore_Error(const QSystemSemaphore* self) {
-	QSystemSemaphore::SystemSemaphoreError ret = self->error();
-	return static_cast<uintptr_t>(ret);
+	QSystemSemaphore::SystemSemaphoreError _ret = self->error();
+	return static_cast<uintptr_t>(_ret);
 }
 
-void QSystemSemaphore_ErrorString(const QSystemSemaphore* self, char** _out, int* _out_Strlen) {
-	QString ret = self->errorString();
+struct miqt_string* QSystemSemaphore_ErrorString(const QSystemSemaphore* self) {
+	QString _ret = self->errorString();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QSystemSemaphore_SetKey2(QSystemSemaphore* self, const char* key, size_t key_Strlen, int initialValue) {
-	QString key_QString = QString::fromUtf8(key, key_Strlen);
+void QSystemSemaphore_SetKey2(QSystemSemaphore* self, struct miqt_string* key, int initialValue) {
+	QString key_QString = QString::fromUtf8(&key->data, key->len);
 	self->setKey(key_QString, static_cast<int>(initialValue));
 }
 
-void QSystemSemaphore_SetKey3(QSystemSemaphore* self, const char* key, size_t key_Strlen, int initialValue, uintptr_t mode) {
-	QString key_QString = QString::fromUtf8(key, key_Strlen);
+void QSystemSemaphore_SetKey3(QSystemSemaphore* self, struct miqt_string* key, int initialValue, uintptr_t mode) {
+	QString key_QString = QString::fromUtf8(&key->data, key->len);
 	self->setKey(key_QString, static_cast<int>(initialValue), static_cast<QSystemSemaphore::AccessMode>(mode));
 }
 

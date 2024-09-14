@@ -43,43 +43,37 @@ func NewQMimeData() *QMimeData {
 }
 
 func (this *QMimeData) MetaObject() *QMetaObject {
-	ret := C.QMimeData_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QMimeData_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QMimeData_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QMimeData_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QMimeData_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QMimeData_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QMimeData_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QMimeData_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QMimeData) Urls() []QUrl {
-	var _out **C.QUrl = nil
-	var _out_len C.size_t = 0
-	C.QMimeData_Urls(this.h, &_out, &_out_len)
-	ret := make([]QUrl, int(_out_len))
-	_outCast := (*[0xffff]*C.QUrl)(unsafe.Pointer(_out)) // so fresh so clean
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = *newQUrl(_outCast[i])
+	var _ma *C.struct_miqt_array = C.QMimeData_Urls(this.h)
+	_ret := make([]QUrl, int(_ma.len))
+	_outCast := (*[0xffff]*C.QUrl)(unsafe.Pointer(_ma.data)) // mrs jackson
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = *newQUrl(_outCast[i])
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
 func (this *QMimeData) SetUrls(urls []QUrl) {
@@ -89,63 +83,57 @@ func (this *QMimeData) SetUrls(urls []QUrl) {
 	for i := range urls {
 		urls_CArray[i] = urls[i].cPointer()
 	}
-	C.QMimeData_SetUrls(this.h, &urls_CArray[0], C.size_t(len(urls)))
+	urls_ma := &C.struct_miqt_array{len: C.size_t(len(urls)), data: unsafe.Pointer(urls_CArray)}
+	defer runtime.KeepAlive(unsafe.Pointer(urls_ma))
+	C.QMimeData_SetUrls(this.h, urls_ma)
 }
 
 func (this *QMimeData) HasUrls() bool {
-	ret := C.QMimeData_HasUrls(this.h)
-	return (bool)(ret)
+	_ret := C.QMimeData_HasUrls(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QMimeData) Text() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QMimeData_Text(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QMimeData_Text(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QMimeData) SetText(text string) {
-	text_Cstring := C.CString(text)
-	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QMimeData_SetText(this.h, text_Cstring, C.size_t(len(text)))
+	text_ms := miqt_strdupg(text)
+	defer C.free(text_ms)
+	C.QMimeData_SetText(this.h, (*C.struct_miqt_string)(text_ms))
 }
 
 func (this *QMimeData) HasText() bool {
-	ret := C.QMimeData_HasText(this.h)
-	return (bool)(ret)
+	_ret := C.QMimeData_HasText(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QMimeData) Html() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QMimeData_Html(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QMimeData_Html(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QMimeData) SetHtml(html string) {
-	html_Cstring := C.CString(html)
-	defer C.free(unsafe.Pointer(html_Cstring))
-	C.QMimeData_SetHtml(this.h, html_Cstring, C.size_t(len(html)))
+	html_ms := miqt_strdupg(html)
+	defer C.free(html_ms)
+	C.QMimeData_SetHtml(this.h, (*C.struct_miqt_string)(html_ms))
 }
 
 func (this *QMimeData) HasHtml() bool {
-	ret := C.QMimeData_HasHtml(this.h)
-	return (bool)(ret)
+	_ret := C.QMimeData_HasHtml(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QMimeData) ImageData() *QVariant {
-	ret := C.QMimeData_ImageData(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQVariant(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QVariant) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QMimeData_ImageData(this.h)
+	_goptr := newQVariant(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QMimeData) SetImageData(image *QVariant) {
@@ -153,19 +141,15 @@ func (this *QMimeData) SetImageData(image *QVariant) {
 }
 
 func (this *QMimeData) HasImage() bool {
-	ret := C.QMimeData_HasImage(this.h)
-	return (bool)(ret)
+	_ret := C.QMimeData_HasImage(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QMimeData) ColorData() *QVariant {
-	ret := C.QMimeData_ColorData(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQVariant(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QVariant) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QMimeData_ColorData(this.h)
+	_goptr := newQVariant(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QMimeData) SetColorData(color *QVariant) {
@@ -173,55 +157,48 @@ func (this *QMimeData) SetColorData(color *QVariant) {
 }
 
 func (this *QMimeData) HasColor() bool {
-	ret := C.QMimeData_HasColor(this.h)
-	return (bool)(ret)
+	_ret := C.QMimeData_HasColor(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QMimeData) Data(mimetype string) *QByteArray {
-	mimetype_Cstring := C.CString(mimetype)
-	defer C.free(unsafe.Pointer(mimetype_Cstring))
-	ret := C.QMimeData_Data(this.h, mimetype_Cstring, C.size_t(len(mimetype)))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQByteArray(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QByteArray) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	mimetype_ms := miqt_strdupg(mimetype)
+	defer C.free(mimetype_ms)
+	_ret := C.QMimeData_Data(this.h, (*C.struct_miqt_string)(mimetype_ms))
+	_goptr := newQByteArray(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QMimeData) SetData(mimetype string, data *QByteArray) {
-	mimetype_Cstring := C.CString(mimetype)
-	defer C.free(unsafe.Pointer(mimetype_Cstring))
-	C.QMimeData_SetData(this.h, mimetype_Cstring, C.size_t(len(mimetype)), data.cPointer())
+	mimetype_ms := miqt_strdupg(mimetype)
+	defer C.free(mimetype_ms)
+	C.QMimeData_SetData(this.h, (*C.struct_miqt_string)(mimetype_ms), data.cPointer())
 }
 
 func (this *QMimeData) RemoveFormat(mimetype string) {
-	mimetype_Cstring := C.CString(mimetype)
-	defer C.free(unsafe.Pointer(mimetype_Cstring))
-	C.QMimeData_RemoveFormat(this.h, mimetype_Cstring, C.size_t(len(mimetype)))
+	mimetype_ms := miqt_strdupg(mimetype)
+	defer C.free(mimetype_ms)
+	C.QMimeData_RemoveFormat(this.h, (*C.struct_miqt_string)(mimetype_ms))
 }
 
 func (this *QMimeData) HasFormat(mimetype string) bool {
-	mimetype_Cstring := C.CString(mimetype)
-	defer C.free(unsafe.Pointer(mimetype_Cstring))
-	ret := C.QMimeData_HasFormat(this.h, mimetype_Cstring, C.size_t(len(mimetype)))
-	return (bool)(ret)
+	mimetype_ms := miqt_strdupg(mimetype)
+	defer C.free(mimetype_ms)
+	_ret := C.QMimeData_HasFormat(this.h, (*C.struct_miqt_string)(mimetype_ms))
+	return (bool)(_ret)
 }
 
 func (this *QMimeData) Formats() []string {
-	var _out **C.char = nil
-	var _out_Lengths *C.int = nil
-	var _out_len C.size_t = 0
-	C.QMimeData_Formats(this.h, &_out, &_out_Lengths, &_out_len)
-	ret := make([]string, int(_out_len))
-	_outCast := (*[0xffff]*C.char)(unsafe.Pointer(_out)) // hey ya
-	_out_LengthsCast := (*[0xffff]C.int)(unsafe.Pointer(_out_Lengths))
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = C.GoStringN(_outCast[i], _out_LengthsCast[i])
+	var _ma *C.struct_miqt_array = C.QMimeData_Formats(this.h)
+	_ret := make([]string, int(_ma.len))
+	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = C.GoStringN(&_outCast[i].data, C.int(int64(_outCast[i].len)))
+		C.free(unsafe.Pointer(_outCast[i])) // free the inner miqt_string*
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
 func (this *QMimeData) Clear() {
@@ -233,12 +210,10 @@ func QMimeData_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QMimeData_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QMimeData_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QMimeData_Tr3(s string, c string, n int) string {
@@ -246,12 +221,10 @@ func QMimeData_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QMimeData_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QMimeData_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QMimeData_TrUtf82(s string, c string) string {
@@ -259,12 +232,10 @@ func QMimeData_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QMimeData_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QMimeData_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QMimeData_TrUtf83(s string, c string, n int) string {
@@ -272,14 +243,22 @@ func QMimeData_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QMimeData_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QMimeData_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
+// Delete this object from C++ memory.
 func (this *QMimeData) Delete() {
 	C.QMimeData_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QMimeData) GoGC() {
+	runtime.SetFinalizer(this, func(this *QMimeData) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

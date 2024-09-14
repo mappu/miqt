@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -22,37 +24,37 @@ typedef struct QCoreApplication QCoreApplication;
 #endif
 
 QCommandLineParser* QCommandLineParser_new();
-void QCommandLineParser_Tr(const char* sourceText, char** _out, int* _out_Strlen);
-void QCommandLineParser_TrUtf8(const char* sourceText, char** _out, int* _out_Strlen);
+struct miqt_string* QCommandLineParser_Tr(const char* sourceText);
+struct miqt_string* QCommandLineParser_TrUtf8(const char* sourceText);
 void QCommandLineParser_SetSingleDashWordOptionMode(QCommandLineParser* self, uintptr_t parsingMode);
 void QCommandLineParser_SetOptionsAfterPositionalArgumentsMode(QCommandLineParser* self, uintptr_t mode);
 bool QCommandLineParser_AddOption(QCommandLineParser* self, QCommandLineOption* commandLineOption);
-bool QCommandLineParser_AddOptions(QCommandLineParser* self, QCommandLineOption** options, size_t options_len);
+bool QCommandLineParser_AddOptions(QCommandLineParser* self, struct miqt_array* /* of QCommandLineOption */ options);
 QCommandLineOption* QCommandLineParser_AddVersionOption(QCommandLineParser* self);
 QCommandLineOption* QCommandLineParser_AddHelpOption(QCommandLineParser* self);
-void QCommandLineParser_SetApplicationDescription(QCommandLineParser* self, const char* description, size_t description_Strlen);
-void QCommandLineParser_ApplicationDescription(const QCommandLineParser* self, char** _out, int* _out_Strlen);
-void QCommandLineParser_AddPositionalArgument(QCommandLineParser* self, const char* name, size_t name_Strlen, const char* description, size_t description_Strlen);
+void QCommandLineParser_SetApplicationDescription(QCommandLineParser* self, struct miqt_string* description);
+struct miqt_string* QCommandLineParser_ApplicationDescription(const QCommandLineParser* self);
+void QCommandLineParser_AddPositionalArgument(QCommandLineParser* self, struct miqt_string* name, struct miqt_string* description);
 void QCommandLineParser_ClearPositionalArguments(QCommandLineParser* self);
-void QCommandLineParser_Process(QCommandLineParser* self, char** arguments, uint64_t* arguments_Lengths, size_t arguments_len);
+void QCommandLineParser_Process(QCommandLineParser* self, struct miqt_array* /* of QString */ arguments);
 void QCommandLineParser_ProcessWithApp(QCommandLineParser* self, QCoreApplication* app);
-bool QCommandLineParser_Parse(QCommandLineParser* self, char** arguments, uint64_t* arguments_Lengths, size_t arguments_len);
-void QCommandLineParser_ErrorText(const QCommandLineParser* self, char** _out, int* _out_Strlen);
-bool QCommandLineParser_IsSet(const QCommandLineParser* self, const char* name, size_t name_Strlen);
-void QCommandLineParser_Value(const QCommandLineParser* self, const char* name, size_t name_Strlen, char** _out, int* _out_Strlen);
-void QCommandLineParser_Values(const QCommandLineParser* self, const char* name, size_t name_Strlen, char*** _out, int** _out_Lengths, size_t* _out_len);
+bool QCommandLineParser_Parse(QCommandLineParser* self, struct miqt_array* /* of QString */ arguments);
+struct miqt_string* QCommandLineParser_ErrorText(const QCommandLineParser* self);
+bool QCommandLineParser_IsSet(const QCommandLineParser* self, struct miqt_string* name);
+struct miqt_string* QCommandLineParser_Value(const QCommandLineParser* self, struct miqt_string* name);
+struct miqt_array* QCommandLineParser_Values(const QCommandLineParser* self, struct miqt_string* name);
 bool QCommandLineParser_IsSetWithOption(const QCommandLineParser* self, QCommandLineOption* option);
-void QCommandLineParser_ValueWithOption(const QCommandLineParser* self, QCommandLineOption* option, char** _out, int* _out_Strlen);
-void QCommandLineParser_ValuesWithOption(const QCommandLineParser* self, QCommandLineOption* option, char*** _out, int** _out_Lengths, size_t* _out_len);
-void QCommandLineParser_PositionalArguments(const QCommandLineParser* self, char*** _out, int** _out_Lengths, size_t* _out_len);
-void QCommandLineParser_OptionNames(const QCommandLineParser* self, char*** _out, int** _out_Lengths, size_t* _out_len);
-void QCommandLineParser_UnknownOptionNames(const QCommandLineParser* self, char*** _out, int** _out_Lengths, size_t* _out_len);
-void QCommandLineParser_HelpText(const QCommandLineParser* self, char** _out, int* _out_Strlen);
-void QCommandLineParser_Tr2(const char* sourceText, const char* disambiguation, char** _out, int* _out_Strlen);
-void QCommandLineParser_Tr3(const char* sourceText, const char* disambiguation, int n, char** _out, int* _out_Strlen);
-void QCommandLineParser_TrUtf82(const char* sourceText, const char* disambiguation, char** _out, int* _out_Strlen);
-void QCommandLineParser_TrUtf83(const char* sourceText, const char* disambiguation, int n, char** _out, int* _out_Strlen);
-void QCommandLineParser_AddPositionalArgument3(QCommandLineParser* self, const char* name, size_t name_Strlen, const char* description, size_t description_Strlen, const char* syntax, size_t syntax_Strlen);
+struct miqt_string* QCommandLineParser_ValueWithOption(const QCommandLineParser* self, QCommandLineOption* option);
+struct miqt_array* QCommandLineParser_ValuesWithOption(const QCommandLineParser* self, QCommandLineOption* option);
+struct miqt_array* QCommandLineParser_PositionalArguments(const QCommandLineParser* self);
+struct miqt_array* QCommandLineParser_OptionNames(const QCommandLineParser* self);
+struct miqt_array* QCommandLineParser_UnknownOptionNames(const QCommandLineParser* self);
+struct miqt_string* QCommandLineParser_HelpText(const QCommandLineParser* self);
+struct miqt_string* QCommandLineParser_Tr2(const char* sourceText, const char* disambiguation);
+struct miqt_string* QCommandLineParser_Tr3(const char* sourceText, const char* disambiguation, int n);
+struct miqt_string* QCommandLineParser_TrUtf82(const char* sourceText, const char* disambiguation);
+struct miqt_string* QCommandLineParser_TrUtf83(const char* sourceText, const char* disambiguation, int n);
+void QCommandLineParser_AddPositionalArgument3(QCommandLineParser* self, struct miqt_string* name, struct miqt_string* description, struct miqt_string* syntax);
 void QCommandLineParser_Delete(QCommandLineParser* self);
 
 #ifdef __cplusplus

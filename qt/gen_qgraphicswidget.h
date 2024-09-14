@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -51,8 +53,8 @@ QGraphicsWidget* QGraphicsWidget_new();
 QGraphicsWidget* QGraphicsWidget_new2(QGraphicsItem* parent);
 QGraphicsWidget* QGraphicsWidget_new3(QGraphicsItem* parent, int wFlags);
 QMetaObject* QGraphicsWidget_MetaObject(const QGraphicsWidget* self);
-void QGraphicsWidget_Tr(const char* s, char** _out, int* _out_Strlen);
-void QGraphicsWidget_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QGraphicsWidget_Tr(const char* s);
+struct miqt_string* QGraphicsWidget_TrUtf8(const char* s);
 QGraphicsLayout* QGraphicsWidget_Layout(const QGraphicsWidget* self);
 void QGraphicsWidget_SetLayout(QGraphicsWidget* self, QGraphicsLayout* layout);
 void QGraphicsWidget_AdjustSize(QGraphicsWidget* self);
@@ -86,8 +88,8 @@ int QGraphicsWidget_WindowFlags(const QGraphicsWidget* self);
 uintptr_t QGraphicsWidget_WindowType(const QGraphicsWidget* self);
 void QGraphicsWidget_SetWindowFlags(QGraphicsWidget* self, int wFlags);
 bool QGraphicsWidget_IsActiveWindow(const QGraphicsWidget* self);
-void QGraphicsWidget_SetWindowTitle(QGraphicsWidget* self, const char* title, size_t title_Strlen);
-void QGraphicsWidget_WindowTitle(const QGraphicsWidget* self, char** _out, int* _out_Strlen);
+void QGraphicsWidget_SetWindowTitle(QGraphicsWidget* self, struct miqt_string* title);
+struct miqt_string* QGraphicsWidget_WindowTitle(const QGraphicsWidget* self);
 uintptr_t QGraphicsWidget_FocusPolicy(const QGraphicsWidget* self);
 void QGraphicsWidget_SetFocusPolicy(QGraphicsWidget* self, uintptr_t policy);
 void QGraphicsWidget_SetTabOrder(QGraphicsWidget* first, QGraphicsWidget* second);
@@ -97,11 +99,11 @@ void QGraphicsWidget_ReleaseShortcut(QGraphicsWidget* self, int id);
 void QGraphicsWidget_SetShortcutEnabled(QGraphicsWidget* self, int id);
 void QGraphicsWidget_SetShortcutAutoRepeat(QGraphicsWidget* self, int id);
 void QGraphicsWidget_AddAction(QGraphicsWidget* self, QAction* action);
-void QGraphicsWidget_AddActions(QGraphicsWidget* self, QAction** actions, size_t actions_len);
-void QGraphicsWidget_InsertActions(QGraphicsWidget* self, QAction* before, QAction** actions, size_t actions_len);
+void QGraphicsWidget_AddActions(QGraphicsWidget* self, struct miqt_array* /* of QAction* */ actions);
+void QGraphicsWidget_InsertActions(QGraphicsWidget* self, QAction* before, struct miqt_array* /* of QAction* */ actions);
 void QGraphicsWidget_InsertAction(QGraphicsWidget* self, QAction* before, QAction* action);
 void QGraphicsWidget_RemoveAction(QGraphicsWidget* self, QAction* action);
-void QGraphicsWidget_Actions(const QGraphicsWidget* self, QAction*** _out, size_t* _out_len);
+struct miqt_array* QGraphicsWidget_Actions(const QGraphicsWidget* self);
 void QGraphicsWidget_SetAttribute(QGraphicsWidget* self, uintptr_t attribute);
 bool QGraphicsWidget_TestAttribute(const QGraphicsWidget* self, uintptr_t attribute);
 int QGraphicsWidget_Type(const QGraphicsWidget* self);
@@ -114,10 +116,10 @@ void QGraphicsWidget_connect_GeometryChanged(QGraphicsWidget* self, void* slot);
 void QGraphicsWidget_LayoutChanged(QGraphicsWidget* self);
 void QGraphicsWidget_connect_LayoutChanged(QGraphicsWidget* self, void* slot);
 bool QGraphicsWidget_Close(QGraphicsWidget* self);
-void QGraphicsWidget_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QGraphicsWidget_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QGraphicsWidget_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QGraphicsWidget_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QGraphicsWidget_Tr2(const char* s, const char* c);
+struct miqt_string* QGraphicsWidget_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QGraphicsWidget_TrUtf82(const char* s, const char* c);
+struct miqt_string* QGraphicsWidget_TrUtf83(const char* s, const char* c, int n);
 int QGraphicsWidget_GrabShortcut2(QGraphicsWidget* self, QKeySequence* sequence, uintptr_t context);
 void QGraphicsWidget_SetShortcutEnabled2(QGraphicsWidget* self, int id, bool enabled);
 void QGraphicsWidget_SetShortcutAutoRepeat2(QGraphicsWidget* self, int id, bool enabled);

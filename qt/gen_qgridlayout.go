@@ -49,63 +49,47 @@ func NewQGridLayout2() *QGridLayout {
 }
 
 func (this *QGridLayout) MetaObject() *QMetaObject {
-	ret := C.QGridLayout_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QGridLayout_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QGridLayout_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGridLayout_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGridLayout_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QGridLayout_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGridLayout_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGridLayout_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QGridLayout) SizeHint() *QSize {
-	ret := C.QGridLayout_SizeHint(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSize(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QGridLayout_SizeHint(this.h)
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QGridLayout) MinimumSize() *QSize {
-	ret := C.QGridLayout_MinimumSize(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSize(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QGridLayout_MinimumSize(this.h)
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QGridLayout) MaximumSize() *QSize {
-	ret := C.QGridLayout_MaximumSize(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSize(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QGridLayout_MaximumSize(this.h)
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QGridLayout) SetHorizontalSpacing(spacing int) {
@@ -113,8 +97,8 @@ func (this *QGridLayout) SetHorizontalSpacing(spacing int) {
 }
 
 func (this *QGridLayout) HorizontalSpacing() int {
-	ret := C.QGridLayout_HorizontalSpacing(this.h)
-	return (int)(ret)
+	_ret := C.QGridLayout_HorizontalSpacing(this.h)
+	return (int)(_ret)
 }
 
 func (this *QGridLayout) SetVerticalSpacing(spacing int) {
@@ -122,8 +106,8 @@ func (this *QGridLayout) SetVerticalSpacing(spacing int) {
 }
 
 func (this *QGridLayout) VerticalSpacing() int {
-	ret := C.QGridLayout_VerticalSpacing(this.h)
-	return (int)(ret)
+	_ret := C.QGridLayout_VerticalSpacing(this.h)
+	return (int)(_ret)
 }
 
 func (this *QGridLayout) SetSpacing(spacing int) {
@@ -131,8 +115,8 @@ func (this *QGridLayout) SetSpacing(spacing int) {
 }
 
 func (this *QGridLayout) Spacing() int {
-	ret := C.QGridLayout_Spacing(this.h)
-	return (int)(ret)
+	_ret := C.QGridLayout_Spacing(this.h)
+	return (int)(_ret)
 }
 
 func (this *QGridLayout) SetRowStretch(row int, stretch int) {
@@ -144,13 +128,13 @@ func (this *QGridLayout) SetColumnStretch(column int, stretch int) {
 }
 
 func (this *QGridLayout) RowStretch(row int) int {
-	ret := C.QGridLayout_RowStretch(this.h, (C.int)(row))
-	return (int)(ret)
+	_ret := C.QGridLayout_RowStretch(this.h, (C.int)(row))
+	return (int)(_ret)
 }
 
 func (this *QGridLayout) ColumnStretch(column int) int {
-	ret := C.QGridLayout_ColumnStretch(this.h, (C.int)(column))
-	return (int)(ret)
+	_ret := C.QGridLayout_ColumnStretch(this.h, (C.int)(column))
+	return (int)(_ret)
 }
 
 func (this *QGridLayout) SetRowMinimumHeight(row int, minSize int) {
@@ -162,54 +146,50 @@ func (this *QGridLayout) SetColumnMinimumWidth(column int, minSize int) {
 }
 
 func (this *QGridLayout) RowMinimumHeight(row int) int {
-	ret := C.QGridLayout_RowMinimumHeight(this.h, (C.int)(row))
-	return (int)(ret)
+	_ret := C.QGridLayout_RowMinimumHeight(this.h, (C.int)(row))
+	return (int)(_ret)
 }
 
 func (this *QGridLayout) ColumnMinimumWidth(column int) int {
-	ret := C.QGridLayout_ColumnMinimumWidth(this.h, (C.int)(column))
-	return (int)(ret)
+	_ret := C.QGridLayout_ColumnMinimumWidth(this.h, (C.int)(column))
+	return (int)(_ret)
 }
 
 func (this *QGridLayout) ColumnCount() int {
-	ret := C.QGridLayout_ColumnCount(this.h)
-	return (int)(ret)
+	_ret := C.QGridLayout_ColumnCount(this.h)
+	return (int)(_ret)
 }
 
 func (this *QGridLayout) RowCount() int {
-	ret := C.QGridLayout_RowCount(this.h)
-	return (int)(ret)
+	_ret := C.QGridLayout_RowCount(this.h)
+	return (int)(_ret)
 }
 
 func (this *QGridLayout) CellRect(row int, column int) *QRect {
-	ret := C.QGridLayout_CellRect(this.h, (C.int)(row), (C.int)(column))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRect(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRect) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QGridLayout_CellRect(this.h, (C.int)(row), (C.int)(column))
+	_goptr := newQRect(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QGridLayout) HasHeightForWidth() bool {
-	ret := C.QGridLayout_HasHeightForWidth(this.h)
-	return (bool)(ret)
+	_ret := C.QGridLayout_HasHeightForWidth(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QGridLayout) HeightForWidth(param1 int) int {
-	ret := C.QGridLayout_HeightForWidth(this.h, (C.int)(param1))
-	return (int)(ret)
+	_ret := C.QGridLayout_HeightForWidth(this.h, (C.int)(param1))
+	return (int)(_ret)
 }
 
 func (this *QGridLayout) MinimumHeightForWidth(param1 int) int {
-	ret := C.QGridLayout_MinimumHeightForWidth(this.h, (C.int)(param1))
-	return (int)(ret)
+	_ret := C.QGridLayout_MinimumHeightForWidth(this.h, (C.int)(param1))
+	return (int)(_ret)
 }
 
 func (this *QGridLayout) ExpandingDirections() int {
-	ret := C.QGridLayout_ExpandingDirections(this.h)
-	return (int)(ret)
+	_ret := C.QGridLayout_ExpandingDirections(this.h)
+	return (int)(_ret)
 }
 
 func (this *QGridLayout) Invalidate() {
@@ -241,28 +221,28 @@ func (this *QGridLayout) SetOriginCorner(originCorner Corner) {
 }
 
 func (this *QGridLayout) OriginCorner() Corner {
-	ret := C.QGridLayout_OriginCorner(this.h)
-	return (Corner)(ret)
+	_ret := C.QGridLayout_OriginCorner(this.h)
+	return (Corner)(_ret)
 }
 
 func (this *QGridLayout) ItemAt(index int) *QLayoutItem {
-	ret := C.QGridLayout_ItemAt(this.h, (C.int)(index))
-	return newQLayoutItem_U(unsafe.Pointer(ret))
+	_ret := C.QGridLayout_ItemAt(this.h, (C.int)(index))
+	return newQLayoutItem_U(unsafe.Pointer(_ret))
 }
 
 func (this *QGridLayout) ItemAtPosition(row int, column int) *QLayoutItem {
-	ret := C.QGridLayout_ItemAtPosition(this.h, (C.int)(row), (C.int)(column))
-	return newQLayoutItem_U(unsafe.Pointer(ret))
+	_ret := C.QGridLayout_ItemAtPosition(this.h, (C.int)(row), (C.int)(column))
+	return newQLayoutItem_U(unsafe.Pointer(_ret))
 }
 
 func (this *QGridLayout) TakeAt(index int) *QLayoutItem {
-	ret := C.QGridLayout_TakeAt(this.h, (C.int)(index))
-	return newQLayoutItem_U(unsafe.Pointer(ret))
+	_ret := C.QGridLayout_TakeAt(this.h, (C.int)(index))
+	return newQLayoutItem_U(unsafe.Pointer(_ret))
 }
 
 func (this *QGridLayout) Count() int {
-	ret := C.QGridLayout_Count(this.h)
-	return (int)(ret)
+	_ret := C.QGridLayout_Count(this.h)
+	return (int)(_ret)
 }
 
 func (this *QGridLayout) SetGeometry(geometry *QRect) {
@@ -286,12 +266,10 @@ func QGridLayout_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGridLayout_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGridLayout_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QGridLayout_Tr3(s string, c string, n int) string {
@@ -299,12 +277,10 @@ func QGridLayout_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGridLayout_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGridLayout_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QGridLayout_TrUtf82(s string, c string) string {
@@ -312,12 +288,10 @@ func QGridLayout_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGridLayout_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGridLayout_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QGridLayout_TrUtf83(s string, c string, n int) string {
@@ -325,12 +299,10 @@ func QGridLayout_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGridLayout_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGridLayout_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QGridLayout) AddWidget4(param1 *QWidget, row int, column int, param4 int) {
@@ -361,6 +333,16 @@ func (this *QGridLayout) AddItem6(item *QLayoutItem, row int, column int, rowSpa
 	C.QGridLayout_AddItem6(this.h, item.cPointer(), (C.int)(row), (C.int)(column), (C.int)(rowSpan), (C.int)(columnSpan), (C.int)(param6))
 }
 
+// Delete this object from C++ memory.
 func (this *QGridLayout) Delete() {
 	C.QGridLayout_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QGridLayout) GoGC() {
+	runtime.SetFinalizer(this, func(this *QGridLayout) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

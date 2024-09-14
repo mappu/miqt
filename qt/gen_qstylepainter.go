@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"runtime"
 	"unsafe"
 )
 
@@ -54,13 +55,13 @@ func NewQStylePainter3(pd *QPaintDevice, w *QWidget) *QStylePainter {
 }
 
 func (this *QStylePainter) Begin(w *QWidget) bool {
-	ret := C.QStylePainter_Begin(this.h, w.cPointer())
-	return (bool)(ret)
+	_ret := C.QStylePainter_Begin(this.h, w.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QStylePainter) Begin2(pd *QPaintDevice, w *QWidget) bool {
-	ret := C.QStylePainter_Begin2(this.h, pd.cPointer(), w.cPointer())
-	return (bool)(ret)
+	_ret := C.QStylePainter_Begin2(this.h, pd.cPointer(), w.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QStylePainter) DrawPrimitive(pe QStyle__PrimitiveElement, opt *QStyleOption) {
@@ -76,9 +77,9 @@ func (this *QStylePainter) DrawComplexControl(cc QStyle__ComplexControl, opt *QS
 }
 
 func (this *QStylePainter) DrawItemText(r *QRect, flags int, pal *QPalette, enabled bool, text string) {
-	text_Cstring := C.CString(text)
-	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QStylePainter_DrawItemText(this.h, r.cPointer(), (C.int)(flags), pal.cPointer(), (C.bool)(enabled), text_Cstring, C.size_t(len(text)))
+	text_ms := miqt_strdupg(text)
+	defer C.free(text_ms)
+	C.QStylePainter_DrawItemText(this.h, r.cPointer(), (C.int)(flags), pal.cPointer(), (C.bool)(enabled), (*C.struct_miqt_string)(text_ms))
 }
 
 func (this *QStylePainter) DrawItemPixmap(r *QRect, flags int, pixmap *QPixmap) {
@@ -86,16 +87,26 @@ func (this *QStylePainter) DrawItemPixmap(r *QRect, flags int, pixmap *QPixmap) 
 }
 
 func (this *QStylePainter) Style() *QStyle {
-	ret := C.QStylePainter_Style(this.h)
-	return newQStyle_U(unsafe.Pointer(ret))
+	_ret := C.QStylePainter_Style(this.h)
+	return newQStyle_U(unsafe.Pointer(_ret))
 }
 
 func (this *QStylePainter) DrawItemText6(r *QRect, flags int, pal *QPalette, enabled bool, text string, textRole QPalette__ColorRole) {
-	text_Cstring := C.CString(text)
-	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QStylePainter_DrawItemText6(this.h, r.cPointer(), (C.int)(flags), pal.cPointer(), (C.bool)(enabled), text_Cstring, C.size_t(len(text)), (C.uintptr_t)(textRole))
+	text_ms := miqt_strdupg(text)
+	defer C.free(text_ms)
+	C.QStylePainter_DrawItemText6(this.h, r.cPointer(), (C.int)(flags), pal.cPointer(), (C.bool)(enabled), (*C.struct_miqt_string)(text_ms), (C.uintptr_t)(textRole))
 }
 
+// Delete this object from C++ memory.
 func (this *QStylePainter) Delete() {
 	C.QStylePainter_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QStylePainter) GoGC() {
+	runtime.SetFinalizer(this, func(this *QStylePainter) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

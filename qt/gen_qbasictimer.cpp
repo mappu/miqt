@@ -1,12 +1,8 @@
 #include <QBasicTimer>
 #include <QObject>
 #include "qbasictimer.h"
-
 #include "gen_qbasictimer.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QBasicTimer* QBasicTimer_new(QBasicTimer* param1) {
 	return new QBasicTimer(*param1);

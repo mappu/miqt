@@ -8,12 +8,8 @@
 #include <cstring>
 #include <QWidget>
 #include "qdialogbuttonbox.h"
-
 #include "gen_qdialogbuttonbox.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QDialogButtonBox* QDialogButtonBox_new() {
 	return new QDialogButtonBox();
@@ -51,22 +47,18 @@ QMetaObject* QDialogButtonBox_MetaObject(const QDialogButtonBox* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void QDialogButtonBox_Tr(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QDialogButtonBox::tr(s);
+struct miqt_string* QDialogButtonBox_Tr(const char* s) {
+	QString _ret = QDialogButtonBox::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QDialogButtonBox_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QDialogButtonBox::trUtf8(s);
+struct miqt_string* QDialogButtonBox_TrUtf8(const char* s) {
+	QString _ret = QDialogButtonBox::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QDialogButtonBox_SetOrientation(QDialogButtonBox* self, uintptr_t orientation) {
@@ -74,16 +66,16 @@ void QDialogButtonBox_SetOrientation(QDialogButtonBox* self, uintptr_t orientati
 }
 
 uintptr_t QDialogButtonBox_Orientation(const QDialogButtonBox* self) {
-	Qt::Orientation ret = self->orientation();
-	return static_cast<uintptr_t>(ret);
+	Qt::Orientation _ret = self->orientation();
+	return static_cast<uintptr_t>(_ret);
 }
 
 void QDialogButtonBox_AddButton(QDialogButtonBox* self, QAbstractButton* button, uintptr_t role) {
 	self->addButton(button, static_cast<QDialogButtonBox::ButtonRole>(role));
 }
 
-QPushButton* QDialogButtonBox_AddButton2(QDialogButtonBox* self, const char* text, size_t text_Strlen, uintptr_t role) {
-	QString text_QString = QString::fromUtf8(text, text_Strlen);
+QPushButton* QDialogButtonBox_AddButton2(QDialogButtonBox* self, struct miqt_string* text, uintptr_t role) {
+	QString text_QString = QString::fromUtf8(&text->data, text->len);
 	return self->addButton(text_QString, static_cast<QDialogButtonBox::ButtonRole>(role));
 }
 
@@ -99,20 +91,22 @@ void QDialogButtonBox_Clear(QDialogButtonBox* self) {
 	self->clear();
 }
 
-void QDialogButtonBox_Buttons(const QDialogButtonBox* self, QAbstractButton*** _out, size_t* _out_len) {
-	QList<QAbstractButton*> ret = self->buttons();
+struct miqt_array* QDialogButtonBox_Buttons(const QDialogButtonBox* self) {
+	QList<QAbstractButton*> _ret = self->buttons();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QAbstractButton** __out = static_cast<QAbstractButton**>(malloc(sizeof(QAbstractButton*) * ret.length()));
-	for (size_t i = 0, e = ret.length(); i < e; ++i) {
-		__out[i] = ret[i];
+	QAbstractButton** _arr = static_cast<QAbstractButton**>(malloc(sizeof(QAbstractButton*) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		_arr[i] = _ret[i];
 	}
-	*_out = __out;
-	*_out_len = ret.length();
+	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
+	_out->len = _ret.length();
+	_out->data = static_cast<void*>(_arr);
+	return _out;
 }
 
 uintptr_t QDialogButtonBox_ButtonRole(const QDialogButtonBox* self, QAbstractButton* button) {
-	QDialogButtonBox::ButtonRole ret = self->buttonRole(button);
-	return static_cast<uintptr_t>(ret);
+	QDialogButtonBox::ButtonRole _ret = self->buttonRole(button);
+	return static_cast<uintptr_t>(_ret);
 }
 
 void QDialogButtonBox_SetStandardButtons(QDialogButtonBox* self, int buttons) {
@@ -120,13 +114,13 @@ void QDialogButtonBox_SetStandardButtons(QDialogButtonBox* self, int buttons) {
 }
 
 int QDialogButtonBox_StandardButtons(const QDialogButtonBox* self) {
-	QDialogButtonBox::StandardButtons ret = self->standardButtons();
-	return static_cast<int>(ret);
+	QDialogButtonBox::StandardButtons _ret = self->standardButtons();
+	return static_cast<int>(_ret);
 }
 
 uintptr_t QDialogButtonBox_StandardButton(const QDialogButtonBox* self, QAbstractButton* button) {
-	QDialogButtonBox::StandardButton ret = self->standardButton(button);
-	return static_cast<uintptr_t>(ret);
+	QDialogButtonBox::StandardButton _ret = self->standardButton(button);
+	return static_cast<uintptr_t>(_ret);
 }
 
 QPushButton* QDialogButtonBox_Button(const QDialogButtonBox* self, uintptr_t which) {
@@ -147,7 +141,8 @@ void QDialogButtonBox_Clicked(QDialogButtonBox* self, QAbstractButton* button) {
 
 void QDialogButtonBox_connect_Clicked(QDialogButtonBox* self, void* slot) {
 	QDialogButtonBox::connect(self, static_cast<void (QDialogButtonBox::*)(QAbstractButton*)>(&QDialogButtonBox::clicked), self, [=](QAbstractButton* button) {
-		miqt_exec_callback(slot, 0, nullptr);
+		QAbstractButton* sigval1 = button;
+		miqt_exec_callback_QDialogButtonBox_Clicked(slot, sigval1);
 	});
 }
 
@@ -157,7 +152,7 @@ void QDialogButtonBox_Accepted(QDialogButtonBox* self) {
 
 void QDialogButtonBox_connect_Accepted(QDialogButtonBox* self, void* slot) {
 	QDialogButtonBox::connect(self, static_cast<void (QDialogButtonBox::*)()>(&QDialogButtonBox::accepted), self, [=]() {
-		miqt_exec_callback(slot, 0, nullptr);
+		miqt_exec_callback_QDialogButtonBox_Accepted(slot);
 	});
 }
 
@@ -167,7 +162,7 @@ void QDialogButtonBox_HelpRequested(QDialogButtonBox* self) {
 
 void QDialogButtonBox_connect_HelpRequested(QDialogButtonBox* self, void* slot) {
 	QDialogButtonBox::connect(self, static_cast<void (QDialogButtonBox::*)()>(&QDialogButtonBox::helpRequested), self, [=]() {
-		miqt_exec_callback(slot, 0, nullptr);
+		miqt_exec_callback_QDialogButtonBox_HelpRequested(slot);
 	});
 }
 
@@ -177,44 +172,36 @@ void QDialogButtonBox_Rejected(QDialogButtonBox* self) {
 
 void QDialogButtonBox_connect_Rejected(QDialogButtonBox* self, void* slot) {
 	QDialogButtonBox::connect(self, static_cast<void (QDialogButtonBox::*)()>(&QDialogButtonBox::rejected), self, [=]() {
-		miqt_exec_callback(slot, 0, nullptr);
+		miqt_exec_callback_QDialogButtonBox_Rejected(slot);
 	});
 }
 
-void QDialogButtonBox_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QDialogButtonBox::tr(s, c);
+struct miqt_string* QDialogButtonBox_Tr2(const char* s, const char* c) {
+	QString _ret = QDialogButtonBox::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QDialogButtonBox_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QDialogButtonBox::tr(s, c, static_cast<int>(n));
+struct miqt_string* QDialogButtonBox_Tr3(const char* s, const char* c, int n) {
+	QString _ret = QDialogButtonBox::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QDialogButtonBox_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QDialogButtonBox::trUtf8(s, c);
+struct miqt_string* QDialogButtonBox_TrUtf82(const char* s, const char* c) {
+	QString _ret = QDialogButtonBox::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QDialogButtonBox_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QDialogButtonBox::trUtf8(s, c, static_cast<int>(n));
+struct miqt_string* QDialogButtonBox_TrUtf83(const char* s, const char* c, int n) {
+	QString _ret = QDialogButtonBox::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QDialogButtonBox_Delete(QDialogButtonBox* self) {

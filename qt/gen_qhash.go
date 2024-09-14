@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"runtime"
 	"unsafe"
 )
 
@@ -35,8 +36,8 @@ func newQHashData_U(h unsafe.Pointer) *QHashData {
 }
 
 func (this *QHashData) WillGrow() bool {
-	ret := C.QHashData_WillGrow(this.h)
-	return (bool)(ret)
+	_ret := C.QHashData_WillGrow(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QHashData) HasShrunk() {
@@ -48,22 +49,32 @@ func (this *QHashData) Rehash(hint int) {
 }
 
 func (this *QHashData) FirstNode() *QHashData__Node {
-	ret := C.QHashData_FirstNode(this.h)
-	return newQHashData__Node_U(unsafe.Pointer(ret))
+	_ret := C.QHashData_FirstNode(this.h)
+	return newQHashData__Node_U(unsafe.Pointer(_ret))
 }
 
 func QHashData_NextNode(node *QHashData__Node) *QHashData__Node {
-	ret := C.QHashData_NextNode(node.cPointer())
-	return newQHashData__Node_U(unsafe.Pointer(ret))
+	_ret := C.QHashData_NextNode(node.cPointer())
+	return newQHashData__Node_U(unsafe.Pointer(_ret))
 }
 
 func QHashData_PreviousNode(node *QHashData__Node) *QHashData__Node {
-	ret := C.QHashData_PreviousNode(node.cPointer())
-	return newQHashData__Node_U(unsafe.Pointer(ret))
+	_ret := C.QHashData_PreviousNode(node.cPointer())
+	return newQHashData__Node_U(unsafe.Pointer(_ret))
 }
 
+// Delete this object from C++ memory.
 func (this *QHashData) Delete() {
 	C.QHashData_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QHashData) GoGC() {
+	runtime.SetFinalizer(this, func(this *QHashData) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
 
 type QHashDummyValue struct {
@@ -100,8 +111,18 @@ func NewQHashDummyValue2(param1 *QHashDummyValue) *QHashDummyValue {
 	return newQHashDummyValue(ret)
 }
 
+// Delete this object from C++ memory.
 func (this *QHashDummyValue) Delete() {
 	C.QHashDummyValue_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QHashDummyValue) GoGC() {
+	runtime.SetFinalizer(this, func(this *QHashDummyValue) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
 
 type QHashData__Node struct {
@@ -126,6 +147,16 @@ func newQHashData__Node_U(h unsafe.Pointer) *QHashData__Node {
 	return newQHashData__Node((*C.QHashData__Node)(h))
 }
 
+// Delete this object from C++ memory.
 func (this *QHashData__Node) Delete() {
 	C.QHashData__Node_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QHashData__Node) GoGC() {
+	runtime.SetFinalizer(this, func(this *QHashData__Node) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

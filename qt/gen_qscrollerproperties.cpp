@@ -1,12 +1,8 @@
 #include <QScrollerProperties>
 #include <QVariant>
 #include "qscrollerproperties.h"
-
 #include "gen_qscrollerproperties.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QScrollerProperties* QScrollerProperties_new() {
 	return new QScrollerProperties();
@@ -37,9 +33,9 @@ void QScrollerProperties_UnsetDefaultScrollerProperties() {
 }
 
 QVariant* QScrollerProperties_ScrollMetric(const QScrollerProperties* self, uintptr_t metric) {
-	QVariant ret = self->scrollMetric(static_cast<QScrollerProperties::ScrollMetric>(metric));
+	QVariant _ret = self->scrollMetric(static_cast<QScrollerProperties::ScrollMetric>(metric));
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(ret));
+	return static_cast<QVariant*>(new QVariant(_ret));
 }
 
 void QScrollerProperties_SetScrollMetric(QScrollerProperties* self, uintptr_t metric, QVariant* value) {

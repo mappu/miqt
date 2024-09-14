@@ -39,9 +39,9 @@ func newQPdfWriter_U(h unsafe.Pointer) *QPdfWriter {
 
 // NewQPdfWriter constructs a new QPdfWriter object.
 func NewQPdfWriter(filename string) *QPdfWriter {
-	filename_Cstring := C.CString(filename)
-	defer C.free(unsafe.Pointer(filename_Cstring))
-	ret := C.QPdfWriter_new(filename_Cstring, C.size_t(len(filename)))
+	filename_ms := miqt_strdupg(filename)
+	defer C.free(filename_ms)
+	ret := C.QPdfWriter_new((*C.struct_miqt_string)(filename_ms))
 	return newQPdfWriter(ret)
 }
 
@@ -52,30 +52,26 @@ func NewQPdfWriter2(device *QIODevice) *QPdfWriter {
 }
 
 func (this *QPdfWriter) MetaObject() *QMetaObject {
-	ret := C.QPdfWriter_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QPdfWriter_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QPdfWriter_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QPdfWriter_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QPdfWriter_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QPdfWriter_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QPdfWriter_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QPdfWriter_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QPdfWriter) SetPdfVersion(version QPagedPaintDevice__PdfVersion) {
@@ -83,43 +79,39 @@ func (this *QPdfWriter) SetPdfVersion(version QPagedPaintDevice__PdfVersion) {
 }
 
 func (this *QPdfWriter) PdfVersion() QPagedPaintDevice__PdfVersion {
-	ret := C.QPdfWriter_PdfVersion(this.h)
-	return (QPagedPaintDevice__PdfVersion)(ret)
+	_ret := C.QPdfWriter_PdfVersion(this.h)
+	return (QPagedPaintDevice__PdfVersion)(_ret)
 }
 
 func (this *QPdfWriter) Title() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QPdfWriter_Title(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QPdfWriter_Title(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QPdfWriter) SetTitle(title string) {
-	title_Cstring := C.CString(title)
-	defer C.free(unsafe.Pointer(title_Cstring))
-	C.QPdfWriter_SetTitle(this.h, title_Cstring, C.size_t(len(title)))
+	title_ms := miqt_strdupg(title)
+	defer C.free(title_ms)
+	C.QPdfWriter_SetTitle(this.h, (*C.struct_miqt_string)(title_ms))
 }
 
 func (this *QPdfWriter) Creator() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QPdfWriter_Creator(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QPdfWriter_Creator(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QPdfWriter) SetCreator(creator string) {
-	creator_Cstring := C.CString(creator)
-	defer C.free(unsafe.Pointer(creator_Cstring))
-	C.QPdfWriter_SetCreator(this.h, creator_Cstring, C.size_t(len(creator)))
+	creator_ms := miqt_strdupg(creator)
+	defer C.free(creator_ms)
+	C.QPdfWriter_SetCreator(this.h, (*C.struct_miqt_string)(creator_ms))
 }
 
 func (this *QPdfWriter) NewPage() bool {
-	ret := C.QPdfWriter_NewPage(this.h)
-	return (bool)(ret)
+	_ret := C.QPdfWriter_NewPage(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QPdfWriter) SetResolution(resolution int) {
@@ -127,8 +119,8 @@ func (this *QPdfWriter) SetResolution(resolution int) {
 }
 
 func (this *QPdfWriter) Resolution() int {
-	ret := C.QPdfWriter_Resolution(this.h)
-	return (int)(ret)
+	_ret := C.QPdfWriter_Resolution(this.h)
+	return (int)(_ret)
 }
 
 func (this *QPdfWriter) SetDocumentXmpMetadata(xmpMetadata *QByteArray) {
@@ -136,20 +128,16 @@ func (this *QPdfWriter) SetDocumentXmpMetadata(xmpMetadata *QByteArray) {
 }
 
 func (this *QPdfWriter) DocumentXmpMetadata() *QByteArray {
-	ret := C.QPdfWriter_DocumentXmpMetadata(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQByteArray(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QByteArray) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QPdfWriter_DocumentXmpMetadata(this.h)
+	_goptr := newQByteArray(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QPdfWriter) AddFileAttachment(fileName string, data *QByteArray) {
-	fileName_Cstring := C.CString(fileName)
-	defer C.free(unsafe.Pointer(fileName_Cstring))
-	C.QPdfWriter_AddFileAttachment(this.h, fileName_Cstring, C.size_t(len(fileName)), data.cPointer())
+	fileName_ms := miqt_strdupg(fileName)
+	defer C.free(fileName_ms)
+	C.QPdfWriter_AddFileAttachment(this.h, (*C.struct_miqt_string)(fileName_ms), data.cPointer())
 }
 
 func (this *QPdfWriter) SetPageSize(size QPagedPaintDevice__PageSize) {
@@ -169,12 +157,10 @@ func QPdfWriter_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QPdfWriter_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QPdfWriter_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QPdfWriter_Tr3(s string, c string, n int) string {
@@ -182,12 +168,10 @@ func QPdfWriter_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QPdfWriter_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QPdfWriter_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QPdfWriter_TrUtf82(s string, c string) string {
@@ -195,12 +179,10 @@ func QPdfWriter_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QPdfWriter_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QPdfWriter_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QPdfWriter_TrUtf83(s string, c string, n int) string {
@@ -208,22 +190,30 @@ func QPdfWriter_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QPdfWriter_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QPdfWriter_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QPdfWriter) AddFileAttachment3(fileName string, data *QByteArray, mimeType string) {
-	fileName_Cstring := C.CString(fileName)
-	defer C.free(unsafe.Pointer(fileName_Cstring))
-	mimeType_Cstring := C.CString(mimeType)
-	defer C.free(unsafe.Pointer(mimeType_Cstring))
-	C.QPdfWriter_AddFileAttachment3(this.h, fileName_Cstring, C.size_t(len(fileName)), data.cPointer(), mimeType_Cstring, C.size_t(len(mimeType)))
+	fileName_ms := miqt_strdupg(fileName)
+	defer C.free(fileName_ms)
+	mimeType_ms := miqt_strdupg(mimeType)
+	defer C.free(mimeType_ms)
+	C.QPdfWriter_AddFileAttachment3(this.h, (*C.struct_miqt_string)(fileName_ms), data.cPointer(), (*C.struct_miqt_string)(mimeType_ms))
 }
 
+// Delete this object from C++ memory.
 func (this *QPdfWriter) Delete() {
 	C.QPdfWriter_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QPdfWriter) GoGC() {
+	runtime.SetFinalizer(this, func(this *QPdfWriter) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

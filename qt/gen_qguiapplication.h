@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -48,23 +50,23 @@ typedef struct QWindow QWindow;
 QGuiApplication* QGuiApplication_new(int* argc, char** argv);
 QGuiApplication* QGuiApplication_new2(int* argc, char** argv, int param3);
 QMetaObject* QGuiApplication_MetaObject(const QGuiApplication* self);
-void QGuiApplication_Tr(const char* s, char** _out, int* _out_Strlen);
-void QGuiApplication_TrUtf8(const char* s, char** _out, int* _out_Strlen);
-void QGuiApplication_SetApplicationDisplayName(const char* name, size_t name_Strlen);
-void QGuiApplication_ApplicationDisplayName(char** _out, int* _out_Strlen);
-void QGuiApplication_SetDesktopFileName(const char* name, size_t name_Strlen);
-void QGuiApplication_DesktopFileName(char** _out, int* _out_Strlen);
-void QGuiApplication_AllWindows(QWindow*** _out, size_t* _out_len);
-void QGuiApplication_TopLevelWindows(QWindow*** _out, size_t* _out_len);
+struct miqt_string* QGuiApplication_Tr(const char* s);
+struct miqt_string* QGuiApplication_TrUtf8(const char* s);
+void QGuiApplication_SetApplicationDisplayName(struct miqt_string* name);
+struct miqt_string* QGuiApplication_ApplicationDisplayName();
+void QGuiApplication_SetDesktopFileName(struct miqt_string* name);
+struct miqt_string* QGuiApplication_DesktopFileName();
+struct miqt_array* QGuiApplication_AllWindows();
+struct miqt_array* QGuiApplication_TopLevelWindows();
 QWindow* QGuiApplication_TopLevelAt(QPoint* pos);
 void QGuiApplication_SetWindowIcon(QIcon* icon);
 QIcon* QGuiApplication_WindowIcon();
-void QGuiApplication_PlatformName(char** _out, int* _out_Strlen);
+struct miqt_string* QGuiApplication_PlatformName();
 QWindow* QGuiApplication_ModalWindow();
 QWindow* QGuiApplication_FocusWindow();
 QObject* QGuiApplication_FocusObject();
 QScreen* QGuiApplication_PrimaryScreen();
-void QGuiApplication_Screens(QScreen*** _out, size_t* _out_len);
+struct miqt_array* QGuiApplication_Screens();
 QScreen* QGuiApplication_ScreenAt(QPoint* point);
 double QGuiApplication_DevicePixelRatio(const QGuiApplication* self);
 QCursor* QGuiApplication_OverrideCursor();
@@ -95,8 +97,8 @@ uintptr_t QGuiApplication_HighDpiScaleFactorRoundingPolicy();
 int QGuiApplication_Exec();
 bool QGuiApplication_Notify(QGuiApplication* self, QObject* param1, QEvent* param2);
 bool QGuiApplication_IsSessionRestored(const QGuiApplication* self);
-void QGuiApplication_SessionId(const QGuiApplication* self, char** _out, int* _out_Strlen);
-void QGuiApplication_SessionKey(const QGuiApplication* self, char** _out, int* _out_Strlen);
+struct miqt_string* QGuiApplication_SessionId(const QGuiApplication* self);
+struct miqt_string* QGuiApplication_SessionKey(const QGuiApplication* self);
 bool QGuiApplication_IsSavingSession(const QGuiApplication* self);
 bool QGuiApplication_IsFallbackSessionManagementEnabled();
 void QGuiApplication_SetFallbackSessionManagementEnabled(bool fallbackSessionManagementEnabled);
@@ -129,10 +131,10 @@ void QGuiApplication_ApplicationDisplayNameChanged(QGuiApplication* self);
 void QGuiApplication_connect_ApplicationDisplayNameChanged(QGuiApplication* self, void* slot);
 void QGuiApplication_FontChanged(QGuiApplication* self, QFont* font);
 void QGuiApplication_connect_FontChanged(QGuiApplication* self, void* slot);
-void QGuiApplication_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QGuiApplication_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QGuiApplication_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QGuiApplication_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QGuiApplication_Tr2(const char* s, const char* c);
+struct miqt_string* QGuiApplication_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QGuiApplication_TrUtf82(const char* s, const char* c);
+struct miqt_string* QGuiApplication_TrUtf83(const char* s, const char* c, int n);
 void QGuiApplication_Delete(QGuiApplication* self);
 
 #ifdef __cplusplus

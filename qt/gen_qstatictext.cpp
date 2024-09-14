@@ -7,19 +7,15 @@
 #include <QTextOption>
 #include <QTransform>
 #include "qstatictext.h"
-
 #include "gen_qstatictext.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QStaticText* QStaticText_new() {
 	return new QStaticText();
 }
 
-QStaticText* QStaticText_new2(const char* text, size_t text_Strlen) {
-	QString text_QString = QString::fromUtf8(text, text_Strlen);
+QStaticText* QStaticText_new2(struct miqt_string* text) {
+	QString text_QString = QString::fromUtf8(&text->data, text->len);
 	return new QStaticText(text_QString);
 }
 
@@ -35,18 +31,16 @@ void QStaticText_Swap(QStaticText* self, QStaticText* other) {
 	self->swap(*other);
 }
 
-void QStaticText_SetText(QStaticText* self, const char* text, size_t text_Strlen) {
-	QString text_QString = QString::fromUtf8(text, text_Strlen);
+void QStaticText_SetText(QStaticText* self, struct miqt_string* text) {
+	QString text_QString = QString::fromUtf8(&text->data, text->len);
 	self->setText(text_QString);
 }
 
-void QStaticText_Text(const QStaticText* self, char** _out, int* _out_Strlen) {
-	QString ret = self->text();
+struct miqt_string* QStaticText_Text(const QStaticText* self) {
+	QString _ret = self->text();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QStaticText_SetTextFormat(QStaticText* self, uintptr_t textFormat) {
@@ -54,8 +48,8 @@ void QStaticText_SetTextFormat(QStaticText* self, uintptr_t textFormat) {
 }
 
 uintptr_t QStaticText_TextFormat(const QStaticText* self) {
-	Qt::TextFormat ret = self->textFormat();
-	return static_cast<uintptr_t>(ret);
+	Qt::TextFormat _ret = self->textFormat();
+	return static_cast<uintptr_t>(_ret);
 }
 
 void QStaticText_SetTextWidth(QStaticText* self, double textWidth) {
@@ -71,15 +65,15 @@ void QStaticText_SetTextOption(QStaticText* self, QTextOption* textOption) {
 }
 
 QTextOption* QStaticText_TextOption(const QStaticText* self) {
-	QTextOption ret = self->textOption();
+	QTextOption _ret = self->textOption();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextOption*>(new QTextOption(ret));
+	return static_cast<QTextOption*>(new QTextOption(_ret));
 }
 
 QSizeF* QStaticText_Size(const QStaticText* self) {
-	QSizeF ret = self->size();
+	QSizeF _ret = self->size();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSizeF*>(new QSizeF(ret));
+	return static_cast<QSizeF*>(new QSizeF(_ret));
 }
 
 void QStaticText_Prepare(QStaticText* self) {
@@ -91,8 +85,8 @@ void QStaticText_SetPerformanceHint(QStaticText* self, uintptr_t performanceHint
 }
 
 uintptr_t QStaticText_PerformanceHint(const QStaticText* self) {
-	QStaticText::PerformanceHint ret = self->performanceHint();
-	return static_cast<uintptr_t>(ret);
+	QStaticText::PerformanceHint _ret = self->performanceHint();
+	return static_cast<uintptr_t>(_ret);
 }
 
 bool QStaticText_OperatorEqual(const QStaticText* self, QStaticText* param1) {

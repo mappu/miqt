@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -43,17 +45,17 @@ void QIconEngine_Paint(QIconEngine* self, QPainter* painter, QRect* rect, uintpt
 QSize* QIconEngine_ActualSize(QIconEngine* self, QSize* size, uintptr_t mode, uintptr_t state);
 QPixmap* QIconEngine_Pixmap(QIconEngine* self, QSize* size, uintptr_t mode, uintptr_t state);
 void QIconEngine_AddPixmap(QIconEngine* self, QPixmap* pixmap, uintptr_t mode, uintptr_t state);
-void QIconEngine_AddFile(QIconEngine* self, const char* fileName, size_t fileName_Strlen, QSize* size, uintptr_t mode, uintptr_t state);
-void QIconEngine_Key(const QIconEngine* self, char** _out, int* _out_Strlen);
+void QIconEngine_AddFile(QIconEngine* self, struct miqt_string* fileName, QSize* size, uintptr_t mode, uintptr_t state);
+struct miqt_string* QIconEngine_Key(const QIconEngine* self);
 QIconEngine* QIconEngine_Clone(const QIconEngine* self);
 bool QIconEngine_Read(QIconEngine* self, QDataStream* in);
 bool QIconEngine_Write(const QIconEngine* self, QDataStream* out);
-void QIconEngine_AvailableSizes(const QIconEngine* self, QSize*** _out, size_t* _out_len);
-void QIconEngine_IconName(const QIconEngine* self, char** _out, int* _out_Strlen);
+struct miqt_array* QIconEngine_AvailableSizes(const QIconEngine* self);
+struct miqt_string* QIconEngine_IconName(const QIconEngine* self);
 bool QIconEngine_IsNull(const QIconEngine* self);
 QPixmap* QIconEngine_ScaledPixmap(QIconEngine* self, QSize* size, uintptr_t mode, uintptr_t state, double scale);
-void QIconEngine_AvailableSizes1(const QIconEngine* self, uintptr_t mode, QSize*** _out, size_t* _out_len);
-void QIconEngine_AvailableSizes2(const QIconEngine* self, uintptr_t mode, uintptr_t state, QSize*** _out, size_t* _out_len);
+struct miqt_array* QIconEngine_AvailableSizes1(const QIconEngine* self, uintptr_t mode);
+struct miqt_array* QIconEngine_AvailableSizes2(const QIconEngine* self, uintptr_t mode, uintptr_t state);
 void QIconEngine_Delete(QIconEngine* self);
 
 QIconEngine__AvailableSizesArgument* QIconEngine__AvailableSizesArgument_new(QIconEngine__AvailableSizesArgument* param1);

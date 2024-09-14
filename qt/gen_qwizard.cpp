@@ -11,12 +11,8 @@
 #include <QWizard>
 #include <QWizardPage>
 #include "qwizard.h"
-
 #include "gen_qwizard.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QWizard* QWizard_new() {
 	return new QWizard();
@@ -34,22 +30,18 @@ QMetaObject* QWizard_MetaObject(const QWizard* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void QWizard_Tr(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QWizard::tr(s);
+struct miqt_string* QWizard_Tr(const char* s) {
+	QString _ret = QWizard::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QWizard_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QWizard::trUtf8(s);
+struct miqt_string* QWizard_TrUtf8(const char* s) {
+	QString _ret = QWizard::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 int QWizard_AddPage(QWizard* self, QWizardPage* page) {
@@ -72,37 +64,43 @@ bool QWizard_HasVisitedPage(const QWizard* self, int id) {
 	return self->hasVisitedPage(static_cast<int>(id));
 }
 
-void QWizard_VisitedPages(const QWizard* self, int** _out, size_t* _out_len) {
-	QList<int> ret = self->visitedPages();
+struct miqt_array* QWizard_VisitedPages(const QWizard* self) {
+	QList<int> _ret = self->visitedPages();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	int* __out = static_cast<int*>(malloc(sizeof(int) * ret.length()));
-	for (size_t i = 0, e = ret.length(); i < e; ++i) {
-		__out[i] = ret[i];
+	int* _arr = static_cast<int*>(malloc(sizeof(int) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		_arr[i] = _ret[i];
 	}
-	*_out = __out;
-	*_out_len = ret.length();
+	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
+	_out->len = _ret.length();
+	_out->data = static_cast<void*>(_arr);
+	return _out;
 }
 
-void QWizard_VisitedIds(const QWizard* self, int** _out, size_t* _out_len) {
-	QList<int> ret = self->visitedIds();
+struct miqt_array* QWizard_VisitedIds(const QWizard* self) {
+	QList<int> _ret = self->visitedIds();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	int* __out = static_cast<int*>(malloc(sizeof(int) * ret.length()));
-	for (size_t i = 0, e = ret.length(); i < e; ++i) {
-		__out[i] = ret[i];
+	int* _arr = static_cast<int*>(malloc(sizeof(int) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		_arr[i] = _ret[i];
 	}
-	*_out = __out;
-	*_out_len = ret.length();
+	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
+	_out->len = _ret.length();
+	_out->data = static_cast<void*>(_arr);
+	return _out;
 }
 
-void QWizard_PageIds(const QWizard* self, int** _out, size_t* _out_len) {
-	QList<int> ret = self->pageIds();
+struct miqt_array* QWizard_PageIds(const QWizard* self) {
+	QList<int> _ret = self->pageIds();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	int* __out = static_cast<int*>(malloc(sizeof(int) * ret.length()));
-	for (size_t i = 0, e = ret.length(); i < e; ++i) {
-		__out[i] = ret[i];
+	int* _arr = static_cast<int*>(malloc(sizeof(int) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		_arr[i] = _ret[i];
 	}
-	*_out = __out;
-	*_out_len = ret.length();
+	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
+	_out->len = _ret.length();
+	_out->data = static_cast<void*>(_arr);
+	return _out;
 }
 
 void QWizard_SetStartId(QWizard* self, int id) {
@@ -129,16 +127,16 @@ int QWizard_NextId(const QWizard* self) {
 	return self->nextId();
 }
 
-void QWizard_SetField(QWizard* self, const char* name, size_t name_Strlen, QVariant* value) {
-	QString name_QString = QString::fromUtf8(name, name_Strlen);
+void QWizard_SetField(QWizard* self, struct miqt_string* name, QVariant* value) {
+	QString name_QString = QString::fromUtf8(&name->data, name->len);
 	self->setField(name_QString, *value);
 }
 
-QVariant* QWizard_Field(const QWizard* self, const char* name, size_t name_Strlen) {
-	QString name_QString = QString::fromUtf8(name, name_Strlen);
-	QVariant ret = self->field(name_QString);
+QVariant* QWizard_Field(const QWizard* self, struct miqt_string* name) {
+	QString name_QString = QString::fromUtf8(&name->data, name->len);
+	QVariant _ret = self->field(name_QString);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(ret));
+	return static_cast<QVariant*>(new QVariant(_ret));
 }
 
 void QWizard_SetWizardStyle(QWizard* self, uintptr_t style) {
@@ -146,8 +144,8 @@ void QWizard_SetWizardStyle(QWizard* self, uintptr_t style) {
 }
 
 uintptr_t QWizard_WizardStyle(const QWizard* self) {
-	QWizard::WizardStyle ret = self->wizardStyle();
-	return static_cast<uintptr_t>(ret);
+	QWizard::WizardStyle _ret = self->wizardStyle();
+	return static_cast<uintptr_t>(_ret);
 }
 
 void QWizard_SetOption(QWizard* self, uintptr_t option) {
@@ -163,29 +161,28 @@ void QWizard_SetOptions(QWizard* self, int options) {
 }
 
 int QWizard_Options(const QWizard* self) {
-	QWizard::WizardOptions ret = self->options();
-	return static_cast<int>(ret);
+	QWizard::WizardOptions _ret = self->options();
+	return static_cast<int>(_ret);
 }
 
-void QWizard_SetButtonText(QWizard* self, int which, const char* text, size_t text_Strlen) {
-	QString text_QString = QString::fromUtf8(text, text_Strlen);
+void QWizard_SetButtonText(QWizard* self, int which, struct miqt_string* text) {
+	QString text_QString = QString::fromUtf8(&text->data, text->len);
 	self->setButtonText(static_cast<QWizard::WizardButton>(which), text_QString);
 }
 
-void QWizard_ButtonText(const QWizard* self, int which, char** _out, int* _out_Strlen) {
-	QString ret = self->buttonText(static_cast<QWizard::WizardButton>(which));
+struct miqt_string* QWizard_ButtonText(const QWizard* self, int which) {
+	QString _ret = self->buttonText(static_cast<QWizard::WizardButton>(which));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QWizard_SetButtonLayout(QWizard* self, int* layout, size_t layout_len) {
+void QWizard_SetButtonLayout(QWizard* self, struct miqt_array* /* of int */ layout) {
 	QList<QWizard::WizardButton> layout_QList;
-	layout_QList.reserve(layout_len);
-	for(size_t i = 0; i < layout_len; ++i) {
-		layout_QList.push_back(static_cast<QWizard::WizardButton>(layout[i]));
+	layout_QList.reserve(layout->len);
+	int* layout_arr = static_cast<int*>(layout->data);
+	for(size_t i = 0; i < layout->len; ++i) {
+		layout_QList.push_back(static_cast<QWizard::WizardButton>(layout_arr[i]));
 	}
 	self->setButtonLayout(layout_QList);
 }
@@ -203,8 +200,8 @@ void QWizard_SetTitleFormat(QWizard* self, uintptr_t format) {
 }
 
 uintptr_t QWizard_TitleFormat(const QWizard* self) {
-	Qt::TextFormat ret = self->titleFormat();
-	return static_cast<uintptr_t>(ret);
+	Qt::TextFormat _ret = self->titleFormat();
+	return static_cast<uintptr_t>(_ret);
 }
 
 void QWizard_SetSubTitleFormat(QWizard* self, uintptr_t format) {
@@ -212,8 +209,8 @@ void QWizard_SetSubTitleFormat(QWizard* self, uintptr_t format) {
 }
 
 uintptr_t QWizard_SubTitleFormat(const QWizard* self) {
-	Qt::TextFormat ret = self->subTitleFormat();
-	return static_cast<uintptr_t>(ret);
+	Qt::TextFormat _ret = self->subTitleFormat();
+	return static_cast<uintptr_t>(_ret);
 }
 
 void QWizard_SetPixmap(QWizard* self, uintptr_t which, QPixmap* pixmap) {
@@ -221,9 +218,9 @@ void QWizard_SetPixmap(QWizard* self, uintptr_t which, QPixmap* pixmap) {
 }
 
 QPixmap* QWizard_Pixmap(const QWizard* self, uintptr_t which) {
-	QPixmap ret = self->pixmap(static_cast<QWizard::WizardPixmap>(which));
+	QPixmap _ret = self->pixmap(static_cast<QWizard::WizardPixmap>(which));
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPixmap*>(new QPixmap(ret));
+	return static_cast<QPixmap*>(new QPixmap(_ret));
 }
 
 void QWizard_SetSideWidget(QWizard* self, QWidget* widget) {
@@ -243,9 +240,9 @@ void QWizard_SetVisible(QWizard* self, bool visible) {
 }
 
 QSize* QWizard_SizeHint(const QWizard* self) {
-	QSize ret = self->sizeHint();
+	QSize _ret = self->sizeHint();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(ret));
+	return static_cast<QSize*>(new QSize(_ret));
 }
 
 void QWizard_CurrentIdChanged(QWizard* self, int id) {
@@ -254,7 +251,8 @@ void QWizard_CurrentIdChanged(QWizard* self, int id) {
 
 void QWizard_connect_CurrentIdChanged(QWizard* self, void* slot) {
 	QWizard::connect(self, static_cast<void (QWizard::*)(int)>(&QWizard::currentIdChanged), self, [=](int id) {
-		miqt_exec_callback(slot, 0, nullptr);
+		int sigval1 = id;
+		miqt_exec_callback_QWizard_CurrentIdChanged(slot, sigval1);
 	});
 }
 
@@ -264,7 +262,7 @@ void QWizard_HelpRequested(QWizard* self) {
 
 void QWizard_connect_HelpRequested(QWizard* self, void* slot) {
 	QWizard::connect(self, static_cast<void (QWizard::*)()>(&QWizard::helpRequested), self, [=]() {
-		miqt_exec_callback(slot, 0, nullptr);
+		miqt_exec_callback_QWizard_HelpRequested(slot);
 	});
 }
 
@@ -274,7 +272,8 @@ void QWizard_CustomButtonClicked(QWizard* self, int which) {
 
 void QWizard_connect_CustomButtonClicked(QWizard* self, void* slot) {
 	QWizard::connect(self, static_cast<void (QWizard::*)(int)>(&QWizard::customButtonClicked), self, [=](int which) {
-		miqt_exec_callback(slot, 0, nullptr);
+		int sigval1 = which;
+		miqt_exec_callback_QWizard_CustomButtonClicked(slot, sigval1);
 	});
 }
 
@@ -284,7 +283,8 @@ void QWizard_PageAdded(QWizard* self, int id) {
 
 void QWizard_connect_PageAdded(QWizard* self, void* slot) {
 	QWizard::connect(self, static_cast<void (QWizard::*)(int)>(&QWizard::pageAdded), self, [=](int id) {
-		miqt_exec_callback(slot, 0, nullptr);
+		int sigval1 = id;
+		miqt_exec_callback_QWizard_PageAdded(slot, sigval1);
 	});
 }
 
@@ -294,7 +294,8 @@ void QWizard_PageRemoved(QWizard* self, int id) {
 
 void QWizard_connect_PageRemoved(QWizard* self, void* slot) {
 	QWizard::connect(self, static_cast<void (QWizard::*)(int)>(&QWizard::pageRemoved), self, [=](int id) {
-		miqt_exec_callback(slot, 0, nullptr);
+		int sigval1 = id;
+		miqt_exec_callback_QWizard_PageRemoved(slot, sigval1);
 	});
 }
 
@@ -310,40 +311,32 @@ void QWizard_Restart(QWizard* self) {
 	self->restart();
 }
 
-void QWizard_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QWizard::tr(s, c);
+struct miqt_string* QWizard_Tr2(const char* s, const char* c) {
+	QString _ret = QWizard::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QWizard_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QWizard::tr(s, c, static_cast<int>(n));
+struct miqt_string* QWizard_Tr3(const char* s, const char* c, int n) {
+	QString _ret = QWizard::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QWizard_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QWizard::trUtf8(s, c);
+struct miqt_string* QWizard_TrUtf82(const char* s, const char* c) {
+	QString _ret = QWizard::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QWizard_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QWizard::trUtf8(s, c, static_cast<int>(n));
+struct miqt_string* QWizard_TrUtf83(const char* s, const char* c, int n) {
+	QString _ret = QWizard::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QWizard_SetOption2(QWizard* self, uintptr_t option, bool on) {
@@ -366,50 +359,42 @@ QMetaObject* QWizardPage_MetaObject(const QWizardPage* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void QWizardPage_Tr(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QWizardPage::tr(s);
+struct miqt_string* QWizardPage_Tr(const char* s) {
+	QString _ret = QWizardPage::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QWizardPage_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QWizardPage::trUtf8(s);
+struct miqt_string* QWizardPage_TrUtf8(const char* s) {
+	QString _ret = QWizardPage::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QWizardPage_SetTitle(QWizardPage* self, const char* title, size_t title_Strlen) {
-	QString title_QString = QString::fromUtf8(title, title_Strlen);
+void QWizardPage_SetTitle(QWizardPage* self, struct miqt_string* title) {
+	QString title_QString = QString::fromUtf8(&title->data, title->len);
 	self->setTitle(title_QString);
 }
 
-void QWizardPage_Title(const QWizardPage* self, char** _out, int* _out_Strlen) {
-	QString ret = self->title();
+struct miqt_string* QWizardPage_Title(const QWizardPage* self) {
+	QString _ret = self->title();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QWizardPage_SetSubTitle(QWizardPage* self, const char* subTitle, size_t subTitle_Strlen) {
-	QString subTitle_QString = QString::fromUtf8(subTitle, subTitle_Strlen);
+void QWizardPage_SetSubTitle(QWizardPage* self, struct miqt_string* subTitle) {
+	QString subTitle_QString = QString::fromUtf8(&subTitle->data, subTitle->len);
 	self->setSubTitle(subTitle_QString);
 }
 
-void QWizardPage_SubTitle(const QWizardPage* self, char** _out, int* _out_Strlen) {
-	QString ret = self->subTitle();
+struct miqt_string* QWizardPage_SubTitle(const QWizardPage* self) {
+	QString _ret = self->subTitle();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QWizardPage_SetPixmap(QWizardPage* self, uintptr_t which, QPixmap* pixmap) {
@@ -417,9 +402,9 @@ void QWizardPage_SetPixmap(QWizardPage* self, uintptr_t which, QPixmap* pixmap) 
 }
 
 QPixmap* QWizardPage_Pixmap(const QWizardPage* self, uintptr_t which) {
-	QPixmap ret = self->pixmap(static_cast<QWizard::WizardPixmap>(which));
+	QPixmap _ret = self->pixmap(static_cast<QWizard::WizardPixmap>(which));
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPixmap*>(new QPixmap(ret));
+	return static_cast<QPixmap*>(new QPixmap(_ret));
 }
 
 void QWizardPage_SetFinalPage(QWizardPage* self, bool finalPage) {
@@ -438,18 +423,16 @@ bool QWizardPage_IsCommitPage(const QWizardPage* self) {
 	return self->isCommitPage();
 }
 
-void QWizardPage_SetButtonText(QWizardPage* self, int which, const char* text, size_t text_Strlen) {
-	QString text_QString = QString::fromUtf8(text, text_Strlen);
+void QWizardPage_SetButtonText(QWizardPage* self, int which, struct miqt_string* text) {
+	QString text_QString = QString::fromUtf8(&text->data, text->len);
 	self->setButtonText(static_cast<QWizard::WizardButton>(which), text_QString);
 }
 
-void QWizardPage_ButtonText(const QWizardPage* self, int which, char** _out, int* _out_Strlen) {
-	QString ret = self->buttonText(static_cast<QWizard::WizardButton>(which));
+struct miqt_string* QWizardPage_ButtonText(const QWizardPage* self, int which) {
+	QString _ret = self->buttonText(static_cast<QWizard::WizardButton>(which));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QWizardPage_InitializePage(QWizardPage* self) {
@@ -478,44 +461,36 @@ void QWizardPage_CompleteChanged(QWizardPage* self) {
 
 void QWizardPage_connect_CompleteChanged(QWizardPage* self, void* slot) {
 	QWizardPage::connect(self, static_cast<void (QWizardPage::*)()>(&QWizardPage::completeChanged), self, [=]() {
-		miqt_exec_callback(slot, 0, nullptr);
+		miqt_exec_callback_QWizardPage_CompleteChanged(slot);
 	});
 }
 
-void QWizardPage_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QWizardPage::tr(s, c);
+struct miqt_string* QWizardPage_Tr2(const char* s, const char* c) {
+	QString _ret = QWizardPage::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QWizardPage_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QWizardPage::tr(s, c, static_cast<int>(n));
+struct miqt_string* QWizardPage_Tr3(const char* s, const char* c, int n) {
+	QString _ret = QWizardPage::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QWizardPage_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QWizardPage::trUtf8(s, c);
+struct miqt_string* QWizardPage_TrUtf82(const char* s, const char* c) {
+	QString _ret = QWizardPage::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QWizardPage_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QWizardPage::trUtf8(s, c, static_cast<int>(n));
+struct miqt_string* QWizardPage_TrUtf83(const char* s, const char* c, int n) {
+	QString _ret = QWizardPage::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QWizardPage_Delete(QWizardPage* self) {

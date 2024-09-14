@@ -93,43 +93,43 @@ func (this *QRegion) Swap(other *QRegion) {
 }
 
 func (this *QRegion) IsEmpty() bool {
-	ret := C.QRegion_IsEmpty(this.h)
-	return (bool)(ret)
+	_ret := C.QRegion_IsEmpty(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QRegion) IsNull() bool {
-	ret := C.QRegion_IsNull(this.h)
-	return (bool)(ret)
+	_ret := C.QRegion_IsNull(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QRegion) Begin() *QRect {
-	ret := C.QRegion_Begin(this.h)
-	return newQRect_U(unsafe.Pointer(ret))
+	_ret := C.QRegion_Begin(this.h)
+	return newQRect_U(unsafe.Pointer(_ret))
 }
 
 func (this *QRegion) Cbegin() *QRect {
-	ret := C.QRegion_Cbegin(this.h)
-	return newQRect_U(unsafe.Pointer(ret))
+	_ret := C.QRegion_Cbegin(this.h)
+	return newQRect_U(unsafe.Pointer(_ret))
 }
 
 func (this *QRegion) End() *QRect {
-	ret := C.QRegion_End(this.h)
-	return newQRect_U(unsafe.Pointer(ret))
+	_ret := C.QRegion_End(this.h)
+	return newQRect_U(unsafe.Pointer(_ret))
 }
 
 func (this *QRegion) Cend() *QRect {
-	ret := C.QRegion_Cend(this.h)
-	return newQRect_U(unsafe.Pointer(ret))
+	_ret := C.QRegion_Cend(this.h)
+	return newQRect_U(unsafe.Pointer(_ret))
 }
 
 func (this *QRegion) Contains(p *QPoint) bool {
-	ret := C.QRegion_Contains(this.h, p.cPointer())
-	return (bool)(ret)
+	_ret := C.QRegion_Contains(this.h, p.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QRegion) ContainsWithQRect(r *QRect) bool {
-	ret := C.QRegion_ContainsWithQRect(this.h, r.cPointer())
-	return (bool)(ret)
+	_ret := C.QRegion_ContainsWithQRect(this.h, r.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QRegion) Translate(dx int, dy int) {
@@ -141,125 +141,87 @@ func (this *QRegion) TranslateWithQPoint(p *QPoint) {
 }
 
 func (this *QRegion) Translated(dx int, dy int) *QRegion {
-	ret := C.QRegion_Translated(this.h, (C.int)(dx), (C.int)(dy))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRegion(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRegion) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QRegion_Translated(this.h, (C.int)(dx), (C.int)(dy))
+	_goptr := newQRegion(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QRegion) TranslatedWithQPoint(p *QPoint) *QRegion {
-	ret := C.QRegion_TranslatedWithQPoint(this.h, p.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRegion(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRegion) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QRegion_TranslatedWithQPoint(this.h, p.cPointer())
+	_goptr := newQRegion(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QRegion) United(r *QRegion) *QRegion {
-	ret := C.QRegion_United(this.h, r.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRegion(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRegion) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QRegion_United(this.h, r.cPointer())
+	_goptr := newQRegion(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QRegion) UnitedWithQRect(r *QRect) *QRegion {
-	ret := C.QRegion_UnitedWithQRect(this.h, r.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRegion(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRegion) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QRegion_UnitedWithQRect(this.h, r.cPointer())
+	_goptr := newQRegion(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QRegion) Intersected(r *QRegion) *QRegion {
-	ret := C.QRegion_Intersected(this.h, r.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRegion(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRegion) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QRegion_Intersected(this.h, r.cPointer())
+	_goptr := newQRegion(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QRegion) IntersectedWithQRect(r *QRect) *QRegion {
-	ret := C.QRegion_IntersectedWithQRect(this.h, r.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRegion(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRegion) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QRegion_IntersectedWithQRect(this.h, r.cPointer())
+	_goptr := newQRegion(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QRegion) Subtracted(r *QRegion) *QRegion {
-	ret := C.QRegion_Subtracted(this.h, r.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRegion(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRegion) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QRegion_Subtracted(this.h, r.cPointer())
+	_goptr := newQRegion(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QRegion) Xored(r *QRegion) *QRegion {
-	ret := C.QRegion_Xored(this.h, r.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRegion(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRegion) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QRegion_Xored(this.h, r.cPointer())
+	_goptr := newQRegion(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QRegion) Intersects(r *QRegion) bool {
-	ret := C.QRegion_Intersects(this.h, r.cPointer())
-	return (bool)(ret)
+	_ret := C.QRegion_Intersects(this.h, r.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QRegion) IntersectsWithQRect(r *QRect) bool {
-	ret := C.QRegion_IntersectsWithQRect(this.h, r.cPointer())
-	return (bool)(ret)
+	_ret := C.QRegion_IntersectsWithQRect(this.h, r.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QRegion) BoundingRect() *QRect {
-	ret := C.QRegion_BoundingRect(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRect(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRect) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QRegion_BoundingRect(this.h)
+	_goptr := newQRect(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QRegion) Rects() []QRect {
-	var _out **C.QRect = nil
-	var _out_len C.size_t = 0
-	C.QRegion_Rects(this.h, &_out, &_out_len)
-	ret := make([]QRect, int(_out_len))
-	_outCast := (*[0xffff]*C.QRect)(unsafe.Pointer(_out)) // so fresh so clean
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = *newQRect(_outCast[i])
+	var _ma *C.struct_miqt_array = C.QRegion_Rects(this.h)
+	_ret := make([]QRect, int(_ma.len))
+	_outCast := (*[0xffff]*C.QRect)(unsafe.Pointer(_ma.data)) // mrs jackson
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = *newQRect(_outCast[i])
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
 func (this *QRegion) SetRects(rect *QRect, num int) {
@@ -267,85 +229,57 @@ func (this *QRegion) SetRects(rect *QRect, num int) {
 }
 
 func (this *QRegion) RectCount() int {
-	ret := C.QRegion_RectCount(this.h)
-	return (int)(ret)
+	_ret := C.QRegion_RectCount(this.h)
+	return (int)(_ret)
 }
 
 func (this *QRegion) OperatorBitwiseOr(r *QRegion) *QRegion {
-	ret := C.QRegion_OperatorBitwiseOr(this.h, r.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRegion(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRegion) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QRegion_OperatorBitwiseOr(this.h, r.cPointer())
+	_goptr := newQRegion(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QRegion) OperatorPlus(r *QRegion) *QRegion {
-	ret := C.QRegion_OperatorPlus(this.h, r.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRegion(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRegion) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QRegion_OperatorPlus(this.h, r.cPointer())
+	_goptr := newQRegion(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QRegion) OperatorPlusWithQRect(r *QRect) *QRegion {
-	ret := C.QRegion_OperatorPlusWithQRect(this.h, r.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRegion(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRegion) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QRegion_OperatorPlusWithQRect(this.h, r.cPointer())
+	_goptr := newQRegion(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QRegion) OperatorBitwiseAnd(r *QRegion) *QRegion {
-	ret := C.QRegion_OperatorBitwiseAnd(this.h, r.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRegion(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRegion) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QRegion_OperatorBitwiseAnd(this.h, r.cPointer())
+	_goptr := newQRegion(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QRegion) OperatorBitwiseAndWithQRect(r *QRect) *QRegion {
-	ret := C.QRegion_OperatorBitwiseAndWithQRect(this.h, r.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRegion(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRegion) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QRegion_OperatorBitwiseAndWithQRect(this.h, r.cPointer())
+	_goptr := newQRegion(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QRegion) OperatorMinus(r *QRegion) *QRegion {
-	ret := C.QRegion_OperatorMinus(this.h, r.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRegion(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRegion) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QRegion_OperatorMinus(this.h, r.cPointer())
+	_goptr := newQRegion(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QRegion) OperatorBitwiseNot(r *QRegion) *QRegion {
-	ret := C.QRegion_OperatorBitwiseNot(this.h, r.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRegion(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRegion) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QRegion_OperatorBitwiseNot(this.h, r.cPointer())
+	_goptr := newQRegion(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QRegion) OperatorBitwiseOrAssign(r *QRegion) {
@@ -353,13 +287,13 @@ func (this *QRegion) OperatorBitwiseOrAssign(r *QRegion) {
 }
 
 func (this *QRegion) OperatorPlusAssign(r *QRegion) *QRegion {
-	ret := C.QRegion_OperatorPlusAssign(this.h, r.cPointer())
-	return newQRegion_U(unsafe.Pointer(ret))
+	_ret := C.QRegion_OperatorPlusAssign(this.h, r.cPointer())
+	return newQRegion_U(unsafe.Pointer(_ret))
 }
 
 func (this *QRegion) OperatorPlusAssignWithQRect(r *QRect) *QRegion {
-	ret := C.QRegion_OperatorPlusAssignWithQRect(this.h, r.cPointer())
-	return newQRegion_U(unsafe.Pointer(ret))
+	_ret := C.QRegion_OperatorPlusAssignWithQRect(this.h, r.cPointer())
+	return newQRegion_U(unsafe.Pointer(_ret))
 }
 
 func (this *QRegion) OperatorBitwiseAndAssign(r *QRegion) {
@@ -371,8 +305,8 @@ func (this *QRegion) OperatorBitwiseAndAssignWithQRect(r *QRect) {
 }
 
 func (this *QRegion) OperatorMinusAssign(r *QRegion) *QRegion {
-	ret := C.QRegion_OperatorMinusAssign(this.h, r.cPointer())
-	return newQRegion_U(unsafe.Pointer(ret))
+	_ret := C.QRegion_OperatorMinusAssign(this.h, r.cPointer())
+	return newQRegion_U(unsafe.Pointer(_ret))
 }
 
 func (this *QRegion) OperatorBitwiseNotAssign(r *QRegion) {
@@ -380,15 +314,25 @@ func (this *QRegion) OperatorBitwiseNotAssign(r *QRegion) {
 }
 
 func (this *QRegion) OperatorEqual(r *QRegion) bool {
-	ret := C.QRegion_OperatorEqual(this.h, r.cPointer())
-	return (bool)(ret)
+	_ret := C.QRegion_OperatorEqual(this.h, r.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QRegion) OperatorNotEqual(r *QRegion) bool {
-	ret := C.QRegion_OperatorNotEqual(this.h, r.cPointer())
-	return (bool)(ret)
+	_ret := C.QRegion_OperatorNotEqual(this.h, r.cPointer())
+	return (bool)(_ret)
 }
 
+// Delete this object from C++ memory.
 func (this *QRegion) Delete() {
 	C.QRegion_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QRegion) GoGC() {
+	runtime.SetFinalizer(this, func(this *QRegion) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

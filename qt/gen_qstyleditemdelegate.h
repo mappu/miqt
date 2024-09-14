@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -42,8 +44,8 @@ typedef struct QWidget QWidget;
 QStyledItemDelegate* QStyledItemDelegate_new();
 QStyledItemDelegate* QStyledItemDelegate_new2(QObject* parent);
 QMetaObject* QStyledItemDelegate_MetaObject(const QStyledItemDelegate* self);
-void QStyledItemDelegate_Tr(const char* s, char** _out, int* _out_Strlen);
-void QStyledItemDelegate_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QStyledItemDelegate_Tr(const char* s);
+struct miqt_string* QStyledItemDelegate_TrUtf8(const char* s);
 void QStyledItemDelegate_Paint(const QStyledItemDelegate* self, QPainter* painter, QStyleOptionViewItem* option, QModelIndex* index);
 QSize* QStyledItemDelegate_SizeHint(const QStyledItemDelegate* self, QStyleOptionViewItem* option, QModelIndex* index);
 QWidget* QStyledItemDelegate_CreateEditor(const QStyledItemDelegate* self, QWidget* parent, QStyleOptionViewItem* option, QModelIndex* index);
@@ -52,11 +54,11 @@ void QStyledItemDelegate_SetModelData(const QStyledItemDelegate* self, QWidget* 
 void QStyledItemDelegate_UpdateEditorGeometry(const QStyledItemDelegate* self, QWidget* editor, QStyleOptionViewItem* option, QModelIndex* index);
 QItemEditorFactory* QStyledItemDelegate_ItemEditorFactory(const QStyledItemDelegate* self);
 void QStyledItemDelegate_SetItemEditorFactory(QStyledItemDelegate* self, QItemEditorFactory* factory);
-void QStyledItemDelegate_DisplayText(const QStyledItemDelegate* self, QVariant* value, QLocale* locale, char** _out, int* _out_Strlen);
-void QStyledItemDelegate_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QStyledItemDelegate_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QStyledItemDelegate_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QStyledItemDelegate_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QStyledItemDelegate_DisplayText(const QStyledItemDelegate* self, QVariant* value, QLocale* locale);
+struct miqt_string* QStyledItemDelegate_Tr2(const char* s, const char* c);
+struct miqt_string* QStyledItemDelegate_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QStyledItemDelegate_TrUtf82(const char* s, const char* c);
+struct miqt_string* QStyledItemDelegate_TrUtf83(const char* s, const char* c, int n);
 void QStyledItemDelegate_Delete(QStyledItemDelegate* self);
 
 #ifdef __cplusplus

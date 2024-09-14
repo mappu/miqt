@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"runtime"
 	"unsafe"
 )
 
@@ -39,8 +40,8 @@ func (this *QRunnable) Run() {
 }
 
 func (this *QRunnable) AutoDelete() bool {
-	ret := C.QRunnable_AutoDelete(this.h)
-	return (bool)(ret)
+	_ret := C.QRunnable_AutoDelete(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QRunnable) SetAutoDelete(_autoDelete bool) {
@@ -51,6 +52,16 @@ func (this *QRunnable) OperatorAssign(param1 *QRunnable) {
 	C.QRunnable_OperatorAssign(this.h, param1.cPointer())
 }
 
+// Delete this object from C++ memory.
 func (this *QRunnable) Delete() {
 	C.QRunnable_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QRunnable) GoGC() {
+	runtime.SetFinalizer(this, func(this *QRunnable) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

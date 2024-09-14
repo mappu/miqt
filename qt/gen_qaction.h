@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -38,28 +40,28 @@ typedef struct QWidget QWidget;
 #endif
 
 QAction* QAction_new();
-QAction* QAction_new2(const char* text, size_t text_Strlen);
-QAction* QAction_new3(QIcon* icon, const char* text, size_t text_Strlen);
+QAction* QAction_new2(struct miqt_string* text);
+QAction* QAction_new3(QIcon* icon, struct miqt_string* text);
 QAction* QAction_new4(QObject* parent);
-QAction* QAction_new5(const char* text, size_t text_Strlen, QObject* parent);
-QAction* QAction_new6(QIcon* icon, const char* text, size_t text_Strlen, QObject* parent);
+QAction* QAction_new5(struct miqt_string* text, QObject* parent);
+QAction* QAction_new6(QIcon* icon, struct miqt_string* text, QObject* parent);
 QMetaObject* QAction_MetaObject(const QAction* self);
-void QAction_Tr(const char* s, char** _out, int* _out_Strlen);
-void QAction_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QAction_Tr(const char* s);
+struct miqt_string* QAction_TrUtf8(const char* s);
 void QAction_SetActionGroup(QAction* self, QActionGroup* group);
 QActionGroup* QAction_ActionGroup(const QAction* self);
 void QAction_SetIcon(QAction* self, QIcon* icon);
 QIcon* QAction_Icon(const QAction* self);
-void QAction_SetText(QAction* self, const char* text, size_t text_Strlen);
-void QAction_Text(const QAction* self, char** _out, int* _out_Strlen);
-void QAction_SetIconText(QAction* self, const char* text, size_t text_Strlen);
-void QAction_IconText(const QAction* self, char** _out, int* _out_Strlen);
-void QAction_SetToolTip(QAction* self, const char* tip, size_t tip_Strlen);
-void QAction_ToolTip(const QAction* self, char** _out, int* _out_Strlen);
-void QAction_SetStatusTip(QAction* self, const char* statusTip, size_t statusTip_Strlen);
-void QAction_StatusTip(const QAction* self, char** _out, int* _out_Strlen);
-void QAction_SetWhatsThis(QAction* self, const char* what, size_t what_Strlen);
-void QAction_WhatsThis(const QAction* self, char** _out, int* _out_Strlen);
+void QAction_SetText(QAction* self, struct miqt_string* text);
+struct miqt_string* QAction_Text(const QAction* self);
+void QAction_SetIconText(QAction* self, struct miqt_string* text);
+struct miqt_string* QAction_IconText(const QAction* self);
+void QAction_SetToolTip(QAction* self, struct miqt_string* tip);
+struct miqt_string* QAction_ToolTip(const QAction* self);
+void QAction_SetStatusTip(QAction* self, struct miqt_string* statusTip);
+struct miqt_string* QAction_StatusTip(const QAction* self);
+void QAction_SetWhatsThis(QAction* self, struct miqt_string* what);
+struct miqt_string* QAction_WhatsThis(const QAction* self);
 void QAction_SetPriority(QAction* self, uintptr_t priority);
 uintptr_t QAction_Priority(const QAction* self);
 QMenu* QAction_Menu(const QAction* self);
@@ -68,9 +70,9 @@ void QAction_SetSeparator(QAction* self, bool b);
 bool QAction_IsSeparator(const QAction* self);
 void QAction_SetShortcut(QAction* self, QKeySequence* shortcut);
 QKeySequence* QAction_Shortcut(const QAction* self);
-void QAction_SetShortcuts(QAction* self, QKeySequence** shortcuts, size_t shortcuts_len);
+void QAction_SetShortcuts(QAction* self, struct miqt_array* /* of QKeySequence */ shortcuts);
 void QAction_SetShortcutsWithShortcuts(QAction* self, uintptr_t shortcuts);
-void QAction_Shortcuts(const QAction* self, QKeySequence*** _out, size_t* _out_len);
+struct miqt_array* QAction_Shortcuts(const QAction* self);
 void QAction_SetShortcutContext(QAction* self, uintptr_t context);
 uintptr_t QAction_ShortcutContext(const QAction* self);
 void QAction_SetAutoRepeat(QAction* self, bool autoRepeat);
@@ -93,8 +95,8 @@ bool QAction_IsIconVisibleInMenu(const QAction* self);
 void QAction_SetShortcutVisibleInContextMenu(QAction* self, bool show);
 bool QAction_IsShortcutVisibleInContextMenu(const QAction* self);
 QWidget* QAction_ParentWidget(const QAction* self);
-void QAction_AssociatedWidgets(const QAction* self, QWidget*** _out, size_t* _out_len);
-void QAction_AssociatedGraphicsWidgets(const QAction* self, QGraphicsWidget*** _out, size_t* _out_len);
+struct miqt_array* QAction_AssociatedWidgets(const QAction* self);
+struct miqt_array* QAction_AssociatedGraphicsWidgets(const QAction* self);
 void QAction_Trigger(QAction* self);
 void QAction_Hover(QAction* self);
 void QAction_SetChecked(QAction* self, bool checked);
@@ -110,10 +112,10 @@ void QAction_Hovered(QAction* self);
 void QAction_connect_Hovered(QAction* self, void* slot);
 void QAction_Toggled(QAction* self, bool param1);
 void QAction_connect_Toggled(QAction* self, void* slot);
-void QAction_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QAction_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QAction_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QAction_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QAction_Tr2(const char* s, const char* c);
+struct miqt_string* QAction_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QAction_TrUtf82(const char* s, const char* c);
+struct miqt_string* QAction_TrUtf83(const char* s, const char* c, int n);
 bool QAction_ShowStatusText1(QAction* self, QWidget* widget);
 void QAction_Triggered1(QAction* self, bool checked);
 void QAction_connect_Triggered1(QAction* self, void* slot);

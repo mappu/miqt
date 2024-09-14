@@ -60,34 +60,24 @@ func NewQFileIconProvider() *QFileIconProvider {
 }
 
 func (this *QFileIconProvider) Icon(typeVal QFileIconProvider__IconType) *QIcon {
-	ret := C.QFileIconProvider_Icon(this.h, (C.uintptr_t)(typeVal))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQIcon(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QIcon) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QFileIconProvider_Icon(this.h, (C.uintptr_t)(typeVal))
+	_goptr := newQIcon(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QFileIconProvider) IconWithInfo(info *QFileInfo) *QIcon {
-	ret := C.QFileIconProvider_IconWithInfo(this.h, info.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQIcon(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QIcon) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QFileIconProvider_IconWithInfo(this.h, info.cPointer())
+	_goptr := newQIcon(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QFileIconProvider) Type(info *QFileInfo) string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QFileIconProvider_Type(this.h, info.cPointer(), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QFileIconProvider_Type(this.h, info.cPointer())
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QFileIconProvider) SetOptions(options int) {
@@ -95,10 +85,20 @@ func (this *QFileIconProvider) SetOptions(options int) {
 }
 
 func (this *QFileIconProvider) Options() int {
-	ret := C.QFileIconProvider_Options(this.h)
-	return (int)(ret)
+	_ret := C.QFileIconProvider_Options(this.h)
+	return (int)(_ret)
 }
 
+// Delete this object from C++ memory.
 func (this *QFileIconProvider) Delete() {
 	C.QFileIconProvider_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QFileIconProvider) GoGC() {
+	runtime.SetFinalizer(this, func(this *QFileIconProvider) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

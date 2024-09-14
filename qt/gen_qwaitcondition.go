@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"runtime"
 	"unsafe"
 )
 
@@ -41,23 +42,23 @@ func NewQWaitCondition() *QWaitCondition {
 }
 
 func (this *QWaitCondition) Wait(lockedMutex *QMutex) bool {
-	ret := C.QWaitCondition_Wait(this.h, lockedMutex.cPointer())
-	return (bool)(ret)
+	_ret := C.QWaitCondition_Wait(this.h, lockedMutex.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QWaitCondition) Wait2(lockedMutex *QMutex, time uint64) bool {
-	ret := C.QWaitCondition_Wait2(this.h, lockedMutex.cPointer(), (C.ulong)(time))
-	return (bool)(ret)
+	_ret := C.QWaitCondition_Wait2(this.h, lockedMutex.cPointer(), (C.ulong)(time))
+	return (bool)(_ret)
 }
 
 func (this *QWaitCondition) WaitWithLockedReadWriteLock(lockedReadWriteLock *QReadWriteLock) bool {
-	ret := C.QWaitCondition_WaitWithLockedReadWriteLock(this.h, lockedReadWriteLock.cPointer())
-	return (bool)(ret)
+	_ret := C.QWaitCondition_WaitWithLockedReadWriteLock(this.h, lockedReadWriteLock.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QWaitCondition) Wait3(lockedReadWriteLock *QReadWriteLock, time uint64) bool {
-	ret := C.QWaitCondition_Wait3(this.h, lockedReadWriteLock.cPointer(), (C.ulong)(time))
-	return (bool)(ret)
+	_ret := C.QWaitCondition_Wait3(this.h, lockedReadWriteLock.cPointer(), (C.ulong)(time))
+	return (bool)(_ret)
 }
 
 func (this *QWaitCondition) WakeOne() {
@@ -77,15 +78,25 @@ func (this *QWaitCondition) NotifyAll() {
 }
 
 func (this *QWaitCondition) Wait22(lockedMutex *QMutex, deadline QDeadlineTimer) bool {
-	ret := C.QWaitCondition_Wait22(this.h, lockedMutex.cPointer(), deadline.cPointer())
-	return (bool)(ret)
+	_ret := C.QWaitCondition_Wait22(this.h, lockedMutex.cPointer(), deadline.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QWaitCondition) Wait23(lockedReadWriteLock *QReadWriteLock, deadline QDeadlineTimer) bool {
-	ret := C.QWaitCondition_Wait23(this.h, lockedReadWriteLock.cPointer(), deadline.cPointer())
-	return (bool)(ret)
+	_ret := C.QWaitCondition_Wait23(this.h, lockedReadWriteLock.cPointer(), deadline.cPointer())
+	return (bool)(_ret)
 }
 
+// Delete this object from C++ memory.
 func (this *QWaitCondition) Delete() {
 	C.QWaitCondition_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QWaitCondition) GoGC() {
+	runtime.SetFinalizer(this, func(this *QWaitCondition) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

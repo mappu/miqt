@@ -3,20 +3,14 @@
 #include <QByteArray>
 #include <cstring>
 #include "qcborcommon.h"
-
 #include "gen_qcborcommon.h"
+#include "_cgo_export.h"
 
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
-
-void QCborError_ToString(const QCborError* self, char** _out, int* _out_Strlen) {
-	QString ret = self->toString();
+struct miqt_string* QCborError_ToString(const QCborError* self) {
+	QString _ret = self->toString();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QCborError_Delete(QCborError* self) {

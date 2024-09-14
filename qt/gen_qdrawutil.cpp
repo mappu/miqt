@@ -1,11 +1,7 @@
 #include <QTileRules>
 #include "qdrawutil.h"
-
 #include "gen_qdrawutil.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QTileRules* QTileRules_new(uintptr_t horizontalRule, uintptr_t verticalRule) {
 	return new QTileRules(static_cast<Qt::TileRule>(horizontalRule), static_cast<Qt::TileRule>(verticalRule));

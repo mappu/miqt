@@ -70,16 +70,24 @@ func newQJsonParseError_U(h unsafe.Pointer) *QJsonParseError {
 }
 
 func (this *QJsonParseError) ErrorString() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QJsonParseError_ErrorString(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QJsonParseError_ErrorString(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
+// Delete this object from C++ memory.
 func (this *QJsonParseError) Delete() {
 	C.QJsonParseError_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QJsonParseError) GoGC() {
+	runtime.SetFinalizer(this, func(this *QJsonParseError) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
 
 type QJsonDocument struct {
@@ -139,133 +147,93 @@ func (this *QJsonDocument) Swap(other *QJsonDocument) {
 func QJsonDocument_FromRawData(data string, size int) *QJsonDocument {
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
-	ret := C.QJsonDocument_FromRawData(data_Cstring, (C.int)(size))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQJsonDocument(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QJsonDocument) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QJsonDocument_FromRawData(data_Cstring, (C.int)(size))
+	_goptr := newQJsonDocument(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QJsonDocument) RawData(size *int) unsafe.Pointer {
-	ret := C.QJsonDocument_RawData(this.h, (*C.int)(unsafe.Pointer(size)))
-	return (unsafe.Pointer)(ret)
+	_ret := C.QJsonDocument_RawData(this.h, (*C.int)(unsafe.Pointer(size)))
+	return (unsafe.Pointer)(_ret)
 }
 
 func QJsonDocument_FromBinaryData(data *QByteArray) *QJsonDocument {
-	ret := C.QJsonDocument_FromBinaryData(data.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQJsonDocument(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QJsonDocument) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QJsonDocument_FromBinaryData(data.cPointer())
+	_goptr := newQJsonDocument(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QJsonDocument) ToBinaryData() *QByteArray {
-	ret := C.QJsonDocument_ToBinaryData(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQByteArray(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QByteArray) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QJsonDocument_ToBinaryData(this.h)
+	_goptr := newQByteArray(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func QJsonDocument_FromVariant(variant *QVariant) *QJsonDocument {
-	ret := C.QJsonDocument_FromVariant(variant.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQJsonDocument(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QJsonDocument) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QJsonDocument_FromVariant(variant.cPointer())
+	_goptr := newQJsonDocument(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QJsonDocument) ToVariant() *QVariant {
-	ret := C.QJsonDocument_ToVariant(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQVariant(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QVariant) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QJsonDocument_ToVariant(this.h)
+	_goptr := newQVariant(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func QJsonDocument_FromJson(json *QByteArray) *QJsonDocument {
-	ret := C.QJsonDocument_FromJson(json.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQJsonDocument(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QJsonDocument) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QJsonDocument_FromJson(json.cPointer())
+	_goptr := newQJsonDocument(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QJsonDocument) ToJson() *QByteArray {
-	ret := C.QJsonDocument_ToJson(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQByteArray(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QByteArray) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QJsonDocument_ToJson(this.h)
+	_goptr := newQByteArray(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QJsonDocument) ToJsonWithFormat(format QJsonDocument__JsonFormat) *QByteArray {
-	ret := C.QJsonDocument_ToJsonWithFormat(this.h, (C.uintptr_t)(format))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQByteArray(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QByteArray) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QJsonDocument_ToJsonWithFormat(this.h, (C.uintptr_t)(format))
+	_goptr := newQByteArray(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QJsonDocument) IsEmpty() bool {
-	ret := C.QJsonDocument_IsEmpty(this.h)
-	return (bool)(ret)
+	_ret := C.QJsonDocument_IsEmpty(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QJsonDocument) IsArray() bool {
-	ret := C.QJsonDocument_IsArray(this.h)
-	return (bool)(ret)
+	_ret := C.QJsonDocument_IsArray(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QJsonDocument) IsObject() bool {
-	ret := C.QJsonDocument_IsObject(this.h)
-	return (bool)(ret)
+	_ret := C.QJsonDocument_IsObject(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QJsonDocument) Object() *QJsonObject {
-	ret := C.QJsonDocument_Object(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQJsonObject(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QJsonObject) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QJsonDocument_Object(this.h)
+	_goptr := newQJsonObject(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QJsonDocument) Array() *QJsonArray {
-	ret := C.QJsonDocument_Array(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQJsonArray(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QJsonArray) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QJsonDocument_Array(this.h)
+	_goptr := newQJsonArray(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QJsonDocument) SetObject(object *QJsonObject) {
@@ -277,79 +245,69 @@ func (this *QJsonDocument) SetArray(array *QJsonArray) {
 }
 
 func (this *QJsonDocument) OperatorSubscript(key string) *QJsonValue {
-	key_Cstring := C.CString(key)
-	defer C.free(unsafe.Pointer(key_Cstring))
-	ret := C.QJsonDocument_OperatorSubscript(this.h, key_Cstring, C.size_t(len(key)))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQJsonValue(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QJsonValue) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	key_ms := miqt_strdupg(key)
+	defer C.free(key_ms)
+	_ret := C.QJsonDocument_OperatorSubscript(this.h, (*C.struct_miqt_string)(key_ms))
+	_goptr := newQJsonValue(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QJsonDocument) OperatorSubscriptWithInt(i int) *QJsonValue {
-	ret := C.QJsonDocument_OperatorSubscriptWithInt(this.h, (C.int)(i))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQJsonValue(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QJsonValue) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QJsonDocument_OperatorSubscriptWithInt(this.h, (C.int)(i))
+	_goptr := newQJsonValue(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QJsonDocument) OperatorEqual(other *QJsonDocument) bool {
-	ret := C.QJsonDocument_OperatorEqual(this.h, other.cPointer())
-	return (bool)(ret)
+	_ret := C.QJsonDocument_OperatorEqual(this.h, other.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QJsonDocument) OperatorNotEqual(other *QJsonDocument) bool {
-	ret := C.QJsonDocument_OperatorNotEqual(this.h, other.cPointer())
-	return (bool)(ret)
+	_ret := C.QJsonDocument_OperatorNotEqual(this.h, other.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QJsonDocument) IsNull() bool {
-	ret := C.QJsonDocument_IsNull(this.h)
-	return (bool)(ret)
+	_ret := C.QJsonDocument_IsNull(this.h)
+	return (bool)(_ret)
 }
 
 func QJsonDocument_FromRawData3(data string, size int, validation QJsonDocument__DataValidation) *QJsonDocument {
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
-	ret := C.QJsonDocument_FromRawData3(data_Cstring, (C.int)(size), (C.uintptr_t)(validation))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQJsonDocument(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QJsonDocument) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QJsonDocument_FromRawData3(data_Cstring, (C.int)(size), (C.uintptr_t)(validation))
+	_goptr := newQJsonDocument(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func QJsonDocument_FromBinaryData2(data *QByteArray, validation QJsonDocument__DataValidation) *QJsonDocument {
-	ret := C.QJsonDocument_FromBinaryData2(data.cPointer(), (C.uintptr_t)(validation))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQJsonDocument(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QJsonDocument) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QJsonDocument_FromBinaryData2(data.cPointer(), (C.uintptr_t)(validation))
+	_goptr := newQJsonDocument(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func QJsonDocument_FromJson2(json *QByteArray, error *QJsonParseError) *QJsonDocument {
-	ret := C.QJsonDocument_FromJson2(json.cPointer(), error.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQJsonDocument(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QJsonDocument) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QJsonDocument_FromJson2(json.cPointer(), error.cPointer())
+	_goptr := newQJsonDocument(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
+// Delete this object from C++ memory.
 func (this *QJsonDocument) Delete() {
 	C.QJsonDocument_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QJsonDocument) GoGC() {
+	runtime.SetFinalizer(this, func(this *QJsonDocument) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

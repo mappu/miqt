@@ -51,8 +51,18 @@ func (this *QtPrivate__ExceptionHolder) OperatorAssign(other *QtPrivate__Excepti
 	C.QtPrivate__ExceptionHolder_OperatorAssign(this.h, other.cPointer())
 }
 
+// Delete this object from C++ memory.
 func (this *QtPrivate__ExceptionHolder) Delete() {
 	C.QtPrivate__ExceptionHolder_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QtPrivate__ExceptionHolder) GoGC() {
+	runtime.SetFinalizer(this, func(this *QtPrivate__ExceptionHolder) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
 
 type QtPrivate__ExceptionStore struct {
@@ -84,19 +94,15 @@ func NewQtPrivate__ExceptionStore(param1 *QtPrivate__ExceptionStore) *QtPrivate_
 }
 
 func (this *QtPrivate__ExceptionStore) HasException() bool {
-	ret := C.QtPrivate__ExceptionStore_HasException(this.h)
-	return (bool)(ret)
+	_ret := C.QtPrivate__ExceptionStore_HasException(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QtPrivate__ExceptionStore) Exception() *QtPrivate__ExceptionHolder {
-	ret := C.QtPrivate__ExceptionStore_Exception(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQtPrivate__ExceptionHolder(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QtPrivate__ExceptionHolder) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QtPrivate__ExceptionStore_Exception(this.h)
+	_goptr := newQtPrivate__ExceptionHolder(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QtPrivate__ExceptionStore) ThrowPossibleException() {
@@ -104,10 +110,20 @@ func (this *QtPrivate__ExceptionStore) ThrowPossibleException() {
 }
 
 func (this *QtPrivate__ExceptionStore) HasThrown() bool {
-	ret := C.QtPrivate__ExceptionStore_HasThrown(this.h)
-	return (bool)(ret)
+	_ret := C.QtPrivate__ExceptionStore_HasThrown(this.h)
+	return (bool)(_ret)
 }
 
+// Delete this object from C++ memory.
 func (this *QtPrivate__ExceptionStore) Delete() {
 	C.QtPrivate__ExceptionStore_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QtPrivate__ExceptionStore) GoGC() {
+	runtime.SetFinalizer(this, func(this *QtPrivate__ExceptionStore) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

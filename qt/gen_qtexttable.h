@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -58,8 +60,8 @@ void QTextTableCell_Delete(QTextTableCell* self);
 
 QTextTable* QTextTable_new(QTextDocument* doc);
 QMetaObject* QTextTable_MetaObject(const QTextTable* self);
-void QTextTable_Tr(const char* s, char** _out, int* _out_Strlen);
-void QTextTable_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QTextTable_Tr(const char* s);
+struct miqt_string* QTextTable_TrUtf8(const char* s);
 void QTextTable_Resize(QTextTable* self, int rows, int cols);
 void QTextTable_InsertRows(QTextTable* self, int pos, int num);
 void QTextTable_InsertColumns(QTextTable* self, int pos, int num);
@@ -79,10 +81,10 @@ QTextCursor* QTextTable_RowStart(const QTextTable* self, QTextCursor* c);
 QTextCursor* QTextTable_RowEnd(const QTextTable* self, QTextCursor* c);
 void QTextTable_SetFormat(QTextTable* self, QTextTableFormat* format);
 QTextTableFormat* QTextTable_Format(const QTextTable* self);
-void QTextTable_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QTextTable_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QTextTable_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QTextTable_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QTextTable_Tr2(const char* s, const char* c);
+struct miqt_string* QTextTable_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QTextTable_TrUtf82(const char* s, const char* c);
+struct miqt_string* QTextTable_TrUtf83(const char* s, const char* c, int n);
 void QTextTable_Delete(QTextTable* self);
 
 #ifdef __cplusplus

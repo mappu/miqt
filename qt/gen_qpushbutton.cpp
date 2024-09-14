@@ -8,24 +8,20 @@
 #include <cstring>
 #include <QWidget>
 #include "qpushbutton.h"
-
 #include "gen_qpushbutton.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QPushButton* QPushButton_new() {
 	return new QPushButton();
 }
 
-QPushButton* QPushButton_new2(const char* text, size_t text_Strlen) {
-	QString text_QString = QString::fromUtf8(text, text_Strlen);
+QPushButton* QPushButton_new2(struct miqt_string* text) {
+	QString text_QString = QString::fromUtf8(&text->data, text->len);
 	return new QPushButton(text_QString);
 }
 
-QPushButton* QPushButton_new3(QIcon* icon, const char* text, size_t text_Strlen) {
-	QString text_QString = QString::fromUtf8(text, text_Strlen);
+QPushButton* QPushButton_new3(QIcon* icon, struct miqt_string* text) {
+	QString text_QString = QString::fromUtf8(&text->data, text->len);
 	return new QPushButton(*icon, text_QString);
 }
 
@@ -33,13 +29,13 @@ QPushButton* QPushButton_new4(QWidget* parent) {
 	return new QPushButton(parent);
 }
 
-QPushButton* QPushButton_new5(const char* text, size_t text_Strlen, QWidget* parent) {
-	QString text_QString = QString::fromUtf8(text, text_Strlen);
+QPushButton* QPushButton_new5(struct miqt_string* text, QWidget* parent) {
+	QString text_QString = QString::fromUtf8(&text->data, text->len);
 	return new QPushButton(text_QString, parent);
 }
 
-QPushButton* QPushButton_new6(QIcon* icon, const char* text, size_t text_Strlen, QWidget* parent) {
-	QString text_QString = QString::fromUtf8(text, text_Strlen);
+QPushButton* QPushButton_new6(QIcon* icon, struct miqt_string* text, QWidget* parent) {
+	QString text_QString = QString::fromUtf8(&text->data, text->len);
 	return new QPushButton(*icon, text_QString, parent);
 }
 
@@ -47,34 +43,30 @@ QMetaObject* QPushButton_MetaObject(const QPushButton* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void QPushButton_Tr(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QPushButton::tr(s);
+struct miqt_string* QPushButton_Tr(const char* s) {
+	QString _ret = QPushButton::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QPushButton_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QPushButton::trUtf8(s);
+struct miqt_string* QPushButton_TrUtf8(const char* s) {
+	QString _ret = QPushButton::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 QSize* QPushButton_SizeHint(const QPushButton* self) {
-	QSize ret = self->sizeHint();
+	QSize _ret = self->sizeHint();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(ret));
+	return static_cast<QSize*>(new QSize(_ret));
 }
 
 QSize* QPushButton_MinimumSizeHint(const QPushButton* self) {
-	QSize ret = self->minimumSizeHint();
+	QSize _ret = self->minimumSizeHint();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(ret));
+	return static_cast<QSize*>(new QSize(_ret));
 }
 
 bool QPushButton_AutoDefault(const QPushButton* self) {
@@ -113,40 +105,32 @@ void QPushButton_ShowMenu(QPushButton* self) {
 	self->showMenu();
 }
 
-void QPushButton_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QPushButton::tr(s, c);
+struct miqt_string* QPushButton_Tr2(const char* s, const char* c) {
+	QString _ret = QPushButton::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QPushButton_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QPushButton::tr(s, c, static_cast<int>(n));
+struct miqt_string* QPushButton_Tr3(const char* s, const char* c, int n) {
+	QString _ret = QPushButton::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QPushButton_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QPushButton::trUtf8(s, c);
+struct miqt_string* QPushButton_TrUtf82(const char* s, const char* c) {
+	QString _ret = QPushButton::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QPushButton_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QPushButton::trUtf8(s, c, static_cast<int>(n));
+struct miqt_string* QPushButton_TrUtf83(const char* s, const char* c, int n) {
+	QString _ret = QPushButton::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QPushButton_Delete(QPushButton* self) {

@@ -9,33 +9,25 @@
 #include <QByteArray>
 #include <cstring>
 #include "qabstracttransition.h"
-
 #include "gen_qabstracttransition.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QMetaObject* QAbstractTransition_MetaObject(const QAbstractTransition* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void QAbstractTransition_Tr(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QAbstractTransition::tr(s);
+struct miqt_string* QAbstractTransition_Tr(const char* s) {
+	QString _ret = QAbstractTransition::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QAbstractTransition_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QAbstractTransition::trUtf8(s);
+struct miqt_string* QAbstractTransition_TrUtf8(const char* s) {
+	QString _ret = QAbstractTransition::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 QState* QAbstractTransition_SourceState(const QAbstractTransition* self) {
@@ -50,29 +42,32 @@ void QAbstractTransition_SetTargetState(QAbstractTransition* self, QAbstractStat
 	self->setTargetState(target);
 }
 
-void QAbstractTransition_TargetStates(const QAbstractTransition* self, QAbstractState*** _out, size_t* _out_len) {
-	QList<QAbstractState*> ret = self->targetStates();
+struct miqt_array* QAbstractTransition_TargetStates(const QAbstractTransition* self) {
+	QList<QAbstractState*> _ret = self->targetStates();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QAbstractState** __out = static_cast<QAbstractState**>(malloc(sizeof(QAbstractState*) * ret.length()));
-	for (size_t i = 0, e = ret.length(); i < e; ++i) {
-		__out[i] = ret[i];
+	QAbstractState** _arr = static_cast<QAbstractState**>(malloc(sizeof(QAbstractState*) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		_arr[i] = _ret[i];
 	}
-	*_out = __out;
-	*_out_len = ret.length();
+	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
+	_out->len = _ret.length();
+	_out->data = static_cast<void*>(_arr);
+	return _out;
 }
 
-void QAbstractTransition_SetTargetStates(QAbstractTransition* self, QAbstractState** targets, size_t targets_len) {
+void QAbstractTransition_SetTargetStates(QAbstractTransition* self, struct miqt_array* /* of QAbstractState* */ targets) {
 	QList<QAbstractState*> targets_QList;
-	targets_QList.reserve(targets_len);
-	for(size_t i = 0; i < targets_len; ++i) {
-		targets_QList.push_back(targets[i]);
+	targets_QList.reserve(targets->len);
+	QAbstractState** targets_arr = static_cast<QAbstractState**>(targets->data);
+	for(size_t i = 0; i < targets->len; ++i) {
+		targets_QList.push_back(targets_arr[i]);
 	}
 	self->setTargetStates(targets_QList);
 }
 
 uintptr_t QAbstractTransition_TransitionType(const QAbstractTransition* self) {
-	QAbstractTransition::TransitionType ret = self->transitionType();
-	return static_cast<uintptr_t>(ret);
+	QAbstractTransition::TransitionType _ret = self->transitionType();
+	return static_cast<uintptr_t>(_ret);
 }
 
 void QAbstractTransition_SetTransitionType(QAbstractTransition* self, uintptr_t typeVal) {
@@ -91,51 +86,45 @@ void QAbstractTransition_RemoveAnimation(QAbstractTransition* self, QAbstractAni
 	self->removeAnimation(animation);
 }
 
-void QAbstractTransition_Animations(const QAbstractTransition* self, QAbstractAnimation*** _out, size_t* _out_len) {
-	QList<QAbstractAnimation*> ret = self->animations();
+struct miqt_array* QAbstractTransition_Animations(const QAbstractTransition* self) {
+	QList<QAbstractAnimation*> _ret = self->animations();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QAbstractAnimation** __out = static_cast<QAbstractAnimation**>(malloc(sizeof(QAbstractAnimation*) * ret.length()));
-	for (size_t i = 0, e = ret.length(); i < e; ++i) {
-		__out[i] = ret[i];
+	QAbstractAnimation** _arr = static_cast<QAbstractAnimation**>(malloc(sizeof(QAbstractAnimation*) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		_arr[i] = _ret[i];
 	}
-	*_out = __out;
-	*_out_len = ret.length();
+	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
+	_out->len = _ret.length();
+	_out->data = static_cast<void*>(_arr);
+	return _out;
 }
 
-void QAbstractTransition_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QAbstractTransition::tr(s, c);
+struct miqt_string* QAbstractTransition_Tr2(const char* s, const char* c) {
+	QString _ret = QAbstractTransition::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QAbstractTransition_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QAbstractTransition::tr(s, c, static_cast<int>(n));
+struct miqt_string* QAbstractTransition_Tr3(const char* s, const char* c, int n) {
+	QString _ret = QAbstractTransition::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QAbstractTransition_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QAbstractTransition::trUtf8(s, c);
+struct miqt_string* QAbstractTransition_TrUtf82(const char* s, const char* c) {
+	QString _ret = QAbstractTransition::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QAbstractTransition_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QAbstractTransition::trUtf8(s, c, static_cast<int>(n));
+struct miqt_string* QAbstractTransition_TrUtf83(const char* s, const char* c, int n) {
+	QString _ret = QAbstractTransition::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QAbstractTransition_Delete(QAbstractTransition* self) {

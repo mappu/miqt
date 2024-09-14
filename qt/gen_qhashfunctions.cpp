@@ -1,12 +1,8 @@
 #define WORKAROUND_INNER_CLASS_DEFINITION_QtPrivate__QHashCombine
 #define WORKAROUND_INNER_CLASS_DEFINITION_QtPrivate__QHashCombineCommutative
 #include "qhashfunctions.h"
-
 #include "gen_qhashfunctions.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QtPrivate__QHashCombine* QtPrivate__QHashCombine_new() {
 	return new QtPrivate::QHashCombine();

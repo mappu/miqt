@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"runtime"
 	"unsafe"
 )
 
@@ -58,13 +59,13 @@ func (this *QReadWriteLock) LockForRead() {
 }
 
 func (this *QReadWriteLock) TryLockForRead() bool {
-	ret := C.QReadWriteLock_TryLockForRead(this.h)
-	return (bool)(ret)
+	_ret := C.QReadWriteLock_TryLockForRead(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QReadWriteLock) TryLockForReadWithTimeout(timeout int) bool {
-	ret := C.QReadWriteLock_TryLockForReadWithTimeout(this.h, (C.int)(timeout))
-	return (bool)(ret)
+	_ret := C.QReadWriteLock_TryLockForReadWithTimeout(this.h, (C.int)(timeout))
+	return (bool)(_ret)
 }
 
 func (this *QReadWriteLock) LockForWrite() {
@@ -72,21 +73,31 @@ func (this *QReadWriteLock) LockForWrite() {
 }
 
 func (this *QReadWriteLock) TryLockForWrite() bool {
-	ret := C.QReadWriteLock_TryLockForWrite(this.h)
-	return (bool)(ret)
+	_ret := C.QReadWriteLock_TryLockForWrite(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QReadWriteLock) TryLockForWriteWithTimeout(timeout int) bool {
-	ret := C.QReadWriteLock_TryLockForWriteWithTimeout(this.h, (C.int)(timeout))
-	return (bool)(ret)
+	_ret := C.QReadWriteLock_TryLockForWriteWithTimeout(this.h, (C.int)(timeout))
+	return (bool)(_ret)
 }
 
 func (this *QReadWriteLock) Unlock() {
 	C.QReadWriteLock_Unlock(this.h)
 }
 
+// Delete this object from C++ memory.
 func (this *QReadWriteLock) Delete() {
 	C.QReadWriteLock_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QReadWriteLock) GoGC() {
+	runtime.SetFinalizer(this, func(this *QReadWriteLock) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
 
 type QReadLocker struct {
@@ -126,12 +137,22 @@ func (this *QReadLocker) Relock() {
 }
 
 func (this *QReadLocker) ReadWriteLock() *QReadWriteLock {
-	ret := C.QReadLocker_ReadWriteLock(this.h)
-	return newQReadWriteLock_U(unsafe.Pointer(ret))
+	_ret := C.QReadLocker_ReadWriteLock(this.h)
+	return newQReadWriteLock_U(unsafe.Pointer(_ret))
 }
 
+// Delete this object from C++ memory.
 func (this *QReadLocker) Delete() {
 	C.QReadLocker_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QReadLocker) GoGC() {
+	runtime.SetFinalizer(this, func(this *QReadLocker) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
 
 type QWriteLocker struct {
@@ -171,10 +192,20 @@ func (this *QWriteLocker) Relock() {
 }
 
 func (this *QWriteLocker) ReadWriteLock() *QReadWriteLock {
-	ret := C.QWriteLocker_ReadWriteLock(this.h)
-	return newQReadWriteLock_U(unsafe.Pointer(ret))
+	_ret := C.QWriteLocker_ReadWriteLock(this.h)
+	return newQReadWriteLock_U(unsafe.Pointer(_ret))
 }
 
+// Delete this object from C++ memory.
 func (this *QWriteLocker) Delete() {
 	C.QWriteLocker_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QWriteLocker) GoGC() {
+	runtime.SetFinalizer(this, func(this *QWriteLocker) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -22,8 +24,8 @@ typedef struct QStyleHints QStyleHints;
 #endif
 
 QMetaObject* QStyleHints_MetaObject(const QStyleHints* self);
-void QStyleHints_Tr(const char* s, char** _out, int* _out_Strlen);
-void QStyleHints_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QStyleHints_Tr(const char* s);
+struct miqt_string* QStyleHints_TrUtf8(const char* s);
 void QStyleHints_SetMouseDoubleClickInterval(QStyleHints* self, int mouseDoubleClickInterval);
 int QStyleHints_MouseDoubleClickInterval(const QStyleHints* self);
 int QStyleHints_MouseDoubleClickDistance(const QStyleHints* self);
@@ -80,10 +82,10 @@ void QStyleHints_WheelScrollLinesChanged(QStyleHints* self, int scrollLines);
 void QStyleHints_connect_WheelScrollLinesChanged(QStyleHints* self, void* slot);
 void QStyleHints_MouseQuickSelectionThresholdChanged(QStyleHints* self, int threshold);
 void QStyleHints_connect_MouseQuickSelectionThresholdChanged(QStyleHints* self, void* slot);
-void QStyleHints_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QStyleHints_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QStyleHints_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QStyleHints_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QStyleHints_Tr2(const char* s, const char* c);
+struct miqt_string* QStyleHints_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QStyleHints_TrUtf82(const char* s, const char* c);
+struct miqt_string* QStyleHints_TrUtf83(const char* s, const char* c, int n);
 void QStyleHints_Delete(QStyleHints* self);
 
 #ifdef __cplusplus

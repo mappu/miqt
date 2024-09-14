@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -33,8 +35,8 @@ void QPen_OperatorAssign(QPen* self, QPen* pen);
 void QPen_Swap(QPen* self, QPen* other);
 uintptr_t QPen_Style(const QPen* self);
 void QPen_SetStyle(QPen* self, uintptr_t style);
-void QPen_DashPattern(const QPen* self, double** _out, size_t* _out_len);
-void QPen_SetDashPattern(QPen* self, double* pattern, size_t pattern_len);
+struct miqt_array* QPen_DashPattern(const QPen* self);
+void QPen_SetDashPattern(QPen* self, struct miqt_array* /* of double */ pattern);
 double QPen_DashOffset(const QPen* self);
 void QPen_SetDashOffset(QPen* self, double doffset);
 double QPen_MiterLimit(const QPen* self);

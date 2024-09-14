@@ -9,12 +9,8 @@
 #include <cstring>
 #include <QWidget>
 #include "qstackedlayout.h"
-
 #include "gen_qstackedlayout.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QStackedLayout* QStackedLayout_new() {
 	return new QStackedLayout();
@@ -32,22 +28,18 @@ QMetaObject* QStackedLayout_MetaObject(const QStackedLayout* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void QStackedLayout_Tr(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QStackedLayout::tr(s);
+struct miqt_string* QStackedLayout_Tr(const char* s) {
+	QString _ret = QStackedLayout::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QStackedLayout_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QStackedLayout::trUtf8(s);
+struct miqt_string* QStackedLayout_TrUtf8(const char* s) {
+	QString _ret = QStackedLayout::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 int QStackedLayout_AddWidget(QStackedLayout* self, QWidget* w) {
@@ -75,8 +67,8 @@ int QStackedLayout_Count(const QStackedLayout* self) {
 }
 
 uintptr_t QStackedLayout_StackingMode(const QStackedLayout* self) {
-	QStackedLayout::StackingMode ret = self->stackingMode();
-	return static_cast<uintptr_t>(ret);
+	QStackedLayout::StackingMode _ret = self->stackingMode();
+	return static_cast<uintptr_t>(_ret);
 }
 
 void QStackedLayout_SetStackingMode(QStackedLayout* self, uintptr_t stackingMode) {
@@ -88,15 +80,15 @@ void QStackedLayout_AddItem(QStackedLayout* self, QLayoutItem* item) {
 }
 
 QSize* QStackedLayout_SizeHint(const QStackedLayout* self) {
-	QSize ret = self->sizeHint();
+	QSize _ret = self->sizeHint();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(ret));
+	return static_cast<QSize*>(new QSize(_ret));
 }
 
 QSize* QStackedLayout_MinimumSize(const QStackedLayout* self) {
-	QSize ret = self->minimumSize();
+	QSize _ret = self->minimumSize();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(ret));
+	return static_cast<QSize*>(new QSize(_ret));
 }
 
 QLayoutItem* QStackedLayout_ItemAt(const QStackedLayout* self, int param1) {
@@ -125,7 +117,8 @@ void QStackedLayout_WidgetRemoved(QStackedLayout* self, int index) {
 
 void QStackedLayout_connect_WidgetRemoved(QStackedLayout* self, void* slot) {
 	QStackedLayout::connect(self, static_cast<void (QStackedLayout::*)(int)>(&QStackedLayout::widgetRemoved), self, [=](int index) {
-		miqt_exec_callback(slot, 0, nullptr);
+		int sigval1 = index;
+		miqt_exec_callback_QStackedLayout_WidgetRemoved(slot, sigval1);
 	});
 }
 
@@ -135,7 +128,8 @@ void QStackedLayout_CurrentChanged(QStackedLayout* self, int index) {
 
 void QStackedLayout_connect_CurrentChanged(QStackedLayout* self, void* slot) {
 	QStackedLayout::connect(self, static_cast<void (QStackedLayout::*)(int)>(&QStackedLayout::currentChanged), self, [=](int index) {
-		miqt_exec_callback(slot, 0, nullptr);
+		int sigval1 = index;
+		miqt_exec_callback_QStackedLayout_CurrentChanged(slot, sigval1);
 	});
 }
 
@@ -147,40 +141,32 @@ void QStackedLayout_SetCurrentWidget(QStackedLayout* self, QWidget* w) {
 	self->setCurrentWidget(w);
 }
 
-void QStackedLayout_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QStackedLayout::tr(s, c);
+struct miqt_string* QStackedLayout_Tr2(const char* s, const char* c) {
+	QString _ret = QStackedLayout::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QStackedLayout_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QStackedLayout::tr(s, c, static_cast<int>(n));
+struct miqt_string* QStackedLayout_Tr3(const char* s, const char* c, int n) {
+	QString _ret = QStackedLayout::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QStackedLayout_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QStackedLayout::trUtf8(s, c);
+struct miqt_string* QStackedLayout_TrUtf82(const char* s, const char* c) {
+	QString _ret = QStackedLayout::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QStackedLayout_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QStackedLayout::trUtf8(s, c, static_cast<int>(n));
+struct miqt_string* QStackedLayout_TrUtf83(const char* s, const char* c, int n) {
+	QString _ret = QStackedLayout::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QStackedLayout_Delete(QStackedLayout* self) {

@@ -1,12 +1,8 @@
 #include <QMargins>
 #include <QMarginsF>
 #include "qmargins.h"
-
 #include "gen_qmargins.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QMargins* QMargins_new() {
 	return new QMargins();
@@ -57,51 +53,51 @@ void QMargins_SetBottom(QMargins* self, int bottom) {
 }
 
 QMargins* QMargins_OperatorPlusAssign(QMargins* self, QMargins* margins) {
-	QMargins& ret = self->operator+=(*margins);
+	QMargins& _ret = self->operator+=(*margins);
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QMargins* QMargins_OperatorMinusAssign(QMargins* self, QMargins* margins) {
-	QMargins& ret = self->operator-=(*margins);
+	QMargins& _ret = self->operator-=(*margins);
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QMargins* QMargins_OperatorPlusAssignWithInt(QMargins* self, int param1) {
-	QMargins& ret = self->operator+=(static_cast<int>(param1));
+	QMargins& _ret = self->operator+=(static_cast<int>(param1));
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QMargins* QMargins_OperatorMinusAssignWithInt(QMargins* self, int param1) {
-	QMargins& ret = self->operator-=(static_cast<int>(param1));
+	QMargins& _ret = self->operator-=(static_cast<int>(param1));
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QMargins* QMargins_OperatorMultiplyAssign(QMargins* self, int param1) {
-	QMargins& ret = self->operator*=(static_cast<int>(param1));
+	QMargins& _ret = self->operator*=(static_cast<int>(param1));
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QMargins* QMargins_OperatorDivideAssign(QMargins* self, int param1) {
-	QMargins& ret = self->operator/=(static_cast<int>(param1));
+	QMargins& _ret = self->operator/=(static_cast<int>(param1));
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QMargins* QMargins_OperatorMultiplyAssignWithQreal(QMargins* self, double param1) {
-	QMargins& ret = self->operator*=(static_cast<qreal>(param1));
+	QMargins& _ret = self->operator*=(static_cast<qreal>(param1));
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QMargins* QMargins_OperatorDivideAssignWithQreal(QMargins* self, double param1) {
-	QMargins& ret = self->operator/=(static_cast<qreal>(param1));
+	QMargins& _ret = self->operator/=(static_cast<qreal>(param1));
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 void QMargins_Delete(QMargins* self) {
@@ -161,45 +157,45 @@ void QMarginsF_SetBottom(QMarginsF* self, double bottom) {
 }
 
 QMarginsF* QMarginsF_OperatorPlusAssign(QMarginsF* self, QMarginsF* margins) {
-	QMarginsF& ret = self->operator+=(*margins);
+	QMarginsF& _ret = self->operator+=(*margins);
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QMarginsF* QMarginsF_OperatorMinusAssign(QMarginsF* self, QMarginsF* margins) {
-	QMarginsF& ret = self->operator-=(*margins);
+	QMarginsF& _ret = self->operator-=(*margins);
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QMarginsF* QMarginsF_OperatorPlusAssignWithAddend(QMarginsF* self, double addend) {
-	QMarginsF& ret = self->operator+=(static_cast<qreal>(addend));
+	QMarginsF& _ret = self->operator+=(static_cast<qreal>(addend));
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QMarginsF* QMarginsF_OperatorMinusAssignWithSubtrahend(QMarginsF* self, double subtrahend) {
-	QMarginsF& ret = self->operator-=(static_cast<qreal>(subtrahend));
+	QMarginsF& _ret = self->operator-=(static_cast<qreal>(subtrahend));
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QMarginsF* QMarginsF_OperatorMultiplyAssign(QMarginsF* self, double factor) {
-	QMarginsF& ret = self->operator*=(static_cast<qreal>(factor));
+	QMarginsF& _ret = self->operator*=(static_cast<qreal>(factor));
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QMarginsF* QMarginsF_OperatorDivideAssign(QMarginsF* self, double divisor) {
-	QMarginsF& ret = self->operator/=(static_cast<qreal>(divisor));
+	QMarginsF& _ret = self->operator/=(static_cast<qreal>(divisor));
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QMargins* QMarginsF_ToMargins(const QMarginsF* self) {
-	QMargins ret = self->toMargins();
+	QMargins _ret = self->toMargins();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QMargins*>(new QMargins(ret));
+	return static_cast<QMargins*>(new QMargins(_ret));
 }
 
 void QMarginsF_Delete(QMarginsF* self) {

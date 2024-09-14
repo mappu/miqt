@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -36,8 +38,8 @@ typedef struct QWidget QWidget;
 QTableView* QTableView_new();
 QTableView* QTableView_new2(QWidget* parent);
 QMetaObject* QTableView_MetaObject(const QTableView* self);
-void QTableView_Tr(const char* s, char** _out, int* _out_Strlen);
-void QTableView_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QTableView_Tr(const char* s);
+struct miqt_string* QTableView_TrUtf8(const char* s);
 void QTableView_SetModel(QTableView* self, QAbstractItemModel* model);
 void QTableView_SetRootIndex(QTableView* self, QModelIndex* index);
 void QTableView_SetSelectionModel(QTableView* self, QItemSelectionModel* selectionModel);
@@ -87,10 +89,10 @@ void QTableView_ResizeColumnsToContents(QTableView* self);
 void QTableView_SortByColumn(QTableView* self, int column);
 void QTableView_SortByColumn2(QTableView* self, int column, uintptr_t order);
 void QTableView_SetShowGrid(QTableView* self, bool show);
-void QTableView_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QTableView_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QTableView_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QTableView_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QTableView_Tr2(const char* s, const char* c);
+struct miqt_string* QTableView_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QTableView_TrUtf82(const char* s, const char* c);
+struct miqt_string* QTableView_TrUtf83(const char* s, const char* c, int n);
 void QTableView_ScrollTo2(QTableView* self, QModelIndex* index, uintptr_t hint);
 void QTableView_Delete(QTableView* self);
 

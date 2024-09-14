@@ -36,41 +36,29 @@ func newQLayoutItem_U(h unsafe.Pointer) *QLayoutItem {
 }
 
 func (this *QLayoutItem) SizeHint() *QSize {
-	ret := C.QLayoutItem_SizeHint(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSize(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QLayoutItem_SizeHint(this.h)
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QLayoutItem) MinimumSize() *QSize {
-	ret := C.QLayoutItem_MinimumSize(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSize(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QLayoutItem_MinimumSize(this.h)
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QLayoutItem) MaximumSize() *QSize {
-	ret := C.QLayoutItem_MaximumSize(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSize(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QLayoutItem_MaximumSize(this.h)
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QLayoutItem) ExpandingDirections() int {
-	ret := C.QLayoutItem_ExpandingDirections(this.h)
-	return (int)(ret)
+	_ret := C.QLayoutItem_ExpandingDirections(this.h)
+	return (int)(_ret)
 }
 
 func (this *QLayoutItem) SetGeometry(geometry *QRect) {
@@ -78,34 +66,30 @@ func (this *QLayoutItem) SetGeometry(geometry *QRect) {
 }
 
 func (this *QLayoutItem) Geometry() *QRect {
-	ret := C.QLayoutItem_Geometry(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRect(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRect) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QLayoutItem_Geometry(this.h)
+	_goptr := newQRect(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QLayoutItem) IsEmpty() bool {
-	ret := C.QLayoutItem_IsEmpty(this.h)
-	return (bool)(ret)
+	_ret := C.QLayoutItem_IsEmpty(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QLayoutItem) HasHeightForWidth() bool {
-	ret := C.QLayoutItem_HasHeightForWidth(this.h)
-	return (bool)(ret)
+	_ret := C.QLayoutItem_HasHeightForWidth(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QLayoutItem) HeightForWidth(param1 int) int {
-	ret := C.QLayoutItem_HeightForWidth(this.h, (C.int)(param1))
-	return (int)(ret)
+	_ret := C.QLayoutItem_HeightForWidth(this.h, (C.int)(param1))
+	return (int)(_ret)
 }
 
 func (this *QLayoutItem) MinimumHeightForWidth(param1 int) int {
-	ret := C.QLayoutItem_MinimumHeightForWidth(this.h, (C.int)(param1))
-	return (int)(ret)
+	_ret := C.QLayoutItem_MinimumHeightForWidth(this.h, (C.int)(param1))
+	return (int)(_ret)
 }
 
 func (this *QLayoutItem) Invalidate() {
@@ -113,23 +97,23 @@ func (this *QLayoutItem) Invalidate() {
 }
 
 func (this *QLayoutItem) Widget() *QWidget {
-	ret := C.QLayoutItem_Widget(this.h)
-	return newQWidget_U(unsafe.Pointer(ret))
+	_ret := C.QLayoutItem_Widget(this.h)
+	return newQWidget_U(unsafe.Pointer(_ret))
 }
 
 func (this *QLayoutItem) Layout() *QLayout {
-	ret := C.QLayoutItem_Layout(this.h)
-	return newQLayout_U(unsafe.Pointer(ret))
+	_ret := C.QLayoutItem_Layout(this.h)
+	return newQLayout_U(unsafe.Pointer(_ret))
 }
 
 func (this *QLayoutItem) SpacerItem() *QSpacerItem {
-	ret := C.QLayoutItem_SpacerItem(this.h)
-	return newQSpacerItem_U(unsafe.Pointer(ret))
+	_ret := C.QLayoutItem_SpacerItem(this.h)
+	return newQSpacerItem_U(unsafe.Pointer(_ret))
 }
 
 func (this *QLayoutItem) Alignment() int {
-	ret := C.QLayoutItem_Alignment(this.h)
-	return (int)(ret)
+	_ret := C.QLayoutItem_Alignment(this.h)
+	return (int)(_ret)
 }
 
 func (this *QLayoutItem) SetAlignment(a int) {
@@ -137,12 +121,22 @@ func (this *QLayoutItem) SetAlignment(a int) {
 }
 
 func (this *QLayoutItem) ControlTypes() int {
-	ret := C.QLayoutItem_ControlTypes(this.h)
-	return (int)(ret)
+	_ret := C.QLayoutItem_ControlTypes(this.h)
+	return (int)(_ret)
 }
 
+// Delete this object from C++ memory.
 func (this *QLayoutItem) Delete() {
 	C.QLayoutItem_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QLayoutItem) GoGC() {
+	runtime.SetFinalizer(this, func(this *QLayoutItem) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
 
 type QSpacerItem struct {
@@ -197,46 +191,34 @@ func (this *QSpacerItem) ChangeSize(w int, h int) {
 }
 
 func (this *QSpacerItem) SizeHint() *QSize {
-	ret := C.QSpacerItem_SizeHint(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSize(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QSpacerItem_SizeHint(this.h)
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QSpacerItem) MinimumSize() *QSize {
-	ret := C.QSpacerItem_MinimumSize(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSize(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QSpacerItem_MinimumSize(this.h)
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QSpacerItem) MaximumSize() *QSize {
-	ret := C.QSpacerItem_MaximumSize(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSize(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QSpacerItem_MaximumSize(this.h)
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QSpacerItem) ExpandingDirections() int {
-	ret := C.QSpacerItem_ExpandingDirections(this.h)
-	return (int)(ret)
+	_ret := C.QSpacerItem_ExpandingDirections(this.h)
+	return (int)(_ret)
 }
 
 func (this *QSpacerItem) IsEmpty() bool {
-	ret := C.QSpacerItem_IsEmpty(this.h)
-	return (bool)(ret)
+	_ret := C.QSpacerItem_IsEmpty(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QSpacerItem) SetGeometry(geometry *QRect) {
@@ -244,30 +226,22 @@ func (this *QSpacerItem) SetGeometry(geometry *QRect) {
 }
 
 func (this *QSpacerItem) Geometry() *QRect {
-	ret := C.QSpacerItem_Geometry(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRect(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRect) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QSpacerItem_Geometry(this.h)
+	_goptr := newQRect(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QSpacerItem) SpacerItem() *QSpacerItem {
-	ret := C.QSpacerItem_SpacerItem(this.h)
-	return newQSpacerItem_U(unsafe.Pointer(ret))
+	_ret := C.QSpacerItem_SpacerItem(this.h)
+	return newQSpacerItem_U(unsafe.Pointer(_ret))
 }
 
 func (this *QSpacerItem) SizePolicy() *QSizePolicy {
-	ret := C.QSpacerItem_SizePolicy(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSizePolicy(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSizePolicy) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QSpacerItem_SizePolicy(this.h)
+	_goptr := newQSizePolicy(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QSpacerItem) ChangeSize3(w int, h int, hData QSizePolicy__Policy) {
@@ -278,8 +252,18 @@ func (this *QSpacerItem) ChangeSize4(w int, h int, hData QSizePolicy__Policy, vD
 	C.QSpacerItem_ChangeSize4(this.h, (C.int)(w), (C.int)(h), (C.uintptr_t)(hData), (C.uintptr_t)(vData))
 }
 
+// Delete this object from C++ memory.
 func (this *QSpacerItem) Delete() {
 	C.QSpacerItem_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QSpacerItem) GoGC() {
+	runtime.SetFinalizer(this, func(this *QSpacerItem) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
 
 type QWidgetItem struct {
@@ -312,46 +296,34 @@ func NewQWidgetItem(w *QWidget) *QWidgetItem {
 }
 
 func (this *QWidgetItem) SizeHint() *QSize {
-	ret := C.QWidgetItem_SizeHint(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSize(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QWidgetItem_SizeHint(this.h)
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QWidgetItem) MinimumSize() *QSize {
-	ret := C.QWidgetItem_MinimumSize(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSize(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QWidgetItem_MinimumSize(this.h)
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QWidgetItem) MaximumSize() *QSize {
-	ret := C.QWidgetItem_MaximumSize(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSize(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QWidgetItem_MaximumSize(this.h)
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QWidgetItem) ExpandingDirections() int {
-	ret := C.QWidgetItem_ExpandingDirections(this.h)
-	return (int)(ret)
+	_ret := C.QWidgetItem_ExpandingDirections(this.h)
+	return (int)(_ret)
 }
 
 func (this *QWidgetItem) IsEmpty() bool {
-	ret := C.QWidgetItem_IsEmpty(this.h)
-	return (bool)(ret)
+	_ret := C.QWidgetItem_IsEmpty(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QWidgetItem) SetGeometry(geometry *QRect) {
@@ -359,38 +331,44 @@ func (this *QWidgetItem) SetGeometry(geometry *QRect) {
 }
 
 func (this *QWidgetItem) Geometry() *QRect {
-	ret := C.QWidgetItem_Geometry(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRect(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRect) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QWidgetItem_Geometry(this.h)
+	_goptr := newQRect(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QWidgetItem) Widget() *QWidget {
-	ret := C.QWidgetItem_Widget(this.h)
-	return newQWidget_U(unsafe.Pointer(ret))
+	_ret := C.QWidgetItem_Widget(this.h)
+	return newQWidget_U(unsafe.Pointer(_ret))
 }
 
 func (this *QWidgetItem) HasHeightForWidth() bool {
-	ret := C.QWidgetItem_HasHeightForWidth(this.h)
-	return (bool)(ret)
+	_ret := C.QWidgetItem_HasHeightForWidth(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QWidgetItem) HeightForWidth(param1 int) int {
-	ret := C.QWidgetItem_HeightForWidth(this.h, (C.int)(param1))
-	return (int)(ret)
+	_ret := C.QWidgetItem_HeightForWidth(this.h, (C.int)(param1))
+	return (int)(_ret)
 }
 
 func (this *QWidgetItem) ControlTypes() int {
-	ret := C.QWidgetItem_ControlTypes(this.h)
-	return (int)(ret)
+	_ret := C.QWidgetItem_ControlTypes(this.h)
+	return (int)(_ret)
 }
 
+// Delete this object from C++ memory.
 func (this *QWidgetItem) Delete() {
 	C.QWidgetItem_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QWidgetItem) GoGC() {
+	runtime.SetFinalizer(this, func(this *QWidgetItem) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
 
 type QWidgetItemV2 struct {
@@ -423,43 +401,41 @@ func NewQWidgetItemV2(widget *QWidget) *QWidgetItemV2 {
 }
 
 func (this *QWidgetItemV2) SizeHint() *QSize {
-	ret := C.QWidgetItemV2_SizeHint(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSize(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QWidgetItemV2_SizeHint(this.h)
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QWidgetItemV2) MinimumSize() *QSize {
-	ret := C.QWidgetItemV2_MinimumSize(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSize(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QWidgetItemV2_MinimumSize(this.h)
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QWidgetItemV2) MaximumSize() *QSize {
-	ret := C.QWidgetItemV2_MaximumSize(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSize(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QWidgetItemV2_MaximumSize(this.h)
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QWidgetItemV2) HeightForWidth(width int) int {
-	ret := C.QWidgetItemV2_HeightForWidth(this.h, (C.int)(width))
-	return (int)(ret)
+	_ret := C.QWidgetItemV2_HeightForWidth(this.h, (C.int)(width))
+	return (int)(_ret)
 }
 
+// Delete this object from C++ memory.
 func (this *QWidgetItemV2) Delete() {
 	C.QWidgetItemV2_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QWidgetItemV2) GoGC() {
+	runtime.SetFinalizer(this, func(this *QWidgetItemV2) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

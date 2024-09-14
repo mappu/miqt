@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"runtime"
 	"unsafe"
 )
 
@@ -34,6 +35,16 @@ func newQScopedPointerPodDeleter_U(h unsafe.Pointer) *QScopedPointerPodDeleter {
 	return newQScopedPointerPodDeleter((*C.QScopedPointerPodDeleter)(h))
 }
 
+// Delete this object from C++ memory.
 func (this *QScopedPointerPodDeleter) Delete() {
 	C.QScopedPointerPodDeleter_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QScopedPointerPodDeleter) GoGC() {
+	runtime.SetFinalizer(this, func(this *QScopedPointerPodDeleter) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

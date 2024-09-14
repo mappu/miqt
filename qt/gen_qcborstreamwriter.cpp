@@ -2,12 +2,8 @@
 #include <QCborStreamWriter>
 #include <QIODevice>
 #include "qcborstreamwriter.h"
-
 #include "gen_qcborstreamwriter.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QCborStreamWriter* QCborStreamWriter_new(QIODevice* device) {
 	return new QCborStreamWriter(device);

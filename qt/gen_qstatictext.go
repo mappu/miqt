@@ -50,9 +50,9 @@ func NewQStaticText() *QStaticText {
 
 // NewQStaticText2 constructs a new QStaticText object.
 func NewQStaticText2(text string) *QStaticText {
-	text_Cstring := C.CString(text)
-	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QStaticText_new2(text_Cstring, C.size_t(len(text)))
+	text_ms := miqt_strdupg(text)
+	defer C.free(text_ms)
+	ret := C.QStaticText_new2((*C.struct_miqt_string)(text_ms))
 	return newQStaticText(ret)
 }
 
@@ -71,18 +71,16 @@ func (this *QStaticText) Swap(other *QStaticText) {
 }
 
 func (this *QStaticText) SetText(text string) {
-	text_Cstring := C.CString(text)
-	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QStaticText_SetText(this.h, text_Cstring, C.size_t(len(text)))
+	text_ms := miqt_strdupg(text)
+	defer C.free(text_ms)
+	C.QStaticText_SetText(this.h, (*C.struct_miqt_string)(text_ms))
 }
 
 func (this *QStaticText) Text() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QStaticText_Text(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QStaticText_Text(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QStaticText) SetTextFormat(textFormat TextFormat) {
@@ -90,8 +88,8 @@ func (this *QStaticText) SetTextFormat(textFormat TextFormat) {
 }
 
 func (this *QStaticText) TextFormat() TextFormat {
-	ret := C.QStaticText_TextFormat(this.h)
-	return (TextFormat)(ret)
+	_ret := C.QStaticText_TextFormat(this.h)
+	return (TextFormat)(_ret)
 }
 
 func (this *QStaticText) SetTextWidth(textWidth float64) {
@@ -99,8 +97,8 @@ func (this *QStaticText) SetTextWidth(textWidth float64) {
 }
 
 func (this *QStaticText) TextWidth() float64 {
-	ret := C.QStaticText_TextWidth(this.h)
-	return (float64)(ret)
+	_ret := C.QStaticText_TextWidth(this.h)
+	return (float64)(_ret)
 }
 
 func (this *QStaticText) SetTextOption(textOption *QTextOption) {
@@ -108,25 +106,17 @@ func (this *QStaticText) SetTextOption(textOption *QTextOption) {
 }
 
 func (this *QStaticText) TextOption() *QTextOption {
-	ret := C.QStaticText_TextOption(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQTextOption(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QTextOption) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QStaticText_TextOption(this.h)
+	_goptr := newQTextOption(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QStaticText) Size() *QSizeF {
-	ret := C.QStaticText_Size(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSizeF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSizeF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QStaticText_Size(this.h)
+	_goptr := newQSizeF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QStaticText) Prepare() {
@@ -138,18 +128,18 @@ func (this *QStaticText) SetPerformanceHint(performanceHint QStaticText__Perform
 }
 
 func (this *QStaticText) PerformanceHint() QStaticText__PerformanceHint {
-	ret := C.QStaticText_PerformanceHint(this.h)
-	return (QStaticText__PerformanceHint)(ret)
+	_ret := C.QStaticText_PerformanceHint(this.h)
+	return (QStaticText__PerformanceHint)(_ret)
 }
 
 func (this *QStaticText) OperatorEqual(param1 *QStaticText) bool {
-	ret := C.QStaticText_OperatorEqual(this.h, param1.cPointer())
-	return (bool)(ret)
+	_ret := C.QStaticText_OperatorEqual(this.h, param1.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QStaticText) OperatorNotEqual(param1 *QStaticText) bool {
-	ret := C.QStaticText_OperatorNotEqual(this.h, param1.cPointer())
-	return (bool)(ret)
+	_ret := C.QStaticText_OperatorNotEqual(this.h, param1.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QStaticText) Prepare1(matrix *QTransform) {
@@ -160,6 +150,16 @@ func (this *QStaticText) Prepare2(matrix *QTransform, font *QFont) {
 	C.QStaticText_Prepare2(this.h, matrix.cPointer(), font.cPointer())
 }
 
+// Delete this object from C++ memory.
 func (this *QStaticText) Delete() {
 	C.QStaticText_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QStaticText) GoGC() {
+	runtime.SetFinalizer(this, func(this *QStaticText) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

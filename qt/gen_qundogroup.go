@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"runtime"
 	"runtime/cgo"
 	"unsafe"
 )
@@ -49,30 +50,26 @@ func NewQUndoGroup2(parent *QObject) *QUndoGroup {
 }
 
 func (this *QUndoGroup) MetaObject() *QMetaObject {
-	ret := C.QUndoGroup_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QUndoGroup_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QUndoGroup_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QUndoGroup_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QUndoGroup_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QUndoGroup_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QUndoGroup_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QUndoGroup_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QUndoGroup) AddStack(stack *QUndoStack) {
@@ -84,64 +81,58 @@ func (this *QUndoGroup) RemoveStack(stack *QUndoStack) {
 }
 
 func (this *QUndoGroup) Stacks() []*QUndoStack {
-	var _out **C.QUndoStack = nil
-	var _out_len C.size_t = 0
-	C.QUndoGroup_Stacks(this.h, &_out, &_out_len)
-	ret := make([]*QUndoStack, int(_out_len))
-	_outCast := (*[0xffff]*C.QUndoStack)(unsafe.Pointer(_out)) // so fresh so clean
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = newQUndoStack(_outCast[i])
+	var _ma *C.struct_miqt_array = C.QUndoGroup_Stacks(this.h)
+	_ret := make([]*QUndoStack, int(_ma.len))
+	_outCast := (*[0xffff]*C.QUndoStack)(unsafe.Pointer(_ma.data)) // mrs jackson
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = newQUndoStack(_outCast[i])
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
 func (this *QUndoGroup) ActiveStack() *QUndoStack {
-	ret := C.QUndoGroup_ActiveStack(this.h)
-	return newQUndoStack_U(unsafe.Pointer(ret))
+	_ret := C.QUndoGroup_ActiveStack(this.h)
+	return newQUndoStack_U(unsafe.Pointer(_ret))
 }
 
 func (this *QUndoGroup) CreateUndoAction(parent *QObject) *QAction {
-	ret := C.QUndoGroup_CreateUndoAction(this.h, parent.cPointer())
-	return newQAction_U(unsafe.Pointer(ret))
+	_ret := C.QUndoGroup_CreateUndoAction(this.h, parent.cPointer())
+	return newQAction_U(unsafe.Pointer(_ret))
 }
 
 func (this *QUndoGroup) CreateRedoAction(parent *QObject) *QAction {
-	ret := C.QUndoGroup_CreateRedoAction(this.h, parent.cPointer())
-	return newQAction_U(unsafe.Pointer(ret))
+	_ret := C.QUndoGroup_CreateRedoAction(this.h, parent.cPointer())
+	return newQAction_U(unsafe.Pointer(_ret))
 }
 
 func (this *QUndoGroup) CanUndo() bool {
-	ret := C.QUndoGroup_CanUndo(this.h)
-	return (bool)(ret)
+	_ret := C.QUndoGroup_CanUndo(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QUndoGroup) CanRedo() bool {
-	ret := C.QUndoGroup_CanRedo(this.h)
-	return (bool)(ret)
+	_ret := C.QUndoGroup_CanRedo(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QUndoGroup) UndoText() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QUndoGroup_UndoText(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QUndoGroup_UndoText(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QUndoGroup) RedoText() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QUndoGroup_RedoText(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QUndoGroup_RedoText(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QUndoGroup) IsClean() bool {
-	ret := C.QUndoGroup_IsClean(this.h)
-	return (bool)(ret)
+	_ret := C.QUndoGroup_IsClean(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QUndoGroup) Undo() {
@@ -159,89 +150,156 @@ func (this *QUndoGroup) SetActiveStack(stack *QUndoStack) {
 func (this *QUndoGroup) ActiveStackChanged(stack *QUndoStack) {
 	C.QUndoGroup_ActiveStackChanged(this.h, stack.cPointer())
 }
+func (this *QUndoGroup) OnActiveStackChanged(slot func(stack *QUndoStack)) {
+	C.QUndoGroup_connect_ActiveStackChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QUndoGroup) OnActiveStackChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QUndoGroup_ActiveStackChanged
+func miqt_exec_callback_QUndoGroup_ActiveStackChanged(cb *C.void, stack *C.QUndoStack) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(stack *QUndoStack))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QUndoGroup_connect_ActiveStackChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	stack_ret := stack
+	slotval1 := newQUndoStack_U(unsafe.Pointer(stack_ret))
+
+	gofunc(slotval1)
 }
 
 func (this *QUndoGroup) IndexChanged(idx int) {
 	C.QUndoGroup_IndexChanged(this.h, (C.int)(idx))
 }
+func (this *QUndoGroup) OnIndexChanged(slot func(idx int)) {
+	C.QUndoGroup_connect_IndexChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QUndoGroup) OnIndexChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QUndoGroup_IndexChanged
+func miqt_exec_callback_QUndoGroup_IndexChanged(cb *C.void, idx C.int) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(idx int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QUndoGroup_connect_IndexChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	idx_ret := idx
+	slotval1 := (int)(idx_ret)
+
+	gofunc(slotval1)
 }
 
 func (this *QUndoGroup) CleanChanged(clean bool) {
 	C.QUndoGroup_CleanChanged(this.h, (C.bool)(clean))
 }
+func (this *QUndoGroup) OnCleanChanged(slot func(clean bool)) {
+	C.QUndoGroup_connect_CleanChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QUndoGroup) OnCleanChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QUndoGroup_CleanChanged
+func miqt_exec_callback_QUndoGroup_CleanChanged(cb *C.void, clean C.bool) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(clean bool))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QUndoGroup_connect_CleanChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	clean_ret := clean
+	slotval1 := (bool)(clean_ret)
+
+	gofunc(slotval1)
 }
 
 func (this *QUndoGroup) CanUndoChanged(canUndo bool) {
 	C.QUndoGroup_CanUndoChanged(this.h, (C.bool)(canUndo))
 }
+func (this *QUndoGroup) OnCanUndoChanged(slot func(canUndo bool)) {
+	C.QUndoGroup_connect_CanUndoChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QUndoGroup) OnCanUndoChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QUndoGroup_CanUndoChanged
+func miqt_exec_callback_QUndoGroup_CanUndoChanged(cb *C.void, canUndo C.bool) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(canUndo bool))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QUndoGroup_connect_CanUndoChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	canUndo_ret := canUndo
+	slotval1 := (bool)(canUndo_ret)
+
+	gofunc(slotval1)
 }
 
 func (this *QUndoGroup) CanRedoChanged(canRedo bool) {
 	C.QUndoGroup_CanRedoChanged(this.h, (C.bool)(canRedo))
 }
+func (this *QUndoGroup) OnCanRedoChanged(slot func(canRedo bool)) {
+	C.QUndoGroup_connect_CanRedoChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QUndoGroup) OnCanRedoChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QUndoGroup_CanRedoChanged
+func miqt_exec_callback_QUndoGroup_CanRedoChanged(cb *C.void, canRedo C.bool) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(canRedo bool))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QUndoGroup_connect_CanRedoChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	canRedo_ret := canRedo
+	slotval1 := (bool)(canRedo_ret)
+
+	gofunc(slotval1)
 }
 
 func (this *QUndoGroup) UndoTextChanged(undoText string) {
-	undoText_Cstring := C.CString(undoText)
-	defer C.free(unsafe.Pointer(undoText_Cstring))
-	C.QUndoGroup_UndoTextChanged(this.h, undoText_Cstring, C.size_t(len(undoText)))
+	undoText_ms := miqt_strdupg(undoText)
+	defer C.free(undoText_ms)
+	C.QUndoGroup_UndoTextChanged(this.h, (*C.struct_miqt_string)(undoText_ms))
+}
+func (this *QUndoGroup) OnUndoTextChanged(slot func(undoText string)) {
+	C.QUndoGroup_connect_UndoTextChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
 }
 
-func (this *QUndoGroup) OnUndoTextChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QUndoGroup_UndoTextChanged
+func miqt_exec_callback_QUndoGroup_UndoTextChanged(cb *C.void, undoText *C.struct_miqt_string) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(undoText string))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QUndoGroup_connect_UndoTextChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	var undoText_ms *C.struct_miqt_string = undoText
+	undoText_ret := C.GoStringN(&undoText_ms.data, C.int(int64(undoText_ms.len)))
+	C.free(unsafe.Pointer(undoText_ms))
+	slotval1 := undoText_ret
+
+	gofunc(slotval1)
 }
 
 func (this *QUndoGroup) RedoTextChanged(redoText string) {
-	redoText_Cstring := C.CString(redoText)
-	defer C.free(unsafe.Pointer(redoText_Cstring))
-	C.QUndoGroup_RedoTextChanged(this.h, redoText_Cstring, C.size_t(len(redoText)))
+	redoText_ms := miqt_strdupg(redoText)
+	defer C.free(redoText_ms)
+	C.QUndoGroup_RedoTextChanged(this.h, (*C.struct_miqt_string)(redoText_ms))
+}
+func (this *QUndoGroup) OnRedoTextChanged(slot func(redoText string)) {
+	C.QUndoGroup_connect_RedoTextChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
 }
 
-func (this *QUndoGroup) OnRedoTextChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QUndoGroup_RedoTextChanged
+func miqt_exec_callback_QUndoGroup_RedoTextChanged(cb *C.void, redoText *C.struct_miqt_string) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(redoText string))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QUndoGroup_connect_RedoTextChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	var redoText_ms *C.struct_miqt_string = redoText
+	redoText_ret := C.GoStringN(&redoText_ms.data, C.int(int64(redoText_ms.len)))
+	C.free(unsafe.Pointer(redoText_ms))
+	slotval1 := redoText_ret
+
+	gofunc(slotval1)
 }
 
 func QUndoGroup_Tr2(s string, c string) string {
@@ -249,12 +307,10 @@ func QUndoGroup_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QUndoGroup_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QUndoGroup_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QUndoGroup_Tr3(s string, c string, n int) string {
@@ -262,12 +318,10 @@ func QUndoGroup_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QUndoGroup_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QUndoGroup_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QUndoGroup_TrUtf82(s string, c string) string {
@@ -275,12 +329,10 @@ func QUndoGroup_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QUndoGroup_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QUndoGroup_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QUndoGroup_TrUtf83(s string, c string, n int) string {
@@ -288,28 +340,36 @@ func QUndoGroup_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QUndoGroup_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QUndoGroup_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QUndoGroup) CreateUndoAction2(parent *QObject, prefix string) *QAction {
-	prefix_Cstring := C.CString(prefix)
-	defer C.free(unsafe.Pointer(prefix_Cstring))
-	ret := C.QUndoGroup_CreateUndoAction2(this.h, parent.cPointer(), prefix_Cstring, C.size_t(len(prefix)))
-	return newQAction_U(unsafe.Pointer(ret))
+	prefix_ms := miqt_strdupg(prefix)
+	defer C.free(prefix_ms)
+	_ret := C.QUndoGroup_CreateUndoAction2(this.h, parent.cPointer(), (*C.struct_miqt_string)(prefix_ms))
+	return newQAction_U(unsafe.Pointer(_ret))
 }
 
 func (this *QUndoGroup) CreateRedoAction2(parent *QObject, prefix string) *QAction {
-	prefix_Cstring := C.CString(prefix)
-	defer C.free(unsafe.Pointer(prefix_Cstring))
-	ret := C.QUndoGroup_CreateRedoAction2(this.h, parent.cPointer(), prefix_Cstring, C.size_t(len(prefix)))
-	return newQAction_U(unsafe.Pointer(ret))
+	prefix_ms := miqt_strdupg(prefix)
+	defer C.free(prefix_ms)
+	_ret := C.QUndoGroup_CreateRedoAction2(this.h, parent.cPointer(), (*C.struct_miqt_string)(prefix_ms))
+	return newQAction_U(unsafe.Pointer(_ret))
 }
 
+// Delete this object from C++ memory.
 func (this *QUndoGroup) Delete() {
 	C.QUndoGroup_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QUndoGroup) GoGC() {
+	runtime.SetFinalizer(this, func(this *QUndoGroup) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

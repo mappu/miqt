@@ -6,12 +6,8 @@
 #include <cstring>
 #include <QWidget>
 #include "qdialog.h"
-
 #include "gen_qdialog.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QDialog* QDialog_new() {
 	return new QDialog();
@@ -29,22 +25,18 @@ QMetaObject* QDialog_MetaObject(const QDialog* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void QDialog_Tr(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QDialog::tr(s);
+struct miqt_string* QDialog_Tr(const char* s) {
+	QString _ret = QDialog::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QDialog_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QDialog::trUtf8(s);
+struct miqt_string* QDialog_TrUtf8(const char* s) {
+	QString _ret = QDialog::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 int QDialog_Result(const QDialog* self) {
@@ -60,8 +52,8 @@ void QDialog_SetOrientation(QDialog* self, uintptr_t orientation) {
 }
 
 uintptr_t QDialog_Orientation(const QDialog* self) {
-	Qt::Orientation ret = self->orientation();
-	return static_cast<uintptr_t>(ret);
+	Qt::Orientation _ret = self->orientation();
+	return static_cast<uintptr_t>(_ret);
 }
 
 void QDialog_SetExtension(QDialog* self, QWidget* extension) {
@@ -73,15 +65,15 @@ QWidget* QDialog_Extension(const QDialog* self) {
 }
 
 QSize* QDialog_SizeHint(const QDialog* self) {
-	QSize ret = self->sizeHint();
+	QSize _ret = self->sizeHint();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(ret));
+	return static_cast<QSize*>(new QSize(_ret));
 }
 
 QSize* QDialog_MinimumSizeHint(const QDialog* self) {
-	QSize ret = self->minimumSizeHint();
+	QSize _ret = self->minimumSizeHint();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(ret));
+	return static_cast<QSize*>(new QSize(_ret));
 }
 
 void QDialog_SetSizeGripEnabled(QDialog* self, bool sizeGripEnabled) {
@@ -106,7 +98,8 @@ void QDialog_Finished(QDialog* self, int result) {
 
 void QDialog_connect_Finished(QDialog* self, void* slot) {
 	QDialog::connect(self, static_cast<void (QDialog::*)(int)>(&QDialog::finished), self, [=](int result) {
-		miqt_exec_callback(slot, 0, nullptr);
+		int sigval1 = result;
+		miqt_exec_callback_QDialog_Finished(slot, sigval1);
 	});
 }
 
@@ -116,7 +109,7 @@ void QDialog_Accepted(QDialog* self) {
 
 void QDialog_connect_Accepted(QDialog* self, void* slot) {
 	QDialog::connect(self, static_cast<void (QDialog::*)()>(&QDialog::accepted), self, [=]() {
-		miqt_exec_callback(slot, 0, nullptr);
+		miqt_exec_callback_QDialog_Accepted(slot);
 	});
 }
 
@@ -126,7 +119,7 @@ void QDialog_Rejected(QDialog* self) {
 
 void QDialog_connect_Rejected(QDialog* self, void* slot) {
 	QDialog::connect(self, static_cast<void (QDialog::*)()>(&QDialog::rejected), self, [=]() {
-		miqt_exec_callback(slot, 0, nullptr);
+		miqt_exec_callback_QDialog_Rejected(slot);
 	});
 }
 
@@ -154,40 +147,32 @@ void QDialog_ShowExtension(QDialog* self, bool param1) {
 	self->showExtension(param1);
 }
 
-void QDialog_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QDialog::tr(s, c);
+struct miqt_string* QDialog_Tr2(const char* s, const char* c) {
+	QString _ret = QDialog::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QDialog_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QDialog::tr(s, c, static_cast<int>(n));
+struct miqt_string* QDialog_Tr3(const char* s, const char* c, int n) {
+	QString _ret = QDialog::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QDialog_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QDialog::trUtf8(s, c);
+struct miqt_string* QDialog_TrUtf82(const char* s, const char* c) {
+	QString _ret = QDialog::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QDialog_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QDialog::trUtf8(s, c, static_cast<int>(n));
+struct miqt_string* QDialog_TrUtf83(const char* s, const char* c, int n) {
+	QString _ret = QDialog::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QDialog_Delete(QDialog* self) {

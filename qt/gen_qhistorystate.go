@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"runtime"
 	"unsafe"
 )
 
@@ -67,35 +68,31 @@ func NewQHistoryState4(typeVal QHistoryState__HistoryType, parent *QState) *QHis
 }
 
 func (this *QHistoryState) MetaObject() *QMetaObject {
-	ret := C.QHistoryState_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QHistoryState_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QHistoryState_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QHistoryState_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QHistoryState_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QHistoryState_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QHistoryState_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QHistoryState_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QHistoryState) DefaultTransition() *QAbstractTransition {
-	ret := C.QHistoryState_DefaultTransition(this.h)
-	return newQAbstractTransition_U(unsafe.Pointer(ret))
+	_ret := C.QHistoryState_DefaultTransition(this.h)
+	return newQAbstractTransition_U(unsafe.Pointer(_ret))
 }
 
 func (this *QHistoryState) SetDefaultTransition(transition *QAbstractTransition) {
@@ -103,8 +100,8 @@ func (this *QHistoryState) SetDefaultTransition(transition *QAbstractTransition)
 }
 
 func (this *QHistoryState) DefaultState() *QAbstractState {
-	ret := C.QHistoryState_DefaultState(this.h)
-	return newQAbstractState_U(unsafe.Pointer(ret))
+	_ret := C.QHistoryState_DefaultState(this.h)
+	return newQAbstractState_U(unsafe.Pointer(_ret))
 }
 
 func (this *QHistoryState) SetDefaultState(state *QAbstractState) {
@@ -112,8 +109,8 @@ func (this *QHistoryState) SetDefaultState(state *QAbstractState) {
 }
 
 func (this *QHistoryState) HistoryType() QHistoryState__HistoryType {
-	ret := C.QHistoryState_HistoryType(this.h)
-	return (QHistoryState__HistoryType)(ret)
+	_ret := C.QHistoryState_HistoryType(this.h)
+	return (QHistoryState__HistoryType)(_ret)
 }
 
 func (this *QHistoryState) SetHistoryType(typeVal QHistoryState__HistoryType) {
@@ -125,12 +122,10 @@ func QHistoryState_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QHistoryState_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QHistoryState_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QHistoryState_Tr3(s string, c string, n int) string {
@@ -138,12 +133,10 @@ func QHistoryState_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QHistoryState_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QHistoryState_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QHistoryState_TrUtf82(s string, c string) string {
@@ -151,12 +144,10 @@ func QHistoryState_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QHistoryState_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QHistoryState_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QHistoryState_TrUtf83(s string, c string, n int) string {
@@ -164,14 +155,22 @@ func QHistoryState_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QHistoryState_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QHistoryState_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
+// Delete this object from C++ memory.
 func (this *QHistoryState) Delete() {
 	C.QHistoryState_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QHistoryState) GoGC() {
+	runtime.SetFinalizer(this, func(this *QHistoryState) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

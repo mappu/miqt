@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -28,8 +30,8 @@ QLCDNumber* QLCDNumber_new2(unsigned int numDigits);
 QLCDNumber* QLCDNumber_new3(QWidget* parent);
 QLCDNumber* QLCDNumber_new4(unsigned int numDigits, QWidget* parent);
 QMetaObject* QLCDNumber_MetaObject(const QLCDNumber* self);
-void QLCDNumber_Tr(const char* s, char** _out, int* _out_Strlen);
-void QLCDNumber_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QLCDNumber_Tr(const char* s);
+struct miqt_string* QLCDNumber_TrUtf8(const char* s);
 bool QLCDNumber_SmallDecimalPoint(const QLCDNumber* self);
 int QLCDNumber_DigitCount(const QLCDNumber* self);
 void QLCDNumber_SetDigitCount(QLCDNumber* self, int nDigits);
@@ -42,7 +44,7 @@ void QLCDNumber_SetSegmentStyle(QLCDNumber* self, uintptr_t segmentStyle);
 double QLCDNumber_Value(const QLCDNumber* self);
 int QLCDNumber_IntValue(const QLCDNumber* self);
 QSize* QLCDNumber_SizeHint(const QLCDNumber* self);
-void QLCDNumber_Display(QLCDNumber* self, const char* str, size_t str_Strlen);
+void QLCDNumber_Display(QLCDNumber* self, struct miqt_string* str);
 void QLCDNumber_DisplayWithNum(QLCDNumber* self, int num);
 void QLCDNumber_Display2(QLCDNumber* self, double num);
 void QLCDNumber_SetHexMode(QLCDNumber* self);
@@ -52,10 +54,10 @@ void QLCDNumber_SetBinMode(QLCDNumber* self);
 void QLCDNumber_SetSmallDecimalPoint(QLCDNumber* self, bool smallDecimalPoint);
 void QLCDNumber_Overflow(QLCDNumber* self);
 void QLCDNumber_connect_Overflow(QLCDNumber* self, void* slot);
-void QLCDNumber_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QLCDNumber_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QLCDNumber_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QLCDNumber_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QLCDNumber_Tr2(const char* s, const char* c);
+struct miqt_string* QLCDNumber_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QLCDNumber_TrUtf82(const char* s, const char* c);
+struct miqt_string* QLCDNumber_TrUtf83(const char* s, const char* c, int n);
 void QLCDNumber_Delete(QLCDNumber* self);
 
 #ifdef __cplusplus

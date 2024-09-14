@@ -1,11 +1,7 @@
 #include <QSizePolicy>
 #include "qsizepolicy.h"
-
 #include "gen_qsizepolicy.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QSizePolicy* QSizePolicy_new() {
 	return new QSizePolicy();
@@ -24,18 +20,18 @@ QSizePolicy* QSizePolicy_new4(uintptr_t horizontal, uintptr_t vertical, uintptr_
 }
 
 uintptr_t QSizePolicy_HorizontalPolicy(const QSizePolicy* self) {
-	QSizePolicy::Policy ret = self->horizontalPolicy();
-	return static_cast<uintptr_t>(ret);
+	QSizePolicy::Policy _ret = self->horizontalPolicy();
+	return static_cast<uintptr_t>(_ret);
 }
 
 uintptr_t QSizePolicy_VerticalPolicy(const QSizePolicy* self) {
-	QSizePolicy::Policy ret = self->verticalPolicy();
-	return static_cast<uintptr_t>(ret);
+	QSizePolicy::Policy _ret = self->verticalPolicy();
+	return static_cast<uintptr_t>(_ret);
 }
 
 uintptr_t QSizePolicy_ControlType(const QSizePolicy* self) {
-	QSizePolicy::ControlType ret = self->controlType();
-	return static_cast<uintptr_t>(ret);
+	QSizePolicy::ControlType _ret = self->controlType();
+	return static_cast<uintptr_t>(_ret);
 }
 
 void QSizePolicy_SetHorizontalPolicy(QSizePolicy* self, uintptr_t d) {
@@ -51,8 +47,8 @@ void QSizePolicy_SetControlType(QSizePolicy* self, uintptr_t typeVal) {
 }
 
 int QSizePolicy_ExpandingDirections(const QSizePolicy* self) {
-	Qt::Orientations ret = self->expandingDirections();
-	return static_cast<int>(ret);
+	Qt::Orientations _ret = self->expandingDirections();
+	return static_cast<int>(_ret);
 }
 
 void QSizePolicy_SetHeightForWidth(QSizePolicy* self, bool b) {
@@ -108,9 +104,9 @@ void QSizePolicy_Transpose(QSizePolicy* self) {
 }
 
 QSizePolicy* QSizePolicy_Transposed(const QSizePolicy* self) {
-	QSizePolicy ret = self->transposed();
+	QSizePolicy _ret = self->transposed();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSizePolicy*>(new QSizePolicy(ret));
+	return static_cast<QSizePolicy*>(new QSizePolicy(_ret));
 }
 
 void QSizePolicy_Delete(QSizePolicy* self) {

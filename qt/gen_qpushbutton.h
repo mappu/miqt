@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -28,14 +30,14 @@ typedef struct QWidget QWidget;
 #endif
 
 QPushButton* QPushButton_new();
-QPushButton* QPushButton_new2(const char* text, size_t text_Strlen);
-QPushButton* QPushButton_new3(QIcon* icon, const char* text, size_t text_Strlen);
+QPushButton* QPushButton_new2(struct miqt_string* text);
+QPushButton* QPushButton_new3(QIcon* icon, struct miqt_string* text);
 QPushButton* QPushButton_new4(QWidget* parent);
-QPushButton* QPushButton_new5(const char* text, size_t text_Strlen, QWidget* parent);
-QPushButton* QPushButton_new6(QIcon* icon, const char* text, size_t text_Strlen, QWidget* parent);
+QPushButton* QPushButton_new5(struct miqt_string* text, QWidget* parent);
+QPushButton* QPushButton_new6(QIcon* icon, struct miqt_string* text, QWidget* parent);
 QMetaObject* QPushButton_MetaObject(const QPushButton* self);
-void QPushButton_Tr(const char* s, char** _out, int* _out_Strlen);
-void QPushButton_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QPushButton_Tr(const char* s);
+struct miqt_string* QPushButton_TrUtf8(const char* s);
 QSize* QPushButton_SizeHint(const QPushButton* self);
 QSize* QPushButton_MinimumSizeHint(const QPushButton* self);
 bool QPushButton_AutoDefault(const QPushButton* self);
@@ -47,10 +49,10 @@ QMenu* QPushButton_Menu(const QPushButton* self);
 void QPushButton_SetFlat(QPushButton* self, bool flat);
 bool QPushButton_IsFlat(const QPushButton* self);
 void QPushButton_ShowMenu(QPushButton* self);
-void QPushButton_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QPushButton_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QPushButton_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QPushButton_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QPushButton_Tr2(const char* s, const char* c);
+struct miqt_string* QPushButton_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QPushButton_TrUtf82(const char* s, const char* c);
+struct miqt_string* QPushButton_TrUtf83(const char* s, const char* c, int n);
 void QPushButton_Delete(QPushButton* self);
 
 #ifdef __cplusplus

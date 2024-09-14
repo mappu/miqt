@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"runtime"
 	"unsafe"
 )
 
@@ -76,6 +77,16 @@ func NewQTileRules4(rule TileRule) *QTileRules {
 	return newQTileRules(ret)
 }
 
+// Delete this object from C++ memory.
 func (this *QTileRules) Delete() {
 	C.QTileRules_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QTileRules) GoGC() {
+	runtime.SetFinalizer(this, func(this *QTileRules) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

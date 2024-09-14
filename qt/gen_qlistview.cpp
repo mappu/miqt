@@ -10,12 +10,8 @@
 #include <cstring>
 #include <QWidget>
 #include "qlistview.h"
-
 #include "gen_qlistview.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QListView* QListView_new() {
 	return new QListView();
@@ -29,22 +25,18 @@ QMetaObject* QListView_MetaObject(const QListView* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void QListView_Tr(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QListView::tr(s);
+struct miqt_string* QListView_Tr(const char* s) {
+	QString _ret = QListView::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QListView_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QListView::trUtf8(s);
+struct miqt_string* QListView_TrUtf8(const char* s) {
+	QString _ret = QListView::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QListView_SetMovement(QListView* self, uintptr_t movement) {
@@ -52,8 +44,8 @@ void QListView_SetMovement(QListView* self, uintptr_t movement) {
 }
 
 uintptr_t QListView_Movement(const QListView* self) {
-	QListView::Movement ret = self->movement();
-	return static_cast<uintptr_t>(ret);
+	QListView::Movement _ret = self->movement();
+	return static_cast<uintptr_t>(_ret);
 }
 
 void QListView_SetFlow(QListView* self, uintptr_t flow) {
@@ -61,8 +53,8 @@ void QListView_SetFlow(QListView* self, uintptr_t flow) {
 }
 
 uintptr_t QListView_Flow(const QListView* self) {
-	QListView::Flow ret = self->flow();
-	return static_cast<uintptr_t>(ret);
+	QListView::Flow _ret = self->flow();
+	return static_cast<uintptr_t>(_ret);
 }
 
 void QListView_SetWrapping(QListView* self, bool enable) {
@@ -78,8 +70,8 @@ void QListView_SetResizeMode(QListView* self, uintptr_t mode) {
 }
 
 uintptr_t QListView_ResizeMode(const QListView* self) {
-	QListView::ResizeMode ret = self->resizeMode();
-	return static_cast<uintptr_t>(ret);
+	QListView::ResizeMode _ret = self->resizeMode();
+	return static_cast<uintptr_t>(_ret);
 }
 
 void QListView_SetLayoutMode(QListView* self, uintptr_t mode) {
@@ -87,8 +79,8 @@ void QListView_SetLayoutMode(QListView* self, uintptr_t mode) {
 }
 
 uintptr_t QListView_LayoutMode(const QListView* self) {
-	QListView::LayoutMode ret = self->layoutMode();
-	return static_cast<uintptr_t>(ret);
+	QListView::LayoutMode _ret = self->layoutMode();
+	return static_cast<uintptr_t>(_ret);
 }
 
 void QListView_SetSpacing(QListView* self, int space) {
@@ -112,9 +104,9 @@ void QListView_SetGridSize(QListView* self, QSize* size) {
 }
 
 QSize* QListView_GridSize(const QListView* self) {
-	QSize ret = self->gridSize();
+	QSize _ret = self->gridSize();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(ret));
+	return static_cast<QSize*>(new QSize(_ret));
 }
 
 void QListView_SetViewMode(QListView* self, uintptr_t mode) {
@@ -122,8 +114,8 @@ void QListView_SetViewMode(QListView* self, uintptr_t mode) {
 }
 
 uintptr_t QListView_ViewMode(const QListView* self) {
-	QListView::ViewMode ret = self->viewMode();
-	return static_cast<uintptr_t>(ret);
+	QListView::ViewMode _ret = self->viewMode();
+	return static_cast<uintptr_t>(_ret);
 }
 
 void QListView_ClearPropertyFlags(QListView* self) {
@@ -175,14 +167,14 @@ void QListView_SetItemAlignment(QListView* self, int alignment) {
 }
 
 int QListView_ItemAlignment(const QListView* self) {
-	Qt::Alignment ret = self->itemAlignment();
-	return static_cast<int>(ret);
+	Qt::Alignment _ret = self->itemAlignment();
+	return static_cast<int>(_ret);
 }
 
 QRect* QListView_VisualRect(const QListView* self, QModelIndex* index) {
-	QRect ret = self->visualRect(*index);
+	QRect _ret = self->visualRect(*index);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(ret));
+	return static_cast<QRect*>(new QRect(_ret));
 }
 
 void QListView_ScrollTo(QListView* self, QModelIndex* index) {
@@ -190,9 +182,9 @@ void QListView_ScrollTo(QListView* self, QModelIndex* index) {
 }
 
 QModelIndex* QListView_IndexAt(const QListView* self, QPoint* p) {
-	QModelIndex ret = self->indexAt(*p);
+	QModelIndex _ret = self->indexAt(*p);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QModelIndex*>(new QModelIndex(ret));
+	return static_cast<QModelIndex*>(new QModelIndex(_ret));
 }
 
 void QListView_DoItemsLayout(QListView* self) {
@@ -207,55 +199,58 @@ void QListView_SetRootIndex(QListView* self, QModelIndex* index) {
 	self->setRootIndex(*index);
 }
 
-void QListView_IndexesMoved(QListView* self, QModelIndex** indexes, size_t indexes_len) {
+void QListView_IndexesMoved(QListView* self, struct miqt_array* /* of QModelIndex */ indexes) {
 	QList<QModelIndex> indexes_QList;
-	indexes_QList.reserve(indexes_len);
-	for(size_t i = 0; i < indexes_len; ++i) {
-		indexes_QList.push_back(*(indexes[i]));
+	indexes_QList.reserve(indexes->len);
+	QModelIndex** indexes_arr = static_cast<QModelIndex**>(indexes->data);
+	for(size_t i = 0; i < indexes->len; ++i) {
+		indexes_QList.push_back(*(indexes_arr[i]));
 	}
 	self->indexesMoved(indexes_QList);
 }
 
 void QListView_connect_IndexesMoved(QListView* self, void* slot) {
 	QListView::connect(self, static_cast<void (QListView::*)(const QModelIndexList&)>(&QListView::indexesMoved), self, [=](const QModelIndexList& indexes) {
-		miqt_exec_callback(slot, 0, nullptr);
+		const QModelIndexList& indexes_ret = indexes;
+		// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
+		QModelIndex** indexes_arr = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex**) * indexes_ret.length()));
+		for (size_t i = 0, e = indexes_ret.length(); i < e; ++i) {
+			indexes_arr[i] = new QModelIndex(indexes_ret[i]);
+		}
+		struct miqt_array* indexes_out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
+		indexes_out->len = indexes_ret.length();
+		indexes_out->data = static_cast<void*>(indexes_arr);
+		struct miqt_array* sigval1 = indexes_out;
+		miqt_exec_callback_QListView_IndexesMoved(slot, sigval1);
 	});
 }
 
-void QListView_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QListView::tr(s, c);
+struct miqt_string* QListView_Tr2(const char* s, const char* c) {
+	QString _ret = QListView::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QListView_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QListView::tr(s, c, static_cast<int>(n));
+struct miqt_string* QListView_Tr3(const char* s, const char* c, int n) {
+	QString _ret = QListView::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QListView_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QListView::trUtf8(s, c);
+struct miqt_string* QListView_TrUtf82(const char* s, const char* c) {
+	QString _ret = QListView::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QListView_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QListView::trUtf8(s, c, static_cast<int>(n));
+struct miqt_string* QListView_TrUtf83(const char* s, const char* c, int n) {
+	QString _ret = QListView::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QListView_ScrollTo2(QListView* self, QModelIndex* index, uintptr_t hint) {

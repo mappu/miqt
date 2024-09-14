@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -32,8 +34,8 @@ typedef struct QWidget QWidget;
 QCalendarWidget* QCalendarWidget_new();
 QCalendarWidget* QCalendarWidget_new2(QWidget* parent);
 QMetaObject* QCalendarWidget_MetaObject(const QCalendarWidget* self);
-void QCalendarWidget_Tr(const char* s, char** _out, int* _out_Strlen);
-void QCalendarWidget_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QCalendarWidget_Tr(const char* s);
+struct miqt_string* QCalendarWidget_TrUtf8(const char* s);
 QSize* QCalendarWidget_SizeHint(const QCalendarWidget* self);
 QSize* QCalendarWidget_MinimumSizeHint(const QCalendarWidget* self);
 QDate* QCalendarWidget_SelectedDate(const QCalendarWidget* self);
@@ -84,10 +86,10 @@ void QCalendarWidget_Activated(QCalendarWidget* self, QDate* date);
 void QCalendarWidget_connect_Activated(QCalendarWidget* self, void* slot);
 void QCalendarWidget_CurrentPageChanged(QCalendarWidget* self, int year, int month);
 void QCalendarWidget_connect_CurrentPageChanged(QCalendarWidget* self, void* slot);
-void QCalendarWidget_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QCalendarWidget_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QCalendarWidget_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QCalendarWidget_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QCalendarWidget_Tr2(const char* s, const char* c);
+struct miqt_string* QCalendarWidget_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QCalendarWidget_TrUtf82(const char* s, const char* c);
+struct miqt_string* QCalendarWidget_TrUtf83(const char* s, const char* c, int n);
 void QCalendarWidget_Delete(QCalendarWidget* self);
 
 #ifdef __cplusplus

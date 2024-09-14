@@ -44,17 +44,17 @@ func NewQPushButton() *QPushButton {
 
 // NewQPushButton2 constructs a new QPushButton object.
 func NewQPushButton2(text string) *QPushButton {
-	text_Cstring := C.CString(text)
-	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QPushButton_new2(text_Cstring, C.size_t(len(text)))
+	text_ms := miqt_strdupg(text)
+	defer C.free(text_ms)
+	ret := C.QPushButton_new2((*C.struct_miqt_string)(text_ms))
 	return newQPushButton(ret)
 }
 
 // NewQPushButton3 constructs a new QPushButton object.
 func NewQPushButton3(icon *QIcon, text string) *QPushButton {
-	text_Cstring := C.CString(text)
-	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QPushButton_new3(icon.cPointer(), text_Cstring, C.size_t(len(text)))
+	text_ms := miqt_strdupg(text)
+	defer C.free(text_ms)
+	ret := C.QPushButton_new3(icon.cPointer(), (*C.struct_miqt_string)(text_ms))
 	return newQPushButton(ret)
 }
 
@@ -66,72 +66,60 @@ func NewQPushButton4(parent *QWidget) *QPushButton {
 
 // NewQPushButton5 constructs a new QPushButton object.
 func NewQPushButton5(text string, parent *QWidget) *QPushButton {
-	text_Cstring := C.CString(text)
-	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QPushButton_new5(text_Cstring, C.size_t(len(text)), parent.cPointer())
+	text_ms := miqt_strdupg(text)
+	defer C.free(text_ms)
+	ret := C.QPushButton_new5((*C.struct_miqt_string)(text_ms), parent.cPointer())
 	return newQPushButton(ret)
 }
 
 // NewQPushButton6 constructs a new QPushButton object.
 func NewQPushButton6(icon *QIcon, text string, parent *QWidget) *QPushButton {
-	text_Cstring := C.CString(text)
-	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QPushButton_new6(icon.cPointer(), text_Cstring, C.size_t(len(text)), parent.cPointer())
+	text_ms := miqt_strdupg(text)
+	defer C.free(text_ms)
+	ret := C.QPushButton_new6(icon.cPointer(), (*C.struct_miqt_string)(text_ms), parent.cPointer())
 	return newQPushButton(ret)
 }
 
 func (this *QPushButton) MetaObject() *QMetaObject {
-	ret := C.QPushButton_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QPushButton_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QPushButton_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QPushButton_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QPushButton_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QPushButton_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QPushButton_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QPushButton_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QPushButton) SizeHint() *QSize {
-	ret := C.QPushButton_SizeHint(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSize(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QPushButton_SizeHint(this.h)
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QPushButton) MinimumSizeHint() *QSize {
-	ret := C.QPushButton_MinimumSizeHint(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSize(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QPushButton_MinimumSizeHint(this.h)
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QPushButton) AutoDefault() bool {
-	ret := C.QPushButton_AutoDefault(this.h)
-	return (bool)(ret)
+	_ret := C.QPushButton_AutoDefault(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QPushButton) SetAutoDefault(autoDefault bool) {
@@ -139,8 +127,8 @@ func (this *QPushButton) SetAutoDefault(autoDefault bool) {
 }
 
 func (this *QPushButton) IsDefault() bool {
-	ret := C.QPushButton_IsDefault(this.h)
-	return (bool)(ret)
+	_ret := C.QPushButton_IsDefault(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QPushButton) SetDefault(defaultVal bool) {
@@ -152,8 +140,8 @@ func (this *QPushButton) SetMenu(menu *QMenu) {
 }
 
 func (this *QPushButton) Menu() *QMenu {
-	ret := C.QPushButton_Menu(this.h)
-	return newQMenu_U(unsafe.Pointer(ret))
+	_ret := C.QPushButton_Menu(this.h)
+	return newQMenu_U(unsafe.Pointer(_ret))
 }
 
 func (this *QPushButton) SetFlat(flat bool) {
@@ -161,8 +149,8 @@ func (this *QPushButton) SetFlat(flat bool) {
 }
 
 func (this *QPushButton) IsFlat() bool {
-	ret := C.QPushButton_IsFlat(this.h)
-	return (bool)(ret)
+	_ret := C.QPushButton_IsFlat(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QPushButton) ShowMenu() {
@@ -174,12 +162,10 @@ func QPushButton_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QPushButton_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QPushButton_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QPushButton_Tr3(s string, c string, n int) string {
@@ -187,12 +173,10 @@ func QPushButton_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QPushButton_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QPushButton_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QPushButton_TrUtf82(s string, c string) string {
@@ -200,12 +184,10 @@ func QPushButton_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QPushButton_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QPushButton_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QPushButton_TrUtf83(s string, c string, n int) string {
@@ -213,14 +195,22 @@ func QPushButton_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QPushButton_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QPushButton_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
+// Delete this object from C++ memory.
 func (this *QPushButton) Delete() {
 	C.QPushButton_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QPushButton) GoGC() {
+	runtime.SetFinalizer(this, func(this *QPushButton) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

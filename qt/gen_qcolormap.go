@@ -58,14 +58,10 @@ func QColormap_Cleanup() {
 }
 
 func QColormap_Instance() *QColormap {
-	ret := C.QColormap_Instance()
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQColormap(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QColormap) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QColormap_Instance()
+	_goptr := newQColormap(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QColormap) OperatorAssign(colormap *QColormap) {
@@ -73,60 +69,60 @@ func (this *QColormap) OperatorAssign(colormap *QColormap) {
 }
 
 func (this *QColormap) Mode() QColormap__Mode {
-	ret := C.QColormap_Mode(this.h)
-	return (QColormap__Mode)(ret)
+	_ret := C.QColormap_Mode(this.h)
+	return (QColormap__Mode)(_ret)
 }
 
 func (this *QColormap) Depth() int {
-	ret := C.QColormap_Depth(this.h)
-	return (int)(ret)
+	_ret := C.QColormap_Depth(this.h)
+	return (int)(_ret)
 }
 
 func (this *QColormap) Size() int {
-	ret := C.QColormap_Size(this.h)
-	return (int)(ret)
+	_ret := C.QColormap_Size(this.h)
+	return (int)(_ret)
 }
 
 func (this *QColormap) Pixel(color *QColor) uint {
-	ret := C.QColormap_Pixel(this.h, color.cPointer())
-	return (uint)(ret)
+	_ret := C.QColormap_Pixel(this.h, color.cPointer())
+	return (uint)(_ret)
 }
 
 func (this *QColormap) ColorAt(pixel uint) *QColor {
-	ret := C.QColormap_ColorAt(this.h, (C.uint)(pixel))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQColor(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QColor) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QColormap_ColorAt(this.h, (C.uint)(pixel))
+	_goptr := newQColor(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QColormap) Colormap() []QColor {
-	var _out **C.QColor = nil
-	var _out_len C.size_t = 0
-	C.QColormap_Colormap(this.h, &_out, &_out_len)
-	ret := make([]QColor, int(_out_len))
-	_outCast := (*[0xffff]*C.QColor)(unsafe.Pointer(_out)) // so fresh so clean
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = *newQColor(_outCast[i])
+	var _ma *C.struct_miqt_array = C.QColormap_Colormap(this.h)
+	_ret := make([]QColor, int(_ma.len))
+	_outCast := (*[0xffff]*C.QColor)(unsafe.Pointer(_ma.data)) // mrs jackson
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = *newQColor(_outCast[i])
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
 func QColormap_Instance1(screen int) *QColormap {
-	ret := C.QColormap_Instance1((C.int)(screen))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQColormap(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QColormap) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QColormap_Instance1((C.int)(screen))
+	_goptr := newQColormap(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
+// Delete this object from C++ memory.
 func (this *QColormap) Delete() {
 	C.QColormap_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QColormap) GoGC() {
+	runtime.SetFinalizer(this, func(this *QColormap) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

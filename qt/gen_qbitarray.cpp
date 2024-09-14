@@ -1,12 +1,8 @@
 #include <QBitArray>
 #include <QBitRef>
 #include "qbitarray.h"
-
 #include "gen_qbitarray.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QBitArray* QBitArray_new() {
 	return new QBitArray();
@@ -93,9 +89,9 @@ bool QBitArray_At(const QBitArray* self, int i) {
 }
 
 QBitRef* QBitArray_OperatorSubscript(QBitArray* self, int i) {
-	QBitRef ret = self->operator[](static_cast<int>(i));
+	QBitRef _ret = self->operator[](static_cast<int>(i));
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QBitRef*>(new QBitRef(ret));
+	return static_cast<QBitRef*>(new QBitRef(_ret));
 }
 
 bool QBitArray_OperatorSubscriptWithInt(const QBitArray* self, int i) {
@@ -103,9 +99,9 @@ bool QBitArray_OperatorSubscriptWithInt(const QBitArray* self, int i) {
 }
 
 QBitRef* QBitArray_OperatorSubscriptWithUint(QBitArray* self, unsigned int i) {
-	QBitRef ret = self->operator[](static_cast<uint>(i));
+	QBitRef _ret = self->operator[](static_cast<uint>(i));
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QBitRef*>(new QBitRef(ret));
+	return static_cast<QBitRef*>(new QBitRef(_ret));
 }
 
 bool QBitArray_OperatorSubscript2(const QBitArray* self, unsigned int i) {
@@ -125,9 +121,9 @@ void QBitArray_OperatorBitwiseNotAssign(QBitArray* self, QBitArray* param1) {
 }
 
 QBitArray* QBitArray_OperatorBitwiseXor(const QBitArray* self) {
-	QBitArray ret = self->operator~();
+	QBitArray _ret = self->operator~();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QBitArray*>(new QBitArray(ret));
+	return static_cast<QBitArray*>(new QBitArray(_ret));
 }
 
 bool QBitArray_OperatorEqual(const QBitArray* self, QBitArray* other) {
@@ -155,9 +151,9 @@ const char* QBitArray_Bits(const QBitArray* self) {
 }
 
 QBitArray* QBitArray_FromBits(const char* data, size_t lenVal) {
-	QBitArray ret = QBitArray::fromBits(data, static_cast<qsizetype>(lenVal));
+	QBitArray _ret = QBitArray::fromBits(data, static_cast<qsizetype>(lenVal));
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QBitArray*>(new QBitArray(ret));
+	return static_cast<QBitArray*>(new QBitArray(_ret));
 }
 
 bool QBitArray_Fill22(QBitArray* self, bool val, int size) {

@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"runtime"
 	"unsafe"
 )
 
@@ -68,9 +69,9 @@ func NewQTextBoundaryFinder2(other *QTextBoundaryFinder) *QTextBoundaryFinder {
 
 // NewQTextBoundaryFinder3 constructs a new QTextBoundaryFinder object.
 func NewQTextBoundaryFinder3(typeVal QTextBoundaryFinder__BoundaryType, stringVal string) *QTextBoundaryFinder {
-	stringVal_Cstring := C.CString(stringVal)
-	defer C.free(unsafe.Pointer(stringVal_Cstring))
-	ret := C.QTextBoundaryFinder_new3((C.uintptr_t)(typeVal), stringVal_Cstring, C.size_t(len(stringVal)))
+	stringVal_ms := miqt_strdupg(stringVal)
+	defer C.free(stringVal_ms)
+	ret := C.QTextBoundaryFinder_new3((C.uintptr_t)(typeVal), (*C.struct_miqt_string)(stringVal_ms))
 	return newQTextBoundaryFinder(ret)
 }
 
@@ -97,22 +98,20 @@ func (this *QTextBoundaryFinder) OperatorAssign(other *QTextBoundaryFinder) {
 }
 
 func (this *QTextBoundaryFinder) IsValid() bool {
-	ret := C.QTextBoundaryFinder_IsValid(this.h)
-	return (bool)(ret)
+	_ret := C.QTextBoundaryFinder_IsValid(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QTextBoundaryFinder) Type() QTextBoundaryFinder__BoundaryType {
-	ret := C.QTextBoundaryFinder_Type(this.h)
-	return (QTextBoundaryFinder__BoundaryType)(ret)
+	_ret := C.QTextBoundaryFinder_Type(this.h)
+	return (QTextBoundaryFinder__BoundaryType)(_ret)
 }
 
 func (this *QTextBoundaryFinder) String() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QTextBoundaryFinder_String(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QTextBoundaryFinder_String(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QTextBoundaryFinder) ToStart() {
@@ -124,8 +123,8 @@ func (this *QTextBoundaryFinder) ToEnd() {
 }
 
 func (this *QTextBoundaryFinder) Position() int {
-	ret := C.QTextBoundaryFinder_Position(this.h)
-	return (int)(ret)
+	_ret := C.QTextBoundaryFinder_Position(this.h)
+	return (int)(_ret)
 }
 
 func (this *QTextBoundaryFinder) SetPosition(position int) {
@@ -133,25 +132,35 @@ func (this *QTextBoundaryFinder) SetPosition(position int) {
 }
 
 func (this *QTextBoundaryFinder) ToNextBoundary() int {
-	ret := C.QTextBoundaryFinder_ToNextBoundary(this.h)
-	return (int)(ret)
+	_ret := C.QTextBoundaryFinder_ToNextBoundary(this.h)
+	return (int)(_ret)
 }
 
 func (this *QTextBoundaryFinder) ToPreviousBoundary() int {
-	ret := C.QTextBoundaryFinder_ToPreviousBoundary(this.h)
-	return (int)(ret)
+	_ret := C.QTextBoundaryFinder_ToPreviousBoundary(this.h)
+	return (int)(_ret)
 }
 
 func (this *QTextBoundaryFinder) IsAtBoundary() bool {
-	ret := C.QTextBoundaryFinder_IsAtBoundary(this.h)
-	return (bool)(ret)
+	_ret := C.QTextBoundaryFinder_IsAtBoundary(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QTextBoundaryFinder) BoundaryReasons() int {
-	ret := C.QTextBoundaryFinder_BoundaryReasons(this.h)
-	return (int)(ret)
+	_ret := C.QTextBoundaryFinder_BoundaryReasons(this.h)
+	return (int)(_ret)
 }
 
+// Delete this object from C++ memory.
 func (this *QTextBoundaryFinder) Delete() {
 	C.QTextBoundaryFinder_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QTextBoundaryFinder) GoGC() {
+	runtime.SetFinalizer(this, func(this *QTextBoundaryFinder) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

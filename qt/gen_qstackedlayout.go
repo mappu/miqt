@@ -63,65 +63,61 @@ func NewQStackedLayout3(parentLayout *QLayout) *QStackedLayout {
 }
 
 func (this *QStackedLayout) MetaObject() *QMetaObject {
-	ret := C.QStackedLayout_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QStackedLayout_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QStackedLayout_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QStackedLayout_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QStackedLayout_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QStackedLayout_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QStackedLayout_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QStackedLayout_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QStackedLayout) AddWidget(w *QWidget) int {
-	ret := C.QStackedLayout_AddWidget(this.h, w.cPointer())
-	return (int)(ret)
+	_ret := C.QStackedLayout_AddWidget(this.h, w.cPointer())
+	return (int)(_ret)
 }
 
 func (this *QStackedLayout) InsertWidget(index int, w *QWidget) int {
-	ret := C.QStackedLayout_InsertWidget(this.h, (C.int)(index), w.cPointer())
-	return (int)(ret)
+	_ret := C.QStackedLayout_InsertWidget(this.h, (C.int)(index), w.cPointer())
+	return (int)(_ret)
 }
 
 func (this *QStackedLayout) CurrentWidget() *QWidget {
-	ret := C.QStackedLayout_CurrentWidget(this.h)
-	return newQWidget_U(unsafe.Pointer(ret))
+	_ret := C.QStackedLayout_CurrentWidget(this.h)
+	return newQWidget_U(unsafe.Pointer(_ret))
 }
 
 func (this *QStackedLayout) CurrentIndex() int {
-	ret := C.QStackedLayout_CurrentIndex(this.h)
-	return (int)(ret)
+	_ret := C.QStackedLayout_CurrentIndex(this.h)
+	return (int)(_ret)
 }
 
 func (this *QStackedLayout) Widget(param1 int) *QWidget {
-	ret := C.QStackedLayout_Widget(this.h, (C.int)(param1))
-	return newQWidget_U(unsafe.Pointer(ret))
+	_ret := C.QStackedLayout_Widget(this.h, (C.int)(param1))
+	return newQWidget_U(unsafe.Pointer(_ret))
 }
 
 func (this *QStackedLayout) Count() int {
-	ret := C.QStackedLayout_Count(this.h)
-	return (int)(ret)
+	_ret := C.QStackedLayout_Count(this.h)
+	return (int)(_ret)
 }
 
 func (this *QStackedLayout) StackingMode() QStackedLayout__StackingMode {
-	ret := C.QStackedLayout_StackingMode(this.h)
-	return (QStackedLayout__StackingMode)(ret)
+	_ret := C.QStackedLayout_StackingMode(this.h)
+	return (QStackedLayout__StackingMode)(_ret)
 }
 
 func (this *QStackedLayout) SetStackingMode(stackingMode QStackedLayout__StackingMode) {
@@ -133,35 +129,27 @@ func (this *QStackedLayout) AddItem(item *QLayoutItem) {
 }
 
 func (this *QStackedLayout) SizeHint() *QSize {
-	ret := C.QStackedLayout_SizeHint(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSize(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QStackedLayout_SizeHint(this.h)
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QStackedLayout) MinimumSize() *QSize {
-	ret := C.QStackedLayout_MinimumSize(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSize(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QStackedLayout_MinimumSize(this.h)
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QStackedLayout) ItemAt(param1 int) *QLayoutItem {
-	ret := C.QStackedLayout_ItemAt(this.h, (C.int)(param1))
-	return newQLayoutItem_U(unsafe.Pointer(ret))
+	_ret := C.QStackedLayout_ItemAt(this.h, (C.int)(param1))
+	return newQLayoutItem_U(unsafe.Pointer(_ret))
 }
 
 func (this *QStackedLayout) TakeAt(param1 int) *QLayoutItem {
-	ret := C.QStackedLayout_TakeAt(this.h, (C.int)(param1))
-	return newQLayoutItem_U(unsafe.Pointer(ret))
+	_ret := C.QStackedLayout_TakeAt(this.h, (C.int)(param1))
+	return newQLayoutItem_U(unsafe.Pointer(_ret))
 }
 
 func (this *QStackedLayout) SetGeometry(rect *QRect) {
@@ -169,37 +157,55 @@ func (this *QStackedLayout) SetGeometry(rect *QRect) {
 }
 
 func (this *QStackedLayout) HasHeightForWidth() bool {
-	ret := C.QStackedLayout_HasHeightForWidth(this.h)
-	return (bool)(ret)
+	_ret := C.QStackedLayout_HasHeightForWidth(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QStackedLayout) HeightForWidth(width int) int {
-	ret := C.QStackedLayout_HeightForWidth(this.h, (C.int)(width))
-	return (int)(ret)
+	_ret := C.QStackedLayout_HeightForWidth(this.h, (C.int)(width))
+	return (int)(_ret)
 }
 
 func (this *QStackedLayout) WidgetRemoved(index int) {
 	C.QStackedLayout_WidgetRemoved(this.h, (C.int)(index))
 }
+func (this *QStackedLayout) OnWidgetRemoved(slot func(index int)) {
+	C.QStackedLayout_connect_WidgetRemoved(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QStackedLayout) OnWidgetRemoved(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QStackedLayout_WidgetRemoved
+func miqt_exec_callback_QStackedLayout_WidgetRemoved(cb *C.void, index C.int) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(index int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QStackedLayout_connect_WidgetRemoved(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	index_ret := index
+	slotval1 := (int)(index_ret)
+
+	gofunc(slotval1)
 }
 
 func (this *QStackedLayout) CurrentChanged(index int) {
 	C.QStackedLayout_CurrentChanged(this.h, (C.int)(index))
 }
+func (this *QStackedLayout) OnCurrentChanged(slot func(index int)) {
+	C.QStackedLayout_connect_CurrentChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QStackedLayout) OnCurrentChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QStackedLayout_CurrentChanged
+func miqt_exec_callback_QStackedLayout_CurrentChanged(cb *C.void, index C.int) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(index int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QStackedLayout_connect_CurrentChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	index_ret := index
+	slotval1 := (int)(index_ret)
+
+	gofunc(slotval1)
 }
 
 func (this *QStackedLayout) SetCurrentIndex(index int) {
@@ -215,12 +221,10 @@ func QStackedLayout_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QStackedLayout_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QStackedLayout_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QStackedLayout_Tr3(s string, c string, n int) string {
@@ -228,12 +232,10 @@ func QStackedLayout_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QStackedLayout_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QStackedLayout_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QStackedLayout_TrUtf82(s string, c string) string {
@@ -241,12 +243,10 @@ func QStackedLayout_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QStackedLayout_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QStackedLayout_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QStackedLayout_TrUtf83(s string, c string, n int) string {
@@ -254,14 +254,22 @@ func QStackedLayout_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QStackedLayout_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QStackedLayout_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
+// Delete this object from C++ memory.
 func (this *QStackedLayout) Delete() {
 	C.QStackedLayout_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QStackedLayout) GoGC() {
+	runtime.SetFinalizer(this, func(this *QStackedLayout) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

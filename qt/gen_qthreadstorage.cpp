@@ -1,11 +1,7 @@
 #include <QThreadStorageData>
 #include "qthreadstorage.h"
-
 #include "gen_qthreadstorage.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QThreadStorageData* QThreadStorageData_new(QThreadStorageData* param1) {
 	return new QThreadStorageData(*param1);

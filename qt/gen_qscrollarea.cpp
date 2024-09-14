@@ -6,12 +6,8 @@
 #include <cstring>
 #include <QWidget>
 #include "qscrollarea.h"
-
 #include "gen_qscrollarea.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QScrollArea* QScrollArea_new() {
 	return new QScrollArea();
@@ -25,22 +21,18 @@ QMetaObject* QScrollArea_MetaObject(const QScrollArea* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void QScrollArea_Tr(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QScrollArea::tr(s);
+struct miqt_string* QScrollArea_Tr(const char* s) {
+	QString _ret = QScrollArea::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QScrollArea_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QScrollArea::trUtf8(s);
+struct miqt_string* QScrollArea_TrUtf8(const char* s) {
+	QString _ret = QScrollArea::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 QWidget* QScrollArea_Widget(const QScrollArea* self) {
@@ -64,9 +56,9 @@ void QScrollArea_SetWidgetResizable(QScrollArea* self, bool resizable) {
 }
 
 QSize* QScrollArea_SizeHint(const QScrollArea* self) {
-	QSize ret = self->sizeHint();
+	QSize _ret = self->sizeHint();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(ret));
+	return static_cast<QSize*>(new QSize(_ret));
 }
 
 bool QScrollArea_FocusNextPrevChild(QScrollArea* self, bool next) {
@@ -74,8 +66,8 @@ bool QScrollArea_FocusNextPrevChild(QScrollArea* self, bool next) {
 }
 
 int QScrollArea_Alignment(const QScrollArea* self) {
-	Qt::Alignment ret = self->alignment();
-	return static_cast<int>(ret);
+	Qt::Alignment _ret = self->alignment();
+	return static_cast<int>(_ret);
 }
 
 void QScrollArea_SetAlignment(QScrollArea* self, int alignment) {
@@ -90,40 +82,32 @@ void QScrollArea_EnsureWidgetVisible(QScrollArea* self, QWidget* childWidget) {
 	self->ensureWidgetVisible(childWidget);
 }
 
-void QScrollArea_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QScrollArea::tr(s, c);
+struct miqt_string* QScrollArea_Tr2(const char* s, const char* c) {
+	QString _ret = QScrollArea::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QScrollArea_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QScrollArea::tr(s, c, static_cast<int>(n));
+struct miqt_string* QScrollArea_Tr3(const char* s, const char* c, int n) {
+	QString _ret = QScrollArea::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QScrollArea_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QScrollArea::trUtf8(s, c);
+struct miqt_string* QScrollArea_TrUtf82(const char* s, const char* c) {
+	QString _ret = QScrollArea::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QScrollArea_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QScrollArea::trUtf8(s, c, static_cast<int>(n));
+struct miqt_string* QScrollArea_TrUtf83(const char* s, const char* c, int n) {
+	QString _ret = QScrollArea::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QScrollArea_EnsureVisible3(QScrollArea* self, int x, int y, int xmargin) {

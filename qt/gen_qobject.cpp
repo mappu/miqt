@@ -14,12 +14,8 @@
 #include <QThread>
 #include <QVariant>
 #include "qobject.h"
-
 #include "gen_qobject.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QMetaObject* QObjectData_DynamicMetaObject(const QObjectData* self) {
 	return self->dynamicMetaObject();
@@ -41,22 +37,18 @@ QMetaObject* QObject_MetaObject(const QObject* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void QObject_Tr(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QObject::tr(s);
+struct miqt_string* QObject_Tr(const char* s) {
+	QString _ret = QObject::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QObject_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QObject::trUtf8(s);
+struct miqt_string* QObject_TrUtf8(const char* s) {
+	QString _ret = QObject::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 bool QObject_Event(QObject* self, QEvent* event) {
@@ -67,17 +59,15 @@ bool QObject_EventFilter(QObject* self, QObject* watched, QEvent* event) {
 	return self->eventFilter(watched, event);
 }
 
-void QObject_ObjectName(const QObject* self, char** _out, int* _out_Strlen) {
-	QString ret = self->objectName();
+struct miqt_string* QObject_ObjectName(const QObject* self) {
+	QString _ret = self->objectName();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QObject_SetObjectName(QObject* self, const char* name, size_t name_Strlen) {
-	QString name_QString = QString::fromUtf8(name, name_Strlen);
+void QObject_SetObjectName(QObject* self, struct miqt_string* name) {
+	QString name_QString = QString::fromUtf8(&name->data, name->len);
 	self->setObjectName(name_QString);
 }
 
@@ -113,15 +103,17 @@ void QObject_KillTimer(QObject* self, int id) {
 	self->killTimer(static_cast<int>(id));
 }
 
-void QObject_Children(const QObject* self, QObject*** _out, size_t* _out_len) {
-	const QObjectList& ret = self->children();
+struct miqt_array* QObject_Children(const QObject* self) {
+	const QObjectList& _ret = self->children();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QObject** __out = static_cast<QObject**>(malloc(sizeof(QObject*) * ret.length()));
-	for (size_t i = 0, e = ret.length(); i < e; ++i) {
-		__out[i] = ret[i];
+	QObject** _arr = static_cast<QObject**>(malloc(sizeof(QObject*) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		_arr[i] = _ret[i];
 	}
-	*_out = __out;
-	*_out_len = ret.length();
+	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
+	_out->len = _ret.length();
+	_out->data = static_cast<void*>(_arr);
+	return _out;
 }
 
 void QObject_SetParent(QObject* self, QObject* parent) {
@@ -137,15 +129,15 @@ void QObject_RemoveEventFilter(QObject* self, QObject* obj) {
 }
 
 QMetaObject__Connection* QObject_Connect(QObject* sender, QMetaMethod* signal, QObject* receiver, QMetaMethod* method) {
-	QMetaObject::Connection ret = QObject::connect(sender, *signal, receiver, *method);
+	QMetaObject::Connection _ret = QObject::connect(sender, *signal, receiver, *method);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QMetaObject::Connection*>(new QMetaObject::Connection(ret));
+	return static_cast<QMetaObject::Connection*>(new QMetaObject::Connection(_ret));
 }
 
 QMetaObject__Connection* QObject_Connect2(const QObject* self, QObject* sender, const char* signal, const char* member) {
-	QMetaObject::Connection ret = self->connect(sender, signal, member);
+	QMetaObject::Connection _ret = self->connect(sender, signal, member);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QMetaObject::Connection*>(new QMetaObject::Connection(ret));
+	return static_cast<QMetaObject::Connection*>(new QMetaObject::Connection(_ret));
 }
 
 bool QObject_Disconnect(QObject* sender, QMetaMethod* signal, QObject* receiver, QMetaMethod* member) {
@@ -177,20 +169,22 @@ bool QObject_SetProperty(QObject* self, const char* name, QVariant* value) {
 }
 
 QVariant* QObject_Property(const QObject* self, const char* name) {
-	QVariant ret = self->property(name);
+	QVariant _ret = self->property(name);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(ret));
+	return static_cast<QVariant*>(new QVariant(_ret));
 }
 
-void QObject_DynamicPropertyNames(const QObject* self, QByteArray*** _out, size_t* _out_len) {
-	QList<QByteArray> ret = self->dynamicPropertyNames();
+struct miqt_array* QObject_DynamicPropertyNames(const QObject* self) {
+	QList<QByteArray> _ret = self->dynamicPropertyNames();
 	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
-	QByteArray** __out = static_cast<QByteArray**>(malloc(sizeof(QByteArray**) * ret.length()));
-	for (size_t i = 0, e = ret.length(); i < e; ++i) {
-		__out[i] = new QByteArray(ret[i]);
+	QByteArray** _arr = static_cast<QByteArray**>(malloc(sizeof(QByteArray**) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		_arr[i] = new QByteArray(_ret[i]);
 	}
-	*_out = __out;
-	*_out_len = ret.length();
+	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
+	_out->len = _ret.length();
+	_out->data = static_cast<void*>(_arr);
+	return _out;
 }
 
 unsigned int QObject_RegisterUserData() {
@@ -211,7 +205,7 @@ void QObject_Destroyed(QObject* self) {
 
 void QObject_connect_Destroyed(QObject* self, void* slot) {
 	QObject::connect(self, static_cast<void (QObject::*)(QObject*)>(&QObject::destroyed), self, [=]() {
-		miqt_exec_callback(slot, 0, nullptr);
+		miqt_exec_callback_QObject_Destroyed(slot);
 	});
 }
 
@@ -227,40 +221,32 @@ void QObject_DeleteLater(QObject* self) {
 	self->deleteLater();
 }
 
-void QObject_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QObject::tr(s, c);
+struct miqt_string* QObject_Tr2(const char* s, const char* c) {
+	QString _ret = QObject::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QObject_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QObject::tr(s, c, static_cast<int>(n));
+struct miqt_string* QObject_Tr3(const char* s, const char* c, int n) {
+	QString _ret = QObject::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QObject_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QObject::trUtf8(s, c);
+struct miqt_string* QObject_TrUtf82(const char* s, const char* c) {
+	QString _ret = QObject::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QObject_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QObject::trUtf8(s, c, static_cast<int>(n));
+struct miqt_string* QObject_TrUtf83(const char* s, const char* c, int n) {
+	QString _ret = QObject::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 int QObject_StartTimer2(QObject* self, int interval, uintptr_t timerType) {
@@ -268,15 +254,15 @@ int QObject_StartTimer2(QObject* self, int interval, uintptr_t timerType) {
 }
 
 QMetaObject__Connection* QObject_Connect5(QObject* sender, QMetaMethod* signal, QObject* receiver, QMetaMethod* method, uintptr_t typeVal) {
-	QMetaObject::Connection ret = QObject::connect(sender, *signal, receiver, *method, static_cast<Qt::ConnectionType>(typeVal));
+	QMetaObject::Connection _ret = QObject::connect(sender, *signal, receiver, *method, static_cast<Qt::ConnectionType>(typeVal));
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QMetaObject::Connection*>(new QMetaObject::Connection(ret));
+	return static_cast<QMetaObject::Connection*>(new QMetaObject::Connection(_ret));
 }
 
 QMetaObject__Connection* QObject_Connect4(const QObject* self, QObject* sender, const char* signal, const char* member, uintptr_t typeVal) {
-	QMetaObject::Connection ret = self->connect(sender, signal, member, static_cast<Qt::ConnectionType>(typeVal));
+	QMetaObject::Connection _ret = self->connect(sender, signal, member, static_cast<Qt::ConnectionType>(typeVal));
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QMetaObject::Connection*>(new QMetaObject::Connection(ret));
+	return static_cast<QMetaObject::Connection*>(new QMetaObject::Connection(_ret));
 }
 
 void QObject_Destroyed1(QObject* self, QObject* param1) {
@@ -285,7 +271,8 @@ void QObject_Destroyed1(QObject* self, QObject* param1) {
 
 void QObject_connect_Destroyed1(QObject* self, void* slot) {
 	QObject::connect(self, static_cast<void (QObject::*)(QObject*)>(&QObject::destroyed), self, [=](QObject* param1) {
-		miqt_exec_callback(slot, 0, nullptr);
+		QObject* sigval1 = param1;
+		miqt_exec_callback_QObject_Destroyed1(slot, sigval1);
 	});
 }
 

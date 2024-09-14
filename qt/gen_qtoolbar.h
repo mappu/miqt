@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -31,13 +33,13 @@ typedef struct QToolBar QToolBar;
 typedef struct QWidget QWidget;
 #endif
 
-QToolBar* QToolBar_new(const char* title, size_t title_Strlen);
+QToolBar* QToolBar_new(struct miqt_string* title);
 QToolBar* QToolBar_new2();
-QToolBar* QToolBar_new3(const char* title, size_t title_Strlen, QWidget* parent);
+QToolBar* QToolBar_new3(struct miqt_string* title, QWidget* parent);
 QToolBar* QToolBar_new4(QWidget* parent);
 QMetaObject* QToolBar_MetaObject(const QToolBar* self);
-void QToolBar_Tr(const char* s, char** _out, int* _out_Strlen);
-void QToolBar_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QToolBar_Tr(const char* s);
+struct miqt_string* QToolBar_TrUtf8(const char* s);
 void QToolBar_SetMovable(QToolBar* self, bool movable);
 bool QToolBar_IsMovable(const QToolBar* self);
 void QToolBar_SetAllowedAreas(QToolBar* self, int areas);
@@ -46,8 +48,8 @@ bool QToolBar_IsAreaAllowed(const QToolBar* self, uintptr_t area);
 void QToolBar_SetOrientation(QToolBar* self, uintptr_t orientation);
 uintptr_t QToolBar_Orientation(const QToolBar* self);
 void QToolBar_Clear(QToolBar* self);
-QAction* QToolBar_AddAction(QToolBar* self, const char* text, size_t text_Strlen);
-QAction* QToolBar_AddAction2(QToolBar* self, QIcon* icon, const char* text, size_t text_Strlen);
+QAction* QToolBar_AddAction(QToolBar* self, struct miqt_string* text);
+QAction* QToolBar_AddAction2(QToolBar* self, QIcon* icon, struct miqt_string* text);
 QAction* QToolBar_AddSeparator(QToolBar* self);
 QAction* QToolBar_InsertSeparator(QToolBar* self, QAction* before);
 QAction* QToolBar_AddWidget(QToolBar* self, QWidget* widget);
@@ -80,10 +82,10 @@ void QToolBar_TopLevelChanged(QToolBar* self, bool topLevel);
 void QToolBar_connect_TopLevelChanged(QToolBar* self, void* slot);
 void QToolBar_VisibilityChanged(QToolBar* self, bool visible);
 void QToolBar_connect_VisibilityChanged(QToolBar* self, void* slot);
-void QToolBar_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QToolBar_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QToolBar_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QToolBar_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QToolBar_Tr2(const char* s, const char* c);
+struct miqt_string* QToolBar_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QToolBar_TrUtf82(const char* s, const char* c);
+struct miqt_string* QToolBar_TrUtf83(const char* s, const char* c, int n);
 void QToolBar_Delete(QToolBar* self);
 
 #ifdef __cplusplus

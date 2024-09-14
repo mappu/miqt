@@ -4,19 +4,15 @@
 #include <QByteArray>
 #include <cstring>
 #include "qkeysequence.h"
-
 #include "gen_qkeysequence.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QKeySequence* QKeySequence_new() {
 	return new QKeySequence();
 }
 
-QKeySequence* QKeySequence_new2(const char* key, size_t key_Strlen) {
-	QString key_QString = QString::fromUtf8(key, key_Strlen);
+QKeySequence* QKeySequence_new2(struct miqt_string* key) {
+	QString key_QString = QString::fromUtf8(&key->data, key->len);
 	return new QKeySequence(key_QString);
 }
 
@@ -32,8 +28,8 @@ QKeySequence* QKeySequence_new5(uintptr_t key) {
 	return new QKeySequence(static_cast<QKeySequence::StandardKey>(key));
 }
 
-QKeySequence* QKeySequence_new6(const char* key, size_t key_Strlen, uintptr_t format) {
-	QString key_QString = QString::fromUtf8(key, key_Strlen);
+QKeySequence* QKeySequence_new6(struct miqt_string* key, uintptr_t format) {
+	QString key_QString = QString::fromUtf8(&key->data, key->len);
 	return new QKeySequence(key_QString, static_cast<QKeySequence::SequenceFormat>(format));
 }
 
@@ -57,69 +53,70 @@ bool QKeySequence_IsEmpty(const QKeySequence* self) {
 	return self->isEmpty();
 }
 
-void QKeySequence_ToString(const QKeySequence* self, char** _out, int* _out_Strlen) {
-	QString ret = self->toString();
+struct miqt_string* QKeySequence_ToString(const QKeySequence* self) {
+	QString _ret = self->toString();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-QKeySequence* QKeySequence_FromString(const char* str, size_t str_Strlen) {
-	QString str_QString = QString::fromUtf8(str, str_Strlen);
-	QKeySequence ret = QKeySequence::fromString(str_QString);
+QKeySequence* QKeySequence_FromString(struct miqt_string* str) {
+	QString str_QString = QString::fromUtf8(&str->data, str->len);
+	QKeySequence _ret = QKeySequence::fromString(str_QString);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QKeySequence*>(new QKeySequence(ret));
+	return static_cast<QKeySequence*>(new QKeySequence(_ret));
 }
 
-void QKeySequence_ListFromString(const char* str, size_t str_Strlen, QKeySequence*** _out, size_t* _out_len) {
-	QString str_QString = QString::fromUtf8(str, str_Strlen);
-	QList<QKeySequence> ret = QKeySequence::listFromString(str_QString);
+struct miqt_array* QKeySequence_ListFromString(struct miqt_string* str) {
+	QString str_QString = QString::fromUtf8(&str->data, str->len);
+	QList<QKeySequence> _ret = QKeySequence::listFromString(str_QString);
 	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
-	QKeySequence** __out = static_cast<QKeySequence**>(malloc(sizeof(QKeySequence**) * ret.length()));
-	for (size_t i = 0, e = ret.length(); i < e; ++i) {
-		__out[i] = new QKeySequence(ret[i]);
+	QKeySequence** _arr = static_cast<QKeySequence**>(malloc(sizeof(QKeySequence**) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		_arr[i] = new QKeySequence(_ret[i]);
 	}
-	*_out = __out;
-	*_out_len = ret.length();
+	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
+	_out->len = _ret.length();
+	_out->data = static_cast<void*>(_arr);
+	return _out;
 }
 
-void QKeySequence_ListToString(QKeySequence** list, size_t list_len, char** _out, int* _out_Strlen) {
+struct miqt_string* QKeySequence_ListToString(struct miqt_array* /* of QKeySequence */ list) {
 	QList<QKeySequence> list_QList;
-	list_QList.reserve(list_len);
-	for(size_t i = 0; i < list_len; ++i) {
-		list_QList.push_back(*(list[i]));
+	list_QList.reserve(list->len);
+	QKeySequence** list_arr = static_cast<QKeySequence**>(list->data);
+	for(size_t i = 0; i < list->len; ++i) {
+		list_QList.push_back(*(list_arr[i]));
 	}
-	QString ret = QKeySequence::listToString(list_QList);
+	QString _ret = QKeySequence::listToString(list_QList);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 uintptr_t QKeySequence_Matches(const QKeySequence* self, QKeySequence* seq) {
-	QKeySequence::SequenceMatch ret = self->matches(*seq);
-	return static_cast<uintptr_t>(ret);
+	QKeySequence::SequenceMatch _ret = self->matches(*seq);
+	return static_cast<uintptr_t>(_ret);
 }
 
-QKeySequence* QKeySequence_Mnemonic(const char* text, size_t text_Strlen) {
-	QString text_QString = QString::fromUtf8(text, text_Strlen);
-	QKeySequence ret = QKeySequence::mnemonic(text_QString);
+QKeySequence* QKeySequence_Mnemonic(struct miqt_string* text) {
+	QString text_QString = QString::fromUtf8(&text->data, text->len);
+	QKeySequence _ret = QKeySequence::mnemonic(text_QString);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QKeySequence*>(new QKeySequence(ret));
+	return static_cast<QKeySequence*>(new QKeySequence(_ret));
 }
 
-void QKeySequence_KeyBindings(uintptr_t key, QKeySequence*** _out, size_t* _out_len) {
-	QList<QKeySequence> ret = QKeySequence::keyBindings(static_cast<QKeySequence::StandardKey>(key));
+struct miqt_array* QKeySequence_KeyBindings(uintptr_t key) {
+	QList<QKeySequence> _ret = QKeySequence::keyBindings(static_cast<QKeySequence::StandardKey>(key));
 	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
-	QKeySequence** __out = static_cast<QKeySequence**>(malloc(sizeof(QKeySequence**) * ret.length()));
-	for (size_t i = 0, e = ret.length(); i < e; ++i) {
-		__out[i] = new QKeySequence(ret[i]);
+	QKeySequence** _arr = static_cast<QKeySequence**>(malloc(sizeof(QKeySequence**) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		_arr[i] = new QKeySequence(_ret[i]);
 	}
-	*_out = __out;
-	*_out_len = ret.length();
+	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
+	_out->len = _ret.length();
+	_out->data = static_cast<void*>(_arr);
+	return _out;
 }
 
 int QKeySequence_OperatorSubscript(const QKeySequence* self, unsigned int i) {
@@ -162,46 +159,45 @@ bool QKeySequence_IsDetached(const QKeySequence* self) {
 	return self->isDetached();
 }
 
-void QKeySequence_ToString1(const QKeySequence* self, uintptr_t format, char** _out, int* _out_Strlen) {
-	QString ret = self->toString(static_cast<QKeySequence::SequenceFormat>(format));
+struct miqt_string* QKeySequence_ToString1(const QKeySequence* self, uintptr_t format) {
+	QString _ret = self->toString(static_cast<QKeySequence::SequenceFormat>(format));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-QKeySequence* QKeySequence_FromString2(const char* str, size_t str_Strlen, uintptr_t format) {
-	QString str_QString = QString::fromUtf8(str, str_Strlen);
-	QKeySequence ret = QKeySequence::fromString(str_QString, static_cast<QKeySequence::SequenceFormat>(format));
+QKeySequence* QKeySequence_FromString2(struct miqt_string* str, uintptr_t format) {
+	QString str_QString = QString::fromUtf8(&str->data, str->len);
+	QKeySequence _ret = QKeySequence::fromString(str_QString, static_cast<QKeySequence::SequenceFormat>(format));
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QKeySequence*>(new QKeySequence(ret));
+	return static_cast<QKeySequence*>(new QKeySequence(_ret));
 }
 
-void QKeySequence_ListFromString2(const char* str, size_t str_Strlen, uintptr_t format, QKeySequence*** _out, size_t* _out_len) {
-	QString str_QString = QString::fromUtf8(str, str_Strlen);
-	QList<QKeySequence> ret = QKeySequence::listFromString(str_QString, static_cast<QKeySequence::SequenceFormat>(format));
+struct miqt_array* QKeySequence_ListFromString2(struct miqt_string* str, uintptr_t format) {
+	QString str_QString = QString::fromUtf8(&str->data, str->len);
+	QList<QKeySequence> _ret = QKeySequence::listFromString(str_QString, static_cast<QKeySequence::SequenceFormat>(format));
 	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
-	QKeySequence** __out = static_cast<QKeySequence**>(malloc(sizeof(QKeySequence**) * ret.length()));
-	for (size_t i = 0, e = ret.length(); i < e; ++i) {
-		__out[i] = new QKeySequence(ret[i]);
+	QKeySequence** _arr = static_cast<QKeySequence**>(malloc(sizeof(QKeySequence**) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		_arr[i] = new QKeySequence(_ret[i]);
 	}
-	*_out = __out;
-	*_out_len = ret.length();
+	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
+	_out->len = _ret.length();
+	_out->data = static_cast<void*>(_arr);
+	return _out;
 }
 
-void QKeySequence_ListToString2(QKeySequence** list, size_t list_len, uintptr_t format, char** _out, int* _out_Strlen) {
+struct miqt_string* QKeySequence_ListToString2(struct miqt_array* /* of QKeySequence */ list, uintptr_t format) {
 	QList<QKeySequence> list_QList;
-	list_QList.reserve(list_len);
-	for(size_t i = 0; i < list_len; ++i) {
-		list_QList.push_back(*(list[i]));
+	list_QList.reserve(list->len);
+	QKeySequence** list_arr = static_cast<QKeySequence**>(list->data);
+	for(size_t i = 0; i < list->len; ++i) {
+		list_QList.push_back(*(list_arr[i]));
 	}
-	QString ret = QKeySequence::listToString(list_QList, static_cast<QKeySequence::SequenceFormat>(format));
+	QString _ret = QKeySequence::listToString(list_QList, static_cast<QKeySequence::SequenceFormat>(format));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 void QKeySequence_Delete(QKeySequence* self) {

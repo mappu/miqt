@@ -43,9 +43,9 @@ func NewQStorageInfo() *QStorageInfo {
 
 // NewQStorageInfo2 constructs a new QStorageInfo object.
 func NewQStorageInfo2(path string) *QStorageInfo {
-	path_Cstring := C.CString(path)
-	defer C.free(unsafe.Pointer(path_Cstring))
-	ret := C.QStorageInfo_new2(path_Cstring, C.size_t(len(path)))
+	path_ms := miqt_strdupg(path)
+	defer C.free(path_ms)
+	ret := C.QStorageInfo_new2((*C.struct_miqt_string)(path_ms))
 	return newQStorageInfo(ret)
 }
 
@@ -70,109 +70,91 @@ func (this *QStorageInfo) Swap(other *QStorageInfo) {
 }
 
 func (this *QStorageInfo) SetPath(path string) {
-	path_Cstring := C.CString(path)
-	defer C.free(unsafe.Pointer(path_Cstring))
-	C.QStorageInfo_SetPath(this.h, path_Cstring, C.size_t(len(path)))
+	path_ms := miqt_strdupg(path)
+	defer C.free(path_ms)
+	C.QStorageInfo_SetPath(this.h, (*C.struct_miqt_string)(path_ms))
 }
 
 func (this *QStorageInfo) RootPath() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QStorageInfo_RootPath(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QStorageInfo_RootPath(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QStorageInfo) Device() *QByteArray {
-	ret := C.QStorageInfo_Device(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQByteArray(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QByteArray) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QStorageInfo_Device(this.h)
+	_goptr := newQByteArray(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QStorageInfo) Subvolume() *QByteArray {
-	ret := C.QStorageInfo_Subvolume(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQByteArray(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QByteArray) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QStorageInfo_Subvolume(this.h)
+	_goptr := newQByteArray(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QStorageInfo) FileSystemType() *QByteArray {
-	ret := C.QStorageInfo_FileSystemType(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQByteArray(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QByteArray) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QStorageInfo_FileSystemType(this.h)
+	_goptr := newQByteArray(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QStorageInfo) Name() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QStorageInfo_Name(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QStorageInfo_Name(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QStorageInfo) DisplayName() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QStorageInfo_DisplayName(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QStorageInfo_DisplayName(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QStorageInfo) BytesTotal() int64 {
-	ret := C.QStorageInfo_BytesTotal(this.h)
-	return (int64)(ret)
+	_ret := C.QStorageInfo_BytesTotal(this.h)
+	return (int64)(_ret)
 }
 
 func (this *QStorageInfo) BytesFree() int64 {
-	ret := C.QStorageInfo_BytesFree(this.h)
-	return (int64)(ret)
+	_ret := C.QStorageInfo_BytesFree(this.h)
+	return (int64)(_ret)
 }
 
 func (this *QStorageInfo) BytesAvailable() int64 {
-	ret := C.QStorageInfo_BytesAvailable(this.h)
-	return (int64)(ret)
+	_ret := C.QStorageInfo_BytesAvailable(this.h)
+	return (int64)(_ret)
 }
 
 func (this *QStorageInfo) BlockSize() int {
-	ret := C.QStorageInfo_BlockSize(this.h)
-	return (int)(ret)
+	_ret := C.QStorageInfo_BlockSize(this.h)
+	return (int)(_ret)
 }
 
 func (this *QStorageInfo) IsRoot() bool {
-	ret := C.QStorageInfo_IsRoot(this.h)
-	return (bool)(ret)
+	_ret := C.QStorageInfo_IsRoot(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QStorageInfo) IsReadOnly() bool {
-	ret := C.QStorageInfo_IsReadOnly(this.h)
-	return (bool)(ret)
+	_ret := C.QStorageInfo_IsReadOnly(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QStorageInfo) IsReady() bool {
-	ret := C.QStorageInfo_IsReady(this.h)
-	return (bool)(ret)
+	_ret := C.QStorageInfo_IsReady(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QStorageInfo) IsValid() bool {
-	ret := C.QStorageInfo_IsValid(this.h)
-	return (bool)(ret)
+	_ret := C.QStorageInfo_IsValid(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QStorageInfo) Refresh() {
@@ -180,29 +162,33 @@ func (this *QStorageInfo) Refresh() {
 }
 
 func QStorageInfo_MountedVolumes() []QStorageInfo {
-	var _out **C.QStorageInfo = nil
-	var _out_len C.size_t = 0
-	C.QStorageInfo_MountedVolumes(&_out, &_out_len)
-	ret := make([]QStorageInfo, int(_out_len))
-	_outCast := (*[0xffff]*C.QStorageInfo)(unsafe.Pointer(_out)) // so fresh so clean
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = *newQStorageInfo(_outCast[i])
+	var _ma *C.struct_miqt_array = C.QStorageInfo_MountedVolumes()
+	_ret := make([]QStorageInfo, int(_ma.len))
+	_outCast := (*[0xffff]*C.QStorageInfo)(unsafe.Pointer(_ma.data)) // mrs jackson
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = *newQStorageInfo(_outCast[i])
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
 func QStorageInfo_Root() *QStorageInfo {
-	ret := C.QStorageInfo_Root()
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQStorageInfo(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QStorageInfo) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QStorageInfo_Root()
+	_goptr := newQStorageInfo(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
+// Delete this object from C++ memory.
 func (this *QStorageInfo) Delete() {
 	C.QStorageInfo_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QStorageInfo) GoGC() {
+	runtime.SetFinalizer(this, func(this *QStorageInfo) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

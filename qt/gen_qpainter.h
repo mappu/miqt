@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -161,20 +163,20 @@ void QPainter_DrawLine2(QPainter* self, int x1, int y1, int x2, int y2);
 void QPainter_DrawLine3(QPainter* self, QPoint* p1, QPoint* p2);
 void QPainter_DrawLine4(QPainter* self, QPointF* p1, QPointF* p2);
 void QPainter_DrawLines(QPainter* self, QLineF* lines, int lineCount);
-void QPainter_DrawLinesWithLines(QPainter* self, QLineF** lines, size_t lines_len);
+void QPainter_DrawLinesWithLines(QPainter* self, struct miqt_array* /* of QLineF */ lines);
 void QPainter_DrawLines2(QPainter* self, QPointF* pointPairs, int lineCount);
-void QPainter_DrawLinesWithPointPairs(QPainter* self, QPointF** pointPairs, size_t pointPairs_len);
+void QPainter_DrawLinesWithPointPairs(QPainter* self, struct miqt_array* /* of QPointF */ pointPairs);
 void QPainter_DrawLines3(QPainter* self, QLine* lines, int lineCount);
-void QPainter_DrawLines4(QPainter* self, QLine** lines, size_t lines_len);
+void QPainter_DrawLines4(QPainter* self, struct miqt_array* /* of QLine */ lines);
 void QPainter_DrawLines5(QPainter* self, QPoint* pointPairs, int lineCount);
-void QPainter_DrawLines6(QPainter* self, QPoint** pointPairs, size_t pointPairs_len);
+void QPainter_DrawLines6(QPainter* self, struct miqt_array* /* of QPoint */ pointPairs);
 void QPainter_DrawRect(QPainter* self, QRectF* rect);
 void QPainter_DrawRect2(QPainter* self, int x1, int y1, int w, int h);
 void QPainter_DrawRectWithRect(QPainter* self, QRect* rect);
 void QPainter_DrawRects(QPainter* self, QRectF* rects, int rectCount);
-void QPainter_DrawRectsWithRectangles(QPainter* self, QRectF** rectangles, size_t rectangles_len);
+void QPainter_DrawRectsWithRectangles(QPainter* self, struct miqt_array* /* of QRectF */ rectangles);
 void QPainter_DrawRects2(QPainter* self, QRect* rects, int rectCount);
-void QPainter_DrawRects3(QPainter* self, QRect** rectangles, size_t rectangles_len);
+void QPainter_DrawRects3(QPainter* self, struct miqt_array* /* of QRect */ rectangles);
 void QPainter_DrawEllipse(QPainter* self, QRectF* r);
 void QPainter_DrawEllipseWithQRect(QPainter* self, QRect* r);
 void QPainter_DrawEllipse2(QPainter* self, int x, int y, int w, int h);
@@ -234,18 +236,18 @@ void QPainter_DrawGlyphRun(QPainter* self, QPointF* position, QGlyphRun* glyphRu
 void QPainter_DrawStaticText(QPainter* self, QPointF* topLeftPosition, QStaticText* staticText);
 void QPainter_DrawStaticText2(QPainter* self, QPoint* topLeftPosition, QStaticText* staticText);
 void QPainter_DrawStaticText3(QPainter* self, int left, int top, QStaticText* staticText);
-void QPainter_DrawText(QPainter* self, QPointF* p, const char* s, size_t s_Strlen);
-void QPainter_DrawText2(QPainter* self, QPoint* p, const char* s, size_t s_Strlen);
-void QPainter_DrawText3(QPainter* self, int x, int y, const char* s, size_t s_Strlen);
-void QPainter_DrawText4(QPainter* self, QPointF* p, const char* str, size_t str_Strlen, int tf, int justificationPadding);
-void QPainter_DrawText5(QPainter* self, QRectF* r, int flags, const char* text, size_t text_Strlen);
-void QPainter_DrawText6(QPainter* self, QRect* r, int flags, const char* text, size_t text_Strlen);
-void QPainter_DrawText7(QPainter* self, int x, int y, int w, int h, int flags, const char* text, size_t text_Strlen);
-void QPainter_DrawText8(QPainter* self, QRectF* r, const char* text, size_t text_Strlen);
-QRectF* QPainter_BoundingRect(QPainter* self, QRectF* rect, int flags, const char* text, size_t text_Strlen);
-QRect* QPainter_BoundingRect2(QPainter* self, QRect* rect, int flags, const char* text, size_t text_Strlen);
-QRect* QPainter_BoundingRect3(QPainter* self, int x, int y, int w, int h, int flags, const char* text, size_t text_Strlen);
-QRectF* QPainter_BoundingRect4(QPainter* self, QRectF* rect, const char* text, size_t text_Strlen);
+void QPainter_DrawText(QPainter* self, QPointF* p, struct miqt_string* s);
+void QPainter_DrawText2(QPainter* self, QPoint* p, struct miqt_string* s);
+void QPainter_DrawText3(QPainter* self, int x, int y, struct miqt_string* s);
+void QPainter_DrawText4(QPainter* self, QPointF* p, struct miqt_string* str, int tf, int justificationPadding);
+void QPainter_DrawText5(QPainter* self, QRectF* r, int flags, struct miqt_string* text);
+void QPainter_DrawText6(QPainter* self, QRect* r, int flags, struct miqt_string* text);
+void QPainter_DrawText7(QPainter* self, int x, int y, int w, int h, int flags, struct miqt_string* text);
+void QPainter_DrawText8(QPainter* self, QRectF* r, struct miqt_string* text);
+QRectF* QPainter_BoundingRect(QPainter* self, QRectF* rect, int flags, struct miqt_string* text);
+QRect* QPainter_BoundingRect2(QPainter* self, QRect* rect, int flags, struct miqt_string* text);
+QRect* QPainter_BoundingRect3(QPainter* self, int x, int y, int w, int h, int flags, struct miqt_string* text);
+QRectF* QPainter_BoundingRect4(QPainter* self, QRectF* rect, struct miqt_string* text);
 void QPainter_DrawTextItem(QPainter* self, QPointF* p, QTextItem* ti);
 void QPainter_DrawTextItem2(QPainter* self, int x, int y, QTextItem* ti);
 void QPainter_DrawTextItem3(QPainter* self, QPoint* p, QTextItem* ti);
@@ -311,11 +313,11 @@ void QPainter_DrawImage52(QPainter* self, int x, int y, QImage* image, int sx, i
 void QPainter_DrawImage62(QPainter* self, int x, int y, QImage* image, int sx, int sy, int sw);
 void QPainter_DrawImage72(QPainter* self, int x, int y, QImage* image, int sx, int sy, int sw, int sh);
 void QPainter_DrawImage82(QPainter* self, int x, int y, QImage* image, int sx, int sy, int sw, int sh, int flags);
-void QPainter_DrawText42(QPainter* self, QRectF* r, int flags, const char* text, size_t text_Strlen, QRectF* br);
-void QPainter_DrawText43(QPainter* self, QRect* r, int flags, const char* text, size_t text_Strlen, QRect* br);
-void QPainter_DrawText72(QPainter* self, int x, int y, int w, int h, int flags, const char* text, size_t text_Strlen, QRect* br);
-void QPainter_DrawText32(QPainter* self, QRectF* r, const char* text, size_t text_Strlen, QTextOption* o);
-QRectF* QPainter_BoundingRect32(QPainter* self, QRectF* rect, const char* text, size_t text_Strlen, QTextOption* o);
+void QPainter_DrawText42(QPainter* self, QRectF* r, int flags, struct miqt_string* text, QRectF* br);
+void QPainter_DrawText43(QPainter* self, QRect* r, int flags, struct miqt_string* text, QRect* br);
+void QPainter_DrawText72(QPainter* self, int x, int y, int w, int h, int flags, struct miqt_string* text, QRect* br);
+void QPainter_DrawText32(QPainter* self, QRectF* r, struct miqt_string* text, QTextOption* o);
+QRectF* QPainter_BoundingRect32(QPainter* self, QRectF* rect, struct miqt_string* text, QTextOption* o);
 void QPainter_SetRenderHint2(QPainter* self, uintptr_t hint, bool on);
 void QPainter_SetRenderHints2(QPainter* self, int hints, bool on);
 void QPainter_SetRedirected3(QPaintDevice* device, QPaintDevice* replacement, QPoint* offset);

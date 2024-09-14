@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"runtime"
 	"unsafe"
 )
 
@@ -120,8 +121,8 @@ func NewQDataStream4(param1 *QByteArray) *QDataStream {
 }
 
 func (this *QDataStream) Device() *QIODevice {
-	ret := C.QDataStream_Device(this.h)
-	return newQIODevice_U(unsafe.Pointer(ret))
+	_ret := C.QDataStream_Device(this.h)
+	return newQIODevice_U(unsafe.Pointer(_ret))
 }
 
 func (this *QDataStream) SetDevice(device *QIODevice) {
@@ -133,13 +134,13 @@ func (this *QDataStream) UnsetDevice() {
 }
 
 func (this *QDataStream) AtEnd() bool {
-	ret := C.QDataStream_AtEnd(this.h)
-	return (bool)(ret)
+	_ret := C.QDataStream_AtEnd(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QDataStream) Status() QDataStream__Status {
-	ret := C.QDataStream_Status(this.h)
-	return (QDataStream__Status)(ret)
+	_ret := C.QDataStream_Status(this.h)
+	return (QDataStream__Status)(_ret)
 }
 
 func (this *QDataStream) SetStatus(status QDataStream__Status) {
@@ -151,8 +152,8 @@ func (this *QDataStream) ResetStatus() {
 }
 
 func (this *QDataStream) FloatingPointPrecision() QDataStream__FloatingPointPrecision {
-	ret := C.QDataStream_FloatingPointPrecision(this.h)
-	return (QDataStream__FloatingPointPrecision)(ret)
+	_ret := C.QDataStream_FloatingPointPrecision(this.h)
+	return (QDataStream__FloatingPointPrecision)(_ret)
 }
 
 func (this *QDataStream) SetFloatingPointPrecision(precision QDataStream__FloatingPointPrecision) {
@@ -160,8 +161,8 @@ func (this *QDataStream) SetFloatingPointPrecision(precision QDataStream__Floati
 }
 
 func (this *QDataStream) ByteOrder() QDataStream__ByteOrder {
-	ret := C.QDataStream_ByteOrder(this.h)
-	return (QDataStream__ByteOrder)(ret)
+	_ret := C.QDataStream_ByteOrder(this.h)
+	return (QDataStream__ByteOrder)(_ret)
 }
 
 func (this *QDataStream) SetByteOrder(byteOrder QDataStream__ByteOrder) {
@@ -169,8 +170,8 @@ func (this *QDataStream) SetByteOrder(byteOrder QDataStream__ByteOrder) {
 }
 
 func (this *QDataStream) Version() int {
-	ret := C.QDataStream_Version(this.h)
-	return (int)(ret)
+	_ret := C.QDataStream_Version(this.h)
+	return (int)(_ret)
 }
 
 func (this *QDataStream) SetVersion(version int) {
@@ -280,15 +281,15 @@ func (this *QDataStream) OperatorShiftLeftWithStr(str string) {
 func (this *QDataStream) ReadBytes(param1 string, lenVal *uint) *QDataStream {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	ret := C.QDataStream_ReadBytes(this.h, param1_Cstring, (*C.uint)(unsafe.Pointer(lenVal)))
-	return newQDataStream_U(unsafe.Pointer(ret))
+	_ret := C.QDataStream_ReadBytes(this.h, param1_Cstring, (*C.uint)(unsafe.Pointer(lenVal)))
+	return newQDataStream_U(unsafe.Pointer(_ret))
 }
 
 func (this *QDataStream) ReadRawData(param1 string, lenVal int) int {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	ret := C.QDataStream_ReadRawData(this.h, param1_Cstring, (C.int)(lenVal))
-	return (int)(ret)
+	_ret := C.QDataStream_ReadRawData(this.h, param1_Cstring, (C.int)(lenVal))
+	return (int)(_ret)
 }
 
 func (this *QDataStream) WriteBytes(param1 string, lenVal uint) {
@@ -300,13 +301,13 @@ func (this *QDataStream) WriteBytes(param1 string, lenVal uint) {
 func (this *QDataStream) WriteRawData(param1 string, lenVal int) int {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	ret := C.QDataStream_WriteRawData(this.h, param1_Cstring, (C.int)(lenVal))
-	return (int)(ret)
+	_ret := C.QDataStream_WriteRawData(this.h, param1_Cstring, (C.int)(lenVal))
+	return (int)(_ret)
 }
 
 func (this *QDataStream) SkipRawData(lenVal int) int {
-	ret := C.QDataStream_SkipRawData(this.h, (C.int)(lenVal))
-	return (int)(ret)
+	_ret := C.QDataStream_SkipRawData(this.h, (C.int)(lenVal))
+	return (int)(_ret)
 }
 
 func (this *QDataStream) StartTransaction() {
@@ -314,8 +315,8 @@ func (this *QDataStream) StartTransaction() {
 }
 
 func (this *QDataStream) CommitTransaction() bool {
-	ret := C.QDataStream_CommitTransaction(this.h)
-	return (bool)(ret)
+	_ret := C.QDataStream_CommitTransaction(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QDataStream) RollbackTransaction() {
@@ -326,8 +327,18 @@ func (this *QDataStream) AbortTransaction() {
 	C.QDataStream_AbortTransaction(this.h)
 }
 
+// Delete this object from C++ memory.
 func (this *QDataStream) Delete() {
 	C.QDataStream_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QDataStream) GoGC() {
+	runtime.SetFinalizer(this, func(this *QDataStream) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
 
 type QtPrivate__StreamStateSaver struct {
@@ -364,6 +375,16 @@ func NewQtPrivate__StreamStateSaver2(param1 *QtPrivate__StreamStateSaver) *QtPri
 	return newQtPrivate__StreamStateSaver(ret)
 }
 
+// Delete this object from C++ memory.
 func (this *QtPrivate__StreamStateSaver) Delete() {
 	C.QtPrivate__StreamStateSaver_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QtPrivate__StreamStateSaver) GoGC() {
+	runtime.SetFinalizer(this, func(this *QtPrivate__StreamStateSaver) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

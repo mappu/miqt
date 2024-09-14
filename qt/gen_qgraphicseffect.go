@@ -63,57 +63,45 @@ func newQGraphicsEffect_U(h unsafe.Pointer) *QGraphicsEffect {
 }
 
 func (this *QGraphicsEffect) MetaObject() *QMetaObject {
-	ret := C.QGraphicsEffect_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QGraphicsEffect_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QGraphicsEffect_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGraphicsEffect_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGraphicsEffect_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QGraphicsEffect_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGraphicsEffect_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGraphicsEffect_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QGraphicsEffect) BoundingRectFor(sourceRect *QRectF) *QRectF {
-	ret := C.QGraphicsEffect_BoundingRectFor(this.h, sourceRect.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRectF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRectF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QGraphicsEffect_BoundingRectFor(this.h, sourceRect.cPointer())
+	_goptr := newQRectF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QGraphicsEffect) BoundingRect() *QRectF {
-	ret := C.QGraphicsEffect_BoundingRect(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRectF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRectF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QGraphicsEffect_BoundingRect(this.h)
+	_goptr := newQRectF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QGraphicsEffect) IsEnabled() bool {
-	ret := C.QGraphicsEffect_IsEnabled(this.h)
-	return (bool)(ret)
+	_ret := C.QGraphicsEffect_IsEnabled(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QGraphicsEffect) SetEnabled(enable bool) {
@@ -127,13 +115,22 @@ func (this *QGraphicsEffect) Update() {
 func (this *QGraphicsEffect) EnabledChanged(enabled bool) {
 	C.QGraphicsEffect_EnabledChanged(this.h, (C.bool)(enabled))
 }
+func (this *QGraphicsEffect) OnEnabledChanged(slot func(enabled bool)) {
+	C.QGraphicsEffect_connect_EnabledChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QGraphicsEffect) OnEnabledChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QGraphicsEffect_EnabledChanged
+func miqt_exec_callback_QGraphicsEffect_EnabledChanged(cb *C.void, enabled C.bool) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(enabled bool))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QGraphicsEffect_connect_EnabledChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	enabled_ret := enabled
+	slotval1 := (bool)(enabled_ret)
+
+	gofunc(slotval1)
 }
 
 func QGraphicsEffect_Tr2(s string, c string) string {
@@ -141,12 +138,10 @@ func QGraphicsEffect_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGraphicsEffect_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGraphicsEffect_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QGraphicsEffect_Tr3(s string, c string, n int) string {
@@ -154,12 +149,10 @@ func QGraphicsEffect_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGraphicsEffect_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGraphicsEffect_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QGraphicsEffect_TrUtf82(s string, c string) string {
@@ -167,12 +160,10 @@ func QGraphicsEffect_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGraphicsEffect_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGraphicsEffect_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QGraphicsEffect_TrUtf83(s string, c string, n int) string {
@@ -180,16 +171,24 @@ func QGraphicsEffect_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGraphicsEffect_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGraphicsEffect_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
+// Delete this object from C++ memory.
 func (this *QGraphicsEffect) Delete() {
 	C.QGraphicsEffect_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QGraphicsEffect) GoGC() {
+	runtime.SetFinalizer(this, func(this *QGraphicsEffect) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
 
 type QGraphicsColorizeEffect struct {
@@ -228,46 +227,38 @@ func NewQGraphicsColorizeEffect2(parent *QObject) *QGraphicsColorizeEffect {
 }
 
 func (this *QGraphicsColorizeEffect) MetaObject() *QMetaObject {
-	ret := C.QGraphicsColorizeEffect_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QGraphicsColorizeEffect_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QGraphicsColorizeEffect_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGraphicsColorizeEffect_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGraphicsColorizeEffect_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QGraphicsColorizeEffect_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGraphicsColorizeEffect_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGraphicsColorizeEffect_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QGraphicsColorizeEffect) Color() *QColor {
-	ret := C.QGraphicsColorizeEffect_Color(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQColor(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QColor) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QGraphicsColorizeEffect_Color(this.h)
+	_goptr := newQColor(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QGraphicsColorizeEffect) Strength() float64 {
-	ret := C.QGraphicsColorizeEffect_Strength(this.h)
-	return (float64)(ret)
+	_ret := C.QGraphicsColorizeEffect_Strength(this.h)
+	return (float64)(_ret)
 }
 
 func (this *QGraphicsColorizeEffect) SetColor(c *QColor) {
@@ -281,25 +272,43 @@ func (this *QGraphicsColorizeEffect) SetStrength(strength float64) {
 func (this *QGraphicsColorizeEffect) ColorChanged(color *QColor) {
 	C.QGraphicsColorizeEffect_ColorChanged(this.h, color.cPointer())
 }
+func (this *QGraphicsColorizeEffect) OnColorChanged(slot func(color *QColor)) {
+	C.QGraphicsColorizeEffect_connect_ColorChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QGraphicsColorizeEffect) OnColorChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QGraphicsColorizeEffect_ColorChanged
+func miqt_exec_callback_QGraphicsColorizeEffect_ColorChanged(cb *C.void, color *C.QColor) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(color *QColor))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QGraphicsColorizeEffect_connect_ColorChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	color_ret := color
+	slotval1 := newQColor_U(unsafe.Pointer(color_ret))
+
+	gofunc(slotval1)
 }
 
 func (this *QGraphicsColorizeEffect) StrengthChanged(strength float64) {
 	C.QGraphicsColorizeEffect_StrengthChanged(this.h, (C.double)(strength))
 }
+func (this *QGraphicsColorizeEffect) OnStrengthChanged(slot func(strength float64)) {
+	C.QGraphicsColorizeEffect_connect_StrengthChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QGraphicsColorizeEffect) OnStrengthChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QGraphicsColorizeEffect_StrengthChanged
+func miqt_exec_callback_QGraphicsColorizeEffect_StrengthChanged(cb *C.void, strength C.double) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(strength float64))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QGraphicsColorizeEffect_connect_StrengthChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	strength_ret := strength
+	slotval1 := (float64)(strength_ret)
+
+	gofunc(slotval1)
 }
 
 func QGraphicsColorizeEffect_Tr2(s string, c string) string {
@@ -307,12 +316,10 @@ func QGraphicsColorizeEffect_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGraphicsColorizeEffect_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGraphicsColorizeEffect_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QGraphicsColorizeEffect_Tr3(s string, c string, n int) string {
@@ -320,12 +327,10 @@ func QGraphicsColorizeEffect_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGraphicsColorizeEffect_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGraphicsColorizeEffect_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QGraphicsColorizeEffect_TrUtf82(s string, c string) string {
@@ -333,12 +338,10 @@ func QGraphicsColorizeEffect_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGraphicsColorizeEffect_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGraphicsColorizeEffect_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QGraphicsColorizeEffect_TrUtf83(s string, c string, n int) string {
@@ -346,16 +349,24 @@ func QGraphicsColorizeEffect_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGraphicsColorizeEffect_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGraphicsColorizeEffect_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
+// Delete this object from C++ memory.
 func (this *QGraphicsColorizeEffect) Delete() {
 	C.QGraphicsColorizeEffect_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QGraphicsColorizeEffect) GoGC() {
+	runtime.SetFinalizer(this, func(this *QGraphicsColorizeEffect) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
 
 type QGraphicsBlurEffect struct {
@@ -394,51 +405,43 @@ func NewQGraphicsBlurEffect2(parent *QObject) *QGraphicsBlurEffect {
 }
 
 func (this *QGraphicsBlurEffect) MetaObject() *QMetaObject {
-	ret := C.QGraphicsBlurEffect_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QGraphicsBlurEffect_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QGraphicsBlurEffect_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGraphicsBlurEffect_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGraphicsBlurEffect_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QGraphicsBlurEffect_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGraphicsBlurEffect_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGraphicsBlurEffect_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QGraphicsBlurEffect) BoundingRectFor(rect *QRectF) *QRectF {
-	ret := C.QGraphicsBlurEffect_BoundingRectFor(this.h, rect.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRectF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRectF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QGraphicsBlurEffect_BoundingRectFor(this.h, rect.cPointer())
+	_goptr := newQRectF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QGraphicsBlurEffect) BlurRadius() float64 {
-	ret := C.QGraphicsBlurEffect_BlurRadius(this.h)
-	return (float64)(ret)
+	_ret := C.QGraphicsBlurEffect_BlurRadius(this.h)
+	return (float64)(_ret)
 }
 
 func (this *QGraphicsBlurEffect) BlurHints() int {
-	ret := C.QGraphicsBlurEffect_BlurHints(this.h)
-	return (int)(ret)
+	_ret := C.QGraphicsBlurEffect_BlurHints(this.h)
+	return (int)(_ret)
 }
 
 func (this *QGraphicsBlurEffect) SetBlurRadius(blurRadius float64) {
@@ -452,25 +455,43 @@ func (this *QGraphicsBlurEffect) SetBlurHints(hints int) {
 func (this *QGraphicsBlurEffect) BlurRadiusChanged(blurRadius float64) {
 	C.QGraphicsBlurEffect_BlurRadiusChanged(this.h, (C.double)(blurRadius))
 }
+func (this *QGraphicsBlurEffect) OnBlurRadiusChanged(slot func(blurRadius float64)) {
+	C.QGraphicsBlurEffect_connect_BlurRadiusChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QGraphicsBlurEffect) OnBlurRadiusChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QGraphicsBlurEffect_BlurRadiusChanged
+func miqt_exec_callback_QGraphicsBlurEffect_BlurRadiusChanged(cb *C.void, blurRadius C.double) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(blurRadius float64))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QGraphicsBlurEffect_connect_BlurRadiusChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	blurRadius_ret := blurRadius
+	slotval1 := (float64)(blurRadius_ret)
+
+	gofunc(slotval1)
 }
 
 func (this *QGraphicsBlurEffect) BlurHintsChanged(hints int) {
 	C.QGraphicsBlurEffect_BlurHintsChanged(this.h, (C.int)(hints))
 }
+func (this *QGraphicsBlurEffect) OnBlurHintsChanged(slot func(hints int)) {
+	C.QGraphicsBlurEffect_connect_BlurHintsChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QGraphicsBlurEffect) OnBlurHintsChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QGraphicsBlurEffect_BlurHintsChanged
+func miqt_exec_callback_QGraphicsBlurEffect_BlurHintsChanged(cb *C.void, hints C.int) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(hints int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QGraphicsBlurEffect_connect_BlurHintsChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	hints_ret := hints
+	slotval1 := (int)(hints_ret)
+
+	gofunc(slotval1)
 }
 
 func QGraphicsBlurEffect_Tr2(s string, c string) string {
@@ -478,12 +499,10 @@ func QGraphicsBlurEffect_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGraphicsBlurEffect_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGraphicsBlurEffect_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QGraphicsBlurEffect_Tr3(s string, c string, n int) string {
@@ -491,12 +510,10 @@ func QGraphicsBlurEffect_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGraphicsBlurEffect_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGraphicsBlurEffect_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QGraphicsBlurEffect_TrUtf82(s string, c string) string {
@@ -504,12 +521,10 @@ func QGraphicsBlurEffect_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGraphicsBlurEffect_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGraphicsBlurEffect_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QGraphicsBlurEffect_TrUtf83(s string, c string, n int) string {
@@ -517,16 +532,24 @@ func QGraphicsBlurEffect_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGraphicsBlurEffect_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGraphicsBlurEffect_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
+// Delete this object from C++ memory.
 func (this *QGraphicsBlurEffect) Delete() {
 	C.QGraphicsBlurEffect_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QGraphicsBlurEffect) GoGC() {
+	runtime.SetFinalizer(this, func(this *QGraphicsBlurEffect) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
 
 type QGraphicsDropShadowEffect struct {
@@ -565,78 +588,62 @@ func NewQGraphicsDropShadowEffect2(parent *QObject) *QGraphicsDropShadowEffect {
 }
 
 func (this *QGraphicsDropShadowEffect) MetaObject() *QMetaObject {
-	ret := C.QGraphicsDropShadowEffect_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QGraphicsDropShadowEffect_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QGraphicsDropShadowEffect_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGraphicsDropShadowEffect_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGraphicsDropShadowEffect_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QGraphicsDropShadowEffect_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGraphicsDropShadowEffect_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGraphicsDropShadowEffect_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QGraphicsDropShadowEffect) BoundingRectFor(rect *QRectF) *QRectF {
-	ret := C.QGraphicsDropShadowEffect_BoundingRectFor(this.h, rect.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRectF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRectF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QGraphicsDropShadowEffect_BoundingRectFor(this.h, rect.cPointer())
+	_goptr := newQRectF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QGraphicsDropShadowEffect) Offset() *QPointF {
-	ret := C.QGraphicsDropShadowEffect_Offset(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPointF(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPointF) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QGraphicsDropShadowEffect_Offset(this.h)
+	_goptr := newQPointF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QGraphicsDropShadowEffect) XOffset() float64 {
-	ret := C.QGraphicsDropShadowEffect_XOffset(this.h)
-	return (float64)(ret)
+	_ret := C.QGraphicsDropShadowEffect_XOffset(this.h)
+	return (float64)(_ret)
 }
 
 func (this *QGraphicsDropShadowEffect) YOffset() float64 {
-	ret := C.QGraphicsDropShadowEffect_YOffset(this.h)
-	return (float64)(ret)
+	_ret := C.QGraphicsDropShadowEffect_YOffset(this.h)
+	return (float64)(_ret)
 }
 
 func (this *QGraphicsDropShadowEffect) BlurRadius() float64 {
-	ret := C.QGraphicsDropShadowEffect_BlurRadius(this.h)
-	return (float64)(ret)
+	_ret := C.QGraphicsDropShadowEffect_BlurRadius(this.h)
+	return (float64)(_ret)
 }
 
 func (this *QGraphicsDropShadowEffect) Color() *QColor {
-	ret := C.QGraphicsDropShadowEffect_Color(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQColor(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QColor) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QGraphicsDropShadowEffect_Color(this.h)
+	_goptr := newQColor(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QGraphicsDropShadowEffect) SetOffset(ofs *QPointF) {
@@ -670,37 +677,64 @@ func (this *QGraphicsDropShadowEffect) SetColor(color *QColor) {
 func (this *QGraphicsDropShadowEffect) OffsetChanged(offset *QPointF) {
 	C.QGraphicsDropShadowEffect_OffsetChanged(this.h, offset.cPointer())
 }
+func (this *QGraphicsDropShadowEffect) OnOffsetChanged(slot func(offset *QPointF)) {
+	C.QGraphicsDropShadowEffect_connect_OffsetChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QGraphicsDropShadowEffect) OnOffsetChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QGraphicsDropShadowEffect_OffsetChanged
+func miqt_exec_callback_QGraphicsDropShadowEffect_OffsetChanged(cb *C.void, offset *C.QPointF) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(offset *QPointF))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QGraphicsDropShadowEffect_connect_OffsetChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	offset_ret := offset
+	slotval1 := newQPointF_U(unsafe.Pointer(offset_ret))
+
+	gofunc(slotval1)
 }
 
 func (this *QGraphicsDropShadowEffect) BlurRadiusChanged(blurRadius float64) {
 	C.QGraphicsDropShadowEffect_BlurRadiusChanged(this.h, (C.double)(blurRadius))
 }
+func (this *QGraphicsDropShadowEffect) OnBlurRadiusChanged(slot func(blurRadius float64)) {
+	C.QGraphicsDropShadowEffect_connect_BlurRadiusChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QGraphicsDropShadowEffect) OnBlurRadiusChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QGraphicsDropShadowEffect_BlurRadiusChanged
+func miqt_exec_callback_QGraphicsDropShadowEffect_BlurRadiusChanged(cb *C.void, blurRadius C.double) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(blurRadius float64))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QGraphicsDropShadowEffect_connect_BlurRadiusChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	blurRadius_ret := blurRadius
+	slotval1 := (float64)(blurRadius_ret)
+
+	gofunc(slotval1)
 }
 
 func (this *QGraphicsDropShadowEffect) ColorChanged(color *QColor) {
 	C.QGraphicsDropShadowEffect_ColorChanged(this.h, color.cPointer())
 }
+func (this *QGraphicsDropShadowEffect) OnColorChanged(slot func(color *QColor)) {
+	C.QGraphicsDropShadowEffect_connect_ColorChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QGraphicsDropShadowEffect) OnColorChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QGraphicsDropShadowEffect_ColorChanged
+func miqt_exec_callback_QGraphicsDropShadowEffect_ColorChanged(cb *C.void, color *C.QColor) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(color *QColor))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QGraphicsDropShadowEffect_connect_ColorChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	color_ret := color
+	slotval1 := newQColor_U(unsafe.Pointer(color_ret))
+
+	gofunc(slotval1)
 }
 
 func QGraphicsDropShadowEffect_Tr2(s string, c string) string {
@@ -708,12 +742,10 @@ func QGraphicsDropShadowEffect_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGraphicsDropShadowEffect_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGraphicsDropShadowEffect_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QGraphicsDropShadowEffect_Tr3(s string, c string, n int) string {
@@ -721,12 +753,10 @@ func QGraphicsDropShadowEffect_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGraphicsDropShadowEffect_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGraphicsDropShadowEffect_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QGraphicsDropShadowEffect_TrUtf82(s string, c string) string {
@@ -734,12 +764,10 @@ func QGraphicsDropShadowEffect_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGraphicsDropShadowEffect_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGraphicsDropShadowEffect_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QGraphicsDropShadowEffect_TrUtf83(s string, c string, n int) string {
@@ -747,16 +775,24 @@ func QGraphicsDropShadowEffect_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGraphicsDropShadowEffect_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGraphicsDropShadowEffect_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
+// Delete this object from C++ memory.
 func (this *QGraphicsDropShadowEffect) Delete() {
 	C.QGraphicsDropShadowEffect_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QGraphicsDropShadowEffect) GoGC() {
+	runtime.SetFinalizer(this, func(this *QGraphicsDropShadowEffect) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
 
 type QGraphicsOpacityEffect struct {
@@ -795,46 +831,38 @@ func NewQGraphicsOpacityEffect2(parent *QObject) *QGraphicsOpacityEffect {
 }
 
 func (this *QGraphicsOpacityEffect) MetaObject() *QMetaObject {
-	ret := C.QGraphicsOpacityEffect_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QGraphicsOpacityEffect_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QGraphicsOpacityEffect_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGraphicsOpacityEffect_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGraphicsOpacityEffect_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QGraphicsOpacityEffect_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGraphicsOpacityEffect_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGraphicsOpacityEffect_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QGraphicsOpacityEffect) Opacity() float64 {
-	ret := C.QGraphicsOpacityEffect_Opacity(this.h)
-	return (float64)(ret)
+	_ret := C.QGraphicsOpacityEffect_Opacity(this.h)
+	return (float64)(_ret)
 }
 
 func (this *QGraphicsOpacityEffect) OpacityMask() *QBrush {
-	ret := C.QGraphicsOpacityEffect_OpacityMask(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQBrush(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QBrush) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QGraphicsOpacityEffect_OpacityMask(this.h)
+	_goptr := newQBrush(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QGraphicsOpacityEffect) SetOpacity(opacity float64) {
@@ -848,25 +876,43 @@ func (this *QGraphicsOpacityEffect) SetOpacityMask(mask *QBrush) {
 func (this *QGraphicsOpacityEffect) OpacityChanged(opacity float64) {
 	C.QGraphicsOpacityEffect_OpacityChanged(this.h, (C.double)(opacity))
 }
+func (this *QGraphicsOpacityEffect) OnOpacityChanged(slot func(opacity float64)) {
+	C.QGraphicsOpacityEffect_connect_OpacityChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QGraphicsOpacityEffect) OnOpacityChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QGraphicsOpacityEffect_OpacityChanged
+func miqt_exec_callback_QGraphicsOpacityEffect_OpacityChanged(cb *C.void, opacity C.double) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(opacity float64))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QGraphicsOpacityEffect_connect_OpacityChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	opacity_ret := opacity
+	slotval1 := (float64)(opacity_ret)
+
+	gofunc(slotval1)
 }
 
 func (this *QGraphicsOpacityEffect) OpacityMaskChanged(mask *QBrush) {
 	C.QGraphicsOpacityEffect_OpacityMaskChanged(this.h, mask.cPointer())
 }
+func (this *QGraphicsOpacityEffect) OnOpacityMaskChanged(slot func(mask *QBrush)) {
+	C.QGraphicsOpacityEffect_connect_OpacityMaskChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QGraphicsOpacityEffect) OnOpacityMaskChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QGraphicsOpacityEffect_OpacityMaskChanged
+func miqt_exec_callback_QGraphicsOpacityEffect_OpacityMaskChanged(cb *C.void, mask *C.QBrush) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(mask *QBrush))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QGraphicsOpacityEffect_connect_OpacityMaskChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	mask_ret := mask
+	slotval1 := newQBrush_U(unsafe.Pointer(mask_ret))
+
+	gofunc(slotval1)
 }
 
 func QGraphicsOpacityEffect_Tr2(s string, c string) string {
@@ -874,12 +920,10 @@ func QGraphicsOpacityEffect_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGraphicsOpacityEffect_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGraphicsOpacityEffect_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QGraphicsOpacityEffect_Tr3(s string, c string, n int) string {
@@ -887,12 +931,10 @@ func QGraphicsOpacityEffect_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGraphicsOpacityEffect_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGraphicsOpacityEffect_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QGraphicsOpacityEffect_TrUtf82(s string, c string) string {
@@ -900,12 +942,10 @@ func QGraphicsOpacityEffect_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGraphicsOpacityEffect_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGraphicsOpacityEffect_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QGraphicsOpacityEffect_TrUtf83(s string, c string, n int) string {
@@ -913,14 +953,22 @@ func QGraphicsOpacityEffect_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QGraphicsOpacityEffect_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QGraphicsOpacityEffect_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
+// Delete this object from C++ memory.
 func (this *QGraphicsOpacityEffect) Delete() {
 	C.QGraphicsOpacityEffect_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QGraphicsOpacityEffect) GoGC() {
+	runtime.SetFinalizer(this, func(this *QGraphicsOpacityEffect) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -30,25 +32,25 @@ typedef struct QWidget QWidget;
 QTabWidget* QTabWidget_new();
 QTabWidget* QTabWidget_new2(QWidget* parent);
 QMetaObject* QTabWidget_MetaObject(const QTabWidget* self);
-void QTabWidget_Tr(const char* s, char** _out, int* _out_Strlen);
-void QTabWidget_TrUtf8(const char* s, char** _out, int* _out_Strlen);
-int QTabWidget_AddTab(QTabWidget* self, QWidget* widget, const char* param2, size_t param2_Strlen);
-int QTabWidget_AddTab2(QTabWidget* self, QWidget* widget, QIcon* icon, const char* label, size_t label_Strlen);
-int QTabWidget_InsertTab(QTabWidget* self, int index, QWidget* widget, const char* param3, size_t param3_Strlen);
-int QTabWidget_InsertTab2(QTabWidget* self, int index, QWidget* widget, QIcon* icon, const char* label, size_t label_Strlen);
+struct miqt_string* QTabWidget_Tr(const char* s);
+struct miqt_string* QTabWidget_TrUtf8(const char* s);
+int QTabWidget_AddTab(QTabWidget* self, QWidget* widget, struct miqt_string* param2);
+int QTabWidget_AddTab2(QTabWidget* self, QWidget* widget, QIcon* icon, struct miqt_string* label);
+int QTabWidget_InsertTab(QTabWidget* self, int index, QWidget* widget, struct miqt_string* param3);
+int QTabWidget_InsertTab2(QTabWidget* self, int index, QWidget* widget, QIcon* icon, struct miqt_string* label);
 void QTabWidget_RemoveTab(QTabWidget* self, int index);
 bool QTabWidget_IsTabEnabled(const QTabWidget* self, int index);
 void QTabWidget_SetTabEnabled(QTabWidget* self, int index, bool enabled);
 bool QTabWidget_IsTabVisible(const QTabWidget* self, int index);
 void QTabWidget_SetTabVisible(QTabWidget* self, int index, bool visible);
-void QTabWidget_TabText(const QTabWidget* self, int index, char** _out, int* _out_Strlen);
-void QTabWidget_SetTabText(QTabWidget* self, int index, const char* text, size_t text_Strlen);
+struct miqt_string* QTabWidget_TabText(const QTabWidget* self, int index);
+void QTabWidget_SetTabText(QTabWidget* self, int index, struct miqt_string* text);
 QIcon* QTabWidget_TabIcon(const QTabWidget* self, int index);
 void QTabWidget_SetTabIcon(QTabWidget* self, int index, QIcon* icon);
-void QTabWidget_SetTabToolTip(QTabWidget* self, int index, const char* tip, size_t tip_Strlen);
-void QTabWidget_TabToolTip(const QTabWidget* self, int index, char** _out, int* _out_Strlen);
-void QTabWidget_SetTabWhatsThis(QTabWidget* self, int index, const char* text, size_t text_Strlen);
-void QTabWidget_TabWhatsThis(const QTabWidget* self, int index, char** _out, int* _out_Strlen);
+void QTabWidget_SetTabToolTip(QTabWidget* self, int index, struct miqt_string* tip);
+struct miqt_string* QTabWidget_TabToolTip(const QTabWidget* self, int index);
+void QTabWidget_SetTabWhatsThis(QTabWidget* self, int index, struct miqt_string* text);
+struct miqt_string* QTabWidget_TabWhatsThis(const QTabWidget* self, int index);
 int QTabWidget_CurrentIndex(const QTabWidget* self);
 QWidget* QTabWidget_CurrentWidget(const QTabWidget* self);
 QWidget* QTabWidget_Widget(const QTabWidget* self, int index);
@@ -90,10 +92,10 @@ void QTabWidget_TabBarClicked(QTabWidget* self, int index);
 void QTabWidget_connect_TabBarClicked(QTabWidget* self, void* slot);
 void QTabWidget_TabBarDoubleClicked(QTabWidget* self, int index);
 void QTabWidget_connect_TabBarDoubleClicked(QTabWidget* self, void* slot);
-void QTabWidget_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QTabWidget_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QTabWidget_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QTabWidget_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QTabWidget_Tr2(const char* s, const char* c);
+struct miqt_string* QTabWidget_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QTabWidget_TrUtf82(const char* s, const char* c);
+struct miqt_string* QTabWidget_TrUtf83(const char* s, const char* c, int n);
 void QTabWidget_SetCornerWidget2(QTabWidget* self, QWidget* w, uintptr_t corner);
 QWidget* QTabWidget_CornerWidget1(const QTabWidget* self, uintptr_t corner);
 void QTabWidget_Delete(QTabWidget* self);

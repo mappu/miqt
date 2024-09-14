@@ -49,25 +49,17 @@ func (this *QIconEngine) Paint(painter *QPainter, rect *QRect, mode QIcon__Mode,
 }
 
 func (this *QIconEngine) ActualSize(size *QSize, mode QIcon__Mode, state QIcon__State) *QSize {
-	ret := C.QIconEngine_ActualSize(this.h, size.cPointer(), (C.uintptr_t)(mode), (C.uintptr_t)(state))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSize(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QIconEngine_ActualSize(this.h, size.cPointer(), (C.uintptr_t)(mode), (C.uintptr_t)(state))
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QIconEngine) Pixmap(size *QSize, mode QIcon__Mode, state QIcon__State) *QPixmap {
-	ret := C.QIconEngine_Pixmap(this.h, size.cPointer(), (C.uintptr_t)(mode), (C.uintptr_t)(state))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPixmap(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPixmap) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QIconEngine_Pixmap(this.h, size.cPointer(), (C.uintptr_t)(mode), (C.uintptr_t)(state))
+	_goptr := newQPixmap(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QIconEngine) AddPixmap(pixmap *QPixmap, mode QIcon__Mode, state QIcon__State) {
@@ -75,101 +67,97 @@ func (this *QIconEngine) AddPixmap(pixmap *QPixmap, mode QIcon__Mode, state QIco
 }
 
 func (this *QIconEngine) AddFile(fileName string, size *QSize, mode QIcon__Mode, state QIcon__State) {
-	fileName_Cstring := C.CString(fileName)
-	defer C.free(unsafe.Pointer(fileName_Cstring))
-	C.QIconEngine_AddFile(this.h, fileName_Cstring, C.size_t(len(fileName)), size.cPointer(), (C.uintptr_t)(mode), (C.uintptr_t)(state))
+	fileName_ms := miqt_strdupg(fileName)
+	defer C.free(fileName_ms)
+	C.QIconEngine_AddFile(this.h, (*C.struct_miqt_string)(fileName_ms), size.cPointer(), (C.uintptr_t)(mode), (C.uintptr_t)(state))
 }
 
 func (this *QIconEngine) Key() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QIconEngine_Key(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QIconEngine_Key(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QIconEngine) Clone() *QIconEngine {
-	ret := C.QIconEngine_Clone(this.h)
-	return newQIconEngine_U(unsafe.Pointer(ret))
+	_ret := C.QIconEngine_Clone(this.h)
+	return newQIconEngine_U(unsafe.Pointer(_ret))
 }
 
 func (this *QIconEngine) Read(in *QDataStream) bool {
-	ret := C.QIconEngine_Read(this.h, in.cPointer())
-	return (bool)(ret)
+	_ret := C.QIconEngine_Read(this.h, in.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QIconEngine) Write(out *QDataStream) bool {
-	ret := C.QIconEngine_Write(this.h, out.cPointer())
-	return (bool)(ret)
+	_ret := C.QIconEngine_Write(this.h, out.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QIconEngine) AvailableSizes() []QSize {
-	var _out **C.QSize = nil
-	var _out_len C.size_t = 0
-	C.QIconEngine_AvailableSizes(this.h, &_out, &_out_len)
-	ret := make([]QSize, int(_out_len))
-	_outCast := (*[0xffff]*C.QSize)(unsafe.Pointer(_out)) // so fresh so clean
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = *newQSize(_outCast[i])
+	var _ma *C.struct_miqt_array = C.QIconEngine_AvailableSizes(this.h)
+	_ret := make([]QSize, int(_ma.len))
+	_outCast := (*[0xffff]*C.QSize)(unsafe.Pointer(_ma.data)) // mrs jackson
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = *newQSize(_outCast[i])
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
 func (this *QIconEngine) IconName() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QIconEngine_IconName(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QIconEngine_IconName(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QIconEngine) IsNull() bool {
-	ret := C.QIconEngine_IsNull(this.h)
-	return (bool)(ret)
+	_ret := C.QIconEngine_IsNull(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QIconEngine) ScaledPixmap(size *QSize, mode QIcon__Mode, state QIcon__State, scale float64) *QPixmap {
-	ret := C.QIconEngine_ScaledPixmap(this.h, size.cPointer(), (C.uintptr_t)(mode), (C.uintptr_t)(state), (C.double)(scale))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQPixmap(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QPixmap) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QIconEngine_ScaledPixmap(this.h, size.cPointer(), (C.uintptr_t)(mode), (C.uintptr_t)(state), (C.double)(scale))
+	_goptr := newQPixmap(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QIconEngine) AvailableSizes1(mode QIcon__Mode) []QSize {
-	var _out **C.QSize = nil
-	var _out_len C.size_t = 0
-	C.QIconEngine_AvailableSizes1(this.h, (C.uintptr_t)(mode), &_out, &_out_len)
-	ret := make([]QSize, int(_out_len))
-	_outCast := (*[0xffff]*C.QSize)(unsafe.Pointer(_out)) // so fresh so clean
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = *newQSize(_outCast[i])
+	var _ma *C.struct_miqt_array = C.QIconEngine_AvailableSizes1(this.h, (C.uintptr_t)(mode))
+	_ret := make([]QSize, int(_ma.len))
+	_outCast := (*[0xffff]*C.QSize)(unsafe.Pointer(_ma.data)) // mrs jackson
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = *newQSize(_outCast[i])
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
 func (this *QIconEngine) AvailableSizes2(mode QIcon__Mode, state QIcon__State) []QSize {
-	var _out **C.QSize = nil
-	var _out_len C.size_t = 0
-	C.QIconEngine_AvailableSizes2(this.h, (C.uintptr_t)(mode), (C.uintptr_t)(state), &_out, &_out_len)
-	ret := make([]QSize, int(_out_len))
-	_outCast := (*[0xffff]*C.QSize)(unsafe.Pointer(_out)) // so fresh so clean
-	for i := 0; i < int(_out_len); i++ {
-		ret[i] = *newQSize(_outCast[i])
+	var _ma *C.struct_miqt_array = C.QIconEngine_AvailableSizes2(this.h, (C.uintptr_t)(mode), (C.uintptr_t)(state))
+	_ret := make([]QSize, int(_ma.len))
+	_outCast := (*[0xffff]*C.QSize)(unsafe.Pointer(_ma.data)) // mrs jackson
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = *newQSize(_outCast[i])
 	}
-	C.free(unsafe.Pointer(_out))
-	return ret
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
+// Delete this object from C++ memory.
 func (this *QIconEngine) Delete() {
 	C.QIconEngine_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QIconEngine) GoGC() {
+	runtime.SetFinalizer(this, func(this *QIconEngine) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
 
 type QIconEngine__AvailableSizesArgument struct {
@@ -200,8 +188,18 @@ func NewQIconEngine__AvailableSizesArgument(param1 *QIconEngine__AvailableSizesA
 	return newQIconEngine__AvailableSizesArgument(ret)
 }
 
+// Delete this object from C++ memory.
 func (this *QIconEngine__AvailableSizesArgument) Delete() {
 	C.QIconEngine__AvailableSizesArgument_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QIconEngine__AvailableSizesArgument) GoGC() {
+	runtime.SetFinalizer(this, func(this *QIconEngine__AvailableSizesArgument) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
 
 type QIconEngine__ScaledPixmapArgument struct {
@@ -232,6 +230,16 @@ func NewQIconEngine__ScaledPixmapArgument(param1 *QIconEngine__ScaledPixmapArgum
 	return newQIconEngine__ScaledPixmapArgument(ret)
 }
 
+// Delete this object from C++ memory.
 func (this *QIconEngine__ScaledPixmapArgument) Delete() {
 	C.QIconEngine__ScaledPixmapArgument_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QIconEngine__ScaledPixmapArgument) GoGC() {
+	runtime.SetFinalizer(this, func(this *QIconEngine__ScaledPixmapArgument) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

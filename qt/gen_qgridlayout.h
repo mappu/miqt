@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -32,8 +34,8 @@ typedef struct QWidget QWidget;
 QGridLayout* QGridLayout_new(QWidget* parent);
 QGridLayout* QGridLayout_new2();
 QMetaObject* QGridLayout_MetaObject(const QGridLayout* self);
-void QGridLayout_Tr(const char* s, char** _out, int* _out_Strlen);
-void QGridLayout_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QGridLayout_Tr(const char* s);
+struct miqt_string* QGridLayout_TrUtf8(const char* s);
 QSize* QGridLayout_SizeHint(const QGridLayout* self);
 QSize* QGridLayout_MinimumSize(const QGridLayout* self);
 QSize* QGridLayout_MaximumSize(const QGridLayout* self);
@@ -74,10 +76,10 @@ void QGridLayout_SetGeometry(QGridLayout* self, QRect* geometry);
 void QGridLayout_AddItem(QGridLayout* self, QLayoutItem* item, int row, int column);
 void QGridLayout_SetDefaultPositioning(QGridLayout* self, int n, uintptr_t orient);
 void QGridLayout_GetItemPosition(const QGridLayout* self, int idx, int* row, int* column, int* rowSpan, int* columnSpan);
-void QGridLayout_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QGridLayout_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QGridLayout_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QGridLayout_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QGridLayout_Tr2(const char* s, const char* c);
+struct miqt_string* QGridLayout_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QGridLayout_TrUtf82(const char* s, const char* c);
+struct miqt_string* QGridLayout_TrUtf83(const char* s, const char* c, int n);
 void QGridLayout_AddWidget4(QGridLayout* self, QWidget* param1, int row, int column, int param4);
 void QGridLayout_AddWidget6(QGridLayout* self, QWidget* param1, int row, int column, int rowSpan, int columnSpan, int param6);
 void QGridLayout_AddLayout4(QGridLayout* self, QLayout* param1, int row, int column, int param4);

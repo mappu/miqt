@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -128,22 +130,22 @@ QByteArray* QByteArray_Replace11(QByteArray* self, char before, char after);
 QByteArray* QByteArray_OperatorPlusAssign(QByteArray* self, char c);
 QByteArray* QByteArray_OperatorPlusAssignWithChar(QByteArray* self, const char* s);
 QByteArray* QByteArray_OperatorPlusAssignWithQByteArray(QByteArray* self, QByteArray* a);
-void QByteArray_Split(const QByteArray* self, char sep, QByteArray*** _out, size_t* _out_len);
+struct miqt_array* QByteArray_Split(const QByteArray* self, char sep);
 QByteArray* QByteArray_Repeated(const QByteArray* self, int times);
-QByteArray* QByteArray_AppendWithQString(QByteArray* self, const char* s, size_t s_Strlen);
-QByteArray* QByteArray_Insert6(QByteArray* self, int i, const char* s, size_t s_Strlen);
-QByteArray* QByteArray_Replace12(QByteArray* self, const char* before, size_t before_Strlen, const char* after);
-QByteArray* QByteArray_Replace13(QByteArray* self, char c, const char* after, size_t after_Strlen);
-QByteArray* QByteArray_Replace14(QByteArray* self, const char* before, size_t before_Strlen, QByteArray* after);
-QByteArray* QByteArray_OperatorPlusAssignWithQString(QByteArray* self, const char* s, size_t s_Strlen);
-int QByteArray_IndexOfWithQString(const QByteArray* self, const char* s, size_t s_Strlen);
-int QByteArray_LastIndexOfWithQString(const QByteArray* self, const char* s, size_t s_Strlen);
-bool QByteArray_OperatorEqual(const QByteArray* self, const char* s2, size_t s2_Strlen);
-bool QByteArray_OperatorNotEqual(const QByteArray* self, const char* s2, size_t s2_Strlen);
-bool QByteArray_OperatorLesser(const QByteArray* self, const char* s2, size_t s2_Strlen);
-bool QByteArray_OperatorGreater(const QByteArray* self, const char* s2, size_t s2_Strlen);
-bool QByteArray_OperatorLesserOrEqual(const QByteArray* self, const char* s2, size_t s2_Strlen);
-bool QByteArray_OperatorGreaterOrEqual(const QByteArray* self, const char* s2, size_t s2_Strlen);
+QByteArray* QByteArray_AppendWithQString(QByteArray* self, struct miqt_string* s);
+QByteArray* QByteArray_Insert6(QByteArray* self, int i, struct miqt_string* s);
+QByteArray* QByteArray_Replace12(QByteArray* self, struct miqt_string* before, const char* after);
+QByteArray* QByteArray_Replace13(QByteArray* self, char c, struct miqt_string* after);
+QByteArray* QByteArray_Replace14(QByteArray* self, struct miqt_string* before, QByteArray* after);
+QByteArray* QByteArray_OperatorPlusAssignWithQString(QByteArray* self, struct miqt_string* s);
+int QByteArray_IndexOfWithQString(const QByteArray* self, struct miqt_string* s);
+int QByteArray_LastIndexOfWithQString(const QByteArray* self, struct miqt_string* s);
+bool QByteArray_OperatorEqual(const QByteArray* self, struct miqt_string* s2);
+bool QByteArray_OperatorNotEqual(const QByteArray* self, struct miqt_string* s2);
+bool QByteArray_OperatorLesser(const QByteArray* self, struct miqt_string* s2);
+bool QByteArray_OperatorGreater(const QByteArray* self, struct miqt_string* s2);
+bool QByteArray_OperatorLesserOrEqual(const QByteArray* self, struct miqt_string* s2);
+bool QByteArray_OperatorGreaterOrEqual(const QByteArray* self, struct miqt_string* s2);
 int16_t QByteArray_ToShort(const QByteArray* self);
 uint16_t QByteArray_ToUShort(const QByteArray* self);
 int QByteArray_ToInt(const QByteArray* self);
@@ -211,8 +213,8 @@ QByteArray* QByteArray_LeftJustified2(const QByteArray* self, int width, char fi
 QByteArray* QByteArray_LeftJustified3(const QByteArray* self, int width, char fill, bool truncate);
 QByteArray* QByteArray_RightJustified2(const QByteArray* self, int width, char fill);
 QByteArray* QByteArray_RightJustified3(const QByteArray* self, int width, char fill, bool truncate);
-int QByteArray_IndexOf24(const QByteArray* self, const char* s, size_t s_Strlen, int from);
-int QByteArray_LastIndexOf24(const QByteArray* self, const char* s, size_t s_Strlen, int from);
+int QByteArray_IndexOf24(const QByteArray* self, struct miqt_string* s, int from);
+int QByteArray_LastIndexOf24(const QByteArray* self, struct miqt_string* s, int from);
 int16_t QByteArray_ToShort1(const QByteArray* self, bool* ok);
 int16_t QByteArray_ToShort2(const QByteArray* self, bool* ok, int base);
 uint16_t QByteArray_ToUShort1(const QByteArray* self, bool* ok);

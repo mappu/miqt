@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"runtime"
 	"unsafe"
 )
 
@@ -55,13 +56,13 @@ func (this *QBasicTimer) Swap(other *QBasicTimer) {
 }
 
 func (this *QBasicTimer) IsActive() bool {
-	ret := C.QBasicTimer_IsActive(this.h)
-	return (bool)(ret)
+	_ret := C.QBasicTimer_IsActive(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QBasicTimer) TimerId() int {
-	ret := C.QBasicTimer_TimerId(this.h)
-	return (int)(ret)
+	_ret := C.QBasicTimer_TimerId(this.h)
+	return (int)(_ret)
 }
 
 func (this *QBasicTimer) Start(msec int, obj *QObject) {
@@ -76,6 +77,16 @@ func (this *QBasicTimer) Stop() {
 	C.QBasicTimer_Stop(this.h)
 }
 
+// Delete this object from C++ memory.
 func (this *QBasicTimer) Delete() {
 	C.QBasicTimer_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QBasicTimer) GoGC() {
+	runtime.SetFinalizer(this, func(this *QBasicTimer) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

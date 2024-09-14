@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -26,16 +28,16 @@ typedef struct QSocketNotifier QSocketNotifier;
 QSocketNotifier* QSocketNotifier_new(uintptr_t socket, uintptr_t param2);
 QSocketNotifier* QSocketNotifier_new2(uintptr_t socket, uintptr_t param2, QObject* parent);
 QMetaObject* QSocketNotifier_MetaObject(const QSocketNotifier* self);
-void QSocketNotifier_Tr(const char* s, char** _out, int* _out_Strlen);
-void QSocketNotifier_TrUtf8(const char* s, char** _out, int* _out_Strlen);
+struct miqt_string* QSocketNotifier_Tr(const char* s);
+struct miqt_string* QSocketNotifier_TrUtf8(const char* s);
 ptrdiff_t QSocketNotifier_Socket(const QSocketNotifier* self);
 uintptr_t QSocketNotifier_Type(const QSocketNotifier* self);
 bool QSocketNotifier_IsEnabled(const QSocketNotifier* self);
 void QSocketNotifier_SetEnabled(QSocketNotifier* self, bool enabled);
-void QSocketNotifier_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QSocketNotifier_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
-void QSocketNotifier_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen);
-void QSocketNotifier_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen);
+struct miqt_string* QSocketNotifier_Tr2(const char* s, const char* c);
+struct miqt_string* QSocketNotifier_Tr3(const char* s, const char* c, int n);
+struct miqt_string* QSocketNotifier_TrUtf82(const char* s, const char* c);
+struct miqt_string* QSocketNotifier_TrUtf83(const char* s, const char* c, int n);
 void QSocketNotifier_Delete(QSocketNotifier* self);
 
 QSocketDescriptor* QSocketDescriptor_new();

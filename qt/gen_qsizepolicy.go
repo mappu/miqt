@@ -101,18 +101,18 @@ func NewQSizePolicy4(horizontal QSizePolicy__Policy, vertical QSizePolicy__Polic
 }
 
 func (this *QSizePolicy) HorizontalPolicy() QSizePolicy__Policy {
-	ret := C.QSizePolicy_HorizontalPolicy(this.h)
-	return (QSizePolicy__Policy)(ret)
+	_ret := C.QSizePolicy_HorizontalPolicy(this.h)
+	return (QSizePolicy__Policy)(_ret)
 }
 
 func (this *QSizePolicy) VerticalPolicy() QSizePolicy__Policy {
-	ret := C.QSizePolicy_VerticalPolicy(this.h)
-	return (QSizePolicy__Policy)(ret)
+	_ret := C.QSizePolicy_VerticalPolicy(this.h)
+	return (QSizePolicy__Policy)(_ret)
 }
 
 func (this *QSizePolicy) ControlType() QSizePolicy__ControlType {
-	ret := C.QSizePolicy_ControlType(this.h)
-	return (QSizePolicy__ControlType)(ret)
+	_ret := C.QSizePolicy_ControlType(this.h)
+	return (QSizePolicy__ControlType)(_ret)
 }
 
 func (this *QSizePolicy) SetHorizontalPolicy(d QSizePolicy__Policy) {
@@ -128,8 +128,8 @@ func (this *QSizePolicy) SetControlType(typeVal QSizePolicy__ControlType) {
 }
 
 func (this *QSizePolicy) ExpandingDirections() int {
-	ret := C.QSizePolicy_ExpandingDirections(this.h)
-	return (int)(ret)
+	_ret := C.QSizePolicy_ExpandingDirections(this.h)
+	return (int)(_ret)
 }
 
 func (this *QSizePolicy) SetHeightForWidth(b bool) {
@@ -137,8 +137,8 @@ func (this *QSizePolicy) SetHeightForWidth(b bool) {
 }
 
 func (this *QSizePolicy) HasHeightForWidth() bool {
-	ret := C.QSizePolicy_HasHeightForWidth(this.h)
-	return (bool)(ret)
+	_ret := C.QSizePolicy_HasHeightForWidth(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QSizePolicy) SetWidthForHeight(b bool) {
@@ -146,28 +146,28 @@ func (this *QSizePolicy) SetWidthForHeight(b bool) {
 }
 
 func (this *QSizePolicy) HasWidthForHeight() bool {
-	ret := C.QSizePolicy_HasWidthForHeight(this.h)
-	return (bool)(ret)
+	_ret := C.QSizePolicy_HasWidthForHeight(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QSizePolicy) OperatorEqual(s *QSizePolicy) bool {
-	ret := C.QSizePolicy_OperatorEqual(this.h, s.cPointer())
-	return (bool)(ret)
+	_ret := C.QSizePolicy_OperatorEqual(this.h, s.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QSizePolicy) OperatorNotEqual(s *QSizePolicy) bool {
-	ret := C.QSizePolicy_OperatorNotEqual(this.h, s.cPointer())
-	return (bool)(ret)
+	_ret := C.QSizePolicy_OperatorNotEqual(this.h, s.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QSizePolicy) HorizontalStretch() int {
-	ret := C.QSizePolicy_HorizontalStretch(this.h)
-	return (int)(ret)
+	_ret := C.QSizePolicy_HorizontalStretch(this.h)
+	return (int)(_ret)
 }
 
 func (this *QSizePolicy) VerticalStretch() int {
-	ret := C.QSizePolicy_VerticalStretch(this.h)
-	return (int)(ret)
+	_ret := C.QSizePolicy_VerticalStretch(this.h)
+	return (int)(_ret)
 }
 
 func (this *QSizePolicy) SetHorizontalStretch(stretchFactor int) {
@@ -179,8 +179,8 @@ func (this *QSizePolicy) SetVerticalStretch(stretchFactor int) {
 }
 
 func (this *QSizePolicy) RetainSizeWhenHidden() bool {
-	ret := C.QSizePolicy_RetainSizeWhenHidden(this.h)
-	return (bool)(ret)
+	_ret := C.QSizePolicy_RetainSizeWhenHidden(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QSizePolicy) SetRetainSizeWhenHidden(retainSize bool) {
@@ -192,16 +192,22 @@ func (this *QSizePolicy) Transpose() {
 }
 
 func (this *QSizePolicy) Transposed() *QSizePolicy {
-	ret := C.QSizePolicy_Transposed(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSizePolicy(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSizePolicy) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QSizePolicy_Transposed(this.h)
+	_goptr := newQSizePolicy(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
+// Delete this object from C++ memory.
 func (this *QSizePolicy) Delete() {
 	C.QSizePolicy_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QSizePolicy) GoGC() {
+	runtime.SetFinalizer(this, func(this *QSizePolicy) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

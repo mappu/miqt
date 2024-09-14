@@ -53,30 +53,26 @@ func newQValidator_U(h unsafe.Pointer) *QValidator {
 }
 
 func (this *QValidator) MetaObject() *QMetaObject {
-	ret := C.QValidator_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QValidator_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QValidator_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QValidator_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QValidator_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QValidator_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QValidator_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QValidator_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QValidator) SetLocale(locale *QLocale) {
@@ -84,39 +80,40 @@ func (this *QValidator) SetLocale(locale *QLocale) {
 }
 
 func (this *QValidator) Locale() *QLocale {
-	ret := C.QValidator_Locale(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQLocale(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QLocale) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QValidator_Locale(this.h)
+	_goptr := newQLocale(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QValidator) Validate(param1 string, param2 *int) QValidator__State {
-	param1_Cstring := C.CString(param1)
-	defer C.free(unsafe.Pointer(param1_Cstring))
-	ret := C.QValidator_Validate(this.h, param1_Cstring, C.size_t(len(param1)), (*C.int)(unsafe.Pointer(param2)))
-	return (QValidator__State)(ret)
+	param1_ms := miqt_strdupg(param1)
+	defer C.free(param1_ms)
+	_ret := C.QValidator_Validate(this.h, (*C.struct_miqt_string)(param1_ms), (*C.int)(unsafe.Pointer(param2)))
+	return (QValidator__State)(_ret)
 }
 
 func (this *QValidator) Fixup(param1 string) {
-	param1_Cstring := C.CString(param1)
-	defer C.free(unsafe.Pointer(param1_Cstring))
-	C.QValidator_Fixup(this.h, param1_Cstring, C.size_t(len(param1)))
+	param1_ms := miqt_strdupg(param1)
+	defer C.free(param1_ms)
+	C.QValidator_Fixup(this.h, (*C.struct_miqt_string)(param1_ms))
 }
 
 func (this *QValidator) Changed() {
 	C.QValidator_Changed(this.h)
 }
-
 func (this *QValidator) OnChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+	C.QValidator_connect_Changed(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
+
+//export miqt_exec_callback_QValidator_Changed
+func miqt_exec_callback_QValidator_Changed(cb *C.void) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QValidator_connect_Changed(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	gofunc()
 }
 
 func QValidator_Tr2(s string, c string) string {
@@ -124,12 +121,10 @@ func QValidator_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QValidator_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QValidator_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QValidator_Tr3(s string, c string, n int) string {
@@ -137,12 +132,10 @@ func QValidator_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QValidator_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QValidator_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QValidator_TrUtf82(s string, c string) string {
@@ -150,12 +143,10 @@ func QValidator_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QValidator_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QValidator_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QValidator_TrUtf83(s string, c string, n int) string {
@@ -163,16 +154,24 @@ func QValidator_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QValidator_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QValidator_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
+// Delete this object from C++ memory.
 func (this *QValidator) Delete() {
 	C.QValidator_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QValidator) GoGC() {
+	runtime.SetFinalizer(this, func(this *QValidator) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
 
 type QIntValidator struct {
@@ -223,43 +222,39 @@ func NewQIntValidator4(bottom int, top int, parent *QObject) *QIntValidator {
 }
 
 func (this *QIntValidator) MetaObject() *QMetaObject {
-	ret := C.QIntValidator_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QIntValidator_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QIntValidator_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QIntValidator_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QIntValidator_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QIntValidator_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QIntValidator_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QIntValidator_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QIntValidator) Validate(param1 string, param2 *int) QValidator__State {
-	param1_Cstring := C.CString(param1)
-	defer C.free(unsafe.Pointer(param1_Cstring))
-	ret := C.QIntValidator_Validate(this.h, param1_Cstring, C.size_t(len(param1)), (*C.int)(unsafe.Pointer(param2)))
-	return (QValidator__State)(ret)
+	param1_ms := miqt_strdupg(param1)
+	defer C.free(param1_ms)
+	_ret := C.QIntValidator_Validate(this.h, (*C.struct_miqt_string)(param1_ms), (*C.int)(unsafe.Pointer(param2)))
+	return (QValidator__State)(_ret)
 }
 
 func (this *QIntValidator) Fixup(input string) {
-	input_Cstring := C.CString(input)
-	defer C.free(unsafe.Pointer(input_Cstring))
-	C.QIntValidator_Fixup(this.h, input_Cstring, C.size_t(len(input)))
+	input_ms := miqt_strdupg(input)
+	defer C.free(input_ms)
+	C.QIntValidator_Fixup(this.h, (*C.struct_miqt_string)(input_ms))
 }
 
 func (this *QIntValidator) SetBottom(bottom int) {
@@ -275,37 +270,55 @@ func (this *QIntValidator) SetRange(bottom int, top int) {
 }
 
 func (this *QIntValidator) Bottom() int {
-	ret := C.QIntValidator_Bottom(this.h)
-	return (int)(ret)
+	_ret := C.QIntValidator_Bottom(this.h)
+	return (int)(_ret)
 }
 
 func (this *QIntValidator) Top() int {
-	ret := C.QIntValidator_Top(this.h)
-	return (int)(ret)
+	_ret := C.QIntValidator_Top(this.h)
+	return (int)(_ret)
 }
 
 func (this *QIntValidator) BottomChanged(bottom int) {
 	C.QIntValidator_BottomChanged(this.h, (C.int)(bottom))
 }
+func (this *QIntValidator) OnBottomChanged(slot func(bottom int)) {
+	C.QIntValidator_connect_BottomChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QIntValidator) OnBottomChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QIntValidator_BottomChanged
+func miqt_exec_callback_QIntValidator_BottomChanged(cb *C.void, bottom C.int) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(bottom int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QIntValidator_connect_BottomChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	bottom_ret := bottom
+	slotval1 := (int)(bottom_ret)
+
+	gofunc(slotval1)
 }
 
 func (this *QIntValidator) TopChanged(top int) {
 	C.QIntValidator_TopChanged(this.h, (C.int)(top))
 }
+func (this *QIntValidator) OnTopChanged(slot func(top int)) {
+	C.QIntValidator_connect_TopChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QIntValidator) OnTopChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QIntValidator_TopChanged
+func miqt_exec_callback_QIntValidator_TopChanged(cb *C.void, top C.int) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(top int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QIntValidator_connect_TopChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	top_ret := top
+	slotval1 := (int)(top_ret)
+
+	gofunc(slotval1)
 }
 
 func QIntValidator_Tr2(s string, c string) string {
@@ -313,12 +326,10 @@ func QIntValidator_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QIntValidator_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QIntValidator_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QIntValidator_Tr3(s string, c string, n int) string {
@@ -326,12 +337,10 @@ func QIntValidator_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QIntValidator_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QIntValidator_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QIntValidator_TrUtf82(s string, c string) string {
@@ -339,12 +348,10 @@ func QIntValidator_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QIntValidator_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QIntValidator_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QIntValidator_TrUtf83(s string, c string, n int) string {
@@ -352,16 +359,24 @@ func QIntValidator_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QIntValidator_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QIntValidator_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
+// Delete this object from C++ memory.
 func (this *QIntValidator) Delete() {
 	C.QIntValidator_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QIntValidator) GoGC() {
+	runtime.SetFinalizer(this, func(this *QIntValidator) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
 
 type QDoubleValidator struct {
@@ -412,37 +427,33 @@ func NewQDoubleValidator4(bottom float64, top float64, decimals int, parent *QOb
 }
 
 func (this *QDoubleValidator) MetaObject() *QMetaObject {
-	ret := C.QDoubleValidator_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QDoubleValidator_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QDoubleValidator_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QDoubleValidator_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QDoubleValidator_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QDoubleValidator_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QDoubleValidator_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QDoubleValidator_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QDoubleValidator) Validate(param1 string, param2 *int) QValidator__State {
-	param1_Cstring := C.CString(param1)
-	defer C.free(unsafe.Pointer(param1_Cstring))
-	ret := C.QDoubleValidator_Validate(this.h, param1_Cstring, C.size_t(len(param1)), (*C.int)(unsafe.Pointer(param2)))
-	return (QValidator__State)(ret)
+	param1_ms := miqt_strdupg(param1)
+	defer C.free(param1_ms)
+	_ret := C.QDoubleValidator_Validate(this.h, (*C.struct_miqt_string)(param1_ms), (*C.int)(unsafe.Pointer(param2)))
+	return (QValidator__State)(_ret)
 }
 
 func (this *QDoubleValidator) SetRange(bottom float64, top float64) {
@@ -466,71 +477,107 @@ func (this *QDoubleValidator) SetNotation(notation QDoubleValidator__Notation) {
 }
 
 func (this *QDoubleValidator) Bottom() float64 {
-	ret := C.QDoubleValidator_Bottom(this.h)
-	return (float64)(ret)
+	_ret := C.QDoubleValidator_Bottom(this.h)
+	return (float64)(_ret)
 }
 
 func (this *QDoubleValidator) Top() float64 {
-	ret := C.QDoubleValidator_Top(this.h)
-	return (float64)(ret)
+	_ret := C.QDoubleValidator_Top(this.h)
+	return (float64)(_ret)
 }
 
 func (this *QDoubleValidator) Decimals() int {
-	ret := C.QDoubleValidator_Decimals(this.h)
-	return (int)(ret)
+	_ret := C.QDoubleValidator_Decimals(this.h)
+	return (int)(_ret)
 }
 
 func (this *QDoubleValidator) Notation() QDoubleValidator__Notation {
-	ret := C.QDoubleValidator_Notation(this.h)
-	return (QDoubleValidator__Notation)(ret)
+	_ret := C.QDoubleValidator_Notation(this.h)
+	return (QDoubleValidator__Notation)(_ret)
 }
 
 func (this *QDoubleValidator) BottomChanged(bottom float64) {
 	C.QDoubleValidator_BottomChanged(this.h, (C.double)(bottom))
 }
+func (this *QDoubleValidator) OnBottomChanged(slot func(bottom float64)) {
+	C.QDoubleValidator_connect_BottomChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QDoubleValidator) OnBottomChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QDoubleValidator_BottomChanged
+func miqt_exec_callback_QDoubleValidator_BottomChanged(cb *C.void, bottom C.double) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(bottom float64))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QDoubleValidator_connect_BottomChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	bottom_ret := bottom
+	slotval1 := (float64)(bottom_ret)
+
+	gofunc(slotval1)
 }
 
 func (this *QDoubleValidator) TopChanged(top float64) {
 	C.QDoubleValidator_TopChanged(this.h, (C.double)(top))
 }
+func (this *QDoubleValidator) OnTopChanged(slot func(top float64)) {
+	C.QDoubleValidator_connect_TopChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QDoubleValidator) OnTopChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QDoubleValidator_TopChanged
+func miqt_exec_callback_QDoubleValidator_TopChanged(cb *C.void, top C.double) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(top float64))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QDoubleValidator_connect_TopChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	top_ret := top
+	slotval1 := (float64)(top_ret)
+
+	gofunc(slotval1)
 }
 
 func (this *QDoubleValidator) DecimalsChanged(decimals int) {
 	C.QDoubleValidator_DecimalsChanged(this.h, (C.int)(decimals))
 }
+func (this *QDoubleValidator) OnDecimalsChanged(slot func(decimals int)) {
+	C.QDoubleValidator_connect_DecimalsChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QDoubleValidator) OnDecimalsChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QDoubleValidator_DecimalsChanged
+func miqt_exec_callback_QDoubleValidator_DecimalsChanged(cb *C.void, decimals C.int) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(decimals int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QDoubleValidator_connect_DecimalsChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	decimals_ret := decimals
+	slotval1 := (int)(decimals_ret)
+
+	gofunc(slotval1)
 }
 
 func (this *QDoubleValidator) NotationChanged(notation QDoubleValidator__Notation) {
 	C.QDoubleValidator_NotationChanged(this.h, (C.uintptr_t)(notation))
 }
+func (this *QDoubleValidator) OnNotationChanged(slot func(notation QDoubleValidator__Notation)) {
+	C.QDoubleValidator_connect_NotationChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QDoubleValidator) OnNotationChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QDoubleValidator_NotationChanged
+func miqt_exec_callback_QDoubleValidator_NotationChanged(cb *C.void, notation C.uintptr_t) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(notation QDoubleValidator__Notation))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QDoubleValidator_connect_NotationChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	notation_ret := notation
+	slotval1 := (QDoubleValidator__Notation)(notation_ret)
+
+	gofunc(slotval1)
 }
 
 func QDoubleValidator_Tr2(s string, c string) string {
@@ -538,12 +585,10 @@ func QDoubleValidator_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QDoubleValidator_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QDoubleValidator_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QDoubleValidator_Tr3(s string, c string, n int) string {
@@ -551,12 +596,10 @@ func QDoubleValidator_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QDoubleValidator_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QDoubleValidator_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QDoubleValidator_TrUtf82(s string, c string) string {
@@ -564,12 +607,10 @@ func QDoubleValidator_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QDoubleValidator_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QDoubleValidator_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QDoubleValidator_TrUtf83(s string, c string, n int) string {
@@ -577,20 +618,28 @@ func QDoubleValidator_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QDoubleValidator_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QDoubleValidator_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QDoubleValidator) SetRange3(bottom float64, top float64, decimals int) {
 	C.QDoubleValidator_SetRange3(this.h, (C.double)(bottom), (C.double)(top), (C.int)(decimals))
 }
 
+// Delete this object from C++ memory.
 func (this *QDoubleValidator) Delete() {
 	C.QDoubleValidator_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QDoubleValidator) GoGC() {
+	runtime.SetFinalizer(this, func(this *QDoubleValidator) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
 
 type QRegExpValidator struct {
@@ -641,37 +690,33 @@ func NewQRegExpValidator4(rx *QRegExp, parent *QObject) *QRegExpValidator {
 }
 
 func (this *QRegExpValidator) MetaObject() *QMetaObject {
-	ret := C.QRegExpValidator_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QRegExpValidator_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QRegExpValidator_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QRegExpValidator_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QRegExpValidator_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QRegExpValidator_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QRegExpValidator_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QRegExpValidator_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QRegExpValidator) Validate(input string, pos *int) QValidator__State {
-	input_Cstring := C.CString(input)
-	defer C.free(unsafe.Pointer(input_Cstring))
-	ret := C.QRegExpValidator_Validate(this.h, input_Cstring, C.size_t(len(input)), (*C.int)(unsafe.Pointer(pos)))
-	return (QValidator__State)(ret)
+	input_ms := miqt_strdupg(input)
+	defer C.free(input_ms)
+	_ret := C.QRegExpValidator_Validate(this.h, (*C.struct_miqt_string)(input_ms), (*C.int)(unsafe.Pointer(pos)))
+	return (QValidator__State)(_ret)
 }
 
 func (this *QRegExpValidator) SetRegExp(rx *QRegExp) {
@@ -679,20 +724,29 @@ func (this *QRegExpValidator) SetRegExp(rx *QRegExp) {
 }
 
 func (this *QRegExpValidator) RegExp() *QRegExp {
-	ret := C.QRegExpValidator_RegExp(this.h)
-	return newQRegExp_U(unsafe.Pointer(ret))
+	_ret := C.QRegExpValidator_RegExp(this.h)
+	return newQRegExp_U(unsafe.Pointer(_ret))
 }
 
 func (this *QRegExpValidator) RegExpChanged(regExp *QRegExp) {
 	C.QRegExpValidator_RegExpChanged(this.h, regExp.cPointer())
 }
+func (this *QRegExpValidator) OnRegExpChanged(slot func(regExp *QRegExp)) {
+	C.QRegExpValidator_connect_RegExpChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QRegExpValidator) OnRegExpChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QRegExpValidator_RegExpChanged
+func miqt_exec_callback_QRegExpValidator_RegExpChanged(cb *C.void, regExp *C.QRegExp) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(regExp *QRegExp))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QRegExpValidator_connect_RegExpChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	regExp_ret := regExp
+	slotval1 := newQRegExp_U(unsafe.Pointer(regExp_ret))
+
+	gofunc(slotval1)
 }
 
 func QRegExpValidator_Tr2(s string, c string) string {
@@ -700,12 +754,10 @@ func QRegExpValidator_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QRegExpValidator_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QRegExpValidator_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QRegExpValidator_Tr3(s string, c string, n int) string {
@@ -713,12 +765,10 @@ func QRegExpValidator_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QRegExpValidator_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QRegExpValidator_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QRegExpValidator_TrUtf82(s string, c string) string {
@@ -726,12 +776,10 @@ func QRegExpValidator_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QRegExpValidator_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QRegExpValidator_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QRegExpValidator_TrUtf83(s string, c string, n int) string {
@@ -739,16 +787,24 @@ func QRegExpValidator_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QRegExpValidator_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QRegExpValidator_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
+// Delete this object from C++ memory.
 func (this *QRegExpValidator) Delete() {
 	C.QRegExpValidator_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QRegExpValidator) GoGC() {
+	runtime.SetFinalizer(this, func(this *QRegExpValidator) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }
 
 type QRegularExpressionValidator struct {
@@ -799,48 +855,40 @@ func NewQRegularExpressionValidator4(re *QRegularExpression, parent *QObject) *Q
 }
 
 func (this *QRegularExpressionValidator) MetaObject() *QMetaObject {
-	ret := C.QRegularExpressionValidator_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QRegularExpressionValidator_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QRegularExpressionValidator_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QRegularExpressionValidator_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QRegularExpressionValidator_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QRegularExpressionValidator_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QRegularExpressionValidator_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QRegularExpressionValidator_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QRegularExpressionValidator) Validate(input string, pos *int) QValidator__State {
-	input_Cstring := C.CString(input)
-	defer C.free(unsafe.Pointer(input_Cstring))
-	ret := C.QRegularExpressionValidator_Validate(this.h, input_Cstring, C.size_t(len(input)), (*C.int)(unsafe.Pointer(pos)))
-	return (QValidator__State)(ret)
+	input_ms := miqt_strdupg(input)
+	defer C.free(input_ms)
+	_ret := C.QRegularExpressionValidator_Validate(this.h, (*C.struct_miqt_string)(input_ms), (*C.int)(unsafe.Pointer(pos)))
+	return (QValidator__State)(_ret)
 }
 
 func (this *QRegularExpressionValidator) RegularExpression() *QRegularExpression {
-	ret := C.QRegularExpressionValidator_RegularExpression(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRegularExpression(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRegularExpression) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QRegularExpressionValidator_RegularExpression(this.h)
+	_goptr := newQRegularExpression(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QRegularExpressionValidator) SetRegularExpression(re *QRegularExpression) {
@@ -850,13 +898,22 @@ func (this *QRegularExpressionValidator) SetRegularExpression(re *QRegularExpres
 func (this *QRegularExpressionValidator) RegularExpressionChanged(re *QRegularExpression) {
 	C.QRegularExpressionValidator_RegularExpressionChanged(this.h, re.cPointer())
 }
+func (this *QRegularExpressionValidator) OnRegularExpressionChanged(slot func(re *QRegularExpression)) {
+	C.QRegularExpressionValidator_connect_RegularExpressionChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QRegularExpressionValidator) OnRegularExpressionChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QRegularExpressionValidator_RegularExpressionChanged
+func miqt_exec_callback_QRegularExpressionValidator_RegularExpressionChanged(cb *C.void, re *C.QRegularExpression) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(re *QRegularExpression))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QRegularExpressionValidator_connect_RegularExpressionChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	re_ret := re
+	slotval1 := newQRegularExpression_U(unsafe.Pointer(re_ret))
+
+	gofunc(slotval1)
 }
 
 func QRegularExpressionValidator_Tr2(s string, c string) string {
@@ -864,12 +921,10 @@ func QRegularExpressionValidator_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QRegularExpressionValidator_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QRegularExpressionValidator_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QRegularExpressionValidator_Tr3(s string, c string, n int) string {
@@ -877,12 +932,10 @@ func QRegularExpressionValidator_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QRegularExpressionValidator_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QRegularExpressionValidator_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QRegularExpressionValidator_TrUtf82(s string, c string) string {
@@ -890,12 +943,10 @@ func QRegularExpressionValidator_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QRegularExpressionValidator_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QRegularExpressionValidator_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QRegularExpressionValidator_TrUtf83(s string, c string, n int) string {
@@ -903,14 +954,22 @@ func QRegularExpressionValidator_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QRegularExpressionValidator_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QRegularExpressionValidator_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
+// Delete this object from C++ memory.
 func (this *QRegularExpressionValidator) Delete() {
 	C.QRegularExpressionValidator_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QRegularExpressionValidator) GoGC() {
+	runtime.SetFinalizer(this, func(this *QRegularExpressionValidator) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

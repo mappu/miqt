@@ -86,30 +86,26 @@ func NewQListView2(parent *QWidget) *QListView {
 }
 
 func (this *QListView) MetaObject() *QMetaObject {
-	ret := C.QListView_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QListView_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QListView_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QListView_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QListView_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QListView_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QListView_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QListView_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QListView) SetMovement(movement QListView__Movement) {
@@ -117,8 +113,8 @@ func (this *QListView) SetMovement(movement QListView__Movement) {
 }
 
 func (this *QListView) Movement() QListView__Movement {
-	ret := C.QListView_Movement(this.h)
-	return (QListView__Movement)(ret)
+	_ret := C.QListView_Movement(this.h)
+	return (QListView__Movement)(_ret)
 }
 
 func (this *QListView) SetFlow(flow QListView__Flow) {
@@ -126,8 +122,8 @@ func (this *QListView) SetFlow(flow QListView__Flow) {
 }
 
 func (this *QListView) Flow() QListView__Flow {
-	ret := C.QListView_Flow(this.h)
-	return (QListView__Flow)(ret)
+	_ret := C.QListView_Flow(this.h)
+	return (QListView__Flow)(_ret)
 }
 
 func (this *QListView) SetWrapping(enable bool) {
@@ -135,8 +131,8 @@ func (this *QListView) SetWrapping(enable bool) {
 }
 
 func (this *QListView) IsWrapping() bool {
-	ret := C.QListView_IsWrapping(this.h)
-	return (bool)(ret)
+	_ret := C.QListView_IsWrapping(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QListView) SetResizeMode(mode QListView__ResizeMode) {
@@ -144,8 +140,8 @@ func (this *QListView) SetResizeMode(mode QListView__ResizeMode) {
 }
 
 func (this *QListView) ResizeMode() QListView__ResizeMode {
-	ret := C.QListView_ResizeMode(this.h)
-	return (QListView__ResizeMode)(ret)
+	_ret := C.QListView_ResizeMode(this.h)
+	return (QListView__ResizeMode)(_ret)
 }
 
 func (this *QListView) SetLayoutMode(mode QListView__LayoutMode) {
@@ -153,8 +149,8 @@ func (this *QListView) SetLayoutMode(mode QListView__LayoutMode) {
 }
 
 func (this *QListView) LayoutMode() QListView__LayoutMode {
-	ret := C.QListView_LayoutMode(this.h)
-	return (QListView__LayoutMode)(ret)
+	_ret := C.QListView_LayoutMode(this.h)
+	return (QListView__LayoutMode)(_ret)
 }
 
 func (this *QListView) SetSpacing(space int) {
@@ -162,8 +158,8 @@ func (this *QListView) SetSpacing(space int) {
 }
 
 func (this *QListView) Spacing() int {
-	ret := C.QListView_Spacing(this.h)
-	return (int)(ret)
+	_ret := C.QListView_Spacing(this.h)
+	return (int)(_ret)
 }
 
 func (this *QListView) SetBatchSize(batchSize int) {
@@ -171,8 +167,8 @@ func (this *QListView) SetBatchSize(batchSize int) {
 }
 
 func (this *QListView) BatchSize() int {
-	ret := C.QListView_BatchSize(this.h)
-	return (int)(ret)
+	_ret := C.QListView_BatchSize(this.h)
+	return (int)(_ret)
 }
 
 func (this *QListView) SetGridSize(size *QSize) {
@@ -180,14 +176,10 @@ func (this *QListView) SetGridSize(size *QSize) {
 }
 
 func (this *QListView) GridSize() *QSize {
-	ret := C.QListView_GridSize(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSize(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QListView_GridSize(this.h)
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QListView) SetViewMode(mode QListView__ViewMode) {
@@ -195,8 +187,8 @@ func (this *QListView) SetViewMode(mode QListView__ViewMode) {
 }
 
 func (this *QListView) ViewMode() QListView__ViewMode {
-	ret := C.QListView_ViewMode(this.h)
-	return (QListView__ViewMode)(ret)
+	_ret := C.QListView_ViewMode(this.h)
+	return (QListView__ViewMode)(_ret)
 }
 
 func (this *QListView) ClearPropertyFlags() {
@@ -204,8 +196,8 @@ func (this *QListView) ClearPropertyFlags() {
 }
 
 func (this *QListView) IsRowHidden(row int) bool {
-	ret := C.QListView_IsRowHidden(this.h, (C.int)(row))
-	return (bool)(ret)
+	_ret := C.QListView_IsRowHidden(this.h, (C.int)(row))
+	return (bool)(_ret)
 }
 
 func (this *QListView) SetRowHidden(row int, hide bool) {
@@ -217,8 +209,8 @@ func (this *QListView) SetModelColumn(column int) {
 }
 
 func (this *QListView) ModelColumn() int {
-	ret := C.QListView_ModelColumn(this.h)
-	return (int)(ret)
+	_ret := C.QListView_ModelColumn(this.h)
+	return (int)(_ret)
 }
 
 func (this *QListView) SetUniformItemSizes(enable bool) {
@@ -226,8 +218,8 @@ func (this *QListView) SetUniformItemSizes(enable bool) {
 }
 
 func (this *QListView) UniformItemSizes() bool {
-	ret := C.QListView_UniformItemSizes(this.h)
-	return (bool)(ret)
+	_ret := C.QListView_UniformItemSizes(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QListView) SetWordWrap(on bool) {
@@ -235,8 +227,8 @@ func (this *QListView) SetWordWrap(on bool) {
 }
 
 func (this *QListView) WordWrap() bool {
-	ret := C.QListView_WordWrap(this.h)
-	return (bool)(ret)
+	_ret := C.QListView_WordWrap(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QListView) SetSelectionRectVisible(show bool) {
@@ -244,8 +236,8 @@ func (this *QListView) SetSelectionRectVisible(show bool) {
 }
 
 func (this *QListView) IsSelectionRectVisible() bool {
-	ret := C.QListView_IsSelectionRectVisible(this.h)
-	return (bool)(ret)
+	_ret := C.QListView_IsSelectionRectVisible(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QListView) SetItemAlignment(alignment int) {
@@ -253,19 +245,15 @@ func (this *QListView) SetItemAlignment(alignment int) {
 }
 
 func (this *QListView) ItemAlignment() int {
-	ret := C.QListView_ItemAlignment(this.h)
-	return (int)(ret)
+	_ret := C.QListView_ItemAlignment(this.h)
+	return (int)(_ret)
 }
 
 func (this *QListView) VisualRect(index *QModelIndex) *QRect {
-	ret := C.QListView_VisualRect(this.h, index.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQRect(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QRect) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QListView_VisualRect(this.h, index.cPointer())
+	_goptr := newQRect(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QListView) ScrollTo(index *QModelIndex) {
@@ -273,14 +261,10 @@ func (this *QListView) ScrollTo(index *QModelIndex) {
 }
 
 func (this *QListView) IndexAt(p *QPoint) *QModelIndex {
-	ret := C.QListView_IndexAt(this.h, p.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQModelIndex(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QModelIndex) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QListView_IndexAt(this.h, p.cPointer())
+	_goptr := newQModelIndex(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QListView) DoItemsLayout() {
@@ -302,15 +286,32 @@ func (this *QListView) IndexesMoved(indexes []QModelIndex) {
 	for i := range indexes {
 		indexes_CArray[i] = indexes[i].cPointer()
 	}
-	C.QListView_IndexesMoved(this.h, &indexes_CArray[0], C.size_t(len(indexes)))
+	indexes_ma := &C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray)}
+	defer runtime.KeepAlive(unsafe.Pointer(indexes_ma))
+	C.QListView_IndexesMoved(this.h, indexes_ma)
+}
+func (this *QListView) OnIndexesMoved(slot func(indexes []QModelIndex)) {
+	C.QListView_connect_IndexesMoved(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
 }
 
-func (this *QListView) OnIndexesMoved(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QListView_IndexesMoved
+func miqt_exec_callback_QListView_IndexesMoved(cb *C.void, indexes *C.struct_miqt_array) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(indexes []QModelIndex))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QListView_connect_IndexesMoved(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	var indexes_ma *C.struct_miqt_array = indexes
+	indexes_ret := make([]QModelIndex, int(indexes_ma.len))
+	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(indexes_ma.data)) // mrs jackson
+	for i := 0; i < int(indexes_ma.len); i++ {
+		indexes_ret[i] = *newQModelIndex(_outCast[i])
+	}
+	C.free(unsafe.Pointer(indexes_ma))
+	slotval1 := indexes_ret
+
+	gofunc(slotval1)
 }
 
 func QListView_Tr2(s string, c string) string {
@@ -318,12 +319,10 @@ func QListView_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QListView_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QListView_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QListView_Tr3(s string, c string, n int) string {
@@ -331,12 +330,10 @@ func QListView_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QListView_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QListView_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QListView_TrUtf82(s string, c string) string {
@@ -344,12 +341,10 @@ func QListView_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QListView_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QListView_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QListView_TrUtf83(s string, c string, n int) string {
@@ -357,18 +352,26 @@ func QListView_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QListView_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QListView_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QListView) ScrollTo2(index *QModelIndex, hint QAbstractItemView__ScrollHint) {
 	C.QListView_ScrollTo2(this.h, index.cPointer(), (C.uintptr_t)(hint))
 }
 
+// Delete this object from C++ memory.
 func (this *QListView) Delete() {
 	C.QListView_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QListView) GoGC() {
+	runtime.SetFinalizer(this, func(this *QListView) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -45,8 +47,8 @@ int QFutureInterfaceBase_ProgressMaximum(const QFutureInterfaceBase* self);
 bool QFutureInterfaceBase_IsProgressUpdateNeeded(const QFutureInterfaceBase* self);
 void QFutureInterfaceBase_SetProgressValue(QFutureInterfaceBase* self, int progressValue);
 int QFutureInterfaceBase_ProgressValue(const QFutureInterfaceBase* self);
-void QFutureInterfaceBase_SetProgressValueAndText(QFutureInterfaceBase* self, int progressValue, const char* progressText, size_t progressText_Strlen);
-void QFutureInterfaceBase_ProgressText(const QFutureInterfaceBase* self, char** _out, int* _out_Strlen);
+void QFutureInterfaceBase_SetProgressValueAndText(QFutureInterfaceBase* self, int progressValue, struct miqt_string* progressText);
+struct miqt_string* QFutureInterfaceBase_ProgressText(const QFutureInterfaceBase* self);
 void QFutureInterfaceBase_SetExpectedResultCount(QFutureInterfaceBase* self, int resultCount);
 int QFutureInterfaceBase_ExpectedResultCount(QFutureInterfaceBase* self);
 int QFutureInterfaceBase_ResultCount(const QFutureInterfaceBase* self);

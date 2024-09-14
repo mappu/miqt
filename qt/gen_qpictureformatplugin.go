@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"runtime"
 	"unsafe"
 )
 
@@ -36,55 +37,51 @@ func newQPictureFormatPlugin_U(h unsafe.Pointer) *QPictureFormatPlugin {
 }
 
 func (this *QPictureFormatPlugin) MetaObject() *QMetaObject {
-	ret := C.QPictureFormatPlugin_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QPictureFormatPlugin_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QPictureFormatPlugin_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QPictureFormatPlugin_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QPictureFormatPlugin_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QPictureFormatPlugin_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QPictureFormatPlugin_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QPictureFormatPlugin_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QPictureFormatPlugin) LoadPicture(format string, filename string, pic *QPicture) bool {
-	format_Cstring := C.CString(format)
-	defer C.free(unsafe.Pointer(format_Cstring))
-	filename_Cstring := C.CString(filename)
-	defer C.free(unsafe.Pointer(filename_Cstring))
-	ret := C.QPictureFormatPlugin_LoadPicture(this.h, format_Cstring, C.size_t(len(format)), filename_Cstring, C.size_t(len(filename)), pic.cPointer())
-	return (bool)(ret)
+	format_ms := miqt_strdupg(format)
+	defer C.free(format_ms)
+	filename_ms := miqt_strdupg(filename)
+	defer C.free(filename_ms)
+	_ret := C.QPictureFormatPlugin_LoadPicture(this.h, (*C.struct_miqt_string)(format_ms), (*C.struct_miqt_string)(filename_ms), pic.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QPictureFormatPlugin) SavePicture(format string, filename string, pic *QPicture) bool {
-	format_Cstring := C.CString(format)
-	defer C.free(unsafe.Pointer(format_Cstring))
-	filename_Cstring := C.CString(filename)
-	defer C.free(unsafe.Pointer(filename_Cstring))
-	ret := C.QPictureFormatPlugin_SavePicture(this.h, format_Cstring, C.size_t(len(format)), filename_Cstring, C.size_t(len(filename)), pic.cPointer())
-	return (bool)(ret)
+	format_ms := miqt_strdupg(format)
+	defer C.free(format_ms)
+	filename_ms := miqt_strdupg(filename)
+	defer C.free(filename_ms)
+	_ret := C.QPictureFormatPlugin_SavePicture(this.h, (*C.struct_miqt_string)(format_ms), (*C.struct_miqt_string)(filename_ms), pic.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QPictureFormatPlugin) InstallIOHandler(format string) bool {
-	format_Cstring := C.CString(format)
-	defer C.free(unsafe.Pointer(format_Cstring))
-	ret := C.QPictureFormatPlugin_InstallIOHandler(this.h, format_Cstring, C.size_t(len(format)))
-	return (bool)(ret)
+	format_ms := miqt_strdupg(format)
+	defer C.free(format_ms)
+	_ret := C.QPictureFormatPlugin_InstallIOHandler(this.h, (*C.struct_miqt_string)(format_ms))
+	return (bool)(_ret)
 }
 
 func QPictureFormatPlugin_Tr2(s string, c string) string {
@@ -92,12 +89,10 @@ func QPictureFormatPlugin_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QPictureFormatPlugin_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QPictureFormatPlugin_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QPictureFormatPlugin_Tr3(s string, c string, n int) string {
@@ -105,12 +100,10 @@ func QPictureFormatPlugin_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QPictureFormatPlugin_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QPictureFormatPlugin_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QPictureFormatPlugin_TrUtf82(s string, c string) string {
@@ -118,12 +111,10 @@ func QPictureFormatPlugin_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QPictureFormatPlugin_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QPictureFormatPlugin_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QPictureFormatPlugin_TrUtf83(s string, c string, n int) string {
@@ -131,14 +122,22 @@ func QPictureFormatPlugin_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QPictureFormatPlugin_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QPictureFormatPlugin_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
+// Delete this object from C++ memory.
 func (this *QPictureFormatPlugin) Delete() {
 	C.QPictureFormatPlugin_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QPictureFormatPlugin) GoGC() {
+	runtime.SetFinalizer(this, func(this *QPictureFormatPlugin) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

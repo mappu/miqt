@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"runtime"
 	"unsafe"
 )
 
@@ -34,6 +35,16 @@ func newQAbstractNativeEventFilter_U(h unsafe.Pointer) *QAbstractNativeEventFilt
 	return newQAbstractNativeEventFilter((*C.QAbstractNativeEventFilter)(h))
 }
 
+// Delete this object from C++ memory.
 func (this *QAbstractNativeEventFilter) Delete() {
 	C.QAbstractNativeEventFilter_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QAbstractNativeEventFilter) GoGC() {
+	runtime.SetFinalizer(this, func(this *QAbstractNativeEventFilter) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

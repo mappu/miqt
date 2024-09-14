@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"runtime"
 	"unsafe"
 )
 
@@ -48,8 +49,8 @@ func (this *QGraphicsLayout) Activate() {
 }
 
 func (this *QGraphicsLayout) IsActivated() bool {
-	ret := C.QGraphicsLayout_IsActivated(this.h)
-	return (bool)(ret)
+	_ret := C.QGraphicsLayout_IsActivated(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QGraphicsLayout) Invalidate() {
@@ -65,13 +66,13 @@ func (this *QGraphicsLayout) WidgetEvent(e *QEvent) {
 }
 
 func (this *QGraphicsLayout) Count() int {
-	ret := C.QGraphicsLayout_Count(this.h)
-	return (int)(ret)
+	_ret := C.QGraphicsLayout_Count(this.h)
+	return (int)(_ret)
 }
 
 func (this *QGraphicsLayout) ItemAt(i int) *QGraphicsLayoutItem {
-	ret := C.QGraphicsLayout_ItemAt(this.h, (C.int)(i))
-	return newQGraphicsLayoutItem_U(unsafe.Pointer(ret))
+	_ret := C.QGraphicsLayout_ItemAt(this.h, (C.int)(i))
+	return newQGraphicsLayoutItem_U(unsafe.Pointer(_ret))
 }
 
 func (this *QGraphicsLayout) RemoveAt(index int) {
@@ -83,10 +84,20 @@ func QGraphicsLayout_SetInstantInvalidatePropagation(enable bool) {
 }
 
 func QGraphicsLayout_InstantInvalidatePropagation() bool {
-	ret := C.QGraphicsLayout_InstantInvalidatePropagation()
-	return (bool)(ret)
+	_ret := C.QGraphicsLayout_InstantInvalidatePropagation()
+	return (bool)(_ret)
 }
 
+// Delete this object from C++ memory.
 func (this *QGraphicsLayout) Delete() {
 	C.QGraphicsLayout_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QGraphicsLayout) GoGC() {
+	runtime.SetFinalizer(this, func(this *QGraphicsLayout) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

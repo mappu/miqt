@@ -2,12 +2,8 @@
 #include <QTreeWidgetItem>
 #include <QTreeWidgetItemIterator>
 #include "qtreewidgetitemiterator.h"
-
 #include "gen_qtreewidgetitemiterator.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QTreeWidgetItemIterator* QTreeWidgetItemIterator_new(QTreeWidgetItemIterator* it) {
 	return new QTreeWidgetItemIterator(*it);
@@ -34,39 +30,39 @@ void QTreeWidgetItemIterator_OperatorAssign(QTreeWidgetItemIterator* self, QTree
 }
 
 QTreeWidgetItemIterator* QTreeWidgetItemIterator_OperatorPlusPlus(QTreeWidgetItemIterator* self) {
-	QTreeWidgetItemIterator& ret = self->operator++();
+	QTreeWidgetItemIterator& _ret = self->operator++();
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QTreeWidgetItemIterator* QTreeWidgetItemIterator_OperatorPlusPlusWithInt(QTreeWidgetItemIterator* self, int param1) {
-	QTreeWidgetItemIterator ret = self->operator++(static_cast<int>(param1));
+	QTreeWidgetItemIterator _ret = self->operator++(static_cast<int>(param1));
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTreeWidgetItemIterator*>(new QTreeWidgetItemIterator(ret));
+	return static_cast<QTreeWidgetItemIterator*>(new QTreeWidgetItemIterator(_ret));
 }
 
 QTreeWidgetItemIterator* QTreeWidgetItemIterator_OperatorPlusAssign(QTreeWidgetItemIterator* self, int n) {
-	QTreeWidgetItemIterator& ret = self->operator+=(static_cast<int>(n));
+	QTreeWidgetItemIterator& _ret = self->operator+=(static_cast<int>(n));
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QTreeWidgetItemIterator* QTreeWidgetItemIterator_OperatorMinusMinus(QTreeWidgetItemIterator* self) {
-	QTreeWidgetItemIterator& ret = self->operator--();
+	QTreeWidgetItemIterator& _ret = self->operator--();
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QTreeWidgetItemIterator* QTreeWidgetItemIterator_OperatorMinusMinusWithInt(QTreeWidgetItemIterator* self, int param1) {
-	QTreeWidgetItemIterator ret = self->operator--(static_cast<int>(param1));
+	QTreeWidgetItemIterator _ret = self->operator--(static_cast<int>(param1));
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTreeWidgetItemIterator*>(new QTreeWidgetItemIterator(ret));
+	return static_cast<QTreeWidgetItemIterator*>(new QTreeWidgetItemIterator(_ret));
 }
 
 QTreeWidgetItemIterator* QTreeWidgetItemIterator_OperatorMinusAssign(QTreeWidgetItemIterator* self, int n) {
-	QTreeWidgetItemIterator& ret = self->operator-=(static_cast<int>(n));
+	QTreeWidgetItemIterator& _ret = self->operator-=(static_cast<int>(n));
 	// Cast returned reference into pointer
-	return &ret;
+	return &_ret;
 }
 
 QTreeWidgetItem* QTreeWidgetItemIterator_OperatorMultiply(const QTreeWidgetItemIterator* self) {

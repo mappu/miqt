@@ -71,35 +71,31 @@ func NewQComboBox2(parent *QWidget) *QComboBox {
 }
 
 func (this *QComboBox) MetaObject() *QMetaObject {
-	ret := C.QComboBox_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(ret))
+	_ret := C.QComboBox_MetaObject(this.h)
+	return newQMetaObject_U(unsafe.Pointer(_ret))
 }
 
 func QComboBox_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QComboBox_Tr(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QComboBox_Tr(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QComboBox_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QComboBox_TrUtf8(s_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QComboBox_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QComboBox) MaxVisibleItems() int {
-	ret := C.QComboBox_MaxVisibleItems(this.h)
-	return (int)(ret)
+	_ret := C.QComboBox_MaxVisibleItems(this.h)
+	return (int)(_ret)
 }
 
 func (this *QComboBox) SetMaxVisibleItems(maxItems int) {
@@ -107,8 +103,8 @@ func (this *QComboBox) SetMaxVisibleItems(maxItems int) {
 }
 
 func (this *QComboBox) Count() int {
-	ret := C.QComboBox_Count(this.h)
-	return (int)(ret)
+	_ret := C.QComboBox_Count(this.h)
+	return (int)(_ret)
 }
 
 func (this *QComboBox) SetMaxCount(max int) {
@@ -116,13 +112,13 @@ func (this *QComboBox) SetMaxCount(max int) {
 }
 
 func (this *QComboBox) MaxCount() int {
-	ret := C.QComboBox_MaxCount(this.h)
-	return (int)(ret)
+	_ret := C.QComboBox_MaxCount(this.h)
+	return (int)(_ret)
 }
 
 func (this *QComboBox) AutoCompletion() bool {
-	ret := C.QComboBox_AutoCompletion(this.h)
-	return (bool)(ret)
+	_ret := C.QComboBox_AutoCompletion(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QComboBox) SetAutoCompletion(enable bool) {
@@ -130,8 +126,8 @@ func (this *QComboBox) SetAutoCompletion(enable bool) {
 }
 
 func (this *QComboBox) AutoCompletionCaseSensitivity() CaseSensitivity {
-	ret := C.QComboBox_AutoCompletionCaseSensitivity(this.h)
-	return (CaseSensitivity)(ret)
+	_ret := C.QComboBox_AutoCompletionCaseSensitivity(this.h)
+	return (CaseSensitivity)(_ret)
 }
 
 func (this *QComboBox) SetAutoCompletionCaseSensitivity(sensitivity CaseSensitivity) {
@@ -139,8 +135,8 @@ func (this *QComboBox) SetAutoCompletionCaseSensitivity(sensitivity CaseSensitiv
 }
 
 func (this *QComboBox) DuplicatesEnabled() bool {
-	ret := C.QComboBox_DuplicatesEnabled(this.h)
-	return (bool)(ret)
+	_ret := C.QComboBox_DuplicatesEnabled(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QComboBox) SetDuplicatesEnabled(enable bool) {
@@ -152,25 +148,25 @@ func (this *QComboBox) SetFrame(frame bool) {
 }
 
 func (this *QComboBox) HasFrame() bool {
-	ret := C.QComboBox_HasFrame(this.h)
-	return (bool)(ret)
+	_ret := C.QComboBox_HasFrame(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QComboBox) FindText(text string) int {
-	text_Cstring := C.CString(text)
-	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QComboBox_FindText(this.h, text_Cstring, C.size_t(len(text)))
-	return (int)(ret)
+	text_ms := miqt_strdupg(text)
+	defer C.free(text_ms)
+	_ret := C.QComboBox_FindText(this.h, (*C.struct_miqt_string)(text_ms))
+	return (int)(_ret)
 }
 
 func (this *QComboBox) FindData(data *QVariant) int {
-	ret := C.QComboBox_FindData(this.h, data.cPointer())
-	return (int)(ret)
+	_ret := C.QComboBox_FindData(this.h, data.cPointer())
+	return (int)(_ret)
 }
 
 func (this *QComboBox) InsertPolicy() QComboBox__InsertPolicy {
-	ret := C.QComboBox_InsertPolicy(this.h)
-	return (QComboBox__InsertPolicy)(ret)
+	_ret := C.QComboBox_InsertPolicy(this.h)
+	return (QComboBox__InsertPolicy)(_ret)
 }
 
 func (this *QComboBox) SetInsertPolicy(policy QComboBox__InsertPolicy) {
@@ -178,8 +174,8 @@ func (this *QComboBox) SetInsertPolicy(policy QComboBox__InsertPolicy) {
 }
 
 func (this *QComboBox) SizeAdjustPolicy() QComboBox__SizeAdjustPolicy {
-	ret := C.QComboBox_SizeAdjustPolicy(this.h)
-	return (QComboBox__SizeAdjustPolicy)(ret)
+	_ret := C.QComboBox_SizeAdjustPolicy(this.h)
+	return (QComboBox__SizeAdjustPolicy)(_ret)
 }
 
 func (this *QComboBox) SetSizeAdjustPolicy(policy QComboBox__SizeAdjustPolicy) {
@@ -187,8 +183,8 @@ func (this *QComboBox) SetSizeAdjustPolicy(policy QComboBox__SizeAdjustPolicy) {
 }
 
 func (this *QComboBox) MinimumContentsLength() int {
-	ret := C.QComboBox_MinimumContentsLength(this.h)
-	return (int)(ret)
+	_ret := C.QComboBox_MinimumContentsLength(this.h)
+	return (int)(_ret)
 }
 
 func (this *QComboBox) SetMinimumContentsLength(characters int) {
@@ -196,14 +192,10 @@ func (this *QComboBox) SetMinimumContentsLength(characters int) {
 }
 
 func (this *QComboBox) IconSize() *QSize {
-	ret := C.QComboBox_IconSize(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSize(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QComboBox_IconSize(this.h)
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QComboBox) SetIconSize(size *QSize) {
@@ -211,23 +203,21 @@ func (this *QComboBox) SetIconSize(size *QSize) {
 }
 
 func (this *QComboBox) SetPlaceholderText(placeholderText string) {
-	placeholderText_Cstring := C.CString(placeholderText)
-	defer C.free(unsafe.Pointer(placeholderText_Cstring))
-	C.QComboBox_SetPlaceholderText(this.h, placeholderText_Cstring, C.size_t(len(placeholderText)))
+	placeholderText_ms := miqt_strdupg(placeholderText)
+	defer C.free(placeholderText_ms)
+	C.QComboBox_SetPlaceholderText(this.h, (*C.struct_miqt_string)(placeholderText_ms))
 }
 
 func (this *QComboBox) PlaceholderText() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QComboBox_PlaceholderText(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QComboBox_PlaceholderText(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QComboBox) IsEditable() bool {
-	ret := C.QComboBox_IsEditable(this.h)
-	return (bool)(ret)
+	_ret := C.QComboBox_IsEditable(this.h)
+	return (bool)(_ret)
 }
 
 func (this *QComboBox) SetEditable(editable bool) {
@@ -239,8 +229,8 @@ func (this *QComboBox) SetLineEdit(edit *QLineEdit) {
 }
 
 func (this *QComboBox) LineEdit() *QLineEdit {
-	ret := C.QComboBox_LineEdit(this.h)
-	return newQLineEdit_U(unsafe.Pointer(ret))
+	_ret := C.QComboBox_LineEdit(this.h)
+	return newQLineEdit_U(unsafe.Pointer(_ret))
 }
 
 func (this *QComboBox) SetValidator(v *QValidator) {
@@ -248,8 +238,8 @@ func (this *QComboBox) SetValidator(v *QValidator) {
 }
 
 func (this *QComboBox) Validator() *QValidator {
-	ret := C.QComboBox_Validator(this.h)
-	return newQValidator_U(unsafe.Pointer(ret))
+	_ret := C.QComboBox_Validator(this.h)
+	return newQValidator_U(unsafe.Pointer(_ret))
 }
 
 func (this *QComboBox) SetCompleter(c *QCompleter) {
@@ -257,13 +247,13 @@ func (this *QComboBox) SetCompleter(c *QCompleter) {
 }
 
 func (this *QComboBox) Completer() *QCompleter {
-	ret := C.QComboBox_Completer(this.h)
-	return newQCompleter_U(unsafe.Pointer(ret))
+	_ret := C.QComboBox_Completer(this.h)
+	return newQCompleter_U(unsafe.Pointer(_ret))
 }
 
 func (this *QComboBox) ItemDelegate() *QAbstractItemDelegate {
-	ret := C.QComboBox_ItemDelegate(this.h)
-	return newQAbstractItemDelegate_U(unsafe.Pointer(ret))
+	_ret := C.QComboBox_ItemDelegate(this.h)
+	return newQAbstractItemDelegate_U(unsafe.Pointer(_ret))
 }
 
 func (this *QComboBox) SetItemDelegate(delegate *QAbstractItemDelegate) {
@@ -271,8 +261,8 @@ func (this *QComboBox) SetItemDelegate(delegate *QAbstractItemDelegate) {
 }
 
 func (this *QComboBox) Model() *QAbstractItemModel {
-	ret := C.QComboBox_Model(this.h)
-	return newQAbstractItemModel_U(unsafe.Pointer(ret))
+	_ret := C.QComboBox_Model(this.h)
+	return newQAbstractItemModel_U(unsafe.Pointer(_ret))
 }
 
 func (this *QComboBox) SetModel(model *QAbstractItemModel) {
@@ -280,14 +270,10 @@ func (this *QComboBox) SetModel(model *QAbstractItemModel) {
 }
 
 func (this *QComboBox) RootModelIndex() *QModelIndex {
-	ret := C.QComboBox_RootModelIndex(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQModelIndex(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QModelIndex) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QComboBox_RootModelIndex(this.h)
+	_goptr := newQModelIndex(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QComboBox) SetRootModelIndex(index *QModelIndex) {
@@ -295,8 +281,8 @@ func (this *QComboBox) SetRootModelIndex(index *QModelIndex) {
 }
 
 func (this *QComboBox) ModelColumn() int {
-	ret := C.QComboBox_ModelColumn(this.h)
-	return (int)(ret)
+	_ret := C.QComboBox_ModelColumn(this.h)
+	return (int)(_ret)
 }
 
 func (this *QComboBox) SetModelColumn(visibleColumn int) {
@@ -304,113 +290,95 @@ func (this *QComboBox) SetModelColumn(visibleColumn int) {
 }
 
 func (this *QComboBox) CurrentIndex() int {
-	ret := C.QComboBox_CurrentIndex(this.h)
-	return (int)(ret)
+	_ret := C.QComboBox_CurrentIndex(this.h)
+	return (int)(_ret)
 }
 
 func (this *QComboBox) CurrentText() string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QComboBox_CurrentText(this.h, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QComboBox_CurrentText(this.h)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QComboBox) CurrentData() *QVariant {
-	ret := C.QComboBox_CurrentData(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQVariant(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QVariant) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QComboBox_CurrentData(this.h)
+	_goptr := newQVariant(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QComboBox) ItemText(index int) string {
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QComboBox_ItemText(this.h, (C.int)(index), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QComboBox_ItemText(this.h, (C.int)(index))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QComboBox) ItemIcon(index int) *QIcon {
-	ret := C.QComboBox_ItemIcon(this.h, (C.int)(index))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQIcon(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QIcon) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QComboBox_ItemIcon(this.h, (C.int)(index))
+	_goptr := newQIcon(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QComboBox) ItemData(index int) *QVariant {
-	ret := C.QComboBox_ItemData(this.h, (C.int)(index))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQVariant(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QVariant) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QComboBox_ItemData(this.h, (C.int)(index))
+	_goptr := newQVariant(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QComboBox) AddItem(text string) {
-	text_Cstring := C.CString(text)
-	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QComboBox_AddItem(this.h, text_Cstring, C.size_t(len(text)))
+	text_ms := miqt_strdupg(text)
+	defer C.free(text_ms)
+	C.QComboBox_AddItem(this.h, (*C.struct_miqt_string)(text_ms))
 }
 
 func (this *QComboBox) AddItem2(icon *QIcon, text string) {
-	text_Cstring := C.CString(text)
-	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QComboBox_AddItem2(this.h, icon.cPointer(), text_Cstring, C.size_t(len(text)))
+	text_ms := miqt_strdupg(text)
+	defer C.free(text_ms)
+	C.QComboBox_AddItem2(this.h, icon.cPointer(), (*C.struct_miqt_string)(text_ms))
 }
 
 func (this *QComboBox) AddItems(texts []string) {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
-	texts_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(texts))))
-	texts_Lengths := (*[0xffff]C.uint64_t)(C.malloc(C.size_t(8 * len(texts))))
+	texts_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(texts))))
 	defer C.free(unsafe.Pointer(texts_CArray))
-	defer C.free(unsafe.Pointer(texts_Lengths))
 	for i := range texts {
-		single_cstring := C.CString(texts[i])
-		defer C.free(unsafe.Pointer(single_cstring))
-		texts_CArray[i] = single_cstring
-		texts_Lengths[i] = (C.uint64_t)(len(texts[i]))
+		single_ms := miqt_strdupg(texts[i])
+		defer C.free(single_ms)
+		texts_CArray[i] = (*C.struct_miqt_string)(single_ms)
 	}
-	C.QComboBox_AddItems(this.h, &texts_CArray[0], &texts_Lengths[0], C.size_t(len(texts)))
+	texts_ma := &C.struct_miqt_array{len: C.size_t(len(texts)), data: unsafe.Pointer(texts_CArray)}
+	defer runtime.KeepAlive(unsafe.Pointer(texts_ma))
+	C.QComboBox_AddItems(this.h, texts_ma)
 }
 
 func (this *QComboBox) InsertItem(index int, text string) {
-	text_Cstring := C.CString(text)
-	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QComboBox_InsertItem(this.h, (C.int)(index), text_Cstring, C.size_t(len(text)))
+	text_ms := miqt_strdupg(text)
+	defer C.free(text_ms)
+	C.QComboBox_InsertItem(this.h, (C.int)(index), (*C.struct_miqt_string)(text_ms))
 }
 
 func (this *QComboBox) InsertItem2(index int, icon *QIcon, text string) {
-	text_Cstring := C.CString(text)
-	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QComboBox_InsertItem2(this.h, (C.int)(index), icon.cPointer(), text_Cstring, C.size_t(len(text)))
+	text_ms := miqt_strdupg(text)
+	defer C.free(text_ms)
+	C.QComboBox_InsertItem2(this.h, (C.int)(index), icon.cPointer(), (*C.struct_miqt_string)(text_ms))
 }
 
 func (this *QComboBox) InsertItems(index int, texts []string) {
 	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
-	texts_CArray := (*[0xffff]*C.char)(C.malloc(C.size_t(8 * len(texts))))
-	texts_Lengths := (*[0xffff]C.uint64_t)(C.malloc(C.size_t(8 * len(texts))))
+	texts_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(texts))))
 	defer C.free(unsafe.Pointer(texts_CArray))
-	defer C.free(unsafe.Pointer(texts_Lengths))
 	for i := range texts {
-		single_cstring := C.CString(texts[i])
-		defer C.free(unsafe.Pointer(single_cstring))
-		texts_CArray[i] = single_cstring
-		texts_Lengths[i] = (C.uint64_t)(len(texts[i]))
+		single_ms := miqt_strdupg(texts[i])
+		defer C.free(single_ms)
+		texts_CArray[i] = (*C.struct_miqt_string)(single_ms)
 	}
-	C.QComboBox_InsertItems(this.h, (C.int)(index), &texts_CArray[0], &texts_Lengths[0], C.size_t(len(texts)))
+	texts_ma := &C.struct_miqt_array{len: C.size_t(len(texts)), data: unsafe.Pointer(texts_CArray)}
+	defer runtime.KeepAlive(unsafe.Pointer(texts_ma))
+	C.QComboBox_InsertItems(this.h, (C.int)(index), texts_ma)
 }
 
 func (this *QComboBox) InsertSeparator(index int) {
@@ -422,9 +390,9 @@ func (this *QComboBox) RemoveItem(index int) {
 }
 
 func (this *QComboBox) SetItemText(index int, text string) {
-	text_Cstring := C.CString(text)
-	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QComboBox_SetItemText(this.h, (C.int)(index), text_Cstring, C.size_t(len(text)))
+	text_ms := miqt_strdupg(text)
+	defer C.free(text_ms)
+	C.QComboBox_SetItemText(this.h, (C.int)(index), (*C.struct_miqt_string)(text_ms))
 }
 
 func (this *QComboBox) SetItemIcon(index int, icon *QIcon) {
@@ -436,8 +404,8 @@ func (this *QComboBox) SetItemData(index int, value *QVariant) {
 }
 
 func (this *QComboBox) View() *QAbstractItemView {
-	ret := C.QComboBox_View(this.h)
-	return newQAbstractItemView_U(unsafe.Pointer(ret))
+	_ret := C.QComboBox_View(this.h)
+	return newQAbstractItemView_U(unsafe.Pointer(_ret))
 }
 
 func (this *QComboBox) SetView(itemView *QAbstractItemView) {
@@ -445,25 +413,17 @@ func (this *QComboBox) SetView(itemView *QAbstractItemView) {
 }
 
 func (this *QComboBox) SizeHint() *QSize {
-	ret := C.QComboBox_SizeHint(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSize(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QComboBox_SizeHint(this.h)
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QComboBox) MinimumSizeHint() *QSize {
-	ret := C.QComboBox_MinimumSizeHint(this.h)
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQSize(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QSize) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QComboBox_MinimumSizeHint(this.h)
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QComboBox) ShowPopup() {
@@ -475,30 +435,22 @@ func (this *QComboBox) HidePopup() {
 }
 
 func (this *QComboBox) Event(event *QEvent) bool {
-	ret := C.QComboBox_Event(this.h, event.cPointer())
-	return (bool)(ret)
+	_ret := C.QComboBox_Event(this.h, event.cPointer())
+	return (bool)(_ret)
 }
 
 func (this *QComboBox) InputMethodQuery(param1 InputMethodQuery) *QVariant {
-	ret := C.QComboBox_InputMethodQuery(this.h, (C.uintptr_t)(param1))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQVariant(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QVariant) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QComboBox_InputMethodQuery(this.h, (C.uintptr_t)(param1))
+	_goptr := newQVariant(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QComboBox) InputMethodQuery2(query InputMethodQuery, argument *QVariant) *QVariant {
-	ret := C.QComboBox_InputMethodQuery2(this.h, (C.uintptr_t)(query), argument.cPointer())
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQVariant(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QVariant) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QComboBox_InputMethodQuery2(this.h, (C.uintptr_t)(query), argument.cPointer())
+	_goptr := newQVariant(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QComboBox) Clear() {
@@ -510,9 +462,9 @@ func (this *QComboBox) ClearEditText() {
 }
 
 func (this *QComboBox) SetEditText(text string) {
-	text_Cstring := C.CString(text)
-	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QComboBox_SetEditText(this.h, text_Cstring, C.size_t(len(text)))
+	text_ms := miqt_strdupg(text)
+	defer C.free(text_ms)
+	C.QComboBox_SetEditText(this.h, (*C.struct_miqt_string)(text_ms))
 }
 
 func (this *QComboBox) SetCurrentIndex(index int) {
@@ -520,143 +472,247 @@ func (this *QComboBox) SetCurrentIndex(index int) {
 }
 
 func (this *QComboBox) SetCurrentText(text string) {
-	text_Cstring := C.CString(text)
-	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QComboBox_SetCurrentText(this.h, text_Cstring, C.size_t(len(text)))
+	text_ms := miqt_strdupg(text)
+	defer C.free(text_ms)
+	C.QComboBox_SetCurrentText(this.h, (*C.struct_miqt_string)(text_ms))
 }
 
 func (this *QComboBox) EditTextChanged(param1 string) {
-	param1_Cstring := C.CString(param1)
-	defer C.free(unsafe.Pointer(param1_Cstring))
-	C.QComboBox_EditTextChanged(this.h, param1_Cstring, C.size_t(len(param1)))
+	param1_ms := miqt_strdupg(param1)
+	defer C.free(param1_ms)
+	C.QComboBox_EditTextChanged(this.h, (*C.struct_miqt_string)(param1_ms))
+}
+func (this *QComboBox) OnEditTextChanged(slot func(param1 string)) {
+	C.QComboBox_connect_EditTextChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
 }
 
-func (this *QComboBox) OnEditTextChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QComboBox_EditTextChanged
+func miqt_exec_callback_QComboBox_EditTextChanged(cb *C.void, param1 *C.struct_miqt_string) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(param1 string))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QComboBox_connect_EditTextChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	var param1_ms *C.struct_miqt_string = param1
+	param1_ret := C.GoStringN(&param1_ms.data, C.int(int64(param1_ms.len)))
+	C.free(unsafe.Pointer(param1_ms))
+	slotval1 := param1_ret
+
+	gofunc(slotval1)
 }
 
 func (this *QComboBox) Activated(index int) {
 	C.QComboBox_Activated(this.h, (C.int)(index))
 }
+func (this *QComboBox) OnActivated(slot func(index int)) {
+	C.QComboBox_connect_Activated(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QComboBox) OnActivated(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QComboBox_Activated
+func miqt_exec_callback_QComboBox_Activated(cb *C.void, index C.int) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(index int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QComboBox_connect_Activated(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	index_ret := index
+	slotval1 := (int)(index_ret)
+
+	gofunc(slotval1)
 }
 
 func (this *QComboBox) TextActivated(param1 string) {
-	param1_Cstring := C.CString(param1)
-	defer C.free(unsafe.Pointer(param1_Cstring))
-	C.QComboBox_TextActivated(this.h, param1_Cstring, C.size_t(len(param1)))
+	param1_ms := miqt_strdupg(param1)
+	defer C.free(param1_ms)
+	C.QComboBox_TextActivated(this.h, (*C.struct_miqt_string)(param1_ms))
+}
+func (this *QComboBox) OnTextActivated(slot func(param1 string)) {
+	C.QComboBox_connect_TextActivated(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
 }
 
-func (this *QComboBox) OnTextActivated(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QComboBox_TextActivated
+func miqt_exec_callback_QComboBox_TextActivated(cb *C.void, param1 *C.struct_miqt_string) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(param1 string))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QComboBox_connect_TextActivated(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	var param1_ms *C.struct_miqt_string = param1
+	param1_ret := C.GoStringN(&param1_ms.data, C.int(int64(param1_ms.len)))
+	C.free(unsafe.Pointer(param1_ms))
+	slotval1 := param1_ret
+
+	gofunc(slotval1)
 }
 
 func (this *QComboBox) Highlighted(index int) {
 	C.QComboBox_Highlighted(this.h, (C.int)(index))
 }
+func (this *QComboBox) OnHighlighted(slot func(index int)) {
+	C.QComboBox_connect_Highlighted(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QComboBox) OnHighlighted(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QComboBox_Highlighted
+func miqt_exec_callback_QComboBox_Highlighted(cb *C.void, index C.int) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(index int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QComboBox_connect_Highlighted(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	index_ret := index
+	slotval1 := (int)(index_ret)
+
+	gofunc(slotval1)
 }
 
 func (this *QComboBox) TextHighlighted(param1 string) {
-	param1_Cstring := C.CString(param1)
-	defer C.free(unsafe.Pointer(param1_Cstring))
-	C.QComboBox_TextHighlighted(this.h, param1_Cstring, C.size_t(len(param1)))
+	param1_ms := miqt_strdupg(param1)
+	defer C.free(param1_ms)
+	C.QComboBox_TextHighlighted(this.h, (*C.struct_miqt_string)(param1_ms))
+}
+func (this *QComboBox) OnTextHighlighted(slot func(param1 string)) {
+	C.QComboBox_connect_TextHighlighted(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
 }
 
-func (this *QComboBox) OnTextHighlighted(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QComboBox_TextHighlighted
+func miqt_exec_callback_QComboBox_TextHighlighted(cb *C.void, param1 *C.struct_miqt_string) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(param1 string))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QComboBox_connect_TextHighlighted(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	var param1_ms *C.struct_miqt_string = param1
+	param1_ret := C.GoStringN(&param1_ms.data, C.int(int64(param1_ms.len)))
+	C.free(unsafe.Pointer(param1_ms))
+	slotval1 := param1_ret
+
+	gofunc(slotval1)
 }
 
 func (this *QComboBox) CurrentIndexChanged(index int) {
 	C.QComboBox_CurrentIndexChanged(this.h, (C.int)(index))
 }
+func (this *QComboBox) OnCurrentIndexChanged(slot func(index int)) {
+	C.QComboBox_connect_CurrentIndexChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+}
 
-func (this *QComboBox) OnCurrentIndexChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QComboBox_CurrentIndexChanged
+func miqt_exec_callback_QComboBox_CurrentIndexChanged(cb *C.void, index C.int) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(index int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QComboBox_connect_CurrentIndexChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	index_ret := index
+	slotval1 := (int)(index_ret)
+
+	gofunc(slotval1)
 }
 
 func (this *QComboBox) CurrentIndexChangedWithQString(param1 string) {
-	param1_Cstring := C.CString(param1)
-	defer C.free(unsafe.Pointer(param1_Cstring))
-	C.QComboBox_CurrentIndexChangedWithQString(this.h, param1_Cstring, C.size_t(len(param1)))
+	param1_ms := miqt_strdupg(param1)
+	defer C.free(param1_ms)
+	C.QComboBox_CurrentIndexChangedWithQString(this.h, (*C.struct_miqt_string)(param1_ms))
+}
+func (this *QComboBox) OnCurrentIndexChangedWithQString(slot func(param1 string)) {
+	C.QComboBox_connect_CurrentIndexChangedWithQString(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
 }
 
-func (this *QComboBox) OnCurrentIndexChangedWithQString(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QComboBox_CurrentIndexChangedWithQString
+func miqt_exec_callback_QComboBox_CurrentIndexChangedWithQString(cb *C.void, param1 *C.struct_miqt_string) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(param1 string))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QComboBox_connect_CurrentIndexChangedWithQString(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	var param1_ms *C.struct_miqt_string = param1
+	param1_ret := C.GoStringN(&param1_ms.data, C.int(int64(param1_ms.len)))
+	C.free(unsafe.Pointer(param1_ms))
+	slotval1 := param1_ret
+
+	gofunc(slotval1)
 }
 
 func (this *QComboBox) CurrentTextChanged(param1 string) {
-	param1_Cstring := C.CString(param1)
-	defer C.free(unsafe.Pointer(param1_Cstring))
-	C.QComboBox_CurrentTextChanged(this.h, param1_Cstring, C.size_t(len(param1)))
+	param1_ms := miqt_strdupg(param1)
+	defer C.free(param1_ms)
+	C.QComboBox_CurrentTextChanged(this.h, (*C.struct_miqt_string)(param1_ms))
+}
+func (this *QComboBox) OnCurrentTextChanged(slot func(param1 string)) {
+	C.QComboBox_connect_CurrentTextChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
 }
 
-func (this *QComboBox) OnCurrentTextChanged(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QComboBox_CurrentTextChanged
+func miqt_exec_callback_QComboBox_CurrentTextChanged(cb *C.void, param1 *C.struct_miqt_string) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(param1 string))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QComboBox_connect_CurrentTextChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	var param1_ms *C.struct_miqt_string = param1
+	param1_ret := C.GoStringN(&param1_ms.data, C.int(int64(param1_ms.len)))
+	C.free(unsafe.Pointer(param1_ms))
+	slotval1 := param1_ret
+
+	gofunc(slotval1)
 }
 
 func (this *QComboBox) ActivatedWithQString(param1 string) {
-	param1_Cstring := C.CString(param1)
-	defer C.free(unsafe.Pointer(param1_Cstring))
-	C.QComboBox_ActivatedWithQString(this.h, param1_Cstring, C.size_t(len(param1)))
+	param1_ms := miqt_strdupg(param1)
+	defer C.free(param1_ms)
+	C.QComboBox_ActivatedWithQString(this.h, (*C.struct_miqt_string)(param1_ms))
+}
+func (this *QComboBox) OnActivatedWithQString(slot func(param1 string)) {
+	C.QComboBox_connect_ActivatedWithQString(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
 }
 
-func (this *QComboBox) OnActivatedWithQString(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QComboBox_ActivatedWithQString
+func miqt_exec_callback_QComboBox_ActivatedWithQString(cb *C.void, param1 *C.struct_miqt_string) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(param1 string))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QComboBox_connect_ActivatedWithQString(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	var param1_ms *C.struct_miqt_string = param1
+	param1_ret := C.GoStringN(&param1_ms.data, C.int(int64(param1_ms.len)))
+	C.free(unsafe.Pointer(param1_ms))
+	slotval1 := param1_ret
+
+	gofunc(slotval1)
 }
 
 func (this *QComboBox) HighlightedWithQString(param1 string) {
-	param1_Cstring := C.CString(param1)
-	defer C.free(unsafe.Pointer(param1_Cstring))
-	C.QComboBox_HighlightedWithQString(this.h, param1_Cstring, C.size_t(len(param1)))
+	param1_ms := miqt_strdupg(param1)
+	defer C.free(param1_ms)
+	C.QComboBox_HighlightedWithQString(this.h, (*C.struct_miqt_string)(param1_ms))
+}
+func (this *QComboBox) OnHighlightedWithQString(slot func(param1 string)) {
+	C.QComboBox_connect_HighlightedWithQString(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
 }
 
-func (this *QComboBox) OnHighlightedWithQString(slot func()) {
-	var slotWrapper miqtCallbackFunc = func(argc C.int, args *C.void) {
-		slot()
+//export miqt_exec_callback_QComboBox_HighlightedWithQString
+func miqt_exec_callback_QComboBox_HighlightedWithQString(cb *C.void, param1 *C.struct_miqt_string) {
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(param1 string))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	C.QComboBox_connect_HighlightedWithQString(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slotWrapper))))
+	// Convert all CABI parameters to Go parameters
+	var param1_ms *C.struct_miqt_string = param1
+	param1_ret := C.GoStringN(&param1_ms.data, C.int(int64(param1_ms.len)))
+	C.free(unsafe.Pointer(param1_ms))
+	slotval1 := param1_ret
+
+	gofunc(slotval1)
 }
 
 func QComboBox_Tr2(s string, c string) string {
@@ -664,12 +720,10 @@ func QComboBox_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QComboBox_Tr2(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QComboBox_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QComboBox_Tr3(s string, c string, n int) string {
@@ -677,12 +731,10 @@ func QComboBox_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QComboBox_Tr3(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QComboBox_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QComboBox_TrUtf82(s string, c string) string {
@@ -690,12 +742,10 @@ func QComboBox_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QComboBox_TrUtf82(s_Cstring, c_Cstring, &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QComboBox_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func QComboBox_TrUtf83(s string, c string, n int) string {
@@ -703,81 +753,81 @@ func QComboBox_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _out *C.char = nil
-	var _out_Strlen C.int = 0
-	C.QComboBox_TrUtf83(s_Cstring, c_Cstring, (C.int)(n), &_out, &_out_Strlen)
-	ret := C.GoStringN(_out, _out_Strlen)
-	C.free(unsafe.Pointer(_out))
-	return ret
+	var _ms *C.struct_miqt_string = C.QComboBox_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms))
+	return _ret
 }
 
 func (this *QComboBox) FindText2(text string, flags int) int {
-	text_Cstring := C.CString(text)
-	defer C.free(unsafe.Pointer(text_Cstring))
-	ret := C.QComboBox_FindText2(this.h, text_Cstring, C.size_t(len(text)), (C.int)(flags))
-	return (int)(ret)
+	text_ms := miqt_strdupg(text)
+	defer C.free(text_ms)
+	_ret := C.QComboBox_FindText2(this.h, (*C.struct_miqt_string)(text_ms), (C.int)(flags))
+	return (int)(_ret)
 }
 
 func (this *QComboBox) FindData2(data *QVariant, role int) int {
-	ret := C.QComboBox_FindData2(this.h, data.cPointer(), (C.int)(role))
-	return (int)(ret)
+	_ret := C.QComboBox_FindData2(this.h, data.cPointer(), (C.int)(role))
+	return (int)(_ret)
 }
 
 func (this *QComboBox) FindData3(data *QVariant, role int, flags int) int {
-	ret := C.QComboBox_FindData3(this.h, data.cPointer(), (C.int)(role), (C.int)(flags))
-	return (int)(ret)
+	_ret := C.QComboBox_FindData3(this.h, data.cPointer(), (C.int)(role), (C.int)(flags))
+	return (int)(_ret)
 }
 
 func (this *QComboBox) CurrentData1(role int) *QVariant {
-	ret := C.QComboBox_CurrentData1(this.h, (C.int)(role))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQVariant(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QVariant) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QComboBox_CurrentData1(this.h, (C.int)(role))
+	_goptr := newQVariant(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QComboBox) ItemData2(index int, role int) *QVariant {
-	ret := C.QComboBox_ItemData2(this.h, (C.int)(index), (C.int)(role))
-	// Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	ret1 := newQVariant(ret)
-	runtime.SetFinalizer(ret1, func(ret2 *QVariant) {
-		ret2.Delete()
-		runtime.KeepAlive(ret2.h)
-	})
-	return ret1
+	_ret := C.QComboBox_ItemData2(this.h, (C.int)(index), (C.int)(role))
+	_goptr := newQVariant(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QComboBox) AddItem22(text string, userData *QVariant) {
-	text_Cstring := C.CString(text)
-	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QComboBox_AddItem22(this.h, text_Cstring, C.size_t(len(text)), userData.cPointer())
+	text_ms := miqt_strdupg(text)
+	defer C.free(text_ms)
+	C.QComboBox_AddItem22(this.h, (*C.struct_miqt_string)(text_ms), userData.cPointer())
 }
 
 func (this *QComboBox) AddItem3(icon *QIcon, text string, userData *QVariant) {
-	text_Cstring := C.CString(text)
-	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QComboBox_AddItem3(this.h, icon.cPointer(), text_Cstring, C.size_t(len(text)), userData.cPointer())
+	text_ms := miqt_strdupg(text)
+	defer C.free(text_ms)
+	C.QComboBox_AddItem3(this.h, icon.cPointer(), (*C.struct_miqt_string)(text_ms), userData.cPointer())
 }
 
 func (this *QComboBox) InsertItem3(index int, text string, userData *QVariant) {
-	text_Cstring := C.CString(text)
-	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QComboBox_InsertItem3(this.h, (C.int)(index), text_Cstring, C.size_t(len(text)), userData.cPointer())
+	text_ms := miqt_strdupg(text)
+	defer C.free(text_ms)
+	C.QComboBox_InsertItem3(this.h, (C.int)(index), (*C.struct_miqt_string)(text_ms), userData.cPointer())
 }
 
 func (this *QComboBox) InsertItem4(index int, icon *QIcon, text string, userData *QVariant) {
-	text_Cstring := C.CString(text)
-	defer C.free(unsafe.Pointer(text_Cstring))
-	C.QComboBox_InsertItem4(this.h, (C.int)(index), icon.cPointer(), text_Cstring, C.size_t(len(text)), userData.cPointer())
+	text_ms := miqt_strdupg(text)
+	defer C.free(text_ms)
+	C.QComboBox_InsertItem4(this.h, (C.int)(index), icon.cPointer(), (*C.struct_miqt_string)(text_ms), userData.cPointer())
 }
 
 func (this *QComboBox) SetItemData3(index int, value *QVariant, role int) {
 	C.QComboBox_SetItemData3(this.h, (C.int)(index), value.cPointer(), (C.int)(role))
 }
 
+// Delete this object from C++ memory.
 func (this *QComboBox) Delete() {
 	C.QComboBox_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QComboBox) GoGC() {
+	runtime.SetFinalizer(this, func(this *QComboBox) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
 }

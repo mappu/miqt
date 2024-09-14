@@ -11,69 +11,53 @@
 #include <cstring>
 #include <QTransform>
 #include "qscreen.h"
-
 #include "gen_qscreen.h"
-
-extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
-}
+#include "_cgo_export.h"
 
 QMetaObject* QScreen_MetaObject(const QScreen* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void QScreen_Tr(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QScreen::tr(s);
+struct miqt_string* QScreen_Tr(const char* s) {
+	QString _ret = QScreen::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QScreen_TrUtf8(const char* s, char** _out, int* _out_Strlen) {
-	QString ret = QScreen::trUtf8(s);
+struct miqt_string* QScreen_TrUtf8(const char* s) {
+	QString _ret = QScreen::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QScreen_Name(const QScreen* self, char** _out, int* _out_Strlen) {
-	QString ret = self->name();
+struct miqt_string* QScreen_Name(const QScreen* self) {
+	QString _ret = self->name();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QScreen_Manufacturer(const QScreen* self, char** _out, int* _out_Strlen) {
-	QString ret = self->manufacturer();
+struct miqt_string* QScreen_Manufacturer(const QScreen* self) {
+	QString _ret = self->manufacturer();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QScreen_Model(const QScreen* self, char** _out, int* _out_Strlen) {
-	QString ret = self->model();
+struct miqt_string* QScreen_Model(const QScreen* self) {
+	QString _ret = self->model();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QScreen_SerialNumber(const QScreen* self, char** _out, int* _out_Strlen) {
-	QString ret = self->serialNumber();
+struct miqt_string* QScreen_SerialNumber(const QScreen* self) {
+	QString _ret = self->serialNumber();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 int QScreen_Depth(const QScreen* self) {
@@ -81,21 +65,21 @@ int QScreen_Depth(const QScreen* self) {
 }
 
 QSize* QScreen_Size(const QScreen* self) {
-	QSize ret = self->size();
+	QSize _ret = self->size();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(ret));
+	return static_cast<QSize*>(new QSize(_ret));
 }
 
 QRect* QScreen_Geometry(const QScreen* self) {
-	QRect ret = self->geometry();
+	QRect _ret = self->geometry();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(ret));
+	return static_cast<QRect*>(new QRect(_ret));
 }
 
 QSizeF* QScreen_PhysicalSize(const QScreen* self) {
-	QSizeF ret = self->physicalSize();
+	QSizeF _ret = self->physicalSize();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSizeF*>(new QSizeF(ret));
+	return static_cast<QSizeF*>(new QSizeF(_ret));
 }
 
 double QScreen_PhysicalDotsPerInchX(const QScreen* self) {
@@ -127,26 +111,28 @@ double QScreen_DevicePixelRatio(const QScreen* self) {
 }
 
 QSize* QScreen_AvailableSize(const QScreen* self) {
-	QSize ret = self->availableSize();
+	QSize _ret = self->availableSize();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(ret));
+	return static_cast<QSize*>(new QSize(_ret));
 }
 
 QRect* QScreen_AvailableGeometry(const QScreen* self) {
-	QRect ret = self->availableGeometry();
+	QRect _ret = self->availableGeometry();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(ret));
+	return static_cast<QRect*>(new QRect(_ret));
 }
 
-void QScreen_VirtualSiblings(const QScreen* self, QScreen*** _out, size_t* _out_len) {
-	QList<QScreen*> ret = self->virtualSiblings();
+struct miqt_array* QScreen_VirtualSiblings(const QScreen* self) {
+	QList<QScreen*> _ret = self->virtualSiblings();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QScreen** __out = static_cast<QScreen**>(malloc(sizeof(QScreen*) * ret.length()));
-	for (size_t i = 0, e = ret.length(); i < e; ++i) {
-		__out[i] = ret[i];
+	QScreen** _arr = static_cast<QScreen**>(malloc(sizeof(QScreen*) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		_arr[i] = _ret[i];
 	}
-	*_out = __out;
-	*_out_len = ret.length();
+	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
+	_out->len = _ret.length();
+	_out->data = static_cast<void*>(_arr);
+	return _out;
 }
 
 QScreen* QScreen_VirtualSiblingAt(QScreen* self, QPoint* point) {
@@ -154,47 +140,47 @@ QScreen* QScreen_VirtualSiblingAt(QScreen* self, QPoint* point) {
 }
 
 QSize* QScreen_VirtualSize(const QScreen* self) {
-	QSize ret = self->virtualSize();
+	QSize _ret = self->virtualSize();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(ret));
+	return static_cast<QSize*>(new QSize(_ret));
 }
 
 QRect* QScreen_VirtualGeometry(const QScreen* self) {
-	QRect ret = self->virtualGeometry();
+	QRect _ret = self->virtualGeometry();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(ret));
+	return static_cast<QRect*>(new QRect(_ret));
 }
 
 QSize* QScreen_AvailableVirtualSize(const QScreen* self) {
-	QSize ret = self->availableVirtualSize();
+	QSize _ret = self->availableVirtualSize();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(ret));
+	return static_cast<QSize*>(new QSize(_ret));
 }
 
 QRect* QScreen_AvailableVirtualGeometry(const QScreen* self) {
-	QRect ret = self->availableVirtualGeometry();
+	QRect _ret = self->availableVirtualGeometry();
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(ret));
+	return static_cast<QRect*>(new QRect(_ret));
 }
 
 uintptr_t QScreen_PrimaryOrientation(const QScreen* self) {
-	Qt::ScreenOrientation ret = self->primaryOrientation();
-	return static_cast<uintptr_t>(ret);
+	Qt::ScreenOrientation _ret = self->primaryOrientation();
+	return static_cast<uintptr_t>(_ret);
 }
 
 uintptr_t QScreen_Orientation(const QScreen* self) {
-	Qt::ScreenOrientation ret = self->orientation();
-	return static_cast<uintptr_t>(ret);
+	Qt::ScreenOrientation _ret = self->orientation();
+	return static_cast<uintptr_t>(_ret);
 }
 
 uintptr_t QScreen_NativeOrientation(const QScreen* self) {
-	Qt::ScreenOrientation ret = self->nativeOrientation();
-	return static_cast<uintptr_t>(ret);
+	Qt::ScreenOrientation _ret = self->nativeOrientation();
+	return static_cast<uintptr_t>(_ret);
 }
 
 int QScreen_OrientationUpdateMask(const QScreen* self) {
-	Qt::ScreenOrientations ret = self->orientationUpdateMask();
-	return static_cast<int>(ret);
+	Qt::ScreenOrientations _ret = self->orientationUpdateMask();
+	return static_cast<int>(_ret);
 }
 
 void QScreen_SetOrientationUpdateMask(QScreen* self, int mask) {
@@ -206,15 +192,15 @@ int QScreen_AngleBetween(const QScreen* self, uintptr_t a, uintptr_t b) {
 }
 
 QTransform* QScreen_TransformBetween(const QScreen* self, uintptr_t a, uintptr_t b, QRect* target) {
-	QTransform ret = self->transformBetween(static_cast<Qt::ScreenOrientation>(a), static_cast<Qt::ScreenOrientation>(b), *target);
+	QTransform _ret = self->transformBetween(static_cast<Qt::ScreenOrientation>(a), static_cast<Qt::ScreenOrientation>(b), *target);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTransform*>(new QTransform(ret));
+	return static_cast<QTransform*>(new QTransform(_ret));
 }
 
 QRect* QScreen_MapBetween(const QScreen* self, uintptr_t a, uintptr_t b, QRect* rect) {
-	QRect ret = self->mapBetween(static_cast<Qt::ScreenOrientation>(a), static_cast<Qt::ScreenOrientation>(b), *rect);
+	QRect _ret = self->mapBetween(static_cast<Qt::ScreenOrientation>(a), static_cast<Qt::ScreenOrientation>(b), *rect);
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(ret));
+	return static_cast<QRect*>(new QRect(_ret));
 }
 
 bool QScreen_IsPortrait(const QScreen* self, uintptr_t orientation) {
@@ -226,9 +212,9 @@ bool QScreen_IsLandscape(const QScreen* self, uintptr_t orientation) {
 }
 
 QPixmap* QScreen_GrabWindow(QScreen* self, uintptr_t window) {
-	QPixmap ret = self->grabWindow(static_cast<quintptr>(window));
+	QPixmap _ret = self->grabWindow(static_cast<quintptr>(window));
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPixmap*>(new QPixmap(ret));
+	return static_cast<QPixmap*>(new QPixmap(_ret));
 }
 
 double QScreen_RefreshRate(const QScreen* self) {
@@ -241,7 +227,10 @@ void QScreen_GeometryChanged(QScreen* self, QRect* geometry) {
 
 void QScreen_connect_GeometryChanged(QScreen* self, void* slot) {
 	QScreen::connect(self, static_cast<void (QScreen::*)(const QRect&)>(&QScreen::geometryChanged), self, [=](const QRect& geometry) {
-		miqt_exec_callback(slot, 0, nullptr);
+		const QRect& geometry_ret = geometry;
+		// Cast returned reference into pointer
+		QRect* sigval1 = const_cast<QRect*>(&geometry_ret);
+		miqt_exec_callback_QScreen_GeometryChanged(slot, sigval1);
 	});
 }
 
@@ -251,7 +240,10 @@ void QScreen_AvailableGeometryChanged(QScreen* self, QRect* geometry) {
 
 void QScreen_connect_AvailableGeometryChanged(QScreen* self, void* slot) {
 	QScreen::connect(self, static_cast<void (QScreen::*)(const QRect&)>(&QScreen::availableGeometryChanged), self, [=](const QRect& geometry) {
-		miqt_exec_callback(slot, 0, nullptr);
+		const QRect& geometry_ret = geometry;
+		// Cast returned reference into pointer
+		QRect* sigval1 = const_cast<QRect*>(&geometry_ret);
+		miqt_exec_callback_QScreen_AvailableGeometryChanged(slot, sigval1);
 	});
 }
 
@@ -261,7 +253,10 @@ void QScreen_PhysicalSizeChanged(QScreen* self, QSizeF* size) {
 
 void QScreen_connect_PhysicalSizeChanged(QScreen* self, void* slot) {
 	QScreen::connect(self, static_cast<void (QScreen::*)(const QSizeF&)>(&QScreen::physicalSizeChanged), self, [=](const QSizeF& size) {
-		miqt_exec_callback(slot, 0, nullptr);
+		const QSizeF& size_ret = size;
+		// Cast returned reference into pointer
+		QSizeF* sigval1 = const_cast<QSizeF*>(&size_ret);
+		miqt_exec_callback_QScreen_PhysicalSizeChanged(slot, sigval1);
 	});
 }
 
@@ -271,7 +266,8 @@ void QScreen_PhysicalDotsPerInchChanged(QScreen* self, double dpi) {
 
 void QScreen_connect_PhysicalDotsPerInchChanged(QScreen* self, void* slot) {
 	QScreen::connect(self, static_cast<void (QScreen::*)(qreal)>(&QScreen::physicalDotsPerInchChanged), self, [=](qreal dpi) {
-		miqt_exec_callback(slot, 0, nullptr);
+		double sigval1 = dpi;
+		miqt_exec_callback_QScreen_PhysicalDotsPerInchChanged(slot, sigval1);
 	});
 }
 
@@ -281,7 +277,8 @@ void QScreen_LogicalDotsPerInchChanged(QScreen* self, double dpi) {
 
 void QScreen_connect_LogicalDotsPerInchChanged(QScreen* self, void* slot) {
 	QScreen::connect(self, static_cast<void (QScreen::*)(qreal)>(&QScreen::logicalDotsPerInchChanged), self, [=](qreal dpi) {
-		miqt_exec_callback(slot, 0, nullptr);
+		double sigval1 = dpi;
+		miqt_exec_callback_QScreen_LogicalDotsPerInchChanged(slot, sigval1);
 	});
 }
 
@@ -291,7 +288,10 @@ void QScreen_VirtualGeometryChanged(QScreen* self, QRect* rect) {
 
 void QScreen_connect_VirtualGeometryChanged(QScreen* self, void* slot) {
 	QScreen::connect(self, static_cast<void (QScreen::*)(const QRect&)>(&QScreen::virtualGeometryChanged), self, [=](const QRect& rect) {
-		miqt_exec_callback(slot, 0, nullptr);
+		const QRect& rect_ret = rect;
+		// Cast returned reference into pointer
+		QRect* sigval1 = const_cast<QRect*>(&rect_ret);
+		miqt_exec_callback_QScreen_VirtualGeometryChanged(slot, sigval1);
 	});
 }
 
@@ -301,7 +301,9 @@ void QScreen_PrimaryOrientationChanged(QScreen* self, uintptr_t orientation) {
 
 void QScreen_connect_PrimaryOrientationChanged(QScreen* self, void* slot) {
 	QScreen::connect(self, static_cast<void (QScreen::*)(Qt::ScreenOrientation)>(&QScreen::primaryOrientationChanged), self, [=](Qt::ScreenOrientation orientation) {
-		miqt_exec_callback(slot, 0, nullptr);
+		Qt::ScreenOrientation orientation_ret = orientation;
+		uintptr_t sigval1 = static_cast<uintptr_t>(orientation_ret);
+		miqt_exec_callback_QScreen_PrimaryOrientationChanged(slot, sigval1);
 	});
 }
 
@@ -311,7 +313,9 @@ void QScreen_OrientationChanged(QScreen* self, uintptr_t orientation) {
 
 void QScreen_connect_OrientationChanged(QScreen* self, void* slot) {
 	QScreen::connect(self, static_cast<void (QScreen::*)(Qt::ScreenOrientation)>(&QScreen::orientationChanged), self, [=](Qt::ScreenOrientation orientation) {
-		miqt_exec_callback(slot, 0, nullptr);
+		Qt::ScreenOrientation orientation_ret = orientation;
+		uintptr_t sigval1 = static_cast<uintptr_t>(orientation_ret);
+		miqt_exec_callback_QScreen_OrientationChanged(slot, sigval1);
 	});
 }
 
@@ -321,68 +325,61 @@ void QScreen_RefreshRateChanged(QScreen* self, double refreshRate) {
 
 void QScreen_connect_RefreshRateChanged(QScreen* self, void* slot) {
 	QScreen::connect(self, static_cast<void (QScreen::*)(qreal)>(&QScreen::refreshRateChanged), self, [=](qreal refreshRate) {
-		miqt_exec_callback(slot, 0, nullptr);
+		double sigval1 = refreshRate;
+		miqt_exec_callback_QScreen_RefreshRateChanged(slot, sigval1);
 	});
 }
 
-void QScreen_Tr2(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QScreen::tr(s, c);
+struct miqt_string* QScreen_Tr2(const char* s, const char* c) {
+	QString _ret = QScreen::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QScreen_Tr3(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QScreen::tr(s, c, static_cast<int>(n));
+struct miqt_string* QScreen_Tr3(const char* s, const char* c, int n) {
+	QString _ret = QScreen::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QScreen_TrUtf82(const char* s, const char* c, char** _out, int* _out_Strlen) {
-	QString ret = QScreen::trUtf8(s, c);
+struct miqt_string* QScreen_TrUtf82(const char* s, const char* c) {
+	QString _ret = QScreen::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QScreen_TrUtf83(const char* s, const char* c, int n, char** _out, int* _out_Strlen) {
-	QString ret = QScreen::trUtf8(s, c, static_cast<int>(n));
+struct miqt_string* QScreen_TrUtf83(const char* s, const char* c, int n) {
+	QString _ret = QScreen::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-	QByteArray b = ret.toUtf8();
-	*_out = static_cast<char*>(malloc(b.length()));
-	memcpy(*_out, b.data(), b.length());
-	*_out_Strlen = b.length();
+	QByteArray _b = _ret.toUtf8();
+	return miqt_strdup(_b.data(), _b.length());
 }
 
 QPixmap* QScreen_GrabWindow2(QScreen* self, uintptr_t window, int x) {
-	QPixmap ret = self->grabWindow(static_cast<quintptr>(window), static_cast<int>(x));
+	QPixmap _ret = self->grabWindow(static_cast<quintptr>(window), static_cast<int>(x));
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPixmap*>(new QPixmap(ret));
+	return static_cast<QPixmap*>(new QPixmap(_ret));
 }
 
 QPixmap* QScreen_GrabWindow3(QScreen* self, uintptr_t window, int x, int y) {
-	QPixmap ret = self->grabWindow(static_cast<quintptr>(window), static_cast<int>(x), static_cast<int>(y));
+	QPixmap _ret = self->grabWindow(static_cast<quintptr>(window), static_cast<int>(x), static_cast<int>(y));
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPixmap*>(new QPixmap(ret));
+	return static_cast<QPixmap*>(new QPixmap(_ret));
 }
 
 QPixmap* QScreen_GrabWindow4(QScreen* self, uintptr_t window, int x, int y, int w) {
-	QPixmap ret = self->grabWindow(static_cast<quintptr>(window), static_cast<int>(x), static_cast<int>(y), static_cast<int>(w));
+	QPixmap _ret = self->grabWindow(static_cast<quintptr>(window), static_cast<int>(x), static_cast<int>(y), static_cast<int>(w));
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPixmap*>(new QPixmap(ret));
+	return static_cast<QPixmap*>(new QPixmap(_ret));
 }
 
 QPixmap* QScreen_GrabWindow5(QScreen* self, uintptr_t window, int x, int y, int w, int h) {
-	QPixmap ret = self->grabWindow(static_cast<quintptr>(window), static_cast<int>(x), static_cast<int>(y), static_cast<int>(w), static_cast<int>(h));
+	QPixmap _ret = self->grabWindow(static_cast<quintptr>(window), static_cast<int>(x), static_cast<int>(y), static_cast<int>(w), static_cast<int>(h));
 	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPixmap*>(new QPixmap(ret));
+	return static_cast<QPixmap*>(new QPixmap(_ret));
 }
 
 void QScreen_Delete(QScreen* self) {

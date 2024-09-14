@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#include "binding.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -24,32 +26,32 @@ typedef struct QFileInfo QFileInfo;
 #endif
 
 QFileInfo* QFileInfo_new();
-QFileInfo* QFileInfo_new2(const char* file, size_t file_Strlen);
+QFileInfo* QFileInfo_new2(struct miqt_string* file);
 QFileInfo* QFileInfo_new3(QFile* file);
-QFileInfo* QFileInfo_new4(QDir* dir, const char* file, size_t file_Strlen);
+QFileInfo* QFileInfo_new4(QDir* dir, struct miqt_string* file);
 QFileInfo* QFileInfo_new5(QFileInfo* fileinfo);
 void QFileInfo_OperatorAssign(QFileInfo* self, QFileInfo* fileinfo);
 void QFileInfo_Swap(QFileInfo* self, QFileInfo* other);
 bool QFileInfo_OperatorEqual(const QFileInfo* self, QFileInfo* fileinfo);
 bool QFileInfo_OperatorNotEqual(const QFileInfo* self, QFileInfo* fileinfo);
-void QFileInfo_SetFile(QFileInfo* self, const char* file, size_t file_Strlen);
+void QFileInfo_SetFile(QFileInfo* self, struct miqt_string* file);
 void QFileInfo_SetFileWithFile(QFileInfo* self, QFile* file);
-void QFileInfo_SetFile2(QFileInfo* self, QDir* dir, const char* file, size_t file_Strlen);
+void QFileInfo_SetFile2(QFileInfo* self, QDir* dir, struct miqt_string* file);
 bool QFileInfo_Exists(const QFileInfo* self);
-bool QFileInfo_ExistsWithFile(const char* file, size_t file_Strlen);
+bool QFileInfo_ExistsWithFile(struct miqt_string* file);
 void QFileInfo_Refresh(QFileInfo* self);
-void QFileInfo_FilePath(const QFileInfo* self, char** _out, int* _out_Strlen);
-void QFileInfo_AbsoluteFilePath(const QFileInfo* self, char** _out, int* _out_Strlen);
-void QFileInfo_CanonicalFilePath(const QFileInfo* self, char** _out, int* _out_Strlen);
-void QFileInfo_FileName(const QFileInfo* self, char** _out, int* _out_Strlen);
-void QFileInfo_BaseName(const QFileInfo* self, char** _out, int* _out_Strlen);
-void QFileInfo_CompleteBaseName(const QFileInfo* self, char** _out, int* _out_Strlen);
-void QFileInfo_Suffix(const QFileInfo* self, char** _out, int* _out_Strlen);
-void QFileInfo_BundleName(const QFileInfo* self, char** _out, int* _out_Strlen);
-void QFileInfo_CompleteSuffix(const QFileInfo* self, char** _out, int* _out_Strlen);
-void QFileInfo_Path(const QFileInfo* self, char** _out, int* _out_Strlen);
-void QFileInfo_AbsolutePath(const QFileInfo* self, char** _out, int* _out_Strlen);
-void QFileInfo_CanonicalPath(const QFileInfo* self, char** _out, int* _out_Strlen);
+struct miqt_string* QFileInfo_FilePath(const QFileInfo* self);
+struct miqt_string* QFileInfo_AbsoluteFilePath(const QFileInfo* self);
+struct miqt_string* QFileInfo_CanonicalFilePath(const QFileInfo* self);
+struct miqt_string* QFileInfo_FileName(const QFileInfo* self);
+struct miqt_string* QFileInfo_BaseName(const QFileInfo* self);
+struct miqt_string* QFileInfo_CompleteBaseName(const QFileInfo* self);
+struct miqt_string* QFileInfo_Suffix(const QFileInfo* self);
+struct miqt_string* QFileInfo_BundleName(const QFileInfo* self);
+struct miqt_string* QFileInfo_CompleteSuffix(const QFileInfo* self);
+struct miqt_string* QFileInfo_Path(const QFileInfo* self);
+struct miqt_string* QFileInfo_AbsolutePath(const QFileInfo* self);
+struct miqt_string* QFileInfo_CanonicalPath(const QFileInfo* self);
 QDir* QFileInfo_Dir(const QFileInfo* self);
 QDir* QFileInfo_AbsoluteDir(const QFileInfo* self);
 bool QFileInfo_IsReadable(const QFileInfo* self);
@@ -68,11 +70,11 @@ bool QFileInfo_IsShortcut(const QFileInfo* self);
 bool QFileInfo_IsJunction(const QFileInfo* self);
 bool QFileInfo_IsRoot(const QFileInfo* self);
 bool QFileInfo_IsBundle(const QFileInfo* self);
-void QFileInfo_ReadLink(const QFileInfo* self, char** _out, int* _out_Strlen);
-void QFileInfo_SymLinkTarget(const QFileInfo* self, char** _out, int* _out_Strlen);
-void QFileInfo_Owner(const QFileInfo* self, char** _out, int* _out_Strlen);
+struct miqt_string* QFileInfo_ReadLink(const QFileInfo* self);
+struct miqt_string* QFileInfo_SymLinkTarget(const QFileInfo* self);
+struct miqt_string* QFileInfo_Owner(const QFileInfo* self);
 unsigned int QFileInfo_OwnerId(const QFileInfo* self);
-void QFileInfo_Group(const QFileInfo* self, char** _out, int* _out_Strlen);
+struct miqt_string* QFileInfo_Group(const QFileInfo* self);
 unsigned int QFileInfo_GroupId(const QFileInfo* self);
 bool QFileInfo_Permission(const QFileInfo* self, int permissions);
 int QFileInfo_Permissions(const QFileInfo* self);
