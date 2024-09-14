@@ -218,8 +218,8 @@ func (gfs *goFileState) emitParametersGo2CABIForwarding(m CppMethod) (preamble s
 
 				preamble += "for i := range " + p.ParameterName + "{\n"
 				preamble += "single_ms := miqt_strdupg(" + p.ParameterName + "[i])\n"
-				preamble += "defer C.free(unsafe.Pointer(single_ms))\n"
-				preamble += p.ParameterName + "_CArray[i] = single_ms\n"
+				preamble += "defer C.free(single_ms)\n"
+				preamble += p.ParameterName + "_CArray[i] = (*C.struct_miqt_string)(single_ms)\n"
 				preamble += "}\n"
 
 				preamble += p.ParameterName + "_ma := &C.struct_miqt_array{len: C.size_t(len(" + p.ParameterName + ")), data: unsafe.Pointer(" + p.ParameterName + "_CArray)}\n"
@@ -301,9 +301,9 @@ func (gfs *goFileState) emitCabiToGo(assignExpr string, rt CppParameter, rvalue 
 		gfs.imports["unsafe"] = struct{}{}
 
 		shouldReturn = "var " + namePrefix + "_ms *C.struct_miqt_string = "
-		afterword += "ret := C.GoStringN(&" + namePrefix + "_ms.data, C.int(int64(" + namePrefix + "_ms.len)))\n"
+		afterword += namePrefix + "_ret := C.GoStringN(&" + namePrefix + "_ms.data, C.int(int64(" + namePrefix + "_ms.len)))\n"
 		afterword += "C.free(unsafe.Pointer(" + namePrefix + "_ms))\n"
-		afterword += assignExpr + " ret"
+		afterword += assignExpr + namePrefix + "_ret"
 
 	} else if t, ok := rt.QListOf(); ok {
 		gfs.imports["unsafe"] = struct{}{}
@@ -315,7 +315,7 @@ func (gfs *goFileState) emitCabiToGo(assignExpr string, rt CppParameter, rvalue 
 			afterword += namePrefix + "_ret := make([]string, int(" + namePrefix + "_ma.len))\n"
 			afterword += "_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(" + namePrefix + "_ma.data)) // hey ya\n"
 			afterword += "for i := 0; i < int(" + namePrefix + "_ma.len); i++ {\n"
-			afterword += "ret[i] = C.GoStringN(&_outCast[i].data, C.int(int64(_outCast[i].len)))\n"
+			afterword += namePrefix + "_ret[i] = C.GoStringN(&_outCast[i].data, C.int(int64(_outCast[i].len)))\n"
 			afterword += "C.free(unsafe.Pointer(_outCast[i])) // free the inner miqt_string*\n"
 			afterword += "}\n"
 			afterword += "C.free(unsafe.Pointer(" + namePrefix + "_ma))\n"
@@ -324,11 +324,7 @@ func (gfs *goFileState) emitCabiToGo(assignExpr string, rt CppParameter, rvalue 
 		} else {
 
 			afterword += "" + namePrefix + "_ret := make([]" + t.RenderTypeGo() + ", int(" + namePrefix + "_ma.len))\n"
-			if t.QtClassType() {
-				afterword += "_outCast := (*[0xffff]*" + t.parameterTypeCgo() + ")(unsafe.Pointer(" + namePrefix + "_ma.data)) // so fresh so clean\n"
-			} else {
-				afterword += "_outCast := (*[0xffff]" + t.parameterTypeCgo() + ")(unsafe.Pointer(" + namePrefix + "_ma.data)) // mrs jackson\n"
-			}
+			afterword += "_outCast := (*[0xffff]" + t.parameterTypeCgo() + ")(unsafe.Pointer(" + namePrefix + "_ma.data)) // mrs jackson\n"
 			afterword += "for i := 0; i < int(" + namePrefix + "_ma.len); i++ {\n"
 			if t.QtClassType() {
 				if !t.Pointer {
@@ -360,14 +356,17 @@ func (gfs *goFileState) emitCabiToGo(assignExpr string, rt CppParameter, rvalue 
 			// finalizer to automatically Delete once the type goes out
 			// of Go scope
 
-			gfs.imports["runtime"] = struct{}{}
-			afterword = "// Qt uses pass-by-value semantics for this type. Mimic with finalizer\n"
-			afterword += "" + namePrefix + "_ret1 := new" + cabiClassName(rt.ParameterType) + "(" + namePrefix + "_ret)\n"
-			afterword += "runtime.SetFinalizer(" + namePrefix + "_ret1, func(" + namePrefix + "_ret2 *" + cabiClassName(rt.ParameterType) + ") {\n"
-			afterword += "" + namePrefix + "_ret2.Delete()\n"
-			afterword += "runtime.KeepAlive(" + namePrefix + "_ret2.h)\n"
-			afterword += "})\n"
-			afterword += assignExpr + "" + namePrefix + "_ret1\n"
+			afterword += namePrefix + "_goptr := new" + cabiClassName(rt.ParameterType) + "(" + namePrefix + "_ret)\n"
+			afterword += namePrefix + "_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer\n"
+
+			// If this is a function return, we have converted value-returned Qt types to pointers
+			// If this is a slot return, we haven't
+			// TODO standardize this
+			if strings.Contains(assignExpr, `return`) {
+				afterword += assignExpr + "" + namePrefix + "_goptr\n"
+			} else {
+				afterword += assignExpr + " *" + namePrefix + "_goptr\n"
+			}
 		}
 
 	} else if rt.IntType() || rt.ParameterType == "bool" {
@@ -578,11 +577,24 @@ import "C"
 		}
 
 		if c.CanDelete {
+			gfs.imports["runtime"] = struct{}{} // Finalizer
+
 			ret.WriteString(`
+			// Delete this object from C++ memory.
 			func (this *` + goClassName + `) Delete() {
 				C.` + goClassName + `_Delete(this.h)
 			}
+				
+			// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+			// from C++ memory once it is unreachable from Go memory.
+			func (this *` + goClassName + `) GoGC() {
+				runtime.SetFinalizer(this, func(this *` + goClassName + `) {
+					this.Delete()
+					runtime.KeepAlive(this.h)
+				})
+			}
 			`)
+
 		}
 
 	}

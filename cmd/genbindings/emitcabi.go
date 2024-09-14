@@ -612,7 +612,8 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 	}
 
 	ret.WriteString(`#include "` + filename + "\"\n")
-	ret.WriteString(`#include "gen_` + filename + "\"\n\n")
+	ret.WriteString(`#include "gen_` + filename + "\"\n")
+	ret.WriteString("#include \"_cgo_export.h\"\n\n")
 
 	for _, c := range src.Classes {
 
@@ -723,9 +724,7 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 				signalCode += "\t\t" + bindingFunc + "(" + strings.Join(paramArgs, `, `) + ");\n"
 
 				ret.WriteString(
-					"void " + bindingFunc + "(" + strings.Join(paramArgDefs, `, `) + ");\n" +
-						"\n" +
-						`void ` + cClassName + `_connect_` + m.SafeMethodName() + `(` + cClassName + `* self, void* slot) {` + "\n" +
+					`void ` + cClassName + `_connect_` + m.SafeMethodName() + `(` + cClassName + `* self, void* slot) {` + "\n" +
 						"\t" + c.ClassName + `::connect(self, ` + exactSignal + `, self, [=](` + emitParametersCpp(m) + `) {` + "\n" +
 						signalCode +
 						"\t});\n" +
