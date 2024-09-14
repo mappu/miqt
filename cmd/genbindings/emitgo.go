@@ -182,13 +182,12 @@ func (gfs *goFileState) emitParametersGo2CABIForwarding(m CppMethod) (preamble s
 			skipNext = false
 
 		} else if p.ParameterType == "QString" {
-			// Go: convert string -> char* and len
-			// CABI: convert char* and len -> real QString
-			gfs.imports["unsafe"] = struct{}{}
+			// Go: convert string -> miqt_string*
+			// CABI: convert miqt_string* -> real QString
 
-			preamble += p.ParameterName + "_Cstring := C.CString(" + p.ParameterName + ")\n"
-			preamble += "defer C.free(unsafe.Pointer(" + p.ParameterName + "_Cstring))\n"
-			tmp = append(tmp, p.ParameterName+"_Cstring, C.size_t(len("+p.ParameterName+"))") // Second parameter cast to size_t projected type
+			preamble += p.ParameterName + "_ms := miqt_strdupg(" + p.ParameterName + ")\n"
+			preamble += "defer C.free(" + p.ParameterName + "_ms)\n"
+			tmp = append(tmp, p.ParameterName+"_ms")
 
 		} else if listType, ok := p.QListOf(); ok {
 			// QList<T>
@@ -259,9 +258,7 @@ func (gfs *goFileState) emitParametersGo2CABIForwarding(m CppMethod) (preamble s
 		}
 	}
 
-	if m.ReturnType.ParameterType == "QString" {
-		tmp = append(tmp, "&_out, &_out_Strlen")
-	} else if t, ok := m.ReturnType.QListOf(); ok {
+	if t, ok := m.ReturnType.QListOf(); ok {
 
 		if t.ParameterType == "QString" {
 			// Combo
@@ -413,18 +410,17 @@ import "C"
 				// internal pointer
 				gfs.imports["unsafe"] = struct{}{}
 				returnTypeDecl = "unsafe.Pointer"
+
 				shouldReturn = "ret := "
 				afterword += "return (unsafe.Pointer)(ret)\n"
 
 			} else if m.ReturnType.ParameterType == "QString" {
-				shouldReturn = ""
 				returnTypeDecl = "string"
 				gfs.imports["unsafe"] = struct{}{}
 
-				preamble += "var _out *C.char = nil\n"
-				preamble += "var _out_Strlen C.int = 0\n" // I think size_t is "better" but GoStringN() requires C.int
-				afterword += "ret := C.GoStringN(_out, _out_Strlen)\n"
-				afterword += "C.free(unsafe.Pointer(_out))\n"
+				shouldReturn = "var ret_ms *C.struct_miqt_string = "
+				afterword += "ret := C.GoStringN(&ret_ms.data, C.int(int64(ret_ms.len)))\n"
+				afterword += "C.free(unsafe.Pointer(ret_ms))\n"
 				afterword += "return ret"
 
 			} else if t, ok := m.ReturnType.QListOf(); ok {

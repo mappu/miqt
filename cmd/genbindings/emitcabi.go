@@ -75,7 +75,7 @@ func (p CppParameter) RenderTypeCabi() string {
 
 func emitReturnTypeCabi(p CppParameter) string {
 	if p.ParameterType == "QString" {
-		return "void" // Will be handled separately
+		return "struct miqt_string*"
 
 	} else if _, ok := p.QListOf(); ok {
 		return "void" // Will be handled separately
@@ -142,9 +142,7 @@ func emitParametersCabi(m CppMethod, selfType string) string {
 
 	for _, p := range m.Parameters {
 		if p.ParameterType == "QString" {
-			// The Go code has called this with two arguments: char* and len
-			// Declare that we take two parameters
-			tmp = append(tmp, "const char* "+p.ParameterName+", size_t "+p.ParameterName+"_Strlen")
+			tmp = append(tmp, "struct miqt_string* "+p.ParameterName)
 
 		} else if t, ok := p.QListOf(); ok {
 
@@ -188,11 +186,7 @@ func emitParametersCabi(m CppMethod, selfType string) string {
 	// Qt C++: memory is in QString RAII
 	// CABI: memory is moved into C.malloc/C.free
 	// Go: converted to native Go string
-	if m.ReturnType.ParameterType == "QString" {
-		// Normally we would use size_t for a strlen, but Go calls C.GoStringN which takes a C.int
-		tmp = append(tmp, "char** _out, int* _out_Strlen")
-
-	} else if t, ok := m.ReturnType.QListOf(); ok {
+	if t, ok := m.ReturnType.QListOf(); ok {
 		// +1 pointer indirection since it's a heap array
 		// +1 pointer indirection for mutating remote parameter
 		// = 3 for char*, 2 for most types
@@ -222,7 +216,7 @@ func emitParametersCABI2CppForwarding(params []CppParameter) (preamble string, f
 		if p.ParameterType == "QString" {
 			// The CABI has accepted two parameters - need to convert to one real QString
 			// Create it on the stack
-			preamble += "\tQString " + p.ParameterName + "_QString = QString::fromUtf8(" + p.ParameterName + ", " + p.ParameterName + "_Strlen);\n"
+			preamble += "\tQString " + p.ParameterName + "_QString = QString::fromUtf8(&" + p.ParameterName + "->data, " + p.ParameterName + "->len);\n"
 			tmp = append(tmp, p.ParameterName+"_QString")
 
 		} else if listType, ok := p.QListOf(); ok {
@@ -327,6 +321,8 @@ func emitAssignCppToCabi(assignExpression string, p CppParameter, rvalue string)
 
 	shouldReturn = shouldReturn[len(indent):]
 
+	namePrefix := p.ParameterName // TODO make unique, strip out [0], etc
+
 	if p.ParameterType == "void" && !p.Pointer {
 		shouldReturn = ""
 
@@ -337,21 +333,17 @@ func emitAssignCppToCabi(assignExpression string, p CppParameter, rvalue string)
 			// These are rare, and probably expected to be lightweight references
 			// But, a copy is the best we can project it as
 			// Un-pointer-ify
-			shouldReturn = "QString* ret = "
+			shouldReturn = ifv(p.Const, "const ", "") + "QString* " + namePrefix + "_ret = "
 			afterCall = indent + "// Convert QString pointer from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory\n"
-			afterCall += indent + "QByteArray b = ret->toUtf8();\n"
+			afterCall += indent + "QByteArray " + namePrefix + "_b = " + namePrefix + "_ret->toUtf8();\n"
 
 		} else {
-			shouldReturn = "QString ret = "
+			shouldReturn = ifv(p.Const, "const ", "") + "QString " + p.ParameterName + "_ret = "
 			afterCall = indent + "// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory\n"
-			afterCall += indent + "QByteArray b = ret.toUtf8();\n"
+			afterCall += indent + "QByteArray " + namePrefix + "_b = " + namePrefix + "_ret.toUtf8();\n"
 		}
-		if p.Const {
-			shouldReturn = "const " + shouldReturn
-		}
-		afterCall += indent + "*_out = static_cast<char*>(malloc(b.length()));\n"
-		afterCall += indent + "memcpy(*_out, b.data(), b.length());\n"
-		afterCall += indent + "*_out_Strlen = b.length();\n"
+
+		afterCall += indent + assignExpression + "miqt_strdup(" + namePrefix + "_b.data(), " + namePrefix + "_b.length());\n"
 
 	} else if t, ok := p.QListOf(); ok {
 
@@ -376,37 +368,37 @@ func emitAssignCppToCabi(assignExpression string, p CppParameter, rvalue string)
 
 		} else if !t.QtClassType() || (t.QtClassType() && t.Pointer) { // QList<int>, QList<QFoo*>
 
-			shouldReturn = p.RenderTypeQtCpp() + " ret = "
+			shouldReturn = p.RenderTypeQtCpp() + " " + namePrefix + "_ret = "
 			afterCall += indent + "// Convert QList<> from C++ memory to manually-managed C memory\n"
-			afterCall += indent + "" + t.RenderTypeCabi() + "* __out = static_cast<" + t.RenderTypeCabi() + "*>(malloc(sizeof(" + t.RenderTypeCabi() + ") * ret.length()));\n"
-			afterCall += indent + "for (size_t i = 0, e = ret.length(); i < e; ++i) {\n"
+			afterCall += indent + "" + t.RenderTypeCabi() + "* __out = static_cast<" + t.RenderTypeCabi() + "*>(malloc(sizeof(" + t.RenderTypeCabi() + ") * " + namePrefix + "_ret.length()));\n"
+			afterCall += indent + "for (size_t i = 0, e = " + namePrefix + "_ret.length(); i < e; ++i) {\n"
 			if t.Const {
 				nonConst := t // copy
 				nonConst.Const = false
-				afterCall += indent + "\t__out[i] = const_cast<" + t.RenderTypeCabi() + ">(ret[i]);\n"
+				afterCall += indent + "\t__out[i] = const_cast<" + t.RenderTypeCabi() + ">(" + namePrefix + "_ret[i]);\n"
 			} else {
-				afterCall += indent + "\t__out[i] = ret[i];\n"
+				afterCall += indent + "\t__out[i] = " + namePrefix + "_ret[i];\n"
 			}
 			afterCall += indent + "}\n"
 			afterCall += indent + "*_out = __out;\n"
-			afterCall += indent + "*_out_len = ret.length();\n"
+			afterCall += indent + "*_out_len = " + namePrefix + "_ret.length();\n"
 
 		} else { // QList<QFoo>
 
-			shouldReturn = p.RenderTypeQtCpp() + " ret = "
+			shouldReturn = p.RenderTypeQtCpp() + " " + namePrefix + "_ret = "
 			afterCall += indent + "// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers\n"
-			afterCall += indent + "" + t.RenderTypeCabi() + "** __out = static_cast<" + t.RenderTypeCabi() + "**>(malloc(sizeof(" + t.RenderTypeCabi() + "**) * ret.length()));\n"
-			afterCall += indent + "for (size_t i = 0, e = ret.length(); i < e; ++i) {\n"
-			afterCall += indent + "\t__out[i] = new " + t.ParameterType + "(ret[i]);\n"
+			afterCall += indent + "" + t.RenderTypeCabi() + "** __out = static_cast<" + t.RenderTypeCabi() + "**>(malloc(sizeof(" + t.RenderTypeCabi() + "**) * " + namePrefix + "_ret.length()));\n"
+			afterCall += indent + "for (size_t i = 0, e = " + namePrefix + "_ret.length(); i < e; ++i) {\n"
+			afterCall += indent + "\t__out[i] = new " + t.ParameterType + "(" + namePrefix + "_ret[i]);\n"
 			afterCall += indent + "}\n"
 			afterCall += indent + "*_out = __out;\n"
-			afterCall += indent + "*_out_len = ret.length();\n"
+			afterCall += indent + "*_out_len = " + namePrefix + "_ret.length();\n"
 
 		}
 
 	} else if p.QtClassType() && p.ByRef {
 		// It's a pointer in disguise, just needs one cast
-		shouldReturn = p.RenderTypeQtCpp() + " ret = "
+		shouldReturn = p.RenderTypeQtCpp() + " " + namePrefix + "_ret = "
 		afterCall += indent + "// Cast returned reference into pointer\n"
 		if p.Const {
 			nonConst := p // copy
@@ -414,28 +406,28 @@ func emitAssignCppToCabi(assignExpression string, p CppParameter, rvalue string)
 			nonConst.ByRef = false
 			nonConst.Pointer = true
 			nonConst.PointerCount = 1
-			afterCall += indent + "" + assignExpression + "const_cast<" + nonConst.RenderTypeQtCpp() + ">(&ret);\n"
+			afterCall += indent + "" + assignExpression + "const_cast<" + nonConst.RenderTypeQtCpp() + ">(&" + namePrefix + "_ret);\n"
 		} else {
-			afterCall += indent + "" + assignExpression + "&ret;\n"
+			afterCall += indent + "" + assignExpression + "&" + namePrefix + "_ret;\n"
 		}
 
 	} else if p.QtClassType() && !p.Pointer {
-		shouldReturn = p.ParameterType + " ret = "
+		shouldReturn = p.ParameterType + " " + namePrefix + "_ret = "
 		afterCall = indent + "// Copy-construct value returned type into heap-allocated copy\n"
-		afterCall += indent + "return static_cast<" + p.ParameterType + "*>(new " + p.ParameterType + "(ret));\n"
+		afterCall += indent + "return static_cast<" + p.ParameterType + "*>(new " + p.ParameterType + "(" + namePrefix + "_ret));\n"
 
 	} else if p.Const {
 		shouldReturn += "(" + emitReturnTypeCabi(p) + ") "
 
 	} else if p.IsFlagType() {
 		// Needs an explicit int cast
-		shouldReturn = p.RenderTypeQtCpp() + " ret = "
-		afterCall += indent + "" + assignExpression + "static_cast<int>(ret);\n"
+		shouldReturn = p.RenderTypeQtCpp() + " " + namePrefix + "_ret = "
+		afterCall += indent + "" + assignExpression + "static_cast<int>(" + namePrefix + "_ret);\n"
 
 	} else if p.IsEnum() {
 		// Needs an explicit uintptr cast
-		shouldReturn = p.RenderTypeQtCpp() + " ret = "
-		afterCall += indent + "" + assignExpression + "static_cast<uintptr_t>(ret);\n"
+		shouldReturn = p.RenderTypeQtCpp() + " " + namePrefix + "_ret = "
+		afterCall += indent + "" + assignExpression + "static_cast<uintptr_t>(" + namePrefix + "_ret);\n"
 
 	}
 
@@ -638,8 +630,8 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 		ret.WriteString(`#include <` + ref + ">\n")
 	}
 
-	ret.WriteString(`#include "` + filename + "\"\n\n")
-	ret.WriteString(`#include "gen_` + filename + "\"\n")
+	ret.WriteString(`#include "` + filename + "\"\n")
+	ret.WriteString(`#include "gen_` + filename + "\"\n\n")
 
 	for _, c := range src.Classes {
 
