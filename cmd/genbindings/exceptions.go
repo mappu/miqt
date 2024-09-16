@@ -195,7 +195,7 @@ func CheckComplexity(p CppParameter, isReturnType bool) error {
 		"QXmlStreamAttributes",            // e.g. qxmlstream.h
 		"QVariantMap",                     // e.g. qcbormap.h
 		"QVariantHash",                    // e.g. qcbormap.h
-		"QtMsgType",                       // e.g. qdebug.h TODO Needs support for enums
+		"QtMsgType",                       // e.g. qdebug.h TODO Defined in qlogging.h, but omitted because it's predefined in qglobal.h, and our clangexec is too agressive
 		"QTextStreamFunction",             // e.g. qdebug.h
 		"QFactoryInterface",               // qfactoryinterface.h
 		"QItemSelection",                  // used by qabstractproxymodel.h, also blocked in AllowClass above, class extends a List<T>
