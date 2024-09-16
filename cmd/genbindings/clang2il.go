@@ -480,8 +480,16 @@ var (
 
 func processEnum(node map[string]interface{}, addNamePrefix string) (CppEnum, error) {
 	var ret CppEnum
-	ret.UnderlyingType = "int" // FIXME
 
+	// Underlying type
+	ret.UnderlyingType = "int"
+	if nodefut, ok := node["fixedUnderlyingType"].(map[string]interface{}); ok {
+		if nodequal, ok := nodefut["qualType"].(string); ok {
+			ret.UnderlyingType = nodequal
+		}
+	}
+
+	// Name
 	nodename, ok := node["name"].(string)
 	if !ok {
 		// An unnamed enum is possible (e.g. qcalendar.h)
@@ -492,6 +500,7 @@ func processEnum(node map[string]interface{}, addNamePrefix string) (CppEnum, er
 		ret.EnumName = addNamePrefix + nodename
 	}
 
+	// Entries
 	inner, ok := node["inner"].([]interface{})
 	if !ok {
 		// An enum with no entries? We're done
