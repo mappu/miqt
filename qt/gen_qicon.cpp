@@ -174,7 +174,7 @@ struct miqt_array* QIcon_ThemeSearchPaths() {
 	return _out;
 }
 
-void QIcon_SetThemeSearchPaths(struct miqt_array* /* of QString */ searchpath) {
+void QIcon_SetThemeSearchPaths(struct miqt_array* /* of struct miqt_string* */ searchpath) {
 	QList<QString> searchpath_QList;
 	searchpath_QList.reserve(searchpath->len);
 	miqt_string** searchpath_arr = static_cast<miqt_string**>(searchpath->data);
@@ -200,7 +200,7 @@ struct miqt_array* QIcon_FallbackSearchPaths() {
 	return _out;
 }
 
-void QIcon_SetFallbackSearchPaths(struct miqt_array* /* of QString */ paths) {
+void QIcon_SetFallbackSearchPaths(struct miqt_array* /* of struct miqt_string* */ paths) {
 	QList<QString> paths_QList;
 	paths_QList.reserve(paths->len);
 	miqt_string** paths_arr = static_cast<miqt_string**>(paths->data);

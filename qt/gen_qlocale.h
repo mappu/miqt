@@ -134,7 +134,7 @@ struct miqt_array* QLocale_CountriesForLanguage(uintptr_t lang);
 void QLocale_SetNumberOptions(QLocale* self, int options);
 int QLocale_NumberOptions(const QLocale* self);
 struct miqt_string* QLocale_QuoteString(const QLocale* self, struct miqt_string* str);
-struct miqt_string* QLocale_CreateSeparatedList(const QLocale* self, struct miqt_array* /* of QString */ strl);
+struct miqt_string* QLocale_CreateSeparatedList(const QLocale* self, struct miqt_array* /* of struct miqt_string* */ strl);
 int16_t QLocale_ToShort2(const QLocale* self, struct miqt_string* s, bool* ok);
 uint16_t QLocale_ToUShort2(const QLocale* self, struct miqt_string* s, bool* ok);
 int QLocale_ToInt2(const QLocale* self, struct miqt_string* s, bool* ok);

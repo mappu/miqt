@@ -107,7 +107,7 @@ struct miqt_array* QStandardPaths_LocateAll3(uintptr_t typeVal, struct miqt_stri
 	return _out;
 }
 
-struct miqt_string* QStandardPaths_FindExecutable2(struct miqt_string* executableName, struct miqt_array* /* of QString */ paths) {
+struct miqt_string* QStandardPaths_FindExecutable2(struct miqt_string* executableName, struct miqt_array* /* of struct miqt_string* */ paths) {
 	QString executableName_QString = QString::fromUtf8(&executableName->data, executableName->len);
 	QList<QString> paths_QList;
 	paths_QList.reserve(paths->len);

@@ -350,7 +350,7 @@ struct miqt_array* QUrl_IdnWhitelist() {
 	return _out;
 }
 
-struct miqt_array* QUrl_ToStringList(struct miqt_array* /* of QUrl */ uris) {
+struct miqt_array* QUrl_ToStringList(struct miqt_array* /* of QUrl* */ uris) {
 	QList<QUrl> uris_QList;
 	uris_QList.reserve(uris->len);
 	QUrl** uris_arr = static_cast<QUrl**>(uris->data);
@@ -372,7 +372,7 @@ struct miqt_array* QUrl_ToStringList(struct miqt_array* /* of QUrl */ uris) {
 	return _out;
 }
 
-struct miqt_array* QUrl_FromStringList(struct miqt_array* /* of QString */ uris) {
+struct miqt_array* QUrl_FromStringList(struct miqt_array* /* of struct miqt_string* */ uris) {
 	QList<QString> uris_QList;
 	uris_QList.reserve(uris->len);
 	miqt_string** uris_arr = static_cast<miqt_string**>(uris->data);
@@ -391,7 +391,7 @@ struct miqt_array* QUrl_FromStringList(struct miqt_array* /* of QString */ uris)
 	return _out;
 }
 
-void QUrl_SetIdnWhitelist(struct miqt_array* /* of QString */ idnWhitelist) {
+void QUrl_SetIdnWhitelist(struct miqt_array* /* of struct miqt_string* */ idnWhitelist) {
 	QList<QString> idnWhitelist_QList;
 	idnWhitelist_QList.reserve(idnWhitelist->len);
 	miqt_string** idnWhitelist_arr = static_cast<miqt_string**>(idnWhitelist->data);
@@ -548,7 +548,7 @@ QByteArray* QUrl_ToPercentEncoding3(struct miqt_string* param1, QByteArray* excl
 	return static_cast<QByteArray*>(new QByteArray(_ret));
 }
 
-struct miqt_array* QUrl_FromStringList2(struct miqt_array* /* of QString */ uris, uintptr_t mode) {
+struct miqt_array* QUrl_FromStringList2(struct miqt_array* /* of struct miqt_string* */ uris, uintptr_t mode) {
 	QList<QString> uris_QList;
 	uris_QList.reserve(uris->len);
 	miqt_string** uris_arr = static_cast<miqt_string**>(uris->data);

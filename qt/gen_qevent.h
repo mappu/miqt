@@ -357,7 +357,7 @@ uintptr_t QContextMenuEvent_Reason(const QContextMenuEvent* self);
 void QContextMenuEvent_Delete(QContextMenuEvent* self);
 
 QInputMethodEvent* QInputMethodEvent_new();
-QInputMethodEvent* QInputMethodEvent_new2(struct miqt_string* preeditText, struct miqt_array* /* of QInputMethodEvent__Attribute */ attributes);
+QInputMethodEvent* QInputMethodEvent_new2(struct miqt_string* preeditText, struct miqt_array* /* of QInputMethodEvent__Attribute* */ attributes);
 QInputMethodEvent* QInputMethodEvent_new3(QInputMethodEvent* other);
 void QInputMethodEvent_SetCommitString(QInputMethodEvent* self, struct miqt_string* commitString);
 struct miqt_string* QInputMethodEvent_PreeditString(const QInputMethodEvent* self);
@@ -479,7 +479,7 @@ QTouchEvent* QTouchEvent_new2(QTouchEvent* param1);
 QTouchEvent* QTouchEvent_new3(uintptr_t eventType, QTouchDevice* device);
 QTouchEvent* QTouchEvent_new4(uintptr_t eventType, QTouchDevice* device, int modifiers);
 QTouchEvent* QTouchEvent_new5(uintptr_t eventType, QTouchDevice* device, int modifiers, int touchPointStates);
-QTouchEvent* QTouchEvent_new6(uintptr_t eventType, QTouchDevice* device, int modifiers, int touchPointStates, struct miqt_array* /* of QTouchEvent__TouchPoint */ touchPoints);
+QTouchEvent* QTouchEvent_new6(uintptr_t eventType, QTouchDevice* device, int modifiers, int touchPointStates, struct miqt_array* /* of QTouchEvent__TouchPoint* */ touchPoints);
 QWindow* QTouchEvent_Window(const QTouchEvent* self);
 QObject* QTouchEvent_Target(const QTouchEvent* self);
 int QTouchEvent_TouchPointStates(const QTouchEvent* self);
@@ -487,7 +487,7 @@ QTouchDevice* QTouchEvent_Device(const QTouchEvent* self);
 void QTouchEvent_SetWindow(QTouchEvent* self, QWindow* awindow);
 void QTouchEvent_SetTarget(QTouchEvent* self, QObject* atarget);
 void QTouchEvent_SetTouchPointStates(QTouchEvent* self, int aTouchPointStates);
-void QTouchEvent_SetTouchPoints(QTouchEvent* self, struct miqt_array* /* of QTouchEvent__TouchPoint */ atouchPoints);
+void QTouchEvent_SetTouchPoints(QTouchEvent* self, struct miqt_array* /* of QTouchEvent__TouchPoint* */ atouchPoints);
 void QTouchEvent_SetDevice(QTouchEvent* self, QTouchDevice* adevice);
 void QTouchEvent_Delete(QTouchEvent* self);
 
@@ -576,7 +576,7 @@ void QTouchEvent__TouchPoint_SetRotation(QTouchEvent__TouchPoint* self, double a
 void QTouchEvent__TouchPoint_SetEllipseDiameters(QTouchEvent__TouchPoint* self, QSizeF* dia);
 void QTouchEvent__TouchPoint_SetVelocity(QTouchEvent__TouchPoint* self, QVector2D* v);
 void QTouchEvent__TouchPoint_SetFlags(QTouchEvent__TouchPoint* self, int flags);
-void QTouchEvent__TouchPoint_SetRawScreenPositions(QTouchEvent__TouchPoint* self, struct miqt_array* /* of QPointF */ positions);
+void QTouchEvent__TouchPoint_SetRawScreenPositions(QTouchEvent__TouchPoint* self, struct miqt_array* /* of QPointF* */ positions);
 void QTouchEvent__TouchPoint_Delete(QTouchEvent__TouchPoint* self);
 
 #ifdef __cplusplus

@@ -83,7 +83,7 @@ QVariant* QSortFilterProxyModel_Data(const QSortFilterProxyModel* self, QModelIn
 bool QSortFilterProxyModel_SetData(QSortFilterProxyModel* self, QModelIndex* index, QVariant* value);
 QVariant* QSortFilterProxyModel_HeaderData(const QSortFilterProxyModel* self, int section, uintptr_t orientation);
 bool QSortFilterProxyModel_SetHeaderData(QSortFilterProxyModel* self, int section, uintptr_t orientation, QVariant* value);
-QMimeData* QSortFilterProxyModel_MimeData(const QSortFilterProxyModel* self, struct miqt_array* /* of QModelIndex */ indexes);
+QMimeData* QSortFilterProxyModel_MimeData(const QSortFilterProxyModel* self, struct miqt_array* /* of QModelIndex* */ indexes);
 bool QSortFilterProxyModel_DropMimeData(QSortFilterProxyModel* self, QMimeData* data, uintptr_t action, int row, int column, QModelIndex* parent);
 bool QSortFilterProxyModel_InsertRows(QSortFilterProxyModel* self, int row, int count);
 bool QSortFilterProxyModel_InsertColumns(QSortFilterProxyModel* self, int column, int count);

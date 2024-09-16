@@ -46,7 +46,7 @@ struct miqt_array* QMimeData_Urls(const QMimeData* self) {
 	return _out;
 }
 
-void QMimeData_SetUrls(QMimeData* self, struct miqt_array* /* of QUrl */ urls) {
+void QMimeData_SetUrls(QMimeData* self, struct miqt_array* /* of QUrl* */ urls) {
 	QList<QUrl> urls_QList;
 	urls_QList.reserve(urls->len);
 	QUrl** urls_arr = static_cast<QUrl**>(urls->data);

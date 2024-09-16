@@ -160,7 +160,7 @@ struct miqt_string* QTextLayout_PreeditAreaText(const QTextLayout* self) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QTextLayout_SetAdditionalFormats(QTextLayout* self, struct miqt_array* /* of QTextLayout__FormatRange */ overrides) {
+void QTextLayout_SetAdditionalFormats(QTextLayout* self, struct miqt_array* /* of QTextLayout__FormatRange* */ overrides) {
 	QList<QTextLayout::FormatRange> overrides_QList;
 	overrides_QList.reserve(overrides->len);
 	QTextLayout__FormatRange** overrides_arr = static_cast<QTextLayout__FormatRange**>(overrides->data);
@@ -187,7 +187,7 @@ void QTextLayout_ClearAdditionalFormats(QTextLayout* self) {
 	self->clearAdditionalFormats();
 }
 
-void QTextLayout_SetFormats(QTextLayout* self, struct miqt_array* /* of QTextLayout__FormatRange */ overrides) {
+void QTextLayout_SetFormats(QTextLayout* self, struct miqt_array* /* of QTextLayout__FormatRange* */ overrides) {
 	QVector<QTextLayout::FormatRange> overrides_QList;
 	overrides_QList.reserve(overrides->len);
 	QTextLayout__FormatRange** overrides_arr = static_cast<QTextLayout__FormatRange**>(overrides->data);
@@ -346,7 +346,7 @@ int QTextLayout_PreviousCursorPosition2(const QTextLayout* self, int oldPos, uin
 	return self->previousCursorPosition(static_cast<int>(oldPos), static_cast<QTextLayout::CursorMode>(mode));
 }
 
-void QTextLayout_Draw3(const QTextLayout* self, QPainter* p, QPointF* pos, struct miqt_array* /* of QTextLayout__FormatRange */ selections) {
+void QTextLayout_Draw3(const QTextLayout* self, QPainter* p, QPointF* pos, struct miqt_array* /* of QTextLayout__FormatRange* */ selections) {
 	QVector<QTextLayout::FormatRange> selections_QList;
 	selections_QList.reserve(selections->len);
 	QTextLayout__FormatRange** selections_arr = static_cast<QTextLayout__FormatRange**>(selections->data);
@@ -356,7 +356,7 @@ void QTextLayout_Draw3(const QTextLayout* self, QPainter* p, QPointF* pos, struc
 	self->draw(p, *pos, selections_QList);
 }
 
-void QTextLayout_Draw4(const QTextLayout* self, QPainter* p, QPointF* pos, struct miqt_array* /* of QTextLayout__FormatRange */ selections, QRectF* clip) {
+void QTextLayout_Draw4(const QTextLayout* self, QPainter* p, QPointF* pos, struct miqt_array* /* of QTextLayout__FormatRange* */ selections, QRectF* clip) {
 	QVector<QTextLayout::FormatRange> selections_QList;
 	selections_QList.reserve(selections->len);
 	QTextLayout__FormatRange** selections_arr = static_cast<QTextLayout__FormatRange**>(selections->data);

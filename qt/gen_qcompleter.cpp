@@ -22,7 +22,7 @@ QCompleter* QCompleter_new2(QAbstractItemModel* model) {
 	return new QCompleter(model);
 }
 
-QCompleter* QCompleter_new3(struct miqt_array* /* of QString */ completions) {
+QCompleter* QCompleter_new3(struct miqt_array* /* of struct miqt_string* */ completions) {
 	QList<QString> completions_QList;
 	completions_QList.reserve(completions->len);
 	miqt_string** completions_arr = static_cast<miqt_string**>(completions->data);
@@ -40,7 +40,7 @@ QCompleter* QCompleter_new5(QAbstractItemModel* model, QObject* parent) {
 	return new QCompleter(model, parent);
 }
 
-QCompleter* QCompleter_new6(struct miqt_array* /* of QString */ completions, QObject* parent) {
+QCompleter* QCompleter_new6(struct miqt_array* /* of struct miqt_string* */ completions, QObject* parent) {
 	QList<QString> completions_QList;
 	completions_QList.reserve(completions->len);
 	miqt_string** completions_arr = static_cast<miqt_string**>(completions->data);

@@ -299,7 +299,7 @@ struct miqt_array* QAbstractItemModel_MimeTypes(const QAbstractItemModel* self) 
 	return _out;
 }
 
-QMimeData* QAbstractItemModel_MimeData(const QAbstractItemModel* self, struct miqt_array* /* of QModelIndex */ indexes) {
+QMimeData* QAbstractItemModel_MimeData(const QAbstractItemModel* self, struct miqt_array* /* of QModelIndex* */ indexes) {
 	QList<QModelIndex> indexes_QList;
 	indexes_QList.reserve(indexes->len);
 	QModelIndex** indexes_arr = static_cast<QModelIndex**>(indexes->data);
@@ -647,7 +647,7 @@ void QAbstractItemModel_connect_DataChanged3(QAbstractItemModel* self, void* slo
 	});
 }
 
-void QAbstractItemModel_LayoutChanged1(QAbstractItemModel* self, struct miqt_array* /* of QPersistentModelIndex */ parents) {
+void QAbstractItemModel_LayoutChanged1(QAbstractItemModel* self, struct miqt_array* /* of QPersistentModelIndex* */ parents) {
 	QList<QPersistentModelIndex> parents_QList;
 	parents_QList.reserve(parents->len);
 	QPersistentModelIndex** parents_arr = static_cast<QPersistentModelIndex**>(parents->data);
@@ -673,7 +673,7 @@ void QAbstractItemModel_connect_LayoutChanged1(QAbstractItemModel* self, void* s
 	});
 }
 
-void QAbstractItemModel_LayoutChanged2(QAbstractItemModel* self, struct miqt_array* /* of QPersistentModelIndex */ parents, uintptr_t hint) {
+void QAbstractItemModel_LayoutChanged2(QAbstractItemModel* self, struct miqt_array* /* of QPersistentModelIndex* */ parents, uintptr_t hint) {
 	QList<QPersistentModelIndex> parents_QList;
 	parents_QList.reserve(parents->len);
 	QPersistentModelIndex** parents_arr = static_cast<QPersistentModelIndex**>(parents->data);
@@ -701,7 +701,7 @@ void QAbstractItemModel_connect_LayoutChanged2(QAbstractItemModel* self, void* s
 	});
 }
 
-void QAbstractItemModel_LayoutAboutToBeChanged1(QAbstractItemModel* self, struct miqt_array* /* of QPersistentModelIndex */ parents) {
+void QAbstractItemModel_LayoutAboutToBeChanged1(QAbstractItemModel* self, struct miqt_array* /* of QPersistentModelIndex* */ parents) {
 	QList<QPersistentModelIndex> parents_QList;
 	parents_QList.reserve(parents->len);
 	QPersistentModelIndex** parents_arr = static_cast<QPersistentModelIndex**>(parents->data);
@@ -727,7 +727,7 @@ void QAbstractItemModel_connect_LayoutAboutToBeChanged1(QAbstractItemModel* self
 	});
 }
 
-void QAbstractItemModel_LayoutAboutToBeChanged2(QAbstractItemModel* self, struct miqt_array* /* of QPersistentModelIndex */ parents, uintptr_t hint) {
+void QAbstractItemModel_LayoutAboutToBeChanged2(QAbstractItemModel* self, struct miqt_array* /* of QPersistentModelIndex* */ parents, uintptr_t hint) {
 	QList<QPersistentModelIndex> parents_QList;
 	parents_QList.reserve(parents->len);
 	QPersistentModelIndex** parents_arr = static_cast<QPersistentModelIndex**>(parents->data);

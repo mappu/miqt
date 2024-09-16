@@ -66,7 +66,7 @@ QVariant* QFileSystemModel_HeaderData(const QFileSystemModel* self, int section,
 int QFileSystemModel_Flags(const QFileSystemModel* self, QModelIndex* index);
 void QFileSystemModel_Sort(QFileSystemModel* self, int column);
 struct miqt_array* QFileSystemModel_MimeTypes(const QFileSystemModel* self);
-QMimeData* QFileSystemModel_MimeData(const QFileSystemModel* self, struct miqt_array* /* of QModelIndex */ indexes);
+QMimeData* QFileSystemModel_MimeData(const QFileSystemModel* self, struct miqt_array* /* of QModelIndex* */ indexes);
 bool QFileSystemModel_DropMimeData(QFileSystemModel* self, QMimeData* data, uintptr_t action, int row, int column, QModelIndex* parent);
 int QFileSystemModel_SupportedDropActions(const QFileSystemModel* self);
 QModelIndex* QFileSystemModel_SetRootPath(QFileSystemModel* self, struct miqt_string* path);
@@ -82,7 +82,7 @@ void QFileSystemModel_SetReadOnly(QFileSystemModel* self, bool enable);
 bool QFileSystemModel_IsReadOnly(const QFileSystemModel* self);
 void QFileSystemModel_SetNameFilterDisables(QFileSystemModel* self, bool enable);
 bool QFileSystemModel_NameFilterDisables(const QFileSystemModel* self);
-void QFileSystemModel_SetNameFilters(QFileSystemModel* self, struct miqt_array* /* of QString */ filters);
+void QFileSystemModel_SetNameFilters(QFileSystemModel* self, struct miqt_array* /* of struct miqt_string* */ filters);
 struct miqt_array* QFileSystemModel_NameFilters(const QFileSystemModel* self);
 void QFileSystemModel_SetOption(QFileSystemModel* self, uintptr_t option);
 bool QFileSystemModel_TestOption(const QFileSystemModel* self, uintptr_t option);

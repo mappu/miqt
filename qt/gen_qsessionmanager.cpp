@@ -65,7 +65,7 @@ uintptr_t QSessionManager_RestartHint(const QSessionManager* self) {
 	return static_cast<uintptr_t>(_ret);
 }
 
-void QSessionManager_SetRestartCommand(QSessionManager* self, struct miqt_array* /* of QString */ restartCommand) {
+void QSessionManager_SetRestartCommand(QSessionManager* self, struct miqt_array* /* of struct miqt_string* */ restartCommand) {
 	QList<QString> restartCommand_QList;
 	restartCommand_QList.reserve(restartCommand->len);
 	miqt_string** restartCommand_arr = static_cast<miqt_string**>(restartCommand->data);
@@ -91,7 +91,7 @@ struct miqt_array* QSessionManager_RestartCommand(const QSessionManager* self) {
 	return _out;
 }
 
-void QSessionManager_SetDiscardCommand(QSessionManager* self, struct miqt_array* /* of QString */ discardCommand) {
+void QSessionManager_SetDiscardCommand(QSessionManager* self, struct miqt_array* /* of struct miqt_string* */ discardCommand) {
 	QList<QString> discardCommand_QList;
 	discardCommand_QList.reserve(discardCommand->len);
 	miqt_string** discardCommand_arr = static_cast<miqt_string**>(discardCommand->data);
@@ -123,7 +123,7 @@ void QSessionManager_SetManagerProperty(QSessionManager* self, struct miqt_strin
 	self->setManagerProperty(name_QString, value_QString);
 }
 
-void QSessionManager_SetManagerProperty2(QSessionManager* self, struct miqt_string* name, struct miqt_array* /* of QString */ value) {
+void QSessionManager_SetManagerProperty2(QSessionManager* self, struct miqt_string* name, struct miqt_array* /* of struct miqt_string* */ value) {
 	QString name_QString = QString::fromUtf8(&name->data, name->len);
 	QList<QString> value_QList;
 	value_QList.reserve(value->len);

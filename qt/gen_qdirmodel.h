@@ -35,9 +35,9 @@ typedef struct QObject QObject;
 typedef struct QVariant QVariant;
 #endif
 
-QDirModel* QDirModel_new(struct miqt_array* /* of QString */ nameFilters, int filters, int sort);
+QDirModel* QDirModel_new(struct miqt_array* /* of struct miqt_string* */ nameFilters, int filters, int sort);
 QDirModel* QDirModel_new2();
-QDirModel* QDirModel_new3(struct miqt_array* /* of QString */ nameFilters, int filters, int sort, QObject* parent);
+QDirModel* QDirModel_new3(struct miqt_array* /* of struct miqt_string* */ nameFilters, int filters, int sort, QObject* parent);
 QDirModel* QDirModel_new4(QObject* parent);
 QMetaObject* QDirModel_MetaObject(const QDirModel* self);
 struct miqt_string* QDirModel_Tr(const char* s);
@@ -53,12 +53,12 @@ bool QDirModel_HasChildren(const QDirModel* self);
 int QDirModel_Flags(const QDirModel* self, QModelIndex* index);
 void QDirModel_Sort(QDirModel* self, int column);
 struct miqt_array* QDirModel_MimeTypes(const QDirModel* self);
-QMimeData* QDirModel_MimeData(const QDirModel* self, struct miqt_array* /* of QModelIndex */ indexes);
+QMimeData* QDirModel_MimeData(const QDirModel* self, struct miqt_array* /* of QModelIndex* */ indexes);
 bool QDirModel_DropMimeData(QDirModel* self, QMimeData* data, uintptr_t action, int row, int column, QModelIndex* parent);
 int QDirModel_SupportedDropActions(const QDirModel* self);
 void QDirModel_SetIconProvider(QDirModel* self, QFileIconProvider* provider);
 QFileIconProvider* QDirModel_IconProvider(const QDirModel* self);
-void QDirModel_SetNameFilters(QDirModel* self, struct miqt_array* /* of QString */ filters);
+void QDirModel_SetNameFilters(QDirModel* self, struct miqt_array* /* of struct miqt_string* */ filters);
 struct miqt_array* QDirModel_NameFilters(const QDirModel* self);
 void QDirModel_SetFilter(QDirModel* self, int filters);
 int QDirModel_Filter(const QDirModel* self);

@@ -94,7 +94,7 @@ bool QAbstractItemModel_SetData(QAbstractItemModel* self, QModelIndex* index, QV
 QVariant* QAbstractItemModel_HeaderData(const QAbstractItemModel* self, int section, uintptr_t orientation);
 bool QAbstractItemModel_SetHeaderData(QAbstractItemModel* self, int section, uintptr_t orientation, QVariant* value);
 struct miqt_array* QAbstractItemModel_MimeTypes(const QAbstractItemModel* self);
-QMimeData* QAbstractItemModel_MimeData(const QAbstractItemModel* self, struct miqt_array* /* of QModelIndex */ indexes);
+QMimeData* QAbstractItemModel_MimeData(const QAbstractItemModel* self, struct miqt_array* /* of QModelIndex* */ indexes);
 bool QAbstractItemModel_CanDropMimeData(const QAbstractItemModel* self, QMimeData* data, uintptr_t action, int row, int column, QModelIndex* parent);
 bool QAbstractItemModel_DropMimeData(QAbstractItemModel* self, QMimeData* data, uintptr_t action, int row, int column, QModelIndex* parent);
 int QAbstractItemModel_SupportedDropActions(const QAbstractItemModel* self);
@@ -156,13 +156,13 @@ struct miqt_array* QAbstractItemModel_Match5(const QAbstractItemModel* self, QMo
 bool QAbstractItemModel_CheckIndex2(const QAbstractItemModel* self, QModelIndex* index, int options);
 void QAbstractItemModel_DataChanged3(QAbstractItemModel* self, QModelIndex* topLeft, QModelIndex* bottomRight, struct miqt_array* /* of int */ roles);
 void QAbstractItemModel_connect_DataChanged3(QAbstractItemModel* self, void* slot);
-void QAbstractItemModel_LayoutChanged1(QAbstractItemModel* self, struct miqt_array* /* of QPersistentModelIndex */ parents);
+void QAbstractItemModel_LayoutChanged1(QAbstractItemModel* self, struct miqt_array* /* of QPersistentModelIndex* */ parents);
 void QAbstractItemModel_connect_LayoutChanged1(QAbstractItemModel* self, void* slot);
-void QAbstractItemModel_LayoutChanged2(QAbstractItemModel* self, struct miqt_array* /* of QPersistentModelIndex */ parents, uintptr_t hint);
+void QAbstractItemModel_LayoutChanged2(QAbstractItemModel* self, struct miqt_array* /* of QPersistentModelIndex* */ parents, uintptr_t hint);
 void QAbstractItemModel_connect_LayoutChanged2(QAbstractItemModel* self, void* slot);
-void QAbstractItemModel_LayoutAboutToBeChanged1(QAbstractItemModel* self, struct miqt_array* /* of QPersistentModelIndex */ parents);
+void QAbstractItemModel_LayoutAboutToBeChanged1(QAbstractItemModel* self, struct miqt_array* /* of QPersistentModelIndex* */ parents);
 void QAbstractItemModel_connect_LayoutAboutToBeChanged1(QAbstractItemModel* self, void* slot);
-void QAbstractItemModel_LayoutAboutToBeChanged2(QAbstractItemModel* self, struct miqt_array* /* of QPersistentModelIndex */ parents, uintptr_t hint);
+void QAbstractItemModel_LayoutAboutToBeChanged2(QAbstractItemModel* self, struct miqt_array* /* of QPersistentModelIndex* */ parents, uintptr_t hint);
 void QAbstractItemModel_connect_LayoutAboutToBeChanged2(QAbstractItemModel* self, void* slot);
 void QAbstractItemModel_Delete(QAbstractItemModel* self);
 

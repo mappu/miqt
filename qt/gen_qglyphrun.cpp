@@ -73,7 +73,7 @@ struct miqt_array* QGlyphRun_Positions(const QGlyphRun* self) {
 	return _out;
 }
 
-void QGlyphRun_SetPositions(QGlyphRun* self, struct miqt_array* /* of QPointF */ positions) {
+void QGlyphRun_SetPositions(QGlyphRun* self, struct miqt_array* /* of QPointF* */ positions) {
 	QVector<QPointF> positions_QList;
 	positions_QList.reserve(positions->len);
 	QPointF** positions_arr = static_cast<QPointF**>(positions->data);

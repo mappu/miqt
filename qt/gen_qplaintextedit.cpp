@@ -291,7 +291,7 @@ void QPlainTextEdit_SetCursorWidth(QPlainTextEdit* self, int width) {
 	self->setCursorWidth(static_cast<int>(width));
 }
 
-void QPlainTextEdit_SetExtraSelections(QPlainTextEdit* self, struct miqt_array* /* of QTextEdit__ExtraSelection */ selections) {
+void QPlainTextEdit_SetExtraSelections(QPlainTextEdit* self, struct miqt_array* /* of QTextEdit__ExtraSelection* */ selections) {
 	QList<QTextEdit::ExtraSelection> selections_QList;
 	selections_QList.reserve(selections->len);
 	QTextEdit__ExtraSelection** selections_arr = static_cast<QTextEdit__ExtraSelection**>(selections->data);

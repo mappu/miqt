@@ -14,7 +14,7 @@ QTouchDevice* QTouchDevice_new() {
 struct miqt_array* QTouchDevice_Devices() {
 	QList<const QTouchDevice*> _ret = QTouchDevice::devices();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	const QTouchDevice** _arr = static_cast<const QTouchDevice**>(malloc(sizeof(const QTouchDevice*) * _ret.length()));
+	QTouchDevice** _arr = static_cast<QTouchDevice**>(malloc(sizeof(QTouchDevice*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = const_cast<QTouchDevice*>(_ret[i]);
 	}

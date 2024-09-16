@@ -316,7 +316,7 @@ void QListWidget_InsertItem2(QListWidget* self, int row, struct miqt_string* lab
 	self->insertItem(static_cast<int>(row), label_QString);
 }
 
-void QListWidget_InsertItems(QListWidget* self, int row, struct miqt_array* /* of QString */ labels) {
+void QListWidget_InsertItems(QListWidget* self, int row, struct miqt_array* /* of struct miqt_string* */ labels) {
 	QList<QString> labels_QList;
 	labels_QList.reserve(labels->len);
 	miqt_string** labels_arr = static_cast<miqt_string**>(labels->data);
@@ -335,7 +335,7 @@ void QListWidget_AddItemWithItem(QListWidget* self, QListWidgetItem* item) {
 	self->addItem(item);
 }
 
-void QListWidget_AddItems(QListWidget* self, struct miqt_array* /* of QString */ labels) {
+void QListWidget_AddItems(QListWidget* self, struct miqt_array* /* of struct miqt_string* */ labels) {
 	QList<QString> labels_QList;
 	labels_QList.reserve(labels->len);
 	miqt_string** labels_arr = static_cast<miqt_string**>(labels->data);

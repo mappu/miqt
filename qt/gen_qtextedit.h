@@ -122,7 +122,7 @@ int QTextEdit_CursorWidth(const QTextEdit* self);
 void QTextEdit_SetCursorWidth(QTextEdit* self, int width);
 bool QTextEdit_AcceptRichText(const QTextEdit* self);
 void QTextEdit_SetAcceptRichText(QTextEdit* self, bool accept);
-void QTextEdit_SetExtraSelections(QTextEdit* self, struct miqt_array* /* of QTextEdit__ExtraSelection */ selections);
+void QTextEdit_SetExtraSelections(QTextEdit* self, struct miqt_array* /* of QTextEdit__ExtraSelection* */ selections);
 struct miqt_array* QTextEdit_ExtraSelections(const QTextEdit* self);
 void QTextEdit_MoveCursor(QTextEdit* self, uintptr_t operation);
 bool QTextEdit_CanPaste(const QTextEdit* self);

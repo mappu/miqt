@@ -130,7 +130,7 @@ QVariant* QVariant_new12(const char* str);
 QVariant* QVariant_new13(QByteArray* bytearray);
 QVariant* QVariant_new14(QBitArray* bitarray);
 QVariant* QVariant_new15(struct miqt_string* stringVal);
-QVariant* QVariant_new16(struct miqt_array* /* of QString */ stringlist);
+QVariant* QVariant_new16(struct miqt_array* /* of struct miqt_string* */ stringlist);
 QVariant* QVariant_new17(QChar* qchar);
 QVariant* QVariant_new18(QDate* date);
 QVariant* QVariant_new19(QTime* time);

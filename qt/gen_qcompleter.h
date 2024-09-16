@@ -35,10 +35,10 @@ typedef struct QWidget QWidget;
 
 QCompleter* QCompleter_new();
 QCompleter* QCompleter_new2(QAbstractItemModel* model);
-QCompleter* QCompleter_new3(struct miqt_array* /* of QString */ completions);
+QCompleter* QCompleter_new3(struct miqt_array* /* of struct miqt_string* */ completions);
 QCompleter* QCompleter_new4(QObject* parent);
 QCompleter* QCompleter_new5(QAbstractItemModel* model, QObject* parent);
-QCompleter* QCompleter_new6(struct miqt_array* /* of QString */ completions, QObject* parent);
+QCompleter* QCompleter_new6(struct miqt_array* /* of struct miqt_string* */ completions, QObject* parent);
 QMetaObject* QCompleter_MetaObject(const QCompleter* self);
 struct miqt_string* QCompleter_Tr(const char* s);
 struct miqt_string* QCompleter_TrUtf8(const char* s);

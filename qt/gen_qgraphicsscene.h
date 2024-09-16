@@ -164,7 +164,7 @@ void QGraphicsScene_Invalidate2(QGraphicsScene* self);
 void QGraphicsScene_Advance(QGraphicsScene* self);
 void QGraphicsScene_ClearSelection(QGraphicsScene* self);
 void QGraphicsScene_Clear(QGraphicsScene* self);
-void QGraphicsScene_Changed(QGraphicsScene* self, struct miqt_array* /* of QRectF */ region);
+void QGraphicsScene_Changed(QGraphicsScene* self, struct miqt_array* /* of QRectF* */ region);
 void QGraphicsScene_connect_Changed(QGraphicsScene* self, void* slot);
 void QGraphicsScene_SceneRectChanged(QGraphicsScene* self, QRectF* rect);
 void QGraphicsScene_connect_SceneRectChanged(QGraphicsScene* self, void* slot);

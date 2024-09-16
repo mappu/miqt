@@ -392,7 +392,7 @@ QTableWidgetItem* QTableWidget_TakeHorizontalHeaderItem(QTableWidget* self, int 
 	return self->takeHorizontalHeaderItem(static_cast<int>(column));
 }
 
-void QTableWidget_SetVerticalHeaderLabels(QTableWidget* self, struct miqt_array* /* of QString */ labels) {
+void QTableWidget_SetVerticalHeaderLabels(QTableWidget* self, struct miqt_array* /* of struct miqt_string* */ labels) {
 	QList<QString> labels_QList;
 	labels_QList.reserve(labels->len);
 	miqt_string** labels_arr = static_cast<miqt_string**>(labels->data);
@@ -402,7 +402,7 @@ void QTableWidget_SetVerticalHeaderLabels(QTableWidget* self, struct miqt_array*
 	self->setVerticalHeaderLabels(labels_QList);
 }
 
-void QTableWidget_SetHorizontalHeaderLabels(QTableWidget* self, struct miqt_array* /* of QString */ labels) {
+void QTableWidget_SetHorizontalHeaderLabels(QTableWidget* self, struct miqt_array* /* of struct miqt_string* */ labels) {
 	QList<QString> labels_QList;
 	labels_QList.reserve(labels->len);
 	miqt_string** labels_arr = static_cast<miqt_string**>(labels->data);

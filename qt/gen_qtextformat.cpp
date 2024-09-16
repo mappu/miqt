@@ -176,7 +176,7 @@ struct miqt_array* QTextFormat_LengthVectorProperty(const QTextFormat* self, int
 	return _out;
 }
 
-void QTextFormat_SetProperty2(QTextFormat* self, int propertyId, struct miqt_array* /* of QTextLength */ lengths) {
+void QTextFormat_SetProperty2(QTextFormat* self, int propertyId, struct miqt_array* /* of QTextLength* */ lengths) {
 	QVector<QTextLength> lengths_QList;
 	lengths_QList.reserve(lengths->len);
 	QTextLength** lengths_arr = static_cast<QTextLength**>(lengths->data);
@@ -355,7 +355,7 @@ struct miqt_string* QTextCharFormat_FontFamily(const QTextCharFormat* self) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QTextCharFormat_SetFontFamilies(QTextCharFormat* self, struct miqt_array* /* of QString */ families) {
+void QTextCharFormat_SetFontFamilies(QTextCharFormat* self, struct miqt_array* /* of struct miqt_string* */ families) {
 	QList<QString> families_QList;
 	families_QList.reserve(families->len);
 	miqt_string** families_arr = static_cast<miqt_string**>(families->data);
@@ -597,7 +597,7 @@ struct miqt_string* QTextCharFormat_AnchorName(const QTextCharFormat* self) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QTextCharFormat_SetAnchorNames(QTextCharFormat* self, struct miqt_array* /* of QString */ names) {
+void QTextCharFormat_SetAnchorNames(QTextCharFormat* self, struct miqt_array* /* of struct miqt_string* */ names) {
 	QList<QString> names_QList;
 	names_QList.reserve(names->len);
 	miqt_string** names_arr = static_cast<miqt_string**>(names->data);
@@ -757,7 +757,7 @@ int QTextBlockFormat_PageBreakPolicy(const QTextBlockFormat* self) {
 	return static_cast<int>(_ret);
 }
 
-void QTextBlockFormat_SetTabPositions(QTextBlockFormat* self, struct miqt_array* /* of QTextOption__Tab */ tabs) {
+void QTextBlockFormat_SetTabPositions(QTextBlockFormat* self, struct miqt_array* /* of QTextOption__Tab* */ tabs) {
 	QList<QTextOption::Tab> tabs_QList;
 	tabs_QList.reserve(tabs->len);
 	QTextOption__Tab** tabs_arr = static_cast<QTextOption__Tab**>(tabs->data);
@@ -1055,7 +1055,7 @@ void QTextTableFormat_SetColumns(QTextTableFormat* self, int columns) {
 	self->setColumns(static_cast<int>(columns));
 }
 
-void QTextTableFormat_SetColumnWidthConstraints(QTextTableFormat* self, struct miqt_array* /* of QTextLength */ constraints) {
+void QTextTableFormat_SetColumnWidthConstraints(QTextTableFormat* self, struct miqt_array* /* of QTextLength* */ constraints) {
 	QVector<QTextLength> constraints_QList;
 	constraints_QList.reserve(constraints->len);
 	QTextLength** constraints_arr = static_cast<QTextLength**>(constraints->data);

@@ -15,7 +15,7 @@ QStringListModel* QStringListModel_new() {
 	return new QStringListModel();
 }
 
-QStringListModel* QStringListModel_new2(struct miqt_array* /* of QString */ strings) {
+QStringListModel* QStringListModel_new2(struct miqt_array* /* of struct miqt_string* */ strings) {
 	QList<QString> strings_QList;
 	strings_QList.reserve(strings->len);
 	miqt_string** strings_arr = static_cast<miqt_string**>(strings->data);
@@ -29,7 +29,7 @@ QStringListModel* QStringListModel_new3(QObject* parent) {
 	return new QStringListModel(parent);
 }
 
-QStringListModel* QStringListModel_new4(struct miqt_array* /* of QString */ strings, QObject* parent) {
+QStringListModel* QStringListModel_new4(struct miqt_array* /* of struct miqt_string* */ strings, QObject* parent) {
 	QList<QString> strings_QList;
 	strings_QList.reserve(strings->len);
 	miqt_string** strings_arr = static_cast<miqt_string**>(strings->data);
@@ -114,7 +114,7 @@ struct miqt_array* QStringListModel_StringList(const QStringListModel* self) {
 	return _out;
 }
 
-void QStringListModel_SetStringList(QStringListModel* self, struct miqt_array* /* of QString */ strings) {
+void QStringListModel_SetStringList(QStringListModel* self, struct miqt_array* /* of struct miqt_string* */ strings) {
 	QList<QString> strings_QList;
 	strings_QList.reserve(strings->len);
 	miqt_string** strings_arr = static_cast<miqt_string**>(strings->data);

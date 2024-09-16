@@ -76,7 +76,7 @@ struct miqt_array* QFont_Families(const QFont* self) {
 	return _out;
 }
 
-void QFont_SetFamilies(QFont* self, struct miqt_array* /* of QString */ families) {
+void QFont_SetFamilies(QFont* self, struct miqt_array* /* of struct miqt_string* */ families) {
 	QList<QString> families_QList;
 	families_QList.reserve(families->len);
 	miqt_string** families_arr = static_cast<miqt_string**>(families->data);
@@ -370,7 +370,7 @@ void QFont_InsertSubstitution(struct miqt_string* param1, struct miqt_string* pa
 	QFont::insertSubstitution(param1_QString, param2_QString);
 }
 
-void QFont_InsertSubstitutions(struct miqt_string* param1, struct miqt_array* /* of QString */ param2) {
+void QFont_InsertSubstitutions(struct miqt_string* param1, struct miqt_array* /* of struct miqt_string* */ param2) {
 	QString param1_QString = QString::fromUtf8(&param1->data, param1->len);
 	QList<QString> param2_QList;
 	param2_QList.reserve(param2->len);

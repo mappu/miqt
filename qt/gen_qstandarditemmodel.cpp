@@ -665,7 +665,7 @@ void QStandardItemModel_SetVerticalHeaderItem(QStandardItemModel* self, int row,
 	self->setVerticalHeaderItem(static_cast<int>(row), item);
 }
 
-void QStandardItemModel_SetHorizontalHeaderLabels(QStandardItemModel* self, struct miqt_array* /* of QString */ labels) {
+void QStandardItemModel_SetHorizontalHeaderLabels(QStandardItemModel* self, struct miqt_array* /* of struct miqt_string* */ labels) {
 	QList<QString> labels_QList;
 	labels_QList.reserve(labels->len);
 	miqt_string** labels_arr = static_cast<miqt_string**>(labels->data);
@@ -675,7 +675,7 @@ void QStandardItemModel_SetHorizontalHeaderLabels(QStandardItemModel* self, stru
 	self->setHorizontalHeaderLabels(labels_QList);
 }
 
-void QStandardItemModel_SetVerticalHeaderLabels(QStandardItemModel* self, struct miqt_array* /* of QString */ labels) {
+void QStandardItemModel_SetVerticalHeaderLabels(QStandardItemModel* self, struct miqt_array* /* of struct miqt_string* */ labels) {
 	QList<QString> labels_QList;
 	labels_QList.reserve(labels->len);
 	miqt_string** labels_arr = static_cast<miqt_string**>(labels->data);
@@ -833,7 +833,7 @@ struct miqt_array* QStandardItemModel_MimeTypes(const QStandardItemModel* self) 
 	return _out;
 }
 
-QMimeData* QStandardItemModel_MimeData(const QStandardItemModel* self, struct miqt_array* /* of QModelIndex */ indexes) {
+QMimeData* QStandardItemModel_MimeData(const QStandardItemModel* self, struct miqt_array* /* of QModelIndex* */ indexes) {
 	QList<QModelIndex> indexes_QList;
 	indexes_QList.reserve(indexes->len);
 	QModelIndex** indexes_arr = static_cast<QModelIndex**>(indexes->data);

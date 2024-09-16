@@ -197,7 +197,7 @@ long long QCoreApplication_ApplicationPid() {
 	return QCoreApplication::applicationPid();
 }
 
-void QCoreApplication_SetLibraryPaths(struct miqt_array* /* of QString */ libraryPaths) {
+void QCoreApplication_SetLibraryPaths(struct miqt_array* /* of struct miqt_string* */ libraryPaths) {
 	QList<QString> libraryPaths_QList;
 	libraryPaths_QList.reserve(libraryPaths->len);
 	miqt_string** libraryPaths_arr = static_cast<miqt_string**>(libraryPaths->data);

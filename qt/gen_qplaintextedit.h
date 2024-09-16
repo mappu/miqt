@@ -127,7 +127,7 @@ double QPlainTextEdit_TabStopDistance(const QPlainTextEdit* self);
 void QPlainTextEdit_SetTabStopDistance(QPlainTextEdit* self, double distance);
 int QPlainTextEdit_CursorWidth(const QPlainTextEdit* self);
 void QPlainTextEdit_SetCursorWidth(QPlainTextEdit* self, int width);
-void QPlainTextEdit_SetExtraSelections(QPlainTextEdit* self, struct miqt_array* /* of QTextEdit__ExtraSelection */ selections);
+void QPlainTextEdit_SetExtraSelections(QPlainTextEdit* self, struct miqt_array* /* of QTextEdit__ExtraSelection* */ selections);
 struct miqt_array* QPlainTextEdit_ExtraSelections(const QPlainTextEdit* self);
 void QPlainTextEdit_MoveCursor(QPlainTextEdit* self, uintptr_t operation);
 bool QPlainTextEdit_CanPaste(const QPlainTextEdit* self);

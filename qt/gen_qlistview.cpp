@@ -199,7 +199,7 @@ void QListView_SetRootIndex(QListView* self, QModelIndex* index) {
 	self->setRootIndex(*index);
 }
 
-void QListView_IndexesMoved(QListView* self, struct miqt_array* /* of QModelIndex */ indexes) {
+void QListView_IndexesMoved(QListView* self, struct miqt_array* /* of QModelIndex* */ indexes) {
 	QList<QModelIndex> indexes_QList;
 	indexes_QList.reserve(indexes->len);
 	QModelIndex** indexes_arr = static_cast<QModelIndex**>(indexes->data);

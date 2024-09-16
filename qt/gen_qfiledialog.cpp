@@ -139,7 +139,7 @@ void QFileDialog_SetNameFilter(QFileDialog* self, struct miqt_string* filter) {
 	self->setNameFilter(filter_QString);
 }
 
-void QFileDialog_SetNameFilters(QFileDialog* self, struct miqt_array* /* of QString */ filters) {
+void QFileDialog_SetNameFilters(QFileDialog* self, struct miqt_array* /* of struct miqt_string* */ filters) {
 	QList<QString> filters_QList;
 	filters_QList.reserve(filters->len);
 	miqt_string** filters_arr = static_cast<miqt_string**>(filters->data);
@@ -184,7 +184,7 @@ struct miqt_string* QFileDialog_SelectedNameFilter(const QFileDialog* self) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QFileDialog_SetMimeTypeFilters(QFileDialog* self, struct miqt_array* /* of QString */ filters) {
+void QFileDialog_SetMimeTypeFilters(QFileDialog* self, struct miqt_array* /* of struct miqt_string* */ filters) {
 	QList<QString> filters_QList;
 	filters_QList.reserve(filters->len);
 	miqt_string** filters_arr = static_cast<miqt_string**>(filters->data);
@@ -267,7 +267,7 @@ bool QFileDialog_ResolveSymlinks(const QFileDialog* self) {
 	return self->resolveSymlinks();
 }
 
-void QFileDialog_SetSidebarUrls(QFileDialog* self, struct miqt_array* /* of QUrl */ urls) {
+void QFileDialog_SetSidebarUrls(QFileDialog* self, struct miqt_array* /* of QUrl* */ urls) {
 	QList<QUrl> urls_QList;
 	urls_QList.reserve(urls->len);
 	QUrl** urls_arr = static_cast<QUrl**>(urls->data);
@@ -320,7 +320,7 @@ struct miqt_string* QFileDialog_DefaultSuffix(const QFileDialog* self) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QFileDialog_SetHistory(QFileDialog* self, struct miqt_array* /* of QString */ paths) {
+void QFileDialog_SetHistory(QFileDialog* self, struct miqt_array* /* of struct miqt_string* */ paths) {
 	QList<QString> paths_QList;
 	paths_QList.reserve(paths->len);
 	miqt_string** paths_arr = static_cast<miqt_string**>(paths->data);
@@ -374,7 +374,7 @@ struct miqt_string* QFileDialog_LabelText(const QFileDialog* self, uintptr_t lab
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QFileDialog_SetSupportedSchemes(QFileDialog* self, struct miqt_array* /* of QString */ schemes) {
+void QFileDialog_SetSupportedSchemes(QFileDialog* self, struct miqt_array* /* of struct miqt_string* */ schemes) {
 	QList<QString> schemes_QList;
 	schemes_QList.reserve(schemes->len);
 	miqt_string** schemes_arr = static_cast<miqt_string**>(schemes->data);
@@ -444,7 +444,7 @@ void QFileDialog_connect_FileSelected(QFileDialog* self, void* slot) {
 	});
 }
 
-void QFileDialog_FilesSelected(QFileDialog* self, struct miqt_array* /* of QString */ files) {
+void QFileDialog_FilesSelected(QFileDialog* self, struct miqt_array* /* of struct miqt_string* */ files) {
 	QList<QString> files_QList;
 	files_QList.reserve(files->len);
 	miqt_string** files_arr = static_cast<miqt_string**>(files->data);
@@ -516,7 +516,7 @@ void QFileDialog_connect_UrlSelected(QFileDialog* self, void* slot) {
 	});
 }
 
-void QFileDialog_UrlsSelected(QFileDialog* self, struct miqt_array* /* of QUrl */ urls) {
+void QFileDialog_UrlsSelected(QFileDialog* self, struct miqt_array* /* of QUrl* */ urls) {
 	QList<QUrl> urls_QList;
 	urls_QList.reserve(urls->len);
 	QUrl** urls_arr = static_cast<QUrl**>(urls->data);
@@ -871,7 +871,7 @@ QUrl* QFileDialog_GetExistingDirectoryUrl4(QWidget* parent, struct miqt_string* 
 	return static_cast<QUrl*>(new QUrl(_ret));
 }
 
-QUrl* QFileDialog_GetExistingDirectoryUrl5(QWidget* parent, struct miqt_string* caption, QUrl* dir, int options, struct miqt_array* /* of QString */ supportedSchemes) {
+QUrl* QFileDialog_GetExistingDirectoryUrl5(QWidget* parent, struct miqt_string* caption, QUrl* dir, int options, struct miqt_array* /* of struct miqt_string* */ supportedSchemes) {
 	QString caption_QString = QString::fromUtf8(&caption->data, caption->len);
 	QList<QString> supportedSchemes_QList;
 	supportedSchemes_QList.reserve(supportedSchemes->len);

@@ -272,7 +272,7 @@ QCborArray* QCborArray_OperatorShiftLeft(QCborArray* self, QCborValue* v) {
 	return &_ret;
 }
 
-QCborArray* QCborArray_FromStringList(struct miqt_array* /* of QString */ list) {
+QCborArray* QCborArray_FromStringList(struct miqt_array* /* of struct miqt_string* */ list) {
 	QList<QString> list_QList;
 	list_QList.reserve(list->len);
 	miqt_string** list_arr = static_cast<miqt_string**>(list->data);

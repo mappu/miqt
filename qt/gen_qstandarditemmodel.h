@@ -174,8 +174,8 @@ QStandardItem* QStandardItemModel_HorizontalHeaderItem(const QStandardItemModel*
 void QStandardItemModel_SetHorizontalHeaderItem(QStandardItemModel* self, int column, QStandardItem* item);
 QStandardItem* QStandardItemModel_VerticalHeaderItem(const QStandardItemModel* self, int row);
 void QStandardItemModel_SetVerticalHeaderItem(QStandardItemModel* self, int row, QStandardItem* item);
-void QStandardItemModel_SetHorizontalHeaderLabels(QStandardItemModel* self, struct miqt_array* /* of QString */ labels);
-void QStandardItemModel_SetVerticalHeaderLabels(QStandardItemModel* self, struct miqt_array* /* of QString */ labels);
+void QStandardItemModel_SetHorizontalHeaderLabels(QStandardItemModel* self, struct miqt_array* /* of struct miqt_string* */ labels);
+void QStandardItemModel_SetVerticalHeaderLabels(QStandardItemModel* self, struct miqt_array* /* of struct miqt_string* */ labels);
 void QStandardItemModel_SetRowCount(QStandardItemModel* self, int rows);
 void QStandardItemModel_SetColumnCount(QStandardItemModel* self, int columns);
 void QStandardItemModel_AppendRow(QStandardItemModel* self, struct miqt_array* /* of QStandardItem* */ items);
@@ -197,7 +197,7 @@ struct miqt_array* QStandardItemModel_FindItems(const QStandardItemModel* self, 
 int QStandardItemModel_SortRole(const QStandardItemModel* self);
 void QStandardItemModel_SetSortRole(QStandardItemModel* self, int role);
 struct miqt_array* QStandardItemModel_MimeTypes(const QStandardItemModel* self);
-QMimeData* QStandardItemModel_MimeData(const QStandardItemModel* self, struct miqt_array* /* of QModelIndex */ indexes);
+QMimeData* QStandardItemModel_MimeData(const QStandardItemModel* self, struct miqt_array* /* of QModelIndex* */ indexes);
 bool QStandardItemModel_DropMimeData(QStandardItemModel* self, QMimeData* data, uintptr_t action, int row, int column, QModelIndex* parent);
 void QStandardItemModel_ItemChanged(QStandardItemModel* self, QStandardItem* item);
 void QStandardItemModel_connect_ItemChanged(QStandardItemModel* self, void* slot);

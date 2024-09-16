@@ -127,7 +127,7 @@ QBrush* QGraphicsView_BackgroundBrush(const QGraphicsView* self);
 void QGraphicsView_SetBackgroundBrush(QGraphicsView* self, QBrush* brush);
 QBrush* QGraphicsView_ForegroundBrush(const QGraphicsView* self);
 void QGraphicsView_SetForegroundBrush(QGraphicsView* self, QBrush* brush);
-void QGraphicsView_UpdateScene(QGraphicsView* self, struct miqt_array* /* of QRectF */ rects);
+void QGraphicsView_UpdateScene(QGraphicsView* self, struct miqt_array* /* of QRectF* */ rects);
 void QGraphicsView_InvalidateScene(QGraphicsView* self);
 void QGraphicsView_UpdateSceneRect(QGraphicsView* self, QRectF* rect);
 void QGraphicsView_RubberBandChanged(QGraphicsView* self, QRect* viewportRect, QPointF* fromScenePoint, QPointF* toScenePoint);

@@ -129,8 +129,8 @@ QTableWidgetItem* QTableWidget_TakeVerticalHeaderItem(QTableWidget* self, int ro
 QTableWidgetItem* QTableWidget_HorizontalHeaderItem(const QTableWidget* self, int column);
 void QTableWidget_SetHorizontalHeaderItem(QTableWidget* self, int column, QTableWidgetItem* item);
 QTableWidgetItem* QTableWidget_TakeHorizontalHeaderItem(QTableWidget* self, int column);
-void QTableWidget_SetVerticalHeaderLabels(QTableWidget* self, struct miqt_array* /* of QString */ labels);
-void QTableWidget_SetHorizontalHeaderLabels(QTableWidget* self, struct miqt_array* /* of QString */ labels);
+void QTableWidget_SetVerticalHeaderLabels(QTableWidget* self, struct miqt_array* /* of struct miqt_string* */ labels);
+void QTableWidget_SetHorizontalHeaderLabels(QTableWidget* self, struct miqt_array* /* of struct miqt_string* */ labels);
 int QTableWidget_CurrentRow(const QTableWidget* self);
 int QTableWidget_CurrentColumn(const QTableWidget* self);
 QTableWidgetItem* QTableWidget_CurrentItem(const QTableWidget* self);

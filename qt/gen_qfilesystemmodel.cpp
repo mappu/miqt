@@ -190,7 +190,7 @@ struct miqt_array* QFileSystemModel_MimeTypes(const QFileSystemModel* self) {
 	return _out;
 }
 
-QMimeData* QFileSystemModel_MimeData(const QFileSystemModel* self, struct miqt_array* /* of QModelIndex */ indexes) {
+QMimeData* QFileSystemModel_MimeData(const QFileSystemModel* self, struct miqt_array* /* of QModelIndex* */ indexes) {
 	QList<QModelIndex> indexes_QList;
 	indexes_QList.reserve(indexes->len);
 	QModelIndex** indexes_arr = static_cast<QModelIndex**>(indexes->data);
@@ -270,7 +270,7 @@ bool QFileSystemModel_NameFilterDisables(const QFileSystemModel* self) {
 	return self->nameFilterDisables();
 }
 
-void QFileSystemModel_SetNameFilters(QFileSystemModel* self, struct miqt_array* /* of QString */ filters) {
+void QFileSystemModel_SetNameFilters(QFileSystemModel* self, struct miqt_array* /* of struct miqt_string* */ filters) {
 	QList<QString> filters_QList;
 	filters_QList.reserve(filters->len);
 	miqt_string** filters_arr = static_cast<miqt_string**>(filters->data);

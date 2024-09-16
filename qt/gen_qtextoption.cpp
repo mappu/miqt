@@ -97,7 +97,7 @@ struct miqt_array* QTextOption_TabArray(const QTextOption* self) {
 	return _out;
 }
 
-void QTextOption_SetTabs(QTextOption* self, struct miqt_array* /* of QTextOption__Tab */ tabStops) {
+void QTextOption_SetTabs(QTextOption* self, struct miqt_array* /* of QTextOption__Tab* */ tabStops) {
 	QList<QTextOption::Tab> tabStops_QList;
 	tabStops_QList.reserve(tabStops->len);
 	QTextOption__Tab** tabStops_arr = static_cast<QTextOption__Tab**>(tabStops->data);

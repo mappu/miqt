@@ -346,7 +346,7 @@ void QTextEdit_SetAcceptRichText(QTextEdit* self, bool accept) {
 	self->setAcceptRichText(accept);
 }
 
-void QTextEdit_SetExtraSelections(QTextEdit* self, struct miqt_array* /* of QTextEdit__ExtraSelection */ selections) {
+void QTextEdit_SetExtraSelections(QTextEdit* self, struct miqt_array* /* of QTextEdit__ExtraSelection* */ selections) {
 	QList<QTextEdit::ExtraSelection> selections_QList;
 	selections_QList.reserve(selections->len);
 	QTextEdit__ExtraSelection** selections_arr = static_cast<QTextEdit__ExtraSelection**>(selections->data);

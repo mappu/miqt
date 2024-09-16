@@ -13,7 +13,7 @@ QFileSystemWatcher* QFileSystemWatcher_new() {
 	return new QFileSystemWatcher();
 }
 
-QFileSystemWatcher* QFileSystemWatcher_new2(struct miqt_array* /* of QString */ paths) {
+QFileSystemWatcher* QFileSystemWatcher_new2(struct miqt_array* /* of struct miqt_string* */ paths) {
 	QList<QString> paths_QList;
 	paths_QList.reserve(paths->len);
 	miqt_string** paths_arr = static_cast<miqt_string**>(paths->data);
@@ -27,7 +27,7 @@ QFileSystemWatcher* QFileSystemWatcher_new3(QObject* parent) {
 	return new QFileSystemWatcher(parent);
 }
 
-QFileSystemWatcher* QFileSystemWatcher_new4(struct miqt_array* /* of QString */ paths, QObject* parent) {
+QFileSystemWatcher* QFileSystemWatcher_new4(struct miqt_array* /* of struct miqt_string* */ paths, QObject* parent) {
 	QList<QString> paths_QList;
 	paths_QList.reserve(paths->len);
 	miqt_string** paths_arr = static_cast<miqt_string**>(paths->data);
@@ -60,7 +60,7 @@ bool QFileSystemWatcher_AddPath(QFileSystemWatcher* self, struct miqt_string* fi
 	return self->addPath(file_QString);
 }
 
-struct miqt_array* QFileSystemWatcher_AddPaths(QFileSystemWatcher* self, struct miqt_array* /* of QString */ files) {
+struct miqt_array* QFileSystemWatcher_AddPaths(QFileSystemWatcher* self, struct miqt_array* /* of struct miqt_string* */ files) {
 	QList<QString> files_QList;
 	files_QList.reserve(files->len);
 	miqt_string** files_arr = static_cast<miqt_string**>(files->data);
@@ -87,7 +87,7 @@ bool QFileSystemWatcher_RemovePath(QFileSystemWatcher* self, struct miqt_string*
 	return self->removePath(file_QString);
 }
 
-struct miqt_array* QFileSystemWatcher_RemovePaths(QFileSystemWatcher* self, struct miqt_array* /* of QString */ files) {
+struct miqt_array* QFileSystemWatcher_RemovePaths(QFileSystemWatcher* self, struct miqt_array* /* of struct miqt_string* */ files) {
 	QList<QString> files_QList;
 	files_QList.reserve(files->len);
 	miqt_string** files_arr = static_cast<miqt_string**>(files->data);

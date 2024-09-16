@@ -33,7 +33,7 @@ struct miqt_string* QFileSelector_TrUtf8(const char* s);
 struct miqt_string* QFileSelector_Select(const QFileSelector* self, struct miqt_string* filePath);
 QUrl* QFileSelector_SelectWithFilePath(const QFileSelector* self, QUrl* filePath);
 struct miqt_array* QFileSelector_ExtraSelectors(const QFileSelector* self);
-void QFileSelector_SetExtraSelectors(QFileSelector* self, struct miqt_array* /* of QString */ list);
+void QFileSelector_SetExtraSelectors(QFileSelector* self, struct miqt_array* /* of struct miqt_string* */ list);
 struct miqt_array* QFileSelector_AllSelectors(const QFileSelector* self);
 struct miqt_string* QFileSelector_Tr2(const char* s, const char* c);
 struct miqt_string* QFileSelector_Tr3(const char* s, const char* c, int n);

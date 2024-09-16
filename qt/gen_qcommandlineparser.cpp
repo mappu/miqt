@@ -39,7 +39,7 @@ bool QCommandLineParser_AddOption(QCommandLineParser* self, QCommandLineOption* 
 	return self->addOption(*commandLineOption);
 }
 
-bool QCommandLineParser_AddOptions(QCommandLineParser* self, struct miqt_array* /* of QCommandLineOption */ options) {
+bool QCommandLineParser_AddOptions(QCommandLineParser* self, struct miqt_array* /* of QCommandLineOption* */ options) {
 	QList<QCommandLineOption> options_QList;
 	options_QList.reserve(options->len);
 	QCommandLineOption** options_arr = static_cast<QCommandLineOption**>(options->data);
@@ -83,7 +83,7 @@ void QCommandLineParser_ClearPositionalArguments(QCommandLineParser* self) {
 	self->clearPositionalArguments();
 }
 
-void QCommandLineParser_Process(QCommandLineParser* self, struct miqt_array* /* of QString */ arguments) {
+void QCommandLineParser_Process(QCommandLineParser* self, struct miqt_array* /* of struct miqt_string* */ arguments) {
 	QList<QString> arguments_QList;
 	arguments_QList.reserve(arguments->len);
 	miqt_string** arguments_arr = static_cast<miqt_string**>(arguments->data);
@@ -97,7 +97,7 @@ void QCommandLineParser_ProcessWithApp(QCommandLineParser* self, QCoreApplicatio
 	self->process(*app);
 }
 
-bool QCommandLineParser_Parse(QCommandLineParser* self, struct miqt_array* /* of QString */ arguments) {
+bool QCommandLineParser_Parse(QCommandLineParser* self, struct miqt_array* /* of struct miqt_string* */ arguments) {
 	QList<QString> arguments_QList;
 	arguments_QList.reserve(arguments->len);
 	miqt_string** arguments_arr = static_cast<miqt_string**>(arguments->data);

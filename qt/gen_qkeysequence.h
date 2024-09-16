@@ -33,7 +33,7 @@ bool QKeySequence_IsEmpty(const QKeySequence* self);
 struct miqt_string* QKeySequence_ToString(const QKeySequence* self);
 QKeySequence* QKeySequence_FromString(struct miqt_string* str);
 struct miqt_array* QKeySequence_ListFromString(struct miqt_string* str);
-struct miqt_string* QKeySequence_ListToString(struct miqt_array* /* of QKeySequence */ list);
+struct miqt_string* QKeySequence_ListToString(struct miqt_array* /* of QKeySequence* */ list);
 uintptr_t QKeySequence_Matches(const QKeySequence* self, QKeySequence* seq);
 QKeySequence* QKeySequence_Mnemonic(struct miqt_string* text);
 struct miqt_array* QKeySequence_KeyBindings(uintptr_t key);
@@ -50,7 +50,7 @@ bool QKeySequence_IsDetached(const QKeySequence* self);
 struct miqt_string* QKeySequence_ToString1(const QKeySequence* self, uintptr_t format);
 QKeySequence* QKeySequence_FromString2(struct miqt_string* str, uintptr_t format);
 struct miqt_array* QKeySequence_ListFromString2(struct miqt_string* str, uintptr_t format);
-struct miqt_string* QKeySequence_ListToString2(struct miqt_array* /* of QKeySequence */ list, uintptr_t format);
+struct miqt_string* QKeySequence_ListToString2(struct miqt_array* /* of QKeySequence* */ list, uintptr_t format);
 void QKeySequence_Delete(QKeySequence* self);
 
 #ifdef __cplusplus

@@ -952,7 +952,7 @@ QInputMethodEvent* QInputMethodEvent_new() {
 	return new QInputMethodEvent();
 }
 
-QInputMethodEvent* QInputMethodEvent_new2(struct miqt_string* preeditText, struct miqt_array* /* of QInputMethodEvent__Attribute */ attributes) {
+QInputMethodEvent* QInputMethodEvent_new2(struct miqt_string* preeditText, struct miqt_array* /* of QInputMethodEvent__Attribute* */ attributes) {
 	QString preeditText_QString = QString::fromUtf8(&preeditText->data, preeditText->len);
 	QList<QInputMethodEvent::Attribute> attributes_QList;
 	attributes_QList.reserve(attributes->len);
@@ -1433,7 +1433,7 @@ QTouchEvent* QTouchEvent_new5(uintptr_t eventType, QTouchDevice* device, int mod
 	return new QTouchEvent(static_cast<QEvent::Type>(eventType), device, static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<Qt::TouchPointStates>(touchPointStates));
 }
 
-QTouchEvent* QTouchEvent_new6(uintptr_t eventType, QTouchDevice* device, int modifiers, int touchPointStates, struct miqt_array* /* of QTouchEvent__TouchPoint */ touchPoints) {
+QTouchEvent* QTouchEvent_new6(uintptr_t eventType, QTouchDevice* device, int modifiers, int touchPointStates, struct miqt_array* /* of QTouchEvent__TouchPoint* */ touchPoints) {
 	QList<QTouchEvent::TouchPoint> touchPoints_QList;
 	touchPoints_QList.reserve(touchPoints->len);
 	QTouchEvent__TouchPoint** touchPoints_arr = static_cast<QTouchEvent__TouchPoint**>(touchPoints->data);
@@ -1472,7 +1472,7 @@ void QTouchEvent_SetTouchPointStates(QTouchEvent* self, int aTouchPointStates) {
 	self->setTouchPointStates(static_cast<Qt::TouchPointStates>(aTouchPointStates));
 }
 
-void QTouchEvent_SetTouchPoints(QTouchEvent* self, struct miqt_array* /* of QTouchEvent__TouchPoint */ atouchPoints) {
+void QTouchEvent_SetTouchPoints(QTouchEvent* self, struct miqt_array* /* of QTouchEvent__TouchPoint* */ atouchPoints) {
 	QList<QTouchEvent::TouchPoint> atouchPoints_QList;
 	atouchPoints_QList.reserve(atouchPoints->len);
 	QTouchEvent__TouchPoint** atouchPoints_arr = static_cast<QTouchEvent__TouchPoint**>(atouchPoints->data);
@@ -1872,7 +1872,7 @@ void QTouchEvent__TouchPoint_SetFlags(QTouchEvent__TouchPoint* self, int flags) 
 	self->setFlags(static_cast<QTouchEvent::TouchPoint::InfoFlags>(flags));
 }
 
-void QTouchEvent__TouchPoint_SetRawScreenPositions(QTouchEvent__TouchPoint* self, struct miqt_array* /* of QPointF */ positions) {
+void QTouchEvent__TouchPoint_SetRawScreenPositions(QTouchEvent__TouchPoint* self, struct miqt_array* /* of QPointF* */ positions) {
 	QVector<QPointF> positions_QList;
 	positions_QList.reserve(positions->len);
 	QPointF** positions_arr = static_cast<QPointF**>(positions->data);

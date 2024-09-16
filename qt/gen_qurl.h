@@ -83,9 +83,9 @@ QByteArray* QUrl_ToPercentEncoding(struct miqt_string* param1);
 struct miqt_string* QUrl_FromAce(QByteArray* param1);
 QByteArray* QUrl_ToAce(struct miqt_string* param1);
 struct miqt_array* QUrl_IdnWhitelist();
-struct miqt_array* QUrl_ToStringList(struct miqt_array* /* of QUrl */ uris);
-struct miqt_array* QUrl_FromStringList(struct miqt_array* /* of QString */ uris);
-void QUrl_SetIdnWhitelist(struct miqt_array* /* of QString */ idnWhitelist);
+struct miqt_array* QUrl_ToStringList(struct miqt_array* /* of QUrl* */ uris);
+struct miqt_array* QUrl_FromStringList(struct miqt_array* /* of struct miqt_string* */ uris);
+void QUrl_SetIdnWhitelist(struct miqt_array* /* of struct miqt_string* */ idnWhitelist);
 void QUrl_SetUrl2(QUrl* self, struct miqt_string* url, uintptr_t mode);
 QUrl* QUrl_FromEncoded2(QByteArray* url, uintptr_t mode);
 QUrl* QUrl_FromUserInput3(struct miqt_string* userInput, struct miqt_string* workingDirectory, int options);
@@ -110,7 +110,7 @@ struct miqt_string* QUrl_Fragment1(const QUrl* self, int options);
 void QUrl_SetFragment2(QUrl* self, struct miqt_string* fragment, uintptr_t mode);
 QByteArray* QUrl_ToPercentEncoding2(struct miqt_string* param1, QByteArray* exclude);
 QByteArray* QUrl_ToPercentEncoding3(struct miqt_string* param1, QByteArray* exclude, QByteArray* include);
-struct miqt_array* QUrl_FromStringList2(struct miqt_array* /* of QString */ uris, uintptr_t mode);
+struct miqt_array* QUrl_FromStringList2(struct miqt_array* /* of struct miqt_string* */ uris, uintptr_t mode);
 void QUrl_Delete(QUrl* self);
 
 #ifdef __cplusplus

@@ -35,7 +35,7 @@ struct miqt_string* QTextBrowser_TrUtf8(const char* s);
 QUrl* QTextBrowser_Source(const QTextBrowser* self);
 uintptr_t QTextBrowser_SourceType(const QTextBrowser* self);
 struct miqt_array* QTextBrowser_SearchPaths(const QTextBrowser* self);
-void QTextBrowser_SetSearchPaths(QTextBrowser* self, struct miqt_array* /* of QString */ paths);
+void QTextBrowser_SetSearchPaths(QTextBrowser* self, struct miqt_array* /* of struct miqt_string* */ paths);
 QVariant* QTextBrowser_LoadResource(QTextBrowser* self, int typeVal, QUrl* name);
 bool QTextBrowser_IsBackwardAvailable(const QTextBrowser* self);
 bool QTextBrowser_IsForwardAvailable(const QTextBrowser* self);

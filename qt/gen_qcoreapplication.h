@@ -67,7 +67,7 @@ bool QCoreApplication_ClosingDown();
 struct miqt_string* QCoreApplication_ApplicationDirPath();
 struct miqt_string* QCoreApplication_ApplicationFilePath();
 long long QCoreApplication_ApplicationPid();
-void QCoreApplication_SetLibraryPaths(struct miqt_array* /* of QString */ libraryPaths);
+void QCoreApplication_SetLibraryPaths(struct miqt_array* /* of struct miqt_string* */ libraryPaths);
 struct miqt_array* QCoreApplication_LibraryPaths();
 void QCoreApplication_AddLibraryPath(struct miqt_string* param1);
 void QCoreApplication_RemoveLibraryPath(struct miqt_string* param1);

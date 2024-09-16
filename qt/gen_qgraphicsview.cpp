@@ -433,7 +433,7 @@ void QGraphicsView_SetForegroundBrush(QGraphicsView* self, QBrush* brush) {
 	self->setForegroundBrush(*brush);
 }
 
-void QGraphicsView_UpdateScene(QGraphicsView* self, struct miqt_array* /* of QRectF */ rects) {
+void QGraphicsView_UpdateScene(QGraphicsView* self, struct miqt_array* /* of QRectF* */ rects) {
 	QList<QRectF> rects_QList;
 	rects_QList.reserve(rects->len);
 	QRectF** rects_arr = static_cast<QRectF**>(rects->data);

@@ -104,7 +104,7 @@ QVariant* QVariant_new15(struct miqt_string* stringVal) {
 	return new QVariant(stringVal_QString);
 }
 
-QVariant* QVariant_new16(struct miqt_array* /* of QString */ stringlist) {
+QVariant* QVariant_new16(struct miqt_array* /* of struct miqt_string* */ stringlist) {
 	QList<QString> stringlist_QList;
 	stringlist_QList.reserve(stringlist->len);
 	miqt_string** stringlist_arr = static_cast<miqt_string**>(stringlist->data);

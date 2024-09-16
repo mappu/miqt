@@ -176,7 +176,7 @@ QKeySequence* QAction_Shortcut(const QAction* self) {
 	return static_cast<QKeySequence*>(new QKeySequence(_ret));
 }
 
-void QAction_SetShortcuts(QAction* self, struct miqt_array* /* of QKeySequence */ shortcuts) {
+void QAction_SetShortcuts(QAction* self, struct miqt_array* /* of QKeySequence* */ shortcuts) {
 	QList<QKeySequence> shortcuts_QList;
 	shortcuts_QList.reserve(shortcuts->len);
 	QKeySequence** shortcuts_arr = static_cast<QKeySequence**>(shortcuts->data);

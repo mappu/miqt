@@ -81,7 +81,7 @@ struct miqt_array* QKeySequence_ListFromString(struct miqt_string* str) {
 	return _out;
 }
 
-struct miqt_string* QKeySequence_ListToString(struct miqt_array* /* of QKeySequence */ list) {
+struct miqt_string* QKeySequence_ListToString(struct miqt_array* /* of QKeySequence* */ list) {
 	QList<QKeySequence> list_QList;
 	list_QList.reserve(list->len);
 	QKeySequence** list_arr = static_cast<QKeySequence**>(list->data);
@@ -187,7 +187,7 @@ struct miqt_array* QKeySequence_ListFromString2(struct miqt_string* str, uintptr
 	return _out;
 }
 
-struct miqt_string* QKeySequence_ListToString2(struct miqt_array* /* of QKeySequence */ list, uintptr_t format) {
+struct miqt_string* QKeySequence_ListToString2(struct miqt_array* /* of QKeySequence* */ list, uintptr_t format) {
 	QList<QKeySequence> list_QList;
 	list_QList.reserve(list->len);
 	QKeySequence** list_arr = static_cast<QKeySequence**>(list->data);

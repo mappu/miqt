@@ -487,7 +487,7 @@ void QGraphicsScene_Clear(QGraphicsScene* self) {
 	self->clear();
 }
 
-void QGraphicsScene_Changed(QGraphicsScene* self, struct miqt_array* /* of QRectF */ region) {
+void QGraphicsScene_Changed(QGraphicsScene* self, struct miqt_array* /* of QRectF* */ region) {
 	QList<QRectF> region_QList;
 	region_QList.reserve(region->len);
 	QRectF** region_arr = static_cast<QRectF**>(region->data);

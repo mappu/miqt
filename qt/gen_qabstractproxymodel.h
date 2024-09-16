@@ -52,7 +52,7 @@ void QAbstractProxyModel_Sort(QAbstractProxyModel* self, int column);
 QSize* QAbstractProxyModel_Span(const QAbstractProxyModel* self, QModelIndex* index);
 bool QAbstractProxyModel_HasChildren(const QAbstractProxyModel* self);
 QModelIndex* QAbstractProxyModel_Sibling(const QAbstractProxyModel* self, int row, int column, QModelIndex* idx);
-QMimeData* QAbstractProxyModel_MimeData(const QAbstractProxyModel* self, struct miqt_array* /* of QModelIndex */ indexes);
+QMimeData* QAbstractProxyModel_MimeData(const QAbstractProxyModel* self, struct miqt_array* /* of QModelIndex* */ indexes);
 bool QAbstractProxyModel_CanDropMimeData(const QAbstractProxyModel* self, QMimeData* data, uintptr_t action, int row, int column, QModelIndex* parent);
 bool QAbstractProxyModel_DropMimeData(QAbstractProxyModel* self, QMimeData* data, uintptr_t action, int row, int column, QModelIndex* parent);
 struct miqt_array* QAbstractProxyModel_MimeTypes(const QAbstractProxyModel* self);

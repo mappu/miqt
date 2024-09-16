@@ -73,7 +73,7 @@ QModelIndex* QListView_IndexAt(const QListView* self, QPoint* p);
 void QListView_DoItemsLayout(QListView* self);
 void QListView_Reset(QListView* self);
 void QListView_SetRootIndex(QListView* self, QModelIndex* index);
-void QListView_IndexesMoved(QListView* self, struct miqt_array* /* of QModelIndex */ indexes);
+void QListView_IndexesMoved(QListView* self, struct miqt_array* /* of QModelIndex* */ indexes);
 void QListView_connect_IndexesMoved(QListView* self, void* slot);
 struct miqt_string* QListView_Tr2(const char* s, const char* c);
 struct miqt_string* QListView_Tr3(const char* s, const char* c, int n);

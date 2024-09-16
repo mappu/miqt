@@ -709,7 +709,7 @@ struct miqt_string* QLocale_QuoteString(const QLocale* self, struct miqt_string*
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-struct miqt_string* QLocale_CreateSeparatedList(const QLocale* self, struct miqt_array* /* of QString */ strl) {
+struct miqt_string* QLocale_CreateSeparatedList(const QLocale* self, struct miqt_array* /* of struct miqt_string* */ strl) {
 	QList<QString> strl_QList;
 	strl_QList.reserve(strl->len);
 	miqt_string** strl_arr = static_cast<miqt_string**>(strl->data);

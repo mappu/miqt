@@ -70,7 +70,7 @@ void QAction_SetSeparator(QAction* self, bool b);
 bool QAction_IsSeparator(const QAction* self);
 void QAction_SetShortcut(QAction* self, QKeySequence* shortcut);
 QKeySequence* QAction_Shortcut(const QAction* self);
-void QAction_SetShortcuts(QAction* self, struct miqt_array* /* of QKeySequence */ shortcuts);
+void QAction_SetShortcuts(QAction* self, struct miqt_array* /* of QKeySequence* */ shortcuts);
 void QAction_SetShortcutsWithShortcuts(QAction* self, uintptr_t shortcuts);
 struct miqt_array* QAction_Shortcuts(const QAction* self);
 void QAction_SetShortcutContext(QAction* self, uintptr_t context);

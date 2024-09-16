@@ -64,7 +64,7 @@ struct miqt_array* QTextBrowser_SearchPaths(const QTextBrowser* self) {
 	return _out;
 }
 
-void QTextBrowser_SetSearchPaths(QTextBrowser* self, struct miqt_array* /* of QString */ paths) {
+void QTextBrowser_SetSearchPaths(QTextBrowser* self, struct miqt_array* /* of struct miqt_string* */ paths) {
 	QList<QString> paths_QList;
 	paths_QList.reserve(paths->len);
 	miqt_string** paths_arr = static_cast<miqt_string**>(paths->data);

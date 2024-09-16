@@ -372,7 +372,7 @@ void QXmlStreamReader_AddExtraNamespaceDeclaration(QXmlStreamReader* self, QXmlS
 	self->addExtraNamespaceDeclaration(*extraNamespaceDeclaraction);
 }
 
-void QXmlStreamReader_AddExtraNamespaceDeclarations(QXmlStreamReader* self, struct miqt_array* /* of QXmlStreamNamespaceDeclaration */ extraNamespaceDeclaractions) {
+void QXmlStreamReader_AddExtraNamespaceDeclarations(QXmlStreamReader* self, struct miqt_array* /* of QXmlStreamNamespaceDeclaration* */ extraNamespaceDeclaractions) {
 	QVector<QXmlStreamNamespaceDeclaration> extraNamespaceDeclaractions_QList;
 	extraNamespaceDeclaractions_QList.reserve(extraNamespaceDeclaractions->len);
 	QXmlStreamNamespaceDeclaration** extraNamespaceDeclaractions_arr = static_cast<QXmlStreamNamespaceDeclaration**>(extraNamespaceDeclaractions->data);
