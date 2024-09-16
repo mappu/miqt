@@ -63,6 +63,7 @@ typedef struct QVariant QVariant;
 
 void QAbstractUndoItem_Undo(QAbstractUndoItem* self);
 void QAbstractUndoItem_Redo(QAbstractUndoItem* self);
+void QAbstractUndoItem_OperatorAssign(QAbstractUndoItem* self, QAbstractUndoItem* param1);
 void QAbstractUndoItem_Delete(QAbstractUndoItem* self);
 
 QTextDocument* QTextDocument_new();
@@ -172,6 +173,7 @@ void QTextDocument_DocumentLayoutChanged(QTextDocument* self);
 void QTextDocument_connect_DocumentLayoutChanged(QTextDocument* self, void* slot);
 void QTextDocument_Undo2(QTextDocument* self);
 void QTextDocument_Redo2(QTextDocument* self);
+void QTextDocument_AppendUndoItem(QTextDocument* self, QAbstractUndoItem* param1);
 void QTextDocument_SetModified(QTextDocument* self);
 struct miqt_string* QTextDocument_Tr2(const char* s, const char* c);
 struct miqt_string* QTextDocument_Tr3(const char* s, const char* c, int n);

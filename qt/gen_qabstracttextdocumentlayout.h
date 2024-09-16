@@ -73,6 +73,7 @@ QPaintDevice* QAbstractTextDocumentLayout_PaintDevice(const QAbstractTextDocumen
 QTextDocument* QAbstractTextDocumentLayout_Document(const QAbstractTextDocumentLayout* self);
 void QAbstractTextDocumentLayout_RegisterHandler(QAbstractTextDocumentLayout* self, int objectType, QObject* component);
 void QAbstractTextDocumentLayout_UnregisterHandler(QAbstractTextDocumentLayout* self, int objectType);
+QTextObjectInterface* QAbstractTextDocumentLayout_HandlerForObject(const QAbstractTextDocumentLayout* self, int objectType);
 void QAbstractTextDocumentLayout_Update(QAbstractTextDocumentLayout* self);
 void QAbstractTextDocumentLayout_connect_Update(QAbstractTextDocumentLayout* self, void* slot);
 void QAbstractTextDocumentLayout_UpdateBlock(QAbstractTextDocumentLayout* self, QTextBlock* block);
@@ -92,6 +93,7 @@ void QAbstractTextDocumentLayout_Delete(QAbstractTextDocumentLayout* self);
 
 QSizeF* QTextObjectInterface_IntrinsicSize(QTextObjectInterface* self, QTextDocument* doc, int posInDocument, QTextFormat* format);
 void QTextObjectInterface_DrawObject(QTextObjectInterface* self, QPainter* painter, QRectF* rect, QTextDocument* doc, int posInDocument, QTextFormat* format);
+void QTextObjectInterface_OperatorAssign(QTextObjectInterface* self, QTextObjectInterface* param1);
 void QTextObjectInterface_Delete(QTextObjectInterface* self);
 
 QAbstractTextDocumentLayout__Selection* QAbstractTextDocumentLayout__Selection_new(QAbstractTextDocumentLayout__Selection* param1);

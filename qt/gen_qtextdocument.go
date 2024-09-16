@@ -86,6 +86,10 @@ func (this *QAbstractUndoItem) Redo() {
 	C.QAbstractUndoItem_Redo(this.h)
 }
 
+func (this *QAbstractUndoItem) OperatorAssign(param1 *QAbstractUndoItem) {
+	C.QAbstractUndoItem_OperatorAssign(this.h, param1.cPointer())
+}
+
 // Delete this object from C++ memory.
 func (this *QAbstractUndoItem) Delete() {
 	C.QAbstractUndoItem_Delete(this.h)
@@ -820,6 +824,10 @@ func (this *QTextDocument) Undo2() {
 
 func (this *QTextDocument) Redo2() {
 	C.QTextDocument_Redo2(this.h)
+}
+
+func (this *QTextDocument) AppendUndoItem(param1 *QAbstractUndoItem) {
+	C.QTextDocument_AppendUndoItem(this.h, param1.cPointer())
 }
 
 func (this *QTextDocument) SetModified() {

@@ -114,6 +114,10 @@ void QAbstractTextDocumentLayout_UnregisterHandler(QAbstractTextDocumentLayout* 
 	self->unregisterHandler(static_cast<int>(objectType));
 }
 
+QTextObjectInterface* QAbstractTextDocumentLayout_HandlerForObject(const QAbstractTextDocumentLayout* self, int objectType) {
+	return self->handlerForObject(static_cast<int>(objectType));
+}
+
 void QAbstractTextDocumentLayout_Update(QAbstractTextDocumentLayout* self) {
 	self->update();
 }
@@ -218,6 +222,10 @@ QSizeF* QTextObjectInterface_IntrinsicSize(QTextObjectInterface* self, QTextDocu
 
 void QTextObjectInterface_DrawObject(QTextObjectInterface* self, QPainter* painter, QRectF* rect, QTextDocument* doc, int posInDocument, QTextFormat* format) {
 	self->drawObject(painter, *rect, doc, static_cast<int>(posInDocument), *format);
+}
+
+void QTextObjectInterface_OperatorAssign(QTextObjectInterface* self, QTextObjectInterface* param1) {
+	self->operator=(*param1);
 }
 
 void QTextObjectInterface_Delete(QTextObjectInterface* self) {

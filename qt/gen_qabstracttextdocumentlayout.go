@@ -145,6 +145,11 @@ func (this *QAbstractTextDocumentLayout) UnregisterHandler(objectType int) {
 	C.QAbstractTextDocumentLayout_UnregisterHandler(this.h, (C.int)(objectType))
 }
 
+func (this *QAbstractTextDocumentLayout) HandlerForObject(objectType int) *QTextObjectInterface {
+	_ret := C.QAbstractTextDocumentLayout_HandlerForObject(this.h, (C.int)(objectType))
+	return newQTextObjectInterface_U(unsafe.Pointer(_ret))
+}
+
 func (this *QAbstractTextDocumentLayout) Update() {
 	C.QAbstractTextDocumentLayout_Update(this.h)
 }
@@ -339,6 +344,10 @@ func (this *QTextObjectInterface) IntrinsicSize(doc *QTextDocument, posInDocumen
 
 func (this *QTextObjectInterface) DrawObject(painter *QPainter, rect *QRectF, doc *QTextDocument, posInDocument int, format *QTextFormat) {
 	C.QTextObjectInterface_DrawObject(this.h, painter.cPointer(), rect.cPointer(), doc.cPointer(), (C.int)(posInDocument), format.cPointer())
+}
+
+func (this *QTextObjectInterface) OperatorAssign(param1 *QTextObjectInterface) {
+	C.QTextObjectInterface_OperatorAssign(this.h, param1.cPointer())
 }
 
 // Delete this object from C++ memory.

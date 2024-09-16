@@ -36,6 +36,10 @@ void QAbstractUndoItem_Redo(QAbstractUndoItem* self) {
 	self->redo();
 }
 
+void QAbstractUndoItem_OperatorAssign(QAbstractUndoItem* self, QAbstractUndoItem* param1) {
+	self->operator=(*param1);
+}
+
 void QAbstractUndoItem_Delete(QAbstractUndoItem* self) {
 	delete self;
 }
@@ -582,6 +586,10 @@ void QTextDocument_Undo2(QTextDocument* self) {
 
 void QTextDocument_Redo2(QTextDocument* self) {
 	self->redo();
+}
+
+void QTextDocument_AppendUndoItem(QTextDocument* self, QAbstractUndoItem* param1) {
+	self->appendUndoItem(param1);
 }
 
 void QTextDocument_SetModified(QTextDocument* self) {
