@@ -58,45 +58,65 @@ QCborValue* QCborValue_new7(double v) {
 	return new QCborValue(static_cast<double>(v));
 }
 
-QCborValue* QCborValue_new8(QByteArray* ba) {
+QCborValue* QCborValue_new8(QCborSimpleType st) {
+	return new QCborValue(st);
+}
+
+QCborValue* QCborValue_new9(QByteArray* ba) {
 	return new QCborValue(*ba);
 }
 
-QCborValue* QCborValue_new9(struct miqt_string* s) {
+QCborValue* QCborValue_new10(struct miqt_string* s) {
 	QString s_QString = QString::fromUtf8(&s->data, s->len);
 	return new QCborValue(s_QString);
 }
 
-QCborValue* QCborValue_new10(const char* s) {
+QCborValue* QCborValue_new11(const char* s) {
 	return new QCborValue(s);
 }
 
-QCborValue* QCborValue_new11(QCborArray* a) {
+QCborValue* QCborValue_new12(QCborArray* a) {
 	return new QCborValue(*a);
 }
 
-QCborValue* QCborValue_new12(QCborMap* m) {
+QCborValue* QCborValue_new13(QCborMap* m) {
 	return new QCborValue(*m);
 }
 
-QCborValue* QCborValue_new13(QDateTime* dt) {
+QCborValue* QCborValue_new14(QCborTag tag) {
+	return new QCborValue(tag);
+}
+
+QCborValue* QCborValue_new15(QCborKnownTags t_) {
+	return new QCborValue(t_);
+}
+
+QCborValue* QCborValue_new16(QDateTime* dt) {
 	return new QCborValue(*dt);
 }
 
-QCborValue* QCborValue_new14(QUrl* url) {
+QCborValue* QCborValue_new17(QUrl* url) {
 	return new QCborValue(*url);
 }
 
-QCborValue* QCborValue_new15(QRegularExpression* rx) {
+QCborValue* QCborValue_new18(QRegularExpression* rx) {
 	return new QCborValue(*rx);
 }
 
-QCborValue* QCborValue_new16(QUuid* uuid) {
+QCborValue* QCborValue_new19(QUuid* uuid) {
 	return new QCborValue(*uuid);
 }
 
-QCborValue* QCborValue_new17(QCborValue* other) {
+QCborValue* QCborValue_new20(QCborValue* other) {
 	return new QCborValue(*other);
+}
+
+QCborValue* QCborValue_new21(QCborTag tag, QCborValue* taggedValue) {
+	return new QCborValue(tag, *taggedValue);
+}
+
+QCborValue* QCborValue_new22(QCborKnownTags t_, QCborValue* tv) {
+	return new QCborValue(t_, *tv);
 }
 
 void QCborValue_OperatorAssign(QCborValue* self, QCborValue* other) {
@@ -188,6 +208,14 @@ bool QCborValue_IsSimpleType(const QCborValue* self) {
 	return self->isSimpleType();
 }
 
+bool QCborValue_IsSimpleTypeWithSt(const QCborValue* self, QCborSimpleType st) {
+	return self->isSimpleType(st);
+}
+
+QCborSimpleType QCborValue_ToSimpleType(const QCborValue* self) {
+	return self->toSimpleType();
+}
+
 long long QCborValue_ToInteger(const QCborValue* self) {
 	return self->toInteger();
 }
@@ -198,6 +226,10 @@ bool QCborValue_ToBool(const QCborValue* self) {
 
 double QCborValue_ToDouble(const QCborValue* self) {
 	return self->toDouble();
+}
+
+QCborTag QCborValue_Tag(const QCborValue* self) {
+	return self->tag();
 }
 
 QCborValue* QCborValue_TaggedValue(const QCborValue* self) {
@@ -374,6 +406,10 @@ struct miqt_string* QCborValue_ToDiagnosticNotation(const QCborValue* self) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
+QCborSimpleType QCborValue_ToSimpleType1(const QCborValue* self, QCborSimpleType defaultValue) {
+	return self->toSimpleType(defaultValue);
+}
+
 long long QCborValue_ToInteger1(const QCborValue* self, long long defaultValue) {
 	return self->toInteger(static_cast<qint64>(defaultValue));
 }
@@ -384,6 +420,10 @@ bool QCborValue_ToBool1(const QCborValue* self, bool defaultValue) {
 
 double QCborValue_ToDouble1(const QCborValue* self, double defaultValue) {
 	return self->toDouble(static_cast<double>(defaultValue));
+}
+
+QCborTag QCborValue_Tag1(const QCborValue* self, QCborTag defaultValue) {
+	return self->tag(defaultValue);
 }
 
 QCborValue* QCborValue_TaggedValue1(const QCborValue* self, QCborValue* defaultValue) {
@@ -562,6 +602,14 @@ bool QCborValueRef_IsSimpleType(const QCborValueRef* self) {
 	return self->isSimpleType();
 }
 
+bool QCborValueRef_IsSimpleTypeWithSt(const QCborValueRef* self, QCborSimpleType st) {
+	return self->isSimpleType(st);
+}
+
+QCborTag QCborValueRef_Tag(const QCborValueRef* self) {
+	return self->tag();
+}
+
 QCborValue* QCborValueRef_TaggedValue(const QCborValueRef* self) {
 	QCborValue _ret = self->taggedValue();
 	// Copy-construct value returned type into heap-allocated copy
@@ -710,6 +758,10 @@ struct miqt_string* QCborValueRef_ToDiagnosticNotation(QCborValueRef* self) {
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
 	return miqt_strdup(_b.data(), _b.length());
+}
+
+QCborTag QCborValueRef_Tag1(const QCborValueRef* self, QCborTag defaultValue) {
+	return self->tag(defaultValue);
 }
 
 QCborValue* QCborValueRef_TaggedValue1(const QCborValueRef* self, QCborValue* defaultValue) {

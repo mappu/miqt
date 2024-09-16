@@ -13,7 +13,7 @@ import (
 	"unsafe"
 )
 
-type QCborStreamReader__Type int
+type QCborStreamReader__Type byte
 
 const (
 	QCborStreamReader__Type__UnsignedInteger QCborStreamReader__Type = 0
@@ -237,6 +237,11 @@ func (this *QCborStreamReader) IsInvalid() bool {
 	return (bool)(_ret)
 }
 
+func (this *QCborStreamReader) IsSimpleTypeWithSt(st QCborSimpleType) bool {
+	_ret := C.QCborStreamReader_IsSimpleTypeWithSt(this.h, st)
+	return (bool)(_ret)
+}
+
 func (this *QCborStreamReader) IsFalse() bool {
 	_ret := C.QCborStreamReader_IsFalse(this.h)
 	return (bool)(_ret)
@@ -297,9 +302,21 @@ func (this *QCborStreamReader) ToBool() bool {
 	return (bool)(_ret)
 }
 
+func (this *QCborStreamReader) ToTag() QCborTag {
+	return C.QCborStreamReader_ToTag(this.h)
+}
+
 func (this *QCborStreamReader) ToUnsignedInteger() uint64 {
 	_ret := C.QCborStreamReader_ToUnsignedInteger(this.h)
 	return (uint64)(_ret)
+}
+
+func (this *QCborStreamReader) ToNegativeInteger() QCborNegativeInteger {
+	return C.QCborStreamReader_ToNegativeInteger(this.h)
+}
+
+func (this *QCborStreamReader) ToSimpleType() QCborSimpleType {
+	return C.QCborStreamReader_ToSimpleType(this.h)
 }
 
 func (this *QCborStreamReader) ToFloat() float32 {

@@ -7,3 +7,5 @@ package qt
 
 */
 import "C"
+
+type QtPrivate__Deprecated_t int

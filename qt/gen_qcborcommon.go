@@ -13,7 +13,7 @@ import (
 	"unsafe"
 )
 
-type QCborSimpleType int
+type QCborSimpleType byte
 
 const (
 	QCborSimpleType__False     QCborSimpleType = 20
@@ -21,6 +21,8 @@ const (
 	QCborSimpleType__Null      QCborSimpleType = 22
 	QCborSimpleType__Undefined QCborSimpleType = 23
 )
+
+type QCborTag uint64
 
 type QCborKnownTags int
 
@@ -49,6 +51,8 @@ const (
 	QCborKnownTags__COSE_Sign         QCborKnownTags = 98
 	QCborKnownTags__Signature         QCborKnownTags = 55799
 )
+
+type QCborNegativeInteger uint64
 
 type QCborError__Code int
 

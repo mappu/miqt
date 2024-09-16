@@ -146,6 +146,10 @@ bool QCborStreamReader_IsInvalid(const QCborStreamReader* self) {
 	return self->isInvalid();
 }
 
+bool QCborStreamReader_IsSimpleTypeWithSt(const QCborStreamReader* self, QCborSimpleType st) {
+	return self->isSimpleType(st);
+}
+
 bool QCborStreamReader_IsFalse(const QCborStreamReader* self) {
 	return self->isFalse();
 }
@@ -194,8 +198,20 @@ bool QCborStreamReader_ToBool(const QCborStreamReader* self) {
 	return self->toBool();
 }
 
+QCborTag QCborStreamReader_ToTag(const QCborStreamReader* self) {
+	return self->toTag();
+}
+
 unsigned long long QCborStreamReader_ToUnsignedInteger(const QCborStreamReader* self) {
 	return self->toUnsignedInteger();
+}
+
+QCborNegativeInteger QCborStreamReader_ToNegativeInteger(const QCborStreamReader* self) {
+	return self->toNegativeInteger();
+}
+
+QCborSimpleType QCborStreamReader_ToSimpleType(const QCborStreamReader* self) {
+	return self->toSimpleType();
 }
 
 float QCborStreamReader_ToFloat(const QCborStreamReader* self) {

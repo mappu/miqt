@@ -20,7 +20,7 @@ const (
 	QDate__MonthNameType__StandaloneFormat QDate__MonthNameType = 1
 )
 
-type QDateTime__YearRange int
+type QDateTime__YearRange int32
 
 const (
 	QDateTime__YearRange__First QDateTime__YearRange = -292275056
