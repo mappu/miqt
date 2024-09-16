@@ -8,6 +8,23 @@ import (
 
 func (p CppParameter) RenderTypeCabi() string {
 
+	if p.ParameterType == "QString" {
+		return "struct miqt_string*"
+
+	} else if _, ok := p.QListOf(); ok {
+		return "struct miqt_array*"
+
+	} else if _, ok := p.QSetOf(); ok {
+		return "struct miqt_array*"
+
+	} else if (p.Pointer || p.ByRef) && p.QtClassType() {
+		return cabiClassName(p.ParameterType) + "*"
+
+	} else if p.QtClassType() && !p.Pointer {
+		// Even if C++ returns by value, CABI is returning a heap copy (new'd, not malloc'd)
+		return cabiClassName(p.ParameterType) + "*"
+	}
+
 	ret := p.ParameterType
 	switch p.ParameterType {
 	case "uchar":
@@ -72,25 +89,6 @@ func (p CppParameter) RenderTypeCabi() string {
 	}
 
 	return ret // ignore const
-}
-
-func emitReturnTypeCabi(p CppParameter) string {
-	if p.ParameterType == "QString" {
-		return "struct miqt_string*"
-
-	} else if _, ok := p.QListOf(); ok {
-		return "struct miqt_array*"
-
-	} else if (p.Pointer || p.ByRef) && p.QtClassType() {
-		return cabiClassName(p.ParameterType) + "*"
-
-	} else if p.QtClassType() && !p.Pointer {
-		// Even if C++ returns by value, CABI is returning a heap copy (new'd, not malloc'd)
-		return cabiClassName(p.ParameterType) + "*"
-
-	} else {
-		return p.RenderTypeCabi()
-	}
 }
 
 func (p CppParameter) RenderTypeQtCpp() string {
@@ -169,111 +167,110 @@ func emitParametersCabi(m CppMethod, selfType string) string {
 	return strings.Join(tmp, ", ")
 }
 
-func emitParametersCABI2CppForwarding(params []CppParameter) (preamble string, forwarding string) {
+func emitParametersCABI2CppForwarding(params []CppParameter, indent string) (preamble string, forwarding string) {
 	tmp := make([]string, 0, len(params)+1)
 
 	for _, p := range params {
-		if p.ParameterType == "QString" {
-			// The CABI has accepted two parameters - need to convert to one real QString
-			// Create it on the stack
-			preamble += "\tQString " + p.ParameterName + "_QString = QString::fromUtf8(&" + p.ParameterName + "->data, " + p.ParameterName + "->len);\n"
-			tmp = append(tmp, p.ParameterName+"_QString")
-
-		} else if listType, ok := p.QListOf(); ok {
-
-			if listType.ParameterType == "QString" {
-
-				// miqt_array<miqt_string*>
-
-				// Combo (3 parameters)
-				preamble += "\t" + p.ParameterType + " " + p.ParameterName + "_QList;\n"
-				preamble += "\t" + p.ParameterName + "_QList.reserve(" + p.ParameterName + "->len);\n"
-				preamble += "\tmiqt_string** " + p.ParameterName + "_arr = static_cast<miqt_string**>(" + p.ParameterName + "->data);\n"
-				preamble += "\tfor(size_t i = 0; i < " + p.ParameterName + "->len; ++i) {\n"
-				preamble += "\t\t" + p.ParameterName + "_QList.push_back(QString::fromUtf8(& " + p.ParameterName + "_arr[i]->data, " + p.ParameterName + "_arr[i]->len));\n"
-				preamble += "\t}\n"
-				tmp = append(tmp, p.ParameterName+"_QList")
-
-			} else {
-
-				// The CABI has accepted two parameters - need to convert to one real QList<>
-				// Create it on the stack
-				preamble += "\t" + p.ParameterType + " " + p.ParameterName + "_QList;\n"
-				preamble += "\t" + p.ParameterName + "_QList.reserve(" + p.ParameterName + "->len);\n"
-				if listType.QtClassType() && !listType.Pointer {
-					preamble += "\t" + listType.PointerTo().RenderTypeCabi() + "* " + p.ParameterName + "_arr = static_cast<" + listType.PointerTo().RenderTypeCabi() + "*>(" + p.ParameterName + "->data);\n"
-					preamble += "\tfor(size_t i = 0; i < " + p.ParameterName + "->len; ++i) {\n"
-					preamble += "\t\t" + p.ParameterName + "_QList.push_back(*(" + p.ParameterName + "_arr[i]));\n"
-				} else if listType.IsFlagType() {
-					preamble += "\t" + listType.RenderTypeCabi() + "* " + p.ParameterName + "_arr = static_cast<" + listType.RenderTypeCabi() + "*>(" + p.ParameterName + "->data);\n"
-					preamble += "\tfor(size_t i = 0; i < " + p.ParameterName + "->len; ++i) {\n"
-					preamble += "\t\t" + p.ParameterName + "_QList.push_back(static_cast<" + listType.RenderTypeQtCpp() + ">(" + p.ParameterName + "_arr[i]));\n"
-				} else {
-					preamble += "\t" + listType.RenderTypeCabi() + "* " + p.ParameterName + "_arr = static_cast<" + listType.RenderTypeCabi() + "*>(" + p.ParameterName + "->data);\n"
-					preamble += "\tfor(size_t i = 0; i < " + p.ParameterName + "->len; ++i) {\n"
-					preamble += "\t\t" + p.ParameterName + "_QList.push_back(" + p.ParameterName + "_arr[i]);\n"
-				}
-				preamble += "\t}\n"
-				tmp = append(tmp, p.ParameterName+"_QList")
-			}
-
-		} else if p.IntType() {
-			// Use the raw ParameterType to select an explicit integer overload
-			// Don't use RenderTypeCabi() since it canonicalizes some int types for CABI
-			castSrc := p.ParameterName
-			castType := p.RenderTypeQtCpp()
-
-			if p.ByRef { // e.g. QDataStream::operator>>() overloads
-				castSrc = "*" + castSrc
-			}
-
-			if p.ParameterType == "qint64" ||
-				p.ParameterType == "quint64" ||
-				p.ParameterType == "qlonglong" ||
-				p.ParameterType == "qulonglong" ||
-				p.ParameterType == "qint8" {
-				// QDataStream::operator>>() by reference (qint64)
-				// QLockFile::getLockInfo() by pointer
-				// QTextStream::operator>>() by reference (qlonglong + qulonglong)
-				// QDataStream::operator>>() qint8
-				// CABI has these as int64_t* (long int) which fails a static_cast to qint64& (long long int&)
-				// Hack a hard C-style cast
-				tmp = append(tmp, "("+castType+")("+castSrc+")")
-			} else {
-				// Use static_cast<> safely
-				tmp = append(tmp, "static_cast<"+castType+">("+castSrc+")")
-			}
-
-		} else if p.ByRef {
-			if p.Pointer {
-				// By ref and by pointer
-				// This happens for QDataStream &QDataStream::operator>>(char *&s)
-				// We are only using one level of indirection
-				tmp = append(tmp, p.ParameterName)
-			} else {
-				// By ref and not by pointer
-				// We changed RenderTypeCabi() to render this as a pointer
-				// Need to dereference so we can pass as reference to the actual Qt C++ function
-				//tmp = append(tmp, "*"+p.ParameterName)
-				tmp = append(tmp, "*"+p.ParameterName)
-			}
-
-		} else if p.QtClassType() && !p.Pointer {
-			// CABI takes all Qt types by pointer, even if C++ wants them by value
-			// Dereference the passed-in pointer
-			tmp = append(tmp, "*"+p.ParameterName)
-
-			// } else if p.QtClassType() && p.Pointer {
-			// We need this static_cast<> anyway to convert from PQt (void*) to
-			// the real Qt type
-			// tmp = append(tmp, "static_cast<"+p.ParameterType+"*>("+p.ParameterName+")")
-
-		} else {
-			tmp = append(tmp, p.ParameterName)
-		}
+		addPre, addFwd := emitCABI2CppForwarding(p, indent)
+		preamble += addPre
+		tmp = append(tmp, addFwd)
 	}
 
 	return preamble, strings.Join(tmp, ", ")
+}
+
+func emitCABI2CppForwarding(p CppParameter, indent string) (preamble string, forwarding string) {
+
+	if p.ParameterType == "QString" {
+		// The CABI has accepted two parameters - need to convert to one real QString
+		// Create it on the stack
+		preamble += indent + "QString " + p.ParameterName + "_QString = QString::fromUtf8(&" + p.ParameterName + "->data, " + p.ParameterName + "->len);\n"
+		return preamble, p.ParameterName + "_QString"
+
+	} else if listType, ok := p.QListOf(); ok {
+
+		if listType.ParameterType == "QString" {
+
+			// miqt_array<miqt_string*>
+
+			// Combo (3 parameters)
+			preamble += indent + p.ParameterType + " " + p.ParameterName + "_QList;\n"
+			preamble += indent + p.ParameterName + "_QList.reserve(" + p.ParameterName + "->len);\n"
+			preamble += indent + "miqt_string** " + p.ParameterName + "_arr = static_cast<miqt_string**>(" + p.ParameterName + "->data);\n"
+			preamble += indent + "for(size_t i = 0; i < " + p.ParameterName + "->len; ++i) {\n"
+			preamble += indent + "\t" + p.ParameterName + "_QList.push_back(QString::fromUtf8(& " + p.ParameterName + "_arr[i]->data, " + p.ParameterName + "_arr[i]->len));\n"
+			preamble += indent + "}\n"
+			return preamble, p.ParameterName + "_QList"
+
+		} else {
+
+			// The CABI has accepted two parameters - need to convert to one real QList<>
+			// Create it on the stack
+			preamble += indent + p.ParameterType + " " + p.ParameterName + "_QList;\n"
+			preamble += indent + p.ParameterName + "_QList.reserve(" + p.ParameterName + "->len);\n"
+			preamble += indent + listType.RenderTypeCabi() + "* " + p.ParameterName + "_arr = static_cast<" + listType.RenderTypeCabi() + "*>(" + p.ParameterName + "->data);\n"
+			preamble += indent + "for(size_t i = 0; i < " + p.ParameterName + "->len; ++i) {\n"
+			if listType.QtClassType() && !listType.Pointer {
+				preamble += indent + "\t" + p.ParameterName + "_QList.push_back(*(" + p.ParameterName + "_arr[i]));\n"
+			} else if listType.IsFlagType() {
+				preamble += indent + "\t" + p.ParameterName + "_QList.push_back(static_cast<" + listType.RenderTypeQtCpp() + ">(" + p.ParameterName + "_arr[i]));\n"
+			} else {
+				preamble += indent + "\t" + p.ParameterName + "_QList.push_back(" + p.ParameterName + "_arr[i]);\n"
+			}
+			preamble += indent + "}\n"
+			return preamble, p.ParameterName + "_QList"
+		}
+
+	} else if p.IntType() {
+		// Use the raw ParameterType to select an explicit integer overload
+		// Don't use RenderTypeCabi() since it canonicalizes some int types for CABI
+		castSrc := p.ParameterName
+		castType := p.RenderTypeQtCpp()
+
+		if p.ByRef { // e.g. QDataStream::operator>>() overloads
+			castSrc = "*" + castSrc
+		}
+
+		if p.ParameterType == "qint64" ||
+			p.ParameterType == "quint64" ||
+			p.ParameterType == "qlonglong" ||
+			p.ParameterType == "qulonglong" ||
+			p.ParameterType == "qint8" {
+			// QDataStream::operator>>() by reference (qint64)
+			// QLockFile::getLockInfo() by pointer
+			// QTextStream::operator>>() by reference (qlonglong + qulonglong)
+			// QDataStream::operator>>() qint8
+			// CABI has these as int64_t* (long int) which fails a static_cast to qint64& (long long int&)
+			// Hack a hard C-style cast
+			return preamble, "(" + castType + ")(" + castSrc + ")"
+		} else {
+			// Use static_cast<> safely
+			return preamble, "static_cast<" + castType + ">(" + castSrc + ")"
+		}
+
+	} else if p.ByRef {
+		if p.Pointer {
+			// By ref and by pointer
+			// This happens for QDataStream &QDataStream::operator>>(char *&s)
+			// We are only using one level of indirection
+			return preamble, p.ParameterName
+		} else {
+			// By ref and not by pointer
+			// We changed RenderTypeCabi() to render this as a pointer
+			// Need to dereference so we can pass as reference to the actual Qt C++ function
+			//tmp = append(tmp, "*"+p.ParameterName)
+			return preamble, "*" + p.ParameterName
+		}
+
+	} else if p.QtClassType() && !p.Pointer {
+		// CABI takes all Qt types by pointer, even if C++ wants them by value
+		// Dereference the passed-in pointer
+		return preamble, "*" + p.ParameterName
+
+	} else {
+		return preamble, p.ParameterName
+	}
+
 }
 
 // emitAssignCppToCabi transforms and assigns rvalue to the assignExpression.
@@ -364,7 +361,7 @@ func emitAssignCppToCabi(assignExpression string, p CppParameter, rvalue string)
 			shouldReturn = p.RenderTypeQtCpp() + " " + namePrefix + "_ret = "
 
 			afterCall += indent + "// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers\n"
-			afterCall += indent + "" + t.RenderTypeCabi() + "** " + namePrefix + "_arr = static_cast<" + t.RenderTypeCabi() + "**>(malloc(sizeof(" + t.RenderTypeCabi() + "**) * " + namePrefix + "_ret.length()));\n"
+			afterCall += indent + "" + t.RenderTypeCabi() + "* " + namePrefix + "_arr = static_cast<" + t.RenderTypeCabi() + "*>(malloc(sizeof(" + t.RenderTypeCabi() + "*) * " + namePrefix + "_ret.length()));\n"
 			afterCall += indent + "for (size_t i = 0, e = " + namePrefix + "_ret.length(); i < e; ++i) {\n"
 			afterCall += indent + "\t" + namePrefix + "_arr[i] = new " + t.ParameterType + "(" + namePrefix + "_ret[i]);\n"
 			afterCall += indent + "}\n"
@@ -398,7 +395,7 @@ func emitAssignCppToCabi(assignExpression string, p CppParameter, rvalue string)
 		afterCall += indent + "" + assignExpression + "static_cast<" + p.ParameterType + "*>(new " + p.ParameterType + "(" + namePrefix + "_ret));\n"
 
 	} else if p.Const {
-		shouldReturn += "(" + emitReturnTypeCabi(p) + ") "
+		shouldReturn += "(" + p.RenderTypeCabi() + ") "
 
 	} else if p.IsFlagType() {
 		// Needs an explicit int cast
@@ -563,10 +560,10 @@ extern "C" {
 		}
 
 		for _, m := range c.Methods {
-			ret.WriteString(fmt.Sprintf("%s %s_%s(%s);\n", emitReturnTypeCabi(m.ReturnType), cClassName, m.SafeMethodName(), emitParametersCabi(m, ifv(m.IsConst, "const ", "")+cClassName+"*")))
+			ret.WriteString(fmt.Sprintf("%s %s_%s(%s);\n", m.ReturnType.RenderTypeCabi(), cClassName, m.SafeMethodName(), emitParametersCabi(m, ifv(m.IsConst, "const ", "")+cClassName+"*")))
 
 			if m.IsSignal {
-				ret.WriteString(fmt.Sprintf("%s %s_connect_%s(%s* self, void* slot);\n", emitReturnTypeCabi(m.ReturnType), cClassName, m.SafeMethodName(), cClassName))
+				ret.WriteString(fmt.Sprintf("%s %s_connect_%s(%s* self, void* slot);\n", m.ReturnType.RenderTypeCabi(), cClassName, m.SafeMethodName(), cClassName))
 			}
 		}
 
@@ -621,7 +618,7 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 
 		for i, ctor := range c.Ctors {
 
-			preamble, forwarding := emitParametersCABI2CppForwarding(ctor.Parameters)
+			preamble, forwarding := emitParametersCABI2CppForwarding(ctor.Parameters, "\t")
 
 			if ctor.LinuxOnly {
 
@@ -659,7 +656,7 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 		for _, m := range c.Methods {
 			// Need to take an extra 'self' parameter
 
-			preamble, forwarding := emitParametersCABI2CppForwarding(m.Parameters)
+			preamble, forwarding := emitParametersCABI2CppForwarding(m.Parameters, "\t")
 
 			// callTarget is an rvalue representing the full C++ function call.
 			callTarget := "self->"
@@ -681,10 +678,10 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 						"#endif\n"+
 						"}\n"+
 						"\n",
-					emitReturnTypeCabi(m.ReturnType), cClassName, m.SafeMethodName(), emitParametersCabi(m, ifv(m.IsConst, "const ", "")+cClassName+"*"),
+					m.ReturnType.RenderTypeCabi(), cClassName, m.SafeMethodName(), emitParametersCabi(m, ifv(m.IsConst, "const ", "")+cClassName+"*"),
 					preamble,
 					emitAssignCppToCabi("\treturn ", m.ReturnType, callTarget),
-					emitReturnTypeCabi(m.ReturnType),
+					m.ReturnType.RenderTypeCabi(),
 				))
 
 			} else {
@@ -695,7 +692,7 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 						"%s"+
 						"}\n"+
 						"\n",
-					emitReturnTypeCabi(m.ReturnType), cClassName, m.SafeMethodName(), emitParametersCabi(m, ifv(m.IsConst, "const ", "")+cClassName+"*"),
+					m.ReturnType.RenderTypeCabi(), cClassName, m.SafeMethodName(), emitParametersCabi(m, ifv(m.IsConst, "const ", "")+cClassName+"*"),
 					preamble,
 					emitAssignCppToCabi("\treturn ", m.ReturnType, callTarget),
 				))
@@ -716,9 +713,9 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 				var signalCode string
 
 				for i, p := range m.Parameters {
-					signalCode += emitAssignCppToCabi(fmt.Sprintf("\t\t%s sigval%d = ", emitReturnTypeCabi(p), i+1), p, p.ParameterName)
+					signalCode += emitAssignCppToCabi(fmt.Sprintf("\t\t%s sigval%d = ", p.RenderTypeCabi(), i+1), p, p.ParameterName)
 					paramArgs = append(paramArgs, fmt.Sprintf("sigval%d", i+1))
-					paramArgDefs = append(paramArgDefs, emitReturnTypeCabi(p)+" "+p.ParameterName)
+					paramArgDefs = append(paramArgDefs, p.RenderTypeCabi()+" "+p.ParameterName)
 				}
 
 				signalCode += "\t\t" + bindingFunc + "(" + strings.Join(paramArgs, `, `) + ");\n"
