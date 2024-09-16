@@ -169,10 +169,6 @@ func CheckComplexity(p CppParameter, isReturnType bool) error {
 		"QGenericMatrix", "QMatrix3x3", // extends a template type
 		"QLatin1String", "QStringView", // e.g. QColor constructors and QColor::SetNamedColor() overloads. These are usually optional alternatives to QString
 		"QStringRef",                      // e.g. QLocale::toLongLong and similar overloads. As above
-		"QGradientStop", "QGradientStops", // QPair<>-related types, but we can't see through the typedef to block based on QPair alone
-		"void **",                         // e.g. qobjectdefs.h QMetaObject->Activate()
-		"QGraphicsItem **",                // e.g. QGraphicsItem::IsBlockedByModalPanel() overload
-		"char *&",                         // e.g. QDataStream.operator<<()
 		"qfloat16",                        // e.g. QDataStream - there is no such half-float type in C or Go
 		"char16_t",                        // e.g. QChar() constructor overload, just unnecessary
 		"char32_t",                        // e.g. QDebug().operator<< overload, unnecessary
@@ -182,19 +178,11 @@ func CheckComplexity(p CppParameter, isReturnType bool) error {
 		"QStringView::value_type",         // e.g. qstringview.h
 		"FILE",                            // e.g. qfile.h constructors
 		"qInternalCallback",               // e.g. qnamespace.h
-		"picture_io_handler",              // e.g. QPictureIO::DefineIOHandler callback function
-		"QPlatformNativeInterface",        // e.g. QGuiApplication::platformNativeInterface(). Private type, could probably expose as uintptr. n.b. Changes in Qt6
-		"QFunctionPointer",                // e.g. QGuiApplication_PlatformFunction
 		"QGraphicsEffectSource",           // e.g. used by qgraphicseffect.h, but the definition is in ????
-		"QAbstractUndoItem",               // e.g. Defined in qtextdocument.h
-		"QTextObjectInterface",            // e.g. qabstracttextdocumentlayout.h
-		"QUrl::FormattingOptions",         // e.g. QUrl.h. Typedef for a complex template type
 		"QXmlStreamEntityDeclarations",    // e.g. qxmlstream.h. The class definition was blacklisted for ???? reason so don't allow it as a parameter either
 		"QXmlStreamNamespaceDeclarations", // e.g. qxmlstream.h. As above
 		"QXmlStreamNotationDeclarations",  // e.g. qxmlstream.h. As above
 		"QXmlStreamAttributes",            // e.g. qxmlstream.h
-		"QVariantMap",                     // e.g. qcbormap.h
-		"QVariantHash",                    // e.g. qcbormap.h
 		"QtMsgType",                       // e.g. qdebug.h TODO Defined in qlogging.h, but omitted because it's predefined in qglobal.h, and our clangexec is too agressive
 		"QTextStreamFunction",             // e.g. qdebug.h
 		"QFactoryInterface",               // qfactoryinterface.h
@@ -203,6 +191,7 @@ func CheckComplexity(p CppParameter, isReturnType bool) error {
 		"QException",                      // used by qfutureinterface.h, also blocked in AllowClass above
 		"QTextEngine",                     // used by qtextlayout.h, also blocked in ImportHeaderForClass above
 		"QVulkanInstance",                 // e.g. qwindow.h. Not tackling vulkan yet
+		"QPlatformNativeInterface",        // e.g. QGuiApplication::platformNativeInterface(). Private type, could probably expose as uintptr. n.b. Changes in Qt6
 		"QPlatformBackingStore",           // e.g. qbackingstore.h, as below
 		"QPlatformMenuBar",                // e.g. qfutureinterface.h, as below
 		"QPlatformOffscreenSurface",       // e.g. qoffscreensurface.h, as below
