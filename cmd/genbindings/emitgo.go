@@ -400,19 +400,26 @@ import "C"
 	}
 
 	for _, e := range src.Enums {
+		if e.EnumName == "" {
+			continue // Removed by transformRedundant AST pass
+		}
+
 		goEnumName := cabiClassName(e.EnumName)
 
 		ret.WriteString(`
 		type ` + goEnumName + ` ` + parseSingleTypeString(e.UnderlyingType).RenderTypeGo() + `
-		
-		const (
 		`)
 
-		for _, ee := range e.Entries {
-			ret.WriteString(cabiClassName(goEnumName+"::"+ee.EntryName) + " " + goEnumName + " = " + ee.EntryValue + "\n")
-		}
+		if len(e.Entries) > 0 {
 
-		ret.WriteString("\n)\n\n")
+			ret.WriteString("const (\n")
+
+			for _, ee := range e.Entries {
+				ret.WriteString(cabiClassName(goEnumName+"::"+ee.EntryName) + " " + goEnumName + " = " + ee.EntryValue + "\n")
+			}
+
+			ret.WriteString("\n)\n\n")
+		}
 	}
 
 	for _, c := range src.Classes {

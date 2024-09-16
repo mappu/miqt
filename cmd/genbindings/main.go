@@ -84,6 +84,9 @@ func main() {
 	}
 
 	var processHeaders []*CppParsedHeader
+	atr := astTransformRedundant{
+		preserve: make(map[string]*CppEnum),
+	}
 
 	for _, inputHeader := range includeFiles {
 
@@ -149,6 +152,7 @@ func main() {
 		astTransformChildClasses(parsed) // must be first
 		astTransformOptional(parsed)
 		astTransformOverloads(parsed)
+		atr.Process(parsed)
 
 		// Update global state tracker (AFTER astTransformChildClasses)
 		// Currently, this is only used for inner classes

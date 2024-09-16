@@ -94,9 +94,12 @@ func parseHeader(topLevel []interface{}, addNamePrefix string) (*CppParsedHeader
 			if err != nil {
 				panic(fmt.Errorf("processEnum: %w", err)) // A real problem
 			}
-			if len(en.Entries) > 0 { // e.g. qmetatype's version of QCborSimpleType (the real one is in qcborcommon)
-				ret.Enums = append(ret.Enums, en)
-			}
+
+			// n.b. In some cases we may produce multiple "copies" of an enum
+			// (e.g. qcborcommon and qmetatype both define QCborSimpleType)
+			// Allow, but use a transform pass to avoid multiple definitions of
+			// it
+			ret.Enums = append(ret.Enums, en)
 
 		case "VarDecl":
 			// TODO e.g. qmath.h

@@ -195,10 +195,6 @@ func CheckComplexity(p CppParameter, isReturnType bool) error {
 		"QXmlStreamAttributes",            // e.g. qxmlstream.h
 		"QVariantMap",                     // e.g. qcbormap.h
 		"QVariantHash",                    // e.g. qcbormap.h
-		"QCborTag",                        // e.g. qcborstreamreader.h.TODO Needs support for enums
-		"QCborSimpleType",                 // e.g. qcborstreamreader.h TODO Needs support for enums
-		"QCborKnownTags",                  // e.g. qcborstreamreader.h TODO Needs support for enums
-		"QCborNegativeInteger",            // e.g. qcborstreamreader.h TODO Needs support for enums
 		"QtMsgType",                       // e.g. qdebug.h TODO Needs support for enums
 		"QTextStreamFunction",             // e.g. qdebug.h
 		"QFactoryInterface",               // qfactoryinterface.h
