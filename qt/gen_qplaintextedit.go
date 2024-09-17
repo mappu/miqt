@@ -73,8 +73,7 @@ func NewQPlainTextEdit4(text string, parent *QWidget) *QPlainTextEdit {
 }
 
 func (this *QPlainTextEdit) MetaObject() *QMetaObject {
-	_ret := C.QPlainTextEdit_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QPlainTextEdit_MetaObject(this.h)))
 }
 
 func QPlainTextEdit_Tr(s string) string {
@@ -100,8 +99,7 @@ func (this *QPlainTextEdit) SetDocument(document *QTextDocument) {
 }
 
 func (this *QPlainTextEdit) Document() *QTextDocument {
-	_ret := C.QPlainTextEdit_Document(this.h)
-	return newQTextDocument_U(unsafe.Pointer(_ret))
+	return newQTextDocument_U(unsafe.Pointer(C.QPlainTextEdit_Document(this.h)))
 }
 
 func (this *QPlainTextEdit) SetPlaceholderText(placeholderText string) {
@@ -129,8 +127,7 @@ func (this *QPlainTextEdit) TextCursor() *QTextCursor {
 }
 
 func (this *QPlainTextEdit) IsReadOnly() bool {
-	_ret := C.QPlainTextEdit_IsReadOnly(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QPlainTextEdit_IsReadOnly(this.h))
 }
 
 func (this *QPlainTextEdit) SetReadOnly(ro bool) {
@@ -142,8 +139,7 @@ func (this *QPlainTextEdit) SetTextInteractionFlags(flags int) {
 }
 
 func (this *QPlainTextEdit) TextInteractionFlags() int {
-	_ret := C.QPlainTextEdit_TextInteractionFlags(this.h)
-	return (int)(_ret)
+	return (int)(C.QPlainTextEdit_TextInteractionFlags(this.h))
 }
 
 func (this *QPlainTextEdit) MergeCurrentCharFormat(modifier *QTextCharFormat) {
@@ -162,8 +158,7 @@ func (this *QPlainTextEdit) CurrentCharFormat() *QTextCharFormat {
 }
 
 func (this *QPlainTextEdit) TabChangesFocus() bool {
-	_ret := C.QPlainTextEdit_TabChangesFocus(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QPlainTextEdit_TabChangesFocus(this.h))
 }
 
 func (this *QPlainTextEdit) SetTabChangesFocus(b bool) {
@@ -184,8 +179,7 @@ func (this *QPlainTextEdit) DocumentTitle() string {
 }
 
 func (this *QPlainTextEdit) IsUndoRedoEnabled() bool {
-	_ret := C.QPlainTextEdit_IsUndoRedoEnabled(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QPlainTextEdit_IsUndoRedoEnabled(this.h))
 }
 
 func (this *QPlainTextEdit) SetUndoRedoEnabled(enable bool) {
@@ -197,13 +191,11 @@ func (this *QPlainTextEdit) SetMaximumBlockCount(maximum int) {
 }
 
 func (this *QPlainTextEdit) MaximumBlockCount() int {
-	_ret := C.QPlainTextEdit_MaximumBlockCount(this.h)
-	return (int)(_ret)
+	return (int)(C.QPlainTextEdit_MaximumBlockCount(this.h))
 }
 
 func (this *QPlainTextEdit) LineWrapMode() QPlainTextEdit__LineWrapMode {
-	_ret := C.QPlainTextEdit_LineWrapMode(this.h)
-	return (QPlainTextEdit__LineWrapMode)(_ret)
+	return (QPlainTextEdit__LineWrapMode)(C.QPlainTextEdit_LineWrapMode(this.h))
 }
 
 func (this *QPlainTextEdit) SetLineWrapMode(mode QPlainTextEdit__LineWrapMode) {
@@ -211,8 +203,7 @@ func (this *QPlainTextEdit) SetLineWrapMode(mode QPlainTextEdit__LineWrapMode) {
 }
 
 func (this *QPlainTextEdit) WordWrapMode() QTextOption__WrapMode {
-	_ret := C.QPlainTextEdit_WordWrapMode(this.h)
-	return (QTextOption__WrapMode)(_ret)
+	return (QTextOption__WrapMode)(C.QPlainTextEdit_WordWrapMode(this.h))
 }
 
 func (this *QPlainTextEdit) SetWordWrapMode(policy QTextOption__WrapMode) {
@@ -224,8 +215,7 @@ func (this *QPlainTextEdit) SetBackgroundVisible(visible bool) {
 }
 
 func (this *QPlainTextEdit) BackgroundVisible() bool {
-	_ret := C.QPlainTextEdit_BackgroundVisible(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QPlainTextEdit_BackgroundVisible(this.h))
 }
 
 func (this *QPlainTextEdit) SetCenterOnScroll(enabled bool) {
@@ -233,25 +223,21 @@ func (this *QPlainTextEdit) SetCenterOnScroll(enabled bool) {
 }
 
 func (this *QPlainTextEdit) CenterOnScroll() bool {
-	_ret := C.QPlainTextEdit_CenterOnScroll(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QPlainTextEdit_CenterOnScroll(this.h))
 }
 
 func (this *QPlainTextEdit) Find(exp string) bool {
 	exp_ms := miqt_strdupg(exp)
 	defer C.free(exp_ms)
-	_ret := C.QPlainTextEdit_Find(this.h, (*C.struct_miqt_string)(exp_ms))
-	return (bool)(_ret)
+	return (bool)(C.QPlainTextEdit_Find(this.h, (*C.struct_miqt_string)(exp_ms)))
 }
 
 func (this *QPlainTextEdit) FindWithExp(exp *QRegExp) bool {
-	_ret := C.QPlainTextEdit_FindWithExp(this.h, exp.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QPlainTextEdit_FindWithExp(this.h, exp.cPointer()))
 }
 
 func (this *QPlainTextEdit) Find2(exp *QRegularExpression) bool {
-	_ret := C.QPlainTextEdit_Find2(this.h, exp.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QPlainTextEdit_Find2(this.h, exp.cPointer()))
 }
 
 func (this *QPlainTextEdit) ToPlainText() string {
@@ -273,13 +259,11 @@ func (this *QPlainTextEdit) LoadResource(typeVal int, name *QUrl) *QVariant {
 }
 
 func (this *QPlainTextEdit) CreateStandardContextMenu() *QMenu {
-	_ret := C.QPlainTextEdit_CreateStandardContextMenu(this.h)
-	return newQMenu_U(unsafe.Pointer(_ret))
+	return newQMenu_U(unsafe.Pointer(C.QPlainTextEdit_CreateStandardContextMenu(this.h)))
 }
 
 func (this *QPlainTextEdit) CreateStandardContextMenuWithPosition(position *QPoint) *QMenu {
-	_ret := C.QPlainTextEdit_CreateStandardContextMenuWithPosition(this.h, position.cPointer())
-	return newQMenu_U(unsafe.Pointer(_ret))
+	return newQMenu_U(unsafe.Pointer(C.QPlainTextEdit_CreateStandardContextMenuWithPosition(this.h, position.cPointer())))
 }
 
 func (this *QPlainTextEdit) CursorForPosition(pos *QPoint) *QTextCursor {
@@ -311,8 +295,7 @@ func (this *QPlainTextEdit) AnchorAt(pos *QPoint) string {
 }
 
 func (this *QPlainTextEdit) OverwriteMode() bool {
-	_ret := C.QPlainTextEdit_OverwriteMode(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QPlainTextEdit_OverwriteMode(this.h))
 }
 
 func (this *QPlainTextEdit) SetOverwriteMode(overwrite bool) {
@@ -320,8 +303,7 @@ func (this *QPlainTextEdit) SetOverwriteMode(overwrite bool) {
 }
 
 func (this *QPlainTextEdit) TabStopWidth() int {
-	_ret := C.QPlainTextEdit_TabStopWidth(this.h)
-	return (int)(_ret)
+	return (int)(C.QPlainTextEdit_TabStopWidth(this.h))
 }
 
 func (this *QPlainTextEdit) SetTabStopWidth(width int) {
@@ -329,8 +311,7 @@ func (this *QPlainTextEdit) SetTabStopWidth(width int) {
 }
 
 func (this *QPlainTextEdit) TabStopDistance() float64 {
-	_ret := C.QPlainTextEdit_TabStopDistance(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QPlainTextEdit_TabStopDistance(this.h))
 }
 
 func (this *QPlainTextEdit) SetTabStopDistance(distance float64) {
@@ -338,8 +319,7 @@ func (this *QPlainTextEdit) SetTabStopDistance(distance float64) {
 }
 
 func (this *QPlainTextEdit) CursorWidth() int {
-	_ret := C.QPlainTextEdit_CursorWidth(this.h)
-	return (int)(_ret)
+	return (int)(C.QPlainTextEdit_CursorWidth(this.h))
 }
 
 func (this *QPlainTextEdit) SetCursorWidth(width int) {
@@ -361,9 +341,12 @@ func (this *QPlainTextEdit) SetExtraSelections(selections []QTextEdit__ExtraSele
 func (this *QPlainTextEdit) ExtraSelections() []QTextEdit__ExtraSelection {
 	var _ma *C.struct_miqt_array = C.QPlainTextEdit_ExtraSelections(this.h)
 	_ret := make([]QTextEdit__ExtraSelection, int(_ma.len))
-	_outCast := (*[0xffff]*C.QTextEdit__ExtraSelection)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QTextEdit__ExtraSelection)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = *newQTextEdit__ExtraSelection(_outCast[i])
+		_lv_ret := _outCast[i]
+		_lv_goptr := newQTextEdit__ExtraSelection(_lv_ret)
+		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+		_ret[i] = *_lv_goptr
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -374,8 +357,7 @@ func (this *QPlainTextEdit) MoveCursor(operation QTextCursor__MoveOperation) {
 }
 
 func (this *QPlainTextEdit) CanPaste() bool {
-	_ret := C.QPlainTextEdit_CanPaste(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QPlainTextEdit_CanPaste(this.h))
 }
 
 func (this *QPlainTextEdit) Print(printer *QPagedPaintDevice) {
@@ -383,8 +365,7 @@ func (this *QPlainTextEdit) Print(printer *QPagedPaintDevice) {
 }
 
 func (this *QPlainTextEdit) BlockCount() int {
-	_ret := C.QPlainTextEdit_BlockCount(this.h)
-	return (int)(_ret)
+	return (int)(C.QPlainTextEdit_BlockCount(this.h))
 }
 
 func (this *QPlainTextEdit) InputMethodQuery(property InputMethodQuery) *QVariant {
@@ -497,8 +478,7 @@ func miqt_exec_callback_QPlainTextEdit_UndoAvailable(cb *C.void, b C.bool) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	b_ret := b
-	slotval1 := (bool)(b_ret)
+	slotval1 := (bool)(b)
 
 	gofunc(slotval1)
 }
@@ -518,8 +498,7 @@ func miqt_exec_callback_QPlainTextEdit_RedoAvailable(cb *C.void, b C.bool) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	b_ret := b
-	slotval1 := (bool)(b_ret)
+	slotval1 := (bool)(b)
 
 	gofunc(slotval1)
 }
@@ -539,8 +518,7 @@ func miqt_exec_callback_QPlainTextEdit_CopyAvailable(cb *C.void, b C.bool) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	b_ret := b
-	slotval1 := (bool)(b_ret)
+	slotval1 := (bool)(b)
 
 	gofunc(slotval1)
 }
@@ -594,10 +572,8 @@ func miqt_exec_callback_QPlainTextEdit_UpdateRequest(cb *C.void, rect *C.QRect, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	rect_ret := rect
-	slotval1 := newQRect_U(unsafe.Pointer(rect_ret))
-	dy_ret := dy
-	slotval2 := (int)(dy_ret)
+	slotval1 := newQRect_U(unsafe.Pointer(rect))
+	slotval2 := (int)(dy)
 
 	gofunc(slotval1, slotval2)
 }
@@ -617,8 +593,7 @@ func miqt_exec_callback_QPlainTextEdit_BlockCountChanged(cb *C.void, newBlockCou
 	}
 
 	// Convert all CABI parameters to Go parameters
-	newBlockCount_ret := newBlockCount
-	slotval1 := (int)(newBlockCount_ret)
+	slotval1 := (int)(newBlockCount)
 
 	gofunc(slotval1)
 }
@@ -638,8 +613,7 @@ func miqt_exec_callback_QPlainTextEdit_ModificationChanged(cb *C.void, param1 C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	param1_ret := param1
-	slotval1 := (bool)(param1_ret)
+	slotval1 := (bool)(param1)
 
 	gofunc(slotval1)
 }
@@ -691,18 +665,15 @@ func QPlainTextEdit_TrUtf83(s string, c string, n int) string {
 func (this *QPlainTextEdit) Find22(exp string, options int) bool {
 	exp_ms := miqt_strdupg(exp)
 	defer C.free(exp_ms)
-	_ret := C.QPlainTextEdit_Find22(this.h, (*C.struct_miqt_string)(exp_ms), (C.int)(options))
-	return (bool)(_ret)
+	return (bool)(C.QPlainTextEdit_Find22(this.h, (*C.struct_miqt_string)(exp_ms), (C.int)(options)))
 }
 
 func (this *QPlainTextEdit) Find23(exp *QRegExp, options int) bool {
-	_ret := C.QPlainTextEdit_Find23(this.h, exp.cPointer(), (C.int)(options))
-	return (bool)(_ret)
+	return (bool)(C.QPlainTextEdit_Find23(this.h, exp.cPointer(), (C.int)(options)))
 }
 
 func (this *QPlainTextEdit) Find24(exp *QRegularExpression, options int) bool {
-	_ret := C.QPlainTextEdit_Find24(this.h, exp.cPointer(), (C.int)(options))
-	return (bool)(_ret)
+	return (bool)(C.QPlainTextEdit_Find24(this.h, exp.cPointer(), (C.int)(options)))
 }
 
 func (this *QPlainTextEdit) MoveCursor2(operation QTextCursor__MoveOperation, mode QTextCursor__MoveMode) {
@@ -761,8 +732,7 @@ func NewQPlainTextDocumentLayout(document *QTextDocument) *QPlainTextDocumentLay
 }
 
 func (this *QPlainTextDocumentLayout) MetaObject() *QMetaObject {
-	_ret := C.QPlainTextDocumentLayout_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QPlainTextDocumentLayout_MetaObject(this.h)))
 }
 
 func QPlainTextDocumentLayout_Tr(s string) string {
@@ -788,13 +758,11 @@ func (this *QPlainTextDocumentLayout) Draw(param1 *QPainter, param2 *QAbstractTe
 }
 
 func (this *QPlainTextDocumentLayout) HitTest(param1 *QPointF, param2 HitTestAccuracy) int {
-	_ret := C.QPlainTextDocumentLayout_HitTest(this.h, param1.cPointer(), (C.uintptr_t)(param2))
-	return (int)(_ret)
+	return (int)(C.QPlainTextDocumentLayout_HitTest(this.h, param1.cPointer(), (C.uintptr_t)(param2)))
 }
 
 func (this *QPlainTextDocumentLayout) PageCount() int {
-	_ret := C.QPlainTextDocumentLayout_PageCount(this.h)
-	return (int)(_ret)
+	return (int)(C.QPlainTextDocumentLayout_PageCount(this.h))
 }
 
 func (this *QPlainTextDocumentLayout) DocumentSize() *QSizeF {
@@ -827,8 +795,7 @@ func (this *QPlainTextDocumentLayout) SetCursorWidth(width int) {
 }
 
 func (this *QPlainTextDocumentLayout) CursorWidth() int {
-	_ret := C.QPlainTextDocumentLayout_CursorWidth(this.h)
-	return (int)(_ret)
+	return (int)(C.QPlainTextDocumentLayout_CursorWidth(this.h))
 }
 
 func (this *QPlainTextDocumentLayout) RequestUpdate() {

@@ -70,8 +70,7 @@ func (this *QGraphicsLayoutItem) SetMinimumWidth(width float64) {
 }
 
 func (this *QGraphicsLayoutItem) MinimumWidth() float64 {
-	_ret := C.QGraphicsLayoutItem_MinimumWidth(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QGraphicsLayoutItem_MinimumWidth(this.h))
 }
 
 func (this *QGraphicsLayoutItem) SetMinimumHeight(height float64) {
@@ -79,8 +78,7 @@ func (this *QGraphicsLayoutItem) SetMinimumHeight(height float64) {
 }
 
 func (this *QGraphicsLayoutItem) MinimumHeight() float64 {
-	_ret := C.QGraphicsLayoutItem_MinimumHeight(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QGraphicsLayoutItem_MinimumHeight(this.h))
 }
 
 func (this *QGraphicsLayoutItem) SetPreferredSize(size *QSizeF) {
@@ -103,8 +101,7 @@ func (this *QGraphicsLayoutItem) SetPreferredWidth(width float64) {
 }
 
 func (this *QGraphicsLayoutItem) PreferredWidth() float64 {
-	_ret := C.QGraphicsLayoutItem_PreferredWidth(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QGraphicsLayoutItem_PreferredWidth(this.h))
 }
 
 func (this *QGraphicsLayoutItem) SetPreferredHeight(height float64) {
@@ -112,8 +109,7 @@ func (this *QGraphicsLayoutItem) SetPreferredHeight(height float64) {
 }
 
 func (this *QGraphicsLayoutItem) PreferredHeight() float64 {
-	_ret := C.QGraphicsLayoutItem_PreferredHeight(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QGraphicsLayoutItem_PreferredHeight(this.h))
 }
 
 func (this *QGraphicsLayoutItem) SetMaximumSize(size *QSizeF) {
@@ -136,8 +132,7 @@ func (this *QGraphicsLayoutItem) SetMaximumWidth(width float64) {
 }
 
 func (this *QGraphicsLayoutItem) MaximumWidth() float64 {
-	_ret := C.QGraphicsLayoutItem_MaximumWidth(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QGraphicsLayoutItem_MaximumWidth(this.h))
 }
 
 func (this *QGraphicsLayoutItem) SetMaximumHeight(height float64) {
@@ -145,8 +140,7 @@ func (this *QGraphicsLayoutItem) SetMaximumHeight(height float64) {
 }
 
 func (this *QGraphicsLayoutItem) MaximumHeight() float64 {
-	_ret := C.QGraphicsLayoutItem_MaximumHeight(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QGraphicsLayoutItem_MaximumHeight(this.h))
 }
 
 func (this *QGraphicsLayoutItem) SetGeometry(rect *QRectF) {
@@ -183,8 +177,7 @@ func (this *QGraphicsLayoutItem) UpdateGeometry() {
 }
 
 func (this *QGraphicsLayoutItem) ParentLayoutItem() *QGraphicsLayoutItem {
-	_ret := C.QGraphicsLayoutItem_ParentLayoutItem(this.h)
-	return newQGraphicsLayoutItem_U(unsafe.Pointer(_ret))
+	return newQGraphicsLayoutItem_U(unsafe.Pointer(C.QGraphicsLayoutItem_ParentLayoutItem(this.h)))
 }
 
 func (this *QGraphicsLayoutItem) SetParentLayoutItem(parent *QGraphicsLayoutItem) {
@@ -192,18 +185,15 @@ func (this *QGraphicsLayoutItem) SetParentLayoutItem(parent *QGraphicsLayoutItem
 }
 
 func (this *QGraphicsLayoutItem) IsLayout() bool {
-	_ret := C.QGraphicsLayoutItem_IsLayout(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QGraphicsLayoutItem_IsLayout(this.h))
 }
 
 func (this *QGraphicsLayoutItem) GraphicsItem() *QGraphicsItem {
-	_ret := C.QGraphicsLayoutItem_GraphicsItem(this.h)
-	return newQGraphicsItem_U(unsafe.Pointer(_ret))
+	return newQGraphicsItem_U(unsafe.Pointer(C.QGraphicsLayoutItem_GraphicsItem(this.h)))
 }
 
 func (this *QGraphicsLayoutItem) OwnedByLayout() bool {
-	_ret := C.QGraphicsLayoutItem_OwnedByLayout(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QGraphicsLayoutItem_OwnedByLayout(this.h))
 }
 
 func (this *QGraphicsLayoutItem) SetSizePolicy3(hPolicy QSizePolicy__Policy, vPolicy QSizePolicy__Policy, controlType QSizePolicy__ControlType) {

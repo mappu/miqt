@@ -60,8 +60,7 @@ func newQAbstractAnimation_U(h unsafe.Pointer) *QAbstractAnimation {
 }
 
 func (this *QAbstractAnimation) MetaObject() *QMetaObject {
-	_ret := C.QAbstractAnimation_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QAbstractAnimation_MetaObject(this.h)))
 }
 
 func QAbstractAnimation_Tr(s string) string {
@@ -83,18 +82,15 @@ func QAbstractAnimation_TrUtf8(s string) string {
 }
 
 func (this *QAbstractAnimation) State() QAbstractAnimation__State {
-	_ret := C.QAbstractAnimation_State(this.h)
-	return (QAbstractAnimation__State)(_ret)
+	return (QAbstractAnimation__State)(C.QAbstractAnimation_State(this.h))
 }
 
 func (this *QAbstractAnimation) Group() *QAnimationGroup {
-	_ret := C.QAbstractAnimation_Group(this.h)
-	return newQAnimationGroup_U(unsafe.Pointer(_ret))
+	return newQAnimationGroup_U(unsafe.Pointer(C.QAbstractAnimation_Group(this.h)))
 }
 
 func (this *QAbstractAnimation) Direction() QAbstractAnimation__Direction {
-	_ret := C.QAbstractAnimation_Direction(this.h)
-	return (QAbstractAnimation__Direction)(_ret)
+	return (QAbstractAnimation__Direction)(C.QAbstractAnimation_Direction(this.h))
 }
 
 func (this *QAbstractAnimation) SetDirection(direction QAbstractAnimation__Direction) {
@@ -102,18 +98,15 @@ func (this *QAbstractAnimation) SetDirection(direction QAbstractAnimation__Direc
 }
 
 func (this *QAbstractAnimation) CurrentTime() int {
-	_ret := C.QAbstractAnimation_CurrentTime(this.h)
-	return (int)(_ret)
+	return (int)(C.QAbstractAnimation_CurrentTime(this.h))
 }
 
 func (this *QAbstractAnimation) CurrentLoopTime() int {
-	_ret := C.QAbstractAnimation_CurrentLoopTime(this.h)
-	return (int)(_ret)
+	return (int)(C.QAbstractAnimation_CurrentLoopTime(this.h))
 }
 
 func (this *QAbstractAnimation) LoopCount() int {
-	_ret := C.QAbstractAnimation_LoopCount(this.h)
-	return (int)(_ret)
+	return (int)(C.QAbstractAnimation_LoopCount(this.h))
 }
 
 func (this *QAbstractAnimation) SetLoopCount(loopCount int) {
@@ -121,18 +114,15 @@ func (this *QAbstractAnimation) SetLoopCount(loopCount int) {
 }
 
 func (this *QAbstractAnimation) CurrentLoop() int {
-	_ret := C.QAbstractAnimation_CurrentLoop(this.h)
-	return (int)(_ret)
+	return (int)(C.QAbstractAnimation_CurrentLoop(this.h))
 }
 
 func (this *QAbstractAnimation) Duration() int {
-	_ret := C.QAbstractAnimation_Duration(this.h)
-	return (int)(_ret)
+	return (int)(C.QAbstractAnimation_Duration(this.h))
 }
 
 func (this *QAbstractAnimation) TotalDuration() int {
-	_ret := C.QAbstractAnimation_TotalDuration(this.h)
-	return (int)(_ret)
+	return (int)(C.QAbstractAnimation_TotalDuration(this.h))
 }
 
 func (this *QAbstractAnimation) Finished() {
@@ -167,11 +157,9 @@ func miqt_exec_callback_QAbstractAnimation_StateChanged(cb *C.void, newState C.u
 	}
 
 	// Convert all CABI parameters to Go parameters
-	newState_ret := newState
-	slotval1 := (QAbstractAnimation__State)(newState_ret)
+	slotval1 := (QAbstractAnimation__State)(newState)
 
-	oldState_ret := oldState
-	slotval2 := (QAbstractAnimation__State)(oldState_ret)
+	slotval2 := (QAbstractAnimation__State)(oldState)
 
 	gofunc(slotval1, slotval2)
 }
@@ -191,8 +179,7 @@ func miqt_exec_callback_QAbstractAnimation_CurrentLoopChanged(cb *C.void, curren
 	}
 
 	// Convert all CABI parameters to Go parameters
-	currentLoop_ret := currentLoop
-	slotval1 := (int)(currentLoop_ret)
+	slotval1 := (int)(currentLoop)
 
 	gofunc(slotval1)
 }
@@ -212,8 +199,7 @@ func miqt_exec_callback_QAbstractAnimation_DirectionChanged(cb *C.void, param1 C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	param1_ret := param1
-	slotval1 := (QAbstractAnimation__Direction)(param1_ret)
+	slotval1 := (QAbstractAnimation__Direction)(param1)
 
 	gofunc(slotval1)
 }
@@ -340,8 +326,7 @@ func NewQAnimationDriver2(parent *QObject) *QAnimationDriver {
 }
 
 func (this *QAnimationDriver) MetaObject() *QMetaObject {
-	_ret := C.QAnimationDriver_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QAnimationDriver_MetaObject(this.h)))
 }
 
 func QAnimationDriver_Tr(s string) string {
@@ -375,13 +360,11 @@ func (this *QAnimationDriver) Uninstall() {
 }
 
 func (this *QAnimationDriver) IsRunning() bool {
-	_ret := C.QAnimationDriver_IsRunning(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QAnimationDriver_IsRunning(this.h))
 }
 
 func (this *QAnimationDriver) Elapsed() int64 {
-	_ret := C.QAnimationDriver_Elapsed(this.h)
-	return (int64)(_ret)
+	return (int64)(C.QAnimationDriver_Elapsed(this.h))
 }
 
 func (this *QAnimationDriver) SetStartTime(startTime int64) {
@@ -389,8 +372,7 @@ func (this *QAnimationDriver) SetStartTime(startTime int64) {
 }
 
 func (this *QAnimationDriver) StartTime() int64 {
-	_ret := C.QAnimationDriver_StartTime(this.h)
-	return (int64)(_ret)
+	return (int64)(C.QAnimationDriver_StartTime(this.h))
 }
 
 func (this *QAnimationDriver) Started() {

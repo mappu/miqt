@@ -46,8 +46,7 @@ func newQClipboard_U(h unsafe.Pointer) *QClipboard {
 }
 
 func (this *QClipboard) MetaObject() *QMetaObject {
-	_ret := C.QClipboard_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QClipboard_MetaObject(this.h)))
 }
 
 func QClipboard_Tr(s string) string {
@@ -73,28 +72,23 @@ func (this *QClipboard) Clear() {
 }
 
 func (this *QClipboard) SupportsSelection() bool {
-	_ret := C.QClipboard_SupportsSelection(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QClipboard_SupportsSelection(this.h))
 }
 
 func (this *QClipboard) SupportsFindBuffer() bool {
-	_ret := C.QClipboard_SupportsFindBuffer(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QClipboard_SupportsFindBuffer(this.h))
 }
 
 func (this *QClipboard) OwnsSelection() bool {
-	_ret := C.QClipboard_OwnsSelection(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QClipboard_OwnsSelection(this.h))
 }
 
 func (this *QClipboard) OwnsClipboard() bool {
-	_ret := C.QClipboard_OwnsClipboard(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QClipboard_OwnsClipboard(this.h))
 }
 
 func (this *QClipboard) OwnsFindBuffer() bool {
-	_ret := C.QClipboard_OwnsFindBuffer(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QClipboard_OwnsFindBuffer(this.h))
 }
 
 func (this *QClipboard) Text() string {
@@ -120,8 +114,7 @@ func (this *QClipboard) SetText(param1 string) {
 }
 
 func (this *QClipboard) MimeData() *QMimeData {
-	_ret := C.QClipboard_MimeData(this.h)
-	return newQMimeData_U(unsafe.Pointer(_ret))
+	return newQMimeData_U(unsafe.Pointer(C.QClipboard_MimeData(this.h)))
 }
 
 func (this *QClipboard) SetMimeData(data *QMimeData) {
@@ -165,8 +158,7 @@ func miqt_exec_callback_QClipboard_Changed(cb *C.void, mode C.uintptr_t) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	mode_ret := mode
-	slotval1 := (QClipboard__Mode)(mode_ret)
+	slotval1 := (QClipboard__Mode)(mode)
 
 	gofunc(slotval1)
 }
@@ -293,8 +285,7 @@ func (this *QClipboard) SetText2(param1 string, mode QClipboard__Mode) {
 }
 
 func (this *QClipboard) MimeData1(mode QClipboard__Mode) *QMimeData {
-	_ret := C.QClipboard_MimeData1(this.h, (C.uintptr_t)(mode))
-	return newQMimeData_U(unsafe.Pointer(_ret))
+	return newQMimeData_U(unsafe.Pointer(C.QClipboard_MimeData1(this.h, (C.uintptr_t)(mode))))
 }
 
 func (this *QClipboard) SetMimeData2(data *QMimeData, mode QClipboard__Mode) {

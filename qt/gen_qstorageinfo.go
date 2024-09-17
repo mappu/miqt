@@ -118,43 +118,35 @@ func (this *QStorageInfo) DisplayName() string {
 }
 
 func (this *QStorageInfo) BytesTotal() int64 {
-	_ret := C.QStorageInfo_BytesTotal(this.h)
-	return (int64)(_ret)
+	return (int64)(C.QStorageInfo_BytesTotal(this.h))
 }
 
 func (this *QStorageInfo) BytesFree() int64 {
-	_ret := C.QStorageInfo_BytesFree(this.h)
-	return (int64)(_ret)
+	return (int64)(C.QStorageInfo_BytesFree(this.h))
 }
 
 func (this *QStorageInfo) BytesAvailable() int64 {
-	_ret := C.QStorageInfo_BytesAvailable(this.h)
-	return (int64)(_ret)
+	return (int64)(C.QStorageInfo_BytesAvailable(this.h))
 }
 
 func (this *QStorageInfo) BlockSize() int {
-	_ret := C.QStorageInfo_BlockSize(this.h)
-	return (int)(_ret)
+	return (int)(C.QStorageInfo_BlockSize(this.h))
 }
 
 func (this *QStorageInfo) IsRoot() bool {
-	_ret := C.QStorageInfo_IsRoot(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QStorageInfo_IsRoot(this.h))
 }
 
 func (this *QStorageInfo) IsReadOnly() bool {
-	_ret := C.QStorageInfo_IsReadOnly(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QStorageInfo_IsReadOnly(this.h))
 }
 
 func (this *QStorageInfo) IsReady() bool {
-	_ret := C.QStorageInfo_IsReady(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QStorageInfo_IsReady(this.h))
 }
 
 func (this *QStorageInfo) IsValid() bool {
-	_ret := C.QStorageInfo_IsValid(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QStorageInfo_IsValid(this.h))
 }
 
 func (this *QStorageInfo) Refresh() {
@@ -164,9 +156,12 @@ func (this *QStorageInfo) Refresh() {
 func QStorageInfo_MountedVolumes() []QStorageInfo {
 	var _ma *C.struct_miqt_array = C.QStorageInfo_MountedVolumes()
 	_ret := make([]QStorageInfo, int(_ma.len))
-	_outCast := (*[0xffff]*C.QStorageInfo)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QStorageInfo)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = *newQStorageInfo(_outCast[i])
+		_lv_ret := _outCast[i]
+		_lv_goptr := newQStorageInfo(_lv_ret)
+		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+		_ret[i] = *_lv_goptr
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret

@@ -127,8 +127,7 @@ func (this *QPalette) Swap(other *QPalette) {
 }
 
 func (this *QPalette) CurrentColorGroup() QPalette__ColorGroup {
-	_ret := C.QPalette_CurrentColorGroup(this.h)
-	return (QPalette__ColorGroup)(_ret)
+	return (QPalette__ColorGroup)(C.QPalette_CurrentColorGroup(this.h))
 }
 
 func (this *QPalette) SetCurrentColorGroup(cg QPalette__ColorGroup) {
@@ -136,13 +135,11 @@ func (this *QPalette) SetCurrentColorGroup(cg QPalette__ColorGroup) {
 }
 
 func (this *QPalette) Color(cg QPalette__ColorGroup, cr QPalette__ColorRole) *QColor {
-	_ret := C.QPalette_Color(this.h, (C.uintptr_t)(cg), (C.uintptr_t)(cr))
-	return newQColor_U(unsafe.Pointer(_ret))
+	return newQColor_U(unsafe.Pointer(C.QPalette_Color(this.h, (C.uintptr_t)(cg), (C.uintptr_t)(cr))))
 }
 
 func (this *QPalette) Brush(cg QPalette__ColorGroup, cr QPalette__ColorRole) *QBrush {
-	_ret := C.QPalette_Brush(this.h, (C.uintptr_t)(cg), (C.uintptr_t)(cr))
-	return newQBrush_U(unsafe.Pointer(_ret))
+	return newQBrush_U(unsafe.Pointer(C.QPalette_Brush(this.h, (C.uintptr_t)(cg), (C.uintptr_t)(cr))))
 }
 
 func (this *QPalette) SetColor(cg QPalette__ColorGroup, cr QPalette__ColorRole, color *QColor) {
@@ -158,8 +155,7 @@ func (this *QPalette) SetBrush(cr QPalette__ColorRole, brush *QBrush) {
 }
 
 func (this *QPalette) IsBrushSet(cg QPalette__ColorGroup, cr QPalette__ColorRole) bool {
-	_ret := C.QPalette_IsBrushSet(this.h, (C.uintptr_t)(cg), (C.uintptr_t)(cr))
-	return (bool)(_ret)
+	return (bool)(C.QPalette_IsBrushSet(this.h, (C.uintptr_t)(cg), (C.uintptr_t)(cr)))
 }
 
 func (this *QPalette) SetBrush2(cg QPalette__ColorGroup, cr QPalette__ColorRole, brush *QBrush) {
@@ -171,148 +167,119 @@ func (this *QPalette) SetColorGroup(cr QPalette__ColorGroup, windowText *QBrush,
 }
 
 func (this *QPalette) IsEqual(cr1 QPalette__ColorGroup, cr2 QPalette__ColorGroup) bool {
-	_ret := C.QPalette_IsEqual(this.h, (C.uintptr_t)(cr1), (C.uintptr_t)(cr2))
-	return (bool)(_ret)
+	return (bool)(C.QPalette_IsEqual(this.h, (C.uintptr_t)(cr1), (C.uintptr_t)(cr2)))
 }
 
 func (this *QPalette) ColorWithCr(cr QPalette__ColorRole) *QColor {
-	_ret := C.QPalette_ColorWithCr(this.h, (C.uintptr_t)(cr))
-	return newQColor_U(unsafe.Pointer(_ret))
+	return newQColor_U(unsafe.Pointer(C.QPalette_ColorWithCr(this.h, (C.uintptr_t)(cr))))
 }
 
 func (this *QPalette) BrushWithCr(cr QPalette__ColorRole) *QBrush {
-	_ret := C.QPalette_BrushWithCr(this.h, (C.uintptr_t)(cr))
-	return newQBrush_U(unsafe.Pointer(_ret))
+	return newQBrush_U(unsafe.Pointer(C.QPalette_BrushWithCr(this.h, (C.uintptr_t)(cr))))
 }
 
 func (this *QPalette) WindowText() *QBrush {
-	_ret := C.QPalette_WindowText(this.h)
-	return newQBrush_U(unsafe.Pointer(_ret))
+	return newQBrush_U(unsafe.Pointer(C.QPalette_WindowText(this.h)))
 }
 
 func (this *QPalette) Button() *QBrush {
-	_ret := C.QPalette_Button(this.h)
-	return newQBrush_U(unsafe.Pointer(_ret))
+	return newQBrush_U(unsafe.Pointer(C.QPalette_Button(this.h)))
 }
 
 func (this *QPalette) Light() *QBrush {
-	_ret := C.QPalette_Light(this.h)
-	return newQBrush_U(unsafe.Pointer(_ret))
+	return newQBrush_U(unsafe.Pointer(C.QPalette_Light(this.h)))
 }
 
 func (this *QPalette) Dark() *QBrush {
-	_ret := C.QPalette_Dark(this.h)
-	return newQBrush_U(unsafe.Pointer(_ret))
+	return newQBrush_U(unsafe.Pointer(C.QPalette_Dark(this.h)))
 }
 
 func (this *QPalette) Mid() *QBrush {
-	_ret := C.QPalette_Mid(this.h)
-	return newQBrush_U(unsafe.Pointer(_ret))
+	return newQBrush_U(unsafe.Pointer(C.QPalette_Mid(this.h)))
 }
 
 func (this *QPalette) Text() *QBrush {
-	_ret := C.QPalette_Text(this.h)
-	return newQBrush_U(unsafe.Pointer(_ret))
+	return newQBrush_U(unsafe.Pointer(C.QPalette_Text(this.h)))
 }
 
 func (this *QPalette) Base() *QBrush {
-	_ret := C.QPalette_Base(this.h)
-	return newQBrush_U(unsafe.Pointer(_ret))
+	return newQBrush_U(unsafe.Pointer(C.QPalette_Base(this.h)))
 }
 
 func (this *QPalette) AlternateBase() *QBrush {
-	_ret := C.QPalette_AlternateBase(this.h)
-	return newQBrush_U(unsafe.Pointer(_ret))
+	return newQBrush_U(unsafe.Pointer(C.QPalette_AlternateBase(this.h)))
 }
 
 func (this *QPalette) ToolTipBase() *QBrush {
-	_ret := C.QPalette_ToolTipBase(this.h)
-	return newQBrush_U(unsafe.Pointer(_ret))
+	return newQBrush_U(unsafe.Pointer(C.QPalette_ToolTipBase(this.h)))
 }
 
 func (this *QPalette) ToolTipText() *QBrush {
-	_ret := C.QPalette_ToolTipText(this.h)
-	return newQBrush_U(unsafe.Pointer(_ret))
+	return newQBrush_U(unsafe.Pointer(C.QPalette_ToolTipText(this.h)))
 }
 
 func (this *QPalette) Window() *QBrush {
-	_ret := C.QPalette_Window(this.h)
-	return newQBrush_U(unsafe.Pointer(_ret))
+	return newQBrush_U(unsafe.Pointer(C.QPalette_Window(this.h)))
 }
 
 func (this *QPalette) Midlight() *QBrush {
-	_ret := C.QPalette_Midlight(this.h)
-	return newQBrush_U(unsafe.Pointer(_ret))
+	return newQBrush_U(unsafe.Pointer(C.QPalette_Midlight(this.h)))
 }
 
 func (this *QPalette) BrightText() *QBrush {
-	_ret := C.QPalette_BrightText(this.h)
-	return newQBrush_U(unsafe.Pointer(_ret))
+	return newQBrush_U(unsafe.Pointer(C.QPalette_BrightText(this.h)))
 }
 
 func (this *QPalette) ButtonText() *QBrush {
-	_ret := C.QPalette_ButtonText(this.h)
-	return newQBrush_U(unsafe.Pointer(_ret))
+	return newQBrush_U(unsafe.Pointer(C.QPalette_ButtonText(this.h)))
 }
 
 func (this *QPalette) Shadow() *QBrush {
-	_ret := C.QPalette_Shadow(this.h)
-	return newQBrush_U(unsafe.Pointer(_ret))
+	return newQBrush_U(unsafe.Pointer(C.QPalette_Shadow(this.h)))
 }
 
 func (this *QPalette) Highlight() *QBrush {
-	_ret := C.QPalette_Highlight(this.h)
-	return newQBrush_U(unsafe.Pointer(_ret))
+	return newQBrush_U(unsafe.Pointer(C.QPalette_Highlight(this.h)))
 }
 
 func (this *QPalette) HighlightedText() *QBrush {
-	_ret := C.QPalette_HighlightedText(this.h)
-	return newQBrush_U(unsafe.Pointer(_ret))
+	return newQBrush_U(unsafe.Pointer(C.QPalette_HighlightedText(this.h)))
 }
 
 func (this *QPalette) Link() *QBrush {
-	_ret := C.QPalette_Link(this.h)
-	return newQBrush_U(unsafe.Pointer(_ret))
+	return newQBrush_U(unsafe.Pointer(C.QPalette_Link(this.h)))
 }
 
 func (this *QPalette) LinkVisited() *QBrush {
-	_ret := C.QPalette_LinkVisited(this.h)
-	return newQBrush_U(unsafe.Pointer(_ret))
+	return newQBrush_U(unsafe.Pointer(C.QPalette_LinkVisited(this.h)))
 }
 
 func (this *QPalette) PlaceholderText() *QBrush {
-	_ret := C.QPalette_PlaceholderText(this.h)
-	return newQBrush_U(unsafe.Pointer(_ret))
+	return newQBrush_U(unsafe.Pointer(C.QPalette_PlaceholderText(this.h)))
 }
 
 func (this *QPalette) Foreground() *QBrush {
-	_ret := C.QPalette_Foreground(this.h)
-	return newQBrush_U(unsafe.Pointer(_ret))
+	return newQBrush_U(unsafe.Pointer(C.QPalette_Foreground(this.h)))
 }
 
 func (this *QPalette) Background() *QBrush {
-	_ret := C.QPalette_Background(this.h)
-	return newQBrush_U(unsafe.Pointer(_ret))
+	return newQBrush_U(unsafe.Pointer(C.QPalette_Background(this.h)))
 }
 
 func (this *QPalette) OperatorEqual(p *QPalette) bool {
-	_ret := C.QPalette_OperatorEqual(this.h, p.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QPalette_OperatorEqual(this.h, p.cPointer()))
 }
 
 func (this *QPalette) OperatorNotEqual(p *QPalette) bool {
-	_ret := C.QPalette_OperatorNotEqual(this.h, p.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QPalette_OperatorNotEqual(this.h, p.cPointer()))
 }
 
 func (this *QPalette) IsCopyOf(p *QPalette) bool {
-	_ret := C.QPalette_IsCopyOf(this.h, p.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QPalette_IsCopyOf(this.h, p.cPointer()))
 }
 
 func (this *QPalette) CacheKey() int64 {
-	_ret := C.QPalette_CacheKey(this.h)
-	return (int64)(_ret)
+	return (int64)(C.QPalette_CacheKey(this.h))
 }
 
 func (this *QPalette) Resolve(param1 *QPalette) *QPalette {
@@ -323,8 +290,7 @@ func (this *QPalette) Resolve(param1 *QPalette) *QPalette {
 }
 
 func (this *QPalette) Resolve2() uint {
-	_ret := C.QPalette_Resolve2(this.h)
-	return (uint)(_ret)
+	return (uint)(C.QPalette_Resolve2(this.h))
 }
 
 func (this *QPalette) ResolveWithMask(mask uint) {

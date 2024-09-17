@@ -36,8 +36,7 @@ func newQDesktopServices_U(h unsafe.Pointer) *QDesktopServices {
 }
 
 func QDesktopServices_OpenUrl(url *QUrl) bool {
-	_ret := C.QDesktopServices_OpenUrl(url.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QDesktopServices_OpenUrl(url.cPointer()))
 }
 
 func QDesktopServices_SetUrlHandler(scheme string, receiver *QObject, method string) {

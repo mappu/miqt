@@ -49,8 +49,7 @@ func NewQFinalState2(parent *QState) *QFinalState {
 }
 
 func (this *QFinalState) MetaObject() *QMetaObject {
-	_ret := C.QFinalState_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QFinalState_MetaObject(this.h)))
 }
 
 func QFinalState_Tr(s string) string {

@@ -52,13 +52,11 @@ func NewQElapsedTimer() *QElapsedTimer {
 }
 
 func QElapsedTimer_ClockType() QElapsedTimer__ClockType {
-	_ret := C.QElapsedTimer_ClockType()
-	return (QElapsedTimer__ClockType)(_ret)
+	return (QElapsedTimer__ClockType)(C.QElapsedTimer_ClockType())
 }
 
 func QElapsedTimer_IsMonotonic() bool {
-	_ret := C.QElapsedTimer_IsMonotonic()
-	return (bool)(_ret)
+	return (bool)(C.QElapsedTimer_IsMonotonic())
 }
 
 func (this *QElapsedTimer) Start() {
@@ -66,8 +64,7 @@ func (this *QElapsedTimer) Start() {
 }
 
 func (this *QElapsedTimer) Restart() int64 {
-	_ret := C.QElapsedTimer_Restart(this.h)
-	return (int64)(_ret)
+	return (int64)(C.QElapsedTimer_Restart(this.h))
 }
 
 func (this *QElapsedTimer) Invalidate() {
@@ -75,48 +72,39 @@ func (this *QElapsedTimer) Invalidate() {
 }
 
 func (this *QElapsedTimer) IsValid() bool {
-	_ret := C.QElapsedTimer_IsValid(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QElapsedTimer_IsValid(this.h))
 }
 
 func (this *QElapsedTimer) NsecsElapsed() int64 {
-	_ret := C.QElapsedTimer_NsecsElapsed(this.h)
-	return (int64)(_ret)
+	return (int64)(C.QElapsedTimer_NsecsElapsed(this.h))
 }
 
 func (this *QElapsedTimer) Elapsed() int64 {
-	_ret := C.QElapsedTimer_Elapsed(this.h)
-	return (int64)(_ret)
+	return (int64)(C.QElapsedTimer_Elapsed(this.h))
 }
 
 func (this *QElapsedTimer) HasExpired(timeout int64) bool {
-	_ret := C.QElapsedTimer_HasExpired(this.h, (C.longlong)(timeout))
-	return (bool)(_ret)
+	return (bool)(C.QElapsedTimer_HasExpired(this.h, (C.longlong)(timeout)))
 }
 
 func (this *QElapsedTimer) MsecsSinceReference() int64 {
-	_ret := C.QElapsedTimer_MsecsSinceReference(this.h)
-	return (int64)(_ret)
+	return (int64)(C.QElapsedTimer_MsecsSinceReference(this.h))
 }
 
 func (this *QElapsedTimer) MsecsTo(other *QElapsedTimer) int64 {
-	_ret := C.QElapsedTimer_MsecsTo(this.h, other.cPointer())
-	return (int64)(_ret)
+	return (int64)(C.QElapsedTimer_MsecsTo(this.h, other.cPointer()))
 }
 
 func (this *QElapsedTimer) SecsTo(other *QElapsedTimer) int64 {
-	_ret := C.QElapsedTimer_SecsTo(this.h, other.cPointer())
-	return (int64)(_ret)
+	return (int64)(C.QElapsedTimer_SecsTo(this.h, other.cPointer()))
 }
 
 func (this *QElapsedTimer) OperatorEqual(other *QElapsedTimer) bool {
-	_ret := C.QElapsedTimer_OperatorEqual(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QElapsedTimer_OperatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QElapsedTimer) OperatorNotEqual(other *QElapsedTimer) bool {
-	_ret := C.QElapsedTimer_OperatorNotEqual(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QElapsedTimer_OperatorNotEqual(this.h, other.cPointer()))
 }
 
 // Delete this object from C++ memory.

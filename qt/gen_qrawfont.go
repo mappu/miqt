@@ -99,18 +99,15 @@ func (this *QRawFont) Swap(other *QRawFont) {
 }
 
 func (this *QRawFont) IsValid() bool {
-	_ret := C.QRawFont_IsValid(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QRawFont_IsValid(this.h))
 }
 
 func (this *QRawFont) OperatorEqual(other *QRawFont) bool {
-	_ret := C.QRawFont_OperatorEqual(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QRawFont_OperatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QRawFont) OperatorNotEqual(other *QRawFont) bool {
-	_ret := C.QRawFont_OperatorNotEqual(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QRawFont_OperatorNotEqual(this.h, other.cPointer()))
 }
 
 func (this *QRawFont) FamilyName() string {
@@ -128,13 +125,11 @@ func (this *QRawFont) StyleName() string {
 }
 
 func (this *QRawFont) Style() QFont__Style {
-	_ret := C.QRawFont_Style(this.h)
-	return (QFont__Style)(_ret)
+	return (QFont__Style)(C.QRawFont_Style(this.h))
 }
 
 func (this *QRawFont) Weight() int {
-	_ret := C.QRawFont_Weight(this.h)
-	return (int)(_ret)
+	return (int)(C.QRawFont_Weight(this.h))
 }
 
 func (this *QRawFont) GlyphIndexesForString(text string) []uint {
@@ -142,7 +137,7 @@ func (this *QRawFont) GlyphIndexesForString(text string) []uint {
 	defer C.free(text_ms)
 	var _ma *C.struct_miqt_array = C.QRawFont_GlyphIndexesForString(this.h, (*C.struct_miqt_string)(text_ms))
 	_ret := make([]uint, int(_ma.len))
-	_outCast := (*[0xffff]C.uint)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]C.uint)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (uint)(_outCast[i])
 	}
@@ -161,9 +156,12 @@ func (this *QRawFont) AdvancesForGlyphIndexes(glyphIndexes []uint) []QPointF {
 	defer runtime.KeepAlive(unsafe.Pointer(glyphIndexes_ma))
 	var _ma *C.struct_miqt_array = C.QRawFont_AdvancesForGlyphIndexes(this.h, glyphIndexes_ma)
 	_ret := make([]QPointF, int(_ma.len))
-	_outCast := (*[0xffff]*C.QPointF)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QPointF)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = *newQPointF(_outCast[i])
+		_vv_ret := _outCast[i]
+		_vv_goptr := newQPointF(_vv_ret)
+		_vv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+		_ret[i] = *_vv_goptr
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -180,27 +178,27 @@ func (this *QRawFont) AdvancesForGlyphIndexes2(glyphIndexes []uint, layoutFlags 
 	defer runtime.KeepAlive(unsafe.Pointer(glyphIndexes_ma))
 	var _ma *C.struct_miqt_array = C.QRawFont_AdvancesForGlyphIndexes2(this.h, glyphIndexes_ma, (C.int)(layoutFlags))
 	_ret := make([]QPointF, int(_ma.len))
-	_outCast := (*[0xffff]*C.QPointF)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QPointF)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = *newQPointF(_outCast[i])
+		_vv_ret := _outCast[i]
+		_vv_goptr := newQPointF(_vv_ret)
+		_vv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+		_ret[i] = *_vv_goptr
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QRawFont) GlyphIndexesForChars(chars *QChar, numChars int, glyphIndexes *uint, numGlyphs *int) bool {
-	_ret := C.QRawFont_GlyphIndexesForChars(this.h, chars.cPointer(), (C.int)(numChars), (*C.uint)(unsafe.Pointer(glyphIndexes)), (*C.int)(unsafe.Pointer(numGlyphs)))
-	return (bool)(_ret)
+	return (bool)(C.QRawFont_GlyphIndexesForChars(this.h, chars.cPointer(), (C.int)(numChars), (*C.uint)(unsafe.Pointer(glyphIndexes)), (*C.int)(unsafe.Pointer(numGlyphs))))
 }
 
 func (this *QRawFont) AdvancesForGlyphIndexes3(glyphIndexes *uint, advances *QPointF, numGlyphs int) bool {
-	_ret := C.QRawFont_AdvancesForGlyphIndexes3(this.h, (*C.uint)(unsafe.Pointer(glyphIndexes)), advances.cPointer(), (C.int)(numGlyphs))
-	return (bool)(_ret)
+	return (bool)(C.QRawFont_AdvancesForGlyphIndexes3(this.h, (*C.uint)(unsafe.Pointer(glyphIndexes)), advances.cPointer(), (C.int)(numGlyphs)))
 }
 
 func (this *QRawFont) AdvancesForGlyphIndexes4(glyphIndexes *uint, advances *QPointF, numGlyphs int, layoutFlags int) bool {
-	_ret := C.QRawFont_AdvancesForGlyphIndexes4(this.h, (*C.uint)(unsafe.Pointer(glyphIndexes)), advances.cPointer(), (C.int)(numGlyphs), (C.int)(layoutFlags))
-	return (bool)(_ret)
+	return (bool)(C.QRawFont_AdvancesForGlyphIndexes4(this.h, (*C.uint)(unsafe.Pointer(glyphIndexes)), advances.cPointer(), (C.int)(numGlyphs), (C.int)(layoutFlags)))
 }
 
 func (this *QRawFont) AlphaMapForGlyph(glyphIndex uint) *QImage {
@@ -229,63 +227,51 @@ func (this *QRawFont) SetPixelSize(pixelSize float64) {
 }
 
 func (this *QRawFont) PixelSize() float64 {
-	_ret := C.QRawFont_PixelSize(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QRawFont_PixelSize(this.h))
 }
 
 func (this *QRawFont) HintingPreference() QFont__HintingPreference {
-	_ret := C.QRawFont_HintingPreference(this.h)
-	return (QFont__HintingPreference)(_ret)
+	return (QFont__HintingPreference)(C.QRawFont_HintingPreference(this.h))
 }
 
 func (this *QRawFont) Ascent() float64 {
-	_ret := C.QRawFont_Ascent(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QRawFont_Ascent(this.h))
 }
 
 func (this *QRawFont) CapHeight() float64 {
-	_ret := C.QRawFont_CapHeight(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QRawFont_CapHeight(this.h))
 }
 
 func (this *QRawFont) Descent() float64 {
-	_ret := C.QRawFont_Descent(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QRawFont_Descent(this.h))
 }
 
 func (this *QRawFont) Leading() float64 {
-	_ret := C.QRawFont_Leading(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QRawFont_Leading(this.h))
 }
 
 func (this *QRawFont) XHeight() float64 {
-	_ret := C.QRawFont_XHeight(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QRawFont_XHeight(this.h))
 }
 
 func (this *QRawFont) AverageCharWidth() float64 {
-	_ret := C.QRawFont_AverageCharWidth(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QRawFont_AverageCharWidth(this.h))
 }
 
 func (this *QRawFont) MaxCharWidth() float64 {
-	_ret := C.QRawFont_MaxCharWidth(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QRawFont_MaxCharWidth(this.h))
 }
 
 func (this *QRawFont) LineThickness() float64 {
-	_ret := C.QRawFont_LineThickness(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QRawFont_LineThickness(this.h))
 }
 
 func (this *QRawFont) UnderlinePosition() float64 {
-	_ret := C.QRawFont_UnderlinePosition(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QRawFont_UnderlinePosition(this.h))
 }
 
 func (this *QRawFont) UnitsPerEm() float64 {
-	_ret := C.QRawFont_UnitsPerEm(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QRawFont_UnitsPerEm(this.h))
 }
 
 func (this *QRawFont) LoadFromFile(fileName string, pixelSize float64, hintingPreference QFont__HintingPreference) {
@@ -299,19 +285,17 @@ func (this *QRawFont) LoadFromData(fontData *QByteArray, pixelSize float64, hint
 }
 
 func (this *QRawFont) SupportsCharacter(ucs4 uint) bool {
-	_ret := C.QRawFont_SupportsCharacter(this.h, (C.uint)(ucs4))
-	return (bool)(_ret)
+	return (bool)(C.QRawFont_SupportsCharacter(this.h, (C.uint)(ucs4)))
 }
 
 func (this *QRawFont) SupportsCharacterWithCharacter(character QChar) bool {
-	_ret := C.QRawFont_SupportsCharacterWithCharacter(this.h, character.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QRawFont_SupportsCharacterWithCharacter(this.h, character.cPointer()))
 }
 
 func (this *QRawFont) SupportedWritingSystems() []QFontDatabase__WritingSystem {
 	var _ma *C.struct_miqt_array = C.QRawFont_SupportedWritingSystems(this.h)
 	_ret := make([]QFontDatabase__WritingSystem, int(_ma.len))
-	_outCast := (*[0xffff]C.uintptr_t)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]C.uintptr_t)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (QFontDatabase__WritingSystem)(_outCast[i])
 	}

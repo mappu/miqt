@@ -61,8 +61,7 @@ func NewQMouseEventTransition4(object *QObject, typeVal QEvent__Type, button Mou
 }
 
 func (this *QMouseEventTransition) MetaObject() *QMetaObject {
-	_ret := C.QMouseEventTransition_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QMouseEventTransition_MetaObject(this.h)))
 }
 
 func QMouseEventTransition_Tr(s string) string {
@@ -84,8 +83,7 @@ func QMouseEventTransition_TrUtf8(s string) string {
 }
 
 func (this *QMouseEventTransition) Button() MouseButton {
-	_ret := C.QMouseEventTransition_Button(this.h)
-	return (MouseButton)(_ret)
+	return (MouseButton)(C.QMouseEventTransition_Button(this.h))
 }
 
 func (this *QMouseEventTransition) SetButton(button MouseButton) {
@@ -93,8 +91,7 @@ func (this *QMouseEventTransition) SetButton(button MouseButton) {
 }
 
 func (this *QMouseEventTransition) ModifierMask() int {
-	_ret := C.QMouseEventTransition_ModifierMask(this.h)
-	return (int)(_ret)
+	return (int)(C.QMouseEventTransition_ModifierMask(this.h))
 }
 
 func (this *QMouseEventTransition) SetModifierMask(modifiers int) {

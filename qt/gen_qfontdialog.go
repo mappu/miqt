@@ -73,8 +73,7 @@ func NewQFontDialog4(initial *QFont, parent *QWidget) *QFontDialog {
 }
 
 func (this *QFontDialog) MetaObject() *QMetaObject {
-	_ret := C.QFontDialog_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QFontDialog_MetaObject(this.h)))
 }
 
 func QFontDialog_Tr(s string) string {
@@ -118,8 +117,7 @@ func (this *QFontDialog) SetOption(option QFontDialog__FontDialogOption) {
 }
 
 func (this *QFontDialog) TestOption(option QFontDialog__FontDialogOption) bool {
-	_ret := C.QFontDialog_TestOption(this.h, (C.uintptr_t)(option))
-	return (bool)(_ret)
+	return (bool)(C.QFontDialog_TestOption(this.h, (C.uintptr_t)(option)))
 }
 
 func (this *QFontDialog) SetOptions(options int) {
@@ -127,8 +125,7 @@ func (this *QFontDialog) SetOptions(options int) {
 }
 
 func (this *QFontDialog) Options() int {
-	_ret := C.QFontDialog_Options(this.h)
-	return (int)(_ret)
+	return (int)(C.QFontDialog_Options(this.h))
 }
 
 func (this *QFontDialog) SetVisible(visible bool) {
@@ -164,8 +161,7 @@ func miqt_exec_callback_QFontDialog_CurrentFontChanged(cb *C.void, font *C.QFont
 	}
 
 	// Convert all CABI parameters to Go parameters
-	font_ret := font
-	slotval1 := newQFont_U(unsafe.Pointer(font_ret))
+	slotval1 := newQFont_U(unsafe.Pointer(font))
 
 	gofunc(slotval1)
 }
@@ -185,8 +181,7 @@ func miqt_exec_callback_QFontDialog_FontSelected(cb *C.void, font *C.QFont) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	font_ret := font
-	slotval1 := newQFont_U(unsafe.Pointer(font_ret))
+	slotval1 := newQFont_U(unsafe.Pointer(font))
 
 	gofunc(slotval1)
 }

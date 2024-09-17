@@ -43,8 +43,7 @@ func NewQMimeData() *QMimeData {
 }
 
 func (this *QMimeData) MetaObject() *QMetaObject {
-	_ret := C.QMimeData_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QMimeData_MetaObject(this.h)))
 }
 
 func QMimeData_Tr(s string) string {
@@ -68,9 +67,12 @@ func QMimeData_TrUtf8(s string) string {
 func (this *QMimeData) Urls() []QUrl {
 	var _ma *C.struct_miqt_array = C.QMimeData_Urls(this.h)
 	_ret := make([]QUrl, int(_ma.len))
-	_outCast := (*[0xffff]*C.QUrl)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QUrl)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = *newQUrl(_outCast[i])
+		_lv_ret := _outCast[i]
+		_lv_goptr := newQUrl(_lv_ret)
+		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+		_ret[i] = *_lv_goptr
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -89,8 +91,7 @@ func (this *QMimeData) SetUrls(urls []QUrl) {
 }
 
 func (this *QMimeData) HasUrls() bool {
-	_ret := C.QMimeData_HasUrls(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QMimeData_HasUrls(this.h))
 }
 
 func (this *QMimeData) Text() string {
@@ -107,8 +108,7 @@ func (this *QMimeData) SetText(text string) {
 }
 
 func (this *QMimeData) HasText() bool {
-	_ret := C.QMimeData_HasText(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QMimeData_HasText(this.h))
 }
 
 func (this *QMimeData) Html() string {
@@ -125,8 +125,7 @@ func (this *QMimeData) SetHtml(html string) {
 }
 
 func (this *QMimeData) HasHtml() bool {
-	_ret := C.QMimeData_HasHtml(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QMimeData_HasHtml(this.h))
 }
 
 func (this *QMimeData) ImageData() *QVariant {
@@ -141,8 +140,7 @@ func (this *QMimeData) SetImageData(image *QVariant) {
 }
 
 func (this *QMimeData) HasImage() bool {
-	_ret := C.QMimeData_HasImage(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QMimeData_HasImage(this.h))
 }
 
 func (this *QMimeData) ColorData() *QVariant {
@@ -157,8 +155,7 @@ func (this *QMimeData) SetColorData(color *QVariant) {
 }
 
 func (this *QMimeData) HasColor() bool {
-	_ret := C.QMimeData_HasColor(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QMimeData_HasColor(this.h))
 }
 
 func (this *QMimeData) Data(mimetype string) *QByteArray {
@@ -185,8 +182,7 @@ func (this *QMimeData) RemoveFormat(mimetype string) {
 func (this *QMimeData) HasFormat(mimetype string) bool {
 	mimetype_ms := miqt_strdupg(mimetype)
 	defer C.free(mimetype_ms)
-	_ret := C.QMimeData_HasFormat(this.h, (*C.struct_miqt_string)(mimetype_ms))
-	return (bool)(_ret)
+	return (bool)(C.QMimeData_HasFormat(this.h, (*C.struct_miqt_string)(mimetype_ms)))
 }
 
 func (this *QMimeData) Formats() []string {
@@ -194,8 +190,10 @@ func (this *QMimeData) Formats() []string {
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = C.GoStringN(&_outCast[i].data, C.int(int64(_outCast[i].len)))
-		C.free(unsafe.Pointer(_outCast[i])) // free the inner miqt_string*
+		var _lv_ms *C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoStringN(&_lv_ms.data, C.int(int64(_lv_ms.len)))
+		C.free(unsafe.Pointer(_lv_ms))
+		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret

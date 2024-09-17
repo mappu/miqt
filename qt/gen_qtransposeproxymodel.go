@@ -49,8 +49,7 @@ func NewQTransposeProxyModel2(parent *QObject) *QTransposeProxyModel {
 }
 
 func (this *QTransposeProxyModel) MetaObject() *QMetaObject {
-	_ret := C.QTransposeProxyModel_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QTransposeProxyModel_MetaObject(this.h)))
 }
 
 func QTransposeProxyModel_Tr(s string) string {
@@ -76,13 +75,11 @@ func (this *QTransposeProxyModel) SetSourceModel(newSourceModel *QAbstractItemMo
 }
 
 func (this *QTransposeProxyModel) RowCount() int {
-	_ret := C.QTransposeProxyModel_RowCount(this.h)
-	return (int)(_ret)
+	return (int)(C.QTransposeProxyModel_RowCount(this.h))
 }
 
 func (this *QTransposeProxyModel) ColumnCount() int {
-	_ret := C.QTransposeProxyModel_ColumnCount(this.h)
-	return (int)(_ret)
+	return (int)(C.QTransposeProxyModel_ColumnCount(this.h))
 }
 
 func (this *QTransposeProxyModel) HeaderData(section int, orientation Orientation) *QVariant {
@@ -93,8 +90,7 @@ func (this *QTransposeProxyModel) HeaderData(section int, orientation Orientatio
 }
 
 func (this *QTransposeProxyModel) SetHeaderData(section int, orientation Orientation, value *QVariant) bool {
-	_ret := C.QTransposeProxyModel_SetHeaderData(this.h, (C.int)(section), (C.uintptr_t)(orientation), value.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QTransposeProxyModel_SetHeaderData(this.h, (C.int)(section), (C.uintptr_t)(orientation), value.cPointer()))
 }
 
 func (this *QTransposeProxyModel) Span(index *QModelIndex) *QSize {
@@ -133,33 +129,27 @@ func (this *QTransposeProxyModel) Index(row int, column int) *QModelIndex {
 }
 
 func (this *QTransposeProxyModel) InsertRows(row int, count int) bool {
-	_ret := C.QTransposeProxyModel_InsertRows(this.h, (C.int)(row), (C.int)(count))
-	return (bool)(_ret)
+	return (bool)(C.QTransposeProxyModel_InsertRows(this.h, (C.int)(row), (C.int)(count)))
 }
 
 func (this *QTransposeProxyModel) RemoveRows(row int, count int) bool {
-	_ret := C.QTransposeProxyModel_RemoveRows(this.h, (C.int)(row), (C.int)(count))
-	return (bool)(_ret)
+	return (bool)(C.QTransposeProxyModel_RemoveRows(this.h, (C.int)(row), (C.int)(count)))
 }
 
 func (this *QTransposeProxyModel) MoveRows(sourceParent *QModelIndex, sourceRow int, count int, destinationParent *QModelIndex, destinationChild int) bool {
-	_ret := C.QTransposeProxyModel_MoveRows(this.h, sourceParent.cPointer(), (C.int)(sourceRow), (C.int)(count), destinationParent.cPointer(), (C.int)(destinationChild))
-	return (bool)(_ret)
+	return (bool)(C.QTransposeProxyModel_MoveRows(this.h, sourceParent.cPointer(), (C.int)(sourceRow), (C.int)(count), destinationParent.cPointer(), (C.int)(destinationChild)))
 }
 
 func (this *QTransposeProxyModel) InsertColumns(column int, count int) bool {
-	_ret := C.QTransposeProxyModel_InsertColumns(this.h, (C.int)(column), (C.int)(count))
-	return (bool)(_ret)
+	return (bool)(C.QTransposeProxyModel_InsertColumns(this.h, (C.int)(column), (C.int)(count)))
 }
 
 func (this *QTransposeProxyModel) RemoveColumns(column int, count int) bool {
-	_ret := C.QTransposeProxyModel_RemoveColumns(this.h, (C.int)(column), (C.int)(count))
-	return (bool)(_ret)
+	return (bool)(C.QTransposeProxyModel_RemoveColumns(this.h, (C.int)(column), (C.int)(count)))
 }
 
 func (this *QTransposeProxyModel) MoveColumns(sourceParent *QModelIndex, sourceColumn int, count int, destinationParent *QModelIndex, destinationChild int) bool {
-	_ret := C.QTransposeProxyModel_MoveColumns(this.h, sourceParent.cPointer(), (C.int)(sourceColumn), (C.int)(count), destinationParent.cPointer(), (C.int)(destinationChild))
-	return (bool)(_ret)
+	return (bool)(C.QTransposeProxyModel_MoveColumns(this.h, sourceParent.cPointer(), (C.int)(sourceColumn), (C.int)(count), destinationParent.cPointer(), (C.int)(destinationChild)))
 }
 
 func (this *QTransposeProxyModel) Sort(column int) {
@@ -211,13 +201,11 @@ func QTransposeProxyModel_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QTransposeProxyModel) RowCount1(parent *QModelIndex) int {
-	_ret := C.QTransposeProxyModel_RowCount1(this.h, parent.cPointer())
-	return (int)(_ret)
+	return (int)(C.QTransposeProxyModel_RowCount1(this.h, parent.cPointer()))
 }
 
 func (this *QTransposeProxyModel) ColumnCount1(parent *QModelIndex) int {
-	_ret := C.QTransposeProxyModel_ColumnCount1(this.h, parent.cPointer())
-	return (int)(_ret)
+	return (int)(C.QTransposeProxyModel_ColumnCount1(this.h, parent.cPointer()))
 }
 
 func (this *QTransposeProxyModel) HeaderData3(section int, orientation Orientation, role int) *QVariant {
@@ -228,8 +216,7 @@ func (this *QTransposeProxyModel) HeaderData3(section int, orientation Orientati
 }
 
 func (this *QTransposeProxyModel) SetHeaderData4(section int, orientation Orientation, value *QVariant, role int) bool {
-	_ret := C.QTransposeProxyModel_SetHeaderData4(this.h, (C.int)(section), (C.uintptr_t)(orientation), value.cPointer(), (C.int)(role))
-	return (bool)(_ret)
+	return (bool)(C.QTransposeProxyModel_SetHeaderData4(this.h, (C.int)(section), (C.uintptr_t)(orientation), value.cPointer(), (C.int)(role)))
 }
 
 func (this *QTransposeProxyModel) Index3(row int, column int, parent *QModelIndex) *QModelIndex {
@@ -240,23 +227,19 @@ func (this *QTransposeProxyModel) Index3(row int, column int, parent *QModelInde
 }
 
 func (this *QTransposeProxyModel) InsertRows3(row int, count int, parent *QModelIndex) bool {
-	_ret := C.QTransposeProxyModel_InsertRows3(this.h, (C.int)(row), (C.int)(count), parent.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QTransposeProxyModel_InsertRows3(this.h, (C.int)(row), (C.int)(count), parent.cPointer()))
 }
 
 func (this *QTransposeProxyModel) RemoveRows3(row int, count int, parent *QModelIndex) bool {
-	_ret := C.QTransposeProxyModel_RemoveRows3(this.h, (C.int)(row), (C.int)(count), parent.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QTransposeProxyModel_RemoveRows3(this.h, (C.int)(row), (C.int)(count), parent.cPointer()))
 }
 
 func (this *QTransposeProxyModel) InsertColumns3(column int, count int, parent *QModelIndex) bool {
-	_ret := C.QTransposeProxyModel_InsertColumns3(this.h, (C.int)(column), (C.int)(count), parent.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QTransposeProxyModel_InsertColumns3(this.h, (C.int)(column), (C.int)(count), parent.cPointer()))
 }
 
 func (this *QTransposeProxyModel) RemoveColumns3(column int, count int, parent *QModelIndex) bool {
-	_ret := C.QTransposeProxyModel_RemoveColumns3(this.h, (C.int)(column), (C.int)(count), parent.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QTransposeProxyModel_RemoveColumns3(this.h, (C.int)(column), (C.int)(count), parent.cPointer()))
 }
 
 func (this *QTransposeProxyModel) Sort2(column int, order SortOrder) {

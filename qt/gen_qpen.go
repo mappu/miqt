@@ -92,8 +92,7 @@ func (this *QPen) Swap(other *QPen) {
 }
 
 func (this *QPen) Style() PenStyle {
-	_ret := C.QPen_Style(this.h)
-	return (PenStyle)(_ret)
+	return (PenStyle)(C.QPen_Style(this.h))
 }
 
 func (this *QPen) SetStyle(style PenStyle) {
@@ -103,7 +102,7 @@ func (this *QPen) SetStyle(style PenStyle) {
 func (this *QPen) DashPattern() []float64 {
 	var _ma *C.struct_miqt_array = C.QPen_DashPattern(this.h)
 	_ret := make([]float64, int(_ma.len))
-	_outCast := (*[0xffff]C.double)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]C.double)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (float64)(_outCast[i])
 	}
@@ -124,8 +123,7 @@ func (this *QPen) SetDashPattern(pattern []float64) {
 }
 
 func (this *QPen) DashOffset() float64 {
-	_ret := C.QPen_DashOffset(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QPen_DashOffset(this.h))
 }
 
 func (this *QPen) SetDashOffset(doffset float64) {
@@ -133,8 +131,7 @@ func (this *QPen) SetDashOffset(doffset float64) {
 }
 
 func (this *QPen) MiterLimit() float64 {
-	_ret := C.QPen_MiterLimit(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QPen_MiterLimit(this.h))
 }
 
 func (this *QPen) SetMiterLimit(limit float64) {
@@ -142,8 +139,7 @@ func (this *QPen) SetMiterLimit(limit float64) {
 }
 
 func (this *QPen) WidthF() float64 {
-	_ret := C.QPen_WidthF(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QPen_WidthF(this.h))
 }
 
 func (this *QPen) SetWidthF(width float64) {
@@ -151,8 +147,7 @@ func (this *QPen) SetWidthF(width float64) {
 }
 
 func (this *QPen) Width() int {
-	_ret := C.QPen_Width(this.h)
-	return (int)(_ret)
+	return (int)(C.QPen_Width(this.h))
 }
 
 func (this *QPen) SetWidth(width int) {
@@ -182,13 +177,11 @@ func (this *QPen) SetBrush(brush *QBrush) {
 }
 
 func (this *QPen) IsSolid() bool {
-	_ret := C.QPen_IsSolid(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QPen_IsSolid(this.h))
 }
 
 func (this *QPen) CapStyle() PenCapStyle {
-	_ret := C.QPen_CapStyle(this.h)
-	return (PenCapStyle)(_ret)
+	return (PenCapStyle)(C.QPen_CapStyle(this.h))
 }
 
 func (this *QPen) SetCapStyle(pcs PenCapStyle) {
@@ -196,8 +189,7 @@ func (this *QPen) SetCapStyle(pcs PenCapStyle) {
 }
 
 func (this *QPen) JoinStyle() PenJoinStyle {
-	_ret := C.QPen_JoinStyle(this.h)
-	return (PenJoinStyle)(_ret)
+	return (PenJoinStyle)(C.QPen_JoinStyle(this.h))
 }
 
 func (this *QPen) SetJoinStyle(pcs PenJoinStyle) {
@@ -205,8 +197,7 @@ func (this *QPen) SetJoinStyle(pcs PenJoinStyle) {
 }
 
 func (this *QPen) IsCosmetic() bool {
-	_ret := C.QPen_IsCosmetic(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QPen_IsCosmetic(this.h))
 }
 
 func (this *QPen) SetCosmetic(cosmetic bool) {
@@ -214,18 +205,15 @@ func (this *QPen) SetCosmetic(cosmetic bool) {
 }
 
 func (this *QPen) OperatorEqual(p *QPen) bool {
-	_ret := C.QPen_OperatorEqual(this.h, p.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QPen_OperatorEqual(this.h, p.cPointer()))
 }
 
 func (this *QPen) OperatorNotEqual(p *QPen) bool {
-	_ret := C.QPen_OperatorNotEqual(this.h, p.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QPen_OperatorNotEqual(this.h, p.cPointer()))
 }
 
 func (this *QPen) IsDetached() bool {
-	_ret := C.QPen_IsDetached(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QPen_IsDetached(this.h))
 }
 
 // Delete this object from C++ memory.

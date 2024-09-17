@@ -60,8 +60,7 @@ func NewQBoxLayout2(param1 QBoxLayout__Direction, parent *QWidget) *QBoxLayout {
 }
 
 func (this *QBoxLayout) MetaObject() *QMetaObject {
-	_ret := C.QBoxLayout_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QBoxLayout_MetaObject(this.h)))
 }
 
 func QBoxLayout_Tr(s string) string {
@@ -83,8 +82,7 @@ func QBoxLayout_TrUtf8(s string) string {
 }
 
 func (this *QBoxLayout) Direction() QBoxLayout__Direction {
-	_ret := C.QBoxLayout_Direction(this.h)
-	return (QBoxLayout__Direction)(_ret)
+	return (QBoxLayout__Direction)(C.QBoxLayout_Direction(this.h))
 }
 
 func (this *QBoxLayout) SetDirection(direction QBoxLayout__Direction) {
@@ -144,8 +142,7 @@ func (this *QBoxLayout) InsertItem(index int, param2 *QLayoutItem) {
 }
 
 func (this *QBoxLayout) Spacing() int {
-	_ret := C.QBoxLayout_Spacing(this.h)
-	return (int)(_ret)
+	return (int)(C.QBoxLayout_Spacing(this.h))
 }
 
 func (this *QBoxLayout) SetSpacing(spacing int) {
@@ -153,13 +150,11 @@ func (this *QBoxLayout) SetSpacing(spacing int) {
 }
 
 func (this *QBoxLayout) SetStretchFactor(w *QWidget, stretch int) bool {
-	_ret := C.QBoxLayout_SetStretchFactor(this.h, w.cPointer(), (C.int)(stretch))
-	return (bool)(_ret)
+	return (bool)(C.QBoxLayout_SetStretchFactor(this.h, w.cPointer(), (C.int)(stretch)))
 }
 
 func (this *QBoxLayout) SetStretchFactor2(l *QLayout, stretch int) bool {
-	_ret := C.QBoxLayout_SetStretchFactor2(this.h, l.cPointer(), (C.int)(stretch))
-	return (bool)(_ret)
+	return (bool)(C.QBoxLayout_SetStretchFactor2(this.h, l.cPointer(), (C.int)(stretch)))
 }
 
 func (this *QBoxLayout) SetStretch(index int, stretch int) {
@@ -167,8 +162,7 @@ func (this *QBoxLayout) SetStretch(index int, stretch int) {
 }
 
 func (this *QBoxLayout) Stretch(index int) int {
-	_ret := C.QBoxLayout_Stretch(this.h, (C.int)(index))
-	return (int)(_ret)
+	return (int)(C.QBoxLayout_Stretch(this.h, (C.int)(index)))
 }
 
 func (this *QBoxLayout) SizeHint() *QSize {
@@ -193,23 +187,19 @@ func (this *QBoxLayout) MaximumSize() *QSize {
 }
 
 func (this *QBoxLayout) HasHeightForWidth() bool {
-	_ret := C.QBoxLayout_HasHeightForWidth(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QBoxLayout_HasHeightForWidth(this.h))
 }
 
 func (this *QBoxLayout) HeightForWidth(param1 int) int {
-	_ret := C.QBoxLayout_HeightForWidth(this.h, (C.int)(param1))
-	return (int)(_ret)
+	return (int)(C.QBoxLayout_HeightForWidth(this.h, (C.int)(param1)))
 }
 
 func (this *QBoxLayout) MinimumHeightForWidth(param1 int) int {
-	_ret := C.QBoxLayout_MinimumHeightForWidth(this.h, (C.int)(param1))
-	return (int)(_ret)
+	return (int)(C.QBoxLayout_MinimumHeightForWidth(this.h, (C.int)(param1)))
 }
 
 func (this *QBoxLayout) ExpandingDirections() int {
-	_ret := C.QBoxLayout_ExpandingDirections(this.h)
-	return (int)(_ret)
+	return (int)(C.QBoxLayout_ExpandingDirections(this.h))
 }
 
 func (this *QBoxLayout) Invalidate() {
@@ -217,18 +207,15 @@ func (this *QBoxLayout) Invalidate() {
 }
 
 func (this *QBoxLayout) ItemAt(param1 int) *QLayoutItem {
-	_ret := C.QBoxLayout_ItemAt(this.h, (C.int)(param1))
-	return newQLayoutItem_U(unsafe.Pointer(_ret))
+	return newQLayoutItem_U(unsafe.Pointer(C.QBoxLayout_ItemAt(this.h, (C.int)(param1))))
 }
 
 func (this *QBoxLayout) TakeAt(param1 int) *QLayoutItem {
-	_ret := C.QBoxLayout_TakeAt(this.h, (C.int)(param1))
-	return newQLayoutItem_U(unsafe.Pointer(_ret))
+	return newQLayoutItem_U(unsafe.Pointer(C.QBoxLayout_TakeAt(this.h, (C.int)(param1))))
 }
 
 func (this *QBoxLayout) Count() int {
-	_ret := C.QBoxLayout_Count(this.h)
-	return (int)(_ret)
+	return (int)(C.QBoxLayout_Count(this.h))
 }
 
 func (this *QBoxLayout) SetGeometry(geometry *QRect) {
@@ -361,8 +348,7 @@ func NewQHBoxLayout2(parent *QWidget) *QHBoxLayout {
 }
 
 func (this *QHBoxLayout) MetaObject() *QMetaObject {
-	_ret := C.QHBoxLayout_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QHBoxLayout_MetaObject(this.h)))
 }
 
 func QHBoxLayout_Tr(s string) string {
@@ -477,8 +463,7 @@ func NewQVBoxLayout2(parent *QWidget) *QVBoxLayout {
 }
 
 func (this *QVBoxLayout) MetaObject() *QMetaObject {
-	_ret := C.QVBoxLayout_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QVBoxLayout_MetaObject(this.h)))
 }
 
 func QVBoxLayout_Tr(s string) string {

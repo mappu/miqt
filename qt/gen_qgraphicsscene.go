@@ -90,8 +90,7 @@ func NewQGraphicsScene6(x float64, y float64, width float64, height float64, par
 }
 
 func (this *QGraphicsScene) MetaObject() *QMetaObject {
-	_ret := C.QGraphicsScene_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QGraphicsScene_MetaObject(this.h)))
 }
 
 func QGraphicsScene_Tr(s string) string {
@@ -120,13 +119,11 @@ func (this *QGraphicsScene) SceneRect() *QRectF {
 }
 
 func (this *QGraphicsScene) Width() float64 {
-	_ret := C.QGraphicsScene_Width(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QGraphicsScene_Width(this.h))
 }
 
 func (this *QGraphicsScene) Height() float64 {
-	_ret := C.QGraphicsScene_Height(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QGraphicsScene_Height(this.h))
 }
 
 func (this *QGraphicsScene) SetSceneRect(rect *QRectF) {
@@ -142,8 +139,7 @@ func (this *QGraphicsScene) Render(painter *QPainter) {
 }
 
 func (this *QGraphicsScene) ItemIndexMethod() QGraphicsScene__ItemIndexMethod {
-	_ret := C.QGraphicsScene_ItemIndexMethod(this.h)
-	return (QGraphicsScene__ItemIndexMethod)(_ret)
+	return (QGraphicsScene__ItemIndexMethod)(C.QGraphicsScene_ItemIndexMethod(this.h))
 }
 
 func (this *QGraphicsScene) SetItemIndexMethod(method QGraphicsScene__ItemIndexMethod) {
@@ -151,8 +147,7 @@ func (this *QGraphicsScene) SetItemIndexMethod(method QGraphicsScene__ItemIndexM
 }
 
 func (this *QGraphicsScene) IsSortCacheEnabled() bool {
-	_ret := C.QGraphicsScene_IsSortCacheEnabled(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QGraphicsScene_IsSortCacheEnabled(this.h))
 }
 
 func (this *QGraphicsScene) SetSortCacheEnabled(enabled bool) {
@@ -160,8 +155,7 @@ func (this *QGraphicsScene) SetSortCacheEnabled(enabled bool) {
 }
 
 func (this *QGraphicsScene) BspTreeDepth() int {
-	_ret := C.QGraphicsScene_BspTreeDepth(this.h)
-	return (int)(_ret)
+	return (int)(C.QGraphicsScene_BspTreeDepth(this.h))
 }
 
 func (this *QGraphicsScene) SetBspTreeDepth(depth int) {
@@ -178,9 +172,9 @@ func (this *QGraphicsScene) ItemsBoundingRect() *QRectF {
 func (this *QGraphicsScene) Items() []*QGraphicsItem {
 	var _ma *C.struct_miqt_array = C.QGraphicsScene_Items(this.h)
 	_ret := make([]*QGraphicsItem, int(_ma.len))
-	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQGraphicsItem(_outCast[i])
+		_ret[i] = newQGraphicsItem_U(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -189,9 +183,9 @@ func (this *QGraphicsScene) Items() []*QGraphicsItem {
 func (this *QGraphicsScene) ItemsWithPos(pos *QPointF) []*QGraphicsItem {
 	var _ma *C.struct_miqt_array = C.QGraphicsScene_ItemsWithPos(this.h, pos.cPointer())
 	_ret := make([]*QGraphicsItem, int(_ma.len))
-	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQGraphicsItem(_outCast[i])
+		_ret[i] = newQGraphicsItem_U(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -200,9 +194,9 @@ func (this *QGraphicsScene) ItemsWithPos(pos *QPointF) []*QGraphicsItem {
 func (this *QGraphicsScene) ItemsWithRect(rect *QRectF) []*QGraphicsItem {
 	var _ma *C.struct_miqt_array = C.QGraphicsScene_ItemsWithRect(this.h, rect.cPointer())
 	_ret := make([]*QGraphicsItem, int(_ma.len))
-	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQGraphicsItem(_outCast[i])
+		_ret[i] = newQGraphicsItem_U(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -211,9 +205,9 @@ func (this *QGraphicsScene) ItemsWithRect(rect *QRectF) []*QGraphicsItem {
 func (this *QGraphicsScene) ItemsWithPath(path *QPainterPath) []*QGraphicsItem {
 	var _ma *C.struct_miqt_array = C.QGraphicsScene_ItemsWithPath(this.h, path.cPointer())
 	_ret := make([]*QGraphicsItem, int(_ma.len))
-	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQGraphicsItem(_outCast[i])
+		_ret[i] = newQGraphicsItem_U(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -222,41 +216,39 @@ func (this *QGraphicsScene) ItemsWithPath(path *QPainterPath) []*QGraphicsItem {
 func (this *QGraphicsScene) CollidingItems(item *QGraphicsItem) []*QGraphicsItem {
 	var _ma *C.struct_miqt_array = C.QGraphicsScene_CollidingItems(this.h, item.cPointer())
 	_ret := make([]*QGraphicsItem, int(_ma.len))
-	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQGraphicsItem(_outCast[i])
+		_ret[i] = newQGraphicsItem_U(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QGraphicsScene) ItemAt(pos *QPointF, deviceTransform *QTransform) *QGraphicsItem {
-	_ret := C.QGraphicsScene_ItemAt(this.h, pos.cPointer(), deviceTransform.cPointer())
-	return newQGraphicsItem_U(unsafe.Pointer(_ret))
+	return newQGraphicsItem_U(unsafe.Pointer(C.QGraphicsScene_ItemAt(this.h, pos.cPointer(), deviceTransform.cPointer())))
 }
 
 func (this *QGraphicsScene) Items2(x float64, y float64, w float64, h float64, mode ItemSelectionMode, order SortOrder) []*QGraphicsItem {
 	var _ma *C.struct_miqt_array = C.QGraphicsScene_Items2(this.h, (C.double)(x), (C.double)(y), (C.double)(w), (C.double)(h), (C.uintptr_t)(mode), (C.uintptr_t)(order))
 	_ret := make([]*QGraphicsItem, int(_ma.len))
-	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQGraphicsItem(_outCast[i])
+		_ret[i] = newQGraphicsItem_U(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QGraphicsScene) ItemAt2(x float64, y float64, deviceTransform *QTransform) *QGraphicsItem {
-	_ret := C.QGraphicsScene_ItemAt2(this.h, (C.double)(x), (C.double)(y), deviceTransform.cPointer())
-	return newQGraphicsItem_U(unsafe.Pointer(_ret))
+	return newQGraphicsItem_U(unsafe.Pointer(C.QGraphicsScene_ItemAt2(this.h, (C.double)(x), (C.double)(y), deviceTransform.cPointer())))
 }
 
 func (this *QGraphicsScene) SelectedItems() []*QGraphicsItem {
 	var _ma *C.struct_miqt_array = C.QGraphicsScene_SelectedItems(this.h)
 	_ret := make([]*QGraphicsItem, int(_ma.len))
-	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQGraphicsItem(_outCast[i])
+		_ret[i] = newQGraphicsItem_U(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -290,8 +282,7 @@ func (this *QGraphicsScene) CreateItemGroup(items []*QGraphicsItem) *QGraphicsIt
 	}
 	items_ma := &C.struct_miqt_array{len: C.size_t(len(items)), data: unsafe.Pointer(items_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(items_ma))
-	_ret := C.QGraphicsScene_CreateItemGroup(this.h, items_ma)
-	return newQGraphicsItemGroup_U(unsafe.Pointer(_ret))
+	return newQGraphicsItemGroup_U(unsafe.Pointer(C.QGraphicsScene_CreateItemGroup(this.h, items_ma)))
 }
 
 func (this *QGraphicsScene) DestroyItemGroup(group *QGraphicsItemGroup) {
@@ -303,62 +294,51 @@ func (this *QGraphicsScene) AddItem(item *QGraphicsItem) {
 }
 
 func (this *QGraphicsScene) AddEllipse(rect *QRectF) *QGraphicsEllipseItem {
-	_ret := C.QGraphicsScene_AddEllipse(this.h, rect.cPointer())
-	return newQGraphicsEllipseItem_U(unsafe.Pointer(_ret))
+	return newQGraphicsEllipseItem_U(unsafe.Pointer(C.QGraphicsScene_AddEllipse(this.h, rect.cPointer())))
 }
 
 func (this *QGraphicsScene) AddLine(line *QLineF) *QGraphicsLineItem {
-	_ret := C.QGraphicsScene_AddLine(this.h, line.cPointer())
-	return newQGraphicsLineItem_U(unsafe.Pointer(_ret))
+	return newQGraphicsLineItem_U(unsafe.Pointer(C.QGraphicsScene_AddLine(this.h, line.cPointer())))
 }
 
 func (this *QGraphicsScene) AddPath(path *QPainterPath) *QGraphicsPathItem {
-	_ret := C.QGraphicsScene_AddPath(this.h, path.cPointer())
-	return newQGraphicsPathItem_U(unsafe.Pointer(_ret))
+	return newQGraphicsPathItem_U(unsafe.Pointer(C.QGraphicsScene_AddPath(this.h, path.cPointer())))
 }
 
 func (this *QGraphicsScene) AddPixmap(pixmap *QPixmap) *QGraphicsPixmapItem {
-	_ret := C.QGraphicsScene_AddPixmap(this.h, pixmap.cPointer())
-	return newQGraphicsPixmapItem_U(unsafe.Pointer(_ret))
+	return newQGraphicsPixmapItem_U(unsafe.Pointer(C.QGraphicsScene_AddPixmap(this.h, pixmap.cPointer())))
 }
 
 func (this *QGraphicsScene) AddRect(rect *QRectF) *QGraphicsRectItem {
-	_ret := C.QGraphicsScene_AddRect(this.h, rect.cPointer())
-	return newQGraphicsRectItem_U(unsafe.Pointer(_ret))
+	return newQGraphicsRectItem_U(unsafe.Pointer(C.QGraphicsScene_AddRect(this.h, rect.cPointer())))
 }
 
 func (this *QGraphicsScene) AddText(text string) *QGraphicsTextItem {
 	text_ms := miqt_strdupg(text)
 	defer C.free(text_ms)
-	_ret := C.QGraphicsScene_AddText(this.h, (*C.struct_miqt_string)(text_ms))
-	return newQGraphicsTextItem_U(unsafe.Pointer(_ret))
+	return newQGraphicsTextItem_U(unsafe.Pointer(C.QGraphicsScene_AddText(this.h, (*C.struct_miqt_string)(text_ms))))
 }
 
 func (this *QGraphicsScene) AddSimpleText(text string) *QGraphicsSimpleTextItem {
 	text_ms := miqt_strdupg(text)
 	defer C.free(text_ms)
-	_ret := C.QGraphicsScene_AddSimpleText(this.h, (*C.struct_miqt_string)(text_ms))
-	return newQGraphicsSimpleTextItem_U(unsafe.Pointer(_ret))
+	return newQGraphicsSimpleTextItem_U(unsafe.Pointer(C.QGraphicsScene_AddSimpleText(this.h, (*C.struct_miqt_string)(text_ms))))
 }
 
 func (this *QGraphicsScene) AddWidget(widget *QWidget) *QGraphicsProxyWidget {
-	_ret := C.QGraphicsScene_AddWidget(this.h, widget.cPointer())
-	return newQGraphicsProxyWidget_U(unsafe.Pointer(_ret))
+	return newQGraphicsProxyWidget_U(unsafe.Pointer(C.QGraphicsScene_AddWidget(this.h, widget.cPointer())))
 }
 
 func (this *QGraphicsScene) AddEllipse2(x float64, y float64, w float64, h float64) *QGraphicsEllipseItem {
-	_ret := C.QGraphicsScene_AddEllipse2(this.h, (C.double)(x), (C.double)(y), (C.double)(w), (C.double)(h))
-	return newQGraphicsEllipseItem_U(unsafe.Pointer(_ret))
+	return newQGraphicsEllipseItem_U(unsafe.Pointer(C.QGraphicsScene_AddEllipse2(this.h, (C.double)(x), (C.double)(y), (C.double)(w), (C.double)(h))))
 }
 
 func (this *QGraphicsScene) AddLine2(x1 float64, y1 float64, x2 float64, y2 float64) *QGraphicsLineItem {
-	_ret := C.QGraphicsScene_AddLine2(this.h, (C.double)(x1), (C.double)(y1), (C.double)(x2), (C.double)(y2))
-	return newQGraphicsLineItem_U(unsafe.Pointer(_ret))
+	return newQGraphicsLineItem_U(unsafe.Pointer(C.QGraphicsScene_AddLine2(this.h, (C.double)(x1), (C.double)(y1), (C.double)(x2), (C.double)(y2))))
 }
 
 func (this *QGraphicsScene) AddRect2(x float64, y float64, w float64, h float64) *QGraphicsRectItem {
-	_ret := C.QGraphicsScene_AddRect2(this.h, (C.double)(x), (C.double)(y), (C.double)(w), (C.double)(h))
-	return newQGraphicsRectItem_U(unsafe.Pointer(_ret))
+	return newQGraphicsRectItem_U(unsafe.Pointer(C.QGraphicsScene_AddRect2(this.h, (C.double)(x), (C.double)(y), (C.double)(w), (C.double)(h))))
 }
 
 func (this *QGraphicsScene) RemoveItem(item *QGraphicsItem) {
@@ -366,8 +346,7 @@ func (this *QGraphicsScene) RemoveItem(item *QGraphicsItem) {
 }
 
 func (this *QGraphicsScene) FocusItem() *QGraphicsItem {
-	_ret := C.QGraphicsScene_FocusItem(this.h)
-	return newQGraphicsItem_U(unsafe.Pointer(_ret))
+	return newQGraphicsItem_U(unsafe.Pointer(C.QGraphicsScene_FocusItem(this.h)))
 }
 
 func (this *QGraphicsScene) SetFocusItem(item *QGraphicsItem) {
@@ -375,8 +354,7 @@ func (this *QGraphicsScene) SetFocusItem(item *QGraphicsItem) {
 }
 
 func (this *QGraphicsScene) HasFocus() bool {
-	_ret := C.QGraphicsScene_HasFocus(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QGraphicsScene_HasFocus(this.h))
 }
 
 func (this *QGraphicsScene) SetFocus() {
@@ -392,13 +370,11 @@ func (this *QGraphicsScene) SetStickyFocus(enabled bool) {
 }
 
 func (this *QGraphicsScene) StickyFocus() bool {
-	_ret := C.QGraphicsScene_StickyFocus(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QGraphicsScene_StickyFocus(this.h))
 }
 
 func (this *QGraphicsScene) MouseGrabberItem() *QGraphicsItem {
-	_ret := C.QGraphicsScene_MouseGrabberItem(this.h)
-	return newQGraphicsItem_U(unsafe.Pointer(_ret))
+	return newQGraphicsItem_U(unsafe.Pointer(C.QGraphicsScene_MouseGrabberItem(this.h)))
 }
 
 func (this *QGraphicsScene) BackgroundBrush() *QBrush {
@@ -433,9 +409,9 @@ func (this *QGraphicsScene) InputMethodQuery(query InputMethodQuery) *QVariant {
 func (this *QGraphicsScene) Views() []*QGraphicsView {
 	var _ma *C.struct_miqt_array = C.QGraphicsScene_Views(this.h)
 	_ret := make([]*QGraphicsView, int(_ma.len))
-	_outCast := (*[0xffff]*C.QGraphicsView)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QGraphicsView)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQGraphicsView(_outCast[i])
+		_ret[i] = newQGraphicsView_U(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -450,8 +426,7 @@ func (this *QGraphicsScene) Invalidate(x float64, y float64, w float64, h float6
 }
 
 func (this *QGraphicsScene) Style() *QStyle {
-	_ret := C.QGraphicsScene_Style(this.h)
-	return newQStyle_U(unsafe.Pointer(_ret))
+	return newQStyle_U(unsafe.Pointer(C.QGraphicsScene_Style(this.h)))
 }
 
 func (this *QGraphicsScene) SetStyle(style *QStyle) {
@@ -481,13 +456,11 @@ func (this *QGraphicsScene) SetPalette(palette *QPalette) {
 }
 
 func (this *QGraphicsScene) IsActive() bool {
-	_ret := C.QGraphicsScene_IsActive(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QGraphicsScene_IsActive(this.h))
 }
 
 func (this *QGraphicsScene) ActivePanel() *QGraphicsItem {
-	_ret := C.QGraphicsScene_ActivePanel(this.h)
-	return newQGraphicsItem_U(unsafe.Pointer(_ret))
+	return newQGraphicsItem_U(unsafe.Pointer(C.QGraphicsScene_ActivePanel(this.h)))
 }
 
 func (this *QGraphicsScene) SetActivePanel(item *QGraphicsItem) {
@@ -495,8 +468,7 @@ func (this *QGraphicsScene) SetActivePanel(item *QGraphicsItem) {
 }
 
 func (this *QGraphicsScene) ActiveWindow() *QGraphicsWidget {
-	_ret := C.QGraphicsScene_ActiveWindow(this.h)
-	return newQGraphicsWidget_U(unsafe.Pointer(_ret))
+	return newQGraphicsWidget_U(unsafe.Pointer(C.QGraphicsScene_ActiveWindow(this.h)))
 }
 
 func (this *QGraphicsScene) SetActiveWindow(widget *QGraphicsWidget) {
@@ -504,13 +476,11 @@ func (this *QGraphicsScene) SetActiveWindow(widget *QGraphicsWidget) {
 }
 
 func (this *QGraphicsScene) SendEvent(item *QGraphicsItem, event *QEvent) bool {
-	_ret := C.QGraphicsScene_SendEvent(this.h, item.cPointer(), event.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QGraphicsScene_SendEvent(this.h, item.cPointer(), event.cPointer()))
 }
 
 func (this *QGraphicsScene) MinimumRenderSize() float64 {
-	_ret := C.QGraphicsScene_MinimumRenderSize(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QGraphicsScene_MinimumRenderSize(this.h))
 }
 
 func (this *QGraphicsScene) SetMinimumRenderSize(minSize float64) {
@@ -518,8 +488,7 @@ func (this *QGraphicsScene) SetMinimumRenderSize(minSize float64) {
 }
 
 func (this *QGraphicsScene) FocusOnTouch() bool {
-	_ret := C.QGraphicsScene_FocusOnTouch(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QGraphicsScene_FocusOnTouch(this.h))
 }
 
 func (this *QGraphicsScene) SetFocusOnTouch(enabled bool) {
@@ -571,9 +540,12 @@ func miqt_exec_callback_QGraphicsScene_Changed(cb *C.void, region *C.struct_miqt
 	// Convert all CABI parameters to Go parameters
 	var region_ma *C.struct_miqt_array = region
 	region_ret := make([]QRectF, int(region_ma.len))
-	_outCast := (*[0xffff]*C.QRectF)(unsafe.Pointer(region_ma.data)) // mrs jackson
+	region_outCast := (*[0xffff]*C.QRectF)(unsafe.Pointer(region_ma.data)) // hey ya
 	for i := 0; i < int(region_ma.len); i++ {
-		region_ret[i] = *newQRectF(_outCast[i])
+		region_lv_ret := region_outCast[i]
+		region_lv_goptr := newQRectF(region_lv_ret)
+		region_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+		region_ret[i] = *region_lv_goptr
 	}
 	C.free(unsafe.Pointer(region_ma))
 	slotval1 := region_ret
@@ -596,8 +568,7 @@ func miqt_exec_callback_QGraphicsScene_SceneRectChanged(cb *C.void, rect *C.QRec
 	}
 
 	// Convert all CABI parameters to Go parameters
-	rect_ret := rect
-	slotval1 := newQRectF_U(unsafe.Pointer(rect_ret))
+	slotval1 := newQRectF_U(unsafe.Pointer(rect))
 
 	gofunc(slotval1)
 }
@@ -634,12 +605,9 @@ func miqt_exec_callback_QGraphicsScene_FocusItemChanged(cb *C.void, newFocus *C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	newFocus_ret := newFocus
-	slotval1 := newQGraphicsItem_U(unsafe.Pointer(newFocus_ret))
-	oldFocus_ret := oldFocus
-	slotval2 := newQGraphicsItem_U(unsafe.Pointer(oldFocus_ret))
-	reason_ret := reason
-	slotval3 := (FocusReason)(reason_ret)
+	slotval1 := newQGraphicsItem_U(unsafe.Pointer(newFocus))
+	slotval2 := newQGraphicsItem_U(unsafe.Pointer(oldFocus))
+	slotval3 := (FocusReason)(reason)
 
 	gofunc(slotval1, slotval2, slotval3)
 }
@@ -703,9 +671,9 @@ func (this *QGraphicsScene) Render4(painter *QPainter, target *QRectF, source *Q
 func (this *QGraphicsScene) Items1(order SortOrder) []*QGraphicsItem {
 	var _ma *C.struct_miqt_array = C.QGraphicsScene_Items1(this.h, (C.uintptr_t)(order))
 	_ret := make([]*QGraphicsItem, int(_ma.len))
-	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQGraphicsItem(_outCast[i])
+		_ret[i] = newQGraphicsItem_U(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -714,9 +682,9 @@ func (this *QGraphicsScene) Items1(order SortOrder) []*QGraphicsItem {
 func (this *QGraphicsScene) Items22(pos *QPointF, mode ItemSelectionMode) []*QGraphicsItem {
 	var _ma *C.struct_miqt_array = C.QGraphicsScene_Items22(this.h, pos.cPointer(), (C.uintptr_t)(mode))
 	_ret := make([]*QGraphicsItem, int(_ma.len))
-	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQGraphicsItem(_outCast[i])
+		_ret[i] = newQGraphicsItem_U(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -725,9 +693,9 @@ func (this *QGraphicsScene) Items22(pos *QPointF, mode ItemSelectionMode) []*QGr
 func (this *QGraphicsScene) Items3(pos *QPointF, mode ItemSelectionMode, order SortOrder) []*QGraphicsItem {
 	var _ma *C.struct_miqt_array = C.QGraphicsScene_Items3(this.h, pos.cPointer(), (C.uintptr_t)(mode), (C.uintptr_t)(order))
 	_ret := make([]*QGraphicsItem, int(_ma.len))
-	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQGraphicsItem(_outCast[i])
+		_ret[i] = newQGraphicsItem_U(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -736,9 +704,9 @@ func (this *QGraphicsScene) Items3(pos *QPointF, mode ItemSelectionMode, order S
 func (this *QGraphicsScene) Items4(pos *QPointF, mode ItemSelectionMode, order SortOrder, deviceTransform *QTransform) []*QGraphicsItem {
 	var _ma *C.struct_miqt_array = C.QGraphicsScene_Items4(this.h, pos.cPointer(), (C.uintptr_t)(mode), (C.uintptr_t)(order), deviceTransform.cPointer())
 	_ret := make([]*QGraphicsItem, int(_ma.len))
-	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQGraphicsItem(_outCast[i])
+		_ret[i] = newQGraphicsItem_U(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -747,9 +715,9 @@ func (this *QGraphicsScene) Items4(pos *QPointF, mode ItemSelectionMode, order S
 func (this *QGraphicsScene) Items23(rect *QRectF, mode ItemSelectionMode) []*QGraphicsItem {
 	var _ma *C.struct_miqt_array = C.QGraphicsScene_Items23(this.h, rect.cPointer(), (C.uintptr_t)(mode))
 	_ret := make([]*QGraphicsItem, int(_ma.len))
-	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQGraphicsItem(_outCast[i])
+		_ret[i] = newQGraphicsItem_U(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -758,9 +726,9 @@ func (this *QGraphicsScene) Items23(rect *QRectF, mode ItemSelectionMode) []*QGr
 func (this *QGraphicsScene) Items32(rect *QRectF, mode ItemSelectionMode, order SortOrder) []*QGraphicsItem {
 	var _ma *C.struct_miqt_array = C.QGraphicsScene_Items32(this.h, rect.cPointer(), (C.uintptr_t)(mode), (C.uintptr_t)(order))
 	_ret := make([]*QGraphicsItem, int(_ma.len))
-	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQGraphicsItem(_outCast[i])
+		_ret[i] = newQGraphicsItem_U(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -769,9 +737,9 @@ func (this *QGraphicsScene) Items32(rect *QRectF, mode ItemSelectionMode, order 
 func (this *QGraphicsScene) Items42(rect *QRectF, mode ItemSelectionMode, order SortOrder, deviceTransform *QTransform) []*QGraphicsItem {
 	var _ma *C.struct_miqt_array = C.QGraphicsScene_Items42(this.h, rect.cPointer(), (C.uintptr_t)(mode), (C.uintptr_t)(order), deviceTransform.cPointer())
 	_ret := make([]*QGraphicsItem, int(_ma.len))
-	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQGraphicsItem(_outCast[i])
+		_ret[i] = newQGraphicsItem_U(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -780,9 +748,9 @@ func (this *QGraphicsScene) Items42(rect *QRectF, mode ItemSelectionMode, order 
 func (this *QGraphicsScene) Items25(path *QPainterPath, mode ItemSelectionMode) []*QGraphicsItem {
 	var _ma *C.struct_miqt_array = C.QGraphicsScene_Items25(this.h, path.cPointer(), (C.uintptr_t)(mode))
 	_ret := make([]*QGraphicsItem, int(_ma.len))
-	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQGraphicsItem(_outCast[i])
+		_ret[i] = newQGraphicsItem_U(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -791,9 +759,9 @@ func (this *QGraphicsScene) Items25(path *QPainterPath, mode ItemSelectionMode) 
 func (this *QGraphicsScene) Items34(path *QPainterPath, mode ItemSelectionMode, order SortOrder) []*QGraphicsItem {
 	var _ma *C.struct_miqt_array = C.QGraphicsScene_Items34(this.h, path.cPointer(), (C.uintptr_t)(mode), (C.uintptr_t)(order))
 	_ret := make([]*QGraphicsItem, int(_ma.len))
-	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQGraphicsItem(_outCast[i])
+		_ret[i] = newQGraphicsItem_U(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -802,9 +770,9 @@ func (this *QGraphicsScene) Items34(path *QPainterPath, mode ItemSelectionMode, 
 func (this *QGraphicsScene) Items44(path *QPainterPath, mode ItemSelectionMode, order SortOrder, deviceTransform *QTransform) []*QGraphicsItem {
 	var _ma *C.struct_miqt_array = C.QGraphicsScene_Items44(this.h, path.cPointer(), (C.uintptr_t)(mode), (C.uintptr_t)(order), deviceTransform.cPointer())
 	_ret := make([]*QGraphicsItem, int(_ma.len))
-	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQGraphicsItem(_outCast[i])
+		_ret[i] = newQGraphicsItem_U(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -813,9 +781,9 @@ func (this *QGraphicsScene) Items44(path *QPainterPath, mode ItemSelectionMode, 
 func (this *QGraphicsScene) CollidingItems2(item *QGraphicsItem, mode ItemSelectionMode) []*QGraphicsItem {
 	var _ma *C.struct_miqt_array = C.QGraphicsScene_CollidingItems2(this.h, item.cPointer(), (C.uintptr_t)(mode))
 	_ret := make([]*QGraphicsItem, int(_ma.len))
-	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQGraphicsItem(_outCast[i])
+		_ret[i] = newQGraphicsItem_U(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -824,9 +792,9 @@ func (this *QGraphicsScene) CollidingItems2(item *QGraphicsItem, mode ItemSelect
 func (this *QGraphicsScene) Items7(x float64, y float64, w float64, h float64, mode ItemSelectionMode, order SortOrder, deviceTransform *QTransform) []*QGraphicsItem {
 	var _ma *C.struct_miqt_array = C.QGraphicsScene_Items7(this.h, (C.double)(x), (C.double)(y), (C.double)(w), (C.double)(h), (C.uintptr_t)(mode), (C.uintptr_t)(order), deviceTransform.cPointer())
 	_ret := make([]*QGraphicsItem, int(_ma.len))
-	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQGraphicsItem(_outCast[i])
+		_ret[i] = newQGraphicsItem_U(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -849,82 +817,67 @@ func (this *QGraphicsScene) SetSelectionArea4(path *QPainterPath, selectionOpera
 }
 
 func (this *QGraphicsScene) AddEllipse22(rect *QRectF, pen *QPen) *QGraphicsEllipseItem {
-	_ret := C.QGraphicsScene_AddEllipse22(this.h, rect.cPointer(), pen.cPointer())
-	return newQGraphicsEllipseItem_U(unsafe.Pointer(_ret))
+	return newQGraphicsEllipseItem_U(unsafe.Pointer(C.QGraphicsScene_AddEllipse22(this.h, rect.cPointer(), pen.cPointer())))
 }
 
 func (this *QGraphicsScene) AddEllipse3(rect *QRectF, pen *QPen, brush *QBrush) *QGraphicsEllipseItem {
-	_ret := C.QGraphicsScene_AddEllipse3(this.h, rect.cPointer(), pen.cPointer(), brush.cPointer())
-	return newQGraphicsEllipseItem_U(unsafe.Pointer(_ret))
+	return newQGraphicsEllipseItem_U(unsafe.Pointer(C.QGraphicsScene_AddEllipse3(this.h, rect.cPointer(), pen.cPointer(), brush.cPointer())))
 }
 
 func (this *QGraphicsScene) AddLine22(line *QLineF, pen *QPen) *QGraphicsLineItem {
-	_ret := C.QGraphicsScene_AddLine22(this.h, line.cPointer(), pen.cPointer())
-	return newQGraphicsLineItem_U(unsafe.Pointer(_ret))
+	return newQGraphicsLineItem_U(unsafe.Pointer(C.QGraphicsScene_AddLine22(this.h, line.cPointer(), pen.cPointer())))
 }
 
 func (this *QGraphicsScene) AddPath2(path *QPainterPath, pen *QPen) *QGraphicsPathItem {
-	_ret := C.QGraphicsScene_AddPath2(this.h, path.cPointer(), pen.cPointer())
-	return newQGraphicsPathItem_U(unsafe.Pointer(_ret))
+	return newQGraphicsPathItem_U(unsafe.Pointer(C.QGraphicsScene_AddPath2(this.h, path.cPointer(), pen.cPointer())))
 }
 
 func (this *QGraphicsScene) AddPath3(path *QPainterPath, pen *QPen, brush *QBrush) *QGraphicsPathItem {
-	_ret := C.QGraphicsScene_AddPath3(this.h, path.cPointer(), pen.cPointer(), brush.cPointer())
-	return newQGraphicsPathItem_U(unsafe.Pointer(_ret))
+	return newQGraphicsPathItem_U(unsafe.Pointer(C.QGraphicsScene_AddPath3(this.h, path.cPointer(), pen.cPointer(), brush.cPointer())))
 }
 
 func (this *QGraphicsScene) AddRect22(rect *QRectF, pen *QPen) *QGraphicsRectItem {
-	_ret := C.QGraphicsScene_AddRect22(this.h, rect.cPointer(), pen.cPointer())
-	return newQGraphicsRectItem_U(unsafe.Pointer(_ret))
+	return newQGraphicsRectItem_U(unsafe.Pointer(C.QGraphicsScene_AddRect22(this.h, rect.cPointer(), pen.cPointer())))
 }
 
 func (this *QGraphicsScene) AddRect3(rect *QRectF, pen *QPen, brush *QBrush) *QGraphicsRectItem {
-	_ret := C.QGraphicsScene_AddRect3(this.h, rect.cPointer(), pen.cPointer(), brush.cPointer())
-	return newQGraphicsRectItem_U(unsafe.Pointer(_ret))
+	return newQGraphicsRectItem_U(unsafe.Pointer(C.QGraphicsScene_AddRect3(this.h, rect.cPointer(), pen.cPointer(), brush.cPointer())))
 }
 
 func (this *QGraphicsScene) AddText2(text string, font *QFont) *QGraphicsTextItem {
 	text_ms := miqt_strdupg(text)
 	defer C.free(text_ms)
-	_ret := C.QGraphicsScene_AddText2(this.h, (*C.struct_miqt_string)(text_ms), font.cPointer())
-	return newQGraphicsTextItem_U(unsafe.Pointer(_ret))
+	return newQGraphicsTextItem_U(unsafe.Pointer(C.QGraphicsScene_AddText2(this.h, (*C.struct_miqt_string)(text_ms), font.cPointer())))
 }
 
 func (this *QGraphicsScene) AddSimpleText2(text string, font *QFont) *QGraphicsSimpleTextItem {
 	text_ms := miqt_strdupg(text)
 	defer C.free(text_ms)
-	_ret := C.QGraphicsScene_AddSimpleText2(this.h, (*C.struct_miqt_string)(text_ms), font.cPointer())
-	return newQGraphicsSimpleTextItem_U(unsafe.Pointer(_ret))
+	return newQGraphicsSimpleTextItem_U(unsafe.Pointer(C.QGraphicsScene_AddSimpleText2(this.h, (*C.struct_miqt_string)(text_ms), font.cPointer())))
 }
 
 func (this *QGraphicsScene) AddWidget2(widget *QWidget, wFlags int) *QGraphicsProxyWidget {
-	_ret := C.QGraphicsScene_AddWidget2(this.h, widget.cPointer(), (C.int)(wFlags))
-	return newQGraphicsProxyWidget_U(unsafe.Pointer(_ret))
+	return newQGraphicsProxyWidget_U(unsafe.Pointer(C.QGraphicsScene_AddWidget2(this.h, widget.cPointer(), (C.int)(wFlags))))
 }
 
 func (this *QGraphicsScene) AddEllipse5(x float64, y float64, w float64, h float64, pen *QPen) *QGraphicsEllipseItem {
-	_ret := C.QGraphicsScene_AddEllipse5(this.h, (C.double)(x), (C.double)(y), (C.double)(w), (C.double)(h), pen.cPointer())
-	return newQGraphicsEllipseItem_U(unsafe.Pointer(_ret))
+	return newQGraphicsEllipseItem_U(unsafe.Pointer(C.QGraphicsScene_AddEllipse5(this.h, (C.double)(x), (C.double)(y), (C.double)(w), (C.double)(h), pen.cPointer())))
 }
 
 func (this *QGraphicsScene) AddEllipse6(x float64, y float64, w float64, h float64, pen *QPen, brush *QBrush) *QGraphicsEllipseItem {
-	_ret := C.QGraphicsScene_AddEllipse6(this.h, (C.double)(x), (C.double)(y), (C.double)(w), (C.double)(h), pen.cPointer(), brush.cPointer())
-	return newQGraphicsEllipseItem_U(unsafe.Pointer(_ret))
+	return newQGraphicsEllipseItem_U(unsafe.Pointer(C.QGraphicsScene_AddEllipse6(this.h, (C.double)(x), (C.double)(y), (C.double)(w), (C.double)(h), pen.cPointer(), brush.cPointer())))
 }
 
 func (this *QGraphicsScene) AddLine5(x1 float64, y1 float64, x2 float64, y2 float64, pen *QPen) *QGraphicsLineItem {
-	_ret := C.QGraphicsScene_AddLine5(this.h, (C.double)(x1), (C.double)(y1), (C.double)(x2), (C.double)(y2), pen.cPointer())
-	return newQGraphicsLineItem_U(unsafe.Pointer(_ret))
+	return newQGraphicsLineItem_U(unsafe.Pointer(C.QGraphicsScene_AddLine5(this.h, (C.double)(x1), (C.double)(y1), (C.double)(x2), (C.double)(y2), pen.cPointer())))
 }
 
 func (this *QGraphicsScene) AddRect5(x float64, y float64, w float64, h float64, pen *QPen) *QGraphicsRectItem {
-	_ret := C.QGraphicsScene_AddRect5(this.h, (C.double)(x), (C.double)(y), (C.double)(w), (C.double)(h), pen.cPointer())
-	return newQGraphicsRectItem_U(unsafe.Pointer(_ret))
+	return newQGraphicsRectItem_U(unsafe.Pointer(C.QGraphicsScene_AddRect5(this.h, (C.double)(x), (C.double)(y), (C.double)(w), (C.double)(h), pen.cPointer())))
 }
 
 func (this *QGraphicsScene) AddRect6(x float64, y float64, w float64, h float64, pen *QPen, brush *QBrush) *QGraphicsRectItem {
-	_ret := C.QGraphicsScene_AddRect6(this.h, (C.double)(x), (C.double)(y), (C.double)(w), (C.double)(h), pen.cPointer(), brush.cPointer())
-	return newQGraphicsRectItem_U(unsafe.Pointer(_ret))
+	return newQGraphicsRectItem_U(unsafe.Pointer(C.QGraphicsScene_AddRect6(this.h, (C.double)(x), (C.double)(y), (C.double)(w), (C.double)(h), pen.cPointer(), brush.cPointer())))
 }
 
 func (this *QGraphicsScene) SetFocusItem2(item *QGraphicsItem, focusReason FocusReason) {

@@ -62,8 +62,7 @@ func NewQThread2(parent *QObject) *QThread {
 }
 
 func (this *QThread) MetaObject() *QMetaObject {
-	_ret := C.QThread_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QThread_MetaObject(this.h)))
 }
 
 func QThread_Tr(s string) string {
@@ -85,13 +84,11 @@ func QThread_TrUtf8(s string) string {
 }
 
 func QThread_CurrentThread() *QThread {
-	_ret := C.QThread_CurrentThread()
-	return newQThread_U(unsafe.Pointer(_ret))
+	return newQThread_U(unsafe.Pointer(C.QThread_CurrentThread()))
 }
 
 func QThread_IdealThreadCount() int {
-	_ret := C.QThread_IdealThreadCount()
-	return (int)(_ret)
+	return (int)(C.QThread_IdealThreadCount())
 }
 
 func QThread_YieldCurrentThread() {
@@ -103,18 +100,15 @@ func (this *QThread) SetPriority(priority QThread__Priority) {
 }
 
 func (this *QThread) Priority() QThread__Priority {
-	_ret := C.QThread_Priority(this.h)
-	return (QThread__Priority)(_ret)
+	return (QThread__Priority)(C.QThread_Priority(this.h))
 }
 
 func (this *QThread) IsFinished() bool {
-	_ret := C.QThread_IsFinished(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QThread_IsFinished(this.h))
 }
 
 func (this *QThread) IsRunning() bool {
-	_ret := C.QThread_IsRunning(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QThread_IsRunning(this.h))
 }
 
 func (this *QThread) RequestInterruption() {
@@ -122,8 +116,7 @@ func (this *QThread) RequestInterruption() {
 }
 
 func (this *QThread) IsInterruptionRequested() bool {
-	_ret := C.QThread_IsInterruptionRequested(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QThread_IsInterruptionRequested(this.h))
 }
 
 func (this *QThread) SetStackSize(stackSize uint) {
@@ -131,8 +124,7 @@ func (this *QThread) SetStackSize(stackSize uint) {
 }
 
 func (this *QThread) StackSize() uint {
-	_ret := C.QThread_StackSize(this.h)
-	return (uint)(_ret)
+	return (uint)(C.QThread_StackSize(this.h))
 }
 
 func (this *QThread) Exit() {
@@ -140,8 +132,7 @@ func (this *QThread) Exit() {
 }
 
 func (this *QThread) EventDispatcher() *QAbstractEventDispatcher {
-	_ret := C.QThread_EventDispatcher(this.h)
-	return newQAbstractEventDispatcher_U(unsafe.Pointer(_ret))
+	return newQAbstractEventDispatcher_U(unsafe.Pointer(C.QThread_EventDispatcher(this.h)))
 }
 
 func (this *QThread) SetEventDispatcher(eventDispatcher *QAbstractEventDispatcher) {
@@ -149,13 +140,11 @@ func (this *QThread) SetEventDispatcher(eventDispatcher *QAbstractEventDispatche
 }
 
 func (this *QThread) Event(event *QEvent) bool {
-	_ret := C.QThread_Event(this.h, event.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QThread_Event(this.h, event.cPointer()))
 }
 
 func (this *QThread) LoopLevel() int {
-	_ret := C.QThread_LoopLevel(this.h)
-	return (int)(_ret)
+	return (int)(C.QThread_LoopLevel(this.h))
 }
 
 func (this *QThread) Start() {
@@ -171,13 +160,11 @@ func (this *QThread) Quit() {
 }
 
 func (this *QThread) Wait() bool {
-	_ret := C.QThread_Wait(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QThread_Wait(this.h))
 }
 
 func (this *QThread) WaitWithTime(time uint64) bool {
-	_ret := C.QThread_WaitWithTime(this.h, (C.ulong)(time))
-	return (bool)(_ret)
+	return (bool)(C.QThread_WaitWithTime(this.h, (C.ulong)(time)))
 }
 
 func QThread_Sleep(param1 uint64) {
@@ -245,8 +232,7 @@ func (this *QThread) Start1(param1 QThread__Priority) {
 }
 
 func (this *QThread) Wait1(deadline QDeadlineTimer) bool {
-	_ret := C.QThread_Wait1(this.h, deadline.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QThread_Wait1(this.h, deadline.cPointer()))
 }
 
 // Delete this object from C++ memory.

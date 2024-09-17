@@ -92,13 +92,11 @@ func (this *QStringMatcher) SetCaseSensitivity(cs CaseSensitivity) {
 func (this *QStringMatcher) IndexIn(str string) int {
 	str_ms := miqt_strdupg(str)
 	defer C.free(str_ms)
-	_ret := C.QStringMatcher_IndexIn(this.h, (*C.struct_miqt_string)(str_ms))
-	return (int)(_ret)
+	return (int)(C.QStringMatcher_IndexIn(this.h, (*C.struct_miqt_string)(str_ms)))
 }
 
 func (this *QStringMatcher) IndexIn2(str *QChar, length int) int {
-	_ret := C.QStringMatcher_IndexIn2(this.h, str.cPointer(), (C.int)(length))
-	return (int)(_ret)
+	return (int)(C.QStringMatcher_IndexIn2(this.h, str.cPointer(), (C.int)(length)))
 }
 
 func (this *QStringMatcher) Pattern() string {
@@ -109,20 +107,17 @@ func (this *QStringMatcher) Pattern() string {
 }
 
 func (this *QStringMatcher) CaseSensitivity() CaseSensitivity {
-	_ret := C.QStringMatcher_CaseSensitivity(this.h)
-	return (CaseSensitivity)(_ret)
+	return (CaseSensitivity)(C.QStringMatcher_CaseSensitivity(this.h))
 }
 
 func (this *QStringMatcher) IndexIn22(str string, from int) int {
 	str_ms := miqt_strdupg(str)
 	defer C.free(str_ms)
-	_ret := C.QStringMatcher_IndexIn22(this.h, (*C.struct_miqt_string)(str_ms), (C.int)(from))
-	return (int)(_ret)
+	return (int)(C.QStringMatcher_IndexIn22(this.h, (*C.struct_miqt_string)(str_ms), (C.int)(from)))
 }
 
 func (this *QStringMatcher) IndexIn3(str *QChar, length int, from int) int {
-	_ret := C.QStringMatcher_IndexIn3(this.h, str.cPointer(), (C.int)(length), (C.int)(from))
-	return (int)(_ret)
+	return (int)(C.QStringMatcher_IndexIn3(this.h, str.cPointer(), (C.int)(length), (C.int)(from)))
 }
 
 // Delete this object from C++ memory.

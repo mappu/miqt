@@ -54,28 +54,23 @@ func NewQSize3(param1 *QSize) *QSize {
 }
 
 func (this *QSize) IsNull() bool {
-	_ret := C.QSize_IsNull(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QSize_IsNull(this.h))
 }
 
 func (this *QSize) IsEmpty() bool {
-	_ret := C.QSize_IsEmpty(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QSize_IsEmpty(this.h))
 }
 
 func (this *QSize) IsValid() bool {
-	_ret := C.QSize_IsValid(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QSize_IsValid(this.h))
 }
 
 func (this *QSize) Width() int {
-	_ret := C.QSize_Width(this.h)
-	return (int)(_ret)
+	return (int)(C.QSize_Width(this.h))
 }
 
 func (this *QSize) Height() int {
-	_ret := C.QSize_Height(this.h)
-	return (int)(_ret)
+	return (int)(C.QSize_Height(this.h))
 }
 
 func (this *QSize) SetWidth(w int) {
@@ -148,23 +143,19 @@ func (this *QSize) ShrunkBy(m QMargins) *QSize {
 }
 
 func (this *QSize) OperatorPlusAssign(param1 *QSize) *QSize {
-	_ret := C.QSize_OperatorPlusAssign(this.h, param1.cPointer())
-	return newQSize_U(unsafe.Pointer(_ret))
+	return newQSize_U(unsafe.Pointer(C.QSize_OperatorPlusAssign(this.h, param1.cPointer())))
 }
 
 func (this *QSize) OperatorMinusAssign(param1 *QSize) *QSize {
-	_ret := C.QSize_OperatorMinusAssign(this.h, param1.cPointer())
-	return newQSize_U(unsafe.Pointer(_ret))
+	return newQSize_U(unsafe.Pointer(C.QSize_OperatorMinusAssign(this.h, param1.cPointer())))
 }
 
 func (this *QSize) OperatorMultiplyAssign(c float64) *QSize {
-	_ret := C.QSize_OperatorMultiplyAssign(this.h, (C.double)(c))
-	return newQSize_U(unsafe.Pointer(_ret))
+	return newQSize_U(unsafe.Pointer(C.QSize_OperatorMultiplyAssign(this.h, (C.double)(c))))
 }
 
 func (this *QSize) OperatorDivideAssign(c float64) *QSize {
-	_ret := C.QSize_OperatorDivideAssign(this.h, (C.double)(c))
-	return newQSize_U(unsafe.Pointer(_ret))
+	return newQSize_U(unsafe.Pointer(C.QSize_OperatorDivideAssign(this.h, (C.double)(c))))
 }
 
 // Delete this object from C++ memory.
@@ -228,28 +219,23 @@ func NewQSizeF4(param1 *QSizeF) *QSizeF {
 }
 
 func (this *QSizeF) IsNull() bool {
-	_ret := C.QSizeF_IsNull(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QSizeF_IsNull(this.h))
 }
 
 func (this *QSizeF) IsEmpty() bool {
-	_ret := C.QSizeF_IsEmpty(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QSizeF_IsEmpty(this.h))
 }
 
 func (this *QSizeF) IsValid() bool {
-	_ret := C.QSizeF_IsValid(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QSizeF_IsValid(this.h))
 }
 
 func (this *QSizeF) Width() float64 {
-	_ret := C.QSizeF_Width(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QSizeF_Width(this.h))
 }
 
 func (this *QSizeF) Height() float64 {
-	_ret := C.QSizeF_Height(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QSizeF_Height(this.h))
 }
 
 func (this *QSizeF) SetWidth(w float64) {
@@ -322,23 +308,19 @@ func (this *QSizeF) ShrunkBy(m QMarginsF) *QSizeF {
 }
 
 func (this *QSizeF) OperatorPlusAssign(param1 *QSizeF) *QSizeF {
-	_ret := C.QSizeF_OperatorPlusAssign(this.h, param1.cPointer())
-	return newQSizeF_U(unsafe.Pointer(_ret))
+	return newQSizeF_U(unsafe.Pointer(C.QSizeF_OperatorPlusAssign(this.h, param1.cPointer())))
 }
 
 func (this *QSizeF) OperatorMinusAssign(param1 *QSizeF) *QSizeF {
-	_ret := C.QSizeF_OperatorMinusAssign(this.h, param1.cPointer())
-	return newQSizeF_U(unsafe.Pointer(_ret))
+	return newQSizeF_U(unsafe.Pointer(C.QSizeF_OperatorMinusAssign(this.h, param1.cPointer())))
 }
 
 func (this *QSizeF) OperatorMultiplyAssign(c float64) *QSizeF {
-	_ret := C.QSizeF_OperatorMultiplyAssign(this.h, (C.double)(c))
-	return newQSizeF_U(unsafe.Pointer(_ret))
+	return newQSizeF_U(unsafe.Pointer(C.QSizeF_OperatorMultiplyAssign(this.h, (C.double)(c))))
 }
 
 func (this *QSizeF) OperatorDivideAssign(c float64) *QSizeF {
-	_ret := C.QSizeF_OperatorDivideAssign(this.h, (C.double)(c))
-	return newQSizeF_U(unsafe.Pointer(_ret))
+	return newQSizeF_U(unsafe.Pointer(C.QSizeF_OperatorDivideAssign(this.h, (C.double)(c))))
 }
 
 func (this *QSizeF) ToSize() *QSize {

@@ -64,8 +64,7 @@ func NewQGuiApplication2(args []string, param3 int) *QGuiApplication {
 }
 
 func (this *QGuiApplication) MetaObject() *QMetaObject {
-	_ret := C.QGuiApplication_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QGuiApplication_MetaObject(this.h)))
 }
 
 func QGuiApplication_Tr(s string) string {
@@ -115,9 +114,9 @@ func QGuiApplication_DesktopFileName() string {
 func QGuiApplication_AllWindows() []*QWindow {
 	var _ma *C.struct_miqt_array = C.QGuiApplication_AllWindows()
 	_ret := make([]*QWindow, int(_ma.len))
-	_outCast := (*[0xffff]*C.QWindow)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QWindow)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQWindow(_outCast[i])
+		_ret[i] = newQWindow_U(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -126,17 +125,16 @@ func QGuiApplication_AllWindows() []*QWindow {
 func QGuiApplication_TopLevelWindows() []*QWindow {
 	var _ma *C.struct_miqt_array = C.QGuiApplication_TopLevelWindows()
 	_ret := make([]*QWindow, int(_ma.len))
-	_outCast := (*[0xffff]*C.QWindow)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QWindow)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQWindow(_outCast[i])
+		_ret[i] = newQWindow_U(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func QGuiApplication_TopLevelAt(pos *QPoint) *QWindow {
-	_ret := C.QGuiApplication_TopLevelAt(pos.cPointer())
-	return newQWindow_U(unsafe.Pointer(_ret))
+	return newQWindow_U(unsafe.Pointer(C.QGuiApplication_TopLevelAt(pos.cPointer())))
 }
 
 func QGuiApplication_SetWindowIcon(icon *QIcon) {
@@ -158,49 +156,42 @@ func QGuiApplication_PlatformName() string {
 }
 
 func QGuiApplication_ModalWindow() *QWindow {
-	_ret := C.QGuiApplication_ModalWindow()
-	return newQWindow_U(unsafe.Pointer(_ret))
+	return newQWindow_U(unsafe.Pointer(C.QGuiApplication_ModalWindow()))
 }
 
 func QGuiApplication_FocusWindow() *QWindow {
-	_ret := C.QGuiApplication_FocusWindow()
-	return newQWindow_U(unsafe.Pointer(_ret))
+	return newQWindow_U(unsafe.Pointer(C.QGuiApplication_FocusWindow()))
 }
 
 func QGuiApplication_FocusObject() *QObject {
-	_ret := C.QGuiApplication_FocusObject()
-	return newQObject_U(unsafe.Pointer(_ret))
+	return newQObject_U(unsafe.Pointer(C.QGuiApplication_FocusObject()))
 }
 
 func QGuiApplication_PrimaryScreen() *QScreen {
-	_ret := C.QGuiApplication_PrimaryScreen()
-	return newQScreen_U(unsafe.Pointer(_ret))
+	return newQScreen_U(unsafe.Pointer(C.QGuiApplication_PrimaryScreen()))
 }
 
 func QGuiApplication_Screens() []*QScreen {
 	var _ma *C.struct_miqt_array = C.QGuiApplication_Screens()
 	_ret := make([]*QScreen, int(_ma.len))
-	_outCast := (*[0xffff]*C.QScreen)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QScreen)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQScreen(_outCast[i])
+		_ret[i] = newQScreen_U(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func QGuiApplication_ScreenAt(point *QPoint) *QScreen {
-	_ret := C.QGuiApplication_ScreenAt(point.cPointer())
-	return newQScreen_U(unsafe.Pointer(_ret))
+	return newQScreen_U(unsafe.Pointer(C.QGuiApplication_ScreenAt(point.cPointer())))
 }
 
 func (this *QGuiApplication) DevicePixelRatio() float64 {
-	_ret := C.QGuiApplication_DevicePixelRatio(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QGuiApplication_DevicePixelRatio(this.h))
 }
 
 func QGuiApplication_OverrideCursor() *QCursor {
-	_ret := C.QGuiApplication_OverrideCursor()
-	return newQCursor_U(unsafe.Pointer(_ret))
+	return newQCursor_U(unsafe.Pointer(C.QGuiApplication_OverrideCursor()))
 }
 
 func QGuiApplication_SetOverrideCursor(overrideCursor *QCursor) {
@@ -227,8 +218,7 @@ func QGuiApplication_SetFont(font *QFont) {
 }
 
 func QGuiApplication_Clipboard() *QClipboard {
-	_ret := C.QGuiApplication_Clipboard()
-	return newQClipboard_U(unsafe.Pointer(_ret))
+	return newQClipboard_U(unsafe.Pointer(C.QGuiApplication_Clipboard()))
 }
 
 func QGuiApplication_Palette() *QPalette {
@@ -243,18 +233,15 @@ func QGuiApplication_SetPalette(pal *QPalette) {
 }
 
 func QGuiApplication_KeyboardModifiers() int {
-	_ret := C.QGuiApplication_KeyboardModifiers()
-	return (int)(_ret)
+	return (int)(C.QGuiApplication_KeyboardModifiers())
 }
 
 func QGuiApplication_QueryKeyboardModifiers() int {
-	_ret := C.QGuiApplication_QueryKeyboardModifiers()
-	return (int)(_ret)
+	return (int)(C.QGuiApplication_QueryKeyboardModifiers())
 }
 
 func QGuiApplication_MouseButtons() int {
-	_ret := C.QGuiApplication_MouseButtons()
-	return (int)(_ret)
+	return (int)(C.QGuiApplication_MouseButtons())
 }
 
 func QGuiApplication_SetLayoutDirection(direction LayoutDirection) {
@@ -262,23 +249,19 @@ func QGuiApplication_SetLayoutDirection(direction LayoutDirection) {
 }
 
 func QGuiApplication_LayoutDirection() LayoutDirection {
-	_ret := C.QGuiApplication_LayoutDirection()
-	return (LayoutDirection)(_ret)
+	return (LayoutDirection)(C.QGuiApplication_LayoutDirection())
 }
 
 func QGuiApplication_IsRightToLeft() bool {
-	_ret := C.QGuiApplication_IsRightToLeft()
-	return (bool)(_ret)
+	return (bool)(C.QGuiApplication_IsRightToLeft())
 }
 
 func QGuiApplication_IsLeftToRight() bool {
-	_ret := C.QGuiApplication_IsLeftToRight()
-	return (bool)(_ret)
+	return (bool)(C.QGuiApplication_IsLeftToRight())
 }
 
 func QGuiApplication_StyleHints() *QStyleHints {
-	_ret := C.QGuiApplication_StyleHints()
-	return newQStyleHints_U(unsafe.Pointer(_ret))
+	return newQStyleHints_U(unsafe.Pointer(C.QGuiApplication_StyleHints()))
 }
 
 func QGuiApplication_SetDesktopSettingsAware(on bool) {
@@ -286,13 +269,11 @@ func QGuiApplication_SetDesktopSettingsAware(on bool) {
 }
 
 func QGuiApplication_DesktopSettingsAware() bool {
-	_ret := C.QGuiApplication_DesktopSettingsAware()
-	return (bool)(_ret)
+	return (bool)(C.QGuiApplication_DesktopSettingsAware())
 }
 
 func QGuiApplication_InputMethod() *QInputMethod {
-	_ret := C.QGuiApplication_InputMethod()
-	return newQInputMethod_U(unsafe.Pointer(_ret))
+	return newQInputMethod_U(unsafe.Pointer(C.QGuiApplication_InputMethod()))
 }
 
 func QGuiApplication_SetQuitOnLastWindowClosed(quit bool) {
@@ -300,13 +281,11 @@ func QGuiApplication_SetQuitOnLastWindowClosed(quit bool) {
 }
 
 func QGuiApplication_QuitOnLastWindowClosed() bool {
-	_ret := C.QGuiApplication_QuitOnLastWindowClosed()
-	return (bool)(_ret)
+	return (bool)(C.QGuiApplication_QuitOnLastWindowClosed())
 }
 
 func QGuiApplication_ApplicationState() ApplicationState {
-	_ret := C.QGuiApplication_ApplicationState()
-	return (ApplicationState)(_ret)
+	return (ApplicationState)(C.QGuiApplication_ApplicationState())
 }
 
 func QGuiApplication_SetHighDpiScaleFactorRoundingPolicy(policy HighDpiScaleFactorRoundingPolicy) {
@@ -314,23 +293,19 @@ func QGuiApplication_SetHighDpiScaleFactorRoundingPolicy(policy HighDpiScaleFact
 }
 
 func QGuiApplication_HighDpiScaleFactorRoundingPolicy() HighDpiScaleFactorRoundingPolicy {
-	_ret := C.QGuiApplication_HighDpiScaleFactorRoundingPolicy()
-	return (HighDpiScaleFactorRoundingPolicy)(_ret)
+	return (HighDpiScaleFactorRoundingPolicy)(C.QGuiApplication_HighDpiScaleFactorRoundingPolicy())
 }
 
 func QGuiApplication_Exec() int {
-	_ret := C.QGuiApplication_Exec()
-	return (int)(_ret)
+	return (int)(C.QGuiApplication_Exec())
 }
 
 func (this *QGuiApplication) Notify(param1 *QObject, param2 *QEvent) bool {
-	_ret := C.QGuiApplication_Notify(this.h, param1.cPointer(), param2.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QGuiApplication_Notify(this.h, param1.cPointer(), param2.cPointer()))
 }
 
 func (this *QGuiApplication) IsSessionRestored() bool {
-	_ret := C.QGuiApplication_IsSessionRestored(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QGuiApplication_IsSessionRestored(this.h))
 }
 
 func (this *QGuiApplication) SessionId() string {
@@ -348,13 +323,11 @@ func (this *QGuiApplication) SessionKey() string {
 }
 
 func (this *QGuiApplication) IsSavingSession() bool {
-	_ret := C.QGuiApplication_IsSavingSession(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QGuiApplication_IsSavingSession(this.h))
 }
 
 func QGuiApplication_IsFallbackSessionManagementEnabled() bool {
-	_ret := C.QGuiApplication_IsFallbackSessionManagementEnabled()
-	return (bool)(_ret)
+	return (bool)(C.QGuiApplication_IsFallbackSessionManagementEnabled())
 }
 
 func QGuiApplication_SetFallbackSessionManagementEnabled(fallbackSessionManagementEnabled bool) {
@@ -397,8 +370,7 @@ func miqt_exec_callback_QGuiApplication_ScreenAdded(cb *C.void, screen *C.QScree
 	}
 
 	// Convert all CABI parameters to Go parameters
-	screen_ret := screen
-	slotval1 := newQScreen_U(unsafe.Pointer(screen_ret))
+	slotval1 := newQScreen_U(unsafe.Pointer(screen))
 
 	gofunc(slotval1)
 }
@@ -418,8 +390,7 @@ func miqt_exec_callback_QGuiApplication_ScreenRemoved(cb *C.void, screen *C.QScr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	screen_ret := screen
-	slotval1 := newQScreen_U(unsafe.Pointer(screen_ret))
+	slotval1 := newQScreen_U(unsafe.Pointer(screen))
 
 	gofunc(slotval1)
 }
@@ -439,8 +410,7 @@ func miqt_exec_callback_QGuiApplication_PrimaryScreenChanged(cb *C.void, screen 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	screen_ret := screen
-	slotval1 := newQScreen_U(unsafe.Pointer(screen_ret))
+	slotval1 := newQScreen_U(unsafe.Pointer(screen))
 
 	gofunc(slotval1)
 }
@@ -477,8 +447,7 @@ func miqt_exec_callback_QGuiApplication_FocusObjectChanged(cb *C.void, focusObje
 	}
 
 	// Convert all CABI parameters to Go parameters
-	focusObject_ret := focusObject
-	slotval1 := newQObject_U(unsafe.Pointer(focusObject_ret))
+	slotval1 := newQObject_U(unsafe.Pointer(focusObject))
 
 	gofunc(slotval1)
 }
@@ -498,8 +467,7 @@ func miqt_exec_callback_QGuiApplication_FocusWindowChanged(cb *C.void, focusWind
 	}
 
 	// Convert all CABI parameters to Go parameters
-	focusWindow_ret := focusWindow
-	slotval1 := newQWindow_U(unsafe.Pointer(focusWindow_ret))
+	slotval1 := newQWindow_U(unsafe.Pointer(focusWindow))
 
 	gofunc(slotval1)
 }
@@ -519,8 +487,7 @@ func miqt_exec_callback_QGuiApplication_ApplicationStateChanged(cb *C.void, stat
 	}
 
 	// Convert all CABI parameters to Go parameters
-	state_ret := state
-	slotval1 := (ApplicationState)(state_ret)
+	slotval1 := (ApplicationState)(state)
 
 	gofunc(slotval1)
 }
@@ -540,8 +507,7 @@ func miqt_exec_callback_QGuiApplication_LayoutDirectionChanged(cb *C.void, direc
 	}
 
 	// Convert all CABI parameters to Go parameters
-	direction_ret := direction
-	slotval1 := (LayoutDirection)(direction_ret)
+	slotval1 := (LayoutDirection)(direction)
 
 	gofunc(slotval1)
 }
@@ -561,8 +527,7 @@ func miqt_exec_callback_QGuiApplication_CommitDataRequest(cb *C.void, sessionMan
 	}
 
 	// Convert all CABI parameters to Go parameters
-	sessionManager_ret := sessionManager
-	slotval1 := newQSessionManager_U(unsafe.Pointer(sessionManager_ret))
+	slotval1 := newQSessionManager_U(unsafe.Pointer(sessionManager))
 
 	gofunc(slotval1)
 }
@@ -582,8 +547,7 @@ func miqt_exec_callback_QGuiApplication_SaveStateRequest(cb *C.void, sessionMana
 	}
 
 	// Convert all CABI parameters to Go parameters
-	sessionManager_ret := sessionManager
-	slotval1 := newQSessionManager_U(unsafe.Pointer(sessionManager_ret))
+	slotval1 := newQSessionManager_U(unsafe.Pointer(sessionManager))
 
 	gofunc(slotval1)
 }
@@ -603,8 +567,7 @@ func miqt_exec_callback_QGuiApplication_PaletteChanged(cb *C.void, pal *C.QPalet
 	}
 
 	// Convert all CABI parameters to Go parameters
-	pal_ret := pal
-	slotval1 := newQPalette_U(unsafe.Pointer(pal_ret))
+	slotval1 := newQPalette_U(unsafe.Pointer(pal))
 
 	gofunc(slotval1)
 }
@@ -641,8 +604,7 @@ func miqt_exec_callback_QGuiApplication_FontChanged(cb *C.void, font *C.QFont) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	font_ret := font
-	slotval1 := newQFont_U(unsafe.Pointer(font_ret))
+	slotval1 := newQFont_U(unsafe.Pointer(font))
 
 	gofunc(slotval1)
 }

@@ -323,8 +323,7 @@ func (this *QBrush) Swap(other *QBrush) {
 }
 
 func (this *QBrush) Style() BrushStyle {
-	_ret := C.QBrush_Style(this.h)
-	return (BrushStyle)(_ret)
+	return (BrushStyle)(C.QBrush_Style(this.h))
 }
 
 func (this *QBrush) SetStyle(style BrushStyle) {
@@ -332,8 +331,7 @@ func (this *QBrush) SetStyle(style BrushStyle) {
 }
 
 func (this *QBrush) Matrix() *QMatrix {
-	_ret := C.QBrush_Matrix(this.h)
-	return newQMatrix_U(unsafe.Pointer(_ret))
+	return newQMatrix_U(unsafe.Pointer(C.QBrush_Matrix(this.h)))
 }
 
 func (this *QBrush) SetMatrix(mat *QMatrix) {
@@ -374,8 +372,7 @@ func (this *QBrush) SetTextureImage(image *QImage) {
 }
 
 func (this *QBrush) Color() *QColor {
-	_ret := C.QBrush_Color(this.h)
-	return newQColor_U(unsafe.Pointer(_ret))
+	return newQColor_U(unsafe.Pointer(C.QBrush_Color(this.h)))
 }
 
 func (this *QBrush) SetColor(color *QColor) {
@@ -387,28 +384,23 @@ func (this *QBrush) SetColorWithColor(color GlobalColor) {
 }
 
 func (this *QBrush) Gradient() *QGradient {
-	_ret := C.QBrush_Gradient(this.h)
-	return newQGradient_U(unsafe.Pointer(_ret))
+	return newQGradient_U(unsafe.Pointer(C.QBrush_Gradient(this.h)))
 }
 
 func (this *QBrush) IsOpaque() bool {
-	_ret := C.QBrush_IsOpaque(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QBrush_IsOpaque(this.h))
 }
 
 func (this *QBrush) OperatorEqual(b *QBrush) bool {
-	_ret := C.QBrush_OperatorEqual(this.h, b.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QBrush_OperatorEqual(this.h, b.cPointer()))
 }
 
 func (this *QBrush) OperatorNotEqual(b *QBrush) bool {
-	_ret := C.QBrush_OperatorNotEqual(this.h, b.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QBrush_OperatorNotEqual(this.h, b.cPointer()))
 }
 
 func (this *QBrush) IsDetached() bool {
-	_ret := C.QBrush_IsDetached(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QBrush_IsDetached(this.h))
 }
 
 // Delete this object from C++ memory.
@@ -512,8 +504,7 @@ func NewQGradient3(param1 *QGradient) *QGradient {
 }
 
 func (this *QGradient) Type() QGradient__Type {
-	_ret := C.QGradient_Type(this.h)
-	return (QGradient__Type)(_ret)
+	return (QGradient__Type)(C.QGradient_Type(this.h))
 }
 
 func (this *QGradient) SetSpread(spread QGradient__Spread) {
@@ -521,8 +512,7 @@ func (this *QGradient) SetSpread(spread QGradient__Spread) {
 }
 
 func (this *QGradient) Spread() QGradient__Spread {
-	_ret := C.QGradient_Spread(this.h)
-	return (QGradient__Spread)(_ret)
+	return (QGradient__Spread)(C.QGradient_Spread(this.h))
 }
 
 func (this *QGradient) SetColorAt(pos float64, color *QColor) {
@@ -530,8 +520,7 @@ func (this *QGradient) SetColorAt(pos float64, color *QColor) {
 }
 
 func (this *QGradient) CoordinateMode() QGradient__CoordinateMode {
-	_ret := C.QGradient_CoordinateMode(this.h)
-	return (QGradient__CoordinateMode)(_ret)
+	return (QGradient__CoordinateMode)(C.QGradient_CoordinateMode(this.h))
 }
 
 func (this *QGradient) SetCoordinateMode(mode QGradient__CoordinateMode) {
@@ -539,8 +528,7 @@ func (this *QGradient) SetCoordinateMode(mode QGradient__CoordinateMode) {
 }
 
 func (this *QGradient) InterpolationMode() QGradient__InterpolationMode {
-	_ret := C.QGradient_InterpolationMode(this.h)
-	return (QGradient__InterpolationMode)(_ret)
+	return (QGradient__InterpolationMode)(C.QGradient_InterpolationMode(this.h))
 }
 
 func (this *QGradient) SetInterpolationMode(mode QGradient__InterpolationMode) {
@@ -548,13 +536,11 @@ func (this *QGradient) SetInterpolationMode(mode QGradient__InterpolationMode) {
 }
 
 func (this *QGradient) OperatorEqual(gradient *QGradient) bool {
-	_ret := C.QGradient_OperatorEqual(this.h, gradient.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QGradient_OperatorEqual(this.h, gradient.cPointer()))
 }
 
 func (this *QGradient) OperatorNotEqual(other *QGradient) bool {
-	_ret := C.QGradient_OperatorNotEqual(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QGradient_OperatorNotEqual(this.h, other.cPointer()))
 }
 
 // Delete this object from C++ memory.
@@ -764,8 +750,7 @@ func (this *QRadialGradient) SetFocalPoint2(x float64, y float64) {
 }
 
 func (this *QRadialGradient) Radius() float64 {
-	_ret := C.QRadialGradient_Radius(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QRadialGradient_Radius(this.h))
 }
 
 func (this *QRadialGradient) SetRadius(radius float64) {
@@ -773,8 +758,7 @@ func (this *QRadialGradient) SetRadius(radius float64) {
 }
 
 func (this *QRadialGradient) CenterRadius() float64 {
-	_ret := C.QRadialGradient_CenterRadius(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QRadialGradient_CenterRadius(this.h))
 }
 
 func (this *QRadialGradient) SetCenterRadius(radius float64) {
@@ -782,8 +766,7 @@ func (this *QRadialGradient) SetCenterRadius(radius float64) {
 }
 
 func (this *QRadialGradient) FocalRadius() float64 {
-	_ret := C.QRadialGradient_FocalRadius(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QRadialGradient_FocalRadius(this.h))
 }
 
 func (this *QRadialGradient) SetFocalRadius(radius float64) {
@@ -867,8 +850,7 @@ func (this *QConicalGradient) SetCenter2(x float64, y float64) {
 }
 
 func (this *QConicalGradient) Angle() float64 {
-	_ret := C.QConicalGradient_Angle(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QConicalGradient_Angle(this.h))
 }
 
 func (this *QConicalGradient) SetAngle(angle float64) {

@@ -37,8 +37,7 @@ func newQAnimationGroup_U(h unsafe.Pointer) *QAnimationGroup {
 }
 
 func (this *QAnimationGroup) MetaObject() *QMetaObject {
-	_ret := C.QAnimationGroup_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QAnimationGroup_MetaObject(this.h)))
 }
 
 func QAnimationGroup_Tr(s string) string {
@@ -60,18 +59,15 @@ func QAnimationGroup_TrUtf8(s string) string {
 }
 
 func (this *QAnimationGroup) AnimationAt(index int) *QAbstractAnimation {
-	_ret := C.QAnimationGroup_AnimationAt(this.h, (C.int)(index))
-	return newQAbstractAnimation_U(unsafe.Pointer(_ret))
+	return newQAbstractAnimation_U(unsafe.Pointer(C.QAnimationGroup_AnimationAt(this.h, (C.int)(index))))
 }
 
 func (this *QAnimationGroup) AnimationCount() int {
-	_ret := C.QAnimationGroup_AnimationCount(this.h)
-	return (int)(_ret)
+	return (int)(C.QAnimationGroup_AnimationCount(this.h))
 }
 
 func (this *QAnimationGroup) IndexOfAnimation(animation *QAbstractAnimation) int {
-	_ret := C.QAnimationGroup_IndexOfAnimation(this.h, animation.cPointer())
-	return (int)(_ret)
+	return (int)(C.QAnimationGroup_IndexOfAnimation(this.h, animation.cPointer()))
 }
 
 func (this *QAnimationGroup) AddAnimation(animation *QAbstractAnimation) {
@@ -87,8 +83,7 @@ func (this *QAnimationGroup) RemoveAnimation(animation *QAbstractAnimation) {
 }
 
 func (this *QAnimationGroup) TakeAnimation(index int) *QAbstractAnimation {
-	_ret := C.QAnimationGroup_TakeAnimation(this.h, (C.int)(index))
-	return newQAbstractAnimation_U(unsafe.Pointer(_ret))
+	return newQAbstractAnimation_U(unsafe.Pointer(C.QAnimationGroup_TakeAnimation(this.h, (C.int)(index))))
 }
 
 func (this *QAnimationGroup) Clear() {

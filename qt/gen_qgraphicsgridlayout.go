@@ -61,8 +61,7 @@ func (this *QGraphicsGridLayout) SetHorizontalSpacing(spacing float64) {
 }
 
 func (this *QGraphicsGridLayout) HorizontalSpacing() float64 {
-	_ret := C.QGraphicsGridLayout_HorizontalSpacing(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QGraphicsGridLayout_HorizontalSpacing(this.h))
 }
 
 func (this *QGraphicsGridLayout) SetVerticalSpacing(spacing float64) {
@@ -70,8 +69,7 @@ func (this *QGraphicsGridLayout) SetVerticalSpacing(spacing float64) {
 }
 
 func (this *QGraphicsGridLayout) VerticalSpacing() float64 {
-	_ret := C.QGraphicsGridLayout_VerticalSpacing(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QGraphicsGridLayout_VerticalSpacing(this.h))
 }
 
 func (this *QGraphicsGridLayout) SetSpacing(spacing float64) {
@@ -83,8 +81,7 @@ func (this *QGraphicsGridLayout) SetRowSpacing(row int, spacing float64) {
 }
 
 func (this *QGraphicsGridLayout) RowSpacing(row int) float64 {
-	_ret := C.QGraphicsGridLayout_RowSpacing(this.h, (C.int)(row))
-	return (float64)(_ret)
+	return (float64)(C.QGraphicsGridLayout_RowSpacing(this.h, (C.int)(row)))
 }
 
 func (this *QGraphicsGridLayout) SetColumnSpacing(column int, spacing float64) {
@@ -92,8 +89,7 @@ func (this *QGraphicsGridLayout) SetColumnSpacing(column int, spacing float64) {
 }
 
 func (this *QGraphicsGridLayout) ColumnSpacing(column int) float64 {
-	_ret := C.QGraphicsGridLayout_ColumnSpacing(this.h, (C.int)(column))
-	return (float64)(_ret)
+	return (float64)(C.QGraphicsGridLayout_ColumnSpacing(this.h, (C.int)(column)))
 }
 
 func (this *QGraphicsGridLayout) SetRowStretchFactor(row int, stretch int) {
@@ -101,8 +97,7 @@ func (this *QGraphicsGridLayout) SetRowStretchFactor(row int, stretch int) {
 }
 
 func (this *QGraphicsGridLayout) RowStretchFactor(row int) int {
-	_ret := C.QGraphicsGridLayout_RowStretchFactor(this.h, (C.int)(row))
-	return (int)(_ret)
+	return (int)(C.QGraphicsGridLayout_RowStretchFactor(this.h, (C.int)(row)))
 }
 
 func (this *QGraphicsGridLayout) SetColumnStretchFactor(column int, stretch int) {
@@ -110,8 +105,7 @@ func (this *QGraphicsGridLayout) SetColumnStretchFactor(column int, stretch int)
 }
 
 func (this *QGraphicsGridLayout) ColumnStretchFactor(column int) int {
-	_ret := C.QGraphicsGridLayout_ColumnStretchFactor(this.h, (C.int)(column))
-	return (int)(_ret)
+	return (int)(C.QGraphicsGridLayout_ColumnStretchFactor(this.h, (C.int)(column)))
 }
 
 func (this *QGraphicsGridLayout) SetRowMinimumHeight(row int, height float64) {
@@ -119,8 +113,7 @@ func (this *QGraphicsGridLayout) SetRowMinimumHeight(row int, height float64) {
 }
 
 func (this *QGraphicsGridLayout) RowMinimumHeight(row int) float64 {
-	_ret := C.QGraphicsGridLayout_RowMinimumHeight(this.h, (C.int)(row))
-	return (float64)(_ret)
+	return (float64)(C.QGraphicsGridLayout_RowMinimumHeight(this.h, (C.int)(row)))
 }
 
 func (this *QGraphicsGridLayout) SetRowPreferredHeight(row int, height float64) {
@@ -128,8 +121,7 @@ func (this *QGraphicsGridLayout) SetRowPreferredHeight(row int, height float64) 
 }
 
 func (this *QGraphicsGridLayout) RowPreferredHeight(row int) float64 {
-	_ret := C.QGraphicsGridLayout_RowPreferredHeight(this.h, (C.int)(row))
-	return (float64)(_ret)
+	return (float64)(C.QGraphicsGridLayout_RowPreferredHeight(this.h, (C.int)(row)))
 }
 
 func (this *QGraphicsGridLayout) SetRowMaximumHeight(row int, height float64) {
@@ -137,8 +129,7 @@ func (this *QGraphicsGridLayout) SetRowMaximumHeight(row int, height float64) {
 }
 
 func (this *QGraphicsGridLayout) RowMaximumHeight(row int) float64 {
-	_ret := C.QGraphicsGridLayout_RowMaximumHeight(this.h, (C.int)(row))
-	return (float64)(_ret)
+	return (float64)(C.QGraphicsGridLayout_RowMaximumHeight(this.h, (C.int)(row)))
 }
 
 func (this *QGraphicsGridLayout) SetRowFixedHeight(row int, height float64) {
@@ -150,8 +141,7 @@ func (this *QGraphicsGridLayout) SetColumnMinimumWidth(column int, width float64
 }
 
 func (this *QGraphicsGridLayout) ColumnMinimumWidth(column int) float64 {
-	_ret := C.QGraphicsGridLayout_ColumnMinimumWidth(this.h, (C.int)(column))
-	return (float64)(_ret)
+	return (float64)(C.QGraphicsGridLayout_ColumnMinimumWidth(this.h, (C.int)(column)))
 }
 
 func (this *QGraphicsGridLayout) SetColumnPreferredWidth(column int, width float64) {
@@ -159,8 +149,7 @@ func (this *QGraphicsGridLayout) SetColumnPreferredWidth(column int, width float
 }
 
 func (this *QGraphicsGridLayout) ColumnPreferredWidth(column int) float64 {
-	_ret := C.QGraphicsGridLayout_ColumnPreferredWidth(this.h, (C.int)(column))
-	return (float64)(_ret)
+	return (float64)(C.QGraphicsGridLayout_ColumnPreferredWidth(this.h, (C.int)(column)))
 }
 
 func (this *QGraphicsGridLayout) SetColumnMaximumWidth(column int, width float64) {
@@ -168,8 +157,7 @@ func (this *QGraphicsGridLayout) SetColumnMaximumWidth(column int, width float64
 }
 
 func (this *QGraphicsGridLayout) ColumnMaximumWidth(column int) float64 {
-	_ret := C.QGraphicsGridLayout_ColumnMaximumWidth(this.h, (C.int)(column))
-	return (float64)(_ret)
+	return (float64)(C.QGraphicsGridLayout_ColumnMaximumWidth(this.h, (C.int)(column)))
 }
 
 func (this *QGraphicsGridLayout) SetColumnFixedWidth(column int, width float64) {
@@ -181,8 +169,7 @@ func (this *QGraphicsGridLayout) SetRowAlignment(row int, alignment int) {
 }
 
 func (this *QGraphicsGridLayout) RowAlignment(row int) int {
-	_ret := C.QGraphicsGridLayout_RowAlignment(this.h, (C.int)(row))
-	return (int)(_ret)
+	return (int)(C.QGraphicsGridLayout_RowAlignment(this.h, (C.int)(row)))
 }
 
 func (this *QGraphicsGridLayout) SetColumnAlignment(column int, alignment int) {
@@ -190,8 +177,7 @@ func (this *QGraphicsGridLayout) SetColumnAlignment(column int, alignment int) {
 }
 
 func (this *QGraphicsGridLayout) ColumnAlignment(column int) int {
-	_ret := C.QGraphicsGridLayout_ColumnAlignment(this.h, (C.int)(column))
-	return (int)(_ret)
+	return (int)(C.QGraphicsGridLayout_ColumnAlignment(this.h, (C.int)(column)))
 }
 
 func (this *QGraphicsGridLayout) SetAlignment(item *QGraphicsLayoutItem, alignment int) {
@@ -199,33 +185,27 @@ func (this *QGraphicsGridLayout) SetAlignment(item *QGraphicsLayoutItem, alignme
 }
 
 func (this *QGraphicsGridLayout) Alignment(item *QGraphicsLayoutItem) int {
-	_ret := C.QGraphicsGridLayout_Alignment(this.h, item.cPointer())
-	return (int)(_ret)
+	return (int)(C.QGraphicsGridLayout_Alignment(this.h, item.cPointer()))
 }
 
 func (this *QGraphicsGridLayout) RowCount() int {
-	_ret := C.QGraphicsGridLayout_RowCount(this.h)
-	return (int)(_ret)
+	return (int)(C.QGraphicsGridLayout_RowCount(this.h))
 }
 
 func (this *QGraphicsGridLayout) ColumnCount() int {
-	_ret := C.QGraphicsGridLayout_ColumnCount(this.h)
-	return (int)(_ret)
+	return (int)(C.QGraphicsGridLayout_ColumnCount(this.h))
 }
 
 func (this *QGraphicsGridLayout) ItemAt(row int, column int) *QGraphicsLayoutItem {
-	_ret := C.QGraphicsGridLayout_ItemAt(this.h, (C.int)(row), (C.int)(column))
-	return newQGraphicsLayoutItem_U(unsafe.Pointer(_ret))
+	return newQGraphicsLayoutItem_U(unsafe.Pointer(C.QGraphicsGridLayout_ItemAt(this.h, (C.int)(row), (C.int)(column))))
 }
 
 func (this *QGraphicsGridLayout) Count() int {
-	_ret := C.QGraphicsGridLayout_Count(this.h)
-	return (int)(_ret)
+	return (int)(C.QGraphicsGridLayout_Count(this.h))
 }
 
 func (this *QGraphicsGridLayout) ItemAtWithIndex(index int) *QGraphicsLayoutItem {
-	_ret := C.QGraphicsGridLayout_ItemAtWithIndex(this.h, (C.int)(index))
-	return newQGraphicsLayoutItem_U(unsafe.Pointer(_ret))
+	return newQGraphicsLayoutItem_U(unsafe.Pointer(C.QGraphicsGridLayout_ItemAtWithIndex(this.h, (C.int)(index))))
 }
 
 func (this *QGraphicsGridLayout) RemoveAt(index int) {

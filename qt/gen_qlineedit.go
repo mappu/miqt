@@ -82,8 +82,7 @@ func NewQLineEdit4(param1 string, parent *QWidget) *QLineEdit {
 }
 
 func (this *QLineEdit) MetaObject() *QMetaObject {
-	_ret := C.QLineEdit_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QLineEdit_MetaObject(this.h)))
 }
 
 func QLineEdit_Tr(s string) string {
@@ -132,8 +131,7 @@ func (this *QLineEdit) SetPlaceholderText(placeholderText string) {
 }
 
 func (this *QLineEdit) MaxLength() int {
-	_ret := C.QLineEdit_MaxLength(this.h)
-	return (int)(_ret)
+	return (int)(C.QLineEdit_MaxLength(this.h))
 }
 
 func (this *QLineEdit) SetMaxLength(maxLength int) {
@@ -145,8 +143,7 @@ func (this *QLineEdit) SetFrame(frame bool) {
 }
 
 func (this *QLineEdit) HasFrame() bool {
-	_ret := C.QLineEdit_HasFrame(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QLineEdit_HasFrame(this.h))
 }
 
 func (this *QLineEdit) SetClearButtonEnabled(enable bool) {
@@ -154,13 +151,11 @@ func (this *QLineEdit) SetClearButtonEnabled(enable bool) {
 }
 
 func (this *QLineEdit) IsClearButtonEnabled() bool {
-	_ret := C.QLineEdit_IsClearButtonEnabled(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QLineEdit_IsClearButtonEnabled(this.h))
 }
 
 func (this *QLineEdit) EchoMode() QLineEdit__EchoMode {
-	_ret := C.QLineEdit_EchoMode(this.h)
-	return (QLineEdit__EchoMode)(_ret)
+	return (QLineEdit__EchoMode)(C.QLineEdit_EchoMode(this.h))
 }
 
 func (this *QLineEdit) SetEchoMode(echoMode QLineEdit__EchoMode) {
@@ -168,8 +163,7 @@ func (this *QLineEdit) SetEchoMode(echoMode QLineEdit__EchoMode) {
 }
 
 func (this *QLineEdit) IsReadOnly() bool {
-	_ret := C.QLineEdit_IsReadOnly(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QLineEdit_IsReadOnly(this.h))
 }
 
 func (this *QLineEdit) SetReadOnly(readOnly bool) {
@@ -181,8 +175,7 @@ func (this *QLineEdit) SetValidator(validator *QValidator) {
 }
 
 func (this *QLineEdit) Validator() *QValidator {
-	_ret := C.QLineEdit_Validator(this.h)
-	return newQValidator_U(unsafe.Pointer(_ret))
+	return newQValidator_U(unsafe.Pointer(C.QLineEdit_Validator(this.h)))
 }
 
 func (this *QLineEdit) SetCompleter(completer *QCompleter) {
@@ -190,8 +183,7 @@ func (this *QLineEdit) SetCompleter(completer *QCompleter) {
 }
 
 func (this *QLineEdit) Completer() *QCompleter {
-	_ret := C.QLineEdit_Completer(this.h)
-	return newQCompleter_U(unsafe.Pointer(_ret))
+	return newQCompleter_U(unsafe.Pointer(C.QLineEdit_Completer(this.h)))
 }
 
 func (this *QLineEdit) SizeHint() *QSize {
@@ -209,8 +201,7 @@ func (this *QLineEdit) MinimumSizeHint() *QSize {
 }
 
 func (this *QLineEdit) CursorPosition() int {
-	_ret := C.QLineEdit_CursorPosition(this.h)
-	return (int)(_ret)
+	return (int)(C.QLineEdit_CursorPosition(this.h))
 }
 
 func (this *QLineEdit) SetCursorPosition(cursorPosition int) {
@@ -218,8 +209,7 @@ func (this *QLineEdit) SetCursorPosition(cursorPosition int) {
 }
 
 func (this *QLineEdit) CursorPositionAt(pos *QPoint) int {
-	_ret := C.QLineEdit_CursorPositionAt(this.h, pos.cPointer())
-	return (int)(_ret)
+	return (int)(C.QLineEdit_CursorPositionAt(this.h, pos.cPointer()))
 }
 
 func (this *QLineEdit) SetAlignment(flag int) {
@@ -227,8 +217,7 @@ func (this *QLineEdit) SetAlignment(flag int) {
 }
 
 func (this *QLineEdit) Alignment() int {
-	_ret := C.QLineEdit_Alignment(this.h)
-	return (int)(_ret)
+	return (int)(C.QLineEdit_Alignment(this.h))
 }
 
 func (this *QLineEdit) CursorForward(mark bool) {
@@ -264,8 +253,7 @@ func (this *QLineEdit) End(mark bool) {
 }
 
 func (this *QLineEdit) IsModified() bool {
-	_ret := C.QLineEdit_IsModified(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QLineEdit_IsModified(this.h))
 }
 
 func (this *QLineEdit) SetModified(modified bool) {
@@ -277,8 +265,7 @@ func (this *QLineEdit) SetSelection(param1 int, param2 int) {
 }
 
 func (this *QLineEdit) HasSelectedText() bool {
-	_ret := C.QLineEdit_HasSelectedText(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QLineEdit_HasSelectedText(this.h))
 }
 
 func (this *QLineEdit) SelectedText() string {
@@ -289,28 +276,23 @@ func (this *QLineEdit) SelectedText() string {
 }
 
 func (this *QLineEdit) SelectionStart() int {
-	_ret := C.QLineEdit_SelectionStart(this.h)
-	return (int)(_ret)
+	return (int)(C.QLineEdit_SelectionStart(this.h))
 }
 
 func (this *QLineEdit) SelectionEnd() int {
-	_ret := C.QLineEdit_SelectionEnd(this.h)
-	return (int)(_ret)
+	return (int)(C.QLineEdit_SelectionEnd(this.h))
 }
 
 func (this *QLineEdit) SelectionLength() int {
-	_ret := C.QLineEdit_SelectionLength(this.h)
-	return (int)(_ret)
+	return (int)(C.QLineEdit_SelectionLength(this.h))
 }
 
 func (this *QLineEdit) IsUndoAvailable() bool {
-	_ret := C.QLineEdit_IsUndoAvailable(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QLineEdit_IsUndoAvailable(this.h))
 }
 
 func (this *QLineEdit) IsRedoAvailable() bool {
-	_ret := C.QLineEdit_IsRedoAvailable(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QLineEdit_IsRedoAvailable(this.h))
 }
 
 func (this *QLineEdit) SetDragEnabled(b bool) {
@@ -318,8 +300,7 @@ func (this *QLineEdit) SetDragEnabled(b bool) {
 }
 
 func (this *QLineEdit) DragEnabled() bool {
-	_ret := C.QLineEdit_DragEnabled(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QLineEdit_DragEnabled(this.h))
 }
 
 func (this *QLineEdit) SetCursorMoveStyle(style CursorMoveStyle) {
@@ -327,8 +308,7 @@ func (this *QLineEdit) SetCursorMoveStyle(style CursorMoveStyle) {
 }
 
 func (this *QLineEdit) CursorMoveStyle() CursorMoveStyle {
-	_ret := C.QLineEdit_CursorMoveStyle(this.h)
-	return (CursorMoveStyle)(_ret)
+	return (CursorMoveStyle)(C.QLineEdit_CursorMoveStyle(this.h))
 }
 
 func (this *QLineEdit) InputMask() string {
@@ -345,8 +325,7 @@ func (this *QLineEdit) SetInputMask(inputMask string) {
 }
 
 func (this *QLineEdit) HasAcceptableInput() bool {
-	_ret := C.QLineEdit_HasAcceptableInput(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QLineEdit_HasAcceptableInput(this.h))
 }
 
 func (this *QLineEdit) SetTextMargins(left int, top int, right int, bottom int) {
@@ -373,8 +352,7 @@ func (this *QLineEdit) AddAction(action *QAction, position QLineEdit__ActionPosi
 }
 
 func (this *QLineEdit) AddAction2(icon *QIcon, position QLineEdit__ActionPosition) *QAction {
-	_ret := C.QLineEdit_AddAction2(this.h, icon.cPointer(), (C.uintptr_t)(position))
-	return newQAction_U(unsafe.Pointer(_ret))
+	return newQAction_U(unsafe.Pointer(C.QLineEdit_AddAction2(this.h, icon.cPointer(), (C.uintptr_t)(position))))
 }
 
 func (this *QLineEdit) SetText(text string) {
@@ -422,8 +400,7 @@ func (this *QLineEdit) Insert(param1 string) {
 }
 
 func (this *QLineEdit) CreateStandardContextMenu() *QMenu {
-	_ret := C.QLineEdit_CreateStandardContextMenu(this.h)
-	return newQMenu_U(unsafe.Pointer(_ret))
+	return newQMenu_U(unsafe.Pointer(C.QLineEdit_CreateStandardContextMenu(this.h)))
 }
 
 func (this *QLineEdit) TextChanged(param1 string) {
@@ -491,11 +468,9 @@ func miqt_exec_callback_QLineEdit_CursorPositionChanged(cb *C.void, param1 C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	param1_ret := param1
-	slotval1 := (int)(param1_ret)
+	slotval1 := (int)(param1)
 
-	param2_ret := param2
-	slotval2 := (int)(param2_ret)
+	slotval2 := (int)(param2)
 
 	gofunc(slotval1, slotval2)
 }
@@ -583,8 +558,7 @@ func (this *QLineEdit) InputMethodQuery2(property InputMethodQuery, argument QVa
 }
 
 func (this *QLineEdit) Event(param1 *QEvent) bool {
-	_ret := C.QLineEdit_Event(this.h, param1.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QLineEdit_Event(this.h, param1.cPointer()))
 }
 
 func QLineEdit_Tr2(s string, c string) string {

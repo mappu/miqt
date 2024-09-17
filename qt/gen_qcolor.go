@@ -138,8 +138,7 @@ func (this *QColor) OperatorAssignWithColor(color GlobalColor) {
 }
 
 func (this *QColor) IsValid() bool {
-	_ret := C.QColor_IsValid(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QColor_IsValid(this.h))
 }
 
 func (this *QColor) Name() string {
@@ -167,21 +166,21 @@ func QColor_ColorNames() []string {
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = C.GoStringN(&_outCast[i].data, C.int(int64(_outCast[i].len)))
-		C.free(unsafe.Pointer(_outCast[i])) // free the inner miqt_string*
+		var _lv_ms *C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoStringN(&_lv_ms.data, C.int(int64(_lv_ms.len)))
+		C.free(unsafe.Pointer(_lv_ms))
+		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QColor) Spec() QColor__Spec {
-	_ret := C.QColor_Spec(this.h)
-	return (QColor__Spec)(_ret)
+	return (QColor__Spec)(C.QColor_Spec(this.h))
 }
 
 func (this *QColor) Alpha() int {
-	_ret := C.QColor_Alpha(this.h)
-	return (int)(_ret)
+	return (int)(C.QColor_Alpha(this.h))
 }
 
 func (this *QColor) SetAlpha(alpha int) {
@@ -189,8 +188,7 @@ func (this *QColor) SetAlpha(alpha int) {
 }
 
 func (this *QColor) AlphaF() float64 {
-	_ret := C.QColor_AlphaF(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QColor_AlphaF(this.h))
 }
 
 func (this *QColor) SetAlphaF(alpha float64) {
@@ -198,18 +196,15 @@ func (this *QColor) SetAlphaF(alpha float64) {
 }
 
 func (this *QColor) Red() int {
-	_ret := C.QColor_Red(this.h)
-	return (int)(_ret)
+	return (int)(C.QColor_Red(this.h))
 }
 
 func (this *QColor) Green() int {
-	_ret := C.QColor_Green(this.h)
-	return (int)(_ret)
+	return (int)(C.QColor_Green(this.h))
 }
 
 func (this *QColor) Blue() int {
-	_ret := C.QColor_Blue(this.h)
-	return (int)(_ret)
+	return (int)(C.QColor_Blue(this.h))
 }
 
 func (this *QColor) SetRed(red int) {
@@ -225,18 +220,15 @@ func (this *QColor) SetBlue(blue int) {
 }
 
 func (this *QColor) RedF() float64 {
-	_ret := C.QColor_RedF(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QColor_RedF(this.h))
 }
 
 func (this *QColor) GreenF() float64 {
-	_ret := C.QColor_GreenF(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QColor_GreenF(this.h))
 }
 
 func (this *QColor) BlueF() float64 {
-	_ret := C.QColor_BlueF(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QColor_BlueF(this.h))
 }
 
 func (this *QColor) SetRedF(red float64) {
@@ -279,8 +271,7 @@ func (this *QColor) SetRgba64(rgba QRgba64) {
 }
 
 func (this *QColor) Rgba() uint {
-	_ret := C.QColor_Rgba(this.h)
-	return (uint)(_ret)
+	return (uint)(C.QColor_Rgba(this.h))
 }
 
 func (this *QColor) SetRgba(rgba uint) {
@@ -288,8 +279,7 @@ func (this *QColor) SetRgba(rgba uint) {
 }
 
 func (this *QColor) Rgb() uint {
-	_ret := C.QColor_Rgb(this.h)
-	return (uint)(_ret)
+	return (uint)(C.QColor_Rgb(this.h))
 }
 
 func (this *QColor) SetRgbWithRgb(rgb uint) {
@@ -297,53 +287,43 @@ func (this *QColor) SetRgbWithRgb(rgb uint) {
 }
 
 func (this *QColor) Hue() int {
-	_ret := C.QColor_Hue(this.h)
-	return (int)(_ret)
+	return (int)(C.QColor_Hue(this.h))
 }
 
 func (this *QColor) Saturation() int {
-	_ret := C.QColor_Saturation(this.h)
-	return (int)(_ret)
+	return (int)(C.QColor_Saturation(this.h))
 }
 
 func (this *QColor) HsvHue() int {
-	_ret := C.QColor_HsvHue(this.h)
-	return (int)(_ret)
+	return (int)(C.QColor_HsvHue(this.h))
 }
 
 func (this *QColor) HsvSaturation() int {
-	_ret := C.QColor_HsvSaturation(this.h)
-	return (int)(_ret)
+	return (int)(C.QColor_HsvSaturation(this.h))
 }
 
 func (this *QColor) Value() int {
-	_ret := C.QColor_Value(this.h)
-	return (int)(_ret)
+	return (int)(C.QColor_Value(this.h))
 }
 
 func (this *QColor) HueF() float64 {
-	_ret := C.QColor_HueF(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QColor_HueF(this.h))
 }
 
 func (this *QColor) SaturationF() float64 {
-	_ret := C.QColor_SaturationF(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QColor_SaturationF(this.h))
 }
 
 func (this *QColor) HsvHueF() float64 {
-	_ret := C.QColor_HsvHueF(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QColor_HsvHueF(this.h))
 }
 
 func (this *QColor) HsvSaturationF() float64 {
-	_ret := C.QColor_HsvSaturationF(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QColor_HsvSaturationF(this.h))
 }
 
 func (this *QColor) ValueF() float64 {
-	_ret := C.QColor_ValueF(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QColor_ValueF(this.h))
 }
 
 func (this *QColor) GetHsv(h *int, s *int, v *int) {
@@ -363,43 +343,35 @@ func (this *QColor) SetHsvF(h float64, s float64, v float64) {
 }
 
 func (this *QColor) Cyan() int {
-	_ret := C.QColor_Cyan(this.h)
-	return (int)(_ret)
+	return (int)(C.QColor_Cyan(this.h))
 }
 
 func (this *QColor) Magenta() int {
-	_ret := C.QColor_Magenta(this.h)
-	return (int)(_ret)
+	return (int)(C.QColor_Magenta(this.h))
 }
 
 func (this *QColor) Yellow() int {
-	_ret := C.QColor_Yellow(this.h)
-	return (int)(_ret)
+	return (int)(C.QColor_Yellow(this.h))
 }
 
 func (this *QColor) Black() int {
-	_ret := C.QColor_Black(this.h)
-	return (int)(_ret)
+	return (int)(C.QColor_Black(this.h))
 }
 
 func (this *QColor) CyanF() float64 {
-	_ret := C.QColor_CyanF(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QColor_CyanF(this.h))
 }
 
 func (this *QColor) MagentaF() float64 {
-	_ret := C.QColor_MagentaF(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QColor_MagentaF(this.h))
 }
 
 func (this *QColor) YellowF() float64 {
-	_ret := C.QColor_YellowF(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QColor_YellowF(this.h))
 }
 
 func (this *QColor) BlackF() float64 {
-	_ret := C.QColor_BlackF(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QColor_BlackF(this.h))
 }
 
 func (this *QColor) GetCmyk(c *int, m *int, y *int, k *int) {
@@ -427,33 +399,27 @@ func (this *QColor) SetCmykF(c float64, m float64, y float64, k float64) {
 }
 
 func (this *QColor) HslHue() int {
-	_ret := C.QColor_HslHue(this.h)
-	return (int)(_ret)
+	return (int)(C.QColor_HslHue(this.h))
 }
 
 func (this *QColor) HslSaturation() int {
-	_ret := C.QColor_HslSaturation(this.h)
-	return (int)(_ret)
+	return (int)(C.QColor_HslSaturation(this.h))
 }
 
 func (this *QColor) Lightness() int {
-	_ret := C.QColor_Lightness(this.h)
-	return (int)(_ret)
+	return (int)(C.QColor_Lightness(this.h))
 }
 
 func (this *QColor) HslHueF() float64 {
-	_ret := C.QColor_HslHueF(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QColor_HslHueF(this.h))
 }
 
 func (this *QColor) HslSaturationF() float64 {
-	_ret := C.QColor_HslSaturationF(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QColor_HslSaturationF(this.h))
 }
 
 func (this *QColor) LightnessF() float64 {
-	_ret := C.QColor_LightnessF(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QColor_LightnessF(this.h))
 }
 
 func (this *QColor) GetHsl(h *int, s *int, l *int) {
@@ -627,20 +593,17 @@ func (this *QColor) Darker() *QColor {
 }
 
 func (this *QColor) OperatorEqual(c *QColor) bool {
-	_ret := C.QColor_OperatorEqual(this.h, c.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QColor_OperatorEqual(this.h, c.cPointer()))
 }
 
 func (this *QColor) OperatorNotEqual(c *QColor) bool {
-	_ret := C.QColor_OperatorNotEqual(this.h, c.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QColor_OperatorNotEqual(this.h, c.cPointer()))
 }
 
 func QColor_IsValidColor(name string) bool {
 	name_ms := miqt_strdupg(name)
 	defer C.free(name_ms)
-	_ret := C.QColor_IsValidColor((*C.struct_miqt_string)(name_ms))
-	return (bool)(_ret)
+	return (bool)(C.QColor_IsValidColor((*C.struct_miqt_string)(name_ms)))
 }
 
 func (this *QColor) GetRgb4(r *int, g *int, b *int, a *int) {

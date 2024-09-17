@@ -72,13 +72,11 @@ func NewQQuaternion6(param1 *QQuaternion) *QQuaternion {
 }
 
 func (this *QQuaternion) IsNull() bool {
-	_ret := C.QQuaternion_IsNull(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QQuaternion_IsNull(this.h))
 }
 
 func (this *QQuaternion) IsIdentity() bool {
-	_ret := C.QQuaternion_IsIdentity(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QQuaternion_IsIdentity(this.h))
 }
 
 func (this *QQuaternion) Vector() *QVector3D {
@@ -97,23 +95,19 @@ func (this *QQuaternion) SetVector2(x float32, y float32, z float32) {
 }
 
 func (this *QQuaternion) X() float32 {
-	_ret := C.QQuaternion_X(this.h)
-	return (float32)(_ret)
+	return (float32)(C.QQuaternion_X(this.h))
 }
 
 func (this *QQuaternion) Y() float32 {
-	_ret := C.QQuaternion_Y(this.h)
-	return (float32)(_ret)
+	return (float32)(C.QQuaternion_Y(this.h))
 }
 
 func (this *QQuaternion) Z() float32 {
-	_ret := C.QQuaternion_Z(this.h)
-	return (float32)(_ret)
+	return (float32)(C.QQuaternion_Z(this.h))
 }
 
 func (this *QQuaternion) Scalar() float32 {
-	_ret := C.QQuaternion_Scalar(this.h)
-	return (float32)(_ret)
+	return (float32)(C.QQuaternion_Scalar(this.h))
 }
 
 func (this *QQuaternion) SetX(x float32) {
@@ -133,18 +127,15 @@ func (this *QQuaternion) SetScalar(scalar float32) {
 }
 
 func QQuaternion_DotProduct(q1 *QQuaternion, q2 *QQuaternion) float32 {
-	_ret := C.QQuaternion_DotProduct(q1.cPointer(), q2.cPointer())
-	return (float32)(_ret)
+	return (float32)(C.QQuaternion_DotProduct(q1.cPointer(), q2.cPointer()))
 }
 
 func (this *QQuaternion) Length() float32 {
-	_ret := C.QQuaternion_Length(this.h)
-	return (float32)(_ret)
+	return (float32)(C.QQuaternion_Length(this.h))
 }
 
 func (this *QQuaternion) LengthSquared() float32 {
-	_ret := C.QQuaternion_LengthSquared(this.h)
-	return (float32)(_ret)
+	return (float32)(C.QQuaternion_LengthSquared(this.h))
 }
 
 func (this *QQuaternion) Normalized() *QQuaternion {
@@ -187,28 +178,23 @@ func (this *QQuaternion) RotatedVector(vector *QVector3D) *QVector3D {
 }
 
 func (this *QQuaternion) OperatorPlusAssign(quaternion *QQuaternion) *QQuaternion {
-	_ret := C.QQuaternion_OperatorPlusAssign(this.h, quaternion.cPointer())
-	return newQQuaternion_U(unsafe.Pointer(_ret))
+	return newQQuaternion_U(unsafe.Pointer(C.QQuaternion_OperatorPlusAssign(this.h, quaternion.cPointer())))
 }
 
 func (this *QQuaternion) OperatorMinusAssign(quaternion *QQuaternion) *QQuaternion {
-	_ret := C.QQuaternion_OperatorMinusAssign(this.h, quaternion.cPointer())
-	return newQQuaternion_U(unsafe.Pointer(_ret))
+	return newQQuaternion_U(unsafe.Pointer(C.QQuaternion_OperatorMinusAssign(this.h, quaternion.cPointer())))
 }
 
 func (this *QQuaternion) OperatorMultiplyAssign(factor float32) *QQuaternion {
-	_ret := C.QQuaternion_OperatorMultiplyAssign(this.h, (C.float)(factor))
-	return newQQuaternion_U(unsafe.Pointer(_ret))
+	return newQQuaternion_U(unsafe.Pointer(C.QQuaternion_OperatorMultiplyAssign(this.h, (C.float)(factor))))
 }
 
 func (this *QQuaternion) OperatorMultiplyAssignWithQuaternion(quaternion *QQuaternion) *QQuaternion {
-	_ret := C.QQuaternion_OperatorMultiplyAssignWithQuaternion(this.h, quaternion.cPointer())
-	return newQQuaternion_U(unsafe.Pointer(_ret))
+	return newQQuaternion_U(unsafe.Pointer(C.QQuaternion_OperatorMultiplyAssignWithQuaternion(this.h, quaternion.cPointer())))
 }
 
 func (this *QQuaternion) OperatorDivideAssign(divisor float32) *QQuaternion {
-	_ret := C.QQuaternion_OperatorDivideAssign(this.h, (C.float)(divisor))
-	return newQQuaternion_U(unsafe.Pointer(_ret))
+	return newQQuaternion_U(unsafe.Pointer(C.QQuaternion_OperatorDivideAssign(this.h, (C.float)(divisor))))
 }
 
 func (this *QQuaternion) ToVector4D() *QVector4D {

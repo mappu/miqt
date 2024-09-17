@@ -86,8 +86,7 @@ func NewQSharedMemory4(key string, parent *QObject) *QSharedMemory {
 }
 
 func (this *QSharedMemory) MetaObject() *QMetaObject {
-	_ret := C.QSharedMemory_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QSharedMemory_MetaObject(this.h)))
 }
 
 func QSharedMemory_Tr(s string) string {
@@ -135,43 +134,35 @@ func (this *QSharedMemory) NativeKey() string {
 }
 
 func (this *QSharedMemory) Create(size int) bool {
-	_ret := C.QSharedMemory_Create(this.h, (C.int)(size))
-	return (bool)(_ret)
+	return (bool)(C.QSharedMemory_Create(this.h, (C.int)(size)))
 }
 
 func (this *QSharedMemory) Size() int {
-	_ret := C.QSharedMemory_Size(this.h)
-	return (int)(_ret)
+	return (int)(C.QSharedMemory_Size(this.h))
 }
 
 func (this *QSharedMemory) Attach() bool {
-	_ret := C.QSharedMemory_Attach(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QSharedMemory_Attach(this.h))
 }
 
 func (this *QSharedMemory) IsAttached() bool {
-	_ret := C.QSharedMemory_IsAttached(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QSharedMemory_IsAttached(this.h))
 }
 
 func (this *QSharedMemory) Detach() bool {
-	_ret := C.QSharedMemory_Detach(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QSharedMemory_Detach(this.h))
 }
 
 func (this *QSharedMemory) Lock() bool {
-	_ret := C.QSharedMemory_Lock(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QSharedMemory_Lock(this.h))
 }
 
 func (this *QSharedMemory) Unlock() bool {
-	_ret := C.QSharedMemory_Unlock(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QSharedMemory_Unlock(this.h))
 }
 
 func (this *QSharedMemory) Error() QSharedMemory__SharedMemoryError {
-	_ret := C.QSharedMemory_Error(this.h)
-	return (QSharedMemory__SharedMemoryError)(_ret)
+	return (QSharedMemory__SharedMemoryError)(C.QSharedMemory_Error(this.h))
 }
 
 func (this *QSharedMemory) ErrorString() string {
@@ -226,13 +217,11 @@ func QSharedMemory_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QSharedMemory) Create2(size int, mode QSharedMemory__AccessMode) bool {
-	_ret := C.QSharedMemory_Create2(this.h, (C.int)(size), (C.uintptr_t)(mode))
-	return (bool)(_ret)
+	return (bool)(C.QSharedMemory_Create2(this.h, (C.int)(size), (C.uintptr_t)(mode)))
 }
 
 func (this *QSharedMemory) Attach1(mode QSharedMemory__AccessMode) bool {
-	_ret := C.QSharedMemory_Attach1(this.h, (C.uintptr_t)(mode))
-	return (bool)(_ret)
+	return (bool)(C.QSharedMemory_Attach1(this.h, (C.uintptr_t)(mode)))
 }
 
 // Delete this object from C++ memory.

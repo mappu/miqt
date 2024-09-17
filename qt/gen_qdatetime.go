@@ -74,88 +74,71 @@ func NewQDate4(param1 *QDate) *QDate {
 }
 
 func (this *QDate) IsNull() bool {
-	_ret := C.QDate_IsNull(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QDate_IsNull(this.h))
 }
 
 func (this *QDate) IsValid() bool {
-	_ret := C.QDate_IsValid(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QDate_IsValid(this.h))
 }
 
 func (this *QDate) Year() int {
-	_ret := C.QDate_Year(this.h)
-	return (int)(_ret)
+	return (int)(C.QDate_Year(this.h))
 }
 
 func (this *QDate) Month() int {
-	_ret := C.QDate_Month(this.h)
-	return (int)(_ret)
+	return (int)(C.QDate_Month(this.h))
 }
 
 func (this *QDate) Day() int {
-	_ret := C.QDate_Day(this.h)
-	return (int)(_ret)
+	return (int)(C.QDate_Day(this.h))
 }
 
 func (this *QDate) DayOfWeek() int {
-	_ret := C.QDate_DayOfWeek(this.h)
-	return (int)(_ret)
+	return (int)(C.QDate_DayOfWeek(this.h))
 }
 
 func (this *QDate) DayOfYear() int {
-	_ret := C.QDate_DayOfYear(this.h)
-	return (int)(_ret)
+	return (int)(C.QDate_DayOfYear(this.h))
 }
 
 func (this *QDate) DaysInMonth() int {
-	_ret := C.QDate_DaysInMonth(this.h)
-	return (int)(_ret)
+	return (int)(C.QDate_DaysInMonth(this.h))
 }
 
 func (this *QDate) DaysInYear() int {
-	_ret := C.QDate_DaysInYear(this.h)
-	return (int)(_ret)
+	return (int)(C.QDate_DaysInYear(this.h))
 }
 
 func (this *QDate) WeekNumber() int {
-	_ret := C.QDate_WeekNumber(this.h)
-	return (int)(_ret)
+	return (int)(C.QDate_WeekNumber(this.h))
 }
 
 func (this *QDate) YearWithCal(cal QCalendar) int {
-	_ret := C.QDate_YearWithCal(this.h, cal.cPointer())
-	return (int)(_ret)
+	return (int)(C.QDate_YearWithCal(this.h, cal.cPointer()))
 }
 
 func (this *QDate) MonthWithCal(cal QCalendar) int {
-	_ret := C.QDate_MonthWithCal(this.h, cal.cPointer())
-	return (int)(_ret)
+	return (int)(C.QDate_MonthWithCal(this.h, cal.cPointer()))
 }
 
 func (this *QDate) DayWithCal(cal QCalendar) int {
-	_ret := C.QDate_DayWithCal(this.h, cal.cPointer())
-	return (int)(_ret)
+	return (int)(C.QDate_DayWithCal(this.h, cal.cPointer()))
 }
 
 func (this *QDate) DayOfWeekWithCal(cal QCalendar) int {
-	_ret := C.QDate_DayOfWeekWithCal(this.h, cal.cPointer())
-	return (int)(_ret)
+	return (int)(C.QDate_DayOfWeekWithCal(this.h, cal.cPointer()))
 }
 
 func (this *QDate) DayOfYearWithCal(cal QCalendar) int {
-	_ret := C.QDate_DayOfYearWithCal(this.h, cal.cPointer())
-	return (int)(_ret)
+	return (int)(C.QDate_DayOfYearWithCal(this.h, cal.cPointer()))
 }
 
 func (this *QDate) DaysInMonthWithCal(cal QCalendar) int {
-	_ret := C.QDate_DaysInMonthWithCal(this.h, cal.cPointer())
-	return (int)(_ret)
+	return (int)(C.QDate_DaysInMonthWithCal(this.h, cal.cPointer()))
 }
 
 func (this *QDate) DaysInYearWithCal(cal QCalendar) int {
-	_ret := C.QDate_DaysInYearWithCal(this.h, cal.cPointer())
-	return (int)(_ret)
+	return (int)(C.QDate_DaysInYearWithCal(this.h, cal.cPointer()))
 }
 
 func (this *QDate) StartOfDay() *QDateTime {
@@ -247,13 +230,11 @@ func (this *QDate) ToString3(format string, cal QCalendar) string {
 }
 
 func (this *QDate) SetDate(year int, month int, day int) bool {
-	_ret := C.QDate_SetDate(this.h, (C.int)(year), (C.int)(month), (C.int)(day))
-	return (bool)(_ret)
+	return (bool)(C.QDate_SetDate(this.h, (C.int)(year), (C.int)(month), (C.int)(day)))
 }
 
 func (this *QDate) SetDate2(year int, month int, day int, cal QCalendar) bool {
-	_ret := C.QDate_SetDate2(this.h, (C.int)(year), (C.int)(month), (C.int)(day), cal.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QDate_SetDate2(this.h, (C.int)(year), (C.int)(month), (C.int)(day), cal.cPointer()))
 }
 
 func (this *QDate) GetDate(year *int, month *int, day *int) {
@@ -300,38 +281,31 @@ func (this *QDate) AddYears2(years int, cal QCalendar) *QDate {
 }
 
 func (this *QDate) DaysTo(param1 *QDate) int64 {
-	_ret := C.QDate_DaysTo(this.h, param1.cPointer())
-	return (int64)(_ret)
+	return (int64)(C.QDate_DaysTo(this.h, param1.cPointer()))
 }
 
 func (this *QDate) OperatorEqual(other *QDate) bool {
-	_ret := C.QDate_OperatorEqual(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QDate_OperatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QDate) OperatorNotEqual(other *QDate) bool {
-	_ret := C.QDate_OperatorNotEqual(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QDate_OperatorNotEqual(this.h, other.cPointer()))
 }
 
 func (this *QDate) OperatorLesser(other *QDate) bool {
-	_ret := C.QDate_OperatorLesser(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QDate_OperatorLesser(this.h, other.cPointer()))
 }
 
 func (this *QDate) OperatorLesserOrEqual(other *QDate) bool {
-	_ret := C.QDate_OperatorLesserOrEqual(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QDate_OperatorLesserOrEqual(this.h, other.cPointer()))
 }
 
 func (this *QDate) OperatorGreater(other *QDate) bool {
-	_ret := C.QDate_OperatorGreater(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QDate_OperatorGreater(this.h, other.cPointer()))
 }
 
 func (this *QDate) OperatorGreaterOrEqual(other *QDate) bool {
-	_ret := C.QDate_OperatorGreaterOrEqual(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QDate_OperatorGreaterOrEqual(this.h, other.cPointer()))
 }
 
 func QDate_CurrentDate() *QDate {
@@ -373,13 +347,11 @@ func QDate_FromString3(s string, format string, cal QCalendar) *QDate {
 }
 
 func QDate_IsValid2(y int, m int, d int) bool {
-	_ret := C.QDate_IsValid2((C.int)(y), (C.int)(m), (C.int)(d))
-	return (bool)(_ret)
+	return (bool)(C.QDate_IsValid2((C.int)(y), (C.int)(m), (C.int)(d)))
 }
 
 func QDate_IsLeapYear(year int) bool {
-	_ret := C.QDate_IsLeapYear((C.int)(year))
-	return (bool)(_ret)
+	return (bool)(C.QDate_IsLeapYear((C.int)(year)))
 }
 
 func QDate_FromJulianDay(jd_ int64) *QDate {
@@ -390,13 +362,11 @@ func QDate_FromJulianDay(jd_ int64) *QDate {
 }
 
 func (this *QDate) ToJulianDay() int64 {
-	_ret := C.QDate_ToJulianDay(this.h)
-	return (int64)(_ret)
+	return (int64)(C.QDate_ToJulianDay(this.h))
 }
 
 func (this *QDate) WeekNumber1(yearNum *int) int {
-	_ret := C.QDate_WeekNumber1(this.h, (*C.int)(unsafe.Pointer(yearNum)))
-	return (int)(_ret)
+	return (int)(C.QDate_WeekNumber1(this.h, (*C.int)(unsafe.Pointer(yearNum))))
 }
 
 func (this *QDate) StartOfDay1(spec TimeSpec) *QDateTime {
@@ -538,33 +508,27 @@ func NewQTime5(h int, m int, s int, ms int) *QTime {
 }
 
 func (this *QTime) IsNull() bool {
-	_ret := C.QTime_IsNull(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QTime_IsNull(this.h))
 }
 
 func (this *QTime) IsValid() bool {
-	_ret := C.QTime_IsValid(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QTime_IsValid(this.h))
 }
 
 func (this *QTime) Hour() int {
-	_ret := C.QTime_Hour(this.h)
-	return (int)(_ret)
+	return (int)(C.QTime_Hour(this.h))
 }
 
 func (this *QTime) Minute() int {
-	_ret := C.QTime_Minute(this.h)
-	return (int)(_ret)
+	return (int)(C.QTime_Minute(this.h))
 }
 
 func (this *QTime) Second() int {
-	_ret := C.QTime_Second(this.h)
-	return (int)(_ret)
+	return (int)(C.QTime_Second(this.h))
 }
 
 func (this *QTime) Msec() int {
-	_ret := C.QTime_Msec(this.h)
-	return (int)(_ret)
+	return (int)(C.QTime_Msec(this.h))
 }
 
 func (this *QTime) ToString() string {
@@ -584,8 +548,7 @@ func (this *QTime) ToStringWithFormat(format string) string {
 }
 
 func (this *QTime) SetHMS(h int, m int, s int) bool {
-	_ret := C.QTime_SetHMS(this.h, (C.int)(h), (C.int)(m), (C.int)(s))
-	return (bool)(_ret)
+	return (bool)(C.QTime_SetHMS(this.h, (C.int)(h), (C.int)(m), (C.int)(s)))
 }
 
 func (this *QTime) AddSecs(secs int) *QTime {
@@ -596,8 +559,7 @@ func (this *QTime) AddSecs(secs int) *QTime {
 }
 
 func (this *QTime) SecsTo(param1 *QTime) int {
-	_ret := C.QTime_SecsTo(this.h, param1.cPointer())
-	return (int)(_ret)
+	return (int)(C.QTime_SecsTo(this.h, param1.cPointer()))
 }
 
 func (this *QTime) AddMSecs(ms int) *QTime {
@@ -608,38 +570,31 @@ func (this *QTime) AddMSecs(ms int) *QTime {
 }
 
 func (this *QTime) MsecsTo(param1 *QTime) int {
-	_ret := C.QTime_MsecsTo(this.h, param1.cPointer())
-	return (int)(_ret)
+	return (int)(C.QTime_MsecsTo(this.h, param1.cPointer()))
 }
 
 func (this *QTime) OperatorEqual(other *QTime) bool {
-	_ret := C.QTime_OperatorEqual(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QTime_OperatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QTime) OperatorNotEqual(other *QTime) bool {
-	_ret := C.QTime_OperatorNotEqual(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QTime_OperatorNotEqual(this.h, other.cPointer()))
 }
 
 func (this *QTime) OperatorLesser(other *QTime) bool {
-	_ret := C.QTime_OperatorLesser(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QTime_OperatorLesser(this.h, other.cPointer()))
 }
 
 func (this *QTime) OperatorLesserOrEqual(other *QTime) bool {
-	_ret := C.QTime_OperatorLesserOrEqual(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QTime_OperatorLesserOrEqual(this.h, other.cPointer()))
 }
 
 func (this *QTime) OperatorGreater(other *QTime) bool {
-	_ret := C.QTime_OperatorGreater(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QTime_OperatorGreater(this.h, other.cPointer()))
 }
 
 func (this *QTime) OperatorGreaterOrEqual(other *QTime) bool {
-	_ret := C.QTime_OperatorGreaterOrEqual(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QTime_OperatorGreaterOrEqual(this.h, other.cPointer()))
 }
 
 func QTime_FromMSecsSinceStartOfDay(msecs int) *QTime {
@@ -650,8 +605,7 @@ func QTime_FromMSecsSinceStartOfDay(msecs int) *QTime {
 }
 
 func (this *QTime) MsecsSinceStartOfDay() int {
-	_ret := C.QTime_MsecsSinceStartOfDay(this.h)
-	return (int)(_ret)
+	return (int)(C.QTime_MsecsSinceStartOfDay(this.h))
 }
 
 func QTime_CurrentTime() *QTime {
@@ -682,8 +636,7 @@ func QTime_FromString2(s string, format string) *QTime {
 }
 
 func QTime_IsValid2(h int, m int, s int) bool {
-	_ret := C.QTime_IsValid2((C.int)(h), (C.int)(m), (C.int)(s))
-	return (bool)(_ret)
+	return (bool)(C.QTime_IsValid2((C.int)(h), (C.int)(m), (C.int)(s)))
 }
 
 func (this *QTime) Start() {
@@ -691,13 +644,11 @@ func (this *QTime) Start() {
 }
 
 func (this *QTime) Restart() int {
-	_ret := C.QTime_Restart(this.h)
-	return (int)(_ret)
+	return (int)(C.QTime_Restart(this.h))
 }
 
 func (this *QTime) Elapsed() int {
-	_ret := C.QTime_Elapsed(this.h)
-	return (int)(_ret)
+	return (int)(C.QTime_Elapsed(this.h))
 }
 
 func (this *QTime) ToString1(f DateFormat) string {
@@ -708,8 +659,7 @@ func (this *QTime) ToString1(f DateFormat) string {
 }
 
 func (this *QTime) SetHMS4(h int, m int, s int, ms int) bool {
-	_ret := C.QTime_SetHMS4(this.h, (C.int)(h), (C.int)(m), (C.int)(s), (C.int)(ms))
-	return (bool)(_ret)
+	return (bool)(C.QTime_SetHMS4(this.h, (C.int)(h), (C.int)(m), (C.int)(s), (C.int)(ms)))
 }
 
 func QTime_FromString22(s string, f DateFormat) *QTime {
@@ -722,8 +672,7 @@ func QTime_FromString22(s string, f DateFormat) *QTime {
 }
 
 func QTime_IsValid4(h int, m int, s int, ms int) bool {
-	_ret := C.QTime_IsValid4((C.int)(h), (C.int)(m), (C.int)(s), (C.int)(ms))
-	return (bool)(_ret)
+	return (bool)(C.QTime_IsValid4((C.int)(h), (C.int)(m), (C.int)(s), (C.int)(ms)))
 }
 
 // Delete this object from C++ memory.
@@ -807,13 +756,11 @@ func (this *QDateTime) Swap(other *QDateTime) {
 }
 
 func (this *QDateTime) IsNull() bool {
-	_ret := C.QDateTime_IsNull(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QDateTime_IsNull(this.h))
 }
 
 func (this *QDateTime) IsValid() bool {
-	_ret := C.QDateTime_IsValid(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QDateTime_IsValid(this.h))
 }
 
 func (this *QDateTime) Date() *QDate {
@@ -831,13 +778,11 @@ func (this *QDateTime) Time() *QTime {
 }
 
 func (this *QDateTime) TimeSpec() TimeSpec {
-	_ret := C.QDateTime_TimeSpec(this.h)
-	return (TimeSpec)(_ret)
+	return (TimeSpec)(C.QDateTime_TimeSpec(this.h))
 }
 
 func (this *QDateTime) OffsetFromUtc() int {
-	_ret := C.QDateTime_OffsetFromUtc(this.h)
-	return (int)(_ret)
+	return (int)(C.QDateTime_OffsetFromUtc(this.h))
 }
 
 func (this *QDateTime) TimeZone() *QTimeZone {
@@ -855,18 +800,15 @@ func (this *QDateTime) TimeZoneAbbreviation() string {
 }
 
 func (this *QDateTime) IsDaylightTime() bool {
-	_ret := C.QDateTime_IsDaylightTime(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QDateTime_IsDaylightTime(this.h))
 }
 
 func (this *QDateTime) ToMSecsSinceEpoch() int64 {
-	_ret := C.QDateTime_ToMSecsSinceEpoch(this.h)
-	return (int64)(_ret)
+	return (int64)(C.QDateTime_ToMSecsSinceEpoch(this.h))
 }
 
 func (this *QDateTime) ToSecsSinceEpoch() int64 {
-	_ret := C.QDateTime_ToSecsSinceEpoch(this.h)
-	return (int64)(_ret)
+	return (int64)(C.QDateTime_ToSecsSinceEpoch(this.h))
 }
 
 func (this *QDateTime) SetDate(date *QDate) {
@@ -993,48 +935,39 @@ func (this *QDateTime) ToTimeZone(toZone *QTimeZone) *QDateTime {
 }
 
 func (this *QDateTime) DaysTo(param1 *QDateTime) int64 {
-	_ret := C.QDateTime_DaysTo(this.h, param1.cPointer())
-	return (int64)(_ret)
+	return (int64)(C.QDateTime_DaysTo(this.h, param1.cPointer()))
 }
 
 func (this *QDateTime) SecsTo(param1 *QDateTime) int64 {
-	_ret := C.QDateTime_SecsTo(this.h, param1.cPointer())
-	return (int64)(_ret)
+	return (int64)(C.QDateTime_SecsTo(this.h, param1.cPointer()))
 }
 
 func (this *QDateTime) MsecsTo(param1 *QDateTime) int64 {
-	_ret := C.QDateTime_MsecsTo(this.h, param1.cPointer())
-	return (int64)(_ret)
+	return (int64)(C.QDateTime_MsecsTo(this.h, param1.cPointer()))
 }
 
 func (this *QDateTime) OperatorEqual(other *QDateTime) bool {
-	_ret := C.QDateTime_OperatorEqual(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QDateTime_OperatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QDateTime) OperatorNotEqual(other *QDateTime) bool {
-	_ret := C.QDateTime_OperatorNotEqual(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QDateTime_OperatorNotEqual(this.h, other.cPointer()))
 }
 
 func (this *QDateTime) OperatorLesser(other *QDateTime) bool {
-	_ret := C.QDateTime_OperatorLesser(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QDateTime_OperatorLesser(this.h, other.cPointer()))
 }
 
 func (this *QDateTime) OperatorLesserOrEqual(other *QDateTime) bool {
-	_ret := C.QDateTime_OperatorLesserOrEqual(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QDateTime_OperatorLesserOrEqual(this.h, other.cPointer()))
 }
 
 func (this *QDateTime) OperatorGreater(other *QDateTime) bool {
-	_ret := C.QDateTime_OperatorGreater(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QDateTime_OperatorGreater(this.h, other.cPointer()))
 }
 
 func (this *QDateTime) OperatorGreaterOrEqual(other *QDateTime) bool {
-	_ret := C.QDateTime_OperatorGreaterOrEqual(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QDateTime_OperatorGreaterOrEqual(this.h, other.cPointer()))
 }
 
 func (this *QDateTime) SetUtcOffset(seconds int) {
@@ -1042,8 +975,7 @@ func (this *QDateTime) SetUtcOffset(seconds int) {
 }
 
 func (this *QDateTime) UtcOffset() int {
-	_ret := C.QDateTime_UtcOffset(this.h)
-	return (int)(_ret)
+	return (int)(C.QDateTime_UtcOffset(this.h))
 }
 
 func QDateTime_CurrentDateTime() *QDateTime {
@@ -1092,8 +1024,7 @@ func QDateTime_FromString3(s string, format string, cal QCalendar) *QDateTime {
 }
 
 func (this *QDateTime) ToTimeT() uint {
-	_ret := C.QDateTime_ToTimeT(this.h)
-	return (uint)(_ret)
+	return (uint)(C.QDateTime_ToTimeT(this.h))
 }
 
 func (this *QDateTime) SetTimeT(secsSince1Jan1970UTC uint) {
@@ -1157,13 +1088,11 @@ func QDateTime_FromSecsSinceEpoch2(secs int64, timeZone *QTimeZone) *QDateTime {
 }
 
 func QDateTime_CurrentMSecsSinceEpoch() int64 {
-	_ret := C.QDateTime_CurrentMSecsSinceEpoch()
-	return (int64)(_ret)
+	return (int64)(C.QDateTime_CurrentMSecsSinceEpoch())
 }
 
 func QDateTime_CurrentSecsSinceEpoch() int64 {
-	_ret := C.QDateTime_CurrentSecsSinceEpoch()
-	return (int64)(_ret)
+	return (int64)(C.QDateTime_CurrentSecsSinceEpoch())
 }
 
 func (this *QDateTime) ToString1(format DateFormat) string {

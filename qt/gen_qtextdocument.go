@@ -156,8 +156,7 @@ func NewQTextDocument4(text string, parent *QObject) *QTextDocument {
 }
 
 func (this *QTextDocument) MetaObject() *QMetaObject {
-	_ret := C.QTextDocument_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QTextDocument_MetaObject(this.h)))
 }
 
 func QTextDocument_Tr(s string) string {
@@ -179,13 +178,11 @@ func QTextDocument_TrUtf8(s string) string {
 }
 
 func (this *QTextDocument) Clone() *QTextDocument {
-	_ret := C.QTextDocument_Clone(this.h)
-	return newQTextDocument_U(unsafe.Pointer(_ret))
+	return newQTextDocument_U(unsafe.Pointer(C.QTextDocument_Clone(this.h)))
 }
 
 func (this *QTextDocument) IsEmpty() bool {
-	_ret := C.QTextDocument_IsEmpty(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QTextDocument_IsEmpty(this.h))
 }
 
 func (this *QTextDocument) Clear() {
@@ -197,33 +194,27 @@ func (this *QTextDocument) SetUndoRedoEnabled(enable bool) {
 }
 
 func (this *QTextDocument) IsUndoRedoEnabled() bool {
-	_ret := C.QTextDocument_IsUndoRedoEnabled(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QTextDocument_IsUndoRedoEnabled(this.h))
 }
 
 func (this *QTextDocument) IsUndoAvailable() bool {
-	_ret := C.QTextDocument_IsUndoAvailable(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QTextDocument_IsUndoAvailable(this.h))
 }
 
 func (this *QTextDocument) IsRedoAvailable() bool {
-	_ret := C.QTextDocument_IsRedoAvailable(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QTextDocument_IsRedoAvailable(this.h))
 }
 
 func (this *QTextDocument) AvailableUndoSteps() int {
-	_ret := C.QTextDocument_AvailableUndoSteps(this.h)
-	return (int)(_ret)
+	return (int)(C.QTextDocument_AvailableUndoSteps(this.h))
 }
 
 func (this *QTextDocument) AvailableRedoSteps() int {
-	_ret := C.QTextDocument_AvailableRedoSteps(this.h)
-	return (int)(_ret)
+	return (int)(C.QTextDocument_AvailableRedoSteps(this.h))
 }
 
 func (this *QTextDocument) Revision() int {
-	_ret := C.QTextDocument_Revision(this.h)
-	return (int)(_ret)
+	return (int)(C.QTextDocument_Revision(this.h))
 }
 
 func (this *QTextDocument) SetDocumentLayout(layout *QAbstractTextDocumentLayout) {
@@ -231,8 +222,7 @@ func (this *QTextDocument) SetDocumentLayout(layout *QAbstractTextDocumentLayout
 }
 
 func (this *QTextDocument) DocumentLayout() *QAbstractTextDocumentLayout {
-	_ret := C.QTextDocument_DocumentLayout(this.h)
-	return newQAbstractTextDocumentLayout_U(unsafe.Pointer(_ret))
+	return newQAbstractTextDocumentLayout_U(unsafe.Pointer(C.QTextDocument_DocumentLayout(this.h)))
 }
 
 func (this *QTextDocument) SetMetaInformation(info QTextDocument__MetaInformation, param2 string) {
@@ -348,23 +338,19 @@ func (this *QTextDocument) Find5(expr *QRegularExpression, cursor *QTextCursor) 
 }
 
 func (this *QTextDocument) FrameAt(pos int) *QTextFrame {
-	_ret := C.QTextDocument_FrameAt(this.h, (C.int)(pos))
-	return newQTextFrame_U(unsafe.Pointer(_ret))
+	return newQTextFrame_U(unsafe.Pointer(C.QTextDocument_FrameAt(this.h, (C.int)(pos))))
 }
 
 func (this *QTextDocument) RootFrame() *QTextFrame {
-	_ret := C.QTextDocument_RootFrame(this.h)
-	return newQTextFrame_U(unsafe.Pointer(_ret))
+	return newQTextFrame_U(unsafe.Pointer(C.QTextDocument_RootFrame(this.h)))
 }
 
 func (this *QTextDocument) Object(objectIndex int) *QTextObject {
-	_ret := C.QTextDocument_Object(this.h, (C.int)(objectIndex))
-	return newQTextObject_U(unsafe.Pointer(_ret))
+	return newQTextObject_U(unsafe.Pointer(C.QTextDocument_Object(this.h, (C.int)(objectIndex))))
 }
 
 func (this *QTextDocument) ObjectForFormat(param1 *QTextFormat) *QTextObject {
-	_ret := C.QTextDocument_ObjectForFormat(this.h, param1.cPointer())
-	return newQTextObject_U(unsafe.Pointer(_ret))
+	return newQTextObject_U(unsafe.Pointer(C.QTextDocument_ObjectForFormat(this.h, param1.cPointer())))
 }
 
 func (this *QTextDocument) FindBlock(pos int) *QTextBlock {
@@ -439,13 +425,11 @@ func (this *QTextDocument) DefaultFont() *QFont {
 }
 
 func (this *QTextDocument) PageCount() int {
-	_ret := C.QTextDocument_PageCount(this.h)
-	return (int)(_ret)
+	return (int)(C.QTextDocument_PageCount(this.h))
 }
 
 func (this *QTextDocument) IsModified() bool {
-	_ret := C.QTextDocument_IsModified(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QTextDocument_IsModified(this.h))
 }
 
 func (this *QTextDocument) Print(printer *QPagedPaintDevice) {
@@ -466,9 +450,12 @@ func (this *QTextDocument) AddResource(typeVal int, name *QUrl, resource *QVaria
 func (this *QTextDocument) AllFormats() []QTextFormat {
 	var _ma *C.struct_miqt_array = C.QTextDocument_AllFormats(this.h)
 	_ret := make([]QTextFormat, int(_ma.len))
-	_outCast := (*[0xffff]*C.QTextFormat)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QTextFormat)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = *newQTextFormat(_outCast[i])
+		_vv_ret := _outCast[i]
+		_vv_goptr := newQTextFormat(_vv_ret)
+		_vv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+		_ret[i] = *_vv_goptr
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -483,8 +470,7 @@ func (this *QTextDocument) SetUseDesignMetrics(b bool) {
 }
 
 func (this *QTextDocument) UseDesignMetrics() bool {
-	_ret := C.QTextDocument_UseDesignMetrics(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QTextDocument_UseDesignMetrics(this.h))
 }
 
 func (this *QTextDocument) DrawContents(painter *QPainter) {
@@ -496,18 +482,15 @@ func (this *QTextDocument) SetTextWidth(width float64) {
 }
 
 func (this *QTextDocument) TextWidth() float64 {
-	_ret := C.QTextDocument_TextWidth(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QTextDocument_TextWidth(this.h))
 }
 
 func (this *QTextDocument) IdealWidth() float64 {
-	_ret := C.QTextDocument_IdealWidth(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QTextDocument_IdealWidth(this.h))
 }
 
 func (this *QTextDocument) IndentWidth() float64 {
-	_ret := C.QTextDocument_IndentWidth(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QTextDocument_IndentWidth(this.h))
 }
 
 func (this *QTextDocument) SetIndentWidth(width float64) {
@@ -515,8 +498,7 @@ func (this *QTextDocument) SetIndentWidth(width float64) {
 }
 
 func (this *QTextDocument) DocumentMargin() float64 {
-	_ret := C.QTextDocument_DocumentMargin(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QTextDocument_DocumentMargin(this.h))
 }
 
 func (this *QTextDocument) SetDocumentMargin(margin float64) {
@@ -535,18 +517,15 @@ func (this *QTextDocument) Size() *QSizeF {
 }
 
 func (this *QTextDocument) BlockCount() int {
-	_ret := C.QTextDocument_BlockCount(this.h)
-	return (int)(_ret)
+	return (int)(C.QTextDocument_BlockCount(this.h))
 }
 
 func (this *QTextDocument) LineCount() int {
-	_ret := C.QTextDocument_LineCount(this.h)
-	return (int)(_ret)
+	return (int)(C.QTextDocument_LineCount(this.h))
 }
 
 func (this *QTextDocument) CharacterCount() int {
-	_ret := C.QTextDocument_CharacterCount(this.h)
-	return (int)(_ret)
+	return (int)(C.QTextDocument_CharacterCount(this.h))
 }
 
 func (this *QTextDocument) SetDefaultStyleSheet(sheet string) {
@@ -575,8 +554,7 @@ func (this *QTextDocument) ClearUndoRedoStacks() {
 }
 
 func (this *QTextDocument) MaximumBlockCount() int {
-	_ret := C.QTextDocument_MaximumBlockCount(this.h)
-	return (int)(_ret)
+	return (int)(C.QTextDocument_MaximumBlockCount(this.h))
 }
 
 func (this *QTextDocument) SetMaximumBlockCount(maximum int) {
@@ -606,8 +584,7 @@ func (this *QTextDocument) SetBaseUrl(url *QUrl) {
 }
 
 func (this *QTextDocument) DefaultCursorMoveStyle() CursorMoveStyle {
-	_ret := C.QTextDocument_DefaultCursorMoveStyle(this.h)
-	return (CursorMoveStyle)(_ret)
+	return (CursorMoveStyle)(C.QTextDocument_DefaultCursorMoveStyle(this.h))
 }
 
 func (this *QTextDocument) SetDefaultCursorMoveStyle(style CursorMoveStyle) {
@@ -629,14 +606,11 @@ func miqt_exec_callback_QTextDocument_ContentsChange(cb *C.void, from C.int, cha
 	}
 
 	// Convert all CABI parameters to Go parameters
-	from_ret := from
-	slotval1 := (int)(from_ret)
+	slotval1 := (int)(from)
 
-	charsRemoved_ret := charsRemoved
-	slotval2 := (int)(charsRemoved_ret)
+	slotval2 := (int)(charsRemoved)
 
-	charsAdded_ret := charsAdded
-	slotval3 := (int)(charsAdded_ret)
+	slotval3 := (int)(charsAdded)
 
 	gofunc(slotval1, slotval2, slotval3)
 }
@@ -673,8 +647,7 @@ func miqt_exec_callback_QTextDocument_UndoAvailable(cb *C.void, param1 C.bool) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	param1_ret := param1
-	slotval1 := (bool)(param1_ret)
+	slotval1 := (bool)(param1)
 
 	gofunc(slotval1)
 }
@@ -694,8 +667,7 @@ func miqt_exec_callback_QTextDocument_RedoAvailable(cb *C.void, param1 C.bool) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	param1_ret := param1
-	slotval1 := (bool)(param1_ret)
+	slotval1 := (bool)(param1)
 
 	gofunc(slotval1)
 }
@@ -732,8 +704,7 @@ func miqt_exec_callback_QTextDocument_ModificationChanged(cb *C.void, m C.bool) 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	m_ret := m
-	slotval1 := (bool)(m_ret)
+	slotval1 := (bool)(m)
 
 	gofunc(slotval1)
 }
@@ -753,8 +724,7 @@ func miqt_exec_callback_QTextDocument_CursorPositionChanged(cb *C.void, cursor *
 	}
 
 	// Convert all CABI parameters to Go parameters
-	cursor_ret := cursor
-	slotval1 := newQTextCursor_U(unsafe.Pointer(cursor_ret))
+	slotval1 := newQTextCursor_U(unsafe.Pointer(cursor))
 
 	gofunc(slotval1)
 }
@@ -774,8 +744,7 @@ func miqt_exec_callback_QTextDocument_BlockCountChanged(cb *C.void, newBlockCoun
 	}
 
 	// Convert all CABI parameters to Go parameters
-	newBlockCount_ret := newBlockCount
-	slotval1 := (int)(newBlockCount_ret)
+	slotval1 := (int)(newBlockCount)
 
 	gofunc(slotval1)
 }
@@ -795,8 +764,7 @@ func miqt_exec_callback_QTextDocument_BaseUrlChanged(cb *C.void, url *C.QUrl) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	url_ret := url
-	slotval1 := newQUrl_U(unsafe.Pointer(url_ret))
+	slotval1 := newQUrl_U(unsafe.Pointer(url))
 
 	gofunc(slotval1)
 }
@@ -879,8 +847,7 @@ func QTextDocument_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QTextDocument) Clone1(parent *QObject) *QTextDocument {
-	_ret := C.QTextDocument_Clone1(this.h, parent.cPointer())
-	return newQTextDocument_U(unsafe.Pointer(_ret))
+	return newQTextDocument_U(unsafe.Pointer(C.QTextDocument_Clone1(this.h, parent.cPointer())))
 }
 
 func (this *QTextDocument) ToHtml1(encoding *QByteArray) string {

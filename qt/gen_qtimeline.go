@@ -81,8 +81,7 @@ func NewQTimeLine3(duration int, parent *QObject) *QTimeLine {
 }
 
 func (this *QTimeLine) MetaObject() *QMetaObject {
-	_ret := C.QTimeLine_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QTimeLine_MetaObject(this.h)))
 }
 
 func QTimeLine_Tr(s string) string {
@@ -104,13 +103,11 @@ func QTimeLine_TrUtf8(s string) string {
 }
 
 func (this *QTimeLine) State() QTimeLine__State {
-	_ret := C.QTimeLine_State(this.h)
-	return (QTimeLine__State)(_ret)
+	return (QTimeLine__State)(C.QTimeLine_State(this.h))
 }
 
 func (this *QTimeLine) LoopCount() int {
-	_ret := C.QTimeLine_LoopCount(this.h)
-	return (int)(_ret)
+	return (int)(C.QTimeLine_LoopCount(this.h))
 }
 
 func (this *QTimeLine) SetLoopCount(count int) {
@@ -118,8 +115,7 @@ func (this *QTimeLine) SetLoopCount(count int) {
 }
 
 func (this *QTimeLine) Direction() QTimeLine__Direction {
-	_ret := C.QTimeLine_Direction(this.h)
-	return (QTimeLine__Direction)(_ret)
+	return (QTimeLine__Direction)(C.QTimeLine_Direction(this.h))
 }
 
 func (this *QTimeLine) SetDirection(direction QTimeLine__Direction) {
@@ -127,8 +123,7 @@ func (this *QTimeLine) SetDirection(direction QTimeLine__Direction) {
 }
 
 func (this *QTimeLine) Duration() int {
-	_ret := C.QTimeLine_Duration(this.h)
-	return (int)(_ret)
+	return (int)(C.QTimeLine_Duration(this.h))
 }
 
 func (this *QTimeLine) SetDuration(duration int) {
@@ -136,8 +131,7 @@ func (this *QTimeLine) SetDuration(duration int) {
 }
 
 func (this *QTimeLine) StartFrame() int {
-	_ret := C.QTimeLine_StartFrame(this.h)
-	return (int)(_ret)
+	return (int)(C.QTimeLine_StartFrame(this.h))
 }
 
 func (this *QTimeLine) SetStartFrame(frame int) {
@@ -145,8 +139,7 @@ func (this *QTimeLine) SetStartFrame(frame int) {
 }
 
 func (this *QTimeLine) EndFrame() int {
-	_ret := C.QTimeLine_EndFrame(this.h)
-	return (int)(_ret)
+	return (int)(C.QTimeLine_EndFrame(this.h))
 }
 
 func (this *QTimeLine) SetEndFrame(frame int) {
@@ -158,8 +151,7 @@ func (this *QTimeLine) SetFrameRange(startFrame int, endFrame int) {
 }
 
 func (this *QTimeLine) UpdateInterval() int {
-	_ret := C.QTimeLine_UpdateInterval(this.h)
-	return (int)(_ret)
+	return (int)(C.QTimeLine_UpdateInterval(this.h))
 }
 
 func (this *QTimeLine) SetUpdateInterval(interval int) {
@@ -167,8 +159,7 @@ func (this *QTimeLine) SetUpdateInterval(interval int) {
 }
 
 func (this *QTimeLine) CurveShape() QTimeLine__CurveShape {
-	_ret := C.QTimeLine_CurveShape(this.h)
-	return (QTimeLine__CurveShape)(_ret)
+	return (QTimeLine__CurveShape)(C.QTimeLine_CurveShape(this.h))
 }
 
 func (this *QTimeLine) SetCurveShape(shape QTimeLine__CurveShape) {
@@ -187,28 +178,23 @@ func (this *QTimeLine) SetEasingCurve(curve *QEasingCurve) {
 }
 
 func (this *QTimeLine) CurrentTime() int {
-	_ret := C.QTimeLine_CurrentTime(this.h)
-	return (int)(_ret)
+	return (int)(C.QTimeLine_CurrentTime(this.h))
 }
 
 func (this *QTimeLine) CurrentFrame() int {
-	_ret := C.QTimeLine_CurrentFrame(this.h)
-	return (int)(_ret)
+	return (int)(C.QTimeLine_CurrentFrame(this.h))
 }
 
 func (this *QTimeLine) CurrentValue() float64 {
-	_ret := C.QTimeLine_CurrentValue(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QTimeLine_CurrentValue(this.h))
 }
 
 func (this *QTimeLine) FrameForTime(msec int) int {
-	_ret := C.QTimeLine_FrameForTime(this.h, (C.int)(msec))
-	return (int)(_ret)
+	return (int)(C.QTimeLine_FrameForTime(this.h, (C.int)(msec)))
 }
 
 func (this *QTimeLine) ValueForTime(msec int) float64 {
-	_ret := C.QTimeLine_ValueForTime(this.h, (C.int)(msec))
-	return (float64)(_ret)
+	return (float64)(C.QTimeLine_ValueForTime(this.h, (C.int)(msec)))
 }
 
 func (this *QTimeLine) Start() {

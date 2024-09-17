@@ -49,8 +49,7 @@ func NewQRasterWindow2(parent *QWindow) *QRasterWindow {
 }
 
 func (this *QRasterWindow) MetaObject() *QMetaObject {
-	_ret := C.QRasterWindow_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QRasterWindow_MetaObject(this.h)))
 }
 
 func QRasterWindow_Tr(s string) string {

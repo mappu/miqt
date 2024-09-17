@@ -121,8 +121,7 @@ func NewQDataStream4(param1 *QByteArray) *QDataStream {
 }
 
 func (this *QDataStream) Device() *QIODevice {
-	_ret := C.QDataStream_Device(this.h)
-	return newQIODevice_U(unsafe.Pointer(_ret))
+	return newQIODevice_U(unsafe.Pointer(C.QDataStream_Device(this.h)))
 }
 
 func (this *QDataStream) SetDevice(device *QIODevice) {
@@ -134,13 +133,11 @@ func (this *QDataStream) UnsetDevice() {
 }
 
 func (this *QDataStream) AtEnd() bool {
-	_ret := C.QDataStream_AtEnd(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QDataStream_AtEnd(this.h))
 }
 
 func (this *QDataStream) Status() QDataStream__Status {
-	_ret := C.QDataStream_Status(this.h)
-	return (QDataStream__Status)(_ret)
+	return (QDataStream__Status)(C.QDataStream_Status(this.h))
 }
 
 func (this *QDataStream) SetStatus(status QDataStream__Status) {
@@ -152,8 +149,7 @@ func (this *QDataStream) ResetStatus() {
 }
 
 func (this *QDataStream) FloatingPointPrecision() QDataStream__FloatingPointPrecision {
-	_ret := C.QDataStream_FloatingPointPrecision(this.h)
-	return (QDataStream__FloatingPointPrecision)(_ret)
+	return (QDataStream__FloatingPointPrecision)(C.QDataStream_FloatingPointPrecision(this.h))
 }
 
 func (this *QDataStream) SetFloatingPointPrecision(precision QDataStream__FloatingPointPrecision) {
@@ -161,8 +157,7 @@ func (this *QDataStream) SetFloatingPointPrecision(precision QDataStream__Floati
 }
 
 func (this *QDataStream) ByteOrder() QDataStream__ByteOrder {
-	_ret := C.QDataStream_ByteOrder(this.h)
-	return (QDataStream__ByteOrder)(_ret)
+	return (QDataStream__ByteOrder)(C.QDataStream_ByteOrder(this.h))
 }
 
 func (this *QDataStream) SetByteOrder(byteOrder QDataStream__ByteOrder) {
@@ -170,8 +165,7 @@ func (this *QDataStream) SetByteOrder(byteOrder QDataStream__ByteOrder) {
 }
 
 func (this *QDataStream) Version() int {
-	_ret := C.QDataStream_Version(this.h)
-	return (int)(_ret)
+	return (int)(C.QDataStream_Version(this.h))
 }
 
 func (this *QDataStream) SetVersion(version int) {
@@ -281,15 +275,13 @@ func (this *QDataStream) OperatorShiftLeftWithStr(str string) {
 func (this *QDataStream) ReadBytes(param1 string, lenVal *uint) *QDataStream {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	_ret := C.QDataStream_ReadBytes(this.h, param1_Cstring, (*C.uint)(unsafe.Pointer(lenVal)))
-	return newQDataStream_U(unsafe.Pointer(_ret))
+	return newQDataStream_U(unsafe.Pointer(C.QDataStream_ReadBytes(this.h, param1_Cstring, (*C.uint)(unsafe.Pointer(lenVal)))))
 }
 
 func (this *QDataStream) ReadRawData(param1 string, lenVal int) int {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	_ret := C.QDataStream_ReadRawData(this.h, param1_Cstring, (C.int)(lenVal))
-	return (int)(_ret)
+	return (int)(C.QDataStream_ReadRawData(this.h, param1_Cstring, (C.int)(lenVal)))
 }
 
 func (this *QDataStream) WriteBytes(param1 string, lenVal uint) {
@@ -301,13 +293,11 @@ func (this *QDataStream) WriteBytes(param1 string, lenVal uint) {
 func (this *QDataStream) WriteRawData(param1 string, lenVal int) int {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	_ret := C.QDataStream_WriteRawData(this.h, param1_Cstring, (C.int)(lenVal))
-	return (int)(_ret)
+	return (int)(C.QDataStream_WriteRawData(this.h, param1_Cstring, (C.int)(lenVal)))
 }
 
 func (this *QDataStream) SkipRawData(lenVal int) int {
-	_ret := C.QDataStream_SkipRawData(this.h, (C.int)(lenVal))
-	return (int)(_ret)
+	return (int)(C.QDataStream_SkipRawData(this.h, (C.int)(lenVal)))
 }
 
 func (this *QDataStream) StartTransaction() {
@@ -315,8 +305,7 @@ func (this *QDataStream) StartTransaction() {
 }
 
 func (this *QDataStream) CommitTransaction() bool {
-	_ret := C.QDataStream_CommitTransaction(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QDataStream_CommitTransaction(this.h))
 }
 
 func (this *QDataStream) RollbackTransaction() {

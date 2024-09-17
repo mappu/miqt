@@ -61,8 +61,7 @@ func NewQPauseAnimation4(msecs int, parent *QObject) *QPauseAnimation {
 }
 
 func (this *QPauseAnimation) MetaObject() *QMetaObject {
-	_ret := C.QPauseAnimation_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QPauseAnimation_MetaObject(this.h)))
 }
 
 func QPauseAnimation_Tr(s string) string {
@@ -84,8 +83,7 @@ func QPauseAnimation_TrUtf8(s string) string {
 }
 
 func (this *QPauseAnimation) Duration() int {
-	_ret := C.QPauseAnimation_Duration(this.h)
-	return (int)(_ret)
+	return (int)(C.QPauseAnimation_Duration(this.h))
 }
 
 func (this *QPauseAnimation) SetDuration(msecs int) {

@@ -66,8 +66,7 @@ func NewQTabWidget2(parent *QWidget) *QTabWidget {
 }
 
 func (this *QTabWidget) MetaObject() *QMetaObject {
-	_ret := C.QTabWidget_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QTabWidget_MetaObject(this.h)))
 }
 
 func QTabWidget_Tr(s string) string {
@@ -91,29 +90,25 @@ func QTabWidget_TrUtf8(s string) string {
 func (this *QTabWidget) AddTab(widget *QWidget, param2 string) int {
 	param2_ms := miqt_strdupg(param2)
 	defer C.free(param2_ms)
-	_ret := C.QTabWidget_AddTab(this.h, widget.cPointer(), (*C.struct_miqt_string)(param2_ms))
-	return (int)(_ret)
+	return (int)(C.QTabWidget_AddTab(this.h, widget.cPointer(), (*C.struct_miqt_string)(param2_ms)))
 }
 
 func (this *QTabWidget) AddTab2(widget *QWidget, icon *QIcon, label string) int {
 	label_ms := miqt_strdupg(label)
 	defer C.free(label_ms)
-	_ret := C.QTabWidget_AddTab2(this.h, widget.cPointer(), icon.cPointer(), (*C.struct_miqt_string)(label_ms))
-	return (int)(_ret)
+	return (int)(C.QTabWidget_AddTab2(this.h, widget.cPointer(), icon.cPointer(), (*C.struct_miqt_string)(label_ms)))
 }
 
 func (this *QTabWidget) InsertTab(index int, widget *QWidget, param3 string) int {
 	param3_ms := miqt_strdupg(param3)
 	defer C.free(param3_ms)
-	_ret := C.QTabWidget_InsertTab(this.h, (C.int)(index), widget.cPointer(), (*C.struct_miqt_string)(param3_ms))
-	return (int)(_ret)
+	return (int)(C.QTabWidget_InsertTab(this.h, (C.int)(index), widget.cPointer(), (*C.struct_miqt_string)(param3_ms)))
 }
 
 func (this *QTabWidget) InsertTab2(index int, widget *QWidget, icon *QIcon, label string) int {
 	label_ms := miqt_strdupg(label)
 	defer C.free(label_ms)
-	_ret := C.QTabWidget_InsertTab2(this.h, (C.int)(index), widget.cPointer(), icon.cPointer(), (*C.struct_miqt_string)(label_ms))
-	return (int)(_ret)
+	return (int)(C.QTabWidget_InsertTab2(this.h, (C.int)(index), widget.cPointer(), icon.cPointer(), (*C.struct_miqt_string)(label_ms)))
 }
 
 func (this *QTabWidget) RemoveTab(index int) {
@@ -121,8 +116,7 @@ func (this *QTabWidget) RemoveTab(index int) {
 }
 
 func (this *QTabWidget) IsTabEnabled(index int) bool {
-	_ret := C.QTabWidget_IsTabEnabled(this.h, (C.int)(index))
-	return (bool)(_ret)
+	return (bool)(C.QTabWidget_IsTabEnabled(this.h, (C.int)(index)))
 }
 
 func (this *QTabWidget) SetTabEnabled(index int, enabled bool) {
@@ -130,8 +124,7 @@ func (this *QTabWidget) SetTabEnabled(index int, enabled bool) {
 }
 
 func (this *QTabWidget) IsTabVisible(index int) bool {
-	_ret := C.QTabWidget_IsTabVisible(this.h, (C.int)(index))
-	return (bool)(_ret)
+	return (bool)(C.QTabWidget_IsTabVisible(this.h, (C.int)(index)))
 }
 
 func (this *QTabWidget) SetTabVisible(index int, visible bool) {
@@ -189,33 +182,27 @@ func (this *QTabWidget) TabWhatsThis(index int) string {
 }
 
 func (this *QTabWidget) CurrentIndex() int {
-	_ret := C.QTabWidget_CurrentIndex(this.h)
-	return (int)(_ret)
+	return (int)(C.QTabWidget_CurrentIndex(this.h))
 }
 
 func (this *QTabWidget) CurrentWidget() *QWidget {
-	_ret := C.QTabWidget_CurrentWidget(this.h)
-	return newQWidget_U(unsafe.Pointer(_ret))
+	return newQWidget_U(unsafe.Pointer(C.QTabWidget_CurrentWidget(this.h)))
 }
 
 func (this *QTabWidget) Widget(index int) *QWidget {
-	_ret := C.QTabWidget_Widget(this.h, (C.int)(index))
-	return newQWidget_U(unsafe.Pointer(_ret))
+	return newQWidget_U(unsafe.Pointer(C.QTabWidget_Widget(this.h, (C.int)(index))))
 }
 
 func (this *QTabWidget) IndexOf(widget *QWidget) int {
-	_ret := C.QTabWidget_IndexOf(this.h, widget.cPointer())
-	return (int)(_ret)
+	return (int)(C.QTabWidget_IndexOf(this.h, widget.cPointer()))
 }
 
 func (this *QTabWidget) Count() int {
-	_ret := C.QTabWidget_Count(this.h)
-	return (int)(_ret)
+	return (int)(C.QTabWidget_Count(this.h))
 }
 
 func (this *QTabWidget) TabPosition() QTabWidget__TabPosition {
-	_ret := C.QTabWidget_TabPosition(this.h)
-	return (QTabWidget__TabPosition)(_ret)
+	return (QTabWidget__TabPosition)(C.QTabWidget_TabPosition(this.h))
 }
 
 func (this *QTabWidget) SetTabPosition(position QTabWidget__TabPosition) {
@@ -223,8 +210,7 @@ func (this *QTabWidget) SetTabPosition(position QTabWidget__TabPosition) {
 }
 
 func (this *QTabWidget) TabsClosable() bool {
-	_ret := C.QTabWidget_TabsClosable(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QTabWidget_TabsClosable(this.h))
 }
 
 func (this *QTabWidget) SetTabsClosable(closeable bool) {
@@ -232,8 +218,7 @@ func (this *QTabWidget) SetTabsClosable(closeable bool) {
 }
 
 func (this *QTabWidget) IsMovable() bool {
-	_ret := C.QTabWidget_IsMovable(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QTabWidget_IsMovable(this.h))
 }
 
 func (this *QTabWidget) SetMovable(movable bool) {
@@ -241,8 +226,7 @@ func (this *QTabWidget) SetMovable(movable bool) {
 }
 
 func (this *QTabWidget) TabShape() QTabWidget__TabShape {
-	_ret := C.QTabWidget_TabShape(this.h)
-	return (QTabWidget__TabShape)(_ret)
+	return (QTabWidget__TabShape)(C.QTabWidget_TabShape(this.h))
 }
 
 func (this *QTabWidget) SetTabShape(s QTabWidget__TabShape) {
@@ -264,13 +248,11 @@ func (this *QTabWidget) MinimumSizeHint() *QSize {
 }
 
 func (this *QTabWidget) HeightForWidth(width int) int {
-	_ret := C.QTabWidget_HeightForWidth(this.h, (C.int)(width))
-	return (int)(_ret)
+	return (int)(C.QTabWidget_HeightForWidth(this.h, (C.int)(width)))
 }
 
 func (this *QTabWidget) HasHeightForWidth() bool {
-	_ret := C.QTabWidget_HasHeightForWidth(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QTabWidget_HasHeightForWidth(this.h))
 }
 
 func (this *QTabWidget) SetCornerWidget(w *QWidget) {
@@ -278,13 +260,11 @@ func (this *QTabWidget) SetCornerWidget(w *QWidget) {
 }
 
 func (this *QTabWidget) CornerWidget() *QWidget {
-	_ret := C.QTabWidget_CornerWidget(this.h)
-	return newQWidget_U(unsafe.Pointer(_ret))
+	return newQWidget_U(unsafe.Pointer(C.QTabWidget_CornerWidget(this.h)))
 }
 
 func (this *QTabWidget) ElideMode() TextElideMode {
-	_ret := C.QTabWidget_ElideMode(this.h)
-	return (TextElideMode)(_ret)
+	return (TextElideMode)(C.QTabWidget_ElideMode(this.h))
 }
 
 func (this *QTabWidget) SetElideMode(mode TextElideMode) {
@@ -303,8 +283,7 @@ func (this *QTabWidget) SetIconSize(size *QSize) {
 }
 
 func (this *QTabWidget) UsesScrollButtons() bool {
-	_ret := C.QTabWidget_UsesScrollButtons(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QTabWidget_UsesScrollButtons(this.h))
 }
 
 func (this *QTabWidget) SetUsesScrollButtons(useButtons bool) {
@@ -312,8 +291,7 @@ func (this *QTabWidget) SetUsesScrollButtons(useButtons bool) {
 }
 
 func (this *QTabWidget) DocumentMode() bool {
-	_ret := C.QTabWidget_DocumentMode(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QTabWidget_DocumentMode(this.h))
 }
 
 func (this *QTabWidget) SetDocumentMode(set bool) {
@@ -321,8 +299,7 @@ func (this *QTabWidget) SetDocumentMode(set bool) {
 }
 
 func (this *QTabWidget) TabBarAutoHide() bool {
-	_ret := C.QTabWidget_TabBarAutoHide(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QTabWidget_TabBarAutoHide(this.h))
 }
 
 func (this *QTabWidget) SetTabBarAutoHide(enabled bool) {
@@ -334,8 +311,7 @@ func (this *QTabWidget) Clear() {
 }
 
 func (this *QTabWidget) TabBar() *QTabBar {
-	_ret := C.QTabWidget_TabBar(this.h)
-	return newQTabBar_U(unsafe.Pointer(_ret))
+	return newQTabBar_U(unsafe.Pointer(C.QTabWidget_TabBar(this.h)))
 }
 
 func (this *QTabWidget) SetCurrentIndex(index int) {
@@ -361,8 +337,7 @@ func miqt_exec_callback_QTabWidget_CurrentChanged(cb *C.void, index C.int) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	index_ret := index
-	slotval1 := (int)(index_ret)
+	slotval1 := (int)(index)
 
 	gofunc(slotval1)
 }
@@ -382,8 +357,7 @@ func miqt_exec_callback_QTabWidget_TabCloseRequested(cb *C.void, index C.int) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	index_ret := index
-	slotval1 := (int)(index_ret)
+	slotval1 := (int)(index)
 
 	gofunc(slotval1)
 }
@@ -403,8 +377,7 @@ func miqt_exec_callback_QTabWidget_TabBarClicked(cb *C.void, index C.int) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	index_ret := index
-	slotval1 := (int)(index_ret)
+	slotval1 := (int)(index)
 
 	gofunc(slotval1)
 }
@@ -424,8 +397,7 @@ func miqt_exec_callback_QTabWidget_TabBarDoubleClicked(cb *C.void, index C.int) 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	index_ret := index
-	slotval1 := (int)(index_ret)
+	slotval1 := (int)(index)
 
 	gofunc(slotval1)
 }
@@ -479,8 +451,7 @@ func (this *QTabWidget) SetCornerWidget2(w *QWidget, corner Corner) {
 }
 
 func (this *QTabWidget) CornerWidget1(corner Corner) *QWidget {
-	_ret := C.QTabWidget_CornerWidget1(this.h, (C.uintptr_t)(corner))
-	return newQWidget_U(unsafe.Pointer(_ret))
+	return newQWidget_U(unsafe.Pointer(C.QTabWidget_CornerWidget1(this.h, (C.uintptr_t)(corner))))
 }
 
 // Delete this object from C++ memory.

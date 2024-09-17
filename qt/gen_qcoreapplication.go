@@ -70,8 +70,7 @@ func NewQCoreApplication2(args []string, param3 int) *QCoreApplication {
 }
 
 func (this *QCoreApplication) MetaObject() *QMetaObject {
-	_ret := C.QCoreApplication_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QCoreApplication_MetaObject(this.h)))
 }
 
 func QCoreApplication_Tr(s string) string {
@@ -97,8 +96,10 @@ func QCoreApplication_Arguments() []string {
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = C.GoStringN(&_outCast[i].data, C.int(int64(_outCast[i].len)))
-		C.free(unsafe.Pointer(_outCast[i])) // free the inner miqt_string*
+		var _lv_ms *C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoStringN(&_lv_ms.data, C.int(int64(_lv_ms.len)))
+		C.free(unsafe.Pointer(_lv_ms))
+		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -109,8 +110,7 @@ func QCoreApplication_SetAttribute(attribute ApplicationAttribute) {
 }
 
 func QCoreApplication_TestAttribute(attribute ApplicationAttribute) bool {
-	_ret := C.QCoreApplication_TestAttribute((C.uintptr_t)(attribute))
-	return (bool)(_ret)
+	return (bool)(C.QCoreApplication_TestAttribute((C.uintptr_t)(attribute)))
 }
 
 func QCoreApplication_SetOrganizationDomain(orgDomain string) {
@@ -170,18 +170,15 @@ func QCoreApplication_SetSetuidAllowed(allow bool) {
 }
 
 func QCoreApplication_IsSetuidAllowed() bool {
-	_ret := C.QCoreApplication_IsSetuidAllowed()
-	return (bool)(_ret)
+	return (bool)(C.QCoreApplication_IsSetuidAllowed())
 }
 
 func QCoreApplication_Instance() *QCoreApplication {
-	_ret := C.QCoreApplication_Instance()
-	return newQCoreApplication_U(unsafe.Pointer(_ret))
+	return newQCoreApplication_U(unsafe.Pointer(C.QCoreApplication_Instance()))
 }
 
 func QCoreApplication_Exec() int {
-	_ret := C.QCoreApplication_Exec()
-	return (int)(_ret)
+	return (int)(C.QCoreApplication_Exec())
 }
 
 func QCoreApplication_ProcessEvents() {
@@ -197,8 +194,7 @@ func QCoreApplication_Exit() {
 }
 
 func QCoreApplication_SendEvent(receiver *QObject, event *QEvent) bool {
-	_ret := C.QCoreApplication_SendEvent(receiver.cPointer(), event.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QCoreApplication_SendEvent(receiver.cPointer(), event.cPointer()))
 }
 
 func QCoreApplication_PostEvent(receiver *QObject, event *QEvent) {
@@ -214,13 +210,11 @@ func QCoreApplication_RemovePostedEvents(receiver *QObject) {
 }
 
 func QCoreApplication_HasPendingEvents() bool {
-	_ret := C.QCoreApplication_HasPendingEvents()
-	return (bool)(_ret)
+	return (bool)(C.QCoreApplication_HasPendingEvents())
 }
 
 func QCoreApplication_EventDispatcher() *QAbstractEventDispatcher {
-	_ret := C.QCoreApplication_EventDispatcher()
-	return newQAbstractEventDispatcher_U(unsafe.Pointer(_ret))
+	return newQAbstractEventDispatcher_U(unsafe.Pointer(C.QCoreApplication_EventDispatcher()))
 }
 
 func QCoreApplication_SetEventDispatcher(eventDispatcher *QAbstractEventDispatcher) {
@@ -228,18 +222,15 @@ func QCoreApplication_SetEventDispatcher(eventDispatcher *QAbstractEventDispatch
 }
 
 func (this *QCoreApplication) Notify(param1 *QObject, param2 *QEvent) bool {
-	_ret := C.QCoreApplication_Notify(this.h, param1.cPointer(), param2.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QCoreApplication_Notify(this.h, param1.cPointer(), param2.cPointer()))
 }
 
 func QCoreApplication_StartingUp() bool {
-	_ret := C.QCoreApplication_StartingUp()
-	return (bool)(_ret)
+	return (bool)(C.QCoreApplication_StartingUp())
 }
 
 func QCoreApplication_ClosingDown() bool {
-	_ret := C.QCoreApplication_ClosingDown()
-	return (bool)(_ret)
+	return (bool)(C.QCoreApplication_ClosingDown())
 }
 
 func QCoreApplication_ApplicationDirPath() string {
@@ -257,18 +248,17 @@ func QCoreApplication_ApplicationFilePath() string {
 }
 
 func QCoreApplication_ApplicationPid() int64 {
-	_ret := C.QCoreApplication_ApplicationPid()
-	return (int64)(_ret)
+	return (int64)(C.QCoreApplication_ApplicationPid())
 }
 
 func QCoreApplication_SetLibraryPaths(libraryPaths []string) {
-	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
+	// For the C ABI, malloc a C array of raw pointers
 	libraryPaths_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(libraryPaths))))
 	defer C.free(unsafe.Pointer(libraryPaths_CArray))
 	for i := range libraryPaths {
-		single_ms := miqt_strdupg(libraryPaths[i])
-		defer C.free(single_ms)
-		libraryPaths_CArray[i] = (*C.struct_miqt_string)(single_ms)
+		libraryPaths_i_ms := miqt_strdupg(libraryPaths[i])
+		defer C.free(libraryPaths_i_ms)
+		libraryPaths_CArray[i] = (*C.struct_miqt_string)(libraryPaths_i_ms)
 	}
 	libraryPaths_ma := &C.struct_miqt_array{len: C.size_t(len(libraryPaths)), data: unsafe.Pointer(libraryPaths_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(libraryPaths_ma))
@@ -280,8 +270,10 @@ func QCoreApplication_LibraryPaths() []string {
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = C.GoStringN(&_outCast[i].data, C.int(int64(_outCast[i].len)))
-		C.free(unsafe.Pointer(_outCast[i])) // free the inner miqt_string*
+		var _lv_ms *C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoStringN(&_lv_ms.data, C.int(int64(_lv_ms.len)))
+		C.free(unsafe.Pointer(_lv_ms))
+		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -300,13 +292,11 @@ func QCoreApplication_RemoveLibraryPath(param1 string) {
 }
 
 func QCoreApplication_InstallTranslator(messageFile *QTranslator) bool {
-	_ret := C.QCoreApplication_InstallTranslator(messageFile.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QCoreApplication_InstallTranslator(messageFile.cPointer()))
 }
 
 func QCoreApplication_RemoveTranslator(messageFile *QTranslator) bool {
-	_ret := C.QCoreApplication_RemoveTranslator(messageFile.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QCoreApplication_RemoveTranslator(messageFile.cPointer()))
 }
 
 func QCoreApplication_Translate(context string, key string) string {
@@ -333,8 +323,7 @@ func (this *QCoreApplication) RemoveNativeEventFilter(filterObj *QAbstractNative
 }
 
 func QCoreApplication_IsQuitLockEnabled() bool {
-	_ret := C.QCoreApplication_IsQuitLockEnabled()
-	return (bool)(_ret)
+	return (bool)(C.QCoreApplication_IsQuitLockEnabled())
 }
 
 func QCoreApplication_SetQuitLockEnabled(enabled bool) {

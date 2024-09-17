@@ -73,8 +73,7 @@ func NewQUndoView6(group *QUndoGroup, parent *QWidget) *QUndoView {
 }
 
 func (this *QUndoView) MetaObject() *QMetaObject {
-	_ret := C.QUndoView_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QUndoView_MetaObject(this.h)))
 }
 
 func QUndoView_Tr(s string) string {
@@ -96,13 +95,11 @@ func QUndoView_TrUtf8(s string) string {
 }
 
 func (this *QUndoView) Stack() *QUndoStack {
-	_ret := C.QUndoView_Stack(this.h)
-	return newQUndoStack_U(unsafe.Pointer(_ret))
+	return newQUndoStack_U(unsafe.Pointer(C.QUndoView_Stack(this.h)))
 }
 
 func (this *QUndoView) Group() *QUndoGroup {
-	_ret := C.QUndoView_Group(this.h)
-	return newQUndoGroup_U(unsafe.Pointer(_ret))
+	return newQUndoGroup_U(unsafe.Pointer(C.QUndoView_Group(this.h)))
 }
 
 func (this *QUndoView) SetEmptyLabel(label string) {

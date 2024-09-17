@@ -52,8 +52,7 @@ func (this *QCborStreamWriter) SetDevice(device *QIODevice) {
 }
 
 func (this *QCborStreamWriter) Device() *QIODevice {
-	_ret := C.QCborStreamWriter_Device(this.h)
-	return newQIODevice_U(unsafe.Pointer(_ret))
+	return newQIODevice_U(unsafe.Pointer(C.QCborStreamWriter_Device(this.h)))
 }
 
 func (this *QCborStreamWriter) Append(u uint64) {
@@ -139,8 +138,7 @@ func (this *QCborStreamWriter) StartArrayWithCount(count uint64) {
 }
 
 func (this *QCborStreamWriter) EndArray() bool {
-	_ret := C.QCborStreamWriter_EndArray(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QCborStreamWriter_EndArray(this.h))
 }
 
 func (this *QCborStreamWriter) StartMap() {
@@ -152,8 +150,7 @@ func (this *QCborStreamWriter) StartMapWithCount(count uint64) {
 }
 
 func (this *QCborStreamWriter) EndMap() bool {
-	_ret := C.QCborStreamWriter_EndMap(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QCborStreamWriter_EndMap(this.h))
 }
 
 func (this *QCborStreamWriter) Append22(str string, size uint64) {

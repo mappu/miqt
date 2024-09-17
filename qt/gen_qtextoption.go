@@ -92,8 +92,7 @@ func (this *QTextOption) SetAlignment(alignment int) {
 }
 
 func (this *QTextOption) Alignment() int {
-	_ret := C.QTextOption_Alignment(this.h)
-	return (int)(_ret)
+	return (int)(C.QTextOption_Alignment(this.h))
 }
 
 func (this *QTextOption) SetTextDirection(aDirection LayoutDirection) {
@@ -101,8 +100,7 @@ func (this *QTextOption) SetTextDirection(aDirection LayoutDirection) {
 }
 
 func (this *QTextOption) TextDirection() LayoutDirection {
-	_ret := C.QTextOption_TextDirection(this.h)
-	return (LayoutDirection)(_ret)
+	return (LayoutDirection)(C.QTextOption_TextDirection(this.h))
 }
 
 func (this *QTextOption) SetWrapMode(wrap QTextOption__WrapMode) {
@@ -110,8 +108,7 @@ func (this *QTextOption) SetWrapMode(wrap QTextOption__WrapMode) {
 }
 
 func (this *QTextOption) WrapMode() QTextOption__WrapMode {
-	_ret := C.QTextOption_WrapMode(this.h)
-	return (QTextOption__WrapMode)(_ret)
+	return (QTextOption__WrapMode)(C.QTextOption_WrapMode(this.h))
 }
 
 func (this *QTextOption) SetFlags(flags int) {
@@ -119,8 +116,7 @@ func (this *QTextOption) SetFlags(flags int) {
 }
 
 func (this *QTextOption) Flags() int {
-	_ret := C.QTextOption_Flags(this.h)
-	return (int)(_ret)
+	return (int)(C.QTextOption_Flags(this.h))
 }
 
 func (this *QTextOption) SetTabStop(tabStop float64) {
@@ -128,8 +124,7 @@ func (this *QTextOption) SetTabStop(tabStop float64) {
 }
 
 func (this *QTextOption) TabStop() float64 {
-	_ret := C.QTextOption_TabStop(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QTextOption_TabStop(this.h))
 }
 
 func (this *QTextOption) SetTabStopDistance(tabStopDistance float64) {
@@ -137,8 +132,7 @@ func (this *QTextOption) SetTabStopDistance(tabStopDistance float64) {
 }
 
 func (this *QTextOption) TabStopDistance() float64 {
-	_ret := C.QTextOption_TabStopDistance(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QTextOption_TabStopDistance(this.h))
 }
 
 func (this *QTextOption) SetTabArray(tabStops []float64) {
@@ -156,7 +150,7 @@ func (this *QTextOption) SetTabArray(tabStops []float64) {
 func (this *QTextOption) TabArray() []float64 {
 	var _ma *C.struct_miqt_array = C.QTextOption_TabArray(this.h)
 	_ret := make([]float64, int(_ma.len))
-	_outCast := (*[0xffff]C.double)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]C.double)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (float64)(_outCast[i])
 	}
@@ -179,9 +173,12 @@ func (this *QTextOption) SetTabs(tabStops []QTextOption__Tab) {
 func (this *QTextOption) Tabs() []QTextOption__Tab {
 	var _ma *C.struct_miqt_array = C.QTextOption_Tabs(this.h)
 	_ret := make([]QTextOption__Tab, int(_ma.len))
-	_outCast := (*[0xffff]*C.QTextOption__Tab)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QTextOption__Tab)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = *newQTextOption__Tab(_outCast[i])
+		_lv_ret := _outCast[i]
+		_lv_goptr := newQTextOption__Tab(_lv_ret)
+		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+		_ret[i] = *_lv_goptr
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -192,8 +189,7 @@ func (this *QTextOption) SetUseDesignMetrics(b bool) {
 }
 
 func (this *QTextOption) UseDesignMetrics() bool {
-	_ret := C.QTextOption_UseDesignMetrics(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QTextOption_UseDesignMetrics(this.h))
 }
 
 // Delete this object from C++ memory.
@@ -257,13 +253,11 @@ func NewQTextOption__Tab4(pos float64, tabType QTextOption__TabType, delim QChar
 }
 
 func (this *QTextOption__Tab) OperatorEqual(other *QTextOption__Tab) bool {
-	_ret := C.QTextOption__Tab_OperatorEqual(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QTextOption__Tab_OperatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QTextOption__Tab) OperatorNotEqual(other *QTextOption__Tab) bool {
-	_ret := C.QTextOption__Tab_OperatorNotEqual(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QTextOption__Tab_OperatorNotEqual(this.h, other.cPointer()))
 }
 
 // Delete this object from C++ memory.

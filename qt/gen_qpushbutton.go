@@ -81,8 +81,7 @@ func NewQPushButton6(icon *QIcon, text string, parent *QWidget) *QPushButton {
 }
 
 func (this *QPushButton) MetaObject() *QMetaObject {
-	_ret := C.QPushButton_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QPushButton_MetaObject(this.h)))
 }
 
 func QPushButton_Tr(s string) string {
@@ -118,8 +117,7 @@ func (this *QPushButton) MinimumSizeHint() *QSize {
 }
 
 func (this *QPushButton) AutoDefault() bool {
-	_ret := C.QPushButton_AutoDefault(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QPushButton_AutoDefault(this.h))
 }
 
 func (this *QPushButton) SetAutoDefault(autoDefault bool) {
@@ -127,8 +125,7 @@ func (this *QPushButton) SetAutoDefault(autoDefault bool) {
 }
 
 func (this *QPushButton) IsDefault() bool {
-	_ret := C.QPushButton_IsDefault(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QPushButton_IsDefault(this.h))
 }
 
 func (this *QPushButton) SetDefault(defaultVal bool) {
@@ -140,8 +137,7 @@ func (this *QPushButton) SetMenu(menu *QMenu) {
 }
 
 func (this *QPushButton) Menu() *QMenu {
-	_ret := C.QPushButton_Menu(this.h)
-	return newQMenu_U(unsafe.Pointer(_ret))
+	return newQMenu_U(unsafe.Pointer(C.QPushButton_Menu(this.h)))
 }
 
 func (this *QPushButton) SetFlat(flat bool) {
@@ -149,8 +145,7 @@ func (this *QPushButton) SetFlat(flat bool) {
 }
 
 func (this *QPushButton) IsFlat() bool {
-	_ret := C.QPushButton_IsFlat(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QPushButton_IsFlat(this.h))
 }
 
 func (this *QPushButton) ShowMenu() {

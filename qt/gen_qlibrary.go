@@ -111,8 +111,7 @@ func NewQLibrary8(fileName string, version string, parent *QObject) *QLibrary {
 }
 
 func (this *QLibrary) MetaObject() *QMetaObject {
-	_ret := C.QLibrary_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QLibrary_MetaObject(this.h)))
 }
 
 func QLibrary_Tr(s string) string {
@@ -134,25 +133,21 @@ func QLibrary_TrUtf8(s string) string {
 }
 
 func (this *QLibrary) Load() bool {
-	_ret := C.QLibrary_Load(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QLibrary_Load(this.h))
 }
 
 func (this *QLibrary) Unload() bool {
-	_ret := C.QLibrary_Unload(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QLibrary_Unload(this.h))
 }
 
 func (this *QLibrary) IsLoaded() bool {
-	_ret := C.QLibrary_IsLoaded(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QLibrary_IsLoaded(this.h))
 }
 
 func QLibrary_IsLibrary(fileName string) bool {
 	fileName_ms := miqt_strdupg(fileName)
 	defer C.free(fileName_ms)
-	_ret := C.QLibrary_IsLibrary((*C.struct_miqt_string)(fileName_ms))
-	return (bool)(_ret)
+	return (bool)(C.QLibrary_IsLibrary((*C.struct_miqt_string)(fileName_ms)))
 }
 
 func (this *QLibrary) SetFileName(fileName string) {
@@ -194,8 +189,7 @@ func (this *QLibrary) SetLoadHints(hints int) {
 }
 
 func (this *QLibrary) LoadHints() int {
-	_ret := C.QLibrary_LoadHints(this.h)
-	return (int)(_ret)
+	return (int)(C.QLibrary_LoadHints(this.h))
 }
 
 func QLibrary_Tr2(s string, c string) string {

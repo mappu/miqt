@@ -82,8 +82,7 @@ func NewQFrame3(parent *QWidget, f int) *QFrame {
 }
 
 func (this *QFrame) MetaObject() *QMetaObject {
-	_ret := C.QFrame_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QFrame_MetaObject(this.h)))
 }
 
 func QFrame_Tr(s string) string {
@@ -105,8 +104,7 @@ func QFrame_TrUtf8(s string) string {
 }
 
 func (this *QFrame) FrameStyle() int {
-	_ret := C.QFrame_FrameStyle(this.h)
-	return (int)(_ret)
+	return (int)(C.QFrame_FrameStyle(this.h))
 }
 
 func (this *QFrame) SetFrameStyle(frameStyle int) {
@@ -114,8 +112,7 @@ func (this *QFrame) SetFrameStyle(frameStyle int) {
 }
 
 func (this *QFrame) FrameWidth() int {
-	_ret := C.QFrame_FrameWidth(this.h)
-	return (int)(_ret)
+	return (int)(C.QFrame_FrameWidth(this.h))
 }
 
 func (this *QFrame) SizeHint() *QSize {
@@ -126,8 +123,7 @@ func (this *QFrame) SizeHint() *QSize {
 }
 
 func (this *QFrame) FrameShape() QFrame__Shape {
-	_ret := C.QFrame_FrameShape(this.h)
-	return (QFrame__Shape)(_ret)
+	return (QFrame__Shape)(C.QFrame_FrameShape(this.h))
 }
 
 func (this *QFrame) SetFrameShape(frameShape QFrame__Shape) {
@@ -135,8 +131,7 @@ func (this *QFrame) SetFrameShape(frameShape QFrame__Shape) {
 }
 
 func (this *QFrame) FrameShadow() QFrame__Shadow {
-	_ret := C.QFrame_FrameShadow(this.h)
-	return (QFrame__Shadow)(_ret)
+	return (QFrame__Shadow)(C.QFrame_FrameShadow(this.h))
 }
 
 func (this *QFrame) SetFrameShadow(frameShadow QFrame__Shadow) {
@@ -144,8 +139,7 @@ func (this *QFrame) SetFrameShadow(frameShadow QFrame__Shadow) {
 }
 
 func (this *QFrame) LineWidth() int {
-	_ret := C.QFrame_LineWidth(this.h)
-	return (int)(_ret)
+	return (int)(C.QFrame_LineWidth(this.h))
 }
 
 func (this *QFrame) SetLineWidth(lineWidth int) {
@@ -153,8 +147,7 @@ func (this *QFrame) SetLineWidth(lineWidth int) {
 }
 
 func (this *QFrame) MidLineWidth() int {
-	_ret := C.QFrame_MidLineWidth(this.h)
-	return (int)(_ret)
+	return (int)(C.QFrame_MidLineWidth(this.h))
 }
 
 func (this *QFrame) SetMidLineWidth(midLineWidth int) {

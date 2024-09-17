@@ -80,8 +80,7 @@ func NewQAbstractSpinBox2(parent *QWidget) *QAbstractSpinBox {
 }
 
 func (this *QAbstractSpinBox) MetaObject() *QMetaObject {
-	_ret := C.QAbstractSpinBox_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QAbstractSpinBox_MetaObject(this.h)))
 }
 
 func QAbstractSpinBox_Tr(s string) string {
@@ -103,8 +102,7 @@ func QAbstractSpinBox_TrUtf8(s string) string {
 }
 
 func (this *QAbstractSpinBox) ButtonSymbols() QAbstractSpinBox__ButtonSymbols {
-	_ret := C.QAbstractSpinBox_ButtonSymbols(this.h)
-	return (QAbstractSpinBox__ButtonSymbols)(_ret)
+	return (QAbstractSpinBox__ButtonSymbols)(C.QAbstractSpinBox_ButtonSymbols(this.h))
 }
 
 func (this *QAbstractSpinBox) SetButtonSymbols(bs QAbstractSpinBox__ButtonSymbols) {
@@ -116,13 +114,11 @@ func (this *QAbstractSpinBox) SetCorrectionMode(cm QAbstractSpinBox__CorrectionM
 }
 
 func (this *QAbstractSpinBox) CorrectionMode() QAbstractSpinBox__CorrectionMode {
-	_ret := C.QAbstractSpinBox_CorrectionMode(this.h)
-	return (QAbstractSpinBox__CorrectionMode)(_ret)
+	return (QAbstractSpinBox__CorrectionMode)(C.QAbstractSpinBox_CorrectionMode(this.h))
 }
 
 func (this *QAbstractSpinBox) HasAcceptableInput() bool {
-	_ret := C.QAbstractSpinBox_HasAcceptableInput(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QAbstractSpinBox_HasAcceptableInput(this.h))
 }
 
 func (this *QAbstractSpinBox) Text() string {
@@ -146,8 +142,7 @@ func (this *QAbstractSpinBox) SetSpecialValueText(txt string) {
 }
 
 func (this *QAbstractSpinBox) Wrapping() bool {
-	_ret := C.QAbstractSpinBox_Wrapping(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QAbstractSpinBox_Wrapping(this.h))
 }
 
 func (this *QAbstractSpinBox) SetWrapping(w bool) {
@@ -159,8 +154,7 @@ func (this *QAbstractSpinBox) SetReadOnly(r bool) {
 }
 
 func (this *QAbstractSpinBox) IsReadOnly() bool {
-	_ret := C.QAbstractSpinBox_IsReadOnly(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QAbstractSpinBox_IsReadOnly(this.h))
 }
 
 func (this *QAbstractSpinBox) SetKeyboardTracking(kt bool) {
@@ -168,8 +162,7 @@ func (this *QAbstractSpinBox) SetKeyboardTracking(kt bool) {
 }
 
 func (this *QAbstractSpinBox) KeyboardTracking() bool {
-	_ret := C.QAbstractSpinBox_KeyboardTracking(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QAbstractSpinBox_KeyboardTracking(this.h))
 }
 
 func (this *QAbstractSpinBox) SetAlignment(flag int) {
@@ -177,8 +170,7 @@ func (this *QAbstractSpinBox) SetAlignment(flag int) {
 }
 
 func (this *QAbstractSpinBox) Alignment() int {
-	_ret := C.QAbstractSpinBox_Alignment(this.h)
-	return (int)(_ret)
+	return (int)(C.QAbstractSpinBox_Alignment(this.h))
 }
 
 func (this *QAbstractSpinBox) SetFrame(frame bool) {
@@ -186,8 +178,7 @@ func (this *QAbstractSpinBox) SetFrame(frame bool) {
 }
 
 func (this *QAbstractSpinBox) HasFrame() bool {
-	_ret := C.QAbstractSpinBox_HasFrame(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QAbstractSpinBox_HasFrame(this.h))
 }
 
 func (this *QAbstractSpinBox) SetAccelerated(on bool) {
@@ -195,8 +186,7 @@ func (this *QAbstractSpinBox) SetAccelerated(on bool) {
 }
 
 func (this *QAbstractSpinBox) IsAccelerated() bool {
-	_ret := C.QAbstractSpinBox_IsAccelerated(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QAbstractSpinBox_IsAccelerated(this.h))
 }
 
 func (this *QAbstractSpinBox) SetGroupSeparatorShown(shown bool) {
@@ -204,8 +194,7 @@ func (this *QAbstractSpinBox) SetGroupSeparatorShown(shown bool) {
 }
 
 func (this *QAbstractSpinBox) IsGroupSeparatorShown() bool {
-	_ret := C.QAbstractSpinBox_IsGroupSeparatorShown(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QAbstractSpinBox_IsGroupSeparatorShown(this.h))
 }
 
 func (this *QAbstractSpinBox) SizeHint() *QSize {
@@ -227,8 +216,7 @@ func (this *QAbstractSpinBox) InterpretText() {
 }
 
 func (this *QAbstractSpinBox) Event(event *QEvent) bool {
-	_ret := C.QAbstractSpinBox_Event(this.h, event.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QAbstractSpinBox_Event(this.h, event.cPointer()))
 }
 
 func (this *QAbstractSpinBox) InputMethodQuery(param1 InputMethodQuery) *QVariant {
@@ -241,8 +229,7 @@ func (this *QAbstractSpinBox) InputMethodQuery(param1 InputMethodQuery) *QVarian
 func (this *QAbstractSpinBox) Validate(input string, pos *int) QValidator__State {
 	input_ms := miqt_strdupg(input)
 	defer C.free(input_ms)
-	_ret := C.QAbstractSpinBox_Validate(this.h, (*C.struct_miqt_string)(input_ms), (*C.int)(unsafe.Pointer(pos)))
-	return (QValidator__State)(_ret)
+	return (QValidator__State)(C.QAbstractSpinBox_Validate(this.h, (*C.struct_miqt_string)(input_ms), (*C.int)(unsafe.Pointer(pos))))
 }
 
 func (this *QAbstractSpinBox) Fixup(input string) {

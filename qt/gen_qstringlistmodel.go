@@ -44,13 +44,13 @@ func NewQStringListModel() *QStringListModel {
 
 // NewQStringListModel2 constructs a new QStringListModel object.
 func NewQStringListModel2(strings []string) *QStringListModel {
-	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
+	// For the C ABI, malloc a C array of raw pointers
 	strings_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(strings))))
 	defer C.free(unsafe.Pointer(strings_CArray))
 	for i := range strings {
-		single_ms := miqt_strdupg(strings[i])
-		defer C.free(single_ms)
-		strings_CArray[i] = (*C.struct_miqt_string)(single_ms)
+		strings_i_ms := miqt_strdupg(strings[i])
+		defer C.free(strings_i_ms)
+		strings_CArray[i] = (*C.struct_miqt_string)(strings_i_ms)
 	}
 	strings_ma := &C.struct_miqt_array{len: C.size_t(len(strings)), data: unsafe.Pointer(strings_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(strings_ma))
@@ -66,13 +66,13 @@ func NewQStringListModel3(parent *QObject) *QStringListModel {
 
 // NewQStringListModel4 constructs a new QStringListModel object.
 func NewQStringListModel4(strings []string, parent *QObject) *QStringListModel {
-	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
+	// For the C ABI, malloc a C array of raw pointers
 	strings_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(strings))))
 	defer C.free(unsafe.Pointer(strings_CArray))
 	for i := range strings {
-		single_ms := miqt_strdupg(strings[i])
-		defer C.free(single_ms)
-		strings_CArray[i] = (*C.struct_miqt_string)(single_ms)
+		strings_i_ms := miqt_strdupg(strings[i])
+		defer C.free(strings_i_ms)
+		strings_CArray[i] = (*C.struct_miqt_string)(strings_i_ms)
 	}
 	strings_ma := &C.struct_miqt_array{len: C.size_t(len(strings)), data: unsafe.Pointer(strings_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(strings_ma))
@@ -81,8 +81,7 @@ func NewQStringListModel4(strings []string, parent *QObject) *QStringListModel {
 }
 
 func (this *QStringListModel) MetaObject() *QMetaObject {
-	_ret := C.QStringListModel_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QStringListModel_MetaObject(this.h)))
 }
 
 func QStringListModel_Tr(s string) string {
@@ -104,8 +103,7 @@ func QStringListModel_TrUtf8(s string) string {
 }
 
 func (this *QStringListModel) RowCount() int {
-	_ret := C.QStringListModel_RowCount(this.h)
-	return (int)(_ret)
+	return (int)(C.QStringListModel_RowCount(this.h))
 }
 
 func (this *QStringListModel) Sibling(row int, column int, idx *QModelIndex) *QModelIndex {
@@ -123,28 +121,23 @@ func (this *QStringListModel) Data(index *QModelIndex) *QVariant {
 }
 
 func (this *QStringListModel) SetData(index *QModelIndex, value *QVariant) bool {
-	_ret := C.QStringListModel_SetData(this.h, index.cPointer(), value.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QStringListModel_SetData(this.h, index.cPointer(), value.cPointer()))
 }
 
 func (this *QStringListModel) Flags(index *QModelIndex) int {
-	_ret := C.QStringListModel_Flags(this.h, index.cPointer())
-	return (int)(_ret)
+	return (int)(C.QStringListModel_Flags(this.h, index.cPointer()))
 }
 
 func (this *QStringListModel) InsertRows(row int, count int) bool {
-	_ret := C.QStringListModel_InsertRows(this.h, (C.int)(row), (C.int)(count))
-	return (bool)(_ret)
+	return (bool)(C.QStringListModel_InsertRows(this.h, (C.int)(row), (C.int)(count)))
 }
 
 func (this *QStringListModel) RemoveRows(row int, count int) bool {
-	_ret := C.QStringListModel_RemoveRows(this.h, (C.int)(row), (C.int)(count))
-	return (bool)(_ret)
+	return (bool)(C.QStringListModel_RemoveRows(this.h, (C.int)(row), (C.int)(count)))
 }
 
 func (this *QStringListModel) MoveRows(sourceParent *QModelIndex, sourceRow int, count int, destinationParent *QModelIndex, destinationChild int) bool {
-	_ret := C.QStringListModel_MoveRows(this.h, sourceParent.cPointer(), (C.int)(sourceRow), (C.int)(count), destinationParent.cPointer(), (C.int)(destinationChild))
-	return (bool)(_ret)
+	return (bool)(C.QStringListModel_MoveRows(this.h, sourceParent.cPointer(), (C.int)(sourceRow), (C.int)(count), destinationParent.cPointer(), (C.int)(destinationChild)))
 }
 
 func (this *QStringListModel) Sort(column int) {
@@ -156,21 +149,23 @@ func (this *QStringListModel) StringList() []string {
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = C.GoStringN(&_outCast[i].data, C.int(int64(_outCast[i].len)))
-		C.free(unsafe.Pointer(_outCast[i])) // free the inner miqt_string*
+		var _lv_ms *C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoStringN(&_lv_ms.data, C.int(int64(_lv_ms.len)))
+		C.free(unsafe.Pointer(_lv_ms))
+		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QStringListModel) SetStringList(strings []string) {
-	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
+	// For the C ABI, malloc a C array of raw pointers
 	strings_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(strings))))
 	defer C.free(unsafe.Pointer(strings_CArray))
 	for i := range strings {
-		single_ms := miqt_strdupg(strings[i])
-		defer C.free(single_ms)
-		strings_CArray[i] = (*C.struct_miqt_string)(single_ms)
+		strings_i_ms := miqt_strdupg(strings[i])
+		defer C.free(strings_i_ms)
+		strings_CArray[i] = (*C.struct_miqt_string)(strings_i_ms)
 	}
 	strings_ma := &C.struct_miqt_array{len: C.size_t(len(strings)), data: unsafe.Pointer(strings_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(strings_ma))
@@ -178,8 +173,7 @@ func (this *QStringListModel) SetStringList(strings []string) {
 }
 
 func (this *QStringListModel) SupportedDropActions() int {
-	_ret := C.QStringListModel_SupportedDropActions(this.h)
-	return (int)(_ret)
+	return (int)(C.QStringListModel_SupportedDropActions(this.h))
 }
 
 func QStringListModel_Tr2(s string, c string) string {
@@ -227,8 +221,7 @@ func QStringListModel_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QStringListModel) RowCount1(parent *QModelIndex) int {
-	_ret := C.QStringListModel_RowCount1(this.h, parent.cPointer())
-	return (int)(_ret)
+	return (int)(C.QStringListModel_RowCount1(this.h, parent.cPointer()))
 }
 
 func (this *QStringListModel) Data2(index *QModelIndex, role int) *QVariant {
@@ -239,18 +232,15 @@ func (this *QStringListModel) Data2(index *QModelIndex, role int) *QVariant {
 }
 
 func (this *QStringListModel) SetData3(index *QModelIndex, value *QVariant, role int) bool {
-	_ret := C.QStringListModel_SetData3(this.h, index.cPointer(), value.cPointer(), (C.int)(role))
-	return (bool)(_ret)
+	return (bool)(C.QStringListModel_SetData3(this.h, index.cPointer(), value.cPointer(), (C.int)(role)))
 }
 
 func (this *QStringListModel) InsertRows3(row int, count int, parent *QModelIndex) bool {
-	_ret := C.QStringListModel_InsertRows3(this.h, (C.int)(row), (C.int)(count), parent.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QStringListModel_InsertRows3(this.h, (C.int)(row), (C.int)(count), parent.cPointer()))
 }
 
 func (this *QStringListModel) RemoveRows3(row int, count int, parent *QModelIndex) bool {
-	_ret := C.QStringListModel_RemoveRows3(this.h, (C.int)(row), (C.int)(count), parent.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QStringListModel_RemoveRows3(this.h, (C.int)(row), (C.int)(count), parent.cPointer()))
 }
 
 func (this *QStringListModel) Sort2(column int, order SortOrder) {

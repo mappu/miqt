@@ -98,13 +98,11 @@ func (this *QTextBoundaryFinder) OperatorAssign(other *QTextBoundaryFinder) {
 }
 
 func (this *QTextBoundaryFinder) IsValid() bool {
-	_ret := C.QTextBoundaryFinder_IsValid(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QTextBoundaryFinder_IsValid(this.h))
 }
 
 func (this *QTextBoundaryFinder) Type() QTextBoundaryFinder__BoundaryType {
-	_ret := C.QTextBoundaryFinder_Type(this.h)
-	return (QTextBoundaryFinder__BoundaryType)(_ret)
+	return (QTextBoundaryFinder__BoundaryType)(C.QTextBoundaryFinder_Type(this.h))
 }
 
 func (this *QTextBoundaryFinder) String() string {
@@ -123,8 +121,7 @@ func (this *QTextBoundaryFinder) ToEnd() {
 }
 
 func (this *QTextBoundaryFinder) Position() int {
-	_ret := C.QTextBoundaryFinder_Position(this.h)
-	return (int)(_ret)
+	return (int)(C.QTextBoundaryFinder_Position(this.h))
 }
 
 func (this *QTextBoundaryFinder) SetPosition(position int) {
@@ -132,23 +129,19 @@ func (this *QTextBoundaryFinder) SetPosition(position int) {
 }
 
 func (this *QTextBoundaryFinder) ToNextBoundary() int {
-	_ret := C.QTextBoundaryFinder_ToNextBoundary(this.h)
-	return (int)(_ret)
+	return (int)(C.QTextBoundaryFinder_ToNextBoundary(this.h))
 }
 
 func (this *QTextBoundaryFinder) ToPreviousBoundary() int {
-	_ret := C.QTextBoundaryFinder_ToPreviousBoundary(this.h)
-	return (int)(_ret)
+	return (int)(C.QTextBoundaryFinder_ToPreviousBoundary(this.h))
 }
 
 func (this *QTextBoundaryFinder) IsAtBoundary() bool {
-	_ret := C.QTextBoundaryFinder_IsAtBoundary(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QTextBoundaryFinder_IsAtBoundary(this.h))
 }
 
 func (this *QTextBoundaryFinder) BoundaryReasons() int {
-	_ret := C.QTextBoundaryFinder_BoundaryReasons(this.h)
-	return (int)(_ret)
+	return (int)(C.QTextBoundaryFinder_BoundaryReasons(this.h))
 }
 
 // Delete this object from C++ memory.

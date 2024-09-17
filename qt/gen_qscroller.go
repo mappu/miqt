@@ -64,8 +64,7 @@ func newQScroller_U(h unsafe.Pointer) *QScroller {
 }
 
 func (this *QScroller) MetaObject() *QMetaObject {
-	_ret := C.QScroller_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QScroller_MetaObject(this.h)))
 }
 
 func QScroller_Tr(s string) string {
@@ -87,28 +86,23 @@ func QScroller_TrUtf8(s string) string {
 }
 
 func QScroller_HasScroller(target *QObject) bool {
-	_ret := C.QScroller_HasScroller(target.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QScroller_HasScroller(target.cPointer()))
 }
 
 func QScroller_Scroller(target *QObject) *QScroller {
-	_ret := C.QScroller_Scroller(target.cPointer())
-	return newQScroller_U(unsafe.Pointer(_ret))
+	return newQScroller_U(unsafe.Pointer(C.QScroller_Scroller(target.cPointer())))
 }
 
 func QScroller_ScrollerWithTarget(target *QObject) *QScroller {
-	_ret := C.QScroller_ScrollerWithTarget(target.cPointer())
-	return newQScroller_U(unsafe.Pointer(_ret))
+	return newQScroller_U(unsafe.Pointer(C.QScroller_ScrollerWithTarget(target.cPointer())))
 }
 
 func QScroller_GrabGesture(target *QObject) GestureType {
-	_ret := C.QScroller_GrabGesture(target.cPointer())
-	return (GestureType)(_ret)
+	return (GestureType)(C.QScroller_GrabGesture(target.cPointer()))
 }
 
 func QScroller_GrabbedGesture(target *QObject) GestureType {
-	_ret := C.QScroller_GrabbedGesture(target.cPointer())
-	return (GestureType)(_ret)
+	return (GestureType)(C.QScroller_GrabbedGesture(target.cPointer()))
 }
 
 func QScroller_UngrabGesture(target *QObject) {
@@ -118,27 +112,24 @@ func QScroller_UngrabGesture(target *QObject) {
 func QScroller_ActiveScrollers() []*QScroller {
 	var _ma *C.struct_miqt_array = C.QScroller_ActiveScrollers()
 	_ret := make([]*QScroller, int(_ma.len))
-	_outCast := (*[0xffff]*C.QScroller)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QScroller)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQScroller(_outCast[i])
+		_ret[i] = newQScroller_U(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QScroller) Target() *QObject {
-	_ret := C.QScroller_Target(this.h)
-	return newQObject_U(unsafe.Pointer(_ret))
+	return newQObject_U(unsafe.Pointer(C.QScroller_Target(this.h)))
 }
 
 func (this *QScroller) State() QScroller__State {
-	_ret := C.QScroller_State(this.h)
-	return (QScroller__State)(_ret)
+	return (QScroller__State)(C.QScroller_State(this.h))
 }
 
 func (this *QScroller) HandleInput(input QScroller__Input, position *QPointF) bool {
-	_ret := C.QScroller_HandleInput(this.h, (C.uintptr_t)(input), position.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QScroller_HandleInput(this.h, (C.uintptr_t)(input), position.cPointer()))
 }
 
 func (this *QScroller) Stop() {
@@ -244,8 +235,7 @@ func miqt_exec_callback_QScroller_StateChanged(cb *C.void, newstate C.uintptr_t)
 	}
 
 	// Convert all CABI parameters to Go parameters
-	newstate_ret := newstate
-	slotval1 := (QScroller__State)(newstate_ret)
+	slotval1 := (QScroller__State)(newstate)
 
 	gofunc(slotval1)
 }
@@ -265,8 +255,7 @@ func miqt_exec_callback_QScroller_ScrollerPropertiesChanged(cb *C.void, param1 *
 	}
 
 	// Convert all CABI parameters to Go parameters
-	param1_ret := param1
-	slotval1 := newQScrollerProperties_U(unsafe.Pointer(param1_ret))
+	slotval1 := newQScrollerProperties_U(unsafe.Pointer(param1))
 
 	gofunc(slotval1)
 }
@@ -316,11 +305,9 @@ func QScroller_TrUtf83(s string, c string, n int) string {
 }
 
 func QScroller_GrabGesture2(target *QObject, gestureType QScroller__ScrollerGestureType) GestureType {
-	_ret := C.QScroller_GrabGesture2(target.cPointer(), (C.uintptr_t)(gestureType))
-	return (GestureType)(_ret)
+	return (GestureType)(C.QScroller_GrabGesture2(target.cPointer(), (C.uintptr_t)(gestureType)))
 }
 
 func (this *QScroller) HandleInput3(input QScroller__Input, position *QPointF, timestamp int64) bool {
-	_ret := C.QScroller_HandleInput3(this.h, (C.uintptr_t)(input), position.cPointer(), (C.longlong)(timestamp))
-	return (bool)(_ret)
+	return (bool)(C.QScroller_HandleInput3(this.h, (C.uintptr_t)(input), position.cPointer(), (C.longlong)(timestamp)))
 }

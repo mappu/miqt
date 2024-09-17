@@ -68,8 +68,7 @@ func NewQLine4(param1 *QLine) *QLine {
 }
 
 func (this *QLine) IsNull() bool {
-	_ret := C.QLine_IsNull(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QLine_IsNull(this.h))
 }
 
 func (this *QLine) P1() *QPoint {
@@ -87,33 +86,27 @@ func (this *QLine) P2() *QPoint {
 }
 
 func (this *QLine) X1() int {
-	_ret := C.QLine_X1(this.h)
-	return (int)(_ret)
+	return (int)(C.QLine_X1(this.h))
 }
 
 func (this *QLine) Y1() int {
-	_ret := C.QLine_Y1(this.h)
-	return (int)(_ret)
+	return (int)(C.QLine_Y1(this.h))
 }
 
 func (this *QLine) X2() int {
-	_ret := C.QLine_X2(this.h)
-	return (int)(_ret)
+	return (int)(C.QLine_X2(this.h))
 }
 
 func (this *QLine) Y2() int {
-	_ret := C.QLine_Y2(this.h)
-	return (int)(_ret)
+	return (int)(C.QLine_Y2(this.h))
 }
 
 func (this *QLine) Dx() int {
-	_ret := C.QLine_Dx(this.h)
-	return (int)(_ret)
+	return (int)(C.QLine_Dx(this.h))
 }
 
 func (this *QLine) Dy() int {
-	_ret := C.QLine_Dy(this.h)
-	return (int)(_ret)
+	return (int)(C.QLine_Dy(this.h))
 }
 
 func (this *QLine) Translate(p *QPoint) {
@@ -162,13 +155,11 @@ func (this *QLine) SetLine(x1 int, y1 int, x2 int, y2 int) {
 }
 
 func (this *QLine) OperatorEqual(d *QLine) bool {
-	_ret := C.QLine_OperatorEqual(this.h, d.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QLine_OperatorEqual(this.h, d.cPointer()))
 }
 
 func (this *QLine) OperatorNotEqual(d *QLine) bool {
-	_ret := C.QLine_OperatorNotEqual(this.h, d.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QLine_OperatorNotEqual(this.h, d.cPointer()))
 }
 
 // Delete this object from C++ memory.
@@ -245,8 +236,7 @@ func QLineF_FromPolar(length float64, angle float64) *QLineF {
 }
 
 func (this *QLineF) IsNull() bool {
-	_ret := C.QLineF_IsNull(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QLineF_IsNull(this.h))
 }
 
 func (this *QLineF) P1() *QPointF {
@@ -264,38 +254,31 @@ func (this *QLineF) P2() *QPointF {
 }
 
 func (this *QLineF) X1() float64 {
-	_ret := C.QLineF_X1(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QLineF_X1(this.h))
 }
 
 func (this *QLineF) Y1() float64 {
-	_ret := C.QLineF_Y1(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QLineF_Y1(this.h))
 }
 
 func (this *QLineF) X2() float64 {
-	_ret := C.QLineF_X2(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QLineF_X2(this.h))
 }
 
 func (this *QLineF) Y2() float64 {
-	_ret := C.QLineF_Y2(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QLineF_Y2(this.h))
 }
 
 func (this *QLineF) Dx() float64 {
-	_ret := C.QLineF_Dx(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QLineF_Dx(this.h))
 }
 
 func (this *QLineF) Dy() float64 {
-	_ret := C.QLineF_Dy(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QLineF_Dy(this.h))
 }
 
 func (this *QLineF) Length() float64 {
-	_ret := C.QLineF_Length(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QLineF_Length(this.h))
 }
 
 func (this *QLineF) SetLength(lenVal float64) {
@@ -303,8 +286,7 @@ func (this *QLineF) SetLength(lenVal float64) {
 }
 
 func (this *QLineF) Angle() float64 {
-	_ret := C.QLineF_Angle(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QLineF_Angle(this.h))
 }
 
 func (this *QLineF) SetAngle(angle float64) {
@@ -312,8 +294,7 @@ func (this *QLineF) SetAngle(angle float64) {
 }
 
 func (this *QLineF) AngleTo(l *QLineF) float64 {
-	_ret := C.QLineF_AngleTo(this.h, l.cPointer())
-	return (float64)(_ret)
+	return (float64)(C.QLineF_AngleTo(this.h, l.cPointer()))
 }
 
 func (this *QLineF) UnitVector() *QLineF {
@@ -331,18 +312,15 @@ func (this *QLineF) NormalVector() *QLineF {
 }
 
 func (this *QLineF) Intersects(l *QLineF, intersectionPoint *QPointF) uintptr {
-	_ret := C.QLineF_Intersects(this.h, l.cPointer(), intersectionPoint.cPointer())
-	return (uintptr)(_ret)
+	return (uintptr)(C.QLineF_Intersects(this.h, l.cPointer(), intersectionPoint.cPointer()))
 }
 
 func (this *QLineF) Intersect(l *QLineF, intersectionPoint *QPointF) QLineF__IntersectType {
-	_ret := C.QLineF_Intersect(this.h, l.cPointer(), intersectionPoint.cPointer())
-	return (QLineF__IntersectType)(_ret)
+	return (QLineF__IntersectType)(C.QLineF_Intersect(this.h, l.cPointer(), intersectionPoint.cPointer()))
 }
 
 func (this *QLineF) AngleWithQLineF(l *QLineF) float64 {
-	_ret := C.QLineF_AngleWithQLineF(this.h, l.cPointer())
-	return (float64)(_ret)
+	return (float64)(C.QLineF_AngleWithQLineF(this.h, l.cPointer()))
 }
 
 func (this *QLineF) PointAt(t float64) *QPointF {
@@ -398,13 +376,11 @@ func (this *QLineF) SetLine(x1 float64, y1 float64, x2 float64, y2 float64) {
 }
 
 func (this *QLineF) OperatorEqual(d *QLineF) bool {
-	_ret := C.QLineF_OperatorEqual(this.h, d.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QLineF_OperatorEqual(this.h, d.cPointer()))
 }
 
 func (this *QLineF) OperatorNotEqual(d *QLineF) bool {
-	_ret := C.QLineF_OperatorNotEqual(this.h, d.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QLineF_OperatorNotEqual(this.h, d.cPointer()))
 }
 
 func (this *QLineF) ToLine() *QLine {

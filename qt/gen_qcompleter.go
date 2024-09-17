@@ -67,13 +67,13 @@ func NewQCompleter2(model *QAbstractItemModel) *QCompleter {
 
 // NewQCompleter3 constructs a new QCompleter object.
 func NewQCompleter3(completions []string) *QCompleter {
-	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
+	// For the C ABI, malloc a C array of raw pointers
 	completions_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(completions))))
 	defer C.free(unsafe.Pointer(completions_CArray))
 	for i := range completions {
-		single_ms := miqt_strdupg(completions[i])
-		defer C.free(single_ms)
-		completions_CArray[i] = (*C.struct_miqt_string)(single_ms)
+		completions_i_ms := miqt_strdupg(completions[i])
+		defer C.free(completions_i_ms)
+		completions_CArray[i] = (*C.struct_miqt_string)(completions_i_ms)
 	}
 	completions_ma := &C.struct_miqt_array{len: C.size_t(len(completions)), data: unsafe.Pointer(completions_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(completions_ma))
@@ -95,13 +95,13 @@ func NewQCompleter5(model *QAbstractItemModel, parent *QObject) *QCompleter {
 
 // NewQCompleter6 constructs a new QCompleter object.
 func NewQCompleter6(completions []string, parent *QObject) *QCompleter {
-	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
+	// For the C ABI, malloc a C array of raw pointers
 	completions_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(completions))))
 	defer C.free(unsafe.Pointer(completions_CArray))
 	for i := range completions {
-		single_ms := miqt_strdupg(completions[i])
-		defer C.free(single_ms)
-		completions_CArray[i] = (*C.struct_miqt_string)(single_ms)
+		completions_i_ms := miqt_strdupg(completions[i])
+		defer C.free(completions_i_ms)
+		completions_CArray[i] = (*C.struct_miqt_string)(completions_i_ms)
 	}
 	completions_ma := &C.struct_miqt_array{len: C.size_t(len(completions)), data: unsafe.Pointer(completions_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(completions_ma))
@@ -110,8 +110,7 @@ func NewQCompleter6(completions []string, parent *QObject) *QCompleter {
 }
 
 func (this *QCompleter) MetaObject() *QMetaObject {
-	_ret := C.QCompleter_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QCompleter_MetaObject(this.h)))
 }
 
 func QCompleter_Tr(s string) string {
@@ -137,8 +136,7 @@ func (this *QCompleter) SetWidget(widget *QWidget) {
 }
 
 func (this *QCompleter) Widget() *QWidget {
-	_ret := C.QCompleter_Widget(this.h)
-	return newQWidget_U(unsafe.Pointer(_ret))
+	return newQWidget_U(unsafe.Pointer(C.QCompleter_Widget(this.h)))
 }
 
 func (this *QCompleter) SetModel(c *QAbstractItemModel) {
@@ -146,8 +144,7 @@ func (this *QCompleter) SetModel(c *QAbstractItemModel) {
 }
 
 func (this *QCompleter) Model() *QAbstractItemModel {
-	_ret := C.QCompleter_Model(this.h)
-	return newQAbstractItemModel_U(unsafe.Pointer(_ret))
+	return newQAbstractItemModel_U(unsafe.Pointer(C.QCompleter_Model(this.h)))
 }
 
 func (this *QCompleter) SetCompletionMode(mode QCompleter__CompletionMode) {
@@ -155,8 +152,7 @@ func (this *QCompleter) SetCompletionMode(mode QCompleter__CompletionMode) {
 }
 
 func (this *QCompleter) CompletionMode() QCompleter__CompletionMode {
-	_ret := C.QCompleter_CompletionMode(this.h)
-	return (QCompleter__CompletionMode)(_ret)
+	return (QCompleter__CompletionMode)(C.QCompleter_CompletionMode(this.h))
 }
 
 func (this *QCompleter) SetFilterMode(filterMode int) {
@@ -164,13 +160,11 @@ func (this *QCompleter) SetFilterMode(filterMode int) {
 }
 
 func (this *QCompleter) FilterMode() int {
-	_ret := C.QCompleter_FilterMode(this.h)
-	return (int)(_ret)
+	return (int)(C.QCompleter_FilterMode(this.h))
 }
 
 func (this *QCompleter) Popup() *QAbstractItemView {
-	_ret := C.QCompleter_Popup(this.h)
-	return newQAbstractItemView_U(unsafe.Pointer(_ret))
+	return newQAbstractItemView_U(unsafe.Pointer(C.QCompleter_Popup(this.h)))
 }
 
 func (this *QCompleter) SetPopup(popup *QAbstractItemView) {
@@ -182,8 +176,7 @@ func (this *QCompleter) SetCaseSensitivity(caseSensitivity CaseSensitivity) {
 }
 
 func (this *QCompleter) CaseSensitivity() CaseSensitivity {
-	_ret := C.QCompleter_CaseSensitivity(this.h)
-	return (CaseSensitivity)(_ret)
+	return (CaseSensitivity)(C.QCompleter_CaseSensitivity(this.h))
 }
 
 func (this *QCompleter) SetModelSorting(sorting QCompleter__ModelSorting) {
@@ -191,8 +184,7 @@ func (this *QCompleter) SetModelSorting(sorting QCompleter__ModelSorting) {
 }
 
 func (this *QCompleter) ModelSorting() QCompleter__ModelSorting {
-	_ret := C.QCompleter_ModelSorting(this.h)
-	return (QCompleter__ModelSorting)(_ret)
+	return (QCompleter__ModelSorting)(C.QCompleter_ModelSorting(this.h))
 }
 
 func (this *QCompleter) SetCompletionColumn(column int) {
@@ -200,8 +192,7 @@ func (this *QCompleter) SetCompletionColumn(column int) {
 }
 
 func (this *QCompleter) CompletionColumn() int {
-	_ret := C.QCompleter_CompletionColumn(this.h)
-	return (int)(_ret)
+	return (int)(C.QCompleter_CompletionColumn(this.h))
 }
 
 func (this *QCompleter) SetCompletionRole(role int) {
@@ -209,18 +200,15 @@ func (this *QCompleter) SetCompletionRole(role int) {
 }
 
 func (this *QCompleter) CompletionRole() int {
-	_ret := C.QCompleter_CompletionRole(this.h)
-	return (int)(_ret)
+	return (int)(C.QCompleter_CompletionRole(this.h))
 }
 
 func (this *QCompleter) WrapAround() bool {
-	_ret := C.QCompleter_WrapAround(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QCompleter_WrapAround(this.h))
 }
 
 func (this *QCompleter) MaxVisibleItems() int {
-	_ret := C.QCompleter_MaxVisibleItems(this.h)
-	return (int)(_ret)
+	return (int)(C.QCompleter_MaxVisibleItems(this.h))
 }
 
 func (this *QCompleter) SetMaxVisibleItems(maxItems int) {
@@ -228,18 +216,15 @@ func (this *QCompleter) SetMaxVisibleItems(maxItems int) {
 }
 
 func (this *QCompleter) CompletionCount() int {
-	_ret := C.QCompleter_CompletionCount(this.h)
-	return (int)(_ret)
+	return (int)(C.QCompleter_CompletionCount(this.h))
 }
 
 func (this *QCompleter) SetCurrentRow(row int) bool {
-	_ret := C.QCompleter_SetCurrentRow(this.h, (C.int)(row))
-	return (bool)(_ret)
+	return (bool)(C.QCompleter_SetCurrentRow(this.h, (C.int)(row)))
 }
 
 func (this *QCompleter) CurrentRow() int {
-	_ret := C.QCompleter_CurrentRow(this.h)
-	return (int)(_ret)
+	return (int)(C.QCompleter_CurrentRow(this.h))
 }
 
 func (this *QCompleter) CurrentIndex() *QModelIndex {
@@ -257,8 +242,7 @@ func (this *QCompleter) CurrentCompletion() string {
 }
 
 func (this *QCompleter) CompletionModel() *QAbstractItemModel {
-	_ret := C.QCompleter_CompletionModel(this.h)
-	return newQAbstractItemModel_U(unsafe.Pointer(_ret))
+	return newQAbstractItemModel_U(unsafe.Pointer(C.QCompleter_CompletionModel(this.h)))
 }
 
 func (this *QCompleter) CompletionPrefix() string {
@@ -296,8 +280,10 @@ func (this *QCompleter) SplitPath(path string) []string {
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = C.GoStringN(&_outCast[i].data, C.int(int64(_outCast[i].len)))
-		C.free(unsafe.Pointer(_outCast[i])) // free the inner miqt_string*
+		var _lv_ms *C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoStringN(&_lv_ms.data, C.int(int64(_lv_ms.len)))
+		C.free(unsafe.Pointer(_lv_ms))
+		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -343,8 +329,7 @@ func miqt_exec_callback_QCompleter_ActivatedWithIndex(cb *C.void, index *C.QMode
 	}
 
 	// Convert all CABI parameters to Go parameters
-	index_ret := index
-	slotval1 := newQModelIndex_U(unsafe.Pointer(index_ret))
+	slotval1 := newQModelIndex_U(unsafe.Pointer(index))
 
 	gofunc(slotval1)
 }
@@ -389,8 +374,7 @@ func miqt_exec_callback_QCompleter_HighlightedWithIndex(cb *C.void, index *C.QMo
 	}
 
 	// Convert all CABI parameters to Go parameters
-	index_ret := index
-	slotval1 := newQModelIndex_U(unsafe.Pointer(index_ret))
+	slotval1 := newQModelIndex_U(unsafe.Pointer(index))
 
 	gofunc(slotval1)
 }

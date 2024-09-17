@@ -79,8 +79,7 @@ func (this *QTextDocumentWriter) SetDevice(device *QIODevice) {
 }
 
 func (this *QTextDocumentWriter) Device() *QIODevice {
-	_ret := C.QTextDocumentWriter_Device(this.h)
-	return newQIODevice_U(unsafe.Pointer(_ret))
+	return newQIODevice_U(unsafe.Pointer(C.QTextDocumentWriter_Device(this.h)))
 }
 
 func (this *QTextDocumentWriter) SetFileName(fileName string) {
@@ -97,13 +96,11 @@ func (this *QTextDocumentWriter) FileName() string {
 }
 
 func (this *QTextDocumentWriter) Write(document *QTextDocument) bool {
-	_ret := C.QTextDocumentWriter_Write(this.h, document.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QTextDocumentWriter_Write(this.h, document.cPointer()))
 }
 
 func (this *QTextDocumentWriter) WriteWithFragment(fragment *QTextDocumentFragment) bool {
-	_ret := C.QTextDocumentWriter_WriteWithFragment(this.h, fragment.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QTextDocumentWriter_WriteWithFragment(this.h, fragment.cPointer()))
 }
 
 func (this *QTextDocumentWriter) SetCodec(codec *QTextCodec) {
@@ -111,16 +108,18 @@ func (this *QTextDocumentWriter) SetCodec(codec *QTextCodec) {
 }
 
 func (this *QTextDocumentWriter) Codec() *QTextCodec {
-	_ret := C.QTextDocumentWriter_Codec(this.h)
-	return newQTextCodec_U(unsafe.Pointer(_ret))
+	return newQTextCodec_U(unsafe.Pointer(C.QTextDocumentWriter_Codec(this.h)))
 }
 
 func QTextDocumentWriter_SupportedDocumentFormats() []QByteArray {
 	var _ma *C.struct_miqt_array = C.QTextDocumentWriter_SupportedDocumentFormats()
 	_ret := make([]QByteArray, int(_ma.len))
-	_outCast := (*[0xffff]*C.QByteArray)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QByteArray)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = *newQByteArray(_outCast[i])
+		_lv_ret := _outCast[i]
+		_lv_goptr := newQByteArray(_lv_ret)
+		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+		_ret[i] = *_lv_goptr
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret

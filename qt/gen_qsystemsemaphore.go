@@ -92,18 +92,15 @@ func (this *QSystemSemaphore) Key() string {
 }
 
 func (this *QSystemSemaphore) Acquire() bool {
-	_ret := C.QSystemSemaphore_Acquire(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QSystemSemaphore_Acquire(this.h))
 }
 
 func (this *QSystemSemaphore) Release() bool {
-	_ret := C.QSystemSemaphore_Release(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QSystemSemaphore_Release(this.h))
 }
 
 func (this *QSystemSemaphore) Error() QSystemSemaphore__SystemSemaphoreError {
-	_ret := C.QSystemSemaphore_Error(this.h)
-	return (QSystemSemaphore__SystemSemaphoreError)(_ret)
+	return (QSystemSemaphore__SystemSemaphoreError)(C.QSystemSemaphore_Error(this.h))
 }
 
 func (this *QSystemSemaphore) ErrorString() string {
@@ -126,8 +123,7 @@ func (this *QSystemSemaphore) SetKey3(key string, initialValue int, mode QSystem
 }
 
 func (this *QSystemSemaphore) Release1(n int) bool {
-	_ret := C.QSystemSemaphore_Release1(this.h, (C.int)(n))
-	return (bool)(_ret)
+	return (bool)(C.QSystemSemaphore_Release1(this.h, (C.int)(n)))
 }
 
 // Delete this object from C++ memory.

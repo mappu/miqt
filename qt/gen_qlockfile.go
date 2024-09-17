@@ -53,13 +53,11 @@ func NewQLockFile(fileName string) *QLockFile {
 }
 
 func (this *QLockFile) Lock() bool {
-	_ret := C.QLockFile_Lock(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QLockFile_Lock(this.h))
 }
 
 func (this *QLockFile) TryLock() bool {
-	_ret := C.QLockFile_TryLock(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QLockFile_TryLock(this.h))
 }
 
 func (this *QLockFile) Unlock() {
@@ -71,28 +69,23 @@ func (this *QLockFile) SetStaleLockTime(staleLockTime int) {
 }
 
 func (this *QLockFile) StaleLockTime() int {
-	_ret := C.QLockFile_StaleLockTime(this.h)
-	return (int)(_ret)
+	return (int)(C.QLockFile_StaleLockTime(this.h))
 }
 
 func (this *QLockFile) IsLocked() bool {
-	_ret := C.QLockFile_IsLocked(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QLockFile_IsLocked(this.h))
 }
 
 func (this *QLockFile) RemoveStaleLockFile() bool {
-	_ret := C.QLockFile_RemoveStaleLockFile(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QLockFile_RemoveStaleLockFile(this.h))
 }
 
 func (this *QLockFile) Error() QLockFile__LockError {
-	_ret := C.QLockFile_Error(this.h)
-	return (QLockFile__LockError)(_ret)
+	return (QLockFile__LockError)(C.QLockFile_Error(this.h))
 }
 
 func (this *QLockFile) TryLock1(timeout int) bool {
-	_ret := C.QLockFile_TryLock1(this.h, (C.int)(timeout))
-	return (bool)(_ret)
+	return (bool)(C.QLockFile_TryLock1(this.h, (C.int)(timeout)))
 }
 
 // Delete this object from C++ memory.

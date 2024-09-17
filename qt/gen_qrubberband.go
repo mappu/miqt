@@ -56,8 +56,7 @@ func NewQRubberBand2(param1 QRubberBand__Shape, param2 *QWidget) *QRubberBand {
 }
 
 func (this *QRubberBand) MetaObject() *QMetaObject {
-	_ret := C.QRubberBand_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QRubberBand_MetaObject(this.h)))
 }
 
 func QRubberBand_Tr(s string) string {
@@ -79,8 +78,7 @@ func QRubberBand_TrUtf8(s string) string {
 }
 
 func (this *QRubberBand) Shape() QRubberBand__Shape {
-	_ret := C.QRubberBand_Shape(this.h)
-	return (QRubberBand__Shape)(_ret)
+	return (QRubberBand__Shape)(C.QRubberBand_Shape(this.h))
 }
 
 func (this *QRubberBand) SetGeometry(r *QRect) {

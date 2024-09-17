@@ -1805,8 +1805,7 @@ func NewQStyleOptionGraphicsItem2(other *QStyleOptionGraphicsItem) *QStyleOption
 }
 
 func QStyleOptionGraphicsItem_LevelOfDetailFromTransform(worldTransform *QTransform) float64 {
-	_ret := C.QStyleOptionGraphicsItem_LevelOfDetailFromTransform(worldTransform.cPointer())
-	return (float64)(_ret)
+	return (float64)(C.QStyleOptionGraphicsItem_LevelOfDetailFromTransform(worldTransform.cPointer()))
 }
 
 // Delete this object from C++ memory.

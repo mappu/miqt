@@ -57,8 +57,7 @@ func NewQProxyStyle3(style *QStyle) *QProxyStyle {
 }
 
 func (this *QProxyStyle) MetaObject() *QMetaObject {
-	_ret := C.QProxyStyle_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QProxyStyle_MetaObject(this.h)))
 }
 
 func QProxyStyle_Tr(s string) string {
@@ -80,8 +79,7 @@ func QProxyStyle_TrUtf8(s string) string {
 }
 
 func (this *QProxyStyle) BaseStyle() *QStyle {
-	_ret := C.QProxyStyle_BaseStyle(this.h)
-	return newQStyle_U(unsafe.Pointer(_ret))
+	return newQStyle_U(unsafe.Pointer(C.QProxyStyle_BaseStyle(this.h)))
 }
 
 func (this *QProxyStyle) SetBaseStyle(style *QStyle) {
@@ -148,23 +146,19 @@ func (this *QProxyStyle) ItemPixmapRect(r *QRect, flags int, pixmap *QPixmap) *Q
 }
 
 func (this *QProxyStyle) HitTestComplexControl(control QStyle__ComplexControl, option *QStyleOptionComplex, pos *QPoint) QStyle__SubControl {
-	_ret := C.QProxyStyle_HitTestComplexControl(this.h, (C.uintptr_t)(control), option.cPointer(), pos.cPointer())
-	return (QStyle__SubControl)(_ret)
+	return (QStyle__SubControl)(C.QProxyStyle_HitTestComplexControl(this.h, (C.uintptr_t)(control), option.cPointer(), pos.cPointer()))
 }
 
 func (this *QProxyStyle) StyleHint(hint QStyle__StyleHint) int {
-	_ret := C.QProxyStyle_StyleHint(this.h, (C.uintptr_t)(hint))
-	return (int)(_ret)
+	return (int)(C.QProxyStyle_StyleHint(this.h, (C.uintptr_t)(hint)))
 }
 
 func (this *QProxyStyle) PixelMetric(metric QStyle__PixelMetric) int {
-	_ret := C.QProxyStyle_PixelMetric(this.h, (C.uintptr_t)(metric))
-	return (int)(_ret)
+	return (int)(C.QProxyStyle_PixelMetric(this.h, (C.uintptr_t)(metric)))
 }
 
 func (this *QProxyStyle) LayoutSpacing(control1 QSizePolicy__ControlType, control2 QSizePolicy__ControlType, orientation Orientation) int {
-	_ret := C.QProxyStyle_LayoutSpacing(this.h, (C.uintptr_t)(control1), (C.uintptr_t)(control2), (C.uintptr_t)(orientation))
-	return (int)(_ret)
+	return (int)(C.QProxyStyle_LayoutSpacing(this.h, (C.uintptr_t)(control1), (C.uintptr_t)(control2), (C.uintptr_t)(orientation)))
 }
 
 func (this *QProxyStyle) StandardIcon(standardIcon QStyle__StandardPixmap) *QIcon {
@@ -278,43 +272,35 @@ func (this *QProxyStyle) DrawItemText7(painter *QPainter, rect *QRect, flags int
 }
 
 func (this *QProxyStyle) HitTestComplexControl4(control QStyle__ComplexControl, option *QStyleOptionComplex, pos *QPoint, widget *QWidget) QStyle__SubControl {
-	_ret := C.QProxyStyle_HitTestComplexControl4(this.h, (C.uintptr_t)(control), option.cPointer(), pos.cPointer(), widget.cPointer())
-	return (QStyle__SubControl)(_ret)
+	return (QStyle__SubControl)(C.QProxyStyle_HitTestComplexControl4(this.h, (C.uintptr_t)(control), option.cPointer(), pos.cPointer(), widget.cPointer()))
 }
 
 func (this *QProxyStyle) StyleHint2(hint QStyle__StyleHint, option *QStyleOption) int {
-	_ret := C.QProxyStyle_StyleHint2(this.h, (C.uintptr_t)(hint), option.cPointer())
-	return (int)(_ret)
+	return (int)(C.QProxyStyle_StyleHint2(this.h, (C.uintptr_t)(hint), option.cPointer()))
 }
 
 func (this *QProxyStyle) StyleHint3(hint QStyle__StyleHint, option *QStyleOption, widget *QWidget) int {
-	_ret := C.QProxyStyle_StyleHint3(this.h, (C.uintptr_t)(hint), option.cPointer(), widget.cPointer())
-	return (int)(_ret)
+	return (int)(C.QProxyStyle_StyleHint3(this.h, (C.uintptr_t)(hint), option.cPointer(), widget.cPointer()))
 }
 
 func (this *QProxyStyle) StyleHint4(hint QStyle__StyleHint, option *QStyleOption, widget *QWidget, returnData *QStyleHintReturn) int {
-	_ret := C.QProxyStyle_StyleHint4(this.h, (C.uintptr_t)(hint), option.cPointer(), widget.cPointer(), returnData.cPointer())
-	return (int)(_ret)
+	return (int)(C.QProxyStyle_StyleHint4(this.h, (C.uintptr_t)(hint), option.cPointer(), widget.cPointer(), returnData.cPointer()))
 }
 
 func (this *QProxyStyle) PixelMetric2(metric QStyle__PixelMetric, option *QStyleOption) int {
-	_ret := C.QProxyStyle_PixelMetric2(this.h, (C.uintptr_t)(metric), option.cPointer())
-	return (int)(_ret)
+	return (int)(C.QProxyStyle_PixelMetric2(this.h, (C.uintptr_t)(metric), option.cPointer()))
 }
 
 func (this *QProxyStyle) PixelMetric3(metric QStyle__PixelMetric, option *QStyleOption, widget *QWidget) int {
-	_ret := C.QProxyStyle_PixelMetric3(this.h, (C.uintptr_t)(metric), option.cPointer(), widget.cPointer())
-	return (int)(_ret)
+	return (int)(C.QProxyStyle_PixelMetric3(this.h, (C.uintptr_t)(metric), option.cPointer(), widget.cPointer()))
 }
 
 func (this *QProxyStyle) LayoutSpacing4(control1 QSizePolicy__ControlType, control2 QSizePolicy__ControlType, orientation Orientation, option *QStyleOption) int {
-	_ret := C.QProxyStyle_LayoutSpacing4(this.h, (C.uintptr_t)(control1), (C.uintptr_t)(control2), (C.uintptr_t)(orientation), option.cPointer())
-	return (int)(_ret)
+	return (int)(C.QProxyStyle_LayoutSpacing4(this.h, (C.uintptr_t)(control1), (C.uintptr_t)(control2), (C.uintptr_t)(orientation), option.cPointer()))
 }
 
 func (this *QProxyStyle) LayoutSpacing5(control1 QSizePolicy__ControlType, control2 QSizePolicy__ControlType, orientation Orientation, option *QStyleOption, widget *QWidget) int {
-	_ret := C.QProxyStyle_LayoutSpacing5(this.h, (C.uintptr_t)(control1), (C.uintptr_t)(control2), (C.uintptr_t)(orientation), option.cPointer(), widget.cPointer())
-	return (int)(_ret)
+	return (int)(C.QProxyStyle_LayoutSpacing5(this.h, (C.uintptr_t)(control1), (C.uintptr_t)(control2), (C.uintptr_t)(orientation), option.cPointer(), widget.cPointer()))
 }
 
 func (this *QProxyStyle) StandardIcon2(standardIcon QStyle__StandardPixmap, option *QStyleOption) *QIcon {

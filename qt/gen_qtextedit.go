@@ -83,8 +83,7 @@ func NewQTextEdit4(text string, parent *QWidget) *QTextEdit {
 }
 
 func (this *QTextEdit) MetaObject() *QMetaObject {
-	_ret := C.QTextEdit_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QTextEdit_MetaObject(this.h)))
 }
 
 func QTextEdit_Tr(s string) string {
@@ -110,8 +109,7 @@ func (this *QTextEdit) SetDocument(document *QTextDocument) {
 }
 
 func (this *QTextEdit) Document() *QTextDocument {
-	_ret := C.QTextEdit_Document(this.h)
-	return newQTextDocument_U(unsafe.Pointer(_ret))
+	return newQTextDocument_U(unsafe.Pointer(C.QTextEdit_Document(this.h)))
 }
 
 func (this *QTextEdit) SetPlaceholderText(placeholderText string) {
@@ -139,8 +137,7 @@ func (this *QTextEdit) TextCursor() *QTextCursor {
 }
 
 func (this *QTextEdit) IsReadOnly() bool {
-	_ret := C.QTextEdit_IsReadOnly(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QTextEdit_IsReadOnly(this.h))
 }
 
 func (this *QTextEdit) SetReadOnly(ro bool) {
@@ -152,13 +149,11 @@ func (this *QTextEdit) SetTextInteractionFlags(flags int) {
 }
 
 func (this *QTextEdit) TextInteractionFlags() int {
-	_ret := C.QTextEdit_TextInteractionFlags(this.h)
-	return (int)(_ret)
+	return (int)(C.QTextEdit_TextInteractionFlags(this.h))
 }
 
 func (this *QTextEdit) FontPointSize() float64 {
-	_ret := C.QTextEdit_FontPointSize(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QTextEdit_FontPointSize(this.h))
 }
 
 func (this *QTextEdit) FontFamily() string {
@@ -169,18 +164,15 @@ func (this *QTextEdit) FontFamily() string {
 }
 
 func (this *QTextEdit) FontWeight() int {
-	_ret := C.QTextEdit_FontWeight(this.h)
-	return (int)(_ret)
+	return (int)(C.QTextEdit_FontWeight(this.h))
 }
 
 func (this *QTextEdit) FontUnderline() bool {
-	_ret := C.QTextEdit_FontUnderline(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QTextEdit_FontUnderline(this.h))
 }
 
 func (this *QTextEdit) FontItalic() bool {
-	_ret := C.QTextEdit_FontItalic(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QTextEdit_FontItalic(this.h))
 }
 
 func (this *QTextEdit) TextColor() *QColor {
@@ -205,8 +197,7 @@ func (this *QTextEdit) CurrentFont() *QFont {
 }
 
 func (this *QTextEdit) Alignment() int {
-	_ret := C.QTextEdit_Alignment(this.h)
-	return (int)(_ret)
+	return (int)(C.QTextEdit_Alignment(this.h))
 }
 
 func (this *QTextEdit) MergeCurrentCharFormat(modifier *QTextCharFormat) {
@@ -225,8 +216,7 @@ func (this *QTextEdit) CurrentCharFormat() *QTextCharFormat {
 }
 
 func (this *QTextEdit) AutoFormatting() int {
-	_ret := C.QTextEdit_AutoFormatting(this.h)
-	return (int)(_ret)
+	return (int)(C.QTextEdit_AutoFormatting(this.h))
 }
 
 func (this *QTextEdit) SetAutoFormatting(features int) {
@@ -234,8 +224,7 @@ func (this *QTextEdit) SetAutoFormatting(features int) {
 }
 
 func (this *QTextEdit) TabChangesFocus() bool {
-	_ret := C.QTextEdit_TabChangesFocus(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QTextEdit_TabChangesFocus(this.h))
 }
 
 func (this *QTextEdit) SetTabChangesFocus(b bool) {
@@ -256,8 +245,7 @@ func (this *QTextEdit) DocumentTitle() string {
 }
 
 func (this *QTextEdit) IsUndoRedoEnabled() bool {
-	_ret := C.QTextEdit_IsUndoRedoEnabled(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QTextEdit_IsUndoRedoEnabled(this.h))
 }
 
 func (this *QTextEdit) SetUndoRedoEnabled(enable bool) {
@@ -265,8 +253,7 @@ func (this *QTextEdit) SetUndoRedoEnabled(enable bool) {
 }
 
 func (this *QTextEdit) LineWrapMode() QTextEdit__LineWrapMode {
-	_ret := C.QTextEdit_LineWrapMode(this.h)
-	return (QTextEdit__LineWrapMode)(_ret)
+	return (QTextEdit__LineWrapMode)(C.QTextEdit_LineWrapMode(this.h))
 }
 
 func (this *QTextEdit) SetLineWrapMode(mode QTextEdit__LineWrapMode) {
@@ -274,8 +261,7 @@ func (this *QTextEdit) SetLineWrapMode(mode QTextEdit__LineWrapMode) {
 }
 
 func (this *QTextEdit) LineWrapColumnOrWidth() int {
-	_ret := C.QTextEdit_LineWrapColumnOrWidth(this.h)
-	return (int)(_ret)
+	return (int)(C.QTextEdit_LineWrapColumnOrWidth(this.h))
 }
 
 func (this *QTextEdit) SetLineWrapColumnOrWidth(w int) {
@@ -283,8 +269,7 @@ func (this *QTextEdit) SetLineWrapColumnOrWidth(w int) {
 }
 
 func (this *QTextEdit) WordWrapMode() QTextOption__WrapMode {
-	_ret := C.QTextEdit_WordWrapMode(this.h)
-	return (QTextOption__WrapMode)(_ret)
+	return (QTextOption__WrapMode)(C.QTextEdit_WordWrapMode(this.h))
 }
 
 func (this *QTextEdit) SetWordWrapMode(policy QTextOption__WrapMode) {
@@ -294,18 +279,15 @@ func (this *QTextEdit) SetWordWrapMode(policy QTextOption__WrapMode) {
 func (this *QTextEdit) Find(exp string) bool {
 	exp_ms := miqt_strdupg(exp)
 	defer C.free(exp_ms)
-	_ret := C.QTextEdit_Find(this.h, (*C.struct_miqt_string)(exp_ms))
-	return (bool)(_ret)
+	return (bool)(C.QTextEdit_Find(this.h, (*C.struct_miqt_string)(exp_ms)))
 }
 
 func (this *QTextEdit) FindWithExp(exp *QRegExp) bool {
-	_ret := C.QTextEdit_FindWithExp(this.h, exp.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QTextEdit_FindWithExp(this.h, exp.cPointer()))
 }
 
 func (this *QTextEdit) Find2(exp *QRegularExpression) bool {
-	_ret := C.QTextEdit_Find2(this.h, exp.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QTextEdit_Find2(this.h, exp.cPointer()))
 }
 
 func (this *QTextEdit) ToPlainText() string {
@@ -341,13 +323,11 @@ func (this *QTextEdit) LoadResource(typeVal int, name *QUrl) *QVariant {
 }
 
 func (this *QTextEdit) CreateStandardContextMenu() *QMenu {
-	_ret := C.QTextEdit_CreateStandardContextMenu(this.h)
-	return newQMenu_U(unsafe.Pointer(_ret))
+	return newQMenu_U(unsafe.Pointer(C.QTextEdit_CreateStandardContextMenu(this.h)))
 }
 
 func (this *QTextEdit) CreateStandardContextMenuWithPosition(position *QPoint) *QMenu {
-	_ret := C.QTextEdit_CreateStandardContextMenuWithPosition(this.h, position.cPointer())
-	return newQMenu_U(unsafe.Pointer(_ret))
+	return newQMenu_U(unsafe.Pointer(C.QTextEdit_CreateStandardContextMenuWithPosition(this.h, position.cPointer())))
 }
 
 func (this *QTextEdit) CursorForPosition(pos *QPoint) *QTextCursor {
@@ -379,8 +359,7 @@ func (this *QTextEdit) AnchorAt(pos *QPoint) string {
 }
 
 func (this *QTextEdit) OverwriteMode() bool {
-	_ret := C.QTextEdit_OverwriteMode(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QTextEdit_OverwriteMode(this.h))
 }
 
 func (this *QTextEdit) SetOverwriteMode(overwrite bool) {
@@ -388,8 +367,7 @@ func (this *QTextEdit) SetOverwriteMode(overwrite bool) {
 }
 
 func (this *QTextEdit) TabStopWidth() int {
-	_ret := C.QTextEdit_TabStopWidth(this.h)
-	return (int)(_ret)
+	return (int)(C.QTextEdit_TabStopWidth(this.h))
 }
 
 func (this *QTextEdit) SetTabStopWidth(width int) {
@@ -397,8 +375,7 @@ func (this *QTextEdit) SetTabStopWidth(width int) {
 }
 
 func (this *QTextEdit) TabStopDistance() float64 {
-	_ret := C.QTextEdit_TabStopDistance(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QTextEdit_TabStopDistance(this.h))
 }
 
 func (this *QTextEdit) SetTabStopDistance(distance float64) {
@@ -406,8 +383,7 @@ func (this *QTextEdit) SetTabStopDistance(distance float64) {
 }
 
 func (this *QTextEdit) CursorWidth() int {
-	_ret := C.QTextEdit_CursorWidth(this.h)
-	return (int)(_ret)
+	return (int)(C.QTextEdit_CursorWidth(this.h))
 }
 
 func (this *QTextEdit) SetCursorWidth(width int) {
@@ -415,8 +391,7 @@ func (this *QTextEdit) SetCursorWidth(width int) {
 }
 
 func (this *QTextEdit) AcceptRichText() bool {
-	_ret := C.QTextEdit_AcceptRichText(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QTextEdit_AcceptRichText(this.h))
 }
 
 func (this *QTextEdit) SetAcceptRichText(accept bool) {
@@ -438,9 +413,12 @@ func (this *QTextEdit) SetExtraSelections(selections []QTextEdit__ExtraSelection
 func (this *QTextEdit) ExtraSelections() []QTextEdit__ExtraSelection {
 	var _ma *C.struct_miqt_array = C.QTextEdit_ExtraSelections(this.h)
 	_ret := make([]QTextEdit__ExtraSelection, int(_ma.len))
-	_outCast := (*[0xffff]*C.QTextEdit__ExtraSelection)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QTextEdit__ExtraSelection)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = *newQTextEdit__ExtraSelection(_outCast[i])
+		_lv_ret := _outCast[i]
+		_lv_goptr := newQTextEdit__ExtraSelection(_lv_ret)
+		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+		_ret[i] = *_lv_goptr
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -451,8 +429,7 @@ func (this *QTextEdit) MoveCursor(operation QTextCursor__MoveOperation) {
 }
 
 func (this *QTextEdit) CanPaste() bool {
-	_ret := C.QTextEdit_CanPaste(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QTextEdit_CanPaste(this.h))
 }
 
 func (this *QTextEdit) Print(printer *QPagedPaintDevice) {
@@ -627,8 +604,7 @@ func miqt_exec_callback_QTextEdit_UndoAvailable(cb *C.void, b C.bool) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	b_ret := b
-	slotval1 := (bool)(b_ret)
+	slotval1 := (bool)(b)
 
 	gofunc(slotval1)
 }
@@ -648,8 +624,7 @@ func miqt_exec_callback_QTextEdit_RedoAvailable(cb *C.void, b C.bool) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	b_ret := b
-	slotval1 := (bool)(b_ret)
+	slotval1 := (bool)(b)
 
 	gofunc(slotval1)
 }
@@ -669,8 +644,7 @@ func miqt_exec_callback_QTextEdit_CurrentCharFormatChanged(cb *C.void, format *C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	format_ret := format
-	slotval1 := newQTextCharFormat_U(unsafe.Pointer(format_ret))
+	slotval1 := newQTextCharFormat_U(unsafe.Pointer(format))
 
 	gofunc(slotval1)
 }
@@ -690,8 +664,7 @@ func miqt_exec_callback_QTextEdit_CopyAvailable(cb *C.void, b C.bool) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	b_ret := b
-	slotval1 := (bool)(b_ret)
+	slotval1 := (bool)(b)
 
 	gofunc(slotval1)
 }
@@ -777,18 +750,15 @@ func QTextEdit_TrUtf83(s string, c string, n int) string {
 func (this *QTextEdit) Find22(exp string, options int) bool {
 	exp_ms := miqt_strdupg(exp)
 	defer C.free(exp_ms)
-	_ret := C.QTextEdit_Find22(this.h, (*C.struct_miqt_string)(exp_ms), (C.int)(options))
-	return (bool)(_ret)
+	return (bool)(C.QTextEdit_Find22(this.h, (*C.struct_miqt_string)(exp_ms), (C.int)(options)))
 }
 
 func (this *QTextEdit) Find23(exp *QRegExp, options int) bool {
-	_ret := C.QTextEdit_Find23(this.h, exp.cPointer(), (C.int)(options))
-	return (bool)(_ret)
+	return (bool)(C.QTextEdit_Find23(this.h, exp.cPointer(), (C.int)(options)))
 }
 
 func (this *QTextEdit) Find24(exp *QRegularExpression, options int) bool {
-	_ret := C.QTextEdit_Find24(this.h, exp.cPointer(), (C.int)(options))
-	return (bool)(_ret)
+	return (bool)(C.QTextEdit_Find24(this.h, exp.cPointer(), (C.int)(options)))
 }
 
 func (this *QTextEdit) ToMarkdown1(features int) string {

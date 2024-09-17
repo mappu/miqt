@@ -106,8 +106,7 @@ func (this *QImageWriter) SetDevice(device *QIODevice) {
 }
 
 func (this *QImageWriter) Device() *QIODevice {
-	_ret := C.QImageWriter_Device(this.h)
-	return newQIODevice_U(unsafe.Pointer(_ret))
+	return newQIODevice_U(unsafe.Pointer(C.QImageWriter_Device(this.h)))
 }
 
 func (this *QImageWriter) SetFileName(fileName string) {
@@ -128,8 +127,7 @@ func (this *QImageWriter) SetQuality(quality int) {
 }
 
 func (this *QImageWriter) Quality() int {
-	_ret := C.QImageWriter_Quality(this.h)
-	return (int)(_ret)
+	return (int)(C.QImageWriter_Quality(this.h))
 }
 
 func (this *QImageWriter) SetCompression(compression int) {
@@ -137,8 +135,7 @@ func (this *QImageWriter) SetCompression(compression int) {
 }
 
 func (this *QImageWriter) Compression() int {
-	_ret := C.QImageWriter_Compression(this.h)
-	return (int)(_ret)
+	return (int)(C.QImageWriter_Compression(this.h))
 }
 
 func (this *QImageWriter) SetGamma(gamma float32) {
@@ -146,8 +143,7 @@ func (this *QImageWriter) SetGamma(gamma float32) {
 }
 
 func (this *QImageWriter) Gamma() float32 {
-	_ret := C.QImageWriter_Gamma(this.h)
-	return (float32)(_ret)
+	return (float32)(C.QImageWriter_Gamma(this.h))
 }
 
 func (this *QImageWriter) SetSubType(typeVal *QByteArray) {
@@ -164,9 +160,12 @@ func (this *QImageWriter) SubType() *QByteArray {
 func (this *QImageWriter) SupportedSubTypes() []QByteArray {
 	var _ma *C.struct_miqt_array = C.QImageWriter_SupportedSubTypes(this.h)
 	_ret := make([]QByteArray, int(_ma.len))
-	_outCast := (*[0xffff]*C.QByteArray)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QByteArray)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = *newQByteArray(_outCast[i])
+		_lv_ret := _outCast[i]
+		_lv_goptr := newQByteArray(_lv_ret)
+		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+		_ret[i] = *_lv_goptr
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -177,8 +176,7 @@ func (this *QImageWriter) SetOptimizedWrite(optimize bool) {
 }
 
 func (this *QImageWriter) OptimizedWrite() bool {
-	_ret := C.QImageWriter_OptimizedWrite(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QImageWriter_OptimizedWrite(this.h))
 }
 
 func (this *QImageWriter) SetProgressiveScanWrite(progressive bool) {
@@ -186,13 +184,11 @@ func (this *QImageWriter) SetProgressiveScanWrite(progressive bool) {
 }
 
 func (this *QImageWriter) ProgressiveScanWrite() bool {
-	_ret := C.QImageWriter_ProgressiveScanWrite(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QImageWriter_ProgressiveScanWrite(this.h))
 }
 
 func (this *QImageWriter) Transformation() int {
-	_ret := C.QImageWriter_Transformation(this.h)
-	return (int)(_ret)
+	return (int)(C.QImageWriter_Transformation(this.h))
 }
 
 func (this *QImageWriter) SetTransformation(orientation int) {
@@ -221,18 +217,15 @@ func (this *QImageWriter) SetText(key string, text string) {
 }
 
 func (this *QImageWriter) CanWrite() bool {
-	_ret := C.QImageWriter_CanWrite(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QImageWriter_CanWrite(this.h))
 }
 
 func (this *QImageWriter) Write(image *QImage) bool {
-	_ret := C.QImageWriter_Write(this.h, image.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QImageWriter_Write(this.h, image.cPointer()))
 }
 
 func (this *QImageWriter) Error() QImageWriter__ImageWriterError {
-	_ret := C.QImageWriter_Error(this.h)
-	return (QImageWriter__ImageWriterError)(_ret)
+	return (QImageWriter__ImageWriterError)(C.QImageWriter_Error(this.h))
 }
 
 func (this *QImageWriter) ErrorString() string {
@@ -243,16 +236,18 @@ func (this *QImageWriter) ErrorString() string {
 }
 
 func (this *QImageWriter) SupportsOption(option QImageIOHandler__ImageOption) bool {
-	_ret := C.QImageWriter_SupportsOption(this.h, (C.uintptr_t)(option))
-	return (bool)(_ret)
+	return (bool)(C.QImageWriter_SupportsOption(this.h, (C.uintptr_t)(option)))
 }
 
 func QImageWriter_SupportedImageFormats() []QByteArray {
 	var _ma *C.struct_miqt_array = C.QImageWriter_SupportedImageFormats()
 	_ret := make([]QByteArray, int(_ma.len))
-	_outCast := (*[0xffff]*C.QByteArray)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QByteArray)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = *newQByteArray(_outCast[i])
+		_lv_ret := _outCast[i]
+		_lv_goptr := newQByteArray(_lv_ret)
+		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+		_ret[i] = *_lv_goptr
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -261,9 +256,12 @@ func QImageWriter_SupportedImageFormats() []QByteArray {
 func QImageWriter_SupportedMimeTypes() []QByteArray {
 	var _ma *C.struct_miqt_array = C.QImageWriter_SupportedMimeTypes()
 	_ret := make([]QByteArray, int(_ma.len))
-	_outCast := (*[0xffff]*C.QByteArray)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QByteArray)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = *newQByteArray(_outCast[i])
+		_lv_ret := _outCast[i]
+		_lv_goptr := newQByteArray(_lv_ret)
+		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+		_ret[i] = *_lv_goptr
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -272,9 +270,12 @@ func QImageWriter_SupportedMimeTypes() []QByteArray {
 func QImageWriter_ImageFormatsForMimeType(mimeType *QByteArray) []QByteArray {
 	var _ma *C.struct_miqt_array = C.QImageWriter_ImageFormatsForMimeType(mimeType.cPointer())
 	_ret := make([]QByteArray, int(_ma.len))
-	_outCast := (*[0xffff]*C.QByteArray)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QByteArray)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = *newQByteArray(_outCast[i])
+		_lv_ret := _outCast[i]
+		_lv_goptr := newQByteArray(_lv_ret)
+		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+		_ret[i] = *_lv_goptr
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret

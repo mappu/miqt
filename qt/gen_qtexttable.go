@@ -63,28 +63,23 @@ func (this *QTextTableCell) Format() *QTextCharFormat {
 }
 
 func (this *QTextTableCell) Row() int {
-	_ret := C.QTextTableCell_Row(this.h)
-	return (int)(_ret)
+	return (int)(C.QTextTableCell_Row(this.h))
 }
 
 func (this *QTextTableCell) Column() int {
-	_ret := C.QTextTableCell_Column(this.h)
-	return (int)(_ret)
+	return (int)(C.QTextTableCell_Column(this.h))
 }
 
 func (this *QTextTableCell) RowSpan() int {
-	_ret := C.QTextTableCell_RowSpan(this.h)
-	return (int)(_ret)
+	return (int)(C.QTextTableCell_RowSpan(this.h))
 }
 
 func (this *QTextTableCell) ColumnSpan() int {
-	_ret := C.QTextTableCell_ColumnSpan(this.h)
-	return (int)(_ret)
+	return (int)(C.QTextTableCell_ColumnSpan(this.h))
 }
 
 func (this *QTextTableCell) IsValid() bool {
-	_ret := C.QTextTableCell_IsValid(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QTextTableCell_IsValid(this.h))
 }
 
 func (this *QTextTableCell) FirstCursorPosition() *QTextCursor {
@@ -102,23 +97,19 @@ func (this *QTextTableCell) LastCursorPosition() *QTextCursor {
 }
 
 func (this *QTextTableCell) FirstPosition() int {
-	_ret := C.QTextTableCell_FirstPosition(this.h)
-	return (int)(_ret)
+	return (int)(C.QTextTableCell_FirstPosition(this.h))
 }
 
 func (this *QTextTableCell) LastPosition() int {
-	_ret := C.QTextTableCell_LastPosition(this.h)
-	return (int)(_ret)
+	return (int)(C.QTextTableCell_LastPosition(this.h))
 }
 
 func (this *QTextTableCell) OperatorEqual(other *QTextTableCell) bool {
-	_ret := C.QTextTableCell_OperatorEqual(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QTextTableCell_OperatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QTextTableCell) OperatorNotEqual(other *QTextTableCell) bool {
-	_ret := C.QTextTableCell_OperatorNotEqual(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QTextTableCell_OperatorNotEqual(this.h, other.cPointer()))
 }
 
 func (this *QTextTableCell) Begin() *QTextFrame__iterator {
@@ -136,8 +127,7 @@ func (this *QTextTableCell) End() *QTextFrame__iterator {
 }
 
 func (this *QTextTableCell) TableCellFormatIndex() int {
-	_ret := C.QTextTableCell_TableCellFormatIndex(this.h)
-	return (int)(_ret)
+	return (int)(C.QTextTableCell_TableCellFormatIndex(this.h))
 }
 
 // Delete this object from C++ memory.
@@ -184,8 +174,7 @@ func NewQTextTable(doc *QTextDocument) *QTextTable {
 }
 
 func (this *QTextTable) MetaObject() *QMetaObject {
-	_ret := C.QTextTable_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QTextTable_MetaObject(this.h)))
 }
 
 func QTextTable_Tr(s string) string {
@@ -247,13 +236,11 @@ func (this *QTextTable) SplitCell(row int, col int, numRows int, numCols int) {
 }
 
 func (this *QTextTable) Rows() int {
-	_ret := C.QTextTable_Rows(this.h)
-	return (int)(_ret)
+	return (int)(C.QTextTable_Rows(this.h))
 }
 
 func (this *QTextTable) Columns() int {
-	_ret := C.QTextTable_Columns(this.h)
-	return (int)(_ret)
+	return (int)(C.QTextTable_Columns(this.h))
 }
 
 func (this *QTextTable) CellAt(row int, col int) *QTextTableCell {

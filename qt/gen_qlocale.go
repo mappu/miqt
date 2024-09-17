@@ -960,18 +960,15 @@ func (this *QLocale) Swap(other *QLocale) {
 }
 
 func (this *QLocale) Language() QLocale__Language {
-	_ret := C.QLocale_Language(this.h)
-	return (QLocale__Language)(_ret)
+	return (QLocale__Language)(C.QLocale_Language(this.h))
 }
 
 func (this *QLocale) Script() QLocale__Script {
-	_ret := C.QLocale_Script(this.h)
-	return (QLocale__Script)(_ret)
+	return (QLocale__Script)(C.QLocale_Script(this.h))
 }
 
 func (this *QLocale) Country() QLocale__Country {
-	_ret := C.QLocale_Country(this.h)
-	return (QLocale__Country)(_ret)
+	return (QLocale__Country)(C.QLocale_Country(this.h))
 }
 
 func (this *QLocale) Name() string {
@@ -1005,71 +1002,61 @@ func (this *QLocale) NativeCountryName() string {
 func (this *QLocale) ToShort(s string) int16 {
 	s_ms := miqt_strdupg(s)
 	defer C.free(s_ms)
-	_ret := C.QLocale_ToShort(this.h, (*C.struct_miqt_string)(s_ms))
-	return (int16)(_ret)
+	return (int16)(C.QLocale_ToShort(this.h, (*C.struct_miqt_string)(s_ms)))
 }
 
 func (this *QLocale) ToUShort(s string) uint16 {
 	s_ms := miqt_strdupg(s)
 	defer C.free(s_ms)
-	_ret := C.QLocale_ToUShort(this.h, (*C.struct_miqt_string)(s_ms))
-	return (uint16)(_ret)
+	return (uint16)(C.QLocale_ToUShort(this.h, (*C.struct_miqt_string)(s_ms)))
 }
 
 func (this *QLocale) ToInt(s string) int {
 	s_ms := miqt_strdupg(s)
 	defer C.free(s_ms)
-	_ret := C.QLocale_ToInt(this.h, (*C.struct_miqt_string)(s_ms))
-	return (int)(_ret)
+	return (int)(C.QLocale_ToInt(this.h, (*C.struct_miqt_string)(s_ms)))
 }
 
 func (this *QLocale) ToUInt(s string) uint {
 	s_ms := miqt_strdupg(s)
 	defer C.free(s_ms)
-	_ret := C.QLocale_ToUInt(this.h, (*C.struct_miqt_string)(s_ms))
-	return (uint)(_ret)
+	return (uint)(C.QLocale_ToUInt(this.h, (*C.struct_miqt_string)(s_ms)))
 }
 
 func (this *QLocale) ToLong(s string) int64 {
 	s_ms := miqt_strdupg(s)
 	defer C.free(s_ms)
-	_ret := C.QLocale_ToLong(this.h, (*C.struct_miqt_string)(s_ms))
-	return (int64)(_ret)
+	return (int64)(C.QLocale_ToLong(this.h, (*C.struct_miqt_string)(s_ms)))
 }
 
 func (this *QLocale) ToULong(s string) uint64 {
 	s_ms := miqt_strdupg(s)
 	defer C.free(s_ms)
-	_ret := C.QLocale_ToULong(this.h, (*C.struct_miqt_string)(s_ms))
-	return (uint64)(_ret)
+	return (uint64)(C.QLocale_ToULong(this.h, (*C.struct_miqt_string)(s_ms)))
 }
 
 func (this *QLocale) ToLongLong(s string) int64 {
 	s_ms := miqt_strdupg(s)
 	defer C.free(s_ms)
-	_ret := C.QLocale_ToLongLong(this.h, (*C.struct_miqt_string)(s_ms))
-	return (int64)(_ret)
+	return (int64)(C.QLocale_ToLongLong(this.h, (*C.struct_miqt_string)(s_ms)))
 }
 
 func (this *QLocale) ToULongLong(s string) uint64 {
 	s_ms := miqt_strdupg(s)
 	defer C.free(s_ms)
-	_ret := C.QLocale_ToULongLong(this.h, (*C.struct_miqt_string)(s_ms))
-	return (uint64)(_ret)
+	return (uint64)(C.QLocale_ToULongLong(this.h, (*C.struct_miqt_string)(s_ms)))
 }
 
 func (this *QLocale) ToFloat(s string) float32 {
 	s_ms := miqt_strdupg(s)
 	defer C.free(s_ms)
-	_ret := C.QLocale_ToFloat(this.h, (*C.struct_miqt_string)(s_ms))
-	return (float32)(_ret)
+	return (float32)(C.QLocale_ToFloat(this.h, (*C.struct_miqt_string)(s_ms)))
 }
 
 func (this *QLocale) ToDouble(s string) float64 {
 	s_ms := miqt_strdupg(s)
 	defer C.free(s_ms)
-	_ret := C.QLocale_ToDouble(this.h, (*C.struct_miqt_string)(s_ms))
-	return (float64)(_ret)
+	return (float64)(C.QLocale_ToDouble(this.h, (*C.struct_miqt_string)(s_ms)))
 }
 
 func (this *QLocale) ToString(i int64) string {
@@ -1423,14 +1410,13 @@ func (this *QLocale) StandaloneDayName(param1 int) string {
 }
 
 func (this *QLocale) FirstDayOfWeek() DayOfWeek {
-	_ret := C.QLocale_FirstDayOfWeek(this.h)
-	return (DayOfWeek)(_ret)
+	return (DayOfWeek)(C.QLocale_FirstDayOfWeek(this.h))
 }
 
 func (this *QLocale) Weekdays() []DayOfWeek {
 	var _ma *C.struct_miqt_array = C.QLocale_Weekdays(this.h)
 	_ret := make([]DayOfWeek, int(_ma.len))
-	_outCast := (*[0xffff]C.uintptr_t)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]C.uintptr_t)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (DayOfWeek)(_outCast[i])
 	}
@@ -1453,8 +1439,7 @@ func (this *QLocale) PmText() string {
 }
 
 func (this *QLocale) MeasurementSystem() QLocale__MeasurementSystem {
-	_ret := C.QLocale_MeasurementSystem(this.h)
-	return (QLocale__MeasurementSystem)(_ret)
+	return (QLocale__MeasurementSystem)(C.QLocale_MeasurementSystem(this.h))
 }
 
 func (this *QLocale) Collation() *QLocale {
@@ -1465,8 +1450,7 @@ func (this *QLocale) Collation() *QLocale {
 }
 
 func (this *QLocale) TextDirection() LayoutDirection {
-	_ret := C.QLocale_TextDirection(this.h)
-	return (LayoutDirection)(_ret)
+	return (LayoutDirection)(C.QLocale_TextDirection(this.h))
 }
 
 func (this *QLocale) ToUpper(str string) string {
@@ -1587,21 +1571,21 @@ func (this *QLocale) UiLanguages() []string {
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = C.GoStringN(&_outCast[i].data, C.int(int64(_outCast[i].len)))
-		C.free(unsafe.Pointer(_outCast[i])) // free the inner miqt_string*
+		var _lv_ms *C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoStringN(&_lv_ms.data, C.int(int64(_lv_ms.len)))
+		C.free(unsafe.Pointer(_lv_ms))
+		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QLocale) OperatorEqual(other *QLocale) bool {
-	_ret := C.QLocale_OperatorEqual(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QLocale_OperatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QLocale) OperatorNotEqual(other *QLocale) bool {
-	_ret := C.QLocale_OperatorNotEqual(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QLocale_OperatorNotEqual(this.h, other.cPointer()))
 }
 
 func QLocale_LanguageToString(language QLocale__Language) string {
@@ -1646,9 +1630,12 @@ func QLocale_System() *QLocale {
 func QLocale_MatchingLocales(language QLocale__Language, script QLocale__Script, country QLocale__Country) []QLocale {
 	var _ma *C.struct_miqt_array = C.QLocale_MatchingLocales((C.uintptr_t)(language), (C.uintptr_t)(script), (C.uintptr_t)(country))
 	_ret := make([]QLocale, int(_ma.len))
-	_outCast := (*[0xffff]*C.QLocale)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QLocale)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = *newQLocale(_outCast[i])
+		_lv_ret := _outCast[i]
+		_lv_goptr := newQLocale(_lv_ret)
+		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+		_ret[i] = *_lv_goptr
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -1657,7 +1644,7 @@ func QLocale_MatchingLocales(language QLocale__Language, script QLocale__Script,
 func QLocale_CountriesForLanguage(lang QLocale__Language) []QLocale__Country {
 	var _ma *C.struct_miqt_array = C.QLocale_CountriesForLanguage((C.uintptr_t)(lang))
 	_ret := make([]QLocale__Country, int(_ma.len))
-	_outCast := (*[0xffff]C.uintptr_t)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]C.uintptr_t)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (QLocale__Country)(_outCast[i])
 	}
@@ -1670,8 +1657,7 @@ func (this *QLocale) SetNumberOptions(options int) {
 }
 
 func (this *QLocale) NumberOptions() int {
-	_ret := C.QLocale_NumberOptions(this.h)
-	return (int)(_ret)
+	return (int)(C.QLocale_NumberOptions(this.h))
 }
 
 func (this *QLocale) QuoteString(str string) string {
@@ -1684,13 +1670,13 @@ func (this *QLocale) QuoteString(str string) string {
 }
 
 func (this *QLocale) CreateSeparatedList(strl []string) string {
-	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
+	// For the C ABI, malloc a C array of raw pointers
 	strl_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(strl))))
 	defer C.free(unsafe.Pointer(strl_CArray))
 	for i := range strl {
-		single_ms := miqt_strdupg(strl[i])
-		defer C.free(single_ms)
-		strl_CArray[i] = (*C.struct_miqt_string)(single_ms)
+		strl_i_ms := miqt_strdupg(strl[i])
+		defer C.free(strl_i_ms)
+		strl_CArray[i] = (*C.struct_miqt_string)(strl_i_ms)
 	}
 	strl_ma := &C.struct_miqt_array{len: C.size_t(len(strl)), data: unsafe.Pointer(strl_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(strl_ma))
@@ -1703,71 +1689,61 @@ func (this *QLocale) CreateSeparatedList(strl []string) string {
 func (this *QLocale) ToShort2(s string, ok *bool) int16 {
 	s_ms := miqt_strdupg(s)
 	defer C.free(s_ms)
-	_ret := C.QLocale_ToShort2(this.h, (*C.struct_miqt_string)(s_ms), (*C.bool)(unsafe.Pointer(ok)))
-	return (int16)(_ret)
+	return (int16)(C.QLocale_ToShort2(this.h, (*C.struct_miqt_string)(s_ms), (*C.bool)(unsafe.Pointer(ok))))
 }
 
 func (this *QLocale) ToUShort2(s string, ok *bool) uint16 {
 	s_ms := miqt_strdupg(s)
 	defer C.free(s_ms)
-	_ret := C.QLocale_ToUShort2(this.h, (*C.struct_miqt_string)(s_ms), (*C.bool)(unsafe.Pointer(ok)))
-	return (uint16)(_ret)
+	return (uint16)(C.QLocale_ToUShort2(this.h, (*C.struct_miqt_string)(s_ms), (*C.bool)(unsafe.Pointer(ok))))
 }
 
 func (this *QLocale) ToInt2(s string, ok *bool) int {
 	s_ms := miqt_strdupg(s)
 	defer C.free(s_ms)
-	_ret := C.QLocale_ToInt2(this.h, (*C.struct_miqt_string)(s_ms), (*C.bool)(unsafe.Pointer(ok)))
-	return (int)(_ret)
+	return (int)(C.QLocale_ToInt2(this.h, (*C.struct_miqt_string)(s_ms), (*C.bool)(unsafe.Pointer(ok))))
 }
 
 func (this *QLocale) ToUInt2(s string, ok *bool) uint {
 	s_ms := miqt_strdupg(s)
 	defer C.free(s_ms)
-	_ret := C.QLocale_ToUInt2(this.h, (*C.struct_miqt_string)(s_ms), (*C.bool)(unsafe.Pointer(ok)))
-	return (uint)(_ret)
+	return (uint)(C.QLocale_ToUInt2(this.h, (*C.struct_miqt_string)(s_ms), (*C.bool)(unsafe.Pointer(ok))))
 }
 
 func (this *QLocale) ToLong2(s string, ok *bool) int64 {
 	s_ms := miqt_strdupg(s)
 	defer C.free(s_ms)
-	_ret := C.QLocale_ToLong2(this.h, (*C.struct_miqt_string)(s_ms), (*C.bool)(unsafe.Pointer(ok)))
-	return (int64)(_ret)
+	return (int64)(C.QLocale_ToLong2(this.h, (*C.struct_miqt_string)(s_ms), (*C.bool)(unsafe.Pointer(ok))))
 }
 
 func (this *QLocale) ToULong2(s string, ok *bool) uint64 {
 	s_ms := miqt_strdupg(s)
 	defer C.free(s_ms)
-	_ret := C.QLocale_ToULong2(this.h, (*C.struct_miqt_string)(s_ms), (*C.bool)(unsafe.Pointer(ok)))
-	return (uint64)(_ret)
+	return (uint64)(C.QLocale_ToULong2(this.h, (*C.struct_miqt_string)(s_ms), (*C.bool)(unsafe.Pointer(ok))))
 }
 
 func (this *QLocale) ToLongLong2(s string, ok *bool) int64 {
 	s_ms := miqt_strdupg(s)
 	defer C.free(s_ms)
-	_ret := C.QLocale_ToLongLong2(this.h, (*C.struct_miqt_string)(s_ms), (*C.bool)(unsafe.Pointer(ok)))
-	return (int64)(_ret)
+	return (int64)(C.QLocale_ToLongLong2(this.h, (*C.struct_miqt_string)(s_ms), (*C.bool)(unsafe.Pointer(ok))))
 }
 
 func (this *QLocale) ToULongLong2(s string, ok *bool) uint64 {
 	s_ms := miqt_strdupg(s)
 	defer C.free(s_ms)
-	_ret := C.QLocale_ToULongLong2(this.h, (*C.struct_miqt_string)(s_ms), (*C.bool)(unsafe.Pointer(ok)))
-	return (uint64)(_ret)
+	return (uint64)(C.QLocale_ToULongLong2(this.h, (*C.struct_miqt_string)(s_ms), (*C.bool)(unsafe.Pointer(ok))))
 }
 
 func (this *QLocale) ToFloat2(s string, ok *bool) float32 {
 	s_ms := miqt_strdupg(s)
 	defer C.free(s_ms)
-	_ret := C.QLocale_ToFloat2(this.h, (*C.struct_miqt_string)(s_ms), (*C.bool)(unsafe.Pointer(ok)))
-	return (float32)(_ret)
+	return (float32)(C.QLocale_ToFloat2(this.h, (*C.struct_miqt_string)(s_ms), (*C.bool)(unsafe.Pointer(ok))))
 }
 
 func (this *QLocale) ToDouble2(s string, ok *bool) float64 {
 	s_ms := miqt_strdupg(s)
 	defer C.free(s_ms)
-	_ret := C.QLocale_ToDouble2(this.h, (*C.struct_miqt_string)(s_ms), (*C.bool)(unsafe.Pointer(ok)))
-	return (float64)(_ret)
+	return (float64)(C.QLocale_ToDouble2(this.h, (*C.struct_miqt_string)(s_ms), (*C.bool)(unsafe.Pointer(ok))))
 }
 
 func (this *QLocale) ToString22(i float64, f byte) string {

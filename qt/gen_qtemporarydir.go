@@ -50,8 +50,7 @@ func NewQTemporaryDir2(templateName string) *QTemporaryDir {
 }
 
 func (this *QTemporaryDir) IsValid() bool {
-	_ret := C.QTemporaryDir_IsValid(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QTemporaryDir_IsValid(this.h))
 }
 
 func (this *QTemporaryDir) ErrorString() string {
@@ -62,8 +61,7 @@ func (this *QTemporaryDir) ErrorString() string {
 }
 
 func (this *QTemporaryDir) AutoRemove() bool {
-	_ret := C.QTemporaryDir_AutoRemove(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QTemporaryDir_AutoRemove(this.h))
 }
 
 func (this *QTemporaryDir) SetAutoRemove(b bool) {
@@ -71,8 +69,7 @@ func (this *QTemporaryDir) SetAutoRemove(b bool) {
 }
 
 func (this *QTemporaryDir) Remove() bool {
-	_ret := C.QTemporaryDir_Remove(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QTemporaryDir_Remove(this.h))
 }
 
 func (this *QTemporaryDir) Path() string {

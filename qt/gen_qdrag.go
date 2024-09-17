@@ -44,8 +44,7 @@ func NewQDrag(dragSource *QObject) *QDrag {
 }
 
 func (this *QDrag) MetaObject() *QMetaObject {
-	_ret := C.QDrag_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QDrag_MetaObject(this.h)))
 }
 
 func QDrag_Tr(s string) string {
@@ -71,8 +70,7 @@ func (this *QDrag) SetMimeData(data *QMimeData) {
 }
 
 func (this *QDrag) MimeData() *QMimeData {
-	_ret := C.QDrag_MimeData(this.h)
-	return newQMimeData_U(unsafe.Pointer(_ret))
+	return newQMimeData_U(unsafe.Pointer(C.QDrag_MimeData(this.h)))
 }
 
 func (this *QDrag) SetPixmap(pixmap *QPixmap) {
@@ -98,28 +96,23 @@ func (this *QDrag) HotSpot() *QPoint {
 }
 
 func (this *QDrag) Source() *QObject {
-	_ret := C.QDrag_Source(this.h)
-	return newQObject_U(unsafe.Pointer(_ret))
+	return newQObject_U(unsafe.Pointer(C.QDrag_Source(this.h)))
 }
 
 func (this *QDrag) Target() *QObject {
-	_ret := C.QDrag_Target(this.h)
-	return newQObject_U(unsafe.Pointer(_ret))
+	return newQObject_U(unsafe.Pointer(C.QDrag_Target(this.h)))
 }
 
 func (this *QDrag) Start() DropAction {
-	_ret := C.QDrag_Start(this.h)
-	return (DropAction)(_ret)
+	return (DropAction)(C.QDrag_Start(this.h))
 }
 
 func (this *QDrag) Exec() DropAction {
-	_ret := C.QDrag_Exec(this.h)
-	return (DropAction)(_ret)
+	return (DropAction)(C.QDrag_Exec(this.h))
 }
 
 func (this *QDrag) Exec2(supportedActions int, defaultAction DropAction) DropAction {
-	_ret := C.QDrag_Exec2(this.h, (C.int)(supportedActions), (C.uintptr_t)(defaultAction))
-	return (DropAction)(_ret)
+	return (DropAction)(C.QDrag_Exec2(this.h, (C.int)(supportedActions), (C.uintptr_t)(defaultAction)))
 }
 
 func (this *QDrag) SetDragCursor(cursor *QPixmap, action DropAction) {
@@ -134,13 +127,11 @@ func (this *QDrag) DragCursor(action DropAction) *QPixmap {
 }
 
 func (this *QDrag) SupportedActions() int {
-	_ret := C.QDrag_SupportedActions(this.h)
-	return (int)(_ret)
+	return (int)(C.QDrag_SupportedActions(this.h))
 }
 
 func (this *QDrag) DefaultAction() DropAction {
-	_ret := C.QDrag_DefaultAction(this.h)
-	return (DropAction)(_ret)
+	return (DropAction)(C.QDrag_DefaultAction(this.h))
 }
 
 func QDrag_Cancel() {
@@ -162,8 +153,7 @@ func miqt_exec_callback_QDrag_ActionChanged(cb *C.void, action C.uintptr_t) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	action_ret := action
-	slotval1 := (DropAction)(action_ret)
+	slotval1 := (DropAction)(action)
 
 	gofunc(slotval1)
 }
@@ -183,8 +173,7 @@ func miqt_exec_callback_QDrag_TargetChanged(cb *C.void, newTarget *C.QObject) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	newTarget_ret := newTarget
-	slotval1 := newQObject_U(unsafe.Pointer(newTarget_ret))
+	slotval1 := newQObject_U(unsafe.Pointer(newTarget))
 
 	gofunc(slotval1)
 }
@@ -234,13 +223,11 @@ func QDrag_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QDrag) Start1(supportedActions int) DropAction {
-	_ret := C.QDrag_Start1(this.h, (C.int)(supportedActions))
-	return (DropAction)(_ret)
+	return (DropAction)(C.QDrag_Start1(this.h, (C.int)(supportedActions)))
 }
 
 func (this *QDrag) Exec1(supportedActions int) DropAction {
-	_ret := C.QDrag_Exec1(this.h, (C.int)(supportedActions))
-	return (DropAction)(_ret)
+	return (DropAction)(C.QDrag_Exec1(this.h, (C.int)(supportedActions)))
 }
 
 // Delete this object from C++ memory.

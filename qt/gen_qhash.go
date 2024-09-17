@@ -36,8 +36,7 @@ func newQHashData_U(h unsafe.Pointer) *QHashData {
 }
 
 func (this *QHashData) WillGrow() bool {
-	_ret := C.QHashData_WillGrow(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QHashData_WillGrow(this.h))
 }
 
 func (this *QHashData) HasShrunk() {
@@ -49,18 +48,15 @@ func (this *QHashData) Rehash(hint int) {
 }
 
 func (this *QHashData) FirstNode() *QHashData__Node {
-	_ret := C.QHashData_FirstNode(this.h)
-	return newQHashData__Node_U(unsafe.Pointer(_ret))
+	return newQHashData__Node_U(unsafe.Pointer(C.QHashData_FirstNode(this.h)))
 }
 
 func QHashData_NextNode(node *QHashData__Node) *QHashData__Node {
-	_ret := C.QHashData_NextNode(node.cPointer())
-	return newQHashData__Node_U(unsafe.Pointer(_ret))
+	return newQHashData__Node_U(unsafe.Pointer(C.QHashData_NextNode(node.cPointer())))
 }
 
 func QHashData_PreviousNode(node *QHashData__Node) *QHashData__Node {
-	_ret := C.QHashData_PreviousNode(node.cPointer())
-	return newQHashData__Node_U(unsafe.Pointer(_ret))
+	return newQHashData__Node_U(unsafe.Pointer(C.QHashData_PreviousNode(node.cPointer())))
 }
 
 // Delete this object from C++ memory.

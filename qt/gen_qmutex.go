@@ -57,23 +57,19 @@ func (this *QBasicMutex) Unlock() {
 }
 
 func (this *QBasicMutex) TryLock() bool {
-	_ret := C.QBasicMutex_TryLock(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QBasicMutex_TryLock(this.h))
 }
 
 func (this *QBasicMutex) TryLock2() bool {
-	_ret := C.QBasicMutex_TryLock2(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QBasicMutex_TryLock2(this.h))
 }
 
 func (this *QBasicMutex) IsRecursive() bool {
-	_ret := C.QBasicMutex_IsRecursive(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QBasicMutex_IsRecursive(this.h))
 }
 
 func (this *QBasicMutex) IsRecursive2() bool {
-	_ret := C.QBasicMutex_IsRecursive2(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QBasicMutex_IsRecursive2(this.h))
 }
 
 // Delete this object from C++ memory.
@@ -130,8 +126,7 @@ func (this *QMutex) Lock() {
 }
 
 func (this *QMutex) TryLock() bool {
-	_ret := C.QMutex_TryLock(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QMutex_TryLock(this.h))
 }
 
 func (this *QMutex) Unlock() {
@@ -139,18 +134,15 @@ func (this *QMutex) Unlock() {
 }
 
 func (this *QMutex) TryLock2() bool {
-	_ret := C.QMutex_TryLock2(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QMutex_TryLock2(this.h))
 }
 
 func (this *QMutex) IsRecursive() bool {
-	_ret := C.QMutex_IsRecursive(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QMutex_IsRecursive(this.h))
 }
 
 func (this *QMutex) TryLock1(timeout int) bool {
-	_ret := C.QMutex_TryLock1(this.h, (C.int)(timeout))
-	return (bool)(_ret)
+	return (bool)(C.QMutex_TryLock1(this.h, (C.int)(timeout)))
 }
 
 // Delete this object from C++ memory.
@@ -252,8 +244,7 @@ func (this *QMutexLocker) Relock() {
 }
 
 func (this *QMutexLocker) Mutex() *QMutex {
-	_ret := C.QMutexLocker_Mutex(this.h)
-	return newQMutex_U(unsafe.Pointer(_ret))
+	return newQMutex_U(unsafe.Pointer(C.QMutexLocker_Mutex(this.h)))
 }
 
 // Delete this object from C++ memory.

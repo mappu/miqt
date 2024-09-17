@@ -86,8 +86,7 @@ func NewQListView2(parent *QWidget) *QListView {
 }
 
 func (this *QListView) MetaObject() *QMetaObject {
-	_ret := C.QListView_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QListView_MetaObject(this.h)))
 }
 
 func QListView_Tr(s string) string {
@@ -113,8 +112,7 @@ func (this *QListView) SetMovement(movement QListView__Movement) {
 }
 
 func (this *QListView) Movement() QListView__Movement {
-	_ret := C.QListView_Movement(this.h)
-	return (QListView__Movement)(_ret)
+	return (QListView__Movement)(C.QListView_Movement(this.h))
 }
 
 func (this *QListView) SetFlow(flow QListView__Flow) {
@@ -122,8 +120,7 @@ func (this *QListView) SetFlow(flow QListView__Flow) {
 }
 
 func (this *QListView) Flow() QListView__Flow {
-	_ret := C.QListView_Flow(this.h)
-	return (QListView__Flow)(_ret)
+	return (QListView__Flow)(C.QListView_Flow(this.h))
 }
 
 func (this *QListView) SetWrapping(enable bool) {
@@ -131,8 +128,7 @@ func (this *QListView) SetWrapping(enable bool) {
 }
 
 func (this *QListView) IsWrapping() bool {
-	_ret := C.QListView_IsWrapping(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QListView_IsWrapping(this.h))
 }
 
 func (this *QListView) SetResizeMode(mode QListView__ResizeMode) {
@@ -140,8 +136,7 @@ func (this *QListView) SetResizeMode(mode QListView__ResizeMode) {
 }
 
 func (this *QListView) ResizeMode() QListView__ResizeMode {
-	_ret := C.QListView_ResizeMode(this.h)
-	return (QListView__ResizeMode)(_ret)
+	return (QListView__ResizeMode)(C.QListView_ResizeMode(this.h))
 }
 
 func (this *QListView) SetLayoutMode(mode QListView__LayoutMode) {
@@ -149,8 +144,7 @@ func (this *QListView) SetLayoutMode(mode QListView__LayoutMode) {
 }
 
 func (this *QListView) LayoutMode() QListView__LayoutMode {
-	_ret := C.QListView_LayoutMode(this.h)
-	return (QListView__LayoutMode)(_ret)
+	return (QListView__LayoutMode)(C.QListView_LayoutMode(this.h))
 }
 
 func (this *QListView) SetSpacing(space int) {
@@ -158,8 +152,7 @@ func (this *QListView) SetSpacing(space int) {
 }
 
 func (this *QListView) Spacing() int {
-	_ret := C.QListView_Spacing(this.h)
-	return (int)(_ret)
+	return (int)(C.QListView_Spacing(this.h))
 }
 
 func (this *QListView) SetBatchSize(batchSize int) {
@@ -167,8 +160,7 @@ func (this *QListView) SetBatchSize(batchSize int) {
 }
 
 func (this *QListView) BatchSize() int {
-	_ret := C.QListView_BatchSize(this.h)
-	return (int)(_ret)
+	return (int)(C.QListView_BatchSize(this.h))
 }
 
 func (this *QListView) SetGridSize(size *QSize) {
@@ -187,8 +179,7 @@ func (this *QListView) SetViewMode(mode QListView__ViewMode) {
 }
 
 func (this *QListView) ViewMode() QListView__ViewMode {
-	_ret := C.QListView_ViewMode(this.h)
-	return (QListView__ViewMode)(_ret)
+	return (QListView__ViewMode)(C.QListView_ViewMode(this.h))
 }
 
 func (this *QListView) ClearPropertyFlags() {
@@ -196,8 +187,7 @@ func (this *QListView) ClearPropertyFlags() {
 }
 
 func (this *QListView) IsRowHidden(row int) bool {
-	_ret := C.QListView_IsRowHidden(this.h, (C.int)(row))
-	return (bool)(_ret)
+	return (bool)(C.QListView_IsRowHidden(this.h, (C.int)(row)))
 }
 
 func (this *QListView) SetRowHidden(row int, hide bool) {
@@ -209,8 +199,7 @@ func (this *QListView) SetModelColumn(column int) {
 }
 
 func (this *QListView) ModelColumn() int {
-	_ret := C.QListView_ModelColumn(this.h)
-	return (int)(_ret)
+	return (int)(C.QListView_ModelColumn(this.h))
 }
 
 func (this *QListView) SetUniformItemSizes(enable bool) {
@@ -218,8 +207,7 @@ func (this *QListView) SetUniformItemSizes(enable bool) {
 }
 
 func (this *QListView) UniformItemSizes() bool {
-	_ret := C.QListView_UniformItemSizes(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QListView_UniformItemSizes(this.h))
 }
 
 func (this *QListView) SetWordWrap(on bool) {
@@ -227,8 +215,7 @@ func (this *QListView) SetWordWrap(on bool) {
 }
 
 func (this *QListView) WordWrap() bool {
-	_ret := C.QListView_WordWrap(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QListView_WordWrap(this.h))
 }
 
 func (this *QListView) SetSelectionRectVisible(show bool) {
@@ -236,8 +223,7 @@ func (this *QListView) SetSelectionRectVisible(show bool) {
 }
 
 func (this *QListView) IsSelectionRectVisible() bool {
-	_ret := C.QListView_IsSelectionRectVisible(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QListView_IsSelectionRectVisible(this.h))
 }
 
 func (this *QListView) SetItemAlignment(alignment int) {
@@ -245,8 +231,7 @@ func (this *QListView) SetItemAlignment(alignment int) {
 }
 
 func (this *QListView) ItemAlignment() int {
-	_ret := C.QListView_ItemAlignment(this.h)
-	return (int)(_ret)
+	return (int)(C.QListView_ItemAlignment(this.h))
 }
 
 func (this *QListView) VisualRect(index *QModelIndex) *QRect {
@@ -304,9 +289,12 @@ func miqt_exec_callback_QListView_IndexesMoved(cb *C.void, indexes *C.struct_miq
 	// Convert all CABI parameters to Go parameters
 	var indexes_ma *C.struct_miqt_array = indexes
 	indexes_ret := make([]QModelIndex, int(indexes_ma.len))
-	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(indexes_ma.data)) // mrs jackson
+	indexes_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(indexes_ma.data)) // hey ya
 	for i := 0; i < int(indexes_ma.len); i++ {
-		indexes_ret[i] = *newQModelIndex(_outCast[i])
+		indexes_lv_ret := indexes_outCast[i]
+		indexes_lv_goptr := newQModelIndex(indexes_lv_ret)
+		indexes_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+		indexes_ret[i] = *indexes_lv_goptr
 	}
 	C.free(unsafe.Pointer(indexes_ma))
 	slotval1 := indexes_ret

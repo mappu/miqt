@@ -50,8 +50,7 @@ func NewQVariantAnimation2(parent *QObject) *QVariantAnimation {
 }
 
 func (this *QVariantAnimation) MetaObject() *QMetaObject {
-	_ret := C.QVariantAnimation_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QVariantAnimation_MetaObject(this.h)))
 }
 
 func QVariantAnimation_Tr(s string) string {
@@ -113,8 +112,7 @@ func (this *QVariantAnimation) CurrentValue() *QVariant {
 }
 
 func (this *QVariantAnimation) Duration() int {
-	_ret := C.QVariantAnimation_Duration(this.h)
-	return (int)(_ret)
+	return (int)(C.QVariantAnimation_Duration(this.h))
 }
 
 func (this *QVariantAnimation) SetDuration(msecs int) {
@@ -147,8 +145,7 @@ func miqt_exec_callback_QVariantAnimation_ValueChanged(cb *C.void, value *C.QVar
 	}
 
 	// Convert all CABI parameters to Go parameters
-	value_ret := value
-	slotval1 := newQVariant_U(unsafe.Pointer(value_ret))
+	slotval1 := newQVariant_U(unsafe.Pointer(value))
 
 	gofunc(slotval1)
 }

@@ -61,8 +61,7 @@ func NewQEventLoop2(parent *QObject) *QEventLoop {
 }
 
 func (this *QEventLoop) MetaObject() *QMetaObject {
-	_ret := C.QEventLoop_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QEventLoop_MetaObject(this.h)))
 }
 
 func QEventLoop_Tr(s string) string {
@@ -84,8 +83,7 @@ func QEventLoop_TrUtf8(s string) string {
 }
 
 func (this *QEventLoop) ProcessEvents() bool {
-	_ret := C.QEventLoop_ProcessEvents(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QEventLoop_ProcessEvents(this.h))
 }
 
 func (this *QEventLoop) ProcessEvents2(flags int, maximumTime int) {
@@ -93,8 +91,7 @@ func (this *QEventLoop) ProcessEvents2(flags int, maximumTime int) {
 }
 
 func (this *QEventLoop) Exec() int {
-	_ret := C.QEventLoop_Exec(this.h)
-	return (int)(_ret)
+	return (int)(C.QEventLoop_Exec(this.h))
 }
 
 func (this *QEventLoop) Exit() {
@@ -102,8 +99,7 @@ func (this *QEventLoop) Exit() {
 }
 
 func (this *QEventLoop) IsRunning() bool {
-	_ret := C.QEventLoop_IsRunning(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QEventLoop_IsRunning(this.h))
 }
 
 func (this *QEventLoop) WakeUp() {
@@ -111,8 +107,7 @@ func (this *QEventLoop) WakeUp() {
 }
 
 func (this *QEventLoop) Event(event *QEvent) bool {
-	_ret := C.QEventLoop_Event(this.h, event.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QEventLoop_Event(this.h, event.cPointer()))
 }
 
 func (this *QEventLoop) Quit() {
@@ -164,13 +159,11 @@ func QEventLoop_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QEventLoop) ProcessEvents1(flags int) bool {
-	_ret := C.QEventLoop_ProcessEvents1(this.h, (C.int)(flags))
-	return (bool)(_ret)
+	return (bool)(C.QEventLoop_ProcessEvents1(this.h, (C.int)(flags)))
 }
 
 func (this *QEventLoop) Exec1(flags int) int {
-	_ret := C.QEventLoop_Exec1(this.h, (C.int)(flags))
-	return (int)(_ret)
+	return (int)(C.QEventLoop_Exec1(this.h, (C.int)(flags)))
 }
 
 func (this *QEventLoop) Exit1(returnCode int) {

@@ -96,28 +96,23 @@ func NewQVector4D10(param1 *QVector4D) *QVector4D {
 }
 
 func (this *QVector4D) IsNull() bool {
-	_ret := C.QVector4D_IsNull(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QVector4D_IsNull(this.h))
 }
 
 func (this *QVector4D) X() float32 {
-	_ret := C.QVector4D_X(this.h)
-	return (float32)(_ret)
+	return (float32)(C.QVector4D_X(this.h))
 }
 
 func (this *QVector4D) Y() float32 {
-	_ret := C.QVector4D_Y(this.h)
-	return (float32)(_ret)
+	return (float32)(C.QVector4D_Y(this.h))
 }
 
 func (this *QVector4D) Z() float32 {
-	_ret := C.QVector4D_Z(this.h)
-	return (float32)(_ret)
+	return (float32)(C.QVector4D_Z(this.h))
 }
 
 func (this *QVector4D) W() float32 {
-	_ret := C.QVector4D_W(this.h)
-	return (float32)(_ret)
+	return (float32)(C.QVector4D_W(this.h))
 }
 
 func (this *QVector4D) SetX(x float32) {
@@ -137,18 +132,15 @@ func (this *QVector4D) SetW(w float32) {
 }
 
 func (this *QVector4D) OperatorSubscript(i int) float32 {
-	_ret := C.QVector4D_OperatorSubscript(this.h, (C.int)(i))
-	return (float32)(_ret)
+	return (float32)(C.QVector4D_OperatorSubscript(this.h, (C.int)(i)))
 }
 
 func (this *QVector4D) Length() float32 {
-	_ret := C.QVector4D_Length(this.h)
-	return (float32)(_ret)
+	return (float32)(C.QVector4D_Length(this.h))
 }
 
 func (this *QVector4D) LengthSquared() float32 {
-	_ret := C.QVector4D_LengthSquared(this.h)
-	return (float32)(_ret)
+	return (float32)(C.QVector4D_LengthSquared(this.h))
 }
 
 func (this *QVector4D) Normalized() *QVector4D {
@@ -163,38 +155,31 @@ func (this *QVector4D) Normalize() {
 }
 
 func (this *QVector4D) OperatorPlusAssign(vector *QVector4D) *QVector4D {
-	_ret := C.QVector4D_OperatorPlusAssign(this.h, vector.cPointer())
-	return newQVector4D_U(unsafe.Pointer(_ret))
+	return newQVector4D_U(unsafe.Pointer(C.QVector4D_OperatorPlusAssign(this.h, vector.cPointer())))
 }
 
 func (this *QVector4D) OperatorMinusAssign(vector *QVector4D) *QVector4D {
-	_ret := C.QVector4D_OperatorMinusAssign(this.h, vector.cPointer())
-	return newQVector4D_U(unsafe.Pointer(_ret))
+	return newQVector4D_U(unsafe.Pointer(C.QVector4D_OperatorMinusAssign(this.h, vector.cPointer())))
 }
 
 func (this *QVector4D) OperatorMultiplyAssign(factor float32) *QVector4D {
-	_ret := C.QVector4D_OperatorMultiplyAssign(this.h, (C.float)(factor))
-	return newQVector4D_U(unsafe.Pointer(_ret))
+	return newQVector4D_U(unsafe.Pointer(C.QVector4D_OperatorMultiplyAssign(this.h, (C.float)(factor))))
 }
 
 func (this *QVector4D) OperatorMultiplyAssignWithVector(vector *QVector4D) *QVector4D {
-	_ret := C.QVector4D_OperatorMultiplyAssignWithVector(this.h, vector.cPointer())
-	return newQVector4D_U(unsafe.Pointer(_ret))
+	return newQVector4D_U(unsafe.Pointer(C.QVector4D_OperatorMultiplyAssignWithVector(this.h, vector.cPointer())))
 }
 
 func (this *QVector4D) OperatorDivideAssign(divisor float32) *QVector4D {
-	_ret := C.QVector4D_OperatorDivideAssign(this.h, (C.float)(divisor))
-	return newQVector4D_U(unsafe.Pointer(_ret))
+	return newQVector4D_U(unsafe.Pointer(C.QVector4D_OperatorDivideAssign(this.h, (C.float)(divisor))))
 }
 
 func (this *QVector4D) OperatorDivideAssignWithVector(vector *QVector4D) *QVector4D {
-	_ret := C.QVector4D_OperatorDivideAssignWithVector(this.h, vector.cPointer())
-	return newQVector4D_U(unsafe.Pointer(_ret))
+	return newQVector4D_U(unsafe.Pointer(C.QVector4D_OperatorDivideAssignWithVector(this.h, vector.cPointer())))
 }
 
 func QVector4D_DotProduct(v1 *QVector4D, v2 *QVector4D) float32 {
-	_ret := C.QVector4D_DotProduct(v1.cPointer(), v2.cPointer())
-	return (float32)(_ret)
+	return (float32)(C.QVector4D_DotProduct(v1.cPointer(), v2.cPointer()))
 }
 
 func (this *QVector4D) ToVector2D() *QVector2D {

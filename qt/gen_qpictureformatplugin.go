@@ -37,8 +37,7 @@ func newQPictureFormatPlugin_U(h unsafe.Pointer) *QPictureFormatPlugin {
 }
 
 func (this *QPictureFormatPlugin) MetaObject() *QMetaObject {
-	_ret := C.QPictureFormatPlugin_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QPictureFormatPlugin_MetaObject(this.h)))
 }
 
 func QPictureFormatPlugin_Tr(s string) string {
@@ -64,8 +63,7 @@ func (this *QPictureFormatPlugin) LoadPicture(format string, filename string, pi
 	defer C.free(format_ms)
 	filename_ms := miqt_strdupg(filename)
 	defer C.free(filename_ms)
-	_ret := C.QPictureFormatPlugin_LoadPicture(this.h, (*C.struct_miqt_string)(format_ms), (*C.struct_miqt_string)(filename_ms), pic.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QPictureFormatPlugin_LoadPicture(this.h, (*C.struct_miqt_string)(format_ms), (*C.struct_miqt_string)(filename_ms), pic.cPointer()))
 }
 
 func (this *QPictureFormatPlugin) SavePicture(format string, filename string, pic *QPicture) bool {
@@ -73,15 +71,13 @@ func (this *QPictureFormatPlugin) SavePicture(format string, filename string, pi
 	defer C.free(format_ms)
 	filename_ms := miqt_strdupg(filename)
 	defer C.free(filename_ms)
-	_ret := C.QPictureFormatPlugin_SavePicture(this.h, (*C.struct_miqt_string)(format_ms), (*C.struct_miqt_string)(filename_ms), pic.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QPictureFormatPlugin_SavePicture(this.h, (*C.struct_miqt_string)(format_ms), (*C.struct_miqt_string)(filename_ms), pic.cPointer()))
 }
 
 func (this *QPictureFormatPlugin) InstallIOHandler(format string) bool {
 	format_ms := miqt_strdupg(format)
 	defer C.free(format_ms)
-	_ret := C.QPictureFormatPlugin_InstallIOHandler(this.h, (*C.struct_miqt_string)(format_ms))
-	return (bool)(_ret)
+	return (bool)(C.QPictureFormatPlugin_InstallIOHandler(this.h, (*C.struct_miqt_string)(format_ms)))
 }
 
 func QPictureFormatPlugin_Tr2(s string, c string) string {

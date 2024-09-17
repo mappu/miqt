@@ -42,18 +42,15 @@ func NewQtPrivate__ResultItem() *QtPrivate__ResultItem {
 }
 
 func (this *QtPrivate__ResultItem) IsValid() bool {
-	_ret := C.QtPrivate__ResultItem_IsValid(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QtPrivate__ResultItem_IsValid(this.h))
 }
 
 func (this *QtPrivate__ResultItem) IsVector() bool {
-	_ret := C.QtPrivate__ResultItem_IsVector(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QtPrivate__ResultItem_IsVector(this.h))
 }
 
 func (this *QtPrivate__ResultItem) Count() int {
-	_ret := C.QtPrivate__ResultItem_Count(this.h)
-	return (int)(_ret)
+	return (int)(C.QtPrivate__ResultItem_Count(this.h))
 }
 
 // Delete this object from C++ memory.
@@ -99,13 +96,11 @@ func NewQtPrivate__ResultIteratorBase() *QtPrivate__ResultIteratorBase {
 }
 
 func (this *QtPrivate__ResultIteratorBase) VectorIndex() int {
-	_ret := C.QtPrivate__ResultIteratorBase_VectorIndex(this.h)
-	return (int)(_ret)
+	return (int)(C.QtPrivate__ResultIteratorBase_VectorIndex(this.h))
 }
 
 func (this *QtPrivate__ResultIteratorBase) ResultIndex() int {
-	_ret := C.QtPrivate__ResultIteratorBase_ResultIndex(this.h)
-	return (int)(_ret)
+	return (int)(C.QtPrivate__ResultIteratorBase_ResultIndex(this.h))
 }
 
 func (this *QtPrivate__ResultIteratorBase) OperatorPlusPlus() *QtPrivate__ResultIteratorBase {
@@ -116,8 +111,7 @@ func (this *QtPrivate__ResultIteratorBase) OperatorPlusPlus() *QtPrivate__Result
 }
 
 func (this *QtPrivate__ResultIteratorBase) BatchSize() int {
-	_ret := C.QtPrivate__ResultIteratorBase_BatchSize(this.h)
-	return (int)(_ret)
+	return (int)(C.QtPrivate__ResultIteratorBase_BatchSize(this.h))
 }
 
 func (this *QtPrivate__ResultIteratorBase) BatchedAdvance() {
@@ -125,23 +119,19 @@ func (this *QtPrivate__ResultIteratorBase) BatchedAdvance() {
 }
 
 func (this *QtPrivate__ResultIteratorBase) OperatorEqual(other *QtPrivate__ResultIteratorBase) bool {
-	_ret := C.QtPrivate__ResultIteratorBase_OperatorEqual(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QtPrivate__ResultIteratorBase_OperatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QtPrivate__ResultIteratorBase) OperatorNotEqual(other *QtPrivate__ResultIteratorBase) bool {
-	_ret := C.QtPrivate__ResultIteratorBase_OperatorNotEqual(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QtPrivate__ResultIteratorBase_OperatorNotEqual(this.h, other.cPointer()))
 }
 
 func (this *QtPrivate__ResultIteratorBase) IsVector() bool {
-	_ret := C.QtPrivate__ResultIteratorBase_IsVector(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QtPrivate__ResultIteratorBase_IsVector(this.h))
 }
 
 func (this *QtPrivate__ResultIteratorBase) CanIncrementVectorIndex() bool {
-	_ret := C.QtPrivate__ResultIteratorBase_CanIncrementVectorIndex(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QtPrivate__ResultIteratorBase_CanIncrementVectorIndex(this.h))
 }
 
 // Delete this object from C++ memory.
@@ -197,8 +187,7 @@ func (this *QtPrivate__ResultStoreBase) SetFilterMode(enable bool) {
 }
 
 func (this *QtPrivate__ResultStoreBase) FilterMode() bool {
-	_ret := C.QtPrivate__ResultStoreBase_FilterMode(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QtPrivate__ResultStoreBase_FilterMode(this.h))
 }
 
 func (this *QtPrivate__ResultStoreBase) Begin() *QtPrivate__ResultIteratorBase {
@@ -216,8 +205,7 @@ func (this *QtPrivate__ResultStoreBase) End() *QtPrivate__ResultIteratorBase {
 }
 
 func (this *QtPrivate__ResultStoreBase) HasNextResult() bool {
-	_ret := C.QtPrivate__ResultStoreBase_HasNextResult(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QtPrivate__ResultStoreBase_HasNextResult(this.h))
 }
 
 func (this *QtPrivate__ResultStoreBase) ResultAt(index int) *QtPrivate__ResultIteratorBase {
@@ -228,18 +216,15 @@ func (this *QtPrivate__ResultStoreBase) ResultAt(index int) *QtPrivate__ResultIt
 }
 
 func (this *QtPrivate__ResultStoreBase) Contains(index int) bool {
-	_ret := C.QtPrivate__ResultStoreBase_Contains(this.h, (C.int)(index))
-	return (bool)(_ret)
+	return (bool)(C.QtPrivate__ResultStoreBase_Contains(this.h, (C.int)(index)))
 }
 
 func (this *QtPrivate__ResultStoreBase) Count() int {
-	_ret := C.QtPrivate__ResultStoreBase_Count(this.h)
-	return (int)(_ret)
+	return (int)(C.QtPrivate__ResultStoreBase_Count(this.h))
 }
 
 func (this *QtPrivate__ResultStoreBase) AddCanceledResult(index int) int {
-	_ret := C.QtPrivate__ResultStoreBase_AddCanceledResult(this.h, (C.int)(index))
-	return (int)(_ret)
+	return (int)(C.QtPrivate__ResultStoreBase_AddCanceledResult(this.h, (C.int)(index)))
 }
 
 // Delete this object from C++ memory.

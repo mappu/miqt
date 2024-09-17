@@ -46,13 +46,13 @@ func newQDirModel_U(h unsafe.Pointer) *QDirModel {
 
 // NewQDirModel constructs a new QDirModel object.
 func NewQDirModel(nameFilters []string, filters int, sort int) *QDirModel {
-	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
+	// For the C ABI, malloc a C array of raw pointers
 	nameFilters_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(nameFilters))))
 	defer C.free(unsafe.Pointer(nameFilters_CArray))
 	for i := range nameFilters {
-		single_ms := miqt_strdupg(nameFilters[i])
-		defer C.free(single_ms)
-		nameFilters_CArray[i] = (*C.struct_miqt_string)(single_ms)
+		nameFilters_i_ms := miqt_strdupg(nameFilters[i])
+		defer C.free(nameFilters_i_ms)
+		nameFilters_CArray[i] = (*C.struct_miqt_string)(nameFilters_i_ms)
 	}
 	nameFilters_ma := &C.struct_miqt_array{len: C.size_t(len(nameFilters)), data: unsafe.Pointer(nameFilters_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(nameFilters_ma))
@@ -68,13 +68,13 @@ func NewQDirModel2() *QDirModel {
 
 // NewQDirModel3 constructs a new QDirModel object.
 func NewQDirModel3(nameFilters []string, filters int, sort int, parent *QObject) *QDirModel {
-	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
+	// For the C ABI, malloc a C array of raw pointers
 	nameFilters_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(nameFilters))))
 	defer C.free(unsafe.Pointer(nameFilters_CArray))
 	for i := range nameFilters {
-		single_ms := miqt_strdupg(nameFilters[i])
-		defer C.free(single_ms)
-		nameFilters_CArray[i] = (*C.struct_miqt_string)(single_ms)
+		nameFilters_i_ms := miqt_strdupg(nameFilters[i])
+		defer C.free(nameFilters_i_ms)
+		nameFilters_CArray[i] = (*C.struct_miqt_string)(nameFilters_i_ms)
 	}
 	nameFilters_ma := &C.struct_miqt_array{len: C.size_t(len(nameFilters)), data: unsafe.Pointer(nameFilters_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(nameFilters_ma))
@@ -89,8 +89,7 @@ func NewQDirModel4(parent *QObject) *QDirModel {
 }
 
 func (this *QDirModel) MetaObject() *QMetaObject {
-	_ret := C.QDirModel_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QDirModel_MetaObject(this.h)))
 }
 
 func QDirModel_Tr(s string) string {
@@ -126,13 +125,11 @@ func (this *QDirModel) Parent(child *QModelIndex) *QModelIndex {
 }
 
 func (this *QDirModel) RowCount() int {
-	_ret := C.QDirModel_RowCount(this.h)
-	return (int)(_ret)
+	return (int)(C.QDirModel_RowCount(this.h))
 }
 
 func (this *QDirModel) ColumnCount() int {
-	_ret := C.QDirModel_ColumnCount(this.h)
-	return (int)(_ret)
+	return (int)(C.QDirModel_ColumnCount(this.h))
 }
 
 func (this *QDirModel) Data(index *QModelIndex) *QVariant {
@@ -143,8 +140,7 @@ func (this *QDirModel) Data(index *QModelIndex) *QVariant {
 }
 
 func (this *QDirModel) SetData(index *QModelIndex, value *QVariant) bool {
-	_ret := C.QDirModel_SetData(this.h, index.cPointer(), value.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QDirModel_SetData(this.h, index.cPointer(), value.cPointer()))
 }
 
 func (this *QDirModel) HeaderData(section int, orientation Orientation) *QVariant {
@@ -155,13 +151,11 @@ func (this *QDirModel) HeaderData(section int, orientation Orientation) *QVarian
 }
 
 func (this *QDirModel) HasChildren() bool {
-	_ret := C.QDirModel_HasChildren(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QDirModel_HasChildren(this.h))
 }
 
 func (this *QDirModel) Flags(index *QModelIndex) int {
-	_ret := C.QDirModel_Flags(this.h, index.cPointer())
-	return (int)(_ret)
+	return (int)(C.QDirModel_Flags(this.h, index.cPointer()))
 }
 
 func (this *QDirModel) Sort(column int) {
@@ -173,8 +167,10 @@ func (this *QDirModel) MimeTypes() []string {
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = C.GoStringN(&_outCast[i].data, C.int(int64(_outCast[i].len)))
-		C.free(unsafe.Pointer(_outCast[i])) // free the inner miqt_string*
+		var _lv_ms *C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoStringN(&_lv_ms.data, C.int(int64(_lv_ms.len)))
+		C.free(unsafe.Pointer(_lv_ms))
+		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -189,18 +185,15 @@ func (this *QDirModel) MimeData(indexes []QModelIndex) *QMimeData {
 	}
 	indexes_ma := &C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(indexes_ma))
-	_ret := C.QDirModel_MimeData(this.h, indexes_ma)
-	return newQMimeData_U(unsafe.Pointer(_ret))
+	return newQMimeData_U(unsafe.Pointer(C.QDirModel_MimeData(this.h, indexes_ma)))
 }
 
 func (this *QDirModel) DropMimeData(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool {
-	_ret := C.QDirModel_DropMimeData(this.h, data.cPointer(), (C.uintptr_t)(action), (C.int)(row), (C.int)(column), parent.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QDirModel_DropMimeData(this.h, data.cPointer(), (C.uintptr_t)(action), (C.int)(row), (C.int)(column), parent.cPointer()))
 }
 
 func (this *QDirModel) SupportedDropActions() int {
-	_ret := C.QDirModel_SupportedDropActions(this.h)
-	return (int)(_ret)
+	return (int)(C.QDirModel_SupportedDropActions(this.h))
 }
 
 func (this *QDirModel) SetIconProvider(provider *QFileIconProvider) {
@@ -208,18 +201,17 @@ func (this *QDirModel) SetIconProvider(provider *QFileIconProvider) {
 }
 
 func (this *QDirModel) IconProvider() *QFileIconProvider {
-	_ret := C.QDirModel_IconProvider(this.h)
-	return newQFileIconProvider_U(unsafe.Pointer(_ret))
+	return newQFileIconProvider_U(unsafe.Pointer(C.QDirModel_IconProvider(this.h)))
 }
 
 func (this *QDirModel) SetNameFilters(filters []string) {
-	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
+	// For the C ABI, malloc a C array of raw pointers
 	filters_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(filters))))
 	defer C.free(unsafe.Pointer(filters_CArray))
 	for i := range filters {
-		single_ms := miqt_strdupg(filters[i])
-		defer C.free(single_ms)
-		filters_CArray[i] = (*C.struct_miqt_string)(single_ms)
+		filters_i_ms := miqt_strdupg(filters[i])
+		defer C.free(filters_i_ms)
+		filters_CArray[i] = (*C.struct_miqt_string)(filters_i_ms)
 	}
 	filters_ma := &C.struct_miqt_array{len: C.size_t(len(filters)), data: unsafe.Pointer(filters_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(filters_ma))
@@ -231,8 +223,10 @@ func (this *QDirModel) NameFilters() []string {
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = C.GoStringN(&_outCast[i].data, C.int(int64(_outCast[i].len)))
-		C.free(unsafe.Pointer(_outCast[i])) // free the inner miqt_string*
+		var _lv_ms *C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoStringN(&_lv_ms.data, C.int(int64(_lv_ms.len)))
+		C.free(unsafe.Pointer(_lv_ms))
+		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -243,8 +237,7 @@ func (this *QDirModel) SetFilter(filters int) {
 }
 
 func (this *QDirModel) Filter() int {
-	_ret := C.QDirModel_Filter(this.h)
-	return (int)(_ret)
+	return (int)(C.QDirModel_Filter(this.h))
 }
 
 func (this *QDirModel) SetSorting(sort int) {
@@ -252,8 +245,7 @@ func (this *QDirModel) SetSorting(sort int) {
 }
 
 func (this *QDirModel) Sorting() int {
-	_ret := C.QDirModel_Sorting(this.h)
-	return (int)(_ret)
+	return (int)(C.QDirModel_Sorting(this.h))
 }
 
 func (this *QDirModel) SetResolveSymlinks(enable bool) {
@@ -261,8 +253,7 @@ func (this *QDirModel) SetResolveSymlinks(enable bool) {
 }
 
 func (this *QDirModel) ResolveSymlinks() bool {
-	_ret := C.QDirModel_ResolveSymlinks(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QDirModel_ResolveSymlinks(this.h))
 }
 
 func (this *QDirModel) SetReadOnly(enable bool) {
@@ -270,8 +261,7 @@ func (this *QDirModel) SetReadOnly(enable bool) {
 }
 
 func (this *QDirModel) IsReadOnly() bool {
-	_ret := C.QDirModel_IsReadOnly(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QDirModel_IsReadOnly(this.h))
 }
 
 func (this *QDirModel) SetLazyChildCount(enable bool) {
@@ -279,8 +269,7 @@ func (this *QDirModel) SetLazyChildCount(enable bool) {
 }
 
 func (this *QDirModel) LazyChildCount() bool {
-	_ret := C.QDirModel_LazyChildCount(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QDirModel_LazyChildCount(this.h))
 }
 
 func (this *QDirModel) IndexWithPath(path string) *QModelIndex {
@@ -293,8 +282,7 @@ func (this *QDirModel) IndexWithPath(path string) *QModelIndex {
 }
 
 func (this *QDirModel) IsDir(index *QModelIndex) bool {
-	_ret := C.QDirModel_IsDir(this.h, index.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QDirModel_IsDir(this.h, index.cPointer()))
 }
 
 func (this *QDirModel) Mkdir(parent *QModelIndex, name string) *QModelIndex {
@@ -307,13 +295,11 @@ func (this *QDirModel) Mkdir(parent *QModelIndex, name string) *QModelIndex {
 }
 
 func (this *QDirModel) Rmdir(index *QModelIndex) bool {
-	_ret := C.QDirModel_Rmdir(this.h, index.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QDirModel_Rmdir(this.h, index.cPointer()))
 }
 
 func (this *QDirModel) Remove(index *QModelIndex) bool {
-	_ret := C.QDirModel_Remove(this.h, index.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QDirModel_Remove(this.h, index.cPointer()))
 }
 
 func (this *QDirModel) FilePath(index *QModelIndex) string {
@@ -400,13 +386,11 @@ func (this *QDirModel) Index3(row int, column int, parent *QModelIndex) *QModelI
 }
 
 func (this *QDirModel) RowCount1(parent *QModelIndex) int {
-	_ret := C.QDirModel_RowCount1(this.h, parent.cPointer())
-	return (int)(_ret)
+	return (int)(C.QDirModel_RowCount1(this.h, parent.cPointer()))
 }
 
 func (this *QDirModel) ColumnCount1(parent *QModelIndex) int {
-	_ret := C.QDirModel_ColumnCount1(this.h, parent.cPointer())
-	return (int)(_ret)
+	return (int)(C.QDirModel_ColumnCount1(this.h, parent.cPointer()))
 }
 
 func (this *QDirModel) Data2(index *QModelIndex, role int) *QVariant {
@@ -417,8 +401,7 @@ func (this *QDirModel) Data2(index *QModelIndex, role int) *QVariant {
 }
 
 func (this *QDirModel) SetData3(index *QModelIndex, value *QVariant, role int) bool {
-	_ret := C.QDirModel_SetData3(this.h, index.cPointer(), value.cPointer(), (C.int)(role))
-	return (bool)(_ret)
+	return (bool)(C.QDirModel_SetData3(this.h, index.cPointer(), value.cPointer(), (C.int)(role)))
 }
 
 func (this *QDirModel) HeaderData3(section int, orientation Orientation, role int) *QVariant {
@@ -429,8 +412,7 @@ func (this *QDirModel) HeaderData3(section int, orientation Orientation, role in
 }
 
 func (this *QDirModel) HasChildren1(index *QModelIndex) bool {
-	_ret := C.QDirModel_HasChildren1(this.h, index.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QDirModel_HasChildren1(this.h, index.cPointer()))
 }
 
 func (this *QDirModel) Sort2(column int, order SortOrder) {

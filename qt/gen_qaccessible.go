@@ -256,23 +256,19 @@ func QAccessible_RemoveActivationObserver(param1 *QAccessible__ActivationObserve
 }
 
 func QAccessible_QueryAccessibleInterface(param1 *QObject) *QAccessibleInterface {
-	_ret := C.QAccessible_QueryAccessibleInterface(param1.cPointer())
-	return newQAccessibleInterface_U(unsafe.Pointer(_ret))
+	return newQAccessibleInterface_U(unsafe.Pointer(C.QAccessible_QueryAccessibleInterface(param1.cPointer())))
 }
 
 func QAccessible_UniqueId(iface *QAccessibleInterface) uint {
-	_ret := C.QAccessible_UniqueId(iface.cPointer())
-	return (uint)(_ret)
+	return (uint)(C.QAccessible_UniqueId(iface.cPointer()))
 }
 
 func QAccessible_AccessibleInterface(uniqueId uint) *QAccessibleInterface {
-	_ret := C.QAccessible_AccessibleInterface((C.uint)(uniqueId))
-	return newQAccessibleInterface_U(unsafe.Pointer(_ret))
+	return newQAccessibleInterface_U(unsafe.Pointer(C.QAccessible_AccessibleInterface((C.uint)(uniqueId))))
 }
 
 func QAccessible_RegisterAccessibleInterface(iface *QAccessibleInterface) uint {
-	_ret := C.QAccessible_RegisterAccessibleInterface(iface.cPointer())
-	return (uint)(_ret)
+	return (uint)(C.QAccessible_RegisterAccessibleInterface(iface.cPointer()))
 }
 
 func QAccessible_DeleteAccessibleInterface(uniqueId uint) {
@@ -284,8 +280,7 @@ func QAccessible_UpdateAccessibility(event *QAccessibleEvent) {
 }
 
 func QAccessible_IsActive() bool {
-	_ret := C.QAccessible_IsActive()
-	return (bool)(_ret)
+	return (bool)(C.QAccessible_IsActive())
 }
 
 func QAccessible_SetActive(active bool) {
@@ -337,48 +332,39 @@ func newQAccessibleInterface_U(h unsafe.Pointer) *QAccessibleInterface {
 }
 
 func (this *QAccessibleInterface) IsValid() bool {
-	_ret := C.QAccessibleInterface_IsValid(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QAccessibleInterface_IsValid(this.h))
 }
 
 func (this *QAccessibleInterface) Object() *QObject {
-	_ret := C.QAccessibleInterface_Object(this.h)
-	return newQObject_U(unsafe.Pointer(_ret))
+	return newQObject_U(unsafe.Pointer(C.QAccessibleInterface_Object(this.h)))
 }
 
 func (this *QAccessibleInterface) Window() *QWindow {
-	_ret := C.QAccessibleInterface_Window(this.h)
-	return newQWindow_U(unsafe.Pointer(_ret))
+	return newQWindow_U(unsafe.Pointer(C.QAccessibleInterface_Window(this.h)))
 }
 
 func (this *QAccessibleInterface) FocusChild() *QAccessibleInterface {
-	_ret := C.QAccessibleInterface_FocusChild(this.h)
-	return newQAccessibleInterface_U(unsafe.Pointer(_ret))
+	return newQAccessibleInterface_U(unsafe.Pointer(C.QAccessibleInterface_FocusChild(this.h)))
 }
 
 func (this *QAccessibleInterface) ChildAt(x int, y int) *QAccessibleInterface {
-	_ret := C.QAccessibleInterface_ChildAt(this.h, (C.int)(x), (C.int)(y))
-	return newQAccessibleInterface_U(unsafe.Pointer(_ret))
+	return newQAccessibleInterface_U(unsafe.Pointer(C.QAccessibleInterface_ChildAt(this.h, (C.int)(x), (C.int)(y))))
 }
 
 func (this *QAccessibleInterface) Parent() *QAccessibleInterface {
-	_ret := C.QAccessibleInterface_Parent(this.h)
-	return newQAccessibleInterface_U(unsafe.Pointer(_ret))
+	return newQAccessibleInterface_U(unsafe.Pointer(C.QAccessibleInterface_Parent(this.h)))
 }
 
 func (this *QAccessibleInterface) Child(index int) *QAccessibleInterface {
-	_ret := C.QAccessibleInterface_Child(this.h, (C.int)(index))
-	return newQAccessibleInterface_U(unsafe.Pointer(_ret))
+	return newQAccessibleInterface_U(unsafe.Pointer(C.QAccessibleInterface_Child(this.h, (C.int)(index))))
 }
 
 func (this *QAccessibleInterface) ChildCount() int {
-	_ret := C.QAccessibleInterface_ChildCount(this.h)
-	return (int)(_ret)
+	return (int)(C.QAccessibleInterface_ChildCount(this.h))
 }
 
 func (this *QAccessibleInterface) IndexOfChild(param1 *QAccessibleInterface) int {
-	_ret := C.QAccessibleInterface_IndexOfChild(this.h, param1.cPointer())
-	return (int)(_ret)
+	return (int)(C.QAccessibleInterface_IndexOfChild(this.h, param1.cPointer()))
 }
 
 func (this *QAccessibleInterface) Text(t QAccessible__Text) string {
@@ -402,8 +388,7 @@ func (this *QAccessibleInterface) Rect() *QRect {
 }
 
 func (this *QAccessibleInterface) Role() QAccessible__Role {
-	_ret := C.QAccessibleInterface_Role(this.h)
-	return (QAccessible__Role)(_ret)
+	return (QAccessible__Role)(C.QAccessibleInterface_Role(this.h))
 }
 
 func (this *QAccessibleInterface) State() *QAccessible__State {
@@ -428,38 +413,31 @@ func (this *QAccessibleInterface) BackgroundColor() *QColor {
 }
 
 func (this *QAccessibleInterface) TextInterface() *QAccessibleTextInterface {
-	_ret := C.QAccessibleInterface_TextInterface(this.h)
-	return newQAccessibleTextInterface_U(unsafe.Pointer(_ret))
+	return newQAccessibleTextInterface_U(unsafe.Pointer(C.QAccessibleInterface_TextInterface(this.h)))
 }
 
 func (this *QAccessibleInterface) EditableTextInterface() *QAccessibleEditableTextInterface {
-	_ret := C.QAccessibleInterface_EditableTextInterface(this.h)
-	return newQAccessibleEditableTextInterface_U(unsafe.Pointer(_ret))
+	return newQAccessibleEditableTextInterface_U(unsafe.Pointer(C.QAccessibleInterface_EditableTextInterface(this.h)))
 }
 
 func (this *QAccessibleInterface) ValueInterface() *QAccessibleValueInterface {
-	_ret := C.QAccessibleInterface_ValueInterface(this.h)
-	return newQAccessibleValueInterface_U(unsafe.Pointer(_ret))
+	return newQAccessibleValueInterface_U(unsafe.Pointer(C.QAccessibleInterface_ValueInterface(this.h)))
 }
 
 func (this *QAccessibleInterface) ActionInterface() *QAccessibleActionInterface {
-	_ret := C.QAccessibleInterface_ActionInterface(this.h)
-	return newQAccessibleActionInterface_U(unsafe.Pointer(_ret))
+	return newQAccessibleActionInterface_U(unsafe.Pointer(C.QAccessibleInterface_ActionInterface(this.h)))
 }
 
 func (this *QAccessibleInterface) ImageInterface() *QAccessibleImageInterface {
-	_ret := C.QAccessibleInterface_ImageInterface(this.h)
-	return newQAccessibleImageInterface_U(unsafe.Pointer(_ret))
+	return newQAccessibleImageInterface_U(unsafe.Pointer(C.QAccessibleInterface_ImageInterface(this.h)))
 }
 
 func (this *QAccessibleInterface) TableInterface() *QAccessibleTableInterface {
-	_ret := C.QAccessibleInterface_TableInterface(this.h)
-	return newQAccessibleTableInterface_U(unsafe.Pointer(_ret))
+	return newQAccessibleTableInterface_U(unsafe.Pointer(C.QAccessibleInterface_TableInterface(this.h)))
 }
 
 func (this *QAccessibleInterface) TableCellInterface() *QAccessibleTableCellInterface {
-	_ret := C.QAccessibleInterface_TableCellInterface(this.h)
-	return newQAccessibleTableCellInterface_U(unsafe.Pointer(_ret))
+	return newQAccessibleTableCellInterface_U(unsafe.Pointer(C.QAccessibleInterface_TableCellInterface(this.h)))
 }
 
 type QAccessibleTextInterface struct {
@@ -489,8 +467,7 @@ func (this *QAccessibleTextInterface) Selection(selectionIndex int, startOffset 
 }
 
 func (this *QAccessibleTextInterface) SelectionCount() int {
-	_ret := C.QAccessibleTextInterface_SelectionCount(this.h)
-	return (int)(_ret)
+	return (int)(C.QAccessibleTextInterface_SelectionCount(this.h))
 }
 
 func (this *QAccessibleTextInterface) AddSelection(startOffset int, endOffset int) {
@@ -506,8 +483,7 @@ func (this *QAccessibleTextInterface) SetSelection(selectionIndex int, startOffs
 }
 
 func (this *QAccessibleTextInterface) CursorPosition() int {
-	_ret := C.QAccessibleTextInterface_CursorPosition(this.h)
-	return (int)(_ret)
+	return (int)(C.QAccessibleTextInterface_CursorPosition(this.h))
 }
 
 func (this *QAccessibleTextInterface) SetCursorPosition(position int) {
@@ -543,8 +519,7 @@ func (this *QAccessibleTextInterface) TextAtOffset(offset int, boundaryType QAcc
 }
 
 func (this *QAccessibleTextInterface) CharacterCount() int {
-	_ret := C.QAccessibleTextInterface_CharacterCount(this.h)
-	return (int)(_ret)
+	return (int)(C.QAccessibleTextInterface_CharacterCount(this.h))
 }
 
 func (this *QAccessibleTextInterface) CharacterRect(offset int) *QRect {
@@ -555,8 +530,7 @@ func (this *QAccessibleTextInterface) CharacterRect(offset int) *QRect {
 }
 
 func (this *QAccessibleTextInterface) OffsetAtPoint(point *QPoint) int {
-	_ret := C.QAccessibleTextInterface_OffsetAtPoint(this.h, point.cPointer())
-	return (int)(_ret)
+	return (int)(C.QAccessibleTextInterface_OffsetAtPoint(this.h, point.cPointer()))
 }
 
 func (this *QAccessibleTextInterface) ScrollToSubstring(startIndex int, endIndex int) {
@@ -739,16 +713,15 @@ func newQAccessibleTableCellInterface_U(h unsafe.Pointer) *QAccessibleTableCellI
 }
 
 func (this *QAccessibleTableCellInterface) IsSelected() bool {
-	_ret := C.QAccessibleTableCellInterface_IsSelected(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QAccessibleTableCellInterface_IsSelected(this.h))
 }
 
 func (this *QAccessibleTableCellInterface) ColumnHeaderCells() []*QAccessibleInterface {
 	var _ma *C.struct_miqt_array = C.QAccessibleTableCellInterface_ColumnHeaderCells(this.h)
 	_ret := make([]*QAccessibleInterface, int(_ma.len))
-	_outCast := (*[0xffff]*C.QAccessibleInterface)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QAccessibleInterface)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQAccessibleInterface(_outCast[i])
+		_ret[i] = newQAccessibleInterface_U(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -757,37 +730,32 @@ func (this *QAccessibleTableCellInterface) ColumnHeaderCells() []*QAccessibleInt
 func (this *QAccessibleTableCellInterface) RowHeaderCells() []*QAccessibleInterface {
 	var _ma *C.struct_miqt_array = C.QAccessibleTableCellInterface_RowHeaderCells(this.h)
 	_ret := make([]*QAccessibleInterface, int(_ma.len))
-	_outCast := (*[0xffff]*C.QAccessibleInterface)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QAccessibleInterface)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQAccessibleInterface(_outCast[i])
+		_ret[i] = newQAccessibleInterface_U(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QAccessibleTableCellInterface) ColumnIndex() int {
-	_ret := C.QAccessibleTableCellInterface_ColumnIndex(this.h)
-	return (int)(_ret)
+	return (int)(C.QAccessibleTableCellInterface_ColumnIndex(this.h))
 }
 
 func (this *QAccessibleTableCellInterface) RowIndex() int {
-	_ret := C.QAccessibleTableCellInterface_RowIndex(this.h)
-	return (int)(_ret)
+	return (int)(C.QAccessibleTableCellInterface_RowIndex(this.h))
 }
 
 func (this *QAccessibleTableCellInterface) ColumnExtent() int {
-	_ret := C.QAccessibleTableCellInterface_ColumnExtent(this.h)
-	return (int)(_ret)
+	return (int)(C.QAccessibleTableCellInterface_ColumnExtent(this.h))
 }
 
 func (this *QAccessibleTableCellInterface) RowExtent() int {
-	_ret := C.QAccessibleTableCellInterface_RowExtent(this.h)
-	return (int)(_ret)
+	return (int)(C.QAccessibleTableCellInterface_RowExtent(this.h))
 }
 
 func (this *QAccessibleTableCellInterface) Table() *QAccessibleInterface {
-	_ret := C.QAccessibleTableCellInterface_Table(this.h)
-	return newQAccessibleInterface_U(unsafe.Pointer(_ret))
+	return newQAccessibleInterface_U(unsafe.Pointer(C.QAccessibleTableCellInterface_Table(this.h)))
 }
 
 func (this *QAccessibleTableCellInterface) OperatorAssign(param1 *QAccessibleTableCellInterface) {
@@ -831,31 +799,27 @@ func newQAccessibleTableInterface_U(h unsafe.Pointer) *QAccessibleTableInterface
 }
 
 func (this *QAccessibleTableInterface) Caption() *QAccessibleInterface {
-	_ret := C.QAccessibleTableInterface_Caption(this.h)
-	return newQAccessibleInterface_U(unsafe.Pointer(_ret))
+	return newQAccessibleInterface_U(unsafe.Pointer(C.QAccessibleTableInterface_Caption(this.h)))
 }
 
 func (this *QAccessibleTableInterface) Summary() *QAccessibleInterface {
-	_ret := C.QAccessibleTableInterface_Summary(this.h)
-	return newQAccessibleInterface_U(unsafe.Pointer(_ret))
+	return newQAccessibleInterface_U(unsafe.Pointer(C.QAccessibleTableInterface_Summary(this.h)))
 }
 
 func (this *QAccessibleTableInterface) CellAt(row int, column int) *QAccessibleInterface {
-	_ret := C.QAccessibleTableInterface_CellAt(this.h, (C.int)(row), (C.int)(column))
-	return newQAccessibleInterface_U(unsafe.Pointer(_ret))
+	return newQAccessibleInterface_U(unsafe.Pointer(C.QAccessibleTableInterface_CellAt(this.h, (C.int)(row), (C.int)(column))))
 }
 
 func (this *QAccessibleTableInterface) SelectedCellCount() int {
-	_ret := C.QAccessibleTableInterface_SelectedCellCount(this.h)
-	return (int)(_ret)
+	return (int)(C.QAccessibleTableInterface_SelectedCellCount(this.h))
 }
 
 func (this *QAccessibleTableInterface) SelectedCells() []*QAccessibleInterface {
 	var _ma *C.struct_miqt_array = C.QAccessibleTableInterface_SelectedCells(this.h)
 	_ret := make([]*QAccessibleInterface, int(_ma.len))
-	_outCast := (*[0xffff]*C.QAccessibleInterface)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QAccessibleInterface)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQAccessibleInterface(_outCast[i])
+		_ret[i] = newQAccessibleInterface_U(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -876,29 +840,25 @@ func (this *QAccessibleTableInterface) RowDescription(row int) string {
 }
 
 func (this *QAccessibleTableInterface) SelectedColumnCount() int {
-	_ret := C.QAccessibleTableInterface_SelectedColumnCount(this.h)
-	return (int)(_ret)
+	return (int)(C.QAccessibleTableInterface_SelectedColumnCount(this.h))
 }
 
 func (this *QAccessibleTableInterface) SelectedRowCount() int {
-	_ret := C.QAccessibleTableInterface_SelectedRowCount(this.h)
-	return (int)(_ret)
+	return (int)(C.QAccessibleTableInterface_SelectedRowCount(this.h))
 }
 
 func (this *QAccessibleTableInterface) ColumnCount() int {
-	_ret := C.QAccessibleTableInterface_ColumnCount(this.h)
-	return (int)(_ret)
+	return (int)(C.QAccessibleTableInterface_ColumnCount(this.h))
 }
 
 func (this *QAccessibleTableInterface) RowCount() int {
-	_ret := C.QAccessibleTableInterface_RowCount(this.h)
-	return (int)(_ret)
+	return (int)(C.QAccessibleTableInterface_RowCount(this.h))
 }
 
 func (this *QAccessibleTableInterface) SelectedColumns() []int {
 	var _ma *C.struct_miqt_array = C.QAccessibleTableInterface_SelectedColumns(this.h)
 	_ret := make([]int, int(_ma.len))
-	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (int)(_outCast[i])
 	}
@@ -909,7 +869,7 @@ func (this *QAccessibleTableInterface) SelectedColumns() []int {
 func (this *QAccessibleTableInterface) SelectedRows() []int {
 	var _ma *C.struct_miqt_array = C.QAccessibleTableInterface_SelectedRows(this.h)
 	_ret := make([]int, int(_ma.len))
-	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (int)(_outCast[i])
 	}
@@ -918,33 +878,27 @@ func (this *QAccessibleTableInterface) SelectedRows() []int {
 }
 
 func (this *QAccessibleTableInterface) IsColumnSelected(column int) bool {
-	_ret := C.QAccessibleTableInterface_IsColumnSelected(this.h, (C.int)(column))
-	return (bool)(_ret)
+	return (bool)(C.QAccessibleTableInterface_IsColumnSelected(this.h, (C.int)(column)))
 }
 
 func (this *QAccessibleTableInterface) IsRowSelected(row int) bool {
-	_ret := C.QAccessibleTableInterface_IsRowSelected(this.h, (C.int)(row))
-	return (bool)(_ret)
+	return (bool)(C.QAccessibleTableInterface_IsRowSelected(this.h, (C.int)(row)))
 }
 
 func (this *QAccessibleTableInterface) SelectRow(row int) bool {
-	_ret := C.QAccessibleTableInterface_SelectRow(this.h, (C.int)(row))
-	return (bool)(_ret)
+	return (bool)(C.QAccessibleTableInterface_SelectRow(this.h, (C.int)(row)))
 }
 
 func (this *QAccessibleTableInterface) SelectColumn(column int) bool {
-	_ret := C.QAccessibleTableInterface_SelectColumn(this.h, (C.int)(column))
-	return (bool)(_ret)
+	return (bool)(C.QAccessibleTableInterface_SelectColumn(this.h, (C.int)(column)))
 }
 
 func (this *QAccessibleTableInterface) UnselectRow(row int) bool {
-	_ret := C.QAccessibleTableInterface_UnselectRow(this.h, (C.int)(row))
-	return (bool)(_ret)
+	return (bool)(C.QAccessibleTableInterface_UnselectRow(this.h, (C.int)(row)))
 }
 
 func (this *QAccessibleTableInterface) UnselectColumn(column int) bool {
-	_ret := C.QAccessibleTableInterface_UnselectColumn(this.h, (C.int)(column))
-	return (bool)(_ret)
+	return (bool)(C.QAccessibleTableInterface_UnselectColumn(this.h, (C.int)(column)))
 }
 
 func (this *QAccessibleTableInterface) ModelChange(event *QAccessibleTableModelChangeEvent) {
@@ -1010,8 +964,10 @@ func (this *QAccessibleActionInterface) ActionNames() []string {
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = C.GoStringN(&_outCast[i].data, C.int(int64(_outCast[i].len)))
-		C.free(unsafe.Pointer(_outCast[i])) // free the inner miqt_string*
+		var _lv_ms *C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoStringN(&_lv_ms.data, C.int(int64(_lv_ms.len)))
+		C.free(unsafe.Pointer(_lv_ms))
+		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -1048,8 +1004,10 @@ func (this *QAccessibleActionInterface) KeyBindingsForAction(actionName string) 
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = C.GoStringN(&_outCast[i].data, C.int(int64(_outCast[i].len)))
-		C.free(unsafe.Pointer(_outCast[i])) // free the inner miqt_string*
+		var _lv_ms *C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoStringN(&_lv_ms.data, C.int(int64(_lv_ms.len)))
+		C.free(unsafe.Pointer(_lv_ms))
+		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -1297,18 +1255,15 @@ func NewQAccessibleEvent2(iface *QAccessibleInterface, typ QAccessible__Event) *
 }
 
 func (this *QAccessibleEvent) Type() QAccessible__Event {
-	_ret := C.QAccessibleEvent_Type(this.h)
-	return (QAccessible__Event)(_ret)
+	return (QAccessible__Event)(C.QAccessibleEvent_Type(this.h))
 }
 
 func (this *QAccessibleEvent) Object() *QObject {
-	_ret := C.QAccessibleEvent_Object(this.h)
-	return newQObject_U(unsafe.Pointer(_ret))
+	return newQObject_U(unsafe.Pointer(C.QAccessibleEvent_Object(this.h)))
 }
 
 func (this *QAccessibleEvent) UniqueId() uint {
-	_ret := C.QAccessibleEvent_UniqueId(this.h)
-	return (uint)(_ret)
+	return (uint)(C.QAccessibleEvent_UniqueId(this.h))
 }
 
 func (this *QAccessibleEvent) SetChild(chld int) {
@@ -1316,13 +1271,11 @@ func (this *QAccessibleEvent) SetChild(chld int) {
 }
 
 func (this *QAccessibleEvent) Child() int {
-	_ret := C.QAccessibleEvent_Child(this.h)
-	return (int)(_ret)
+	return (int)(C.QAccessibleEvent_Child(this.h))
 }
 
 func (this *QAccessibleEvent) AccessibleInterface() *QAccessibleInterface {
-	_ret := C.QAccessibleEvent_AccessibleInterface(this.h)
-	return newQAccessibleInterface_U(unsafe.Pointer(_ret))
+	return newQAccessibleInterface_U(unsafe.Pointer(C.QAccessibleEvent_AccessibleInterface(this.h)))
 }
 
 // Delete this object from C++ memory.
@@ -1435,8 +1388,7 @@ func (this *QAccessibleTextCursorEvent) SetCursorPosition(position int) {
 }
 
 func (this *QAccessibleTextCursorEvent) CursorPosition() int {
-	_ret := C.QAccessibleTextCursorEvent_CursorPosition(this.h)
-	return (int)(_ret)
+	return (int)(C.QAccessibleTextCursorEvent_CursorPosition(this.h))
 }
 
 // Delete this object from C++ memory.
@@ -1493,13 +1445,11 @@ func (this *QAccessibleTextSelectionEvent) SetSelection(start int, end int) {
 }
 
 func (this *QAccessibleTextSelectionEvent) SelectionStart() int {
-	_ret := C.QAccessibleTextSelectionEvent_SelectionStart(this.h)
-	return (int)(_ret)
+	return (int)(C.QAccessibleTextSelectionEvent_SelectionStart(this.h))
 }
 
 func (this *QAccessibleTextSelectionEvent) SelectionEnd() int {
-	_ret := C.QAccessibleTextSelectionEvent_SelectionEnd(this.h)
-	return (int)(_ret)
+	return (int)(C.QAccessibleTextSelectionEvent_SelectionEnd(this.h))
 }
 
 // Delete this object from C++ memory.
@@ -1563,8 +1513,7 @@ func (this *QAccessibleTextInsertEvent) TextInserted() string {
 }
 
 func (this *QAccessibleTextInsertEvent) ChangePosition() int {
-	_ret := C.QAccessibleTextInsertEvent_ChangePosition(this.h)
-	return (int)(_ret)
+	return (int)(C.QAccessibleTextInsertEvent_ChangePosition(this.h))
 }
 
 // Delete this object from C++ memory.
@@ -1628,8 +1577,7 @@ func (this *QAccessibleTextRemoveEvent) TextRemoved() string {
 }
 
 func (this *QAccessibleTextRemoveEvent) ChangePosition() int {
-	_ret := C.QAccessibleTextRemoveEvent_ChangePosition(this.h)
-	return (int)(_ret)
+	return (int)(C.QAccessibleTextRemoveEvent_ChangePosition(this.h))
 }
 
 // Delete this object from C++ memory.
@@ -1704,8 +1652,7 @@ func (this *QAccessibleTextUpdateEvent) TextInserted() string {
 }
 
 func (this *QAccessibleTextUpdateEvent) ChangePosition() int {
-	_ret := C.QAccessibleTextUpdateEvent_ChangePosition(this.h)
-	return (int)(_ret)
+	return (int)(C.QAccessibleTextUpdateEvent_ChangePosition(this.h))
 }
 
 // Delete this object from C++ memory.
@@ -1822,8 +1769,7 @@ func (this *QAccessibleTableModelChangeEvent) SetModelChangeType(changeType QAcc
 }
 
 func (this *QAccessibleTableModelChangeEvent) ModelChangeType() QAccessibleTableModelChangeEvent__ModelChangeType {
-	_ret := C.QAccessibleTableModelChangeEvent_ModelChangeType(this.h)
-	return (QAccessibleTableModelChangeEvent__ModelChangeType)(_ret)
+	return (QAccessibleTableModelChangeEvent__ModelChangeType)(C.QAccessibleTableModelChangeEvent_ModelChangeType(this.h))
 }
 
 func (this *QAccessibleTableModelChangeEvent) SetFirstRow(row int) {
@@ -1843,23 +1789,19 @@ func (this *QAccessibleTableModelChangeEvent) SetLastColumn(col int) {
 }
 
 func (this *QAccessibleTableModelChangeEvent) FirstRow() int {
-	_ret := C.QAccessibleTableModelChangeEvent_FirstRow(this.h)
-	return (int)(_ret)
+	return (int)(C.QAccessibleTableModelChangeEvent_FirstRow(this.h))
 }
 
 func (this *QAccessibleTableModelChangeEvent) FirstColumn() int {
-	_ret := C.QAccessibleTableModelChangeEvent_FirstColumn(this.h)
-	return (int)(_ret)
+	return (int)(C.QAccessibleTableModelChangeEvent_FirstColumn(this.h))
 }
 
 func (this *QAccessibleTableModelChangeEvent) LastRow() int {
-	_ret := C.QAccessibleTableModelChangeEvent_LastRow(this.h)
-	return (int)(_ret)
+	return (int)(C.QAccessibleTableModelChangeEvent_LastRow(this.h))
 }
 
 func (this *QAccessibleTableModelChangeEvent) LastColumn() int {
-	_ret := C.QAccessibleTableModelChangeEvent_LastColumn(this.h)
-	return (int)(_ret)
+	return (int)(C.QAccessibleTableModelChangeEvent_LastColumn(this.h))
 }
 
 // Delete this object from C++ memory.

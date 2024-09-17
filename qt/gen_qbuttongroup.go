@@ -50,8 +50,7 @@ func NewQButtonGroup2(parent *QObject) *QButtonGroup {
 }
 
 func (this *QButtonGroup) MetaObject() *QMetaObject {
-	_ret := C.QButtonGroup_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QButtonGroup_MetaObject(this.h)))
 }
 
 func QButtonGroup_Tr(s string) string {
@@ -77,8 +76,7 @@ func (this *QButtonGroup) SetExclusive(exclusive bool) {
 }
 
 func (this *QButtonGroup) Exclusive() bool {
-	_ret := C.QButtonGroup_Exclusive(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QButtonGroup_Exclusive(this.h))
 }
 
 func (this *QButtonGroup) AddButton(param1 *QAbstractButton) {
@@ -92,22 +90,20 @@ func (this *QButtonGroup) RemoveButton(param1 *QAbstractButton) {
 func (this *QButtonGroup) Buttons() []*QAbstractButton {
 	var _ma *C.struct_miqt_array = C.QButtonGroup_Buttons(this.h)
 	_ret := make([]*QAbstractButton, int(_ma.len))
-	_outCast := (*[0xffff]*C.QAbstractButton)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QAbstractButton)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQAbstractButton(_outCast[i])
+		_ret[i] = newQAbstractButton_U(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QButtonGroup) CheckedButton() *QAbstractButton {
-	_ret := C.QButtonGroup_CheckedButton(this.h)
-	return newQAbstractButton_U(unsafe.Pointer(_ret))
+	return newQAbstractButton_U(unsafe.Pointer(C.QButtonGroup_CheckedButton(this.h)))
 }
 
 func (this *QButtonGroup) Button(id int) *QAbstractButton {
-	_ret := C.QButtonGroup_Button(this.h, (C.int)(id))
-	return newQAbstractButton_U(unsafe.Pointer(_ret))
+	return newQAbstractButton_U(unsafe.Pointer(C.QButtonGroup_Button(this.h, (C.int)(id))))
 }
 
 func (this *QButtonGroup) SetId(button *QAbstractButton, id int) {
@@ -115,13 +111,11 @@ func (this *QButtonGroup) SetId(button *QAbstractButton, id int) {
 }
 
 func (this *QButtonGroup) Id(button *QAbstractButton) int {
-	_ret := C.QButtonGroup_Id(this.h, button.cPointer())
-	return (int)(_ret)
+	return (int)(C.QButtonGroup_Id(this.h, button.cPointer()))
 }
 
 func (this *QButtonGroup) CheckedId() int {
-	_ret := C.QButtonGroup_CheckedId(this.h)
-	return (int)(_ret)
+	return (int)(C.QButtonGroup_CheckedId(this.h))
 }
 
 func (this *QButtonGroup) ButtonClicked(param1 *QAbstractButton) {
@@ -139,8 +133,7 @@ func miqt_exec_callback_QButtonGroup_ButtonClicked(cb *C.void, param1 *C.QAbstra
 	}
 
 	// Convert all CABI parameters to Go parameters
-	param1_ret := param1
-	slotval1 := newQAbstractButton_U(unsafe.Pointer(param1_ret))
+	slotval1 := newQAbstractButton_U(unsafe.Pointer(param1))
 
 	gofunc(slotval1)
 }
@@ -160,8 +153,7 @@ func miqt_exec_callback_QButtonGroup_ButtonPressed(cb *C.void, param1 *C.QAbstra
 	}
 
 	// Convert all CABI parameters to Go parameters
-	param1_ret := param1
-	slotval1 := newQAbstractButton_U(unsafe.Pointer(param1_ret))
+	slotval1 := newQAbstractButton_U(unsafe.Pointer(param1))
 
 	gofunc(slotval1)
 }
@@ -181,8 +173,7 @@ func miqt_exec_callback_QButtonGroup_ButtonReleased(cb *C.void, param1 *C.QAbstr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	param1_ret := param1
-	slotval1 := newQAbstractButton_U(unsafe.Pointer(param1_ret))
+	slotval1 := newQAbstractButton_U(unsafe.Pointer(param1))
 
 	gofunc(slotval1)
 }
@@ -202,10 +193,8 @@ func miqt_exec_callback_QButtonGroup_ButtonToggled(cb *C.void, param1 *C.QAbstra
 	}
 
 	// Convert all CABI parameters to Go parameters
-	param1_ret := param1
-	slotval1 := newQAbstractButton_U(unsafe.Pointer(param1_ret))
-	param2_ret := param2
-	slotval2 := (bool)(param2_ret)
+	slotval1 := newQAbstractButton_U(unsafe.Pointer(param1))
+	slotval2 := (bool)(param2)
 
 	gofunc(slotval1, slotval2)
 }
@@ -225,8 +214,7 @@ func miqt_exec_callback_QButtonGroup_IdClicked(cb *C.void, param1 C.int) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	param1_ret := param1
-	slotval1 := (int)(param1_ret)
+	slotval1 := (int)(param1)
 
 	gofunc(slotval1)
 }
@@ -246,8 +234,7 @@ func miqt_exec_callback_QButtonGroup_IdPressed(cb *C.void, param1 C.int) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	param1_ret := param1
-	slotval1 := (int)(param1_ret)
+	slotval1 := (int)(param1)
 
 	gofunc(slotval1)
 }
@@ -267,8 +254,7 @@ func miqt_exec_callback_QButtonGroup_IdReleased(cb *C.void, param1 C.int) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	param1_ret := param1
-	slotval1 := (int)(param1_ret)
+	slotval1 := (int)(param1)
 
 	gofunc(slotval1)
 }
@@ -288,11 +274,9 @@ func miqt_exec_callback_QButtonGroup_IdToggled(cb *C.void, param1 C.int, param2 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	param1_ret := param1
-	slotval1 := (int)(param1_ret)
+	slotval1 := (int)(param1)
 
-	param2_ret := param2
-	slotval2 := (bool)(param2_ret)
+	slotval2 := (bool)(param2)
 
 	gofunc(slotval1, slotval2)
 }
@@ -312,8 +296,7 @@ func miqt_exec_callback_QButtonGroup_ButtonClickedWithInt(cb *C.void, param1 C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	param1_ret := param1
-	slotval1 := (int)(param1_ret)
+	slotval1 := (int)(param1)
 
 	gofunc(slotval1)
 }
@@ -333,8 +316,7 @@ func miqt_exec_callback_QButtonGroup_ButtonPressedWithInt(cb *C.void, param1 C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	param1_ret := param1
-	slotval1 := (int)(param1_ret)
+	slotval1 := (int)(param1)
 
 	gofunc(slotval1)
 }
@@ -354,8 +336,7 @@ func miqt_exec_callback_QButtonGroup_ButtonReleasedWithInt(cb *C.void, param1 C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	param1_ret := param1
-	slotval1 := (int)(param1_ret)
+	slotval1 := (int)(param1)
 
 	gofunc(slotval1)
 }
@@ -375,11 +356,9 @@ func miqt_exec_callback_QButtonGroup_ButtonToggled2(cb *C.void, param1 C.int, pa
 	}
 
 	// Convert all CABI parameters to Go parameters
-	param1_ret := param1
-	slotval1 := (int)(param1_ret)
+	slotval1 := (int)(param1)
 
-	param2_ret := param2
-	slotval2 := (bool)(param2_ret)
+	slotval2 := (bool)(param2)
 
 	gofunc(slotval1, slotval2)
 }

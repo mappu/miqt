@@ -42,23 +42,19 @@ func NewQWaitCondition() *QWaitCondition {
 }
 
 func (this *QWaitCondition) Wait(lockedMutex *QMutex) bool {
-	_ret := C.QWaitCondition_Wait(this.h, lockedMutex.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QWaitCondition_Wait(this.h, lockedMutex.cPointer()))
 }
 
 func (this *QWaitCondition) Wait2(lockedMutex *QMutex, time uint64) bool {
-	_ret := C.QWaitCondition_Wait2(this.h, lockedMutex.cPointer(), (C.ulong)(time))
-	return (bool)(_ret)
+	return (bool)(C.QWaitCondition_Wait2(this.h, lockedMutex.cPointer(), (C.ulong)(time)))
 }
 
 func (this *QWaitCondition) WaitWithLockedReadWriteLock(lockedReadWriteLock *QReadWriteLock) bool {
-	_ret := C.QWaitCondition_WaitWithLockedReadWriteLock(this.h, lockedReadWriteLock.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QWaitCondition_WaitWithLockedReadWriteLock(this.h, lockedReadWriteLock.cPointer()))
 }
 
 func (this *QWaitCondition) Wait3(lockedReadWriteLock *QReadWriteLock, time uint64) bool {
-	_ret := C.QWaitCondition_Wait3(this.h, lockedReadWriteLock.cPointer(), (C.ulong)(time))
-	return (bool)(_ret)
+	return (bool)(C.QWaitCondition_Wait3(this.h, lockedReadWriteLock.cPointer(), (C.ulong)(time)))
 }
 
 func (this *QWaitCondition) WakeOne() {
@@ -78,13 +74,11 @@ func (this *QWaitCondition) NotifyAll() {
 }
 
 func (this *QWaitCondition) Wait22(lockedMutex *QMutex, deadline QDeadlineTimer) bool {
-	_ret := C.QWaitCondition_Wait22(this.h, lockedMutex.cPointer(), deadline.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QWaitCondition_Wait22(this.h, lockedMutex.cPointer(), deadline.cPointer()))
 }
 
 func (this *QWaitCondition) Wait23(lockedReadWriteLock *QReadWriteLock, deadline QDeadlineTimer) bool {
-	_ret := C.QWaitCondition_Wait23(this.h, lockedReadWriteLock.cPointer(), deadline.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QWaitCondition_Wait23(this.h, lockedReadWriteLock.cPointer(), deadline.cPointer()))
 }
 
 // Delete this object from C++ memory.

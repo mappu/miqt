@@ -73,33 +73,27 @@ func QOperatingSystemVersion_Current() *QOperatingSystemVersion {
 }
 
 func QOperatingSystemVersion_CurrentType() QOperatingSystemVersion__OSType {
-	_ret := C.QOperatingSystemVersion_CurrentType()
-	return (QOperatingSystemVersion__OSType)(_ret)
+	return (QOperatingSystemVersion__OSType)(C.QOperatingSystemVersion_CurrentType())
 }
 
 func (this *QOperatingSystemVersion) MajorVersion() int {
-	_ret := C.QOperatingSystemVersion_MajorVersion(this.h)
-	return (int)(_ret)
+	return (int)(C.QOperatingSystemVersion_MajorVersion(this.h))
 }
 
 func (this *QOperatingSystemVersion) MinorVersion() int {
-	_ret := C.QOperatingSystemVersion_MinorVersion(this.h)
-	return (int)(_ret)
+	return (int)(C.QOperatingSystemVersion_MinorVersion(this.h))
 }
 
 func (this *QOperatingSystemVersion) MicroVersion() int {
-	_ret := C.QOperatingSystemVersion_MicroVersion(this.h)
-	return (int)(_ret)
+	return (int)(C.QOperatingSystemVersion_MicroVersion(this.h))
 }
 
 func (this *QOperatingSystemVersion) SegmentCount() int {
-	_ret := C.QOperatingSystemVersion_SegmentCount(this.h)
-	return (int)(_ret)
+	return (int)(C.QOperatingSystemVersion_SegmentCount(this.h))
 }
 
 func (this *QOperatingSystemVersion) Type() QOperatingSystemVersion__OSType {
-	_ret := C.QOperatingSystemVersion_Type(this.h)
-	return (QOperatingSystemVersion__OSType)(_ret)
+	return (QOperatingSystemVersion__OSType)(C.QOperatingSystemVersion_Type(this.h))
 }
 
 func (this *QOperatingSystemVersion) Name() string {

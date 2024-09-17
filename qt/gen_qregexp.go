@@ -99,23 +99,19 @@ func (this *QRegExp) Swap(other *QRegExp) {
 }
 
 func (this *QRegExp) OperatorEqual(rx *QRegExp) bool {
-	_ret := C.QRegExp_OperatorEqual(this.h, rx.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QRegExp_OperatorEqual(this.h, rx.cPointer()))
 }
 
 func (this *QRegExp) OperatorNotEqual(rx *QRegExp) bool {
-	_ret := C.QRegExp_OperatorNotEqual(this.h, rx.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QRegExp_OperatorNotEqual(this.h, rx.cPointer()))
 }
 
 func (this *QRegExp) IsEmpty() bool {
-	_ret := C.QRegExp_IsEmpty(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QRegExp_IsEmpty(this.h))
 }
 
 func (this *QRegExp) IsValid() bool {
-	_ret := C.QRegExp_IsValid(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QRegExp_IsValid(this.h))
 }
 
 func (this *QRegExp) Pattern() string {
@@ -132,8 +128,7 @@ func (this *QRegExp) SetPattern(pattern string) {
 }
 
 func (this *QRegExp) CaseSensitivity() CaseSensitivity {
-	_ret := C.QRegExp_CaseSensitivity(this.h)
-	return (CaseSensitivity)(_ret)
+	return (CaseSensitivity)(C.QRegExp_CaseSensitivity(this.h))
 }
 
 func (this *QRegExp) SetCaseSensitivity(cs CaseSensitivity) {
@@ -141,8 +136,7 @@ func (this *QRegExp) SetCaseSensitivity(cs CaseSensitivity) {
 }
 
 func (this *QRegExp) PatternSyntax() QRegExp__PatternSyntax {
-	_ret := C.QRegExp_PatternSyntax(this.h)
-	return (QRegExp__PatternSyntax)(_ret)
+	return (QRegExp__PatternSyntax)(C.QRegExp_PatternSyntax(this.h))
 }
 
 func (this *QRegExp) SetPatternSyntax(syntax QRegExp__PatternSyntax) {
@@ -150,8 +144,7 @@ func (this *QRegExp) SetPatternSyntax(syntax QRegExp__PatternSyntax) {
 }
 
 func (this *QRegExp) IsMinimal() bool {
-	_ret := C.QRegExp_IsMinimal(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QRegExp_IsMinimal(this.h))
 }
 
 func (this *QRegExp) SetMinimal(minimal bool) {
@@ -161,32 +154,27 @@ func (this *QRegExp) SetMinimal(minimal bool) {
 func (this *QRegExp) ExactMatch(str string) bool {
 	str_ms := miqt_strdupg(str)
 	defer C.free(str_ms)
-	_ret := C.QRegExp_ExactMatch(this.h, (*C.struct_miqt_string)(str_ms))
-	return (bool)(_ret)
+	return (bool)(C.QRegExp_ExactMatch(this.h, (*C.struct_miqt_string)(str_ms)))
 }
 
 func (this *QRegExp) IndexIn(str string) int {
 	str_ms := miqt_strdupg(str)
 	defer C.free(str_ms)
-	_ret := C.QRegExp_IndexIn(this.h, (*C.struct_miqt_string)(str_ms))
-	return (int)(_ret)
+	return (int)(C.QRegExp_IndexIn(this.h, (*C.struct_miqt_string)(str_ms)))
 }
 
 func (this *QRegExp) LastIndexIn(str string) int {
 	str_ms := miqt_strdupg(str)
 	defer C.free(str_ms)
-	_ret := C.QRegExp_LastIndexIn(this.h, (*C.struct_miqt_string)(str_ms))
-	return (int)(_ret)
+	return (int)(C.QRegExp_LastIndexIn(this.h, (*C.struct_miqt_string)(str_ms)))
 }
 
 func (this *QRegExp) MatchedLength() int {
-	_ret := C.QRegExp_MatchedLength(this.h)
-	return (int)(_ret)
+	return (int)(C.QRegExp_MatchedLength(this.h))
 }
 
 func (this *QRegExp) CaptureCount() int {
-	_ret := C.QRegExp_CaptureCount(this.h)
-	return (int)(_ret)
+	return (int)(C.QRegExp_CaptureCount(this.h))
 }
 
 func (this *QRegExp) CapturedTexts() []string {
@@ -194,8 +182,10 @@ func (this *QRegExp) CapturedTexts() []string {
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = C.GoStringN(&_outCast[i].data, C.int(int64(_outCast[i].len)))
-		C.free(unsafe.Pointer(_outCast[i])) // free the inner miqt_string*
+		var _lv_ms *C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoStringN(&_lv_ms.data, C.int(int64(_lv_ms.len)))
+		C.free(unsafe.Pointer(_lv_ms))
+		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -206,8 +196,10 @@ func (this *QRegExp) CapturedTexts2() []string {
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = C.GoStringN(&_outCast[i].data, C.int(int64(_outCast[i].len)))
-		C.free(unsafe.Pointer(_outCast[i])) // free the inner miqt_string*
+		var _lv_ms *C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoStringN(&_lv_ms.data, C.int(int64(_lv_ms.len)))
+		C.free(unsafe.Pointer(_lv_ms))
+		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -228,13 +220,11 @@ func (this *QRegExp) Cap2() string {
 }
 
 func (this *QRegExp) Pos() int {
-	_ret := C.QRegExp_Pos(this.h)
-	return (int)(_ret)
+	return (int)(C.QRegExp_Pos(this.h))
 }
 
 func (this *QRegExp) Pos2() int {
-	_ret := C.QRegExp_Pos2(this.h)
-	return (int)(_ret)
+	return (int)(C.QRegExp_Pos2(this.h))
 }
 
 func (this *QRegExp) ErrorString() string {
@@ -263,29 +253,25 @@ func QRegExp_Escape(str string) string {
 func (this *QRegExp) IndexIn2(str string, offset int) int {
 	str_ms := miqt_strdupg(str)
 	defer C.free(str_ms)
-	_ret := C.QRegExp_IndexIn2(this.h, (*C.struct_miqt_string)(str_ms), (C.int)(offset))
-	return (int)(_ret)
+	return (int)(C.QRegExp_IndexIn2(this.h, (*C.struct_miqt_string)(str_ms), (C.int)(offset)))
 }
 
 func (this *QRegExp) IndexIn3(str string, offset int, caretMode QRegExp__CaretMode) int {
 	str_ms := miqt_strdupg(str)
 	defer C.free(str_ms)
-	_ret := C.QRegExp_IndexIn3(this.h, (*C.struct_miqt_string)(str_ms), (C.int)(offset), (C.uintptr_t)(caretMode))
-	return (int)(_ret)
+	return (int)(C.QRegExp_IndexIn3(this.h, (*C.struct_miqt_string)(str_ms), (C.int)(offset), (C.uintptr_t)(caretMode)))
 }
 
 func (this *QRegExp) LastIndexIn2(str string, offset int) int {
 	str_ms := miqt_strdupg(str)
 	defer C.free(str_ms)
-	_ret := C.QRegExp_LastIndexIn2(this.h, (*C.struct_miqt_string)(str_ms), (C.int)(offset))
-	return (int)(_ret)
+	return (int)(C.QRegExp_LastIndexIn2(this.h, (*C.struct_miqt_string)(str_ms), (C.int)(offset)))
 }
 
 func (this *QRegExp) LastIndexIn3(str string, offset int, caretMode QRegExp__CaretMode) int {
 	str_ms := miqt_strdupg(str)
 	defer C.free(str_ms)
-	_ret := C.QRegExp_LastIndexIn3(this.h, (*C.struct_miqt_string)(str_ms), (C.int)(offset), (C.uintptr_t)(caretMode))
-	return (int)(_ret)
+	return (int)(C.QRegExp_LastIndexIn3(this.h, (*C.struct_miqt_string)(str_ms), (C.int)(offset), (C.uintptr_t)(caretMode)))
 }
 
 func (this *QRegExp) Cap1(nth int) string {
@@ -303,13 +289,11 @@ func (this *QRegExp) Cap1WithNth(nth int) string {
 }
 
 func (this *QRegExp) Pos1(nth int) int {
-	_ret := C.QRegExp_Pos1(this.h, (C.int)(nth))
-	return (int)(_ret)
+	return (int)(C.QRegExp_Pos1(this.h, (C.int)(nth)))
 }
 
 func (this *QRegExp) Pos1WithNth(nth int) int {
-	_ret := C.QRegExp_Pos1WithNth(this.h, (C.int)(nth))
-	return (int)(_ret)
+	return (int)(C.QRegExp_Pos1WithNth(this.h, (C.int)(nth)))
 }
 
 // Delete this object from C++ memory.

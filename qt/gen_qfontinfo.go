@@ -70,73 +70,59 @@ func (this *QFontInfo) StyleName() string {
 }
 
 func (this *QFontInfo) PixelSize() int {
-	_ret := C.QFontInfo_PixelSize(this.h)
-	return (int)(_ret)
+	return (int)(C.QFontInfo_PixelSize(this.h))
 }
 
 func (this *QFontInfo) PointSize() int {
-	_ret := C.QFontInfo_PointSize(this.h)
-	return (int)(_ret)
+	return (int)(C.QFontInfo_PointSize(this.h))
 }
 
 func (this *QFontInfo) PointSizeF() float64 {
-	_ret := C.QFontInfo_PointSizeF(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QFontInfo_PointSizeF(this.h))
 }
 
 func (this *QFontInfo) Italic() bool {
-	_ret := C.QFontInfo_Italic(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QFontInfo_Italic(this.h))
 }
 
 func (this *QFontInfo) Style() QFont__Style {
-	_ret := C.QFontInfo_Style(this.h)
-	return (QFont__Style)(_ret)
+	return (QFont__Style)(C.QFontInfo_Style(this.h))
 }
 
 func (this *QFontInfo) Weight() int {
-	_ret := C.QFontInfo_Weight(this.h)
-	return (int)(_ret)
+	return (int)(C.QFontInfo_Weight(this.h))
 }
 
 func (this *QFontInfo) Bold() bool {
-	_ret := C.QFontInfo_Bold(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QFontInfo_Bold(this.h))
 }
 
 func (this *QFontInfo) Underline() bool {
-	_ret := C.QFontInfo_Underline(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QFontInfo_Underline(this.h))
 }
 
 func (this *QFontInfo) Overline() bool {
-	_ret := C.QFontInfo_Overline(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QFontInfo_Overline(this.h))
 }
 
 func (this *QFontInfo) StrikeOut() bool {
-	_ret := C.QFontInfo_StrikeOut(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QFontInfo_StrikeOut(this.h))
 }
 
 func (this *QFontInfo) FixedPitch() bool {
-	_ret := C.QFontInfo_FixedPitch(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QFontInfo_FixedPitch(this.h))
 }
 
 func (this *QFontInfo) StyleHint() QFont__StyleHint {
-	_ret := C.QFontInfo_StyleHint(this.h)
-	return (QFont__StyleHint)(_ret)
+	return (QFont__StyleHint)(C.QFontInfo_StyleHint(this.h))
 }
 
 func (this *QFontInfo) RawMode() bool {
-	_ret := C.QFontInfo_RawMode(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QFontInfo_RawMode(this.h))
 }
 
 func (this *QFontInfo) ExactMatch() bool {
-	_ret := C.QFontInfo_ExactMatch(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QFontInfo_ExactMatch(this.h))
 }
 
 // Delete this object from C++ memory.

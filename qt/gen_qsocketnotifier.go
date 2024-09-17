@@ -57,8 +57,7 @@ func NewQSocketNotifier2(socket uintptr, param2 QSocketNotifier__Type, parent *Q
 }
 
 func (this *QSocketNotifier) MetaObject() *QMetaObject {
-	_ret := C.QSocketNotifier_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QSocketNotifier_MetaObject(this.h)))
 }
 
 func QSocketNotifier_Tr(s string) string {
@@ -80,18 +79,15 @@ func QSocketNotifier_TrUtf8(s string) string {
 }
 
 func (this *QSocketNotifier) Socket() uint64 {
-	_ret := C.QSocketNotifier_Socket(this.h)
-	return (uint64)(_ret)
+	return (uint64)(C.QSocketNotifier_Socket(this.h))
 }
 
 func (this *QSocketNotifier) Type() QSocketNotifier__Type {
-	_ret := C.QSocketNotifier_Type(this.h)
-	return (QSocketNotifier__Type)(_ret)
+	return (QSocketNotifier__Type)(C.QSocketNotifier_Type(this.h))
 }
 
 func (this *QSocketNotifier) IsEnabled() bool {
-	_ret := C.QSocketNotifier_IsEnabled(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QSocketNotifier_IsEnabled(this.h))
 }
 
 func (this *QSocketNotifier) SetEnabled(enabled bool) {
@@ -201,8 +197,7 @@ func NewQSocketDescriptor3(descriptor uintptr) *QSocketDescriptor {
 }
 
 func (this *QSocketDescriptor) IsValid() bool {
-	_ret := C.QSocketDescriptor_IsValid(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QSocketDescriptor_IsValid(this.h))
 }
 
 // Delete this object from C++ memory.

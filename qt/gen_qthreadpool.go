@@ -49,8 +49,7 @@ func NewQThreadPool2(parent *QObject) *QThreadPool {
 }
 
 func (this *QThreadPool) MetaObject() *QMetaObject {
-	_ret := C.QThreadPool_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QThreadPool_MetaObject(this.h)))
 }
 
 func QThreadPool_Tr(s string) string {
@@ -72,8 +71,7 @@ func QThreadPool_TrUtf8(s string) string {
 }
 
 func QThreadPool_GlobalInstance() *QThreadPool {
-	_ret := C.QThreadPool_GlobalInstance()
-	return newQThreadPool_U(unsafe.Pointer(_ret))
+	return newQThreadPool_U(unsafe.Pointer(C.QThreadPool_GlobalInstance()))
 }
 
 func (this *QThreadPool) Start(runnable *QRunnable) {
@@ -81,13 +79,11 @@ func (this *QThreadPool) Start(runnable *QRunnable) {
 }
 
 func (this *QThreadPool) TryStart(runnable *QRunnable) bool {
-	_ret := C.QThreadPool_TryStart(this.h, runnable.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QThreadPool_TryStart(this.h, runnable.cPointer()))
 }
 
 func (this *QThreadPool) ExpiryTimeout() int {
-	_ret := C.QThreadPool_ExpiryTimeout(this.h)
-	return (int)(_ret)
+	return (int)(C.QThreadPool_ExpiryTimeout(this.h))
 }
 
 func (this *QThreadPool) SetExpiryTimeout(expiryTimeout int) {
@@ -95,8 +91,7 @@ func (this *QThreadPool) SetExpiryTimeout(expiryTimeout int) {
 }
 
 func (this *QThreadPool) MaxThreadCount() int {
-	_ret := C.QThreadPool_MaxThreadCount(this.h)
-	return (int)(_ret)
+	return (int)(C.QThreadPool_MaxThreadCount(this.h))
 }
 
 func (this *QThreadPool) SetMaxThreadCount(maxThreadCount int) {
@@ -104,8 +99,7 @@ func (this *QThreadPool) SetMaxThreadCount(maxThreadCount int) {
 }
 
 func (this *QThreadPool) ActiveThreadCount() int {
-	_ret := C.QThreadPool_ActiveThreadCount(this.h)
-	return (int)(_ret)
+	return (int)(C.QThreadPool_ActiveThreadCount(this.h))
 }
 
 func (this *QThreadPool) SetStackSize(stackSize uint) {
@@ -113,8 +107,7 @@ func (this *QThreadPool) SetStackSize(stackSize uint) {
 }
 
 func (this *QThreadPool) StackSize() uint {
-	_ret := C.QThreadPool_StackSize(this.h)
-	return (uint)(_ret)
+	return (uint)(C.QThreadPool_StackSize(this.h))
 }
 
 func (this *QThreadPool) ReserveThread() {
@@ -126,8 +119,7 @@ func (this *QThreadPool) ReleaseThread() {
 }
 
 func (this *QThreadPool) WaitForDone() bool {
-	_ret := C.QThreadPool_WaitForDone(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QThreadPool_WaitForDone(this.h))
 }
 
 func (this *QThreadPool) Clear() {
@@ -135,8 +127,7 @@ func (this *QThreadPool) Clear() {
 }
 
 func (this *QThreadPool) Contains(thread *QThread) bool {
-	_ret := C.QThreadPool_Contains(this.h, thread.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QThreadPool_Contains(this.h, thread.cPointer()))
 }
 
 func (this *QThreadPool) Cancel(runnable *QRunnable) {
@@ -144,8 +135,7 @@ func (this *QThreadPool) Cancel(runnable *QRunnable) {
 }
 
 func (this *QThreadPool) TryTake(runnable *QRunnable) bool {
-	_ret := C.QThreadPool_TryTake(this.h, runnable.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QThreadPool_TryTake(this.h, runnable.cPointer()))
 }
 
 func QThreadPool_Tr2(s string, c string) string {
@@ -197,8 +187,7 @@ func (this *QThreadPool) Start2(runnable *QRunnable, priority int) {
 }
 
 func (this *QThreadPool) WaitForDone1(msecs int) bool {
-	_ret := C.QThreadPool_WaitForDone1(this.h, (C.int)(msecs))
-	return (bool)(_ret)
+	return (bool)(C.QThreadPool_WaitForDone1(this.h, (C.int)(msecs)))
 }
 
 // Delete this object from C++ memory.

@@ -60,8 +60,7 @@ func NewQFontComboBox2(parent *QWidget) *QFontComboBox {
 }
 
 func (this *QFontComboBox) MetaObject() *QMetaObject {
-	_ret := C.QFontComboBox_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QFontComboBox_MetaObject(this.h)))
 }
 
 func QFontComboBox_Tr(s string) string {
@@ -87,8 +86,7 @@ func (this *QFontComboBox) SetWritingSystem(writingSystem QFontDatabase__Writing
 }
 
 func (this *QFontComboBox) WritingSystem() QFontDatabase__WritingSystem {
-	_ret := C.QFontComboBox_WritingSystem(this.h)
-	return (QFontDatabase__WritingSystem)(_ret)
+	return (QFontDatabase__WritingSystem)(C.QFontComboBox_WritingSystem(this.h))
 }
 
 func (this *QFontComboBox) SetFontFilters(filters int) {
@@ -96,8 +94,7 @@ func (this *QFontComboBox) SetFontFilters(filters int) {
 }
 
 func (this *QFontComboBox) FontFilters() int {
-	_ret := C.QFontComboBox_FontFilters(this.h)
-	return (int)(_ret)
+	return (int)(C.QFontComboBox_FontFilters(this.h))
 }
 
 func (this *QFontComboBox) CurrentFont() *QFont {
@@ -133,8 +130,7 @@ func miqt_exec_callback_QFontComboBox_CurrentFontChanged(cb *C.void, f *C.QFont)
 	}
 
 	// Convert all CABI parameters to Go parameters
-	f_ret := f
-	slotval1 := newQFont_U(unsafe.Pointer(f_ret))
+	slotval1 := newQFont_U(unsafe.Pointer(f))
 
 	gofunc(slotval1)
 }

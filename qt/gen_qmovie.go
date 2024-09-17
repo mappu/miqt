@@ -107,8 +107,7 @@ func NewQMovie8(fileName string, format *QByteArray, parent *QObject) *QMovie {
 }
 
 func (this *QMovie) MetaObject() *QMetaObject {
-	_ret := C.QMovie_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QMovie_MetaObject(this.h)))
 }
 
 func QMovie_Tr(s string) string {
@@ -132,9 +131,12 @@ func QMovie_TrUtf8(s string) string {
 func QMovie_SupportedFormats() []QByteArray {
 	var _ma *C.struct_miqt_array = C.QMovie_SupportedFormats()
 	_ret := make([]QByteArray, int(_ma.len))
-	_outCast := (*[0xffff]*C.QByteArray)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QByteArray)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = *newQByteArray(_outCast[i])
+		_lv_ret := _outCast[i]
+		_lv_goptr := newQByteArray(_lv_ret)
+		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+		_ret[i] = *_lv_goptr
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -145,8 +147,7 @@ func (this *QMovie) SetDevice(device *QIODevice) {
 }
 
 func (this *QMovie) Device() *QIODevice {
-	_ret := C.QMovie_Device(this.h)
-	return newQIODevice_U(unsafe.Pointer(_ret))
+	return newQIODevice_U(unsafe.Pointer(C.QMovie_Device(this.h)))
 }
 
 func (this *QMovie) SetFileName(fileName string) {
@@ -185,8 +186,7 @@ func (this *QMovie) BackgroundColor() *QColor {
 }
 
 func (this *QMovie) State() QMovie__MovieState {
-	_ret := C.QMovie_State(this.h)
-	return (QMovie__MovieState)(_ret)
+	return (QMovie__MovieState)(C.QMovie_State(this.h))
 }
 
 func (this *QMovie) FrameRect() *QRect {
@@ -211,13 +211,11 @@ func (this *QMovie) CurrentPixmap() *QPixmap {
 }
 
 func (this *QMovie) IsValid() bool {
-	_ret := C.QMovie_IsValid(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QMovie_IsValid(this.h))
 }
 
 func (this *QMovie) LastError() QImageReader__ImageReaderError {
-	_ret := C.QMovie_LastError(this.h)
-	return (QImageReader__ImageReaderError)(_ret)
+	return (QImageReader__ImageReaderError)(C.QMovie_LastError(this.h))
 }
 
 func (this *QMovie) LastErrorString() string {
@@ -228,33 +226,27 @@ func (this *QMovie) LastErrorString() string {
 }
 
 func (this *QMovie) JumpToFrame(frameNumber int) bool {
-	_ret := C.QMovie_JumpToFrame(this.h, (C.int)(frameNumber))
-	return (bool)(_ret)
+	return (bool)(C.QMovie_JumpToFrame(this.h, (C.int)(frameNumber)))
 }
 
 func (this *QMovie) LoopCount() int {
-	_ret := C.QMovie_LoopCount(this.h)
-	return (int)(_ret)
+	return (int)(C.QMovie_LoopCount(this.h))
 }
 
 func (this *QMovie) FrameCount() int {
-	_ret := C.QMovie_FrameCount(this.h)
-	return (int)(_ret)
+	return (int)(C.QMovie_FrameCount(this.h))
 }
 
 func (this *QMovie) NextFrameDelay() int {
-	_ret := C.QMovie_NextFrameDelay(this.h)
-	return (int)(_ret)
+	return (int)(C.QMovie_NextFrameDelay(this.h))
 }
 
 func (this *QMovie) CurrentFrameNumber() int {
-	_ret := C.QMovie_CurrentFrameNumber(this.h)
-	return (int)(_ret)
+	return (int)(C.QMovie_CurrentFrameNumber(this.h))
 }
 
 func (this *QMovie) Speed() int {
-	_ret := C.QMovie_Speed(this.h)
-	return (int)(_ret)
+	return (int)(C.QMovie_Speed(this.h))
 }
 
 func (this *QMovie) ScaledSize() *QSize {
@@ -269,8 +261,7 @@ func (this *QMovie) SetScaledSize(size *QSize) {
 }
 
 func (this *QMovie) CacheMode() QMovie__CacheMode {
-	_ret := C.QMovie_CacheMode(this.h)
-	return (QMovie__CacheMode)(_ret)
+	return (QMovie__CacheMode)(C.QMovie_CacheMode(this.h))
 }
 
 func (this *QMovie) SetCacheMode(mode QMovie__CacheMode) {
@@ -309,8 +300,7 @@ func miqt_exec_callback_QMovie_Resized(cb *C.void, size *C.QSize) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	size_ret := size
-	slotval1 := newQSize_U(unsafe.Pointer(size_ret))
+	slotval1 := newQSize_U(unsafe.Pointer(size))
 
 	gofunc(slotval1)
 }
@@ -330,8 +320,7 @@ func miqt_exec_callback_QMovie_Updated(cb *C.void, rect *C.QRect) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	rect_ret := rect
-	slotval1 := newQRect_U(unsafe.Pointer(rect_ret))
+	slotval1 := newQRect_U(unsafe.Pointer(rect))
 
 	gofunc(slotval1)
 }
@@ -351,8 +340,7 @@ func miqt_exec_callback_QMovie_StateChanged(cb *C.void, state C.uintptr_t) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	state_ret := state
-	slotval1 := (QMovie__MovieState)(state_ret)
+	slotval1 := (QMovie__MovieState)(state)
 
 	gofunc(slotval1)
 }
@@ -372,8 +360,7 @@ func miqt_exec_callback_QMovie_Error(cb *C.void, error C.uintptr_t) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	error_ret := error
-	slotval1 := (QImageReader__ImageReaderError)(error_ret)
+	slotval1 := (QImageReader__ImageReaderError)(error)
 
 	gofunc(slotval1)
 }
@@ -410,8 +397,7 @@ func miqt_exec_callback_QMovie_FrameChanged(cb *C.void, frameNumber C.int) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	frameNumber_ret := frameNumber
-	slotval1 := (int)(frameNumber_ret)
+	slotval1 := (int)(frameNumber)
 
 	gofunc(slotval1)
 }
@@ -421,8 +407,7 @@ func (this *QMovie) Start() {
 }
 
 func (this *QMovie) JumpToNextFrame() bool {
-	_ret := C.QMovie_JumpToNextFrame(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QMovie_JumpToNextFrame(this.h))
 }
 
 func (this *QMovie) SetPaused(paused bool) {

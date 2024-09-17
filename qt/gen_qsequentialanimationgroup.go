@@ -50,8 +50,7 @@ func NewQSequentialAnimationGroup2(parent *QObject) *QSequentialAnimationGroup {
 }
 
 func (this *QSequentialAnimationGroup) MetaObject() *QMetaObject {
-	_ret := C.QSequentialAnimationGroup_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QSequentialAnimationGroup_MetaObject(this.h)))
 }
 
 func QSequentialAnimationGroup_Tr(s string) string {
@@ -73,23 +72,19 @@ func QSequentialAnimationGroup_TrUtf8(s string) string {
 }
 
 func (this *QSequentialAnimationGroup) AddPause(msecs int) *QPauseAnimation {
-	_ret := C.QSequentialAnimationGroup_AddPause(this.h, (C.int)(msecs))
-	return newQPauseAnimation_U(unsafe.Pointer(_ret))
+	return newQPauseAnimation_U(unsafe.Pointer(C.QSequentialAnimationGroup_AddPause(this.h, (C.int)(msecs))))
 }
 
 func (this *QSequentialAnimationGroup) InsertPause(index int, msecs int) *QPauseAnimation {
-	_ret := C.QSequentialAnimationGroup_InsertPause(this.h, (C.int)(index), (C.int)(msecs))
-	return newQPauseAnimation_U(unsafe.Pointer(_ret))
+	return newQPauseAnimation_U(unsafe.Pointer(C.QSequentialAnimationGroup_InsertPause(this.h, (C.int)(index), (C.int)(msecs))))
 }
 
 func (this *QSequentialAnimationGroup) CurrentAnimation() *QAbstractAnimation {
-	_ret := C.QSequentialAnimationGroup_CurrentAnimation(this.h)
-	return newQAbstractAnimation_U(unsafe.Pointer(_ret))
+	return newQAbstractAnimation_U(unsafe.Pointer(C.QSequentialAnimationGroup_CurrentAnimation(this.h)))
 }
 
 func (this *QSequentialAnimationGroup) Duration() int {
-	_ret := C.QSequentialAnimationGroup_Duration(this.h)
-	return (int)(_ret)
+	return (int)(C.QSequentialAnimationGroup_Duration(this.h))
 }
 
 func (this *QSequentialAnimationGroup) CurrentAnimationChanged(current *QAbstractAnimation) {
@@ -107,8 +102,7 @@ func miqt_exec_callback_QSequentialAnimationGroup_CurrentAnimationChanged(cb *C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	current_ret := current
-	slotval1 := newQAbstractAnimation_U(unsafe.Pointer(current_ret))
+	slotval1 := newQAbstractAnimation_U(unsafe.Pointer(current))
 
 	gofunc(slotval1)
 }

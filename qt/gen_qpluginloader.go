@@ -65,8 +65,7 @@ func NewQPluginLoader4(fileName string, parent *QObject) *QPluginLoader {
 }
 
 func (this *QPluginLoader) MetaObject() *QMetaObject {
-	_ret := C.QPluginLoader_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QPluginLoader_MetaObject(this.h)))
 }
 
 func QPluginLoader_Tr(s string) string {
@@ -88,8 +87,7 @@ func QPluginLoader_TrUtf8(s string) string {
 }
 
 func (this *QPluginLoader) Instance() *QObject {
-	_ret := C.QPluginLoader_Instance(this.h)
-	return newQObject_U(unsafe.Pointer(_ret))
+	return newQObject_U(unsafe.Pointer(C.QPluginLoader_Instance(this.h)))
 }
 
 func (this *QPluginLoader) MetaData() *QJsonObject {
@@ -102,9 +100,9 @@ func (this *QPluginLoader) MetaData() *QJsonObject {
 func QPluginLoader_StaticInstances() []*QObject {
 	var _ma *C.struct_miqt_array = C.QPluginLoader_StaticInstances()
 	_ret := make([]*QObject, int(_ma.len))
-	_outCast := (*[0xffff]*C.QObject)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QObject)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQObject(_outCast[i])
+		_ret[i] = newQObject_U(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -113,27 +111,27 @@ func QPluginLoader_StaticInstances() []*QObject {
 func QPluginLoader_StaticPlugins() []QStaticPlugin {
 	var _ma *C.struct_miqt_array = C.QPluginLoader_StaticPlugins()
 	_ret := make([]QStaticPlugin, int(_ma.len))
-	_outCast := (*[0xffff]*C.QStaticPlugin)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QStaticPlugin)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = *newQStaticPlugin(_outCast[i])
+		_vv_ret := _outCast[i]
+		_vv_goptr := newQStaticPlugin(_vv_ret)
+		_vv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+		_ret[i] = *_vv_goptr
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QPluginLoader) Load() bool {
-	_ret := C.QPluginLoader_Load(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QPluginLoader_Load(this.h))
 }
 
 func (this *QPluginLoader) Unload() bool {
-	_ret := C.QPluginLoader_Unload(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QPluginLoader_Unload(this.h))
 }
 
 func (this *QPluginLoader) IsLoaded() bool {
-	_ret := C.QPluginLoader_IsLoaded(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QPluginLoader_IsLoaded(this.h))
 }
 
 func (this *QPluginLoader) SetFileName(fileName string) {
@@ -161,8 +159,7 @@ func (this *QPluginLoader) SetLoadHints(loadHints int) {
 }
 
 func (this *QPluginLoader) LoadHints() int {
-	_ret := C.QPluginLoader_LoadHints(this.h)
-	return (int)(_ret)
+	return (int)(C.QPluginLoader_LoadHints(this.h))
 }
 
 func QPluginLoader_Tr2(s string, c string) string {

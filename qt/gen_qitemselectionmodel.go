@@ -85,43 +85,35 @@ func (this *QItemSelectionRange) Swap(other *QItemSelectionRange) {
 }
 
 func (this *QItemSelectionRange) Top() int {
-	_ret := C.QItemSelectionRange_Top(this.h)
-	return (int)(_ret)
+	return (int)(C.QItemSelectionRange_Top(this.h))
 }
 
 func (this *QItemSelectionRange) Left() int {
-	_ret := C.QItemSelectionRange_Left(this.h)
-	return (int)(_ret)
+	return (int)(C.QItemSelectionRange_Left(this.h))
 }
 
 func (this *QItemSelectionRange) Bottom() int {
-	_ret := C.QItemSelectionRange_Bottom(this.h)
-	return (int)(_ret)
+	return (int)(C.QItemSelectionRange_Bottom(this.h))
 }
 
 func (this *QItemSelectionRange) Right() int {
-	_ret := C.QItemSelectionRange_Right(this.h)
-	return (int)(_ret)
+	return (int)(C.QItemSelectionRange_Right(this.h))
 }
 
 func (this *QItemSelectionRange) Width() int {
-	_ret := C.QItemSelectionRange_Width(this.h)
-	return (int)(_ret)
+	return (int)(C.QItemSelectionRange_Width(this.h))
 }
 
 func (this *QItemSelectionRange) Height() int {
-	_ret := C.QItemSelectionRange_Height(this.h)
-	return (int)(_ret)
+	return (int)(C.QItemSelectionRange_Height(this.h))
 }
 
 func (this *QItemSelectionRange) TopLeft() *QPersistentModelIndex {
-	_ret := C.QItemSelectionRange_TopLeft(this.h)
-	return newQPersistentModelIndex_U(unsafe.Pointer(_ret))
+	return newQPersistentModelIndex_U(unsafe.Pointer(C.QItemSelectionRange_TopLeft(this.h)))
 }
 
 func (this *QItemSelectionRange) BottomRight() *QPersistentModelIndex {
-	_ret := C.QItemSelectionRange_BottomRight(this.h)
-	return newQPersistentModelIndex_U(unsafe.Pointer(_ret))
+	return newQPersistentModelIndex_U(unsafe.Pointer(C.QItemSelectionRange_BottomRight(this.h)))
 }
 
 func (this *QItemSelectionRange) Parent() *QModelIndex {
@@ -132,23 +124,19 @@ func (this *QItemSelectionRange) Parent() *QModelIndex {
 }
 
 func (this *QItemSelectionRange) Model() *QAbstractItemModel {
-	_ret := C.QItemSelectionRange_Model(this.h)
-	return newQAbstractItemModel_U(unsafe.Pointer(_ret))
+	return newQAbstractItemModel_U(unsafe.Pointer(C.QItemSelectionRange_Model(this.h)))
 }
 
 func (this *QItemSelectionRange) Contains(index *QModelIndex) bool {
-	_ret := C.QItemSelectionRange_Contains(this.h, index.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QItemSelectionRange_Contains(this.h, index.cPointer()))
 }
 
 func (this *QItemSelectionRange) Contains2(row int, column int, parentIndex *QModelIndex) bool {
-	_ret := C.QItemSelectionRange_Contains2(this.h, (C.int)(row), (C.int)(column), parentIndex.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QItemSelectionRange_Contains2(this.h, (C.int)(row), (C.int)(column), parentIndex.cPointer()))
 }
 
 func (this *QItemSelectionRange) Intersects(other *QItemSelectionRange) bool {
-	_ret := C.QItemSelectionRange_Intersects(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QItemSelectionRange_Intersects(this.h, other.cPointer()))
 }
 
 func (this *QItemSelectionRange) Intersected(other *QItemSelectionRange) *QItemSelectionRange {
@@ -159,36 +147,34 @@ func (this *QItemSelectionRange) Intersected(other *QItemSelectionRange) *QItemS
 }
 
 func (this *QItemSelectionRange) OperatorEqual(other *QItemSelectionRange) bool {
-	_ret := C.QItemSelectionRange_OperatorEqual(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QItemSelectionRange_OperatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QItemSelectionRange) OperatorNotEqual(other *QItemSelectionRange) bool {
-	_ret := C.QItemSelectionRange_OperatorNotEqual(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QItemSelectionRange_OperatorNotEqual(this.h, other.cPointer()))
 }
 
 func (this *QItemSelectionRange) OperatorLesser(other *QItemSelectionRange) bool {
-	_ret := C.QItemSelectionRange_OperatorLesser(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QItemSelectionRange_OperatorLesser(this.h, other.cPointer()))
 }
 
 func (this *QItemSelectionRange) IsValid() bool {
-	_ret := C.QItemSelectionRange_IsValid(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QItemSelectionRange_IsValid(this.h))
 }
 
 func (this *QItemSelectionRange) IsEmpty() bool {
-	_ret := C.QItemSelectionRange_IsEmpty(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QItemSelectionRange_IsEmpty(this.h))
 }
 
 func (this *QItemSelectionRange) Indexes() []QModelIndex {
 	var _ma *C.struct_miqt_array = C.QItemSelectionRange_Indexes(this.h)
 	_ret := make([]QModelIndex, int(_ma.len))
-	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = *newQModelIndex(_outCast[i])
+		_lv_ret := _outCast[i]
+		_lv_goptr := newQModelIndex(_lv_ret)
+		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+		_ret[i] = *_lv_goptr
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -250,8 +236,7 @@ func NewQItemSelectionModel3(model *QAbstractItemModel) *QItemSelectionModel {
 }
 
 func (this *QItemSelectionModel) MetaObject() *QMetaObject {
-	_ret := C.QItemSelectionModel_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QItemSelectionModel_MetaObject(this.h)))
 }
 
 func QItemSelectionModel_Tr(s string) string {
@@ -280,41 +265,38 @@ func (this *QItemSelectionModel) CurrentIndex() *QModelIndex {
 }
 
 func (this *QItemSelectionModel) IsSelected(index *QModelIndex) bool {
-	_ret := C.QItemSelectionModel_IsSelected(this.h, index.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QItemSelectionModel_IsSelected(this.h, index.cPointer()))
 }
 
 func (this *QItemSelectionModel) IsRowSelected(row int) bool {
-	_ret := C.QItemSelectionModel_IsRowSelected(this.h, (C.int)(row))
-	return (bool)(_ret)
+	return (bool)(C.QItemSelectionModel_IsRowSelected(this.h, (C.int)(row)))
 }
 
 func (this *QItemSelectionModel) IsColumnSelected(column int) bool {
-	_ret := C.QItemSelectionModel_IsColumnSelected(this.h, (C.int)(column))
-	return (bool)(_ret)
+	return (bool)(C.QItemSelectionModel_IsColumnSelected(this.h, (C.int)(column)))
 }
 
 func (this *QItemSelectionModel) RowIntersectsSelection(row int) bool {
-	_ret := C.QItemSelectionModel_RowIntersectsSelection(this.h, (C.int)(row))
-	return (bool)(_ret)
+	return (bool)(C.QItemSelectionModel_RowIntersectsSelection(this.h, (C.int)(row)))
 }
 
 func (this *QItemSelectionModel) ColumnIntersectsSelection(column int) bool {
-	_ret := C.QItemSelectionModel_ColumnIntersectsSelection(this.h, (C.int)(column))
-	return (bool)(_ret)
+	return (bool)(C.QItemSelectionModel_ColumnIntersectsSelection(this.h, (C.int)(column)))
 }
 
 func (this *QItemSelectionModel) HasSelection() bool {
-	_ret := C.QItemSelectionModel_HasSelection(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QItemSelectionModel_HasSelection(this.h))
 }
 
 func (this *QItemSelectionModel) SelectedIndexes() []QModelIndex {
 	var _ma *C.struct_miqt_array = C.QItemSelectionModel_SelectedIndexes(this.h)
 	_ret := make([]QModelIndex, int(_ma.len))
-	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = *newQModelIndex(_outCast[i])
+		_lv_ret := _outCast[i]
+		_lv_goptr := newQModelIndex(_lv_ret)
+		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+		_ret[i] = *_lv_goptr
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -323,9 +305,12 @@ func (this *QItemSelectionModel) SelectedIndexes() []QModelIndex {
 func (this *QItemSelectionModel) SelectedRows() []QModelIndex {
 	var _ma *C.struct_miqt_array = C.QItemSelectionModel_SelectedRows(this.h)
 	_ret := make([]QModelIndex, int(_ma.len))
-	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = *newQModelIndex(_outCast[i])
+		_lv_ret := _outCast[i]
+		_lv_goptr := newQModelIndex(_lv_ret)
+		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+		_ret[i] = *_lv_goptr
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -334,22 +319,23 @@ func (this *QItemSelectionModel) SelectedRows() []QModelIndex {
 func (this *QItemSelectionModel) SelectedColumns() []QModelIndex {
 	var _ma *C.struct_miqt_array = C.QItemSelectionModel_SelectedColumns(this.h)
 	_ret := make([]QModelIndex, int(_ma.len))
-	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = *newQModelIndex(_outCast[i])
+		_lv_ret := _outCast[i]
+		_lv_goptr := newQModelIndex(_lv_ret)
+		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+		_ret[i] = *_lv_goptr
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QItemSelectionModel) Model() *QAbstractItemModel {
-	_ret := C.QItemSelectionModel_Model(this.h)
-	return newQAbstractItemModel_U(unsafe.Pointer(_ret))
+	return newQAbstractItemModel_U(unsafe.Pointer(C.QItemSelectionModel_Model(this.h)))
 }
 
 func (this *QItemSelectionModel) Model2() *QAbstractItemModel {
-	_ret := C.QItemSelectionModel_Model2(this.h)
-	return newQAbstractItemModel_U(unsafe.Pointer(_ret))
+	return newQAbstractItemModel_U(unsafe.Pointer(C.QItemSelectionModel_Model2(this.h)))
 }
 
 func (this *QItemSelectionModel) SetModel(model *QAbstractItemModel) {
@@ -395,10 +381,8 @@ func miqt_exec_callback_QItemSelectionModel_CurrentChanged(cb *C.void, current *
 	}
 
 	// Convert all CABI parameters to Go parameters
-	current_ret := current
-	slotval1 := newQModelIndex_U(unsafe.Pointer(current_ret))
-	previous_ret := previous
-	slotval2 := newQModelIndex_U(unsafe.Pointer(previous_ret))
+	slotval1 := newQModelIndex_U(unsafe.Pointer(current))
+	slotval2 := newQModelIndex_U(unsafe.Pointer(previous))
 
 	gofunc(slotval1, slotval2)
 }
@@ -418,10 +402,8 @@ func miqt_exec_callback_QItemSelectionModel_CurrentRowChanged(cb *C.void, curren
 	}
 
 	// Convert all CABI parameters to Go parameters
-	current_ret := current
-	slotval1 := newQModelIndex_U(unsafe.Pointer(current_ret))
-	previous_ret := previous
-	slotval2 := newQModelIndex_U(unsafe.Pointer(previous_ret))
+	slotval1 := newQModelIndex_U(unsafe.Pointer(current))
+	slotval2 := newQModelIndex_U(unsafe.Pointer(previous))
 
 	gofunc(slotval1, slotval2)
 }
@@ -441,10 +423,8 @@ func miqt_exec_callback_QItemSelectionModel_CurrentColumnChanged(cb *C.void, cur
 	}
 
 	// Convert all CABI parameters to Go parameters
-	current_ret := current
-	slotval1 := newQModelIndex_U(unsafe.Pointer(current_ret))
-	previous_ret := previous
-	slotval2 := newQModelIndex_U(unsafe.Pointer(previous_ret))
+	slotval1 := newQModelIndex_U(unsafe.Pointer(current))
+	slotval2 := newQModelIndex_U(unsafe.Pointer(previous))
 
 	gofunc(slotval1, slotval2)
 }
@@ -464,8 +444,7 @@ func miqt_exec_callback_QItemSelectionModel_ModelChanged(cb *C.void, model *C.QA
 	}
 
 	// Convert all CABI parameters to Go parameters
-	model_ret := model
-	slotval1 := newQAbstractItemModel_U(unsafe.Pointer(model_ret))
+	slotval1 := newQAbstractItemModel_U(unsafe.Pointer(model))
 
 	gofunc(slotval1)
 }
@@ -515,31 +494,30 @@ func QItemSelectionModel_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QItemSelectionModel) IsRowSelected2(row int, parent *QModelIndex) bool {
-	_ret := C.QItemSelectionModel_IsRowSelected2(this.h, (C.int)(row), parent.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QItemSelectionModel_IsRowSelected2(this.h, (C.int)(row), parent.cPointer()))
 }
 
 func (this *QItemSelectionModel) IsColumnSelected2(column int, parent *QModelIndex) bool {
-	_ret := C.QItemSelectionModel_IsColumnSelected2(this.h, (C.int)(column), parent.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QItemSelectionModel_IsColumnSelected2(this.h, (C.int)(column), parent.cPointer()))
 }
 
 func (this *QItemSelectionModel) RowIntersectsSelection2(row int, parent *QModelIndex) bool {
-	_ret := C.QItemSelectionModel_RowIntersectsSelection2(this.h, (C.int)(row), parent.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QItemSelectionModel_RowIntersectsSelection2(this.h, (C.int)(row), parent.cPointer()))
 }
 
 func (this *QItemSelectionModel) ColumnIntersectsSelection2(column int, parent *QModelIndex) bool {
-	_ret := C.QItemSelectionModel_ColumnIntersectsSelection2(this.h, (C.int)(column), parent.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QItemSelectionModel_ColumnIntersectsSelection2(this.h, (C.int)(column), parent.cPointer()))
 }
 
 func (this *QItemSelectionModel) SelectedRows1(column int) []QModelIndex {
 	var _ma *C.struct_miqt_array = C.QItemSelectionModel_SelectedRows1(this.h, (C.int)(column))
 	_ret := make([]QModelIndex, int(_ma.len))
-	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = *newQModelIndex(_outCast[i])
+		_lv_ret := _outCast[i]
+		_lv_goptr := newQModelIndex(_lv_ret)
+		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+		_ret[i] = *_lv_goptr
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -548,9 +526,12 @@ func (this *QItemSelectionModel) SelectedRows1(column int) []QModelIndex {
 func (this *QItemSelectionModel) SelectedColumns1(row int) []QModelIndex {
 	var _ma *C.struct_miqt_array = C.QItemSelectionModel_SelectedColumns1(this.h, (C.int)(row))
 	_ret := make([]QModelIndex, int(_ma.len))
-	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = *newQModelIndex(_outCast[i])
+		_lv_ret := _outCast[i]
+		_lv_goptr := newQModelIndex(_lv_ret)
+		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+		_ret[i] = *_lv_goptr
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret

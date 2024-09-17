@@ -61,8 +61,7 @@ func NewQScrollBar4(param1 Orientation, parent *QWidget) *QScrollBar {
 }
 
 func (this *QScrollBar) MetaObject() *QMetaObject {
-	_ret := C.QScrollBar_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QScrollBar_MetaObject(this.h)))
 }
 
 func QScrollBar_Tr(s string) string {
@@ -91,8 +90,7 @@ func (this *QScrollBar) SizeHint() *QSize {
 }
 
 func (this *QScrollBar) Event(event *QEvent) bool {
-	_ret := C.QScrollBar_Event(this.h, event.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QScrollBar_Event(this.h, event.cPointer()))
 }
 
 func QScrollBar_Tr2(s string, c string) string {

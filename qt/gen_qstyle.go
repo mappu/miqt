@@ -660,8 +660,7 @@ func newQStyle_U(h unsafe.Pointer) *QStyle {
 }
 
 func (this *QStyle) MetaObject() *QMetaObject {
-	_ret := C.QStyle_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QStyle_MetaObject(this.h)))
 }
 
 func QStyle_Tr(s string) string {
@@ -755,8 +754,7 @@ func (this *QStyle) DrawComplexControl(cc QStyle__ComplexControl, opt *QStyleOpt
 }
 
 func (this *QStyle) HitTestComplexControl(cc QStyle__ComplexControl, opt *QStyleOptionComplex, pt *QPoint) QStyle__SubControl {
-	_ret := C.QStyle_HitTestComplexControl(this.h, (C.uintptr_t)(cc), opt.cPointer(), pt.cPointer())
-	return (QStyle__SubControl)(_ret)
+	return (QStyle__SubControl)(C.QStyle_HitTestComplexControl(this.h, (C.uintptr_t)(cc), opt.cPointer(), pt.cPointer()))
 }
 
 func (this *QStyle) SubControlRect(cc QStyle__ComplexControl, opt *QStyleOptionComplex, sc QStyle__SubControl) *QRect {
@@ -767,8 +765,7 @@ func (this *QStyle) SubControlRect(cc QStyle__ComplexControl, opt *QStyleOptionC
 }
 
 func (this *QStyle) PixelMetric(metric QStyle__PixelMetric) int {
-	_ret := C.QStyle_PixelMetric(this.h, (C.uintptr_t)(metric))
-	return (int)(_ret)
+	return (int)(C.QStyle_PixelMetric(this.h, (C.uintptr_t)(metric)))
 }
 
 func (this *QStyle) SizeFromContents(ct QStyle__ContentsType, opt *QStyleOption, contentsSize *QSize) *QSize {
@@ -779,8 +776,7 @@ func (this *QStyle) SizeFromContents(ct QStyle__ContentsType, opt *QStyleOption,
 }
 
 func (this *QStyle) StyleHint(stylehint QStyle__StyleHint) int {
-	_ret := C.QStyle_StyleHint(this.h, (C.uintptr_t)(stylehint))
-	return (int)(_ret)
+	return (int)(C.QStyle_StyleHint(this.h, (C.uintptr_t)(stylehint)))
 }
 
 func (this *QStyle) StandardPixmap(standardPixmap QStyle__StandardPixmap) *QPixmap {
@@ -819,18 +815,15 @@ func QStyle_VisualPos(direction LayoutDirection, boundingRect *QRect, logicalPos
 }
 
 func QStyle_SliderPositionFromValue(min int, max int, val int, space int) int {
-	_ret := C.QStyle_SliderPositionFromValue((C.int)(min), (C.int)(max), (C.int)(val), (C.int)(space))
-	return (int)(_ret)
+	return (int)(C.QStyle_SliderPositionFromValue((C.int)(min), (C.int)(max), (C.int)(val), (C.int)(space)))
 }
 
 func QStyle_SliderValueFromPosition(min int, max int, pos int, space int) int {
-	_ret := C.QStyle_SliderValueFromPosition((C.int)(min), (C.int)(max), (C.int)(pos), (C.int)(space))
-	return (int)(_ret)
+	return (int)(C.QStyle_SliderValueFromPosition((C.int)(min), (C.int)(max), (C.int)(pos), (C.int)(space)))
 }
 
 func QStyle_VisualAlignment(direction LayoutDirection, alignment int) int {
-	_ret := C.QStyle_VisualAlignment((C.uintptr_t)(direction), (C.int)(alignment))
-	return (int)(_ret)
+	return (int)(C.QStyle_VisualAlignment((C.uintptr_t)(direction), (C.int)(alignment)))
 }
 
 func QStyle_AlignedRect(direction LayoutDirection, alignment int, size *QSize, rectangle *QRect) *QRect {
@@ -841,18 +834,15 @@ func QStyle_AlignedRect(direction LayoutDirection, alignment int, size *QSize, r
 }
 
 func (this *QStyle) LayoutSpacing(control1 QSizePolicy__ControlType, control2 QSizePolicy__ControlType, orientation Orientation) int {
-	_ret := C.QStyle_LayoutSpacing(this.h, (C.uintptr_t)(control1), (C.uintptr_t)(control2), (C.uintptr_t)(orientation))
-	return (int)(_ret)
+	return (int)(C.QStyle_LayoutSpacing(this.h, (C.uintptr_t)(control1), (C.uintptr_t)(control2), (C.uintptr_t)(orientation)))
 }
 
 func (this *QStyle) CombinedLayoutSpacing(controls1 int, controls2 int, orientation Orientation) int {
-	_ret := C.QStyle_CombinedLayoutSpacing(this.h, (C.int)(controls1), (C.int)(controls2), (C.uintptr_t)(orientation))
-	return (int)(_ret)
+	return (int)(C.QStyle_CombinedLayoutSpacing(this.h, (C.int)(controls1), (C.int)(controls2), (C.uintptr_t)(orientation)))
 }
 
 func (this *QStyle) Proxy() *QStyle {
-	_ret := C.QStyle_Proxy(this.h)
-	return newQStyle_U(unsafe.Pointer(_ret))
+	return newQStyle_U(unsafe.Pointer(C.QStyle_Proxy(this.h)))
 }
 
 func QStyle_Tr2(s string, c string) string {
@@ -925,8 +915,7 @@ func (this *QStyle) DrawComplexControl4(cc QStyle__ComplexControl, opt *QStyleOp
 }
 
 func (this *QStyle) HitTestComplexControl4(cc QStyle__ComplexControl, opt *QStyleOptionComplex, pt *QPoint, widget *QWidget) QStyle__SubControl {
-	_ret := C.QStyle_HitTestComplexControl4(this.h, (C.uintptr_t)(cc), opt.cPointer(), pt.cPointer(), widget.cPointer())
-	return (QStyle__SubControl)(_ret)
+	return (QStyle__SubControl)(C.QStyle_HitTestComplexControl4(this.h, (C.uintptr_t)(cc), opt.cPointer(), pt.cPointer(), widget.cPointer()))
 }
 
 func (this *QStyle) SubControlRect4(cc QStyle__ComplexControl, opt *QStyleOptionComplex, sc QStyle__SubControl, widget *QWidget) *QRect {
@@ -937,13 +926,11 @@ func (this *QStyle) SubControlRect4(cc QStyle__ComplexControl, opt *QStyleOption
 }
 
 func (this *QStyle) PixelMetric2(metric QStyle__PixelMetric, option *QStyleOption) int {
-	_ret := C.QStyle_PixelMetric2(this.h, (C.uintptr_t)(metric), option.cPointer())
-	return (int)(_ret)
+	return (int)(C.QStyle_PixelMetric2(this.h, (C.uintptr_t)(metric), option.cPointer()))
 }
 
 func (this *QStyle) PixelMetric3(metric QStyle__PixelMetric, option *QStyleOption, widget *QWidget) int {
-	_ret := C.QStyle_PixelMetric3(this.h, (C.uintptr_t)(metric), option.cPointer(), widget.cPointer())
-	return (int)(_ret)
+	return (int)(C.QStyle_PixelMetric3(this.h, (C.uintptr_t)(metric), option.cPointer(), widget.cPointer()))
 }
 
 func (this *QStyle) SizeFromContents4(ct QStyle__ContentsType, opt *QStyleOption, contentsSize *QSize, w *QWidget) *QSize {
@@ -954,18 +941,15 @@ func (this *QStyle) SizeFromContents4(ct QStyle__ContentsType, opt *QStyleOption
 }
 
 func (this *QStyle) StyleHint2(stylehint QStyle__StyleHint, opt *QStyleOption) int {
-	_ret := C.QStyle_StyleHint2(this.h, (C.uintptr_t)(stylehint), opt.cPointer())
-	return (int)(_ret)
+	return (int)(C.QStyle_StyleHint2(this.h, (C.uintptr_t)(stylehint), opt.cPointer()))
 }
 
 func (this *QStyle) StyleHint3(stylehint QStyle__StyleHint, opt *QStyleOption, widget *QWidget) int {
-	_ret := C.QStyle_StyleHint3(this.h, (C.uintptr_t)(stylehint), opt.cPointer(), widget.cPointer())
-	return (int)(_ret)
+	return (int)(C.QStyle_StyleHint3(this.h, (C.uintptr_t)(stylehint), opt.cPointer(), widget.cPointer()))
 }
 
 func (this *QStyle) StyleHint4(stylehint QStyle__StyleHint, opt *QStyleOption, widget *QWidget, returnData *QStyleHintReturn) int {
-	_ret := C.QStyle_StyleHint4(this.h, (C.uintptr_t)(stylehint), opt.cPointer(), widget.cPointer(), returnData.cPointer())
-	return (int)(_ret)
+	return (int)(C.QStyle_StyleHint4(this.h, (C.uintptr_t)(stylehint), opt.cPointer(), widget.cPointer(), returnData.cPointer()))
 }
 
 func (this *QStyle) StandardPixmap2(standardPixmap QStyle__StandardPixmap, opt *QStyleOption) *QPixmap {
@@ -997,33 +981,27 @@ func (this *QStyle) StandardIcon3(standardIcon QStyle__StandardPixmap, option *Q
 }
 
 func QStyle_SliderPositionFromValue5(min int, max int, val int, space int, upsideDown bool) int {
-	_ret := C.QStyle_SliderPositionFromValue5((C.int)(min), (C.int)(max), (C.int)(val), (C.int)(space), (C.bool)(upsideDown))
-	return (int)(_ret)
+	return (int)(C.QStyle_SliderPositionFromValue5((C.int)(min), (C.int)(max), (C.int)(val), (C.int)(space), (C.bool)(upsideDown)))
 }
 
 func QStyle_SliderValueFromPosition5(min int, max int, pos int, space int, upsideDown bool) int {
-	_ret := C.QStyle_SliderValueFromPosition5((C.int)(min), (C.int)(max), (C.int)(pos), (C.int)(space), (C.bool)(upsideDown))
-	return (int)(_ret)
+	return (int)(C.QStyle_SliderValueFromPosition5((C.int)(min), (C.int)(max), (C.int)(pos), (C.int)(space), (C.bool)(upsideDown)))
 }
 
 func (this *QStyle) LayoutSpacing4(control1 QSizePolicy__ControlType, control2 QSizePolicy__ControlType, orientation Orientation, option *QStyleOption) int {
-	_ret := C.QStyle_LayoutSpacing4(this.h, (C.uintptr_t)(control1), (C.uintptr_t)(control2), (C.uintptr_t)(orientation), option.cPointer())
-	return (int)(_ret)
+	return (int)(C.QStyle_LayoutSpacing4(this.h, (C.uintptr_t)(control1), (C.uintptr_t)(control2), (C.uintptr_t)(orientation), option.cPointer()))
 }
 
 func (this *QStyle) LayoutSpacing5(control1 QSizePolicy__ControlType, control2 QSizePolicy__ControlType, orientation Orientation, option *QStyleOption, widget *QWidget) int {
-	_ret := C.QStyle_LayoutSpacing5(this.h, (C.uintptr_t)(control1), (C.uintptr_t)(control2), (C.uintptr_t)(orientation), option.cPointer(), widget.cPointer())
-	return (int)(_ret)
+	return (int)(C.QStyle_LayoutSpacing5(this.h, (C.uintptr_t)(control1), (C.uintptr_t)(control2), (C.uintptr_t)(orientation), option.cPointer(), widget.cPointer()))
 }
 
 func (this *QStyle) CombinedLayoutSpacing4(controls1 int, controls2 int, orientation Orientation, option *QStyleOption) int {
-	_ret := C.QStyle_CombinedLayoutSpacing4(this.h, (C.int)(controls1), (C.int)(controls2), (C.uintptr_t)(orientation), option.cPointer())
-	return (int)(_ret)
+	return (int)(C.QStyle_CombinedLayoutSpacing4(this.h, (C.int)(controls1), (C.int)(controls2), (C.uintptr_t)(orientation), option.cPointer()))
 }
 
 func (this *QStyle) CombinedLayoutSpacing5(controls1 int, controls2 int, orientation Orientation, option *QStyleOption, widget *QWidget) int {
-	_ret := C.QStyle_CombinedLayoutSpacing5(this.h, (C.int)(controls1), (C.int)(controls2), (C.uintptr_t)(orientation), option.cPointer(), widget.cPointer())
-	return (int)(_ret)
+	return (int)(C.QStyle_CombinedLayoutSpacing5(this.h, (C.int)(controls1), (C.int)(controls2), (C.uintptr_t)(orientation), option.cPointer(), widget.cPointer()))
 }
 
 // Delete this object from C++ memory.

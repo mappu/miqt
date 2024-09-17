@@ -95,8 +95,7 @@ func (this *QTreeWidgetItemIterator) OperatorAssign(it *QTreeWidgetItemIterator)
 }
 
 func (this *QTreeWidgetItemIterator) OperatorPlusPlus() *QTreeWidgetItemIterator {
-	_ret := C.QTreeWidgetItemIterator_OperatorPlusPlus(this.h)
-	return newQTreeWidgetItemIterator_U(unsafe.Pointer(_ret))
+	return newQTreeWidgetItemIterator_U(unsafe.Pointer(C.QTreeWidgetItemIterator_OperatorPlusPlus(this.h)))
 }
 
 func (this *QTreeWidgetItemIterator) OperatorPlusPlusWithInt(param1 int) *QTreeWidgetItemIterator {
@@ -107,13 +106,11 @@ func (this *QTreeWidgetItemIterator) OperatorPlusPlusWithInt(param1 int) *QTreeW
 }
 
 func (this *QTreeWidgetItemIterator) OperatorPlusAssign(n int) *QTreeWidgetItemIterator {
-	_ret := C.QTreeWidgetItemIterator_OperatorPlusAssign(this.h, (C.int)(n))
-	return newQTreeWidgetItemIterator_U(unsafe.Pointer(_ret))
+	return newQTreeWidgetItemIterator_U(unsafe.Pointer(C.QTreeWidgetItemIterator_OperatorPlusAssign(this.h, (C.int)(n))))
 }
 
 func (this *QTreeWidgetItemIterator) OperatorMinusMinus() *QTreeWidgetItemIterator {
-	_ret := C.QTreeWidgetItemIterator_OperatorMinusMinus(this.h)
-	return newQTreeWidgetItemIterator_U(unsafe.Pointer(_ret))
+	return newQTreeWidgetItemIterator_U(unsafe.Pointer(C.QTreeWidgetItemIterator_OperatorMinusMinus(this.h)))
 }
 
 func (this *QTreeWidgetItemIterator) OperatorMinusMinusWithInt(param1 int) *QTreeWidgetItemIterator {
@@ -124,13 +121,11 @@ func (this *QTreeWidgetItemIterator) OperatorMinusMinusWithInt(param1 int) *QTre
 }
 
 func (this *QTreeWidgetItemIterator) OperatorMinusAssign(n int) *QTreeWidgetItemIterator {
-	_ret := C.QTreeWidgetItemIterator_OperatorMinusAssign(this.h, (C.int)(n))
-	return newQTreeWidgetItemIterator_U(unsafe.Pointer(_ret))
+	return newQTreeWidgetItemIterator_U(unsafe.Pointer(C.QTreeWidgetItemIterator_OperatorMinusAssign(this.h, (C.int)(n))))
 }
 
 func (this *QTreeWidgetItemIterator) OperatorMultiply() *QTreeWidgetItem {
-	_ret := C.QTreeWidgetItemIterator_OperatorMultiply(this.h)
-	return newQTreeWidgetItem_U(unsafe.Pointer(_ret))
+	return newQTreeWidgetItem_U(unsafe.Pointer(C.QTreeWidgetItemIterator_OperatorMultiply(this.h)))
 }
 
 // Delete this object from C++ memory.

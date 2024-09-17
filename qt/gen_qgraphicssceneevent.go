@@ -51,8 +51,7 @@ func NewQGraphicsSceneEvent(typeVal QEvent__Type) *QGraphicsSceneEvent {
 }
 
 func (this *QGraphicsSceneEvent) Widget() *QWidget {
-	_ret := C.QGraphicsSceneEvent_Widget(this.h)
-	return newQWidget_U(unsafe.Pointer(_ret))
+	return newQWidget_U(unsafe.Pointer(C.QGraphicsSceneEvent_Widget(this.h)))
 }
 
 func (this *QGraphicsSceneEvent) SetWidget(widget *QWidget) {
@@ -208,8 +207,7 @@ func (this *QGraphicsSceneMouseEvent) SetLastScreenPos(pos *QPoint) {
 }
 
 func (this *QGraphicsSceneMouseEvent) Buttons() int {
-	_ret := C.QGraphicsSceneMouseEvent_Buttons(this.h)
-	return (int)(_ret)
+	return (int)(C.QGraphicsSceneMouseEvent_Buttons(this.h))
 }
 
 func (this *QGraphicsSceneMouseEvent) SetButtons(buttons int) {
@@ -217,8 +215,7 @@ func (this *QGraphicsSceneMouseEvent) SetButtons(buttons int) {
 }
 
 func (this *QGraphicsSceneMouseEvent) Button() MouseButton {
-	_ret := C.QGraphicsSceneMouseEvent_Button(this.h)
-	return (MouseButton)(_ret)
+	return (MouseButton)(C.QGraphicsSceneMouseEvent_Button(this.h))
 }
 
 func (this *QGraphicsSceneMouseEvent) SetButton(button MouseButton) {
@@ -226,8 +223,7 @@ func (this *QGraphicsSceneMouseEvent) SetButton(button MouseButton) {
 }
 
 func (this *QGraphicsSceneMouseEvent) Modifiers() int {
-	_ret := C.QGraphicsSceneMouseEvent_Modifiers(this.h)
-	return (int)(_ret)
+	return (int)(C.QGraphicsSceneMouseEvent_Modifiers(this.h))
 }
 
 func (this *QGraphicsSceneMouseEvent) SetModifiers(modifiers int) {
@@ -235,8 +231,7 @@ func (this *QGraphicsSceneMouseEvent) SetModifiers(modifiers int) {
 }
 
 func (this *QGraphicsSceneMouseEvent) Source() MouseEventSource {
-	_ret := C.QGraphicsSceneMouseEvent_Source(this.h)
-	return (MouseEventSource)(_ret)
+	return (MouseEventSource)(C.QGraphicsSceneMouseEvent_Source(this.h))
 }
 
 func (this *QGraphicsSceneMouseEvent) SetSource(source MouseEventSource) {
@@ -244,8 +239,7 @@ func (this *QGraphicsSceneMouseEvent) SetSource(source MouseEventSource) {
 }
 
 func (this *QGraphicsSceneMouseEvent) Flags() int {
-	_ret := C.QGraphicsSceneMouseEvent_Flags(this.h)
-	return (int)(_ret)
+	return (int)(C.QGraphicsSceneMouseEvent_Flags(this.h))
 }
 
 func (this *QGraphicsSceneMouseEvent) SetFlags(flags int) {
@@ -335,8 +329,7 @@ func (this *QGraphicsSceneWheelEvent) SetScreenPos(pos *QPoint) {
 }
 
 func (this *QGraphicsSceneWheelEvent) Buttons() int {
-	_ret := C.QGraphicsSceneWheelEvent_Buttons(this.h)
-	return (int)(_ret)
+	return (int)(C.QGraphicsSceneWheelEvent_Buttons(this.h))
 }
 
 func (this *QGraphicsSceneWheelEvent) SetButtons(buttons int) {
@@ -344,8 +337,7 @@ func (this *QGraphicsSceneWheelEvent) SetButtons(buttons int) {
 }
 
 func (this *QGraphicsSceneWheelEvent) Modifiers() int {
-	_ret := C.QGraphicsSceneWheelEvent_Modifiers(this.h)
-	return (int)(_ret)
+	return (int)(C.QGraphicsSceneWheelEvent_Modifiers(this.h))
 }
 
 func (this *QGraphicsSceneWheelEvent) SetModifiers(modifiers int) {
@@ -353,8 +345,7 @@ func (this *QGraphicsSceneWheelEvent) SetModifiers(modifiers int) {
 }
 
 func (this *QGraphicsSceneWheelEvent) Delta() int {
-	_ret := C.QGraphicsSceneWheelEvent_Delta(this.h)
-	return (int)(_ret)
+	return (int)(C.QGraphicsSceneWheelEvent_Delta(this.h))
 }
 
 func (this *QGraphicsSceneWheelEvent) SetDelta(delta int) {
@@ -362,8 +353,7 @@ func (this *QGraphicsSceneWheelEvent) SetDelta(delta int) {
 }
 
 func (this *QGraphicsSceneWheelEvent) Orientation() Orientation {
-	_ret := C.QGraphicsSceneWheelEvent_Orientation(this.h)
-	return (Orientation)(_ret)
+	return (Orientation)(C.QGraphicsSceneWheelEvent_Orientation(this.h))
 }
 
 func (this *QGraphicsSceneWheelEvent) SetOrientation(orientation Orientation) {
@@ -453,8 +443,7 @@ func (this *QGraphicsSceneContextMenuEvent) SetScreenPos(pos *QPoint) {
 }
 
 func (this *QGraphicsSceneContextMenuEvent) Modifiers() int {
-	_ret := C.QGraphicsSceneContextMenuEvent_Modifiers(this.h)
-	return (int)(_ret)
+	return (int)(C.QGraphicsSceneContextMenuEvent_Modifiers(this.h))
 }
 
 func (this *QGraphicsSceneContextMenuEvent) SetModifiers(modifiers int) {
@@ -462,8 +451,7 @@ func (this *QGraphicsSceneContextMenuEvent) SetModifiers(modifiers int) {
 }
 
 func (this *QGraphicsSceneContextMenuEvent) Reason() QGraphicsSceneContextMenuEvent__Reason {
-	_ret := C.QGraphicsSceneContextMenuEvent_Reason(this.h)
-	return (QGraphicsSceneContextMenuEvent__Reason)(_ret)
+	return (QGraphicsSceneContextMenuEvent__Reason)(C.QGraphicsSceneContextMenuEvent_Reason(this.h))
 }
 
 func (this *QGraphicsSceneContextMenuEvent) SetReason(reason QGraphicsSceneContextMenuEvent__Reason) {
@@ -586,8 +574,7 @@ func (this *QGraphicsSceneHoverEvent) SetLastScreenPos(pos *QPoint) {
 }
 
 func (this *QGraphicsSceneHoverEvent) Modifiers() int {
-	_ret := C.QGraphicsSceneHoverEvent_Modifiers(this.h)
-	return (int)(_ret)
+	return (int)(C.QGraphicsSceneHoverEvent_Modifiers(this.h))
 }
 
 func (this *QGraphicsSceneHoverEvent) SetModifiers(modifiers int) {
@@ -748,8 +735,7 @@ func (this *QGraphicsSceneDragDropEvent) SetScreenPos(pos *QPoint) {
 }
 
 func (this *QGraphicsSceneDragDropEvent) Buttons() int {
-	_ret := C.QGraphicsSceneDragDropEvent_Buttons(this.h)
-	return (int)(_ret)
+	return (int)(C.QGraphicsSceneDragDropEvent_Buttons(this.h))
 }
 
 func (this *QGraphicsSceneDragDropEvent) SetButtons(buttons int) {
@@ -757,8 +743,7 @@ func (this *QGraphicsSceneDragDropEvent) SetButtons(buttons int) {
 }
 
 func (this *QGraphicsSceneDragDropEvent) Modifiers() int {
-	_ret := C.QGraphicsSceneDragDropEvent_Modifiers(this.h)
-	return (int)(_ret)
+	return (int)(C.QGraphicsSceneDragDropEvent_Modifiers(this.h))
 }
 
 func (this *QGraphicsSceneDragDropEvent) SetModifiers(modifiers int) {
@@ -766,8 +751,7 @@ func (this *QGraphicsSceneDragDropEvent) SetModifiers(modifiers int) {
 }
 
 func (this *QGraphicsSceneDragDropEvent) PossibleActions() int {
-	_ret := C.QGraphicsSceneDragDropEvent_PossibleActions(this.h)
-	return (int)(_ret)
+	return (int)(C.QGraphicsSceneDragDropEvent_PossibleActions(this.h))
 }
 
 func (this *QGraphicsSceneDragDropEvent) SetPossibleActions(actions int) {
@@ -775,8 +759,7 @@ func (this *QGraphicsSceneDragDropEvent) SetPossibleActions(actions int) {
 }
 
 func (this *QGraphicsSceneDragDropEvent) ProposedAction() DropAction {
-	_ret := C.QGraphicsSceneDragDropEvent_ProposedAction(this.h)
-	return (DropAction)(_ret)
+	return (DropAction)(C.QGraphicsSceneDragDropEvent_ProposedAction(this.h))
 }
 
 func (this *QGraphicsSceneDragDropEvent) SetProposedAction(action DropAction) {
@@ -788,8 +771,7 @@ func (this *QGraphicsSceneDragDropEvent) AcceptProposedAction() {
 }
 
 func (this *QGraphicsSceneDragDropEvent) DropAction() DropAction {
-	_ret := C.QGraphicsSceneDragDropEvent_DropAction(this.h)
-	return (DropAction)(_ret)
+	return (DropAction)(C.QGraphicsSceneDragDropEvent_DropAction(this.h))
 }
 
 func (this *QGraphicsSceneDragDropEvent) SetDropAction(action DropAction) {
@@ -797,8 +779,7 @@ func (this *QGraphicsSceneDragDropEvent) SetDropAction(action DropAction) {
 }
 
 func (this *QGraphicsSceneDragDropEvent) Source() *QWidget {
-	_ret := C.QGraphicsSceneDragDropEvent_Source(this.h)
-	return newQWidget_U(unsafe.Pointer(_ret))
+	return newQWidget_U(unsafe.Pointer(C.QGraphicsSceneDragDropEvent_Source(this.h)))
 }
 
 func (this *QGraphicsSceneDragDropEvent) SetSource(source *QWidget) {
@@ -806,8 +787,7 @@ func (this *QGraphicsSceneDragDropEvent) SetSource(source *QWidget) {
 }
 
 func (this *QGraphicsSceneDragDropEvent) MimeData() *QMimeData {
-	_ret := C.QGraphicsSceneDragDropEvent_MimeData(this.h)
-	return newQMimeData_U(unsafe.Pointer(_ret))
+	return newQMimeData_U(unsafe.Pointer(C.QGraphicsSceneDragDropEvent_MimeData(this.h)))
 }
 
 func (this *QGraphicsSceneDragDropEvent) SetMimeData(data *QMimeData) {

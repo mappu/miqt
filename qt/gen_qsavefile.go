@@ -65,8 +65,7 @@ func NewQSaveFile4(parent *QObject) *QSaveFile {
 }
 
 func (this *QSaveFile) MetaObject() *QMetaObject {
-	_ret := C.QSaveFile_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QSaveFile_MetaObject(this.h)))
 }
 
 func QSaveFile_Tr(s string) string {
@@ -101,13 +100,11 @@ func (this *QSaveFile) SetFileName(name string) {
 }
 
 func (this *QSaveFile) Open(flags int) bool {
-	_ret := C.QSaveFile_Open(this.h, (C.int)(flags))
-	return (bool)(_ret)
+	return (bool)(C.QSaveFile_Open(this.h, (C.int)(flags)))
 }
 
 func (this *QSaveFile) Commit() bool {
-	_ret := C.QSaveFile_Commit(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QSaveFile_Commit(this.h))
 }
 
 func (this *QSaveFile) CancelWriting() {
@@ -119,8 +116,7 @@ func (this *QSaveFile) SetDirectWriteFallback(enabled bool) {
 }
 
 func (this *QSaveFile) DirectWriteFallback() bool {
-	_ret := C.QSaveFile_DirectWriteFallback(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QSaveFile_DirectWriteFallback(this.h))
 }
 
 func QSaveFile_Tr2(s string, c string) string {

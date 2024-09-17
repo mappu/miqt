@@ -56,13 +56,11 @@ func (this *QBasicTimer) Swap(other *QBasicTimer) {
 }
 
 func (this *QBasicTimer) IsActive() bool {
-	_ret := C.QBasicTimer_IsActive(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QBasicTimer_IsActive(this.h))
 }
 
 func (this *QBasicTimer) TimerId() int {
-	_ret := C.QBasicTimer_TimerId(this.h)
-	return (int)(_ret)
+	return (int)(C.QBasicTimer_TimerId(this.h))
 }
 
 func (this *QBasicTimer) Start(msec int, obj *QObject) {

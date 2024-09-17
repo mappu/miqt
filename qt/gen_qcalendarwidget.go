@@ -73,8 +73,7 @@ func NewQCalendarWidget2(parent *QWidget) *QCalendarWidget {
 }
 
 func (this *QCalendarWidget) MetaObject() *QMetaObject {
-	_ret := C.QCalendarWidget_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QCalendarWidget_MetaObject(this.h)))
 }
 
 func QCalendarWidget_Tr(s string) string {
@@ -117,13 +116,11 @@ func (this *QCalendarWidget) SelectedDate() *QDate {
 }
 
 func (this *QCalendarWidget) YearShown() int {
-	_ret := C.QCalendarWidget_YearShown(this.h)
-	return (int)(_ret)
+	return (int)(C.QCalendarWidget_YearShown(this.h))
 }
 
 func (this *QCalendarWidget) MonthShown() int {
-	_ret := C.QCalendarWidget_MonthShown(this.h)
-	return (int)(_ret)
+	return (int)(C.QCalendarWidget_MonthShown(this.h))
 }
 
 func (this *QCalendarWidget) MinimumDate() *QDate {
@@ -149,8 +146,7 @@ func (this *QCalendarWidget) SetMaximumDate(date *QDate) {
 }
 
 func (this *QCalendarWidget) FirstDayOfWeek() DayOfWeek {
-	_ret := C.QCalendarWidget_FirstDayOfWeek(this.h)
-	return (DayOfWeek)(_ret)
+	return (DayOfWeek)(C.QCalendarWidget_FirstDayOfWeek(this.h))
 }
 
 func (this *QCalendarWidget) SetFirstDayOfWeek(dayOfWeek DayOfWeek) {
@@ -158,13 +154,11 @@ func (this *QCalendarWidget) SetFirstDayOfWeek(dayOfWeek DayOfWeek) {
 }
 
 func (this *QCalendarWidget) IsNavigationBarVisible() bool {
-	_ret := C.QCalendarWidget_IsNavigationBarVisible(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QCalendarWidget_IsNavigationBarVisible(this.h))
 }
 
 func (this *QCalendarWidget) IsGridVisible() bool {
-	_ret := C.QCalendarWidget_IsGridVisible(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QCalendarWidget_IsGridVisible(this.h))
 }
 
 func (this *QCalendarWidget) Calendar() *QCalendar {
@@ -179,8 +173,7 @@ func (this *QCalendarWidget) SetCalendar(calendar QCalendar) {
 }
 
 func (this *QCalendarWidget) SelectionMode() QCalendarWidget__SelectionMode {
-	_ret := C.QCalendarWidget_SelectionMode(this.h)
-	return (QCalendarWidget__SelectionMode)(_ret)
+	return (QCalendarWidget__SelectionMode)(C.QCalendarWidget_SelectionMode(this.h))
 }
 
 func (this *QCalendarWidget) SetSelectionMode(mode QCalendarWidget__SelectionMode) {
@@ -188,8 +181,7 @@ func (this *QCalendarWidget) SetSelectionMode(mode QCalendarWidget__SelectionMod
 }
 
 func (this *QCalendarWidget) HorizontalHeaderFormat() QCalendarWidget__HorizontalHeaderFormat {
-	_ret := C.QCalendarWidget_HorizontalHeaderFormat(this.h)
-	return (QCalendarWidget__HorizontalHeaderFormat)(_ret)
+	return (QCalendarWidget__HorizontalHeaderFormat)(C.QCalendarWidget_HorizontalHeaderFormat(this.h))
 }
 
 func (this *QCalendarWidget) SetHorizontalHeaderFormat(format QCalendarWidget__HorizontalHeaderFormat) {
@@ -197,8 +189,7 @@ func (this *QCalendarWidget) SetHorizontalHeaderFormat(format QCalendarWidget__H
 }
 
 func (this *QCalendarWidget) VerticalHeaderFormat() QCalendarWidget__VerticalHeaderFormat {
-	_ret := C.QCalendarWidget_VerticalHeaderFormat(this.h)
-	return (QCalendarWidget__VerticalHeaderFormat)(_ret)
+	return (QCalendarWidget__VerticalHeaderFormat)(C.QCalendarWidget_VerticalHeaderFormat(this.h))
 }
 
 func (this *QCalendarWidget) SetVerticalHeaderFormat(format QCalendarWidget__VerticalHeaderFormat) {
@@ -239,8 +230,7 @@ func (this *QCalendarWidget) SetDateTextFormat(date *QDate, format *QTextCharFor
 }
 
 func (this *QCalendarWidget) IsDateEditEnabled() bool {
-	_ret := C.QCalendarWidget_IsDateEditEnabled(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QCalendarWidget_IsDateEditEnabled(this.h))
 }
 
 func (this *QCalendarWidget) SetDateEditEnabled(enable bool) {
@@ -248,8 +238,7 @@ func (this *QCalendarWidget) SetDateEditEnabled(enable bool) {
 }
 
 func (this *QCalendarWidget) DateEditAcceptDelay() int {
-	_ret := C.QCalendarWidget_DateEditAcceptDelay(this.h)
-	return (int)(_ret)
+	return (int)(C.QCalendarWidget_DateEditAcceptDelay(this.h))
 }
 
 func (this *QCalendarWidget) SetDateEditAcceptDelay(delay int) {
@@ -332,8 +321,7 @@ func miqt_exec_callback_QCalendarWidget_Clicked(cb *C.void, date *C.QDate) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	date_ret := date
-	slotval1 := newQDate_U(unsafe.Pointer(date_ret))
+	slotval1 := newQDate_U(unsafe.Pointer(date))
 
 	gofunc(slotval1)
 }
@@ -353,8 +341,7 @@ func miqt_exec_callback_QCalendarWidget_Activated(cb *C.void, date *C.QDate) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	date_ret := date
-	slotval1 := newQDate_U(unsafe.Pointer(date_ret))
+	slotval1 := newQDate_U(unsafe.Pointer(date))
 
 	gofunc(slotval1)
 }
@@ -374,11 +361,9 @@ func miqt_exec_callback_QCalendarWidget_CurrentPageChanged(cb *C.void, year C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	year_ret := year
-	slotval1 := (int)(year_ret)
+	slotval1 := (int)(year)
 
-	month_ret := month
-	slotval2 := (int)(month_ret)
+	slotval2 := (int)(month)
 
 	gofunc(slotval1, slotval2)
 }

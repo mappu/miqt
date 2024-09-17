@@ -58,8 +58,7 @@ func QToolTip_HideText() {
 }
 
 func QToolTip_IsVisible() bool {
-	_ret := C.QToolTip_IsVisible()
-	return (bool)(_ret)
+	return (bool)(C.QToolTip_IsVisible())
 }
 
 func QToolTip_Text() string {

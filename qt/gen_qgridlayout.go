@@ -49,8 +49,7 @@ func NewQGridLayout2() *QGridLayout {
 }
 
 func (this *QGridLayout) MetaObject() *QMetaObject {
-	_ret := C.QGridLayout_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QGridLayout_MetaObject(this.h)))
 }
 
 func QGridLayout_Tr(s string) string {
@@ -97,8 +96,7 @@ func (this *QGridLayout) SetHorizontalSpacing(spacing int) {
 }
 
 func (this *QGridLayout) HorizontalSpacing() int {
-	_ret := C.QGridLayout_HorizontalSpacing(this.h)
-	return (int)(_ret)
+	return (int)(C.QGridLayout_HorizontalSpacing(this.h))
 }
 
 func (this *QGridLayout) SetVerticalSpacing(spacing int) {
@@ -106,8 +104,7 @@ func (this *QGridLayout) SetVerticalSpacing(spacing int) {
 }
 
 func (this *QGridLayout) VerticalSpacing() int {
-	_ret := C.QGridLayout_VerticalSpacing(this.h)
-	return (int)(_ret)
+	return (int)(C.QGridLayout_VerticalSpacing(this.h))
 }
 
 func (this *QGridLayout) SetSpacing(spacing int) {
@@ -115,8 +112,7 @@ func (this *QGridLayout) SetSpacing(spacing int) {
 }
 
 func (this *QGridLayout) Spacing() int {
-	_ret := C.QGridLayout_Spacing(this.h)
-	return (int)(_ret)
+	return (int)(C.QGridLayout_Spacing(this.h))
 }
 
 func (this *QGridLayout) SetRowStretch(row int, stretch int) {
@@ -128,13 +124,11 @@ func (this *QGridLayout) SetColumnStretch(column int, stretch int) {
 }
 
 func (this *QGridLayout) RowStretch(row int) int {
-	_ret := C.QGridLayout_RowStretch(this.h, (C.int)(row))
-	return (int)(_ret)
+	return (int)(C.QGridLayout_RowStretch(this.h, (C.int)(row)))
 }
 
 func (this *QGridLayout) ColumnStretch(column int) int {
-	_ret := C.QGridLayout_ColumnStretch(this.h, (C.int)(column))
-	return (int)(_ret)
+	return (int)(C.QGridLayout_ColumnStretch(this.h, (C.int)(column)))
 }
 
 func (this *QGridLayout) SetRowMinimumHeight(row int, minSize int) {
@@ -146,23 +140,19 @@ func (this *QGridLayout) SetColumnMinimumWidth(column int, minSize int) {
 }
 
 func (this *QGridLayout) RowMinimumHeight(row int) int {
-	_ret := C.QGridLayout_RowMinimumHeight(this.h, (C.int)(row))
-	return (int)(_ret)
+	return (int)(C.QGridLayout_RowMinimumHeight(this.h, (C.int)(row)))
 }
 
 func (this *QGridLayout) ColumnMinimumWidth(column int) int {
-	_ret := C.QGridLayout_ColumnMinimumWidth(this.h, (C.int)(column))
-	return (int)(_ret)
+	return (int)(C.QGridLayout_ColumnMinimumWidth(this.h, (C.int)(column)))
 }
 
 func (this *QGridLayout) ColumnCount() int {
-	_ret := C.QGridLayout_ColumnCount(this.h)
-	return (int)(_ret)
+	return (int)(C.QGridLayout_ColumnCount(this.h))
 }
 
 func (this *QGridLayout) RowCount() int {
-	_ret := C.QGridLayout_RowCount(this.h)
-	return (int)(_ret)
+	return (int)(C.QGridLayout_RowCount(this.h))
 }
 
 func (this *QGridLayout) CellRect(row int, column int) *QRect {
@@ -173,23 +163,19 @@ func (this *QGridLayout) CellRect(row int, column int) *QRect {
 }
 
 func (this *QGridLayout) HasHeightForWidth() bool {
-	_ret := C.QGridLayout_HasHeightForWidth(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QGridLayout_HasHeightForWidth(this.h))
 }
 
 func (this *QGridLayout) HeightForWidth(param1 int) int {
-	_ret := C.QGridLayout_HeightForWidth(this.h, (C.int)(param1))
-	return (int)(_ret)
+	return (int)(C.QGridLayout_HeightForWidth(this.h, (C.int)(param1)))
 }
 
 func (this *QGridLayout) MinimumHeightForWidth(param1 int) int {
-	_ret := C.QGridLayout_MinimumHeightForWidth(this.h, (C.int)(param1))
-	return (int)(_ret)
+	return (int)(C.QGridLayout_MinimumHeightForWidth(this.h, (C.int)(param1)))
 }
 
 func (this *QGridLayout) ExpandingDirections() int {
-	_ret := C.QGridLayout_ExpandingDirections(this.h)
-	return (int)(_ret)
+	return (int)(C.QGridLayout_ExpandingDirections(this.h))
 }
 
 func (this *QGridLayout) Invalidate() {
@@ -221,28 +207,23 @@ func (this *QGridLayout) SetOriginCorner(originCorner Corner) {
 }
 
 func (this *QGridLayout) OriginCorner() Corner {
-	_ret := C.QGridLayout_OriginCorner(this.h)
-	return (Corner)(_ret)
+	return (Corner)(C.QGridLayout_OriginCorner(this.h))
 }
 
 func (this *QGridLayout) ItemAt(index int) *QLayoutItem {
-	_ret := C.QGridLayout_ItemAt(this.h, (C.int)(index))
-	return newQLayoutItem_U(unsafe.Pointer(_ret))
+	return newQLayoutItem_U(unsafe.Pointer(C.QGridLayout_ItemAt(this.h, (C.int)(index))))
 }
 
 func (this *QGridLayout) ItemAtPosition(row int, column int) *QLayoutItem {
-	_ret := C.QGridLayout_ItemAtPosition(this.h, (C.int)(row), (C.int)(column))
-	return newQLayoutItem_U(unsafe.Pointer(_ret))
+	return newQLayoutItem_U(unsafe.Pointer(C.QGridLayout_ItemAtPosition(this.h, (C.int)(row), (C.int)(column))))
 }
 
 func (this *QGridLayout) TakeAt(index int) *QLayoutItem {
-	_ret := C.QGridLayout_TakeAt(this.h, (C.int)(index))
-	return newQLayoutItem_U(unsafe.Pointer(_ret))
+	return newQLayoutItem_U(unsafe.Pointer(C.QGridLayout_TakeAt(this.h, (C.int)(index))))
 }
 
 func (this *QGridLayout) Count() int {
-	_ret := C.QGridLayout_Count(this.h)
-	return (int)(_ret)
+	return (int)(C.QGridLayout_Count(this.h))
 }
 
 func (this *QGridLayout) SetGeometry(geometry *QRect) {

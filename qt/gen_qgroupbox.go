@@ -66,8 +66,7 @@ func NewQGroupBox4(title string, parent *QWidget) *QGroupBox {
 }
 
 func (this *QGroupBox) MetaObject() *QMetaObject {
-	_ret := C.QGroupBox_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QGroupBox_MetaObject(this.h)))
 }
 
 func QGroupBox_Tr(s string) string {
@@ -102,8 +101,7 @@ func (this *QGroupBox) SetTitle(title string) {
 }
 
 func (this *QGroupBox) Alignment() int {
-	_ret := C.QGroupBox_Alignment(this.h)
-	return (int)(_ret)
+	return (int)(C.QGroupBox_Alignment(this.h))
 }
 
 func (this *QGroupBox) SetAlignment(alignment int) {
@@ -118,8 +116,7 @@ func (this *QGroupBox) MinimumSizeHint() *QSize {
 }
 
 func (this *QGroupBox) IsFlat() bool {
-	_ret := C.QGroupBox_IsFlat(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QGroupBox_IsFlat(this.h))
 }
 
 func (this *QGroupBox) SetFlat(flat bool) {
@@ -127,8 +124,7 @@ func (this *QGroupBox) SetFlat(flat bool) {
 }
 
 func (this *QGroupBox) IsCheckable() bool {
-	_ret := C.QGroupBox_IsCheckable(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QGroupBox_IsCheckable(this.h))
 }
 
 func (this *QGroupBox) SetCheckable(checkable bool) {
@@ -136,8 +132,7 @@ func (this *QGroupBox) SetCheckable(checkable bool) {
 }
 
 func (this *QGroupBox) IsChecked() bool {
-	_ret := C.QGroupBox_IsChecked(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QGroupBox_IsChecked(this.h))
 }
 
 func (this *QGroupBox) SetChecked(checked bool) {
@@ -176,8 +171,7 @@ func miqt_exec_callback_QGroupBox_Toggled(cb *C.void, param1 C.bool) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	param1_ret := param1
-	slotval1 := (bool)(param1_ret)
+	slotval1 := (bool)(param1)
 
 	gofunc(slotval1)
 }
@@ -241,8 +235,7 @@ func miqt_exec_callback_QGroupBox_Clicked1(cb *C.void, checked C.bool) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	checked_ret := checked
-	slotval1 := (bool)(checked_ret)
+	slotval1 := (bool)(checked)
 
 	gofunc(slotval1)
 }

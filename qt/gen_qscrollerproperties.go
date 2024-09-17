@@ -95,13 +95,11 @@ func (this *QScrollerProperties) OperatorAssign(sp *QScrollerProperties) {
 }
 
 func (this *QScrollerProperties) OperatorEqual(sp *QScrollerProperties) bool {
-	_ret := C.QScrollerProperties_OperatorEqual(this.h, sp.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QScrollerProperties_OperatorEqual(this.h, sp.cPointer()))
 }
 
 func (this *QScrollerProperties) OperatorNotEqual(sp *QScrollerProperties) bool {
-	_ret := C.QScrollerProperties_OperatorNotEqual(this.h, sp.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QScrollerProperties_OperatorNotEqual(this.h, sp.cPointer()))
 }
 
 func QScrollerProperties_SetDefaultScrollerProperties(sp *QScrollerProperties) {

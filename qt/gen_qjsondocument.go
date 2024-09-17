@@ -208,18 +208,15 @@ func (this *QJsonDocument) ToJsonWithFormat(format QJsonDocument__JsonFormat) *Q
 }
 
 func (this *QJsonDocument) IsEmpty() bool {
-	_ret := C.QJsonDocument_IsEmpty(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QJsonDocument_IsEmpty(this.h))
 }
 
 func (this *QJsonDocument) IsArray() bool {
-	_ret := C.QJsonDocument_IsArray(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QJsonDocument_IsArray(this.h))
 }
 
 func (this *QJsonDocument) IsObject() bool {
-	_ret := C.QJsonDocument_IsObject(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QJsonDocument_IsObject(this.h))
 }
 
 func (this *QJsonDocument) Object() *QJsonObject {
@@ -261,18 +258,15 @@ func (this *QJsonDocument) OperatorSubscriptWithInt(i int) *QJsonValue {
 }
 
 func (this *QJsonDocument) OperatorEqual(other *QJsonDocument) bool {
-	_ret := C.QJsonDocument_OperatorEqual(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QJsonDocument_OperatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QJsonDocument) OperatorNotEqual(other *QJsonDocument) bool {
-	_ret := C.QJsonDocument_OperatorNotEqual(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QJsonDocument_OperatorNotEqual(this.h, other.cPointer()))
 }
 
 func (this *QJsonDocument) IsNull() bool {
-	_ret := C.QJsonDocument_IsNull(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QJsonDocument_IsNull(this.h))
 }
 
 func QJsonDocument_FromRawData3(data string, size int, validation QJsonDocument__DataValidation) *QJsonDocument {

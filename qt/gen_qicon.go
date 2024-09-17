@@ -149,13 +149,11 @@ func (this *QIcon) Paint2(painter *QPainter, x int, y int, w int, h int) {
 }
 
 func (this *QIcon) IsNull() bool {
-	_ret := C.QIcon_IsNull(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QIcon_IsNull(this.h))
 }
 
 func (this *QIcon) IsDetached() bool {
-	_ret := C.QIcon_IsDetached(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QIcon_IsDetached(this.h))
 }
 
 func (this *QIcon) Detach() {
@@ -163,8 +161,7 @@ func (this *QIcon) Detach() {
 }
 
 func (this *QIcon) CacheKey() int64 {
-	_ret := C.QIcon_CacheKey(this.h)
-	return (int64)(_ret)
+	return (int64)(C.QIcon_CacheKey(this.h))
 }
 
 func (this *QIcon) AddPixmap(pixmap *QPixmap) {
@@ -180,9 +177,12 @@ func (this *QIcon) AddFile(fileName string) {
 func (this *QIcon) AvailableSizes() []QSize {
 	var _ma *C.struct_miqt_array = C.QIcon_AvailableSizes(this.h)
 	_ret := make([]QSize, int(_ma.len))
-	_outCast := (*[0xffff]*C.QSize)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QSize)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = *newQSize(_outCast[i])
+		_lv_ret := _outCast[i]
+		_lv_goptr := newQSize(_lv_ret)
+		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+		_ret[i] = *_lv_goptr
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -193,8 +193,7 @@ func (this *QIcon) SetIsMask(isMask bool) {
 }
 
 func (this *QIcon) IsMask() bool {
-	_ret := C.QIcon_IsMask(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QIcon_IsMask(this.h))
 }
 
 func QIcon_FromTheme(name string) *QIcon {
@@ -218,8 +217,7 @@ func QIcon_FromTheme2(name string, fallback *QIcon) *QIcon {
 func QIcon_HasThemeIcon(name string) bool {
 	name_ms := miqt_strdupg(name)
 	defer C.free(name_ms)
-	_ret := C.QIcon_HasThemeIcon((*C.struct_miqt_string)(name_ms))
-	return (bool)(_ret)
+	return (bool)(C.QIcon_HasThemeIcon((*C.struct_miqt_string)(name_ms)))
 }
 
 func QIcon_ThemeSearchPaths() []string {
@@ -227,21 +225,23 @@ func QIcon_ThemeSearchPaths() []string {
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = C.GoStringN(&_outCast[i].data, C.int(int64(_outCast[i].len)))
-		C.free(unsafe.Pointer(_outCast[i])) // free the inner miqt_string*
+		var _lv_ms *C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoStringN(&_lv_ms.data, C.int(int64(_lv_ms.len)))
+		C.free(unsafe.Pointer(_lv_ms))
+		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func QIcon_SetThemeSearchPaths(searchpath []string) {
-	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
+	// For the C ABI, malloc a C array of raw pointers
 	searchpath_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(searchpath))))
 	defer C.free(unsafe.Pointer(searchpath_CArray))
 	for i := range searchpath {
-		single_ms := miqt_strdupg(searchpath[i])
-		defer C.free(single_ms)
-		searchpath_CArray[i] = (*C.struct_miqt_string)(single_ms)
+		searchpath_i_ms := miqt_strdupg(searchpath[i])
+		defer C.free(searchpath_i_ms)
+		searchpath_CArray[i] = (*C.struct_miqt_string)(searchpath_i_ms)
 	}
 	searchpath_ma := &C.struct_miqt_array{len: C.size_t(len(searchpath)), data: unsafe.Pointer(searchpath_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(searchpath_ma))
@@ -253,21 +253,23 @@ func QIcon_FallbackSearchPaths() []string {
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = C.GoStringN(&_outCast[i].data, C.int(int64(_outCast[i].len)))
-		C.free(unsafe.Pointer(_outCast[i])) // free the inner miqt_string*
+		var _lv_ms *C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoStringN(&_lv_ms.data, C.int(int64(_lv_ms.len)))
+		C.free(unsafe.Pointer(_lv_ms))
+		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func QIcon_SetFallbackSearchPaths(paths []string) {
-	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
+	// For the C ABI, malloc a C array of raw pointers
 	paths_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(paths))))
 	defer C.free(unsafe.Pointer(paths_CArray))
 	for i := range paths {
-		single_ms := miqt_strdupg(paths[i])
-		defer C.free(single_ms)
-		paths_CArray[i] = (*C.struct_miqt_string)(single_ms)
+		paths_i_ms := miqt_strdupg(paths[i])
+		defer C.free(paths_i_ms)
+		paths_CArray[i] = (*C.struct_miqt_string)(paths_i_ms)
 	}
 	paths_ma := &C.struct_miqt_array{len: C.size_t(len(paths)), data: unsafe.Pointer(paths_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(paths_ma))
@@ -437,9 +439,12 @@ func (this *QIcon) AddFile4(fileName string, size *QSize, mode QIcon__Mode, stat
 func (this *QIcon) AvailableSizes1(mode QIcon__Mode) []QSize {
 	var _ma *C.struct_miqt_array = C.QIcon_AvailableSizes1(this.h, (C.uintptr_t)(mode))
 	_ret := make([]QSize, int(_ma.len))
-	_outCast := (*[0xffff]*C.QSize)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QSize)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = *newQSize(_outCast[i])
+		_lv_ret := _outCast[i]
+		_lv_goptr := newQSize(_lv_ret)
+		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+		_ret[i] = *_lv_goptr
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -448,9 +453,12 @@ func (this *QIcon) AvailableSizes1(mode QIcon__Mode) []QSize {
 func (this *QIcon) AvailableSizes2(mode QIcon__Mode, state QIcon__State) []QSize {
 	var _ma *C.struct_miqt_array = C.QIcon_AvailableSizes2(this.h, (C.uintptr_t)(mode), (C.uintptr_t)(state))
 	_ret := make([]QSize, int(_ma.len))
-	_outCast := (*[0xffff]*C.QSize)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QSize)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = *newQSize(_outCast[i])
+		_lv_ret := _outCast[i]
+		_lv_goptr := newQSize(_lv_ret)
+		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+		_ret[i] = *_lv_goptr
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret

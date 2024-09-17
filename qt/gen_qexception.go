@@ -94,8 +94,7 @@ func NewQtPrivate__ExceptionStore(param1 *QtPrivate__ExceptionStore) *QtPrivate_
 }
 
 func (this *QtPrivate__ExceptionStore) HasException() bool {
-	_ret := C.QtPrivate__ExceptionStore_HasException(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QtPrivate__ExceptionStore_HasException(this.h))
 }
 
 func (this *QtPrivate__ExceptionStore) Exception() *QtPrivate__ExceptionHolder {
@@ -110,8 +109,7 @@ func (this *QtPrivate__ExceptionStore) ThrowPossibleException() {
 }
 
 func (this *QtPrivate__ExceptionStore) HasThrown() bool {
-	_ret := C.QtPrivate__ExceptionStore_HasThrown(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QtPrivate__ExceptionStore_HasThrown(this.h))
 }
 
 // Delete this object from C++ memory.

@@ -64,8 +64,7 @@ func (this *QTextDocumentFragment) OperatorAssign(rhs *QTextDocumentFragment) {
 }
 
 func (this *QTextDocumentFragment) IsEmpty() bool {
-	_ret := C.QTextDocumentFragment_IsEmpty(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QTextDocumentFragment_IsEmpty(this.h))
 }
 
 func (this *QTextDocumentFragment) ToPlainText() string {

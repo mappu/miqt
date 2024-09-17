@@ -37,8 +37,7 @@ func newQAbstractProxyModel_U(h unsafe.Pointer) *QAbstractProxyModel {
 }
 
 func (this *QAbstractProxyModel) MetaObject() *QMetaObject {
-	_ret := C.QAbstractProxyModel_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QAbstractProxyModel_MetaObject(this.h)))
 }
 
 func QAbstractProxyModel_Tr(s string) string {
@@ -64,8 +63,7 @@ func (this *QAbstractProxyModel) SetSourceModel(sourceModel *QAbstractItemModel)
 }
 
 func (this *QAbstractProxyModel) SourceModel() *QAbstractItemModel {
-	_ret := C.QAbstractProxyModel_SourceModel(this.h)
-	return newQAbstractItemModel_U(unsafe.Pointer(_ret))
+	return newQAbstractItemModel_U(unsafe.Pointer(C.QAbstractProxyModel_SourceModel(this.h)))
 }
 
 func (this *QAbstractProxyModel) MapToSource(proxyIndex *QModelIndex) *QModelIndex {
@@ -83,8 +81,7 @@ func (this *QAbstractProxyModel) MapFromSource(sourceIndex *QModelIndex) *QModel
 }
 
 func (this *QAbstractProxyModel) Submit() bool {
-	_ret := C.QAbstractProxyModel_Submit(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QAbstractProxyModel_Submit(this.h))
 }
 
 func (this *QAbstractProxyModel) Revert() {
@@ -106,18 +103,15 @@ func (this *QAbstractProxyModel) HeaderData(section int, orientation Orientation
 }
 
 func (this *QAbstractProxyModel) Flags(index *QModelIndex) int {
-	_ret := C.QAbstractProxyModel_Flags(this.h, index.cPointer())
-	return (int)(_ret)
+	return (int)(C.QAbstractProxyModel_Flags(this.h, index.cPointer()))
 }
 
 func (this *QAbstractProxyModel) SetData(index *QModelIndex, value *QVariant) bool {
-	_ret := C.QAbstractProxyModel_SetData(this.h, index.cPointer(), value.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QAbstractProxyModel_SetData(this.h, index.cPointer(), value.cPointer()))
 }
 
 func (this *QAbstractProxyModel) SetHeaderData(section int, orientation Orientation, value *QVariant) bool {
-	_ret := C.QAbstractProxyModel_SetHeaderData(this.h, (C.int)(section), (C.uintptr_t)(orientation), value.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QAbstractProxyModel_SetHeaderData(this.h, (C.int)(section), (C.uintptr_t)(orientation), value.cPointer()))
 }
 
 func (this *QAbstractProxyModel) Buddy(index *QModelIndex) *QModelIndex {
@@ -128,8 +122,7 @@ func (this *QAbstractProxyModel) Buddy(index *QModelIndex) *QModelIndex {
 }
 
 func (this *QAbstractProxyModel) CanFetchMore(parent *QModelIndex) bool {
-	_ret := C.QAbstractProxyModel_CanFetchMore(this.h, parent.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QAbstractProxyModel_CanFetchMore(this.h, parent.cPointer()))
 }
 
 func (this *QAbstractProxyModel) FetchMore(parent *QModelIndex) {
@@ -148,8 +141,7 @@ func (this *QAbstractProxyModel) Span(index *QModelIndex) *QSize {
 }
 
 func (this *QAbstractProxyModel) HasChildren() bool {
-	_ret := C.QAbstractProxyModel_HasChildren(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QAbstractProxyModel_HasChildren(this.h))
 }
 
 func (this *QAbstractProxyModel) Sibling(row int, column int, idx *QModelIndex) *QModelIndex {
@@ -168,18 +160,15 @@ func (this *QAbstractProxyModel) MimeData(indexes []QModelIndex) *QMimeData {
 	}
 	indexes_ma := &C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(indexes_ma))
-	_ret := C.QAbstractProxyModel_MimeData(this.h, indexes_ma)
-	return newQMimeData_U(unsafe.Pointer(_ret))
+	return newQMimeData_U(unsafe.Pointer(C.QAbstractProxyModel_MimeData(this.h, indexes_ma)))
 }
 
 func (this *QAbstractProxyModel) CanDropMimeData(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool {
-	_ret := C.QAbstractProxyModel_CanDropMimeData(this.h, data.cPointer(), (C.uintptr_t)(action), (C.int)(row), (C.int)(column), parent.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QAbstractProxyModel_CanDropMimeData(this.h, data.cPointer(), (C.uintptr_t)(action), (C.int)(row), (C.int)(column), parent.cPointer()))
 }
 
 func (this *QAbstractProxyModel) DropMimeData(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool {
-	_ret := C.QAbstractProxyModel_DropMimeData(this.h, data.cPointer(), (C.uintptr_t)(action), (C.int)(row), (C.int)(column), parent.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QAbstractProxyModel_DropMimeData(this.h, data.cPointer(), (C.uintptr_t)(action), (C.int)(row), (C.int)(column), parent.cPointer()))
 }
 
 func (this *QAbstractProxyModel) MimeTypes() []string {
@@ -187,21 +176,21 @@ func (this *QAbstractProxyModel) MimeTypes() []string {
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = C.GoStringN(&_outCast[i].data, C.int(int64(_outCast[i].len)))
-		C.free(unsafe.Pointer(_outCast[i])) // free the inner miqt_string*
+		var _lv_ms *C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoStringN(&_lv_ms.data, C.int(int64(_lv_ms.len)))
+		C.free(unsafe.Pointer(_lv_ms))
+		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QAbstractProxyModel) SupportedDragActions() int {
-	_ret := C.QAbstractProxyModel_SupportedDragActions(this.h)
-	return (int)(_ret)
+	return (int)(C.QAbstractProxyModel_SupportedDragActions(this.h))
 }
 
 func (this *QAbstractProxyModel) SupportedDropActions() int {
-	_ret := C.QAbstractProxyModel_SupportedDropActions(this.h)
-	return (int)(_ret)
+	return (int)(C.QAbstractProxyModel_SupportedDropActions(this.h))
 }
 
 func QAbstractProxyModel_Tr2(s string, c string) string {
@@ -263,13 +252,11 @@ func (this *QAbstractProxyModel) HeaderData3(section int, orientation Orientatio
 }
 
 func (this *QAbstractProxyModel) SetData3(index *QModelIndex, value *QVariant, role int) bool {
-	_ret := C.QAbstractProxyModel_SetData3(this.h, index.cPointer(), value.cPointer(), (C.int)(role))
-	return (bool)(_ret)
+	return (bool)(C.QAbstractProxyModel_SetData3(this.h, index.cPointer(), value.cPointer(), (C.int)(role)))
 }
 
 func (this *QAbstractProxyModel) SetHeaderData4(section int, orientation Orientation, value *QVariant, role int) bool {
-	_ret := C.QAbstractProxyModel_SetHeaderData4(this.h, (C.int)(section), (C.uintptr_t)(orientation), value.cPointer(), (C.int)(role))
-	return (bool)(_ret)
+	return (bool)(C.QAbstractProxyModel_SetHeaderData4(this.h, (C.int)(section), (C.uintptr_t)(orientation), value.cPointer(), (C.int)(role)))
 }
 
 func (this *QAbstractProxyModel) Sort2(column int, order SortOrder) {
@@ -277,8 +264,7 @@ func (this *QAbstractProxyModel) Sort2(column int, order SortOrder) {
 }
 
 func (this *QAbstractProxyModel) HasChildren1(parent *QModelIndex) bool {
-	_ret := C.QAbstractProxyModel_HasChildren1(this.h, parent.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QAbstractProxyModel_HasChildren1(this.h, parent.cPointer()))
 }
 
 // Delete this object from C++ memory.

@@ -80,26 +80,26 @@ func (this *QIconEngine) Key() string {
 }
 
 func (this *QIconEngine) Clone() *QIconEngine {
-	_ret := C.QIconEngine_Clone(this.h)
-	return newQIconEngine_U(unsafe.Pointer(_ret))
+	return newQIconEngine_U(unsafe.Pointer(C.QIconEngine_Clone(this.h)))
 }
 
 func (this *QIconEngine) Read(in *QDataStream) bool {
-	_ret := C.QIconEngine_Read(this.h, in.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QIconEngine_Read(this.h, in.cPointer()))
 }
 
 func (this *QIconEngine) Write(out *QDataStream) bool {
-	_ret := C.QIconEngine_Write(this.h, out.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QIconEngine_Write(this.h, out.cPointer()))
 }
 
 func (this *QIconEngine) AvailableSizes() []QSize {
 	var _ma *C.struct_miqt_array = C.QIconEngine_AvailableSizes(this.h)
 	_ret := make([]QSize, int(_ma.len))
-	_outCast := (*[0xffff]*C.QSize)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QSize)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = *newQSize(_outCast[i])
+		_lv_ret := _outCast[i]
+		_lv_goptr := newQSize(_lv_ret)
+		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+		_ret[i] = *_lv_goptr
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -113,8 +113,7 @@ func (this *QIconEngine) IconName() string {
 }
 
 func (this *QIconEngine) IsNull() bool {
-	_ret := C.QIconEngine_IsNull(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QIconEngine_IsNull(this.h))
 }
 
 func (this *QIconEngine) ScaledPixmap(size *QSize, mode QIcon__Mode, state QIcon__State, scale float64) *QPixmap {
@@ -127,9 +126,12 @@ func (this *QIconEngine) ScaledPixmap(size *QSize, mode QIcon__Mode, state QIcon
 func (this *QIconEngine) AvailableSizes1(mode QIcon__Mode) []QSize {
 	var _ma *C.struct_miqt_array = C.QIconEngine_AvailableSizes1(this.h, (C.uintptr_t)(mode))
 	_ret := make([]QSize, int(_ma.len))
-	_outCast := (*[0xffff]*C.QSize)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QSize)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = *newQSize(_outCast[i])
+		_lv_ret := _outCast[i]
+		_lv_goptr := newQSize(_lv_ret)
+		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+		_ret[i] = *_lv_goptr
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -138,9 +140,12 @@ func (this *QIconEngine) AvailableSizes1(mode QIcon__Mode) []QSize {
 func (this *QIconEngine) AvailableSizes2(mode QIcon__Mode, state QIcon__State) []QSize {
 	var _ma *C.struct_miqt_array = C.QIconEngine_AvailableSizes2(this.h, (C.uintptr_t)(mode), (C.uintptr_t)(state))
 	_ret := make([]QSize, int(_ma.len))
-	_outCast := (*[0xffff]*C.QSize)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QSize)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = *newQSize(_outCast[i])
+		_lv_ret := _outCast[i]
+		_lv_goptr := newQSize(_lv_ret)
+		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+		_ret[i] = *_lv_goptr
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret

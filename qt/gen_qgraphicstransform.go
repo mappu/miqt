@@ -38,8 +38,7 @@ func newQGraphicsTransform_U(h unsafe.Pointer) *QGraphicsTransform {
 }
 
 func (this *QGraphicsTransform) MetaObject() *QMetaObject {
-	_ret := C.QGraphicsTransform_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QGraphicsTransform_MetaObject(this.h)))
 }
 
 func QGraphicsTransform_Tr(s string) string {
@@ -158,8 +157,7 @@ func NewQGraphicsScale2(parent *QObject) *QGraphicsScale {
 }
 
 func (this *QGraphicsScale) MetaObject() *QMetaObject {
-	_ret := C.QGraphicsScale_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QGraphicsScale_MetaObject(this.h)))
 }
 
 func QGraphicsScale_Tr(s string) string {
@@ -192,8 +190,7 @@ func (this *QGraphicsScale) SetOrigin(point *QVector3D) {
 }
 
 func (this *QGraphicsScale) XScale() float64 {
-	_ret := C.QGraphicsScale_XScale(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QGraphicsScale_XScale(this.h))
 }
 
 func (this *QGraphicsScale) SetXScale(xScale float64) {
@@ -201,8 +198,7 @@ func (this *QGraphicsScale) SetXScale(xScale float64) {
 }
 
 func (this *QGraphicsScale) YScale() float64 {
-	_ret := C.QGraphicsScale_YScale(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QGraphicsScale_YScale(this.h))
 }
 
 func (this *QGraphicsScale) SetYScale(yScale float64) {
@@ -210,8 +206,7 @@ func (this *QGraphicsScale) SetYScale(yScale float64) {
 }
 
 func (this *QGraphicsScale) ZScale() float64 {
-	_ret := C.QGraphicsScale_ZScale(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QGraphicsScale_ZScale(this.h))
 }
 
 func (this *QGraphicsScale) SetZScale(zScale float64) {
@@ -401,8 +396,7 @@ func NewQGraphicsRotation2(parent *QObject) *QGraphicsRotation {
 }
 
 func (this *QGraphicsRotation) MetaObject() *QMetaObject {
-	_ret := C.QGraphicsRotation_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QGraphicsRotation_MetaObject(this.h)))
 }
 
 func QGraphicsRotation_Tr(s string) string {
@@ -435,8 +429,7 @@ func (this *QGraphicsRotation) SetOrigin(point *QVector3D) {
 }
 
 func (this *QGraphicsRotation) Angle() float64 {
-	_ret := C.QGraphicsRotation_Angle(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QGraphicsRotation_Angle(this.h))
 }
 
 func (this *QGraphicsRotation) SetAngle(angle float64) {

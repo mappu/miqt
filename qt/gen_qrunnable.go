@@ -40,8 +40,7 @@ func (this *QRunnable) Run() {
 }
 
 func (this *QRunnable) AutoDelete() bool {
-	_ret := C.QRunnable_AutoDelete(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QRunnable_AutoDelete(this.h))
 }
 
 func (this *QRunnable) SetAutoDelete(_autoDelete bool) {

@@ -52,8 +52,7 @@ func NewQPdfWriter2(device *QIODevice) *QPdfWriter {
 }
 
 func (this *QPdfWriter) MetaObject() *QMetaObject {
-	_ret := C.QPdfWriter_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QPdfWriter_MetaObject(this.h)))
 }
 
 func QPdfWriter_Tr(s string) string {
@@ -79,8 +78,7 @@ func (this *QPdfWriter) SetPdfVersion(version QPagedPaintDevice__PdfVersion) {
 }
 
 func (this *QPdfWriter) PdfVersion() QPagedPaintDevice__PdfVersion {
-	_ret := C.QPdfWriter_PdfVersion(this.h)
-	return (QPagedPaintDevice__PdfVersion)(_ret)
+	return (QPagedPaintDevice__PdfVersion)(C.QPdfWriter_PdfVersion(this.h))
 }
 
 func (this *QPdfWriter) Title() string {
@@ -110,8 +108,7 @@ func (this *QPdfWriter) SetCreator(creator string) {
 }
 
 func (this *QPdfWriter) NewPage() bool {
-	_ret := C.QPdfWriter_NewPage(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QPdfWriter_NewPage(this.h))
 }
 
 func (this *QPdfWriter) SetResolution(resolution int) {
@@ -119,8 +116,7 @@ func (this *QPdfWriter) SetResolution(resolution int) {
 }
 
 func (this *QPdfWriter) Resolution() int {
-	_ret := C.QPdfWriter_Resolution(this.h)
-	return (int)(_ret)
+	return (int)(C.QPdfWriter_Resolution(this.h))
 }
 
 func (this *QPdfWriter) SetDocumentXmpMetadata(xmpMetadata *QByteArray) {

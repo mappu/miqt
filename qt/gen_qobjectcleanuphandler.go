@@ -43,8 +43,7 @@ func NewQObjectCleanupHandler() *QObjectCleanupHandler {
 }
 
 func (this *QObjectCleanupHandler) MetaObject() *QMetaObject {
-	_ret := C.QObjectCleanupHandler_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QObjectCleanupHandler_MetaObject(this.h)))
 }
 
 func QObjectCleanupHandler_Tr(s string) string {
@@ -66,8 +65,7 @@ func QObjectCleanupHandler_TrUtf8(s string) string {
 }
 
 func (this *QObjectCleanupHandler) Add(object *QObject) *QObject {
-	_ret := C.QObjectCleanupHandler_Add(this.h, object.cPointer())
-	return newQObject_U(unsafe.Pointer(_ret))
+	return newQObject_U(unsafe.Pointer(C.QObjectCleanupHandler_Add(this.h, object.cPointer())))
 }
 
 func (this *QObjectCleanupHandler) Remove(object *QObject) {
@@ -75,8 +73,7 @@ func (this *QObjectCleanupHandler) Remove(object *QObject) {
 }
 
 func (this *QObjectCleanupHandler) IsEmpty() bool {
-	_ret := C.QObjectCleanupHandler_IsEmpty(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QObjectCleanupHandler_IsEmpty(this.h))
 }
 
 func (this *QObjectCleanupHandler) Clear() {

@@ -62,8 +62,7 @@ func NewQKeySequenceEdit4(keySequence *QKeySequence, parent *QWidget) *QKeySeque
 }
 
 func (this *QKeySequenceEdit) MetaObject() *QMetaObject {
-	_ret := C.QKeySequenceEdit_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QKeySequenceEdit_MetaObject(this.h)))
 }
 
 func QKeySequenceEdit_Tr(s string) string {
@@ -131,8 +130,7 @@ func miqt_exec_callback_QKeySequenceEdit_KeySequenceChanged(cb *C.void, keySeque
 	}
 
 	// Convert all CABI parameters to Go parameters
-	keySequence_ret := keySequence
-	slotval1 := newQKeySequence_U(unsafe.Pointer(keySequence_ret))
+	slotval1 := newQKeySequence_U(unsafe.Pointer(keySequence))
 
 	gofunc(slotval1)
 }

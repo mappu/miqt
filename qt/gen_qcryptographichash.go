@@ -80,8 +80,7 @@ func (this *QCryptographicHash) AddDataWithData(data *QByteArray) {
 }
 
 func (this *QCryptographicHash) AddDataWithDevice(device *QIODevice) bool {
-	_ret := C.QCryptographicHash_AddDataWithDevice(this.h, device.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QCryptographicHash_AddDataWithDevice(this.h, device.cPointer()))
 }
 
 func (this *QCryptographicHash) Result() *QByteArray {
@@ -99,8 +98,7 @@ func QCryptographicHash_Hash(data *QByteArray, method QCryptographicHash__Algori
 }
 
 func QCryptographicHash_HashLength(method QCryptographicHash__Algorithm) int {
-	_ret := C.QCryptographicHash_HashLength((C.uintptr_t)(method))
-	return (int)(_ret)
+	return (int)(C.QCryptographicHash_HashLength((C.uintptr_t)(method)))
 }
 
 // Delete this object from C++ memory.

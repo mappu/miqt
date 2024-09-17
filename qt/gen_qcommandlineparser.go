@@ -82,8 +82,7 @@ func (this *QCommandLineParser) SetOptionsAfterPositionalArgumentsMode(mode QCom
 }
 
 func (this *QCommandLineParser) AddOption(commandLineOption *QCommandLineOption) bool {
-	_ret := C.QCommandLineParser_AddOption(this.h, commandLineOption.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QCommandLineParser_AddOption(this.h, commandLineOption.cPointer()))
 }
 
 func (this *QCommandLineParser) AddOptions(options []QCommandLineOption) bool {
@@ -95,8 +94,7 @@ func (this *QCommandLineParser) AddOptions(options []QCommandLineOption) bool {
 	}
 	options_ma := &C.struct_miqt_array{len: C.size_t(len(options)), data: unsafe.Pointer(options_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(options_ma))
-	_ret := C.QCommandLineParser_AddOptions(this.h, options_ma)
-	return (bool)(_ret)
+	return (bool)(C.QCommandLineParser_AddOptions(this.h, options_ma))
 }
 
 func (this *QCommandLineParser) AddVersionOption() *QCommandLineOption {
@@ -139,13 +137,13 @@ func (this *QCommandLineParser) ClearPositionalArguments() {
 }
 
 func (this *QCommandLineParser) Process(arguments []string) {
-	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
+	// For the C ABI, malloc a C array of raw pointers
 	arguments_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(arguments))))
 	defer C.free(unsafe.Pointer(arguments_CArray))
 	for i := range arguments {
-		single_ms := miqt_strdupg(arguments[i])
-		defer C.free(single_ms)
-		arguments_CArray[i] = (*C.struct_miqt_string)(single_ms)
+		arguments_i_ms := miqt_strdupg(arguments[i])
+		defer C.free(arguments_i_ms)
+		arguments_CArray[i] = (*C.struct_miqt_string)(arguments_i_ms)
 	}
 	arguments_ma := &C.struct_miqt_array{len: C.size_t(len(arguments)), data: unsafe.Pointer(arguments_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(arguments_ma))
@@ -157,18 +155,17 @@ func (this *QCommandLineParser) ProcessWithApp(app *QCoreApplication) {
 }
 
 func (this *QCommandLineParser) Parse(arguments []string) bool {
-	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
+	// For the C ABI, malloc a C array of raw pointers
 	arguments_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(arguments))))
 	defer C.free(unsafe.Pointer(arguments_CArray))
 	for i := range arguments {
-		single_ms := miqt_strdupg(arguments[i])
-		defer C.free(single_ms)
-		arguments_CArray[i] = (*C.struct_miqt_string)(single_ms)
+		arguments_i_ms := miqt_strdupg(arguments[i])
+		defer C.free(arguments_i_ms)
+		arguments_CArray[i] = (*C.struct_miqt_string)(arguments_i_ms)
 	}
 	arguments_ma := &C.struct_miqt_array{len: C.size_t(len(arguments)), data: unsafe.Pointer(arguments_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(arguments_ma))
-	_ret := C.QCommandLineParser_Parse(this.h, arguments_ma)
-	return (bool)(_ret)
+	return (bool)(C.QCommandLineParser_Parse(this.h, arguments_ma))
 }
 
 func (this *QCommandLineParser) ErrorText() string {
@@ -181,8 +178,7 @@ func (this *QCommandLineParser) ErrorText() string {
 func (this *QCommandLineParser) IsSet(name string) bool {
 	name_ms := miqt_strdupg(name)
 	defer C.free(name_ms)
-	_ret := C.QCommandLineParser_IsSet(this.h, (*C.struct_miqt_string)(name_ms))
-	return (bool)(_ret)
+	return (bool)(C.QCommandLineParser_IsSet(this.h, (*C.struct_miqt_string)(name_ms)))
 }
 
 func (this *QCommandLineParser) Value(name string) string {
@@ -201,16 +197,17 @@ func (this *QCommandLineParser) Values(name string) []string {
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = C.GoStringN(&_outCast[i].data, C.int(int64(_outCast[i].len)))
-		C.free(unsafe.Pointer(_outCast[i])) // free the inner miqt_string*
+		var _lv_ms *C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoStringN(&_lv_ms.data, C.int(int64(_lv_ms.len)))
+		C.free(unsafe.Pointer(_lv_ms))
+		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QCommandLineParser) IsSetWithOption(option *QCommandLineOption) bool {
-	_ret := C.QCommandLineParser_IsSetWithOption(this.h, option.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QCommandLineParser_IsSetWithOption(this.h, option.cPointer()))
 }
 
 func (this *QCommandLineParser) ValueWithOption(option *QCommandLineOption) string {
@@ -225,8 +222,10 @@ func (this *QCommandLineParser) ValuesWithOption(option *QCommandLineOption) []s
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = C.GoStringN(&_outCast[i].data, C.int(int64(_outCast[i].len)))
-		C.free(unsafe.Pointer(_outCast[i])) // free the inner miqt_string*
+		var _lv_ms *C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoStringN(&_lv_ms.data, C.int(int64(_lv_ms.len)))
+		C.free(unsafe.Pointer(_lv_ms))
+		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -237,8 +236,10 @@ func (this *QCommandLineParser) PositionalArguments() []string {
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = C.GoStringN(&_outCast[i].data, C.int(int64(_outCast[i].len)))
-		C.free(unsafe.Pointer(_outCast[i])) // free the inner miqt_string*
+		var _lv_ms *C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoStringN(&_lv_ms.data, C.int(int64(_lv_ms.len)))
+		C.free(unsafe.Pointer(_lv_ms))
+		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -249,8 +250,10 @@ func (this *QCommandLineParser) OptionNames() []string {
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = C.GoStringN(&_outCast[i].data, C.int(int64(_outCast[i].len)))
-		C.free(unsafe.Pointer(_outCast[i])) // free the inner miqt_string*
+		var _lv_ms *C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoStringN(&_lv_ms.data, C.int(int64(_lv_ms.len)))
+		C.free(unsafe.Pointer(_lv_ms))
+		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -261,8 +264,10 @@ func (this *QCommandLineParser) UnknownOptionNames() []string {
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = C.GoStringN(&_outCast[i].data, C.int(int64(_outCast[i].len)))
-		C.free(unsafe.Pointer(_outCast[i])) // free the inner miqt_string*
+		var _lv_ms *C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoStringN(&_lv_ms.data, C.int(int64(_lv_ms.len)))
+		C.free(unsafe.Pointer(_lv_ms))
+		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret

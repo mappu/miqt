@@ -37,8 +37,7 @@ func newQSyntaxHighlighter_U(h unsafe.Pointer) *QSyntaxHighlighter {
 }
 
 func (this *QSyntaxHighlighter) MetaObject() *QMetaObject {
-	_ret := C.QSyntaxHighlighter_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QSyntaxHighlighter_MetaObject(this.h)))
 }
 
 func QSyntaxHighlighter_Tr(s string) string {
@@ -64,8 +63,7 @@ func (this *QSyntaxHighlighter) SetDocument(doc *QTextDocument) {
 }
 
 func (this *QSyntaxHighlighter) Document() *QTextDocument {
-	_ret := C.QSyntaxHighlighter_Document(this.h)
-	return newQTextDocument_U(unsafe.Pointer(_ret))
+	return newQTextDocument_U(unsafe.Pointer(C.QSyntaxHighlighter_Document(this.h)))
 }
 
 func (this *QSyntaxHighlighter) Rehighlight() {

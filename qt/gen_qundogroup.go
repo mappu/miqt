@@ -50,8 +50,7 @@ func NewQUndoGroup2(parent *QObject) *QUndoGroup {
 }
 
 func (this *QUndoGroup) MetaObject() *QMetaObject {
-	_ret := C.QUndoGroup_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QUndoGroup_MetaObject(this.h)))
 }
 
 func QUndoGroup_Tr(s string) string {
@@ -83,37 +82,32 @@ func (this *QUndoGroup) RemoveStack(stack *QUndoStack) {
 func (this *QUndoGroup) Stacks() []*QUndoStack {
 	var _ma *C.struct_miqt_array = C.QUndoGroup_Stacks(this.h)
 	_ret := make([]*QUndoStack, int(_ma.len))
-	_outCast := (*[0xffff]*C.QUndoStack)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QUndoStack)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQUndoStack(_outCast[i])
+		_ret[i] = newQUndoStack_U(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QUndoGroup) ActiveStack() *QUndoStack {
-	_ret := C.QUndoGroup_ActiveStack(this.h)
-	return newQUndoStack_U(unsafe.Pointer(_ret))
+	return newQUndoStack_U(unsafe.Pointer(C.QUndoGroup_ActiveStack(this.h)))
 }
 
 func (this *QUndoGroup) CreateUndoAction(parent *QObject) *QAction {
-	_ret := C.QUndoGroup_CreateUndoAction(this.h, parent.cPointer())
-	return newQAction_U(unsafe.Pointer(_ret))
+	return newQAction_U(unsafe.Pointer(C.QUndoGroup_CreateUndoAction(this.h, parent.cPointer())))
 }
 
 func (this *QUndoGroup) CreateRedoAction(parent *QObject) *QAction {
-	_ret := C.QUndoGroup_CreateRedoAction(this.h, parent.cPointer())
-	return newQAction_U(unsafe.Pointer(_ret))
+	return newQAction_U(unsafe.Pointer(C.QUndoGroup_CreateRedoAction(this.h, parent.cPointer())))
 }
 
 func (this *QUndoGroup) CanUndo() bool {
-	_ret := C.QUndoGroup_CanUndo(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QUndoGroup_CanUndo(this.h))
 }
 
 func (this *QUndoGroup) CanRedo() bool {
-	_ret := C.QUndoGroup_CanRedo(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QUndoGroup_CanRedo(this.h))
 }
 
 func (this *QUndoGroup) UndoText() string {
@@ -131,8 +125,7 @@ func (this *QUndoGroup) RedoText() string {
 }
 
 func (this *QUndoGroup) IsClean() bool {
-	_ret := C.QUndoGroup_IsClean(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QUndoGroup_IsClean(this.h))
 }
 
 func (this *QUndoGroup) Undo() {
@@ -162,8 +155,7 @@ func miqt_exec_callback_QUndoGroup_ActiveStackChanged(cb *C.void, stack *C.QUndo
 	}
 
 	// Convert all CABI parameters to Go parameters
-	stack_ret := stack
-	slotval1 := newQUndoStack_U(unsafe.Pointer(stack_ret))
+	slotval1 := newQUndoStack_U(unsafe.Pointer(stack))
 
 	gofunc(slotval1)
 }
@@ -183,8 +175,7 @@ func miqt_exec_callback_QUndoGroup_IndexChanged(cb *C.void, idx C.int) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	idx_ret := idx
-	slotval1 := (int)(idx_ret)
+	slotval1 := (int)(idx)
 
 	gofunc(slotval1)
 }
@@ -204,8 +195,7 @@ func miqt_exec_callback_QUndoGroup_CleanChanged(cb *C.void, clean C.bool) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	clean_ret := clean
-	slotval1 := (bool)(clean_ret)
+	slotval1 := (bool)(clean)
 
 	gofunc(slotval1)
 }
@@ -225,8 +215,7 @@ func miqt_exec_callback_QUndoGroup_CanUndoChanged(cb *C.void, canUndo C.bool) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	canUndo_ret := canUndo
-	slotval1 := (bool)(canUndo_ret)
+	slotval1 := (bool)(canUndo)
 
 	gofunc(slotval1)
 }
@@ -246,8 +235,7 @@ func miqt_exec_callback_QUndoGroup_CanRedoChanged(cb *C.void, canRedo C.bool) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	canRedo_ret := canRedo
-	slotval1 := (bool)(canRedo_ret)
+	slotval1 := (bool)(canRedo)
 
 	gofunc(slotval1)
 }
@@ -349,15 +337,13 @@ func QUndoGroup_TrUtf83(s string, c string, n int) string {
 func (this *QUndoGroup) CreateUndoAction2(parent *QObject, prefix string) *QAction {
 	prefix_ms := miqt_strdupg(prefix)
 	defer C.free(prefix_ms)
-	_ret := C.QUndoGroup_CreateUndoAction2(this.h, parent.cPointer(), (*C.struct_miqt_string)(prefix_ms))
-	return newQAction_U(unsafe.Pointer(_ret))
+	return newQAction_U(unsafe.Pointer(C.QUndoGroup_CreateUndoAction2(this.h, parent.cPointer(), (*C.struct_miqt_string)(prefix_ms))))
 }
 
 func (this *QUndoGroup) CreateRedoAction2(parent *QObject, prefix string) *QAction {
 	prefix_ms := miqt_strdupg(prefix)
 	defer C.free(prefix_ms)
-	_ret := C.QUndoGroup_CreateRedoAction2(this.h, parent.cPointer(), (*C.struct_miqt_string)(prefix_ms))
-	return newQAction_U(unsafe.Pointer(_ret))
+	return newQAction_U(unsafe.Pointer(C.QUndoGroup_CreateRedoAction2(this.h, parent.cPointer(), (*C.struct_miqt_string)(prefix_ms))))
 }
 
 // Delete this object from C++ memory.

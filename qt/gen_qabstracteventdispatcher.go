@@ -38,8 +38,7 @@ func newQAbstractEventDispatcher_U(h unsafe.Pointer) *QAbstractEventDispatcher {
 }
 
 func (this *QAbstractEventDispatcher) MetaObject() *QMetaObject {
-	_ret := C.QAbstractEventDispatcher_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QAbstractEventDispatcher_MetaObject(this.h)))
 }
 
 func QAbstractEventDispatcher_Tr(s string) string {
@@ -61,18 +60,15 @@ func QAbstractEventDispatcher_TrUtf8(s string) string {
 }
 
 func QAbstractEventDispatcher_Instance() *QAbstractEventDispatcher {
-	_ret := C.QAbstractEventDispatcher_Instance()
-	return newQAbstractEventDispatcher_U(unsafe.Pointer(_ret))
+	return newQAbstractEventDispatcher_U(unsafe.Pointer(C.QAbstractEventDispatcher_Instance()))
 }
 
 func (this *QAbstractEventDispatcher) ProcessEvents(flags int) bool {
-	_ret := C.QAbstractEventDispatcher_ProcessEvents(this.h, (C.int)(flags))
-	return (bool)(_ret)
+	return (bool)(C.QAbstractEventDispatcher_ProcessEvents(this.h, (C.int)(flags)))
 }
 
 func (this *QAbstractEventDispatcher) HasPendingEvents() bool {
-	_ret := C.QAbstractEventDispatcher_HasPendingEvents(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QAbstractEventDispatcher_HasPendingEvents(this.h))
 }
 
 func (this *QAbstractEventDispatcher) RegisterSocketNotifier(notifier *QSocketNotifier) {
@@ -84,8 +80,7 @@ func (this *QAbstractEventDispatcher) UnregisterSocketNotifier(notifier *QSocket
 }
 
 func (this *QAbstractEventDispatcher) RegisterTimer(interval int, timerType TimerType, object *QObject) int {
-	_ret := C.QAbstractEventDispatcher_RegisterTimer(this.h, (C.int)(interval), (C.uintptr_t)(timerType), object.cPointer())
-	return (int)(_ret)
+	return (int)(C.QAbstractEventDispatcher_RegisterTimer(this.h, (C.int)(interval), (C.uintptr_t)(timerType), object.cPointer()))
 }
 
 func (this *QAbstractEventDispatcher) RegisterTimer2(timerId int, interval int, timerType TimerType, object *QObject) {
@@ -93,29 +88,29 @@ func (this *QAbstractEventDispatcher) RegisterTimer2(timerId int, interval int, 
 }
 
 func (this *QAbstractEventDispatcher) UnregisterTimer(timerId int) bool {
-	_ret := C.QAbstractEventDispatcher_UnregisterTimer(this.h, (C.int)(timerId))
-	return (bool)(_ret)
+	return (bool)(C.QAbstractEventDispatcher_UnregisterTimer(this.h, (C.int)(timerId)))
 }
 
 func (this *QAbstractEventDispatcher) UnregisterTimers(object *QObject) bool {
-	_ret := C.QAbstractEventDispatcher_UnregisterTimers(this.h, object.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QAbstractEventDispatcher_UnregisterTimers(this.h, object.cPointer()))
 }
 
 func (this *QAbstractEventDispatcher) RegisteredTimers(object *QObject) []QAbstractEventDispatcher__TimerInfo {
 	var _ma *C.struct_miqt_array = C.QAbstractEventDispatcher_RegisteredTimers(this.h, object.cPointer())
 	_ret := make([]QAbstractEventDispatcher__TimerInfo, int(_ma.len))
-	_outCast := (*[0xffff]*C.QAbstractEventDispatcher__TimerInfo)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QAbstractEventDispatcher__TimerInfo)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = *newQAbstractEventDispatcher__TimerInfo(_outCast[i])
+		_lv_ret := _outCast[i]
+		_lv_goptr := newQAbstractEventDispatcher__TimerInfo(_lv_ret)
+		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+		_ret[i] = *_lv_goptr
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QAbstractEventDispatcher) RemainingTime(timerId int) int {
-	_ret := C.QAbstractEventDispatcher_RemainingTime(this.h, (C.int)(timerId))
-	return (int)(_ret)
+	return (int)(C.QAbstractEventDispatcher_RemainingTime(this.h, (C.int)(timerId)))
 }
 
 func (this *QAbstractEventDispatcher) WakeUp() {
@@ -225,8 +220,7 @@ func QAbstractEventDispatcher_TrUtf83(s string, c string, n int) string {
 }
 
 func QAbstractEventDispatcher_Instance1(thread *QThread) *QAbstractEventDispatcher {
-	_ret := C.QAbstractEventDispatcher_Instance1(thread.cPointer())
-	return newQAbstractEventDispatcher_U(unsafe.Pointer(_ret))
+	return newQAbstractEventDispatcher_U(unsafe.Pointer(C.QAbstractEventDispatcher_Instance1(thread.cPointer())))
 }
 
 // Delete this object from C++ memory.

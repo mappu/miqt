@@ -93,103 +93,83 @@ func (this *QTransform) OperatorAssign(param1 *QTransform) {
 }
 
 func (this *QTransform) IsAffine() bool {
-	_ret := C.QTransform_IsAffine(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QTransform_IsAffine(this.h))
 }
 
 func (this *QTransform) IsIdentity() bool {
-	_ret := C.QTransform_IsIdentity(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QTransform_IsIdentity(this.h))
 }
 
 func (this *QTransform) IsInvertible() bool {
-	_ret := C.QTransform_IsInvertible(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QTransform_IsInvertible(this.h))
 }
 
 func (this *QTransform) IsScaling() bool {
-	_ret := C.QTransform_IsScaling(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QTransform_IsScaling(this.h))
 }
 
 func (this *QTransform) IsRotating() bool {
-	_ret := C.QTransform_IsRotating(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QTransform_IsRotating(this.h))
 }
 
 func (this *QTransform) IsTranslating() bool {
-	_ret := C.QTransform_IsTranslating(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QTransform_IsTranslating(this.h))
 }
 
 func (this *QTransform) Type() QTransform__TransformationType {
-	_ret := C.QTransform_Type(this.h)
-	return (QTransform__TransformationType)(_ret)
+	return (QTransform__TransformationType)(C.QTransform_Type(this.h))
 }
 
 func (this *QTransform) Determinant() float64 {
-	_ret := C.QTransform_Determinant(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QTransform_Determinant(this.h))
 }
 
 func (this *QTransform) Det() float64 {
-	_ret := C.QTransform_Det(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QTransform_Det(this.h))
 }
 
 func (this *QTransform) M11() float64 {
-	_ret := C.QTransform_M11(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QTransform_M11(this.h))
 }
 
 func (this *QTransform) M12() float64 {
-	_ret := C.QTransform_M12(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QTransform_M12(this.h))
 }
 
 func (this *QTransform) M13() float64 {
-	_ret := C.QTransform_M13(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QTransform_M13(this.h))
 }
 
 func (this *QTransform) M21() float64 {
-	_ret := C.QTransform_M21(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QTransform_M21(this.h))
 }
 
 func (this *QTransform) M22() float64 {
-	_ret := C.QTransform_M22(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QTransform_M22(this.h))
 }
 
 func (this *QTransform) M23() float64 {
-	_ret := C.QTransform_M23(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QTransform_M23(this.h))
 }
 
 func (this *QTransform) M31() float64 {
-	_ret := C.QTransform_M31(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QTransform_M31(this.h))
 }
 
 func (this *QTransform) M32() float64 {
-	_ret := C.QTransform_M32(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QTransform_M32(this.h))
 }
 
 func (this *QTransform) M33() float64 {
-	_ret := C.QTransform_M33(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QTransform_M33(this.h))
 }
 
 func (this *QTransform) Dx() float64 {
-	_ret := C.QTransform_Dx(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QTransform_Dx(this.h))
 }
 
 func (this *QTransform) Dy() float64 {
-	_ret := C.QTransform_Dy(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QTransform_Dy(this.h))
 }
 
 func (this *QTransform) SetMatrix(m11 float64, m12 float64, m13 float64, m21 float64, m22 float64, m23 float64, m31 float64, m32 float64, m33 float64) {
@@ -218,43 +198,35 @@ func (this *QTransform) Transposed() *QTransform {
 }
 
 func (this *QTransform) Translate(dx float64, dy float64) *QTransform {
-	_ret := C.QTransform_Translate(this.h, (C.double)(dx), (C.double)(dy))
-	return newQTransform_U(unsafe.Pointer(_ret))
+	return newQTransform_U(unsafe.Pointer(C.QTransform_Translate(this.h, (C.double)(dx), (C.double)(dy))))
 }
 
 func (this *QTransform) Scale(sx float64, sy float64) *QTransform {
-	_ret := C.QTransform_Scale(this.h, (C.double)(sx), (C.double)(sy))
-	return newQTransform_U(unsafe.Pointer(_ret))
+	return newQTransform_U(unsafe.Pointer(C.QTransform_Scale(this.h, (C.double)(sx), (C.double)(sy))))
 }
 
 func (this *QTransform) Shear(sh float64, sv float64) *QTransform {
-	_ret := C.QTransform_Shear(this.h, (C.double)(sh), (C.double)(sv))
-	return newQTransform_U(unsafe.Pointer(_ret))
+	return newQTransform_U(unsafe.Pointer(C.QTransform_Shear(this.h, (C.double)(sh), (C.double)(sv))))
 }
 
 func (this *QTransform) Rotate(a float64) *QTransform {
-	_ret := C.QTransform_Rotate(this.h, (C.double)(a))
-	return newQTransform_U(unsafe.Pointer(_ret))
+	return newQTransform_U(unsafe.Pointer(C.QTransform_Rotate(this.h, (C.double)(a))))
 }
 
 func (this *QTransform) RotateRadians(a float64) *QTransform {
-	_ret := C.QTransform_RotateRadians(this.h, (C.double)(a))
-	return newQTransform_U(unsafe.Pointer(_ret))
+	return newQTransform_U(unsafe.Pointer(C.QTransform_RotateRadians(this.h, (C.double)(a))))
 }
 
 func (this *QTransform) OperatorEqual(param1 *QTransform) bool {
-	_ret := C.QTransform_OperatorEqual(this.h, param1.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QTransform_OperatorEqual(this.h, param1.cPointer()))
 }
 
 func (this *QTransform) OperatorNotEqual(param1 *QTransform) bool {
-	_ret := C.QTransform_OperatorNotEqual(this.h, param1.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QTransform_OperatorNotEqual(this.h, param1.cPointer()))
 }
 
 func (this *QTransform) OperatorMultiplyAssign(param1 *QTransform) *QTransform {
-	_ret := C.QTransform_OperatorMultiplyAssign(this.h, param1.cPointer())
-	return newQTransform_U(unsafe.Pointer(_ret))
+	return newQTransform_U(unsafe.Pointer(C.QTransform_OperatorMultiplyAssign(this.h, param1.cPointer())))
 }
 
 func (this *QTransform) OperatorMultiply(o *QTransform) *QTransform {
@@ -333,28 +305,23 @@ func (this *QTransform) Map3(x float64, y float64, tx *float64, ty *float64) {
 }
 
 func (this *QTransform) ToAffine() *QMatrix {
-	_ret := C.QTransform_ToAffine(this.h)
-	return newQMatrix_U(unsafe.Pointer(_ret))
+	return newQMatrix_U(unsafe.Pointer(C.QTransform_ToAffine(this.h)))
 }
 
 func (this *QTransform) OperatorMultiplyAssignWithDiv(div float64) *QTransform {
-	_ret := C.QTransform_OperatorMultiplyAssignWithDiv(this.h, (C.double)(div))
-	return newQTransform_U(unsafe.Pointer(_ret))
+	return newQTransform_U(unsafe.Pointer(C.QTransform_OperatorMultiplyAssignWithDiv(this.h, (C.double)(div))))
 }
 
 func (this *QTransform) OperatorDivideAssign(div float64) *QTransform {
-	_ret := C.QTransform_OperatorDivideAssign(this.h, (C.double)(div))
-	return newQTransform_U(unsafe.Pointer(_ret))
+	return newQTransform_U(unsafe.Pointer(C.QTransform_OperatorDivideAssign(this.h, (C.double)(div))))
 }
 
 func (this *QTransform) OperatorPlusAssign(div float64) *QTransform {
-	_ret := C.QTransform_OperatorPlusAssign(this.h, (C.double)(div))
-	return newQTransform_U(unsafe.Pointer(_ret))
+	return newQTransform_U(unsafe.Pointer(C.QTransform_OperatorPlusAssign(this.h, (C.double)(div))))
 }
 
 func (this *QTransform) OperatorMinusAssign(div float64) *QTransform {
-	_ret := C.QTransform_OperatorMinusAssign(this.h, (C.double)(div))
-	return newQTransform_U(unsafe.Pointer(_ret))
+	return newQTransform_U(unsafe.Pointer(C.QTransform_OperatorMinusAssign(this.h, (C.double)(div))))
 }
 
 func QTransform_FromTranslate(dx float64, dy float64) *QTransform {
@@ -379,13 +346,11 @@ func (this *QTransform) Inverted1(invertible *bool) *QTransform {
 }
 
 func (this *QTransform) Rotate2(a float64, axis Axis) *QTransform {
-	_ret := C.QTransform_Rotate2(this.h, (C.double)(a), (C.uintptr_t)(axis))
-	return newQTransform_U(unsafe.Pointer(_ret))
+	return newQTransform_U(unsafe.Pointer(C.QTransform_Rotate2(this.h, (C.double)(a), (C.uintptr_t)(axis))))
 }
 
 func (this *QTransform) RotateRadians2(a float64, axis Axis) *QTransform {
-	_ret := C.QTransform_RotateRadians2(this.h, (C.double)(a), (C.uintptr_t)(axis))
-	return newQTransform_U(unsafe.Pointer(_ret))
+	return newQTransform_U(unsafe.Pointer(C.QTransform_RotateRadians2(this.h, (C.double)(a), (C.uintptr_t)(axis))))
 }
 
 // Delete this object from C++ memory.

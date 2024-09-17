@@ -79,8 +79,7 @@ func NewQLCDNumber4(numDigits uint, parent *QWidget) *QLCDNumber {
 }
 
 func (this *QLCDNumber) MetaObject() *QMetaObject {
-	_ret := C.QLCDNumber_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QLCDNumber_MetaObject(this.h)))
 }
 
 func QLCDNumber_Tr(s string) string {
@@ -102,13 +101,11 @@ func QLCDNumber_TrUtf8(s string) string {
 }
 
 func (this *QLCDNumber) SmallDecimalPoint() bool {
-	_ret := C.QLCDNumber_SmallDecimalPoint(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QLCDNumber_SmallDecimalPoint(this.h))
 }
 
 func (this *QLCDNumber) DigitCount() int {
-	_ret := C.QLCDNumber_DigitCount(this.h)
-	return (int)(_ret)
+	return (int)(C.QLCDNumber_DigitCount(this.h))
 }
 
 func (this *QLCDNumber) SetDigitCount(nDigits int) {
@@ -116,18 +113,15 @@ func (this *QLCDNumber) SetDigitCount(nDigits int) {
 }
 
 func (this *QLCDNumber) CheckOverflow(num float64) bool {
-	_ret := C.QLCDNumber_CheckOverflow(this.h, (C.double)(num))
-	return (bool)(_ret)
+	return (bool)(C.QLCDNumber_CheckOverflow(this.h, (C.double)(num)))
 }
 
 func (this *QLCDNumber) CheckOverflowWithNum(num int) bool {
-	_ret := C.QLCDNumber_CheckOverflowWithNum(this.h, (C.int)(num))
-	return (bool)(_ret)
+	return (bool)(C.QLCDNumber_CheckOverflowWithNum(this.h, (C.int)(num)))
 }
 
 func (this *QLCDNumber) Mode() QLCDNumber__Mode {
-	_ret := C.QLCDNumber_Mode(this.h)
-	return (QLCDNumber__Mode)(_ret)
+	return (QLCDNumber__Mode)(C.QLCDNumber_Mode(this.h))
 }
 
 func (this *QLCDNumber) SetMode(mode QLCDNumber__Mode) {
@@ -135,8 +129,7 @@ func (this *QLCDNumber) SetMode(mode QLCDNumber__Mode) {
 }
 
 func (this *QLCDNumber) SegmentStyle() QLCDNumber__SegmentStyle {
-	_ret := C.QLCDNumber_SegmentStyle(this.h)
-	return (QLCDNumber__SegmentStyle)(_ret)
+	return (QLCDNumber__SegmentStyle)(C.QLCDNumber_SegmentStyle(this.h))
 }
 
 func (this *QLCDNumber) SetSegmentStyle(segmentStyle QLCDNumber__SegmentStyle) {
@@ -144,13 +137,11 @@ func (this *QLCDNumber) SetSegmentStyle(segmentStyle QLCDNumber__SegmentStyle) {
 }
 
 func (this *QLCDNumber) Value() float64 {
-	_ret := C.QLCDNumber_Value(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QLCDNumber_Value(this.h))
 }
 
 func (this *QLCDNumber) IntValue() int {
-	_ret := C.QLCDNumber_IntValue(this.h)
-	return (int)(_ret)
+	return (int)(C.QLCDNumber_IntValue(this.h))
 }
 
 func (this *QLCDNumber) SizeHint() *QSize {

@@ -109,13 +109,11 @@ func (this *QXmlStreamStringRef) String() string {
 }
 
 func (this *QXmlStreamStringRef) Position() int {
-	_ret := C.QXmlStreamStringRef_Position(this.h)
-	return (int)(_ret)
+	return (int)(C.QXmlStreamStringRef_Position(this.h))
 }
 
 func (this *QXmlStreamStringRef) Size() int {
-	_ret := C.QXmlStreamStringRef_Size(this.h)
-	return (int)(_ret)
+	return (int)(C.QXmlStreamStringRef_Size(this.h))
 }
 
 // Delete this object from C++ memory.
@@ -193,18 +191,15 @@ func (this *QXmlStreamAttribute) OperatorAssign(param1 *QXmlStreamAttribute) {
 }
 
 func (this *QXmlStreamAttribute) IsDefault() bool {
-	_ret := C.QXmlStreamAttribute_IsDefault(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QXmlStreamAttribute_IsDefault(this.h))
 }
 
 func (this *QXmlStreamAttribute) OperatorEqual(other *QXmlStreamAttribute) bool {
-	_ret := C.QXmlStreamAttribute_OperatorEqual(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QXmlStreamAttribute_OperatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QXmlStreamAttribute) OperatorNotEqual(other *QXmlStreamAttribute) bool {
-	_ret := C.QXmlStreamAttribute_OperatorNotEqual(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QXmlStreamAttribute_OperatorNotEqual(this.h, other.cPointer()))
 }
 
 // Delete this object from C++ memory.
@@ -270,13 +265,11 @@ func (this *QXmlStreamNamespaceDeclaration) OperatorAssign(param1 *QXmlStreamNam
 }
 
 func (this *QXmlStreamNamespaceDeclaration) OperatorEqual(other *QXmlStreamNamespaceDeclaration) bool {
-	_ret := C.QXmlStreamNamespaceDeclaration_OperatorEqual(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QXmlStreamNamespaceDeclaration_OperatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QXmlStreamNamespaceDeclaration) OperatorNotEqual(other *QXmlStreamNamespaceDeclaration) bool {
-	_ret := C.QXmlStreamNamespaceDeclaration_OperatorNotEqual(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QXmlStreamNamespaceDeclaration_OperatorNotEqual(this.h, other.cPointer()))
 }
 
 // Delete this object from C++ memory.
@@ -332,13 +325,11 @@ func (this *QXmlStreamNotationDeclaration) OperatorAssign(param1 *QXmlStreamNota
 }
 
 func (this *QXmlStreamNotationDeclaration) OperatorEqual(other *QXmlStreamNotationDeclaration) bool {
-	_ret := C.QXmlStreamNotationDeclaration_OperatorEqual(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QXmlStreamNotationDeclaration_OperatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QXmlStreamNotationDeclaration) OperatorNotEqual(other *QXmlStreamNotationDeclaration) bool {
-	_ret := C.QXmlStreamNotationDeclaration_OperatorNotEqual(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QXmlStreamNotationDeclaration_OperatorNotEqual(this.h, other.cPointer()))
 }
 
 // Delete this object from C++ memory.
@@ -394,13 +385,11 @@ func (this *QXmlStreamEntityDeclaration) OperatorAssign(param1 *QXmlStreamEntity
 }
 
 func (this *QXmlStreamEntityDeclaration) OperatorEqual(other *QXmlStreamEntityDeclaration) bool {
-	_ret := C.QXmlStreamEntityDeclaration_OperatorEqual(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QXmlStreamEntityDeclaration_OperatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QXmlStreamEntityDeclaration) OperatorNotEqual(other *QXmlStreamEntityDeclaration) bool {
-	_ret := C.QXmlStreamEntityDeclaration_OperatorNotEqual(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QXmlStreamEntityDeclaration_OperatorNotEqual(this.h, other.cPointer()))
 }
 
 // Delete this object from C++ memory.
@@ -538,8 +527,7 @@ func (this *QXmlStreamReader) SetDevice(device *QIODevice) {
 }
 
 func (this *QXmlStreamReader) Device() *QIODevice {
-	_ret := C.QXmlStreamReader_Device(this.h)
-	return newQIODevice_U(unsafe.Pointer(_ret))
+	return newQIODevice_U(unsafe.Pointer(C.QXmlStreamReader_Device(this.h)))
 }
 
 func (this *QXmlStreamReader) AddData(data *QByteArray) {
@@ -563,18 +551,15 @@ func (this *QXmlStreamReader) Clear() {
 }
 
 func (this *QXmlStreamReader) AtEnd() bool {
-	_ret := C.QXmlStreamReader_AtEnd(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QXmlStreamReader_AtEnd(this.h))
 }
 
 func (this *QXmlStreamReader) ReadNext() QXmlStreamReader__TokenType {
-	_ret := C.QXmlStreamReader_ReadNext(this.h)
-	return (QXmlStreamReader__TokenType)(_ret)
+	return (QXmlStreamReader__TokenType)(C.QXmlStreamReader_ReadNext(this.h))
 }
 
 func (this *QXmlStreamReader) ReadNextStartElement() bool {
-	_ret := C.QXmlStreamReader_ReadNextStartElement(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QXmlStreamReader_ReadNextStartElement(this.h))
 }
 
 func (this *QXmlStreamReader) SkipCurrentElement() {
@@ -582,8 +567,7 @@ func (this *QXmlStreamReader) SkipCurrentElement() {
 }
 
 func (this *QXmlStreamReader) TokenType() QXmlStreamReader__TokenType {
-	_ret := C.QXmlStreamReader_TokenType(this.h)
-	return (QXmlStreamReader__TokenType)(_ret)
+	return (QXmlStreamReader__TokenType)(C.QXmlStreamReader_TokenType(this.h))
 }
 
 func (this *QXmlStreamReader) TokenString() string {
@@ -598,83 +582,67 @@ func (this *QXmlStreamReader) SetNamespaceProcessing(namespaceProcessing bool) {
 }
 
 func (this *QXmlStreamReader) NamespaceProcessing() bool {
-	_ret := C.QXmlStreamReader_NamespaceProcessing(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QXmlStreamReader_NamespaceProcessing(this.h))
 }
 
 func (this *QXmlStreamReader) IsStartDocument() bool {
-	_ret := C.QXmlStreamReader_IsStartDocument(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QXmlStreamReader_IsStartDocument(this.h))
 }
 
 func (this *QXmlStreamReader) IsEndDocument() bool {
-	_ret := C.QXmlStreamReader_IsEndDocument(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QXmlStreamReader_IsEndDocument(this.h))
 }
 
 func (this *QXmlStreamReader) IsStartElement() bool {
-	_ret := C.QXmlStreamReader_IsStartElement(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QXmlStreamReader_IsStartElement(this.h))
 }
 
 func (this *QXmlStreamReader) IsEndElement() bool {
-	_ret := C.QXmlStreamReader_IsEndElement(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QXmlStreamReader_IsEndElement(this.h))
 }
 
 func (this *QXmlStreamReader) IsCharacters() bool {
-	_ret := C.QXmlStreamReader_IsCharacters(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QXmlStreamReader_IsCharacters(this.h))
 }
 
 func (this *QXmlStreamReader) IsWhitespace() bool {
-	_ret := C.QXmlStreamReader_IsWhitespace(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QXmlStreamReader_IsWhitespace(this.h))
 }
 
 func (this *QXmlStreamReader) IsCDATA() bool {
-	_ret := C.QXmlStreamReader_IsCDATA(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QXmlStreamReader_IsCDATA(this.h))
 }
 
 func (this *QXmlStreamReader) IsComment() bool {
-	_ret := C.QXmlStreamReader_IsComment(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QXmlStreamReader_IsComment(this.h))
 }
 
 func (this *QXmlStreamReader) IsDTD() bool {
-	_ret := C.QXmlStreamReader_IsDTD(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QXmlStreamReader_IsDTD(this.h))
 }
 
 func (this *QXmlStreamReader) IsEntityReference() bool {
-	_ret := C.QXmlStreamReader_IsEntityReference(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QXmlStreamReader_IsEntityReference(this.h))
 }
 
 func (this *QXmlStreamReader) IsProcessingInstruction() bool {
-	_ret := C.QXmlStreamReader_IsProcessingInstruction(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QXmlStreamReader_IsProcessingInstruction(this.h))
 }
 
 func (this *QXmlStreamReader) IsStandaloneDocument() bool {
-	_ret := C.QXmlStreamReader_IsStandaloneDocument(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QXmlStreamReader_IsStandaloneDocument(this.h))
 }
 
 func (this *QXmlStreamReader) LineNumber() int64 {
-	_ret := C.QXmlStreamReader_LineNumber(this.h)
-	return (int64)(_ret)
+	return (int64)(C.QXmlStreamReader_LineNumber(this.h))
 }
 
 func (this *QXmlStreamReader) ColumnNumber() int64 {
-	_ret := C.QXmlStreamReader_ColumnNumber(this.h)
-	return (int64)(_ret)
+	return (int64)(C.QXmlStreamReader_ColumnNumber(this.h))
 }
 
 func (this *QXmlStreamReader) CharacterOffset() int64 {
-	_ret := C.QXmlStreamReader_CharacterOffset(this.h)
-	return (int64)(_ret)
+	return (int64)(C.QXmlStreamReader_CharacterOffset(this.h))
 }
 
 func (this *QXmlStreamReader) ReadElementText() string {
@@ -687,9 +655,12 @@ func (this *QXmlStreamReader) ReadElementText() string {
 func (this *QXmlStreamReader) NamespaceDeclarations() []QXmlStreamNamespaceDeclaration {
 	var _ma *C.struct_miqt_array = C.QXmlStreamReader_NamespaceDeclarations(this.h)
 	_ret := make([]QXmlStreamNamespaceDeclaration, int(_ma.len))
-	_outCast := (*[0xffff]*C.QXmlStreamNamespaceDeclaration)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QXmlStreamNamespaceDeclaration)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = *newQXmlStreamNamespaceDeclaration(_outCast[i])
+		_vv_ret := _outCast[i]
+		_vv_goptr := newQXmlStreamNamespaceDeclaration(_vv_ret)
+		_vv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+		_ret[i] = *_vv_goptr
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -714,9 +685,12 @@ func (this *QXmlStreamReader) AddExtraNamespaceDeclarations(extraNamespaceDeclar
 func (this *QXmlStreamReader) NotationDeclarations() []QXmlStreamNotationDeclaration {
 	var _ma *C.struct_miqt_array = C.QXmlStreamReader_NotationDeclarations(this.h)
 	_ret := make([]QXmlStreamNotationDeclaration, int(_ma.len))
-	_outCast := (*[0xffff]*C.QXmlStreamNotationDeclaration)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QXmlStreamNotationDeclaration)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = *newQXmlStreamNotationDeclaration(_outCast[i])
+		_vv_ret := _outCast[i]
+		_vv_goptr := newQXmlStreamNotationDeclaration(_vv_ret)
+		_vv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+		_ret[i] = *_vv_goptr
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -725,17 +699,19 @@ func (this *QXmlStreamReader) NotationDeclarations() []QXmlStreamNotationDeclara
 func (this *QXmlStreamReader) EntityDeclarations() []QXmlStreamEntityDeclaration {
 	var _ma *C.struct_miqt_array = C.QXmlStreamReader_EntityDeclarations(this.h)
 	_ret := make([]QXmlStreamEntityDeclaration, int(_ma.len))
-	_outCast := (*[0xffff]*C.QXmlStreamEntityDeclaration)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QXmlStreamEntityDeclaration)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = *newQXmlStreamEntityDeclaration(_outCast[i])
+		_vv_ret := _outCast[i]
+		_vv_goptr := newQXmlStreamEntityDeclaration(_vv_ret)
+		_vv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+		_ret[i] = *_vv_goptr
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QXmlStreamReader) EntityExpansionLimit() int {
-	_ret := C.QXmlStreamReader_EntityExpansionLimit(this.h)
-	return (int)(_ret)
+	return (int)(C.QXmlStreamReader_EntityExpansionLimit(this.h))
 }
 
 func (this *QXmlStreamReader) SetEntityExpansionLimit(limit int) {
@@ -754,13 +730,11 @@ func (this *QXmlStreamReader) ErrorString() string {
 }
 
 func (this *QXmlStreamReader) Error() QXmlStreamReader__Error {
-	_ret := C.QXmlStreamReader_Error(this.h)
-	return (QXmlStreamReader__Error)(_ret)
+	return (QXmlStreamReader__Error)(C.QXmlStreamReader_Error(this.h))
 }
 
 func (this *QXmlStreamReader) HasError() bool {
-	_ret := C.QXmlStreamReader_HasError(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QXmlStreamReader_HasError(this.h))
 }
 
 func (this *QXmlStreamReader) SetEntityResolver(resolver *QXmlStreamEntityResolver) {
@@ -768,8 +742,7 @@ func (this *QXmlStreamReader) SetEntityResolver(resolver *QXmlStreamEntityResolv
 }
 
 func (this *QXmlStreamReader) EntityResolver() *QXmlStreamEntityResolver {
-	_ret := C.QXmlStreamReader_EntityResolver(this.h)
-	return newQXmlStreamEntityResolver_U(unsafe.Pointer(_ret))
+	return newQXmlStreamEntityResolver_U(unsafe.Pointer(C.QXmlStreamReader_EntityResolver(this.h)))
 }
 
 func (this *QXmlStreamReader) ReadElementText1(behaviour QXmlStreamReader__ReadElementTextBehaviour) string {
@@ -844,8 +817,7 @@ func (this *QXmlStreamWriter) SetDevice(device *QIODevice) {
 }
 
 func (this *QXmlStreamWriter) Device() *QIODevice {
-	_ret := C.QXmlStreamWriter_Device(this.h)
-	return newQIODevice_U(unsafe.Pointer(_ret))
+	return newQIODevice_U(unsafe.Pointer(C.QXmlStreamWriter_Device(this.h)))
 }
 
 func (this *QXmlStreamWriter) SetCodec(codec *QTextCodec) {
@@ -859,8 +831,7 @@ func (this *QXmlStreamWriter) SetCodecWithCodecName(codecName string) {
 }
 
 func (this *QXmlStreamWriter) Codec() *QTextCodec {
-	_ret := C.QXmlStreamWriter_Codec(this.h)
-	return newQTextCodec_U(unsafe.Pointer(_ret))
+	return newQTextCodec_U(unsafe.Pointer(C.QXmlStreamWriter_Codec(this.h)))
 }
 
 func (this *QXmlStreamWriter) SetAutoFormatting(autoFormatting bool) {
@@ -868,8 +839,7 @@ func (this *QXmlStreamWriter) SetAutoFormatting(autoFormatting bool) {
 }
 
 func (this *QXmlStreamWriter) AutoFormatting() bool {
-	_ret := C.QXmlStreamWriter_AutoFormatting(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QXmlStreamWriter_AutoFormatting(this.h))
 }
 
 func (this *QXmlStreamWriter) SetAutoFormattingIndent(spacesOrTabs int) {
@@ -877,8 +847,7 @@ func (this *QXmlStreamWriter) SetAutoFormattingIndent(spacesOrTabs int) {
 }
 
 func (this *QXmlStreamWriter) AutoFormattingIndent() int {
-	_ret := C.QXmlStreamWriter_AutoFormattingIndent(this.h)
-	return (int)(_ret)
+	return (int)(C.QXmlStreamWriter_AutoFormattingIndent(this.h))
 }
 
 func (this *QXmlStreamWriter) WriteAttribute(qualifiedName string, value string) {
@@ -1026,8 +995,7 @@ func (this *QXmlStreamWriter) WriteCurrentToken(reader *QXmlStreamReader) {
 }
 
 func (this *QXmlStreamWriter) HasError() bool {
-	_ret := C.QXmlStreamWriter_HasError(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QXmlStreamWriter_HasError(this.h))
 }
 
 func (this *QXmlStreamWriter) WriteNamespace2(namespaceUri string, prefix string) {

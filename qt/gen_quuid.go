@@ -148,28 +148,23 @@ func QUuid_FromRfc4122(param1 *QByteArray) *QUuid {
 }
 
 func (this *QUuid) IsNull() bool {
-	_ret := C.QUuid_IsNull(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QUuid_IsNull(this.h))
 }
 
 func (this *QUuid) OperatorEqual(orig *QUuid) bool {
-	_ret := C.QUuid_OperatorEqual(this.h, orig.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QUuid_OperatorEqual(this.h, orig.cPointer()))
 }
 
 func (this *QUuid) OperatorNotEqual(orig *QUuid) bool {
-	_ret := C.QUuid_OperatorNotEqual(this.h, orig.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QUuid_OperatorNotEqual(this.h, orig.cPointer()))
 }
 
 func (this *QUuid) OperatorLesser(other *QUuid) bool {
-	_ret := C.QUuid_OperatorLesser(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QUuid_OperatorLesser(this.h, other.cPointer()))
 }
 
 func (this *QUuid) OperatorGreater(other *QUuid) bool {
-	_ret := C.QUuid_OperatorGreater(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QUuid_OperatorGreater(this.h, other.cPointer()))
 }
 
 func QUuid_CreateUuid() *QUuid {
@@ -212,13 +207,11 @@ func QUuid_CreateUuidV52(ns *QUuid, baseData string) *QUuid {
 }
 
 func (this *QUuid) Variant() QUuid__Variant {
-	_ret := C.QUuid_Variant(this.h)
-	return (QUuid__Variant)(_ret)
+	return (QUuid__Variant)(C.QUuid_Variant(this.h))
 }
 
 func (this *QUuid) Version() QUuid__Version {
-	_ret := C.QUuid_Version(this.h)
-	return (QUuid__Version)(_ret)
+	return (QUuid__Version)(C.QUuid_Version(this.h))
 }
 
 // Delete this object from C++ memory.

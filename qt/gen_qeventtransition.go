@@ -61,8 +61,7 @@ func NewQEventTransition4(object *QObject, typeVal QEvent__Type, sourceState *QS
 }
 
 func (this *QEventTransition) MetaObject() *QMetaObject {
-	_ret := C.QEventTransition_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QEventTransition_MetaObject(this.h)))
 }
 
 func QEventTransition_Tr(s string) string {
@@ -84,8 +83,7 @@ func QEventTransition_TrUtf8(s string) string {
 }
 
 func (this *QEventTransition) EventSource() *QObject {
-	_ret := C.QEventTransition_EventSource(this.h)
-	return newQObject_U(unsafe.Pointer(_ret))
+	return newQObject_U(unsafe.Pointer(C.QEventTransition_EventSource(this.h)))
 }
 
 func (this *QEventTransition) SetEventSource(object *QObject) {
@@ -93,8 +91,7 @@ func (this *QEventTransition) SetEventSource(object *QObject) {
 }
 
 func (this *QEventTransition) EventType() QEvent__Type {
-	_ret := C.QEventTransition_EventType(this.h)
-	return (QEvent__Type)(_ret)
+	return (QEvent__Type)(C.QEventTransition_EventType(this.h))
 }
 
 func (this *QEventTransition) SetEventType(typeVal QEvent__Type) {

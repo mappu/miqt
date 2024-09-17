@@ -38,8 +38,7 @@ func newQFutureWatcherBase_U(h unsafe.Pointer) *QFutureWatcherBase {
 }
 
 func (this *QFutureWatcherBase) MetaObject() *QMetaObject {
-	_ret := C.QFutureWatcherBase_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QFutureWatcherBase_MetaObject(this.h)))
 }
 
 func QFutureWatcherBase_Tr(s string) string {
@@ -61,18 +60,15 @@ func QFutureWatcherBase_TrUtf8(s string) string {
 }
 
 func (this *QFutureWatcherBase) ProgressValue() int {
-	_ret := C.QFutureWatcherBase_ProgressValue(this.h)
-	return (int)(_ret)
+	return (int)(C.QFutureWatcherBase_ProgressValue(this.h))
 }
 
 func (this *QFutureWatcherBase) ProgressMinimum() int {
-	_ret := C.QFutureWatcherBase_ProgressMinimum(this.h)
-	return (int)(_ret)
+	return (int)(C.QFutureWatcherBase_ProgressMinimum(this.h))
 }
 
 func (this *QFutureWatcherBase) ProgressMaximum() int {
-	_ret := C.QFutureWatcherBase_ProgressMaximum(this.h)
-	return (int)(_ret)
+	return (int)(C.QFutureWatcherBase_ProgressMaximum(this.h))
 }
 
 func (this *QFutureWatcherBase) ProgressText() string {
@@ -83,28 +79,23 @@ func (this *QFutureWatcherBase) ProgressText() string {
 }
 
 func (this *QFutureWatcherBase) IsStarted() bool {
-	_ret := C.QFutureWatcherBase_IsStarted(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QFutureWatcherBase_IsStarted(this.h))
 }
 
 func (this *QFutureWatcherBase) IsFinished() bool {
-	_ret := C.QFutureWatcherBase_IsFinished(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QFutureWatcherBase_IsFinished(this.h))
 }
 
 func (this *QFutureWatcherBase) IsRunning() bool {
-	_ret := C.QFutureWatcherBase_IsRunning(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QFutureWatcherBase_IsRunning(this.h))
 }
 
 func (this *QFutureWatcherBase) IsCanceled() bool {
-	_ret := C.QFutureWatcherBase_IsCanceled(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QFutureWatcherBase_IsCanceled(this.h))
 }
 
 func (this *QFutureWatcherBase) IsPaused() bool {
-	_ret := C.QFutureWatcherBase_IsPaused(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QFutureWatcherBase_IsPaused(this.h))
 }
 
 func (this *QFutureWatcherBase) WaitForFinished() {
@@ -116,8 +107,7 @@ func (this *QFutureWatcherBase) SetPendingResultsLimit(limit int) {
 }
 
 func (this *QFutureWatcherBase) Event(event *QEvent) bool {
-	_ret := C.QFutureWatcherBase_Event(this.h, event.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QFutureWatcherBase_Event(this.h, event.cPointer()))
 }
 
 func (this *QFutureWatcherBase) Started() {
@@ -220,8 +210,7 @@ func miqt_exec_callback_QFutureWatcherBase_ResultReadyAt(cb *C.void, resultIndex
 	}
 
 	// Convert all CABI parameters to Go parameters
-	resultIndex_ret := resultIndex
-	slotval1 := (int)(resultIndex_ret)
+	slotval1 := (int)(resultIndex)
 
 	gofunc(slotval1)
 }
@@ -241,11 +230,9 @@ func miqt_exec_callback_QFutureWatcherBase_ResultsReadyAt(cb *C.void, beginIndex
 	}
 
 	// Convert all CABI parameters to Go parameters
-	beginIndex_ret := beginIndex
-	slotval1 := (int)(beginIndex_ret)
+	slotval1 := (int)(beginIndex)
 
-	endIndex_ret := endIndex
-	slotval2 := (int)(endIndex_ret)
+	slotval2 := (int)(endIndex)
 
 	gofunc(slotval1, slotval2)
 }
@@ -265,11 +252,9 @@ func miqt_exec_callback_QFutureWatcherBase_ProgressRangeChanged(cb *C.void, mini
 	}
 
 	// Convert all CABI parameters to Go parameters
-	minimum_ret := minimum
-	slotval1 := (int)(minimum_ret)
+	slotval1 := (int)(minimum)
 
-	maximum_ret := maximum
-	slotval2 := (int)(maximum_ret)
+	slotval2 := (int)(maximum)
 
 	gofunc(slotval1, slotval2)
 }
@@ -289,8 +274,7 @@ func miqt_exec_callback_QFutureWatcherBase_ProgressValueChanged(cb *C.void, prog
 	}
 
 	// Convert all CABI parameters to Go parameters
-	progressValue_ret := progressValue
-	slotval1 := (int)(progressValue_ret)
+	slotval1 := (int)(progressValue)
 
 	gofunc(slotval1)
 }

@@ -38,8 +38,7 @@ func newQPaintDeviceWindow_U(h unsafe.Pointer) *QPaintDeviceWindow {
 }
 
 func (this *QPaintDeviceWindow) MetaObject() *QMetaObject {
-	_ret := C.QPaintDeviceWindow_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QPaintDeviceWindow_MetaObject(this.h)))
 }
 
 func QPaintDeviceWindow_Tr(s string) string {

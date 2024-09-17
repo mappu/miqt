@@ -238,21 +238,23 @@ func (this *QFont) Families() []string {
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = C.GoStringN(&_outCast[i].data, C.int(int64(_outCast[i].len)))
-		C.free(unsafe.Pointer(_outCast[i])) // free the inner miqt_string*
+		var _lv_ms *C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoStringN(&_lv_ms.data, C.int(int64(_lv_ms.len)))
+		C.free(unsafe.Pointer(_lv_ms))
+		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QFont) SetFamilies(families []string) {
-	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
+	// For the C ABI, malloc a C array of raw pointers
 	families_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(families))))
 	defer C.free(unsafe.Pointer(families_CArray))
 	for i := range families {
-		single_ms := miqt_strdupg(families[i])
-		defer C.free(single_ms)
-		families_CArray[i] = (*C.struct_miqt_string)(single_ms)
+		families_i_ms := miqt_strdupg(families[i])
+		defer C.free(families_i_ms)
+		families_CArray[i] = (*C.struct_miqt_string)(families_i_ms)
 	}
 	families_ma := &C.struct_miqt_array{len: C.size_t(len(families)), data: unsafe.Pointer(families_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(families_ma))
@@ -273,8 +275,7 @@ func (this *QFont) SetStyleName(styleName string) {
 }
 
 func (this *QFont) PointSize() int {
-	_ret := C.QFont_PointSize(this.h)
-	return (int)(_ret)
+	return (int)(C.QFont_PointSize(this.h))
 }
 
 func (this *QFont) SetPointSize(pointSize int) {
@@ -282,8 +283,7 @@ func (this *QFont) SetPointSize(pointSize int) {
 }
 
 func (this *QFont) PointSizeF() float64 {
-	_ret := C.QFont_PointSizeF(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QFont_PointSizeF(this.h))
 }
 
 func (this *QFont) SetPointSizeF(pointSizeF float64) {
@@ -291,8 +291,7 @@ func (this *QFont) SetPointSizeF(pointSizeF float64) {
 }
 
 func (this *QFont) PixelSize() int {
-	_ret := C.QFont_PixelSize(this.h)
-	return (int)(_ret)
+	return (int)(C.QFont_PixelSize(this.h))
 }
 
 func (this *QFont) SetPixelSize(pixelSize int) {
@@ -300,8 +299,7 @@ func (this *QFont) SetPixelSize(pixelSize int) {
 }
 
 func (this *QFont) Weight() int {
-	_ret := C.QFont_Weight(this.h)
-	return (int)(_ret)
+	return (int)(C.QFont_Weight(this.h))
 }
 
 func (this *QFont) SetWeight(weight int) {
@@ -309,8 +307,7 @@ func (this *QFont) SetWeight(weight int) {
 }
 
 func (this *QFont) Bold() bool {
-	_ret := C.QFont_Bold(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QFont_Bold(this.h))
 }
 
 func (this *QFont) SetBold(bold bool) {
@@ -322,13 +319,11 @@ func (this *QFont) SetStyle(style QFont__Style) {
 }
 
 func (this *QFont) Style() QFont__Style {
-	_ret := C.QFont_Style(this.h)
-	return (QFont__Style)(_ret)
+	return (QFont__Style)(C.QFont_Style(this.h))
 }
 
 func (this *QFont) Italic() bool {
-	_ret := C.QFont_Italic(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QFont_Italic(this.h))
 }
 
 func (this *QFont) SetItalic(b bool) {
@@ -336,8 +331,7 @@ func (this *QFont) SetItalic(b bool) {
 }
 
 func (this *QFont) Underline() bool {
-	_ret := C.QFont_Underline(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QFont_Underline(this.h))
 }
 
 func (this *QFont) SetUnderline(underline bool) {
@@ -345,8 +339,7 @@ func (this *QFont) SetUnderline(underline bool) {
 }
 
 func (this *QFont) Overline() bool {
-	_ret := C.QFont_Overline(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QFont_Overline(this.h))
 }
 
 func (this *QFont) SetOverline(overline bool) {
@@ -354,8 +347,7 @@ func (this *QFont) SetOverline(overline bool) {
 }
 
 func (this *QFont) StrikeOut() bool {
-	_ret := C.QFont_StrikeOut(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QFont_StrikeOut(this.h))
 }
 
 func (this *QFont) SetStrikeOut(strikeOut bool) {
@@ -363,8 +355,7 @@ func (this *QFont) SetStrikeOut(strikeOut bool) {
 }
 
 func (this *QFont) FixedPitch() bool {
-	_ret := C.QFont_FixedPitch(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QFont_FixedPitch(this.h))
 }
 
 func (this *QFont) SetFixedPitch(fixedPitch bool) {
@@ -372,8 +363,7 @@ func (this *QFont) SetFixedPitch(fixedPitch bool) {
 }
 
 func (this *QFont) Kerning() bool {
-	_ret := C.QFont_Kerning(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QFont_Kerning(this.h))
 }
 
 func (this *QFont) SetKerning(kerning bool) {
@@ -381,13 +371,11 @@ func (this *QFont) SetKerning(kerning bool) {
 }
 
 func (this *QFont) StyleHint() QFont__StyleHint {
-	_ret := C.QFont_StyleHint(this.h)
-	return (QFont__StyleHint)(_ret)
+	return (QFont__StyleHint)(C.QFont_StyleHint(this.h))
 }
 
 func (this *QFont) StyleStrategy() QFont__StyleStrategy {
-	_ret := C.QFont_StyleStrategy(this.h)
-	return (QFont__StyleStrategy)(_ret)
+	return (QFont__StyleStrategy)(C.QFont_StyleStrategy(this.h))
 }
 
 func (this *QFont) SetStyleHint(param1 QFont__StyleHint) {
@@ -399,8 +387,7 @@ func (this *QFont) SetStyleStrategy(s QFont__StyleStrategy) {
 }
 
 func (this *QFont) Stretch() int {
-	_ret := C.QFont_Stretch(this.h)
-	return (int)(_ret)
+	return (int)(C.QFont_Stretch(this.h))
 }
 
 func (this *QFont) SetStretch(stretch int) {
@@ -408,13 +395,11 @@ func (this *QFont) SetStretch(stretch int) {
 }
 
 func (this *QFont) LetterSpacing() float64 {
-	_ret := C.QFont_LetterSpacing(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QFont_LetterSpacing(this.h))
 }
 
 func (this *QFont) LetterSpacingType() QFont__SpacingType {
-	_ret := C.QFont_LetterSpacingType(this.h)
-	return (QFont__SpacingType)(_ret)
+	return (QFont__SpacingType)(C.QFont_LetterSpacingType(this.h))
 }
 
 func (this *QFont) SetLetterSpacing(typeVal QFont__SpacingType, spacing float64) {
@@ -422,8 +407,7 @@ func (this *QFont) SetLetterSpacing(typeVal QFont__SpacingType, spacing float64)
 }
 
 func (this *QFont) WordSpacing() float64 {
-	_ret := C.QFont_WordSpacing(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QFont_WordSpacing(this.h))
 }
 
 func (this *QFont) SetWordSpacing(spacing float64) {
@@ -435,8 +419,7 @@ func (this *QFont) SetCapitalization(capitalization QFont__Capitalization) {
 }
 
 func (this *QFont) Capitalization() QFont__Capitalization {
-	_ret := C.QFont_Capitalization(this.h)
-	return (QFont__Capitalization)(_ret)
+	return (QFont__Capitalization)(C.QFont_Capitalization(this.h))
 }
 
 func (this *QFont) SetHintingPreference(hintingPreference QFont__HintingPreference) {
@@ -444,13 +427,11 @@ func (this *QFont) SetHintingPreference(hintingPreference QFont__HintingPreferen
 }
 
 func (this *QFont) HintingPreference() QFont__HintingPreference {
-	_ret := C.QFont_HintingPreference(this.h)
-	return (QFont__HintingPreference)(_ret)
+	return (QFont__HintingPreference)(C.QFont_HintingPreference(this.h))
 }
 
 func (this *QFont) RawMode() bool {
-	_ret := C.QFont_RawMode(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QFont_RawMode(this.h))
 }
 
 func (this *QFont) SetRawMode(rawMode bool) {
@@ -458,8 +439,7 @@ func (this *QFont) SetRawMode(rawMode bool) {
 }
 
 func (this *QFont) ExactMatch() bool {
-	_ret := C.QFont_ExactMatch(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QFont_ExactMatch(this.h))
 }
 
 func (this *QFont) OperatorAssign(param1 *QFont) {
@@ -467,23 +447,19 @@ func (this *QFont) OperatorAssign(param1 *QFont) {
 }
 
 func (this *QFont) OperatorEqual(param1 *QFont) bool {
-	_ret := C.QFont_OperatorEqual(this.h, param1.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QFont_OperatorEqual(this.h, param1.cPointer()))
 }
 
 func (this *QFont) OperatorNotEqual(param1 *QFont) bool {
-	_ret := C.QFont_OperatorNotEqual(this.h, param1.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QFont_OperatorNotEqual(this.h, param1.cPointer()))
 }
 
 func (this *QFont) OperatorLesser(param1 *QFont) bool {
-	_ret := C.QFont_OperatorLesser(this.h, param1.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QFont_OperatorLesser(this.h, param1.cPointer()))
 }
 
 func (this *QFont) IsCopyOf(param1 *QFont) bool {
-	_ret := C.QFont_IsCopyOf(this.h, param1.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QFont_IsCopyOf(this.h, param1.cPointer()))
 }
 
 func (this *QFont) SetRawName(rawName string) {
@@ -516,8 +492,7 @@ func (this *QFont) ToString() string {
 func (this *QFont) FromString(param1 string) bool {
 	param1_ms := miqt_strdupg(param1)
 	defer C.free(param1_ms)
-	_ret := C.QFont_FromString(this.h, (*C.struct_miqt_string)(param1_ms))
-	return (bool)(_ret)
+	return (bool)(C.QFont_FromString(this.h, (*C.struct_miqt_string)(param1_ms)))
 }
 
 func QFont_Substitute(param1 string) string {
@@ -536,8 +511,10 @@ func QFont_Substitutes(param1 string) []string {
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = C.GoStringN(&_outCast[i].data, C.int(int64(_outCast[i].len)))
-		C.free(unsafe.Pointer(_outCast[i])) // free the inner miqt_string*
+		var _lv_ms *C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoStringN(&_lv_ms.data, C.int(int64(_lv_ms.len)))
+		C.free(unsafe.Pointer(_lv_ms))
+		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -548,8 +525,10 @@ func QFont_Substitutions() []string {
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = C.GoStringN(&_outCast[i].data, C.int(int64(_outCast[i].len)))
-		C.free(unsafe.Pointer(_outCast[i])) // free the inner miqt_string*
+		var _lv_ms *C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoStringN(&_lv_ms.data, C.int(int64(_lv_ms.len)))
+		C.free(unsafe.Pointer(_lv_ms))
+		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -566,13 +545,13 @@ func QFont_InsertSubstitution(param1 string, param2 string) {
 func QFont_InsertSubstitutions(param1 string, param2 []string) {
 	param1_ms := miqt_strdupg(param1)
 	defer C.free(param1_ms)
-	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
+	// For the C ABI, malloc a C array of raw pointers
 	param2_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(param2))))
 	defer C.free(unsafe.Pointer(param2_CArray))
 	for i := range param2 {
-		single_ms := miqt_strdupg(param2[i])
-		defer C.free(single_ms)
-		param2_CArray[i] = (*C.struct_miqt_string)(single_ms)
+		param2_i_ms := miqt_strdupg(param2[i])
+		defer C.free(param2_i_ms)
+		param2_CArray[i] = (*C.struct_miqt_string)(param2_i_ms)
 	}
 	param2_ma := &C.struct_miqt_array{len: C.size_t(len(param2)), data: unsafe.Pointer(param2_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(param2_ma))
@@ -626,8 +605,7 @@ func (this *QFont) Resolve(param1 *QFont) *QFont {
 }
 
 func (this *QFont) Resolve2() uint {
-	_ret := C.QFont_Resolve2(this.h)
-	return (uint)(_ret)
+	return (uint)(C.QFont_Resolve2(this.h))
 }
 
 func (this *QFont) ResolveWithMask(mask uint) {

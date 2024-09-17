@@ -78,8 +78,7 @@ func NewQTabBar2(parent *QWidget) *QTabBar {
 }
 
 func (this *QTabBar) MetaObject() *QMetaObject {
-	_ret := C.QTabBar_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QTabBar_MetaObject(this.h)))
 }
 
 func QTabBar_Tr(s string) string {
@@ -101,8 +100,7 @@ func QTabBar_TrUtf8(s string) string {
 }
 
 func (this *QTabBar) Shape() QTabBar__Shape {
-	_ret := C.QTabBar_Shape(this.h)
-	return (QTabBar__Shape)(_ret)
+	return (QTabBar__Shape)(C.QTabBar_Shape(this.h))
 }
 
 func (this *QTabBar) SetShape(shape QTabBar__Shape) {
@@ -112,29 +110,25 @@ func (this *QTabBar) SetShape(shape QTabBar__Shape) {
 func (this *QTabBar) AddTab(text string) int {
 	text_ms := miqt_strdupg(text)
 	defer C.free(text_ms)
-	_ret := C.QTabBar_AddTab(this.h, (*C.struct_miqt_string)(text_ms))
-	return (int)(_ret)
+	return (int)(C.QTabBar_AddTab(this.h, (*C.struct_miqt_string)(text_ms)))
 }
 
 func (this *QTabBar) AddTab2(icon *QIcon, text string) int {
 	text_ms := miqt_strdupg(text)
 	defer C.free(text_ms)
-	_ret := C.QTabBar_AddTab2(this.h, icon.cPointer(), (*C.struct_miqt_string)(text_ms))
-	return (int)(_ret)
+	return (int)(C.QTabBar_AddTab2(this.h, icon.cPointer(), (*C.struct_miqt_string)(text_ms)))
 }
 
 func (this *QTabBar) InsertTab(index int, text string) int {
 	text_ms := miqt_strdupg(text)
 	defer C.free(text_ms)
-	_ret := C.QTabBar_InsertTab(this.h, (C.int)(index), (*C.struct_miqt_string)(text_ms))
-	return (int)(_ret)
+	return (int)(C.QTabBar_InsertTab(this.h, (C.int)(index), (*C.struct_miqt_string)(text_ms)))
 }
 
 func (this *QTabBar) InsertTab2(index int, icon *QIcon, text string) int {
 	text_ms := miqt_strdupg(text)
 	defer C.free(text_ms)
-	_ret := C.QTabBar_InsertTab2(this.h, (C.int)(index), icon.cPointer(), (*C.struct_miqt_string)(text_ms))
-	return (int)(_ret)
+	return (int)(C.QTabBar_InsertTab2(this.h, (C.int)(index), icon.cPointer(), (*C.struct_miqt_string)(text_ms)))
 }
 
 func (this *QTabBar) RemoveTab(index int) {
@@ -146,8 +140,7 @@ func (this *QTabBar) MoveTab(from int, to int) {
 }
 
 func (this *QTabBar) IsTabEnabled(index int) bool {
-	_ret := C.QTabBar_IsTabEnabled(this.h, (C.int)(index))
-	return (bool)(_ret)
+	return (bool)(C.QTabBar_IsTabEnabled(this.h, (C.int)(index)))
 }
 
 func (this *QTabBar) SetTabEnabled(index int, enabled bool) {
@@ -155,8 +148,7 @@ func (this *QTabBar) SetTabEnabled(index int, enabled bool) {
 }
 
 func (this *QTabBar) IsTabVisible(index int) bool {
-	_ret := C.QTabBar_IsTabVisible(this.h, (C.int)(index))
-	return (bool)(_ret)
+	return (bool)(C.QTabBar_IsTabVisible(this.h, (C.int)(index)))
 }
 
 func (this *QTabBar) SetTabVisible(index int, visible bool) {
@@ -199,8 +191,7 @@ func (this *QTabBar) SetTabIcon(index int, icon *QIcon) {
 }
 
 func (this *QTabBar) ElideMode() TextElideMode {
-	_ret := C.QTabBar_ElideMode(this.h)
-	return (TextElideMode)(_ret)
+	return (TextElideMode)(C.QTabBar_ElideMode(this.h))
 }
 
 func (this *QTabBar) SetElideMode(mode TextElideMode) {
@@ -252,18 +243,15 @@ func (this *QTabBar) TabRect(index int) *QRect {
 }
 
 func (this *QTabBar) TabAt(pos *QPoint) int {
-	_ret := C.QTabBar_TabAt(this.h, pos.cPointer())
-	return (int)(_ret)
+	return (int)(C.QTabBar_TabAt(this.h, pos.cPointer()))
 }
 
 func (this *QTabBar) CurrentIndex() int {
-	_ret := C.QTabBar_CurrentIndex(this.h)
-	return (int)(_ret)
+	return (int)(C.QTabBar_CurrentIndex(this.h))
 }
 
 func (this *QTabBar) Count() int {
-	_ret := C.QTabBar_Count(this.h)
-	return (int)(_ret)
+	return (int)(C.QTabBar_Count(this.h))
 }
 
 func (this *QTabBar) SizeHint() *QSize {
@@ -285,8 +273,7 @@ func (this *QTabBar) SetDrawBase(drawTheBase bool) {
 }
 
 func (this *QTabBar) DrawBase() bool {
-	_ret := C.QTabBar_DrawBase(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QTabBar_DrawBase(this.h))
 }
 
 func (this *QTabBar) IconSize() *QSize {
@@ -301,8 +288,7 @@ func (this *QTabBar) SetIconSize(size *QSize) {
 }
 
 func (this *QTabBar) UsesScrollButtons() bool {
-	_ret := C.QTabBar_UsesScrollButtons(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QTabBar_UsesScrollButtons(this.h))
 }
 
 func (this *QTabBar) SetUsesScrollButtons(useButtons bool) {
@@ -310,8 +296,7 @@ func (this *QTabBar) SetUsesScrollButtons(useButtons bool) {
 }
 
 func (this *QTabBar) TabsClosable() bool {
-	_ret := C.QTabBar_TabsClosable(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QTabBar_TabsClosable(this.h))
 }
 
 func (this *QTabBar) SetTabsClosable(closable bool) {
@@ -323,13 +308,11 @@ func (this *QTabBar) SetTabButton(index int, position QTabBar__ButtonPosition, w
 }
 
 func (this *QTabBar) TabButton(index int, position QTabBar__ButtonPosition) *QWidget {
-	_ret := C.QTabBar_TabButton(this.h, (C.int)(index), (C.uintptr_t)(position))
-	return newQWidget_U(unsafe.Pointer(_ret))
+	return newQWidget_U(unsafe.Pointer(C.QTabBar_TabButton(this.h, (C.int)(index), (C.uintptr_t)(position))))
 }
 
 func (this *QTabBar) SelectionBehaviorOnRemove() QTabBar__SelectionBehavior {
-	_ret := C.QTabBar_SelectionBehaviorOnRemove(this.h)
-	return (QTabBar__SelectionBehavior)(_ret)
+	return (QTabBar__SelectionBehavior)(C.QTabBar_SelectionBehaviorOnRemove(this.h))
 }
 
 func (this *QTabBar) SetSelectionBehaviorOnRemove(behavior QTabBar__SelectionBehavior) {
@@ -337,8 +320,7 @@ func (this *QTabBar) SetSelectionBehaviorOnRemove(behavior QTabBar__SelectionBeh
 }
 
 func (this *QTabBar) Expanding() bool {
-	_ret := C.QTabBar_Expanding(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QTabBar_Expanding(this.h))
 }
 
 func (this *QTabBar) SetExpanding(enabled bool) {
@@ -346,8 +328,7 @@ func (this *QTabBar) SetExpanding(enabled bool) {
 }
 
 func (this *QTabBar) IsMovable() bool {
-	_ret := C.QTabBar_IsMovable(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QTabBar_IsMovable(this.h))
 }
 
 func (this *QTabBar) SetMovable(movable bool) {
@@ -355,8 +336,7 @@ func (this *QTabBar) SetMovable(movable bool) {
 }
 
 func (this *QTabBar) DocumentMode() bool {
-	_ret := C.QTabBar_DocumentMode(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QTabBar_DocumentMode(this.h))
 }
 
 func (this *QTabBar) SetDocumentMode(set bool) {
@@ -364,8 +344,7 @@ func (this *QTabBar) SetDocumentMode(set bool) {
 }
 
 func (this *QTabBar) AutoHide() bool {
-	_ret := C.QTabBar_AutoHide(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QTabBar_AutoHide(this.h))
 }
 
 func (this *QTabBar) SetAutoHide(hide bool) {
@@ -373,8 +352,7 @@ func (this *QTabBar) SetAutoHide(hide bool) {
 }
 
 func (this *QTabBar) ChangeCurrentOnDrag() bool {
-	_ret := C.QTabBar_ChangeCurrentOnDrag(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QTabBar_ChangeCurrentOnDrag(this.h))
 }
 
 func (this *QTabBar) SetChangeCurrentOnDrag(change bool) {
@@ -413,8 +391,7 @@ func miqt_exec_callback_QTabBar_CurrentChanged(cb *C.void, index C.int) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	index_ret := index
-	slotval1 := (int)(index_ret)
+	slotval1 := (int)(index)
 
 	gofunc(slotval1)
 }
@@ -434,8 +411,7 @@ func miqt_exec_callback_QTabBar_TabCloseRequested(cb *C.void, index C.int) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	index_ret := index
-	slotval1 := (int)(index_ret)
+	slotval1 := (int)(index)
 
 	gofunc(slotval1)
 }
@@ -455,11 +431,9 @@ func miqt_exec_callback_QTabBar_TabMoved(cb *C.void, from C.int, to C.int) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	from_ret := from
-	slotval1 := (int)(from_ret)
+	slotval1 := (int)(from)
 
-	to_ret := to
-	slotval2 := (int)(to_ret)
+	slotval2 := (int)(to)
 
 	gofunc(slotval1, slotval2)
 }
@@ -479,8 +453,7 @@ func miqt_exec_callback_QTabBar_TabBarClicked(cb *C.void, index C.int) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	index_ret := index
-	slotval1 := (int)(index_ret)
+	slotval1 := (int)(index)
 
 	gofunc(slotval1)
 }
@@ -500,8 +473,7 @@ func miqt_exec_callback_QTabBar_TabBarDoubleClicked(cb *C.void, index C.int) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	index_ret := index
-	slotval1 := (int)(index_ret)
+	slotval1 := (int)(index)
 
 	gofunc(slotval1)
 }

@@ -68,8 +68,7 @@ func NewQHistoryState4(typeVal QHistoryState__HistoryType, parent *QState) *QHis
 }
 
 func (this *QHistoryState) MetaObject() *QMetaObject {
-	_ret := C.QHistoryState_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QHistoryState_MetaObject(this.h)))
 }
 
 func QHistoryState_Tr(s string) string {
@@ -91,8 +90,7 @@ func QHistoryState_TrUtf8(s string) string {
 }
 
 func (this *QHistoryState) DefaultTransition() *QAbstractTransition {
-	_ret := C.QHistoryState_DefaultTransition(this.h)
-	return newQAbstractTransition_U(unsafe.Pointer(_ret))
+	return newQAbstractTransition_U(unsafe.Pointer(C.QHistoryState_DefaultTransition(this.h)))
 }
 
 func (this *QHistoryState) SetDefaultTransition(transition *QAbstractTransition) {
@@ -100,8 +98,7 @@ func (this *QHistoryState) SetDefaultTransition(transition *QAbstractTransition)
 }
 
 func (this *QHistoryState) DefaultState() *QAbstractState {
-	_ret := C.QHistoryState_DefaultState(this.h)
-	return newQAbstractState_U(unsafe.Pointer(_ret))
+	return newQAbstractState_U(unsafe.Pointer(C.QHistoryState_DefaultState(this.h)))
 }
 
 func (this *QHistoryState) SetDefaultState(state *QAbstractState) {
@@ -109,8 +106,7 @@ func (this *QHistoryState) SetDefaultState(state *QAbstractState) {
 }
 
 func (this *QHistoryState) HistoryType() QHistoryState__HistoryType {
-	_ret := C.QHistoryState_HistoryType(this.h)
-	return (QHistoryState__HistoryType)(_ret)
+	return (QHistoryState__HistoryType)(C.QHistoryState_HistoryType(this.h))
 }
 
 func (this *QHistoryState) SetHistoryType(typeVal QHistoryState__HistoryType) {

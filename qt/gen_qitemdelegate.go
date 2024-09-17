@@ -49,8 +49,7 @@ func NewQItemDelegate2(parent *QObject) *QItemDelegate {
 }
 
 func (this *QItemDelegate) MetaObject() *QMetaObject {
-	_ret := C.QItemDelegate_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QItemDelegate_MetaObject(this.h)))
 }
 
 func QItemDelegate_Tr(s string) string {
@@ -72,8 +71,7 @@ func QItemDelegate_TrUtf8(s string) string {
 }
 
 func (this *QItemDelegate) HasClipping() bool {
-	_ret := C.QItemDelegate_HasClipping(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QItemDelegate_HasClipping(this.h))
 }
 
 func (this *QItemDelegate) SetClipping(clip bool) {
@@ -92,8 +90,7 @@ func (this *QItemDelegate) SizeHint(option *QStyleOptionViewItem, index *QModelI
 }
 
 func (this *QItemDelegate) CreateEditor(parent *QWidget, option *QStyleOptionViewItem, index *QModelIndex) *QWidget {
-	_ret := C.QItemDelegate_CreateEditor(this.h, parent.cPointer(), option.cPointer(), index.cPointer())
-	return newQWidget_U(unsafe.Pointer(_ret))
+	return newQWidget_U(unsafe.Pointer(C.QItemDelegate_CreateEditor(this.h, parent.cPointer(), option.cPointer(), index.cPointer())))
 }
 
 func (this *QItemDelegate) SetEditorData(editor *QWidget, index *QModelIndex) {
@@ -109,8 +106,7 @@ func (this *QItemDelegate) UpdateEditorGeometry(editor *QWidget, option *QStyleO
 }
 
 func (this *QItemDelegate) ItemEditorFactory() *QItemEditorFactory {
-	_ret := C.QItemDelegate_ItemEditorFactory(this.h)
-	return newQItemEditorFactory_U(unsafe.Pointer(_ret))
+	return newQItemEditorFactory_U(unsafe.Pointer(C.QItemDelegate_ItemEditorFactory(this.h)))
 }
 
 func (this *QItemDelegate) SetItemEditorFactory(factory *QItemEditorFactory) {

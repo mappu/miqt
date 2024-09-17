@@ -72,8 +72,7 @@ func NewQSlider4(orientation Orientation, parent *QWidget) *QSlider {
 }
 
 func (this *QSlider) MetaObject() *QMetaObject {
-	_ret := C.QSlider_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QSlider_MetaObject(this.h)))
 }
 
 func QSlider_Tr(s string) string {
@@ -113,8 +112,7 @@ func (this *QSlider) SetTickPosition(position QSlider__TickPosition) {
 }
 
 func (this *QSlider) TickPosition() QSlider__TickPosition {
-	_ret := C.QSlider_TickPosition(this.h)
-	return (QSlider__TickPosition)(_ret)
+	return (QSlider__TickPosition)(C.QSlider_TickPosition(this.h))
 }
 
 func (this *QSlider) SetTickInterval(ti int) {
@@ -122,13 +120,11 @@ func (this *QSlider) SetTickInterval(ti int) {
 }
 
 func (this *QSlider) TickInterval() int {
-	_ret := C.QSlider_TickInterval(this.h)
-	return (int)(_ret)
+	return (int)(C.QSlider_TickInterval(this.h))
 }
 
 func (this *QSlider) Event(event *QEvent) bool {
-	_ret := C.QSlider_Event(this.h, event.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QSlider_Event(this.h, event.cPointer()))
 }
 
 func QSlider_Tr2(s string, c string) string {

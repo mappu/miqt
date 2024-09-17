@@ -72,8 +72,7 @@ func NewQApplication2(args []string, param3 int) *QApplication {
 }
 
 func (this *QApplication) MetaObject() *QMetaObject {
-	_ret := C.QApplication_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QApplication_MetaObject(this.h)))
 }
 
 func QApplication_Tr(s string) string {
@@ -95,8 +94,7 @@ func QApplication_TrUtf8(s string) string {
 }
 
 func QApplication_Style() *QStyle {
-	_ret := C.QApplication_Style()
-	return newQStyle_U(unsafe.Pointer(_ret))
+	return newQStyle_U(unsafe.Pointer(C.QApplication_Style()))
 }
 
 func QApplication_SetStyle(style *QStyle) {
@@ -106,13 +104,11 @@ func QApplication_SetStyle(style *QStyle) {
 func QApplication_SetStyleWithStyle(style string) *QStyle {
 	style_ms := miqt_strdupg(style)
 	defer C.free(style_ms)
-	_ret := C.QApplication_SetStyleWithStyle((*C.struct_miqt_string)(style_ms))
-	return newQStyle_U(unsafe.Pointer(_ret))
+	return newQStyle_U(unsafe.Pointer(C.QApplication_SetStyleWithStyle((*C.struct_miqt_string)(style_ms))))
 }
 
 func QApplication_ColorSpec() int {
-	_ret := C.QApplication_ColorSpec()
-	return (int)(_ret)
+	return (int)(C.QApplication_ColorSpec())
 }
 
 func QApplication_SetColorSpec(colorSpec int) {
@@ -187,9 +183,9 @@ func QApplication_WindowIcon() *QIcon {
 func QApplication_AllWidgets() []*QWidget {
 	var _ma *C.struct_miqt_array = C.QApplication_AllWidgets()
 	_ret := make([]*QWidget, int(_ma.len))
-	_outCast := (*[0xffff]*C.QWidget)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QWidget)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQWidget(_outCast[i])
+		_ret[i] = newQWidget_U(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -198,37 +194,32 @@ func QApplication_AllWidgets() []*QWidget {
 func QApplication_TopLevelWidgets() []*QWidget {
 	var _ma *C.struct_miqt_array = C.QApplication_TopLevelWidgets()
 	_ret := make([]*QWidget, int(_ma.len))
-	_outCast := (*[0xffff]*C.QWidget)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QWidget)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQWidget(_outCast[i])
+		_ret[i] = newQWidget_U(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func QApplication_Desktop() *QDesktopWidget {
-	_ret := C.QApplication_Desktop()
-	return newQDesktopWidget_U(unsafe.Pointer(_ret))
+	return newQDesktopWidget_U(unsafe.Pointer(C.QApplication_Desktop()))
 }
 
 func QApplication_ActivePopupWidget() *QWidget {
-	_ret := C.QApplication_ActivePopupWidget()
-	return newQWidget_U(unsafe.Pointer(_ret))
+	return newQWidget_U(unsafe.Pointer(C.QApplication_ActivePopupWidget()))
 }
 
 func QApplication_ActiveModalWidget() *QWidget {
-	_ret := C.QApplication_ActiveModalWidget()
-	return newQWidget_U(unsafe.Pointer(_ret))
+	return newQWidget_U(unsafe.Pointer(C.QApplication_ActiveModalWidget()))
 }
 
 func QApplication_FocusWidget() *QWidget {
-	_ret := C.QApplication_FocusWidget()
-	return newQWidget_U(unsafe.Pointer(_ret))
+	return newQWidget_U(unsafe.Pointer(C.QApplication_FocusWidget()))
 }
 
 func QApplication_ActiveWindow() *QWidget {
-	_ret := C.QApplication_ActiveWindow()
-	return newQWidget_U(unsafe.Pointer(_ret))
+	return newQWidget_U(unsafe.Pointer(C.QApplication_ActiveWindow()))
 }
 
 func QApplication_SetActiveWindow(act *QWidget) {
@@ -236,23 +227,19 @@ func QApplication_SetActiveWindow(act *QWidget) {
 }
 
 func QApplication_WidgetAt(p *QPoint) *QWidget {
-	_ret := C.QApplication_WidgetAt(p.cPointer())
-	return newQWidget_U(unsafe.Pointer(_ret))
+	return newQWidget_U(unsafe.Pointer(C.QApplication_WidgetAt(p.cPointer())))
 }
 
 func QApplication_WidgetAt2(x int, y int) *QWidget {
-	_ret := C.QApplication_WidgetAt2((C.int)(x), (C.int)(y))
-	return newQWidget_U(unsafe.Pointer(_ret))
+	return newQWidget_U(unsafe.Pointer(C.QApplication_WidgetAt2((C.int)(x), (C.int)(y))))
 }
 
 func QApplication_TopLevelAt(p *QPoint) *QWidget {
-	_ret := C.QApplication_TopLevelAt(p.cPointer())
-	return newQWidget_U(unsafe.Pointer(_ret))
+	return newQWidget_U(unsafe.Pointer(C.QApplication_TopLevelAt(p.cPointer())))
 }
 
 func QApplication_TopLevelAt2(x int, y int) *QWidget {
-	_ret := C.QApplication_TopLevelAt2((C.int)(x), (C.int)(y))
-	return newQWidget_U(unsafe.Pointer(_ret))
+	return newQWidget_U(unsafe.Pointer(C.QApplication_TopLevelAt2((C.int)(x), (C.int)(y))))
 }
 
 func QApplication_Beep() {
@@ -268,8 +255,7 @@ func QApplication_SetCursorFlashTime(cursorFlashTime int) {
 }
 
 func QApplication_CursorFlashTime() int {
-	_ret := C.QApplication_CursorFlashTime()
-	return (int)(_ret)
+	return (int)(C.QApplication_CursorFlashTime())
 }
 
 func QApplication_SetDoubleClickInterval(doubleClickInterval int) {
@@ -277,8 +263,7 @@ func QApplication_SetDoubleClickInterval(doubleClickInterval int) {
 }
 
 func QApplication_DoubleClickInterval() int {
-	_ret := C.QApplication_DoubleClickInterval()
-	return (int)(_ret)
+	return (int)(C.QApplication_DoubleClickInterval())
 }
 
 func QApplication_SetKeyboardInputInterval(keyboardInputInterval int) {
@@ -286,8 +271,7 @@ func QApplication_SetKeyboardInputInterval(keyboardInputInterval int) {
 }
 
 func QApplication_KeyboardInputInterval() int {
-	_ret := C.QApplication_KeyboardInputInterval()
-	return (int)(_ret)
+	return (int)(C.QApplication_KeyboardInputInterval())
 }
 
 func QApplication_SetWheelScrollLines(wheelScrollLines int) {
@@ -295,8 +279,7 @@ func QApplication_SetWheelScrollLines(wheelScrollLines int) {
 }
 
 func QApplication_WheelScrollLines() int {
-	_ret := C.QApplication_WheelScrollLines()
-	return (int)(_ret)
+	return (int)(C.QApplication_WheelScrollLines())
 }
 
 func QApplication_SetGlobalStrut(globalStrut *QSize) {
@@ -315,8 +298,7 @@ func QApplication_SetStartDragTime(ms int) {
 }
 
 func QApplication_StartDragTime() int {
-	_ret := C.QApplication_StartDragTime()
-	return (int)(_ret)
+	return (int)(C.QApplication_StartDragTime())
 }
 
 func QApplication_SetStartDragDistance(l int) {
@@ -324,13 +306,11 @@ func QApplication_SetStartDragDistance(l int) {
 }
 
 func QApplication_StartDragDistance() int {
-	_ret := C.QApplication_StartDragDistance()
-	return (int)(_ret)
+	return (int)(C.QApplication_StartDragDistance())
 }
 
 func QApplication_IsEffectEnabled(param1 UIEffect) bool {
-	_ret := C.QApplication_IsEffectEnabled((C.uintptr_t)(param1))
-	return (bool)(_ret)
+	return (bool)(C.QApplication_IsEffectEnabled((C.uintptr_t)(param1)))
 }
 
 func QApplication_SetEffectEnabled(param1 UIEffect) {
@@ -338,13 +318,11 @@ func QApplication_SetEffectEnabled(param1 UIEffect) {
 }
 
 func QApplication_Exec() int {
-	_ret := C.QApplication_Exec()
-	return (int)(_ret)
+	return (int)(C.QApplication_Exec())
 }
 
 func (this *QApplication) Notify(param1 *QObject, param2 *QEvent) bool {
-	_ret := C.QApplication_Notify(this.h, param1.cPointer(), param2.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QApplication_Notify(this.h, param1.cPointer(), param2.cPointer()))
 }
 
 func (this *QApplication) FocusChanged(old *QWidget, now *QWidget) {
@@ -362,10 +340,8 @@ func miqt_exec_callback_QApplication_FocusChanged(cb *C.void, old *C.QWidget, no
 	}
 
 	// Convert all CABI parameters to Go parameters
-	old_ret := old
-	slotval1 := newQWidget_U(unsafe.Pointer(old_ret))
-	now_ret := now
-	slotval2 := newQWidget_U(unsafe.Pointer(now_ret))
+	slotval1 := newQWidget_U(unsafe.Pointer(old))
+	slotval2 := newQWidget_U(unsafe.Pointer(now))
 
 	gofunc(slotval1, slotval2)
 }
@@ -388,8 +364,7 @@ func (this *QApplication) SetAutoSipEnabled(enabled bool) {
 }
 
 func (this *QApplication) AutoSipEnabled() bool {
-	_ret := C.QApplication_AutoSipEnabled(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QApplication_AutoSipEnabled(this.h))
 }
 
 func QApplication_CloseAllWindows() {

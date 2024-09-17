@@ -43,8 +43,7 @@ func newQObjectData_U(h unsafe.Pointer) *QObjectData {
 }
 
 func (this *QObjectData) DynamicMetaObject() *QMetaObject {
-	_ret := C.QObjectData_DynamicMetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QObjectData_DynamicMetaObject(this.h)))
 }
 
 // Delete this object from C++ memory.
@@ -96,8 +95,7 @@ func NewQObject2(parent *QObject) *QObject {
 }
 
 func (this *QObject) MetaObject() *QMetaObject {
-	_ret := C.QObject_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QObject_MetaObject(this.h)))
 }
 
 func QObject_Tr(s string) string {
@@ -119,13 +117,11 @@ func QObject_TrUtf8(s string) string {
 }
 
 func (this *QObject) Event(event *QEvent) bool {
-	_ret := C.QObject_Event(this.h, event.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QObject_Event(this.h, event.cPointer()))
 }
 
 func (this *QObject) EventFilter(watched *QObject, event *QEvent) bool {
-	_ret := C.QObject_EventFilter(this.h, watched.cPointer(), event.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QObject_EventFilter(this.h, watched.cPointer(), event.cPointer()))
 }
 
 func (this *QObject) ObjectName() string {
@@ -142,28 +138,23 @@ func (this *QObject) SetObjectName(name string) {
 }
 
 func (this *QObject) IsWidgetType() bool {
-	_ret := C.QObject_IsWidgetType(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QObject_IsWidgetType(this.h))
 }
 
 func (this *QObject) IsWindowType() bool {
-	_ret := C.QObject_IsWindowType(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QObject_IsWindowType(this.h))
 }
 
 func (this *QObject) SignalsBlocked() bool {
-	_ret := C.QObject_SignalsBlocked(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QObject_SignalsBlocked(this.h))
 }
 
 func (this *QObject) BlockSignals(b bool) bool {
-	_ret := C.QObject_BlockSignals(this.h, (C.bool)(b))
-	return (bool)(_ret)
+	return (bool)(C.QObject_BlockSignals(this.h, (C.bool)(b)))
 }
 
 func (this *QObject) Thread() *QThread {
-	_ret := C.QObject_Thread(this.h)
-	return newQThread_U(unsafe.Pointer(_ret))
+	return newQThread_U(unsafe.Pointer(C.QObject_Thread(this.h)))
 }
 
 func (this *QObject) MoveToThread(thread *QThread) {
@@ -171,8 +162,7 @@ func (this *QObject) MoveToThread(thread *QThread) {
 }
 
 func (this *QObject) StartTimer(interval int) int {
-	_ret := C.QObject_StartTimer(this.h, (C.int)(interval))
-	return (int)(_ret)
+	return (int)(C.QObject_StartTimer(this.h, (C.int)(interval)))
 }
 
 func (this *QObject) KillTimer(id int) {
@@ -182,9 +172,9 @@ func (this *QObject) KillTimer(id int) {
 func (this *QObject) Children() []*QObject {
 	var _ma *C.struct_miqt_array = C.QObject_Children(this.h)
 	_ret := make([]*QObject, int(_ma.len))
-	_outCast := (*[0xffff]*C.QObject)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QObject)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQObject(_outCast[i])
+		_ret[i] = newQObject_U(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -221,13 +211,11 @@ func (this *QObject) Connect2(sender *QObject, signal string, member string) *QM
 }
 
 func QObject_Disconnect(sender *QObject, signal *QMetaMethod, receiver *QObject, member *QMetaMethod) bool {
-	_ret := C.QObject_Disconnect(sender.cPointer(), signal.cPointer(), receiver.cPointer(), member.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QObject_Disconnect(sender.cPointer(), signal.cPointer(), receiver.cPointer(), member.cPointer()))
 }
 
 func QObject_DisconnectWithQMetaObjectConnection(param1 *QMetaObject__Connection) bool {
-	_ret := C.QObject_DisconnectWithQMetaObjectConnection(param1.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QObject_DisconnectWithQMetaObjectConnection(param1.cPointer()))
 }
 
 func (this *QObject) DumpObjectTree() {
@@ -249,8 +237,7 @@ func (this *QObject) DumpObjectInfo2() {
 func (this *QObject) SetProperty(name string, value *QVariant) bool {
 	name_Cstring := C.CString(name)
 	defer C.free(unsafe.Pointer(name_Cstring))
-	_ret := C.QObject_SetProperty(this.h, name_Cstring, value.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QObject_SetProperty(this.h, name_Cstring, value.cPointer()))
 }
 
 func (this *QObject) Property(name string) *QVariant {
@@ -265,17 +252,19 @@ func (this *QObject) Property(name string) *QVariant {
 func (this *QObject) DynamicPropertyNames() []QByteArray {
 	var _ma *C.struct_miqt_array = C.QObject_DynamicPropertyNames(this.h)
 	_ret := make([]QByteArray, int(_ma.len))
-	_outCast := (*[0xffff]*C.QByteArray)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QByteArray)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = *newQByteArray(_outCast[i])
+		_lv_ret := _outCast[i]
+		_lv_goptr := newQByteArray(_lv_ret)
+		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+		_ret[i] = *_lv_goptr
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func QObject_RegisterUserData() uint {
-	_ret := C.QObject_RegisterUserData()
-	return (uint)(_ret)
+	return (uint)(C.QObject_RegisterUserData())
 }
 
 func (this *QObject) SetUserData(id uint, data *QObjectUserData) {
@@ -283,8 +272,7 @@ func (this *QObject) SetUserData(id uint, data *QObjectUserData) {
 }
 
 func (this *QObject) UserData(id uint) *QObjectUserData {
-	_ret := C.QObject_UserData(this.h, (C.uint)(id))
-	return newQObjectUserData_U(unsafe.Pointer(_ret))
+	return newQObjectUserData_U(unsafe.Pointer(C.QObject_UserData(this.h, (C.uint)(id))))
 }
 
 func (this *QObject) Destroyed() {
@@ -305,15 +293,13 @@ func miqt_exec_callback_QObject_Destroyed(cb *C.void) {
 }
 
 func (this *QObject) Parent() *QObject {
-	_ret := C.QObject_Parent(this.h)
-	return newQObject_U(unsafe.Pointer(_ret))
+	return newQObject_U(unsafe.Pointer(C.QObject_Parent(this.h)))
 }
 
 func (this *QObject) Inherits(classname string) bool {
 	classname_Cstring := C.CString(classname)
 	defer C.free(unsafe.Pointer(classname_Cstring))
-	_ret := C.QObject_Inherits(this.h, classname_Cstring)
-	return (bool)(_ret)
+	return (bool)(C.QObject_Inherits(this.h, classname_Cstring))
 }
 
 func (this *QObject) DeleteLater() {
@@ -365,8 +351,7 @@ func QObject_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QObject) StartTimer2(interval int, timerType TimerType) int {
-	_ret := C.QObject_StartTimer2(this.h, (C.int)(interval), (C.uintptr_t)(timerType))
-	return (int)(_ret)
+	return (int)(C.QObject_StartTimer2(this.h, (C.int)(interval), (C.uintptr_t)(timerType)))
 }
 
 func QObject_Connect5(sender *QObject, signal *QMetaMethod, receiver *QObject, method *QMetaMethod, typeVal ConnectionType) *QMetaObject__Connection {
@@ -402,8 +387,7 @@ func miqt_exec_callback_QObject_Destroyed1(cb *C.void, param1 *C.QObject) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	param1_ret := param1
-	slotval1 := newQObject_U(unsafe.Pointer(param1_ret))
+	slotval1 := newQObject_U(unsafe.Pointer(param1))
 
 	gofunc(slotval1)
 }

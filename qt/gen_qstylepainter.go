@@ -55,13 +55,11 @@ func NewQStylePainter3(pd *QPaintDevice, w *QWidget) *QStylePainter {
 }
 
 func (this *QStylePainter) Begin(w *QWidget) bool {
-	_ret := C.QStylePainter_Begin(this.h, w.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QStylePainter_Begin(this.h, w.cPointer()))
 }
 
 func (this *QStylePainter) Begin2(pd *QPaintDevice, w *QWidget) bool {
-	_ret := C.QStylePainter_Begin2(this.h, pd.cPointer(), w.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QStylePainter_Begin2(this.h, pd.cPointer(), w.cPointer()))
 }
 
 func (this *QStylePainter) DrawPrimitive(pe QStyle__PrimitiveElement, opt *QStyleOption) {
@@ -87,8 +85,7 @@ func (this *QStylePainter) DrawItemPixmap(r *QRect, flags int, pixmap *QPixmap) 
 }
 
 func (this *QStylePainter) Style() *QStyle {
-	_ret := C.QStylePainter_Style(this.h)
-	return newQStyle_U(unsafe.Pointer(_ret))
+	return newQStyle_U(unsafe.Pointer(C.QStylePainter_Style(this.h)))
 }
 
 func (this *QStylePainter) DrawItemText6(r *QRect, flags int, pal *QPalette, enabled bool, text string, textRole QPalette__ColorRole) {

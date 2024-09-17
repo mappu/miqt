@@ -57,8 +57,7 @@ func NewQProgressBar2(parent *QWidget) *QProgressBar {
 }
 
 func (this *QProgressBar) MetaObject() *QMetaObject {
-	_ret := C.QProgressBar_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QProgressBar_MetaObject(this.h)))
 }
 
 func QProgressBar_Tr(s string) string {
@@ -80,18 +79,15 @@ func QProgressBar_TrUtf8(s string) string {
 }
 
 func (this *QProgressBar) Minimum() int {
-	_ret := C.QProgressBar_Minimum(this.h)
-	return (int)(_ret)
+	return (int)(C.QProgressBar_Minimum(this.h))
 }
 
 func (this *QProgressBar) Maximum() int {
-	_ret := C.QProgressBar_Maximum(this.h)
-	return (int)(_ret)
+	return (int)(C.QProgressBar_Maximum(this.h))
 }
 
 func (this *QProgressBar) Value() int {
-	_ret := C.QProgressBar_Value(this.h)
-	return (int)(_ret)
+	return (int)(C.QProgressBar_Value(this.h))
 }
 
 func (this *QProgressBar) Text() string {
@@ -106,13 +102,11 @@ func (this *QProgressBar) SetTextVisible(visible bool) {
 }
 
 func (this *QProgressBar) IsTextVisible() bool {
-	_ret := C.QProgressBar_IsTextVisible(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QProgressBar_IsTextVisible(this.h))
 }
 
 func (this *QProgressBar) Alignment() int {
-	_ret := C.QProgressBar_Alignment(this.h)
-	return (int)(_ret)
+	return (int)(C.QProgressBar_Alignment(this.h))
 }
 
 func (this *QProgressBar) SetAlignment(alignment int) {
@@ -134,8 +128,7 @@ func (this *QProgressBar) MinimumSizeHint() *QSize {
 }
 
 func (this *QProgressBar) Orientation() Orientation {
-	_ret := C.QProgressBar_Orientation(this.h)
-	return (Orientation)(_ret)
+	return (Orientation)(C.QProgressBar_Orientation(this.h))
 }
 
 func (this *QProgressBar) SetInvertedAppearance(invert bool) {
@@ -143,8 +136,7 @@ func (this *QProgressBar) SetInvertedAppearance(invert bool) {
 }
 
 func (this *QProgressBar) InvertedAppearance() bool {
-	_ret := C.QProgressBar_InvertedAppearance(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QProgressBar_InvertedAppearance(this.h))
 }
 
 func (this *QProgressBar) SetTextDirection(textDirection QProgressBar__Direction) {
@@ -152,8 +144,7 @@ func (this *QProgressBar) SetTextDirection(textDirection QProgressBar__Direction
 }
 
 func (this *QProgressBar) TextDirection() QProgressBar__Direction {
-	_ret := C.QProgressBar_TextDirection(this.h)
-	return (QProgressBar__Direction)(_ret)
+	return (QProgressBar__Direction)(C.QProgressBar_TextDirection(this.h))
 }
 
 func (this *QProgressBar) SetFormat(format string) {
@@ -212,8 +203,7 @@ func miqt_exec_callback_QProgressBar_ValueChanged(cb *C.void, value C.int) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	value_ret := value
-	slotval1 := (int)(value_ret)
+	slotval1 := (int)(value)
 
 	gofunc(slotval1)
 }

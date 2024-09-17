@@ -109,8 +109,7 @@ func NewQAction6(icon *QIcon, text string, parent *QObject) *QAction {
 }
 
 func (this *QAction) MetaObject() *QMetaObject {
-	_ret := C.QAction_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QAction_MetaObject(this.h)))
 }
 
 func QAction_Tr(s string) string {
@@ -136,8 +135,7 @@ func (this *QAction) SetActionGroup(group *QActionGroup) {
 }
 
 func (this *QAction) ActionGroup() *QActionGroup {
-	_ret := C.QAction_ActionGroup(this.h)
-	return newQActionGroup_U(unsafe.Pointer(_ret))
+	return newQActionGroup_U(unsafe.Pointer(C.QAction_ActionGroup(this.h)))
 }
 
 func (this *QAction) SetIcon(icon *QIcon) {
@@ -221,13 +219,11 @@ func (this *QAction) SetPriority(priority QAction__Priority) {
 }
 
 func (this *QAction) Priority() QAction__Priority {
-	_ret := C.QAction_Priority(this.h)
-	return (QAction__Priority)(_ret)
+	return (QAction__Priority)(C.QAction_Priority(this.h))
 }
 
 func (this *QAction) Menu() *QMenu {
-	_ret := C.QAction_Menu(this.h)
-	return newQMenu_U(unsafe.Pointer(_ret))
+	return newQMenu_U(unsafe.Pointer(C.QAction_Menu(this.h)))
 }
 
 func (this *QAction) SetMenu(menu *QMenu) {
@@ -239,8 +235,7 @@ func (this *QAction) SetSeparator(b bool) {
 }
 
 func (this *QAction) IsSeparator() bool {
-	_ret := C.QAction_IsSeparator(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QAction_IsSeparator(this.h))
 }
 
 func (this *QAction) SetShortcut(shortcut *QKeySequence) {
@@ -273,9 +268,12 @@ func (this *QAction) SetShortcutsWithShortcuts(shortcuts QKeySequence__StandardK
 func (this *QAction) Shortcuts() []QKeySequence {
 	var _ma *C.struct_miqt_array = C.QAction_Shortcuts(this.h)
 	_ret := make([]QKeySequence, int(_ma.len))
-	_outCast := (*[0xffff]*C.QKeySequence)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QKeySequence)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = *newQKeySequence(_outCast[i])
+		_lv_ret := _outCast[i]
+		_lv_goptr := newQKeySequence(_lv_ret)
+		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+		_ret[i] = *_lv_goptr
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -286,8 +284,7 @@ func (this *QAction) SetShortcutContext(context ShortcutContext) {
 }
 
 func (this *QAction) ShortcutContext() ShortcutContext {
-	_ret := C.QAction_ShortcutContext(this.h)
-	return (ShortcutContext)(_ret)
+	return (ShortcutContext)(C.QAction_ShortcutContext(this.h))
 }
 
 func (this *QAction) SetAutoRepeat(autoRepeat bool) {
@@ -295,8 +292,7 @@ func (this *QAction) SetAutoRepeat(autoRepeat bool) {
 }
 
 func (this *QAction) AutoRepeat() bool {
-	_ret := C.QAction_AutoRepeat(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QAction_AutoRepeat(this.h))
 }
 
 func (this *QAction) SetFont(font *QFont) {
@@ -315,8 +311,7 @@ func (this *QAction) SetCheckable(checkable bool) {
 }
 
 func (this *QAction) IsCheckable() bool {
-	_ret := C.QAction_IsCheckable(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QAction_IsCheckable(this.h))
 }
 
 func (this *QAction) Data() *QVariant {
@@ -331,18 +326,15 @@ func (this *QAction) SetData(varVal *QVariant) {
 }
 
 func (this *QAction) IsChecked() bool {
-	_ret := C.QAction_IsChecked(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QAction_IsChecked(this.h))
 }
 
 func (this *QAction) IsEnabled() bool {
-	_ret := C.QAction_IsEnabled(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QAction_IsEnabled(this.h))
 }
 
 func (this *QAction) IsVisible() bool {
-	_ret := C.QAction_IsVisible(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QAction_IsVisible(this.h))
 }
 
 func (this *QAction) Activate(event QAction__ActionEvent) {
@@ -350,8 +342,7 @@ func (this *QAction) Activate(event QAction__ActionEvent) {
 }
 
 func (this *QAction) ShowStatusText() bool {
-	_ret := C.QAction_ShowStatusText(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QAction_ShowStatusText(this.h))
 }
 
 func (this *QAction) SetMenuRole(menuRole QAction__MenuRole) {
@@ -359,8 +350,7 @@ func (this *QAction) SetMenuRole(menuRole QAction__MenuRole) {
 }
 
 func (this *QAction) MenuRole() QAction__MenuRole {
-	_ret := C.QAction_MenuRole(this.h)
-	return (QAction__MenuRole)(_ret)
+	return (QAction__MenuRole)(C.QAction_MenuRole(this.h))
 }
 
 func (this *QAction) SetIconVisibleInMenu(visible bool) {
@@ -368,8 +358,7 @@ func (this *QAction) SetIconVisibleInMenu(visible bool) {
 }
 
 func (this *QAction) IsIconVisibleInMenu() bool {
-	_ret := C.QAction_IsIconVisibleInMenu(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QAction_IsIconVisibleInMenu(this.h))
 }
 
 func (this *QAction) SetShortcutVisibleInContextMenu(show bool) {
@@ -377,21 +366,19 @@ func (this *QAction) SetShortcutVisibleInContextMenu(show bool) {
 }
 
 func (this *QAction) IsShortcutVisibleInContextMenu() bool {
-	_ret := C.QAction_IsShortcutVisibleInContextMenu(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QAction_IsShortcutVisibleInContextMenu(this.h))
 }
 
 func (this *QAction) ParentWidget() *QWidget {
-	_ret := C.QAction_ParentWidget(this.h)
-	return newQWidget_U(unsafe.Pointer(_ret))
+	return newQWidget_U(unsafe.Pointer(C.QAction_ParentWidget(this.h)))
 }
 
 func (this *QAction) AssociatedWidgets() []*QWidget {
 	var _ma *C.struct_miqt_array = C.QAction_AssociatedWidgets(this.h)
 	_ret := make([]*QWidget, int(_ma.len))
-	_outCast := (*[0xffff]*C.QWidget)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QWidget)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQWidget(_outCast[i])
+		_ret[i] = newQWidget_U(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -400,9 +387,9 @@ func (this *QAction) AssociatedWidgets() []*QWidget {
 func (this *QAction) AssociatedGraphicsWidgets() []*QGraphicsWidget {
 	var _ma *C.struct_miqt_array = C.QAction_AssociatedGraphicsWidgets(this.h)
 	_ret := make([]*QGraphicsWidget, int(_ma.len))
-	_outCast := (*[0xffff]*C.QGraphicsWidget)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QGraphicsWidget)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQGraphicsWidget(_outCast[i])
+		_ret[i] = newQGraphicsWidget_U(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -502,8 +489,7 @@ func miqt_exec_callback_QAction_Toggled(cb *C.void, param1 C.bool) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	param1_ret := param1
-	slotval1 := (bool)(param1_ret)
+	slotval1 := (bool)(param1)
 
 	gofunc(slotval1)
 }
@@ -553,8 +539,7 @@ func QAction_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QAction) ShowStatusText1(widget *QWidget) bool {
-	_ret := C.QAction_ShowStatusText1(this.h, widget.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QAction_ShowStatusText1(this.h, widget.cPointer()))
 }
 
 func (this *QAction) Triggered1(checked bool) {
@@ -572,8 +557,7 @@ func miqt_exec_callback_QAction_Triggered1(cb *C.void, checked C.bool) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	checked_ret := checked
-	slotval1 := (bool)(checked_ret)
+	slotval1 := (bool)(checked)
 
 	gofunc(slotval1)
 }

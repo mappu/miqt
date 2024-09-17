@@ -61,8 +61,7 @@ func NewQGraphicsProxyWidget3(parent *QGraphicsItem, wFlags int) *QGraphicsProxy
 }
 
 func (this *QGraphicsProxyWidget) MetaObject() *QMetaObject {
-	_ret := C.QGraphicsProxyWidget_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QGraphicsProxyWidget_MetaObject(this.h)))
 }
 
 func QGraphicsProxyWidget_Tr(s string) string {
@@ -88,8 +87,7 @@ func (this *QGraphicsProxyWidget) SetWidget(widget *QWidget) {
 }
 
 func (this *QGraphicsProxyWidget) Widget() *QWidget {
-	_ret := C.QGraphicsProxyWidget_Widget(this.h)
-	return newQWidget_U(unsafe.Pointer(_ret))
+	return newQWidget_U(unsafe.Pointer(C.QGraphicsProxyWidget_Widget(this.h)))
 }
 
 func (this *QGraphicsProxyWidget) SubWidgetRect(widget *QWidget) *QRectF {
@@ -108,13 +106,11 @@ func (this *QGraphicsProxyWidget) Paint(painter *QPainter, option *QStyleOptionG
 }
 
 func (this *QGraphicsProxyWidget) Type() int {
-	_ret := C.QGraphicsProxyWidget_Type(this.h)
-	return (int)(_ret)
+	return (int)(C.QGraphicsProxyWidget_Type(this.h))
 }
 
 func (this *QGraphicsProxyWidget) CreateProxyForChildWidget(child *QWidget) *QGraphicsProxyWidget {
-	_ret := C.QGraphicsProxyWidget_CreateProxyForChildWidget(this.h, child.cPointer())
-	return newQGraphicsProxyWidget_U(unsafe.Pointer(_ret))
+	return newQGraphicsProxyWidget_U(unsafe.Pointer(C.QGraphicsProxyWidget_CreateProxyForChildWidget(this.h, child.cPointer())))
 }
 
 func QGraphicsProxyWidget_Tr2(s string, c string) string {

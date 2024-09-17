@@ -70,43 +70,35 @@ func (this *QRandomGenerator) OperatorAssign(other *QRandomGenerator) {
 }
 
 func (this *QRandomGenerator) Generate() uint {
-	_ret := C.QRandomGenerator_Generate(this.h)
-	return (uint)(_ret)
+	return (uint)(C.QRandomGenerator_Generate(this.h))
 }
 
 func (this *QRandomGenerator) Generate64() uint64 {
-	_ret := C.QRandomGenerator_Generate64(this.h)
-	return (uint64)(_ret)
+	return (uint64)(C.QRandomGenerator_Generate64(this.h))
 }
 
 func (this *QRandomGenerator) GenerateDouble() float64 {
-	_ret := C.QRandomGenerator_GenerateDouble(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QRandomGenerator_GenerateDouble(this.h))
 }
 
 func (this *QRandomGenerator) Bounded(highest float64) float64 {
-	_ret := C.QRandomGenerator_Bounded(this.h, (C.double)(highest))
-	return (float64)(_ret)
+	return (float64)(C.QRandomGenerator_Bounded(this.h, (C.double)(highest)))
 }
 
 func (this *QRandomGenerator) BoundedWithHighest(highest uint) uint {
-	_ret := C.QRandomGenerator_BoundedWithHighest(this.h, (C.uint)(highest))
-	return (uint)(_ret)
+	return (uint)(C.QRandomGenerator_BoundedWithHighest(this.h, (C.uint)(highest)))
 }
 
 func (this *QRandomGenerator) Bounded2(lowest uint, highest uint) uint {
-	_ret := C.QRandomGenerator_Bounded2(this.h, (C.uint)(lowest), (C.uint)(highest))
-	return (uint)(_ret)
+	return (uint)(C.QRandomGenerator_Bounded2(this.h, (C.uint)(lowest), (C.uint)(highest)))
 }
 
 func (this *QRandomGenerator) Bounded3(highest int) int {
-	_ret := C.QRandomGenerator_Bounded3(this.h, (C.int)(highest))
-	return (int)(_ret)
+	return (int)(C.QRandomGenerator_Bounded3(this.h, (C.int)(highest)))
 }
 
 func (this *QRandomGenerator) Bounded4(lowest int, highest int) int {
-	_ret := C.QRandomGenerator_Bounded4(this.h, (C.int)(lowest), (C.int)(highest))
-	return (int)(_ret)
+	return (int)(C.QRandomGenerator_Bounded4(this.h, (C.int)(lowest), (C.int)(highest)))
 }
 
 func (this *QRandomGenerator) Generate2(begin *uint, end *uint) {
@@ -114,8 +106,7 @@ func (this *QRandomGenerator) Generate2(begin *uint, end *uint) {
 }
 
 func (this *QRandomGenerator) OperatorCall() uint32 {
-	_ret := C.QRandomGenerator_OperatorCall(this.h)
-	return (uint32)(_ret)
+	return (uint32)(C.QRandomGenerator_OperatorCall(this.h))
 }
 
 func (this *QRandomGenerator) Seed() {
@@ -127,23 +118,19 @@ func (this *QRandomGenerator) Discard(z uint64) {
 }
 
 func QRandomGenerator_Min() uint32 {
-	_ret := C.QRandomGenerator_Min()
-	return (uint32)(_ret)
+	return (uint32)(C.QRandomGenerator_Min())
 }
 
 func QRandomGenerator_Max() uint32 {
-	_ret := C.QRandomGenerator_Max()
-	return (uint32)(_ret)
+	return (uint32)(C.QRandomGenerator_Max())
 }
 
 func QRandomGenerator_System() *QRandomGenerator {
-	_ret := C.QRandomGenerator_System()
-	return newQRandomGenerator_U(unsafe.Pointer(_ret))
+	return newQRandomGenerator_U(unsafe.Pointer(C.QRandomGenerator_System()))
 }
 
 func QRandomGenerator_Global() *QRandomGenerator {
-	_ret := C.QRandomGenerator_Global()
-	return newQRandomGenerator_U(unsafe.Pointer(_ret))
+	return newQRandomGenerator_U(unsafe.Pointer(C.QRandomGenerator_Global()))
 }
 
 func QRandomGenerator_SecurelySeeded() *QRandomGenerator {
@@ -231,13 +218,11 @@ func NewQRandomGenerator646(seedValue uint) *QRandomGenerator64 {
 }
 
 func (this *QRandomGenerator64) Generate() uint64 {
-	_ret := C.QRandomGenerator64_Generate(this.h)
-	return (uint64)(_ret)
+	return (uint64)(C.QRandomGenerator64_Generate(this.h))
 }
 
 func (this *QRandomGenerator64) OperatorCall() uint64 {
-	_ret := C.QRandomGenerator64_OperatorCall(this.h)
-	return (uint64)(_ret)
+	return (uint64)(C.QRandomGenerator64_OperatorCall(this.h))
 }
 
 func (this *QRandomGenerator64) Discard(z uint64) {
@@ -245,23 +230,19 @@ func (this *QRandomGenerator64) Discard(z uint64) {
 }
 
 func QRandomGenerator64_Min() uint64 {
-	_ret := C.QRandomGenerator64_Min()
-	return (uint64)(_ret)
+	return (uint64)(C.QRandomGenerator64_Min())
 }
 
 func QRandomGenerator64_Max() uint64 {
-	_ret := C.QRandomGenerator64_Max()
-	return (uint64)(_ret)
+	return (uint64)(C.QRandomGenerator64_Max())
 }
 
 func QRandomGenerator64_System() *QRandomGenerator64 {
-	_ret := C.QRandomGenerator64_System()
-	return newQRandomGenerator64_U(unsafe.Pointer(_ret))
+	return newQRandomGenerator64_U(unsafe.Pointer(C.QRandomGenerator64_System()))
 }
 
 func QRandomGenerator64_Global() *QRandomGenerator64 {
-	_ret := C.QRandomGenerator64_Global()
-	return newQRandomGenerator64_U(unsafe.Pointer(_ret))
+	return newQRandomGenerator64_U(unsafe.Pointer(C.QRandomGenerator64_Global()))
 }
 
 func QRandomGenerator64_SecurelySeeded() *QRandomGenerator64 {

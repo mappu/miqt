@@ -38,8 +38,7 @@ func newQAbstractTextDocumentLayout_U(h unsafe.Pointer) *QAbstractTextDocumentLa
 }
 
 func (this *QAbstractTextDocumentLayout) MetaObject() *QMetaObject {
-	_ret := C.QAbstractTextDocumentLayout_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QAbstractTextDocumentLayout_MetaObject(this.h)))
 }
 
 func QAbstractTextDocumentLayout_Tr(s string) string {
@@ -65,8 +64,7 @@ func (this *QAbstractTextDocumentLayout) Draw(painter *QPainter, context *QAbstr
 }
 
 func (this *QAbstractTextDocumentLayout) HitTest(point *QPointF, accuracy HitTestAccuracy) int {
-	_ret := C.QAbstractTextDocumentLayout_HitTest(this.h, point.cPointer(), (C.uintptr_t)(accuracy))
-	return (int)(_ret)
+	return (int)(C.QAbstractTextDocumentLayout_HitTest(this.h, point.cPointer(), (C.uintptr_t)(accuracy)))
 }
 
 func (this *QAbstractTextDocumentLayout) AnchorAt(pos *QPointF) string {
@@ -98,8 +96,7 @@ func (this *QAbstractTextDocumentLayout) BlockWithMarkerAt(pos *QPointF) *QTextB
 }
 
 func (this *QAbstractTextDocumentLayout) PageCount() int {
-	_ret := C.QAbstractTextDocumentLayout_PageCount(this.h)
-	return (int)(_ret)
+	return (int)(C.QAbstractTextDocumentLayout_PageCount(this.h))
 }
 
 func (this *QAbstractTextDocumentLayout) DocumentSize() *QSizeF {
@@ -128,13 +125,11 @@ func (this *QAbstractTextDocumentLayout) SetPaintDevice(device *QPaintDevice) {
 }
 
 func (this *QAbstractTextDocumentLayout) PaintDevice() *QPaintDevice {
-	_ret := C.QAbstractTextDocumentLayout_PaintDevice(this.h)
-	return newQPaintDevice_U(unsafe.Pointer(_ret))
+	return newQPaintDevice_U(unsafe.Pointer(C.QAbstractTextDocumentLayout_PaintDevice(this.h)))
 }
 
 func (this *QAbstractTextDocumentLayout) Document() *QTextDocument {
-	_ret := C.QAbstractTextDocumentLayout_Document(this.h)
-	return newQTextDocument_U(unsafe.Pointer(_ret))
+	return newQTextDocument_U(unsafe.Pointer(C.QAbstractTextDocumentLayout_Document(this.h)))
 }
 
 func (this *QAbstractTextDocumentLayout) RegisterHandler(objectType int, component *QObject) {
@@ -146,8 +141,7 @@ func (this *QAbstractTextDocumentLayout) UnregisterHandler(objectType int) {
 }
 
 func (this *QAbstractTextDocumentLayout) HandlerForObject(objectType int) *QTextObjectInterface {
-	_ret := C.QAbstractTextDocumentLayout_HandlerForObject(this.h, (C.int)(objectType))
-	return newQTextObjectInterface_U(unsafe.Pointer(_ret))
+	return newQTextObjectInterface_U(unsafe.Pointer(C.QAbstractTextDocumentLayout_HandlerForObject(this.h, (C.int)(objectType))))
 }
 
 func (this *QAbstractTextDocumentLayout) Update() {
@@ -182,8 +176,7 @@ func miqt_exec_callback_QAbstractTextDocumentLayout_UpdateBlock(cb *C.void, bloc
 	}
 
 	// Convert all CABI parameters to Go parameters
-	block_ret := block
-	slotval1 := newQTextBlock_U(unsafe.Pointer(block_ret))
+	slotval1 := newQTextBlock_U(unsafe.Pointer(block))
 
 	gofunc(slotval1)
 }
@@ -203,8 +196,7 @@ func miqt_exec_callback_QAbstractTextDocumentLayout_DocumentSizeChanged(cb *C.vo
 	}
 
 	// Convert all CABI parameters to Go parameters
-	newSize_ret := newSize
-	slotval1 := newQSizeF_U(unsafe.Pointer(newSize_ret))
+	slotval1 := newQSizeF_U(unsafe.Pointer(newSize))
 
 	gofunc(slotval1)
 }
@@ -224,8 +216,7 @@ func miqt_exec_callback_QAbstractTextDocumentLayout_PageCountChanged(cb *C.void,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	newPages_ret := newPages
-	slotval1 := (int)(newPages_ret)
+	slotval1 := (int)(newPages)
 
 	gofunc(slotval1)
 }
@@ -293,8 +284,7 @@ func miqt_exec_callback_QAbstractTextDocumentLayout_Update1(cb *C.void, param1 *
 	}
 
 	// Convert all CABI parameters to Go parameters
-	param1_ret := param1
-	slotval1 := newQRectF_U(unsafe.Pointer(param1_ret))
+	slotval1 := newQRectF_U(unsafe.Pointer(param1))
 
 	gofunc(slotval1)
 }

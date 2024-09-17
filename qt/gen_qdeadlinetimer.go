@@ -88,18 +88,15 @@ func (this *QDeadlineTimer) Swap(other *QDeadlineTimer) {
 }
 
 func (this *QDeadlineTimer) IsForever() bool {
-	_ret := C.QDeadlineTimer_IsForever(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QDeadlineTimer_IsForever(this.h))
 }
 
 func (this *QDeadlineTimer) HasExpired() bool {
-	_ret := C.QDeadlineTimer_HasExpired(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QDeadlineTimer_HasExpired(this.h))
 }
 
 func (this *QDeadlineTimer) TimerType() TimerType {
-	_ret := C.QDeadlineTimer_TimerType(this.h)
-	return (TimerType)(_ret)
+	return (TimerType)(C.QDeadlineTimer_TimerType(this.h))
 }
 
 func (this *QDeadlineTimer) SetTimerType(typeVal TimerType) {
@@ -107,13 +104,11 @@ func (this *QDeadlineTimer) SetTimerType(typeVal TimerType) {
 }
 
 func (this *QDeadlineTimer) RemainingTime() int64 {
-	_ret := C.QDeadlineTimer_RemainingTime(this.h)
-	return (int64)(_ret)
+	return (int64)(C.QDeadlineTimer_RemainingTime(this.h))
 }
 
 func (this *QDeadlineTimer) RemainingTimeNSecs() int64 {
-	_ret := C.QDeadlineTimer_RemainingTimeNSecs(this.h)
-	return (int64)(_ret)
+	return (int64)(C.QDeadlineTimer_RemainingTimeNSecs(this.h))
 }
 
 func (this *QDeadlineTimer) SetRemainingTime(msecs int64) {
@@ -125,13 +120,11 @@ func (this *QDeadlineTimer) SetPreciseRemainingTime(secs int64) {
 }
 
 func (this *QDeadlineTimer) Deadline() int64 {
-	_ret := C.QDeadlineTimer_Deadline(this.h)
-	return (int64)(_ret)
+	return (int64)(C.QDeadlineTimer_Deadline(this.h))
 }
 
 func (this *QDeadlineTimer) DeadlineNSecs() int64 {
-	_ret := C.QDeadlineTimer_DeadlineNSecs(this.h)
-	return (int64)(_ret)
+	return (int64)(C.QDeadlineTimer_DeadlineNSecs(this.h))
 }
 
 func (this *QDeadlineTimer) SetDeadline(msecs int64) {
@@ -157,13 +150,11 @@ func QDeadlineTimer_Current() *QDeadlineTimer {
 }
 
 func (this *QDeadlineTimer) OperatorPlusAssign(msecs int64) *QDeadlineTimer {
-	_ret := C.QDeadlineTimer_OperatorPlusAssign(this.h, (C.longlong)(msecs))
-	return newQDeadlineTimer_U(unsafe.Pointer(_ret))
+	return newQDeadlineTimer_U(unsafe.Pointer(C.QDeadlineTimer_OperatorPlusAssign(this.h, (C.longlong)(msecs))))
 }
 
 func (this *QDeadlineTimer) OperatorMinusAssign(msecs int64) *QDeadlineTimer {
-	_ret := C.QDeadlineTimer_OperatorMinusAssign(this.h, (C.longlong)(msecs))
-	return newQDeadlineTimer_U(unsafe.Pointer(_ret))
+	return newQDeadlineTimer_U(unsafe.Pointer(C.QDeadlineTimer_OperatorMinusAssign(this.h, (C.longlong)(msecs))))
 }
 
 func (this *QDeadlineTimer) OperatorAssign(param1 *QDeadlineTimer) {

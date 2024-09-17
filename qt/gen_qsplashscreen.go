@@ -92,8 +92,7 @@ func NewQSplashScreen9(parent *QWidget, pixmap *QPixmap, f int) *QSplashScreen {
 }
 
 func (this *QSplashScreen) MetaObject() *QMetaObject {
-	_ret := C.QSplashScreen_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QSplashScreen_MetaObject(this.h)))
 }
 
 func QSplashScreen_Tr(s string) string {

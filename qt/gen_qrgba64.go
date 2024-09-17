@@ -76,33 +76,27 @@ func QRgba64_FromArgb32(rgb uint) *QRgba64 {
 }
 
 func (this *QRgba64) IsOpaque() bool {
-	_ret := C.QRgba64_IsOpaque(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QRgba64_IsOpaque(this.h))
 }
 
 func (this *QRgba64) IsTransparent() bool {
-	_ret := C.QRgba64_IsTransparent(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QRgba64_IsTransparent(this.h))
 }
 
 func (this *QRgba64) Red() uint16 {
-	_ret := C.QRgba64_Red(this.h)
-	return (uint16)(_ret)
+	return (uint16)(C.QRgba64_Red(this.h))
 }
 
 func (this *QRgba64) Green() uint16 {
-	_ret := C.QRgba64_Green(this.h)
-	return (uint16)(_ret)
+	return (uint16)(C.QRgba64_Green(this.h))
 }
 
 func (this *QRgba64) Blue() uint16 {
-	_ret := C.QRgba64_Blue(this.h)
-	return (uint16)(_ret)
+	return (uint16)(C.QRgba64_Blue(this.h))
 }
 
 func (this *QRgba64) Alpha() uint16 {
-	_ret := C.QRgba64_Alpha(this.h)
-	return (uint16)(_ret)
+	return (uint16)(C.QRgba64_Alpha(this.h))
 }
 
 func (this *QRgba64) SetRed(_red uint16) {
@@ -122,33 +116,27 @@ func (this *QRgba64) SetAlpha(_alpha uint16) {
 }
 
 func (this *QRgba64) Red8() byte {
-	_ret := C.QRgba64_Red8(this.h)
-	return (byte)(_ret)
+	return (byte)(C.QRgba64_Red8(this.h))
 }
 
 func (this *QRgba64) Green8() byte {
-	_ret := C.QRgba64_Green8(this.h)
-	return (byte)(_ret)
+	return (byte)(C.QRgba64_Green8(this.h))
 }
 
 func (this *QRgba64) Blue8() byte {
-	_ret := C.QRgba64_Blue8(this.h)
-	return (byte)(_ret)
+	return (byte)(C.QRgba64_Blue8(this.h))
 }
 
 func (this *QRgba64) Alpha8() byte {
-	_ret := C.QRgba64_Alpha8(this.h)
-	return (byte)(_ret)
+	return (byte)(C.QRgba64_Alpha8(this.h))
 }
 
 func (this *QRgba64) ToArgb32() uint {
-	_ret := C.QRgba64_ToArgb32(this.h)
-	return (uint)(_ret)
+	return (uint)(C.QRgba64_ToArgb32(this.h))
 }
 
 func (this *QRgba64) ToRgb16() uint16 {
-	_ret := C.QRgba64_ToRgb16(this.h)
-	return (uint16)(_ret)
+	return (uint16)(C.QRgba64_ToRgb16(this.h))
 }
 
 func (this *QRgba64) Premultiplied() *QRgba64 {

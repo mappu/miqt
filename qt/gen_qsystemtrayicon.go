@@ -81,8 +81,7 @@ func NewQSystemTrayIcon4(icon *QIcon, parent *QObject) *QSystemTrayIcon {
 }
 
 func (this *QSystemTrayIcon) MetaObject() *QMetaObject {
-	_ret := C.QSystemTrayIcon_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QSystemTrayIcon_MetaObject(this.h)))
 }
 
 func QSystemTrayIcon_Tr(s string) string {
@@ -108,8 +107,7 @@ func (this *QSystemTrayIcon) SetContextMenu(menu *QMenu) {
 }
 
 func (this *QSystemTrayIcon) ContextMenu() *QMenu {
-	_ret := C.QSystemTrayIcon_ContextMenu(this.h)
-	return newQMenu_U(unsafe.Pointer(_ret))
+	return newQMenu_U(unsafe.Pointer(C.QSystemTrayIcon_ContextMenu(this.h)))
 }
 
 func (this *QSystemTrayIcon) Icon() *QIcon {
@@ -137,13 +135,11 @@ func (this *QSystemTrayIcon) SetToolTip(tip string) {
 }
 
 func QSystemTrayIcon_IsSystemTrayAvailable() bool {
-	_ret := C.QSystemTrayIcon_IsSystemTrayAvailable()
-	return (bool)(_ret)
+	return (bool)(C.QSystemTrayIcon_IsSystemTrayAvailable())
 }
 
 func QSystemTrayIcon_SupportsMessages() bool {
-	_ret := C.QSystemTrayIcon_SupportsMessages()
-	return (bool)(_ret)
+	return (bool)(C.QSystemTrayIcon_SupportsMessages())
 }
 
 func (this *QSystemTrayIcon) Geometry() *QRect {
@@ -154,8 +150,7 @@ func (this *QSystemTrayIcon) Geometry() *QRect {
 }
 
 func (this *QSystemTrayIcon) IsVisible() bool {
-	_ret := C.QSystemTrayIcon_IsVisible(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QSystemTrayIcon_IsVisible(this.h))
 }
 
 func (this *QSystemTrayIcon) SetVisible(visible bool) {
@@ -201,8 +196,7 @@ func miqt_exec_callback_QSystemTrayIcon_Activated(cb *C.void, reason C.uintptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	reason_ret := reason
-	slotval1 := (QSystemTrayIcon__ActivationReason)(reason_ret)
+	slotval1 := (QSystemTrayIcon__ActivationReason)(reason)
 
 	gofunc(slotval1)
 }

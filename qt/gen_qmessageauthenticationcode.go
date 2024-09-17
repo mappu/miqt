@@ -66,8 +66,7 @@ func (this *QMessageAuthenticationCode) AddDataWithData(data *QByteArray) {
 }
 
 func (this *QMessageAuthenticationCode) AddDataWithDevice(device *QIODevice) bool {
-	_ret := C.QMessageAuthenticationCode_AddDataWithDevice(this.h, device.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QMessageAuthenticationCode_AddDataWithDevice(this.h, device.cPointer()))
 }
 
 func (this *QMessageAuthenticationCode) Result() *QByteArray {

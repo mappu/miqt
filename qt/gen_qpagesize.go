@@ -257,13 +257,11 @@ func (this *QPageSize) Swap(other *QPageSize) {
 }
 
 func (this *QPageSize) IsEquivalentTo(other *QPageSize) bool {
-	_ret := C.QPageSize_IsEquivalentTo(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QPageSize_IsEquivalentTo(this.h, other.cPointer()))
 }
 
 func (this *QPageSize) IsValid() bool {
-	_ret := C.QPageSize_IsValid(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QPageSize_IsValid(this.h))
 }
 
 func (this *QPageSize) Key() string {
@@ -281,13 +279,11 @@ func (this *QPageSize) Name() string {
 }
 
 func (this *QPageSize) Id() QPageSize__PageSizeId {
-	_ret := C.QPageSize_Id(this.h)
-	return (QPageSize__PageSizeId)(_ret)
+	return (QPageSize__PageSizeId)(C.QPageSize_Id(this.h))
 }
 
 func (this *QPageSize) WindowsId() int {
-	_ret := C.QPageSize_WindowsId(this.h)
-	return (int)(_ret)
+	return (int)(C.QPageSize_WindowsId(this.h))
 }
 
 func (this *QPageSize) DefinitionSize() *QSizeF {
@@ -298,8 +294,7 @@ func (this *QPageSize) DefinitionSize() *QSizeF {
 }
 
 func (this *QPageSize) DefinitionUnits() QPageSize__Unit {
-	_ret := C.QPageSize_DefinitionUnits(this.h)
-	return (QPageSize__Unit)(_ret)
+	return (QPageSize__Unit)(C.QPageSize_DefinitionUnits(this.h))
 }
 
 func (this *QPageSize) Size(units QPageSize__Unit) *QSizeF {
@@ -359,23 +354,19 @@ func QPageSize_NameWithPageSizeId(pageSizeId QPageSize__PageSizeId) string {
 }
 
 func QPageSize_IdWithPointSize(pointSize *QSize) QPageSize__PageSizeId {
-	_ret := C.QPageSize_IdWithPointSize(pointSize.cPointer())
-	return (QPageSize__PageSizeId)(_ret)
+	return (QPageSize__PageSizeId)(C.QPageSize_IdWithPointSize(pointSize.cPointer()))
 }
 
 func QPageSize_Id2(size *QSizeF, units QPageSize__Unit) QPageSize__PageSizeId {
-	_ret := C.QPageSize_Id2(size.cPointer(), (C.uintptr_t)(units))
-	return (QPageSize__PageSizeId)(_ret)
+	return (QPageSize__PageSizeId)(C.QPageSize_Id2(size.cPointer(), (C.uintptr_t)(units)))
 }
 
 func QPageSize_IdWithWindowsId(windowsId int) QPageSize__PageSizeId {
-	_ret := C.QPageSize_IdWithWindowsId((C.int)(windowsId))
-	return (QPageSize__PageSizeId)(_ret)
+	return (QPageSize__PageSizeId)(C.QPageSize_IdWithWindowsId((C.int)(windowsId)))
 }
 
 func QPageSize_WindowsIdWithPageSizeId(pageSizeId QPageSize__PageSizeId) int {
-	_ret := C.QPageSize_WindowsIdWithPageSizeId((C.uintptr_t)(pageSizeId))
-	return (int)(_ret)
+	return (int)(C.QPageSize_WindowsIdWithPageSizeId((C.uintptr_t)(pageSizeId)))
 }
 
 func QPageSize_DefinitionSizeWithPageSizeId(pageSizeId QPageSize__PageSizeId) *QSizeF {
@@ -386,8 +377,7 @@ func QPageSize_DefinitionSizeWithPageSizeId(pageSizeId QPageSize__PageSizeId) *Q
 }
 
 func QPageSize_DefinitionUnitsWithPageSizeId(pageSizeId QPageSize__PageSizeId) QPageSize__Unit {
-	_ret := C.QPageSize_DefinitionUnitsWithPageSizeId((C.uintptr_t)(pageSizeId))
-	return (QPageSize__Unit)(_ret)
+	return (QPageSize__Unit)(C.QPageSize_DefinitionUnitsWithPageSizeId((C.uintptr_t)(pageSizeId)))
 }
 
 func QPageSize_Size2(pageSizeId QPageSize__PageSizeId, units QPageSize__Unit) *QSizeF {
@@ -412,13 +402,11 @@ func QPageSize_SizePixels2(pageSizeId QPageSize__PageSizeId, resolution int) *QS
 }
 
 func QPageSize_Id22(pointSize *QSize, matchPolicy QPageSize__SizeMatchPolicy) QPageSize__PageSizeId {
-	_ret := C.QPageSize_Id22(pointSize.cPointer(), (C.uintptr_t)(matchPolicy))
-	return (QPageSize__PageSizeId)(_ret)
+	return (QPageSize__PageSizeId)(C.QPageSize_Id22(pointSize.cPointer(), (C.uintptr_t)(matchPolicy)))
 }
 
 func QPageSize_Id3(size *QSizeF, units QPageSize__Unit, matchPolicy QPageSize__SizeMatchPolicy) QPageSize__PageSizeId {
-	_ret := C.QPageSize_Id3(size.cPointer(), (C.uintptr_t)(units), (C.uintptr_t)(matchPolicy))
-	return (QPageSize__PageSizeId)(_ret)
+	return (QPageSize__PageSizeId)(C.QPageSize_Id3(size.cPointer(), (C.uintptr_t)(units), (C.uintptr_t)(matchPolicy)))
 }
 
 // Delete this object from C++ memory.

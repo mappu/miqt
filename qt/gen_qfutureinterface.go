@@ -98,18 +98,15 @@ func (this *QFutureInterfaceBase) SetProgressRange(minimum int, maximum int) {
 }
 
 func (this *QFutureInterfaceBase) ProgressMinimum() int {
-	_ret := C.QFutureInterfaceBase_ProgressMinimum(this.h)
-	return (int)(_ret)
+	return (int)(C.QFutureInterfaceBase_ProgressMinimum(this.h))
 }
 
 func (this *QFutureInterfaceBase) ProgressMaximum() int {
-	_ret := C.QFutureInterfaceBase_ProgressMaximum(this.h)
-	return (int)(_ret)
+	return (int)(C.QFutureInterfaceBase_ProgressMaximum(this.h))
 }
 
 func (this *QFutureInterfaceBase) IsProgressUpdateNeeded() bool {
-	_ret := C.QFutureInterfaceBase_IsProgressUpdateNeeded(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QFutureInterfaceBase_IsProgressUpdateNeeded(this.h))
 }
 
 func (this *QFutureInterfaceBase) SetProgressValue(progressValue int) {
@@ -117,8 +114,7 @@ func (this *QFutureInterfaceBase) SetProgressValue(progressValue int) {
 }
 
 func (this *QFutureInterfaceBase) ProgressValue() int {
-	_ret := C.QFutureInterfaceBase_ProgressValue(this.h)
-	return (int)(_ret)
+	return (int)(C.QFutureInterfaceBase_ProgressValue(this.h))
 }
 
 func (this *QFutureInterfaceBase) SetProgressValueAndText(progressValue int, progressText string) {
@@ -139,53 +135,43 @@ func (this *QFutureInterfaceBase) SetExpectedResultCount(resultCount int) {
 }
 
 func (this *QFutureInterfaceBase) ExpectedResultCount() int {
-	_ret := C.QFutureInterfaceBase_ExpectedResultCount(this.h)
-	return (int)(_ret)
+	return (int)(C.QFutureInterfaceBase_ExpectedResultCount(this.h))
 }
 
 func (this *QFutureInterfaceBase) ResultCount() int {
-	_ret := C.QFutureInterfaceBase_ResultCount(this.h)
-	return (int)(_ret)
+	return (int)(C.QFutureInterfaceBase_ResultCount(this.h))
 }
 
 func (this *QFutureInterfaceBase) QueryState(state QFutureInterfaceBase__State) bool {
-	_ret := C.QFutureInterfaceBase_QueryState(this.h, (C.uintptr_t)(state))
-	return (bool)(_ret)
+	return (bool)(C.QFutureInterfaceBase_QueryState(this.h, (C.uintptr_t)(state)))
 }
 
 func (this *QFutureInterfaceBase) IsRunning() bool {
-	_ret := C.QFutureInterfaceBase_IsRunning(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QFutureInterfaceBase_IsRunning(this.h))
 }
 
 func (this *QFutureInterfaceBase) IsStarted() bool {
-	_ret := C.QFutureInterfaceBase_IsStarted(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QFutureInterfaceBase_IsStarted(this.h))
 }
 
 func (this *QFutureInterfaceBase) IsCanceled() bool {
-	_ret := C.QFutureInterfaceBase_IsCanceled(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QFutureInterfaceBase_IsCanceled(this.h))
 }
 
 func (this *QFutureInterfaceBase) IsFinished() bool {
-	_ret := C.QFutureInterfaceBase_IsFinished(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QFutureInterfaceBase_IsFinished(this.h))
 }
 
 func (this *QFutureInterfaceBase) IsPaused() bool {
-	_ret := C.QFutureInterfaceBase_IsPaused(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QFutureInterfaceBase_IsPaused(this.h))
 }
 
 func (this *QFutureInterfaceBase) IsThrottled() bool {
-	_ret := C.QFutureInterfaceBase_IsThrottled(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QFutureInterfaceBase_IsThrottled(this.h))
 }
 
 func (this *QFutureInterfaceBase) IsResultReadyAt(index int) bool {
-	_ret := C.QFutureInterfaceBase_IsResultReadyAt(this.h, (C.int)(index))
-	return (bool)(_ret)
+	return (bool)(C.QFutureInterfaceBase_IsResultReadyAt(this.h, (C.int)(index)))
 }
 
 func (this *QFutureInterfaceBase) Cancel() {
@@ -209,8 +195,7 @@ func (this *QFutureInterfaceBase) WaitForFinished() {
 }
 
 func (this *QFutureInterfaceBase) WaitForNextResult() bool {
-	_ret := C.QFutureInterfaceBase_WaitForNextResult(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QFutureInterfaceBase_WaitForNextResult(this.h))
 }
 
 func (this *QFutureInterfaceBase) WaitForResult(resultIndex int) {
@@ -222,28 +207,23 @@ func (this *QFutureInterfaceBase) WaitForResume() {
 }
 
 func (this *QFutureInterfaceBase) Mutex() *QMutex {
-	_ret := C.QFutureInterfaceBase_Mutex(this.h)
-	return newQMutex_U(unsafe.Pointer(_ret))
+	return newQMutex_U(unsafe.Pointer(C.QFutureInterfaceBase_Mutex(this.h)))
 }
 
 func (this *QFutureInterfaceBase) MutexWithInt(param1 int) *QMutex {
-	_ret := C.QFutureInterfaceBase_MutexWithInt(this.h, (C.int)(param1))
-	return newQMutex_U(unsafe.Pointer(_ret))
+	return newQMutex_U(unsafe.Pointer(C.QFutureInterfaceBase_MutexWithInt(this.h, (C.int)(param1))))
 }
 
 func (this *QFutureInterfaceBase) ExceptionStore() *QtPrivate__ExceptionStore {
-	_ret := C.QFutureInterfaceBase_ExceptionStore(this.h)
-	return newQtPrivate__ExceptionStore_U(unsafe.Pointer(_ret))
+	return newQtPrivate__ExceptionStore_U(unsafe.Pointer(C.QFutureInterfaceBase_ExceptionStore(this.h)))
 }
 
 func (this *QFutureInterfaceBase) OperatorEqual(other *QFutureInterfaceBase) bool {
-	_ret := C.QFutureInterfaceBase_OperatorEqual(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QFutureInterfaceBase_OperatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QFutureInterfaceBase) OperatorNotEqual(other *QFutureInterfaceBase) bool {
-	_ret := C.QFutureInterfaceBase_OperatorNotEqual(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QFutureInterfaceBase_OperatorNotEqual(this.h, other.cPointer()))
 }
 
 func (this *QFutureInterfaceBase) OperatorAssign(other *QFutureInterfaceBase) {

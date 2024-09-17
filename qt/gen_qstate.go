@@ -75,8 +75,7 @@ func NewQState4(childMode QState__ChildMode, parent *QState) *QState {
 }
 
 func (this *QState) MetaObject() *QMetaObject {
-	_ret := C.QState_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QState_MetaObject(this.h)))
 }
 
 func QState_Tr(s string) string {
@@ -98,8 +97,7 @@ func QState_TrUtf8(s string) string {
 }
 
 func (this *QState) ErrorState() *QAbstractState {
-	_ret := C.QState_ErrorState(this.h)
-	return newQAbstractState_U(unsafe.Pointer(_ret))
+	return newQAbstractState_U(unsafe.Pointer(C.QState_ErrorState(this.h)))
 }
 
 func (this *QState) SetErrorState(state *QAbstractState) {
@@ -113,13 +111,11 @@ func (this *QState) AddTransition(transition *QAbstractTransition) {
 func (this *QState) AddTransition2(sender *QObject, signal string, target *QAbstractState) *QSignalTransition {
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
-	_ret := C.QState_AddTransition2(this.h, sender.cPointer(), signal_Cstring, target.cPointer())
-	return newQSignalTransition_U(unsafe.Pointer(_ret))
+	return newQSignalTransition_U(unsafe.Pointer(C.QState_AddTransition2(this.h, sender.cPointer(), signal_Cstring, target.cPointer())))
 }
 
 func (this *QState) AddTransitionWithTarget(target *QAbstractState) *QAbstractTransition {
-	_ret := C.QState_AddTransitionWithTarget(this.h, target.cPointer())
-	return newQAbstractTransition_U(unsafe.Pointer(_ret))
+	return newQAbstractTransition_U(unsafe.Pointer(C.QState_AddTransitionWithTarget(this.h, target.cPointer())))
 }
 
 func (this *QState) RemoveTransition(transition *QAbstractTransition) {
@@ -129,17 +125,16 @@ func (this *QState) RemoveTransition(transition *QAbstractTransition) {
 func (this *QState) Transitions() []*QAbstractTransition {
 	var _ma *C.struct_miqt_array = C.QState_Transitions(this.h)
 	_ret := make([]*QAbstractTransition, int(_ma.len))
-	_outCast := (*[0xffff]*C.QAbstractTransition)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QAbstractTransition)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQAbstractTransition(_outCast[i])
+		_ret[i] = newQAbstractTransition_U(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QState) InitialState() *QAbstractState {
-	_ret := C.QState_InitialState(this.h)
-	return newQAbstractState_U(unsafe.Pointer(_ret))
+	return newQAbstractState_U(unsafe.Pointer(C.QState_InitialState(this.h)))
 }
 
 func (this *QState) SetInitialState(state *QAbstractState) {
@@ -147,8 +142,7 @@ func (this *QState) SetInitialState(state *QAbstractState) {
 }
 
 func (this *QState) ChildMode() QState__ChildMode {
-	_ret := C.QState_ChildMode(this.h)
-	return (QState__ChildMode)(_ret)
+	return (QState__ChildMode)(C.QState_ChildMode(this.h))
 }
 
 func (this *QState) SetChildMode(mode QState__ChildMode) {

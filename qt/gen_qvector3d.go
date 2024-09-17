@@ -90,23 +90,19 @@ func NewQVector3D9(param1 *QVector3D) *QVector3D {
 }
 
 func (this *QVector3D) IsNull() bool {
-	_ret := C.QVector3D_IsNull(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QVector3D_IsNull(this.h))
 }
 
 func (this *QVector3D) X() float32 {
-	_ret := C.QVector3D_X(this.h)
-	return (float32)(_ret)
+	return (float32)(C.QVector3D_X(this.h))
 }
 
 func (this *QVector3D) Y() float32 {
-	_ret := C.QVector3D_Y(this.h)
-	return (float32)(_ret)
+	return (float32)(C.QVector3D_Y(this.h))
 }
 
 func (this *QVector3D) Z() float32 {
-	_ret := C.QVector3D_Z(this.h)
-	return (float32)(_ret)
+	return (float32)(C.QVector3D_Z(this.h))
 }
 
 func (this *QVector3D) SetX(x float32) {
@@ -122,18 +118,15 @@ func (this *QVector3D) SetZ(z float32) {
 }
 
 func (this *QVector3D) OperatorSubscript(i int) float32 {
-	_ret := C.QVector3D_OperatorSubscript(this.h, (C.int)(i))
-	return (float32)(_ret)
+	return (float32)(C.QVector3D_OperatorSubscript(this.h, (C.int)(i)))
 }
 
 func (this *QVector3D) Length() float32 {
-	_ret := C.QVector3D_Length(this.h)
-	return (float32)(_ret)
+	return (float32)(C.QVector3D_Length(this.h))
 }
 
 func (this *QVector3D) LengthSquared() float32 {
-	_ret := C.QVector3D_LengthSquared(this.h)
-	return (float32)(_ret)
+	return (float32)(C.QVector3D_LengthSquared(this.h))
 }
 
 func (this *QVector3D) Normalized() *QVector3D {
@@ -148,38 +141,31 @@ func (this *QVector3D) Normalize() {
 }
 
 func (this *QVector3D) OperatorPlusAssign(vector *QVector3D) *QVector3D {
-	_ret := C.QVector3D_OperatorPlusAssign(this.h, vector.cPointer())
-	return newQVector3D_U(unsafe.Pointer(_ret))
+	return newQVector3D_U(unsafe.Pointer(C.QVector3D_OperatorPlusAssign(this.h, vector.cPointer())))
 }
 
 func (this *QVector3D) OperatorMinusAssign(vector *QVector3D) *QVector3D {
-	_ret := C.QVector3D_OperatorMinusAssign(this.h, vector.cPointer())
-	return newQVector3D_U(unsafe.Pointer(_ret))
+	return newQVector3D_U(unsafe.Pointer(C.QVector3D_OperatorMinusAssign(this.h, vector.cPointer())))
 }
 
 func (this *QVector3D) OperatorMultiplyAssign(factor float32) *QVector3D {
-	_ret := C.QVector3D_OperatorMultiplyAssign(this.h, (C.float)(factor))
-	return newQVector3D_U(unsafe.Pointer(_ret))
+	return newQVector3D_U(unsafe.Pointer(C.QVector3D_OperatorMultiplyAssign(this.h, (C.float)(factor))))
 }
 
 func (this *QVector3D) OperatorMultiplyAssignWithVector(vector *QVector3D) *QVector3D {
-	_ret := C.QVector3D_OperatorMultiplyAssignWithVector(this.h, vector.cPointer())
-	return newQVector3D_U(unsafe.Pointer(_ret))
+	return newQVector3D_U(unsafe.Pointer(C.QVector3D_OperatorMultiplyAssignWithVector(this.h, vector.cPointer())))
 }
 
 func (this *QVector3D) OperatorDivideAssign(divisor float32) *QVector3D {
-	_ret := C.QVector3D_OperatorDivideAssign(this.h, (C.float)(divisor))
-	return newQVector3D_U(unsafe.Pointer(_ret))
+	return newQVector3D_U(unsafe.Pointer(C.QVector3D_OperatorDivideAssign(this.h, (C.float)(divisor))))
 }
 
 func (this *QVector3D) OperatorDivideAssignWithVector(vector *QVector3D) *QVector3D {
-	_ret := C.QVector3D_OperatorDivideAssignWithVector(this.h, vector.cPointer())
-	return newQVector3D_U(unsafe.Pointer(_ret))
+	return newQVector3D_U(unsafe.Pointer(C.QVector3D_OperatorDivideAssignWithVector(this.h, vector.cPointer())))
 }
 
 func QVector3D_DotProduct(v1 *QVector3D, v2 *QVector3D) float32 {
-	_ret := C.QVector3D_DotProduct(v1.cPointer(), v2.cPointer())
-	return (float32)(_ret)
+	return (float32)(C.QVector3D_DotProduct(v1.cPointer(), v2.cPointer()))
 }
 
 func QVector3D_CrossProduct(v1 *QVector3D, v2 *QVector3D) *QVector3D {
@@ -218,23 +204,19 @@ func (this *QVector3D) Unproject(modelView *QMatrix4x4, projection *QMatrix4x4, 
 }
 
 func (this *QVector3D) DistanceToPoint(point *QVector3D) float32 {
-	_ret := C.QVector3D_DistanceToPoint(this.h, point.cPointer())
-	return (float32)(_ret)
+	return (float32)(C.QVector3D_DistanceToPoint(this.h, point.cPointer()))
 }
 
 func (this *QVector3D) DistanceToPlane(plane *QVector3D, normal *QVector3D) float32 {
-	_ret := C.QVector3D_DistanceToPlane(this.h, plane.cPointer(), normal.cPointer())
-	return (float32)(_ret)
+	return (float32)(C.QVector3D_DistanceToPlane(this.h, plane.cPointer(), normal.cPointer()))
 }
 
 func (this *QVector3D) DistanceToPlane2(plane1 *QVector3D, plane2 *QVector3D, plane3 *QVector3D) float32 {
-	_ret := C.QVector3D_DistanceToPlane2(this.h, plane1.cPointer(), plane2.cPointer(), plane3.cPointer())
-	return (float32)(_ret)
+	return (float32)(C.QVector3D_DistanceToPlane2(this.h, plane1.cPointer(), plane2.cPointer(), plane3.cPointer()))
 }
 
 func (this *QVector3D) DistanceToLine(point *QVector3D, direction *QVector3D) float32 {
-	_ret := C.QVector3D_DistanceToLine(this.h, point.cPointer(), direction.cPointer())
-	return (float32)(_ret)
+	return (float32)(C.QVector3D_DistanceToLine(this.h, point.cPointer(), direction.cPointer()))
 }
 
 func (this *QVector3D) ToVector2D() *QVector2D {

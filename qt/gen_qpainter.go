@@ -109,23 +109,19 @@ func NewQPainter2(param1 *QPaintDevice) *QPainter {
 }
 
 func (this *QPainter) Device() *QPaintDevice {
-	_ret := C.QPainter_Device(this.h)
-	return newQPaintDevice_U(unsafe.Pointer(_ret))
+	return newQPaintDevice_U(unsafe.Pointer(C.QPainter_Device(this.h)))
 }
 
 func (this *QPainter) Begin(param1 *QPaintDevice) bool {
-	_ret := C.QPainter_Begin(this.h, param1.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QPainter_Begin(this.h, param1.cPointer()))
 }
 
 func (this *QPainter) End() bool {
-	_ret := C.QPainter_End(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QPainter_End(this.h))
 }
 
 func (this *QPainter) IsActive() bool {
-	_ret := C.QPainter_IsActive(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QPainter_IsActive(this.h))
 }
 
 func (this *QPainter) InitFrom(device *QPaintDevice) {
@@ -137,13 +133,11 @@ func (this *QPainter) SetCompositionMode(mode QPainter__CompositionMode) {
 }
 
 func (this *QPainter) CompositionMode() QPainter__CompositionMode {
-	_ret := C.QPainter_CompositionMode(this.h)
-	return (QPainter__CompositionMode)(_ret)
+	return (QPainter__CompositionMode)(C.QPainter_CompositionMode(this.h))
 }
 
 func (this *QPainter) Font() *QFont {
-	_ret := C.QPainter_Font(this.h)
-	return newQFont_U(unsafe.Pointer(_ret))
+	return newQFont_U(unsafe.Pointer(C.QPainter_Font(this.h)))
 }
 
 func (this *QPainter) SetFont(f *QFont) {
@@ -177,8 +171,7 @@ func (this *QPainter) SetPenWithStyle(style PenStyle) {
 }
 
 func (this *QPainter) Pen() *QPen {
-	_ret := C.QPainter_Pen(this.h)
-	return newQPen_U(unsafe.Pointer(_ret))
+	return newQPen_U(unsafe.Pointer(C.QPainter_Pen(this.h)))
 }
 
 func (this *QPainter) SetBrush(brush *QBrush) {
@@ -190,8 +183,7 @@ func (this *QPainter) SetBrushWithStyle(style BrushStyle) {
 }
 
 func (this *QPainter) Brush() *QBrush {
-	_ret := C.QPainter_Brush(this.h)
-	return newQBrush_U(unsafe.Pointer(_ret))
+	return newQBrush_U(unsafe.Pointer(C.QPainter_Brush(this.h)))
 }
 
 func (this *QPainter) SetBackgroundMode(mode BGMode) {
@@ -199,8 +191,7 @@ func (this *QPainter) SetBackgroundMode(mode BGMode) {
 }
 
 func (this *QPainter) BackgroundMode() BGMode {
-	_ret := C.QPainter_BackgroundMode(this.h)
-	return (BGMode)(_ret)
+	return (BGMode)(C.QPainter_BackgroundMode(this.h))
 }
 
 func (this *QPainter) BrushOrigin() *QPoint {
@@ -227,13 +218,11 @@ func (this *QPainter) SetBackground(bg *QBrush) {
 }
 
 func (this *QPainter) Background() *QBrush {
-	_ret := C.QPainter_Background(this.h)
-	return newQBrush_U(unsafe.Pointer(_ret))
+	return newQBrush_U(unsafe.Pointer(C.QPainter_Background(this.h)))
 }
 
 func (this *QPainter) Opacity() float64 {
-	_ret := C.QPainter_Opacity(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QPainter_Opacity(this.h))
 }
 
 func (this *QPainter) SetOpacity(opacity float64) {
@@ -279,8 +268,7 @@ func (this *QPainter) SetClipping(enable bool) {
 }
 
 func (this *QPainter) HasClipping() bool {
-	_ret := C.QPainter_HasClipping(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QPainter_HasClipping(this.h))
 }
 
 func (this *QPainter) ClipBoundingRect() *QRectF {
@@ -303,13 +291,11 @@ func (this *QPainter) SetMatrix(matrix *QMatrix) {
 }
 
 func (this *QPainter) Matrix() *QMatrix {
-	_ret := C.QPainter_Matrix(this.h)
-	return newQMatrix_U(unsafe.Pointer(_ret))
+	return newQMatrix_U(unsafe.Pointer(C.QPainter_Matrix(this.h)))
 }
 
 func (this *QPainter) DeviceMatrix() *QMatrix {
-	_ret := C.QPainter_DeviceMatrix(this.h)
-	return newQMatrix_U(unsafe.Pointer(_ret))
+	return newQMatrix_U(unsafe.Pointer(C.QPainter_DeviceMatrix(this.h)))
 }
 
 func (this *QPainter) ResetMatrix() {
@@ -321,13 +307,11 @@ func (this *QPainter) SetTransform(transform *QTransform) {
 }
 
 func (this *QPainter) Transform() *QTransform {
-	_ret := C.QPainter_Transform(this.h)
-	return newQTransform_U(unsafe.Pointer(_ret))
+	return newQTransform_U(unsafe.Pointer(C.QPainter_Transform(this.h)))
 }
 
 func (this *QPainter) DeviceTransform() *QTransform {
-	_ret := C.QPainter_DeviceTransform(this.h)
-	return newQTransform_U(unsafe.Pointer(_ret))
+	return newQTransform_U(unsafe.Pointer(C.QPainter_DeviceTransform(this.h)))
 }
 
 func (this *QPainter) ResetTransform() {
@@ -339,8 +323,7 @@ func (this *QPainter) SetWorldMatrix(matrix *QMatrix) {
 }
 
 func (this *QPainter) WorldMatrix() *QMatrix {
-	_ret := C.QPainter_WorldMatrix(this.h)
-	return newQMatrix_U(unsafe.Pointer(_ret))
+	return newQMatrix_U(unsafe.Pointer(C.QPainter_WorldMatrix(this.h)))
 }
 
 func (this *QPainter) CombinedMatrix() *QMatrix {
@@ -355,8 +338,7 @@ func (this *QPainter) SetMatrixEnabled(enabled bool) {
 }
 
 func (this *QPainter) MatrixEnabled() bool {
-	_ret := C.QPainter_MatrixEnabled(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QPainter_MatrixEnabled(this.h))
 }
 
 func (this *QPainter) SetWorldTransform(matrix *QTransform) {
@@ -364,8 +346,7 @@ func (this *QPainter) SetWorldTransform(matrix *QTransform) {
 }
 
 func (this *QPainter) WorldTransform() *QTransform {
-	_ret := C.QPainter_WorldTransform(this.h)
-	return newQTransform_U(unsafe.Pointer(_ret))
+	return newQTransform_U(unsafe.Pointer(C.QPainter_WorldTransform(this.h)))
 }
 
 func (this *QPainter) CombinedTransform() *QTransform {
@@ -380,8 +361,7 @@ func (this *QPainter) SetWorldMatrixEnabled(enabled bool) {
 }
 
 func (this *QPainter) WorldMatrixEnabled() bool {
-	_ret := C.QPainter_WorldMatrixEnabled(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QPainter_WorldMatrixEnabled(this.h))
 }
 
 func (this *QPainter) Scale(sx float64, sy float64) {
@@ -443,8 +423,7 @@ func (this *QPainter) SetViewTransformEnabled(enable bool) {
 }
 
 func (this *QPainter) ViewTransformEnabled() bool {
-	_ret := C.QPainter_ViewTransformEnabled(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QPainter_ViewTransformEnabled(this.h))
 }
 
 func (this *QPainter) StrokePath(path *QPainterPath, pen *QPen) {
@@ -824,8 +803,7 @@ func (this *QPainter) SetLayoutDirection(direction LayoutDirection) {
 }
 
 func (this *QPainter) LayoutDirection() LayoutDirection {
-	_ret := C.QPainter_LayoutDirection(this.h)
-	return (LayoutDirection)(_ret)
+	return (LayoutDirection)(C.QPainter_LayoutDirection(this.h))
 }
 
 func (this *QPainter) DrawGlyphRun(position *QPointF, glyphRun *QGlyphRun) {
@@ -1021,18 +999,15 @@ func (this *QPainter) SetRenderHints(hints int) {
 }
 
 func (this *QPainter) RenderHints() int {
-	_ret := C.QPainter_RenderHints(this.h)
-	return (int)(_ret)
+	return (int)(C.QPainter_RenderHints(this.h))
 }
 
 func (this *QPainter) TestRenderHint(hint QPainter__RenderHint) bool {
-	_ret := C.QPainter_TestRenderHint(this.h, (C.uintptr_t)(hint))
-	return (bool)(_ret)
+	return (bool)(C.QPainter_TestRenderHint(this.h, (C.uintptr_t)(hint)))
 }
 
 func (this *QPainter) PaintEngine() *QPaintEngine {
-	_ret := C.QPainter_PaintEngine(this.h)
-	return newQPaintEngine_U(unsafe.Pointer(_ret))
+	return newQPaintEngine_U(unsafe.Pointer(C.QPainter_PaintEngine(this.h)))
 }
 
 func QPainter_SetRedirected(device *QPaintDevice, replacement *QPaintDevice) {
@@ -1040,8 +1015,7 @@ func QPainter_SetRedirected(device *QPaintDevice, replacement *QPaintDevice) {
 }
 
 func QPainter_Redirected(device *QPaintDevice) *QPaintDevice {
-	_ret := C.QPainter_Redirected(device.cPointer())
-	return newQPaintDevice_U(unsafe.Pointer(_ret))
+	return newQPaintDevice_U(unsafe.Pointer(C.QPainter_Redirected(device.cPointer())))
 }
 
 func QPainter_RestoreRedirected(device *QPaintDevice) {
@@ -1238,8 +1212,7 @@ func QPainter_SetRedirected3(device *QPaintDevice, replacement *QPaintDevice, of
 }
 
 func QPainter_Redirected2(device *QPaintDevice, offset *QPoint) *QPaintDevice {
-	_ret := C.QPainter_Redirected2(device.cPointer(), offset.cPointer())
-	return newQPaintDevice_U(unsafe.Pointer(_ret))
+	return newQPaintDevice_U(unsafe.Pointer(C.QPainter_Redirected2(device.cPointer(), offset.cPointer())))
 }
 
 // Delete this object from C++ memory.

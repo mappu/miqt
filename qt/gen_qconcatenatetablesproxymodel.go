@@ -49,8 +49,7 @@ func NewQConcatenateTablesProxyModel2(parent *QObject) *QConcatenateTablesProxyM
 }
 
 func (this *QConcatenateTablesProxyModel) MetaObject() *QMetaObject {
-	_ret := C.QConcatenateTablesProxyModel_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QConcatenateTablesProxyModel_MetaObject(this.h)))
 }
 
 func QConcatenateTablesProxyModel_Tr(s string) string {
@@ -74,9 +73,9 @@ func QConcatenateTablesProxyModel_TrUtf8(s string) string {
 func (this *QConcatenateTablesProxyModel) SourceModels() []*QAbstractItemModel {
 	var _ma *C.struct_miqt_array = C.QConcatenateTablesProxyModel_SourceModels(this.h)
 	_ret := make([]*QAbstractItemModel, int(_ma.len))
-	_outCast := (*[0xffff]*C.QAbstractItemModel)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QAbstractItemModel)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQAbstractItemModel(_outCast[i])
+		_ret[i] = newQAbstractItemModel_U(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -112,13 +111,11 @@ func (this *QConcatenateTablesProxyModel) Data(index *QModelIndex) *QVariant {
 }
 
 func (this *QConcatenateTablesProxyModel) SetData(index *QModelIndex, value *QVariant) bool {
-	_ret := C.QConcatenateTablesProxyModel_SetData(this.h, index.cPointer(), value.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QConcatenateTablesProxyModel_SetData(this.h, index.cPointer(), value.cPointer()))
 }
 
 func (this *QConcatenateTablesProxyModel) Flags(index *QModelIndex) int {
-	_ret := C.QConcatenateTablesProxyModel_Flags(this.h, index.cPointer())
-	return (int)(_ret)
+	return (int)(C.QConcatenateTablesProxyModel_Flags(this.h, index.cPointer()))
 }
 
 func (this *QConcatenateTablesProxyModel) Index(row int, column int) *QModelIndex {
@@ -136,8 +133,7 @@ func (this *QConcatenateTablesProxyModel) Parent(index *QModelIndex) *QModelInde
 }
 
 func (this *QConcatenateTablesProxyModel) RowCount() int {
-	_ret := C.QConcatenateTablesProxyModel_RowCount(this.h)
-	return (int)(_ret)
+	return (int)(C.QConcatenateTablesProxyModel_RowCount(this.h))
 }
 
 func (this *QConcatenateTablesProxyModel) HeaderData(section int, orientation Orientation) *QVariant {
@@ -148,8 +144,7 @@ func (this *QConcatenateTablesProxyModel) HeaderData(section int, orientation Or
 }
 
 func (this *QConcatenateTablesProxyModel) ColumnCount() int {
-	_ret := C.QConcatenateTablesProxyModel_ColumnCount(this.h)
-	return (int)(_ret)
+	return (int)(C.QConcatenateTablesProxyModel_ColumnCount(this.h))
 }
 
 func (this *QConcatenateTablesProxyModel) MimeTypes() []string {
@@ -157,8 +152,10 @@ func (this *QConcatenateTablesProxyModel) MimeTypes() []string {
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = C.GoStringN(&_outCast[i].data, C.int(int64(_outCast[i].len)))
-		C.free(unsafe.Pointer(_outCast[i])) // free the inner miqt_string*
+		var _lv_ms *C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoStringN(&_lv_ms.data, C.int(int64(_lv_ms.len)))
+		C.free(unsafe.Pointer(_lv_ms))
+		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -173,18 +170,15 @@ func (this *QConcatenateTablesProxyModel) MimeData(indexes []QModelIndex) *QMime
 	}
 	indexes_ma := &C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(indexes_ma))
-	_ret := C.QConcatenateTablesProxyModel_MimeData(this.h, indexes_ma)
-	return newQMimeData_U(unsafe.Pointer(_ret))
+	return newQMimeData_U(unsafe.Pointer(C.QConcatenateTablesProxyModel_MimeData(this.h, indexes_ma)))
 }
 
 func (this *QConcatenateTablesProxyModel) CanDropMimeData(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool {
-	_ret := C.QConcatenateTablesProxyModel_CanDropMimeData(this.h, data.cPointer(), (C.uintptr_t)(action), (C.int)(row), (C.int)(column), parent.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QConcatenateTablesProxyModel_CanDropMimeData(this.h, data.cPointer(), (C.uintptr_t)(action), (C.int)(row), (C.int)(column), parent.cPointer()))
 }
 
 func (this *QConcatenateTablesProxyModel) DropMimeData(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool {
-	_ret := C.QConcatenateTablesProxyModel_DropMimeData(this.h, data.cPointer(), (C.uintptr_t)(action), (C.int)(row), (C.int)(column), parent.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QConcatenateTablesProxyModel_DropMimeData(this.h, data.cPointer(), (C.uintptr_t)(action), (C.int)(row), (C.int)(column), parent.cPointer()))
 }
 
 func (this *QConcatenateTablesProxyModel) Span(index *QModelIndex) *QSize {
@@ -246,8 +240,7 @@ func (this *QConcatenateTablesProxyModel) Data2(index *QModelIndex, role int) *Q
 }
 
 func (this *QConcatenateTablesProxyModel) SetData3(index *QModelIndex, value *QVariant, role int) bool {
-	_ret := C.QConcatenateTablesProxyModel_SetData3(this.h, index.cPointer(), value.cPointer(), (C.int)(role))
-	return (bool)(_ret)
+	return (bool)(C.QConcatenateTablesProxyModel_SetData3(this.h, index.cPointer(), value.cPointer(), (C.int)(role)))
 }
 
 func (this *QConcatenateTablesProxyModel) Index3(row int, column int, parent *QModelIndex) *QModelIndex {
@@ -258,8 +251,7 @@ func (this *QConcatenateTablesProxyModel) Index3(row int, column int, parent *QM
 }
 
 func (this *QConcatenateTablesProxyModel) RowCount1(parent *QModelIndex) int {
-	_ret := C.QConcatenateTablesProxyModel_RowCount1(this.h, parent.cPointer())
-	return (int)(_ret)
+	return (int)(C.QConcatenateTablesProxyModel_RowCount1(this.h, parent.cPointer()))
 }
 
 func (this *QConcatenateTablesProxyModel) HeaderData3(section int, orientation Orientation, role int) *QVariant {
@@ -270,8 +262,7 @@ func (this *QConcatenateTablesProxyModel) HeaderData3(section int, orientation O
 }
 
 func (this *QConcatenateTablesProxyModel) ColumnCount1(parent *QModelIndex) int {
-	_ret := C.QConcatenateTablesProxyModel_ColumnCount1(this.h, parent.cPointer())
-	return (int)(_ret)
+	return (int)(C.QConcatenateTablesProxyModel_ColumnCount1(this.h, parent.cPointer()))
 }
 
 // Delete this object from C++ memory.

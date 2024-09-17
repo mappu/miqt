@@ -49,8 +49,7 @@ func NewQTimer2(parent *QObject) *QTimer {
 }
 
 func (this *QTimer) MetaObject() *QMetaObject {
-	_ret := C.QTimer_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QTimer_MetaObject(this.h)))
 }
 
 func QTimer_Tr(s string) string {
@@ -72,13 +71,11 @@ func QTimer_TrUtf8(s string) string {
 }
 
 func (this *QTimer) IsActive() bool {
-	_ret := C.QTimer_IsActive(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QTimer_IsActive(this.h))
 }
 
 func (this *QTimer) TimerId() int {
-	_ret := C.QTimer_TimerId(this.h)
-	return (int)(_ret)
+	return (int)(C.QTimer_TimerId(this.h))
 }
 
 func (this *QTimer) SetInterval(msec int) {
@@ -86,13 +83,11 @@ func (this *QTimer) SetInterval(msec int) {
 }
 
 func (this *QTimer) Interval() int {
-	_ret := C.QTimer_Interval(this.h)
-	return (int)(_ret)
+	return (int)(C.QTimer_Interval(this.h))
 }
 
 func (this *QTimer) RemainingTime() int {
-	_ret := C.QTimer_RemainingTime(this.h)
-	return (int)(_ret)
+	return (int)(C.QTimer_RemainingTime(this.h))
 }
 
 func (this *QTimer) SetTimerType(atype TimerType) {
@@ -100,8 +95,7 @@ func (this *QTimer) SetTimerType(atype TimerType) {
 }
 
 func (this *QTimer) TimerType() TimerType {
-	_ret := C.QTimer_TimerType(this.h)
-	return (TimerType)(_ret)
+	return (TimerType)(C.QTimer_TimerType(this.h))
 }
 
 func (this *QTimer) SetSingleShot(singleShot bool) {
@@ -109,8 +103,7 @@ func (this *QTimer) SetSingleShot(singleShot bool) {
 }
 
 func (this *QTimer) IsSingleShot() bool {
-	_ret := C.QTimer_IsSingleShot(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QTimer_IsSingleShot(this.h))
 }
 
 func (this *QTimer) Start(msec int) {

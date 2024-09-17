@@ -65,8 +65,7 @@ func NewQFile4(name string, parent *QObject) *QFile {
 }
 
 func (this *QFile) MetaObject() *QMetaObject {
-	_ret := C.QFile_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QFile_MetaObject(this.h)))
 }
 
 func QFile_Tr(s string) string {
@@ -126,15 +125,13 @@ func QFile_DecodeNameWithLocalFileName(localFileName string) string {
 }
 
 func (this *QFile) Exists() bool {
-	_ret := C.QFile_Exists(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QFile_Exists(this.h))
 }
 
 func QFile_ExistsWithFileName(fileName string) bool {
 	fileName_ms := miqt_strdupg(fileName)
 	defer C.free(fileName_ms)
-	_ret := C.QFile_ExistsWithFileName((*C.struct_miqt_string)(fileName_ms))
-	return (bool)(_ret)
+	return (bool)(C.QFile_ExistsWithFileName((*C.struct_miqt_string)(fileName_ms)))
 }
 
 func (this *QFile) ReadLink() string {
@@ -170,34 +167,29 @@ func QFile_SymLinkTargetWithFileName(fileName string) string {
 }
 
 func (this *QFile) Remove() bool {
-	_ret := C.QFile_Remove(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QFile_Remove(this.h))
 }
 
 func QFile_RemoveWithFileName(fileName string) bool {
 	fileName_ms := miqt_strdupg(fileName)
 	defer C.free(fileName_ms)
-	_ret := C.QFile_RemoveWithFileName((*C.struct_miqt_string)(fileName_ms))
-	return (bool)(_ret)
+	return (bool)(C.QFile_RemoveWithFileName((*C.struct_miqt_string)(fileName_ms)))
 }
 
 func (this *QFile) MoveToTrash() bool {
-	_ret := C.QFile_MoveToTrash(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QFile_MoveToTrash(this.h))
 }
 
 func QFile_MoveToTrashWithFileName(fileName string) bool {
 	fileName_ms := miqt_strdupg(fileName)
 	defer C.free(fileName_ms)
-	_ret := C.QFile_MoveToTrashWithFileName((*C.struct_miqt_string)(fileName_ms))
-	return (bool)(_ret)
+	return (bool)(C.QFile_MoveToTrashWithFileName((*C.struct_miqt_string)(fileName_ms)))
 }
 
 func (this *QFile) Rename(newName string) bool {
 	newName_ms := miqt_strdupg(newName)
 	defer C.free(newName_ms)
-	_ret := C.QFile_Rename(this.h, (*C.struct_miqt_string)(newName_ms))
-	return (bool)(_ret)
+	return (bool)(C.QFile_Rename(this.h, (*C.struct_miqt_string)(newName_ms)))
 }
 
 func QFile_Rename2(oldName string, newName string) bool {
@@ -205,15 +197,13 @@ func QFile_Rename2(oldName string, newName string) bool {
 	defer C.free(oldName_ms)
 	newName_ms := miqt_strdupg(newName)
 	defer C.free(newName_ms)
-	_ret := C.QFile_Rename2((*C.struct_miqt_string)(oldName_ms), (*C.struct_miqt_string)(newName_ms))
-	return (bool)(_ret)
+	return (bool)(C.QFile_Rename2((*C.struct_miqt_string)(oldName_ms), (*C.struct_miqt_string)(newName_ms)))
 }
 
 func (this *QFile) Link(newName string) bool {
 	newName_ms := miqt_strdupg(newName)
 	defer C.free(newName_ms)
-	_ret := C.QFile_Link(this.h, (*C.struct_miqt_string)(newName_ms))
-	return (bool)(_ret)
+	return (bool)(C.QFile_Link(this.h, (*C.struct_miqt_string)(newName_ms)))
 }
 
 func QFile_Link2(oldname string, newName string) bool {
@@ -221,15 +211,13 @@ func QFile_Link2(oldname string, newName string) bool {
 	defer C.free(oldname_ms)
 	newName_ms := miqt_strdupg(newName)
 	defer C.free(newName_ms)
-	_ret := C.QFile_Link2((*C.struct_miqt_string)(oldname_ms), (*C.struct_miqt_string)(newName_ms))
-	return (bool)(_ret)
+	return (bool)(C.QFile_Link2((*C.struct_miqt_string)(oldname_ms), (*C.struct_miqt_string)(newName_ms)))
 }
 
 func (this *QFile) Copy(newName string) bool {
 	newName_ms := miqt_strdupg(newName)
 	defer C.free(newName_ms)
-	_ret := C.QFile_Copy(this.h, (*C.struct_miqt_string)(newName_ms))
-	return (bool)(_ret)
+	return (bool)(C.QFile_Copy(this.h, (*C.struct_miqt_string)(newName_ms)))
 }
 
 func QFile_Copy2(fileName string, newName string) bool {
@@ -237,59 +225,49 @@ func QFile_Copy2(fileName string, newName string) bool {
 	defer C.free(fileName_ms)
 	newName_ms := miqt_strdupg(newName)
 	defer C.free(newName_ms)
-	_ret := C.QFile_Copy2((*C.struct_miqt_string)(fileName_ms), (*C.struct_miqt_string)(newName_ms))
-	return (bool)(_ret)
+	return (bool)(C.QFile_Copy2((*C.struct_miqt_string)(fileName_ms), (*C.struct_miqt_string)(newName_ms)))
 }
 
 func (this *QFile) Open(flags int) bool {
-	_ret := C.QFile_Open(this.h, (C.int)(flags))
-	return (bool)(_ret)
+	return (bool)(C.QFile_Open(this.h, (C.int)(flags)))
 }
 
 func (this *QFile) Open3(fd int, ioFlags int) bool {
-	_ret := C.QFile_Open3(this.h, (C.int)(fd), (C.int)(ioFlags))
-	return (bool)(_ret)
+	return (bool)(C.QFile_Open3(this.h, (C.int)(fd), (C.int)(ioFlags)))
 }
 
 func (this *QFile) Size() int64 {
-	_ret := C.QFile_Size(this.h)
-	return (int64)(_ret)
+	return (int64)(C.QFile_Size(this.h))
 }
 
 func (this *QFile) Resize(sz int64) bool {
-	_ret := C.QFile_Resize(this.h, (C.longlong)(sz))
-	return (bool)(_ret)
+	return (bool)(C.QFile_Resize(this.h, (C.longlong)(sz)))
 }
 
 func QFile_Resize2(filename string, sz int64) bool {
 	filename_ms := miqt_strdupg(filename)
 	defer C.free(filename_ms)
-	_ret := C.QFile_Resize2((*C.struct_miqt_string)(filename_ms), (C.longlong)(sz))
-	return (bool)(_ret)
+	return (bool)(C.QFile_Resize2((*C.struct_miqt_string)(filename_ms), (C.longlong)(sz)))
 }
 
 func (this *QFile) Permissions() int {
-	_ret := C.QFile_Permissions(this.h)
-	return (int)(_ret)
+	return (int)(C.QFile_Permissions(this.h))
 }
 
 func QFile_PermissionsWithFilename(filename string) int {
 	filename_ms := miqt_strdupg(filename)
 	defer C.free(filename_ms)
-	_ret := C.QFile_PermissionsWithFilename((*C.struct_miqt_string)(filename_ms))
-	return (int)(_ret)
+	return (int)(C.QFile_PermissionsWithFilename((*C.struct_miqt_string)(filename_ms)))
 }
 
 func (this *QFile) SetPermissions(permissionSpec int) bool {
-	_ret := C.QFile_SetPermissions(this.h, (C.int)(permissionSpec))
-	return (bool)(_ret)
+	return (bool)(C.QFile_SetPermissions(this.h, (C.int)(permissionSpec)))
 }
 
 func QFile_SetPermissions2(filename string, permissionSpec int) bool {
 	filename_ms := miqt_strdupg(filename)
 	defer C.free(filename_ms)
-	_ret := C.QFile_SetPermissions2((*C.struct_miqt_string)(filename_ms), (C.int)(permissionSpec))
-	return (bool)(_ret)
+	return (bool)(C.QFile_SetPermissions2((*C.struct_miqt_string)(filename_ms), (C.int)(permissionSpec)))
 }
 
 func QFile_Tr2(s string, c string) string {
@@ -337,8 +315,7 @@ func QFile_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QFile) Open33(fd int, ioFlags int, handleFlags int) bool {
-	_ret := C.QFile_Open33(this.h, (C.int)(fd), (C.int)(ioFlags), (C.int)(handleFlags))
-	return (bool)(_ret)
+	return (bool)(C.QFile_Open33(this.h, (C.int)(fd), (C.int)(ioFlags), (C.int)(handleFlags)))
 }
 
 // Delete this object from C++ memory.

@@ -43,8 +43,7 @@ func NewQCommonStyle() *QCommonStyle {
 }
 
 func (this *QCommonStyle) MetaObject() *QMetaObject {
-	_ret := C.QCommonStyle_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QCommonStyle_MetaObject(this.h)))
 }
 
 func QCommonStyle_Tr(s string) string {
@@ -85,8 +84,7 @@ func (this *QCommonStyle) DrawComplexControl(cc QStyle__ComplexControl, opt *QSt
 }
 
 func (this *QCommonStyle) HitTestComplexControl(cc QStyle__ComplexControl, opt *QStyleOptionComplex, pt *QPoint) QStyle__SubControl {
-	_ret := C.QCommonStyle_HitTestComplexControl(this.h, (C.uintptr_t)(cc), opt.cPointer(), pt.cPointer())
-	return (QStyle__SubControl)(_ret)
+	return (QStyle__SubControl)(C.QCommonStyle_HitTestComplexControl(this.h, (C.uintptr_t)(cc), opt.cPointer(), pt.cPointer()))
 }
 
 func (this *QCommonStyle) SubControlRect(cc QStyle__ComplexControl, opt *QStyleOptionComplex, sc QStyle__SubControl) *QRect {
@@ -104,13 +102,11 @@ func (this *QCommonStyle) SizeFromContents(ct QStyle__ContentsType, opt *QStyleO
 }
 
 func (this *QCommonStyle) PixelMetric(m QStyle__PixelMetric) int {
-	_ret := C.QCommonStyle_PixelMetric(this.h, (C.uintptr_t)(m))
-	return (int)(_ret)
+	return (int)(C.QCommonStyle_PixelMetric(this.h, (C.uintptr_t)(m)))
 }
 
 func (this *QCommonStyle) StyleHint(sh QStyle__StyleHint) int {
-	_ret := C.QCommonStyle_StyleHint(this.h, (C.uintptr_t)(sh))
-	return (int)(_ret)
+	return (int)(C.QCommonStyle_StyleHint(this.h, (C.uintptr_t)(sh)))
 }
 
 func (this *QCommonStyle) StandardIcon(standardIcon QStyle__StandardPixmap) *QIcon {
@@ -135,8 +131,7 @@ func (this *QCommonStyle) GeneratedIconPixmap(iconMode QIcon__Mode, pixmap *QPix
 }
 
 func (this *QCommonStyle) LayoutSpacing(control1 QSizePolicy__ControlType, control2 QSizePolicy__ControlType, orientation Orientation) int {
-	_ret := C.QCommonStyle_LayoutSpacing(this.h, (C.uintptr_t)(control1), (C.uintptr_t)(control2), (C.uintptr_t)(orientation))
-	return (int)(_ret)
+	return (int)(C.QCommonStyle_LayoutSpacing(this.h, (C.uintptr_t)(control1), (C.uintptr_t)(control2), (C.uintptr_t)(orientation)))
 }
 
 func (this *QCommonStyle) Polish(param1 *QPalette) {
@@ -223,8 +218,7 @@ func (this *QCommonStyle) DrawComplexControl4(cc QStyle__ComplexControl, opt *QS
 }
 
 func (this *QCommonStyle) HitTestComplexControl4(cc QStyle__ComplexControl, opt *QStyleOptionComplex, pt *QPoint, w *QWidget) QStyle__SubControl {
-	_ret := C.QCommonStyle_HitTestComplexControl4(this.h, (C.uintptr_t)(cc), opt.cPointer(), pt.cPointer(), w.cPointer())
-	return (QStyle__SubControl)(_ret)
+	return (QStyle__SubControl)(C.QCommonStyle_HitTestComplexControl4(this.h, (C.uintptr_t)(cc), opt.cPointer(), pt.cPointer(), w.cPointer()))
 }
 
 func (this *QCommonStyle) SubControlRect4(cc QStyle__ComplexControl, opt *QStyleOptionComplex, sc QStyle__SubControl, w *QWidget) *QRect {
@@ -242,28 +236,23 @@ func (this *QCommonStyle) SizeFromContents4(ct QStyle__ContentsType, opt *QStyle
 }
 
 func (this *QCommonStyle) PixelMetric2(m QStyle__PixelMetric, opt *QStyleOption) int {
-	_ret := C.QCommonStyle_PixelMetric2(this.h, (C.uintptr_t)(m), opt.cPointer())
-	return (int)(_ret)
+	return (int)(C.QCommonStyle_PixelMetric2(this.h, (C.uintptr_t)(m), opt.cPointer()))
 }
 
 func (this *QCommonStyle) PixelMetric3(m QStyle__PixelMetric, opt *QStyleOption, widget *QWidget) int {
-	_ret := C.QCommonStyle_PixelMetric3(this.h, (C.uintptr_t)(m), opt.cPointer(), widget.cPointer())
-	return (int)(_ret)
+	return (int)(C.QCommonStyle_PixelMetric3(this.h, (C.uintptr_t)(m), opt.cPointer(), widget.cPointer()))
 }
 
 func (this *QCommonStyle) StyleHint2(sh QStyle__StyleHint, opt *QStyleOption) int {
-	_ret := C.QCommonStyle_StyleHint2(this.h, (C.uintptr_t)(sh), opt.cPointer())
-	return (int)(_ret)
+	return (int)(C.QCommonStyle_StyleHint2(this.h, (C.uintptr_t)(sh), opt.cPointer()))
 }
 
 func (this *QCommonStyle) StyleHint3(sh QStyle__StyleHint, opt *QStyleOption, w *QWidget) int {
-	_ret := C.QCommonStyle_StyleHint3(this.h, (C.uintptr_t)(sh), opt.cPointer(), w.cPointer())
-	return (int)(_ret)
+	return (int)(C.QCommonStyle_StyleHint3(this.h, (C.uintptr_t)(sh), opt.cPointer(), w.cPointer()))
 }
 
 func (this *QCommonStyle) StyleHint4(sh QStyle__StyleHint, opt *QStyleOption, w *QWidget, shret *QStyleHintReturn) int {
-	_ret := C.QCommonStyle_StyleHint4(this.h, (C.uintptr_t)(sh), opt.cPointer(), w.cPointer(), shret.cPointer())
-	return (int)(_ret)
+	return (int)(C.QCommonStyle_StyleHint4(this.h, (C.uintptr_t)(sh), opt.cPointer(), w.cPointer(), shret.cPointer()))
 }
 
 func (this *QCommonStyle) StandardIcon2(standardIcon QStyle__StandardPixmap, opt *QStyleOption) *QIcon {
@@ -295,13 +284,11 @@ func (this *QCommonStyle) StandardPixmap3(sp QStyle__StandardPixmap, opt *QStyle
 }
 
 func (this *QCommonStyle) LayoutSpacing4(control1 QSizePolicy__ControlType, control2 QSizePolicy__ControlType, orientation Orientation, option *QStyleOption) int {
-	_ret := C.QCommonStyle_LayoutSpacing4(this.h, (C.uintptr_t)(control1), (C.uintptr_t)(control2), (C.uintptr_t)(orientation), option.cPointer())
-	return (int)(_ret)
+	return (int)(C.QCommonStyle_LayoutSpacing4(this.h, (C.uintptr_t)(control1), (C.uintptr_t)(control2), (C.uintptr_t)(orientation), option.cPointer()))
 }
 
 func (this *QCommonStyle) LayoutSpacing5(control1 QSizePolicy__ControlType, control2 QSizePolicy__ControlType, orientation Orientation, option *QStyleOption, widget *QWidget) int {
-	_ret := C.QCommonStyle_LayoutSpacing5(this.h, (C.uintptr_t)(control1), (C.uintptr_t)(control2), (C.uintptr_t)(orientation), option.cPointer(), widget.cPointer())
-	return (int)(_ret)
+	return (int)(C.QCommonStyle_LayoutSpacing5(this.h, (C.uintptr_t)(control1), (C.uintptr_t)(control2), (C.uintptr_t)(orientation), option.cPointer(), widget.cPointer()))
 }
 
 // Delete this object from C++ memory.

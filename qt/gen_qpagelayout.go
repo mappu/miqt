@@ -99,13 +99,11 @@ func (this *QPageLayout) Swap(other *QPageLayout) {
 }
 
 func (this *QPageLayout) IsEquivalentTo(other *QPageLayout) bool {
-	_ret := C.QPageLayout_IsEquivalentTo(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QPageLayout_IsEquivalentTo(this.h, other.cPointer()))
 }
 
 func (this *QPageLayout) IsValid() bool {
-	_ret := C.QPageLayout_IsValid(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QPageLayout_IsValid(this.h))
 }
 
 func (this *QPageLayout) SetMode(mode QPageLayout__Mode) {
@@ -113,8 +111,7 @@ func (this *QPageLayout) SetMode(mode QPageLayout__Mode) {
 }
 
 func (this *QPageLayout) Mode() QPageLayout__Mode {
-	_ret := C.QPageLayout_Mode(this.h)
-	return (QPageLayout__Mode)(_ret)
+	return (QPageLayout__Mode)(C.QPageLayout_Mode(this.h))
 }
 
 func (this *QPageLayout) SetPageSize(pageSize *QPageSize) {
@@ -133,8 +130,7 @@ func (this *QPageLayout) SetOrientation(orientation QPageLayout__Orientation) {
 }
 
 func (this *QPageLayout) Orientation() QPageLayout__Orientation {
-	_ret := C.QPageLayout_Orientation(this.h)
-	return (QPageLayout__Orientation)(_ret)
+	return (QPageLayout__Orientation)(C.QPageLayout_Orientation(this.h))
 }
 
 func (this *QPageLayout) SetUnits(units QPageLayout__Unit) {
@@ -142,33 +138,27 @@ func (this *QPageLayout) SetUnits(units QPageLayout__Unit) {
 }
 
 func (this *QPageLayout) Units() QPageLayout__Unit {
-	_ret := C.QPageLayout_Units(this.h)
-	return (QPageLayout__Unit)(_ret)
+	return (QPageLayout__Unit)(C.QPageLayout_Units(this.h))
 }
 
 func (this *QPageLayout) SetMargins(margins *QMarginsF) bool {
-	_ret := C.QPageLayout_SetMargins(this.h, margins.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QPageLayout_SetMargins(this.h, margins.cPointer()))
 }
 
 func (this *QPageLayout) SetLeftMargin(leftMargin float64) bool {
-	_ret := C.QPageLayout_SetLeftMargin(this.h, (C.double)(leftMargin))
-	return (bool)(_ret)
+	return (bool)(C.QPageLayout_SetLeftMargin(this.h, (C.double)(leftMargin)))
 }
 
 func (this *QPageLayout) SetRightMargin(rightMargin float64) bool {
-	_ret := C.QPageLayout_SetRightMargin(this.h, (C.double)(rightMargin))
-	return (bool)(_ret)
+	return (bool)(C.QPageLayout_SetRightMargin(this.h, (C.double)(rightMargin)))
 }
 
 func (this *QPageLayout) SetTopMargin(topMargin float64) bool {
-	_ret := C.QPageLayout_SetTopMargin(this.h, (C.double)(topMargin))
-	return (bool)(_ret)
+	return (bool)(C.QPageLayout_SetTopMargin(this.h, (C.double)(topMargin)))
 }
 
 func (this *QPageLayout) SetBottomMargin(bottomMargin float64) bool {
-	_ret := C.QPageLayout_SetBottomMargin(this.h, (C.double)(bottomMargin))
-	return (bool)(_ret)
+	return (bool)(C.QPageLayout_SetBottomMargin(this.h, (C.double)(bottomMargin)))
 }
 
 func (this *QPageLayout) Margins() *QMarginsF {

@@ -44,23 +44,19 @@ func NewQLoggingCategory(category string) *QLoggingCategory {
 }
 
 func (this *QLoggingCategory) IsDebugEnabled() bool {
-	_ret := C.QLoggingCategory_IsDebugEnabled(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QLoggingCategory_IsDebugEnabled(this.h))
 }
 
 func (this *QLoggingCategory) IsInfoEnabled() bool {
-	_ret := C.QLoggingCategory_IsInfoEnabled(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QLoggingCategory_IsInfoEnabled(this.h))
 }
 
 func (this *QLoggingCategory) IsWarningEnabled() bool {
-	_ret := C.QLoggingCategory_IsWarningEnabled(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QLoggingCategory_IsWarningEnabled(this.h))
 }
 
 func (this *QLoggingCategory) IsCriticalEnabled() bool {
-	_ret := C.QLoggingCategory_IsCriticalEnabled(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QLoggingCategory_IsCriticalEnabled(this.h))
 }
 
 func (this *QLoggingCategory) CategoryName() unsafe.Pointer {
@@ -69,18 +65,15 @@ func (this *QLoggingCategory) CategoryName() unsafe.Pointer {
 }
 
 func (this *QLoggingCategory) OperatorCall() *QLoggingCategory {
-	_ret := C.QLoggingCategory_OperatorCall(this.h)
-	return newQLoggingCategory_U(unsafe.Pointer(_ret))
+	return newQLoggingCategory_U(unsafe.Pointer(C.QLoggingCategory_OperatorCall(this.h)))
 }
 
 func (this *QLoggingCategory) OperatorCall2() *QLoggingCategory {
-	_ret := C.QLoggingCategory_OperatorCall2(this.h)
-	return newQLoggingCategory_U(unsafe.Pointer(_ret))
+	return newQLoggingCategory_U(unsafe.Pointer(C.QLoggingCategory_OperatorCall2(this.h)))
 }
 
 func QLoggingCategory_DefaultCategory() *QLoggingCategory {
-	_ret := C.QLoggingCategory_DefaultCategory()
-	return newQLoggingCategory_U(unsafe.Pointer(_ret))
+	return newQLoggingCategory_U(unsafe.Pointer(C.QLoggingCategory_DefaultCategory()))
 }
 
 func QLoggingCategory_SetFilterRules(rules string) {

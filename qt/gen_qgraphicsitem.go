@@ -186,43 +186,35 @@ func newQGraphicsItem_U(h unsafe.Pointer) *QGraphicsItem {
 }
 
 func (this *QGraphicsItem) Scene() *QGraphicsScene {
-	_ret := C.QGraphicsItem_Scene(this.h)
-	return newQGraphicsScene_U(unsafe.Pointer(_ret))
+	return newQGraphicsScene_U(unsafe.Pointer(C.QGraphicsItem_Scene(this.h)))
 }
 
 func (this *QGraphicsItem) ParentItem() *QGraphicsItem {
-	_ret := C.QGraphicsItem_ParentItem(this.h)
-	return newQGraphicsItem_U(unsafe.Pointer(_ret))
+	return newQGraphicsItem_U(unsafe.Pointer(C.QGraphicsItem_ParentItem(this.h)))
 }
 
 func (this *QGraphicsItem) TopLevelItem() *QGraphicsItem {
-	_ret := C.QGraphicsItem_TopLevelItem(this.h)
-	return newQGraphicsItem_U(unsafe.Pointer(_ret))
+	return newQGraphicsItem_U(unsafe.Pointer(C.QGraphicsItem_TopLevelItem(this.h)))
 }
 
 func (this *QGraphicsItem) ParentObject() *QGraphicsObject {
-	_ret := C.QGraphicsItem_ParentObject(this.h)
-	return newQGraphicsObject_U(unsafe.Pointer(_ret))
+	return newQGraphicsObject_U(unsafe.Pointer(C.QGraphicsItem_ParentObject(this.h)))
 }
 
 func (this *QGraphicsItem) ParentWidget() *QGraphicsWidget {
-	_ret := C.QGraphicsItem_ParentWidget(this.h)
-	return newQGraphicsWidget_U(unsafe.Pointer(_ret))
+	return newQGraphicsWidget_U(unsafe.Pointer(C.QGraphicsItem_ParentWidget(this.h)))
 }
 
 func (this *QGraphicsItem) TopLevelWidget() *QGraphicsWidget {
-	_ret := C.QGraphicsItem_TopLevelWidget(this.h)
-	return newQGraphicsWidget_U(unsafe.Pointer(_ret))
+	return newQGraphicsWidget_U(unsafe.Pointer(C.QGraphicsItem_TopLevelWidget(this.h)))
 }
 
 func (this *QGraphicsItem) Window() *QGraphicsWidget {
-	_ret := C.QGraphicsItem_Window(this.h)
-	return newQGraphicsWidget_U(unsafe.Pointer(_ret))
+	return newQGraphicsWidget_U(unsafe.Pointer(C.QGraphicsItem_Window(this.h)))
 }
 
 func (this *QGraphicsItem) Panel() *QGraphicsItem {
-	_ret := C.QGraphicsItem_Panel(this.h)
-	return newQGraphicsItem_U(unsafe.Pointer(_ret))
+	return newQGraphicsItem_U(unsafe.Pointer(C.QGraphicsItem_Panel(this.h)))
 }
 
 func (this *QGraphicsItem) SetParentItem(parent *QGraphicsItem) {
@@ -232,42 +224,36 @@ func (this *QGraphicsItem) SetParentItem(parent *QGraphicsItem) {
 func (this *QGraphicsItem) ChildItems() []*QGraphicsItem {
 	var _ma *C.struct_miqt_array = C.QGraphicsItem_ChildItems(this.h)
 	_ret := make([]*QGraphicsItem, int(_ma.len))
-	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQGraphicsItem(_outCast[i])
+		_ret[i] = newQGraphicsItem_U(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QGraphicsItem) IsWidget() bool {
-	_ret := C.QGraphicsItem_IsWidget(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QGraphicsItem_IsWidget(this.h))
 }
 
 func (this *QGraphicsItem) IsWindow() bool {
-	_ret := C.QGraphicsItem_IsWindow(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QGraphicsItem_IsWindow(this.h))
 }
 
 func (this *QGraphicsItem) IsPanel() bool {
-	_ret := C.QGraphicsItem_IsPanel(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QGraphicsItem_IsPanel(this.h))
 }
 
 func (this *QGraphicsItem) ToGraphicsObject() *QGraphicsObject {
-	_ret := C.QGraphicsItem_ToGraphicsObject(this.h)
-	return newQGraphicsObject_U(unsafe.Pointer(_ret))
+	return newQGraphicsObject_U(unsafe.Pointer(C.QGraphicsItem_ToGraphicsObject(this.h)))
 }
 
 func (this *QGraphicsItem) ToGraphicsObject2() *QGraphicsObject {
-	_ret := C.QGraphicsItem_ToGraphicsObject2(this.h)
-	return newQGraphicsObject_U(unsafe.Pointer(_ret))
+	return newQGraphicsObject_U(unsafe.Pointer(C.QGraphicsItem_ToGraphicsObject2(this.h)))
 }
 
 func (this *QGraphicsItem) Group() *QGraphicsItemGroup {
-	_ret := C.QGraphicsItem_Group(this.h)
-	return newQGraphicsItemGroup_U(unsafe.Pointer(_ret))
+	return newQGraphicsItemGroup_U(unsafe.Pointer(C.QGraphicsItem_Group(this.h)))
 }
 
 func (this *QGraphicsItem) SetGroup(group *QGraphicsItemGroup) {
@@ -275,8 +261,7 @@ func (this *QGraphicsItem) SetGroup(group *QGraphicsItemGroup) {
 }
 
 func (this *QGraphicsItem) Flags() int {
-	_ret := C.QGraphicsItem_Flags(this.h)
-	return (int)(_ret)
+	return (int)(C.QGraphicsItem_Flags(this.h))
 }
 
 func (this *QGraphicsItem) SetFlag(flag QGraphicsItem__GraphicsItemFlag) {
@@ -288,8 +273,7 @@ func (this *QGraphicsItem) SetFlags(flags int) {
 }
 
 func (this *QGraphicsItem) CacheMode() QGraphicsItem__CacheMode {
-	_ret := C.QGraphicsItem_CacheMode(this.h)
-	return (QGraphicsItem__CacheMode)(_ret)
+	return (QGraphicsItem__CacheMode)(C.QGraphicsItem_CacheMode(this.h))
 }
 
 func (this *QGraphicsItem) SetCacheMode(mode QGraphicsItem__CacheMode) {
@@ -297,8 +281,7 @@ func (this *QGraphicsItem) SetCacheMode(mode QGraphicsItem__CacheMode) {
 }
 
 func (this *QGraphicsItem) PanelModality() QGraphicsItem__PanelModality {
-	_ret := C.QGraphicsItem_PanelModality(this.h)
-	return (QGraphicsItem__PanelModality)(_ret)
+	return (QGraphicsItem__PanelModality)(C.QGraphicsItem_PanelModality(this.h))
 }
 
 func (this *QGraphicsItem) SetPanelModality(panelModality QGraphicsItem__PanelModality) {
@@ -306,8 +289,7 @@ func (this *QGraphicsItem) SetPanelModality(panelModality QGraphicsItem__PanelMo
 }
 
 func (this *QGraphicsItem) IsBlockedByModalPanel() bool {
-	_ret := C.QGraphicsItem_IsBlockedByModalPanel(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QGraphicsItem_IsBlockedByModalPanel(this.h))
 }
 
 func (this *QGraphicsItem) ToolTip() string {
@@ -335,8 +317,7 @@ func (this *QGraphicsItem) SetCursor(cursor *QCursor) {
 }
 
 func (this *QGraphicsItem) HasCursor() bool {
-	_ret := C.QGraphicsItem_HasCursor(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QGraphicsItem_HasCursor(this.h))
 }
 
 func (this *QGraphicsItem) UnsetCursor() {
@@ -344,13 +325,11 @@ func (this *QGraphicsItem) UnsetCursor() {
 }
 
 func (this *QGraphicsItem) IsVisible() bool {
-	_ret := C.QGraphicsItem_IsVisible(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QGraphicsItem_IsVisible(this.h))
 }
 
 func (this *QGraphicsItem) IsVisibleTo(parent *QGraphicsItem) bool {
-	_ret := C.QGraphicsItem_IsVisibleTo(this.h, parent.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QGraphicsItem_IsVisibleTo(this.h, parent.cPointer()))
 }
 
 func (this *QGraphicsItem) SetVisible(visible bool) {
@@ -366,8 +345,7 @@ func (this *QGraphicsItem) Show() {
 }
 
 func (this *QGraphicsItem) IsEnabled() bool {
-	_ret := C.QGraphicsItem_IsEnabled(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QGraphicsItem_IsEnabled(this.h))
 }
 
 func (this *QGraphicsItem) SetEnabled(enabled bool) {
@@ -375,8 +353,7 @@ func (this *QGraphicsItem) SetEnabled(enabled bool) {
 }
 
 func (this *QGraphicsItem) IsSelected() bool {
-	_ret := C.QGraphicsItem_IsSelected(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QGraphicsItem_IsSelected(this.h))
 }
 
 func (this *QGraphicsItem) SetSelected(selected bool) {
@@ -384,8 +361,7 @@ func (this *QGraphicsItem) SetSelected(selected bool) {
 }
 
 func (this *QGraphicsItem) AcceptDrops() bool {
-	_ret := C.QGraphicsItem_AcceptDrops(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QGraphicsItem_AcceptDrops(this.h))
 }
 
 func (this *QGraphicsItem) SetAcceptDrops(on bool) {
@@ -393,13 +369,11 @@ func (this *QGraphicsItem) SetAcceptDrops(on bool) {
 }
 
 func (this *QGraphicsItem) Opacity() float64 {
-	_ret := C.QGraphicsItem_Opacity(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QGraphicsItem_Opacity(this.h))
 }
 
 func (this *QGraphicsItem) EffectiveOpacity() float64 {
-	_ret := C.QGraphicsItem_EffectiveOpacity(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QGraphicsItem_EffectiveOpacity(this.h))
 }
 
 func (this *QGraphicsItem) SetOpacity(opacity float64) {
@@ -407,8 +381,7 @@ func (this *QGraphicsItem) SetOpacity(opacity float64) {
 }
 
 func (this *QGraphicsItem) GraphicsEffect() *QGraphicsEffect {
-	_ret := C.QGraphicsItem_GraphicsEffect(this.h)
-	return newQGraphicsEffect_U(unsafe.Pointer(_ret))
+	return newQGraphicsEffect_U(unsafe.Pointer(C.QGraphicsItem_GraphicsEffect(this.h)))
 }
 
 func (this *QGraphicsItem) SetGraphicsEffect(effect *QGraphicsEffect) {
@@ -416,8 +389,7 @@ func (this *QGraphicsItem) SetGraphicsEffect(effect *QGraphicsEffect) {
 }
 
 func (this *QGraphicsItem) AcceptedMouseButtons() int {
-	_ret := C.QGraphicsItem_AcceptedMouseButtons(this.h)
-	return (int)(_ret)
+	return (int)(C.QGraphicsItem_AcceptedMouseButtons(this.h))
 }
 
 func (this *QGraphicsItem) SetAcceptedMouseButtons(buttons int) {
@@ -425,8 +397,7 @@ func (this *QGraphicsItem) SetAcceptedMouseButtons(buttons int) {
 }
 
 func (this *QGraphicsItem) AcceptHoverEvents() bool {
-	_ret := C.QGraphicsItem_AcceptHoverEvents(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QGraphicsItem_AcceptHoverEvents(this.h))
 }
 
 func (this *QGraphicsItem) SetAcceptHoverEvents(enabled bool) {
@@ -434,8 +405,7 @@ func (this *QGraphicsItem) SetAcceptHoverEvents(enabled bool) {
 }
 
 func (this *QGraphicsItem) AcceptTouchEvents() bool {
-	_ret := C.QGraphicsItem_AcceptTouchEvents(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QGraphicsItem_AcceptTouchEvents(this.h))
 }
 
 func (this *QGraphicsItem) SetAcceptTouchEvents(enabled bool) {
@@ -443,8 +413,7 @@ func (this *QGraphicsItem) SetAcceptTouchEvents(enabled bool) {
 }
 
 func (this *QGraphicsItem) FiltersChildEvents() bool {
-	_ret := C.QGraphicsItem_FiltersChildEvents(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QGraphicsItem_FiltersChildEvents(this.h))
 }
 
 func (this *QGraphicsItem) SetFiltersChildEvents(enabled bool) {
@@ -452,8 +421,7 @@ func (this *QGraphicsItem) SetFiltersChildEvents(enabled bool) {
 }
 
 func (this *QGraphicsItem) HandlesChildEvents() bool {
-	_ret := C.QGraphicsItem_HandlesChildEvents(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QGraphicsItem_HandlesChildEvents(this.h))
 }
 
 func (this *QGraphicsItem) SetHandlesChildEvents(enabled bool) {
@@ -461,8 +429,7 @@ func (this *QGraphicsItem) SetHandlesChildEvents(enabled bool) {
 }
 
 func (this *QGraphicsItem) IsActive() bool {
-	_ret := C.QGraphicsItem_IsActive(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QGraphicsItem_IsActive(this.h))
 }
 
 func (this *QGraphicsItem) SetActive(active bool) {
@@ -470,8 +437,7 @@ func (this *QGraphicsItem) SetActive(active bool) {
 }
 
 func (this *QGraphicsItem) HasFocus() bool {
-	_ret := C.QGraphicsItem_HasFocus(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QGraphicsItem_HasFocus(this.h))
 }
 
 func (this *QGraphicsItem) SetFocus() {
@@ -483,8 +449,7 @@ func (this *QGraphicsItem) ClearFocus() {
 }
 
 func (this *QGraphicsItem) FocusProxy() *QGraphicsItem {
-	_ret := C.QGraphicsItem_FocusProxy(this.h)
-	return newQGraphicsItem_U(unsafe.Pointer(_ret))
+	return newQGraphicsItem_U(unsafe.Pointer(C.QGraphicsItem_FocusProxy(this.h)))
 }
 
 func (this *QGraphicsItem) SetFocusProxy(item *QGraphicsItem) {
@@ -492,13 +457,11 @@ func (this *QGraphicsItem) SetFocusProxy(item *QGraphicsItem) {
 }
 
 func (this *QGraphicsItem) FocusItem() *QGraphicsItem {
-	_ret := C.QGraphicsItem_FocusItem(this.h)
-	return newQGraphicsItem_U(unsafe.Pointer(_ret))
+	return newQGraphicsItem_U(unsafe.Pointer(C.QGraphicsItem_FocusItem(this.h)))
 }
 
 func (this *QGraphicsItem) FocusScopeItem() *QGraphicsItem {
-	_ret := C.QGraphicsItem_FocusScopeItem(this.h)
-	return newQGraphicsItem_U(unsafe.Pointer(_ret))
+	return newQGraphicsItem_U(unsafe.Pointer(C.QGraphicsItem_FocusScopeItem(this.h)))
 }
 
 func (this *QGraphicsItem) GrabMouse() {
@@ -525,8 +488,7 @@ func (this *QGraphicsItem) Pos() *QPointF {
 }
 
 func (this *QGraphicsItem) X() float64 {
-	_ret := C.QGraphicsItem_X(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QGraphicsItem_X(this.h))
 }
 
 func (this *QGraphicsItem) SetX(x float64) {
@@ -534,8 +496,7 @@ func (this *QGraphicsItem) SetX(x float64) {
 }
 
 func (this *QGraphicsItem) Y() float64 {
-	_ret := C.QGraphicsItem_Y(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QGraphicsItem_Y(this.h))
 }
 
 func (this *QGraphicsItem) SetY(y float64) {
@@ -632,8 +593,7 @@ func (this *QGraphicsItem) SetRotation(angle float64) {
 }
 
 func (this *QGraphicsItem) Rotation() float64 {
-	_ret := C.QGraphicsItem_Rotation(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QGraphicsItem_Rotation(this.h))
 }
 
 func (this *QGraphicsItem) SetScale(scale float64) {
@@ -641,16 +601,15 @@ func (this *QGraphicsItem) SetScale(scale float64) {
 }
 
 func (this *QGraphicsItem) Scale() float64 {
-	_ret := C.QGraphicsItem_Scale(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QGraphicsItem_Scale(this.h))
 }
 
 func (this *QGraphicsItem) Transformations() []*QGraphicsTransform {
 	var _ma *C.struct_miqt_array = C.QGraphicsItem_Transformations(this.h)
 	_ret := make([]*QGraphicsTransform, int(_ma.len))
-	_outCast := (*[0xffff]*C.QGraphicsTransform)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QGraphicsTransform)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQGraphicsTransform(_outCast[i])
+		_ret[i] = newQGraphicsTransform_U(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -688,8 +647,7 @@ func (this *QGraphicsItem) Advance(phase int) {
 }
 
 func (this *QGraphicsItem) ZValue() float64 {
-	_ret := C.QGraphicsItem_ZValue(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QGraphicsItem_ZValue(this.h))
 }
 
 func (this *QGraphicsItem) SetZValue(z float64) {
@@ -729,8 +687,7 @@ func (this *QGraphicsItem) Shape() *QPainterPath {
 }
 
 func (this *QGraphicsItem) IsClipped() bool {
-	_ret := C.QGraphicsItem_IsClipped(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QGraphicsItem_IsClipped(this.h))
 }
 
 func (this *QGraphicsItem) ClipPath() *QPainterPath {
@@ -741,44 +698,38 @@ func (this *QGraphicsItem) ClipPath() *QPainterPath {
 }
 
 func (this *QGraphicsItem) Contains(point *QPointF) bool {
-	_ret := C.QGraphicsItem_Contains(this.h, point.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QGraphicsItem_Contains(this.h, point.cPointer()))
 }
 
 func (this *QGraphicsItem) CollidesWithItem(other *QGraphicsItem) bool {
-	_ret := C.QGraphicsItem_CollidesWithItem(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QGraphicsItem_CollidesWithItem(this.h, other.cPointer()))
 }
 
 func (this *QGraphicsItem) CollidesWithPath(path *QPainterPath) bool {
-	_ret := C.QGraphicsItem_CollidesWithPath(this.h, path.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QGraphicsItem_CollidesWithPath(this.h, path.cPointer()))
 }
 
 func (this *QGraphicsItem) CollidingItems() []*QGraphicsItem {
 	var _ma *C.struct_miqt_array = C.QGraphicsItem_CollidingItems(this.h)
 	_ret := make([]*QGraphicsItem, int(_ma.len))
-	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQGraphicsItem(_outCast[i])
+		_ret[i] = newQGraphicsItem_U(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QGraphicsItem) IsObscured() bool {
-	_ret := C.QGraphicsItem_IsObscured(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QGraphicsItem_IsObscured(this.h))
 }
 
 func (this *QGraphicsItem) IsObscured2(x float64, y float64, w float64, h float64) bool {
-	_ret := C.QGraphicsItem_IsObscured2(this.h, (C.double)(x), (C.double)(y), (C.double)(w), (C.double)(h))
-	return (bool)(_ret)
+	return (bool)(C.QGraphicsItem_IsObscured2(this.h, (C.double)(x), (C.double)(y), (C.double)(w), (C.double)(h)))
 }
 
 func (this *QGraphicsItem) IsObscuredBy(item *QGraphicsItem) bool {
-	_ret := C.QGraphicsItem_IsObscuredBy(this.h, item.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QGraphicsItem_IsObscuredBy(this.h, item.cPointer()))
 }
 
 func (this *QGraphicsItem) OpaqueArea() *QPainterPath {
@@ -796,8 +747,7 @@ func (this *QGraphicsItem) BoundingRegion(itemToDeviceTransform *QTransform) *QR
 }
 
 func (this *QGraphicsItem) BoundingRegionGranularity() float64 {
-	_ret := C.QGraphicsItem_BoundingRegionGranularity(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QGraphicsItem_BoundingRegionGranularity(this.h))
 }
 
 func (this *QGraphicsItem) SetBoundingRegionGranularity(granularity float64) {
@@ -1031,18 +981,15 @@ func (this *QGraphicsItem) MapRectFromScene2(x float64, y float64, w float64, h 
 }
 
 func (this *QGraphicsItem) IsAncestorOf(child *QGraphicsItem) bool {
-	_ret := C.QGraphicsItem_IsAncestorOf(this.h, child.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QGraphicsItem_IsAncestorOf(this.h, child.cPointer()))
 }
 
 func (this *QGraphicsItem) CommonAncestorItem(other *QGraphicsItem) *QGraphicsItem {
-	_ret := C.QGraphicsItem_CommonAncestorItem(this.h, other.cPointer())
-	return newQGraphicsItem_U(unsafe.Pointer(_ret))
+	return newQGraphicsItem_U(unsafe.Pointer(C.QGraphicsItem_CommonAncestorItem(this.h, other.cPointer())))
 }
 
 func (this *QGraphicsItem) IsUnderMouse() bool {
-	_ret := C.QGraphicsItem_IsUnderMouse(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QGraphicsItem_IsUnderMouse(this.h))
 }
 
 func (this *QGraphicsItem) Data(key int) *QVariant {
@@ -1057,8 +1004,7 @@ func (this *QGraphicsItem) SetData(key int, value *QVariant) {
 }
 
 func (this *QGraphicsItem) InputMethodHints() int {
-	_ret := C.QGraphicsItem_InputMethodHints(this.h)
-	return (int)(_ret)
+	return (int)(C.QGraphicsItem_InputMethodHints(this.h))
 }
 
 func (this *QGraphicsItem) SetInputMethodHints(hints int) {
@@ -1066,8 +1012,7 @@ func (this *QGraphicsItem) SetInputMethodHints(hints int) {
 }
 
 func (this *QGraphicsItem) Type() int {
-	_ret := C.QGraphicsItem_Type(this.h)
-	return (int)(_ret)
+	return (int)(C.QGraphicsItem_Type(this.h))
 }
 
 func (this *QGraphicsItem) InstallSceneEventFilter(filterItem *QGraphicsItem) {
@@ -1126,29 +1071,26 @@ func (this *QGraphicsItem) SetTransform2(matrix *QTransform, combine bool) {
 }
 
 func (this *QGraphicsItem) CollidesWithItem2(other *QGraphicsItem, mode ItemSelectionMode) bool {
-	_ret := C.QGraphicsItem_CollidesWithItem2(this.h, other.cPointer(), (C.uintptr_t)(mode))
-	return (bool)(_ret)
+	return (bool)(C.QGraphicsItem_CollidesWithItem2(this.h, other.cPointer(), (C.uintptr_t)(mode)))
 }
 
 func (this *QGraphicsItem) CollidesWithPath2(path *QPainterPath, mode ItemSelectionMode) bool {
-	_ret := C.QGraphicsItem_CollidesWithPath2(this.h, path.cPointer(), (C.uintptr_t)(mode))
-	return (bool)(_ret)
+	return (bool)(C.QGraphicsItem_CollidesWithPath2(this.h, path.cPointer(), (C.uintptr_t)(mode)))
 }
 
 func (this *QGraphicsItem) CollidingItems1(mode ItemSelectionMode) []*QGraphicsItem {
 	var _ma *C.struct_miqt_array = C.QGraphicsItem_CollidingItems1(this.h, (C.uintptr_t)(mode))
 	_ret := make([]*QGraphicsItem, int(_ma.len))
-	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQGraphicsItem(_outCast[i])
+		_ret[i] = newQGraphicsItem_U(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QGraphicsItem) IsObscured1(rect *QRectF) bool {
-	_ret := C.QGraphicsItem_IsObscured1(this.h, rect.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QGraphicsItem_IsObscured1(this.h, rect.cPointer()))
 }
 
 func (this *QGraphicsItem) Paint3(painter *QPainter, option *QStyleOptionGraphicsItem, widget *QWidget) {
@@ -1202,8 +1144,7 @@ func newQGraphicsObject_U(h unsafe.Pointer) *QGraphicsObject {
 }
 
 func (this *QGraphicsObject) MetaObject() *QMetaObject {
-	_ret := C.QGraphicsObject_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QGraphicsObject_MetaObject(this.h)))
 }
 
 func QGraphicsObject_Tr(s string) string {
@@ -1544,8 +1485,7 @@ func (this *QAbstractGraphicsShapeItem) SetBrush(brush *QBrush) {
 }
 
 func (this *QAbstractGraphicsShapeItem) IsObscuredBy(item *QGraphicsItem) bool {
-	_ret := C.QAbstractGraphicsShapeItem_IsObscuredBy(this.h, item.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QAbstractGraphicsShapeItem_IsObscuredBy(this.h, item.cPointer()))
 }
 
 func (this *QAbstractGraphicsShapeItem) OpaqueArea() *QPainterPath {
@@ -1642,8 +1582,7 @@ func (this *QGraphicsPathItem) Shape() *QPainterPath {
 }
 
 func (this *QGraphicsPathItem) Contains(point *QPointF) bool {
-	_ret := C.QGraphicsPathItem_Contains(this.h, point.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QGraphicsPathItem_Contains(this.h, point.cPointer()))
 }
 
 func (this *QGraphicsPathItem) Paint(painter *QPainter, option *QStyleOptionGraphicsItem) {
@@ -1651,8 +1590,7 @@ func (this *QGraphicsPathItem) Paint(painter *QPainter, option *QStyleOptionGrap
 }
 
 func (this *QGraphicsPathItem) IsObscuredBy(item *QGraphicsItem) bool {
-	_ret := C.QGraphicsPathItem_IsObscuredBy(this.h, item.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QGraphicsPathItem_IsObscuredBy(this.h, item.cPointer()))
 }
 
 func (this *QGraphicsPathItem) OpaqueArea() *QPainterPath {
@@ -1663,8 +1601,7 @@ func (this *QGraphicsPathItem) OpaqueArea() *QPainterPath {
 }
 
 func (this *QGraphicsPathItem) Type() int {
-	_ret := C.QGraphicsPathItem_Type(this.h)
-	return (int)(_ret)
+	return (int)(C.QGraphicsPathItem_Type(this.h))
 }
 
 func (this *QGraphicsPathItem) Paint3(painter *QPainter, option *QStyleOptionGraphicsItem, widget *QWidget) {
@@ -1774,8 +1711,7 @@ func (this *QGraphicsRectItem) Shape() *QPainterPath {
 }
 
 func (this *QGraphicsRectItem) Contains(point *QPointF) bool {
-	_ret := C.QGraphicsRectItem_Contains(this.h, point.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QGraphicsRectItem_Contains(this.h, point.cPointer()))
 }
 
 func (this *QGraphicsRectItem) Paint(painter *QPainter, option *QStyleOptionGraphicsItem) {
@@ -1783,8 +1719,7 @@ func (this *QGraphicsRectItem) Paint(painter *QPainter, option *QStyleOptionGrap
 }
 
 func (this *QGraphicsRectItem) IsObscuredBy(item *QGraphicsItem) bool {
-	_ret := C.QGraphicsRectItem_IsObscuredBy(this.h, item.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QGraphicsRectItem_IsObscuredBy(this.h, item.cPointer()))
 }
 
 func (this *QGraphicsRectItem) OpaqueArea() *QPainterPath {
@@ -1795,8 +1730,7 @@ func (this *QGraphicsRectItem) OpaqueArea() *QPainterPath {
 }
 
 func (this *QGraphicsRectItem) Type() int {
-	_ret := C.QGraphicsRectItem_Type(this.h)
-	return (int)(_ret)
+	return (int)(C.QGraphicsRectItem_Type(this.h))
 }
 
 func (this *QGraphicsRectItem) Paint3(painter *QPainter, option *QStyleOptionGraphicsItem, widget *QWidget) {
@@ -1892,8 +1826,7 @@ func (this *QGraphicsEllipseItem) SetRect2(x float64, y float64, w float64, h fl
 }
 
 func (this *QGraphicsEllipseItem) StartAngle() int {
-	_ret := C.QGraphicsEllipseItem_StartAngle(this.h)
-	return (int)(_ret)
+	return (int)(C.QGraphicsEllipseItem_StartAngle(this.h))
 }
 
 func (this *QGraphicsEllipseItem) SetStartAngle(angle int) {
@@ -1901,8 +1834,7 @@ func (this *QGraphicsEllipseItem) SetStartAngle(angle int) {
 }
 
 func (this *QGraphicsEllipseItem) SpanAngle() int {
-	_ret := C.QGraphicsEllipseItem_SpanAngle(this.h)
-	return (int)(_ret)
+	return (int)(C.QGraphicsEllipseItem_SpanAngle(this.h))
 }
 
 func (this *QGraphicsEllipseItem) SetSpanAngle(angle int) {
@@ -1924,8 +1856,7 @@ func (this *QGraphicsEllipseItem) Shape() *QPainterPath {
 }
 
 func (this *QGraphicsEllipseItem) Contains(point *QPointF) bool {
-	_ret := C.QGraphicsEllipseItem_Contains(this.h, point.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QGraphicsEllipseItem_Contains(this.h, point.cPointer()))
 }
 
 func (this *QGraphicsEllipseItem) Paint(painter *QPainter, option *QStyleOptionGraphicsItem) {
@@ -1933,8 +1864,7 @@ func (this *QGraphicsEllipseItem) Paint(painter *QPainter, option *QStyleOptionG
 }
 
 func (this *QGraphicsEllipseItem) IsObscuredBy(item *QGraphicsItem) bool {
-	_ret := C.QGraphicsEllipseItem_IsObscuredBy(this.h, item.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QGraphicsEllipseItem_IsObscuredBy(this.h, item.cPointer()))
 }
 
 func (this *QGraphicsEllipseItem) OpaqueArea() *QPainterPath {
@@ -1945,8 +1875,7 @@ func (this *QGraphicsEllipseItem) OpaqueArea() *QPainterPath {
 }
 
 func (this *QGraphicsEllipseItem) Type() int {
-	_ret := C.QGraphicsEllipseItem_Type(this.h)
-	return (int)(_ret)
+	return (int)(C.QGraphicsEllipseItem_Type(this.h))
 }
 
 func (this *QGraphicsEllipseItem) Paint3(painter *QPainter, option *QStyleOptionGraphicsItem, widget *QWidget) {
@@ -2003,8 +1932,7 @@ func NewQGraphicsPolygonItem2(parent *QGraphicsItem) *QGraphicsPolygonItem {
 }
 
 func (this *QGraphicsPolygonItem) FillRule() FillRule {
-	_ret := C.QGraphicsPolygonItem_FillRule(this.h)
-	return (FillRule)(_ret)
+	return (FillRule)(C.QGraphicsPolygonItem_FillRule(this.h))
 }
 
 func (this *QGraphicsPolygonItem) SetFillRule(rule FillRule) {
@@ -2026,8 +1954,7 @@ func (this *QGraphicsPolygonItem) Shape() *QPainterPath {
 }
 
 func (this *QGraphicsPolygonItem) Contains(point *QPointF) bool {
-	_ret := C.QGraphicsPolygonItem_Contains(this.h, point.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QGraphicsPolygonItem_Contains(this.h, point.cPointer()))
 }
 
 func (this *QGraphicsPolygonItem) Paint(painter *QPainter, option *QStyleOptionGraphicsItem) {
@@ -2035,8 +1962,7 @@ func (this *QGraphicsPolygonItem) Paint(painter *QPainter, option *QStyleOptionG
 }
 
 func (this *QGraphicsPolygonItem) IsObscuredBy(item *QGraphicsItem) bool {
-	_ret := C.QGraphicsPolygonItem_IsObscuredBy(this.h, item.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QGraphicsPolygonItem_IsObscuredBy(this.h, item.cPointer()))
 }
 
 func (this *QGraphicsPolygonItem) OpaqueArea() *QPainterPath {
@@ -2047,8 +1973,7 @@ func (this *QGraphicsPolygonItem) OpaqueArea() *QPainterPath {
 }
 
 func (this *QGraphicsPolygonItem) Type() int {
-	_ret := C.QGraphicsPolygonItem_Type(this.h)
-	return (int)(_ret)
+	return (int)(C.QGraphicsPolygonItem_Type(this.h))
 }
 
 func (this *QGraphicsPolygonItem) Paint3(painter *QPainter, option *QStyleOptionGraphicsItem, widget *QWidget) {
@@ -2169,8 +2094,7 @@ func (this *QGraphicsLineItem) Shape() *QPainterPath {
 }
 
 func (this *QGraphicsLineItem) Contains(point *QPointF) bool {
-	_ret := C.QGraphicsLineItem_Contains(this.h, point.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QGraphicsLineItem_Contains(this.h, point.cPointer()))
 }
 
 func (this *QGraphicsLineItem) Paint(painter *QPainter, option *QStyleOptionGraphicsItem) {
@@ -2178,8 +2102,7 @@ func (this *QGraphicsLineItem) Paint(painter *QPainter, option *QStyleOptionGrap
 }
 
 func (this *QGraphicsLineItem) IsObscuredBy(item *QGraphicsItem) bool {
-	_ret := C.QGraphicsLineItem_IsObscuredBy(this.h, item.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QGraphicsLineItem_IsObscuredBy(this.h, item.cPointer()))
 }
 
 func (this *QGraphicsLineItem) OpaqueArea() *QPainterPath {
@@ -2190,8 +2113,7 @@ func (this *QGraphicsLineItem) OpaqueArea() *QPainterPath {
 }
 
 func (this *QGraphicsLineItem) Type() int {
-	_ret := C.QGraphicsLineItem_Type(this.h)
-	return (int)(_ret)
+	return (int)(C.QGraphicsLineItem_Type(this.h))
 }
 
 func (this *QGraphicsLineItem) Paint3(painter *QPainter, option *QStyleOptionGraphicsItem, widget *QWidget) {
@@ -2271,8 +2193,7 @@ func (this *QGraphicsPixmapItem) SetPixmap(pixmap *QPixmap) {
 }
 
 func (this *QGraphicsPixmapItem) TransformationMode() TransformationMode {
-	_ret := C.QGraphicsPixmapItem_TransformationMode(this.h)
-	return (TransformationMode)(_ret)
+	return (TransformationMode)(C.QGraphicsPixmapItem_TransformationMode(this.h))
 }
 
 func (this *QGraphicsPixmapItem) SetTransformationMode(mode TransformationMode) {
@@ -2309,8 +2230,7 @@ func (this *QGraphicsPixmapItem) Shape() *QPainterPath {
 }
 
 func (this *QGraphicsPixmapItem) Contains(point *QPointF) bool {
-	_ret := C.QGraphicsPixmapItem_Contains(this.h, point.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QGraphicsPixmapItem_Contains(this.h, point.cPointer()))
 }
 
 func (this *QGraphicsPixmapItem) Paint(painter *QPainter, option *QStyleOptionGraphicsItem, widget *QWidget) {
@@ -2318,8 +2238,7 @@ func (this *QGraphicsPixmapItem) Paint(painter *QPainter, option *QStyleOptionGr
 }
 
 func (this *QGraphicsPixmapItem) IsObscuredBy(item *QGraphicsItem) bool {
-	_ret := C.QGraphicsPixmapItem_IsObscuredBy(this.h, item.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QGraphicsPixmapItem_IsObscuredBy(this.h, item.cPointer()))
 }
 
 func (this *QGraphicsPixmapItem) OpaqueArea() *QPainterPath {
@@ -2330,13 +2249,11 @@ func (this *QGraphicsPixmapItem) OpaqueArea() *QPainterPath {
 }
 
 func (this *QGraphicsPixmapItem) Type() int {
-	_ret := C.QGraphicsPixmapItem_Type(this.h)
-	return (int)(_ret)
+	return (int)(C.QGraphicsPixmapItem_Type(this.h))
 }
 
 func (this *QGraphicsPixmapItem) ShapeMode() QGraphicsPixmapItem__ShapeMode {
-	_ret := C.QGraphicsPixmapItem_ShapeMode(this.h)
-	return (QGraphicsPixmapItem__ShapeMode)(_ret)
+	return (QGraphicsPixmapItem__ShapeMode)(C.QGraphicsPixmapItem_ShapeMode(this.h))
 }
 
 func (this *QGraphicsPixmapItem) SetShapeMode(mode QGraphicsPixmapItem__ShapeMode) {
@@ -2409,8 +2326,7 @@ func NewQGraphicsTextItem4(text string, parent *QGraphicsItem) *QGraphicsTextIte
 }
 
 func (this *QGraphicsTextItem) MetaObject() *QMetaObject {
-	_ret := C.QGraphicsTextItem_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QGraphicsTextItem_MetaObject(this.h)))
 }
 
 func QGraphicsTextItem_Tr(s string) string {
@@ -2494,8 +2410,7 @@ func (this *QGraphicsTextItem) Shape() *QPainterPath {
 }
 
 func (this *QGraphicsTextItem) Contains(point *QPointF) bool {
-	_ret := C.QGraphicsTextItem_Contains(this.h, point.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QGraphicsTextItem_Contains(this.h, point.cPointer()))
 }
 
 func (this *QGraphicsTextItem) Paint(painter *QPainter, option *QStyleOptionGraphicsItem, widget *QWidget) {
@@ -2503,8 +2418,7 @@ func (this *QGraphicsTextItem) Paint(painter *QPainter, option *QStyleOptionGrap
 }
 
 func (this *QGraphicsTextItem) IsObscuredBy(item *QGraphicsItem) bool {
-	_ret := C.QGraphicsTextItem_IsObscuredBy(this.h, item.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QGraphicsTextItem_IsObscuredBy(this.h, item.cPointer()))
 }
 
 func (this *QGraphicsTextItem) OpaqueArea() *QPainterPath {
@@ -2515,8 +2429,7 @@ func (this *QGraphicsTextItem) OpaqueArea() *QPainterPath {
 }
 
 func (this *QGraphicsTextItem) Type() int {
-	_ret := C.QGraphicsTextItem_Type(this.h)
-	return (int)(_ret)
+	return (int)(C.QGraphicsTextItem_Type(this.h))
 }
 
 func (this *QGraphicsTextItem) SetTextWidth(width float64) {
@@ -2524,8 +2437,7 @@ func (this *QGraphicsTextItem) SetTextWidth(width float64) {
 }
 
 func (this *QGraphicsTextItem) TextWidth() float64 {
-	_ret := C.QGraphicsTextItem_TextWidth(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QGraphicsTextItem_TextWidth(this.h))
 }
 
 func (this *QGraphicsTextItem) AdjustSize() {
@@ -2537,8 +2449,7 @@ func (this *QGraphicsTextItem) SetDocument(document *QTextDocument) {
 }
 
 func (this *QGraphicsTextItem) Document() *QTextDocument {
-	_ret := C.QGraphicsTextItem_Document(this.h)
-	return newQTextDocument_U(unsafe.Pointer(_ret))
+	return newQTextDocument_U(unsafe.Pointer(C.QGraphicsTextItem_Document(this.h)))
 }
 
 func (this *QGraphicsTextItem) SetTextInteractionFlags(flags int) {
@@ -2546,8 +2457,7 @@ func (this *QGraphicsTextItem) SetTextInteractionFlags(flags int) {
 }
 
 func (this *QGraphicsTextItem) TextInteractionFlags() int {
-	_ret := C.QGraphicsTextItem_TextInteractionFlags(this.h)
-	return (int)(_ret)
+	return (int)(C.QGraphicsTextItem_TextInteractionFlags(this.h))
 }
 
 func (this *QGraphicsTextItem) SetTabChangesFocus(b bool) {
@@ -2555,8 +2465,7 @@ func (this *QGraphicsTextItem) SetTabChangesFocus(b bool) {
 }
 
 func (this *QGraphicsTextItem) TabChangesFocus() bool {
-	_ret := C.QGraphicsTextItem_TabChangesFocus(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QGraphicsTextItem_TabChangesFocus(this.h))
 }
 
 func (this *QGraphicsTextItem) SetOpenExternalLinks(open bool) {
@@ -2564,8 +2473,7 @@ func (this *QGraphicsTextItem) SetOpenExternalLinks(open bool) {
 }
 
 func (this *QGraphicsTextItem) OpenExternalLinks() bool {
-	_ret := C.QGraphicsTextItem_OpenExternalLinks(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QGraphicsTextItem_OpenExternalLinks(this.h))
 }
 
 func (this *QGraphicsTextItem) SetTextCursor(cursor *QTextCursor) {
@@ -2777,8 +2685,7 @@ func (this *QGraphicsSimpleTextItem) Shape() *QPainterPath {
 }
 
 func (this *QGraphicsSimpleTextItem) Contains(point *QPointF) bool {
-	_ret := C.QGraphicsSimpleTextItem_Contains(this.h, point.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QGraphicsSimpleTextItem_Contains(this.h, point.cPointer()))
 }
 
 func (this *QGraphicsSimpleTextItem) Paint(painter *QPainter, option *QStyleOptionGraphicsItem, widget *QWidget) {
@@ -2786,8 +2693,7 @@ func (this *QGraphicsSimpleTextItem) Paint(painter *QPainter, option *QStyleOpti
 }
 
 func (this *QGraphicsSimpleTextItem) IsObscuredBy(item *QGraphicsItem) bool {
-	_ret := C.QGraphicsSimpleTextItem_IsObscuredBy(this.h, item.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QGraphicsSimpleTextItem_IsObscuredBy(this.h, item.cPointer()))
 }
 
 func (this *QGraphicsSimpleTextItem) OpaqueArea() *QPainterPath {
@@ -2798,8 +2704,7 @@ func (this *QGraphicsSimpleTextItem) OpaqueArea() *QPainterPath {
 }
 
 func (this *QGraphicsSimpleTextItem) Type() int {
-	_ret := C.QGraphicsSimpleTextItem_Type(this.h)
-	return (int)(_ret)
+	return (int)(C.QGraphicsSimpleTextItem_Type(this.h))
 }
 
 // Delete this object from C++ memory.
@@ -2871,8 +2776,7 @@ func (this *QGraphicsItemGroup) Paint(painter *QPainter, option *QStyleOptionGra
 }
 
 func (this *QGraphicsItemGroup) IsObscuredBy(item *QGraphicsItem) bool {
-	_ret := C.QGraphicsItemGroup_IsObscuredBy(this.h, item.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QGraphicsItemGroup_IsObscuredBy(this.h, item.cPointer()))
 }
 
 func (this *QGraphicsItemGroup) OpaqueArea() *QPainterPath {
@@ -2883,8 +2787,7 @@ func (this *QGraphicsItemGroup) OpaqueArea() *QPainterPath {
 }
 
 func (this *QGraphicsItemGroup) Type() int {
-	_ret := C.QGraphicsItemGroup_Type(this.h)
-	return (int)(_ret)
+	return (int)(C.QGraphicsItemGroup_Type(this.h))
 }
 
 func (this *QGraphicsItemGroup) Paint3(painter *QPainter, option *QStyleOptionGraphicsItem, widget *QWidget) {

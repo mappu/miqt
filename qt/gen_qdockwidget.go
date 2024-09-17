@@ -93,8 +93,7 @@ func NewQDockWidget6(parent *QWidget, flags int) *QDockWidget {
 }
 
 func (this *QDockWidget) MetaObject() *QMetaObject {
-	_ret := C.QDockWidget_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QDockWidget_MetaObject(this.h)))
 }
 
 func QDockWidget_Tr(s string) string {
@@ -116,8 +115,7 @@ func QDockWidget_TrUtf8(s string) string {
 }
 
 func (this *QDockWidget) Widget() *QWidget {
-	_ret := C.QDockWidget_Widget(this.h)
-	return newQWidget_U(unsafe.Pointer(_ret))
+	return newQWidget_U(unsafe.Pointer(C.QDockWidget_Widget(this.h)))
 }
 
 func (this *QDockWidget) SetWidget(widget *QWidget) {
@@ -129,8 +127,7 @@ func (this *QDockWidget) SetFeatures(features int) {
 }
 
 func (this *QDockWidget) Features() int {
-	_ret := C.QDockWidget_Features(this.h)
-	return (int)(_ret)
+	return (int)(C.QDockWidget_Features(this.h))
 }
 
 func (this *QDockWidget) SetFloating(floating bool) {
@@ -138,8 +135,7 @@ func (this *QDockWidget) SetFloating(floating bool) {
 }
 
 func (this *QDockWidget) IsFloating() bool {
-	_ret := C.QDockWidget_IsFloating(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QDockWidget_IsFloating(this.h))
 }
 
 func (this *QDockWidget) SetAllowedAreas(areas int) {
@@ -147,8 +143,7 @@ func (this *QDockWidget) SetAllowedAreas(areas int) {
 }
 
 func (this *QDockWidget) AllowedAreas() int {
-	_ret := C.QDockWidget_AllowedAreas(this.h)
-	return (int)(_ret)
+	return (int)(C.QDockWidget_AllowedAreas(this.h))
 }
 
 func (this *QDockWidget) SetTitleBarWidget(widget *QWidget) {
@@ -156,18 +151,15 @@ func (this *QDockWidget) SetTitleBarWidget(widget *QWidget) {
 }
 
 func (this *QDockWidget) TitleBarWidget() *QWidget {
-	_ret := C.QDockWidget_TitleBarWidget(this.h)
-	return newQWidget_U(unsafe.Pointer(_ret))
+	return newQWidget_U(unsafe.Pointer(C.QDockWidget_TitleBarWidget(this.h)))
 }
 
 func (this *QDockWidget) IsAreaAllowed(area DockWidgetArea) bool {
-	_ret := C.QDockWidget_IsAreaAllowed(this.h, (C.uintptr_t)(area))
-	return (bool)(_ret)
+	return (bool)(C.QDockWidget_IsAreaAllowed(this.h, (C.uintptr_t)(area)))
 }
 
 func (this *QDockWidget) ToggleViewAction() *QAction {
-	_ret := C.QDockWidget_ToggleViewAction(this.h)
-	return newQAction_U(unsafe.Pointer(_ret))
+	return newQAction_U(unsafe.Pointer(C.QDockWidget_ToggleViewAction(this.h)))
 }
 
 func (this *QDockWidget) FeaturesChanged(features int) {
@@ -185,8 +177,7 @@ func miqt_exec_callback_QDockWidget_FeaturesChanged(cb *C.void, features C.int) 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	features_ret := features
-	slotval1 := (int)(features_ret)
+	slotval1 := (int)(features)
 
 	gofunc(slotval1)
 }
@@ -206,8 +197,7 @@ func miqt_exec_callback_QDockWidget_TopLevelChanged(cb *C.void, topLevel C.bool)
 	}
 
 	// Convert all CABI parameters to Go parameters
-	topLevel_ret := topLevel
-	slotval1 := (bool)(topLevel_ret)
+	slotval1 := (bool)(topLevel)
 
 	gofunc(slotval1)
 }
@@ -227,8 +217,7 @@ func miqt_exec_callback_QDockWidget_AllowedAreasChanged(cb *C.void, allowedAreas
 	}
 
 	// Convert all CABI parameters to Go parameters
-	allowedAreas_ret := allowedAreas
-	slotval1 := (int)(allowedAreas_ret)
+	slotval1 := (int)(allowedAreas)
 
 	gofunc(slotval1)
 }
@@ -248,8 +237,7 @@ func miqt_exec_callback_QDockWidget_VisibilityChanged(cb *C.void, visible C.bool
 	}
 
 	// Convert all CABI parameters to Go parameters
-	visible_ret := visible
-	slotval1 := (bool)(visible_ret)
+	slotval1 := (bool)(visible)
 
 	gofunc(slotval1)
 }
@@ -269,8 +257,7 @@ func miqt_exec_callback_QDockWidget_DockLocationChanged(cb *C.void, area C.uintp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	area_ret := area
-	slotval1 := (DockWidgetArea)(area_ret)
+	slotval1 := (DockWidgetArea)(area)
 
 	gofunc(slotval1)
 }

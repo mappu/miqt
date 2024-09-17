@@ -65,8 +65,7 @@ func NewQMdiSubWindow3(parent *QWidget, flags int) *QMdiSubWindow {
 }
 
 func (this *QMdiSubWindow) MetaObject() *QMetaObject {
-	_ret := C.QMdiSubWindow_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QMdiSubWindow_MetaObject(this.h)))
 }
 
 func QMdiSubWindow_Tr(s string) string {
@@ -106,23 +105,19 @@ func (this *QMdiSubWindow) SetWidget(widget *QWidget) {
 }
 
 func (this *QMdiSubWindow) Widget() *QWidget {
-	_ret := C.QMdiSubWindow_Widget(this.h)
-	return newQWidget_U(unsafe.Pointer(_ret))
+	return newQWidget_U(unsafe.Pointer(C.QMdiSubWindow_Widget(this.h)))
 }
 
 func (this *QMdiSubWindow) MaximizedButtonsWidget() *QWidget {
-	_ret := C.QMdiSubWindow_MaximizedButtonsWidget(this.h)
-	return newQWidget_U(unsafe.Pointer(_ret))
+	return newQWidget_U(unsafe.Pointer(C.QMdiSubWindow_MaximizedButtonsWidget(this.h)))
 }
 
 func (this *QMdiSubWindow) MaximizedSystemMenuIconWidget() *QWidget {
-	_ret := C.QMdiSubWindow_MaximizedSystemMenuIconWidget(this.h)
-	return newQWidget_U(unsafe.Pointer(_ret))
+	return newQWidget_U(unsafe.Pointer(C.QMdiSubWindow_MaximizedSystemMenuIconWidget(this.h)))
 }
 
 func (this *QMdiSubWindow) IsShaded() bool {
-	_ret := C.QMdiSubWindow_IsShaded(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QMdiSubWindow_IsShaded(this.h))
 }
 
 func (this *QMdiSubWindow) SetOption(option QMdiSubWindow__SubWindowOption) {
@@ -130,8 +125,7 @@ func (this *QMdiSubWindow) SetOption(option QMdiSubWindow__SubWindowOption) {
 }
 
 func (this *QMdiSubWindow) TestOption(param1 QMdiSubWindow__SubWindowOption) bool {
-	_ret := C.QMdiSubWindow_TestOption(this.h, (C.uintptr_t)(param1))
-	return (bool)(_ret)
+	return (bool)(C.QMdiSubWindow_TestOption(this.h, (C.uintptr_t)(param1)))
 }
 
 func (this *QMdiSubWindow) SetKeyboardSingleStep(step int) {
@@ -139,8 +133,7 @@ func (this *QMdiSubWindow) SetKeyboardSingleStep(step int) {
 }
 
 func (this *QMdiSubWindow) KeyboardSingleStep() int {
-	_ret := C.QMdiSubWindow_KeyboardSingleStep(this.h)
-	return (int)(_ret)
+	return (int)(C.QMdiSubWindow_KeyboardSingleStep(this.h))
 }
 
 func (this *QMdiSubWindow) SetKeyboardPageStep(step int) {
@@ -148,8 +141,7 @@ func (this *QMdiSubWindow) SetKeyboardPageStep(step int) {
 }
 
 func (this *QMdiSubWindow) KeyboardPageStep() int {
-	_ret := C.QMdiSubWindow_KeyboardPageStep(this.h)
-	return (int)(_ret)
+	return (int)(C.QMdiSubWindow_KeyboardPageStep(this.h))
 }
 
 func (this *QMdiSubWindow) SetSystemMenu(systemMenu *QMenu) {
@@ -157,13 +149,11 @@ func (this *QMdiSubWindow) SetSystemMenu(systemMenu *QMenu) {
 }
 
 func (this *QMdiSubWindow) SystemMenu() *QMenu {
-	_ret := C.QMdiSubWindow_SystemMenu(this.h)
-	return newQMenu_U(unsafe.Pointer(_ret))
+	return newQMenu_U(unsafe.Pointer(C.QMdiSubWindow_SystemMenu(this.h)))
 }
 
 func (this *QMdiSubWindow) MdiArea() *QMdiArea {
-	_ret := C.QMdiSubWindow_MdiArea(this.h)
-	return newQMdiArea_U(unsafe.Pointer(_ret))
+	return newQMdiArea_U(unsafe.Pointer(C.QMdiSubWindow_MdiArea(this.h)))
 }
 
 func (this *QMdiSubWindow) WindowStateChanged(oldState int, newState int) {
@@ -181,11 +171,9 @@ func miqt_exec_callback_QMdiSubWindow_WindowStateChanged(cb *C.void, oldState C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	oldState_ret := oldState
-	slotval1 := (int)(oldState_ret)
+	slotval1 := (int)(oldState)
 
-	newState_ret := newState
-	slotval2 := (int)(newState_ret)
+	slotval2 := (int)(newState)
 
 	gofunc(slotval1, slotval2)
 }

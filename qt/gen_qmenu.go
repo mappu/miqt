@@ -66,8 +66,7 @@ func NewQMenu4(title string, parent *QWidget) *QMenu {
 }
 
 func (this *QMenu) MetaObject() *QMetaObject {
-	_ret := C.QMenu_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QMenu_MetaObject(this.h)))
 }
 
 func QMenu_Tr(s string) string {
@@ -91,82 +90,69 @@ func QMenu_TrUtf8(s string) string {
 func (this *QMenu) AddAction(text string) *QAction {
 	text_ms := miqt_strdupg(text)
 	defer C.free(text_ms)
-	_ret := C.QMenu_AddAction(this.h, (*C.struct_miqt_string)(text_ms))
-	return newQAction_U(unsafe.Pointer(_ret))
+	return newQAction_U(unsafe.Pointer(C.QMenu_AddAction(this.h, (*C.struct_miqt_string)(text_ms))))
 }
 
 func (this *QMenu) AddAction2(icon *QIcon, text string) *QAction {
 	text_ms := miqt_strdupg(text)
 	defer C.free(text_ms)
-	_ret := C.QMenu_AddAction2(this.h, icon.cPointer(), (*C.struct_miqt_string)(text_ms))
-	return newQAction_U(unsafe.Pointer(_ret))
+	return newQAction_U(unsafe.Pointer(C.QMenu_AddAction2(this.h, icon.cPointer(), (*C.struct_miqt_string)(text_ms))))
 }
 
 func (this *QMenu) AddMenu(menu *QMenu) *QAction {
-	_ret := C.QMenu_AddMenu(this.h, menu.cPointer())
-	return newQAction_U(unsafe.Pointer(_ret))
+	return newQAction_U(unsafe.Pointer(C.QMenu_AddMenu(this.h, menu.cPointer())))
 }
 
 func (this *QMenu) AddMenuWithTitle(title string) *QMenu {
 	title_ms := miqt_strdupg(title)
 	defer C.free(title_ms)
-	_ret := C.QMenu_AddMenuWithTitle(this.h, (*C.struct_miqt_string)(title_ms))
-	return newQMenu_U(unsafe.Pointer(_ret))
+	return newQMenu_U(unsafe.Pointer(C.QMenu_AddMenuWithTitle(this.h, (*C.struct_miqt_string)(title_ms))))
 }
 
 func (this *QMenu) AddMenu2(icon *QIcon, title string) *QMenu {
 	title_ms := miqt_strdupg(title)
 	defer C.free(title_ms)
-	_ret := C.QMenu_AddMenu2(this.h, icon.cPointer(), (*C.struct_miqt_string)(title_ms))
-	return newQMenu_U(unsafe.Pointer(_ret))
+	return newQMenu_U(unsafe.Pointer(C.QMenu_AddMenu2(this.h, icon.cPointer(), (*C.struct_miqt_string)(title_ms))))
 }
 
 func (this *QMenu) AddSeparator() *QAction {
-	_ret := C.QMenu_AddSeparator(this.h)
-	return newQAction_U(unsafe.Pointer(_ret))
+	return newQAction_U(unsafe.Pointer(C.QMenu_AddSeparator(this.h)))
 }
 
 func (this *QMenu) AddSection(text string) *QAction {
 	text_ms := miqt_strdupg(text)
 	defer C.free(text_ms)
-	_ret := C.QMenu_AddSection(this.h, (*C.struct_miqt_string)(text_ms))
-	return newQAction_U(unsafe.Pointer(_ret))
+	return newQAction_U(unsafe.Pointer(C.QMenu_AddSection(this.h, (*C.struct_miqt_string)(text_ms))))
 }
 
 func (this *QMenu) AddSection2(icon *QIcon, text string) *QAction {
 	text_ms := miqt_strdupg(text)
 	defer C.free(text_ms)
-	_ret := C.QMenu_AddSection2(this.h, icon.cPointer(), (*C.struct_miqt_string)(text_ms))
-	return newQAction_U(unsafe.Pointer(_ret))
+	return newQAction_U(unsafe.Pointer(C.QMenu_AddSection2(this.h, icon.cPointer(), (*C.struct_miqt_string)(text_ms))))
 }
 
 func (this *QMenu) InsertMenu(before *QAction, menu *QMenu) *QAction {
-	_ret := C.QMenu_InsertMenu(this.h, before.cPointer(), menu.cPointer())
-	return newQAction_U(unsafe.Pointer(_ret))
+	return newQAction_U(unsafe.Pointer(C.QMenu_InsertMenu(this.h, before.cPointer(), menu.cPointer())))
 }
 
 func (this *QMenu) InsertSeparator(before *QAction) *QAction {
-	_ret := C.QMenu_InsertSeparator(this.h, before.cPointer())
-	return newQAction_U(unsafe.Pointer(_ret))
+	return newQAction_U(unsafe.Pointer(C.QMenu_InsertSeparator(this.h, before.cPointer())))
 }
 
 func (this *QMenu) InsertSection(before *QAction, text string) *QAction {
 	text_ms := miqt_strdupg(text)
 	defer C.free(text_ms)
-	_ret := C.QMenu_InsertSection(this.h, before.cPointer(), (*C.struct_miqt_string)(text_ms))
-	return newQAction_U(unsafe.Pointer(_ret))
+	return newQAction_U(unsafe.Pointer(C.QMenu_InsertSection(this.h, before.cPointer(), (*C.struct_miqt_string)(text_ms))))
 }
 
 func (this *QMenu) InsertSection2(before *QAction, icon *QIcon, text string) *QAction {
 	text_ms := miqt_strdupg(text)
 	defer C.free(text_ms)
-	_ret := C.QMenu_InsertSection2(this.h, before.cPointer(), icon.cPointer(), (*C.struct_miqt_string)(text_ms))
-	return newQAction_U(unsafe.Pointer(_ret))
+	return newQAction_U(unsafe.Pointer(C.QMenu_InsertSection2(this.h, before.cPointer(), icon.cPointer(), (*C.struct_miqt_string)(text_ms))))
 }
 
 func (this *QMenu) IsEmpty() bool {
-	_ret := C.QMenu_IsEmpty(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QMenu_IsEmpty(this.h))
 }
 
 func (this *QMenu) Clear() {
@@ -178,13 +164,11 @@ func (this *QMenu) SetTearOffEnabled(tearOffEnabled bool) {
 }
 
 func (this *QMenu) IsTearOffEnabled() bool {
-	_ret := C.QMenu_IsTearOffEnabled(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QMenu_IsTearOffEnabled(this.h))
 }
 
 func (this *QMenu) IsTearOffMenuVisible() bool {
-	_ret := C.QMenu_IsTearOffMenuVisible(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QMenu_IsTearOffMenuVisible(this.h))
 }
 
 func (this *QMenu) ShowTearOffMenu() {
@@ -204,8 +188,7 @@ func (this *QMenu) SetDefaultAction(defaultAction *QAction) {
 }
 
 func (this *QMenu) DefaultAction() *QAction {
-	_ret := C.QMenu_DefaultAction(this.h)
-	return newQAction_U(unsafe.Pointer(_ret))
+	return newQAction_U(unsafe.Pointer(C.QMenu_DefaultAction(this.h)))
 }
 
 func (this *QMenu) SetActiveAction(act *QAction) {
@@ -213,8 +196,7 @@ func (this *QMenu) SetActiveAction(act *QAction) {
 }
 
 func (this *QMenu) ActiveAction() *QAction {
-	_ret := C.QMenu_ActiveAction(this.h)
-	return newQAction_U(unsafe.Pointer(_ret))
+	return newQAction_U(unsafe.Pointer(C.QMenu_ActiveAction(this.h)))
 }
 
 func (this *QMenu) Popup(pos *QPoint) {
@@ -222,13 +204,11 @@ func (this *QMenu) Popup(pos *QPoint) {
 }
 
 func (this *QMenu) Exec() *QAction {
-	_ret := C.QMenu_Exec(this.h)
-	return newQAction_U(unsafe.Pointer(_ret))
+	return newQAction_U(unsafe.Pointer(C.QMenu_Exec(this.h)))
 }
 
 func (this *QMenu) ExecWithPos(pos *QPoint) *QAction {
-	_ret := C.QMenu_ExecWithPos(this.h, pos.cPointer())
-	return newQAction_U(unsafe.Pointer(_ret))
+	return newQAction_U(unsafe.Pointer(C.QMenu_ExecWithPos(this.h, pos.cPointer())))
 }
 
 func QMenu_Exec2(actions []*QAction, pos *QPoint) *QAction {
@@ -240,8 +220,7 @@ func QMenu_Exec2(actions []*QAction, pos *QPoint) *QAction {
 	}
 	actions_ma := &C.struct_miqt_array{len: C.size_t(len(actions)), data: unsafe.Pointer(actions_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(actions_ma))
-	_ret := C.QMenu_Exec2(actions_ma, pos.cPointer())
-	return newQAction_U(unsafe.Pointer(_ret))
+	return newQAction_U(unsafe.Pointer(C.QMenu_Exec2(actions_ma, pos.cPointer())))
 }
 
 func (this *QMenu) SizeHint() *QSize {
@@ -259,13 +238,11 @@ func (this *QMenu) ActionGeometry(param1 *QAction) *QRect {
 }
 
 func (this *QMenu) ActionAt(param1 *QPoint) *QAction {
-	_ret := C.QMenu_ActionAt(this.h, param1.cPointer())
-	return newQAction_U(unsafe.Pointer(_ret))
+	return newQAction_U(unsafe.Pointer(C.QMenu_ActionAt(this.h, param1.cPointer())))
 }
 
 func (this *QMenu) MenuAction() *QAction {
-	_ret := C.QMenu_MenuAction(this.h)
-	return newQAction_U(unsafe.Pointer(_ret))
+	return newQAction_U(unsafe.Pointer(C.QMenu_MenuAction(this.h)))
 }
 
 func (this *QMenu) Title() string {
@@ -297,8 +274,7 @@ func (this *QMenu) SetNoReplayFor(widget *QWidget) {
 }
 
 func (this *QMenu) SeparatorsCollapsible() bool {
-	_ret := C.QMenu_SeparatorsCollapsible(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QMenu_SeparatorsCollapsible(this.h))
 }
 
 func (this *QMenu) SetSeparatorsCollapsible(collapse bool) {
@@ -306,8 +282,7 @@ func (this *QMenu) SetSeparatorsCollapsible(collapse bool) {
 }
 
 func (this *QMenu) ToolTipsVisible() bool {
-	_ret := C.QMenu_ToolTipsVisible(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QMenu_ToolTipsVisible(this.h))
 }
 
 func (this *QMenu) SetToolTipsVisible(visible bool) {
@@ -363,8 +338,7 @@ func miqt_exec_callback_QMenu_Triggered(cb *C.void, action *C.QAction) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	action_ret := action
-	slotval1 := newQAction_U(unsafe.Pointer(action_ret))
+	slotval1 := newQAction_U(unsafe.Pointer(action))
 
 	gofunc(slotval1)
 }
@@ -384,8 +358,7 @@ func miqt_exec_callback_QMenu_Hovered(cb *C.void, action *C.QAction) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	action_ret := action
-	slotval1 := newQAction_U(unsafe.Pointer(action_ret))
+	slotval1 := newQAction_U(unsafe.Pointer(action))
 
 	gofunc(slotval1)
 }
@@ -439,8 +412,7 @@ func (this *QMenu) Popup2(pos *QPoint, at *QAction) {
 }
 
 func (this *QMenu) Exec22(pos *QPoint, at *QAction) *QAction {
-	_ret := C.QMenu_Exec22(this.h, pos.cPointer(), at.cPointer())
-	return newQAction_U(unsafe.Pointer(_ret))
+	return newQAction_U(unsafe.Pointer(C.QMenu_Exec22(this.h, pos.cPointer(), at.cPointer())))
 }
 
 func QMenu_Exec3(actions []*QAction, pos *QPoint, at *QAction) *QAction {
@@ -452,8 +424,7 @@ func QMenu_Exec3(actions []*QAction, pos *QPoint, at *QAction) *QAction {
 	}
 	actions_ma := &C.struct_miqt_array{len: C.size_t(len(actions)), data: unsafe.Pointer(actions_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(actions_ma))
-	_ret := C.QMenu_Exec3(actions_ma, pos.cPointer(), at.cPointer())
-	return newQAction_U(unsafe.Pointer(_ret))
+	return newQAction_U(unsafe.Pointer(C.QMenu_Exec3(actions_ma, pos.cPointer(), at.cPointer())))
 }
 
 func QMenu_Exec4(actions []*QAction, pos *QPoint, at *QAction, parent *QWidget) *QAction {
@@ -465,8 +436,7 @@ func QMenu_Exec4(actions []*QAction, pos *QPoint, at *QAction, parent *QWidget) 
 	}
 	actions_ma := &C.struct_miqt_array{len: C.size_t(len(actions)), data: unsafe.Pointer(actions_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(actions_ma))
-	_ret := C.QMenu_Exec4(actions_ma, pos.cPointer(), at.cPointer(), parent.cPointer())
-	return newQAction_U(unsafe.Pointer(_ret))
+	return newQAction_U(unsafe.Pointer(C.QMenu_Exec4(actions_ma, pos.cPointer(), at.cPointer(), parent.cPointer())))
 }
 
 // Delete this object from C++ memory.

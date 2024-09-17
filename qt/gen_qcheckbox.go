@@ -66,8 +66,7 @@ func NewQCheckBox4(text string, parent *QWidget) *QCheckBox {
 }
 
 func (this *QCheckBox) MetaObject() *QMetaObject {
-	_ret := C.QCheckBox_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QCheckBox_MetaObject(this.h)))
 }
 
 func QCheckBox_Tr(s string) string {
@@ -107,13 +106,11 @@ func (this *QCheckBox) SetTristate() {
 }
 
 func (this *QCheckBox) IsTristate() bool {
-	_ret := C.QCheckBox_IsTristate(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QCheckBox_IsTristate(this.h))
 }
 
 func (this *QCheckBox) CheckState() CheckState {
-	_ret := C.QCheckBox_CheckState(this.h)
-	return (CheckState)(_ret)
+	return (CheckState)(C.QCheckBox_CheckState(this.h))
 }
 
 func (this *QCheckBox) SetCheckState(state CheckState) {
@@ -135,8 +132,7 @@ func miqt_exec_callback_QCheckBox_StateChanged(cb *C.void, param1 C.int) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	param1_ret := param1
-	slotval1 := (int)(param1_ret)
+	slotval1 := (int)(param1)
 
 	gofunc(slotval1)
 }

@@ -37,8 +37,7 @@ func newQTextObject_U(h unsafe.Pointer) *QTextObject {
 }
 
 func (this *QTextObject) MetaObject() *QMetaObject {
-	_ret := C.QTextObject_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QTextObject_MetaObject(this.h)))
 }
 
 func QTextObject_Tr(s string) string {
@@ -67,18 +66,15 @@ func (this *QTextObject) Format() *QTextFormat {
 }
 
 func (this *QTextObject) FormatIndex() int {
-	_ret := C.QTextObject_FormatIndex(this.h)
-	return (int)(_ret)
+	return (int)(C.QTextObject_FormatIndex(this.h))
 }
 
 func (this *QTextObject) Document() *QTextDocument {
-	_ret := C.QTextObject_Document(this.h)
-	return newQTextDocument_U(unsafe.Pointer(_ret))
+	return newQTextDocument_U(unsafe.Pointer(C.QTextObject_Document(this.h)))
 }
 
 func (this *QTextObject) ObjectIndex() int {
-	_ret := C.QTextObject_ObjectIndex(this.h)
-	return (int)(_ret)
+	return (int)(C.QTextObject_ObjectIndex(this.h))
 }
 
 func QTextObject_Tr2(s string, c string) string {
@@ -149,8 +145,7 @@ func newQTextBlockGroup_U(h unsafe.Pointer) *QTextBlockGroup {
 }
 
 func (this *QTextBlockGroup) MetaObject() *QMetaObject {
-	_ret := C.QTextBlockGroup_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QTextBlockGroup_MetaObject(this.h)))
 }
 
 func QTextBlockGroup_Tr(s string) string {
@@ -285,8 +280,7 @@ func NewQTextFrame(doc *QTextDocument) *QTextFrame {
 }
 
 func (this *QTextFrame) MetaObject() *QMetaObject {
-	_ret := C.QTextFrame_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QTextFrame_MetaObject(this.h)))
 }
 
 func QTextFrame_Tr(s string) string {
@@ -333,18 +327,15 @@ func (this *QTextFrame) LastCursorPosition() *QTextCursor {
 }
 
 func (this *QTextFrame) FirstPosition() int {
-	_ret := C.QTextFrame_FirstPosition(this.h)
-	return (int)(_ret)
+	return (int)(C.QTextFrame_FirstPosition(this.h))
 }
 
 func (this *QTextFrame) LastPosition() int {
-	_ret := C.QTextFrame_LastPosition(this.h)
-	return (int)(_ret)
+	return (int)(C.QTextFrame_LastPosition(this.h))
 }
 
 func (this *QTextFrame) LayoutData() *QTextFrameLayoutData {
-	_ret := C.QTextFrame_LayoutData(this.h)
-	return newQTextFrameLayoutData_U(unsafe.Pointer(_ret))
+	return newQTextFrameLayoutData_U(unsafe.Pointer(C.QTextFrame_LayoutData(this.h)))
 }
 
 func (this *QTextFrame) SetLayoutData(data *QTextFrameLayoutData) {
@@ -354,17 +345,16 @@ func (this *QTextFrame) SetLayoutData(data *QTextFrameLayoutData) {
 func (this *QTextFrame) ChildFrames() []*QTextFrame {
 	var _ma *C.struct_miqt_array = C.QTextFrame_ChildFrames(this.h)
 	_ret := make([]*QTextFrame, int(_ma.len))
-	_outCast := (*[0xffff]*C.QTextFrame)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QTextFrame)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQTextFrame(_outCast[i])
+		_ret[i] = newQTextFrame_U(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QTextFrame) ParentFrame() *QTextFrame {
-	_ret := C.QTextFrame_ParentFrame(this.h)
-	return newQTextFrame_U(unsafe.Pointer(_ret))
+	return newQTextFrame_U(unsafe.Pointer(C.QTextFrame_ParentFrame(this.h)))
 }
 
 func (this *QTextFrame) Begin() *QTextFrame__iterator {
@@ -518,43 +508,35 @@ func (this *QTextBlock) OperatorAssign(o *QTextBlock) {
 }
 
 func (this *QTextBlock) IsValid() bool {
-	_ret := C.QTextBlock_IsValid(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QTextBlock_IsValid(this.h))
 }
 
 func (this *QTextBlock) OperatorEqual(o *QTextBlock) bool {
-	_ret := C.QTextBlock_OperatorEqual(this.h, o.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QTextBlock_OperatorEqual(this.h, o.cPointer()))
 }
 
 func (this *QTextBlock) OperatorNotEqual(o *QTextBlock) bool {
-	_ret := C.QTextBlock_OperatorNotEqual(this.h, o.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QTextBlock_OperatorNotEqual(this.h, o.cPointer()))
 }
 
 func (this *QTextBlock) OperatorLesser(o *QTextBlock) bool {
-	_ret := C.QTextBlock_OperatorLesser(this.h, o.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QTextBlock_OperatorLesser(this.h, o.cPointer()))
 }
 
 func (this *QTextBlock) Position() int {
-	_ret := C.QTextBlock_Position(this.h)
-	return (int)(_ret)
+	return (int)(C.QTextBlock_Position(this.h))
 }
 
 func (this *QTextBlock) Length() int {
-	_ret := C.QTextBlock_Length(this.h)
-	return (int)(_ret)
+	return (int)(C.QTextBlock_Length(this.h))
 }
 
 func (this *QTextBlock) Contains(position int) bool {
-	_ret := C.QTextBlock_Contains(this.h, (C.int)(position))
-	return (bool)(_ret)
+	return (bool)(C.QTextBlock_Contains(this.h, (C.int)(position)))
 }
 
 func (this *QTextBlock) Layout() *QTextLayout {
-	_ret := C.QTextBlock_Layout(this.h)
-	return newQTextLayout_U(unsafe.Pointer(_ret))
+	return newQTextLayout_U(unsafe.Pointer(C.QTextBlock_Layout(this.h)))
 }
 
 func (this *QTextBlock) ClearLayout() {
@@ -569,8 +551,7 @@ func (this *QTextBlock) BlockFormat() *QTextBlockFormat {
 }
 
 func (this *QTextBlock) BlockFormatIndex() int {
-	_ret := C.QTextBlock_BlockFormatIndex(this.h)
-	return (int)(_ret)
+	return (int)(C.QTextBlock_BlockFormatIndex(this.h))
 }
 
 func (this *QTextBlock) CharFormat() *QTextCharFormat {
@@ -581,13 +562,11 @@ func (this *QTextBlock) CharFormat() *QTextCharFormat {
 }
 
 func (this *QTextBlock) CharFormatIndex() int {
-	_ret := C.QTextBlock_CharFormatIndex(this.h)
-	return (int)(_ret)
+	return (int)(C.QTextBlock_CharFormatIndex(this.h))
 }
 
 func (this *QTextBlock) TextDirection() LayoutDirection {
-	_ret := C.QTextBlock_TextDirection(this.h)
-	return (LayoutDirection)(_ret)
+	return (LayoutDirection)(C.QTextBlock_TextDirection(this.h))
 }
 
 func (this *QTextBlock) Text() string {
@@ -600,27 +579,27 @@ func (this *QTextBlock) Text() string {
 func (this *QTextBlock) TextFormats() []QTextLayout__FormatRange {
 	var _ma *C.struct_miqt_array = C.QTextBlock_TextFormats(this.h)
 	_ret := make([]QTextLayout__FormatRange, int(_ma.len))
-	_outCast := (*[0xffff]*C.QTextLayout__FormatRange)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QTextLayout__FormatRange)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = *newQTextLayout__FormatRange(_outCast[i])
+		_vv_ret := _outCast[i]
+		_vv_goptr := newQTextLayout__FormatRange(_vv_ret)
+		_vv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+		_ret[i] = *_vv_goptr
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QTextBlock) Document() *QTextDocument {
-	_ret := C.QTextBlock_Document(this.h)
-	return newQTextDocument_U(unsafe.Pointer(_ret))
+	return newQTextDocument_U(unsafe.Pointer(C.QTextBlock_Document(this.h)))
 }
 
 func (this *QTextBlock) TextList() *QTextList {
-	_ret := C.QTextBlock_TextList(this.h)
-	return newQTextList_U(unsafe.Pointer(_ret))
+	return newQTextList_U(unsafe.Pointer(C.QTextBlock_TextList(this.h)))
 }
 
 func (this *QTextBlock) UserData() *QTextBlockUserData {
-	_ret := C.QTextBlock_UserData(this.h)
-	return newQTextBlockUserData_U(unsafe.Pointer(_ret))
+	return newQTextBlockUserData_U(unsafe.Pointer(C.QTextBlock_UserData(this.h)))
 }
 
 func (this *QTextBlock) SetUserData(data *QTextBlockUserData) {
@@ -628,8 +607,7 @@ func (this *QTextBlock) SetUserData(data *QTextBlockUserData) {
 }
 
 func (this *QTextBlock) UserState() int {
-	_ret := C.QTextBlock_UserState(this.h)
-	return (int)(_ret)
+	return (int)(C.QTextBlock_UserState(this.h))
 }
 
 func (this *QTextBlock) SetUserState(state int) {
@@ -637,8 +615,7 @@ func (this *QTextBlock) SetUserState(state int) {
 }
 
 func (this *QTextBlock) Revision() int {
-	_ret := C.QTextBlock_Revision(this.h)
-	return (int)(_ret)
+	return (int)(C.QTextBlock_Revision(this.h))
 }
 
 func (this *QTextBlock) SetRevision(rev int) {
@@ -646,8 +623,7 @@ func (this *QTextBlock) SetRevision(rev int) {
 }
 
 func (this *QTextBlock) IsVisible() bool {
-	_ret := C.QTextBlock_IsVisible(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QTextBlock_IsVisible(this.h))
 }
 
 func (this *QTextBlock) SetVisible(visible bool) {
@@ -655,13 +631,11 @@ func (this *QTextBlock) SetVisible(visible bool) {
 }
 
 func (this *QTextBlock) BlockNumber() int {
-	_ret := C.QTextBlock_BlockNumber(this.h)
-	return (int)(_ret)
+	return (int)(C.QTextBlock_BlockNumber(this.h))
 }
 
 func (this *QTextBlock) FirstLineNumber() int {
-	_ret := C.QTextBlock_FirstLineNumber(this.h)
-	return (int)(_ret)
+	return (int)(C.QTextBlock_FirstLineNumber(this.h))
 }
 
 func (this *QTextBlock) SetLineCount(count int) {
@@ -669,8 +643,7 @@ func (this *QTextBlock) SetLineCount(count int) {
 }
 
 func (this *QTextBlock) LineCount() int {
-	_ret := C.QTextBlock_LineCount(this.h)
-	return (int)(_ret)
+	return (int)(C.QTextBlock_LineCount(this.h))
 }
 
 func (this *QTextBlock) Begin() *QTextBlock__iterator {
@@ -702,8 +675,7 @@ func (this *QTextBlock) Previous() *QTextBlock {
 }
 
 func (this *QTextBlock) FragmentIndex() int {
-	_ret := C.QTextBlock_FragmentIndex(this.h)
-	return (int)(_ret)
+	return (int)(C.QTextBlock_FragmentIndex(this.h))
 }
 
 // Delete this object from C++ memory.
@@ -759,38 +731,31 @@ func (this *QTextFragment) OperatorAssign(o *QTextFragment) {
 }
 
 func (this *QTextFragment) IsValid() bool {
-	_ret := C.QTextFragment_IsValid(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QTextFragment_IsValid(this.h))
 }
 
 func (this *QTextFragment) OperatorEqual(o *QTextFragment) bool {
-	_ret := C.QTextFragment_OperatorEqual(this.h, o.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QTextFragment_OperatorEqual(this.h, o.cPointer()))
 }
 
 func (this *QTextFragment) OperatorNotEqual(o *QTextFragment) bool {
-	_ret := C.QTextFragment_OperatorNotEqual(this.h, o.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QTextFragment_OperatorNotEqual(this.h, o.cPointer()))
 }
 
 func (this *QTextFragment) OperatorLesser(o *QTextFragment) bool {
-	_ret := C.QTextFragment_OperatorLesser(this.h, o.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QTextFragment_OperatorLesser(this.h, o.cPointer()))
 }
 
 func (this *QTextFragment) Position() int {
-	_ret := C.QTextFragment_Position(this.h)
-	return (int)(_ret)
+	return (int)(C.QTextFragment_Position(this.h))
 }
 
 func (this *QTextFragment) Length() int {
-	_ret := C.QTextFragment_Length(this.h)
-	return (int)(_ret)
+	return (int)(C.QTextFragment_Length(this.h))
 }
 
 func (this *QTextFragment) Contains(position int) bool {
-	_ret := C.QTextFragment_Contains(this.h, (C.int)(position))
-	return (bool)(_ret)
+	return (bool)(C.QTextFragment_Contains(this.h, (C.int)(position)))
 }
 
 func (this *QTextFragment) CharFormat() *QTextCharFormat {
@@ -801,8 +766,7 @@ func (this *QTextFragment) CharFormat() *QTextCharFormat {
 }
 
 func (this *QTextFragment) CharFormatIndex() int {
-	_ret := C.QTextFragment_CharFormatIndex(this.h)
-	return (int)(_ret)
+	return (int)(C.QTextFragment_CharFormatIndex(this.h))
 }
 
 func (this *QTextFragment) Text() string {
@@ -815,9 +779,12 @@ func (this *QTextFragment) Text() string {
 func (this *QTextFragment) GlyphRuns() []QGlyphRun {
 	var _ma *C.struct_miqt_array = C.QTextFragment_GlyphRuns(this.h)
 	_ret := make([]QGlyphRun, int(_ma.len))
-	_outCast := (*[0xffff]*C.QGlyphRun)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QGlyphRun)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = *newQGlyphRun(_outCast[i])
+		_lv_ret := _outCast[i]
+		_lv_goptr := newQGlyphRun(_lv_ret)
+		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+		_ret[i] = *_lv_goptr
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -826,9 +793,12 @@ func (this *QTextFragment) GlyphRuns() []QGlyphRun {
 func (this *QTextFragment) GlyphRuns1(from int) []QGlyphRun {
 	var _ma *C.struct_miqt_array = C.QTextFragment_GlyphRuns1(this.h, (C.int)(from))
 	_ret := make([]QGlyphRun, int(_ma.len))
-	_outCast := (*[0xffff]*C.QGlyphRun)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QGlyphRun)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = *newQGlyphRun(_outCast[i])
+		_lv_ret := _outCast[i]
+		_lv_goptr := newQGlyphRun(_lv_ret)
+		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+		_ret[i] = *_lv_goptr
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -837,9 +807,12 @@ func (this *QTextFragment) GlyphRuns1(from int) []QGlyphRun {
 func (this *QTextFragment) GlyphRuns2(from int, length int) []QGlyphRun {
 	var _ma *C.struct_miqt_array = C.QTextFragment_GlyphRuns2(this.h, (C.int)(from), (C.int)(length))
 	_ret := make([]QGlyphRun, int(_ma.len))
-	_outCast := (*[0xffff]*C.QGlyphRun)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QGlyphRun)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = *newQGlyphRun(_outCast[i])
+		_lv_ret := _outCast[i]
+		_lv_goptr := newQGlyphRun(_lv_ret)
+		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+		_ret[i] = *_lv_goptr
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -894,13 +867,11 @@ func NewQTextFrame__iterator2(o *QTextFrame__iterator) *QTextFrame__iterator {
 }
 
 func (this *QTextFrame__iterator) ParentFrame() *QTextFrame {
-	_ret := C.QTextFrame__iterator_ParentFrame(this.h)
-	return newQTextFrame_U(unsafe.Pointer(_ret))
+	return newQTextFrame_U(unsafe.Pointer(C.QTextFrame__iterator_ParentFrame(this.h)))
 }
 
 func (this *QTextFrame__iterator) CurrentFrame() *QTextFrame {
-	_ret := C.QTextFrame__iterator_CurrentFrame(this.h)
-	return newQTextFrame_U(unsafe.Pointer(_ret))
+	return newQTextFrame_U(unsafe.Pointer(C.QTextFrame__iterator_CurrentFrame(this.h)))
 }
 
 func (this *QTextFrame__iterator) CurrentBlock() *QTextBlock {
@@ -911,18 +882,15 @@ func (this *QTextFrame__iterator) CurrentBlock() *QTextBlock {
 }
 
 func (this *QTextFrame__iterator) AtEnd() bool {
-	_ret := C.QTextFrame__iterator_AtEnd(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QTextFrame__iterator_AtEnd(this.h))
 }
 
 func (this *QTextFrame__iterator) OperatorEqual(o *QTextFrame__iterator) bool {
-	_ret := C.QTextFrame__iterator_OperatorEqual(this.h, o.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QTextFrame__iterator_OperatorEqual(this.h, o.cPointer()))
 }
 
 func (this *QTextFrame__iterator) OperatorNotEqual(o *QTextFrame__iterator) bool {
-	_ret := C.QTextFrame__iterator_OperatorNotEqual(this.h, o.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QTextFrame__iterator_OperatorNotEqual(this.h, o.cPointer()))
 }
 
 func (this *QTextFrame__iterator) OperatorPlusPlus(param1 int) *QTextFrame__iterator {
@@ -995,18 +963,15 @@ func (this *QTextBlock__iterator) Fragment() *QTextFragment {
 }
 
 func (this *QTextBlock__iterator) AtEnd() bool {
-	_ret := C.QTextBlock__iterator_AtEnd(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QTextBlock__iterator_AtEnd(this.h))
 }
 
 func (this *QTextBlock__iterator) OperatorEqual(o *QTextBlock__iterator) bool {
-	_ret := C.QTextBlock__iterator_OperatorEqual(this.h, o.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QTextBlock__iterator_OperatorEqual(this.h, o.cPointer()))
 }
 
 func (this *QTextBlock__iterator) OperatorNotEqual(o *QTextBlock__iterator) bool {
-	_ret := C.QTextBlock__iterator_OperatorNotEqual(this.h, o.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QTextBlock__iterator_OperatorNotEqual(this.h, o.cPointer()))
 }
 
 func (this *QTextBlock__iterator) OperatorPlusPlus(param1 int) *QTextBlock__iterator {

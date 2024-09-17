@@ -57,8 +57,7 @@ func NewQOffscreenSurface3(screen *QScreen) *QOffscreenSurface {
 }
 
 func (this *QOffscreenSurface) MetaObject() *QMetaObject {
-	_ret := C.QOffscreenSurface_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QOffscreenSurface_MetaObject(this.h)))
 }
 
 func QOffscreenSurface_Tr(s string) string {
@@ -80,8 +79,7 @@ func QOffscreenSurface_TrUtf8(s string) string {
 }
 
 func (this *QOffscreenSurface) SurfaceType() QSurface__SurfaceType {
-	_ret := C.QOffscreenSurface_SurfaceType(this.h)
-	return (QSurface__SurfaceType)(_ret)
+	return (QSurface__SurfaceType)(C.QOffscreenSurface_SurfaceType(this.h))
 }
 
 func (this *QOffscreenSurface) Create() {
@@ -93,8 +91,7 @@ func (this *QOffscreenSurface) Destroy() {
 }
 
 func (this *QOffscreenSurface) IsValid() bool {
-	_ret := C.QOffscreenSurface_IsValid(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QOffscreenSurface_IsValid(this.h))
 }
 
 func (this *QOffscreenSurface) SetFormat(format *QSurfaceFormat) {
@@ -123,8 +120,7 @@ func (this *QOffscreenSurface) Size() *QSize {
 }
 
 func (this *QOffscreenSurface) Screen() *QScreen {
-	_ret := C.QOffscreenSurface_Screen(this.h)
-	return newQScreen_U(unsafe.Pointer(_ret))
+	return newQScreen_U(unsafe.Pointer(C.QOffscreenSurface_Screen(this.h)))
 }
 
 func (this *QOffscreenSurface) SetScreen(screen *QScreen) {
@@ -146,8 +142,7 @@ func miqt_exec_callback_QOffscreenSurface_ScreenChanged(cb *C.void, screen *C.QS
 	}
 
 	// Convert all CABI parameters to Go parameters
-	screen_ret := screen
-	slotval1 := newQScreen_U(unsafe.Pointer(screen_ret))
+	slotval1 := newQScreen_U(unsafe.Pointer(screen))
 
 	gofunc(slotval1)
 }

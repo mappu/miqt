@@ -122,18 +122,15 @@ func (this *QColorSpace) Swap(colorSpace *QColorSpace) {
 }
 
 func (this *QColorSpace) Primaries() QColorSpace__Primaries {
-	_ret := C.QColorSpace_Primaries(this.h)
-	return (QColorSpace__Primaries)(_ret)
+	return (QColorSpace__Primaries)(C.QColorSpace_Primaries(this.h))
 }
 
 func (this *QColorSpace) TransferFunction() QColorSpace__TransferFunction {
-	_ret := C.QColorSpace_TransferFunction(this.h)
-	return (QColorSpace__TransferFunction)(_ret)
+	return (QColorSpace__TransferFunction)(C.QColorSpace_TransferFunction(this.h))
 }
 
 func (this *QColorSpace) Gamma() float32 {
-	_ret := C.QColorSpace_Gamma(this.h)
-	return (float32)(_ret)
+	return (float32)(C.QColorSpace_Gamma(this.h))
 }
 
 func (this *QColorSpace) SetTransferFunction(transferFunction QColorSpace__TransferFunction) {
@@ -156,8 +153,7 @@ func (this *QColorSpace) SetPrimaries2(whitePoint *QPointF, redPoint *QPointF, g
 }
 
 func (this *QColorSpace) IsValid() bool {
-	_ret := C.QColorSpace_IsValid(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QColorSpace_IsValid(this.h))
 }
 
 func QColorSpace_FromIccProfile(iccProfile *QByteArray) *QColorSpace {

@@ -80,8 +80,7 @@ func NewQLabel6(text string, parent *QWidget, f int) *QLabel {
 }
 
 func (this *QLabel) MetaObject() *QMetaObject {
-	_ret := C.QLabel_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QLabel_MetaObject(this.h)))
 }
 
 func QLabel_Tr(s string) string {
@@ -110,8 +109,7 @@ func (this *QLabel) Text() string {
 }
 
 func (this *QLabel) Pixmap() *QPixmap {
-	_ret := C.QLabel_Pixmap(this.h)
-	return newQPixmap_U(unsafe.Pointer(_ret))
+	return newQPixmap_U(unsafe.Pointer(C.QLabel_Pixmap(this.h)))
 }
 
 func (this *QLabel) PixmapWithQtReturnByValueConstant(param1 ReturnByValueConstant) *QPixmap {
@@ -122,8 +120,7 @@ func (this *QLabel) PixmapWithQtReturnByValueConstant(param1 ReturnByValueConsta
 }
 
 func (this *QLabel) Picture() *QPicture {
-	_ret := C.QLabel_Picture(this.h)
-	return newQPicture_U(unsafe.Pointer(_ret))
+	return newQPicture_U(unsafe.Pointer(C.QLabel_Picture(this.h)))
 }
 
 func (this *QLabel) PictureWithQtReturnByValueConstant(param1 ReturnByValueConstant) *QPicture {
@@ -134,13 +131,11 @@ func (this *QLabel) PictureWithQtReturnByValueConstant(param1 ReturnByValueConst
 }
 
 func (this *QLabel) Movie() *QMovie {
-	_ret := C.QLabel_Movie(this.h)
-	return newQMovie_U(unsafe.Pointer(_ret))
+	return newQMovie_U(unsafe.Pointer(C.QLabel_Movie(this.h)))
 }
 
 func (this *QLabel) TextFormat() TextFormat {
-	_ret := C.QLabel_TextFormat(this.h)
-	return (TextFormat)(_ret)
+	return (TextFormat)(C.QLabel_TextFormat(this.h))
 }
 
 func (this *QLabel) SetTextFormat(textFormat TextFormat) {
@@ -148,8 +143,7 @@ func (this *QLabel) SetTextFormat(textFormat TextFormat) {
 }
 
 func (this *QLabel) Alignment() int {
-	_ret := C.QLabel_Alignment(this.h)
-	return (int)(_ret)
+	return (int)(C.QLabel_Alignment(this.h))
 }
 
 func (this *QLabel) SetAlignment(alignment int) {
@@ -161,13 +155,11 @@ func (this *QLabel) SetWordWrap(on bool) {
 }
 
 func (this *QLabel) WordWrap() bool {
-	_ret := C.QLabel_WordWrap(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QLabel_WordWrap(this.h))
 }
 
 func (this *QLabel) Indent() int {
-	_ret := C.QLabel_Indent(this.h)
-	return (int)(_ret)
+	return (int)(C.QLabel_Indent(this.h))
 }
 
 func (this *QLabel) SetIndent(indent int) {
@@ -175,8 +167,7 @@ func (this *QLabel) SetIndent(indent int) {
 }
 
 func (this *QLabel) Margin() int {
-	_ret := C.QLabel_Margin(this.h)
-	return (int)(_ret)
+	return (int)(C.QLabel_Margin(this.h))
 }
 
 func (this *QLabel) SetMargin(margin int) {
@@ -184,8 +175,7 @@ func (this *QLabel) SetMargin(margin int) {
 }
 
 func (this *QLabel) HasScaledContents() bool {
-	_ret := C.QLabel_HasScaledContents(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QLabel_HasScaledContents(this.h))
 }
 
 func (this *QLabel) SetScaledContents(scaledContents bool) {
@@ -211,18 +201,15 @@ func (this *QLabel) SetBuddy(buddy *QWidget) {
 }
 
 func (this *QLabel) Buddy() *QWidget {
-	_ret := C.QLabel_Buddy(this.h)
-	return newQWidget_U(unsafe.Pointer(_ret))
+	return newQWidget_U(unsafe.Pointer(C.QLabel_Buddy(this.h)))
 }
 
 func (this *QLabel) HeightForWidth(param1 int) int {
-	_ret := C.QLabel_HeightForWidth(this.h, (C.int)(param1))
-	return (int)(_ret)
+	return (int)(C.QLabel_HeightForWidth(this.h, (C.int)(param1)))
 }
 
 func (this *QLabel) OpenExternalLinks() bool {
-	_ret := C.QLabel_OpenExternalLinks(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QLabel_OpenExternalLinks(this.h))
 }
 
 func (this *QLabel) SetOpenExternalLinks(open bool) {
@@ -234,8 +221,7 @@ func (this *QLabel) SetTextInteractionFlags(flags int) {
 }
 
 func (this *QLabel) TextInteractionFlags() int {
-	_ret := C.QLabel_TextInteractionFlags(this.h)
-	return (int)(_ret)
+	return (int)(C.QLabel_TextInteractionFlags(this.h))
 }
 
 func (this *QLabel) SetSelection(param1 int, param2 int) {
@@ -243,8 +229,7 @@ func (this *QLabel) SetSelection(param1 int, param2 int) {
 }
 
 func (this *QLabel) HasSelectedText() bool {
-	_ret := C.QLabel_HasSelectedText(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QLabel_HasSelectedText(this.h))
 }
 
 func (this *QLabel) SelectedText() string {
@@ -255,8 +240,7 @@ func (this *QLabel) SelectedText() string {
 }
 
 func (this *QLabel) SelectionStart() int {
-	_ret := C.QLabel_SelectionStart(this.h)
-	return (int)(_ret)
+	return (int)(C.QLabel_SelectionStart(this.h))
 }
 
 func (this *QLabel) SetText(text string) {

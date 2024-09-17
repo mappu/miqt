@@ -97,23 +97,19 @@ func (this *QPixmap) Swap(other *QPixmap) {
 }
 
 func (this *QPixmap) IsNull() bool {
-	_ret := C.QPixmap_IsNull(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QPixmap_IsNull(this.h))
 }
 
 func (this *QPixmap) DevType() int {
-	_ret := C.QPixmap_DevType(this.h)
-	return (int)(_ret)
+	return (int)(C.QPixmap_DevType(this.h))
 }
 
 func (this *QPixmap) Width() int {
-	_ret := C.QPixmap_Width(this.h)
-	return (int)(_ret)
+	return (int)(C.QPixmap_Width(this.h))
 }
 
 func (this *QPixmap) Height() int {
-	_ret := C.QPixmap_Height(this.h)
-	return (int)(_ret)
+	return (int)(C.QPixmap_Height(this.h))
 }
 
 func (this *QPixmap) Size() *QSize {
@@ -131,13 +127,11 @@ func (this *QPixmap) Rect() *QRect {
 }
 
 func (this *QPixmap) Depth() int {
-	_ret := C.QPixmap_Depth(this.h)
-	return (int)(_ret)
+	return (int)(C.QPixmap_Depth(this.h))
 }
 
 func QPixmap_DefaultDepth() int {
-	_ret := C.QPixmap_DefaultDepth()
-	return (int)(_ret)
+	return (int)(C.QPixmap_DefaultDepth())
 }
 
 func (this *QPixmap) Fill() {
@@ -164,8 +158,7 @@ func (this *QPixmap) SetMask(mask *QBitmap) {
 }
 
 func (this *QPixmap) DevicePixelRatio() float64 {
-	_ret := C.QPixmap_DevicePixelRatio(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QPixmap_DevicePixelRatio(this.h))
 }
 
 func (this *QPixmap) SetDevicePixelRatio(scaleFactor float64) {
@@ -173,13 +166,11 @@ func (this *QPixmap) SetDevicePixelRatio(scaleFactor float64) {
 }
 
 func (this *QPixmap) HasAlpha() bool {
-	_ret := C.QPixmap_HasAlpha(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QPixmap_HasAlpha(this.h))
 }
 
 func (this *QPixmap) HasAlphaChannel() bool {
-	_ret := C.QPixmap_HasAlphaChannel(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QPixmap_HasAlphaChannel(this.h))
 }
 
 func (this *QPixmap) CreateHeuristicMask() *QBitmap {
@@ -297,35 +288,29 @@ func QPixmap_FromImageReader(imageReader *QImageReader) *QPixmap {
 func (this *QPixmap) Load(fileName string) bool {
 	fileName_ms := miqt_strdupg(fileName)
 	defer C.free(fileName_ms)
-	_ret := C.QPixmap_Load(this.h, (*C.struct_miqt_string)(fileName_ms))
-	return (bool)(_ret)
+	return (bool)(C.QPixmap_Load(this.h, (*C.struct_miqt_string)(fileName_ms)))
 }
 
 func (this *QPixmap) LoadFromData(buf *byte, lenVal uint) bool {
-	_ret := C.QPixmap_LoadFromData(this.h, (*C.uchar)(unsafe.Pointer(buf)), (C.uint)(lenVal))
-	return (bool)(_ret)
+	return (bool)(C.QPixmap_LoadFromData(this.h, (*C.uchar)(unsafe.Pointer(buf)), (C.uint)(lenVal)))
 }
 
 func (this *QPixmap) LoadFromDataWithData(data *QByteArray) bool {
-	_ret := C.QPixmap_LoadFromDataWithData(this.h, data.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QPixmap_LoadFromDataWithData(this.h, data.cPointer()))
 }
 
 func (this *QPixmap) Save(fileName string) bool {
 	fileName_ms := miqt_strdupg(fileName)
 	defer C.free(fileName_ms)
-	_ret := C.QPixmap_Save(this.h, (*C.struct_miqt_string)(fileName_ms))
-	return (bool)(_ret)
+	return (bool)(C.QPixmap_Save(this.h, (*C.struct_miqt_string)(fileName_ms)))
 }
 
 func (this *QPixmap) SaveWithDevice(device *QIODevice) bool {
-	_ret := C.QPixmap_SaveWithDevice(this.h, device.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QPixmap_SaveWithDevice(this.h, device.cPointer()))
 }
 
 func (this *QPixmap) ConvertFromImage(img *QImage) bool {
-	_ret := C.QPixmap_ConvertFromImage(this.h, img.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QPixmap_ConvertFromImage(this.h, img.cPointer()))
 }
 
 func (this *QPixmap) Copy(x int, y int, width int, height int) *QPixmap {
@@ -351,13 +336,11 @@ func (this *QPixmap) Scroll2(dx int, dy int, rect *QRect) {
 }
 
 func (this *QPixmap) CacheKey() int64 {
-	_ret := C.QPixmap_CacheKey(this.h)
-	return (int64)(_ret)
+	return (int64)(C.QPixmap_CacheKey(this.h))
 }
 
 func (this *QPixmap) IsDetached() bool {
-	_ret := C.QPixmap_IsDetached(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QPixmap_IsDetached(this.h))
 }
 
 func (this *QPixmap) Detach() {
@@ -365,18 +348,15 @@ func (this *QPixmap) Detach() {
 }
 
 func (this *QPixmap) IsQBitmap() bool {
-	_ret := C.QPixmap_IsQBitmap(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QPixmap_IsQBitmap(this.h))
 }
 
 func (this *QPixmap) PaintEngine() *QPaintEngine {
-	_ret := C.QPixmap_PaintEngine(this.h)
-	return newQPaintEngine_U(unsafe.Pointer(_ret))
+	return newQPaintEngine_U(unsafe.Pointer(C.QPixmap_PaintEngine(this.h)))
 }
 
 func (this *QPixmap) OperatorNot() bool {
-	_ret := C.QPixmap_OperatorNot(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QPixmap_OperatorNot(this.h))
 }
 
 func (this *QPixmap) Fill1(fillColor *QColor) {
@@ -528,8 +508,7 @@ func (this *QPixmap) Load2(fileName string, format string) bool {
 	defer C.free(fileName_ms)
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
-	_ret := C.QPixmap_Load2(this.h, (*C.struct_miqt_string)(fileName_ms), format_Cstring)
-	return (bool)(_ret)
+	return (bool)(C.QPixmap_Load2(this.h, (*C.struct_miqt_string)(fileName_ms), format_Cstring))
 }
 
 func (this *QPixmap) Load3(fileName string, format string, flags int) bool {
@@ -537,36 +516,31 @@ func (this *QPixmap) Load3(fileName string, format string, flags int) bool {
 	defer C.free(fileName_ms)
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
-	_ret := C.QPixmap_Load3(this.h, (*C.struct_miqt_string)(fileName_ms), format_Cstring, (C.int)(flags))
-	return (bool)(_ret)
+	return (bool)(C.QPixmap_Load3(this.h, (*C.struct_miqt_string)(fileName_ms), format_Cstring, (C.int)(flags)))
 }
 
 func (this *QPixmap) LoadFromData3(buf *byte, lenVal uint, format string) bool {
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
-	_ret := C.QPixmap_LoadFromData3(this.h, (*C.uchar)(unsafe.Pointer(buf)), (C.uint)(lenVal), format_Cstring)
-	return (bool)(_ret)
+	return (bool)(C.QPixmap_LoadFromData3(this.h, (*C.uchar)(unsafe.Pointer(buf)), (C.uint)(lenVal), format_Cstring))
 }
 
 func (this *QPixmap) LoadFromData4(buf *byte, lenVal uint, format string, flags int) bool {
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
-	_ret := C.QPixmap_LoadFromData4(this.h, (*C.uchar)(unsafe.Pointer(buf)), (C.uint)(lenVal), format_Cstring, (C.int)(flags))
-	return (bool)(_ret)
+	return (bool)(C.QPixmap_LoadFromData4(this.h, (*C.uchar)(unsafe.Pointer(buf)), (C.uint)(lenVal), format_Cstring, (C.int)(flags)))
 }
 
 func (this *QPixmap) LoadFromData2(data *QByteArray, format string) bool {
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
-	_ret := C.QPixmap_LoadFromData2(this.h, data.cPointer(), format_Cstring)
-	return (bool)(_ret)
+	return (bool)(C.QPixmap_LoadFromData2(this.h, data.cPointer(), format_Cstring))
 }
 
 func (this *QPixmap) LoadFromData32(data *QByteArray, format string, flags int) bool {
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
-	_ret := C.QPixmap_LoadFromData32(this.h, data.cPointer(), format_Cstring, (C.int)(flags))
-	return (bool)(_ret)
+	return (bool)(C.QPixmap_LoadFromData32(this.h, data.cPointer(), format_Cstring, (C.int)(flags)))
 }
 
 func (this *QPixmap) Save2(fileName string, format string) bool {
@@ -574,8 +548,7 @@ func (this *QPixmap) Save2(fileName string, format string) bool {
 	defer C.free(fileName_ms)
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
-	_ret := C.QPixmap_Save2(this.h, (*C.struct_miqt_string)(fileName_ms), format_Cstring)
-	return (bool)(_ret)
+	return (bool)(C.QPixmap_Save2(this.h, (*C.struct_miqt_string)(fileName_ms), format_Cstring))
 }
 
 func (this *QPixmap) Save3(fileName string, format string, quality int) bool {
@@ -583,27 +556,23 @@ func (this *QPixmap) Save3(fileName string, format string, quality int) bool {
 	defer C.free(fileName_ms)
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
-	_ret := C.QPixmap_Save3(this.h, (*C.struct_miqt_string)(fileName_ms), format_Cstring, (C.int)(quality))
-	return (bool)(_ret)
+	return (bool)(C.QPixmap_Save3(this.h, (*C.struct_miqt_string)(fileName_ms), format_Cstring, (C.int)(quality)))
 }
 
 func (this *QPixmap) Save22(device *QIODevice, format string) bool {
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
-	_ret := C.QPixmap_Save22(this.h, device.cPointer(), format_Cstring)
-	return (bool)(_ret)
+	return (bool)(C.QPixmap_Save22(this.h, device.cPointer(), format_Cstring))
 }
 
 func (this *QPixmap) Save32(device *QIODevice, format string, quality int) bool {
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
-	_ret := C.QPixmap_Save32(this.h, device.cPointer(), format_Cstring, (C.int)(quality))
-	return (bool)(_ret)
+	return (bool)(C.QPixmap_Save32(this.h, device.cPointer(), format_Cstring, (C.int)(quality)))
 }
 
 func (this *QPixmap) ConvertFromImage2(img *QImage, flags int) bool {
-	_ret := C.QPixmap_ConvertFromImage2(this.h, img.cPointer(), (C.int)(flags))
-	return (bool)(_ret)
+	return (bool)(C.QPixmap_ConvertFromImage2(this.h, img.cPointer(), (C.int)(flags)))
 }
 
 func (this *QPixmap) Copy1(rect *QRect) *QPixmap {

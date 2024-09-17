@@ -54,18 +54,15 @@ func NewQPoint3(param1 *QPoint) *QPoint {
 }
 
 func (this *QPoint) IsNull() bool {
-	_ret := C.QPoint_IsNull(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QPoint_IsNull(this.h))
 }
 
 func (this *QPoint) X() int {
-	_ret := C.QPoint_X(this.h)
-	return (int)(_ret)
+	return (int)(C.QPoint_X(this.h))
 }
 
 func (this *QPoint) Y() int {
-	_ret := C.QPoint_Y(this.h)
-	return (int)(_ret)
+	return (int)(C.QPoint_Y(this.h))
 }
 
 func (this *QPoint) SetX(x int) {
@@ -77,8 +74,7 @@ func (this *QPoint) SetY(y int) {
 }
 
 func (this *QPoint) ManhattanLength() int {
-	_ret := C.QPoint_ManhattanLength(this.h)
-	return (int)(_ret)
+	return (int)(C.QPoint_ManhattanLength(this.h))
 }
 
 func (this *QPoint) Transposed() *QPoint {
@@ -89,38 +85,31 @@ func (this *QPoint) Transposed() *QPoint {
 }
 
 func (this *QPoint) OperatorPlusAssign(p *QPoint) *QPoint {
-	_ret := C.QPoint_OperatorPlusAssign(this.h, p.cPointer())
-	return newQPoint_U(unsafe.Pointer(_ret))
+	return newQPoint_U(unsafe.Pointer(C.QPoint_OperatorPlusAssign(this.h, p.cPointer())))
 }
 
 func (this *QPoint) OperatorMinusAssign(p *QPoint) *QPoint {
-	_ret := C.QPoint_OperatorMinusAssign(this.h, p.cPointer())
-	return newQPoint_U(unsafe.Pointer(_ret))
+	return newQPoint_U(unsafe.Pointer(C.QPoint_OperatorMinusAssign(this.h, p.cPointer())))
 }
 
 func (this *QPoint) OperatorMultiplyAssign(factor float32) *QPoint {
-	_ret := C.QPoint_OperatorMultiplyAssign(this.h, (C.float)(factor))
-	return newQPoint_U(unsafe.Pointer(_ret))
+	return newQPoint_U(unsafe.Pointer(C.QPoint_OperatorMultiplyAssign(this.h, (C.float)(factor))))
 }
 
 func (this *QPoint) OperatorMultiplyAssignWithFactor(factor float64) *QPoint {
-	_ret := C.QPoint_OperatorMultiplyAssignWithFactor(this.h, (C.double)(factor))
-	return newQPoint_U(unsafe.Pointer(_ret))
+	return newQPoint_U(unsafe.Pointer(C.QPoint_OperatorMultiplyAssignWithFactor(this.h, (C.double)(factor))))
 }
 
 func (this *QPoint) OperatorMultiplyAssign2(factor int) *QPoint {
-	_ret := C.QPoint_OperatorMultiplyAssign2(this.h, (C.int)(factor))
-	return newQPoint_U(unsafe.Pointer(_ret))
+	return newQPoint_U(unsafe.Pointer(C.QPoint_OperatorMultiplyAssign2(this.h, (C.int)(factor))))
 }
 
 func (this *QPoint) OperatorDivideAssign(divisor float64) *QPoint {
-	_ret := C.QPoint_OperatorDivideAssign(this.h, (C.double)(divisor))
-	return newQPoint_U(unsafe.Pointer(_ret))
+	return newQPoint_U(unsafe.Pointer(C.QPoint_OperatorDivideAssign(this.h, (C.double)(divisor))))
 }
 
 func QPoint_DotProduct(p1 *QPoint, p2 *QPoint) int {
-	_ret := C.QPoint_DotProduct(p1.cPointer(), p2.cPointer())
-	return (int)(_ret)
+	return (int)(C.QPoint_DotProduct(p1.cPointer(), p2.cPointer()))
 }
 
 // Delete this object from C++ memory.
@@ -184,23 +173,19 @@ func NewQPointF4(param1 *QPointF) *QPointF {
 }
 
 func (this *QPointF) ManhattanLength() float64 {
-	_ret := C.QPointF_ManhattanLength(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QPointF_ManhattanLength(this.h))
 }
 
 func (this *QPointF) IsNull() bool {
-	_ret := C.QPointF_IsNull(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QPointF_IsNull(this.h))
 }
 
 func (this *QPointF) X() float64 {
-	_ret := C.QPointF_X(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QPointF_X(this.h))
 }
 
 func (this *QPointF) Y() float64 {
-	_ret := C.QPointF_Y(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QPointF_Y(this.h))
 }
 
 func (this *QPointF) SetX(x float64) {
@@ -219,28 +204,23 @@ func (this *QPointF) Transposed() *QPointF {
 }
 
 func (this *QPointF) OperatorPlusAssign(p *QPointF) *QPointF {
-	_ret := C.QPointF_OperatorPlusAssign(this.h, p.cPointer())
-	return newQPointF_U(unsafe.Pointer(_ret))
+	return newQPointF_U(unsafe.Pointer(C.QPointF_OperatorPlusAssign(this.h, p.cPointer())))
 }
 
 func (this *QPointF) OperatorMinusAssign(p *QPointF) *QPointF {
-	_ret := C.QPointF_OperatorMinusAssign(this.h, p.cPointer())
-	return newQPointF_U(unsafe.Pointer(_ret))
+	return newQPointF_U(unsafe.Pointer(C.QPointF_OperatorMinusAssign(this.h, p.cPointer())))
 }
 
 func (this *QPointF) OperatorMultiplyAssign(c float64) *QPointF {
-	_ret := C.QPointF_OperatorMultiplyAssign(this.h, (C.double)(c))
-	return newQPointF_U(unsafe.Pointer(_ret))
+	return newQPointF_U(unsafe.Pointer(C.QPointF_OperatorMultiplyAssign(this.h, (C.double)(c))))
 }
 
 func (this *QPointF) OperatorDivideAssign(c float64) *QPointF {
-	_ret := C.QPointF_OperatorDivideAssign(this.h, (C.double)(c))
-	return newQPointF_U(unsafe.Pointer(_ret))
+	return newQPointF_U(unsafe.Pointer(C.QPointF_OperatorDivideAssign(this.h, (C.double)(c))))
 }
 
 func QPointF_DotProduct(p1 *QPointF, p2 *QPointF) float64 {
-	_ret := C.QPointF_DotProduct(p1.cPointer(), p2.cPointer())
-	return (float64)(_ret)
+	return (float64)(C.QPointF_DotProduct(p1.cPointer(), p2.cPointer()))
 }
 
 func (this *QPointF) ToPoint() *QPoint {

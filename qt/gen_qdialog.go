@@ -63,8 +63,7 @@ func NewQDialog3(parent *QWidget, f int) *QDialog {
 }
 
 func (this *QDialog) MetaObject() *QMetaObject {
-	_ret := C.QDialog_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QDialog_MetaObject(this.h)))
 }
 
 func QDialog_Tr(s string) string {
@@ -86,8 +85,7 @@ func QDialog_TrUtf8(s string) string {
 }
 
 func (this *QDialog) Result() int {
-	_ret := C.QDialog_Result(this.h)
-	return (int)(_ret)
+	return (int)(C.QDialog_Result(this.h))
 }
 
 func (this *QDialog) SetVisible(visible bool) {
@@ -99,8 +97,7 @@ func (this *QDialog) SetOrientation(orientation Orientation) {
 }
 
 func (this *QDialog) Orientation() Orientation {
-	_ret := C.QDialog_Orientation(this.h)
-	return (Orientation)(_ret)
+	return (Orientation)(C.QDialog_Orientation(this.h))
 }
 
 func (this *QDialog) SetExtension(extension *QWidget) {
@@ -108,8 +105,7 @@ func (this *QDialog) SetExtension(extension *QWidget) {
 }
 
 func (this *QDialog) Extension() *QWidget {
-	_ret := C.QDialog_Extension(this.h)
-	return newQWidget_U(unsafe.Pointer(_ret))
+	return newQWidget_U(unsafe.Pointer(C.QDialog_Extension(this.h)))
 }
 
 func (this *QDialog) SizeHint() *QSize {
@@ -131,8 +127,7 @@ func (this *QDialog) SetSizeGripEnabled(sizeGripEnabled bool) {
 }
 
 func (this *QDialog) IsSizeGripEnabled() bool {
-	_ret := C.QDialog_IsSizeGripEnabled(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QDialog_IsSizeGripEnabled(this.h))
 }
 
 func (this *QDialog) SetModal(modal bool) {
@@ -158,8 +153,7 @@ func miqt_exec_callback_QDialog_Finished(cb *C.void, result C.int) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	result_ret := result
-	slotval1 := (int)(result_ret)
+	slotval1 := (int)(result)
 
 	gofunc(slotval1)
 }
@@ -203,8 +197,7 @@ func (this *QDialog) Open() {
 }
 
 func (this *QDialog) Exec() int {
-	_ret := C.QDialog_Exec(this.h)
-	return (int)(_ret)
+	return (int)(C.QDialog_Exec(this.h))
 }
 
 func (this *QDialog) Done(param1 int) {

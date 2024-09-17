@@ -37,8 +37,7 @@ func newQGenericPlugin_U(h unsafe.Pointer) *QGenericPlugin {
 }
 
 func (this *QGenericPlugin) MetaObject() *QMetaObject {
-	_ret := C.QGenericPlugin_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QGenericPlugin_MetaObject(this.h)))
 }
 
 func QGenericPlugin_Tr(s string) string {
@@ -64,8 +63,7 @@ func (this *QGenericPlugin) Create(name string, spec string) *QObject {
 	defer C.free(name_ms)
 	spec_ms := miqt_strdupg(spec)
 	defer C.free(spec_ms)
-	_ret := C.QGenericPlugin_Create(this.h, (*C.struct_miqt_string)(name_ms), (*C.struct_miqt_string)(spec_ms))
-	return newQObject_U(unsafe.Pointer(_ret))
+	return newQObject_U(unsafe.Pointer(C.QGenericPlugin_Create(this.h, (*C.struct_miqt_string)(name_ms), (*C.struct_miqt_string)(spec_ms))))
 }
 
 func QGenericPlugin_Tr2(s string, c string) string {

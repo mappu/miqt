@@ -79,9 +79,12 @@ func (this *QMimeDatabase) MimeTypesForFileName(fileName string) []QMimeType {
 	defer C.free(fileName_ms)
 	var _ma *C.struct_miqt_array = C.QMimeDatabase_MimeTypesForFileName(this.h, (*C.struct_miqt_string)(fileName_ms))
 	_ret := make([]QMimeType, int(_ma.len))
-	_outCast := (*[0xffff]*C.QMimeType)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QMimeType)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = *newQMimeType(_outCast[i])
+		_lv_ret := _outCast[i]
+		_lv_goptr := newQMimeType(_lv_ret)
+		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+		_ret[i] = *_lv_goptr
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -138,9 +141,12 @@ func (this *QMimeDatabase) SuffixForFileName(fileName string) string {
 func (this *QMimeDatabase) AllMimeTypes() []QMimeType {
 	var _ma *C.struct_miqt_array = C.QMimeDatabase_AllMimeTypes(this.h)
 	_ret := make([]QMimeType, int(_ma.len))
-	_outCast := (*[0xffff]*C.QMimeType)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QMimeType)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = *newQMimeType(_outCast[i])
+		_lv_ret := _outCast[i]
+		_lv_goptr := newQMimeType(_lv_ret)
+		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+		_ret[i] = *_lv_goptr
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret

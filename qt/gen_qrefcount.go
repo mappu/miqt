@@ -36,33 +36,27 @@ func newQtPrivate__RefCount_U(h unsafe.Pointer) *QtPrivate__RefCount {
 }
 
 func (this *QtPrivate__RefCount) Ref() bool {
-	_ret := C.QtPrivate__RefCount_Ref(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QtPrivate__RefCount_Ref(this.h))
 }
 
 func (this *QtPrivate__RefCount) Deref() bool {
-	_ret := C.QtPrivate__RefCount_Deref(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QtPrivate__RefCount_Deref(this.h))
 }
 
 func (this *QtPrivate__RefCount) SetSharable(sharable bool) bool {
-	_ret := C.QtPrivate__RefCount_SetSharable(this.h, (C.bool)(sharable))
-	return (bool)(_ret)
+	return (bool)(C.QtPrivate__RefCount_SetSharable(this.h, (C.bool)(sharable)))
 }
 
 func (this *QtPrivate__RefCount) IsSharable() bool {
-	_ret := C.QtPrivate__RefCount_IsSharable(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QtPrivate__RefCount_IsSharable(this.h))
 }
 
 func (this *QtPrivate__RefCount) IsStatic() bool {
-	_ret := C.QtPrivate__RefCount_IsStatic(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QtPrivate__RefCount_IsStatic(this.h))
 }
 
 func (this *QtPrivate__RefCount) IsShared() bool {
-	_ret := C.QtPrivate__RefCount_IsShared(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QtPrivate__RefCount_IsShared(this.h))
 }
 
 func (this *QtPrivate__RefCount) InitializeOwned() {
