@@ -351,9 +351,9 @@ func emitAssignCppToCabi(assignExpression string, p CppParameter, rvalue string)
 		}
 
 	} else if p.QtClassType() && !p.Pointer {
-		shouldReturn = p.ParameterType + " " + namePrefix + "_ret = "
-		afterCall = indent + "// Copy-construct value returned type into heap-allocated copy\n"
-		afterCall += indent + "" + assignExpression + "static_cast<" + p.ParameterType + "*>(new " + p.ParameterType + "(" + namePrefix + "_ret));\n"
+
+		// Elide temporary and emit directly from the rvalue
+		return indent + assignExpression + "new " + p.ParameterType + "(" + rvalue + ");\n"
 
 	} else if p.Const {
 		shouldReturn += "(" + p.RenderTypeCabi() + ") "
