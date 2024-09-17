@@ -77,7 +77,7 @@ void QSessionManager_SetRestartCommand(QSessionManager* self, struct miqt_array*
 
 struct miqt_array* QSessionManager_RestartCommand(const QSessionManager* self) {
 	QStringList _ret = self->restartCommand();
-	// Convert QStringList from C++ memory to manually-managed C memory
+	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
@@ -103,7 +103,7 @@ void QSessionManager_SetDiscardCommand(QSessionManager* self, struct miqt_array*
 
 struct miqt_array* QSessionManager_DiscardCommand(const QSessionManager* self) {
 	QStringList _ret = self->discardCommand();
-	// Convert QStringList from C++ memory to manually-managed C memory
+	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];

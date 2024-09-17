@@ -136,15 +136,11 @@ bool QAbstractSpinBox_IsGroupSeparatorShown(const QAbstractSpinBox* self) {
 }
 
 QSize* QAbstractSpinBox_SizeHint(const QAbstractSpinBox* self) {
-	QSize _ret = self->sizeHint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->sizeHint());
 }
 
 QSize* QAbstractSpinBox_MinimumSizeHint(const QAbstractSpinBox* self) {
-	QSize _ret = self->minimumSizeHint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->minimumSizeHint());
 }
 
 void QAbstractSpinBox_InterpretText(QAbstractSpinBox* self) {
@@ -156,9 +152,7 @@ bool QAbstractSpinBox_Event(QAbstractSpinBox* self, QEvent* event) {
 }
 
 QVariant* QAbstractSpinBox_InputMethodQuery(const QAbstractSpinBox* self, uintptr_t param1) {
-	QVariant _ret = self->inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(_ret));
+	return new QVariant(self->inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
 }
 
 uintptr_t QAbstractSpinBox_Validate(const QAbstractSpinBox* self, struct miqt_string* input, int* pos) {

@@ -96,15 +96,11 @@ void QSplitter_Refresh(QSplitter* self) {
 }
 
 QSize* QSplitter_SizeHint(const QSplitter* self) {
-	QSize _ret = self->sizeHint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->sizeHint());
 }
 
 QSize* QSplitter_MinimumSizeHint(const QSplitter* self) {
-	QSize _ret = self->minimumSizeHint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->minimumSizeHint());
 }
 
 struct miqt_array* QSplitter_Sizes(const QSplitter* self) {
@@ -131,9 +127,7 @@ void QSplitter_SetSizes(QSplitter* self, struct miqt_array* /* of int */ list) {
 }
 
 QByteArray* QSplitter_SaveState(const QSplitter* self) {
-	QByteArray _ret = self->saveState();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(self->saveState());
 }
 
 bool QSplitter_RestoreState(QSplitter* self, QByteArray* state) {
@@ -260,9 +254,7 @@ QSplitter* QSplitterHandle_Splitter(const QSplitterHandle* self) {
 }
 
 QSize* QSplitterHandle_SizeHint(const QSplitterHandle* self) {
-	QSize _ret = self->sizeHint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->sizeHint());
 }
 
 struct miqt_string* QSplitterHandle_Tr2(const char* s, const char* c) {

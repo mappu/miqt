@@ -45,14 +45,12 @@ struct miqt_string* QFileSelector_Select(const QFileSelector* self, struct miqt_
 }
 
 QUrl* QFileSelector_SelectWithFilePath(const QFileSelector* self, QUrl* filePath) {
-	QUrl _ret = self->select(*filePath);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QUrl*>(new QUrl(_ret));
+	return new QUrl(self->select(*filePath));
 }
 
 struct miqt_array* QFileSelector_ExtraSelectors(const QFileSelector* self) {
 	QStringList _ret = self->extraSelectors();
-	// Convert QStringList from C++ memory to manually-managed C memory
+	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
@@ -78,7 +76,7 @@ void QFileSelector_SetExtraSelectors(QFileSelector* self, struct miqt_array* /* 
 
 struct miqt_array* QFileSelector_AllSelectors(const QFileSelector* self) {
 	QStringList _ret = self->allSelectors();
-	// Convert QStringList from C++ memory to manually-managed C memory
+	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];

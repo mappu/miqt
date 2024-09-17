@@ -21,9 +21,7 @@ QObject* QAccessibleObject_Object(const QAccessibleObject* self) {
 }
 
 QRect* QAccessibleObject_Rect(const QAccessibleObject* self) {
-	QRect _ret = self->rect();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->rect());
 }
 
 void QAccessibleObject_SetText(QAccessibleObject* self, uintptr_t t, struct miqt_string* text) {
@@ -76,9 +74,7 @@ uintptr_t QAccessibleApplication_Role(const QAccessibleApplication* self) {
 }
 
 QAccessible__State* QAccessibleApplication_State(const QAccessibleApplication* self) {
-	QAccessible::State _ret = self->state();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QAccessible::State*>(new QAccessible::State(_ret));
+	return new QAccessible::State(self->state());
 }
 
 void QAccessibleApplication_Delete(QAccessibleApplication* self) {

@@ -62,15 +62,11 @@ int QStringListModel_RowCount(const QStringListModel* self) {
 }
 
 QModelIndex* QStringListModel_Sibling(const QStringListModel* self, int row, int column, QModelIndex* idx) {
-	QModelIndex _ret = self->sibling(static_cast<int>(row), static_cast<int>(column), *idx);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QModelIndex*>(new QModelIndex(_ret));
+	return new QModelIndex(self->sibling(static_cast<int>(row), static_cast<int>(column), *idx));
 }
 
 QVariant* QStringListModel_Data(const QStringListModel* self, QModelIndex* index) {
-	QVariant _ret = self->data(*index);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(_ret));
+	return new QVariant(self->data(*index));
 }
 
 bool QStringListModel_SetData(QStringListModel* self, QModelIndex* index, QVariant* value) {
@@ -100,7 +96,7 @@ void QStringListModel_Sort(QStringListModel* self, int column) {
 
 struct miqt_array* QStringListModel_StringList(const QStringListModel* self) {
 	QStringList _ret = self->stringList();
-	// Convert QStringList from C++ memory to manually-managed C memory
+	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
@@ -162,9 +158,7 @@ int QStringListModel_RowCount1(const QStringListModel* self, QModelIndex* parent
 }
 
 QVariant* QStringListModel_Data2(const QStringListModel* self, QModelIndex* index, int role) {
-	QVariant _ret = self->data(*index, static_cast<int>(role));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(_ret));
+	return new QVariant(self->data(*index, static_cast<int>(role)));
 }
 
 bool QStringListModel_SetData3(QStringListModel* self, QModelIndex* index, QVariant* value, int role) {

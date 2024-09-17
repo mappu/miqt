@@ -84,9 +84,7 @@ void QTextEdit_SetTextCursor(QTextEdit* self, QTextCursor* cursor) {
 }
 
 QTextCursor* QTextEdit_TextCursor(const QTextEdit* self) {
-	QTextCursor _ret = self->textCursor();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextCursor*>(new QTextCursor(_ret));
+	return new QTextCursor(self->textCursor());
 }
 
 bool QTextEdit_IsReadOnly(const QTextEdit* self) {
@@ -130,21 +128,15 @@ bool QTextEdit_FontItalic(const QTextEdit* self) {
 }
 
 QColor* QTextEdit_TextColor(const QTextEdit* self) {
-	QColor _ret = self->textColor();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QColor*>(new QColor(_ret));
+	return new QColor(self->textColor());
 }
 
 QColor* QTextEdit_TextBackgroundColor(const QTextEdit* self) {
-	QColor _ret = self->textBackgroundColor();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QColor*>(new QColor(_ret));
+	return new QColor(self->textBackgroundColor());
 }
 
 QFont* QTextEdit_CurrentFont(const QTextEdit* self) {
-	QFont _ret = self->currentFont();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QFont*>(new QFont(_ret));
+	return new QFont(self->currentFont());
 }
 
 int QTextEdit_Alignment(const QTextEdit* self) {
@@ -161,9 +153,7 @@ void QTextEdit_SetCurrentCharFormat(QTextEdit* self, QTextCharFormat* format) {
 }
 
 QTextCharFormat* QTextEdit_CurrentCharFormat(const QTextEdit* self) {
-	QTextCharFormat _ret = self->currentCharFormat();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextCharFormat*>(new QTextCharFormat(_ret));
+	return new QTextCharFormat(self->currentCharFormat());
 }
 
 int QTextEdit_AutoFormatting(const QTextEdit* self) {
@@ -268,9 +258,7 @@ void QTextEdit_EnsureCursorVisible(QTextEdit* self) {
 }
 
 QVariant* QTextEdit_LoadResource(QTextEdit* self, int typeVal, QUrl* name) {
-	QVariant _ret = self->loadResource(static_cast<int>(typeVal), *name);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(_ret));
+	return new QVariant(self->loadResource(static_cast<int>(typeVal), *name));
 }
 
 QMenu* QTextEdit_CreateStandardContextMenu(QTextEdit* self) {
@@ -282,21 +270,15 @@ QMenu* QTextEdit_CreateStandardContextMenuWithPosition(QTextEdit* self, QPoint* 
 }
 
 QTextCursor* QTextEdit_CursorForPosition(const QTextEdit* self, QPoint* pos) {
-	QTextCursor _ret = self->cursorForPosition(*pos);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextCursor*>(new QTextCursor(_ret));
+	return new QTextCursor(self->cursorForPosition(*pos));
 }
 
 QRect* QTextEdit_CursorRect(const QTextEdit* self, QTextCursor* cursor) {
-	QRect _ret = self->cursorRect(*cursor);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->cursorRect(*cursor));
 }
 
 QRect* QTextEdit_CursorRect2(const QTextEdit* self) {
-	QRect _ret = self->cursorRect();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->cursorRect());
 }
 
 struct miqt_string* QTextEdit_AnchorAt(const QTextEdit* self, QPoint* pos) {
@@ -358,8 +340,8 @@ void QTextEdit_SetExtraSelections(QTextEdit* self, struct miqt_array* /* of QTex
 
 struct miqt_array* QTextEdit_ExtraSelections(const QTextEdit* self) {
 	QList<QTextEdit::ExtraSelection> _ret = self->extraSelections();
-	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
-	QTextEdit__ExtraSelection** _arr = static_cast<QTextEdit__ExtraSelection**>(malloc(sizeof(QTextEdit__ExtraSelection**) * _ret.length()));
+	// Convert QList<> from C++ memory to manually-managed C memory
+	QTextEdit__ExtraSelection** _arr = static_cast<QTextEdit__ExtraSelection**>(malloc(sizeof(QTextEdit__ExtraSelection*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = new QTextEdit::ExtraSelection(_ret[i]);
 	}
@@ -382,15 +364,11 @@ void QTextEdit_Print(const QTextEdit* self, QPagedPaintDevice* printer) {
 }
 
 QVariant* QTextEdit_InputMethodQuery(const QTextEdit* self, uintptr_t property) {
-	QVariant _ret = self->inputMethodQuery(static_cast<Qt::InputMethodQuery>(property));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(_ret));
+	return new QVariant(self->inputMethodQuery(static_cast<Qt::InputMethodQuery>(property)));
 }
 
 QVariant* QTextEdit_InputMethodQuery2(const QTextEdit* self, uintptr_t query, QVariant* argument) {
-	QVariant _ret = self->inputMethodQuery(static_cast<Qt::InputMethodQuery>(query), *argument);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(_ret));
+	return new QVariant(self->inputMethodQuery(static_cast<Qt::InputMethodQuery>(query), *argument));
 }
 
 void QTextEdit_SetFontPointSize(QTextEdit* self, double s) {

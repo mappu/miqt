@@ -184,9 +184,7 @@ void QMessageBox_SetIcon(QMessageBox* self, uintptr_t icon) {
 }
 
 QPixmap* QMessageBox_IconPixmap(const QMessageBox* self) {
-	QPixmap _ret = self->iconPixmap();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPixmap*>(new QPixmap(_ret));
+	return new QPixmap(self->iconPixmap());
 }
 
 void QMessageBox_SetIconPixmap(QMessageBox* self, QPixmap* pixmap) {
@@ -380,9 +378,7 @@ void QMessageBox_SetWindowModality(QMessageBox* self, uintptr_t windowModality) 
 }
 
 QPixmap* QMessageBox_StandardIcon(uintptr_t icon) {
-	QPixmap _ret = QMessageBox::standardIcon(static_cast<QMessageBox::Icon>(icon));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPixmap*>(new QPixmap(_ret));
+	return new QPixmap(QMessageBox::standardIcon(static_cast<QMessageBox::Icon>(icon)));
 }
 
 void QMessageBox_ButtonClicked(QMessageBox* self, QAbstractButton* button) {

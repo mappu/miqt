@@ -88,9 +88,7 @@ void QToolBox_SetItemIcon(QToolBox* self, int index, QIcon* icon) {
 }
 
 QIcon* QToolBox_ItemIcon(const QToolBox* self, int index) {
-	QIcon _ret = self->itemIcon(static_cast<int>(index));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QIcon*>(new QIcon(_ret));
+	return new QIcon(self->itemIcon(static_cast<int>(index)));
 }
 
 void QToolBox_SetItemToolTip(QToolBox* self, int index, struct miqt_string* toolTip) {

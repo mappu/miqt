@@ -12,21 +12,15 @@
 #include "_cgo_export.h"
 
 QSize* QLayoutItem_SizeHint(const QLayoutItem* self) {
-	QSize _ret = self->sizeHint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->sizeHint());
 }
 
 QSize* QLayoutItem_MinimumSize(const QLayoutItem* self) {
-	QSize _ret = self->minimumSize();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->minimumSize());
 }
 
 QSize* QLayoutItem_MaximumSize(const QLayoutItem* self) {
-	QSize _ret = self->maximumSize();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->maximumSize());
 }
 
 int QLayoutItem_ExpandingDirections(const QLayoutItem* self) {
@@ -39,9 +33,7 @@ void QLayoutItem_SetGeometry(QLayoutItem* self, QRect* geometry) {
 }
 
 QRect* QLayoutItem_Geometry(const QLayoutItem* self) {
-	QRect _ret = self->geometry();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->geometry());
 }
 
 bool QLayoutItem_IsEmpty(const QLayoutItem* self) {
@@ -115,21 +107,15 @@ void QSpacerItem_ChangeSize(QSpacerItem* self, int w, int h) {
 }
 
 QSize* QSpacerItem_SizeHint(const QSpacerItem* self) {
-	QSize _ret = self->sizeHint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->sizeHint());
 }
 
 QSize* QSpacerItem_MinimumSize(const QSpacerItem* self) {
-	QSize _ret = self->minimumSize();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->minimumSize());
 }
 
 QSize* QSpacerItem_MaximumSize(const QSpacerItem* self) {
-	QSize _ret = self->maximumSize();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->maximumSize());
 }
 
 int QSpacerItem_ExpandingDirections(const QSpacerItem* self) {
@@ -146,9 +132,7 @@ void QSpacerItem_SetGeometry(QSpacerItem* self, QRect* geometry) {
 }
 
 QRect* QSpacerItem_Geometry(const QSpacerItem* self) {
-	QRect _ret = self->geometry();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->geometry());
 }
 
 QSpacerItem* QSpacerItem_SpacerItem(QSpacerItem* self) {
@@ -156,9 +140,7 @@ QSpacerItem* QSpacerItem_SpacerItem(QSpacerItem* self) {
 }
 
 QSizePolicy* QSpacerItem_SizePolicy(const QSpacerItem* self) {
-	QSizePolicy _ret = self->sizePolicy();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSizePolicy*>(new QSizePolicy(_ret));
+	return new QSizePolicy(self->sizePolicy());
 }
 
 void QSpacerItem_ChangeSize3(QSpacerItem* self, int w, int h, uintptr_t hData) {
@@ -178,21 +160,15 @@ QWidgetItem* QWidgetItem_new(QWidget* w) {
 }
 
 QSize* QWidgetItem_SizeHint(const QWidgetItem* self) {
-	QSize _ret = self->sizeHint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->sizeHint());
 }
 
 QSize* QWidgetItem_MinimumSize(const QWidgetItem* self) {
-	QSize _ret = self->minimumSize();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->minimumSize());
 }
 
 QSize* QWidgetItem_MaximumSize(const QWidgetItem* self) {
-	QSize _ret = self->maximumSize();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->maximumSize());
 }
 
 int QWidgetItem_ExpandingDirections(const QWidgetItem* self) {
@@ -209,9 +185,7 @@ void QWidgetItem_SetGeometry(QWidgetItem* self, QRect* geometry) {
 }
 
 QRect* QWidgetItem_Geometry(const QWidgetItem* self) {
-	QRect _ret = self->geometry();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->geometry());
 }
 
 QWidget* QWidgetItem_Widget(QWidgetItem* self) {
@@ -240,21 +214,15 @@ QWidgetItemV2* QWidgetItemV2_new(QWidget* widget) {
 }
 
 QSize* QWidgetItemV2_SizeHint(const QWidgetItemV2* self) {
-	QSize _ret = self->sizeHint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->sizeHint());
 }
 
 QSize* QWidgetItemV2_MinimumSize(const QWidgetItemV2* self) {
-	QSize _ret = self->minimumSize();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->minimumSize());
 }
 
 QSize* QWidgetItemV2_MaximumSize(const QWidgetItemV2* self) {
-	QSize _ret = self->maximumSize();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->maximumSize());
 }
 
 int QWidgetItemV2_HeightForWidth(const QWidgetItemV2* self, int width) {

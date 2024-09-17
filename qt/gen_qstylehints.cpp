@@ -111,9 +111,7 @@ int QStyleHints_PasswordMaskDelay(const QStyleHints* self) {
 }
 
 QChar* QStyleHints_PasswordMaskCharacter(const QStyleHints* self) {
-	QChar _ret = self->passwordMaskCharacter();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QChar*>(new QChar(_ret));
+	return new QChar(self->passwordMaskCharacter());
 }
 
 double QStyleHints_FontSmoothingGamma(const QStyleHints* self) {

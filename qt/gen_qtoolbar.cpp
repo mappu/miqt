@@ -110,9 +110,7 @@ QAction* QToolBar_InsertWidget(QToolBar* self, QAction* before, QWidget* widget)
 }
 
 QRect* QToolBar_ActionGeometry(const QToolBar* self, QAction* action) {
-	QRect _ret = self->actionGeometry(action);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->actionGeometry(action));
 }
 
 QAction* QToolBar_ActionAt(const QToolBar* self, QPoint* p) {
@@ -128,9 +126,7 @@ QAction* QToolBar_ToggleViewAction(const QToolBar* self) {
 }
 
 QSize* QToolBar_IconSize(const QToolBar* self) {
-	QSize _ret = self->iconSize();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->iconSize());
 }
 
 uintptr_t QToolBar_ToolButtonStyle(const QToolBar* self) {

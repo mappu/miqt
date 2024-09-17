@@ -94,15 +94,11 @@ bool QImage_IsDetached(const QImage* self) {
 }
 
 QImage* QImage_Copy(const QImage* self) {
-	QImage _ret = self->copy();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QImage*>(new QImage(_ret));
+	return new QImage(self->copy());
 }
 
 QImage* QImage_Copy2(const QImage* self, int x, int y, int w, int h) {
-	QImage _ret = self->copy(static_cast<int>(x), static_cast<int>(y), static_cast<int>(w), static_cast<int>(h));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QImage*>(new QImage(_ret));
+	return new QImage(self->copy(static_cast<int>(x), static_cast<int>(y), static_cast<int>(w), static_cast<int>(h)));
 }
 
 uintptr_t QImage_Format(const QImage* self) {
@@ -111,9 +107,7 @@ uintptr_t QImage_Format(const QImage* self) {
 }
 
 QImage* QImage_ConvertToFormat(const QImage* self, uintptr_t f) {
-	QImage _ret = self->convertToFormat(static_cast<QImage::Format>(f));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QImage*>(new QImage(_ret));
+	return new QImage(self->convertToFormat(static_cast<QImage::Format>(f)));
 }
 
 QImage* QImage_ConvertToFormat2(const QImage* self, uintptr_t f, struct miqt_array* /* of unsigned int */ colorTable) {
@@ -123,9 +117,7 @@ QImage* QImage_ConvertToFormat2(const QImage* self, uintptr_t f, struct miqt_arr
 	for(size_t i = 0; i < colorTable->len; ++i) {
 		colorTable_QList.push_back(colorTable_arr[i]);
 	}
-	QImage _ret = self->convertToFormat(static_cast<QImage::Format>(f), colorTable_QList);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QImage*>(new QImage(_ret));
+	return new QImage(self->convertToFormat(static_cast<QImage::Format>(f), colorTable_QList));
 }
 
 bool QImage_ReinterpretAsFormat(QImage* self, uintptr_t f) {
@@ -145,15 +137,11 @@ int QImage_Height(const QImage* self) {
 }
 
 QSize* QImage_Size(const QImage* self) {
-	QSize _ret = self->size();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->size());
 }
 
 QRect* QImage_Rect(const QImage* self) {
-	QRect _ret = self->rect();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->rect());
 }
 
 int QImage_Depth(const QImage* self) {
@@ -257,15 +245,11 @@ void QImage_SetPixel2(QImage* self, QPoint* pt, unsigned int index_or_rgb) {
 }
 
 QColor* QImage_PixelColor(const QImage* self, int x, int y) {
-	QColor _ret = self->pixelColor(static_cast<int>(x), static_cast<int>(y));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QColor*>(new QColor(_ret));
+	return new QColor(self->pixelColor(static_cast<int>(x), static_cast<int>(y)));
 }
 
 QColor* QImage_PixelColorWithPt(const QImage* self, QPoint* pt) {
-	QColor _ret = self->pixelColor(*pt);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QColor*>(new QColor(_ret));
+	return new QColor(self->pixelColor(*pt));
 }
 
 void QImage_SetPixelColor(QImage* self, int x, int y, QColor* c) {
@@ -328,87 +312,59 @@ void QImage_SetAlphaChannel(QImage* self, QImage* alphaChannel) {
 }
 
 QImage* QImage_AlphaChannel(const QImage* self) {
-	QImage _ret = self->alphaChannel();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QImage*>(new QImage(_ret));
+	return new QImage(self->alphaChannel());
 }
 
 QImage* QImage_CreateAlphaMask(const QImage* self) {
-	QImage _ret = self->createAlphaMask();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QImage*>(new QImage(_ret));
+	return new QImage(self->createAlphaMask());
 }
 
 QImage* QImage_CreateHeuristicMask(const QImage* self) {
-	QImage _ret = self->createHeuristicMask();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QImage*>(new QImage(_ret));
+	return new QImage(self->createHeuristicMask());
 }
 
 QImage* QImage_CreateMaskFromColor(const QImage* self, unsigned int color) {
-	QImage _ret = self->createMaskFromColor(static_cast<QRgb>(color));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QImage*>(new QImage(_ret));
+	return new QImage(self->createMaskFromColor(static_cast<QRgb>(color)));
 }
 
 QImage* QImage_Scaled(const QImage* self, int w, int h) {
-	QImage _ret = self->scaled(static_cast<int>(w), static_cast<int>(h));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QImage*>(new QImage(_ret));
+	return new QImage(self->scaled(static_cast<int>(w), static_cast<int>(h)));
 }
 
 QImage* QImage_ScaledWithQSize(const QImage* self, QSize* s) {
-	QImage _ret = self->scaled(*s);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QImage*>(new QImage(_ret));
+	return new QImage(self->scaled(*s));
 }
 
 QImage* QImage_ScaledToWidth(const QImage* self, int w) {
-	QImage _ret = self->scaledToWidth(static_cast<int>(w));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QImage*>(new QImage(_ret));
+	return new QImage(self->scaledToWidth(static_cast<int>(w)));
 }
 
 QImage* QImage_ScaledToHeight(const QImage* self, int h) {
-	QImage _ret = self->scaledToHeight(static_cast<int>(h));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QImage*>(new QImage(_ret));
+	return new QImage(self->scaledToHeight(static_cast<int>(h)));
 }
 
 QImage* QImage_Transformed(const QImage* self, QMatrix* matrix) {
-	QImage _ret = self->transformed(*matrix);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QImage*>(new QImage(_ret));
+	return new QImage(self->transformed(*matrix));
 }
 
 QMatrix* QImage_TrueMatrix(QMatrix* param1, int w, int h) {
-	QMatrix _ret = QImage::trueMatrix(*param1, static_cast<int>(w), static_cast<int>(h));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QMatrix*>(new QMatrix(_ret));
+	return new QMatrix(QImage::trueMatrix(*param1, static_cast<int>(w), static_cast<int>(h)));
 }
 
 QImage* QImage_TransformedWithMatrix(const QImage* self, QTransform* matrix) {
-	QImage _ret = self->transformed(*matrix);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QImage*>(new QImage(_ret));
+	return new QImage(self->transformed(*matrix));
 }
 
 QTransform* QImage_TrueMatrix2(QTransform* param1, int w, int h) {
-	QTransform _ret = QImage::trueMatrix(*param1, static_cast<int>(w), static_cast<int>(h));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTransform*>(new QTransform(_ret));
+	return new QTransform(QImage::trueMatrix(*param1, static_cast<int>(w), static_cast<int>(h)));
 }
 
 QImage* QImage_Mirrored(const QImage* self) {
-	QImage _ret = self->mirrored();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QImage*>(new QImage(_ret));
+	return new QImage(self->mirrored());
 }
 
 QImage* QImage_RgbSwapped(const QImage* self) {
-	QImage _ret = self->rgbSwapped();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QImage*>(new QImage(_ret));
+	return new QImage(self->rgbSwapped());
 }
 
 void QImage_InvertPixels(QImage* self) {
@@ -416,15 +372,11 @@ void QImage_InvertPixels(QImage* self) {
 }
 
 QColorSpace* QImage_ColorSpace(const QImage* self) {
-	QColorSpace _ret = self->colorSpace();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QColorSpace*>(new QColorSpace(_ret));
+	return new QColorSpace(self->colorSpace());
 }
 
 QImage* QImage_ConvertedToColorSpace(const QImage* self, QColorSpace* param1) {
-	QImage _ret = self->convertedToColorSpace(*param1);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QImage*>(new QImage(_ret));
+	return new QImage(self->convertedToColorSpace(*param1));
 }
 
 void QImage_ConvertToColorSpace(QImage* self, QColorSpace* param1) {
@@ -466,15 +418,11 @@ bool QImage_SaveWithDevice(const QImage* self, QIODevice* device) {
 }
 
 QImage* QImage_FromData(const unsigned char* data, int size) {
-	QImage _ret = QImage::fromData(static_cast<const uchar*>(data), static_cast<int>(size));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QImage*>(new QImage(_ret));
+	return new QImage(QImage::fromData(static_cast<const uchar*>(data), static_cast<int>(size)));
 }
 
 QImage* QImage_FromDataWithData(QByteArray* data) {
-	QImage _ret = QImage::fromData(*data);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QImage*>(new QImage(_ret));
+	return new QImage(QImage::fromData(*data));
 }
 
 long long QImage_CacheKey(const QImage* self) {
@@ -502,9 +450,7 @@ void QImage_SetDotsPerMeterY(QImage* self, int dotsPerMeterY) {
 }
 
 QPoint* QImage_Offset(const QImage* self) {
-	QPoint _ret = self->offset();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPoint*>(new QPoint(_ret));
+	return new QPoint(self->offset());
 }
 
 void QImage_SetOffset(QImage* self, QPoint* offset) {
@@ -513,7 +459,7 @@ void QImage_SetOffset(QImage* self, QPoint* offset) {
 
 struct miqt_array* QImage_TextKeys(const QImage* self) {
 	QStringList _ret = self->textKeys();
-	// Convert QStringList from C++ memory to manually-managed C memory
+	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
@@ -541,15 +487,11 @@ void QImage_SetText(QImage* self, struct miqt_string* key, struct miqt_string* v
 }
 
 QPixelFormat* QImage_PixelFormat(const QImage* self) {
-	QPixelFormat _ret = self->pixelFormat();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPixelFormat*>(new QPixelFormat(_ret));
+	return new QPixelFormat(self->pixelFormat());
 }
 
 QPixelFormat* QImage_ToPixelFormat(uintptr_t format) {
-	QPixelFormat _ret = QImage::toPixelFormat(static_cast<QImage::Format>(format));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPixelFormat*>(new QPixelFormat(_ret));
+	return new QPixelFormat(QImage::toPixelFormat(static_cast<QImage::Format>(format)));
 }
 
 uintptr_t QImage_ToImageFormat(QPixelFormat* format) {
@@ -558,15 +500,11 @@ uintptr_t QImage_ToImageFormat(QPixelFormat* format) {
 }
 
 QImage* QImage_Copy1(const QImage* self, QRect* rect) {
-	QImage _ret = self->copy(*rect);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QImage*>(new QImage(_ret));
+	return new QImage(self->copy(*rect));
 }
 
 QImage* QImage_ConvertToFormat22(const QImage* self, uintptr_t f, int flags) {
-	QImage _ret = self->convertToFormat(static_cast<QImage::Format>(f), static_cast<Qt::ImageConversionFlags>(flags));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QImage*>(new QImage(_ret));
+	return new QImage(self->convertToFormat(static_cast<QImage::Format>(f), static_cast<Qt::ImageConversionFlags>(flags)));
 }
 
 QImage* QImage_ConvertToFormat3(const QImage* self, uintptr_t f, struct miqt_array* /* of unsigned int */ colorTable, int flags) {
@@ -576,9 +514,7 @@ QImage* QImage_ConvertToFormat3(const QImage* self, uintptr_t f, struct miqt_arr
 	for(size_t i = 0; i < colorTable->len; ++i) {
 		colorTable_QList.push_back(colorTable_arr[i]);
 	}
-	QImage _ret = self->convertToFormat(static_cast<QImage::Format>(f), colorTable_QList, static_cast<Qt::ImageConversionFlags>(flags));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QImage*>(new QImage(_ret));
+	return new QImage(self->convertToFormat(static_cast<QImage::Format>(f), colorTable_QList, static_cast<Qt::ImageConversionFlags>(flags)));
 }
 
 void QImage_ConvertTo2(QImage* self, uintptr_t f, int flags) {
@@ -586,81 +522,55 @@ void QImage_ConvertTo2(QImage* self, uintptr_t f, int flags) {
 }
 
 QImage* QImage_CreateAlphaMask1(const QImage* self, int flags) {
-	QImage _ret = self->createAlphaMask(static_cast<Qt::ImageConversionFlags>(flags));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QImage*>(new QImage(_ret));
+	return new QImage(self->createAlphaMask(static_cast<Qt::ImageConversionFlags>(flags)));
 }
 
 QImage* QImage_CreateHeuristicMask1(const QImage* self, bool clipTight) {
-	QImage _ret = self->createHeuristicMask(clipTight);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QImage*>(new QImage(_ret));
+	return new QImage(self->createHeuristicMask(clipTight));
 }
 
 QImage* QImage_CreateMaskFromColor2(const QImage* self, unsigned int color, uintptr_t mode) {
-	QImage _ret = self->createMaskFromColor(static_cast<QRgb>(color), static_cast<Qt::MaskMode>(mode));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QImage*>(new QImage(_ret));
+	return new QImage(self->createMaskFromColor(static_cast<QRgb>(color), static_cast<Qt::MaskMode>(mode)));
 }
 
 QImage* QImage_Scaled3(const QImage* self, int w, int h, uintptr_t aspectMode) {
-	QImage _ret = self->scaled(static_cast<int>(w), static_cast<int>(h), static_cast<Qt::AspectRatioMode>(aspectMode));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QImage*>(new QImage(_ret));
+	return new QImage(self->scaled(static_cast<int>(w), static_cast<int>(h), static_cast<Qt::AspectRatioMode>(aspectMode)));
 }
 
 QImage* QImage_Scaled4(const QImage* self, int w, int h, uintptr_t aspectMode, uintptr_t mode) {
-	QImage _ret = self->scaled(static_cast<int>(w), static_cast<int>(h), static_cast<Qt::AspectRatioMode>(aspectMode), static_cast<Qt::TransformationMode>(mode));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QImage*>(new QImage(_ret));
+	return new QImage(self->scaled(static_cast<int>(w), static_cast<int>(h), static_cast<Qt::AspectRatioMode>(aspectMode), static_cast<Qt::TransformationMode>(mode)));
 }
 
 QImage* QImage_Scaled2(const QImage* self, QSize* s, uintptr_t aspectMode) {
-	QImage _ret = self->scaled(*s, static_cast<Qt::AspectRatioMode>(aspectMode));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QImage*>(new QImage(_ret));
+	return new QImage(self->scaled(*s, static_cast<Qt::AspectRatioMode>(aspectMode)));
 }
 
 QImage* QImage_Scaled32(const QImage* self, QSize* s, uintptr_t aspectMode, uintptr_t mode) {
-	QImage _ret = self->scaled(*s, static_cast<Qt::AspectRatioMode>(aspectMode), static_cast<Qt::TransformationMode>(mode));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QImage*>(new QImage(_ret));
+	return new QImage(self->scaled(*s, static_cast<Qt::AspectRatioMode>(aspectMode), static_cast<Qt::TransformationMode>(mode)));
 }
 
 QImage* QImage_ScaledToWidth2(const QImage* self, int w, uintptr_t mode) {
-	QImage _ret = self->scaledToWidth(static_cast<int>(w), static_cast<Qt::TransformationMode>(mode));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QImage*>(new QImage(_ret));
+	return new QImage(self->scaledToWidth(static_cast<int>(w), static_cast<Qt::TransformationMode>(mode)));
 }
 
 QImage* QImage_ScaledToHeight2(const QImage* self, int h, uintptr_t mode) {
-	QImage _ret = self->scaledToHeight(static_cast<int>(h), static_cast<Qt::TransformationMode>(mode));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QImage*>(new QImage(_ret));
+	return new QImage(self->scaledToHeight(static_cast<int>(h), static_cast<Qt::TransformationMode>(mode)));
 }
 
 QImage* QImage_Transformed2(const QImage* self, QMatrix* matrix, uintptr_t mode) {
-	QImage _ret = self->transformed(*matrix, static_cast<Qt::TransformationMode>(mode));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QImage*>(new QImage(_ret));
+	return new QImage(self->transformed(*matrix, static_cast<Qt::TransformationMode>(mode)));
 }
 
 QImage* QImage_Transformed22(const QImage* self, QTransform* matrix, uintptr_t mode) {
-	QImage _ret = self->transformed(*matrix, static_cast<Qt::TransformationMode>(mode));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QImage*>(new QImage(_ret));
+	return new QImage(self->transformed(*matrix, static_cast<Qt::TransformationMode>(mode)));
 }
 
 QImage* QImage_Mirrored1(const QImage* self, bool horizontally) {
-	QImage _ret = self->mirrored(horizontally);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QImage*>(new QImage(_ret));
+	return new QImage(self->mirrored(horizontally));
 }
 
 QImage* QImage_Mirrored2(const QImage* self, bool horizontally, bool vertically) {
-	QImage _ret = self->mirrored(horizontally, vertically);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QImage*>(new QImage(_ret));
+	return new QImage(self->mirrored(horizontally, vertically));
 }
 
 void QImage_InvertPixels1(QImage* self, uintptr_t param1) {
@@ -699,15 +609,11 @@ bool QImage_Save32(const QImage* self, QIODevice* device, const char* format, in
 }
 
 QImage* QImage_FromData3(const unsigned char* data, int size, const char* format) {
-	QImage _ret = QImage::fromData(static_cast<const uchar*>(data), static_cast<int>(size), format);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QImage*>(new QImage(_ret));
+	return new QImage(QImage::fromData(static_cast<const uchar*>(data), static_cast<int>(size), format));
 }
 
 QImage* QImage_FromData2(QByteArray* data, const char* format) {
-	QImage _ret = QImage::fromData(*data, format);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QImage*>(new QImage(_ret));
+	return new QImage(QImage::fromData(*data, format));
 }
 
 struct miqt_string* QImage_Text1(const QImage* self, struct miqt_string* key) {

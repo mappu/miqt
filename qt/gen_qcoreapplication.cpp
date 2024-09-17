@@ -41,7 +41,7 @@ struct miqt_string* QCoreApplication_TrUtf8(const char* s) {
 
 struct miqt_array* QCoreApplication_Arguments() {
 	QStringList _ret = QCoreApplication::arguments();
-	// Convert QStringList from C++ memory to manually-managed C memory
+	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
@@ -209,7 +209,7 @@ void QCoreApplication_SetLibraryPaths(struct miqt_array* /* of struct miqt_strin
 
 struct miqt_array* QCoreApplication_LibraryPaths() {
 	QStringList _ret = QCoreApplication::libraryPaths();
-	// Convert QStringList from C++ memory to manually-managed C memory
+	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];

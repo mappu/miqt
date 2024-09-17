@@ -90,9 +90,7 @@ void QTabWidget_SetTabText(QTabWidget* self, int index, struct miqt_string* text
 }
 
 QIcon* QTabWidget_TabIcon(const QTabWidget* self, int index) {
-	QIcon _ret = self->tabIcon(static_cast<int>(index));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QIcon*>(new QIcon(_ret));
+	return new QIcon(self->tabIcon(static_cast<int>(index)));
 }
 
 void QTabWidget_SetTabIcon(QTabWidget* self, int index, QIcon* icon) {
@@ -178,15 +176,11 @@ void QTabWidget_SetTabShape(QTabWidget* self, uintptr_t s) {
 }
 
 QSize* QTabWidget_SizeHint(const QTabWidget* self) {
-	QSize _ret = self->sizeHint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->sizeHint());
 }
 
 QSize* QTabWidget_MinimumSizeHint(const QTabWidget* self) {
-	QSize _ret = self->minimumSizeHint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->minimumSizeHint());
 }
 
 int QTabWidget_HeightForWidth(const QTabWidget* self, int width) {
@@ -215,9 +209,7 @@ void QTabWidget_SetElideMode(QTabWidget* self, uintptr_t mode) {
 }
 
 QSize* QTabWidget_IconSize(const QTabWidget* self) {
-	QSize _ret = self->iconSize();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->iconSize());
 }
 
 void QTabWidget_SetIconSize(QTabWidget* self, QSize* size) {

@@ -33,9 +33,7 @@ void QScrollerProperties_UnsetDefaultScrollerProperties() {
 }
 
 QVariant* QScrollerProperties_ScrollMetric(const QScrollerProperties* self, uintptr_t metric) {
-	QVariant _ret = self->scrollMetric(static_cast<QScrollerProperties::ScrollMetric>(metric));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(_ret));
+	return new QVariant(self->scrollMetric(static_cast<QScrollerProperties::ScrollMetric>(metric)));
 }
 
 void QScrollerProperties_SetScrollMetric(QScrollerProperties* self, uintptr_t metric, QVariant* value) {

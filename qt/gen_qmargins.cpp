@@ -193,9 +193,7 @@ QMarginsF* QMarginsF_OperatorDivideAssign(QMarginsF* self, double divisor) {
 }
 
 QMargins* QMarginsF_ToMargins(const QMarginsF* self) {
-	QMargins _ret = self->toMargins();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QMargins*>(new QMargins(_ret));
+	return new QMargins(self->toMargins());
 }
 
 void QMarginsF_Delete(QMarginsF* self) {

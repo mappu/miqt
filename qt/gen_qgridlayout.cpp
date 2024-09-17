@@ -39,21 +39,15 @@ struct miqt_string* QGridLayout_TrUtf8(const char* s) {
 }
 
 QSize* QGridLayout_SizeHint(const QGridLayout* self) {
-	QSize _ret = self->sizeHint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->sizeHint());
 }
 
 QSize* QGridLayout_MinimumSize(const QGridLayout* self) {
-	QSize _ret = self->minimumSize();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->minimumSize());
 }
 
 QSize* QGridLayout_MaximumSize(const QGridLayout* self) {
-	QSize _ret = self->maximumSize();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->maximumSize());
 }
 
 void QGridLayout_SetHorizontalSpacing(QGridLayout* self, int spacing) {
@@ -121,9 +115,7 @@ int QGridLayout_RowCount(const QGridLayout* self) {
 }
 
 QRect* QGridLayout_CellRect(const QGridLayout* self, int row, int column) {
-	QRect _ret = self->cellRect(static_cast<int>(row), static_cast<int>(column));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->cellRect(static_cast<int>(row), static_cast<int>(column)));
 }
 
 bool QGridLayout_HasHeightForWidth(const QGridLayout* self) {

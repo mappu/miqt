@@ -13,15 +13,11 @@ QFileIconProvider* QFileIconProvider_new() {
 }
 
 QIcon* QFileIconProvider_Icon(const QFileIconProvider* self, uintptr_t typeVal) {
-	QIcon _ret = self->icon(static_cast<QFileIconProvider::IconType>(typeVal));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QIcon*>(new QIcon(_ret));
+	return new QIcon(self->icon(static_cast<QFileIconProvider::IconType>(typeVal)));
 }
 
 QIcon* QFileIconProvider_IconWithInfo(const QFileIconProvider* self, QFileInfo* info) {
-	QIcon _ret = self->icon(*info);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QIcon*>(new QIcon(_ret));
+	return new QIcon(self->icon(*info));
 }
 
 struct miqt_string* QFileIconProvider_Type(const QFileIconProvider* self, QFileInfo* info) {

@@ -19,9 +19,7 @@ QOperatingSystemVersion* QOperatingSystemVersion_new3(uintptr_t osType, int vmaj
 }
 
 QOperatingSystemVersion* QOperatingSystemVersion_Current() {
-	QOperatingSystemVersion _ret = QOperatingSystemVersion::current();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QOperatingSystemVersion*>(new QOperatingSystemVersion(_ret));
+	return new QOperatingSystemVersion(QOperatingSystemVersion::current());
 }
 
 uintptr_t QOperatingSystemVersion_CurrentType() {

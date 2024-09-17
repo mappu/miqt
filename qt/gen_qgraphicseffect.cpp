@@ -35,15 +35,11 @@ struct miqt_string* QGraphicsEffect_TrUtf8(const char* s) {
 }
 
 QRectF* QGraphicsEffect_BoundingRectFor(const QGraphicsEffect* self, QRectF* sourceRect) {
-	QRectF _ret = self->boundingRectFor(*sourceRect);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(_ret));
+	return new QRectF(self->boundingRectFor(*sourceRect));
 }
 
 QRectF* QGraphicsEffect_BoundingRect(const QGraphicsEffect* self) {
-	QRectF _ret = self->boundingRect();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(_ret));
+	return new QRectF(self->boundingRect());
 }
 
 bool QGraphicsEffect_IsEnabled(const QGraphicsEffect* self) {
@@ -128,9 +124,7 @@ struct miqt_string* QGraphicsColorizeEffect_TrUtf8(const char* s) {
 }
 
 QColor* QGraphicsColorizeEffect_Color(const QGraphicsColorizeEffect* self) {
-	QColor _ret = self->color();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QColor*>(new QColor(_ret));
+	return new QColor(self->color());
 }
 
 double QGraphicsColorizeEffect_Strength(const QGraphicsColorizeEffect* self) {
@@ -228,9 +222,7 @@ struct miqt_string* QGraphicsBlurEffect_TrUtf8(const char* s) {
 }
 
 QRectF* QGraphicsBlurEffect_BoundingRectFor(const QGraphicsBlurEffect* self, QRectF* rect) {
-	QRectF _ret = self->boundingRectFor(*rect);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(_ret));
+	return new QRectF(self->boundingRectFor(*rect));
 }
 
 double QGraphicsBlurEffect_BlurRadius(const QGraphicsBlurEffect* self) {
@@ -332,15 +324,11 @@ struct miqt_string* QGraphicsDropShadowEffect_TrUtf8(const char* s) {
 }
 
 QRectF* QGraphicsDropShadowEffect_BoundingRectFor(const QGraphicsDropShadowEffect* self, QRectF* rect) {
-	QRectF _ret = self->boundingRectFor(*rect);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(_ret));
+	return new QRectF(self->boundingRectFor(*rect));
 }
 
 QPointF* QGraphicsDropShadowEffect_Offset(const QGraphicsDropShadowEffect* self) {
-	QPointF _ret = self->offset();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPointF*>(new QPointF(_ret));
+	return new QPointF(self->offset());
 }
 
 double QGraphicsDropShadowEffect_XOffset(const QGraphicsDropShadowEffect* self) {
@@ -356,9 +344,7 @@ double QGraphicsDropShadowEffect_BlurRadius(const QGraphicsDropShadowEffect* sel
 }
 
 QColor* QGraphicsDropShadowEffect_Color(const QGraphicsDropShadowEffect* self) {
-	QColor _ret = self->color();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QColor*>(new QColor(_ret));
+	return new QColor(self->color());
 }
 
 void QGraphicsDropShadowEffect_SetOffset(QGraphicsDropShadowEffect* self, QPointF* ofs) {
@@ -489,9 +475,7 @@ double QGraphicsOpacityEffect_Opacity(const QGraphicsOpacityEffect* self) {
 }
 
 QBrush* QGraphicsOpacityEffect_OpacityMask(const QGraphicsOpacityEffect* self) {
-	QBrush _ret = self->opacityMask();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QBrush*>(new QBrush(_ret));
+	return new QBrush(self->opacityMask());
 }
 
 void QGraphicsOpacityEffect_SetOpacity(QGraphicsOpacityEffect* self, double opacity) {

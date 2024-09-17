@@ -81,15 +81,11 @@ void QPainter_SetFont(QPainter* self, QFont* f) {
 }
 
 QFontMetrics* QPainter_FontMetrics(const QPainter* self) {
-	QFontMetrics _ret = self->fontMetrics();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QFontMetrics*>(new QFontMetrics(_ret));
+	return new QFontMetrics(self->fontMetrics());
 }
 
 QFontInfo* QPainter_FontInfo(const QPainter* self) {
-	QFontInfo _ret = self->fontInfo();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QFontInfo*>(new QFontInfo(_ret));
+	return new QFontInfo(self->fontInfo());
 }
 
 void QPainter_SetPen(QPainter* self, QColor* color) {
@@ -134,9 +130,7 @@ uintptr_t QPainter_BackgroundMode(const QPainter* self) {
 }
 
 QPoint* QPainter_BrushOrigin(const QPainter* self) {
-	QPoint _ret = self->brushOrigin();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPoint*>(new QPoint(_ret));
+	return new QPoint(self->brushOrigin());
 }
 
 void QPainter_SetBrushOrigin(QPainter* self, int x, int y) {
@@ -170,15 +164,11 @@ void QPainter_SetOpacity(QPainter* self, double opacity) {
 }
 
 QRegion* QPainter_ClipRegion(const QPainter* self) {
-	QRegion _ret = self->clipRegion();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRegion*>(new QRegion(_ret));
+	return new QRegion(self->clipRegion());
 }
 
 QPainterPath* QPainter_ClipPath(const QPainter* self) {
-	QPainterPath _ret = self->clipPath();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPainterPath*>(new QPainterPath(_ret));
+	return new QPainterPath(self->clipPath());
 }
 
 void QPainter_SetClipRect(QPainter* self, QRectF* param1) {
@@ -210,9 +200,7 @@ bool QPainter_HasClipping(const QPainter* self) {
 }
 
 QRectF* QPainter_ClipBoundingRect(const QPainter* self) {
-	QRectF _ret = self->clipBoundingRect();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(_ret));
+	return new QRectF(self->clipBoundingRect());
 }
 
 void QPainter_Save(QPainter* self) {
@@ -274,9 +262,7 @@ QMatrix* QPainter_WorldMatrix(const QPainter* self) {
 }
 
 QMatrix* QPainter_CombinedMatrix(const QPainter* self) {
-	QMatrix _ret = self->combinedMatrix();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QMatrix*>(new QMatrix(_ret));
+	return new QMatrix(self->combinedMatrix());
 }
 
 void QPainter_SetMatrixEnabled(QPainter* self, bool enabled) {
@@ -298,9 +284,7 @@ QTransform* QPainter_WorldTransform(const QPainter* self) {
 }
 
 QTransform* QPainter_CombinedTransform(const QPainter* self) {
-	QTransform _ret = self->combinedTransform();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTransform*>(new QTransform(_ret));
+	return new QTransform(self->combinedTransform());
 }
 
 void QPainter_SetWorldMatrixEnabled(QPainter* self, bool enabled) {
@@ -336,9 +320,7 @@ void QPainter_Translate2(QPainter* self, double dx, double dy) {
 }
 
 QRect* QPainter_Window(const QPainter* self) {
-	QRect _ret = self->window();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->window());
 }
 
 void QPainter_SetWindow(QPainter* self, QRect* window) {
@@ -350,9 +332,7 @@ void QPainter_SetWindow2(QPainter* self, int x, int y, int w, int h) {
 }
 
 QRect* QPainter_Viewport(const QPainter* self) {
-	QRect _ret = self->viewport();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->viewport());
 }
 
 void QPainter_SetViewport(QPainter* self, QRect* viewport) {
@@ -798,30 +778,22 @@ void QPainter_DrawText8(QPainter* self, QRectF* r, struct miqt_string* text) {
 
 QRectF* QPainter_BoundingRect(QPainter* self, QRectF* rect, int flags, struct miqt_string* text) {
 	QString text_QString = QString::fromUtf8(&text->data, text->len);
-	QRectF _ret = self->boundingRect(*rect, static_cast<int>(flags), text_QString);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(_ret));
+	return new QRectF(self->boundingRect(*rect, static_cast<int>(flags), text_QString));
 }
 
 QRect* QPainter_BoundingRect2(QPainter* self, QRect* rect, int flags, struct miqt_string* text) {
 	QString text_QString = QString::fromUtf8(&text->data, text->len);
-	QRect _ret = self->boundingRect(*rect, static_cast<int>(flags), text_QString);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->boundingRect(*rect, static_cast<int>(flags), text_QString));
 }
 
 QRect* QPainter_BoundingRect3(QPainter* self, int x, int y, int w, int h, int flags, struct miqt_string* text) {
 	QString text_QString = QString::fromUtf8(&text->data, text->len);
-	QRect _ret = self->boundingRect(static_cast<int>(x), static_cast<int>(y), static_cast<int>(w), static_cast<int>(h), static_cast<int>(flags), text_QString);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->boundingRect(static_cast<int>(x), static_cast<int>(y), static_cast<int>(w), static_cast<int>(h), static_cast<int>(flags), text_QString));
 }
 
 QRectF* QPainter_BoundingRect4(QPainter* self, QRectF* rect, struct miqt_string* text) {
 	QString text_QString = QString::fromUtf8(&text->data, text->len);
-	QRectF _ret = self->boundingRect(*rect, text_QString);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(_ret));
+	return new QRectF(self->boundingRect(*rect, text_QString));
 }
 
 void QPainter_DrawTextItem(QPainter* self, QPointF* p, QTextItem* ti) {
@@ -1107,9 +1079,7 @@ void QPainter_DrawText32(QPainter* self, QRectF* r, struct miqt_string* text, QT
 
 QRectF* QPainter_BoundingRect32(QPainter* self, QRectF* rect, struct miqt_string* text, QTextOption* o) {
 	QString text_QString = QString::fromUtf8(&text->data, text->len);
-	QRectF _ret = self->boundingRect(*rect, text_QString, *o);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(_ret));
+	return new QRectF(self->boundingRect(*rect, text_QString, *o));
 }
 
 void QPainter_SetRenderHint2(QPainter* self, uintptr_t hint, bool on) {
@@ -1133,33 +1103,23 @@ void QPainter_Delete(QPainter* self) {
 }
 
 QPainter__PixmapFragment* QPainter__PixmapFragment_Create(QPointF* pos, QRectF* sourceRect) {
-	QPainter::PixmapFragment _ret = QPainter::PixmapFragment::create(*pos, *sourceRect);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPainter::PixmapFragment*>(new QPainter::PixmapFragment(_ret));
+	return new QPainter::PixmapFragment(QPainter::PixmapFragment::create(*pos, *sourceRect));
 }
 
 QPainter__PixmapFragment* QPainter__PixmapFragment_Create3(QPointF* pos, QRectF* sourceRect, double scaleX) {
-	QPainter::PixmapFragment _ret = QPainter::PixmapFragment::create(*pos, *sourceRect, static_cast<qreal>(scaleX));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPainter::PixmapFragment*>(new QPainter::PixmapFragment(_ret));
+	return new QPainter::PixmapFragment(QPainter::PixmapFragment::create(*pos, *sourceRect, static_cast<qreal>(scaleX)));
 }
 
 QPainter__PixmapFragment* QPainter__PixmapFragment_Create4(QPointF* pos, QRectF* sourceRect, double scaleX, double scaleY) {
-	QPainter::PixmapFragment _ret = QPainter::PixmapFragment::create(*pos, *sourceRect, static_cast<qreal>(scaleX), static_cast<qreal>(scaleY));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPainter::PixmapFragment*>(new QPainter::PixmapFragment(_ret));
+	return new QPainter::PixmapFragment(QPainter::PixmapFragment::create(*pos, *sourceRect, static_cast<qreal>(scaleX), static_cast<qreal>(scaleY)));
 }
 
 QPainter__PixmapFragment* QPainter__PixmapFragment_Create5(QPointF* pos, QRectF* sourceRect, double scaleX, double scaleY, double rotation) {
-	QPainter::PixmapFragment _ret = QPainter::PixmapFragment::create(*pos, *sourceRect, static_cast<qreal>(scaleX), static_cast<qreal>(scaleY), static_cast<qreal>(rotation));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPainter::PixmapFragment*>(new QPainter::PixmapFragment(_ret));
+	return new QPainter::PixmapFragment(QPainter::PixmapFragment::create(*pos, *sourceRect, static_cast<qreal>(scaleX), static_cast<qreal>(scaleY), static_cast<qreal>(rotation)));
 }
 
 QPainter__PixmapFragment* QPainter__PixmapFragment_Create6(QPointF* pos, QRectF* sourceRect, double scaleX, double scaleY, double rotation, double opacity) {
-	QPainter::PixmapFragment _ret = QPainter::PixmapFragment::create(*pos, *sourceRect, static_cast<qreal>(scaleX), static_cast<qreal>(scaleY), static_cast<qreal>(rotation), static_cast<qreal>(opacity));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPainter::PixmapFragment*>(new QPainter::PixmapFragment(_ret));
+	return new QPainter::PixmapFragment(QPainter::PixmapFragment::create(*pos, *sourceRect, static_cast<qreal>(scaleX), static_cast<qreal>(scaleY), static_cast<qreal>(rotation), static_cast<qreal>(opacity)));
 }
 
 void QPainter__PixmapFragment_Delete(QPainter__PixmapFragment* self) {

@@ -152,39 +152,27 @@ int QMetaObject_IndexOfClassInfo(const QMetaObject* self, const char* name) {
 }
 
 QMetaMethod* QMetaObject_Constructor(const QMetaObject* self, int index) {
-	QMetaMethod _ret = self->constructor(static_cast<int>(index));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QMetaMethod*>(new QMetaMethod(_ret));
+	return new QMetaMethod(self->constructor(static_cast<int>(index)));
 }
 
 QMetaMethod* QMetaObject_Method(const QMetaObject* self, int index) {
-	QMetaMethod _ret = self->method(static_cast<int>(index));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QMetaMethod*>(new QMetaMethod(_ret));
+	return new QMetaMethod(self->method(static_cast<int>(index)));
 }
 
 QMetaEnum* QMetaObject_Enumerator(const QMetaObject* self, int index) {
-	QMetaEnum _ret = self->enumerator(static_cast<int>(index));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QMetaEnum*>(new QMetaEnum(_ret));
+	return new QMetaEnum(self->enumerator(static_cast<int>(index)));
 }
 
 QMetaProperty* QMetaObject_Property(const QMetaObject* self, int index) {
-	QMetaProperty _ret = self->property(static_cast<int>(index));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QMetaProperty*>(new QMetaProperty(_ret));
+	return new QMetaProperty(self->property(static_cast<int>(index)));
 }
 
 QMetaClassInfo* QMetaObject_ClassInfo(const QMetaObject* self, int index) {
-	QMetaClassInfo _ret = self->classInfo(static_cast<int>(index));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QMetaClassInfo*>(new QMetaClassInfo(_ret));
+	return new QMetaClassInfo(self->classInfo(static_cast<int>(index)));
 }
 
 QMetaProperty* QMetaObject_UserProperty(const QMetaObject* self) {
-	QMetaProperty _ret = self->userProperty();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QMetaProperty*>(new QMetaProperty(_ret));
+	return new QMetaProperty(self->userProperty());
 }
 
 bool QMetaObject_CheckConnectArgs(const char* signal, const char* method) {
@@ -196,21 +184,15 @@ bool QMetaObject_CheckConnectArgs2(QMetaMethod* signal, QMetaMethod* method) {
 }
 
 QByteArray* QMetaObject_NormalizedSignature(const char* method) {
-	QByteArray _ret = QMetaObject::normalizedSignature(method);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(QMetaObject::normalizedSignature(method));
 }
 
 QByteArray* QMetaObject_NormalizedType(const char* typeVal) {
-	QByteArray _ret = QMetaObject::normalizedType(typeVal);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(QMetaObject::normalizedType(typeVal));
 }
 
 QMetaObject__Connection* QMetaObject_Connect(QObject* sender, int signal_index, QObject* receiver, int method_index) {
-	QMetaObject::Connection _ret = QMetaObject::connect(sender, static_cast<int>(signal_index), receiver, static_cast<int>(method_index));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QMetaObject::Connection*>(new QMetaObject::Connection(_ret));
+	return new QMetaObject::Connection(QMetaObject::connect(sender, static_cast<int>(signal_index), receiver, static_cast<int>(method_index)));
 }
 
 bool QMetaObject_Disconnect(QObject* sender, int signal_index, QObject* receiver, int method_index) {
@@ -253,15 +235,11 @@ struct miqt_string* QMetaObject_Tr3(const QMetaObject* self, const char* s, cons
 }
 
 QMetaObject__Connection* QMetaObject_Connect5(QObject* sender, int signal_index, QObject* receiver, int method_index, int typeVal) {
-	QMetaObject::Connection _ret = QMetaObject::connect(sender, static_cast<int>(signal_index), receiver, static_cast<int>(method_index), static_cast<int>(typeVal));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QMetaObject::Connection*>(new QMetaObject::Connection(_ret));
+	return new QMetaObject::Connection(QMetaObject::connect(sender, static_cast<int>(signal_index), receiver, static_cast<int>(method_index), static_cast<int>(typeVal)));
 }
 
 QMetaObject__Connection* QMetaObject_Connect6(QObject* sender, int signal_index, QObject* receiver, int method_index, int typeVal, int* types) {
-	QMetaObject::Connection _ret = QMetaObject::connect(sender, static_cast<int>(signal_index), receiver, static_cast<int>(method_index), static_cast<int>(typeVal), static_cast<int*>(types));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QMetaObject::Connection*>(new QMetaObject::Connection(_ret));
+	return new QMetaObject::Connection(QMetaObject::connect(sender, static_cast<int>(signal_index), receiver, static_cast<int>(method_index), static_cast<int>(typeVal), static_cast<int*>(types)));
 }
 
 bool QMetaObject_InvokeMethod5(QObject* obj, const char* member, uintptr_t param3, QGenericReturnArgument* retVal, QGenericArgument* val0) {

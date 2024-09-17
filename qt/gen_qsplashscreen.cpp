@@ -70,9 +70,7 @@ void QSplashScreen_SetPixmap(QSplashScreen* self, QPixmap* pixmap) {
 }
 
 QPixmap* QSplashScreen_Pixmap(const QSplashScreen* self) {
-	QPixmap _ret = self->pixmap();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPixmap*>(new QPixmap(_ret));
+	return new QPixmap(self->pixmap());
 }
 
 void QSplashScreen_Finish(QSplashScreen* self, QWidget* w) {

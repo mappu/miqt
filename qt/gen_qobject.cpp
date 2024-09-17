@@ -129,15 +129,11 @@ void QObject_RemoveEventFilter(QObject* self, QObject* obj) {
 }
 
 QMetaObject__Connection* QObject_Connect(QObject* sender, QMetaMethod* signal, QObject* receiver, QMetaMethod* method) {
-	QMetaObject::Connection _ret = QObject::connect(sender, *signal, receiver, *method);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QMetaObject::Connection*>(new QMetaObject::Connection(_ret));
+	return new QMetaObject::Connection(QObject::connect(sender, *signal, receiver, *method));
 }
 
 QMetaObject__Connection* QObject_Connect2(const QObject* self, QObject* sender, const char* signal, const char* member) {
-	QMetaObject::Connection _ret = self->connect(sender, signal, member);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QMetaObject::Connection*>(new QMetaObject::Connection(_ret));
+	return new QMetaObject::Connection(self->connect(sender, signal, member));
 }
 
 bool QObject_Disconnect(QObject* sender, QMetaMethod* signal, QObject* receiver, QMetaMethod* member) {
@@ -169,15 +165,13 @@ bool QObject_SetProperty(QObject* self, const char* name, QVariant* value) {
 }
 
 QVariant* QObject_Property(const QObject* self, const char* name) {
-	QVariant _ret = self->property(name);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(_ret));
+	return new QVariant(self->property(name));
 }
 
 struct miqt_array* QObject_DynamicPropertyNames(const QObject* self) {
 	QList<QByteArray> _ret = self->dynamicPropertyNames();
-	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
-	QByteArray** _arr = static_cast<QByteArray**>(malloc(sizeof(QByteArray**) * _ret.length()));
+	// Convert QList<> from C++ memory to manually-managed C memory
+	QByteArray** _arr = static_cast<QByteArray**>(malloc(sizeof(QByteArray*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = new QByteArray(_ret[i]);
 	}
@@ -254,15 +248,11 @@ int QObject_StartTimer2(QObject* self, int interval, uintptr_t timerType) {
 }
 
 QMetaObject__Connection* QObject_Connect5(QObject* sender, QMetaMethod* signal, QObject* receiver, QMetaMethod* method, uintptr_t typeVal) {
-	QMetaObject::Connection _ret = QObject::connect(sender, *signal, receiver, *method, static_cast<Qt::ConnectionType>(typeVal));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QMetaObject::Connection*>(new QMetaObject::Connection(_ret));
+	return new QMetaObject::Connection(QObject::connect(sender, *signal, receiver, *method, static_cast<Qt::ConnectionType>(typeVal)));
 }
 
 QMetaObject__Connection* QObject_Connect4(const QObject* self, QObject* sender, const char* signal, const char* member, uintptr_t typeVal) {
-	QMetaObject::Connection _ret = self->connect(sender, signal, member, static_cast<Qt::ConnectionType>(typeVal));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QMetaObject::Connection*>(new QMetaObject::Connection(_ret));
+	return new QMetaObject::Connection(self->connect(sender, signal, member, static_cast<Qt::ConnectionType>(typeVal)));
 }
 
 void QObject_Destroyed1(QObject* self, QObject* param1) {

@@ -89,9 +89,7 @@ bool QBitArray_At(const QBitArray* self, int i) {
 }
 
 QBitRef* QBitArray_OperatorSubscript(QBitArray* self, int i) {
-	QBitRef _ret = self->operator[](static_cast<int>(i));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QBitRef*>(new QBitRef(_ret));
+	return new QBitRef(self->operator[](static_cast<int>(i)));
 }
 
 bool QBitArray_OperatorSubscriptWithInt(const QBitArray* self, int i) {
@@ -99,9 +97,7 @@ bool QBitArray_OperatorSubscriptWithInt(const QBitArray* self, int i) {
 }
 
 QBitRef* QBitArray_OperatorSubscriptWithUint(QBitArray* self, unsigned int i) {
-	QBitRef _ret = self->operator[](static_cast<uint>(i));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QBitRef*>(new QBitRef(_ret));
+	return new QBitRef(self->operator[](static_cast<uint>(i)));
 }
 
 bool QBitArray_OperatorSubscript2(const QBitArray* self, unsigned int i) {
@@ -121,9 +117,7 @@ void QBitArray_OperatorBitwiseNotAssign(QBitArray* self, QBitArray* param1) {
 }
 
 QBitArray* QBitArray_OperatorBitwiseXor(const QBitArray* self) {
-	QBitArray _ret = self->operator~();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QBitArray*>(new QBitArray(_ret));
+	return new QBitArray(self->operator~());
 }
 
 bool QBitArray_OperatorEqual(const QBitArray* self, QBitArray* other) {
@@ -151,9 +145,7 @@ const char* QBitArray_Bits(const QBitArray* self) {
 }
 
 QBitArray* QBitArray_FromBits(const char* data, size_t lenVal) {
-	QBitArray _ret = QBitArray::fromBits(data, static_cast<qsizetype>(lenVal));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QBitArray*>(new QBitArray(_ret));
+	return new QBitArray(QBitArray::fromBits(data, static_cast<qsizetype>(lenVal)));
 }
 
 bool QBitArray_Fill22(QBitArray* self, bool val, int size) {

@@ -138,15 +138,11 @@ QCompleter* QLineEdit_Completer(const QLineEdit* self) {
 }
 
 QSize* QLineEdit_SizeHint(const QLineEdit* self) {
-	QSize _ret = self->sizeHint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->sizeHint());
 }
 
 QSize* QLineEdit_MinimumSizeHint(const QLineEdit* self) {
-	QSize _ret = self->minimumSizeHint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->minimumSizeHint());
 }
 
 int QLineEdit_CursorPosition(const QLineEdit* self) {
@@ -291,9 +287,7 @@ void QLineEdit_GetTextMargins(const QLineEdit* self, int* left, int* top, int* r
 }
 
 QMargins* QLineEdit_TextMargins(const QLineEdit* self) {
-	QMargins _ret = self->textMargins();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QMargins*>(new QMargins(_ret));
+	return new QMargins(self->textMargins());
 }
 
 void QLineEdit_AddAction(QLineEdit* self, QAction* action, uintptr_t position) {
@@ -433,15 +427,11 @@ void QLineEdit_connect_InputRejected(QLineEdit* self, void* slot) {
 }
 
 QVariant* QLineEdit_InputMethodQuery(const QLineEdit* self, uintptr_t param1) {
-	QVariant _ret = self->inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(_ret));
+	return new QVariant(self->inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
 }
 
 QVariant* QLineEdit_InputMethodQuery2(const QLineEdit* self, uintptr_t property, QVariant* argument) {
-	QVariant _ret = self->inputMethodQuery(static_cast<Qt::InputMethodQuery>(property), *argument);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(_ret));
+	return new QVariant(self->inputMethodQuery(static_cast<Qt::InputMethodQuery>(property), *argument));
 }
 
 bool QLineEdit_Event(QLineEdit* self, QEvent* param1) {

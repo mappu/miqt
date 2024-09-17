@@ -56,9 +56,7 @@ void QGraphicsItemAnimation_SetTimeLine(QGraphicsItemAnimation* self, QTimeLine*
 }
 
 QPointF* QGraphicsItemAnimation_PosAt(const QGraphicsItemAnimation* self, double step) {
-	QPointF _ret = self->posAt(static_cast<qreal>(step));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPointF*>(new QPointF(_ret));
+	return new QPointF(self->posAt(static_cast<qreal>(step)));
 }
 
 void QGraphicsItemAnimation_SetPosAt(QGraphicsItemAnimation* self, double step, QPointF* pos) {
@@ -66,15 +64,11 @@ void QGraphicsItemAnimation_SetPosAt(QGraphicsItemAnimation* self, double step, 
 }
 
 QMatrix* QGraphicsItemAnimation_MatrixAt(const QGraphicsItemAnimation* self, double step) {
-	QMatrix _ret = self->matrixAt(static_cast<qreal>(step));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QMatrix*>(new QMatrix(_ret));
+	return new QMatrix(self->matrixAt(static_cast<qreal>(step)));
 }
 
 QTransform* QGraphicsItemAnimation_TransformAt(const QGraphicsItemAnimation* self, double step) {
-	QTransform _ret = self->transformAt(static_cast<qreal>(step));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTransform*>(new QTransform(_ret));
+	return new QTransform(self->transformAt(static_cast<qreal>(step)));
 }
 
 double QGraphicsItemAnimation_RotationAt(const QGraphicsItemAnimation* self, double step) {

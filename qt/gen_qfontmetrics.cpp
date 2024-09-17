@@ -123,44 +123,32 @@ int QFontMetrics_CharWidth(const QFontMetrics* self, struct miqt_string* str, in
 }
 
 QRect* QFontMetrics_BoundingRect(const QFontMetrics* self, QChar* param1) {
-	QRect _ret = self->boundingRect(*param1);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->boundingRect(*param1));
 }
 
 QRect* QFontMetrics_BoundingRectWithText(const QFontMetrics* self, struct miqt_string* text) {
 	QString text_QString = QString::fromUtf8(&text->data, text->len);
-	QRect _ret = self->boundingRect(text_QString);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->boundingRect(text_QString));
 }
 
 QRect* QFontMetrics_BoundingRect2(const QFontMetrics* self, QRect* r, int flags, struct miqt_string* text) {
 	QString text_QString = QString::fromUtf8(&text->data, text->len);
-	QRect _ret = self->boundingRect(*r, static_cast<int>(flags), text_QString);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->boundingRect(*r, static_cast<int>(flags), text_QString));
 }
 
 QRect* QFontMetrics_BoundingRect3(const QFontMetrics* self, int x, int y, int w, int h, int flags, struct miqt_string* text) {
 	QString text_QString = QString::fromUtf8(&text->data, text->len);
-	QRect _ret = self->boundingRect(static_cast<int>(x), static_cast<int>(y), static_cast<int>(w), static_cast<int>(h), static_cast<int>(flags), text_QString);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->boundingRect(static_cast<int>(x), static_cast<int>(y), static_cast<int>(w), static_cast<int>(h), static_cast<int>(flags), text_QString));
 }
 
 QSize* QFontMetrics_Size(const QFontMetrics* self, int flags, struct miqt_string* str) {
 	QString str_QString = QString::fromUtf8(&str->data, str->len);
-	QSize _ret = self->size(static_cast<int>(flags), str_QString);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->size(static_cast<int>(flags), str_QString));
 }
 
 QRect* QFontMetrics_TightBoundingRect(const QFontMetrics* self, struct miqt_string* text) {
 	QString text_QString = QString::fromUtf8(&text->data, text->len);
-	QRect _ret = self->tightBoundingRect(text_QString);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->tightBoundingRect(text_QString));
 }
 
 struct miqt_string* QFontMetrics_ElidedText(const QFontMetrics* self, struct miqt_string* text, uintptr_t mode, int width) {
@@ -211,44 +199,32 @@ int QFontMetrics_HorizontalAdvance2(const QFontMetrics* self, struct miqt_string
 
 QRect* QFontMetrics_BoundingRect4(const QFontMetrics* self, QRect* r, int flags, struct miqt_string* text, int tabstops) {
 	QString text_QString = QString::fromUtf8(&text->data, text->len);
-	QRect _ret = self->boundingRect(*r, static_cast<int>(flags), text_QString, static_cast<int>(tabstops));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->boundingRect(*r, static_cast<int>(flags), text_QString, static_cast<int>(tabstops)));
 }
 
 QRect* QFontMetrics_BoundingRect5(const QFontMetrics* self, QRect* r, int flags, struct miqt_string* text, int tabstops, int* tabarray) {
 	QString text_QString = QString::fromUtf8(&text->data, text->len);
-	QRect _ret = self->boundingRect(*r, static_cast<int>(flags), text_QString, static_cast<int>(tabstops), static_cast<int*>(tabarray));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->boundingRect(*r, static_cast<int>(flags), text_QString, static_cast<int>(tabstops), static_cast<int*>(tabarray)));
 }
 
 QRect* QFontMetrics_BoundingRect7(const QFontMetrics* self, int x, int y, int w, int h, int flags, struct miqt_string* text, int tabstops) {
 	QString text_QString = QString::fromUtf8(&text->data, text->len);
-	QRect _ret = self->boundingRect(static_cast<int>(x), static_cast<int>(y), static_cast<int>(w), static_cast<int>(h), static_cast<int>(flags), text_QString, static_cast<int>(tabstops));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->boundingRect(static_cast<int>(x), static_cast<int>(y), static_cast<int>(w), static_cast<int>(h), static_cast<int>(flags), text_QString, static_cast<int>(tabstops)));
 }
 
 QRect* QFontMetrics_BoundingRect8(const QFontMetrics* self, int x, int y, int w, int h, int flags, struct miqt_string* text, int tabstops, int* tabarray) {
 	QString text_QString = QString::fromUtf8(&text->data, text->len);
-	QRect _ret = self->boundingRect(static_cast<int>(x), static_cast<int>(y), static_cast<int>(w), static_cast<int>(h), static_cast<int>(flags), text_QString, static_cast<int>(tabstops), static_cast<int*>(tabarray));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->boundingRect(static_cast<int>(x), static_cast<int>(y), static_cast<int>(w), static_cast<int>(h), static_cast<int>(flags), text_QString, static_cast<int>(tabstops), static_cast<int*>(tabarray)));
 }
 
 QSize* QFontMetrics_Size3(const QFontMetrics* self, int flags, struct miqt_string* str, int tabstops) {
 	QString str_QString = QString::fromUtf8(&str->data, str->len);
-	QSize _ret = self->size(static_cast<int>(flags), str_QString, static_cast<int>(tabstops));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->size(static_cast<int>(flags), str_QString, static_cast<int>(tabstops)));
 }
 
 QSize* QFontMetrics_Size4(const QFontMetrics* self, int flags, struct miqt_string* str, int tabstops, int* tabarray) {
 	QString str_QString = QString::fromUtf8(&str->data, str->len);
-	QSize _ret = self->size(static_cast<int>(flags), str_QString, static_cast<int>(tabstops), static_cast<int*>(tabarray));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->size(static_cast<int>(flags), str_QString, static_cast<int>(tabstops), static_cast<int*>(tabarray)));
 }
 
 struct miqt_string* QFontMetrics_ElidedText4(const QFontMetrics* self, struct miqt_string* text, uintptr_t mode, int width, int flags) {
@@ -371,36 +347,26 @@ double QFontMetricsF_HorizontalAdvanceWithQChar(const QFontMetricsF* self, QChar
 
 QRectF* QFontMetricsF_BoundingRect(const QFontMetricsF* self, struct miqt_string* stringVal) {
 	QString stringVal_QString = QString::fromUtf8(&stringVal->data, stringVal->len);
-	QRectF _ret = self->boundingRect(stringVal_QString);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(_ret));
+	return new QRectF(self->boundingRect(stringVal_QString));
 }
 
 QRectF* QFontMetricsF_BoundingRectWithQChar(const QFontMetricsF* self, QChar* param1) {
-	QRectF _ret = self->boundingRect(*param1);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(_ret));
+	return new QRectF(self->boundingRect(*param1));
 }
 
 QRectF* QFontMetricsF_BoundingRect2(const QFontMetricsF* self, QRectF* r, int flags, struct miqt_string* stringVal) {
 	QString stringVal_QString = QString::fromUtf8(&stringVal->data, stringVal->len);
-	QRectF _ret = self->boundingRect(*r, static_cast<int>(flags), stringVal_QString);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(_ret));
+	return new QRectF(self->boundingRect(*r, static_cast<int>(flags), stringVal_QString));
 }
 
 QSizeF* QFontMetricsF_Size(const QFontMetricsF* self, int flags, struct miqt_string* str) {
 	QString str_QString = QString::fromUtf8(&str->data, str->len);
-	QSizeF _ret = self->size(static_cast<int>(flags), str_QString);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSizeF*>(new QSizeF(_ret));
+	return new QSizeF(self->size(static_cast<int>(flags), str_QString));
 }
 
 QRectF* QFontMetricsF_TightBoundingRect(const QFontMetricsF* self, struct miqt_string* text) {
 	QString text_QString = QString::fromUtf8(&text->data, text->len);
-	QRectF _ret = self->tightBoundingRect(text_QString);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(_ret));
+	return new QRectF(self->tightBoundingRect(text_QString));
 }
 
 struct miqt_string* QFontMetricsF_ElidedText(const QFontMetricsF* self, struct miqt_string* text, uintptr_t mode, double width) {
@@ -446,30 +412,22 @@ double QFontMetricsF_HorizontalAdvance2(const QFontMetricsF* self, struct miqt_s
 
 QRectF* QFontMetricsF_BoundingRect4(const QFontMetricsF* self, QRectF* r, int flags, struct miqt_string* stringVal, int tabstops) {
 	QString stringVal_QString = QString::fromUtf8(&stringVal->data, stringVal->len);
-	QRectF _ret = self->boundingRect(*r, static_cast<int>(flags), stringVal_QString, static_cast<int>(tabstops));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(_ret));
+	return new QRectF(self->boundingRect(*r, static_cast<int>(flags), stringVal_QString, static_cast<int>(tabstops)));
 }
 
 QRectF* QFontMetricsF_BoundingRect5(const QFontMetricsF* self, QRectF* r, int flags, struct miqt_string* stringVal, int tabstops, int* tabarray) {
 	QString stringVal_QString = QString::fromUtf8(&stringVal->data, stringVal->len);
-	QRectF _ret = self->boundingRect(*r, static_cast<int>(flags), stringVal_QString, static_cast<int>(tabstops), static_cast<int*>(tabarray));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(_ret));
+	return new QRectF(self->boundingRect(*r, static_cast<int>(flags), stringVal_QString, static_cast<int>(tabstops), static_cast<int*>(tabarray)));
 }
 
 QSizeF* QFontMetricsF_Size3(const QFontMetricsF* self, int flags, struct miqt_string* str, int tabstops) {
 	QString str_QString = QString::fromUtf8(&str->data, str->len);
-	QSizeF _ret = self->size(static_cast<int>(flags), str_QString, static_cast<int>(tabstops));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSizeF*>(new QSizeF(_ret));
+	return new QSizeF(self->size(static_cast<int>(flags), str_QString, static_cast<int>(tabstops)));
 }
 
 QSizeF* QFontMetricsF_Size4(const QFontMetricsF* self, int flags, struct miqt_string* str, int tabstops, int* tabarray) {
 	QString str_QString = QString::fromUtf8(&str->data, str->len);
-	QSizeF _ret = self->size(static_cast<int>(flags), str_QString, static_cast<int>(tabstops), static_cast<int*>(tabarray));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSizeF*>(new QSizeF(_ret));
+	return new QSizeF(self->size(static_cast<int>(flags), str_QString, static_cast<int>(tabstops), static_cast<int*>(tabarray)));
 }
 
 struct miqt_string* QFontMetricsF_ElidedText4(const QFontMetricsF* self, struct miqt_string* text, uintptr_t mode, double width, int flags) {

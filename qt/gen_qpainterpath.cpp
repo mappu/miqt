@@ -99,9 +99,7 @@ void QPainterPath_QuadTo2(QPainterPath* self, double ctrlPtx, double ctrlPty, do
 }
 
 QPointF* QPainterPath_CurrentPosition(const QPainterPath* self) {
-	QPointF _ret = self->currentPosition();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPointF*>(new QPointF(_ret));
+	return new QPointF(self->currentPosition());
 }
 
 void QPainterPath_AddRect(QPainterPath* self, QRectF* rect) {
@@ -191,27 +189,19 @@ void QPainterPath_TranslateWithOffset(QPainterPath* self, QPointF* offset) {
 }
 
 QPainterPath* QPainterPath_Translated(const QPainterPath* self, double dx, double dy) {
-	QPainterPath _ret = self->translated(static_cast<qreal>(dx), static_cast<qreal>(dy));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPainterPath*>(new QPainterPath(_ret));
+	return new QPainterPath(self->translated(static_cast<qreal>(dx), static_cast<qreal>(dy)));
 }
 
 QPainterPath* QPainterPath_TranslatedWithOffset(const QPainterPath* self, QPointF* offset) {
-	QPainterPath _ret = self->translated(*offset);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPainterPath*>(new QPainterPath(_ret));
+	return new QPainterPath(self->translated(*offset));
 }
 
 QRectF* QPainterPath_BoundingRect(const QPainterPath* self) {
-	QRectF _ret = self->boundingRect();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(_ret));
+	return new QRectF(self->boundingRect());
 }
 
 QRectF* QPainterPath_ControlPointRect(const QPainterPath* self) {
-	QRectF _ret = self->controlPointRect();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(_ret));
+	return new QRectF(self->controlPointRect());
 }
 
 uintptr_t QPainterPath_FillRule(const QPainterPath* self) {
@@ -228,9 +218,7 @@ bool QPainterPath_IsEmpty(const QPainterPath* self) {
 }
 
 QPainterPath* QPainterPath_ToReversed(const QPainterPath* self) {
-	QPainterPath _ret = self->toReversed();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPainterPath*>(new QPainterPath(_ret));
+	return new QPainterPath(self->toReversed());
 }
 
 int QPainterPath_ElementCount(const QPainterPath* self) {
@@ -238,9 +226,7 @@ int QPainterPath_ElementCount(const QPainterPath* self) {
 }
 
 QPainterPath__Element* QPainterPath_ElementAt(const QPainterPath* self, int i) {
-	QPainterPath::Element _ret = self->elementAt(static_cast<int>(i));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPainterPath::Element*>(new QPainterPath::Element(_ret));
+	return new QPainterPath::Element(self->elementAt(static_cast<int>(i)));
 }
 
 void QPainterPath_SetElementPositionAt(QPainterPath* self, int i, double x, double y) {
@@ -256,9 +242,7 @@ double QPainterPath_PercentAtLength(const QPainterPath* self, double t) {
 }
 
 QPointF* QPainterPath_PointAtPercent(const QPainterPath* self, double t) {
-	QPointF _ret = self->pointAtPercent(static_cast<qreal>(t));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPointF*>(new QPointF(_ret));
+	return new QPointF(self->pointAtPercent(static_cast<qreal>(t)));
 }
 
 double QPainterPath_AngleAtPercent(const QPainterPath* self, double t) {
@@ -278,33 +262,23 @@ bool QPainterPath_ContainsWithQPainterPath(const QPainterPath* self, QPainterPat
 }
 
 QPainterPath* QPainterPath_United(const QPainterPath* self, QPainterPath* r) {
-	QPainterPath _ret = self->united(*r);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPainterPath*>(new QPainterPath(_ret));
+	return new QPainterPath(self->united(*r));
 }
 
 QPainterPath* QPainterPath_Intersected(const QPainterPath* self, QPainterPath* r) {
-	QPainterPath _ret = self->intersected(*r);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPainterPath*>(new QPainterPath(_ret));
+	return new QPainterPath(self->intersected(*r));
 }
 
 QPainterPath* QPainterPath_Subtracted(const QPainterPath* self, QPainterPath* r) {
-	QPainterPath _ret = self->subtracted(*r);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPainterPath*>(new QPainterPath(_ret));
+	return new QPainterPath(self->subtracted(*r));
 }
 
 QPainterPath* QPainterPath_SubtractedInverted(const QPainterPath* self, QPainterPath* r) {
-	QPainterPath _ret = self->subtractedInverted(*r);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPainterPath*>(new QPainterPath(_ret));
+	return new QPainterPath(self->subtractedInverted(*r));
 }
 
 QPainterPath* QPainterPath_Simplified(const QPainterPath* self) {
-	QPainterPath _ret = self->simplified();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPainterPath*>(new QPainterPath(_ret));
+	return new QPainterPath(self->simplified());
 }
 
 bool QPainterPath_OperatorEqual(const QPainterPath* self, QPainterPath* other) {
@@ -316,27 +290,19 @@ bool QPainterPath_OperatorNotEqual(const QPainterPath* self, QPainterPath* other
 }
 
 QPainterPath* QPainterPath_OperatorBitwiseAnd(const QPainterPath* self, QPainterPath* other) {
-	QPainterPath _ret = self->operator&(*other);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPainterPath*>(new QPainterPath(_ret));
+	return new QPainterPath(self->operator&(*other));
 }
 
 QPainterPath* QPainterPath_OperatorBitwiseOr(const QPainterPath* self, QPainterPath* other) {
-	QPainterPath _ret = self->operator|(*other);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPainterPath*>(new QPainterPath(_ret));
+	return new QPainterPath(self->operator|(*other));
 }
 
 QPainterPath* QPainterPath_OperatorPlus(const QPainterPath* self, QPainterPath* other) {
-	QPainterPath _ret = self->operator+(*other);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPainterPath*>(new QPainterPath(_ret));
+	return new QPainterPath(self->operator+(*other));
 }
 
 QPainterPath* QPainterPath_OperatorMinus(const QPainterPath* self, QPainterPath* other) {
-	QPainterPath _ret = self->operator-(*other);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPainterPath*>(new QPainterPath(_ret));
+	return new QPainterPath(self->operator-(*other));
 }
 
 void QPainterPath_OperatorBitwiseAndAssign(QPainterPath* self, QPainterPath* other) {
@@ -457,9 +423,7 @@ double QPainterPathStroker_DashOffset(const QPainterPathStroker* self) {
 }
 
 QPainterPath* QPainterPathStroker_CreateStroke(const QPainterPathStroker* self, QPainterPath* path) {
-	QPainterPath _ret = self->createStroke(*path);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPainterPath*>(new QPainterPath(_ret));
+	return new QPainterPath(self->createStroke(*path));
 }
 
 void QPainterPathStroker_Delete(QPainterPathStroker* self) {

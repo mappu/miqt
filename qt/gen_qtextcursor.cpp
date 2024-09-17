@@ -149,9 +149,7 @@ struct miqt_string* QTextCursor_SelectedText(const QTextCursor* self) {
 }
 
 QTextDocumentFragment* QTextCursor_Selection(const QTextCursor* self) {
-	QTextDocumentFragment _ret = self->selection();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextDocumentFragment*>(new QTextDocumentFragment(_ret));
+	return new QTextDocumentFragment(self->selection());
 }
 
 void QTextCursor_SelectedTableCells(const QTextCursor* self, int* firstRow, int* numRows, int* firstColumn, int* numColumns) {
@@ -159,15 +157,11 @@ void QTextCursor_SelectedTableCells(const QTextCursor* self, int* firstRow, int*
 }
 
 QTextBlock* QTextCursor_Block(const QTextCursor* self) {
-	QTextBlock _ret = self->block();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextBlock*>(new QTextBlock(_ret));
+	return new QTextBlock(self->block());
 }
 
 QTextCharFormat* QTextCursor_CharFormat(const QTextCursor* self) {
-	QTextCharFormat _ret = self->charFormat();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextCharFormat*>(new QTextCharFormat(_ret));
+	return new QTextCharFormat(self->charFormat());
 }
 
 void QTextCursor_SetCharFormat(QTextCursor* self, QTextCharFormat* format) {
@@ -179,9 +173,7 @@ void QTextCursor_MergeCharFormat(QTextCursor* self, QTextCharFormat* modifier) {
 }
 
 QTextBlockFormat* QTextCursor_BlockFormat(const QTextCursor* self) {
-	QTextBlockFormat _ret = self->blockFormat();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextBlockFormat*>(new QTextBlockFormat(_ret));
+	return new QTextBlockFormat(self->blockFormat());
 }
 
 void QTextCursor_SetBlockFormat(QTextCursor* self, QTextBlockFormat* format) {
@@ -193,9 +185,7 @@ void QTextCursor_MergeBlockFormat(QTextCursor* self, QTextBlockFormat* modifier)
 }
 
 QTextCharFormat* QTextCursor_BlockCharFormat(const QTextCursor* self) {
-	QTextCharFormat _ret = self->blockCharFormat();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextCharFormat*>(new QTextCharFormat(_ret));
+	return new QTextCharFormat(self->blockCharFormat());
 }
 
 void QTextCursor_SetBlockCharFormat(QTextCursor* self, QTextCharFormat* format) {

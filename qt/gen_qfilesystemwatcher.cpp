@@ -68,7 +68,7 @@ struct miqt_array* QFileSystemWatcher_AddPaths(QFileSystemWatcher* self, struct 
 		files_QList.push_back(QString::fromUtf8(& files_arr[i]->data, files_arr[i]->len));
 	}
 	QStringList _ret = self->addPaths(files_QList);
-	// Convert QStringList from C++ memory to manually-managed C memory
+	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
@@ -95,7 +95,7 @@ struct miqt_array* QFileSystemWatcher_RemovePaths(QFileSystemWatcher* self, stru
 		files_QList.push_back(QString::fromUtf8(& files_arr[i]->data, files_arr[i]->len));
 	}
 	QStringList _ret = self->removePaths(files_QList);
-	// Convert QStringList from C++ memory to manually-managed C memory
+	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
@@ -111,7 +111,7 @@ struct miqt_array* QFileSystemWatcher_RemovePaths(QFileSystemWatcher* self, stru
 
 struct miqt_array* QFileSystemWatcher_Files(const QFileSystemWatcher* self) {
 	QStringList _ret = self->files();
-	// Convert QStringList from C++ memory to manually-managed C memory
+	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
@@ -127,7 +127,7 @@ struct miqt_array* QFileSystemWatcher_Files(const QFileSystemWatcher* self) {
 
 struct miqt_array* QFileSystemWatcher_Directories(const QFileSystemWatcher* self) {
 	QStringList _ret = self->directories();
-	// Convert QStringList from C++ memory to manually-managed C memory
+	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];

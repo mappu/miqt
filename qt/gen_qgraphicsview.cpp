@@ -57,9 +57,7 @@ struct miqt_string* QGraphicsView_TrUtf8(const char* s) {
 }
 
 QSize* QGraphicsView_SizeHint(const QGraphicsView* self) {
-	QSize _ret = self->sizeHint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->sizeHint());
 }
 
 int QGraphicsView_RenderHints(const QGraphicsView* self) {
@@ -143,9 +141,7 @@ void QGraphicsView_SetRubberBandSelectionMode(QGraphicsView* self, uintptr_t mod
 }
 
 QRect* QGraphicsView_RubberBandRect(const QGraphicsView* self) {
-	QRect _ret = self->rubberBandRect();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->rubberBandRect());
 }
 
 int QGraphicsView_CacheMode(const QGraphicsView* self) {
@@ -178,9 +174,7 @@ void QGraphicsView_SetScene(QGraphicsView* self, QGraphicsScene* scene) {
 }
 
 QRectF* QGraphicsView_SceneRect(const QGraphicsView* self) {
-	QRectF _ret = self->sceneRect();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(_ret));
+	return new QRectF(self->sceneRect());
 }
 
 void QGraphicsView_SetSceneRect(QGraphicsView* self, QRectF* rect) {
@@ -192,9 +186,7 @@ void QGraphicsView_SetSceneRect2(QGraphicsView* self, double x, double y, double
 }
 
 QMatrix* QGraphicsView_Matrix(const QGraphicsView* self) {
-	QMatrix _ret = self->matrix();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QMatrix*>(new QMatrix(_ret));
+	return new QMatrix(self->matrix());
 }
 
 void QGraphicsView_SetMatrix(QGraphicsView* self, QMatrix* matrix) {
@@ -206,15 +198,11 @@ void QGraphicsView_ResetMatrix(QGraphicsView* self) {
 }
 
 QTransform* QGraphicsView_Transform(const QGraphicsView* self) {
-	QTransform _ret = self->transform();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTransform*>(new QTransform(_ret));
+	return new QTransform(self->transform());
 }
 
 QTransform* QGraphicsView_ViewportTransform(const QGraphicsView* self) {
-	QTransform _ret = self->viewportTransform();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTransform*>(new QTransform(_ret));
+	return new QTransform(self->viewportTransform());
 }
 
 bool QGraphicsView_IsTransformed(const QGraphicsView* self) {
@@ -372,51 +360,35 @@ QGraphicsItem* QGraphicsView_ItemAt2(const QGraphicsView* self, int x, int y) {
 }
 
 QPointF* QGraphicsView_MapToScene(const QGraphicsView* self, QPoint* point) {
-	QPointF _ret = self->mapToScene(*point);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPointF*>(new QPointF(_ret));
+	return new QPointF(self->mapToScene(*point));
 }
 
 QPainterPath* QGraphicsView_MapToSceneWithPath(const QGraphicsView* self, QPainterPath* path) {
-	QPainterPath _ret = self->mapToScene(*path);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPainterPath*>(new QPainterPath(_ret));
+	return new QPainterPath(self->mapToScene(*path));
 }
 
 QPoint* QGraphicsView_MapFromScene(const QGraphicsView* self, QPointF* point) {
-	QPoint _ret = self->mapFromScene(*point);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPoint*>(new QPoint(_ret));
+	return new QPoint(self->mapFromScene(*point));
 }
 
 QPainterPath* QGraphicsView_MapFromSceneWithPath(const QGraphicsView* self, QPainterPath* path) {
-	QPainterPath _ret = self->mapFromScene(*path);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPainterPath*>(new QPainterPath(_ret));
+	return new QPainterPath(self->mapFromScene(*path));
 }
 
 QPointF* QGraphicsView_MapToScene2(const QGraphicsView* self, int x, int y) {
-	QPointF _ret = self->mapToScene(static_cast<int>(x), static_cast<int>(y));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPointF*>(new QPointF(_ret));
+	return new QPointF(self->mapToScene(static_cast<int>(x), static_cast<int>(y)));
 }
 
 QPoint* QGraphicsView_MapFromScene2(const QGraphicsView* self, double x, double y) {
-	QPoint _ret = self->mapFromScene(static_cast<qreal>(x), static_cast<qreal>(y));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPoint*>(new QPoint(_ret));
+	return new QPoint(self->mapFromScene(static_cast<qreal>(x), static_cast<qreal>(y)));
 }
 
 QVariant* QGraphicsView_InputMethodQuery(const QGraphicsView* self, uintptr_t query) {
-	QVariant _ret = self->inputMethodQuery(static_cast<Qt::InputMethodQuery>(query));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(_ret));
+	return new QVariant(self->inputMethodQuery(static_cast<Qt::InputMethodQuery>(query)));
 }
 
 QBrush* QGraphicsView_BackgroundBrush(const QGraphicsView* self) {
-	QBrush _ret = self->backgroundBrush();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QBrush*>(new QBrush(_ret));
+	return new QBrush(self->backgroundBrush());
 }
 
 void QGraphicsView_SetBackgroundBrush(QGraphicsView* self, QBrush* brush) {
@@ -424,9 +396,7 @@ void QGraphicsView_SetBackgroundBrush(QGraphicsView* self, QBrush* brush) {
 }
 
 QBrush* QGraphicsView_ForegroundBrush(const QGraphicsView* self) {
-	QBrush _ret = self->foregroundBrush();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QBrush*>(new QBrush(_ret));
+	return new QBrush(self->foregroundBrush());
 }
 
 void QGraphicsView_SetForegroundBrush(QGraphicsView* self, QBrush* brush) {
@@ -457,15 +427,9 @@ void QGraphicsView_RubberBandChanged(QGraphicsView* self, QRect* viewportRect, Q
 
 void QGraphicsView_connect_RubberBandChanged(QGraphicsView* self, void* slot) {
 	QGraphicsView::connect(self, static_cast<void (QGraphicsView::*)(QRect, QPointF, QPointF)>(&QGraphicsView::rubberBandChanged), self, [=](QRect viewportRect, QPointF fromScenePoint, QPointF toScenePoint) {
-		QRect viewportRect_ret = viewportRect;
-		// Copy-construct value returned type into heap-allocated copy
-		QRect* sigval1 = static_cast<QRect*>(new QRect(viewportRect_ret));
-		QPointF fromScenePoint_ret = fromScenePoint;
-		// Copy-construct value returned type into heap-allocated copy
-		QPointF* sigval2 = static_cast<QPointF*>(new QPointF(fromScenePoint_ret));
-		QPointF toScenePoint_ret = toScenePoint;
-		// Copy-construct value returned type into heap-allocated copy
-		QPointF* sigval3 = static_cast<QPointF*>(new QPointF(toScenePoint_ret));
+		QRect* sigval1 = new QRect(viewportRect);
+		QPointF* sigval2 = new QPointF(fromScenePoint);
+		QPointF* sigval3 = new QPointF(toScenePoint);
 		miqt_exec_callback_QGraphicsView_RubberBandChanged(slot, sigval1, sigval2, sigval3);
 	});
 }

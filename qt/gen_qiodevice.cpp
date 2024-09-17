@@ -120,15 +120,11 @@ long long QIODevice_Read(QIODevice* self, char* data, long long maxlen) {
 }
 
 QByteArray* QIODevice_ReadWithMaxlen(QIODevice* self, long long maxlen) {
-	QByteArray _ret = self->read(static_cast<qint64>(maxlen));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(self->read(static_cast<qint64>(maxlen)));
 }
 
 QByteArray* QIODevice_ReadAll(QIODevice* self) {
-	QByteArray _ret = self->readAll();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(self->readAll());
 }
 
 long long QIODevice_ReadLine(QIODevice* self, char* data, long long maxlen) {
@@ -136,9 +132,7 @@ long long QIODevice_ReadLine(QIODevice* self, char* data, long long maxlen) {
 }
 
 QByteArray* QIODevice_ReadLine2(QIODevice* self) {
-	QByteArray _ret = self->readLine();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(self->readLine());
 }
 
 bool QIODevice_CanReadLine(const QIODevice* self) {
@@ -178,9 +172,7 @@ long long QIODevice_Peek(QIODevice* self, char* data, long long maxlen) {
 }
 
 QByteArray* QIODevice_PeekWithMaxlen(QIODevice* self, long long maxlen) {
-	QByteArray _ret = self->peek(static_cast<qint64>(maxlen));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(self->peek(static_cast<qint64>(maxlen)));
 }
 
 long long QIODevice_Skip(QIODevice* self, long long maxSize) {
@@ -307,9 +299,7 @@ struct miqt_string* QIODevice_TrUtf83(const char* s, const char* c, int n) {
 }
 
 QByteArray* QIODevice_ReadLine1(QIODevice* self, long long maxlen) {
-	QByteArray _ret = self->readLine(static_cast<qint64>(maxlen));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(self->readLine(static_cast<qint64>(maxlen)));
 }
 
 void QIODevice_Delete(QIODevice* self) {

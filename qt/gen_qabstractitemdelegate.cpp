@@ -41,9 +41,7 @@ void QAbstractItemDelegate_Paint(const QAbstractItemDelegate* self, QPainter* pa
 }
 
 QSize* QAbstractItemDelegate_SizeHint(const QAbstractItemDelegate* self, QStyleOptionViewItem* option, QModelIndex* index) {
-	QSize _ret = self->sizeHint(*option, *index);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->sizeHint(*option, *index));
 }
 
 QWidget* QAbstractItemDelegate_CreateEditor(const QAbstractItemDelegate* self, QWidget* parent, QStyleOptionViewItem* option, QModelIndex* index) {

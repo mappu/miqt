@@ -87,27 +87,19 @@ void QScroller_Stop(QScroller* self) {
 }
 
 QPointF* QScroller_Velocity(const QScroller* self) {
-	QPointF _ret = self->velocity();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPointF*>(new QPointF(_ret));
+	return new QPointF(self->velocity());
 }
 
 QPointF* QScroller_FinalPosition(const QScroller* self) {
-	QPointF _ret = self->finalPosition();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPointF*>(new QPointF(_ret));
+	return new QPointF(self->finalPosition());
 }
 
 QPointF* QScroller_PixelPerMeter(const QScroller* self) {
-	QPointF _ret = self->pixelPerMeter();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPointF*>(new QPointF(_ret));
+	return new QPointF(self->pixelPerMeter());
 }
 
 QScrollerProperties* QScroller_ScrollerProperties(const QScroller* self) {
-	QScrollerProperties _ret = self->scrollerProperties();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QScrollerProperties*>(new QScrollerProperties(_ret));
+	return new QScrollerProperties(self->scrollerProperties());
 }
 
 void QScroller_SetSnapPositionsX(QScroller* self, struct miqt_array* /* of double */ positions) {

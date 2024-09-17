@@ -65,15 +65,11 @@ QWidget* QDialog_Extension(const QDialog* self) {
 }
 
 QSize* QDialog_SizeHint(const QDialog* self) {
-	QSize _ret = self->sizeHint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->sizeHint());
 }
 
 QSize* QDialog_MinimumSizeHint(const QDialog* self) {
-	QSize _ret = self->minimumSizeHint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->minimumSizeHint());
 }
 
 void QDialog_SetSizeGripEnabled(QDialog* self, bool sizeGripEnabled) {

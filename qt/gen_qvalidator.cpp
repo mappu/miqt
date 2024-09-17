@@ -38,9 +38,7 @@ void QValidator_SetLocale(QValidator* self, QLocale* locale) {
 }
 
 QLocale* QValidator_Locale(const QValidator* self) {
-	QLocale _ret = self->locale();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QLocale*>(new QLocale(_ret));
+	return new QLocale(self->locale());
 }
 
 uintptr_t QValidator_Validate(const QValidator* self, struct miqt_string* param1, int* param2) {
@@ -509,9 +507,7 @@ uintptr_t QRegularExpressionValidator_Validate(const QRegularExpressionValidator
 }
 
 QRegularExpression* QRegularExpressionValidator_RegularExpression(const QRegularExpressionValidator* self) {
-	QRegularExpression _ret = self->regularExpression();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRegularExpression*>(new QRegularExpression(_ret));
+	return new QRegularExpression(self->regularExpression());
 }
 
 void QRegularExpressionValidator_SetRegularExpression(QRegularExpressionValidator* self, QRegularExpression* re) {

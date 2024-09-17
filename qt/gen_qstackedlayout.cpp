@@ -80,15 +80,11 @@ void QStackedLayout_AddItem(QStackedLayout* self, QLayoutItem* item) {
 }
 
 QSize* QStackedLayout_SizeHint(const QStackedLayout* self) {
-	QSize _ret = self->sizeHint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->sizeHint());
 }
 
 QSize* QStackedLayout_MinimumSize(const QStackedLayout* self) {
-	QSize _ret = self->minimumSize();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->minimumSize());
 }
 
 QLayoutItem* QStackedLayout_ItemAt(const QStackedLayout* self, int param1) {

@@ -81,15 +81,11 @@ void QClipboard_SetMimeData(QClipboard* self, QMimeData* data) {
 }
 
 QImage* QClipboard_Image(const QClipboard* self) {
-	QImage _ret = self->image();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QImage*>(new QImage(_ret));
+	return new QImage(self->image());
 }
 
 QPixmap* QClipboard_Pixmap(const QClipboard* self) {
-	QPixmap _ret = self->pixmap();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPixmap*>(new QPixmap(_ret));
+	return new QPixmap(self->pixmap());
 }
 
 void QClipboard_SetImage(QClipboard* self, QImage* param1) {
@@ -203,15 +199,11 @@ void QClipboard_SetMimeData2(QClipboard* self, QMimeData* data, uintptr_t mode) 
 }
 
 QImage* QClipboard_Image1(const QClipboard* self, uintptr_t mode) {
-	QImage _ret = self->image(static_cast<QClipboard::Mode>(mode));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QImage*>(new QImage(_ret));
+	return new QImage(self->image(static_cast<QClipboard::Mode>(mode)));
 }
 
 QPixmap* QClipboard_Pixmap1(const QClipboard* self, uintptr_t mode) {
-	QPixmap _ret = self->pixmap(static_cast<QClipboard::Mode>(mode));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPixmap*>(new QPixmap(_ret));
+	return new QPixmap(self->pixmap(static_cast<QClipboard::Mode>(mode)));
 }
 
 void QClipboard_SetImage2(QClipboard* self, QImage* param1, uintptr_t mode) {

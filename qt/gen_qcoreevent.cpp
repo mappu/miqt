@@ -111,9 +111,7 @@ QDynamicPropertyChangeEvent* QDynamicPropertyChangeEvent_new2(QDynamicPropertyCh
 }
 
 QByteArray* QDynamicPropertyChangeEvent_PropertyName(const QDynamicPropertyChangeEvent* self) {
-	QByteArray _ret = self->propertyName();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(self->propertyName());
 }
 
 void QDynamicPropertyChangeEvent_Delete(QDynamicPropertyChangeEvent* self) {

@@ -26,15 +26,11 @@ unsigned int QColorTransform_Map(const QColorTransform* self, unsigned int argb)
 }
 
 QRgba64* QColorTransform_MapWithRgba64(const QColorTransform* self, QRgba64* rgba64) {
-	QRgba64 _ret = self->map(*rgba64);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRgba64*>(new QRgba64(_ret));
+	return new QRgba64(self->map(*rgba64));
 }
 
 QColor* QColorTransform_MapWithColor(const QColorTransform* self, QColor* color) {
-	QColor _ret = self->map(*color);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QColor*>(new QColor(_ret));
+	return new QColor(self->map(*color));
 }
 
 void QColorTransform_Delete(QColorTransform* self) {

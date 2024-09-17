@@ -85,15 +85,11 @@ void QDeadlineTimer_SetPreciseDeadline(QDeadlineTimer* self, long long secs) {
 }
 
 QDeadlineTimer* QDeadlineTimer_AddNSecs(QDeadlineTimer* dt, long long nsecs) {
-	QDeadlineTimer _ret = QDeadlineTimer::addNSecs(*dt, static_cast<qint64>(nsecs));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QDeadlineTimer*>(new QDeadlineTimer(_ret));
+	return new QDeadlineTimer(QDeadlineTimer::addNSecs(*dt, static_cast<qint64>(nsecs)));
 }
 
 QDeadlineTimer* QDeadlineTimer_Current() {
-	QDeadlineTimer _ret = QDeadlineTimer::current();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QDeadlineTimer*>(new QDeadlineTimer(_ret));
+	return new QDeadlineTimer(QDeadlineTimer::current());
 }
 
 QDeadlineTimer* QDeadlineTimer_OperatorPlusAssign(QDeadlineTimer* self, long long msecs) {
@@ -137,9 +133,7 @@ void QDeadlineTimer_SetPreciseDeadline3(QDeadlineTimer* self, long long secs, lo
 }
 
 QDeadlineTimer* QDeadlineTimer_Current1(uintptr_t timerType) {
-	QDeadlineTimer _ret = QDeadlineTimer::current(static_cast<Qt::TimerType>(timerType));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QDeadlineTimer*>(new QDeadlineTimer(_ret));
+	return new QDeadlineTimer(QDeadlineTimer::current(static_cast<Qt::TimerType>(timerType)));
 }
 
 void QDeadlineTimer_Delete(QDeadlineTimer* self) {

@@ -106,9 +106,7 @@ void QGuiApplication_SetWindowIcon(QIcon* icon) {
 }
 
 QIcon* QGuiApplication_WindowIcon() {
-	QIcon _ret = QGuiApplication::windowIcon();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QIcon*>(new QIcon(_ret));
+	return new QIcon(QGuiApplication::windowIcon());
 }
 
 struct miqt_string* QGuiApplication_PlatformName() {
@@ -172,9 +170,7 @@ void QGuiApplication_RestoreOverrideCursor() {
 }
 
 QFont* QGuiApplication_Font() {
-	QFont _ret = QGuiApplication::font();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QFont*>(new QFont(_ret));
+	return new QFont(QGuiApplication::font());
 }
 
 void QGuiApplication_SetFont(QFont* font) {
@@ -186,9 +182,7 @@ QClipboard* QGuiApplication_Clipboard() {
 }
 
 QPalette* QGuiApplication_Palette() {
-	QPalette _ret = QGuiApplication::palette();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPalette*>(new QPalette(_ret));
+	return new QPalette(QGuiApplication::palette());
 }
 
 void QGuiApplication_SetPalette(QPalette* pal) {

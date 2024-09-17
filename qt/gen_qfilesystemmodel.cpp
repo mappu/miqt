@@ -99,28 +99,20 @@ void QFileSystemModel_connect_DirectoryLoaded(QFileSystemModel* self, void* slot
 }
 
 QModelIndex* QFileSystemModel_Index(const QFileSystemModel* self, int row, int column) {
-	QModelIndex _ret = self->index(static_cast<int>(row), static_cast<int>(column));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QModelIndex*>(new QModelIndex(_ret));
+	return new QModelIndex(self->index(static_cast<int>(row), static_cast<int>(column)));
 }
 
 QModelIndex* QFileSystemModel_IndexWithPath(const QFileSystemModel* self, struct miqt_string* path) {
 	QString path_QString = QString::fromUtf8(&path->data, path->len);
-	QModelIndex _ret = self->index(path_QString);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QModelIndex*>(new QModelIndex(_ret));
+	return new QModelIndex(self->index(path_QString));
 }
 
 QModelIndex* QFileSystemModel_Parent(const QFileSystemModel* self, QModelIndex* child) {
-	QModelIndex _ret = self->parent(*child);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QModelIndex*>(new QModelIndex(_ret));
+	return new QModelIndex(self->parent(*child));
 }
 
 QModelIndex* QFileSystemModel_Sibling(const QFileSystemModel* self, int row, int column, QModelIndex* idx) {
-	QModelIndex _ret = self->sibling(static_cast<int>(row), static_cast<int>(column), *idx);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QModelIndex*>(new QModelIndex(_ret));
+	return new QModelIndex(self->sibling(static_cast<int>(row), static_cast<int>(column), *idx));
 }
 
 bool QFileSystemModel_HasChildren(const QFileSystemModel* self) {
@@ -144,15 +136,11 @@ int QFileSystemModel_ColumnCount(const QFileSystemModel* self) {
 }
 
 QVariant* QFileSystemModel_MyComputer(const QFileSystemModel* self) {
-	QVariant _ret = self->myComputer();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(_ret));
+	return new QVariant(self->myComputer());
 }
 
 QVariant* QFileSystemModel_Data(const QFileSystemModel* self, QModelIndex* index) {
-	QVariant _ret = self->data(*index);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(_ret));
+	return new QVariant(self->data(*index));
 }
 
 bool QFileSystemModel_SetData(QFileSystemModel* self, QModelIndex* index, QVariant* value) {
@@ -160,9 +148,7 @@ bool QFileSystemModel_SetData(QFileSystemModel* self, QModelIndex* index, QVaria
 }
 
 QVariant* QFileSystemModel_HeaderData(const QFileSystemModel* self, int section, uintptr_t orientation) {
-	QVariant _ret = self->headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(_ret));
+	return new QVariant(self->headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation)));
 }
 
 int QFileSystemModel_Flags(const QFileSystemModel* self, QModelIndex* index) {
@@ -176,7 +162,7 @@ void QFileSystemModel_Sort(QFileSystemModel* self, int column) {
 
 struct miqt_array* QFileSystemModel_MimeTypes(const QFileSystemModel* self) {
 	QStringList _ret = self->mimeTypes();
-	// Convert QStringList from C++ memory to manually-managed C memory
+	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
@@ -211,9 +197,7 @@ int QFileSystemModel_SupportedDropActions(const QFileSystemModel* self) {
 
 QModelIndex* QFileSystemModel_SetRootPath(QFileSystemModel* self, struct miqt_string* path) {
 	QString path_QString = QString::fromUtf8(&path->data, path->len);
-	QModelIndex _ret = self->setRootPath(path_QString);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QModelIndex*>(new QModelIndex(_ret));
+	return new QModelIndex(self->setRootPath(path_QString));
 }
 
 struct miqt_string* QFileSystemModel_RootPath(const QFileSystemModel* self) {
@@ -224,9 +208,7 @@ struct miqt_string* QFileSystemModel_RootPath(const QFileSystemModel* self) {
 }
 
 QDir* QFileSystemModel_RootDirectory(const QFileSystemModel* self) {
-	QDir _ret = self->rootDirectory();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QDir*>(new QDir(_ret));
+	return new QDir(self->rootDirectory());
 }
 
 void QFileSystemModel_SetIconProvider(QFileSystemModel* self, QFileIconProvider* provider) {
@@ -282,7 +264,7 @@ void QFileSystemModel_SetNameFilters(QFileSystemModel* self, struct miqt_array* 
 
 struct miqt_array* QFileSystemModel_NameFilters(const QFileSystemModel* self) {
 	QStringList _ret = self->nameFilters();
-	// Convert QStringList from C++ memory to manually-managed C memory
+	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
@@ -336,16 +318,12 @@ struct miqt_string* QFileSystemModel_Type(const QFileSystemModel* self, QModelIn
 }
 
 QDateTime* QFileSystemModel_LastModified(const QFileSystemModel* self, QModelIndex* index) {
-	QDateTime _ret = self->lastModified(*index);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QDateTime*>(new QDateTime(_ret));
+	return new QDateTime(self->lastModified(*index));
 }
 
 QModelIndex* QFileSystemModel_Mkdir(QFileSystemModel* self, QModelIndex* parent, struct miqt_string* name) {
 	QString name_QString = QString::fromUtf8(&name->data, name->len);
-	QModelIndex _ret = self->mkdir(*parent, name_QString);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QModelIndex*>(new QModelIndex(_ret));
+	return new QModelIndex(self->mkdir(*parent, name_QString));
 }
 
 bool QFileSystemModel_Rmdir(QFileSystemModel* self, QModelIndex* index) {
@@ -360,9 +338,7 @@ struct miqt_string* QFileSystemModel_FileName(const QFileSystemModel* self, QMod
 }
 
 QIcon* QFileSystemModel_FileIcon(const QFileSystemModel* self, QModelIndex* index) {
-	QIcon _ret = self->fileIcon(*index);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QIcon*>(new QIcon(_ret));
+	return new QIcon(self->fileIcon(*index));
 }
 
 int QFileSystemModel_Permissions(const QFileSystemModel* self, QModelIndex* index) {
@@ -371,9 +347,7 @@ int QFileSystemModel_Permissions(const QFileSystemModel* self, QModelIndex* inde
 }
 
 QFileInfo* QFileSystemModel_FileInfo(const QFileSystemModel* self, QModelIndex* index) {
-	QFileInfo _ret = self->fileInfo(*index);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QFileInfo*>(new QFileInfo(_ret));
+	return new QFileInfo(self->fileInfo(*index));
 }
 
 bool QFileSystemModel_Remove(QFileSystemModel* self, QModelIndex* index) {
@@ -409,16 +383,12 @@ struct miqt_string* QFileSystemModel_TrUtf83(const char* s, const char* c, int n
 }
 
 QModelIndex* QFileSystemModel_Index3(const QFileSystemModel* self, int row, int column, QModelIndex* parent) {
-	QModelIndex _ret = self->index(static_cast<int>(row), static_cast<int>(column), *parent);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QModelIndex*>(new QModelIndex(_ret));
+	return new QModelIndex(self->index(static_cast<int>(row), static_cast<int>(column), *parent));
 }
 
 QModelIndex* QFileSystemModel_Index2(const QFileSystemModel* self, struct miqt_string* path, int column) {
 	QString path_QString = QString::fromUtf8(&path->data, path->len);
-	QModelIndex _ret = self->index(path_QString, static_cast<int>(column));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QModelIndex*>(new QModelIndex(_ret));
+	return new QModelIndex(self->index(path_QString, static_cast<int>(column)));
 }
 
 bool QFileSystemModel_HasChildren1(const QFileSystemModel* self, QModelIndex* parent) {
@@ -434,15 +404,11 @@ int QFileSystemModel_ColumnCount1(const QFileSystemModel* self, QModelIndex* par
 }
 
 QVariant* QFileSystemModel_MyComputer1(const QFileSystemModel* self, int role) {
-	QVariant _ret = self->myComputer(static_cast<int>(role));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(_ret));
+	return new QVariant(self->myComputer(static_cast<int>(role)));
 }
 
 QVariant* QFileSystemModel_Data2(const QFileSystemModel* self, QModelIndex* index, int role) {
-	QVariant _ret = self->data(*index, static_cast<int>(role));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(_ret));
+	return new QVariant(self->data(*index, static_cast<int>(role)));
 }
 
 bool QFileSystemModel_SetData3(QFileSystemModel* self, QModelIndex* index, QVariant* value, int role) {
@@ -450,9 +416,7 @@ bool QFileSystemModel_SetData3(QFileSystemModel* self, QModelIndex* index, QVari
 }
 
 QVariant* QFileSystemModel_HeaderData3(const QFileSystemModel* self, int section, uintptr_t orientation, int role) {
-	QVariant _ret = self->headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), static_cast<int>(role));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(_ret));
+	return new QVariant(self->headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), static_cast<int>(role)));
 }
 
 void QFileSystemModel_Sort2(QFileSystemModel* self, int column, uintptr_t order) {

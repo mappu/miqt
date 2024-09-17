@@ -86,21 +86,15 @@ struct miqt_string* QCalendar_Name(const QCalendar* self) {
 }
 
 QDate* QCalendar_DateFromParts(const QCalendar* self, int year, int month, int day) {
-	QDate _ret = self->dateFromParts(static_cast<int>(year), static_cast<int>(month), static_cast<int>(day));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QDate*>(new QDate(_ret));
+	return new QDate(self->dateFromParts(static_cast<int>(year), static_cast<int>(month), static_cast<int>(day)));
 }
 
 QDate* QCalendar_DateFromPartsWithParts(const QCalendar* self, QCalendar__YearMonthDay* parts) {
-	QDate _ret = self->dateFromParts(*parts);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QDate*>(new QDate(_ret));
+	return new QDate(self->dateFromParts(*parts));
 }
 
 QCalendar__YearMonthDay* QCalendar_PartsFromDate(const QCalendar* self, QDate* date) {
-	QCalendar::YearMonthDay _ret = self->partsFromDate(*date);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCalendar::YearMonthDay*>(new QCalendar::YearMonthDay(_ret));
+	return new QCalendar::YearMonthDay(self->partsFromDate(*date));
 }
 
 int QCalendar_DayOfWeek(const QCalendar* self, QDate* date) {
@@ -137,7 +131,7 @@ struct miqt_string* QCalendar_StandaloneWeekDayName(const QCalendar* self, QLoca
 
 struct miqt_array* QCalendar_AvailableCalendars() {
 	QStringList _ret = QCalendar::availableCalendars();
-	// Convert QStringList from C++ memory to manually-managed C memory
+	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];

@@ -93,7 +93,7 @@ void QCommandLineOption_Swap(QCommandLineOption* self, QCommandLineOption* other
 
 struct miqt_array* QCommandLineOption_Names(const QCommandLineOption* self) {
 	QStringList _ret = self->names();
-	// Convert QStringList from C++ memory to manually-managed C memory
+	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
@@ -148,7 +148,7 @@ void QCommandLineOption_SetDefaultValues(QCommandLineOption* self, struct miqt_a
 
 struct miqt_array* QCommandLineOption_DefaultValues(const QCommandLineOption* self) {
 	QStringList _ret = self->defaultValues();
-	// Convert QStringList from C++ memory to manually-managed C memory
+	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];

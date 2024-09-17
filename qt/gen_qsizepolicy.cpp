@@ -104,9 +104,7 @@ void QSizePolicy_Transpose(QSizePolicy* self) {
 }
 
 QSizePolicy* QSizePolicy_Transposed(const QSizePolicy* self) {
-	QSizePolicy _ret = self->transposed();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSizePolicy*>(new QSizePolicy(_ret));
+	return new QSizePolicy(self->transposed());
 }
 
 void QSizePolicy_Delete(QSizePolicy* self) {

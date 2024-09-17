@@ -90,9 +90,7 @@ int QLCDNumber_IntValue(const QLCDNumber* self) {
 }
 
 QSize* QLCDNumber_SizeHint(const QLCDNumber* self) {
-	QSize _ret = self->sizeHint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->sizeHint());
 }
 
 void QLCDNumber_Display(QLCDNumber* self, struct miqt_string* str) {

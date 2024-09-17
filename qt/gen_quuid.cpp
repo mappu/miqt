@@ -47,27 +47,19 @@ struct miqt_string* QUuid_ToStringWithMode(const QUuid* self, uintptr_t mode) {
 }
 
 QByteArray* QUuid_ToByteArray(const QUuid* self) {
-	QByteArray _ret = self->toByteArray();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(self->toByteArray());
 }
 
 QByteArray* QUuid_ToByteArrayWithMode(const QUuid* self, uintptr_t mode) {
-	QByteArray _ret = self->toByteArray(static_cast<QUuid::StringFormat>(mode));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(self->toByteArray(static_cast<QUuid::StringFormat>(mode)));
 }
 
 QByteArray* QUuid_ToRfc4122(const QUuid* self) {
-	QByteArray _ret = self->toRfc4122();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(self->toRfc4122());
 }
 
 QUuid* QUuid_FromRfc4122(QByteArray* param1) {
-	QUuid _ret = QUuid::fromRfc4122(*param1);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QUuid*>(new QUuid(_ret));
+	return new QUuid(QUuid::fromRfc4122(*param1));
 }
 
 bool QUuid_IsNull(const QUuid* self) {
@@ -91,35 +83,25 @@ bool QUuid_OperatorGreater(const QUuid* self, QUuid* other) {
 }
 
 QUuid* QUuid_CreateUuid() {
-	QUuid _ret = QUuid::createUuid();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QUuid*>(new QUuid(_ret));
+	return new QUuid(QUuid::createUuid());
 }
 
 QUuid* QUuid_CreateUuidV3(QUuid* ns, QByteArray* baseData) {
-	QUuid _ret = QUuid::createUuidV3(*ns, *baseData);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QUuid*>(new QUuid(_ret));
+	return new QUuid(QUuid::createUuidV3(*ns, *baseData));
 }
 
 QUuid* QUuid_CreateUuidV5(QUuid* ns, QByteArray* baseData) {
-	QUuid _ret = QUuid::createUuidV5(*ns, *baseData);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QUuid*>(new QUuid(_ret));
+	return new QUuid(QUuid::createUuidV5(*ns, *baseData));
 }
 
 QUuid* QUuid_CreateUuidV32(QUuid* ns, struct miqt_string* baseData) {
 	QString baseData_QString = QString::fromUtf8(&baseData->data, baseData->len);
-	QUuid _ret = QUuid::createUuidV3(*ns, baseData_QString);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QUuid*>(new QUuid(_ret));
+	return new QUuid(QUuid::createUuidV3(*ns, baseData_QString));
 }
 
 QUuid* QUuid_CreateUuidV52(QUuid* ns, struct miqt_string* baseData) {
 	QString baseData_QString = QString::fromUtf8(&baseData->data, baseData->len);
-	QUuid _ret = QUuid::createUuidV5(*ns, baseData_QString);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QUuid*>(new QUuid(_ret));
+	return new QUuid(QUuid::createUuidV5(*ns, baseData_QString));
 }
 
 uintptr_t QUuid_Variant(const QUuid* self) {

@@ -203,9 +203,7 @@ void QTreeWidgetItem_SetText(QTreeWidgetItem* self, int column, struct miqt_stri
 }
 
 QIcon* QTreeWidgetItem_Icon(const QTreeWidgetItem* self, int column) {
-	QIcon _ret = self->icon(static_cast<int>(column));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QIcon*>(new QIcon(_ret));
+	return new QIcon(self->icon(static_cast<int>(column)));
 }
 
 void QTreeWidgetItem_SetIcon(QTreeWidgetItem* self, int column, QIcon* icon) {
@@ -249,9 +247,7 @@ void QTreeWidgetItem_SetWhatsThis(QTreeWidgetItem* self, int column, struct miqt
 }
 
 QFont* QTreeWidgetItem_Font(const QTreeWidgetItem* self, int column) {
-	QFont _ret = self->font(static_cast<int>(column));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QFont*>(new QFont(_ret));
+	return new QFont(self->font(static_cast<int>(column)));
 }
 
 void QTreeWidgetItem_SetFont(QTreeWidgetItem* self, int column, QFont* font) {
@@ -267,9 +263,7 @@ void QTreeWidgetItem_SetTextAlignment(QTreeWidgetItem* self, int column, int ali
 }
 
 QColor* QTreeWidgetItem_BackgroundColor(const QTreeWidgetItem* self, int column) {
-	QColor _ret = self->backgroundColor(static_cast<int>(column));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QColor*>(new QColor(_ret));
+	return new QColor(self->backgroundColor(static_cast<int>(column)));
 }
 
 void QTreeWidgetItem_SetBackgroundColor(QTreeWidgetItem* self, int column, QColor* color) {
@@ -277,9 +271,7 @@ void QTreeWidgetItem_SetBackgroundColor(QTreeWidgetItem* self, int column, QColo
 }
 
 QBrush* QTreeWidgetItem_Background(const QTreeWidgetItem* self, int column) {
-	QBrush _ret = self->background(static_cast<int>(column));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QBrush*>(new QBrush(_ret));
+	return new QBrush(self->background(static_cast<int>(column)));
 }
 
 void QTreeWidgetItem_SetBackground(QTreeWidgetItem* self, int column, QBrush* brush) {
@@ -287,9 +279,7 @@ void QTreeWidgetItem_SetBackground(QTreeWidgetItem* self, int column, QBrush* br
 }
 
 QColor* QTreeWidgetItem_TextColor(const QTreeWidgetItem* self, int column) {
-	QColor _ret = self->textColor(static_cast<int>(column));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QColor*>(new QColor(_ret));
+	return new QColor(self->textColor(static_cast<int>(column)));
 }
 
 void QTreeWidgetItem_SetTextColor(QTreeWidgetItem* self, int column, QColor* color) {
@@ -297,9 +287,7 @@ void QTreeWidgetItem_SetTextColor(QTreeWidgetItem* self, int column, QColor* col
 }
 
 QBrush* QTreeWidgetItem_Foreground(const QTreeWidgetItem* self, int column) {
-	QBrush _ret = self->foreground(static_cast<int>(column));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QBrush*>(new QBrush(_ret));
+	return new QBrush(self->foreground(static_cast<int>(column)));
 }
 
 void QTreeWidgetItem_SetForeground(QTreeWidgetItem* self, int column, QBrush* brush) {
@@ -316,9 +304,7 @@ void QTreeWidgetItem_SetCheckState(QTreeWidgetItem* self, int column, uintptr_t 
 }
 
 QSize* QTreeWidgetItem_SizeHint(const QTreeWidgetItem* self, int column) {
-	QSize _ret = self->sizeHint(static_cast<int>(column));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->sizeHint(static_cast<int>(column)));
 }
 
 void QTreeWidgetItem_SetSizeHint(QTreeWidgetItem* self, int column, QSize* size) {
@@ -326,9 +312,7 @@ void QTreeWidgetItem_SetSizeHint(QTreeWidgetItem* self, int column, QSize* size)
 }
 
 QVariant* QTreeWidgetItem_Data(const QTreeWidgetItem* self, int column, int role) {
-	QVariant _ret = self->data(static_cast<int>(column), static_cast<int>(role));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(_ret));
+	return new QVariant(self->data(static_cast<int>(column), static_cast<int>(role)));
 }
 
 void QTreeWidgetItem_SetData(QTreeWidgetItem* self, int column, int role, QVariant* value) {
@@ -566,9 +550,7 @@ QTreeWidgetItem* QTreeWidget_ItemAt2(const QTreeWidget* self, int x, int y) {
 }
 
 QRect* QTreeWidget_VisualItemRect(const QTreeWidget* self, QTreeWidgetItem* item) {
-	QRect _ret = self->visualItemRect(item);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->visualItemRect(item));
 }
 
 int QTreeWidget_SortColumn(const QTreeWidget* self) {

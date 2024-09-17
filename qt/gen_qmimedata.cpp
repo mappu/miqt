@@ -35,8 +35,8 @@ struct miqt_string* QMimeData_TrUtf8(const char* s) {
 
 struct miqt_array* QMimeData_Urls(const QMimeData* self) {
 	QList<QUrl> _ret = self->urls();
-	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
-	QUrl** _arr = static_cast<QUrl**>(malloc(sizeof(QUrl**) * _ret.length()));
+	// Convert QList<> from C++ memory to manually-managed C memory
+	QUrl** _arr = static_cast<QUrl**>(malloc(sizeof(QUrl*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = new QUrl(_ret[i]);
 	}
@@ -93,9 +93,7 @@ bool QMimeData_HasHtml(const QMimeData* self) {
 }
 
 QVariant* QMimeData_ImageData(const QMimeData* self) {
-	QVariant _ret = self->imageData();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(_ret));
+	return new QVariant(self->imageData());
 }
 
 void QMimeData_SetImageData(QMimeData* self, QVariant* image) {
@@ -107,9 +105,7 @@ bool QMimeData_HasImage(const QMimeData* self) {
 }
 
 QVariant* QMimeData_ColorData(const QMimeData* self) {
-	QVariant _ret = self->colorData();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(_ret));
+	return new QVariant(self->colorData());
 }
 
 void QMimeData_SetColorData(QMimeData* self, QVariant* color) {
@@ -122,9 +118,7 @@ bool QMimeData_HasColor(const QMimeData* self) {
 
 QByteArray* QMimeData_Data(const QMimeData* self, struct miqt_string* mimetype) {
 	QString mimetype_QString = QString::fromUtf8(&mimetype->data, mimetype->len);
-	QByteArray _ret = self->data(mimetype_QString);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(self->data(mimetype_QString));
 }
 
 void QMimeData_SetData(QMimeData* self, struct miqt_string* mimetype, QByteArray* data) {
@@ -144,7 +138,7 @@ bool QMimeData_HasFormat(const QMimeData* self, struct miqt_string* mimetype) {
 
 struct miqt_array* QMimeData_Formats(const QMimeData* self) {
 	QStringList _ret = self->formats();
-	// Convert QStringList from C++ memory to manually-managed C memory
+	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];

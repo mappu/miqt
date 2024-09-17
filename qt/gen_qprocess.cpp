@@ -69,7 +69,7 @@ struct miqt_string* QProcessEnvironment_Value(const QProcessEnvironment* self, s
 
 struct miqt_array* QProcessEnvironment_ToStringList(const QProcessEnvironment* self) {
 	QStringList _ret = self->toStringList();
-	// Convert QStringList from C++ memory to manually-managed C memory
+	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
@@ -85,7 +85,7 @@ struct miqt_array* QProcessEnvironment_ToStringList(const QProcessEnvironment* s
 
 struct miqt_array* QProcessEnvironment_Keys(const QProcessEnvironment* self) {
 	QStringList _ret = self->keys();
-	// Convert QStringList from C++ memory to manually-managed C memory
+	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
@@ -104,9 +104,7 @@ void QProcessEnvironment_InsertWithQProcessEnvironment(QProcessEnvironment* self
 }
 
 QProcessEnvironment* QProcessEnvironment_SystemEnvironment() {
-	QProcessEnvironment _ret = QProcessEnvironment::systemEnvironment();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QProcessEnvironment*>(new QProcessEnvironment(_ret));
+	return new QProcessEnvironment(QProcessEnvironment::systemEnvironment());
 }
 
 struct miqt_string* QProcessEnvironment_Value2(const QProcessEnvironment* self, struct miqt_string* name, struct miqt_string* defaultValue) {
@@ -190,7 +188,7 @@ void QProcess_SetProgram(QProcess* self, struct miqt_string* program) {
 
 struct miqt_array* QProcess_Arguments(const QProcess* self) {
 	QStringList _ret = self->arguments();
-	// Convert QStringList from C++ memory to manually-managed C memory
+	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
@@ -301,7 +299,7 @@ void QProcess_SetEnvironment(QProcess* self, struct miqt_array* /* of struct miq
 
 struct miqt_array* QProcess_Environment(const QProcess* self) {
 	QStringList _ret = self->environment();
-	// Convert QStringList from C++ memory to manually-managed C memory
+	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
@@ -320,9 +318,7 @@ void QProcess_SetProcessEnvironment(QProcess* self, QProcessEnvironment* environ
 }
 
 QProcessEnvironment* QProcess_ProcessEnvironment(const QProcess* self) {
-	QProcessEnvironment _ret = self->processEnvironment();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QProcessEnvironment*>(new QProcessEnvironment(_ret));
+	return new QProcessEnvironment(self->processEnvironment());
 }
 
 uintptr_t QProcess_Error(const QProcess* self) {
@@ -365,15 +361,11 @@ bool QProcess_WaitForFinished(QProcess* self) {
 }
 
 QByteArray* QProcess_ReadAllStandardOutput(QProcess* self) {
-	QByteArray _ret = self->readAllStandardOutput();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(self->readAllStandardOutput());
 }
 
 QByteArray* QProcess_ReadAllStandardError(QProcess* self) {
-	QByteArray _ret = self->readAllStandardError();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(self->readAllStandardError());
 }
 
 int QProcess_ExitCode(const QProcess* self) {
@@ -455,7 +447,7 @@ bool QProcess_StartDetachedWithCommand(struct miqt_string* command) {
 
 struct miqt_array* QProcess_SystemEnvironment() {
 	QStringList _ret = QProcess::systemEnvironment();
-	// Convert QStringList from C++ memory to manually-managed C memory
+	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];

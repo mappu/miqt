@@ -168,9 +168,7 @@ void QGraphicsItem_SetToolTip(QGraphicsItem* self, struct miqt_string* toolTip) 
 }
 
 QCursor* QGraphicsItem_Cursor(const QGraphicsItem* self) {
-	QCursor _ret = self->cursor();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCursor*>(new QCursor(_ret));
+	return new QCursor(self->cursor());
 }
 
 void QGraphicsItem_SetCursor(QGraphicsItem* self, QCursor* cursor) {
@@ -343,9 +341,7 @@ void QGraphicsItem_UngrabKeyboard(QGraphicsItem* self) {
 }
 
 QPointF* QGraphicsItem_Pos(const QGraphicsItem* self) {
-	QPointF _ret = self->pos();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPointF*>(new QPointF(_ret));
+	return new QPointF(self->pos());
 }
 
 double QGraphicsItem_X(const QGraphicsItem* self) {
@@ -365,9 +361,7 @@ void QGraphicsItem_SetY(QGraphicsItem* self, double y) {
 }
 
 QPointF* QGraphicsItem_ScenePos(const QGraphicsItem* self) {
-	QPointF _ret = self->scenePos();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPointF*>(new QPointF(_ret));
+	return new QPointF(self->scenePos());
 }
 
 void QGraphicsItem_SetPos(QGraphicsItem* self, QPointF* pos) {
@@ -391,15 +385,11 @@ void QGraphicsItem_EnsureVisible2(QGraphicsItem* self, double x, double y, doubl
 }
 
 QMatrix* QGraphicsItem_Matrix(const QGraphicsItem* self) {
-	QMatrix _ret = self->matrix();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QMatrix*>(new QMatrix(_ret));
+	return new QMatrix(self->matrix());
 }
 
 QMatrix* QGraphicsItem_SceneMatrix(const QGraphicsItem* self) {
-	QMatrix _ret = self->sceneMatrix();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QMatrix*>(new QMatrix(_ret));
+	return new QMatrix(self->sceneMatrix());
 }
 
 void QGraphicsItem_SetMatrix(QGraphicsItem* self, QMatrix* matrix) {
@@ -411,27 +401,19 @@ void QGraphicsItem_ResetMatrix(QGraphicsItem* self) {
 }
 
 QTransform* QGraphicsItem_Transform(const QGraphicsItem* self) {
-	QTransform _ret = self->transform();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTransform*>(new QTransform(_ret));
+	return new QTransform(self->transform());
 }
 
 QTransform* QGraphicsItem_SceneTransform(const QGraphicsItem* self) {
-	QTransform _ret = self->sceneTransform();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTransform*>(new QTransform(_ret));
+	return new QTransform(self->sceneTransform());
 }
 
 QTransform* QGraphicsItem_DeviceTransform(const QGraphicsItem* self, QTransform* viewportTransform) {
-	QTransform _ret = self->deviceTransform(*viewportTransform);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTransform*>(new QTransform(_ret));
+	return new QTransform(self->deviceTransform(*viewportTransform));
 }
 
 QTransform* QGraphicsItem_ItemTransform(const QGraphicsItem* self, QGraphicsItem* other) {
-	QTransform _ret = self->itemTransform(other);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTransform*>(new QTransform(_ret));
+	return new QTransform(self->itemTransform(other));
 }
 
 void QGraphicsItem_SetTransform(QGraphicsItem* self, QTransform* matrix) {
@@ -482,9 +464,7 @@ void QGraphicsItem_SetTransformations(QGraphicsItem* self, struct miqt_array* /*
 }
 
 QPointF* QGraphicsItem_TransformOriginPoint(const QGraphicsItem* self) {
-	QPointF _ret = self->transformOriginPoint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPointF*>(new QPointF(_ret));
+	return new QPointF(self->transformOriginPoint());
 }
 
 void QGraphicsItem_SetTransformOriginPoint(QGraphicsItem* self, QPointF* origin) {
@@ -512,27 +492,19 @@ void QGraphicsItem_StackBefore(QGraphicsItem* self, QGraphicsItem* sibling) {
 }
 
 QRectF* QGraphicsItem_BoundingRect(const QGraphicsItem* self) {
-	QRectF _ret = self->boundingRect();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(_ret));
+	return new QRectF(self->boundingRect());
 }
 
 QRectF* QGraphicsItem_ChildrenBoundingRect(const QGraphicsItem* self) {
-	QRectF _ret = self->childrenBoundingRect();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(_ret));
+	return new QRectF(self->childrenBoundingRect());
 }
 
 QRectF* QGraphicsItem_SceneBoundingRect(const QGraphicsItem* self) {
-	QRectF _ret = self->sceneBoundingRect();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(_ret));
+	return new QRectF(self->sceneBoundingRect());
 }
 
 QPainterPath* QGraphicsItem_Shape(const QGraphicsItem* self) {
-	QPainterPath _ret = self->shape();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPainterPath*>(new QPainterPath(_ret));
+	return new QPainterPath(self->shape());
 }
 
 bool QGraphicsItem_IsClipped(const QGraphicsItem* self) {
@@ -540,9 +512,7 @@ bool QGraphicsItem_IsClipped(const QGraphicsItem* self) {
 }
 
 QPainterPath* QGraphicsItem_ClipPath(const QGraphicsItem* self) {
-	QPainterPath _ret = self->clipPath();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPainterPath*>(new QPainterPath(_ret));
+	return new QPainterPath(self->clipPath());
 }
 
 bool QGraphicsItem_Contains(const QGraphicsItem* self, QPointF* point) {
@@ -583,15 +553,11 @@ bool QGraphicsItem_IsObscuredBy(const QGraphicsItem* self, QGraphicsItem* item) 
 }
 
 QPainterPath* QGraphicsItem_OpaqueArea(const QGraphicsItem* self) {
-	QPainterPath _ret = self->opaqueArea();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPainterPath*>(new QPainterPath(_ret));
+	return new QPainterPath(self->opaqueArea());
 }
 
 QRegion* QGraphicsItem_BoundingRegion(const QGraphicsItem* self, QTransform* itemToDeviceTransform) {
-	QRegion _ret = self->boundingRegion(*itemToDeviceTransform);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRegion*>(new QRegion(_ret));
+	return new QRegion(self->boundingRegion(*itemToDeviceTransform));
 }
 
 double QGraphicsItem_BoundingRegionGranularity(const QGraphicsItem* self) {
@@ -619,183 +585,123 @@ void QGraphicsItem_Scroll(QGraphicsItem* self, double dx, double dy) {
 }
 
 QPointF* QGraphicsItem_MapToItem(const QGraphicsItem* self, QGraphicsItem* item, QPointF* point) {
-	QPointF _ret = self->mapToItem(item, *point);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPointF*>(new QPointF(_ret));
+	return new QPointF(self->mapToItem(item, *point));
 }
 
 QPointF* QGraphicsItem_MapToParent(const QGraphicsItem* self, QPointF* point) {
-	QPointF _ret = self->mapToParent(*point);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPointF*>(new QPointF(_ret));
+	return new QPointF(self->mapToParent(*point));
 }
 
 QPointF* QGraphicsItem_MapToScene(const QGraphicsItem* self, QPointF* point) {
-	QPointF _ret = self->mapToScene(*point);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPointF*>(new QPointF(_ret));
+	return new QPointF(self->mapToScene(*point));
 }
 
 QRectF* QGraphicsItem_MapRectToItem(const QGraphicsItem* self, QGraphicsItem* item, QRectF* rect) {
-	QRectF _ret = self->mapRectToItem(item, *rect);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(_ret));
+	return new QRectF(self->mapRectToItem(item, *rect));
 }
 
 QRectF* QGraphicsItem_MapRectToParent(const QGraphicsItem* self, QRectF* rect) {
-	QRectF _ret = self->mapRectToParent(*rect);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(_ret));
+	return new QRectF(self->mapRectToParent(*rect));
 }
 
 QRectF* QGraphicsItem_MapRectToScene(const QGraphicsItem* self, QRectF* rect) {
-	QRectF _ret = self->mapRectToScene(*rect);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(_ret));
+	return new QRectF(self->mapRectToScene(*rect));
 }
 
 QPainterPath* QGraphicsItem_MapToItem4(const QGraphicsItem* self, QGraphicsItem* item, QPainterPath* path) {
-	QPainterPath _ret = self->mapToItem(item, *path);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPainterPath*>(new QPainterPath(_ret));
+	return new QPainterPath(self->mapToItem(item, *path));
 }
 
 QPainterPath* QGraphicsItem_MapToParentWithPath(const QGraphicsItem* self, QPainterPath* path) {
-	QPainterPath _ret = self->mapToParent(*path);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPainterPath*>(new QPainterPath(_ret));
+	return new QPainterPath(self->mapToParent(*path));
 }
 
 QPainterPath* QGraphicsItem_MapToSceneWithPath(const QGraphicsItem* self, QPainterPath* path) {
-	QPainterPath _ret = self->mapToScene(*path);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPainterPath*>(new QPainterPath(_ret));
+	return new QPainterPath(self->mapToScene(*path));
 }
 
 QPointF* QGraphicsItem_MapFromItem(const QGraphicsItem* self, QGraphicsItem* item, QPointF* point) {
-	QPointF _ret = self->mapFromItem(item, *point);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPointF*>(new QPointF(_ret));
+	return new QPointF(self->mapFromItem(item, *point));
 }
 
 QPointF* QGraphicsItem_MapFromParent(const QGraphicsItem* self, QPointF* point) {
-	QPointF _ret = self->mapFromParent(*point);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPointF*>(new QPointF(_ret));
+	return new QPointF(self->mapFromParent(*point));
 }
 
 QPointF* QGraphicsItem_MapFromScene(const QGraphicsItem* self, QPointF* point) {
-	QPointF _ret = self->mapFromScene(*point);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPointF*>(new QPointF(_ret));
+	return new QPointF(self->mapFromScene(*point));
 }
 
 QRectF* QGraphicsItem_MapRectFromItem(const QGraphicsItem* self, QGraphicsItem* item, QRectF* rect) {
-	QRectF _ret = self->mapRectFromItem(item, *rect);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(_ret));
+	return new QRectF(self->mapRectFromItem(item, *rect));
 }
 
 QRectF* QGraphicsItem_MapRectFromParent(const QGraphicsItem* self, QRectF* rect) {
-	QRectF _ret = self->mapRectFromParent(*rect);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(_ret));
+	return new QRectF(self->mapRectFromParent(*rect));
 }
 
 QRectF* QGraphicsItem_MapRectFromScene(const QGraphicsItem* self, QRectF* rect) {
-	QRectF _ret = self->mapRectFromScene(*rect);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(_ret));
+	return new QRectF(self->mapRectFromScene(*rect));
 }
 
 QPainterPath* QGraphicsItem_MapFromItem4(const QGraphicsItem* self, QGraphicsItem* item, QPainterPath* path) {
-	QPainterPath _ret = self->mapFromItem(item, *path);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPainterPath*>(new QPainterPath(_ret));
+	return new QPainterPath(self->mapFromItem(item, *path));
 }
 
 QPainterPath* QGraphicsItem_MapFromParentWithPath(const QGraphicsItem* self, QPainterPath* path) {
-	QPainterPath _ret = self->mapFromParent(*path);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPainterPath*>(new QPainterPath(_ret));
+	return new QPainterPath(self->mapFromParent(*path));
 }
 
 QPainterPath* QGraphicsItem_MapFromSceneWithPath(const QGraphicsItem* self, QPainterPath* path) {
-	QPainterPath _ret = self->mapFromScene(*path);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPainterPath*>(new QPainterPath(_ret));
+	return new QPainterPath(self->mapFromScene(*path));
 }
 
 QPointF* QGraphicsItem_MapToItem5(const QGraphicsItem* self, QGraphicsItem* item, double x, double y) {
-	QPointF _ret = self->mapToItem(item, static_cast<qreal>(x), static_cast<qreal>(y));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPointF*>(new QPointF(_ret));
+	return new QPointF(self->mapToItem(item, static_cast<qreal>(x), static_cast<qreal>(y)));
 }
 
 QPointF* QGraphicsItem_MapToParent2(const QGraphicsItem* self, double x, double y) {
-	QPointF _ret = self->mapToParent(static_cast<qreal>(x), static_cast<qreal>(y));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPointF*>(new QPointF(_ret));
+	return new QPointF(self->mapToParent(static_cast<qreal>(x), static_cast<qreal>(y)));
 }
 
 QPointF* QGraphicsItem_MapToScene2(const QGraphicsItem* self, double x, double y) {
-	QPointF _ret = self->mapToScene(static_cast<qreal>(x), static_cast<qreal>(y));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPointF*>(new QPointF(_ret));
+	return new QPointF(self->mapToScene(static_cast<qreal>(x), static_cast<qreal>(y)));
 }
 
 QRectF* QGraphicsItem_MapRectToItem2(const QGraphicsItem* self, QGraphicsItem* item, double x, double y, double w, double h) {
-	QRectF _ret = self->mapRectToItem(item, static_cast<qreal>(x), static_cast<qreal>(y), static_cast<qreal>(w), static_cast<qreal>(h));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(_ret));
+	return new QRectF(self->mapRectToItem(item, static_cast<qreal>(x), static_cast<qreal>(y), static_cast<qreal>(w), static_cast<qreal>(h)));
 }
 
 QRectF* QGraphicsItem_MapRectToParent2(const QGraphicsItem* self, double x, double y, double w, double h) {
-	QRectF _ret = self->mapRectToParent(static_cast<qreal>(x), static_cast<qreal>(y), static_cast<qreal>(w), static_cast<qreal>(h));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(_ret));
+	return new QRectF(self->mapRectToParent(static_cast<qreal>(x), static_cast<qreal>(y), static_cast<qreal>(w), static_cast<qreal>(h)));
 }
 
 QRectF* QGraphicsItem_MapRectToScene2(const QGraphicsItem* self, double x, double y, double w, double h) {
-	QRectF _ret = self->mapRectToScene(static_cast<qreal>(x), static_cast<qreal>(y), static_cast<qreal>(w), static_cast<qreal>(h));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(_ret));
+	return new QRectF(self->mapRectToScene(static_cast<qreal>(x), static_cast<qreal>(y), static_cast<qreal>(w), static_cast<qreal>(h)));
 }
 
 QPointF* QGraphicsItem_MapFromItem5(const QGraphicsItem* self, QGraphicsItem* item, double x, double y) {
-	QPointF _ret = self->mapFromItem(item, static_cast<qreal>(x), static_cast<qreal>(y));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPointF*>(new QPointF(_ret));
+	return new QPointF(self->mapFromItem(item, static_cast<qreal>(x), static_cast<qreal>(y)));
 }
 
 QPointF* QGraphicsItem_MapFromParent2(const QGraphicsItem* self, double x, double y) {
-	QPointF _ret = self->mapFromParent(static_cast<qreal>(x), static_cast<qreal>(y));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPointF*>(new QPointF(_ret));
+	return new QPointF(self->mapFromParent(static_cast<qreal>(x), static_cast<qreal>(y)));
 }
 
 QPointF* QGraphicsItem_MapFromScene2(const QGraphicsItem* self, double x, double y) {
-	QPointF _ret = self->mapFromScene(static_cast<qreal>(x), static_cast<qreal>(y));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPointF*>(new QPointF(_ret));
+	return new QPointF(self->mapFromScene(static_cast<qreal>(x), static_cast<qreal>(y)));
 }
 
 QRectF* QGraphicsItem_MapRectFromItem2(const QGraphicsItem* self, QGraphicsItem* item, double x, double y, double w, double h) {
-	QRectF _ret = self->mapRectFromItem(item, static_cast<qreal>(x), static_cast<qreal>(y), static_cast<qreal>(w), static_cast<qreal>(h));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(_ret));
+	return new QRectF(self->mapRectFromItem(item, static_cast<qreal>(x), static_cast<qreal>(y), static_cast<qreal>(w), static_cast<qreal>(h)));
 }
 
 QRectF* QGraphicsItem_MapRectFromParent2(const QGraphicsItem* self, double x, double y, double w, double h) {
-	QRectF _ret = self->mapRectFromParent(static_cast<qreal>(x), static_cast<qreal>(y), static_cast<qreal>(w), static_cast<qreal>(h));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(_ret));
+	return new QRectF(self->mapRectFromParent(static_cast<qreal>(x), static_cast<qreal>(y), static_cast<qreal>(w), static_cast<qreal>(h)));
 }
 
 QRectF* QGraphicsItem_MapRectFromScene2(const QGraphicsItem* self, double x, double y, double w, double h) {
-	QRectF _ret = self->mapRectFromScene(static_cast<qreal>(x), static_cast<qreal>(y), static_cast<qreal>(w), static_cast<qreal>(h));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(_ret));
+	return new QRectF(self->mapRectFromScene(static_cast<qreal>(x), static_cast<qreal>(y), static_cast<qreal>(w), static_cast<qreal>(h)));
 }
 
 bool QGraphicsItem_IsAncestorOf(const QGraphicsItem* self, QGraphicsItem* child) {
@@ -811,9 +717,7 @@ bool QGraphicsItem_IsUnderMouse(const QGraphicsItem* self) {
 }
 
 QVariant* QGraphicsItem_Data(const QGraphicsItem* self, int key) {
-	QVariant _ret = self->data(static_cast<int>(key));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(_ret));
+	return new QVariant(self->data(static_cast<int>(key)));
 }
 
 void QGraphicsItem_SetData(QGraphicsItem* self, int key, QVariant* value) {
@@ -878,9 +782,7 @@ void QGraphicsItem_SetMatrix2(QGraphicsItem* self, QMatrix* matrix, bool combine
 }
 
 QTransform* QGraphicsItem_ItemTransform2(const QGraphicsItem* self, QGraphicsItem* other, bool* ok) {
-	QTransform _ret = self->itemTransform(other, ok);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTransform*>(new QTransform(_ret));
+	return new QTransform(self->itemTransform(other, ok));
 }
 
 void QGraphicsItem_SetTransform2(QGraphicsItem* self, QTransform* matrix, bool combine) {
@@ -1111,9 +1013,7 @@ void QGraphicsObject_Delete(QGraphicsObject* self) {
 }
 
 QPen* QAbstractGraphicsShapeItem_Pen(const QAbstractGraphicsShapeItem* self) {
-	QPen _ret = self->pen();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPen*>(new QPen(_ret));
+	return new QPen(self->pen());
 }
 
 void QAbstractGraphicsShapeItem_SetPen(QAbstractGraphicsShapeItem* self, QPen* pen) {
@@ -1121,9 +1021,7 @@ void QAbstractGraphicsShapeItem_SetPen(QAbstractGraphicsShapeItem* self, QPen* p
 }
 
 QBrush* QAbstractGraphicsShapeItem_Brush(const QAbstractGraphicsShapeItem* self) {
-	QBrush _ret = self->brush();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QBrush*>(new QBrush(_ret));
+	return new QBrush(self->brush());
 }
 
 void QAbstractGraphicsShapeItem_SetBrush(QAbstractGraphicsShapeItem* self, QBrush* brush) {
@@ -1135,9 +1033,7 @@ bool QAbstractGraphicsShapeItem_IsObscuredBy(const QAbstractGraphicsShapeItem* s
 }
 
 QPainterPath* QAbstractGraphicsShapeItem_OpaqueArea(const QAbstractGraphicsShapeItem* self) {
-	QPainterPath _ret = self->opaqueArea();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPainterPath*>(new QPainterPath(_ret));
+	return new QPainterPath(self->opaqueArea());
 }
 
 void QAbstractGraphicsShapeItem_Delete(QAbstractGraphicsShapeItem* self) {
@@ -1161,9 +1057,7 @@ QGraphicsPathItem* QGraphicsPathItem_new4(QPainterPath* path, QGraphicsItem* par
 }
 
 QPainterPath* QGraphicsPathItem_Path(const QGraphicsPathItem* self) {
-	QPainterPath _ret = self->path();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPainterPath*>(new QPainterPath(_ret));
+	return new QPainterPath(self->path());
 }
 
 void QGraphicsPathItem_SetPath(QGraphicsPathItem* self, QPainterPath* path) {
@@ -1171,15 +1065,11 @@ void QGraphicsPathItem_SetPath(QGraphicsPathItem* self, QPainterPath* path) {
 }
 
 QRectF* QGraphicsPathItem_BoundingRect(const QGraphicsPathItem* self) {
-	QRectF _ret = self->boundingRect();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(_ret));
+	return new QRectF(self->boundingRect());
 }
 
 QPainterPath* QGraphicsPathItem_Shape(const QGraphicsPathItem* self) {
-	QPainterPath _ret = self->shape();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPainterPath*>(new QPainterPath(_ret));
+	return new QPainterPath(self->shape());
 }
 
 bool QGraphicsPathItem_Contains(const QGraphicsPathItem* self, QPointF* point) {
@@ -1195,9 +1085,7 @@ bool QGraphicsPathItem_IsObscuredBy(const QGraphicsPathItem* self, QGraphicsItem
 }
 
 QPainterPath* QGraphicsPathItem_OpaqueArea(const QGraphicsPathItem* self) {
-	QPainterPath _ret = self->opaqueArea();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPainterPath*>(new QPainterPath(_ret));
+	return new QPainterPath(self->opaqueArea());
 }
 
 int QGraphicsPathItem_Type(const QGraphicsPathItem* self) {
@@ -1237,9 +1125,7 @@ QGraphicsRectItem* QGraphicsRectItem_new6(double x, double y, double w, double h
 }
 
 QRectF* QGraphicsRectItem_Rect(const QGraphicsRectItem* self) {
-	QRectF _ret = self->rect();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(_ret));
+	return new QRectF(self->rect());
 }
 
 void QGraphicsRectItem_SetRect(QGraphicsRectItem* self, QRectF* rect) {
@@ -1251,15 +1137,11 @@ void QGraphicsRectItem_SetRect2(QGraphicsRectItem* self, double x, double y, dou
 }
 
 QRectF* QGraphicsRectItem_BoundingRect(const QGraphicsRectItem* self) {
-	QRectF _ret = self->boundingRect();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(_ret));
+	return new QRectF(self->boundingRect());
 }
 
 QPainterPath* QGraphicsRectItem_Shape(const QGraphicsRectItem* self) {
-	QPainterPath _ret = self->shape();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPainterPath*>(new QPainterPath(_ret));
+	return new QPainterPath(self->shape());
 }
 
 bool QGraphicsRectItem_Contains(const QGraphicsRectItem* self, QPointF* point) {
@@ -1275,9 +1157,7 @@ bool QGraphicsRectItem_IsObscuredBy(const QGraphicsRectItem* self, QGraphicsItem
 }
 
 QPainterPath* QGraphicsRectItem_OpaqueArea(const QGraphicsRectItem* self) {
-	QPainterPath _ret = self->opaqueArea();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPainterPath*>(new QPainterPath(_ret));
+	return new QPainterPath(self->opaqueArea());
 }
 
 int QGraphicsRectItem_Type(const QGraphicsRectItem* self) {
@@ -1317,9 +1197,7 @@ QGraphicsEllipseItem* QGraphicsEllipseItem_new6(double x, double y, double w, do
 }
 
 QRectF* QGraphicsEllipseItem_Rect(const QGraphicsEllipseItem* self) {
-	QRectF _ret = self->rect();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(_ret));
+	return new QRectF(self->rect());
 }
 
 void QGraphicsEllipseItem_SetRect(QGraphicsEllipseItem* self, QRectF* rect) {
@@ -1347,15 +1225,11 @@ void QGraphicsEllipseItem_SetSpanAngle(QGraphicsEllipseItem* self, int angle) {
 }
 
 QRectF* QGraphicsEllipseItem_BoundingRect(const QGraphicsEllipseItem* self) {
-	QRectF _ret = self->boundingRect();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(_ret));
+	return new QRectF(self->boundingRect());
 }
 
 QPainterPath* QGraphicsEllipseItem_Shape(const QGraphicsEllipseItem* self) {
-	QPainterPath _ret = self->shape();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPainterPath*>(new QPainterPath(_ret));
+	return new QPainterPath(self->shape());
 }
 
 bool QGraphicsEllipseItem_Contains(const QGraphicsEllipseItem* self, QPointF* point) {
@@ -1371,9 +1245,7 @@ bool QGraphicsEllipseItem_IsObscuredBy(const QGraphicsEllipseItem* self, QGraphi
 }
 
 QPainterPath* QGraphicsEllipseItem_OpaqueArea(const QGraphicsEllipseItem* self) {
-	QPainterPath _ret = self->opaqueArea();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPainterPath*>(new QPainterPath(_ret));
+	return new QPainterPath(self->opaqueArea());
 }
 
 int QGraphicsEllipseItem_Type(const QGraphicsEllipseItem* self) {
@@ -1406,15 +1278,11 @@ void QGraphicsPolygonItem_SetFillRule(QGraphicsPolygonItem* self, uintptr_t rule
 }
 
 QRectF* QGraphicsPolygonItem_BoundingRect(const QGraphicsPolygonItem* self) {
-	QRectF _ret = self->boundingRect();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(_ret));
+	return new QRectF(self->boundingRect());
 }
 
 QPainterPath* QGraphicsPolygonItem_Shape(const QGraphicsPolygonItem* self) {
-	QPainterPath _ret = self->shape();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPainterPath*>(new QPainterPath(_ret));
+	return new QPainterPath(self->shape());
 }
 
 bool QGraphicsPolygonItem_Contains(const QGraphicsPolygonItem* self, QPointF* point) {
@@ -1430,9 +1298,7 @@ bool QGraphicsPolygonItem_IsObscuredBy(const QGraphicsPolygonItem* self, QGraphi
 }
 
 QPainterPath* QGraphicsPolygonItem_OpaqueArea(const QGraphicsPolygonItem* self) {
-	QPainterPath _ret = self->opaqueArea();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPainterPath*>(new QPainterPath(_ret));
+	return new QPainterPath(self->opaqueArea());
 }
 
 int QGraphicsPolygonItem_Type(const QGraphicsPolygonItem* self) {
@@ -1472,9 +1338,7 @@ QGraphicsLineItem* QGraphicsLineItem_new6(double x1, double y1, double x2, doubl
 }
 
 QPen* QGraphicsLineItem_Pen(const QGraphicsLineItem* self) {
-	QPen _ret = self->pen();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPen*>(new QPen(_ret));
+	return new QPen(self->pen());
 }
 
 void QGraphicsLineItem_SetPen(QGraphicsLineItem* self, QPen* pen) {
@@ -1482,9 +1346,7 @@ void QGraphicsLineItem_SetPen(QGraphicsLineItem* self, QPen* pen) {
 }
 
 QLineF* QGraphicsLineItem_Line(const QGraphicsLineItem* self) {
-	QLineF _ret = self->line();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QLineF*>(new QLineF(_ret));
+	return new QLineF(self->line());
 }
 
 void QGraphicsLineItem_SetLine(QGraphicsLineItem* self, QLineF* line) {
@@ -1496,15 +1358,11 @@ void QGraphicsLineItem_SetLine2(QGraphicsLineItem* self, double x1, double y1, d
 }
 
 QRectF* QGraphicsLineItem_BoundingRect(const QGraphicsLineItem* self) {
-	QRectF _ret = self->boundingRect();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(_ret));
+	return new QRectF(self->boundingRect());
 }
 
 QPainterPath* QGraphicsLineItem_Shape(const QGraphicsLineItem* self) {
-	QPainterPath _ret = self->shape();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPainterPath*>(new QPainterPath(_ret));
+	return new QPainterPath(self->shape());
 }
 
 bool QGraphicsLineItem_Contains(const QGraphicsLineItem* self, QPointF* point) {
@@ -1520,9 +1378,7 @@ bool QGraphicsLineItem_IsObscuredBy(const QGraphicsLineItem* self, QGraphicsItem
 }
 
 QPainterPath* QGraphicsLineItem_OpaqueArea(const QGraphicsLineItem* self) {
-	QPainterPath _ret = self->opaqueArea();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPainterPath*>(new QPainterPath(_ret));
+	return new QPainterPath(self->opaqueArea());
 }
 
 int QGraphicsLineItem_Type(const QGraphicsLineItem* self) {
@@ -1554,9 +1410,7 @@ QGraphicsPixmapItem* QGraphicsPixmapItem_new4(QPixmap* pixmap, QGraphicsItem* pa
 }
 
 QPixmap* QGraphicsPixmapItem_Pixmap(const QGraphicsPixmapItem* self) {
-	QPixmap _ret = self->pixmap();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPixmap*>(new QPixmap(_ret));
+	return new QPixmap(self->pixmap());
 }
 
 void QGraphicsPixmapItem_SetPixmap(QGraphicsPixmapItem* self, QPixmap* pixmap) {
@@ -1573,9 +1427,7 @@ void QGraphicsPixmapItem_SetTransformationMode(QGraphicsPixmapItem* self, uintpt
 }
 
 QPointF* QGraphicsPixmapItem_Offset(const QGraphicsPixmapItem* self) {
-	QPointF _ret = self->offset();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPointF*>(new QPointF(_ret));
+	return new QPointF(self->offset());
 }
 
 void QGraphicsPixmapItem_SetOffset(QGraphicsPixmapItem* self, QPointF* offset) {
@@ -1587,15 +1439,11 @@ void QGraphicsPixmapItem_SetOffset2(QGraphicsPixmapItem* self, double x, double 
 }
 
 QRectF* QGraphicsPixmapItem_BoundingRect(const QGraphicsPixmapItem* self) {
-	QRectF _ret = self->boundingRect();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(_ret));
+	return new QRectF(self->boundingRect());
 }
 
 QPainterPath* QGraphicsPixmapItem_Shape(const QGraphicsPixmapItem* self) {
-	QPainterPath _ret = self->shape();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPainterPath*>(new QPainterPath(_ret));
+	return new QPainterPath(self->shape());
 }
 
 bool QGraphicsPixmapItem_Contains(const QGraphicsPixmapItem* self, QPointF* point) {
@@ -1611,9 +1459,7 @@ bool QGraphicsPixmapItem_IsObscuredBy(const QGraphicsPixmapItem* self, QGraphics
 }
 
 QPainterPath* QGraphicsPixmapItem_OpaqueArea(const QGraphicsPixmapItem* self) {
-	QPainterPath _ret = self->opaqueArea();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPainterPath*>(new QPainterPath(_ret));
+	return new QPainterPath(self->opaqueArea());
 }
 
 int QGraphicsPixmapItem_Type(const QGraphicsPixmapItem* self) {
@@ -1694,9 +1540,7 @@ void QGraphicsTextItem_SetPlainText(QGraphicsTextItem* self, struct miqt_string*
 }
 
 QFont* QGraphicsTextItem_Font(const QGraphicsTextItem* self) {
-	QFont _ret = self->font();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QFont*>(new QFont(_ret));
+	return new QFont(self->font());
 }
 
 void QGraphicsTextItem_SetFont(QGraphicsTextItem* self, QFont* font) {
@@ -1708,21 +1552,15 @@ void QGraphicsTextItem_SetDefaultTextColor(QGraphicsTextItem* self, QColor* c) {
 }
 
 QColor* QGraphicsTextItem_DefaultTextColor(const QGraphicsTextItem* self) {
-	QColor _ret = self->defaultTextColor();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QColor*>(new QColor(_ret));
+	return new QColor(self->defaultTextColor());
 }
 
 QRectF* QGraphicsTextItem_BoundingRect(const QGraphicsTextItem* self) {
-	QRectF _ret = self->boundingRect();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(_ret));
+	return new QRectF(self->boundingRect());
 }
 
 QPainterPath* QGraphicsTextItem_Shape(const QGraphicsTextItem* self) {
-	QPainterPath _ret = self->shape();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPainterPath*>(new QPainterPath(_ret));
+	return new QPainterPath(self->shape());
 }
 
 bool QGraphicsTextItem_Contains(const QGraphicsTextItem* self, QPointF* point) {
@@ -1738,9 +1576,7 @@ bool QGraphicsTextItem_IsObscuredBy(const QGraphicsTextItem* self, QGraphicsItem
 }
 
 QPainterPath* QGraphicsTextItem_OpaqueArea(const QGraphicsTextItem* self) {
-	QPainterPath _ret = self->opaqueArea();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPainterPath*>(new QPainterPath(_ret));
+	return new QPainterPath(self->opaqueArea());
 }
 
 int QGraphicsTextItem_Type(const QGraphicsTextItem* self) {
@@ -1797,9 +1633,7 @@ void QGraphicsTextItem_SetTextCursor(QGraphicsTextItem* self, QTextCursor* curso
 }
 
 QTextCursor* QGraphicsTextItem_TextCursor(const QGraphicsTextItem* self) {
-	QTextCursor _ret = self->textCursor();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextCursor*>(new QTextCursor(_ret));
+	return new QTextCursor(self->textCursor());
 }
 
 void QGraphicsTextItem_LinkActivated(QGraphicsTextItem* self, struct miqt_string* param1) {
@@ -1899,21 +1733,15 @@ void QGraphicsSimpleTextItem_SetFont(QGraphicsSimpleTextItem* self, QFont* font)
 }
 
 QFont* QGraphicsSimpleTextItem_Font(const QGraphicsSimpleTextItem* self) {
-	QFont _ret = self->font();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QFont*>(new QFont(_ret));
+	return new QFont(self->font());
 }
 
 QRectF* QGraphicsSimpleTextItem_BoundingRect(const QGraphicsSimpleTextItem* self) {
-	QRectF _ret = self->boundingRect();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(_ret));
+	return new QRectF(self->boundingRect());
 }
 
 QPainterPath* QGraphicsSimpleTextItem_Shape(const QGraphicsSimpleTextItem* self) {
-	QPainterPath _ret = self->shape();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPainterPath*>(new QPainterPath(_ret));
+	return new QPainterPath(self->shape());
 }
 
 bool QGraphicsSimpleTextItem_Contains(const QGraphicsSimpleTextItem* self, QPointF* point) {
@@ -1929,9 +1757,7 @@ bool QGraphicsSimpleTextItem_IsObscuredBy(const QGraphicsSimpleTextItem* self, Q
 }
 
 QPainterPath* QGraphicsSimpleTextItem_OpaqueArea(const QGraphicsSimpleTextItem* self) {
-	QPainterPath _ret = self->opaqueArea();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPainterPath*>(new QPainterPath(_ret));
+	return new QPainterPath(self->opaqueArea());
 }
 
 int QGraphicsSimpleTextItem_Type(const QGraphicsSimpleTextItem* self) {
@@ -1959,9 +1785,7 @@ void QGraphicsItemGroup_RemoveFromGroup(QGraphicsItemGroup* self, QGraphicsItem*
 }
 
 QRectF* QGraphicsItemGroup_BoundingRect(const QGraphicsItemGroup* self) {
-	QRectF _ret = self->boundingRect();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(_ret));
+	return new QRectF(self->boundingRect());
 }
 
 void QGraphicsItemGroup_Paint(QGraphicsItemGroup* self, QPainter* painter, QStyleOptionGraphicsItem* option) {
@@ -1973,9 +1797,7 @@ bool QGraphicsItemGroup_IsObscuredBy(const QGraphicsItemGroup* self, QGraphicsIt
 }
 
 QPainterPath* QGraphicsItemGroup_OpaqueArea(const QGraphicsItemGroup* self) {
-	QPainterPath _ret = self->opaqueArea();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPainterPath*>(new QPainterPath(_ret));
+	return new QPainterPath(self->opaqueArea());
 }
 
 int QGraphicsItemGroup_Type(const QGraphicsItemGroup* self) {

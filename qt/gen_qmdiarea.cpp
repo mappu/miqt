@@ -39,15 +39,11 @@ struct miqt_string* QMdiArea_TrUtf8(const char* s) {
 }
 
 QSize* QMdiArea_SizeHint(const QMdiArea* self) {
-	QSize _ret = self->sizeHint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->sizeHint());
 }
 
 QSize* QMdiArea_MinimumSizeHint(const QMdiArea* self) {
-	QSize _ret = self->minimumSizeHint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->minimumSizeHint());
 }
 
 QMdiSubWindow* QMdiArea_CurrentSubWindow(const QMdiArea* self) {
@@ -80,9 +76,7 @@ void QMdiArea_RemoveSubWindow(QMdiArea* self, QWidget* widget) {
 }
 
 QBrush* QMdiArea_Background(const QMdiArea* self) {
-	QBrush _ret = self->background();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QBrush*>(new QBrush(_ret));
+	return new QBrush(self->background());
 }
 
 void QMdiArea_SetBackground(QMdiArea* self, QBrush* background) {

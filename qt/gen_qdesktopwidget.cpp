@@ -37,15 +37,11 @@ int QDesktopWidget_ScreenNumber(const QDesktopWidget* self) {
 }
 
 QRect* QDesktopWidget_ScreenGeometry(const QDesktopWidget* self, QWidget* widget) {
-	QRect _ret = self->screenGeometry(widget);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->screenGeometry(widget));
 }
 
 QRect* QDesktopWidget_AvailableGeometry(const QDesktopWidget* self, QWidget* widget) {
-	QRect _ret = self->availableGeometry(widget);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->availableGeometry(widget));
 }
 
 bool QDesktopWidget_IsVirtualDesktop(const QDesktopWidget* self) {
@@ -73,27 +69,19 @@ QWidget* QDesktopWidget_Screen(QDesktopWidget* self) {
 }
 
 QRect* QDesktopWidget_ScreenGeometry2(const QDesktopWidget* self) {
-	QRect _ret = self->screenGeometry();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->screenGeometry());
 }
 
 QRect* QDesktopWidget_ScreenGeometryWithPoint(const QDesktopWidget* self, QPoint* point) {
-	QRect _ret = self->screenGeometry(*point);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->screenGeometry(*point));
 }
 
 QRect* QDesktopWidget_AvailableGeometry2(const QDesktopWidget* self) {
-	QRect _ret = self->availableGeometry();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->availableGeometry());
 }
 
 QRect* QDesktopWidget_AvailableGeometryWithPoint(const QDesktopWidget* self, QPoint* point) {
-	QRect _ret = self->availableGeometry(*point);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->availableGeometry(*point));
 }
 
 void QDesktopWidget_Resized(QDesktopWidget* self, int param1) {
@@ -176,15 +164,11 @@ QWidget* QDesktopWidget_Screen1(QDesktopWidget* self, int screen) {
 }
 
 QRect* QDesktopWidget_ScreenGeometry1(const QDesktopWidget* self, int screen) {
-	QRect _ret = self->screenGeometry(static_cast<int>(screen));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->screenGeometry(static_cast<int>(screen)));
 }
 
 QRect* QDesktopWidget_AvailableGeometry1(const QDesktopWidget* self, int screen) {
-	QRect _ret = self->availableGeometry(static_cast<int>(screen));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->availableGeometry(static_cast<int>(screen)));
 }
 
 void QDesktopWidget_Delete(QDesktopWidget* self) {

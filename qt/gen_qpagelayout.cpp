@@ -58,9 +58,7 @@ void QPageLayout_SetPageSize(QPageLayout* self, QPageSize* pageSize) {
 }
 
 QPageSize* QPageLayout_PageSize(const QPageLayout* self) {
-	QPageSize _ret = self->pageSize();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPageSize*>(new QPageSize(_ret));
+	return new QPageSize(self->pageSize());
 }
 
 void QPageLayout_SetOrientation(QPageLayout* self, uintptr_t orientation) {
@@ -102,27 +100,19 @@ bool QPageLayout_SetBottomMargin(QPageLayout* self, double bottomMargin) {
 }
 
 QMarginsF* QPageLayout_Margins(const QPageLayout* self) {
-	QMarginsF _ret = self->margins();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QMarginsF*>(new QMarginsF(_ret));
+	return new QMarginsF(self->margins());
 }
 
 QMarginsF* QPageLayout_MarginsWithUnits(const QPageLayout* self, uintptr_t units) {
-	QMarginsF _ret = self->margins(static_cast<QPageLayout::Unit>(units));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QMarginsF*>(new QMarginsF(_ret));
+	return new QMarginsF(self->margins(static_cast<QPageLayout::Unit>(units)));
 }
 
 QMargins* QPageLayout_MarginsPoints(const QPageLayout* self) {
-	QMargins _ret = self->marginsPoints();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QMargins*>(new QMargins(_ret));
+	return new QMargins(self->marginsPoints());
 }
 
 QMargins* QPageLayout_MarginsPixels(const QPageLayout* self, int resolution) {
-	QMargins _ret = self->marginsPixels(static_cast<int>(resolution));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QMargins*>(new QMargins(_ret));
+	return new QMargins(self->marginsPixels(static_cast<int>(resolution)));
 }
 
 void QPageLayout_SetMinimumMargins(QPageLayout* self, QMarginsF* minMargins) {
@@ -130,63 +120,43 @@ void QPageLayout_SetMinimumMargins(QPageLayout* self, QMarginsF* minMargins) {
 }
 
 QMarginsF* QPageLayout_MinimumMargins(const QPageLayout* self) {
-	QMarginsF _ret = self->minimumMargins();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QMarginsF*>(new QMarginsF(_ret));
+	return new QMarginsF(self->minimumMargins());
 }
 
 QMarginsF* QPageLayout_MaximumMargins(const QPageLayout* self) {
-	QMarginsF _ret = self->maximumMargins();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QMarginsF*>(new QMarginsF(_ret));
+	return new QMarginsF(self->maximumMargins());
 }
 
 QRectF* QPageLayout_FullRect(const QPageLayout* self) {
-	QRectF _ret = self->fullRect();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(_ret));
+	return new QRectF(self->fullRect());
 }
 
 QRectF* QPageLayout_FullRectWithUnits(const QPageLayout* self, uintptr_t units) {
-	QRectF _ret = self->fullRect(static_cast<QPageLayout::Unit>(units));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(_ret));
+	return new QRectF(self->fullRect(static_cast<QPageLayout::Unit>(units)));
 }
 
 QRect* QPageLayout_FullRectPoints(const QPageLayout* self) {
-	QRect _ret = self->fullRectPoints();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->fullRectPoints());
 }
 
 QRect* QPageLayout_FullRectPixels(const QPageLayout* self, int resolution) {
-	QRect _ret = self->fullRectPixels(static_cast<int>(resolution));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->fullRectPixels(static_cast<int>(resolution)));
 }
 
 QRectF* QPageLayout_PaintRect(const QPageLayout* self) {
-	QRectF _ret = self->paintRect();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(_ret));
+	return new QRectF(self->paintRect());
 }
 
 QRectF* QPageLayout_PaintRectWithUnits(const QPageLayout* self, uintptr_t units) {
-	QRectF _ret = self->paintRect(static_cast<QPageLayout::Unit>(units));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(_ret));
+	return new QRectF(self->paintRect(static_cast<QPageLayout::Unit>(units)));
 }
 
 QRect* QPageLayout_PaintRectPoints(const QPageLayout* self) {
-	QRect _ret = self->paintRectPoints();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->paintRectPoints());
 }
 
 QRect* QPageLayout_PaintRectPixels(const QPageLayout* self, int resolution) {
-	QRect _ret = self->paintRectPixels(static_cast<int>(resolution));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->paintRectPixels(static_cast<int>(resolution)));
 }
 
 void QPageLayout_SetPageSize2(QPageLayout* self, QPageSize* pageSize, QMarginsF* minMargins) {

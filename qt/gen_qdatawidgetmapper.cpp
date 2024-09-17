@@ -60,9 +60,7 @@ void QDataWidgetMapper_SetRootIndex(QDataWidgetMapper* self, QModelIndex* index)
 }
 
 QModelIndex* QDataWidgetMapper_RootIndex(const QDataWidgetMapper* self) {
-	QModelIndex _ret = self->rootIndex();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QModelIndex*>(new QModelIndex(_ret));
+	return new QModelIndex(self->rootIndex());
 }
 
 void QDataWidgetMapper_SetOrientation(QDataWidgetMapper* self, uintptr_t aOrientation) {
@@ -100,9 +98,7 @@ int QDataWidgetMapper_MappedSection(const QDataWidgetMapper* self, QWidget* widg
 }
 
 QByteArray* QDataWidgetMapper_MappedPropertyName(const QDataWidgetMapper* self, QWidget* widget) {
-	QByteArray _ret = self->mappedPropertyName(widget);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(self->mappedPropertyName(widget));
 }
 
 QWidget* QDataWidgetMapper_MappedWidgetAt(const QDataWidgetMapper* self, int section) {

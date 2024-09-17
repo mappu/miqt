@@ -112,15 +112,11 @@ void QWindow_SetFormat(QWindow* self, QSurfaceFormat* format) {
 }
 
 QSurfaceFormat* QWindow_Format(const QWindow* self) {
-	QSurfaceFormat _ret = self->format();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSurfaceFormat*>(new QSurfaceFormat(_ret));
+	return new QSurfaceFormat(self->format());
 }
 
 QSurfaceFormat* QWindow_RequestedFormat(const QWindow* self) {
-	QSurfaceFormat _ret = self->requestedFormat();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSurfaceFormat*>(new QSurfaceFormat(_ret));
+	return new QSurfaceFormat(self->requestedFormat());
 }
 
 void QWindow_SetFlags(QWindow* self, int flags) {
@@ -161,9 +157,7 @@ void QWindow_SetMask(QWindow* self, QRegion* region) {
 }
 
 QRegion* QWindow_Mask(const QWindow* self) {
-	QRegion _ret = self->mask();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRegion*>(new QRegion(_ret));
+	return new QRegion(self->mask());
 }
 
 bool QWindow_IsActive(const QWindow* self) {
@@ -234,27 +228,19 @@ int QWindow_MaximumHeight(const QWindow* self) {
 }
 
 QSize* QWindow_MinimumSize(const QWindow* self) {
-	QSize _ret = self->minimumSize();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->minimumSize());
 }
 
 QSize* QWindow_MaximumSize(const QWindow* self) {
-	QSize _ret = self->maximumSize();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->maximumSize());
 }
 
 QSize* QWindow_BaseSize(const QWindow* self) {
-	QSize _ret = self->baseSize();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->baseSize());
 }
 
 QSize* QWindow_SizeIncrement(const QWindow* self) {
-	QSize _ret = self->sizeIncrement();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->sizeIncrement());
 }
 
 void QWindow_SetMinimumSize(QWindow* self, QSize* size) {
@@ -274,27 +260,19 @@ void QWindow_SetSizeIncrement(QWindow* self, QSize* size) {
 }
 
 QRect* QWindow_Geometry(const QWindow* self) {
-	QRect _ret = self->geometry();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->geometry());
 }
 
 QMargins* QWindow_FrameMargins(const QWindow* self) {
-	QMargins _ret = self->frameMargins();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QMargins*>(new QMargins(_ret));
+	return new QMargins(self->frameMargins());
 }
 
 QRect* QWindow_FrameGeometry(const QWindow* self) {
-	QRect _ret = self->frameGeometry();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->frameGeometry());
 }
 
 QPoint* QWindow_FramePosition(const QWindow* self) {
-	QPoint _ret = self->framePosition();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPoint*>(new QPoint(_ret));
+	return new QPoint(self->framePosition());
 }
 
 void QWindow_SetFramePosition(QWindow* self, QPoint* point) {
@@ -318,15 +296,11 @@ int QWindow_Y(const QWindow* self) {
 }
 
 QSize* QWindow_Size(const QWindow* self) {
-	QSize _ret = self->size();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->size());
 }
 
 QPoint* QWindow_Position(const QWindow* self) {
-	QPoint _ret = self->position();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPoint*>(new QPoint(_ret));
+	return new QPoint(self->position());
 }
 
 void QWindow_SetPosition(QWindow* self, QPoint* pt) {
@@ -362,9 +336,7 @@ void QWindow_SetIcon(QWindow* self, QIcon* icon) {
 }
 
 QIcon* QWindow_Icon(const QWindow* self) {
-	QIcon _ret = self->icon();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QIcon*>(new QIcon(_ret));
+	return new QIcon(self->icon());
 }
 
 void QWindow_Destroy(QWindow* self) {
@@ -396,21 +368,15 @@ QObject* QWindow_FocusObject(const QWindow* self) {
 }
 
 QPoint* QWindow_MapToGlobal(const QWindow* self, QPoint* pos) {
-	QPoint _ret = self->mapToGlobal(*pos);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPoint*>(new QPoint(_ret));
+	return new QPoint(self->mapToGlobal(*pos));
 }
 
 QPoint* QWindow_MapFromGlobal(const QWindow* self, QPoint* pos) {
-	QPoint _ret = self->mapFromGlobal(*pos);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPoint*>(new QPoint(_ret));
+	return new QPoint(self->mapFromGlobal(*pos));
 }
 
 QCursor* QWindow_Cursor(const QWindow* self) {
-	QCursor _ret = self->cursor();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCursor*>(new QCursor(_ret));
+	return new QCursor(self->cursor());
 }
 
 void QWindow_SetCursor(QWindow* self, QCursor* cursor) {

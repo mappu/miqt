@@ -24,9 +24,7 @@ void QGlyphRun_Swap(QGlyphRun* self, QGlyphRun* other) {
 }
 
 QRawFont* QGlyphRun_RawFont(const QGlyphRun* self) {
-	QRawFont _ret = self->rawFont();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRawFont*>(new QRawFont(_ret));
+	return new QRawFont(self->rawFont());
 }
 
 void QGlyphRun_SetRawFont(QGlyphRun* self, QRawFont* rawFont) {
@@ -62,8 +60,8 @@ void QGlyphRun_SetGlyphIndexes(QGlyphRun* self, struct miqt_array* /* of unsigne
 
 struct miqt_array* QGlyphRun_Positions(const QGlyphRun* self) {
 	QVector<QPointF> _ret = self->positions();
-	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
-	QPointF** _arr = static_cast<QPointF**>(malloc(sizeof(QPointF**) * _ret.length()));
+	// Convert QList<> from C++ memory to manually-managed C memory
+	QPointF** _arr = static_cast<QPointF**>(malloc(sizeof(QPointF*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = new QPointF(_ret[i]);
 	}
@@ -145,9 +143,7 @@ void QGlyphRun_SetBoundingRect(QGlyphRun* self, QRectF* boundingRect) {
 }
 
 QRectF* QGlyphRun_BoundingRect(const QGlyphRun* self) {
-	QRectF _ret = self->boundingRect();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(_ret));
+	return new QRectF(self->boundingRect());
 }
 
 bool QGlyphRun_IsEmpty(const QGlyphRun* self) {

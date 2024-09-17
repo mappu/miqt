@@ -76,9 +76,7 @@ void QAction_SetIcon(QAction* self, QIcon* icon) {
 }
 
 QIcon* QAction_Icon(const QAction* self) {
-	QIcon _ret = self->icon();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QIcon*>(new QIcon(_ret));
+	return new QIcon(self->icon());
 }
 
 void QAction_SetText(QAction* self, struct miqt_string* text) {
@@ -171,9 +169,7 @@ void QAction_SetShortcut(QAction* self, QKeySequence* shortcut) {
 }
 
 QKeySequence* QAction_Shortcut(const QAction* self) {
-	QKeySequence _ret = self->shortcut();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QKeySequence*>(new QKeySequence(_ret));
+	return new QKeySequence(self->shortcut());
 }
 
 void QAction_SetShortcuts(QAction* self, struct miqt_array* /* of QKeySequence* */ shortcuts) {
@@ -192,8 +188,8 @@ void QAction_SetShortcutsWithShortcuts(QAction* self, uintptr_t shortcuts) {
 
 struct miqt_array* QAction_Shortcuts(const QAction* self) {
 	QList<QKeySequence> _ret = self->shortcuts();
-	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
-	QKeySequence** _arr = static_cast<QKeySequence**>(malloc(sizeof(QKeySequence**) * _ret.length()));
+	// Convert QList<> from C++ memory to manually-managed C memory
+	QKeySequence** _arr = static_cast<QKeySequence**>(malloc(sizeof(QKeySequence*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = new QKeySequence(_ret[i]);
 	}
@@ -225,9 +221,7 @@ void QAction_SetFont(QAction* self, QFont* font) {
 }
 
 QFont* QAction_Font(const QAction* self) {
-	QFont _ret = self->font();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QFont*>(new QFont(_ret));
+	return new QFont(self->font());
 }
 
 void QAction_SetCheckable(QAction* self, bool checkable) {
@@ -239,9 +233,7 @@ bool QAction_IsCheckable(const QAction* self) {
 }
 
 QVariant* QAction_Data(const QAction* self) {
-	QVariant _ret = self->data();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(_ret));
+	return new QVariant(self->data());
 }
 
 void QAction_SetData(QAction* self, QVariant* varVal) {

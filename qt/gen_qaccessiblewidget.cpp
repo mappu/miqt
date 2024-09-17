@@ -47,9 +47,7 @@ QAccessibleInterface* QAccessibleWidget_FocusChild(const QAccessibleWidget* self
 }
 
 QRect* QAccessibleWidget_Rect(const QAccessibleWidget* self) {
-	QRect _ret = self->rect();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->rect());
 }
 
 QAccessibleInterface* QAccessibleWidget_Parent(const QAccessibleWidget* self) {
@@ -73,26 +71,20 @@ uintptr_t QAccessibleWidget_Role(const QAccessibleWidget* self) {
 }
 
 QAccessible__State* QAccessibleWidget_State(const QAccessibleWidget* self) {
-	QAccessible::State _ret = self->state();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QAccessible::State*>(new QAccessible::State(_ret));
+	return new QAccessible::State(self->state());
 }
 
 QColor* QAccessibleWidget_ForegroundColor(const QAccessibleWidget* self) {
-	QColor _ret = self->foregroundColor();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QColor*>(new QColor(_ret));
+	return new QColor(self->foregroundColor());
 }
 
 QColor* QAccessibleWidget_BackgroundColor(const QAccessibleWidget* self) {
-	QColor _ret = self->backgroundColor();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QColor*>(new QColor(_ret));
+	return new QColor(self->backgroundColor());
 }
 
 struct miqt_array* QAccessibleWidget_ActionNames(const QAccessibleWidget* self) {
 	QStringList _ret = self->actionNames();
-	// Convert QStringList from C++ memory to manually-managed C memory
+	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
@@ -114,7 +106,7 @@ void QAccessibleWidget_DoAction(QAccessibleWidget* self, struct miqt_string* act
 struct miqt_array* QAccessibleWidget_KeyBindingsForAction(const QAccessibleWidget* self, struct miqt_string* actionName) {
 	QString actionName_QString = QString::fromUtf8(&actionName->data, actionName->len);
 	QStringList _ret = self->keyBindingsForAction(actionName_QString);
-	// Convert QStringList from C++ memory to manually-managed C memory
+	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];

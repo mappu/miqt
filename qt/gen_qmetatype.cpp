@@ -112,9 +112,7 @@ QMetaObject* QMetaType_MetaObject(const QMetaType* self) {
 }
 
 QByteArray* QMetaType_Name(const QMetaType* self) {
-	QByteArray _ret = self->name();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(self->name());
 }
 
 bool QMetaType_HasRegisteredComparators(int typeId) {
@@ -179,15 +177,11 @@ bool QtMetaTypePrivate__QSequentialIterableImpl_Equal(const QtMetaTypePrivate__Q
 }
 
 QtMetaTypePrivate__VariantData* QtMetaTypePrivate__QSequentialIterableImpl_GetCurrent(const QtMetaTypePrivate__QSequentialIterableImpl* self) {
-	QtMetaTypePrivate::VariantData _ret = self->getCurrent();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QtMetaTypePrivate::VariantData*>(new QtMetaTypePrivate::VariantData(_ret));
+	return new QtMetaTypePrivate::VariantData(self->getCurrent());
 }
 
 QtMetaTypePrivate__VariantData* QtMetaTypePrivate__QSequentialIterableImpl_At(const QtMetaTypePrivate__QSequentialIterableImpl* self, int idx) {
-	QtMetaTypePrivate::VariantData _ret = self->at(static_cast<int>(idx));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QtMetaTypePrivate::VariantData*>(new QtMetaTypePrivate::VariantData(_ret));
+	return new QtMetaTypePrivate::VariantData(self->at(static_cast<int>(idx)));
 }
 
 int QtMetaTypePrivate__QSequentialIterableImpl_Size(const QtMetaTypePrivate__QSequentialIterableImpl* self) {
@@ -231,15 +225,11 @@ void QtMetaTypePrivate__QAssociativeIterableImpl_DestroyIter(QtMetaTypePrivate__
 }
 
 QtMetaTypePrivate__VariantData* QtMetaTypePrivate__QAssociativeIterableImpl_GetCurrentKey(const QtMetaTypePrivate__QAssociativeIterableImpl* self) {
-	QtMetaTypePrivate::VariantData _ret = self->getCurrentKey();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QtMetaTypePrivate::VariantData*>(new QtMetaTypePrivate::VariantData(_ret));
+	return new QtMetaTypePrivate::VariantData(self->getCurrentKey());
 }
 
 QtMetaTypePrivate__VariantData* QtMetaTypePrivate__QAssociativeIterableImpl_GetCurrentValue(const QtMetaTypePrivate__QAssociativeIterableImpl* self) {
-	QtMetaTypePrivate::VariantData _ret = self->getCurrentValue();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QtMetaTypePrivate::VariantData*>(new QtMetaTypePrivate::VariantData(_ret));
+	return new QtMetaTypePrivate::VariantData(self->getCurrentValue());
 }
 
 void QtMetaTypePrivate__QAssociativeIterableImpl_Find(QtMetaTypePrivate__QAssociativeIterableImpl* self, QtMetaTypePrivate__VariantData* key) {
@@ -267,15 +257,11 @@ QtMetaTypePrivate__QPairVariantInterfaceImpl* QtMetaTypePrivate__QPairVariantInt
 }
 
 QtMetaTypePrivate__VariantData* QtMetaTypePrivate__QPairVariantInterfaceImpl_First(const QtMetaTypePrivate__QPairVariantInterfaceImpl* self) {
-	QtMetaTypePrivate::VariantData _ret = self->first();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QtMetaTypePrivate::VariantData*>(new QtMetaTypePrivate::VariantData(_ret));
+	return new QtMetaTypePrivate::VariantData(self->first());
 }
 
 QtMetaTypePrivate__VariantData* QtMetaTypePrivate__QPairVariantInterfaceImpl_Second(const QtMetaTypePrivate__QPairVariantInterfaceImpl* self) {
-	QtMetaTypePrivate::VariantData _ret = self->second();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QtMetaTypePrivate::VariantData*>(new QtMetaTypePrivate::VariantData(_ret));
+	return new QtMetaTypePrivate::VariantData(self->second());
 }
 
 void QtMetaTypePrivate__QPairVariantInterfaceImpl_Delete(QtMetaTypePrivate__QPairVariantInterfaceImpl* self) {

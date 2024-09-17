@@ -63,9 +63,7 @@ void QMouseEventTransition_SetModifierMask(QMouseEventTransition* self, int modi
 }
 
 QPainterPath* QMouseEventTransition_HitTestPath(const QMouseEventTransition* self) {
-	QPainterPath _ret = self->hitTestPath();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPainterPath*>(new QPainterPath(_ret));
+	return new QPainterPath(self->hitTestPath());
 }
 
 void QMouseEventTransition_SetHitTestPath(QMouseEventTransition* self, QPainterPath* path) {

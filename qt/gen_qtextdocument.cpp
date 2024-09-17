@@ -184,47 +184,33 @@ void QTextDocument_SetPlainText(QTextDocument* self, struct miqt_string* text) {
 }
 
 QChar* QTextDocument_CharacterAt(const QTextDocument* self, int pos) {
-	QChar _ret = self->characterAt(static_cast<int>(pos));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QChar*>(new QChar(_ret));
+	return new QChar(self->characterAt(static_cast<int>(pos)));
 }
 
 QTextCursor* QTextDocument_Find(const QTextDocument* self, struct miqt_string* subString) {
 	QString subString_QString = QString::fromUtf8(&subString->data, subString->len);
-	QTextCursor _ret = self->find(subString_QString);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextCursor*>(new QTextCursor(_ret));
+	return new QTextCursor(self->find(subString_QString));
 }
 
 QTextCursor* QTextDocument_Find2(const QTextDocument* self, struct miqt_string* subString, QTextCursor* cursor) {
 	QString subString_QString = QString::fromUtf8(&subString->data, subString->len);
-	QTextCursor _ret = self->find(subString_QString, *cursor);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextCursor*>(new QTextCursor(_ret));
+	return new QTextCursor(self->find(subString_QString, *cursor));
 }
 
 QTextCursor* QTextDocument_FindWithExpr(const QTextDocument* self, QRegExp* expr) {
-	QTextCursor _ret = self->find(*expr);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextCursor*>(new QTextCursor(_ret));
+	return new QTextCursor(self->find(*expr));
 }
 
 QTextCursor* QTextDocument_Find3(const QTextDocument* self, QRegExp* expr, QTextCursor* cursor) {
-	QTextCursor _ret = self->find(*expr, *cursor);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextCursor*>(new QTextCursor(_ret));
+	return new QTextCursor(self->find(*expr, *cursor));
 }
 
 QTextCursor* QTextDocument_Find4(const QTextDocument* self, QRegularExpression* expr) {
-	QTextCursor _ret = self->find(*expr);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextCursor*>(new QTextCursor(_ret));
+	return new QTextCursor(self->find(*expr));
 }
 
 QTextCursor* QTextDocument_Find5(const QTextDocument* self, QRegularExpression* expr, QTextCursor* cursor) {
-	QTextCursor _ret = self->find(*expr, *cursor);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextCursor*>(new QTextCursor(_ret));
+	return new QTextCursor(self->find(*expr, *cursor));
 }
 
 QTextFrame* QTextDocument_FrameAt(const QTextDocument* self, int pos) {
@@ -244,45 +230,31 @@ QTextObject* QTextDocument_ObjectForFormat(const QTextDocument* self, QTextForma
 }
 
 QTextBlock* QTextDocument_FindBlock(const QTextDocument* self, int pos) {
-	QTextBlock _ret = self->findBlock(static_cast<int>(pos));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextBlock*>(new QTextBlock(_ret));
+	return new QTextBlock(self->findBlock(static_cast<int>(pos)));
 }
 
 QTextBlock* QTextDocument_FindBlockByNumber(const QTextDocument* self, int blockNumber) {
-	QTextBlock _ret = self->findBlockByNumber(static_cast<int>(blockNumber));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextBlock*>(new QTextBlock(_ret));
+	return new QTextBlock(self->findBlockByNumber(static_cast<int>(blockNumber)));
 }
 
 QTextBlock* QTextDocument_FindBlockByLineNumber(const QTextDocument* self, int blockNumber) {
-	QTextBlock _ret = self->findBlockByLineNumber(static_cast<int>(blockNumber));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextBlock*>(new QTextBlock(_ret));
+	return new QTextBlock(self->findBlockByLineNumber(static_cast<int>(blockNumber)));
 }
 
 QTextBlock* QTextDocument_Begin(const QTextDocument* self) {
-	QTextBlock _ret = self->begin();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextBlock*>(new QTextBlock(_ret));
+	return new QTextBlock(self->begin());
 }
 
 QTextBlock* QTextDocument_End(const QTextDocument* self) {
-	QTextBlock _ret = self->end();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextBlock*>(new QTextBlock(_ret));
+	return new QTextBlock(self->end());
 }
 
 QTextBlock* QTextDocument_FirstBlock(const QTextDocument* self) {
-	QTextBlock _ret = self->firstBlock();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextBlock*>(new QTextBlock(_ret));
+	return new QTextBlock(self->firstBlock());
 }
 
 QTextBlock* QTextDocument_LastBlock(const QTextDocument* self) {
-	QTextBlock _ret = self->lastBlock();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextBlock*>(new QTextBlock(_ret));
+	return new QTextBlock(self->lastBlock());
 }
 
 void QTextDocument_SetPageSize(QTextDocument* self, QSizeF* size) {
@@ -290,9 +262,7 @@ void QTextDocument_SetPageSize(QTextDocument* self, QSizeF* size) {
 }
 
 QSizeF* QTextDocument_PageSize(const QTextDocument* self) {
-	QSizeF _ret = self->pageSize();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSizeF*>(new QSizeF(_ret));
+	return new QSizeF(self->pageSize());
 }
 
 void QTextDocument_SetDefaultFont(QTextDocument* self, QFont* font) {
@@ -300,9 +270,7 @@ void QTextDocument_SetDefaultFont(QTextDocument* self, QFont* font) {
 }
 
 QFont* QTextDocument_DefaultFont(const QTextDocument* self) {
-	QFont _ret = self->defaultFont();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QFont*>(new QFont(_ret));
+	return new QFont(self->defaultFont());
 }
 
 int QTextDocument_PageCount(const QTextDocument* self) {
@@ -318,9 +286,7 @@ void QTextDocument_Print(const QTextDocument* self, QPagedPaintDevice* printer) 
 }
 
 QVariant* QTextDocument_Resource(const QTextDocument* self, int typeVal, QUrl* name) {
-	QVariant _ret = self->resource(static_cast<int>(typeVal), *name);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(_ret));
+	return new QVariant(self->resource(static_cast<int>(typeVal), *name));
 }
 
 void QTextDocument_AddResource(QTextDocument* self, int typeVal, QUrl* name, QVariant* resource) {
@@ -329,8 +295,8 @@ void QTextDocument_AddResource(QTextDocument* self, int typeVal, QUrl* name, QVa
 
 struct miqt_array* QTextDocument_AllFormats(const QTextDocument* self) {
 	QVector<QTextFormat> _ret = self->allFormats();
-	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
-	QTextFormat** _arr = static_cast<QTextFormat**>(malloc(sizeof(QTextFormat**) * _ret.length()));
+	// Convert QList<> from C++ memory to manually-managed C memory
+	QTextFormat** _arr = static_cast<QTextFormat**>(malloc(sizeof(QTextFormat*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = new QTextFormat(_ret[i]);
 	}
@@ -389,9 +355,7 @@ void QTextDocument_AdjustSize(QTextDocument* self) {
 }
 
 QSizeF* QTextDocument_Size(const QTextDocument* self) {
-	QSizeF _ret = self->size();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSizeF*>(new QSizeF(_ret));
+	return new QSizeF(self->size());
 }
 
 int QTextDocument_BlockCount(const QTextDocument* self) {
@@ -439,9 +403,7 @@ void QTextDocument_SetMaximumBlockCount(QTextDocument* self, int maximum) {
 }
 
 QTextOption* QTextDocument_DefaultTextOption(const QTextDocument* self) {
-	QTextOption _ret = self->defaultTextOption();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextOption*>(new QTextOption(_ret));
+	return new QTextOption(self->defaultTextOption());
 }
 
 void QTextDocument_SetDefaultTextOption(QTextDocument* self, QTextOption* option) {
@@ -449,9 +411,7 @@ void QTextDocument_SetDefaultTextOption(QTextDocument* self, QTextOption* option
 }
 
 QUrl* QTextDocument_BaseUrl(const QTextDocument* self) {
-	QUrl _ret = self->baseUrl();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QUrl*>(new QUrl(_ret));
+	return new QUrl(self->baseUrl());
 }
 
 void QTextDocument_SetBaseUrl(QTextDocument* self, QUrl* url) {
@@ -649,59 +609,41 @@ void QTextDocument_SetMarkdown2(QTextDocument* self, struct miqt_string* markdow
 
 QTextCursor* QTextDocument_Find22(const QTextDocument* self, struct miqt_string* subString, int from) {
 	QString subString_QString = QString::fromUtf8(&subString->data, subString->len);
-	QTextCursor _ret = self->find(subString_QString, static_cast<int>(from));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextCursor*>(new QTextCursor(_ret));
+	return new QTextCursor(self->find(subString_QString, static_cast<int>(from)));
 }
 
 QTextCursor* QTextDocument_Find32(const QTextDocument* self, struct miqt_string* subString, int from, int options) {
 	QString subString_QString = QString::fromUtf8(&subString->data, subString->len);
-	QTextCursor _ret = self->find(subString_QString, static_cast<int>(from), static_cast<QTextDocument::FindFlags>(options));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextCursor*>(new QTextCursor(_ret));
+	return new QTextCursor(self->find(subString_QString, static_cast<int>(from), static_cast<QTextDocument::FindFlags>(options)));
 }
 
 QTextCursor* QTextDocument_Find33(const QTextDocument* self, struct miqt_string* subString, QTextCursor* cursor, int options) {
 	QString subString_QString = QString::fromUtf8(&subString->data, subString->len);
-	QTextCursor _ret = self->find(subString_QString, *cursor, static_cast<QTextDocument::FindFlags>(options));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextCursor*>(new QTextCursor(_ret));
+	return new QTextCursor(self->find(subString_QString, *cursor, static_cast<QTextDocument::FindFlags>(options)));
 }
 
 QTextCursor* QTextDocument_Find23(const QTextDocument* self, QRegExp* expr, int from) {
-	QTextCursor _ret = self->find(*expr, static_cast<int>(from));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextCursor*>(new QTextCursor(_ret));
+	return new QTextCursor(self->find(*expr, static_cast<int>(from)));
 }
 
 QTextCursor* QTextDocument_Find34(const QTextDocument* self, QRegExp* expr, int from, int options) {
-	QTextCursor _ret = self->find(*expr, static_cast<int>(from), static_cast<QTextDocument::FindFlags>(options));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextCursor*>(new QTextCursor(_ret));
+	return new QTextCursor(self->find(*expr, static_cast<int>(from), static_cast<QTextDocument::FindFlags>(options)));
 }
 
 QTextCursor* QTextDocument_Find35(const QTextDocument* self, QRegExp* expr, QTextCursor* cursor, int options) {
-	QTextCursor _ret = self->find(*expr, *cursor, static_cast<QTextDocument::FindFlags>(options));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextCursor*>(new QTextCursor(_ret));
+	return new QTextCursor(self->find(*expr, *cursor, static_cast<QTextDocument::FindFlags>(options)));
 }
 
 QTextCursor* QTextDocument_Find24(const QTextDocument* self, QRegularExpression* expr, int from) {
-	QTextCursor _ret = self->find(*expr, static_cast<int>(from));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextCursor*>(new QTextCursor(_ret));
+	return new QTextCursor(self->find(*expr, static_cast<int>(from)));
 }
 
 QTextCursor* QTextDocument_Find36(const QTextDocument* self, QRegularExpression* expr, int from, int options) {
-	QTextCursor _ret = self->find(*expr, static_cast<int>(from), static_cast<QTextDocument::FindFlags>(options));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextCursor*>(new QTextCursor(_ret));
+	return new QTextCursor(self->find(*expr, static_cast<int>(from), static_cast<QTextDocument::FindFlags>(options)));
 }
 
 QTextCursor* QTextDocument_Find37(const QTextDocument* self, QRegularExpression* expr, QTextCursor* cursor, int options) {
-	QTextCursor _ret = self->find(*expr, *cursor, static_cast<QTextDocument::FindFlags>(options));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextCursor*>(new QTextCursor(_ret));
+	return new QTextCursor(self->find(*expr, *cursor, static_cast<QTextDocument::FindFlags>(options)));
 }
 
 void QTextDocument_DrawContents2(QTextDocument* self, QPainter* painter, QRectF* rect) {

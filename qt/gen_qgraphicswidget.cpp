@@ -86,9 +86,7 @@ void QGraphicsWidget_SetStyle(QGraphicsWidget* self, QStyle* style) {
 }
 
 QFont* QGraphicsWidget_Font(const QGraphicsWidget* self) {
-	QFont _ret = self->font();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QFont*>(new QFont(_ret));
+	return new QFont(self->font());
 }
 
 void QGraphicsWidget_SetFont(QGraphicsWidget* self, QFont* font) {
@@ -96,9 +94,7 @@ void QGraphicsWidget_SetFont(QGraphicsWidget* self, QFont* font) {
 }
 
 QPalette* QGraphicsWidget_Palette(const QGraphicsWidget* self) {
-	QPalette _ret = self->palette();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPalette*>(new QPalette(_ret));
+	return new QPalette(self->palette());
 }
 
 void QGraphicsWidget_SetPalette(QGraphicsWidget* self, QPalette* palette) {
@@ -122,9 +118,7 @@ void QGraphicsWidget_Resize2(QGraphicsWidget* self, double w, double h) {
 }
 
 QSizeF* QGraphicsWidget_Size(const QGraphicsWidget* self) {
-	QSizeF _ret = self->size();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSizeF*>(new QSizeF(_ret));
+	return new QSizeF(self->size());
 }
 
 void QGraphicsWidget_SetGeometry(QGraphicsWidget* self, QRectF* rect) {
@@ -136,9 +130,7 @@ void QGraphicsWidget_SetGeometry2(QGraphicsWidget* self, double x, double y, dou
 }
 
 QRectF* QGraphicsWidget_Rect(const QGraphicsWidget* self) {
-	QRectF _ret = self->rect();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(_ret));
+	return new QRectF(self->rect());
 }
 
 void QGraphicsWidget_SetContentsMargins(QGraphicsWidget* self, double left, double top, double right, double bottom) {
@@ -170,15 +162,11 @@ void QGraphicsWidget_UnsetWindowFrameMargins(QGraphicsWidget* self) {
 }
 
 QRectF* QGraphicsWidget_WindowFrameGeometry(const QGraphicsWidget* self) {
-	QRectF _ret = self->windowFrameGeometry();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(_ret));
+	return new QRectF(self->windowFrameGeometry());
 }
 
 QRectF* QGraphicsWidget_WindowFrameRect(const QGraphicsWidget* self) {
-	QRectF _ret = self->windowFrameRect();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(_ret));
+	return new QRectF(self->windowFrameRect());
 }
 
 int QGraphicsWidget_WindowFlags(const QGraphicsWidget* self) {
@@ -310,15 +298,11 @@ void QGraphicsWidget_PaintWindowFrame(QGraphicsWidget* self, QPainter* painter, 
 }
 
 QRectF* QGraphicsWidget_BoundingRect(const QGraphicsWidget* self) {
-	QRectF _ret = self->boundingRect();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(_ret));
+	return new QRectF(self->boundingRect());
 }
 
 QPainterPath* QGraphicsWidget_Shape(const QGraphicsWidget* self) {
-	QPainterPath _ret = self->shape();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPainterPath*>(new QPainterPath(_ret));
+	return new QPainterPath(self->shape());
 }
 
 void QGraphicsWidget_GeometryChanged(QGraphicsWidget* self) {

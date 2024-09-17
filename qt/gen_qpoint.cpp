@@ -41,9 +41,7 @@ int QPoint_ManhattanLength(const QPoint* self) {
 }
 
 QPoint* QPoint_Transposed(const QPoint* self) {
-	QPoint _ret = self->transposed();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPoint*>(new QPoint(_ret));
+	return new QPoint(self->transposed());
 }
 
 QPoint* QPoint_OperatorPlusAssign(QPoint* self, QPoint* p) {
@@ -131,9 +129,7 @@ void QPointF_SetY(QPointF* self, double y) {
 }
 
 QPointF* QPointF_Transposed(const QPointF* self) {
-	QPointF _ret = self->transposed();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPointF*>(new QPointF(_ret));
+	return new QPointF(self->transposed());
 }
 
 QPointF* QPointF_OperatorPlusAssign(QPointF* self, QPointF* p) {
@@ -165,9 +161,7 @@ double QPointF_DotProduct(QPointF* p1, QPointF* p2) {
 }
 
 QPoint* QPointF_ToPoint(const QPointF* self) {
-	QPoint _ret = self->toPoint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPoint*>(new QPoint(_ret));
+	return new QPoint(self->toPoint());
 }
 
 void QPointF_Delete(QPointF* self) {

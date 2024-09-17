@@ -154,9 +154,7 @@ void QWidget_SetWindowModified(QWidget* self, bool windowModified) {
 }
 
 QRect* QWidget_FrameGeometry(const QWidget* self) {
-	QRect _ret = self->frameGeometry();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->frameGeometry());
 }
 
 QRect* QWidget_Geometry(const QWidget* self) {
@@ -166,9 +164,7 @@ QRect* QWidget_Geometry(const QWidget* self) {
 }
 
 QRect* QWidget_NormalGeometry(const QWidget* self) {
-	QRect _ret = self->normalGeometry();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->normalGeometry());
 }
 
 int QWidget_X(const QWidget* self) {
@@ -180,21 +176,15 @@ int QWidget_Y(const QWidget* self) {
 }
 
 QPoint* QWidget_Pos(const QWidget* self) {
-	QPoint _ret = self->pos();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPoint*>(new QPoint(_ret));
+	return new QPoint(self->pos());
 }
 
 QSize* QWidget_FrameSize(const QWidget* self) {
-	QSize _ret = self->frameSize();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->frameSize());
 }
 
 QSize* QWidget_Size(const QWidget* self) {
-	QSize _ret = self->size();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->size());
 }
 
 int QWidget_Width(const QWidget* self) {
@@ -206,33 +196,23 @@ int QWidget_Height(const QWidget* self) {
 }
 
 QRect* QWidget_Rect(const QWidget* self) {
-	QRect _ret = self->rect();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->rect());
 }
 
 QRect* QWidget_ChildrenRect(const QWidget* self) {
-	QRect _ret = self->childrenRect();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->childrenRect());
 }
 
 QRegion* QWidget_ChildrenRegion(const QWidget* self) {
-	QRegion _ret = self->childrenRegion();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRegion*>(new QRegion(_ret));
+	return new QRegion(self->childrenRegion());
 }
 
 QSize* QWidget_MinimumSize(const QWidget* self) {
-	QSize _ret = self->minimumSize();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->minimumSize());
 }
 
 QSize* QWidget_MaximumSize(const QWidget* self) {
-	QSize _ret = self->maximumSize();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->maximumSize());
 }
 
 int QWidget_MinimumWidth(const QWidget* self) {
@@ -284,9 +264,7 @@ void QWidget_SetMaximumHeight(QWidget* self, int maxh) {
 }
 
 QSize* QWidget_SizeIncrement(const QWidget* self) {
-	QSize _ret = self->sizeIncrement();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->sizeIncrement());
 }
 
 void QWidget_SetSizeIncrement(QWidget* self, QSize* sizeIncrement) {
@@ -298,9 +276,7 @@ void QWidget_SetSizeIncrement2(QWidget* self, int w, int h) {
 }
 
 QSize* QWidget_BaseSize(const QWidget* self) {
-	QSize _ret = self->baseSize();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->baseSize());
 }
 
 void QWidget_SetBaseSize(QWidget* self, QSize* baseSize) {
@@ -328,39 +304,27 @@ void QWidget_SetFixedHeight(QWidget* self, int h) {
 }
 
 QPoint* QWidget_MapToGlobal(const QWidget* self, QPoint* param1) {
-	QPoint _ret = self->mapToGlobal(*param1);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPoint*>(new QPoint(_ret));
+	return new QPoint(self->mapToGlobal(*param1));
 }
 
 QPoint* QWidget_MapFromGlobal(const QWidget* self, QPoint* param1) {
-	QPoint _ret = self->mapFromGlobal(*param1);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPoint*>(new QPoint(_ret));
+	return new QPoint(self->mapFromGlobal(*param1));
 }
 
 QPoint* QWidget_MapToParent(const QWidget* self, QPoint* param1) {
-	QPoint _ret = self->mapToParent(*param1);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPoint*>(new QPoint(_ret));
+	return new QPoint(self->mapToParent(*param1));
 }
 
 QPoint* QWidget_MapFromParent(const QWidget* self, QPoint* param1) {
-	QPoint _ret = self->mapFromParent(*param1);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPoint*>(new QPoint(_ret));
+	return new QPoint(self->mapFromParent(*param1));
 }
 
 QPoint* QWidget_MapTo(const QWidget* self, QWidget* param1, QPoint* param2) {
-	QPoint _ret = self->mapTo(param1, *param2);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPoint*>(new QPoint(_ret));
+	return new QPoint(self->mapTo(param1, *param2));
 }
 
 QPoint* QWidget_MapFrom(const QWidget* self, QWidget* param1, QPoint* param2) {
-	QPoint _ret = self->mapFrom(param1, *param2);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPoint*>(new QPoint(_ret));
+	return new QPoint(self->mapFrom(param1, *param2));
 }
 
 QWidget* QWidget_Window(const QWidget* self) {
@@ -414,21 +378,15 @@ void QWidget_SetFont(QWidget* self, QFont* font) {
 }
 
 QFontMetrics* QWidget_FontMetrics(const QWidget* self) {
-	QFontMetrics _ret = self->fontMetrics();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QFontMetrics*>(new QFontMetrics(_ret));
+	return new QFontMetrics(self->fontMetrics());
 }
 
 QFontInfo* QWidget_FontInfo(const QWidget* self) {
-	QFontInfo _ret = self->fontInfo();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QFontInfo*>(new QFontInfo(_ret));
+	return new QFontInfo(self->fontInfo());
 }
 
 QCursor* QWidget_Cursor(const QWidget* self) {
-	QCursor _ret = self->cursor();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCursor*>(new QCursor(_ret));
+	return new QCursor(self->cursor());
 }
 
 void QWidget_SetCursor(QWidget* self, QCursor* cursor) {
@@ -468,9 +426,7 @@ void QWidget_SetMaskWithMask(QWidget* self, QRegion* mask) {
 }
 
 QRegion* QWidget_Mask(const QWidget* self) {
-	QRegion _ret = self->mask();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRegion*>(new QRegion(_ret));
+	return new QRegion(self->mask());
 }
 
 void QWidget_ClearMask(QWidget* self) {
@@ -486,9 +442,7 @@ void QWidget_RenderWithPainter(QWidget* self, QPainter* painter) {
 }
 
 QPixmap* QWidget_Grab(QWidget* self) {
-	QPixmap _ret = self->grab();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPixmap*>(new QPixmap(_ret));
+	return new QPixmap(self->grab());
 }
 
 QGraphicsEffect* QWidget_GraphicsEffect(const QWidget* self) {
@@ -536,9 +490,7 @@ void QWidget_SetWindowIcon(QWidget* self, QIcon* icon) {
 }
 
 QIcon* QWidget_WindowIcon(const QWidget* self) {
-	QIcon _ret = self->windowIcon();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QIcon*>(new QIcon(_ret));
+	return new QIcon(self->windowIcon());
 }
 
 void QWidget_SetWindowIconText(QWidget* self, struct miqt_string* windowIconText) {
@@ -675,9 +627,7 @@ void QWidget_SetLocale(QWidget* self, QLocale* locale) {
 }
 
 QLocale* QWidget_Locale(const QWidget* self) {
-	QLocale _ret = self->locale();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QLocale*>(new QLocale(_ret));
+	return new QLocale(self->locale());
 }
 
 void QWidget_UnsetLocale(QWidget* self) {
@@ -907,9 +857,7 @@ void QWidget_SetGeometryWithGeometry(QWidget* self, QRect* geometry) {
 }
 
 QByteArray* QWidget_SaveGeometry(const QWidget* self) {
-	QByteArray _ret = self->saveGeometry();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(self->saveGeometry());
 }
 
 bool QWidget_RestoreGeometry(QWidget* self, QByteArray* geometry) {
@@ -958,21 +906,15 @@ void QWidget_OverrideWindowState(QWidget* self, int state) {
 }
 
 QSize* QWidget_SizeHint(const QWidget* self) {
-	QSize _ret = self->sizeHint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->sizeHint());
 }
 
 QSize* QWidget_MinimumSizeHint(const QWidget* self) {
-	QSize _ret = self->minimumSizeHint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->minimumSizeHint());
 }
 
 QSizePolicy* QWidget_SizePolicy(const QWidget* self) {
-	QSizePolicy _ret = self->sizePolicy();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSizePolicy*>(new QSizePolicy(_ret));
+	return new QSizePolicy(self->sizePolicy());
 }
 
 void QWidget_SetSizePolicy(QWidget* self, QSizePolicy* sizePolicy) {
@@ -992,9 +934,7 @@ bool QWidget_HasHeightForWidth(const QWidget* self) {
 }
 
 QRegion* QWidget_VisibleRegion(const QWidget* self) {
-	QRegion _ret = self->visibleRegion();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRegion*>(new QRegion(_ret));
+	return new QRegion(self->visibleRegion());
 }
 
 void QWidget_SetContentsMargins(QWidget* self, int left, int top, int right, int bottom) {
@@ -1010,15 +950,11 @@ void QWidget_GetContentsMargins(const QWidget* self, int* left, int* top, int* r
 }
 
 QMargins* QWidget_ContentsMargins(const QWidget* self) {
-	QMargins _ret = self->contentsMargins();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QMargins*>(new QMargins(_ret));
+	return new QMargins(self->contentsMargins());
 }
 
 QRect* QWidget_ContentsRect(const QWidget* self) {
-	QRect _ret = self->contentsRect();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->contentsRect());
 }
 
 QLayout* QWidget_Layout(const QWidget* self) {
@@ -1253,9 +1189,7 @@ void QWidget_connect_CustomContextMenuRequested(QWidget* self, void* slot) {
 }
 
 QVariant* QWidget_InputMethodQuery(const QWidget* self, uintptr_t param1) {
-	QVariant _ret = self->inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(_ret));
+	return new QVariant(self->inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
 }
 
 int QWidget_InputMethodHints(const QWidget* self) {
@@ -1320,9 +1254,7 @@ void QWidget_Render42(QWidget* self, QPainter* painter, QPoint* targetOffset, QR
 }
 
 QPixmap* QWidget_Grab1(QWidget* self, QRect* rectangle) {
-	QPixmap _ret = self->grab(*rectangle);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPixmap*>(new QPixmap(_ret));
+	return new QPixmap(self->grab(*rectangle));
 }
 
 void QWidget_GrabGesture2(QWidget* self, uintptr_t typeVal, int flags) {

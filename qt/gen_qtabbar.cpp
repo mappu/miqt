@@ -106,9 +106,7 @@ void QTabBar_SetTabText(QTabBar* self, int index, struct miqt_string* text) {
 }
 
 QColor* QTabBar_TabTextColor(const QTabBar* self, int index) {
-	QColor _ret = self->tabTextColor(static_cast<int>(index));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QColor*>(new QColor(_ret));
+	return new QColor(self->tabTextColor(static_cast<int>(index)));
 }
 
 void QTabBar_SetTabTextColor(QTabBar* self, int index, QColor* color) {
@@ -116,9 +114,7 @@ void QTabBar_SetTabTextColor(QTabBar* self, int index, QColor* color) {
 }
 
 QIcon* QTabBar_TabIcon(const QTabBar* self, int index) {
-	QIcon _ret = self->tabIcon(static_cast<int>(index));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QIcon*>(new QIcon(_ret));
+	return new QIcon(self->tabIcon(static_cast<int>(index)));
 }
 
 void QTabBar_SetTabIcon(QTabBar* self, int index, QIcon* icon) {
@@ -163,15 +159,11 @@ void QTabBar_SetTabData(QTabBar* self, int index, QVariant* data) {
 }
 
 QVariant* QTabBar_TabData(const QTabBar* self, int index) {
-	QVariant _ret = self->tabData(static_cast<int>(index));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(_ret));
+	return new QVariant(self->tabData(static_cast<int>(index)));
 }
 
 QRect* QTabBar_TabRect(const QTabBar* self, int index) {
-	QRect _ret = self->tabRect(static_cast<int>(index));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->tabRect(static_cast<int>(index)));
 }
 
 int QTabBar_TabAt(const QTabBar* self, QPoint* pos) {
@@ -187,15 +179,11 @@ int QTabBar_Count(const QTabBar* self) {
 }
 
 QSize* QTabBar_SizeHint(const QTabBar* self) {
-	QSize _ret = self->sizeHint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->sizeHint());
 }
 
 QSize* QTabBar_MinimumSizeHint(const QTabBar* self) {
-	QSize _ret = self->minimumSizeHint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->minimumSizeHint());
 }
 
 void QTabBar_SetDrawBase(QTabBar* self, bool drawTheBase) {
@@ -207,9 +195,7 @@ bool QTabBar_DrawBase(const QTabBar* self) {
 }
 
 QSize* QTabBar_IconSize(const QTabBar* self) {
-	QSize _ret = self->iconSize();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->iconSize());
 }
 
 void QTabBar_SetIconSize(QTabBar* self, QSize* size) {

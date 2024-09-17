@@ -357,8 +357,8 @@ struct miqt_string* QXmlStreamReader_ReadElementText(QXmlStreamReader* self) {
 
 struct miqt_array* QXmlStreamReader_NamespaceDeclarations(const QXmlStreamReader* self) {
 	QXmlStreamNamespaceDeclarations _ret = self->namespaceDeclarations();
-	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
-	QXmlStreamNamespaceDeclaration** _arr = static_cast<QXmlStreamNamespaceDeclaration**>(malloc(sizeof(QXmlStreamNamespaceDeclaration**) * _ret.length()));
+	// Convert QList<> from C++ memory to manually-managed C memory
+	QXmlStreamNamespaceDeclaration** _arr = static_cast<QXmlStreamNamespaceDeclaration**>(malloc(sizeof(QXmlStreamNamespaceDeclaration*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = new QXmlStreamNamespaceDeclaration(_ret[i]);
 	}
@@ -384,8 +384,8 @@ void QXmlStreamReader_AddExtraNamespaceDeclarations(QXmlStreamReader* self, stru
 
 struct miqt_array* QXmlStreamReader_NotationDeclarations(const QXmlStreamReader* self) {
 	QXmlStreamNotationDeclarations _ret = self->notationDeclarations();
-	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
-	QXmlStreamNotationDeclaration** _arr = static_cast<QXmlStreamNotationDeclaration**>(malloc(sizeof(QXmlStreamNotationDeclaration**) * _ret.length()));
+	// Convert QList<> from C++ memory to manually-managed C memory
+	QXmlStreamNotationDeclaration** _arr = static_cast<QXmlStreamNotationDeclaration**>(malloc(sizeof(QXmlStreamNotationDeclaration*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = new QXmlStreamNotationDeclaration(_ret[i]);
 	}
@@ -397,8 +397,8 @@ struct miqt_array* QXmlStreamReader_NotationDeclarations(const QXmlStreamReader*
 
 struct miqt_array* QXmlStreamReader_EntityDeclarations(const QXmlStreamReader* self) {
 	QXmlStreamEntityDeclarations _ret = self->entityDeclarations();
-	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
-	QXmlStreamEntityDeclaration** _arr = static_cast<QXmlStreamEntityDeclaration**>(malloc(sizeof(QXmlStreamEntityDeclaration**) * _ret.length()));
+	// Convert QList<> from C++ memory to manually-managed C memory
+	QXmlStreamEntityDeclaration** _arr = static_cast<QXmlStreamEntityDeclaration**>(malloc(sizeof(QXmlStreamEntityDeclaration*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = new QXmlStreamEntityDeclaration(_ret[i]);
 	}

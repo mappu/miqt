@@ -290,134 +290,96 @@ struct miqt_string* QLocale_DateTimeFormat(const QLocale* self) {
 
 QDate* QLocale_ToDate(const QLocale* self, struct miqt_string* stringVal) {
 	QString stringVal_QString = QString::fromUtf8(&stringVal->data, stringVal->len);
-	QDate _ret = self->toDate(stringVal_QString);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QDate*>(new QDate(_ret));
+	return new QDate(self->toDate(stringVal_QString));
 }
 
 QTime* QLocale_ToTime(const QLocale* self, struct miqt_string* stringVal) {
 	QString stringVal_QString = QString::fromUtf8(&stringVal->data, stringVal->len);
-	QTime _ret = self->toTime(stringVal_QString);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTime*>(new QTime(_ret));
+	return new QTime(self->toTime(stringVal_QString));
 }
 
 QDateTime* QLocale_ToDateTime(const QLocale* self, struct miqt_string* stringVal) {
 	QString stringVal_QString = QString::fromUtf8(&stringVal->data, stringVal->len);
-	QDateTime _ret = self->toDateTime(stringVal_QString);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QDateTime*>(new QDateTime(_ret));
+	return new QDateTime(self->toDateTime(stringVal_QString));
 }
 
 QDate* QLocale_ToDate2(const QLocale* self, struct miqt_string* stringVal, struct miqt_string* format) {
 	QString stringVal_QString = QString::fromUtf8(&stringVal->data, stringVal->len);
 	QString format_QString = QString::fromUtf8(&format->data, format->len);
-	QDate _ret = self->toDate(stringVal_QString, format_QString);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QDate*>(new QDate(_ret));
+	return new QDate(self->toDate(stringVal_QString, format_QString));
 }
 
 QTime* QLocale_ToTime2(const QLocale* self, struct miqt_string* stringVal, struct miqt_string* format) {
 	QString stringVal_QString = QString::fromUtf8(&stringVal->data, stringVal->len);
 	QString format_QString = QString::fromUtf8(&format->data, format->len);
-	QTime _ret = self->toTime(stringVal_QString, format_QString);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTime*>(new QTime(_ret));
+	return new QTime(self->toTime(stringVal_QString, format_QString));
 }
 
 QDateTime* QLocale_ToDateTime2(const QLocale* self, struct miqt_string* stringVal, struct miqt_string* format) {
 	QString stringVal_QString = QString::fromUtf8(&stringVal->data, stringVal->len);
 	QString format_QString = QString::fromUtf8(&format->data, format->len);
-	QDateTime _ret = self->toDateTime(stringVal_QString, format_QString);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QDateTime*>(new QDateTime(_ret));
+	return new QDateTime(self->toDateTime(stringVal_QString, format_QString));
 }
 
 QDate* QLocale_ToDate3(const QLocale* self, struct miqt_string* stringVal, uintptr_t format, QCalendar* cal) {
 	QString stringVal_QString = QString::fromUtf8(&stringVal->data, stringVal->len);
-	QDate _ret = self->toDate(stringVal_QString, static_cast<QLocale::FormatType>(format), *cal);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QDate*>(new QDate(_ret));
+	return new QDate(self->toDate(stringVal_QString, static_cast<QLocale::FormatType>(format), *cal));
 }
 
 QDateTime* QLocale_ToDateTime3(const QLocale* self, struct miqt_string* stringVal, uintptr_t format, QCalendar* cal) {
 	QString stringVal_QString = QString::fromUtf8(&stringVal->data, stringVal->len);
-	QDateTime _ret = self->toDateTime(stringVal_QString, static_cast<QLocale::FormatType>(format), *cal);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QDateTime*>(new QDateTime(_ret));
+	return new QDateTime(self->toDateTime(stringVal_QString, static_cast<QLocale::FormatType>(format), *cal));
 }
 
 QDate* QLocale_ToDate4(const QLocale* self, struct miqt_string* stringVal, struct miqt_string* format, QCalendar* cal) {
 	QString stringVal_QString = QString::fromUtf8(&stringVal->data, stringVal->len);
 	QString format_QString = QString::fromUtf8(&format->data, format->len);
-	QDate _ret = self->toDate(stringVal_QString, format_QString, *cal);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QDate*>(new QDate(_ret));
+	return new QDate(self->toDate(stringVal_QString, format_QString, *cal));
 }
 
 QDateTime* QLocale_ToDateTime4(const QLocale* self, struct miqt_string* stringVal, struct miqt_string* format, QCalendar* cal) {
 	QString stringVal_QString = QString::fromUtf8(&stringVal->data, stringVal->len);
 	QString format_QString = QString::fromUtf8(&format->data, format->len);
-	QDateTime _ret = self->toDateTime(stringVal_QString, format_QString, *cal);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QDateTime*>(new QDateTime(_ret));
+	return new QDateTime(self->toDateTime(stringVal_QString, format_QString, *cal));
 }
 
 QTime* QLocale_ToTime3(const QLocale* self, struct miqt_string* stringVal, uintptr_t format, QCalendar* cal) {
 	QString stringVal_QString = QString::fromUtf8(&stringVal->data, stringVal->len);
-	QTime _ret = self->toTime(stringVal_QString, static_cast<QLocale::FormatType>(format), *cal);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTime*>(new QTime(_ret));
+	return new QTime(self->toTime(stringVal_QString, static_cast<QLocale::FormatType>(format), *cal));
 }
 
 QTime* QLocale_ToTime4(const QLocale* self, struct miqt_string* stringVal, struct miqt_string* format, QCalendar* cal) {
 	QString stringVal_QString = QString::fromUtf8(&stringVal->data, stringVal->len);
 	QString format_QString = QString::fromUtf8(&format->data, format->len);
-	QTime _ret = self->toTime(stringVal_QString, format_QString, *cal);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTime*>(new QTime(_ret));
+	return new QTime(self->toTime(stringVal_QString, format_QString, *cal));
 }
 
 QChar* QLocale_DecimalPoint(const QLocale* self) {
-	QChar _ret = self->decimalPoint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QChar*>(new QChar(_ret));
+	return new QChar(self->decimalPoint());
 }
 
 QChar* QLocale_GroupSeparator(const QLocale* self) {
-	QChar _ret = self->groupSeparator();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QChar*>(new QChar(_ret));
+	return new QChar(self->groupSeparator());
 }
 
 QChar* QLocale_Percent(const QLocale* self) {
-	QChar _ret = self->percent();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QChar*>(new QChar(_ret));
+	return new QChar(self->percent());
 }
 
 QChar* QLocale_ZeroDigit(const QLocale* self) {
-	QChar _ret = self->zeroDigit();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QChar*>(new QChar(_ret));
+	return new QChar(self->zeroDigit());
 }
 
 QChar* QLocale_NegativeSign(const QLocale* self) {
-	QChar _ret = self->negativeSign();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QChar*>(new QChar(_ret));
+	return new QChar(self->negativeSign());
 }
 
 QChar* QLocale_PositiveSign(const QLocale* self) {
-	QChar _ret = self->positiveSign();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QChar*>(new QChar(_ret));
+	return new QChar(self->positiveSign());
 }
 
 QChar* QLocale_Exponential(const QLocale* self) {
-	QChar _ret = self->exponential();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QChar*>(new QChar(_ret));
+	return new QChar(self->exponential());
 }
 
 struct miqt_string* QLocale_MonthName(const QLocale* self, int param1) {
@@ -458,7 +420,8 @@ struct miqt_array* QLocale_Weekdays(const QLocale* self) {
 	// Convert QList<> from C++ memory to manually-managed C memory
 	uintptr_t* _arr = static_cast<uintptr_t*>(malloc(sizeof(uintptr_t) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
-		_arr[i] = _ret[i];
+		Qt::DayOfWeek _lv_ret = _ret[i];
+		_arr[i] = static_cast<uintptr_t>(_lv_ret);
 	}
 	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
 	_out->len = _ret.length();
@@ -486,9 +449,7 @@ uintptr_t QLocale_MeasurementSystem(const QLocale* self) {
 }
 
 QLocale* QLocale_Collation(const QLocale* self) {
-	QLocale _ret = self->collation();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QLocale*>(new QLocale(_ret));
+	return new QLocale(self->collation());
 }
 
 uintptr_t QLocale_TextDirection(const QLocale* self) {
@@ -607,7 +568,7 @@ struct miqt_string* QLocale_FormattedDataSizeWithBytes(const QLocale* self, long
 
 struct miqt_array* QLocale_UiLanguages(const QLocale* self) {
 	QStringList _ret = self->uiLanguages();
-	// Convert QStringList from C++ memory to manually-managed C memory
+	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
@@ -655,21 +616,17 @@ void QLocale_SetDefault(QLocale* locale) {
 }
 
 QLocale* QLocale_C() {
-	QLocale _ret = QLocale::c();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QLocale*>(new QLocale(_ret));
+	return new QLocale(QLocale::c());
 }
 
 QLocale* QLocale_System() {
-	QLocale _ret = QLocale::system();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QLocale*>(new QLocale(_ret));
+	return new QLocale(QLocale::system());
 }
 
 struct miqt_array* QLocale_MatchingLocales(uintptr_t language, uintptr_t script, uintptr_t country) {
 	QList<QLocale> _ret = QLocale::matchingLocales(static_cast<QLocale::Language>(language), static_cast<QLocale::Script>(script), static_cast<QLocale::Country>(country));
-	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
-	QLocale** _arr = static_cast<QLocale**>(malloc(sizeof(QLocale**) * _ret.length()));
+	// Convert QList<> from C++ memory to manually-managed C memory
+	QLocale** _arr = static_cast<QLocale**>(malloc(sizeof(QLocale*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = new QLocale(_ret[i]);
 	}
@@ -684,7 +641,8 @@ struct miqt_array* QLocale_CountriesForLanguage(uintptr_t lang) {
 	// Convert QList<> from C++ memory to manually-managed C memory
 	uintptr_t* _arr = static_cast<uintptr_t*>(malloc(sizeof(uintptr_t) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
-		_arr[i] = _ret[i];
+		QLocale::Country _lv_ret = _ret[i];
+		_arr[i] = static_cast<uintptr_t>(_lv_ret);
 	}
 	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
 	_out->len = _ret.length();
@@ -844,23 +802,17 @@ struct miqt_string* QLocale_DateTimeFormat1(const QLocale* self, uintptr_t forma
 
 QDate* QLocale_ToDate22(const QLocale* self, struct miqt_string* stringVal, uintptr_t param2) {
 	QString stringVal_QString = QString::fromUtf8(&stringVal->data, stringVal->len);
-	QDate _ret = self->toDate(stringVal_QString, static_cast<QLocale::FormatType>(param2));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QDate*>(new QDate(_ret));
+	return new QDate(self->toDate(stringVal_QString, static_cast<QLocale::FormatType>(param2)));
 }
 
 QTime* QLocale_ToTime22(const QLocale* self, struct miqt_string* stringVal, uintptr_t param2) {
 	QString stringVal_QString = QString::fromUtf8(&stringVal->data, stringVal->len);
-	QTime _ret = self->toTime(stringVal_QString, static_cast<QLocale::FormatType>(param2));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTime*>(new QTime(_ret));
+	return new QTime(self->toTime(stringVal_QString, static_cast<QLocale::FormatType>(param2)));
 }
 
 QDateTime* QLocale_ToDateTime22(const QLocale* self, struct miqt_string* stringVal, uintptr_t format) {
 	QString stringVal_QString = QString::fromUtf8(&stringVal->data, stringVal->len);
-	QDateTime _ret = self->toDateTime(stringVal_QString, static_cast<QLocale::FormatType>(format));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QDateTime*>(new QDateTime(_ret));
+	return new QDateTime(self->toDateTime(stringVal_QString, static_cast<QLocale::FormatType>(format)));
 }
 
 struct miqt_string* QLocale_MonthName2(const QLocale* self, int param1, uintptr_t format) {

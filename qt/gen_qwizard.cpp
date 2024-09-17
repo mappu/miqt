@@ -134,9 +134,7 @@ void QWizard_SetField(QWizard* self, struct miqt_string* name, QVariant* value) 
 
 QVariant* QWizard_Field(const QWizard* self, struct miqt_string* name) {
 	QString name_QString = QString::fromUtf8(&name->data, name->len);
-	QVariant _ret = self->field(name_QString);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(_ret));
+	return new QVariant(self->field(name_QString));
 }
 
 void QWizard_SetWizardStyle(QWizard* self, uintptr_t style) {
@@ -218,9 +216,7 @@ void QWizard_SetPixmap(QWizard* self, uintptr_t which, QPixmap* pixmap) {
 }
 
 QPixmap* QWizard_Pixmap(const QWizard* self, uintptr_t which) {
-	QPixmap _ret = self->pixmap(static_cast<QWizard::WizardPixmap>(which));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPixmap*>(new QPixmap(_ret));
+	return new QPixmap(self->pixmap(static_cast<QWizard::WizardPixmap>(which)));
 }
 
 void QWizard_SetSideWidget(QWizard* self, QWidget* widget) {
@@ -240,9 +236,7 @@ void QWizard_SetVisible(QWizard* self, bool visible) {
 }
 
 QSize* QWizard_SizeHint(const QWizard* self) {
-	QSize _ret = self->sizeHint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->sizeHint());
 }
 
 void QWizard_CurrentIdChanged(QWizard* self, int id) {
@@ -402,9 +396,7 @@ void QWizardPage_SetPixmap(QWizardPage* self, uintptr_t which, QPixmap* pixmap) 
 }
 
 QPixmap* QWizardPage_Pixmap(const QWizardPage* self, uintptr_t which) {
-	QPixmap _ret = self->pixmap(static_cast<QWizard::WizardPixmap>(which));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPixmap*>(new QPixmap(_ret));
+	return new QPixmap(self->pixmap(static_cast<QWizard::WizardPixmap>(which)));
 }
 
 void QWizardPage_SetFinalPage(QWizardPage* self, bool finalPage) {

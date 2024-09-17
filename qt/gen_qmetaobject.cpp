@@ -22,15 +22,11 @@ QMetaMethod* QMetaMethod_new2(QMetaMethod* param1) {
 }
 
 QByteArray* QMetaMethod_MethodSignature(const QMetaMethod* self) {
-	QByteArray _ret = self->methodSignature();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(self->methodSignature());
 }
 
 QByteArray* QMetaMethod_Name(const QMetaMethod* self) {
-	QByteArray _ret = self->name();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(self->name());
 }
 
 const char* QMetaMethod_TypeName(const QMetaMethod* self) {
@@ -55,8 +51,8 @@ void QMetaMethod_GetParameterTypes(const QMetaMethod* self, int* types) {
 
 struct miqt_array* QMetaMethod_ParameterTypes(const QMetaMethod* self) {
 	QList<QByteArray> _ret = self->parameterTypes();
-	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
-	QByteArray** _arr = static_cast<QByteArray**>(malloc(sizeof(QByteArray**) * _ret.length()));
+	// Convert QList<> from C++ memory to manually-managed C memory
+	QByteArray** _arr = static_cast<QByteArray**>(malloc(sizeof(QByteArray*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = new QByteArray(_ret[i]);
 	}
@@ -68,8 +64,8 @@ struct miqt_array* QMetaMethod_ParameterTypes(const QMetaMethod* self) {
 
 struct miqt_array* QMetaMethod_ParameterNames(const QMetaMethod* self) {
 	QList<QByteArray> _ret = self->parameterNames();
-	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
-	QByteArray** _arr = static_cast<QByteArray**>(malloc(sizeof(QByteArray**) * _ret.length()));
+	// Convert QList<> from C++ memory to manually-managed C memory
+	QByteArray** _arr = static_cast<QByteArray**>(malloc(sizeof(QByteArray*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = new QByteArray(_ret[i]);
 	}
@@ -346,9 +342,7 @@ int QMetaEnum_KeysToValue(const QMetaEnum* self, const char* keys) {
 }
 
 QByteArray* QMetaEnum_ValueToKeys(const QMetaEnum* self, int value) {
-	QByteArray _ret = self->valueToKeys(static_cast<int>(value));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(self->valueToKeys(static_cast<int>(value)));
 }
 
 QMetaObject* QMetaEnum_EnclosingMetaObject(const QMetaEnum* self) {
@@ -453,9 +447,7 @@ bool QMetaProperty_IsEnumType(const QMetaProperty* self) {
 }
 
 QMetaEnum* QMetaProperty_Enumerator(const QMetaProperty* self) {
-	QMetaEnum _ret = self->enumerator();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QMetaEnum*>(new QMetaEnum(_ret));
+	return new QMetaEnum(self->enumerator());
 }
 
 bool QMetaProperty_HasNotifySignal(const QMetaProperty* self) {
@@ -463,9 +455,7 @@ bool QMetaProperty_HasNotifySignal(const QMetaProperty* self) {
 }
 
 QMetaMethod* QMetaProperty_NotifySignal(const QMetaProperty* self) {
-	QMetaMethod _ret = self->notifySignal();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QMetaMethod*>(new QMetaMethod(_ret));
+	return new QMetaMethod(self->notifySignal());
 }
 
 int QMetaProperty_NotifySignalIndex(const QMetaProperty* self) {
@@ -477,9 +467,7 @@ int QMetaProperty_Revision(const QMetaProperty* self) {
 }
 
 QVariant* QMetaProperty_Read(const QMetaProperty* self, QObject* obj) {
-	QVariant _ret = self->read(obj);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(_ret));
+	return new QVariant(self->read(obj));
 }
 
 bool QMetaProperty_Write(const QMetaProperty* self, QObject* obj, QVariant* value) {

@@ -117,7 +117,7 @@ int QRegExp_CaptureCount(const QRegExp* self) {
 
 struct miqt_array* QRegExp_CapturedTexts(const QRegExp* self) {
 	QStringList _ret = self->capturedTexts();
-	// Convert QStringList from C++ memory to manually-managed C memory
+	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
@@ -133,7 +133,7 @@ struct miqt_array* QRegExp_CapturedTexts(const QRegExp* self) {
 
 struct miqt_array* QRegExp_CapturedTexts2(QRegExp* self) {
 	QStringList _ret = self->capturedTexts();
-	// Convert QStringList from C++ memory to manually-managed C memory
+	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];

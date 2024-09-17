@@ -96,9 +96,7 @@ bool QFileDevice_Unmap(QFileDevice* self, unsigned char* address) {
 }
 
 QDateTime* QFileDevice_FileTime(const QFileDevice* self, uintptr_t time) {
-	QDateTime _ret = self->fileTime(static_cast<QFileDevice::FileTime>(time));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QDateTime*>(new QDateTime(_ret));
+	return new QDateTime(self->fileTime(static_cast<QFileDevice::FileTime>(time)));
 }
 
 bool QFileDevice_SetFileTime(QFileDevice* self, QDateTime* newDate, uintptr_t fileTime) {

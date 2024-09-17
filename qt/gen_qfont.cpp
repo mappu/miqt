@@ -62,7 +62,7 @@ void QFont_SetFamily(QFont* self, struct miqt_string* family) {
 
 struct miqt_array* QFont_Families(const QFont* self) {
 	QStringList _ret = self->families();
-	// Convert QStringList from C++ memory to manually-managed C memory
+	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
@@ -334,7 +334,7 @@ struct miqt_string* QFont_Substitute(struct miqt_string* param1) {
 struct miqt_array* QFont_Substitutes(struct miqt_string* param1) {
 	QString param1_QString = QString::fromUtf8(&param1->data, param1->len);
 	QStringList _ret = QFont::substitutes(param1_QString);
-	// Convert QStringList from C++ memory to manually-managed C memory
+	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
@@ -350,7 +350,7 @@ struct miqt_array* QFont_Substitutes(struct miqt_string* param1) {
 
 struct miqt_array* QFont_Substitutions() {
 	QStringList _ret = QFont::substitutions();
-	// Convert QStringList from C++ memory to manually-managed C memory
+	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
@@ -420,9 +420,7 @@ struct miqt_string* QFont_LastResortFont(const QFont* self) {
 }
 
 QFont* QFont_Resolve(const QFont* self, QFont* param1) {
-	QFont _ret = self->resolve(*param1);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QFont*>(new QFont(_ret));
+	return new QFont(self->resolve(*param1));
 }
 
 unsigned int QFont_Resolve2(const QFont* self) {

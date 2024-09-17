@@ -135,9 +135,7 @@ void QComboBox_SetMinimumContentsLength(QComboBox* self, int characters) {
 }
 
 QSize* QComboBox_IconSize(const QComboBox* self) {
-	QSize _ret = self->iconSize();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->iconSize());
 }
 
 void QComboBox_SetIconSize(QComboBox* self, QSize* size) {
@@ -205,9 +203,7 @@ void QComboBox_SetModel(QComboBox* self, QAbstractItemModel* model) {
 }
 
 QModelIndex* QComboBox_RootModelIndex(const QComboBox* self) {
-	QModelIndex _ret = self->rootModelIndex();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QModelIndex*>(new QModelIndex(_ret));
+	return new QModelIndex(self->rootModelIndex());
 }
 
 void QComboBox_SetRootModelIndex(QComboBox* self, QModelIndex* index) {
@@ -234,9 +230,7 @@ struct miqt_string* QComboBox_CurrentText(const QComboBox* self) {
 }
 
 QVariant* QComboBox_CurrentData(const QComboBox* self) {
-	QVariant _ret = self->currentData();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(_ret));
+	return new QVariant(self->currentData());
 }
 
 struct miqt_string* QComboBox_ItemText(const QComboBox* self, int index) {
@@ -247,15 +241,11 @@ struct miqt_string* QComboBox_ItemText(const QComboBox* self, int index) {
 }
 
 QIcon* QComboBox_ItemIcon(const QComboBox* self, int index) {
-	QIcon _ret = self->itemIcon(static_cast<int>(index));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QIcon*>(new QIcon(_ret));
+	return new QIcon(self->itemIcon(static_cast<int>(index)));
 }
 
 QVariant* QComboBox_ItemData(const QComboBox* self, int index) {
-	QVariant _ret = self->itemData(static_cast<int>(index));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(_ret));
+	return new QVariant(self->itemData(static_cast<int>(index)));
 }
 
 void QComboBox_AddItem(QComboBox* self, struct miqt_string* text) {
@@ -328,15 +318,11 @@ void QComboBox_SetView(QComboBox* self, QAbstractItemView* itemView) {
 }
 
 QSize* QComboBox_SizeHint(const QComboBox* self) {
-	QSize _ret = self->sizeHint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->sizeHint());
 }
 
 QSize* QComboBox_MinimumSizeHint(const QComboBox* self) {
-	QSize _ret = self->minimumSizeHint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->minimumSizeHint());
 }
 
 void QComboBox_ShowPopup(QComboBox* self) {
@@ -352,15 +338,11 @@ bool QComboBox_Event(QComboBox* self, QEvent* event) {
 }
 
 QVariant* QComboBox_InputMethodQuery(const QComboBox* self, uintptr_t param1) {
-	QVariant _ret = self->inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(_ret));
+	return new QVariant(self->inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
 }
 
 QVariant* QComboBox_InputMethodQuery2(const QComboBox* self, uintptr_t query, QVariant* argument) {
-	QVariant _ret = self->inputMethodQuery(static_cast<Qt::InputMethodQuery>(query), *argument);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(_ret));
+	return new QVariant(self->inputMethodQuery(static_cast<Qt::InputMethodQuery>(query), *argument));
 }
 
 void QComboBox_Clear(QComboBox* self) {
@@ -565,15 +547,11 @@ int QComboBox_FindData3(const QComboBox* self, QVariant* data, int role, int fla
 }
 
 QVariant* QComboBox_CurrentData1(const QComboBox* self, int role) {
-	QVariant _ret = self->currentData(static_cast<int>(role));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(_ret));
+	return new QVariant(self->currentData(static_cast<int>(role)));
 }
 
 QVariant* QComboBox_ItemData2(const QComboBox* self, int index, int role) {
-	QVariant _ret = self->itemData(static_cast<int>(index), static_cast<int>(role));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(_ret));
+	return new QVariant(self->itemData(static_cast<int>(index), static_cast<int>(role)));
 }
 
 void QComboBox_AddItem22(QComboBox* self, struct miqt_string* text, QVariant* userData) {

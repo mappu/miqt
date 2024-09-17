@@ -45,9 +45,7 @@ struct miqt_string* QTextObject_TrUtf8(const char* s) {
 }
 
 QTextFormat* QTextObject_Format(const QTextObject* self) {
-	QTextFormat _ret = self->format();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextFormat*>(new QTextFormat(_ret));
+	return new QTextFormat(self->format());
 }
 
 int QTextObject_FormatIndex(const QTextObject* self) {
@@ -171,21 +169,15 @@ void QTextFrame_SetFrameFormat(QTextFrame* self, QTextFrameFormat* format) {
 }
 
 QTextFrameFormat* QTextFrame_FrameFormat(const QTextFrame* self) {
-	QTextFrameFormat _ret = self->frameFormat();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextFrameFormat*>(new QTextFrameFormat(_ret));
+	return new QTextFrameFormat(self->frameFormat());
 }
 
 QTextCursor* QTextFrame_FirstCursorPosition(const QTextFrame* self) {
-	QTextCursor _ret = self->firstCursorPosition();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextCursor*>(new QTextCursor(_ret));
+	return new QTextCursor(self->firstCursorPosition());
 }
 
 QTextCursor* QTextFrame_LastCursorPosition(const QTextFrame* self) {
-	QTextCursor _ret = self->lastCursorPosition();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextCursor*>(new QTextCursor(_ret));
+	return new QTextCursor(self->lastCursorPosition());
 }
 
 int QTextFrame_FirstPosition(const QTextFrame* self) {
@@ -222,15 +214,11 @@ QTextFrame* QTextFrame_ParentFrame(const QTextFrame* self) {
 }
 
 QTextFrame__iterator* QTextFrame_Begin(const QTextFrame* self) {
-	QTextFrame::iterator _ret = self->begin();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextFrame::iterator*>(new QTextFrame::iterator(_ret));
+	return new QTextFrame::iterator(self->begin());
 }
 
 QTextFrame__iterator* QTextFrame_End(const QTextFrame* self) {
-	QTextFrame::iterator _ret = self->end();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextFrame::iterator*>(new QTextFrame::iterator(_ret));
+	return new QTextFrame::iterator(self->end());
 }
 
 struct miqt_string* QTextFrame_Tr2(const char* s, const char* c) {
@@ -322,9 +310,7 @@ void QTextBlock_ClearLayout(QTextBlock* self) {
 }
 
 QTextBlockFormat* QTextBlock_BlockFormat(const QTextBlock* self) {
-	QTextBlockFormat _ret = self->blockFormat();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextBlockFormat*>(new QTextBlockFormat(_ret));
+	return new QTextBlockFormat(self->blockFormat());
 }
 
 int QTextBlock_BlockFormatIndex(const QTextBlock* self) {
@@ -332,9 +318,7 @@ int QTextBlock_BlockFormatIndex(const QTextBlock* self) {
 }
 
 QTextCharFormat* QTextBlock_CharFormat(const QTextBlock* self) {
-	QTextCharFormat _ret = self->charFormat();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextCharFormat*>(new QTextCharFormat(_ret));
+	return new QTextCharFormat(self->charFormat());
 }
 
 int QTextBlock_CharFormatIndex(const QTextBlock* self) {
@@ -355,8 +339,8 @@ struct miqt_string* QTextBlock_Text(const QTextBlock* self) {
 
 struct miqt_array* QTextBlock_TextFormats(const QTextBlock* self) {
 	QVector<QTextLayout::FormatRange> _ret = self->textFormats();
-	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
-	QTextLayout__FormatRange** _arr = static_cast<QTextLayout__FormatRange**>(malloc(sizeof(QTextLayout__FormatRange**) * _ret.length()));
+	// Convert QList<> from C++ memory to manually-managed C memory
+	QTextLayout__FormatRange** _arr = static_cast<QTextLayout__FormatRange**>(malloc(sizeof(QTextLayout__FormatRange*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = new QTextLayout::FormatRange(_ret[i]);
 	}
@@ -423,27 +407,19 @@ int QTextBlock_LineCount(const QTextBlock* self) {
 }
 
 QTextBlock__iterator* QTextBlock_Begin(const QTextBlock* self) {
-	QTextBlock::iterator _ret = self->begin();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextBlock::iterator*>(new QTextBlock::iterator(_ret));
+	return new QTextBlock::iterator(self->begin());
 }
 
 QTextBlock__iterator* QTextBlock_End(const QTextBlock* self) {
-	QTextBlock::iterator _ret = self->end();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextBlock::iterator*>(new QTextBlock::iterator(_ret));
+	return new QTextBlock::iterator(self->end());
 }
 
 QTextBlock* QTextBlock_Next(const QTextBlock* self) {
-	QTextBlock _ret = self->next();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextBlock*>(new QTextBlock(_ret));
+	return new QTextBlock(self->next());
 }
 
 QTextBlock* QTextBlock_Previous(const QTextBlock* self) {
-	QTextBlock _ret = self->previous();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextBlock*>(new QTextBlock(_ret));
+	return new QTextBlock(self->previous());
 }
 
 int QTextBlock_FragmentIndex(const QTextBlock* self) {
@@ -495,9 +471,7 @@ bool QTextFragment_Contains(const QTextFragment* self, int position) {
 }
 
 QTextCharFormat* QTextFragment_CharFormat(const QTextFragment* self) {
-	QTextCharFormat _ret = self->charFormat();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextCharFormat*>(new QTextCharFormat(_ret));
+	return new QTextCharFormat(self->charFormat());
 }
 
 int QTextFragment_CharFormatIndex(const QTextFragment* self) {
@@ -513,8 +487,8 @@ struct miqt_string* QTextFragment_Text(const QTextFragment* self) {
 
 struct miqt_array* QTextFragment_GlyphRuns(const QTextFragment* self) {
 	QList<QGlyphRun> _ret = self->glyphRuns();
-	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
-	QGlyphRun** _arr = static_cast<QGlyphRun**>(malloc(sizeof(QGlyphRun**) * _ret.length()));
+	// Convert QList<> from C++ memory to manually-managed C memory
+	QGlyphRun** _arr = static_cast<QGlyphRun**>(malloc(sizeof(QGlyphRun*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = new QGlyphRun(_ret[i]);
 	}
@@ -526,8 +500,8 @@ struct miqt_array* QTextFragment_GlyphRuns(const QTextFragment* self) {
 
 struct miqt_array* QTextFragment_GlyphRuns1(const QTextFragment* self, int from) {
 	QList<QGlyphRun> _ret = self->glyphRuns(static_cast<int>(from));
-	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
-	QGlyphRun** _arr = static_cast<QGlyphRun**>(malloc(sizeof(QGlyphRun**) * _ret.length()));
+	// Convert QList<> from C++ memory to manually-managed C memory
+	QGlyphRun** _arr = static_cast<QGlyphRun**>(malloc(sizeof(QGlyphRun*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = new QGlyphRun(_ret[i]);
 	}
@@ -539,8 +513,8 @@ struct miqt_array* QTextFragment_GlyphRuns1(const QTextFragment* self, int from)
 
 struct miqt_array* QTextFragment_GlyphRuns2(const QTextFragment* self, int from, int length) {
 	QList<QGlyphRun> _ret = self->glyphRuns(static_cast<int>(from), static_cast<int>(length));
-	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
-	QGlyphRun** _arr = static_cast<QGlyphRun**>(malloc(sizeof(QGlyphRun**) * _ret.length()));
+	// Convert QList<> from C++ memory to manually-managed C memory
+	QGlyphRun** _arr = static_cast<QGlyphRun**>(malloc(sizeof(QGlyphRun*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = new QGlyphRun(_ret[i]);
 	}
@@ -571,9 +545,7 @@ QTextFrame* QTextFrame__iterator_CurrentFrame(const QTextFrame__iterator* self) 
 }
 
 QTextBlock* QTextFrame__iterator_CurrentBlock(const QTextFrame__iterator* self) {
-	QTextBlock _ret = self->currentBlock();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextBlock*>(new QTextBlock(_ret));
+	return new QTextBlock(self->currentBlock());
 }
 
 bool QTextFrame__iterator_AtEnd(const QTextFrame__iterator* self) {
@@ -589,15 +561,11 @@ bool QTextFrame__iterator_OperatorNotEqual(const QTextFrame__iterator* self, QTe
 }
 
 QTextFrame__iterator* QTextFrame__iterator_OperatorPlusPlus(QTextFrame__iterator* self, int param1) {
-	QTextFrame::iterator _ret = self->operator++(static_cast<int>(param1));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextFrame::iterator*>(new QTextFrame::iterator(_ret));
+	return new QTextFrame::iterator(self->operator++(static_cast<int>(param1)));
 }
 
 QTextFrame__iterator* QTextFrame__iterator_OperatorMinusMinus(QTextFrame__iterator* self, int param1) {
-	QTextFrame::iterator _ret = self->operator--(static_cast<int>(param1));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextFrame::iterator*>(new QTextFrame::iterator(_ret));
+	return new QTextFrame::iterator(self->operator--(static_cast<int>(param1)));
 }
 
 void QTextFrame__iterator_Delete(QTextFrame__iterator* self) {
@@ -613,9 +581,7 @@ QTextBlock__iterator* QTextBlock__iterator_new2(QTextBlock__iterator* o) {
 }
 
 QTextFragment* QTextBlock__iterator_Fragment(const QTextBlock__iterator* self) {
-	QTextFragment _ret = self->fragment();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextFragment*>(new QTextFragment(_ret));
+	return new QTextFragment(self->fragment());
 }
 
 bool QTextBlock__iterator_AtEnd(const QTextBlock__iterator* self) {
@@ -631,15 +597,11 @@ bool QTextBlock__iterator_OperatorNotEqual(const QTextBlock__iterator* self, QTe
 }
 
 QTextBlock__iterator* QTextBlock__iterator_OperatorPlusPlus(QTextBlock__iterator* self, int param1) {
-	QTextBlock::iterator _ret = self->operator++(static_cast<int>(param1));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextBlock::iterator*>(new QTextBlock::iterator(_ret));
+	return new QTextBlock::iterator(self->operator++(static_cast<int>(param1)));
 }
 
 QTextBlock__iterator* QTextBlock__iterator_OperatorMinusMinus(QTextBlock__iterator* self, int param1) {
-	QTextBlock::iterator _ret = self->operator--(static_cast<int>(param1));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextBlock::iterator*>(new QTextBlock::iterator(_ret));
+	return new QTextBlock::iterator(self->operator--(static_cast<int>(param1)));
 }
 
 void QTextBlock__iterator_Delete(QTextBlock__iterator* self) {

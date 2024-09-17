@@ -31,7 +31,7 @@ void QJsonObject_Swap(QJsonObject* self, QJsonObject* other) {
 
 struct miqt_array* QJsonObject_Keys(const QJsonObject* self) {
 	QStringList _ret = self->keys();
-	// Convert QStringList from C++ memory to manually-managed C memory
+	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
@@ -63,23 +63,17 @@ bool QJsonObject_IsEmpty(const QJsonObject* self) {
 
 QJsonValue* QJsonObject_Value(const QJsonObject* self, struct miqt_string* key) {
 	QString key_QString = QString::fromUtf8(&key->data, key->len);
-	QJsonValue _ret = self->value(key_QString);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QJsonValue*>(new QJsonValue(_ret));
+	return new QJsonValue(self->value(key_QString));
 }
 
 QJsonValue* QJsonObject_OperatorSubscript(const QJsonObject* self, struct miqt_string* key) {
 	QString key_QString = QString::fromUtf8(&key->data, key->len);
-	QJsonValue _ret = self->operator[](key_QString);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QJsonValue*>(new QJsonValue(_ret));
+	return new QJsonValue(self->operator[](key_QString));
 }
 
 QJsonValueRef* QJsonObject_OperatorSubscriptWithKey(QJsonObject* self, struct miqt_string* key) {
 	QString key_QString = QString::fromUtf8(&key->data, key->len);
-	QJsonValueRef _ret = self->operator[](key_QString);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QJsonValueRef*>(new QJsonValueRef(_ret));
+	return new QJsonValueRef(self->operator[](key_QString));
 }
 
 void QJsonObject_Remove(QJsonObject* self, struct miqt_string* key) {
@@ -89,9 +83,7 @@ void QJsonObject_Remove(QJsonObject* self, struct miqt_string* key) {
 
 QJsonValue* QJsonObject_Take(QJsonObject* self, struct miqt_string* key) {
 	QString key_QString = QString::fromUtf8(&key->data, key->len);
-	QJsonValue _ret = self->take(key_QString);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QJsonValue*>(new QJsonValue(_ret));
+	return new QJsonValue(self->take(key_QString));
 }
 
 bool QJsonObject_Contains(const QJsonObject* self, struct miqt_string* key) {
@@ -108,73 +100,51 @@ bool QJsonObject_OperatorNotEqual(const QJsonObject* self, QJsonObject* other) {
 }
 
 QJsonObject__iterator* QJsonObject_Begin(QJsonObject* self) {
-	QJsonObject::iterator _ret = self->begin();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QJsonObject::iterator*>(new QJsonObject::iterator(_ret));
+	return new QJsonObject::iterator(self->begin());
 }
 
 QJsonObject__const_iterator* QJsonObject_Begin2(const QJsonObject* self) {
-	QJsonObject::const_iterator _ret = self->begin();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QJsonObject::const_iterator*>(new QJsonObject::const_iterator(_ret));
+	return new QJsonObject::const_iterator(self->begin());
 }
 
 QJsonObject__const_iterator* QJsonObject_ConstBegin(const QJsonObject* self) {
-	QJsonObject::const_iterator _ret = self->constBegin();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QJsonObject::const_iterator*>(new QJsonObject::const_iterator(_ret));
+	return new QJsonObject::const_iterator(self->constBegin());
 }
 
 QJsonObject__iterator* QJsonObject_End(QJsonObject* self) {
-	QJsonObject::iterator _ret = self->end();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QJsonObject::iterator*>(new QJsonObject::iterator(_ret));
+	return new QJsonObject::iterator(self->end());
 }
 
 QJsonObject__const_iterator* QJsonObject_End2(const QJsonObject* self) {
-	QJsonObject::const_iterator _ret = self->end();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QJsonObject::const_iterator*>(new QJsonObject::const_iterator(_ret));
+	return new QJsonObject::const_iterator(self->end());
 }
 
 QJsonObject__const_iterator* QJsonObject_ConstEnd(const QJsonObject* self) {
-	QJsonObject::const_iterator _ret = self->constEnd();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QJsonObject::const_iterator*>(new QJsonObject::const_iterator(_ret));
+	return new QJsonObject::const_iterator(self->constEnd());
 }
 
 QJsonObject__iterator* QJsonObject_Erase(QJsonObject* self, QJsonObject__iterator* it) {
-	QJsonObject::iterator _ret = self->erase(*it);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QJsonObject::iterator*>(new QJsonObject::iterator(_ret));
+	return new QJsonObject::iterator(self->erase(*it));
 }
 
 QJsonObject__iterator* QJsonObject_Find(QJsonObject* self, struct miqt_string* key) {
 	QString key_QString = QString::fromUtf8(&key->data, key->len);
-	QJsonObject::iterator _ret = self->find(key_QString);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QJsonObject::iterator*>(new QJsonObject::iterator(_ret));
+	return new QJsonObject::iterator(self->find(key_QString));
 }
 
 QJsonObject__const_iterator* QJsonObject_FindWithKey(const QJsonObject* self, struct miqt_string* key) {
 	QString key_QString = QString::fromUtf8(&key->data, key->len);
-	QJsonObject::const_iterator _ret = self->find(key_QString);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QJsonObject::const_iterator*>(new QJsonObject::const_iterator(_ret));
+	return new QJsonObject::const_iterator(self->find(key_QString));
 }
 
 QJsonObject__const_iterator* QJsonObject_ConstFind(const QJsonObject* self, struct miqt_string* key) {
 	QString key_QString = QString::fromUtf8(&key->data, key->len);
-	QJsonObject::const_iterator _ret = self->constFind(key_QString);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QJsonObject::const_iterator*>(new QJsonObject::const_iterator(_ret));
+	return new QJsonObject::const_iterator(self->constFind(key_QString));
 }
 
 QJsonObject__iterator* QJsonObject_Insert(QJsonObject* self, struct miqt_string* key, QJsonValue* value) {
 	QString key_QString = QString::fromUtf8(&key->data, key->len);
-	QJsonObject::iterator _ret = self->insert(key_QString, *value);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QJsonObject::iterator*>(new QJsonObject::iterator(_ret));
+	return new QJsonObject::iterator(self->insert(key_QString, *value));
 }
 
 bool QJsonObject_Empty(const QJsonObject* self) {
@@ -205,27 +175,19 @@ struct miqt_string* QJsonObject__iterator_Key(const QJsonObject__iterator* self)
 }
 
 QJsonValueRef* QJsonObject__iterator_Value(const QJsonObject__iterator* self) {
-	QJsonValueRef _ret = self->value();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QJsonValueRef*>(new QJsonValueRef(_ret));
+	return new QJsonValueRef(self->value());
 }
 
 QJsonValueRef* QJsonObject__iterator_OperatorMultiply(const QJsonObject__iterator* self) {
-	QJsonValueRef _ret = self->operator*();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QJsonValueRef*>(new QJsonValueRef(_ret));
+	return new QJsonValueRef(self->operator*());
 }
 
 QJsonValueRefPtr* QJsonObject__iterator_OperatorMinusGreater(const QJsonObject__iterator* self) {
-	QJsonValueRefPtr _ret = self->operator->();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QJsonValueRefPtr*>(new QJsonValueRefPtr(_ret));
+	return new QJsonValueRefPtr(self->operator->());
 }
 
 QJsonValueRef* QJsonObject__iterator_OperatorSubscript(QJsonObject__iterator* self, int j) {
-	QJsonValueRef _ret = self->operator[](static_cast<int>(j));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QJsonValueRef*>(new QJsonValueRef(_ret));
+	return new QJsonValueRef(self->operator[](static_cast<int>(j)));
 }
 
 bool QJsonObject__iterator_OperatorEqual(const QJsonObject__iterator* self, QJsonObject__iterator* other) {
@@ -253,27 +215,19 @@ bool QJsonObject__iterator_OperatorGreaterOrEqual(const QJsonObject__iterator* s
 }
 
 QJsonObject__iterator* QJsonObject__iterator_OperatorPlusPlus(QJsonObject__iterator* self, int param1) {
-	QJsonObject::iterator _ret = self->operator++(static_cast<int>(param1));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QJsonObject::iterator*>(new QJsonObject::iterator(_ret));
+	return new QJsonObject::iterator(self->operator++(static_cast<int>(param1)));
 }
 
 QJsonObject__iterator* QJsonObject__iterator_OperatorMinusMinus(QJsonObject__iterator* self, int param1) {
-	QJsonObject::iterator _ret = self->operator--(static_cast<int>(param1));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QJsonObject::iterator*>(new QJsonObject::iterator(_ret));
+	return new QJsonObject::iterator(self->operator--(static_cast<int>(param1)));
 }
 
 QJsonObject__iterator* QJsonObject__iterator_OperatorPlus(const QJsonObject__iterator* self, int j) {
-	QJsonObject::iterator _ret = self->operator+(static_cast<int>(j));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QJsonObject::iterator*>(new QJsonObject::iterator(_ret));
+	return new QJsonObject::iterator(self->operator+(static_cast<int>(j)));
 }
 
 QJsonObject__iterator* QJsonObject__iterator_OperatorMinus(const QJsonObject__iterator* self, int j) {
-	QJsonObject::iterator _ret = self->operator-(static_cast<int>(j));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QJsonObject::iterator*>(new QJsonObject::iterator(_ret));
+	return new QJsonObject::iterator(self->operator-(static_cast<int>(j)));
 }
 
 int QJsonObject__iterator_OperatorMinusWithQJsonObjectiterator(const QJsonObject__iterator* self, QJsonObject__iterator* j) {
@@ -332,27 +286,19 @@ struct miqt_string* QJsonObject__const_iterator_Key(const QJsonObject__const_ite
 }
 
 QJsonValue* QJsonObject__const_iterator_Value(const QJsonObject__const_iterator* self) {
-	QJsonValue _ret = self->value();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QJsonValue*>(new QJsonValue(_ret));
+	return new QJsonValue(self->value());
 }
 
 QJsonValue* QJsonObject__const_iterator_OperatorMultiply(const QJsonObject__const_iterator* self) {
-	QJsonValue _ret = self->operator*();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QJsonValue*>(new QJsonValue(_ret));
+	return new QJsonValue(self->operator*());
 }
 
 QJsonValuePtr* QJsonObject__const_iterator_OperatorMinusGreater(const QJsonObject__const_iterator* self) {
-	QJsonValuePtr _ret = self->operator->();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QJsonValuePtr*>(new QJsonValuePtr(_ret));
+	return new QJsonValuePtr(self->operator->());
 }
 
 QJsonValue* QJsonObject__const_iterator_OperatorSubscript(QJsonObject__const_iterator* self, int j) {
-	QJsonValue _ret = self->operator[](static_cast<int>(j));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QJsonValue*>(new QJsonValue(_ret));
+	return new QJsonValue(self->operator[](static_cast<int>(j)));
 }
 
 bool QJsonObject__const_iterator_OperatorEqual(const QJsonObject__const_iterator* self, QJsonObject__const_iterator* other) {
@@ -380,27 +326,19 @@ bool QJsonObject__const_iterator_OperatorGreaterOrEqual(const QJsonObject__const
 }
 
 QJsonObject__const_iterator* QJsonObject__const_iterator_OperatorPlusPlus(QJsonObject__const_iterator* self, int param1) {
-	QJsonObject::const_iterator _ret = self->operator++(static_cast<int>(param1));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QJsonObject::const_iterator*>(new QJsonObject::const_iterator(_ret));
+	return new QJsonObject::const_iterator(self->operator++(static_cast<int>(param1)));
 }
 
 QJsonObject__const_iterator* QJsonObject__const_iterator_OperatorMinusMinus(QJsonObject__const_iterator* self, int param1) {
-	QJsonObject::const_iterator _ret = self->operator--(static_cast<int>(param1));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QJsonObject::const_iterator*>(new QJsonObject::const_iterator(_ret));
+	return new QJsonObject::const_iterator(self->operator--(static_cast<int>(param1)));
 }
 
 QJsonObject__const_iterator* QJsonObject__const_iterator_OperatorPlus(const QJsonObject__const_iterator* self, int j) {
-	QJsonObject::const_iterator _ret = self->operator+(static_cast<int>(j));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QJsonObject::const_iterator*>(new QJsonObject::const_iterator(_ret));
+	return new QJsonObject::const_iterator(self->operator+(static_cast<int>(j)));
 }
 
 QJsonObject__const_iterator* QJsonObject__const_iterator_OperatorMinus(const QJsonObject__const_iterator* self, int j) {
-	QJsonObject::const_iterator _ret = self->operator-(static_cast<int>(j));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QJsonObject::const_iterator*>(new QJsonObject::const_iterator(_ret));
+	return new QJsonObject::const_iterator(self->operator-(static_cast<int>(j)));
 }
 
 int QJsonObject__const_iterator_OperatorMinusWithQJsonObjectconstIterator(const QJsonObject__const_iterator* self, QJsonObject__const_iterator* j) {

@@ -91,9 +91,7 @@ void QBrush_SetMatrix(QBrush* self, QMatrix* mat) {
 }
 
 QTransform* QBrush_Transform(const QBrush* self) {
-	QTransform _ret = self->transform();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTransform*>(new QTransform(_ret));
+	return new QTransform(self->transform());
 }
 
 void QBrush_SetTransform(QBrush* self, QTransform* transform) {
@@ -101,9 +99,7 @@ void QBrush_SetTransform(QBrush* self, QTransform* transform) {
 }
 
 QPixmap* QBrush_Texture(const QBrush* self) {
-	QPixmap _ret = self->texture();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPixmap*>(new QPixmap(_ret));
+	return new QPixmap(self->texture());
 }
 
 void QBrush_SetTexture(QBrush* self, QPixmap* pixmap) {
@@ -111,9 +107,7 @@ void QBrush_SetTexture(QBrush* self, QPixmap* pixmap) {
 }
 
 QImage* QBrush_TextureImage(const QBrush* self) {
-	QImage _ret = self->textureImage();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QImage*>(new QImage(_ret));
+	return new QImage(self->textureImage());
 }
 
 void QBrush_SetTextureImage(QBrush* self, QImage* image) {
@@ -247,9 +241,7 @@ QLinearGradient* QLinearGradient_new4(QLinearGradient* param1) {
 }
 
 QPointF* QLinearGradient_Start(const QLinearGradient* self) {
-	QPointF _ret = self->start();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPointF*>(new QPointF(_ret));
+	return new QPointF(self->start());
 }
 
 void QLinearGradient_SetStart(QLinearGradient* self, QPointF* start) {
@@ -261,9 +253,7 @@ void QLinearGradient_SetStart2(QLinearGradient* self, double x, double y) {
 }
 
 QPointF* QLinearGradient_FinalStop(const QLinearGradient* self) {
-	QPointF _ret = self->finalStop();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPointF*>(new QPointF(_ret));
+	return new QPointF(self->finalStop());
 }
 
 void QLinearGradient_SetFinalStop(QLinearGradient* self, QPointF* stop) {
@@ -311,9 +301,7 @@ QRadialGradient* QRadialGradient_new8(QRadialGradient* param1) {
 }
 
 QPointF* QRadialGradient_Center(const QRadialGradient* self) {
-	QPointF _ret = self->center();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPointF*>(new QPointF(_ret));
+	return new QPointF(self->center());
 }
 
 void QRadialGradient_SetCenter(QRadialGradient* self, QPointF* center) {
@@ -325,9 +313,7 @@ void QRadialGradient_SetCenter2(QRadialGradient* self, double x, double y) {
 }
 
 QPointF* QRadialGradient_FocalPoint(const QRadialGradient* self) {
-	QPointF _ret = self->focalPoint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPointF*>(new QPointF(_ret));
+	return new QPointF(self->focalPoint());
 }
 
 void QRadialGradient_SetFocalPoint(QRadialGradient* self, QPointF* focalPoint) {
@@ -383,9 +369,7 @@ QConicalGradient* QConicalGradient_new4(QConicalGradient* param1) {
 }
 
 QPointF* QConicalGradient_Center(const QConicalGradient* self) {
-	QPointF _ret = self->center();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPointF*>(new QPointF(_ret));
+	return new QPointF(self->center());
 }
 
 void QConicalGradient_SetCenter(QConicalGradient* self, QPointF* center) {

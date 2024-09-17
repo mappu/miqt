@@ -251,9 +251,7 @@ long long QPalette_CacheKey(const QPalette* self) {
 }
 
 QPalette* QPalette_Resolve(const QPalette* self, QPalette* param1) {
-	QPalette _ret = self->resolve(*param1);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPalette*>(new QPalette(_ret));
+	return new QPalette(self->resolve(*param1));
 }
 
 unsigned int QPalette_Resolve2(const QPalette* self) {

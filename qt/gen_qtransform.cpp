@@ -130,21 +130,15 @@ void QTransform_SetMatrix(QTransform* self, double m11, double m12, double m13, 
 }
 
 QTransform* QTransform_Inverted(const QTransform* self) {
-	QTransform _ret = self->inverted();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTransform*>(new QTransform(_ret));
+	return new QTransform(self->inverted());
 }
 
 QTransform* QTransform_Adjoint(const QTransform* self) {
-	QTransform _ret = self->adjoint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTransform*>(new QTransform(_ret));
+	return new QTransform(self->adjoint());
 }
 
 QTransform* QTransform_Transposed(const QTransform* self) {
-	QTransform _ret = self->transposed();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTransform*>(new QTransform(_ret));
+	return new QTransform(self->transposed());
 }
 
 QTransform* QTransform_Translate(QTransform* self, double dx, double dy) {
@@ -192,9 +186,7 @@ QTransform* QTransform_OperatorMultiplyAssign(QTransform* self, QTransform* para
 }
 
 QTransform* QTransform_OperatorMultiply(const QTransform* self, QTransform* o) {
-	QTransform _ret = self->operator*(*o);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTransform*>(new QTransform(_ret));
+	return new QTransform(self->operator*(*o));
 }
 
 void QTransform_Reset(QTransform* self) {
@@ -202,51 +194,35 @@ void QTransform_Reset(QTransform* self) {
 }
 
 QPoint* QTransform_Map(const QTransform* self, QPoint* p) {
-	QPoint _ret = self->map(*p);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPoint*>(new QPoint(_ret));
+	return new QPoint(self->map(*p));
 }
 
 QPointF* QTransform_MapWithQPointF(const QTransform* self, QPointF* p) {
-	QPointF _ret = self->map(*p);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPointF*>(new QPointF(_ret));
+	return new QPointF(self->map(*p));
 }
 
 QLine* QTransform_MapWithQLine(const QTransform* self, QLine* l) {
-	QLine _ret = self->map(*l);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QLine*>(new QLine(_ret));
+	return new QLine(self->map(*l));
 }
 
 QLineF* QTransform_MapWithQLineF(const QTransform* self, QLineF* l) {
-	QLineF _ret = self->map(*l);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QLineF*>(new QLineF(_ret));
+	return new QLineF(self->map(*l));
 }
 
 QRegion* QTransform_MapWithQRegion(const QTransform* self, QRegion* r) {
-	QRegion _ret = self->map(*r);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRegion*>(new QRegion(_ret));
+	return new QRegion(self->map(*r));
 }
 
 QPainterPath* QTransform_MapWithQPainterPath(const QTransform* self, QPainterPath* p) {
-	QPainterPath _ret = self->map(*p);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPainterPath*>(new QPainterPath(_ret));
+	return new QPainterPath(self->map(*p));
 }
 
 QRect* QTransform_MapRect(const QTransform* self, QRect* param1) {
-	QRect _ret = self->mapRect(*param1);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->mapRect(*param1));
 }
 
 QRectF* QTransform_MapRectWithQRectF(const QTransform* self, QRectF* param1) {
-	QRectF _ret = self->mapRect(*param1);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(_ret));
+	return new QRectF(self->mapRect(*param1));
 }
 
 void QTransform_Map2(const QTransform* self, int x, int y, int* tx, int* ty) {
@@ -288,21 +264,15 @@ QTransform* QTransform_OperatorMinusAssign(QTransform* self, double div) {
 }
 
 QTransform* QTransform_FromTranslate(double dx, double dy) {
-	QTransform _ret = QTransform::fromTranslate(static_cast<qreal>(dx), static_cast<qreal>(dy));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTransform*>(new QTransform(_ret));
+	return new QTransform(QTransform::fromTranslate(static_cast<qreal>(dx), static_cast<qreal>(dy)));
 }
 
 QTransform* QTransform_FromScale(double dx, double dy) {
-	QTransform _ret = QTransform::fromScale(static_cast<qreal>(dx), static_cast<qreal>(dy));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTransform*>(new QTransform(_ret));
+	return new QTransform(QTransform::fromScale(static_cast<qreal>(dx), static_cast<qreal>(dy)));
 }
 
 QTransform* QTransform_Inverted1(const QTransform* self, bool* invertible) {
-	QTransform _ret = self->inverted(invertible);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTransform*>(new QTransform(_ret));
+	return new QTransform(self->inverted(invertible));
 }
 
 QTransform* QTransform_Rotate2(QTransform* self, double a, uintptr_t axis) {

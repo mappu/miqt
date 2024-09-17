@@ -96,9 +96,7 @@ struct miqt_string* QDirIterator_FilePath(const QDirIterator* self) {
 }
 
 QFileInfo* QDirIterator_FileInfo(const QDirIterator* self) {
-	QFileInfo _ret = self->fileInfo();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QFileInfo*>(new QFileInfo(_ret));
+	return new QFileInfo(self->fileInfo());
 }
 
 struct miqt_string* QDirIterator_Path(const QDirIterator* self) {

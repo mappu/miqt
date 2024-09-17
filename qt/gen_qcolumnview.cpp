@@ -55,9 +55,7 @@ void QColumnView_connect_UpdatePreviewWidget(QColumnView* self, void* slot) {
 }
 
 QModelIndex* QColumnView_IndexAt(const QColumnView* self, QPoint* point) {
-	QModelIndex _ret = self->indexAt(*point);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QModelIndex*>(new QModelIndex(_ret));
+	return new QModelIndex(self->indexAt(*point));
 }
 
 void QColumnView_ScrollTo(QColumnView* self, QModelIndex* index) {
@@ -65,15 +63,11 @@ void QColumnView_ScrollTo(QColumnView* self, QModelIndex* index) {
 }
 
 QSize* QColumnView_SizeHint(const QColumnView* self) {
-	QSize _ret = self->sizeHint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->sizeHint());
 }
 
 QRect* QColumnView_VisualRect(const QColumnView* self, QModelIndex* index) {
-	QRect _ret = self->visualRect(*index);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->visualRect(*index));
 }
 
 void QColumnView_SetModel(QColumnView* self, QAbstractItemModel* model) {

@@ -72,15 +72,11 @@ void QProgressBar_SetAlignment(QProgressBar* self, int alignment) {
 }
 
 QSize* QProgressBar_SizeHint(const QProgressBar* self) {
-	QSize _ret = self->sizeHint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->sizeHint());
 }
 
 QSize* QProgressBar_MinimumSizeHint(const QProgressBar* self) {
-	QSize _ret = self->minimumSizeHint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->minimumSizeHint());
 }
 
 uintptr_t QProgressBar_Orientation(const QProgressBar* self) {

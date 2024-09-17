@@ -36,9 +36,7 @@ QTreeWidgetItemIterator* QTreeWidgetItemIterator_OperatorPlusPlus(QTreeWidgetIte
 }
 
 QTreeWidgetItemIterator* QTreeWidgetItemIterator_OperatorPlusPlusWithInt(QTreeWidgetItemIterator* self, int param1) {
-	QTreeWidgetItemIterator _ret = self->operator++(static_cast<int>(param1));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTreeWidgetItemIterator*>(new QTreeWidgetItemIterator(_ret));
+	return new QTreeWidgetItemIterator(self->operator++(static_cast<int>(param1)));
 }
 
 QTreeWidgetItemIterator* QTreeWidgetItemIterator_OperatorPlusAssign(QTreeWidgetItemIterator* self, int n) {
@@ -54,9 +52,7 @@ QTreeWidgetItemIterator* QTreeWidgetItemIterator_OperatorMinusMinus(QTreeWidgetI
 }
 
 QTreeWidgetItemIterator* QTreeWidgetItemIterator_OperatorMinusMinusWithInt(QTreeWidgetItemIterator* self, int param1) {
-	QTreeWidgetItemIterator _ret = self->operator--(static_cast<int>(param1));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTreeWidgetItemIterator*>(new QTreeWidgetItemIterator(_ret));
+	return new QTreeWidgetItemIterator(self->operator--(static_cast<int>(param1)));
 }
 
 QTreeWidgetItemIterator* QTreeWidgetItemIterator_OperatorMinusAssign(QTreeWidgetItemIterator* self, int n) {

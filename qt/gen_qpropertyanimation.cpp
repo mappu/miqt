@@ -52,9 +52,7 @@ void QPropertyAnimation_SetTargetObject(QPropertyAnimation* self, QObject* targe
 }
 
 QByteArray* QPropertyAnimation_PropertyName(const QPropertyAnimation* self) {
-	QByteArray _ret = self->propertyName();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(self->propertyName());
 }
 
 void QPropertyAnimation_SetPropertyName(QPropertyAnimation* self, QByteArray* propertyName) {

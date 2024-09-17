@@ -181,9 +181,7 @@ void QSurfaceFormat_SetDefaultFormat(QSurfaceFormat* format) {
 }
 
 QSurfaceFormat* QSurfaceFormat_DefaultFormat() {
-	QSurfaceFormat _ret = QSurfaceFormat::defaultFormat();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSurfaceFormat*>(new QSurfaceFormat(_ret));
+	return new QSurfaceFormat(QSurfaceFormat::defaultFormat());
 }
 
 void QSurfaceFormat_SetOption2(QSurfaceFormat* self, uintptr_t option, bool on) {

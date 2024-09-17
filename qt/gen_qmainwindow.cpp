@@ -48,9 +48,7 @@ struct miqt_string* QMainWindow_TrUtf8(const char* s) {
 }
 
 QSize* QMainWindow_IconSize(const QMainWindow* self) {
-	QSize _ret = self->iconSize();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->iconSize());
 }
 
 void QMainWindow_SetIconSize(QMainWindow* self, QSize* iconSize) {
@@ -263,9 +261,7 @@ void QMainWindow_ResizeDocks(QMainWindow* self, struct miqt_array* /* of QDockWi
 }
 
 QByteArray* QMainWindow_SaveState(const QMainWindow* self) {
-	QByteArray _ret = self->saveState();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(self->saveState());
 }
 
 bool QMainWindow_RestoreState(QMainWindow* self, QByteArray* state) {
@@ -357,9 +353,7 @@ void QMainWindow_AddToolBarBreak1(QMainWindow* self, uintptr_t area) {
 }
 
 QByteArray* QMainWindow_SaveState1(const QMainWindow* self, int version) {
-	QByteArray _ret = self->saveState(static_cast<int>(version));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(self->saveState(static_cast<int>(version)));
 }
 
 bool QMainWindow_RestoreState2(QMainWindow* self, QByteArray* state, int version) {

@@ -56,9 +56,7 @@ int QHeaderView_Length(const QHeaderView* self) {
 }
 
 QSize* QHeaderView_SizeHint(const QHeaderView* self) {
-	QSize _ret = self->sizeHint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->sizeHint());
 }
 
 void QHeaderView_SetVisible(QHeaderView* self, bool v) {
@@ -289,9 +287,7 @@ bool QHeaderView_SectionsHidden(const QHeaderView* self) {
 }
 
 QByteArray* QHeaderView_SaveState(const QHeaderView* self) {
-	QByteArray _ret = self->saveState();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(self->saveState());
 }
 
 bool QHeaderView_RestoreState(QHeaderView* self, QByteArray* state) {

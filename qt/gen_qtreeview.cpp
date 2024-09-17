@@ -215,9 +215,7 @@ void QTreeView_KeyboardSearch(QTreeView* self, struct miqt_string* search) {
 }
 
 QRect* QTreeView_VisualRect(const QTreeView* self, QModelIndex* index) {
-	QRect _ret = self->visualRect(*index);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->visualRect(*index));
 }
 
 void QTreeView_ScrollTo(QTreeView* self, QModelIndex* index) {
@@ -225,21 +223,15 @@ void QTreeView_ScrollTo(QTreeView* self, QModelIndex* index) {
 }
 
 QModelIndex* QTreeView_IndexAt(const QTreeView* self, QPoint* p) {
-	QModelIndex _ret = self->indexAt(*p);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QModelIndex*>(new QModelIndex(_ret));
+	return new QModelIndex(self->indexAt(*p));
 }
 
 QModelIndex* QTreeView_IndexAbove(const QTreeView* self, QModelIndex* index) {
-	QModelIndex _ret = self->indexAbove(*index);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QModelIndex*>(new QModelIndex(_ret));
+	return new QModelIndex(self->indexAbove(*index));
 }
 
 QModelIndex* QTreeView_IndexBelow(const QTreeView* self, QModelIndex* index) {
-	QModelIndex _ret = self->indexBelow(*index);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QModelIndex*>(new QModelIndex(_ret));
+	return new QModelIndex(self->indexBelow(*index));
 }
 
 void QTreeView_DoItemsLayout(QTreeView* self) {

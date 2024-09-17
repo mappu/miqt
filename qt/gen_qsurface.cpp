@@ -11,9 +11,7 @@ uintptr_t QSurface_SurfaceClass(const QSurface* self) {
 }
 
 QSurfaceFormat* QSurface_Format(const QSurface* self) {
-	QSurfaceFormat _ret = self->format();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSurfaceFormat*>(new QSurfaceFormat(_ret));
+	return new QSurfaceFormat(self->format());
 }
 
 uintptr_t QSurface_SurfaceType(const QSurface* self) {
@@ -26,9 +24,7 @@ bool QSurface_SupportsOpenGL(const QSurface* self) {
 }
 
 QSize* QSurface_Size(const QSurface* self) {
-	QSize _ret = self->size();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->size());
 }
 
 void QSurface_Delete(QSurface* self) {

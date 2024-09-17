@@ -29,9 +29,7 @@ void QCborMap_Swap(QCborMap* self, QCborMap* other) {
 }
 
 QCborValue* QCborMap_ToCborValue(const QCborMap* self) {
-	QCborValue _ret = self->toCborValue();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborValue*>(new QCborValue(_ret));
+	return new QCborValue(self->toCborValue());
 }
 
 size_t QCborMap_Size(const QCborMap* self) {
@@ -48,8 +46,8 @@ void QCborMap_Clear(QCborMap* self) {
 
 struct miqt_array* QCborMap_Keys(const QCborMap* self) {
 	QVector<QCborValue> _ret = self->keys();
-	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
-	QCborValue** _arr = static_cast<QCborValue**>(malloc(sizeof(QCborValue**) * _ret.length()));
+	// Convert QList<> from C++ memory to manually-managed C memory
+	QCborValue** _arr = static_cast<QCborValue**>(malloc(sizeof(QCborValue*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = new QCborValue(_ret[i]);
 	}
@@ -60,79 +58,55 @@ struct miqt_array* QCborMap_Keys(const QCborMap* self) {
 }
 
 QCborValue* QCborMap_Value(const QCborMap* self, long long key) {
-	QCborValue _ret = self->value(static_cast<qint64>(key));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborValue*>(new QCborValue(_ret));
+	return new QCborValue(self->value(static_cast<qint64>(key)));
 }
 
 QCborValue* QCborMap_Value2(const QCborMap* self, struct miqt_string* key) {
 	QString key_QString = QString::fromUtf8(&key->data, key->len);
-	QCborValue _ret = self->value(key_QString);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborValue*>(new QCborValue(_ret));
+	return new QCborValue(self->value(key_QString));
 }
 
 QCborValue* QCborMap_Value3(const QCborMap* self, QCborValue* key) {
-	QCborValue _ret = self->value(*key);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborValue*>(new QCborValue(_ret));
+	return new QCborValue(self->value(*key));
 }
 
 QCborValue* QCborMap_OperatorSubscript(const QCborMap* self, long long key) {
-	QCborValue _ret = self->operator[](static_cast<qint64>(key));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborValue*>(new QCborValue(_ret));
+	return new QCborValue(self->operator[](static_cast<qint64>(key)));
 }
 
 QCborValue* QCborMap_OperatorSubscript2(const QCborMap* self, struct miqt_string* key) {
 	QString key_QString = QString::fromUtf8(&key->data, key->len);
-	QCborValue _ret = self->operator[](key_QString);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborValue*>(new QCborValue(_ret));
+	return new QCborValue(self->operator[](key_QString));
 }
 
 QCborValue* QCborMap_OperatorSubscript3(const QCborMap* self, QCborValue* key) {
-	QCborValue _ret = self->operator[](*key);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborValue*>(new QCborValue(_ret));
+	return new QCborValue(self->operator[](*key));
 }
 
 QCborValueRef* QCborMap_OperatorSubscript4(QCborMap* self, long long key) {
-	QCborValueRef _ret = self->operator[](static_cast<qint64>(key));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborValueRef*>(new QCborValueRef(_ret));
+	return new QCborValueRef(self->operator[](static_cast<qint64>(key)));
 }
 
 QCborValueRef* QCborMap_OperatorSubscript6(QCborMap* self, struct miqt_string* key) {
 	QString key_QString = QString::fromUtf8(&key->data, key->len);
-	QCborValueRef _ret = self->operator[](key_QString);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborValueRef*>(new QCborValueRef(_ret));
+	return new QCborValueRef(self->operator[](key_QString));
 }
 
 QCborValueRef* QCborMap_OperatorSubscript7(QCborMap* self, QCborValue* key) {
-	QCborValueRef _ret = self->operator[](*key);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborValueRef*>(new QCborValueRef(_ret));
+	return new QCborValueRef(self->operator[](*key));
 }
 
 QCborValue* QCborMap_Take(QCborMap* self, long long key) {
-	QCborValue _ret = self->take(static_cast<qint64>(key));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborValue*>(new QCborValue(_ret));
+	return new QCborValue(self->take(static_cast<qint64>(key)));
 }
 
 QCborValue* QCborMap_Take2(QCborMap* self, struct miqt_string* key) {
 	QString key_QString = QString::fromUtf8(&key->data, key->len);
-	QCborValue _ret = self->take(key_QString);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborValue*>(new QCborValue(_ret));
+	return new QCborValue(self->take(key_QString));
 }
 
 QCborValue* QCborMap_Take3(QCborMap* self, QCborValue* key) {
-	QCborValue _ret = self->take(*key);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborValue*>(new QCborValue(_ret));
+	return new QCborValue(self->take(*key));
 }
 
 void QCborMap_Remove(QCborMap* self, long long key) {
@@ -178,75 +152,51 @@ bool QCborMap_OperatorLesser(const QCborMap* self, QCborMap* other) {
 }
 
 QCborMap__Iterator* QCborMap_Begin(QCborMap* self) {
-	QCborMap::Iterator _ret = self->begin();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborMap::Iterator*>(new QCborMap::Iterator(_ret));
+	return new QCborMap::Iterator(self->begin());
 }
 
 QCborMap__ConstIterator* QCborMap_ConstBegin(const QCborMap* self) {
-	QCborMap::ConstIterator _ret = self->constBegin();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborMap::ConstIterator*>(new QCborMap::ConstIterator(_ret));
+	return new QCborMap::ConstIterator(self->constBegin());
 }
 
 QCborMap__ConstIterator* QCborMap_Begin2(const QCborMap* self) {
-	QCborMap::ConstIterator _ret = self->begin();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborMap::ConstIterator*>(new QCborMap::ConstIterator(_ret));
+	return new QCborMap::ConstIterator(self->begin());
 }
 
 QCborMap__ConstIterator* QCborMap_Cbegin(const QCborMap* self) {
-	QCborMap::ConstIterator _ret = self->cbegin();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborMap::ConstIterator*>(new QCborMap::ConstIterator(_ret));
+	return new QCborMap::ConstIterator(self->cbegin());
 }
 
 QCborMap__Iterator* QCborMap_End(QCborMap* self) {
-	QCborMap::Iterator _ret = self->end();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborMap::Iterator*>(new QCborMap::Iterator(_ret));
+	return new QCborMap::Iterator(self->end());
 }
 
 QCborMap__ConstIterator* QCborMap_ConstEnd(const QCborMap* self) {
-	QCborMap::ConstIterator _ret = self->constEnd();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborMap::ConstIterator*>(new QCborMap::ConstIterator(_ret));
+	return new QCborMap::ConstIterator(self->constEnd());
 }
 
 QCborMap__ConstIterator* QCborMap_End2(const QCborMap* self) {
-	QCborMap::ConstIterator _ret = self->end();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborMap::ConstIterator*>(new QCborMap::ConstIterator(_ret));
+	return new QCborMap::ConstIterator(self->end());
 }
 
 QCborMap__ConstIterator* QCborMap_Cend(const QCborMap* self) {
-	QCborMap::ConstIterator _ret = self->cend();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborMap::ConstIterator*>(new QCborMap::ConstIterator(_ret));
+	return new QCborMap::ConstIterator(self->cend());
 }
 
 QCborMap__Iterator* QCborMap_Erase(QCborMap* self, QCborMap__Iterator* it) {
-	QCborMap::Iterator _ret = self->erase(*it);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborMap::Iterator*>(new QCborMap::Iterator(_ret));
+	return new QCborMap::Iterator(self->erase(*it));
 }
 
 QCborMap__Iterator* QCborMap_EraseWithIt(QCborMap* self, QCborMap__ConstIterator* it) {
-	QCborMap::Iterator _ret = self->erase(*it);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborMap::Iterator*>(new QCborMap::Iterator(_ret));
+	return new QCborMap::Iterator(self->erase(*it));
 }
 
 QCborValue* QCborMap_Extract(QCborMap* self, QCborMap__Iterator* it) {
-	QCborValue _ret = self->extract(*it);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborValue*>(new QCborValue(_ret));
+	return new QCborValue(self->extract(*it));
 }
 
 QCborValue* QCborMap_ExtractWithIt(QCborMap* self, QCborMap__ConstIterator* it) {
-	QCborValue _ret = self->extract(*it);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborValue*>(new QCborValue(_ret));
+	return new QCborValue(self->extract(*it));
 }
 
 bool QCborMap_Empty(const QCborMap* self) {
@@ -254,91 +204,63 @@ bool QCborMap_Empty(const QCborMap* self) {
 }
 
 QCborMap__Iterator* QCborMap_Find(QCborMap* self, long long key) {
-	QCborMap::Iterator _ret = self->find(static_cast<qint64>(key));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborMap::Iterator*>(new QCborMap::Iterator(_ret));
+	return new QCborMap::Iterator(self->find(static_cast<qint64>(key)));
 }
 
 QCborMap__Iterator* QCborMap_Find2(QCborMap* self, struct miqt_string* key) {
 	QString key_QString = QString::fromUtf8(&key->data, key->len);
-	QCborMap::Iterator _ret = self->find(key_QString);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborMap::Iterator*>(new QCborMap::Iterator(_ret));
+	return new QCborMap::Iterator(self->find(key_QString));
 }
 
 QCborMap__Iterator* QCborMap_Find3(QCborMap* self, QCborValue* key) {
-	QCborMap::Iterator _ret = self->find(*key);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborMap::Iterator*>(new QCborMap::Iterator(_ret));
+	return new QCborMap::Iterator(self->find(*key));
 }
 
 QCborMap__ConstIterator* QCborMap_ConstFind(const QCborMap* self, long long key) {
-	QCborMap::ConstIterator _ret = self->constFind(static_cast<qint64>(key));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborMap::ConstIterator*>(new QCborMap::ConstIterator(_ret));
+	return new QCborMap::ConstIterator(self->constFind(static_cast<qint64>(key)));
 }
 
 QCborMap__ConstIterator* QCborMap_ConstFind2(const QCborMap* self, struct miqt_string* key) {
 	QString key_QString = QString::fromUtf8(&key->data, key->len);
-	QCborMap::ConstIterator _ret = self->constFind(key_QString);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborMap::ConstIterator*>(new QCborMap::ConstIterator(_ret));
+	return new QCborMap::ConstIterator(self->constFind(key_QString));
 }
 
 QCborMap__ConstIterator* QCborMap_ConstFind3(const QCborMap* self, QCborValue* key) {
-	QCborMap::ConstIterator _ret = self->constFind(*key);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborMap::ConstIterator*>(new QCborMap::ConstIterator(_ret));
+	return new QCborMap::ConstIterator(self->constFind(*key));
 }
 
 QCborMap__ConstIterator* QCborMap_Find4(const QCborMap* self, long long key) {
-	QCborMap::ConstIterator _ret = self->find(static_cast<qint64>(key));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborMap::ConstIterator*>(new QCborMap::ConstIterator(_ret));
+	return new QCborMap::ConstIterator(self->find(static_cast<qint64>(key)));
 }
 
 QCborMap__ConstIterator* QCborMap_Find6(const QCborMap* self, struct miqt_string* key) {
 	QString key_QString = QString::fromUtf8(&key->data, key->len);
-	QCborMap::ConstIterator _ret = self->find(key_QString);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborMap::ConstIterator*>(new QCborMap::ConstIterator(_ret));
+	return new QCborMap::ConstIterator(self->find(key_QString));
 }
 
 QCborMap__ConstIterator* QCborMap_Find7(const QCborMap* self, QCborValue* key) {
-	QCborMap::ConstIterator _ret = self->find(*key);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborMap::ConstIterator*>(new QCborMap::ConstIterator(_ret));
+	return new QCborMap::ConstIterator(self->find(*key));
 }
 
 QCborMap__Iterator* QCborMap_Insert(QCborMap* self, long long key, QCborValue* value_) {
-	QCborMap::Iterator _ret = self->insert(static_cast<qint64>(key), *value_);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborMap::Iterator*>(new QCborMap::Iterator(_ret));
+	return new QCborMap::Iterator(self->insert(static_cast<qint64>(key), *value_));
 }
 
 QCborMap__Iterator* QCborMap_Insert3(QCborMap* self, struct miqt_string* key, QCborValue* value_) {
 	QString key_QString = QString::fromUtf8(&key->data, key->len);
-	QCborMap::Iterator _ret = self->insert(key_QString, *value_);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborMap::Iterator*>(new QCborMap::Iterator(_ret));
+	return new QCborMap::Iterator(self->insert(key_QString, *value_));
 }
 
 QCborMap__Iterator* QCborMap_Insert4(QCborMap* self, QCborValue* key, QCborValue* value_) {
-	QCborMap::Iterator _ret = self->insert(*key, *value_);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborMap::Iterator*>(new QCborMap::Iterator(_ret));
+	return new QCborMap::Iterator(self->insert(*key, *value_));
 }
 
 QCborMap* QCborMap_FromJsonObject(QJsonObject* o) {
-	QCborMap _ret = QCborMap::fromJsonObject(*o);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborMap*>(new QCborMap(_ret));
+	return new QCborMap(QCborMap::fromJsonObject(*o));
 }
 
 QJsonObject* QCborMap_ToJsonObject(const QCborMap* self) {
-	QJsonObject _ret = self->toJsonObject();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QJsonObject*>(new QJsonObject(_ret));
+	return new QJsonObject(self->toJsonObject());
 }
 
 void QCborMap_Delete(QCborMap* self) {
@@ -358,15 +280,11 @@ QCborValueRef* QCborMap__Iterator_OperatorMinusGreater(const QCborMap__Iterator*
 }
 
 QCborValue* QCborMap__Iterator_Key(const QCborMap__Iterator* self) {
-	QCborValue _ret = self->key();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborValue*>(new QCborValue(_ret));
+	return new QCborValue(self->key());
 }
 
 QCborValueRef* QCborMap__Iterator_Value(const QCborMap__Iterator* self) {
-	QCborValueRef _ret = self->value();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborValueRef*>(new QCborValueRef(_ret));
+	return new QCborValueRef(self->value());
 }
 
 bool QCborMap__Iterator_OperatorEqual(const QCborMap__Iterator* self, QCborMap__Iterator* o) {
@@ -418,27 +336,19 @@ bool QCborMap__Iterator_OperatorGreaterOrEqualWithOther(const QCborMap__Iterator
 }
 
 QCborMap__Iterator* QCborMap__Iterator_OperatorPlusPlus(QCborMap__Iterator* self, int param1) {
-	QCborMap::Iterator _ret = self->operator++(static_cast<int>(param1));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborMap::Iterator*>(new QCborMap::Iterator(_ret));
+	return new QCborMap::Iterator(self->operator++(static_cast<int>(param1)));
 }
 
 QCborMap__Iterator* QCborMap__Iterator_OperatorMinusMinus(QCborMap__Iterator* self, int param1) {
-	QCborMap::Iterator _ret = self->operator--(static_cast<int>(param1));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborMap::Iterator*>(new QCborMap::Iterator(_ret));
+	return new QCborMap::Iterator(self->operator--(static_cast<int>(param1)));
 }
 
 QCborMap__Iterator* QCborMap__Iterator_OperatorPlus(const QCborMap__Iterator* self, size_t j) {
-	QCborMap::Iterator _ret = self->operator+(static_cast<qsizetype>(j));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborMap::Iterator*>(new QCborMap::Iterator(_ret));
+	return new QCborMap::Iterator(self->operator+(static_cast<qsizetype>(j)));
 }
 
 QCborMap__Iterator* QCborMap__Iterator_OperatorMinus(const QCborMap__Iterator* self, size_t j) {
-	QCborMap::Iterator _ret = self->operator-(static_cast<qsizetype>(j));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborMap::Iterator*>(new QCborMap::Iterator(_ret));
+	return new QCborMap::Iterator(self->operator-(static_cast<qsizetype>(j)));
 }
 
 size_t QCborMap__Iterator_OperatorMinusWithQCborMapIterator(const QCborMap__Iterator* self, QCborMap__Iterator* j) {
@@ -462,15 +372,11 @@ QCborValueRef* QCborMap__ConstIterator_OperatorMinusGreater(const QCborMap__Cons
 }
 
 QCborValue* QCborMap__ConstIterator_Key(const QCborMap__ConstIterator* self) {
-	QCborValue _ret = self->key();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborValue*>(new QCborValue(_ret));
+	return new QCborValue(self->key());
 }
 
 QCborValueRef* QCborMap__ConstIterator_Value(const QCborMap__ConstIterator* self) {
-	QCborValueRef _ret = self->value();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborValueRef*>(new QCborValueRef(_ret));
+	return new QCborValueRef(self->value());
 }
 
 bool QCborMap__ConstIterator_OperatorEqual(const QCborMap__ConstIterator* self, QCborMap__Iterator* o) {
@@ -522,27 +428,19 @@ bool QCborMap__ConstIterator_OperatorGreaterOrEqualWithOther(const QCborMap__Con
 }
 
 QCborMap__ConstIterator* QCborMap__ConstIterator_OperatorPlusPlus(QCborMap__ConstIterator* self, int param1) {
-	QCborMap::ConstIterator _ret = self->operator++(static_cast<int>(param1));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborMap::ConstIterator*>(new QCborMap::ConstIterator(_ret));
+	return new QCborMap::ConstIterator(self->operator++(static_cast<int>(param1)));
 }
 
 QCborMap__ConstIterator* QCborMap__ConstIterator_OperatorMinusMinus(QCborMap__ConstIterator* self, int param1) {
-	QCborMap::ConstIterator _ret = self->operator--(static_cast<int>(param1));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborMap::ConstIterator*>(new QCborMap::ConstIterator(_ret));
+	return new QCborMap::ConstIterator(self->operator--(static_cast<int>(param1)));
 }
 
 QCborMap__ConstIterator* QCborMap__ConstIterator_OperatorPlus(const QCborMap__ConstIterator* self, size_t j) {
-	QCborMap::ConstIterator _ret = self->operator+(static_cast<qsizetype>(j));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborMap::ConstIterator*>(new QCborMap::ConstIterator(_ret));
+	return new QCborMap::ConstIterator(self->operator+(static_cast<qsizetype>(j)));
 }
 
 QCborMap__ConstIterator* QCborMap__ConstIterator_OperatorMinus(const QCborMap__ConstIterator* self, size_t j) {
-	QCborMap::ConstIterator _ret = self->operator-(static_cast<qsizetype>(j));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborMap::ConstIterator*>(new QCborMap::ConstIterator(_ret));
+	return new QCborMap::ConstIterator(self->operator-(static_cast<qsizetype>(j)));
 }
 
 size_t QCborMap__ConstIterator_OperatorMinusWithQCborMapConstIterator(const QCborMap__ConstIterator* self, QCborMap__ConstIterator* j) {

@@ -61,15 +61,11 @@ struct miqt_string* QAbstractTextDocumentLayout_ImageAt(const QAbstractTextDocum
 }
 
 QTextFormat* QAbstractTextDocumentLayout_FormatAt(const QAbstractTextDocumentLayout* self, QPointF* pos) {
-	QTextFormat _ret = self->formatAt(*pos);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextFormat*>(new QTextFormat(_ret));
+	return new QTextFormat(self->formatAt(*pos));
 }
 
 QTextBlock* QAbstractTextDocumentLayout_BlockWithMarkerAt(const QAbstractTextDocumentLayout* self, QPointF* pos) {
-	QTextBlock _ret = self->blockWithMarkerAt(*pos);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextBlock*>(new QTextBlock(_ret));
+	return new QTextBlock(self->blockWithMarkerAt(*pos));
 }
 
 int QAbstractTextDocumentLayout_PageCount(const QAbstractTextDocumentLayout* self) {
@@ -77,21 +73,15 @@ int QAbstractTextDocumentLayout_PageCount(const QAbstractTextDocumentLayout* sel
 }
 
 QSizeF* QAbstractTextDocumentLayout_DocumentSize(const QAbstractTextDocumentLayout* self) {
-	QSizeF _ret = self->documentSize();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSizeF*>(new QSizeF(_ret));
+	return new QSizeF(self->documentSize());
 }
 
 QRectF* QAbstractTextDocumentLayout_FrameBoundingRect(const QAbstractTextDocumentLayout* self, QTextFrame* frame) {
-	QRectF _ret = self->frameBoundingRect(frame);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(_ret));
+	return new QRectF(self->frameBoundingRect(frame));
 }
 
 QRectF* QAbstractTextDocumentLayout_BlockBoundingRect(const QAbstractTextDocumentLayout* self, QTextBlock* block) {
-	QRectF _ret = self->blockBoundingRect(*block);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(_ret));
+	return new QRectF(self->blockBoundingRect(*block));
 }
 
 void QAbstractTextDocumentLayout_SetPaintDevice(QAbstractTextDocumentLayout* self, QPaintDevice* device) {
@@ -215,9 +205,7 @@ void QAbstractTextDocumentLayout_Delete(QAbstractTextDocumentLayout* self) {
 }
 
 QSizeF* QTextObjectInterface_IntrinsicSize(QTextObjectInterface* self, QTextDocument* doc, int posInDocument, QTextFormat* format) {
-	QSizeF _ret = self->intrinsicSize(doc, static_cast<int>(posInDocument), *format);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSizeF*>(new QSizeF(_ret));
+	return new QSizeF(self->intrinsicSize(doc, static_cast<int>(posInDocument), *format));
 }
 
 void QTextObjectInterface_DrawObject(QTextObjectInterface* self, QPainter* painter, QRectF* rect, QTextDocument* doc, int posInDocument, QTextFormat* format) {

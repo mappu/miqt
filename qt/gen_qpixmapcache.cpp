@@ -41,9 +41,7 @@ bool QPixmapCache_Insert(struct miqt_string* key, QPixmap* pixmap) {
 }
 
 QPixmapCache__Key* QPixmapCache_InsertWithPixmap(QPixmap* pixmap) {
-	QPixmapCache::Key _ret = QPixmapCache::insert(*pixmap);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPixmapCache::Key*>(new QPixmapCache::Key(_ret));
+	return new QPixmapCache::Key(QPixmapCache::insert(*pixmap));
 }
 
 bool QPixmapCache_Replace(QPixmapCache__Key* key, QPixmap* pixmap) {

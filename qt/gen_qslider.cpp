@@ -45,15 +45,11 @@ struct miqt_string* QSlider_TrUtf8(const char* s) {
 }
 
 QSize* QSlider_SizeHint(const QSlider* self) {
-	QSize _ret = self->sizeHint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->sizeHint());
 }
 
 QSize* QSlider_MinimumSizeHint(const QSlider* self) {
-	QSize _ret = self->minimumSizeHint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->minimumSizeHint());
 }
 
 void QSlider_SetTickPosition(QSlider* self, uintptr_t position) {

@@ -54,9 +54,7 @@ QMenu* QSystemTrayIcon_ContextMenu(const QSystemTrayIcon* self) {
 }
 
 QIcon* QSystemTrayIcon_Icon(const QSystemTrayIcon* self) {
-	QIcon _ret = self->icon();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QIcon*>(new QIcon(_ret));
+	return new QIcon(self->icon());
 }
 
 void QSystemTrayIcon_SetIcon(QSystemTrayIcon* self, QIcon* icon) {
@@ -84,9 +82,7 @@ bool QSystemTrayIcon_SupportsMessages() {
 }
 
 QRect* QSystemTrayIcon_Geometry(const QSystemTrayIcon* self) {
-	QRect _ret = self->geometry();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->geometry());
 }
 
 bool QSystemTrayIcon_IsVisible(const QSystemTrayIcon* self) {

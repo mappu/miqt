@@ -59,9 +59,7 @@ int QRect_Bottom(const QRect* self) {
 }
 
 QRect* QRect_Normalized(const QRect* self) {
-	QRect _ret = self->normalized();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->normalized());
 }
 
 int QRect_X(const QRect* self) {
@@ -113,33 +111,23 @@ void QRect_SetBottomLeft(QRect* self, QPoint* p) {
 }
 
 QPoint* QRect_TopLeft(const QRect* self) {
-	QPoint _ret = self->topLeft();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPoint*>(new QPoint(_ret));
+	return new QPoint(self->topLeft());
 }
 
 QPoint* QRect_BottomRight(const QRect* self) {
-	QPoint _ret = self->bottomRight();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPoint*>(new QPoint(_ret));
+	return new QPoint(self->bottomRight());
 }
 
 QPoint* QRect_TopRight(const QRect* self) {
-	QPoint _ret = self->topRight();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPoint*>(new QPoint(_ret));
+	return new QPoint(self->topRight());
 }
 
 QPoint* QRect_BottomLeft(const QRect* self) {
-	QPoint _ret = self->bottomLeft();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPoint*>(new QPoint(_ret));
+	return new QPoint(self->bottomLeft());
 }
 
 QPoint* QRect_Center(const QRect* self) {
-	QPoint _ret = self->center();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPoint*>(new QPoint(_ret));
+	return new QPoint(self->center());
 }
 
 void QRect_MoveLeft(QRect* self, int pos) {
@@ -187,21 +175,15 @@ void QRect_TranslateWithQPoint(QRect* self, QPoint* p) {
 }
 
 QRect* QRect_Translated(const QRect* self, int dx, int dy) {
-	QRect _ret = self->translated(static_cast<int>(dx), static_cast<int>(dy));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->translated(static_cast<int>(dx), static_cast<int>(dy)));
 }
 
 QRect* QRect_TranslatedWithQPoint(const QRect* self, QPoint* p) {
-	QRect _ret = self->translated(*p);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->translated(*p));
 }
 
 QRect* QRect_Transposed(const QRect* self) {
-	QRect _ret = self->transposed();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->transposed());
 }
 
 void QRect_MoveTo(QRect* self, int x, int t) {
@@ -233,15 +215,11 @@ void QRect_Adjust(QRect* self, int x1, int y1, int x2, int y2) {
 }
 
 QRect* QRect_Adjusted(const QRect* self, int x1, int y1, int x2, int y2) {
-	QRect _ret = self->adjusted(static_cast<int>(x1), static_cast<int>(y1), static_cast<int>(x2), static_cast<int>(y2));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->adjusted(static_cast<int>(x1), static_cast<int>(y1), static_cast<int>(x2), static_cast<int>(y2)));
 }
 
 QSize* QRect_Size(const QRect* self) {
-	QSize _ret = self->size();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->size());
 }
 
 int QRect_Width(const QRect* self) {
@@ -265,15 +243,11 @@ void QRect_SetSize(QRect* self, QSize* s) {
 }
 
 QRect* QRect_OperatorBitwiseOr(const QRect* self, QRect* r) {
-	QRect _ret = self->operator|(*r);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->operator|(*r));
 }
 
 QRect* QRect_OperatorBitwiseAnd(const QRect* self, QRect* r) {
-	QRect _ret = self->operator&(*r);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->operator&(*r));
 }
 
 void QRect_OperatorBitwiseOrAssign(QRect* self, QRect* r) {
@@ -301,15 +275,11 @@ bool QRect_Contains3(const QRect* self, int x, int y, bool proper) {
 }
 
 QRect* QRect_United(const QRect* self, QRect* other) {
-	QRect _ret = self->united(*other);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->united(*other));
 }
 
 QRect* QRect_Intersected(const QRect* self, QRect* other) {
-	QRect _ret = self->intersected(*other);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->intersected(*other));
 }
 
 bool QRect_Intersects(const QRect* self, QRect* r) {
@@ -317,15 +287,11 @@ bool QRect_Intersects(const QRect* self, QRect* r) {
 }
 
 QRect* QRect_MarginsAdded(const QRect* self, QMargins* margins) {
-	QRect _ret = self->marginsAdded(*margins);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->marginsAdded(*margins));
 }
 
 QRect* QRect_MarginsRemoved(const QRect* self, QMargins* margins) {
-	QRect _ret = self->marginsRemoved(*margins);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->marginsRemoved(*margins));
 }
 
 QRect* QRect_OperatorPlusAssign(QRect* self, QMargins* margins) {
@@ -389,9 +355,7 @@ bool QRectF_IsValid(const QRectF* self) {
 }
 
 QRectF* QRectF_Normalized(const QRectF* self) {
-	QRectF _ret = self->normalized();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(_ret));
+	return new QRectF(self->normalized());
 }
 
 double QRectF_Left(const QRectF* self) {
@@ -443,33 +407,23 @@ void QRectF_SetY(QRectF* self, double pos) {
 }
 
 QPointF* QRectF_TopLeft(const QRectF* self) {
-	QPointF _ret = self->topLeft();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPointF*>(new QPointF(_ret));
+	return new QPointF(self->topLeft());
 }
 
 QPointF* QRectF_BottomRight(const QRectF* self) {
-	QPointF _ret = self->bottomRight();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPointF*>(new QPointF(_ret));
+	return new QPointF(self->bottomRight());
 }
 
 QPointF* QRectF_TopRight(const QRectF* self) {
-	QPointF _ret = self->topRight();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPointF*>(new QPointF(_ret));
+	return new QPointF(self->topRight());
 }
 
 QPointF* QRectF_BottomLeft(const QRectF* self) {
-	QPointF _ret = self->bottomLeft();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPointF*>(new QPointF(_ret));
+	return new QPointF(self->bottomLeft());
 }
 
 QPointF* QRectF_Center(const QRectF* self) {
-	QPointF _ret = self->center();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPointF*>(new QPointF(_ret));
+	return new QPointF(self->center());
 }
 
 void QRectF_SetTopLeft(QRectF* self, QPointF* p) {
@@ -533,21 +487,15 @@ void QRectF_TranslateWithQPointF(QRectF* self, QPointF* p) {
 }
 
 QRectF* QRectF_Translated(const QRectF* self, double dx, double dy) {
-	QRectF _ret = self->translated(static_cast<qreal>(dx), static_cast<qreal>(dy));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(_ret));
+	return new QRectF(self->translated(static_cast<qreal>(dx), static_cast<qreal>(dy)));
 }
 
 QRectF* QRectF_TranslatedWithQPointF(const QRectF* self, QPointF* p) {
-	QRectF _ret = self->translated(*p);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(_ret));
+	return new QRectF(self->translated(*p));
 }
 
 QRectF* QRectF_Transposed(const QRectF* self) {
-	QRectF _ret = self->transposed();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(_ret));
+	return new QRectF(self->transposed());
 }
 
 void QRectF_MoveTo(QRectF* self, double x, double y) {
@@ -579,15 +527,11 @@ void QRectF_Adjust(QRectF* self, double x1, double y1, double x2, double y2) {
 }
 
 QRectF* QRectF_Adjusted(const QRectF* self, double x1, double y1, double x2, double y2) {
-	QRectF _ret = self->adjusted(static_cast<qreal>(x1), static_cast<qreal>(y1), static_cast<qreal>(x2), static_cast<qreal>(y2));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(_ret));
+	return new QRectF(self->adjusted(static_cast<qreal>(x1), static_cast<qreal>(y1), static_cast<qreal>(x2), static_cast<qreal>(y2)));
 }
 
 QSizeF* QRectF_Size(const QRectF* self) {
-	QSizeF _ret = self->size();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSizeF*>(new QSizeF(_ret));
+	return new QSizeF(self->size());
 }
 
 double QRectF_Width(const QRectF* self) {
@@ -611,15 +555,11 @@ void QRectF_SetSize(QRectF* self, QSizeF* s) {
 }
 
 QRectF* QRectF_OperatorBitwiseOr(const QRectF* self, QRectF* r) {
-	QRectF _ret = self->operator|(*r);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(_ret));
+	return new QRectF(self->operator|(*r));
 }
 
 QRectF* QRectF_OperatorBitwiseAnd(const QRectF* self, QRectF* r) {
-	QRectF _ret = self->operator&(*r);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(_ret));
+	return new QRectF(self->operator&(*r));
 }
 
 void QRectF_OperatorBitwiseOrAssign(QRectF* self, QRectF* r) {
@@ -643,15 +583,11 @@ bool QRectF_Contains2(const QRectF* self, double x, double y) {
 }
 
 QRectF* QRectF_United(const QRectF* self, QRectF* other) {
-	QRectF _ret = self->united(*other);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(_ret));
+	return new QRectF(self->united(*other));
 }
 
 QRectF* QRectF_Intersected(const QRectF* self, QRectF* other) {
-	QRectF _ret = self->intersected(*other);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(_ret));
+	return new QRectF(self->intersected(*other));
 }
 
 bool QRectF_Intersects(const QRectF* self, QRectF* r) {
@@ -659,15 +595,11 @@ bool QRectF_Intersects(const QRectF* self, QRectF* r) {
 }
 
 QRectF* QRectF_MarginsAdded(const QRectF* self, QMarginsF* margins) {
-	QRectF _ret = self->marginsAdded(*margins);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(_ret));
+	return new QRectF(self->marginsAdded(*margins));
 }
 
 QRectF* QRectF_MarginsRemoved(const QRectF* self, QMarginsF* margins) {
-	QRectF _ret = self->marginsRemoved(*margins);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(_ret));
+	return new QRectF(self->marginsRemoved(*margins));
 }
 
 QRectF* QRectF_OperatorPlusAssign(QRectF* self, QMarginsF* margins) {
@@ -683,15 +615,11 @@ QRectF* QRectF_OperatorMinusAssign(QRectF* self, QMarginsF* margins) {
 }
 
 QRect* QRectF_ToRect(const QRectF* self) {
-	QRect _ret = self->toRect();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->toRect());
 }
 
 QRect* QRectF_ToAlignedRect(const QRectF* self) {
-	QRect _ret = self->toAlignedRect();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->toAlignedRect());
 }
 
 void QRectF_Delete(QRectF* self) {

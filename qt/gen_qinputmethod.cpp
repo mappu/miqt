@@ -30,9 +30,7 @@ struct miqt_string* QInputMethod_TrUtf8(const char* s) {
 }
 
 QTransform* QInputMethod_InputItemTransform(const QInputMethod* self) {
-	QTransform _ret = self->inputItemTransform();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTransform*>(new QTransform(_ret));
+	return new QTransform(self->inputItemTransform());
 }
 
 void QInputMethod_SetInputItemTransform(QInputMethod* self, QTransform* transform) {
@@ -40,9 +38,7 @@ void QInputMethod_SetInputItemTransform(QInputMethod* self, QTransform* transfor
 }
 
 QRectF* QInputMethod_InputItemRectangle(const QInputMethod* self) {
-	QRectF _ret = self->inputItemRectangle();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(_ret));
+	return new QRectF(self->inputItemRectangle());
 }
 
 void QInputMethod_SetInputItemRectangle(QInputMethod* self, QRectF* rect) {
@@ -50,27 +46,19 @@ void QInputMethod_SetInputItemRectangle(QInputMethod* self, QRectF* rect) {
 }
 
 QRectF* QInputMethod_CursorRectangle(const QInputMethod* self) {
-	QRectF _ret = self->cursorRectangle();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(_ret));
+	return new QRectF(self->cursorRectangle());
 }
 
 QRectF* QInputMethod_AnchorRectangle(const QInputMethod* self) {
-	QRectF _ret = self->anchorRectangle();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(_ret));
+	return new QRectF(self->anchorRectangle());
 }
 
 QRectF* QInputMethod_KeyboardRectangle(const QInputMethod* self) {
-	QRectF _ret = self->keyboardRectangle();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(_ret));
+	return new QRectF(self->keyboardRectangle());
 }
 
 QRectF* QInputMethod_InputItemClipRectangle(const QInputMethod* self) {
-	QRectF _ret = self->inputItemClipRectangle();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(_ret));
+	return new QRectF(self->inputItemClipRectangle());
 }
 
 bool QInputMethod_IsVisible(const QInputMethod* self) {
@@ -86,9 +74,7 @@ bool QInputMethod_IsAnimating(const QInputMethod* self) {
 }
 
 QLocale* QInputMethod_Locale(const QInputMethod* self) {
-	QLocale _ret = self->locale();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QLocale*>(new QLocale(_ret));
+	return new QLocale(self->locale());
 }
 
 uintptr_t QInputMethod_InputDirection(const QInputMethod* self) {
@@ -97,9 +83,7 @@ uintptr_t QInputMethod_InputDirection(const QInputMethod* self) {
 }
 
 QVariant* QInputMethod_QueryFocusObject(uintptr_t query, QVariant* argument) {
-	QVariant _ret = QInputMethod::queryFocusObject(static_cast<Qt::InputMethodQuery>(query), *argument);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(_ret));
+	return new QVariant(QInputMethod::queryFocusObject(static_cast<Qt::InputMethodQuery>(query), *argument));
 }
 
 void QInputMethod_Show(QInputMethod* self) {

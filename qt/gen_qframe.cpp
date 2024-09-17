@@ -53,9 +53,7 @@ int QFrame_FrameWidth(const QFrame* self) {
 }
 
 QSize* QFrame_SizeHint(const QFrame* self) {
-	QSize _ret = self->sizeHint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->sizeHint());
 }
 
 uintptr_t QFrame_FrameShape(const QFrame* self) {
@@ -93,9 +91,7 @@ void QFrame_SetMidLineWidth(QFrame* self, int midLineWidth) {
 }
 
 QRect* QFrame_FrameRect(const QFrame* self) {
-	QRect _ret = self->frameRect();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->frameRect());
 }
 
 void QFrame_SetFrameRect(QFrame* self, QRect* frameRect) {

@@ -88,9 +88,7 @@ void QPdfWriter_SetDocumentXmpMetadata(QPdfWriter* self, QByteArray* xmpMetadata
 }
 
 QByteArray* QPdfWriter_DocumentXmpMetadata(const QPdfWriter* self) {
-	QByteArray _ret = self->documentXmpMetadata();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(self->documentXmpMetadata());
 }
 
 void QPdfWriter_AddFileAttachment(QPdfWriter* self, struct miqt_string* fileName, QByteArray* data) {

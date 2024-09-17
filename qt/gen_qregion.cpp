@@ -84,51 +84,35 @@ void QRegion_TranslateWithQPoint(QRegion* self, QPoint* p) {
 }
 
 QRegion* QRegion_Translated(const QRegion* self, int dx, int dy) {
-	QRegion _ret = self->translated(static_cast<int>(dx), static_cast<int>(dy));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRegion*>(new QRegion(_ret));
+	return new QRegion(self->translated(static_cast<int>(dx), static_cast<int>(dy)));
 }
 
 QRegion* QRegion_TranslatedWithQPoint(const QRegion* self, QPoint* p) {
-	QRegion _ret = self->translated(*p);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRegion*>(new QRegion(_ret));
+	return new QRegion(self->translated(*p));
 }
 
 QRegion* QRegion_United(const QRegion* self, QRegion* r) {
-	QRegion _ret = self->united(*r);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRegion*>(new QRegion(_ret));
+	return new QRegion(self->united(*r));
 }
 
 QRegion* QRegion_UnitedWithQRect(const QRegion* self, QRect* r) {
-	QRegion _ret = self->united(*r);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRegion*>(new QRegion(_ret));
+	return new QRegion(self->united(*r));
 }
 
 QRegion* QRegion_Intersected(const QRegion* self, QRegion* r) {
-	QRegion _ret = self->intersected(*r);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRegion*>(new QRegion(_ret));
+	return new QRegion(self->intersected(*r));
 }
 
 QRegion* QRegion_IntersectedWithQRect(const QRegion* self, QRect* r) {
-	QRegion _ret = self->intersected(*r);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRegion*>(new QRegion(_ret));
+	return new QRegion(self->intersected(*r));
 }
 
 QRegion* QRegion_Subtracted(const QRegion* self, QRegion* r) {
-	QRegion _ret = self->subtracted(*r);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRegion*>(new QRegion(_ret));
+	return new QRegion(self->subtracted(*r));
 }
 
 QRegion* QRegion_Xored(const QRegion* self, QRegion* r) {
-	QRegion _ret = self->xored(*r);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRegion*>(new QRegion(_ret));
+	return new QRegion(self->xored(*r));
 }
 
 bool QRegion_Intersects(const QRegion* self, QRegion* r) {
@@ -140,15 +124,13 @@ bool QRegion_IntersectsWithQRect(const QRegion* self, QRect* r) {
 }
 
 QRect* QRegion_BoundingRect(const QRegion* self) {
-	QRect _ret = self->boundingRect();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->boundingRect());
 }
 
 struct miqt_array* QRegion_Rects(const QRegion* self) {
 	QVector<QRect> _ret = self->rects();
-	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
-	QRect** _arr = static_cast<QRect**>(malloc(sizeof(QRect**) * _ret.length()));
+	// Convert QList<> from C++ memory to manually-managed C memory
+	QRect** _arr = static_cast<QRect**>(malloc(sizeof(QRect*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = new QRect(_ret[i]);
 	}
@@ -167,45 +149,31 @@ int QRegion_RectCount(const QRegion* self) {
 }
 
 QRegion* QRegion_OperatorBitwiseOr(const QRegion* self, QRegion* r) {
-	QRegion _ret = self->operator|(*r);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRegion*>(new QRegion(_ret));
+	return new QRegion(self->operator|(*r));
 }
 
 QRegion* QRegion_OperatorPlus(const QRegion* self, QRegion* r) {
-	QRegion _ret = self->operator+(*r);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRegion*>(new QRegion(_ret));
+	return new QRegion(self->operator+(*r));
 }
 
 QRegion* QRegion_OperatorPlusWithQRect(const QRegion* self, QRect* r) {
-	QRegion _ret = self->operator+(*r);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRegion*>(new QRegion(_ret));
+	return new QRegion(self->operator+(*r));
 }
 
 QRegion* QRegion_OperatorBitwiseAnd(const QRegion* self, QRegion* r) {
-	QRegion _ret = self->operator&(*r);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRegion*>(new QRegion(_ret));
+	return new QRegion(self->operator&(*r));
 }
 
 QRegion* QRegion_OperatorBitwiseAndWithQRect(const QRegion* self, QRect* r) {
-	QRegion _ret = self->operator&(*r);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRegion*>(new QRegion(_ret));
+	return new QRegion(self->operator&(*r));
 }
 
 QRegion* QRegion_OperatorMinus(const QRegion* self, QRegion* r) {
-	QRegion _ret = self->operator-(*r);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRegion*>(new QRegion(_ret));
+	return new QRegion(self->operator-(*r));
 }
 
 QRegion* QRegion_OperatorBitwiseNot(const QRegion* self, QRegion* r) {
-	QRegion _ret = self->operator^(*r);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRegion*>(new QRegion(_ret));
+	return new QRegion(self->operator^(*r));
 }
 
 void QRegion_OperatorBitwiseOrAssign(QRegion* self, QRegion* r) {

@@ -58,39 +58,27 @@ void QBitmap_Clear(QBitmap* self) {
 }
 
 QBitmap* QBitmap_FromImage(QImage* image) {
-	QBitmap _ret = QBitmap::fromImage(*image);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QBitmap*>(new QBitmap(_ret));
+	return new QBitmap(QBitmap::fromImage(*image));
 }
 
 QBitmap* QBitmap_FromData(QSize* size, const unsigned char* bits) {
-	QBitmap _ret = QBitmap::fromData(*size, static_cast<const uchar*>(bits));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QBitmap*>(new QBitmap(_ret));
+	return new QBitmap(QBitmap::fromData(*size, static_cast<const uchar*>(bits)));
 }
 
 QBitmap* QBitmap_Transformed(const QBitmap* self, QMatrix* param1) {
-	QBitmap _ret = self->transformed(*param1);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QBitmap*>(new QBitmap(_ret));
+	return new QBitmap(self->transformed(*param1));
 }
 
 QBitmap* QBitmap_TransformedWithMatrix(const QBitmap* self, QTransform* matrix) {
-	QBitmap _ret = self->transformed(*matrix);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QBitmap*>(new QBitmap(_ret));
+	return new QBitmap(self->transformed(*matrix));
 }
 
 QBitmap* QBitmap_FromImage2(QImage* image, int flags) {
-	QBitmap _ret = QBitmap::fromImage(*image, static_cast<Qt::ImageConversionFlags>(flags));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QBitmap*>(new QBitmap(_ret));
+	return new QBitmap(QBitmap::fromImage(*image, static_cast<Qt::ImageConversionFlags>(flags)));
 }
 
 QBitmap* QBitmap_FromData3(QSize* size, const unsigned char* bits, uintptr_t monoFormat) {
-	QBitmap _ret = QBitmap::fromData(*size, static_cast<const uchar*>(bits), static_cast<QImage::Format>(monoFormat));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QBitmap*>(new QBitmap(_ret));
+	return new QBitmap(QBitmap::fromData(*size, static_cast<const uchar*>(bits), static_cast<QImage::Format>(monoFormat)));
 }
 
 void QBitmap_Delete(QBitmap* self) {

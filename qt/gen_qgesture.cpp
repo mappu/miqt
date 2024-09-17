@@ -54,9 +54,7 @@ uintptr_t QGesture_State(const QGesture* self) {
 }
 
 QPointF* QGesture_HotSpot(const QGesture* self) {
-	QPointF _ret = self->hotSpot();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPointF*>(new QPointF(_ret));
+	return new QPointF(self->hotSpot());
 }
 
 void QGesture_SetHotSpot(QGesture* self, QPointF* value) {
@@ -139,21 +137,15 @@ struct miqt_string* QPanGesture_TrUtf8(const char* s) {
 }
 
 QPointF* QPanGesture_LastOffset(const QPanGesture* self) {
-	QPointF _ret = self->lastOffset();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPointF*>(new QPointF(_ret));
+	return new QPointF(self->lastOffset());
 }
 
 QPointF* QPanGesture_Offset(const QPanGesture* self) {
-	QPointF _ret = self->offset();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPointF*>(new QPointF(_ret));
+	return new QPointF(self->offset());
 }
 
 QPointF* QPanGesture_Delta(const QPanGesture* self) {
-	QPointF _ret = self->delta();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPointF*>(new QPointF(_ret));
+	return new QPointF(self->delta());
 }
 
 double QPanGesture_Acceleration(const QPanGesture* self) {
@@ -249,21 +241,15 @@ void QPinchGesture_SetChangeFlags(QPinchGesture* self, int value) {
 }
 
 QPointF* QPinchGesture_StartCenterPoint(const QPinchGesture* self) {
-	QPointF _ret = self->startCenterPoint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPointF*>(new QPointF(_ret));
+	return new QPointF(self->startCenterPoint());
 }
 
 QPointF* QPinchGesture_LastCenterPoint(const QPinchGesture* self) {
-	QPointF _ret = self->lastCenterPoint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPointF*>(new QPointF(_ret));
+	return new QPointF(self->lastCenterPoint());
 }
 
 QPointF* QPinchGesture_CenterPoint(const QPinchGesture* self) {
-	QPointF _ret = self->centerPoint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPointF*>(new QPointF(_ret));
+	return new QPointF(self->centerPoint());
 }
 
 void QPinchGesture_SetStartCenterPoint(QPinchGesture* self, QPointF* value) {
@@ -461,9 +447,7 @@ struct miqt_string* QTapGesture_TrUtf8(const char* s) {
 }
 
 QPointF* QTapGesture_Position(const QTapGesture* self) {
-	QPointF _ret = self->position();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPointF*>(new QPointF(_ret));
+	return new QPointF(self->position());
 }
 
 void QTapGesture_SetPosition(QTapGesture* self, QPointF* pos) {
@@ -529,9 +513,7 @@ struct miqt_string* QTapAndHoldGesture_TrUtf8(const char* s) {
 }
 
 QPointF* QTapAndHoldGesture_Position(const QTapAndHoldGesture* self) {
-	QPointF _ret = self->position();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPointF*>(new QPointF(_ret));
+	return new QPointF(self->position());
 }
 
 void QTapAndHoldGesture_SetPosition(QTapAndHoldGesture* self, QPointF* pos) {
@@ -676,9 +658,7 @@ QWidget* QGestureEvent_Widget(const QGestureEvent* self) {
 }
 
 QPointF* QGestureEvent_MapToGraphicsScene(const QGestureEvent* self, QPointF* gesturePoint) {
-	QPointF _ret = self->mapToGraphicsScene(*gesturePoint);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPointF*>(new QPointF(_ret));
+	return new QPointF(self->mapToGraphicsScene(*gesturePoint));
 }
 
 void QGestureEvent_Delete(QGestureEvent* self) {

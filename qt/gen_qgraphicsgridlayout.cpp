@@ -194,9 +194,7 @@ void QGraphicsGridLayout_SetGeometry(QGraphicsGridLayout* self, QRectF* rect) {
 }
 
 QSizeF* QGraphicsGridLayout_SizeHint(const QGraphicsGridLayout* self, uintptr_t which) {
-	QSizeF _ret = self->sizeHint(static_cast<Qt::SizeHint>(which));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSizeF*>(new QSizeF(_ret));
+	return new QSizeF(self->sizeHint(static_cast<Qt::SizeHint>(which)));
 }
 
 void QGraphicsGridLayout_AddItem6(QGraphicsGridLayout* self, QGraphicsLayoutItem* item, int row, int column, int rowSpan, int columnSpan, int alignment) {
@@ -208,9 +206,7 @@ void QGraphicsGridLayout_AddItem4(QGraphicsGridLayout* self, QGraphicsLayoutItem
 }
 
 QSizeF* QGraphicsGridLayout_SizeHint2(const QGraphicsGridLayout* self, uintptr_t which, QSizeF* constraint) {
-	QSizeF _ret = self->sizeHint(static_cast<Qt::SizeHint>(which), *constraint);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSizeF*>(new QSizeF(_ret));
+	return new QSizeF(self->sizeHint(static_cast<Qt::SizeHint>(which), *constraint));
 }
 
 void QGraphicsGridLayout_Delete(QGraphicsGridLayout* self) {

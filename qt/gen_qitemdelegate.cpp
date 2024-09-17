@@ -54,9 +54,7 @@ void QItemDelegate_Paint(const QItemDelegate* self, QPainter* painter, QStyleOpt
 }
 
 QSize* QItemDelegate_SizeHint(const QItemDelegate* self, QStyleOptionViewItem* option, QModelIndex* index) {
-	QSize _ret = self->sizeHint(*option, *index);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->sizeHint(*option, *index));
 }
 
 QWidget* QItemDelegate_CreateEditor(const QItemDelegate* self, QWidget* parent, QStyleOptionViewItem* option, QModelIndex* index) {

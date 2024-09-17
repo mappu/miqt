@@ -107,9 +107,7 @@ void QTimeLine_SetCurveShape(QTimeLine* self, uintptr_t shape) {
 }
 
 QEasingCurve* QTimeLine_EasingCurve(const QTimeLine* self) {
-	QEasingCurve _ret = self->easingCurve();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QEasingCurve*>(new QEasingCurve(_ret));
+	return new QEasingCurve(self->easingCurve());
 }
 
 void QTimeLine_SetEasingCurve(QTimeLine* self, QEasingCurve* curve) {

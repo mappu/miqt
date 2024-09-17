@@ -63,21 +63,15 @@ void QOffscreenSurface_SetFormat(QOffscreenSurface* self, QSurfaceFormat* format
 }
 
 QSurfaceFormat* QOffscreenSurface_Format(const QOffscreenSurface* self) {
-	QSurfaceFormat _ret = self->format();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSurfaceFormat*>(new QSurfaceFormat(_ret));
+	return new QSurfaceFormat(self->format());
 }
 
 QSurfaceFormat* QOffscreenSurface_RequestedFormat(const QOffscreenSurface* self) {
-	QSurfaceFormat _ret = self->requestedFormat();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSurfaceFormat*>(new QSurfaceFormat(_ret));
+	return new QSurfaceFormat(self->requestedFormat());
 }
 
 QSize* QOffscreenSurface_Size(const QOffscreenSurface* self) {
-	QSize _ret = self->size();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->size());
 }
 
 QScreen* QOffscreenSurface_Screen(const QOffscreenSurface* self) {

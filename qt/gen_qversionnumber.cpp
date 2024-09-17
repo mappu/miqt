@@ -54,9 +54,7 @@ int QVersionNumber_MicroVersion(const QVersionNumber* self) {
 }
 
 QVersionNumber* QVersionNumber_Normalized(const QVersionNumber* self) {
-	QVersionNumber _ret = self->normalized();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVersionNumber*>(new QVersionNumber(_ret));
+	return new QVersionNumber(self->normalized());
 }
 
 struct miqt_array* QVersionNumber_Segments(const QVersionNumber* self) {
@@ -89,9 +87,7 @@ int QVersionNumber_Compare(QVersionNumber* v1, QVersionNumber* v2) {
 }
 
 QVersionNumber* QVersionNumber_CommonPrefix(QVersionNumber* v1, QVersionNumber* v2) {
-	QVersionNumber _ret = QVersionNumber::commonPrefix(*v1, *v2);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVersionNumber*>(new QVersionNumber(_ret));
+	return new QVersionNumber(QVersionNumber::commonPrefix(*v1, *v2));
 }
 
 struct miqt_string* QVersionNumber_ToString(const QVersionNumber* self) {
@@ -103,16 +99,12 @@ struct miqt_string* QVersionNumber_ToString(const QVersionNumber* self) {
 
 QVersionNumber* QVersionNumber_FromString(struct miqt_string* stringVal) {
 	QString stringVal_QString = QString::fromUtf8(&stringVal->data, stringVal->len);
-	QVersionNumber _ret = QVersionNumber::fromString(stringVal_QString);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVersionNumber*>(new QVersionNumber(_ret));
+	return new QVersionNumber(QVersionNumber::fromString(stringVal_QString));
 }
 
 QVersionNumber* QVersionNumber_FromString22(struct miqt_string* stringVal, int* suffixIndex) {
 	QString stringVal_QString = QString::fromUtf8(&stringVal->data, stringVal->len);
-	QVersionNumber _ret = QVersionNumber::fromString(stringVal_QString, static_cast<int*>(suffixIndex));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVersionNumber*>(new QVersionNumber(_ret));
+	return new QVersionNumber(QVersionNumber::fromString(stringVal_QString, static_cast<int*>(suffixIndex)));
 }
 
 void QVersionNumber_Delete(QVersionNumber* self) {

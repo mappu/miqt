@@ -38,9 +38,7 @@ struct miqt_string* QTextBrowser_TrUtf8(const char* s) {
 }
 
 QUrl* QTextBrowser_Source(const QTextBrowser* self) {
-	QUrl _ret = self->source();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QUrl*>(new QUrl(_ret));
+	return new QUrl(self->source());
 }
 
 uintptr_t QTextBrowser_SourceType(const QTextBrowser* self) {
@@ -50,7 +48,7 @@ uintptr_t QTextBrowser_SourceType(const QTextBrowser* self) {
 
 struct miqt_array* QTextBrowser_SearchPaths(const QTextBrowser* self) {
 	QStringList _ret = self->searchPaths();
-	// Convert QStringList from C++ memory to manually-managed C memory
+	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
@@ -75,9 +73,7 @@ void QTextBrowser_SetSearchPaths(QTextBrowser* self, struct miqt_array* /* of st
 }
 
 QVariant* QTextBrowser_LoadResource(QTextBrowser* self, int typeVal, QUrl* name) {
-	QVariant _ret = self->loadResource(static_cast<int>(typeVal), *name);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(_ret));
+	return new QVariant(self->loadResource(static_cast<int>(typeVal), *name));
 }
 
 bool QTextBrowser_IsBackwardAvailable(const QTextBrowser* self) {
@@ -100,9 +96,7 @@ struct miqt_string* QTextBrowser_HistoryTitle(const QTextBrowser* self, int para
 }
 
 QUrl* QTextBrowser_HistoryUrl(const QTextBrowser* self, int param1) {
-	QUrl _ret = self->historyUrl(static_cast<int>(param1));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QUrl*>(new QUrl(_ret));
+	return new QUrl(self->historyUrl(static_cast<int>(param1)));
 }
 
 int QTextBrowser_BackwardHistoryCount(const QTextBrowser* self) {

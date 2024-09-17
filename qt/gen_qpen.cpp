@@ -111,9 +111,7 @@ void QPen_SetWidth(QPen* self, int width) {
 }
 
 QColor* QPen_Color(const QPen* self) {
-	QColor _ret = self->color();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QColor*>(new QColor(_ret));
+	return new QColor(self->color());
 }
 
 void QPen_SetColor(QPen* self, QColor* color) {
@@ -121,9 +119,7 @@ void QPen_SetColor(QPen* self, QColor* color) {
 }
 
 QBrush* QPen_Brush(const QPen* self) {
-	QBrush _ret = self->brush();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QBrush*>(new QBrush(_ret));
+	return new QBrush(self->brush());
 }
 
 void QPen_SetBrush(QPen* self, QBrush* brush) {

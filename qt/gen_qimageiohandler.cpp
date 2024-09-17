@@ -30,15 +30,11 @@ void QImageIOHandler_SetFormatWithFormat(const QImageIOHandler* self, QByteArray
 }
 
 QByteArray* QImageIOHandler_Format(const QImageIOHandler* self) {
-	QByteArray _ret = self->format();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(self->format());
 }
 
 QByteArray* QImageIOHandler_Name(const QImageIOHandler* self) {
-	QByteArray _ret = self->name();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(self->name());
 }
 
 bool QImageIOHandler_CanRead(const QImageIOHandler* self) {
@@ -54,9 +50,7 @@ bool QImageIOHandler_Write(QImageIOHandler* self, QImage* image) {
 }
 
 QVariant* QImageIOHandler_Option(const QImageIOHandler* self, uintptr_t option) {
-	QVariant _ret = self->option(static_cast<QImageIOHandler::ImageOption>(option));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(_ret));
+	return new QVariant(self->option(static_cast<QImageIOHandler::ImageOption>(option)));
 }
 
 void QImageIOHandler_SetOption(QImageIOHandler* self, uintptr_t option, QVariant* value) {
@@ -92,9 +86,7 @@ int QImageIOHandler_CurrentImageNumber(const QImageIOHandler* self) {
 }
 
 QRect* QImageIOHandler_CurrentImageRect(const QImageIOHandler* self) {
-	QRect _ret = self->currentImageRect();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->currentImageRect());
 }
 
 void QImageIOHandler_Delete(QImageIOHandler* self) {

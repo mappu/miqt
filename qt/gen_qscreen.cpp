@@ -65,21 +65,15 @@ int QScreen_Depth(const QScreen* self) {
 }
 
 QSize* QScreen_Size(const QScreen* self) {
-	QSize _ret = self->size();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->size());
 }
 
 QRect* QScreen_Geometry(const QScreen* self) {
-	QRect _ret = self->geometry();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->geometry());
 }
 
 QSizeF* QScreen_PhysicalSize(const QScreen* self) {
-	QSizeF _ret = self->physicalSize();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSizeF*>(new QSizeF(_ret));
+	return new QSizeF(self->physicalSize());
 }
 
 double QScreen_PhysicalDotsPerInchX(const QScreen* self) {
@@ -111,15 +105,11 @@ double QScreen_DevicePixelRatio(const QScreen* self) {
 }
 
 QSize* QScreen_AvailableSize(const QScreen* self) {
-	QSize _ret = self->availableSize();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->availableSize());
 }
 
 QRect* QScreen_AvailableGeometry(const QScreen* self) {
-	QRect _ret = self->availableGeometry();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->availableGeometry());
 }
 
 struct miqt_array* QScreen_VirtualSiblings(const QScreen* self) {
@@ -140,27 +130,19 @@ QScreen* QScreen_VirtualSiblingAt(QScreen* self, QPoint* point) {
 }
 
 QSize* QScreen_VirtualSize(const QScreen* self) {
-	QSize _ret = self->virtualSize();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->virtualSize());
 }
 
 QRect* QScreen_VirtualGeometry(const QScreen* self) {
-	QRect _ret = self->virtualGeometry();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->virtualGeometry());
 }
 
 QSize* QScreen_AvailableVirtualSize(const QScreen* self) {
-	QSize _ret = self->availableVirtualSize();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->availableVirtualSize());
 }
 
 QRect* QScreen_AvailableVirtualGeometry(const QScreen* self) {
-	QRect _ret = self->availableVirtualGeometry();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->availableVirtualGeometry());
 }
 
 uintptr_t QScreen_PrimaryOrientation(const QScreen* self) {
@@ -192,15 +174,11 @@ int QScreen_AngleBetween(const QScreen* self, uintptr_t a, uintptr_t b) {
 }
 
 QTransform* QScreen_TransformBetween(const QScreen* self, uintptr_t a, uintptr_t b, QRect* target) {
-	QTransform _ret = self->transformBetween(static_cast<Qt::ScreenOrientation>(a), static_cast<Qt::ScreenOrientation>(b), *target);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTransform*>(new QTransform(_ret));
+	return new QTransform(self->transformBetween(static_cast<Qt::ScreenOrientation>(a), static_cast<Qt::ScreenOrientation>(b), *target));
 }
 
 QRect* QScreen_MapBetween(const QScreen* self, uintptr_t a, uintptr_t b, QRect* rect) {
-	QRect _ret = self->mapBetween(static_cast<Qt::ScreenOrientation>(a), static_cast<Qt::ScreenOrientation>(b), *rect);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->mapBetween(static_cast<Qt::ScreenOrientation>(a), static_cast<Qt::ScreenOrientation>(b), *rect));
 }
 
 bool QScreen_IsPortrait(const QScreen* self, uintptr_t orientation) {
@@ -212,9 +190,7 @@ bool QScreen_IsLandscape(const QScreen* self, uintptr_t orientation) {
 }
 
 QPixmap* QScreen_GrabWindow(QScreen* self, uintptr_t window) {
-	QPixmap _ret = self->grabWindow(static_cast<quintptr>(window));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPixmap*>(new QPixmap(_ret));
+	return new QPixmap(self->grabWindow(static_cast<quintptr>(window)));
 }
 
 double QScreen_RefreshRate(const QScreen* self) {
@@ -359,27 +335,19 @@ struct miqt_string* QScreen_TrUtf83(const char* s, const char* c, int n) {
 }
 
 QPixmap* QScreen_GrabWindow2(QScreen* self, uintptr_t window, int x) {
-	QPixmap _ret = self->grabWindow(static_cast<quintptr>(window), static_cast<int>(x));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPixmap*>(new QPixmap(_ret));
+	return new QPixmap(self->grabWindow(static_cast<quintptr>(window), static_cast<int>(x)));
 }
 
 QPixmap* QScreen_GrabWindow3(QScreen* self, uintptr_t window, int x, int y) {
-	QPixmap _ret = self->grabWindow(static_cast<quintptr>(window), static_cast<int>(x), static_cast<int>(y));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPixmap*>(new QPixmap(_ret));
+	return new QPixmap(self->grabWindow(static_cast<quintptr>(window), static_cast<int>(x), static_cast<int>(y)));
 }
 
 QPixmap* QScreen_GrabWindow4(QScreen* self, uintptr_t window, int x, int y, int w) {
-	QPixmap _ret = self->grabWindow(static_cast<quintptr>(window), static_cast<int>(x), static_cast<int>(y), static_cast<int>(w));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPixmap*>(new QPixmap(_ret));
+	return new QPixmap(self->grabWindow(static_cast<quintptr>(window), static_cast<int>(x), static_cast<int>(y), static_cast<int>(w)));
 }
 
 QPixmap* QScreen_GrabWindow5(QScreen* self, uintptr_t window, int x, int y, int w, int h) {
-	QPixmap _ret = self->grabWindow(static_cast<quintptr>(window), static_cast<int>(x), static_cast<int>(y), static_cast<int>(w), static_cast<int>(h));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPixmap*>(new QPixmap(_ret));
+	return new QPixmap(self->grabWindow(static_cast<quintptr>(window), static_cast<int>(x), static_cast<int>(y), static_cast<int>(w), static_cast<int>(h)));
 }
 
 void QScreen_Delete(QScreen* self) {

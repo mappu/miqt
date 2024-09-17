@@ -72,9 +72,7 @@ float QVector2D_LengthSquared(const QVector2D* self) {
 }
 
 QVector2D* QVector2D_Normalized(const QVector2D* self) {
-	QVector2D _ret = self->normalized();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVector2D*>(new QVector2D(_ret));
+	return new QVector2D(self->normalized());
 }
 
 void QVector2D_Normalize(QVector2D* self) {
@@ -130,27 +128,19 @@ float QVector2D_DotProduct(QVector2D* v1, QVector2D* v2) {
 }
 
 QVector3D* QVector2D_ToVector3D(const QVector2D* self) {
-	QVector3D _ret = self->toVector3D();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVector3D*>(new QVector3D(_ret));
+	return new QVector3D(self->toVector3D());
 }
 
 QVector4D* QVector2D_ToVector4D(const QVector2D* self) {
-	QVector4D _ret = self->toVector4D();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVector4D*>(new QVector4D(_ret));
+	return new QVector4D(self->toVector4D());
 }
 
 QPoint* QVector2D_ToPoint(const QVector2D* self) {
-	QPoint _ret = self->toPoint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPoint*>(new QPoint(_ret));
+	return new QPoint(self->toPoint());
 }
 
 QPointF* QVector2D_ToPointF(const QVector2D* self) {
-	QPointF _ret = self->toPointF();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPointF*>(new QPointF(_ret));
+	return new QPointF(self->toPointF());
 }
 
 void QVector2D_Delete(QVector2D* self) {

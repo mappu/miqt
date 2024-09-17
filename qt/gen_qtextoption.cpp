@@ -109,8 +109,8 @@ void QTextOption_SetTabs(QTextOption* self, struct miqt_array* /* of QTextOption
 
 struct miqt_array* QTextOption_Tabs(const QTextOption* self) {
 	QList<QTextOption::Tab> _ret = self->tabs();
-	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
-	QTextOption__Tab** _arr = static_cast<QTextOption__Tab**>(malloc(sizeof(QTextOption__Tab**) * _ret.length()));
+	// Convert QList<> from C++ memory to manually-managed C memory
+	QTextOption__Tab** _arr = static_cast<QTextOption__Tab**>(malloc(sizeof(QTextOption__Tab*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = new QTextOption::Tab(_ret[i]);
 	}

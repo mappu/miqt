@@ -38,15 +38,11 @@ struct miqt_string* QToolButton_TrUtf8(const char* s) {
 }
 
 QSize* QToolButton_SizeHint(const QToolButton* self) {
-	QSize _ret = self->sizeHint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->sizeHint());
 }
 
 QSize* QToolButton_MinimumSizeHint(const QToolButton* self) {
-	QSize _ret = self->minimumSizeHint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->minimumSizeHint());
 }
 
 uintptr_t QToolButton_ToolButtonStyle(const QToolButton* self) {

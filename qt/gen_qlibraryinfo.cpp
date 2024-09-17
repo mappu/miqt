@@ -24,9 +24,7 @@ struct miqt_string* QLibraryInfo_LicensedProducts() {
 }
 
 QDate* QLibraryInfo_BuildDate() {
-	QDate _ret = QLibraryInfo::buildDate();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QDate*>(new QDate(_ret));
+	return new QDate(QLibraryInfo::buildDate());
 }
 
 const char* QLibraryInfo_Build() {
@@ -38,9 +36,7 @@ bool QLibraryInfo_IsDebugBuild() {
 }
 
 QVersionNumber* QLibraryInfo_Version() {
-	QVersionNumber _ret = QLibraryInfo::version();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVersionNumber*>(new QVersionNumber(_ret));
+	return new QVersionNumber(QLibraryInfo::version());
 }
 
 struct miqt_string* QLibraryInfo_Location(uintptr_t param1) {
@@ -53,7 +49,7 @@ struct miqt_string* QLibraryInfo_Location(uintptr_t param1) {
 struct miqt_array* QLibraryInfo_PlatformPluginArguments(struct miqt_string* platformName) {
 	QString platformName_QString = QString::fromUtf8(&platformName->data, platformName->len);
 	QStringList _ret = QLibraryInfo::platformPluginArguments(platformName_QString);
-	// Convert QStringList from C++ memory to manually-managed C memory
+	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];

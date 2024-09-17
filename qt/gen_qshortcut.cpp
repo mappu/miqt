@@ -52,9 +52,7 @@ void QShortcut_SetKey(QShortcut* self, QKeySequence* key) {
 }
 
 QKeySequence* QShortcut_Key(const QShortcut* self) {
-	QKeySequence _ret = self->key();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QKeySequence*>(new QKeySequence(_ret));
+	return new QKeySequence(self->key());
 }
 
 void QShortcut_SetEnabled(QShortcut* self, bool enable) {

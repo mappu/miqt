@@ -77,15 +77,11 @@ uintptr_t QAbstractItemView_SelectionBehavior(const QAbstractItemView* self) {
 }
 
 QModelIndex* QAbstractItemView_CurrentIndex(const QAbstractItemView* self) {
-	QModelIndex _ret = self->currentIndex();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QModelIndex*>(new QModelIndex(_ret));
+	return new QModelIndex(self->currentIndex());
 }
 
 QModelIndex* QAbstractItemView_RootIndex(const QAbstractItemView* self) {
-	QModelIndex _ret = self->rootIndex();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QModelIndex*>(new QModelIndex(_ret));
+	return new QModelIndex(self->rootIndex());
 }
 
 void QAbstractItemView_SetEditTriggers(QAbstractItemView* self, int triggers) {
@@ -202,9 +198,7 @@ void QAbstractItemView_SetIconSize(QAbstractItemView* self, QSize* size) {
 }
 
 QSize* QAbstractItemView_IconSize(const QAbstractItemView* self) {
-	QSize _ret = self->iconSize();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->iconSize());
 }
 
 void QAbstractItemView_SetTextElideMode(QAbstractItemView* self, uintptr_t mode) {
@@ -222,9 +216,7 @@ void QAbstractItemView_KeyboardSearch(QAbstractItemView* self, struct miqt_strin
 }
 
 QRect* QAbstractItemView_VisualRect(const QAbstractItemView* self, QModelIndex* index) {
-	QRect _ret = self->visualRect(*index);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->visualRect(*index));
 }
 
 void QAbstractItemView_ScrollTo(QAbstractItemView* self, QModelIndex* index) {
@@ -232,15 +224,11 @@ void QAbstractItemView_ScrollTo(QAbstractItemView* self, QModelIndex* index) {
 }
 
 QModelIndex* QAbstractItemView_IndexAt(const QAbstractItemView* self, QPoint* point) {
-	QModelIndex _ret = self->indexAt(*point);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QModelIndex*>(new QModelIndex(_ret));
+	return new QModelIndex(self->indexAt(*point));
 }
 
 QSize* QAbstractItemView_SizeHintForIndex(const QAbstractItemView* self, QModelIndex* index) {
-	QSize _ret = self->sizeHintForIndex(*index);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->sizeHintForIndex(*index));
 }
 
 int QAbstractItemView_SizeHintForRow(const QAbstractItemView* self, int row) {
@@ -292,9 +280,7 @@ QAbstractItemDelegate* QAbstractItemView_ItemDelegateWithIndex(const QAbstractIt
 }
 
 QVariant* QAbstractItemView_InputMethodQuery(const QAbstractItemView* self, uintptr_t query) {
-	QVariant _ret = self->inputMethodQuery(static_cast<Qt::InputMethodQuery>(query));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(_ret));
+	return new QVariant(self->inputMethodQuery(static_cast<Qt::InputMethodQuery>(query)));
 }
 
 void QAbstractItemView_Reset(QAbstractItemView* self) {

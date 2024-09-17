@@ -90,9 +90,7 @@ int QPageSize_WindowsId(const QPageSize* self) {
 }
 
 QSizeF* QPageSize_DefinitionSize(const QPageSize* self) {
-	QSizeF _ret = self->definitionSize();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSizeF*>(new QSizeF(_ret));
+	return new QSizeF(self->definitionSize());
 }
 
 uintptr_t QPageSize_DefinitionUnits(const QPageSize* self) {
@@ -101,39 +99,27 @@ uintptr_t QPageSize_DefinitionUnits(const QPageSize* self) {
 }
 
 QSizeF* QPageSize_Size(const QPageSize* self, uintptr_t units) {
-	QSizeF _ret = self->size(static_cast<QPageSize::Unit>(units));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSizeF*>(new QSizeF(_ret));
+	return new QSizeF(self->size(static_cast<QPageSize::Unit>(units)));
 }
 
 QSize* QPageSize_SizePoints(const QPageSize* self) {
-	QSize _ret = self->sizePoints();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->sizePoints());
 }
 
 QSize* QPageSize_SizePixels(const QPageSize* self, int resolution) {
-	QSize _ret = self->sizePixels(static_cast<int>(resolution));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->sizePixels(static_cast<int>(resolution)));
 }
 
 QRectF* QPageSize_Rect(const QPageSize* self, uintptr_t units) {
-	QRectF _ret = self->rect(static_cast<QPageSize::Unit>(units));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(_ret));
+	return new QRectF(self->rect(static_cast<QPageSize::Unit>(units)));
 }
 
 QRect* QPageSize_RectPoints(const QPageSize* self) {
-	QRect _ret = self->rectPoints();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->rectPoints());
 }
 
 QRect* QPageSize_RectPixels(const QPageSize* self, int resolution) {
-	QRect _ret = self->rectPixels(static_cast<int>(resolution));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->rectPixels(static_cast<int>(resolution)));
 }
 
 struct miqt_string* QPageSize_KeyWithPageSizeId(uintptr_t pageSizeId) {
@@ -170,9 +156,7 @@ int QPageSize_WindowsIdWithPageSizeId(uintptr_t pageSizeId) {
 }
 
 QSizeF* QPageSize_DefinitionSizeWithPageSizeId(uintptr_t pageSizeId) {
-	QSizeF _ret = QPageSize::definitionSize(static_cast<QPageSize::PageSizeId>(pageSizeId));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSizeF*>(new QSizeF(_ret));
+	return new QSizeF(QPageSize::definitionSize(static_cast<QPageSize::PageSizeId>(pageSizeId)));
 }
 
 uintptr_t QPageSize_DefinitionUnitsWithPageSizeId(uintptr_t pageSizeId) {
@@ -181,21 +165,15 @@ uintptr_t QPageSize_DefinitionUnitsWithPageSizeId(uintptr_t pageSizeId) {
 }
 
 QSizeF* QPageSize_Size2(uintptr_t pageSizeId, uintptr_t units) {
-	QSizeF _ret = QPageSize::size(static_cast<QPageSize::PageSizeId>(pageSizeId), static_cast<QPageSize::Unit>(units));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSizeF*>(new QSizeF(_ret));
+	return new QSizeF(QPageSize::size(static_cast<QPageSize::PageSizeId>(pageSizeId), static_cast<QPageSize::Unit>(units)));
 }
 
 QSize* QPageSize_SizePointsWithPageSizeId(uintptr_t pageSizeId) {
-	QSize _ret = QPageSize::sizePoints(static_cast<QPageSize::PageSizeId>(pageSizeId));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(QPageSize::sizePoints(static_cast<QPageSize::PageSizeId>(pageSizeId)));
 }
 
 QSize* QPageSize_SizePixels2(uintptr_t pageSizeId, int resolution) {
-	QSize _ret = QPageSize::sizePixels(static_cast<QPageSize::PageSizeId>(pageSizeId), static_cast<int>(resolution));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(QPageSize::sizePixels(static_cast<QPageSize::PageSizeId>(pageSizeId), static_cast<int>(resolution)));
 }
 
 uintptr_t QPageSize_Id22(QSize* pointSize, uintptr_t matchPolicy) {

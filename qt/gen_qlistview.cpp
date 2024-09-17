@@ -104,9 +104,7 @@ void QListView_SetGridSize(QListView* self, QSize* size) {
 }
 
 QSize* QListView_GridSize(const QListView* self) {
-	QSize _ret = self->gridSize();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->gridSize());
 }
 
 void QListView_SetViewMode(QListView* self, uintptr_t mode) {
@@ -172,9 +170,7 @@ int QListView_ItemAlignment(const QListView* self) {
 }
 
 QRect* QListView_VisualRect(const QListView* self, QModelIndex* index) {
-	QRect _ret = self->visualRect(*index);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->visualRect(*index));
 }
 
 void QListView_ScrollTo(QListView* self, QModelIndex* index) {
@@ -182,9 +178,7 @@ void QListView_ScrollTo(QListView* self, QModelIndex* index) {
 }
 
 QModelIndex* QListView_IndexAt(const QListView* self, QPoint* p) {
-	QModelIndex _ret = self->indexAt(*p);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QModelIndex*>(new QModelIndex(_ret));
+	return new QModelIndex(self->indexAt(*p));
 }
 
 void QListView_DoItemsLayout(QListView* self) {
@@ -212,8 +206,8 @@ void QListView_IndexesMoved(QListView* self, struct miqt_array* /* of QModelInde
 void QListView_connect_IndexesMoved(QListView* self, void* slot) {
 	QListView::connect(self, static_cast<void (QListView::*)(const QModelIndexList&)>(&QListView::indexesMoved), self, [=](const QModelIndexList& indexes) {
 		const QModelIndexList& indexes_ret = indexes;
-		// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
-		QModelIndex** indexes_arr = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex**) * indexes_ret.length()));
+		// Convert QList<> from C++ memory to manually-managed C memory
+		QModelIndex** indexes_arr = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex*) * indexes_ret.length()));
 		for (size_t i = 0, e = indexes_ret.length(); i < e; ++i) {
 			indexes_arr[i] = new QModelIndex(indexes_ret[i]);
 		}

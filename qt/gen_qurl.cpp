@@ -67,30 +67,22 @@ struct miqt_string* QUrl_ToDisplayString(const QUrl* self) {
 }
 
 QByteArray* QUrl_ToEncoded(const QUrl* self) {
-	QByteArray _ret = self->toEncoded();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(self->toEncoded());
 }
 
 QUrl* QUrl_FromEncoded(QByteArray* url) {
-	QUrl _ret = QUrl::fromEncoded(*url);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QUrl*>(new QUrl(_ret));
+	return new QUrl(QUrl::fromEncoded(*url));
 }
 
 QUrl* QUrl_FromUserInput(struct miqt_string* userInput) {
 	QString userInput_QString = QString::fromUtf8(&userInput->data, userInput->len);
-	QUrl _ret = QUrl::fromUserInput(userInput_QString);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QUrl*>(new QUrl(_ret));
+	return new QUrl(QUrl::fromUserInput(userInput_QString));
 }
 
 QUrl* QUrl_FromUserInput2(struct miqt_string* userInput, struct miqt_string* workingDirectory) {
 	QString userInput_QString = QString::fromUtf8(&userInput->data, userInput->len);
 	QString workingDirectory_QString = QString::fromUtf8(&workingDirectory->data, workingDirectory->len);
-	QUrl _ret = QUrl::fromUserInput(userInput_QString, workingDirectory_QString);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QUrl*>(new QUrl(_ret));
+	return new QUrl(QUrl::fromUserInput(userInput_QString, workingDirectory_QString));
 }
 
 bool QUrl_IsValid(const QUrl* self) {
@@ -255,9 +247,7 @@ void QUrl_SetFragment(QUrl* self, struct miqt_string* fragment) {
 }
 
 QUrl* QUrl_Resolved(const QUrl* self, QUrl* relative) {
-	QUrl _ret = self->resolved(*relative);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QUrl*>(new QUrl(_ret));
+	return new QUrl(self->resolved(*relative));
 }
 
 bool QUrl_IsRelative(const QUrl* self) {
@@ -274,9 +264,7 @@ bool QUrl_IsLocalFile(const QUrl* self) {
 
 QUrl* QUrl_FromLocalFile(struct miqt_string* localfile) {
 	QString localfile_QString = QString::fromUtf8(&localfile->data, localfile->len);
-	QUrl _ret = QUrl::fromLocalFile(localfile_QString);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QUrl*>(new QUrl(_ret));
+	return new QUrl(QUrl::fromLocalFile(localfile_QString));
 }
 
 struct miqt_string* QUrl_ToLocalFile(const QUrl* self) {
@@ -315,9 +303,7 @@ struct miqt_string* QUrl_FromPercentEncoding(QByteArray* param1) {
 
 QByteArray* QUrl_ToPercentEncoding(struct miqt_string* param1) {
 	QString param1_QString = QString::fromUtf8(&param1->data, param1->len);
-	QByteArray _ret = QUrl::toPercentEncoding(param1_QString);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(QUrl::toPercentEncoding(param1_QString));
 }
 
 struct miqt_string* QUrl_FromAce(QByteArray* param1) {
@@ -329,14 +315,12 @@ struct miqt_string* QUrl_FromAce(QByteArray* param1) {
 
 QByteArray* QUrl_ToAce(struct miqt_string* param1) {
 	QString param1_QString = QString::fromUtf8(&param1->data, param1->len);
-	QByteArray _ret = QUrl::toAce(param1_QString);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(QUrl::toAce(param1_QString));
 }
 
 struct miqt_array* QUrl_IdnWhitelist() {
 	QStringList _ret = QUrl::idnWhitelist();
-	// Convert QStringList from C++ memory to manually-managed C memory
+	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
@@ -358,7 +342,7 @@ struct miqt_array* QUrl_ToStringList(struct miqt_array* /* of QUrl* */ uris) {
 		uris_QList.push_back(*(uris_arr[i]));
 	}
 	QStringList _ret = QUrl::toStringList(uris_QList);
-	// Convert QStringList from C++ memory to manually-managed C memory
+	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
@@ -380,8 +364,8 @@ struct miqt_array* QUrl_FromStringList(struct miqt_array* /* of struct miqt_stri
 		uris_QList.push_back(QString::fromUtf8(& uris_arr[i]->data, uris_arr[i]->len));
 	}
 	QList<QUrl> _ret = QUrl::fromStringList(uris_QList);
-	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
-	QUrl** _arr = static_cast<QUrl**>(malloc(sizeof(QUrl**) * _ret.length()));
+	// Convert QList<> from C++ memory to manually-managed C memory
+	QUrl** _arr = static_cast<QUrl**>(malloc(sizeof(QUrl*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = new QUrl(_ret[i]);
 	}
@@ -407,17 +391,13 @@ void QUrl_SetUrl2(QUrl* self, struct miqt_string* url, uintptr_t mode) {
 }
 
 QUrl* QUrl_FromEncoded2(QByteArray* url, uintptr_t mode) {
-	QUrl _ret = QUrl::fromEncoded(*url, static_cast<QUrl::ParsingMode>(mode));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QUrl*>(new QUrl(_ret));
+	return new QUrl(QUrl::fromEncoded(*url, static_cast<QUrl::ParsingMode>(mode)));
 }
 
 QUrl* QUrl_FromUserInput3(struct miqt_string* userInput, struct miqt_string* workingDirectory, int options) {
 	QString userInput_QString = QString::fromUtf8(&userInput->data, userInput->len);
 	QString workingDirectory_QString = QString::fromUtf8(&workingDirectory->data, workingDirectory->len);
-	QUrl _ret = QUrl::fromUserInput(userInput_QString, workingDirectory_QString, static_cast<QUrl::UserInputResolutionOptions>(options));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QUrl*>(new QUrl(_ret));
+	return new QUrl(QUrl::fromUserInput(userInput_QString, workingDirectory_QString, static_cast<QUrl::UserInputResolutionOptions>(options)));
 }
 
 void QUrl_SetAuthority2(QUrl* self, struct miqt_string* authority, uintptr_t mode) {
@@ -536,16 +516,12 @@ void QUrl_SetFragment2(QUrl* self, struct miqt_string* fragment, uintptr_t mode)
 
 QByteArray* QUrl_ToPercentEncoding2(struct miqt_string* param1, QByteArray* exclude) {
 	QString param1_QString = QString::fromUtf8(&param1->data, param1->len);
-	QByteArray _ret = QUrl::toPercentEncoding(param1_QString, *exclude);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(QUrl::toPercentEncoding(param1_QString, *exclude));
 }
 
 QByteArray* QUrl_ToPercentEncoding3(struct miqt_string* param1, QByteArray* exclude, QByteArray* include) {
 	QString param1_QString = QString::fromUtf8(&param1->data, param1->len);
-	QByteArray _ret = QUrl::toPercentEncoding(param1_QString, *exclude, *include);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(QUrl::toPercentEncoding(param1_QString, *exclude, *include));
 }
 
 struct miqt_array* QUrl_FromStringList2(struct miqt_array* /* of struct miqt_string* */ uris, uintptr_t mode) {
@@ -556,8 +532,8 @@ struct miqt_array* QUrl_FromStringList2(struct miqt_array* /* of struct miqt_str
 		uris_QList.push_back(QString::fromUtf8(& uris_arr[i]->data, uris_arr[i]->len));
 	}
 	QList<QUrl> _ret = QUrl::fromStringList(uris_QList, static_cast<QUrl::ParsingMode>(mode));
-	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
-	QUrl** _arr = static_cast<QUrl**>(malloc(sizeof(QUrl**) * _ret.length()));
+	// Convert QList<> from C++ memory to manually-managed C memory
+	QUrl** _arr = static_cast<QUrl**>(malloc(sizeof(QUrl*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = new QUrl(_ret[i]);
 	}

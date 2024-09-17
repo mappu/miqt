@@ -58,15 +58,11 @@ struct miqt_string* QPushButton_TrUtf8(const char* s) {
 }
 
 QSize* QPushButton_SizeHint(const QPushButton* self) {
-	QSize _ret = self->sizeHint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->sizeHint());
 }
 
 QSize* QPushButton_MinimumSizeHint(const QPushButton* self) {
-	QSize _ret = self->minimumSizeHint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->minimumSizeHint());
 }
 
 bool QPushButton_AutoDefault(const QPushButton* self) {

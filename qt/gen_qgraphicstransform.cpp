@@ -93,9 +93,7 @@ struct miqt_string* QGraphicsScale_TrUtf8(const char* s) {
 }
 
 QVector3D* QGraphicsScale_Origin(const QGraphicsScale* self) {
-	QVector3D _ret = self->origin();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVector3D*>(new QVector3D(_ret));
+	return new QVector3D(self->origin());
 }
 
 void QGraphicsScale_SetOrigin(QGraphicsScale* self, QVector3D* point) {
@@ -239,9 +237,7 @@ struct miqt_string* QGraphicsRotation_TrUtf8(const char* s) {
 }
 
 QVector3D* QGraphicsRotation_Origin(const QGraphicsRotation* self) {
-	QVector3D _ret = self->origin();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVector3D*>(new QVector3D(_ret));
+	return new QVector3D(self->origin());
 }
 
 void QGraphicsRotation_SetOrigin(QGraphicsRotation* self, QVector3D* point) {
@@ -257,9 +253,7 @@ void QGraphicsRotation_SetAngle(QGraphicsRotation* self, double angle) {
 }
 
 QVector3D* QGraphicsRotation_Axis(const QGraphicsRotation* self) {
-	QVector3D _ret = self->axis();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVector3D*>(new QVector3D(_ret));
+	return new QVector3D(self->axis());
 }
 
 void QGraphicsRotation_SetAxis(QGraphicsRotation* self, QVector3D* axis) {

@@ -65,15 +65,11 @@ void QStaticText_SetTextOption(QStaticText* self, QTextOption* textOption) {
 }
 
 QTextOption* QStaticText_TextOption(const QStaticText* self) {
-	QTextOption _ret = self->textOption();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextOption*>(new QTextOption(_ret));
+	return new QTextOption(self->textOption());
 }
 
 QSizeF* QStaticText_Size(const QStaticText* self) {
-	QSizeF _ret = self->size();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSizeF*>(new QSizeF(_ret));
+	return new QSizeF(self->size());
 }
 
 void QStaticText_Prepare(QStaticText* self) {

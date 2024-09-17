@@ -103,9 +103,7 @@ void QTextFormat_SetObjectIndex(QTextFormat* self, int object) {
 }
 
 QVariant* QTextFormat_Property(const QTextFormat* self, int propertyId) {
-	QVariant _ret = self->property(static_cast<int>(propertyId));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(_ret));
+	return new QVariant(self->property(static_cast<int>(propertyId)));
 }
 
 void QTextFormat_SetProperty(QTextFormat* self, int propertyId, QVariant* value) {
@@ -140,33 +138,25 @@ struct miqt_string* QTextFormat_StringProperty(const QTextFormat* self, int prop
 }
 
 QColor* QTextFormat_ColorProperty(const QTextFormat* self, int propertyId) {
-	QColor _ret = self->colorProperty(static_cast<int>(propertyId));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QColor*>(new QColor(_ret));
+	return new QColor(self->colorProperty(static_cast<int>(propertyId)));
 }
 
 QPen* QTextFormat_PenProperty(const QTextFormat* self, int propertyId) {
-	QPen _ret = self->penProperty(static_cast<int>(propertyId));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPen*>(new QPen(_ret));
+	return new QPen(self->penProperty(static_cast<int>(propertyId)));
 }
 
 QBrush* QTextFormat_BrushProperty(const QTextFormat* self, int propertyId) {
-	QBrush _ret = self->brushProperty(static_cast<int>(propertyId));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QBrush*>(new QBrush(_ret));
+	return new QBrush(self->brushProperty(static_cast<int>(propertyId)));
 }
 
 QTextLength* QTextFormat_LengthProperty(const QTextFormat* self, int propertyId) {
-	QTextLength _ret = self->lengthProperty(static_cast<int>(propertyId));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextLength*>(new QTextLength(_ret));
+	return new QTextLength(self->lengthProperty(static_cast<int>(propertyId)));
 }
 
 struct miqt_array* QTextFormat_LengthVectorProperty(const QTextFormat* self, int propertyId) {
 	QVector<QTextLength> _ret = self->lengthVectorProperty(static_cast<int>(propertyId));
-	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
-	QTextLength** _arr = static_cast<QTextLength**>(malloc(sizeof(QTextLength**) * _ret.length()));
+	// Convert QList<> from C++ memory to manually-managed C memory
+	QTextLength** _arr = static_cast<QTextLength**>(malloc(sizeof(QTextLength*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = new QTextLength(_ret[i]);
 	}
@@ -227,45 +217,31 @@ bool QTextFormat_IsTableCellFormat(const QTextFormat* self) {
 }
 
 QTextBlockFormat* QTextFormat_ToBlockFormat(const QTextFormat* self) {
-	QTextBlockFormat _ret = self->toBlockFormat();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextBlockFormat*>(new QTextBlockFormat(_ret));
+	return new QTextBlockFormat(self->toBlockFormat());
 }
 
 QTextCharFormat* QTextFormat_ToCharFormat(const QTextFormat* self) {
-	QTextCharFormat _ret = self->toCharFormat();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextCharFormat*>(new QTextCharFormat(_ret));
+	return new QTextCharFormat(self->toCharFormat());
 }
 
 QTextListFormat* QTextFormat_ToListFormat(const QTextFormat* self) {
-	QTextListFormat _ret = self->toListFormat();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextListFormat*>(new QTextListFormat(_ret));
+	return new QTextListFormat(self->toListFormat());
 }
 
 QTextTableFormat* QTextFormat_ToTableFormat(const QTextFormat* self) {
-	QTextTableFormat _ret = self->toTableFormat();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextTableFormat*>(new QTextTableFormat(_ret));
+	return new QTextTableFormat(self->toTableFormat());
 }
 
 QTextFrameFormat* QTextFormat_ToFrameFormat(const QTextFormat* self) {
-	QTextFrameFormat _ret = self->toFrameFormat();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextFrameFormat*>(new QTextFrameFormat(_ret));
+	return new QTextFrameFormat(self->toFrameFormat());
 }
 
 QTextImageFormat* QTextFormat_ToImageFormat(const QTextFormat* self) {
-	QTextImageFormat _ret = self->toImageFormat();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextImageFormat*>(new QTextImageFormat(_ret));
+	return new QTextImageFormat(self->toImageFormat());
 }
 
 QTextTableCellFormat* QTextFormat_ToTableCellFormat(const QTextFormat* self) {
-	QTextTableCellFormat _ret = self->toTableCellFormat();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextTableCellFormat*>(new QTextTableCellFormat(_ret));
+	return new QTextTableCellFormat(self->toTableCellFormat());
 }
 
 bool QTextFormat_OperatorEqual(const QTextFormat* self, QTextFormat* rhs) {
@@ -290,9 +266,7 @@ void QTextFormat_SetBackground(QTextFormat* self, QBrush* brush) {
 }
 
 QBrush* QTextFormat_Background(const QTextFormat* self) {
-	QBrush _ret = self->background();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QBrush*>(new QBrush(_ret));
+	return new QBrush(self->background());
 }
 
 void QTextFormat_ClearBackground(QTextFormat* self) {
@@ -304,9 +278,7 @@ void QTextFormat_SetForeground(QTextFormat* self, QBrush* brush) {
 }
 
 QBrush* QTextFormat_Foreground(const QTextFormat* self) {
-	QBrush _ret = self->foreground();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QBrush*>(new QBrush(_ret));
+	return new QBrush(self->foreground());
 }
 
 void QTextFormat_ClearForeground(QTextFormat* self) {
@@ -338,9 +310,7 @@ void QTextCharFormat_SetFontWithFont(QTextCharFormat* self, QFont* font) {
 }
 
 QFont* QTextCharFormat_Font(const QTextCharFormat* self) {
-	QFont _ret = self->font();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QFont*>(new QFont(_ret));
+	return new QFont(self->font());
 }
 
 void QTextCharFormat_SetFontFamily(QTextCharFormat* self, struct miqt_string* family) {
@@ -366,9 +336,7 @@ void QTextCharFormat_SetFontFamilies(QTextCharFormat* self, struct miqt_array* /
 }
 
 QVariant* QTextCharFormat_FontFamilies(const QTextCharFormat* self) {
-	QVariant _ret = self->fontFamilies();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(_ret));
+	return new QVariant(self->fontFamilies());
 }
 
 void QTextCharFormat_SetFontStyleName(QTextCharFormat* self, struct miqt_string* styleName) {
@@ -377,9 +345,7 @@ void QTextCharFormat_SetFontStyleName(QTextCharFormat* self, struct miqt_string*
 }
 
 QVariant* QTextCharFormat_FontStyleName(const QTextCharFormat* self) {
-	QVariant _ret = self->fontStyleName();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(_ret));
+	return new QVariant(self->fontStyleName());
 }
 
 void QTextCharFormat_SetFontPointSize(QTextCharFormat* self, double size) {
@@ -469,9 +435,7 @@ void QTextCharFormat_SetUnderlineColor(QTextCharFormat* self, QColor* color) {
 }
 
 QColor* QTextCharFormat_UnderlineColor(const QTextCharFormat* self) {
-	QColor _ret = self->underlineColor();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QColor*>(new QColor(_ret));
+	return new QColor(self->underlineColor());
 }
 
 void QTextCharFormat_SetFontFixedPitch(QTextCharFormat* self, bool fixedPitch) {
@@ -548,9 +512,7 @@ void QTextCharFormat_SetTextOutline(QTextCharFormat* self, QPen* pen) {
 }
 
 QPen* QTextCharFormat_TextOutline(const QTextCharFormat* self) {
-	QPen _ret = self->textOutline();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPen*>(new QPen(_ret));
+	return new QPen(self->textOutline());
 }
 
 void QTextCharFormat_SetToolTip(QTextCharFormat* self, struct miqt_string* tip) {
@@ -609,7 +571,7 @@ void QTextCharFormat_SetAnchorNames(QTextCharFormat* self, struct miqt_array* /*
 
 struct miqt_array* QTextCharFormat_AnchorNames(const QTextCharFormat* self) {
 	QStringList _ret = self->anchorNames();
-	// Convert QStringList from C++ memory to manually-managed C memory
+	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
@@ -769,8 +731,8 @@ void QTextBlockFormat_SetTabPositions(QTextBlockFormat* self, struct miqt_array*
 
 struct miqt_array* QTextBlockFormat_TabPositions(const QTextBlockFormat* self) {
 	QList<QTextOption::Tab> _ret = self->tabPositions();
-	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
-	QTextOption__Tab** _arr = static_cast<QTextOption__Tab**>(malloc(sizeof(QTextOption__Tab**) * _ret.length()));
+	// Convert QList<> from C++ memory to manually-managed C memory
+	QTextOption__Tab** _arr = static_cast<QTextOption__Tab**>(malloc(sizeof(QTextOption__Tab*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = new QTextOption::Tab(_ret[i]);
 	}
@@ -936,9 +898,7 @@ void QTextFrameFormat_SetBorderBrush(QTextFrameFormat* self, QBrush* brush) {
 }
 
 QBrush* QTextFrameFormat_BorderBrush(const QTextFrameFormat* self) {
-	QBrush _ret = self->borderBrush();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QBrush*>(new QBrush(_ret));
+	return new QBrush(self->borderBrush());
 }
 
 void QTextFrameFormat_SetBorderStyle(QTextFrameFormat* self, uintptr_t style) {
@@ -1007,9 +967,7 @@ void QTextFrameFormat_SetWidthWithLength(QTextFrameFormat* self, QTextLength* le
 }
 
 QTextLength* QTextFrameFormat_Width(const QTextFrameFormat* self) {
-	QTextLength _ret = self->width();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextLength*>(new QTextLength(_ret));
+	return new QTextLength(self->width());
 }
 
 void QTextFrameFormat_SetHeight(QTextFrameFormat* self, double height) {
@@ -1021,9 +979,7 @@ void QTextFrameFormat_SetHeightWithHeight(QTextFrameFormat* self, QTextLength* h
 }
 
 QTextLength* QTextFrameFormat_Height(const QTextFrameFormat* self) {
-	QTextLength _ret = self->height();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextLength*>(new QTextLength(_ret));
+	return new QTextLength(self->height());
 }
 
 void QTextFrameFormat_SetPageBreakPolicy(QTextFrameFormat* self, int flags) {
@@ -1067,8 +1023,8 @@ void QTextTableFormat_SetColumnWidthConstraints(QTextTableFormat* self, struct m
 
 struct miqt_array* QTextTableFormat_ColumnWidthConstraints(const QTextTableFormat* self) {
 	QVector<QTextLength> _ret = self->columnWidthConstraints();
-	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
-	QTextLength** _arr = static_cast<QTextLength**>(malloc(sizeof(QTextLength**) * _ret.length()));
+	// Convert QList<> from C++ memory to manually-managed C memory
+	QTextLength** _arr = static_cast<QTextLength**>(malloc(sizeof(QTextLength*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = new QTextLength(_ret[i]);
 	}
@@ -1252,9 +1208,7 @@ void QTextTableCellFormat_SetTopBorderBrush(QTextTableCellFormat* self, QBrush* 
 }
 
 QBrush* QTextTableCellFormat_TopBorderBrush(const QTextTableCellFormat* self) {
-	QBrush _ret = self->topBorderBrush();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QBrush*>(new QBrush(_ret));
+	return new QBrush(self->topBorderBrush());
 }
 
 void QTextTableCellFormat_SetBottomBorderBrush(QTextTableCellFormat* self, QBrush* brush) {
@@ -1262,9 +1216,7 @@ void QTextTableCellFormat_SetBottomBorderBrush(QTextTableCellFormat* self, QBrus
 }
 
 QBrush* QTextTableCellFormat_BottomBorderBrush(const QTextTableCellFormat* self) {
-	QBrush _ret = self->bottomBorderBrush();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QBrush*>(new QBrush(_ret));
+	return new QBrush(self->bottomBorderBrush());
 }
 
 void QTextTableCellFormat_SetLeftBorderBrush(QTextTableCellFormat* self, QBrush* brush) {
@@ -1272,9 +1224,7 @@ void QTextTableCellFormat_SetLeftBorderBrush(QTextTableCellFormat* self, QBrush*
 }
 
 QBrush* QTextTableCellFormat_LeftBorderBrush(const QTextTableCellFormat* self) {
-	QBrush _ret = self->leftBorderBrush();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QBrush*>(new QBrush(_ret));
+	return new QBrush(self->leftBorderBrush());
 }
 
 void QTextTableCellFormat_SetRightBorderBrush(QTextTableCellFormat* self, QBrush* brush) {
@@ -1282,9 +1232,7 @@ void QTextTableCellFormat_SetRightBorderBrush(QTextTableCellFormat* self, QBrush
 }
 
 QBrush* QTextTableCellFormat_RightBorderBrush(const QTextTableCellFormat* self) {
-	QBrush _ret = self->rightBorderBrush();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QBrush*>(new QBrush(_ret));
+	return new QBrush(self->rightBorderBrush());
 }
 
 void QTextTableCellFormat_SetBorderBrush(QTextTableCellFormat* self, QBrush* brush) {

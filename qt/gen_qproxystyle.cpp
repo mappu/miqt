@@ -82,34 +82,24 @@ void QProxyStyle_DrawItemPixmap(const QProxyStyle* self, QPainter* painter, QRec
 }
 
 QSize* QProxyStyle_SizeFromContents(const QProxyStyle* self, uintptr_t typeVal, QStyleOption* option, QSize* size, QWidget* widget) {
-	QSize _ret = self->sizeFromContents(static_cast<QStyle::ContentsType>(typeVal), option, *size, widget);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->sizeFromContents(static_cast<QStyle::ContentsType>(typeVal), option, *size, widget));
 }
 
 QRect* QProxyStyle_SubElementRect(const QProxyStyle* self, uintptr_t element, QStyleOption* option, QWidget* widget) {
-	QRect _ret = self->subElementRect(static_cast<QStyle::SubElement>(element), option, widget);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->subElementRect(static_cast<QStyle::SubElement>(element), option, widget));
 }
 
 QRect* QProxyStyle_SubControlRect(const QProxyStyle* self, uintptr_t cc, QStyleOptionComplex* opt, uintptr_t sc, QWidget* widget) {
-	QRect _ret = self->subControlRect(static_cast<QStyle::ComplexControl>(cc), opt, static_cast<QStyle::SubControl>(sc), widget);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->subControlRect(static_cast<QStyle::ComplexControl>(cc), opt, static_cast<QStyle::SubControl>(sc), widget));
 }
 
 QRect* QProxyStyle_ItemTextRect(const QProxyStyle* self, QFontMetrics* fm, QRect* r, int flags, bool enabled, struct miqt_string* text) {
 	QString text_QString = QString::fromUtf8(&text->data, text->len);
-	QRect _ret = self->itemTextRect(*fm, *r, static_cast<int>(flags), enabled, text_QString);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->itemTextRect(*fm, *r, static_cast<int>(flags), enabled, text_QString));
 }
 
 QRect* QProxyStyle_ItemPixmapRect(const QProxyStyle* self, QRect* r, int flags, QPixmap* pixmap) {
-	QRect _ret = self->itemPixmapRect(*r, static_cast<int>(flags), *pixmap);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->itemPixmapRect(*r, static_cast<int>(flags), *pixmap));
 }
 
 uintptr_t QProxyStyle_HitTestComplexControl(const QProxyStyle* self, uintptr_t control, QStyleOptionComplex* option, QPoint* pos) {
@@ -130,27 +120,19 @@ int QProxyStyle_LayoutSpacing(const QProxyStyle* self, uintptr_t control1, uintp
 }
 
 QIcon* QProxyStyle_StandardIcon(const QProxyStyle* self, uintptr_t standardIcon) {
-	QIcon _ret = self->standardIcon(static_cast<QStyle::StandardPixmap>(standardIcon));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QIcon*>(new QIcon(_ret));
+	return new QIcon(self->standardIcon(static_cast<QStyle::StandardPixmap>(standardIcon)));
 }
 
 QPixmap* QProxyStyle_StandardPixmap(const QProxyStyle* self, uintptr_t standardPixmap, QStyleOption* opt) {
-	QPixmap _ret = self->standardPixmap(static_cast<QStyle::StandardPixmap>(standardPixmap), opt);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPixmap*>(new QPixmap(_ret));
+	return new QPixmap(self->standardPixmap(static_cast<QStyle::StandardPixmap>(standardPixmap), opt));
 }
 
 QPixmap* QProxyStyle_GeneratedIconPixmap(const QProxyStyle* self, uintptr_t iconMode, QPixmap* pixmap, QStyleOption* opt) {
-	QPixmap _ret = self->generatedIconPixmap(static_cast<QIcon::Mode>(iconMode), *pixmap, opt);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPixmap*>(new QPixmap(_ret));
+	return new QPixmap(self->generatedIconPixmap(static_cast<QIcon::Mode>(iconMode), *pixmap, opt));
 }
 
 QPalette* QProxyStyle_StandardPalette(const QProxyStyle* self) {
-	QPalette _ret = self->standardPalette();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPalette*>(new QPalette(_ret));
+	return new QPalette(self->standardPalette());
 }
 
 void QProxyStyle_Polish(QProxyStyle* self, QWidget* widget) {
@@ -252,21 +234,15 @@ int QProxyStyle_LayoutSpacing5(const QProxyStyle* self, uintptr_t control1, uint
 }
 
 QIcon* QProxyStyle_StandardIcon2(const QProxyStyle* self, uintptr_t standardIcon, QStyleOption* option) {
-	QIcon _ret = self->standardIcon(static_cast<QStyle::StandardPixmap>(standardIcon), option);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QIcon*>(new QIcon(_ret));
+	return new QIcon(self->standardIcon(static_cast<QStyle::StandardPixmap>(standardIcon), option));
 }
 
 QIcon* QProxyStyle_StandardIcon3(const QProxyStyle* self, uintptr_t standardIcon, QStyleOption* option, QWidget* widget) {
-	QIcon _ret = self->standardIcon(static_cast<QStyle::StandardPixmap>(standardIcon), option, widget);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QIcon*>(new QIcon(_ret));
+	return new QIcon(self->standardIcon(static_cast<QStyle::StandardPixmap>(standardIcon), option, widget));
 }
 
 QPixmap* QProxyStyle_StandardPixmap3(const QProxyStyle* self, uintptr_t standardPixmap, QStyleOption* opt, QWidget* widget) {
-	QPixmap _ret = self->standardPixmap(static_cast<QStyle::StandardPixmap>(standardPixmap), opt, widget);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPixmap*>(new QPixmap(_ret));
+	return new QPixmap(self->standardPixmap(static_cast<QStyle::StandardPixmap>(standardPixmap), opt, widget));
 }
 
 void QProxyStyle_Delete(QProxyStyle* self) {

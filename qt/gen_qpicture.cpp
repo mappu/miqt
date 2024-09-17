@@ -68,9 +68,7 @@ bool QPicture_SaveWithFileName(QPicture* self, struct miqt_string* fileName) {
 }
 
 QRect* QPicture_BoundingRect(const QPicture* self) {
-	QRect _ret = self->boundingRect();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->boundingRect());
 }
 
 void QPicture_SetBoundingRect(QPicture* self, QRect* r) {
@@ -100,8 +98,8 @@ const char* QPicture_PictureFormat(struct miqt_string* fileName) {
 
 struct miqt_array* QPicture_InputFormats() {
 	QList<QByteArray> _ret = QPicture::inputFormats();
-	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
-	QByteArray** _arr = static_cast<QByteArray**>(malloc(sizeof(QByteArray**) * _ret.length()));
+	// Convert QList<> from C++ memory to manually-managed C memory
+	QByteArray** _arr = static_cast<QByteArray**>(malloc(sizeof(QByteArray*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = new QByteArray(_ret[i]);
 	}
@@ -113,8 +111,8 @@ struct miqt_array* QPicture_InputFormats() {
 
 struct miqt_array* QPicture_OutputFormats() {
 	QList<QByteArray> _ret = QPicture::outputFormats();
-	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
-	QByteArray** _arr = static_cast<QByteArray**>(malloc(sizeof(QByteArray**) * _ret.length()));
+	// Convert QList<> from C++ memory to manually-managed C memory
+	QByteArray** _arr = static_cast<QByteArray**>(malloc(sizeof(QByteArray*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = new QByteArray(_ret[i]);
 	}
@@ -126,7 +124,7 @@ struct miqt_array* QPicture_OutputFormats() {
 
 struct miqt_array* QPicture_InputFormatList() {
 	QStringList _ret = QPicture::inputFormatList();
-	// Convert QStringList from C++ memory to manually-managed C memory
+	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
@@ -142,7 +140,7 @@ struct miqt_array* QPicture_InputFormatList() {
 
 struct miqt_array* QPicture_OutputFormatList() {
 	QStringList _ret = QPicture::outputFormatList();
-	// Convert QStringList from C++ memory to manually-managed C memory
+	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
@@ -287,21 +285,17 @@ bool QPictureIO_Write(QPictureIO* self) {
 
 QByteArray* QPictureIO_PictureFormat(struct miqt_string* fileName) {
 	QString fileName_QString = QString::fromUtf8(&fileName->data, fileName->len);
-	QByteArray _ret = QPictureIO::pictureFormat(fileName_QString);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(QPictureIO::pictureFormat(fileName_QString));
 }
 
 QByteArray* QPictureIO_PictureFormatWithQIODevice(QIODevice* param1) {
-	QByteArray _ret = QPictureIO::pictureFormat(param1);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(QPictureIO::pictureFormat(param1));
 }
 
 struct miqt_array* QPictureIO_InputFormats() {
 	QList<QByteArray> _ret = QPictureIO::inputFormats();
-	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
-	QByteArray** _arr = static_cast<QByteArray**>(malloc(sizeof(QByteArray**) * _ret.length()));
+	// Convert QList<> from C++ memory to manually-managed C memory
+	QByteArray** _arr = static_cast<QByteArray**>(malloc(sizeof(QByteArray*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = new QByteArray(_ret[i]);
 	}
@@ -313,8 +307,8 @@ struct miqt_array* QPictureIO_InputFormats() {
 
 struct miqt_array* QPictureIO_OutputFormats() {
 	QList<QByteArray> _ret = QPictureIO::outputFormats();
-	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
-	QByteArray** _arr = static_cast<QByteArray**>(malloc(sizeof(QByteArray**) * _ret.length()));
+	// Convert QList<> from C++ memory to manually-managed C memory
+	QByteArray** _arr = static_cast<QByteArray**>(malloc(sizeof(QByteArray*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = new QByteArray(_ret[i]);
 	}

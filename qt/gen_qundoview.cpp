@@ -78,9 +78,7 @@ void QUndoView_SetCleanIcon(QUndoView* self, QIcon* icon) {
 }
 
 QIcon* QUndoView_CleanIcon(const QUndoView* self) {
-	QIcon _ret = self->cleanIcon();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QIcon*>(new QIcon(_ret));
+	return new QIcon(self->cleanIcon());
 }
 
 void QUndoView_SetStack(QUndoView* self, QUndoStack* stack) {

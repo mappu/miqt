@@ -67,9 +67,7 @@ bool QTimeZone_IsValid(const QTimeZone* self) {
 }
 
 QByteArray* QTimeZone_Id(const QTimeZone* self) {
-	QByteArray _ret = self->id();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(self->id());
 }
 
 uintptr_t QTimeZone_Country(const QTimeZone* self) {
@@ -126,9 +124,7 @@ bool QTimeZone_IsDaylightTime(const QTimeZone* self, QDateTime* atDateTime) {
 }
 
 QTimeZone__OffsetData* QTimeZone_OffsetData(const QTimeZone* self, QDateTime* forDateTime) {
-	QTimeZone::OffsetData _ret = self->offsetData(*forDateTime);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTimeZone::OffsetData*>(new QTimeZone::OffsetData(_ret));
+	return new QTimeZone::OffsetData(self->offsetData(*forDateTime));
 }
 
 bool QTimeZone_HasTransitions(const QTimeZone* self) {
@@ -136,21 +132,17 @@ bool QTimeZone_HasTransitions(const QTimeZone* self) {
 }
 
 QTimeZone__OffsetData* QTimeZone_NextTransition(const QTimeZone* self, QDateTime* afterDateTime) {
-	QTimeZone::OffsetData _ret = self->nextTransition(*afterDateTime);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTimeZone::OffsetData*>(new QTimeZone::OffsetData(_ret));
+	return new QTimeZone::OffsetData(self->nextTransition(*afterDateTime));
 }
 
 QTimeZone__OffsetData* QTimeZone_PreviousTransition(const QTimeZone* self, QDateTime* beforeDateTime) {
-	QTimeZone::OffsetData _ret = self->previousTransition(*beforeDateTime);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTimeZone::OffsetData*>(new QTimeZone::OffsetData(_ret));
+	return new QTimeZone::OffsetData(self->previousTransition(*beforeDateTime));
 }
 
 struct miqt_array* QTimeZone_Transitions(const QTimeZone* self, QDateTime* fromDateTime, QDateTime* toDateTime) {
 	QTimeZone::OffsetDataList _ret = self->transitions(*fromDateTime, *toDateTime);
-	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
-	QTimeZone__OffsetData** _arr = static_cast<QTimeZone__OffsetData**>(malloc(sizeof(QTimeZone__OffsetData**) * _ret.length()));
+	// Convert QList<> from C++ memory to manually-managed C memory
+	QTimeZone__OffsetData** _arr = static_cast<QTimeZone__OffsetData**>(malloc(sizeof(QTimeZone__OffsetData*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = new QTimeZone::OffsetData(_ret[i]);
 	}
@@ -161,21 +153,15 @@ struct miqt_array* QTimeZone_Transitions(const QTimeZone* self, QDateTime* fromD
 }
 
 QByteArray* QTimeZone_SystemTimeZoneId() {
-	QByteArray _ret = QTimeZone::systemTimeZoneId();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(QTimeZone::systemTimeZoneId());
 }
 
 QTimeZone* QTimeZone_SystemTimeZone() {
-	QTimeZone _ret = QTimeZone::systemTimeZone();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTimeZone*>(new QTimeZone(_ret));
+	return new QTimeZone(QTimeZone::systemTimeZone());
 }
 
 QTimeZone* QTimeZone_Utc() {
-	QTimeZone _ret = QTimeZone::utc();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTimeZone*>(new QTimeZone(_ret));
+	return new QTimeZone(QTimeZone::utc());
 }
 
 bool QTimeZone_IsTimeZoneIdAvailable(QByteArray* ianaId) {
@@ -184,8 +170,8 @@ bool QTimeZone_IsTimeZoneIdAvailable(QByteArray* ianaId) {
 
 struct miqt_array* QTimeZone_AvailableTimeZoneIds() {
 	QList<QByteArray> _ret = QTimeZone::availableTimeZoneIds();
-	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
-	QByteArray** _arr = static_cast<QByteArray**>(malloc(sizeof(QByteArray**) * _ret.length()));
+	// Convert QList<> from C++ memory to manually-managed C memory
+	QByteArray** _arr = static_cast<QByteArray**>(malloc(sizeof(QByteArray*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = new QByteArray(_ret[i]);
 	}
@@ -197,8 +183,8 @@ struct miqt_array* QTimeZone_AvailableTimeZoneIds() {
 
 struct miqt_array* QTimeZone_AvailableTimeZoneIdsWithCountry(uintptr_t country) {
 	QList<QByteArray> _ret = QTimeZone::availableTimeZoneIds(static_cast<QLocale::Country>(country));
-	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
-	QByteArray** _arr = static_cast<QByteArray**>(malloc(sizeof(QByteArray**) * _ret.length()));
+	// Convert QList<> from C++ memory to manually-managed C memory
+	QByteArray** _arr = static_cast<QByteArray**>(malloc(sizeof(QByteArray*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = new QByteArray(_ret[i]);
 	}
@@ -210,8 +196,8 @@ struct miqt_array* QTimeZone_AvailableTimeZoneIdsWithCountry(uintptr_t country) 
 
 struct miqt_array* QTimeZone_AvailableTimeZoneIdsWithOffsetSeconds(int offsetSeconds) {
 	QList<QByteArray> _ret = QTimeZone::availableTimeZoneIds(static_cast<int>(offsetSeconds));
-	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
-	QByteArray** _arr = static_cast<QByteArray**>(malloc(sizeof(QByteArray**) * _ret.length()));
+	// Convert QList<> from C++ memory to manually-managed C memory
+	QByteArray** _arr = static_cast<QByteArray**>(malloc(sizeof(QByteArray*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = new QByteArray(_ret[i]);
 	}
@@ -222,27 +208,21 @@ struct miqt_array* QTimeZone_AvailableTimeZoneIdsWithOffsetSeconds(int offsetSec
 }
 
 QByteArray* QTimeZone_IanaIdToWindowsId(QByteArray* ianaId) {
-	QByteArray _ret = QTimeZone::ianaIdToWindowsId(*ianaId);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(QTimeZone::ianaIdToWindowsId(*ianaId));
 }
 
 QByteArray* QTimeZone_WindowsIdToDefaultIanaId(QByteArray* windowsId) {
-	QByteArray _ret = QTimeZone::windowsIdToDefaultIanaId(*windowsId);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(QTimeZone::windowsIdToDefaultIanaId(*windowsId));
 }
 
 QByteArray* QTimeZone_WindowsIdToDefaultIanaId2(QByteArray* windowsId, uintptr_t country) {
-	QByteArray _ret = QTimeZone::windowsIdToDefaultIanaId(*windowsId, static_cast<QLocale::Country>(country));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(QTimeZone::windowsIdToDefaultIanaId(*windowsId, static_cast<QLocale::Country>(country)));
 }
 
 struct miqt_array* QTimeZone_WindowsIdToIanaIds(QByteArray* windowsId) {
 	QList<QByteArray> _ret = QTimeZone::windowsIdToIanaIds(*windowsId);
-	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
-	QByteArray** _arr = static_cast<QByteArray**>(malloc(sizeof(QByteArray**) * _ret.length()));
+	// Convert QList<> from C++ memory to manually-managed C memory
+	QByteArray** _arr = static_cast<QByteArray**>(malloc(sizeof(QByteArray*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = new QByteArray(_ret[i]);
 	}
@@ -254,8 +234,8 @@ struct miqt_array* QTimeZone_WindowsIdToIanaIds(QByteArray* windowsId) {
 
 struct miqt_array* QTimeZone_WindowsIdToIanaIds2(QByteArray* windowsId, uintptr_t country) {
 	QList<QByteArray> _ret = QTimeZone::windowsIdToIanaIds(*windowsId, static_cast<QLocale::Country>(country));
-	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
-	QByteArray** _arr = static_cast<QByteArray**>(malloc(sizeof(QByteArray**) * _ret.length()));
+	// Convert QList<> from C++ memory to manually-managed C memory
+	QByteArray** _arr = static_cast<QByteArray**>(malloc(sizeof(QByteArray*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = new QByteArray(_ret[i]);
 	}

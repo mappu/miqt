@@ -133,15 +133,11 @@ char QByteArray_OperatorSubscriptWithUint(const QByteArray* self, unsigned int i
 }
 
 QByteRef* QByteArray_OperatorSubscriptWithInt(QByteArray* self, int i) {
-	QByteRef _ret = self->operator[](static_cast<int>(i));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteRef*>(new QByteRef(_ret));
+	return new QByteRef(self->operator[](static_cast<int>(i)));
 }
 
 QByteRef* QByteArray_OperatorSubscript2(QByteArray* self, unsigned int i) {
-	QByteRef _ret = self->operator[](static_cast<uint>(i));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteRef*>(new QByteRef(_ret));
+	return new QByteRef(self->operator[](static_cast<uint>(i)));
 }
 
 char QByteArray_Front(const QByteArray* self) {
@@ -149,9 +145,7 @@ char QByteArray_Front(const QByteArray* self) {
 }
 
 QByteRef* QByteArray_Front2(QByteArray* self) {
-	QByteRef _ret = self->front();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteRef*>(new QByteRef(_ret));
+	return new QByteRef(self->front());
 }
 
 char QByteArray_Back(const QByteArray* self) {
@@ -159,9 +153,7 @@ char QByteArray_Back(const QByteArray* self) {
 }
 
 QByteRef* QByteArray_Back2(QByteArray* self) {
-	QByteRef _ret = self->back();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteRef*>(new QByteRef(_ret));
+	return new QByteRef(self->back());
 }
 
 int QByteArray_IndexOf(const QByteArray* self, char c) {
@@ -221,27 +213,19 @@ int QByteArray_CompareWithQByteArray(const QByteArray* self, QByteArray* a) {
 }
 
 QByteArray* QByteArray_Left(const QByteArray* self, int lenVal) {
-	QByteArray _ret = self->left(static_cast<int>(lenVal));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(self->left(static_cast<int>(lenVal)));
 }
 
 QByteArray* QByteArray_Right(const QByteArray* self, int lenVal) {
-	QByteArray _ret = self->right(static_cast<int>(lenVal));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(self->right(static_cast<int>(lenVal)));
 }
 
 QByteArray* QByteArray_Mid(const QByteArray* self, int index) {
-	QByteArray _ret = self->mid(static_cast<int>(index));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(self->mid(static_cast<int>(index)));
 }
 
 QByteArray* QByteArray_Chopped(const QByteArray* self, int lenVal) {
-	QByteArray _ret = self->chopped(static_cast<int>(lenVal));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(self->chopped(static_cast<int>(lenVal)));
 }
 
 bool QByteArray_StartsWith(const QByteArray* self, QByteArray* a) {
@@ -285,39 +269,27 @@ void QByteArray_Chop(QByteArray* self, int n) {
 }
 
 QByteArray* QByteArray_ToLower(const QByteArray* self) {
-	QByteArray _ret = self->toLower();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(self->toLower());
 }
 
 QByteArray* QByteArray_ToUpper(const QByteArray* self) {
-	QByteArray _ret = self->toUpper();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(self->toUpper());
 }
 
 QByteArray* QByteArray_Trimmed(const QByteArray* self) {
-	QByteArray _ret = self->trimmed();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(self->trimmed());
 }
 
 QByteArray* QByteArray_Simplified(const QByteArray* self) {
-	QByteArray _ret = self->simplified();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(self->simplified());
 }
 
 QByteArray* QByteArray_LeftJustified(const QByteArray* self, int width) {
-	QByteArray _ret = self->leftJustified(static_cast<int>(width));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(self->leftJustified(static_cast<int>(width)));
 }
 
 QByteArray* QByteArray_RightJustified(const QByteArray* self, int width) {
-	QByteArray _ret = self->rightJustified(static_cast<int>(width));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(self->rightJustified(static_cast<int>(width)));
 }
 
 QByteArray* QByteArray_Prepend(QByteArray* self, char c) {
@@ -502,8 +474,8 @@ QByteArray* QByteArray_OperatorPlusAssignWithQByteArray(QByteArray* self, QByteA
 
 struct miqt_array* QByteArray_Split(const QByteArray* self, char sep) {
 	QList<QByteArray> _ret = self->split(static_cast<char>(sep));
-	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
-	QByteArray** _arr = static_cast<QByteArray**>(malloc(sizeof(QByteArray**) * _ret.length()));
+	// Convert QList<> from C++ memory to manually-managed C memory
+	QByteArray** _arr = static_cast<QByteArray**>(malloc(sizeof(QByteArray*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = new QByteArray(_ret[i]);
 	}
@@ -514,9 +486,7 @@ struct miqt_array* QByteArray_Split(const QByteArray* self, char sep) {
 }
 
 QByteArray* QByteArray_Repeated(const QByteArray* self, int times) {
-	QByteArray _ret = self->repeated(static_cast<int>(times));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(self->repeated(static_cast<int>(times)));
 }
 
 QByteArray* QByteArray_AppendWithQString(QByteArray* self, struct miqt_string* s) {
@@ -642,33 +612,23 @@ double QByteArray_ToDouble(const QByteArray* self) {
 }
 
 QByteArray* QByteArray_ToBase64(const QByteArray* self, int options) {
-	QByteArray _ret = self->toBase64(static_cast<QByteArray::Base64Options>(options));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(self->toBase64(static_cast<QByteArray::Base64Options>(options)));
 }
 
 QByteArray* QByteArray_ToBase642(const QByteArray* self) {
-	QByteArray _ret = self->toBase64();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(self->toBase64());
 }
 
 QByteArray* QByteArray_ToHex(const QByteArray* self) {
-	QByteArray _ret = self->toHex();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(self->toHex());
 }
 
 QByteArray* QByteArray_ToHexWithSeparator(const QByteArray* self, char separator) {
-	QByteArray _ret = self->toHex(static_cast<char>(separator));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(self->toHex(static_cast<char>(separator)));
 }
 
 QByteArray* QByteArray_ToPercentEncoding(const QByteArray* self) {
-	QByteArray _ret = self->toPercentEncoding();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(self->toPercentEncoding());
 }
 
 QByteArray* QByteArray_SetNum(QByteArray* self, int16_t param1) {
@@ -726,69 +686,47 @@ QByteArray* QByteArray_SetRawData(QByteArray* self, const char* a, unsigned int 
 }
 
 QByteArray* QByteArray_Number(int param1) {
-	QByteArray _ret = QByteArray::number(static_cast<int>(param1));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(QByteArray::number(static_cast<int>(param1)));
 }
 
 QByteArray* QByteArray_NumberWithUint(unsigned int param1) {
-	QByteArray _ret = QByteArray::number(static_cast<uint>(param1));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(QByteArray::number(static_cast<uint>(param1)));
 }
 
 QByteArray* QByteArray_NumberWithQlonglong(long long param1) {
-	QByteArray _ret = QByteArray::number(static_cast<qint64>(param1));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(QByteArray::number(static_cast<qint64>(param1)));
 }
 
 QByteArray* QByteArray_NumberWithQulonglong(unsigned long long param1) {
-	QByteArray _ret = QByteArray::number(static_cast<quint64>(param1));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(QByteArray::number(static_cast<quint64>(param1)));
 }
 
 QByteArray* QByteArray_NumberWithDouble(double param1) {
-	QByteArray _ret = QByteArray::number(static_cast<double>(param1));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(QByteArray::number(static_cast<double>(param1)));
 }
 
 QByteArray* QByteArray_FromRawData(const char* param1, int size) {
-	QByteArray _ret = QByteArray::fromRawData(param1, static_cast<int>(size));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(QByteArray::fromRawData(param1, static_cast<int>(size)));
 }
 
 QByteArray__FromBase64Result* QByteArray_FromBase64Encoding(QByteArray* base64) {
-	QByteArray::FromBase64Result _ret = QByteArray::fromBase64Encoding(*base64);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray::FromBase64Result*>(new QByteArray::FromBase64Result(_ret));
+	return new QByteArray::FromBase64Result(QByteArray::fromBase64Encoding(*base64));
 }
 
 QByteArray* QByteArray_FromBase64(QByteArray* base64, int options) {
-	QByteArray _ret = QByteArray::fromBase64(*base64, static_cast<QByteArray::Base64Options>(options));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(QByteArray::fromBase64(*base64, static_cast<QByteArray::Base64Options>(options)));
 }
 
 QByteArray* QByteArray_FromBase64WithBase64(QByteArray* base64) {
-	QByteArray _ret = QByteArray::fromBase64(*base64);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(QByteArray::fromBase64(*base64));
 }
 
 QByteArray* QByteArray_FromHex(QByteArray* hexEncoded) {
-	QByteArray _ret = QByteArray::fromHex(*hexEncoded);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(QByteArray::fromHex(*hexEncoded));
 }
 
 QByteArray* QByteArray_FromPercentEncoding(QByteArray* pctEncoded) {
-	QByteArray _ret = QByteArray::fromPercentEncoding(*pctEncoded);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(QByteArray::fromPercentEncoding(*pctEncoded));
 }
 
 char* QByteArray_Begin(QByteArray* self) {
@@ -902,33 +840,23 @@ int QByteArray_Compare22(const QByteArray* self, QByteArray* a, uintptr_t cs) {
 }
 
 QByteArray* QByteArray_Mid2(const QByteArray* self, int index, int lenVal) {
-	QByteArray _ret = self->mid(static_cast<int>(index), static_cast<int>(lenVal));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(self->mid(static_cast<int>(index), static_cast<int>(lenVal)));
 }
 
 QByteArray* QByteArray_LeftJustified2(const QByteArray* self, int width, char fill) {
-	QByteArray _ret = self->leftJustified(static_cast<int>(width), static_cast<char>(fill));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(self->leftJustified(static_cast<int>(width), static_cast<char>(fill)));
 }
 
 QByteArray* QByteArray_LeftJustified3(const QByteArray* self, int width, char fill, bool truncate) {
-	QByteArray _ret = self->leftJustified(static_cast<int>(width), static_cast<char>(fill), truncate);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(self->leftJustified(static_cast<int>(width), static_cast<char>(fill), truncate));
 }
 
 QByteArray* QByteArray_RightJustified2(const QByteArray* self, int width, char fill) {
-	QByteArray _ret = self->rightJustified(static_cast<int>(width), static_cast<char>(fill));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(self->rightJustified(static_cast<int>(width), static_cast<char>(fill)));
 }
 
 QByteArray* QByteArray_RightJustified3(const QByteArray* self, int width, char fill, bool truncate) {
-	QByteArray _ret = self->rightJustified(static_cast<int>(width), static_cast<char>(fill), truncate);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(self->rightJustified(static_cast<int>(width), static_cast<char>(fill), truncate));
 }
 
 int QByteArray_IndexOf24(const QByteArray* self, struct miqt_string* s, int from) {
@@ -1014,21 +942,15 @@ double QByteArray_ToDouble1(const QByteArray* self, bool* ok) {
 }
 
 QByteArray* QByteArray_ToPercentEncoding1(const QByteArray* self, QByteArray* exclude) {
-	QByteArray _ret = self->toPercentEncoding(*exclude);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(self->toPercentEncoding(*exclude));
 }
 
 QByteArray* QByteArray_ToPercentEncoding2(const QByteArray* self, QByteArray* exclude, QByteArray* include) {
-	QByteArray _ret = self->toPercentEncoding(*exclude, *include);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(self->toPercentEncoding(*exclude, *include));
 }
 
 QByteArray* QByteArray_ToPercentEncoding3(const QByteArray* self, QByteArray* exclude, QByteArray* include, char percent) {
-	QByteArray _ret = self->toPercentEncoding(*exclude, *include, static_cast<char>(percent));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(self->toPercentEncoding(*exclude, *include, static_cast<char>(percent)));
 }
 
 QByteArray* QByteArray_SetNum2(QByteArray* self, int16_t param1, int base) {
@@ -1092,51 +1014,35 @@ QByteArray* QByteArray_SetNum32(QByteArray* self, double param1, char f, int pre
 }
 
 QByteArray* QByteArray_Number2(int param1, int base) {
-	QByteArray _ret = QByteArray::number(static_cast<int>(param1), static_cast<int>(base));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(QByteArray::number(static_cast<int>(param1), static_cast<int>(base)));
 }
 
 QByteArray* QByteArray_Number22(unsigned int param1, int base) {
-	QByteArray _ret = QByteArray::number(static_cast<uint>(param1), static_cast<int>(base));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(QByteArray::number(static_cast<uint>(param1), static_cast<int>(base)));
 }
 
 QByteArray* QByteArray_Number23(long long param1, int base) {
-	QByteArray _ret = QByteArray::number(static_cast<qint64>(param1), static_cast<int>(base));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(QByteArray::number(static_cast<qint64>(param1), static_cast<int>(base)));
 }
 
 QByteArray* QByteArray_Number24(unsigned long long param1, int base) {
-	QByteArray _ret = QByteArray::number(static_cast<quint64>(param1), static_cast<int>(base));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(QByteArray::number(static_cast<quint64>(param1), static_cast<int>(base)));
 }
 
 QByteArray* QByteArray_Number25(double param1, char f) {
-	QByteArray _ret = QByteArray::number(static_cast<double>(param1), static_cast<char>(f));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(QByteArray::number(static_cast<double>(param1), static_cast<char>(f)));
 }
 
 QByteArray* QByteArray_Number3(double param1, char f, int prec) {
-	QByteArray _ret = QByteArray::number(static_cast<double>(param1), static_cast<char>(f), static_cast<int>(prec));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(QByteArray::number(static_cast<double>(param1), static_cast<char>(f), static_cast<int>(prec)));
 }
 
 QByteArray__FromBase64Result* QByteArray_FromBase64Encoding2(QByteArray* base64, int options) {
-	QByteArray::FromBase64Result _ret = QByteArray::fromBase64Encoding(*base64, static_cast<QByteArray::Base64Options>(options));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray::FromBase64Result*>(new QByteArray::FromBase64Result(_ret));
+	return new QByteArray::FromBase64Result(QByteArray::fromBase64Encoding(*base64, static_cast<QByteArray::Base64Options>(options)));
 }
 
 QByteArray* QByteArray_FromPercentEncoding2(QByteArray* pctEncoded, char percent) {
-	QByteArray _ret = QByteArray::fromPercentEncoding(*pctEncoded, static_cast<char>(percent));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(QByteArray::fromPercentEncoding(*pctEncoded, static_cast<char>(percent)));
 }
 
 void QByteArray_Delete(QByteArray* self) {

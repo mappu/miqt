@@ -79,9 +79,7 @@ struct miqt_string* QGraphicsScene_TrUtf8(const char* s) {
 }
 
 QRectF* QGraphicsScene_SceneRect(const QGraphicsScene* self) {
-	QRectF _ret = self->sceneRect();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(_ret));
+	return new QRectF(self->sceneRect());
 }
 
 double QGraphicsScene_Width(const QGraphicsScene* self) {
@@ -130,9 +128,7 @@ void QGraphicsScene_SetBspTreeDepth(QGraphicsScene* self, int depth) {
 }
 
 QRectF* QGraphicsScene_ItemsBoundingRect(const QGraphicsScene* self) {
-	QRectF _ret = self->itemsBoundingRect();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(_ret));
+	return new QRectF(self->itemsBoundingRect());
 }
 
 struct miqt_array* QGraphicsScene_Items(const QGraphicsScene* self) {
@@ -235,9 +231,7 @@ struct miqt_array* QGraphicsScene_SelectedItems(const QGraphicsScene* self) {
 }
 
 QPainterPath* QGraphicsScene_SelectionArea(const QGraphicsScene* self) {
-	QPainterPath _ret = self->selectionArea();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPainterPath*>(new QPainterPath(_ret));
+	return new QPainterPath(self->selectionArea());
 }
 
 void QGraphicsScene_SetSelectionArea(QGraphicsScene* self, QPainterPath* path, QTransform* deviceTransform) {
@@ -353,9 +347,7 @@ QGraphicsItem* QGraphicsScene_MouseGrabberItem(const QGraphicsScene* self) {
 }
 
 QBrush* QGraphicsScene_BackgroundBrush(const QGraphicsScene* self) {
-	QBrush _ret = self->backgroundBrush();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QBrush*>(new QBrush(_ret));
+	return new QBrush(self->backgroundBrush());
 }
 
 void QGraphicsScene_SetBackgroundBrush(QGraphicsScene* self, QBrush* brush) {
@@ -363,9 +355,7 @@ void QGraphicsScene_SetBackgroundBrush(QGraphicsScene* self, QBrush* brush) {
 }
 
 QBrush* QGraphicsScene_ForegroundBrush(const QGraphicsScene* self) {
-	QBrush _ret = self->foregroundBrush();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QBrush*>(new QBrush(_ret));
+	return new QBrush(self->foregroundBrush());
 }
 
 void QGraphicsScene_SetForegroundBrush(QGraphicsScene* self, QBrush* brush) {
@@ -373,9 +363,7 @@ void QGraphicsScene_SetForegroundBrush(QGraphicsScene* self, QBrush* brush) {
 }
 
 QVariant* QGraphicsScene_InputMethodQuery(const QGraphicsScene* self, uintptr_t query) {
-	QVariant _ret = self->inputMethodQuery(static_cast<Qt::InputMethodQuery>(query));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(_ret));
+	return new QVariant(self->inputMethodQuery(static_cast<Qt::InputMethodQuery>(query)));
 }
 
 struct miqt_array* QGraphicsScene_Views(const QGraphicsScene* self) {
@@ -408,9 +396,7 @@ void QGraphicsScene_SetStyle(QGraphicsScene* self, QStyle* style) {
 }
 
 QFont* QGraphicsScene_Font(const QGraphicsScene* self) {
-	QFont _ret = self->font();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QFont*>(new QFont(_ret));
+	return new QFont(self->font());
 }
 
 void QGraphicsScene_SetFont(QGraphicsScene* self, QFont* font) {
@@ -418,9 +404,7 @@ void QGraphicsScene_SetFont(QGraphicsScene* self, QFont* font) {
 }
 
 QPalette* QGraphicsScene_Palette(const QGraphicsScene* self) {
-	QPalette _ret = self->palette();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPalette*>(new QPalette(_ret));
+	return new QPalette(self->palette());
 }
 
 void QGraphicsScene_SetPalette(QGraphicsScene* self, QPalette* palette) {
@@ -500,8 +484,8 @@ void QGraphicsScene_Changed(QGraphicsScene* self, struct miqt_array* /* of QRect
 void QGraphicsScene_connect_Changed(QGraphicsScene* self, void* slot) {
 	QGraphicsScene::connect(self, static_cast<void (QGraphicsScene::*)(const QList<QRectF>&)>(&QGraphicsScene::changed), self, [=](const QList<QRectF>& region) {
 		const QList<QRectF>& region_ret = region;
-		// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
-		QRectF** region_arr = static_cast<QRectF**>(malloc(sizeof(QRectF**) * region_ret.length()));
+		// Convert QList<> from C++ memory to manually-managed C memory
+		QRectF** region_arr = static_cast<QRectF**>(malloc(sizeof(QRectF*) * region_ret.length()));
 		for (size_t i = 0, e = region_ret.length(); i < e; ++i) {
 			region_arr[i] = new QRectF(region_ret[i]);
 		}

@@ -69,9 +69,7 @@ QPixmap* QLabel_Pixmap(const QLabel* self) {
 }
 
 QPixmap* QLabel_PixmapWithQtReturnByValueConstant(const QLabel* self, uintptr_t param1) {
-	QPixmap _ret = self->pixmap(static_cast<Qt::ReturnByValueConstant>(param1));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPixmap*>(new QPixmap(_ret));
+	return new QPixmap(self->pixmap(static_cast<Qt::ReturnByValueConstant>(param1)));
 }
 
 QPicture* QLabel_Picture(const QLabel* self) {
@@ -79,9 +77,7 @@ QPicture* QLabel_Picture(const QLabel* self) {
 }
 
 QPicture* QLabel_PictureWithQtReturnByValueConstant(const QLabel* self, uintptr_t param1) {
-	QPicture _ret = self->picture(static_cast<Qt::ReturnByValueConstant>(param1));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPicture*>(new QPicture(_ret));
+	return new QPicture(self->picture(static_cast<Qt::ReturnByValueConstant>(param1)));
 }
 
 QMovie* QLabel_Movie(const QLabel* self) {
@@ -139,15 +135,11 @@ void QLabel_SetScaledContents(QLabel* self, bool scaledContents) {
 }
 
 QSize* QLabel_SizeHint(const QLabel* self) {
-	QSize _ret = self->sizeHint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->sizeHint());
 }
 
 QSize* QLabel_MinimumSizeHint(const QLabel* self) {
-	QSize _ret = self->minimumSizeHint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->minimumSizeHint());
 }
 
 void QLabel_SetBuddy(QLabel* self, QWidget* buddy) {

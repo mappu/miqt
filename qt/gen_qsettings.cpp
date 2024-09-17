@@ -163,7 +163,7 @@ void QSettings_SetArrayIndex(QSettings* self, int i) {
 
 struct miqt_array* QSettings_AllKeys(const QSettings* self) {
 	QStringList _ret = self->allKeys();
-	// Convert QStringList from C++ memory to manually-managed C memory
+	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
@@ -179,7 +179,7 @@ struct miqt_array* QSettings_AllKeys(const QSettings* self) {
 
 struct miqt_array* QSettings_ChildKeys(const QSettings* self) {
 	QStringList _ret = self->childKeys();
-	// Convert QStringList from C++ memory to manually-managed C memory
+	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
@@ -195,7 +195,7 @@ struct miqt_array* QSettings_ChildKeys(const QSettings* self) {
 
 struct miqt_array* QSettings_ChildGroups(const QSettings* self) {
 	QStringList _ret = self->childGroups();
-	// Convert QStringList from C++ memory to manually-managed C memory
+	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
@@ -220,9 +220,7 @@ void QSettings_SetValue(QSettings* self, struct miqt_string* key, QVariant* valu
 
 QVariant* QSettings_Value(const QSettings* self, struct miqt_string* key) {
 	QString key_QString = QString::fromUtf8(&key->data, key->len);
-	QVariant _ret = self->value(key_QString);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(_ret));
+	return new QVariant(self->value(key_QString));
 }
 
 void QSettings_Remove(QSettings* self, struct miqt_string* key) {
@@ -345,9 +343,7 @@ void QSettings_BeginWriteArray2(QSettings* self, struct miqt_string* prefix, int
 
 QVariant* QSettings_Value2(const QSettings* self, struct miqt_string* key, QVariant* defaultValue) {
 	QString key_QString = QString::fromUtf8(&key->data, key->len);
-	QVariant _ret = self->value(key_QString, *defaultValue);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(_ret));
+	return new QVariant(self->value(key_QString, *defaultValue));
 }
 
 void QSettings_Delete(QSettings* self) {

@@ -45,9 +45,7 @@ struct miqt_string* QScrollBar_TrUtf8(const char* s) {
 }
 
 QSize* QScrollBar_SizeHint(const QScrollBar* self) {
-	QSize _ret = self->sizeHint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->sizeHint());
 }
 
 bool QScrollBar_Event(QScrollBar* self, QEvent* event) {

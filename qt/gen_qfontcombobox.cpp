@@ -55,15 +55,11 @@ int QFontComboBox_FontFilters(const QFontComboBox* self) {
 }
 
 QFont* QFontComboBox_CurrentFont(const QFontComboBox* self) {
-	QFont _ret = self->currentFont();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QFont*>(new QFont(_ret));
+	return new QFont(self->currentFont());
 }
 
 QSize* QFontComboBox_SizeHint(const QFontComboBox* self) {
-	QSize _ret = self->sizeHint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->sizeHint());
 }
 
 void QFontComboBox_SetCurrentFont(QFontComboBox* self, QFont* f) {

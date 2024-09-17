@@ -56,15 +56,11 @@ bool QDial_NotchesVisible(const QDial* self) {
 }
 
 QSize* QDial_SizeHint(const QDial* self) {
-	QSize _ret = self->sizeHint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->sizeHint());
 }
 
 QSize* QDial_MinimumSizeHint(const QDial* self) {
-	QSize _ret = self->minimumSizeHint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->minimumSizeHint());
 }
 
 void QDial_SetNotchesVisible(QDial* self, bool visible) {

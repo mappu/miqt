@@ -90,7 +90,7 @@ void QColor_SetNamedColor(QColor* self, struct miqt_string* name) {
 
 struct miqt_array* QColor_ColorNames() {
 	QStringList _ret = QColor::colorNames();
-	// Convert QStringList from C++ memory to manually-managed C memory
+	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
@@ -190,9 +190,7 @@ void QColor_SetRgbF(QColor* self, double r, double g, double b) {
 }
 
 QRgba64* QColor_Rgba64(const QColor* self) {
-	QRgba64 _ret = self->rgba64();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRgba64*>(new QRgba64(_ret));
+	return new QRgba64(self->rgba64());
 }
 
 void QColor_SetRgba64(QColor* self, QRgba64* rgba) {
@@ -368,135 +366,91 @@ void QColor_SetHslF(QColor* self, double h, double s, double l) {
 }
 
 QColor* QColor_ToRgb(const QColor* self) {
-	QColor _ret = self->toRgb();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QColor*>(new QColor(_ret));
+	return new QColor(self->toRgb());
 }
 
 QColor* QColor_ToHsv(const QColor* self) {
-	QColor _ret = self->toHsv();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QColor*>(new QColor(_ret));
+	return new QColor(self->toHsv());
 }
 
 QColor* QColor_ToCmyk(const QColor* self) {
-	QColor _ret = self->toCmyk();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QColor*>(new QColor(_ret));
+	return new QColor(self->toCmyk());
 }
 
 QColor* QColor_ToHsl(const QColor* self) {
-	QColor _ret = self->toHsl();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QColor*>(new QColor(_ret));
+	return new QColor(self->toHsl());
 }
 
 QColor* QColor_ToExtendedRgb(const QColor* self) {
-	QColor _ret = self->toExtendedRgb();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QColor*>(new QColor(_ret));
+	return new QColor(self->toExtendedRgb());
 }
 
 QColor* QColor_ConvertTo(const QColor* self, uintptr_t colorSpec) {
-	QColor _ret = self->convertTo(static_cast<QColor::Spec>(colorSpec));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QColor*>(new QColor(_ret));
+	return new QColor(self->convertTo(static_cast<QColor::Spec>(colorSpec)));
 }
 
 QColor* QColor_FromRgb(unsigned int rgb) {
-	QColor _ret = QColor::fromRgb(static_cast<QRgb>(rgb));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QColor*>(new QColor(_ret));
+	return new QColor(QColor::fromRgb(static_cast<QRgb>(rgb)));
 }
 
 QColor* QColor_FromRgba(unsigned int rgba) {
-	QColor _ret = QColor::fromRgba(static_cast<QRgb>(rgba));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QColor*>(new QColor(_ret));
+	return new QColor(QColor::fromRgba(static_cast<QRgb>(rgba)));
 }
 
 QColor* QColor_FromRgb2(int r, int g, int b) {
-	QColor _ret = QColor::fromRgb(static_cast<int>(r), static_cast<int>(g), static_cast<int>(b));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QColor*>(new QColor(_ret));
+	return new QColor(QColor::fromRgb(static_cast<int>(r), static_cast<int>(g), static_cast<int>(b)));
 }
 
 QColor* QColor_FromRgbF(double r, double g, double b) {
-	QColor _ret = QColor::fromRgbF(static_cast<qreal>(r), static_cast<qreal>(g), static_cast<qreal>(b));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QColor*>(new QColor(_ret));
+	return new QColor(QColor::fromRgbF(static_cast<qreal>(r), static_cast<qreal>(g), static_cast<qreal>(b)));
 }
 
 QColor* QColor_FromRgba64(uint16_t r, uint16_t g, uint16_t b) {
-	QColor _ret = QColor::fromRgba64(static_cast<ushort>(r), static_cast<ushort>(g), static_cast<ushort>(b));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QColor*>(new QColor(_ret));
+	return new QColor(QColor::fromRgba64(static_cast<ushort>(r), static_cast<ushort>(g), static_cast<ushort>(b)));
 }
 
 QColor* QColor_FromRgba64WithRgba(QRgba64* rgba) {
-	QColor _ret = QColor::fromRgba64(*rgba);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QColor*>(new QColor(_ret));
+	return new QColor(QColor::fromRgba64(*rgba));
 }
 
 QColor* QColor_FromHsv(int h, int s, int v) {
-	QColor _ret = QColor::fromHsv(static_cast<int>(h), static_cast<int>(s), static_cast<int>(v));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QColor*>(new QColor(_ret));
+	return new QColor(QColor::fromHsv(static_cast<int>(h), static_cast<int>(s), static_cast<int>(v)));
 }
 
 QColor* QColor_FromHsvF(double h, double s, double v) {
-	QColor _ret = QColor::fromHsvF(static_cast<qreal>(h), static_cast<qreal>(s), static_cast<qreal>(v));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QColor*>(new QColor(_ret));
+	return new QColor(QColor::fromHsvF(static_cast<qreal>(h), static_cast<qreal>(s), static_cast<qreal>(v)));
 }
 
 QColor* QColor_FromCmyk(int c, int m, int y, int k) {
-	QColor _ret = QColor::fromCmyk(static_cast<int>(c), static_cast<int>(m), static_cast<int>(y), static_cast<int>(k));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QColor*>(new QColor(_ret));
+	return new QColor(QColor::fromCmyk(static_cast<int>(c), static_cast<int>(m), static_cast<int>(y), static_cast<int>(k)));
 }
 
 QColor* QColor_FromCmykF(double c, double m, double y, double k) {
-	QColor _ret = QColor::fromCmykF(static_cast<qreal>(c), static_cast<qreal>(m), static_cast<qreal>(y), static_cast<qreal>(k));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QColor*>(new QColor(_ret));
+	return new QColor(QColor::fromCmykF(static_cast<qreal>(c), static_cast<qreal>(m), static_cast<qreal>(y), static_cast<qreal>(k)));
 }
 
 QColor* QColor_FromHsl(int h, int s, int l) {
-	QColor _ret = QColor::fromHsl(static_cast<int>(h), static_cast<int>(s), static_cast<int>(l));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QColor*>(new QColor(_ret));
+	return new QColor(QColor::fromHsl(static_cast<int>(h), static_cast<int>(s), static_cast<int>(l)));
 }
 
 QColor* QColor_FromHslF(double h, double s, double l) {
-	QColor _ret = QColor::fromHslF(static_cast<qreal>(h), static_cast<qreal>(s), static_cast<qreal>(l));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QColor*>(new QColor(_ret));
+	return new QColor(QColor::fromHslF(static_cast<qreal>(h), static_cast<qreal>(s), static_cast<qreal>(l)));
 }
 
 QColor* QColor_Light(const QColor* self) {
-	QColor _ret = self->light();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QColor*>(new QColor(_ret));
+	return new QColor(self->light());
 }
 
 QColor* QColor_Dark(const QColor* self) {
-	QColor _ret = self->dark();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QColor*>(new QColor(_ret));
+	return new QColor(self->dark());
 }
 
 QColor* QColor_Lighter(const QColor* self) {
-	QColor _ret = self->lighter();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QColor*>(new QColor(_ret));
+	return new QColor(self->lighter());
 }
 
 QColor* QColor_Darker(const QColor* self) {
-	QColor _ret = self->darker();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QColor*>(new QColor(_ret));
+	return new QColor(self->darker());
 }
 
 bool QColor_OperatorEqual(const QColor* self, QColor* c) {
@@ -585,81 +539,55 @@ void QColor_SetHslF4(QColor* self, double h, double s, double l, double a) {
 }
 
 QColor* QColor_FromRgb4(int r, int g, int b, int a) {
-	QColor _ret = QColor::fromRgb(static_cast<int>(r), static_cast<int>(g), static_cast<int>(b), static_cast<int>(a));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QColor*>(new QColor(_ret));
+	return new QColor(QColor::fromRgb(static_cast<int>(r), static_cast<int>(g), static_cast<int>(b), static_cast<int>(a)));
 }
 
 QColor* QColor_FromRgbF4(double r, double g, double b, double a) {
-	QColor _ret = QColor::fromRgbF(static_cast<qreal>(r), static_cast<qreal>(g), static_cast<qreal>(b), static_cast<qreal>(a));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QColor*>(new QColor(_ret));
+	return new QColor(QColor::fromRgbF(static_cast<qreal>(r), static_cast<qreal>(g), static_cast<qreal>(b), static_cast<qreal>(a)));
 }
 
 QColor* QColor_FromRgba644(uint16_t r, uint16_t g, uint16_t b, uint16_t a) {
-	QColor _ret = QColor::fromRgba64(static_cast<ushort>(r), static_cast<ushort>(g), static_cast<ushort>(b), static_cast<ushort>(a));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QColor*>(new QColor(_ret));
+	return new QColor(QColor::fromRgba64(static_cast<ushort>(r), static_cast<ushort>(g), static_cast<ushort>(b), static_cast<ushort>(a)));
 }
 
 QColor* QColor_FromHsv4(int h, int s, int v, int a) {
-	QColor _ret = QColor::fromHsv(static_cast<int>(h), static_cast<int>(s), static_cast<int>(v), static_cast<int>(a));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QColor*>(new QColor(_ret));
+	return new QColor(QColor::fromHsv(static_cast<int>(h), static_cast<int>(s), static_cast<int>(v), static_cast<int>(a)));
 }
 
 QColor* QColor_FromHsvF4(double h, double s, double v, double a) {
-	QColor _ret = QColor::fromHsvF(static_cast<qreal>(h), static_cast<qreal>(s), static_cast<qreal>(v), static_cast<qreal>(a));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QColor*>(new QColor(_ret));
+	return new QColor(QColor::fromHsvF(static_cast<qreal>(h), static_cast<qreal>(s), static_cast<qreal>(v), static_cast<qreal>(a)));
 }
 
 QColor* QColor_FromCmyk5(int c, int m, int y, int k, int a) {
-	QColor _ret = QColor::fromCmyk(static_cast<int>(c), static_cast<int>(m), static_cast<int>(y), static_cast<int>(k), static_cast<int>(a));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QColor*>(new QColor(_ret));
+	return new QColor(QColor::fromCmyk(static_cast<int>(c), static_cast<int>(m), static_cast<int>(y), static_cast<int>(k), static_cast<int>(a)));
 }
 
 QColor* QColor_FromCmykF5(double c, double m, double y, double k, double a) {
-	QColor _ret = QColor::fromCmykF(static_cast<qreal>(c), static_cast<qreal>(m), static_cast<qreal>(y), static_cast<qreal>(k), static_cast<qreal>(a));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QColor*>(new QColor(_ret));
+	return new QColor(QColor::fromCmykF(static_cast<qreal>(c), static_cast<qreal>(m), static_cast<qreal>(y), static_cast<qreal>(k), static_cast<qreal>(a)));
 }
 
 QColor* QColor_FromHsl4(int h, int s, int l, int a) {
-	QColor _ret = QColor::fromHsl(static_cast<int>(h), static_cast<int>(s), static_cast<int>(l), static_cast<int>(a));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QColor*>(new QColor(_ret));
+	return new QColor(QColor::fromHsl(static_cast<int>(h), static_cast<int>(s), static_cast<int>(l), static_cast<int>(a)));
 }
 
 QColor* QColor_FromHslF4(double h, double s, double l, double a) {
-	QColor _ret = QColor::fromHslF(static_cast<qreal>(h), static_cast<qreal>(s), static_cast<qreal>(l), static_cast<qreal>(a));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QColor*>(new QColor(_ret));
+	return new QColor(QColor::fromHslF(static_cast<qreal>(h), static_cast<qreal>(s), static_cast<qreal>(l), static_cast<qreal>(a)));
 }
 
 QColor* QColor_Light1(const QColor* self, int f) {
-	QColor _ret = self->light(static_cast<int>(f));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QColor*>(new QColor(_ret));
+	return new QColor(self->light(static_cast<int>(f)));
 }
 
 QColor* QColor_Dark1(const QColor* self, int f) {
-	QColor _ret = self->dark(static_cast<int>(f));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QColor*>(new QColor(_ret));
+	return new QColor(self->dark(static_cast<int>(f)));
 }
 
 QColor* QColor_Lighter1(const QColor* self, int f) {
-	QColor _ret = self->lighter(static_cast<int>(f));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QColor*>(new QColor(_ret));
+	return new QColor(self->lighter(static_cast<int>(f)));
 }
 
 QColor* QColor_Darker1(const QColor* self, int f) {
-	QColor _ret = self->darker(static_cast<int>(f));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QColor*>(new QColor(_ret));
+	return new QColor(self->darker(static_cast<int>(f)));
 }
 
 void QColor_Delete(QColor* self) {

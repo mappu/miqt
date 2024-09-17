@@ -127,21 +127,15 @@ int QBoxLayout_Stretch(const QBoxLayout* self, int index) {
 }
 
 QSize* QBoxLayout_SizeHint(const QBoxLayout* self) {
-	QSize _ret = self->sizeHint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->sizeHint());
 }
 
 QSize* QBoxLayout_MinimumSize(const QBoxLayout* self) {
-	QSize _ret = self->minimumSize();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->minimumSize());
 }
 
 QSize* QBoxLayout_MaximumSize(const QBoxLayout* self) {
-	QSize _ret = self->maximumSize();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->maximumSize());
 }
 
 bool QBoxLayout_HasHeightForWidth(const QBoxLayout* self) {

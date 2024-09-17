@@ -51,9 +51,7 @@ QWidget* QGraphicsProxyWidget_Widget(const QGraphicsProxyWidget* self) {
 }
 
 QRectF* QGraphicsProxyWidget_SubWidgetRect(const QGraphicsProxyWidget* self, QWidget* widget) {
-	QRectF _ret = self->subWidgetRect(widget);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(_ret));
+	return new QRectF(self->subWidgetRect(widget));
 }
 
 void QGraphicsProxyWidget_SetGeometry(QGraphicsProxyWidget* self, QRectF* rect) {

@@ -66,15 +66,11 @@ void QJsonValue_Swap(QJsonValue* self, QJsonValue* other) {
 }
 
 QJsonValue* QJsonValue_FromVariant(QVariant* variant) {
-	QJsonValue _ret = QJsonValue::fromVariant(*variant);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QJsonValue*>(new QJsonValue(_ret));
+	return new QJsonValue(QJsonValue::fromVariant(*variant));
 }
 
 QVariant* QJsonValue_ToVariant(const QJsonValue* self) {
-	QVariant _ret = self->toVariant();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(_ret));
+	return new QVariant(self->toVariant());
 }
 
 uintptr_t QJsonValue_Type(const QJsonValue* self) {
@@ -138,40 +134,28 @@ struct miqt_string* QJsonValue_ToStringWithDefaultValue(const QJsonValue* self, 
 }
 
 QJsonArray* QJsonValue_ToArray(const QJsonValue* self) {
-	QJsonArray _ret = self->toArray();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QJsonArray*>(new QJsonArray(_ret));
+	return new QJsonArray(self->toArray());
 }
 
 QJsonArray* QJsonValue_ToArrayWithDefaultValue(const QJsonValue* self, QJsonArray* defaultValue) {
-	QJsonArray _ret = self->toArray(*defaultValue);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QJsonArray*>(new QJsonArray(_ret));
+	return new QJsonArray(self->toArray(*defaultValue));
 }
 
 QJsonObject* QJsonValue_ToObject(const QJsonValue* self) {
-	QJsonObject _ret = self->toObject();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QJsonObject*>(new QJsonObject(_ret));
+	return new QJsonObject(self->toObject());
 }
 
 QJsonObject* QJsonValue_ToObjectWithDefaultValue(const QJsonValue* self, QJsonObject* defaultValue) {
-	QJsonObject _ret = self->toObject(*defaultValue);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QJsonObject*>(new QJsonObject(_ret));
+	return new QJsonObject(self->toObject(*defaultValue));
 }
 
 QJsonValue* QJsonValue_OperatorSubscript(const QJsonValue* self, struct miqt_string* key) {
 	QString key_QString = QString::fromUtf8(&key->data, key->len);
-	QJsonValue _ret = self->operator[](key_QString);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QJsonValue*>(new QJsonValue(_ret));
+	return new QJsonValue(self->operator[](key_QString));
 }
 
 QJsonValue* QJsonValue_OperatorSubscriptWithInt(const QJsonValue* self, int i) {
-	QJsonValue _ret = self->operator[](static_cast<int>(i));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QJsonValue*>(new QJsonValue(_ret));
+	return new QJsonValue(self->operator[](static_cast<int>(i)));
 }
 
 bool QJsonValue_OperatorEqual(const QJsonValue* self, QJsonValue* other) {
@@ -219,9 +203,7 @@ void QJsonValueRef_OperatorAssignWithVal(QJsonValueRef* self, QJsonValueRef* val
 }
 
 QVariant* QJsonValueRef_ToVariant(const QJsonValueRef* self) {
-	QVariant _ret = self->toVariant();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(_ret));
+	return new QVariant(self->toVariant());
 }
 
 uintptr_t QJsonValueRef_Type(const QJsonValueRef* self) {
@@ -277,15 +259,11 @@ struct miqt_string* QJsonValueRef_ToString(const QJsonValueRef* self) {
 }
 
 QJsonArray* QJsonValueRef_ToArray(const QJsonValueRef* self) {
-	QJsonArray _ret = self->toArray();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QJsonArray*>(new QJsonArray(_ret));
+	return new QJsonArray(self->toArray());
 }
 
 QJsonObject* QJsonValueRef_ToObject(const QJsonValueRef* self) {
-	QJsonObject _ret = self->toObject();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QJsonObject*>(new QJsonObject(_ret));
+	return new QJsonObject(self->toObject());
 }
 
 bool QJsonValueRef_ToBoolWithDefaultValue(const QJsonValueRef* self, bool defaultValue) {

@@ -42,15 +42,11 @@ struct miqt_string* QMdiSubWindow_TrUtf8(const char* s) {
 }
 
 QSize* QMdiSubWindow_SizeHint(const QMdiSubWindow* self) {
-	QSize _ret = self->sizeHint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->sizeHint());
 }
 
 QSize* QMdiSubWindow_MinimumSizeHint(const QMdiSubWindow* self) {
-	QSize _ret = self->minimumSizeHint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->minimumSizeHint());
 }
 
 void QMdiSubWindow_SetWidget(QMdiSubWindow* self, QWidget* widget) {

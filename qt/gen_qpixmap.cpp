@@ -77,15 +77,11 @@ int QPixmap_Height(const QPixmap* self) {
 }
 
 QSize* QPixmap_Size(const QPixmap* self) {
-	QSize _ret = self->size();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->size());
 }
 
 QRect* QPixmap_Rect(const QPixmap* self) {
-	QRect _ret = self->rect();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->rect());
 }
 
 int QPixmap_Depth(const QPixmap* self) {
@@ -109,9 +105,7 @@ void QPixmap_Fill3(QPixmap* self, QPaintDevice* device, int xofs, int yofs) {
 }
 
 QBitmap* QPixmap_Mask(const QPixmap* self) {
-	QBitmap _ret = self->mask();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QBitmap*>(new QBitmap(_ret));
+	return new QBitmap(self->mask());
 }
 
 void QPixmap_SetMask(QPixmap* self, QBitmap* mask) {
@@ -135,99 +129,67 @@ bool QPixmap_HasAlphaChannel(const QPixmap* self) {
 }
 
 QBitmap* QPixmap_CreateHeuristicMask(const QPixmap* self) {
-	QBitmap _ret = self->createHeuristicMask();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QBitmap*>(new QBitmap(_ret));
+	return new QBitmap(self->createHeuristicMask());
 }
 
 QBitmap* QPixmap_CreateMaskFromColor(const QPixmap* self, QColor* maskColor) {
-	QBitmap _ret = self->createMaskFromColor(*maskColor);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QBitmap*>(new QBitmap(_ret));
+	return new QBitmap(self->createMaskFromColor(*maskColor));
 }
 
 QPixmap* QPixmap_GrabWindow(uintptr_t param1) {
-	QPixmap _ret = QPixmap::grabWindow(static_cast<quintptr>(param1));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPixmap*>(new QPixmap(_ret));
+	return new QPixmap(QPixmap::grabWindow(static_cast<quintptr>(param1)));
 }
 
 QPixmap* QPixmap_GrabWidget(QObject* widget, QRect* rect) {
-	QPixmap _ret = QPixmap::grabWidget(widget, *rect);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPixmap*>(new QPixmap(_ret));
+	return new QPixmap(QPixmap::grabWidget(widget, *rect));
 }
 
 QPixmap* QPixmap_GrabWidgetWithWidget(QObject* widget) {
-	QPixmap _ret = QPixmap::grabWidget(widget);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPixmap*>(new QPixmap(_ret));
+	return new QPixmap(QPixmap::grabWidget(widget));
 }
 
 QPixmap* QPixmap_Scaled(const QPixmap* self, int w, int h) {
-	QPixmap _ret = self->scaled(static_cast<int>(w), static_cast<int>(h));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPixmap*>(new QPixmap(_ret));
+	return new QPixmap(self->scaled(static_cast<int>(w), static_cast<int>(h)));
 }
 
 QPixmap* QPixmap_ScaledWithQSize(const QPixmap* self, QSize* s) {
-	QPixmap _ret = self->scaled(*s);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPixmap*>(new QPixmap(_ret));
+	return new QPixmap(self->scaled(*s));
 }
 
 QPixmap* QPixmap_ScaledToWidth(const QPixmap* self, int w) {
-	QPixmap _ret = self->scaledToWidth(static_cast<int>(w));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPixmap*>(new QPixmap(_ret));
+	return new QPixmap(self->scaledToWidth(static_cast<int>(w)));
 }
 
 QPixmap* QPixmap_ScaledToHeight(const QPixmap* self, int h) {
-	QPixmap _ret = self->scaledToHeight(static_cast<int>(h));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPixmap*>(new QPixmap(_ret));
+	return new QPixmap(self->scaledToHeight(static_cast<int>(h)));
 }
 
 QPixmap* QPixmap_Transformed(const QPixmap* self, QMatrix* param1) {
-	QPixmap _ret = self->transformed(*param1);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPixmap*>(new QPixmap(_ret));
+	return new QPixmap(self->transformed(*param1));
 }
 
 QMatrix* QPixmap_TrueMatrix(QMatrix* m, int w, int h) {
-	QMatrix _ret = QPixmap::trueMatrix(*m, static_cast<int>(w), static_cast<int>(h));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QMatrix*>(new QMatrix(_ret));
+	return new QMatrix(QPixmap::trueMatrix(*m, static_cast<int>(w), static_cast<int>(h)));
 }
 
 QPixmap* QPixmap_TransformedWithQTransform(const QPixmap* self, QTransform* param1) {
-	QPixmap _ret = self->transformed(*param1);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPixmap*>(new QPixmap(_ret));
+	return new QPixmap(self->transformed(*param1));
 }
 
 QTransform* QPixmap_TrueMatrix2(QTransform* m, int w, int h) {
-	QTransform _ret = QPixmap::trueMatrix(*m, static_cast<int>(w), static_cast<int>(h));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTransform*>(new QTransform(_ret));
+	return new QTransform(QPixmap::trueMatrix(*m, static_cast<int>(w), static_cast<int>(h)));
 }
 
 QImage* QPixmap_ToImage(const QPixmap* self) {
-	QImage _ret = self->toImage();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QImage*>(new QImage(_ret));
+	return new QImage(self->toImage());
 }
 
 QPixmap* QPixmap_FromImage(QImage* image) {
-	QPixmap _ret = QPixmap::fromImage(*image);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPixmap*>(new QPixmap(_ret));
+	return new QPixmap(QPixmap::fromImage(*image));
 }
 
 QPixmap* QPixmap_FromImageReader(QImageReader* imageReader) {
-	QPixmap _ret = QPixmap::fromImageReader(imageReader);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPixmap*>(new QPixmap(_ret));
+	return new QPixmap(QPixmap::fromImageReader(imageReader));
 }
 
 bool QPixmap_Load(QPixmap* self, struct miqt_string* fileName) {
@@ -257,15 +219,11 @@ bool QPixmap_ConvertFromImage(QPixmap* self, QImage* img) {
 }
 
 QPixmap* QPixmap_Copy(const QPixmap* self, int x, int y, int width, int height) {
-	QPixmap _ret = self->copy(static_cast<int>(x), static_cast<int>(y), static_cast<int>(width), static_cast<int>(height));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPixmap*>(new QPixmap(_ret));
+	return new QPixmap(self->copy(static_cast<int>(x), static_cast<int>(y), static_cast<int>(width), static_cast<int>(height)));
 }
 
 QPixmap* QPixmap_Copy2(const QPixmap* self) {
-	QPixmap _ret = self->copy();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPixmap*>(new QPixmap(_ret));
+	return new QPixmap(self->copy());
 }
 
 void QPixmap_Scroll(QPixmap* self, int dx, int dy, int x, int y, int width, int height) {
@@ -305,123 +263,83 @@ void QPixmap_Fill1(QPixmap* self, QColor* fillColor) {
 }
 
 QBitmap* QPixmap_CreateHeuristicMask1(const QPixmap* self, bool clipTight) {
-	QBitmap _ret = self->createHeuristicMask(clipTight);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QBitmap*>(new QBitmap(_ret));
+	return new QBitmap(self->createHeuristicMask(clipTight));
 }
 
 QBitmap* QPixmap_CreateMaskFromColor2(const QPixmap* self, QColor* maskColor, uintptr_t mode) {
-	QBitmap _ret = self->createMaskFromColor(*maskColor, static_cast<Qt::MaskMode>(mode));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QBitmap*>(new QBitmap(_ret));
+	return new QBitmap(self->createMaskFromColor(*maskColor, static_cast<Qt::MaskMode>(mode)));
 }
 
 QPixmap* QPixmap_GrabWindow2(uintptr_t param1, int x) {
-	QPixmap _ret = QPixmap::grabWindow(static_cast<quintptr>(param1), static_cast<int>(x));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPixmap*>(new QPixmap(_ret));
+	return new QPixmap(QPixmap::grabWindow(static_cast<quintptr>(param1), static_cast<int>(x)));
 }
 
 QPixmap* QPixmap_GrabWindow3(uintptr_t param1, int x, int y) {
-	QPixmap _ret = QPixmap::grabWindow(static_cast<quintptr>(param1), static_cast<int>(x), static_cast<int>(y));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPixmap*>(new QPixmap(_ret));
+	return new QPixmap(QPixmap::grabWindow(static_cast<quintptr>(param1), static_cast<int>(x), static_cast<int>(y)));
 }
 
 QPixmap* QPixmap_GrabWindow4(uintptr_t param1, int x, int y, int w) {
-	QPixmap _ret = QPixmap::grabWindow(static_cast<quintptr>(param1), static_cast<int>(x), static_cast<int>(y), static_cast<int>(w));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPixmap*>(new QPixmap(_ret));
+	return new QPixmap(QPixmap::grabWindow(static_cast<quintptr>(param1), static_cast<int>(x), static_cast<int>(y), static_cast<int>(w)));
 }
 
 QPixmap* QPixmap_GrabWindow5(uintptr_t param1, int x, int y, int w, int h) {
-	QPixmap _ret = QPixmap::grabWindow(static_cast<quintptr>(param1), static_cast<int>(x), static_cast<int>(y), static_cast<int>(w), static_cast<int>(h));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPixmap*>(new QPixmap(_ret));
+	return new QPixmap(QPixmap::grabWindow(static_cast<quintptr>(param1), static_cast<int>(x), static_cast<int>(y), static_cast<int>(w), static_cast<int>(h)));
 }
 
 QPixmap* QPixmap_GrabWidget2(QObject* widget, int x) {
-	QPixmap _ret = QPixmap::grabWidget(widget, static_cast<int>(x));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPixmap*>(new QPixmap(_ret));
+	return new QPixmap(QPixmap::grabWidget(widget, static_cast<int>(x)));
 }
 
 QPixmap* QPixmap_GrabWidget3(QObject* widget, int x, int y) {
-	QPixmap _ret = QPixmap::grabWidget(widget, static_cast<int>(x), static_cast<int>(y));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPixmap*>(new QPixmap(_ret));
+	return new QPixmap(QPixmap::grabWidget(widget, static_cast<int>(x), static_cast<int>(y)));
 }
 
 QPixmap* QPixmap_GrabWidget4(QObject* widget, int x, int y, int w) {
-	QPixmap _ret = QPixmap::grabWidget(widget, static_cast<int>(x), static_cast<int>(y), static_cast<int>(w));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPixmap*>(new QPixmap(_ret));
+	return new QPixmap(QPixmap::grabWidget(widget, static_cast<int>(x), static_cast<int>(y), static_cast<int>(w)));
 }
 
 QPixmap* QPixmap_GrabWidget5(QObject* widget, int x, int y, int w, int h) {
-	QPixmap _ret = QPixmap::grabWidget(widget, static_cast<int>(x), static_cast<int>(y), static_cast<int>(w), static_cast<int>(h));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPixmap*>(new QPixmap(_ret));
+	return new QPixmap(QPixmap::grabWidget(widget, static_cast<int>(x), static_cast<int>(y), static_cast<int>(w), static_cast<int>(h)));
 }
 
 QPixmap* QPixmap_Scaled3(const QPixmap* self, int w, int h, uintptr_t aspectMode) {
-	QPixmap _ret = self->scaled(static_cast<int>(w), static_cast<int>(h), static_cast<Qt::AspectRatioMode>(aspectMode));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPixmap*>(new QPixmap(_ret));
+	return new QPixmap(self->scaled(static_cast<int>(w), static_cast<int>(h), static_cast<Qt::AspectRatioMode>(aspectMode)));
 }
 
 QPixmap* QPixmap_Scaled4(const QPixmap* self, int w, int h, uintptr_t aspectMode, uintptr_t mode) {
-	QPixmap _ret = self->scaled(static_cast<int>(w), static_cast<int>(h), static_cast<Qt::AspectRatioMode>(aspectMode), static_cast<Qt::TransformationMode>(mode));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPixmap*>(new QPixmap(_ret));
+	return new QPixmap(self->scaled(static_cast<int>(w), static_cast<int>(h), static_cast<Qt::AspectRatioMode>(aspectMode), static_cast<Qt::TransformationMode>(mode)));
 }
 
 QPixmap* QPixmap_Scaled2(const QPixmap* self, QSize* s, uintptr_t aspectMode) {
-	QPixmap _ret = self->scaled(*s, static_cast<Qt::AspectRatioMode>(aspectMode));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPixmap*>(new QPixmap(_ret));
+	return new QPixmap(self->scaled(*s, static_cast<Qt::AspectRatioMode>(aspectMode)));
 }
 
 QPixmap* QPixmap_Scaled32(const QPixmap* self, QSize* s, uintptr_t aspectMode, uintptr_t mode) {
-	QPixmap _ret = self->scaled(*s, static_cast<Qt::AspectRatioMode>(aspectMode), static_cast<Qt::TransformationMode>(mode));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPixmap*>(new QPixmap(_ret));
+	return new QPixmap(self->scaled(*s, static_cast<Qt::AspectRatioMode>(aspectMode), static_cast<Qt::TransformationMode>(mode)));
 }
 
 QPixmap* QPixmap_ScaledToWidth2(const QPixmap* self, int w, uintptr_t mode) {
-	QPixmap _ret = self->scaledToWidth(static_cast<int>(w), static_cast<Qt::TransformationMode>(mode));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPixmap*>(new QPixmap(_ret));
+	return new QPixmap(self->scaledToWidth(static_cast<int>(w), static_cast<Qt::TransformationMode>(mode)));
 }
 
 QPixmap* QPixmap_ScaledToHeight2(const QPixmap* self, int h, uintptr_t mode) {
-	QPixmap _ret = self->scaledToHeight(static_cast<int>(h), static_cast<Qt::TransformationMode>(mode));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPixmap*>(new QPixmap(_ret));
+	return new QPixmap(self->scaledToHeight(static_cast<int>(h), static_cast<Qt::TransformationMode>(mode)));
 }
 
 QPixmap* QPixmap_Transformed2(const QPixmap* self, QMatrix* param1, uintptr_t mode) {
-	QPixmap _ret = self->transformed(*param1, static_cast<Qt::TransformationMode>(mode));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPixmap*>(new QPixmap(_ret));
+	return new QPixmap(self->transformed(*param1, static_cast<Qt::TransformationMode>(mode)));
 }
 
 QPixmap* QPixmap_Transformed22(const QPixmap* self, QTransform* param1, uintptr_t mode) {
-	QPixmap _ret = self->transformed(*param1, static_cast<Qt::TransformationMode>(mode));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPixmap*>(new QPixmap(_ret));
+	return new QPixmap(self->transformed(*param1, static_cast<Qt::TransformationMode>(mode)));
 }
 
 QPixmap* QPixmap_FromImage2(QImage* image, int flags) {
-	QPixmap _ret = QPixmap::fromImage(*image, static_cast<Qt::ImageConversionFlags>(flags));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPixmap*>(new QPixmap(_ret));
+	return new QPixmap(QPixmap::fromImage(*image, static_cast<Qt::ImageConversionFlags>(flags)));
 }
 
 QPixmap* QPixmap_FromImageReader2(QImageReader* imageReader, int flags) {
-	QPixmap _ret = QPixmap::fromImageReader(imageReader, static_cast<Qt::ImageConversionFlags>(flags));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPixmap*>(new QPixmap(_ret));
+	return new QPixmap(QPixmap::fromImageReader(imageReader, static_cast<Qt::ImageConversionFlags>(flags)));
 }
 
 bool QPixmap_Load2(QPixmap* self, struct miqt_string* fileName, const char* format) {
@@ -473,9 +391,7 @@ bool QPixmap_ConvertFromImage2(QPixmap* self, QImage* img, int flags) {
 }
 
 QPixmap* QPixmap_Copy1(const QPixmap* self, QRect* rect) {
-	QPixmap _ret = self->copy(*rect);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPixmap*>(new QPixmap(_ret));
+	return new QPixmap(self->copy(*rect));
 }
 
 void QPixmap_Scroll7(QPixmap* self, int dx, int dy, int x, int y, int width, int height, QRegion* exposed) {

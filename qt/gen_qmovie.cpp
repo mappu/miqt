@@ -71,8 +71,8 @@ struct miqt_string* QMovie_TrUtf8(const char* s) {
 
 struct miqt_array* QMovie_SupportedFormats() {
 	QList<QByteArray> _ret = QMovie::supportedFormats();
-	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
-	QByteArray** _arr = static_cast<QByteArray**>(malloc(sizeof(QByteArray**) * _ret.length()));
+	// Convert QList<> from C++ memory to manually-managed C memory
+	QByteArray** _arr = static_cast<QByteArray**>(malloc(sizeof(QByteArray*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = new QByteArray(_ret[i]);
 	}
@@ -107,9 +107,7 @@ void QMovie_SetFormat(QMovie* self, QByteArray* format) {
 }
 
 QByteArray* QMovie_Format(const QMovie* self) {
-	QByteArray _ret = self->format();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(self->format());
 }
 
 void QMovie_SetBackgroundColor(QMovie* self, QColor* color) {
@@ -117,9 +115,7 @@ void QMovie_SetBackgroundColor(QMovie* self, QColor* color) {
 }
 
 QColor* QMovie_BackgroundColor(const QMovie* self) {
-	QColor _ret = self->backgroundColor();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QColor*>(new QColor(_ret));
+	return new QColor(self->backgroundColor());
 }
 
 uintptr_t QMovie_State(const QMovie* self) {
@@ -128,21 +124,15 @@ uintptr_t QMovie_State(const QMovie* self) {
 }
 
 QRect* QMovie_FrameRect(const QMovie* self) {
-	QRect _ret = self->frameRect();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->frameRect());
 }
 
 QImage* QMovie_CurrentImage(const QMovie* self) {
-	QImage _ret = self->currentImage();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QImage*>(new QImage(_ret));
+	return new QImage(self->currentImage());
 }
 
 QPixmap* QMovie_CurrentPixmap(const QMovie* self) {
-	QPixmap _ret = self->currentPixmap();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPixmap*>(new QPixmap(_ret));
+	return new QPixmap(self->currentPixmap());
 }
 
 bool QMovie_IsValid(const QMovie* self) {
@@ -186,9 +176,7 @@ int QMovie_Speed(const QMovie* self) {
 }
 
 QSize* QMovie_ScaledSize(QMovie* self) {
-	QSize _ret = self->scaledSize();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->scaledSize());
 }
 
 void QMovie_SetScaledSize(QMovie* self, QSize* size) {

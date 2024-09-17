@@ -59,9 +59,7 @@ void QCborStreamReader_Reset(QCborStreamReader* self) {
 }
 
 QCborError* QCborStreamReader_LastError(QCborStreamReader* self) {
-	QCborError _ret = self->lastError();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborError*>(new QCborError(_ret));
+	return new QCborError(self->lastError());
 }
 
 long long QCborStreamReader_CurrentOffset(const QCborStreamReader* self) {

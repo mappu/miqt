@@ -169,9 +169,7 @@ int QCompleter_CurrentRow(const QCompleter* self) {
 }
 
 QModelIndex* QCompleter_CurrentIndex(const QCompleter* self) {
-	QModelIndex _ret = self->currentIndex();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QModelIndex*>(new QModelIndex(_ret));
+	return new QModelIndex(self->currentIndex());
 }
 
 struct miqt_string* QCompleter_CurrentCompletion(const QCompleter* self) {
@@ -215,7 +213,7 @@ struct miqt_string* QCompleter_PathFromIndex(const QCompleter* self, QModelIndex
 struct miqt_array* QCompleter_SplitPath(const QCompleter* self, struct miqt_string* path) {
 	QString path_QString = QString::fromUtf8(&path->data, path->len);
 	QStringList _ret = self->splitPath(path_QString);
-	// Convert QStringList from C++ memory to manually-managed C memory
+	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];

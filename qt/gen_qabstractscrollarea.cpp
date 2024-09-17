@@ -105,21 +105,15 @@ void QAbstractScrollArea_SetViewport(QAbstractScrollArea* self, QWidget* widget)
 }
 
 QSize* QAbstractScrollArea_MaximumViewportSize(const QAbstractScrollArea* self) {
-	QSize _ret = self->maximumViewportSize();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->maximumViewportSize());
 }
 
 QSize* QAbstractScrollArea_MinimumSizeHint(const QAbstractScrollArea* self) {
-	QSize _ret = self->minimumSizeHint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->minimumSizeHint());
 }
 
 QSize* QAbstractScrollArea_SizeHint(const QAbstractScrollArea* self) {
-	QSize _ret = self->sizeHint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->sizeHint());
 }
 
 void QAbstractScrollArea_SetupViewport(QAbstractScrollArea* self, QWidget* viewport) {

@@ -68,9 +68,7 @@ void QTextStream_SetLocale(QTextStream* self, QLocale* locale) {
 }
 
 QLocale* QTextStream_Locale(const QTextStream* self) {
-	QLocale _ret = self->locale();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QLocale*>(new QLocale(_ret));
+	return new QLocale(self->locale());
 }
 
 void QTextStream_SetDevice(QTextStream* self, QIODevice* device) {
@@ -160,9 +158,7 @@ void QTextStream_SetPadChar(QTextStream* self, QChar* ch) {
 }
 
 QChar* QTextStream_PadChar(const QTextStream* self) {
-	QChar _ret = self->padChar();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QChar*>(new QChar(_ret));
+	return new QChar(self->padChar());
 }
 
 void QTextStream_SetFieldWidth(QTextStream* self, int width) {

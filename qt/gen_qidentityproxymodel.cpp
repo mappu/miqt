@@ -44,27 +44,19 @@ int QIdentityProxyModel_ColumnCount(const QIdentityProxyModel* self) {
 }
 
 QModelIndex* QIdentityProxyModel_Index(const QIdentityProxyModel* self, int row, int column) {
-	QModelIndex _ret = self->index(static_cast<int>(row), static_cast<int>(column));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QModelIndex*>(new QModelIndex(_ret));
+	return new QModelIndex(self->index(static_cast<int>(row), static_cast<int>(column)));
 }
 
 QModelIndex* QIdentityProxyModel_MapFromSource(const QIdentityProxyModel* self, QModelIndex* sourceIndex) {
-	QModelIndex _ret = self->mapFromSource(*sourceIndex);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QModelIndex*>(new QModelIndex(_ret));
+	return new QModelIndex(self->mapFromSource(*sourceIndex));
 }
 
 QModelIndex* QIdentityProxyModel_MapToSource(const QIdentityProxyModel* self, QModelIndex* proxyIndex) {
-	QModelIndex _ret = self->mapToSource(*proxyIndex);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QModelIndex*>(new QModelIndex(_ret));
+	return new QModelIndex(self->mapToSource(*proxyIndex));
 }
 
 QModelIndex* QIdentityProxyModel_Parent(const QIdentityProxyModel* self, QModelIndex* child) {
-	QModelIndex _ret = self->parent(*child);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QModelIndex*>(new QModelIndex(_ret));
+	return new QModelIndex(self->parent(*child));
 }
 
 int QIdentityProxyModel_RowCount(const QIdentityProxyModel* self) {
@@ -72,9 +64,7 @@ int QIdentityProxyModel_RowCount(const QIdentityProxyModel* self) {
 }
 
 QVariant* QIdentityProxyModel_HeaderData(const QIdentityProxyModel* self, int section, uintptr_t orientation) {
-	QVariant _ret = self->headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(_ret));
+	return new QVariant(self->headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation)));
 }
 
 bool QIdentityProxyModel_DropMimeData(QIdentityProxyModel* self, QMimeData* data, uintptr_t action, int row, int column, QModelIndex* parent) {
@@ -82,15 +72,13 @@ bool QIdentityProxyModel_DropMimeData(QIdentityProxyModel* self, QMimeData* data
 }
 
 QModelIndex* QIdentityProxyModel_Sibling(const QIdentityProxyModel* self, int row, int column, QModelIndex* idx) {
-	QModelIndex _ret = self->sibling(static_cast<int>(row), static_cast<int>(column), *idx);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QModelIndex*>(new QModelIndex(_ret));
+	return new QModelIndex(self->sibling(static_cast<int>(row), static_cast<int>(column), *idx));
 }
 
 struct miqt_array* QIdentityProxyModel_Match(const QIdentityProxyModel* self, QModelIndex* start, int role, QVariant* value) {
 	QModelIndexList _ret = self->match(*start, static_cast<int>(role), *value);
-	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
-	QModelIndex** _arr = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex**) * _ret.length()));
+	// Convert QList<> from C++ memory to manually-managed C memory
+	QModelIndex** _arr = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = new QModelIndex(_ret[i]);
 	}
@@ -161,9 +149,7 @@ int QIdentityProxyModel_ColumnCount1(const QIdentityProxyModel* self, QModelInde
 }
 
 QModelIndex* QIdentityProxyModel_Index3(const QIdentityProxyModel* self, int row, int column, QModelIndex* parent) {
-	QModelIndex _ret = self->index(static_cast<int>(row), static_cast<int>(column), *parent);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QModelIndex*>(new QModelIndex(_ret));
+	return new QModelIndex(self->index(static_cast<int>(row), static_cast<int>(column), *parent));
 }
 
 int QIdentityProxyModel_RowCount1(const QIdentityProxyModel* self, QModelIndex* parent) {
@@ -171,15 +157,13 @@ int QIdentityProxyModel_RowCount1(const QIdentityProxyModel* self, QModelIndex* 
 }
 
 QVariant* QIdentityProxyModel_HeaderData3(const QIdentityProxyModel* self, int section, uintptr_t orientation, int role) {
-	QVariant _ret = self->headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), static_cast<int>(role));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(_ret));
+	return new QVariant(self->headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), static_cast<int>(role)));
 }
 
 struct miqt_array* QIdentityProxyModel_Match4(const QIdentityProxyModel* self, QModelIndex* start, int role, QVariant* value, int hits) {
 	QModelIndexList _ret = self->match(*start, static_cast<int>(role), *value, static_cast<int>(hits));
-	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
-	QModelIndex** _arr = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex**) * _ret.length()));
+	// Convert QList<> from C++ memory to manually-managed C memory
+	QModelIndex** _arr = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = new QModelIndex(_ret[i]);
 	}
@@ -191,8 +175,8 @@ struct miqt_array* QIdentityProxyModel_Match4(const QIdentityProxyModel* self, Q
 
 struct miqt_array* QIdentityProxyModel_Match5(const QIdentityProxyModel* self, QModelIndex* start, int role, QVariant* value, int hits, int flags) {
 	QModelIndexList _ret = self->match(*start, static_cast<int>(role), *value, static_cast<int>(hits), static_cast<Qt::MatchFlags>(flags));
-	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
-	QModelIndex** _arr = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex**) * _ret.length()));
+	// Convert QList<> from C++ memory to manually-managed C memory
+	QModelIndex** _arr = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = new QModelIndex(_ret[i]);
 	}

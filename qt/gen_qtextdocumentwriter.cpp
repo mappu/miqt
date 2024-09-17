@@ -35,9 +35,7 @@ void QTextDocumentWriter_SetFormat(QTextDocumentWriter* self, QByteArray* format
 }
 
 QByteArray* QTextDocumentWriter_Format(const QTextDocumentWriter* self) {
-	QByteArray _ret = self->format();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(self->format());
 }
 
 void QTextDocumentWriter_SetDevice(QTextDocumentWriter* self, QIODevice* device) {
@@ -78,8 +76,8 @@ QTextCodec* QTextDocumentWriter_Codec(const QTextDocumentWriter* self) {
 
 struct miqt_array* QTextDocumentWriter_SupportedDocumentFormats() {
 	QList<QByteArray> _ret = QTextDocumentWriter::supportedDocumentFormats();
-	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
-	QByteArray** _arr = static_cast<QByteArray**>(malloc(sizeof(QByteArray**) * _ret.length()));
+	// Convert QList<> from C++ memory to manually-managed C memory
+	QByteArray** _arr = static_cast<QByteArray**>(malloc(sizeof(QByteArray*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = new QByteArray(_ret[i]);
 	}

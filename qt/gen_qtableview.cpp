@@ -158,9 +158,7 @@ bool QTableView_IsCornerButtonEnabled(const QTableView* self) {
 }
 
 QRect* QTableView_VisualRect(const QTableView* self, QModelIndex* index) {
-	QRect _ret = self->visualRect(*index);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->visualRect(*index));
 }
 
 void QTableView_ScrollTo(QTableView* self, QModelIndex* index) {
@@ -168,9 +166,7 @@ void QTableView_ScrollTo(QTableView* self, QModelIndex* index) {
 }
 
 QModelIndex* QTableView_IndexAt(const QTableView* self, QPoint* p) {
-	QModelIndex _ret = self->indexAt(*p);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QModelIndex*>(new QModelIndex(_ret));
+	return new QModelIndex(self->indexAt(*p));
 }
 
 void QTableView_SetSpan(QTableView* self, int row, int column, int rowSpan, int columnSpan) {

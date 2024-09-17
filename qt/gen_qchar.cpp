@@ -96,9 +96,7 @@ unsigned char QChar_CombiningClass(const QChar* self) {
 }
 
 QChar* QChar_MirroredChar(const QChar* self) {
-	QChar _ret = self->mirroredChar();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QChar*>(new QChar(_ret));
+	return new QChar(self->mirroredChar());
 }
 
 bool QChar_HasMirrored(const QChar* self) {
@@ -122,27 +120,19 @@ int QChar_DigitValue(const QChar* self) {
 }
 
 QChar* QChar_ToLower(const QChar* self) {
-	QChar _ret = self->toLower();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QChar*>(new QChar(_ret));
+	return new QChar(self->toLower());
 }
 
 QChar* QChar_ToUpper(const QChar* self) {
-	QChar _ret = self->toUpper();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QChar*>(new QChar(_ret));
+	return new QChar(self->toUpper());
 }
 
 QChar* QChar_ToTitleCase(const QChar* self) {
-	QChar _ret = self->toTitleCase();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QChar*>(new QChar(_ret));
+	return new QChar(self->toTitleCase());
 }
 
 QChar* QChar_ToCaseFolded(const QChar* self) {
-	QChar _ret = self->toCaseFolded();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QChar*>(new QChar(_ret));
+	return new QChar(self->toCaseFolded());
 }
 
 uintptr_t QChar_Script(const QChar* self) {
@@ -164,9 +154,7 @@ uint16_t QChar_Unicode(const QChar* self) {
 }
 
 QChar* QChar_FromLatin1(char c) {
-	QChar _ret = QChar::fromLatin1(static_cast<char>(c));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QChar*>(new QChar(_ret));
+	return new QChar(QChar::fromLatin1(static_cast<char>(c)));
 }
 
 bool QChar_IsNull(const QChar* self) {

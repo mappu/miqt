@@ -119,7 +119,7 @@ void QInputDialog_SetComboBoxItems(QInputDialog* self, struct miqt_array* /* of 
 
 struct miqt_array* QInputDialog_ComboBoxItems(const QInputDialog* self) {
 	QStringList _ret = self->comboBoxItems();
-	// Convert QStringList from C++ memory to manually-managed C memory
+	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
@@ -230,15 +230,11 @@ struct miqt_string* QInputDialog_CancelButtonText(const QInputDialog* self) {
 }
 
 QSize* QInputDialog_MinimumSizeHint(const QInputDialog* self) {
-	QSize _ret = self->minimumSizeHint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->minimumSizeHint());
 }
 
 QSize* QInputDialog_SizeHint(const QInputDialog* self) {
-	QSize _ret = self->sizeHint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->sizeHint());
 }
 
 void QInputDialog_SetVisible(QInputDialog* self, bool visible) {

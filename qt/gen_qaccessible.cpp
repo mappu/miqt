@@ -134,9 +134,7 @@ void QAccessibleInterface_SetText(QAccessibleInterface* self, uintptr_t t, struc
 }
 
 QRect* QAccessibleInterface_Rect(const QAccessibleInterface* self) {
-	QRect _ret = self->rect();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->rect());
 }
 
 uintptr_t QAccessibleInterface_Role(const QAccessibleInterface* self) {
@@ -145,21 +143,15 @@ uintptr_t QAccessibleInterface_Role(const QAccessibleInterface* self) {
 }
 
 QAccessible__State* QAccessibleInterface_State(const QAccessibleInterface* self) {
-	QAccessible::State _ret = self->state();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QAccessible::State*>(new QAccessible::State(_ret));
+	return new QAccessible::State(self->state());
 }
 
 QColor* QAccessibleInterface_ForegroundColor(const QAccessibleInterface* self) {
-	QColor _ret = self->foregroundColor();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QColor*>(new QColor(_ret));
+	return new QColor(self->foregroundColor());
 }
 
 QColor* QAccessibleInterface_BackgroundColor(const QAccessibleInterface* self) {
-	QColor _ret = self->backgroundColor();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QColor*>(new QColor(_ret));
+	return new QColor(self->backgroundColor());
 }
 
 QAccessibleTextInterface* QAccessibleInterface_TextInterface(QAccessibleInterface* self) {
@@ -251,9 +243,7 @@ int QAccessibleTextInterface_CharacterCount(const QAccessibleTextInterface* self
 }
 
 QRect* QAccessibleTextInterface_CharacterRect(const QAccessibleTextInterface* self, int offset) {
-	QRect _ret = self->characterRect(static_cast<int>(offset));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->characterRect(static_cast<int>(offset)));
 }
 
 int QAccessibleTextInterface_OffsetAtPoint(const QAccessibleTextInterface* self, QPoint* point) {
@@ -302,9 +292,7 @@ void QAccessibleEditableTextInterface_Delete(QAccessibleEditableTextInterface* s
 }
 
 QVariant* QAccessibleValueInterface_CurrentValue(const QAccessibleValueInterface* self) {
-	QVariant _ret = self->currentValue();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(_ret));
+	return new QVariant(self->currentValue());
 }
 
 void QAccessibleValueInterface_SetCurrentValue(QAccessibleValueInterface* self, QVariant* value) {
@@ -312,21 +300,15 @@ void QAccessibleValueInterface_SetCurrentValue(QAccessibleValueInterface* self, 
 }
 
 QVariant* QAccessibleValueInterface_MaximumValue(const QAccessibleValueInterface* self) {
-	QVariant _ret = self->maximumValue();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(_ret));
+	return new QVariant(self->maximumValue());
 }
 
 QVariant* QAccessibleValueInterface_MinimumValue(const QAccessibleValueInterface* self) {
-	QVariant _ret = self->minimumValue();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(_ret));
+	return new QVariant(self->minimumValue());
 }
 
 QVariant* QAccessibleValueInterface_MinimumStepSize(const QAccessibleValueInterface* self) {
-	QVariant _ret = self->minimumStepSize();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(_ret));
+	return new QVariant(self->minimumStepSize());
 }
 
 void QAccessibleValueInterface_OperatorAssign(QAccessibleValueInterface* self, QAccessibleValueInterface* param1) {
@@ -528,7 +510,7 @@ struct miqt_string* QAccessibleActionInterface_TrUtf8(const char* sourceText) {
 
 struct miqt_array* QAccessibleActionInterface_ActionNames(const QAccessibleActionInterface* self) {
 	QStringList _ret = self->actionNames();
-	// Convert QStringList from C++ memory to manually-managed C memory
+	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
@@ -566,7 +548,7 @@ void QAccessibleActionInterface_DoAction(QAccessibleActionInterface* self, struc
 struct miqt_array* QAccessibleActionInterface_KeyBindingsForAction(const QAccessibleActionInterface* self, struct miqt_string* actionName) {
 	QString actionName_QString = QString::fromUtf8(&actionName->data, actionName->len);
 	QStringList _ret = self->keyBindingsForAction(actionName_QString);
-	// Convert QStringList from C++ memory to manually-managed C memory
+	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
@@ -708,15 +690,11 @@ struct miqt_string* QAccessibleImageInterface_ImageDescription(const QAccessible
 }
 
 QSize* QAccessibleImageInterface_ImageSize(const QAccessibleImageInterface* self) {
-	QSize _ret = self->imageSize();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->imageSize());
 }
 
 QPoint* QAccessibleImageInterface_ImagePosition(const QAccessibleImageInterface* self) {
-	QPoint _ret = self->imagePosition();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPoint*>(new QPoint(_ret));
+	return new QPoint(self->imagePosition());
 }
 
 void QAccessibleImageInterface_OperatorAssign(QAccessibleImageInterface* self, QAccessibleImageInterface* param1) {
@@ -773,9 +751,7 @@ QAccessibleStateChangeEvent* QAccessibleStateChangeEvent_new2(QAccessibleInterfa
 }
 
 QAccessible__State* QAccessibleStateChangeEvent_ChangedStates(const QAccessibleStateChangeEvent* self) {
-	QAccessible::State _ret = self->changedStates();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QAccessible::State*>(new QAccessible::State(_ret));
+	return new QAccessible::State(self->changedStates());
 }
 
 void QAccessibleStateChangeEvent_Delete(QAccessibleStateChangeEvent* self) {
@@ -923,9 +899,7 @@ void QAccessibleValueChangeEvent_SetValue(QAccessibleValueChangeEvent* self, QVa
 }
 
 QVariant* QAccessibleValueChangeEvent_Value(const QAccessibleValueChangeEvent* self) {
-	QVariant _ret = self->value();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(_ret));
+	return new QVariant(self->value());
 }
 
 void QAccessibleValueChangeEvent_Delete(QAccessibleValueChangeEvent* self) {

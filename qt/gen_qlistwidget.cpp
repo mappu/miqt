@@ -113,9 +113,7 @@ void QListWidgetItem_SetText(QListWidgetItem* self, struct miqt_string* text) {
 }
 
 QIcon* QListWidgetItem_Icon(const QListWidgetItem* self) {
-	QIcon _ret = self->icon();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QIcon*>(new QIcon(_ret));
+	return new QIcon(self->icon());
 }
 
 void QListWidgetItem_SetIcon(QListWidgetItem* self, QIcon* icon) {
@@ -159,9 +157,7 @@ void QListWidgetItem_SetWhatsThis(QListWidgetItem* self, struct miqt_string* wha
 }
 
 QFont* QListWidgetItem_Font(const QListWidgetItem* self) {
-	QFont _ret = self->font();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QFont*>(new QFont(_ret));
+	return new QFont(self->font());
 }
 
 void QListWidgetItem_SetFont(QListWidgetItem* self, QFont* font) {
@@ -177,9 +173,7 @@ void QListWidgetItem_SetTextAlignment(QListWidgetItem* self, int alignment) {
 }
 
 QColor* QListWidgetItem_BackgroundColor(const QListWidgetItem* self) {
-	QColor _ret = self->backgroundColor();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QColor*>(new QColor(_ret));
+	return new QColor(self->backgroundColor());
 }
 
 void QListWidgetItem_SetBackgroundColor(QListWidgetItem* self, QColor* color) {
@@ -187,9 +181,7 @@ void QListWidgetItem_SetBackgroundColor(QListWidgetItem* self, QColor* color) {
 }
 
 QBrush* QListWidgetItem_Background(const QListWidgetItem* self) {
-	QBrush _ret = self->background();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QBrush*>(new QBrush(_ret));
+	return new QBrush(self->background());
 }
 
 void QListWidgetItem_SetBackground(QListWidgetItem* self, QBrush* brush) {
@@ -197,9 +189,7 @@ void QListWidgetItem_SetBackground(QListWidgetItem* self, QBrush* brush) {
 }
 
 QColor* QListWidgetItem_TextColor(const QListWidgetItem* self) {
-	QColor _ret = self->textColor();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QColor*>(new QColor(_ret));
+	return new QColor(self->textColor());
 }
 
 void QListWidgetItem_SetTextColor(QListWidgetItem* self, QColor* color) {
@@ -207,9 +197,7 @@ void QListWidgetItem_SetTextColor(QListWidgetItem* self, QColor* color) {
 }
 
 QBrush* QListWidgetItem_Foreground(const QListWidgetItem* self) {
-	QBrush _ret = self->foreground();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QBrush*>(new QBrush(_ret));
+	return new QBrush(self->foreground());
 }
 
 void QListWidgetItem_SetForeground(QListWidgetItem* self, QBrush* brush) {
@@ -226,9 +214,7 @@ void QListWidgetItem_SetCheckState(QListWidgetItem* self, uintptr_t state) {
 }
 
 QSize* QListWidgetItem_SizeHint(const QListWidgetItem* self) {
-	QSize _ret = self->sizeHint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->sizeHint());
 }
 
 void QListWidgetItem_SetSizeHint(QListWidgetItem* self, QSize* size) {
@@ -236,9 +222,7 @@ void QListWidgetItem_SetSizeHint(QListWidgetItem* self, QSize* size) {
 }
 
 QVariant* QListWidgetItem_Data(const QListWidgetItem* self, int role) {
-	QVariant _ret = self->data(static_cast<int>(role));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(_ret));
+	return new QVariant(self->data(static_cast<int>(role)));
 }
 
 void QListWidgetItem_SetData(QListWidgetItem* self, int role, QVariant* value) {
@@ -386,9 +370,7 @@ QListWidgetItem* QListWidget_ItemAt2(const QListWidget* self, int x, int y) {
 }
 
 QRect* QListWidget_VisualItemRect(const QListWidget* self, QListWidgetItem* item) {
-	QRect _ret = self->visualItemRect(item);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->visualItemRect(item));
 }
 
 void QListWidget_SortItems(QListWidget* self) {
