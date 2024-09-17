@@ -174,6 +174,18 @@ func (this *QStateMachine) CancelDelayedEvent(id int) bool {
 	return (bool)(C.QStateMachine_CancelDelayedEvent(this.h, (C.int)(id)))
 }
 
+func (this *QStateMachine) Configuration() map[*QAbstractState]struct{} {
+	var _ma *C.struct_miqt_array = C.QStateMachine_Configuration(this.h)
+	_ret := make(map[*QAbstractState]struct{}, int(_ma.len))
+	_outCast := (*[0xffff]*C.QAbstractState)(unsafe.Pointer(_ma.data)) // hey ya
+	for i := 0; i < int(_ma.len); i++ {
+		_element := newQAbstractState_U(unsafe.Pointer(_outCast[i]))
+		_ret[_element] = struct{}{}
+	}
+	C.free(unsafe.Pointer(_ma))
+	return _ret
+}
+
 func (this *QStateMachine) EventFilter(watched *QObject, event *QEvent) bool {
 	return (bool)(C.QStateMachine_EventFilter(this.h, watched.cPointer(), event.cPointer()))
 }

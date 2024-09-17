@@ -90,8 +90,10 @@ func CheckComplexity(p CppParameter, isReturnType bool) error {
 	if p.QPairOf() {
 		return ErrTooComplex // e.g. QGradientStop
 	}
-	if p.QSetOf() {
-		return ErrTooComplex // e.g. QStateMachine
+	if t, ok := p.QSetOf(); ok {
+		if err := CheckComplexity(t, isReturnType); err != nil {
+			return err
+		}
 	}
 	if t, ok := p.QListOf(); ok {
 		if err := CheckComplexity(t, isReturnType); err != nil { // e.g. QGradientStops is a QVector<> (OK) of QGradientStop (not OK)

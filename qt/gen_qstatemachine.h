@@ -64,6 +64,7 @@ void QStateMachine_SetGlobalRestorePolicy(QStateMachine* self, uintptr_t restore
 void QStateMachine_PostEvent(QStateMachine* self, QEvent* event);
 int QStateMachine_PostDelayedEvent(QStateMachine* self, QEvent* event, int delay);
 bool QStateMachine_CancelDelayedEvent(QStateMachine* self, int id);
+struct miqt_array* QStateMachine_Configuration(const QStateMachine* self);
 bool QStateMachine_EventFilter(QStateMachine* self, QObject* watched, QEvent* event);
 void QStateMachine_Start(QStateMachine* self);
 void QStateMachine_Stop(QStateMachine* self);

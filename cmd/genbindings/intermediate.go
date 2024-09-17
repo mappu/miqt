@@ -156,8 +156,14 @@ func (p CppParameter) QPairOf() bool {
 	return strings.HasPrefix(p.ParameterType, `QPair<`) // TODO support this
 }
 
-func (p CppParameter) QSetOf() bool {
-	return strings.HasPrefix(p.ParameterType, `QSet<`) // TODO support this
+func (p CppParameter) QSetOf() (CppParameter, bool) {
+	if strings.HasPrefix(p.ParameterType, `QSet<`) {
+		ret := parseSingleTypeString(p.ParameterType[5 : len(p.ParameterType)-1])
+		ret.ParameterName = p.ParameterName + "_sv"
+		return ret, true
+	}
+
+	return CppParameter{}, false
 }
 
 func (p CppParameter) IntType() bool {

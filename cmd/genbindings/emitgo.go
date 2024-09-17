@@ -31,6 +31,10 @@ func (p CppParameter) RenderTypeGo() string {
 		return "[]" + t.RenderTypeGo()
 	}
 
+	if t, ok := p.QSetOf(); ok {
+		return "map[" + t.RenderTypeGo() + "]struct{}"
+	}
+
 	ret := ""
 	if p.ByRef || p.Pointer {
 		ret += "*"
@@ -111,6 +115,10 @@ func (p CppParameter) parameterTypeCgo() string {
 	}
 
 	if _, ok := p.QListOf(); ok {
+		return "*C.struct_miqt_array"
+	}
+
+	if _, ok := p.QSetOf(); ok {
 		return "*C.struct_miqt_array"
 	}
 
@@ -245,6 +253,9 @@ func (gfs *goFileState) emitParameterGo2CABIForwarding(p CppParameter) (preamble
 
 		rvalue = p.ParameterName + "_ma"
 
+	} else if _, ok := p.QSetOf(); ok {
+		panic("QSet<> arguments are not yet implemented") // n.b. doesn't seem to exist in QtCore/QtGui/QtWidgets at all
+
 	} else if p.Pointer && p.ParameterType == "char" {
 		// Single char* argument
 		gfs.imports["unsafe"] = struct{}{}
@@ -312,6 +323,23 @@ func (gfs *goFileState) emitCabiToGo(assignExpr string, rt CppParameter, rvalue 
 		afterword += "for i := 0; i < int(" + namePrefix + "_ma.len); i++ {\n"
 
 		afterword += gfs.emitCabiToGo(namePrefix+"_ret[i] = ", t, namePrefix+"_outCast[i]")
+
+		afterword += "}\n"
+		afterword += "C.free(unsafe.Pointer(" + namePrefix + "_ma))\n"
+		afterword += assignExpr + " " + namePrefix + "_ret\n"
+
+	} else if t, ok := rt.QSetOf(); ok {
+
+		gfs.imports["unsafe"] = struct{}{}
+
+		shouldReturn = "var " + namePrefix + "_ma *C.struct_miqt_array = "
+
+		afterword += namePrefix + "_ret := make(map[" + t.RenderTypeGo() + "]struct{}, int(" + namePrefix + "_ma.len))\n"
+		afterword += namePrefix + "_outCast := (*[0xffff]" + t.parameterTypeCgo() + ")(unsafe.Pointer(" + namePrefix + "_ma.data)) // hey ya\n"
+		afterword += "for i := 0; i < int(" + namePrefix + "_ma.len); i++ {\n"
+
+		afterword += gfs.emitCabiToGo(namePrefix+"_element := ", t, namePrefix+"_outCast[i]") + "\n"
+		afterword += namePrefix + "_ret[" + namePrefix + "_element] = struct{}{}\n"
 
 		afterword += "}\n"
 		afterword += "C.free(unsafe.Pointer(" + namePrefix + "_ma))\n"

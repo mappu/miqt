@@ -126,6 +126,20 @@ bool QStateMachine_CancelDelayedEvent(QStateMachine* self, int id) {
 	return self->cancelDelayedEvent(static_cast<int>(id));
 }
 
+struct miqt_array* QStateMachine_Configuration(const QStateMachine* self) {
+	QSet<QAbstractState *> _ret = self->configuration();
+	// Convert QList<> from C++ memory to manually-managed C memory
+	QAbstractState** _arr = static_cast<QAbstractState**>(malloc(sizeof(QAbstractState*) * _ret.length()));
+	int _ctr = 0;
+	for (const auto _elem& : self->configuration() ) {
+		_arr[_ctr++] = _elem;
+	}
+	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
+	_out->len = _ret.length();
+	_out->data = static_cast<void*>(_arr);
+	return _out;
+}
+
 bool QStateMachine_EventFilter(QStateMachine* self, QObject* watched, QEvent* event) {
 	return self->eventFilter(watched, event);
 }

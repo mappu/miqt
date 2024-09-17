@@ -145,6 +145,9 @@ func emitParametersCabi(m CppMethod, selfType string) string {
 		} else if t, ok := p.QListOf(); ok {
 			tmp = append(tmp, "struct miqt_array* /* of "+t.RenderTypeCabi()+" */ "+p.ParameterName)
 
+		} else if t, ok := p.QSetOf(); ok {
+			tmp = append(tmp, "struct miqt_array* /* Set of "+t.RenderTypeCabi()+" */ "+p.ParameterName)
+
 		} else if p.QtClassType() {
 			if p.ByRef || p.Pointer {
 
@@ -231,6 +234,9 @@ func emitCABI2CppForwarding(p CppParameter, indent string) (preamble string, for
 			// Use static_cast<> safely
 			return preamble, "static_cast<" + castType + ">(" + castSrc + ")"
 		}
+
+	} else if _, ok := p.QSetOf(); ok {
+		panic("QSet<> arguments are not yet implemented") // n.b. doesn't seem to exist in QtCore/QtGui/QtWidgets at all
 
 	} else if p.ByRef {
 		if p.Pointer {
@@ -319,8 +325,22 @@ func emitAssignCppToCabi(assignExpression string, p CppParameter, rvalue string)
 
 		afterCall += indent + assignExpression + "" + namePrefix + "_out;\n"
 
-	} else if _, ok := p.QSetOf(); ok {
-		// ...
+	} else if t, ok := p.QSetOf(); ok {
+
+		shouldReturn = p.RenderTypeQtCpp() + " " + namePrefix + "_ret = "
+
+		afterCall += indent + "// Convert QList<> from C++ memory to manually-managed C memory\n"
+		afterCall += indent + "" + t.RenderTypeCabi() + "* " + namePrefix + "_arr = static_cast<" + t.RenderTypeCabi() + "*>(malloc(sizeof(" + t.RenderTypeCabi() + ") * " + namePrefix + "_ret.length()));\n"
+		afterCall += indent + "int " + namePrefix + "_ctr = 0;\n"
+		afterCall += indent + "for (const auto " + namePrefix + "_elem& : " + rvalue + " ) {\n"
+		afterCall += emitAssignCppToCabi(indent+"\t"+namePrefix+"_arr["+namePrefix+"_ctr++] = ", t, namePrefix+"_elem")
+		afterCall += indent + "}\n"
+
+		afterCall += indent + "struct miqt_array* " + namePrefix + "_out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));\n"
+		afterCall += indent + "" + namePrefix + "_out->len = " + namePrefix + "_ret.length();\n"
+		afterCall += indent + "" + namePrefix + "_out->data = static_cast<void*>(" + namePrefix + "_arr);\n"
+
+		afterCall += indent + assignExpression + "" + namePrefix + "_out;\n"
 
 	} else if p.QtClassType() && p.ByRef {
 		// It's a pointer in disguise, just needs one cast
