@@ -312,67 +312,28 @@ func emitAssignCppToCabi(assignExpression string, p CppParameter, rvalue string)
 
 	} else if t, ok := p.QListOf(); ok {
 
-		if t.ParameterType == "QString" {
-			// Combo
-			// "char** _out, int64_t* _out_Lengths, size_t* _out_len")
+		// In some cases rvalue is a function call and the temporary
+		// is necessary; in some cases it's a literal and the temporary is
+		// elided; but in some cases it's a Qt class and the temporary goes
+		// through a copy constructor
+		// TODO Detect safe cases where this can be optimized
 
-			shouldReturn = p.RenderTypeQtCpp() + " " + namePrefix + "_ret = "
+		shouldReturn = p.RenderTypeQtCpp() + " " + namePrefix + "_ret = "
 
-			afterCall += indent + "// Convert QStringList from C++ memory to manually-managed C memory\n"
-			afterCall += indent + "struct miqt_string** " + namePrefix + "_arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * " + namePrefix + "_ret.length()));\n"
-			afterCall += indent + "for (size_t i = 0, e = " + namePrefix + "_ret.length(); i < e; ++i) {\n"
-			afterCall += emitAssignCppToCabi(indent+"\t"+namePrefix+"_arr[i] = ", t, namePrefix+"_ret[i]")
-			afterCall += indent + "}\n"
+		afterCall += indent + "// Convert QList<> from C++ memory to manually-managed C memory\n"
+		afterCall += indent + "" + t.RenderTypeCabi() + "* " + namePrefix + "_arr = static_cast<" + t.RenderTypeCabi() + "*>(malloc(sizeof(" + t.RenderTypeCabi() + ") * " + namePrefix + "_ret.length()));\n"
+		afterCall += indent + "for (size_t i = 0, e = " + namePrefix + "_ret.length(); i < e; ++i) {\n"
+		afterCall += emitAssignCppToCabi(indent+"\t"+namePrefix+"_arr[i] = ", t, namePrefix+"_ret[i]")
+		afterCall += indent + "}\n"
 
-			afterCall += indent + "struct miqt_array* " + namePrefix + "_out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));\n"
-			afterCall += indent + namePrefix + "_out->len = " + namePrefix + "_ret.length();\n"
-			afterCall += indent + namePrefix + "_out->data = static_cast<void*>(" + namePrefix + "_arr);\n"
+		afterCall += indent + "struct miqt_array* " + namePrefix + "_out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));\n"
+		afterCall += indent + "" + namePrefix + "_out->len = " + namePrefix + "_ret.length();\n"
+		afterCall += indent + "" + namePrefix + "_out->data = static_cast<void*>(" + namePrefix + "_arr);\n"
 
-			afterCall += indent + assignExpression + "" + namePrefix + "_out;\n"
+		afterCall += indent + assignExpression + "" + namePrefix + "_out;\n"
 
-		} else if !t.QtClassType() || (t.QtClassType() && t.Pointer) { // QList<int>, QList<QFoo*>
-
-			// In some cases rvalue is a function call and the temporary
-			// is necessary; in some cases it's a literal and the temporary is
-			// elided; but in some cases it's a Qt class and the temporary goes
-			// through a copy constructor
-			// TODO Detect safe cases where this can be optimized
-
-			shouldReturn = p.RenderTypeQtCpp() + " " + namePrefix + "_ret = "
-
-			afterCall += indent + "// Convert QList<> from C++ memory to manually-managed C memory\n"
-			afterCall += indent + "" + t.RenderTypeCabi() + "* " + namePrefix + "_arr = static_cast<" + t.RenderTypeCabi() + "*>(malloc(sizeof(" + t.RenderTypeCabi() + ") * " + namePrefix + "_ret.length()));\n"
-			afterCall += indent + "for (size_t i = 0, e = " + namePrefix + "_ret.length(); i < e; ++i) {\n"
-			if t.Const {
-				afterCall += indent + "\t" + namePrefix + "_arr[i] = const_cast<" + t.ConstCast(false).RenderTypeCabi() + ">(" + namePrefix + "_ret[i]);\n"
-			} else {
-				afterCall += indent + "\t" + namePrefix + "_arr[i] = " + namePrefix + "_ret[i];\n"
-			}
-			afterCall += indent + "}\n"
-
-			afterCall += indent + "struct miqt_array* " + namePrefix + "_out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));\n"
-			afterCall += indent + "" + namePrefix + "_out->len = " + namePrefix + "_ret.length();\n"
-			afterCall += indent + "" + namePrefix + "_out->data = static_cast<void*>(" + namePrefix + "_arr);\n"
-
-			afterCall += indent + assignExpression + "" + namePrefix + "_out;\n"
-
-		} else { // QList<QFoo>
-
-			shouldReturn = p.RenderTypeQtCpp() + " " + namePrefix + "_ret = "
-
-			afterCall += indent + "// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers\n"
-			afterCall += indent + "" + t.RenderTypeCabi() + "* " + namePrefix + "_arr = static_cast<" + t.RenderTypeCabi() + "*>(malloc(sizeof(" + t.RenderTypeCabi() + "*) * " + namePrefix + "_ret.length()));\n"
-			afterCall += indent + "for (size_t i = 0, e = " + namePrefix + "_ret.length(); i < e; ++i) {\n"
-			afterCall += indent + "\t" + namePrefix + "_arr[i] = new " + t.ParameterType + "(" + namePrefix + "_ret[i]);\n"
-			afterCall += indent + "}\n"
-
-			afterCall += indent + "struct miqt_array* " + namePrefix + "_out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));\n"
-			afterCall += indent + "" + namePrefix + "_out->len = " + namePrefix + "_ret.length();\n"
-			afterCall += indent + "" + namePrefix + "_out->data = static_cast<void*>(" + namePrefix + "_arr);\n"
-
-			afterCall += indent + assignExpression + "" + namePrefix + "_out;\n"
-
-		}
+	} else if _, ok := p.QSetOf(); ok {
+		// ...
 
 	} else if p.QtClassType() && p.ByRef {
 		// It's a pointer in disguise, just needs one cast
