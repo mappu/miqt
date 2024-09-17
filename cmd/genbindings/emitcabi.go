@@ -73,13 +73,12 @@ func (p CppParameter) RenderTypeCabi() string {
 	if p.IsFlagType() {
 		ret = "int"
 
+	} else if e, ok := KnownEnums[p.ParameterType]; ok {
+		ret = e.UnderlyingType.RenderTypeCabi()
+
 	} else if strings.Contains(p.ParameterType, `::`) {
-		if p.IsEnum() {
-			ret = "uintptr_t"
-		} else {
-			// Inner class
-			ret = cabiClassName(p.ParameterType)
-		}
+		// Inner class
+		ret = cabiClassName(p.ParameterType)
 	}
 
 	if p.Pointer {
@@ -207,6 +206,11 @@ func emitCABI2CppForwarding(p CppParameter, indent string) (preamble string, for
 
 		preamble += indent + "}\n"
 		return preamble, nameprefix + "_QList"
+
+	} else if p.IsKnownEnum() {
+		// The enums are projected in CABI as their underlying int types.
+		// Cast to the Qt enum type so that we get the correct overload
+		return preamble, "static_cast<" + p.RenderTypeQtCpp() + ">(" + p.ParameterName + ")"
 
 	} else if p.IntType() {
 		// Use the raw ParameterType to select an explicit integer overload
@@ -370,10 +374,10 @@ func emitAssignCppToCabi(assignExpression string, p CppParameter, rvalue string)
 		shouldReturn = p.RenderTypeQtCpp() + " " + namePrefix + "_ret = "
 		afterCall += indent + "" + assignExpression + "static_cast<int>(" + namePrefix + "_ret);\n"
 
-	} else if p.IsEnum() {
+	} else if p.IsKnownEnum() {
 		// Needs an explicit uintptr cast
 		shouldReturn = p.RenderTypeQtCpp() + " " + namePrefix + "_ret = "
-		afterCall += indent + "" + assignExpression + "static_cast<uintptr_t>(" + namePrefix + "_ret);\n"
+		afterCall += indent + "" + assignExpression + "static_cast<" + p.RenderTypeCabi() + ">(" + namePrefix + "_ret);\n"
 
 	}
 

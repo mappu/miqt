@@ -93,8 +93,6 @@ func (p CppParameter) RenderTypeGo() string {
 			if p.IsKnownEnum() {
 				ret += cabiClassName(p.ParameterType)
 
-			} else if p.IsEnum() {
-				ret += "uintptr"
 			} else {
 				// Inner class
 				ret += cabiClassName(p.ParameterType)
@@ -411,7 +409,7 @@ import "C"
 		goEnumName := cabiClassName(e.EnumName)
 
 		ret.WriteString(`
-		type ` + goEnumName + ` ` + parseSingleTypeString(e.UnderlyingType).RenderTypeGo() + `
+		type ` + goEnumName + ` ` + e.UnderlyingType.RenderTypeGo() + `
 		`)
 
 		if len(e.Entries) > 0 {

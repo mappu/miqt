@@ -116,21 +116,6 @@ func (p CppParameter) IsKnownEnum() bool {
 	return ok
 }
 
-func (p CppParameter) IsEnum() bool {
-	if strings.Contains(p.ParameterType, `::`) {
-		if _, ok := KnownClassnames[p.ParameterType]; ok {
-			// It's an inner class
-			return false
-		} else {
-			// Enum
-			return true
-		}
-	}
-
-	// Top-level enums aren't supported yet
-	return false
-}
-
 func (p CppParameter) QListOf() (CppParameter, bool) {
 	if strings.HasPrefix(p.ParameterType, "QList<") && strings.HasSuffix(p.ParameterType, `>`) {
 		ret := parseSingleTypeString(p.ParameterType[6 : len(p.ParameterType)-1])
@@ -168,7 +153,7 @@ func (p CppParameter) QSetOf() (CppParameter, bool) {
 
 func (p CppParameter) IntType() bool {
 
-	if p.IsEnum() {
+	if p.IsKnownEnum() {
 		return true
 	}
 
@@ -326,7 +311,7 @@ type CppEnumEntry struct {
 
 type CppEnum struct {
 	EnumName       string
-	UnderlyingType string
+	UnderlyingType CppParameter
 	Entries        []CppEnumEntry
 }
 

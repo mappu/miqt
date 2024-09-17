@@ -485,10 +485,10 @@ func processEnum(node map[string]interface{}, addNamePrefix string) (CppEnum, er
 	var ret CppEnum
 
 	// Underlying type
-	ret.UnderlyingType = "int"
+	ret.UnderlyingType = parseSingleTypeString("int")
 	if nodefut, ok := node["fixedUnderlyingType"].(map[string]interface{}); ok {
 		if nodequal, ok := nodefut["qualType"].(string); ok {
-			ret.UnderlyingType = nodequal
+			ret.UnderlyingType = parseSingleTypeString(nodequal)
 		}
 	}
 
@@ -577,7 +577,7 @@ func processEnum(node map[string]interface{}, addNamePrefix string) (CppEnum, er
 
 		var err error
 		if cee.EntryValue == "true" || cee.EntryValue == "false" {
-			ret.UnderlyingType = "bool"
+			ret.UnderlyingType = parseSingleTypeString("bool")
 
 		} else {
 			lastImplicitValue, err = strconv.ParseInt(cee.EntryValue, 10, 64)

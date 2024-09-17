@@ -66,4 +66,10 @@ func astTransformTypedefs(parsed *CppParsedHeader) {
 		}
 		parsed.Classes[i] = c
 	}
+
+	// Enum underlying types
+	for i, e := range parsed.Enums {
+		e.UnderlyingType = applyTypedefs(e.UnderlyingType)
+		parsed.Enums[i] = e
+	}
 }
