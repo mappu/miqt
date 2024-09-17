@@ -181,45 +181,29 @@ func emitParametersCABI2CppForwarding(params []CppParameter, indent string) (pre
 
 func emitCABI2CppForwarding(p CppParameter, indent string) (preamble string, forwarding string) {
 
+	nameprefix := strings.Replace(strings.Replace(p.ParameterName, `[`, `_`, -1), `]`, "", -1)
+
 	if p.ParameterType == "QString" {
 		// The CABI has accepted two parameters - need to convert to one real QString
 		// Create it on the stack
-		preamble += indent + "QString " + p.ParameterName + "_QString = QString::fromUtf8(&" + p.ParameterName + "->data, " + p.ParameterName + "->len);\n"
-		return preamble, p.ParameterName + "_QString"
+		preamble += indent + "QString " + nameprefix + "_QString = QString::fromUtf8(&" + p.ParameterName + "->data, " + p.ParameterName + "->len);\n"
+		return preamble, nameprefix + "_QString"
 
 	} else if listType, ok := p.QListOf(); ok {
 
-		if listType.ParameterType == "QString" {
+		preamble += indent + p.ParameterType + " " + nameprefix + "_QList;\n"
+		preamble += indent + nameprefix + "_QList.reserve(" + p.ParameterName + "->len);\n"
 
-			// miqt_array<miqt_string*>
+		preamble += indent + listType.RenderTypeCabi() + "* " + nameprefix + "_arr = static_cast<" + listType.RenderTypeCabi() + "*>(" + p.ParameterName + "->data);\n"
+		preamble += indent + "for(size_t i = 0; i < " + p.ParameterName + "->len; ++i) {\n"
 
-			// Combo (3 parameters)
-			preamble += indent + p.ParameterType + " " + p.ParameterName + "_QList;\n"
-			preamble += indent + p.ParameterName + "_QList.reserve(" + p.ParameterName + "->len);\n"
-			preamble += indent + "miqt_string** " + p.ParameterName + "_arr = static_cast<miqt_string**>(" + p.ParameterName + "->data);\n"
-			preamble += indent + "for(size_t i = 0; i < " + p.ParameterName + "->len; ++i) {\n"
-			preamble += indent + "\t" + p.ParameterName + "_QList.push_back(QString::fromUtf8(& " + p.ParameterName + "_arr[i]->data, " + p.ParameterName + "_arr[i]->len));\n"
-			preamble += indent + "}\n"
-			return preamble, p.ParameterName + "_QList"
+		listType.ParameterName = nameprefix + "_arr[i]"
+		addPre, addFwd := emitCABI2CppForwarding(listType, indent+"\t")
+		preamble += addPre
+		preamble += indent + "\t" + nameprefix + "_QList.push_back(" + addFwd + ");\n"
 
-		} else {
-
-			// The CABI has accepted two parameters - need to convert to one real QList<>
-			// Create it on the stack
-			preamble += indent + p.ParameterType + " " + p.ParameterName + "_QList;\n"
-			preamble += indent + p.ParameterName + "_QList.reserve(" + p.ParameterName + "->len);\n"
-			preamble += indent + listType.RenderTypeCabi() + "* " + p.ParameterName + "_arr = static_cast<" + listType.RenderTypeCabi() + "*>(" + p.ParameterName + "->data);\n"
-			preamble += indent + "for(size_t i = 0; i < " + p.ParameterName + "->len; ++i) {\n"
-			if listType.QtClassType() && !listType.Pointer {
-				preamble += indent + "\t" + p.ParameterName + "_QList.push_back(*(" + p.ParameterName + "_arr[i]));\n"
-			} else if listType.IsFlagType() {
-				preamble += indent + "\t" + p.ParameterName + "_QList.push_back(static_cast<" + listType.RenderTypeQtCpp() + ">(" + p.ParameterName + "_arr[i]));\n"
-			} else {
-				preamble += indent + "\t" + p.ParameterName + "_QList.push_back(" + p.ParameterName + "_arr[i]);\n"
-			}
-			preamble += indent + "}\n"
-			return preamble, p.ParameterName + "_QList"
-		}
+		preamble += indent + "}\n"
+		return preamble, nameprefix + "_QList"
 
 	} else if p.IntType() {
 		// Use the raw ParameterType to select an explicit integer overload
@@ -265,6 +249,9 @@ func emitCABI2CppForwarding(p CppParameter, indent string) (preamble string, for
 	} else if p.QtClassType() && !p.Pointer {
 		// CABI takes all Qt types by pointer, even if C++ wants them by value
 		// Dereference the passed-in pointer
+		if strings.Contains(p.ParameterName, `[`) {
+			return preamble, "*(" + p.ParameterName + ")" // Extra brackets aren't necessary, just nice
+		}
 		return preamble, "*" + p.ParameterName
 
 	} else {
