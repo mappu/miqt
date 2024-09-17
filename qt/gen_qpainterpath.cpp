@@ -396,7 +396,7 @@ void QPainterPathStroker_SetDashPatternWithDashPattern(QPainterPathStroker* self
 	dashPattern_QList.reserve(dashPattern->len);
 	double* dashPattern_arr = static_cast<double*>(dashPattern->data);
 	for(size_t i = 0; i < dashPattern->len; ++i) {
-		dashPattern_QList.push_back(dashPattern_arr[i]);
+		dashPattern_QList.push_back(static_cast<double>(dashPattern_arr[i]));
 	}
 	self->setDashPattern(dashPattern_QList);
 }

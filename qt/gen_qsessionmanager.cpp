@@ -68,9 +68,10 @@ uintptr_t QSessionManager_RestartHint(const QSessionManager* self) {
 void QSessionManager_SetRestartCommand(QSessionManager* self, struct miqt_array* /* of struct miqt_string* */ restartCommand) {
 	QList<QString> restartCommand_QList;
 	restartCommand_QList.reserve(restartCommand->len);
-	miqt_string** restartCommand_arr = static_cast<miqt_string**>(restartCommand->data);
+	struct miqt_string** restartCommand_arr = static_cast<struct miqt_string**>(restartCommand->data);
 	for(size_t i = 0; i < restartCommand->len; ++i) {
-		restartCommand_QList.push_back(QString::fromUtf8(& restartCommand_arr[i]->data, restartCommand_arr[i]->len));
+		QString restartCommand_arr_i_QString = QString::fromUtf8(&restartCommand_arr[i]->data, restartCommand_arr[i]->len);
+		restartCommand_QList.push_back(restartCommand_arr_i_QString);
 	}
 	self->setRestartCommand(restartCommand_QList);
 }
@@ -94,9 +95,10 @@ struct miqt_array* QSessionManager_RestartCommand(const QSessionManager* self) {
 void QSessionManager_SetDiscardCommand(QSessionManager* self, struct miqt_array* /* of struct miqt_string* */ discardCommand) {
 	QList<QString> discardCommand_QList;
 	discardCommand_QList.reserve(discardCommand->len);
-	miqt_string** discardCommand_arr = static_cast<miqt_string**>(discardCommand->data);
+	struct miqt_string** discardCommand_arr = static_cast<struct miqt_string**>(discardCommand->data);
 	for(size_t i = 0; i < discardCommand->len; ++i) {
-		discardCommand_QList.push_back(QString::fromUtf8(& discardCommand_arr[i]->data, discardCommand_arr[i]->len));
+		QString discardCommand_arr_i_QString = QString::fromUtf8(&discardCommand_arr[i]->data, discardCommand_arr[i]->len);
+		discardCommand_QList.push_back(discardCommand_arr_i_QString);
 	}
 	self->setDiscardCommand(discardCommand_QList);
 }
@@ -127,9 +129,10 @@ void QSessionManager_SetManagerProperty2(QSessionManager* self, struct miqt_stri
 	QString name_QString = QString::fromUtf8(&name->data, name->len);
 	QList<QString> value_QList;
 	value_QList.reserve(value->len);
-	miqt_string** value_arr = static_cast<miqt_string**>(value->data);
+	struct miqt_string** value_arr = static_cast<struct miqt_string**>(value->data);
 	for(size_t i = 0; i < value->len; ++i) {
-		value_QList.push_back(QString::fromUtf8(& value_arr[i]->data, value_arr[i]->len));
+		QString value_arr_i_QString = QString::fromUtf8(&value_arr[i]->data, value_arr[i]->len);
+		value_QList.push_back(value_arr_i_QString);
 	}
 	self->setManagerProperty(name_QString, value_QList);
 }

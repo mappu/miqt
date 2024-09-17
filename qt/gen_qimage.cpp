@@ -115,7 +115,7 @@ QImage* QImage_ConvertToFormat2(const QImage* self, uintptr_t f, struct miqt_arr
 	colorTable_QList.reserve(colorTable->len);
 	unsigned int* colorTable_arr = static_cast<unsigned int*>(colorTable->data);
 	for(size_t i = 0; i < colorTable->len; ++i) {
-		colorTable_QList.push_back(colorTable_arr[i]);
+		colorTable_QList.push_back(static_cast<unsigned int>(colorTable_arr[i]));
 	}
 	return new QImage(self->convertToFormat(static_cast<QImage::Format>(f), colorTable_QList));
 }
@@ -278,7 +278,7 @@ void QImage_SetColorTable(QImage* self, struct miqt_array* /* of unsigned int */
 	colors_QList.reserve(colors->len);
 	unsigned int* colors_arr = static_cast<unsigned int*>(colors->data);
 	for(size_t i = 0; i < colors->len; ++i) {
-		colors_QList.push_back(colors_arr[i]);
+		colors_QList.push_back(static_cast<unsigned int>(colors_arr[i]));
 	}
 	self->setColorTable(colors_QList);
 }
@@ -512,7 +512,7 @@ QImage* QImage_ConvertToFormat3(const QImage* self, uintptr_t f, struct miqt_arr
 	colorTable_QList.reserve(colorTable->len);
 	unsigned int* colorTable_arr = static_cast<unsigned int*>(colorTable->data);
 	for(size_t i = 0; i < colorTable->len; ++i) {
-		colorTable_QList.push_back(colorTable_arr[i]);
+		colorTable_QList.push_back(static_cast<unsigned int>(colorTable_arr[i]));
 	}
 	return new QImage(self->convertToFormat(static_cast<QImage::Format>(f), colorTable_QList, static_cast<Qt::ImageConversionFlags>(flags)));
 }

@@ -138,9 +138,10 @@ void QFileDialog_SetNameFilter(QFileDialog* self, struct miqt_string* filter) {
 void QFileDialog_SetNameFilters(QFileDialog* self, struct miqt_array* /* of struct miqt_string* */ filters) {
 	QList<QString> filters_QList;
 	filters_QList.reserve(filters->len);
-	miqt_string** filters_arr = static_cast<miqt_string**>(filters->data);
+	struct miqt_string** filters_arr = static_cast<struct miqt_string**>(filters->data);
 	for(size_t i = 0; i < filters->len; ++i) {
-		filters_QList.push_back(QString::fromUtf8(& filters_arr[i]->data, filters_arr[i]->len));
+		QString filters_arr_i_QString = QString::fromUtf8(&filters_arr[i]->data, filters_arr[i]->len);
+		filters_QList.push_back(filters_arr_i_QString);
 	}
 	self->setNameFilters(filters_QList);
 }
@@ -183,9 +184,10 @@ struct miqt_string* QFileDialog_SelectedNameFilter(const QFileDialog* self) {
 void QFileDialog_SetMimeTypeFilters(QFileDialog* self, struct miqt_array* /* of struct miqt_string* */ filters) {
 	QList<QString> filters_QList;
 	filters_QList.reserve(filters->len);
-	miqt_string** filters_arr = static_cast<miqt_string**>(filters->data);
+	struct miqt_string** filters_arr = static_cast<struct miqt_string**>(filters->data);
 	for(size_t i = 0; i < filters->len; ++i) {
-		filters_QList.push_back(QString::fromUtf8(& filters_arr[i]->data, filters_arr[i]->len));
+		QString filters_arr_i_QString = QString::fromUtf8(&filters_arr[i]->data, filters_arr[i]->len);
+		filters_QList.push_back(filters_arr_i_QString);
 	}
 	self->setMimeTypeFilters(filters_QList);
 }
@@ -317,9 +319,10 @@ struct miqt_string* QFileDialog_DefaultSuffix(const QFileDialog* self) {
 void QFileDialog_SetHistory(QFileDialog* self, struct miqt_array* /* of struct miqt_string* */ paths) {
 	QList<QString> paths_QList;
 	paths_QList.reserve(paths->len);
-	miqt_string** paths_arr = static_cast<miqt_string**>(paths->data);
+	struct miqt_string** paths_arr = static_cast<struct miqt_string**>(paths->data);
 	for(size_t i = 0; i < paths->len; ++i) {
-		paths_QList.push_back(QString::fromUtf8(& paths_arr[i]->data, paths_arr[i]->len));
+		QString paths_arr_i_QString = QString::fromUtf8(&paths_arr[i]->data, paths_arr[i]->len);
+		paths_QList.push_back(paths_arr_i_QString);
 	}
 	self->setHistory(paths_QList);
 }
@@ -371,9 +374,10 @@ struct miqt_string* QFileDialog_LabelText(const QFileDialog* self, uintptr_t lab
 void QFileDialog_SetSupportedSchemes(QFileDialog* self, struct miqt_array* /* of struct miqt_string* */ schemes) {
 	QList<QString> schemes_QList;
 	schemes_QList.reserve(schemes->len);
-	miqt_string** schemes_arr = static_cast<miqt_string**>(schemes->data);
+	struct miqt_string** schemes_arr = static_cast<struct miqt_string**>(schemes->data);
 	for(size_t i = 0; i < schemes->len; ++i) {
-		schemes_QList.push_back(QString::fromUtf8(& schemes_arr[i]->data, schemes_arr[i]->len));
+		QString schemes_arr_i_QString = QString::fromUtf8(&schemes_arr[i]->data, schemes_arr[i]->len);
+		schemes_QList.push_back(schemes_arr_i_QString);
 	}
 	self->setSupportedSchemes(schemes_QList);
 }
@@ -441,9 +445,10 @@ void QFileDialog_connect_FileSelected(QFileDialog* self, void* slot) {
 void QFileDialog_FilesSelected(QFileDialog* self, struct miqt_array* /* of struct miqt_string* */ files) {
 	QList<QString> files_QList;
 	files_QList.reserve(files->len);
-	miqt_string** files_arr = static_cast<miqt_string**>(files->data);
+	struct miqt_string** files_arr = static_cast<struct miqt_string**>(files->data);
 	for(size_t i = 0; i < files->len; ++i) {
-		files_QList.push_back(QString::fromUtf8(& files_arr[i]->data, files_arr[i]->len));
+		QString files_arr_i_QString = QString::fromUtf8(&files_arr[i]->data, files_arr[i]->len);
+		files_QList.push_back(files_arr_i_QString);
 	}
 	self->filesSelected(files_QList);
 }
@@ -839,9 +844,10 @@ QUrl* QFileDialog_GetExistingDirectoryUrl5(QWidget* parent, struct miqt_string* 
 	QString caption_QString = QString::fromUtf8(&caption->data, caption->len);
 	QList<QString> supportedSchemes_QList;
 	supportedSchemes_QList.reserve(supportedSchemes->len);
-	miqt_string** supportedSchemes_arr = static_cast<miqt_string**>(supportedSchemes->data);
+	struct miqt_string** supportedSchemes_arr = static_cast<struct miqt_string**>(supportedSchemes->data);
 	for(size_t i = 0; i < supportedSchemes->len; ++i) {
-		supportedSchemes_QList.push_back(QString::fromUtf8(& supportedSchemes_arr[i]->data, supportedSchemes_arr[i]->len));
+		QString supportedSchemes_arr_i_QString = QString::fromUtf8(&supportedSchemes_arr[i]->data, supportedSchemes_arr[i]->len);
+		supportedSchemes_QList.push_back(supportedSchemes_arr_i_QString);
 	}
 	return new QUrl(QFileDialog::getExistingDirectoryUrl(parent, caption_QString, *dir, static_cast<QFileDialog::Options>(options), supportedSchemes_QList));
 }

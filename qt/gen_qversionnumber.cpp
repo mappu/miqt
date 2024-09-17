@@ -16,7 +16,7 @@ QVersionNumber* QVersionNumber_new2(struct miqt_array* /* of int */ seg) {
 	seg_QList.reserve(seg->len);
 	int* seg_arr = static_cast<int*>(seg->data);
 	for(size_t i = 0; i < seg->len; ++i) {
-		seg_QList.push_back(seg_arr[i]);
+		seg_QList.push_back(static_cast<int>(seg_arr[i]));
 	}
 	return new QVersionNumber(seg_QList);
 }

@@ -107,7 +107,7 @@ void QScroller_SetSnapPositionsX(QScroller* self, struct miqt_array* /* of doubl
 	positions_QList.reserve(positions->len);
 	double* positions_arr = static_cast<double*>(positions->data);
 	for(size_t i = 0; i < positions->len; ++i) {
-		positions_QList.push_back(positions_arr[i]);
+		positions_QList.push_back(static_cast<double>(positions_arr[i]));
 	}
 	self->setSnapPositionsX(positions_QList);
 }
@@ -121,7 +121,7 @@ void QScroller_SetSnapPositionsY(QScroller* self, struct miqt_array* /* of doubl
 	positions_QList.reserve(positions->len);
 	double* positions_arr = static_cast<double*>(positions->data);
 	for(size_t i = 0; i < positions->len; ++i) {
-		positions_QList.push_back(positions_arr[i]);
+		positions_QList.push_back(static_cast<double>(positions_arr[i]));
 	}
 	self->setSnapPositionsY(positions_QList);
 }

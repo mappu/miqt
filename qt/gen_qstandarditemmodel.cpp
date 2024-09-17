@@ -640,9 +640,10 @@ void QStandardItemModel_SetVerticalHeaderItem(QStandardItemModel* self, int row,
 void QStandardItemModel_SetHorizontalHeaderLabels(QStandardItemModel* self, struct miqt_array* /* of struct miqt_string* */ labels) {
 	QList<QString> labels_QList;
 	labels_QList.reserve(labels->len);
-	miqt_string** labels_arr = static_cast<miqt_string**>(labels->data);
+	struct miqt_string** labels_arr = static_cast<struct miqt_string**>(labels->data);
 	for(size_t i = 0; i < labels->len; ++i) {
-		labels_QList.push_back(QString::fromUtf8(& labels_arr[i]->data, labels_arr[i]->len));
+		QString labels_arr_i_QString = QString::fromUtf8(&labels_arr[i]->data, labels_arr[i]->len);
+		labels_QList.push_back(labels_arr_i_QString);
 	}
 	self->setHorizontalHeaderLabels(labels_QList);
 }
@@ -650,9 +651,10 @@ void QStandardItemModel_SetHorizontalHeaderLabels(QStandardItemModel* self, stru
 void QStandardItemModel_SetVerticalHeaderLabels(QStandardItemModel* self, struct miqt_array* /* of struct miqt_string* */ labels) {
 	QList<QString> labels_QList;
 	labels_QList.reserve(labels->len);
-	miqt_string** labels_arr = static_cast<miqt_string**>(labels->data);
+	struct miqt_string** labels_arr = static_cast<struct miqt_string**>(labels->data);
 	for(size_t i = 0; i < labels->len; ++i) {
-		labels_QList.push_back(QString::fromUtf8(& labels_arr[i]->data, labels_arr[i]->len));
+		QString labels_arr_i_QString = QString::fromUtf8(&labels_arr[i]->data, labels_arr[i]->len);
+		labels_QList.push_back(labels_arr_i_QString);
 	}
 	self->setVerticalHeaderLabels(labels_QList);
 }

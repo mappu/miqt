@@ -82,9 +82,10 @@ void QCommandLineParser_ClearPositionalArguments(QCommandLineParser* self) {
 void QCommandLineParser_Process(QCommandLineParser* self, struct miqt_array* /* of struct miqt_string* */ arguments) {
 	QList<QString> arguments_QList;
 	arguments_QList.reserve(arguments->len);
-	miqt_string** arguments_arr = static_cast<miqt_string**>(arguments->data);
+	struct miqt_string** arguments_arr = static_cast<struct miqt_string**>(arguments->data);
 	for(size_t i = 0; i < arguments->len; ++i) {
-		arguments_QList.push_back(QString::fromUtf8(& arguments_arr[i]->data, arguments_arr[i]->len));
+		QString arguments_arr_i_QString = QString::fromUtf8(&arguments_arr[i]->data, arguments_arr[i]->len);
+		arguments_QList.push_back(arguments_arr_i_QString);
 	}
 	self->process(arguments_QList);
 }
@@ -96,9 +97,10 @@ void QCommandLineParser_ProcessWithApp(QCommandLineParser* self, QCoreApplicatio
 bool QCommandLineParser_Parse(QCommandLineParser* self, struct miqt_array* /* of struct miqt_string* */ arguments) {
 	QList<QString> arguments_QList;
 	arguments_QList.reserve(arguments->len);
-	miqt_string** arguments_arr = static_cast<miqt_string**>(arguments->data);
+	struct miqt_string** arguments_arr = static_cast<struct miqt_string**>(arguments->data);
 	for(size_t i = 0; i < arguments->len; ++i) {
-		arguments_QList.push_back(QString::fromUtf8(& arguments_arr[i]->data, arguments_arr[i]->len));
+		QString arguments_arr_i_QString = QString::fromUtf8(&arguments_arr[i]->data, arguments_arr[i]->len);
+		arguments_QList.push_back(arguments_arr_i_QString);
 	}
 	return self->parse(arguments_QList);
 }

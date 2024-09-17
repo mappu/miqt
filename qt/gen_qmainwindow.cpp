@@ -255,7 +255,7 @@ void QMainWindow_ResizeDocks(QMainWindow* self, struct miqt_array* /* of QDockWi
 	sizes_QList.reserve(sizes->len);
 	int* sizes_arr = static_cast<int*>(sizes->data);
 	for(size_t i = 0; i < sizes->len; ++i) {
-		sizes_QList.push_back(sizes_arr[i]);
+		sizes_QList.push_back(static_cast<int>(sizes_arr[i]));
 	}
 	self->resizeDocks(docks_QList, sizes_QList, static_cast<Qt::Orientation>(orientation));
 }

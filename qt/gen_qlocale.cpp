@@ -670,9 +670,10 @@ struct miqt_string* QLocale_QuoteString(const QLocale* self, struct miqt_string*
 struct miqt_string* QLocale_CreateSeparatedList(const QLocale* self, struct miqt_array* /* of struct miqt_string* */ strl) {
 	QList<QString> strl_QList;
 	strl_QList.reserve(strl->len);
-	miqt_string** strl_arr = static_cast<miqt_string**>(strl->data);
+	struct miqt_string** strl_arr = static_cast<struct miqt_string**>(strl->data);
 	for(size_t i = 0; i < strl->len; ++i) {
-		strl_QList.push_back(QString::fromUtf8(& strl_arr[i]->data, strl_arr[i]->len));
+		QString strl_arr_i_QString = QString::fromUtf8(&strl_arr[i]->data, strl_arr[i]->len);
+		strl_QList.push_back(strl_arr_i_QString);
 	}
 	QString _ret = self->createSeparatedList(strl_QList);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

@@ -121,7 +121,7 @@ void QSplitter_SetSizes(QSplitter* self, struct miqt_array* /* of int */ list) {
 	list_QList.reserve(list->len);
 	int* list_arr = static_cast<int*>(list->data);
 	for(size_t i = 0; i < list->len; ++i) {
-		list_QList.push_back(list_arr[i]);
+		list_QList.push_back(static_cast<int>(list_arr[i]));
 	}
 	self->setSizes(list_QList);
 }

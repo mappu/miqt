@@ -328,9 +328,10 @@ struct miqt_string* QTextCharFormat_FontFamily(const QTextCharFormat* self) {
 void QTextCharFormat_SetFontFamilies(QTextCharFormat* self, struct miqt_array* /* of struct miqt_string* */ families) {
 	QList<QString> families_QList;
 	families_QList.reserve(families->len);
-	miqt_string** families_arr = static_cast<miqt_string**>(families->data);
+	struct miqt_string** families_arr = static_cast<struct miqt_string**>(families->data);
 	for(size_t i = 0; i < families->len; ++i) {
-		families_QList.push_back(QString::fromUtf8(& families_arr[i]->data, families_arr[i]->len));
+		QString families_arr_i_QString = QString::fromUtf8(&families_arr[i]->data, families_arr[i]->len);
+		families_QList.push_back(families_arr_i_QString);
 	}
 	self->setFontFamilies(families_QList);
 }
@@ -562,9 +563,10 @@ struct miqt_string* QTextCharFormat_AnchorName(const QTextCharFormat* self) {
 void QTextCharFormat_SetAnchorNames(QTextCharFormat* self, struct miqt_array* /* of struct miqt_string* */ names) {
 	QList<QString> names_QList;
 	names_QList.reserve(names->len);
-	miqt_string** names_arr = static_cast<miqt_string**>(names->data);
+	struct miqt_string** names_arr = static_cast<struct miqt_string**>(names->data);
 	for(size_t i = 0; i < names->len; ++i) {
-		names_QList.push_back(QString::fromUtf8(& names_arr[i]->data, names_arr[i]->len));
+		QString names_arr_i_QString = QString::fromUtf8(&names_arr[i]->data, names_arr[i]->len);
+		names_QList.push_back(names_arr_i_QString);
 	}
 	self->setAnchorNames(names_QList);
 }

@@ -18,9 +18,10 @@
 QDirModel* QDirModel_new(struct miqt_array* /* of struct miqt_string* */ nameFilters, int filters, int sort) {
 	QList<QString> nameFilters_QList;
 	nameFilters_QList.reserve(nameFilters->len);
-	miqt_string** nameFilters_arr = static_cast<miqt_string**>(nameFilters->data);
+	struct miqt_string** nameFilters_arr = static_cast<struct miqt_string**>(nameFilters->data);
 	for(size_t i = 0; i < nameFilters->len; ++i) {
-		nameFilters_QList.push_back(QString::fromUtf8(& nameFilters_arr[i]->data, nameFilters_arr[i]->len));
+		QString nameFilters_arr_i_QString = QString::fromUtf8(&nameFilters_arr[i]->data, nameFilters_arr[i]->len);
+		nameFilters_QList.push_back(nameFilters_arr_i_QString);
 	}
 	return new QDirModel(nameFilters_QList, static_cast<QDir::Filters>(filters), static_cast<QDir::SortFlags>(sort));
 }
@@ -32,9 +33,10 @@ QDirModel* QDirModel_new2() {
 QDirModel* QDirModel_new3(struct miqt_array* /* of struct miqt_string* */ nameFilters, int filters, int sort, QObject* parent) {
 	QList<QString> nameFilters_QList;
 	nameFilters_QList.reserve(nameFilters->len);
-	miqt_string** nameFilters_arr = static_cast<miqt_string**>(nameFilters->data);
+	struct miqt_string** nameFilters_arr = static_cast<struct miqt_string**>(nameFilters->data);
 	for(size_t i = 0; i < nameFilters->len; ++i) {
-		nameFilters_QList.push_back(QString::fromUtf8(& nameFilters_arr[i]->data, nameFilters_arr[i]->len));
+		QString nameFilters_arr_i_QString = QString::fromUtf8(&nameFilters_arr[i]->data, nameFilters_arr[i]->len);
+		nameFilters_QList.push_back(nameFilters_arr_i_QString);
 	}
 	return new QDirModel(nameFilters_QList, static_cast<QDir::Filters>(filters), static_cast<QDir::SortFlags>(sort), parent);
 }
@@ -148,9 +150,10 @@ QFileIconProvider* QDirModel_IconProvider(const QDirModel* self) {
 void QDirModel_SetNameFilters(QDirModel* self, struct miqt_array* /* of struct miqt_string* */ filters) {
 	QList<QString> filters_QList;
 	filters_QList.reserve(filters->len);
-	miqt_string** filters_arr = static_cast<miqt_string**>(filters->data);
+	struct miqt_string** filters_arr = static_cast<struct miqt_string**>(filters->data);
 	for(size_t i = 0; i < filters->len; ++i) {
-		filters_QList.push_back(QString::fromUtf8(& filters_arr[i]->data, filters_arr[i]->len));
+		QString filters_arr_i_QString = QString::fromUtf8(&filters_arr[i]->data, filters_arr[i]->len);
+		filters_QList.push_back(filters_arr_i_QString);
 	}
 	self->setNameFilters(filters_QList);
 }

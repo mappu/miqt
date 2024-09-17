@@ -79,7 +79,7 @@ void QTextOption_SetTabArray(QTextOption* self, struct miqt_array* /* of double 
 	tabStops_QList.reserve(tabStops->len);
 	double* tabStops_arr = static_cast<double*>(tabStops->data);
 	for(size_t i = 0; i < tabStops->len; ++i) {
-		tabStops_QList.push_back(tabStops_arr[i]);
+		tabStops_QList.push_back(static_cast<double>(tabStops_arr[i]));
 	}
 	self->setTabArray(tabStops_QList);
 }

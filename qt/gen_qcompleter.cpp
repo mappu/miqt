@@ -25,9 +25,10 @@ QCompleter* QCompleter_new2(QAbstractItemModel* model) {
 QCompleter* QCompleter_new3(struct miqt_array* /* of struct miqt_string* */ completions) {
 	QList<QString> completions_QList;
 	completions_QList.reserve(completions->len);
-	miqt_string** completions_arr = static_cast<miqt_string**>(completions->data);
+	struct miqt_string** completions_arr = static_cast<struct miqt_string**>(completions->data);
 	for(size_t i = 0; i < completions->len; ++i) {
-		completions_QList.push_back(QString::fromUtf8(& completions_arr[i]->data, completions_arr[i]->len));
+		QString completions_arr_i_QString = QString::fromUtf8(&completions_arr[i]->data, completions_arr[i]->len);
+		completions_QList.push_back(completions_arr_i_QString);
 	}
 	return new QCompleter(completions_QList);
 }
@@ -43,9 +44,10 @@ QCompleter* QCompleter_new5(QAbstractItemModel* model, QObject* parent) {
 QCompleter* QCompleter_new6(struct miqt_array* /* of struct miqt_string* */ completions, QObject* parent) {
 	QList<QString> completions_QList;
 	completions_QList.reserve(completions->len);
-	miqt_string** completions_arr = static_cast<miqt_string**>(completions->data);
+	struct miqt_string** completions_arr = static_cast<struct miqt_string**>(completions->data);
 	for(size_t i = 0; i < completions->len; ++i) {
-		completions_QList.push_back(QString::fromUtf8(& completions_arr[i]->data, completions_arr[i]->len));
+		QString completions_arr_i_QString = QString::fromUtf8(&completions_arr[i]->data, completions_arr[i]->len);
+		completions_QList.push_back(completions_arr_i_QString);
 	}
 	return new QCompleter(completions_QList, parent);
 }

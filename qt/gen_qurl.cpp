@@ -359,9 +359,10 @@ struct miqt_array* QUrl_ToStringList(struct miqt_array* /* of QUrl* */ uris) {
 struct miqt_array* QUrl_FromStringList(struct miqt_array* /* of struct miqt_string* */ uris) {
 	QList<QString> uris_QList;
 	uris_QList.reserve(uris->len);
-	miqt_string** uris_arr = static_cast<miqt_string**>(uris->data);
+	struct miqt_string** uris_arr = static_cast<struct miqt_string**>(uris->data);
 	for(size_t i = 0; i < uris->len; ++i) {
-		uris_QList.push_back(QString::fromUtf8(& uris_arr[i]->data, uris_arr[i]->len));
+		QString uris_arr_i_QString = QString::fromUtf8(&uris_arr[i]->data, uris_arr[i]->len);
+		uris_QList.push_back(uris_arr_i_QString);
 	}
 	QList<QUrl> _ret = QUrl::fromStringList(uris_QList);
 	// Convert QList<> from C++ memory to manually-managed C memory
@@ -378,9 +379,10 @@ struct miqt_array* QUrl_FromStringList(struct miqt_array* /* of struct miqt_stri
 void QUrl_SetIdnWhitelist(struct miqt_array* /* of struct miqt_string* */ idnWhitelist) {
 	QList<QString> idnWhitelist_QList;
 	idnWhitelist_QList.reserve(idnWhitelist->len);
-	miqt_string** idnWhitelist_arr = static_cast<miqt_string**>(idnWhitelist->data);
+	struct miqt_string** idnWhitelist_arr = static_cast<struct miqt_string**>(idnWhitelist->data);
 	for(size_t i = 0; i < idnWhitelist->len; ++i) {
-		idnWhitelist_QList.push_back(QString::fromUtf8(& idnWhitelist_arr[i]->data, idnWhitelist_arr[i]->len));
+		QString idnWhitelist_arr_i_QString = QString::fromUtf8(&idnWhitelist_arr[i]->data, idnWhitelist_arr[i]->len);
+		idnWhitelist_QList.push_back(idnWhitelist_arr_i_QString);
 	}
 	QUrl::setIdnWhitelist(idnWhitelist_QList);
 }
@@ -527,9 +529,10 @@ QByteArray* QUrl_ToPercentEncoding3(struct miqt_string* param1, QByteArray* excl
 struct miqt_array* QUrl_FromStringList2(struct miqt_array* /* of struct miqt_string* */ uris, uintptr_t mode) {
 	QList<QString> uris_QList;
 	uris_QList.reserve(uris->len);
-	miqt_string** uris_arr = static_cast<miqt_string**>(uris->data);
+	struct miqt_string** uris_arr = static_cast<struct miqt_string**>(uris->data);
 	for(size_t i = 0; i < uris->len; ++i) {
-		uris_QList.push_back(QString::fromUtf8(& uris_arr[i]->data, uris_arr[i]->len));
+		QString uris_arr_i_QString = QString::fromUtf8(&uris_arr[i]->data, uris_arr[i]->len);
+		uris_QList.push_back(uris_arr_i_QString);
 	}
 	QList<QUrl> _ret = QUrl::fromStringList(uris_QList, static_cast<QUrl::ParsingMode>(mode));
 	// Convert QList<> from C++ memory to manually-managed C memory

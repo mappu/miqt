@@ -200,9 +200,10 @@ long long QCoreApplication_ApplicationPid() {
 void QCoreApplication_SetLibraryPaths(struct miqt_array* /* of struct miqt_string* */ libraryPaths) {
 	QList<QString> libraryPaths_QList;
 	libraryPaths_QList.reserve(libraryPaths->len);
-	miqt_string** libraryPaths_arr = static_cast<miqt_string**>(libraryPaths->data);
+	struct miqt_string** libraryPaths_arr = static_cast<struct miqt_string**>(libraryPaths->data);
 	for(size_t i = 0; i < libraryPaths->len; ++i) {
-		libraryPaths_QList.push_back(QString::fromUtf8(& libraryPaths_arr[i]->data, libraryPaths_arr[i]->len));
+		QString libraryPaths_arr_i_QString = QString::fromUtf8(&libraryPaths_arr[i]->data, libraryPaths_arr[i]->len);
+		libraryPaths_QList.push_back(libraryPaths_arr_i_QString);
 	}
 	QCoreApplication::setLibraryPaths(libraryPaths_QList);
 }

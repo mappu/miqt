@@ -103,7 +103,7 @@ struct miqt_array* QRawFont_AdvancesForGlyphIndexes(const QRawFont* self, struct
 	glyphIndexes_QList.reserve(glyphIndexes->len);
 	unsigned int* glyphIndexes_arr = static_cast<unsigned int*>(glyphIndexes->data);
 	for(size_t i = 0; i < glyphIndexes->len; ++i) {
-		glyphIndexes_QList.push_back(glyphIndexes_arr[i]);
+		glyphIndexes_QList.push_back(static_cast<unsigned int>(glyphIndexes_arr[i]));
 	}
 	QVector<QPointF> _ret = self->advancesForGlyphIndexes(glyphIndexes_QList);
 	// Convert QList<> from C++ memory to manually-managed C memory
@@ -122,7 +122,7 @@ struct miqt_array* QRawFont_AdvancesForGlyphIndexes2(const QRawFont* self, struc
 	glyphIndexes_QList.reserve(glyphIndexes->len);
 	unsigned int* glyphIndexes_arr = static_cast<unsigned int*>(glyphIndexes->data);
 	for(size_t i = 0; i < glyphIndexes->len; ++i) {
-		glyphIndexes_QList.push_back(glyphIndexes_arr[i]);
+		glyphIndexes_QList.push_back(static_cast<unsigned int>(glyphIndexes_arr[i]));
 	}
 	QVector<QPointF> _ret = self->advancesForGlyphIndexes(glyphIndexes_QList, static_cast<QRawFont::LayoutFlags>(layoutFlags));
 	// Convert QList<> from C++ memory to manually-managed C memory

@@ -255,9 +255,10 @@ bool QFileSystemModel_NameFilterDisables(const QFileSystemModel* self) {
 void QFileSystemModel_SetNameFilters(QFileSystemModel* self, struct miqt_array* /* of struct miqt_string* */ filters) {
 	QList<QString> filters_QList;
 	filters_QList.reserve(filters->len);
-	miqt_string** filters_arr = static_cast<miqt_string**>(filters->data);
+	struct miqt_string** filters_arr = static_cast<struct miqt_string**>(filters->data);
 	for(size_t i = 0; i < filters->len; ++i) {
-		filters_QList.push_back(QString::fromUtf8(& filters_arr[i]->data, filters_arr[i]->len));
+		QString filters_arr_i_QString = QString::fromUtf8(&filters_arr[i]->data, filters_arr[i]->len);
+		filters_QList.push_back(filters_arr_i_QString);
 	}
 	self->setNameFilters(filters_QList);
 }

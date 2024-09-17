@@ -79,9 +79,10 @@ struct miqt_array* QFont_Families(const QFont* self) {
 void QFont_SetFamilies(QFont* self, struct miqt_array* /* of struct miqt_string* */ families) {
 	QList<QString> families_QList;
 	families_QList.reserve(families->len);
-	miqt_string** families_arr = static_cast<miqt_string**>(families->data);
+	struct miqt_string** families_arr = static_cast<struct miqt_string**>(families->data);
 	for(size_t i = 0; i < families->len; ++i) {
-		families_QList.push_back(QString::fromUtf8(& families_arr[i]->data, families_arr[i]->len));
+		QString families_arr_i_QString = QString::fromUtf8(&families_arr[i]->data, families_arr[i]->len);
+		families_QList.push_back(families_arr_i_QString);
 	}
 	self->setFamilies(families_QList);
 }
@@ -374,9 +375,10 @@ void QFont_InsertSubstitutions(struct miqt_string* param1, struct miqt_array* /*
 	QString param1_QString = QString::fromUtf8(&param1->data, param1->len);
 	QList<QString> param2_QList;
 	param2_QList.reserve(param2->len);
-	miqt_string** param2_arr = static_cast<miqt_string**>(param2->data);
+	struct miqt_string** param2_arr = static_cast<struct miqt_string**>(param2->data);
 	for(size_t i = 0; i < param2->len; ++i) {
-		param2_QList.push_back(QString::fromUtf8(& param2_arr[i]->data, param2_arr[i]->len));
+		QString param2_arr_i_QString = QString::fromUtf8(&param2_arr[i]->data, param2_arr[i]->len);
+		param2_QList.push_back(param2_arr_i_QString);
 	}
 	QFont::insertSubstitutions(param1_QString, param2_QList);
 }

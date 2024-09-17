@@ -111,9 +111,10 @@ struct miqt_string* QStandardPaths_FindExecutable2(struct miqt_string* executabl
 	QString executableName_QString = QString::fromUtf8(&executableName->data, executableName->len);
 	QList<QString> paths_QList;
 	paths_QList.reserve(paths->len);
-	miqt_string** paths_arr = static_cast<miqt_string**>(paths->data);
+	struct miqt_string** paths_arr = static_cast<struct miqt_string**>(paths->data);
 	for(size_t i = 0; i < paths->len; ++i) {
-		paths_QList.push_back(QString::fromUtf8(& paths_arr[i]->data, paths_arr[i]->len));
+		QString paths_arr_i_QString = QString::fromUtf8(&paths_arr[i]->data, paths_arr[i]->len);
+		paths_QList.push_back(paths_arr_i_QString);
 	}
 	QString _ret = QStandardPaths::findExecutable(executableName_QString, paths_QList);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

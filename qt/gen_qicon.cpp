@@ -161,9 +161,10 @@ struct miqt_array* QIcon_ThemeSearchPaths() {
 void QIcon_SetThemeSearchPaths(struct miqt_array* /* of struct miqt_string* */ searchpath) {
 	QList<QString> searchpath_QList;
 	searchpath_QList.reserve(searchpath->len);
-	miqt_string** searchpath_arr = static_cast<miqt_string**>(searchpath->data);
+	struct miqt_string** searchpath_arr = static_cast<struct miqt_string**>(searchpath->data);
 	for(size_t i = 0; i < searchpath->len; ++i) {
-		searchpath_QList.push_back(QString::fromUtf8(& searchpath_arr[i]->data, searchpath_arr[i]->len));
+		QString searchpath_arr_i_QString = QString::fromUtf8(&searchpath_arr[i]->data, searchpath_arr[i]->len);
+		searchpath_QList.push_back(searchpath_arr_i_QString);
 	}
 	QIcon::setThemeSearchPaths(searchpath_QList);
 }
@@ -187,9 +188,10 @@ struct miqt_array* QIcon_FallbackSearchPaths() {
 void QIcon_SetFallbackSearchPaths(struct miqt_array* /* of struct miqt_string* */ paths) {
 	QList<QString> paths_QList;
 	paths_QList.reserve(paths->len);
-	miqt_string** paths_arr = static_cast<miqt_string**>(paths->data);
+	struct miqt_string** paths_arr = static_cast<struct miqt_string**>(paths->data);
 	for(size_t i = 0; i < paths->len; ++i) {
-		paths_QList.push_back(QString::fromUtf8(& paths_arr[i]->data, paths_arr[i]->len));
+		QString paths_arr_i_QString = QString::fromUtf8(&paths_arr[i]->data, paths_arr[i]->len);
+		paths_QList.push_back(paths_arr_i_QString);
 	}
 	QIcon::setFallbackSearchPaths(paths_QList);
 }

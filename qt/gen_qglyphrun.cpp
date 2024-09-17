@@ -53,7 +53,7 @@ void QGlyphRun_SetGlyphIndexes(QGlyphRun* self, struct miqt_array* /* of unsigne
 	glyphIndexes_QList.reserve(glyphIndexes->len);
 	unsigned int* glyphIndexes_arr = static_cast<unsigned int*>(glyphIndexes->data);
 	for(size_t i = 0; i < glyphIndexes->len; ++i) {
-		glyphIndexes_QList.push_back(glyphIndexes_arr[i]);
+		glyphIndexes_QList.push_back(static_cast<unsigned int>(glyphIndexes_arr[i]));
 	}
 	self->setGlyphIndexes(glyphIndexes_QList);
 }

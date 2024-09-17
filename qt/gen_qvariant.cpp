@@ -107,9 +107,10 @@ QVariant* QVariant_new15(struct miqt_string* stringVal) {
 QVariant* QVariant_new16(struct miqt_array* /* of struct miqt_string* */ stringlist) {
 	QList<QString> stringlist_QList;
 	stringlist_QList.reserve(stringlist->len);
-	miqt_string** stringlist_arr = static_cast<miqt_string**>(stringlist->data);
+	struct miqt_string** stringlist_arr = static_cast<struct miqt_string**>(stringlist->data);
 	for(size_t i = 0; i < stringlist->len; ++i) {
-		stringlist_QList.push_back(QString::fromUtf8(& stringlist_arr[i]->data, stringlist_arr[i]->len));
+		QString stringlist_arr_i_QString = QString::fromUtf8(&stringlist_arr[i]->data, stringlist_arr[i]->len);
+		stringlist_QList.push_back(stringlist_arr_i_QString);
 	}
 	return new QVariant(stringlist_QList);
 }

@@ -67,9 +67,10 @@ struct miqt_array* QFileSelector_ExtraSelectors(const QFileSelector* self) {
 void QFileSelector_SetExtraSelectors(QFileSelector* self, struct miqt_array* /* of struct miqt_string* */ list) {
 	QList<QString> list_QList;
 	list_QList.reserve(list->len);
-	miqt_string** list_arr = static_cast<miqt_string**>(list->data);
+	struct miqt_string** list_arr = static_cast<struct miqt_string**>(list->data);
 	for(size_t i = 0; i < list->len; ++i) {
-		list_QList.push_back(QString::fromUtf8(& list_arr[i]->data, list_arr[i]->len));
+		QString list_arr_i_QString = QString::fromUtf8(&list_arr[i]->data, list_arr[i]->len);
+		list_QList.push_back(list_arr_i_QString);
 	}
 	self->setExtraSelectors(list_QList);
 }

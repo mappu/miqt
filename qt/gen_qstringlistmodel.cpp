@@ -18,9 +18,10 @@ QStringListModel* QStringListModel_new() {
 QStringListModel* QStringListModel_new2(struct miqt_array* /* of struct miqt_string* */ strings) {
 	QList<QString> strings_QList;
 	strings_QList.reserve(strings->len);
-	miqt_string** strings_arr = static_cast<miqt_string**>(strings->data);
+	struct miqt_string** strings_arr = static_cast<struct miqt_string**>(strings->data);
 	for(size_t i = 0; i < strings->len; ++i) {
-		strings_QList.push_back(QString::fromUtf8(& strings_arr[i]->data, strings_arr[i]->len));
+		QString strings_arr_i_QString = QString::fromUtf8(&strings_arr[i]->data, strings_arr[i]->len);
+		strings_QList.push_back(strings_arr_i_QString);
 	}
 	return new QStringListModel(strings_QList);
 }
@@ -32,9 +33,10 @@ QStringListModel* QStringListModel_new3(QObject* parent) {
 QStringListModel* QStringListModel_new4(struct miqt_array* /* of struct miqt_string* */ strings, QObject* parent) {
 	QList<QString> strings_QList;
 	strings_QList.reserve(strings->len);
-	miqt_string** strings_arr = static_cast<miqt_string**>(strings->data);
+	struct miqt_string** strings_arr = static_cast<struct miqt_string**>(strings->data);
 	for(size_t i = 0; i < strings->len; ++i) {
-		strings_QList.push_back(QString::fromUtf8(& strings_arr[i]->data, strings_arr[i]->len));
+		QString strings_arr_i_QString = QString::fromUtf8(&strings_arr[i]->data, strings_arr[i]->len);
+		strings_QList.push_back(strings_arr_i_QString);
 	}
 	return new QStringListModel(strings_QList, parent);
 }
@@ -113,9 +115,10 @@ struct miqt_array* QStringListModel_StringList(const QStringListModel* self) {
 void QStringListModel_SetStringList(QStringListModel* self, struct miqt_array* /* of struct miqt_string* */ strings) {
 	QList<QString> strings_QList;
 	strings_QList.reserve(strings->len);
-	miqt_string** strings_arr = static_cast<miqt_string**>(strings->data);
+	struct miqt_string** strings_arr = static_cast<struct miqt_string**>(strings->data);
 	for(size_t i = 0; i < strings->len; ++i) {
-		strings_QList.push_back(QString::fromUtf8(& strings_arr[i]->data, strings_arr[i]->len));
+		QString strings_arr_i_QString = QString::fromUtf8(&strings_arr[i]->data, strings_arr[i]->len);
+		strings_QList.push_back(strings_arr_i_QString);
 	}
 	self->setStringList(strings_QList);
 }
