@@ -340,14 +340,15 @@ func emitAssignCppToCabi(assignExpression string, p CppParameter, rvalue string)
 		shouldReturn = p.RenderTypeQtCpp() + " " + namePrefix + "_ret = "
 
 		afterCall += indent + "// Convert QList<> from C++ memory to manually-managed C memory\n"
-		afterCall += indent + "" + t.RenderTypeCabi() + "* " + namePrefix + "_arr = static_cast<" + t.RenderTypeCabi() + "*>(malloc(sizeof(" + t.RenderTypeCabi() + ") * " + namePrefix + "_ret.length()));\n"
+		afterCall += indent + "" + t.RenderTypeCabi() + "* " + namePrefix + "_arr = static_cast<" + t.RenderTypeCabi() + "*>(malloc(sizeof(" + t.RenderTypeCabi() + ") * " + namePrefix + "_ret.size()));\n"
 		afterCall += indent + "int " + namePrefix + "_ctr = 0;\n"
-		afterCall += indent + "for (const auto " + namePrefix + "_elem& : " + rvalue + " ) {\n"
-		afterCall += emitAssignCppToCabi(indent+"\t"+namePrefix+"_arr["+namePrefix+"_ctr++] = ", t, namePrefix+"_elem")
+		afterCall += indent + "QSetIterator<" + t.RenderTypeQtCpp() + "> " + namePrefix + "_itr(" + namePrefix + "_ret);\n"
+		afterCall += indent + "while (" + namePrefix + "_itr.hasNext()) {\n"
+		afterCall += emitAssignCppToCabi(indent+"\t"+namePrefix+"_arr["+namePrefix+"_ctr++] = ", t, namePrefix+"_itr.next()")
 		afterCall += indent + "}\n"
 
 		afterCall += indent + "struct miqt_array* " + namePrefix + "_out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));\n"
-		afterCall += indent + "" + namePrefix + "_out->len = " + namePrefix + "_ret.length();\n"
+		afterCall += indent + "" + namePrefix + "_out->len = " + namePrefix + "_ret.size();\n"
 		afterCall += indent + "" + namePrefix + "_out->data = static_cast<void*>(" + namePrefix + "_arr);\n"
 
 		afterCall += indent + assignExpression + "" + namePrefix + "_out;\n"
