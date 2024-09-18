@@ -107,6 +107,18 @@ func CheckComplexity(p CppParameter, isReturnType bool) error {
 	if strings.HasPrefix(p.ParameterType, "StringResult<") {
 		return ErrTooComplex // e.g. qcborstreamreader.h
 	}
+	if strings.HasPrefix(p.ParameterType, "QScopedPointer<") {
+		return ErrTooComplex // e.g. qbrush.h
+	}
+	if strings.HasPrefix(p.ParameterType, "QExplicitlySharedDataPointer<") {
+		return ErrTooComplex // e.g. qpicture.h
+	}
+	if strings.HasPrefix(p.ParameterType, "QSharedDataPointer<") {
+		return ErrTooComplex // e.g. qurlquery.h
+	}
+	if strings.HasPrefix(p.ParameterType, "QTypedArrayData<") {
+		return ErrTooComplex // e.g. qbitarray.h
+	}
 	if strings.HasPrefix(p.ParameterType, "QGenericMatrix<") {
 		return ErrTooComplex // e.g. qmatrix4x4.h
 	}
@@ -130,9 +142,13 @@ func CheckComplexity(p CppParameter, isReturnType bool) error {
 	if strings.Contains(p.ParameterType, `::QPrivate`) {
 		return ErrTooComplex // e.g. QAbstractItemModel::QPrivateSignal
 	}
+	if strings.Contains(p.GetQtCppType(), `::DataPtr`) {
+		return ErrTooComplex // e.g. QImage::data_ptr()
+	}
 
 	// Some QFoo constructors take a QFooPrivate
-	if p.ParameterType[0] == 'Q' && strings.HasSuffix(p.ParameterType, "Private") && !isReturnType {
+	// QIcon also returns a QIconPrivate
+	if p.ParameterType[0] == 'Q' && strings.HasSuffix(p.ParameterType, "Private") {
 		return ErrTooComplex
 	}
 
@@ -217,11 +233,11 @@ func CheckComplexity(p CppParameter, isReturnType bool) error {
 // generated headers (generated on Linux) with other OSes such as Windows.
 // These methods will be blocked on non-Linux OSes.
 func LinuxWindowsCompatCheck(p CppParameter) bool {
-	if p.TypeAlias == "Q_PID" {
+	if p.GetQtCppType() == "Q_PID" {
 		return true // int64 on Linux, _PROCESS_INFORMATION* on Windows
 	}
 
-	if p.ParameterType == "QSocketDescriptor::DescriptorType" {
+	if p.GetQtCppType() == "QSocketDescriptor::DescriptorType" {
 		return true // uintptr_t-compatible on Linux, void* on Windows
 	}
 	return false

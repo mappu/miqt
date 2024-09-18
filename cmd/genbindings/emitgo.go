@@ -82,21 +82,20 @@ func (p CppParameter) RenderTypeGo() string {
 		} else {
 			ret += "uint64"
 		}
-	case "qintptr", "uintptr_t", "intptr_t", "quintptr":
+	case "qintptr", "uintptr_t", "intptr_t", "quintptr", "QIntegerForSizeof<void *>::Unsigned", "QIntegerForSizeof<void *>::Signed":
 		ret += "uintptr"
 	default:
 
 		if p.IsFlagType() {
 			ret += "int"
 
-		} else if strings.Contains(p.ParameterType, `::`) {
-			if p.IsKnownEnum() {
-				ret += cabiClassName(p.ParameterType)
+		} else if p.IsKnownEnum() {
+			ret += cabiClassName(p.ParameterType)
 
-			} else {
-				// Inner class
-				ret += cabiClassName(p.ParameterType)
-			}
+		} else if strings.Contains(p.ParameterType, `::`) {
+			// Inner class
+			ret += cabiClassName(p.ParameterType)
+
 		} else {
 			// Do not transform this type
 			ret += p.ParameterType
@@ -371,7 +370,7 @@ func (gfs *goFileState) emitCabiToGo(assignExpr string, rt CppParameter, rvalue 
 			}
 		}
 
-	} else if rt.IntType() || rt.ParameterType == "bool" {
+	} else if rt.IntType() || rt.IsKnownEnum() || rt.IsFlagType() || rt.ParameterType == "bool" || rt.QtCppOriginalType != "" {
 		// Need to cast Cgo type to Go int type
 		// Optimize assignment to avoid temporary
 		return assignExpr + "(" + rt.RenderTypeGo() + ")(" + rvalue + ")\n"

@@ -55,9 +55,9 @@ func (p CppParameter) RenderTypeCabi() string {
 		ret = "size_t"
 	case "qreal":
 		ret = "double"
-	case "qintptr":
+	case "qintptr", "QIntegerForSizeof<void *>::Signed":
 		ret = "intptr_t"
-	case "quintptr", "uintptr":
+	case "quintptr", "uintptr", "QIntegerForSizeof<void *>::Unsigned":
 		ret = "uintptr_t"
 	case "qptrdiff":
 		ret = "ptrdiff_t"
@@ -76,9 +76,6 @@ func (p CppParameter) RenderTypeCabi() string {
 	} else if e, ok := KnownEnums[p.ParameterType]; ok {
 		ret = e.UnderlyingType.RenderTypeCabi()
 
-	} else if strings.Contains(p.ParameterType, `::`) {
-		// Inner class
-		ret = cabiClassName(p.ParameterType)
 	}
 
 	if p.Pointer {
@@ -91,7 +88,7 @@ func (p CppParameter) RenderTypeCabi() string {
 }
 
 func (p CppParameter) RenderTypeQtCpp() string {
-	cppType := p.UnderlyingType()
+	cppType := p.GetQtCppType()
 
 	if p.Const {
 		cppType = "const " + cppType
@@ -210,6 +207,9 @@ func emitCABI2CppForwarding(p CppParameter, indent string) (preamble string, for
 	} else if p.IsKnownEnum() {
 		// The enums are projected in CABI as their underlying int types.
 		// Cast to the Qt enum type so that we get the correct overload
+		return preamble, "static_cast<" + p.RenderTypeQtCpp() + ">(" + p.ParameterName + ")"
+
+	} else if p.IsFlagType() {
 		return preamble, "static_cast<" + p.RenderTypeQtCpp() + ">(" + p.ParameterName + ")"
 
 	} else if p.IntType() {
@@ -366,18 +366,18 @@ func emitAssignCppToCabi(assignExpression string, p CppParameter, rvalue string)
 		// Elide temporary and emit directly from the rvalue
 		return indent + assignExpression + "new " + p.ParameterType + "(" + rvalue + ");\n"
 
-	} else if p.Const {
-		shouldReturn += "(" + p.RenderTypeCabi() + ") "
-
 	} else if p.IsFlagType() {
 		// Needs an explicit int cast
 		shouldReturn = p.RenderTypeQtCpp() + " " + namePrefix + "_ret = "
 		afterCall += indent + "" + assignExpression + "static_cast<int>(" + namePrefix + "_ret);\n"
 
-	} else if p.IsKnownEnum() {
+	} else if p.IsKnownEnum() || p.QtCppOriginalType != "" {
 		// Needs an explicit uintptr cast
 		shouldReturn = p.RenderTypeQtCpp() + " " + namePrefix + "_ret = "
 		afterCall += indent + "" + assignExpression + "static_cast<" + p.RenderTypeCabi() + ">(" + namePrefix + "_ret);\n"
+
+	} else if p.Const {
+		shouldReturn += "(" + p.RenderTypeCabi() + ") "
 
 	}
 
