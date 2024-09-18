@@ -18,12 +18,17 @@ func applyTypedefs(p CppParameter) CppParameter {
 		t2 := applyTypedefs(t) // recursive
 
 		// Wipe out so that RenderTypeQtCpp() does not see it
-		t2.QtCppOriginalType = ""
+		t2.QtCppOriginalType = nil
 
 		// QListOf returns for either QList< or QVector<
 		// Patch it up to the first < position and last character
 		bpos := strings.Index(p.ParameterType, `<`)
-		p.AssignAlias(p.ParameterType[0:bpos] + `<` + t2.RenderTypeQtCpp() + `>`)
+
+		if p.QtCppOriginalType == nil {
+			tmp := p // copy
+			p.QtCppOriginalType = &tmp
+		}
+		p.ParameterType = p.ParameterType[0:bpos] + `<` + t2.RenderTypeQtCpp() + `>`
 	}
 
 	return p

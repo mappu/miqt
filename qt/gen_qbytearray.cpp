@@ -735,43 +735,43 @@ QByteArray* QByteArray_FromPercentEncoding(QByteArray* pctEncoded) {
 }
 
 char* QByteArray_Begin(QByteArray* self) {
-	QByteArray::iterator* _ret = self->begin();
+	QByteArray::iterator _ret = self->begin();
 	return static_cast<char*>(_ret);
 }
 
 const char* QByteArray_Begin2(const QByteArray* self) {
-	const QByteArray::const_iterator* _ret = self->begin();
-	return static_cast<const char*>(_ret);
+	QByteArray::const_iterator _ret = self->begin();
+	return const_cast<const char*>(static_cast<const char*>(_ret));
 }
 
 const char* QByteArray_Cbegin(const QByteArray* self) {
-	const QByteArray::const_iterator* _ret = self->cbegin();
-	return static_cast<const char*>(_ret);
+	QByteArray::const_iterator _ret = self->cbegin();
+	return const_cast<const char*>(static_cast<const char*>(_ret));
 }
 
 const char* QByteArray_ConstBegin(const QByteArray* self) {
-	const QByteArray::const_iterator* _ret = self->constBegin();
-	return static_cast<const char*>(_ret);
+	QByteArray::const_iterator _ret = self->constBegin();
+	return const_cast<const char*>(static_cast<const char*>(_ret));
 }
 
 char* QByteArray_End(QByteArray* self) {
-	QByteArray::iterator* _ret = self->end();
+	QByteArray::iterator _ret = self->end();
 	return static_cast<char*>(_ret);
 }
 
 const char* QByteArray_End2(const QByteArray* self) {
-	const QByteArray::const_iterator* _ret = self->end();
-	return static_cast<const char*>(_ret);
+	QByteArray::const_iterator _ret = self->end();
+	return const_cast<const char*>(static_cast<const char*>(_ret));
 }
 
 const char* QByteArray_Cend(const QByteArray* self) {
-	const QByteArray::const_iterator* _ret = self->cend();
-	return static_cast<const char*>(_ret);
+	QByteArray::const_iterator _ret = self->cend();
+	return const_cast<const char*>(static_cast<const char*>(_ret));
 }
 
 const char* QByteArray_ConstEnd(const QByteArray* self) {
-	const QByteArray::const_iterator* _ret = self->constEnd();
-	return static_cast<const char*>(_ret);
+	QByteArray::const_iterator _ret = self->constEnd();
+	return const_cast<const char*>(static_cast<const char*>(_ret));
 }
 
 void QByteArray_PushBack(QByteArray* self, char c) {

@@ -133,16 +133,13 @@ func CheckComplexity(p CppParameter, isReturnType bool) error {
 		// std::seed_seq              QRandom
 		return ErrTooComplex
 	}
-	if strings.Contains(p.ParameterType, `::reverse_iterator`) || strings.Contains(p.ParameterType, `::const_reverse_iterator`) {
-		return ErrTooComplex // e.g. qbytearray.h
-	}
 	if strings.Contains(p.ParameterType, `Iterator::value_type`) {
 		return ErrTooComplex // e.g. qcbormap
 	}
 	if strings.Contains(p.ParameterType, `::QPrivate`) {
 		return ErrTooComplex // e.g. QAbstractItemModel::QPrivateSignal
 	}
-	if strings.Contains(p.GetQtCppType(), `::DataPtr`) {
+	if strings.Contains(p.GetQtCppType().ParameterType, `::DataPtr`) {
 		return ErrTooComplex // e.g. QImage::data_ptr()
 	}
 
@@ -191,9 +188,6 @@ func CheckComplexity(p CppParameter, isReturnType bool) error {
 		"char16_t",                        // e.g. QChar() constructor overload, just unnecessary
 		"char32_t",                        // e.g. QDebug().operator<< overload, unnecessary
 		"wchar_t",                         // e.g. qstringview.h overloads, unnecessary
-		"QStringView::const_pointer",      // e.g. qstringview.h data()
-		"QStringView::const_iterator",     // e.g. qstringview.h
-		"QStringView::value_type",         // e.g. qstringview.h
 		"FILE",                            // e.g. qfile.h constructors
 		"qInternalCallback",               // e.g. qnamespace.h
 		"QGraphicsEffectSource",           // e.g. used by qgraphicseffect.h, but the definition is in ????
@@ -233,11 +227,11 @@ func CheckComplexity(p CppParameter, isReturnType bool) error {
 // generated headers (generated on Linux) with other OSes such as Windows.
 // These methods will be blocked on non-Linux OSes.
 func LinuxWindowsCompatCheck(p CppParameter) bool {
-	if p.GetQtCppType() == "Q_PID" {
+	if p.GetQtCppType().ParameterType == "Q_PID" {
 		return true // int64 on Linux, _PROCESS_INFORMATION* on Windows
 	}
 
-	if p.GetQtCppType() == "QSocketDescriptor::DescriptorType" {
+	if p.GetQtCppType().ParameterType == "QSocketDescriptor::DescriptorType" {
 		return true // uintptr_t-compatible on Linux, void* on Windows
 	}
 	return false

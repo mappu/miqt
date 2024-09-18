@@ -52,23 +52,23 @@ bool QRegion_IsNull(const QRegion* self) {
 }
 
 QRect* QRegion_Begin(const QRegion* self) {
-	const QRegion::const_iterator* _ret = self->begin();
-	return static_cast<QRect*>(_ret);
+	QRegion::const_iterator _ret = self->begin();
+	return const_cast<QRect*>(static_cast<const QRect*>(_ret));
 }
 
 QRect* QRegion_Cbegin(const QRegion* self) {
-	const QRegion::const_iterator* _ret = self->cbegin();
-	return static_cast<QRect*>(_ret);
+	QRegion::const_iterator _ret = self->cbegin();
+	return const_cast<QRect*>(static_cast<const QRect*>(_ret));
 }
 
 QRect* QRegion_End(const QRegion* self) {
-	const QRegion::const_iterator* _ret = self->end();
-	return static_cast<QRect*>(_ret);
+	QRegion::const_iterator _ret = self->end();
+	return const_cast<QRect*>(static_cast<const QRect*>(_ret));
 }
 
 QRect* QRegion_Cend(const QRegion* self) {
-	const QRegion::const_iterator* _ret = self->cend();
-	return static_cast<QRect*>(_ret);
+	QRegion::const_iterator _ret = self->cend();
+	return const_cast<QRect*>(static_cast<const QRect*>(_ret));
 }
 
 bool QRegion_Contains(const QRegion* self, QPoint* p) {

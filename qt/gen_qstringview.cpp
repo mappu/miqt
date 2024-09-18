@@ -25,8 +25,8 @@ size_t QStringView_Size(const QStringView* self) {
 }
 
 QChar* QStringView_Data(const QStringView* self) {
-	const QStringView::const_pointer* _ret = self->data();
-	return static_cast<QChar*>(_ret);
+	QStringView::const_pointer _ret = self->data();
+	return const_cast<QChar*>(static_cast<const QChar*>(_ret));
 }
 
 QChar* QStringView_OperatorSubscript(const QStringView* self, size_t n) {
@@ -164,23 +164,23 @@ double QStringView_ToDouble(const QStringView* self) {
 }
 
 QChar* QStringView_Begin(const QStringView* self) {
-	const QStringView::const_iterator* _ret = self->begin();
-	return static_cast<QChar*>(_ret);
+	QStringView::const_iterator _ret = self->begin();
+	return const_cast<QChar*>(static_cast<const QChar*>(_ret));
 }
 
 QChar* QStringView_End(const QStringView* self) {
-	const QStringView::const_iterator* _ret = self->end();
-	return static_cast<QChar*>(_ret);
+	QStringView::const_iterator _ret = self->end();
+	return const_cast<QChar*>(static_cast<const QChar*>(_ret));
 }
 
 QChar* QStringView_Cbegin(const QStringView* self) {
-	const QStringView::const_iterator* _ret = self->cbegin();
-	return static_cast<QChar*>(_ret);
+	QStringView::const_iterator _ret = self->cbegin();
+	return const_cast<QChar*>(static_cast<const QChar*>(_ret));
 }
 
 QChar* QStringView_Cend(const QStringView* self) {
-	const QStringView::const_iterator* _ret = self->cend();
-	return static_cast<QChar*>(_ret);
+	QStringView::const_iterator _ret = self->cend();
+	return const_cast<QChar*>(static_cast<const QChar*>(_ret));
 }
 
 bool QStringView_Empty(const QStringView* self) {

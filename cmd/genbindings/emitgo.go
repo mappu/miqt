@@ -214,7 +214,7 @@ func (gfs *goFileState) emitParametersGo2CABIForwarding(m CppMethod) (preamble s
 
 func (gfs *goFileState) emitParameterGo2CABIForwarding(p CppParameter) (preamble string, rvalue string) {
 
-	nameprefix := strings.Replace(strings.Replace(p.ParameterName, `[`, `_`, -1), `]`, "", -1)
+	nameprefix := makeNamePrefix(p.ParameterName)
 
 	if p.ParameterType == "QString" {
 		// Go: convert string -> miqt_string*
@@ -285,7 +285,7 @@ func (gfs *goFileState) emitCabiToGo(assignExpr string, rt CppParameter, rvalue 
 
 	shouldReturn := "return "
 	afterword := ""
-	namePrefix := rt.ParameterName
+	namePrefix := makeNamePrefix(rt.ParameterName)
 
 	if rt.ParameterType == "void" && !rt.Pointer {
 		shouldReturn = ""
@@ -370,7 +370,7 @@ func (gfs *goFileState) emitCabiToGo(assignExpr string, rt CppParameter, rvalue 
 			}
 		}
 
-	} else if rt.IntType() || rt.IsKnownEnum() || rt.IsFlagType() || rt.ParameterType == "bool" || rt.QtCppOriginalType != "" {
+	} else if rt.IntType() || rt.IsKnownEnum() || rt.IsFlagType() || rt.ParameterType == "bool" || rt.QtCppOriginalType != nil {
 		// Need to cast Cgo type to Go int type
 		// Optimize assignment to avoid temporary
 		return assignExpr + "(" + rt.RenderTypeGo() + ")(" + rvalue + ")\n"

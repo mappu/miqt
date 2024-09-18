@@ -84,11 +84,19 @@ func (p CppParameter) RenderTypeCabi() string {
 		ret += "*"
 	}
 
-	return ret // ignore const
+	return ret
 }
 
+// RenderTypeQtCpp renders the Qt C++ type in the original form from the function
+// definition, before any typedefs or transformations were applied.
 func (p CppParameter) RenderTypeQtCpp() string {
-	cppType := p.GetQtCppType()
+	return p.GetQtCppType().RenderTypeIntermediateCpp()
+}
+
+// RenderTypeIntermediateCpp renders the Qt C++ type WITHOUT resolving the
+// interior QtCppOriginalType. This is used for intermediate const_cast<>s.
+func (p CppParameter) RenderTypeIntermediateCpp() string {
+	cppType := p.ParameterType
 
 	if p.Const {
 		cppType = "const " + cppType
@@ -178,9 +186,13 @@ func emitParametersCABI2CppForwarding(params []CppParameter, indent string) (pre
 	return preamble, strings.Join(tmp, ", ")
 }
 
+func makeNamePrefix(in string) string {
+	return strings.Replace(strings.Replace(in, `[`, `_`, -1), `]`, "", -1)
+}
+
 func emitCABI2CppForwarding(p CppParameter, indent string) (preamble string, forwarding string) {
 
-	nameprefix := strings.Replace(strings.Replace(p.ParameterName, `[`, `_`, -1), `]`, "", -1)
+	nameprefix := makeNamePrefix(p.ParameterName)
 
 	if p.ParameterType == "QString" {
 		// The CABI has accepted two parameters - need to convert to one real QString
@@ -204,22 +216,16 @@ func emitCABI2CppForwarding(p CppParameter, indent string) (preamble string, for
 		preamble += indent + "}\n"
 		return preamble, nameprefix + "_QList"
 
-	} else if p.IsKnownEnum() {
-		// The enums are projected in CABI as their underlying int types.
-		// Cast to the Qt enum type so that we get the correct overload
-		return preamble, "static_cast<" + p.RenderTypeQtCpp() + ">(" + p.ParameterName + ")"
-
-	} else if p.IsFlagType() {
-		return preamble, "static_cast<" + p.RenderTypeQtCpp() + ">(" + p.ParameterName + ")"
-
-	} else if p.IntType() {
-		// Use the raw ParameterType to select an explicit integer overload
-		// Don't use RenderTypeCabi() since it canonicalizes some int types for CABI
+	} else if p.IntType() || p.IsFlagType() || p.IsKnownEnum() {
 		castSrc := p.ParameterName
 		castType := p.RenderTypeQtCpp()
 
 		if p.ByRef { // e.g. QDataStream::operator>>() overloads
 			castSrc = "*" + castSrc
+		}
+
+		if p.QtCppOriginalType != nil && p.QtCppOriginalType.Const != p.Const {
+			return preamble, "static_cast<" + p.RenderTypeQtCpp() + ">(const_cast<" + p.RenderTypeIntermediateCpp() + ">(" + p.ParameterName + "))"
 		}
 
 		if p.ParameterType == "qint64" ||
@@ -283,7 +289,7 @@ func emitAssignCppToCabi(assignExpression string, p CppParameter, rvalue string)
 
 	shouldReturn = shouldReturn[len(indent):]
 
-	namePrefix := p.ParameterName // TODO make unique, strip out [0], etc
+	namePrefix := makeNamePrefix(p.ParameterName)
 
 	if p.ParameterType == "void" && !p.Pointer {
 		shouldReturn = ""
@@ -366,15 +372,15 @@ func emitAssignCppToCabi(assignExpression string, p CppParameter, rvalue string)
 		// Elide temporary and emit directly from the rvalue
 		return indent + assignExpression + "new " + p.ParameterType + "(" + rvalue + ");\n"
 
-	} else if p.IsFlagType() {
-		// Needs an explicit int cast
+	} else if p.IsFlagType() || p.IsKnownEnum() || p.QtCppOriginalType != nil {
+		// Needs an explicit cast
 		shouldReturn = p.RenderTypeQtCpp() + " " + namePrefix + "_ret = "
-		afterCall += indent + "" + assignExpression + "static_cast<int>(" + namePrefix + "_ret);\n"
 
-	} else if p.IsKnownEnum() || p.QtCppOriginalType != "" {
-		// Needs an explicit uintptr cast
-		shouldReturn = p.RenderTypeQtCpp() + " " + namePrefix + "_ret = "
-		afterCall += indent + "" + assignExpression + "static_cast<" + p.RenderTypeCabi() + ">(" + namePrefix + "_ret);\n"
+		if p.QtCppOriginalType != nil && p.QtCppOriginalType.Const != p.Const {
+			afterCall += indent + "" + assignExpression + "const_cast<" + p.RenderTypeCabi() + ">(static_cast<" + p.RenderTypeIntermediateCpp() + ">(" + namePrefix + "_ret));\n"
+		} else {
+			afterCall += indent + "" + assignExpression + "static_cast<" + p.RenderTypeCabi() + ">(" + namePrefix + "_ret);\n"
+		}
 
 	} else if p.Const {
 		shouldReturn += "(" + p.RenderTypeCabi() + ") "

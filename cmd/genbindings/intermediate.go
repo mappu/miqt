@@ -37,25 +37,23 @@ func init() {
 }
 
 type CppParameter struct {
-	ParameterName     string
-	ParameterType     string
-	QtCppOriginalType string // If we rewrote QStringList->QList<String>, this field contains the original QStringList. Otherwise, it's blank
-	Const             bool
-	Pointer           bool
-	PointerCount      int
-	ByRef             bool
-	Optional          bool
-}
+	ParameterName string
+	ParameterType string
+	Const         bool
+	Pointer       bool
+	PointerCount  int
+	ByRef         bool
+	Optional      bool
 
-func (p *CppParameter) AssignAlias(newType string) {
-	if p.QtCppOriginalType == "" {
-		p.QtCppOriginalType = p.ParameterType // Overwrite once only, at the earliest base type
-	}
-	p.ParameterType = newType
+	QtCppOriginalType *CppParameter // If we rewrote QStringList->QList<String>, this field contains the original QStringList. Otherwise, it's blank
 }
 
 func (p *CppParameter) ApplyTypedef(matchedUnderlyingType CppParameter) {
-	p.AssignAlias(matchedUnderlyingType.ParameterType)
+	if p.QtCppOriginalType == nil {
+		tmp := *p                  // Copy
+		p.QtCppOriginalType = &tmp // Overwrite once only, at the earliest base type
+	}
+	p.ParameterType = matchedUnderlyingType.ParameterType
 
 	// If this was a pointer to a typedef'd type, or a typedef of a pointer type, we need to preserve that
 	p.Const = p.Const || matchedUnderlyingType.Const
@@ -78,20 +76,17 @@ func (p *CppParameter) ConstCast(isConst bool) CppParameter {
 	return ret
 }
 
-func (p *CppParameter) GetQtCppType() string {
-	if p.QtCppOriginalType != "" {
+func (p *CppParameter) GetQtCppType() *CppParameter {
+	if p.QtCppOriginalType != nil {
 		return p.QtCppOriginalType
 	}
 
-	return p.ParameterType
+	return p
 }
 
 func (p CppParameter) IsFlagType() bool {
-	if strings.HasPrefix(p.ParameterType, `QFlags<`) {
-		return true // This catches most cases through the typedef system
-	}
-
-	if strings.HasPrefix(p.GetQtCppType(), `QFlags<`) {
+	if strings.HasPrefix(p.ParameterType, `QFlags<`) ||
+		strings.HasPrefix(p.GetQtCppType().ParameterType, `QFlags<`) {
 		return true // This catches most cases through the typedef system
 	}
 
