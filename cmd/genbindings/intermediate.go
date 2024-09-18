@@ -172,6 +172,7 @@ func (p CppParameter) IntType() bool {
 		"qintptr", "quintptr", "uintptr_t", "intptr_t",
 		"qsizetype", "size_t",
 		"QIntegerForSizeof<void *>::Unsigned",
+		"QIntegerForSizeof<void *>::Signed",
 		"qptrdiff", "ptrdiff_t",
 		"double", "float", "qreal":
 		return true
